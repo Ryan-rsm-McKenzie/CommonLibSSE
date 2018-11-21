@@ -1,0 +1,585 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="exports.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{57c9eac9-3a96-4dbf-8d19-cdddafb51688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{aee06ac9-1bc5-42ef-858c-7657bb1ee832}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE">
+      <UniqueIdentifier>{465c6169-39eb-4913-8a42-21fc2e4b0ef6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim">
+      <UniqueIdentifier>{cf9d4f78-0815-436b-9b35-e6b66185b006}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\FormComponents">
+      <UniqueIdentifier>{9410f289-c830-479f-b772-32ed0af95f26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\SKSE">
+      <UniqueIdentifier>{0e1c98bf-fd76-4eda-8fb3-7a50f879a87a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\SKSE\API">
+      <UniqueIdentifier>{fbccb34b-23ee-4959-b08e-197b5087cd5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\ExtraData">
+      <UniqueIdentifier>{a9418d25-6fa2-43e9-9a9b-82ab52cea883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSDevices">
+      <UniqueIdentifier>{2907cd0d-893f-426b-b3e4-2bde2fe1a730}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Animation">
+      <UniqueIdentifier>{d77b0bb8-aa8c-46d5-abc6-93716c2b0c9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Menus">
+      <UniqueIdentifier>{70b8132a-3f5c-42c1-bd53-cb660cf26a26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE">
+      <UniqueIdentifier>{a8a5ec3a-f484-4e8d-b8d1-f2198c6ccff7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim">
+      <UniqueIdentifier>{14024b14-8235-42d1-8c54-e6e8740c6852}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSDevices">
+      <UniqueIdentifier>{70b8f39b-eb73-4984-9340-39fccbb3fe42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms">
+      <UniqueIdentifier>{bdd31fbf-8dd7-40f6-bb15-e5dc251bf5f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\World">
+      <UniqueIdentifier>{4f543887-cc65-4ce5-845f-01f2377ddf86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\World\Components">
+      <UniqueIdentifier>{29a1fe8c-10e4-4020-9fb3-0cf7919e1544}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\Objects">
+      <UniqueIdentifier>{b299a0f7-f05a-44da-a1dd-913d2f4aedd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\TESForms">
+      <UniqueIdentifier>{ae428fd3-8d0d-4b50-bc50-7ae47ba44515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\TESForms\World">
+      <UniqueIdentifier>{f9355b9c-1d53-4ef5-8940-a232a06e3d53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\TESForms\World\Components">
+      <UniqueIdentifier>{dace98c7-fe0d-4868-a748-332583e67e8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\Character">
+      <UniqueIdentifier>{d7f094f4-06d5-4040-9339-310dfbb93cb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSCore">
+      <UniqueIdentifier>{6b39d050-b167-48d5-b2eb-a886eb541710}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\NetImmerse">
+      <UniqueIdentifier>{aa1d5fd2-7d10-468c-9f19-21f907656000}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Events">
+      <UniqueIdentifier>{7cc250ab-e557-449b-a10f-864e3914dcb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform">
+      <UniqueIdentifier>{ddbc9483-11ab-4ce5-8204-11dc08f668ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Misc">
+      <UniqueIdentifier>{9c902473-086f-40d9-a348-20edac18af80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Magic">
+      <UniqueIdentifier>{7aeed777-d24f-49d2-9397-7684e696fd4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Magic">
+      <UniqueIdentifier>{0f744115-aeec-45b4-886a-05c36f067ae5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\SKSE">
+      <UniqueIdentifier>{3d9a3353-0c7b-43b5-a7a7-b90abb0487ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\SKSE\API">
+      <UniqueIdentifier>{7c08d68c-dcef-4ddf-9ccf-f415fd38f005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Events">
+      <UniqueIdentifier>{9979b69c-714e-47ef-948a-19a9293bdb01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\ExtraData">
+      <UniqueIdentifier>{9c1e4a5f-2023-47a5-95d3-f3245b226161}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\FormComponents">
+      <UniqueIdentifier>{34e6db25-f8f5-41e8-9618-0e56420cbca2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Menus">
+      <UniqueIdentifier>{8639fa70-bb65-41f8-9703-7197f8b3da10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Misc">
+      <UniqueIdentifier>{e4c29fee-7193-4742-a331-6ec4390487ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\NetImmerse">
+      <UniqueIdentifier>{18a7224a-297f-431e-a39c-16a3621488e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Scaleform">
+      <UniqueIdentifier>{ac67e670-77c4-4c0f-85a1-bcb92dd1126b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\TESForms\Character">
+      <UniqueIdentifier>{85837295-49fe-48c5-b835-4b196640d002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\TESForms\Objects">
+      <UniqueIdentifier>{a45b72b2-4bd0-44e0-b255-a4941cbc080a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSCore">
+      <UniqueIdentifier>{4f856d79-c408-46f8-9377-009394082805}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\RE\ActorState.cpp">
+      <Filter>src\RE\Skyrim\TESForms\World\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Actor.cpp">
+      <Filter>src\RE\Skyrim\TESForms</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectREFR.cpp">
+      <Filter>src\RE\Skyrim\TESForms</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\PlayerCharacter.cpp">
+      <Filter>src\RE\Skyrim\TESForms</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\InputManager.cpp">
+      <Filter>src\RE\Skyrim\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\MagicTarget.cpp">
+      <Filter>src\RE\Skyrim\Magic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSInputDevice.cpp">
+      <Filter>src\RE\Skyrim\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\InputEventDispatcher.cpp">
+      <Filter>src\RE\Skyrim\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\EventDispatcherList.cpp">
+      <Filter>src\RE\SKSE\API</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\MenuControls.cpp">
+      <Filter>src\RE\Skyrim\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\MenuEventHandler.cpp">
+      <Filter>src\RE\Skyrim\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\PlayerControls.cpp">
+      <Filter>src\RE\Skyrim\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\PlayerInputHandler.cpp">
+      <Filter>src\RE\Skyrim\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ButtonEvent.cpp">
+      <Filter>src\RE\Skyrim\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraContainerChanges.cpp">
+      <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ActorValueOwner.cpp">
+      <Filter>src\RE\Skyrim\FormComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BaseExtraList.cpp">
+      <Filter>src\RE\Skyrim\FormComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSBipedObjectForm.cpp">
+      <Filter>src\RE\Skyrim\FormComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESActorBaseData.cpp">
+      <Filter>src\RE\Skyrim\FormComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ActiveEffect.cpp">
+      <Filter>src\RE\Skyrim\Magic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\EffectSetting.cpp">
+      <Filter>src\RE\Skyrim\Magic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\MagicItem.cpp">
+      <Filter>src\RE\Skyrim\Magic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\IMenu.cpp">
+      <Filter>src\RE\Skyrim\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\MenuManager.cpp">
+      <Filter>src\RE\Skyrim\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\InventoryEntryData.cpp">
+      <Filter>src\RE\Skyrim\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiAVObject.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiControllerManager.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiControllerSequence.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiNode.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiObjectNET.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxLoader.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxState.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESNPC.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectBOOK.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectLIGH.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ActorProcessManager.cpp">
+      <Filter>src\RE\Skyrim\TESForms\World\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSWin32KeyboardDevice.cpp">
+      <Filter>src\RE\Skyrim\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESFaction.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\UIManager.cpp">
+      <Filter>src\RE\Skyrim\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESLeveledList.cpp">
+      <Filter>src\RE\Skyrim\FormComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSTArray.cpp">
+      <Filter>src\RE\Skyrim\BSCore</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\InventoryChanges.cpp">
+      <Filter>src\RE\Skyrim\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESLevItem.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Misc.cpp">
+      <Filter>src\RE</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\RE\EventDispatcherList.h">
+      <Filter>include\RE\SKSE\API</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
+      <Filter>include\RE\Skyrim\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MenuEventHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PlayerControls.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraContainerChanges.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BaseExtraList.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSBipedObjectForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MenuManager.h">
+      <Filter>include\RE\Skyrim\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MenuControls.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraLock.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorState.h">
+      <Filter>include\RE\Skyrim\TESForms\World\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Actor.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Character.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PlayerCharacter.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectLIGH.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectREFR.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PerkEntryVisitor.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSPerkEntry.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPointPerkEntry.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPointFunctionData.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPointFunctionDataActivateChoice.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTHashMap.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTScatterTable.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\InputManager.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\CRC.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\InputEventDispatcher.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSIInputDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSInputDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSGamepadDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSKeyboardDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSMouseDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSVirtualKeyboardDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSWin32KeyboardDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSWin32MouseDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSPCGamepadDeviceHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSPCGamepadDeviceDelegate.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSWin32GamepadDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESBoundObject.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorProcessManager.h">
+      <Filter>include\RE\Skyrim\TESForms\World\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiNode.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiAVObject.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiObjectNET.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiControllerManager.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiControllerSequence.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ReadyWeaponHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PlayerInputHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ButtonEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxMovieView.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxMovieDef.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxFileConstants.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxStateBag.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxState.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxResource.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMenu.h">
+      <Filter>include\RE\Skyrim\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxLoader.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActivateHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\HeldStateHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectBOOK.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\InventoryEntryData.h">
+      <Filter>include\RE\Skyrim\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxMovie.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorValueOwner.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESBoundAnimObject.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectCONT.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectACTI.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MagicTarget.h">
+      <Filter>include\RE\Skyrim\Magic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActiveEffect.h">
+      <Filter>include\RE\Skyrim\Magic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\EffectSetting.h">
+      <Filter>include\RE\Skyrim\Magic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MagicItem.h">
+      <Filter>include\RE\Skyrim\Magic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESActorBaseData.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESActorBase.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESNPC.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\UserEventEnabledEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSActorCellEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSActorDeathEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PositionPlayerEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTransformDeltaEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTSingleton.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MovementHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESFaction.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraFactionChanges.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPointFunctionDataText.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FavoritesHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\UIManager.h">
+      <Filter>include\RE\Skyrim\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRace.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRaceForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ToggleRunHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\LookHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SprintHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AutoMoveHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\JumpHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ShoutHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AttackBlockHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\RunHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SneakHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TogglePOVHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESLeveledList.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTArray.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\InventoryChanges.h">
+      <Filter>include\RE\Skyrim\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTList.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESLevItem.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraDroppedItemList.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Memory.h">
+      <Filter>include\RE\Skyrim</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Offsets.h">
+      <Filter>include\RE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Misc.h">
+      <Filter>include\RE</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>CommonLibSSE</ProjectName>
+    <ProjectGuid>{C1AF9204-EE2D-421B-B11E-1D70D8ACC11F}</ProjectGuid>
+    <RootNamespace>CommonLibSSE</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)..;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PLUGIN_EXAMPLE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ForcedIncludeFiles>common/IPrefix.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <FloatingPointExceptions>true</FloatingPointExceptions>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>
+      </Message>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)..;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PLUGIN_EXAMPLE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ForcedIncludeFiles>common/IPrefix.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <OmitFramePointers>
+      </OmitFramePointers>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="exports.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\common\common_vc14.vcxproj">
+      <Project>{d4c128a1-73dc-4941-a453-ce55af239ba8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\skse64\skse64.vcxproj">
+      <Project>{7028b79c-06e3-4d9a-b38c-1dc3680b1bdb}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\skse64_common\skse64_common.vcxproj">
+      <Project>{5fd1c08d-db80-480c-a1c6-f0920005cd13}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\RE\ActiveEffect.cpp" />
+    <ClCompile Include="src\RE\Actor.cpp" />
+    <ClCompile Include="src\RE\ActorProcessManager.cpp" />
+    <ClCompile Include="src\RE\ActorState.cpp" />
+    <ClCompile Include="src\RE\ActorValueOwner.cpp" />
+    <ClCompile Include="src\RE\BaseExtraList.cpp" />
+    <ClCompile Include="src\RE\BGSBipedObjectForm.cpp" />
+    <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp" />
+    <ClCompile Include="src\RE\BSInputDevice.cpp" />
+    <ClCompile Include="src\RE\BSTArray.cpp" />
+    <ClCompile Include="src\RE\BSWin32KeyboardDevice.cpp" />
+    <ClCompile Include="src\RE\ButtonEvent.cpp" />
+    <ClCompile Include="src\RE\EffectSetting.cpp" />
+    <ClCompile Include="src\RE\EventDispatcherList.cpp" />
+    <ClCompile Include="src\RE\ExtraContainerChanges.cpp" />
+    <ClCompile Include="src\RE\GFxLoader.cpp" />
+    <ClCompile Include="src\RE\GFxState.cpp" />
+    <ClCompile Include="src\RE\Misc.cpp" />
+    <ClCompile Include="src\RE\IMenu.cpp" />
+    <ClCompile Include="src\RE\InputEventDispatcher.cpp" />
+    <ClCompile Include="src\RE\InputManager.cpp" />
+    <ClCompile Include="src\RE\InventoryChanges.cpp" />
+    <ClCompile Include="src\RE\InventoryEntryData.cpp" />
+    <ClCompile Include="src\RE\MagicItem.cpp" />
+    <ClCompile Include="src\RE\MagicTarget.cpp" />
+    <ClCompile Include="src\RE\MenuControls.cpp" />
+    <ClCompile Include="src\RE\MenuEventHandler.cpp" />
+    <ClCompile Include="src\RE\MenuManager.cpp" />
+    <ClCompile Include="src\RE\NiAVObject.cpp" />
+    <ClCompile Include="src\RE\NiControllerManager.cpp" />
+    <ClCompile Include="src\RE\NiControllerSequence.cpp" />
+    <ClCompile Include="src\RE\NiNode.cpp" />
+    <ClCompile Include="src\RE\NiObjectNET.cpp" />
+    <ClCompile Include="src\RE\PlayerCharacter.cpp" />
+    <ClCompile Include="src\RE\PlayerControls.cpp" />
+    <ClCompile Include="src\RE\PlayerInputHandler.cpp" />
+    <ClCompile Include="src\RE\TESActorBaseData.cpp" />
+    <ClCompile Include="src\RE\TESFaction.cpp" />
+    <ClCompile Include="src\RE\TESLeveledList.cpp" />
+    <ClCompile Include="src\RE\TESLevItem.cpp" />
+    <ClCompile Include="src\RE\TESNPC.cpp" />
+    <ClCompile Include="src\RE\TESObjectBOOK.cpp" />
+    <ClCompile Include="src\RE\TESObjectLIGH.cpp" />
+    <ClCompile Include="src\RE\TESObjectREFR.cpp" />
+    <ClCompile Include="src\RE\UIManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\RE\ActivateHandler.h" />
+    <ClInclude Include="include\RE\ActiveEffect.h" />
+    <ClInclude Include="include\RE\ActorValueOwner.h" />
+    <ClInclude Include="include\RE\AttackBlockHandler.h" />
+    <ClInclude Include="include\RE\AutoMoveHandler.h" />
+    <ClInclude Include="include\RE\BGSActorCellEvent.h" />
+    <ClInclude Include="include\RE\BGSActorDeathEvent.h" />
+    <ClInclude Include="include\RE\BGSEntryPointFunctionDataText.h" />
+    <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
+    <ClInclude Include="include\RE\BSTArray.h" />
+    <ClInclude Include="include\RE\BSTList.h" />
+    <ClInclude Include="include\RE\BSTransformDeltaEvent.h" />
+    <ClInclude Include="include\RE\BSTSingleton.h" />
+    <ClInclude Include="include\RE\EffectSetting.h" />
+    <ClInclude Include="include\RE\ExtraDroppedItemList.h" />
+    <ClInclude Include="include\RE\ExtraFactionChanges.h" />
+    <ClInclude Include="include\RE\FavoritesHandler.h" />
+    <ClInclude Include="include\RE\GFxFileConstants.h" />
+    <ClInclude Include="include\RE\GFxLoader.h" />
+    <ClInclude Include="include\RE\GFxMovie.h" />
+    <ClInclude Include="include\RE\GFxMovieDef.h" />
+    <ClInclude Include="include\RE\GFxMovieView.h" />
+    <ClInclude Include="include\RE\Actor.h" />
+    <ClInclude Include="include\RE\ActorProcessManager.h" />
+    <ClInclude Include="include\RE\ActorState.h" />
+    <ClInclude Include="include\RE\BGSEntryPointFunctionData.h" />
+    <ClInclude Include="include\RE\BGSEntryPointFunctionDataActivateChoice.h" />
+    <ClInclude Include="include\RE\BGSEntryPointPerkEntry.h" />
+    <ClInclude Include="include\RE\BGSPerkEntry.h" />
+    <ClInclude Include="include\RE\BSGamepadDevice.h" />
+    <ClInclude Include="include\RE\BSIInputDevice.h" />
+    <ClInclude Include="include\RE\BSInputDevice.h" />
+    <ClInclude Include="include\RE\BSKeyboardDevice.h" />
+    <ClInclude Include="include\RE\BSMouseDevice.h" />
+    <ClInclude Include="include\RE\BSPCGamepadDeviceDelegate.h" />
+    <ClInclude Include="include\RE\BSPCGamepadDeviceHandler.h" />
+    <ClInclude Include="include\RE\BSTHashMap.h" />
+    <ClInclude Include="include\RE\BSTScatterTable.h" />
+    <ClInclude Include="include\RE\BSVirtualKeyboardDevice.h" />
+    <ClInclude Include="include\RE\BSWin32GamepadDevice.h" />
+    <ClInclude Include="include\RE\BSWin32KeyboardDevice.h" />
+    <ClInclude Include="include\RE\BSWin32MouseDevice.h" />
+    <ClInclude Include="include\RE\ButtonEvent.h" />
+    <ClInclude Include="include\RE\Character.h" />
+    <ClInclude Include="include\RE\CRC.h" />
+    <ClInclude Include="include\RE\ExtraLock.h" />
+    <ClInclude Include="include\RE\GFxResource.h" />
+    <ClInclude Include="include\RE\GFxState.h" />
+    <ClInclude Include="include\RE\GFxStateBag.h" />
+    <ClInclude Include="include\RE\HeldStateHandler.h" />
+    <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h" />
+    <ClInclude Include="include\RE\IMenu.h" />
+    <ClInclude Include="include\RE\InputEventDispatcher.h" />
+    <ClInclude Include="include\RE\InputManager.h" />
+    <ClInclude Include="include\RE\BaseExtraList.h" />
+    <ClInclude Include="include\RE\BGSBipedObjectForm.h" />
+    <ClInclude Include="include\RE\EventDispatcherList.h" />
+    <ClInclude Include="include\RE\ExtraContainerChanges.h" />
+    <ClInclude Include="include\RE\InventoryChanges.h" />
+    <ClInclude Include="include\RE\InventoryEntryData.h" />
+    <ClInclude Include="include\RE\JumpHandler.h" />
+    <ClInclude Include="include\RE\LookHandler.h" />
+    <ClInclude Include="include\RE\MagicItem.h" />
+    <ClInclude Include="include\RE\MagicTarget.h" />
+    <ClInclude Include="include\RE\Memory.h" />
+    <ClInclude Include="include\RE\MenuControls.h" />
+    <ClInclude Include="include\RE\MenuEventHandler.h" />
+    <ClInclude Include="include\RE\MenuManager.h" />
+    <ClInclude Include="include\RE\Misc.h" />
+    <ClInclude Include="include\RE\MovementHandler.h" />
+    <ClInclude Include="include\RE\NiAVObject.h" />
+    <ClInclude Include="include\RE\NiControllerManager.h" />
+    <ClInclude Include="include\RE\NiControllerSequence.h" />
+    <ClInclude Include="include\RE\NiNode.h" />
+    <ClInclude Include="include\RE\NiObjectNET.h" />
+    <ClInclude Include="include\RE\Offsets.h" />
+    <ClInclude Include="include\RE\PerkEntryVisitor.h" />
+    <ClInclude Include="include\RE\PlayerCharacter.h" />
+    <ClInclude Include="include\RE\PlayerControls.h" />
+    <ClInclude Include="include\RE\PlayerInputHandler.h" />
+    <ClInclude Include="include\RE\PositionPlayerEvent.h" />
+    <ClInclude Include="include\RE\ReadyWeaponHandler.h" />
+    <ClInclude Include="include\RE\RunHandler.h" />
+    <ClInclude Include="include\RE\ShoutHandler.h" />
+    <ClInclude Include="include\RE\SneakHandler.h" />
+    <ClInclude Include="include\RE\SprintHandler.h" />
+    <ClInclude Include="include\RE\TESActorBase.h" />
+    <ClInclude Include="include\RE\TESActorBaseData.h" />
+    <ClInclude Include="include\RE\TESBoundAnimObject.h" />
+    <ClInclude Include="include\RE\TESBoundObject.h" />
+    <ClInclude Include="include\RE\TESFaction.h" />
+    <ClInclude Include="include\RE\TESLeveledList.h" />
+    <ClInclude Include="include\RE\TESLevItem.h" />
+    <ClInclude Include="include\RE\TESNPC.h" />
+    <ClInclude Include="include\RE\TESObjectACTI.h" />
+    <ClInclude Include="include\RE\TESObjectBOOK.h" />
+    <ClInclude Include="include\RE\TESObjectCONT.h" />
+    <ClInclude Include="include\RE\TESObjectLIGH.h" />
+    <ClInclude Include="include\RE\TESObjectREFR.h" />
+    <ClInclude Include="include\RE\TESRace.h" />
+    <ClInclude Include="include\RE\TESRaceForm.h" />
+    <ClInclude Include="include\RE\TogglePOVHandler.h" />
+    <ClInclude Include="include\RE\ToggleRunHandler.h" />
+    <ClInclude Include="include\RE\UIManager.h" />
+    <ClInclude Include="include\RE\UserEventEnabledEvent.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
