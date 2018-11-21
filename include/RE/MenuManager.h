@@ -51,14 +51,15 @@ namespace RE
 
 		static MenuManager*						GetSingleton(void);
 		EventDispatcher<MenuOpenCloseEvent>*	MenuOpenCloseEventDispatcher();
-		bool									IsMenuOpen(BSFixedString* a_menuName);
-		IMenu*									GetMenu(BSFixedString* a_menuName);
-		GFxMovieView*							GetMovieView(BSFixedString* a_menuName);
+		bool									IsMenuOpen(BSFixedString& a_menuName);
+		IMenu*									GetMenu(BSFixedString& a_menuName);
+		GFxMovieView*							GetMovieView(BSFixedString& a_menuName);
 		void									ShowMenus(bool a_show);
 		bool									IsShowingMenus();
 		void									Register(const char* a_name, CreatorFunc a_creator);
 
 		bool									GameIsPaused();
+		bool									CrosshairIsPaused();
 
 
 		// members

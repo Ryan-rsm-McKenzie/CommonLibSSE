@@ -19,25 +19,25 @@ namespace RE
 	}
 
 
-	bool MenuManager::IsMenuOpen(BSFixedString* a_menuName)
+	bool MenuManager::IsMenuOpen(BSFixedString& a_menuName)
 	{
-		typedef bool _IsMenuOpen_t(MenuManager* a_this, BSFixedString* a_menuName);
+		typedef bool _IsMenuOpen_t(MenuManager* a_this, BSFixedString& a_menuName);
 		static _IsMenuOpen_t* _IsMenuOpen = reinterpret_cast<_IsMenuOpen_t*>(GetFnAddr(&::MenuManager::IsMenuOpen));
 		return _IsMenuOpen(this, a_menuName);
 	}
 
 
-	IMenu* MenuManager::GetMenu(BSFixedString* a_menuName)
+	IMenu* MenuManager::GetMenu(BSFixedString& a_menuName)
 	{
-		typedef IMenu* _GetMenu_t(MenuManager* a_this, BSFixedString* a_menuName);
+		typedef IMenu* _GetMenu_t(MenuManager* a_this, BSFixedString& a_menuName);
 		static _GetMenu_t* _GetMenu = reinterpret_cast<_GetMenu_t*>(GetFnAddr(&::MenuManager::GetMenu));
 		return _GetMenu(this, a_menuName);
 	}
 
 
-	GFxMovieView* MenuManager::GetMovieView(BSFixedString* a_menuName)
+	GFxMovieView* MenuManager::GetMovieView(BSFixedString& a_menuName)
 	{
-		typedef GFxMovieView* _GetMovieView_t(MenuManager* a_this, BSFixedString* a_menuName);
+		typedef GFxMovieView* _GetMovieView_t(MenuManager* a_this, BSFixedString& a_menuName);
 		static _GetMovieView_t* _GetMovieView = reinterpret_cast<_GetMovieView_t*>(GetFnAddr(&::MenuManager::GetMovieView));
 		return _GetMovieView(this, a_menuName);
 	}
@@ -70,5 +70,11 @@ namespace RE
 	bool MenuManager::GameIsPaused()
 	{
 		return numPauseGame > 0;
+	}
+
+
+	bool MenuManager::CrosshairIsPaused()
+	{
+		return numStopCrosshairUpdate > 0;
 	}
 }
