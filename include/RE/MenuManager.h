@@ -4,6 +4,7 @@
 #include "skse64/GameMenus.h"  // MenuTableItem, MenuManager
 #include "skse64/GameTypes.h"  // BSFixedString
 
+#include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
 
 
@@ -63,7 +64,7 @@ namespace RE
 
 
 		// members
-		tArray<IMenu*>							menuStack;						// 110
+		BSTArray<IMenu*>						menuStack;						// 110
 		MenuTable								menuTable;						// 128   (Entries ptr at 150)
 		SimpleLock								menuTableLock;					// 158
 		UInt32									numPauseGame;					// 160 (= 0) += 1 if (imenu->flags & 0x0001)

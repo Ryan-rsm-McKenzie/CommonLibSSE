@@ -127,6 +127,12 @@
     <Filter Include="src\RE\Skyrim\BSCore">
       <UniqueIdentifier>{4f856d79-c408-46f8-9377-009394082805}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\FileIO">
+      <UniqueIdentifier>{0cd0bf37-5874-4ace-b057-1c248e06317e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\FileIO">
+      <UniqueIdentifier>{3a368dfa-d204-4b71-81d6-46b0118447a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -263,6 +269,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\Misc.cpp">
       <Filter>src\RE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSSaveLoadManager.cpp">
+      <Filter>src\RE\Skyrim\FileIO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -580,6 +589,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\Misc.h">
       <Filter>include\RE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSaveLoadManager.h">
+      <Filter>include\RE\Skyrim\FileIO</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

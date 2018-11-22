@@ -160,6 +160,7 @@
     <ClCompile Include="src\RE\BaseExtraList.cpp" />
     <ClCompile Include="src\RE\BGSBipedObjectForm.cpp" />
     <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp" />
+    <ClCompile Include="src\RE\BGSSaveLoadManager.cpp" />
     <ClCompile Include="src\RE\BSInputDevice.cpp" />
     <ClCompile Include="src\RE\BSTArray.cpp" />
     <ClCompile Include="src\RE\BSWin32KeyboardDevice.cpp" />
@@ -207,6 +208,7 @@
     <ClInclude Include="include\RE\BGSActorCellEvent.h" />
     <ClInclude Include="include\RE\BGSActorDeathEvent.h" />
     <ClInclude Include="include\RE\BGSEntryPointFunctionDataText.h" />
+    <ClInclude Include="include\RE\BGSSaveLoadManager.h" />
     <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
     <ClInclude Include="include\RE\BSTArray.h" />
     <ClInclude Include="include\RE\BSTList.h" />

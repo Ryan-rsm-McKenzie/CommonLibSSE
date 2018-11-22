@@ -88,7 +88,7 @@ namespace RE
 
 
 		// members
-		size_type _M_count;
+		size_type _M_count;	// 0
 
 	private:
 		typedef SInt32 _Push_Impl_t(BSTArrayBase* a_this, IAllocatorFunctor& a_functor, size_type a_capacity, size_type a_value_size);
