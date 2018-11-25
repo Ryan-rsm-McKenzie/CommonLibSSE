@@ -1,5 +1,7 @@
 #include "RE/UIManager.h"
 
+#include "RE/BSFixedString.h"  // BSFixedString
+
 
 namespace RE
 {

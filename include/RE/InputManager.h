@@ -1,11 +1,13 @@
 #pragma once
 
-#include "skse64/GameEvents.h"  // BSTEventSource
 #include "skse64/GameInput.h"  // InputManager
-#include "skse64/GameTypes.h"  // BSFixedString, tArray
 
+#include "RE/BSTEvent.h"  // BSTEventSource
+#include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSInputDevice.h"  // BSInputDevice
+#include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
+#include "RE/InputEvent.h"  //
 
 
 namespace RE
@@ -15,7 +17,7 @@ namespace RE
 		public BSTEventSource<InputEvent*>
 	{
 	private:
-		typedef RE::BSInputDevice::InputDevice InputDevice;
+		typedef InputEvent::DeviceType DeviceType;
 
 	public:
 		enum Context : UInt32
@@ -72,17 +74,17 @@ namespace RE
 			};
 
 
-			tArray<Mapping>	keyboardMap;
-			tArray<Mapping>	mouseMap;
-			tArray<Mapping>	gamepadMap;
+			BSTArray<Mapping>	keyboardMap;
+			BSTArray<Mapping>	mouseMap;
+			BSTArray<Mapping>	gamepadMap;
 		};
 
 
 		static InputManager*	GetSingleton();
 		UInt8					AllowTextInput(bool a_allow);
 
-		UInt32					GetMappedKey(const BSFixedString& a_name, InputDevice a_deviceType, Context a_contextIdx = kContext_Gameplay) const;
-		const BSFixedString&	GetUserEventName(UInt32 a_buttonID, InputDevice a_deviceType, Context a_contextIdx = kContext_Gameplay) const;
+		UInt32					GetMappedKey(const BSFixedString& a_name, DeviceType a_deviceType, Context a_contextIdx = kContext_Gameplay) const;
+		const BSFixedString&	GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Context a_contextIdx = kContext_Gameplay) const;
 		bool					IsLookingControlsEnabled() const;
 		bool					IsFlyingControlsEnabled() const;
 		bool					IsSneakingControlsEnabled() const;
@@ -92,8 +94,8 @@ namespace RE
 
 		// members
 		InputContext*	context[kContext_Count];	// 060
-		tArray<void*>	unk0E8;						// 0E8
-		tArray<void*>	unk100;						// 100
+		BSTArray<void*>	unk0E8;						// 0E8
+		BSTArray<void*>	unk100;						// 100
 		SInt32			controlState;				// 118 - init'd to -1
 		UInt32			unk11C;						// 11C - init'd to 0x80000000
 		UInt8			allowTextInput;				// 120 - init'd to 0

@@ -127,12 +127,6 @@
     <Filter Include="src\RE\Skyrim\BSCore">
       <UniqueIdentifier>{4f856d79-c408-46f8-9377-009394082805}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\Skyrim\FileIO">
-      <UniqueIdentifier>{0cd0bf37-5874-4ace-b057-1c248e06317e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\Skyrim\FileIO">
-      <UniqueIdentifier>{3a368dfa-d204-4b71-81d6-46b0118447a6}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -243,9 +237,6 @@
     <ClCompile Include="src\RE\ActorProcessManager.cpp">
       <Filter>src\RE\Skyrim\TESForms\World\Components</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSWin32KeyboardDevice.cpp">
-      <Filter>src\RE\Skyrim\BSDevices</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\TESFaction.cpp">
       <Filter>src\RE\Skyrim\TESForms\Character</Filter>
     </ClCompile>
@@ -254,9 +245,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\UIManager.cpp">
       <Filter>src\RE\Skyrim\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESLeveledList.cpp">
-      <Filter>src\RE\Skyrim\FormComponents</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSTArray.cpp">
       <Filter>src\RE\Skyrim\BSCore</Filter>
@@ -270,8 +258,23 @@
     <ClCompile Include="src\RE\Misc.cpp">
       <Filter>src\RE</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BGSSaveLoadManager.cpp">
-      <Filter>src\RE\Skyrim\FileIO</Filter>
+    <ClCompile Include="src\RE\BSKeyboardDevice.cpp">
+      <Filter>src\RE\Skyrim\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSWin32GamepadDevice.cpp">
+      <Filter>src\RE\Skyrim\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ThumbstickEvent.cpp">
+      <Filter>src\RE\Skyrim\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSFixedString.cpp">
+      <Filter>src\RE\Skyrim\BSCore</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\InputStringHolder.cpp">
+      <Filter>src\RE\Skyrim\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\UIStringHolder.cpp">
+      <Filter>src\RE\Skyrim\Menus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -590,8 +593,32 @@
     <ClInclude Include="include\RE\Misc.h">
       <Filter>include\RE</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSSaveLoadManager.h">
-      <Filter>include\RE\Skyrim\FileIO</Filter>
+    <ClInclude Include="include\RE\IDEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\InputEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ThumbstickEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTEvent.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSFixedString.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\InputStringHolder.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\UIStringHolder.h">
+      <Filter>include\RE\Skyrim\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MenuOpenCloseEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\UISaveLoadManager.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,14 +11,6 @@ namespace RE
 	}
 
 
-	EventDispatcher<MenuOpenCloseEvent>* MenuManager::MenuOpenCloseEventDispatcher()
-	{
-		typedef EventDispatcher<MenuOpenCloseEvent>* _MenuOpenCloseEventDispatcher_t(MenuManager* a_this);
-		static _MenuOpenCloseEventDispatcher_t* _MenuOpenCloseEventDispatcher = reinterpret_cast<_MenuOpenCloseEventDispatcher_t*>(GetFnAddr(&::MenuManager::MenuOpenCloseEventDispatcher));
-		return _MenuOpenCloseEventDispatcher(this);
-	}
-
-
 	bool MenuManager::IsMenuOpen(BSFixedString& a_menuName)
 	{
 		typedef bool _IsMenuOpen_t(MenuManager* a_this, BSFixedString& a_menuName);
@@ -64,6 +56,18 @@ namespace RE
 		typedef void _Register_t(MenuManager* a_this, const char* a_name, CreatorFunc a_creator);
 		static _Register_t* _Register = reinterpret_cast<_Register_t*>(GetFnAddr(&::MenuManager::Register));
 		_Register(this, a_name, a_creator);
+	}
+
+
+	BSTEventSource<MenuOpenCloseEvent>* MenuManager::GetMenuOpenCloseEventSource()
+	{
+		return static_cast<BSTEventSource<MenuOpenCloseEvent>*>(this);
+	}
+
+
+	BSTEventSource<MenuModeChangeEvent>* MenuManager::GetMenuModeChangeEventSource()
+	{
+		return static_cast<BSTEventSource<MenuModeChangeEvent>*>(this);
 	}
 
 

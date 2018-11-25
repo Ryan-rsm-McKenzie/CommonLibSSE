@@ -1,11 +1,13 @@
 #pragma once
 
-#include "skse64/GameEvents.h"  // EventDispatcher, MenuOpenCloseEvent, MenuModeChangeEvent
+#include "skse64/GameEvents.h"  // MenuModeChangeEvent
 #include "skse64/GameMenus.h"  // MenuTableItem, MenuManager
-#include "skse64/GameTypes.h"  // BSFixedString
 
+#include "BSTEvent.h"  // BSTEventSource
+#include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
+#include "RE/MenuOpenCloseEvent.h"  // MenuOpenCloseEvent
 
 
 namespace RE
@@ -16,9 +18,9 @@ namespace RE
 
 	class MenuManager :
 		public BSTSingletonSDM<MenuManager>,			// 000
-		public EventDispatcher<MenuOpenCloseEvent>,		// 008
-		public EventDispatcher<MenuModeChangeEvent>,	// 060
-		public EventDispatcher<void*>					// 0B8
+		public BSTEventSource<MenuOpenCloseEvent>,		// 008
+		public BSTEventSource<MenuModeChangeEvent>,		// 060
+		public BSTEventSource<void*>					// 0B8
 	{
 	public:
 		typedef tHashSet<MenuTableItem, BSFixedString> MenuTable;
@@ -51,7 +53,6 @@ namespace RE
 
 
 		static MenuManager*						GetSingleton(void);
-		EventDispatcher<MenuOpenCloseEvent>*	MenuOpenCloseEventDispatcher();
 		bool									IsMenuOpen(BSFixedString& a_menuName);
 		IMenu*									GetMenu(BSFixedString& a_menuName);
 		GFxMovieView*							GetMovieView(BSFixedString& a_menuName);
@@ -59,6 +60,8 @@ namespace RE
 		bool									IsShowingMenus();
 		void									Register(const char* a_name, CreatorFunc a_creator);
 
+		BSTEventSource<MenuOpenCloseEvent>*		GetMenuOpenCloseEventSource();
+		BSTEventSource<MenuModeChangeEvent>*	GetMenuModeChangeEventSource();
 		bool									GameIsPaused();
 		bool									CrosshairIsPaused();
 

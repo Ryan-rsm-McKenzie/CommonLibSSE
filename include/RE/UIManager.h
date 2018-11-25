@@ -1,7 +1,8 @@
 #pragma once
 
 #include "skse64/GameMenus.h"  // BSTCommonStaticMessageQueue, UIMessage
-#include "skse64/GameTypes.h"  // BSFixedString
+
+#include "RE/BSFixedString.h"  // BSFixedString
 
 
 namespace RE

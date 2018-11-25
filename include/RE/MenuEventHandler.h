@@ -2,19 +2,17 @@
 
 #include "skse64/GameTypes.h"  // BSIntrusiveRefCounted
 
-class InputEvent;
 class KinectEvent;
 class MouseMoveEvent;
-class ThumbstickEvent;
+
 
 namespace RE
 {
 	class ButtonEvent;
-}
+	class InputEvent;
+	class ThumbstickEvent;
 
 
-namespace RE
-{
 	class MenuEventHandler : public BSIntrusiveRefCounted
 	{
 	public:
@@ -25,7 +23,7 @@ namespace RE
 		virtual bool	ProcessKinect(KinectEvent* a_event);			// 2
 		virtual bool	ProcessThumbstick(ThumbstickEvent* a_event);	// 3
 		virtual bool	ProcessMouseMove(MouseMoveEvent* a_event);		// 4
-		virtual bool	ProcessButton(RE::ButtonEvent* a_event);		// 5
+		virtual bool	ProcessButton(ButtonEvent* a_event);			// 5
 
 
 		UInt8	unk08;		// 08

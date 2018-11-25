@@ -4,6 +4,8 @@
 
 #include "RE/BSGamepadDevice.h"  // BSGamepadDevice
 #include "RE/BSPCGamepadDeviceHandler.h"  // BSPCGamepadDeviceHandler
+#include "RE/BSTEvent.h"  // BSTEventSink
+#include "RE/InputEvent.h"  // InputEvent
 
 
 namespace RE
@@ -13,6 +15,12 @@ namespace RE
 		typedef InputEventDispatcher* _GetSingleton_t();
 		static _GetSingleton_t* _GetSingleton = reinterpret_cast<_GetSingleton_t*>(GetFnAddr(&::InputEventDispatcher::GetSingleton));
 		return _GetSingleton();
+	}
+
+
+	bool InputEventDispatcher::IsGamepadConnected()
+	{
+		return gamepadHandler && gamepadHandler->gamepad;
 	}
 
 

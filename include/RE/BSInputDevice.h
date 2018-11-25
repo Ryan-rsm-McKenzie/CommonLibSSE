@@ -1,24 +1,19 @@
 #pragma once
 
-#include "skse64/GameTypes.h"  // BSFixedString
-
+#include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSIInputDevice.h"  // BSIInputDevice
 #include "RE/BSTHashMap.h"  // BSTHashMap
+#include "RE/InputEvent.h"  // InputEvent::DeviceType
 
 
 namespace RE
 {
 	class BSInputDevice : public BSIInputDevice
 	{
+	private:
+		typedef InputEvent::DeviceType DeviceType;
+
 	public:
-		enum InputDevice : UInt32
-		{
-			kInputDevice_Keyboard = 0,
-			kInputDevice_Mouse,
-			kInputDevice_Gamepad
-		};
-
-
 		struct Data
 		{
 			BSFixedString	name;	// 00
@@ -27,16 +22,16 @@ namespace RE
 		};
 
 
-		virtual ~BSInputDevice();
+		virtual ~BSInputDevice();							// 0
 
-		virtual void	Initialize() = 0;
-		virtual	void	Process(float unk1) = 0;
-		virtual	void	Unk_03() = 0;
-		virtual	bool	Unk_04(UInt32 unk0, void *unk1);
-		virtual bool	Unk_05(void *unk0);
-		virtual bool	Unk_06(UInt32 unk0, UInt32 *unk1);
-		virtual bool	IsEnabled(void) const;
-		virtual void	Unk_08(void* unk1);
+		virtual void	Initialize() = 0;					// 1
+		virtual	void	Process(float a_unk1) = 0;			// 2
+		virtual	void	Unk_03() = 0;						// 3
+		virtual	void	Unk_04();							// 4
+		virtual void	Unk_05();							// 5
+		virtual void	Unk_06();							// 6
+		virtual bool	IsEnabled() const;					// 7
+		virtual void	Unk_08();							// 8
 
 		bool			IsKeyboard() const;
 		bool			IsMouse() const;
@@ -45,7 +40,7 @@ namespace RE
 
 
 		// members
-		InputDevice					type;		// 08
+		DeviceType					type;		// 08
 		UInt32						pad0C;		// 0C
 		BSTHashMap<UInt32, Data*>	codeMap;	// 10
 	};

@@ -1,7 +1,10 @@
 #include "RE/InputManager.h"
 
-#include "skse64/GameTypes.h"  // BSFixedString, tArray
 #include "skse64/GameInput.h"  // InputManager
+
+#include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSInputDevice.h"  // BSInputDevice
+#include "RE/BSTArray.h"  // BSTArray
 
 
 namespace RE
@@ -22,26 +25,25 @@ namespace RE
 	}
 
 
-	UInt32 InputManager::GetMappedKey(const BSFixedString& a_name, InputDevice a_deviceType, Context a_contextIdx) const
+	UInt32 InputManager::GetMappedKey(const BSFixedString& a_name, DeviceType a_deviceType, Context a_contextIdx) const
 	{
-		tArray<InputContext::Mapping>* maps = 0;
+		BSTArray<InputContext::Mapping>* maps = 0;
 
 		switch (a_deviceType) {
-		case InputDevice::kInputDevice_Mouse:
+		case DeviceType::kDeviceType_Mouse:
 			maps = &context[a_contextIdx]->mouseMap;
 			break;
-		case InputDevice::kInputDevice_Gamepad:
+		case DeviceType::kDeviceType_Gamepad:
 			maps = &context[a_contextIdx]->gamepadMap;
 			break;
-		case InputDevice::kInputDevice_Keyboard:
+		case DeviceType::kDeviceType_Keyboard:
 			maps = &context[a_contextIdx]->keyboardMap;
 			break;
 		}
 
 		if (maps) {
-			InputContext::Mapping mapping;
-			for (int i = 0; i < maps->count; ++i) {
-				if (maps->GetNthItem(i, mapping) && mapping.name == a_name) {
+			for (auto& mapping : *maps) {
+				if (mapping.name == a_name) {
 					return mapping.buttonID;
 				}
 			}
@@ -51,18 +53,18 @@ namespace RE
 	}
 
 
-	const BSFixedString& InputManager::GetUserEventName(UInt32 a_buttonID, InputDevice a_deviceType, Context a_contextIdx) const
+	const BSFixedString& InputManager::GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Context a_contextIdx) const
 	{
-		tArray<InputContext::Mapping>* maps = 0;
+		BSTArray<InputContext::Mapping>* maps = 0;
 
 		switch (a_deviceType) {
-		case InputDevice::kInputDevice_Mouse:
+		case DeviceType::kDeviceType_Mouse:
 			maps = &context[a_contextIdx]->mouseMap;
 			break;
-		case InputDevice::kInputDevice_Gamepad:
+		case DeviceType::kDeviceType_Gamepad:
 			maps = &context[a_contextIdx]->gamepadMap;
 			break;
-		case InputDevice::kInputDevice_Keyboard:
+		case DeviceType::kDeviceType_Keyboard:
 			maps = &context[a_contextIdx]->keyboardMap;
 			break;
 		}
@@ -70,9 +72,8 @@ namespace RE
 		static BSFixedString none = "";
 
 		if (maps) {
-			static InputContext::Mapping mapping;
-			for (int i = 0; i < maps->count; ++i) {
-				if (maps->GetNthItem(i, mapping) && mapping.buttonID == a_buttonID) {
+			for (auto& mapping : *maps) {
+				if (mapping.buttonID == a_buttonID) {
 					return mapping.name;
 				}
 			}

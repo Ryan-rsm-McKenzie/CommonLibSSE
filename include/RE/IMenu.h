@@ -1,7 +1,5 @@
 #pragma once
 
-#include "skse64/GameMenus.h"  // IMenu
-#include "skse64/GameTypes.h"  // BSFixedString
 #include "skse64/ScaleformCallbacks.h"  // FxDelegateHandler
 
 #include "RE/GFxMovieView.h"  // GFxMovieView
@@ -40,28 +38,11 @@ namespace RE
 		};
 
 
-		enum Result
+		enum Result : UInt32
 		{
 			kResult_Processed = 0,
 			kResult_Abort,
 			kResult_NotProcessed
-		};
-
-
-		struct BSUIScaleformData
-		{
-			virtual ~BSUIScaleformData() {}
-
-			UInt32				unk08;	// 08
-			void*				unk10;	// 10
-		};
-
-
-		struct UnkData1
-		{
-			BSFixedString		name;	// 00
-			UInt32				unk04;	// 04
-			BSUIScaleformData*	data;	// 08 - BSUIScaleformData
 		};
 
 
@@ -71,7 +52,7 @@ namespace RE
 		virtual void	Accept(CallbackProcessor* a_processor) override;
 		virtual void	OnOpen();
 		virtual void	Unk_03(void);
-		virtual UInt32	ProcessMessage(UIMessage* a_message);
+		virtual Result	ProcessMessage(UIMessage* a_message);
 		virtual void	NextFrame(UInt32 a_arg1, UInt32 a_arg2);
 		virtual void	Render();
 		virtual void	Unk_07(void);

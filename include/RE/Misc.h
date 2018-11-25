@@ -2,7 +2,6 @@
 
 #include "skse64_common/Relocation.h"  // RelocPtr, RelocAddr
 
-class BGSSaveLoadManager;
 class TESForm;
 
 

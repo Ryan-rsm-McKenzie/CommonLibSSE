@@ -1,5 +1,7 @@
 #include "RE/IMenu.h"
 
+#include "skse64/GameMenus.h"  // IMenu
+
 
 namespace RE
 {
@@ -33,9 +35,9 @@ namespace RE
 	{}
 
 
-	UInt32 IMenu::ProcessMessage(UIMessage* a_message)
+	IMenu::Result IMenu::ProcessMessage(UIMessage* a_message)
 	{
-		typedef UInt32 _ProcessMessage_t(IMenu* a_this, UIMessage* a_message);
+		typedef IMenu::Result _ProcessMessage_t(IMenu* a_this, UIMessage* a_message);
 		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::IMenu*>(this)->_ProcessMessage_internal_GetPtr());
 		static _ProcessMessage_t* _ProcessMessage = reinterpret_cast<_ProcessMessage_t*>(*ptr);
 		return _ProcessMessage(this, a_message);
