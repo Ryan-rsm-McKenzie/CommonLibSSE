@@ -153,9 +153,6 @@
     <ClCompile Include="src\RE\InputEventDispatcher.cpp">
       <Filter>src\RE\Skyrim\BSDevices</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\EventDispatcherList.cpp">
-      <Filter>src\RE\SKSE\API</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\MenuControls.cpp">
       <Filter>src\RE\Skyrim\BSDevices</Filter>
     </ClCompile>
@@ -276,11 +273,11 @@
     <ClCompile Include="src\RE\UIStringHolder.cpp">
       <Filter>src\RE\Skyrim\Menus</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\EventSourceList.cpp">
+      <Filter>src\RE\SKSE\API</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\RE\EventDispatcherList.h">
-      <Filter>include\RE\SKSE\API</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
       <Filter>include\RE\Skyrim\Animation</Filter>
     </ClInclude>
@@ -619,6 +616,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\UISaveLoadManager.h">
       <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\EventSourceList.h">
+      <Filter>include\RE\SKSE\API</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

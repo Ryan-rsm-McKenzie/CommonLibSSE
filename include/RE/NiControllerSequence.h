@@ -1,8 +1,8 @@
 #pragma once
 
-#include "skse64/GameTypes.h"  // BSFixedString
 #include "skse64/NiObjects.h"  // NiObject
 
+#include "RE/BSFixedString.h"  // BSFixedString
 
 namespace RE
 {
@@ -14,6 +14,6 @@ namespace RE
 		const BSFixedString&		GetName() const;
 
 		// members
-		BSFixedString	m_name;	// 10
+		BSFixedString	name;	// 10
 	};
 }
