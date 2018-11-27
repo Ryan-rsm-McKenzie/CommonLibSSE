@@ -188,6 +188,7 @@
     <ClCompile Include="src\RE\NiControllerSequence.cpp" />
     <ClCompile Include="src\RE\NiNode.cpp" />
     <ClCompile Include="src\RE\NiObjectNET.cpp" />
+    <ClCompile Include="src\RE\PlayerCamera.cpp" />
     <ClCompile Include="src\RE\PlayerCharacter.cpp" />
     <ClCompile Include="src\RE\PlayerControls.cpp" />
     <ClCompile Include="src\RE\PlayerInputHandler.cpp" />
@@ -286,6 +287,7 @@
     <ClInclude Include="include\RE\NiObjectNET.h" />
     <ClInclude Include="include\RE\Offsets.h" />
     <ClInclude Include="include\RE\PerkEntryVisitor.h" />
+    <ClInclude Include="include\RE\PlayerCamera.h" />
     <ClInclude Include="include\RE\PlayerCharacter.h" />
     <ClInclude Include="include\RE\PlayerControls.h" />
     <ClInclude Include="include\RE\PlayerInputHandler.h" />
