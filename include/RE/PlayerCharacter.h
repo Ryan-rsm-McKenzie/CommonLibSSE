@@ -67,18 +67,19 @@ namespace RE
 
 		virtual ~PlayerCharacter();
 
-		TintMask*			GetOverlayTintMask(TintMask* a_original);
-		tArray<TintMask*>*	GetTintList();
-		UInt32				GetNumTints(UInt32 a_tintType);
-		TintMask*			GetTintMask(UInt32 a_tintType, UInt32 a_index);
-		float				GetDamage(InventoryEntryData* a_pForm);
-		float				GetArmorValue(InventoryEntryData* a_pForm);
+		TintMask*				GetOverlayTintMask(TintMask* a_original);
+		tArray<TintMask*>*		GetTintList();
+		UInt32					GetNumTints(UInt32 a_tintType);
+		TintMask*				GetTintMask(UInt32 a_tintType, UInt32 a_index);
+		float					GetDamage(InventoryEntryData* a_pForm);
+		float					GetArmorValue(InventoryEntryData* a_pForm);
 
-		Actor*				GetActorInFavorState();
-		TESObjectREFR*		GetGrabbedRef();
-		void				PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
-		void				StartActivation();
-		bool				TryToPickPocket(Actor* a_target, InventoryEntryData* a_pEntry, UInt32 a_numItems, bool a_unk4);
+		static PlayerCharacter*	GetSingleton();
+		Actor*					GetActorInFavorState();
+		TESObjectREFR*			GetGrabbedRef();
+		void					PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
+		void					StartActivation();
+		bool					TryToPickPocket(Actor* a_target, InventoryEntryData* a_pEntry, UInt32 a_numItems, bool a_unk4);
 
 
 		// members
@@ -328,19 +329,6 @@ namespace RE
 		UInt8							unkBDC;					// BDC
 		UInt8							unkBDD;					// BDD
 		UInt16							padBDE;					// BDE
-
-	private:
-		typedef Actor* _GetActorInFavorState_t(PlayerCharacter* a_this);
-		static RelocAddr<_GetActorInFavorState_t*> _GetActorInFavorState;
-
-		typedef void _PlayPickupEvent_t(PlayerCharacter* a_this, TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
-		static RelocAddr<_PlayPickupEvent_t*> _PlayPickupEvent;
-
-		typedef void _StartActivation_t(PlayerCharacter* a_this);
-		static RelocAddr<_StartActivation_t*> _StartActivation;
-
-		typedef bool _TryToPickPocket_t(PlayerCharacter* a_this, Actor* a_target, InventoryEntryData* a_pEntry, UInt32 a_numItems, bool a_unk4);
-		static RelocAddr<_TryToPickPocket_t*> _TryToPickPocket;
 	};
 	STATIC_ASSERT(offsetof(PlayerCharacter, playerGrabbedHandle) == 0x8C8);
 	STATIC_ASSERT(sizeof(PlayerCharacter) == 0xBE0);

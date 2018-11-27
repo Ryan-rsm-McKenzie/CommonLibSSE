@@ -10,6 +10,9 @@ namespace RE
 	class Actor;
 
 
+	typedef void _DebugNotification_t(const char* a_notification, void* a_unk2, bool a_unk3);  // a_unk2 = 0, a_unk3 = true, for normal notification
+	extern RelocAddr<_DebugNotification_t*> _DebugNotification;
+
 	typedef void _SendItemsPickPocketedEvent_t(UInt32 a_numItems);
 	extern RelocAddr<_SendItemsPickPocketedEvent_t*> _SendItemsPickPocketedEvent;
 

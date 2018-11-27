@@ -65,6 +65,7 @@ namespace RE
 	constexpr uintptr_t CALCULATE_CRC32_32 = 0x00C066E0;								// 1_5_53
 	constexpr uintptr_t CALCULATE_CRC32_64 = 0x00C06760;								// 1_5_53
 
+	constexpr uintptr_t DEBUG_NOTIFICATION = 0x008DA5C0;								// 1_5_53
 	constexpr uintptr_t SEND_ITEMS_PICK_POCKETED_EVENT = 0x008607E0;					// 1_5_53
 	constexpr uintptr_t GET_PICK_POCKET_CHANCE = 0x003BD130;							// 1_5_53
 	constexpr uintptr_t HEAP_ALLOC_ABSTRACTION = 0x000F6D30;							// 1_5_53

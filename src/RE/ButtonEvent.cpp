@@ -16,9 +16,21 @@ namespace RE
 	}
 
 
+	bool ButtonEvent::IsRepeating() const
+	{
+		return timer > 0.0f;
+	}
+
+
 	bool ButtonEvent::IsDown() const
 	{
 		return (pressure > 0) && (timer == 0.0f);
+	}
+
+
+	bool ButtonEvent::IsHeld() const
+	{
+		return (pressure > 0) && (timer > 0.0f);
 	}
 
 

@@ -60,8 +60,16 @@ namespace RE
 	}
 
 
+	PlayerCharacter* PlayerCharacter::GetSingleton()
+	{
+		return reinterpret_cast<PlayerCharacter*>(*g_thePlayer);
+	}
+
+
 	Actor* PlayerCharacter::GetActorInFavorState()
 	{
+		typedef Actor* _GetActorInFavorState_t(PlayerCharacter* a_this);
+		static RelocAddr<_GetActorInFavorState_t*> _GetActorInFavorState(PLAYER_CHARACTER_GET_ACTOR_IN_FAVOR_STATE);
 		return _GetActorInFavorState(this);
 	}
 
@@ -79,24 +87,24 @@ namespace RE
 
 	void PlayerCharacter::PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType)
 	{
+		typedef void _PlayPickupEvent_t(PlayerCharacter* a_this, TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
+		static RelocAddr<_PlayPickupEvent_t*> _PlayPickupEvent(PLAYER_CHARACTER_PLAY_PICKUP_EVENT);
 		_PlayPickupEvent(this, a_item, a_containerOwner, a_containerRef, a_eventType);
 	}
 
 
 	void PlayerCharacter::StartActivation()
 	{
+		typedef void _StartActivation_t(PlayerCharacter* a_this);
+		static RelocAddr<_StartActivation_t*> _StartActivation(PLAYER_CHARACTER_START_ACTIVATION);
 		_StartActivation(this);
 	}
 
 
 	bool PlayerCharacter::TryToPickPocket(Actor* a_target, InventoryEntryData* a_pEntry, UInt32 a_numItems, bool a_unk4)
 	{
+		typedef bool _TryToPickPocket_t(PlayerCharacter* a_this, Actor* a_target, InventoryEntryData* a_pEntry, UInt32 a_numItems, bool a_unk4);
+		static RelocAddr<_TryToPickPocket_t*> _TryToPickPocket(PLAYER_CHARACTER_TRY_TO_PICK_POCKET);
 		return _TryToPickPocket(this, a_target, a_pEntry, a_numItems, a_unk4);
 	}
-
-
-	RelocAddr<PlayerCharacter::_GetActorInFavorState_t*> PlayerCharacter::_GetActorInFavorState(PLAYER_CHARACTER_GET_ACTOR_IN_FAVOR_STATE);
-	RelocAddr<PlayerCharacter::_PlayPickupEvent_t*> PlayerCharacter::_PlayPickupEvent(PLAYER_CHARACTER_PLAY_PICKUP_EVENT);
-	RelocAddr<PlayerCharacter::_StartActivation_t*> PlayerCharacter::_StartActivation(PLAYER_CHARACTER_START_ACTIVATION);
-	RelocAddr<PlayerCharacter::_TryToPickPocket_t*> PlayerCharacter::_TryToPickPocket(PLAYER_CHARACTER_TRY_TO_PICK_POCKET);
 }

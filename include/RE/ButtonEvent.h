@@ -17,7 +17,9 @@ namespace RE
 		virtual const BSFixedString&	GetControlID() const override;	// 2
 
 		bool							IsPressed() const;
+		bool							IsRepeating() const;
 		bool							IsDown() const;
+		bool							IsHeld() const;
 		bool							IsUp() const;
 
 
