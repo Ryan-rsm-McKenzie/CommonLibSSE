@@ -18,7 +18,7 @@ namespace RE
 {
 	bool Condition::Node::Run(TESObjectREFR*& a_refr)
 	{
-		typedef bool _Run_t(Node* a_node, TESObjectREFR*& a_refr);
+		typedef bool _Run_t(Node* a_this, TESObjectREFR*& a_refr);
 		static RelocAddr<_Run_t*> _Run(CONDITION_NODE_RUN);
 		return _Run(this, a_refr);
 	}
@@ -49,8 +49,9 @@ namespace RE
 			}
 
 			for (Node* node = nodeStart; node; node = node->next) {
+				bool isOR = node->comparisonFlags.isOR;
 				bool success = node->Run(subject);
-				solutions.emplace_back(std::pair(node->comparisonFlags.isOr, success));
+				solutions.emplace_back(std::make_pair(isOR, success));
 			}
 		}
 
@@ -61,9 +62,7 @@ namespace RE
 		for (auto& solution : solutions) {
 			if (solution.first) {
 				++orCount;
-				if (solution.second) {
-					++orTrue;
-				}
+				orTrue += solution.second ? 1 : 0;
 			} else {
 				++andCount;
 				andTrue += solution.second ? 1 : 0;

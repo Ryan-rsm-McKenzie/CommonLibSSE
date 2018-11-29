@@ -47,7 +47,6 @@ namespace RE
 			kFunctionID_GetLocked = 0x0005,
 			kFunctionID_GetLockLevel = 0x0041,
 			kFunctionID_GetIsRace = 0x0045,
-			//kFunctionID_GetIsRace = 0x007F,
 			kFunctionID_HasMagicEffect = 0x00D6,
 			kFunctionID_HasPerk = 0x01C0
 		};
@@ -55,7 +54,7 @@ namespace RE
 
 		struct ComparisonFlags
 		{
-			bool	isOr : 1;	// false == AND, true == OR
+			bool	isOR : 1;	// false == AND, true == OR
 			bool	usesAliases : 1;
 			bool	global : 1;
 			bool	usePackData : 1;
@@ -67,7 +66,7 @@ namespace RE
 
 		struct Node
 		{
-			bool Run(TESObjectREFR*& a_refr);
+			__declspec(noinline) bool Run(TESObjectREFR*& a_refr);	// Registers will get trashed if this is inlined
 
 
 			// members
