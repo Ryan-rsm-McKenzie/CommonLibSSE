@@ -36,6 +36,10 @@ namespace RE
 	constexpr uintptr_t BST_SMALL_ARRAY_HEAP_ALLOCATOR_RESIZE_IMPL = 0x00C068F0;		// 1_5_53
 	constexpr uintptr_t BST_SMALL_ARRAY_HEAP_ALLOCATOR_FREE_IMPL = 0x00C06A70;			// 1_5_53
 
+	constexpr uintptr_t CONDITION_MATCH = 0x00444990;									// 1_5_53
+
+	constexpr uintptr_t CONDITION_NODE_RUN = 0x004456B0;								// 1_5_53
+
 	constexpr uintptr_t INVENTORY_CHANGES_CTOR = 0x001D93F0;							// 1_5_53
 	constexpr uintptr_t INVENTORY_CHANGES_INIT_CONTAINER = 0x001E9F80;					// 1_5_53
 	constexpr uintptr_t INVENTORY_CHANGES_GENERATE_LEVELED_LIST_CHANGES = 0x001E0AA0;	// 1_5_53
@@ -43,6 +47,10 @@ namespace RE
 	constexpr uintptr_t INVENTORY_ENTRY_DATA_IS_OWNED_BY = 0x001D7780;					// 1_5_53
 	constexpr uintptr_t INVENTORY_ENTRY_DATA_GET_OWNER = 0x001D6810;					// 1_5_53
 	constexpr uintptr_t INVENTORY_ENTRY_DATA_GET_WEIGHT = 0x001A1920;					// 1_5_53
+
+	constexpr uintptr_t LOCK_STATE_GET_LOCK_LEVEL = 0x001A1920;							// 1_5_53
+
+	constexpr uintptr_t MAGIC_TARGET_HAS_MAGIC_EFFECT = 0x005532C0;						// 1_5_53
 
 	constexpr uintptr_t MENU_CONTROLS_REGISTER_HANDLER_IMPL = 0x008A8110;				// 1_5_53
 	constexpr uintptr_t MENU_CONTROLS_REMOVE_HANDLER_IMPL = 0x008A81E0;					// 1_5_53

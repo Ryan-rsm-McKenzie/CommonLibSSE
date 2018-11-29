@@ -285,6 +285,15 @@
     <ClCompile Include="src\RE\PlayerCamera.cpp">
       <Filter>src\RE\Skyrim\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\Condition.cpp">
+      <Filter>src\RE\Skyrim\FormComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Logging.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraLock.cpp">
+      <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -631,6 +640,12 @@
     </ClInclude>
     <ClInclude Include="include\RE\PlayerCamera.h">
       <Filter>include\RE\Skyrim\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Condition.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Logging.h">
+      <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

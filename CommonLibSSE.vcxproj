@@ -61,7 +61,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ForcedIncludeFiles>common/IPrefix.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>common/IPrefix.h;Logging.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ExceptionHandling>Sync</ExceptionHandling>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -106,7 +106,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ForcedIncludeFiles>common/IPrefix.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>common/IPrefix.h;Logging.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <OmitFramePointers>
       </OmitFramePointers>
@@ -152,6 +152,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Logging.cpp" />
     <ClCompile Include="src\RE\ActiveEffect.cpp" />
     <ClCompile Include="src\RE\Actor.cpp" />
     <ClCompile Include="src\RE\ActorProcessManager.cpp" />
@@ -166,9 +167,11 @@
     <ClCompile Include="src\RE\BSKeyboardDevice.cpp" />
     <ClCompile Include="src\RE\BSWin32GamepadDevice.cpp" />
     <ClCompile Include="src\RE\ButtonEvent.cpp" />
+    <ClCompile Include="src\RE\Condition.cpp" />
     <ClCompile Include="src\RE\EffectSetting.cpp" />
     <ClCompile Include="src\RE\EventSourceList.cpp" />
     <ClCompile Include="src\RE\ExtraContainerChanges.cpp" />
+    <ClCompile Include="src\RE\ExtraLock.cpp" />
     <ClCompile Include="src\RE\GFxLoader.cpp" />
     <ClCompile Include="src\RE\GFxState.cpp" />
     <ClCompile Include="src\RE\InputStringHolder.cpp" />
@@ -204,6 +207,7 @@
     <ClCompile Include="src\RE\UIStringHolder.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Logging.h" />
     <ClInclude Include="include\RE\ActivateHandler.h" />
     <ClInclude Include="include\RE\ActiveEffect.h" />
     <ClInclude Include="include\RE\ActorValueOwner.h" />
@@ -219,6 +223,7 @@
     <ClInclude Include="include\RE\BSTList.h" />
     <ClInclude Include="include\RE\BSTransformDeltaEvent.h" />
     <ClInclude Include="include\RE\BSTSingleton.h" />
+    <ClInclude Include="include\RE\Condition.h" />
     <ClInclude Include="include\RE\EffectSetting.h" />
     <ClInclude Include="include\RE\ExtraDroppedItemList.h" />
     <ClInclude Include="include\RE\ExtraFactionChanges.h" />

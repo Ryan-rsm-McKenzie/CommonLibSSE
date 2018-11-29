@@ -5,8 +5,15 @@
 
 namespace RE
 {
+	class TESObjectREFR;
+
+
 	struct LockState
 	{
+		SInt32 GetLockLevel(const TESObjectREFR* a_containerRef);
+
+
+		// members
 		void*	unk00;		// 00
 		UInt64	unk08;		// 08
 		bool	isLocked;	// 10
@@ -19,9 +26,10 @@ namespace RE
 	class ExtraLock : public BSExtraData
 	{
 	public:
-		virtual ~ExtraLock();
+		virtual ~ExtraLock();	// 0
 
 
+		// members
 		LockState* state;  // 10
 	};
 }

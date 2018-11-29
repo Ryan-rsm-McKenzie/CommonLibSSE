@@ -1,12 +1,17 @@
 #include "RE/TESObjectREFR.h"
 
+#undef min
+#undef max
+
 #include "skse64/GameExtraData.h"  // ExtraOwnership, ExtraTextDisplayData
 #include "skse64/GameFormComponents.h"  // TESContainer, TESFullName
 #include "skse64/GameObjects.h"  // TESObjectCONT
 #include "skse64/GameReferences.h"  // TESObjectREFR
 #include "skse64/GameRTTI.h"  // DYNAMIC_CAST
-#include "skse64/GameTypes.h"  // BSFixedString
 
+#include <limits>  // numeric_limits
+
+#include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/ExtraLock.h"  // ExtraLock
 #include "RE/Offsets.h"
 #include "RE/TESActorBase.h"  // TESActorBase
@@ -136,6 +141,8 @@ namespace RE
 
 	TESForm* TESObjectREFR::GetOwner()
 	{
+		typedef TESForm* _GetOwner_Impl_t(TESObjectREFR* a_this);
+		static RelocAddr<_GetOwner_Impl_t*> _GetOwner_Impl(TES_OBJECT_REFR_GET_OWNER_IMPL);
 		return _GetOwner_Impl(this);
 	}
 
@@ -229,27 +236,48 @@ namespace RE
 	}
 
 
+	LockState* TESObjectREFR::GetLockState()
+	{
+		typedef LockState* _GetLockState_Impl_t(TESObjectREFR* a_this);
+		static RelocAddr<_GetLockState_Impl_t*> _GetLockState_Impl(TES_OBJECT_REFR_GET_LOCK_STATE_IMPL);
+		return _GetLockState_Impl(this);
+	}
+
+
 	bool TESObjectREFR::IsLocked()
 	{
-		LockState* state = _GetLockState_Impl(this);
+		LockState* state = GetLockState();
 		return (state && state->isLocked);
+	}
+
+
+	SInt32 TESObjectREFR::GetLockLevel()
+	{
+		LockState* state = GetLockState();
+		return state ? state->GetLockLevel(this) : -1 * std::numeric_limits<SInt32>::max();
 	}
 
 
 	UInt32 TESObjectREFR::GetNumItems(bool a_unk1, bool a_unk2)
 	{
+		typedef UInt32 _GetNumItems_t(TESObjectREFR* a_this, bool a_unk1, bool a_unk2);
+		static RelocAddr<_GetNumItems_t*> _GetNumItems(TES_OBJECT_REFR_GET_NUM_ITEMS);
 		return _GetNumItems(this, a_unk1, a_unk2);
 	}
 
 
 	UInt32 TESObjectREFR::ActivateRefChildren(TESObjectREFR* a_activator)
 	{
+		typedef UInt32 _ActivateRefChildren_t(TESObjectREFR* a_this, TESObjectREFR* a_activator);
+		static RelocAddr<_ActivateRefChildren_t*> _ActivateRefChildren(TES_OBJECT_REFR_ACTIVATE_CHILDREN);
 		return _ActivateRefChildren(this, a_activator);
 	}
 
 
 	void TESObjectREFR::PlayAnimation(RE::NiControllerManager* a_manager, RE::NiControllerSequence* a_toSeq, RE::NiControllerSequence* a_fromSeq, bool a_unk)
 	{
+		typedef void _PlayAnimation_t(TESObjectREFR* a_this, NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_unk);
+		static RelocAddr<_PlayAnimation_t*> _PlayAnimation(TES_OBJECT_REFR_PLAY_ANIMATION);
 		_PlayAnimation(this, a_manager, a_toSeq, a_fromSeq, a_unk);
 	}
 
@@ -264,14 +292,8 @@ namespace RE
 
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
+		typedef InventoryChanges* _GetInventoryChanges_t(TESObjectREFR* a_this);
+		static RelocAddr<_GetInventoryChanges_t*> _GetInventoryChanges(TES_OBJECT_REFR_GET_INVENTORY_CHANGES);
 		return _GetInventoryChanges(this);
 	}
-
-
-	RelocAddr<TESObjectREFR::_GetOwner_Impl_t*> TESObjectREFR::_GetOwner_Impl(TES_OBJECT_REFR_GET_OWNER_IMPL);
-	RelocAddr<TESObjectREFR::_GetLockState_Impl_t*> TESObjectREFR::_GetLockState_Impl(TES_OBJECT_REFR_GET_LOCK_STATE_IMPL);
-	RelocAddr<TESObjectREFR::_GetNumItems_t*> TESObjectREFR::_GetNumItems(TES_OBJECT_REFR_GET_NUM_ITEMS);
-	RelocAddr<TESObjectREFR::_ActivateRefChildren_t*> TESObjectREFR::_ActivateRefChildren(TES_OBJECT_REFR_ACTIVATE_CHILDREN);
-	RelocAddr<TESObjectREFR::_PlayAnimation_t*> TESObjectREFR::_PlayAnimation(TES_OBJECT_REFR_PLAY_ANIMATION);
-	RelocAddr<TESObjectREFR::_GetInventoryChanges_t*> TESObjectREFR::_GetInventoryChanges(TES_OBJECT_REFR_GET_INVENTORY_CHANGES);
 }

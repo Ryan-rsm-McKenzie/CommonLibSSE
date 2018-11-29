@@ -6,6 +6,7 @@
 #include "Offsets.h"
 
 #include "RE/BaseExtraList.h"  // BaseExtraList
+#include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/IAnimationGraphManagerHolder.h"  // IAnimationGraphManagerHolder
 
 class ActorWeightModel;
@@ -32,10 +33,10 @@ namespace RE
 
 
 	class TESObjectREFR :
-		public TESForm,
-		public BSHandleRefObject,
-		public BSTEventSink<BSAnimationGraphEvent>,
-		public IAnimationGraphManagerHolder
+		public TESForm,								// 00
+		public BSHandleRefObject,					// 20
+		public BSTEventSink<BSAnimationGraphEvent>,	// 30
+		public IAnimationGraphManagerHolder			// 38
 	{
 	public:
 		enum { kTypeID = kFormType_Reference };
@@ -202,12 +203,14 @@ namespace RE
 		bool							SetDisplayName(const BSFixedString& name, bool force);
 		static bool						LookupByHandle(UInt32& a_refHandle, TESObjectREFRPtr& a_refrOut);
 		static bool						LookupByHandle(UInt32& a_refHandle, TESObjectREFR*& a_refrOut);
+		LockState*						GetLockState();
 		bool							IsLocked();
+		SInt32							GetLockLevel();
 		UInt32							GetNumItems(bool a_unk1, bool a_unk2);
 		UInt32							ActivateRefChildren(TESObjectREFR* a_activator);
 		void							PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_unk);
 		bool							HasInventoryChanges();
-		InventoryChanges*				GetInventoryChanges();
+		InventoryChanges*				GetInventoryChanges();	// Creates inventory changes if none found
 
 
 		// members
@@ -222,25 +225,6 @@ namespace RE
 		UInt8			unk92;			// 92
 		UInt8			unk93;			// 93
 		UInt32			pad94;			// 94
-
-	private:
-		typedef TESForm* _GetOwner_Impl_t(TESObjectREFR* a_this);
-		static RelocAddr<_GetOwner_Impl_t*> _GetOwner_Impl;
-
-		typedef LockState* _GetLockState_Impl_t(TESObjectREFR* a_this);
-		static RelocAddr<_GetLockState_Impl_t*> _GetLockState_Impl;
-
-		typedef UInt32 _GetNumItems_t(TESObjectREFR* a_this, bool a_unk1, bool a_unk2);
-		static RelocAddr<_GetNumItems_t*> _GetNumItems;
-
-		typedef UInt32 _ActivateRefChildren_t(TESObjectREFR* a_this, TESObjectREFR* a_activator);
-		static RelocAddr<_ActivateRefChildren_t*> _ActivateRefChildren;
-
-		typedef void _PlayAnimation_t(TESObjectREFR* a_this, NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_unk);
-		static RelocAddr<_PlayAnimation_t*> _PlayAnimation;
-
-		typedef InventoryChanges* _GetInventoryChanges_t(TESObjectREFR* a_this);  // Creates inventory changes if none found
-		static RelocAddr<_GetInventoryChanges_t*> _GetInventoryChanges;
 	};
 	STATIC_ASSERT(sizeof(TESObjectREFR) == 0x98);
 	STATIC_ASSERT(offsetof(TESObjectREFR, extraData) == 0x70);

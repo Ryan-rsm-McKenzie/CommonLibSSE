@@ -3,12 +3,12 @@
 #include "RE/BGSPerkEntry.h"  // RE::BGSPerkEntry
 
 class BGSPerk;
-class Condition;
 
 
 namespace RE
 {
 	class BGSEntryPointFunctionData;
+	class Condition;
 	class TESObjectREFR;
 
 
@@ -114,10 +114,12 @@ namespace RE
 		};
 
 
+		// override (BGSPerkEntry)
 		virtual bool						CanProcess(UInt32 a_numArgs, void* a_args) override;	// 0
-		virtual UInt8						GetType() const override;								// 1 { return this->unk11; }
+		virtual UInt8						GetType() const override;								// 1 { return this->type; }
 		virtual BGSEntryPointFunctionData*	GetFunctionData() const override;						// 2 { return this->functionData; }
 
+		// add
 		virtual ~BGSEntryPointPerkEntry();															// 3
 		// more
 

@@ -9,6 +9,13 @@ namespace RE
 	class PerkEntryVisitor
 	{
 	public:
-		virtual UInt32 Visit(BGSPerkEntry* perkEntry) = 0;
+		enum ReturnType : UInt32
+		{
+			kReturnType_Break,
+			kReturnType_Continue
+		};
+
+
+		virtual ReturnType Visit(BGSPerkEntry* a_perkEntry) = 0;
 	};
 }

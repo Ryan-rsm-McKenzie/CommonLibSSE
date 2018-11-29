@@ -2,7 +2,10 @@
 
 #include "skse64/GameFormComponents.h"  // TESFullName, BGSMenuDisplayObject, BGSKeywordForm
 #include "skse64/GameForms.h"  // TESForm
-#include "skse64/GameTypes.h"  // tList, tArray, BSFixedString
+
+#include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSTArray.h"  // BSTArray
+#include "RE/BSTList.h"  // BSSimpleList
 
 class BGSArtObject;
 class BGSExplosion;
@@ -377,14 +380,14 @@ namespace RE
 		bool	HasArchetype(Properties::Archetype a_type);
 
 
-		void*					unk058;			// 58
-		void*					unk060;			// 60
-		Properties				properties;		// 68
-		tList<EffectSetting>	counterEffects;	// 158
-		tArray<SoundInfo>		sounds;			// 168
-		BSFixedString			description;	// 180
-		UInt32					unk188;			// 188
-		UInt32					unk18C;			// 18C
-		void*					conditions;		// 190 - linked list
+		void*							unk058;			// 58
+		void*							unk060;			// 60
+		Properties						properties;		// 68
+		BSSimpleList<EffectSetting*>	counterEffects;	// 158
+		BSTArray<SoundInfo>				sounds;			// 168
+		BSFixedString					description;	// 180
+		UInt32							unk188;			// 188
+		UInt32							unk18C;			// 18C
+		void*							conditions;		// 190 - linked list
 	};
 }
