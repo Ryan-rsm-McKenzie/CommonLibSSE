@@ -9,14 +9,6 @@ namespace RE
 	class Condition
 	{
 	private:
-		struct Solution
-		{
-			Solution(bool a_isOR, bool a_result) : isOR(a_isOR), result(a_result) {}
-			bool isOR;
-			bool result;
-		};
-
-
 		enum RunOn : UInt32
 		{
 			kRunOn_None,
@@ -60,6 +52,28 @@ namespace RE
 		};
 
 
+		struct Visitor
+		{
+			constexpr Visitor(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target) :
+				perkOwner(a_perkOwner),
+				target(a_target),
+				unk10(0),
+				unk18(0),
+				unk20(0),
+				unk28(0)
+			{}
+
+
+			TESObjectREFR*	perkOwner;	// 00
+			TESObjectREFR*	target;		// 08
+			void*			unk10;		// 10
+			void*			unk18;		// 18
+			void*			unk20;		// 20
+			void*			unk28;		// 28
+		};
+		STATIC_ASSERT(sizeof(Visitor) == 0x30);  // xref 0x00444990 - Condition::Match_Impl - 1_5_53
+
+
 		struct ComparisonFlags
 		{
 			bool	isOR : 1;	// false == AND, true == OR
@@ -74,7 +88,7 @@ namespace RE
 
 		struct Node
 		{
-			bool Run(TESObjectREFR*& a_refr);
+			bool Run(Visitor& a_visitor);
 
 
 			// members
