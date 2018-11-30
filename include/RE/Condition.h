@@ -74,7 +74,7 @@ namespace RE
 
 		struct Node
 		{
-			bool Run(TESObjectREFR*& a_refr);	// Registers will get trashed if this is inlined
+			bool Run(TESObjectREFR*& a_refr);
 
 
 			// members
