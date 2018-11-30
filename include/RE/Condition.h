@@ -9,6 +9,14 @@ namespace RE
 	class Condition
 	{
 	private:
+		struct Solution
+		{
+			Solution(bool a_isOR, bool a_result) : isOR(a_isOR), result(a_result) {}
+			bool isOR;
+			bool result;
+		};
+
+
 		enum RunOn : UInt32
 		{
 			kRunOn_None,
@@ -66,7 +74,7 @@ namespace RE
 
 		struct Node
 		{
-			__declspec(noinline) bool Run(TESObjectREFR*& a_refr);	// Registers will get trashed if this is inlined
+			bool Run(TESObjectREFR*& a_refr);	// Registers will get trashed if this is inlined
 
 
 			// members

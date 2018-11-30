@@ -1,6 +1,6 @@
 #pragma once
 
-#include "skse64/GameTypes.h"
+#include "RE/BSFixedString.h"  // BSFixedString
 
 
 namespace RE

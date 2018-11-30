@@ -7,10 +7,7 @@
 #include "skse64/GameForms.h"  // BGSPerk
 #include "skse64/GameRTTI.h"  // DYNAMIC_CAST
 
-#include <vector>  // vector
-#include <utility>  // pair
-#include <limits>  // numeric_limits
-
+#include "RE/BSTArray.h"  // BSTArray
 #include "RE/Offsets.h"
 
 
@@ -27,7 +24,7 @@ namespace RE
 	bool Condition::Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target)
 	{
 		TESObjectREFR* runTarget = 0;
-		std::vector<std::pair<bool, bool>> solutions;
+		BSTArray<Solution> solutions;
 		RunOn runOn = kRunOn_Target;
 		Node* nodeStart = 0;
 		TESObjectREFR* subject = 0;
@@ -51,7 +48,7 @@ namespace RE
 			for (Node* node = nodeStart; node; node = node->next) {
 				bool isOR = node->comparisonFlags.isOR;
 				bool success = node->Run(subject);
-				solutions.emplace_back(std::make_pair(isOR, success));
+				solutions.emplace_back(isOR, success);
 			}
 		}
 
@@ -60,12 +57,12 @@ namespace RE
 		UInt32 orCount = 0;
 		UInt32 orTrue = 0;
 		for (auto& solution : solutions) {
-			if (solution.first) {
+			if (solution.isOR) {
 				++orCount;
-				orTrue += solution.second ? 1 : 0;
+				orTrue += solution.result ? 1 : 0;
 			} else {
 				++andCount;
-				andTrue += solution.second ? 1 : 0;
+				andTrue += solution.result ? 1 : 0;
 			}
 		}
 
