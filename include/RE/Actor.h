@@ -272,6 +272,7 @@ namespace RE
 		SInt32			GetDetectionLevel(Actor* a_target, UInt32 a_flag);
 		bool			IsGhost();
 		bool			IsSummoned();
+		bool			IsRunning();
 
 
 		// members
@@ -342,22 +343,6 @@ namespace RE
 		UInt64					unk298;						// 298
 		UInt64					unk2A0;						// 2A0
 		UInt64					unk2A8;						// 2A8
-
-	private:
-		typedef void _DispelWornItemEnchantments_t(Actor* a_this);
-		static RelocAddr<_DispelWornItemEnchantments_t*> _DispelWornItemEnchantments;
-
-		typedef void _SendStealAlarm_t(Actor* a_this, TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_unk);
-		static RelocAddr<_SendStealAlarm_t*> _SendStealAlarm;
-
-		typedef SInt32 _CalcEntryValue_t(Actor* a_this, InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_unk);
-		static RelocAddr<_CalcEntryValue_t*> _CalcEntryValue;
-
-		typedef SInt32 _GetDetectionLevel_t(Actor* a_this, Actor* a_target, UInt32 a_flag);
-		static RelocAddr<_GetDetectionLevel_t*> _GetDetectionLevel;
-
-		typedef bool _IsGhost_t(Actor* a_this);
-		static RelocAddr<_IsGhost_t*> _IsGhost;
 	};
 	STATIC_ASSERT(offsetof(Actor, addedSpells) == 0x188);
 	STATIC_ASSERT(sizeof(Actor) == 0x2B0);

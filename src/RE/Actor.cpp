@@ -223,30 +223,40 @@ namespace RE
 
 	void Actor::DispelWornItemEnchantments()
 	{
+		typedef void _DispelWornItemEnchantments_t(Actor* a_this);
+		static RelocAddr<_DispelWornItemEnchantments_t*> _DispelWornItemEnchantments(ACTOR_DISPEL_WORN_ITEM_ENCHANTMENTS);
 		_DispelWornItemEnchantments(this);
 	}
 
 
 	void Actor::SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_unk)
 	{
+		typedef void _SendStealAlarm_t(Actor* a_this, TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_unk);
+		static RelocAddr<_SendStealAlarm_t*> _SendStealAlarm(ACTOR_SEND_STEAL_ALARM);
 		_SendStealAlarm(this, a_refItemOrContainer, a_stolenItem, a_numItems, a_value, a_owner, a_unk);
 	}
 
 
 	SInt32 Actor::CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_unk)
 	{
+		typedef SInt32 _CalcEntryValue_t(Actor* a_this, InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_unk);
+		static RelocAddr<_CalcEntryValue_t*> _CalcEntryValue(ACTOR_CALC_ENTRY_VALUE);
 		return _CalcEntryValue(this, a_entryData, a_numItems, a_unk);
 	}
 
 
 	SInt32 Actor::GetDetectionLevel(Actor* a_target, UInt32 a_flag)
 	{
+		typedef SInt32 _GetDetectionLevel_t(Actor* a_this, Actor* a_target, UInt32 a_flag);
+		static RelocAddr<_GetDetectionLevel_t*> _GetDetectionLevel(ACTOR_GET_DETECTION_LEVEL);
 		return _GetDetectionLevel(this, a_target, a_flag);
 	}
 
 
 	bool Actor::IsGhost()
 	{
+		typedef bool _IsGhost_t(Actor* a_this);
+		static RelocAddr<_IsGhost_t*> _IsGhost(ACTOR_IS_GHOST);
 		return _IsGhost(this);
 	}
 
@@ -257,9 +267,10 @@ namespace RE
 	}
 
 
-	RelocAddr<Actor::_DispelWornItemEnchantments_t*> Actor::_DispelWornItemEnchantments(ACTOR_DISPEL_WORN_ITEM_ENCHANTMENTS);
-	RelocAddr<Actor::_SendStealAlarm_t*> Actor::_SendStealAlarm(ACTOR_SEND_STEAL_ALARM);
-	RelocAddr<Actor::_CalcEntryValue_t*> Actor::_CalcEntryValue(ACTOR_CALC_ENTRY_VALUE);
-	RelocAddr<Actor::_GetDetectionLevel_t*> Actor::_GetDetectionLevel(ACTOR_GET_DETECTION_LEVEL);
-	RelocAddr<Actor::_IsGhost_t*> Actor::_IsGhost(ACTOR_IS_GHOST);
+	bool Actor::IsRunning()
+	{
+		typedef bool _IsRunning_t(Actor* a_this);
+		static RelocAddr<_IsRunning_t*> _IsRunning(ACTOR_IS_RUNNING);
+		return _IsRunning(this);
+	}
 }

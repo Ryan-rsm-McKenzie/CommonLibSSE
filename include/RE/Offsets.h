@@ -10,6 +10,7 @@ namespace RE
 	constexpr uintptr_t	ACTOR_CALC_ENTRY_VALUE = 0x001D9270;							// 1_5_53
 	constexpr uintptr_t	ACTOR_GET_DETECTION_LEVEL = 0x005FCB90;							// 1_5_53
 	constexpr uintptr_t ACTOR_IS_GHOST = 0x005D2710;									// 1_5_53
+	constexpr uintptr_t ACTOR_IS_RUNNING = 0x005D1380;									// 1_5_53
 
 	constexpr uintptr_t ACTOR_VALUE_OWNER_GET_PLAYER_ACTOR_VALUE_CURRENT = 0x003E5440;	// 1_5_53
 

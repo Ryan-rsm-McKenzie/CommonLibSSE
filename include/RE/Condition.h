@@ -42,6 +42,8 @@ namespace RE
 		};
 
 
+		// Betheseda keeps these in a giant lookup table
+		// typedef bool func(TESObjectREFR* perkOwnerOrTarget, void* param1, void* param2, float& result);
 		enum FunctionID : UInt16
 		{
 			kFunctionID_GetLocked = 0x0005,
@@ -52,9 +54,9 @@ namespace RE
 		};
 
 
-		struct Visitor
+		struct Solution
 		{
-			constexpr Visitor(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target) :
+			constexpr Solution(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target) :
 				perkOwner(a_perkOwner),
 				target(a_target),
 				unk10(0),
@@ -71,7 +73,7 @@ namespace RE
 			void*			unk20;		// 20
 			void*			unk28;		// 28
 		};
-		STATIC_ASSERT(sizeof(Visitor) == 0x30);  // xref 0x00444990 - Condition::Match_Impl - 1_5_53
+		STATIC_ASSERT(sizeof(Solution) == 0x30);  // xref 0x00444990 - Condition::Match_Impl - 1_5_53
 
 
 		struct ComparisonFlags
@@ -88,7 +90,7 @@ namespace RE
 
 		struct Node
 		{
-			bool Run(Visitor& a_visitor);
+			bool Run(Solution& a_solution);
 
 
 			// members
@@ -118,8 +120,19 @@ namespace RE
 		STATIC_ASSERT(sizeof(Node) == 0x38);
 
 
+		// Bethesda has a native bug in the IsRunning func available via the CK, it looks like this:
+		// bool IsRunning(TESObjectREFR* perkOwnerOrTarget, void* param1, void* param2, float& result)
+		// {
+		// 	Actor* actor = 0;
+		// 	if (perkOwnerOrTarget->formType = kFormType_Character)
+		// 		actor = (Actor*)perkOwnerOrTarget;
+		// 	if (actor->IsRunning()) {
+		// 		// etc
+		//  }
+		// }
+		// Make sure to fix it before you call this func (xref 0x002DB800 - 1_5_53)
 		bool Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);
-		bool Match(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);
+		bool Match(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);	// Only operates on perkOwner, idk how they evaluate the target
 
 
 		// members
