@@ -1,14 +1,10 @@
 #include "RE/Condition.h"
 
-#undef min
-#undef max
-
 #include "skse64_common/Relocation.h"  // RelocAddr
 #include "skse64/GameForms.h"  // BGSPerk
 #include "skse64/GameRTTI.h"  // DYNAMIC_CAST
 
 #include <vector>  // vector
-#include <utility>  // pair
 
 #include "RE/Offsets.h"
 
@@ -26,7 +22,7 @@ namespace RE
 	bool Condition::Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target)
 	{
 		TESObjectREFR* runTarget = 0;
-		std::vector<std::pair<bool, bool>> solutions;
+		std::vector<bool> results;
 		RunOn runOn = kRunOn_Target;
 		Node* nodeStart = 0;
 		TESObjectREFR* subject = 0;
@@ -51,30 +47,24 @@ namespace RE
 			}
 
 			for (Node* node = nodeStart; node; node = node->next) {
-				bool isOR = node->comparisonFlags.isOR;
 				Solution solution(subject, target);
 				bool success = node->Run(solution);
-				solutions.emplace_back(isOR, success);
+				if (!node->comparisonFlags.isOR) {
+					if (!success) {
+						return false;
+					}
+				} else {
+					results.emplace_back(success);
+				}
 			}
 		}
 
-		UInt32 andCount = 0;
-		UInt32 andTrue = 0;
-		UInt32 orCount = 0;
-		UInt32 orTrue = 0;
-		for (auto& solution : solutions) {
-			if (solution.first) {
-				++orCount;
-				orTrue += solution.second ? 1 : 0;
-			} else {
-				++andCount;
-				andTrue += solution.second ? 1 : 0;
+		for (auto& result : results) {
+			if (result) {
+				return true;
 			}
 		}
-
-		bool andResult = andCount == andTrue;
-		bool orResult = orCount ? orTrue > 0 : true;
-		return andResult && orResult;
+		return results.empty();
 	}
 
 

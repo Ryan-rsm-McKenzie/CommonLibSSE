@@ -47,8 +47,10 @@ namespace RE
 		enum FunctionID : UInt16
 		{
 			kFunctionID_GetLocked = 0x0005,
+			kFunctionID_GetDead = 0x002E,
 			kFunctionID_GetLockLevel = 0x0041,
 			kFunctionID_GetIsRace = 0x0045,
+			kFunctionID_HasBeenEaten = 0x007F,
 			kFunctionID_HasMagicEffect = 0x00D6,
 			kFunctionID_HasPerk = 0x01C0
 		};
@@ -131,6 +133,7 @@ namespace RE
 		//  }
 		// }
 		// Make sure to fix it before you call this func (xref 0x002DB800 - 1_5_53)
+		// Perk fragments will short circuit
 		bool Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);
 		bool Match(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);	// Only operates on perkOwner, idk how they evaluate the target
 
