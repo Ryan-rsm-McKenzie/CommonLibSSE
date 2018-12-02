@@ -3,15 +3,20 @@
 #include "skse64/GameEvents.h"  // TESActiveEffectApplyRemoveEvent, TESCellAttachDetachEvent, TESCombatEvent, TESContainerChangedEvent, TESDeathEvent, TESInitScriptEvent, TESObjectLoadedEvent, TESUniqueIDChangeEvent
 
 #include "RE/BSTEvent.h"  // BSTEventSource
+#include "RE/TESObjectREFR.h"  // TESObjectREFRPtr
+
 
 namespace RE
 {
-	class EventSourceList
+	class ScriptEventSourceHolder
 	{
 	public:
-		static EventSourceList* GetEventSourceList();
+		static ScriptEventSourceHolder*	GetSingleton();
+
+		void							SendActivateEvent(TESObjectREFRPtr& a_target, TESObjectREFRPtr& a_caster);
 
 
+		// members
 		BSTEventSource<void>								unk0000;						// 0000
 		BSTEventSource<void>								unk0058;						// 0058 - sink offset 010
 		BSTEventSource<TESActiveEffectApplyRemoveEvent>		unk00B0;						// 00B0 - sink offset 018

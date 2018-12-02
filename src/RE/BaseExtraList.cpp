@@ -1,5 +1,7 @@
 #include "RE/BaseExtraList.h"
 
+#include "skse64_common/Relocation.h"  // RelocAddr
+
 #include "RE/Offsets.h"
 
 
@@ -63,16 +65,16 @@ namespace RE
 
 	void BaseExtraList::SetInventoryChanges(InventoryChanges* a_changes)
 	{
+		typedef void _SetInventoryChanges_Impl_t(BaseExtraList* a_this, InventoryChanges* a_changes);
+		static RelocAddr<_SetInventoryChanges_Impl_t*> _SetInventoryChanges_Impl(BASE_EXTRA_LIST_SET_INVENTORY_CHANGES_IMPL);
 		_SetInventoryChanges_Impl(this, a_changes);
 	}
 
 
 	UInt32 BaseExtraList::GetAshPileRefHandle(UInt32& a_refHandle)
 	{
+		typedef UInt32 _GetAshPileRefHandle_Impl_t(BaseExtraList* a_this, UInt32& refHandle);
+		static RelocAddr<_GetAshPileRefHandle_Impl_t*> _GetAshPileRefHandle_Impl(BASE_EXTRA_LIST_GET_ASH_PILE_REF_HANDLE_IMPL);
 		return _GetAshPileRefHandle_Impl(this, a_refHandle);
 	}
-
-
-	RelocAddr<BaseExtraList::_SetInventoryChanges_Impl_t*> BaseExtraList::_SetInventoryChanges_Impl(BASE_EXTRA_LIST_SET_INVENTORY_CHANGES_IMPL);
-	RelocAddr<BaseExtraList::_GetAshPileRefHandle_Impl_t*> BaseExtraList::_GetAshPileRefHandle_Impl(BASE_EXTRA_LIST_GET_ASH_PILE_REF_HANDLE_IMPL);
 }

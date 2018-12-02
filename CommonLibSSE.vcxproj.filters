@@ -22,9 +22,6 @@
     <Filter Include="include\RE\SKSE">
       <UniqueIdentifier>{0e1c98bf-fd76-4eda-8fb3-7a50f879a87a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\SKSE\API">
-      <UniqueIdentifier>{fbccb34b-23ee-4959-b08e-197b5087cd5a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Skyrim\ExtraData">
       <UniqueIdentifier>{a9418d25-6fa2-43e9-9a9b-82ab52cea883}</UniqueIdentifier>
     </Filter>
@@ -93,9 +90,6 @@
     </Filter>
     <Filter Include="src\RE\SKSE">
       <UniqueIdentifier>{3d9a3353-0c7b-43b5-a7a7-b90abb0487ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\SKSE\API">
-      <UniqueIdentifier>{7c08d68c-dcef-4ddf-9ccf-f415fd38f005}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\RE\Skyrim\Events">
       <UniqueIdentifier>{9979b69c-714e-47ef-948a-19a9293bdb01}</UniqueIdentifier>
@@ -285,9 +279,6 @@
     <ClCompile Include="src\RE\UIStringHolder.cpp">
       <Filter>src\RE\Skyrim\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\EventSourceList.cpp">
-      <Filter>src\RE\SKSE\API</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\PlayerCamera.cpp">
       <Filter>src\RE\Skyrim\Camera</Filter>
     </ClCompile>
@@ -308,6 +299,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\BGSEntryPointFunctionDataActivateChoice.cpp">
       <Filter>src\RE\Skyrim\TESForms\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp">
+      <Filter>src\RE\Skyrim\Events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -650,9 +644,6 @@
     <ClInclude Include="include\RE\UISaveLoadManager.h">
       <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\EventSourceList.h">
-      <Filter>include\RE\SKSE\API</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\PlayerCamera.h">
       <Filter>include\RE\Skyrim\Camera</Filter>
     </ClInclude>
@@ -667,6 +658,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\ConsoleManager.h">
       <Filter>include\RE\Skyrim\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ScriptEventSourceHolder.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

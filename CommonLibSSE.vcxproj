@@ -173,7 +173,7 @@
     <ClCompile Include="src\RE\Condition.cpp" />
     <ClCompile Include="src\RE\ConsoleManager.cpp" />
     <ClCompile Include="src\RE\EffectSetting.cpp" />
-    <ClCompile Include="src\RE\EventSourceList.cpp" />
+    <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp" />
     <ClCompile Include="src\RE\ExtraContainerChanges.cpp" />
     <ClCompile Include="src\RE\ExtraLock.cpp" />
     <ClCompile Include="src\RE\GFxLoader.cpp" />
@@ -275,7 +275,7 @@
     <ClInclude Include="include\RE\InputManager.h" />
     <ClInclude Include="include\RE\BaseExtraList.h" />
     <ClInclude Include="include\RE\BGSBipedObjectForm.h" />
-    <ClInclude Include="include\RE\EventSourceList.h" />
+    <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
     <ClInclude Include="include\RE\ExtraContainerChanges.h" />
     <ClInclude Include="include\RE\InputStringHolder.h" />
     <ClInclude Include="include\RE\InventoryChanges.h" />

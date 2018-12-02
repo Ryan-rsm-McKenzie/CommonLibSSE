@@ -269,7 +269,7 @@ namespace RE
 	UInt32 TESObjectREFR::ActivateRefChildren(TESObjectREFR* a_activator)
 	{
 		typedef UInt32 _ActivateRefChildren_t(TESObjectREFR* a_this, TESObjectREFR* a_activator);
-		static RelocAddr<_ActivateRefChildren_t*> _ActivateRefChildren(TES_OBJECT_REFR_ACTIVATE_CHILDREN);
+		static RelocAddr<_ActivateRefChildren_t*> _ActivateRefChildren(TES_OBJECT_REFR_ACTIVATE_REF_CHILDREN);
 		return _ActivateRefChildren(this, a_activator);
 	}
 

@@ -63,10 +63,12 @@ namespace RE
 	constexpr uintptr_t PLAYER_CHARACTER_START_ACTIVATION = 0x006AA180;					// 1_5_53
 	constexpr uintptr_t PLAYER_CHARACTER_TRY_TO_PICK_POCKET = 0x006B2720;				// 1_5_53
 
+	constexpr uintptr_t SCRIPT_EVENT_SOURCE_HOLDER_SEND_ACTIVATE_EVENT = 0x002A2260;	// 1_5_53
+
 	constexpr uintptr_t TES_OBJECT_REFR_GET_OWNER_IMPL = 0x002A6860;					// 1_5_53
 	constexpr uintptr_t TES_OBJECT_REFR_GET_LOCK_STATE_IMPL = 0x002A76B0;				// 1_5_53
 	constexpr uintptr_t TES_OBJECT_REFR_GET_NUM_ITEMS = 0x0028E440;						// 1_5_53
-	constexpr uintptr_t TES_OBJECT_REFR_ACTIVATE_CHILDREN = 0x002A8EB0;					// 1_5_53
+	constexpr uintptr_t TES_OBJECT_REFR_ACTIVATE_REF_CHILDREN = 0x002A8EB0;				// 1_5_53
 	constexpr uintptr_t TES_OBJECT_REFR_PLAY_ANIMATION = 0x0018A020;					// 1_5_53
 	constexpr uintptr_t TES_OBJECT_REFR_GET_INVENTORY_CHANGES = 0x001D9030;				// 1_5_53
 
