@@ -133,6 +133,12 @@
     <Filter Include="src\RE\Skyrim\Camera">
       <UniqueIdentifier>{6298f838-184d-4eac-90de-0f7638c6f2f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\SKSE\obscript">
+      <UniqueIdentifier>{fd4c90cc-6cf9-40f7-8fae-02d2ffabb296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\SKSE\obscript">
+      <UniqueIdentifier>{ad8683f1-c449-4c65-943e-cb9e7b1c3610}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -293,6 +299,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\ExtraLock.cpp">
       <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\CommandTable.cpp">
+      <Filter>src\RE\SKSE\obscript</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ConsoleManager.cpp">
+      <Filter>src\RE\Skyrim\Menus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -646,6 +658,12 @@
     </ClInclude>
     <ClInclude Include="include\Logging.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\CommandTable.h">
+      <Filter>include\RE\SKSE\obscript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ConsoleManager.h">
+      <Filter>include\RE\Skyrim\Menus</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -12,7 +12,7 @@ namespace RE
 
 
 		// members
-		void*			unk00;				// 000
+		void*			unk00;				// 000 Singleton?
 		BSFixedString	forward;			// 008 "Forward"
 		BSFixedString	back;				// 010 "Back"
 		BSFixedString	strafeLeft;			// 018 "Strafe Left"
@@ -111,7 +111,7 @@ namespace RE
 		BSFixedString	xButton;			// 300 "XButton"
 		BSFixedString	yButton;			// 308 "YButton"
 		BSFixedString	chargeItem;			// 310 "ChargeItem"
-		void*			unk318;				// 318
+		void*			unk318;				// 318 NULL
 		BSFixedString	playerPosition;		// 320 "PlayerPosition"
 		BSFixedString	localMap;			// 328 "LocalMap"
 		BSFixedString	localMapMoveMode;	// 330 "LocalMapMoveMode"

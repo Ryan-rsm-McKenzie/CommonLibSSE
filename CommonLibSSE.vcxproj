@@ -70,6 +70,7 @@
       <CompileAs>CompileAsCpp</CompileAs>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <UseFullPaths>false</UseFullPaths>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
@@ -167,7 +168,9 @@
     <ClCompile Include="src\RE\BSKeyboardDevice.cpp" />
     <ClCompile Include="src\RE\BSWin32GamepadDevice.cpp" />
     <ClCompile Include="src\RE\ButtonEvent.cpp" />
+    <ClCompile Include="src\RE\CommandTable.cpp" />
     <ClCompile Include="src\RE\Condition.cpp" />
+    <ClCompile Include="src\RE\ConsoleManager.cpp" />
     <ClCompile Include="src\RE\EffectSetting.cpp" />
     <ClCompile Include="src\RE\EventSourceList.cpp" />
     <ClCompile Include="src\RE\ExtraContainerChanges.cpp" />
@@ -223,7 +226,9 @@
     <ClInclude Include="include\RE\BSTList.h" />
     <ClInclude Include="include\RE\BSTransformDeltaEvent.h" />
     <ClInclude Include="include\RE\BSTSingleton.h" />
+    <ClInclude Include="include\RE\CommandTable.h" />
     <ClInclude Include="include\RE\Condition.h" />
+    <ClInclude Include="include\RE\ConsoleManager.h" />
     <ClInclude Include="include\RE\EffectSetting.h" />
     <ClInclude Include="include\RE\ExtraDroppedItemList.h" />
     <ClInclude Include="include\RE\ExtraFactionChanges.h" />
