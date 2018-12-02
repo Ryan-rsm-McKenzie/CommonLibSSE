@@ -10,12 +10,14 @@ namespace RE
 	class BGSEntryPointFunctionDataText : public BGSEntryPointFunctionData
 	{
 	public:
-		virtual ~BGSEntryPointFunctionDataText();
+		// override (BGSEntryPointFunctionData)
+		virtual FunctionType GetType() const override;	// 1
 
-		virtual UInt32 GetType() const override;
+		// add
+		virtual ~BGSEntryPointFunctionDataText();		// 0
 
 
 		// members
-		BSFixedString text;
+		BSFixedString text;	// 8
 	};
 }

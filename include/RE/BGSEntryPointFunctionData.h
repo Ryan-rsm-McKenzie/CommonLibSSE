@@ -19,8 +19,8 @@ namespace RE
 		};
 
 
-		virtual ~BGSEntryPointFunctionData();	// 00
+		virtual ~BGSEntryPointFunctionData();		// 0
 
-		virtual UInt32 GetType() const;			// 01 - Pure
+		virtual FunctionType GetType() const = 0;	// 1
 	};
 }

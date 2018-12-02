@@ -161,6 +161,7 @@
     <ClCompile Include="src\RE\ActorValueOwner.cpp" />
     <ClCompile Include="src\RE\BaseExtraList.cpp" />
     <ClCompile Include="src\RE\BGSBipedObjectForm.cpp" />
+    <ClCompile Include="src\RE\BGSEntryPointFunctionDataActivateChoice.cpp" />
     <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp" />
     <ClCompile Include="src\RE\BSFixedString.cpp" />
     <ClCompile Include="src\RE\BSInputDevice.cpp" />

@@ -306,6 +306,9 @@
     <ClCompile Include="src\RE\ConsoleManager.cpp">
       <Filter>src\RE\Skyrim\Menus</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BGSEntryPointFunctionDataActivateChoice.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Character</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
