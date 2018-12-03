@@ -3,9 +3,7 @@
 
 namespace RE
 {
-	MenuEventHandler::MenuEventHandler() :
-		unk08(0),
-		unk09(0)
+	MenuEventHandler::MenuEventHandler()
 	{}
 
 

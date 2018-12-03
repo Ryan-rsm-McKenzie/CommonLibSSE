@@ -6,6 +6,7 @@
 #include "BSTEvent.h"  // BSTEventSource
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTArray.h"  // BSTArray
+#include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
 #include "RE/MenuOpenCloseEvent.h"  // MenuOpenCloseEvent
 
@@ -23,8 +24,17 @@ namespace RE
 		public BSTEventSource<void*>					// 0B8
 	{
 	public:
-		typedef tHashSet<MenuTableItem, BSFixedString> MenuTable;
 		typedef IMenu* (*CreatorFunc)(void);
+
+
+		struct MenuTableItem
+		{
+			IMenu*			menuInstance;		// 0 - 0 If the menu is currently not open
+			CreatorFunc*	menuConstructor;	// 8
+		};
+
+
+		typedef BSTHashMap<BSFixedString, MenuTableItem> MenuTable;
 
 
 		struct Unknown3

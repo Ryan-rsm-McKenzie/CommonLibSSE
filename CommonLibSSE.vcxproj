@@ -275,6 +275,7 @@
     <ClInclude Include="include\RE\InputManager.h" />
     <ClInclude Include="include\RE\BaseExtraList.h" />
     <ClInclude Include="include\RE\BGSBipedObjectForm.h" />
+    <ClInclude Include="include\RE\MenuOpenHandler.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
     <ClInclude Include="include\RE\ExtraContainerChanges.h" />
     <ClInclude Include="include\RE\InputStringHolder.h" />

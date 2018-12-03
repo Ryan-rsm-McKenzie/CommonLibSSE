@@ -17,17 +17,13 @@ namespace RE
 	{
 	public:
 		MenuEventHandler();
-		virtual ~MenuEventHandler() {}
+		virtual ~MenuEventHandler() {}									// 0
 
 		virtual bool	CanProcess(InputEvent* a_event) = 0;			// 1
 		virtual bool	ProcessKinect(KinectEvent* a_event);			// 2
 		virtual bool	ProcessThumbstick(ThumbstickEvent* a_event);	// 3
 		virtual bool	ProcessMouseMove(MouseMoveEvent* a_event);		// 4
 		virtual bool	ProcessButton(ButtonEvent* a_event);			// 5
-
-
-		UInt8	unk08;		// 08
-		UInt8	unk09;		// 09
-		UInt8	pad0A[2];	// 0A
 	};
+	STATIC_ASSERT(sizeof(MenuEventHandler) == 0x10);
 }

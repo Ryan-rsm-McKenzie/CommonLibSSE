@@ -39,7 +39,7 @@ namespace RE
 		void*						unk70;			// 70
 		void*						unk78;			// 78
 		bool						nowProcessing;	// 80
-		UInt8						pad81;			// 81
+		bool						pad81;			// 81
 		bool						remapMode;		// 82
 		UInt8						pad83;			// 83
 

@@ -32,13 +32,13 @@ namespace RE
 
 
 	class Actor :
-		public TESObjectREFR,
-		public MagicTarget,
-		public ActorValueOwner,
-		public ActorState,
-		public BSTEventSink<BSTransformDeltaEvent>,
-		public BSTEventSink<bhkCharacterMoveFinishEvent>,
-		public IPostAnimationChannelUpdateFunctor
+		public TESObjectREFR,								// 000
+		public MagicTarget,									// 098
+		public ActorValueOwner,								// 0B0
+		public ActorState,									// 0B8
+		public BSTEventSink<BSTransformDeltaEvent>,			// 0C8
+		public BSTEventSink<bhkCharacterMoveFinishEvent>,	// 0D0
+		public IPostAnimationChannelUpdateFunctor			// 0D8
 	{
 	private:
 		typedef BGSEntryPointPerkEntry::EntryPointType EntryPointType;

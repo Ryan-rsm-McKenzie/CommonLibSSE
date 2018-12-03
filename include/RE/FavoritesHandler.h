@@ -11,7 +11,7 @@ namespace RE
 	class ButtonEvent;
 
 
-	class FavoritesHandler : public MenuEventHandler
+	struct FavoritesHandler : public MenuEventHandler
 	{
 	public:
 		virtual bool	CanProcess(InputEvent* a_event) override;			// 1

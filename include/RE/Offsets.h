@@ -104,4 +104,6 @@ namespace RE
 	constexpr uintptr_t TES_NPC_VTBL_META = 0x015B9D28;									// 1_5_53
 
 	constexpr uintptr_t FAVORITES_MENU_VTBL_META = 0x016CB0C0;							// 1_5_53
+	constexpr uintptr_t MENU_OPEN_HANDLER_VTBL_META = 0x016D24D8;						// 1_5_53
+
 }
