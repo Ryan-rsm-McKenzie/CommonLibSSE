@@ -1,13 +1,14 @@
 #pragma once
 
-#include "skse64/GameForms.h"  // TESForm
 #include "skse64/NiTypes.h"  // NiPoint3
 
 #include "Offsets.h"
 
 #include "RE/BaseExtraList.h"  // BaseExtraList
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/IAnimationGraphManagerHolder.h"  // IAnimationGraphManagerHolder
+#include "RE/TESForm.h"  // TESForm
 
 class ActorWeightModel;
 class BaseExtraList;
@@ -21,9 +22,11 @@ class TESObjectCELL;
 namespace RE
 {
 	class InventoryChanges;
+	class MagicTarget;
 	class NiControllerManager;
 	class NiControllerSequence;
 	class NiNode;
+	class TESContainer;
 	class TESFaction;
 	class TESNPC;
 	struct LockState;
@@ -39,7 +42,7 @@ namespace RE
 		public IAnimationGraphManagerHolder			// 38
 	{
 	public:
-		enum { kTypeID = kFormType_Reference };
+		enum { kTypeID = FormType::Reference };
 
 
 		enum RemoveType : UInt32
@@ -71,8 +74,35 @@ namespace RE
 		};
 
 
-		virtual void					Unk_39(void);																																												// 39
-		virtual void					Unk_3A(void);																																												// 3A
+		virtual ~TESObjectREFR();																																																	// 00
+
+		// override (TESForm)
+		virtual bool					LoadForm(TESFile* a_mod) override;																																							// 06
+		virtual TESForm*				DupulicateForm(uintptr_t a_arg1, void* a_arg2) override;																																	// 09
+		virtual bool					PreSaveBuffer(BGSSaveFormBuffer* a_buf) override;																																			// 0D
+		virtual void					SaveBuffer(BGSSaveFormBuffer* a_buf) override;																																				// 0E
+		virtual void					LoadBuffer(BGSLoadFormBuffer* a_buf) override;																																				// 0F
+		virtual void					InitItem() override;																																										// 13
+		virtual FormType				GetFormType() override;																																										// 15
+		virtual void					GetFormDesc(char* a_buf, UInt32 a_bufLen) override;																																			// 16
+		virtual bool					GetFlag00010000() override;																																									// 18
+		virtual bool					GetFlag00020000() override;																																									// 1B
+		virtual bool					GetFlag02000000() override;																																									// 1D
+		virtual bool					GetFlag00000200() override;																																									// 1F
+		virtual bool					GetFlag00000100() override;																																									// 20
+		virtual void					SetFlag00000200(bool a_set) override;																																						// 21
+		virtual void					SetFlag00000020(bool a_set) override;																																						// 23
+		virtual void					SetFlag00000002(bool a_set) override;																																						// 24
+		virtual TESObjectREFR*			GetReference() override;																																									// 2C - { return this; }
+		virtual const char*				GetName() override;																																											// 32
+
+		// override (BSTEventSink<BSAnimationGraphEvent>)
+		virtual EventResult				ReceiveEvent(BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_dispatcher) override;																					// 00
+
+		// override (IAnimationGraphManagerHolder)
+		virtual bool					GetAnimationGraphManager(BSAnimationGraphManager*& a_out) override;																															// 02
+
+		// add
 		virtual void					Unk_3B(void);																																												// 3B
 		virtual BGSLocation*			GetEditorLocation();																																										// 3C
 		virtual bool					GetEditorCoordinates(NiPoint3* a_outPos, NiPoint3* a_outRot, void** a_outWorldOrCell, TESObjectCELL* a_veryRarelyUsedFallback);																// 3D
@@ -100,7 +130,7 @@ namespace RE
 		virtual void					Unk_53(void);																																												// 53
 		virtual void					Unk_54(void);																																												// 54
 		virtual void					Unk_55(void);																																												// 55
-		virtual UInt32*					RemoveItem(UInt32* a_droppedItemHandle, TESForm* a_akItem, UInt32 a_aiCount, RemoveType a_mode, BaseExtraList* a_extraList, TESObjectREFR* a_moveToRef, UInt32 a_unk7, UInt32 a_unk8);	// 56
+		virtual UInt32*					RemoveItem(UInt32* a_droppedItemHandle, TESForm* a_akItem, UInt32 a_aiCount, RemoveType a_mode, BaseExtraList* a_extraList, TESObjectREFR* a_moveToRef, UInt32 a_unk7, UInt32 a_unk8);		// 56
 		virtual bool					EquipItem(TESForm* a_akItem, UInt32 a_aiCount, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5);																									// 57
 		virtual void					Unk_58(void);																																												// 58
 		virtual void					Unk_59(void);																																												// 59
@@ -226,8 +256,8 @@ namespace RE
 		UInt8			unk93;			// 93
 		UInt32			pad94;			// 94
 	};
-	STATIC_ASSERT(sizeof(TESObjectREFR) == 0x98);
 	STATIC_ASSERT(offsetof(TESObjectREFR, extraData) == 0x70);
 	STATIC_ASSERT(offsetof(TESObjectREFR, loadedState) == 0x68);
 	STATIC_ASSERT(offsetof(TESObjectREFR::LoadedState, node) == 0x68);
+	STATIC_ASSERT(sizeof(TESObjectREFR) == 0x98);
 };

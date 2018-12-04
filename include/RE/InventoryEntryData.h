@@ -5,12 +5,11 @@
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/Memory.h"
 
-class TESForm;
-
 
 namespace RE
 {
 	class BaseExtraList;
+	class TESForm;
 
 
 	class InventoryEntryData
@@ -29,7 +28,7 @@ namespace RE
 		void		AddEntryList(BaseExtraList* a_extra);
 		bool		IsOwnedBy(TESForm* a_actor, TESForm* a_itemOwner, bool a_unk1);
 		TESForm*	GetOwner();
-		float		GetWeight();
+		float		GetWeight();	// { return TESWeightForm::weight; } - Only for certain formtypes
 
 		TES_HEAP_REDEFINE_NEW();
 
@@ -38,15 +37,5 @@ namespace RE
 		TESForm*						type;		// 00
 		BSSimpleList<BaseExtraList*>*	extraList;	// 08
 		SInt32							countDelta;	// 10
-
-	private:
-		typedef bool _IsOwnedBy_t(InventoryEntryData* a_this, TESForm* actor, TESForm* itemOwner, bool unk1);
-		static RelocAddr<_IsOwnedBy_t*> _IsOwnedBy;
-
-		typedef TESForm* _GetOwner_t(InventoryEntryData* a_this);
-		static RelocAddr<_GetOwner_t*> _GetOwner;
-
-		typedef float _GetWeight_t(InventoryEntryData* a_this);  // { return TESWeightForm::weight; } - Only for certain formtypes
-		static RelocAddr<_GetWeight_t*> _GetWeight;
 	};
 }

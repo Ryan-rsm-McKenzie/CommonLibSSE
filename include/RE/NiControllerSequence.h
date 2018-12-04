@@ -9,7 +9,7 @@ namespace RE
 	class NiControllerSequence : public NiObject
 	{
 	public:
-		virtual bool				Unk_21(UInt32 arg1, UInt32 arg2);
+		virtual bool				Unk_21(UInt32 a_arg1, UInt32 a_arg2);
 
 		const BSFixedString&		GetName() const;
 

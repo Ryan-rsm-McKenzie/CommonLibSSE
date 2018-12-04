@@ -3,7 +3,7 @@
 #include "skse64/ScaleformCallbacks.h"  // FxDelegateHandler
 
 #include "RE/GFxMovieView.h"  // GFxMovieView
-#include "RE/InputManager.h"  // InputManager::Context
+#include "RE/InputMappingManager.h"  // InputMappingManager::Context
 
 class CallbackProcessor;
 class GRefCountBase;
@@ -77,13 +77,13 @@ namespace RE
 		bool			HasFlag10000();
 
 
-		GFxMovieView*			view;		// 10 - init'd to 0, view->Release() called in dtor
-		UInt8					menuDepth;	// 18 - init'd to 3
-		UInt8					pad19[3];	// 19
-		Flag					flags;		// 1C - init'd to 0
-		InputManager::Context	context;	// 20 - input context - init'd to 0x12 (kContext_Invalid)
-		UInt32					pad24;		// 24
-		GRefCountBase*			unk18;		// 28 - FxDelegate
+		GFxMovieView*					view;		// 10 - init'd to 0, view->Release() called in dtor
+		UInt8							menuDepth;	// 18 - init'd to 3
+		UInt8							pad19[3];	// 19
+		Flag							flags;		// 1C - init'd to 0
+		InputMappingManager::Context	context;	// 20 - input context - init'd to 0x12 (kContext_Invalid)
+		UInt32							pad24;		// 24
+		GRefCountBase*					unk18;		// 28 - FxDelegate
 	};
 	STATIC_ASSERT(offsetof(IMenu, view) == 0x10);
 }

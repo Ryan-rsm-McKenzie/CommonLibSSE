@@ -3,9 +3,8 @@
 #undef min
 #undef max
 
-#include "skse64/GameExtraData.h"  // ExtraOwnership, ExtraTextDisplayData
+#include "skse64/GameExtraData.h"  // ExtraTextDisplayData
 #include "skse64/GameFormComponents.h"  // TESContainer, TESFullName
-#include "skse64/GameObjects.h"  // TESObjectCONT
 #include "skse64/GameReferences.h"  // TESObjectREFR
 #include "skse64/GameRTTI.h"  // DYNAMIC_CAST
 
@@ -13,10 +12,12 @@
 
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/ExtraLock.h"  // ExtraLock
+#include "RE/ExtraOwnership.h"  // ExtraOwnership
 #include "RE/Offsets.h"
 #include "RE/TESActorBase.h"  // TESActorBase
 #include "RE/TESFaction.h"  // TESFaction
 #include "RE/TESNPC.h"  // TESNPC
+#include "RE/TESObjectCONT.h"  // TESObjectCONT
 
 
 namespace RE
@@ -77,7 +78,7 @@ namespace RE
 	TESNPC* TESObjectREFR::GetActorOwner()
 	{
 		ExtraOwnership* exOwnership = static_cast<ExtraOwnership*>(extraData.GetByType(kExtraData_Ownership));
-		if (exOwnership && exOwnership->owner && exOwnership->owner->formType == kFormType_Character) {
+		if (exOwnership && exOwnership->owner && exOwnership->owner->formType == FormType::Character) {
 			return static_cast<TESNPC*>(exOwnership->owner);
 		} else {
 			return 0;
@@ -96,13 +97,13 @@ namespace RE
 		TESContainer* container = 0;
 		if (baseForm) {
 			switch (baseForm->formType) {
-			case kFormType_Container:
+			case FormType::Container:
 			{
 				TESObjectCONT* cont = static_cast<TESObjectCONT*>(baseForm);
-				container = cont ? &cont->container : 0;
+				container = static_cast<TESContainer*>(cont);
 				break;
 			}
-			case kFormType_NPC:
+			case FormType::NPC:
 			{
 				TESActorBase* actorBase = static_cast<TESActorBase*>(baseForm);
 				container = actorBase;
@@ -131,7 +132,7 @@ namespace RE
 	TESFaction* TESObjectREFR::GetFactionOwner()
 	{
 		ExtraOwnership* exOwnership = static_cast<ExtraOwnership*>(extraData.GetByType(kExtraData_Ownership));
-		if (exOwnership && exOwnership->owner && exOwnership->owner->formType == kFormType_Faction) {
+		if (exOwnership && exOwnership->owner && exOwnership->owner->formType == FormType::Faction) {
 			return static_cast<TESFaction*>(exOwnership->owner);
 		} else {
 			return 0;
@@ -179,19 +180,19 @@ namespace RE
 
 	bool TESObjectREFR::IsMarkedForDeletion()
 	{
-		return (flags & kTESFormFlag_MarkedForDeletion) != 0;
+		return flags.markedForDeletion;
 	}
 
 
 	bool TESObjectREFR::IsDisabled()
 	{
-		return (flags & kTESFormFlag_Disabled) != 0;
+		return flags.disabled;
 	}
 
 
 	bool TESObjectREFR::IsIgnoringFriendlyHits()
 	{
-		return (flags & kTESFormFlag_IgnoreFriendlyHits) != 0;
+		return flags.ignoreFriendlyHits;
 	}
 
 

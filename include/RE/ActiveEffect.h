@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameForms.h"  // kFormType
+#include "skse64/GameObjects.h"  // ActiveEffectReferenceEffectController
 
 #include "RE/MagicItem.h"  // MagicItem::EffectItem
 
@@ -18,7 +19,7 @@ namespace RE
 	class ActiveEffect
 	{
 	public:
-		enum { kTypeID = kFormType_ActiveMagicEffect };
+		enum { kTypeID = FormType::ActiveMagicEffect };
 
 
 		enum Flag
@@ -28,7 +29,8 @@ namespace RE
 		};
 
 
-		virtual ~ActiveEffect();
+		// add
+		virtual ~ActiveEffect();	// 0
 
 		EffectSetting*	GetBaseObject() const;
 		bool			Dispell(bool a_force);

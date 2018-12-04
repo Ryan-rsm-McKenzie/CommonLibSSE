@@ -38,7 +38,7 @@ namespace RE
 		};
 
 
-		virtual ~ActorState();
+		virtual ~ActorState();	// 0
 
 		UInt32	GetSitState() const;
 		UInt32	GetSleepState() const;

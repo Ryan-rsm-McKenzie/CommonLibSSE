@@ -107,7 +107,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ForcedIncludeFiles>common/IPrefix.h;Logging.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>common/IPrefix.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <OmitFramePointers>
       </OmitFramePointers>
@@ -163,6 +163,7 @@
     <ClCompile Include="src\RE\BGSBipedObjectForm.cpp" />
     <ClCompile Include="src\RE\BGSEntryPointFunctionDataActivateChoice.cpp" />
     <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp" />
+    <ClCompile Include="src\RE\BGSKeywordForm.cpp" />
     <ClCompile Include="src\RE\BSFixedString.cpp" />
     <ClCompile Include="src\RE\BSInputDevice.cpp" />
     <ClCompile Include="src\RE\BSTArray.cpp" />
@@ -181,8 +182,8 @@
     <ClCompile Include="src\RE\InputStringHolder.cpp" />
     <ClCompile Include="src\RE\Misc.cpp" />
     <ClCompile Include="src\RE\IMenu.cpp" />
-    <ClCompile Include="src\RE\InputEventDispatcher.cpp" />
     <ClCompile Include="src\RE\InputManager.cpp" />
+    <ClCompile Include="src\RE\InputMappingManager.cpp" />
     <ClCompile Include="src\RE\InventoryChanges.cpp" />
     <ClCompile Include="src\RE\InventoryEntryData.cpp" />
     <ClCompile Include="src\RE\MagicItem.cpp" />
@@ -200,12 +201,15 @@
     <ClCompile Include="src\RE\PlayerControls.cpp" />
     <ClCompile Include="src\RE\PlayerInputHandler.cpp" />
     <ClCompile Include="src\RE\TESActorBaseData.cpp" />
+    <ClCompile Include="src\RE\TESContainer.cpp" />
     <ClCompile Include="src\RE\TESFaction.cpp" />
+    <ClCompile Include="src\RE\TESForm.cpp" />
     <ClCompile Include="src\RE\TESLevItem.cpp" />
     <ClCompile Include="src\RE\TESNPC.cpp" />
     <ClCompile Include="src\RE\TESObjectBOOK.cpp" />
     <ClCompile Include="src\RE\TESObjectLIGH.cpp" />
     <ClCompile Include="src\RE\TESObjectREFR.cpp" />
+    <ClCompile Include="src\RE\TESObjectWEAP.cpp" />
     <ClCompile Include="src\RE\ThumbstickEvent.cpp" />
     <ClCompile Include="src\RE\UIManager.cpp" />
     <ClCompile Include="src\RE\UIStringHolder.cpp" />
@@ -220,6 +224,9 @@
     <ClInclude Include="include\RE\BGSActorCellEvent.h" />
     <ClInclude Include="include\RE\BGSActorDeathEvent.h" />
     <ClInclude Include="include\RE\BGSEntryPointFunctionDataText.h" />
+    <ClInclude Include="include\RE\BGSKeyword.h" />
+    <ClInclude Include="include\RE\BGSKeywordForm.h" />
+    <ClInclude Include="include\RE\BGSPerk.h" />
     <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
     <ClInclude Include="include\RE\BSFixedString.h" />
     <ClInclude Include="include\RE\BSTArray.h" />
@@ -233,7 +240,9 @@
     <ClInclude Include="include\RE\EffectSetting.h" />
     <ClInclude Include="include\RE\ExtraDroppedItemList.h" />
     <ClInclude Include="include\RE\ExtraFactionChanges.h" />
+    <ClInclude Include="include\RE\ExtraOwnership.h" />
     <ClInclude Include="include\RE\FavoritesHandler.h" />
+    <ClInclude Include="include\RE\FormTypes.h" />
     <ClInclude Include="include\RE\GFxFileConstants.h" />
     <ClInclude Include="include\RE\GFxLoader.h" />
     <ClInclude Include="include\RE\GFxMovie.h" />
@@ -271,11 +280,12 @@
     <ClInclude Include="include\RE\IDEvent.h" />
     <ClInclude Include="include\RE\IMenu.h" />
     <ClInclude Include="include\RE\InputEvent.h" />
-    <ClInclude Include="include\RE\InputEventDispatcher.h" />
     <ClInclude Include="include\RE\InputManager.h" />
+    <ClInclude Include="include\RE\InputMappingManager.h" />
     <ClInclude Include="include\RE\BaseExtraList.h" />
     <ClInclude Include="include\RE\BGSBipedObjectForm.h" />
     <ClInclude Include="include\RE\MenuOpenHandler.h" />
+    <ClInclude Include="include\RE\PerkRankVisitor.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
     <ClInclude Include="include\RE\ExtraContainerChanges.h" />
     <ClInclude Include="include\RE\InputStringHolder.h" />
@@ -313,15 +323,21 @@
     <ClInclude Include="include\RE\TESActorBaseData.h" />
     <ClInclude Include="include\RE\TESBoundAnimObject.h" />
     <ClInclude Include="include\RE\TESBoundObject.h" />
+    <ClInclude Include="include\RE\TESContainer.h" />
     <ClInclude Include="include\RE\TESFaction.h" />
+    <ClInclude Include="include\RE\TESForm.h" />
     <ClInclude Include="include\RE\TESLeveledList.h" />
     <ClInclude Include="include\RE\TESLevItem.h" />
     <ClInclude Include="include\RE\TESNPC.h" />
+    <ClInclude Include="include\RE\TESObject.h" />
     <ClInclude Include="include\RE\TESObjectACTI.h" />
+    <ClInclude Include="include\RE\TESObjectARMO.h" />
     <ClInclude Include="include\RE\TESObjectBOOK.h" />
     <ClInclude Include="include\RE\TESObjectCONT.h" />
     <ClInclude Include="include\RE\TESObjectLIGH.h" />
+    <ClInclude Include="include\RE\TESObjectMISC.h" />
     <ClInclude Include="include\RE\TESObjectREFR.h" />
+    <ClInclude Include="include\RE\TESObjectWEAP.h" />
     <ClInclude Include="include\RE\TESRace.h" />
     <ClInclude Include="include\RE\TESRaceForm.h" />
     <ClInclude Include="include\RE\ThumbstickEvent.h" />

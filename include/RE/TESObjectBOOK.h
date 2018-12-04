@@ -1,8 +1,9 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESFullName, TESModelTextureSwap, TESIcon, TESValueForm, TESWeightForm, TESDescription, BGSDestructibleObjectForm, BGSMessageIcon, BGSPickupPutdownSounds, BGSKeywordForm
+#include "skse64/GameFormComponents.h"  // TESFullName, TESModelTextureSwap, TESIcon, TESValueForm, TESWeightForm, TESDescription, BGSDestructibleObjectForm, BGSMessageIcon, BGSPickupPutdownSounds
 #include "skse64/GameObjects.h"  // TESObjectBOOK
 
+#include "RE/BGSKeywordForm.h"  // BGSKeywordForm
 #include "RE/TESBoundObject.h"  // TESBoundObject
 
 class SpellItem;
@@ -25,37 +26,53 @@ namespace RE
 		public BGSKeywordForm				// F8
 	{
 	public:
-		enum { kTypeID = kFormType_Book };
+		enum { kTypeID = FormType::Book };
 
 
 		struct Data
 		{
-			enum
+			enum Flag : UInt8
 			{
-				kType_None			= 0,
-				kType_Skill			= 1 << 0,
-				kType_CantBeTaken	= 1 << 1,
-				kType_Spell			= 1 << 2,	// takes priority over skill
-				kType_Read			= 1 << 3,	// set once the book is equipped by the player, along with the CHANGE_BOOK_READ (0x40) change flag
+				kFlag_None			= 0,
+				kFlag_Skill			= 1 << 0,
+				kFlag_CantBeTaken	= 1 << 1,
+				kFlag_Spell			= 1 << 2,	// takes priority over skill
+				kFlag_Read			= 1 << 3,	// set once the book is equipped by the player, along with the CHANGE_BOOK_READ (0x40) change flag
 			};
 
-			UInt8	flags;		// 0
-			UInt8	type;		// 1
-			UInt16	unk02;		// 2, probably padding too
-			UInt32	unk04;		// 4, probably padding (SE)
 
-			union
+			union Union
 			{
 				UInt32		skill;
 				SpellItem*	spell;
-			} teaches;			// 8
+			};
 
-			// make some sense of the flags field so we know what's in the union
-			UInt32	GetSanitizedType();
+
+			Flag GetSanitizedType();
+
+
+			// members
+			Flag	flags;		// 0
+			UInt8	type;		// 1
+			UInt16	pad02;		// 2
+			UInt32	pad04;		// 4
+			Union	teaches;	// 8
 		};
 
+		virtual ~TESObjectBOOK();																																		// 00
 
-		bool IsRead() const;
+		// override (TESBoundObject)
+		virtual bool	LoadForm(TESFile* a_mod) override;																												// 06
+		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;																									// 0E
+		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																									// 0F
+		virtual void	InitItem() override;																															// 13
+		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, uintptr_t a_arg3, uintptr_t a_arg4, uintptr_t a_arg5) override;	// 37
+		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst, bool a_unk) override;																	// 4D
+
+		bool	TeachesSkill() const;
+		bool	TeachesSpell() const;
+		bool	IsRead() const;
+		bool	CanBeTaken() const;
 
 
 		// members
@@ -63,6 +80,5 @@ namespace RE
 		TESObjectSTAT*	bookStat;		// 120
 		TESDescription	description2;	// 128
 	};
-
 	STATIC_ASSERT(sizeof(TESObjectBOOK) == 0x138);
 }

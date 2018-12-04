@@ -89,23 +89,24 @@ namespace RE
 
 	bool InventoryEntryData::IsOwnedBy(TESForm* a_actor, TESForm* a_itemOwner, bool a_unk1)
 	{
+		typedef bool _IsOwnedBy_t(InventoryEntryData* a_this, TESForm* actor, TESForm* itemOwner, bool unk1);
+		static RelocAddr<_IsOwnedBy_t*> _IsOwnedBy(INVENTORY_ENTRY_DATA_IS_OWNED_BY);
 		return _IsOwnedBy(this, a_actor, a_itemOwner, a_unk1);
 	}
 
 
 	TESForm* InventoryEntryData::GetOwner()
 	{
+		typedef TESForm* _GetOwner_t(InventoryEntryData* a_this);
+		static RelocAddr<_GetOwner_t*> _GetOwner(INVENTORY_ENTRY_DATA_GET_OWNER);
 		return _GetOwner(this);
 	}
 
 
 	float InventoryEntryData::GetWeight()
 	{
+		typedef float _GetWeight_t(InventoryEntryData* a_this);
+		static RelocAddr<_GetWeight_t*> _GetWeight(INVENTORY_ENTRY_DATA_GET_WEIGHT);
 		return _GetWeight(this);
 	}
-
-
-	RelocAddr<InventoryEntryData::_IsOwnedBy_t*> InventoryEntryData::_IsOwnedBy(INVENTORY_ENTRY_DATA_IS_OWNED_BY);
-	RelocAddr<InventoryEntryData::_GetOwner_t*> InventoryEntryData::_GetOwner(INVENTORY_ENTRY_DATA_GET_OWNER);
-	RelocAddr<InventoryEntryData::_GetWeight_t*> InventoryEntryData::_GetWeight(INVENTORY_ENTRY_DATA_GET_WEIGHT);
 }

@@ -208,4 +208,5 @@ namespace RE
 		UInt8					unk13B;					// 13B
 		UInt32					pad13C;					// 13C
 	};
+	STATIC_ASSERT(sizeof(ActorProcessManager) == 0x140);
 }

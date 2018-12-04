@@ -21,6 +21,6 @@ namespace RE
 
 	::ExtraContainerChanges::FoundHotkeyData ExtraContainerChanges::FindHotkey(TESForm* a_form)
 	{
-		return reinterpret_cast<::ExtraContainerChanges*>(this)->FindHotkey(a_form);
+		return reinterpret_cast<::ExtraContainerChanges*>(this)->FindHotkey(reinterpret_cast<::TESForm*>(a_form));
 	}
 }

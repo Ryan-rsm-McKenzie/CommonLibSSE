@@ -147,16 +147,10 @@
     <ClCompile Include="src\RE\PlayerCharacter.cpp">
       <Filter>src\RE\Skyrim\TESForms</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\InputManager.cpp">
-      <Filter>src\RE\Skyrim\BSDevices</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\MagicTarget.cpp">
       <Filter>src\RE\Skyrim\Magic</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSInputDevice.cpp">
-      <Filter>src\RE\Skyrim\BSDevices</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\InputEventDispatcher.cpp">
       <Filter>src\RE\Skyrim\BSDevices</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -303,6 +297,24 @@
     <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp">
       <Filter>src\RE\Skyrim\Events</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\InputMappingManager.cpp">
+      <Filter>src\RE\Skyrim\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\InputManager.cpp">
+      <Filter>src\RE\Skyrim\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESForm.cpp">
+      <Filter>src\RE\Skyrim\FormComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSKeywordForm.cpp">
+      <Filter>src\RE\Skyrim\FormComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESContainer.cpp">
+      <Filter>src\RE\Skyrim\FormComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectWEAP.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -371,14 +383,8 @@
     <ClInclude Include="include\RE\BSTScatterTable.h">
       <Filter>include\RE\Skyrim\BSCore</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\InputManager.h">
-      <Filter>include\RE\Skyrim\BSDevices</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\CRC.h">
       <Filter>include\RE\Skyrim\BSCore</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\InputEventDispatcher.h">
-      <Filter>include\RE\Skyrim\BSDevices</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSIInputDevice.h">
       <Filter>include\RE\Skyrim\BSDevices</Filter>
@@ -664,6 +670,48 @@
     </ClInclude>
     <ClInclude Include="include\RE\MenuOpenHandler.h">
       <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\InputMappingManager.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\InputManager.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FormTypes.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSKeywordForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObject.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraOwnership.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESContainer.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSPerk.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PerkRankVisitor.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSKeyword.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectARMO.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectMISC.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectWEAP.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

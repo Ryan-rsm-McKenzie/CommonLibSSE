@@ -1,10 +1,11 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESContainer, TESSpellList, TESAIForm, TESFullName, BGSDestructibleObjectForm, BGSSkinForm, BGSKeywordForm, BGSAttackDataForm, BGSPerkRankArray
+#include "skse64/GameFormComponents.h"  // TESSpellList, TESAIForm, TESFullName, BGSDestructibleObjectForm, BGSSkinForm, BGSKeywordForm, BGSAttackDataForm, BGSPerkRankArray
 
 #include "RE/TESActorBaseData.h"  // TESActorBaseData
-#include "RE/ActorValueOwner.h"  // ActorValueOwner
 #include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
+#include "RE/TESContainer.h"  // TESContainer
+#include "RE/ActorValueOwner.h"  // ActorValueOwner
 
 class TESCombatStyle;
 
@@ -26,10 +27,10 @@ namespace RE
 		public BGSPerkRankArray				// 138
 	{
 	public:
-		virtual bool				Unk_52(void);
+		virtual bool				Unk_54(void);
 		virtual TESCombatStyle*		GetCombatStyle();
 		virtual void				SetCombatStyle(TESCombatStyle* a_arg);
-		virtual TESActorBase*		Unk_55(void);
+		virtual TESActorBase*		Unk_57(void);
 	};
 	STATIC_ASSERT(sizeof(TESActorBase) == 0x150);
 }

@@ -23,4 +23,5 @@ namespace RE
 		UInt16	type;		// A
 		UInt32	padC;		// C
 	};
+	STATIC_ASSERT(sizeof(BGSPerkEntry) == 0x10);
 }

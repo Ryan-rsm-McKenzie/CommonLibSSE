@@ -65,7 +65,7 @@ namespace RE
 		};
 
 
-		virtual ~PlayerCharacter();
+		virtual ~PlayerCharacter();	// 00
 
 		TintMask*				GetOverlayTintMask(TintMask* a_original);
 		tArray<TintMask*>*		GetTintList();

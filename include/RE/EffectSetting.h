@@ -1,11 +1,11 @@
 #pragma once
 
 #include "skse64/GameFormComponents.h"  // TESFullName, BGSMenuDisplayObject, BGSKeywordForm
-#include "skse64/GameForms.h"  // TESForm
 
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTList.h"  // BSSimpleList
+#include "RE/TESForm.h"  // TESForm
 
 class BGSArtObject;
 class BGSExplosion;
@@ -31,7 +31,7 @@ namespace RE
 		public BGSKeywordForm
 	{
 	public:
-		enum { kTypeID = kFormType_EffectSetting };
+		enum { kTypeID = FormType::EffectSetting };
 
 
 		struct Properties

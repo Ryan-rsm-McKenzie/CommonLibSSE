@@ -8,6 +8,11 @@ namespace RE
 	class Character : public Actor
 	{
 	public:
-		enum { kTypeID = kFormType_Character };
+		enum { kTypeID = FormType::Character };
+
+		// add
+		virtual void	Unk_129(void);	// 129
+		virtual void	Unk_12A(void);	// 12A
 	};
+	STATIC_ASSERT(sizeof(Character) == 0x2B0);
 }

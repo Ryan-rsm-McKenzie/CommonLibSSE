@@ -1,7 +1,7 @@
 #pragma once
 
-#include "skse64/GameForms.h"  // TESForm
-#include "skse64/GameTypes.h"  // tList
+#include "RE/BSTList.h"  // BSSimpleList
+#include "RE/TESForm.h"  // TESForm
 
 class BGSListForm;
 class BGSOutfit;
@@ -18,7 +18,7 @@ namespace RE
 		public TESReactionForm
 	{
 	public:
-		enum { kTypeID = kFormType_Faction };
+		enum { kTypeID = FormType::Faction };
 
 
 		enum FactionFlag : UInt32
@@ -104,17 +104,17 @@ namespace RE
 		bool	IgnoresWerewolf();
 
 
-		void*			unk50;			// 50
-		FactionFlag		factionFlags;	// 58 - DATA
-		UInt32			pad5C;			// 5C
-		CrimeValues		crimeValues;	// 60 - CRVA
-		VendorData		vendorData;		// A8 - VENV
-		tList<Rank*>	ranks;			// E0
-		UInt32			unkF0;			// F0
-		UInt32			unkF4;			// F4
-		float			unkF8;			// F8
-		float			unkFC;			// FC
+		void*				unk50;			// 50
+		FactionFlag			factionFlags;	// 58 - DATA
+		UInt32				pad5C;			// 5C
+		CrimeValues			crimeValues;	// 60 - CRVA
+		VendorData			vendorData;		// A8 - VENV
+		BSSimpleList<Rank*>	ranks;			// E0
+		UInt32				unkF0;			// F0
+		UInt32				unkF4;			// F4
+		float				unkF8;			// F8
+		float				unkFC;			// FC
 	};
-	STATIC_ASSERT(sizeof(TESFaction) == 0x100);
 	STATIC_ASSERT(offsetof(TESFaction, vendorData) == 0xA8);
+	STATIC_ASSERT(sizeof(TESFaction) == 0x100);
 }

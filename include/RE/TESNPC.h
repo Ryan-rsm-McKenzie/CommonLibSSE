@@ -1,8 +1,10 @@
 #pragma once
 
+#include "skse64/GameEvents.h"  // MenuOpenCloseEvent
 #include "skse64/GameFormComponents.h"  // BGSOverridePackCollection
 #include "skse64/GameTypes.h"  // BSFixedString
 
+#include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/TESActorBase.h"  // TESActorBase
 #include "RE/TESRaceForm.h"  // TESRaceForm
 
@@ -11,6 +13,7 @@ class BGSHeadPart;
 class BGSOutfit;
 class BGSTextureSet;
 class BSFaceGenNiNode;
+class NiColorA;
 class TESClass;
 class TESCombatStyle;
 class TESObjectARMO;
@@ -29,7 +32,7 @@ namespace RE
 		public BSTEventSink<MenuOpenCloseEvent>
 	{
 	public:
-		enum { kTypeID = kFormType_NPC };
+		enum { kTypeID = FormType::NPC };
 
 
 		struct FaceMorphs
@@ -71,20 +74,29 @@ namespace RE
 		};
 
 
-		char			GetSex();
-		bool			HasOverlays();
-		void			ChangeHeadPart(BGSHeadPart* a_target);
-		void			ApplyMorph(MorphAction* a_morphAction);
-		void			UpdateNeck(BSFaceGenNiNode* a_faceNode);
-		void			SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute, UInt32 a_unk4);
-		void			SetFaceTexture(BGSTextureSet* a_textureSet);
-		void			SetHairColor(BGSColorForm* a_hairColor);
-		BGSHeadPart*	GetHeadPartByType(UInt32 a_type);
-		BGSHeadPart*	GetHeadPartOverlayByType(UInt32 a_type);
-		BGSHeadPart*	GetCurrentHeadPartByType(UInt32 a_type);
-		TESNPC*			GetRootTemplate();
+		// override (TESActorBase)
+		virtual const char*		GetAliasName(const BSFixedString& a_alias) override;																							// 2E - alias: "Pronoun" "PronounObj" "PronounPos" "PronounPosObj" "PronounRef" "PronounInt" "Race" "Gender" "ShortName". see http://www.creationkit.com/Text_Replacement
+		virtual void			CopyFrom(TESForm* a_srcForm) override;																										// 2F - { return; }
+		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, uintptr_t a_arg3, uintptr_t a_arg4, uintptr_t a_arg5);	// 37
+		virtual BGSVoiceType*	GetVoiceType() const;																												// 4A - { return nullptr; }
+		virtual bool			GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst, bool a_unk);																// 4D
+		virtual TESCombatStyle*	GetCombatStyle();
+		virtual void			SetCombatStyle(TESCombatStyle* a_arg);
 
-		TESRace*		GetRace();
+		char					GetSex();
+		bool					HasOverlays();
+		void					ChangeHeadPart(BGSHeadPart* a_target);
+		void					ApplyMorph(MorphAction* a_morphAction);
+		void					UpdateNeck(BSFaceGenNiNode* a_faceNode);
+		void					SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute, UInt32 a_unk4);
+		void					SetFaceTexture(BGSTextureSet* a_textureSet);
+		void					SetHairColor(BGSColorForm* a_hairColor);
+		BGSHeadPart*			GetHeadPartByType(UInt32 a_type);
+		BGSHeadPart*			GetHeadPartOverlayByType(UInt32 a_type);
+		BGSHeadPart*			GetCurrentHeadPartByType(UInt32 a_type);
+		TESNPC*					GetRootTemplate();
+
+		TESRace*				GetRace();
 
 
 		// members

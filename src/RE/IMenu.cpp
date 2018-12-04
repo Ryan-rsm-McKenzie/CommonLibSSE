@@ -9,7 +9,7 @@ namespace RE
 		view(0),
 		menuDepth(3),
 		flags(kFlag_None),
-		context(InputManager::kContext_Invalid),
+		context(InputMappingManager::kContext_Invalid),
 		unk18(0)
 	{}
 

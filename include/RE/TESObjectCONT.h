@@ -1,8 +1,9 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESContainer, TESFullName, TESModelTextureSwap, TESWeightForm, BGSDestructibleObjectForm, BGSOpenCloseForm
+#include "skse64/GameFormComponents.h"  // TESFullName, TESModelTextureSwap, TESWeightForm, BGSDestructibleObjectForm, BGSOpenCloseForm
 
 #include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
+#include "RE/TESContainer.h"  // TESContainer
 
 
 namespace RE
@@ -17,9 +18,16 @@ namespace RE
 		public BGSOpenCloseForm				// B0
 	{
 	public:
-		enum { kTypeID = kFormType_Container };
+		enum { kTypeID = FormType::Container };
 
-		virtual bool GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst, bool a_unk) override;
+
+		virtual ~TESObjectCONT();																																		// 00
+
+		// override (TESBoundAnimObject)
+		virtual bool	LoadForm(TESFile* a_mod) override;																												// 06
+		virtual void	InitItem() override;																															// 13
+		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, uintptr_t a_arg3, uintptr_t a_arg4, uintptr_t a_arg5) override;	// 37
+		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst, bool a_unk) override;																	// 4D
 
 
 		// members
@@ -29,4 +37,5 @@ namespace RE
 		UInt64	padC0;		// C0
 		UInt64	padC8;		// C8
 	};
+	STATIC_ASSERT(sizeof(TESObjectCONT) == 0xD0);
 }

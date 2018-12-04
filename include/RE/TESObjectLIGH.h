@@ -19,7 +19,7 @@ namespace RE
 		public BGSEquipType					// 0D0
 	{
 	public:
-		enum { kTypeID = kFormType_Light };
+		enum { kTypeID = FormType::Light };
 
 
 		enum Flag : UInt32
@@ -83,9 +83,16 @@ namespace RE
 		};
 
 
-		virtual ~TESObjectLIGH();
+		virtual ~TESObjectLIGH();																																		// 0
 
-		bool CanBeCarried() const;
+		// override (TESBoundAnimObject)
+		virtual bool	LoadForm(TESFile* a_mod) override;																												// 06
+		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;																									// 0E
+		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																									// 0F
+		virtual void	InitItem() override;																															// 13
+		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, uintptr_t a_arg3, uintptr_t a_arg4, uintptr_t a_arg5) override;	// 37
+
+		bool			CanBeCarried() const;
 
 
 		DataE0	unkE0;		// 0E0 - DATA
@@ -94,4 +101,5 @@ namespace RE
 		UInt64	unk110;		// 110
 		Data118	unk118;		// 118
 	};
+	STATIC_ASSERT(sizeof(TESObjectLIGH) == 0x130);
 }

@@ -1,9 +1,10 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"
-#include "skse64/GameForms.h"
+#include "skse64/GameFormComponents.h"  // TESFullName, TESDescription, TESSpellList, BGSSkinForm, BGSAttackDataForm
 
+#include "RE/BGSKeywordForm.h"  // BGSKeywordForm
 #include "RE/BGSBipedObjectForm.h"  // BGSBipedObjectForm
+#include "RE/TESForm.h"  // TESForm
 
 
 namespace RE
@@ -19,7 +20,7 @@ namespace RE
 		public BGSAttackDataForm	// 088
 	{
 	public:
-		enum { kTypeID = kFormType_Race };
+		enum { kTypeID = FormType::Race };
 
 
 		enum Flag : UInt32
@@ -175,4 +176,5 @@ namespace RE
 		CharGenData*			chargenData[2];				// 4A8
 	};
 	STATIC_ASSERT(offsetof(TESRace, models) == 0x098);
+	STATIC_ASSERT(sizeof(TESRace) == 0x4B8);
 }

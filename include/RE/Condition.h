@@ -43,7 +43,7 @@ namespace RE
 
 
 		// Betheseda keeps these in a giant lookup table
-		// typedef bool func(TESObjectREFR* perkOwnerOrTarget, void* param1, void* param2, float& result);
+		// typedef bool(*func)(TESObjectREFR* perkOwnerOrTarget, void* param1, void* param2, float& result);
 		enum FunctionID : UInt16
 		{
 			kFunctionID_GetLocked = 0x0005,

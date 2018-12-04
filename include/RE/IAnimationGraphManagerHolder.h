@@ -2,16 +2,19 @@
 
 #include "RE/BSFixedString.h"  // BSFixedString
 
+class BSAnimationGraphManager;
+
 
 namespace RE
 {
 	class IAnimationGraphManagerHolder
 	{
 	public:
-		virtual ~IAnimationGraphManagerHolder();
+		virtual ~IAnimationGraphManagerHolder();														// 00
 
+		// add
 		virtual bool	SendAnimationEvent(const BSFixedString& a_eventName);							// 01
-		virtual bool	GetAnimationGraphManager(void* a_out);											// 02 - Pure, BSAnimationGraphManagerPtr&
+		virtual bool	GetAnimationGraphManager(BSAnimationGraphManager*& a_out) = 0;					// 02 - BSSmartPointer
 		virtual void	Unk_03(void);																	// 03
 		virtual void	Unk_04(void);																	// 04
 		virtual void	Unk_05(void);																	// 05
