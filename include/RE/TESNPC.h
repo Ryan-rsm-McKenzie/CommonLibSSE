@@ -86,7 +86,6 @@ namespace RE
 		char					GetSex();
 		bool					HasOverlays();
 		void					ChangeHeadPart(BGSHeadPart* a_target);
-		void					ApplyMorph(MorphAction* a_morphAction);
 		void					UpdateNeck(BSFaceGenNiNode* a_faceNode);
 		void					SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute, UInt32 a_unk4);
 		void					SetFaceTexture(BGSTextureSet* a_textureSet);

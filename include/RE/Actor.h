@@ -31,7 +31,7 @@ namespace RE
 	class PerkEntryVisitor;
 	class TESRace;
 	class TESFaction;
-	int size = sizeof(ActorState);
+
 
 	class Actor :
 		public TESObjectREFR,								// 000

@@ -34,15 +34,6 @@ namespace RE
 	}
 
 
-	void TESNPC::ApplyMorph(MorphAction* a_morphAction)
-	{
-		typedef void _ApplyMorph_t(TESNPC* a_this, MorphAction* a_morphAction);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESNPC*>(this)->_ApplyMorph_GetPtr());
-		_ApplyMorph_t* _ApplyMorph = reinterpret_cast<_ApplyMorph_t*>(*ptr);
-		_ApplyMorph(this, a_morphAction);
-	}
-
-
 	void TESNPC::UpdateNeck(BSFaceGenNiNode* a_faceNode)
 	{
 		typedef void _UpdateNeck_t(TESNPC* a_this, BSFaceGenNiNode* a_faceNode);
