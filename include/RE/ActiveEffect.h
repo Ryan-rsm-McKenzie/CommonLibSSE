@@ -33,7 +33,7 @@ namespace RE
 		virtual ~ActiveEffect();	// 0
 
 		EffectSetting*	GetBaseObject() const;
-		bool			Dispell(bool a_force);
+		bool			Dispell(bool a_force);	// Returns success?
 
 
 		ActiveEffectReferenceEffectController	controller;			// 08
@@ -64,10 +64,5 @@ namespace RE
 		UInt32									actorValue;			// 90 - Only seems to appear on value modifiers
 		UInt32									unk94;				// 94
 		UInt64									unk98;				// 98
-
-
-	private:
-		typedef bool _Dispell_t(ActiveEffect* a_this, bool a_force);  // Returns success?
-		static RelocAddr<_Dispell_t*> _Dispell;
 	};
 }

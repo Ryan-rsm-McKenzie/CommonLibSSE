@@ -23,7 +23,7 @@ namespace RE
 	void InventoryEntryData::GetExtraWornBaseLists(BaseExtraList*& a_pWornBaseListOut, BaseExtraList*& a_pWornLeftBaseListOut)
 	{
 		typedef void _GetExtraWornBaseLists_t(InventoryEntryData* a_this, BaseExtraList*& a_pWornBaseListOut, BaseExtraList*& a_pWornLeftBaseListOut);
-		static _GetExtraWornBaseLists_t* _GetExtraWornBaseLists = reinterpret_cast<_GetExtraWornBaseLists_t*>(GetFnAddr(&::InventoryEntryData::GetExtraWornBaseLists));
+		_GetExtraWornBaseLists_t* _GetExtraWornBaseLists = reinterpret_cast<_GetExtraWornBaseLists_t*>(GetFnAddr(&::InventoryEntryData::GetExtraWornBaseLists));
 		_GetExtraWornBaseLists(this, a_pWornBaseListOut, a_pWornLeftBaseListOut);
 	}
 
@@ -31,7 +31,7 @@ namespace RE
 	void InventoryEntryData::GetEquipItemData(::InventoryEntryData::EquipData& a_stateOut, SInt32 a_itemId, SInt32 a_baseCount)
 	{
 		typedef void _GetEquipItemData_t(InventoryEntryData* a_this, ::InventoryEntryData::EquipData& a_stateOut, SInt32 a_itemId, SInt32 a_baseCount);
-		static _GetEquipItemData_t* _GetEquipItemData = reinterpret_cast<_GetEquipItemData_t*>(GetFnAddr(&::InventoryEntryData::GetEquipItemData));
+		_GetEquipItemData_t* _GetEquipItemData = reinterpret_cast<_GetEquipItemData_t*>(GetFnAddr(&::InventoryEntryData::GetEquipItemData));
 		_GetEquipItemData(this, a_stateOut, a_itemId, a_baseCount);
 	}
 
@@ -39,8 +39,8 @@ namespace RE
 	const char* InventoryEntryData::GenerateName()
 	{
 		typedef const char* _GenerateName_t(InventoryEntryData* a_this);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_GenerateName_GetPtr());
-		static _GenerateName_t* _GenerateName = reinterpret_cast<_GenerateName_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_GenerateName_GetPtr());
+		_GenerateName_t* _GenerateName = reinterpret_cast<_GenerateName_t*>(*ptr);
 		return _GenerateName(this);
 	}
 
@@ -48,8 +48,8 @@ namespace RE
 	SInt32 InventoryEntryData::GetValue()
 	{
 		typedef SInt32 _GetValue_t(InventoryEntryData* a_this);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_GetValue_GetPtr());
-		static _GetValue_t* _GetValue = reinterpret_cast<_GetValue_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_GetValue_GetPtr());
+		_GetValue_t* _GetValue = reinterpret_cast<_GetValue_t*>(*ptr);
 		return _GetValue(this);
 	}
 
@@ -57,8 +57,8 @@ namespace RE
 	bool InventoryEntryData::IsOwnedBy(TESForm* a_actor, bool a_unk1)
 	{
 		typedef bool _IsOwnedBy_t(InventoryEntryData* a_this, TESForm* a_actor, bool a_unk1);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_IsOwnedBy_GetPtr());
-		static _IsOwnedBy_t* _IsOwnedBy = reinterpret_cast<_IsOwnedBy_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_IsOwnedBy_GetPtr());
+		_IsOwnedBy_t* _IsOwnedBy = reinterpret_cast<_IsOwnedBy_t*>(*ptr);
 		return _IsOwnedBy(this, a_actor, a_unk1);
 	}
 
@@ -66,8 +66,8 @@ namespace RE
 	UInt32 InventoryEntryData::GetSoulLevel()
 	{
 		typedef UInt32 _GetSoulLevel_t(InventoryEntryData* a_this);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_GetSoulLevel_GetPtr());
-		static _GetSoulLevel_t* _GetSoulLevel = reinterpret_cast<_GetSoulLevel_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_GetSoulLevel_GetPtr());
+		_GetSoulLevel_t* _GetSoulLevel = reinterpret_cast<_GetSoulLevel_t*>(*ptr);
 		return _GetSoulLevel(this);
 	}
 
@@ -90,7 +90,7 @@ namespace RE
 	bool InventoryEntryData::IsOwnedBy(TESForm* a_actor, TESForm* a_itemOwner, bool a_unk1)
 	{
 		typedef bool _IsOwnedBy_t(InventoryEntryData* a_this, TESForm* actor, TESForm* itemOwner, bool unk1);
-		static RelocAddr<_IsOwnedBy_t*> _IsOwnedBy(INVENTORY_ENTRY_DATA_IS_OWNED_BY);
+		RelocAddr<_IsOwnedBy_t*> _IsOwnedBy(INVENTORY_ENTRY_DATA_IS_OWNED_BY);
 		return _IsOwnedBy(this, a_actor, a_itemOwner, a_unk1);
 	}
 
@@ -98,7 +98,7 @@ namespace RE
 	TESForm* InventoryEntryData::GetOwner()
 	{
 		typedef TESForm* _GetOwner_t(InventoryEntryData* a_this);
-		static RelocAddr<_GetOwner_t*> _GetOwner(INVENTORY_ENTRY_DATA_GET_OWNER);
+		RelocAddr<_GetOwner_t*> _GetOwner(INVENTORY_ENTRY_DATA_GET_OWNER);
 		return _GetOwner(this);
 	}
 
@@ -106,7 +106,7 @@ namespace RE
 	float InventoryEntryData::GetWeight()
 	{
 		typedef float _GetWeight_t(InventoryEntryData* a_this);
-		static RelocAddr<_GetWeight_t*> _GetWeight(INVENTORY_ENTRY_DATA_GET_WEIGHT);
+		RelocAddr<_GetWeight_t*> _GetWeight(INVENTORY_ENTRY_DATA_GET_WEIGHT);
 		return _GetWeight(this);
 	}
 }

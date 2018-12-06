@@ -154,7 +154,7 @@ namespace RE
 		bool			IsGold() const;
 
 		bool			HasWorldModel(void) const;
-		double			GetWeight();
+		float			GetWeight();
 
 
 		// members

@@ -27,10 +27,10 @@ namespace RE
 		public BGSPerkRankArray				// 138
 	{
 	public:
-		virtual bool				Unk_54(void);
-		virtual TESCombatStyle*		GetCombatStyle();
-		virtual void				SetCombatStyle(TESCombatStyle* a_arg);
-		virtual TESActorBase*		Unk_57(void);
+		virtual void				Unk_54(void);							// 54
+		virtual TESCombatStyle*		GetCombatStyle();						// 55
+		virtual void				SetCombatStyle(TESCombatStyle* a_arg);	// 56
+		virtual TESActorBase*		Unk_57(void);							// 57
 	};
 	STATIC_ASSERT(sizeof(TESActorBase) == 0x150);
 }

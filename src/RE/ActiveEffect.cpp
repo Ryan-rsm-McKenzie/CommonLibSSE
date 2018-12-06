@@ -13,9 +13,8 @@ namespace RE
 
 	bool ActiveEffect::Dispell(bool a_force)
 	{
+		typedef bool _Dispell_t(ActiveEffect* a_this, bool a_force);
+		RelocAddr<_Dispell_t*> _Dispell(ACTIVE_EFFECT_DISPELL);
 		return _Dispell(this, a_force);
 	}
-
-
-	RelocAddr<ActiveEffect::_Dispell_t*> ActiveEffect::_Dispell(ACTIVE_EFFECT_DISPELL);
 }

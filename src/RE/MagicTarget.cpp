@@ -13,7 +13,7 @@ namespace RE
 	bool MagicTarget::HasMagicEffect(EffectSetting* a_effect)
 	{
 		typedef bool _HasMagicEffect_t(MagicTarget* a_this, EffectSetting* a_effect);
-		static RelocAddr<_HasMagicEffect_t*> _HasMagicEffect(MAGIC_TARGET_HAS_MAGIC_EFFECT);
+		RelocAddr<_HasMagicEffect_t*> _HasMagicEffect(MAGIC_TARGET_HAS_MAGIC_EFFECT);
 		return _HasMagicEffect(this, a_effect);
 	}
 

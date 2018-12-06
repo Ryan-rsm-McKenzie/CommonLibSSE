@@ -17,8 +17,8 @@ namespace RE
 	IMenu::~IMenu()
 	{
 		typedef void _IMenu_dtor_t(IMenu* a_this);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::IMenu*>(this)->_dtor_GetPtr());
-		static _IMenu_dtor_t* _IMenu_dtor = reinterpret_cast<_IMenu_dtor_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::IMenu*>(this)->_dtor_GetPtr());
+		_IMenu_dtor_t* _IMenu_dtor = reinterpret_cast<_IMenu_dtor_t*>(*ptr);
 		_IMenu_dtor(this);
 	}
 
@@ -38,8 +38,8 @@ namespace RE
 	IMenu::Result IMenu::ProcessMessage(UIMessage* a_message)
 	{
 		typedef IMenu::Result _ProcessMessage_t(IMenu* a_this, UIMessage* a_message);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::IMenu*>(this)->_ProcessMessage_internal_GetPtr());
-		static _ProcessMessage_t* _ProcessMessage = reinterpret_cast<_ProcessMessage_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::IMenu*>(this)->_ProcessMessage_internal_GetPtr());
+		_ProcessMessage_t* _ProcessMessage = reinterpret_cast<_ProcessMessage_t*>(*ptr);
 		return _ProcessMessage(this, a_message);
 	}
 
@@ -47,8 +47,8 @@ namespace RE
 	void IMenu::NextFrame(UInt32 a_arg1, UInt32 a_arg2)
 	{
 		typedef void _NextFrame_t(IMenu* a_this, UInt32 a_arg1, UInt32 a_arg2);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::IMenu*>(this)->_NextFrame_internal_GetPtr());
-		static _NextFrame_t* _NextFrame = reinterpret_cast<_NextFrame_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::IMenu*>(this)->_NextFrame_internal_GetPtr());
+		_NextFrame_t* _NextFrame = reinterpret_cast<_NextFrame_t*>(*ptr);
 		_NextFrame(this, a_arg1, a_arg2);
 	}
 
@@ -68,8 +68,8 @@ namespace RE
 	void IMenu::InitMovie()
 	{
 		typedef void _InitMovie_t(IMenu* a_this, GFxMovieView* a_view);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::IMenu*>(this)->_InitMovie_internal_GetPtr());
-		static _InitMovie_t* _InitMovie = reinterpret_cast<_InitMovie_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::IMenu*>(this)->_InitMovie_internal_GetPtr());
+		_InitMovie_t* _InitMovie = reinterpret_cast<_InitMovie_t*>(*ptr);
 		_InitMovie(this, view);
 	}
 

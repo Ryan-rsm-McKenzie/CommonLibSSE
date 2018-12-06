@@ -22,7 +22,6 @@ namespace RE
 		virtual void	Unk_45(void);	// 45 - { return; }
 		virtual void	Unk_46(void);	// 46 - { return nullptr; }
 		virtual void	Unk_47(void);	// 47 - { return nullptr; }
-		virtual void	Unk_48(void);	// 48
 	};
 	STATIC_ASSERT(sizeof(TESObject) == 0x20);
 }

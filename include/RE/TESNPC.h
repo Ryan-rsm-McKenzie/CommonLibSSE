@@ -26,10 +26,10 @@ namespace RE
 
 
 	class TESNPC :
-		public TESActorBase,
-		public TESRaceForm,
-		public BGSOverridePackCollection,
-		public BSTEventSink<MenuOpenCloseEvent>
+		public TESActorBase,					// 000
+		public TESRaceForm,						// 150
+		public BGSOverridePackCollection,		// 160
+		public BSTEventSink<MenuOpenCloseEvent>	// 188
 	{
 	public:
 		enum { kTypeID = FormType::NPC };
@@ -76,12 +76,12 @@ namespace RE
 
 		// override (TESActorBase)
 		virtual const char*		GetAliasName(const BSFixedString& a_alias) override;																							// 2E - alias: "Pronoun" "PronounObj" "PronounPos" "PronounPosObj" "PronounRef" "PronounInt" "Race" "Gender" "ShortName". see http://www.creationkit.com/Text_Replacement
-		virtual void			CopyFrom(TESForm* a_srcForm) override;																										// 2F - { return; }
-		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, uintptr_t a_arg3, uintptr_t a_arg4, uintptr_t a_arg5);	// 37
-		virtual BGSVoiceType*	GetVoiceType() const;																												// 4A - { return nullptr; }
-		virtual bool			GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst, bool a_unk);																// 4D
-		virtual TESCombatStyle*	GetCombatStyle();
-		virtual void			SetCombatStyle(TESCombatStyle* a_arg);
+		virtual void			CopyFrom(TESForm* a_srcForm) override;																											// 2F - { return; }
+		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, uintptr_t a_arg3, uintptr_t a_arg4, uintptr_t a_arg5) override;	// 37
+		virtual BGSVoiceType*	GetVoiceType() const override;																													// 4A - { return nullptr; }
+		virtual bool			GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst, bool a_unk) override;																	// 4C
+		virtual TESCombatStyle*	GetCombatStyle() override;																														// 55
+		virtual void			SetCombatStyle(TESCombatStyle* a_arg) override;																									// 56
 
 		char					GetSex();
 		bool					HasOverlays();

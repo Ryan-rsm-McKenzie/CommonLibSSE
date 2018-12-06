@@ -29,8 +29,8 @@ namespace RE
 	BSFixedString::BSFixedString(const char* a_str)
 	{
 		typedef BSFixedString* _ctor_t(BSFixedString* a_this, const char* a_str);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSFixedString*>(this)->_ctor_GetPtr());
-		static _ctor_t* _ctor = reinterpret_cast<_ctor_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSFixedString*>(this)->_ctor_GetPtr());
+		_ctor_t* _ctor = reinterpret_cast<_ctor_t*>(*ptr);
 
 		_ctor(this, a_str);
 	}
@@ -39,8 +39,8 @@ namespace RE
 	BSFixedString::~BSFixedString()
 	{
 		typedef void _dtor_t(BSFixedString* a_this);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSFixedString*>(this)->_Release_GetPtr());
-		static _dtor_t* _dtor = reinterpret_cast<_dtor_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSFixedString*>(this)->_Release_GetPtr());
+		_dtor_t* _dtor = reinterpret_cast<_dtor_t*>(*ptr);
 
 		_dtor(this);
 	}
@@ -55,8 +55,8 @@ namespace RE
 	BSFixedString& BSFixedString::operator=(const BSFixedString& a_rhs)
 	{
 		typedef void _dtor_t(BSFixedString* a_this);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSFixedString*>(this)->_Release_GetPtr());
-		static _dtor_t* _dtor = reinterpret_cast<_dtor_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSFixedString*>(this)->_Release_GetPtr());
+		_dtor_t* _dtor = reinterpret_cast<_dtor_t*>(*ptr);
 
 		if (data && data[0]) {
 			_dtor(this);
@@ -78,12 +78,12 @@ namespace RE
 	BSFixedString& BSFixedString::operator=(const char* a_rhs)
 	{
 		typedef void _dtor_t(BSFixedString* a_this);
-		static uintptr_t* ptr1 = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSFixedString*>(this)->_Release_GetPtr());
-		static _dtor_t* _dtor = reinterpret_cast<_dtor_t*>(*ptr1);
+		uintptr_t* ptr1 = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSFixedString*>(this)->_Release_GetPtr());
+		_dtor_t* _dtor = reinterpret_cast<_dtor_t*>(*ptr1);
 
 		typedef BSFixedString* _Set_t(BSFixedString* a_this, const char* a_rhs);
-		static uintptr_t* ptr2 = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSFixedString*>(this)->_Set_GetPtr());
-		static _Set_t* _Set = reinterpret_cast<_Set_t*>(*ptr2);
+		uintptr_t* ptr2 = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSFixedString*>(this)->_Set_GetPtr());
+		_Set_t* _Set = reinterpret_cast<_Set_t*>(*ptr2);
 
 
 		if (data && data[0]) {

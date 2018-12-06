@@ -47,16 +47,17 @@ namespace RE
 
 
 		IMenu();
-		virtual ~IMenu();
+		virtual ~IMenu();													// 0
 
-		virtual void	Accept(CallbackProcessor* a_processor) override;
-		virtual void	OnOpen();
-		virtual void	Unk_03(void);
-		virtual Result	ProcessMessage(UIMessage* a_message);
-		virtual void	NextFrame(UInt32 a_arg1, UInt32 a_arg2);
-		virtual void	Render();
-		virtual void	Unk_07(void);
-		virtual void	InitMovie();
+		// add
+		virtual void	Accept(CallbackProcessor* a_processor) override;	// 1
+		virtual void	OnOpen();											// 2
+		virtual void	Unk_03(void);										// 3
+		virtual Result	ProcessMessage(UIMessage* a_message);				// 4
+		virtual void	NextFrame(UInt32 a_arg1, UInt32 a_arg2);			// 5
+		virtual void	Render();											// 6
+		virtual void	Unk_07(void);										// 7
+		virtual void	InitMovie();										// 8
 
 		bool			PausesGame();
 		bool			DeletesOnClose();

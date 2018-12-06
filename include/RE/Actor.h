@@ -31,7 +31,7 @@ namespace RE
 	class PerkEntryVisitor;
 	class TESRace;
 	class TESFaction;
-
+	int size = sizeof(ActorState);
 
 	class Actor :
 		public TESObjectREFR,								// 000
@@ -288,7 +288,7 @@ namespace RE
 		bool			IsSneaking();
 		bool			IsTrespassing() const;
 		void			DispelWornItemEnchantments();
-		void			SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_unk);
+		SInt32			SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);	// ret -1 == internal error, 0 == didn't get caught, 1 == got caught
 		SInt32			CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_unk);
 		SInt32			GetDetectionLevel(Actor* a_target, UInt32 a_flag);
 		bool			IsGhost();

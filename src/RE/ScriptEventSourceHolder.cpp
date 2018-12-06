@@ -20,7 +20,7 @@ namespace RE
 	void ScriptEventSourceHolder::SendActivateEvent(TESObjectREFRPtr& a_target, TESObjectREFRPtr& a_caster)
 	{
 		typedef void _SendActivateEvent_t(ScriptEventSourceHolder* a_this, TESObjectREFRPtr& a_target, TESObjectREFRPtr& a_caster);
-		static RelocAddr<_SendActivateEvent_t*> _SendActivateEvent(SCRIPT_EVENT_SOURCE_HOLDER_SEND_ACTIVATE_EVENT);
+		RelocAddr<_SendActivateEvent_t*> _SendActivateEvent(SCRIPT_EVENT_SOURCE_HOLDER_SEND_ACTIVATE_EVENT);
 		return _SendActivateEvent(this, a_target, a_caster);
 	}
 }

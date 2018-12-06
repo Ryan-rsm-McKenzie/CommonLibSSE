@@ -6,7 +6,7 @@ namespace RE
 	TESObjectBOOK::Data::Flag TESObjectBOOK::Data::GetSanitizedType()
 	{
 		typedef Flag _GetSanitizedType_t(TESObjectBOOK::Data* a_this);
-		static _GetSanitizedType_t* _GetSanitizedType = reinterpret_cast<_GetSanitizedType_t*>(GetFnAddr(&::TESObjectBOOK::Data::GetSanitizedType));
+		_GetSanitizedType_t* _GetSanitizedType = reinterpret_cast<_GetSanitizedType_t*>(GetFnAddr(&::TESObjectBOOK::Data::GetSanitizedType));
 		return _GetSanitizedType(this);
 	}
 

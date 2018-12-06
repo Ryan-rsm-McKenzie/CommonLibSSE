@@ -42,13 +42,6 @@ namespace RE
 		bool						pad81;			// 81
 		bool						remapMode;		// 82
 		UInt8						pad83;			// 83
-
-	private:
-		typedef void _RegisterHandler_Impl_t(MenuControls* a_this, MenuEventHandler* a_handler);
-		static RelocAddr<_RegisterHandler_Impl_t*> _RegisterHandler_Impl;
-
-		typedef void _RemoveHandler_Impl_t(MenuControls* a_this, MenuEventHandler* a_handler);
-		static RelocAddr<_RemoveHandler_Impl_t*> _RemoveHandler_Impl;
 	};
 	STATIC_ASSERT(offsetof(MenuControls, handlers) == 0x18);
 	STATIC_ASSERT(offsetof(MenuControls, remapMode) == 0x82);

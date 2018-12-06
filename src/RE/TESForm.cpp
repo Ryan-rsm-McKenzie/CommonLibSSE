@@ -11,7 +11,7 @@ namespace RE
 	void TESForm::CopyFromEx(TESForm* a_rhs)
 	{
 		typedef void _CopyFromEx_t(TESForm* a_this, TESForm* a_rhs);
-		static _CopyFromEx_t* _CopyFromEx = reinterpret_cast<_CopyFromEx_t*>(GetFnAddr(&::TESForm::CopyFromEx));
+		_CopyFromEx_t* _CopyFromEx = reinterpret_cast<_CopyFromEx_t*>(GetFnAddr(&::TESForm::CopyFromEx));
 		_CopyFromEx(this, a_rhs);
 	}
 
@@ -91,10 +91,10 @@ namespace RE
 	}
 
 
-	double TESForm::GetWeight()
+	float TESForm::GetWeight()
 	{
 		typedef float _GetWeight_t(TESForm* a_this);
-		static _GetWeight_t* _GetWeight = reinterpret_cast<_GetWeight_t*>(GetFnAddr(&::GetFormWeight));
+		_GetWeight_t* _GetWeight = reinterpret_cast<_GetWeight_t*>(GetFnAddr(&::GetFormWeight));
 
 		TESObjectREFR* ref = const_cast<TESForm*>(this)->GetReference();
 		return _GetWeight(ref ? ref->baseForm : this);

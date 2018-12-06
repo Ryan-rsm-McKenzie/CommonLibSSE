@@ -16,8 +16,8 @@ namespace RE
 	bool GFxLoader::LoadMovie(IMenu* a_menu, GFxMovieView*& a_viewOut, const char* a_swfName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		typedef bool _LoadMovie_t(GFxLoader* a_this, IMenu* a_menu, GFxMovieView*& a_viewOut, const char* a_swfName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::GFxLoader*>(this)->_LoadMovie_GetPtr());
-		static _LoadMovie_t* _LoadMovie = reinterpret_cast<_LoadMovie_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::GFxLoader*>(this)->_LoadMovie_GetPtr());
+		_LoadMovie_t* _LoadMovie = reinterpret_cast<_LoadMovie_t*>(*ptr);
 		return _LoadMovie(this, a_menu, a_viewOut, a_swfName, a_mode, a_backGroundAlpha);
 	}
 }

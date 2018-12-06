@@ -25,8 +25,8 @@ namespace RE
 	float TESObjectREFR::GetBaseScale()
 	{
 		typedef float _GetBaseScale_t(TESObjectREFR* a_this);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESObjectREFR*>(this)->_GetBaseScale_GetPtr());
-		static _GetBaseScale_t* _GetBaseScale = reinterpret_cast<_GetBaseScale_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESObjectREFR*>(this)->_GetBaseScale_GetPtr());
+		_GetBaseScale_t* _GetBaseScale = reinterpret_cast<_GetBaseScale_t*>(*ptr);
 		return _GetBaseScale(this);
 	}
 
@@ -34,8 +34,8 @@ namespace RE
 	bool TESObjectREFR::IsOffLimits()
 	{
 		typedef bool _IsOffLimits_t(TESObjectREFR* a_this);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESObjectREFR*>(this)->_IsOffLimits_GetPtr());
-		static _IsOffLimits_t* _IsOffLimits = reinterpret_cast<_IsOffLimits_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESObjectREFR*>(this)->_IsOffLimits_GetPtr());
+		_IsOffLimits_t* _IsOffLimits = reinterpret_cast<_IsOffLimits_t*>(*ptr);
 		return _IsOffLimits(this);
 	}
 
@@ -43,8 +43,8 @@ namespace RE
 	float TESObjectREFR::GetWeight()
 	{
 		typedef float _GetWeight_t(TESObjectREFR* a_this);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESObjectREFR*>(this)->_GetWeight_GetPtr());
-		static _GetWeight_t* _GetWeight = reinterpret_cast<_GetWeight_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESObjectREFR*>(this)->_GetWeight_GetPtr());
+		_GetWeight_t* _GetWeight = reinterpret_cast<_GetWeight_t*>(*ptr);
 		return _GetWeight(this);
 	}
 
@@ -52,8 +52,8 @@ namespace RE
 	const char* TESObjectREFR::GetReferenceName()
 	{
 		typedef const char* _GetReferenceName_t(TESObjectREFR* a_this);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESObjectREFR*>(this)->_GetReferenceName_GetPtr());
-		static _GetReferenceName_t* _GetReferenceName = reinterpret_cast<_GetReferenceName_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESObjectREFR*>(this)->_GetReferenceName_GetPtr());
+		_GetReferenceName_t* _GetReferenceName = reinterpret_cast<_GetReferenceName_t*>(*ptr);
 		return _GetReferenceName(this);
 	}
 
@@ -61,8 +61,8 @@ namespace RE
 	TESWorldSpace* TESObjectREFR::GetWorldspace()
 	{
 		typedef TESWorldSpace* _GetWorldspace_t(TESObjectREFR* a_this);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESObjectREFR*>(this)->_GetWorldspace_GetPtr());
-		static _GetWorldspace_t* _GetWorldspace = reinterpret_cast<_GetWorldspace_t*>(*ptr);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESObjectREFR*>(this)->_GetWorldspace_GetPtr());
+		_GetWorldspace_t* _GetWorldspace = reinterpret_cast<_GetWorldspace_t*>(*ptr);
 		return _GetWorldspace(this);
 	}
 
@@ -70,7 +70,7 @@ namespace RE
 	UInt32 TESObjectREFR::CreateRefHandle()
 	{
 		typedef UInt32 _CreateRefHandle_t(TESObjectREFR* a_this);
-		static _CreateRefHandle_t* _CreateRefHandle = reinterpret_cast<_CreateRefHandle_t*>(GetFnAddr(&::TESObjectREFR::CreateRefHandle));
+		_CreateRefHandle_t* _CreateRefHandle = reinterpret_cast<_CreateRefHandle_t*>(GetFnAddr(&::TESObjectREFR::CreateRefHandle));
 		return _CreateRefHandle(this);
 	}
 
@@ -143,7 +143,7 @@ namespace RE
 	TESForm* TESObjectREFR::GetOwner()
 	{
 		typedef TESForm* _GetOwner_Impl_t(TESObjectREFR* a_this);
-		static RelocAddr<_GetOwner_Impl_t*> _GetOwner_Impl(TES_OBJECT_REFR_GET_OWNER_IMPL);
+		RelocAddr<_GetOwner_Impl_t*> _GetOwner_Impl(TES_OBJECT_REFR_GET_OWNER_IMPL);
 		return _GetOwner_Impl(this);
 	}
 
@@ -240,7 +240,7 @@ namespace RE
 	LockState* TESObjectREFR::GetLockState()
 	{
 		typedef LockState* _GetLockState_Impl_t(TESObjectREFR* a_this);
-		static RelocAddr<_GetLockState_Impl_t*> _GetLockState_Impl(TES_OBJECT_REFR_GET_LOCK_STATE_IMPL);
+		RelocAddr<_GetLockState_Impl_t*> _GetLockState_Impl(TES_OBJECT_REFR_GET_LOCK_STATE_IMPL);
 		return _GetLockState_Impl(this);
 	}
 
@@ -262,7 +262,7 @@ namespace RE
 	UInt32 TESObjectREFR::GetNumItems(bool a_unk1, bool a_unk2)
 	{
 		typedef UInt32 _GetNumItems_t(TESObjectREFR* a_this, bool a_unk1, bool a_unk2);
-		static RelocAddr<_GetNumItems_t*> _GetNumItems(TES_OBJECT_REFR_GET_NUM_ITEMS);
+		RelocAddr<_GetNumItems_t*> _GetNumItems(TES_OBJECT_REFR_GET_NUM_ITEMS);
 		return _GetNumItems(this, a_unk1, a_unk2);
 	}
 
@@ -270,7 +270,7 @@ namespace RE
 	UInt32 TESObjectREFR::ActivateRefChildren(TESObjectREFR* a_activator)
 	{
 		typedef UInt32 _ActivateRefChildren_t(TESObjectREFR* a_this, TESObjectREFR* a_activator);
-		static RelocAddr<_ActivateRefChildren_t*> _ActivateRefChildren(TES_OBJECT_REFR_ACTIVATE_REF_CHILDREN);
+		RelocAddr<_ActivateRefChildren_t*> _ActivateRefChildren(TES_OBJECT_REFR_ACTIVATE_REF_CHILDREN);
 		return _ActivateRefChildren(this, a_activator);
 	}
 
@@ -278,7 +278,7 @@ namespace RE
 	void TESObjectREFR::PlayAnimation(RE::NiControllerManager* a_manager, RE::NiControllerSequence* a_toSeq, RE::NiControllerSequence* a_fromSeq, bool a_unk)
 	{
 		typedef void _PlayAnimation_t(TESObjectREFR* a_this, NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_unk);
-		static RelocAddr<_PlayAnimation_t*> _PlayAnimation(TES_OBJECT_REFR_PLAY_ANIMATION);
+		RelocAddr<_PlayAnimation_t*> _PlayAnimation(TES_OBJECT_REFR_PLAY_ANIMATION);
 		_PlayAnimation(this, a_manager, a_toSeq, a_fromSeq, a_unk);
 	}
 
@@ -294,7 +294,7 @@ namespace RE
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
 		typedef InventoryChanges* _GetInventoryChanges_t(TESObjectREFR* a_this);
-		static RelocAddr<_GetInventoryChanges_t*> _GetInventoryChanges(TES_OBJECT_REFR_GET_INVENTORY_CHANGES);
+		RelocAddr<_GetInventoryChanges_t*> _GetInventoryChanges(TES_OBJECT_REFR_GET_INVENTORY_CHANGES);
 		return _GetInventoryChanges(this);
 	}
 }
