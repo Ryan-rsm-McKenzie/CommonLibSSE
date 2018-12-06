@@ -31,14 +31,14 @@ namespace RE
 
 
 	class PlayerCharacter :
-		public Character,
-		public BSTEventSink<MenuOpenCloseEvent>,
-		public BSTEventSink<MenuModeChangeEvent>,
-		public BSTEventSink<UserEventEnabledEvent>,
-		public BSTEventSink<TESTrackedStatsEvent>,
-		public BSTEventSource<BGSActorCellEvent>,
-		public BSTEventSource<BGSActorDeathEvent>,
-		public BSTEventSource<PositionPlayerEvent>
+		public Character,							// 000
+		public BSTEventSink<MenuOpenCloseEvent>,	// 2B0
+		public BSTEventSink<MenuModeChangeEvent>,	// 2B8
+		public BSTEventSink<UserEventEnabledEvent>,	// 2C0
+		public BSTEventSink<TESTrackedStatsEvent>,	// 2C8
+		public BSTEventSource<BGSActorCellEvent>,	// 2D0
+		public BSTEventSource<BGSActorDeathEvent>,	// 328
+		public BSTEventSource<PositionPlayerEvent>	// 380
 	{
 	public:
 		enum EventType : UInt32
@@ -257,7 +257,7 @@ namespace RE
 		UInt32							unk95C;					// 95C
 		UInt32							unk960;					// 960
 		UInt32							unk964;					// 964
-		UInt64							unk968;					// 968
+		void*							currentPoison;			// 968
 		UInt64							unk970;					// 970 - init'd to GetTickCount() in ctor
 		UInt64							unk978;					// 978
 		UInt32							unk980;					// 980 - init'd to _time64(NULL) in ctor
