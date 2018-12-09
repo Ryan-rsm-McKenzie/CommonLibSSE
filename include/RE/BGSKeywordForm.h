@@ -10,11 +10,11 @@ namespace RE
 	class BGSKeywordForm : public BaseFormComponent
 	{
 	public:
-		virtual ~BGSKeywordForm();									// 0
+		virtual ~BGSKeywordForm();									// 00
 
 		// add
-		virtual bool	HasKeyword(BGSKeyword* a_keyword) const;	// 4
-		virtual void*	GetDefaultKeyword();						// 5 - { return 0; }
+		virtual bool	HasKeyword(BGSKeyword* a_keyword) const;	// 04
+		virtual void*	GetDefaultKeyword();						// 05 - { return 0; }
 
 		bool			HasKeyword(UInt32 a_formID) const;
 		bool			GetKeywordAt(UInt32 a_idx, BGSKeyword*& a_keyword) const;

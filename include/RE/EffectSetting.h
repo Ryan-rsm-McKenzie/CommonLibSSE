@@ -1,8 +1,9 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESFullName, BGSMenuDisplayObject, BGSKeywordForm
+#include "skse64/GameFormComponents.h"  // TESFullName, BGSMenuDisplayObject
 
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BGSKeywordForm.h"  // BGSKeywordForm
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/TESForm.h"  // TESForm
@@ -14,13 +15,13 @@ class BGSPerk;
 class BGSProjectile;
 class BGSDualCastData;
 class SpellItem;
-class TESEffectShader;
 class TESImageSpaceModifier;
 class TESSound;
 
 
 namespace RE
 {
+	class TESEffectShader;
 	class TESObjectLIGH;
 
 
@@ -336,8 +337,8 @@ namespace RE
 			ActorValue				primaryActorValue;		// 5C - init'd to FFFFFFFF
 			BGSProjectile*			projectile;				// 60 - init'd to 0
 			BGSExplosion*			explosion;				// 68 - init'd to 0
-			CastingType				castingType;			// 70 - init'd to 3 cast type?
-			DeliveryType			deliveryType;			// 74 - init'd to 5 cast type?
+			CastingType				castingType;			// 70 - init'd to 3
+			DeliveryType			deliveryType;			// 74 - init'd to 5
 			ActorValue				secondaryActorValue;	// 78 - init'd to FFFFFFFF
 			BGSArtObject*			castingArt;				// 80 - init'd to 0
 			BGSArtObject*			hitEffectArt;			// 88 - init'd to 0
@@ -375,11 +376,21 @@ namespace RE
 		};
 
 
+		// override (TESForm)
+		virtual bool			LoadForm(TESFile* a_mod) override;					// 06
+		virtual void			InitItem() override;								// 13
+		virtual void			CopyFrom(TESForm* a_srcForm) override;				// 2F
+		virtual const char*		GetTypeString() const override;						// 39
+
+		// override (BGSKeywordForm)
+		virtual bool			HasKeyword(BGSKeyword* a_keyword) const override;	// 04
+
 		UInt32	GetSchool();
 		UInt32	GetLevel();
 		bool	HasArchetype(Properties::Archetype a_type);
 
 
+		// members
 		void*							unk058;			// 58
 		void*							unk060;			// 60
 		Properties						properties;		// 68

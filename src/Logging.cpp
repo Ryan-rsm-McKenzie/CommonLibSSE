@@ -11,7 +11,7 @@ namespace RE
 	void DBOut(const char* a_file, const int a_line, IDebugLog::LogLevel a_logLevel, const char* a_str, ...)
 	{
 		static char formatBuf[8192] = { 0 };
-		va_list args = 0;
+		va_list args;
 		va_start(args, a_str);
 		vsprintf_s(formatBuf, sizeof(formatBuf), a_str, args);
 		std::ostringstream oss;

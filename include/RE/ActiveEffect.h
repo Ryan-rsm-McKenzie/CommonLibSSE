@@ -1,19 +1,17 @@
 #pragma once
 
-#include "skse64/GameForms.h"  // kFormType
 #include "skse64/GameObjects.h"  // ActiveEffectReferenceEffectController
 
-#include "RE/MagicItem.h"  // MagicItem::EffectItem
-
-class MagicItem;
-class TESForm;
+#include "RE/FormTypes.h"  // FormType
 
 
 namespace RE
 {
 	class EffectSetting;
 	class MagicItem;
+	class TESForm;
 	class TESObjectREFR;
+	struct EffectItem;
 
 
 	class ActiveEffect
@@ -24,13 +22,13 @@ namespace RE
 
 		enum Flag
 		{
-			kFlag_Inactive	= 0x08000,
-			kFlag_Dispelled	= 0x40000
+			kInactive	= 0x08000,
+			kDispelled	= 0x40000
 		};
 
 
 		// add
-		virtual ~ActiveEffect();	// 0
+		virtual ~ActiveEffect();	// 00
 
 		EffectSetting*	GetBaseObject() const;
 		bool			Dispell(bool a_force);	// Returns success?
@@ -48,7 +46,7 @@ namespace RE
 		UInt32									casterRefhandle;	// 34
 		void*									niNode;				// 38
 		MagicItem*								item;				// 40 - init'd to ctor argument
-		MagicItem::EffectItem*					effect;				// 48 - init'd to ctor argumet
+		EffectItem*								effect;				// 48 - init'd to ctor argumet
 		TESObjectREFR*							magicTarget;		// 50
 		TESForm*								sourceItem;			// 58
 		void*									unk60;				// 60

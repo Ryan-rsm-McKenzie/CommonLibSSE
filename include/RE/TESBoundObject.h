@@ -27,17 +27,17 @@ namespace RE
 		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, uintptr_t a_arg3, uintptr_t a_arg4, uintptr_t a_arg5) override;	// 37
 
 		// add
-		virtual void			Unk_49(void);																																	// 48 - { return; }
+		virtual void			Unk_48(void);																																	// 48 - { return; }
 		virtual BGSVoiceType*	GetVoiceType() const;																															// 49 - { return nullptr; }
-		virtual void			Unk_4B(void);																																	// 4A
-		virtual void			Unk_4C(void);																																	// 4B - { return true; }
+		virtual void			Unk_4A(void);																																	// 4A
+		virtual void			Unk_4B(void);																																	// 4B - { return true; }
 		virtual bool			GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst, bool a_unk);																			// 4C
-		virtual void			Unk_4E(void);																																	// 4D
+		virtual void			Unk_4D(void);																																	// 4D
 		virtual void			OnRemovedFrom(TESObjectREFR* a_ref);																											// 4E - { return; } TESAmmo=func
-		virtual void			Unk_50(void);																																	// 5F - { return; }
-		virtual void			Unk_51(void);																																	// 50 - { return; }
-		virtual void			Unk_52(void);																																	// 51 - { return; }
-		virtual void			Unk_53(void);																																	// 52 - { return; }
+		virtual void			Unk_4F(void);																																	// 4F - { return; }
+		virtual void			Unk_50(void);																																	// 50 - { return; }
+		virtual void			Unk_51(void);																																	// 51 - { return; }
+		virtual void			Unk_52(void);																																	// 52 - { return; }
 
 
 		Bound	bounds;		// 20

@@ -5,9 +5,9 @@
 
 namespace RE
 {
-	MagicItem::EffectItem* MagicItem::GetCostliestEffectItem(int a_arg1, bool a_arg2)
+	EffectItem* MagicItem::GetCostliestEffectItem(int a_arg1, bool a_arg2)
 	{
-		typedef MagicItem::EffectItem* _GetCostliestEffectItem_t(MagicItem* a_this, int a_arg1, bool a_arg2);
+		typedef EffectItem* _GetCostliestEffectItem_t(MagicItem* a_this, int a_arg1, bool a_arg2);
 		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::MagicItem*>(this)->_GetCostliestEffectItem_GetPtr());
 		_GetCostliestEffectItem_t* _GetCostliestEffectItem = reinterpret_cast<_GetCostliestEffectItem_t*>(*ptr);
 		return _GetCostliestEffectItem(this, a_arg1, a_arg2);

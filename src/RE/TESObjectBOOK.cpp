@@ -1,5 +1,7 @@
 #include "RE/TESObjectBOOK.h"
 
+#include "skse64/GameObjects.h"  // TESObjectBOOK
+
 
 namespace RE
 {
@@ -13,24 +15,24 @@ namespace RE
 
 	bool TESObjectBOOK::TeachesSkill() const
 	{
-		return (data.flags & Data::Flag::kFlag_Skill) != 0;
+		return (data.flags & Data::Flag::kSkill) != 0;
 	}
 
 
 	bool TESObjectBOOK::TeachesSpell() const
 	{
-		return (data.flags & Data::Flag::kFlag_Spell) != 0;
+		return (data.flags & Data::Flag::kSpell) != 0;
 	}
 
 
 	bool TESObjectBOOK::IsRead() const
 	{
-		return (data.flags & Data::Flag::kFlag_Read) != 0;
+		return (data.flags & Data::Flag::kRead) != 0;
 	}
 
 
 	bool TESObjectBOOK::CanBeTaken() const
 	{
-		return (data.flags & Data::Flag::kFlag_CantBeTaken) == 0;
+		return (data.flags & Data::Flag::kCantBeTaken) == 0;
 	}
 }

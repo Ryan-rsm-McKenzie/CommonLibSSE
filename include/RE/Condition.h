@@ -9,50 +9,50 @@ namespace RE
 	class Condition
 	{
 	private:
-		enum RunOn : UInt32
+		enum class RunOn : UInt32
 		{
-			kRunOn_None,
-			kRunOn_PerkOwner,
-			kRunOn_Target
+			kNone = 0,
+			kPerkOwner,
+			kTarget
 		};
 
 	public:
-		enum OpCode : UInt8
+		enum class OpCode : UInt8
 		{
-			kOpCode_EqualTo,	// ==
-			kOpCode_NotEqualTo,	// !=
-			kOpCode_GreaterThan,	// >
-			kOpCode_GreaterThanOrEqualTo,	// >=
-			kOpCode_LessThan,	// <
-			kOpCode_LessThanOrEqualTo,	// <=
+			kEqualTo,				// ==
+			kNotEqualTo,			// !=
+			kGreaterThan,			// >
+			kGreaterThanOrEqualTo,	// >=
+			kLessThan,				// <
+			kLessThanOrEqualTo,		// <=
 		};
 
 
-		enum ReferenceType : UInt8
+		enum class ReferenceType : UInt8
 		{
-			kReferenceType_Subject = 0,
-			kReferenceType_Target,
-			kReferenceType_Reference,
-			kReferenceType_CombatTarget,
-			kReferenceType_LinkedReference,
-			kReferenceType_QuestAlias,
-			kReferenceType_PackageData,
-			kReferenceType_EventData,
-			kReferenceType_Player
+			kSubject = 0,
+			kTarget,
+			kReference,
+			kCombatTarget,
+			kLinkedReference,
+			kQuestAlias,
+			kPackageData,
+			kEventData,
+			kPlayer
 		};
 
 
 		// Betheseda keeps these in a giant lookup table
 		// typedef bool(*func)(TESObjectREFR* perkOwnerOrTarget, void* param1, void* param2, float& result);
-		enum FunctionID : UInt16
+		enum class FunctionID : UInt16
 		{
-			kFunctionID_GetLocked = 0x0005,
-			kFunctionID_GetDead = 0x002E,
-			kFunctionID_GetLockLevel = 0x0041,
-			kFunctionID_GetIsRace = 0x0045,
-			kFunctionID_HasBeenEaten = 0x007F,
-			kFunctionID_HasMagicEffect = 0x00D6,
-			kFunctionID_HasPerk = 0x01C0
+			kGetLocked = 0x0005,
+			kGetDead = 0x002E,
+			kGetLockLevel = 0x0041,
+			kGetIsRace = 0x0045,
+			kHasBeenEaten = 0x007F,
+			kHasMagicEffect = 0x00D6,
+			kHasPerk = 0x01C0
 		};
 
 
@@ -99,7 +99,7 @@ namespace RE
 			Node*			next;				// 00
 			float			comparisonValue;	// 08
 			UInt32			unk0C;				// 0C
-			UInt32			refHandle;			// 10 - kReferenceType_Reference
+			UInt32			refHandle;			// 10 - kReference
 			SInt32			unk14;				// 14
 			FunctionID		functionID;			// 18
 			UInt8			unk1A;				// 1A

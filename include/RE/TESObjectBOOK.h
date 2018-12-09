@@ -1,10 +1,11 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESFullName, TESModelTextureSwap, TESIcon, TESValueForm, TESWeightForm, TESDescription, BGSDestructibleObjectForm, BGSMessageIcon, BGSPickupPutdownSounds
-#include "skse64/GameObjects.h"  // TESObjectBOOK
+#include "skse64/GameFormComponents.h"  // TESModelTextureSwap, TESIcon, TESValueForm, TESWeightForm, TESDescription, BGSDestructibleObjectForm, BGSMessageIcon, BGSPickupPutdownSounds
 
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
 #include "RE/TESBoundObject.h"  // TESBoundObject
+#include "RE/TESFullName.h"  // TESFullName
+#include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
 
 class SpellItem;
 class TESObjectSTAT;
@@ -33,11 +34,11 @@ namespace RE
 		{
 			enum Flag : UInt8
 			{
-				kFlag_None			= 0,
-				kFlag_Skill			= 1 << 0,
-				kFlag_CantBeTaken	= 1 << 1,
-				kFlag_Spell			= 1 << 2,	// takes priority over skill
-				kFlag_Read			= 1 << 3,	// set once the book is equipped by the player, along with the CHANGE_BOOK_READ (0x40) change flag
+				kNone = 0,
+				kSkill = 1 << 0,
+				kCantBeTaken = 1 << 1,
+				kSpell = 1 << 2,		// takes priority over skill
+				kRead = 1 << 3,			// set once the book is equipped by the player, along with the CHANGE_BOOK_READ (0x40) change flag
 			};
 
 

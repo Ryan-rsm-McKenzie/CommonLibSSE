@@ -133,6 +133,12 @@
     <Filter Include="src\RE\SKSE\obscript">
       <UniqueIdentifier>{ad8683f1-c449-4c65-943e-cb9e7b1c3610}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\FileIO">
+      <UniqueIdentifier>{e94d49e5-573f-465f-8dcf-37c235cf3bfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\FileIO">
+      <UniqueIdentifier>{6a60f52c-744c-4825-af1b-63f6e6e0f7d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -314,6 +320,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\TESObjectWEAP.cpp">
       <Filter>src\RE\Skyrim\TESForms\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESDataHandler.cpp">
+      <Filter>src\RE\Skyrim\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\SpellItem.cpp">
+      <Filter>src\RE\Skyrim\Magic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -712,6 +724,30 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESObjectWEAP.h">
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESEffectShader.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESTexture.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESDataHandler.h">
+      <Filter>include\RE\Skyrim\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\EffectItem.h">
+      <Filter>include\RE\Skyrim\Magic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SpellItem.h">
+      <Filter>include\RE\Skyrim\Magic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESFullName.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESModelTextureSwap.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESModel.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

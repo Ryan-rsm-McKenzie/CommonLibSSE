@@ -1,17 +1,16 @@
 #pragma once
 
-#include "skse64_common/Utilities.h"
-#include "skse64/GameAPI.h"
-#include "skse64/GameFormComponents.h"  // TESFullName,  BGSKeywordForm
-#include "skse64/GameTypes.h"  // tArray
-
+#include "RE/BGSKeywordForm.h"  // BGSKeywordForm
+#include "RE/BSTArray.h"  // BSTArray
 #include "RE/TESBoundObject.h"  // TESBoundObject
+#include "RE/TESFullName.h"  // TESFullName
 
 
 namespace RE
 {
 	class Character;
 	class EffectSetting;
+	struct EffectItem;
 
 
 	class MagicItem :
@@ -20,73 +19,95 @@ namespace RE
 		public BGSKeywordForm
 	{
 	public:
-		struct EffectItem
+		enum class Type : UInt32
 		{
-			float			magnitude;	// 00
-			UInt32			area;		// 04
-			UInt32			duration;	// 08
-			UInt32			pad0C;		// 0C
-			EffectSetting*	mgef;		// 10
-			float			cost;		// 18
-			UInt32			pad1C;		// 1C
-			Condition*		conditions;	// 20
-
-			EffectItem()
-			{
-				magnitude = 0;
-				area = 0;
-				duration = 0;
-				mgef = NULL;
-				cost = 0.0;
-				pad1C = 0;
-				conditions = NULL;
-			}
-
-			DEFINE_STATIC_HEAP(Heap_Allocate, Heap_Free);
+			kSpell = 0,
+			kDisease,
+			kPower,
+			kLesserPower,
+			kAbility,
+			kPoison,
+			kEnchantment,
+			kArchemy,
+			kIngredient,
+			kUnk09,
+			kUnk10,
+			kVoicePower,
+			kStaffEnchantment,
+			kScroll
 		};
 
 
-		virtual UInt32		GetMagicType() const;
-		virtual void		SetCastingType(UInt32 a_castingType);
-		virtual UInt32		GetCastingType() const;
-		virtual void		SetDeliveryType(UInt32 a_deliveryType);
-		virtual UInt32		GetDeliveryType() const;
-		virtual bool		Unk_57(UInt32 a_arg);
-		virtual float		GetCastDuration() const;
-		virtual float		GetRange() const;
-		virtual bool		Unk_5A(void);
-		virtual bool		Unk_5B(void);
-		virtual bool		Unk_5C(void);
-		virtual bool		Unk_5D(void);
-		virtual bool		Unk_5E(void);
-		virtual bool		Unk_5F(UInt32 a_arg);
-		virtual bool		IsPoison() const;
-		virtual bool		Unk_61(void);
-		virtual void		Unk_62(UInt32 a_arg0, UInt32 a_arg1);
-		virtual float		GetChargeTime() const;
-		virtual UInt32		Unk_64(void);
-		virtual UInt32		GetActorValueType() const;
-		virtual bool		Unk_66(void);
-		virtual UInt32		GetDataSigniture() const;
-		virtual void		CopyData(MagicItem* a_src);
-		virtual void		Unk_69(UInt32 a_arg0, UInt32 a_arg1);
-		virtual void		Unk_6A(UInt32 a_arg);
-		virtual void*		Unk_6B(void);
-		virtual void*		Unk_6C(void);
-		virtual UInt32		GetDataSize() const;
-		virtual void		Unk_6E(void);
+		enum class CastType : UInt32
+		{
+			kConstant = 0,
+			kFireAndForget,
+			kConcentration
+		};
+
+
+		enum class TargetType : UInt32
+		{
+			kSelf = 0,
+			kContact,
+			kAimed,
+			kTargetActor,
+			kTargetLocation,
+		};
+
+
+		class PreloadableVisitor
+		{
+		public:
+			virtual ~PreloadableVisitor();
+			virtual void Visit(void) = 0;
+		};
+
+
+		// override (TESBoundObject)
+		virtual bool			IsMagicItem() const;					// 29
+
+		// add
+		virtual Type		GetMagicType() const = 0;					// 53
+		virtual void		SetCastType(CastType a_castingType);		// 54 - { return; }
+		virtual CastType	GetCastType() const = 0;					// 55
+		virtual void		SetTargetType(TargetType a_deliveryType);	// 56 - { return; }
+		virtual TargetType	GetTargetType() const = 0;					// 57
+		virtual void		Unk_58(void);								// 58
+		virtual float		GetCastDuration() const;					// 59 - { return 0.0f; }
+		virtual float		GetRange() const;							// 5A - { return 0.0f; }
+		virtual void		Unk_5B(void);								// 5B
+		virtual void		Unk_5C(void);								// 5C
+		virtual void		Unk_5D(void);								// 5D
+		virtual void		Unk_5E(void);								// 5E
+		virtual void		Unk_5F(void);								// 5F
+		virtual void		Unk_60(void);								// 60
+		virtual bool		IsPoison() const;							// 61 - { return GetMagicType() == kPoison } offensive or defensive ?
+		virtual void		Unk_62(void);								// 62
+		virtual void		Unk_63(void);								// 63
+		virtual float		GetChargeTime() const;						// 64 - { return 0.0f; }
+		virtual void		Unk_65(void);								// 65
+		virtual UInt32		GetActorValueType() const;					// 66 - { return -1; } used for Actor::AdvanceSkill()
+		virtual void		Unk_67(void);								// 67
+		virtual UInt32		GetDataSigniture() const = 0;				// 68
+		virtual void		CopyData(MagicItem* a_src) = 0;				// 69
+		virtual void		Unk_6A(void);								// 6A
+		virtual void		Unk_6B(void);								// 6B
+		virtual void		Unk_6C(void);								// 6C
+		virtual void		Unk_6D(void);								// 6D
+		virtual UInt32		GetDataSize() const = 0;					// 6E
+		virtual void		Unk_6F(void);								// 6F
 
 		EffectItem*			GetCostliestEffectItem(int a_arg1, bool a_arg2);
 		float				GetEffectiveMagickaCost(Character* a_caster);
 
 
 		// members
-		tArray<EffectItem*> effectItemList;	// 58
-		UInt32				hostile;		// 70
-		EffectSetting*		effectTemplate;	// 78
-		UInt32				unk80;			// 80
-		void*				unk88;			// 88
+		BSTArray<EffectItem*>	effectItemList;	// 58
+		UInt32					hostile;		// 70
+		EffectSetting*			effectTemplate;	// 78
+		UInt32					unk80;			// 80
+		void*					unk88;			// 88
 	};
-
 	STATIC_ASSERT(sizeof(MagicItem) == 0x90);
 }

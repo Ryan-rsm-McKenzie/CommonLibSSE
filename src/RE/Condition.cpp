@@ -23,25 +23,25 @@ namespace RE
 	{
 		TESObjectREFR* runTarget = 0;
 		std::vector<bool> results;
-		RunOn runOn = kRunOn_Target;
+		RunOn runOn = RunOn::kTarget;
 		Node* nodeStart = 0;
 		TESObjectREFR* subject = 0;
 		TESObjectREFR* target = 0;
-		while (runOn) {
+		while (runOn > RunOn::kNone) {
 			switch (runOn) {
-			case kRunOn_Target:
-				runOn = kRunOn_PerkOwner;
+			case RunOn::kTarget:
+				runOn = RunOn::kPerkOwner;
 				nodeStart = targetNodes;
 				subject = a_target;
 				target = a_perkOwner;
 				break;
-			case kRunOn_PerkOwner:
-				runOn = kRunOn_None;
+			case RunOn::kPerkOwner:
+				runOn = RunOn::kNone;
 				nodeStart = perkOwnerNodes;
 				subject = a_perkOwner;
 				target = a_target;
 				break;
-			case kRunOn_None:
+			case RunOn::kNone:
 			default:
 				break;
 			}
