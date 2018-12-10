@@ -1,12 +1,12 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESFullName, BGSMenuDisplayObject
-
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
+#include "RE/BGSMenuDisplayObject.h"  // BGSMenuDisplayObject
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/TESForm.h"  // TESForm
+#include "RE/TESFullName.h"  // TESFullName
 
 #include "Utility.h"  // MAKE_BITWISE_OPERATORS
 
