@@ -10,7 +10,7 @@ namespace RE
 	class ActorValueOwner
 	{
 	private:
-		typedef EffectSetting::Properties::ActorValue ActorValue;
+		using ActorValue = EffectSetting::Data::ActorValue;
 
 	public:
 		virtual ~ActorValueOwner();

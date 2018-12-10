@@ -144,15 +144,6 @@
     <ClCompile Include="src\RE\ActorState.cpp">
       <Filter>src\RE\Skyrim\TESForms\World\Components</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\Actor.cpp">
-      <Filter>src\RE\Skyrim\TESForms</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESObjectREFR.cpp">
-      <Filter>src\RE\Skyrim\TESForms</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\PlayerCharacter.cpp">
-      <Filter>src\RE\Skyrim\TESForms</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\MagicTarget.cpp">
       <Filter>src\RE\Skyrim\Magic</Filter>
     </ClCompile>
@@ -326,6 +317,15 @@
     </ClCompile>
     <ClCompile Include="src\RE\SpellItem.cpp">
       <Filter>src\RE\Skyrim\Magic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Actor.cpp">
+      <Filter>src\RE\Skyrim\TESForms\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\PlayerCharacter.cpp">
+      <Filter>src\RE\Skyrim\TESForms\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectREFR.cpp">
+      <Filter>src\RE\Skyrim\TESForms\World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -748,6 +748,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESModel.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Utility.h">
+      <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

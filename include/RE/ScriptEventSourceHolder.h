@@ -70,6 +70,6 @@ namespace RE
 		BSTEventSource<void>								unk1188;						// 1188 - sink offset 200
 		BSTEventSource<void>								unk11E0;						// 11E0 - sink offset 208
 		BSTEventSource<void>								unk1238;						// 1238 - sink offset 210
-		BSTEventSource<TESUniqueIDChangeEvent>				uniqueIdChangeEventSource;		// 1290 - sink offset 218
+		BSTEventSource<TESUniqueIDChangeEvent>				uniqueIDChangeEventSource;		// 1290 - sink offset 218
 	};
 }

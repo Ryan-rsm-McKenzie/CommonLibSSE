@@ -7,6 +7,8 @@
 #include "RE/TESFullName.h"  // TESFullName
 #include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
 
+#include "Utility.h"  // MAKE_BITWISE_OPERATORS
+
 class SpellItem;
 class TESObjectSTAT;
 
@@ -32,7 +34,7 @@ namespace RE
 
 		struct Data
 		{
-			enum Flag : UInt8
+			enum class Flag : UInt8
 			{
 				kNone = 0,
 				kSkill = 1 << 0,
@@ -41,10 +43,46 @@ namespace RE
 				kRead = 1 << 3,			// set once the book is equipped by the player, along with the CHANGE_BOOK_READ (0x40) change flag
 			};
 
+			MAKE_BITWISE_OPERATORS(Flag);
+
+
+			enum class Type : UInt8
+			{
+				kBookTome = 0x00,
+				kBookNote = 0xFF
+			};
+
+			MAKE_BITWISE_OPERATORS(Type);
+
+
+			enum class Skill : UInt32
+			{
+				kOneHanded = 0x6,
+				kTwoHanded = 0x7,
+				kArchery = 0x8,
+				kBlock = 0x9,
+				kSmithing = 0xA,
+				kHeavyArmor = 0xB,
+				kLightArmor = 0xC,
+				kPickPocket = 0xD,
+				kLockPicking = 0xE,
+				kSneak = 0xF,
+				kAlchemy = 0x10,
+				kSpeech = 0x11,
+				kAlteration = 0x12,
+				kConjuration = 0x13,
+				kDestruction = 0x14,
+				kIllusion = 0x15,
+				kRestoration = 0x16,
+				kEnchanting = 0x17
+			};
+
+			MAKE_BITWISE_OPERATORS(Skill);
+
 
 			union Union
 			{
-				UInt32		skill;
+				Skill		skill;
 				SpellItem*	spell;
 			};
 
@@ -54,7 +92,7 @@ namespace RE
 
 			// members
 			Flag	flags;		// 0
-			UInt8	type;		// 1
+			Type	type;		// 1
 			UInt16	pad02;		// 2
 			UInt32	pad04;		// 4
 			Union	teaches;	// 8
@@ -79,7 +117,7 @@ namespace RE
 		// members
 		Data			data;			// 110
 		TESObjectSTAT*	bookStat;		// 120
-		TESDescription	description2;	// 128
+		TESDescription	bookText;		// 128
 	};
 	STATIC_ASSERT(sizeof(TESObjectBOOK) == 0x138);
 }

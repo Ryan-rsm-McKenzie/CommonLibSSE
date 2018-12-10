@@ -357,6 +357,7 @@
     <ClInclude Include="include\RE\UISaveLoadManager.h" />
     <ClInclude Include="include\RE\UIStringHolder.h" />
     <ClInclude Include="include\RE\UserEventEnabledEvent.h" />
+    <ClInclude Include="include\Utility.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

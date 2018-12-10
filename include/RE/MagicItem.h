@@ -5,6 +5,8 @@
 #include "RE/TESBoundObject.h"  // TESBoundObject
 #include "RE/TESFullName.h"  // TESFullName
 
+#include "Utility.h"  // MAKE_BITWISE_OPERATORS
+
 
 namespace RE
 {
@@ -37,6 +39,8 @@ namespace RE
 			kScroll
 		};
 
+		MAKE_BITWISE_OPERATORS(Type);
+
 
 		enum class CastType : UInt32
 		{
@@ -44,6 +48,8 @@ namespace RE
 			kFireAndForget,
 			kConcentration
 		};
+
+		MAKE_BITWISE_OPERATORS(CastType);
 
 
 		enum class TargetType : UInt32
@@ -55,6 +61,8 @@ namespace RE
 			kTargetLocation,
 		};
 
+		MAKE_BITWISE_OPERATORS(TargetType);
+
 
 		class PreloadableVisitor
 		{
@@ -65,7 +73,7 @@ namespace RE
 
 
 		// override (TESBoundObject)
-		virtual bool			IsMagicItem() const;					// 29
+		virtual bool		IsMagicItem() const;						// 29
 
 		// add
 		virtual Type		GetMagicType() const = 0;					// 53
@@ -103,7 +111,7 @@ namespace RE
 
 
 		// members
-		BSTArray<EffectItem*>	effectItemList;	// 58
+		BSTArray<EffectItem*>	effects;		// 58
 		UInt32					hostile;		// 70
 		EffectSetting*			effectTemplate;	// 78
 		UInt32					unk80;			// 80

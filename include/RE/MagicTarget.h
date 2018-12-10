@@ -16,6 +16,8 @@ namespace RE
 
 	class MagicTarget
 	{
+	private:
+		using Archetype = EffectSetting::Data::Archetype;
 	public:
 		class ActiveEffectVisitor
 		{
@@ -38,8 +40,8 @@ namespace RE
 		virtual void							Unk_0B(void);					// B
 
 		bool									HasMagicEffect(EffectSetting* a_effect);
-		bool									HasEffectWithArchetype(EffectSetting::Properties::Archetype a_type);
-		void									DispellEffectsWithArchetype(EffectSetting::Properties::Archetype a_type, bool a_force);
+		bool									HasEffectWithArchetype(Archetype a_type);
+		void									DispellEffectsWithArchetype(Archetype a_type, bool a_force);
 
 
 		// members

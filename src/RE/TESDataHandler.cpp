@@ -13,6 +13,15 @@ namespace RE
 	}
 
 
+	UInt32 TESDataHandler::LoadScripts()
+	{
+		typedef UInt32 _LoadScripts_t(TESDataHandler* a_this);
+		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::DataHandler*>(this)->_LoadScripts_GetPtr());
+		_LoadScripts_t* _LoadScripts = reinterpret_cast<_LoadScripts_t*>(*ptr);
+		return _LoadScripts(this);
+	}
+
+
 	const ModInfo* TESDataHandler::LookupModByName(const char* a_modName)
 	{
 		typedef ModInfo* _LookupModByName_t(TESDataHandler* a_this, const char* a_modName);

@@ -8,7 +8,7 @@ namespace RE
 {
 	EffectSetting* ActiveEffect::GetBaseObject() const
 	{
-		return effect->mgef;
+		return effect->baseEffect;
 	}
 
 

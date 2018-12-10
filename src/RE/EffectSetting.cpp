@@ -3,20 +3,20 @@
 
 namespace RE
 {
-	UInt32 EffectSetting::GetSchool()
+	EffectSetting::Data::MagicSkill EffectSetting::GetMagickSkill()
 	{
-		return properties.school;
+		return data.magicSkill;
 	}
 
 
-	UInt32 EffectSetting::GetLevel()
+	UInt32 EffectSetting::GetMinimumSkillLevel()
 	{
-		return properties.level;
+		return data.minimumSkillLevel;
 	}
 
 
-	bool EffectSetting::HasArchetype(Properties::Archetype a_type)
+	bool EffectSetting::HasArchetype(Data::Archetype a_type)
 	{
-		return properties.archetype == a_type;
+		return data.archetype == a_type;
 	}
 }

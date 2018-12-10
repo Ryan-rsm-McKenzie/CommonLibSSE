@@ -1,8 +1,11 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // BGSEquipType, BGSMenuDisplayObject, TESDescription
+#include "skse64/GameFormComponents.h"  // BGSEquipType, TESDescription
 
 #include "RE/MagicItem.h"  // MagicItem
+#include "RE/BGSMenuDisplayObject.h"  // BGSMenuDisplayObject
+
+#include "Utility.h"  // MAKE_BITWISE_OPERATORS
 
 
 namespace RE
@@ -26,8 +29,10 @@ namespace RE
 				kAreaEffectIgnoresLOS = (1 << 19),		// 00080000
 				kIgnoreResistance = (1 << 20),			// 00100000
 				kNoAbsorbReflect = (1 << 21),			// 00200000
-				kNoDualCastModification = (1 << 23),	// 00800000
+				kNoDualCastModification = (1 << 23)		// 00800000
 			};
+
+			MAKE_BITWISE_OPERATORS(Flag);
 
 
 			UInt32		baseCost;		// 00 - init'd to 0xFFFFFFFF
@@ -55,7 +60,7 @@ namespace RE
 		virtual void		CopyData(MagicItem* a_src) override;	// 69 - { if (this->formType == src->formType) data = src->data; }
 		virtual UInt32		GetDataSize() const override;			// 6E - { return sizeof(Data); }
 
-		UInt32 GetMagickaCost();
+		UInt32				GetMagickaCost();
 
 
 		// members

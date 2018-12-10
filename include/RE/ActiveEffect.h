@@ -20,7 +20,7 @@ namespace RE
 		enum { kTypeID = FormType::ActiveMagicEffect };
 
 
-		enum Flag
+		enum Flag : UInt32
 		{
 			kInactive	= 0x08000,
 			kDispelled	= 0x40000
@@ -54,7 +54,7 @@ namespace RE
 		float									elapsed;			// 70
 		float									duration;			// 74
 		float									magnitude;			// 78
-		UInt32									flags;				// 7C
+		Flag									flags;				// 7C
 		UInt32									unk80;				// 80 - init'd to 1
 		UInt32									effectNum;			// 84 - Somekind of counter used to determine whether the ActiveMagicEffect handle is valid
 		UInt32									unk88;				// 88 - init'd to 4

@@ -44,11 +44,11 @@ namespace RE
 
 
 		// members
-		UInt8					unk30;			// 50
-		UInt8					unk31;			// 51
-		UInt8					unk32;			// 52 - init'd to 1
-		UInt8					unk33;			// 53 - init'd to 1
-		UInt8					unk34;			// 54
+		bool					trait;			// 50
+		UInt8					level;			// 51
+		UInt8					numRanks;		// 52
+		bool					playable;		// 53
+		bool					hidden;			// 54
 		UInt8					pad55[3];		// 55
 		Condition*				conditions;		// 58
 		BSTArray<BGSPerkEntry*>	perkEntries;	// 60

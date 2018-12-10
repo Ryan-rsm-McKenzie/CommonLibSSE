@@ -16,6 +16,7 @@ namespace RE
 
 
 		static TESDataHandler*	GetSingleton();
+		UInt32					LoadScripts();
 		const ModInfo*			LookupModByName(const char* a_modName);
 		SInt32					GetModIndex(const char* a_modName);
 		const ModInfo*			LookupLoadedModByName(const char* a_modName);

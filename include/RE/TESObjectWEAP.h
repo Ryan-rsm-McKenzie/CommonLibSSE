@@ -5,6 +5,8 @@
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
 #include "RE/TESBoundObject.h"  // TESBoundObject
 
+#include "Utility.h"  // MAKE_BITWISE_OPERATORS
+
 
 namespace RE
 {
@@ -32,54 +34,60 @@ namespace RE
 
 		struct GameData
 		{
-			enum Type : UInt8
+			enum class Type : UInt8
 			{
-				kType_HandToHandMelee = 0,
-				kType_OneHandSword,
-				kType_OneHandDagger,
-				kType_OneHandAxe,
-				kType_OneHandMace,
-				kType_TwoHandSword,
-				kType_TwoHandAxe,
-				kType_Bow,
-				kType_Staff,
-				kType_CrossBow,
-				kType_H2H,
-				kType_1HS,
-				kType_1HD,
-				kType_1HA,
-				kType_1HM,
-				kType_2HS,
-				kType_2HA,
-				kType_Bow2,
-				kType_Staff2,
-				kType_CBow
+				kHandToHandMelee = 0,
+				kOneHandSword,
+				kOneHandDagger,
+				kOneHandAxe,
+				kOneHandMace,
+				kTwoHandSword,
+				kTwoHandAxe,
+				kBow,
+				kStaff,
+				kCrossBow,
+				kH2H,
+				k1HS,
+				k1HD,
+				k1HA,
+				k1HM,
+				k2HS,
+				k2HA,
+				kBow2,
+				kStaff2,
+				kCBow
 			};
+
+			MAKE_BITWISE_OPERATORS(Type);
 
 
 			enum Flags1 : UInt16
 			{
-				kFlags_PlayerOnly = 1 << 0,
-				kFlags_NPCUseAmmo = 1 << 1,
-				kFlags_NoJamAfterReload = 1 << 2,
-				kFlags_MinorCrime = 1 << 4,
-				kFlags_NotUsedInNormalCombat = 1 << 6,
-				kFlags_Unknown1 = 1 << 8,
-				kFlags_LongBursts = 1 << 11,
-				kFlags_NonHostile = 1 << 12,
-				kFlags_BoundWeapon = 1 << 13,
+				kPlayerOnly = 1 << 0,
+				kNPCUseAmmo = 1 << 1,
+				kNoJamAfterReload = 1 << 2,
+				kMinorCrime = 1 << 4,
+				kNotUsedInNormalCombat = 1 << 6,
+				kUnknown1 = 1 << 8,
+				kLongBursts = 1 << 11,
+				kNonHostile = 1 << 12,
+				kBoundWeapon = 1 << 13,
 			};
+
+			MAKE_BITWISE_OPERATORS(Flags1);
 
 
 			enum Flags2 : UInt8
 			{
-				kFlags_Hidebackpack = 1 << 0,
-				kFlags_Automatic = 1 << 1,
-				kFlags_CantDrop = 1 << 3,
-				kFlags_EmbeddedWeapon = 1 << 5,
-				kFlags_Unknown2 = 1 << 6,
-				kFlags_NotPlayable = (UInt8)(1 << 7)
+				kHidebackpack = 1 << 0,
+				kAutomatic = 1 << 1,
+				kCantDrop = 1 << 3,
+				kEmbeddedWeapon = 1 << 5,
+				kUnknown2 = 1 << 6,
+				kNotPlayable = (UInt8)(1 << 7)
 			};
+
+			MAKE_BITWISE_OPERATORS(Flags2);
 
 
 			void*	unk00;			// 00

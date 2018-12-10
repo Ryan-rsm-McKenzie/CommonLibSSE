@@ -18,7 +18,7 @@ namespace RE
 	}
 
 
-	bool MagicTarget::HasEffectWithArchetype(EffectSetting::Properties::Archetype a_type)
+	bool MagicTarget::HasEffectWithArchetype(Archetype a_type)
 	{
 		BSSimpleList<ActiveEffect*>* effects = GetActiveEffects();
 		if (!effects) {
@@ -36,7 +36,7 @@ namespace RE
 	}
 
 
-	void MagicTarget::DispellEffectsWithArchetype(EffectSetting::Properties::Archetype a_type, bool a_force)
+	void MagicTarget::DispellEffectsWithArchetype(Archetype a_type, bool a_force)
 	{
 		BSSimpleList<ActiveEffect*>* effects = GetActiveEffects();
 		if (!effects) {
