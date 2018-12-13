@@ -5,8 +5,6 @@
 #include "RE/TESBoundObject.h"  // TESBoundObject
 #include "RE/TESFullName.h"  // TESFullName
 
-#include "Utility.h"  // MAKE_BITWISE_OPERATORS
-
 
 namespace RE
 {
@@ -39,8 +37,6 @@ namespace RE
 			kScroll
 		};
 
-		MAKE_BITWISE_OPERATORS(Type);
-
 
 		enum class CastType : UInt32
 		{
@@ -48,8 +44,6 @@ namespace RE
 			kFireAndForget,
 			kConcentration
 		};
-
-		MAKE_BITWISE_OPERATORS(CastType);
 
 
 		enum class TargetType : UInt32
@@ -60,8 +54,6 @@ namespace RE
 			kTargetActor,
 			kTargetLocation,
 		};
-
-		MAKE_BITWISE_OPERATORS(TargetType);
 
 
 		class PreloadableVisitor

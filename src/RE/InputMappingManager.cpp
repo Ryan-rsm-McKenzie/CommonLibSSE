@@ -29,15 +29,16 @@ namespace RE
 	{
 		BSTArray<InputContext::Mapping>* maps = 0;
 
+		std::underlying_type_t<Context> idx = to_underlying(a_contextIdx);
 		switch (a_deviceType) {
-		case DeviceType::kDeviceType_Mouse:
-			maps = &context[a_contextIdx]->mouseMap;
+		case DeviceType::kMouse:
+			maps = &context[idx]->mouseMap;
 			break;
-		case DeviceType::kDeviceType_Gamepad:
-			maps = &context[a_contextIdx]->gamepadMap;
+		case DeviceType::kGamepad:
+			maps = &context[idx]->gamepadMap;
 			break;
-		case DeviceType::kDeviceType_Keyboard:
-			maps = &context[a_contextIdx]->keyboardMap;
+		case DeviceType::kKeyboard:
+			maps = &context[idx]->keyboardMap;
 			break;
 		}
 
@@ -49,7 +50,7 @@ namespace RE
 			}
 		}
 
-		return kInvalid;
+		return -1;
 	}
 
 
@@ -57,15 +58,16 @@ namespace RE
 	{
 		BSTArray<InputContext::Mapping>* maps = 0;
 
+		std::underlying_type_t<Context> idx = to_underlying(a_contextIdx);
 		switch (a_deviceType) {
-		case DeviceType::kDeviceType_Mouse:
-			maps = &context[a_contextIdx]->mouseMap;
+		case DeviceType::kMouse:
+			maps = &context[idx]->mouseMap;
 			break;
-		case DeviceType::kDeviceType_Gamepad:
-			maps = &context[a_contextIdx]->gamepadMap;
+		case DeviceType::kGamepad:
+			maps = &context[idx]->gamepadMap;
 			break;
-		case DeviceType::kDeviceType_Keyboard:
-			maps = &context[a_contextIdx]->keyboardMap;
+		case DeviceType::kKeyboard:
+			maps = &context[idx]->keyboardMap;
 			break;
 		}
 
@@ -85,30 +87,30 @@ namespace RE
 
 	bool InputMappingManager::IsLookingControlsEnabled() const
 	{
-		return (controlState & kControlState_Looking) != 0;
+		return (controlState & ControlState::kLooking) != ControlState::kNone;
 	}
 
 
 	bool InputMappingManager::IsFlyingControlsEnabled() const
 	{
-		return (controlState & kControlState_Flying) != 0;
+		return (controlState & ControlState::kFlying) != ControlState::kNone;
 	}
 
 
 	bool InputMappingManager::IsSneakingControlsEnabled() const
 	{
-		return (controlState & kControlState_Sneaking) != 0;
+		return (controlState & ControlState::kSneaking) != ControlState::kNone;
 	}
 
 
 	bool InputMappingManager::IsMenuControlsEnabled() const
 	{
-		return (controlState & kControlState_Menu) != 0;
+		return (controlState & ControlState::kMenu) != ControlState::kNone;
 	}
 
 
 	bool InputMappingManager::IsMovementControlsEnabled() const
 	{
-		return (controlState & kControlState_Movement) != 0;
+		return (controlState & ControlState::kMovement) != ControlState::kNone;
 	}
 }

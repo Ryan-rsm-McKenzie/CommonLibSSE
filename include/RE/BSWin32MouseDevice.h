@@ -8,18 +8,18 @@ namespace RE
 	class BSWin32MouseDevice : public BSMouseDevice
 	{
 	public:
-		enum Mouse : UInt32
+		enum class Mouse : UInt32
 		{
-			kMouse_LeftButton = 0,
-			kMouse_RightButton,
-			kMouse_MiddleButton,
-			kMouse_Button3,
-			kMouse_Button4,
-			kMouse_Button5,
-			kMouse_Button6,
-			kMouse_Button7,
-			kMouse_WheelUp,
-			kMouse_WheelDown,
+			kLeftButton,
+			kRightButton,
+			kMiddleButton,
+			kButton3,
+			kButton4,
+			kButton5,
+			kButton6,
+			kButton7,
+			kWheelUp,
+			kWheelDown
 		};
 
 

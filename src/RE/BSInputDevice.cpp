@@ -5,19 +5,19 @@ namespace RE
 {
 	bool BSInputDevice::IsKeyboard() const
 	{
-		return type == DeviceType::kDeviceType_Keyboard;
+		return type == DeviceType::kKeyboard;
 	}
 
 
 	bool BSInputDevice::IsMouse() const
 	{
-		return type == DeviceType::kDeviceType_Mouse;
+		return type == DeviceType::kMouse;
 	}
 
 
 	bool BSInputDevice::IsGamepad() const
 	{
-		return type == DeviceType::kDeviceType_Gamepad;
+		return type == DeviceType::kGamepad;
 	}
 
 

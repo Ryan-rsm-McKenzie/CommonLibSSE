@@ -8,8 +8,8 @@ namespace RE
 	IMenu::IMenu() :
 		view(0),
 		menuDepth(3),
-		flags(kFlag_None),
-		context(InputMappingManager::kContext_Invalid),
+		flags(Flag::kNone),
+		context(Context::kInvalid),
 		unk18(0)
 	{}
 
@@ -76,102 +76,102 @@ namespace RE
 
 	bool IMenu::PausesGame()
 	{
-		return (flags & kFlag_PauseGame) != 0;
+		return (flags & Flag::kPauseGame) != Flag::kNone;
 	}
 
 
 	bool IMenu::DeletesOnClose()
 	{
-		return (flags & kFlag_DoNotDeleteOnClose) == 0;
+		return (flags & Flag::kDoNotDeleteOnClose) == Flag::kNone;
 	}
 
 
 	bool IMenu::ShowsCursor()
 	{
-		return (flags & kFlag_ShowCursor) != 0;
+		return (flags & Flag::kShowCursor) != Flag::kNone;
 	}
 
 
 	bool IMenu::HasFlag0008()
 	{
-		return (flags & kFlag_Unk0008) != 0;
+		return (flags & Flag::kUnk0008) != Flag::kNone;
 	}
 
 
 	bool IMenu::IsModal()
 	{
-		return (flags & kFlag_Modal) != 0;
+		return (flags & Flag::kModal) != Flag::kNone;
 	}
 
 
 	bool IMenu::StopsDrawingWorld()
 	{
-		return (flags & kFlag_StopDrawingWorld) != 0;
+		return (flags & Flag::kStopDrawingWorld) != Flag::kNone;
 	}
 
 
 	bool IMenu::IsOpen()
 	{
-		return (flags & kFlag_Open) != 0;
+		return (flags & Flag::kOpen) != Flag::kNone;
 	}
 
 
 	bool IMenu::PreventsGameLoad()
 	{
-		return (flags & kFlag_PreventGameLoad) != 0;
+		return (flags & Flag::kPreventGameLoad) != Flag::kNone;
 	}
 
 
 	bool IMenu::HasFlag0100()
 	{
-		return (flags & kFlag_Unk0100) != 0;
+		return (flags & Flag::kUnk0100) != Flag::kNone;
 	}
 
 
 	bool IMenu::HidesOtherMenus()
 	{
-		return (flags & kFlag_HideOther) != 0;
+		return (flags & Flag::kHideOther) != Flag::kNone;
 	}
 
 
 	bool IMenu::HasFlag0400()
 	{
-		return (flags & kFlag_Unk0400) != 0;
+		return (flags & Flag::kUnk0400) != Flag::kNone;
 	}
 
 
 	bool IMenu::PreventsGameSave()
 	{
-		return (flags & kFlag_DoNotPreventGameSave) == 0;
+		return (flags & Flag::kDoNotPreventGameSave) == Flag::kNone;
 	}
 
 
 	bool IMenu::HasFlag1000()
 	{
-		return (flags & kFlag_Unk1000) != 0;
+		return (flags & Flag::kUnk1000) != Flag::kNone;
 	}
 
 
 	bool IMenu::IsItemMenu()
 	{
-		return (flags & kFlag_ItemMenu) != 0;
+		return (flags & Flag::kItemMenu) != Flag::kNone;
 	}
 
 
 	bool IMenu::StopsCrosshairUpdates()
 	{
-		return (flags & kFlag_StopCrosshairUpdate) != 0;
+		return (flags & Flag::kStopCrosshairUpdate) != Flag::kNone;
 	}
 
 
 	bool IMenu::HasFlag8000()
 	{
-		return (flags & kFlag_Unk8000) != 0;
+		return (flags & Flag::kUnk8000) != Flag::kNone;
 	}
 
 
 	bool IMenu::HasFlag10000()
 	{
-		return (flags & kFlag_Unk10000) != 0;
+		return (flags & Flag::kUnk10000) != Flag::kNone;
 	}
 }

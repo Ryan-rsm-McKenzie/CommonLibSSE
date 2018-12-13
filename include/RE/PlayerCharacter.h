@@ -41,11 +41,11 @@ namespace RE
 		public BSTEventSource<PositionPlayerEvent>	// 380
 	{
 	public:
-		enum EventType : UInt32
+		enum class EventType : UInt32
 		{
-			kEventType_Thief = 3,
-			kEventType_Container = 5,
-			kEventType_DeadBody = 6
+			kThief = 3,
+			kContainer = 5,
+			kDeadBody = 6
 		};
 
 

@@ -10,11 +10,11 @@ namespace RE
 	class ButtonEvent : public IDEvent
 	{
 	public:
-		virtual ~ButtonEvent();											// 0
+		virtual ~ButtonEvent();											// 00
 
 		// override (InputEvent)
-		virtual bool					IsIDEvent() const override;		// 1
-		virtual const BSFixedString&	GetControlID() const override;	// 2
+		virtual bool					IsIDEvent() const override;		// 01
+		virtual const BSFixedString&	GetControlID() const override;	// 02
 
 		bool							IsPressed() const;
 		bool							IsRepeating() const;

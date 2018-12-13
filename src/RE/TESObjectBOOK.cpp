@@ -15,24 +15,24 @@ namespace RE
 
 	bool TESObjectBOOK::TeachesSkill() const
 	{
-		return (data.flags & Data::Flag::kSkill) != 0;
+		return (data.flags & Data::Flag::kTeachesSkill) != Data::Flag::kNone;
 	}
 
 
 	bool TESObjectBOOK::TeachesSpell() const
 	{
-		return (data.flags & Data::Flag::kSpell) != 0;
+		return (data.flags & Data::Flag::kTeachesSpell) != Data::Flag::kNone;
 	}
 
 
 	bool TESObjectBOOK::IsRead() const
 	{
-		return (data.flags & Data::Flag::kRead) != 0;
+		return (data.flags & Data::Flag::kRead) != Data::Flag::kNone;
 	}
 
 
 	bool TESObjectBOOK::CanBeTaken() const
 	{
-		return (data.flags & Data::Flag::kCantBeTaken) == 0;
+		return (data.flags & Data::Flag::kCantBeTaken) == Data::Flag::kNone;
 	}
 }

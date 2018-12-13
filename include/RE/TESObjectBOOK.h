@@ -7,8 +7,6 @@
 #include "RE/TESFullName.h"  // TESFullName
 #include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
 
-#include "Utility.h"  // MAKE_BITWISE_OPERATORS
-
 class SpellItem;
 class TESObjectSTAT;
 
@@ -37,47 +35,42 @@ namespace RE
 			enum class Flag : UInt8
 			{
 				kNone = 0,
-				kSkill = 1 << 0,
+				kTeachesSkill = 1 << 0,
 				kCantBeTaken = 1 << 1,
-				kSpell = 1 << 2,		// takes priority over skill
+				kTeachesSpell = 1 << 2,	// takes priority over skill
 				kRead = 1 << 3,			// set once the book is equipped by the player, along with the CHANGE_BOOK_READ (0x40) change flag
 			};
-
-			MAKE_BITWISE_OPERATORS(Flag);
 
 
 			enum class Type : UInt8
 			{
 				kBookTome = 0x00,
-				kBookNote = 0xFF
+				kNoteScroll = 0xFF,
 			};
-
-			MAKE_BITWISE_OPERATORS(Type);
 
 
 			enum class Skill : UInt32
 			{
-				kOneHanded = 0x6,
-				kTwoHanded = 0x7,
-				kArchery = 0x8,
-				kBlock = 0x9,
-				kSmithing = 0xA,
-				kHeavyArmor = 0xB,
-				kLightArmor = 0xC,
-				kPickPocket = 0xD,
-				kLockPicking = 0xE,
-				kSneak = 0xF,
-				kAlchemy = 0x10,
-				kSpeech = 0x11,
-				kAlteration = 0x12,
-				kConjuration = 0x13,
-				kDestruction = 0x14,
-				kIllusion = 0x15,
-				kRestoration = 0x16,
-				kEnchanting = 0x17
+				kNone = 0xFFFFFFFF,
+				kOneHanded = 0x00000006,
+				kTwoHanded = 0x00000007,
+				kArchery = 0x00000008,
+				kBlock = 0x00000009,
+				kSmithing = 0x0000000A,
+				kHeavyArmor = 0x0000000B,
+				kLightArmor = 0x0000000C,
+				kPickPocket = 0x0000000D,
+				kLockPicking = 0x0000000E,
+				kSneak = 0x0000000F,
+				kAlchemy = 0x00000010,
+				kSpeech = 0x00000011,
+				kAlteration = 0x00000012,
+				kConjuration = 0x00000013,
+				kDestruction = 0x00000014,
+				kIllusion = 0x00000015,
+				kRestoration = 0x00000016,
+				kEnchanting = 0x00000017
 			};
-
-			MAKE_BITWISE_OPERATORS(Skill);
 
 
 			union Union

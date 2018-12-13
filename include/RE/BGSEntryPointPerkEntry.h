@@ -2,8 +2,6 @@
 
 #include "RE/BGSPerkEntry.h"  // RE::BGSPerkEntry
 
-#include "Utility.h"  // MAKE_BITWISE_OPERATORS
-
 class BGSPerk;
 
 
@@ -115,16 +113,14 @@ namespace RE
 			kNumPerkEntryPoints
 		};
 
-		MAKE_BITWISE_OPERATORS(EntryPointType);
-
 
 		// override (BGSPerkEntry)
-		virtual bool						CanProcess(UInt32 a_numArgs, void* a_args) override;	// 0
-		virtual UInt8						GetType() const override;								// 1 { return this->type; }
-		virtual BGSEntryPointFunctionData*	GetFunctionData() const override;						// 2 { return this->functionData; }
+		virtual bool						CanProcess(UInt32 a_numArgs, void* a_args) override;	// 00
+		virtual UInt8						GetType() const override;								// 01 { return this->type; }
+		virtual BGSEntryPointFunctionData*	GetFunctionData() const override;						// 02 { return this->functionData; }
 
 		// add
-		virtual ~BGSEntryPointPerkEntry();															// 3
+		virtual ~BGSEntryPointPerkEntry();															// 03
 		// more
 
 		bool								HasType(EntryPointType a_type);

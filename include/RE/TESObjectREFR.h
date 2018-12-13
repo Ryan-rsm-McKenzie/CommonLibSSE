@@ -45,24 +45,24 @@ namespace RE
 		enum { kTypeID = FormType::Reference };
 
 
-		enum RemoveType : UInt32
+		enum class RemoveType : UInt32
 		{
-			kRemoveType_Remove,
-			kRemoveType_Steal,
-			kRemoveType_Trade,
-			kRemoveType_Drop,
-			kRemoveType_Take,
-			kRemoveType_Unk05
+			kRemove,
+			kSteal,
+			kTrade,
+			kDrop,
+			kTake,
+			kUnk05
 		};
 
 
-		enum TESFormFlag : UInt32
+		enum class TESFormFlag : UInt32
 		{
-			kTESFormFlag_MarkedForDeletion	= 1 << 5,
-			kTESFormFlag_Disabled			= 1 << 11,
-			kTESFormFlag_Harvested			= 1 << 13,
-			kTESFormFlag_IgnoreFriendlyHits	= 1 << 20,
-			kTESFormFlag_Destroyed			= 1 << 23
+			kMarkedForDeletion = 1 << 5,
+			kDisabled = 1 << 11,
+			kHarvested = 1 << 13,
+			kIgnoreFriendlyHits = 1 << 20,
+			kDestroyed = 1 << 23
 		};
 
 
@@ -72,6 +72,7 @@ namespace RE
 			NiNode*	node;		// 68
 			// ... probably more
 		};
+		STATIC_ASSERT(offsetof(LoadedState, node) == 0x68);
 
 
 		virtual ~TESObjectREFR();																																																	// 00
@@ -258,6 +259,5 @@ namespace RE
 	};
 	STATIC_ASSERT(offsetof(TESObjectREFR, extraData) == 0x70);
 	STATIC_ASSERT(offsetof(TESObjectREFR, loadedState) == 0x68);
-	STATIC_ASSERT(offsetof(TESObjectREFR::LoadedState, node) == 0x68);
 	STATIC_ASSERT(sizeof(TESObjectREFR) == 0x98);
 };

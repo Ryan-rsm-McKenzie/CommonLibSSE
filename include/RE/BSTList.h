@@ -25,7 +25,7 @@ namespace RE
 		struct Node
 		{
 			value_type	item;
-			Node		* next;
+			Node*		next;
 
 			Node() : item(0), next(nullptr) {}
 
@@ -35,7 +35,7 @@ namespace RE
 				//return next == nullptr;
 			}
 		};
-		typedef Node *NodePtr;
+		typedef Node* NodePtr;
 
 		class const_iterator
 		{
@@ -159,15 +159,15 @@ namespace RE
 			clear();
 		}
 
-		static void * operator new(std::size_t size)
+		static void* operator new(std::size_t size)
 		{
 			return Heap_Allocate(size);
 		}
-		static void * operator new(std::size_t size, const std::nothrow_t &)
+		static void* operator new(std::size_t size, const std::nothrow_t &)
 		{
 			return Heap_Allocate(size);
 		}
-		static void * operator new(std::size_t size, void * ptr)
+		static void* operator new(std::size_t size, void* ptr)
 		{
 			return ptr;
 		}
@@ -175,11 +175,11 @@ namespace RE
 		{
 			Heap_Free(ptr);
 		}
-		static void operator delete(void * ptr, const std::nothrow_t &)
+		static void operator delete(void* ptr, const std::nothrow_t &)
 		{
 			Heap_Free(ptr);
 		}
-		static void operator delete(void *, void *)
+		static void operator delete(void*, void*)
 		{}
 
 
@@ -387,7 +387,7 @@ namespace RE
 		}
 
 	protected:
-		Node m_listHead;
+		Node m_listHead;	// 00
 	};
 
 }

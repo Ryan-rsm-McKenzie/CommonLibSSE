@@ -113,10 +113,8 @@ namespace RE
 	{
 		TESNPC* npc = GetActorBase();
 		if (npc) {
-			for (UInt32 i = 0; i < npc->factions.count; i++) {
-				TESActorBaseData::FactionInfo info;
-				npc->factions.GetNthItem(i, info);
-				if (visitor.Accept(info.faction, info.rank)) {
+			for (auto& factionInfo : npc->factions) {
+				if (visitor.Accept(factionInfo->faction, factionInfo->rank)) {
 					return true;
 				}
 			}
@@ -151,49 +149,49 @@ namespace RE
 
 	bool Actor::IsBeingRidden()
 	{
-		return ((flags2 & kFlags2_HasInteraction) != 0) && extraData.HasType(kExtraData_Interaction);
+		return ((flags2 & Flag2::kHasInteraction) != Flag2::kNone) && extraData.HasType(kExtraData_Interaction);
 	}
 
 
 	bool Actor::IsCommandedActor() const
 	{
-		return (flags2 & kFlags2_IsCommandedActor) != 0;
+		return (flags2 & Flag2::kIsCommandedActor) != Flag2::kNone;
 	}
 
 
 	bool Actor::IsEssential() const
 	{
-		return (flags2 & kFlags2_IsEssential) != 0;
+		return (flags2 & Flag2::kIsEssential) != Flag2::kNone;
 	}
 
 
 	bool Actor::IsGuard() const
 	{
-		return (flags1 & kFlags1_IsGuard) != 0;
+		return (flags1 & Flag1::kIsGuard) != Flag1::kNone;
 	}
 
 
 	bool Actor::IsInKillMove() const
 	{
-		return (flags2 & kFlags2_IsInKillMove) != 0;
+		return (flags2 & Flag2::kIsInKillMove) != Flag2::kNone;
 	}
 
 
 	bool Actor::IsAIEnabled() const
 	{
-		return (flags1 & kFlags1_AIEnabled) != 0;
+		return (flags1 & Flag1::kAIEnabled) != Flag1::kNone;
 	}
 
 
 	bool Actor::IsOnMount()
 	{
-		return ((flags2 & kFlags2_HasInteraction) != 0) && extraData.HasType(kExtraData_Interaction);
+		return ((flags2 & Flag2::kHasInteraction) != Flag2::kNone) && extraData.HasType(kExtraData_Interaction);
 	}
 
 
 	bool Actor::IsPlayerTeammate() const
 	{
-		return (flags1 & kFlags1_IsPlayerTeammate) != 0;
+		return (flags1 & Flag1::kIsPlayerTeammate) != Flag1::kNone;
 	}
 
 
@@ -217,7 +215,7 @@ namespace RE
 
 	bool Actor::IsTrespassing() const
 	{
-		return (flags2 & kFlags2_IsTrespassing) != 0;
+		return (flags2 & Flag2::kIsTrespassing) != Flag2::kNone;
 	}
 
 

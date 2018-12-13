@@ -8,8 +8,6 @@
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESFullName.h"  // TESFullName
 
-#include "Utility.h"  // MAKE_BITWISE_OPERATORS
-
 class BGSArtObject;
 class BGSExplosion;
 class BGSImpactDataSet;
@@ -41,71 +39,25 @@ namespace RE
 		{
 			enum class Flag : UInt32
 			{
-				kHostile = (1 << 0),		// 00000001
-				kRecover = (1 << 1),		// 00000002
-				kDetrimental = (1 << 2),	// 00000004
-				kUnk08 = (1 << 3),			// 00000008
-				kNoHitEvent = (1 << 4),		// 00000010
-				kUnk20 = (1 << 5),			// 00000020
-				kUnk40 = (1 << 6),			// 00000040
-				kUnk80 = (1 << 7),			// 00000080
-				kDispelKeywords = (1 << 8),	// 00000100
-				kNoDuration = (1 << 9),		// 00000200
-				kNoMagnitude = (1 << 10),	// 00000400
-				kNoArea = (1 << 11),		// 00000800
-				kFXPersist = (1 << 12),		// 00001000
-				kUnk2000 = (1 << 13),		// 00002000
-				kGloryVisuals = (1 << 14),	// 00004000
-				kHideInUI = (1 << 15),		// 00008000
-				kUnk10000 = (1 << 16),		// 00010000
-				kNoRecast = (1 << 17),		// 00020000
-				kUnk40000 = (1 << 18),		// 00040000
-				kUnk80000 = (1 << 19),		// 00080000
-				kUnk100000 = (1 << 20),		// 00100000
-				kMagnitude = (1 << 21),		// 00200000
-				kDuration = (1 << 22),		// 00400000
-				kUnk800000 = (1 << 23),		// 00800000
-				kUnk1000000 = (1 << 24),	// 01000000
-				kUnk2000000 = (1 << 25),	// 02000000
-				kPainless = (1 << 26),		// 04000000
-				kNoHitEffect = (1 << 27),	// 08000000
-				kNoDeathDispel = (1 << 28)	// 10000000
+				kHostile = 1 << 0,
+				kRecover = 1 << 1,
+				kDetrimental = 1 << 2,
+				kSnapToNavMesh = 1 << 3,
+				kNoHitEvent = 1 << 4,
+				kDispelKeywords = 1 << 8,
+				kNoDuration = 1 << 9,
+				kNoMagnitude = 1 << 10,
+				kNoArea = 1 << 11,
+				kFXPersist = 1 << 12,
+				kGloryVisuals = 1 << 14,
+				kHideInUI = 1 << 15,
+				kNoRecast = 1 << 17,
+				kPowerAffectsMagnitude = 1 << 21,
+				kPowerAffectsDuration = 1 << 22,
+				kPainless = 1 << 26,
+				kNoHitEffect = 1 << 27,
+				kNoDeathDispel = 1 << 28
 			};
-
-			MAKE_BITWISE_OPERATORS(Flag);
-
-
-			enum class MagicSkill : UInt32
-			{
-				kOneHanded = 0x6,
-				kTwoHanded = 0x7,
-				kArchery = 0x8,
-				kBlock = 0x9,
-				kSmithing = 0xA,
-				kHeavyArmor = 0xB,
-				kLightArmor = 0xC,
-				kPickPocket = 0xD,
-				kLockPicking = 0xE,
-				kSneak = 0xF,
-				kAlchemy = 0x10,
-				kSpeech = 0x11,
-				kAlteration = 0x12,
-				kConjuration = 0x13,
-				kDestruction = 0x14,
-				kIllusion = 0x15,
-				kRestoration = 0x16,
-				kEnchanting = 0x17
-			};
-
-			MAKE_BITWISE_OPERATORS(MagicSkill);
-
-
-			enum class ResistValue : UInt32
-			{
-
-			};
-
-			MAKE_BITWISE_OPERATORS(ResistValue);
 
 
 			enum class Archetype : UInt32
@@ -156,29 +108,24 @@ namespace RE
 				kVampireLord
 			};
 
-			MAKE_BITWISE_OPERATORS(Archetype);
-
 
 			enum class CastingType : UInt32
 			{
 				kConstantEffect = 0,
 				kFireAndForget,
-				kConcentration
+				kConcentration,
+				kScroll
 			};
-
-			MAKE_BITWISE_OPERATORS(CastingType);
 
 
 			enum class DeliveryType : UInt32
 			{
 				kSelf = 0,
-				kContact,
+				kTouch,
 				kAimed,
 				kTargetActor,
 				kTargetLocation
 			};
-
-			MAKE_BITWISE_OPERATORS(DeliveryType);
 
 
 			enum class Volume : UInt32
@@ -189,11 +136,10 @@ namespace RE
 				kVeryLoud
 			};
 
-			MAKE_BITWISE_OPERATORS(Volume);
-
 
 			enum ActorValue : UInt32
 			{
+				kNone = 0xFFFFFFFF,
 				kAggression = 0,
 				kConfidence,
 				kEnergy,
@@ -360,8 +306,6 @@ namespace RE
 				kReflectDamage
 			};
 
-			MAKE_BITWISE_OPERATORS(ActorValue);
-
 
 			struct SpellMaking
 			{
@@ -391,8 +335,8 @@ namespace RE
 			Flag					flags;					// 00 - init'd to 0
 			float					baseCost;				// 04 - init'd to 0
 			TESForm*				primaryObject;			// 08 - init'd to 0 - unused
-			MagicSkill				magicSkill;				// 10 - init'd to FFFFFFFF
-			ResistValue				resistValue;			// 14 - init'd to FFFFFFFF
+			ActorValue				magicSkill;				// 10 - init'd to FFFFFFFF
+			ActorValue				resistValue;			// 14 - init'd to FFFFFFFF
 			UInt16					counterEffectCount;		// 18 - init'd to 0
 			UInt8					pad1A[6];				// 1A
 			TESObjectLIGH*			castingLight;			// 20 - init'd to 0
@@ -432,16 +376,15 @@ namespace RE
 		{
 			enum class Type : UInt32
 			{
-				kDrawSheathe = 0,
+				kSheatheDraw = 0,
 				kCharge,
 				kReady,
 				kRelease,
-				kCastLoop,
+				kConcentrationCastLoop,
 				kOnHit,
+
 				kTotalTypes
 			};
-
-			MAKE_BITWISE_OPERATORS(Type);
 
 
 			Type		type;	// 00
@@ -460,7 +403,7 @@ namespace RE
 		// override (BGSKeywordForm)
 		virtual bool		HasKeyword(BGSKeyword* a_keyword) const override;	// 04
 
-		Data::MagicSkill	GetMagickSkill();
+		Data::ActorValue	GetMagickSkill();
 		UInt32				GetMinimumSkillLevel();
 		bool				HasArchetype(Data::Archetype a_type);
 

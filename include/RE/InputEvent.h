@@ -8,22 +8,22 @@ namespace RE
 	class InputEvent
 	{
 	public:
-		enum DeviceType : UInt32
+		enum class DeviceType : UInt32
 		{
-			kDeviceType_Keyboard = 0,
-			kDeviceType_Mouse,
-			kDeviceType_Gamepad
+			kKeyboard = 0,
+			kMouse,
+			kGamepad
 		};
 
 
-		enum EventType : UInt32
+		enum class EventType : UInt32
 		{
-			kEventType_Button = 0,
-			kEventType_MouseMove,
-			kEventType_Char,
-			kEventType_Thumbstick,
-			kEventType_DeviceConnect,
-			kEventType_Kinect
+			kButton = 0,
+			kMouseMove,
+			kChar,
+			kThumbstick,
+			kDeviceConnect,
+			kKinect
 		};
 
 

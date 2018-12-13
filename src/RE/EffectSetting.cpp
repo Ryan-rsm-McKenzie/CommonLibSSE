@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	EffectSetting::Data::MagicSkill EffectSetting::GetMagickSkill()
+	EffectSetting::Data::ActorValue EffectSetting::GetMagickSkill()
 	{
 		return data.magicSkill;
 	}

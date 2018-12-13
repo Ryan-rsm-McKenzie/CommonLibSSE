@@ -13,9 +13,9 @@ namespace RE
 	class TESContainer : public BaseFormComponent
 	{
 	public:
-		struct Entry
+		struct Entry	// CNTO
 		{
-			struct ExtraData // COED COntainer Extra Data
+			struct ExtraData // COED
 			{
 				TESForm*	owner;			// 00
 				SInt32		requiredRank;	// 08

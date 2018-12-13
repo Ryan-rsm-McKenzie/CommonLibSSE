@@ -61,7 +61,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ForcedIncludeFiles>common/IPrefix.h;Logging.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>common/IPrefix.h;Logging.h;Util.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ExceptionHandling>Sync</ExceptionHandling>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -107,7 +107,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ForcedIncludeFiles>common/IPrefix.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>common/IPrefix.h;Util.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <OmitFramePointers>
       </OmitFramePointers>
@@ -209,6 +209,7 @@
     <ClCompile Include="src\RE\TESLevItem.cpp" />
     <ClCompile Include="src\RE\TESNPC.cpp" />
     <ClCompile Include="src\RE\TESObjectBOOK.cpp" />
+    <ClCompile Include="src\RE\TESObjectCELL.cpp" />
     <ClCompile Include="src\RE\TESObjectLIGH.cpp" />
     <ClCompile Include="src\RE\TESObjectREFR.cpp" />
     <ClCompile Include="src\RE\TESObjectWEAP.cpp" />
@@ -228,6 +229,7 @@
     <ClInclude Include="include\RE\BGSEntryPointFunctionDataText.h" />
     <ClInclude Include="include\RE\BGSKeyword.h" />
     <ClInclude Include="include\RE\BGSKeywordForm.h" />
+    <ClInclude Include="include\RE\BGSMenuDisplayObject.h" />
     <ClInclude Include="include\RE\BGSPerk.h" />
     <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
     <ClInclude Include="include\RE\BSFixedString.h" />
@@ -325,6 +327,7 @@
     <ClInclude Include="include\RE\SprintHandler.h" />
     <ClInclude Include="include\RE\TESActorBase.h" />
     <ClInclude Include="include\RE\TESActorBaseData.h" />
+    <ClInclude Include="include\RE\TESAIForm.h" />
     <ClInclude Include="include\RE\TESBoundAnimObject.h" />
     <ClInclude Include="include\RE\TESBoundObject.h" />
     <ClInclude Include="include\RE\TESContainer.h" />
@@ -342,10 +345,12 @@
     <ClInclude Include="include\RE\TESObjectACTI.h" />
     <ClInclude Include="include\RE\TESObjectARMO.h" />
     <ClInclude Include="include\RE\TESObjectBOOK.h" />
+    <ClInclude Include="include\RE\TESObjectCELL.h" />
     <ClInclude Include="include\RE\TESObjectCONT.h" />
     <ClInclude Include="include\RE\TESObjectLIGH.h" />
     <ClInclude Include="include\RE\TESObjectMISC.h" />
     <ClInclude Include="include\RE\TESObjectREFR.h" />
+    <ClInclude Include="include\RE\TESObjectSTAT.h" />
     <ClInclude Include="include\RE\TESObjectWEAP.h" />
     <ClInclude Include="include\RE\TESRace.h" />
     <ClInclude Include="include\RE\TESRaceForm.h" />
@@ -357,7 +362,7 @@
     <ClInclude Include="include\RE\UISaveLoadManager.h" />
     <ClInclude Include="include\RE\UIStringHolder.h" />
     <ClInclude Include="include\RE\UserEventEnabledEvent.h" />
-    <ClInclude Include="include\Utility.h" />
+    <ClInclude Include="include\Util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

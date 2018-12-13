@@ -8,7 +8,7 @@ namespace RE
 	class BSKeyboardDevice : public BSInputDevice
 	{
 	public:
-		enum Keyboard : UInt32
+		enum class Keyboard : UInt32
 		{
 			kKeyboard_Escape = 0x01,
 			kKeyboard_Num1 = 0x02,

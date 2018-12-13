@@ -20,44 +20,44 @@ namespace RE
 		public GFxStateBag
 	{
 	public:
-		enum ScaleModeType
+		enum class ScaleModeType
 		{
-			kScaleModeType_NoScale,
-			kScaleModeType_ShowAll,
-			kScaleModeType_ExactFit,
-			kScaleModeType_NoBorder
+			kNoScale,
+			kShowAll,
+			kExactFit,
+			kNoBorder
 		};
 
 
-		enum AlignType
+		enum class AlignType
 		{
-			kAlignType_Center,
-			kAlignType_TopCenter,
-			kAlignType_BottomCenter,
-			kAlignType_CenterLeft,
-			kAlignType_CenterRight,
-			kAlignType_TopLeft,
-			kAlignType_TopRight,
-			kAlignType_BottomLeft,
-			kAlignType_BottomRight
+			kCenter,
+			kTopCenter,
+			kBottomCenter,
+			kCenterLeft,
+			kCenterRight,
+			kTopLeft,
+			kTopRight,
+			kBottomLeft,
+			kBottomRight
 		};
 
 
 		enum HE_ReturnValueType
 		{
-			kHE_ReturnValueType_NotHandled		= 0,
-			kHE_ReturnValueType_Handled			= 1,
-			kHE_ReturnValueType_NoDefaultAction	= 2,
-			kHE_ReturnValueType_Completed		= (kHE_ReturnValueType_Handled | kHE_ReturnValueType_NoDefaultAction)
+			kReturnValueType_NotHandled		= 0,
+			kReturnValueType_Handled			= 1,
+			kReturnValueType_NoDefaultAction	= 2,
+			kReturnValueType_Completed		= (kReturnValueType_Handled | kReturnValueType_NoDefaultAction)
 		};
 
 
 		enum HitTestType
 		{
-			kHitTestType_Bounds				= 0,
-			kHitTestType_Shapes				= 1,
-			kHitTestType_ButtonEvents		= 2,
-			kHitTestType_ShapesNoInvisible	= 3
+			kBounds				= 0,
+			kShapes				= 1,
+			kButtonEvents		= 2,
+			kShapesNoInvisible	= 3
 		};
 
 		GFxMovieView();
@@ -87,7 +87,7 @@ namespace RE
 		virtual UInt32			HandleEvent(const void* event);																					// 2D
 		virtual void			GetMouseState(UInt32 mouseIndex, float* x, float* y, UInt32* buttons);											// 2E
 		virtual void			NotifyMouseState(float x, float y, UInt32 buttons, UInt32 mouseIndex = 0);										// 2F
-		virtual bool			HitTest(float x, float y, HitTestType testCond = kHitTestType_Shapes, UInt32 controllerIdx = 0);				// 30
+		virtual bool			HitTest(float x, float y, HitTestType testCond = kShapes, UInt32 controllerIdx = 0);				// 30
 		virtual bool			HitTest3D(void* ptout, float x, float y, UInt32 controllerIdx = 0);												// 31
 		virtual void			SetExternalInterfaceRetVal(const GFxValue&);																	// 32
 		virtual void*			GetUserData()																							const;	// 33

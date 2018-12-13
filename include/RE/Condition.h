@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Utility.h"  // MAKE_BITWISE_OPERATORS
-
 
 namespace RE
 {
@@ -18,8 +16,6 @@ namespace RE
 			kTarget
 		};
 
-		MAKE_BITWISE_OPERATORS(RunOn);
-
 	public:
 		enum class OpCode : UInt8
 		{
@@ -30,8 +26,6 @@ namespace RE
 			kLessThan,				// <
 			kLessThanOrEqualTo,		// <=
 		};
-
-		MAKE_BITWISE_OPERATORS(OpCode);
 
 
 		enum class ReferenceType : UInt8
@@ -47,8 +41,6 @@ namespace RE
 			kPlayer
 		};
 
-		MAKE_BITWISE_OPERATORS(ReferenceType);
-
 
 		// Betheseda keeps these in a giant lookup table
 		// typedef bool(*func)(TESObjectREFR* perkOwnerOrTarget, void* param1, void* param2, float& result);
@@ -62,8 +54,6 @@ namespace RE
 			kHasMagicEffect = 0x00D6,
 			kHasPerk = 0x01C0
 		};
-
-		MAKE_BITWISE_OPERATORS(FunctionID);
 
 
 		struct Solution

@@ -327,6 +327,9 @@
     <ClCompile Include="src\RE\TESObjectREFR.cpp">
       <Filter>src\RE\Skyrim\TESForms\World</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\TESObjectCELL.cpp">
+      <Filter>src\RE\Skyrim\TESForms\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -749,7 +752,19 @@
     <ClInclude Include="include\RE\TESModel.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
-    <ClInclude Include="include\Utility.h">
+    <ClInclude Include="include\RE\BGSMenuDisplayObject.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectSTAT.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectCELL.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESAIForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Util.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

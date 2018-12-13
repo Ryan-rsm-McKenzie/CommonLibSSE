@@ -65,7 +65,7 @@ namespace RE
 		BSTArray<BGSStaticCollection*>				staticCollections;			// 358
 		BSTArray<BGSMovableStatic*>					movableStatics;				// 370
 		BSTArray<TESGrass*>							grasses;					// 388
-		BSTArray<TESObjectTREE*>					arrtreesTREE;				// 3A0
+		BSTArray<TESObjectTREE*>					arrTREE;					// 3A0
 		BSTArray<TESFlora*>							flora;						// 3B8
 		BSTArray<TESFurniture*>						furniture;					// 3D0
 		BSTArray<TESObjectWEAP*>					weapons;					// 3E8

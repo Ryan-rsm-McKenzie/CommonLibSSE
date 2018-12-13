@@ -5,102 +5,96 @@ namespace RE
 {
 	bool TESActorBaseData::IsFemale()
 	{
-		return (flags & kFlag_Female) != 0;
+		return (flags & Flag::kFemale) != Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::IsPreset()
 	{
-		return (flags & kFlag_IsPreset) != 0;
+		return (flags & Flag::kIsChargenFacePreset) != Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::IsEssential()
 	{
-		return (flags & kFlag_Essential) != 0;
+		return (flags & Flag::kEssential) != Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::Respawns()
 	{
-		return (flags & kFlag_Respawn) != 0;
+		return (flags & Flag::kRespawn) != Flag::kNone;
 	}
 
 
-	bool TESActorBaseData::UsesAutoCalc()
+	bool TESActorBaseData::HasAutoCalcStats()
 	{
-		return (flags & kFlag_AutoCalc) != 0;
+		return (flags & Flag::kAutoCalcStats) != Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::IsUnique()
 	{
-		return (flags & kFlag_Unique) != 0;
+		return (flags & Flag::kUnique) != Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::AffectsStealthMeter()
 	{
-		return (flags & kFlag_DontAffectStealthMeter) == 0;
+		return (flags & Flag::kDoesntAffectStealthMeter) == Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::HasPCLevelMult()
 	{
-		return (flags & kFlag_PCLevelMult) != 0;
+		return (flags & Flag::kPCLevelMult) != Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::UsesTemplate()
 	{
-		return (flags & kFlag_UsesTemplate) != 0;
+		return (flags & Flag::kUsesTemplate) != Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::Protected()
 	{
-		return (flags & kFlag_Protected) != 0;
+		return (flags & Flag::kProtected) != Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::IsSummonable()
 	{
-		return (flags & kFlag_Summonable) != 0;
+		return (flags & Flag::kSummonable) != Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::Bleeds()
 	{
-		return (flags & kFlag_DoesntBleed) == 0;
+		return (flags & Flag::kDoesntBleed) == Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::HasBleedoutOverride()
 	{
-		return (flags & kFlag_BleedoutOverride) != 0;
+		return (flags & Flag::kBleedoutOverride) != Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::UsesOppositeGenderAnims()
 	{
-		return (flags & kFlag_OppositeGenderanims) != 0;
+		return (flags & Flag::kOppositeGenderanims) != Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::IsSimpleActor()
 	{
-		return (flags & kFlag_SimpleActor) != 0;
-	}
-
-
-	bool TESActorBaseData::IsGhost()
-	{
-		return (flags & kFlag_Ghost) != 0;
+		return (flags & Flag::kSimpleActor) != Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::IsInvulnerable()
 	{
-		return (flags & kFlag_Invulnerable) != 0;
+		return (flags & Flag::kInvulnerable) != Flag::kNone;
 	}
 }

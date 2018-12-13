@@ -22,16 +22,17 @@ namespace RE
 		};
 
 
-		virtual ~BSInputDevice();							// 0
+		virtual ~BSInputDevice();							// 00
 
-		virtual void	Initialize() = 0;					// 1
-		virtual	void	Process(float a_unk1) = 0;			// 2
-		virtual	void	Unk_03() = 0;						// 3
-		virtual	void	Unk_04();							// 4
-		virtual void	Unk_05();							// 5
-		virtual void	Unk_06();							// 6
-		virtual bool	IsEnabled() const;					// 7
-		virtual void	Unk_08();							// 8
+		// add
+		virtual void	Initialize() = 0;					// 01
+		virtual	void	Process(float a_unk1) = 0;			// 02
+		virtual	void	Unk_03() = 0;						// 03
+		virtual	void	Unk_04();							// 04
+		virtual void	Unk_05();							// 05
+		virtual void	Unk_06();							// 06
+		virtual bool	IsEnabled() const;					// 07
+		virtual void	Unk_08();							// 08
 
 		bool			IsKeyboard() const;
 		bool			IsMouse() const;

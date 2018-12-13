@@ -5,8 +5,6 @@
 #include "RE/MagicItem.h"  // MagicItem
 #include "RE/BGSMenuDisplayObject.h"  // BGSMenuDisplayObject
 
-#include "Utility.h"  // MAKE_BITWISE_OPERATORS
-
 
 namespace RE
 {
@@ -31,8 +29,6 @@ namespace RE
 				kNoAbsorbReflect = (1 << 21),			// 00200000
 				kNoDualCastModification = (1 << 23)		// 00800000
 			};
-
-			MAKE_BITWISE_OPERATORS(Flag);
 
 
 			UInt32		baseCost;		// 00 - init'd to 0xFFFFFFFF

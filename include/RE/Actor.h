@@ -43,42 +43,44 @@ namespace RE
 		public IPostAnimationChannelUpdateFunctor			// 0D8
 	{
 	private:
-		typedef BGSEntryPointPerkEntry::EntryPointType EntryPointType;
+		using EntryPointType = BGSEntryPointPerkEntry::EntryPointType;
 
 
-		enum Flags1 : UInt32
+		enum class Flag1 : UInt32
 		{
-			kFlags1_AIEnabled			= 1 << 1,
-			kFlags1_IsPlayerTeammate	= 1 << 26,
-			kFlags1_IsGuard				= 1 << 30
+			kNone = 0,
+			kAIEnabled = 1 << 1,
+			kIsPlayerTeammate = 1 << 26,
+			kIsGuard = 1 << 30
 		};
 
 
-		enum Flags2 : UInt32
+		enum class Flag2 : UInt32
 		{
-			kFlags2_HasInteraction			= 1 << 1,
-			kFlags2_NoBleedoutRecovery		= 1 << 5,
-			kFlags2_CanDoFavor				= 1 << 7,
-			kFlags2_AllowBleedoutDialogue	= 1 << 9,
-			kFlags2_IsTrespassing			= 1 << 12,
-			kFlags2_IsInKillMove			= 1 << 14,
-			kFlags2_AttackMeOnSight			= 1 << 15,
-			kFlags2_IsCommandedActor		= 1 << 16,
-			kFlags2_IsEssential				= 1 << 18,
-			kFlags2_IsProtected				= 1 << 19,
-			kFlags2_DontShowOnStealthMeter	= 1 << 26,
+			kNone = 0,
+			kHasInteraction = 1 << 1,
+			kNoBleedoutRecovery = 1 << 5,
+			kCanDoFavor = 1 << 7,
+			kAllowBleedoutDialogue = 1 << 9,
+			kIsTrespassing = 1 << 12,
+			kIsInKillMove = 1 << 14,
+			kAttackMeOnSight = 1 << 15,
+			kIsCommandedActor = 1 << 16,
+			kIsEssential = 1 << 18,
+			kIsProtected = 1 << 19,
+			kDontShowOnStealthMeter = 1 << 26,
 		};
 
 	public:
 		enum { kTypeID = FormType::Character };
 
 
-		enum SlotType : UInt32
+		enum class SlotType : UInt32
 		{
-			kSlotType_LeftHand = 0,
-			kSlotType_RightHand,
-			kSlotType_Unknown,
-			kSlotType_PowerOrShout,
+			kLeftHand = 0,
+			kRightHand,
+			kUnknown,
+			kPowerOrShout,
 
 			kNumSlots
 		};
@@ -297,67 +299,67 @@ namespace RE
 
 
 		// members
-		Flags1						flags1;							// 0E0
-		float						unk0E4;							// 0E4
-		UInt32						unk0E8;							// 0E8
-		UInt32						pad0EC;							// 0EC
-		ActorProcessManager*		processManager;					// 0F0
-		UInt32						refHandleDialogueTarget;		// 0F8
-		UInt32						refHandleCombatTarget;			// 0FC
-		UInt32						refHandleKiller;				// 100
-		UInt32						unk104;							// 104
-		float						unk108;							// 108 - init'd to -1
-		UInt32						unk10C;							// 10C
-		UInt32						unk110;							// 110
-		UInt32						unk114;							// 114
-		UInt32						unk118;							// 118
-		UInt32						unk11C;							// 11C
-		NiPoint3					unk120;							// 120
-		UInt32						unk12C;							// 12C
-		void*						unk130;							// 130
-		void*						unk138;							// 138 - BGSLocation*
-		void*						unk140;							// 140 - ActorMover*
-		void*						unk148;							// 148 - MovementControllerNPC*
-		void*						unk150;							// 150
-		void*						unk158;							// 158
-		UInt64						unk160;							// 160
-		float						unk168;							// 168
-		UInt32						unk16C;							// 16C
-		UInt32						unk170;							// 170
-		UInt32						unk174;							// 174 - init'd to 50
-		UInt32						unk178;							// 178
-		UInt32						unk17C;							// 17C - init'd to 7FFFFFFF
-		UInt64						unk180;							// 180
-		BSTSmallArray<SpellItem*>	addedSpells;					// 188
-		MagicCaster*				magicCaster[kNumSlots];			// 1A0 - ActorMagicCaster*
-		MagicCaster*				equippingMagicItems[kNumSlots];	// 1C0
-		TESForm*					equippedShout;					// 1E0
-		UInt32						unk1E8;							// 1E8
-		UInt32						pad1EC;							// 1EC
-		TESRace*					race;							// 1F0
-		float						unk1F8;							// 1F8 - init'd to -1
-		Flags2						flags2;							// 1FC
-		BSString					unk200;							// 200
-		BSString					unk210;							// 210
-		UInt64						unk220;							// 220
-		Data228						unk228;							// 228
-		Data228						unk234;							// 234
-		Data228						unk240;							// 240
-		Data228						unk24C;							// 24C
-		float						unk258;							// 258 - init'd to -1
-		UInt32						unk25C;							// 25C
-		UInt64						unk260;							// 260
-		float						unk268;							// 268
-		float						unk26C;							// 26C
-		UInt32						unk270;							// 270
-		UInt32						unk274;							// 274
-		UInt64						unk278;							// 278
-		UInt64						unk280;							// 280
-		UInt64						unk288;							// 288
-		UInt64						unk290;							// 290
-		UInt64						unk298;							// 298
-		UInt64						unk2A0;							// 2A0
-		UInt64						unk2A8;							// 2A8
+		Flag1						flags1;														// 0E0
+		float						unk0E4;														// 0E4
+		UInt32						unk0E8;														// 0E8
+		UInt32						pad0EC;														// 0EC
+		ActorProcessManager*		processManager;												// 0F0
+		UInt32						refHandleDialogueTarget;									// 0F8
+		UInt32						refHandleCombatTarget;										// 0FC
+		UInt32						refHandleKiller;											// 100
+		UInt32						unk104;														// 104
+		float						unk108;														// 108 - init'd to -1
+		UInt32						unk10C;														// 10C
+		UInt32						unk110;														// 110
+		UInt32						unk114;														// 114
+		UInt32						unk118;														// 118
+		UInt32						unk11C;														// 11C
+		NiPoint3					unk120;														// 120
+		UInt32						unk12C;														// 12C
+		void*						unk130;														// 130
+		void*						unk138;														// 138 - BGSLocation*
+		void*						unk140;														// 140 - ActorMover*
+		void*						unk148;														// 148 - MovementControllerNPC*
+		void*						unk150;														// 150
+		void*						unk158;														// 158
+		UInt64						unk160;														// 160
+		float						unk168;														// 168
+		UInt32						unk16C;														// 16C
+		UInt32						unk170;														// 170
+		UInt32						unk174;														// 174 - init'd to 50
+		UInt32						unk178;														// 178
+		UInt32						unk17C;														// 17C - init'd to 7FFFFFFF
+		UInt64						unk180;														// 180
+		BSTSmallArray<SpellItem*>	addedSpells;												// 188
+		MagicCaster*				magicCaster[to_underlying(SlotType::kNumSlots)];			// 1A0 - ActorMagicCaster*
+		MagicCaster*				equippingMagicItems[to_underlying(SlotType::kNumSlots)];	// 1C0
+		TESForm*					equippedShout;												// 1E0
+		UInt32						unk1E8;														// 1E8
+		UInt32						pad1EC;														// 1EC
+		TESRace*					race;														// 1F0
+		float						unk1F8;														// 1F8 - init'd to -1
+		Flag2						flags2;														// 1FC
+		BSString					unk200;														// 200
+		BSString					unk210;														// 210
+		UInt64						unk220;														// 220
+		Data228						unk228;														// 228
+		Data228						unk234;														// 234
+		Data228						unk240;														// 240
+		Data228						unk24C;														// 24C
+		float						unk258;														// 258 - init'd to -1
+		UInt32						unk25C;														// 25C
+		UInt64						unk260;														// 260
+		float						unk268;														// 268
+		float						unk26C;														// 26C
+		UInt32						unk270;														// 270
+		UInt32						unk274;														// 274
+		UInt64						unk278;														// 278
+		UInt64						unk280;														// 280
+		UInt64						unk288;														// 288
+		UInt64						unk290;														// 290
+		UInt64						unk298;														// 298
+		UInt64						unk2A0;														// 2A0
+		UInt64						unk2A8;														// 2A8
 	};
 	STATIC_ASSERT(offsetof(Actor, addedSpells) == 0x188);
 	STATIC_ASSERT(sizeof(Actor) == 0x2B0);

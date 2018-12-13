@@ -3,50 +3,60 @@
 
 namespace RE
 {
-	UInt32 BGSBipedObjectForm::GetSlotMask() const
+	BGSBipedObjectForm::FirstPersonFlag BGSBipedObjectForm::GetSlotMask() const
 	{
-		return bipedObjectData.parts;
+		return bipedBodyTemplate.firstPersonFlag;
 	}
 
 
-	void BGSBipedObjectForm::SetSlotMask(UInt32 mask)
+	void BGSBipedObjectForm::SetSlotMask(FirstPersonFlag a_mask)
 	{
-		bipedObjectData.parts = mask;
+		bipedBodyTemplate.firstPersonFlag = a_mask;
 	}
 
 
-	bool BGSBipedObjectForm::HasPartOf(UInt32 flag) const
+	bool BGSBipedObjectForm::HasPartOf(FirstPersonFlag a_flag) const
 	{
-		return (bipedObjectData.parts & flag) != 0;
+		return (bipedBodyTemplate.firstPersonFlag & a_flag) != FirstPersonFlag::kNone;
 	}
 
 
-	UInt32 BGSBipedObjectForm::GetWeightClass() const
+	BGSBipedObjectForm::ArmorType BGSBipedObjectForm::GetArmorType() const
 	{
-		return bipedObjectData.weightClass;
+		return bipedBodyTemplate.armorType;
 	}
 
 
 	bool BGSBipedObjectForm::IsLightArmor() const
 	{
-		return bipedObjectData.weightClass == kWeight_Light;
+		return bipedBodyTemplate.armorType == ArmorType::kLightArmor;
 	}
 
 
 	bool BGSBipedObjectForm::IsHeavyArmor() const
 	{
-		return bipedObjectData.weightClass == kWeight_Heavy;
+		return bipedBodyTemplate.armorType == ArmorType::kHeavyArmor;
 	}
 
 
-	UInt32 BGSBipedObjectForm::AddSlotToMask(UInt32 slot)
+	bool BGSBipedObjectForm::IsClothing() const
 	{
-		bipedObjectData.parts |= slot; return bipedObjectData.parts;
+		return bipedBodyTemplate.armorType == ArmorType::kClothing;
 	}
 
 
-	UInt32 BGSBipedObjectForm::RemoveSlotFromMask(UInt32 slot)
+	BGSBipedObjectForm::FirstPersonFlag BGSBipedObjectForm::AddSlotToMask(FirstPersonFlag a_slot)
 	{
-		bipedObjectData.parts &= ~slot; return bipedObjectData.parts;
+		bipedBodyTemplate.firstPersonFlag |= a_slot;
+		return bipedBodyTemplate.firstPersonFlag;
+	}
+
+
+	BGSBipedObjectForm::FirstPersonFlag BGSBipedObjectForm::RemoveSlotFromMask(FirstPersonFlag a_slot)
+	{
+		if (a_slot != FirstPersonFlag::kNone) {
+			bipedBodyTemplate.firstPersonFlag &= ~a_slot;
+		}
+		return bipedBodyTemplate.firstPersonFlag;
 	}
 }

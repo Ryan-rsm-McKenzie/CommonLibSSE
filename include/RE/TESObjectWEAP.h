@@ -5,8 +5,6 @@
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
 #include "RE/TESBoundObject.h"  // TESBoundObject
 
-#include "Utility.h"  // MAKE_BITWISE_OPERATORS
-
 
 namespace RE
 {
@@ -58,8 +56,6 @@ namespace RE
 				kCBow
 			};
 
-			MAKE_BITWISE_OPERATORS(Type);
-
 
 			enum Flags1 : UInt16
 			{
@@ -74,8 +70,6 @@ namespace RE
 				kBoundWeapon = 1 << 13,
 			};
 
-			MAKE_BITWISE_OPERATORS(Flags1);
-
 
 			enum Flags2 : UInt8
 			{
@@ -86,8 +80,6 @@ namespace RE
 				kUnknown2 = 1 << 6,
 				kNotPlayable = (UInt8)(1 << 7)
 			};
-
-			MAKE_BITWISE_OPERATORS(Flags2);
 
 
 			void*	unk00;			// 00
