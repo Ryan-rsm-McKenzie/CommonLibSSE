@@ -16,17 +16,19 @@ namespace RE
 	{
 	public:
 		PlayerInputHandler();
-		virtual ~PlayerInputHandler();																	// 0
+		virtual ~PlayerInputHandler();																	// 00
 
-		virtual	bool	CanProcess(InputEvent* a_event) = 0;											// 1
-		virtual	void	ProcessThumbstick(ThumbstickEvent* a_event, PlayerControls::Data024* a_arg2);	// 2
-		virtual	void	ProcessMouseMove(MouseMoveEvent* a_event, PlayerControls::Data024* a_arg2);		// 3
-		virtual	void	ProcessButton(ButtonEvent* a_event, PlayerControls::Data024* a_arg2);			// 4
+		virtual	bool	CanProcess(InputEvent* a_event) = 0;											// 01
+		virtual	void	ProcessThumbstick(ThumbstickEvent* a_event, PlayerControls::Data024* a_arg2);	// 02
+		virtual	void	ProcessMouseMove(MouseMoveEvent* a_event, PlayerControls::Data024* a_arg2);		// 03
+		virtual	void	ProcessButton(ButtonEvent* a_event, PlayerControls::Data024* a_arg2);			// 04
 
 		bool			IsEnabled() const;
 		void			Enable(bool a_enable = true);
 
 		// members
 		UInt32			enabled;	// 08
+		UInt32			pad0C;		// 08
 	};
+	STATIC_ASSERT(sizeof(PlayerInputHandler) == 0x10);
 }

@@ -1,8 +1,7 @@
 #pragma once
 
-#include "skse64/GameBSExtraData.h"  // BSExtraData
-
-#include "BSTList.h"
+#include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/BSTList.h"  // BSSimpleList
 
 
 namespace RE
@@ -10,14 +9,17 @@ namespace RE
 	class ExtraDroppedItemList : public BSExtraData
 	{
 	public:
-		enum { kExtraTypeID = kExtraData_DroppedItemList };
+		enum { kExtraTypeID = ExtraDataType::kDroppedItemList };
 
-		virtual ~ExtraDroppedItemList();		// 0
+
+		virtual ~ExtraDroppedItemList();				// 00
 
 		// override (BSExtraData)
-		virtual UInt32	GetType(void) override;	// 1 { return kExtraTypeID; }
+		virtual ExtraDataType GetType()const override;	// 01 { return kDroppedItemList; }
+
 
 		// members
 		BSSimpleList<UInt32> handles;	// 10
 	};
+	STATIC_ASSERT(sizeof(ExtraDroppedItemList) == 0x20);
 }

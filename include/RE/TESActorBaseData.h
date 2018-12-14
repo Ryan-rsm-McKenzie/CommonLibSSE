@@ -71,8 +71,8 @@ namespace RE
 
 		// add
 		virtual void	Unk_04(void);		// 04 - { return 0; }
-		virtual bool	IsGhost();			// 05 - { return (flags & Flag::kGhost} != 0; }
-		virtual bool	Unk06();			// 06 - { return flags < 0; }
+		virtual bool	IsGhost();			// 05 - { return (flags >> 29) & 1; }
+		virtual bool	IsInvulnerable();	// 06 - { test flags, 80000000h; }
 		virtual void	Unk_07(void);		// 07 - { return 1; }
 
 		bool			IsFemale();
@@ -90,7 +90,6 @@ namespace RE
 		bool			HasBleedoutOverride();
 		bool			UsesOppositeGenderAnims();
 		bool			IsSimpleActor();
-		bool			IsInvulnerable();
 
 
 		// members
@@ -105,7 +104,7 @@ namespace RE
 		TemplateFlag			templateFlags;		// 1A
 		UInt16					healthOffset;		// 1C
 		UInt16					bleedoutOverride;	// 1E
-		TESLevItem*				deathItem;			// 20 - INAM
+		TESLevItem*				deathItem;			// 20 - INAM?
 		BGSVoiceType*			voiceType;			// 28 - VTCK
 		TESNPC*					templateNPC;		// 30 - TPLT
 		UInt32					unk38;				// 38 - SPCT?

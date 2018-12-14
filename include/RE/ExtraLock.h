@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameBSExtraData.h"  // BSExtraData
+#include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/FormTypes.h"
 
 
 namespace RE
 {
-	class TESObjectREFR;
-
-
 	struct LockState
 	{
 		SInt32 GetLockLevel(const TESObjectREFR* a_containerRef);
@@ -26,10 +24,18 @@ namespace RE
 	class ExtraLock : public BSExtraData
 	{
 	public:
-		virtual ~ExtraLock();	// 0
+		enum { kExtraTypeID = ExtraDataType::kLock };
+
+
+		virtual ~ExtraLock();															// 00
+
+		// override (BSExtraData)
+		virtual ExtraDataType	GetType() const override;								// 01 - { return kLock; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
 
 
 		// members
 		LockState* state;  // 10
 	};
+	STATIC_ASSERT(sizeof(ExtraLock) == 0x18);
 }

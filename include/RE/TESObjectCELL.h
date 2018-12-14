@@ -1,10 +1,10 @@
 #pragma once
 
 #include "RE/BSTArray.h"  // BSTArray
+#include "RE/BSTList.h"  // BSSimpleList
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESFullName.h"  // TESFullName
-
-class BSExtraData;
+#include "RE/BSExtraData.h"
 
 
 namespace RE
@@ -152,7 +152,7 @@ namespace RE
 		UInt8						unk045;				// 045
 		UInt8						unk046;				// 046
 		UInt8						pad047;				// 047
-		BSExtraData*				extraDataList;		// 048 - Linked list of extra data
+		BSSimpleList<BSExtraData*>	extraDataList;		// 048
 		UInt32*						unk050;				// 050
 		UInt64						unk058;				// 058
 		Lighting*					lighting;			// 060

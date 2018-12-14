@@ -405,10 +405,10 @@ namespace RE
 		typedef _TAlloc allocator_type;
 		typedef BSTArrayAllocatorFunctor<allocator_type> functor_type;
 		typedef _Ty value_type;
-		typedef _Ty *pointer;
-		typedef const _Ty *const_pointer;
-		typedef _Ty &reference;
-		typedef const _Ty &const_reference;
+		typedef _Ty* pointer;
+		typedef const _Ty* const_pointer;
+		typedef _Ty& reference;
+		typedef const _Ty& const_reference;
 		typedef BSTArrayBase::size_type size_type;
 		typedef std::ptrdiff_t difference_type;
 
@@ -612,6 +612,8 @@ namespace RE
 				new(_head() + index)value_type(a_ref);
 			}
 		}
+
+
 		void push_back(value_type&& a_ref)
 		{
 			functor_type pred(this);

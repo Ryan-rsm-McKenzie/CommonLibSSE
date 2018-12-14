@@ -91,10 +91,4 @@ namespace RE
 	{
 		return (flags & Flag::kSimpleActor) != Flag::kNone;
 	}
-
-
-	bool TESActorBaseData::IsInvulnerable()
-	{
-		return (flags & Flag::kInvulnerable) != Flag::kNone;
-	}
 }

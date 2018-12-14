@@ -1,18 +1,22 @@
 #pragma once
 
-#include "skse64/GameBSExtraData.h"  // BSExtraData
+#include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/FormTypes.h"
 
 
 namespace RE
 {
-	class TESForm;
-
-
 	class ExtraOwnership : public BSExtraData
 	{
 	public:
-		ExtraOwnership();
-		virtual ~ExtraOwnership();	// 0
+		enum { kExtraTypeID = ExtraDataType::kOwnership };
+
+
+		virtual ~ExtraOwnership();														// 00
+
+		// override (BSExtraData)
+		virtual ExtraDataType	GetType() const override;								// 01 - { return kOwnership; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
 
 
 		// members

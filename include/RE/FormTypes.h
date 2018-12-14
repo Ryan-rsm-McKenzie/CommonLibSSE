@@ -4,6 +4,7 @@
 namespace RE
 {
 	class TESForm;
+	class Actor;
 	class BGSKeyword;
 	class BGSLocationRefType;
 	class BGSAction;

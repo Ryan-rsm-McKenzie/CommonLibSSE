@@ -11,8 +11,11 @@
 #include <limits>  // numeric_limits
 
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/ExtraContainerChanges.h"  // ExtraContainerChanges
+#include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/ExtraLock.h"  // ExtraLock
 #include "RE/ExtraOwnership.h"  // ExtraOwnership
+#include "RE/ExtraTextDisplayData.h"  // ExtraTextDisplayData
 #include "RE/Offsets.h"
 #include "RE/TESActorBase.h"  // TESActorBase
 #include "RE/TESFaction.h"  // TESFaction
@@ -77,7 +80,7 @@ namespace RE
 
 	TESNPC* TESObjectREFR::GetActorOwner()
 	{
-		ExtraOwnership* exOwnership = static_cast<ExtraOwnership*>(extraData.GetByType(kExtraData_Ownership));
+		ExtraOwnership* exOwnership = static_cast<ExtraOwnership*>(extraData.GetByType(ExtraDataType::kOwnership));
 		if (exOwnership && exOwnership->owner && exOwnership->owner->formType == FormType::Character) {
 			return static_cast<TESNPC*>(exOwnership->owner);
 		} else {
@@ -131,7 +134,7 @@ namespace RE
 
 	TESFaction* TESObjectREFR::GetFactionOwner()
 	{
-		ExtraOwnership* exOwnership = static_cast<ExtraOwnership*>(extraData.GetByType(kExtraData_Ownership));
+		ExtraOwnership* exOwnership = static_cast<ExtraOwnership*>(extraData.GetByType(ExtraDataType::kOwnership));
 		if (exOwnership && exOwnership->owner && exOwnership->owner->formType == FormType::Faction) {
 			return static_cast<TESFaction*>(exOwnership->owner);
 		} else {
@@ -200,7 +203,7 @@ namespace RE
 	{
 		bool renamed = false;
 
-		ExtraTextDisplayData* xTextData = reinterpret_cast<ExtraTextDisplayData*>(extraData.GetByType(kExtraData_TextDisplayData));
+		ExtraTextDisplayData* xTextData = reinterpret_cast<ExtraTextDisplayData*>(extraData.GetByType(ExtraDataType::kTextDisplayData));
 		if (xTextData) {
 			bool inUse = (xTextData->message || xTextData->owner);
 			if (inUse && force) {
@@ -208,11 +211,11 @@ namespace RE
 				xTextData->owner = nullptr;
 			}
 			renamed = (!inUse || force);
-			CALL_MEMBER_FN(xTextData, SetName_Internal)(name.c_str());
+			xTextData->SetName(name.c_str());
 		} else {
 			ExtraTextDisplayData* newTextData = ExtraTextDisplayData::Create();
-			CALL_MEMBER_FN(newTextData, SetName_Internal)(name.c_str());
-			extraData.Add(kExtraData_TextDisplayData, newTextData);
+			newTextData->SetName(name.c_str());
+			extraData.Add(ExtraDataType::kTextDisplayData, newTextData);
 			renamed = true;
 		}
 
@@ -285,8 +288,8 @@ namespace RE
 
 	bool TESObjectREFR::HasInventoryChanges()
 	{
-		RE::ExtraContainerChanges* xContainerChanges = static_cast<RE::ExtraContainerChanges*>(extraData.GetByType(kExtraData_ContainerChanges));
-		RE::InventoryChanges* changes = xContainerChanges ? xContainerChanges->changes : 0;
+		ExtraContainerChanges* xContainerChanges = static_cast<ExtraContainerChanges*>(extraData.GetByType(ExtraDataType::kContainerChanges));
+		InventoryChanges* changes = xContainerChanges ? xContainerChanges->changes : 0;
 		return changes != 0;
 	}
 

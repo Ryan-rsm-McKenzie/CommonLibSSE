@@ -330,6 +330,12 @@
     <ClCompile Include="src\RE\TESObjectCELL.cpp">
       <Filter>src\RE\Skyrim\TESForms\World</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BSExtraData.cpp">
+      <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraTextDisplayData.cpp">
+      <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -766,6 +772,15 @@
     </ClInclude>
     <ClInclude Include="include\Util.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSExtraData.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraDataTypes.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraTextDisplayData.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

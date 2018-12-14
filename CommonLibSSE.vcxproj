@@ -164,6 +164,7 @@
     <ClCompile Include="src\RE\BGSEntryPointFunctionDataActivateChoice.cpp" />
     <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp" />
     <ClCompile Include="src\RE\BGSKeywordForm.cpp" />
+    <ClCompile Include="src\RE\BSExtraData.cpp" />
     <ClCompile Include="src\RE\BSFixedString.cpp" />
     <ClCompile Include="src\RE\BSInputDevice.cpp" />
     <ClCompile Include="src\RE\BSTArray.cpp" />
@@ -174,6 +175,7 @@
     <ClCompile Include="src\RE\Condition.cpp" />
     <ClCompile Include="src\RE\ConsoleManager.cpp" />
     <ClCompile Include="src\RE\EffectSetting.cpp" />
+    <ClCompile Include="src\RE\ExtraTextDisplayData.cpp" />
     <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp" />
     <ClCompile Include="src\RE\ExtraContainerChanges.cpp" />
     <ClCompile Include="src\RE\ExtraLock.cpp" />
@@ -232,6 +234,7 @@
     <ClInclude Include="include\RE\BGSMenuDisplayObject.h" />
     <ClInclude Include="include\RE\BGSPerk.h" />
     <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
+    <ClInclude Include="include\RE\BSExtraData.h" />
     <ClInclude Include="include\RE\BSFixedString.h" />
     <ClInclude Include="include\RE\BSTArray.h" />
     <ClInclude Include="include\RE\BSTEvent.h" />
@@ -243,9 +246,11 @@
     <ClInclude Include="include\RE\ConsoleManager.h" />
     <ClInclude Include="include\RE\EffectItem.h" />
     <ClInclude Include="include\RE\EffectSetting.h" />
+    <ClInclude Include="include\RE\ExtraDataTypes.h" />
     <ClInclude Include="include\RE\ExtraDroppedItemList.h" />
     <ClInclude Include="include\RE\ExtraFactionChanges.h" />
     <ClInclude Include="include\RE\ExtraOwnership.h" />
+    <ClInclude Include="include\RE\ExtraTextDisplayData.h" />
     <ClInclude Include="include\RE\FavoritesHandler.h" />
     <ClInclude Include="include\RE\FormTypes.h" />
     <ClInclude Include="include\RE\GFxFileConstants.h" />

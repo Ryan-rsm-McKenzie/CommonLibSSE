@@ -119,11 +119,9 @@ namespace RE
 				}
 			}
 
-			ExtraFactionChanges* pFactionChanges = static_cast<ExtraFactionChanges*>(extraData.GetByType(kExtraData_FactionChanges));
+			ExtraFactionChanges* pFactionChanges = static_cast<ExtraFactionChanges*>(extraData.GetByType(ExtraDataType::kFactionChanges));
 			if (pFactionChanges) {
-				for (UInt32 i = 0; i < pFactionChanges->factions.count; i++) {
-					ExtraFactionChanges::FactionInfo info;
-					pFactionChanges->factions.GetNthItem(i, info);
+				for (auto& info : pFactionChanges->factions) {
 					if (visitor.Accept(info.faction, info.rank)) {
 						return true;
 					}
@@ -149,7 +147,7 @@ namespace RE
 
 	bool Actor::IsBeingRidden()
 	{
-		return ((flags2 & Flag2::kHasInteraction) != Flag2::kNone) && extraData.HasType(kExtraData_Interaction);
+		return ((flags2 & Flag2::kHasInteraction) != Flag2::kNone) && extraData.HasType(ExtraDataType::kInteraction);
 	}
 
 
@@ -185,7 +183,7 @@ namespace RE
 
 	bool Actor::IsOnMount()
 	{
-		return ((flags2 & Flag2::kHasInteraction) != Flag2::kNone) && extraData.HasType(kExtraData_Interaction);
+		return ((flags2 & Flag2::kHasInteraction) != Flag2::kNone) && extraData.HasType(ExtraDataType::kInteraction);
 	}
 
 

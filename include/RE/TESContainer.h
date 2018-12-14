@@ -2,14 +2,11 @@
 
 #include "skse64/GameFormComponents.h"  // BaseFormComponent
 
-class TESGlobal;
+#include "RE/FormTypes.h"
 
 
 namespace RE
 {
-	class TESForm;
-
-
 	class TESContainer : public BaseFormComponent
 	{
 	public:
