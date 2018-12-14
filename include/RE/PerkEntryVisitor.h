@@ -9,10 +9,10 @@ namespace RE
 	class PerkEntryVisitor
 	{
 	public:
-		enum ReturnType : UInt32
+		enum class ReturnType : UInt32
 		{
-			kReturnType_Break,
-			kReturnType_Continue
+			kBreak,
+			kContinue
 		};
 
 
