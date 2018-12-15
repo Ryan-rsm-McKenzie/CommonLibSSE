@@ -20,6 +20,8 @@ namespace RE
 		gLog.Log(a_logLevel, oss.str().c_str(), args);
 		va_end(args);
 		oss << "\n";
+#if _DEBUG
 		OutputDebugStringA(oss.str().c_str());
+#endif
 	}
 }

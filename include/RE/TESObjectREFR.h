@@ -206,7 +206,7 @@ namespace RE
 		virtual void					Unk_9E(void);																																												// 9E
 		virtual void					Unk_9F(void);																																												// 9F
 		virtual void*					GetDecalGroup();																																											// A0
-		virtual void					Unk_A1(void);																																												// A1
+		virtual bool					SendEquipEvent(uintptr_t a_arg1, uintptr_t a_arg2);																																												// A1
 		virtual void					Unk_A2(void);																																												// A2
 
 

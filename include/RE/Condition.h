@@ -1,11 +1,10 @@
 #pragma once
 
+#include "RE/FormTypes.h"
+
 
 namespace RE
 {
-	class TESObjectREFR;
-
-
 	class Condition
 	{
 	private:

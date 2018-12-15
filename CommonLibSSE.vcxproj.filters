@@ -782,5 +782,11 @@
     <ClInclude Include="include\RE\ExtraTextDisplayData.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\TESEquipEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraUniqueID.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

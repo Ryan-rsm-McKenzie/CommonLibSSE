@@ -2,7 +2,8 @@
 
 #include <string>  // string
 
-class TESObjectREFR;
+#include "RE/FormTypes.h"
+
 class Script;
 class ScriptLocals;
 class ScriptLineBuffer;
@@ -11,9 +12,6 @@ class ScriptBuffer;
 
 namespace RE
 {
-	class TESObjectREFR;
-
-
 	struct SCRIPT_PARAMETER
 	{
 		enum Type : UInt32

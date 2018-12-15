@@ -107,7 +107,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ForcedIncludeFiles>common/IPrefix.h;Util.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>common/IPrefix.h;Logging.h;Util.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <OmitFramePointers>
       </OmitFramePointers>
@@ -116,6 +116,7 @@
       <CompileAs>CompileAsCpp</CompileAs>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <UseFullPaths>false</UseFullPaths>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
@@ -251,6 +252,7 @@
     <ClInclude Include="include\RE\ExtraFactionChanges.h" />
     <ClInclude Include="include\RE\ExtraOwnership.h" />
     <ClInclude Include="include\RE\ExtraTextDisplayData.h" />
+    <ClInclude Include="include\RE\ExtraUniqueID.h" />
     <ClInclude Include="include\RE\FavoritesHandler.h" />
     <ClInclude Include="include\RE\FormTypes.h" />
     <ClInclude Include="include\RE\GFxFileConstants.h" />
@@ -338,6 +340,7 @@
     <ClInclude Include="include\RE\TESContainer.h" />
     <ClInclude Include="include\RE\TESDataHandler.h" />
     <ClInclude Include="include\RE\TESEffectShader.h" />
+    <ClInclude Include="include\RE\TESEquipEvent.h" />
     <ClInclude Include="include\RE\TESFaction.h" />
     <ClInclude Include="include\RE\TESForm.h" />
     <ClInclude Include="include\RE\TESFullName.h" />

@@ -121,6 +121,7 @@ namespace RE
 		virtual NiPoint3*						GetBoundRightBackTop(NiPoint3* a_out) const override;																																			// 074
 		virtual void							ResetInventory(bool a_unk) override;																																							// 08A
 		virtual void							Unk_9A(void) override;																																											// 09A
+		virtual bool							SendEquipEvent(uintptr_t a_arg1, uintptr_t a_arg2) override;																																	// 0A1
 
 		// override (MagicTarget)
 		virtual Actor*							GetMagicTargetActor() const override;																																							// 002
