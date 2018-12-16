@@ -26,11 +26,7 @@ namespace RE
 
 		struct Node
 		{
-			value_type	item;
-			Node*		next;
-
-
-			Node() :
+			constexpr Node() :
 				item(0),
 				next(0)
 			{}
@@ -40,6 +36,10 @@ namespace RE
 			{
 				return this == 0;
 			}
+
+
+			value_type	item;
+			Node*		next;
 		};
 		typedef Node* NodePtr;
 
@@ -55,12 +55,12 @@ namespace RE
 			typedef typename BSSimpleList::const_pointer	pointer;
 
 
-			const_iterator() :
+			constexpr const_iterator() :
 				m_cur(0)
 			{}
 
 
-			const_iterator(const NodePtr a_node) :
+			constexpr const_iterator(const NodePtr a_node) :
 				m_cur(const_cast<NodePtr>(a_node))
 			{}
 
@@ -105,7 +105,7 @@ namespace RE
 			_iter operator++(int)
 			{
 				_iter tmp = *this;
-				++*this;
+				operator++();
 				return tmp;
 			}
 
@@ -136,11 +136,12 @@ namespace RE
 			using const_iterator::m_cur;
 
 
-			iterator()
+			constexpr iterator() :
+				const_iterator()
 			{}
 
 
-			iterator(NodePtr a_node) :
+			constexpr iterator(NodePtr a_node) :
 				const_iterator(a_node)
 			{}
 
@@ -173,7 +174,7 @@ namespace RE
 			_iter operator++(int)
 			{
 				_iter tmp = *this;
-				++*this;
+				operator++();
 				return tmp;
 			}
 
@@ -259,8 +260,10 @@ namespace RE
 		NodePtr _tail() const
 		{
 			NodePtr cur = _head();
-			while (cur->next) {
-				cur = cur->next;
+			if (cur) {
+				while (cur->next) {
+					cur = cur->next;
+				}
 			}
 			return const_cast<NodePtr>(cur);
 		}
@@ -268,13 +271,13 @@ namespace RE
 	public:
 		iterator begin()
 		{
-			return iterator(empty() ? 0 : _head());
+			return empty() ? end() : _head();
 		}
 
 
 		const_iterator cbegin() const
 		{
-			return const_iterator(empty() ? 0 : _head());
+			return empty() ? cend() : _head();
 		}
 
 
@@ -335,16 +338,18 @@ namespace RE
 		size_type size() const
 		{
 			size_type num = 0;
-			for (const_iterator it = cbegin(); !it.empty(); ++it)
+			for (const_iterator it = cbegin(); !it.empty(); ++it) {
 				++num;
+			}
 			return num;
 		}
 
 
 		void clear()
 		{
-			while (!empty())
+			while (!empty()) {
 				pop_front();
+			}
 		}
 
 
@@ -368,8 +373,9 @@ namespace RE
 
 		void pop_front()
 		{
-			if (empty())
+			if (empty()) {
 				return;
+			}
 
 			NodePtr next = m_listHead.next;
 			if (next->empty()) {

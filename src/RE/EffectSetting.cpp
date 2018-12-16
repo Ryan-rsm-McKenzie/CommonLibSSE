@@ -1,9 +1,11 @@
 #include "RE/EffectSetting.h"
 
+#include "RE/ActorValues.h"  // ActorValue
+
 
 namespace RE
 {
-	EffectSetting::Data::ActorValue EffectSetting::GetMagickSkill()
+	ActorValue EffectSetting::GetMagickSkill()
 	{
 		return data.magicSkill;
 	}

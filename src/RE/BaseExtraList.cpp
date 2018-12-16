@@ -1,73 +1,276 @@
 #include "RE/BaseExtraList.h"
 
 #include "skse64_common/Relocation.h"  // RelocAddr
+#include "skse64/GameTypes.h"  // BSReadLocker
 
+#include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/Offsets.h"
 
 
 namespace RE
 {
-	bool BaseExtraList::HasType(ExtraDataType a_type)
+	BaseExtraList::const_iterator::const_iterator(const BSExtraData* a_extra) :
+		_cur(const_cast<BSExtraData*>(a_extra))
+	{}
+
+
+	BaseExtraList::const_iterator::operator pointer() const
 	{
-		typedef bool _HasType_t(BaseExtraList* a_this, UInt32 a_type);
-		_HasType_t* _HasType = reinterpret_cast<_HasType_t*>(GetFnAddr(&::BaseExtraList::HasType));
-		return _HasType(this, (UInt32)a_type);
+		return _cur;
 	}
 
 
-	void BaseExtraList::MarkType(ExtraDataType a_type, bool a_bCleared)
+	BaseExtraList::const_iterator::operator bool() const
 	{
-		typedef void _MarkType_t(BaseExtraList* a_this, UInt32 a_type, bool a_bCleared);
-		_MarkType_t* _MarkType = reinterpret_cast<_MarkType_t*>(GetFnAddr(&::BaseExtraList::MarkType));
-		return _MarkType(this, (UInt32)a_type, a_bCleared);
+		return !empty();
+	}
+
+
+	BaseExtraList::const_iterator::reference BaseExtraList::const_iterator::operator*() const
+	{
+		return *_cur;
+	}
+
+
+	BaseExtraList::const_iterator::pointer BaseExtraList::const_iterator::operator->() const
+	{
+		return _cur;
+	}
+
+
+	BaseExtraList::const_iterator::_iter& BaseExtraList::const_iterator::operator++()
+	{
+		_cur = _cur->next;
+		return *this;
+	}
+
+
+	BaseExtraList::const_iterator::_iter BaseExtraList::const_iterator::operator++(int)
+	{
+		_iter tmp = *this;
+		operator++();
+		return tmp;
+	}
+
+
+	bool BaseExtraList::const_iterator::operator==(const _iter& a_rhs) const
+	{
+		return (_cur == a_rhs._cur);
+	}
+
+
+	bool BaseExtraList::const_iterator::operator!=(const _iter& a_rhs) const
+	{
+		return (!(*this == a_rhs));
+	}
+
+
+	bool BaseExtraList::const_iterator::empty() const
+	{
+		return _cur == nullptr;
+	}
+
+
+	BaseExtraList::iterator::iterator(BSExtraData* a_extra) :
+		BaseExtraList::const_iterator(a_extra)
+	{}
+
+
+	BaseExtraList::iterator::operator pointer() const
+	{
+		return _cur;
+	}
+
+
+	BaseExtraList::iterator::pointer BaseExtraList::iterator::operator*() const
+	{
+		return _cur;
+	}
+
+
+	BaseExtraList::iterator::pointer BaseExtraList::iterator::operator->() const
+	{
+		return _cur;
+	}
+
+	BaseExtraList::iterator::_iter& BaseExtraList::iterator::operator++()
+	{
+		_cur = _cur->next;
+		return *this;
+	}
+
+
+	BaseExtraList::iterator::_iter BaseExtraList::iterator::operator++(int)
+	{
+		_iter tmp = *this;
+		operator++();
+		return tmp;
+	}
+
+
+	BaseExtraList::iterator BaseExtraList::begin()
+	{
+		return iterator(_data);
+	}
+
+
+	BaseExtraList::const_iterator BaseExtraList::cbegin() const
+	{
+		return const_iterator(_data);
+	}
+
+
+	BaseExtraList::const_iterator BaseExtraList::begin() const
+	{
+		return cbegin();
+	}
+
+
+	BaseExtraList::iterator BaseExtraList::end()
+	{
+		return iterator(0);
+	}
+
+
+	BaseExtraList::const_iterator BaseExtraList::cend() const
+	{
+		return const_iterator(0);
+	}
+
+
+	BaseExtraList::const_iterator BaseExtraList::end() const
+	{
+		return cend();
+	}
+
+
+	bool BaseExtraList::HasType(UInt32 a_type) const
+	{
+		BSReadLocker locker(const_cast<BSReadWriteLock*>(&_lock));
+		return _presence ? _presence->HasType(a_type) : false;
+	}
+
+
+	bool BaseExtraList::HasType(ExtraDataType a_type) const
+	{
+		return HasType((UInt32)a_type);
+	}
+
+
+	BSExtraData* BaseExtraList::GetByType(UInt32 a_type) const
+	{
+		if (!HasType(a_type)) {
+			return 0;
+		}
+
+		BSExtraData *result = nullptr;
+
+		BSReadLocker locker(const_cast<BSReadWriteLock*>(&_lock));
+		for (BSExtraData *cur = _data; cur; cur = cur->next) {
+			if (to_underlying(cur->GetType()) == a_type) {
+				result = cur;
+				break;
+			}
+		}
+
+		return result;
+	}
+
+
+	BSExtraData* BaseExtraList::GetByType(ExtraDataType a_type) const
+	{
+		return GetByType((UInt32)a_type);
+	}
+
+
+	bool BaseExtraList::Remove(UInt8 a_type, BSExtraData* a_toRemove)
+	{
+		if (!a_toRemove) {
+			return false;
+		}
+
+		bool removed = false;
+
+		if (_data == a_toRemove) {
+			_data = _data->next;
+			removed = true;
+		} else {
+			for (BSExtraData* traverse = _data; traverse; traverse = traverse->next) {
+				if (traverse->next == a_toRemove) {
+					traverse->next = a_toRemove->next;
+					removed = true;
+					break;
+				}
+			}
+		}
+
+		if (removed) {
+			MarkType(a_type, true);
+		}
+
+		return true;
 	}
 
 
 	bool BaseExtraList::Remove(ExtraDataType a_type, BSExtraData* a_toRemove)
 	{
-		typedef bool _Remove_t(BaseExtraList* a_this, ExtraDataType a_type, BSExtraData* a_toRemove);
-		_Remove_t* _Remove = reinterpret_cast<_Remove_t*>(GetFnAddr(&::BaseExtraList::Remove));
-		return _Remove(this, a_type, a_toRemove);
+		return Remove((UInt8)a_type, a_toRemove);
+	}
+
+
+	bool BaseExtraList::Add(UInt8 type, BSExtraData* toAdd)
+	{
+		if (!toAdd || HasType(type)) {
+			return false;
+		}
+
+		BSExtraData* next = _data;
+		_data = toAdd;
+		toAdd->next = next;
+		MarkType(type, false);
+		return true;
 	}
 
 
 	bool BaseExtraList::Add(ExtraDataType a_type, BSExtraData* a_toAdd)
 	{
-		typedef bool _Add_t(BaseExtraList* a_this, ExtraDataType a_type, BSExtraData* a_toAdd);
-		_Add_t* _Add = reinterpret_cast<_Add_t*>(GetFnAddr(&::BaseExtraList::Add));
-		return _Add(this, a_type, a_toAdd);
+		return Add((UInt8)a_type, a_toAdd);
 	}
 
 
-	bool BaseExtraList::CheckContainerExtraData(bool a_isEquipped)
+	bool BaseExtraList::PresenceBitfield::HasType(UInt32 a_type) const
 	{
-		typedef bool _CheckContainerExtraData_t(BaseExtraList* a_this, bool a_isEquipped);
-		_CheckContainerExtraData_t* _CheckContainerExtraData = reinterpret_cast<_CheckContainerExtraData_t*>(GetFnAddr(&::BaseExtraList::CheckContainerExtraData));
-		return _CheckContainerExtraData(this, a_isEquipped);
+		UInt32 index = (a_type >> 3);
+		if (index >= 0x18) {
+			return false;
+		}
+		UInt8 bitMask = 1 << (a_type & 8);
+		return (bits[index] & bitMask) != 0;
 	}
 
 
-	const char* BaseExtraList::GetDisplayName(TESForm* a_type)
+	void BaseExtraList::PresenceBitfield::MarkType(UInt32 a_type, bool a_cleared)
 	{
-		typedef const char* _GetDisplayName_t(BaseExtraList* a_this, TESForm* a_type);
-		_GetDisplayName_t* _GetDisplayName = reinterpret_cast<_GetDisplayName_t*>(GetFnAddr(&::BaseExtraList::GetDisplayName));
-		return _GetDisplayName(this, a_type);
+		UInt32 index = (a_type >> 3);
+		UInt8 bitMask = 1 << (a_type & 8);
+		UInt8& flag = bits[index];
+		if (a_cleared) {
+			flag &= ~bitMask;
+		} else {
+			flag |= bitMask;
+		}
 	}
 
 
-	BSExtraData* BaseExtraList::GetByType(ExtraDataType a_type)
+	void BaseExtraList::MarkType(UInt32 a_type, bool a_cleared)
 	{
-		typedef BSExtraData* _GetByType_t(BaseExtraList* a_this, UInt32 a_type);
-		_GetByType_t* _GetByType = reinterpret_cast<_GetByType_t*>(GetFnAddr(&::BaseExtraList::GetByType));
-		return _GetByType(this, (UInt32)a_type);
+		_presence->MarkType(a_type, a_cleared);
 	}
 
 
-	void BaseExtraList::SetInventoryChanges(InventoryChanges* a_changes)
+	void BaseExtraList::MarkType(ExtraDataType a_type, bool a_cleared)
 	{
-		typedef void _SetInventoryChanges_Impl_t(BaseExtraList* a_this, InventoryChanges* a_changes);
-		RelocAddr<_SetInventoryChanges_Impl_t*> _SetInventoryChanges_Impl(BASE_EXTRA_LIST_SET_INVENTORY_CHANGES_IMPL);
-		_SetInventoryChanges_Impl(this, a_changes);
+		MarkType((UInt32)a_type, a_cleared);
 	}
 
 
@@ -76,5 +279,13 @@ namespace RE
 		typedef UInt32 _GetAshPileRefHandle_Impl_t(BaseExtraList* a_this, UInt32& refHandle);
 		RelocAddr<_GetAshPileRefHandle_Impl_t*> _GetAshPileRefHandle_Impl(BASE_EXTRA_LIST_GET_ASH_PILE_REF_HANDLE_IMPL);
 		return _GetAshPileRefHandle_Impl(this, a_refHandle);
+	}
+
+
+	void BaseExtraList::SetInventoryChanges(InventoryChanges* a_changes)
+	{
+		typedef void _SetInventoryChanges_Impl_t(BaseExtraList* a_this, InventoryChanges* a_changes);
+		RelocAddr<_SetInventoryChanges_Impl_t*> _SetInventoryChanges_Impl(BASE_EXTRA_LIST_SET_INVENTORY_CHANGES_IMPL);
+		_SetInventoryChanges_Impl(this, a_changes);
 	}
 }

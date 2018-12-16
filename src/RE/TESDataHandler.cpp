@@ -46,6 +46,17 @@ namespace RE
 	}
 
 
+	const ModInfo* TESDataHandler::LookupLoadedModByIndex(UInt8 a_index)
+	{
+		for (auto& mod : modList.loadedMods) {
+			if (mod->modIndex == a_index) {
+				return mod;
+			}
+		}
+		return 0;
+	}
+
+
 	UInt8 TESDataHandler::GetLoadedModIndex(const char* a_modName)
 	{
 		typedef UInt8 _GetLoadedModIndex_t(TESDataHandler* a_this, const char* a_modName);
@@ -59,6 +70,17 @@ namespace RE
 		typedef ModInfo* _LookupLoadedLightModByName_t(TESDataHandler* a_this, const char* a_modName);
 		_LookupLoadedLightModByName_t* _LookupLoadedLightModByName = reinterpret_cast<_LookupLoadedLightModByName_t*>(GetFnAddr(&::DataHandler::LookupLoadedLightModByName));
 		return _LookupLoadedLightModByName(this, a_modName);
+	}
+
+
+	const ModInfo* TESDataHandler::LookupLoadedLightModByIndex(UInt16 a_index)
+	{
+		for (auto& lightMod : modList.loadedCCMods) {
+			if (lightMod->lightIndex == a_index) {
+				return lightMod;
+			}
+		}
+		return 0;
 	}
 
 

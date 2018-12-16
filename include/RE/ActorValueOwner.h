@@ -1,17 +1,12 @@
 #pragma once
 
-#include "skse64_common/Utilities.h"  // MEMBER_FN_PREFIX, DEFINE_MEMBER_FN
-
-#include "RE/EffectSetting.h"  // EffectSetting::Properties::ActorValue
+#include "RE/ActorValues.h"  // ActorValue
 
 
 namespace RE
 {
 	class ActorValueOwner
 	{
-	private:
-		using ActorValue = EffectSetting::Data::ActorValue;
-
 	public:
 		virtual ~ActorValueOwner();
 
@@ -25,10 +20,6 @@ namespace RE
 		virtual bool	Unk_08(void);
 
 		float			GetPlayerActorValueCurrent(ActorValue a_akValue);
-
-	private:
-		typedef float _GetPlayerActorValueCurrent_t(ActorValueOwner* a_this, ActorValue a_akValue);
-		static RelocAddr<_GetPlayerActorValueCurrent_t*> _GetPlayerActorValueCurrent;
 	};
 	STATIC_ASSERT(sizeof(ActorValueOwner) == 0x8);
 }

@@ -11,10 +11,10 @@ namespace RE
 	template <typename T> class BSTEventSink;
 
 
-	enum EventResult
+	enum class EventResult
 	{
-		kEvent_Continue = 0,
-		kEvent_Abort
+		kContinue = 0,
+		kAbort
 	};
 
 
@@ -78,6 +78,6 @@ namespace RE
 	{
 	public:
 		virtual ~BSTEventSink() {}
-		virtual	EventResult	ReceiveEvent(EventT* a_event, BSTEventSource<EventT>* a_dispatcher) = 0;
+		virtual	EventResult	ReceiveEvent(EventT* a_event, BSTEventSource<EventT>* a_eventSource) = 0;
 	};
 }

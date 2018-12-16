@@ -176,6 +176,7 @@
     <ClCompile Include="src\RE\Condition.cpp" />
     <ClCompile Include="src\RE\ConsoleManager.cpp" />
     <ClCompile Include="src\RE\EffectSetting.cpp" />
+    <ClCompile Include="src\RE\EquipManager.cpp" />
     <ClCompile Include="src\RE\ExtraTextDisplayData.cpp" />
     <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp" />
     <ClCompile Include="src\RE\ExtraContainerChanges.cpp" />
@@ -205,6 +206,7 @@
     <ClCompile Include="src\RE\PlayerInputHandler.cpp" />
     <ClCompile Include="src\RE\SpellItem.cpp" />
     <ClCompile Include="src\RE\TESActorBaseData.cpp" />
+    <ClCompile Include="src\RE\TESAmmo.cpp" />
     <ClCompile Include="src\RE\TESContainer.cpp" />
     <ClCompile Include="src\RE\TESDataHandler.cpp" />
     <ClCompile Include="src\RE\TESFaction.cpp" />
@@ -225,6 +227,7 @@
     <ClInclude Include="include\RE\ActivateHandler.h" />
     <ClInclude Include="include\RE\ActiveEffect.h" />
     <ClInclude Include="include\RE\ActorValueOwner.h" />
+    <ClInclude Include="include\RE\ActorValues.h" />
     <ClInclude Include="include\RE\AttackBlockHandler.h" />
     <ClInclude Include="include\RE\AutoMoveHandler.h" />
     <ClInclude Include="include\RE\BGSActorCellEvent.h" />
@@ -247,6 +250,7 @@
     <ClInclude Include="include\RE\ConsoleManager.h" />
     <ClInclude Include="include\RE\EffectItem.h" />
     <ClInclude Include="include\RE\EffectSetting.h" />
+    <ClInclude Include="include\RE\EquipManager.h" />
     <ClInclude Include="include\RE\ExtraDataTypes.h" />
     <ClInclude Include="include\RE\ExtraDroppedItemList.h" />
     <ClInclude Include="include\RE\ExtraFactionChanges.h" />
@@ -335,6 +339,7 @@
     <ClInclude Include="include\RE\TESActorBase.h" />
     <ClInclude Include="include\RE\TESActorBaseData.h" />
     <ClInclude Include="include\RE\TESAIForm.h" />
+    <ClInclude Include="include\RE\TESAmmo.h" />
     <ClInclude Include="include\RE\TESBoundAnimObject.h" />
     <ClInclude Include="include\RE\TESBoundObject.h" />
     <ClInclude Include="include\RE\TESContainer.h" />

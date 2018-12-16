@@ -1,10 +1,12 @@
 #pragma once
 
-#include "skse64/GameData.h"  // ModList
-
 #include "RE/BSTArray.h"  // BSTArray
+#include "RE/BSTList.h"  // BSSimpleList
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
 #include "RE/FormTypes.h"  // FormType
+
+class TESRegionList;
+struct ModInfo;
 
 
 namespace RE
@@ -15,13 +17,24 @@ namespace RE
 		typedef BSTArray<TESForm*> UnkFormArray;
 
 
+		struct ModList
+		{
+			BSSimpleList<ModInfo*>	modInfoList;	// 00 - DataHandler D60
+			BSTArray<ModInfo*>		loadedMods;		// 10 - DataHandler D70
+			BSTArray<ModInfo*>		loadedCCMods;	// 28 - DataHandler D88
+		};
+		STATIC_ASSERT(sizeof(ModList) == 0x40);
+
+
 		static TESDataHandler*	GetSingleton();
 		UInt32					LoadScripts();
 		const ModInfo*			LookupModByName(const char* a_modName);
 		SInt32					GetModIndex(const char* a_modName);
 		const ModInfo*			LookupLoadedModByName(const char* a_modName);
+		const ModInfo*			LookupLoadedModByIndex(UInt8 a_index);
 		UInt8					GetLoadedModIndex(const char* a_modName);
 		const ModInfo*			LookupLoadedLightModByName(const char* a_modName);
+		const ModInfo*			LookupLoadedLightModByIndex(UInt16 a_index);
 		UInt16					GetLoadedLightModIndex(const char* a_modName);
 
 

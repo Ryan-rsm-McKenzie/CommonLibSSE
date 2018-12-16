@@ -3,8 +3,7 @@
 #undef min
 #undef max
 
-#include "skse64/GameExtraData.h"  // ExtraTextDisplayData
-#include "skse64/GameFormComponents.h"  // TESContainer, TESFullName
+#include "skse64/GameFormComponents.h"  // TESContainer
 #include "skse64/GameReferences.h"  // TESObjectREFR
 #include "skse64/GameRTTI.h"  // DYNAMIC_CAST
 
@@ -19,6 +18,7 @@
 #include "RE/Offsets.h"
 #include "RE/TESActorBase.h"  // TESActorBase
 #include "RE/TESFaction.h"  // TESFaction
+#include "RE/TESFullName.h"  // TESFullName
 #include "RE/TESNPC.h"  // TESNPC
 #include "RE/TESObjectCONT.h"  // TESObjectCONT
 
@@ -298,6 +298,13 @@ namespace RE
 	{
 		typedef InventoryChanges* _GetInventoryChanges_t(TESObjectREFR* a_this);
 		RelocAddr<_GetInventoryChanges_t*> _GetInventoryChanges(TES_OBJECT_REFR_GET_INVENTORY_CHANGES);
-		return _GetInventoryChanges(this);
+
+		bool changesCreated = !HasInventoryChanges();
+		InventoryChanges* changes = _GetInventoryChanges(this);
+		if (changesCreated) {
+			changes->InitContainer();
+			changes->GenerateLeveledListChanges();
+		}
+		return changes;
 	}
 }

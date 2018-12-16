@@ -5,43 +5,43 @@ namespace RE
 {
 	float TESObjectWEAP::speed()
 	{
-		return gameData.speed;
+		return data.speed;
 	}
 
 
 	float TESObjectWEAP::reach()
 	{
-		return gameData.reach;
+		return data.reach;
 	}
 
 
 	float TESObjectWEAP::stagger()
 	{
-		return gameData.stagger;
+		return data.stagger;
 	}
 
 
 	float TESObjectWEAP::minRange()
 	{
-		return gameData.minRange;
+		return data.rangeMin;
 	}
 
 
 	float TESObjectWEAP::maxRange()
 	{
-		return gameData.maxRange;
+		return data.rangeMax;
 	}
 
 
-	TESObjectWEAP::GameData::Type TESObjectWEAP::type()
+	TESObjectWEAP::Data::AnimationType TESObjectWEAP::animationType()
 	{
-		return gameData.type;
+		return data.animationType;
 	}
 
 
 	UInt16 TESObjectWEAP::critDamage()
 	{
-		return critData.critDamage;
+		return criticalData.damage;
 	}
 
 
