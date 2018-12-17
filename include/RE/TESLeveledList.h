@@ -37,10 +37,10 @@ namespace RE
 
 		enum Flag : UInt8
 		{
-			kFlagCalculateFromAllLevelsLTPCLevel	= 1 << 0,
-			kFlagCalculateForEachItemInCount		= 1 << 1,
-			kFlagUseAll								= 1 << 2,
-			kFlagSpecialLoot						= 1 << 3
+			kFlagCalculateFromAllLevelsLTPCLevel = 1 << 0,
+			kFlagCalculateForEachItemInCount = 1 << 1,
+			kFlagUseAll = 1 << 2,
+			kFlagSpecialLoot = 1 << 3
 		};
 
 

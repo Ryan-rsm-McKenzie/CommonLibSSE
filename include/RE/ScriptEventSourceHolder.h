@@ -4,6 +4,7 @@
 
 #include "RE/BSTEvent.h"  // BSTEventSource
 #include "RE/TESEquipEvent.h"  // TESEquipEvent
+#include "RE/TESMagicEffectApplyEvent.h"  // TESMagicEffectApplyEvent
 #include "RE/TESObjectREFR.h"  // TESObjectREFRPtr
 
 
@@ -23,7 +24,6 @@ namespace RE
 	struct TESHitEvent;
 	struct TESLoadGameEvent;
 	struct TESLockChangedEvent;
-	struct TESMagicEffectApplyEvent;
 	struct TESMagicWardHitEvent;
 	struct TESMoveAttachDetachEvent;
 	struct TESObjectREFRTranslationEvent;

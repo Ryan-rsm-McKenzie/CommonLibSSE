@@ -10,7 +10,7 @@ constexpr auto to_underlying(Enum a_val) noexcept
 }
 
 
-// unary ~operator    
+// unary ~operator
 template <typename Enum, typename std::enable_if_t<std::is_enum<Enum>::value, int> = 0>
 constexpr inline Enum operator ~(Enum a_val)
 {

@@ -41,7 +41,7 @@ namespace RE
 		InventoryData*	inventoryData;		// 48 - init'd 0
 		GFxValue*		unk50;				// 50 - init'd 0
 		GFxValue*		unk58;				// 58 - init'd 0
-		BSTArray<void*>	unk60;				// 60 
+		BSTArray<void*>	unk60;				// 60
 		UInt32			unk78;				// 78 - init'd 0
 		UInt32			unk7C;				// 7C - init'd 0
 		bool			bPCControlsReady;	// 80 - init'd 0 root.GetMember("bPCControlsReady", tmpValue)

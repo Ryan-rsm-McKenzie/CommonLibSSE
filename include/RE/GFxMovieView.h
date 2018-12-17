@@ -45,19 +45,19 @@ namespace RE
 
 		enum HE_ReturnValueType
 		{
-			kReturnValueType_NotHandled		= 0,
-			kReturnValueType_Handled			= 1,
-			kReturnValueType_NoDefaultAction	= 2,
-			kReturnValueType_Completed		= (kReturnValueType_Handled | kReturnValueType_NoDefaultAction)
+			kReturnValueType_NotHandled = 0,
+			kReturnValueType_Handled = 1,
+			kReturnValueType_NoDefaultAction = 2,
+			kReturnValueType_Completed = (kReturnValueType_Handled | kReturnValueType_NoDefaultAction)
 		};
 
 
 		enum HitTestType
 		{
-			kBounds				= 0,
-			kShapes				= 1,
-			kButtonEvents		= 2,
-			kShapesNoInvisible	= 3
+			kBounds = 0,
+			kShapes = 1,
+			kButtonEvents = 2,
+			kShapesNoInvisible = 3
 		};
 
 		GFxMovieView();

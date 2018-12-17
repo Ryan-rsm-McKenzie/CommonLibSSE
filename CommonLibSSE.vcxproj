@@ -355,6 +355,7 @@
     <ClInclude Include="include\RE\TESFullName.h" />
     <ClInclude Include="include\RE\TESLeveledList.h" />
     <ClInclude Include="include\RE\TESLevItem.h" />
+    <ClInclude Include="include\RE\TESMagicEffectApplyEvent.h" />
     <ClInclude Include="include\RE\TESModel.h" />
     <ClInclude Include="include\RE\TESModelTextureSwap.h" />
     <ClInclude Include="include\RE\TESNPC.h" />

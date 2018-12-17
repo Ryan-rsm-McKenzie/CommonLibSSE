@@ -22,8 +22,8 @@ namespace RE
 
 		enum Flag : UInt32
 		{
-			kInactive	= 0x08000,
-			kDispelled	= 0x40000
+			kInactive = 0x08000,
+			kDispelled = 0x40000
 		};
 
 

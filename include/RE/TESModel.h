@@ -15,7 +15,7 @@ namespace RE
 		virtual void		SetModelName(const char* a_modelName);	// 05 - { modelName = name; }
 		virtual void		Unk_06(void);							// 06
 
-		
+
 		// members
 		BSFixedString	modelName;	// 08
 		void*			unk10;		// 10 - NiTPointerMap <int, void *>

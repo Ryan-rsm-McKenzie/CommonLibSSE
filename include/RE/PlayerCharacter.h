@@ -57,7 +57,8 @@ namespace RE
 		};
 
 
-		struct DataUnk510 {
+		struct DataUnk510
+		{
 			UInt32 a;	// 0
 			UInt32 b;	// 4
 			UInt32 c;	// 8

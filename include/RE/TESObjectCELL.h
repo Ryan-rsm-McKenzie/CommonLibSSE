@@ -113,7 +113,7 @@ namespace RE
 			struct Reference
 			{
 				TESObjectREFR*	ref;	// 0 - only valid if unk08 is NOT NULL, ignore value otherwise
-				void*			unk08;	// 8 
+				void*			unk08;	// 8
 			};
 			STATIC_ASSERT(sizeof(Reference) == 0x10);
 

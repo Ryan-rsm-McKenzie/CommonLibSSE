@@ -180,7 +180,7 @@ namespace RE
 		UnkFormArray								arrVOLI;					// CE8
 
 		TESRegionList*								regionList;					// D00
-		UInt64										_cells[0x3];				// D08 - NiTPrimitiveArray<TESObjectCELL*>													
+		UInt64										_cells[0x3];				// D08 - NiTPrimitiveArray<TESObjectCELL*>
 		UInt64										_addonNodes[0x3];			// D20 - NiTPrimitiveArray<BGSAddonNode*>
 
 		void*										unkD38;						// D38

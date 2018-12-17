@@ -132,7 +132,8 @@ namespace RE
 		template <typename T>
 		static T* LookupByID(UInt32 a_formID)
 		{
-			return static_cast<T*>(LookupByID(a_formID));
+			TESForm* form = LookupByID(a_formID);
+			return (form && (UInt8)form->formType == T::kTypeID) ? static_cast<T*>(form) : 0;
 		}
 
 		UInt32			GetFormID() const;
@@ -158,7 +159,6 @@ namespace RE
 		bool			IsSoulGem() const;
 		bool			IsLockpick() const;
 		bool			IsGold() const;
-
 		bool			HasWorldModel(void) const;
 		float			GetWeight();
 

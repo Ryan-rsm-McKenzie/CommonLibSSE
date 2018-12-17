@@ -16,7 +16,7 @@
 
 namespace RE
 {
-// 00
+	// 00
 	template <class Key>
 	struct BSTScatterTableDefaultHashPolicy
 	{
@@ -75,7 +75,6 @@ namespace RE
 	template <class Entry>
 	struct BSTScatterTableHeapAllocator
 	{
-
 	public:
 		typedef Entry							entry_type;
 		typedef typename entry_type::key_type	key_type;

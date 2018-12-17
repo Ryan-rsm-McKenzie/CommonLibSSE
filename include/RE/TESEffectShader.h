@@ -57,7 +57,7 @@ namespace RE
 			SourceBlendMode			membraneShaderSourceBlendMode;						// 004
 			BlendOperation			membraneShaderBlendOperation;						// 008
 			ZTestFunction			membraneShaderZTestFunction;						// 00C
-			
+
 			Color					fillTextureEffectColorKey1;							// 010
 			float					fillTextureEffectAlphaFadeInTime;					// 014
 			float					fillTextureEffectFullAlphaTime;						// 018

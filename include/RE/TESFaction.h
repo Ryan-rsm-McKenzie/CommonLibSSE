@@ -23,23 +23,23 @@ namespace RE
 
 		enum FactionFlag : UInt32
 		{
-			kFactionFlag_HiddenFromNPC		= 1 << 0,
-			kFactionFlag_SpecialCombat		= 1 << 1,
-			kFactionFlag_PlayerExpelled		= 1 << 2,
-			kFactionFlag_Unk00000008		= 1 << 3,
-			kFactionFlag_Unk00000010		= 1 << 4,
-			kFactionFlag_Unk00000020		= 1 << 5,
-			kFactionFlag_TrackCrime			= 1 << 6,
-			kFactionFlag_IgnoreMurder		= 1 << 7,
-			kFactionFlag_IgnoreAssult		= 1 << 8,
-			kFactionFlag_IgnorePickPocket	= 1 << 9,
-			kFactionFlag_IngoreStealing		= 1 << 10,
-			kFactionFlag_DoReportCrimes		= 1 << 11,
-			kFactionFlag_CrimeGoldDefaults	= 1 << 12,
-			kFactionFlag_IgnoreTrespass		= 1 << 13,
-			kFactionFlag_Vendor				= 1 << 14,
-			kFactionFlag_CanBeOwner			= 1 << 15,
-			kFactionFlag_IgnoreWerewolf		= 1 << 16
+			kFactionFlag_HiddenFromNPC = 1 << 0,
+			kFactionFlag_SpecialCombat = 1 << 1,
+			kFactionFlag_PlayerExpelled = 1 << 2,
+			kFactionFlag_Unk00000008 = 1 << 3,
+			kFactionFlag_Unk00000010 = 1 << 4,
+			kFactionFlag_Unk00000020 = 1 << 5,
+			kFactionFlag_TrackCrime = 1 << 6,
+			kFactionFlag_IgnoreMurder = 1 << 7,
+			kFactionFlag_IgnoreAssult = 1 << 8,
+			kFactionFlag_IgnorePickPocket = 1 << 9,
+			kFactionFlag_IngoreStealing = 1 << 10,
+			kFactionFlag_DoReportCrimes = 1 << 11,
+			kFactionFlag_CrimeGoldDefaults = 1 << 12,
+			kFactionFlag_IgnoreTrespass = 1 << 13,
+			kFactionFlag_Vendor = 1 << 14,
+			kFactionFlag_CanBeOwner = 1 << 15,
+			kFactionFlag_IgnoreWerewolf = 1 << 16
 		};
 
 

@@ -815,5 +815,8 @@
     <ClInclude Include="include\RE\MenuTableItem.h">
       <Filter>include\RE\Skyrim\Menus</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\TESMagicEffectApplyEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -19,7 +19,7 @@ namespace RE
 
 		bool			operator==(const MenuTableItem& a_rhs) const;
 		bool			operator==(const BSFixedString& a_name) const;
-		operator		UInt64() const;
+		operator UInt64() const;
 		static UInt32	GetHash(BSFixedString* a_key);
 		void			Dump();
 	};

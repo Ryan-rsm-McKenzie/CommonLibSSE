@@ -24,8 +24,8 @@ namespace RE
 
 			const_iterator(const BSExtraData* a_extra);
 
-			operator	pointer() const;
-			operator	bool() const;
+			operator pointer() const;
+			operator bool() const;
 			reference	operator*() const;
 			pointer		operator->() const;
 			_iter&		operator++();
@@ -49,7 +49,7 @@ namespace RE
 
 			iterator(BSExtraData* a_extra);
 
-			operator	pointer() const;
+			operator pointer() const;
 			pointer		operator*() const;
 			pointer		operator->() const;
 			_iter&		operator++();
@@ -67,7 +67,7 @@ namespace RE
 
 		BaseExtraList();
 		~BaseExtraList();
-		
+
 		bool				HasType(UInt32 a_type) const;
 		bool				HasType(ExtraDataType a_type) const;
 		template<typename T>

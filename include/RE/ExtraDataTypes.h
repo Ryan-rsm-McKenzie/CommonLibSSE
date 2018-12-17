@@ -55,8 +55,8 @@ namespace RE
 		kScale,						// 0x2F
 		kSeed,						// 0x30 - ExtraSeed, removed in 1.7.7.0
 		kMagicCaster,				// 0x31
-		kMagicTarget,				// 0x32 
-		kUnk33,						// 0x33 
+		kMagicTarget,				// 0x32
+		kUnk33,						// 0x33
 		kPlayerCrimeList,			// 0x34
 		kUnk35,						// 0x35
 		kEnableStateParent,			// 0x36

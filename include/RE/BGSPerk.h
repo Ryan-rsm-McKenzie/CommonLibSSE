@@ -55,5 +55,4 @@ namespace RE
 		BGSPerk*				nextPerk;		// 78
 	};
 	STATIC_ASSERT(sizeof(BGSPerk) == 0x80);
-
 }

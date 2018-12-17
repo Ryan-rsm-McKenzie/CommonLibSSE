@@ -23,13 +23,13 @@ namespace RE
 
 		enum Flag : UInt8
 		{
-			kFlag_None		= 0,
-			kFlag_Unk01		= 1 << 0,
-			kFlag_Unk02		= 1 << 1,
-			kFlag_Unk03		= 1 << 2,
-			kFlag_DrawHead	= 1 << 3,
-			kFlag_Mobile	= 1 << 4,
-			kFlag_Reset		= 1 << 5
+			kFlag_None = 0,
+			kFlag_Unk01 = 1 << 0,
+			kFlag_Unk02 = 1 << 1,
+			kFlag_Unk03 = 1 << 2,
+			kFlag_DrawHead = 1 << 3,
+			kFlag_Mobile = 1 << 4,
+			kFlag_Reset = 1 << 5
 		};
 
 

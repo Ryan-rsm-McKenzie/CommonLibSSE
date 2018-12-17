@@ -24,21 +24,21 @@ namespace RE
 
 		enum Flag : UInt32
 		{
-			kFlag_TypeOmni				= 0,
-			kFlag_Dynamic				= 1 << 0,
-			kFlag_Carryable				= 1 << 1,
-			kFlag_Negative				= 1 << 2,
-			kFlag_Flicker				= 1 << 3,
-			kFlag_Unk00000010			= 1 << 4,
-			kFlag_OffByDefault			= 1 << 5,
-			kFlag_FlickerSlow			= 1 << 6,
-			kFlag_Pulse					= 1 << 7,
-			kFlag_PulseSlow				= 1 << 8,
-			kFlag_TypeSpot				= 1 << 9,
-			kFlag_TypeSpotShadow		= 1 << 10,
-			kFlag_TypeHemiShadow		= 1 << 11,
-			kFlag_TypeOmniShadow		= 1 << 12,
-			kFlag_PortalStrict			= 1 << 13,
+			kFlag_TypeOmni = 0,
+			kFlag_Dynamic = 1 << 0,
+			kFlag_Carryable = 1 << 1,
+			kFlag_Negative = 1 << 2,
+			kFlag_Flicker = 1 << 3,
+			kFlag_Unk00000010 = 1 << 4,
+			kFlag_OffByDefault = 1 << 5,
+			kFlag_FlickerSlow = 1 << 6,
+			kFlag_Pulse = 1 << 7,
+			kFlag_PulseSlow = 1 << 8,
+			kFlag_TypeSpot = 1 << 9,
+			kFlag_TypeSpotShadow = 1 << 10,
+			kFlag_TypeHemiShadow = 1 << 11,
+			kFlag_TypeOmniShadow = 1 << 12,
+			kFlag_PortalStrict = 1 << 13,
 
 			kFlag_Type = kFlag_TypeSpot | kFlag_TypeSpotShadow | kFlag_TypeHemiShadow | kFlag_TypeOmniShadow
 		};

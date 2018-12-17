@@ -14,7 +14,7 @@ namespace RE
 	public:
 		enum { kExtraTypeID = ExtraDataType::kContainerChanges };
 
-		
+
 		virtual	~ExtraContainerChanges();				// 00
 
 		// override (BSExtraData)

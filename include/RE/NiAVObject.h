@@ -18,10 +18,10 @@ namespace RE
 	public:
 		enum Flag : UInt32
 		{
-			kFlag_SelectiveUpdate				= 1 << 1,
-			kFlag_UpdatePropertyControllers		= 1 << 2,
-			kFlag_SelectiveUpdateRigid			= 1 << 4,
-			kFlag_OverrideSelectiveTransforms	= 1 << 7,
+			kFlag_SelectiveUpdate = 1 << 1,
+			kFlag_UpdatePropertyControllers = 1 << 2,
+			kFlag_SelectiveUpdateRigid = 1 << 4,
+			kFlag_OverrideSelectiveTransforms = 1 << 7,
 		};
 
 

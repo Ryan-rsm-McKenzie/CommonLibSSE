@@ -166,5 +166,4 @@ namespace RE
 
 	constexpr uintptr_t FAVORITES_MENU_VTBL = 0x016CB0C8;									// 1_5_62
 	constexpr uintptr_t MENU_OPEN_HANDLER_VTBL = 0x016D24E0;								// 1_5_62
-
 }

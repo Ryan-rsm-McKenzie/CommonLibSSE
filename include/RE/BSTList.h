@@ -808,7 +808,7 @@ namespace RE
 		{
 			if (!empty()) {
 				_listHead = _listHead->next;
-			} 
+			}
 		}
 
 
