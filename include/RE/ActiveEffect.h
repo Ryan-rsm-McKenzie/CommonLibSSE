@@ -7,10 +7,6 @@
 
 namespace RE
 {
-	class EffectSetting;
-	class MagicItem;
-	class TESForm;
-	class TESObjectREFR;
 	struct EffectItem;
 
 
@@ -27,7 +23,6 @@ namespace RE
 		};
 
 
-		// add
 		virtual ~ActiveEffect();	// 00
 
 		EffectSetting*	GetBaseObject() const;
