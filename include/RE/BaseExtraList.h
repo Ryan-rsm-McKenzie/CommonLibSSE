@@ -71,14 +71,14 @@ namespace RE
 		bool				HasType(UInt32 a_type) const;
 		bool				HasType(ExtraDataType a_type) const;
 		template<typename T>
-		inline bool			HasType(void) const
+		inline bool			HasType() const
 		{
 			return HasType(T::kExtraTypeID);
 		}
 		BSExtraData*		GetByType(UInt32 a_type) const;
 		BSExtraData*		GetByType(ExtraDataType a_type) const;
 		template<typename T>
-		inline T*			GetByType(void) const
+		inline T*			GetByType() const
 		{
 			return (T*)GetByType(T::kExtraTypeID);
 		}
@@ -96,7 +96,6 @@ namespace RE
 		{
 			return Add(T::kExtraTypeID, a_toAdd);
 		}
-
 		const char*			GetDisplayName(TESForm* a_type);
 		UInt32				GetAshPileRefHandle(UInt32& a_refHandle);
 		void				SetInventoryChanges(InventoryChanges* a_changes);
@@ -111,6 +110,8 @@ namespace RE
 			// members
 			UInt8 bits[0x18];	// 00
 		};
+		STATIC_ASSERT(offsetof(PresenceBitfield, bits) == 0x00);
+		STATIC_ASSERT(sizeof(PresenceBitfield) == 0x18);
 
 
 		inline void	MarkType(UInt32 a_type, bool a_cleared);

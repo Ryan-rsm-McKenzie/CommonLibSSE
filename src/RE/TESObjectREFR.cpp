@@ -288,7 +288,7 @@ namespace RE
 
 	bool TESObjectREFR::HasInventoryChanges()
 	{
-		ExtraContainerChanges* xContainerChanges = static_cast<ExtraContainerChanges*>(extraData.GetByType(ExtraDataType::kContainerChanges));
+		ExtraContainerChanges* xContainerChanges = extraData.GetByType<ExtraContainerChanges>();
 		InventoryChanges* changes = xContainerChanges ? xContainerChanges->changes : 0;
 		return changes != 0;
 	}
@@ -299,11 +299,14 @@ namespace RE
 		typedef InventoryChanges* _GetInventoryChanges_t(TESObjectREFR* a_this);
 		RelocAddr<_GetInventoryChanges_t*> _GetInventoryChanges(TES_OBJECT_REFR_GET_INVENTORY_CHANGES);
 
-		bool changesCreated = !HasInventoryChanges();
-		InventoryChanges* changes = _GetInventoryChanges(this);
-		if (changesCreated) {
-			changes->InitContainer();
-			changes->GenerateLeveledListChanges();
+		ExtraContainerChanges* xContainerChanges = extraData.GetByType<ExtraContainerChanges>();
+		InventoryChanges* changes = xContainerChanges ? xContainerChanges->changes : 0;
+		if (!changes) {
+			changes = _GetInventoryChanges(this);
+			if (changes) {
+				changes->InitContainer();
+				changes->GenerateLeveledListChanges();
+			}
 		}
 		return changes;
 	}

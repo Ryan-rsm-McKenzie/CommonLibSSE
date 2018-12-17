@@ -159,13 +159,13 @@ namespace RE
 
 	BSExtraData* BaseExtraList::GetByType(UInt32 a_type) const
 	{
+		BSReadLocker locker(const_cast<BSReadWriteLock*>(&_lock));
 		if (!HasType(a_type)) {
 			return 0;
 		}
 
 		BSExtraData *result = nullptr;
 
-		BSReadLocker locker(const_cast<BSReadWriteLock*>(&_lock));
 		for (BSExtraData *cur = _data; cur; cur = cur->next) {
 			if (to_underlying(cur->GetType()) == a_type) {
 				result = cur;
@@ -224,6 +224,7 @@ namespace RE
 			return false;
 		}
 
+		BSWriteLocker locker(&_lock);
 		BSExtraData* next = _data;
 		_data = toAdd;
 		toAdd->next = next;
@@ -244,7 +245,7 @@ namespace RE
 		if (index >= 0x18) {
 			return false;
 		}
-		UInt8 bitMask = 1 << (a_type & 8);
+		UInt8 bitMask = 1 << (a_type % 8);
 		return (bits[index] & bitMask) != 0;
 	}
 
@@ -252,7 +253,7 @@ namespace RE
 	void BaseExtraList::PresenceBitfield::MarkType(UInt32 a_type, bool a_cleared)
 	{
 		UInt32 index = (a_type >> 3);
-		UInt8 bitMask = 1 << (a_type & 8);
+		UInt8 bitMask = 1 << (a_type % 8);
 		UInt8& flag = bits[index];
 		if (a_cleared) {
 			flag &= ~bitMask;
