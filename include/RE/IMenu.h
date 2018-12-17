@@ -90,4 +90,5 @@ namespace RE
 		GRefCountBase*	unk18;		// 28 - FxDelegate
 	};
 	STATIC_ASSERT(offsetof(IMenu, view) == 0x10);
+	STATIC_ASSERT(sizeof(IMenu) == 0x30);
 }

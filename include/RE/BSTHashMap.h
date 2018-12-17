@@ -5,6 +5,7 @@
 
 #include "RE/BSTScatterTable.h"
 
+
 namespace RE
 {
 	template <class Key, class Value, class Table>

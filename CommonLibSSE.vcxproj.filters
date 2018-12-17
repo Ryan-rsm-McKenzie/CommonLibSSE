@@ -342,6 +342,12 @@
     <ClCompile Include="src\RE\EquipManager.cpp">
       <Filter>src\RE\Skyrim\Misc</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\InventoryMenu.cpp">
+      <Filter>src\RE\Skyrim\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\MenuTableItem.cpp">
+      <Filter>src\RE\Skyrim\Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -802,6 +808,12 @@
     </ClInclude>
     <ClInclude Include="include\RE\EquipManager.h">
       <Filter>include\RE\Skyrim\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\InventoryMenu.h">
+      <Filter>include\RE\Skyrim\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MenuTableItem.h">
+      <Filter>include\RE\Skyrim\Menus</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

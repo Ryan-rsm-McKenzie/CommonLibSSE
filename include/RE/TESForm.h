@@ -129,6 +129,12 @@ namespace RE
 		void			CopyFromEx(TESForm* a_rhs);
 
 		static TESForm*	LookupByID(UInt32 a_formID);
+		template <typename T>
+		static T* LookupByID(UInt32 a_formID)
+		{
+			return static_cast<T*>(LookupByID(a_formID));
+		}
+
 		UInt32			GetFormID() const;
 
 		bool			Is(FormType a_type) const;

@@ -178,6 +178,8 @@
     <ClCompile Include="src\RE\EffectSetting.cpp" />
     <ClCompile Include="src\RE\EquipManager.cpp" />
     <ClCompile Include="src\RE\ExtraTextDisplayData.cpp" />
+    <ClCompile Include="src\RE\InventoryMenu.cpp" />
+    <ClCompile Include="src\RE\MenuTableItem.cpp" />
     <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp" />
     <ClCompile Include="src\RE\ExtraContainerChanges.cpp" />
     <ClCompile Include="src\RE\ExtraLock.cpp" />
@@ -300,7 +302,9 @@
     <ClInclude Include="include\RE\InputMappingManager.h" />
     <ClInclude Include="include\RE\BaseExtraList.h" />
     <ClInclude Include="include\RE\BGSBipedObjectForm.h" />
+    <ClInclude Include="include\RE\InventoryMenu.h" />
     <ClInclude Include="include\RE\MenuOpenHandler.h" />
+    <ClInclude Include="include\RE\MenuTableItem.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
     <ClInclude Include="include\RE\ExtraContainerChanges.h" />

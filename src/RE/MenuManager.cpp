@@ -1,5 +1,7 @@
 #include "RE/MenuManager.h"
 
+#include "RE/IMenu.h"  // IMenu
+
 
 namespace RE
 {
@@ -21,33 +23,31 @@ namespace RE
 
 	IMenu* MenuManager::GetMenu(BSFixedString& a_menuName)
 	{
-		typedef IMenu* _GetMenu_t(MenuManager* a_this, BSFixedString& a_menuName);
-		_GetMenu_t* _GetMenu = reinterpret_cast<_GetMenu_t*>(GetFnAddr(&::MenuManager::GetMenu));
-		return _GetMenu(this, a_menuName);
+		if (!a_menuName.c_str()) {
+			return 0;
+		}
+
+		MenuTableItem* item = menuTable.Find(&a_menuName);
+		return item ? item->menuInstance : 0;
 	}
 
 
 	GFxMovieView* MenuManager::GetMovieView(BSFixedString& a_menuName)
 	{
-		typedef GFxMovieView* _GetMovieView_t(MenuManager* a_this, BSFixedString& a_menuName);
-		_GetMovieView_t* _GetMovieView = reinterpret_cast<_GetMovieView_t*>(GetFnAddr(&::MenuManager::GetMovieView));
-		return _GetMovieView(this, a_menuName);
+		IMenu* menu = GetMenu(a_menuName);
+		return menu ? menu->view : 0;
 	}
 
 
 	void MenuManager::ShowMenus(bool a_show)
 	{
-		typedef void _ShowMenus_t(MenuManager* a_this, bool a_show);
-		_ShowMenus_t* _ShowMenus = reinterpret_cast<_ShowMenus_t*>(GetFnAddr(&::MenuManager::ShowMenus));
-		_ShowMenus(this, a_show);
+		showMenus = a_show;
 	}
 
 
 	bool MenuManager::IsShowingMenus()
 	{
-		typedef bool _IsShowingMenus_t(MenuManager* a_this);
-		_IsShowingMenus_t* _IsShowingMenus = reinterpret_cast<_IsShowingMenus_t*>(GetFnAddr(&::MenuManager::IsShowingMenus));
-		return _IsShowingMenus(this);
+		return showMenus;
 	}
 
 

@@ -2,13 +2,15 @@
 
 #include "skse64/GameEvents.h"  // MenuModeChangeEvent
 #include "skse64/GameMenus.h"  // MenuTableItem, MenuManager
+#include "skse64/GameTypes.h"  // tHashSet
 
-#include "BSTEvent.h"  // BSTEventSource
+#include "RE/BSTEvent.h"  // BSTEventSource
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
 #include "RE/MenuOpenCloseEvent.h"  // MenuOpenCloseEvent
+#include "RE/MenuTableItem.h"  // MenuTableItem
 
 
 namespace RE
@@ -18,23 +20,14 @@ namespace RE
 
 
 	class MenuManager :
-		public BSTSingletonSDM<MenuManager>,			// 000
-		public BSTEventSource<MenuOpenCloseEvent>,		// 008
-		public BSTEventSource<MenuModeChangeEvent>,		// 060
-		public BSTEventSource<void*>					// 0B8
+		public BSTSingletonSDM<MenuManager>,		// 000
+		public BSTEventSource<MenuOpenCloseEvent>,	// 008
+		public BSTEventSource<MenuModeChangeEvent>,	// 060
+		public BSTEventSource<void*>				// 0B8
 	{
 	public:
-		typedef IMenu* (*CreatorFunc)(void);
-
-
-		struct MenuTableItem
-		{
-			IMenu*			menuInstance;		// 0 - 0 If the menu is currently not open
-			CreatorFunc*	menuConstructor;	// 8
-		};
-
-
-		typedef BSTHashMap<BSFixedString, MenuTableItem> MenuTable;
+		using CreatorFunc = MenuTableItem::CreatorFunc;
+		typedef tHashSet<MenuTableItem, BSFixedString> MenuTable;
 
 
 		struct Unknown3
@@ -64,16 +57,20 @@ namespace RE
 
 		static MenuManager*						GetSingleton(void);
 		bool									IsMenuOpen(BSFixedString& a_menuName);
-		IMenu*									GetMenu(BSFixedString& a_menuName);
 		GFxMovieView*							GetMovieView(BSFixedString& a_menuName);
 		void									ShowMenus(bool a_show);
 		bool									IsShowingMenus();
 		void									Register(const char* a_name, CreatorFunc a_creator);
-
 		BSTEventSource<MenuOpenCloseEvent>*		GetMenuOpenCloseEventSource();
 		BSTEventSource<MenuModeChangeEvent>*	GetMenuModeChangeEventSource();
 		bool									GameIsPaused();
 		bool									CrosshairIsPaused();
+		IMenu*									GetMenu(BSFixedString& a_menuName);
+		template <typename T>
+		T*										GetMenu(BSFixedString& a_menuName)
+		{
+			return static_cast<T*>(GetMenu(a_menuName));
+		}
 
 
 		// members
