@@ -3,9 +3,6 @@
 #include "RE/TESBoundObject.h"  // TESBoundObject
 #include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
 
-#include "Utility.h"  // MAKE_BITWISE_OPERATORS
-
-
 namespace RE
 {
 	class TESObjectSTAT :
@@ -21,13 +18,11 @@ namespace RE
 			enum class Flag : UInt32
 			{};
 
-			MAKE_BITWISE_OPERATORS(Flag);
 
-
-			float	maxAngle;	// 68 - init'd to 90 (range 30-120)
-			void*	material;	// 70
-			Flag	flags;		// 78
-			UInt32	pad7C;		// 7C
+			float				maxAngle;	// 68 - init'd to 90 (range 30-120)
+			BGSMaterialObject*	material;	// 70
+			Flag				flags;		// 78
+			UInt32				pad7C;		// 7C
 		};
 
 

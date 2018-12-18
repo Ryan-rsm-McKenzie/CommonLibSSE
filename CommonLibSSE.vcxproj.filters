@@ -139,6 +139,9 @@
     <Filter Include="src\RE\Skyrim\FileIO">
       <UniqueIdentifier>{6a60f52c-744c-4825-af1b-63f6e6e0f7d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\Skyrim\Animation">
+      <UniqueIdentifier>{d0042e06-6676-4162-9ef2-0292c1365ee3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -353,6 +356,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\TESObjectARMA.cpp">
       <Filter>src\RE\Skyrim\TESForms\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BShkbAnimationGraph.cpp">
+      <Filter>src\RE\Skyrim\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -829,6 +835,24 @@
     </ClInclude>
     <ClInclude Include="include\RE\BGSEquipType.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\EnchantmentItem.h">
+      <Filter>include\RE\Skyrim\Magic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESEnchantableForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraEnchantment.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSAnimationGraphEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BShkbAnimationGraph.h">
+      <Filter>include\RE\Skyrim\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSIRagdollDriver.h">
+      <Filter>include\RE\Skyrim\Animation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

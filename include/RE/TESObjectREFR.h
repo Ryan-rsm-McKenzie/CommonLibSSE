@@ -5,6 +5,7 @@
 #include "Offsets.h"
 
 #include "RE/BaseExtraList.h"  // BaseExtraList
+#include "RE/BSAnimationGraphEvent.h"  // BSAnimationGraphEvent
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/IAnimationGraphManagerHolder.h"  // IAnimationGraphManagerHolder
@@ -98,10 +99,11 @@ namespace RE
 		virtual const char*				GetName() override;																																											// 32
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)
-		virtual EventResult				ReceiveEvent(BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_dispatcher) override;																					// 00
+		virtual EventResult				ReceiveEvent(BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_dispatcher) override;																					// 01
 
 		// override (IAnimationGraphManagerHolder)
 		virtual bool					GetAnimationGraphManager(BSAnimationGraphManager*& a_out) override;																															// 02
+		virtual bool					ConstructBShkbAnimationGraph(BShkbAnimationGraph*& a_out) override;																															// 05
 
 		// add
 		virtual void					Unk_3B(void);																																												// 3B

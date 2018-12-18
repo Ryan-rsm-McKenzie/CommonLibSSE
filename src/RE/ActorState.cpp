@@ -5,7 +5,7 @@ namespace RE
 {
 	UInt32 ActorState::GetSitState() const
 	{
-		UInt32 state = (flags04 >> 0x0E) & 0x0F;
+		UInt32 state = (flags08 >> 0x0E) & 0x0F;
 		switch (state) {
 		case 1:
 		case 2:
@@ -22,7 +22,7 @@ namespace RE
 
 	UInt32 ActorState::GetSleepState() const
 	{
-		UInt32 state = (flags04 >> 0x0E) & 0x0F;
+		UInt32 state = (flags08 >> 0x0E) & 0x0F;
 		switch (state) {
 		case 5:
 		case 6:
@@ -39,37 +39,37 @@ namespace RE
 
 	UInt32 ActorState::GetFlyingState() const
 	{
-		return (flags04 >> 0x12) & 0x07;
+		return (flags08 >> 0x12) & 0x07;
 	}
 
 
 	bool ActorState::IsBleedingOut() const
 	{
-		UInt32 state = (flags04 >> 0x15) & 0x0F; return (state == 7 || state == 8);
+		UInt32 state = (flags08 >> 0x15) & 0x0F; return (state == 7 || state == 8);
 	}
 
 
 	bool ActorState::IsWeaponDrawn() const
 	{
-		return ((flags08 >> 5) & 7) >= 3;
+		return ((flags0C >> 5) & 7) >= 3;
 	}
 
 
 	bool ActorState::IsSneaking() const
 	{
-		return (flags04 & kState_Sneaking) != 0;
+		return (flags08 & kState_Sneaking) != 0;
 	}
 
 
 	bool ActorState::IsSwimming() const
 	{
-		return (flags04 & kState_Swimming) != 0;
+		return (flags08 & kState_Swimming) != 0;
 	}
 
 
 	bool ActorState::IsSprinting() const
 	{
-		return (flags04 & kState_Sprinting) != 0;
+		return (flags08 & kState_Sprinting) != 0;
 	}
 
 
@@ -81,6 +81,6 @@ namespace RE
 
 	bool ActorState::IsUnconscious() const
 	{
-		return (flags04 & 0x01E00000) == 0x00600000;
+		return (flags08 & 0x01E00000) == 0x00600000;
 	}
 }

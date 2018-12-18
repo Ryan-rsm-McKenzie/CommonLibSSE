@@ -1,10 +1,11 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESIcon, TESEnchantableForm, TESValueForm, TESWeightForm, TESAttackDamageForm, BGSDestructibleObjectForm, BGSEquipType, BGSPreloadable, BGSMessageIcon, BGSPickupPutdownSounds, BGSBlockBashData, TESDescription
+#include "skse64/GameFormComponents.h"  // TESIcon, TESValueForm, TESWeightForm, TESAttackDamageForm, BGSDestructibleObjectForm, BGSEquipType, BGSPreloadable, BGSMessageIcon, BGSPickupPutdownSounds, BGSBlockBashData, TESDescription
 
 #include "RE/ActorValues.h"  // ActorValue
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
 #include "RE/TESBoundObject.h"  // TESBoundObject
+#include "RE/TESEnchantableForm.h"  // TESEnchantableForm
 #include "RE/TESFullName.h"  // TESFullName
 #include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm

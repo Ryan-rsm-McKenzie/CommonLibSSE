@@ -41,18 +41,19 @@ namespace RE
 		enum class CastType : UInt32
 		{
 			kConstant = 0,
-			kFireAndForget,
-			kConcentration
+			kFireAndForget = 1,
+			kConcentration = 2,
+			kScroll = 3
 		};
 
 
 		enum class TargetType : UInt32
 		{
 			kSelf = 0,
-			kContact,
-			kAimed,
-			kTargetActor,
-			kTargetLocation,
+			kContact = 1,
+			kAimed = 2,
+			kTargetActor = 3,
+			kTargetLocation = 4
 		};
 
 

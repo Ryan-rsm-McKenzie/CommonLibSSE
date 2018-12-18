@@ -167,6 +167,7 @@
     <ClCompile Include="src\RE\BGSKeywordForm.cpp" />
     <ClCompile Include="src\RE\BSExtraData.cpp" />
     <ClCompile Include="src\RE\BSFixedString.cpp" />
+    <ClCompile Include="src\RE\BShkbAnimationGraph.cpp" />
     <ClCompile Include="src\RE\BSInputDevice.cpp" />
     <ClCompile Include="src\RE\BSTArray.cpp" />
     <ClCompile Include="src\RE\BSKeyboardDevice.cpp" />
@@ -243,8 +244,11 @@
     <ClInclude Include="include\RE\BGSMenuDisplayObject.h" />
     <ClInclude Include="include\RE\BGSPerk.h" />
     <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
+    <ClInclude Include="include\RE\BSAnimationGraphEvent.h" />
     <ClInclude Include="include\RE\BSExtraData.h" />
     <ClInclude Include="include\RE\BSFixedString.h" />
+    <ClInclude Include="include\RE\BShkbAnimationGraph.h" />
+    <ClInclude Include="include\RE\BSIRagdollDriver.h" />
     <ClInclude Include="include\RE\BSTArray.h" />
     <ClInclude Include="include\RE\BSTEvent.h" />
     <ClInclude Include="include\RE\BSTList.h" />
@@ -255,9 +259,11 @@
     <ClInclude Include="include\RE\ConsoleManager.h" />
     <ClInclude Include="include\RE\EffectItem.h" />
     <ClInclude Include="include\RE\EffectSetting.h" />
+    <ClInclude Include="include\RE\EnchantmentItem.h" />
     <ClInclude Include="include\RE\EquipManager.h" />
     <ClInclude Include="include\RE\ExtraDataTypes.h" />
     <ClInclude Include="include\RE\ExtraDroppedItemList.h" />
+    <ClInclude Include="include\RE\ExtraEnchantment.h" />
     <ClInclude Include="include\RE\ExtraFactionChanges.h" />
     <ClInclude Include="include\RE\ExtraOwnership.h" />
     <ClInclude Include="include\RE\ExtraTextDisplayData.h" />
@@ -352,6 +358,7 @@
     <ClInclude Include="include\RE\TESContainer.h" />
     <ClInclude Include="include\RE\TESDataHandler.h" />
     <ClInclude Include="include\RE\TESEffectShader.h" />
+    <ClInclude Include="include\RE\TESEnchantableForm.h" />
     <ClInclude Include="include\RE\TESEquipEvent.h" />
     <ClInclude Include="include\RE\TESFaction.h" />
     <ClInclude Include="include\RE\TESForm.h" />

@@ -282,7 +282,7 @@ namespace RE
 		UInt32							numTeammates;			// A08
 		UInt32							unkA0C;					// A0C
 		UInt64							unkA10;					// A10
-		float							unkA18;					// A18
+		float							animTimeout;			// A18
 		UInt32							unkA1C;					// A1C
 		UInt8							unkA20[0xA0];			// A20 - memset to 0 in ctor
 		UInt32							unkAC0;					// AC0

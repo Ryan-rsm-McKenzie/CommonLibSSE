@@ -1,7 +1,9 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESFullName, TESModelTextureSwap, BGSDestructibleObjectForm, BGSOpenCloseForm, BGSKeywordForm
+#include "skse64/GameFormComponents.h"  // TESFullName, TESModelTextureSwap, BGSDestructibleObjectForm, BGSOpenCloseForm
 
+#include "RE/BGSKeywordForm.h"  // BGSKeywordForm
+#include "RE/FormTypes.h"  // TESObjectREFR
 #include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
 
 class BGSSoundDescriptorForm;
@@ -11,9 +13,6 @@ class TESWaterForm;
 
 namespace RE
 {
-	class TESObjectREFR;
-
-
 	class TESObjectACTI :
 		public TESBoundAnimObject,
 		public TESFullName,

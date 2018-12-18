@@ -77,7 +77,7 @@ namespace RE
 	class BSTEventSink
 	{
 	public:
-		virtual ~BSTEventSink() {}
-		virtual	EventResult	ReceiveEvent(EventT* a_event, BSTEventSource<EventT>* a_eventSource) = 0;
+		virtual ~BSTEventSink() {}																		// 00
+		virtual	EventResult	ReceiveEvent(EventT* a_event, BSTEventSource<EventT>* a_eventSource) = 0;	// 01
 	};
 }

@@ -1,12 +1,13 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESEnchantableForm, TESValueForm, TESWeightForm, BGSDestructibleObjectForm, BGSPickupPutdownSounds, TESBipedModelForm, BGSBlockBashData, TESDescription
+#include "skse64/GameFormComponents.h"  // TESValueForm, TESWeightForm, BGSDestructibleObjectForm, BGSPickupPutdownSounds, TESBipedModelForm, BGSBlockBashData, TESDescription
 
 #include "RE/BGSBipedObjectForm.h"  // BGSBipedObjectForm
 #include "RE/BGSEquipType.h"  // BGSEquipType
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/TESBoundObject.h"  // TESBoundObject
+#include "RE/TESEnchantableForm.h"  // TESEnchantableForm
 #include "RE/TESFullName.h"  // TESFullName
 #include "RE/TESRaceForm.h"  // TESRaceForm
 
