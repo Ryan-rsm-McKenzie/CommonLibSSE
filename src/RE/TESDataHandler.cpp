@@ -90,4 +90,10 @@ namespace RE
 		_GetLoadedLightModIndex_t* _GetLoadedLightModIndex = reinterpret_cast<_GetLoadedLightModIndex_t*>(GetFnAddr(&::DataHandler::GetLoadedLightModIndex));
 		return _GetLoadedLightModIndex(this, a_modName);
 	}
+
+
+	bool TESDataHandler::IsGeneratedID(UInt32 a_formID)
+	{
+		return a_formID >= 0xFF000000;
+	}
 }

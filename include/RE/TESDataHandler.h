@@ -36,6 +36,7 @@ namespace RE
 		const ModInfo*			LookupLoadedLightModByName(const char* a_modName);
 		const ModInfo*			LookupLoadedLightModByIndex(UInt16 a_index);
 		UInt16					GetLoadedLightModIndex(const char* a_modName);
+		bool					IsGeneratedID(UInt32 a_formID);
 
 
 		// members

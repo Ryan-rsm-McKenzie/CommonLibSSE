@@ -348,6 +348,12 @@
     <ClCompile Include="src\RE\MenuTableItem.cpp">
       <Filter>src\RE\Skyrim\Menus</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\TESObjectARMO.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectARMA.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -817,6 +823,12 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESMagicEffectApplyEvent.h">
       <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectARMA.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEquipType.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

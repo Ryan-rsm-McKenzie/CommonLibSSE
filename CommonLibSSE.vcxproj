@@ -215,6 +215,8 @@
     <ClCompile Include="src\RE\TESForm.cpp" />
     <ClCompile Include="src\RE\TESLevItem.cpp" />
     <ClCompile Include="src\RE\TESNPC.cpp" />
+    <ClCompile Include="src\RE\TESObjectARMA.cpp" />
+    <ClCompile Include="src\RE\TESObjectARMO.cpp" />
     <ClCompile Include="src\RE\TESObjectBOOK.cpp" />
     <ClCompile Include="src\RE\TESObjectCELL.cpp" />
     <ClCompile Include="src\RE\TESObjectLIGH.cpp" />
@@ -235,6 +237,7 @@
     <ClInclude Include="include\RE\BGSActorCellEvent.h" />
     <ClInclude Include="include\RE\BGSActorDeathEvent.h" />
     <ClInclude Include="include\RE\BGSEntryPointFunctionDataText.h" />
+    <ClInclude Include="include\RE\BGSEquipType.h" />
     <ClInclude Include="include\RE\BGSKeyword.h" />
     <ClInclude Include="include\RE\BGSKeywordForm.h" />
     <ClInclude Include="include\RE\BGSMenuDisplayObject.h" />
@@ -361,6 +364,7 @@
     <ClInclude Include="include\RE\TESNPC.h" />
     <ClInclude Include="include\RE\TESObject.h" />
     <ClInclude Include="include\RE\TESObjectACTI.h" />
+    <ClInclude Include="include\RE\TESObjectARMA.h" />
     <ClInclude Include="include\RE\TESObjectARMO.h" />
     <ClInclude Include="include\RE\TESObjectBOOK.h" />
     <ClInclude Include="include\RE\TESObjectCELL.h" />

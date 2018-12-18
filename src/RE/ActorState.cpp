@@ -51,7 +51,7 @@ namespace RE
 
 	bool ActorState::IsWeaponDrawn() const
 	{
-		return (flags08 >> 5 & 7) >= 3;
+		return ((flags08 >> 5) & 7) >= 3;
 	}
 
 

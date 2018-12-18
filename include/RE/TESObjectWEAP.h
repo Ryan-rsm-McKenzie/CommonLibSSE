@@ -155,6 +155,9 @@ namespace RE
 		Data::AnimationType	animationType();
 		UInt16				critDamage();
 		void				GetNodeName(char* a_dstBuff);
+		bool				IsBound();
+		bool				IsMelee();
+		bool				IsRanged();
 
 
 		// members
