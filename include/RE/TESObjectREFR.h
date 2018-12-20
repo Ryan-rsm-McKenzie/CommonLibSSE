@@ -8,6 +8,7 @@
 #include "RE/BSAnimationGraphEvent.h"  // BSAnimationGraphEvent
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTEvent.h"  // BSTEventSink
+#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 #include "RE/IAnimationGraphManagerHolder.h"  // IAnimationGraphManagerHolder
 #include "RE/TESForm.h"  // TESForm
 
@@ -102,8 +103,8 @@ namespace RE
 		virtual EventResult				ReceiveEvent(BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_dispatcher) override;																					// 01
 
 		// override (IAnimationGraphManagerHolder)
-		virtual bool					GetAnimationGraphManager(BSAnimationGraphManager*& a_out) override;																															// 02
-		virtual bool					ConstructBShkbAnimationGraph(BShkbAnimationGraph*& a_out) override;																															// 05
+		virtual bool					GetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_out) override;																											// 02
+		virtual bool					ConstructBShkbAnimationGraph(BSTSmartPointer<BShkbAnimationGraph>& a_out) override;																											// 05
 
 		// add
 		virtual void					Unk_3B(void);																																												// 3B
@@ -217,8 +218,9 @@ namespace RE
 		float							GetWeight();
 		const char*						GetReferenceName();
 		TESWorldSpace*					GetWorldspace();
+		UInt32							GetRefHandle();
 		UInt32							CreateRefHandle();
-
+		UInt32							GetOrCreateRefHandle();
 		TESNPC*							GetActorOwner();
 		TESForm*						GetBaseObject();
 		TESContainer*					GetContainer();

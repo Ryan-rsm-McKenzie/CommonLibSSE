@@ -14,9 +14,9 @@ namespace RE
 
 
 	class MagicItem :
-		public TESBoundObject,
-		public TESFullName,
-		public BGSKeywordForm
+		public TESBoundObject,	// 00
+		public TESFullName,		// 30
+		public BGSKeywordForm	// 40
 	{
 	public:
 		enum class Type : UInt32

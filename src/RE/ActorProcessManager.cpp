@@ -1,5 +1,7 @@
 #include "RE/ActorProcessManager.h"
 
+#include "skse64/GameFormComponents.h"  // ActorProcessManager
+
 
 namespace RE
 {
@@ -35,5 +37,17 @@ namespace RE
 		typedef void _UpdateEquipment_Hooked_t(ActorProcessManager* a_this, Actor* a_actor);
 		_UpdateEquipment_Hooked_t* _UpdateEquipment_Hooked = reinterpret_cast<_UpdateEquipment_Hooked_t*>(GetFnAddr(&::ActorProcessManager::UpdateEquipment_Hooked));
 		_UpdateEquipment_Hooked(this, a_actor);
+	}
+
+
+	TESForm* ActorProcessManager::GetEquippedLeftHand()
+	{
+		return equippedObjects[to_underlying(Hand::kLeft)];
+	}
+
+
+	TESForm* ActorProcessManager::GetEquippedRightHand()
+	{
+		return equippedObjects[to_underlying(Hand::kRight)];
 	}
 }

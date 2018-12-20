@@ -142,6 +142,15 @@
     <Filter Include="src\RE\Skyrim\Animation">
       <UniqueIdentifier>{d0042e06-6676-4162-9ef2-0292c1365ee3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\BSAudio">
+      <UniqueIdentifier>{09e4b937-9481-4f99-906d-6e01bc223e63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSSystem">
+      <UniqueIdentifier>{f3a670a2-7682-4ea1-9046-cd596d70e7c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSSystem">
+      <UniqueIdentifier>{e0ccb846-05bd-4c1c-ab57-c7ce9b6767f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -359,6 +368,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\BShkbAnimationGraph.cpp">
       <Filter>src\RE\Skyrim\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraReferenceHandle.cpp">
+      <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSIntrusiveRefCounted.cpp">
+      <Filter>src\RE\Skyrim\BSSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -853,6 +868,24 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSIRagdollDriver.h">
       <Filter>include\RE\Skyrim\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMoviePlayer.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MoviePlayer.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSMusicEvent.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraReferenceHandle.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTSmartPointer.h">
+      <Filter>include\RE\Skyrim\BSSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSIntrusiveRefCounted.h">
+      <Filter>include\RE\Skyrim\BSSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

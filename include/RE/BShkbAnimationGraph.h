@@ -1,13 +1,17 @@
 #pragma once
 
-#include "RE/BSAnimationGraphEvent.h"  // BSAnimationGraphEvent
 #include "RE/BSIRagdollDriver.h"  // BSIRagdollDriver
 #include "RE/BSTEvent.h"  // BSTEventSource
+#include "RE/BSTSmartPointer.h"  // BSSmartPointer
 
 
 namespace RE
 {
 	class BSTransformDeltaEvent;
+	struct BSAnimationGraphEvent;
+
+
+	BSSmartPointer(BShkbAnimationGraph);
 
 
 	class BShkbAnimationGraph :

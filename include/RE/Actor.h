@@ -265,38 +265,38 @@ namespace RE
 		virtual float							IncerceptActorValueChange(UInt32 a_avIndex, float a_avChangeBy);																																// 128
 
 
-		TESForm*		GetEquippedObject(bool a_abLeftHand);
-		void			UpdateSkinColor();
-		void			UpdateHairColor();
-		void			QueueNiNodeUpdate(bool a_updateWeight);
-		bool			HasPerk(BGSPerk* a_perk);
-		UInt16			GetLevel();
-		void			SetRace(TESRace* a_race, bool a_isPlayer);
-		void			UpdateWeaponAbility(TESForm* a_weapon, BaseExtraList* a_extraData, bool a_bLeftHand);
-		void			UpdateArmorAbility(TESForm* a_armor, BaseExtraList* a_extraData);
-		bool			IsHostileToActor(Actor* a_actor);
-		void			ResetAI(UInt32 a_unk1, UInt32 a_unk2);
+		TESForm*	GetEquippedObject(bool a_abLeftHand);
+		void		UpdateSkinColor();
+		void		UpdateHairColor();
+		void		QueueNiNodeUpdate(bool a_updateWeight);
+		bool		HasPerk(BGSPerk* a_perk);
+		UInt16		GetLevel();
+		void		SetRace(TESRace* a_race, bool a_isPlayer);
+		void		UpdateWeaponAbility(TESForm* a_weapon, BaseExtraList* a_extraData, bool a_bLeftHand);
+		void		UpdateArmorAbility(TESForm* a_armor, BaseExtraList* a_extraData);
+		bool		IsHostileToActor(Actor* a_actor);
+		void		ResetAI(UInt32 a_unk1, UInt32 a_unk2);
 
-		bool			VisitFactions(FactionVisitor& a_visitor);
-		TESNPC*			GetActorBase();
-		TESRace*		GetRace();
-		bool			IsBeingRidden();
-		bool			IsCommandedActor() const;
-		bool			IsEssential() const;
-		bool			IsGuard() const;
-		bool			IsInKillMove() const;
-		bool			IsAIEnabled() const;
-		bool			IsOnMount();
-		bool			IsPlayerTeammate() const;
-		bool			IsSneaking();
-		bool			IsTrespassing() const;
-		void			DispelWornItemEnchantments();
-		SInt32			SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);	// ret -1 == internal error, 0 == didn't get caught, 1 == got caught
-		SInt32			CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_unk);
-		SInt32			GetDetectionLevel(Actor* a_target, UInt32 a_flag);
-		bool			IsGhost();
-		bool			IsSummoned();
-		bool			IsRunning();
+		bool		VisitFactions(FactionVisitor& a_visitor);
+		TESNPC*		GetActorBase();
+		TESRace*	GetRace();
+		bool		IsBeingRidden();
+		bool		IsCommandedActor() const;
+		bool		IsEssential() const;
+		bool		IsGuard() const;
+		bool		IsInKillMove() const;
+		bool		IsAIEnabled() const;
+		bool		IsOnMount();
+		bool		IsPlayerTeammate() const;
+		bool		IsSneaking();
+		bool		IsTrespassing() const;
+		void		DispelWornItemEnchantments();
+		SInt32		SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);	// ret -1 == internal error, 0 == didn't get caught, 1 == got caught
+		SInt32		CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_unk);
+		SInt32		GetDetectionLevel(Actor* a_target, UInt32 a_flag);
+		bool		IsGhost();
+		bool		IsSummoned();
+		bool		IsRunning();
 
 
 		// members

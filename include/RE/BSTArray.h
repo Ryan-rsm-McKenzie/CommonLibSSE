@@ -16,7 +16,7 @@ namespace RE
 	class BSTArrayBase
 	{
 	public:
-		typedef std::size_t size_type;
+		typedef std::uint32_t size_type;
 
 
 		BSTArrayBase() :
@@ -178,7 +178,7 @@ namespace RE
 	};
 
 
-	template <std::size_t LOCAL_SIZE>
+	template <std::uint32_t LOCAL_SIZE>
 	class BSTSmallArrayHeapAllocator
 	{
 	public:
@@ -235,6 +235,7 @@ namespace RE
 
 		// members
 		size_type	_M_capacity;	// 00
+		size_type	pad04;			// 04
 		Entry		_M_entries;		// 08
 
 	private:
@@ -270,11 +271,11 @@ namespace RE
 	};
 
 
-	template <std::size_t LOCAL_SIZE>
+	template <std::uint32_t LOCAL_SIZE>
 	RelocAddr<typename BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Allocate_Impl_t*> BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Allocate_Impl(BST_SMALL_ARRAY_HEAP_ALLOCATOR_ALLOCATE_IMPL);
-	template <std::size_t LOCAL_SIZE>
+	template <std::uint32_t LOCAL_SIZE>
 	RelocAddr<typename BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Resize_Impl_t*> BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Resize_Impl(BST_SMALL_ARRAY_HEAP_ALLOCATOR_RESIZE_IMPL);
-	template <std::size_t LOCAL_SIZE>
+	template <std::uint32_t LOCAL_SIZE>
 	RelocAddr<typename BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Free_Impl_t*> BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Free_Impl(BST_SMALL_ARRAY_HEAP_ALLOCATOR_FREE_IMPL);
 
 
@@ -471,7 +472,7 @@ namespace RE
 		}
 
 
-		explicit BSTArray(std::size_t a_num)
+		explicit BSTArray(std::uint32_t a_num)
 		{
 			functor_type pred(this);
 			_allocate(pred, a_num, sizeof(value_type));
@@ -480,7 +481,7 @@ namespace RE
 
 		~BSTArray()
 		{
-			for (std::size_t i = 0; i < size(); ++i) {
+			for (std::uint32_t i = 0; i < size(); ++i) {
 				(*this)[i].~value_type();
 			}
 		}
@@ -659,7 +660,7 @@ namespace RE
 
 		void pop_back()
 		{
-			std::size_t num = size();
+			std::uint32_t num = size();
 			if (num) {
 				pointer p = &front() + (num - 1);
 				p->~value_type();
@@ -675,7 +676,7 @@ namespace RE
 				a_it->~value_type();
 
 				difference_type next = index + 1;
-				std::size_t num = size() - next;
+				std::uint32_t num = size() - next;
 				if (num > 0)
 					_move(_head(), index, next, num, sizeof(value_type));
 				_pop(1);
@@ -755,7 +756,7 @@ namespace RE
 				p->~value_type();
 
 				UInt32 next = index + 1;
-				std::size_t num = size() - next;
+				std::uint32_t num = size() - next;
 				if (num > 0)
 					_move(_head(), index, next, num, sizeof(value_type));
 				_pop(1);
@@ -766,7 +767,7 @@ namespace RE
 		void RemoveAtEndFill(size_type a_index, size_type a_num = 1)
 		{
 			pointer p = _head() + a_index;
-			for (std::size_t i = 0; i < a_num; i++) {
+			for (std::uint32_t i = 0; i < a_num; i++) {
 				(p++)->~value_type();
 			}
 
@@ -837,7 +838,7 @@ namespace RE
 	};
 
 
-	template<class _Ty, std::size_t num = 1>
+	template<class _Ty, std::uint32_t num = 1>
 	using BSTSmallArray = BSTArray <_Ty, BSTSmallArrayHeapAllocator<sizeof(_Ty)*num>>;
 
 
@@ -846,13 +847,13 @@ namespace RE
 	{
 	public:
 		BSScrapArray() : BSTArray() {}
-		explicit BSScrapArray(std::size_t a_size) : BSTArray(a_size) {}
+		explicit BSScrapArray(std::uint32_t a_size) : BSTArray(a_size) {}
 	};
 
 
 	// Returns if/where the element was found, otherwise indexOut can be used as insert position
 	template <typename Ty>
-	bool GetSortIndex(const BSTArray<Ty>& a_sortedArray, const Ty& a_elem, std::size_t* a_indexOut)
+	bool GetSortIndex(const BSTArray<Ty>& a_sortedArray, const Ty& a_elem, std::uint32_t* a_indexOut)
 	{
 		if (a_sortedArray.empty()) {
 			*a_indexOut = 0;

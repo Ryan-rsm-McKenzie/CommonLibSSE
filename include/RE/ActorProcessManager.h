@@ -1,35 +1,32 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // ActorProcessManager, MiddleProcess
+#include "skse64/GameFormComponents.h"  // MiddleProcess
 #include "skse64/GameTypes.h"  // UnkFormArray
 
-class TESForm;
+#include "RE/FormTypes.h"  // Actor, TESForm
 
 
 namespace RE
 {
-	class Actor;
-
-
 	class ActorProcessManager
 	{
 	public:
-		enum EquippedHand : UInt32
+		enum class Hand : UInt32
 		{
-			kEquippedHand_Left = 0,
-			kEquippedHand_Right = 1
+			kLeft,
+			kRight
 		};
 
 
-		enum Flag : UInt8
+		enum class Flag : UInt8
 		{
-			kFlag_None = 0,
-			kFlag_Unk01 = 1 << 0,
-			kFlag_Unk02 = 1 << 1,
-			kFlag_Unk03 = 1 << 2,
-			kFlag_DrawHead = 1 << 3,
-			kFlag_Mobile = 1 << 4,
-			kFlag_Reset = 1 << 5
+			kNone = 0,
+			kUnk01 = 1 << 0,
+			kUnk02 = 1 << 1,
+			kUnk03 = 1 << 2,
+			kDrawHead = 1 << 3,
+			kMobile = 1 << 4,
+			kReset = 1 << 5
 		};
 
 
@@ -170,35 +167,37 @@ namespace RE
 		STATIC_ASSERT(offsetof(Data10, lightLevel) == 0x3A8);
 
 
-		void	SetEquipFlag(Flag a_flag);
-		void	UpdateEquipment(Actor* a_actor);
-		void	SetDataFlag(float a_flag);
-		void	UpdateEquipment_Hooked(Actor* a_actor);
+		void		SetEquipFlag(Flag a_flag);
+		void		UpdateEquipment(Actor* a_actor);
+		void		SetDataFlag(float a_flag);
+		void		UpdateEquipment_Hooked(Actor* a_actor);
+		TESForm*	GetEquippedLeftHand();
+		TESForm*	GetEquippedRightHand();
 
 
 		// members
-		void*					unk00;					// 00
-		MiddleProcess*			middleProcess;			// 08
-		Data10*					unk10;					// 10
-		MiddleProcess::Data58	unk18;					// 18
-		float					unk48;					// 48 - init'd to -1
-		UInt32					unk4C;					// 4C
-		void*					unk50;					// 50
-		UInt32					unk58;					// 58
-		UInt32					pad5C;					// 5C
-		UInt64					unk60;					// 60
-		UInt64					unk68;					// 68
-		UInt64					unk70;					// 70
-		UInt64					unk78;					// 78
-		UInt64					unk80;					// 80
-		UInt64					unk88;					// 88
-		UInt32					unk90;					// 90
-		float					timeOfDeath;			// 94 - GetTimeDead = (GameDaysPassed*24) - timeOfDeath
-		float					unk98;					// 98 - related with above
-		UInt32					pad9C;					// 9C
-		UnkFormArray			forms;					// A0  seen containing [left hand, equip slot, right hand, equip slot, right hand, equip slot)
-		UInt64					unkB8[7];				// B8 2nd slot points back to this adress
-		TESForm*				equippedObject[2];		// F0
+		void*					unk00;					// 000
+		MiddleProcess*			middleProcess;			// 008
+		Data10*					unk10;					// 010
+		MiddleProcess::Data58	unk18;					// 018
+		float					unk48;					// 048 - init'd to -1
+		UInt32					unk4C;					// 04C
+		void*					unk50;					// 050
+		UInt32					unk58;					// 058
+		UInt32					pad5C;					// 05C
+		UInt64					unk60;					// 060
+		UInt64					unk68;					// 068
+		UInt64					unk70;					// 070
+		UInt64					unk78;					// 078
+		UInt64					unk80;					// 080
+		UInt64					unk88;					// 088
+		UInt32					unk90;					// 090
+		float					timeOfDeath;			// 094 - GetTimeDead = (GameDaysPassed*24) - timeOfDeath
+		float					unk98;					// 098 - related with above
+		UInt32					pad9C;					// 09C
+		UnkFormArray			forms;					// 0A0  seen containing [left hand, equip slot, right hand, equip slot, right hand, equip slot)
+		UInt64					unkB8[7];				// 0B8 2nd slot points back to this adress
+		TESForm*				equippedObjects[2];		// 0F0
 		UInt8					unk100[0x136 - 0x100];	// 100
 		UInt8					unk136;					// 136
 		SInt8					unk137;					// 137 - init'd to 3

@@ -14,6 +14,7 @@
 #include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/ExtraLock.h"  // ExtraLock
 #include "RE/ExtraOwnership.h"  // ExtraOwnership
+#include "RE/ExtraReferenceHandle.h"  // ExtraReferenceHandle
 #include "RE/ExtraTextDisplayData.h"  // ExtraTextDisplayData
 #include "RE/Offsets.h"
 #include "RE/TESActorBase.h"  // TESActorBase
@@ -70,11 +71,35 @@ namespace RE
 	}
 
 
+	UInt32 TESObjectREFR::GetRefHandle()
+	{
+		ExtraReferenceHandle* xRefHandle = extraData.GetByType<ExtraReferenceHandle>();
+		return xRefHandle ? xRefHandle->handle : *g_invalidRefHandle;
+	}
+
+
 	UInt32 TESObjectREFR::CreateRefHandle()
 	{
-		typedef UInt32 _CreateRefHandle_t(TESObjectREFR* a_this);
-		_CreateRefHandle_t* _CreateRefHandle = reinterpret_cast<_CreateRefHandle_t*>(GetFnAddr(&::TESObjectREFR::CreateRefHandle));
-		return _CreateRefHandle(this);
+		typedef void _CreateRefHandleByREFR_t(UInt32& a_refHandleOut, TESObjectREFR* a_refr);
+		_CreateRefHandleByREFR_t* _CreateRefHandleByREFR = reinterpret_cast<_CreateRefHandleByREFR_t*>(::CreateRefHandleByREFR.GetUIntPtr());
+
+		if (GetRefCount() > 0) {
+			UInt32 refHandle = 0;
+			_CreateRefHandleByREFR(refHandle, this);
+			return refHandle;
+		} else {
+			return *g_invalidRefHandle;
+		}
+	}
+
+
+	UInt32 TESObjectREFR::GetOrCreateRefHandle()
+	{
+		UInt32 refHandle = GetRefHandle();
+		if (refHandle == *g_invalidRefHandle) {
+			refHandle = CreateRefHandle();
+		}
+		return refHandle;
 	}
 
 

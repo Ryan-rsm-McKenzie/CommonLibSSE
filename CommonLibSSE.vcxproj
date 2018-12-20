@@ -171,6 +171,7 @@
     <ClCompile Include="src\RE\BSInputDevice.cpp" />
     <ClCompile Include="src\RE\BSTArray.cpp" />
     <ClCompile Include="src\RE\BSKeyboardDevice.cpp" />
+    <ClCompile Include="src\RE\BSIntrusiveRefCounted.cpp" />
     <ClCompile Include="src\RE\BSWin32GamepadDevice.cpp" />
     <ClCompile Include="src\RE\ButtonEvent.cpp" />
     <ClCompile Include="src\RE\CommandTable.cpp" />
@@ -178,6 +179,7 @@
     <ClCompile Include="src\RE\ConsoleManager.cpp" />
     <ClCompile Include="src\RE\EffectSetting.cpp" />
     <ClCompile Include="src\RE\EquipManager.cpp" />
+    <ClCompile Include="src\RE\ExtraReferenceHandle.cpp" />
     <ClCompile Include="src\RE\ExtraTextDisplayData.cpp" />
     <ClCompile Include="src\RE\InventoryMenu.cpp" />
     <ClCompile Include="src\RE\MenuTableItem.cpp" />
@@ -242,13 +244,17 @@
     <ClInclude Include="include\RE\BGSKeyword.h" />
     <ClInclude Include="include\RE\BGSKeywordForm.h" />
     <ClInclude Include="include\RE\BGSMenuDisplayObject.h" />
+    <ClInclude Include="include\RE\BGSMoviePlayer.h" />
     <ClInclude Include="include\RE\BGSPerk.h" />
     <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
     <ClInclude Include="include\RE\BSAnimationGraphEvent.h" />
     <ClInclude Include="include\RE\BSExtraData.h" />
     <ClInclude Include="include\RE\BSFixedString.h" />
     <ClInclude Include="include\RE\BShkbAnimationGraph.h" />
+    <ClInclude Include="include\RE\BSIntrusiveRefCounted.h" />
     <ClInclude Include="include\RE\BSIRagdollDriver.h" />
+    <ClInclude Include="include\RE\BSMusicEvent.h" />
+    <ClInclude Include="include\RE\BSTSmartPointer.h" />
     <ClInclude Include="include\RE\BSTArray.h" />
     <ClInclude Include="include\RE\BSTEvent.h" />
     <ClInclude Include="include\RE\BSTList.h" />
@@ -266,6 +272,7 @@
     <ClInclude Include="include\RE\ExtraEnchantment.h" />
     <ClInclude Include="include\RE\ExtraFactionChanges.h" />
     <ClInclude Include="include\RE\ExtraOwnership.h" />
+    <ClInclude Include="include\RE\ExtraReferenceHandle.h" />
     <ClInclude Include="include\RE\ExtraTextDisplayData.h" />
     <ClInclude Include="include\RE\ExtraUniqueID.h" />
     <ClInclude Include="include\RE\FavoritesHandler.h" />
@@ -314,6 +321,7 @@
     <ClInclude Include="include\RE\InventoryMenu.h" />
     <ClInclude Include="include\RE\MenuOpenHandler.h" />
     <ClInclude Include="include\RE\MenuTableItem.h" />
+    <ClInclude Include="include\RE\MoviePlayer.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
     <ClInclude Include="include\RE\ExtraContainerChanges.h" />

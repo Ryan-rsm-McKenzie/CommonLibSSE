@@ -16,12 +16,12 @@ namespace RE
 	class BSSimpleList
 	{
 	public:
-		typedef _Ty			value_type;
-		typedef _Ty*		pointer;
-		typedef const _Ty*	const_pointer;
-		typedef _Ty&		reference;
-		typedef const _Ty&	const_reference;
-		typedef std::size_t	size_type;
+		typedef _Ty				value_type;
+		typedef _Ty*			pointer;
+		typedef const _Ty*		const_pointer;
+		typedef _Ty&			reference;
+		typedef const _Ty&		const_reference;
+		typedef std::uint32_t	size_type;
 
 
 		struct Node
@@ -494,7 +494,7 @@ namespace RE
 		typedef BSExtraData			value_type;
 		typedef BSExtraData*		pointer;
 		typedef const BSExtraData*	const_pointer;
-		typedef std::size_t			size_type;
+		typedef std::uint32_t		size_type;
 
 
 		typedef BSExtraData* NodePtr;

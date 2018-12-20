@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 
 class BSAnimationGraphManager;
 
@@ -17,13 +18,13 @@ namespace RE
 
 		// add
 		virtual bool	SendAnimationEvent(const BSFixedString& a_eventName);							// 01
-		virtual bool	GetAnimationGraphManager(BSAnimationGraphManager*& a_out) = 0;					// 02 - BSSmartPointer
+		virtual bool	GetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_out) = 0;	// 02 - BSTSmartPointer
 		virtual void	Unk_03(void);																	// 03
 		virtual void	Unk_04(void);																	// 04
-		virtual bool	ConstructBShkbAnimationGraph(BShkbAnimationGraph*& a_out) = 0;					// 05
+		virtual bool	ConstructBShkbAnimationGraph(BSTSmartPointer<BShkbAnimationGraph>& a_out) = 0;	// 05
 		virtual void	Unk_06(void);																	// 06
 		virtual void	Unk_07(void);																	// 07
-		virtual void	Unk_08(void);																	// 08
+		virtual void	SinkAnimationGraphEvent(BSTSmartPointer<BShkbAnimationGraph>& a_animGraph);		// 08 - sinks the holder (TESObjectREFR) to the the source passed in
 		virtual void	Unk_09(void);																	// 09
 		virtual void	Unk_0A(void);																	// 0A
 		virtual void	Unk_0B(void);																	// 0B

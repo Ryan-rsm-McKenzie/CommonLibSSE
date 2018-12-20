@@ -29,7 +29,7 @@ namespace RE
 #define TES_HEAP_REDEFINE_NEW()												\
 	static void* operator new(std::size_t a_size)							\
 	{ return Heap_Allocate(a_size); }										\
-	static void* operator new(std::size_t a_size, const std::nothrow_t &)	\
+	static void* operator new(std::size_t a_size, const std::nothrow_t&)	\
 	{ return Heap_Allocate(a_size); }										\
 	static void* operator new(std::size_t a_size, void* a_ptr)				\
 	{ return a_ptr; }														\
