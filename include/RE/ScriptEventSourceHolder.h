@@ -3,8 +3,6 @@
 #include "skse64/GameEvents.h"  // TESActiveEffectApplyRemoveEvent, TESCellAttachDetachEvent, TESCombatEvent, TESContainerChangedEvent, TESDeathEvent, TESInitScriptEvent, TESObjectLoadedEvent, TESUniqueIDChangeEvent
 
 #include "RE/BSTEvent.h"  // BSTEventSource
-#include "RE/TESEquipEvent.h"  // TESEquipEvent
-#include "RE/TESMagicEffectApplyEvent.h"  // TESMagicEffectApplyEvent
 #include "RE/TESObjectREFR.h"  // TESObjectREFRPtr
 
 
@@ -18,12 +16,14 @@ namespace RE
 	struct TESCellReadyToApplyDecalsEvent;
 	struct TESDestructionStageChangedEvent;
 	struct TESEnterBleedoutEvent;
+	struct TESEquipEvent;
 	struct TESFormDeleteEvent;
 	struct TESFurnitureEvent;
 	struct TESGrabReleaseEvent;
 	struct TESHitEvent;
 	struct TESLoadGameEvent;
 	struct TESLockChangedEvent;
+	struct TESMagicEffectApplyEvent;
 	struct TESMagicWardHitEvent;
 	struct TESMoveAttachDetachEvent;
 	struct TESObjectREFRTranslationEvent;

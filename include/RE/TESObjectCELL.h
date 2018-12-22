@@ -1,10 +1,11 @@
 #pragma once
 
+#include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTList.h"  // BSSimpleList
+#include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESFullName.h"  // TESFullName
-#include "RE/BSExtraData.h"
+#include "RE/TESObjectREFR.h"  // TESObjectREFR
 
 
 namespace RE
@@ -15,6 +16,9 @@ namespace RE
 	{
 	public:
 		enum { kTypeID = FormType::Cell };
+
+
+		typedef UInt32 UnkKey;
 
 
 		enum class Flag : UInt16	// DATA
@@ -108,27 +112,6 @@ namespace RE
 		STATIC_ASSERT(sizeof(Lighting) == 0x60);
 
 
-		struct ReferenceData
-		{
-			struct Reference
-			{
-				TESObjectREFR*	ref;	// 0 - only valid if unk08 is NOT NULL, ignore value otherwise
-				void*			unk08;	// 8
-			};
-			STATIC_ASSERT(sizeof(Reference) == 0x10);
-
-
-			UInt32		unk00;			// 00
-			UInt32		maxSize;		// 04
-			UInt32		freeEntries;	// 08 - maxSize - freeEntries = num valid entries (where Reference.unk08 is not NULL)
-			UInt32		unk0C;			// 0C
-			void*		unk10;			// 10 - Reference.unk08 is usually inititalized to this, but it is not always this
-			void*		unk18;			// 18
-			Reference*	refArray;		// 20
-		};
-		STATIC_ASSERT(sizeof(ReferenceData) == 0x28);
-
-
 		// override (TESForm)
 		virtual bool		LoadForm(TESFile* a_mod) override;							// 06
 		virtual TESForm*	DupulicateForm(uintptr_t a_arg1, void* a_arg2) override;	// 09
@@ -144,35 +127,34 @@ namespace RE
 
 
 		// members
-		Data						unk030;				// 030
-		Data						unk038;				// 038
-		Flag						flags;				// 040
-		UInt16						unk042;				// 042
-		UInt8						unk044;				// 044
-		UInt8						unk045;				// 045
-		UInt8						unk046;				// 046
-		UInt8						pad047;				// 047
-		BSSimpleList<BSExtraData*>	extraDataList;		// 048
-		UInt32*						unk050;				// 050
-		UInt64						unk058;				// 058
-		Lighting*					lighting;			// 060
-		TESObjectLAND*				land;				// 068 - NEEDS CHECKING
-		float						waterHeight;		// 070 - XCLW
-		void*						unk078;				// 078
-		void*						unk080;				// 080
-		ReferenceData				refData;			// 088 - New in SE
-		TESForm*					unk0B0;				// 0B0 - REFR owner of cell?
-		BSTArray<TESObjectREFR*>	objectList;			// 0B8 - SE: not always valid
-		UnkArray					unk0D0;				// 0D0
-		UnkArray					unk0F8;				// 0F8
-		UnkArray					unk100;				// 100
-		SimpleLock					cellRefLock;		// 118
-		TESWorldSpace*				unk120;				// 120
-		UInt64						unk128;				// 128
-		BGSLightingTemplate*		lightingTemplate;	// 130
-		UInt64						unk138;				// 138
+		Data								unk030;				// 030
+		Data								unk038;				// 038
+		Flag								flags;				// 040
+		UInt16								unk042;				// 042
+		UInt8								unk044;				// 044
+		UInt8								unk045;				// 045
+		UInt8								unk046;				// 046
+		UInt8								pad047;				// 047
+		BSExtraData*						extraData;			// 048
+		UInt32*								unk050;				// 050
+		UInt64								unk058;				// 058
+		Lighting*							lighting;			// 060
+		TESObjectLAND*						land;				// 068 - NEEDS CHECKING
+		float								waterHeight;		// 070 - XCLW
+		void*								unk078;				// 078
+		BSTHashMap<UInt32, TESObjectREFR>	persistentRefMap;	// 088
+		TESForm*							unk0B0;				// 0B0 - REFR owner of cell?
+		BSTArray<TESObjectREFR*>			objectList;			// 0B8 - temporary refs?
+		UnkArray							unk0D0;				// 0D0
+		UnkArray							unk0F8;				// 0F8
+		UnkArray							unk100;				// 100
+		SimpleLock							cellRefLock;		// 118
+		TESWorldSpace*						worldSpace;			// 120
+		UInt64								unk128;				// 128
+		BGSLightingTemplate*				lightingTemplate;	// 130
+		UInt64								unk138;				// 138
 	};
-	STATIC_ASSERT(offsetof(TESObjectCELL, refData) == 0x88);
+	STATIC_ASSERT(offsetof(TESObjectCELL, persistentRefMap) == 0x80);
 	STATIC_ASSERT(offsetof(TESObjectCELL, objectList) == 0xB8);
 	STATIC_ASSERT(sizeof(TESObjectCELL) == 0x140);
 }

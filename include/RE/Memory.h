@@ -15,7 +15,9 @@ namespace RE
 
 	inline void Heap_Free(void* a_ptr)
 	{
-		::Heap_Free(a_ptr);
+		if (a_ptr) {
+			::Heap_Free(a_ptr);
+		}
 	}
 
 

@@ -1,8 +1,10 @@
 #pragma once
 
-#include "skse64_common/Relocation.h"  // RelocPtr, RelocAddr
+#include "skse64_common/Relocation.h"  // RelocAddr
 
-#include "RE/FormTypes.h"
+#include "RE/FormTypes.h"  // Actor, TESForm
+#include "RE/NiPoint3.h"  // NiPoint3
+#include "RE/NiRect.h"  // NiRect
 
 
 namespace RE
@@ -18,4 +20,6 @@ namespace RE
 
 	typedef void* _HeapAllocAbstraction_t(std::size_t a_allocSize);
 	extern RelocAddr<_HeapAllocAbstraction_t*> _HeapAllocAbstraction;
+
+	bool WorldPtToScreenPt3(float* a_worldToCamMatrix, NiRect<float>* a_port, const NiPoint3& a_in, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance);
 }

@@ -89,6 +89,7 @@ namespace RE
 
 		// members
 		size_type _M_count;	// 0
+		size_type pad4;		// 4
 
 	private:
 		typedef SInt32 _Push_Impl_t(BSTArrayBase* a_this, IAllocatorFunctor& a_functor, size_type a_capacity, size_type a_value_size);
@@ -163,8 +164,9 @@ namespace RE
 
 
 		// members
-		void*		_M_entries;		// 00
-		size_type	_M_capacity;	// 08
+		void*		_M_entries;		// 0
+		size_type	_M_capacity;	// 8
+		size_type	padC;			// C
 
 	private:
 		typedef bool _Allocate_Impl_t(BSTArrayHeapAllocator* a_this, size_type a_num, size_type a_value_size);

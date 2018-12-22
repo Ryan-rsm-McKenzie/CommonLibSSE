@@ -4,6 +4,7 @@
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
 #include "RE/FormTypes.h"  // FormType
+#include "RE/NiTArray.h"  // NiTPrimitiveArray
 
 class TESRegionList;
 struct ModInfo;
@@ -181,8 +182,8 @@ namespace RE
 		UnkFormArray								arrVOLI;					// CE8
 
 		TESRegionList*								regionList;					// D00
-		UInt64										_cells[0x3];				// D08 - NiTPrimitiveArray<TESObjectCELL*>
-		UInt64										_addonNodes[0x3];			// D20 - NiTPrimitiveArray<BGSAddonNode*>
+		NiTPrimitiveArray<TESObjectCELL*>			_cells;						// D08
+		NiTPrimitiveArray<BGSAddonNode*>			_addonNodes;				// D20
 
 		void*										unkD38;						// D38
 		void*										unkD40;						// D40

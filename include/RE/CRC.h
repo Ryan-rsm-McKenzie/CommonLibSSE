@@ -11,15 +11,19 @@ namespace RE
 	class CRC32Calculator
 	{
 	public:
-		inline CRC32Calculator() {}
+		inline CRC32Calculator()
+		{}
+
+
 		inline CRC32Calculator(const Ty& a_val)
 		{
 			operator=(a_val);
 		}
 
+
 		inline operator UInt32()
 		{
-			return m_checksum;
+			return _checksum;
 		}
 
 	protected:
@@ -29,32 +33,36 @@ namespace RE
 			typedef void(*Fn)(UInt32*, const void*, UInt32);
 			RelocAddr<Fn> fn(CALCULATE_CRC32_SIZE);
 
-			fn(&m_checksum, &a_val, SIZE);
+			fn(&_checksum, &a_val, SIZE);
 			return *this;
 		}
 
+
 		template <>
-		inline CRC32Calculator & operator=<4>(const Ty& a_val)
+		inline CRC32Calculator& operator=<4>(const Ty& a_val)
 		{
 			typedef void(*Fn)(UInt32*, Ty);
 			RelocAddr<Fn> fn(CALCULATE_CRC32_32);
 
-			fn(&m_checksum, a_val);
+			fn(&_checksum, a_val);
 			return *this;
 		}
 
+
 		template <>
-		inline CRC32Calculator & operator=<8>(const Ty& a_val)
+		inline CRC32Calculator& operator=<8>(const Ty& a_val)
 		{
 			typedef void(*Fn)(UInt32*, Ty);
 			RelocAddr<Fn> fn(CALCULATE_CRC32_64);
 
-			fn(&m_checksum, a_val);
+			fn(&_checksum, a_val);
 			return *this;
 		}
 
-		UInt32	m_checksum;
+
+		UInt32	_checksum;
 	};
+
 
 	template <class Ty>
 	inline UInt32 CalcCRC32(const Ty& a_val)

@@ -375,6 +375,18 @@
     <ClCompile Include="src\RE\BSIntrusiveRefCounted.cpp">
       <Filter>src\RE\Skyrim\BSSystem</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\NiPoint3.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESWorldSpace.cpp">
+      <Filter>src\RE\Skyrim\TESForms\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraMapMarker.cpp">
+      <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiMemory.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -886,6 +898,33 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSIntrusiveRefCounted.h">
       <Filter>include\RE\Skyrim\BSSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiRect.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiPoint3.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESWorldSpace.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraLocationRefType.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSLocationRefType.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraMapMarker.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiMemory.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTArray.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESCellFullyLoadedEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

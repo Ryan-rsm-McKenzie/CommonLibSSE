@@ -9,10 +9,15 @@
 // c:_skyrim\code\tesv\bscore\BSTScatterTable.h
 
 #include "skse64/GameAPI.h"
-#include "RE/CRC.h"
 
+#include <type_traits>  // enable_if_t, is_base_of
 #include <new>
 #include <memory.h>	// for memcpy_s
+
+#include "RE/CRC.h"  // CalcCRC32
+#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/TESForm.h"  // TESForm
+
 
 namespace RE
 {
@@ -20,28 +25,115 @@ namespace RE
 	template <class Key>
 	struct BSTScatterTableDefaultHashPolicy
 	{
-		typedef UInt32	hash_type;
+		typedef std::uint32_t	hash_type;
 
-		inline static hash_type get_hash(const Key & key)
+
+		inline static hash_type get_hash(const Key& a_key)
 		{
-			return CalcCRC32(key);
+			return CalcCRC32(a_key);
 		}
 
-		inline static bool is_key_equal(const Key & a, const Key & b)
+
+		inline static bool is_key_equal(const Key& a_lhs, const Key& a_rhs)
 		{
-			return a == b;
+			return a_lhs == a_rhs;
 		}
 	};
 
 
-	template <class Key, class Value>
+	template <class Key, class Value, class Enable = void>
 	struct BSTScatterTableDefaultKVStorage
 	{
 		typedef Key		key_type;
 		typedef Value	value_type;
 
-		Key		key;
-		Value	value;
+
+		inline key_type& GetKey()
+		{
+			return _key;
+		}
+
+
+		inline void SetKey(key_type& a_key)
+		{
+			_key = a_key;
+		}
+
+
+		inline void DestroyKey()
+		{
+			_key.~key_type();
+		}
+
+
+		inline value_type& GetValue()
+		{
+			return _value;
+		}
+
+
+		inline void SetValue(value_type& a_value)
+		{
+			return _value = a_value;
+		}
+
+
+		inline void DestroyValue()
+		{
+			_value.~value_type();
+		}
+
+	private:
+		key_type	_key;
+		value_type	_value;
+	};
+
+
+	// Specialization for TESForms. Be sure to include the class you want to instantiate this for, a forward delcaration will not suffice
+	template <class Key, class Value>
+	struct BSTScatterTableDefaultKVStorage<Key, Value, typename std::enable_if_t<std::is_base_of<TESForm, Value>::value>>
+	{
+		typedef Key		key_type;
+		typedef Value*	value_type;
+
+
+		inline key_type& GetKey()
+		{
+			return _value->formID;
+		}
+
+
+		inline void SetKey(const key_type& a_key)
+		{
+			_value->formID = a_key;
+		}
+
+
+		inline void DestroyKey()
+		{
+			_key.~key_type();
+		}
+
+
+		inline value_type& GetValue()
+		{
+			return _value;
+		}
+
+
+		inline void SetValue(const value_type& a_value)
+		{
+			return _value = a_value;
+		}
+
+
+		inline void DestroyValue()
+		{
+			_value->~value_type();
+		}
+
+	private:
+		value_type	_value;
 	};
 
 
@@ -52,22 +144,26 @@ namespace RE
 		typedef Storage<Key, Value> _base_t;
 
 	public:
-		BSTScatterTableEntry() : next(nullptr)
+		BSTScatterTableEntry() :
+			next(0)
 		{}
+
+
 		~BSTScatterTableEntry()
 		{
-			next = nullptr;
+			next = 0;
 		}
+
 
 		bool empty() const
 		{
-			return next == nullptr;
+			return next == 0;
 		}
 
-		// @members
-		//Key					key;
+
+		// members
 		//Value					value;
-		BSTScatterTableEntry	* next;
+		BSTScatterTableEntry*	next;
 	};
 
 
@@ -81,40 +177,45 @@ namespace RE
 		typedef typename entry_type::value_type	value_type;
 
 	protected:
-		static inline entry_type * Allocate(std::size_t num)
+		static inline entry_type* Allocate(std::size_t a_num)
 		{
-			entry_type *entries = (entry_type*)Heap_Allocate(sizeof(entry_type) * num);
+			entry_type* entries = (entry_type*)Heap_Allocate(sizeof(entry_type)* a_num);
 			if (entries) {
-				entry_type *p = entries;
-				while (num) {
-					p->next = nullptr;
-					++p; --num;
+				entry_type* p = entries;
+				while (a_num--) {
+					p->next = 0;
+					++p;
 				}
 			}
 			return entries;
 		}
 
-		static inline void Free(entry_type *p)
+
+		static inline void Free(entry_type* a_ptr)
 		{
-			Heap_Free(p);
+			if (a_ptr) {
+				Heap_Free(a_ptr);
+			}
 		}
 
-		static inline std::size_t GetRelevantSize(std::size_t num)
+
+		static inline std::size_t GetRelevantSize(std::size_t a_num)
 		{
-			if (num > 0)
-				num = 1 << _msb(num - 1);
-			return num;
+			if (a_num > 0) {
+				a_num = 1 << _msb(a_num - 1);
+			}
+			return a_num;
 		}
 
 	private:
-		static inline std::size_t _msb(unsigned int x)
+		static inline std::size_t _msb(unsigned int a_x)
 		{
 			union
 			{
-				unsigned int as_uint32;
-				float        as_float;
+				UInt32	as_uint32;
+				float	as_float;
 			} data;
-			data.as_float = (float)x + 0.5f;
+			data.as_float = (float)a_x + 0.5f;
 
 			return (data.as_uint32 >> 23) - 126;
 		}
@@ -125,7 +226,7 @@ namespace RE
 	template <class Key, class Value, template <class, class> class Storage, class HashPolicy, class Allocator, std::size_t INITIAL_TABLE_SIZE>
 	struct BSTScatterTableTraits
 	{
-		typedef UInt32				size_type;
+		typedef std::uint32_t		size_type;
 		typedef Key					key_type;
 		typedef Value				value_type;
 		typedef Storage<Key, Value>	storage_type;
@@ -161,115 +262,136 @@ namespace RE
 		class hasher
 		{
 		public:
-			hasher() {}
+			hasher()
+			{}
 
-			hash_type operator()(const key_type &key) const
+
+			hash_type operator()(const key_type& a_key) const
 			{
-				return hash_policy::get_hash(key);
+				return hash_policy::get_hash(a_key);
 			}
 		};
+
 
 		class key_equal
 		{
 		public:
-			key_equal() {}
+			key_equal()
+			{}
 
-			bool operator()(const key_type &a, const key_type &b) const
+
+			bool operator()(const key_type& a_lhs, const key_type& a_rhs) const
 			{
-				return hash_policy::is_key_equal(a, b);
+				return hash_policy::is_key_equal(a_lhs, a_rhs);
 			}
 		};
+
 
 		bool empty() const
 		{
 			return size() == 0;
 		}
 
+
 		size_type max_size() const
 		{
-			return m_size;
+			return _size;
 		}
+
 
 		size_type size() const
 		{
-			return m_size - m_freeCount;
+			return _size - _freeCount;
 		}
+
 
 		size_type free_count() const
 		{
-			return m_freeCount;
+			return _freeCount;
 		}
 
 	protected:
-		BSTScatterTableKernel() : m_size(0), m_freeCount(0), m_freeOffset(0)
+		BSTScatterTableKernel() :
+			_size(0),
+			_freeCount(0),
+			_freeOffset(0)
 		{
-			m_eolPtr = (entry_type*)&sentinel;
+			_eolPtr = (entry_type*)&sentinel;
 		}
 
-		inline entry_type * _entry_at(entry_type *entries, hash_type hash) const
+
+		inline entry_type* _entry_at(entry_type* a_entries, hash_type a_hash) const
 		{
-			return entries + (hash & (m_size - 1));
+			return a_entries + (a_hash & (_size - 1));
 		}
 
-		static void _entry_new(entry_type *p, entry_type *next, const key_type &key, const value_type &value)
+
+		static void _entry_new(entry_type* a_ptr, entry_type* a_next, const key_type& a_key, const value_type& a_value)
 		{
-			if (p) {
-				new (&p->key)key_type(key);
-				new (&p->value)value_type(value);
-				p->next = next;
+			if (a_ptr) {
+				a_ptr->SetKey(new key_type(a_key));
+				a_ptr->SetValue(new value_type(a_value));
+				a_ptr->next = a_next;
 			}
 		}
 
-		static inline void _entry_move(entry_type *to, entry_type *from)
+		static inline void _entry_move(entry_type* a_to, entry_type* a_from)
 		{
-			memcpy_s(to, sizeof(*to), from, sizeof(*from));
+			memcpy_s(a_to, sizeof(*a_to), a_from, sizeof(*a_from));
 		}
 
-		void _clear(entry_type *entries)
+
+		void _clear(entry_type* a_entries)
 		{
-			if (entries && m_size) {
-				const entry_type * tail = entries + m_size;
-				for (entry_type *p = entries; p < tail; ++p) {
+			if (a_entries && _size) {
+				const entry_type* tail = a_entries + _size;
+				for (entry_type* p = a_entries; p < tail; ++p) {
 					if (!p->empty()) {
 						p->~entry_type();
 					}
 				}
-				m_freeCount = m_freeOffset = m_size;
+				_freeCount = _freeOffset = _size;
 			}
 		}
 
-		entry_type * _get_free_entry(entry_type *entries)
-		{
-			if (m_freeCount == 0)
-				return nullptr;
 
-			entry_type * p = nullptr;
-			while (true) {
-				m_freeOffset = (m_freeOffset - 1) & (max_size() - 1);
-				p = entries + m_freeOffset;
-				if (p->empty())
-					break;
+		entry_type* _get_free_entry(entry_type* a_entries)
+		{
+			if (_freeCount == 0) {
+				return 0;
 			}
 
-			m_freeCount--;
+			entry_type* p = 0;
+			while (true) {
+				_freeOffset = (_freeOffset - 1) & (max_size() - 1);
+				p = a_entries + _freeOffset;
+				if (p->empty()) {
+					break;
+				}
+			}
+
+			_freeCount--;
 
 			return p;
 		}
 
-		entry_type * _find(const entry_type *entries, hash_type hash, const key_type &key) const
+
+		entry_type* _find(const entry_type* a_entries, hash_type a_hash, const key_type& a_key) const
 		{
-			if (!entries)
-				return nullptr;
+			if (!a_entries) {
+				return 0;
+			}
 
-			entry_type *p = _entry_at(const_cast<entry_type*>(entries), hash);
+			entry_type* p = _entry_at(const_cast<entry_type*>(a_entries), a_hash);
 
-			if (p->empty())
-				return nullptr;
+			if (p->empty()) {
+				return 0;
+			}
 
-			while (!is_key_equal(p->key, key)) {
+			while (!is_key_equal(p->GetKey(), a_key)) {
 				p = p->next;
-				if (p == m_eolPtr) {
-					p = nullptr;
+				if (p == _eolPtr) {
+					p = 0;
 					break;
 				}
 			}
@@ -277,84 +399,91 @@ namespace RE
 			return p;
 		}
 
-		bool _insert(entry_type *entries, hash_type hash, const key_type &key, const value_type &value, UInt16 &unk)
-		{
-			if (!entries)
-				return false;
 
-			entry_type *targetEntry = _entry_at(entries, hash);
+		bool _insert(entry_type* a_entries, hash_type a_hash, const key_type& a_key, const value_type& a_value, UInt16& a_unk)
+		{
+			if (!a_entries) {
+				return false;
+			}
+
+			entry_type* targetEntry = _entry_at(a_entries, a_hash);
 			if (targetEntry->empty()) {
 				// target entry is free
-				new (&targetEntry->key)key_type(key);
-				new (&targetEntry->value)key_type(value);
-				targetEntry->next = m_eolPtr;
-				--m_freeCount;
+				targetEntry->SetKey(new key_type(a_key));
+				targetEntry->SetValue(new value_type(a_value));
+				targetEntry->next = _eolPtr;
+				--_freeCount;
 				return true;
 			}
 
-			entry_type *p = targetEntry;
+			entry_type* p = targetEntry;
 			do {
-				if (is_key_equal(p->key, key)) {
+				if (is_key_equal(p->GetKey(), a_key)) {
 					// already exists
-					p->value = value;
+					p->SetValue(a_value);
 					return true;
 				}
 				p = p->next;
-			} while (p != m_eolPtr);
+			} while (p != _eolPtr);
 
-			entry_type *freeEntry = _get_free_entry(entries);
-			if (!freeEntry)
+			entry_type* freeEntry = _get_free_entry(a_entries);
+			if (!freeEntry) {
 				return false;
+			}
 
-			p = _entry_at(entries, get_hash(targetEntry->key));
+			p = _entry_at(a_entries, get_hash(targetEntry->GetKey()));
 			if (p == targetEntry) {
 				// hash collision
 				// insert new entry after target entry
-				_entry_new(freeEntry, targetEntry->next, key, value);
+				_entry_new(freeEntry, targetEntry->next, a_key, a_value);
 				targetEntry->next = freeEntry;
 				return true;
 			}
 
 			// bucket overlap
-			while (p->next != targetEntry)
+			while (p->next != targetEntry) {
 				p = p->next;
+			}
 
 			_entry_move(freeEntry, targetEntry);
 
 			p->next = freeEntry;
-			_entry_new(targetEntry, m_eolPtr, key, value);
+			_entry_new(targetEntry, _eolPtr, a_key, a_value);
 			return true;
 		}
 
-		entry_type * _insert(entry_type *entries, hash_type hash, const key_type &key)
-		{
-			if (!entries)
-				return nullptr;
 
-			entry_type *targetEntry = _entry_at(entries, hash);
+		entry_type* _insert(entry_type* a_entries, hash_type a_hash, const key_type& a_key)
+		{
+			if (!a_entries) {
+				return 0;
+			}
+
+			entry_type* targetEntry = _entry_at(a_entries, a_hash);
 			if (targetEntry->empty()) {
 				// target entry is free
-				--m_freeCount;
-				targetEntry->next = m_eolPtr;
-				new (&targetEntry->key)key_type(key);
+				--_freeCount;
+				targetEntry->next = _eolPtr;
+				targetEntry->SetKey(new key_type(a_key));
 				return targetEntry;
 			}
 
-			entry_type *p = targetEntry;
+			entry_type* p = targetEntry;
 			do {
-				if (is_key_equal(p->key, key)) {
+				if (is_key_equal(p->GetKey(), a_key)) {
 					// already exists
-					p->value.~value_type();
+					p->DestroyValue();
 					return p;
 				}
 				p = p->next;
-			} while (p != m_eolPtr);
+			} while (p != _eolPtr);
 
-			entry_type *freeEntry = _get_free_entry(entries);
-			if (!freeEntry)
-				return nullptr;
+			entry_type* freeEntry = _get_free_entry(a_entries);
+			if (!freeEntry) {
+				return 0;
+			}
 
-			p = _entry_at(entries, get_hash(targetEntry->key));
+			p = _entry_at(a_entries, get_hash(targetEntry->GetKey()));
 			if (p == targetEntry) {
 				// hash collision
 				// insert new entry after target entry
@@ -363,113 +492,121 @@ namespace RE
 				p = freeEntry;
 			} else {
 				// bucket overlap
-				while (p->next != targetEntry)
+				while (p->next != targetEntry) {
 					p = p->next;
+				}
 				p->next = freeEntry;
 
 				_entry_move(freeEntry, targetEntry);
 
-				targetEntry->next = m_eolPtr;
+				targetEntry->next = _eolPtr;
 				p = targetEntry;
 			}
 
-			new (&p->key)key_type(key);
+			p->SetKey(new key_type(a_key));
 			return p;
 		}
 
-		bool _insert_move(entry_type *entries, hash_type hash, entry_type *kv)
-		{
-			if (!entries)
-				return false;
 
-			entry_type *targetEntry = _entry_at(entries, hash);
+		bool _insert_move(entry_type* a_entries, hash_type a_hash, entry_type* a_kv)
+		{
+			if (!a_entries) {
+				return false;
+			}
+
+			entry_type* targetEntry = _entry_at(a_entries, a_hash);
 			if (targetEntry->empty()) {
 				// target entry is free
-				_entry_move(targetEntry, kv);
-				targetEntry->next = m_eolPtr;
-				--m_freeCount;
+				_entry_move(targetEntry, a_kv);
+				targetEntry->next = _eolPtr;
+				--_freeCount;
 				return true;
 			}
 
-			entry_type *freeEntry = _get_free_entry(entries);
+			entry_type* freeEntry = _get_free_entry(a_entries);
 
-			entry_type *p = _entry_at(entries, get_hash(targetEntry->key));
+			entry_type* p = _entry_at(a_entries, get_hash(targetEntry->GetKey()));
 			if (p == targetEntry) {
 				// hash collision
-				_entry_move(freeEntry, kv);
+				_entry_move(freeEntry, a_kv);
 				freeEntry->next = targetEntry->next;
 				targetEntry->next = freeEntry;
 				return true;
 			}
 
 			// bucket overlap
-			while (p->next != targetEntry)
+			while (p->next != targetEntry) {
 				p = p->next;
+			}
 
 			_entry_move(freeEntry, targetEntry);
 			p->next = freeEntry;
-			_entry_move(targetEntry, kv);
-			targetEntry->next = m_eolPtr;
+			_entry_move(targetEntry, a_kv);
+			targetEntry->next = _eolPtr;
 
 			return true;
 		}
 
-		bool _erase(entry_type *entries, hash_type hash, const key_type &key)
-		{
-			if (!entries)
-				return false;
 
-			entry_type *targetEntry = _entry_at(entries, hash);
+		bool _erase(entry_type* a_entries, hash_type a_hash, const key_type& a_key)
+		{
+			if (!a_entries) {
+				return false;
+			}
+
+			entry_type* targetEntry = _entry_at(a_entries, a_hash);
 			if (targetEntry->empty()) {
 				return false;
 			}
 
-			if (is_key_equal(targetEntry->key, key)) {
-				entry_type *nextEntry = targetEntry->next;
+			if (is_key_equal(targetEntry->GetKey(), a_key)) {
+				entry_type* nextEntry = targetEntry->next;
 				targetEntry->~entry_type();
-				++m_freeCount;
+				++_freeCount;
 
-				if (nextEntry != m_eolPtr) {
+				if (nextEntry != _eolPtr) {
 					_entry_move(targetEntry, nextEntry);
-					nextEntry->next = nullptr;
+					nextEntry->next = 0;
 				}
 				return true;
 			}
 
-			entry_type *prevEntry = targetEntry;
-			entry_type *curEntry = targetEntry->next;
+			entry_type* prevEntry = targetEntry;
+			entry_type* curEntry = targetEntry->next;
 			while (true) {
-				if (curEntry == m_eolPtr)
+				if (curEntry == _eolPtr) {
 					return false;		// not found
-				if (is_key_equal(curEntry->key, key))
+				}
+				if (is_key_equal(curEntry->GetKey(), a_key)) {
 					break;				// found
+				}
 
 				prevEntry = curEntry;
 				curEntry = curEntry->next;
 			}
-			entry_type *nextEntry = curEntry->next;
+			entry_type* nextEntry = curEntry->next;
 
 			curEntry->~entry_type();
-			++m_freeCount;
+			++_freeCount;
 
-			if (nextEntry != m_eolPtr) {
+			if (nextEntry != _eolPtr) {
 				_entry_move(curEntry, nextEntry);
-				nextEntry->next = nullptr;
+				nextEntry->next = 0;
 			} else {
-				prevEntry->next = m_eolPtr;
+				prevEntry->next = _eolPtr;
 			}
 
 			return true;
 		}
 
 
-		// @members
-		//Traits	pad00;				// 00
+		// members
+		//Traits	pad00;			// 00
 	public:
-		UInt32	m_size;					// 04
-		UInt32	m_freeCount;			// 08
-		UInt32	m_freeOffset;			// 0C
-		entry_type	* m_eolPtr;			// 10
+		size_type	_size;			// 04
+		size_type	_freeCount;		// 08
+		size_type	_freeOffset;	// 0C
+		entry_type*	_eolPtr;		// 10
 
 		static UInt32 sentinel;		// DEADBEEF
 	};
@@ -486,15 +623,15 @@ namespace RE
 																	//1> 1	| | +-- - (base class BSTScatterTableDefaultHashPolicy<struct StringCache::Ref>)
 																	//1>	| | +-- -
 																	//1>  	| | <alignment member> (size = 3)
-																	//1> 4	| | m_size
-																	//1> 8	| | m_freeCount
-																	//1>0C	| | m_freeOffset
-																	//1>10	| | m_eolPtr
+																	//1> 4	| | _size
+																	//1> 8	| | _freeCount
+																	//1>0C	| | _freeOffset
+																	//1>10	| | _eolPtr
 																	//1> | +-- -
 																	//1>19 | +-- - (base class BSTScatterTableHeapAllocator<struct BSTScatterTableEntry<struct StringCache::Ref, class NiPointer<class BGSAttackData>, struct BSTScatterTableDefaultKVStorage> >)
 																	//1> | +-- -
 																	//1> | <alignment member> (size = 7)
-																	//1>20 | m_entries
+																	//1>20 | _entries
 																	//1>	+-- -
 
 	template <class Traits>
@@ -515,54 +652,66 @@ namespace RE
 		typedef typename Kernel::hash_type			hash_type;
 
 		// compile hints for GCC
-		using Kernel::m_size;
-		using Kernel::m_freeCount;
-		using Kernel::m_freeOffset;
-		using Kernel::m_eolPtr;
+		using Kernel::_size;
+		using Kernel::_freeCount;
+		using Kernel::_freeOffset;
+		using Kernel::_eolPtr;
 		using Kernel::size;
 		using Kernel::max_size;
+
 
 		class const_iterator
 		{
 		public:
 			typedef const_iterator		_iter;
-			typedef const storage_type	* pointer;
-			typedef const storage_type	& reference;
+			typedef const storage_type*	pointer;
+			typedef const storage_type&	reference;
 
-			const_iterator(const BSTScatterTableBase * a_table, entry_type * a_entry) : m_table(a_table), m_entry(a_entry)
+
+			const_iterator(const BSTScatterTableBase* a_table, entry_type* a_entry) :
+				_table(a_table),
+				_entry(a_entry)
 			{
 				if (a_entry) {
-					const entry_type *tail = m_table->_entry_tail();
-					while (m_entry < tail && m_entry->empty()) {
-						m_entry += 1;
+					const entry_type* tail = _table->_entry_tail();
+					while (_entry < tail && _entry->empty()) {
+						_entry += 1;
 					}
 				} else {
-					m_entry = const_cast<entry_type*>(m_table->_entry_tail());
+					_entry = const_cast<entry_type*>(_table->_entry_tail());
 				}
 			}
 
+
 			operator pointer() const
 			{
-				return static_cast<pointer>(m_entry);
+				return static_cast<pointer>(_entry);
 			}
+
+
 			reference operator*() const
 			{
 				return *(pointer)*this;
 			}
+
+
 			pointer operator->() const
 			{
 				return (pointer)*this;
 			}
 
+
 			_iter& operator++()
 			{
-				const entry_type *tail = m_table->_entry_tail();
+				const entry_type* tail = _table->_entry_tail();
 				do {
-					m_entry += 1;
-				} while (m_entry < tail && m_entry->empty());
+					_entry += 1;
+				} while (_entry < tail && _entry->empty());
 
 				return *this;
 			}
+
+
 			_iter operator++(int)
 			{
 				_iter tmp = *this;
@@ -570,15 +719,18 @@ namespace RE
 				return tmp;
 			}
 
+
 			_iter& operator--()
 			{
-				const entry_type *head = m_table->_entry_head();
+				const entry_type* head = _table->_entry_head();
 				do {
-					m_entry -= 1;
-				} while (m_entry >= head && m_entry->empty());
+					_entry -= 1;
+				} while (_entry >= head && _entry->empty());
 
 				return *this;
 			}
+
+
 			_iter operator--(int)
 			{
 				_iter tmp = *this;
@@ -586,144 +738,178 @@ namespace RE
 				return tmp;
 			}
 
-			bool operator==(const _iter& rhs) const
+
+			bool operator==(const _iter& a_rhs) const
 			{
-				return (m_entry == rhs.m_entry);
+				return (_entry == a_rhs._entry);
 			}
-			bool operator!=(const _iter& rhs) const
+
+
+			bool operator!=(const _iter& a_rhs) const
 			{
-				return (!(*this == rhs));
+				return (!(*this == a_rhs));
 			}
 
 		protected:
-			const BSTScatterTableBase	* m_table;
-			entry_type					* m_entry;
+			const BSTScatterTableBase*	_table;
+			entry_type*					_entry;
 		};
+
 
 		class iterator : public const_iterator
 		{
 		public:
 			typedef iterator		_iter;
-			typedef storage_type	* pointer;
-			typedef storage_type	& reference;
+			typedef storage_type*	pointer;
+			typedef storage_type&	reference;
 
 			// compiler hits for GCC
-			using const_iterator::m_entry;
+			using const_iterator::_entry;
 
-			iterator(const BSTScatterTableBase * a_table, entry_type * a_entry) : const_iterator(a_table, a_entry) {}
+
+			iterator(const BSTScatterTableBase* a_table, entry_type* a_entry) :
+				const_iterator(a_table, a_entry)
+			{}
+
 
 			operator pointer()
 			{
-				return static_cast<pointer>(m_entry);
+				return static_cast<pointer>(_entry);
 			}
+
+
 			reference operator*()
 			{
 				return *(pointer)*this;
 			}
+
+
 			pointer operator->()
 			{
 				return (pointer)*this;
 			}
 		};
 
+
 		iterator begin()
 		{
 			return iterator(this, _entry_head());
 		}
+
+
 		const_iterator begin() const
 		{
 			return const_iterator(this, _entry_head());
 		}
+
+
 		const_iterator cbegin() const
 		{
 			return const_iterator(this, _entry_head());
 		}
 
+
 		iterator end()
 		{
-			return iterator(this, _entry_head() + m_size);
+			return iterator(this, _entry_head() + _size);
 		}
+
+
 		const_iterator end() const
 		{
-			return const_iterator(this, _entry_head() + m_size);
+			return const_iterator(this, _entry_head() + _size);
 		}
+
+
 		const_iterator cend() const
 		{
-			return const_iterator(this, _entry_head() + m_size);
+			return const_iterator(this, _entry_head() + _size);
 		}
+
 
 		hasher hash_function() const
 		{
 			return hasher();
 		}
 
+
 		key_equal key_eq() const
 		{
 			return key_equal();
 		}
 
+
 		inline void clear()
 		{
-			_clear(m_entries);
+			_clear(_entries);
 		}
 
 	protected:
-		BSTScatterTableBase() : Kernel(), m_entries(nullptr)
+		BSTScatterTableBase() :
+			Kernel(),
+			_entries(0)
 		{}
+
 
 		~BSTScatterTableBase()
 		{
-			if (m_entries) {
+			if (_entries) {
 				clear();
-				Free(m_entries);
+				Free(_entries);
 			}
 		}
 
-		inline entry_type * _entry_head() const
+
+		inline entry_type* _entry_head() const
 		{
-			return const_cast<entry_type *>(m_entries);
+			return const_cast<entry_type*>(_entries);
 		}
-		inline entry_type * _entry_last() const
+
+
+		inline entry_type* _entry_last() const
 		{
 			return _entry_head() + (max_size() - 1);
 		}
-		inline entry_type * _entry_tail() const
+
+
+		inline entry_type* _entry_tail() const
 		{
 			return _entry_head() + max_size();
 		}
 
-		inline entry_type *_get_free_entry()
+
+		inline entry_type* _get_free_entry()
 		{
-			return BSTScatterTableKernel::_get_free_entry(m_entries);
+			return BSTScatterTableKernel::_get_free_entry(_entries);
 		}
 
 		// 008BF970
 		void _grow_table()
 		{
-			size_type oldSize = m_size;
-			entry_type *oldEntries = m_entries;
+			size_type oldSize = _size;
+			entry_type* oldEntries = _entries;
 
-			m_size = (oldSize) ? (oldSize * 2) : initial_table_size;
-			m_entries = (entry_type*)allocator_type::Allocate(m_size);
-			m_freeCount = m_size;
-			m_freeOffset = m_size;
+			_size = (oldSize) ? (oldSize * 2) : initial_table_size;
+			_entries = (entry_type*)allocator_type::Allocate(_size);
+			_freeCount = _size;
+			_freeOffset = _size;
 
-			if (m_entries && m_size) {
+			if (_entries && _size) {
 				// init entries
-				entry_type *p = m_entries;
-				for (size_type i = m_size; i; --i) {
-					p->next = nullptr;
+				entry_type* p = _entries;
+				for (size_type i = _size; i; --i) {
+					p->next = 0;
 					++p;
 				};
 			}
 
 			// move from old entries to new one
 			if (oldEntries) {
-				entry_type *from = oldEntries;
+				entry_type* from = oldEntries;
 				for (size_type i = oldSize; i; --i) {
 					if (!from->empty()) {
-						hash_type hash = hash_policy::get_hash(from->key);
-						_insert_move(m_entries, hash, from);
+						hash_type hash = hash_policy::get_hash(from->GetKey());
+						_insert_move(_entries, hash, from);
 					}
 					++from;
 				}
@@ -732,66 +918,68 @@ namespace RE
 			}
 		}
 
-		void _assign(const BSTScatterTableBase &rhs)
+		void _assign(const BSTScatterTableBase& a_rhs)
 		{
 			if (!empty()) {
 				clear();
-				Free(m_entries);
-				m_entries = nullptr;
+				Free(_entries);
+				_entries = 0;
 			}
 
-			if (rhs.empty())
+			if (a_rhs.empty()) {
 				return;
+			}
 
-			m_entries = allocator_type::Allocate(rhs.m_size);
-			if (m_entries) {
-				m_size = rhs.m_size;
-				m_freeCount = rhs.m_freeCount;
-				m_freeOffset = rhs.m_freeOffset;
+			_entries = allocator_type::Allocate(a_rhs._size);
+			if (_entries) {
+				_size = a_rhs._size;
+				_freeCount = a_rhs._freeCount;
+				_freeOffset = a_rhs._freeOffset;
 
-				entry_type *to = m_entries;
-				entry_type *from = rhs.m_entries;
-				std::size_t count = m_size;
+				entry_type* to = _entries;
+				entry_type* from = a_rhs._entries;
+				std::size_t count = _size;
 				while (--count) {
 					if (!from->empty()) {
-						new (&to->key)key_type(from->key);
-						new (&to->value)value_type(from->value);
-						to->next = (from->next == rhs.m_eolPtr) ? m_eolPtr : (m_entries + (from - rhs.m_entries));
+						to->SetKey(new key_type(from->GetKey()));
+						to->SetValue(new value_type(from->GetValue()));
+						to->next = (from->next == a_rhs._eolPtr) ? _eolPtr : (_entries + (from - a_rhs._entries));
 					}
-					++to; ++from;
+					++to;
+					++from;
 				}
 			}
 		}
 
-		void _assign(BSTScatterTableBase &&rhs)
+		void _assign(BSTScatterTableBase&& a_rhs)
 		{
 			if (!empty()) {
 				clear();
-				Free(m_entries);
-				m_entries = nullptr;
+				Free(_entries);
+				_entries = 0;
 			}
 
-			m_size = rhs.m_size;
-			m_freeCount = rhs.m_freeCount;
-			m_freeOffset = rhs.m_freeOffset;
-			m_eolPtr = rhs.m_eolPtr;
-			m_entries = rhs.m_entries;
+			_size = a_rhs._size;
+			_freeCount = a_rhs._freeCount;
+			_freeOffset = a_rhs._freeOffset;
+			_eolPtr = a_rhs._eolPtr;
+			_entries = a_rhs._entries;
 
-			rhs.m_size = 0;
-			rhs.m_freeCount = 0;
-			rhs.m_freeOffset = 0;
-			rhs.m_entries = nullptr;
+			a_rhs._size = 0;
+			a_rhs._freeCount = 0;
+			a_rhs._freeOffset = 0;
+			a_rhs._entries = 0;
 		}
 
-		// @members
-		//Traits	pad00;			     	00
-		//UInt32	m_size;					04
-		//UInt32	m_freeCount;			08
-		//UInt32	m_freeOffset;			0C
-		//entry_type	* m_eolPtr;			10
-		//allocator_type			pad14;				// 18
+		// members
+		//Traits			pad00;			// 00
+		//size_type			_size;			// 04
+		//size_type			_freeCount;		// 08
+		//size_type			_freeOffset;	// 0C
+		//entry_type*		_eolPtr;		// 10
+		//allocator_type	pad18;			// 18
 	public:
-		entry_type * m_entries;	// 20
+		entry_type*			_entries;		// 20
 	};
 
 
@@ -804,15 +992,15 @@ namespace RE
 	//1> 1	| | | +-- - (base class BSTScatterTableDefaultHashPolicy<struct StringCache::Ref>)
 	//1>	| | | +-- -
 	//1>  	| | | <alignment member> (size = 3)
-	//1> 4	| | | m_size
-	//1> 8	| | | m_freeCount
-	//1>0C	| | | m_freeOffset
-	//1>10	| | | m_eolPtr
+	//1> 4	| | | _size
+	//1> 8	| | | _freeCount
+	//1>0C	| | | _freeOffset
+	//1>10	| | | _eolPtr
 	//1>	| | +-- -
 	//1>19	| | +-- - (base class BSTScatterTableHeapAllocator<struct BSTScatterTableEntry<struct StringCache::Ref, class NiPointer<class BGSAttackData>, struct BSTScatterTableDefaultKVStorage> >)
 	//1>	| | +-- -
 	//1>  	| | <alignment member> (size = 7)
-	//1>20	| | m_entries
+	//1>20	| | _entries
 	//1> | +-- -
 	//1>	+-- -
 	template <
@@ -821,7 +1009,7 @@ namespace RE
 		template <class, class> class Storage,
 		template <class> class Policy,
 		template <class> class Allocator,
-		std::size_t INITIAL_TABLE_SIZE
+		std::uint32_t INITIAL_TABLE_SIZE
 	>
 		class BSTScatterTable : public BSTScatterTableBase< BSTScatterTableTraits<Key, Value, Storage, Policy<Key>, Allocator<BSTScatterTableEntry<Key, Value, Storage> >, INITIAL_TABLE_SIZE> >
 	{
@@ -840,11 +1028,11 @@ namespace RE
 		// compiler hints for GCC
 		using typename Base::const_iterator;
 		using typename Base::iterator;
-		using Base::m_size;
-		using Base::m_freeCount;
-		using Base::m_freeOffset;
-		using Base::m_eolPtr;
-		using Base::m_entries;
+		using Base::_size;
+		using Base::_freeCount;
+		using Base::_freeOffset;
+		using Base::_eolPtr;
+		using Base::_entries;
 		using Base::size;
 		using Base::max_size;
 		using Base::free_count;
@@ -854,127 +1042,156 @@ namespace RE
 		using Base::hash_function;
 		using Base::key_eq;
 
-		DEFINE_STATIC_HEAP(Heap_Allocate, Heap_Free)
 
-			BSTScatterTable() : Base()
+		TES_HEAP_REDEFINE_NEW();
+
+
+		BSTScatterTable() :
+			Base()
 		{}
-		BSTScatterTable(const BSTScatterTable &rhs) : Base()
+
+
+		BSTScatterTable(const BSTScatterTable& a_rhs) :
+			Base()
 		{
-			_assign(rhs);
-		}
-		BSTScatterTable(BSTScatterTable &&rhs)
-		{
-			_assign(rhs);
+			_assign(a_rhs);
 		}
 
-		BSTScatterTable & operator=(const BSTScatterTable &rhs)
+
+		BSTScatterTable(BSTScatterTable&& a_rhs)
 		{
-			_assign(rhs);
-			return *this;
+			_assign(a_rhs);
 		}
-		BSTScatterTable & operator=(BSTScatterTable &&rhs)
+
+
+		BSTScatterTable& operator=(const BSTScatterTable& a_rhs)
 		{
-			_assign(rhs);
+			_assign(a_rhs);
 			return *this;
 		}
 
-		const_iterator find(const key_type &key) const
+
+		BSTScatterTable& operator=(BSTScatterTable&& a_rhs)
 		{
-			entry_type *entry = _find(m_entries, get_hash(key), key);
+			_assign(a_rhs);
+			return *this;
+		}
+
+
+		const_iterator find(const key_type& a_key) const
+		{
+			entry_type* entry = _find(_entries, get_hash(a_key), a_key);
 			return entry ? const_iterator(this, entry) : cend();
 		}
-		iterator find(const key_type &key)
+
+
+		iterator find(const key_type& a_key)
 		{
-			entry_type *entry = _find(m_entries, get_hash(key), key);
+			entry_type* entry = _find(_entries, get_hash(a_key), a_key);
 			return entry ? iterator(this, entry) : end();
 		}
 
-		size_type count(const key_type &key) const
+
+		size_type count(const key_type& a_key) const
 		{
-			return _find(m_entries, get_hash(key), key) ? 1 : 0;
+			return _find(_entries, get_hash(a_key), a_key) ? 1 : 0;
 		}
 
-		bool insert(const key_type &key, const value_type &lvalue)
-		{
-			hash_type hash = get_hash(key);
-			entry_type *p = nullptr;
 
-			while (!(p = _insert(m_entries, hash, key))) {
+		bool insert(const key_type& a_key, const value_type& a_lvalue)
+		{
+			hash_type hash = get_hash(a_key);
+			entry_type *p = 0;
+
+			while (!(p = _insert(_entries, hash, a_key))) {
 				_grow_table();
-				if (!m_entries || !m_freeCount)
+				if (!_entries || !_freeCount) {
 					return false;
+				}
 			}
 
-			new (&p->value)value_type(lvalue);
+			p->SetValue(new value_type(a_lvalue));
 			return true;
 		}
-		bool insert(const key_type &key, value_type &&rvalue)
-		{
-			hash_type hash = get_hash(key);
-			entry_type *p = nullptr;
 
-			while (!(p = _insert(m_entries, hash, key))) {
+
+		bool insert(const key_type& a_key, value_type&& a_rvalue)
+		{
+			hash_type hash = get_hash(a_key);
+			entry_type* p = 0;
+
+			while (!(p = _insert(_entries, hash, a_key))) {
 				_grow_table();
-				if (!m_entries || !m_freeCount)
+				if (!_entries || !_freeCount) {
 					return false;
+				}
 			}
 
-			new (&p->value)value_type(rvalue);
+			p->SetValue(new value_type(a_rvalue));
 			return true;
 		}
+
+
 		// original implementation
-		bool insert(const key_type &key, const value_type &value, UInt16 &unk)
+		bool insert(const key_type& a_key, const value_type& a_value, UInt16& a_unk)
 		{
-			hash_type hash = get_hash(key);
-			while (!insert_original(m_entries, hash, key, value, unk)) {
+			hash_type hash = get_hash(a_key);
+			while (!insert_original(_entries, hash, a_key, a_value, a_unk)) {
 				_grow_table();
 			}
 			return true;
 		}
 
-		inline size_type erase(const key_type &key)
+
+		inline size_type erase(const key_type& a_key)
 		{
-			return _erase(m_entries, get_hash(key), key) ? 1 : 0;
+			return _erase(_entries, get_hash(a_key), a_key) ? 1 : 0;
 		}
 
-		bool GetAt(key_type key, value_type &value) const
+
+		bool GetAt(key_type a_key, value_type& a_value) const
 		{
-			entry_type *entry = _find(m_entries, get_hash(key), key);
+			entry_type* entry = _find(_entries, get_hash(a_key), a_key);
 			if (entry) {
-				value = entry->value;
+				a_value = entry->GetValue();
 				return true;
 			}
 			return false;
 		}
 
-		inline bool SetAt(key_type key, const value_type &lvalue)
+
+		inline bool SetAt(key_type a_key, const value_type& a_lvalue)
 		{
-			return insert(key, lvalue);
+			return insert(a_key, a_lvalue);
 		}
 
-		inline bool SetAt(key_type key, value_type &&rvalue)
+
+		inline bool SetAt(key_type a_key, value_type&& a_rvalue)
 		{
-			return insert(key, rvalue);
+			return insert(a_key, a_rvalue);
 		}
 
-		inline bool RemoveAt(key_type key)
+
+		inline bool RemoveAt(key_type a_key)
 		{
-			return erase(key) != 0;
+			return erase(a_key) != 0;
 		}
+
 
 		inline void RemoveAll()
 		{
 			clear();
 		}
 
-		// @members
-		//BSTScatterTableTraits		pad00;				// 00
-		//size_type					m_size;				// 04
-		//size_type					m_freeCount;		// 08
-		//size_type					m_freeOffset;		// 0C
-		//entry_type				* m_eolPtr;			// 10
-		//allocator_type			pad14;				// 18
-		//entry_type				* m_entries;		// 20
+
+		// members
+		//BSTScatterTableTraits	pad00;			// 00
+		//size_type				_size;			// 04
+		//size_type				_freeCount;		// 08
+		//size_type				_freeOffset;	// 0C
+		//entry_type*			_eolPtr;		// 10
+		//allocator_type		pad18;			// 18
+		//entry_type*			_entries;		// 20
 	};
 
 
@@ -988,15 +1205,15 @@ namespace RE
 	//1> 1	| | | | +-- - (base class BSTScatterTableDefaultHashPolicy<struct StringCache::Ref>)
 	//1>	| | | | +-- -
 	//1>  	| | | | <alignment member> (size = 3)
-	//1> 4	| | | | m_size
-	//1> 8	| | | | m_freeCount
-	//1>0C	| | | | m_freeOffset
-	//1>10	| | | | m_eolPtr
+	//1> 4	| | | | _size
+	//1> 8	| | | | _freeCount
+	//1>0C	| | | | _freeOffset
+	//1>10	| | | | _eolPtr
 	//1>	| | | +-- -
 	//1>19	| | | +-- - (base class BSTScatterTableHeapAllocator<struct BSTScatterTableEntry<struct StringCache::Ref, class NiPointer<class BGSAttackData>, struct BSTScatterTableDefaultKVStorage> >)
 	//1>	| | | +-- -
 	//1>  	| | | <alignment member> (size = 7)
-	//1>20	| | | m_entries
+	//1>20	| | | _entries
 	//1>	| | +-- -
 	//1> | +-- -
 	//1>	+-- -
@@ -1004,6 +1221,7 @@ namespace RE
 	template <class Key, class Value>
 	struct BSTDefaultScatterTable : public BSTScatterTable<Key, Value, BSTScatterTableDefaultKVStorage, BSTScatterTableDefaultHashPolicy, BSTScatterTableHeapAllocator, 8>
 	{};
+
 
 	using Test = BSTDefaultScatterTable<uint32_t, uint32_t>;
 

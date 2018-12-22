@@ -26,6 +26,7 @@ namespace RE
 	class BSTHashMap : public BSTHashMapBase< BSTHashMapTraits<Key, Value, Table<Key, Value>> >
 	{};
 
+
 	//class BSTHashMap<unsigned int, unsigned int, struct BSTDefaultScatterTable>	size(30) :
 	//	+-- -
 	// 0 | +-- - (base class BSTHashMapBase<struct BSTHashMapTraits<unsigned int, unsigned int, struct BSTDefaultScatterTable<unsigned int, unsigned int> > >)
@@ -40,15 +41,15 @@ namespace RE
 	// 9	| | | | | | +-- - (base class BSTScatterTableDefaultHashPolicy<unsigned int>)
 	//	| | | | | | +-- -
 	//  	| | | | | | <alignment member> (size = 3)
-	//0C	| | | | | | m_size
-	//10	| | | | | | m_freeCount
-	//14	| | | | | | m_freeOffset
-	//18	| | | | | | m_eolPtr
+	//0C	| | | | | | _size
+	//10	| | | | | | _freeCount
+	//14	| | | | | | _freeOffset
+	//18	| | | | | | _eolPtr
 	//	| | | | | +-- -
 	//21	| | | | | +-- - (base class BSTScatterTableHeapAllocator<struct BSTScatterTableEntry<unsigned int, unsigned int, struct BSTScatterTableDefaultKVStorage> >)
 	//	| | | | | +-- -
 	//  	| | | | | <alignment member> (size = 7)
-	//28	| | | | | m_entries
+	//28	| | | | | _entries
 	//	| | | | +-- -
 	//	| | | +-- -
 	//	| | +-- -
@@ -56,10 +57,11 @@ namespace RE
 	//	+-- -
 	// verified
 
+
 	using TestHashMap = BSTHashMap <uint32_t, uint32_t>;
 
-	STATIC_ASSERT(offsetof(TestHashMap, m_size) == 0x0C);
-	STATIC_ASSERT(offsetof(TestHashMap, m_entries) == 0x28);
+	STATIC_ASSERT(offsetof(TestHashMap, _size) == 0x0C);
+	STATIC_ASSERT(offsetof(TestHashMap, _entries) == 0x28);
 
 	STATIC_ASSERT(sizeof(TestHashMap) == 0x30);
 }

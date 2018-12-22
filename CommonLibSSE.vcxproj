@@ -179,10 +179,13 @@
     <ClCompile Include="src\RE\ConsoleManager.cpp" />
     <ClCompile Include="src\RE\EffectSetting.cpp" />
     <ClCompile Include="src\RE\EquipManager.cpp" />
+    <ClCompile Include="src\RE\ExtraMapMarker.cpp" />
     <ClCompile Include="src\RE\ExtraReferenceHandle.cpp" />
     <ClCompile Include="src\RE\ExtraTextDisplayData.cpp" />
     <ClCompile Include="src\RE\InventoryMenu.cpp" />
     <ClCompile Include="src\RE\MenuTableItem.cpp" />
+    <ClCompile Include="src\RE\NiMemory.cpp" />
+    <ClCompile Include="src\RE\NiPoint3.cpp" />
     <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp" />
     <ClCompile Include="src\RE\ExtraContainerChanges.cpp" />
     <ClCompile Include="src\RE\ExtraLock.cpp" />
@@ -225,6 +228,7 @@
     <ClCompile Include="src\RE\TESObjectLIGH.cpp" />
     <ClCompile Include="src\RE\TESObjectREFR.cpp" />
     <ClCompile Include="src\RE\TESObjectWEAP.cpp" />
+    <ClCompile Include="src\RE\TESWorldSpace.cpp" />
     <ClCompile Include="src\RE\ThumbstickEvent.cpp" />
     <ClCompile Include="src\RE\UIManager.cpp" />
     <ClCompile Include="src\RE\UIStringHolder.cpp" />
@@ -243,6 +247,7 @@
     <ClInclude Include="include\RE\BGSEquipType.h" />
     <ClInclude Include="include\RE\BGSKeyword.h" />
     <ClInclude Include="include\RE\BGSKeywordForm.h" />
+    <ClInclude Include="include\RE\BGSLocationRefType.h" />
     <ClInclude Include="include\RE\BGSMenuDisplayObject.h" />
     <ClInclude Include="include\RE\BGSMoviePlayer.h" />
     <ClInclude Include="include\RE\BGSPerk.h" />
@@ -271,6 +276,8 @@
     <ClInclude Include="include\RE\ExtraDroppedItemList.h" />
     <ClInclude Include="include\RE\ExtraEnchantment.h" />
     <ClInclude Include="include\RE\ExtraFactionChanges.h" />
+    <ClInclude Include="include\RE\ExtraLocationRefType.h" />
+    <ClInclude Include="include\RE\ExtraMapMarker.h" />
     <ClInclude Include="include\RE\ExtraOwnership.h" />
     <ClInclude Include="include\RE\ExtraReferenceHandle.h" />
     <ClInclude Include="include\RE\ExtraTextDisplayData.h" />
@@ -322,6 +329,10 @@
     <ClInclude Include="include\RE\MenuOpenHandler.h" />
     <ClInclude Include="include\RE\MenuTableItem.h" />
     <ClInclude Include="include\RE\MoviePlayer.h" />
+    <ClInclude Include="include\RE\NiMemory.h" />
+    <ClInclude Include="include\RE\NiPoint3.h" />
+    <ClInclude Include="include\RE\NiRect.h" />
+    <ClInclude Include="include\RE\NiTArray.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
     <ClInclude Include="include\RE\ExtraContainerChanges.h" />
@@ -363,6 +374,7 @@
     <ClInclude Include="include\RE\TESAmmo.h" />
     <ClInclude Include="include\RE\TESBoundAnimObject.h" />
     <ClInclude Include="include\RE\TESBoundObject.h" />
+    <ClInclude Include="include\RE\TESCellFullyLoadedEvent.h" />
     <ClInclude Include="include\RE\TESContainer.h" />
     <ClInclude Include="include\RE\TESDataHandler.h" />
     <ClInclude Include="include\RE\TESEffectShader.h" />
@@ -392,6 +404,7 @@
     <ClInclude Include="include\RE\TESRace.h" />
     <ClInclude Include="include\RE\TESRaceForm.h" />
     <ClInclude Include="include\RE\TESTexture.h" />
+    <ClInclude Include="include\RE\TESWorldSpace.h" />
     <ClInclude Include="include\RE\ThumbstickEvent.h" />
     <ClInclude Include="include\RE\TogglePOVHandler.h" />
     <ClInclude Include="include\RE\ToggleRunHandler.h" />
