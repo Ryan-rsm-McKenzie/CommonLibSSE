@@ -837,11 +837,25 @@ namespace RE
 			}
 			return index;
 		}
+
+	protected:
+		//members
+		//void*		_M_entries;		// 00
+		//size_type	_M_capacity;	// 08
+		//size_type	padC;			// 0C
+		//size_type _M_count;		// 10
+		//size_type pad4;			// 14
 	};
 
 
 	template<class _Ty, std::uint32_t num = 1>
 	using BSTSmallArray = BSTArray <_Ty, BSTSmallArrayHeapAllocator<sizeof(_Ty)*num>>;
+	//members
+	//size_type	_M_capacity;	// 00
+	//size_type	pad04;			// 04
+	//Entry		_M_entries;		// 08
+	//size_type _M_count;		// 10
+	//size_type pad4;			// 14
 
 
 	template <class _Ty>
@@ -850,6 +864,14 @@ namespace RE
 	public:
 		BSScrapArray() : BSTArray() {}
 		explicit BSScrapArray(std::uint32_t a_size) : BSTArray(a_size) {}
+
+	protected:
+		// members
+		//void*		_M_allocator;	// 00 - memory allocator
+		//void*		_M_entries;		// 08
+		//size_type	_M_capacity;	// 10
+		//size_type _M_count;		// 10
+		//size_type pad4;			// 14
 	};
 
 

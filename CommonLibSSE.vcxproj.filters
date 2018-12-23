@@ -926,5 +926,23 @@
     <ClInclude Include="include\RE\TESCellFullyLoadedEvent.h">
       <Filter>include\RE\Skyrim\Events</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\TESObjectLoadedEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSAnimationGraphManager.h">
+      <Filter>include\RE\Skyrim\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSAnimationGraphChannel.h">
+      <Filter>include\RE\Skyrim\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTAnimationGraphDataChannel.h">
+      <Filter>include\RE\Skyrim\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorSpeedChannel.h">
+      <Filter>include\RE\Skyrim\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESLoadGameEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

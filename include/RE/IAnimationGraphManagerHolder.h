@@ -3,11 +3,10 @@
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 
-class BSAnimationGraphManager;
-
 
 namespace RE
 {
+	class BSAnimationGraphManager;
 	class BShkbAnimationGraph;
 
 

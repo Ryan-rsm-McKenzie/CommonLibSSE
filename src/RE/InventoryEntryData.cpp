@@ -14,9 +14,7 @@ namespace RE
 
 	InventoryEntryData::~InventoryEntryData()
 	{
-		if (extraList) {
-			delete extraList;
-		}
+		delete extraList;
 	}
 
 

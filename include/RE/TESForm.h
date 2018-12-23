@@ -33,7 +33,7 @@ namespace RE
 		{
 			bool	visible : 1;				// 00 0x00000001
 			bool	unk01 : 1;					// 01 0x00000002
-			bool	unk02 : 1;					// 02 0x00000004
+			bool	nonPlayable : 1;			// 02 0x00000004
 			bool	unk03 : 1;					// 03 0x00000008
 			bool	unk04 : 1;					// 04 0x00000010
 			bool	markedForDeletion : 1;		// 05 0x00000020
@@ -41,9 +41,9 @@ namespace RE
 			bool	unk07 : 1;					// 07 0x00000080
 			bool	inaccessible : 1;			// 08 0x00000100 - TESObjectLIGH = dontLightWater
 			bool	motionBlurCastsShadows : 1;	// 09 0x00000200
-			bool	unk0A : 1;					// 0A 0x00000400
+			bool	persistent : 1;				// 0A 0x00000400
 			bool	disabled : 1;				// 0B 0x00000800
-			bool	unk0C : 1;					// 0C 0x00001000
+			bool	ignored : 1;				// 0C 0x00001000
 			bool	unk0D : 1;					// 0D 0x00002000
 			bool	unk0E : 1;					// 0E 0x00004000
 			bool	unk0F : 1;					// 0F 0x00008000

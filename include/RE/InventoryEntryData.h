@@ -28,7 +28,7 @@ namespace RE
 		void		AddEntryList(BaseExtraList* a_extra);
 		bool		IsOwnedBy(TESForm* a_actor, TESForm* a_itemOwner, bool a_unk1);
 		TESForm*	GetOwner();
-		float		GetWeight();	// { return TESWeightForm::weight; } - Only for certain formtypes
+		float		GetWeight();  // { return TESWeightForm::weight; } - Only for certain formtypes
 
 		TES_HEAP_REDEFINE_NEW();
 

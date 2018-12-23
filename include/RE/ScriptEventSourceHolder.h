@@ -26,6 +26,7 @@ namespace RE
 	struct TESMagicEffectApplyEvent;
 	struct TESMagicWardHitEvent;
 	struct TESMoveAttachDetachEvent;
+	struct TESObjectLoadedEvent;
 	struct TESObjectREFRTranslationEvent;
 	struct TESOpenCloseEvent;
 	struct TESPackageEvent;

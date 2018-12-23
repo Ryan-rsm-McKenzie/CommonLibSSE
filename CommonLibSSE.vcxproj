@@ -237,6 +237,7 @@
     <ClInclude Include="include\Logging.h" />
     <ClInclude Include="include\RE\ActivateHandler.h" />
     <ClInclude Include="include\RE\ActiveEffect.h" />
+    <ClInclude Include="include\RE\ActorSpeedChannel.h" />
     <ClInclude Include="include\RE\ActorValueOwner.h" />
     <ClInclude Include="include\RE\ActorValues.h" />
     <ClInclude Include="include\RE\AttackBlockHandler.h" />
@@ -252,13 +253,16 @@
     <ClInclude Include="include\RE\BGSMoviePlayer.h" />
     <ClInclude Include="include\RE\BGSPerk.h" />
     <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
+    <ClInclude Include="include\RE\BSAnimationGraphChannel.h" />
     <ClInclude Include="include\RE\BSAnimationGraphEvent.h" />
+    <ClInclude Include="include\RE\BSAnimationGraphManager.h" />
     <ClInclude Include="include\RE\BSExtraData.h" />
     <ClInclude Include="include\RE\BSFixedString.h" />
     <ClInclude Include="include\RE\BShkbAnimationGraph.h" />
     <ClInclude Include="include\RE\BSIntrusiveRefCounted.h" />
     <ClInclude Include="include\RE\BSIRagdollDriver.h" />
     <ClInclude Include="include\RE\BSMusicEvent.h" />
+    <ClInclude Include="include\RE\BSTAnimationGraphDataChannel.h" />
     <ClInclude Include="include\RE\BSTSmartPointer.h" />
     <ClInclude Include="include\RE\BSTArray.h" />
     <ClInclude Include="include\RE\BSTEvent.h" />
@@ -385,6 +389,7 @@
     <ClInclude Include="include\RE\TESFullName.h" />
     <ClInclude Include="include\RE\TESLeveledList.h" />
     <ClInclude Include="include\RE\TESLevItem.h" />
+    <ClInclude Include="include\RE\TESLoadGameEvent.h" />
     <ClInclude Include="include\RE\TESMagicEffectApplyEvent.h" />
     <ClInclude Include="include\RE\TESModel.h" />
     <ClInclude Include="include\RE\TESModelTextureSwap.h" />
@@ -397,6 +402,7 @@
     <ClInclude Include="include\RE\TESObjectCELL.h" />
     <ClInclude Include="include\RE\TESObjectCONT.h" />
     <ClInclude Include="include\RE\TESObjectLIGH.h" />
+    <ClInclude Include="include\RE\TESObjectLoadedEvent.h" />
     <ClInclude Include="include\RE\TESObjectMISC.h" />
     <ClInclude Include="include\RE\TESObjectREFR.h" />
     <ClInclude Include="include\RE\TESObjectSTAT.h" />

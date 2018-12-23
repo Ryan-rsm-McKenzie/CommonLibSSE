@@ -144,7 +144,7 @@ namespace RE
 		virtual void							Unk_AF(void);																																													// 0AF
 		virtual void							Unk_B0(void);																																													// 0B0
 		virtual void							Unk_B1(void);																																													// 0B1
-		virtual void							Unk_B2(void);																																													// 0B2
+		virtual void							OnItemEquipped(bool a_playAnim);																																								// 0B2
 		virtual void							Unk_B3(void);																																													// 0B3
 		virtual void							Unk_B4(void);																																													// 0B4
 		virtual void							SetBounty(TESFaction* a_faction, bool a_bViolent, SInt32 a_gold);																																// 0B5
