@@ -20,9 +20,9 @@ namespace RE
 
 		struct ModList
 		{
-			BSSimpleList<ModInfo*>	modInfoList;	// 00 - DataHandler D60
-			BSTArray<ModInfo*>		loadedMods;		// 10 - DataHandler D70
-			BSTArray<ModInfo*>		loadedCCMods;	// 28 - DataHandler D88
+			BSSimpleList<ModInfo*>	loadOrder;		// 00 - TESDataHandler D60
+			BSTArray<ModInfo*>		loadedMods;		// 10 - TESDataHandler D70
+			BSTArray<ModInfo*>		loadedCCMods;	// 28 - TESDataHandler D88
 		};
 		STATIC_ASSERT(sizeof(ModList) == 0x40);
 
