@@ -6,6 +6,7 @@
 #include "RE/BGSMenuDisplayObject.h"  // BGSMenuDisplayObject
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTList.h"  // BSSimpleList
+#include "RE/Condition.h"  // Condition
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESFullName.h"  // TESFullName
 
@@ -249,7 +250,7 @@ namespace RE
 		BSFixedString					magicItemDescription;	// 180 - DNAM
 		UInt32							unk188;					// 188
 		UInt32							unk18C;					// 18C
-		Condition*						conditions;				// 190
+		Condition						conditions;				// 190
 	};
 	STATIC_ASSERT(sizeof(EffectSetting) == 0x198);
 }

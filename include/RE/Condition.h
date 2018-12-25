@@ -7,14 +7,6 @@ namespace RE
 {
 	class Condition
 	{
-	private:
-		enum class RunOn : UInt32
-		{
-			kNone = 0,
-			kPerkOwner,
-			kTarget
-		};
-
 	public:
 		enum class OpCode : UInt8
 		{
@@ -133,12 +125,10 @@ namespace RE
 		// }
 		// Make sure to fix it before you call this func (xref 0x002DB800 - 1_5_53)
 		// Perk fragments will short circuit
-		bool Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);
-		bool Match(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);	// Only operates on perkOwner, idk how they evaluate the target
+		bool Match(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);
 
 
 		// members
-		Node* perkOwnerNodes;	// 0
-		Node* targetNodes;		// 8
+		Node* head;	// 0
 	};
 }

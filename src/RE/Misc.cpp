@@ -11,9 +11,9 @@ namespace RE
 	RelocAddr<_HeapAllocAbstraction_t*> _HeapAllocAbstraction(HEAP_ALLOC_ABSTRACTION);
 
 
-	bool WorldPtToScreenPt3(float* a_worldToCamMatrix, NiRect<float>* a_port, const NiPoint3& a_in, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance)
+	bool WorldPtToScreenPt3(float a_worldToCamMatrix[4][4], NiRect<float>& a_port, const NiPoint3& a_in, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance)
 	{
-		typedef bool _WorldPtToScreenPt3_t(float* a_worldToCamMatrix, NiRect<float>* a_port, const NiPoint3& a_in, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance);
+		typedef bool _WorldPtToScreenPt3_t(float a_worldToCamMatrix[4][4], NiRect<float>& a_port, const NiPoint3& a_in, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance);
 		static RelocAddr<_WorldPtToScreenPt3_t*> _WorldPtToScreenPt3(WORLD_PT_TO_SCREEN_PT_3);
 		return _WorldPtToScreenPt3(a_worldToCamMatrix, a_port, a_in, a_xOut, a_yOut, a_zOut, a_zeroTolerance);
 	}

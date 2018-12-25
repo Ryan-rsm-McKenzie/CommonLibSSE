@@ -165,6 +165,7 @@
     <ClCompile Include="src\RE\BGSEntryPointFunctionDataActivateChoice.cpp" />
     <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp" />
     <ClCompile Include="src\RE\BGSKeywordForm.cpp" />
+    <ClCompile Include="src\RE\SoundData.cpp" />
     <ClCompile Include="src\RE\BSExtraData.cpp" />
     <ClCompile Include="src\RE\BSFixedString.cpp" />
     <ClCompile Include="src\RE\BShkbAnimationGraph.cpp" />
@@ -228,6 +229,8 @@
     <ClCompile Include="src\RE\TESObjectLIGH.cpp" />
     <ClCompile Include="src\RE\TESObjectREFR.cpp" />
     <ClCompile Include="src\RE\TESObjectWEAP.cpp" />
+    <ClCompile Include="src\RE\TESTopic.cpp" />
+    <ClCompile Include="src\RE\TESTopicInfo.cpp" />
     <ClCompile Include="src\RE\TESWorldSpace.cpp" />
     <ClCompile Include="src\RE\ThumbstickEvent.cpp" />
     <ClCompile Include="src\RE\UIManager.cpp" />
@@ -244,6 +247,7 @@
     <ClInclude Include="include\RE\AutoMoveHandler.h" />
     <ClInclude Include="include\RE\BGSActorCellEvent.h" />
     <ClInclude Include="include\RE\BGSActorDeathEvent.h" />
+    <ClInclude Include="include\RE\BGSDialogueBranch.h" />
     <ClInclude Include="include\RE\BGSEntryPointFunctionDataText.h" />
     <ClInclude Include="include\RE\BGSEquipType.h" />
     <ClInclude Include="include\RE\BGSKeyword.h" />
@@ -252,6 +256,7 @@
     <ClInclude Include="include\RE\BGSMenuDisplayObject.h" />
     <ClInclude Include="include\RE\BGSMoviePlayer.h" />
     <ClInclude Include="include\RE\BGSPerk.h" />
+    <ClInclude Include="include\RE\BGSSoundDescriptor.h" />
     <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
     <ClInclude Include="include\RE\BSAnimationGraphChannel.h" />
     <ClInclude Include="include\RE\BSAnimationGraphEvent.h" />
@@ -261,6 +266,7 @@
     <ClInclude Include="include\RE\BShkbAnimationGraph.h" />
     <ClInclude Include="include\RE\BSIntrusiveRefCounted.h" />
     <ClInclude Include="include\RE\BSIRagdollDriver.h" />
+    <ClInclude Include="include\RE\BSISoundDescriptor.h" />
     <ClInclude Include="include\RE\BSMusicEvent.h" />
     <ClInclude Include="include\RE\BSTAnimationGraphDataChannel.h" />
     <ClInclude Include="include\RE\BSTSmartPointer.h" />
@@ -272,6 +278,7 @@
     <ClInclude Include="include\RE\CommandTable.h" />
     <ClInclude Include="include\RE\Condition.h" />
     <ClInclude Include="include\RE\ConsoleManager.h" />
+    <ClInclude Include="include\RE\DialogueData.h" />
     <ClInclude Include="include\RE\EffectItem.h" />
     <ClInclude Include="include\RE\EffectSetting.h" />
     <ClInclude Include="include\RE\EnchantmentItem.h" />
@@ -333,6 +340,7 @@
     <ClInclude Include="include\RE\MenuOpenHandler.h" />
     <ClInclude Include="include\RE\MenuTableItem.h" />
     <ClInclude Include="include\RE\MoviePlayer.h" />
+    <ClInclude Include="include\RE\NiCamera.h" />
     <ClInclude Include="include\RE\NiMemory.h" />
     <ClInclude Include="include\RE\NiPoint3.h" />
     <ClInclude Include="include\RE\NiRect.h" />
@@ -370,8 +378,10 @@
     <ClInclude Include="include\RE\RunHandler.h" />
     <ClInclude Include="include\RE\ShoutHandler.h" />
     <ClInclude Include="include\RE\SneakHandler.h" />
+    <ClInclude Include="include\RE\SoundData.h" />
     <ClInclude Include="include\RE\SpellItem.h" />
     <ClInclude Include="include\RE\SprintHandler.h" />
+    <ClInclude Include="include\RE\StringCache.h" />
     <ClInclude Include="include\RE\TESActorBase.h" />
     <ClInclude Include="include\RE\TESActorBaseData.h" />
     <ClInclude Include="include\RE\TESAIForm.h" />
@@ -410,6 +420,9 @@
     <ClInclude Include="include\RE\TESRace.h" />
     <ClInclude Include="include\RE\TESRaceForm.h" />
     <ClInclude Include="include\RE\TESTexture.h" />
+    <ClInclude Include="include\RE\TESTopic.h" />
+    <ClInclude Include="include\RE\TESTopicInfo.h" />
+    <ClInclude Include="include\RE\TESTrackedStatsEvent.h" />
     <ClInclude Include="include\RE\TESWorldSpace.h" />
     <ClInclude Include="include\RE\ThumbstickEvent.h" />
     <ClInclude Include="include\RE\TogglePOVHandler.h" />

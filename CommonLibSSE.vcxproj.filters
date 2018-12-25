@@ -151,6 +151,9 @@
     <Filter Include="src\RE\Skyrim\BSSystem">
       <UniqueIdentifier>{e0ccb846-05bd-4c1c-ab57-c7ce9b6767f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\Skyrim\BSAudio">
+      <UniqueIdentifier>{55079094-185c-4878-b0e0-9cd34309e207}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -386,6 +389,15 @@
     </ClCompile>
     <ClCompile Include="src\RE\NiMemory.cpp">
       <Filter>src\RE\Skyrim\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESTopicInfo.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESTopic.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\SoundData.cpp">
+      <Filter>src\RE\Skyrim\BSAudio</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -943,6 +955,36 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESLoadGameEvent.h">
       <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESTopic.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESTopicInfo.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSDialogueBranch.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSISoundDescriptor.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSoundDescriptor.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DialogueData.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SoundData.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESTrackedStatsEvent.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\StringCache.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiCamera.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/FormTypes.h"  // FormTypes
 #include "RE/IAnimationGraphManagerHolder.h"  // IAnimationGraphManagerHolder
 #include "RE/TESForm.h"  // TESForm
 
@@ -18,7 +19,6 @@ class BSAnimNoteReceiver;
 class BSFaceGenAnimationData;
 class BSFaceGenNiNode;
 class MagicCaster;
-class TESObjectCELL;
 
 
 namespace RE
@@ -29,9 +29,9 @@ namespace RE
 	class NiControllerSequence;
 	class NiNode;
 	class TESContainer;
-	class TESFaction;
-	class TESNPC;
+	struct DialogueData;
 	struct LockState;
+	struct SoundData;
 
 
 	MAKE_NI_POINTER(TESObjectREFR);
@@ -246,6 +246,12 @@ namespace RE
 		void							PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_unk);
 		bool							HasInventoryChanges();
 		InventoryChanges*				GetInventoryChanges();	// Creates inventory changes if none found
+		bool							CreateExtraSayTopicInfo(TESTopic* a_topic);
+		bool							CreateExtraSayTopicInfo(DialogueData* a_dialogueData);
+		/*
+		 * a_unkTopic = a_topicToSay
+		 */
+		void							Say(SoundData& a_soundData, TESTopic* a_topicToSay, Actor* a_actorToSpeakAs, TESTopic* a_unkTopic);	// a_unkTopic may be outTopic
 
 
 		// members

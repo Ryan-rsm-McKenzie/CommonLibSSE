@@ -1,6 +1,8 @@
 #pragma once
 
 #include "RE/BGSPerkEntry.h"  // RE::BGSPerkEntry
+#include "RE/Condition.h"  // Condition
+#include "RE/FormTypes.h"  // TESObjectREFR
 
 class BGSPerk;
 
@@ -8,8 +10,6 @@ class BGSPerk;
 namespace RE
 {
 	class BGSEntryPointFunctionData;
-	class Condition;
-	class TESObjectREFR;
 
 
 	class BGSEntryPointPerkEntry : public BGSPerkEntry
@@ -114,6 +114,17 @@ namespace RE
 		};
 
 
+		struct Conditions
+		{
+		public:
+			UInt32	GetNumConditions();
+			bool	Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);
+
+		private:
+			Condition _conditionsHead;
+		};
+
+
 		// override (BGSPerkEntry)
 		virtual bool						CanProcess(UInt32 a_numArgs, void* a_args) override;	// 00
 		virtual UInt8						GetType() const override;								// 01 { return this->type; }
@@ -133,7 +144,7 @@ namespace RE
 		UInt8						pad13;				// 13
 		UInt32						pad14;				// 14
 		BGSEntryPointFunctionData*	functionData;		// 18
-		Condition*					conditions;			// 20 - numConditions = *(void*)(conditions - 1);
+		Conditions*					conditions;			// 20
 		BGSPerk*					perk;				// 28
 	};
 }

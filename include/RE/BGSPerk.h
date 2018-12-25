@@ -3,6 +3,7 @@
 #include "skse64/GameFormComponents.h"  // TESFullName, TESDescription, TESIcon
 
 #include "RE/BSTArray.h"  // BSTArray
+#include "RE/Condition.h"  // Condition
 #include "RE/PerkRankVisitor.h"  // PerkRankVisitor
 #include "RE/TESForm.h"  // TESForm
 
@@ -50,7 +51,7 @@ namespace RE
 		bool					playable;		// 53
 		bool					hidden;			// 54
 		UInt8					pad55[3];		// 55
-		Condition*				conditions;		// 58
+		Condition				conditions;		// 58
 		BSTArray<BGSPerkEntry*>	perkEntries;	// 60
 		BGSPerk*				nextPerk;		// 78
 	};

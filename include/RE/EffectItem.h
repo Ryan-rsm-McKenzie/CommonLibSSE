@@ -19,6 +19,6 @@ namespace RE
 		EffectSetting*	baseEffect;	// 10 - EFID
 		float			cost;		// 18
 		UInt32			pad1C;		// 1C
-		Condition*		conditions;	// 20
+		Condition		conditions;	// 20
 	};
 }

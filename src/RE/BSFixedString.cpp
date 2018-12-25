@@ -4,6 +4,7 @@
 #include "skse64/GameTypes.h"  // BSFixedString
 
 #include "RE/Offsets.h"
+#include "RE/StringCache.h"  // StringCache::Entry
 
 
 namespace RE
@@ -15,6 +16,8 @@ namespace RE
 
 	BSFixedString::BSFixedString(const BSFixedString& a_str)
 	{
+		typedef BSFixedString* _CopyCtor_t(BSFixedString* a_this, const BSFixedString& a_str);
+		RelocAddr<_CopyCtor_t*> _CopyCtor(BS_FIXED_STRING_COPY_CTOR);
 		_CopyCtor(this, a_str);
 	}
 
@@ -57,6 +60,9 @@ namespace RE
 		typedef void _dtor_t(BSFixedString* a_this);
 		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSFixedString*>(this)->_Release_GetPtr());
 		_dtor_t* _dtor = reinterpret_cast<_dtor_t*>(*ptr);
+
+		typedef BSFixedString* _SetCopy_t(BSFixedString* a_this, const BSFixedString& a_rhs);
+		RelocAddr<_SetCopy_t*> _SetCopy(BS_FIXED_STRING_SET_COPY);
 
 		if (data && data[0]) {
 			_dtor(this);
@@ -118,12 +124,19 @@ namespace RE
 	}
 
 
+	UInt32 BSFixedString::length() const
+	{
+		UInt32 len = 0;
+		if (this && data) {
+			StringCache::Entry* entry = (StringCache::Entry*)((uintptr_t)data - offsetof(StringCache::Entry, data));
+			len = entry->length;
+		}
+		return len;
+	}
+
+
 	const char* BSFixedString::c_str(void) const
 	{
 		return data;
 	}
-
-
-	RelocAddr<BSFixedString::_CopyCtor_t*> BSFixedString::_CopyCtor(BS_FIXED_STRING_COPY_CTOR);
-	RelocAddr<BSFixedString::_SetCopy_t*> BSFixedString::_SetCopy(BS_FIXED_STRING_SET_COPY);
 }

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "skse64_common/Relocation.h"  // RelocAddr
-
 
 namespace RE
 {
@@ -25,17 +23,11 @@ namespace RE
 		bool			operator==(const BSFixedString& a_rhs) const;
 		bool			operator!=(const BSFixedString& a_rhs) const;
 
-		const char*		c_str(void) const;
+		UInt32			length() const;
+		const char*		c_str() const;
 
 	protected:
 		const char* data;
-
-	private:
-		typedef BSFixedString* _CopyCtor_t(BSFixedString* a_this, const BSFixedString& a_str);
-		static RelocAddr<_CopyCtor_t*> _CopyCtor;
-
-		typedef BSFixedString* _SetCopy_t(BSFixedString* a_this, const BSFixedString& a_rhs);
-		static RelocAddr<_SetCopy_t*> _SetCopy;
 	};
 	STATIC_ASSERT(sizeof(BSFixedString) == 0x8);
 }

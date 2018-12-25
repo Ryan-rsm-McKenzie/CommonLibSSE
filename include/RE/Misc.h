@@ -21,5 +21,5 @@ namespace RE
 	typedef void* _HeapAllocAbstraction_t(std::size_t a_allocSize);
 	extern RelocAddr<_HeapAllocAbstraction_t*> _HeapAllocAbstraction;
 
-	bool WorldPtToScreenPt3(float* a_worldToCamMatrix, NiRect<float>* a_port, const NiPoint3& a_in, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance);
+	bool WorldPtToScreenPt3(float a_worldToCamMatrix[4][4], NiRect<float>& a_port, const NiPoint3& a_in, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance);
 }

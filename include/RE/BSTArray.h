@@ -86,7 +86,7 @@ namespace RE
 			_Move_Impl(this, a_entries, a_to, a_from, a_num, a_value_size);
 		}
 
-
+	public:
 		// members
 		size_type _M_count;	// 0
 		size_type pad4;		// 4
@@ -162,7 +162,7 @@ namespace RE
 			_Free_Impl(this);
 		}
 
-
+	public:
 		// members
 		void*		_M_entries;		// 0
 		size_type	_M_capacity;	// 8
@@ -234,7 +234,7 @@ namespace RE
 			char	local[LOCAL_SIZE];
 		};
 
-
+	public:
 		// members
 		size_type	_M_capacity;	// 00
 		size_type	pad04;			// 04
@@ -320,11 +320,12 @@ namespace RE
 			return _M_entries;
 		}
 
-
+	public:
 		// members
 		void*		_M_allocator;	// 00 - memory allocator
 		void*		_M_entries;		// 08
 		size_type	_M_capacity;	// 10
+		size_type	pad14;			// 14
 
 	private:
 		friend class BSTArrayAllocatorFunctor<BSScrapArrayAllocator>;
@@ -391,7 +392,7 @@ namespace RE
 			m_pAllocator->_Free();
 		}
 
-	protected:
+	public:
 		// members
 		allocator_type*	m_pAllocator;	// 08
 	};
@@ -842,10 +843,15 @@ namespace RE
 		//members
 		//void*		_M_entries;		// 00
 		//size_type	_M_capacity;	// 08
-		//size_type	padC;			// 0C
+		//size_type	pad0C;			// 0C
 		//size_type _M_count;		// 10
-		//size_type pad4;			// 14
+		//size_type pad14;			// 14
 	};
+	using TestBSTArray = BSTArray<uint32_t>;
+	STATIC_ASSERT(offsetof(TestBSTArray, _M_entries) == 0x00);
+	STATIC_ASSERT(offsetof(TestBSTArray, _M_capacity) == 0x08);
+	STATIC_ASSERT(offsetof(TestBSTArray, _M_count) == 0x10);
+	STATIC_ASSERT(sizeof(TestBSTArray) == 0x18);
 
 
 	template<class _Ty, std::uint32_t num = 1>
@@ -855,7 +861,12 @@ namespace RE
 	//size_type	pad04;			// 04
 	//Entry		_M_entries;		// 08
 	//size_type _M_count;		// 10
-	//size_type pad4;			// 14
+	//size_type pad14;			// 14
+	using TestBSTSmallArray = BSTSmallArray<uint32_t>;
+	STATIC_ASSERT(offsetof(TestBSTSmallArray, _M_capacity) == 0x00);
+	STATIC_ASSERT(offsetof(TestBSTSmallArray, _M_entries) == 0x08);
+	STATIC_ASSERT(offsetof(TestBSTSmallArray, _M_count) == 0x10);
+	STATIC_ASSERT(sizeof(TestBSTSmallArray) == 0x18);
 
 
 	template <class _Ty>
@@ -870,9 +881,19 @@ namespace RE
 		//void*		_M_allocator;	// 00 - memory allocator
 		//void*		_M_entries;		// 08
 		//size_type	_M_capacity;	// 10
-		//size_type _M_count;		// 10
-		//size_type pad4;			// 14
+		//size_type	pad14;			// 14
+		//size_type _M_count;		// 18
+		//size_type pad14;			// 1C
 	};
+	using TestBSScrapArray = BSScrapArray<uint32_t>;
+#if 0
+	STATIC_ASSERT(offsetof(TestBSScrapArray, _M_allocator) == 0x00);
+	STATIC_ASSERT(offsetof(TestBSScrapArray, _M_entries) == 0x08);
+	STATIC_ASSERT(offsetof(TestBSScrapArray, _M_capacity) == 0x18);
+	STATIC_ASSERT(offsetof(TestBSScrapArray, _M_count) == 0x18);
+	STATIC_ASSERT(sizeof(TestBSScrapArray) == 0x20);
+#endif
+	// DOUBLE CHECK OFFSETS
 
 
 	// Returns if/where the element was found, otherwise indexOut can be used as insert position
