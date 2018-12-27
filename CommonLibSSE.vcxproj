@@ -165,6 +165,9 @@
     <ClCompile Include="src\RE\BGSEntryPointFunctionDataActivateChoice.cpp" />
     <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp" />
     <ClCompile Include="src\RE\BGSKeywordForm.cpp" />
+    <ClCompile Include="src\RE\BSAudioManager.cpp" />
+    <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
+    <ClCompile Include="src\RE\NiRefObject.cpp" />
     <ClCompile Include="src\RE\SoundData.cpp" />
     <ClCompile Include="src\RE\BSExtraData.cpp" />
     <ClCompile Include="src\RE\BSFixedString.cpp" />
@@ -257,12 +260,16 @@
     <ClInclude Include="include\RE\BGSMoviePlayer.h" />
     <ClInclude Include="include\RE\BGSPerk.h" />
     <ClInclude Include="include\RE\BGSSoundDescriptor.h" />
+    <ClInclude Include="include\RE\BGSSoundDescriptorForm.h" />
+    <ClInclude Include="include\RE\BGSStandardSoundDef.h" />
     <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
     <ClInclude Include="include\RE\BSAnimationGraphChannel.h" />
     <ClInclude Include="include\RE\BSAnimationGraphEvent.h" />
     <ClInclude Include="include\RE\BSAnimationGraphManager.h" />
+    <ClInclude Include="include\RE\BSAudioManager.h" />
     <ClInclude Include="include\RE\BSExtraData.h" />
     <ClInclude Include="include\RE\BSFixedString.h" />
+    <ClInclude Include="include\RE\BSHandleRefObject.h" />
     <ClInclude Include="include\RE\BShkbAnimationGraph.h" />
     <ClInclude Include="include\RE\BSIntrusiveRefCounted.h" />
     <ClInclude Include="include\RE\BSIRagdollDriver.h" />
@@ -343,7 +350,9 @@
     <ClInclude Include="include\RE\NiCamera.h" />
     <ClInclude Include="include\RE\NiMemory.h" />
     <ClInclude Include="include\RE\NiPoint3.h" />
+    <ClInclude Include="include\RE\NiSmartPointer.h" />
     <ClInclude Include="include\RE\NiRect.h" />
+    <ClInclude Include="include\RE\NiRefObject.h" />
     <ClInclude Include="include\RE\NiTArray.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
@@ -419,6 +428,7 @@
     <ClInclude Include="include\RE\TESObjectWEAP.h" />
     <ClInclude Include="include\RE\TESRace.h" />
     <ClInclude Include="include\RE\TESRaceForm.h" />
+    <ClInclude Include="include\RE\TESSound.h" />
     <ClInclude Include="include\RE\TESTexture.h" />
     <ClInclude Include="include\RE\TESTopic.h" />
     <ClInclude Include="include\RE\TESTopicInfo.h" />

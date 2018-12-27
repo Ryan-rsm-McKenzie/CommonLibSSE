@@ -28,7 +28,7 @@ namespace RE
 			UInt32	pad0C;	// 0C
 			UInt32	length;	// 10
 			UInt32	pad14;	// 14
-			char*	data;	// 18
+			char	data;	// 18
 		};
 		STATIC_ASSERT(sizeof(Entry) == 0x20);
 

@@ -43,6 +43,7 @@ namespace RE
 			kGetIsRace = 0x0045,
 			kHasBeenEaten = 0x007F,
 			kHasMagicEffect = 0x00D6,
+			kIsInInterior = 0x012C,
 			kHasPerk = 0x01C0
 		};
 
@@ -66,7 +67,7 @@ namespace RE
 			void*			unk20;		// 20
 			void*			unk28;		// 28
 		};
-		STATIC_ASSERT(sizeof(Solution) == 0x30);  // xref 0x00444990 - Condition::Match_Impl - 1_5_53
+		STATIC_ASSERT(sizeof(Solution) == 0x30);  // xref 0x00444990 - Condition::Run - 1_5_53
 
 
 		struct ComparisonFlags
@@ -125,7 +126,7 @@ namespace RE
 		// }
 		// Make sure to fix it before you call this func (xref 0x002DB800 - 1_5_53)
 		// Perk fragments will short circuit
-		bool Match(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);
+		bool Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);
 
 
 		// members

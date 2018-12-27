@@ -1,16 +1,17 @@
 #pragma once
 
-#include "skse64/NiTypes.h"  // NiPoint3
-
 #include "Offsets.h"
 
 #include "RE/BaseExtraList.h"  // BaseExtraList
 #include "RE/BSAnimationGraphEvent.h"  // BSAnimationGraphEvent
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSHandleRefObject.h"  // BSHandleRefObject
 #include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 #include "RE/FormTypes.h"  // FormTypes
 #include "RE/IAnimationGraphManagerHolder.h"  // IAnimationGraphManagerHolder
+#include "RE/NiPoint3.h"  // NiPoint3
+#include "RE/NiSmartPointer.h"  // NiSmartPointer
 #include "RE/TESForm.h"  // TESForm
 
 class ActorWeightModel;
@@ -34,7 +35,7 @@ namespace RE
 	struct SoundData;
 
 
-	MAKE_NI_POINTER(TESObjectREFR);
+	NiSmartPointer(TESObjectREFR);
 
 
 	class TESObjectREFR :
@@ -209,8 +210,7 @@ namespace RE
 		virtual void					Unk_9E(void);																																												// 9E
 		virtual void					Unk_9F(void);																																												// 9F
 		virtual void*					GetDecalGroup();																																											// A0
-		virtual bool					SendEquipEvent(uintptr_t a_arg1, uintptr_t a_arg2);																																												// A1
-		virtual void					Unk_A2(void);																																												// A2
+		virtual bool					SendEquipEvent(uintptr_t a_arg1, uintptr_t a_arg2);																																			// A1
 
 
 		float							GetBaseScale();
@@ -237,7 +237,6 @@ namespace RE
 		bool							IsIgnoringFriendlyHits();
 		bool							SetDisplayName(const BSFixedString& name, bool force);
 		static bool						LookupByHandle(UInt32& a_refHandle, TESObjectREFRPtr& a_refrOut);
-		static bool						LookupByHandle(UInt32& a_refHandle, TESObjectREFR*& a_refrOut);
 		LockState*						GetLockState();
 		bool							IsLocked();
 		SInt32							GetLockLevel();
@@ -246,12 +245,6 @@ namespace RE
 		void							PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_unk);
 		bool							HasInventoryChanges();
 		InventoryChanges*				GetInventoryChanges();	// Creates inventory changes if none found
-		bool							CreateExtraSayTopicInfo(TESTopic* a_topic);
-		bool							CreateExtraSayTopicInfo(DialogueData* a_dialogueData);
-		/*
-		 * a_unkTopic = a_topicToSay
-		 */
-		void							Say(SoundData& a_soundData, TESTopic* a_topicToSay, Actor* a_actorToSpeakAs, TESTopic* a_unkTopic);	// a_unkTopic may be outTopic
 
 
 		// members

@@ -15,10 +15,10 @@ namespace RE
 	}
 
 
-	bool Condition::Match(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target)
+	bool Condition::Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target)
 	{
 		typedef bool _Match_t(Condition* a_this, TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);
-		RelocAddr<_Match_t*> _Match(CONDITION_MATCH);
+		RelocAddr<_Match_t*> _Match(CONDITION_RUN);
 		return _Match(this, a_perkOwner, a_target);
 	}
 }

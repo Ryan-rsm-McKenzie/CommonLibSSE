@@ -18,9 +18,9 @@ namespace RE
 		bool result = false;
 		for (UInt32 i = 0; i < numConditions; ++i) {
 			if (i == 0) {
-				result = conditions[i].Match(a_perkOwner, a_target);
+				result = conditions[i].Run(a_perkOwner, a_target);
 			} else {
-				result = conditions[i].Match(a_target, a_perkOwner);
+				result = conditions[i].Run(a_target, a_perkOwner);
 			}
 			if (!result) {
 				break;

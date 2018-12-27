@@ -27,8 +27,17 @@ namespace RE
 	// 40 57 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 48  89 5C 24 48 48 89 74 24  50 48 8B F2 48 8B F9 C7  02 00 00 00 00 48 8D 59  10 48 89 5C 24 40 48 8B  CB ?? ?? ?? ?? ?? 90 BA  85 00 00 00 48 8B CF ??
 	constexpr uintptr_t	BASE_EXTRA_LIST_GET_ASH_PILE_REF_HANDLE_IMPL = 0x00117170;				// 1_5_62
 
-	// 40 53 48 83 EC 20 48 8B  D9 ?? ?? ?? ?? ?? 48 8B  C8 ?? ?? ?? ?? ?? 84 C0  ?? ?? ?? ?? ?? ?? 80 BB
-	constexpr uintptr_t BGS_SAVE_LOAD_MANAGER_GAME_IS_PAUSED = 0x00587B50;						// 1_5_62
+	// 40 53 48 83 EC 60 8B 19  0F 29 74 24 50 0F 28 F3
+	constexpr uintptr_t BGS_SOUND_DESCRIPTOR_SOUND_DATA_SET_POSITION = 0x00BEDB10;				// 1_5_62 - There's a function very similar to this once, just makes different calls
+	// 48 89 5C 24 08 57 48 83  EC 20 83 39 FF 48 8B DA
+	constexpr uintptr_t BGS_SOUND_DESCRIPTOR_SOUND_DATA_SET_NI_NODE = 0x00BEDD00;				// 1_5_62
+	// 40 53 48 83 EC 20 8B 19  83 FB FF ?? ?? C7 41 08  01 00 00 00 ?? ?? ?? ??
+	constexpr uintptr_t BGS_SOUND_DESCRIPTOR_SOUND_DATA_PLAY = 0x00BED720;						// 1_5_62
+
+	// 48 89 5C 24 10 48 89 74  24 18 57 48 83 EC 20 48  8B 81 78 01 00 00 41 8B
+	constexpr uintptr_t BS_AUDIO_MANAGER_SET_UP = 0x00BEF060;									// 1_5_62
+	//
+	constexpr uintptr_t BS_AUDIO_MANAGER_GET_SINGLETON = 0x00BEE770;							// 1_5_62
 
 	// 4C 8B 02 4C 8B C9 4D 85  C0 ?? ?? 41 8B 40 F0 90
 	constexpr uintptr_t BS_FIXED_STRING_COPY_CTOR = 0x00C289C0;									// 1_5_62 - There's an exact copy of this function
@@ -62,7 +71,7 @@ namespace RE
 	constexpr uintptr_t BST_SMALL_ARRAY_HEAP_ALLOCATOR_FREE_IMPL = 0x00C06A70;					// 1_5_62
 
 	// 48 83 EC 68 33 C0 48 89  54 24 20 4C 89 44 24 28
-	constexpr uintptr_t CONDITION_MATCH = 0x00444990;											// 1_5_62
+	constexpr uintptr_t CONDITION_RUN = 0x00444990;											// 1_5_62
 
 	// 48 89 4C 24 08 55 53 56  57 41 54 41 55 41 56 41  57 48 8D 6C 24 E1 48 81  EC E8 00 00 00 48 C7 45  F7 FE FF FF FF 0F 29 B4
 	constexpr uintptr_t CONDITION_NODE_RUN = 0x004456B0;										// 1_5_62
@@ -101,6 +110,9 @@ namespace RE
 	// 40 57 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 48  89 5C 24 48 48 8B D9 33  FF 48 8D 4C 24 50 ?? ??
 	constexpr uintptr_t NI_CONTROLLER_MANAGER_GET_SEQUENCE_BY_NAME_IMPL = 0x00189CF0;			// 1_5_62
 
+	//
+	constexpr uintptr_t NI_REF_OBJECT_TOTAL_OBJECT_COUNT = 0x03039520;							// 1_5_62
+
 	// 48 83 EC 38 48 C7 44 24  20 FE FF FF FF 48 C7 44  24 40 00 00 00 00 48 81  C1 94 08 00 00 48 8D 54
 	constexpr uintptr_t PLAYER_CHARACTER_GET_ACTOR_IN_FAVOR_STATE = 0x006B3860;					// 1_5_62
 	// 48 8B C4 56 57 41 56 48  83 EC 70 48 C7 40 C0 FE  FF FF FF 48 89 58 08 48
@@ -125,15 +137,6 @@ namespace RE
 	constexpr uintptr_t TES_OBJECT_REFR_PLAY_ANIMATION = 0x0018A020;							// 1_5_62
 	// 40 56 57 41 56 48 83 EC  30 48 C7 44 24 20 FE FF  FF FF 48 89 5C 24 60 48  89 6C 24 68 48 8B F1 33
 	constexpr uintptr_t TES_OBJECT_REFR_GET_INVENTORY_CHANGES = 0x001D9030;						// 1_5_62
-	// 40 53 48 83 EC 20 48 8B  D9 48 83 C1 70 E8 8E 87
-	constexpr uintptr_t TES_OBJECT_REFR_CREATE_EXTRA_SAY_TOPIC_INFO_TOPIC = 0x002A7040;			// 1_5_62
-	// 40 53 48 83 EC 20 48 8B  D9 48 83 C1 70 E8 DE 85
-	constexpr uintptr_t TES_OBJECT_REFR_CREATE_EXTRA_SAY_TOPIC_INFO_DIALOGUE_DATA = 0x002A7010;	// 1_5_62
-	// 48 89 5C 24 20 55 57 41  55 41 56 41 57 48 81 EC
-	constexpr uintptr_t TES_OBJECT_REFR_SAY = 0x002864D0;										// 1_5_62
-
-	// 4C 8B DC 57 41 56 41 57  48 83 EC 50 49 C7 43 D8  FE FF FF FF 49 89 5B 08  49 89 6B 10 49 89 73 18  49 8B F1 4C 8B FA 48 8B
-	constexpr uintptr_t TES_TOPIC_CREATE_DIALOGUE_DATA = 0x0038FB90;							// 1_5_62
 
 	// 48 83 EC 18 F3 41 0F 10  60 04 F3 41 0F 10 28 0F
 	constexpr uintptr_t WORLD_PT_TO_SCREEN_PT_3 = 0x00C662C0;									// 1_5_62

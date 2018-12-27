@@ -11,11 +11,11 @@ namespace RE
 			virtual ~BSIPlaybackCharacteristics();			// 00
 
 			// add
-			virtual UInt8	GetFrequencyShift(void) = 0;	// 01
-			virtual UInt8	GetFrequencyVariance(void) = 0;	// 02
-			virtual UInt8	GetPriority(void) = 0;			// 03
-			virtual UInt16	GetDBAttenuation(void) = 0;		// 04
-			virtual UInt8	GetDBVariance(void) = 0;		// 05
+			virtual UInt8	GetFrequencyShift() = 0;	// 01
+			virtual UInt8	GetFrequencyVariance() = 0;	// 02
+			virtual UInt8	GetPriority() = 0;			// 03
+			virtual UInt16	GetStaticAttenuation() = 0;	// 04
+			virtual UInt8	GetDBVariance() = 0;		// 05
 		};
 		STATIC_ASSERT(sizeof(BSIPlaybackCharacteristics) == 0x8);
 

@@ -151,8 +151,17 @@
     <Filter Include="src\RE\Skyrim\BSSystem">
       <UniqueIdentifier>{e0ccb846-05bd-4c1c-ab57-c7ce9b6767f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\Gameplay">
+      <UniqueIdentifier>{c84257dd-2f60-400b-9585-9e30d8ded77c}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\RE\Skyrim\BSAudio">
-      <UniqueIdentifier>{55079094-185c-4878-b0e0-9cd34309e207}</UniqueIdentifier>
+      <UniqueIdentifier>{6ece1f79-14e5-40e0-9191-680ac868432d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSMain">
+      <UniqueIdentifier>{452a7dde-4e53-487c-90e1-d7c35ff622ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSMain">
+      <UniqueIdentifier>{d5d329c4-fa1c-4698-a7ad-10c888a04a37}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -398,6 +407,15 @@
     </ClCompile>
     <ClCompile Include="src\RE\SoundData.cpp">
       <Filter>src\RE\Skyrim\BSAudio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSAudioManager.cpp">
+      <Filter>src\RE\Skyrim\BSAudio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiRefObject.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSHandleRefObject.cpp">
+      <Filter>src\RE\Skyrim\BSMain</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -974,9 +992,6 @@
     <ClInclude Include="include\RE\DialogueData.h">
       <Filter>include\RE\Skyrim\TESForms\Character</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\SoundData.h">
-      <Filter>include\RE\Skyrim\BSAudio</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESTrackedStatsEvent.h">
       <Filter>include\RE\Skyrim\Events</Filter>
     </ClInclude>
@@ -984,6 +999,30 @@
       <Filter>include\RE\Skyrim\BSCore</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NiCamera.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESSound.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSoundDescriptorForm.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStandardSoundDef.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSAudioManager.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SoundData.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSHandleRefObject.h">
+      <Filter>include\RE\Skyrim\BSMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiRefObject.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiSmartPointer.h">
       <Filter>include\RE\Skyrim\NetImmerse</Filter>
     </ClInclude>
   </ItemGroup>

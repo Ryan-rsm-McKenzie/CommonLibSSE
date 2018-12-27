@@ -66,7 +66,14 @@ namespace RE
 		};
 
 
-		virtual ~PlayerCharacter();	// 00
+		virtual ~PlayerCharacter();				// 000
+
+		// add
+		virtual void			Unk_12A(void);	// 12A
+		virtual void			Unk_12B(void);	// 12B
+		virtual void			Unk_12C(void);	// 12C
+		virtual void			Unk_12D(void);	// 12D
+		virtual void			Unk_12E(void);	// 12E
 
 		TintMask*				GetOverlayTintMask(TintMask* a_original);
 		tArray<TintMask*>*		GetTintList();

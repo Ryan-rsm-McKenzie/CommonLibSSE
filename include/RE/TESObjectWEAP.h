@@ -148,6 +148,8 @@ namespace RE
 		STATIC_ASSERT(sizeof(CriticalData) == 0x18);
 
 
+		virtual ~TESObjectWEAP();	// 00
+
 		float				speed();
 		float				reach();
 		float				stagger();

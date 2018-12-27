@@ -2,6 +2,8 @@
 
 #include "RE/BSISoundDescriptor.h"  // BSISoundDescriptor
 
+class BGSSoundCategory;
+
 
 namespace RE
 {
@@ -18,8 +20,9 @@ namespace RE
 
 
 		// members
-		UInt64	unk08;	// 08
-		UInt64	unk10;	// 10
+		BGSSoundCategory*	category;				// 08 - GNAM
+		UInt32				alternateSoundFormID;	// 10 - SNAM
+		UInt32				pad14;					// 14
 	};
 	STATIC_ASSERT(sizeof(BGSSoundDescriptor) == 0x18);
 }

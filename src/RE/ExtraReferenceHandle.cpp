@@ -9,12 +9,12 @@ namespace RE
 {
 	TESObjectREFR* ExtraReferenceHandle::GetReference()
 	{
-		TESObjectREFR* reference = 0;
+		TESObjectREFRPtr refPtr;
 		if (handle == *g_invalidRefHandle || handle == 0) {
 			return 0;
 		}
 
-		TESObjectREFR::LookupByHandle(handle, reference);
-		return reference;
+		TESObjectREFR::LookupByHandle(handle, refPtr);
+		return refPtr;
 	}
 }

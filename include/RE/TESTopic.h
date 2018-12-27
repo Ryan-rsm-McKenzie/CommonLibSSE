@@ -164,11 +164,6 @@ namespace RE
 		virtual bool			SetName(const char* a_str) override;	// 33
 
 		float					GetPriority() const;
-		/*
-		 * @param a_arg4 = 0
-		 * @param a_arg5 = 0
-		 */
-		DialogueData*			CreateDialogueData(Actor* a_speaker, Actor* a_listener, TESTopicInfo* a_topicInfo, void* a_arg4, void* a_arg5);
 
 
 		// members

@@ -17,7 +17,6 @@
 #include "RE/ExtraReferenceHandle.h"  // ExtraReferenceHandle
 #include "RE/ExtraTextDisplayData.h"  // ExtraTextDisplayData
 #include "RE/Offsets.h"
-#include "RE/SoundData.h"  // SoundData
 #include "RE/TESActorBase.h"  // TESActorBase
 #include "RE/TESFaction.h"  // TESFaction
 #include "RE/TESFullName.h"  // TESFullName
@@ -258,14 +257,6 @@ namespace RE
 	}
 
 
-	bool TESObjectREFR::LookupByHandle(UInt32& a_refHandle, TESObjectREFR*& a_refrOut)
-	{
-		typedef bool _Lookup_t(const UInt32& a_refHandle, TESObjectREFR*& a_refrOut);
-		static _Lookup_t* _Lookup = reinterpret_cast<_Lookup_t*>(::LookupREFRByHandle.GetUIntPtr());
-		return _Lookup(a_refHandle, a_refrOut);
-	}
-
-
 	LockState* TESObjectREFR::GetLockState()
 	{
 		typedef LockState* _GetLockState_Impl_t(TESObjectREFR* a_this);
@@ -335,29 +326,5 @@ namespace RE
 			}
 		}
 		return changes;
-	}
-
-
-	bool TESObjectREFR::CreateExtraSayTopicInfo(TESTopic* a_topic)
-	{
-		typedef bool _CreateExtraSayTopicInfo_t(TESObjectREFR* a_this, TESTopic* a_topic);
-		RelocAddr<_CreateExtraSayTopicInfo_t*> _CreateExtraSayTopicInfo(TES_OBJECT_REFR_CREATE_EXTRA_SAY_TOPIC_INFO_TOPIC);
-		return _CreateExtraSayTopicInfo(this, a_topic);
-	}
-
-
-	bool TESObjectREFR::CreateExtraSayTopicInfo(DialogueData* a_dialogueData)
-	{
-		typedef bool _CreateExtraSayTopicInfo_t(TESObjectREFR* a_this, DialogueData* a_dialogueData);
-		RelocAddr<_CreateExtraSayTopicInfo_t*> _CreateExtraSayTopicInfo(TES_OBJECT_REFR_CREATE_EXTRA_SAY_TOPIC_INFO_DIALOGUE_DATA);
-		return _CreateExtraSayTopicInfo(this, a_dialogueData);
-	}
-
-
-	void TESObjectREFR::Say(SoundData& a_soundData, TESTopic* a_topicToSay, Actor* a_actorToSpeakAs, TESTopic* a_unkTopic)
-	{
-		typedef void _Say_t(TESObjectREFR* a_this, SoundData& a_soundData, TESTopic* a_topicToSay, Actor* a_actorToSpeakAs, TESTopic* a_unkTopic);
-		RelocAddr<_Say_t*> _Say(TES_OBJECT_REFR_SAY);
-		_Say(this, a_soundData, a_topicToSay, a_actorToSpeakAs, a_unkTopic);
 	}
 }

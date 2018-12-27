@@ -1,11 +1,20 @@
 #pragma once
 
+#include "RE/NiPoint3.h"  // NiPoint3
+
 
 namespace RE
 {
+	class NiNode;
+
+
 	struct SoundData
 	{
 		SoundData();
+
+		bool	SetPosition(NiPoint3 a_pos);
+		void	SetNode(NiNode* a_node);
+		bool	Play();
 
 
 		// members

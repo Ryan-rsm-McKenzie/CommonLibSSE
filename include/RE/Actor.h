@@ -120,7 +120,6 @@ namespace RE
 		virtual NiPoint3*						GetBoundLeftFrontBottom(NiPoint3* a_out) const override;																																		// 073
 		virtual NiPoint3*						GetBoundRightBackTop(NiPoint3* a_out) const override;																																			// 074
 		virtual void							ResetInventory(bool a_unk) override;																																							// 08A
-		virtual void							Unk_9A(void) override;																																											// 09A
 		virtual bool							SendEquipEvent(uintptr_t a_arg1, uintptr_t a_arg2) override;																																	// 0A1
 
 		// override (MagicTarget)
@@ -129,6 +128,7 @@ namespace RE
 		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffects() override;																																									// 007
 
 		// add
+		virtual void							Unk_A2(void);																																													// 0A2
 		virtual void							PlaySounds(TESForm* a_item, bool a_isPickup, bool a_unk);																																		// 0A3
 		virtual void							Unk_A4(void);																																													// 0A4
 		virtual void							Unk_A5(void);																																													// 0A5
@@ -164,7 +164,7 @@ namespace RE
 		virtual void							Unk_C3(void);																																													// 0C3
 		virtual void							Unk_C4(void);																																													// 0C4
 		virtual void							Unk_C5(void);																																													// 0C5
-		virtual void							Unk_C6(void);																																													// 0C6
+		virtual void							Unk_C6(void);																																													// 0C6 - pure - How deep the class is in the inheritance hierarchy? Character=(return 1) PlayerCharacter=(return 2)
 		virtual void							Unk_C7(void);																																													// 0C7
 		virtual void							Unk_C8(void);																																													// 0C8
 		virtual void							Unk_C9(void);																																													// 0C9
@@ -261,8 +261,7 @@ namespace RE
 		virtual void							Unk_124(void);																																													// 124
 		virtual void							Unk_125(void);																																													// 125
 		virtual void							Unk_126(void);																																													// 126
-		virtual void							Unk_127(void);																																													// 127
-		virtual float							IncerceptActorValueChange(UInt32 a_avIndex, float a_avChangeBy);																																// 128
+		virtual float							IncerceptActorValueChange(UInt32 a_avIndex, float a_avChangeBy);																																// 127
 
 
 		TESForm*	GetEquippedObject(bool a_abLeftHand);

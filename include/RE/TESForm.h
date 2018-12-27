@@ -69,12 +69,17 @@ namespace RE
 
 		virtual ~TESForm();																																			// 00
 
+		// override (BaseFormComponent)
+		virtual void			Init() override;																													// 01
+		virtual void			ReleaseRefs() override;																												// 02
+		virtual void			CopyFromBase(BaseFormComponent* a_rhs) override;																					// 03
+
 		// add
 		virtual void			Unk_04(void);																														// 04 - { return; }
 		virtual void			Unk_05(void);																														// 05 - { return; }
 		virtual bool			LoadForm(TESFile* a_mod);																											// 06 - { return true; }
 		virtual void			Unk_07(void);																														// 07 - { return true; }
-		virtual void			Unk_08(void);																														// 08
+		virtual void			Unk_08(void);																														// 08 - { return LoadForm(); }
 		virtual TESForm*		DupulicateForm(uintptr_t a_arg1, void* a_arg2);																						// 09
 		virtual bool			MarkChanged(UInt32 a_changeFlags);																									// 0A
 		virtual void			UnMarkChanged(UInt32 a_changeFlags);																								// 0B
@@ -115,7 +120,7 @@ namespace RE
 		virtual const char*		GetAliasName(const BSFixedString& a_alias);																							// 2E - alias: "Pronoun" "PronounObj" "PronounPos" "PronounPosObj" "PronounRef" "PronounInt" "Race" "Gender" "ShortName". see http://www.creationkit.com/Text_Replacement
 		virtual void			CopyFrom(TESForm* a_srcForm);																										// 2F - { return; }
 		virtual void			Unk_30(void);																														// 30
-		virtual void			Unk_32(void);																														// 31
+		virtual void			Unk_31(void);																														// 31
 		virtual const char*		GetName();																															// 32 - { return ""; }
 		virtual bool			SetName(const char* a_str);																											// 33 - { return true; }
 		virtual void			Unk_34(void);																														// 34 - { return false; } TESTopic,TESObjectCELL,TESWorldSpace=true
