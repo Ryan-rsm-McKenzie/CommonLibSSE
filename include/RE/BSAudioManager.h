@@ -3,11 +3,11 @@
 #include "RE/BSAudioManagerThread.h"  // BSAudioManagerThread
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/BSXAudio2GameSound.h"  // BSXAudio2GameSound
 
 
 namespace RE
 {
+	class BSXAudio2GameSound;
 	struct SoundData;
 
 
