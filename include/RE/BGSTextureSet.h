@@ -1,0 +1,96 @@
+#pragma once
+
+#include "RE/BSTextureSet.h"  // BSTextureSet
+#include "RE/FormTypes.h"  // FormType
+#include "RE/TESBoundObject.h"  // TESBoundObject
+#include "RE/TESTexture.h"  // TESTexture
+
+
+namespace RE
+{
+	class BGSTextureSet :
+		public TESBoundObject,	// 00
+		public BSTextureSet		// 30
+	{
+	public:
+		enum { kTypeID = FormType::TextureSet };
+
+
+		enum
+		{
+			kNumTextures = 8
+		};
+
+
+		enum class Flag : UInt16
+		{
+			kNone = 0,
+			kNoSpecularMap = 1 << 0,
+			kFacegenTextures = 1 << 1,
+			kHasModelSpaceNormalMap = 1 << 2
+		};
+
+
+		struct DecalData
+		{
+			enum Flag : UInt8
+			{
+				kNone = 0,
+				kParallax = 1 << 0,
+				kAlphaBlending = 1 << 1,
+				kAlphaTesting = 1 << 2,
+				kNoSubtextures = 1 << 3
+			};
+
+
+			struct Color
+			{
+				UInt8	red;	// 0
+				UInt8	green;	// 1
+				UInt8	blue;	// 2
+				UInt8	pad3;	// 3
+			};
+			STATIC_ASSERT(sizeof(Color) == 0x4);
+
+
+			float		minWidth;		// 00
+			float		maxWidth;		// 04
+			float		minHeight;		// 08
+			float		maxHeight;		// 0C
+			float		depth;			// 10
+			float		shininess;		// 14
+			float		parallaxScale;	// 18
+			UInt8		parralaxPasses;	// 1C
+			Flag		flags;			// 1D
+			UInt16		unk1E;			// 1E
+			Color		color;			// 20
+			UInt32		pad24;			// 24
+		};
+		STATIC_ASSERT(sizeof(DecalData) == 0x28);
+
+
+		struct TextureData
+		{
+			UInt32	unk0;			// 0
+			char	fileFormat[4];	// 4
+			UInt32	unk8;			// 8
+		};
+		STATIC_ASSERT(sizeof(TextureData) == 0xC);
+
+
+		virtual ~BGSTextureSet();						// 00
+
+		// override (TESBoundObject)
+		virtual bool LoadForm(TESFile* a_mod) override;	// 06
+
+
+		// members
+		TESTexture		textures[kNumTextures];		// 040 - TX00 - TX07
+		DecalData*		decalData;					// 0C0 - DODT
+		Flag			flags;						// 0C8 - DNAM
+		UInt16			pad0CA;						// 0CA
+		TextureData		textureData[kNumTextures];	// 0CC
+		UInt32			pad12C;						// 12C
+	};
+	STATIC_ASSERT(sizeof(BGSTextureSet) == 0x130);
+}

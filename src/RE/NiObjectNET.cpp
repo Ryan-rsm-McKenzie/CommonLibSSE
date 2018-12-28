@@ -1,5 +1,7 @@
 #include "RE/NiObjectNET.h"
 
+#include "skse64/NiObjects.h"  // NiObjectNET
+
 
 namespace RE
 {

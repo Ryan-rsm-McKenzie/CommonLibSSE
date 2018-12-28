@@ -1,8 +1,7 @@
 #pragma once
 
-#include "skse64/NiObjects.h"  // NiObject
-
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/NiObject.h"  // NiObject
 
 namespace RE
 {

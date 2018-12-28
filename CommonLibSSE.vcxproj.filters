@@ -417,6 +417,9 @@
     <ClCompile Include="src\RE\BSHandleRefObject.cpp">
       <Filter>src\RE\Skyrim\BSMain</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\NiObject.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -1023,6 +1026,33 @@
       <Filter>include\RE\Skyrim\NetImmerse</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NiSmartPointer.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IXAudio2VoiceCallback.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSGameSound.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSXAudio2GameSound.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSThread.h">
+      <Filter>include\RE\Skyrim\BSMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSAudioManagerThread.h">
+      <Filter>include\RE\Skyrim\BSMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAction.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSTextureSet.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTextureSet.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiObject.h">
       <Filter>include\RE\Skyrim\NetImmerse</Filter>
     </ClInclude>
   </ItemGroup>

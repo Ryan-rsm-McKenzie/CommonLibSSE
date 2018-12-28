@@ -11,7 +11,9 @@ namespace RE
 	public:
 		enum { kTypeID = FormType::Keyword };
 
+		virtual ~BGSKeyword();										// 00
 
+		// override (TESForm)
 		virtual bool		LoadForm(TESFile* a_mod) override;		// 06
 		virtual const char*	GetName() override;						// 32 - { return (const char*)keyword; }
 		virtual bool		SetName(const char* a_str) override;	// 33

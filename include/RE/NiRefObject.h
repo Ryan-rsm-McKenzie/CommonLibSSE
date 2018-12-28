@@ -11,6 +11,7 @@ namespace RE
 		NiRefObject();
 		virtual ~NiRefObject();					// 00
 
+		// add
 		virtual void			DeleteThis();	// 01
 
 		void					IncRefCount();

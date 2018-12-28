@@ -1,7 +1,7 @@
 #pragma once
 
-#include "skse64/NiObjects.h"  // NiObject
-#include "skse64/GameTypes.h"  // BSFixedString
+#include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/NiObject.h"  // NiObject
 
 class NiExtraData;
 class NiTimeController;

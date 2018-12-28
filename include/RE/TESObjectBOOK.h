@@ -91,15 +91,15 @@ namespace RE
 			Union	teaches;	// 8
 		};
 
-		virtual ~TESObjectBOOK();																																		// 00
+		virtual ~TESObjectBOOK();																															// 00
 
 		// override (TESBoundObject)
-		virtual bool	LoadForm(TESFile* a_mod) override;																												// 06
-		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;																									// 0E
-		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																									// 0F
-		virtual void	InitItem() override;																															// 13
-		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, uintptr_t a_arg3, uintptr_t a_arg4, uintptr_t a_arg5) override;	// 37
-		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst, bool a_unk) override;																	// 4D
+		virtual bool	LoadForm(TESFile* a_mod) override;																									// 06
+		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;																						// 0E
+		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																						// 0F
+		virtual void	InitItem() override;																												// 13
+		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
+		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst, bool a_unk) override;														// 4D
 
 		bool	TeachesSkill() const;
 		bool	TeachesSpell() const;
