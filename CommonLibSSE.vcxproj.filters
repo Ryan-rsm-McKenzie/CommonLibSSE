@@ -163,6 +163,9 @@
     <Filter Include="src\RE\Skyrim\BSMain">
       <UniqueIdentifier>{d5d329c4-fa1c-4698-a7ad-10c888a04a37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\AI">
+      <UniqueIdentifier>{908cdcc8-be3b-487e-9f25-17ca3a6de7c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -419,6 +422,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\NiObject.cpp">
       <Filter>src\RE\Skyrim\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESDescription.cpp">
+      <Filter>src\RE\Skyrim\FormComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSHeadPart.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Character</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1053,6 +1062,45 @@
       <Filter>include\RE\Skyrim\NetImmerse</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NiObject.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMenuIcon.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESIcon.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESGlobal.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESClass.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESDescription.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESReactionForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IAIWorldLocationHandle.h">
+      <Filter>include\RE\Skyrim\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PackageLocation.h">
+      <Filter>include\RE\Skyrim\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSHeadPart.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESModelTri.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTPointerMap.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTMapBase.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTPointerAllocator.h">
       <Filter>include\RE\Skyrim\NetImmerse</Filter>
     </ClInclude>
   </ItemGroup>

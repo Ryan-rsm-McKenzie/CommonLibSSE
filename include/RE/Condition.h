@@ -82,7 +82,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(ComparisonFlags) == 0x1);
 
 
-		struct Node
+		struct Node	// CTDA
 		{
 			bool Run(Solution& a_solution);
 

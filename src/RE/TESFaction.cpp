@@ -5,78 +5,78 @@ namespace RE
 {
 	bool TESFaction::HiddenFromNPC()
 	{
-		return (factionFlags & kFactionFlag_HiddenFromNPC) != 0;
+		return (flags & Flag::kHiddenFromNPC) != Flag::kNone;
 	}
 
 
 	bool TESFaction::HasSpecialCombatState()
 	{
-		return (factionFlags & kFactionFlag_SpecialCombat) != 0;
+		return (flags & Flag::kSpecialCombat) != Flag::kNone;
 	}
 
 
 	bool TESFaction::TracksCrimes()
 	{
-		return (factionFlags & kFactionFlag_TrackCrime) != 0;
+		return (flags & Flag::kTrackCrime) != Flag::kNone;
 	}
 
 
 	bool TESFaction::IgnoresMurder()
 	{
-		return (factionFlags & kFactionFlag_IgnoreMurder) != 0;
+		return (flags & Flag::kIgnoresCrimes_Murder) != Flag::kNone;
 	}
 
 
 	bool TESFaction::IgnoresAssault()
 	{
-		return (factionFlags & kFactionFlag_IgnoreAssult) != 0;
+		return (flags & Flag::kIgnoresCrimes_Assult) != Flag::kNone;
 	}
 
 
-	bool TESFaction::IgnoresPickpocket()
+	bool TESFaction::IgnoresStealing()
 	{
-		return (factionFlags & kFactionFlag_IgnorePickPocket) != 0;
+		return (flags & Flag::kIgnoresCrimes_Stealing) != Flag::kNone;
 	}
 
 
-	bool TESFaction::IngoresStealing()
+	bool TESFaction::IgnoresTrespass()
 	{
-		return (factionFlags & kFactionFlag_IngoreStealing) != 0;
+		return (flags & Flag::kIngoresCrimes_Trespass) != Flag::kNone;
 	}
 
 
-	bool TESFaction::ReportsCrimes()
+	bool TESFaction::ReportsCrimesAgainstMembers()
 	{
-		return (factionFlags & kFactionFlag_DoReportCrimes) != 0;
+		return (flags & Flag::kDoNotReportCrimesAgainstMembers) == Flag::kNone;
 	}
 
 
 	bool TESFaction::UsesCrimeGoldDefaults()
 	{
-		return (factionFlags & kFactionFlag_CrimeGoldDefaults) != 0;
+		return (flags & Flag::kCrimeGold_UseDefaults) != Flag::kNone;
 	}
 
 
-	bool TESFaction::IgnoresTrespassing()
+	bool TESFaction::IgnoresPickpocket()
 	{
-		return (factionFlags & kFactionFlag_IgnoreTrespass) != 0;
+		return (flags & Flag::kIgnoresCrimes_Pickpocket) != Flag::kNone;
 	}
 
 
 	bool TESFaction::IsVendor()
 	{
-		return (factionFlags & kFactionFlag_Vendor) != 0;
+		return (flags & Flag::kVendor) != Flag::kNone;
 	}
 
 
 	bool TESFaction::CanBeOwner()
 	{
-		return (factionFlags & kFactionFlag_CanBeOwner) != 0;
+		return (flags & Flag::kCanBeOwner) != Flag::kNone;
 	}
 
 
 	bool TESFaction::IgnoresWerewolf()
 	{
-		return (factionFlags & kFactionFlag_IgnoreWerewolf) != 0;
+		return (flags & Flag::kIgnoresCrimes_Werewolf) != Flag::kNone;
 	}
 }

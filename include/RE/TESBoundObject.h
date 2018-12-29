@@ -47,7 +47,8 @@ namespace RE
 
 
 		// members
-		ObjectBounds objectBounds;	// 20 - OBND
+		ObjectBounds	objectBounds;	// 20 - OBND
+		UInt32			pad2C;			// 2C
 	};
 	STATIC_ASSERT(sizeof(TESBoundObject) == 0x30);
 }

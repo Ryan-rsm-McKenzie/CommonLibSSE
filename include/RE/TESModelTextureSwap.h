@@ -1,9 +1,8 @@
 #pragma once
 
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/FormTypes.h"  // BGSTextureSet
 #include "RE/TESModel.h"  // TESModel
-
-class BGSTextureSet;
 
 
 namespace RE
@@ -20,9 +19,18 @@ namespace RE
 		STATIC_ASSERT(sizeof(SwapInfo) == 0x18);
 
 
+		virtual ~TESModelTextureSwap();										// 00
+
+		// override (TESModel)
+		virtual void	Init() override;									// 01
+		virtual void	ReleaseRefs() override;								// 02
+		virtual void	CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
+
+
 		// members
-		SwapInfo*	m_swaps;	// 28
-		UInt32		m_count;	// 30
+		SwapInfo*	modelSwaps;	// 28
+		UInt32		swapCount;	// 30
+		UInt32		pad34;		// 34
 	};
 	STATIC_ASSERT(sizeof(TESModelTextureSwap) == 0x38);
 }

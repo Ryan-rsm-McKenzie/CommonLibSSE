@@ -11,7 +11,7 @@ namespace RE
 	public:
 		enum { kTypeID = FormType::DialogueBranch };
 
-		
+
 		enum class Flag : UInt32
 		{
 			kNone = 0,

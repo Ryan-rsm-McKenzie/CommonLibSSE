@@ -12,10 +12,10 @@ namespace RE
 		enum { kTypeID = FormType::LocationRef };
 
 
-		virtual ~BGSLocationRefType();			// 00
+		virtual ~BGSLocationRefType();		// 00
 
 		// override (BGSKeyword)
-		virtual void	InitItem() override;	// 13
+		virtual void InitItem() override;	// 13
 	};
 	STATIC_ASSERT(sizeof(BGSLocationRefType) == 0x28);
 }
