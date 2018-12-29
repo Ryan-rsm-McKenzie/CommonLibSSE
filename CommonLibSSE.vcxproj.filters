@@ -279,9 +279,6 @@
     <ClCompile Include="src\RE\Misc.cpp">
       <Filter>src\RE</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSKeyboardDevice.cpp">
-      <Filter>src\RE\Skyrim\BSDevices</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSWin32GamepadDevice.cpp">
       <Filter>src\RE\Skyrim\BSDevices</Filter>
     </ClCompile>
@@ -428,6 +425,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\BGSHeadPart.cpp">
       <Filter>src\RE\Skyrim\TESForms\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSWin32KeyboardDevice.cpp">
+      <Filter>src\RE\Skyrim\BSDevices</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1102,6 +1102,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\NiTPointerAllocator.h">
       <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DeviceTypes.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

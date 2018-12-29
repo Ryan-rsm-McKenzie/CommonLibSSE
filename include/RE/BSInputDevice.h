@@ -3,16 +3,13 @@
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSIInputDevice.h"  // BSIInputDevice
 #include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/InputEvent.h"  // InputEvent::DeviceType
+#include "RE/DeviceTypes.h"  // DeviceType
 
 
 namespace RE
 {
 	class BSInputDevice : public BSIInputDevice
 	{
-	private:
-		typedef InputEvent::DeviceType DeviceType;
-
 	public:
 		struct Data
 		{
@@ -22,30 +19,29 @@ namespace RE
 		};
 
 
-		virtual ~BSInputDevice();							// 00
+		virtual ~BSInputDevice();					// 00
 
-		// add
-		virtual void	Initialize() = 0;					// 01
-		virtual	void	Process(float a_unk1) = 0;			// 02
-		virtual	void	Unk_03() = 0;						// 03
-		virtual	void	Unk_04();							// 04
-		virtual void	Unk_05();							// 05
-		virtual void	Unk_06();							// 06
-		virtual bool	IsEnabled() const;					// 07
-		virtual void	Unk_08();							// 08
+		// override (BSIInputDevice)
+		virtual bool IsEnabled() const override;	// 07
 
-		bool			IsKeyboard() const;
-		bool			IsMouse() const;
-		bool			IsGamepad() const;
-		bool			IsPressed(UInt32 keyCode) const;
+		bool		IsKeyboard() const;
+		bool		IsMouse() const;
+		bool		IsGamepad() const;
+		bool		IsPressed(UInt32 keyCode) const;
 
 
 		// members
-		DeviceType					type;		// 08
+		DeviceType					deviceType;	// 08
 		UInt32						pad0C;		// 0C
 		BSTHashMap<UInt32, Data*>	codeMap;	// 10
+		UInt64						unk40;		// 40
+		UInt64						unk48;		// 48
+		UInt64						unk50;		// 50
+		UInt64						unk58;		// 58
+		UInt64						unk60;		// 60
+		UInt64						unk68;		// 68
 	};
-	STATIC_ASSERT(offsetof(BSInputDevice, type) == 0x08);
+	STATIC_ASSERT(offsetof(BSInputDevice, deviceType) == 0x08);
 	STATIC_ASSERT(offsetof(BSInputDevice, codeMap) == 0x10);
-	STATIC_ASSERT(sizeof(BSInputDevice::codeMap) == 0x30);
+	STATIC_ASSERT(sizeof(BSInputDevice) == 0x70);
 }

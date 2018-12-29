@@ -7,7 +7,7 @@
 #include "RE/BSInputDevice.h"  // BSInputDevice
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
-#include "RE/InputEvent.h"  // DeviceType
+#include "RE/DeviceTypes.h"  // DeviceType
 
 
 namespace RE
@@ -16,9 +16,6 @@ namespace RE
 		public BSTSingletonSDM<InputMappingManager>,
 		public BSTEventSource<InputEvent*>
 	{
-	private:
-		typedef InputEvent::DeviceType DeviceType;
-
 	public:
 		enum class Context : UInt32
 		{
@@ -99,6 +96,6 @@ namespace RE
 		UInt8			unk122;										// 122 - init'd to 0
 		UInt8			pad[5];										// 123
 	};
-	STATIC_ASSERT(offsetof(InputManager, context) == 0x060);
-	STATIC_ASSERT(sizeof(InputManager) == 0x128);
+	STATIC_ASSERT(offsetof(InputMappingManager, context) == 0x060);
+	STATIC_ASSERT(sizeof(InputMappingManager) == 0x128);
 }

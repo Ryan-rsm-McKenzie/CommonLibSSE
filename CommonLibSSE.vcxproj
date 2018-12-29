@@ -176,7 +176,7 @@
     <ClCompile Include="src\RE\BShkbAnimationGraph.cpp" />
     <ClCompile Include="src\RE\BSInputDevice.cpp" />
     <ClCompile Include="src\RE\BSTArray.cpp" />
-    <ClCompile Include="src\RE\BSKeyboardDevice.cpp" />
+    <ClCompile Include="src\RE\BSWin32KeyboardDevice.cpp" />
     <ClCompile Include="src\RE\BSIntrusiveRefCounted.cpp" />
     <ClCompile Include="src\RE\BSWin32GamepadDevice.cpp" />
     <ClCompile Include="src\RE\ButtonEvent.cpp" />
@@ -297,6 +297,7 @@
     <ClInclude Include="include\RE\CommandTable.h" />
     <ClInclude Include="include\RE\Condition.h" />
     <ClInclude Include="include\RE\ConsoleManager.h" />
+    <ClInclude Include="include\RE\DeviceTypes.h" />
     <ClInclude Include="include\RE\DialogueData.h" />
     <ClInclude Include="include\RE\EffectItem.h" />
     <ClInclude Include="include\RE\EffectSetting.h" />

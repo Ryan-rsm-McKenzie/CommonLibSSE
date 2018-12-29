@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/DeviceTypes.h"  // DeviceType
 
 
 namespace RE
@@ -8,14 +9,6 @@ namespace RE
 	class InputEvent
 	{
 	public:
-		enum class DeviceType : UInt32
-		{
-			kKeyboard = 0,
-			kMouse,
-			kGamepad
-		};
-
-
 		enum class EventType : UInt32
 		{
 			kButton = 0,

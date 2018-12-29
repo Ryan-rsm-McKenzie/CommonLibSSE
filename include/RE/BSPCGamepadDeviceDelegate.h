@@ -5,5 +5,7 @@
 
 namespace RE
 {
-	class BSPCGamepadDeviceDelegate : public BSGamepadDevice {};
+	class BSPCGamepadDeviceDelegate : public BSGamepadDevice
+	{};
+	STATIC_ASSERT(sizeof(BSPCGamepadDeviceDelegate) == 0xD0);
 }
