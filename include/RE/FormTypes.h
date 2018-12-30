@@ -4,7 +4,6 @@
 namespace RE
 {
 	class TESForm;
-	class Actor;
 	class BGSKeyword;
 	class BGSLocationRefType;
 	class BGSAction;
@@ -62,7 +61,9 @@ namespace RE
 	class NavMeshInfoMap;
 	class TESObjectCELL;
 	class TESObjectREFR;
+	class Actor;
 	class Character;
+	class PlayerCharacter;
 	class MissileProjectile;
 	class ArrowProjectile;
 	class GrenadeProjectile;

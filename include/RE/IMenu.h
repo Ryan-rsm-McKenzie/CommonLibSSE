@@ -52,14 +52,16 @@ namespace RE
 		IMenu();
 		virtual ~IMenu();													// 00
 
+		// override (FxDelegateHandler)
+		virtual void	Accept(CallbackProcessor* a_processor) override;	// 01 - {}
+
 		// add
-		virtual void	Accept(CallbackProcessor* a_processor) override;	// 01
-		virtual void	OnOpen();											// 02
-		virtual void	Unk_03(void);										// 03
+		virtual void	OnOpen();											// 02 - {}
+		virtual void	Unk_03(void);										// 03 - {}
 		virtual Result	ProcessMessage(UIMessage* a_message);				// 04
 		virtual void	NextFrame(UInt32 a_arg1, UInt32 a_arg2);			// 05
 		virtual void	Render();											// 06
-		virtual void	Unk_07(void);										// 07
+		virtual void	Unk_07(void);										// 07 - {}
 		virtual void	InitMovie();										// 08
 
 		bool			PausesGame();

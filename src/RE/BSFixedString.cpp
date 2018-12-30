@@ -3,6 +3,7 @@
 #include "skse64_common/Relocation.h"  // RelocAddr
 #include "skse64/GameTypes.h"  // BSFixedString
 
+#include "RE/BSString.h"  // BSString
 #include "RE/Offsets.h"
 #include "RE/StringCache.h"  // StringCache::Entry
 
@@ -100,27 +101,15 @@ namespace RE
 	}
 
 
-	bool BSFixedString::operator==(const char* a_str) const
+	bool BSFixedString::operator==(const BSString& a_rhs) const
 	{
-		return (data == a_str || _stricmp(data, a_str) == 0);
+		return (*this == a_rhs.c_str());
 	}
 
 
-	bool BSFixedString::operator!=(const char* a_str) const
+	bool BSFixedString::operator!=(const BSString& a_rhs) const
 	{
-		return !(*this == a_str);
-	}
-
-
-	bool BSFixedString::operator==(const BSFixedString& a_rhs) const
-	{
-		return data == a_rhs.data;
-	}
-
-
-	bool BSFixedString::operator!=(const BSFixedString& a_rhs) const
-	{
-		return data != a_rhs.data;
+		return !operator==(a_rhs);
 	}
 
 

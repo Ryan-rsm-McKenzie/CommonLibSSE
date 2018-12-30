@@ -2,20 +2,19 @@
 
 #include "RE/PlayerControls.h"  // PlayerControls::Data024
 
-class InputEvent;
 class MouseMoveEvent;
-class ThumbstickEvent;
 
 
 namespace RE
 {
 	class ButtonEvent;
+	class InputEvent;
+	class ThumbstickEvent;
 
 
 	class PlayerInputHandler
 	{
 	public:
-		PlayerInputHandler();
 		virtual ~PlayerInputHandler();																	// 00
 
 		virtual	bool	CanProcess(InputEvent* a_event) = 0;											// 01

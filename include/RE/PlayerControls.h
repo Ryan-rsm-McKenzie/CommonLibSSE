@@ -1,12 +1,9 @@
 #pragma once
 
-#include "skse64/GameEvents.h"  // BSTEventSink, MenuOpenCloseEvent, MenuModeChangeEvent, TESFurnitureEvent
-
 #include "RE/BSTArray.h"  // BSTArray
+#include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
 
-class InputEvent;
-class PlayerInputHandler;
 
 
 namespace RE
@@ -14,9 +11,12 @@ namespace RE
 	class ActivateHandler;
 	class AttackBlockHandler;
 	class AutoMoveHandler;
+	class InputEvent;
 	class JumpHandler;
 	class LookHandler;
+	class MenuOpenCloseEvent;
 	class MovementHandler;
+	class PlayerInputHandler;
 	class ReadyWeaponHandler;
 	class RunHandler;
 	class ShoutHandler;
@@ -24,6 +24,8 @@ namespace RE
 	class SprintHandler;
 	class TogglePOVHandler;
 	class ToggleRunHandler;
+	struct MenuModeChangeEvent;
+	struct TESFurnitureEvent;
 
 
 	class PlayerControls :

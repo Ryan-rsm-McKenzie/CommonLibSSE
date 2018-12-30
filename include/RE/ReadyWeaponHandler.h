@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	class ReadyWeaponHandler : public PlayerInputHandler
+	struct ReadyWeaponHandler : public PlayerInputHandler
 	{
 	public:
 		virtual ~ReadyWeaponHandler();																	// 00

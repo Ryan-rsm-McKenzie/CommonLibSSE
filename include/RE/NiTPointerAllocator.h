@@ -1,18 +1,20 @@
 #pragma once
 
 #include "RE/NiMemory.h"  // NiMalloc, NiFree
+
+
 namespace RE
 {
-	template <class Ty>
+	template <typename Ty>
 	class NiTPointerAllocator
 	{
 	public:
 		class AllocNode
 		{
 		public:
-			AllocNode*	next;
-			void*		data;
-			Ty			element;
+			AllocNode*	next;		// 00
+			void*		data;		// 08
+			Ty			element;	// 10
 		};
 
 
@@ -28,8 +30,8 @@ namespace RE
 		}
 	};
 	using TestNiTPointerAllocator = NiTPointerAllocator<uint64_t>;
-	STATIC_ASSERT(offsetof(TestNiTPointerAllocator, next) == 0x00);
-	STATIC_ASSERT(offsetof(TestNiTPointerAllocator, data) == 0x08);
-	STATIC_ASSERT(offsetof(TestNiTPointerAllocator, element) == 0x10);
-	STATIC_ASSERT(sizeof(TestNiTPointerAllocator) == 0x18);
+	STATIC_ASSERT(offsetof(TestNiTPointerAllocator::AllocNode, next) == 0x00);
+	STATIC_ASSERT(offsetof(TestNiTPointerAllocator::AllocNode, data) == 0x08);
+	STATIC_ASSERT(offsetof(TestNiTPointerAllocator::AllocNode, element) == 0x10);
+	STATIC_ASSERT(sizeof(TestNiTPointerAllocator::AllocNode) == 0x18);
 }

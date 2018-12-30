@@ -1,19 +1,22 @@
 #pragma once
 
-#include "RE/PlayerInputHandler.h"  // PlayerInputHandler
+#include "RE/HeldStateHandler.h"  // HeldStateHandler
 
 
 namespace RE
 {
-	class SprintHandler : public PlayerInputHandler
+	struct SprintHandler : public HeldStateHandler
 	{
 	public:
-		// override (PlayerInputHandler)
-		virtual	bool	CanProcess(InputEvent* a_event) override;										// 1
-		virtual	void	ProcessButton(ButtonEvent* a_event, PlayerControls::Data024* a_arg2) override;	// 4
+		virtual ~SprintHandler();																		// 00
 
-		// add
-		virtual void	Unk_05(void);																	// 5
-		virtual void	Unk_06(void);																	// 6
+		// override (PlayerInputHandler)
+		virtual	bool	CanProcess(InputEvent* a_event) override;										// 01
+		virtual	void	ProcessButton(ButtonEvent* a_event, PlayerControls::Data024* a_arg2) override;	// 04
+
+
+		// members
+		UInt64 unk10;	// 10
 	};
+	STATIC_ASSERT(sizeof(SprintHandler) == 0x18);
 }

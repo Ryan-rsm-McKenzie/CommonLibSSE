@@ -3,7 +3,6 @@
 #include "Offsets.h"
 
 #include "RE/BaseExtraList.h"  // BaseExtraList
-#include "RE/BSAnimationGraphEvent.h"  // BSAnimationGraphEvent
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSHandleRefObject.h"  // BSHandleRefObject
 #include "RE/BSTEvent.h"  // BSTEventSink
@@ -30,9 +29,9 @@ namespace RE
 	class NiControllerSequence;
 	class NiNode;
 	class TESContainer;
+	struct BSAnimationGraphEvent;
 	struct DialogueData;
 	struct LockState;
-	struct SoundData;
 
 
 	NiSmartPointer(TESObjectREFR);
@@ -105,7 +104,7 @@ namespace RE
 
 		// override (IAnimationGraphManagerHolder)
 		virtual bool					GetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_out) override;																											// 02
-		virtual bool					ConstructBShkbAnimationGraph(BSTSmartPointer<BShkbAnimationGraph>& a_out) override;																											// 05
+		virtual bool					ConstructAnimationGraph(BSTSmartPointer<BShkbAnimationGraph>& a_out) override;																												// 05
 
 		// add
 		virtual void					Unk_3B(void);																																												// 3B

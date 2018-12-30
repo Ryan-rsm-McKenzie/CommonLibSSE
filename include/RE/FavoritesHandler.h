@@ -2,20 +2,18 @@
 
 #include "RE/MenuEventHandler.h"
 
-class InputEvent;
-class KinectEvent;
-
 
 namespace RE
 {
-	class ButtonEvent;
-
-
 	struct FavoritesHandler : public MenuEventHandler
 	{
 	public:
-		virtual bool	CanProcess(InputEvent* a_event) override;			// 1
-		virtual bool	ProcessKinect(KinectEvent* a_event) override;		// 2
-		virtual bool	ProcessButton(RE::ButtonEvent* a_event) override;	// 5
+		virtual ~FavoritesHandler();									// 00
+
+		// add
+		virtual bool	CanProcess(InputEvent* a_event) override;		// 01
+		virtual bool	ProcessKinect(KinectEvent* a_event) override;	// 02
+		virtual bool	ProcessButton(ButtonEvent* a_event) override;	// 05
 	};
+	STATIC_ASSERT(sizeof(FavoritesHandler) == 0x10);
 }

@@ -5,8 +5,9 @@
 
 namespace RE
 {
-	struct MenuOpenCloseEvent
+	class MenuOpenCloseEvent
 	{
+	public:
 		BSFixedString	menuName;	// 0
 		bool			isOpening;	// 8
 		UInt8			pad9;		// 9

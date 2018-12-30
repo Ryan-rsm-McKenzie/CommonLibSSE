@@ -35,7 +35,6 @@ namespace RE
 
 
 		// members
-		UInt64	unk0D0;		// 0D0
 		UInt32	unk0D8;		// 0D8
 		UInt8	unk0DC;		// 0DC
 		UInt8	curState;	// 0DD

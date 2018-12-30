@@ -1,23 +1,19 @@
 #pragma once
 
-#include "RE/PlayerControls.h"  // PlayerControls::Data024
-#include "RE/PlayerInputHandler.h"
-
-class InputEvent;
-class ThumbstickEvent;
-
+#include "RE/PlayerInputHandler.h"  // PlayerInputHandler
 
 
 namespace RE
 {
-	class ButtonEvent;
-
-
-	class MovementHandler : public PlayerInputHandler
+	struct MovementHandler : public PlayerInputHandler
 	{
+	public:
+		virtual ~MovementHandler();																				// 00
+
 		// override (PlayerInputHandler)
-		virtual	bool	CanProcess(InputEvent* a_event) override;												// 1
-		virtual	void	ProcessThumbstick(ThumbstickEvent* a_event, PlayerControls::Data024* a_arg2) override;	// 2
-		virtual	void	ProcessButton(ButtonEvent* a_event, PlayerControls::Data024* a_arg2) override;			// 4
+		virtual	bool	CanProcess(InputEvent* a_event) override;												// 01
+		virtual	void	ProcessThumbstick(ThumbstickEvent* a_event, PlayerControls::Data024* a_arg2) override;	// 02
+		virtual	void	ProcessButton(ButtonEvent* a_event, PlayerControls::Data024* a_arg2) override;			// 04
 	};
+	STATIC_ASSERT(sizeof(MovementHandler) == 0x10);
 }

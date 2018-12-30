@@ -1,36 +1,28 @@
 #pragma once
 
-#include "skse64/GameEvents.h"  // BSTEventSink
 #include "skse64/GameReferences.h"  // IPostAnimationChannelUpdateFunctor
-#include "skse64/GameTypes.h"  // tList
 
 #include "RE/ActiveEffect.h"  // ActiveEffect
 #include "RE/ActorProcessManager.h"  // ActorProcessManager
 #include "RE/ActorState.h"  // ActorState
 #include "RE/ActorValueOwner.h"  // ActorValueOwner
 #include "RE/BGSEntryPointPerkEntry.h"  // BGSEntryPointPerkEntry
-#include "RE/bhkCharacterMoveFinishEvent.h"  // bhkCharacterMoveFinishEvent
+#include "RE/BSString.h"  // BSString
 #include "RE/BSTArray.h"  // BSTSmallArray
+#include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/BSTList.h"  // BSSimpleList
-#include "RE/BSTransformDeltaEvent.h"  // BSTransformDeltaEvent
+#include "RE/FormTypes.h"  // BGSPerk, TESRace, TESFaction
 #include "RE/MagicTarget.h"  // MagicTarget
 #include "RE/TESNPC.h"  // TESNPC
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
-
-class BaseExtraList;
-class MagicCaster;
-class SpellItem;
-class TESForm;
-class TESRace;
 
 
 namespace RE
 {
 	class BaseExtraList;
-	class BGSPerk;
+	class bhkCharacterMoveFinishEvent;
+	class BSTransformDeltaEvent;
 	class PerkEntryVisitor;
-	class TESRace;
-	class TESFaction;
 
 
 	class Actor :
@@ -72,7 +64,7 @@ namespace RE
 		};
 
 	public:
-		enum { kTypeID = FormType::Character };
+		enum { kTypeID = FormType::Reference };
 
 
 		enum class SlotType : UInt32

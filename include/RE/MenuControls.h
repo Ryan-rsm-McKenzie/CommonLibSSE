@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameEvents.h"  // BSTEventSink, MenuModeChangeEvent
-#include "skse64/GameTypes.h"  // tArray
-#include "skse64/PapyrusEvents.h"  // MenuModeChangeEvent
-
+#include "RE/BSTArray.h"  // BSTArray
+#include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
 
 class InputEvent;
@@ -11,7 +9,9 @@ class InputEvent;
 
 namespace RE
 {
+	class InputEvent;
 	class MenuEventHandler;
+	struct MenuModeChangeEvent;
 
 
 	class MenuControls :
@@ -29,8 +29,8 @@ namespace RE
 
 
 		// members
-		tArray<MenuEventHandler>	handlers;		// 18
-		tArray<void*>				regBuffer;		// 30
+		BSTArray<MenuEventHandler>	handlers;		// 18
+		BSTArray<void*>				regBuffer;		// 30
 		void*						unk48;			// 48
 		void*						unk50;			// 50
 		void*						unk58;			// 58

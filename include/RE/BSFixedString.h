@@ -3,6 +3,9 @@
 
 namespace RE
 {
+	class BSString;
+
+
 	class BSFixedString
 	{
 	public:
@@ -18,10 +21,14 @@ namespace RE
 		BSFixedString&	operator=(BSFixedString&& a_rhs);
 		BSFixedString&	operator=(const char* a_rhs);
 
-		bool			operator==(const char* a_str) const;
-		bool			operator!=(const char* a_str) const;
-		bool			operator==(const BSFixedString& a_rhs) const;
-		bool			operator!=(const BSFixedString& a_rhs) const;
+		friend bool		operator==(const BSFixedString& a_lhs, const char* a_rhs) { return (a_lhs.data == a_rhs || _stricmp(a_lhs.data, a_rhs) == 0); }
+		friend bool		operator!=(const BSFixedString& a_lhs, const char* a_rhs) { return !(a_lhs == a_rhs); }
+		friend bool		operator==(const char* a_lhs, const BSFixedString& a_rhs) { return (a_rhs == a_lhs); }
+		friend bool		operator!=(const char* a_lhs, const BSFixedString& a_rhs) { return !(a_lhs == a_rhs); }
+		friend bool		operator==(const BSFixedString& a_lhs, const BSFixedString& a_rhs) { return (a_lhs == a_rhs.data); }
+		friend bool		operator!=(const BSFixedString& a_lhs, const BSFixedString& a_rhs) { return !(a_lhs == a_rhs); }
+		bool			operator==(const BSString& a_rhs) const;
+		bool			operator!=(const BSString& a_rhs) const;
 
 		UInt32			length() const;
 		const char*		c_str() const;

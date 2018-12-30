@@ -1,11 +1,11 @@
 #pragma once
 
-#include "skse64/NiTypes.h"  // NiTPointerMap
-
+#include "RE/BSString.h"  // BSString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/FormTypes.h"  // TESForm
+#include "RE/NiTPointerMap.h"  // NiTPointerMap
 #include "RE/TESForm.h"  // FormType
 #include "RE/TESFullName.h"  // TESFullName
 

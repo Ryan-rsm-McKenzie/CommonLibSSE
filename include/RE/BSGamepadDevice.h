@@ -1,11 +1,17 @@
 #pragma once
 
 #include "RE/BSInputDevice.h"  // BSInputDevice
+#include "RE/BSTEvent.h"  // BSTEventSource
 
 
 namespace RE
 {
-	class BSGamepadDevice : public BSInputDevice
+	struct BSGamepadEvent;
+
+
+	class BSGamepadDevice :
+		public BSInputDevice,							// 00
+		public BSTEventSource<BSGamepadEvent>	// 70
 	{
 	public:
 		virtual ~BSGamepadDevice();					// 00
@@ -23,17 +29,6 @@ namespace RE
 
 
 		// members
-		UInt64	unk70;			// 70
-		UInt64	unk78;			// 78
-		UInt64	unk80;			// 80
-		UInt64	unk88;			// 88
-		UInt64	unk90;			// 90
-		UInt64	unk98;			// 98
-		UInt64	unkA0;			// A0
-		UInt64	unkA8;			// A8
-		UInt64	unkB0;			// B0
-		UInt64	unkB8;			// B8
-		UInt64	unkC0;			// C0
 		SInt32	userIndex;		// C8 - init'd -1
 		bool	isConnected;	// CC - init'd false
 		bool	unkCD;			// CD - init'd false

@@ -2,20 +2,18 @@
 
 #include "RE/MenuEventHandler.h"  // MenuEventHandler
 
-class KinectEvent;
+
 namespace RE
 {
-	class ButtonEvent;
-	class InputEvent;
-
-
 	struct MenuOpenHandler : public MenuEventHandler
 	{
 	public:
+		virtual ~MenuOpenHandler();										// 00
+
 		// override (MenuEventHandler)
-		virtual bool	CanProcess(InputEvent* a_event) override;		// 1
-		virtual bool	ProcessKinect(KinectEvent* a_event) override;	// 2
-		virtual bool	ProcessButton(ButtonEvent* a_event) override;	// 5
+		virtual bool	CanProcess(InputEvent* a_event) override;		// 01
+		virtual bool	ProcessKinect(KinectEvent* a_event) override;	// 02
+		virtual bool	ProcessButton(ButtonEvent* a_event) override;	// 05
 
 
 		// members

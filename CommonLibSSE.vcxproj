@@ -168,6 +168,8 @@
     <ClCompile Include="src\RE\BGSKeywordForm.cpp" />
     <ClCompile Include="src\RE\BSAudioManager.cpp" />
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
+    <ClCompile Include="src\RE\BSString.cpp" />
+    <ClCompile Include="src\RE\LocalMapCamera.cpp" />
     <ClCompile Include="src\RE\NiObject.cpp" />
     <ClCompile Include="src\RE\NiRefObject.cpp" />
     <ClCompile Include="src\RE\SoundData.cpp" />
@@ -221,6 +223,7 @@
     <ClCompile Include="src\RE\SpellItem.cpp" />
     <ClCompile Include="src\RE\TESActorBaseData.cpp" />
     <ClCompile Include="src\RE\TESAmmo.cpp" />
+    <ClCompile Include="src\RE\TESCamera.cpp" />
     <ClCompile Include="src\RE\TESContainer.cpp" />
     <ClCompile Include="src\RE\TESDataHandler.cpp" />
     <ClCompile Include="src\RE\TESDescription.cpp" />
@@ -284,6 +287,7 @@
     <ClInclude Include="include\RE\BSIRagdollDriver.h" />
     <ClInclude Include="include\RE\BSISoundDescriptor.h" />
     <ClInclude Include="include\RE\BSMusicEvent.h" />
+    <ClInclude Include="include\RE\BSString.h" />
     <ClInclude Include="include\RE\BSTAnimationGraphDataChannel.h" />
     <ClInclude Include="include\RE\BSTextureSet.h" />
     <ClInclude Include="include\RE\BSThread.h" />
@@ -351,6 +355,9 @@
     <ClInclude Include="include\RE\IAIWorldLocationHandle.h" />
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h" />
     <ClInclude Include="include\RE\IDEvent.h" />
+    <ClInclude Include="include\RE\ImageSpaceEffectParam.h" />
+    <ClInclude Include="include\RE\ImageSpaceShaderParam.h" />
+    <ClInclude Include="include\RE\IMapCameraCallbacks.h" />
     <ClInclude Include="include\RE\IMenu.h" />
     <ClInclude Include="include\RE\InputEvent.h" />
     <ClInclude Include="include\RE\InputManager.h" />
@@ -359,6 +366,14 @@
     <ClInclude Include="include\RE\BGSBipedObjectForm.h" />
     <ClInclude Include="include\RE\InventoryMenu.h" />
     <ClInclude Include="include\RE\IXAudio2VoiceCallback.h" />
+    <ClInclude Include="include\RE\LocalMapCamera.h" />
+    <ClInclude Include="include\RE\LocalMapMenu.h" />
+    <ClInclude Include="include\RE\MapCamera.h" />
+    <ClInclude Include="include\RE\MapInputHandler.h" />
+    <ClInclude Include="include\RE\MapLookHandler.h" />
+    <ClInclude Include="include\RE\MapMenu.h" />
+    <ClInclude Include="include\RE\MapMoveHandler.h" />
+    <ClInclude Include="include\RE\MapZoomHandler.h" />
     <ClInclude Include="include\RE\MenuOpenHandler.h" />
     <ClInclude Include="include\RE\MenuTableItem.h" />
     <ClInclude Include="include\RE\MoviePlayer.h" />
@@ -370,6 +385,7 @@
     <ClInclude Include="include\RE\NiRect.h" />
     <ClInclude Include="include\RE\NiRefObject.h" />
     <ClInclude Include="include\RE\NiTArray.h" />
+    <ClInclude Include="include\RE\NiTexture.h" />
     <ClInclude Include="include\RE\NiTMapBase.h" />
     <ClInclude Include="include\RE\NiTPointerAllocator.h" />
     <ClInclude Include="include\RE\NiTPointerMap.h" />
@@ -417,6 +433,8 @@
     <ClInclude Include="include\RE\TESAmmo.h" />
     <ClInclude Include="include\RE\TESBoundAnimObject.h" />
     <ClInclude Include="include\RE\TESBoundObject.h" />
+    <ClInclude Include="include\RE\TESCamera.h" />
+    <ClInclude Include="include\RE\TESCameraState.h" />
     <ClInclude Include="include\RE\TESCellFullyLoadedEvent.h" />
     <ClInclude Include="include\RE\TESClass.h" />
     <ClInclude Include="include\RE\TESContainer.h" />

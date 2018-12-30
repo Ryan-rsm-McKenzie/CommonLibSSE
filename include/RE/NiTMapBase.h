@@ -196,9 +196,4 @@ namespace RE
 		NiTMapBase(const NiTMapBase&) = delete;
 		NiTMapBase& operator=(const NiTMapBase&) = delete;
 	};
-	using TestNiTMapBase = NiTMapBase<uint64_t, uint32_t, uint64_t>;
-	STATIC_ASSERT(offsetof(TestNiTMapBase, _hashSize) == 0x08);
-	STATIC_ASSERT(offsetof(TestNiTMapBase, _hashTable) == 0x10);
-	STATIC_ASSERT(offsetof(TestNiTMapBase, _allocator) == 0x18);
-	STATIC_ASSERT(sizeof(TestNiTMapBase) == 0x20);
 }

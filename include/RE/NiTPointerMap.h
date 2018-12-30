@@ -10,6 +10,9 @@ namespace RE
 	class NiTPointerMap : public NiTMapBase<NiTPointerAllocator<std::uint32_t>, TKEY, TVAL>
 	{
 	public:
+		typedef typename NiTMapBase::item_type item_type;
+
+
 		NiTPointerMap(std::uint32_t a_hashSize = 37) :
 			NiTMapBase(a_hashSize)
 		{}
@@ -24,14 +27,14 @@ namespace RE
 		// override (NiTMapBase)
 		virtual item_type* NewItem() override
 		{
-			return (item_type*)m_kAllocator.Allocate();
+			return (item_type*)_allocator.Allocate();
 		}
 
 
 		virtual void DeleteItem(item_type* a_item) override
 		{
 			a_item->~item_type();
-			m_kAllocator.Deallocate(a_item);
+			_allocator.Deallocate(a_item);
 		}
 	};
 	using TestNiTPointerMap = NiTPointerMap<uint32_t, uint64_t>;
