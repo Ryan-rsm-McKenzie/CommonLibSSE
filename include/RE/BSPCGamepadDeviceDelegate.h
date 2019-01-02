@@ -14,7 +14,7 @@ namespace RE
 		virtual void	Initialize() override;			// 01
 		virtual	void	Process(float a_unk1) override;	// 02
 
-		
+
 		// members
 		UInt64 unkD0;	// D0
 	};

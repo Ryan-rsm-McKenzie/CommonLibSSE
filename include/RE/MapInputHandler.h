@@ -13,7 +13,7 @@ namespace RE
 	public:
 		virtual ~MapInputHandler();	// 00
 
-		
+
 		// members
 		MapMenu* mapMenu;	// 10
 	};

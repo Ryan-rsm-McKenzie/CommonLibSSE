@@ -169,6 +169,9 @@
     <Filter Include="include\RE\Skyrim\BSShader">
       <UniqueIdentifier>{8df2235c-1011-47e7-984c-a115de687b9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\BSHavok">
+      <UniqueIdentifier>{6c265c0a-71fe-441c-b66e-6b3535e75008}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -440,6 +443,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\LocalMapCamera.cpp">
       <Filter>src\RE\Skyrim\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiExtraData.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1162,6 +1168,165 @@
     </ClInclude>
     <ClInclude Include="include\RE\LocalMapMenu.h">
       <Filter>include\RE\Skyrim\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MiddleProcess.h">
+      <Filter>include\RE\Skyrim\TESForms\World\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AnimationVariableData.h">
+      <Filter>include\RE\Skyrim\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharProxyController.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterController.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCharacterProxyListener.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkRefObject.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkSerializable.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkWorldObject.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkPhantom.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkShapePhantom.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCachingShapePhantom.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCachingShapePhantom.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpShapePhantom.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpPhantom.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpWorldObject.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkReferencedObject.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkBaseObject.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpShape.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpShapeCollection.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpListShape.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpShapeContainer.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpWorld.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ahkpWorld.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCdPointCollector.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpAllCdPointCollector.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterPointCollector.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCharacterProxy.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpEntityListener.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpPhantomListener.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterProxy.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiExtraData.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSBound.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCharacterContext.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCharacterStateManager.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCharacterState.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterState.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterStateOnGround.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterStateJumping.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterStateInAir.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterStateClimbing.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterStateFlying.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterStateSwimming.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkShape.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkShapeCollection.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkListShape.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpEntity.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpRigidBody.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpMotion.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpKeyframedRigidMotion.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpFixedRigidMotion.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpConstraintOwner.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpSimulationIsland.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ahkpCharacterProxy.h">
+      <Filter>include\RE\Skyrim\BSHavok</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

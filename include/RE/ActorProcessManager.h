@@ -1,9 +1,9 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // MiddleProcess
-#include "skse64/GameTypes.h"  // UnkFormArray
-
+#include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSTArray.h"  // BSTArray
 #include "RE/FormTypes.h"  // Actor, TESForm
+#include "RE/MiddleProcess.h"  // MiddleProcess
 
 
 namespace RE
@@ -11,6 +11,9 @@ namespace RE
 	class ActorProcessManager
 	{
 	public:
+		typedef BSTArray<TESForm*> UnkFormArray;
+
+
 		enum class Hand : UInt32
 		{
 			kLeft,
@@ -30,7 +33,7 @@ namespace RE
 		};
 
 
-		struct Data10
+		struct Data010
 		{
 			struct KnowledgeData
 			{
@@ -38,6 +41,7 @@ namespace RE
 				UInt32	pad4;		// 4
 				void*	knowledge;	// 8 - ActorKnowledge*
 			};
+
 
 			UInt64						unk000;			// 000
 			UInt64						unk008;			// 008
@@ -77,9 +81,9 @@ namespace RE
 			float						unk0E4;			// 0E4
 			UInt64						unk0E8;			// 0E8
 			BSFixedString				dialogueText;	// 0F0
-			tArray<void*>				actorKnowledge;	// 0F8 - KnowledgeData?
-			tArray<void*>				unk110;			// 110
-			tArray<void*>				unk128;			// 128
+			BSTArray<void*>				actorKnowledge;	// 0F8 - KnowledgeData?
+			BSTArray<void*>				unk110;			// 110
+			BSTArray<void*>				unk128;			// 128
 			UInt64						unk140;			// 140
 			UInt64						unk148;			// 148
 			UInt64						unk150;			// 150
@@ -163,8 +167,8 @@ namespace RE
 			float						lightLevel;		// 3A8
 			UInt32						unk3AC;			// 3AC
 		};
-		STATIC_ASSERT(offsetof(Data10, actorKnowledge) == 0x0F8);
-		STATIC_ASSERT(offsetof(Data10, lightLevel) == 0x3A8);
+		STATIC_ASSERT(offsetof(Data010, actorKnowledge) == 0x0F8);
+		STATIC_ASSERT(offsetof(Data010, lightLevel) == 0x3A8);
 
 
 		void		SetEquipFlag(Flag a_flag);
@@ -176,29 +180,36 @@ namespace RE
 
 
 		// members
-		void*					unk00;					// 000
+		void*					unk000;					// 000
 		MiddleProcess*			middleProcess;			// 008
-		Data10*					unk10;					// 010
-		MiddleProcess::Data58	unk18;					// 018
-		float					unk48;					// 048 - init'd to -1
-		UInt32					unk4C;					// 04C
-		void*					unk50;					// 050
-		UInt32					unk58;					// 058
-		UInt32					pad5C;					// 05C
-		UInt64					unk60;					// 060
-		UInt64					unk68;					// 068
-		UInt64					unk70;					// 070
-		UInt64					unk78;					// 078
-		UInt64					unk80;					// 080
-		UInt64					unk88;					// 088
-		UInt32					unk90;					// 090
+		Data010*				unk010;					// 010
+		MiddleProcess::Data		unk018;					// 018
+		float					unk048;					// 048 - init'd to -1
+		UInt32					unk04C;					// 04C
+		void*					unk050;					// 050
+		UInt32					unk058;					// 058
+		UInt32					pad05C;					// 05C
+		UInt64					unk060;					// 060
+		UInt64					unk068;					// 068
+		UInt64					unk070;					// 070
+		UInt64					unk078;					// 078
+		UInt64					unk080;					// 080
+		UInt64					unk088;					// 088
+		UInt32					unk090;					// 090
 		float					timeOfDeath;			// 094 - GetTimeDead = (GameDaysPassed*24) - timeOfDeath
-		float					unk98;					// 098 - related with above
-		UInt32					pad9C;					// 09C
+		float					unk098;					// 098 - related with above
+		UInt32					pad09C;					// 09C
 		UnkFormArray			forms;					// 0A0  seen containing [left hand, equip slot, right hand, equip slot, right hand, equip slot)
-		UInt64					unkB8[7];				// 0B8 2nd slot points back to this adress
+		UInt64					unk0B8[7];				// 0B8 2nd slot points back to this adress
 		TESForm*				equippedObjects[2];		// 0F0
-		UInt8					unk100[0x136 - 0x100];	// 100
+		UInt64					unk100;					// 100
+		UInt64					unk108;					// 108
+		UInt64					unk110;					// 110
+		UInt64					unk118;					// 118
+		UInt64					unk120;					// 120
+		UInt64					unk128;					// 128
+		UInt32					unk130;					// 130
+		UInt16					unk134;					// 134
 		UInt8					unk136;					// 136
 		SInt8					unk137;					// 137 - init'd to 3
 		UInt8					unk138;					// 138
