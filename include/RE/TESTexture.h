@@ -26,7 +26,7 @@ namespace RE
 
 
 		// members
-		BSFixedString icon;	// 08
+		BSFixedString texture;	// 08 - ICON
 	};
 	STATIC_ASSERT(sizeof(TESTexture) == 0x10);
 }

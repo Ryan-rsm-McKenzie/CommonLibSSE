@@ -22,8 +22,8 @@ namespace RE
 
 
 		// members
-		BGSKeyword**	keywords;		// 08
-		UInt32			numKeywords;	// 10
+		BGSKeyword**	keywords;		// 08 - KWDA
+		UInt32			keywordCount;	// 10 - KSIZ
 		UInt32			pad14;			// 14
 	};
 	STATIC_ASSERT(sizeof(BGSKeywordForm) == 0x18);

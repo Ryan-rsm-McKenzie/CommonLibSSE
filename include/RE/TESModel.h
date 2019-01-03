@@ -3,10 +3,14 @@
 #include "skse64/GameFormComponents.h"  // BaseFormComponent
 
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/NiSmartPointer.h"  // NiPointer
 
 
 namespace RE
 {
+	class BSShader;
+
+
 	class TESModel : public BaseFormComponent
 	{
 	public:
@@ -24,13 +28,10 @@ namespace RE
 
 
 		// members
-		BSFixedString	modelFileName;	// 08 - MODL
-		void*			unk10;			// 10
-		void*			unk18;			// 18
-		UInt16			unk20;			// 20
-		UInt8			unk22;			// 22
-		UInt8			unk23;			// 23
-		UInt32			pad24;			// 24
+		BSFixedString			modelFileName;	// 08 - MODL
+		void*					unk10;			// 10
+		void*					unk18;			// 18
+		NiPointer<BSShader>*	shader;			// 20
 	};
 	STATIC_ASSERT(sizeof(TESModel) == 0x28);
 }

@@ -375,9 +375,6 @@
     <ClCompile Include="src\RE\InventoryMenu.cpp">
       <Filter>src\RE\Skyrim\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\MenuTableItem.cpp">
-      <Filter>src\RE\Skyrim\Menus</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\TESObjectARMO.cpp">
       <Filter>src\RE\Skyrim\TESForms\Objects</Filter>
     </ClCompile>
@@ -911,9 +908,6 @@
     <ClInclude Include="include\RE\InventoryMenu.h">
       <Filter>include\RE\Skyrim\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\MenuTableItem.h">
-      <Filter>include\RE\Skyrim\Menus</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESMagicEffectApplyEvent.h">
       <Filter>include\RE\Skyrim\Events</Filter>
     </ClInclude>
@@ -1327,6 +1321,54 @@
     </ClInclude>
     <ClInclude Include="include\RE\ahkpCharacterProxy.h">
       <Filter>include\RE\Skyrim\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESEyes.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESSpellList.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSkinForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAttackDataForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAttackDataMap.h">
+      <Filter>include\RE\Skyrim\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAttackData.h">
+      <Filter>include\RE\Skyrim\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSTextureModel.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSBehaviorGraphModel.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AttackAnimationArrayMap.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SetEventData.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ImageSpaceEffect.h">
+      <Filter>include\RE\Skyrim\BSShader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSReloadShaderI.h">
+      <Filter>include\RE\Skyrim\BSShader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSShader.h">
+      <Filter>include\RE\Skyrim\BSShader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiBoneMatrixSetterI.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSImagespaceShader.h">
+      <Filter>include\RE\Skyrim\BSShader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSImagespaceShaderBlur3.h">
+      <Filter>include\RE\Skyrim\BSShader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -8,6 +8,29 @@ namespace RE
 	class BGSBipedObjectForm : public BaseFormComponent
 	{
 	public:
+		enum class BipedObject : UInt32
+		{
+			kNone = 0xFFFFFFFF,
+			kHead = 0,
+			kHair = 1,
+			kBody = 2,
+			kHands = 3,
+			kForearms = 4,
+			kAmulet = 5,
+			kRing = 6,
+			kFeet = 7,
+			kCalves = 8,
+			kShield = 9,
+			kTail = 10,
+			kLongHair = 11,
+			kCirclet = 12,
+			kEars = 13,
+			kDecapitateHead = 20,
+			kDecapitate = 21,
+			kFX01 = 31
+		};
+
+
 		struct BipedBodyTemplate	// BOD2
 		{
 			enum class FirstPersonFlag : UInt32
@@ -41,13 +64,20 @@ namespace RE
 			};
 
 
-			FirstPersonFlag	firstPersonFlag;	// 0 - init'd to kNone
-			ArmorType		armorType;			// 4 - init'd to kClothing
+			FirstPersonFlag	firstPersonFlag;	// 0
+			ArmorType		armorType;			// 4
 		};
-
-
+		STATIC_ASSERT(sizeof(BipedBodyTemplate) == 0x8);
 		using FirstPersonFlag = BipedBodyTemplate::FirstPersonFlag;
 		using ArmorType = BipedBodyTemplate::ArmorType;
+
+
+		virtual ~BGSBipedObjectForm();										// 00
+
+		// override (BaseFormComponent)
+		virtual void	Init() override;									// 01
+		virtual void	ReleaseRefs() override;								// 02 - { return; }
+		virtual void	CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
 
 
 		FirstPersonFlag	GetSlotMask() const;
@@ -61,6 +91,8 @@ namespace RE
 		FirstPersonFlag	RemoveSlotFromMask(FirstPersonFlag a_slot);
 
 
-		BipedBodyTemplate bipedBodyTemplate;	// 8
+		// members
+		BipedBodyTemplate bipedBodyTemplate;	// 10
 	};
+	STATIC_ASSERT(sizeof(BGSBipedObjectForm) == 0x10);
 }

@@ -192,7 +192,6 @@
     <ClCompile Include="src\RE\ExtraReferenceHandle.cpp" />
     <ClCompile Include="src\RE\ExtraTextDisplayData.cpp" />
     <ClCompile Include="src\RE\InventoryMenu.cpp" />
-    <ClCompile Include="src\RE\MenuTableItem.cpp" />
     <ClCompile Include="src\RE\NiMemory.cpp" />
     <ClCompile Include="src\RE\NiPoint3.cpp" />
     <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp" />
@@ -256,11 +255,16 @@
     <ClInclude Include="include\RE\ahkpCharacterProxy.h" />
     <ClInclude Include="include\RE\ahkpWorld.h" />
     <ClInclude Include="include\RE\AnimationVariableData.h" />
+    <ClInclude Include="include\RE\AttackAnimationArrayMap.h" />
     <ClInclude Include="include\RE\AttackBlockHandler.h" />
     <ClInclude Include="include\RE\AutoMoveHandler.h" />
     <ClInclude Include="include\RE\BGSAction.h" />
     <ClInclude Include="include\RE\BGSActorCellEvent.h" />
     <ClInclude Include="include\RE\BGSActorDeathEvent.h" />
+    <ClInclude Include="include\RE\BGSAttackData.h" />
+    <ClInclude Include="include\RE\BGSAttackDataForm.h" />
+    <ClInclude Include="include\RE\BGSAttackDataMap.h" />
+    <ClInclude Include="include\RE\BGSBehaviorGraphModel.h" />
     <ClInclude Include="include\RE\BGSDialogueBranch.h" />
     <ClInclude Include="include\RE\BGSEntryPointFunctionDataText.h" />
     <ClInclude Include="include\RE\BGSEquipType.h" />
@@ -272,9 +276,11 @@
     <ClInclude Include="include\RE\BGSMenuIcon.h" />
     <ClInclude Include="include\RE\BGSMoviePlayer.h" />
     <ClInclude Include="include\RE\BGSPerk.h" />
+    <ClInclude Include="include\RE\BGSSkinForm.h" />
     <ClInclude Include="include\RE\BGSSoundDescriptor.h" />
     <ClInclude Include="include\RE\BGSSoundDescriptorForm.h" />
     <ClInclude Include="include\RE\BGSStandardSoundDef.h" />
+    <ClInclude Include="include\RE\BGSTextureModel.h" />
     <ClInclude Include="include\RE\BGSTextureSet.h" />
     <ClInclude Include="include\RE\bhkCachingShapePhantom.h" />
     <ClInclude Include="include\RE\bhkCharacterController.h" />
@@ -308,10 +314,14 @@
     <ClInclude Include="include\RE\BSGameSound.h" />
     <ClInclude Include="include\RE\BSHandleRefObject.h" />
     <ClInclude Include="include\RE\BShkbAnimationGraph.h" />
+    <ClInclude Include="include\RE\BSImagespaceShader.h" />
+    <ClInclude Include="include\RE\BSImagespaceShaderBlur3.h" />
     <ClInclude Include="include\RE\BSIntrusiveRefCounted.h" />
     <ClInclude Include="include\RE\BSIRagdollDriver.h" />
     <ClInclude Include="include\RE\BSISoundDescriptor.h" />
     <ClInclude Include="include\RE\BSMusicEvent.h" />
+    <ClInclude Include="include\RE\BSReloadShaderI.h" />
+    <ClInclude Include="include\RE\BSShader.h" />
     <ClInclude Include="include\RE\BSString.h" />
     <ClInclude Include="include\RE\BSTAnimationGraphDataChannel.h" />
     <ClInclude Include="include\RE\BSTextureSet.h" />
@@ -407,6 +417,7 @@
     <ClInclude Include="include\RE\IAIWorldLocationHandle.h" />
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h" />
     <ClInclude Include="include\RE\IDEvent.h" />
+    <ClInclude Include="include\RE\ImageSpaceEffect.h" />
     <ClInclude Include="include\RE\ImageSpaceEffectParam.h" />
     <ClInclude Include="include\RE\ImageSpaceShaderParam.h" />
     <ClInclude Include="include\RE\IMapCameraCallbacks.h" />
@@ -427,9 +438,9 @@
     <ClInclude Include="include\RE\MapMoveHandler.h" />
     <ClInclude Include="include\RE\MapZoomHandler.h" />
     <ClInclude Include="include\RE\MenuOpenHandler.h" />
-    <ClInclude Include="include\RE\MenuTableItem.h" />
     <ClInclude Include="include\RE\MiddleProcess.h" />
     <ClInclude Include="include\RE\MoviePlayer.h" />
+    <ClInclude Include="include\RE\NiBoneMatrixSetterI.h" />
     <ClInclude Include="include\RE\NiCamera.h" />
     <ClInclude Include="include\RE\NiExtraData.h" />
     <ClInclude Include="include\RE\NiMemory.h" />
@@ -475,6 +486,7 @@
     <ClInclude Include="include\RE\PositionPlayerEvent.h" />
     <ClInclude Include="include\RE\ReadyWeaponHandler.h" />
     <ClInclude Include="include\RE\RunHandler.h" />
+    <ClInclude Include="include\RE\SetEventData.h" />
     <ClInclude Include="include\RE\ShoutHandler.h" />
     <ClInclude Include="include\RE\SneakHandler.h" />
     <ClInclude Include="include\RE\SoundData.h" />
@@ -497,6 +509,7 @@
     <ClInclude Include="include\RE\TESEffectShader.h" />
     <ClInclude Include="include\RE\TESEnchantableForm.h" />
     <ClInclude Include="include\RE\TESEquipEvent.h" />
+    <ClInclude Include="include\RE\TESEyes.h" />
     <ClInclude Include="include\RE\TESFaction.h" />
     <ClInclude Include="include\RE\TESForm.h" />
     <ClInclude Include="include\RE\TESFullName.h" />
@@ -527,6 +540,7 @@
     <ClInclude Include="include\RE\TESRaceForm.h" />
     <ClInclude Include="include\RE\TESReactionForm.h" />
     <ClInclude Include="include\RE\TESSound.h" />
+    <ClInclude Include="include\RE\TESSpellList.h" />
     <ClInclude Include="include\RE\TESTexture.h" />
     <ClInclude Include="include\RE\TESTopic.h" />
     <ClInclude Include="include\RE\TESTopicInfo.h" />

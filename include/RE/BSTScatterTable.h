@@ -22,7 +22,7 @@
 namespace RE
 {
 	// 00
-	template <class Key>
+	template <class Key, class Enable = void>
 	struct BSTScatterTableDefaultHashPolicy
 	{
 		typedef std::uint32_t	hash_type;
@@ -31,6 +31,28 @@ namespace RE
 		inline static hash_type get_hash(const Key& a_key)
 		{
 			return CalcCRC32(a_key);
+		}
+
+
+		inline static bool is_key_equal(const Key& a_lhs, const Key& a_rhs)
+		{
+			return a_lhs == a_rhs;
+		}
+	};
+
+
+	// Specialization for BSFixedString, BSFixedStringCI, etc
+	// Requires "operator const char*" to be defined
+	// Be sure to include the class you want to instantiate this for, a forward delcaration will not suffice
+	template <class Key>
+	struct BSTScatterTableDefaultHashPolicy<Key, std::enable_if_t<std::is_convertible<Key, const char*>::value>>
+	{
+		typedef std::uint32_t	hash_type;
+
+
+		inline static hash_type get_hash(const Key& a_key)
+		{
+			return CalcCRC32String(a_key);
 		}
 
 
@@ -89,7 +111,8 @@ namespace RE
 	};
 
 
-	// Specialization for TESForms. Be sure to include the class you want to instantiate this for, a forward delcaration will not suffice
+	// Specialization for TESForms
+	// Be sure to include the class you want to instantiate this for, a forward delcaration will not suffice
 	template <class Key, class Value>
 	struct BSTScatterTableDefaultKVStorage<Key, Value, typename std::enable_if_t<std::is_base_of<TESForm, Value>::value>>
 	{

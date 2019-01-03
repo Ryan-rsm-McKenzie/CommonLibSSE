@@ -1,22 +1,18 @@
 #pragma once
 
-#include "skse64/GameEvents.h"  // MenuModeChangeEvent
-#include "skse64/GameMenus.h"  // MenuTableItem, MenuManager
-#include "skse64/GameTypes.h"  // tHashSet
-
 #include "RE/BSTEvent.h"  // BSTEventSource
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
-#include "RE/MenuOpenCloseEvent.h"  // MenuOpenCloseEvent
-#include "RE/MenuTableItem.h"  // MenuTableItem
 
 
 namespace RE
 {
 	class GFxMovieView;
 	class IMenu;
+	class MenuOpenCloseEvent;
+	struct MenuModeChangeEvent;
 
 
 	class MenuManager :
@@ -26,8 +22,19 @@ namespace RE
 		public BSTEventSource<void*>				// 0B8
 	{
 	public:
-		using CreatorFunc = MenuTableItem::CreatorFunc;
-		typedef tHashSet<MenuTableItem, BSFixedString> MenuTable;
+		typedef IMenu* (*CreatorFunc)(void);
+
+
+		struct MenuTableItem
+		{
+		public:
+			IMenu*			menuInstance;		// 08 - 0 if the menu is not currently open
+			CreatorFunc*	menuConstructor;	// 10
+		};
+		STATIC_ASSERT(sizeof(MenuTableItem) == 0x10);
+
+
+		typedef BSTHashMap<BSFixedString, MenuTableItem> MenuTable;
 
 
 		struct Unknown3

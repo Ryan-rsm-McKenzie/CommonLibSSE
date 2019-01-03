@@ -1,5 +1,7 @@
 #include "RE/MenuManager.h"
 
+#include "skse64/GameMenus.h"  // MenuManager
+
 #include "RE/IMenu.h"  // IMenu
 
 
@@ -27,8 +29,8 @@ namespace RE
 			return 0;
 		}
 
-		MenuTableItem* item = menuTable.Find(&a_menuName);
-		return item ? item->menuInstance : 0;
+		auto& it = menuTable.find(a_menuName);
+		return (it != menuTable.end()) ? it->GetValue().menuInstance : 0;
 	}
 
 

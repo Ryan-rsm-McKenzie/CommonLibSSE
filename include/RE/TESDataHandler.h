@@ -86,7 +86,7 @@ namespace RE
 		BSTArray<TESObjectWEAP*>					weapons;					// 3E8
 		BSTArray<TESAmmo*>							ammo;						// 400
 		BSTArray<TESNPC*>							npcs;						// 418
-		BSTArray<TESRace*>							levCharacters;				// 430
+		BSTArray<TESLevCharacter*>					levCharacters;				// 430
 		BSTArray<TESKey*>							keys;						// 448
 		BSTArray<AlchemyItem*>						potions;					// 460
 		BSTArray<BGSIdleMarker*>					idleMarkers;				// 478

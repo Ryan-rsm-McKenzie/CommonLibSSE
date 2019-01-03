@@ -37,6 +37,20 @@ namespace RE
 	private:
 		using EntryPointType = BGSEntryPointPerkEntry::EntryPointType;
 
+	public:
+		enum { kTypeID = FormType::Character };
+
+
+		enum class SlotType : UInt32
+		{
+			kLeftHand = 0,
+			kRightHand,
+			kUnknown,
+			kPowerOrShout,
+
+			kNumSlots
+		};
+
 
 		enum class Flag1 : UInt32
 		{
@@ -61,20 +75,6 @@ namespace RE
 			kIsEssential = 1 << 18,
 			kIsProtected = 1 << 19,
 			kDontShowOnStealthMeter = 1 << 26,
-		};
-
-	public:
-		enum { kTypeID = FormType::Reference };
-
-
-		enum class SlotType : UInt32
-		{
-			kLeftHand = 0,
-			kRightHand,
-			kUnknown,
-			kPowerOrShout,
-
-			kNumSlots
 		};
 
 

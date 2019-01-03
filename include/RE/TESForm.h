@@ -17,7 +17,7 @@ namespace RE
 	class TESForm : public BaseFormComponent
 	{
 	public:
-		enum { kTypeID = 0 };	// special-case
+		enum { kTypeID = FormType::None };	// special-case
 
 
 		struct TESFileArray

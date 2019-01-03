@@ -197,8 +197,8 @@ namespace RE
 		Region,						//	3A REGN	TESRegion
 		NAVI,						//	3B NAVI	NavMeshInfoMap
 		Cell,						//	3C CELL	TESObjectCELL
-		Reference,					//	3D REFR	TESObjectREFR / Actor
-		Character,					//	3E ACHR	Character / PlayerCharacter
+		Reference,					//	3D REFR	TESObjectREFR
+		Character,					//	3E ACHR	Actor / Character / PlayerCharacter
 		Missile,					//	3F PMIS	MissileProjectile
 		Arrow,						//	40 PARW	ArrowProjectile
 		Grenade,					//	41 PGRE	GrenadeProjectile
@@ -271,9 +271,9 @@ namespace RE
 		CollisionLayer,				//	84 COLL	BGSCollisionLayer
 		ColorForm,					//	85 CLFM	BGSColorForm
 		ReverbParam,				//	86 REVB	BGSReverbParameters
-		LensFlare,					//	87      ?
-		Unk88,						//	88      ?
-		VolumetricLighting,			//	89      ?
+		LensFlare,					//	87 LENS ?
+		Unk88,						//	88 LSPR ?
+		VolumetricLighting,			//	89 VOLI ?
 		Unk8A,						//	8A      ?
 		Alias,						//	8B     	BGSBaseAlias
 		ReferenceAlias,				//	8C     	BGSRefAlias

@@ -8,7 +8,7 @@ namespace RE
 	bool BGSKeywordForm::HasKeyword(UInt32 a_formID) const
 	{
 		if (keywords) {
-			for (UInt32 idx = 0; idx < numKeywords; ++idx) {
+			for (UInt32 idx = 0; idx < keywordCount; ++idx) {
 				if (keywords[idx] && keywords[idx]->formID == a_formID) {
 					return true;
 				}
@@ -21,7 +21,7 @@ namespace RE
 
 	bool BGSKeywordForm::GetKeywordAt(UInt32 a_idx, BGSKeyword*& a_keyword) const
 	{
-		if (a_idx < numKeywords) {
+		if (a_idx < keywordCount) {
 			a_keyword = keywords[a_idx];
 			return true;
 		} else {
@@ -32,6 +32,6 @@ namespace RE
 
 	UInt32 BGSKeywordForm::GetSize() const
 	{
-		return numKeywords;
+		return keywordCount;
 	}
 }
