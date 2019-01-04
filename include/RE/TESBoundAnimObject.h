@@ -8,6 +8,10 @@ namespace RE
 	class TESBoundAnimObject : public TESBoundObject
 	{
 	public:
-		virtual bool CanAnimate(void) override;	// 53 - { return true; }
+		virtual ~TESBoundAnimObject();			// 00
+
+		// override (TESBoundObject)
+		virtual bool CanAnimate(void) override;	// 3C - { return true; }
 	};
+	STATIC_ASSERT(sizeof(TESBoundAnimObject) == 0x30);
 }

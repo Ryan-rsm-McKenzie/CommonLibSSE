@@ -3,6 +3,7 @@
 #include "RE/BSTextureSet.h"  // BSTextureSet
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESBoundObject.h"  // TESBoundObject
+#include "RE/TESModel.h"  // TESModel
 #include "RE/TESTexture.h"  // TESTexture
 
 
@@ -14,12 +15,6 @@ namespace RE
 	{
 	public:
 		enum { kTypeID = FormType::TextureSet };
-
-
-		enum
-		{
-			kNumTextures = 8
-		};
 
 
 		enum class Flag : UInt16
@@ -69,28 +64,23 @@ namespace RE
 		STATIC_ASSERT(sizeof(DecalData) == 0x28);
 
 
-		struct TextureData
-		{
-			UInt32	unk0;			// 0
-			char	fileFormat[4];	// 4
-			UInt32	unk8;			// 8
-		};
-		STATIC_ASSERT(sizeof(TextureData) == 0xC);
+		using TextureFileHash = TESModel::TextureFileHash;
 
 
-		virtual ~BGSTextureSet();						// 00
+		virtual ~BGSTextureSet();							// 00
 
 		// override (TESBoundObject)
-		virtual bool LoadForm(TESFile* a_mod) override;	// 06
+		virtual void	InitDefaults() override;			// 04
+		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
 
 
 		// members
-		TESTexture		textures[kNumTextures];		// 040 - TX00 - TX07
-		DecalData*		decalData;					// 0C0 - DODT
-		Flag			flags;						// 0C8 - DNAM
-		UInt16			pad0CA;						// 0CA
-		TextureData		textureData[kNumTextures];	// 0CC
-		UInt32			pad12C;						// 12C
+		TESTexture		textures[Textures::kTotal];				// 040 - TX00 - TX07
+		DecalData*		decalData;								// 0C0 - DODT
+		Flag			flags;									// 0C8 - DNAM
+		UInt16			pad0CA;									// 0CA
+		TextureFileHash	textureFileHashes[Textures::kTotal];	// 0CC
+		UInt32			pad12C;									// 12C
 	};
 	STATIC_ASSERT(sizeof(BGSTextureSet) == 0x130);
 }

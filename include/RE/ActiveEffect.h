@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	struct EffectItem;
+	struct Effect;
 
 
 	class ActiveEffect
@@ -41,7 +41,7 @@ namespace RE
 		UInt32									casterRefhandle;	// 34
 		void*									niNode;				// 38
 		MagicItem*								item;				// 40 - init'd to ctor argument
-		EffectItem*								effect;				// 48 - init'd to ctor argumet
+		Effect*									effect;				// 48 - init'd to ctor argumet
 		TESObjectREFR*							magicTarget;		// 50
 		TESForm*								sourceItem;			// 58
 		void*									unk60;				// 60

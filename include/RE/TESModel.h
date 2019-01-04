@@ -14,6 +14,19 @@ namespace RE
 	class TESModel : public BaseFormComponent
 	{
 	public:
+		struct TextureFileHash	// MODT
+		{
+			enum
+			{
+				kTotal = 3
+			};
+
+
+			UInt32 hash[kTotal];	// 0
+		};
+		STATIC_ASSERT(sizeof(TextureFileHash) == 0xC);
+
+
 		virtual ~TESModel();													// 00
 
 		// override (BaseFormComponent)
@@ -28,10 +41,12 @@ namespace RE
 
 
 		// members
-		BSFixedString			modelFileName;	// 08 - MODL
-		void*					unk10;			// 10
-		void*					unk18;			// 18
-		NiPointer<BSShader>*	shader;			// 20
+		BSFixedString		modelFileName;			// 08 - MODL
+		TextureFileHash**	textureFileHashes;		// 10 - MODT
+		void*				unk18;					// 18
+		UInt16				textureFileHashesSize;	// 20
+		UInt16				unk22;					// 22
+		UInt32				pad24;					// 24
 	};
 	STATIC_ASSERT(sizeof(TESModel) == 0x28);
 }

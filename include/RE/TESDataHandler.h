@@ -29,20 +29,24 @@ namespace RE
 
 		static TESDataHandler*	GetSingleton();
 		UInt32					LoadScripts();
+
 		const ModInfo*			LookupModByName(const char* a_modName);
 		SInt32					GetModIndex(const char* a_modName);
+
 		const ModInfo*			LookupLoadedModByName(const char* a_modName);
 		const ModInfo*			LookupLoadedModByIndex(UInt8 a_index);
 		UInt8					GetLoadedModIndex(const char* a_modName);
+
 		const ModInfo*			LookupLoadedLightModByName(const char* a_modName);
 		const ModInfo*			LookupLoadedLightModByIndex(UInt16 a_index);
 		UInt16					GetLoadedLightModIndex(const char* a_modName);
+
 		bool					IsGeneratedID(UInt32 a_formID);
 
 
 		// members
-		void*										unk08;
-		UnkFormArray								arrNONE;					// 010
+		void*										unk008;						// 008
+		BSTArray<TESForm*>							forms;						// 010 - size 2, formID's = { 0x28A, 0x294 }
 		UnkFormArray								arrTES4;					// 028
 		UnkFormArray								arrGRUP;					// 040
 		UnkFormArray								arrGMST;					// 058
@@ -201,7 +205,7 @@ namespace RE
 		UInt8										unkDA5;						// DA5
 		UInt8										unkDA6;						// DA6
 		UInt8										unkDA7;						// DA7
-		UInt8										unkDA8;						// DA8
+		UInt8										unkDA8;						// DA8 - isReadingData?
 		UInt8										unkDA9;						// DA9
 		UInt8										unkDAA;						// DAA
 		UInt8										padDAB[5];					// DAB

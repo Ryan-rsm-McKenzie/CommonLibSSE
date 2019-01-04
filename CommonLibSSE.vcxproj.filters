@@ -851,9 +851,6 @@
     <ClInclude Include="include\RE\TESDataHandler.h">
       <Filter>include\RE\Skyrim\FileIO</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\EffectItem.h">
-      <Filter>include\RE\Skyrim\Magic</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\SpellItem.h">
       <Filter>include\RE\Skyrim\Magic</Filter>
     </ClInclude>
@@ -1369,6 +1366,36 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSImagespaceShaderBlur3.h">
       <Filter>include\RE\Skyrim\BSShader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAcousticSpace.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Script.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESLandTexture.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEquipSlot.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Effect.h">
+      <Filter>include\RE\Skyrim\Magic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ScrollItem.h">
+      <Filter>include\RE\Skyrim\Magic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSDestructibleObjectForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSPickupPutdownSounds.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESValueForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESWeightForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

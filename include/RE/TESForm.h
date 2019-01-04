@@ -75,8 +75,8 @@ namespace RE
 		virtual void			CopyFromBase(BaseFormComponent* a_rhs) override;																			// 03
 
 		// add
-		virtual void			Unk_04(void);																												// 04 - { return; }
-		virtual void			Unk_05(void);																												// 05 - { return; }
+		virtual void			InitDefaults();																												// 04 - { return; }
+		virtual void			Unk_05(void);																												// 05 - { return; } - FreeArrays()?
 		virtual bool			LoadForm(TESFile* a_mod);																									// 06 - { return true; }
 		virtual void			Unk_07(void);																												// 07 - { return true; }
 		virtual void			Unk_08(void);																												// 08 - { return LoadForm(); }

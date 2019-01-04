@@ -258,6 +258,7 @@
     <ClInclude Include="include\RE\AttackAnimationArrayMap.h" />
     <ClInclude Include="include\RE\AttackBlockHandler.h" />
     <ClInclude Include="include\RE\AutoMoveHandler.h" />
+    <ClInclude Include="include\RE\BGSAcousticSpace.h" />
     <ClInclude Include="include\RE\BGSAction.h" />
     <ClInclude Include="include\RE\BGSActorCellEvent.h" />
     <ClInclude Include="include\RE\BGSActorDeathEvent.h" />
@@ -265,8 +266,10 @@
     <ClInclude Include="include\RE\BGSAttackDataForm.h" />
     <ClInclude Include="include\RE\BGSAttackDataMap.h" />
     <ClInclude Include="include\RE\BGSBehaviorGraphModel.h" />
+    <ClInclude Include="include\RE\BGSDestructibleObjectForm.h" />
     <ClInclude Include="include\RE\BGSDialogueBranch.h" />
     <ClInclude Include="include\RE\BGSEntryPointFunctionDataText.h" />
+    <ClInclude Include="include\RE\BGSEquipSlot.h" />
     <ClInclude Include="include\RE\BGSEquipType.h" />
     <ClInclude Include="include\RE\BGSHeadPart.h" />
     <ClInclude Include="include\RE\BGSKeyword.h" />
@@ -276,6 +279,7 @@
     <ClInclude Include="include\RE\BGSMenuIcon.h" />
     <ClInclude Include="include\RE\BGSMoviePlayer.h" />
     <ClInclude Include="include\RE\BGSPerk.h" />
+    <ClInclude Include="include\RE\BGSPickupPutdownSounds.h" />
     <ClInclude Include="include\RE\BGSSkinForm.h" />
     <ClInclude Include="include\RE\BGSSoundDescriptor.h" />
     <ClInclude Include="include\RE\BGSSoundDescriptorForm.h" />
@@ -338,7 +342,7 @@
     <ClInclude Include="include\RE\ConsoleManager.h" />
     <ClInclude Include="include\RE\DeviceTypes.h" />
     <ClInclude Include="include\RE\DialogueData.h" />
-    <ClInclude Include="include\RE\EffectItem.h" />
+    <ClInclude Include="include\RE\Effect.h" />
     <ClInclude Include="include\RE\EffectSetting.h" />
     <ClInclude Include="include\RE\EnchantmentItem.h" />
     <ClInclude Include="include\RE\EquipManager.h" />
@@ -456,6 +460,7 @@
     <ClInclude Include="include\RE\NiTPointerMap.h" />
     <ClInclude Include="include\RE\PackageLocation.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
+    <ClInclude Include="include\RE\Script.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
     <ClInclude Include="include\RE\ExtraContainerChanges.h" />
     <ClInclude Include="include\RE\InputStringHolder.h" />
@@ -486,6 +491,7 @@
     <ClInclude Include="include\RE\PositionPlayerEvent.h" />
     <ClInclude Include="include\RE\ReadyWeaponHandler.h" />
     <ClInclude Include="include\RE\RunHandler.h" />
+    <ClInclude Include="include\RE\ScrollItem.h" />
     <ClInclude Include="include\RE\SetEventData.h" />
     <ClInclude Include="include\RE\ShoutHandler.h" />
     <ClInclude Include="include\RE\SneakHandler.h" />
@@ -515,6 +521,7 @@
     <ClInclude Include="include\RE\TESFullName.h" />
     <ClInclude Include="include\RE\TESGlobal.h" />
     <ClInclude Include="include\RE\TESIcon.h" />
+    <ClInclude Include="include\RE\TESLandTexture.h" />
     <ClInclude Include="include\RE\TESLeveledList.h" />
     <ClInclude Include="include\RE\TESLevItem.h" />
     <ClInclude Include="include\RE\TESLoadGameEvent.h" />
@@ -545,6 +552,8 @@
     <ClInclude Include="include\RE\TESTopic.h" />
     <ClInclude Include="include\RE\TESTopicInfo.h" />
     <ClInclude Include="include\RE\TESTrackedStatsEvent.h" />
+    <ClInclude Include="include\RE\TESValueForm.h" />
+    <ClInclude Include="include\RE\TESWeightForm.h" />
     <ClInclude Include="include\RE\TESWorldSpace.h" />
     <ClInclude Include="include\RE\ThumbstickEvent.h" />
     <ClInclude Include="include\RE\TogglePOVHandler.h" />

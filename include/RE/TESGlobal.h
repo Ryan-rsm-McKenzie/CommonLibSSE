@@ -1,7 +1,6 @@
 #pragma once
 
-#include "skse64/GameTypes.h"  // BSString
-
+#include "RE/BSString.h"  // BSString
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
 

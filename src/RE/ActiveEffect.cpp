@@ -1,6 +1,6 @@
 #include "RE/ActiveEffect.h"
 
-#include "RE/EffectItem.h"  // EffectItem
+#include "RE/Effect.h"  // Effect
 #include "RE/Offsets.h"
 
 

@@ -12,29 +12,22 @@ namespace RE
 		enum { kTypeID = FormType::Enchantment };
 
 
-		struct Data	// DATA
+		struct Data	// ENIT
 		{
 			enum class Flag : UInt32
 			{
 				kNone = 0,
 				kNoAutoCalc = 1 << 0,
-				kExtendDurationOnRecast = 1 << 2,
+				kExtendDurationOnRecast = 1 << 2
 			};
 
 
-			enum class EnchantmentType : UInt32
-			{
-				kEnchantment = 6,
-				kStaffEnchantment = 12
-			};
-
-
-			UInt32				enchantmentCost;	// 00 - init'd to 0xFFFFFFFF
+			UInt32				enchantmentCost;	// 00
 			Flag				flags;				// 04
 			CastType			castType;			// 08
-			UInt32				enchantmentAmount;	// 0C - init'd to 0xFFFFFFFF
-			TargetType			targetType;			// 10 - init'd to 5
-			EnchantmentType		enchantmentType;	// 14 - init'd to kEnchantment
+			UInt32				enchantmentAmount;	// 0C
+			TargetType			targetType;			// 10
+			MagicType			enchantType;		// 14
 			float				chargeTime;			// 18
 			UInt32				pad1C;				// 1C
 			EnchantmentItem*	baseEnchantment;	// 20
@@ -43,21 +36,27 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x30);
 
 
+		virtual ~EnchantmentItem();												// 00
+
 		// override (MagicItem)
-		virtual Type		GetMagicType() const override;						// 53
-		virtual void		SetCastType(CastType a_castingType) override;		// 54
-		virtual CastType	GetCastType() const override;						// 55
-		virtual void		SetTargetType(TargetType a_deliveryType) override;	// 56
-		virtual TargetType	GetTargetType() const override;						// 57
+		virtual void		InitDefaults() override;							// 04
+		virtual void		InitItem() override;								// 13
+		virtual MagicType	GetMagicType() const override;						// 53 - { return data.enchantmentType; }
+		virtual void		SetCastType(CastType a_castType) override;			// 54 - { data.castType = a_castType; }
+		virtual CastType	GetCastType() const override;						// 55 - { return data.castType; }
+		virtual void		SetTargetType(TargetType a_targetType) override;	// 56 - { if (Unk_58()) { data.targetType = a_targetType; } }
+		virtual TargetType	GetTargetType() const override;						// 57 - { return data.targetType; }
 		virtual float		GetChargeTime() const override;						// 64
-		virtual UInt32		GetActorValueType() const override;					// 66
-		virtual UInt32		GetDataSigniture() const override;					// 68
+		virtual ActorValue	GetActorValueType() const override;					// 66 - { return ActorValue::kEnchanting; }
+		virtual UInt32		GetDataSigniture() const override;					// 68 - { return 'ENIT'; }
 		virtual void		CopyData(MagicItem* a_src) override;				// 69
-		virtual UInt32		GetDataSize() const override;						// 6E
+		virtual void*		GetData() override;									// 6C - { return data; }
+		virtual UInt32		GetDataSize() const override;						// 6E - { return 0x30; }
+		virtual void		ByteSwapData() override;							// 70
 
 
 		// members
-		Data data;	// 90
+		Data data;	// 90 - ENIT
 	};
 	STATIC_ASSERT(sizeof(EnchantmentItem) == 0xC0);
 }

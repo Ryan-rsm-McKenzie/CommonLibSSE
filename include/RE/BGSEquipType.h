@@ -23,7 +23,7 @@ namespace RE
 
 
 		// members
-		BGSEquipSlot* equipSlot;	// 08
+		BGSEquipSlot* equipmentType;	// 08 - ETYP
 	};
 	STATIC_ASSERT(sizeof(BGSEquipType) == 0x10);
 }

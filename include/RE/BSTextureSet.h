@@ -11,21 +11,27 @@ namespace RE
 	class BSTextureSet : public NiObject
 	{
 	public:
-		enum Texture : UInt32
+		struct Textures
 		{
-			kDiffuse = 0,
-			kNormal,
-			kGloss = kNormal,
-			kEnvironmentMask,
-			kSubsurfaceTint = kEnvironmentMask,
-			kGlowMap,
-			kDetailMap = kGlowMap,
-			kHeight,
-			kEnvironment,
-			kMultilayer,
-			kBacklightMask,
-			kSpecular = kBacklightMask
+			enum Texture : UInt32
+			{
+				kDiffuse = 0,
+				kNormal,
+				kGloss = kNormal,
+				kEnvironmentMask,
+				kSubsurfaceTint = kEnvironmentMask,
+				kGlowMap,
+				kDetailMap = kGlowMap,
+				kHeight,
+				kEnvironment,
+				kMultilayer,
+				kBacklightMask,
+				kSpecular = kBacklightMask,
+				kTotal
+			};
 		};
+
+		using Texture = Textures::Texture;
 
 
 		// override (NiObject)
