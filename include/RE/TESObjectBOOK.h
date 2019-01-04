@@ -99,7 +99,7 @@ namespace RE
 		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																						// 0F
 		virtual void	InitItem() override;																												// 13
 		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
-		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst, bool a_unk) override;														// 4D
+		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4D
 
 		bool	TeachesSkill() const;
 		bool	TeachesSpell() const;

@@ -1397,5 +1397,11 @@
     <ClInclude Include="include\RE\TESWeightForm.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\BGSOpenCloseForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESMagicTargetForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

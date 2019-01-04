@@ -278,6 +278,7 @@
     <ClInclude Include="include\RE\BGSMenuDisplayObject.h" />
     <ClInclude Include="include\RE\BGSMenuIcon.h" />
     <ClInclude Include="include\RE\BGSMoviePlayer.h" />
+    <ClInclude Include="include\RE\BGSOpenCloseForm.h" />
     <ClInclude Include="include\RE\BGSPerk.h" />
     <ClInclude Include="include\RE\BGSPickupPutdownSounds.h" />
     <ClInclude Include="include\RE\BGSSkinForm.h" />
@@ -526,6 +527,7 @@
     <ClInclude Include="include\RE\TESLevItem.h" />
     <ClInclude Include="include\RE\TESLoadGameEvent.h" />
     <ClInclude Include="include\RE\TESMagicEffectApplyEvent.h" />
+    <ClInclude Include="include\RE\TESMagicTargetForm.h" />
     <ClInclude Include="include\RE\TESModel.h" />
     <ClInclude Include="include\RE\TESModelTextureSwap.h" />
     <ClInclude Include="include\RE\TESModelTri.h" />

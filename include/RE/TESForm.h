@@ -76,7 +76,7 @@ namespace RE
 
 		// add
 		virtual void			InitDefaults();																												// 04 - { return; }
-		virtual void			Unk_05(void);																												// 05 - { return; } - FreeArrays()?
+		virtual void			Unk_05(void);																												// 05 - { return; } - FreeHeapData()?
 		virtual bool			LoadForm(TESFile* a_mod);																									// 06 - { return true; }
 		virtual void			Unk_07(void);																												// 07 - { return true; }
 		virtual void			Unk_08(void);																												// 08 - { return LoadForm(); }
@@ -105,7 +105,7 @@ namespace RE
 		virtual bool			GetFlag00000200();																											// 1F
 		virtual bool			GetFlag00000100();																											// 20
 		virtual void			SetFlag00000200(bool a_set);																								// 21
-		virtual void			Unk_22(void);																												// 22 - { return false; }
+		virtual void			Unk_22(void);																												// 22 - { return false; } - IgnoredBySandbox()?
 		virtual void			SetFlag00000020(bool a_set);																								// 23
 		virtual void			SetFlag00000002(bool a_set);																								// 24
 		virtual void			Unk_25(void);																												// 25 - { return; }

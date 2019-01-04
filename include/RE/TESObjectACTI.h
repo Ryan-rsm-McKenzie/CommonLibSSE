@@ -1,47 +1,60 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESFullName, TESModelTextureSwap, BGSDestructibleObjectForm, BGSOpenCloseForm
-
+#include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
-#include "RE/FormTypes.h"  // TESObjectREFR
+#include "RE/BGSOpenCloseForm.h"  // BGSOpenCloseForm
+#include "RE/FormTypes.h"  // FormType, BGSSoundDescriptorForm, TESWaterForm
 #include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
-
-class BGSSoundDescriptorForm;
-class BSString;
-class TESWaterForm;
+#include "RE/TESFullName.h"  // TESFullName
+#include "RE/TESMagicTargetForm.h"  // TESMagicTargetForm
+#include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
 
 
 namespace RE
 {
 	class TESObjectACTI :
-		public TESBoundAnimObject,
-		public TESFullName,
-		public TESModelTextureSwap,
-		public BGSDestructibleObjectForm,
-		public BGSOpenCloseForm,
-		public BGSKeywordForm
+		public TESBoundAnimObject,			// 00
+		public TESFullName,					// 30
+		public TESModelTextureSwap,			// 40
+		public TESMagicTargetForm,			// A8
+		public BGSDestructibleObjectForm,	// 78
+		public BGSOpenCloseForm,			// 88
+		public BGSKeywordForm				// 90
 	{
 	public:
 		enum { kTypeID = FormType::Activator };
 
 
-		virtual ~TESObjectACTI();																																		// 00
+		enum class Flag : UInt16
+		{
+			kNone = 0,
+			kNoDisplacement = 1 << 0,
+			kIgnoredBySandbox = 1 << 1
+		};
+
+
+		virtual ~TESObjectACTI();																															// 00
 
 		// override (TESBoundAnimObject)
-		virtual bool	LoadForm(TESFile* a_mod) override;																												// 06
-		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;																									// 0E
-		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																									// 0F
-		virtual void	InitItem() override;																															// 13
-		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, uintptr_t a_arg3, uintptr_t a_arg4, uintptr_t a_arg5) override;	// 37
-		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst, bool a_unk) override;																	// 4C
+		virtual void	InitDefaults() override;																											// 04
+		virtual bool	LoadForm(TESFile* a_mod) override;																									// 06
+		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;																						// 0E
+		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																						// 0F
+		virtual void	InitItem() override;																												// 13
+		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
+		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4C
 
 
 		// members
-		BGSSoundDescriptorForm*	loopingSound;		// A8
-		BGSSoundDescriptorForm*	activationSound;	// B0
-		TESWaterForm*			waterType;			// B8
-		UInt16					flags;				// C0
-		UInt8					padC2[6];			// C2
+		BGSSoundDescriptorForm*	soundLooping;		// A8 - SNAM
+		BGSSoundDescriptorForm*	soundActivation;	// B0 - VNAM
+		TESWaterForm*			waterType;			// B8 - WNAM
+		Flag					flags;				// C0 - FNAM
+		UInt16					padC2;				// C2
+		UInt32					padC4;				// C4
 	};
 	STATIC_ASSERT(sizeof(TESObjectACTI) == 0xC8);
+	// virt Unk_22() - { return (flags >> 1) & 1; } - IgnoredBySandbox()?
+	// virt Unk_2A() - { return waterType != 0; } - HasWater()?
+	// virt Unk_3D() - { return waterType; } - GetWater()?
 }

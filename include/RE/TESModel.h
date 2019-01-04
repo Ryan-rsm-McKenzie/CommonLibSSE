@@ -3,28 +3,27 @@
 #include "skse64/GameFormComponents.h"  // BaseFormComponent
 
 #include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/NiSmartPointer.h"  // NiPointer
 
 
 namespace RE
 {
-	class BSShader;
-
-
 	class TESModel : public BaseFormComponent
 	{
 	public:
 		struct TextureFileHash	// MODT
 		{
-			enum
-			{
-				kTotal = 3
-			};
-
-
-			UInt32 hash[kTotal];	// 0
+			UInt32	fileNameHash;	// 0
+			char	fileExt[4];		// 4
+			UInt32	dirHash;		// 8
 		};
 		STATIC_ASSERT(sizeof(TextureFileHash) == 0xC);
+
+
+		struct ExtraHash
+		{
+			UInt32 hash;
+		};
+		STATIC_ASSERT(sizeof(ExtraHash) == 0x4);
 
 
 		virtual ~TESModel();													// 00
@@ -41,11 +40,11 @@ namespace RE
 
 
 		// members
-		BSFixedString		modelFileName;			// 08 - MODL
-		TextureFileHash**	textureFileHashes;		// 10 - MODT
-		void*				unk18;					// 18
-		UInt16				textureFileHashesSize;	// 20
-		UInt16				unk22;					// 22
+		BSFixedString		modelName;				// 08 - MODL
+		TextureFileHash**	textureFileHashes;		// 10 - MODT - ptr to array of ptrs
+		ExtraHash*			extraHashes;			// 18
+		UInt16				numTextureFileHashes;	// 20
+		UInt16				numExtraHashes;			// 22
 		UInt32				pad24;					// 24
 	};
 	STATIC_ASSERT(sizeof(TESModel) == 0x28);

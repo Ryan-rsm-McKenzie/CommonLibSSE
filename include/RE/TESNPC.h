@@ -79,7 +79,7 @@ namespace RE
 		virtual void			CopyFrom(TESForm* a_srcForm) override;																								// 2F - { return; }
 		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
 		virtual BGSVoiceType*	GetVoiceType() const override;																										// 4A - { return nullptr; }
-		virtual bool			GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst, bool a_unk) override;														// 4C
+		virtual bool			GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4C
 		virtual TESCombatStyle*	GetCombatStyle() override;																											// 55
 		virtual void			SetCombatStyle(TESCombatStyle* a_arg) override;																						// 56
 
