@@ -46,7 +46,7 @@ namespace RE
 
 		// members
 		void*										unk008;						// 008
-		BSTArray<TESForm*>							forms;						// 010 - size 2, formID's = { 0x28A, 0x294 }
+		BSTArray<TESForm*>							forms;						// 010 - size == 2, formID's = { 0x28A, 0x294 }
 		UnkFormArray								arrTES4;					// 028
 		UnkFormArray								arrGRUP;					// 040
 		UnkFormArray								arrGMST;					// 058

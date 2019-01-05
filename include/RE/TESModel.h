@@ -10,13 +10,13 @@ namespace RE
 	class TESModel : public BaseFormComponent
 	{
 	public:
-		struct TextureFileHash	// MODT
+		struct FileHash
 		{
 			UInt32	fileNameHash;	// 0
 			char	fileExt[4];		// 4
 			UInt32	dirHash;		// 8
 		};
-		STATIC_ASSERT(sizeof(TextureFileHash) == 0xC);
+		STATIC_ASSERT(sizeof(FileHash) == 0xC);
 
 
 		struct ExtraHash
@@ -40,12 +40,12 @@ namespace RE
 
 
 		// members
-		BSFixedString		modelName;				// 08 - MODL
-		TextureFileHash**	textureFileHashes;		// 10 - MODT - ptr to array of ptrs
-		ExtraHash*			extraHashes;			// 18
-		UInt16				numTextureFileHashes;	// 20
-		UInt16				numExtraHashes;			// 22
-		UInt32				pad24;					// 24
+		BSFixedString	modelName;		// 08 - MODL
+		FileHash**		fileHashes;		// 10 - MODT
+		ExtraHash*		extraHashes;	// 18
+		UInt16			numFileHashes;	// 20
+		UInt16			numExtraHashes;	// 22
+		UInt32			unk24;			// 24
 	};
 	STATIC_ASSERT(sizeof(TESModel) == 0x28);
 }

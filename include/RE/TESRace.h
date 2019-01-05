@@ -322,10 +322,11 @@ namespace RE
 
 		struct UnkData
 		{
-			UInt64	unk00;	// 00
-			void*	unk08;	// 08 - NiPointer<BSShader>* male?
-			void*	unk10;	// 10 - NiPointer<BSShader>* female?
-			// shaders from TESModels within the race?
+			TESModel::FileHash**	unkHashes;			// 00
+			UInt32					Unk1_NumUnkHashes;	// 08
+			UInt32					Unk1_Unk0C;			// 0C - TESModel::unk24
+			UInt32					Unk2_NumUnkHashes;	// 10
+			UInt32					Unk2_Unk14;			// 14 - TESModel::unk24
 		};
 		STATIC_ASSERT(sizeof(UnkData) == 0x18);
 
@@ -344,7 +345,7 @@ namespace RE
 		TESModel					skeletalModels[Sexes::kTotal];					// 098 - ANAM
 		Data						data;											// 0E8
 		FaceGen						faceGen;										// 18C
-		UInt32						pad194;											// 194
+		UInt32						unk194;											// 194 - TESModel::unk24
 		BodyData					bodyData;										// 198
 		BGSBehaviorGraphModel		behaviourGraphs[Sexes::kTotal];					// 1E8
 		BSFixedString				behaviorPaths[Sexes::kTotal];					// 238
@@ -368,7 +369,7 @@ namespace RE
 		BSFixedString				bipedObjectNames[kNumBipedObjectNames];			// 310 - NAME
 		BSTArray<BGSEquipSlot*>		equipSlots;										// 410 - QNAM
 		EquipmentFlag				equipmentFlags;									// 428 - VNAM - bits 13+ are always set
-		UInt32						pad42C;											// 42C
+		UInt32						unk42C;											// 42C - TESModel::unk24
 		BGSEquipSlot*				unarmedEquipSlot;								// 430 - UNES
 		TESRace*					morphRace;										// 438 - NAM8
 		TESRace*					armorRace;										// 440 - RNAM
