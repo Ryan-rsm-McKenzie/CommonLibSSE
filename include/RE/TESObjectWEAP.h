@@ -158,9 +158,19 @@ namespace RE
 		Data::AnimationType	animationType();
 		UInt16				critDamage();
 		void				GetNodeName(char* a_dstBuff);
-		bool				IsBound();
-		bool				IsMelee();
-		bool				IsRanged();
+		bool				IsBound() const;
+		bool				IsMelee() const;
+		bool				IsRanged() const;
+		bool				IsHandToHandMelee() const;
+		bool				IsOneHandedSword() const;
+		bool				IsOneHandedDagger() const;
+		bool				IsOneHandedAxe() const;
+		bool				IsOneHandedMace() const;
+		bool				IsTwoHandedSword() const;
+		bool				IsTwoHandedAxe() const;
+		bool				IsBow() const;
+		bool				IsStaff() const;
+		bool				IsCrossbow() const;
 
 
 		// members

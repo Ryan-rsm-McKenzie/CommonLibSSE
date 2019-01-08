@@ -51,13 +51,13 @@ namespace RE
 	}
 
 
-	bool TESObjectWEAP::IsBound()
+	bool TESObjectWEAP::IsBound() const
 	{
 		return (data.flags2 & Data::Flag2::kBoundWeapon) != Data::Flag2::kNone;
 	}
 
 
-	bool TESObjectWEAP::IsMelee()
+	bool TESObjectWEAP::IsMelee() const
 	{
 		switch (data.animationType) {
 		case Data::AnimationType::kHandToHandMelee:
@@ -74,7 +74,7 @@ namespace RE
 	}
 
 
-	bool TESObjectWEAP::IsRanged()
+	bool TESObjectWEAP::IsRanged() const
 	{
 		switch (data.animationType) {
 		case Data::AnimationType::kBow:
@@ -84,5 +84,65 @@ namespace RE
 		default:
 			return false;
 		}
+	}
+
+
+	bool TESObjectWEAP::IsHandToHandMelee() const
+	{
+		return data.animationType == Data::AnimationType::kHandToHandMelee;
+	}
+
+
+	bool TESObjectWEAP::IsOneHandedSword() const
+	{
+		return data.animationType == Data::AnimationType::kOneHandSword;
+	}
+
+
+	bool TESObjectWEAP::IsOneHandedDagger() const
+	{
+		return data.animationType == Data::AnimationType::kOneHandDagger;
+	}
+
+
+	bool TESObjectWEAP::IsOneHandedAxe() const
+	{
+		return data.animationType == Data::AnimationType::kOneHandAxe;
+	}
+
+
+	bool TESObjectWEAP::IsOneHandedMace() const
+	{
+		return data.animationType == Data::AnimationType::kOneHandMace;
+	}
+
+
+	bool TESObjectWEAP::IsTwoHandedSword() const
+	{
+		return data.animationType == Data::AnimationType::kTwoHandSword;
+	}
+
+
+	bool TESObjectWEAP::IsTwoHandedAxe() const
+	{
+		return data.animationType == Data::AnimationType::kTwoHandAxe;
+	}
+
+
+	bool TESObjectWEAP::IsBow() const
+	{
+		return data.animationType == Data::AnimationType::kBow;
+	}
+
+
+	bool TESObjectWEAP::IsStaff() const
+	{
+		return data.animationType == Data::AnimationType::kStaff;
+	}
+
+
+	bool TESObjectWEAP::IsCrossbow() const
+	{
+		return data.animationType == Data::AnimationType::kCrossbow;
 	}
 }
