@@ -100,7 +100,7 @@ namespace RE
 			// RNAM format in plugins is cell x,y -> formID + cell that contains refr x,y
 			// a lot of RNAM data is for refrs that are actually in adjacent cells, it is currently unknown what behavior this has in game
 			BSTHashMap<XYPlane, UInt32 *>	cellFormIDMap;				// 0 - full data merged at runtime, value is an array of FormIDs with array size as the first entry
-			BSTHashMap<UInt32, XYPlane>		FormIDCellMap;			    // 30 - maps FormID to cell so opposite of above map
+			BSTHashMap<UInt32, XYPlane>		FormIDCellMap;				// 30 - maps FormID to cell so opposite of above map
 
 			// this filtered version of the full data removes all duplicate RNAM entries and also all entries where cell x,y doesn't match cell that contains refr x,y
 			// this is the one actually used for loading large references on cell attach
@@ -177,7 +177,7 @@ namespace RE
 		BGSLocation*											location;					// 228 - XLCN
 		TESTexture												hdLODDiffuseTexture;		// 230 - TNAM
 		TESTexture												hdLODNormalTexture;			// 240 - UNAM
-		LargeReferenceData                                      largeReferenceData;         // 250 - RNAM
+		LargeReferenceData                                      largeReferenceData;			// 250 - RNAM
 		UInt64													unk2E0;						// 2E0
 		BSTHashMap<UnkKey, UnkValue>							unk2E8;						// 2E8
 		BSTHashMap<UnkKey, UnkValue>							unk318;						// 318
