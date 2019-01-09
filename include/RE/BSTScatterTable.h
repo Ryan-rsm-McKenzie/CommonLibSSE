@@ -70,6 +70,9 @@ namespace RE
 		typedef Value	value_type;
 
 
+		TES_HEAP_REDEFINE_NEW();
+
+
 		inline key_type& GetKey()
 		{
 			return _key;
@@ -84,7 +87,7 @@ namespace RE
 
 		inline void SetKeyNew(const key_type& a_key)
 		{
-			new (&_key)(key_type(a_key));
+			new (&_key)key_type(a_key);
 		}
 
 
@@ -108,7 +111,7 @@ namespace RE
 
 		inline void SetValueNew(const value_type& a_value)
 		{
-			new (&_value)(value_type(a_value));
+			new (&_value)value_type(a_value);
 		}
 
 
@@ -132,6 +135,9 @@ namespace RE
 		typedef Value*	value_type;
 
 
+		TES_HEAP_REDEFINE_NEW();
+
+
 		inline key_type& GetKey()
 		{
 			return _value->formID;
@@ -146,7 +152,7 @@ namespace RE
 
 		inline void SetKeyNew(const key_type& a_key)
 		{
-			new (&_value->formID)(key_type(a_key));
+			new (&_value->formID)key_type(a_key);
 		}
 
 
@@ -170,7 +176,7 @@ namespace RE
 
 		inline void SetValueNew(const value_type& a_value)
 		{
-			new (&_value)(value_type(a_value));
+			new (&_value)value_type(a_value);
 		}
 
 
@@ -1148,7 +1154,7 @@ namespace RE
 		bool insert(const key_type& a_key, const value_type& a_lvalue)
 		{
 			hash_type hash = get_hash(a_key);
-			entry_type *p = 0;
+			entry_type* p = 0;
 
 			while (!(p = _insert(_entries, hash, a_key))) {
 				_grow_table();

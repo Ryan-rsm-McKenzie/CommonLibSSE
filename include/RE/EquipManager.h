@@ -25,5 +25,12 @@ namespace RE
 		 * @param a_arg10 = 0
 		 */
 		bool					UnEquipItem(Actor* a_actor, TESForm* a_item, BaseExtraList* a_extraData, SInt32 a_count, BGSEquipSlot* a_equipSlot, bool a_arg6, bool a_preventEquip, bool a_arg8, bool a_arg9, void* a_arg10);
+
+
+		// members
+		UInt8	unk0;	// 0
+		bool	unk1;	// 1
+		UInt16	unk2;	// 2
+		UInt32	unk4;	// 4
 	};
 }
