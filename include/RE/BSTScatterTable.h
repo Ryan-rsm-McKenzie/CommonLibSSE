@@ -76,15 +76,15 @@ namespace RE
 		}
 
 
-		inline void SetKey(const key_type* a_key)
-		{
-			_key = *a_key;
-		}
-
-
 		inline void SetKey(const key_type& a_key)
 		{
 			_key = a_key;
+		}
+
+
+		inline void SetKeyNew(const key_type& a_key)
+		{
+			new (&_key)(key_type(a_key));
 		}
 
 
@@ -100,15 +100,15 @@ namespace RE
 		}
 
 
-		inline void SetValue(const value_type* a_value)
-		{
-			_value = *a_value;
-		}
-
-
 		inline void SetValue(const value_type& a_value)
 		{
 			_value = a_value;
+		}
+
+
+		inline void SetValueNew(const value_type& a_value)
+		{
+			new (&_value)(value_type(a_value));
 		}
 
 
@@ -138,15 +138,15 @@ namespace RE
 		}
 
 
-		inline void SetKey(const key_type* a_key)
-		{
-			_value->formID = *a_key;
-		}
-
-
 		inline void SetKey(const key_type& a_key)
 		{
 			_value->formID = a_key;
+		}
+
+
+		inline void SetKeyNew(const key_type& a_key)
+		{
+			new (&_value->formID)(key_type(a_key));
 		}
 
 
@@ -162,15 +162,15 @@ namespace RE
 		}
 
 
-		inline void SetValue(const value_type* a_value)
-		{
-			_value = *a_value;
-		}
-
-
 		inline void SetValue(const value_type& a_value)
 		{
 			_value = a_value;
+		}
+
+
+		inline void SetValueNew(const value_type& a_value)
+		{
+			new (&_value)(value_type(a_value));
 		}
 
 
@@ -376,8 +376,8 @@ namespace RE
 		static void _entry_new(entry_type* a_ptr, entry_type* a_next, const key_type& a_key, const value_type& a_value)
 		{
 			if (a_ptr) {
-				a_ptr->SetKey(new key_type(a_key));
-				a_ptr->SetValue(new value_type(a_value));
+				a_ptr->SetKeyNew(a_key);
+				a_ptr->SetValueNew(a_value);
 				a_ptr->next = a_next;
 			}
 		}
@@ -456,8 +456,8 @@ namespace RE
 			entry_type* targetEntry = _entry_at(a_entries, a_hash);
 			if (targetEntry->empty()) {
 				// target entry is free
-				targetEntry->SetKey(new key_type(a_key));
-				targetEntry->SetValue(new value_type(a_value));
+				targetEntry->SetKeyNew(a_key);
+				targetEntry->SetValueNew(a_value);
 				targetEntry->next = _eolPtr;
 				--_freeCount;
 				return true;
@@ -511,7 +511,7 @@ namespace RE
 				// target entry is free
 				--_freeCount;
 				targetEntry->next = _eolPtr;
-				targetEntry->SetKey(new key_type(a_key));
+				targetEntry->SetKeyNew(a_key);
 				return targetEntry;
 			}
 
@@ -550,7 +550,7 @@ namespace RE
 				p = targetEntry;
 			}
 
-			p->SetKey(new key_type(a_key));
+			p->SetKeyNew(a_key);
 			return p;
 		}
 
@@ -988,8 +988,8 @@ namespace RE
 				std::size_t count = _size;
 				while (--count) {
 					if (!from->empty()) {
-						to->SetKey(new key_type(from->GetKey()));
-						to->SetValue(new value_type(from->GetValue()));
+						to->SetKeyNew(from->GetKey());
+						to->SetValueNew(from->GetValue());
 						to->next = (from->next == a_rhs._eolPtr) ? _eolPtr : (_entries + (from - a_rhs._entries));
 					}
 					++to;
@@ -1157,7 +1157,7 @@ namespace RE
 				}
 			}
 
-			p->SetValue(new value_type(a_lvalue));
+			p->SetValueNew(a_lvalue);
 			return true;
 		}
 
@@ -1174,7 +1174,7 @@ namespace RE
 				}
 			}
 
-			p->SetValue(new value_type(a_rvalue));
+			p->SetValueNew(a_rvalue);
 			return true;
 		}
 
