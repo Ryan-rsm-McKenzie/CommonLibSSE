@@ -76,7 +76,13 @@ namespace RE
 		}
 
 
-		inline void SetKey(key_type& a_key)
+		inline void SetKey(const key_type* a_key)
+		{
+			_key = *a_key;
+		}
+
+
+		inline void SetKey(const key_type& a_key)
 		{
 			_key = a_key;
 		}
@@ -94,9 +100,15 @@ namespace RE
 		}
 
 
-		inline void SetValue(value_type& a_value)
+		inline void SetValue(const value_type* a_value)
 		{
-			return _value = a_value;
+			_value = *a_value;
+		}
+
+
+		inline void SetValue(const value_type& a_value)
+		{
+			_value = a_value;
 		}
 
 
@@ -126,6 +138,12 @@ namespace RE
 		}
 
 
+		inline void SetKey(const key_type* a_key)
+		{
+			_value->formID = *a_key;
+		}
+
+
 		inline void SetKey(const key_type& a_key)
 		{
 			_value->formID = a_key;
@@ -144,9 +162,15 @@ namespace RE
 		}
 
 
+		inline void SetValue(const value_type* a_value)
+		{
+			_value = *a_value;
+		}
+
+
 		inline void SetValue(const value_type& a_value)
 		{
-			return _value = a_value;
+			_value = a_value;
 		}
 
 
