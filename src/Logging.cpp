@@ -13,15 +13,15 @@ namespace RE
 		static char formatBuf[8192] = { 0 };
 		va_list args;
 		va_start(args, a_str);
-		vsprintf_s(formatBuf, sizeof(formatBuf), a_str, args);
 		std::ostringstream oss;
-		oss << a_file << "(" << a_line << "): ";
-		oss << formatBuf;
+		oss << a_file << "(" << a_line << "): " << a_str;
 		gLog.Log(a_logLevel, oss.str().c_str(), args);
-		va_end(args);
-		oss << "\n";
 #if _DEBUG
+		vsprintf_s(formatBuf, sizeof(formatBuf), a_str, args);
+		oss.str("");
+		oss << a_file << "(" << a_line << "): " << formatBuf << "\n";
 		OutputDebugStringA(oss.str().c_str());
 #endif
+		va_end(args);
 	}
 }

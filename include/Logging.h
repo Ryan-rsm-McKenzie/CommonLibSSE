@@ -9,7 +9,6 @@ namespace RE
 }
 
 
-// DO NOT USE THESE MACROS WITH "%%"
 #define _FATALERROR(a_fmt, ...)	RE::DBOut(__FILE__, __LINE__, IDebugLog::LogLevel::kLevel_FatalError, a_fmt, __VA_ARGS__)
 #define _ERROR(a_fmt, ...)		RE::DBOut(__FILE__, __LINE__, IDebugLog::LogLevel::kLevel_Error, a_fmt, __VA_ARGS__)
 #define _WARNING(a_fmt, ...)	RE::DBOut(__FILE__, __LINE__, IDebugLog::LogLevel::kLevel_Warning, a_fmt, __VA_ARGS__)
