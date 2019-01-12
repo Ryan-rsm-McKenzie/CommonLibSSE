@@ -41,11 +41,19 @@ namespace RE
 	};
 
 
+	template <typename T>
+	using op_c_str_t = decltype(std::declval<T>().c_str());
+
+
+	template <typename T>
+	using has_op_c_str = is_detected<T, op_c_str_t>;
+
+
 	// Specialization for BSFixedString, BSFixedStringCI, etc
-	// Requires "operator const char*" to be defined
+	// Requires "c_str()" to be defined
 	// Be sure to include the class you want to instantiate this for, a forward delcaration will not suffice
 	template <class Key>
-	struct BSTScatterTableDefaultHashPolicy<Key, std::enable_if_t<std::is_convertible<Key, const char*>::value>>
+	struct BSTScatterTableDefaultHashPolicy<Key, std::enable_if_t<has_op_c_str<Key>::value>>
 	{
 		typedef std::uint32_t	hash_type;
 

@@ -115,7 +115,7 @@ namespace RE
 		}
 
 	protected:
-		inline CRC32StringCalculatorCI & operator=(const char* a_str)
+		inline CRC32StringCalculatorCI& operator=(const char* a_str)
 		{
 			CRC32Calculator<std::uint64_t> checksum((std::uint64_t)a_str);
 			_checksum = checksum;
@@ -137,7 +137,7 @@ namespace RE
 	template <class Ty>
 	inline UInt32 CalcCRC32String(const Ty& a_val)
 	{
-		CRC32StringCalculator crc(a_val);
+		CRC32StringCalculator crc(a_val.c_str());
 		return crc;
 	}
 
@@ -145,7 +145,7 @@ namespace RE
 	template <class Ty>
 	inline UInt32 CalcCRC32StringCI(const Ty& a_val)
 	{
-		CRC32StringCalculatorCI<Ty> crc(a_val);
+		CRC32StringCalculatorCI<Ty> crc(a_val.c_str());
 		return crc;
 	}
 }
