@@ -1,0 +1,17 @@
+#pragma once
+
+#include "RE/GRefCountImplCore.h"  // GRefCountImplCore
+
+
+namespace RE
+{
+	class GRefCountImpl : GRefCountImplCore
+	{
+	public:
+		virtual ~GRefCountImpl();	// 00
+
+		void	AddRef();
+		void	Release();
+	};
+	STATIC_ASSERT(sizeof(GRefCountImpl) == 0x10);
+}

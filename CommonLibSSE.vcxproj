@@ -174,6 +174,8 @@
     <ClCompile Include="src\RE\BSAudioManager.cpp" />
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
     <ClCompile Include="src\RE\BSString.cpp" />
+    <ClCompile Include="src\RE\GRefCountImpl.cpp" />
+    <ClCompile Include="src\RE\GRefCountImplCore.cpp" />
     <ClCompile Include="src\RE\LocalMapCamera.cpp" />
     <ClCompile Include="src\RE\NiExtraData.cpp" />
     <ClCompile Include="src\RE\NiObject.cpp" />
@@ -203,7 +205,6 @@
     <ClCompile Include="src\RE\ExtraContainerChanges.cpp" />
     <ClCompile Include="src\RE\ExtraLock.cpp" />
     <ClCompile Include="src\RE\GFxLoader.cpp" />
-    <ClCompile Include="src\RE\GFxState.cpp" />
     <ClCompile Include="src\RE\InputStringHolder.cpp" />
     <ClCompile Include="src\RE\Misc.cpp" />
     <ClCompile Include="src\RE\IMenu.cpp" />
@@ -331,6 +332,7 @@
     <ClInclude Include="include\RE\BSISoundDescriptor.h" />
     <ClInclude Include="include\RE\BSMusicEvent.h" />
     <ClInclude Include="include\RE\BSReloadShaderI.h" />
+    <ClInclude Include="include\RE\BSScaleformTranslator.h" />
     <ClInclude Include="include\RE\BSShader.h" />
     <ClInclude Include="include\RE\BSString.h" />
     <ClInclude Include="include\RE\BSTAnimationGraphDataChannel.h" />
@@ -396,6 +398,14 @@
     <ClInclude Include="include\RE\GFxResource.h" />
     <ClInclude Include="include\RE\GFxState.h" />
     <ClInclude Include="include\RE\GFxStateBag.h" />
+    <ClInclude Include="include\RE\GFxTranslator.h" />
+    <ClInclude Include="include\RE\GRefCountBase.h" />
+    <ClInclude Include="include\RE\GRefCountBaseStatImpl.h" />
+    <ClInclude Include="include\RE\GRefCountImpl.h" />
+    <ClInclude Include="include\RE\GRefCountImplCore.h" />
+    <ClInclude Include="include\RE\GStats.h" />
+    <ClInclude Include="include\RE\GStatGroups.h" />
+    <ClInclude Include="include\RE\GStatHeaps.h" />
     <ClInclude Include="include\RE\HeldStateHandler.h" />
     <ClInclude Include="include\RE\hkBaseObject.h" />
     <ClInclude Include="include\RE\hkpAllCdPointCollector.h" />

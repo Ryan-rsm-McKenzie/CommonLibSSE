@@ -12,11 +12,11 @@ namespace RE
 		virtual	GFxStateBag*	GetStateBagImpl(void) const;
 
 	public:
-		virtual	~GFxStateBag();																							// 0
+		virtual	~GFxStateBag();																							// 00
 
 		// add
-		virtual void	SetState(GFxState::StateType state, GFxState* pstate);											// 1
-		virtual void*	GetStateAddRef(GFxState::StateType state) const;												// 2
-		virtual void	GetStatesAddRef(GFxState** pstateList, const GFxState::StateType* pstates, UInt32 count) const;	// 3
+		virtual void	SetState(GFxState::StateType state, GFxState* pstate);											// 01
+		virtual void*	GetStateAddRef(GFxState::StateType state) const;												// 02
+		virtual void	GetStatesAddRef(GFxState** pstateList, const GFxState::StateType* pstates, UInt32 count) const;	// 03
 	};
 }

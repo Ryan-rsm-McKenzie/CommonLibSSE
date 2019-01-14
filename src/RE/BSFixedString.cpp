@@ -148,7 +148,9 @@ namespace RE
 
 	BSFixedString::BSFixedString() :
 		_data(0)
-	{}
+	{
+		ctor_internal(this, "");
+	}
 
 
 	BSFixedString::BSFixedString(size_type a_count, char a_ch) :

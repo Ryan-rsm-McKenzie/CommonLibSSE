@@ -44,7 +44,6 @@ namespace RE
 	template <typename T>
 	using op_c_str_t = decltype(std::declval<T>().c_str());
 
-
 	template <typename T>
 	using has_op_c_str = is_detected<T, op_c_str_t>;
 
@@ -60,7 +59,61 @@ namespace RE
 
 		inline static hash_type get_hash(const Key& a_key)
 		{
-			return CalcCRC32String(a_key);
+			return CalcCRC32String(a_key.c_str());
+		}
+
+
+		inline static bool is_key_equal(const Key& a_lhs, const Key& a_rhs)
+		{
+			return a_lhs == a_rhs;
+		}
+	};
+
+
+	template <typename T> using is_char_pointer = std::is_convertible<T, const char*>;
+	template <typename T> using is_wchar_pointer = std::is_convertible<T, const wchar_t*>;
+	template <typename T> using is_char16_pointer = std::is_convertible<T, const char16_t*>;
+	template <typename T> using is_char32_pointer = std::is_convertible<T, const char32_t*>;
+
+	template <typename T, class Enable = void> struct is_charT_pointer : std::false_type {};
+
+	template <typename T>
+	struct is_charT_pointer<T, std::enable_if_t<is_char_pointer<T>::value>> : std::true_type
+	{
+		typedef const char* char_type;
+	};
+
+	template <typename T>
+	struct is_charT_pointer<T, std::enable_if_t<is_wchar_pointer<T>::value>> : std::true_type
+	{
+		typedef const wchar_t* char_type;
+	};
+
+	template <typename T>
+	struct is_charT_pointer<T, std::enable_if_t<is_char16_pointer<T>::value>> : std::true_type
+	{
+		typedef const char16_t* char_type;
+	};
+
+	template <typename T>
+	struct is_charT_pointer<T, std::enable_if_t<is_char32_pointer<T>::value>> : std::true_type
+	{
+		typedef const char32_t* char_type;
+	};
+
+
+	// Specialization for "const CharT*" types
+	// Requires implicit conversion to "const CharT*" to be defined
+	// Be sure to include the class you want to instantiate this for, a forward delcaration will not suffice
+	template <class Key>
+	struct BSTScatterTableDefaultHashPolicy<Key, std::enable_if_t<is_char_pointer<Key>::value>>
+	{
+		typedef std::uint32_t	hash_type;
+
+
+		inline static hash_type get_hash(const Key& a_key)
+		{
+			return CalcCRC32String((is_char_pointer<Key>::char_type)a_key);
 		}
 
 

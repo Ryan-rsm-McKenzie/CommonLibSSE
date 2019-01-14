@@ -1,68 +1,79 @@
 #pragma once
 
-#include "skse64/ScaleformTypes.h"  // GRefCountBase
+#include "RE/GRefCountBase.h"  // GRefCountBase
 
 
 namespace RE
 {
-	class GFxState : public GRefCountBase
+	class GFxState : public GRefCountBase<GFxState>
 	{
 	public:
-		enum StateType
+		enum class StateType : UInt32
 		{
-			State_None,
+			kNone,
 
 			// *** Instance - related states.
-			State_RenderConfig,
-			State_RenderStats,
-			State_Translator,
-			State_Log,
-			State_ImageLoader,
-			State_ActionControl,
-			State_UserEventHandler,
-			State_FSCommandHandler,
-			State_ExternalInterface,
+			kRenderConfig,
+			kRenderStats,
+			kTranslator,
+			kLog,
+			kImageLoader,
+			kActionControl,
+			kUserEventHandler,
+			kFSCommandHandler,
+			kExternalInterface,
 
 			// *** Loading - related states.
-			State_FileOpener,
-			State_URLBuilder,
-			State_ImageCreator,
-			State_ParseControl,
-			State_ProgressHandler,
-			State_ImportVisitor,
-			//State_ImageVisitor,
-			State_MeshCacheManager,
-			State_FontPackParams,
-			State_FontCacheManager,
-			State_FontLib,
-			State_FontProvider,
-			State_FontMap,
-			State_GradientParams,
-			State_TaskManager,
-			State_TextClipboard,
-			State_TextKeyMap,
-			State_PreprocessParams,
-			State_IMEManager,
-			State_XMLSupport,
-			State_JpegSupport,
-			State_ZlibSupport,
-			State_FontCompactorParams,
-			State_ImagePackerParams,
-			State_PNGSupport,
-			State_Audio,
-			State_Video,
-			State_TestStream,
-			State_SharedObject,
-			State_LocSupport
+			kFileOpener,
+			kURLBuilder,
+			kImageCreator,
+			kParseControl,
+			kProgressHandler,
+			kImportVisitor,
+			//kImageVisitor,
+			kMeshCacheManager,
+			kFontPackParams,
+			kFontCacheManager,
+			kFontLib,
+			kFontProvider,
+			kFontMap,
+			kGradientParams,
+			kTaskManager,
+			kTextClipboard,
+			kTextKeyMap,
+			kPreprocessParams,
+			kIMEManager,
+			kXMLSupport,
+			kJpegSupport,
+			kZlibSupport,
+			kFontCompactorParams,
+			kImagePackerParams,
+			kPNGSupport,
+			kAudio,
+			kVideo,
+			kTestStream,
+			kSharedObject,
+			kLocSupport
 		};
 
 	protected:
-		StateType SType;	// 08
+		StateType	SType;	// 10
+		UInt32		pad14;	// 14
 
 	public:
-		GFxState(StateType st = State_None);
-		virtual ~GFxState() {}
+		constexpr GFxState(StateType a_state = StateType::kNone) :
+			GRefCountBase<GFxState>(),
+			SType(a_state),
+			pad14(0)
+		{}
 
-		StateType GetStateType() const;
+		virtual ~GFxState()	// 00
+		{}
+
+		constexpr StateType GetStateType() const
+		{
+			return SType;
+		}
 	};
+	STATIC_ASSERT(sizeof(GFxState) == 0x18);
 }

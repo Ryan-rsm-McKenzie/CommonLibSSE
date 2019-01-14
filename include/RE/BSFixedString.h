@@ -3,6 +3,8 @@
 #include <iterator>  // random_access_iterator_tag, reverse_iterator
 #include <initializer_list>  // initializer_list
 
+#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
+
 
 namespace RE
 {
@@ -151,6 +153,8 @@ namespace RE
 		friend bool	operator!=(const BSFixedString& a_lhs, const BSFixedString& a_rhs) { return !(a_lhs == a_rhs); }
 		bool		operator==(const BSString& a_rhs) const;
 		bool		operator!=(const BSString& a_rhs) const;
+
+		TES_HEAP_REDEFINE_NEW();
 
 
 		static constexpr size_type npos{ static_cast<size_type>(-1) };	// NOT PART OF NATIVE TYPE

@@ -72,7 +72,7 @@ namespace RE
 		{}
 
 
-		inline CRC32StringCalculator(const char* a_str)
+		inline CRC32StringCalculator(const void* a_str)
 		{
 			operator=(a_str);
 		}
@@ -84,38 +84,7 @@ namespace RE
 		}
 
 	protected:
-		inline CRC32StringCalculator& operator=(const char* a_str)
-		{
-			CRC32Calculator<std::uint64_t> checksum((std::uint64_t)a_str);
-			_checksum = checksum;
-			return *this;
-		}
-
-		UInt32	_checksum;
-	};
-
-
-	// CI String hash calculator got inlined
-	class CRC32StringCalculatorCI
-	{
-	public:
-		inline CRC32StringCalculatorCI()
-		{}
-
-
-		inline CRC32StringCalculatorCI(const char* a_str)
-		{
-			operator=(a_str);
-		}
-
-
-		inline operator UInt32()
-		{
-			return _checksum;
-		}
-
-	protected:
-		inline CRC32StringCalculatorCI& operator=(const char* a_str)
+		inline CRC32StringCalculator& operator=(const void* a_str)
 		{
 			CRC32Calculator<std::uint64_t> checksum((std::uint64_t)a_str);
 			_checksum = checksum;
@@ -137,15 +106,7 @@ namespace RE
 	template <class Ty>
 	inline UInt32 CalcCRC32String(const Ty& a_val)
 	{
-		CRC32StringCalculator crc(a_val.c_str());
-		return crc;
-	}
-
-
-	template <class Ty>
-	inline UInt32 CalcCRC32StringCI(const Ty& a_val)
-	{
-		CRC32StringCalculatorCI<Ty> crc(a_val.c_str());
+		CRC32StringCalculator crc(a_val);
 		return crc;
 	}
 }

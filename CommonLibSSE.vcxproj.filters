@@ -249,9 +249,6 @@
     <ClCompile Include="src\RE\GFxLoader.cpp">
       <Filter>src\RE\Skyrim\Scaleform</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\GFxState.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\TESNPC.cpp">
       <Filter>src\RE\Skyrim\TESForms\Character</Filter>
     </ClCompile>
@@ -443,6 +440,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\NiExtraData.cpp">
       <Filter>src\RE\Skyrim\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GRefCountImplCore.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GRefCountImpl.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1402,6 +1405,33 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESMagicTargetForm.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GRefCountImplCore.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GRefCountImpl.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GRefCountBaseStatImpl.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GStats.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GStatGroups.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GStatHeaps.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GRefCountBase.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxTranslator.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScaleformTranslator.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
