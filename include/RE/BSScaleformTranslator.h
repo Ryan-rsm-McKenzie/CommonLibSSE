@@ -12,10 +12,10 @@ namespace RE
 		typedef BSTHashMap<wchar_t*, wchar_t*> TranslationTable;
 
 
-		virtual ~BSScaleformTranslator();						// 00
+		virtual ~BSScaleformTranslator();									// 00
 
 		// override (GFxTranslator)
-		virtual void GetTranslation(wchar_t*& a_key) override;	// 02
+		virtual void Translate(TranslateInfo* a_translateInfo) override;	// 02
 
 
 		// members

@@ -2,8 +2,7 @@
 
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/IMenu.h"  // IMenu
-
-class StandardItemData;
+#include "RE/StandardItemData.h"  // StandardItemData
 
 
 namespace RE
@@ -15,16 +14,29 @@ namespace RE
 	public:
 		struct InventoryData
 		{
+			struct Item
+			{
+				StandardItemData	data;	// 00
+				GFxValue			unk18;	// 18 - kObject
+				UInt64				unk30;	// 30
+				UInt64				unk38;	// 38
+			};
+			STATIC_ASSERT(sizeof(Item) == 0x40);
+
+
 			StandardItemData*	GetSelectedItemData();
 			void				Update(TESObjectREFR* a_owner);
 
 
 			// members
-			void*						unk00;				// 00
-			GFxValue					categoryListRoot;	// 08
-			GFxValue					unk20;				// 20
-			BSTArray<StandardItemData*>	items;				// 38
-			bool						selected;			// 68
+			void*			unk00;				// 00
+			GFxValue		categoryListRoot;	// 08 - kDisplayObject
+			GFxValue		unk20;				// 20 - kArray
+			BSTArray<Item*>	items;				// 38
+			bool			selected;			// 50
+			UInt8			unk41;				// 51
+			UInt16			unk42;				// 52
+			UInt32			unk44;				// 54
 		};
 
 
@@ -37,19 +49,17 @@ namespace RE
 
 
 		// members
-		GFxValue		root;				// 30 - view->GetVariable(&root, "Menu_mc")
-		InventoryData*	inventoryData;		// 48 - init'd 0
-		GFxValue*		unk50;				// 50 - init'd 0
-		GFxValue*		unk58;				// 58 - init'd 0
+		GFxValue		root;				// 30 - kDisplayObject
+		InventoryData*	inventoryData;		// 48
+		GFxValue*		unk50;				// 50 - kObject
+		GFxValue*		unk58;				// 58 - kObject
 		BSTArray<void*>	unk60;				// 60
-		UInt32			unk78;				// 78 - init'd 0
-		UInt32			unk7C;				// 7C - init'd 0
-		bool			bPCControlsReady;	// 80 - init'd 0 root.GetMember("bPCControlsReady", tmpValue)
+		UInt32			unk78;				// 78
+		UInt32			unk7C;				// 7C
+		bool			pcControlsReady;	// 80
 		UInt8			pad81;				// 81
 		UInt16			pad82;				// 82
 		UInt32			pad84;				// 84
 	};
-	STATIC_ASSERT(offsetof(InventoryMenu, root) == 0x30);
-	STATIC_ASSERT(offsetof(InventoryMenu, inventoryData) == 0x48);
 	STATIC_ASSERT(sizeof(InventoryMenu) == 0x88);
 }

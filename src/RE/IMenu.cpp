@@ -2,16 +2,19 @@
 
 #include "skse64/GameMenus.h"  // IMenu
 
+#include <cstring>  // memset
+
 
 namespace RE
 {
-	IMenu::IMenu() :
-		view(0),
-		menuDepth(3),
-		flags(Flag::kNone),
-		context(Context::kInvalid),
-		unk18(0)
-	{}
+	IMenu::IMenu()
+	{
+		memset(this, 0, sizeof(IMenu));
+
+		menuDepth = 3;
+		flags = Flag::kNone;
+		context = Context::kInvalid;
+	}
 
 
 	IMenu::~IMenu()
@@ -74,103 +77,103 @@ namespace RE
 	}
 
 
-	bool IMenu::PausesGame()
+	bool IMenu::PausesGame() const
 	{
 		return (flags & Flag::kPauseGame) != Flag::kNone;
 	}
 
 
-	bool IMenu::DeletesOnClose()
+	bool IMenu::DeletesOnClose() const
 	{
 		return (flags & Flag::kDoNotDeleteOnClose) == Flag::kNone;
 	}
 
 
-	bool IMenu::ShowsCursor()
+	bool IMenu::ShowsCursor() const
 	{
 		return (flags & Flag::kShowCursor) != Flag::kNone;
 	}
 
 
-	bool IMenu::HasFlag0008()
+	bool IMenu::HasFlag0008() const
 	{
 		return (flags & Flag::kUnk0008) != Flag::kNone;
 	}
 
 
-	bool IMenu::IsModal()
+	bool IMenu::IsModal() const
 	{
 		return (flags & Flag::kModal) != Flag::kNone;
 	}
 
 
-	bool IMenu::StopsDrawingWorld()
+	bool IMenu::StopsDrawingWorld() const
 	{
 		return (flags & Flag::kStopDrawingWorld) != Flag::kNone;
 	}
 
 
-	bool IMenu::IsOpen()
+	bool IMenu::IsOpen() const
 	{
 		return (flags & Flag::kOpen) != Flag::kNone;
 	}
 
 
-	bool IMenu::PreventsGameLoad()
+	bool IMenu::PreventsGameLoad() const
 	{
 		return (flags & Flag::kPreventGameLoad) != Flag::kNone;
 	}
 
 
-	bool IMenu::HasFlag0100()
+	bool IMenu::HasFlag0100() const
 	{
 		return (flags & Flag::kUnk0100) != Flag::kNone;
 	}
 
 
-	bool IMenu::HidesOtherMenus()
+	bool IMenu::HidesOtherMenus() const
 	{
 		return (flags & Flag::kHideOther) != Flag::kNone;
 	}
 
 
-	bool IMenu::HasFlag0400()
+	bool IMenu::HasFlag0400() const
 	{
 		return (flags & Flag::kUnk0400) != Flag::kNone;
 	}
 
 
-	bool IMenu::PreventsGameSave()
+	bool IMenu::PreventsGameSave() const
 	{
 		return (flags & Flag::kDoNotPreventGameSave) == Flag::kNone;
 	}
 
 
-	bool IMenu::HasFlag1000()
+	bool IMenu::HasFlag1000() const
 	{
 		return (flags & Flag::kUnk1000) != Flag::kNone;
 	}
 
 
-	bool IMenu::IsItemMenu()
+	bool IMenu::IsItemMenu() const
 	{
 		return (flags & Flag::kItemMenu) != Flag::kNone;
 	}
 
 
-	bool IMenu::StopsCrosshairUpdates()
+	bool IMenu::StopsCrosshairUpdates() const
 	{
 		return (flags & Flag::kStopCrosshairUpdate) != Flag::kNone;
 	}
 
 
-	bool IMenu::HasFlag8000()
+	bool IMenu::HasFlag8000() const
 	{
 		return (flags & Flag::kUnk8000) != Flag::kNone;
 	}
 
 
-	bool IMenu::HasFlag10000()
+	bool IMenu::HasFlag10000() const
 	{
 		return (flags & Flag::kUnk10000) != Flag::kNone;
 	}

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/GFxMovieView.h"  // RE::GFxMovieView::ScaleModeType
+#include "RE/GFxMovieView.h"  // GFxMovieView::ScaleModeType
 
 
 namespace RE

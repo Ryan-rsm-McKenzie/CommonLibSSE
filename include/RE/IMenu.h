@@ -6,12 +6,14 @@
 #include "RE/InputMappingManager.h"  // InputMappingManager::Context
 
 class CallbackProcessor;
-class GRefCountBase;
 class UIMessage;
 
 
 namespace RE
 {
+	class FxDelegate;
+
+
 	class IMenu : public FxDelegateHandler
 	{
 	private:
@@ -56,40 +58,41 @@ namespace RE
 		virtual void	Accept(CallbackProcessor* a_processor) override;	// 01 - {}
 
 		// add
-		virtual void	OnOpen();											// 02 - {}
-		virtual void	Unk_03(void);										// 03 - {}
+		virtual void	OnOpen();											// 02 - { return; }
+		virtual void	Unk_03(void);										// 03 - { return; }
 		virtual Result	ProcessMessage(UIMessage* a_message);				// 04
 		virtual void	NextFrame(UInt32 a_arg1, UInt32 a_arg2);			// 05
 		virtual void	Render();											// 06
-		virtual void	Unk_07(void);										// 07 - {}
+		virtual void	Unk_07(void);										// 07 - { return; }
 		virtual void	InitMovie();										// 08
 
-		bool			PausesGame();
-		bool			DeletesOnClose();
-		bool			ShowsCursor();
-		bool			HasFlag0008();
-		bool			IsModal();
-		bool			StopsDrawingWorld();
-		bool			IsOpen();
-		bool			PreventsGameLoad();
-		bool			HasFlag0100();
-		bool			HidesOtherMenus();
-		bool			HasFlag0400();
-		bool			PreventsGameSave();
-		bool			HasFlag1000();
-		bool			IsItemMenu();
-		bool			StopsCrosshairUpdates();
-		bool			HasFlag8000();
-		bool			HasFlag10000();
+		bool			PausesGame() const;
+		bool			DeletesOnClose() const;
+		bool			ShowsCursor() const;
+		bool			HasFlag0008() const;
+		bool			IsModal() const;
+		bool			StopsDrawingWorld() const;
+		bool			IsOpen() const;
+		bool			PreventsGameLoad() const;
+		bool			HasFlag0100() const;
+		bool			HidesOtherMenus() const;
+		bool			HasFlag0400() const;
+		bool			PreventsGameSave() const;
+		bool			HasFlag1000() const;
+		bool			IsItemMenu() const;
+		bool			StopsCrosshairUpdates() const;
+		bool			HasFlag8000() const;
+		bool			HasFlag10000() const;
 
 
 		GFxMovieView*	view;		// 10 - init'd to 0, view->Release() called in dtor
 		UInt8			menuDepth;	// 18 - init'd to 3
-		UInt8			pad19[3];	// 19
+		UInt8			pad19;		// 19
+		UInt16			pad20;		// 1A
 		Flag			flags;		// 1C - init'd to 0
-		Context			context;	// 20 - input context - init'd to 0x12 (kContext_Invalid)
+		Context			context;	// 20 - input context - init'd to 0x12 (Context::kInvalid)
 		UInt32			pad24;		// 24
-		GRefCountBase*	unk18;		// 28 - FxDelegate
+		FxDelegate*		fxDelegate;	// 28
 	};
 	STATIC_ASSERT(offsetof(IMenu, view) == 0x10);
 	STATIC_ASSERT(sizeof(IMenu) == 0x30);

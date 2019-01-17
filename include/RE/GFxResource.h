@@ -1,51 +1,57 @@
 #pragma once
 
+#include "RE/NewOverrideBase.h"  // NewOverrideBase
+
 
 namespace RE
 {
-	class GFxResource
+	// Resource is an interface for casting to different types of resources.
+	class GFxResource : public NewOverrideBase<>
 	{
 	public:
-		enum ResourceType
+		// Different types of resources.
+		enum class ResourceType
 		{
-			RT_CharacterDef_Bit = 0x0080,
-			RT_None = 0,
-			RT_Image,
-			RT_Font,
-			RT_MovieDef,
-			RT_SoundSample,
-			RT_MovieDataDef = RT_CharacterDef_Bit | 0,
-			RT_ButtonDef,
-			RT_TextDef,
-			RT_EditTextDef,
-			RT_SpriteDef,
-			RT_ShapeDef,
-			RT_VideoDef,
-			RT_TypeCode_Mask = 0xFF00,
-			RT_TypeCode_Shift = 8
+			kCharacterDef_Bit = 0x0080,
+			kNone = 0,
+			kImage,
+			kFont,
+			kMovieDef,
+			kSoundSample,
+			kMovieDataDef = kCharacterDef_Bit | 0,
+			kButtonDef,
+			kTextDef,
+			kEditTextDef,
+			kSpriteDef,
+			kShapeDef,
+			kVideoDef,
+			kTypeCode_Mask = 0xFF00,
+			kTypeCode_Shift = 8
 		};
 
 
-		enum ResourceUse
+		// An enumeration listing the attributes of the image resource to use such as bitmap, gradient or font texture etc.
+		enum class ResourceUse
 		{
-			Use_None = 0,
-			Use_Bitmap = 1,
-			Use_Gradient = 2,
-			Use_FontTexture = 3,
-			Use_SoundSample = 4,
-			Use_TypeCode_Mask = 0xFF
+			kNone = 0,
+			kBitmap = 1,
+			kGradient = 2,
+			kFontTexture = 3,
+			kSoundSample = 4,
+			kTypeCode_Mask = 0xFF
 		};
 
 
-		virtual ~GFxResource();
+		virtual ~GFxResource();			// 00
 
-		virtual void	Unk_00();
-		virtual void	Unk_01();
-		virtual void	Unk_02();
+		// add
+		virtual void	Unk_01(void);	// 01
+		virtual void	Unk_02(void);	// 02
+		virtual void	Unk_03(void);	// 03
 
-		void			AddRef();
-		void			Release();
-		bool			AddRef_NotZero();
-		SInt32			GetRefCount() const;
+		void	AddRef();
+		bool	AddRef_NotZero();
+		SInt32	GetRefCount() const;
+		void	Release();
 	};
 }

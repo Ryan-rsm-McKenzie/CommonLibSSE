@@ -8,7 +8,8 @@
 
 namespace RE
 {
-	template <class Ty, GStat Stat = GStat::kDefaultMem>
+	// Overrides new/delete operators to use MemoryHeap
+	template <class C, GStat Stat = GStat::kDefaultMem>
 	class GRefCountBase : public GRefCountBaseStatImpl<GRefCountImpl, Stat>
 	{
 	public:

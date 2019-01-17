@@ -13,7 +13,10 @@ namespace RE
 
 		virtual ~GRefCountImplCore();	// 00
 
-		constexpr SInt32 GetRefCount() const { return refCount; }
+		constexpr SInt32 GetRefCount() const
+		{
+			return refCount;
+		}
 
 
 	protected:

@@ -447,6 +447,9 @@
     <ClCompile Include="src\RE\GRefCountImpl.cpp">
       <Filter>src\RE\Skyrim\Scaleform</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\GFxTranslator.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -1418,12 +1421,6 @@
     <ClInclude Include="include\RE\GStats.h">
       <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\GStatGroups.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GStatHeaps.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\GRefCountBase.h">
       <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
@@ -1431,6 +1428,27 @@
       <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSScaleformTranslator.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxExternalInterface.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FxDelegate.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\StandardItemData.h">
+      <Filter>include\RE\Skyrim\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SFTypes.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NewOverrideBase.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PlayStates.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxFunctionHandler.h">
       <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
   </ItemGroup>

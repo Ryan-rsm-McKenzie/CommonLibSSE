@@ -6,35 +6,35 @@ namespace RE
 	class GFxFileConstants
 	{
 	public:
-
-		// All File formats supported and/or used by GFx.
-		enum FileFormatType
+		// FileFormatType is an enumeration including all file formats supported and/or used by GFx.
+		enum class FileFormatType
 		{
-			File_Unopened,
-			File_Unknown,
-
-			// SWF file formats.
-			File_SWF,
-			File_GFX,
-
-			// Image formats supported by Flash.
-			File_JPEG = 10,
-			File_PNG = 11,
-			File_GIF = 12,
-			// Other image formats.
-			File_TGA = 13,
-			File_DDS = 14,
-			File_HDR = 15,
-			File_BMP = 16,
-			File_DIB = 17,
-			File_PFM = 18,
-			File_TIFF = 19,
-
-			// Sound formats
-			File_WAVE = 20,
-
-			File_NextAvail,
-			File_Original = 65535
+			kUnopened,				// No attempt was made to open file, so its format is not yet determined
+			kUnknown,				// The file was opened, but its format is unknown
+			kSWF,					// SWF file formats
+			kGFX,					// GFX file format (extracted SWF)
+			kJPEG = 10,				// JPEG image file format
+			kPNG = 11,				// PNG image file format
+			kGIF = 12,				// GIF image file format
+			kTGA = 13,				// TGA image file format
+			kDDS = 14,				// DDS compressed texture file format
+			kHDR = 15,				// HDR image file format
+			kBMP = 16,				// BMP image file format
+			kDIB = 17,				// DIB image file format
+			kPFM = 18,				// PFM image file format
+			kTIFF = 19,				// TIFF image file format
+			kWAVE = 20,				// WAVE image file format
+			kPVR = 21,				// PVR image file format
+			kETC = 22,				// ETC image file format
+			kSIF = 23,
+			kGXT = 24,
+			kGTX = 25,
+			kGNF = 26,
+			kKTX = 27,
+			kNextAvail,
+			kDDSBC = 65533,
+			kMultiFormat = 65534,
+			kOriginal = 65535
 		};
 	};
 }

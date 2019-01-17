@@ -248,6 +248,7 @@
     <ClCompile Include="src\RE\TESTopicInfo.cpp" />
     <ClCompile Include="src\RE\TESWorldSpace.cpp" />
     <ClCompile Include="src\RE\ThumbstickEvent.cpp" />
+    <ClCompile Include="src\RE\GFxTranslator.cpp" />
     <ClCompile Include="src\RE\UIManager.cpp" />
     <ClCompile Include="src\RE\UIStringHolder.cpp" />
   </ItemGroup>
@@ -366,7 +367,10 @@
     <ClInclude Include="include\RE\ExtraUniqueID.h" />
     <ClInclude Include="include\RE\FavoritesHandler.h" />
     <ClInclude Include="include\RE\FormTypes.h" />
+    <ClInclude Include="include\RE\FxDelegate.h" />
+    <ClInclude Include="include\RE\GFxExternalInterface.h" />
     <ClInclude Include="include\RE\GFxFileConstants.h" />
+    <ClInclude Include="include\RE\GFxFunctionHandler.h" />
     <ClInclude Include="include\RE\GFxLoader.h" />
     <ClInclude Include="include\RE\GFxMovie.h" />
     <ClInclude Include="include\RE\GFxMovieDef.h" />
@@ -404,8 +408,6 @@
     <ClInclude Include="include\RE\GRefCountImpl.h" />
     <ClInclude Include="include\RE\GRefCountImplCore.h" />
     <ClInclude Include="include\RE\GStats.h" />
-    <ClInclude Include="include\RE\GStatGroups.h" />
-    <ClInclude Include="include\RE\GStatHeaps.h" />
     <ClInclude Include="include\RE\HeldStateHandler.h" />
     <ClInclude Include="include\RE\hkBaseObject.h" />
     <ClInclude Include="include\RE\hkpAllCdPointCollector.h" />
@@ -460,6 +462,7 @@
     <ClInclude Include="include\RE\MenuOpenHandler.h" />
     <ClInclude Include="include\RE\MiddleProcess.h" />
     <ClInclude Include="include\RE\MoviePlayer.h" />
+    <ClInclude Include="include\RE\NewOverrideBase.h" />
     <ClInclude Include="include\RE\NiBoneMatrixSetterI.h" />
     <ClInclude Include="include\RE\NiCamera.h" />
     <ClInclude Include="include\RE\NiExtraData.h" />
@@ -476,6 +479,7 @@
     <ClInclude Include="include\RE\NiTPointerMap.h" />
     <ClInclude Include="include\RE\PackageLocation.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
+    <ClInclude Include="include\RE\PlayStates.h" />
     <ClInclude Include="include\RE\Script.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
     <ClInclude Include="include\RE\ExtraContainerChanges.h" />
@@ -509,11 +513,13 @@
     <ClInclude Include="include\RE\RunHandler.h" />
     <ClInclude Include="include\RE\ScrollItem.h" />
     <ClInclude Include="include\RE\SetEventData.h" />
+    <ClInclude Include="include\RE\SFTypes.h" />
     <ClInclude Include="include\RE\ShoutHandler.h" />
     <ClInclude Include="include\RE\SneakHandler.h" />
     <ClInclude Include="include\RE\SoundData.h" />
     <ClInclude Include="include\RE\SpellItem.h" />
     <ClInclude Include="include\RE\SprintHandler.h" />
+    <ClInclude Include="include\RE\StandardItemData.h" />
     <ClInclude Include="include\RE\StringCache.h" />
     <ClInclude Include="include\RE\TESActorBase.h" />
     <ClInclude Include="include\RE\TESActorBaseData.h" />
