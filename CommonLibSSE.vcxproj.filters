@@ -450,6 +450,9 @@
     <ClCompile Include="src\RE\GFxTranslator.cpp">
       <Filter>src\RE\Skyrim\Scaleform</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\TESRace.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Character</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">

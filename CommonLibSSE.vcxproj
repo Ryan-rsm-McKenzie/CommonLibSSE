@@ -244,6 +244,7 @@
     <ClCompile Include="src\RE\TESObjectLIGH.cpp" />
     <ClCompile Include="src\RE\TESObjectREFR.cpp" />
     <ClCompile Include="src\RE\TESObjectWEAP.cpp" />
+    <ClCompile Include="src\RE\TESRace.cpp" />
     <ClCompile Include="src\RE\TESTopic.cpp" />
     <ClCompile Include="src\RE\TESTopicInfo.cpp" />
     <ClCompile Include="src\RE\TESWorldSpace.cpp" />

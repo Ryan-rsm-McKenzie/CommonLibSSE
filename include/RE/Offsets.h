@@ -160,8 +160,6 @@ namespace RE
 	constexpr uintptr_t SEND_ITEMS_PICK_POCKETED_EVENT = 0x008607E0;							// 1_5_62
 	// 48 83 EC 38 80 7C 24 70  00 F3 0F 10 15 5F 3A A4
 	constexpr uintptr_t GET_PICK_POCKET_CHANCE = 0x003BD130;									// 1_5_62
-	// 40 53 48 83 EC 20 83 3D  CB D9 DE 01 02 48 8B D9
-	constexpr uintptr_t HEAP_ALLOC_ABSTRACTION = 0x000F6D30;									// 1_5_62
 
 	constexpr uintptr_t FIRST_PERSON_STATE_VTBL = 0x016C3EC0;									// 1_5_62
 	constexpr uintptr_t THIRD_PERSON_STATE_VTBL = 0x01649300;									// 1_5_62

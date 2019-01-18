@@ -283,7 +283,7 @@ namespace RE
 		bool		IsTrespassing() const;
 		void		DispelWornItemEnchantments();
 		SInt32		SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);	// ret -1 == internal error, 0 == didn't get caught, 1 == got caught
-		SInt32		CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_unk);
+		SInt32		CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems);
 		SInt32		GetDetectionLevel(Actor* a_target, UInt32 a_flag);
 		bool		IsGhost();
 		bool		IsSummoned();

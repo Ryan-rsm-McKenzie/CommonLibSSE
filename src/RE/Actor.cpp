@@ -233,11 +233,11 @@ namespace RE
 	}
 
 
-	SInt32 Actor::CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_unk)
+	SInt32 Actor::CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems)
 	{
-		typedef SInt32 _CalcEntryValue_t(Actor* a_this, InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_unk);
+		typedef SInt32 _CalcEntryValue_t(Actor* a_this, InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems);
 		RelocAddr<_CalcEntryValue_t*> _CalcEntryValue(ACTOR_CALC_ENTRY_VALUE);
-		return _CalcEntryValue(this, a_entryData, a_numItems, a_unk);
+		return _CalcEntryValue(this, a_entryData, a_numItems, a_multiplyValueByRemainingItems);
 	}
 
 

@@ -340,6 +340,8 @@ namespace RE
 		virtual const char*	GetName();							// 32
 		virtual bool		SetName(const char* a_str);			// 33
 
+		bool	AllowsPickpocket() const;
+
 
 		// members
 		TESModel					skeletalModels[Sexes::kTotal];					// 098 - ANAM

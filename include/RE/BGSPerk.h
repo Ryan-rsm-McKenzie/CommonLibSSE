@@ -26,21 +26,21 @@ namespace RE
 		class FindPerkInRanksVisitor : public PerkRankVisitor
 		{
 		public:
-			virtual void Visit();	// 0
+			virtual bool operator()(const BGSPerkRankArray::Data* a_entry) override;	// 00
 		};
 
 
 		class ApplyPerksVisitor : public PerkRankVisitor
 		{
 		public:
-			virtual void Visit();	// 0
+			virtual bool operator()(const BGSPerkRankArray::Data* a_entry) override;	// 00
 		};
 
 
 		class AddPerkVisitor : public PerkRankVisitor
 		{
 		public:
-			virtual void Visit();	// 0
+			virtual bool operator()(const BGSPerkRankArray::Data* a_entry) override;	// 00
 		};
 
 

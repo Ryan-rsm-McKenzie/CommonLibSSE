@@ -2,14 +2,13 @@
 
 #include "skse64_common/Relocation.h"  // RelocAddr
 #include "skse64/GameExtraData.h"  // ::InventoryEntryData::EquipData
-#include "skse64/GameTypes.h"  // tList
+#include "RE/FormTypes.h"  // TESForm
 
 #include "RE/BSTList.h"  // BSSimpleList
-#include "RE/Memory.h"  // TES_HEAP_REDEFINE_ABSTRACT_NEW()
+#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
 
 class BaseExtraList;
 class InventoryEntryData;
-class TESForm;
 
 
 namespace RE
@@ -32,7 +31,7 @@ namespace RE
 		void				InitContainer();
 		void				GenerateLeveledListChanges();
 
-		TES_HEAP_REDEFINE_ABSTRACT_NEW();
+		TES_HEAP_REDEFINE_NEW();
 
 
 		BSSimpleList<InventoryEntryData*>*	entryList;		// 00
