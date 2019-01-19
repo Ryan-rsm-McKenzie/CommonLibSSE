@@ -172,6 +172,9 @@
     <Filter Include="include\RE\Skyrim\BSHavok">
       <UniqueIdentifier>{6c265c0a-71fe-441c-b66e-6b3535e75008}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\DistantTerrain">
+      <UniqueIdentifier>{2d33c3db-4671-4a07-a8c5-3f6f09c34837}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -1453,6 +1456,21 @@
     </ClInclude>
     <ClInclude Include="include\RE\GFxFunctionHandler.h">
       <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSShaderParticleGeometryData.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESFile.h">
+      <Filter>include\RE\Skyrim\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSDistantTreeBlock.h">
+      <Filter>include\RE\Skyrim\DistantTerrain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAddonNode.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSoundCategory.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

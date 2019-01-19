@@ -254,6 +254,9 @@
     <ClCompile Include="src\RE\UIStringHolder.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\RE\BGSAddonNode.h" />
+    <ClInclude Include="include\RE\BGSDistantTreeBlock.h" />
+    <ClInclude Include="include\RE\BGSShaderParticleGeometryData.h" />
     <ClInclude Include="include\Logging.h" />
     <ClInclude Include="include\RE\ActivateHandler.h" />
     <ClInclude Include="include\RE\ActiveEffect.h" />
@@ -290,6 +293,7 @@
     <ClInclude Include="include\RE\BGSPerk.h" />
     <ClInclude Include="include\RE\BGSPickupPutdownSounds.h" />
     <ClInclude Include="include\RE\BGSSkinForm.h" />
+    <ClInclude Include="include\RE\BGSSoundCategory.h" />
     <ClInclude Include="include\RE\BGSSoundDescriptor.h" />
     <ClInclude Include="include\RE\BGSSoundDescriptorForm.h" />
     <ClInclude Include="include\RE\BGSStandardSoundDef.h" />
@@ -586,6 +590,7 @@
     <ClInclude Include="include\RE\UISaveLoadManager.h" />
     <ClInclude Include="include\RE\UIStringHolder.h" />
     <ClInclude Include="include\RE\UserEventEnabledEvent.h" />
+    <ClInclude Include="include\RE\TESFile.h" />
     <ClInclude Include="include\Util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

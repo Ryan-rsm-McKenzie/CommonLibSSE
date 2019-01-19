@@ -5,10 +5,9 @@
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
 #include "RE/FormTypes.h"  // FormType
 #include "RE/NiTArray.h"  // NiTPrimitiveArray
+#include "RE/TESFile.h" // TESFile
 
 class TESRegionList;
-struct ModInfo;
-
 
 namespace RE
 {
@@ -20,9 +19,9 @@ namespace RE
 
 		struct ModList
 		{
-			BSSimpleList<ModInfo*>	loadOrder;		// 00 - TESDataHandler D60
-			BSTArray<ModInfo*>		loadedMods;		// 10 - TESDataHandler D70
-			BSTArray<ModInfo*>		loadedCCMods;	// 28 - TESDataHandler D88
+			BSSimpleList<TESFile*>	loadOrder;		// 00 - TESDataHandler D60
+			BSTArray<TESFile*>		loadedMods;		// 10 - TESDataHandler D70
+			BSTArray<TESFile*>		loadedCCMods;	// 28 - TESDataHandler D88
 		};
 		STATIC_ASSERT(sizeof(ModList) == 0x40);
 
@@ -30,15 +29,15 @@ namespace RE
 		static TESDataHandler*	GetSingleton();
 		UInt32					LoadScripts();
 
-		const ModInfo*			LookupModByName(const char* a_modName);
+		const TESFile*			LookupModByName(const char* a_modName);
 		SInt32					GetModIndex(const char* a_modName);
 
-		const ModInfo*			LookupLoadedModByName(const char* a_modName);
-		const ModInfo*			LookupLoadedModByIndex(UInt8 a_index);
+		const TESFile*			LookupLoadedModByName(const char* a_modName);
+		const TESFile*			LookupLoadedModByIndex(UInt8 a_index);
 		UInt8					GetLoadedModIndex(const char* a_modName);
 
-		const ModInfo*			LookupLoadedLightModByName(const char* a_modName);
-		const ModInfo*			LookupLoadedLightModByIndex(UInt16 a_index);
+		const TESFile*			LookupLoadedLightModByName(const char* a_modName);
+		const TESFile*			LookupLoadedLightModByIndex(UInt16 a_index);
 		UInt16					GetLoadedLightModIndex(const char* a_modName);
 
 		bool					IsGeneratedID(UInt32 a_formID);

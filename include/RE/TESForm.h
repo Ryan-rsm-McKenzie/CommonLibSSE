@@ -4,9 +4,7 @@
 
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/FormTypes.h"  // FormType
-
-class TESFile;
-
+#include "RE/TESFile.h" // TESFile
 
 namespace RE
 {
