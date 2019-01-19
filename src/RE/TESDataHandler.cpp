@@ -1,3 +1,4 @@
+#include "RE/TESFile.h"
 #include "RE/TESDataHandler.h"
 
 #include "skse64/GameData.h"  // DataHandler
@@ -22,9 +23,9 @@ namespace RE
 	}
 
 
-	const ModInfo* TESDataHandler::LookupModByName(const char* a_modName)
+	const TESFile* TESDataHandler::LookupModByName(const char* a_modName)
 	{
-		typedef ModInfo* _LookupModByName_t(TESDataHandler* a_this, const char* a_modName);
+		typedef TESFile* _LookupModByName_t(TESDataHandler* a_this, const char* a_modName);
 		_LookupModByName_t* _LookupModByName = reinterpret_cast<_LookupModByName_t*>(GetFnAddr(&::DataHandler::LookupModByName));
 		return _LookupModByName(this, a_modName);
 	}
@@ -38,15 +39,15 @@ namespace RE
 	}
 
 
-	const ModInfo* TESDataHandler::LookupLoadedModByName(const char* a_modName)
+	const TESFile* TESDataHandler::LookupLoadedModByName(const char* a_modName)
 	{
-		typedef ModInfo* _LookupLoadedModByName_t(TESDataHandler* a_this, const char* a_modName);
+		typedef TESFile* _LookupLoadedModByName_t(TESDataHandler* a_this, const char* a_modName);
 		_LookupLoadedModByName_t* _LookupLoadedModByName = reinterpret_cast<_LookupLoadedModByName_t*>(GetFnAddr(&::DataHandler::LookupLoadedModByName));
 		return _LookupLoadedModByName(this, a_modName);
 	}
 
 
-	const ModInfo* TESDataHandler::LookupLoadedModByIndex(UInt8 a_index)
+	const TESFile* TESDataHandler::LookupLoadedModByIndex(UInt8 a_index)
 	{
 		for (auto& mod : modList.loadedMods) {
 			if (mod->modIndex == a_index) {
@@ -65,15 +66,15 @@ namespace RE
 	}
 
 
-	const ModInfo* TESDataHandler::LookupLoadedLightModByName(const char* a_modName)
+	const TESFile* TESDataHandler::LookupLoadedLightModByName(const char* a_modName)
 	{
-		typedef ModInfo* _LookupLoadedLightModByName_t(TESDataHandler* a_this, const char* a_modName);
+		typedef TESFile* _LookupLoadedLightModByName_t(TESDataHandler* a_this, const char* a_modName);
 		_LookupLoadedLightModByName_t* _LookupLoadedLightModByName = reinterpret_cast<_LookupLoadedLightModByName_t*>(GetFnAddr(&::DataHandler::LookupLoadedLightModByName));
 		return _LookupLoadedLightModByName(this, a_modName);
 	}
 
 
-	const ModInfo* TESDataHandler::LookupLoadedLightModByIndex(UInt16 a_index)
+	const TESFile* TESDataHandler::LookupLoadedLightModByIndex(UInt16 a_index)
 	{
 		for (auto& lightMod : modList.loadedCCMods) {
 			if (lightMod->lightIndex == a_index) {
