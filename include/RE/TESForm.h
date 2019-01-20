@@ -2,14 +2,15 @@
 
 #include "skse64/GameFormComponents.h"  // BaseFormComponent
 
-#include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/FormTypes.h"  // FormType
-#include "RE/TESFile.h" // TESFile
+
 
 namespace RE
 {
 	class BGSLoadFormBuffer;
 	class BGSSaveFormBuffer;
+	class BSFixedString;
+	class TESFile;
 
 
 	class TESForm : public BaseFormComponent

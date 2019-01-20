@@ -3,49 +3,72 @@
 
 namespace RE
 {
-	UInt32 ActorState::GetSitState() const
+	ActorState::SitState ActorState::GetSitState() const
 	{
-		UInt32 state = (flags08 >> 0x0E) & 0x0F;
-		switch (state) {
-		case 1:
-		case 2:
-			return kSitState_WantsToSit;
-		case 3:
-			return kSitState_Sitting;
-		case 4:
-			return kSitState_WantsToStand;
+		StatePun statePun(flags08.primaryAnimState1, flags08.primaryAnimState2, flags08.primaryAnimState3, flags08.primaryAnimState4);
+		switch (statePun.primaryAnimState) {
+		case PrimaryAnimState::kSit1:
+		case PrimaryAnimState::kSit2:
+			return SitState::kWantsToSit;
+		case PrimaryAnimState::kSit3:
+			return SitState::kSitting;
+		case PrimaryAnimState::kSit4:
+			return SitState::kWantsToStand;
 		default:
-			return kSitState_NotSitting;
+			return SitState::kNotSitting;
 		}
 	}
 
 
-	UInt32 ActorState::GetSleepState() const
+	ActorState::SleepState ActorState::GetSleepState() const
 	{
-		UInt32 state = (flags08 >> 0x0E) & 0x0F;
-		switch (state) {
-		case 5:
-		case 6:
-			return kSleepState_WantsToSleep;
-		case 7:
-			return kSleepState_Sleeping;
-		case 8:
-			return kSleepState_WantsToWake;
+		StatePun statePun(flags08.primaryAnimState1, flags08.primaryAnimState2, flags08.primaryAnimState3, flags08.primaryAnimState4);
+		switch (statePun.primaryAnimState) {
+		case PrimaryAnimState::kSleep5:
+		case PrimaryAnimState::kSleep6:
+			return SleepState::kWantsToSleep;
+		case PrimaryAnimState::kSleep7:
+			return SleepState::kSleeping;
+		case PrimaryAnimState::kSleep8:
+			return SleepState::kWantsToWake;
 		default:
-			return kSleepState_NotSleeping;
+			return SleepState::kNotSleeping;
 		}
 	}
 
 
-	UInt32 ActorState::GetFlyingState() const
+	ActorState::FlyingState ActorState::GetFlyingState() const
 	{
-		return (flags08 >> 0x12) & 0x07;
+		StatePun statePun(flags08.flyingState1, flags08.flyingState2, flags08.flyingState3, 0);
+		switch (statePun.flyingState) {
+		case FlyingState::kTakingOff:
+		case FlyingState::kCruising:
+		case FlyingState::kHovering:
+		case FlyingState::kLanding:
+			return statePun.flyingState;
+		default:
+			return FlyingState::kNotFlying;
+		}
+	}
+
+
+	ActorState::AttackState ActorState::GetAttackState() const
+	{
+		StatePun statePun(flags08.attackState1, flags08.attackState2, flags08.attackState3, flags08.attackState4);
+		return statePun.attackState;
 	}
 
 
 	bool ActorState::IsBleedingOut() const
 	{
-		UInt32 state = (flags08 >> 0x15) & 0x0F; return (state == 7 || state == 8);
+		StatePun statePun(flags08.secondaryAnimState1, flags08.secondaryAnimState2, flags08.secondaryAnimState3, flags08.secondaryAnimState4);
+		switch (statePun.secondaryAnimState) {
+		case SecondaryAnimState::kBleedOut7:
+		case SecondaryAnimState::kBleedOut8:
+			return true;
+		default:
+			return false;
+		}
 	}
 
 
@@ -57,30 +80,37 @@ namespace RE
 
 	bool ActorState::IsSneaking() const
 	{
-		return (flags08 & kState_Sneaking) != 0;
+		return flags08.sneaking;
 	}
 
 
 	bool ActorState::IsSwimming() const
 	{
-		return (flags08 & kState_Swimming) != 0;
+		return flags08.swimming;
 	}
 
 
 	bool ActorState::IsSprinting() const
 	{
-		return (flags08 & kState_Sprinting) != 0;
+		return flags08.sprinting;
 	}
 
 
 	bool ActorState::IsFlying() const
 	{
-		UInt32 flyingState = GetFlyingState(); return (flyingState != 0) && (flyingState != 5);
+		switch (GetFlyingState()) {
+		case FlyingState::kNotFlying:
+		case FlyingState::kUnkState:
+			return false;
+		default:
+			return true;
+		}
 	}
 
 
 	bool ActorState::IsUnconscious() const
 	{
-		return (flags08 & 0x01E00000) == 0x00600000;
+		StatePun statePun(flags08.secondaryAnimState1, flags08.secondaryAnimState2, flags08.secondaryAnimState3, flags08.secondaryAnimState4);
+		return statePun.secondaryAnimState == SecondaryAnimState::kUnconscious3;
 	}
 }

@@ -1,6 +1,6 @@
 #include "RE/CommandTable.h"
 
-#include "skse64/ObScript.h"  //
+#include "skse64/ObScript.h"  // g_firstObScriptCommand, g_firstConsoleCommand
 
 #include <string>  // string
 

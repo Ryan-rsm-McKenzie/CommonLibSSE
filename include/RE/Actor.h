@@ -1,7 +1,5 @@
 #pragma once
 
-#include "skse64/GameReferences.h"  // IPostAnimationChannelUpdateFunctor
-
 #include "RE/ActiveEffect.h"  // ActiveEffect
 #include "RE/ActorProcessManager.h"  // ActorProcessManager
 #include "RE/ActorState.h"  // ActorState
@@ -12,6 +10,7 @@
 #include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/FormTypes.h"  // BGSPerk, TESRace, TESFaction
+#include "RE/IPostAnimationChannelUpdateFunctor.h"  // IPostAnimationChannelUpdateFunctor
 #include "RE/MagicTarget.h"  // MagicTarget
 #include "RE/TESNPC.h"  // TESNPC
 #include "RE/TESObjectREFR.h"  // TESObjectREFR

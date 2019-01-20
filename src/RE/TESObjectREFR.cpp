@@ -126,17 +126,17 @@ namespace RE
 		if (baseForm) {
 			switch (baseForm->formType) {
 			case FormType::Container:
-			{
-				TESObjectCONT* cont = static_cast<TESObjectCONT*>(baseForm);
-				container = static_cast<TESContainer*>(cont);
+				{
+					TESObjectCONT* cont = static_cast<TESObjectCONT*>(baseForm);
+					container = static_cast<TESContainer*>(cont);
+				}
 				break;
-			}
 			case FormType::NPC:
-			{
-				TESActorBase* actorBase = static_cast<TESActorBase*>(baseForm);
-				container = actorBase;
+				{
+					TESActorBase* actorBase = static_cast<TESActorBase*>(baseForm);
+					container = actorBase;
+				}
 				break;
-			}
 			}
 		}
 		return container;

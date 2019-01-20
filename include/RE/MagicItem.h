@@ -101,13 +101,13 @@ namespace RE
 		virtual void		CopyData(MagicItem* a_src) = 0;				// 69
 		virtual void		Unk_6A(void);								// 6A - { return; }
 		virtual void		Unk_6B(void);								// 6B - { return; }
-		virtual void*		GetData() = 0;								// 6C - pure
+		virtual void*		GetData() = 0;								// 6C
 		virtual void		Unk_6D(void);								// 6D - pure - GetData()?
 		virtual UInt32		GetDataSize() const = 0;					// 6E
 		virtual void		Unk_6F(void);								// 6F - pure - LoadData(void*)?
 		virtual void		ByteSwapData() = 0;							// 70
 
-		Effect*				GetCostliestEffectItem(int a_arg1, bool a_arg2);
+		Effect*				GetCostliestEffectItem(int a_arg1 = 5, bool a_arg2 = false);
 		float				GetEffectiveMagickaCost(Character* a_caster);
 
 

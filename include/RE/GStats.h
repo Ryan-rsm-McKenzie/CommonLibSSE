@@ -63,5 +63,5 @@ namespace RE
 		// How many entries we support by default
 		kMaxId = 64 << 6, // 64 * 64 = 4096
 		kEntryCount = 512
-};
+	};
 }

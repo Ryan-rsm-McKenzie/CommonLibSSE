@@ -335,6 +335,7 @@
     <ClInclude Include="include\RE\BSImagespaceShaderBlur3.h" />
     <ClInclude Include="include\RE\BSIntrusiveRefCounted.h" />
     <ClInclude Include="include\RE\BSIRagdollDriver.h" />
+    <ClInclude Include="include\RE\BSISoundCategory.h" />
     <ClInclude Include="include\RE\BSISoundDescriptor.h" />
     <ClInclude Include="include\RE\BSMusicEvent.h" />
     <ClInclude Include="include\RE\BSReloadShaderI.h" />
@@ -449,6 +450,8 @@
     <ClInclude Include="include\RE\ImageSpaceShaderParam.h" />
     <ClInclude Include="include\RE\IMapCameraCallbacks.h" />
     <ClInclude Include="include\RE\IMenu.h" />
+    <ClInclude Include="include\RE\IMovementInterface.h" />
+    <ClInclude Include="include\RE\IMovementState.h" />
     <ClInclude Include="include\RE\InputEvent.h" />
     <ClInclude Include="include\RE\InputManager.h" />
     <ClInclude Include="include\RE\InputMappingManager.h" />

@@ -3,14 +3,17 @@
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
-#include "RE/FormTypes.h"  // FormType
+#include "RE/FormTypes.h"
 #include "RE/NiTArray.h"  // NiTPrimitiveArray
-#include "RE/TESFile.h" // TESFile
 
 class TESRegionList;
 
+
 namespace RE
 {
+	class TESFile;
+
+
 	class TESDataHandler : public BSTSingletonSDM<TESDataHandler>
 	{
 	public:

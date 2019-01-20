@@ -2,11 +2,12 @@
 
 #include "RE/BSISoundDescriptor.h"  // BSISoundDescriptor
 
-class BGSSoundCategory;
-
 
 namespace RE
 {
+	class BGSSoundCategory;
+
+
 	class BGSSoundDescriptor : public BSISoundDescriptor
 	{
 	public:

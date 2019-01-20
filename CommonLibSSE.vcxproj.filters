@@ -175,6 +175,9 @@
     <Filter Include="include\RE\Skyrim\DistantTerrain">
       <UniqueIdentifier>{2d33c3db-4671-4a07-a8c5-3f6f09c34837}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\BSPathFinding">
+      <UniqueIdentifier>{1ed87b83-825d-4900-bd0c-6fe985a92a6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -1471,6 +1474,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\BGSSoundCategory.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSISoundCategory.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementInterface.h">
+      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementState.h">
+      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
