@@ -1484,5 +1484,8 @@
     <ClInclude Include="include\RE\IMovementState.h">
       <Filter>include\RE\Skyrim\BSPathFinding</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\IPostAnimationChannelUpdateFunctor.h">
+      <Filter>include\RE\Skyrim\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

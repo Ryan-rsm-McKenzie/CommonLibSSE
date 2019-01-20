@@ -458,6 +458,7 @@
     <ClInclude Include="include\RE\BaseExtraList.h" />
     <ClInclude Include="include\RE\BGSBipedObjectForm.h" />
     <ClInclude Include="include\RE\InventoryMenu.h" />
+    <ClInclude Include="include\RE\IPostAnimationChannelUpdateFunctor.h" />
     <ClInclude Include="include\RE\IXAudio2VoiceCallback.h" />
     <ClInclude Include="include\RE\LocalMapCamera.h" />
     <ClInclude Include="include\RE\LocalMapMenu.h" />
