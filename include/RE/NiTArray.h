@@ -138,7 +138,7 @@ namespace RE
 						oldData[i].~T();
 					}
 				}
-				FormHeap_Free(oldData);
+				::Heap_Free(oldData);
 			}
 		}
 

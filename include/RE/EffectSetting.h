@@ -165,7 +165,7 @@ namespace RE
 
 			Flag					flags;					// 00
 			float					baseCost;				// 04
-			TESForm*				primaryObject;			// 08 - unused
+			TESForm*				associatedItem;			// 08
 			ActorValue				magicSkill;				// 10
 			ActorValue				resistValue;			// 14
 			UInt16					counterEffectCount;		// 18
