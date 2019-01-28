@@ -106,10 +106,10 @@ namespace RE
 		const_reverse_iterator	crend() const noexcept;
 
 		// Capacity
-		bool		empty() const noexcept;
-		size_type	size() const noexcept;
-		size_type	length() const noexcept;
-		size_type	max_size() const noexcept;
+		bool				empty() const noexcept;
+		size_type			size() const noexcept;
+		size_type			length() const noexcept;
+		static size_type	max_size() noexcept;
 
 		// Operations
 		void			clear() noexcept;

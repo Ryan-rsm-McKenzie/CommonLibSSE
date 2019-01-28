@@ -355,7 +355,7 @@ namespace RE
 	}
 
 
-	BSFixedString::size_type BSFixedString::max_size() const noexcept
+	BSFixedString::size_type BSFixedString::max_size() noexcept
 	{
 		return 0xFFFFFFE6;
 	}
@@ -536,24 +536,27 @@ namespace RE
 		size_type max1 = (a_count1 > size() - a_pos1) ? size() : (a_pos1 + a_count1);
 		size_type max2 = (a_count2 > a_str.size() - a_pos2) ? a_str.size() : (a_pos2 + a_count2);
 
-		const_iterator begin1(data() + a_pos1);
-		const_iterator end1(data() + max1);
-		char& charRef1 = const_cast<char&>(*end1);
-		char tmp1 = charRef1;
-		charRef1 = '\0';
+		const_iterator lIt(data() + a_pos1);
+		const_iterator lEnd(data() + max1);
 
-		const_iterator begin2(data() + a_pos2);
-		const_iterator end2(data() + max2);
-		char& charRef2 = const_cast<char&>(*end2);
-		char tmp2 = charRef2;
-		charRef2 = '\0';
+		const_iterator rIt(data() + a_pos2);
+		const_iterator rEnd(data() + max2);
 
-		int result = _stricmp(begin1.operator->(), begin2.operator->());
+		while (lIt != lEnd && rIt != rEnd) {
+			if (std::tolower(*lIt) != std::tolower(*rIt)) {
+				return std::tolower(*lIt) < std::tolower(*rIt) ? -1 : 1;
+			}
+			++lIt;
+			++rIt;
+		}
 
-		charRef1 = tmp1;
-		charRef2 = tmp2;
-
-		return result;
+		if (lIt != lEnd) {
+			return 1;
+		} else if (rIt != rEnd) {
+			return -1;
+		} else {
+			return 0;
+		}
 	}
 
 
@@ -569,17 +572,26 @@ namespace RE
 
 		size_type max1 = (a_count1 > size() - a_pos1) ? size() : (a_pos1 + a_count1);
 
-		const_iterator begin(data() + a_pos1);
+		const_iterator it(data() + a_pos1);
 		const_iterator end(data() + max1);
-		char& charRef = const_cast<char&>(*end);
-		char tmp = charRef;
-		charRef = '\0';
 
-		int result = _stricmp(begin.operator->(), a_s);
+		size_type i = 0;
 
-		charRef = tmp;
+		while (a_s[i] != '\0' && it != end) {
+			if (std::tolower(*it) != std::tolower(a_s[i])) {
+				return std::tolower(*it) < std::tolower(a_s[i]) ? -1 : 1;
+			}
+			++i;
+			++it;
+		}
 
-		return result;
+		if (it != end) {
+			return 1;
+		} else if (a_s[i] != '\0') {
+			return -1;
+		} else {
+			return 0;
+		}
 	}
 
 
@@ -591,15 +603,8 @@ namespace RE
 
 		const_iterator begin(data() + a_pos);
 		const_iterator end(data() + max);
-		char& charRef = const_cast<char&>(*end);
-		char tmp = charRef;
-		charRef = '\0';
 
-		BSFixedString str(begin, end);
-
-		charRef = tmp;
-
-		return str;
+		return { begin, end };
 	}
 
 
