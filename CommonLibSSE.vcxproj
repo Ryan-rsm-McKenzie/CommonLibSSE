@@ -188,7 +188,6 @@
     <ClCompile Include="src\RE\BSTArray.cpp" />
     <ClCompile Include="src\RE\BSWin32KeyboardDevice.cpp" />
     <ClCompile Include="src\RE\BSIntrusiveRefCounted.cpp" />
-    <ClCompile Include="src\RE\BSWin32GamepadDevice.cpp" />
     <ClCompile Include="src\RE\ButtonEvent.cpp" />
     <ClCompile Include="src\RE\CommandTable.cpp" />
     <ClCompile Include="src\RE\Condition.cpp" />
@@ -255,7 +254,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\BGSAddonNode.h" />
+    <ClInclude Include="include\RE\BGSBlockBashData.h" />
     <ClInclude Include="include\RE\BGSDistantTreeBlock.h" />
+    <ClInclude Include="include\RE\BGSMessageIcon.h" />
     <ClInclude Include="include\RE\BGSShaderParticleGeometryData.h" />
     <ClInclude Include="include\Logging.h" />
     <ClInclude Include="include\RE\ActivateHandler.h" />
@@ -297,6 +298,7 @@
     <ClInclude Include="include\RE\BGSSoundDescriptor.h" />
     <ClInclude Include="include\RE\BGSSoundDescriptorForm.h" />
     <ClInclude Include="include\RE\BGSStandardSoundDef.h" />
+    <ClInclude Include="include\RE\BGSTalkingActivator.h" />
     <ClInclude Include="include\RE\BGSTextureModel.h" />
     <ClInclude Include="include\RE\BGSTextureSet.h" />
     <ClInclude Include="include\RE\bhkCachingShapePhantom.h" />
@@ -534,6 +536,7 @@
     <ClInclude Include="include\RE\TESActorBaseData.h" />
     <ClInclude Include="include\RE\TESAIForm.h" />
     <ClInclude Include="include\RE\TESAmmo.h" />
+    <ClInclude Include="include\RE\TESBipedModelForm.h" />
     <ClInclude Include="include\RE\TESBoundAnimObject.h" />
     <ClInclude Include="include\RE\TESBoundObject.h" />
     <ClInclude Include="include\RE\TESCamera.h" />
@@ -559,6 +562,7 @@
     <ClInclude Include="include\RE\TESMagicEffectApplyEvent.h" />
     <ClInclude Include="include\RE\TESMagicTargetForm.h" />
     <ClInclude Include="include\RE\TESModel.h" />
+    <ClInclude Include="include\RE\TESModelRDT.h" />
     <ClInclude Include="include\RE\TESModelTextureSwap.h" />
     <ClInclude Include="include\RE\TESModelTri.h" />
     <ClInclude Include="include\RE\TESNPC.h" />

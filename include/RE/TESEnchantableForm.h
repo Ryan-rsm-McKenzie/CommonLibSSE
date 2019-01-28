@@ -22,8 +22,8 @@ namespace RE
 
 
 		// members
-		EnchantmentItem*	objectEffect;		// 08 - init'd to 0 (EITM)
-		UInt16				unk10;				// 10 - init'd to 3
+		EnchantmentItem*	objectEffect;		// 08 - EITM
+		UInt16				unk10;				// 10
 		UInt16				enchantmentAmount;	// 12 - EAMT
 		UInt32				pad14;				// 14
 	};

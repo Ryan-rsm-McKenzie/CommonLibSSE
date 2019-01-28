@@ -1,15 +1,17 @@
 #include "RE/TESObjectBOOK.h"
 
-#include "skse64/GameObjects.h"  // TESObjectBOOK
-
 
 namespace RE
 {
-	TESObjectBOOK::Data::Flag TESObjectBOOK::Data::GetSanitizedType()
+	TESObjectBOOK::Data::Flag TESObjectBOOK::Data::GetSanitizedType() const
 	{
-		typedef Flag _GetSanitizedType_t(TESObjectBOOK::Data* a_this);
-		_GetSanitizedType_t* _GetSanitizedType = reinterpret_cast<_GetSanitizedType_t*>(GetFnAddr(&::TESObjectBOOK::Data::GetSanitizedType));
-		return _GetSanitizedType(this);
+		if ((flags & Flag::kTeachesSpell) != Flag::kNone) {
+			return Flag::kTeachesSpell;
+		} else if ((flags & Flag::kTeachesSkill) != Flag::kNone) {
+			return Flag::kTeachesSkill;
+		} else {
+			return Flag::kNone;
+		}
 	}
 
 

@@ -288,9 +288,6 @@
     <ClCompile Include="src\RE\Misc.cpp">
       <Filter>src\RE</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSWin32GamepadDevice.cpp">
-      <Filter>src\RE\Skyrim\BSDevices</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\ThumbstickEvent.cpp">
       <Filter>src\RE\Skyrim\Events</Filter>
     </ClCompile>
@@ -1486,6 +1483,21 @@
     </ClInclude>
     <ClInclude Include="include\RE\IPostAnimationChannelUpdateFunctor.h">
       <Filter>include\RE\Skyrim\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSTalkingActivator.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESBipedModelForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMessageIcon.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESModelRDT.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSBlockBashData.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

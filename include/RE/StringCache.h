@@ -23,12 +23,12 @@ namespace RE
 			STATIC_ASSERT(sizeof(State) == 0x4);
 
 
-			void*	next;	// 00
-			State	state;	// 08
-			UInt32	pad0C;	// 0C
-			UInt32	length;	// 10
-			UInt32	pad14;	// 14
-			char	data;	// 18
+			void*	next;		// 00
+			State	state;		// 08
+			UInt32	pad0C;		// 0C
+			UInt32	length;		// 10
+			UInt32	pad14;		// 14
+			char	data[1];	// 18
 		};
 		STATIC_ASSERT(sizeof(Entry) == 0x20);
 

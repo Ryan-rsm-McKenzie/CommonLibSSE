@@ -10,13 +10,14 @@ namespace RE
 	class TESModelTextureSwap : public TESModel
 	{
 	public:
-		struct SwapInfo
+		struct AlternateTexture	// MODS
 		{
 			BGSTextureSet*	textureSet;	// 00
-			UInt32			unk08;		// 08 - index
-			BSFixedString	name;		// 10
+			UInt32			index3D;	// 08
+			UInt32			unk0C;		// 0C
+			BSFixedString	name3D;		// 10
 		};
-		STATIC_ASSERT(sizeof(SwapInfo) == 0x18);
+		STATIC_ASSERT(sizeof(AlternateTexture) == 0x18);
 
 
 		virtual ~TESModelTextureSwap();										// 00
@@ -28,9 +29,9 @@ namespace RE
 
 
 		// members
-		SwapInfo*	modelSwaps;	// 28
-		UInt32		swapCount;	// 30
-		UInt32		pad34;		// 34
+		AlternateTexture*	alternateTextures;		// 28 - MODS
+		UInt32				numAlternateTextures;	// 30
+		UInt32				pad34;					// 34
 	};
 	STATIC_ASSERT(sizeof(TESModelTextureSwap) == 0x38);
 }

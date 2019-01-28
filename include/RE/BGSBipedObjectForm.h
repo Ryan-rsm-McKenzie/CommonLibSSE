@@ -92,7 +92,7 @@ namespace RE
 
 
 		// members
-		BipedBodyTemplate bipedBodyTemplate;	// 10
+		BipedBodyTemplate bipedBodyTemplate;	// 10 - BOD2
 	};
 	STATIC_ASSERT(sizeof(BGSBipedObjectForm) == 0x10);
 }

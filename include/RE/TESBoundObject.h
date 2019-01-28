@@ -31,7 +31,7 @@ namespace RE
 		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
 
 		// add
-		virtual void			Unk_48(void);																														// 48 - { return; }
+		virtual void			SetVoiceType(BGSVoiceType* a_voiceType);																							// 48 - { return; }
 		virtual BGSVoiceType*	GetVoiceType() const;																												// 49 - { return nullptr; }
 		virtual void			Unk_4A(void);																														// 4A
 		virtual void			Unk_4B(void);																														// 4B - { return true; }

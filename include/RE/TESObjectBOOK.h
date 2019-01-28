@@ -1,14 +1,18 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESModelTextureSwap, TESIcon, TESValueForm, TESWeightForm, TESDescription, BGSDestructibleObjectForm, BGSMessageIcon, BGSPickupPutdownSounds
-
+#include "RE/ActorValues.h"  // ActorValue
+#include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
+#include "RE/BGSMessageIcon.h"  // BGSMessageIcon
+#include "RE/BGSPickupPutdownSounds.h"  // BGSPickupPutdownSounds
+#include "RE/FormTypes.h"  // FormType, SpellItem, TESObjectSTAT
 #include "RE/TESBoundObject.h"  // TESBoundObject
+#include "RE/TESDescription.h"  // TESDescription
 #include "RE/TESFullName.h"  // TESFullName
+#include "RE/TESIcon.h"  // TESIcon
 #include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
-
-class SpellItem;
-class TESObjectSTAT;
+#include "RE/TESValueForm.h"  // TESValueForm
+#include "RE/TESWeightForm.h"  // TESWeightForm
 
 
 namespace RE
@@ -30,7 +34,7 @@ namespace RE
 		enum { kTypeID = FormType::Book };
 
 
-		struct Data
+		struct Data	// DATA
 		{
 			enum class Flag : UInt8
 			{
@@ -49,51 +53,30 @@ namespace RE
 			};
 
 
-			enum class Skill : UInt32
+			union Teaches
 			{
-				kNone = 0xFFFFFFFF,
-				kOneHanded = 0x00000006,
-				kTwoHanded = 0x00000007,
-				kArchery = 0x00000008,
-				kBlock = 0x00000009,
-				kSmithing = 0x0000000A,
-				kHeavyArmor = 0x0000000B,
-				kLightArmor = 0x0000000C,
-				kPickPocket = 0x0000000D,
-				kLockPicking = 0x0000000E,
-				kSneak = 0x0000000F,
-				kAlchemy = 0x00000010,
-				kSpeech = 0x00000011,
-				kAlteration = 0x00000012,
-				kConjuration = 0x00000013,
-				kDestruction = 0x00000014,
-				kIllusion = 0x00000015,
-				kRestoration = 0x00000016,
-				kEnchanting = 0x00000017
-			};
-
-
-			union Union
-			{
-				Skill		skill;
+				ActorValue	skill;
 				SpellItem*	spell;
 			};
+			STATIC_ASSERT(sizeof(Teaches) == 0x8);
 
 
-			Flag GetSanitizedType();
+			Flag GetSanitizedType() const;
 
 
 			// members
-			Flag	flags;		// 0
-			Type	type;		// 1
-			UInt16	pad02;		// 2
-			UInt32	pad04;		// 4
-			Union	teaches;	// 8
+			Flag	flags;		// 00
+			Type	type;		// 01
+			UInt16	pad02;		// 02
+			UInt32	pad04;		// 04
+			Teaches	teaches;	// 08
 		};
+		STATIC_ASSERT(sizeof(Data) == 0x10);
 
 		virtual ~TESObjectBOOK();																															// 00
 
 		// override (TESBoundObject)
+		virtual void	InitDefaults() override;																											// 04
 		virtual bool	LoadForm(TESFile* a_mod) override;																									// 06
 		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;																						// 0E
 		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																						// 0F
@@ -101,16 +84,16 @@ namespace RE
 		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
 		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4D
 
-		bool	TeachesSkill() const;
-		bool	TeachesSpell() const;
-		bool	IsRead() const;
-		bool	CanBeTaken() const;
+		bool			TeachesSkill() const;
+		bool			TeachesSpell() const;
+		bool			IsRead() const;
+		bool			CanBeTaken() const;
 
 
 		// members
-		Data			data;			// 110
-		TESObjectSTAT*	bookStat;		// 120
-		TESDescription	bookText;		// 128
+		Data			data;			// 110 - DATA
+		TESObjectSTAT*	inventoryArt;	// 120 - INAM
+		TESDescription	description;	// 128 - CNAM
 	};
 	STATIC_ASSERT(sizeof(TESObjectBOOK) == 0x138);
 }
