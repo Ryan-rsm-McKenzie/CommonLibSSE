@@ -5,7 +5,7 @@ namespace RE
 {
 	enum class ActorValue : UInt32
 	{
-		kNone = 0xFFFFFFFF,
+		kNone = static_cast<UInt32>(-1),
 		kAggresion = 0,
 		kConfidence = 1,
 		kEnergy = 2,
@@ -175,7 +175,7 @@ namespace RE
 
 	enum class ActorValue8 : UInt8
 	{
-		kNone = 0xFF,
+		kNone = static_cast<UInt8>(-1),
 		kAggresion = 0,
 		kConfidence = 1,
 		kEnergy = 2,

@@ -23,7 +23,7 @@ namespace RE
 		/*
 		 * @param a_fieldType 'DESC', etc
 		 */
-		void			Get(BSString& a_out, TESForm* a_parent, UInt32 a_fieldType);
+		void			GetDescription(BSString& a_out, TESForm* a_parent, UInt32 a_fieldType);
 
 
 		// members
