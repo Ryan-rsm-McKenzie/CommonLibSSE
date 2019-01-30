@@ -582,6 +582,7 @@
     <ClInclude Include="include\RE\TESRace.h" />
     <ClInclude Include="include\RE\TESRaceForm.h" />
     <ClInclude Include="include\RE\TESReactionForm.h" />
+    <ClInclude Include="include\RE\TESShout.h" />
     <ClInclude Include="include\RE\TESSound.h" />
     <ClInclude Include="include\RE\TESSpellList.h" />
     <ClInclude Include="include\RE\TESTexture.h" />

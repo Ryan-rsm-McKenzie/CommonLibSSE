@@ -1499,5 +1499,8 @@
     <ClInclude Include="include\RE\BGSBlockBashData.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\TESShout.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
