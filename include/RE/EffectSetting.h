@@ -7,20 +7,13 @@
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/Condition.h"  // Condition
-#include "RE/FormTypes.h"  // FormType, TESObjectLIGH, TESEffectShader, BGSImpactDataSet, BGSProjectile, SpellItem, TESSound
+#include "RE/FormTypes.h"  // FormType, TESObjectLIGH, TESEffectShader, BGSImpactDataSet, BGSProjectile, SpellItem, BGSSoundDescriptorForm, BGSArtObject, BGSExplosion, BGSPerk, BGSDualCastData, TESImageSpaceModifier
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESFullName.h"  // TESFullName
 
 
 namespace RE
 {
-	class BGSArtObject;
-	class BGSExplosion;
-	class BGSPerk;
-	class BGSDualCastData;
-	class TESImageSpaceModifier;
-
-
 	class EffectSetting :
 		public TESForm,					// 000
 		public TESFullName,				// 020
@@ -206,8 +199,6 @@ namespace RE
 		};
 		STATIC_ASSERT(sizeof(Data) == 0xF0);
 
-		using Archetype = Data::Archetype;
-
 
 		struct SoundInfo	// SNDD
 		{
@@ -222,9 +213,9 @@ namespace RE
 			};
 
 
-			Type		type;	// 00
-			UInt32		pad04;	// 04
-			TESSound*	sound;	// 08
+			Type					type;	// 00
+			UInt32					pad04;	// 04
+			BGSSoundDescriptorForm*	sound;	// 08
 		};
 		STATIC_ASSERT(sizeof(SoundInfo) == 0x10);
 
@@ -242,7 +233,7 @@ namespace RE
 
 		ActorValue			GetMagickSkill();
 		UInt32				GetMinimumSkillLevel();
-		bool				HasArchetype(Archetype a_type);
+		bool				HasArchetype(Data::Archetype a_type);
 
 
 		// members
