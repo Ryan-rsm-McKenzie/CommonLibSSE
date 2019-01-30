@@ -3,7 +3,6 @@
 #include "skse64/GameInput.h"  // InputManager
 
 #include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSInputDevice.h"  // BSInputDevice
 #include "RE/BSTArray.h"  // BSTArray
 
 
@@ -25,20 +24,19 @@ namespace RE
 	}
 
 
-	UInt32 InputMappingManager::GetMappedKey(const BSFixedString& a_name, DeviceType a_deviceType, Context a_contextIdx) const
+	UInt32 InputMappingManager::GetMappedKey(const BSFixedString& a_name, DeviceType a_deviceType, Contexts::Context a_contextIdx) const
 	{
 		BSTArray<InputContext::Mapping>* maps = 0;
 
-		std::underlying_type_t<Context> idx = to_underlying(a_contextIdx);
 		switch (a_deviceType) {
 		case DeviceType::kMouse:
-			maps = &context[idx]->mouseMap;
+			maps = &context[a_contextIdx]->mouseMap;
 			break;
 		case DeviceType::kGamepad:
-			maps = &context[idx]->gamepadMap;
+			maps = &context[a_contextIdx]->gamepadMap;
 			break;
 		case DeviceType::kKeyboard:
-			maps = &context[idx]->keyboardMap;
+			maps = &context[a_contextIdx]->keyboardMap;
 			break;
 		}
 
@@ -50,24 +48,23 @@ namespace RE
 			}
 		}
 
-		return -1;
+		return static_cast<UInt32>(-1);
 	}
 
 
-	const BSFixedString& InputMappingManager::GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Context a_contextIdx) const
+	const BSFixedString& InputMappingManager::GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Contexts::Context a_contextIdx) const
 	{
 		BSTArray<InputContext::Mapping>* maps = 0;
 
-		std::underlying_type_t<Context> idx = to_underlying(a_contextIdx);
 		switch (a_deviceType) {
 		case DeviceType::kMouse:
-			maps = &context[idx]->mouseMap;
+			maps = &context[a_contextIdx]->mouseMap;
 			break;
 		case DeviceType::kGamepad:
-			maps = &context[idx]->gamepadMap;
+			maps = &context[a_contextIdx]->gamepadMap;
 			break;
 		case DeviceType::kKeyboard:
-			maps = &context[idx]->keyboardMap;
+			maps = &context[a_contextIdx]->keyboardMap;
 			break;
 		}
 

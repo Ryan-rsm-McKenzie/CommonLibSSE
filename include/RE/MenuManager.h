@@ -81,22 +81,23 @@ namespace RE
 
 
 		// members
-		BSTArray<IMenu*>						menuStack;						// 110
-		MenuTable								menuTable;						// 128   (Entries ptr at 150)
-		SimpleLock								menuTableLock;					// 158
-		UInt32									numPauseGame;					// 160 (= 0) += 1 if (imenu->flags & 0x0001)
-		UInt32									numItemMenu;					// 164 (= 0) += 1 if (imenu->flags & 0x2000)
-		UInt32									numPreventGameLoad;				// 168 (= 0) += 1 if (imenu->flags & 0x0080)
-		UInt32									numDoNotPreventSaveGame;		// 16C (= 0) += 1 if (imenu->flags & 0x0800)
-		UInt32									numStopCrosshairUpdate;			// 170 (= 0) += 1 if (imenu->flags & 0x4000)
-		UInt32									numFlag8000;					// 174 (= 0) += 1 if (imenu->flags & 0x8000)
-		UInt32									numFlag20000;					// 178 (= 0)  = 1 if (imenu->flags & 0x20000)
-		UInt8									numModal;						// 17C (= 0)  = 1 if (imenu->flags & 0x10)
-		UInt8									pad17D[3];						// 17D
-		Unknown3								unk180;							// 180
-		bool									showMenus;						// 1C0 (= 0)
-		bool									unk1C1;							// 1C1 (= 0)
-		char									pad1C2[6];						// 1C2
+		BSTArray<IMenu*>	menuStack;					// 110
+		MenuTable			menuTable;					// 128 (Entries ptr at 150)
+		SimpleLock			menuTableLock;				// 158
+		UInt32				numPauseGame;				// 160 (= 0) += 1 if (imenu->flags & 0x0001)
+		UInt32				numItemMenu;				// 164 (= 0) += 1 if (imenu->flags & 0x2000)
+		UInt32				numPreventGameLoad;			// 168 (= 0) += 1 if (imenu->flags & 0x0080)
+		UInt32				numDoNotPreventSaveGame;	// 16C (= 0) += 1 if (imenu->flags & 0x0800)
+		UInt32				numStopCrosshairUpdate;		// 170 (= 0) += 1 if (imenu->flags & 0x4000)
+		UInt32				numFlag8000;				// 174 (= 0) += 1 if (imenu->flags & 0x8000)
+		UInt32				numFlag20000;				// 178 (= 0)  = 1 if (imenu->flags & 0x20000)
+		UInt8				numModal;					// 17C (= 0)  = 1 if (imenu->flags & 0x10)
+		UInt8				pad17D[3];					// 17D
+		Unknown3			unk180;						// 180
+		bool				showMenus;					// 1C0 (= 0)
+		bool				unk1C1;						// 1C1 (= 0)
+		UInt16				pad1C2;						// 1C2
+		UInt32				pad1C4;						// 1C4
 	};
 	STATIC_ASSERT(offsetof(MenuManager, menuStack) == 0x110);
 	STATIC_ASSERT(sizeof(MenuManager) == 0x1C8);

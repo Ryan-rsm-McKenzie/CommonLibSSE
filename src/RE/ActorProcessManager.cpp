@@ -42,12 +42,12 @@ namespace RE
 
 	TESForm* ActorProcessManager::GetEquippedLeftHand()
 	{
-		return equippedObjects[to_underlying(Hand::kLeft)];
+		return equippedObjects[Hands::kLeft];
 	}
 
 
 	TESForm* ActorProcessManager::GetEquippedRightHand()
 	{
-		return equippedObjects[to_underlying(Hand::kRight)];
+		return equippedObjects[Hands::kRight];
 	}
 }
