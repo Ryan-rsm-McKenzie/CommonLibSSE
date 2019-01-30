@@ -3,6 +3,7 @@
 #include "skse64_common/Relocation.h"  // RelocAddr
 #include "skse64/GameTypes.h"  // BSFixedString
 
+#include <cctype>  // tolower
 #include <cstring>  // strlen
 #include <string>  // string
 #include <stdexcept>  // out_of_range, length_error
