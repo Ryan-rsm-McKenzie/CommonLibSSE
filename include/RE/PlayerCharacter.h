@@ -1,25 +1,22 @@
 #pragma once
 
-#include "skse64/GameEvents.h"  // BSTEventSink, MenuOpenCloseEvent, MenuModeChangeEvent, BSTEventSource
 #include "skse64/GameFormComponents.h"  // BGSPerkRanks
-#include "skse64/GameTypes.h"  // tArray, UnkArray
 #include "skse64/NiTypes.h"  // NiTMap
 
 #include "RE/BGSActorCellEvent.h"  // BGSActorCellEvent
 #include "RE/BGSActorDeathEvent.h"  // BGSActorDeathEvent
+#include "RE/BSTArray.h"  // BSTArray
+#include "RE/BSTEvent.h"  // BSTEventSink, BSTEventSource
+#include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/Character.h"  // Character
+#include "RE/FormTypes.h"  // FormType, TESForm, TESRace, TESWorldSpace, BGSPerk, BGSTextureSet
 #include "RE/PositionPlayerEvent.h"  // PositionPlayerEvent
 #include "RE/UserEventEnabledEvent.h"  // UserEventEnabledEvent
 
 class BGSLocation;
-class BGSPerk;
-class BGSTextureSet;
 class BSFadeNode;
 class ImageSpaceModifierInstanceDOF;
 class ObjectListItem;
-class TESForm;
-class TESRace;
-class TESWorldSpace;
 class TintMask;
 
 
@@ -27,7 +24,9 @@ namespace RE
 {
 	class Actor;
 	class InventoryEntryData;
+	class MenuOpenCloseEvent;
 	class TESObjectREFR;
+	struct ModeChangeEvent;
 
 
 	class PlayerCharacter :
@@ -41,6 +40,9 @@ namespace RE
 		public BSTEventSource<PositionPlayerEvent>	// 380
 	{
 	public:
+		enum { kTypeID = FormType::Character };
+
+
 		enum class EventType : UInt32
 		{
 			kThief = 3,
@@ -75,55 +77,29 @@ namespace RE
 		virtual void			Unk_12D(void);	// 12D
 		virtual void			Unk_12E(void);	// 12E
 
+		static PlayerCharacter*	GetSingleton();
+
 		TintMask*				GetOverlayTintMask(TintMask* a_original);
 		tArray<TintMask*>*		GetTintList();
 		UInt32					GetNumTints(UInt32 a_tintType);
 		TintMask*				GetTintMask(UInt32 a_tintType, UInt32 a_index);
 		float					GetDamage(InventoryEntryData* a_pForm);
 		float					GetArmorValue(InventoryEntryData* a_pForm);
-
-		static PlayerCharacter*	GetSingleton();
 		Actor*					GetActorInFavorState();
 		TESObjectREFR*			GetGrabbedRef();
 		void					PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void					StartActivation();
-		bool					TryToPickPocket(Actor* a_target, InventoryEntryData* a_pEntry, UInt32 a_numItems, bool a_unk4);
+		bool					TryToPickPocket(Actor* a_target, InventoryEntryData* a_entry, UInt32 a_numItems, bool a_arg4 = true);
 
 
 		// members
 		UInt32							unk3D8;					// 3D8
 		UInt32							unk3DC;					// 3DC
-		UInt32							unk3E0;					// 3E0
-		UInt32							unk3E4;					// 3E4
-		UInt32							unk3E8;					// 3E8
-		UInt32							unk3EC;					// 3EC
-		UInt32							unk3F0;					// 3F0
-		UInt32							unk3F4;					// 3F4
-		void*							unk3F8;					// 3F8
-		UInt32							unk400;					// 400
-		UInt32							unk404;					// 404
-		void*							unk408;					// 408
-		UInt32							unk410;					// 410
-		UInt32							unk414;					// 414
-		UInt32							unk418;					// 418
-		UInt32							unk41C;					// 41C
-		UInt32							unk420;					// 420
-		UInt32							unk424;					// 424
-		void*							unk428;					// 428
-		UInt32							unk430;					// 430
-		UInt32							unk434;					// 434
-		void*							unk438;					// 438
+		BSTHashMap<UnkKey, UnkValue>	unk3E0;					// 3E0
+		BSTHashMap<UnkKey, UnkValue>	unk410;					// 410
 		UInt32							unk440;					// 440
 		UInt32							unk444;					// 444
-		UInt32							unk448;					// 448
-		UInt32							unk44C;					// 44C
-		UInt32							unk450;					// 450
-		UInt32							unk454;					// 454
-		UInt32							unk458;					// 458
-		UInt32							unk45C;					// 45C
-		void*							unk460;					// 460
-		UInt64							unk468;					// 468
-		ObjectListItem*					unk470;					// 470
+		BSTHashMap<UnkKey, UnkValue>	unk448;					// 448
 		float							unk478;					// 478
 		float							unk47C;					// 47C
 		float							unk480;					// 480
@@ -137,39 +113,22 @@ namespace RE
 		UInt64							unk4A0;					// 4A0
 		UInt64							unk4A8;					// 4A8
 		BGSPerkRanks					addedPerks;				// 4B0
-		tArray<BGSPerk*>				perks;					// 4C8
-		tArray<BGSPerk*>				standingStonePerks;		// 4E0
-		tArray<UInt32>					unk4F8;					// 4F8
-		tArray<DataUnk510>				unk510;					// 510
-		UnkArray						unk528;					// 528
-		tArray<void*>					unk540;					// 540
-		tArray<void*>					unk558;					// 558
+		BSTArray<BGSPerk*>				perks;					// 4C8
+		BSTArray<BGSPerk*>				standingStonePerks;		// 4E0
+		BSTArray<UInt32>				unk4F8;					// 4F8
+		BSTArray<DataUnk510>			unk510;					// 510
+		BSTArray<UInt64>				unk528;					// 528
+		BSTArray<void*>					unk540;					// 540
+		BSTArray<void*>					unk558;					// 558
 		void*							unk570;					// 570
 		void*							unk578;					// 578
-		tArray<void*>					unk580;					// 580
-		UInt32							unk598;					// 598
-		UInt32							unk59C;					// 59C
-		UInt32							unk5A0;					// 5A0
-		UInt32							unk5A4;					// 5A4
-		UInt32							unk5A8;					// 5A8
-		UInt32							unk5AC;					// 5AC
-		void*							unk5B0;					// 5B0
-		UInt64							unk5B8;					// 5B8
-		void*							unk5C0;					// 5C0
-		UInt32							unk5C8;					// 5C8
-		UInt32							unk5CC;					// 5CC
-		UInt32							unk5D0;					// 5D0
-		UInt32							unk5D4;					// 5D4
-		UInt32							unk5D8;					// 5D8
-		UInt32							unk5DC;					// 5DC
-		void*							unk5E0;					// 5E0
-		UInt8							unk5E8;					// 5E8
-		UInt8							pad5E9[7];				// 5E9
-		void*							unk5F0;					// 5F0
+		BSTArray<void*>					unk580;					// 580
+		BSTHashMap<UnkKey, UnkValue>	unk598;					// 598
+		BSTHashMap<UnkKey, UnkValue>	unk5C8;					// 5C8
 		UInt32							unk5F8;					// 5F8
 		UInt32							pad5FC;					// 5FC
 		UInt64							unk600;					// 600
-		NiTMap<UInt64, UInt64>			unk608;					// 608
+		NiTMap<UInt32, UInt8>			unk608;					// 608
 		TESWorldSpace*					currentWorldSpace;		// 628
 		float							unk630;					// 630
 		float							unk634;					// 634
@@ -270,7 +229,7 @@ namespace RE
 		UInt64							unk978;					// 978
 		UInt32							unk980;					// 980 - init'd to _time64(NULL) in ctor
 		UInt32							unk984;					// 984
-		TESWorldSpace*					sameWorldSpace;			// 988
+		TESObjectCELL*					currentCell;			// 988
 		UInt32							unk990;					// 990
 		UInt32							unk994;					// 994
 		UInt64							unk998;					// 998
@@ -280,9 +239,9 @@ namespace RE
 		UInt32							targetHandle;			// 9B8
 		UInt32							unk9BC;					// 9BC
 		UInt64							unk9C0;					// 9C0
-		BSFadeNode*						fadeNode9C8;			// 9C8
+		BSFadeNode*						unk9C8;					// 9C8
 		void*							unk9D0;					// 9D0
-		tArray<UInt32>					hostileHandles; 		// 9D8
+		BSTArray<UInt32>				hostileHandles; 		// 9D8
 		UInt64							unk9F0;					// 9F0
 		UInt64							unk9F8;					// 9F8
 		TESForm*						tempPoison;				// A00
@@ -294,7 +253,7 @@ namespace RE
 		UInt8							unkA20[0xA0];			// A20 - memset to 0 in ctor
 		UInt32							unkAC0;					// AC0
 		UInt32							unkAC4;					// AC4
-		BGSLocation*					locationAC8;			// AC8
+		BGSLocation*					currentLocation;		// AC8
 		float							unkAD0;					// AD0
 		UInt32							unkAD4;					// AD4
 		UInt32							unkAD8;					// AD8
@@ -312,14 +271,14 @@ namespace RE
 		UInt8							unkB03;					// B03
 		UInt32							unkB04;					// B04
 		void*							unkB08;					// B08
-		tArray<TintMask*>				tintMasks;				// B10
-		tArray<TintMask*>*				overlayTintMasks;		// B28
+		BSTArray<TintMask*>				tintMasks;				// B10
+		BSTArray<TintMask*>*			overlayTintMasks;		// B28
 		BGSTextureSet*					texSetB30;				// B30
-		TESRace*						race;					// B38
-		TESRace*						raceAgain;				// B40 - transformed race maybe for vamps and werewolves?
+		TESRace*						race1;					// B38 - male/female?
+		TESRace*						race2;					// B40
 		UInt32							unkB48;					// B48
 		UInt32							unkB4C;					// B4C
-		UnkArray						unkB50;					// B50
+		BSTArray<UInt64>				unkB50;					// B50
 		UInt64							unkB68[5];				// B68
 		UInt64							unkB90;					// B90
 		UInt64							unkB98;					// B98

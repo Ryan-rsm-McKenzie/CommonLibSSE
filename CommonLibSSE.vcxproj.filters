@@ -1502,5 +1502,35 @@
     <ClInclude Include="include\RE\TESShout.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\IMovementControllerRegisterInterface.h">
+      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementDirectControl.h">
+      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementMessageInterface.h">
+      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementMotionDrivenControl.h">
+      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementPlannerDirectControl.h">
+      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementSelectIdle.h">
+      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MovementControllerAI.h">
+      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MovementControllerNPC.h">
+      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IAnimationSetCallbackFunctor.h">
+      <Filter>include\RE\Skyrim\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorMover.h">
+      <Filter>include\RE\Skyrim\TESForms\World\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

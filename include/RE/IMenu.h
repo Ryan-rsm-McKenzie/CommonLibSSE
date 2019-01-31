@@ -17,7 +17,7 @@ namespace RE
 	class IMenu : public FxDelegateHandler
 	{
 	private:
-		using Context = InputMappingManager::Context;
+		using Context = InputMappingManager::Contexts::Context;
 
 	public:
 		enum class Flag : UInt32

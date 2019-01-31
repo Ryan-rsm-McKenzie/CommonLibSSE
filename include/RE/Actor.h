@@ -4,8 +4,8 @@
 #include "RE/ActorProcessManager.h"  // ActorProcessManager
 #include "RE/ActorState.h"  // ActorState
 #include "RE/ActorValueOwner.h"  // ActorValueOwner
+#include "RE/ActorValues.h"  // ActorValue8
 #include "RE/BGSEntryPointPerkEntry.h"  // BGSEntryPointPerkEntry
-#include "RE/BSString.h"  // BSString
 #include "RE/BSTArray.h"  // BSTSmallArray
 #include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/BSTList.h"  // BSSimpleList
@@ -18,9 +18,11 @@
 
 namespace RE
 {
+	class ActorMover;
 	class BaseExtraList;
 	class bhkCharacterMoveFinishEvent;
 	class BSTransformDeltaEvent;
+	class MovementControllerNPC;
 	class PerkEntryVisitor;
 
 
@@ -40,14 +42,17 @@ namespace RE
 		enum { kTypeID = FormType::Character };
 
 
-		enum class SlotType : UInt32
+		struct SlotTypes
 		{
-			kLeftHand = 0,
-			kRightHand,
-			kUnknown,
-			kPowerOrShout,
+			enum
+			{
+				kLeftHand = 0,
+				kRightHand,
+				kUnknown,
+				kPowerOrShout,
 
-			kNumSlots
+				kNumSlots
+			};
 		};
 
 
@@ -77,12 +82,69 @@ namespace RE
 		};
 
 
-		struct Data228
+		enum class CaughtState : UInt32
 		{
-			UInt32	unk0;
-			UInt32	unk4;
-			UInt32	unk8;
+			kError = static_cast<std::underlying_type_t<CaughtState>>(-1),
+			kUncaught = 0,
+			kCaught = 1
 		};
+
+
+		struct ActorValueModifiers
+		{
+			struct Modifiers
+			{
+				enum
+				{
+					kPermanent,
+					kTemporary,
+					kDamage,
+					kTotal
+				};
+			};
+
+
+			// members
+			float modifiers[Modifiers::kTotal];	// 0
+		};
+		STATIC_ASSERT(sizeof(ActorValueModifiers) == 0xC);
+
+
+		struct ActorValueMap
+		{
+			template<typename T>
+			struct LocalMap
+			{
+				T* operator[](ActorValue8 a_actorValue)
+				{
+					if (actorValues && entries) {
+						UInt32 idx = 0;
+						while (actorValues[idx] != (ActorValue8)0) {
+							if (actorValues[idx] == a_actorValue) {
+								break;
+							}
+							++idx;
+						}
+						if (actorValues[idx] != (ActorValue8)0) {
+							return &entries[idx];
+						}
+					}
+					return 0;
+				}
+
+
+				// members
+				ActorValue8*	actorValues;	// 00
+				T*				entries;		// 08
+			};
+			STATIC_ASSERT(sizeof(LocalMap<float>) == 0x10);
+
+
+			// members
+			LocalMap<float>					baseValues;	// 00
+			LocalMap<ActorValueModifiers>	modifiers;	// 10
+		};
+		STATIC_ASSERT(sizeof(ActorValueMap) == 0x20);
 
 
 		class FactionVisitor
@@ -254,7 +316,6 @@ namespace RE
 		virtual void							Unk_126(void);																																													// 126
 		virtual float							IncerceptActorValueChange(UInt32 a_avIndex, float a_avChangeBy);																																// 127
 
-
 		TESForm*	GetEquippedObject(bool a_abLeftHand);
 		void		UpdateSkinColor();
 		void		UpdateHairColor();
@@ -281,7 +342,7 @@ namespace RE
 		bool		IsSneaking();
 		bool		IsTrespassing() const;
 		void		DispelWornItemEnchantments();
-		SInt32		SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);	// ret -1 == internal error, 0 == didn't get caught, 1 == got caught
+		CaughtState	SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);
 		SInt32		CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems);
 		SInt32		GetDetectionLevel(Actor* a_target, UInt32 a_flag);
 		bool		IsGhost();
@@ -290,67 +351,66 @@ namespace RE
 
 
 		// members
-		Flag1						flags1;														// 0E0
-		float						unk0E4;														// 0E4
-		UInt32						unk0E8;														// 0E8
-		UInt32						pad0EC;														// 0EC
-		ActorProcessManager*		processManager;												// 0F0
-		UInt32						refHandleDialogueTarget;									// 0F8
-		UInt32						refHandleCombatTarget;										// 0FC
-		UInt32						refHandleKiller;											// 100
-		UInt32						unk104;														// 104
-		float						unk108;														// 108 - init'd to -1
-		UInt32						unk10C;														// 10C
-		UInt32						unk110;														// 110
-		UInt32						unk114;														// 114
-		UInt32						unk118;														// 118
-		UInt32						unk11C;														// 11C
-		NiPoint3					unk120;														// 120
-		UInt32						unk12C;														// 12C
-		void*						unk130;														// 130
-		void*						unk138;														// 138 - BGSLocation*
-		void*						unk140;														// 140 - ActorMover*
-		void*						unk148;														// 148 - MovementControllerNPC*
-		void*						unk150;														// 150
-		void*						unk158;														// 158
-		UInt64						unk160;														// 160
-		float						unk168;														// 168
-		UInt32						unk16C;														// 16C
-		UInt32						unk170;														// 170
-		UInt32						unk174;														// 174 - init'd to 50
-		UInt32						unk178;														// 178
-		UInt32						unk17C;														// 17C - init'd to 7FFFFFFF
-		UInt64						unk180;														// 180
-		BSTSmallArray<SpellItem*>	addedSpells;												// 188
-		MagicCaster*				magicCaster[to_underlying(SlotType::kNumSlots)];			// 1A0 - ActorMagicCaster*
-		MagicCaster*				equippingMagicItems[to_underlying(SlotType::kNumSlots)];	// 1C0
-		TESForm*					equippedShout;												// 1E0
-		UInt32						unk1E8;														// 1E8
-		UInt32						pad1EC;														// 1EC
-		TESRace*					race;														// 1F0
-		float						unk1F8;														// 1F8 - init'd to -1
-		Flag2						flags2;														// 1FC
-		BSString					unk200;														// 200
-		BSString					unk210;														// 210
-		UInt64						unk220;														// 220
-		Data228						unk228;														// 228
-		Data228						unk234;														// 234
-		Data228						unk240;														// 240
-		Data228						unk24C;														// 24C
-		float						unk258;														// 258 - init'd to -1
-		UInt32						unk25C;														// 25C
-		UInt64						unk260;														// 260
-		float						unk268;														// 268
-		float						unk26C;														// 26C
-		UInt32						unk270;														// 270
-		UInt32						unk274;														// 274
-		UInt64						unk278;														// 278
-		UInt64						unk280;														// 280
-		UInt64						unk288;														// 288
-		UInt64						unk290;														// 290
-		UInt64						unk298;														// 298
-		UInt64						unk2A0;														// 2A0
-		UInt64						unk2A8;														// 2A8
+		Flag1						flags1;										// 0E0
+		float						unk0E4;										// 0E4
+		UInt32						unk0E8;										// 0E8
+		UInt32						pad0EC;										// 0EC
+		ActorProcessManager*		processManager;								// 0F0
+		UInt32						refHandleDialogueTarget;					// 0F8
+		UInt32						refHandleCombatTarget;						// 0FC
+		UInt32						refHandleKiller;							// 100
+		UInt32						unk104;										// 104
+		float						unk108;										// 108 - init'd to -1
+		UInt32						unk10C;										// 10C
+		UInt32						unk110;										// 110
+		UInt32						unk114;										// 114
+		UInt32						unk118;										// 118
+		UInt32						unk11C;										// 11C
+		NiPoint3					unk120;										// 120
+		UInt32						unk12C;										// 12C
+		void*						unk130;										// 130
+		void*						unk138;										// 138 - BGSLocation*
+		ActorMover*					unk140;										// 140
+		MovementControllerNPC*		unk148;										// 148
+		void*						unk150;										// 150
+		void*						unk158;										// 158
+		UInt64						unk160;										// 160
+		float						unk168;										// 168
+		UInt32						unk16C;										// 16C
+		UInt32						unk170;										// 170
+		UInt32						unk174;										// 174 - init'd to 50
+		UInt32						unk178;										// 178
+		UInt32						unk17C;										// 17C - init'd to 7FFFFFFF
+		UInt64						unk180;										// 180
+		BSTSmallArray<SpellItem*>	addedSpells;								// 188
+		MagicCaster*				magicCaster[SlotTypes::kNumSlots];			// 1A0
+		MagicCaster*				equippingMagicItems[SlotTypes::kNumSlots];	// 1C0
+		TESForm*					equippedShout;								// 1E0
+		UInt32						unk1E8;										// 1E8
+		UInt32						pad1EC;										// 1EC
+		TESRace*					race;										// 1F0
+		float						unk1F8;										// 1F8 - init'd to -1
+		Flag2						flags2;										// 1FC
+		ActorValueMap				avMap;										// 200
+		UInt64						unk220;										// 220
+		ActorValueModifiers			avHealth;									// 228
+		ActorValueModifiers			avMagicka;									// 234
+		ActorValueModifiers			avStamina;									// 240
+		ActorValueModifiers			avVoicePoints;								// 24C
+		float						unk258;										// 258 - init'd to -1
+		UInt32						unk25C;										// 25C
+		UInt64						unk260;										// 260
+		float						unk268;										// 268
+		float						unk26C;										// 26C
+		UInt32						unk270;										// 270
+		UInt32						unk274;										// 274
+		UInt64						unk278;										// 278
+		UInt64						unk280;										// 280
+		UInt64						unk288;										// 288
+		UInt64						unk290;										// 290
+		UInt64						unk298;										// 298
+		UInt64						unk2A0;										// 2A0
+		UInt64						unk2A8;										// 2A8
 	};
 	STATIC_ASSERT(offsetof(Actor, addedSpells) == 0x188);
 	STATIC_ASSERT(sizeof(Actor) == 0x2B0);

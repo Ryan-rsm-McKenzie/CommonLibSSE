@@ -8,6 +8,12 @@
 
 namespace RE
 {
+	PlayerCharacter* PlayerCharacter::GetSingleton()
+	{
+		return reinterpret_cast<PlayerCharacter*>(*g_thePlayer);
+	}
+
+
 	TintMask* PlayerCharacter::GetOverlayTintMask(TintMask* a_original)
 	{
 		typedef TintMask* _GetOverlayTintMask_t(PlayerCharacter* a_this, TintMask* a_original);
@@ -57,12 +63,6 @@ namespace RE
 		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::PlayerCharacter*>(this)->_GetArmorValue_GetPtr());
 		_GetArmorValue_t* _GetArmorValue = reinterpret_cast<_GetArmorValue_t*>(*ptr);
 		return _GetArmorValue(this, a_pForm);
-	}
-
-
-	PlayerCharacter* PlayerCharacter::GetSingleton()
-	{
-		return reinterpret_cast<PlayerCharacter*>(*g_thePlayer);
 	}
 
 

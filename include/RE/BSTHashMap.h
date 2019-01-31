@@ -27,6 +27,10 @@ namespace RE
 	{};
 
 
+	typedef UInt64 UnkKey;
+	typedef UInt64 UnkValue;
+
+
 	//class BSTHashMap<unsigned int, unsigned int, struct BSTDefaultScatterTable>	size(30) :
 	//	+-- -
 	// 0 | +-- - (base class BSTHashMapBase<struct BSTHashMapTraits<unsigned int, unsigned int, struct BSTDefaultScatterTable<unsigned int, unsigned int> > >)

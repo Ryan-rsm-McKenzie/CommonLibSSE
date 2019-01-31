@@ -253,6 +253,7 @@
     <ClCompile Include="src\RE\UIStringHolder.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\RE\ActorMover.h" />
     <ClInclude Include="include\RE\BGSAddonNode.h" />
     <ClInclude Include="include\RE\BGSBlockBashData.h" />
     <ClInclude Include="include\RE\BGSDistantTreeBlock.h" />
@@ -446,13 +447,20 @@
     <ClInclude Include="include\RE\hkReferencedObject.h" />
     <ClInclude Include="include\RE\IAIWorldLocationHandle.h" />
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h" />
+    <ClInclude Include="include\RE\IAnimationSetCallbackFunctor.h" />
     <ClInclude Include="include\RE\IDEvent.h" />
     <ClInclude Include="include\RE\ImageSpaceEffect.h" />
     <ClInclude Include="include\RE\ImageSpaceEffectParam.h" />
     <ClInclude Include="include\RE\ImageSpaceShaderParam.h" />
     <ClInclude Include="include\RE\IMapCameraCallbacks.h" />
     <ClInclude Include="include\RE\IMenu.h" />
+    <ClInclude Include="include\RE\IMovementControllerRegisterInterface.h" />
+    <ClInclude Include="include\RE\IMovementDirectControl.h" />
     <ClInclude Include="include\RE\IMovementInterface.h" />
+    <ClInclude Include="include\RE\IMovementMessageInterface.h" />
+    <ClInclude Include="include\RE\IMovementMotionDrivenControl.h" />
+    <ClInclude Include="include\RE\IMovementPlannerDirectControl.h" />
+    <ClInclude Include="include\RE\IMovementSelectIdle.h" />
     <ClInclude Include="include\RE\IMovementState.h" />
     <ClInclude Include="include\RE\InputEvent.h" />
     <ClInclude Include="include\RE\InputManager.h" />
@@ -472,6 +480,8 @@
     <ClInclude Include="include\RE\MapZoomHandler.h" />
     <ClInclude Include="include\RE\MenuOpenHandler.h" />
     <ClInclude Include="include\RE\MiddleProcess.h" />
+    <ClInclude Include="include\RE\MovementControllerAI.h" />
+    <ClInclude Include="include\RE\MovementControllerNPC.h" />
     <ClInclude Include="include\RE\MoviePlayer.h" />
     <ClInclude Include="include\RE\NewOverrideBase.h" />
     <ClInclude Include="include\RE\NiBoneMatrixSetterI.h" />

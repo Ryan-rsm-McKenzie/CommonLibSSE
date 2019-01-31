@@ -10,6 +10,7 @@ namespace RE
 	public:
 		virtual ~ActorValueOwner();													// 00
 
+		// add
 		virtual float	GetActorValueCurrent(ActorValue a_akValue);					// 01
 		virtual float	GetActorValueMaximum(ActorValue a_akValue);					// 02
 		virtual float	GetActorValueBase(ActorValue a_akValue);					// 03
