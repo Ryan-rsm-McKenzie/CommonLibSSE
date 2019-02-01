@@ -178,6 +178,15 @@
     <Filter Include="include\RE\Skyrim\BSPathFinding">
       <UniqueIdentifier>{1ed87b83-825d-4900-bd0c-6fe985a92a6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\BSScript">
+      <UniqueIdentifier>{2367b640-0cb9-4469-bd89-ab1d4e1e0a58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\SkyrimScript">
+      <UniqueIdentifier>{3840665a-7fce-4caa-b058-fda1d0c94768}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSScript\Internal">
+      <UniqueIdentifier>{a6838020-6637-43eb-893b-0078dc5986aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -455,6 +464,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\TESRace.cpp">
       <Filter>src\RE\Skyrim\TESForms\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSSpinLock.cpp">
+      <Filter>src\RE\Skyrim\BSCore</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1531,6 +1543,99 @@
     </ClInclude>
     <ClInclude Include="include\RE\ActorMover.h">
       <Filter>include\RE\Skyrim\TESForms\World\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IVirtualMachine.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSCoreTypes.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IVMObjectBindInterface.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IVMSaveLoadInterface.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IVMDebugInterface.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\StatsEvent.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Logger.h">
+      <Filter>include\RE\Skyrim\SkyrimScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ErrorLogger.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\LogEvent.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMemoryPagePolicy.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SimpleAllocMemoryPagePolicy.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IObjectHandlePolicy.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\HandlePolicy.h">
+      <Filter>include\RE\Skyrim\SkyrimScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScriptObjectBindPolicy.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SkyrimScriptObjectBindPolicy.h">
+      <Filter>include\RE\Skyrim\SkyrimScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ISavePatcherInterface.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SavePatcher.h">
+      <Filter>include\RE\Skyrim\SkyrimScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IObjectProcessor.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\LinkerProcessor.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ILoader.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\CompiledScriptLoader.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSStorage.h">
+      <Filter>include\RE\Skyrim\BSSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IStore.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SkyrimScriptStore.h">
+      <Filter>include\RE\Skyrim\SkyrimScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTFreeList.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FunctionMessage.h">
+      <Filter>include\RE\Skyrim\BSScript\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\VirtualMachine.h">
+      <Filter>include\RE\Skyrim\BSScript\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTMessageQueue.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SuspendedStack.h">
+      <Filter>include\RE\Skyrim\BSScript\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSSpinLock.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ForceInclude.h">
+      <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -61,7 +61,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ForcedIncludeFiles>common/IPrefix.h;Logging.h;Util.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>common/IPrefix.h;Logging.h;ForceInclude.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ExceptionHandling>Sync</ExceptionHandling>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -110,7 +110,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ForcedIncludeFiles>common/IPrefix.h;Logging.h;Util.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>common/IPrefix.h;Logging.h;ForceInclude.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <OmitFramePointers>
       </OmitFramePointers>
@@ -173,6 +173,7 @@
     <ClCompile Include="src\RE\BGSKeywordForm.cpp" />
     <ClCompile Include="src\RE\BSAudioManager.cpp" />
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
+    <ClCompile Include="src\RE\BSSpinLock.cpp" />
     <ClCompile Include="src\RE\BSString.cpp" />
     <ClCompile Include="src\RE\GRefCountImpl.cpp" />
     <ClCompile Include="src\RE\GRefCountImplCore.cpp" />
@@ -253,6 +254,7 @@
     <ClCompile Include="src\RE\UIStringHolder.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\ForceInclude.h" />
     <ClInclude Include="include\RE\ActorMover.h" />
     <ClInclude Include="include\RE\BGSAddonNode.h" />
     <ClInclude Include="include\RE\BGSBlockBashData.h" />
@@ -329,6 +331,7 @@
     <ClInclude Include="include\RE\BSAudioManager.h" />
     <ClInclude Include="include\RE\BSAudioManagerThread.h" />
     <ClInclude Include="include\RE\BSBound.h" />
+    <ClInclude Include="include\RE\BSCoreTypes.h" />
     <ClInclude Include="include\RE\BSExtraData.h" />
     <ClInclude Include="include\RE\BSFixedString.h" />
     <ClInclude Include="include\RE\BSGameSound.h" />
@@ -343,11 +346,16 @@
     <ClInclude Include="include\RE\BSMusicEvent.h" />
     <ClInclude Include="include\RE\BSReloadShaderI.h" />
     <ClInclude Include="include\RE\BSScaleformTranslator.h" />
+    <ClInclude Include="include\RE\BSScriptObjectBindPolicy.h" />
     <ClInclude Include="include\RE\BSShader.h" />
+    <ClInclude Include="include\RE\BSSpinLock.h" />
+    <ClInclude Include="include\RE\BSStorage.h" />
     <ClInclude Include="include\RE\BSString.h" />
     <ClInclude Include="include\RE\BSTAnimationGraphDataChannel.h" />
     <ClInclude Include="include\RE\BSTextureSet.h" />
+    <ClInclude Include="include\RE\BSTFreeList.h" />
     <ClInclude Include="include\RE\BSThread.h" />
+    <ClInclude Include="include\RE\BSTMessageQueue.h" />
     <ClInclude Include="include\RE\BSTSmartPointer.h" />
     <ClInclude Include="include\RE\BSTArray.h" />
     <ClInclude Include="include\RE\BSTEvent.h" />
@@ -356,6 +364,7 @@
     <ClInclude Include="include\RE\BSTSingleton.h" />
     <ClInclude Include="include\RE\BSXAudio2GameSound.h" />
     <ClInclude Include="include\RE\CommandTable.h" />
+    <ClInclude Include="include\RE\CompiledScriptLoader.h" />
     <ClInclude Include="include\RE\Condition.h" />
     <ClInclude Include="include\RE\ConsoleManager.h" />
     <ClInclude Include="include\RE\DeviceTypes.h" />
@@ -364,6 +373,7 @@
     <ClInclude Include="include\RE\EffectSetting.h" />
     <ClInclude Include="include\RE\EnchantmentItem.h" />
     <ClInclude Include="include\RE\EquipManager.h" />
+    <ClInclude Include="include\RE\ErrorLogger.h" />
     <ClInclude Include="include\RE\ExtraDataTypes.h" />
     <ClInclude Include="include\RE\ExtraDroppedItemList.h" />
     <ClInclude Include="include\RE\ExtraEnchantment.h" />
@@ -376,6 +386,7 @@
     <ClInclude Include="include\RE\ExtraUniqueID.h" />
     <ClInclude Include="include\RE\FavoritesHandler.h" />
     <ClInclude Include="include\RE\FormTypes.h" />
+    <ClInclude Include="include\RE\FunctionMessage.h" />
     <ClInclude Include="include\RE\FxDelegate.h" />
     <ClInclude Include="include\RE\GFxExternalInterface.h" />
     <ClInclude Include="include\RE\GFxFileConstants.h" />
@@ -417,6 +428,7 @@
     <ClInclude Include="include\RE\GRefCountImpl.h" />
     <ClInclude Include="include\RE\GRefCountImplCore.h" />
     <ClInclude Include="include\RE\GStats.h" />
+    <ClInclude Include="include\RE\HandlePolicy.h" />
     <ClInclude Include="include\RE\HeldStateHandler.h" />
     <ClInclude Include="include\RE\hkBaseObject.h" />
     <ClInclude Include="include\RE\hkpAllCdPointCollector.h" />
@@ -449,10 +461,12 @@
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h" />
     <ClInclude Include="include\RE\IAnimationSetCallbackFunctor.h" />
     <ClInclude Include="include\RE\IDEvent.h" />
+    <ClInclude Include="include\RE\ILoader.h" />
     <ClInclude Include="include\RE\ImageSpaceEffect.h" />
     <ClInclude Include="include\RE\ImageSpaceEffectParam.h" />
     <ClInclude Include="include\RE\ImageSpaceShaderParam.h" />
     <ClInclude Include="include\RE\IMapCameraCallbacks.h" />
+    <ClInclude Include="include\RE\IMemoryPagePolicy.h" />
     <ClInclude Include="include\RE\IMenu.h" />
     <ClInclude Include="include\RE\IMovementControllerRegisterInterface.h" />
     <ClInclude Include="include\RE\IMovementDirectControl.h" />
@@ -468,10 +482,21 @@
     <ClInclude Include="include\RE\BaseExtraList.h" />
     <ClInclude Include="include\RE\BGSBipedObjectForm.h" />
     <ClInclude Include="include\RE\InventoryMenu.h" />
+    <ClInclude Include="include\RE\IObjectHandlePolicy.h" />
+    <ClInclude Include="include\RE\IObjectProcessor.h" />
     <ClInclude Include="include\RE\IPostAnimationChannelUpdateFunctor.h" />
+    <ClInclude Include="include\RE\ISavePatcherInterface.h" />
+    <ClInclude Include="include\RE\IStore.h" />
+    <ClInclude Include="include\RE\IVirtualMachine.h" />
+    <ClInclude Include="include\RE\IVMDebugInterface.h" />
+    <ClInclude Include="include\RE\IVMObjectBindInterface.h" />
+    <ClInclude Include="include\RE\IVMSaveLoadInterface.h" />
     <ClInclude Include="include\RE\IXAudio2VoiceCallback.h" />
+    <ClInclude Include="include\RE\LinkerProcessor.h" />
     <ClInclude Include="include\RE\LocalMapCamera.h" />
     <ClInclude Include="include\RE\LocalMapMenu.h" />
+    <ClInclude Include="include\RE\LogEvent.h" />
+    <ClInclude Include="include\RE\Logger.h" />
     <ClInclude Include="include\RE\MapCamera.h" />
     <ClInclude Include="include\RE\MapInputHandler.h" />
     <ClInclude Include="include\RE\MapLookHandler.h" />
@@ -501,6 +526,7 @@
     <ClInclude Include="include\RE\PackageLocation.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
     <ClInclude Include="include\RE\PlayStates.h" />
+    <ClInclude Include="include\RE\SavePatcher.h" />
     <ClInclude Include="include\RE\Script.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
     <ClInclude Include="include\RE\ExtraContainerChanges.h" />
@@ -536,12 +562,17 @@
     <ClInclude Include="include\RE\SetEventData.h" />
     <ClInclude Include="include\RE\SFTypes.h" />
     <ClInclude Include="include\RE\ShoutHandler.h" />
+    <ClInclude Include="include\RE\SimpleAllocMemoryPagePolicy.h" />
+    <ClInclude Include="include\RE\SkyrimScriptObjectBindPolicy.h" />
+    <ClInclude Include="include\RE\SkyrimScriptStore.h" />
     <ClInclude Include="include\RE\SneakHandler.h" />
     <ClInclude Include="include\RE\SoundData.h" />
     <ClInclude Include="include\RE\SpellItem.h" />
     <ClInclude Include="include\RE\SprintHandler.h" />
     <ClInclude Include="include\RE\StandardItemData.h" />
+    <ClInclude Include="include\RE\StatsEvent.h" />
     <ClInclude Include="include\RE\StringCache.h" />
+    <ClInclude Include="include\RE\SuspendedStack.h" />
     <ClInclude Include="include\RE\TESActorBase.h" />
     <ClInclude Include="include\RE\TESActorBaseData.h" />
     <ClInclude Include="include\RE\TESAIForm.h" />
@@ -610,6 +641,7 @@
     <ClInclude Include="include\RE\UIStringHolder.h" />
     <ClInclude Include="include\RE\UserEventEnabledEvent.h" />
     <ClInclude Include="include\RE\TESFile.h" />
+    <ClInclude Include="include\RE\VirtualMachine.h" />
     <ClInclude Include="include\Util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
