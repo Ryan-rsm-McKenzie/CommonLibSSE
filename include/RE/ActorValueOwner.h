@@ -14,11 +14,11 @@ namespace RE
 		virtual float	GetActorValueCurrent(ActorValue a_akValue);					// 01
 		virtual float	GetActorValueMaximum(ActorValue a_akValue);					// 02
 		virtual float	GetActorValueBase(ActorValue a_akValue);					// 03
-		virtual void	SetActorValueBase(ActorValue a_akValue, float value);		// 04 - { return; }
-		virtual void	ModActorValueBase(ActorValue a_akValue, float value);		// 05 - { return; }
-		virtual void	Unk_06(UInt32 arg0, UInt32 arg1, UInt32 arg2);				// 06 - { return; }
-		virtual void	SetActorValueCurrent(ActorValue a_akValue, float value);	// 07
-		virtual bool	Unk_08(void);												// 08
+		virtual void	SetActorValueBase(ActorValue a_akValue, float a_value);		// 04 - { return; }
+		virtual void	ModActorValueBase(ActorValue a_akValue, float a_value);		// 05 - { return; }
+		virtual void	Unk_06(void);												// 06 - { return; }
+		virtual void	SetActorValueCurrent(ActorValue a_akValue, float a_value);	// 07
+		virtual void	Unk_08(void);												// 08
 
 		float			GetPlayerActorValueCurrent(ActorValue a_akValue);
 	};
