@@ -1,6 +1,9 @@
 #include "RE/UIManager.h"
 
+#include "skse64/GameMenus.h"  // UIManager
+
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/UIMessage.h"  // UIMessage
 
 
 namespace RE
@@ -13,9 +16,9 @@ namespace RE
 	}
 
 
-	void UIManager::AddMessage(BSFixedString& a_menuName, UInt32 a_msgID, IUIMessageData* a_pData)
+	void UIManager::AddMessage(BSFixedString& a_menuName, UIMessage::Message a_msgID, IUIMessageData* a_pData)
 	{
-		typedef void _AddMessage_t(UIManager* a_this, BSFixedString& a_menuName, UInt32 a_msgID, IUIMessageData* a_pData);
+		typedef void _AddMessage_t(UIManager* a_this, BSFixedString& a_menuName, UIMessage::Message a_msgID, IUIMessageData* a_pData);
 		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::UIManager*>(this)->_AddMessage_GetPtr());
 		_AddMessage_t* _AddMessage = reinterpret_cast<_AddMessage_t*>(*ptr);
 		_AddMessage(this, a_menuName, a_msgID, a_pData);

@@ -246,9 +246,6 @@
     <ClCompile Include="src\RE\InventoryEntryData.cpp">
       <Filter>src\RE\Skyrim\Misc</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\NiAVObject.cpp">
-      <Filter>src\RE\Skyrim\NetImmerse</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\NiControllerManager.cpp">
       <Filter>src\RE\Skyrim\NetImmerse</Filter>
     </ClCompile>
@@ -468,6 +465,15 @@
     <ClCompile Include="src\RE\BSSpinLock.cpp">
       <Filter>src\RE\Skyrim\BSCore</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\ItemsPickpocketed.cpp">
+      <Filter>src\RE\Skyrim\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ChestsLooted.cpp">
+      <Filter>src\RE\Skyrim\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiAVObject.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -579,9 +585,6 @@
       <Filter>include\RE\Skyrim\TESForms\World\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NiNode.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiAVObject.h">
       <Filter>include\RE\Skyrim\NetImmerse</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NiObjectNET.h">
@@ -1636,6 +1639,21 @@
     </ClInclude>
     <ClInclude Include="include\ForceInclude.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ItemsPickpocketed.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\UIMessage.h">
+      <Filter>include\RE\Skyrim\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ChestsLooted.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiAVObject.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraHealth.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

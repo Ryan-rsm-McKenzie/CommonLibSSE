@@ -39,6 +39,6 @@ namespace RE
 
 	NiTimeController* NiObjectNET::GetController() const
 	{
-		return m_controller;
+		return controller;
 	}
 }

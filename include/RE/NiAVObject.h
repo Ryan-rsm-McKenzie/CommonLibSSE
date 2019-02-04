@@ -1,82 +1,99 @@
 #pragma once
 
-#include "skse64/NiObjects.h"  // NiObjectNET
 #include "skse64/NiTypes.h"  // NiTransform
 
 #include "RE/NiObjectNET.h"  // NiObjectNET
 
 class NiMatrix33;
-class NiNode;
-class NiPoint3;
 class NiProperty;
 
 
 namespace RE
 {
+	class BSFixedString;
+	class NiNode;
+	class NiPoint3;
+
+
 	class NiAVObject : public NiObjectNET
 	{
 	public:
-		enum Flag : UInt32
+		enum class Flag : UInt32
 		{
-			kFlag_SelectiveUpdate = 1 << 1,
-			kFlag_UpdatePropertyControllers = 1 << 2,
-			kFlag_SelectiveUpdateRigid = 1 << 4,
-			kFlag_OverrideSelectiveTransforms = 1 << 7,
+			kSelectiveUpdate = 1 << 1,
+			kUpdatePropertyControllers = 1 << 2,
+			kSelectiveUpdateRigid = 1 << 4,
+			kOverrideSelectiveTransforms = 1 << 7,
 		};
 
 
 		struct ControllerUpdateContext
 		{
-			enum
+			enum class Flag : UInt32
 			{
 				kDirty = 1 << 0,
 			};
 
 
-			float	delta;
-			UInt32	flags;
+			float	delta;	// 0
+			Flag	flags;	// 4
 		};
+		STATIC_ASSERT(sizeof(ControllerUpdateContext) == 0x8);
 
 
-		virtual void		UpdateControllers(ControllerUpdateContext* a_ctx);
-		virtual void		UpdateNodeBound(ControllerUpdateContext* a_ctx);
-		virtual void		ApplyTransform(NiMatrix33* a_mtx, NiPoint3* a_translate, bool a_postTransform);
-		virtual void		SetPropertyState(NiProperty* a_prop);
-		virtual void		Unk_25(UInt32 a_arg1);
-		virtual NiAVObject*	GetObjectByName(const char*& a_name);
-		virtual void		SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid);
-		virtual void		UpdateDownwardPass(ControllerUpdateContext* a_ctx, void* a_unk2);
-		virtual void		UpdateSelectedDownwardPass(ControllerUpdateContext* a_ctx, void* unk2);
-		virtual void		UpdateRigidDownwardPass(ControllerUpdateContext* a_ctx, void* a_unk2);
-		virtual void		UpdateWorldBound(void);
-		virtual void		UpdateWorldData(ControllerUpdateContext* a_ctx);
-		virtual void		UpdateNoControllers(ControllerUpdateContext* a_ctx);
-		virtual void		UpdateDownwardPassTempParent(NiNode* a_parent, ControllerUpdateContext* a_ctx);
-		virtual void		Unk_30(void);
-		virtual void		Unk_31(UInt32 a_arg1);
+		virtual ~NiAVObject();																									// 00
+
+		// override (NiObjectNET)
+		virtual NiRTTI*		GetRTTI() override;																					// 02
+		virtual void		LoadBinary(NiStream* a_stream) override;															// 18
+		virtual void		LinkObject(NiStream* a_stream) override;															// 19
+		virtual bool		RegisterStreamables(NiStream* a_stream) override;													// 1A
+		virtual void		SaveBinary(NiStream* a_stream) override;															// 1B
+		virtual bool		IsEqual(NiObject* a_object) override;																// 1C
+		virtual void		ProcessClone(NiCloningProcess* a_cloner) override;													// 1D
+
+		// add
+		virtual void		UpdateControllers(ControllerUpdateContext* a_ctx);													// 25
+		virtual void		UpdateNodeBound(ControllerUpdateContext* a_ctx);													// 26
+		virtual void		ApplyTransform(NiMatrix33* a_mtx, NiPoint3* a_translate, bool a_postTransform);						// 27 - { return; }
+		virtual void		SetPropertyState(NiProperty* a_prop);																// 28 - { return; }
+		virtual void		Unk_29(void);																						// 29 - { return; }
+		virtual NiAVObject*	GetObjectByName(const BSFixedString& a_name);														// 2A
+		virtual void		SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid);	// 2B
+		virtual void		UpdateDownwardPass(ControllerUpdateContext* a_ctx, void* a_arg2);									// 2C
+		virtual void		UpdateSelectedDownwardPass(ControllerUpdateContext* a_ctx, void* a_arg2);							// 2D
+		virtual void		UpdateRigidDownwardPass(ControllerUpdateContext* a_ctx, void* a_arg2);								// 2E
+		virtual void		UpdateWorldBound();																					// 2F - { return; }
+		virtual void		UpdateWorldData(ControllerUpdateContext* a_ctx);													// 30
+		virtual void		UpdateNoControllers(ControllerUpdateContext* a_ctx);												// 31
+		virtual void		UpdateDownwardPassTempParent(NiNode* a_parent, ControllerUpdateContext* a_ctx);						// 32
+		virtual void		Unk_33(void);																						// 33
+		virtual void		Unk_34(void);																						// 34 - { return; }
 
 		void				UpdateNode(ControllerUpdateContext* a_ctx);
 
 
 		// members
-		NiNode*		m_parent;			// 30
-		UInt32		unk038;				// 38 - New in SE, init'd to FFFFFFFF
-		UInt32		pad03C;				// 3C
-		NiAVObject*	unk040;				// 40
-		NiTransform	m_localTransform;	// 48
-		NiTransform	unkTransform;;		// 7C - SE: this one is new
-		NiTransform	m_worldTransform;	// B0
-		float		unkE4;				// E4
-		float		unkE8;				// E8
-		float		unkEC;				// EC
-		float		unkF0;				// F0
-		UInt32		m_flags;			// F4 - bitfield
-		float		unkF8;				// F8
-		UInt32		unkFC;				// FC
+		NiNode*		parent;				// 030
+		UInt32		unk038;				// 038 - New in SE, init'd to FFFFFFFF
+		UInt32		pad03C;				// 03C
+		NiAVObject*	unk040;				// 040
+		NiTransform	localTransform;		// 048
+		NiTransform	worldTransform;		// 07C
+		NiTransform	oldWorldTransform;	// 0B0 - SE: this one is new
+		float		unkE4;				// 0E4
+		float		unkE8;				// 0E8
+		float		unkEC;				// 0EC
+		float		unkF0;				// 0F0
+		UInt32		flags;				// 0F4 - bitfield
+		float		unkF8;				// 0F8
+		UInt32		unkFC;				// 0FC
 		float		unk100;				// 100 - New in SE? init's to 1.0
 		UInt32		unk104;				// 104 - New in SE? init'd to 0
 		UInt8		unk108;				// 108
 		UInt8		unk109;				// 109 - bitfield
-		UInt8		pad10A[6];			// 10A
+		UInt16		pad10A;				// 10A
+		UInt32		pad10C;				// 10C
 	};
+	STATIC_ASSERT(sizeof(NiAVObject) == 0x110);
 }

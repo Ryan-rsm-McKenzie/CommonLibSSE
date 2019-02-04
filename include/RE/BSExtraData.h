@@ -10,7 +10,7 @@ namespace RE
 	class BSExtraData
 	{
 	public:
-		enum { kExtraTypeID = ExtraDataType::kDroppedItemList };
+		enum { kExtraTypeID = ExtraDataType::kNone };
 
 
 		virtual ~BSExtraData();												// 00

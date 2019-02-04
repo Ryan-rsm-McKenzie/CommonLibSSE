@@ -1,16 +1,22 @@
 #pragma once
 
-#include "skse64/GameMenus.h"  // BSTCommonStaticMessageQueue, UIMessage
+#include "skse64/Hooks_UI.h"  // UIDelegate_v1
+#include "skse64/PapyrusUI.h"  // UIDelegate
 
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSTMessageQueue.h"  // BSTCommonStaticMessageQueue
+#include "RE/UIMessage.h"  // UIMessage
 
 
 namespace RE
 {
+	class IUIMessageData;
+
+
 	class UIManager
 	{
 	public:
-		typedef BSTCommonStaticMessageQueue<UIMessage*, 100>	MessageQueue;
+		typedef BSTCommonStaticMessageQueue<UIMessage*, 100> MessageQueue;
 
 
 		enum
@@ -20,7 +26,7 @@ namespace RE
 
 
 		static UIManager*	GetSingleton();
-		void				AddMessage(BSFixedString& a_menuName, UInt32 a_msgID, IUIMessageData* a_pData);
+		void				AddMessage(BSFixedString& a_menuName, UIMessage::Message a_msgID, IUIMessageData* a_pData);
 		IUIMessageData*		CreateUIMessageData(const BSFixedString& a_name);
 		void				ProcessCommands();
 		void				QueueCommand(UIDelegate* a_cmd);

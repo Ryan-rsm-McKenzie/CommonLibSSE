@@ -1,6 +1,6 @@
 #include "RE/NiNode.h"
 
-#include "skse64/NiObjects.h"  // NiAVObject
+#include "skse64/NiNodes.h"  // NiNode
 
 
 namespace RE

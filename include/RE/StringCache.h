@@ -1,6 +1,6 @@
 #pragma once
 
-#include "skse64/GameTypes.h"  // SimpleLock
+#include "RE/BSSpinLock.h"  // BSSpinLock
 
 
 namespace RE
@@ -36,7 +36,7 @@ namespace RE
 		// 10
 		struct Lock
 		{
-			SimpleLock	lock;	// 00
+			BSSpinLock	lock;	// 00
 			UInt64		unk08;	// 08
 		};
 		STATIC_ASSERT(sizeof(Lock) == 0x10);

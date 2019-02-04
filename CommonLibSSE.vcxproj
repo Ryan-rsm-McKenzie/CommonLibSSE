@@ -175,9 +175,12 @@
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
     <ClCompile Include="src\RE\BSSpinLock.cpp" />
     <ClCompile Include="src\RE\BSString.cpp" />
+    <ClCompile Include="src\RE\ChestsLooted.cpp" />
     <ClCompile Include="src\RE\GRefCountImpl.cpp" />
     <ClCompile Include="src\RE\GRefCountImplCore.cpp" />
+    <ClCompile Include="src\RE\ItemsPickpocketed.cpp" />
     <ClCompile Include="src\RE\LocalMapCamera.cpp" />
+    <ClCompile Include="src\RE\NiAVObject.cpp" />
     <ClCompile Include="src\RE\NiExtraData.cpp" />
     <ClCompile Include="src\RE\NiObject.cpp" />
     <ClCompile Include="src\RE\NiRefObject.cpp" />
@@ -217,7 +220,6 @@
     <ClCompile Include="src\RE\MenuControls.cpp" />
     <ClCompile Include="src\RE\MenuEventHandler.cpp" />
     <ClCompile Include="src\RE\MenuManager.cpp" />
-    <ClCompile Include="src\RE\NiAVObject.cpp" />
     <ClCompile Include="src\RE\NiControllerManager.cpp" />
     <ClCompile Include="src\RE\NiControllerSequence.cpp" />
     <ClCompile Include="src\RE\NiNode.cpp" />
@@ -363,6 +365,7 @@
     <ClInclude Include="include\RE\BSTransformDeltaEvent.h" />
     <ClInclude Include="include\RE\BSTSingleton.h" />
     <ClInclude Include="include\RE\BSXAudio2GameSound.h" />
+    <ClInclude Include="include\RE\ChestsLooted.h" />
     <ClInclude Include="include\RE\CommandTable.h" />
     <ClInclude Include="include\RE\CompiledScriptLoader.h" />
     <ClInclude Include="include\RE\Condition.h" />
@@ -378,6 +381,7 @@
     <ClInclude Include="include\RE\ExtraDroppedItemList.h" />
     <ClInclude Include="include\RE\ExtraEnchantment.h" />
     <ClInclude Include="include\RE\ExtraFactionChanges.h" />
+    <ClInclude Include="include\RE\ExtraHealth.h" />
     <ClInclude Include="include\RE\ExtraLocationRefType.h" />
     <ClInclude Include="include\RE\ExtraMapMarker.h" />
     <ClInclude Include="include\RE\ExtraOwnership.h" />
@@ -487,6 +491,7 @@
     <ClInclude Include="include\RE\IPostAnimationChannelUpdateFunctor.h" />
     <ClInclude Include="include\RE\ISavePatcherInterface.h" />
     <ClInclude Include="include\RE\IStore.h" />
+    <ClInclude Include="include\RE\ItemsPickpocketed.h" />
     <ClInclude Include="include\RE\IVirtualMachine.h" />
     <ClInclude Include="include\RE\IVMDebugInterface.h" />
     <ClInclude Include="include\RE\IVMObjectBindInterface.h" />
@@ -509,6 +514,7 @@
     <ClInclude Include="include\RE\MovementControllerNPC.h" />
     <ClInclude Include="include\RE\MoviePlayer.h" />
     <ClInclude Include="include\RE\NewOverrideBase.h" />
+    <ClInclude Include="include\RE\NiAVObject.h" />
     <ClInclude Include="include\RE\NiBoneMatrixSetterI.h" />
     <ClInclude Include="include\RE\NiCamera.h" />
     <ClInclude Include="include\RE\NiExtraData.h" />
@@ -544,7 +550,6 @@
     <ClInclude Include="include\RE\MenuOpenCloseEvent.h" />
     <ClInclude Include="include\RE\Misc.h" />
     <ClInclude Include="include\RE\MovementHandler.h" />
-    <ClInclude Include="include\RE\NiAVObject.h" />
     <ClInclude Include="include\RE\NiControllerManager.h" />
     <ClInclude Include="include\RE\NiControllerSequence.h" />
     <ClInclude Include="include\RE\NiNode.h" />
@@ -637,6 +642,7 @@
     <ClInclude Include="include\RE\TogglePOVHandler.h" />
     <ClInclude Include="include\RE\ToggleRunHandler.h" />
     <ClInclude Include="include\RE\UIManager.h" />
+    <ClInclude Include="include\RE\UIMessage.h" />
     <ClInclude Include="include\RE\UISaveLoadManager.h" />
     <ClInclude Include="include\RE\UIStringHolder.h" />
     <ClInclude Include="include\RE\UserEventEnabledEvent.h" />

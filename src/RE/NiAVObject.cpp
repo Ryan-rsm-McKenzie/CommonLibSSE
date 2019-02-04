@@ -1,5 +1,7 @@
 #include "RE/NiAVObject.h"
 
+#include "skse64/NiObjects.h"  // NiAVObject
+
 
 namespace RE
 {

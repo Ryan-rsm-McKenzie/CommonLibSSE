@@ -15,14 +15,6 @@ namespace RE
 	}
 
 
-	void SendItemsPickPocketedEvent(UInt32 a_numItems)
-	{
-		typedef void _SendItemsPickPocketedEvent_t(UInt32 a_numItems);
-		static RelocAddr<_SendItemsPickPocketedEvent_t*> _SendItemsPickPocketedEvent(SEND_ITEMS_PICK_POCKETED_EVENT);
-		_SendItemsPickPocketedEvent(a_numItems);
-	}
-
-
 	void DebugNotification(const char* a_notification, void* a_unk2, bool a_unk3)
 	{
 		typedef void _DebugNotification_t(const char* a_notification, void* a_unk2, bool a_unk3);
