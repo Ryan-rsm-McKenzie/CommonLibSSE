@@ -37,5 +37,7 @@ namespace RE
 		TESForm*						type;		// 00
 		BSSimpleList<BaseExtraList*>*	extraList;	// 08
 		SInt32							countDelta;	// 10
+		UInt32							pad14;		// 14
 	};
+	STATIC_ASSERT(sizeof(InventoryEntryData) == 0x18);
 }

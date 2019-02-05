@@ -474,6 +474,9 @@
     <ClCompile Include="src\RE\NiAVObject.cpp">
       <Filter>src\RE\Skyrim\NetImmerse</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\Inventory.cpp">
+      <Filter>src\RE\Skyrim\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -1653,6 +1656,15 @@
       <Filter>include\RE\Skyrim\NetImmerse</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraHealth.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraHotkey.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Inventory.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraOutfitItem.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,7 +4,7 @@
 #include "RE/ActorProcessManager.h"  // ActorProcessManager
 #include "RE/ActorState.h"  // ActorState
 #include "RE/ActorValueOwner.h"  // ActorValueOwner
-#include "RE/ActorValues.h"  // ActorValue8
+#include "RE/ActorValues.h"  // ActorValue, ActorValue8
 #include "RE/BGSEntryPointPerkEntry.h"  // BGSEntryPointPerkEntry
 #include "RE/BSTArray.h"  // BSTSmallArray
 #include "RE/BSTEvent.h"  // BSTEventSink
@@ -266,11 +266,11 @@ namespace RE
 		virtual void							Unk_F4(void);																																													// 0F4
 		virtual void							Unk_F5(void);																																													// 0F5
 		virtual void							Unk_F6(void);																																													// 0F6
-		virtual void							AdvanceSkill(UInt32 a_skillId, float a_points, UInt32 a_unk1, UInt32 a_unk2);																													// 0F7
+		virtual void							AdvanceSkill(ActorValue a_skillID, float a_points, UInt32 a_arg3, UInt32 a_arg4);																												// 0F7
 		virtual void							Unk_F8(void);																																													// 0F8
 		virtual bool							IsInFaction(TESFaction* faction);																																								// 0F9
-		virtual void							VisitPerks(void);																																												// 0FA
-		virtual void							AddPerk(BGSPerk* a_perk, UInt32 a_unk1);																																						// 0FB
+		virtual void							VisitPerks(PerkEntryVisitor& a_visitor);																																						// 0FA
+		virtual void							AddPerk(BGSPerk* a_perk, UInt32 a_arg2);																																						// 0FB
 		virtual void							RemovePerk(BGSPerk* a_perk);																																									// 0FC
 		virtual void							Unk_FD(void);																																													// 0FD
 		virtual void							Unk_FE(void);																																													// 0FE

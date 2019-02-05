@@ -178,6 +178,7 @@
     <ClCompile Include="src\RE\ChestsLooted.cpp" />
     <ClCompile Include="src\RE\GRefCountImpl.cpp" />
     <ClCompile Include="src\RE\GRefCountImplCore.cpp" />
+    <ClCompile Include="src\RE\Inventory.cpp" />
     <ClCompile Include="src\RE\ItemsPickpocketed.cpp" />
     <ClCompile Include="src\RE\LocalMapCamera.cpp" />
     <ClCompile Include="src\RE\NiAVObject.cpp" />
@@ -382,8 +383,10 @@
     <ClInclude Include="include\RE\ExtraEnchantment.h" />
     <ClInclude Include="include\RE\ExtraFactionChanges.h" />
     <ClInclude Include="include\RE\ExtraHealth.h" />
+    <ClInclude Include="include\RE\ExtraHotkey.h" />
     <ClInclude Include="include\RE\ExtraLocationRefType.h" />
     <ClInclude Include="include\RE\ExtraMapMarker.h" />
+    <ClInclude Include="include\RE\ExtraOutfitItem.h" />
     <ClInclude Include="include\RE\ExtraOwnership.h" />
     <ClInclude Include="include\RE\ExtraReferenceHandle.h" />
     <ClInclude Include="include\RE\ExtraTextDisplayData.h" />
@@ -485,6 +488,7 @@
     <ClInclude Include="include\RE\InputMappingManager.h" />
     <ClInclude Include="include\RE\BaseExtraList.h" />
     <ClInclude Include="include\RE\BGSBipedObjectForm.h" />
+    <ClInclude Include="include\RE\Inventory.h" />
     <ClInclude Include="include\RE\InventoryMenu.h" />
     <ClInclude Include="include\RE\IObjectHandlePolicy.h" />
     <ClInclude Include="include\RE\IObjectProcessor.h" />

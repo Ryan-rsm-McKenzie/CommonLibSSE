@@ -13,9 +13,9 @@ namespace RE
 	// 48 8B C4 44 89 48 20 4C  89 40 18 48 89 50 10 55  53 56 57 41 54 41 55 41  56 41 57 48 8D 68 88 48
 	constexpr std::uintptr_t ACTOR_SEND_STEAL_ALARM = 0x005DD960;										// 1_5_62
 	// 48 89 5C 24 10 48 89 6C  24 18 56 57 41 56 48 83  EC 20 33 FF 45 0F B6 F1  41 8B F0 48 8B DA 48 8B
-	constexpr std::uintptr_t	ACTOR_CALC_ENTRY_VALUE = 0x001D9270;									// 1_5_62
+	constexpr std::uintptr_t ACTOR_CALC_ENTRY_VALUE = 0x001D9270;										// 1_5_62
 	// 40 53 48 83 EC 20 41 8B  D8 4C 8B C2 48 8B D1 48  8B 89 F0 00 00 00 48 85  ?? ?? 2B 80 B9 37 01 00
-	constexpr std::uintptr_t	ACTOR_GET_DETECTION_LEVEL = 0x005FCB90;									// 1_5_62
+	constexpr std::uintptr_t ACTOR_GET_DETECTION_LEVEL = 0x005FCB90;									// 1_5_62
 	// 40 56 57 41 56 48 83 EC  30 48 C7 44 24 20 FE FF  FF FF 48 89 5C 24 58 48  89 6C 24 60 48 8B F9 48  8B 49 40 48 83 C1 30 48
 	constexpr std::uintptr_t ACTOR_IS_GHOST = 0x005D2710;												// 1_5_62
 	// 48 89 5C 24 10 57 48 83  EC 60 48 89 74 24 70 48
@@ -25,9 +25,9 @@ namespace RE
 	constexpr std::uintptr_t ACTOR_VALUE_OWNER_GET_PLAYER_ACTOR_VALUE_CURRENT = 0x003E5440;				// 1_5_62
 
 	// 40 55 56 57 41 56 41 57  48 83 EC 30 48 C7 44 24  20 FE FF FF FF 48 89 5C  24 78 48 8B EA 4C 8B F9  44 8B 05 C1 D2 3A 03 65
-	constexpr std::uintptr_t	BASE_EXTRA_LIST_SET_INVENTORY_CHANGES_IMPL = 0x0010F7B0;				// 1_5_62
+	constexpr std::uintptr_t BASE_EXTRA_LIST_SET_INVENTORY_CHANGES_IMPL = 0x0010F7B0;					// 1_5_62
 	// 40 57 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 48  89 5C 24 48 48 89 74 24  50 48 8B F2 48 8B F9 C7  02 00 00 00 00 48 8D 59  10 48 89 5C 24 40 48 8B  CB ?? ?? ?? ?? ?? 90 BA  85 00 00 00 48 8B CF ??
-	constexpr std::uintptr_t	BASE_EXTRA_LIST_GET_ASH_PILE_REF_HANDLE_IMPL = 0x00117170;				// 1_5_62
+	constexpr std::uintptr_t BASE_EXTRA_LIST_GET_ASH_PILE_REF_HANDLE_IMPL = 0x00117170;					// 1_5_62
 
 	// 40 53 48 83 EC 60 8B 19  0F 29 74 24 50 0F 28 F3
 	constexpr std::uintptr_t BGS_SOUND_DESCRIPTOR_SOUND_DATA_SET_POSITION = 0x00BEDB10;					// 1_5_62 - There's a function very similar to this once, just makes different calls
@@ -83,6 +83,9 @@ namespace RE
 
 	// 83 C8 FF F0 0F C1 41 08  83 F8 01 75 10 48 85 C9  74 0B 48 8B 01 BA 01 00  00 00 48 FF 20 C3 CC CC
 	constexpr std::uintptr_t G_REF_COUNT_RELEASE = 0x00EC76E0;											// 1_5_62
+
+	// 40 53 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 8B  0D 63 D5 2C 03 65 48 8B
+	constexpr std::uintptr_t INVENTORY_GET_EVENT_SOURCE = 0x001EF520;									// 1_5_62
 
 	// 40 57 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 48  89 5C 24 48 48 89 6C 24  50 48 89 74 24 58 48 8B  F9 ?? ?? ?? ?? ?? ?? ??  65 48 8B 04 25 58 00 00  00 BD 68 07 00 00 4A 8B  34 C0 8B 1C 2E 89 5C 24  40 C7 04 2E 62 00 00 00
 	constexpr std::uintptr_t INVENTORY_CHANGES_CTOR = 0x001D93F0;										// 1_5_62

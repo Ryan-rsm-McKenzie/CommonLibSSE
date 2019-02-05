@@ -164,9 +164,9 @@ namespace RE
 			return 0;
 		}
 
-		BSExtraData *result = nullptr;
+		BSExtraData* result = 0;
 
-		for (BSExtraData *cur = _data; cur; cur = cur->next) {
+		for (BSExtraData* cur = _data; cur; cur = cur->next) {
 			if (to_underlying(cur->GetType()) == a_type) {
 				result = cur;
 				break;
