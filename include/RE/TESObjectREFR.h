@@ -134,7 +134,7 @@ namespace RE
 		virtual void					Unk_53(void);																																												// 53
 		virtual void					Unk_54(void);																																												// 54
 		virtual void					Unk_55(void);																																												// 55
-		virtual UInt32*					RemoveItem(UInt32* a_droppedItemHandle, TESForm* a_akItem, UInt32 a_aiCount, RemoveType a_mode, BaseExtraList* a_extraList, TESObjectREFR* a_moveToRef, UInt32 a_unk7, UInt32 a_unk8);		// 56
+		virtual UInt32&					RemoveItem(UInt32& a_droppedItemHandle, TESForm* a_item, UInt32 a_count, RemoveType a_mode, BaseExtraList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0);	// 56
 		virtual bool					EquipItem(TESForm* a_akItem, UInt32 a_aiCount, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5);																									// 57
 		virtual void					Unk_58(void);																																												// 58
 		virtual void					Unk_59(void);																																												// 59
