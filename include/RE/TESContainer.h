@@ -18,7 +18,9 @@ namespace RE
 				SInt32		requiredRank;	// 08
 				UInt32		pad0C;			// 0C
 				float		condition;		// 10
+				UInt32		pad14;			// 14
 			};
+			STATIC_ASSERT(sizeof(ExtraData) == 0x18);
 
 
 			UInt32		count;	// 00
@@ -26,6 +28,7 @@ namespace RE
 			TESForm*	form;	// 08
 			ExtraData*	data;	// 10
 		};
+		STATIC_ASSERT(sizeof(Entry) == 0x18);
 
 
 		template <class Op>

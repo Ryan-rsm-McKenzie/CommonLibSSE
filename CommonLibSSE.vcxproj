@@ -179,6 +179,7 @@
     <ClCompile Include="src\RE\GRefCountImpl.cpp" />
     <ClCompile Include="src\RE\GRefCountImplCore.cpp" />
     <ClCompile Include="src\RE\Inventory.cpp" />
+    <ClCompile Include="src\RE\ItemCrafted.cpp" />
     <ClCompile Include="src\RE\ItemsPickpocketed.cpp" />
     <ClCompile Include="src\RE\LocalMapCamera.cpp" />
     <ClCompile Include="src\RE\NiAVObject.cpp" />
@@ -367,6 +368,7 @@
     <ClInclude Include="include\RE\BSTSingleton.h" />
     <ClInclude Include="include\RE\BSXAudio2GameSound.h" />
     <ClInclude Include="include\RE\ChestsLooted.h" />
+    <ClInclude Include="include\RE\Color.h" />
     <ClInclude Include="include\RE\CommandTable.h" />
     <ClInclude Include="include\RE\CompiledScriptLoader.h" />
     <ClInclude Include="include\RE\Condition.h" />
@@ -388,6 +390,7 @@
     <ClInclude Include="include\RE\ExtraMapMarker.h" />
     <ClInclude Include="include\RE\ExtraOutfitItem.h" />
     <ClInclude Include="include\RE\ExtraOwnership.h" />
+    <ClInclude Include="include\RE\ExtraPoison.h" />
     <ClInclude Include="include\RE\ExtraReferenceHandle.h" />
     <ClInclude Include="include\RE\ExtraTextDisplayData.h" />
     <ClInclude Include="include\RE\ExtraUniqueID.h" />
@@ -495,6 +498,7 @@
     <ClInclude Include="include\RE\IPostAnimationChannelUpdateFunctor.h" />
     <ClInclude Include="include\RE\ISavePatcherInterface.h" />
     <ClInclude Include="include\RE\IStore.h" />
+    <ClInclude Include="include\RE\ItemCrafted.h" />
     <ClInclude Include="include\RE\ItemsPickpocketed.h" />
     <ClInclude Include="include\RE\IVirtualMachine.h" />
     <ClInclude Include="include\RE\IVMDebugInterface.h" />

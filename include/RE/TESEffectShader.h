@@ -1,13 +1,16 @@
 #pragma once
 
+#include "RE/Color.h"  // Color
+#include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESTexture.h"  // TESTexture
-
-class BGSSoundDescriptorForm;
 
 
 namespace RE
 {
+	class BGSSoundDescriptorForm;
+
+
 	class TESEffectShader : public TESForm
 	{
 	public:
@@ -40,15 +43,6 @@ namespace RE
 			{
 				kEqualTo = 0x3,
 				kNormal = 0x4
-			};
-
-
-			struct Color
-			{
-				UInt8	r;		// 0
-				UInt8	g;		// 1
-				UInt8	b;		// 2
-				UInt8	pad3;	// 3
 			};
 
 

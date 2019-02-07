@@ -1,28 +1,23 @@
 #pragma once
 
-#include "skse64/GameEvents.h"  // MenuOpenCloseEvent
 #include "skse64/GameFormComponents.h"  // BGSOverridePackCollection
-#include "skse64/GameTypes.h"  // BSFixedString
 
+#include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTEvent.h"  // BSTEventSink
+#include "RE/Color.h"  // Color
+#include "RE/FormTypes.h"  // BGSColorForm, BGSTextureSet, BGSHeadPart, TESClass, BGSOutfit, TESFaction, BGSHeadPart
 #include "RE/TESActorBase.h"  // TESActorBase
 #include "RE/TESRaceForm.h"  // TESRaceForm
-
-class BGSColorForm;
-class BGSHeadPart;
-class BGSOutfit;
-class BGSTextureSet;
-class BSFaceGenNiNode;
-class NiColorA;
-class TESClass;
-class TESCombatStyle;
-class TESObjectARMO;
 
 
 namespace RE
 {
-	class TESFaction;
+	class BGSTextureSet;
+	class BSFaceGenNiNode;
+	class MenuOpenCloseEvent;
+	class NiColorA;
 	class TESRace;
+	class TintMask;
 
 
 	class TESNPC :
@@ -51,34 +46,28 @@ namespace RE
 
 		struct HeadData
 		{
-			BGSColorForm*	hairColor;
-			BGSTextureSet*	headTexture;	// Only seems to apply to the player
+			BGSColorForm*	hairColor;		// 00
+			BGSTextureSet*	headTexture;	// 08 - Only seems to apply to the player
 		};
-
-
-		struct Color
-		{
-			// 797979 Transparent
-			UInt8	red;	// 0
-			UInt8	green;	// 1
-			UInt8	blue;	// 2
-		};
+		STATIC_ASSERT(sizeof(HeadData) == 0x10);
 
 
 		struct MorphAction
 		{
-			BSFaceGenNiNode*	faceNode;
-			TESNPC*				npc;
-			const char**		morphName;
-			float				value;
+			BSFaceGenNiNode*	faceNode;	// 00
+			TESNPC*				npc;		// 08
+			const char**		morphName;	// 10
+			float				value;		// 18
+			UInt32				pad1C;		// 1C
 		};
+		STATIC_ASSERT(sizeof(MorphAction) == 0x20);
 
 
 		// override (TESActorBase)
 		virtual const char*		GetAliasName(const BSFixedString& a_alias) override;																				// 2E - alias: "Pronoun" "PronounObj" "PronounPos" "PronounPosObj" "PronounRef" "PronounInt" "Race" "Gender" "ShortName". see http://www.creationkit.com/Text_Replacement
 		virtual void			CopyFrom(TESForm* a_srcForm) override;																								// 2F - { return; }
 		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
-		virtual BGSVoiceType*	GetVoiceType() const override;																										// 4A - { return nullptr; }
+		virtual BGSVoiceType*	GetVoiceType() const override;																										// 4A - { return 0; }
 		virtual bool			GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4C
 		virtual TESCombatStyle*	GetCombatStyle() override;																											// 55
 		virtual void			SetCombatStyle(TESCombatStyle* a_arg) override;																						// 56
@@ -94,14 +83,16 @@ namespace RE
 		BGSHeadPart*			GetHeadPartOverlayByType(UInt32 a_type);
 		BGSHeadPart*			GetCurrentHeadPartByType(UInt32 a_type);
 		TESNPC*					GetRootTemplate();
-
 		TESRace*				GetRace();
 
 
 		// members
-		UInt8			unk190[0x12];			// 190 - init'd to 5
-		UInt8			unk1A2[0x12];			// 1A2 - init'd to 0
-		UInt8			pad1B4[0x1BA - 0x1B4];	// 1B4
+		UInt64			unk190;					// 190
+		UInt64			unk198;					// 198
+		UInt64			unk1A0;					// 1A0
+		UInt64			unk1A8;					// 1A8
+		UInt64			unk1B0;					// 1B0
+		UInt16			unk1B8;					// 1B8
 		UInt16			unk1BA;					// 1BA
 		UInt32			pad1BC;					// 1BC
 		TESClass*		npcClass;				// 1C0
@@ -112,8 +103,8 @@ namespace RE
 		UInt32			pad1E4;					// 1E4
 		TESRace*		overlayRace;			// 1E8
 		TESNPC*			nextTemplate;			// 1F0
-		float			height;					// 1F8 - init'd to 1
-		float			weight;					// 1FC - init'd to 50
+		float			height;					// 1F8
+		float			weight;					// 1FC
 		void*			unk200;					// 200
 		BSFixedString	shortName;				// 208
 		TESObjectARMO*	skinFar;				// 210
@@ -123,13 +114,14 @@ namespace RE
 		TESFaction*		faction;				// 230
 		BGSHeadPart**	headparts;				// 238
 		UInt8			numHeadParts;			// 240
-		UInt8			unk241;					// 241 - init'd to 1
-		UInt8			unk242;					// 242 - New in SE?
+		UInt8			unk241;					// 241
+		UInt8			unk242;					// 242
 		UInt8			unk243;					// 243
-		UInt8			unk244;					// 244 - New in SE?
-		UInt8			unk245;					// 245 - init'd to 1
+		UInt8			unk244;					// 244
+		UInt8			unk245;					// 245
 		Color			color;					// 246
-		UInt8			pad249[7];				// 249
+		UInt16			pad24A;					// 24A
+		UInt32			pad24C;					// 24C
 		void*			unk250;					// 250
 		FaceMorphs*		faceMorph;				// 258
 		void*			unk260;					// 260

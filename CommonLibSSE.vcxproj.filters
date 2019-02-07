@@ -477,6 +477,9 @@
     <ClCompile Include="src\RE\Inventory.cpp">
       <Filter>src\RE\Skyrim\Events</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\ItemCrafted.cpp">
+      <Filter>src\RE\Skyrim\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -925,9 +928,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESAmmo.h">
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ActorValues.h">
-      <Filter>include\RE\Skyrim\Misc</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\EquipManager.h">
       <Filter>include\RE\Skyrim\Misc</Filter>
@@ -1665,6 +1665,18 @@
       <Filter>include\RE\Skyrim\Events</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraOutfitItem.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Color.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorValues.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ItemCrafted.h">
+      <Filter>include\RE\Skyrim\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraPoison.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
     </ClInclude>
   </ItemGroup>

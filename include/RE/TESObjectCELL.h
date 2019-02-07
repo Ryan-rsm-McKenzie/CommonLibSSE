@@ -3,6 +3,8 @@
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTHashMap.h"  // BSTHashMap
+#include "RE/Color.h"  // Color
+#include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESFullName.h"  // TESFullName
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
@@ -58,16 +60,6 @@ namespace RE
 				kFogMax = 1 << 9,
 				kLightFadeDistances = 1 << 10
 			};
-
-
-			struct Color
-			{
-				UInt8	r;		// 0
-				UInt8	g;		// 1
-				UInt8	b;		// 2
-				UInt8	pad3;	// 3
-			};
-			STATIC_ASSERT(sizeof(Color) == 0x4);
 
 
 			struct AmbientColors

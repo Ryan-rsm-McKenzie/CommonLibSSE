@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSTextureSet.h"  // BSTextureSet
+#include "RE/Color.h"  // Color
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESBoundObject.h"  // TESBoundObject
 #include "RE/TESModel.h"  // TESModel
@@ -36,16 +37,6 @@ namespace RE
 				kAlphaTesting = 1 << 2,
 				kNoSubtextures = 1 << 3
 			};
-
-
-			struct Color
-			{
-				UInt8	red;	// 0
-				UInt8	green;	// 1
-				UInt8	blue;	// 2
-				UInt8	pad3;	// 3
-			};
-			STATIC_ASSERT(sizeof(Color) == 0x4);
 
 
 			float		minWidth;		// 00

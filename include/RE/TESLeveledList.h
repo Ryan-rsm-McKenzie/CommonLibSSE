@@ -1,16 +1,14 @@
 #pragma once
 
 #include "skse64/GameFormComponents.h"  // BaseFormComponent
-#include "skse64/GameTypes.h"  // tArray
-
-#include "RE/BSTArray.h"  // BSScrapArray
-
-class TESForm;
-class TESGlobal;
 
 
 namespace RE
 {
+	class TESForm;
+	class TESGlobal;
+
+
 	class TESLeveledList : public BaseFormComponent
 	{
 	public:

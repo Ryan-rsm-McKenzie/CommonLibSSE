@@ -1,8 +1,16 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESFullName, TESModelTextureSwap, TESIcon, BGSMessageIcon, TESWeightForm, TESValueForm, BGSDestructibleObjectForm, BGSEquipType
-
+#include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
+#include "RE/BGSEquipType.h"  // BGSEquipType
+#include "RE/BGSMessageIcon.h"  // BGSMessageIcon
+#include "RE/Color.h"  // Color
+#include "RE/FormTypes.h"  // FormType
 #include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
+#include "RE/TESFullName.h"  // TESFullName
+#include "RE/TESIcon.h"  // TESIcon
+#include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
+#include "RE/TESValueForm.h"  // TESValueForm
+#include "RE/TESWeightForm.h"  // TESWeightForm
 
 
 namespace RE
@@ -22,45 +30,37 @@ namespace RE
 		enum { kTypeID = FormType::Light };
 
 
-		enum Flag : UInt32
+		enum class Flag : UInt32
 		{
-			kFlag_TypeOmni = 0,
-			kFlag_Dynamic = 1 << 0,
-			kFlag_Carryable = 1 << 1,
-			kFlag_Negative = 1 << 2,
-			kFlag_Flicker = 1 << 3,
-			kFlag_Unk00000010 = 1 << 4,
-			kFlag_OffByDefault = 1 << 5,
-			kFlag_FlickerSlow = 1 << 6,
-			kFlag_Pulse = 1 << 7,
-			kFlag_PulseSlow = 1 << 8,
-			kFlag_TypeSpot = 1 << 9,
-			kFlag_TypeSpotShadow = 1 << 10,
-			kFlag_TypeHemiShadow = 1 << 11,
-			kFlag_TypeOmniShadow = 1 << 12,
-			kFlag_PortalStrict = 1 << 13,
+			kTypeOmni = 0,
+			kDynamic = 1 << 0,
+			kCarryable = 1 << 1,
+			kNegative = 1 << 2,
+			kFlicker = 1 << 3,
+			kUnk00000010 = 1 << 4,
+			kOffByDefault = 1 << 5,
+			kFlickerSlow = 1 << 6,
+			kPulse = 1 << 7,
+			kPulseSlow = 1 << 8,
+			kTypeSpot = 1 << 9,
+			kTypeSpotShadow = 1 << 10,
+			kTypeHemiShadow = 1 << 11,
+			kTypeOmniShadow = 1 << 12,
+			kPortalStrict = 1 << 13,
 
-			kFlag_Type = kFlag_TypeSpot | kFlag_TypeSpotShadow | kFlag_TypeHemiShadow | kFlag_TypeOmniShadow
+			kType = kTypeSpot | kTypeSpotShadow | kTypeHemiShadow | kTypeOmniShadow
 		};
 
 
 		struct DataE0
 		{
-			struct Color
-			{
-				UInt8	red;	// 0
-				UInt8	green;	// 1
-				UInt8	blue;	// 2
-				UInt8	pad3;	// 3
-			};
-
-
 			struct FlickerEffect
 			{
 				UInt32	period;				// 0
 				UInt32	intensityAmplitude;	// 4
 				UInt32	movementAmplitude;	// 8
 			};
+			STATIC_ASSERT(sizeof(FlickerEffect) == 0xC);
 
 
 			SInt32			time;			// 00
@@ -72,6 +72,7 @@ namespace RE
 			float			nearClip;		// 18 - .001
 			FlickerEffect	flickerEffect;	// 1C
 		};
+		STATIC_ASSERT(sizeof(DataE0) == 0x28);
 
 
 		struct Data118
@@ -81,6 +82,7 @@ namespace RE
 			UInt32	padC;	// 0C
 			UInt64	unk8;	// 10
 		};
+		STATIC_ASSERT(sizeof(Data118) == 0x18);
 
 
 		virtual ~TESObjectLIGH();																															// 00
