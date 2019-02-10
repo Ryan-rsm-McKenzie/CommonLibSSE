@@ -32,6 +32,7 @@ namespace RE
 
 		enum class Flag : UInt32
 		{
+			kNone = 0,
 			kTypeOmni = 0,
 			kDynamic = 1 << 0,
 			kCarryable = 1 << 1,

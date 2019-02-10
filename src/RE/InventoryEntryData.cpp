@@ -80,7 +80,7 @@ namespace RE
 			extraList = new BSSimpleList<BaseExtraList*>;
 		}
 		if (extraList) {
-			extraList->push_back(a_extra);
+			extraList->push_front(a_extra);
 		}
 	}
 
