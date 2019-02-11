@@ -1,5 +1,8 @@
 #pragma once
 
+#include <winnt.h>  // PLARGE_INTEGER, LARGE_INTEGER
+#include <minwindef.h>  // BOOL, DWORD, LPVOID, LPCVOID
+
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 
 
@@ -8,14 +11,14 @@ namespace RE
 	class BSStorage : public BSIntrusiveRefCounted
 	{
 	public:
-		virtual ~BSStorage();			// 00
+		virtual ~BSStorage();																			// 00
 
 		// add
-		virtual void	Unk_01(void);	// 01 - pure
-		virtual void	Unk_02(void);	// 02 - pure
-		virtual void	Unk_03(void);	// 03 - pure
-		virtual void	Unk_04(void);	// 04 - pure
-		virtual void	Unk_05(void);	// 05 - pure
+		virtual PLARGE_INTEGER 	GetFileSize() = 0;														// 01
+		virtual PLARGE_INTEGER	GetFilePointer() = 0;													// 02
+		virtual BOOL			SetFilePointer(LARGE_INTEGER a_distanceToMove, DWORD a_moveMethod) = 0;	// 03
+		virtual BOOL			ReadFile(DWORD a_numberOfBytesToRead, LPVOID a_buffer) = 0;				// 04
+		virtual BOOL			WriteFile(DWORD a_numberOfBytesToWrite, LPCVOID a_buffer) = 0;			// 05
 
 
 		// members
