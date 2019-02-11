@@ -480,6 +480,9 @@
     <ClCompile Include="src\RE\ItemCrafted.cpp">
       <Filter>src\RE\Skyrim\Events</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BSSystemFileStorage.cpp">
+      <Filter>src\RE\Skyrim\BSSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -1678,6 +1681,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\ExtraPoison.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSSystemFileStorage.h">
+      <Filter>include\RE\Skyrim\BSSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
