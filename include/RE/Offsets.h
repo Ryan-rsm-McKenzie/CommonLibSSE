@@ -102,7 +102,7 @@ namespace RE
 	constexpr std::uintptr_t INVENTORY_ENTRY_DATA_GET_WEIGHT = 0x001A1920;								// 1_5_62
 
 	// 40 53 48 83 EC 50 48 C7  44 24 30 FE FF FF FF 48  8B D9 80 79 50 00 0F 85
-	constexpr std::uintptr_t INVENTORY_MENU_INVENTORY_DATA_GET_SELECTED_ITEM_DATA = 0x008565F0;			// 1_5_62 - There's an exact copy of this function
+	constexpr std::uintptr_t INVENTORY_MENU_INVENTORY_DATA_GET_SELECTED_ITEM = 0x008565F0;				// 1_5_62 - There's an exact copy of this function
 
 	// 40 57 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 48  89 5C 24 48 4C 8B CA 44  8B 05 3A 5E C6 02 65 48
 	constexpr std::uintptr_t INVENTORY_MENU_INVENTORY_DATA_UPDATE = 0x00856C40;							// 1_5_62

@@ -21,7 +21,7 @@ namespace RE
 
 				kErrorMask = 0x7FFFFFFF,
 
-				kUnkFlag = 1 << 31	// top bit isn't part of the error, mask 0x7FFFFFFF to get the error
+				kUnkFlag = (UInt32)1 << 31	// top bit isn't part of the error, mask 0x7FFFFFFF to get the error
 			};
 
 

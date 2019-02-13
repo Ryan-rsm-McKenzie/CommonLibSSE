@@ -274,7 +274,7 @@ namespace RE
 		BSTArray<TintMask*>				tintMasks;				// B10
 		BSTArray<TintMask*>*			overlayTintMasks;		// B28
 		BGSTextureSet*					texSetB30;				// B30
-		TESRace*						race1;					// B38 - male/female?
+		TESRace*						baseRace;				// B38 - untransformed race
 		TESRace*						race2;					// B40
 		UInt32							unkB48;					// B48
 		UInt32							unkB4C;					// B4C

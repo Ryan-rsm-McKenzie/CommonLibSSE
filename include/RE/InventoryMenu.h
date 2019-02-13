@@ -24,8 +24,8 @@ namespace RE
 			STATIC_ASSERT(sizeof(Item) == 0x40);
 
 
-			StandardItemData*	GetSelectedItemData();
-			void				Update(TESObjectREFR* a_owner);
+			Item*	GetSelectedItem();
+			void	Update(TESObjectREFR* a_owner);
 
 
 			// members

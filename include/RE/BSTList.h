@@ -5,6 +5,7 @@
 #include <memory>  // pointer_traits
 #include <utility>  // move, swap, forward
 #include <iterator>  // forward_iterator_tag
+#include <type_traits>  // enable_if, is_pointer
 
 #include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
 
@@ -19,9 +20,9 @@ namespace RE
 		using value_type = T;
 		using size_type = std::uint32_t;
 		using difference_type = std::ptrdiff_t;
-		using reference = value_type & ;
-		using const_reference = const value_type&;
-		using pointer = value_type * ;
+		using reference = value_type &;
+		using const_reference = const value_type &;
+		using pointer = value_type *;
 		using const_pointer = std::pointer_traits<pointer>::rebind<const value_type>;
 
 	protected:
@@ -47,31 +48,24 @@ namespace RE
 			Node*		next;
 		};
 
-
+	public:
 		template <class U>
 		struct iterator_traits
 		{
 			using difference_type = std::ptrdiff_t;
 			using value_type = U;
-			using pointer = U * ;
-			using reference = U & ;
+			using pointer = U *;
+			using reference = U &;
 			using iterator_category = std::forward_iterator_tag;
 		};
 
-	public:
-		template <class Traits>
-		class iterator_base
+
+		template <class U>
+		class iterator_base : public iterator_traits<U>
 		{
 			friend class BSSimpleList<T>;
 
 		public:
-			using difference_type = typename Traits::difference_type;
-			using value_type = typename Traits::value_type;
-			using pointer = typename Traits::pointer;
-			using reference = typename Traits::reference;
-			using iterator_category = typename Traits::iterator_category;
-
-
 			iterator_base() :
 				_cur{ 0 }
 			{}
@@ -160,8 +154,8 @@ namespace RE
 		};
 
 
-		using iterator = iterator_base<iterator_traits<T>>;
-		using const_iterator = iterator_base<iterator_traits<const T>>;
+		using iterator = iterator_base<T>;
+		using const_iterator = iterator_base<const T>;
 
 
 		constexpr BSSimpleList() :

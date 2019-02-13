@@ -10,6 +10,6 @@ namespace RE
 	{
 		BSFixedString	animName;
 		TESObjectREFR*	akTarget;
-		BSFixedString	optionString;
+		BSFixedString	boneName;
 	};
 }
