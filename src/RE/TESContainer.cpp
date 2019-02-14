@@ -35,10 +35,10 @@ namespace RE
 	};
 
 
-	bool TESContainer::GetContainerItemAt(UInt32 idx, Entry*& entry) const
+	bool TESContainer::GetContainerItemAt(UInt32 a_idx, Entry*& a_entry) const
 	{
-		if (idx < numEntries) {
-			entry = entries[idx];
+		if (a_idx < numEntries) {
+			a_entry = entries[a_idx];
 			return true;
 		} else {
 			return false;
@@ -46,23 +46,23 @@ namespace RE
 	}
 
 
-	UInt32 TESContainer::CountItem(TESForm * item) const
+	UInt32 TESContainer::CountItem(TESForm* a_item) const
 	{
-		ItemCounter v(item);
+		ItemCounter v(a_item);
 		Visit(v);
 		return v.Count();
 	}
 
 
-	bool TESContainer::GetContainerLevItemAt(UInt32 idx, TESContainer::Entry *& entry) const
+	bool TESContainer::GetContainerLevItemAt(UInt32 a_idx, TESContainer::Entry*& a_entry) const
 	{
 		UInt32 n = 0;
 
 		for (UInt32 i = 0; i < numEntries; ++i) {
-			Entry *p = entries[i];
+			Entry* p = entries[i];
 			if (p->form->Is(FormType::LeveledItem)) {
-				if (n == idx) {
-					entry = p;
+				if (n == a_idx) {
+					a_entry = p;
 					return true;
 				}
 				++n;

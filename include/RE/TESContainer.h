@@ -32,19 +32,20 @@ namespace RE
 
 
 		template <class Op>
-		UInt32 CountIf(Op& op) const
+		UInt32 CountIf(Op& a_op) const
 		{
 			UInt32 count = 0;
 			for (UInt32 n = 0; n < numEntries; n++) {
 				Entry* pEntry = entries[n];
-				if (pEntry && op.Accept(pEntry))
+				if (pEntry && a_op.Accept(pEntry)) {
 					count++;
+				}
 			}
 			return count;
 		}
 
 		template <class Op>
-		Entry* Find(Op& op) const
+		Entry* Find(Op& a_op) const
 		{
 			bool bFound = false;
 			UInt32 n = 0;
@@ -52,27 +53,27 @@ namespace RE
 			for (UInt32 n = 0; n < numEntries && !bFound; n++) {
 				pEntry = entries[n];
 				if (pEntry) {
-					bFound = op.Accept(pEntry);
+					bFound = a_op.Accept(pEntry);
 				}
 			}
 			return (bFound && pEntry) ? pEntry : 0;
 		}
 
 		template <class Op>
-		void Visit(Op& op) const
+		void Visit(Op& a_op) const
 		{
 			bool bContinue = true;
 			for (UInt32 n = 0; n < numEntries && bContinue; n++) {
 				Entry* pEntry = entries[n];
 				if (pEntry) {
-					bContinue = op.Accept(pEntry);
+					bContinue = a_op.Accept(pEntry);
 				}
 			}
 		}
 
-		bool	GetContainerItemAt(UInt32 idx, Entry *& entry) const;
-		bool	GetContainerLevItemAt(UInt32 idx, Entry *& entry) const;
-		UInt32	CountItem(TESForm* item) const;
+		bool	GetContainerItemAt(UInt32 a_idx, Entry*& a_entry) const;
+		bool	GetContainerLevItemAt(UInt32 a_idx, Entry*& a_entry) const;
+		UInt32	CountItem(TESForm* a_item) const;
 
 
 		// members

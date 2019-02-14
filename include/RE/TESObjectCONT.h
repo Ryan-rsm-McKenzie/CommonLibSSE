@@ -1,9 +1,13 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESFullName, TESModelTextureSwap, TESWeightForm, BGSDestructibleObjectForm, BGSOpenCloseForm
-
+#include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
+#include "RE/BGSOpenCloseForm.h"  // BGSOpenCloseForm
+#include "RE/FormTypes.h"  // FormType, BGSSoundDescriptorForm
 #include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
 #include "RE/TESContainer.h"  // TESContainer
+#include "RE/TESFullName.h"  // TESFullName
+#include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
+#include "RE/TESWeightForm.h"  // TESWeightForm
 
 
 namespace RE
@@ -21,9 +25,19 @@ namespace RE
 		enum { kTypeID = FormType::Container };
 
 
+		enum class Flag : UInt8
+		{
+			kNone = 0,
+			kAllowsSoundsWhenAnimation = 1 << 0,
+			kRespawns = 1 << 1,
+			kShowOwner = 1 << 2
+		};
+
+
 		virtual ~TESObjectCONT();																															// 00
 
 		// override (TESBoundAnimObject)
+		virtual void	InitDefaults();																														// 04
 		virtual bool	LoadForm(TESFile* a_mod) override;																									// 06
 		virtual void	InitItem() override;																												// 13
 		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
@@ -31,11 +45,13 @@ namespace RE
 
 
 		// members
-		UInt8	unkB8;		// B8
-		UInt8	unkB9;		// B9
-		UInt8	padBA[6];	// BA
-		UInt64	padC0;		// C0
-		UInt64	padC8;		// C8
+		UInt8					unkB8;		// B8
+		Flag					flags;		// B9 - DATA
+		UInt16					unkBA;		// BA
+		UInt32					unkBC;		// BC
+		BGSSoundDescriptorForm*	openSound;	// C0 - SNAM
+		BGSSoundDescriptorForm*	closeSound;	// C8 - QNAM
 	};
 	STATIC_ASSERT(sizeof(TESObjectCONT) == 0xD0);
+	// virtual void Unk_4D(void) - CanOpen()?
 }
