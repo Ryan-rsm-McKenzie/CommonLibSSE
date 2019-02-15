@@ -30,36 +30,48 @@ namespace RE
 		enum { kTypeID = FormType::Light };
 
 
-		enum class Flag : UInt32
+		struct LocalFlags
 		{
-			kNone = 0,
-			kTypeOmni = 0,
-			kDynamic = 1 << 0,
-			kCarryable = 1 << 1,
-			kNegative = 1 << 2,
-			kFlicker = 1 << 3,
-			kUnk00000010 = 1 << 4,
-			kOffByDefault = 1 << 5,
-			kFlickerSlow = 1 << 6,
-			kPulse = 1 << 7,
-			kPulseSlow = 1 << 8,
-			kTypeSpot = 1 << 9,
-			kTypeSpotShadow = 1 << 10,
-			kTypeHemiShadow = 1 << 11,
-			kTypeOmniShadow = 1 << 12,
-			kPortalStrict = 1 << 13,
-
-			kType = kTypeSpot | kTypeSpotShadow | kTypeHemiShadow | kTypeOmniShadow
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12,
+				kRandomAnimStart = 1 << 16,
+				kPortalStrict = 1 << 17,
+				kObstacle = 1 << 25
+			};
 		};
 
 
-		struct DataE0
+		struct Data	// DATA
 		{
+			enum class Flag : UInt32
+			{
+				kNone = 0,
+				kDynamic = 1 << 0,
+				kCanBeCarried = 1 << 1,
+				kNegative = 1 << 2,
+				kFlicker = 1 << 3,
+				kOffByDefault = 1 << 5,
+				kFlickerSlow = 1 << 6,
+				kPulse = 1 << 7,
+				kPulseSlow = 1 << 8,
+				kSpotlight = 1 << 9,
+				kShadowSpotlight = 1 << 10,
+				kShadowHemisphere = 1 << 11,
+				kShadowOmnidirectional = 1 << 12,
+				kPortalStrict = 1 << 13
+			};
+
+
 			struct FlickerEffect
 			{
-				UInt32	period;				// 0
-				UInt32	intensityAmplitude;	// 4
-				UInt32	movementAmplitude;	// 8
+				float GetPeriod() const;
+
+
+				float	period;				// 0 - CK value * 100
+				float	intensityAmplitude;	// 4
+				float	movementAmplitude;	// 8
 			};
 			STATIC_ASSERT(sizeof(FlickerEffect) == 0xC);
 
@@ -68,27 +80,18 @@ namespace RE
 			UInt32			radius;			// 04
 			Color			color;			// 08
 			Flag			flags;			// 0C
-			UInt32			fallofExponent;	// 10
-			float			FOV;			// 14 - 90
-			float			nearClip;		// 18 - .001
+			float			fallofExponent;	// 10
+			float			FOV;			// 14
+			float			nearClip;		// 18
 			FlickerEffect	flickerEffect;	// 1C
 		};
-		STATIC_ASSERT(sizeof(DataE0) == 0x28);
-
-
-		struct Data118
-		{
-			UInt64	unk0;	// 00
-			UInt32	unk4;	// 08
-			UInt32	padC;	// 0C
-			UInt64	unk8;	// 10
-		};
-		STATIC_ASSERT(sizeof(Data118) == 0x18);
+		STATIC_ASSERT(sizeof(Data) == 0x28);
 
 
 		virtual ~TESObjectLIGH();																															// 00
 
 		// override (TESBoundAnimObject)
+		virtual void	InitDefaults() override;																											// 04
 		virtual bool	LoadForm(TESFile* a_mod) override;																									// 06
 		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;																						// 0E
 		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																						// 0F
@@ -98,11 +101,13 @@ namespace RE
 		bool			CanBeCarried() const;
 
 
-		DataE0	unkE0;		// 0E0 - DATA
-		float	fadeValue;	// 108 - FNAM
-		UInt32	pad10C;		// 10C - SNAM
-		UInt64	unk110;		// 110
-		Data118	unk118;		// 118
+		Data					data;		// 0E0 - DATA
+		float					fadeValue;	// 108 - FNAM
+		UInt32					pad10C;		// 10C
+		BGSSoundDescriptorForm*	sound;		// 110 - SNAM
+		UInt64					unk118;		// 118
+		UInt64					unk120;		// 120
+		UInt64					unk128;		// 128
 	};
 	STATIC_ASSERT(sizeof(TESObjectLIGH) == 0x130);
 }

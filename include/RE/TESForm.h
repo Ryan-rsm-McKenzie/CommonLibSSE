@@ -27,45 +27,6 @@ namespace RE
 		};
 
 
-		// Some genius at bethesda decided extending the bitmask would cost too much space, so these flags mean different things depending on the form type
-		struct Flags
-		{
-			bool	visible : 1;				// 00 0x00000001
-			bool	unk01 : 1;					// 01 0x00000002
-			bool	nonPlayable : 1;			// 02 0x00000004
-			bool	unk03 : 1;					// 03 0x00000008
-			bool	unk04 : 1;					// 04 0x00000010
-			bool	markedForDeletion : 1;		// 05 0x00000020
-			bool	playerKnows : 1;			// 06 0x00000040 - TESObjectREFR = hideFromLocalMap
-			bool	unk07 : 1;					// 07 0x00000080
-			bool	inaccessible : 1;			// 08 0x00000100 - TESObjectLIGH = dontLightWater
-			bool	motionBlurCastsShadows : 1;	// 09 0x00000200
-			bool	persistent : 1;				// 0A 0x00000400
-			bool	disabled : 1;				// 0B 0x00000800
-			bool	ignored : 1;				// 0C 0x00001000
-			bool	unk0D : 1;					// 0D 0x00002000
-			bool	unk0E : 1;					// 0E 0x00004000
-			bool	unk0F : 1;					// 0F 0x00008000
-			bool	isIgnoringFriendlyHits : 1;	// 10 0x00010000 - TESObjectREFR = lightNeverFades
-			bool	isOffLimits : 1;			// 11 0x00020000 - TESObjectLIGH = dontLightLandscapes, TESObjectWATR = dangerous
-			bool	unk12 : 1;					// 12 0x00040000
-			bool	unk13 : 1;					// 13 0x00080000
-			bool	ignoreFriendlyHits : 1;		// 14 0x00100000
-			bool	unk15 : 1;					// 15 0x00200000
-			bool	unk16 : 1;					// 16 0x00400000
-			bool	isMarker : 1;				// 17 0x00800000 - TESObjectREFR = destroyed
-			bool	unk18 : 1;					// 18 0x01000000
-			bool	noAIAcquire : 1;			// 19 0x02000000
-			bool	unk1A : 1;					// 1A 0x04000000
-			bool	unk1B : 1;					// 1B 0x08000000
-			bool	unk1C : 1;					// 1C 0x10000000
-			bool	dontHavokSettle : 1;		// 1D 0x20000000
-			bool	noRespawn : 1;				// 1E 0x40000000
-			bool	multiBound : 1;				// 1F 0x80000000
-		};
-		STATIC_ASSERT(sizeof(Flags) == 0x4);
-
-
 		virtual ~TESForm();																																	// 00
 
 		// override (BaseFormComponent)
@@ -96,7 +57,7 @@ namespace RE
 		virtual bool			PlayerKnows() const;																										// 17 - { return flags.playerKnows; }
 		virtual bool			GetFlag00010000();																											// 18
 		virtual bool			IsPlayable();																												// 19
-		virtual void			Unk_1A(void);																												// 1A - { return false; }
+		virtual bool			NeverFades();																												// 1A - { return false; }
 		virtual bool			GetFlag00020000();																											// 1B
 		virtual bool			GetFlag00080000();																											// 1C
 		virtual bool			GetFlag02000000();																											// 1D
@@ -169,7 +130,7 @@ namespace RE
 
 		// members
 		TESFileArray*	sourceFiles;	// 08
-		Flags			flags;			// 10
+		UInt32			flags;			// 10
 		UInt32			formID;			// 14
 		UInt16			unk18;			// 18
 		FormType		formType;		// 1A

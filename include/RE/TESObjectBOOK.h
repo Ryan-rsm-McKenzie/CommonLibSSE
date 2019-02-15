@@ -34,6 +34,16 @@ namespace RE
 		enum { kTypeID = FormType::Book };
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		struct Data	// DATA
 		{
 			enum class Flag : UInt8

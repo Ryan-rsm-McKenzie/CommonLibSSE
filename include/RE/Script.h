@@ -12,6 +12,13 @@ namespace RE
 		enum { kTypeID = FormType::Script };
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{};
+		};
+
+
 		virtual ~Script();									// 00
 
 		// override (TESForm)

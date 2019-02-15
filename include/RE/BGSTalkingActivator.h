@@ -12,6 +12,19 @@ namespace RE
 		enum { kTypeID = FormType::TalkingActivator };
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kHiddenFromLocalMap = 1 << 9,
+				kIgnored = 1 << 12,
+				kRandomAnimStart = 1 << 16,
+				kRadioStation = 1 << 17
+			};
+		};
+
+
 		virtual ~BGSTalkingActivator();																																// 00
 
 		// override (TESObjectACTI)

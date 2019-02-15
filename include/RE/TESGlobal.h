@@ -21,6 +21,17 @@ namespace RE
 		};
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kConstant = 1 << 6,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		virtual ~TESGlobal();										// 00
 
 		// override (TESform)

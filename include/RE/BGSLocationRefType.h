@@ -12,6 +12,16 @@ namespace RE
 		enum { kTypeID = FormType::LocationRef };
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		virtual ~BGSLocationRefType();		// 00
 
 		// override (BGSKeyword)

@@ -19,6 +19,19 @@ namespace RE
 		public TESValueForm					// 158
 	{
 	public:
+		enum { kTypeID = FormType::ScrollItem };
+
+
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		virtual ~ScrollItem();									// 00
 
 		// override (SpellItem)

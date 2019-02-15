@@ -34,6 +34,22 @@ namespace RE
 		};
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12,
+				kHasDistantLOD = 1 << 15,
+				kRandomAnimStart = 1 << 16,
+				kObstacle = 1 << 25,
+				kNavMeshGeneration_Filter = 1 << 26,
+				kNavMeshGeneration_BoundingBox = 1 << 27,
+				kNavMeshGeneration_Ground = 1 << 30
+			};
+		};
+
+
 		virtual ~TESObjectCONT();																															// 00
 
 		// override (TESBoundAnimObject)

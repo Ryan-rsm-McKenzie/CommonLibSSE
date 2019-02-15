@@ -19,6 +19,16 @@ namespace RE
 		enum { kTypeID = FormType::Class };
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		virtual ~TESClass();							// 00
 
 		// override (TESForm)

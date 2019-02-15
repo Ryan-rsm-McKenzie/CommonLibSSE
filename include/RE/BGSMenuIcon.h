@@ -15,6 +15,13 @@ namespace RE
 		enum { kTypeID = FormType::MenuIcon };
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{};
+		};
+
+
 		virtual ~BGSMenuIcon();							// 00
 
 		// override (TESForm)

@@ -68,6 +68,24 @@ namespace RE
 		};
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kPersistent = 1 << 10,
+				kInitiallyDisabled = 1 << 11,
+				kIgnored = 1 << 12,
+				kIsFullLOD = 1 << 16,
+				kCollisionGeometry_Filter = 1 << 26,
+				kCollisionGeometry_BoundingBox = 1 << 27,
+				kReflectedByAutoWater = 1 << 28,
+				kGround = 1 << 30,
+				kMultibound = (UInt32)1 << 31
+			};
+		};
+
+
 		struct LoadedState
 		{
 			UInt8	todo[0x68];	// 00
@@ -233,7 +251,6 @@ namespace RE
 		bool							Is3DLoaded();
 		bool							IsMarkedForDeletion();
 		bool							IsDisabled();
-		bool							IsIgnoringFriendlyHits();
 		bool							SetDisplayName(const BSFixedString& name, bool force);
 		static bool						LookupByHandle(UInt32& a_refHandle, TESObjectREFRPtr& a_refrOut);
 		LockState*						GetLockState();

@@ -168,10 +168,10 @@ namespace RE
 		Door,						//	1D DOOR	TESObjectDOOR
 		Ingredient,					//	1E INGR	IngredientItem
 		Light,						//	1F LIGH	TESObjectLIGH
-		Misc,						//	20 TESObjectMISC
+		Misc,						//	20 MISC TESObjectMISC
 		Apparatus,					//	21 APPA	BGSApparatus
 		Static,						//	22 STAT	TESObjectSTAT
-		StaticCollection,			//	23 BGSStaticCollection
+		StaticCollection,			//	23 SCOL BGSStaticCollection
 		MovableStatic,				//	24 MSTT	BGSMovableStatic
 		Grass,						//	25 GRAS	TESGrass
 		Tree,						//	26 TREE	TESObjectTREE

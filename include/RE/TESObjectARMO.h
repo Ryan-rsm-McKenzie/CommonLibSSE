@@ -39,6 +39,18 @@ namespace RE
 		enum { kTypeID = FormType::Armor };
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kNonPlayable = 1 << 2,
+				kDeleted = 1 << 5,
+				kShield = 1 << 6,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		// override (TESBoundObject)
 		virtual void	InitDefaults() override;						// 04
 		virtual bool	LoadForm(TESFile* a_mod) override;				// 06

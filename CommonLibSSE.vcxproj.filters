@@ -1685,5 +1685,23 @@
     <ClInclude Include="include\RE\BSSystemFileStorage.h">
       <Filter>include\RE\Skyrim\BSSystem</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\TESObjectDOOR.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IngredientItem.h">
+      <Filter>include\RE\Skyrim\Magic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSApparatus.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESQualityForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStaticCollection.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMovableStatic.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

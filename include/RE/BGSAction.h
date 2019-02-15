@@ -12,6 +12,16 @@ namespace RE
 		enum { kTypeID = (UInt32)FormType::Action };
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		virtual ~BGSAction();	// 00
 
 

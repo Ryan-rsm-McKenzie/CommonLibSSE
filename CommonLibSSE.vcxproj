@@ -262,9 +262,11 @@
     <ClInclude Include="include\ForceInclude.h" />
     <ClInclude Include="include\RE\ActorMover.h" />
     <ClInclude Include="include\RE\BGSAddonNode.h" />
+    <ClInclude Include="include\RE\BGSApparatus.h" />
     <ClInclude Include="include\RE\BGSBlockBashData.h" />
     <ClInclude Include="include\RE\BGSDistantTreeBlock.h" />
     <ClInclude Include="include\RE\BGSMessageIcon.h" />
+    <ClInclude Include="include\RE\BGSMovableStatic.h" />
     <ClInclude Include="include\RE\BGSShaderParticleGeometryData.h" />
     <ClInclude Include="include\Logging.h" />
     <ClInclude Include="include\RE\ActivateHandler.h" />
@@ -306,6 +308,7 @@
     <ClInclude Include="include\RE\BGSSoundDescriptor.h" />
     <ClInclude Include="include\RE\BGSSoundDescriptorForm.h" />
     <ClInclude Include="include\RE\BGSStandardSoundDef.h" />
+    <ClInclude Include="include\RE\BGSStaticCollection.h" />
     <ClInclude Include="include\RE\BGSTalkingActivator.h" />
     <ClInclude Include="include\RE\BGSTextureModel.h" />
     <ClInclude Include="include\RE\BGSTextureSet.h" />
@@ -488,6 +491,7 @@
     <ClInclude Include="include\RE\IMovementPlannerDirectControl.h" />
     <ClInclude Include="include\RE\IMovementSelectIdle.h" />
     <ClInclude Include="include\RE\IMovementState.h" />
+    <ClInclude Include="include\RE\IngredientItem.h" />
     <ClInclude Include="include\RE\InputEvent.h" />
     <ClInclude Include="include\RE\InputManager.h" />
     <ClInclude Include="include\RE\InputMappingManager.h" />
@@ -629,12 +633,14 @@
     <ClInclude Include="include\RE\TESObjectBOOK.h" />
     <ClInclude Include="include\RE\TESObjectCELL.h" />
     <ClInclude Include="include\RE\TESObjectCONT.h" />
+    <ClInclude Include="include\RE\TESObjectDOOR.h" />
     <ClInclude Include="include\RE\TESObjectLIGH.h" />
     <ClInclude Include="include\RE\TESObjectLoadedEvent.h" />
     <ClInclude Include="include\RE\TESObjectMISC.h" />
     <ClInclude Include="include\RE\TESObjectREFR.h" />
     <ClInclude Include="include\RE\TESObjectSTAT.h" />
     <ClInclude Include="include\RE\TESObjectWEAP.h" />
+    <ClInclude Include="include\RE\TESQualityForm.h" />
     <ClInclude Include="include\RE\TESRace.h" />
     <ClInclude Include="include\RE\TESRaceForm.h" />
     <ClInclude Include="include\RE\TESReactionForm.h" />

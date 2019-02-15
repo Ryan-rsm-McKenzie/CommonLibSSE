@@ -3,8 +3,14 @@
 
 namespace RE
 {
+	float TESObjectLIGH::Data::FlickerEffect::GetPeriod() const
+	{
+		return period * 100.0;
+	}
+
+
 	bool TESObjectLIGH::CanBeCarried() const
 	{
-		return (unkE0.flags & Flag::kCarryable) != Flag::kNone;
+		return (data.flags & Data::Flag::kCanBeCarried) != Data::Flag::kNone;
 	}
 }

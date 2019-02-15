@@ -48,7 +48,7 @@ namespace RE
 
 		// members
 		void*										unk008;						// 008
-		BSTArray<TESForm*>							forms;						// 010 - size == 2, formID's = { 0x28A, 0x294 }
+		BSTArray<TESForm*>							forms;						// 010 - these arrays are internally defined as 'BSTArray<TESForm*> formArrays[FormType::Max]', but I don't want to cast, so I'll leave them like this
 		UnkFormArray								arrTES4;					// 028
 		UnkFormArray								arrGRUP;					// 040
 		UnkFormArray								arrGMST;					// 058
@@ -84,7 +84,7 @@ namespace RE
 		BSTArray<BGSApparatus*>						apparatuses;				// 328
 		BSTArray<TESObjectSTAT*>					statics;					// 340
 		BSTArray<BGSStaticCollection*>				staticCollections;			// 358
-		BSTArray<BGSMovableStatic*>					movableStatics;				// 370
+		BSTArray<TESForm*>							movableStatics;				// 370 - BGSMovableStatic* - someone fucked up the inheritance on this class, so you'll have to cast it
 		BSTArray<TESGrass*>							grasses;					// 388
 		BSTArray<TESObjectTREE*>					arrTREE;					// 3A0
 		BSTArray<TESFlora*>							flora;						// 3B8

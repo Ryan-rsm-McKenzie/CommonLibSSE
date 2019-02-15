@@ -11,6 +11,17 @@ namespace RE
 	public:
 		enum { kTypeID = FormType::Keyword };
 
+
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		virtual ~BGSKeyword();										// 00
 
 		// override (TESForm)

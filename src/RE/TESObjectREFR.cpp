@@ -208,19 +208,13 @@ namespace RE
 
 	bool TESObjectREFR::IsMarkedForDeletion()
 	{
-		return flags.markedForDeletion;
+		return (flags & LocalFlags::kDeleted) != 0;
 	}
 
 
 	bool TESObjectREFR::IsDisabled()
 	{
-		return flags.disabled;
-	}
-
-
-	bool TESObjectREFR::IsIgnoringFriendlyHits()
-	{
-		return flags.ignoreFriendlyHits;
+		return (flags & LocalFlags::kInitiallyDisabled) != 0;
 	}
 
 

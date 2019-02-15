@@ -12,6 +12,16 @@ namespace RE
 		enum { kTypeID = FormType::Enchantment };
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		struct Data	// ENIT
 		{
 			enum class Flag : UInt32
@@ -52,6 +62,7 @@ namespace RE
 		virtual void		CopyData(MagicItem* a_src) override;				// 69
 		virtual void*		GetData() override;									// 6C - { return data; }
 		virtual UInt32		GetDataSize() const override;						// 6E - { return 0x30; }
+		virtual void		LoadData(TESFile* a_mod) override;					// 6F
 		virtual void		ByteSwapData() override;							// 70
 
 

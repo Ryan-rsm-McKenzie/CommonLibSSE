@@ -9,6 +9,19 @@ namespace RE
 	class BGSAcousticSpace : public TESBoundObject
 	{
 	public:
+		enum { kTypeID = FormType::AcousticSpace };
+
+
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		virtual ~BGSAcousticSpace();						// 00
 
 		// override (TESBoundObject)

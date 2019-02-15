@@ -62,6 +62,17 @@ namespace RE
 		};
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12,
+				kCritter = 1 << 19	// ?
+			};
+		};
+
+
 		struct MovementTypes
 		{
 			enum

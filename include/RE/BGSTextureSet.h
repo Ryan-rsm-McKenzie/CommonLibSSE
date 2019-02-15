@@ -27,6 +27,16 @@ namespace RE
 		};
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		struct DecalData
 		{
 			enum Flag : UInt8

@@ -12,6 +12,16 @@ namespace RE
 		enum { kTypeID = FormType::Sound };
 
 
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		virtual ~TESSound();								// 00
 
 		// override (TESBoundAnimObject)
