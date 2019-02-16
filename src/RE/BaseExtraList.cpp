@@ -146,7 +146,7 @@ namespace RE
 
 	bool BaseExtraList::HasType(UInt32 a_type) const
 	{
-		BSReadLocker locker(const_cast<BSReadWriteLock*>(&_lock));
+		BSReadLocker locker(&_lock);
 		return _presence ? _presence->HasType(a_type) : false;
 	}
 
@@ -159,7 +159,7 @@ namespace RE
 
 	BSExtraData* BaseExtraList::GetByType(UInt32 a_type) const
 	{
-		BSReadLocker locker(const_cast<BSReadWriteLock*>(&_lock));
+		BSReadLocker locker(&_lock);
 		if (!HasType(a_type)) {
 			return 0;
 		}

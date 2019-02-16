@@ -1,12 +1,13 @@
 #pragma once
 
 #include "RE/GNewOverrideBase.h"  // NewOverrideBase
+#include "RE/GStats.h"  // GStatGroups
 
 
 namespace RE
 {
 	// Resource is an interface for casting to different types of resources.
-	class GFxResource : public GNewOverrideBase<>
+	class GFxResource : public GNewOverrideBase<GStatGroups::kGStat_Default_Mem>
 	{
 	public:
 		// Different types of resources.

@@ -63,7 +63,6 @@ namespace RE
 		};
 
 
-		GFxMovieView();
 		virtual ~GFxMovieView();
 
 		// add

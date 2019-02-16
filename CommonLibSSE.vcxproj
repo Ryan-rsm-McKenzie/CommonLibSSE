@@ -178,6 +178,8 @@
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp" />
     <ClCompile Include="src\RE\ChestsLooted.cpp" />
     <ClCompile Include="src\RE\GFxValue.cpp" />
+    <ClCompile Include="src\RE\GMemory.cpp" />
+    <ClCompile Include="src\RE\GMemoryHeap.cpp" />
     <ClCompile Include="src\RE\GRefCountImpl.cpp" />
     <ClCompile Include="src\RE\GRefCountImplCore.cpp" />
     <ClCompile Include="src\RE\Inventory.cpp" />
@@ -440,11 +442,16 @@
     <ClInclude Include="include\RE\Character.h" />
     <ClInclude Include="include\RE\CRC.h" />
     <ClInclude Include="include\RE\ExtraLock.h" />
+    <ClInclude Include="include\RE\GFxPlayerStats.h" />
     <ClInclude Include="include\RE\GFxResource.h" />
     <ClInclude Include="include\RE\GFxState.h" />
     <ClInclude Include="include\RE\GFxStateBag.h" />
     <ClInclude Include="include\RE\GFxTranslator.h" />
     <ClInclude Include="include\RE\GFxValue.h" />
+    <ClInclude Include="include\RE\GList.h" />
+    <ClInclude Include="include\RE\GAtomic.h" />
+    <ClInclude Include="include\RE\GMemory.h" />
+    <ClInclude Include="include\RE\GMemoryHeap.h" />
     <ClInclude Include="include\RE\GRefCountBase.h" />
     <ClInclude Include="include\RE\GRefCountBaseStatImpl.h" />
     <ClInclude Include="include\RE\GRefCountImpl.h" />

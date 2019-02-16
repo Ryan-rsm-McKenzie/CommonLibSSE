@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	template <GStat StatType = GStat::kDefaultMem>
+	template <UInt32 StatType>
 	class GNewOverrideBase
 	{
 	public:

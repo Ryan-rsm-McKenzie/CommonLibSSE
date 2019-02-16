@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/GRefCountBase.h"  // GRefCountBase
+#include "RE/GStats.h"  // 
 
 
 namespace RE
@@ -9,7 +10,7 @@ namespace RE
 	class GFxMovie;
 
 
-	class GFxFunctionHandler : public GRefCountBase<GFxFunctionHandler>
+	class GFxFunctionHandler : public GRefCountBase<GFxFunctionHandler, GStatGroups::kGStat_Default_Mem>
 	{
 	public:
 		struct Params

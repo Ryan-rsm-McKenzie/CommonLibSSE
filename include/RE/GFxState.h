@@ -1,11 +1,12 @@
 #pragma once
 
 #include "RE/GRefCountBase.h"  // GRefCountBase
+#include "RE/GStats.h"  // GStatGroups
 
 
 namespace RE
 {
-	class GFxState : public GRefCountBase<GFxState>
+	class GFxState : public GRefCountBase<GFxState, GStatGroups::kGStat_Default_Mem>
 	{
 	public:
 		// An enumeration type defining the type of a State object, such as kRenderConfig, kFSCommandHandler, State_Log, etc. Only one State object of each type can be set on the loader or a movie.
@@ -55,7 +56,7 @@ namespace RE
 
 		// State constructor, only invoked from derived classes. The constructor takes a StateType as an argument, which defines the state type; this value cannot be changed after object creation
 		constexpr GFxState(StateType a_st = StateType::kNone) :
-			GRefCountBase<GFxState>(),
+			GRefCountBase<GFxState, GStatGroups::kGStat_Default_Mem>(),
 			stateType(a_st),
 			pad14(0)
 		{}

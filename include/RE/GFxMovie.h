@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/GFxPlayerStats.h"  // GFxStatMovieViews
 #include "RE/GRefCountBase.h"  // GRefCountBase
 #include "RE/GStats.h"  // GStat
 #include "RE/PlayStates.h"  // PlayState
@@ -13,7 +14,7 @@ namespace RE
 	class GFxMovieDef;
 
 
-	class GFxMovie : public GRefCountBase<GFxMovie, GStat::kMovieView_OtherMem>
+	class GFxMovie : public GRefCountBase<GFxMovie, GFxStatMovieViews::kGFxStatMV_Other_Mem>
 	{
 	public:
 		// SetVarType describes the delayed assignment queuing behavior of SetVariable and SetVariableDouble functions; the use of this flag allows developers to control the type of effect the variable assignment will have on target objects that have not yet been created at the time of SetVariable call

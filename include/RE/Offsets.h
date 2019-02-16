@@ -168,6 +168,8 @@ namespace RE
 	// 48 89 5C 24 08 0F B6 C2  48 8D 1D 81 F8 B6 00 4C
 	constexpr std::uintptr_t CALCULATE_CRC32_64 = 0x00C06760;											// 1_5_62
 
+	constexpr std::uintptr_t SCALEFORM_GLOBAL_HEAP = 0x03059C50;										// 1_5_62
+
 	// 40 57 41 54 41 55 41 56  41 57 48 83 EC 30 48 C7  44 24 28 FE FF FF FF 48
 	constexpr std::uintptr_t DEBUG_NOTIFICATION = 0x008DA5C0;											// 1_5_62
 	// 48 83 EC 38 80 7C 24 70  00 F3 0F 10 15 5F 3A A4

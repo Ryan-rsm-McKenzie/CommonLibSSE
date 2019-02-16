@@ -118,9 +118,9 @@ namespace RE
 
 
 		// members
-		BSExtraData*		_data;		// 00
-		PresenceBitfield*	_presence;	// 08
-		BSReadWriteLock		_lock;		// 10
+		BSExtraData*			_data;		// 00
+		PresenceBitfield*		_presence;	// 08
+		mutable BSReadWriteLock	_lock;		// 10
 	};
 	STATIC_ASSERT(sizeof(BaseExtraList) == 0x18);
 }

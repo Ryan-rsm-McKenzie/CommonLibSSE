@@ -486,6 +486,12 @@
     <ClCompile Include="src\RE\GFxValue.cpp">
       <Filter>src\RE\Skyrim\Scaleform</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\GMemoryHeap.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GMemory.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -814,9 +820,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\MenuOpenCloseEvent.h">
       <Filter>include\RE\Skyrim\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\UISaveLoadManager.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\PlayerCamera.h">
       <Filter>include\RE\Skyrim\Camera</Filter>
@@ -1750,6 +1753,24 @@
     </ClInclude>
     <ClInclude Include="include\RE\GNewOverrideBase.h">
       <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GMemoryHeap.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GList.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GAtomic.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GMemory.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxPlayerStats.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\UISaveLoadManager.h">
+      <Filter>include\RE\Skyrim\Menus</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
