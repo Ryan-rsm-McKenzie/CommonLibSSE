@@ -1,14 +1,11 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // BaseFormComponent
+#include "RE/BaseFormComponent.h"  // BaseFormComponent
+#include "RE/FormTypes.h"  // BGSImpactDataSet, BGSMaterialType
 
 
 namespace RE
 {
-	class BGSImpactDataSet;
-	class BGSMaterialType;
-
-
 	class BGSBlockBashData : public BaseFormComponent
 	{
 	public:

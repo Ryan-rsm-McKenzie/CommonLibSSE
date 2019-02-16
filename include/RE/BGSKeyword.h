@@ -31,7 +31,7 @@ namespace RE
 
 
 		// members
-		BSFixedString	keyword;	// 20
+		BSFixedString keyword;	// 20
 	};
 	STATIC_ASSERT(sizeof(BGSKeyword) == 0x28);
 }

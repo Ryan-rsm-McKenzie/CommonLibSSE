@@ -1,7 +1,6 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // BaseFormComponent
-
+#include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // TESForm
 
 
@@ -20,10 +19,7 @@ namespace RE
 		virtual void	ReleaseRefs() override;								// 02
 		virtual void	CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
 
-		/*
-		 * @param a_fieldType 'DESC', etc
-		 */
-		void			GetDescription(BSString& a_out, TESForm* a_parent, UInt32 a_fieldType);
+		void			GetDescription(BSString& a_out, TESForm* a_parent, UInt32 a_fieldType = 'DESC');
 
 
 		// members

@@ -8,9 +8,6 @@
 
 namespace RE
 {
-	struct DialogueData;
-
-
 	class TESTopic :
 		public TESForm,		// 00
 		public TESFullName	// 20

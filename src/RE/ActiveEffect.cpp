@@ -1,5 +1,7 @@
 #include "RE/ActiveEffect.h"
 
+#include "skse64_common/Relocation.h"  // RelocAddr
+
 #include "RE/Effect.h"  // Effect
 #include "RE/Offsets.h"
 

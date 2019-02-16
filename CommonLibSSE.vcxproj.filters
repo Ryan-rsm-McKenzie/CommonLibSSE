@@ -483,6 +483,9 @@
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp">
       <Filter>src\RE\Skyrim\BSSystem</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\GFxValue.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -1469,9 +1472,6 @@
     <ClInclude Include="include\RE\SFTypes.h">
       <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\NewOverrideBase.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\PlayStates.h">
       <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
@@ -1702,6 +1702,54 @@
     </ClInclude>
     <ClInclude Include="include\RE\BGSMovableStatic.h">
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESGrass.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectTREE.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESProduceForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BaseFormComponent.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSPerkRankArray.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ReferenceEffectController.h">
+      <Filter>include\RE\Skyrim\Magic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h">
+      <Filter>include\RE\Skyrim\Magic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSOverridePackCollection.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSPreloadable.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESAttackDamageForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTMap.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTDefaultAllocator.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESFlora.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxValue.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GMatrix.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GNewOverrideBase.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

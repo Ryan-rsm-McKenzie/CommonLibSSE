@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // BaseFormComponent
+#include "RE/BaseFormComponent.h"  // BaseFormComponent
+#include "RE/FormTypes.h"  // TESRace
 
 
 namespace RE
 {
-	class TESRace;
-
-
 	class TESRaceForm : public BaseFormComponent
 	{
 	public:

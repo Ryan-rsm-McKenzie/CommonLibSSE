@@ -1,8 +1,7 @@
 #pragma once
 
-#include "skse64/GameTypes.h"  // BSString
-
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSString.h"  // BSString
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/FormTypes.h"  // TESIdleForm, TESTopicInfo, TESTopic, TESQuest, Actor
 

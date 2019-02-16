@@ -68,7 +68,9 @@ namespace RE
 		BSTArray<SinkT*>	removeBuffer;	// 30 - schedule for remove
 		SimpleLock			lock;			// 48
 		bool				stateFlag;		// 50 - some internal state changed while sending
-		UInt8				pad51[0x7];		// 51
+		UInt8				pad51;			// 51
+		UInt16				pad52;			// 52
+		UInt32				pad54;			// 54
 	};
 	STATIC_ASSERT(sizeof(BSTEventSource<void*>) == 0x58);
 

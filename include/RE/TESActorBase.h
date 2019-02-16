@@ -1,16 +1,18 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESSpellList, BGSDestructibleObjectForm, BGSSkinForm, BGSAttackDataForm, BGSPerkRankArray
-
+#include "RE/ActorValueOwner.h"  // ActorValueOwner
+#include "RE/BGSAttackDataForm.h"  // BGSAttackDataForm
+#include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
+#include "RE/BGSPerkRankArray.h"  // BGSPerkRankArray
+#include "RE/BGSSkinForm.h"  // BGSSkinForm
+#include "RE/FormTypes.h"  // TESCombatStyle
 #include "RE/TESActorBaseData.h"  // TESActorBaseData
 #include "RE/TESAIForm.h"  // TESAIForm
 #include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
 #include "RE/TESContainer.h"  // TESContainer
 #include "RE/TESFullName.h"  // TESFullName
-#include "RE/ActorValueOwner.h"  // ActorValueOwner
-
-class TESCombatStyle;
+#include "RE/TESSpellList.h"  // TESSpellList
 
 
 namespace RE
@@ -30,11 +32,20 @@ namespace RE
 		public BGSPerkRankArray				// 138
 	{
 	public:
+		virtual ~TESActorBase();												// 00
+
+		// override (TESBoundAnimObject)
+		virtual bool			MarkChanged(UInt32 a_changeFlags) override;		// 0A
+		virtual void			UnMarkChanged(UInt32 a_changeFlags) override;	// 0B
+		virtual void			SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void			LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual bool			IsAutoCalc() override;							// 3E - { return formType == FormType::NPC && (TESActorBaseData::flags >> 4) & 1; }
+
 		// add
-		virtual void			Unk_54(void);							// 54
-		virtual TESCombatStyle*	GetCombatStyle();						// 55
-		virtual void			SetCombatStyle(TESCombatStyle* a_arg);	// 56
-		virtual void			Unk_57(void);							// 57
+		virtual void			Unk_53(void);									// 53 - { return 0; }
+		virtual TESCombatStyle*	GetCombatStyle();								// 54 - { return 0; }
+		virtual void			SetCombatStyle(TESCombatStyle* a_arg);			// 55 - { return; }
+		virtual void			Unk_56(void);									// 56 - { return this; }
 	};
 	STATIC_ASSERT(sizeof(TESActorBase) == 0x150);
 }

@@ -2,9 +2,7 @@
 
 #include "RE/BGSEntryPointFunctionData.h"  // BGSEntryPointFunctionData
 #include "RE/BSFixedString.h"  // BSFixedString
-
-class BGSPerk;
-class SpellItem;
+#include "RE/FormTypes.h"  // BGSPerk, SpellItem
 
 
 namespace RE
@@ -12,29 +10,33 @@ namespace RE
 	class BGSEntryPointFunctionDataActivateChoice : public BGSEntryPointFunctionData
 	{
 	public:
-		enum Flags1 : UInt16
+		enum class Flag1 : UInt16
 		{
-			kFlag_RunImmediately = 1,
-			kFlag_ReplaceDefault = 2
+			kNone = 0,
+			kRunImmediately = 1,
+			kReplaceDefault = 2
 		};
 
 
+		virtual ~BGSEntryPointFunctionDataActivateChoice();			// 00
+
 		// override (BGSEntryPointFunctionData)
-		virtual FunctionType GetType() const override;		// 1
+		virtual FunctionType	GetType() const override;			// 01 - { return kDataActivateChoice; }
+		virtual bool			Load(TESFile* a_mod) override;		// 02
+		virtual void			SetPerk(BGSPerk* a_perk) override;	// 06 - { perk = a_perk; }
+		virtual BGSPerk*		GetPerk() const override;			// 07 - { return perk; }
 
-		// add
-		virtual ~BGSEntryPointFunctionDataActivateChoice();	// 0
-
-		bool	RunsImmediately() const;
-		bool	ReplacesDefault() const;
+		bool					RunsImmediately() const;
+		bool					ReplacesDefault() const;
 
 
 		// members
 		BSFixedString	label;			// 08
 		BGSPerk*		perk;			// 10
 		SpellItem*		appliedSpell;	// 18
-		Flags1			flags1;			// 20
+		Flag1			flags1;			// 20
 		UInt16			flags2;			// 22
 		UInt32			pad24;			// 24
 	};
+	STATIC_ASSERT(sizeof(BGSEntryPointFunctionDataActivateChoice) == 0x28);
 }

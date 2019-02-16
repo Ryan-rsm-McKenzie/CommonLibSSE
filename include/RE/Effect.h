@@ -5,7 +5,6 @@
 
 namespace RE
 {
-	class Condition;
 	class EffectSetting;
 
 

@@ -3,6 +3,7 @@
 #include "RE/BGSBipedObjectForm.h"  // BGSBipedObjectForm
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FormTypes.h"  // FormType
+#include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
 #include "RE/TESObject.h"  // TESObject
 #include "RE/TESRaceForm.h"  // TESRaceForm
 

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Offsets.h"
-
 #include "RE/BaseExtraList.h"  // BaseExtraList
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSHandleRefObject.h"  // BSHandleRefObject
@@ -13,17 +11,16 @@
 #include "RE/NiSmartPointer.h"  // NiSmartPointer
 #include "RE/TESForm.h"  // TESForm
 
-class ActorWeightModel;
-class BaseExtraList;
-class BSAnimNoteReceiver;
-class BSFaceGenAnimationData;
-class BSFaceGenNiNode;
-class MagicCaster;
-
 
 namespace RE
 {
+	class ActorWeightModel;
+	class BaseExtraList;
+	class BSAnimNoteReceiver;
+	class BSFaceGenAnimationData;
+	class BSFaceGenNiNode;
 	class InventoryChanges;
+	class MagicCaster;
 	class MagicTarget;
 	class NiControllerManager;
 	class NiControllerSequence;

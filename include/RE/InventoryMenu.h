@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSTArray.h"  // BSTArray
+#include "RE/GFxValue.h"  // GFxValue
 #include "RE/IMenu.h"  // IMenu
 #include "RE/StandardItemData.h"  // StandardItemData
 

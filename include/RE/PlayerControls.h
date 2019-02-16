@@ -5,27 +5,26 @@
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
 
 
-
 namespace RE
 {
-	class ActivateHandler;
-	class AttackBlockHandler;
-	class AutoMoveHandler;
 	class InputEvent;
-	class JumpHandler;
-	class LookHandler;
 	class MenuOpenCloseEvent;
-	class MovementHandler;
 	class PlayerInputHandler;
-	class ReadyWeaponHandler;
-	class RunHandler;
-	class ShoutHandler;
-	class SneakHandler;
-	class SprintHandler;
-	class TogglePOVHandler;
-	class ToggleRunHandler;
+	struct ActivateHandler;
+	struct AttackBlockHandler;
+	struct AutoMoveHandler;
+	struct JumpHandler;
+	struct LookHandler;
 	struct MenuModeChangeEvent;
+	struct MovementHandler;
+	struct ReadyWeaponHandler;
+	struct RunHandler;
+	struct ShoutHandler;
+	struct SneakHandler;
+	struct SprintHandler;
 	struct TESFurnitureEvent;
+	struct TogglePOVHandler;
+	struct ToggleRunHandler;
 
 
 	class PlayerControls :

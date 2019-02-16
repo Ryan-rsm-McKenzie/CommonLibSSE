@@ -20,7 +20,6 @@ namespace RE
 
 
 			// members
-			UInt64							unk58;	// 58
 			UInt64							unk60;	// 60
 			BSTHashMap<UnkKey, UnkValue>	unk68;	// 68
 		};

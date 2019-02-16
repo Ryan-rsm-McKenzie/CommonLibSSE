@@ -1,12 +1,12 @@
 #pragma once
 
-#include "skse64/GameObjects.h"  // ActiveEffectReferenceEffectController
-
+#include "RE/ActiveEffectReferenceEffectController.h"  // ActiveEffectReferenceEffectController
 #include "RE/FormTypes.h"  // FormType
 
 
 namespace RE
 {
+	class MagicItem;
 	struct Effect;
 
 
@@ -57,13 +57,10 @@ namespace RE
 
 
 		ActiveEffectReferenceEffectController	controller;			// 08
-		UInt32									unk18;				// 18
-		float									unk1C;				// 1C
-		float									unk20;				// 20
-		float									unk24;				// 24
 		UInt32									unk28;				// 28
 		UInt8									unk2C;				// 2C
-		UInt8									pad2D[3];			// 2D
+		UInt8									pad2D;				// 2D
+		UInt16									pad2E;				// 2E
 		UInt32									unk30;				// 30
 		UInt32									casterRefhandle;	// 34
 		void*									niNode;				// 38

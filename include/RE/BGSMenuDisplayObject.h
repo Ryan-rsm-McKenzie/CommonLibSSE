@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // BaseFormComponent
+#include "RE/BaseFormComponent.h"  // BaseFormComponent
+#include "RE/FormTypes.h"  // TESObjectSTAT
 
 
 namespace RE
 {
-	class TESObjectSTAT;
-
-
 	class BGSMenuDisplayObject : public BaseFormComponent
 	{
 	public:
@@ -15,7 +13,7 @@ namespace RE
 
 		// override (BaseFormComponent)
 		virtual void			Init() override;									// 01
-		virtual void			ReleaseRefs() override;								// 02 - {}
+		virtual void			ReleaseRefs() override;								// 02 - { return; }
 		virtual void			CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
 
 		// add

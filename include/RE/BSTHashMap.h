@@ -23,7 +23,7 @@ namespace RE
 
 
 	template <class Key, class Value, template <class, class> class Table = BSTDefaultScatterTable>
-	class BSTHashMap : public BSTHashMapBase< BSTHashMapTraits<Key, Value, Table<Key, Value>> >
+	class BSTHashMap : public BSTHashMapBase<BSTHashMapTraits<Key, Value, Table<Key, Value>>>
 	{};
 
 
@@ -62,7 +62,7 @@ namespace RE
 	// verified
 
 
-	using TestHashMap = BSTHashMap <uint32_t, uint32_t>;
+	using TestHashMap = BSTHashMap<std::uint32_t, std::uint32_t>;
 
 	STATIC_ASSERT(offsetof(TestHashMap, _size) == 0x0C);
 	STATIC_ASSERT(offsetof(TestHashMap, _entries) == 0x28);

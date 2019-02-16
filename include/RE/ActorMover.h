@@ -1,11 +1,10 @@
 #pragma once
 
+#include "RE/FormTypes.h"  // Actor
+
 
 namespace RE
 {
-	class Actor;
-
-
 	class ActorMover
 	{
 	public:

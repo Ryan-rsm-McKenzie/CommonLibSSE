@@ -6,7 +6,7 @@
 namespace RE
 {
 	template <GStat StatType = GStat::kDefaultMem>
-	class NewOverrideBase
+	class GNewOverrideBase
 	{
 	public:
 	};

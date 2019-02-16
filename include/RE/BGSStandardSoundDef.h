@@ -1,8 +1,7 @@
 #pragma once
 
-#include "skse64/GameTypes.h"  // BSString
-
 #include "RE/BGSSoundDescriptor.h"  // BGSSoundDescriptor
+#include "RE/BSString.h"  // BSString
 #include "RE/FormTypes.h"  // BGSSoundOutput
 
 

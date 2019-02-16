@@ -29,8 +29,6 @@ namespace RE
 
 		// members
 		bhkCharacterProxy		characterProxy;			// 340
-		bhkCachingShapePhantom*	cachingShapePhantom;	// 590
-		UInt64					unk598;					// 598
 		UInt64					unk5A0;					// 5A0
 		UInt64					unk5A8;					// 5A8
 	};

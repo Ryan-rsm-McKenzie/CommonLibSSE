@@ -1,7 +1,5 @@
 #pragma once
 
-#include "skse64/GameTypes.h"  // tList
-
 #include "RE/ActiveEffect.h"  // ActiveEffect
 #include "RE/EffectSetting.h"  // EffectSetting::Properties::Archetype
 #include "RE/BSTList.h"  // BSSimpleList

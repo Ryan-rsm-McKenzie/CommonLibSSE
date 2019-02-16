@@ -1,6 +1,5 @@
 #pragma once
 
-#include "skse64/GameBSExtraData.h"  // BaseExtraList
 #include "skse64/GameTypes.h"  // BSReadWriteLock
 
 #include "RE/BSExtraData.h"  // BSExtraData

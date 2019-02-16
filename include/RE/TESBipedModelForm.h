@@ -1,7 +1,6 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // BaseFormComponent
-
+#include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/BGSMessageIcon.h"  // BGSMessageIcon
 #include "RE/TESIcon.h"  // TESIcon
 #include "RE/TESModelRDT.h"  // TESModelRDT

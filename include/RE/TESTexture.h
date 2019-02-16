@@ -1,14 +1,14 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // BaseFormComponent
-
+#include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/BSFixedString.h"  // BSFixedString
-
-class BSString;
 
 
 namespace RE
 {
+	class BSString;
+
+
 	class TESTexture : public BaseFormComponent
 	{
 	public:

@@ -1,7 +1,6 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // BaseFormComponent
-
+#include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/BGSKeyword.h"  // BGSKeyword
 
 

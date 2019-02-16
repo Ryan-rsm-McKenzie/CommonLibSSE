@@ -41,6 +41,6 @@ namespace RE
 		UInt64	unkB8;	// B8
 		UInt64	unkC0;	// C0
 		UInt64	unkC8;	// C8
-	}
+	};
 	STATIC_ASSERT(sizeof(hkpWorldObject) == 0xD0);
 }

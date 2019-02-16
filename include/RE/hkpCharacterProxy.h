@@ -51,6 +51,6 @@ namespace RE
 		UInt64					unkD8;					// D8
 		UInt64					unkE0;					// E0
 		UInt64					unkE8;					// E8
-	}
+	};
 	STATIC_ASSERT(sizeof(hkpCharacterProxy) == 0xF0);
 }

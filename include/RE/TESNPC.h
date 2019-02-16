@@ -1,22 +1,19 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // BGSOverridePackCollection
-
+#include "RE/BGSOverridePackCollection.h"  // BGSOverridePackCollection
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/Color.h"  // Color
-#include "RE/FormTypes.h"  // BGSColorForm, BGSTextureSet, BGSHeadPart, TESClass, BGSOutfit, TESFaction, BGSHeadPart
+#include "RE/FormTypes.h"  // BGSColorForm, BGSTextureSet, BGSHeadPart, TESClass, BGSOutfit, TESFaction, BGSHeadPart, TESRace
 #include "RE/TESActorBase.h"  // TESActorBase
 #include "RE/TESRaceForm.h"  // TESRaceForm
 
 
 namespace RE
 {
-	class BGSTextureSet;
 	class BSFaceGenNiNode;
 	class MenuOpenCloseEvent;
 	class NiColorA;
-	class TESRace;
 	class TintMask;
 
 

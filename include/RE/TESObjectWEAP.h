@@ -1,14 +1,22 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // TESIcon, TESValueForm, TESWeightForm, TESAttackDamageForm, BGSDestructibleObjectForm, BGSEquipType, BGSPreloadable, BGSMessageIcon, BGSPickupPutdownSounds, BGSBlockBashData, TESDescription
-
 #include "RE/ActorValues.h"  // ActorValue
+#include "RE/BGSBlockBashData.h"  // BGSBlockBashData
+#include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
+#include "RE/BGSEquipType.h"  // BGSEquipType
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
+#include "RE/BGSMessageIcon.h"  // BGSMessageIcon
+#include "RE/BGSPickupPutdownSounds.h"  // BGSPickupPutdownSounds
+#include "RE/BGSPreloadable.h"  // BGSPreloadable
+#include "RE/TESAttackDamageForm.h"  // TESAttackDamageForm
 #include "RE/TESBoundObject.h"  // TESBoundObject
+#include "RE/TESDescription.h"  // TESDescription
 #include "RE/TESEnchantableForm.h"  // TESEnchantableForm
 #include "RE/TESFullName.h"  // TESFullName
+#include "RE/TESIcon.h"  // TESIcon
 #include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
-#include "RE/BGSKeywordForm.h"  // BGSKeywordForm
+#include "RE/TESValueForm.h"  // TESValueForm
+#include "RE/TESWeightForm.h"  // TESWeightForm
 
 
 namespace RE

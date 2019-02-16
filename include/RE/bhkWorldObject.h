@@ -23,6 +23,6 @@ namespace RE
 
 		// members
 		void* unk20;	// 20 - hkReferencedObject*?
-	}
+	};
 	STATIC_ASSERT(sizeof(bhkWorldObject) == 0x28);
 }

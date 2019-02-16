@@ -7,7 +7,6 @@
 
 namespace RE
 {
-	// 58
 	class BGSSoundCategory :
 		public TESForm,			// 00
 		public TESFullName,		// 20

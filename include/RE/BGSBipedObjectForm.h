@@ -1,6 +1,6 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // BaseFormComponent
+#include "RE/BaseFormComponent.h"  // BaseFormComponent
 
 
 namespace RE

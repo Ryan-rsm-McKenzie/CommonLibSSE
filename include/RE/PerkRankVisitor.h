@@ -1,6 +1,6 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // BGSPerkRankArray::Data
+#include "RE/BGSPerkRankArray.h"  // BGSPerkRankArray::Entry
 
 
 namespace RE
@@ -8,6 +8,6 @@ namespace RE
 	class PerkRankVisitor
 	{
 	public:
-		virtual bool operator()(const BGSPerkRankArray::Data* a_entry) = 0;	// 00
+		virtual bool operator()(const BGSPerkRankArray::Entry* a_entry) = 0;	// 00
 	};
 }

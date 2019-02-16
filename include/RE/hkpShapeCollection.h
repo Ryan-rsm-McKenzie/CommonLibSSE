@@ -8,7 +8,7 @@ namespace RE
 {
 	class hkpShapeCollection :
 		public hkpShape,			// 00
-		public hkpShapeContainer,	// 20
+		public hkpShapeContainer	// 20
 	{
 	public:
 		virtual ~hkpShapeCollection();	// 00

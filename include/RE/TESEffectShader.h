@@ -1,16 +1,13 @@
 #pragma once
 
 #include "RE/Color.h"  // Color
-#include "RE/FormTypes.h"  // FormType
+#include "RE/FormTypes.h"  // FormType, BGSSoundDescriptorForm
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESTexture.h"  // TESTexture
 
 
 namespace RE
 {
-	class BGSSoundDescriptorForm;
-
-
 	class TESEffectShader : public TESForm
 	{
 	public:

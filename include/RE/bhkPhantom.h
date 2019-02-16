@@ -16,6 +16,6 @@ namespace RE
 
 		// members
 		UInt64 unk28;	// 28
-	}
+	};
 	STATIC_ASSERT(sizeof(bhkPhantom) == 0x30);
 }

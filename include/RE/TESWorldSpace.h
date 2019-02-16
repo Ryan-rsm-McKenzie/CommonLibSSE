@@ -4,10 +4,12 @@
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/BSTList.h"  // BSSimpleList
-#include "RE/FormTypes.h"  // TESForm
+#include "RE/FormTypes.h"  // FormType, TESForm
 #include "RE/NiTPointerMap.h"  // NiTPointerMap
 #include "RE/TESForm.h"  // FormType
 #include "RE/TESFullName.h"  // TESFullName
+#include "RE/TESModel.h"  // TESModel
+#include "RE/TESTexture.h"  // TESTexture
 
 
 namespace RE
@@ -100,12 +102,12 @@ namespace RE
 		{
 			// RNAM format in plugins is cell x,y -> formID + cell that contains refr x,y
 			// a lot of RNAM data is for refrs that are actually in adjacent cells, it is currently unknown what behavior this has in game
-			BSTHashMap<XYPlane, UInt32 *>	cellFormIDMap;				// 00 - full data merged at runtime, value is an array of FormIDs with array size as the first entry
+			BSTHashMap<XYPlane, UInt32*>	cellFormIDMap;				// 00 - full data merged at runtime, value is an array of FormIDs with array size as the first entry
 			BSTHashMap<UInt32, XYPlane>		formIDCellMap;				// 30 - maps FormID to cell so opposite of above map
 
 			// this filtered version of the full data removes all duplicate RNAM entries and also all entries where cell x,y doesn't match cell that contains refr x,y
 			// this is the one actually used for loading large references on cell attach
-			BSTHashMap<XYPlane, UInt32 *>	cellFormIDMapFiltered;		// 60
+			BSTHashMap<XYPlane, UInt32*>	cellFormIDMapFiltered;		// 60
 		};
 		STATIC_ASSERT(sizeof(LargeReferenceData) == 0x90);
 

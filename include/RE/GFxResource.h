@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/NewOverrideBase.h"  // NewOverrideBase
+#include "RE/GNewOverrideBase.h"  // NewOverrideBase
 
 
 namespace RE
 {
 	// Resource is an interface for casting to different types of resources.
-	class GFxResource : public NewOverrideBase<>
+	class GFxResource : public GNewOverrideBase<>
 	{
 	public:
 		// Different types of resources.

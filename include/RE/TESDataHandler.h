@@ -86,7 +86,7 @@ namespace RE
 		BSTArray<BGSStaticCollection*>				staticCollections;			// 358
 		BSTArray<TESForm*>							movableStatics;				// 370 - BGSMovableStatic* - someone fucked up the inheritance on this class, so you'll have to cast it
 		BSTArray<TESGrass*>							grasses;					// 388
-		BSTArray<TESObjectTREE*>					arrTREE;					// 3A0
+		BSTArray<TESObjectTREE*>					trees;						// 3A0
 		BSTArray<TESFlora*>							flora;						// 3B8
 		BSTArray<TESFurniture*>						furniture;					// 3D0
 		BSTArray<TESObjectWEAP*>					weapons;					// 3E8

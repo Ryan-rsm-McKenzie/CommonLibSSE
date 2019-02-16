@@ -15,6 +15,6 @@ namespace RE
 		virtual void	Unk_04(void);	// 04 - { return 0; }
 		virtual void	Unk_05(void);	// 05
 		virtual void	Unk_06(void);	// 06 - { return 1; }
-	}
+	};
 	STATIC_ASSERT(sizeof(hkpShapeContainer) == 0x8);
 }

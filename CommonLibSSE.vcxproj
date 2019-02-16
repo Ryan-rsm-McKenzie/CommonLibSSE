@@ -177,6 +177,7 @@
     <ClCompile Include="src\RE\BSString.cpp" />
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp" />
     <ClCompile Include="src\RE\ChestsLooted.cpp" />
+    <ClCompile Include="src\RE\GFxValue.cpp" />
     <ClCompile Include="src\RE\GRefCountImpl.cpp" />
     <ClCompile Include="src\RE\GRefCountImplCore.cpp" />
     <ClCompile Include="src\RE\Inventory.cpp" />
@@ -260,13 +261,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ForceInclude.h" />
+    <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h" />
     <ClInclude Include="include\RE\ActorMover.h" />
+    <ClInclude Include="include\RE\BaseFormComponent.h" />
     <ClInclude Include="include\RE\BGSAddonNode.h" />
     <ClInclude Include="include\RE\BGSApparatus.h" />
     <ClInclude Include="include\RE\BGSBlockBashData.h" />
     <ClInclude Include="include\RE\BGSDistantTreeBlock.h" />
     <ClInclude Include="include\RE\BGSMessageIcon.h" />
     <ClInclude Include="include\RE\BGSMovableStatic.h" />
+    <ClInclude Include="include\RE\BGSOverridePackCollection.h" />
+    <ClInclude Include="include\RE\BGSPerkRankArray.h" />
+    <ClInclude Include="include\RE\BGSPreloadable.h" />
     <ClInclude Include="include\RE\BGSShaderParticleGeometryData.h" />
     <ClInclude Include="include\Logging.h" />
     <ClInclude Include="include\RE\ActivateHandler.h" />
@@ -438,6 +444,7 @@
     <ClInclude Include="include\RE\GFxState.h" />
     <ClInclude Include="include\RE\GFxStateBag.h" />
     <ClInclude Include="include\RE\GFxTranslator.h" />
+    <ClInclude Include="include\RE\GFxValue.h" />
     <ClInclude Include="include\RE\GRefCountBase.h" />
     <ClInclude Include="include\RE\GRefCountBaseStatImpl.h" />
     <ClInclude Include="include\RE\GRefCountImpl.h" />
@@ -527,7 +534,7 @@
     <ClInclude Include="include\RE\MovementControllerAI.h" />
     <ClInclude Include="include\RE\MovementControllerNPC.h" />
     <ClInclude Include="include\RE\MoviePlayer.h" />
-    <ClInclude Include="include\RE\NewOverrideBase.h" />
+    <ClInclude Include="include\RE\GNewOverrideBase.h" />
     <ClInclude Include="include\RE\NiAVObject.h" />
     <ClInclude Include="include\RE\NiBoneMatrixSetterI.h" />
     <ClInclude Include="include\RE\NiCamera.h" />
@@ -539,13 +546,17 @@
     <ClInclude Include="include\RE\NiRect.h" />
     <ClInclude Include="include\RE\NiRefObject.h" />
     <ClInclude Include="include\RE\NiTArray.h" />
+    <ClInclude Include="include\RE\NiTDefaultAllocator.h" />
     <ClInclude Include="include\RE\NiTexture.h" />
+    <ClInclude Include="include\RE\NiTMap.h" />
     <ClInclude Include="include\RE\NiTMapBase.h" />
     <ClInclude Include="include\RE\NiTPointerAllocator.h" />
     <ClInclude Include="include\RE\NiTPointerMap.h" />
     <ClInclude Include="include\RE\PackageLocation.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
     <ClInclude Include="include\RE\PlayStates.h" />
+    <ClInclude Include="include\RE\ReferenceEffectController.h" />
+    <ClInclude Include="include\RE\GMatrix.h" />
     <ClInclude Include="include\RE\SavePatcher.h" />
     <ClInclude Include="include\RE\Script.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
@@ -596,6 +607,7 @@
     <ClInclude Include="include\RE\TESActorBaseData.h" />
     <ClInclude Include="include\RE\TESAIForm.h" />
     <ClInclude Include="include\RE\TESAmmo.h" />
+    <ClInclude Include="include\RE\TESAttackDamageForm.h" />
     <ClInclude Include="include\RE\TESBipedModelForm.h" />
     <ClInclude Include="include\RE\TESBoundAnimObject.h" />
     <ClInclude Include="include\RE\TESBoundObject.h" />
@@ -611,9 +623,11 @@
     <ClInclude Include="include\RE\TESEquipEvent.h" />
     <ClInclude Include="include\RE\TESEyes.h" />
     <ClInclude Include="include\RE\TESFaction.h" />
+    <ClInclude Include="include\RE\TESFlora.h" />
     <ClInclude Include="include\RE\TESForm.h" />
     <ClInclude Include="include\RE\TESFullName.h" />
     <ClInclude Include="include\RE\TESGlobal.h" />
+    <ClInclude Include="include\RE\TESGrass.h" />
     <ClInclude Include="include\RE\TESIcon.h" />
     <ClInclude Include="include\RE\TESLandTexture.h" />
     <ClInclude Include="include\RE\TESLeveledList.h" />
@@ -639,7 +653,9 @@
     <ClInclude Include="include\RE\TESObjectMISC.h" />
     <ClInclude Include="include\RE\TESObjectREFR.h" />
     <ClInclude Include="include\RE\TESObjectSTAT.h" />
+    <ClInclude Include="include\RE\TESObjectTREE.h" />
     <ClInclude Include="include\RE\TESObjectWEAP.h" />
+    <ClInclude Include="include\RE\TESProduceForm.h" />
     <ClInclude Include="include\RE\TESQualityForm.h" />
     <ClInclude Include="include\RE\TESRace.h" />
     <ClInclude Include="include\RE\TESRaceForm.h" />

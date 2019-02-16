@@ -3,7 +3,6 @@
 #undef min
 #undef max
 
-#include "skse64/GameFormComponents.h"  // TESContainer
 #include "skse64/GameReferences.h"  // TESObjectREFR
 #include "skse64/GameRTTI.h"  // DYNAMIC_CAST
 

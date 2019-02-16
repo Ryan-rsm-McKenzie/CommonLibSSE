@@ -1,11 +1,8 @@
 #pragma once
 
-#include "skse64/GameFormComponents.h"  // BaseFormComponent
-
+#include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/BSTArray.h"  // BSTArray
-#include "RE/FormTypes.h"  // FormTypes
-
-class BGSVoiceType;
+#include "RE/FormTypes.h"  // BGSVoiceType, TESLevItem, TESNPC
 
 
 namespace RE

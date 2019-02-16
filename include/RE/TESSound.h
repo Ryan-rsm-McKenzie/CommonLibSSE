@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/FormTypes.h"  // FormType
+#include "RE/FormTypes.h"  // FormType, BGSSoundDescriptorForm
 #include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
 
 
