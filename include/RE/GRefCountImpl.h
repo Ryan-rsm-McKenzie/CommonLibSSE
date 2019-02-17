@@ -8,8 +8,6 @@ namespace RE
 	class GRefCountImpl : GRefCountImplCore
 	{
 	public:
-		virtual ~GRefCountImpl();	// 00
-
 		void	AddRef();
 		void	Release();
 	};

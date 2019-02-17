@@ -7,10 +7,6 @@
 
 namespace RE
 {
-	GRefCountImpl::~GRefCountImpl()
-	{}
-
-
 	void GRefCountImpl::AddRef()
 	{
 		InterlockedIncrement(&refCount);

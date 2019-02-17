@@ -1,7 +1,9 @@
 #pragma once
 
+#include "RE/GFxPlayerStats.h"  // GFxStatMovieViews
 #include "RE/GMatrix.h"  // GMatrix3D
 #include "RE/GNewOverrideBase.h"  // GNewOverrideBase
+#include "RE/GString.h"  // GString
 
 
 namespace RE
@@ -27,7 +29,8 @@ namespace RE
 
 			kManagedBit = 1 << 6,
 			kConvertBit = 1 << 7,
-			kTypeMask = kConvertBit | 0x0F,
+			kValueMask = 0x0F,
+			kTypeMask = kConvertBit | kValueMask,
 
 			kConvertBoolean = kConvertBit | kBoolean,
 			kConvertNumber = kConvertBit | kNumber,
@@ -66,7 +69,7 @@ namespace RE
 			DisplayInfo(double a_rotation);																																																																				// Initializes the DisplayInfo structure.
 			DisplayInfo(bool a_visible);																																																																				// Initializes the DisplayInfo structure.
 
-			void					Clear();																																																																			// Clears all properties from the DisplayInfo object. 
+			void					Clear();																																																																			// Clears all properties from the DisplayInfo object.
 			double					GetAlpha() const;																																																																	// Retrieves the alpha transparency of the display object.
 			double					GetFOV() const;																																																																		// Retrieves the perspective Field of View angle on the object.
 			double					GetRotation() const;																																																																// Retrieves the rotation of the display object.
@@ -78,8 +81,8 @@ namespace RE
 			double					GetZ() const;																																																																		// Retrieves the z coordinate of the display object relative to the parent movie clip.
 			double					GetXRotation() const;																																																																// Returns the rotation of the object around the X axis.
 			double					GetYRotation() const;																																																																// Returns the rotation of the object around the Y axis.
-			double					GetXScale() const;																																																																	// Retrieves the horizontal scale of the display object. 
-			double					GetYScale() const;																																																																	// Retrieves the vertical scale of the display object. 
+			double					GetXScale() const;																																																																	// Retrieves the horizontal scale of the display object.
+			double					GetYScale() const;																																																																	// Retrieves the vertical scale of the display object.
 			double					GetZScale() const;																																																																	// Retrieves the scale of the object along the Z axis.
 			bool					IsFlagSet(Flag a_flag) const;																																																														// Determines if a property of the DisplayInfo object is set
 			void					Initialize(Flag a_varsSet, double a_x, double a_y, double a_rotation, double a_xScale, double a_yScale, double a_alpha, bool a_visible, double a_z, double a_xRotation, double a_yRotation, double a_zScale, double a_fov, const GMatrix3D* a_viewM, const GMatrix3D* a_perspM);	// Initializes the display properties of a display object.
@@ -103,6 +106,10 @@ namespace RE
 			void					SetZScale(double a_zScale);																																																															// Sets the scale of the object along the Z axis
 
 		protected:
+			void					SetFlags(Flag a_flags);
+			void					ClearFlags(Flag a_flags);
+
+
 			// members
 			double		_x;				// 00
 			double		_y;				// 08
@@ -128,9 +135,29 @@ namespace RE
 		STATIC_ASSERT(sizeof(DisplayInfo) == 0xE8);
 
 
-		class ObjectInterface : public GNewOverrideBase<GStat::kMovieView_OtherMem>
+		class ObjectInterface : public GNewOverrideBase<GFxStatMovieViews::kGFxStatMV_Other_Mem>
 		{
 		public:
+			class ObjVisitor
+			{
+			public:
+				virtual ~ObjVisitor();												// 00
+
+				// add
+				virtual void Visit(const char* a_name, const GFxValue& a_val) = 0;	// 01
+			};
+
+
+			class ArrVisitor
+			{
+			public:
+				virtual ~ArrVisitor();											// 00
+
+				// add
+				virtual void Visit(UInt32 a_idx, const GFxValue& a_val) = 0;	// 01
+			};
+
+
 			ObjectInterface(GFxMovieRoot* a_movieRoot);
 
 			void	ObjectAddRef(GFxValue* a_val, void* a_obj);
@@ -154,11 +181,17 @@ namespace RE
 			bool	AttachMovie(void* a_data, GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, SInt32 a_depth, const GFxValue* a_initObj);
 			bool	GotoAndPlay(void* a_data, const char* a_frame, bool a_stop);
 
+			bool	IsSameContext(const ObjectInterface* a_rhs) const;
+
 		protected:
 			// members
 			GFxMovieRoot* _movieRoot;	// 0
 		};
 		STATIC_ASSERT(sizeof(ObjectInterface) == 0x8);
+
+
+		typedef	ObjectInterface::ObjVisitor	ObjectVisitor;
+		typedef	ObjectInterface::ArrVisitor	ArrayVisitor;
 
 
 		GFxValue();
@@ -170,10 +203,69 @@ namespace RE
 		GFxValue(const GFxValue& a_rhs);
 		~GFxValue();
 
+		const GFxValue&	operator=(const GFxValue& a_rhs);
+		bool			operator==(const GFxValue& a_rhs) const;
+
+		GString			ToString() const;
+
+		ValueType		GetType() const;
+		bool			IsUndefined() const;
+		bool			IsNull() const;
+		bool			IsBool() const;
+		bool			IsNumber() const;
+		bool			IsString() const;
+		bool			IsStringW() const;
+		bool			IsObject() const;
+		bool			IsArray() const;
+		bool			IsDisplayObject() const;
+		bool			GetBool() const;
+		double			GetNumber() const;
+		const char*		GetString() const;
+		const wchar_t*	GetStringW() const;
+
+		void			SetUndefined();
+		void			SetNull();
+		void			SetBoolean(bool a_val);
+		void			SetNumber(double a_val);
+		void			SetString(const char* a_str);
+		void			SetStringW(const wchar_t* a_str);
+
+		void			SetConvertBoolean();
+		void			SetConvertNumber();
+		void			SetConvertString();
+		void			SetConvertStringW();
+
+		// AS Object support. Valid for Array and DisplayObject types
+		bool			HasMember(const char* a_name) const;
+		bool			GetMember(const char* a_name, GFxValue* a_val) const;
+		bool			SetMember(const char* a_name, const GFxValue& a_val);
+		bool			Invoke(const char* a_name, GFxValue* a_result, const GFxValue* a_args, UPInt a_numArgs);
+		bool			Invoke(const char* a_name, GFxValue* a_result = 0);
+		bool			DeleteMember(const char* a_name);
+
+		// AS Array support. Valid for Array type
+		UInt32			GetArraySize() const;
+		bool			GetElement(UInt32 a_idx, GFxValue* a_val) const;
+		bool			PushBack(const GFxValue& a_val);
+
+		// AS MovieClips, Buttons, TextFields support. Valid for DisplayObject type
+		bool			GetDisplayInfo(DisplayInfo* a_info) const;
+		bool			SetDisplayInfo(const DisplayInfo& a_info);
+
+		// AS TextField support. Valid for DisplayObject type.
+		bool			SetText(const char* a_text);
+		bool			SetTextHTML(const char* a_html);
+
+		// AS MovieClip support. Valid for MovieClips.
+		bool			AttachMovie(GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, SInt32 a_depth = -1, const GFxValue* a_initObj = 0);
+		bool			GotoAndPlay(const char* a_frame);
+		bool			GotoAndStop(const char* a_frame);
+
 	protected:
-		bool	IsManagedValue() const;
-		void	AcquireManagedValue(const GFxValue& a_rhs);
-		void	ReleaseManagedValue();
+		bool			IsManagedValue() const;
+		void			AcquireManagedValue(const GFxValue& a_rhs);
+		void			ReleaseManagedValue();
+		void			ChangeType(ValueType a_type);
 
 
 		union ValueUnion

@@ -6,18 +6,11 @@ namespace RE
 	class GRefCountImplCore
 	{
 	public:
-		constexpr GRefCountImplCore() :
-			refCount(1),
-			pad0C(0)
-		{}
-
+		constexpr GRefCountImplCore() : refCount(1), pad0C(0) {}
 		virtual ~GRefCountImplCore();	// 00
 
-		constexpr SInt32 GetRefCount() const
-		{
-			return refCount;
-		}
-
+		static void			CheckInvalidDelete(GRefCountImplCore*);
+		constexpr SInt32	GetRefCount() const { return refCount; }
 
 	protected:
 		// members

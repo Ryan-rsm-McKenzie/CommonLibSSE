@@ -13,6 +13,8 @@ namespace RE
 		enum class StateType
 		{
 			kNone,						// An undefined state value
+
+			// Instance related states
 			kRenderConfig,
 			kRenderStats,
 			kTranslator,				// An international language translator of dynamic text fields
@@ -22,6 +24,8 @@ namespace RE
 			kUserEventHandler,			// A user-installable interface to handle events fired from the player
 			kFSCommandHandler,			// A handler gets called when Action Script executes the fscommand() statement
 			kExternalInterface,			// A callback method for ActionScript to invoke
+
+			// Loading related states
 			kFileOpener,				// A callback interface that is used for opening files
 			kURLBuilder,				// The object responsible for building a filename path used for loading objects
 			kImageCreator,				// An interface used to create Image objects applied during rendering
@@ -50,7 +54,7 @@ namespace RE
 			kVideo,						// Video state, used to initialize video playbacks
 			kTestStream,
 			kSharedObject,				// SharedObjectManagerBase state for handling shared objects
-			kLocSupport,
+			kLocSupport
 		};
 
 
@@ -61,8 +65,9 @@ namespace RE
 			pad14(0)
 		{}
 
-		virtual ~GFxState()	// 00
-		{}
+
+		virtual ~GFxState();	// 00
+
 
 		// GetStateType obtains the StateType of this state. The state type of a given object never changes after construction
 		constexpr StateType GetStateType() const

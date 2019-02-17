@@ -50,18 +50,6 @@ namespace RE
 	}
 
 
-	void* GMemory::Alloc(UPInt a_size, const GAllocDebugInfo& a_info)
-	{
-		return GetGlobalHeapRef()->Alloc(a_size, &a_info);
-	}
-
-
-	void* GMemory::Alloc(UPInt a_size, UPInt a_align, const GAllocDebugInfo& a_info)
-	{
-		return GetGlobalHeapRef()->Alloc(a_size, a_align, &a_info);
-	}
-
-
 	void* GMemory::AllocAutoHeap(const void* a_ptr, UPInt a_size)
 	{
 		return GetGlobalHeapRef()->AllocAutoHeap(a_ptr, a_size);
@@ -70,18 +58,6 @@ namespace RE
 	void* GMemory::AllocAutoHeap(const void* a_ptr, UPInt a_size, UPInt a_align)
 	{
 		return GetGlobalHeapRef()->AllocAutoHeap(a_ptr, a_size, a_align);
-	}
-
-
-	void* GMemory::AllocAutoHeap(const void* a_ptr, UPInt a_size, const GAllocDebugInfo& a_info)
-	{
-		return GetGlobalHeapRef()->AllocAutoHeap(a_ptr, a_size, &a_info);
-	}
-
-
-	void* GMemory::AllocAutoHeap(const void* a_ptr, UPInt a_size, UPInt a_align, const GAllocDebugInfo& a_info)
-	{
-		return GetGlobalHeapRef()->AllocAutoHeap(a_ptr, a_size, a_align, &a_info);
 	}
 
 
@@ -94,18 +70,6 @@ namespace RE
 	void* GMemory::AllocInHeap(GMemoryHeap* a_heap, UPInt a_size, UPInt a_align)
 	{
 		return a_heap->Alloc(a_size, a_align);
-	}
-
-
-	void* GMemory::AllocInHeap(GMemoryHeap* a_heap, UPInt a_size, const GAllocDebugInfo& a_info)
-	{
-		return a_heap->Alloc(a_size, &a_info);
-	}
-
-
-	void* GMemory::AllocInHeap(GMemoryHeap* a_heap, UPInt a_size, UPInt a_align, const GAllocDebugInfo& a_info)
-	{
-		return a_heap->Alloc(a_size, a_align, &a_info);
 	}
 
 

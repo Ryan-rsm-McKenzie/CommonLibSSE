@@ -15,18 +15,18 @@
     <ProjectGuid>{C1AF9204-EE2D-421B-B11E-1D70D8ACC11F}</ProjectGuid>
     <RootNamespace>CommonLibSSE</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -177,11 +177,22 @@
     <ClCompile Include="src\RE\BSString.cpp" />
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp" />
     <ClCompile Include="src\RE\ChestsLooted.cpp" />
+    <ClCompile Include="src\RE\GAtomic.cpp" />
+    <ClCompile Include="src\RE\GFxExternalInterface.cpp" />
+    <ClCompile Include="src\RE\GFxMovie.cpp" />
+    <ClCompile Include="src\RE\GFxMovieDef.cpp" />
+    <ClCompile Include="src\RE\GFxMovieView.cpp" />
+    <ClCompile Include="src\RE\GFxResource.cpp" />
+    <ClCompile Include="src\RE\GFxResourceID.cpp" />
+    <ClCompile Include="src\RE\GFxState.cpp" />
+    <ClCompile Include="src\RE\GFxStateBag.cpp" />
     <ClCompile Include="src\RE\GFxValue.cpp" />
     <ClCompile Include="src\RE\GMemory.cpp" />
     <ClCompile Include="src\RE\GMemoryHeap.cpp" />
     <ClCompile Include="src\RE\GRefCountImpl.cpp" />
     <ClCompile Include="src\RE\GRefCountImplCore.cpp" />
+    <ClCompile Include="src\RE\GString.cpp" />
+    <ClCompile Include="src\RE\GViewport.cpp" />
     <ClCompile Include="src\RE\Inventory.cpp" />
     <ClCompile Include="src\RE\ItemCrafted.cpp" />
     <ClCompile Include="src\RE\ItemsPickpocketed.cpp" />
@@ -444,6 +455,8 @@
     <ClInclude Include="include\RE\ExtraLock.h" />
     <ClInclude Include="include\RE\GFxPlayerStats.h" />
     <ClInclude Include="include\RE\GFxResource.h" />
+    <ClInclude Include="include\RE\GFxResourceID.h" />
+    <ClInclude Include="include\RE\GFxResourceKey.h" />
     <ClInclude Include="include\RE\GFxState.h" />
     <ClInclude Include="include\RE\GFxStateBag.h" />
     <ClInclude Include="include\RE\GFxTranslator.h" />
@@ -452,11 +465,15 @@
     <ClInclude Include="include\RE\GAtomic.h" />
     <ClInclude Include="include\RE\GMemory.h" />
     <ClInclude Include="include\RE\GMemoryHeap.h" />
+    <ClInclude Include="include\RE\GPtr.h" />
+    <ClInclude Include="include\RE\GRect.h" />
     <ClInclude Include="include\RE\GRefCountBase.h" />
     <ClInclude Include="include\RE\GRefCountBaseStatImpl.h" />
     <ClInclude Include="include\RE\GRefCountImpl.h" />
     <ClInclude Include="include\RE\GRefCountImplCore.h" />
     <ClInclude Include="include\RE\GStats.h" />
+    <ClInclude Include="include\RE\GString.h" />
+    <ClInclude Include="include\RE\GViewport.h" />
     <ClInclude Include="include\RE\HandlePolicy.h" />
     <ClInclude Include="include\RE\HeldStateHandler.h" />
     <ClInclude Include="include\RE\hkBaseObject.h" />
@@ -561,7 +578,6 @@
     <ClInclude Include="include\RE\NiTPointerMap.h" />
     <ClInclude Include="include\RE\PackageLocation.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
-    <ClInclude Include="include\RE\PlayStates.h" />
     <ClInclude Include="include\RE\ReferenceEffectController.h" />
     <ClInclude Include="include\RE\GMatrix.h" />
     <ClInclude Include="include\RE\SavePatcher.h" />
@@ -688,6 +704,7 @@
     <ClInclude Include="include\RE\TESFile.h" />
     <ClInclude Include="include\RE\VirtualMachine.h" />
     <ClInclude Include="include\Util.h" />
+    <ClInclude Include="src\RE\GFxResourceKey.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

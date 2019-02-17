@@ -7,7 +7,7 @@ namespace RE
 	{
 	public:
 		GMatrix3D() :
-			data{0.0}
+			data{ 0.0 }
 		{}
 
 

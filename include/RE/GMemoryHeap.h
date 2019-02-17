@@ -1,7 +1,7 @@
 #pragma once
 
 #include "GAtomic.h"  // GLock
-#include "GList.h"  // GList
+#include "GList.h"  // GListNode, GList
 #include "GStats.h"  // GHeapID
 
 
@@ -14,7 +14,7 @@ namespace RE
 	struct GSysAllocPaged;
 
 
-	class GMemoryHeap
+	class GMemoryHeap : public GListNode<GMemoryHeap>
 	{
 		friend class GMemoryHeapPT;
 		friend class GMemoryHeapMH;
@@ -107,7 +107,7 @@ namespace RE
 		struct HeapVisitor
 		{
 			virtual ~HeapVisitor();															// 00
-			
+
 			virtual void Visit(GMemoryHeap* a_parentHeap, GMemoryHeap* a_childHeap) = 0;	// 01
 		};
 		STATIC_ASSERT(sizeof(HeapVisitor) == 0x8);
@@ -153,45 +153,46 @@ namespace RE
 		STATIC_ASSERT(sizeof(RootStats) == 0x50);
 
 	protected:
-		virtual ~GMemoryHeap();																												// 00
+		virtual ~GMemoryHeap();																			// 00
 
 	public:
-		virtual void			CreateArena(UPInt a_arena, GSysAllocPaged* a_sysAlloc) = 0;													// 01
-		virtual void			DestroyArena(UPInt a_arena) = 0;																			// 02
-		virtual bool			ArenaIsEmpty(UPInt a_arena) = 0;																			// 03
-		virtual GMemoryHeap*	CreateHeap(const char* a_name, const HeapDesc& a_desc) = 0;													// 04
-		virtual void			SetLimitHandler(LimitHandler* handler) = 0;																	// 05
-		virtual void			SetLimit(UPInt newLimit) = 0;																				// 06
-		virtual void			AddRef() = 0;																								// 07
-		virtual void			Release() = 0;																								// 08
-		virtual void*			Alloc(UPInt a_size, const GAllocDebugInfo* a_info = 0) = 0;													// 09
-		virtual void*			Alloc(UPInt a_size, UPInt a_align, const GAllocDebugInfo* a_info = 0) = 0;									// 0A
-		virtual void*			Realloc(void* a_oldPtr, UPInt a_newSize) = 0;																// 0B
-		virtual void			Free(void* a_ptr) = 0;																						// 0C
-		virtual void*			AllocAutoHeap(const void* a_thisPtr, UPInt a_size, const GAllocDebugInfo* a_info = 0) = 0;					// 0D
-		virtual void*			AllocAutoHeap(const void* a_thisPtr, UPInt a_size, UPInt a_align, const GAllocDebugInfo* a_info = 0) = 0;	// 0E
-		virtual GMemoryHeap*	GetAllocHeap(const void* a_thisPtr) = 0;																	// 0F
-		virtual UPInt			GetUsableSize(const void* a_ptr) = 0;																		// 10
-		virtual void*			AllocSysDirect(UPInt a_size) = 0;																			// 11
-		virtual void			FreeSysDirect(void* a_ptr, UPInt a_size) = 0;																// 12
-		virtual bool			GetStats(GStatBag* a_bag) = 0;																				// 13
-		virtual UPInt			GetFootprint() const = 0;																					// 14
-		virtual UPInt			GetTotalFootprint() const = 0;																				// 15
-		virtual UPInt			GetUsedSpace() const = 0;																					// 16
-		virtual UPInt			GetTotalUsedSpace() const = 0;																				// 17
-		virtual void			GetRootStats(RootStats* a_stats) = 0;																		// 18
-		virtual void			VisitMem(GHeapMemVisitor* a_visitor, unsigned a_flags) = 0;													// 19
-		virtual void			VisitRootSegments(GHeapSegVisitor* a_visitor) = 0;															// 1A
-		virtual void			VisitHeapSegments(GHeapSegVisitor* a_visitor) const = 0;													// 1B
-		virtual void			SetTracer(HeapTracer* a_tracer) = 0;																		// 1C
+		// add
+		virtual void			CreateArena(UPInt a_arena, GSysAllocPaged* a_sysAlloc) = 0;				// 01
+		virtual void			DestroyArena(UPInt a_arena) = 0;										// 02
+		virtual bool			ArenaIsEmpty(UPInt a_arena) = 0;										// 03
+		virtual GMemoryHeap*	CreateHeap(const char* a_name, const HeapDesc& a_desc) = 0;				// 04
+		virtual void			SetLimitHandler(LimitHandler* handler) = 0;								// 05
+		virtual void			SetLimit(UPInt newLimit) = 0;											// 06
+		virtual void			AddRef() = 0;															// 07
+		virtual void			Release() = 0;															// 08
+		virtual void*			Alloc(UPInt a_size) = 0;												// 09
+		virtual void*			Alloc(UPInt a_size, UPInt a_align) = 0;									// 0A
+		virtual void*			Realloc(void* a_oldPtr, UPInt a_newSize) = 0;							// 0B
+		virtual void			Free(void* a_ptr) = 0;													// 0C
+		virtual void*			AllocAutoHeap(const void* a_thisPtr, UPInt a_size) = 0;					// 0D
+		virtual void*			AllocAutoHeap(const void* a_thisPtr, UPInt a_size, UPInt a_align) = 0;	// 0E
+		virtual GMemoryHeap*	GetAllocHeap(const void* a_thisPtr) = 0;								// 0F
+		virtual UPInt			GetUsableSize(const void* a_ptr) = 0;									// 10
+		virtual void*			AllocSysDirect(UPInt a_size) = 0;										// 11
+		virtual void			FreeSysDirect(void* a_ptr, UPInt a_size) = 0;							// 12
+		virtual bool			GetStats(GStatBag* a_bag) = 0;											// 13
+		virtual UPInt			GetFootprint() const = 0;												// 14
+		virtual UPInt			GetTotalFootprint() const = 0;											// 15
+		virtual UPInt			GetUsedSpace() const = 0;												// 16
+		virtual UPInt			GetTotalUsedSpace() const = 0;											// 17
+		virtual void			GetRootStats(RootStats* a_stats) = 0;									// 18
+		virtual void			VisitMem(GHeapMemVisitor* a_visitor, unsigned a_flags) = 0;				// 19
+		virtual void			VisitRootSegments(GHeapSegVisitor* a_visitor) = 0;						// 1A
+		virtual void			VisitHeapSegments(GHeapSegVisitor* a_visitor) const = 0;				// 1B
+		virtual void			SetTracer(HeapTracer* a_tracer) = 0;									// 1C - { return; }
 
 	protected:
-		virtual void			DestroyItself() = 0;																						// 1D
-		virtual void			UltimateCheck_Internal() = 0;																				// 1E
-		virtual void			ReleaseCachedMem() = 0;																						// 1F
-		virtual bool			DumpMemoryLeaks_Internal() = 0;																				// 20
-		virtual void			CheckIntegrity_Internal() const = 0;																		// 21
-		virtual void			GetUserDebugStats(RootStats* a_stats) const = 0;															// 22
+		virtual void			DestroyItself() = 0;													// 1D
+		virtual void			UltimateCheck_Internal() = 0;											// 1E - { return; }
+		virtual void			ReleaseCachedMem() = 0;													// 1F
+		virtual bool			DumpMemoryLeaks_Internal() = 0;											// 20 - { return false; }
+		virtual void			CheckIntegrity_Internal() const = 0;									// 21
+		virtual void			GetUserDebugStats(RootStats* a_stats) const = 0;						// 22
 
 	public:
 		GMemoryHeap*			CreateHeap(const char* a_name,
@@ -222,15 +223,21 @@ namespace RE
 		typedef GList<GMemoryHeap> ChildListType;
 
 
-		UPInt			_selfSize;			// 00
-		volatile UInt32	_refCount;			// 08
-		UPInt			_ownerThreadID;		// 10
-		void*			_autoRelease;		// 18 - auto frees heap when freed
-		HeapInfo		_info;				// 20
-		ChildListType	_childHeaps;		// 70
-		mutable GLock	_heapLock;			// ??
-		bool			_useLocks;			// ??
-		bool			_trackDebugInfo;	// ??
+		// members
+		UPInt			_selfSize;			// 18
+		volatile UInt32	_refCount;			// 20
+		UInt32			_pad24;				// 24
+		UPInt			_ownerThreadID;		// 28
+		void*			_autoRelease;		// 30 - auto frees heap when freed
+		HeapInfo		_info;				// 38
+		ChildListType	_childHeaps;		// 88
+		mutable GLock	_heapLock;			// 98
+		bool			_useLocks;			// C0
+		bool			_trackDebugInfo;	// C1
+		UInt16			_padC2;				// C2
+		UInt32			_padC4;				// C4
+		void*			_unkC8;				// C8
+		void*			_unkD0;				// D0
 	};
-	//STATIC_ASSERT(sizeof(GMemoryHeap) == 0x);
+	STATIC_ASSERT(sizeof(GMemoryHeap) == 0xD8);
 }

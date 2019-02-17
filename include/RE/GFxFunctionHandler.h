@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/GRefCountBase.h"  // GRefCountBase
-#include "RE/GStats.h"  // 
+#include "RE/GStats.h"  // GStatGroups
 
 
 namespace RE
@@ -15,11 +15,11 @@ namespace RE
 	public:
 		struct Params
 		{
-			GFxValue*	a_retVal;			// 00
-			GFxMovie*	a_movie;			// 08
-			GFxValue*	a_this;				// 10
-			GFxValue*	a_argsWithThisRef;	// 18
-			GFxValue*	a_args;				// 20
+			GFxValue*	retVal;				// 00
+			GFxMovie*	movie;				// 08
+			GFxValue*	thisPtr;			// 10
+			GFxValue*	argsWithThisRef;	// 18
+			GFxValue*	args;				// 20
 			UInt32		argCount;			// 28
 			UInt32		pad2C;				// 2C
 			void*		userData;			// 30
@@ -32,4 +32,7 @@ namespace RE
 		// add
 		virtual void Call(const Params& a_params) = 0;	// 01
 	};
+
+
+	typedef GFxFunctionHandler GFxFunctionContext;
 }

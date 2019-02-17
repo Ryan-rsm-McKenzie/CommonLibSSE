@@ -492,6 +492,39 @@
     <ClCompile Include="src\RE\GMemory.cpp">
       <Filter>src\RE\Skyrim\Scaleform</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\GAtomic.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxMovieDef.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxResource.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxResourceID.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxStateBag.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxMovie.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxState.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxExternalInterface.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GViewport.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxMovieView.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GString.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -1475,9 +1508,6 @@
     <ClInclude Include="include\RE\SFTypes.h">
       <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\PlayStates.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\GFxFunctionHandler.h">
       <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
@@ -1771,6 +1801,27 @@
     </ClInclude>
     <ClInclude Include="include\RE\UISaveLoadManager.h">
       <Filter>include\RE\Skyrim\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxResourceID.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GPtr.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GRect.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxResourceKey.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RE\GFxResourceKey.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GViewport.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GString.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

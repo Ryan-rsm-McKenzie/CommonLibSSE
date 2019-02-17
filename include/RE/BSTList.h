@@ -5,7 +5,6 @@
 #include <memory>  // pointer_traits
 #include <utility>  // move, swap, forward
 #include <iterator>  // forward_iterator_tag
-#include <type_traits>  // enable_if, is_pointer
 
 #include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
 
@@ -20,24 +19,35 @@ namespace RE
 		using value_type = T;
 		using size_type = std::uint32_t;
 		using difference_type = std::ptrdiff_t;
-		using reference = value_type&;
+		using reference = value_type & ;
 		using const_reference = const value_type&;
-		using pointer = value_type*;
+		using pointer = value_type * ;
 		using const_pointer = std::pointer_traits<pointer>::rebind<const value_type>;
 
 	protected:
 		struct Node
 		{
-			constexpr Node() :
+			Node() :
 				item{},
 				next{ 0 }
 			{}
 
 
-			template <class... Args>
-			explicit Node(Args&&... a_args) :
-				item(std::forward<Args>(a_args)),
-				next(0)
+			Node(const Node& a_node) :
+				item{ a_node.item },
+				next{ a_node.next }
+			{}
+
+
+			Node(const value_type& a_value) :
+				item{ a_value },
+				next{ 0 }
+			{}
+
+
+			Node(value_type&& a_value) :
+				item{ a_value },
+				next{ 0 }
 			{}
 
 
@@ -54,8 +64,8 @@ namespace RE
 		{
 			using difference_type = std::ptrdiff_t;
 			using value_type = U;
-			using pointer = U*;
-			using reference = U&;
+			using pointer = U * ;
+			using reference = U & ;
 			using iterator_category = std::forward_iterator_tag;
 		};
 
@@ -64,8 +74,14 @@ namespace RE
 		class iterator_base : public iterator_traits<U>
 		{
 			friend class BSSimpleList<T>;
-
 		public:
+			using difference_type = typename iterator_traits::difference_type;
+			using value_type = typename iterator_traits::value_type;
+			using pointer = typename iterator_traits::pointer;
+			using reference = typename iterator_traits::reference;
+			using iterator_category = typename iterator_traits::iterator_category;
+
+
 			iterator_base() :
 				_cur{ 0 }
 			{}
@@ -298,16 +314,6 @@ namespace RE
 		}
 
 
-		template <class... Args>
-		iterator emplace_after(const_iterator a_pos, Args&&... a_args)
-		{
-			Node* node = new Node(a_args);
-			node->next = a_pos._cur->next;
-			a_pos._cur->next = node;
-			return iterator{ node };
-		}
-
-
 		iterator erase_after(const_iterator a_pos)
 		{
 			const_iterator before = a_pos++;
@@ -330,57 +336,48 @@ namespace RE
 
 		void push_front(const T& a_value)
 		{
-			Node* node = new Node();
-			node->item = a_value;
-			node->next = begin()._cur;
-			_listHead = *node;
+			if (empty()) {
+				_listHead.item = a_value;
+			} else {
+				Node* node = new Node(_listHead);
+				_listHead.item = a_value;
+				_listHead.next = node;
+			}
 		}
 
 
 		void push_front(T&& a_value)
 		{
-			Node* node = new Node();
-			node->item = std::move(a_value);
-			node->next = begin()._cur;
-			_listHead = *node;
-		}
-
-
-		template <class... Args>
-		void emplace_front(Args&&... a_args)
-		{
-			Node* node = new Node(a_args);
-			node->next = begin()._cur;
-			_listHead = *node;
-		}
-
-
-		template <class... Args>
-		reference emplace_front(Args&&... a_args)
-		{
-			Node* node = new Node(a_args);
-			node->next = begin()._cur;
-			_listHead = *node;
-			return *begin();
+			if (empty()) {
+				_listHead.item = a_value;
+			} else {
+				Node* node = new Node(_listHead);
+				_listHead.item = a_value;
+				_listHead.next = node;
+			}
 		}
 
 
 		void pop_front()
 		{
-			iterator pos = begin();
-			delete pos++._cur;
-			_listHead = *pos._cur;
+			if (_listHead.next) {
+				_listHead.item = _listHead.next->item;
+				_listHead.next = _listHead.next->next;
+			} else {
+				_listHead.item = value_type{};
+				_listHead.next = 0;
+			}
 		}
 
 
 		void resize(size_type a_count)
 		{
-			if (begin() == end()) {
+			if (empty()) {
 				if (a_count == 0) {
 					return;
 				} else {
-					Node* node = new Node();
-					_listHead = *node;
+					_listHead = value_type{};
+					_listHead.next = 0;
 				}
 			}
 
@@ -391,8 +388,11 @@ namespace RE
 				++pos;
 			}
 
-			if (pos._cur->next != 0) {
+			if (elems > a_count) {
 				// need to shrink
+				if (pos == begin()) {
+					_listHead.item = value_type{};
+				}
 				pos++._cur->next = 0;
 				while (pos != end()) {
 					delete pos++._cur;
@@ -415,12 +415,12 @@ namespace RE
 
 		void resize(size_type a_count, const value_type& a_value)
 		{
-			if (begin() == end()) {
+			if (empty()) {
 				if (a_count == 0) {
 					return;
 				} else {
-					Node* node = new Node();
-					_listHead = *node;
+					_listHead = value_type{ a_value };
+					_listHead.next = 0;
 				}
 			}
 
@@ -431,8 +431,11 @@ namespace RE
 				++pos;
 			}
 
-			if (pos._cur->next != 0) {
+			if (elems > a_count) {
 				// need to shrink
+				if (pos == begin()) {
+					_listHead.item = value_type{};
+				}
 				pos++._cur->next = 0;
 				while (pos != end()) {
 					delete pos++._cur;
@@ -455,9 +458,9 @@ namespace RE
 
 		void swap(BSSimpleList& a_other) noexcept
 		{
-			Node* tmp = &_listHead;
+			Node tmp = _listHead;
 			_listHead = a_other._listHead;
-			a_other._listHead = *tmp;
+			a_other._listHead = tmp;
 		}
 
 	protected:

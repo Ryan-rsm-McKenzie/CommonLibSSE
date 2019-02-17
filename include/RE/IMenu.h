@@ -5,13 +5,13 @@
 #include "RE/GFxMovieView.h"  // GFxMovieView
 #include "RE/InputMappingManager.h"  // InputMappingManager::Context
 
-class CallbackProcessor;
-class UIMessage;
-
 
 namespace RE
 {
+	class CallbackProcessor;
 	class FxDelegate;
+	class GFxMovieView;
+	class UIMessage;
 
 
 	class IMenu : public FxDelegateHandler
@@ -55,7 +55,7 @@ namespace RE
 		virtual ~IMenu();													// 00
 
 		// override (FxDelegateHandler)
-		virtual void	Accept(CallbackProcessor* a_processor) override;	// 01 - {}
+		virtual void	Accept(CallbackProcessor* a_processor) override;	// 01 - { return; }
 
 		// add
 		virtual void	OnOpen();											// 02 - { return; }
@@ -85,6 +85,7 @@ namespace RE
 		bool			HasFlag10000() const;
 
 
+		// members
 		GFxMovieView*	view;		// 10 - init'd to 0, view->Release() called in dtor
 		UInt8			menuDepth;	// 18 - init'd to 3
 		UInt8			pad19;		// 19

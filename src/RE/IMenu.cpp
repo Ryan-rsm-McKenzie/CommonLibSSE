@@ -2,19 +2,19 @@
 
 #include "skse64/GameMenus.h"  // IMenu
 
-#include <cstring>  // memset
-
 
 namespace RE
 {
-	IMenu::IMenu()
-	{
-		memset(this, 0, sizeof(IMenu));
-
-		menuDepth = 3;
-		flags = Flag::kNone;
-		context = Context::kInvalid;
-	}
+	IMenu::IMenu() :
+		view(0),
+		menuDepth(3),
+		pad19(0),
+		pad20(0),
+		flags(Flag::kNone),
+		context(Context::kInvalid),
+		pad24(0),
+		fxDelegate(0)
+	{}
 
 
 	IMenu::~IMenu()

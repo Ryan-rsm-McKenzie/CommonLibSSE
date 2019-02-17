@@ -18,9 +18,5 @@ namespace RE
 		constexpr GRefCountBase() :
 			GRefCountBaseStatImpl<GRefCountImpl, Stat>()
 		{}
-
-
-		virtual ~GRefCountBase()	// 00
-		{}
 	};
 }

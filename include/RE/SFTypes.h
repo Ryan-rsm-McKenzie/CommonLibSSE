@@ -10,4 +10,6 @@ namespace RE
 {
 	typedef std::size_t UPInt;
 	constexpr UPInt UPINT_MAX = std::numeric_limits<UPInt>::max();
+
+	typedef std::ptrdiff_t SPInt;
 }

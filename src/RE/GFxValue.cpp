@@ -3,6 +3,8 @@
 #include "skse64/ScaleformValue.h"  // GFxValue
 
 #include <cassert>  // assert
+#include <cstring>  // strcmp
+#include <cwchar>  // wcscoll
 
 
 namespace RE
@@ -135,13 +137,13 @@ namespace RE
 
 	const GMatrix3D* GFxValue::DisplayInfo::GetPerspectiveMatrix3D() const
 	{
-		return &_perspMatrix3D;
+		return IsFlagSet(Flag::kPerspMatrix3D) ? &_perspMatrix3D : 0;
 	}
 
 
 	const GMatrix3D* GFxValue::DisplayInfo::GetViewMatrix3D() const
 	{
-		return &_viewMatrix3D;
+		return IsFlagSet(Flag::kViewMatrix3D) ? &_viewMatrix3D : 0;
 	}
 
 
@@ -220,7 +222,7 @@ namespace RE
 
 	void GFxValue::DisplayInfo::SetVisible(bool a_visible)
 	{
-		_flags |= Flag::kVisible;
+		SetFlags(Flag::kVisible);
 		_visible = a_visible;
 	}
 
@@ -228,17 +230,17 @@ namespace RE
 	void GFxValue::DisplayInfo::SetPerspectiveMatrix3D(const GMatrix3D* a_mat)
 	{
 		if (a_mat) {
-			_flags |= Flag::kPerspMatrix3D;
+			SetFlags(Flag::kPerspMatrix3D);
 			_perspMatrix3D = *a_mat;
 		} else {
-			_flags &= ~Flag::kPerspMatrix3D;
+			ClearFlags(Flag::kPerspMatrix3D);
 		}
 	}
 
 
 	void GFxValue::DisplayInfo::Set(double a_x, double a_y, double a_rotation, double a_xScale, double a_yScale, double a_alpha, bool a_visible)
 	{
-		_flags |= Flag::kX | Flag::kY | Flag::kRotation | Flag::kXScale | Flag::kYScale | Flag::kAlpha | Flag::kVisible;
+		SetFlags(Flag::kX | Flag::kY | Flag::kRotation | Flag::kXScale | Flag::kYScale | Flag::kAlpha | Flag::kVisible);
 		_x = a_x;
 		_y = a_y;
 		_rotation = a_rotation;
@@ -251,7 +253,7 @@ namespace RE
 
 	void GFxValue::DisplayInfo::Set(double a_x, double a_y, double a_rotation, double a_xScale, double a_yScale, double a_alpha, bool a_visible, double a_z, double a_xRotation, double a_yRotation, double a_zScale)
 	{
-		_flags |= Flag::kX | Flag::kY | Flag::kRotation | Flag::kXScale | Flag::kYScale | Flag::kAlpha | Flag::kVisible | Flag::kZ | Flag::kXRotation | Flag::kYRotation | Flag::kZScale;
+		SetFlags(Flag::kX | Flag::kY | Flag::kRotation | Flag::kXScale | Flag::kYScale | Flag::kAlpha | Flag::kVisible | Flag::kZ | Flag::kXRotation | Flag::kYRotation | Flag::kZScale);
 		_x = a_x;
 		_y = a_y;
 		_rotation = a_rotation;
@@ -269,31 +271,31 @@ namespace RE
 	void GFxValue::DisplayInfo::SetViewMatrix3D(const GMatrix3D* a_mat)
 	{
 		if (a_mat) {
-			_flags |= Flag::kViewMatrix3D;
+			SetFlags(Flag::kViewMatrix3D);
 			_viewMatrix3D = *a_mat;
 		} else {
-			_flags &= ~Flag::kViewMatrix3D;
+			ClearFlags(Flag::kViewMatrix3D);
 		}
 	}
 
 
 	void GFxValue::DisplayInfo::SetAlpha(double a_alpha)
 	{
-		_flags |= Flag::kAlpha;
+		SetFlags(Flag::kAlpha);
 		_alpha = a_alpha;
 	}
 
 
 	void GFxValue::DisplayInfo::SetFOV(double a_fov)
 	{
-		_flags |= Flag::kFOV;
+		SetFlags(Flag::kFOV);
 		_fov = a_fov;
 	}
 
 
 	void GFxValue::DisplayInfo::SetPosition(double a_x, double a_y)
 	{
-		_flags |= Flag::kX | Flag::kY;
+		SetFlags(Flag::kX | Flag::kY);
 		_x = a_x;
 		_y = a_y;
 	}
@@ -301,14 +303,14 @@ namespace RE
 
 	void GFxValue::DisplayInfo::SetRotation(double a_degrees)
 	{
-		_flags |= Flag::kRotation;
+		SetFlags(Flag::kRotation);
 		_rotation = a_degrees;
 	}
 
 
 	void GFxValue::DisplayInfo::SetScale(double a_xScale, double a_yScale)
 	{
-		_flags |= Flag::kXScale | Flag::kYScale;
+		SetFlags(Flag::kXScale | Flag::kYScale);
 		_xScale = a_xScale;
 		_yScale = a_yScale;
 	}
@@ -316,58 +318,78 @@ namespace RE
 
 	void GFxValue::DisplayInfo::SetX(double a_x)
 	{
-		_flags |= Flag::kX;
+		SetFlags(Flag::kX);
 		_x = a_x;
 	}
 
 
 	void GFxValue::DisplayInfo::SetXRotation(double a_degrees)
 	{
-		_flags |= Flag::kXRotation;
+		SetFlags(Flag::kXRotation);
 		_xRotation = a_degrees;
 	}
 
 
 	void GFxValue::DisplayInfo::SetXScale(double a_xScale)
 	{
-		_flags |= Flag::kXScale;
+		SetFlags(Flag::kXScale);
 		_xScale = a_xScale;
 	}
 
 
 	void GFxValue::DisplayInfo::SetY(double a_y)
 	{
-		_flags |= Flag::kY;
+		SetFlags(Flag::kY);
 		_y = a_y;
 	}
 
 
 	void GFxValue::DisplayInfo::SetYRotation(double a_degrees)
 	{
-		_flags |= Flag::kRotation;
+		SetFlags(Flag::kRotation);
 		_yRotation = a_degrees;
 	}
 
 
 	void GFxValue::DisplayInfo::SetYScale(double a_yScale)
 	{
-		_flags |= Flag::kYScale;
+		SetFlags(Flag::kYScale);
 		_yScale = a_yScale;
 	}
 
 
 	void GFxValue::DisplayInfo::SetZ(double a_z)
 	{
-		_flags |= Flag::kZ;
+		SetFlags(Flag::kZ);
 		_z = a_z;
 	}
 
 
 	void GFxValue::DisplayInfo::SetZScale(double a_zScale)
 	{
-		_flags |= Flag::kZScale;
+		SetFlags(Flag::kZScale);
 		_zScale = a_zScale;
 	}
+
+
+	void GFxValue::DisplayInfo::SetFlags(Flag a_flags)
+	{
+		_flags |= a_flags;
+	}
+
+
+	void GFxValue::DisplayInfo::ClearFlags(Flag a_flags)
+	{
+		_flags &= ~a_flags;
+	}
+
+
+	GFxValue::ObjectInterface::ObjVisitor::~ObjVisitor()
+	{}
+
+
+	GFxValue::ObjectInterface::ArrVisitor::~ArrVisitor()
+	{}
 
 
 	GFxValue::ObjectInterface::ObjectInterface(GFxMovieRoot* a_movieRoot) :
@@ -495,6 +517,12 @@ namespace RE
 	}
 
 
+	bool GFxValue::ObjectInterface::IsSameContext(const ObjectInterface* a_rhs) const
+	{
+		return _movieRoot == a_rhs->_movieRoot;
+	}
+
+
 	GFxValue::GFxValue() :
 		_objectInterface(0),
 		_type(ValueType::kUndefined)
@@ -561,6 +589,318 @@ namespace RE
 	}
 
 
+	const GFxValue& GFxValue::operator=(const GFxValue& a_rhs)
+	{
+		if (this != &a_rhs) {
+			if (IsManagedValue()) {
+				ReleaseManagedValue();
+			}
+			_type = a_rhs._type;
+			_value = a_rhs._value;
+			if (a_rhs.IsManagedValue()) {
+				AcquireManagedValue(a_rhs);
+			}
+		}
+		return *this;
+	}
+
+	bool GFxValue::operator==(const GFxValue& a_rhs) const
+	{
+		if (_type != a_rhs._type) {
+			return false;
+		} else {
+			switch (_type & ValueType::kValueMask) {
+			case ValueType::kBoolean:
+				return _value.boolean == a_rhs._value.boolean;
+			case ValueType::kNumber:
+				return _value.number == a_rhs._value.number;
+			case ValueType::kString:
+				return std::strcmp(GetString(), a_rhs.GetString()) == 0;
+			case ValueType::kStringW:
+				return std::wcscoll(GetStringW(), a_rhs.GetStringW()) == 0;
+			default:
+				return _value.obj == a_rhs._value.obj;
+			}
+		}
+	}
+
+
+	GString GFxValue::ToString() const
+	{
+		return { GetString() };
+	}
+
+
+	GFxValue::ValueType GFxValue::GetType() const
+	{
+		return ValueType(_type & ValueType::kTypeMask);
+	}
+
+
+	bool GFxValue::IsUndefined() const
+	{
+		return GetType() == ValueType::kUndefined;
+	}
+
+
+	bool GFxValue::IsNull() const
+	{
+		return GetType() == ValueType::kNull;
+	}
+
+
+	bool GFxValue::IsBool() const
+	{
+		return GetType() == ValueType::kBoolean;
+	}
+
+
+	bool GFxValue::IsNumber() const
+	{
+		return GetType() == ValueType::kNumber;
+	}
+
+
+	bool GFxValue::IsString() const
+	{
+		return GetType() == ValueType::kString;
+	}
+
+
+	bool GFxValue::IsStringW() const
+	{
+		return GetType() == ValueType::kStringW;
+	}
+
+
+	bool GFxValue::IsObject() const
+	{
+		switch (GetType()) {
+		case ValueType::kObject:
+		case ValueType::kArray:
+		case ValueType::kDisplayObject:
+			return true;
+		default:
+			return false;
+		}
+	}
+
+
+	bool GFxValue::IsArray() const
+	{
+		return GetType() == ValueType::kArray;
+	}
+
+
+	bool GFxValue::IsDisplayObject() const
+	{
+		return GetType() == ValueType::kDisplayObject;
+	}
+
+
+	bool GFxValue::GetBool() const
+	{
+		assert(IsBool());
+		return _value.boolean;
+	}
+
+
+	double GFxValue::GetNumber() const
+	{
+		assert(IsNumber());
+		return _value.number;
+	}
+
+
+	const char* GFxValue::GetString() const
+	{
+		assert(IsString());
+		return IsManagedValue() ? *_value.managedString : _value.string;
+	}
+
+
+	const wchar_t* GFxValue::GetStringW() const
+	{
+		assert(IsStringW());
+		return IsManagedValue() ? *_value.managedWideString : _value.wideString;
+	}
+
+
+	void GFxValue::SetUndefined()
+	{
+		ChangeType(ValueType::kUndefined);
+	}
+
+
+	void GFxValue::SetNull()
+	{
+		ChangeType(ValueType::kNull);
+	}
+
+
+	void GFxValue::SetBoolean(bool a_val)
+	{
+		ChangeType(ValueType::kBoolean);
+		_value.boolean = a_val;
+	}
+
+
+	void GFxValue::SetNumber(double a_val)
+	{
+		ChangeType(ValueType::kNumber);
+		_value.number = a_val;
+	}
+
+
+	void GFxValue::SetString(const char* a_str)
+	{
+		ChangeType(ValueType::kString);
+		_value.string = a_str;
+	}
+
+
+	void GFxValue::SetStringW(const wchar_t* a_str)
+	{
+		ChangeType(ValueType::kStringW);
+		_value.wideString = a_str;
+	}
+
+
+	void GFxValue::SetConvertBoolean()
+	{
+		ChangeType(ValueType::kConvertBoolean);
+	}
+
+
+	void GFxValue::SetConvertNumber()
+	{
+		ChangeType(ValueType::kConvertNumber);
+	}
+
+
+	void GFxValue::SetConvertString()
+	{
+		ChangeType(ValueType::kConvertString);
+	}
+
+
+	void GFxValue::SetConvertStringW()
+	{
+		ChangeType(ValueType::kConvertStringW);
+	}
+
+
+	bool GFxValue::HasMember(const char* a_name) const
+	{
+		assert(IsObject());
+		return _objectInterface->HasMember(_value.obj, a_name, IsDisplayObject());
+	}
+
+
+	bool GFxValue::GetMember(const char* a_name, GFxValue* a_val) const
+	{
+		assert(IsObject());
+		return _objectInterface->GetMember(_value.obj, a_name, a_val, IsDisplayObject());
+	}
+
+
+	bool GFxValue::SetMember(const char* a_name, const GFxValue& a_val)
+	{
+		assert(IsObject());
+		return _objectInterface->SetMember(_value.obj, a_name, a_val, IsDisplayObject());
+	}
+
+
+	bool GFxValue::Invoke(const char* a_name, GFxValue* a_result, const GFxValue* a_args, UPInt a_numArgs)
+	{
+		assert(IsObject());
+		return _objectInterface->Invoke(_value.obj, a_result, a_name, a_args, a_numArgs, IsDisplayObject());
+	}
+
+
+	bool GFxValue::Invoke(const char* a_name, GFxValue* a_result)
+	{
+		return Invoke(a_name, a_result, 0, 0);
+	}
+
+
+	bool GFxValue::DeleteMember(const char* a_name)
+	{
+		assert(IsObject());
+		return _objectInterface->DeleteMember(_value.obj, a_name, IsDisplayObject());
+	}
+
+
+	UInt32 GFxValue::GetArraySize() const
+	{
+		assert(IsArray());
+		return _objectInterface->GetArraySize(_value.obj);
+	}
+
+
+	bool GFxValue::GetElement(UInt32 a_idx, GFxValue* a_val) const
+	{
+		assert(IsArray());
+		return _objectInterface->GetElement(_value.obj, a_idx, a_val);
+	}
+
+
+	bool GFxValue::PushBack(const GFxValue& a_val)
+	{
+		assert(IsArray());
+		return _objectInterface->PushBack(_value.obj, a_val);
+	}
+
+
+	bool GFxValue::GetDisplayInfo(DisplayInfo* a_info) const
+	{
+		assert(IsDisplayObject());
+		return _objectInterface->GetDisplayInfo(_value.obj, a_info);
+	}
+
+
+	bool GFxValue::SetDisplayInfo(const DisplayInfo& a_info)
+	{
+		assert(IsDisplayObject());
+		return _objectInterface->SetDisplayInfo(_value.obj, a_info);
+	}
+
+
+	bool GFxValue::SetText(const char* a_text)
+	{
+		assert(IsDisplayObject());
+		return _objectInterface->SetText(_value.obj, a_text, false);
+	}
+
+
+	bool GFxValue::SetTextHTML(const char* a_html)
+	{
+		assert(IsDisplayObject());
+		return _objectInterface->SetText(_value.obj, a_html, true);
+	}
+
+
+	bool GFxValue::AttachMovie(GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, SInt32 a_depth, const GFxValue* a_initObj)
+	{
+		assert(IsDisplayObject());
+		return _objectInterface->AttachMovie(_value.obj, a_movieClip, a_symbolName, a_instanceName, a_depth, a_initObj);
+	}
+
+
+	bool GFxValue::GotoAndPlay(const char* a_frame)
+	{
+		assert(IsDisplayObject());
+		return _objectInterface->GotoAndPlay(_value.obj, a_frame, false);
+	}
+
+
+	bool GFxValue::GotoAndStop(const char* a_frame)
+	{
+		assert(IsDisplayObject());
+		return _objectInterface->GotoAndPlay(_value.obj, a_frame, true);
+	}
+
+
 	bool GFxValue::IsManagedValue() const
 	{
 		return (_type & ValueType::kManagedBit) != ValueType::kUndefined;
@@ -580,5 +920,14 @@ namespace RE
 		assert(_value.obj && _objectInterface);
 		_objectInterface->ObjectRelease(this, _value.obj);
 		_objectInterface = 0;
+	}
+
+
+	void GFxValue::ChangeType(ValueType a_type)
+	{
+		if (IsManagedValue()) {
+			ReleaseManagedValue();
+		}
+		_type = a_type;
 	}
 }

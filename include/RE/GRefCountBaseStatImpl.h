@@ -1,5 +1,9 @@
 #pragma once
 
+#include "RE/GMemory.h"  // GFC_MEMORY_REDEFINE_NEW_IMPL
+
+#define GFC_REFCOUNTALLOC_CHECK_DELETE(class_name, p)
+
 
 namespace RE
 {
@@ -13,7 +17,6 @@ namespace RE
 		{}
 
 
-		virtual ~GRefCountBaseStatImpl()	// 00
-		{}
+		GFC_MEMORY_REDEFINE_NEW_IMPL(Base, GFC_REFCOUNTALLOC_CHECK_DELETE, StatType);
 	};
 }
