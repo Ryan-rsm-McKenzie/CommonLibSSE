@@ -112,7 +112,7 @@ namespace RE
 		virtual void					SetFlag00000020(bool a_set) override;																																						// 23
 		virtual void					SetFlag00000002(bool a_set) override;																																						// 24
 		virtual TESObjectREFR*			GetReference() override;																																									// 2C - { return this; }
-		virtual const char*				GetName() override;																																											// 32
+		virtual const char*				GetEditorID() override;																																										// 32
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)
 		virtual EventResult				ReceiveEvent(BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_dispatcher) override;																					// 01

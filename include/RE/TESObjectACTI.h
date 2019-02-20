@@ -64,6 +64,7 @@ namespace RE
 		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;																						// 0E
 		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																						// 0F
 		virtual void	InitItem() override;																												// 13
+		virtual bool	IsWaterActivator() override;																										// 2A - { return waterType != 0; }
 		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
 		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4C
 
@@ -78,6 +79,5 @@ namespace RE
 	};
 	STATIC_ASSERT(sizeof(TESObjectACTI) == 0xC8);
 	// virt Unk_22() - { return (flags >> 1) & 1; } - IgnoredBySandbox()?
-	// virt Unk_2A() - { return waterType != 0; } - HasWater()?
 	// virt Unk_3D() - { return waterType; } - GetWater()?
 }

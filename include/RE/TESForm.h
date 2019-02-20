@@ -72,7 +72,7 @@ namespace RE
 		virtual bool			Has3D();																													// 27 - { return false; }
 		virtual void			Unk_28(void);																												// 28 - { return false; }
 		virtual bool			IsMagicItem() const;																										// 29 - { return false; }
-		virtual void			Unk_2A(void);																												// 2A - { return false; }
+		virtual bool			IsWaterActivator();																											// 2A - { return false; }
 		virtual void			Unk_2B(void);																												// 2B - { return nullptr; }
 		virtual TESObjectREFR*	GetReference();																												// 2C - { return nullptr; }
 		virtual void			Unk_2D(void);																												// 2D - { return nullptr; }
@@ -80,8 +80,8 @@ namespace RE
 		virtual void			CopyFrom(TESForm* a_srcForm);																								// 2F - { return; }
 		virtual void			Unk_30(void);																												// 30
 		virtual void			Unk_31(void);																												// 31
-		virtual const char*		GetName();																													// 32 - { return ""; }
-		virtual bool			SetName(const char* a_str);																									// 33 - { return true; }
+		virtual const char*		GetEditorID();																												// 32 - { return ""; }
+		virtual bool			SetEditorID(const char* a_str);																								// 33 - { return true; }
 		virtual void			Unk_34(void);																												// 34 - { return false; } TESTopic,TESObjectCELL,TESWorldSpace=true
 		virtual void			Unk_35(void);																												// 35 - { return false; }
 		virtual void			Unk_36(void);																												// 36 - { return false; }

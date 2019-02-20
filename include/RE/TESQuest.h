@@ -39,8 +39,8 @@ namespace RE
 		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
 		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
 		virtual void		InitItem() override;							// 13
-		virtual const char*	GetName() override;								// 32 - { return editorID->.c_str() ? editorID->.c_str() : ""; }
-		virtual bool		SetName(const char* a_str) override;			// 33
+		virtual const char*	GetEditorID() override;							// 32 - { return editorID.c_str() ? editorID.c_str() : ""; }
+		virtual bool		SetEditorID(const char* a_str) override;		// 33
 
 
 		// members

@@ -66,13 +66,13 @@ namespace RE
 		};
 
 
-		virtual ~BGSHeadPart();										// 00
+		virtual ~BGSHeadPart();											// 00
 
 		// override (TESForm)
-		virtual bool		LoadForm(TESFile* a_mod) override;		// 06
-		virtual void		InitItem() override;					// 13
-		virtual const char*	GetName() override;						// 32
-		virtual bool		SetName(const char* a_str) override;	// 33
+		virtual bool		LoadForm(TESFile* a_mod) override;			// 06
+		virtual void		InitItem() override;						// 13
+		virtual const char*	GetEditorID() override;						// 32 - { return editorID.c_str() ? editorID.c_str() : ""; }
+		virtual bool		SetEditorID(const char* a_str) override;	// 33 - { editorID = a_str; return true; }
 
 		bool				IsExtraPart();
 

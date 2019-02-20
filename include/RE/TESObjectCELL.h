@@ -112,8 +112,8 @@ namespace RE
 		virtual void		InitItem() override;										// 13
 		virtual void		GetFormDesc(char* a_buf, UInt32 a_bufLen) override;			// 16
 		virtual void		SetFlag00000002(bool a_set) override;						// 24
-		virtual const char*	GetName() override;											// 32
-		virtual bool		SetName(const char* a_str) override;						// 33
+		virtual const char*	GetEditorID() override;										// 32
+		virtual bool		SetEditorID(const char* a_str) override;					// 33
 
 		double GetNorthRotation();
 
