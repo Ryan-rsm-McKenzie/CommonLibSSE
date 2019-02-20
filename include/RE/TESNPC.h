@@ -60,6 +60,8 @@ namespace RE
 		STATIC_ASSERT(sizeof(MorphAction) == 0x20);
 
 
+		virtual ~TESNPC();																																			// 00
+
 		// override (TESActorBase)
 		virtual const char*		GetAliasName(const BSFixedString& a_alias) override;																				// 2E - alias: "Pronoun" "PronounObj" "PronounPos" "PronounPosObj" "PronounRef" "PronounInt" "Race" "Gender" "ShortName". see http://www.creationkit.com/Text_Replacement
 		virtual void			CopyFrom(TESForm* a_srcForm) override;																								// 2F - { return; }

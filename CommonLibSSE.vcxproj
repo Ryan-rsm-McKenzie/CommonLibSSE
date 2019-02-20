@@ -166,6 +166,7 @@
     <ClCompile Include="src\RE\ActorState.cpp" />
     <ClCompile Include="src\RE\ActorValueOwner.cpp" />
     <ClCompile Include="src\RE\BaseExtraList.cpp" />
+    <ClCompile Include="src\RE\BGSBaseAlias.cpp" />
     <ClCompile Include="src\RE\BGSBipedObjectForm.cpp" />
     <ClCompile Include="src\RE\BGSEntryPointFunctionDataActivateChoice.cpp" />
     <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp" />
@@ -279,6 +280,7 @@
     <ClInclude Include="include\RE\BaseFormComponent.h" />
     <ClInclude Include="include\RE\BGSAddonNode.h" />
     <ClInclude Include="include\RE\BGSApparatus.h" />
+    <ClInclude Include="include\RE\BGSBaseAlias.h" />
     <ClInclude Include="include\RE\BGSBlockBashData.h" />
     <ClInclude Include="include\RE\BGSDistantTreeBlock.h" />
     <ClInclude Include="include\RE\BGSMessageIcon.h" />
@@ -286,6 +288,7 @@
     <ClInclude Include="include\RE\BGSOverridePackCollection.h" />
     <ClInclude Include="include\RE\BGSPerkRankArray.h" />
     <ClInclude Include="include\RE\BGSPreloadable.h" />
+    <ClInclude Include="include\RE\BGSRefAlias.h" />
     <ClInclude Include="include\RE\BGSShaderParticleGeometryData.h" />
     <ClInclude Include="include\Logging.h" />
     <ClInclude Include="include\RE\ActivateHandler.h" />
@@ -328,6 +331,7 @@
     <ClInclude Include="include\RE\BGSSoundDescriptorForm.h" />
     <ClInclude Include="include\RE\BGSStandardSoundDef.h" />
     <ClInclude Include="include\RE\BGSStaticCollection.h" />
+    <ClInclude Include="include\RE\BGSStoryManagerTreeForm.h" />
     <ClInclude Include="include\RE\BGSTalkingActivator.h" />
     <ClInclude Include="include\RE\BGSTextureModel.h" />
     <ClInclude Include="include\RE\BGSTextureSet.h" />
@@ -404,6 +408,7 @@
     <ClInclude Include="include\RE\EnchantmentItem.h" />
     <ClInclude Include="include\RE\EquipManager.h" />
     <ClInclude Include="include\RE\ErrorLogger.h" />
+    <ClInclude Include="include\RE\ExtraAliasInstanceArray.h" />
     <ClInclude Include="include\RE\ExtraDataTypes.h" />
     <ClInclude Include="include\RE\ExtraDroppedItemList.h" />
     <ClInclude Include="include\RE\ExtraEnchantment.h" />
@@ -680,6 +685,7 @@
     <ClInclude Include="include\RE\TESObjectWEAP.h" />
     <ClInclude Include="include\RE\TESProduceForm.h" />
     <ClInclude Include="include\RE\TESQualityForm.h" />
+    <ClInclude Include="include\RE\TESQuest.h" />
     <ClInclude Include="include\RE\TESRace.h" />
     <ClInclude Include="include\RE\TESRaceForm.h" />
     <ClInclude Include="include\RE\TESReactionForm.h" />

@@ -4,10 +4,11 @@
 #include "skse64/GameTypes.h"  // BSFixedString
 
 #include <cctype>  // tolower
+#include <cstdint>  // uintptr_t
 #include <cstring>  // strlen
-#include <string>  // string
-#include <stdexcept>  // out_of_range, length_error
 #include <memory>  // pointer_traits
+#include <stdexcept>  // out_of_range, length_error
+#include <string>  // string
 
 #include "RE/BSString.h"  // BSString
 #include "RE/Offsets.h"
@@ -343,7 +344,7 @@ namespace RE
 	{
 		UInt32 len = 0;
 		if (this && _data) {
-			StringCache::Entry* entry = (StringCache::Entry*)((uintptr_t)_data - offsetof(StringCache::Entry, data));
+			StringCache::Entry* entry = (StringCache::Entry*)((std::uintptr_t)_data - offsetof(StringCache::Entry, data));
 			len = entry->length;
 		}
 		return len;

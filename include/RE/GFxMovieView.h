@@ -21,7 +21,7 @@ namespace RE
 		friend class GFxCharacter;
 	public:
 		// ScaleModeType represents the scaling type used for the SWF file stage, corresponds to Stage.scaleMode property in ActionScript.
-		enum class ScaleModeType
+		enum class ScaleModeType : UInt32
 		{
 			kNoScale,	// The size of SWF content is fixed
 			kShowAll,	// Makes the entire SWF content visible in the viewport without distortion while maintaining the original aspect ratio
@@ -31,7 +31,7 @@ namespace RE
 
 
 		// Alignment type used for the SWF file stage, corresponds to Stage.align property in ActionScript.
-		enum class AlignType
+		enum class AlignType : UInt32
 		{
 			kCenter,
 			kTopCenter,
@@ -45,7 +45,7 @@ namespace RE
 		};
 
 
-		enum class HE_ReturnValueType
+		enum class HE_ReturnValueType : UInt32
 		{
 			kNotHandled = 0,
 			kHandled = 1,
@@ -54,7 +54,7 @@ namespace RE
 		};
 
 
-		enum class HitTestType
+		enum class HitTestType : UInt32
 		{
 			kBounds = 0,
 			kShapes = 1,

@@ -41,6 +41,7 @@ namespace RE
 			kGetDead = 0x002E,
 			kGetLockLevel = 0x0041,
 			kGetIsRace = 0x0045,
+			kGetInFaction = 0x0047,
 			kHasBeenEaten = 0x007F,
 			kHasMagicEffect = 0x00D6,
 			kIsInInterior = 0x012C,
@@ -104,13 +105,6 @@ namespace RE
 			UInt16			pad32;				// 32
 			UInt32			pad34;				// 34
 		};
-		STATIC_ASSERT(offsetof(Node, next) == 0x00);
-		STATIC_ASSERT(offsetof(Node, comparisonValue) == 0x08);
-		STATIC_ASSERT(offsetof(Node, functionID) == 0x18);
-		STATIC_ASSERT(offsetof(Node, param1) == 0x20);
-		STATIC_ASSERT(offsetof(Node, param2) == 0x28);
-		STATIC_ASSERT(offsetof(Node, comparisonFlags) == 0x30);
-		STATIC_ASSERT(offsetof(Node, referenceType) == 0x31);
 		STATIC_ASSERT(sizeof(Node) == 0x38);
 
 
@@ -132,4 +126,5 @@ namespace RE
 		// members
 		Node* head;	// 0
 	};
+	STATIC_ASSERT(sizeof(Condition) == 0x8);
 }

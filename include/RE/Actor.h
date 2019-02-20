@@ -327,7 +327,6 @@ namespace RE
 		void		UpdateArmorAbility(TESForm* a_armor, BaseExtraList* a_extraData);
 		bool		IsHostileToActor(Actor* a_actor);
 		void		ResetAI(UInt32 a_unk1, UInt32 a_unk2);
-
 		bool		VisitFactions(FactionVisitor& a_visitor);
 		TESNPC*		GetActorBase();
 		TESRace*	GetRace();

@@ -13,17 +13,26 @@ namespace RE
 	BSString::BSString() :
 		_data(0),
 		_dataLen(0),
-		_bufLen(0)
+		_bufLen(0),
+		_pad0C(0)
 	{}
 
 
-	BSString::BSString(const BSString& a_str)
+	BSString::BSString(const BSString& a_str) :
+		_data(0),
+		_dataLen(0),
+		_bufLen(0),
+		_pad0C(0)
 	{
 		Set(a_str.c_str());
 	}
 
 
-	BSString::BSString(BSString&& a_str)
+	BSString::BSString(BSString&& a_str) :
+		_data(0),
+		_dataLen(0),
+		_bufLen(0),
+		_pad0C(0)
 	{
 		_data = a_str._data;
 		a_str._data = 0;
@@ -36,8 +45,14 @@ namespace RE
 	}
 
 
-	BSString::BSString(const char* a_str)
-	{}
+	BSString::BSString(const char* a_str) :
+		_data(0),
+		_dataLen(0),
+		_bufLen(0),
+		_pad0C(0)
+	{
+		Set(a_str);
+	}
 
 
 	BSString::~BSString()
@@ -90,6 +105,24 @@ namespace RE
 	}
 
 
+	const char* BSString::c_str() const noexcept
+	{
+		return _data ? _data : "";
+	}
+
+
+	[[nodiscard]] bool BSString::empty() const noexcept
+	{
+		return length() != 0;
+	}
+
+
+	BSString::size_type BSString::length() const noexcept
+	{
+		return (_dataLen != NPOS) ? _dataLen : std::char_traits<char>::length(_data);
+	}
+
+
 	bool BSString::operator==(const BSFixedString& a_rhs) const
 	{
 		return (*this == a_rhs.c_str());
@@ -99,18 +132,6 @@ namespace RE
 	bool BSString::operator!=(const BSFixedString& a_rhs) const
 	{
 		return !operator==(a_rhs);
-	}
-
-
-	UInt32 BSString::length() const
-	{
-		return (_dataLen != -1) ? _dataLen : std::char_traits<char>::length(_data);
-	}
-
-
-	const char* BSString::c_str() const
-	{
-		return _data ? _data : "";
 	}
 
 
