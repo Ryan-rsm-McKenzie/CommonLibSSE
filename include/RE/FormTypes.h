@@ -280,6 +280,6 @@ namespace RE
 		LocationAlias,				//	8D     	BGSLocAlias
 		ActiveMagicEffect,			//	8E      ActiveMagicEffect
 
-		Max = VolumetricLighting	//	89
+		Max = Unk8A					//	8A
 	};
 }

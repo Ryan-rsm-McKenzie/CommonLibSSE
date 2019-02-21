@@ -106,4 +106,10 @@ namespace RE
 	{
 		return a_formID >= 0xFF000000;
 	}
+
+
+	BSTArray<TESForm*>& TESDataHandler::GetFormArray(FormType a_formType)
+	{
+		return formArrays[to_underlying(a_formType)];
+	}
 }

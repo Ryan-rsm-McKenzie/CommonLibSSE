@@ -1844,5 +1844,8 @@
     <ClInclude Include="include\RE\BGSRefAlias.h">
       <Filter>include\RE\Skyrim\TESForms\Character</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\TESFurniture.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

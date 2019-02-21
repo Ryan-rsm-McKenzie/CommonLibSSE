@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	void DBOut(const char* a_file, const int a_line, IDebugLog::LogLevel a_logLevel, const char* a_str, ...);
+	void DBOut(const char* a_file, const int a_line, IDebugLog::LogLevel a_logLevel, const char* a_fmt, ...);
 }
 
 

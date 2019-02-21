@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/ActorValues.h"  // ActorValue
+#include "RE/ActorValues.h"  // ActorValue, ActorValue8
 #include "RE/BGSBlockBashData.h"  // BGSBlockBashData
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/BGSEquipType.h"  // BGSEquipType
@@ -43,6 +43,26 @@ namespace RE
 		enum { kTypeID = FormType::Weapon };
 
 
+		enum class kSoundLevel : UInt32
+		{
+			kLoud = 0,
+			kNormal = 1,
+			kSilent = 2,
+			kVeryLoud = 3
+		};
+
+
+		struct LocalFlags
+		{
+			enum LocalFlag : UInt32
+			{
+				kNonPlayable = 1 << 2,
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		struct Data	// DATA
 		{
 			struct ExtraData
@@ -81,7 +101,30 @@ namespace RE
 				kRumbleAlternate = 1 << 10,
 				kLongBursts = 1 << 11,
 				kNonHostile = 1 << 12,
-				kBoundWeapon = 1 << 13,
+				kBoundWeapon = 1 << 13
+			};
+
+
+			enum class AttackAnimation : UInt8
+			{
+				kAttackLeft = 26,
+				kAttackRight = 32,
+				kAttack3 = 38,
+				kAttack4 = 44,
+				kAttack5 = 50,
+				kAttack7 = 62,
+				kAttack8 = 68,
+				kAttackLoop = 74,
+				kAttackSpin = 80,
+				kAttackSpin2 = 86,
+				kPlaceMine = 97,
+				kPlaceMine2 = 103,
+				kAttackThrow = 109,
+				kAttackThrow2 = 115,
+				kAttackThrow3 = 121,
+				kAttackThrow4 = 127,
+				kAttackThrow5 = 133,
+				kDefault = 255
 			};
 
 
@@ -110,7 +153,7 @@ namespace RE
 				kHideBackpack = 1 << 4,						// unused
 				kEmbeddedWeapon = 1 << 5,					// unused
 				kDontUseFirstPersonISAnim = 1 << 6,			// unused
-				kNonPlayable = 1 << 7,
+				kNonPlayable = 1 << 7
 			};
 
 
@@ -124,11 +167,11 @@ namespace RE
 			float			stagger;				// 20
 			OnHit			onHit;					// 24
 			ActorValue		skill;					// 28
-			ActorValue		resist;					// 2C - unconfirmed
+			ActorValue		resist;					// 2C
 			Flag2			flags2;					// 30
 			UInt8			baseVATSToHitChance;	// 32
-			UInt8			attackAnimation;		// 33
-			UInt8			embeddedWeaponAV;		// 34 - unused
+			AttackAnimation	attackAnimation;		// 33
+			ActorValue8		embeddedWeaponAV;		// 34 - unused
 			AnimationType	animationType;			// 35
 			Flag			flags;					// 36
 			UInt8			pad37;					// 37
@@ -156,7 +199,15 @@ namespace RE
 		STATIC_ASSERT(sizeof(CriticalData) == 0x18);
 
 
-		virtual ~TESObjectWEAP();	// 00
+		virtual ~TESObjectWEAP();									// 00
+
+		virtual void		InitDefaults();							// 04
+		virtual bool		LoadForm(TESFile* a_mod);				// 06
+		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf);	// 0E
+		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf);	// 0F
+		virtual void		InitItem();								// 13
+		virtual bool		IsPlayable();							// 19 - { return ~((data.flags >> 7) & 1); }
+		virtual const char*	GetTypeString() const;					// 39 - { return g_animationStrings[data.animationType]; }
 
 		float				speed();
 		float				reach();
@@ -196,7 +247,7 @@ namespace RE
 		TESObjectSTAT*			model;					// 200
 		TESObjectWEAP*			templateForm;			// 208 - CNAM
 		BSFixedString			embeddedNode;			// 210
-		UInt32					detectionSoundLevel;	// 218
+		kSoundLevel				detectionSoundLevel;	// 218
 		UInt32					pad21C;					// 21C
 	};
 	STATIC_ASSERT(sizeof(TESObjectWEAP) == 0x220);

@@ -9,9 +9,6 @@ namespace RE
 	class BGSStoryManagerTreeForm : public TESForm
 	{
 	public:
-		enum { kTypeID = FormType::None };
-
-
 		virtual ~BGSStoryManagerTreeForm();	// 00
 
 		// add

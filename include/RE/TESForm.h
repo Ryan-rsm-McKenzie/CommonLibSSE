@@ -29,8 +29,8 @@ namespace RE
 		virtual ~TESForm();																																	// 00
 
 		// override (BaseFormComponent)
-		virtual void			Init() override;																											// 01
-		virtual void			ReleaseRefs() override;																										// 02
+		virtual void			Init() override;																											// 01 - { return; }
+		virtual void			ReleaseRefs() override;																										// 02 - { SetEditorID(""); }
 		virtual void			CopyFromBase(BaseFormComponent* a_rhs) override;																			// 03
 
 		// add
@@ -51,21 +51,21 @@ namespace RE
 		virtual void			Unk_12(void);																												// 12 - { return; }
 		virtual void			InitItem();																													// 13 - { return; }
 		virtual void			Unk_14(void);																												// 14
-		virtual FormType		GetFormType();																												// 15
-		virtual void			GetFormDesc(char* a_buf, UInt32 a_bufLen);																					// 16
-		virtual bool			PlayerKnows() const;																										// 17 - { return flags.playerKnows; }
-		virtual bool			GetFlag00010000();																											// 18
-		virtual bool			IsPlayable();																												// 19
+		virtual FormType		GetFormType();																												// 15 - { return formType; }
+		virtual void			GetFormDesc(char* a_buf, UInt32 a_bufLen);																					// 16 - { return std::sprintf_s(a_buf, a_bufLen, "%s Form '%s' (%08X)", (g_formStrings[3 * formID], "", formID); }
+		virtual bool			PlayerKnows() const;																										// 17 - { return (flags >> 10 ) & 1; }
+		virtual bool			GetFlag00010000();																											// 18 - { return (flags >> 16) & 1; }
+		virtual bool			IsPlayable();																												// 19 - { return (flags >> 2) & 1; }
 		virtual bool			NeverFades();																												// 1A - { return false; }
-		virtual bool			GetFlag00020000();																											// 1B
-		virtual bool			GetFlag00080000();																											// 1C
-		virtual bool			GetFlag02000000();																											// 1D
+		virtual bool			GetFlag00020000();																											// 1B - { return (flags >> 17) & 1; }
+		virtual bool			GetFlag00080000();																											// 1C - { return (flags >> 19) & 1; }
+		virtual bool			GetFlag02000000();																											// 1D - { return (flags >> 25) & 1; }
 		virtual void			Unk_1E(void);																												// 1E - { return false; }
-		virtual bool			GetFlag00000200();																											// 1F
-		virtual bool			GetFlag00000100();																											// 20
-		virtual void			SetFlag00000200(bool a_set);																								// 21
+		virtual bool			GetFlag00000200();																											// 1F - { return (flags >> 9) & 1; }
+		virtual bool			GetFlag00000100();																											// 20 - { return (flags >> 8) & 1; }
+		virtual void			SetFlag00000200(bool a_set);																								// 21 - { if (a_set) flags &= 0xFFFFFDFF; else flags |= 0x200; }
 		virtual void			Unk_22(void);																												// 22 - { return false; } - IgnoredBySandbox()?
-		virtual void			SetFlag00000020(bool a_set);																								// 23
+		virtual void			SetFlag00000020(bool a_set);																								// 23 - { bool result = (flags >> 5) & 1; if (result != a_set) { if (a_set) flags |= 0x20; else flags &= 0xFFFFFFDF; MarkChanged(1); return result; }
 		virtual void			SetFlag00000002(bool a_set);																								// 24
 		virtual void			Unk_25(void);																												// 25 - { return; }
 		virtual void			Unk_26(void);																												// 26 - { return; }
@@ -85,7 +85,7 @@ namespace RE
 		virtual void			Unk_34(void);																												// 34 - { return false; } TESTopic,TESObjectCELL,TESWorldSpace=true
 		virtual void			Unk_35(void);																												// 35 - { return false; }
 		virtual void			Unk_36(void);																												// 36 - { return false; }
-		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5);	// 37
+		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5);	// 37 - { return false; }
 		virtual void			SetFormID(UInt32 a_id, bool a_bGenerateID);																					// 38
 		virtual const char*		GetTypeString() const;																										// 39 - { return ""; }
 		virtual bool			Unk_3A(void);																												// 3A - { return true; }
