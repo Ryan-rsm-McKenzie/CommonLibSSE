@@ -248,6 +248,7 @@
     <ClCompile Include="src\RE\PlayerInputHandler.cpp" />
     <ClCompile Include="src\RE\SpellItem.cpp" />
     <ClCompile Include="src\RE\TESActorBaseData.cpp" />
+    <ClCompile Include="src\RE\TESAIForm.cpp" />
     <ClCompile Include="src\RE\TESAmmo.cpp" />
     <ClCompile Include="src\RE\TESCamera.cpp" />
     <ClCompile Include="src\RE\TESContainer.cpp" />
@@ -625,6 +626,7 @@
     <ClInclude Include="include\RE\SkyrimScriptStore.h" />
     <ClInclude Include="include\RE\SneakHandler.h" />
     <ClInclude Include="include\RE\SoundData.h" />
+    <ClInclude Include="include\RE\SoundLevels.h" />
     <ClInclude Include="include\RE\SpellItem.h" />
     <ClInclude Include="include\RE\SprintHandler.h" />
     <ClInclude Include="include\RE\StandardItemData.h" />
@@ -694,6 +696,7 @@
     <ClInclude Include="include\RE\TESSound.h" />
     <ClInclude Include="include\RE\TESSpellList.h" />
     <ClInclude Include="include\RE\TESTexture.h" />
+    <ClInclude Include="include\RE\TESTexture1024.h" />
     <ClInclude Include="include\RE\TESTopic.h" />
     <ClInclude Include="include\RE\TESTopicInfo.h" />
     <ClInclude Include="include\RE\TESTrackedStatsEvent.h" />

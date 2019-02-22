@@ -37,7 +37,7 @@ namespace RE
 		virtual void			Unk_4B(void);																														// 4B - { return true; }
 		virtual bool			GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst);																			// 4C
 		virtual void			Unk_4D(void);																														// 4D
-		virtual void			OnRemovedFrom(TESObjectREFR* a_ref);																								// 4E - { return; } TESAmmo=func
+		virtual void			OnRemovedFrom(TESObjectREFR* a_ref);																								// 4E - { return; }
 		virtual void			Unk_4F(void);																														// 4F - { return; }
 		virtual void			Unk_50(void);																														// 50 - { return; }
 		virtual void			Unk_51(void);																														// 51 - { return; }

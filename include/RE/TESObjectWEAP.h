@@ -8,6 +8,7 @@
 #include "RE/BGSMessageIcon.h"  // BGSMessageIcon
 #include "RE/BGSPickupPutdownSounds.h"  // BGSPickupPutdownSounds
 #include "RE/BGSPreloadable.h"  // BGSPreloadable
+#include "RE/SoundLevels.h"  // SoundLevel
 #include "RE/TESAttackDamageForm.h"  // TESAttackDamageForm
 #include "RE/TESBoundObject.h"  // TESBoundObject
 #include "RE/TESDescription.h"  // TESDescription
@@ -43,18 +44,9 @@ namespace RE
 		enum { kTypeID = FormType::Weapon };
 
 
-		enum class kSoundLevel : UInt32
+		struct RecordFlags
 		{
-			kLoud = 0,
-			kNormal = 1,
-			kSilent = 2,
-			kVeryLoud = 3
-		};
-
-
-		struct LocalFlags
-		{
-			enum LocalFlag : UInt32
+			enum RecordFlag : UInt32
 			{
 				kNonPlayable = 1 << 2,
 				kDeleted = 1 << 5,
@@ -247,7 +239,7 @@ namespace RE
 		TESObjectSTAT*			model;					// 200
 		TESObjectWEAP*			templateForm;			// 208 - CNAM
 		BSFixedString			embeddedNode;			// 210
-		kSoundLevel				detectionSoundLevel;	// 218
+		SoundLevel				detectionSoundLevel;	// 218
 		UInt32					pad21C;					// 21C
 	};
 	STATIC_ASSERT(sizeof(TESObjectWEAP) == 0x220);

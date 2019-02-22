@@ -31,9 +31,9 @@ namespace RE
 		enum { kTypeID = FormType::Misc };
 
 
-		struct LocalFlags
+		struct RecordFlags
 		{
-			enum LocalFlag : UInt32
+			enum RecordFlag : UInt32
 			{
 				kNonPlayable = 1 << 2,
 				kDeleted = 1 << 5,

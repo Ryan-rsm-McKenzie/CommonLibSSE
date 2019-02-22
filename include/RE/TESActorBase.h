@@ -44,7 +44,7 @@ namespace RE
 		// add
 		virtual void			Unk_53(void);									// 53 - { return 0; }
 		virtual TESCombatStyle*	GetCombatStyle();								// 54 - { return 0; }
-		virtual void			SetCombatStyle(TESCombatStyle* a_arg);			// 55 - { return; }
+		virtual void			SetCombatStyle(TESCombatStyle* a_combatStyle);	// 55 - { return; }
 		virtual void			Unk_56(void);									// 56 - { return this; }
 	};
 	STATIC_ASSERT(sizeof(TESActorBase) == 0x150);

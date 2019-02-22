@@ -44,50 +44,61 @@ namespace RE
 
 	bool TESForm::IsKey() const
 	{
-		return this->Is(FormType::Key);
+		return Is(FormType::Key);
 	}
 
 
 	bool TESForm::IsWeapon() const
 	{
-		return this->Is(FormType::Weapon);
+		return Is(FormType::Weapon);
 	}
 
 
 	bool TESForm::IsAmmo() const
 	{
-		return this->Is(FormType::Ammo);
+		return Is(FormType::Ammo);
 	}
 
 
 	bool TESForm::IsArmor() const
 	{
-		return this->Is(FormType::Armor);
+		return Is(FormType::Armor);
 	}
 
 
 	bool TESForm::IsSoulGem() const
 	{
-		return this->Is(FormType::SoulGem);
+		return Is(FormType::SoulGem);
 	}
 
 
 	bool TESForm::IsLockpick() const
 	{
-		return this->formID == 0x00000A;
+		return formID == 0x0000000A;
 	}
 
 
 	bool TESForm::IsGold() const
 	{
-		return this->formID == 0x00000F;
+		return formID == 0x0000000F;
+	}
+
+
+	bool TESForm::IsPlayer() const
+	{
+		return formID == 0x00000007;
+	}
+
+
+	bool TESForm::IsPlayerRef() const
+	{
+		return formID == 0x00000014;
 	}
 
 
 	bool TESForm::HasWorldModel(void) const
 	{
-		const TESModel* model = DYNAMIC_CAST(this, TESForm, TESModel);
-		return model != 0;
+		return DYNAMIC_CAST(this, TESForm, TESModel) != 0;
 	}
 
 

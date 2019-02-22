@@ -114,7 +114,7 @@ namespace RE
 		TESNPC* npc = GetActorBase();
 		if (npc) {
 			for (auto& factionInfo : npc->factions) {
-				if (visitor.Accept(factionInfo->faction, factionInfo->rank)) {
+				if (visitor.Accept(factionInfo.faction, factionInfo.rank)) {
 					return true;
 				}
 			}

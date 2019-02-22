@@ -29,7 +29,7 @@ namespace RE
 	}
 
 
-	bool TESObjectARMA::isValidRace(TESRace* a_sourceRace) const
+	bool TESObjectARMA::IsValidRace(TESRace* a_sourceRace) const
 	{
 		// Found race is the race this armor is designed for, or inherits a race this armor is designed for
 		if (HasArmorRace(a_sourceRace, race)) {

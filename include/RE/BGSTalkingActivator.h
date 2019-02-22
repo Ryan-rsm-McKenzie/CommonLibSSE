@@ -12,9 +12,9 @@ namespace RE
 		enum { kTypeID = FormType::TalkingActivator };
 
 
-		struct LocalFlags
+		struct RecordFlags
 		{
-			enum LocalFlag : UInt32
+			enum RecordFlag : UInt32
 			{
 				kDeleted = 1 << 5,
 				kHiddenFromLocalMap = 1 << 9,

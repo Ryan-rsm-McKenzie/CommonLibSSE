@@ -23,10 +23,6 @@ namespace RE
 		enum { kTypeID = FormType::WorldSpace };
 
 
-		typedef UInt32 UnkKey;
-		typedef UInt64 UnkValue;
-
-
 		enum class DataFlag : UInt8
 		{
 			kNone = 0,

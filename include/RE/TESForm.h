@@ -48,7 +48,7 @@ namespace RE
 		virtual void			LoadBuffer(BGSLoadFormBuffer* a_buf);																						// 0F
 		virtual void			Unk_10(void);																												// 10 - { return; }
 		virtual void			Unk_11(void);																												// 11 - { return; }
-		virtual void			Unk_12(void);																												// 12 - { return; }
+		virtual void			Unk_12(void);																												// 12 - { return; } - void Reset(void* a_arg1);
 		virtual void			InitItem();																													// 13 - { return; }
 		virtual void			Unk_14(void);																												// 14
 		virtual FormType		GetFormType();																												// 15 - { return formType; }
@@ -123,6 +123,8 @@ namespace RE
 		bool			IsSoulGem() const;
 		bool			IsLockpick() const;
 		bool			IsGold() const;
+		bool			IsPlayer() const;
+		bool			IsPlayerRef() const;
 		bool			HasWorldModel(void) const;
 		float			GetWeight();
 

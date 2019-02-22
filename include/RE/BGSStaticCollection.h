@@ -15,9 +15,9 @@ namespace RE
 		enum { kTypeID = FormType::StaticCollection };
 
 
-		struct LocalFlags
+		struct RecordFlags
 		{
-			enum LocalFlag : UInt32
+			enum RecordFlag : UInt32
 			{};
 		};
 

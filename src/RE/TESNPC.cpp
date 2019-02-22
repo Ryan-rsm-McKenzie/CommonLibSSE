@@ -7,9 +7,15 @@ class TESRace;
 
 namespace RE
 {
-	char TESNPC::GetSex()
+	float TESNPC::Layer::GetInterpolationValue() const
 	{
-		typedef char _GetSex_t(TESNPC* a_this);
+		return static_cast<float>(interpolationValue) / 100.0;
+	}
+
+
+	TESNPC::Sex TESNPC::GetSex()
+	{
+		typedef Sex _GetSex_t(TESNPC* a_this);
 		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESNPC*>(this)->_GetSex_GetPtr());
 		_GetSex_t* _GetSex = reinterpret_cast<_GetSex_t*>(*ptr);
 		return _GetSex(this);

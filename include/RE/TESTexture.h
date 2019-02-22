@@ -20,7 +20,7 @@ namespace RE
 		virtual void		CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
 
 		// add
-		virtual void		Unk_04(void);										// 04 - { return 0; }
+		virtual UInt32		GetSize();											// 04 - { return 0; }
 		virtual void		GetNormalMapName(BSString* a_out);					// 05
 		virtual const char*	GetSearchDir();										// 06
 

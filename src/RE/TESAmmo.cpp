@@ -9,12 +9,6 @@ namespace RE
 	}
 
 
-	bool TESAmmo::IsPlayable()
-	{
-		return (data.flags & Data::Flag::kNonPlayable) == Data::Flag::kNone;
-	}
-
-
 	bool TESAmmo::IsBolt()
 	{
 		return (data.flags & Data::Flag::kNonBolt) == Data::Flag::kNone;

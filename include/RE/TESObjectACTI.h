@@ -33,9 +33,9 @@ namespace RE
 		};
 
 
-		struct LocalFlags
+		struct RecordFlags
 		{
-			enum LocalFlag : UInt32
+			enum RecordFlag : UInt32
 			{
 				kDeleted = 1 << 5,
 				kHasTreeLOD = 1 << 6,

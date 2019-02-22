@@ -78,6 +78,7 @@ namespace RE
 		// members
 		Entry**	entries;	// 08
 		UInt32	numEntries;	// 10
+		UInt32	pad14;		// 14
 	};
 	STATIC_ASSERT(sizeof(TESContainer) == 0x18);
 }

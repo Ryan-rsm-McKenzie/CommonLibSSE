@@ -41,7 +41,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x10);
 
 
-		bool	isValidRace(TESRace* a_sourceRace) const;
+		bool	IsValidRace(TESRace* a_sourceRace) const;
 		void	GetNodeName(char* a_dstBuff, TESObjectREFR* a_refr, TESObjectARMO* a_armor, float a_weightOverride);
 
 

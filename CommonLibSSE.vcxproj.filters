@@ -531,6 +531,9 @@
     <ClCompile Include="src\RE\BGSBaseAlias.cpp">
       <Filter>src\RE\Skyrim\TESForms\Character</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\TESAIForm.cpp">
+      <Filter>src\RE\Skyrim\FormComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -1846,6 +1849,12 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESFurniture.h">
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESTexture1024.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SoundLevels.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

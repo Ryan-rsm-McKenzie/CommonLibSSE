@@ -207,13 +207,13 @@ namespace RE
 
 	bool TESObjectREFR::IsMarkedForDeletion()
 	{
-		return (flags & LocalFlags::kDeleted) != 0;
+		return (flags & RecordFlags::kDeleted) != 0;
 	}
 
 
 	bool TESObjectREFR::IsDisabled()
 	{
-		return (flags & LocalFlags::kInitiallyDisabled) != 0;
+		return (flags & RecordFlags::kInitiallyDisabled) != 0;
 	}
 
 

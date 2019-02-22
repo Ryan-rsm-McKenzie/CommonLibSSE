@@ -12,9 +12,9 @@ namespace RE
 		enum { kTypeID = FormType::Script };
 
 
-		struct LocalFlags
+		struct RecordFlags
 		{
-			enum LocalFlag : UInt32
+			enum RecordFlag : UInt32
 			{};
 		};
 

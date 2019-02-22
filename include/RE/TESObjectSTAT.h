@@ -15,9 +15,9 @@ namespace RE
 		enum { kTypeID = FormType::Static };
 
 
-		struct LocalFlags
+		struct RecordFlags
 		{
-			enum LocalFlag : UInt32
+			enum RecordFlag : UInt32
 			{
 				kNeverFades = 1 << 2,
 				kDeleted = 1 << 5,

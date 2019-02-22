@@ -12,9 +12,9 @@ namespace RE
 		enum { kTypeID = FormType::AcousticSpace };
 
 
-		struct LocalFlags
+		struct RecordFlags
 		{
-			enum LocalFlag : UInt32
+			enum RecordFlag : UInt32
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12

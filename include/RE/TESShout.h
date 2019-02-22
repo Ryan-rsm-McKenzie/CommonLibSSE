@@ -43,7 +43,7 @@ namespace RE
 		};
 
 
-		virtual ~TESShout();	// 00
+		virtual ~TESShout();								// 00
 
 		// override (TESForm)
 		virtual bool	LoadForm(TESFile* a_mod) override;	// 06

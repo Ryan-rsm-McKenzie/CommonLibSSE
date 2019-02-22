@@ -33,6 +33,17 @@ namespace RE
 		enum { kTypeID = FormType::Ammo };
 
 
+		struct RecordFlags
+		{
+			enum RecordFlag : UInt32
+			{
+				kNonPlayable = 1 << 2,
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		struct Data	// DATA
 		{
 			enum class Flag : UInt32
@@ -51,14 +62,24 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x10);
 
 
-		bool	IgnoresNormalWeaponResistance();
-		bool	IsPlayable();
-		bool	IsBolt();
+		virtual ~TESAmmo();												// 00
+
+		// override (TESBoundObject)
+		virtual void	InitDefaults() override;						// 04
+		virtual bool	LoadForm(TESFile* a_mod) override;				// 06
+		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void	InitItem() override;							// 13
+		virtual bool	IsPlayable() override;							// 19 - { return ~((data.flags >> 1) & 1); }
+		virtual void	OnRemovedFrom(TESObjectREFR* a_ref) override;	// 4E
+
+		bool			IgnoresNormalWeaponResistance();
+		bool			IsBolt();
 
 
 		// members
-		Data			data;		// 110
-		BSFixedString	shortName;	// 120
+		Data			data;		// 110 - DATA
+		BSFixedString	shortName;	// 120 - ONAM
 	};
 	STATIC_ASSERT(sizeof(TESAmmo) == 0x128);
 }

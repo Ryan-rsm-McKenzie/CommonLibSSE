@@ -15,7 +15,7 @@ namespace RE
 		enum { kTypeID = FormType::ReferenceAlias };
 
 
-		virtual ~BGSRefAlias();	// 00
+		virtual ~BGSRefAlias();											// 00
 
 		// override (BGSBaseAlias)
 		virtual bool					Load(TESFile* a_mod) override;	// 01
