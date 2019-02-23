@@ -291,9 +291,6 @@
     <ClCompile Include="src\RE\InventoryChanges.cpp">
       <Filter>src\RE\Skyrim\Misc</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\TESLevItem.cpp">
-      <Filter>src\RE\Skyrim\TESForms\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\Misc.cpp">
       <Filter>src\RE</Filter>
     </ClCompile>
@@ -1712,9 +1709,6 @@
     <ClInclude Include="include\RE\ExtraOutfitItem.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\Color.h">
-      <Filter>include\RE\Skyrim\FormComponents</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ActorValues.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
@@ -1884,6 +1878,18 @@
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESImageSpaceModifiableForm.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESSoulGem.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SoulLevels.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESWeather.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Color.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
   </ItemGroup>

@@ -256,7 +256,6 @@
     <ClCompile Include="src\RE\TESDescription.cpp" />
     <ClCompile Include="src\RE\TESFaction.cpp" />
     <ClCompile Include="src\RE\TESForm.cpp" />
-    <ClCompile Include="src\RE\TESLevItem.cpp" />
     <ClCompile Include="src\RE\TESNPC.cpp" />
     <ClCompile Include="src\RE\TESObjectARMA.cpp" />
     <ClCompile Include="src\RE\TESObjectARMO.cpp" />
@@ -632,6 +631,7 @@
     <ClInclude Include="include\RE\SkyrimScriptObjectBindPolicy.h" />
     <ClInclude Include="include\RE\SkyrimScriptStore.h" />
     <ClInclude Include="include\RE\SneakHandler.h" />
+    <ClInclude Include="include\RE\SoulLevels.h" />
     <ClInclude Include="include\RE\SoundData.h" />
     <ClInclude Include="include\RE\SoundLevels.h" />
     <ClInclude Include="include\RE\SpellItem.h" />
@@ -703,6 +703,7 @@
     <ClInclude Include="include\RE\TESRaceForm.h" />
     <ClInclude Include="include\RE\TESReactionForm.h" />
     <ClInclude Include="include\RE\TESShout.h" />
+    <ClInclude Include="include\RE\TESSoulGem.h" />
     <ClInclude Include="include\RE\TESSound.h" />
     <ClInclude Include="include\RE\TESSpellList.h" />
     <ClInclude Include="include\RE\TESTexture.h" />
@@ -711,6 +712,7 @@
     <ClInclude Include="include\RE\TESTopicInfo.h" />
     <ClInclude Include="include\RE\TESTrackedStatsEvent.h" />
     <ClInclude Include="include\RE\TESValueForm.h" />
+    <ClInclude Include="include\RE\TESWeather.h" />
     <ClInclude Include="include\RE\TESWeightForm.h" />
     <ClInclude Include="include\RE\TESWorldSpace.h" />
     <ClInclude Include="include\RE\ThumbstickEvent.h" />

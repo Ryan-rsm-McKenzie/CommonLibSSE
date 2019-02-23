@@ -136,7 +136,7 @@ namespace RE
 
 	enum class FormType : UInt8
 	{
-		None = 0,					//	00 NONE
+		None = 0,					//	00 NONE TESForm
 		TES4,						//	01 TES4
 		Group,						//	02 GRUP
 		GMST,						//	03 GMST
@@ -153,7 +153,7 @@ namespace RE
 		Race,						//	0E RACE	TESRace
 		Sound,						//	0F SOUN	TESSound
 		AcousticSpace,				//	10 ASPC	BGSAcousticSpace
-		Skill,						//	11 SKIL	<missing>
+		Skill,						//	11 SKIL
 		EffectSetting,				//	12 MGEF	EffectSetting
 		Script,						//	13 SCPT	Script
 		LandTexture,				//	14 LTEX	TESLandTexture
