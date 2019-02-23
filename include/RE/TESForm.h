@@ -64,7 +64,7 @@ namespace RE
 		virtual bool			GetFlag00000200();																											// 1F - { return (flags >> 9) & 1; }
 		virtual bool			GetFlag00000100();																											// 20 - { return (flags >> 8) & 1; }
 		virtual void			SetFlag00000200(bool a_set);																								// 21 - { if (a_set) flags &= 0xFFFFFDFF; else flags |= 0x200; }
-		virtual void			Unk_22(void);																												// 22 - { return false; } - IgnoredBySandbox()?
+		virtual bool			IgnoredBySandbox() const;																									// 22 - { return false; }
 		virtual void			SetFlag00000020(bool a_set);																								// 23 - { bool result = (flags >> 5) & 1; if (result != a_set) { if (a_set) flags |= 0x20; else flags &= 0xFFFFFFDF; MarkChanged(1); return result; }
 		virtual void			SetFlag00000002(bool a_set);																								// 24
 		virtual void			Unk_25(void);																												// 25 - { return; }

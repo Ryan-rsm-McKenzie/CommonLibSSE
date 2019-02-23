@@ -37,6 +37,10 @@ namespace RE
 		virtual void	InitItem() override;							// 13
 		virtual void	Unk_41(void) override;							// 4A - { return; }
 		virtual void	Unk_4A(void) override;							// 4A - { return 0; }
+
+		// override (TESLeveledList)
+		virtual SInt32	GetLevDifferenceMax() override;					// 06 - { return iLevCharLevelDifferenceMax; }
+		virtual bool	IsValidLevItem(FormType a_formType) override;	// 07 - { return a_formType <= FormType::LeveledCharacter; }
 	};
 	STATIC_ASSERT(sizeof(TESLevCharacter) == 0x90);
 }

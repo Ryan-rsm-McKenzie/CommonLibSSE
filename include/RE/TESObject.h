@@ -13,7 +13,7 @@ namespace RE
 		// add
 		virtual void	Unk_3B(void);	// 3B - { return 0; }
 		virtual bool	CanAnimate();	// 3C - { return false; }
-		virtual void	Unk_3D(void);	// 3D - { return 0; }
+		virtual void	Unk_3D(void);	// 3D - { return 0; } - GetWaterActivator()?
 		virtual bool	IsAutoCalc();	// 3E - { return false; }
 		virtual void	Unk_3F(void);	// 3F - { return; }
 		virtual void	Unk_40(void);	// 40 - { return 0; }

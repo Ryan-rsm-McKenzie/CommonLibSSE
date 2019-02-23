@@ -32,13 +32,15 @@ namespace RE
 		};
 
 
-		virtual ~ScrollItem();									// 00
+		virtual ~ScrollItem();												// 00
 
 		// override (SpellItem)
-		virtual void		InitItem() override;				// 13
-		virtual MagicType	GetMagicType() const override;		// 53 - { return MagicType::kScroll; }
-		virtual CastType	GetCastType() const override;		// 55 - { return CastType::kFireAndForget; }
-		virtual ActorValue	GetActorValueType() const override;	// 66 - { return ActorValue::kNone; }
+		virtual void		InitItem() override;							// 13
+		virtual MagicType	GetMagicType() const override;					// 53 - { return MagicType::kScroll; }
+		virtual CastType	GetCastType() const override;					// 55 - { return CastType::kFireAndForget; }
+		virtual void		Unk_60(void);									// 60 - { return 0; }
+		virtual void		LoadData(TESFile* a_mod, UInt32 a_signature);	// 6A
+		virtual ActorValue	GetActorValueType() const override;				// 66 - { return ActorValue::kNone; }
 	};
 	STATIC_ASSERT(sizeof(ScrollItem) == 0x168);
 }

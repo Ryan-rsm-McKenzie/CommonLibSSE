@@ -183,7 +183,7 @@ namespace RE
 		LeveledCharacter,			//	2C LVLN	TESLevCharacter
 		Key,						//	2D KEYM	TESKey
 		Potion,						//	2E ALCH	AlchemyItem
-		IdleMarker,					//	2F IDLM	BGSIdleMarker / BGSDefaultObjectManager? strange
+		IdleMarker,					//	2F IDLM	BGSIdleMarker
 		Note,						//	30 NOTE	BGSNote
 		ConstructibleObject,		//	31 COBJ	BGSConstructibleObject
 		Projectile,					//	32 PROJ	BGSProjectile

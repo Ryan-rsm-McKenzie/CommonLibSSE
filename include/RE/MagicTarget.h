@@ -12,9 +12,10 @@ namespace RE
 
 	class MagicTarget
 	{
-	private:
-		using Archetype = EffectSetting::Data::Archetype;
 	public:
+		using Archetype = EffectSetting::Data::Archetype;
+
+
 		class ActiveEffectVisitor
 		{
 			virtual bool Accept(ActiveEffect* a_effect) = 0;

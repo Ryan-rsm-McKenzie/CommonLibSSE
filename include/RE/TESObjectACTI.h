@@ -60,12 +60,15 @@ namespace RE
 
 		// override (TESBoundAnimObject)
 		virtual void	InitDefaults() override;																											// 04
+		virtual void	Unk_05(void) override;																												// 05
 		virtual bool	LoadForm(TESFile* a_mod) override;																									// 06
 		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;																						// 0E
 		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																						// 0F
 		virtual void	InitItem() override;																												// 13
+		virtual bool	IgnoredBySandbox() const;																											// 22 - { return (flags >> 1) & 1; }
 		virtual bool	IsWaterActivator() override;																										// 2A - { return waterType != 0; }
 		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
+		virtual void	Unk_3D(void);																														// 3D - { return waterType; } - GetWaterActivator()?
 		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4C
 
 
@@ -78,6 +81,4 @@ namespace RE
 		UInt32					padC4;				// C4
 	};
 	STATIC_ASSERT(sizeof(TESObjectACTI) == 0xC8);
-	// virt Unk_22() - { return (flags >> 1) & 1; } - IgnoredBySandbox()?
-	// virt Unk_3D() - { return waterType; } - GetWater()?
 }

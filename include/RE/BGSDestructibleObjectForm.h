@@ -6,51 +6,61 @@
 
 namespace RE
 {
+	class TESModelTextureSwap;
+
+
 	class BGSDestructibleObjectForm : public BaseFormComponent
 	{
 	public:
-		struct Data
+		struct Destructible
 		{
 			struct Header	// DEST
 			{
 				UInt32	health;			// 00
-				UInt8	destCount;		// 04
+				UInt8	count;			// 04
 				bool	vatsTargetable;	// 05
 				UInt16	unk06;			// 06
 			};
+			STATIC_ASSERT(sizeof(Header) == 0x8);
 
 
-			struct DestructionStageData	// DSTD
+			struct Stage
 			{
-				enum class Flag : UInt8
+				struct DestructionStageData	// DSTD
 				{
-					kNone = 0,
-					kCapDamage = 1 << 0,
-					kDisable = 1 << 1,
-					kDestroy = 1 << 2,
-					kIgnoreExternalDamage = 1 << 3
+					enum class Flag : UInt8
+					{
+						kNone = 0,
+						kCapDamage = 1 << 0,
+						kDisable = 1 << 1,
+						kDestroy = 1 << 2,
+						kIgnoreExternalDamage = 1 << 3
+					};
+
+
+					UInt8			modelDamageStage;		// 00
+					UInt8			healthPct;				// 01
+					Flag			flags;					// 02
+					UInt8			unk03;					// 03
+					UInt32			selfDamagePerSecond;	// 04
+					BGSExplosion*	explosion;				// 08
+					BGSDebris*		debris;					// 10
+					UInt32			debrisCount;			// 18
+					UInt32			pad1C;					// 1C
 				};
+				STATIC_ASSERT(sizeof(DestructionStageData) == 0x20);
 
 
-				UInt8			healthPct;				// 00
-				UInt8			index;					// 01
-				UInt8			modelDamageStage;		// 02
-				Flag			flags;					// 03
-				UInt8			selfDamagePerSecond;	// 04
-				UInt8			pad05;					// 05
-				UInt16			pad06;					// 06
-				BGSExplosion*	explosion;				// 08
-				BGSDebris*		debris;					// 10
-				UInt8			debrisCount;			// 18
-				UInt8			pad19;					// 19
-				UInt16			pad1A;					// 1A
-				UInt32			pad1C;					// 1C
+				DestructionStageData	destructionStageData;	// 00 - DSTD
+				TESModelTextureSwap*	model;					// 20 - DMD*
 			};
+			STATIC_ASSERT(sizeof(Stage) == 0x28);
 
 
-			Header*					header;					// 00 - DEST
-			DestructionStageData*	destructionStageData;	// 08 - DSTD
+			Header	header;	// 00 - DEST
+			Stage**	stages;	// 08
 		};
+		STATIC_ASSERT(sizeof(Destructible) == 0x10);
 
 
 		virtual ~BGSDestructibleObjectForm();								// 00
@@ -62,7 +72,7 @@ namespace RE
 
 
 		// members
-		Data* data;	// 08
+		Destructible* destructible;	// 08
 	};
 	STATIC_ASSERT(sizeof(BGSDestructibleObjectForm) == 0x10);
 }

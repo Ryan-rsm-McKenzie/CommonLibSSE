@@ -30,6 +30,14 @@ namespace RE
 		STATIC_ASSERT(sizeof(Entry) == 0x18);
 
 
+		virtual ~TESContainer();											// 00
+
+		// override (BaseFormComponent)
+		virtual void	Init() override;									// 01 - { return; }
+		virtual void	ReleaseRefs() override;								// 02
+		virtual void	CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
+
+
 		template <class Op>
 		UInt32 CountIf(Op& a_op) const
 		{

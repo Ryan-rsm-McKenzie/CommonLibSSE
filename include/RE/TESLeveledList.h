@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/FormTypes.h"  // TESForm, TESGlobal
+#include "RE/FormTypes.h"  // FormType, TESForm, TESGlobal, TESFaction
 
 
 namespace RE
@@ -11,49 +11,65 @@ namespace RE
 	public:
 		struct Entry
 		{
-			TESForm*	form;	// 00 - init'd to 0
-			UInt16		count;	// 08 - init'd to 1
-			UInt16		level;	// 0A - init'd to 1
-			UInt32		pad0C;	// 0C
-			UInt64		unk10;	// 10 - init'd to 0
+			struct BaseData	// LVLO
+			{
+				TESForm*	reference;	// 00
+				UInt16		count;		// 08
+				UInt16		level;		// 0A
+				UInt32		pad0C;		// 0C
+			};
+			STATIC_ASSERT(sizeof(BaseData) == 0x10);
+
+
+			struct ExtraData	// COED
+			{
+				TESFaction*	owner;			// 00
+				SInt32		requiredRank;	// 08
+				UInt32		unk0C;			// 0C
+				float		itemCondition;	// 10
+				UInt32		unk14;			// 14
+			};
+			STATIC_ASSERT(sizeof(ExtraData) == 0x18);
+
+
+			BaseData	baseData;	// 00
+			ExtraData*	extraData;	// 10
 		};
+		STATIC_ASSERT(sizeof(Entry) == 0x18);
 
 
-		struct CalculatedResult
+		enum Flag : UInt8	// LVLF
 		{
-			TESForm*	form;		// 00
-			UInt32		count;		// 08
-			UInt32		pad0C;		// 0C
-			void*		unk10;		// 10
-			void*		unk18;		// 18
-			float		unk20;		// 20
+			kCalculateFromAllLevelsLTPCLevel = 1 << 0,
+			kCalculateForEachItemInCount = 1 << 1,
+			kUseAll = 1 << 2,
+			kSpecialLoot = 1 << 3
 		};
 
 
-		enum Flag : UInt8
-		{
-			kFlagCalculateFromAllLevelsLTPCLevel = 1 << 0,
-			kFlagCalculateForEachItemInCount = 1 << 1,
-			kFlagUseAll = 1 << 2,
-			kFlagSpecialLoot = 1 << 3
-		};
+		virtual ~TESLeveledList();											// 00
 
+		// override (BaseFormComponent)
+		virtual void	Init() override;									// 01
+		virtual void	ReleaseRefs() override;								// 02
+		virtual void	CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
 
-		virtual UInt8	GetLevChanceValue();					// 4
-		virtual bool	HasFlagUseAll();						// 5
-		virtual SInt32	GetLevDifferenceMax();					// 6 - nullsub
-		virtual bool	IsValidLevItem(UInt32 a_formType) = 0;	// 7
+		// add
+		virtual UInt8	GetLevChanceValue();								// 04 - { if (global) return global->value; else return chanceNone; }
+		virtual bool	CalculateForEachItemInCount();						// 05 - { return (flags >> 1) & 1; }
+		virtual SInt32	GetLevDifferenceMax();								// 06 - { return 0; }
+		virtual bool	IsValidLevItem(FormType a_formType) = 0;			// 07
 
 
 		// members
 		Entry*		entries;		// 08
-		UInt8		chanceValue;	// 10
-		Flag		flags;			// 11
-		UInt8		length;			// 12
-		UInt8		unk0B;			// 13
+		UInt8		chanceNone;		// 10 - LVLD
+		Flag		flags;			// 11 - LVLF
+		UInt8		numEntries;		// 12 - LLCT
+		UInt8		unk13;			// 13
 		UInt32		pad14;			// 14
-		void*		unk18;			// 18
-		TESGlobal*	chanceGlobal;	// 20
+		UInt64		unk18;			// 18
+		TESGlobal*	global;			// 20 - LVLG
 	};
 	STATIC_ASSERT(sizeof(TESLeveledList) == 0x28);
 }

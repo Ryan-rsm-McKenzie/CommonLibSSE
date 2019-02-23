@@ -2,6 +2,8 @@
 
 #include "skse64/GameRTTI.h"  // DYNAMIC_CAST
 
+#include <stdio.h>  // sprintf_s
+
 #include "RE/TESNPC.h"  // TESNPC
 #include "RE/TESObjectARMO.h"  // TESObjectARMO
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
@@ -65,7 +67,7 @@ namespace RE
 			weight = a_weightOverride * 100.0;
 		}
 
-		UInt32 sex = npc ? npc->GetSex() : 0;
+		UInt32 sex = npc ? static_cast<UInt32>(npc->GetSex()) : 0;
 		sprintf_s(a_dstBuff, MAX_PATH, " (%08X)[%d]/ (%08X) [%2.0f%%]", formID, sex, a_armor->formID, weight);
 	}
 }
