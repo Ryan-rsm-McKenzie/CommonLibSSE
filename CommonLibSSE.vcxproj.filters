@@ -190,6 +190,30 @@
     <Filter Include="include\RE\Skyrim\RadiantStory">
       <UniqueIdentifier>{4b718e2d-555e-43fa-8e20-f09116ee9c12}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\Regions">
+      <UniqueIdentifier>{4ec10876-b2e2-4669-824a-cc18e2ef7153}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Pathfinding">
+      <UniqueIdentifier>{42929457-a518-470f-aa8b-5583507fb07c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Pathfinding\NavMeshInfo">
+      <UniqueIdentifier>{985f2601-3f27-48a6-bfc8-a41417f9f8e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Magic\Components">
+      <UniqueIdentifier>{3e7f8996-42ad-425a-8149-9d1933409824}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\Gameplay\Components">
+      <UniqueIdentifier>{708ae38f-4d6a-4a65-b0b2-9bbc7afcbf92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\Character\Components">
+      <UniqueIdentifier>{5f9423c9-5be6-4705-96ba-137dc00abdb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\Character\PerkEntry">
+      <UniqueIdentifier>{ecfde3ba-0814-4a1c-9f34-bfd01a8917fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Pathfinding\NavMesh">
+      <UniqueIdentifier>{18f51f26-388f-4745-9bb8-b679f2a36760}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -531,6 +555,9 @@
     <ClCompile Include="src\RE\TESAIForm.cpp">
       <Filter>src\RE\Skyrim\FormComponents</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\TESClimate.cpp">
+      <Filter>src\RE\Skyrim\TESForms\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -580,18 +607,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\PerkEntryVisitor.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSPerkEntry.h">
-      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSEntryPointPerkEntry.h">
-      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSEntryPointFunctionData.h">
-      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSEntryPointFunctionDataActivateChoice.h">
-      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSTHashMap.h">
       <Filter>include\RE\Skyrim\BSCore</Filter>
@@ -713,9 +728,6 @@
     <ClInclude Include="include\RE\TESObjectACTI.h">
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\MagicTarget.h">
-      <Filter>include\RE\Skyrim\Magic</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ActiveEffect.h">
       <Filter>include\RE\Skyrim\Magic</Filter>
     </ClInclude>
@@ -727,9 +739,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESActorBaseData.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESActorBase.h">
-      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESNPC.h">
       <Filter>include\RE\Skyrim\TESForms\Character</Filter>
@@ -763,9 +772,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\ExtraFactionChanges.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSEntryPointFunctionDataText.h">
-      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\FavoritesHandler.h">
       <Filter>include\RE\Skyrim\BSDevices</Filter>
@@ -1088,9 +1094,6 @@
     <ClInclude Include="include\RE\BGSSoundDescriptor.h">
       <Filter>include\RE\Skyrim\BSAudio</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\DialogueData.h">
-      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESTrackedStatsEvent.h">
       <Filter>include\RE\Skyrim\Events</Filter>
     </ClInclude>
@@ -1104,9 +1107,6 @@
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSSoundDescriptorForm.h">
-      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSStandardSoundDef.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSAudioManager.h">
@@ -1421,12 +1421,6 @@
     <ClInclude Include="include\RE\BGSBehaviorGraphModel.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\AttackAnimationArrayMap.h">
-      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\SetEventData.h">
-      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ImageSpaceEffect.h">
       <Filter>include\RE\Skyrim\BSShader</Filter>
     </ClInclude>
@@ -1456,9 +1450,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\BGSEquipSlot.h">
       <Filter>include\RE\Skyrim\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Effect.h">
-      <Filter>include\RE\Skyrim\Magic</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ScrollItem.h">
       <Filter>include\RE\Skyrim\Magic</Filter>
@@ -1535,12 +1526,6 @@
     <ClInclude Include="include\RE\BSISoundCategory.h">
       <Filter>include\RE\Skyrim\BSAudio</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\IMovementInterface.h">
-      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementState.h">
-      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\IPostAnimationChannelUpdateFunctor.h">
       <Filter>include\RE\Skyrim\Animation</Filter>
     </ClInclude>
@@ -1561,30 +1546,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESShout.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementControllerRegisterInterface.h">
-      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementDirectControl.h">
-      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementMessageInterface.h">
-      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementMotionDrivenControl.h">
-      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementPlannerDirectControl.h">
-      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementSelectIdle.h">
-      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MovementControllerAI.h">
-      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MovementControllerNPC.h">
-      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\IAnimationSetCallbackFunctor.h">
       <Filter>include\RE\Skyrim\Animation</Filter>
@@ -1754,12 +1715,6 @@
     <ClInclude Include="include\RE\BGSPerkRankArray.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\ReferenceEffectController.h">
-      <Filter>include\RE\Skyrim\Magic</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h">
-      <Filter>include\RE\Skyrim\Magic</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BGSOverridePackCollection.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
@@ -1891,6 +1846,165 @@
     </ClInclude>
     <ClInclude Include="include\RE\Color.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESClimate.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSReferenceEffect.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegion.h">
+      <Filter>include\RE\Skyrim\TESForms\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegionData.h">
+      <Filter>include\RE\Skyrim\TESForms\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegionDataWeather.h">
+      <Filter>include\RE\Skyrim\TESForms\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\WeatherType.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegionDataSound.h">
+      <Filter>include\RE\Skyrim\TESForms\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegionDataMap.h">
+      <Filter>include\RE\Skyrim\TESForms\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegionDataLandscape.h">
+      <Filter>include\RE\Skyrim\TESForms\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NavMeshInfoMap.h">
+      <Filter>include\RE\Skyrim\Pathfinding\NavMeshInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PrecomputedNavmeshInfoPathMap.h">
+      <Filter>include\RE\Skyrim\Pathfinding\NavMeshInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSPrecomputedNavmeshInfoPathMap.h">
+      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementControllerRegisterInterface.h">
+      <Filter>include\RE\Skyrim\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementDirectControl.h">
+      <Filter>include\RE\Skyrim\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementInterface.h">
+      <Filter>include\RE\Skyrim\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementMessageInterface.h">
+      <Filter>include\RE\Skyrim\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementMotionDrivenControl.h">
+      <Filter>include\RE\Skyrim\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementPlannerDirectControl.h">
+      <Filter>include\RE\Skyrim\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementSelectIdle.h">
+      <Filter>include\RE\Skyrim\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementState.h">
+      <Filter>include\RE\Skyrim\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MovementControllerAI.h">
+      <Filter>include\RE\Skyrim\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MovementControllerNPC.h">
+      <Filter>include\RE\Skyrim\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSNavmeshInfoMap.h">
+      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DirectionalAmbientLightingColor.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegionList.h">
+      <Filter>include\RE\Skyrim\TESForms\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegionDataManager.h">
+      <Filter>include\RE\Skyrim\TESForms\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MissileProjectile.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Projectile.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ArrowProjectile.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GrenadeProjectile.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BeamProjectile.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FlameProjectile.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ConeProjectile.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BarrierProjectile.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Hazard.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h">
+      <Filter>include\RE\Skyrim\Magic\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Effect.h">
+      <Filter>include\RE\Skyrim\Magic\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MagicTarget.h">
+      <Filter>include\RE\Skyrim\Magic\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ReferenceEffectController.h">
+      <Filter>include\RE\Skyrim\Magic\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStandardSoundDef.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AttackAnimationArrayMap.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPointFunctionData.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPointFunctionDataActivateChoice.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPointFunctionDataText.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPointPerkEntry.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSPerkEntry.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DialogueData.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SetEventData.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESActorBase.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectLAND.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NavMesh.h">
+      <Filter>include\RE\Skyrim\Pathfinding\NavMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESChildCell.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSNavmesh.h">
+      <Filter>include\RE\Skyrim\BSPathFinding</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

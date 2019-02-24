@@ -9,7 +9,7 @@ namespace RE
 	class BGSAction : public BGSKeyword
 	{
 	public:
-		enum { kTypeID = (UInt32)FormType::Action };
+		enum { kTypeID = FormType::Action };
 
 
 		struct RecordFlags
@@ -26,7 +26,7 @@ namespace RE
 
 
 		// members
-		UInt32	idx;	// 28
+		UInt32	index;	// 28
 		UInt32	pad2C;	// 2C
 	};
 	STATIC_ASSERT(sizeof(BGSAction) == 0x30);

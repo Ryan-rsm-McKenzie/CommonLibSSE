@@ -19,7 +19,7 @@ namespace RE
 		public TESValueForm					// 158
 	{
 	public:
-		enum { kTypeID = FormType::ScrollItem };
+		enum { kTypeID = FormType::Scroll };
 
 
 		struct RecordFlags

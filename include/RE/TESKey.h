@@ -9,7 +9,7 @@ namespace RE
 	class TESKey : public TESObjectMISC
 	{
 	public:
-		enum { kTypeID = FormType::Key };
+		enum { kTypeID = FormType::KeyMaster };
 
 
 		struct RecordFlags

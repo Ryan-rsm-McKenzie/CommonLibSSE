@@ -49,6 +49,17 @@ namespace RE
 		};
 
 
+		struct RecordFlags
+		{
+			enum RecordFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12,
+				kCantWait = 1 << 19
+			};
+		};
+
+
 		struct XYPlane
 		{
 			SInt16	x;

@@ -39,7 +39,7 @@ namespace RE
 		virtual bool			LoadForm(TESFile* a_mod);																									// 06 - { return true; }
 		virtual void			Unk_07(void);																												// 07 - { return true; }
 		virtual void			Unk_08(void);																												// 08 - { return LoadForm(); }
-		virtual TESForm*		DupulicateForm(uintptr_t a_arg1, void* a_arg2);																				// 09
+		virtual TESForm*		DupulicateForm(void* a_arg1, void* a_arg2);																					// 09
 		virtual bool			MarkChanged(UInt32 a_changeFlags);																							// 0A
 		virtual void			UnMarkChanged(UInt32 a_changeFlags);																						// 0B
 		virtual void			Unk_0C(void);																												// 0C - { return false; }

@@ -9,7 +9,7 @@ namespace RE
 	class BGSLocationRefType : public BGSKeyword
 	{
 	public:
-		enum { kTypeID = FormType::LocationRef };
+		enum { kTypeID = FormType::LocationRefType };
 
 
 		struct RecordFlags

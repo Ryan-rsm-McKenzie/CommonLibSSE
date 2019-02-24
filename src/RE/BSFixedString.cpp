@@ -345,7 +345,7 @@ namespace RE
 		UInt32 len = 0;
 		if (this && _data) {
 			StringCache::Entry* entry = (StringCache::Entry*)((std::uintptr_t)_data - offsetof(StringCache::Entry, data));
-			len = entry->length;
+			len = entry->length & StringCache::Entry::kLengthMask;
 		}
 		return len;
 	}

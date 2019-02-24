@@ -39,7 +39,7 @@ namespace RE
 		using EntryPointType = BGSEntryPointPerkEntry::EntryPointType;
 
 	public:
-		enum { kTypeID = FormType::Character };
+		enum { kTypeID = FormType::ActorCharacter };
 
 
 		struct SlotTypes
@@ -108,6 +108,21 @@ namespace RE
 			float modifiers[Modifiers::kTotal];	// 0
 		};
 		STATIC_ASSERT(sizeof(ActorValueModifiers) == 0xC);
+
+
+		struct RecordFlags
+		{
+			enum RecordFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kStartsDead = 1 << 9,
+				kPersistent = 1 << 10,
+				kInitiallyDisabled = 1 << 11,
+				kIgnored = 1 << 12,
+				kNoAIAcquire = 1 << 25,
+				kDontHavokSettle = 1 << 29
+			};
+		};
 
 
 		struct ActorValueMap

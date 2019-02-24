@@ -3,15 +3,15 @@
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
-#include "RE/FormTypes.h"
+#include "RE/FormTypes.h"  // TESForm
 #include "RE/NiTArray.h"  // NiTPrimitiveArray
-
-class TESRegionList;
 
 
 namespace RE
 {
 	class TESFile;
+	class TESRegionDataManager;
+	class TESRegionList;
 
 
 	class TESDataHandler : public BSTSingletonSDM<TESDataHandler>
@@ -58,8 +58,8 @@ namespace RE
 		BSTArray<TESForm*>							formArrays[to_underlying(FormType::Max)];	// 010
 
 		TESRegionList*								regionList;									// D00
-		NiTPrimitiveArray<TESObjectCELL*>			_cells;										// D08
-		NiTPrimitiveArray<BGSAddonNode*>			_addonNodes;								// D20
+		NiTPrimitiveArray<TESObjectCELL*>			cells;										// D08
+		NiTPrimitiveArray<BGSAddonNode*>			addonNodes;									// D20
 
 		void*										unkD38;										// D38
 		void*										unkD40;										// D40
@@ -82,11 +82,11 @@ namespace RE
 		UInt8										unkDAA;										// DAA
 		UInt8										padDAB[5];									// DAB
 
-		void*										regionDataManager;							// DB0 - TESRegionDataManager*, allocated in ctor
+		TESRegionDataManager*						regionDataManager;							// DB0
 		UInt64										unkDB8;										// DB8
 	};
 	STATIC_ASSERT(offsetof(TESDataHandler, regionList) == 0xD00);
-	STATIC_ASSERT(offsetof(TESDataHandler, _addonNodes) == 0xD20);
+	STATIC_ASSERT(offsetof(TESDataHandler, addonNodes) == 0xD20);
 	STATIC_ASSERT(offsetof(TESDataHandler, modList) == 0xD60);
 	STATIC_ASSERT(sizeof(TESDataHandler) == 0xDC0);
 }

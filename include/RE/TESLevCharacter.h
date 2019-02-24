@@ -14,7 +14,7 @@ namespace RE
 		public TESModelTextureSwap	// 58
 	{
 	public:
-		enum { kTypeID = FormType::LeveledCharacter };
+		enum { kTypeID = FormType::LeveledNPC };
 
 
 		struct RecordFlags

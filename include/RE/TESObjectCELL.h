@@ -1,9 +1,11 @@
 #pragma once
 
 #include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/BSSpinLock.h"  // BSSpinLock
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/Color.h"  // Color
+#include "RE/DirectionalAmbientLightingColor.h"  // DirectionalAmbientLightingColor
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESFullName.h"  // TESFullName
@@ -20,9 +22,6 @@ namespace RE
 		enum { kTypeID = FormType::Cell };
 
 
-		typedef UInt32 UnkKey;
-
-
 		enum class Flag : UInt16	// DATA
 		{
 			kIsInteriorCell = 1 << 0,
@@ -33,6 +32,20 @@ namespace RE
 			kHandChanged = 1 << 6,
 			kShowSky = 1 << 7,
 			kUseSkyLighting = 1 << 8
+		};
+
+
+		struct RecordFlags
+		{
+			enum RecordFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kPersistent = 1 << 10,
+				kIgnored = 1 << 12,
+				kOffLimits = 1 << 17,
+				kCompressed = 1 << 18,
+				kCantWait = 1 << 19
+			};
 		};
 
 
@@ -62,60 +75,48 @@ namespace RE
 			};
 
 
-			struct AmbientColors
-			{
-				struct Directional
-				{
-					Color	xPlus;	// 00
-					Color	xMinus;	// 04
-					Color	yPlus;	// 08
-					Color	yMinus;	// 0C
-					Color	zPlus;	// 10
-					Color	zMinus;	// 14
-				};
-				STATIC_ASSERT(sizeof(Directional) == 0x18);
-
-
-				Directional	directional;	// 00
-				Color		specular;		// 18
-				float		scale;			// 1C
-			};
-			STATIC_ASSERT(sizeof(AmbientColors) == 0x20);
-
-
-			Color			ambientColor;			// 00
-			Color			directionalColor;		// 04
-			Color			fogColorNear;			// 08
-			float			fogNear;				// 0C
-			float			fogFar;					// 10
-			UInt32			directionalRotationXY;	// 14
-			UInt32			directionalRotationZ;	// 18
-			float			directionalFade;		// 1C
-			float			fogClipDistance;		// 20
-			float			fogPower;				// 24
-			AmbientColors	ambientColors;			// 28
-			Color			fogColorFar;			// 48
-			float			fogMax;					// 4C
-			float			lightFadeBegin;			// 50
-			float			lightFadeEnd;			// 54
-			Inherit			inherits;				// 58
-			UInt32			pad5C;					// 5C
+			Color							ambientColor;			// 00
+			Color							directionalColor;		// 04
+			Color							fogColorNear;			// 08
+			float							fogNear;				// 0C
+			float							fogFar;					// 10
+			UInt32							directionalRotationXY;	// 14
+			UInt32							directionalRotationZ;	// 18
+			float							directionalFade;		// 1C
+			float							fogClipDistance;		// 20
+			float							fogPower;				// 24
+			DirectionalAmbientLightingColor	ambientColors;			// 28
+			Color							fogColorFar;			// 48
+			float							fogMax;					// 4C
+			float							lightFadeBegin;			// 50
+			float							lightFadeEnd;			// 54
+			Inherit							inherits;				// 58
+			UInt32							pad5C;					// 5C
 		};
 		STATIC_ASSERT(sizeof(Lighting) == 0x60);
 
 
-		// override (TESForm)
-		virtual bool		LoadForm(TESFile* a_mod) override;							// 06
-		virtual TESForm*	DupulicateForm(uintptr_t a_arg1, void* a_arg2) override;	// 09
-		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;				// 0E
-		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;				// 0F
-		virtual void		InitItem() override;										// 13
-		virtual void		GetFormDesc(char* a_buf, UInt32 a_bufLen) override;			// 16
-		virtual void		SetFlag00000002(bool a_set) override;						// 24
-		virtual const char*	GetEditorID() override;										// 32
-		virtual bool		SetEditorID(const char* a_str) override;					// 33
+		virtual ~TESObjectCELL();													// 00
 
-		double GetNorthRotation();
+		// override (TESForm)
+		virtual void		Unk_05(void) override;									// 05
+		virtual bool		LoadForm(TESFile* a_mod) override;						// 06
+		virtual TESForm*	DupulicateForm(void* a_arg1, void* a_arg2) override;	// 09
+		virtual void		Unk_0C(void) override;									// 0C
+		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;			// 0E
+		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;			// 0F
+		virtual void		Unk_12(void) override;									// 12
+		virtual void		InitItem() override;									// 13
+		virtual void		GetFormDesc(char* a_buf, UInt32 a_bufLen) override;		// 16
+		virtual void		SetFlag00000002(bool a_set) override;					// 24
+		virtual void		Unk_30(void) override;									// 30
+		virtual void		Unk_31(void) override;									// 31
+		virtual const char*	GetEditorID() override;									// 32
+		virtual bool		SetEditorID(const char* a_str) override;				// 33
+		virtual void		Unk_34(void) override;									// 34 - { return true; }
+		virtual void		Unk_36(void) override;									// 36
+
+		double				GetNorthRotation();
 
 
 		// members
@@ -134,16 +135,16 @@ namespace RE
 		TESObjectLAND*						land;				// 068 - NEEDS CHECKING
 		float								waterHeight;		// 070 - XCLW
 		void*								unk078;				// 078
-		BSTHashMap<UInt32, TESObjectREFR>	persistentRefMap;	// 088
+		BSTHashMap<UInt32, TESObjectREFR>	persistentRefMap;	// 080
 		TESForm*							unk0B0;				// 0B0 - REFR owner of cell?
-		BSTArray<TESObjectREFR*>			objectList;			// 0B8 - temporary refs?
+		BSTArray<TESObjectREFR*>			objectList;			// 0B8 - persistent
 		UnkArray							unk0D0;				// 0D0
 		UnkArray							unk0F8;				// 0F8
 		UnkArray							unk100;				// 100
-		SimpleLock							cellRefLock;		// 118
+		mutable BSSpinLock					cellRefLock;		// 118
 		TESWorldSpace*						worldSpace;			// 120
 		UInt64								unk128;				// 128
-		BGSLightingTemplate*				lightingTemplate;	// 130
+		BGSLightingTemplate*				lightingTemplate;	// 130 - LTMP
 		UInt64								unk138;				// 138
 	};
 	STATIC_ASSERT(offsetof(TESObjectCELL, persistentRefMap) == 0x80);

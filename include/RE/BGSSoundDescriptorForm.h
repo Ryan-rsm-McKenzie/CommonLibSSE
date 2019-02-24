@@ -15,7 +15,7 @@ namespace RE
 		public BSISoundDescriptor	// 20
 	{
 	public:
-		enum { kTypeID = FormType::SoundDescriptor };
+		enum { kTypeID = FormType::SoundRecord };
 
 
 		virtual ~BGSSoundDescriptorForm();			// 00

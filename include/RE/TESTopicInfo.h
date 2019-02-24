@@ -10,7 +10,7 @@ namespace RE
 	class TESTopicInfo : public TESForm
 	{
 	public:
-		enum { kTypeID = FormType::TopicInfo };
+		enum { kTypeID = FormType::Info };
 
 
 		enum class FavorLevel : UInt8	// CNAM

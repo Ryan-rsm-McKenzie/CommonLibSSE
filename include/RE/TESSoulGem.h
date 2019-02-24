@@ -36,8 +36,8 @@ namespace RE
 		TESSoulGem*	linkedTo;			// 100 - NAM0
 		SoulLevel	containedSoul;		// 108 - SOUL
 		SoulLevel	maximumCapacity;	// 109 - SLCP
-		UInt16		unk108;				// 10A
-		UInt32		unk108;				// 10C
+		UInt16		unk10A;				// 10A
+		UInt32		unk10C;				// 10C
 	};
 	STATIC_ASSERT(sizeof(TESSoulGem) == 0x110);
 }

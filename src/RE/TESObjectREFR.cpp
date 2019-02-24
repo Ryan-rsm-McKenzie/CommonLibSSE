@@ -105,7 +105,7 @@ namespace RE
 	TESNPC* TESObjectREFR::GetActorOwner()
 	{
 		ExtraOwnership* exOwnership = static_cast<ExtraOwnership*>(extraData.GetByType(ExtraDataType::kOwnership));
-		if (exOwnership && exOwnership->owner && exOwnership->owner->formType == FormType::Character) {
+		if (exOwnership && exOwnership->owner && exOwnership->owner->formType == FormType::ActorCharacter) {
 			return static_cast<TESNPC*>(exOwnership->owner);
 		} else {
 			return 0;

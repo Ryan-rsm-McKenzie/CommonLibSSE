@@ -95,23 +95,34 @@ namespace RE
 		virtual ~TESObjectREFR();																																																	// 00
 
 		// override (TESForm)
+		virtual void					InitDefaults() override;																																									// 04
+		virtual void					Unk_05(void) override;																																										// 05
 		virtual bool					LoadForm(TESFile* a_mod) override;																																							// 06
-		virtual TESForm*				DupulicateForm(uintptr_t a_arg1, void* a_arg2) override;																																	// 09
+		virtual TESForm*				DupulicateForm(void* a_arg1, void* a_arg2) override;																																	// 09
 		virtual bool					PreSaveBuffer(BGSSaveFormBuffer* a_buf) override;																																			// 0D
 		virtual void					SaveBuffer(BGSSaveFormBuffer* a_buf) override;																																				// 0E
 		virtual void					LoadBuffer(BGSLoadFormBuffer* a_buf) override;																																				// 0F
+		virtual void					Unk_10(void) override;																																										// 10
+		virtual void					Unk_11(void) override;																																										// 11
+		virtual void					Unk_12(void) override;																																										// 12
 		virtual void					InitItem() override;																																										// 13
-		virtual FormType				GetFormType() override;																																										// 15
+		virtual FormType				GetFormType() override;																																										// 15 - { return FormType::Reference; }
 		virtual void					GetFormDesc(char* a_buf, UInt32 a_bufLen) override;																																			// 16
 		virtual bool					GetFlag00010000() override;																																									// 18
+		virtual bool					NeverFades() override;																																										// 1A
 		virtual bool					GetFlag00020000() override;																																									// 1B
 		virtual bool					GetFlag02000000() override;																																									// 1D
 		virtual bool					GetFlag00000200() override;																																									// 1F
 		virtual bool					GetFlag00000100() override;																																									// 20
 		virtual void					SetFlag00000200(bool a_set) override;																																						// 21
+		virtual bool					IgnoredBySandbox() const override;																																							// 22
 		virtual void					SetFlag00000020(bool a_set) override;																																						// 23
 		virtual void					SetFlag00000002(bool a_set) override;																																						// 24
+		virtual bool					IsWaterActivator() override;																																								// 2A
+		virtual void					Unk_2B(void) override;																																										// 2B
 		virtual TESObjectREFR*			GetReference() override;																																									// 2C - { return this; }
+		virtual void					Unk_30(void) override;																																										// 30
+		virtual void					Unk_31(void) override;																																										// 31
 		virtual const char*				GetEditorID() override;																																										// 32
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)
@@ -143,8 +154,8 @@ namespace RE
 		virtual void					Unk_4D(void);																																												// 4D
 		virtual void					Unk_4E(void);																																												// 4E
 		virtual void					Unk_4F(void);																																												// 4F
-		virtual void					Unk_50(void);																																												// 50
-		virtual UInt32*					GetActorCause();																																											// 51
+		virtual void					SetActorCause(UInt32& a_cause);																																												// 50
+		virtual UInt32&					GetActorCause() const;																																											// 51
 		virtual void					Unk_52(void);																																												// 52
 		virtual void					Unk_53(void);																																												// 53
 		virtual void					Unk_54(void);																																												// 54

@@ -8,7 +8,7 @@ namespace RE
 	class Character : public Actor
 	{
 	public:
-		enum { kTypeID = FormType::Character };
+		enum { kTypeID = FormType::ActorCharacter };
 
 
 		struct RecordFlags

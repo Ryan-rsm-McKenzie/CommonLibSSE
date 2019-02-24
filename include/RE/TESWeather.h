@@ -3,6 +3,7 @@
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/Color.h"  // Color
+#include "RE/DirectionalAmbientLightingColor.h"  // DirectionalAmbientLightingColor
 #include "RE/FormTypes.h"  // FormType, TESObjectSTAT
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESModel.h"  // TESModel
@@ -173,27 +174,6 @@ namespace RE
 			Type	type;			// 04
 		};
 		STATIC_ASSERT(sizeof(Sound) == 0x8);
-
-
-		struct DirectionalAmbientLightingColor	// DALC
-		{
-			struct Directional
-			{
-				Color	xMax;	// 00
-				Color	xMin;	// 04
-				Color	yMax;	// 08
-				Color	yMin;	// 0C
-				Color	zMax;	// 10
-				Color	zMin;	// 14
-			};
-			STATIC_ASSERT(sizeof(Directional) == 0x18);
-
-
-			Directional	directional;	// 00
-			Color		specular;		// 18
-			float		scale;			// 1C
-		};
-		STATIC_ASSERT(sizeof(DirectionalAmbientLightingColor) == 0x20);
 
 
 		virtual ~TESWeather();								// 00

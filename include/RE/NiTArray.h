@@ -60,6 +60,7 @@ namespace RE
 	public:
 		NiTObjectArray(unsigned int a_maxSize = 0, unsigned int a_growBy = 1);
 	};
+	STATIC_ASSERT(sizeof(NiTObjectArray<void*>) == 0x18);
 
 
 	template <class T>
@@ -68,6 +69,7 @@ namespace RE
 	public:
 		NiTPrimitiveArray(unsigned int a_maxSize = 0, unsigned int a_growBy = 1);
 	};
+	STATIC_ASSERT(sizeof(NiTPrimitiveArray<void*>) == 0x18);
 
 
 	// 18
@@ -158,4 +160,5 @@ namespace RE
 	public:
 		NiTLargePrimitiveArray(unsigned int a_maxSize = 0, unsigned int a_growBy = 1);
 	};
+	STATIC_ASSERT(sizeof(NiTLargePrimitiveArray<void*>) == 0x20);
 }

@@ -10,6 +10,12 @@ namespace RE
 	public:
 		struct Entry
 		{
+			enum
+			{
+				kLengthMask = 0xFFFFFF
+			};
+
+
 			union State
 			{
 				struct

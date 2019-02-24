@@ -11,26 +11,70 @@ namespace RE
 	class BGSShaderParticleGeometryData : public TESForm
 	{
 	public:
-		enum { kTypeID = FormType::SPGD };
+		enum { kTypeID = FormType::ShaderParticleGeometryData };
 
 
-		union Data
+		struct Entries
+		{
+			enum
+			{
+				kGravityVelocity = 0,
+				kRotationVelocity,
+				kParticleSizeX,
+				kParticleSizeY,
+				kCenterOffsetMin,
+				kCenterOffsetMax,
+				kInitialRotationRange,
+				kNumSubtexturesX,
+				kNumSubtexturesY,
+				kType,
+				kBoxSize,
+				kParticleDensity,
+
+				kTotal
+			};
+		};
+
+
+		struct Types
+		{
+			enum
+			{
+				kRain = 0,
+				kSnow = 1
+			};
+		};
+
+
+		struct RecordFlags
+		{
+			enum RecordFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
+		union Entry
 		{
 			float	f;
 			UInt32	i;
 		};
+		STATIC_ASSERT(sizeof(Entry) == 0x4);
 
 
 		virtual ~BGSShaderParticleGeometryData();			// 00
 
 		// override (TESForm)
 		virtual void	InitDefaults() override;			// 04
+		virtual void	Unk_05(void) override;				// 05
 		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
 		virtual void	InitItem() override;				// 13
 
 
-		BSTArray<Data>	data;		// 20 - DATA
-		TESTexture		texture;	// 38
+		BSTArray<Entry>	data;				// 20 - DATA - size == Entries::kTotal
+		TESTexture		particleTexture;	// 38 - ICON
 	};
 	STATIC_ASSERT(sizeof(BGSShaderParticleGeometryData) == 0x48);
 }

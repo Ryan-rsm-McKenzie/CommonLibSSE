@@ -16,7 +16,7 @@ namespace RE
 		public BGSBipedObjectForm	// 30
 	{
 	public:
-		enum { kTypeID = FormType::ARMA };
+		enum { kTypeID = FormType::Armature };
 
 
 		struct Data	// DATA

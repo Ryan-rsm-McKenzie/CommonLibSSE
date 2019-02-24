@@ -4,14 +4,52 @@
 namespace RE
 {
 	//=====================================================
+	// BSTSingletonExplicit
+	//=====================================================
+
+	template<class Ty>
+	struct BSTSingletonExplicit
+	{};
+
+
+	//=====================================================
+	// BSTSingletonImplicit
+	//=====================================================
+
+	template<class Ty>
+	struct BSTSingletonImplicit
+	{};
+
+
+	//=====================================================
 	// BSTSingletonSDM
 	//=====================================================
 
-	// This is just a placeholder to facilitate the inheritance structure
+	template <class> struct BSTSingletonSDMBase;
+
+
 	template <class Ty>
-	struct BSTSingletonSDM
+	struct BSTSingletonSDMOpStaticBuffer
+	{};
+
+
+	template <class Ty, class Alloc = BSTSingletonSDMOpStaticBuffer<Ty>>
+	struct BSTSDMTraits
 	{
-	private:
-		Ty* m_pSingleton = 0;
+		typedef Ty Type;
+		typedef Alloc Allocator;
 	};
+
+
+	template <class Traits>
+	struct BSTSingletonSDMBase : public Traits, public Traits::Allocator
+	{
+		typedef typename Traits::Type Type;
+		typedef typename Traits::Allocator Allocator;
+	};
+
+
+	template <class Ty, template <class> class _SingletonT = BSTSingletonSDMOpStaticBuffer>
+	struct BSTSingletonSDM : BSTSingletonSDMBase<BSTSDMTraits<Ty, _SingletonT<Ty>>>
+	{};
 }

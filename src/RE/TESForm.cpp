@@ -44,7 +44,7 @@ namespace RE
 
 	bool TESForm::IsKey() const
 	{
-		return Is(FormType::Key);
+		return Is(FormType::KeyMaster);
 	}
 
 

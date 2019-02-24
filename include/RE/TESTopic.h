@@ -13,7 +13,17 @@ namespace RE
 		public TESFullName	// 20
 	{
 	public:
-		enum { kTypeID = FormType::Topic };
+		enum { kTypeID = FormType::Dialogue };
+
+
+		struct RecordFlags
+		{
+			enum RecordFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
 
 
 		struct Data	// DATA
@@ -161,6 +171,7 @@ namespace RE
 		virtual void			InitItem() override;						// 13
 		virtual const char*		GetEditorID() override;						// 32 - { return editorID.c_str() ? editorID.c_str() : ""; }
 		virtual bool			SetEditorID(const char* a_str) override;	// 33 - { bool result = editorID == a_str; editorID = a_str; return result; }
+		virtual void			Unk_36(void);								// 36 - { return a_arg1 == FormType::Info }
 
 		float					GetPriority() const;
 

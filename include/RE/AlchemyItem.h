@@ -24,7 +24,7 @@ namespace RE
 		public BGSPickupPutdownSounds		// 120
 	{
 	public:
-		enum { kTypeID = FormType::Potion };
+		enum { kTypeID = FormType::AlchemyItem };
 
 
 		struct RecordFlags

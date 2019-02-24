@@ -39,7 +39,7 @@ namespace RE
 		public BSTEventSource<PositionPlayerEvent>	// 380
 	{
 	public:
-		enum { kTypeID = FormType::Character };
+		enum { kTypeID = FormType::ActorCharacter };
 
 
 		enum class EventType : UInt32

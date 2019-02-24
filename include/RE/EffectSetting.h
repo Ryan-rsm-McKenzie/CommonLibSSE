@@ -21,7 +21,7 @@ namespace RE
 		public BGSKeywordForm			// 040
 	{
 	public:
-		enum { kTypeID = FormType::EffectSetting };
+		enum { kTypeID = FormType::MagicEffect };
 
 
 		struct RecordFlags
