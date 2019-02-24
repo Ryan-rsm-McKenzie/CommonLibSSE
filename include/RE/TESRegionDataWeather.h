@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	class WeatherType;
+	struct WeatherType;
 
 
 	class TESRegionDataWeather : public TESRegionData

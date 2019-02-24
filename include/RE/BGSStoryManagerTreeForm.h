@@ -6,16 +6,19 @@
 
 namespace RE
 {
+	class Condition;
+
+
 	class BGSStoryManagerTreeForm : public TESForm
 	{
 	public:
 		virtual ~BGSStoryManagerTreeForm();	// 00
 
 		// add
-		virtual void	Unk_3B(void);		// 3B - { return 0; }
-		virtual void	Unk_3C(void);		// 3C - { return 0; }
-		virtual void	Unk_3D(void);		// 3D - pure
-		virtual void	Unk_3E(void);		// 3E - pure
+		virtual void		Unk_3B(void);			// 3B - { return 0; }
+		virtual void		Unk_3C(void);			// 3C - { return 0; }
+		virtual Condition*	GetConditions() = 0;	// 3D
+		virtual void		Unk_3E(void) = 0;		// 3E
 
 
 		// members

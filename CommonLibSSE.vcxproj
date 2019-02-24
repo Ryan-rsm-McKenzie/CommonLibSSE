@@ -202,6 +202,7 @@
     <ClCompile Include="src\RE\NiExtraData.cpp" />
     <ClCompile Include="src\RE\NiObject.cpp" />
     <ClCompile Include="src\RE\NiRefObject.cpp" />
+    <ClCompile Include="src\RE\Sky.cpp" />
     <ClCompile Include="src\RE\SoundData.cpp" />
     <ClCompile Include="src\RE\BSExtraData.cpp" />
     <ClCompile Include="src\RE\BSFixedString.cpp" />
@@ -280,6 +281,7 @@
     <ClInclude Include="include\RE\ActorMover.h" />
     <ClInclude Include="include\RE\AlchemyItem.h" />
     <ClInclude Include="include\RE\ArrowProjectile.h" />
+    <ClInclude Include="include\RE\Atmosphere.h" />
     <ClInclude Include="include\RE\BarrierProjectile.h" />
     <ClInclude Include="include\RE\BaseFormComponent.h" />
     <ClInclude Include="include\RE\BeamProjectile.h" />
@@ -411,6 +413,7 @@
     <ClInclude Include="include\RE\BSTSingleton.h" />
     <ClInclude Include="include\RE\BSXAudio2GameSound.h" />
     <ClInclude Include="include\RE\ChestsLooted.h" />
+    <ClInclude Include="include\RE\Clouds.h" />
     <ClInclude Include="include\RE\Color.h" />
     <ClInclude Include="include\RE\CommandTable.h" />
     <ClInclude Include="include\RE\CompiledScriptLoader.h" />
@@ -581,6 +584,7 @@
     <ClInclude Include="include\RE\MenuOpenHandler.h" />
     <ClInclude Include="include\RE\MiddleProcess.h" />
     <ClInclude Include="include\RE\MissileProjectile.h" />
+    <ClInclude Include="include\RE\Moon.h" />
     <ClInclude Include="include\RE\MovementControllerAI.h" />
     <ClInclude Include="include\RE\MovementControllerNPC.h" />
     <ClInclude Include="include\RE\MoviePlayer.h" />
@@ -606,6 +610,7 @@
     <ClInclude Include="include\RE\NiTPointerMap.h" />
     <ClInclude Include="include\RE\PackageLocation.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
+    <ClInclude Include="include\RE\Precipitation.h" />
     <ClInclude Include="include\RE\PrecomputedNavmeshInfoPathMap.h" />
     <ClInclude Include="include\RE\Projectile.h" />
     <ClInclude Include="include\RE\ReferenceEffectController.h" />
@@ -646,6 +651,9 @@
     <ClInclude Include="include\RE\SFTypes.h" />
     <ClInclude Include="include\RE\ShoutHandler.h" />
     <ClInclude Include="include\RE\SimpleAllocMemoryPagePolicy.h" />
+    <ClInclude Include="include\RE\Sky.h" />
+    <ClInclude Include="include\RE\SkyEffectController.h" />
+    <ClInclude Include="include\RE\SkyObject.h" />
     <ClInclude Include="include\RE\SkyrimScriptObjectBindPolicy.h" />
     <ClInclude Include="include\RE\SkyrimScriptStore.h" />
     <ClInclude Include="include\RE\SneakHandler.h" />
@@ -655,8 +663,10 @@
     <ClInclude Include="include\RE\SpellItem.h" />
     <ClInclude Include="include\RE\SprintHandler.h" />
     <ClInclude Include="include\RE\StandardItemData.h" />
+    <ClInclude Include="include\RE\Stars.h" />
     <ClInclude Include="include\RE\StatsEvent.h" />
     <ClInclude Include="include\RE\StringCache.h" />
+    <ClInclude Include="include\RE\Sun.h" />
     <ClInclude Include="include\RE\SuspendedStack.h" />
     <ClInclude Include="include\RE\TESActorBase.h" />
     <ClInclude Include="include\RE\TESActorBaseData.h" />

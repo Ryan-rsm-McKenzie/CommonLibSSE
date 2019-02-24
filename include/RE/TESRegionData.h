@@ -21,15 +21,15 @@ namespace RE
 		};
 
 
-		enum class Flag : UInt8
-		{
-			kNone = 0,
-			kOverride = 1 << 0
-		};
-
-
 		struct DataHeader	// RDAT
 		{
+			enum class Flag : UInt8
+			{
+				kNone = 0,
+				kOverride = 1 << 0
+			};
+
+
 			Flag	flags;		// 0
 			UInt8	unk09;		// 1
 			UInt8	priority;	// 2

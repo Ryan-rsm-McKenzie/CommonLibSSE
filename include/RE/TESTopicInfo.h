@@ -22,6 +22,16 @@ namespace RE
 		};
 
 
+		struct RecordFlags
+		{
+			enum RecordFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		struct ResponseFlags	// ENAM
 		{
 			enum class Flag : UInt16

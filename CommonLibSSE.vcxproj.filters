@@ -214,6 +214,12 @@
     <Filter Include="include\RE\Skyrim\Pathfinding\NavMesh">
       <UniqueIdentifier>{18f51f26-388f-4745-9bb8-b679f2a36760}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\Sky">
+      <UniqueIdentifier>{b3b6ab6b-1635-489d-9464-318dd88432ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Sky">
+      <UniqueIdentifier>{1943f486-5ec0-4502-8ba9-f77066b1168d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -557,6 +563,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\TESClimate.cpp">
       <Filter>src\RE\Skyrim\TESForms\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Sky.cpp">
+      <Filter>src\RE\Skyrim\Sky</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2005,6 +2014,33 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSNavmesh.h">
       <Filter>include\RE\Skyrim\BSPathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Sky.h">
+      <Filter>include\RE\Skyrim\Sky</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SkyObject.h">
+      <Filter>include\RE\Skyrim\Sky</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Atmosphere.h">
+      <Filter>include\RE\Skyrim\Sky</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Stars.h">
+      <Filter>include\RE\Skyrim\Sky</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Sun.h">
+      <Filter>include\RE\Skyrim\Sky</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Clouds.h">
+      <Filter>include\RE\Skyrim\Sky</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Moon.h">
+      <Filter>include\RE\Skyrim\Sky</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Precipitation.h">
+      <Filter>include\RE\Skyrim\Sky</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SkyEffectController.h">
+      <Filter>include\RE\Skyrim\Sky</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

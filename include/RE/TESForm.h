@@ -84,7 +84,7 @@ namespace RE
 		virtual bool			SetEditorID(const char* a_str);																								// 33 - { return true; }
 		virtual void			Unk_34(void);																												// 34 - { return false; } TESTopic,TESObjectCELL,TESWorldSpace=true
 		virtual void			Unk_35(void);																												// 35 - { return false; }
-		virtual void			Unk_36(void);																												// 36 - { return false; }
+		virtual void			Unk_36(void);																												// 36 - { return false; } - "bool IsCompatibleFormType(FormType a_formType) const"?
 		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5);	// 37 - { return false; }
 		virtual void			SetFormID(UInt32 a_id, bool a_bGenerateID);																					// 38
 		virtual const char*		GetTypeString() const;																										// 39 - { return ""; }

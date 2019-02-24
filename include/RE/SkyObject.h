@@ -1,0 +1,24 @@
+#pragma once
+
+
+namespace RE
+{
+	class NiNode;
+
+
+	class SkyObject
+	{
+	public:
+		virtual ~SkyObject();			// 00
+
+		// add
+		virtual void	Unk_01(void);	// 01 - { return unk08; }
+		virtual void	Unk_02(void);	// 02
+		virtual void	Unk_03(void);	// 03 - { return; }
+
+
+		// members
+		NiNode* unk10;	// 10
+	};
+	STATIC_ASSERT(sizeof(SkyObject) == 0x10);
+}
