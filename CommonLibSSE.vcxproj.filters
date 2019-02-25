@@ -223,6 +223,9 @@
     <Filter Include="src\RE\Skyrim\TESForms\Character\PerkEntry">
       <UniqueIdentifier>{fc57e9d2-cbfd-47a6-adea-a0832bcce9ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\Character\Procedure">
+      <UniqueIdentifier>{f41fc8d3-f5e8-46a6-87bc-da2a624fd3b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -2047,6 +2050,36 @@
     </ClInclude>
     <ClInclude Include="include\RE\SkyEffectController.h">
       <Filter>include\RE\Skyrim\Sky</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESIdleForm.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESPackage.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESPackageData.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESCustomPackageData.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IProcedureTreeItem.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Procedure</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSProcedureTreeConditionalItem.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Procedure</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSProcedureTreeBranch.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Procedure</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSProcedureTreeSequence.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Procedure</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSTypedItem.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSProcedureTreeProcedure.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Procedure</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

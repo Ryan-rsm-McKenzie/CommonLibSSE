@@ -35,7 +35,7 @@ namespace RE
 
 		// add
 		virtual void			InitDefaults();																												// 04 - { return; }
-		virtual void			Unk_05(void);																												// 05 - { return; } - FreeHeapData()?
+		virtual void			Unk_05(void);																												// 05 - { return; } - " void ReleaseManagedData()"?
 		virtual bool			LoadForm(TESFile* a_mod);																									// 06 - { return true; }
 		virtual void			Unk_07(void);																												// 07 - { return true; }
 		virtual void			Unk_08(void);																												// 08 - { return LoadForm(); }
@@ -48,11 +48,11 @@ namespace RE
 		virtual void			LoadBuffer(BGSLoadFormBuffer* a_buf);																						// 0F
 		virtual void			Unk_10(void);																												// 10 - { return; }
 		virtual void			Unk_11(void);																												// 11 - { return; }
-		virtual void			Unk_12(void);																												// 12 - { return; } - void Reset(void* a_arg1);
+		virtual void			Unk_12(void);																												// 12 - { return; } - "void Reset(void* a_arg1)"?
 		virtual void			InitItem();																													// 13 - { return; }
 		virtual void			Unk_14(void);																												// 14
 		virtual FormType		GetFormType();																												// 15 - { return formType; }
-		virtual void			GetFormDesc(char* a_buf, UInt32 a_bufLen);																					// 16 - { return std::sprintf_s(a_buf, a_bufLen, "%s Form '%s' (%08X)", (g_formStrings[3 * formID], "", formID); }
+		virtual void			GetFormDesc(char* a_buf, UInt32 a_bufLen);																					// 16 - { return std::sprintf_s(a_buf, a_bufLen, "%s Form '%s' (%08X)", g_formStrings[3 * formID], "", formID); }
 		virtual bool			PlayerKnows() const;																										// 17 - { return (flags >> 10 ) & 1; }
 		virtual bool			GetFlag00010000();																											// 18 - { return (flags >> 16) & 1; }
 		virtual bool			IsPlayable();																												// 19 - { return (flags >> 2) & 1; }

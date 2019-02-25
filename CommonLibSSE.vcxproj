@@ -301,6 +301,10 @@
     <ClInclude Include="include\RE\BGSOverridePackCollection.h" />
     <ClInclude Include="include\RE\BGSPerkRankArray.h" />
     <ClInclude Include="include\RE\BGSPreloadable.h" />
+    <ClInclude Include="include\RE\BGSProcedureTreeBranch.h" />
+    <ClInclude Include="include\RE\BGSProcedureTreeConditionalItem.h" />
+    <ClInclude Include="include\RE\BGSProcedureTreeProcedure.h" />
+    <ClInclude Include="include\RE\BGSProcedureTreeSequence.h" />
     <ClInclude Include="include\RE\BGSProjectile.h" />
     <ClInclude Include="include\RE\BGSRefAlias.h" />
     <ClInclude Include="include\RE\BGSReferenceEffect.h" />
@@ -350,6 +354,7 @@
     <ClInclude Include="include\RE\BGSTalkingActivator.h" />
     <ClInclude Include="include\RE\BGSTextureModel.h" />
     <ClInclude Include="include\RE\BGSTextureSet.h" />
+    <ClInclude Include="include\RE\BGSTypedItem.h" />
     <ClInclude Include="include\RE\bhkCachingShapePhantom.h" />
     <ClInclude Include="include\RE\bhkCharacterController.h" />
     <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
@@ -562,6 +567,7 @@
     <ClInclude Include="include\RE\IObjectHandlePolicy.h" />
     <ClInclude Include="include\RE\IObjectProcessor.h" />
     <ClInclude Include="include\RE\IPostAnimationChannelUpdateFunctor.h" />
+    <ClInclude Include="include\RE\IProcedureTreeItem.h" />
     <ClInclude Include="include\RE\ISavePatcherInterface.h" />
     <ClInclude Include="include\RE\IStore.h" />
     <ClInclude Include="include\RE\ItemCrafted.h" />
@@ -684,6 +690,7 @@
     <ClInclude Include="include\RE\TESClass.h" />
     <ClInclude Include="include\RE\TESClimate.h" />
     <ClInclude Include="include\RE\TESContainer.h" />
+    <ClInclude Include="include\RE\TESCustomPackageData.h" />
     <ClInclude Include="include\RE\TESDataHandler.h" />
     <ClInclude Include="include\RE\TESDescription.h" />
     <ClInclude Include="include\RE\TESEffectShader.h" />
@@ -698,6 +705,7 @@
     <ClInclude Include="include\RE\TESGlobal.h" />
     <ClInclude Include="include\RE\TESGrass.h" />
     <ClInclude Include="include\RE\TESIcon.h" />
+    <ClInclude Include="include\RE\TESIdleForm.h" />
     <ClInclude Include="include\RE\TESImageSpaceModifiableForm.h" />
     <ClInclude Include="include\RE\TESKey.h" />
     <ClInclude Include="include\RE\TESLandTexture.h" />
@@ -728,6 +736,8 @@
     <ClInclude Include="include\RE\TESObjectSTAT.h" />
     <ClInclude Include="include\RE\TESObjectTREE.h" />
     <ClInclude Include="include\RE\TESObjectWEAP.h" />
+    <ClInclude Include="include\RE\TESPackage.h" />
+    <ClInclude Include="include\RE\TESPackageData.h" />
     <ClInclude Include="include\RE\TESProduceForm.h" />
     <ClInclude Include="include\RE\TESQualityForm.h" />
     <ClInclude Include="include\RE\TESQuest.h" />
