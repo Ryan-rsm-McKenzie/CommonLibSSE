@@ -220,6 +220,9 @@
     <Filter Include="src\RE\Skyrim\Sky">
       <UniqueIdentifier>{1943f486-5ec0-4502-8ba9-f77066b1168d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\Skyrim\TESForms\Character\PerkEntry">
+      <UniqueIdentifier>{fc57e9d2-cbfd-47a6-adea-a0832bcce9ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -309,9 +312,6 @@
     <ClCompile Include="src\RE\TESFaction.cpp">
       <Filter>src\RE\Skyrim\TESForms\Character</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp">
-      <Filter>src\RE\Skyrim\TESForms\Character</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\UIManager.cpp">
       <Filter>src\RE\Skyrim\Menus</Filter>
     </ClCompile>
@@ -353,9 +353,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\ConsoleManager.cpp">
       <Filter>src\RE\Skyrim\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BGSEntryPointFunctionDataActivateChoice.cpp">
-      <Filter>src\RE\Skyrim\TESForms\Character</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp">
       <Filter>src\RE\Skyrim\Events</Filter>
@@ -566,6 +563,15 @@
     </ClCompile>
     <ClCompile Include="src\RE\Sky.cpp">
       <Filter>src\RE\Skyrim\Sky</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESQuest.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSEntryPointFunctionDataActivateChoice.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

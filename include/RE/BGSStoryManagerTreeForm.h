@@ -22,7 +22,8 @@ namespace RE
 
 
 		// members
-		UInt64 unk20;	// 28
+		UInt32	unk20;	// 20
+		UInt32	pad24;	// 24
 	};
 	STATIC_ASSERT(sizeof(BGSStoryManagerTreeForm) == 0x28);
 }
