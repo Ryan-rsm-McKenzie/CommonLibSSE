@@ -297,8 +297,10 @@
     <ClInclude Include="include\RE\BGSIdleMarker.h" />
     <ClInclude Include="include\RE\BGSMessageIcon.h" />
     <ClInclude Include="include\RE\BGSMovableStatic.h" />
+    <ClInclude Include="include\RE\BGSNamedPackageData.h" />
     <ClInclude Include="include\RE\BGSNote.h" />
     <ClInclude Include="include\RE\BGSOverridePackCollection.h" />
+    <ClInclude Include="include\RE\BGSPackageDataBool.h" />
     <ClInclude Include="include\RE\BGSPerkRankArray.h" />
     <ClInclude Include="include\RE\BGSPreloadable.h" />
     <ClInclude Include="include\RE\BGSProcedureTreeBranch.h" />
@@ -566,6 +568,7 @@
     <ClInclude Include="include\RE\InventoryMenu.h" />
     <ClInclude Include="include\RE\IObjectHandlePolicy.h" />
     <ClInclude Include="include\RE\IObjectProcessor.h" />
+    <ClInclude Include="include\RE\IPackageData.h" />
     <ClInclude Include="include\RE\IPostAnimationChannelUpdateFunctor.h" />
     <ClInclude Include="include\RE\IProcedureTreeItem.h" />
     <ClInclude Include="include\RE\ISavePatcherInterface.h" />

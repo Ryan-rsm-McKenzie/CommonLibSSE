@@ -226,6 +226,9 @@
     <Filter Include="include\RE\Skyrim\TESForms\Character\Procedure">
       <UniqueIdentifier>{f41fc8d3-f5e8-46a6-87bc-da2a624fd3b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\Character\Procedure\PackageData">
+      <UniqueIdentifier>{731bf9fa-1d1b-41d3-aea2-41e2557eb50a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -2057,12 +2060,6 @@
     <ClInclude Include="include\RE\TESPackage.h">
       <Filter>include\RE\Skyrim\TESForms\Character</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESPackageData.h">
-      <Filter>include\RE\Skyrim\TESForms\Character\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESCustomPackageData.h">
-      <Filter>include\RE\Skyrim\TESForms\Character\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\IProcedureTreeItem.h">
       <Filter>include\RE\Skyrim\TESForms\Character\Procedure</Filter>
     </ClInclude>
@@ -2080,6 +2077,21 @@
     </ClInclude>
     <ClInclude Include="include\RE\BGSProcedureTreeProcedure.h">
       <Filter>include\RE\Skyrim\TESForms\Character\Procedure</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IPackageData.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Procedure\PackageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSNamedPackageData.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Procedure\PackageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSPackageDataBool.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Procedure\PackageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESCustomPackageData.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Procedure\PackageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESPackageData.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Procedure\PackageData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

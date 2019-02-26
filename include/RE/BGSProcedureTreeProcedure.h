@@ -9,7 +9,7 @@ namespace RE
 	class BGSProcedureBase;
 
 
-	class BGSProcedureTreeProcedure : public BGSTypedItem<class BGSProcedureTreeProcedure, class BGSProcedureTreeConditionalItem>
+	class BGSProcedureTreeProcedure : public BGSTypedItem<BGSProcedureTreeProcedure, BGSProcedureTreeConditionalItem>
 	{
 	public:
 		virtual ~BGSProcedureTreeProcedure();			// 00
