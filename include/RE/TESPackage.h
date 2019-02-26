@@ -138,7 +138,7 @@ namespace RE
 
 		struct OnEvent
 		{
-			enum
+			enum Index : UInt32
 			{
 				kOnBegin = 0,
 				kOnEnd,
@@ -165,7 +165,7 @@ namespace RE
 
 
 			TESIdleForm*	idle;	// 00 - INAM
-			UInt32			index;	// 08
+			Index			index;	// 08
 			UInt32			pad0C;	// 0C
 			TopicData		topic;	// 10 - PDTO
 		};
