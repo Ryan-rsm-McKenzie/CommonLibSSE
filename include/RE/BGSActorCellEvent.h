@@ -3,5 +3,8 @@
 
 namespace RE
 {
-	class BGSActorCellEvent {};
+	class BGSActorCellEvent
+	{
+	public:
+	};
 }

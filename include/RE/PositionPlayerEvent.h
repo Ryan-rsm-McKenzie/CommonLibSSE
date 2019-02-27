@@ -3,5 +3,8 @@
 
 namespace RE
 {
-	class PositionPlayerEvent {};
+	class PositionPlayerEvent
+	{
+	public:
+	};
 }

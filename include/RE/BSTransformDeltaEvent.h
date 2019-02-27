@@ -3,5 +3,8 @@
 
 namespace RE
 {
-	class BSTransformDeltaEvent {};
+	class BSTransformDeltaEvent
+	{
+	public:
+	};
 }

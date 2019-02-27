@@ -3,5 +3,8 @@
 
 namespace RE
 {
-	class bhkCharacterMoveFinishEvent {};
+	class bhkCharacterMoveFinishEvent
+	{
+	public:
+	};
 }

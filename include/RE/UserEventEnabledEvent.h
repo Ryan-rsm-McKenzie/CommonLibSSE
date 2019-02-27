@@ -3,5 +3,8 @@
 
 namespace RE
 {
-	class UserEventEnabledEvent {};
+	class UserEventEnabledEvent
+	{
+	public:
+	};
 }

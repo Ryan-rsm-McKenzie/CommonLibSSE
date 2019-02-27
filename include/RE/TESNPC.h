@@ -185,7 +185,7 @@ namespace RE
 
 		// override (TESActorBase)
 		virtual void			InitDefaults() override;																											// 04
-		virtual void			Unk_05(void) override;																												// 05
+		virtual void			ReleaseManagedData() override;																										// 05
 		virtual bool			LoadForm(TESFile* a_mod) override;																									// 06
 		virtual void			Unk_0C(void)  override;																												// 0C
 		virtual void			SaveBuffer(BGSSaveFormBuffer* a_buf) override;																						// 0E
@@ -207,7 +207,7 @@ namespace RE
 		bool					HasOverlays();
 		void					ChangeHeadPart(BGSHeadPart* a_target);
 		void					UpdateNeck(BSFaceGenNiNode* a_faceNode);
-		void					SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute, UInt32 a_unk4);
+		void					SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute);
 		void					SetFaceTexture(BGSTextureSet* a_textureSet);
 		void					SetHairColor(BGSColorForm* a_hairColor);
 		BGSHeadPart*			GetHeadPartByType(UInt32 a_type);

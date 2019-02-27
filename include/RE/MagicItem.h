@@ -73,7 +73,7 @@ namespace RE
 		virtual void		InitItem() override;							// 13
 		virtual bool		IsMagicItem() const override;					// 29 - { return true; }
 		virtual void		CopyFrom(TESForm* a_srcForm) override;			// 2F
-		virtual bool		IsAutoCalc() override;							// 3E
+		virtual bool		IsAutoCalc() const override;					// 3E - { return (GetData().unk4 & 1) == 0; }
 
 		// add
 		virtual MagicType	GetMagicType() const = 0;						// 53

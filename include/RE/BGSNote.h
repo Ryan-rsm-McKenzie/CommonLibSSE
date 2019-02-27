@@ -32,7 +32,7 @@ namespace RE
 
 		// override (TESBoundObject)
 		virtual void	InitDefaults() override;																											// 04
-		virtual void	Unk_05(void) override;																												// 05
+		virtual void	ReleaseManagedData() override;																										// 05
 		virtual bool	LoadForm(TESFile* a_mod) override;																									// 06
 		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																						// 0F
 		virtual void	Unk_12(void) override;																												// 12

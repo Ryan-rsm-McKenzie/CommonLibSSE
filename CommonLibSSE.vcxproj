@@ -291,7 +291,9 @@
     <ClInclude Include="include\RE\BGSBaseAlias.h" />
     <ClInclude Include="include\RE\BGSBlockBashData.h" />
     <ClInclude Include="include\RE\BGSConstructibleObject.h" />
+    <ClInclude Include="include\RE\BGSDebris.h" />
     <ClInclude Include="include\RE\BGSDistantTreeBlock.h" />
+    <ClInclude Include="include\RE\BGSExplosion.h" />
     <ClInclude Include="include\RE\BGSHazard.h" />
     <ClInclude Include="include\RE\BGSIdleCollection.h" />
     <ClInclude Include="include\RE\BGSIdleMarker.h" />
@@ -692,6 +694,7 @@
     <ClInclude Include="include\RE\TESChildCell.h" />
     <ClInclude Include="include\RE\TESClass.h" />
     <ClInclude Include="include\RE\TESClimate.h" />
+    <ClInclude Include="include\RE\TESCombatStyle.h" />
     <ClInclude Include="include\RE\TESContainer.h" />
     <ClInclude Include="include\RE\TESCustomPackageData.h" />
     <ClInclude Include="include\RE\TESDataHandler.h" />
@@ -715,7 +718,9 @@
     <ClInclude Include="include\RE\TESLevCharacter.h" />
     <ClInclude Include="include\RE\TESLeveledList.h" />
     <ClInclude Include="include\RE\TESLevItem.h" />
+    <ClInclude Include="include\RE\TESLevSpell.h" />
     <ClInclude Include="include\RE\TESLoadGameEvent.h" />
+    <ClInclude Include="include\RE\TESLoadScreen.h" />
     <ClInclude Include="include\RE\TESMagicEffectApplyEvent.h" />
     <ClInclude Include="include\RE\TESMagicTargetForm.h" />
     <ClInclude Include="include\RE\TESModel.h" />
@@ -725,6 +730,7 @@
     <ClInclude Include="include\RE\TESNPC.h" />
     <ClInclude Include="include\RE\TESObject.h" />
     <ClInclude Include="include\RE\TESObjectACTI.h" />
+    <ClInclude Include="include\RE\TESObjectANIO.h" />
     <ClInclude Include="include\RE\TESObjectARMA.h" />
     <ClInclude Include="include\RE\TESObjectARMO.h" />
     <ClInclude Include="include\RE\TESObjectBOOK.h" />
@@ -765,6 +771,7 @@
     <ClInclude Include="include\RE\TESTopicInfo.h" />
     <ClInclude Include="include\RE\TESTrackedStatsEvent.h" />
     <ClInclude Include="include\RE\TESValueForm.h" />
+    <ClInclude Include="include\RE\TESWaterForm.h" />
     <ClInclude Include="include\RE\TESWeather.h" />
     <ClInclude Include="include\RE\TESWeightForm.h" />
     <ClInclude Include="include\RE\TESWorldSpace.h" />

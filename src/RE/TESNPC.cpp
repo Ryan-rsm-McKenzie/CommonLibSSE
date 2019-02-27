@@ -49,12 +49,12 @@ namespace RE
 	}
 
 
-	void TESNPC::SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute, UInt32 a_unk4)
+	void TESNPC::SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute)
 	{
-		typedef void _SetSkinFromTint_t(TESNPC* a_this, NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute, UInt32 a_unk4);
+		typedef void _SetSkinFromTint_t(TESNPC* a_this, NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute);
 		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESNPC*>(this)->_SetSkinFromTint_GetPtr());
 		_SetSkinFromTint_t* _SetSkinFromTint = reinterpret_cast<_SetSkinFromTint_t*>(*ptr);
-		_SetSkinFromTint(this, a_result, a_tintMask, a_compute, a_unk4);
+		_SetSkinFromTint(this, a_result, a_tintMask, a_compute);
 	}
 
 

@@ -28,7 +28,7 @@ namespace RE
 		virtual void	Unk_11(void);					// 11
 
 		// members
-		BSTArray<BGSProcedureTreeConditionalItem*>	branches;	// 10
+		BSTArray<BGSProcedureTreeConditionalItem*>	conditions;	// 10
 		UInt64										unk28;		// 28
 	};
 	STATIC_ASSERT(sizeof(BGSProcedureTreeBranch) == 0x30);

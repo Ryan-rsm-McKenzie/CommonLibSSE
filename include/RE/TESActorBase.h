@@ -39,7 +39,9 @@ namespace RE
 		virtual void			UnMarkChanged(UInt32 a_changeFlags) override;	// 0B
 		virtual void			SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
 		virtual void			LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual bool			IsAutoCalc() override;							// 3E - { return formType == FormType::NPC && (TESActorBaseData::flags >> 4) & 1; }
+		virtual bool			IsAutoCalc() const override;					// 3E - { return formType == FormType::NPC && (TESActorBaseData::flags >> 4) & 1; }
+		virtual void			Unk_3F(void) override;							// 3F
+
 
 		// add
 		virtual void			Unk_53(void);									// 53 - { return 0; }

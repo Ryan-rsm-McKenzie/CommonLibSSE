@@ -3,5 +3,8 @@
 
 namespace RE
 {
-	class BGSActorDeathEvent {};
+	class BGSActorDeathEvent
+	{
+	public:
+	};
 }

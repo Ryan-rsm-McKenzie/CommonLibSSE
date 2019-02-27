@@ -4,14 +4,15 @@
 
 #include "RE/FormTypes.h"
 
-class Script;
-class ScriptLocals;
-class ScriptLineBuffer;
-class ScriptBuffer;
-
 
 namespace RE
 {
+	class Script;
+	class ScriptLocals;
+	class ScriptLineBuffer;
+	class ScriptBuffer;
+
+
 	struct SCRIPT_PARAMETER
 	{
 		enum class Type : UInt32

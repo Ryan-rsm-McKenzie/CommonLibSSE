@@ -14,38 +14,78 @@ namespace RE
 		enum { kTypeID = FormType::EffectShader };
 
 
-		struct Data
+		struct RecordFlags
 		{
-			enum class SourceBlendMode : UInt32
+			enum RecordFlag : UInt32
 			{
-				kSourceAlpha = 0x5
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
 			};
+		};
 
 
-			enum class DestBlendMode : UInt32
+		struct Data	// DATA
+		{
+			enum class BlendMode : UInt32
 			{
-				kOne = 0x2,
-				kSourceInvertedAlpha = 0x6,
-				kDestInvertedAlpha = 0x8
+				kZero = 1,
+				kOne = 2,
+				kSourceColor = 3,
+				kSourceInverseColor = 4,
+				kSourceAlpha = 5,
+				kSourceInvertedAlpha = 6,
+				kDestAlpha = 7,
+				kDestInvertedAlpha = 8,
+				kDestColor = 9,
+				kDestInverseColor = 10,
+				kSourceAlphaSAT = 11
 			};
 
 
 			enum class BlendOperation : UInt32
 			{
-				kAdd = 0x1
+				kAdd = 1,
+				kSubtract = 2,
+				kReverseSubtract = 3,
+				kMinimum = 4,
+				kMaximum = 5
 			};
 
 
 			enum class ZTestFunction : UInt32
 			{
-				kEqualTo = 0x3,
-				kNormal = 0x4
+				kEqualTo = 3,
+				kNormal = 4,
+				kGreaterThan = 5,
+				kGreaterThanOrEqualTo = 7,
+				kAlwaysShow = 8
+			};
+
+
+			enum class Flag : UInt32
+			{
+				kNone = 0,
+				kNoMembraneShader = 1 << 0,
+				kMembraneGreyscaleColor = 1 << 1,
+				kMembraneGreyscaleAlpha = 1 << 2,
+				kNoParticleShader = 1 << 3,
+				kEdgeEffectInverse = 1 << 4,
+				kAffectSkinOnly = 1 << 5,
+				kIgnoreAlpha = 1 << 6,
+				kProjectUVs = 1 << 7,
+				kIgnoreBaseGeometryAlpha = 1 << 8,
+				kLighting = 1 << 9,
+				kNoWeapons = 1 << 10,
+				kParticleAnimated = 1 << 15,
+				kParticleGreyscaleColor = 1 << 16,
+				kParticleGreyscaleAlpha = 1 << 17,
+				kUseBloodGeometry = 1 << 24
 			};
 
 
 			UInt32					unk00;												// 000
 
-			SourceBlendMode			membraneShaderSourceBlendMode;						// 004
+			BlendMode				membraneShaderSourceBlendMode;						// 004
 			BlendOperation			membraneShaderBlendOperation;						// 008
 			ZTestFunction			membraneShaderZTestFunction;						// 00C
 
@@ -72,12 +112,12 @@ namespace RE
 
 			float					edgeEffectFullAlphaRatio;							// 058
 
-			DestBlendMode			membraneShaderDestBlendMode;						// 05C
+			BlendMode				membraneShaderDestBlendMode;						// 05C
 
-			SourceBlendMode			particleShaderSourceBlendMode;						// 060
+			BlendMode				particleShaderSourceBlendMode;						// 060
 			BlendOperation			particleShaderBlendOperation;						// 064
 			ZTestFunction			particleShaderZTestOperation;						// 068
-			DestBlendMode			particleShaderDestBlendMode;						// 06C
+			BlendMode				particleShaderDestBlendMode;						// 06C
 			float					particleShaderParticleBirthRampUpTime;				// 070
 			float					particleShaderFullParticleBirthTime;				// 074
 			float					particleShaderParticleBirthRampDownTime;			// 078
@@ -116,7 +156,7 @@ namespace RE
 
 			UInt32					pad0D4;												// 0F4
 
-			void*					addonModels;										// 0F8
+			BGSDebris*				addonModels;										// 0F8
 
 			float					holesStartTime;										// 100
 			float					holesEndTime;										// 104
@@ -164,7 +204,7 @@ namespace RE
 			float					particleShaderAnimatedFrameCount;					// 188
 			float					particleShaderAnimatedFrameCountVariance;			// 18C
 
-			UInt32					flags;												// 190
+			Flag					flags;												// 190
 
 			float					fillTextureEffectTextureScaleU;						// 194
 			float					fillTextureEffectTextureScaleV;						// 198
@@ -175,19 +215,20 @@ namespace RE
 
 
 		// override (TESForm)
+		virtual void	InitDefaults() override;			// 04
 		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
 		virtual void	InitItem() override;				// 13
 
 
 		// members
-		Data		data;					// 020
+		Data		data;					// 020 - DATA
 		TESTexture	fillTexture;			// 1C0 - ICON
 		TESTexture	particleShaderTexture;	// 1D0 - ICO2
 		TESTexture	holesTexture;			// 1E0 - NAM7
 		TESTexture	membranePaletteTexture; // 1F0 - NAM8
 		TESTexture	particlePaletteTexture; // 200 - NAM9
-		void*		unk210;					// 210 - BSIntrusiveRefCounted
-		void*		unk218;					// 218 - BSIntrusiveRefCounted
+		void*		unk210;					// 210
+		void*		unk218;					// 218
 	};
 	STATIC_ASSERT(sizeof(TESEffectShader) == 0x220);
 }

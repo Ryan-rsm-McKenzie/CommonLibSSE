@@ -57,6 +57,7 @@ namespace RE
 		virtual ~TESObjectSTAT();							// 00
 
 		// override (TESBoundObject)
+		virtual void	ReleaseManagedData() override;		// 05
 		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
 		virtual void	InitItem() override;				// 13
 		virtual bool	IsPlayable() override;				// 19 - { return true; }

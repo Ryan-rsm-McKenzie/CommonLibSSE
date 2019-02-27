@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	class BGSProcedureTreeSequence;
+	class BGSProcedureTreeBranch;
 	class IPackageData;
 	class TESPackage;
 
@@ -64,12 +64,12 @@ namespace RE
 
 
 		// members
-		PackageData					packageData;		// 08
-		BGSProcedureTreeSequence*	procedureTree;		// 20
-		DataInputs*					dataInputs;			// 28
-		TESPackage*					packageTemplate;	// 30
-		UInt32						versionCounter;		// 38
-		UInt32						unk3C;				// 3C
+		PackageData				packageData;		// 08
+		BGSProcedureTreeBranch*	branches;			// 20
+		DataInputs*				dataInputs;			// 28
+		TESPackage*				packageTemplate;	// 30
+		UInt32					versionCounter;		// 38
+		UInt32					unk3C;				// 3C
 	};
 	STATIC_ASSERT(sizeof(TESCustomPackageData) == 0x40);
 }

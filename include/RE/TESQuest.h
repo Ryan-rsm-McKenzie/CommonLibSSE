@@ -138,7 +138,7 @@ namespace RE
 
 		// override (BGSStoryManagerTreeForm)
 		virtual void		InitDefaults() override;						// 04
-		virtual void		Unk_05(void) override;							// 05
+		virtual void		ReleaseManagedData() override;					// 05
 		virtual bool		LoadForm(TESFile* a_mod) override;				// 06
 		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
 		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F

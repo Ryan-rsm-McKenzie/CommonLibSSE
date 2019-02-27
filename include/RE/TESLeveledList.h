@@ -40,7 +40,7 @@ namespace RE
 
 		enum Flag : UInt8	// LVLF
 		{
-			kCalculateFromAllLevelsLTPCLevel = 1 << 0,
+			kCalculateFromAllLevelsLTOrEqPCLevel = 1 << 0,
 			kCalculateForEachItemInCount = 1 << 1,
 			kUseAll = 1 << 2,
 			kSpecialLoot = 1 << 3

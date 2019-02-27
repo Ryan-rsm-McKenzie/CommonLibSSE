@@ -52,8 +52,43 @@ namespace RE
 
 			enum class Type : UInt8
 			{
+				kFind = 0,
+				kFollow = 1,
+				kEscort = 2,
+				kEat = 3,
+				kSleep = 4,
+				kWander = 5,
+				kTravel = 6,
+				kAccompany = 7,
+				kUseItemAt = 8,
+				kAmbush = 9,
+				kFleeNotCombat = 10,
+				kCastMagic = 11,
+				kSandbox = 12,
+				kPatrol = 13,
+				kGuard = 14,
+				kDialogue = 15,
+				kUseWeapon = 16,
+				kFind2 = 17,
 				kPackage = 18,
-				kPackageTemplate = 19
+				kPackageTemplate = 19,
+				kActivate = 20,
+				kAlarm = 21,
+				kFlee = 22,
+				kTrespass = 23,
+				kSpectator = 24,
+				kReactToDead = 25,
+				kGetUpFromChair = 26,
+				kDoNothing = 27,
+				kInGameDialogue = 28,
+				kSurface = 29,
+				kSearchForAttacker = 30,
+				kAvoidPlayer = 31,
+				kReactToDestroyedObject = 32,
+				kReactToGrenadeOrMine = 33,
+				kStealWarning = 34,
+				kPickPocketWarning = 35,
+				kMovementBlocked = 36
 			};
 
 
@@ -176,7 +211,7 @@ namespace RE
 
 		// override (TESForm)
 		virtual void		InitDefaults() override;						// 04
-		virtual void		Unk_05(void) override;							// 05
+		virtual void		ReleaseManagedData() override;					// 05
 		virtual bool		LoadForm(TESFile* a_mod) override;				// 06
 		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
 		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F

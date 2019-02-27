@@ -64,7 +64,7 @@ namespace RE
 
 		// override (MagicItem)
 		virtual void		InitDefaults() override;								// 04
-		virtual void		Unk_05(void) override;									// 05
+		virtual void		ReleaseManagedData() override;							// 05
 		virtual void		InitItem() override;									// 13
 		virtual MagicType	GetMagicType() const override;							// 53 - { return MagicType::kAlchemy; }
 		virtual CastType	GetCastType() const override;							// 55 - { return CastType::kFireAndForget; }

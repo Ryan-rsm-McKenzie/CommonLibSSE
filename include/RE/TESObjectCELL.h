@@ -99,7 +99,7 @@ namespace RE
 		virtual ~TESObjectCELL();													// 00
 
 		// override (TESForm)
-		virtual void		Unk_05(void) override;									// 05
+		virtual void		ReleaseManagedData() override;							// 05
 		virtual bool		LoadForm(TESFile* a_mod) override;						// 06
 		virtual TESForm*	DupulicateForm(void* a_arg1, void* a_arg2) override;	// 09
 		virtual void		Unk_0C(void) override;									// 0C

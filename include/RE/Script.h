@@ -22,6 +22,8 @@ namespace RE
 		virtual ~Script();									// 00
 
 		// override (TESForm)
+		virtual void	InitDefaults();						// 04
+		virtual void	ReleaseManagedData();				// 05
 		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
 		virtual void	InitItem() override;				// 13
 
