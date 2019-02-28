@@ -400,7 +400,8 @@ namespace RE
 	void GFxValue::ObjectInterface::ObjectAddRef(GFxValue* a_val, void* a_obj)
 	{
 		typedef void _ObjectAddRef_t(ObjectInterface* a_this, GFxValue* a_val, void* a_obj);
-		_ObjectAddRef_t* _ObjectAddRef = (_ObjectAddRef_t*)(((::GFxValue::ObjectInterface*)this)->_AddManaged_Internal_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(reinterpret_cast<::GFxValue::ObjectInterface*>(this)->_AddManaged_Internal_GetPtr());
+		_ObjectAddRef_t* _ObjectAddRef = reinterpret_cast<_ObjectAddRef_t*>(*ptr);
 		_ObjectAddRef(this, a_val, a_obj);
 	}
 
@@ -408,7 +409,8 @@ namespace RE
 	void GFxValue::ObjectInterface::ObjectRelease(GFxValue* a_val, void* a_obj)
 	{
 		typedef void _ObjectRelease_t(ObjectInterface* a_this, GFxValue* a_val, void* a_obj);
-		_ObjectRelease_t* _ObjectRelease = (_ObjectRelease_t*)(((::GFxValue::ObjectInterface*)this)->_ReleaseManaged_Internal_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(reinterpret_cast<::GFxValue::ObjectInterface*>(this)->_ReleaseManaged_Internal_GetPtr());
+		_ObjectRelease_t* _ObjectRelease = reinterpret_cast<_ObjectRelease_t*>(*ptr);
 		_ObjectRelease(this, a_val, a_obj);
 	}
 
@@ -416,7 +418,8 @@ namespace RE
 	bool GFxValue::ObjectInterface::HasMember(void* a_data, const char* a_name, bool a_isDObj) const
 	{
 		typedef bool _HasMember_t(const ObjectInterface* a_this, void* a_data, const char* a_name, bool a_isDObj);
-		_HasMember_t* _HasMember = (_HasMember_t*)(((::GFxValue::ObjectInterface*)this)->_HasMember_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(const_cast<::GFxValue::ObjectInterface*>(reinterpret_cast<const ::GFxValue::ObjectInterface*>(this))->_HasMember_GetPtr());
+		_HasMember_t* _HasMember = reinterpret_cast<_HasMember_t*>(*ptr);
 		return _HasMember(this, a_data, a_name, a_isDObj);
 	}
 
@@ -424,7 +427,8 @@ namespace RE
 	bool GFxValue::ObjectInterface::GetMember(void* a_data, const char* a_name, GFxValue* a_val, bool a_isDObj) const
 	{
 		typedef bool _GetMember_t(const ObjectInterface* a_this, void* a_data, const char* a_name, GFxValue* a_val, bool a_isDObj);
-		_GetMember_t* _GetMember = (_GetMember_t*)(((::GFxValue::ObjectInterface*)this)->_GetMember_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(const_cast<::GFxValue::ObjectInterface*>(reinterpret_cast<const ::GFxValue::ObjectInterface*>(this))->_GetMember_GetPtr());
+		_GetMember_t* _GetMember = reinterpret_cast<_GetMember_t*>(*ptr);
 		return _GetMember(this, a_data, a_name, a_val, a_isDObj);
 	}
 
@@ -432,7 +436,8 @@ namespace RE
 	bool GFxValue::ObjectInterface::SetMember(void* a_data, const char* a_name, const GFxValue& a_value, bool a_isDObj)
 	{
 		typedef bool _SetMember_t(ObjectInterface* a_this, void* a_data, const char* a_name, const GFxValue& a_value, bool a_isDObj);
-		_SetMember_t* _SetMember = (_SetMember_t*)(((::GFxValue::ObjectInterface*)this)->_SetMember_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(reinterpret_cast<::GFxValue::ObjectInterface*>(this)->_SetMember_GetPtr());
+		_SetMember_t* _SetMember = reinterpret_cast<_SetMember_t*>(*ptr);
 		return _SetMember(this, a_data, a_name, a_value, a_isDObj);
 	}
 
@@ -440,7 +445,8 @@ namespace RE
 	bool GFxValue::ObjectInterface::Invoke(void* a_data, GFxValue* a_result, const char* a_name, const GFxValue* a_args, UPInt a_numArgs, bool isDObj)
 	{
 		typedef bool _Invoke_t(ObjectInterface* a_this, void* a_data, GFxValue* a_result, const char* a_name, const GFxValue* a_args, UPInt a_numArgs, bool isDObj);
-		_Invoke_t* _Invoke = (_Invoke_t*)(((::GFxValue::ObjectInterface*)this)->_Invoke_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(reinterpret_cast<::GFxValue::ObjectInterface*>(this)->_Invoke_GetPtr());
+		_Invoke_t* _Invoke = reinterpret_cast<_Invoke_t*>(*ptr);
 		return _Invoke(this, a_data, a_result, a_name, a_args, a_numArgs, isDObj);
 	}
 
@@ -448,7 +454,8 @@ namespace RE
 	bool GFxValue::ObjectInterface::DeleteMember(void* a_data, const char* a_name, bool a_isDObj)
 	{
 		typedef bool _DeleteMember_t(ObjectInterface* a_this, void* a_data, const char* a_name, bool a_isDObj);
-		_DeleteMember_t* _DeleteMember = (_DeleteMember_t*)(((::GFxValue::ObjectInterface*)this)->_DeleteMember_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(reinterpret_cast<::GFxValue::ObjectInterface*>(this)->_DeleteMember_GetPtr());
+		_DeleteMember_t* _DeleteMember = reinterpret_cast<_DeleteMember_t*>(*ptr);
 		return _DeleteMember(this, a_data, a_name, a_isDObj);
 	}
 
@@ -456,7 +463,8 @@ namespace RE
 	UInt32 GFxValue::ObjectInterface::GetArraySize(void* a_data) const
 	{
 		typedef UInt32 _GetArraySize_t(const ObjectInterface* a_this, void* a_data);
-		_GetArraySize_t* _GetArraySize = (_GetArraySize_t*)(((::GFxValue::ObjectInterface*)this)->_GetArraySize_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(const_cast<::GFxValue::ObjectInterface*>(reinterpret_cast<const ::GFxValue::ObjectInterface*>(this))->_GetArraySize_GetPtr());
+		_GetArraySize_t* _GetArraySize = reinterpret_cast<_GetArraySize_t*>(*ptr);
 		return _GetArraySize(this, a_data);
 	}
 
@@ -464,7 +472,8 @@ namespace RE
 	bool GFxValue::ObjectInterface::GetElement(void* a_data, UInt32 a_idx, GFxValue* a_val) const
 	{
 		typedef bool _GetElement_t(const ObjectInterface* a_this, void* a_data, UInt32 a_idx, GFxValue* a_val);
-		_GetElement_t* _GetElement = (_GetElement_t*)(((::GFxValue::ObjectInterface*)this)->_GetElement_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(const_cast<::GFxValue::ObjectInterface*>(reinterpret_cast<const ::GFxValue::ObjectInterface*>(this))->_GetElement_GetPtr());
+		_GetElement_t* _GetElement = reinterpret_cast<_GetElement_t*>(*ptr);
 		return _GetElement(this, a_data, a_idx, a_val);
 	}
 
@@ -472,7 +481,8 @@ namespace RE
 	bool GFxValue::ObjectInterface::PushBack(void* a_data, const GFxValue& a_value)
 	{
 		typedef bool _PushBack_t(ObjectInterface* a_this, void* a_data, const GFxValue& a_value);
-		_PushBack_t* _PushBack = (_PushBack_t*)(((::GFxValue::ObjectInterface*)this)->_PushBack_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(reinterpret_cast<::GFxValue::ObjectInterface*>(this)->_PushBack_GetPtr());
+		_PushBack_t* _PushBack = reinterpret_cast<_PushBack_t*>(*ptr);
 		return _PushBack(this, a_data, a_value);
 	}
 
@@ -480,7 +490,8 @@ namespace RE
 	bool GFxValue::ObjectInterface::GetDisplayInfo(void* a_data, DisplayInfo* a_info) const
 	{
 		typedef bool _GetDisplayInfo_t(const ObjectInterface* a_this, void* a_data, DisplayInfo* a_info);
-		_GetDisplayInfo_t* _GetDisplayInfo = (_GetDisplayInfo_t*)(((::GFxValue::ObjectInterface*)this)->_GetDisplayInfo_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(const_cast<::GFxValue::ObjectInterface*>(reinterpret_cast<const ::GFxValue::ObjectInterface*>(this))->_GetDisplayInfo_GetPtr());
+		_GetDisplayInfo_t* _GetDisplayInfo = reinterpret_cast<_GetDisplayInfo_t*>(*ptr);
 		return _GetDisplayInfo(this, a_data, a_info);
 	}
 
@@ -488,7 +499,8 @@ namespace RE
 	bool GFxValue::ObjectInterface::SetDisplayInfo(void* a_data, const DisplayInfo& a_info)
 	{
 		typedef bool _SetDisplayInfo_t(ObjectInterface* a_this, void* a_data, const DisplayInfo& a_info);
-		_SetDisplayInfo_t* _SetDisplayInfo = (_SetDisplayInfo_t*)(((::GFxValue::ObjectInterface*)this)->_SetDisplayInfo_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(reinterpret_cast<::GFxValue::ObjectInterface*>(this)->_SetDisplayInfo_GetPtr());
+		_SetDisplayInfo_t* _SetDisplayInfo = reinterpret_cast<_SetDisplayInfo_t*>(*ptr);
 		return _SetDisplayInfo(this, a_data, a_info);
 	}
 
@@ -496,7 +508,8 @@ namespace RE
 	bool GFxValue::ObjectInterface::SetText(void* a_data, const char* a_text, bool a_isHTML)
 	{
 		typedef bool _SetText_t(ObjectInterface* a_this, void* a_data, const char* a_text, bool a_isHTML);
-		_SetText_t* _SetText = (_SetText_t*)(((::GFxValue::ObjectInterface*)this)->_SetText_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(reinterpret_cast<::GFxValue::ObjectInterface*>(this)->_SetText_GetPtr());
+		_SetText_t* _SetText = reinterpret_cast<_SetText_t*>(*ptr);
 		return _SetText(this, a_data, a_text, a_isHTML);
 	}
 
@@ -504,7 +517,8 @@ namespace RE
 	bool GFxValue::ObjectInterface::AttachMovie(void* a_data, GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, SInt32 a_depth, const GFxValue* a_initObj)
 	{
 		typedef bool _AttachMovie_t(ObjectInterface* a_this, void* a_data, GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, SInt32 a_depth, const GFxValue* a_initObj);
-		_AttachMovie_t* _AttachMovie = (_AttachMovie_t*)(((::GFxValue::ObjectInterface*)this)->_AttachMovie_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(reinterpret_cast<::GFxValue::ObjectInterface*>(this)->_AttachMovie_GetPtr());
+		_AttachMovie_t* _AttachMovie = reinterpret_cast<_AttachMovie_t*>(*ptr);
 		return _AttachMovie(this, a_data, a_movieClip, a_symbolName, a_instanceName, a_depth, a_initObj);
 	}
 
@@ -512,7 +526,8 @@ namespace RE
 	bool GFxValue::ObjectInterface::GotoAndPlay(void* a_data, const char* a_frame, bool a_stop)
 	{
 		typedef bool _GotoAndPlay_t(ObjectInterface* a_this, void* a_data, const char* a_frame, bool a_stop);
-		_GotoAndPlay_t* _GotoAndPlay = (_GotoAndPlay_t*)(((::GFxValue::ObjectInterface*)this)->_GotoLabeledFrame_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(reinterpret_cast<::GFxValue::ObjectInterface*>(this)->_GotoLabeledFrame_GetPtr());
+		_GotoAndPlay_t* _GotoAndPlay = reinterpret_cast<_GotoAndPlay_t*>(*ptr);
 		return _GotoAndPlay(this, a_data, a_frame, a_stop);
 	}
 
@@ -525,13 +540,15 @@ namespace RE
 
 	GFxValue::GFxValue() :
 		_objectInterface(0),
-		_type(ValueType::kUndefined)
+		_type(ValueType::kUndefined),
+		_pad0C(0)
 	{}
 
 
 	GFxValue::GFxValue(ValueType a_type) :
 		_objectInterface(0),
-		_type(a_type)
+		_type(a_type),
+		_pad0C(0)
 	{
 		assert(_type != ValueType::kObject && _type != ValueType::kArray && _type != ValueType::kDisplayObject);
 		_value.string = 0;
@@ -540,7 +557,8 @@ namespace RE
 
 	GFxValue::GFxValue(double a_val) :
 		_objectInterface(0),
-		_type(ValueType::kNumber)
+		_type(ValueType::kNumber),
+		_pad0C(0)
 	{
 		_value.number = a_val;
 	}
@@ -548,7 +566,8 @@ namespace RE
 
 	GFxValue::GFxValue(bool a_val) :
 		_objectInterface(0),
-		_type(ValueType::kBoolean)
+		_type(ValueType::kBoolean),
+		_pad0C(0)
 	{
 		_value.boolean = a_val;
 	}
@@ -556,7 +575,8 @@ namespace RE
 
 	GFxValue::GFxValue(const char* a_str) :
 		_objectInterface(0),
-		_type(ValueType::kString)
+		_type(ValueType::kString),
+		_pad0C(0)
 	{
 		_value.string = a_str;
 	}
@@ -564,7 +584,8 @@ namespace RE
 
 	GFxValue::GFxValue(const wchar_t* a_str) :
 		_objectInterface(0),
-		_type(ValueType::kStringW)
+		_type(ValueType::kStringW),
+		_pad0C(0)
 	{
 		_value.wideString = a_str;
 	}
@@ -572,7 +593,8 @@ namespace RE
 
 	GFxValue::GFxValue(const GFxValue& a_rhs) :
 		_objectInterface(NULL),
-		_type(a_rhs._type)
+		_type(a_rhs._type),
+		_pad0C(0)
 	{
 		_value = a_rhs._value;
 		if (a_rhs.IsManagedValue()) {

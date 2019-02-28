@@ -1,9 +1,8 @@
 #pragma once
 
-#include "skse64/GameExtraData.h"  // InventoryEntryData::EquipData
-
 #include "RE/BSTList.h"  // BSSimpleList
-#include "RE/Memory.h"
+#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/SoulLevels.h"  // SoulLevel
 
 
 namespace RE
@@ -15,15 +14,14 @@ namespace RE
 	class InventoryEntryData
 	{
 	public:
-		InventoryEntryData(TESForm* a_item, UInt32 a_count);
+		InventoryEntryData(TESForm* a_item, SInt32 a_count);
 		~InventoryEntryData();
 
 		void		GetExtraWornBaseLists(BaseExtraList*& a_pWornBaseListOut, BaseExtraList*& a_pWornLeftBaseListOut);
-		void		GetEquipItemData(::InventoryEntryData::EquipData& a_stateOut, SInt32 a_itemId, SInt32 a_baseCount);
 		const char*	GenerateName();
 		SInt32		GetValue();
 		bool		IsOwnedBy(TESForm* a_actor, bool a_unk1);
-		UInt32		GetSoulLevel();
+		SoulLevel	GetSoulLevel();
 
 		void		AddEntryList(BaseExtraList* a_extra);
 		bool		IsOwnedBy(TESForm* a_actor, TESForm* a_itemOwner, bool a_unk1);

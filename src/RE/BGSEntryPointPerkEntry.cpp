@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	bool BGSEntryPointPerkEntry::HasType(EntryPointType a_type)
+	bool BGSEntryPointPerkEntry::IsType(EntryPointType a_type)
 	{
 		return type == a_type;
 	}

@@ -57,7 +57,7 @@ namespace RE
 
 	void InventoryChanges::InitContainer()
 	{
-		typedef void _InitContainer_t(InventoryChanges * a_this);
+		typedef void _InitContainer_t(InventoryChanges* a_this);
 		static RelocAddr<_InitContainer_t*> _InitContainer(INVENTORY_CHANGES_INIT_CONTAINER);
 		_InitContainer(this);
 	}
@@ -65,8 +65,16 @@ namespace RE
 
 	void InventoryChanges::GenerateLeveledListChanges()
 	{
-		typedef void* _GenerateLeveledListChanges_t(InventoryChanges * a_this);
+		typedef void _GenerateLeveledListChanges_t(InventoryChanges* a_this);
 		static RelocAddr<_GenerateLeveledListChanges_t*> _GenerateLeveledListChanges(INVENTORY_CHANGES_GENERATE_LEVELED_LIST_CHANGES);
 		_GenerateLeveledListChanges(this);
+	}
+
+
+	void InventoryChanges::SendContainerChangedEvent(BaseExtraList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, SInt32 a_count)
+	{
+		typedef void _SendContainerChangedEvent_t(InventoryChanges* a_this, BaseExtraList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, SInt32 a_count);
+		static RelocAddr<_SendContainerChangedEvent_t*> _SendContainerChangedEvent(INVENTORY_CHANGES_SEND_CONTAINER_CHANGED_EVENT);
+		_SendContainerChangedEvent(this, a_itemExtraList, a_fromRefr, a_item, a_count);
 	}
 }

@@ -1,7 +1,6 @@
 #pragma once
 
-#include "skse64/ScaleformCallbacks.h"  // FxDelegateHandler
-
+#include "RE/FxDelegateHandler.h"  // FxDelegateHandler
 #include "RE/GFxMovieView.h"  // GFxMovieView
 #include "RE/InputMappingManager.h"  // InputMappingManager::Context
 

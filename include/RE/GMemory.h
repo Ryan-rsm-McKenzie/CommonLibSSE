@@ -47,13 +47,9 @@ namespace RE
 
 
 #define GFC_MEMORY_REDEFINE_NEW_IMPL(a_className, a_check_delete, a_statType)																																										\
-	void*	operator new(UPInt a_sz)																				{ void* a_ptr = GALLOC(a_sz, a_statType); return a_ptr; }																		\
-	void*	operator new(UPInt a_sz, RE::GMemoryHeap* a_heap)														{ void* a_ptr = GHEAP_ALLOC(a_heap, a_sz, a_statType); return a_ptr; }															\
-	void*	operator new(UPInt a_sz, RE::GMemoryHeap* a_heap, int a_blocktype)										{ void* a_ptr = GHEAP_ALLOC(a_heap, a_sz, a_blocktype); return a_ptr; }															\
-	void*	operator new(UPInt a_sz, const char* a_filename, int a_line)											{ void* a_ptr = RE::GMemory::Alloc(a_sz, RE::GAllocDebugInfo(a_statType, a_filename, a_line)); return a_ptr; }					\
-	void*	operator new(UPInt a_sz, RE::GMemoryHeap* a_heap, const char* a_filename, int a_line)					{ void* a_ptr = RE::GMemory::AllocInHeap(a_heap, a_sz, RE::GAllocDebugInfo(a_statType, a_filename, a_line)); return a_ptr; }	\
-	void*	operator new(UPInt a_sz, int a_blocktype, const char* a_filename, int a_line)							{ void* a_ptr = RE::GMemory::Alloc(a_sz, RE::GAllocDebugInfo(a_blocktype, a_filename, a_line)); return a_ptr; }					\
-	void*	operator new(UPInt a_sz, RE::GMemoryHeap* a_heap, int a_blocktype, const char* a_filename, int a_line)	{ void* a_ptr = RE::GMemory::AllocInHeap(a_heap, a_sz, RE::GAllocDebugInfo(a_blocktype, a_filename, a_line)); return a_ptr; }
+	void*	operator new(UPInt a_sz)											{ return GALLOC(a_sz, a_statType); }				\
+	void*	operator new(UPInt a_sz, RE::GMemoryHeap* a_heap)					{ return GHEAP_ALLOC(a_heap, a_sz, a_statType); }	\
+	void*	operator new(UPInt a_sz, RE::GMemoryHeap* a_heap, int a_blocktype)	{ return GHEAP_ALLOC(a_heap, a_sz, a_blocktype); }
 
 
 #define GFC_MEMORY_CHECK_DELETE_NONE(a_className, a_ptr)

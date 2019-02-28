@@ -633,6 +633,12 @@
     <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp">
       <Filter>src\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\FxDelegateHandler.cpp">
+      <Filter>src\RE\Skyrim\Scaleform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESSoulGem.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -2167,6 +2173,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\BGSDebris.h">
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FxDelegateHandler.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESCombatEvent.h">
+      <Filter>include\RE\Skyrim\Events\ScriptEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESContainerChangedEvent.h">
+      <Filter>include\RE\Skyrim\Events\ScriptEvent</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

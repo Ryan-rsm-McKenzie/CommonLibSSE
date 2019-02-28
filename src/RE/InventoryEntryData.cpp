@@ -1,11 +1,13 @@
 #include "RE/InventoryEntryData.h"
 
+#include "skse64/GameExtraData.h"  // InventoryEntryData
+
 #include "RE/Offsets.h"
 
 
 namespace RE
 {
-	InventoryEntryData::InventoryEntryData(TESForm* a_item, UInt32 a_count) :
+	InventoryEntryData::InventoryEntryData(TESForm* a_item, SInt32 a_count) :
 		type(a_item),
 		extraList(0),
 		countDelta(a_count)
@@ -23,14 +25,6 @@ namespace RE
 		typedef void _GetExtraWornBaseLists_t(InventoryEntryData* a_this, BaseExtraList*& a_pWornBaseListOut, BaseExtraList*& a_pWornLeftBaseListOut);
 		_GetExtraWornBaseLists_t* _GetExtraWornBaseLists = reinterpret_cast<_GetExtraWornBaseLists_t*>(GetFnAddr(&::InventoryEntryData::GetExtraWornBaseLists));
 		_GetExtraWornBaseLists(this, a_pWornBaseListOut, a_pWornLeftBaseListOut);
-	}
-
-
-	void InventoryEntryData::GetEquipItemData(::InventoryEntryData::EquipData& a_stateOut, SInt32 a_itemId, SInt32 a_baseCount)
-	{
-		typedef void _GetEquipItemData_t(InventoryEntryData* a_this, ::InventoryEntryData::EquipData& a_stateOut, SInt32 a_itemId, SInt32 a_baseCount);
-		_GetEquipItemData_t* _GetEquipItemData = reinterpret_cast<_GetEquipItemData_t*>(GetFnAddr(&::InventoryEntryData::GetEquipItemData));
-		_GetEquipItemData(this, a_stateOut, a_itemId, a_baseCount);
 	}
 
 
@@ -61,9 +55,9 @@ namespace RE
 	}
 
 
-	UInt32 InventoryEntryData::GetSoulLevel()
+	SoulLevel InventoryEntryData::GetSoulLevel()
 	{
-		typedef UInt32 _GetSoulLevel_t(InventoryEntryData* a_this);
+		typedef SoulLevel _GetSoulLevel_t(InventoryEntryData* a_this);
 		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_GetSoulLevel_GetPtr());
 		_GetSoulLevel_t* _GetSoulLevel = reinterpret_cast<_GetSoulLevel_t*>(*ptr);
 		return _GetSoulLevel(this);

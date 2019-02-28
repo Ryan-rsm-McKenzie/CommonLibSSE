@@ -81,7 +81,9 @@ namespace RE
 
 	void GMemory::Free(void* a_ptr)
 	{
-		return GetGlobalHeapRef()->Free(a_ptr);
+		if (a_ptr) {
+			return GetGlobalHeapRef()->Free(a_ptr);
+		}
 	}
 
 

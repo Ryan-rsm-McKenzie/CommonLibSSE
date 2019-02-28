@@ -26,19 +26,22 @@ namespace RE
 
 	bool GFxMovie::SetVariable(const char* a_pathToVar, const char* a_value, SetVarType a_setType)
 	{
-		return SetVariable(a_pathToVar, { a_value }, a_setType);
+		GFxValue val(a_value);
+		return SetVariable(a_pathToVar, val, a_setType);
 	}
 
 
 	bool GFxMovie::SetVariable(const char* a_pathToVar, const wchar_t* a_value, SetVarType a_setType)
 	{
-		return SetVariable(a_pathToVar, { a_value }, a_setType);
+		GFxValue val(a_value);
+		return SetVariable(a_pathToVar, val, a_setType);
 	}
 
 
 	bool GFxMovie::SetVariableDouble(const char* a_pathToVar, double a_value, SetVarType a_setType)
 	{
-		return SetVariable(a_pathToVar, { a_value }, a_setType);
+		GFxValue val(a_value);
+		return SetVariable(a_pathToVar, val, a_setType);
 	}
 
 

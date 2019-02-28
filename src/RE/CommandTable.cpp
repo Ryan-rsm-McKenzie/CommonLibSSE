@@ -2,6 +2,7 @@
 
 #include "skse64/ObScript.h"  // g_firstObScriptCommand, g_firstConsoleCommand
 
+#include <cstdint>  // uintptr_t
 #include <string>  // string
 
 
@@ -15,7 +16,6 @@ namespace RE
 
 	CommandInfo::Chunk* CommandInfo::StringChunk::GetNext()
 	{
-		UInt16 len = *(UInt16*)this;
 		return (Chunk*)(str + length);
 	}
 
@@ -28,14 +28,13 @@ namespace RE
 
 	CommandInfo::Chunk* CommandInfo::IntegerChunk::GetNext()
 	{
-		UInt16 len = *(UInt16*)this;
 		return (Chunk*)(this + 1);
 	}
 
 
 	CommandInfo::Chunk* CommandInfo::ScriptData::GetChunk()
 	{
-		return (Chunk*)((uintptr_t)this + 6);
+		return (Chunk*)((std::uintptr_t)this + 6);
 	}
 
 

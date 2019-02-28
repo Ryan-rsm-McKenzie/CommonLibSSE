@@ -331,37 +331,37 @@ namespace RE
 		virtual void							Unk_126(void);																																														// 126
 		virtual float							IncerceptActorValueChange(UInt32 a_avIndex, float a_avChangeBy);																																	// 127
 
-		TESForm*	GetEquippedObject(bool a_abLeftHand);
+		TESForm*	GetEquippedObject(bool a_leftHand) const;
 		void		UpdateSkinColor();
 		void		UpdateHairColor();
 		void		QueueNiNodeUpdate(bool a_updateWeight);
-		bool		HasPerk(BGSPerk* a_perk);
-		UInt16		GetLevel();
+		bool		HasPerk(BGSPerk* a_perk) const;
+		UInt16		GetLevel() const;
 		void		SetRace(TESRace* a_race, bool a_isPlayer);
 		void		UpdateWeaponAbility(TESForm* a_weapon, BaseExtraList* a_extraData, bool a_bLeftHand);
 		void		UpdateArmorAbility(TESForm* a_armor, BaseExtraList* a_extraData);
-		bool		IsHostileToActor(Actor* a_actor);
+		bool		IsHostileToActor(Actor* a_actor) const;
 		void		ResetAI(UInt32 a_unk1, UInt32 a_unk2);
 		bool		VisitFactions(FactionVisitor& a_visitor);
-		TESNPC*		GetActorBase();
-		TESRace*	GetRace();
-		bool		IsBeingRidden();
+		TESNPC*		GetActorBase() const;
+		TESRace*	GetRace() const;
+		bool		IsBeingRidden() const;
 		bool		IsCommandedActor() const;
 		bool		IsEssential() const;
 		bool		IsGuard() const;
 		bool		IsInKillMove() const;
 		bool		IsAIEnabled() const;
-		bool		IsOnMount();
+		bool		IsOnMount() const;
 		bool		IsPlayerTeammate() const;
-		bool		IsSneaking();
+		bool		IsSneaking() const;
 		bool		IsTrespassing() const;
 		void		DispelWornItemEnchantments();
 		CaughtState	SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);
-		SInt32		CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems);
-		SInt32		GetDetectionLevel(Actor* a_target, UInt32 a_flag);
-		bool		IsGhost();
-		bool		IsSummoned();
-		bool		IsRunning();
+		SInt32		CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const;
+		SInt32		GetDetectionLevel(Actor* a_target, UInt32 a_flag) const;
+		bool		IsGhost() const;
+		bool		IsSummoned() const;
+		bool		IsRunning() const;
 
 
 		// members

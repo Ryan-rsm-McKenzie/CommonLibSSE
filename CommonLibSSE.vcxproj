@@ -59,7 +59,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ForcedIncludeFiles>common/IPrefix.h;Logging.h;ForceInclude.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -73,7 +73,10 @@
       <UseFullPaths>false</UseFullPaths>
       <RemoveUnreferencedCodeData>false</RemoveUnreferencedCodeData>
       <EnableModules>false</EnableModules>
-      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4201;4100;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <TreatSpecificWarningsAsErrors>%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UndefinePreprocessorDefinitions>min;max;%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
@@ -108,7 +111,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ForcedIncludeFiles>common/IPrefix.h;Logging.h;ForceInclude.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -122,6 +125,10 @@
       <UseFullPaths>false</UseFullPaths>
       <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
       <EnableModules>false</EnableModules>
+      <TreatSpecificWarningsAsErrors>%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UndefinePreprocessorDefinitions>min;max;%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
+      <DisableSpecificWarnings>4201;4100;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
@@ -178,6 +185,7 @@
     <ClCompile Include="src\RE\BSString.cpp" />
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp" />
     <ClCompile Include="src\RE\ChestsLooted.cpp" />
+    <ClCompile Include="src\RE\FxDelegateHandler.cpp" />
     <ClCompile Include="src\RE\GAtomic.cpp" />
     <ClCompile Include="src\RE\GFxExternalInterface.cpp" />
     <ClCompile Include="src\RE\GFxMovie.cpp" />
@@ -268,6 +276,7 @@
     <ClCompile Include="src\RE\TESObjectWEAP.cpp" />
     <ClCompile Include="src\RE\TESQuest.cpp" />
     <ClCompile Include="src\RE\TESRace.cpp" />
+    <ClCompile Include="src\RE\TESSoulGem.cpp" />
     <ClCompile Include="src\RE\TESTopic.cpp" />
     <ClCompile Include="src\RE\TESTopicInfo.cpp" />
     <ClCompile Include="src\RE\TESWorldSpace.cpp" />
@@ -458,6 +467,7 @@
     <ClInclude Include="include\RE\FormTypes.h" />
     <ClInclude Include="include\RE\FunctionMessage.h" />
     <ClInclude Include="include\RE\FxDelegate.h" />
+    <ClInclude Include="include\RE\FxDelegateHandler.h" />
     <ClInclude Include="include\RE\GFxExternalInterface.h" />
     <ClInclude Include="include\RE\GFxFileConstants.h" />
     <ClInclude Include="include\RE\GFxFunctionHandler.h" />
@@ -694,8 +704,10 @@
     <ClInclude Include="include\RE\TESChildCell.h" />
     <ClInclude Include="include\RE\TESClass.h" />
     <ClInclude Include="include\RE\TESClimate.h" />
+    <ClInclude Include="include\RE\TESCombatEvent.h" />
     <ClInclude Include="include\RE\TESCombatStyle.h" />
     <ClInclude Include="include\RE\TESContainer.h" />
+    <ClInclude Include="include\RE\TESContainerChangedEvent.h" />
     <ClInclude Include="include\RE\TESCustomPackageData.h" />
     <ClInclude Include="include\RE\TESDataHandler.h" />
     <ClInclude Include="include\RE\TESDescription.h" />

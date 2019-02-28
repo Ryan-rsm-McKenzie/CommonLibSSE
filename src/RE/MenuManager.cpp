@@ -29,7 +29,7 @@ namespace RE
 			return 0;
 		}
 
-		auto& it = menuTable.find(a_menuName);
+		auto it = menuTable.find(a_menuName);
 		return (it != menuTable.end()) ? it->GetValue().menuInstance : 0;
 	}
 

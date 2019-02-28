@@ -2,7 +2,9 @@
 
 #include "RE/GFxPlayerStats.h"  // GFxStatMovieViews
 #include "RE/GMatrix.h"  // GMatrix3D
+#include "RE/GMemory.h"  // GFC_MEMORY_REDEFINE_NEW
 #include "RE/GNewOverrideBase.h"  // GNewOverrideBase
+#include "RE/GStats.h"  // GStatGroups
 #include "RE/GString.h"  // GString
 
 
@@ -261,6 +263,8 @@ namespace RE
 		bool			GotoAndPlay(const char* a_frame);
 		bool			GotoAndStop(const char* a_frame);
 
+		GFC_MEMORY_REDEFINE_NEW(GFxValue, GStatGroups::kGStatGroup_Default);
+
 	protected:
 		bool			IsManagedValue() const;
 		void			AcquireManagedValue(const GFxValue& a_rhs);
@@ -270,6 +274,8 @@ namespace RE
 
 		union ValueUnion
 		{
+			constexpr ValueUnion() : obj(0) {}
+
 			double			number;
 			bool			boolean;
 			const char*		string;
@@ -283,6 +289,7 @@ namespace RE
 		// members
 		ObjectInterface*	_objectInterface;	// 00
 		ValueType			_type;				// 08
+		UInt32				_pad0C;				// 0C
 		ValueUnion			_value;				// 10
 	};
 	STATIC_ASSERT(sizeof(GFxValue) == 0x18);
