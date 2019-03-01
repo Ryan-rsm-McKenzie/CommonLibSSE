@@ -244,12 +244,6 @@
     <Filter Include="include\RE\Skyrim\NetImmerse\Components">
       <UniqueIdentifier>{24a3ccb1-aaa9-4379-a1fc-f1d958c9b2c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\Skyrim\NetImmerse\Data Structures">
-      <UniqueIdentifier>{d1946150-0299-43c7-a1aa-5513222decda}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Skyrim\NetImmerse\Data Structures\Components">
-      <UniqueIdentifier>{5c514ee3-e8b3-4be1-9c38-f0d44c656281}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Skyrim\BSDevices\Handlers">
       <UniqueIdentifier>{578c9acd-47ee-4aaf-9bf0-719a93df441e}</UniqueIdentifier>
     </Filter>
@@ -282,6 +276,21 @@
     </Filter>
     <Filter Include="include\RE\Skyrim\Events\MenuEvent">
       <UniqueIdentifier>{9b97804e-d33e-44fe-979f-3b8b01874963}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\NetImmerse\Containers">
+      <UniqueIdentifier>{d1946150-0299-43c7-a1aa-5513222decda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\NetImmerse\Containers\Components">
+      <UniqueIdentifier>{5c514ee3-e8b3-4be1-9c38-f0d44c656281}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\NetImmerse\Interpolators">
+      <UniqueIdentifier>{8219badf-f2d2-4ecb-b9fd-4320592088d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\NetImmerse\Data">
+      <UniqueIdentifier>{56206222-767c-423e-a0da-84faac8723a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\NetImmerse\Enums">
+      <UniqueIdentifier>{f7aac379-43dd-4920-b26b-5d564f04c06e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1845,25 +1854,25 @@
       <Filter>include\RE\Skyrim\NetImmerse\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NiTArray.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Data Structures</Filter>
+      <Filter>include\RE\Skyrim\NetImmerse\Containers</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NiTDefaultAllocator.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Data Structures\Components</Filter>
+      <Filter>include\RE\Skyrim\NetImmerse\Containers\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NiMemory.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Data Structures\Components</Filter>
+      <Filter>include\RE\Skyrim\NetImmerse\Containers\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NiTMap.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Data Structures</Filter>
+      <Filter>include\RE\Skyrim\NetImmerse\Containers</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NiTMapBase.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Data Structures\Components</Filter>
+      <Filter>include\RE\Skyrim\NetImmerse\Containers\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NiTPointerAllocator.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Data Structures\Components</Filter>
+      <Filter>include\RE\Skyrim\NetImmerse\Containers\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NiTPointerMap.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Data Structures</Filter>
+      <Filter>include\RE\Skyrim\NetImmerse\Containers</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ActivateHandler.h">
       <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
@@ -2182,6 +2191,33 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESContainerChangedEvent.h">
       <Filter>include\RE\Skyrim\Events\ScriptEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESImageSpace.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESImageSpaceModifier.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiInterpolator.h">
+      <Filter>include\RE\Skyrim\NetImmerse\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiKeyBasedInterpolator.h">
+      <Filter>include\RE\Skyrim\NetImmerse\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiFloatInterpolator.h">
+      <Filter>include\RE\Skyrim\NetImmerse\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiColorInterpolator.h">
+      <Filter>include\RE\Skyrim\NetImmerse\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiColorData.h">
+      <Filter>include\RE\Skyrim\NetImmerse\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiFloatData.h">
+      <Filter>include\RE\Skyrim\NetImmerse\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiColors.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -616,7 +616,14 @@
     <ClInclude Include="include\RE\NiAVObject.h" />
     <ClInclude Include="include\RE\NiBoneMatrixSetterI.h" />
     <ClInclude Include="include\RE\NiCamera.h" />
+    <ClInclude Include="include\RE\NiColorData.h" />
+    <ClInclude Include="include\RE\NiColorInterpolator.h" />
+    <ClInclude Include="include\RE\NiColors.h" />
     <ClInclude Include="include\RE\NiExtraData.h" />
+    <ClInclude Include="include\RE\NiFloatData.h" />
+    <ClInclude Include="include\RE\NiFloatInterpolator.h" />
+    <ClInclude Include="include\RE\NiInterpolator.h" />
+    <ClInclude Include="include\RE\NiKeyBasedInterpolator.h" />
     <ClInclude Include="include\RE\NiMemory.h" />
     <ClInclude Include="include\RE\NiObject.h" />
     <ClInclude Include="include\RE\NiPoint3.h" />
@@ -724,7 +731,9 @@
     <ClInclude Include="include\RE\TESGrass.h" />
     <ClInclude Include="include\RE\TESIcon.h" />
     <ClInclude Include="include\RE\TESIdleForm.h" />
+    <ClInclude Include="include\RE\TESImageSpace.h" />
     <ClInclude Include="include\RE\TESImageSpaceModifiableForm.h" />
+    <ClInclude Include="include\RE\TESImageSpaceModifier.h" />
     <ClInclude Include="include\RE\TESKey.h" />
     <ClInclude Include="include\RE\TESLandTexture.h" />
     <ClInclude Include="include\RE\TESLevCharacter.h" />
