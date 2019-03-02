@@ -3,13 +3,16 @@
 #include "skse64/GameTypes.h"  // BSReadWriteLock
 
 #include "RE/BSExtraData.h"  // BSExtraData
-#include "RE/ExtraContainerChanges.h"  // ExtraContainerChanges::Data
+#include "RE/ExtraFlags.h"  // ExtraFlags::Flag
 #include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/FormTypes.h"
 
 
 namespace RE
 {
+	class InventoryChanges;
+
+
 	class BaseExtraList
 	{
 	public:
@@ -98,6 +101,7 @@ namespace RE
 		const char*			GetDisplayName(TESForm* a_type);
 		UInt32				GetAshPileRefHandle(UInt32& a_refHandle);
 		void				SetInventoryChanges(InventoryChanges* a_changes);
+		void				BlockActivation(ExtraFlags::Flag a_flags, bool a_blocked);
 
 	protected:
 		struct PresenceBitfield

@@ -22,6 +22,7 @@ namespace RE
 	class BaseExtraList;
 	class bhkCharacterMoveFinishEvent;
 	class BSTransformDeltaEvent;
+	class InventoryEntryData;
 	class MovementControllerNPC;
 	class PerkEntryVisitor;
 

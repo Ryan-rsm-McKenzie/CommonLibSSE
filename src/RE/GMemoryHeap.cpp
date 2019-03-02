@@ -8,6 +8,7 @@ namespace RE
 {
 	GMemoryHeap::HeapDesc::HeapDesc(HeapFlags a_flags, UPInt a_minAlign, UPInt a_granularity, UPInt a_reserve, UPInt a_threshold, UPInt a_limit, GHeapID a_heapID, UPInt a_arena) :
 		flags(a_flags),
+		pad04(0),
 		minAlign(a_minAlign),
 		granularity(a_granularity),
 		reserve(a_reserve),

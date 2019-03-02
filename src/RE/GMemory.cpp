@@ -38,44 +38,44 @@ namespace RE
 	}
 
 
-	void* GMemory::Alloc(UPInt a_size)
+	void* GMemory::Alloc(UPInt a_count)
 	{
-		return GetGlobalHeapRef()->Alloc(a_size);
+		return GetGlobalHeapRef()->Alloc(a_count);
 	}
 
 
-	void* GMemory::Alloc(UPInt a_size, UPInt a_align)
+	void* GMemory::Alloc(UPInt a_count, UPInt a_al)
 	{
-		return GetGlobalHeapRef()->Alloc(a_size, a_align);
+		return GetGlobalHeapRef()->Alloc(a_count, a_al);
 	}
 
 
-	void* GMemory::AllocAutoHeap(const void* a_ptr, UPInt a_size)
+	void* GMemory::AllocAutoHeap(const void* a_ptr, UPInt a_count)
 	{
-		return GetGlobalHeapRef()->AllocAutoHeap(a_ptr, a_size);
+		return GetGlobalHeapRef()->AllocAutoHeap(a_ptr, a_count);
 	}
 
-	void* GMemory::AllocAutoHeap(const void* a_ptr, UPInt a_size, UPInt a_align)
+	void* GMemory::AllocAutoHeap(const void* a_ptr, UPInt a_count, UPInt a_al)
 	{
-		return GetGlobalHeapRef()->AllocAutoHeap(a_ptr, a_size, a_align);
-	}
-
-
-	void* GMemory::AllocInHeap(GMemoryHeap* a_heap, UPInt a_size)
-	{
-		return a_heap->Alloc(a_size);
+		return GetGlobalHeapRef()->AllocAutoHeap(a_ptr, a_count, a_al);
 	}
 
 
-	void* GMemory::AllocInHeap(GMemoryHeap* a_heap, UPInt a_size, UPInt a_align)
+	void* GMemory::AllocInHeap(GMemoryHeap* a_heap, UPInt a_count)
 	{
-		return a_heap->Alloc(a_size, a_align);
+		return a_heap->Alloc(a_count);
 	}
 
 
-	void* GMemory::Realloc(void* a_ptr, UPInt a_newSize)
+	void* GMemory::AllocInHeap(GMemoryHeap* a_heap, UPInt a_count, UPInt a_al)
 	{
-		return GetGlobalHeapRef()->Realloc(a_ptr, a_newSize);
+		return a_heap->Alloc(a_count, a_al);
+	}
+
+
+	void* GMemory::Realloc(void* a_ptr, UPInt a_newCount)
+	{
+		return GetGlobalHeapRef()->Realloc(a_ptr, a_newCount);
 	}
 
 

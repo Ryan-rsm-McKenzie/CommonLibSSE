@@ -4,6 +4,8 @@
 
 #include "RE/Offsets.h"
 
+#include <winnt.h>  // InterlockedIncrement, InterlockedDecrement
+
 
 namespace RE
 {
@@ -15,8 +17,8 @@ namespace RE
 
 	void GRefCountImpl::Release()
 	{
-		typedef void _Release_t(GRefCountImpl* a_this);
-		RelocAddr<_Release_t*> _Release(G_REF_COUNT_RELEASE);
-		_Release(this);
+		if (InterlockedDecrement(&refCount) == 0) {
+			delete this;
+		}
 	}
 }

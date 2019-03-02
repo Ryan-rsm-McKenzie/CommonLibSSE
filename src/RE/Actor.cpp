@@ -1,5 +1,6 @@
 #include "RE/Actor.h"
 
+#include "skse64/GameReferences.h"  // Actor
 #include "skse64/GameRTTI.h"  // DYNAMIC_CAST
 
 #include <cstdint>  // uintptr_t

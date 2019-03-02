@@ -53,7 +53,7 @@ namespace RE
 		kLeveledCreature,			// 0x2D
 		kLeveledItem,				// 0x2E
 		kScale,						// 0x2F
-		kSeed,						// 0x30 - ExtraSeed, removed in 1.7.7.0
+		kMissingLinkedRefIDs,		// 0x30
 		kMagicCaster,				// 0x31
 		kMagicTarget,				// 0x32
 		kUnk33,						// 0x33
@@ -184,6 +184,6 @@ namespace RE
 		kCachedScale,				// 0xB0
 		kRaceData,					// 0xB1
 		kGIDBuffer,					// 0xB2
-		kMissingRefIDs,				// 0xB3
+		kUnkB3,						// 0xB3
 	};
 }

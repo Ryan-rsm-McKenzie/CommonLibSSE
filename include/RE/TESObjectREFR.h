@@ -186,7 +186,7 @@ namespace RE
 		virtual void					SetNiNode(NiNode* a_root, UInt32 a_unk1);																																					// 6D - NULL, 1?
 		virtual void					Unk_6E(void);																																												// 6E
 		virtual NiNode*					GetNiRootNode(UInt32 a_firstPerson);																																						// 6F
-		virtual NiNode*					GetNiNode(void);																																											// 70 - Root of the skeleton (Get3D)
+		virtual NiNode*					GetNiNode(void) const;																																										// 70 - Root of the skeleton (Get3D)
 		virtual void					Unk_71(void);																																												// 71
 		virtual void					Unk_72(void);																																												// 72
 		virtual NiPoint3*				GetBoundLeftFrontBottom(NiPoint3* a_out) const;																																				// 73
@@ -238,37 +238,40 @@ namespace RE
 		virtual bool					SendEquipEvent(uintptr_t a_arg1, uintptr_t a_arg2);																																			// A1
 
 
-		float							GetBaseScale();
-		bool							IsOffLimits();
-		float							GetWeight();
-		const char*						GetReferenceName();
-		TESWorldSpace*					GetWorldspace();
-		UInt32							GetRefHandle();
+		static bool						LookupByHandle(UInt32& a_refHandle, TESObjectREFRPtr& a_refrOut);
+
+		float							GetBaseScale() const;
+		bool							IsOffLimits() const;
+		float							GetWeight() const;
+		const char*						GetReferenceName() const;
+		TESWorldSpace*					GetWorldspace() const;
+		UInt32							GetRefHandle() const;
 		UInt32							CreateRefHandle();
 		UInt32							GetOrCreateRefHandle();
-		TESNPC*							GetActorOwner();
-		TESForm*						GetBaseObject();
-		TESContainer*					GetContainer();
-		const char*						GetFullName();
-		TESFaction*						GetFactionOwner();
-		TESForm*						GetOwner();
-		TESObjectCELL*					GetParentCell();
-		float							GetPositionX();
-		float							GetPositionY();
-		float							GetPositionZ();
-		bool							Is3DLoaded();
-		bool							IsMarkedForDeletion();
-		bool							IsDisabled();
-		bool							SetDisplayName(const BSFixedString& name, bool force);
-		static bool						LookupByHandle(UInt32& a_refHandle, TESObjectREFRPtr& a_refrOut);
-		LockState*						GetLockState();
-		bool							IsLocked();
-		SInt32							GetLockLevel();
-		UInt32							GetNumItems(bool a_unk1, bool a_unk2);
-		UInt32							ActivateRefChildren(TESObjectREFR* a_activator);
-		void							PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_unk);
-		bool							HasInventoryChanges();
+		TESNPC*							GetActorOwner() const;
+		TESForm*						GetBaseObject() const;
+		TESContainer*					GetContainer() const;
+		const char*						GetFullName() const;
+		TESFaction*						GetFactionOwner() const;
+		TESForm*						GetOwner() const;
+		TESObjectCELL*					GetParentCell() const;
+		float							GetPositionX() const;
+		float							GetPositionY() const;
+		float							GetPositionZ() const;
+		bool							Is3DLoaded() const;
+		bool							IsMarkedForDeletion() const;
+		bool							IsDisabled() const;
+		bool							IsActivationBlocked() const;
+		void							BlockActivation();
+		bool							IsLocked() const;
+		LockState*						GetLockState() const;
+		SInt32							GetLockLevel() const;
+		UInt32							GetNumItems(bool a_arg1 = false, bool a_arg2 = false);
+		bool							HasInventoryChanges() const;
 		InventoryChanges*				GetInventoryChanges();	// Creates inventory changes if none found
+		bool							SetDisplayName(const BSFixedString& name, bool force);
+		UInt32							ActivateRefChildren(TESObjectREFR* a_activator);
+		void							PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4 = false);
 
 
 		// members

@@ -14,8 +14,8 @@ namespace RE
 
 	protected:
 		// members
-		volatile SInt32	refCount;	// 08
-		SInt32			pad0C;		// 0C
+		volatile UInt32	refCount;	// 08
+		UInt32			pad0C;		// 0C
 	};
 	STATIC_ASSERT(sizeof(GRefCountImplCore) == 0x10);
 }

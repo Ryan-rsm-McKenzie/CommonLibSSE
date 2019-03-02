@@ -28,6 +28,8 @@ namespace RE
 	constexpr std::uintptr_t BASE_EXTRA_LIST_SET_INVENTORY_CHANGES_IMPL = 0x0010F7B0;					// 1_5_62
 	// 40 57 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 48  89 5C 24 48 48 89 74 24  50 48 8B F2 48 8B F9 C7  02 00 00 00 00 48 8D 59  10 48 89 5C 24 40 48 8B  CB ?? ?? ?? ?? ?? 90 BA  85 00 00 00 48 8B CF ??
 	constexpr std::uintptr_t BASE_EXTRA_LIST_GET_ASH_PILE_REF_HANDLE_IMPL = 0x00117170;					// 1_5_62
+	// 40 56 57 41 54 41 56 41  57 48 83 EC 30 48 C7 44  24 20 FE FF FF FF 48 89  5C 24 68 48 89 6C 24 70  45 0F B6 F8 8B EA 4C 8B
+	constexpr std::uintptr_t BASE_EXTRA_LIST_BLOCK_ACTIVATION = 0x00125F70;								// 1_5_62
 
 	// 40 53 48 83 EC 60 8B 19  0F 29 74 24 50 0F 28 F3
 	constexpr std::uintptr_t BGS_SOUND_DESCRIPTOR_SOUND_DATA_SET_POSITION = 0x00BEDB10;					// 1_5_62 - There's a function very similar to this once, just makes different calls
@@ -80,9 +82,6 @@ namespace RE
 
 	// 48 89 4C 24 08 55 53 56  57 41 54 41 55 41 56 41  57 48 8D 6C 24 E1 48 81  EC E8 00 00 00 48 C7 45  F7 FE FF FF FF 0F 29 B4
 	constexpr std::uintptr_t CONDITION_NODE_RUN = 0x004456B0;											// 1_5_62
-
-	// 83 C8 FF F0 0F C1 41 08  83 F8 01 75 10 48 85 C9  74 0B 48 8B 01 BA 01 00  00 00 48 FF 20 C3 CC CC
-	constexpr std::uintptr_t G_REF_COUNT_RELEASE = 0x00EC76E0;											// 1_5_62
 
 	// 40 53 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 8B  0D 63 D5 2C 03 65 48 8B
 	constexpr std::uintptr_t INVENTORY_GET_EVENT_SOURCE = 0x001EF520;									// 1_5_62

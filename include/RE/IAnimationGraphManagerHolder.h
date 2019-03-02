@@ -17,7 +17,7 @@ namespace RE
 
 		// add
 		virtual bool	SendAnimationEvent(const BSFixedString& a_eventName);							// 01
-		virtual bool	GetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_out) = 0;	// 02 - BSTSmartPointer
+		virtual bool	GetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_out) = 0;	// 02
 		virtual void	Unk_03(void);																	// 03
 		virtual void	Unk_04(void);																	// 04
 		virtual bool	ConstructAnimationGraph(BSTSmartPointer<BShkbAnimationGraph>& a_out) = 0;		// 05

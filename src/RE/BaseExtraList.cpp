@@ -289,4 +289,12 @@ namespace RE
 		RelocAddr<_SetInventoryChanges_Impl_t*> _SetInventoryChanges_Impl(BASE_EXTRA_LIST_SET_INVENTORY_CHANGES_IMPL);
 		_SetInventoryChanges_Impl(this, a_changes);
 	}
+
+
+	void BaseExtraList::BlockActivation(ExtraFlags::Flag a_flags, bool a_blocked)
+	{
+		typedef void _BlockActivation_t(BaseExtraList* a_this, ExtraFlags::Flag a_flags, bool a_blocked);
+		RelocAddr<_BlockActivation_t*> _BlockActivation(BASE_EXTRA_LIST_BLOCK_ACTIVATION);
+		_BlockActivation(this, a_flags, a_blocked);
+	}
 }
