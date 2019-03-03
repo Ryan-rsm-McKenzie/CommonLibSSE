@@ -15,6 +15,33 @@ namespace RE
 		enum { kTypeID = FormType::AddonNode };
 
 
+		struct RecordFlags
+		{
+			enum RecordFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
+		struct Data	// DNAM
+		{
+			enum class Flag : UInt8
+			{
+				kNone = 0,
+				kAlwaysLoaded = 3
+			};
+
+
+			UInt16	masterParticleSystemCap;	// 0
+			Flag	flags;						// 2
+			UInt8	unk3;						// 3
+			UInt32	unk4;						// 4
+		};
+		STATIC_ASSERT(sizeof(Data) == 0x8);
+
+
 		virtual ~BGSAddonNode();							// 00
 
 		// override (TESBoundObject)
@@ -24,12 +51,10 @@ namespace RE
 
 
 		// members
-		UInt32	nodeIndex;	// 68 - DATA
-		UInt32	unk6C;		// 6C
-		UInt64	unk70;		// 70
-		UInt8	unk78[4];	// 78
-		UInt32	unk7C;		// 7C
+		UInt32					nodeIndex;	// 68 - DATA
+		UInt32					pad6C;		// 6C
+		BGSSoundDescriptorForm*	sound;		// 70 - SNAM
+		Data					data;		// 78 - DNAM
 	};
-	STATIC_ASSERT(offsetof(BGSAddonNode, nodeIndex) == 0x68);
 	STATIC_ASSERT(sizeof(BGSAddonNode) == 0x80);
 }

@@ -135,7 +135,7 @@ namespace RE
 		// add
 		virtual void					Unk_3B(void);																																												// 3B
 		virtual BGSLocation*			GetEditorLocation();																																										// 3C
-		virtual bool					GetEditorCoordinates(NiPoint3* a_outPos, NiPoint3* a_outRot, void** a_outWorldOrCell, TESObjectCELL* a_veryRarelyUsedFallback);																// 3D
+		virtual bool					GetEditorCoordinates(NiPoint3* a_outPos, NiPoint3* a_outRot, void*& a_outWorldOrCell, TESObjectCELL* a_veryRarelyUsedFallback);																// 3D
 		virtual void					Unk_3E(void);																																												// 3E
 		virtual void					Unk_3F(void);																																												// 3F
 		virtual void					Unk_40(void);																																												// 40
@@ -154,8 +154,8 @@ namespace RE
 		virtual void					Unk_4D(void);																																												// 4D
 		virtual void					Unk_4E(void);																																												// 4E
 		virtual void					Unk_4F(void);																																												// 4F
-		virtual void					SetActorCause(UInt32& a_cause);																																												// 50
-		virtual UInt32&					GetActorCause() const;																																											// 51
+		virtual void					SetActorCause(UInt32& a_cause);																																								// 50
+		virtual UInt32&					GetActorCause() const;																																										// 51
 		virtual void					Unk_52(void);																																												// 52
 		virtual void					Unk_53(void);																																												// 53
 		virtual void					Unk_54(void);																																												// 54
@@ -235,7 +235,7 @@ namespace RE
 		virtual void					Unk_9E(void);																																												// 9E
 		virtual void					Unk_9F(void);																																												// 9F
 		virtual void*					GetDecalGroup();																																											// A0
-		virtual bool					SendEquipEvent(uintptr_t a_arg1, uintptr_t a_arg2);																																			// A1
+		virtual bool					SendEquipEvent(UInt64 a_arg1, UInt64 a_arg2);																																				// A1
 
 
 		static bool						LookupByHandle(UInt32& a_refHandle, TESObjectREFRPtr& a_refrOut);

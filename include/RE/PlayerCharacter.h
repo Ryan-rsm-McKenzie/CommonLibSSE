@@ -223,7 +223,7 @@ namespace RE
 		UInt32								unk95C;					// 95C
 		UInt32								unk960;					// 960
 		UInt32								unk964;					// 964
-		void*								currentPoison;			// 968
+		AlchemyItem*						currentPoison;			// 968
 		UInt64								unk970;					// 970 - init'd to GetTickCount() in ctor
 		UInt64								unk978;					// 978
 		UInt32								unk980;					// 980 - init'd to _time64(NULL) in ctor
@@ -243,7 +243,7 @@ namespace RE
 		BSTArray<UInt32>					hostileHandles; 		// 9D8
 		UInt64								unk9F0;					// 9F0
 		UInt64								unk9F8;					// 9F8
-		TESForm*							tempPoison;				// A00
+		AlchemyItem*						tempPoison;				// A00
 		UInt32								numTeammates;			// A08
 		UInt32								unkA0C;					// A0C
 		UInt64								unkA10;					// A10

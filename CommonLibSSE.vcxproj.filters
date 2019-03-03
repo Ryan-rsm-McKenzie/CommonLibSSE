@@ -208,9 +208,6 @@
     <Filter Include="include\RE\Skyrim\TESForms\Character\Components">
       <UniqueIdentifier>{5f9423c9-5be6-4705-96ba-137dc00abdb4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\Skyrim\TESForms\Character\PerkEntry">
-      <UniqueIdentifier>{ecfde3ba-0814-4a1c-9f34-bfd01a8917fa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Skyrim\Pathfinding\NavMesh">
       <UniqueIdentifier>{18f51f26-388f-4745-9bb8-b679f2a36760}</UniqueIdentifier>
     </Filter>
@@ -292,6 +289,18 @@
     <Filter Include="include\RE\Skyrim\NetImmerse\Enums">
       <UniqueIdentifier>{f7aac379-43dd-4920-b26b-5d564f04c06e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\Skyrim\Events\BGSStoryEvent">
+      <UniqueIdentifier>{dd35ac2d-278e-4dd8-900b-ceb68b4feb4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Events\InputEvent">
+      <UniqueIdentifier>{51f2b254-f25b-4743-a986-212b76c620d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Events\ScriptEvent">
+      <UniqueIdentifier>{b1536fb0-6bbc-418c-ac35-b00835645861}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\Character\Perks">
+      <UniqueIdentifier>{ecfde3ba-0814-4a1c-9f34-bfd01a8917fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -314,9 +323,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\PlayerInputHandler.cpp">
       <Filter>src\RE\Skyrim\BSDevices</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\ButtonEvent.cpp">
-      <Filter>src\RE\Skyrim\Events</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraContainerChanges.cpp">
       <Filter>src\RE\Skyrim\ExtraData</Filter>
@@ -393,9 +399,6 @@
     <ClCompile Include="src\RE\Misc.cpp">
       <Filter>src\RE</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\ThumbstickEvent.cpp">
-      <Filter>src\RE\Skyrim\Events</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSFixedString.cpp">
       <Filter>src\RE\Skyrim\BSCore</Filter>
     </ClCompile>
@@ -422,9 +425,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\ConsoleManager.cpp">
       <Filter>src\RE\Skyrim\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp">
-      <Filter>src\RE\Skyrim\Events</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\InputMappingManager.cpp">
       <Filter>src\RE\Skyrim\BSDevices</Filter>
@@ -561,20 +561,8 @@
     <ClCompile Include="src\RE\BSSpinLock.cpp">
       <Filter>src\RE\Skyrim\BSCore</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\ItemsPickpocketed.cpp">
-      <Filter>src\RE\Skyrim\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\ChestsLooted.cpp">
-      <Filter>src\RE\Skyrim\Events</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\NiAVObject.cpp">
       <Filter>src\RE\Skyrim\NetImmerse</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\Inventory.cpp">
-      <Filter>src\RE\Skyrim\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\ItemCrafted.cpp">
-      <Filter>src\RE\Skyrim\Events</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp">
       <Filter>src\RE\Skyrim\BSSystem</Filter>
@@ -650,6 +638,27 @@
     </ClCompile>
     <ClCompile Include="src\RE\ExtraFlags.cpp">
       <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ChestsLooted.cpp">
+      <Filter>src\RE\Skyrim\Events\BGSStoryEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Inventory.cpp">
+      <Filter>src\RE\Skyrim\Events\BGSStoryEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ItemCrafted.cpp">
+      <Filter>src\RE\Skyrim\Events\BGSStoryEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ItemsPickpocketed.cpp">
+      <Filter>src\RE\Skyrim\Events\BGSStoryEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ButtonEvent.cpp">
+      <Filter>src\RE\Skyrim\Events\InputEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ThumbstickEvent.cpp">
+      <Filter>src\RE\Skyrim\Events\InputEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp">
+      <Filter>src\RE\Skyrim\Events\ScriptEvent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -892,9 +901,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESContainer.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSPerk.h">
-      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSKeyword.h">
       <Filter>include\RE\Skyrim\TESForms\Character</Filter>
@@ -1689,19 +1695,19 @@
       <Filter>include\RE\Skyrim\TESForms\Character\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSEntryPointFunctionData.h">
-      <Filter>include\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
+      <Filter>include\RE\Skyrim\TESForms\Character\Perks</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSEntryPointFunctionDataActivateChoice.h">
-      <Filter>include\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
+      <Filter>include\RE\Skyrim\TESForms\Character\Perks</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSEntryPointFunctionDataText.h">
-      <Filter>include\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
+      <Filter>include\RE\Skyrim\TESForms\Character\Perks</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSEntryPointPerkEntry.h">
-      <Filter>include\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
+      <Filter>include\RE\Skyrim\TESForms\Character\Perks</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSPerkEntry.h">
-      <Filter>include\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
+      <Filter>include\RE\Skyrim\TESForms\Character\Perks</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\DialogueData.h">
       <Filter>include\RE\Skyrim\TESForms\Character\Components</Filter>
@@ -2248,6 +2254,27 @@
     </ClInclude>
     <ClInclude Include="include\RE\ExtraStartingPosition.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PoisonedWeapon.h">
+      <Filter>include\RE\Skyrim\Events\BGSStoryEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSListForm.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSPerk.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Perks</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAbilityPerkEntry.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Perks</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPointFunctionDataOneValue.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Perks</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSBodyPartData.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESModelPSA.h">
+      <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

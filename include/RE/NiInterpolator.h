@@ -6,11 +6,11 @@
 namespace RE
 {
 	class NiAVObjectPalette;
-	class NiColorA;
 	class NiObjectNET;
 	class NiPoint3;
 	class NiQuaternion;
 	class NiQuatTransform;
+	struct NiColorA;
 
 
 	class NiInterpolator : public NiObject

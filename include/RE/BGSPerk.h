@@ -25,6 +25,17 @@ namespace RE
 		enum { kTypeID = FormType::Perk };
 
 
+		struct RecordFlags
+		{
+			enum RecordFlag : UInt32
+			{
+				kNonPlayable = 1 << 2,
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		class FindPerkInRanksVisitor : public PerkRankVisitor
 		{
 		public:
@@ -46,25 +57,33 @@ namespace RE
 		};
 
 
+		struct Data	// DATA
+		{
+			bool	trait;		// 0
+			UInt8	level;		// 1
+			UInt8	numRanks;	// 2
+			bool	playable;	// 3
+			bool	hidden;		// 4
+			UInt8	pad5;		// 5
+			UInt16	pad6;		// 6
+		};
+		STATIC_ASSERT(sizeof(Data) == 0x8);
+
+
 		virtual ~BGSPerk();									// 00
 
 		// override (TESForm)
 		virtual void	InitDefaults() override;			// 04
+		virtual void	ReleaseManagedData() override;		// 05
 		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
 		virtual void	InitItem() override;				// 13
 
 
 		// members
-		bool					trait;			// 50
-		UInt8					level;			// 51
-		UInt8					numRanks;		// 52
-		bool					playable;		// 53
-		bool					hidden;			// 54
-		UInt8					pad55;			// 55
-		UInt16					pad56;			// 56
+		Data					data;			// 50 - DATA
 		Condition				conditions;		// 58
 		BSTArray<BGSPerkEntry*>	perkEntries;	// 60
-		BGSPerk*				nextPerk;		// 78
+		BGSPerk*				nextPerk;		// 78 - NNAM
 	};
 	STATIC_ASSERT(sizeof(BGSPerk) == 0x80);
 }

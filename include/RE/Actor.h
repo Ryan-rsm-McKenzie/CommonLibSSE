@@ -37,7 +37,7 @@ namespace RE
 		public IPostAnimationChannelUpdateFunctor			// 0D8
 	{
 	private:
-		using EntryPointType = BGSEntryPointPerkEntry::EntryPointType;
+		using EntryPoint = BGSEntryPointPerkEntry::EntryPoint;
 
 	public:
 		enum { kTypeID = FormType::ActorCharacter };
@@ -290,8 +290,8 @@ namespace RE
 		virtual void							RemovePerk(BGSPerk* a_perk);																																										// 0FC
 		virtual void							Unk_FD(void);																																														// 0FD
 		virtual void							Unk_FE(void);																																														// 0FE
-		virtual bool							CanProcessEntryPointPerkEntry(EntryPointType a_entryType);																																			// 0FF
-		virtual void							VisitEntryPointPerkEntries(EntryPointType a_entryType, PerkEntryVisitor& a_visitor);																												// 100
+		virtual bool							CanProcessEntryPointPerkEntry(EntryPoint a_entryType);																																			// 0FF
+		virtual void							VisitEntryPointPerkEntries(EntryPoint a_entryType, PerkEntryVisitor& a_visitor);																												// 100
 		virtual void							Unk_101(void);																																														// 101
 		virtual void							Unk_102(void);																																														// 102
 		virtual void							Unk_103(void);																																														// 103
