@@ -291,10 +291,10 @@ namespace RE
 	}
 
 
-	void BaseExtraList::BlockActivation(ExtraFlags::Flag a_flags, bool a_blocked)
+	void BaseExtraList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
 	{
-		typedef void _BlockActivation_t(BaseExtraList* a_this, ExtraFlags::Flag a_flags, bool a_blocked);
-		RelocAddr<_BlockActivation_t*> _BlockActivation(BASE_EXTRA_LIST_BLOCK_ACTIVATION);
-		_BlockActivation(this, a_flags, a_blocked);
+		typedef void _BlockActivation_t(BaseExtraList* a_this, ExtraFlags::Flag a_flags, bool a_enable);
+		RelocAddr<_BlockActivation_t*> _BlockActivation(BASE_EXTRA_LIST_SET_EXTRA_FLAGS);
+		_BlockActivation(this, a_flags, a_enable);
 	}
 }

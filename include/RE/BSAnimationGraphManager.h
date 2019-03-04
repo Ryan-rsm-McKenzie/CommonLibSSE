@@ -25,9 +25,19 @@ namespace RE
 	public:
 		struct AnimationVariable
 		{
+			union Value
+			{
+				bool	b;
+				SInt32	i;
+				float	f;
+			};
+			STATIC_ASSERT(sizeof(Value) == 0x4);
+
+
 			BSFixedString	name;	// 00
-			UInt32*			value;	// 08
+			Value*			value;	// 08
 		};
+		STATIC_ASSERT(sizeof(AnimationVariable) == 0x10);
 
 
 		virtual ~BSAnimationGraphManager();																									// 00

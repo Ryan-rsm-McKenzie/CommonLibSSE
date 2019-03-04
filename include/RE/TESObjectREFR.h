@@ -262,7 +262,7 @@ namespace RE
 		bool							IsMarkedForDeletion() const;
 		bool							IsDisabled() const;
 		bool							IsActivationBlocked() const;
-		void							BlockActivation();
+		void							SetActivationBlocked(bool a_blocked);
 		bool							IsLocked() const;
 		LockState*						GetLockState() const;
 		SInt32							GetLockLevel() const;

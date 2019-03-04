@@ -179,6 +179,7 @@
     <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp" />
     <ClCompile Include="src\RE\BGSHeadPart.cpp" />
     <ClCompile Include="src\RE\BGSKeywordForm.cpp" />
+    <ClCompile Include="src\RE\BGSPerkEntry.cpp" />
     <ClCompile Include="src\RE\BSAudioManager.cpp" />
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
     <ClCompile Include="src\RE\BSSpinLock.cpp" />
@@ -539,6 +540,13 @@
     <ClInclude Include="include\RE\Hazard.h" />
     <ClInclude Include="include\RE\HeldStateHandler.h" />
     <ClInclude Include="include\RE\hkBaseObject.h" />
+    <ClInclude Include="include\RE\hkbBehaviorGraph.h" />
+    <ClInclude Include="include\RE\hkbBindable.h" />
+    <ClInclude Include="include\RE\hkbCharacter.h" />
+    <ClInclude Include="include\RE\hkbGenerator.h" />
+    <ClInclude Include="include\RE\hkbNode.h" />
+    <ClInclude Include="include\RE\hkbRagdollDriver.h" />
+    <ClInclude Include="include\RE\hkbStateMachine.h" />
     <ClInclude Include="include\RE\hkpAllCdPointCollector.h" />
     <ClInclude Include="include\RE\hkpCachingShapePhantom.h" />
     <ClInclude Include="include\RE\hkpCdPointCollector.h" />

@@ -118,7 +118,7 @@ namespace RE
 			kEntryPoint = 2
 		};
 
-		
+
 		struct Header	// PRKE
 		{
 			UInt8	rank;		// 0
@@ -143,6 +143,9 @@ namespace RE
 		virtual void						Unk_09(void);										// 09 - { return 0xFFFF; }
 		virtual void						Unk_0A(void) = 0;									// 0A
 		virtual void						Unk_0B(void) = 0;									// 0B
+
+		UInt8								GetRank() const;
+		UInt8								GetPriority() const;
 
 
 		// members

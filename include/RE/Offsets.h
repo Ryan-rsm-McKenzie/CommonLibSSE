@@ -29,7 +29,7 @@ namespace RE
 	// 40 57 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 48  89 5C 24 48 48 89 74 24  50 48 8B F2 48 8B F9 C7  02 00 00 00 00 48 8D 59  10 48 89 5C 24 40 48 8B  CB ?? ?? ?? ?? ?? 90 BA  85 00 00 00 48 8B CF ??
 	constexpr std::uintptr_t BASE_EXTRA_LIST_GET_ASH_PILE_REF_HANDLE_IMPL = 0x00117170;					// 1_5_62
 	// 40 56 57 41 54 41 56 41  57 48 83 EC 30 48 C7 44  24 20 FE FF FF FF 48 89  5C 24 68 48 89 6C 24 70  45 0F B6 F8 8B EA 4C 8B
-	constexpr std::uintptr_t BASE_EXTRA_LIST_BLOCK_ACTIVATION = 0x00125F70;								// 1_5_62
+	constexpr std::uintptr_t BASE_EXTRA_LIST_SET_EXTRA_FLAGS = 0x00125F70;								// 1_5_62
 
 	// 40 53 48 83 EC 60 8B 19  0F 29 74 24 50 0F 28 F3
 	constexpr std::uintptr_t BGS_SOUND_DESCRIPTOR_SOUND_DATA_SET_POSITION = 0x00BEDB10;					// 1_5_62 - There's a function very similar to this once, just makes different calls

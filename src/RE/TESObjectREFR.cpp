@@ -235,9 +235,9 @@ namespace RE
 	}
 
 
-	void TESObjectREFR::BlockActivation()
+	void TESObjectREFR::SetActivationBlocked(bool a_blocked)
 	{
-		extraData.BlockActivation(ExtraFlags::Flag::kActivationBlocked, true);
+		extraData.SetExtraFlags(ExtraFlags::Flag::kActivationBlocked, a_blocked);
 	}
 
 

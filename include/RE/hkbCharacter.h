@@ -1,0 +1,42 @@
+#pragma once
+
+#include "RE/hkReferencedObject.h"  // hkReferencedObject
+
+
+namespace RE
+{
+	class hkbRagdollDriver;
+
+
+	class hkbCharacter : public hkReferencedObject
+	{
+	public:
+		virtual ~hkbCharacter();		// 00
+
+		// add
+		virtual void	Unk_03(void);	// 03
+		virtual void	Unk_04(void);	// 04
+
+
+		// members
+		UInt64				unk10;	// 10
+		UInt64				unk18;	// 18
+		UInt64				unk20;	// 20
+		UInt64				unk28;	// 28
+		hkbRagdollDriver*	unk30;	// 30
+		UInt64				unk38;	// 38
+		UInt64				unk40;	// 40
+		UInt64				unk48;	// 48
+		UInt64				unk50;	// 50
+		UInt64				unk58;	// 58
+		UInt64				unk60;	// 60
+		UInt64				unk68;	// 68
+		UInt64				unk70;	// 70
+		UInt64				unk78;	// 78
+		UInt64				unk80;	// 80
+		UInt64				unk88;	// 88
+		UInt64				unk90;	// 90
+		UInt64				unk98;	// 98
+	};
+	STATIC_ASSERT(sizeof(hkbCharacter) == 0xA0);
+}

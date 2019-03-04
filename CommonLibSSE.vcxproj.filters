@@ -286,9 +286,6 @@
     <Filter Include="include\RE\Skyrim\NetImmerse\Data">
       <UniqueIdentifier>{56206222-767c-423e-a0da-84faac8723a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\Skyrim\NetImmerse\Enums">
-      <UniqueIdentifier>{f7aac379-43dd-4920-b26b-5d564f04c06e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\RE\Skyrim\Events\BGSStoryEvent">
       <UniqueIdentifier>{dd35ac2d-278e-4dd8-900b-ceb68b4feb4c}</UniqueIdentifier>
     </Filter>
@@ -301,13 +298,34 @@
     <Filter Include="include\RE\Skyrim\TESForms\Character\Perks">
       <UniqueIdentifier>{ecfde3ba-0814-4a1c-9f34-bfd01a8917fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\BSHavok\hkb">
+      <UniqueIdentifier>{f10743aa-3597-472c-bbf1-d8c5423ee347}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSDevices\Handlers">
+      <UniqueIdentifier>{59658924-308b-457f-9989-4cc947c1f5c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\FormComponents\Misc">
+      <UniqueIdentifier>{bc475c18-3779-451f-a9b7-06ce2e9c927b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Magic\Components">
+      <UniqueIdentifier>{a9f295b4-28b4-466b-87f7-a43222748439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Menus\IMenu">
+      <UniqueIdentifier>{bcafa373-e88b-4f98-88ef-d87a5b464bfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\NetImmerse\Containers">
+      <UniqueIdentifier>{ebb129b0-59be-43db-852c-aabb7260983b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\NetImmerse\Containers\Components">
+      <UniqueIdentifier>{c64809a7-254d-4abd-b843-3bf2099989d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\NetImmerse\Compnents">
+      <UniqueIdentifier>{c5ee7935-5c0f-4202-935b-1c7732099a99}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
       <Filter>src\RE\Skyrim\TESForms\World\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\MagicTarget.cpp">
-      <Filter>src\RE\Skyrim\Magic</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSInputDevice.cpp">
       <Filter>src\RE\Skyrim\BSDevices</Filter>
@@ -315,23 +333,11 @@
     <ClCompile Include="src\RE\MenuControls.cpp">
       <Filter>src\RE\Skyrim\BSDevices</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\MenuEventHandler.cpp">
-      <Filter>src\RE\Skyrim\BSDevices</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\PlayerControls.cpp">
-      <Filter>src\RE\Skyrim\BSDevices</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\PlayerInputHandler.cpp">
       <Filter>src\RE\Skyrim\BSDevices</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraContainerChanges.cpp">
       <Filter>src\RE\Skyrim\ExtraData</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\ActorValueOwner.cpp">
-      <Filter>src\RE\Skyrim\FormComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BaseExtraList.cpp">
-      <Filter>src\RE\Skyrim\FormComponents</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BGSBipedObjectForm.cpp">
       <Filter>src\RE\Skyrim\FormComponents</Filter>
@@ -347,9 +353,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\MagicItem.cpp">
       <Filter>src\RE\Skyrim\Magic</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\IMenu.cpp">
-      <Filter>src\RE\Skyrim\Menus</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\MenuManager.cpp">
       <Filter>src\RE\Skyrim\Menus</Filter>
@@ -411,9 +414,6 @@
     <ClCompile Include="src\RE\PlayerCamera.cpp">
       <Filter>src\RE\Skyrim\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\Condition.cpp">
-      <Filter>src\RE\Skyrim\FormComponents</Filter>
-    </ClCompile>
     <ClCompile Include="src\Logging.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -474,9 +474,6 @@
     <ClCompile Include="src\RE\EquipManager.cpp">
       <Filter>src\RE\Skyrim\Misc</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\InventoryMenu.cpp">
-      <Filter>src\RE\Skyrim\Menus</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\TESObjectARMO.cpp">
       <Filter>src\RE\Skyrim\TESForms\Objects</Filter>
     </ClCompile>
@@ -492,17 +489,11 @@
     <ClCompile Include="src\RE\BSIntrusiveRefCounted.cpp">
       <Filter>src\RE\Skyrim\BSSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\NiPoint3.cpp">
-      <Filter>src\RE\Skyrim\NetImmerse</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\TESWorldSpace.cpp">
       <Filter>src\RE\Skyrim\TESForms\World</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraMapMarker.cpp">
       <Filter>src\RE\Skyrim\ExtraData</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiMemory.cpp">
-      <Filter>src\RE\Skyrim\NetImmerse</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\TESTopicInfo.cpp">
       <Filter>src\RE\Skyrim\TESForms\Character</Filter>
@@ -659,6 +650,39 @@
     </ClCompile>
     <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp">
       <Filter>src\RE\Skyrim\Events\ScriptEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSPerkEntry.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\MenuEventHandler.cpp">
+      <Filter>src\RE\Skyrim\BSDevices\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\PlayerInputHandler.cpp">
+      <Filter>src\RE\Skyrim\BSDevices\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BaseExtraList.cpp">
+      <Filter>src\RE\Skyrim\FormComponents\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Condition.cpp">
+      <Filter>src\RE\Skyrim\FormComponents\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ActorValueOwner.cpp">
+      <Filter>src\RE\Skyrim\FormComponents\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\MagicTarget.cpp">
+      <Filter>src\RE\Skyrim\Magic\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\IMenu.cpp">
+      <Filter>src\RE\Skyrim\Menus\IMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\InventoryMenu.cpp">
+      <Filter>src\RE\Skyrim\Menus\IMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiMemory.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\Containers\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiPoint3.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\Compnents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2275,6 +2299,27 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESModelPSA.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkbCharacter.h">
+      <Filter>include\RE\Skyrim\BSHavok\hkb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkbRagdollDriver.h">
+      <Filter>include\RE\Skyrim\BSHavok\hkb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkbStateMachine.h">
+      <Filter>include\RE\Skyrim\BSHavok\hkb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkbGenerator.h">
+      <Filter>include\RE\Skyrim\BSHavok\hkb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkbNode.h">
+      <Filter>include\RE\Skyrim\BSHavok\hkb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkbBindable.h">
+      <Filter>include\RE\Skyrim\BSHavok\hkb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkbBehaviorGraph.h">
+      <Filter>include\RE\Skyrim\BSHavok\hkb</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

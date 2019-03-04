@@ -101,7 +101,7 @@ namespace RE
 		const char*			GetDisplayName(TESForm* a_type);
 		UInt32				GetAshPileRefHandle(UInt32& a_refHandle);
 		void				SetInventoryChanges(InventoryChanges* a_changes);
-		void				BlockActivation(ExtraFlags::Flag a_flags, bool a_blocked);
+		void				SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
 
 	protected:
 		struct PresenceBitfield
