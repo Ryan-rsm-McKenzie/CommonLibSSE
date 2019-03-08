@@ -3,6 +3,8 @@
 
 namespace RE
 {
-	typedef UInt32 VMTypeID;
-	typedef UInt64 VMHandle;
+	using VMTypeID = UInt32;
+	using VMHandle = UInt64;
+
+	constexpr float FNAN = 0xFF7FFFFF;
 }

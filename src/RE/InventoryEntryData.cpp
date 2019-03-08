@@ -2,6 +2,8 @@
 
 #include "skse64/GameExtraData.h"  // InventoryEntryData
 
+#include <cstdint>  // uintptr_t
+
 #include "RE/Offsets.h"
 
 
@@ -31,7 +33,7 @@ namespace RE
 	const char* InventoryEntryData::GenerateName()
 	{
 		typedef const char* _GenerateName_t(InventoryEntryData* a_this);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_GenerateName_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_GenerateName_GetPtr());
 		_GenerateName_t* _GenerateName = reinterpret_cast<_GenerateName_t*>(*ptr);
 		return _GenerateName(this);
 	}
@@ -40,50 +42,35 @@ namespace RE
 	SInt32 InventoryEntryData::GetValue()
 	{
 		typedef SInt32 _GetValue_t(InventoryEntryData* a_this);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_GetValue_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_GetValue_GetPtr());
 		_GetValue_t* _GetValue = reinterpret_cast<_GetValue_t*>(*ptr);
 		return _GetValue(this);
 	}
 
 
-	bool InventoryEntryData::IsOwnedBy(TESForm* a_actor, bool a_unk1)
+	bool InventoryEntryData::IsOwnedBy(Actor* a_actor, bool a_arg2)
 	{
-		typedef bool _IsOwnedBy_t(InventoryEntryData* a_this, TESForm* a_actor, bool a_unk1);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_IsOwnedBy_GetPtr());
+		typedef bool _IsOwnedBy_t(InventoryEntryData* a_this, Actor* a_actor, bool a_arg2);
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_IsOwnedBy_GetPtr());
 		_IsOwnedBy_t* _IsOwnedBy = reinterpret_cast<_IsOwnedBy_t*>(*ptr);
-		return _IsOwnedBy(this, a_actor, a_unk1);
+		return _IsOwnedBy(this, a_actor, a_arg2);
+	}
+
+
+	bool InventoryEntryData::IsOwnedBy(Actor* a_actor, TESForm* a_itemOwner, bool a_arg3)
+	{
+		typedef bool _IsOwnedBy_t(InventoryEntryData* a_this, Actor* a_actor, TESForm* a_itemOwner, bool a_arg3);
+		RelocAddr<_IsOwnedBy_t*> _IsOwnedBy(INVENTORY_ENTRY_DATA_IS_OWNED_BY);
+		return _IsOwnedBy(this, a_actor, a_itemOwner, a_arg3);
 	}
 
 
 	SoulLevel InventoryEntryData::GetSoulLevel()
 	{
 		typedef SoulLevel _GetSoulLevel_t(InventoryEntryData* a_this);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_GetSoulLevel_GetPtr());
+		std::uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(reinterpret_cast<::InventoryEntryData*>(this)->_GetSoulLevel_GetPtr());
 		_GetSoulLevel_t* _GetSoulLevel = reinterpret_cast<_GetSoulLevel_t*>(*ptr);
 		return _GetSoulLevel(this);
-	}
-
-
-	void InventoryEntryData::AddEntryList(BaseExtraList* a_extra)
-	{
-		if (!a_extra) {
-			return;
-		}
-
-		if (!extraList) {
-			extraList = new BSSimpleList<BaseExtraList*>;
-		}
-		if (extraList) {
-			extraList->push_front(a_extra);
-		}
-	}
-
-
-	bool InventoryEntryData::IsOwnedBy(TESForm* a_actor, TESForm* a_itemOwner, bool a_unk1)
-	{
-		typedef bool _IsOwnedBy_t(InventoryEntryData* a_this, TESForm* actor, TESForm* itemOwner, bool unk1);
-		RelocAddr<_IsOwnedBy_t*> _IsOwnedBy(INVENTORY_ENTRY_DATA_IS_OWNED_BY);
-		return _IsOwnedBy(this, a_actor, a_itemOwner, a_unk1);
 	}
 
 
@@ -100,5 +87,20 @@ namespace RE
 		typedef float _GetWeight_t(InventoryEntryData* a_this);
 		RelocAddr<_GetWeight_t*> _GetWeight(INVENTORY_ENTRY_DATA_GET_WEIGHT);
 		return _GetWeight(this);
+	}
+
+
+	void InventoryEntryData::AddEntryList(BaseExtraList* a_extra)
+	{
+		if (!a_extra) {
+			return;
+		}
+
+		if (!extraList) {
+			extraList = new BSSimpleList<BaseExtraList*>;
+		}
+		if (extraList) {
+			extraList->push_front(a_extra);
+		}
 	}
 }

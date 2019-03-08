@@ -1,23 +1,23 @@
 #pragma once
 
+#include <cstddef>  // nullptr_t
+#include <type_traits>  // enable_if_t, is_convertible
+
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 
 
 namespace RE
 {
-	template <class Ty>
+	template <class T>
 	struct BSTSmartPointerIntrusiveRefCount
 	{
-		typedef Ty* pointer;
-
-
-		static void Attach(pointer a_ptr)
+		static void Attach(T* a_ptr)
 		{
 			a_ptr->IncRefCount();
 		}
 
 
-		static void Detach(pointer a_ptr)
+		static void Detach(T* a_ptr)
 		{
 			if (a_ptr->DecRefCount() == 0) {
 				delete a_ptr;
@@ -26,137 +26,105 @@ namespace RE
 	};
 
 
-	template <class Ty, template <class> class RefManager = BSTSmartPointerIntrusiveRefCount>
+	template <class T, template <class> class RefManager = BSTSmartPointerIntrusiveRefCount>
 	class BSTSmartPointer
 	{
 	public:
-		typedef Ty				value_type;
-		typedef Ty*				pointer;
-		typedef const Ty*		const_pointer;
-		typedef RefManager<Ty>	reference_manager;
+		using element_type = T;
+		using reference_manager = RefManager<T>;
 
 
-		BSTSmartPointer() :
+		constexpr BSTSmartPointer() noexcept :
 			_ptr(0)
 		{}
 
 
-		BSTSmartPointer(const BSTSmartPointer& a_ptr) :
+		constexpr BSTSmartPointer(std::nullptr_t) noexcept :
 			_ptr(0)
+		{}
+
+
+		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
+		explicit BSTSmartPointer(Y* a_ptr) :
+			_ptr(a_r._ptr)
 		{
-			Attach((const_pointer)a_ptr);
+			reference_manager::Attach(_ptr);
 		}
 
 
-		BSTSmartPointer(BSTSmartPointer&& a_ptr)
+		BSTSmartPointer(const BSTSmartPointer& a_r) noexcept :
+			_ptr(a_r._ptr)
 		{
-			_ptr = a_ptr._ptr;
-			a_ptr._ptr = 0;
+			reference_manager::Attach(_ptr);
 		}
 
 
-		BSTSmartPointer(const_pointer a_ptr) :
-			_ptr(0)
+		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
+		BSTSmartPointer(const BSTSmartPointer<Y>& a_r) noexcept :
+			_ptr(a_r._ptr)
 		{
-			Attach(a_ptr);
+			reference_manager::Attach(_ptr);
+		}
+
+
+		BSTSmartPointer(BSTSmartPointer&& a_r) noexcept :
+			_ptr(a_r._ptr)
+		{
+			a_r._ptr = 0;
+		}
+
+
+		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
+		BSTSmartPointer(BSTSmartPointer<Y>&& a_r) noexcept :
+			_ptr(a_r._ptr)
+		{
+			a_r._ptr = 0;
 		}
 
 
 		~BSTSmartPointer()
 		{
-			Release();
-		}
-
-
-		operator pointer()
-		{
-			return _ptr;
-		}
-
-
-		operator const_pointer() const
-		{
-			return _ptr;
-		}
-
-
-		operator bool() const
-		{
-			return _ptr != 0;
-		}
-
-
-		pointer operator->()
-		{
-			return _ptr;
-		}
-
-
-		const_pointer operator->() const
-		{
-			return _ptr;
-		}
-
-
-		value_type& operator*()
-		{
-			return *_ptr;
-		}
-
-
-		const value_type& operator*() const
-		{
-			return *_ptr;
-		}
-
-
-		BSTSmartPointer& operator=(const pointer a_ptr)
-		{
-			Release();
-			Attach(a_ptr);
-			return *this;
-		}
-
-
-		BSTSmartPointer& operator=(const BSTSmartPointer& a_ptr)
-		{
-			Release();
-			Attach((const_pointer)a_ptr);
-			return *this;
-		}
-
-
-		BSTSmartPointer& operator=(BSTSmartPointer&& a_ptr)
-		{
-			Release();
-			_ptr = a_ptr._ptr;
-			a_ptr._ptr = 0;
-			return *this;
-		}
-
-
-		pointer Get()
-		{
-			return _ptr;
-		}
-
-
-		const_pointer Get() const
-		{
-			return _ptr;
-		}
-
-
-		void Attach(const_pointer a_ptr)
-		{
-			_ptr = const_cast<pointer>(a_ptr);
 			if (_ptr) {
-				reference_manager::Attach(_ptr);
+				reference_manager::Detach(_ptr);
 			}
 		}
 
 
-		void Release()
+		BSTSmartPointer& operator=(const BSTSmartPointer& a_r) noexcept
+		{
+			reset(a_r._ptr);
+			reference_manager::Attach(_ptr);
+			return *this;
+		}
+
+
+		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
+		BSTSmartPointer& operator=(const BSTSmartPointer<Y>& a_r) noexcept
+		{
+			reset(a_r._ptr);
+			reference_manager::Attach(_ptr);
+			return *this;
+		}
+
+
+		BSTSmartPointer& operator=(BSTSmartPointer&& a_r) noexcept
+		{
+			_ptr = a_r._ptr;
+			a_r._ptr = 0;
+			return *this;
+		}
+
+
+		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
+		BSTSmartPointer& operator=(BSTSmartPointer<Y>&& a_r) noexcept
+		{
+			_ptr = a_r._ptr;
+			a_r._ptr = 0;
+			return *this;
+		}
+
+
+		void reset() noexcept
 		{
 			if (_ptr) {
 				reference_manager::Detach(_ptr);
@@ -164,9 +132,43 @@ namespace RE
 			}
 		}
 
+
+		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
+		void reset(Y* a_ptr)
+		{
+			if (_ptr) {
+				reference_manager::Detach(_ptr);
+			}
+			_ptr = a_ptr;
+		}
+
+
+		element_type* get() const noexcept
+		{
+			return _ptr;
+		}
+
+
+		T& operator*() const noexcept
+		{
+			return *get();
+		}
+
+
+		T* operator->() const noexcept
+		{
+			return get();
+		}
+
+
+		explicit operator bool() const noexcept
+		{
+			return _ptr != 0;
+		}
+
 	protected:
 		// members
-		pointer _ptr;	// 0
+		T* _ptr;	// 0
 	};
 	STATIC_ASSERT(sizeof(BSTSmartPointer<void*>) == 0x8);
 

@@ -53,19 +53,13 @@ namespace RE
 
 		// members
 		hkbCharacter					unk0C0;			// 0C0
-		UInt64							unk160;			// 160
-		UInt64							unk168;			// 168
-		BSTArray<BShkFloatController*>	unk170;			// 170
-		UInt64							unk188;			// 188
-		UInt64							unk190;			// 190
-		UInt64							unk198;			// 198
-		UInt64							unk1A0;			// 1A0
+		BSTArray<void*>					unk160;			// 160
+		BSTArray<BShkFloatController*>	unk178;			// 178
+		BSTArray<void*>					unk190;			// 190
 		UInt64							unk1A8;			// 1A8
 		UInt64							unk1B0;			// 1B0
 		UInt64							unk1B8;			// 1B8
-		UInt64							unk1C0;			// 1C0
-		UInt64							unk1C8;			// 1C8
-		UInt64							unk1D0;			// 1D0
+		BSTSmallArray<UInt8>			unk1C0;			// 1C0
 		UInt64							unk1D8;			// 1D8
 		UInt64							unk1E0;			// 1E0
 		UInt64							unk1E8;			// 1E8

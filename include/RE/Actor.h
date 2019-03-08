@@ -91,6 +91,21 @@ namespace RE
 		};
 
 
+		struct RecordFlags
+		{
+			enum RecordFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kStartsDead = 1 << 9,
+				kPersistent = 1 << 10,
+				kInitiallyDisabled = 1 << 11,
+				kIgnored = 1 << 12,
+				kNoAIAcquire = 1 << 25,
+				kDontHavokSettle = 1 << 29
+			};
+		};
+
+
 		struct ActorValueModifiers
 		{
 			struct Modifiers
@@ -109,21 +124,6 @@ namespace RE
 			float modifiers[Modifiers::kTotal];	// 0
 		};
 		STATIC_ASSERT(sizeof(ActorValueModifiers) == 0xC);
-
-
-		struct RecordFlags
-		{
-			enum RecordFlag : UInt32
-			{
-				kDeleted = 1 << 5,
-				kStartsDead = 1 << 9,
-				kPersistent = 1 << 10,
-				kInitiallyDisabled = 1 << 11,
-				kIgnored = 1 << 12,
-				kNoAIAcquire = 1 << 25,
-				kDontHavokSettle = 1 << 29
-			};
-		};
 
 
 		struct ActorValueMap
@@ -185,7 +185,7 @@ namespace RE
 		virtual void							GetMarkerPosition(NiPoint3* a_pos) override;																																						// 05B
 		virtual MagicCaster*					GetMagicCaster(UInt32 a_slot) const override;																																						// 05C
 		virtual MagicTarget*					GetMagicTarget() const override;																																									// 05D
-		virtual BSFaceGenAnimationData*			GetFaceGenAnimationData();																																											// 063
+		virtual BSFaceGenAnimationData*			GetFaceGenAnimationData() override;																																									// 063
 		virtual NiPoint3*						GetBoundLeftFrontBottom(NiPoint3* a_out) const override;																																			// 073
 		virtual NiPoint3*						GetBoundRightBackTop(NiPoint3* a_out) const override;																																				// 074
 		virtual void							ResetInventory(bool a_unk) override;																																								// 08A
@@ -239,7 +239,7 @@ namespace RE
 		virtual void							Unk_C9(void);																																														// 0C9
 		virtual void							OnArmorActorValueChanged();																																											// 0CA
 		virtual void							DropItem(UInt32* a_droppedItemHandle, TESForm* a_akItem, BaseExtraList* a_extraList, UInt32 a_count, UInt32 a_arg5, UInt32 a_arg6);																	// 0CB
-		virtual void							PickUpItem(TESObjectREFR* a_item, UInt32 a_count, bool a_arg3, bool a_playSound);																													// 0CC
+		virtual void							PickUpItem(TESObjectREFR* a_item, UInt32 a_count, bool a_arg3 = false, bool a_playSound = true);																									// 0CC
 		virtual void							Unk_CD(void);																																														// 0CD
 		virtual void							Unk_CE(void);																																														// 0CE
 		virtual void							Unk_CF(void);																																														// 0CF
@@ -290,8 +290,8 @@ namespace RE
 		virtual void							RemovePerk(BGSPerk* a_perk);																																										// 0FC
 		virtual void							Unk_FD(void);																																														// 0FD
 		virtual void							Unk_FE(void);																																														// 0FE
-		virtual bool							CanProcessEntryPointPerkEntry(EntryPoint a_entryType);																																			// 0FF
-		virtual void							VisitEntryPointPerkEntries(EntryPoint a_entryType, PerkEntryVisitor& a_visitor);																												// 100
+		virtual bool							CanProcessEntryPointPerkEntry(EntryPoint a_entryType);																																				// 0FF
+		virtual void							VisitEntryPointPerkEntries(EntryPoint a_entryType, PerkEntryVisitor& a_visitor);																													// 100
 		virtual void							Unk_101(void);																																														// 101
 		virtual void							Unk_102(void);																																														// 102
 		virtual void							Unk_103(void);																																														// 103
@@ -359,7 +359,7 @@ namespace RE
 		void		DispelWornItemEnchantments();
 		CaughtState	SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);
 		SInt32		CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const;
-		SInt32		GetDetectionLevel(Actor* a_target, UInt32 a_flag) const;
+		SInt32		GetDetectionLevel(Actor* a_target, UInt32 a_idx = 3);
 		bool		IsGhost() const;
 		bool		IsSummoned() const;
 		bool		IsRunning() const;

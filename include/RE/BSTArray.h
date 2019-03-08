@@ -258,7 +258,7 @@ namespace RE
 
 		inline void _Free()
 		{
-			_Free_Impl(this, );
+			_Free_Impl(this);
 		}
 
 	private:
@@ -855,14 +855,14 @@ namespace RE
 
 
 	template<class _Ty, std::uint32_t num = 1>
-	using BSTSmallArray = BSTArray <_Ty, BSTSmallArrayHeapAllocator<sizeof(_Ty)*num>>;
+	using BSTSmallArray = BSTArray<_Ty, BSTSmallArrayHeapAllocator<sizeof(_Ty) * num>>;
 	//members
 	//size_type	_M_capacity;	// 00
 	//size_type	pad04;			// 04
 	//Entry		_M_entries;		// 08
 	//size_type _M_count;		// 10
 	//size_type pad14;			// 14
-	using TestBSTSmallArray = BSTSmallArray<uint32_t>;
+	using TestBSTSmallArray = BSTSmallArray<std::uint32_t>;
 	STATIC_ASSERT(offsetof(TestBSTSmallArray, _M_capacity) == 0x00);
 	STATIC_ASSERT(offsetof(TestBSTSmallArray, _M_entries) == 0x08);
 	STATIC_ASSERT(offsetof(TestBSTSmallArray, _M_count) == 0x10);
@@ -885,7 +885,7 @@ namespace RE
 		//size_type _M_count;		// 18
 		//size_type pad14;			// 1C
 	};
-	using TestBSScrapArray = BSScrapArray<uint32_t>;
+	using TestBSScrapArray = BSScrapArray<std::uint32_t>;
 #if 0
 	STATIC_ASSERT(offsetof(TestBSScrapArray, _M_allocator) == 0x00);
 	STATIC_ASSERT(offsetof(TestBSScrapArray, _M_entries) == 0x08);

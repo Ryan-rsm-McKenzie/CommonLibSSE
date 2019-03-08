@@ -90,8 +90,6 @@ namespace RE
 		virtual const char*		GetTypeString() const;																										// 39 - { return ""; }
 		virtual bool			Unk_3A(void);																												// 3A - { return 1; }
 
-		void			CopyFromEx(TESForm* a_rhs);
-
 		static TESForm*	LookupByID(UInt32 a_formID);
 		template <typename T>
 		static T* LookupByID(UInt32 a_formID)
@@ -99,8 +97,6 @@ namespace RE
 			TESForm* form = LookupByID(a_formID);
 			return (form && (UInt8)form->formType == T::kTypeID) ? static_cast<T*>(form) : 0;
 		}
-
-		UInt32			GetFormID() const;
 
 		bool			Is(FormType a_type) const;
 		template <class First, class... Rest>
@@ -116,6 +112,7 @@ namespace RE
 			return IsNot(a_first) && IsNot(a_rest...);
 		}
 
+		void			CopyFromEx(TESForm* a_rhs);
 		bool			IsKey() const;
 		bool			IsWeapon() const;
 		bool			IsAmmo() const;
@@ -125,8 +122,10 @@ namespace RE
 		bool			IsGold() const;
 		bool			IsPlayer() const;
 		bool			IsPlayerRef() const;
-		bool			HasWorldModel(void) const;
-		float			GetWeight();
+		bool			HasWorldModel() const;
+		UInt32			GetFormID() const;
+		float			GetWeight() const;
+		SInt32			GetValue() const;
 
 
 		// members

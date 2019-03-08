@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/hkbBindable.h"  // hkbBindable
+#include "RE/hkStringPtr.h"  // hkStringPtr
 
 
 namespace RE
@@ -12,7 +13,7 @@ namespace RE
 
 		// add
 		virtual void	Unk_04(void);	// 04 - { return; }
-		virtual void	Unk_05(void);	// 05 - { unk30 |= 1; }
+		virtual void	Unk_05(void);	// 05 - { userData |= 1; }
 		virtual void	Unk_06(void);	// 06 - { return; }
 		virtual void	Unk_07(void);	// 07 - { return; }
 		virtual void	Unk_08(void);	// 08 - { return 2; }
@@ -32,10 +33,31 @@ namespace RE
 		virtual void	Unk_16(void);	// 16 - { return 0; }
 
 
+		enum class GetChildrenFlagBits : UInt32
+		{
+			kActiveOnly = 1 << 0,
+			kGeneratorsOnly = 1 << 1,
+			kIgnoreReferencedBehaviour = 1 << 2
+		};
+
+
+		enum class CloneState : UInt8
+		{
+			kDefault = 0,
+			kTemplate = 1,
+			kClone = 2,
+			kShareable = 3
+		};
+
+
 		// members
-		UInt64		unk30;		// 30
-		const char*	nodeName;	// 38
-		UInt64		unk40;		// 40
+		UInt32		userData;	// 30
+		UInt32		pad34;		// 34
+		hkStringPtr	name;		// 38
+		UInt16		id;			// 40
+		CloneState	cloneState;	// 42
+		UInt8		pad43;		// 43
+		UInt32		pad44;		// 44
 	};
 	STATIC_ASSERT(sizeof(hkbNode) == 0x48);
 }

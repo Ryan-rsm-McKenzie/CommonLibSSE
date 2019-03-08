@@ -50,4 +50,10 @@ namespace RE
 	{
 		return equippedObjects[Hands::kRight];
 	}
+
+
+	bool ActorProcessManager::IsGhost() const
+	{
+		return unk050 && (unk050->flags & Data050::Flag::kGhost) != Data050::Flag::kNone;
+	}
 }

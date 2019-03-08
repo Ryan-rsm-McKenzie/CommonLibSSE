@@ -164,12 +164,12 @@ namespace RE
 		virtual bool					EquipItem(TESForm* a_akItem, UInt32 a_aiCount, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5);																									// 57
 		virtual void					Unk_58(void);																																												// 58
 		virtual void					Unk_59(void);																																												// 59
-		virtual void					Unk_5A(void);																																												// 5A
+		virtual void					AddItem(TESForm* a_item, BaseExtraList* a_extraList, UInt32 a_count, TESObjectREFR* a_fromRefr);																							// 5A
 		virtual void					GetMarkerPosition(NiPoint3* a_pos);																																							// 5B
 		virtual MagicCaster*			GetMagicCaster(UInt32 a_slot) const;																																						// 5C
 		virtual MagicTarget*			GetMagicTarget() const;																																										// 5D
 		virtual bool					IsChild() const;																																											// 5E
-		virtual void					Unk_5F(void);																																												// 5F
+		virtual void					Unk_5F(void);																																												// 5F - { return 0; }
 		virtual void					Unk_60(void);																																												// 60
 		virtual BSFaceGenNiNode*		GetFaceGenNiNode();																																											// 61
 		virtual void					Unk_62(void);																																												// 62

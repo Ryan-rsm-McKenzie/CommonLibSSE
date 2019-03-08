@@ -249,11 +249,11 @@ namespace RE
 	}
 
 
-	SInt32 Actor::GetDetectionLevel(Actor* a_target, UInt32 a_flag) const
+	SInt32 Actor::GetDetectionLevel(Actor* a_target, UInt32 a_idx)
 	{
-		typedef SInt32 _GetDetectionLevel_t(const Actor* a_this, Actor* a_target, UInt32 a_flag);
+		typedef SInt32 _GetDetectionLevel_t(Actor* a_this, Actor* a_target, UInt32 a_idx);
 		RelocAddr<_GetDetectionLevel_t*> _GetDetectionLevel(ACTOR_GET_DETECTION_LEVEL);
-		return _GetDetectionLevel(this, a_target, a_flag);
+		return _GetDetectionLevel(this, a_target, a_idx);
 	}
 
 

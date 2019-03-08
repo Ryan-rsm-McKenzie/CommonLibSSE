@@ -169,6 +169,7 @@
     <ClCompile Include="src\Logging.cpp" />
     <ClCompile Include="src\RE\ActiveEffect.cpp" />
     <ClCompile Include="src\RE\Actor.cpp" />
+    <ClCompile Include="src\RE\ActorKnowledge.cpp" />
     <ClCompile Include="src\RE\ActorProcessManager.cpp" />
     <ClCompile Include="src\RE\ActorState.cpp" />
     <ClCompile Include="src\RE\ActorValueOwner.cpp" />
@@ -204,6 +205,9 @@
     <ClCompile Include="src\RE\GRefCountImplCore.cpp" />
     <ClCompile Include="src\RE\GString.cpp" />
     <ClCompile Include="src\RE\GViewport.cpp" />
+    <ClCompile Include="src\RE\hkBaseObject.cpp" />
+    <ClCompile Include="src\RE\hkReferencedObject.cpp" />
+    <ClCompile Include="src\RE\hkStringPtr.cpp" />
     <ClCompile Include="src\RE\Inventory.cpp" />
     <ClCompile Include="src\RE\ItemCrafted.cpp" />
     <ClCompile Include="src\RE\ItemsPickpocketed.cpp" />
@@ -290,6 +294,7 @@
   <ItemGroup>
     <ClInclude Include="include\ForceInclude.h" />
     <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h" />
+    <ClInclude Include="include\RE\ActorKnowledge.h" />
     <ClInclude Include="include\RE\ActorMover.h" />
     <ClInclude Include="include\RE\AlchemyItem.h" />
     <ClInclude Include="include\RE\ArrowProjectile.h" />
@@ -461,6 +466,7 @@
     <ClInclude Include="include\RE\ExtraFactionChanges.h" />
     <ClInclude Include="include\RE\ExtraFlags.h" />
     <ClInclude Include="include\RE\ExtraFollowerSwimBreadcrumbs.h" />
+    <ClInclude Include="include\RE\ExtraGhost.h" />
     <ClInclude Include="include\RE\ExtraHealth.h" />
     <ClInclude Include="include\RE\ExtraHotkey.h" />
     <ClInclude Include="include\RE\ExtraLastFinishedSequence.h" />
@@ -539,10 +545,13 @@
     <ClInclude Include="include\RE\HandlePolicy.h" />
     <ClInclude Include="include\RE\Hazard.h" />
     <ClInclude Include="include\RE\HeldStateHandler.h" />
+    <ClInclude Include="include\RE\hkArray.h" />
     <ClInclude Include="include\RE\hkBaseObject.h" />
     <ClInclude Include="include\RE\hkbBehaviorGraph.h" />
     <ClInclude Include="include\RE\hkbBindable.h" />
     <ClInclude Include="include\RE\hkbCharacter.h" />
+    <ClInclude Include="include\RE\hkbEvent.h" />
+    <ClInclude Include="include\RE\hkbEventBase.h" />
     <ClInclude Include="include\RE\hkbGenerator.h" />
     <ClInclude Include="include\RE\hkbNode.h" />
     <ClInclude Include="include\RE\hkbRagdollDriver.h" />
@@ -573,6 +582,9 @@
     <ClInclude Include="include\RE\hkpWorld.h" />
     <ClInclude Include="include\RE\hkpWorldObject.h" />
     <ClInclude Include="include\RE\hkReferencedObject.h" />
+    <ClInclude Include="include\RE\hkRefPtr.h" />
+    <ClInclude Include="include\RE\hkRefVariant.h" />
+    <ClInclude Include="include\RE\hkStringPtr.h" />
     <ClInclude Include="include\RE\IAIWorldLocationHandle.h" />
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h" />
     <ClInclude Include="include\RE\IAnimationSetCallbackFunctor.h" />

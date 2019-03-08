@@ -5,18 +5,44 @@
 
 namespace RE
 {
+	class hkClass;
+	class hkStatisticsCollector;
+
+
 	class hkReferencedObject : public hkBaseObject
 	{
 	public:
-		virtual ~hkReferencedObject();	// 00
+		enum class LockMode : UInt32
+		{
+			kNone = 0,
+			kAuto,
+			kManual
+		};
+
+
+		enum
+		{
+			kMemSize = 0x7FFF
+		};
+
+
+		hkReferencedObject();
+		virtual ~hkReferencedObject();																					// 00
 
 		// add
-		virtual void	Unk_01(void);	// 01 - { return 0; }
-		virtual void	Unk_02(void);	// 02
+		virtual hkClass*	GetClassType() const;																		// 01 - { return 0; }
+		virtual void		CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const;	// 02
+
+		SInt32				GetAllocatedSize() const;
+		SInt32				GetReferenceCount() const;
+		void				AddReference() const;
+		void				RemoveReference() const;
 
 
 		// members
-		UInt64 unk08;	// 08
+		UInt16					memSizeAndFlags;	// 08
+		volatile mutable SInt16	referenceCount;		// 0A
+		UInt32					pad0C;				// 0C
 	};
 	STATIC_ASSERT(sizeof(hkReferencedObject) == 0x10);
 }

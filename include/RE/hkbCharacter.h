@@ -1,10 +1,16 @@
 #pragma once
 
+#include "RE/hkArray.h"  // hkArray
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
+#include "RE/hkRefVariant.h"  // hkRefVariant
+#include "RE/hkStringPtr.h"  // hkStringPtr
 
 
 namespace RE
 {
+	class hkbBehaviorGraph;
+	class hkbCharacterSetup;
+	class hkbProjectData;
 	class hkbRagdollDriver;
 
 
@@ -19,24 +25,28 @@ namespace RE
 
 
 		// members
-		UInt64				unk10;	// 10
-		UInt64				unk18;	// 18
-		UInt64				unk20;	// 20
-		UInt64				unk28;	// 28
-		hkbRagdollDriver*	unk30;	// 30
-		UInt64				unk38;	// 38
-		UInt64				unk40;	// 40
-		UInt64				unk48;	// 48
-		UInt64				unk50;	// 50
-		UInt64				unk58;	// 58
-		UInt64				unk60;	// 60
-		UInt64				unk68;	// 68
-		UInt64				unk70;	// 70
-		UInt64				unk78;	// 78
-		UInt64				unk80;	// 80
-		UInt64				unk88;	// 88
-		UInt64				unk90;	// 90
-		UInt64				unk98;	// 98
+		hkArray<hkbCharacter*>		nearbyCharacters;			// 10
+		SInt16 						currentLOD;					// 20
+		SInt16				 		numTracksInLOD;				// 22
+		UInt32				 		pad24;						// 24
+		hkStringPtr 				name;						// 28
+		hkRefPtr<hkbRagdollDriver>	ragdollDriver;				// 30
+		hkRefVariant 				characterControllerDriver;	// 38
+		hkRefVariant 				footIkDriver;				// 40
+		hkRefVariant 				handIkDriver;				// 48
+		hkRefPtr<hkbCharacterSetup>	setup;						// 50
+		hkRefPtr<hkbBehaviorGraph>	behaviorGraph;				// 58
+		hkRefPtr<hkbProjectData>	projectData;				// 60
+		hkRefVariant 				animationBindingSet;		// 68
+		hkRefVariant 				raycastInterface;			// 70
+		hkRefVariant 				world;						// 78
+		hkRefVariant 				eventQueue;					// 80
+		hkRefVariant 				worldFromModel;				// 88
+		const void** 				poseLocal;					// 90 - hkSimpleArray<hkRefVariant>
+		SInt32 						numPoseLocal;				// 98
+		bool 						deleteWorldFromModel;		// 9C
+		bool 						deletePoseLocal;			// 9D
+		UInt16 						pad9E;						// 9E
 	};
 	STATIC_ASSERT(sizeof(hkbCharacter) == 0xA0);
 }

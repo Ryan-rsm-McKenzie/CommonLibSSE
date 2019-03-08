@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSSpinLock.h"  // BSSpinLock
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/FormTypes.h"  // TESPackage, TESIdleForm
@@ -28,7 +29,7 @@ namespace RE
 
 		struct Data
 		{
-			UInt64		unk00;		// 00 - New in SE?
+			BSSpinLock	lock;		// 00
 			TESPackage*	package;	// 08
 			UInt64		unk10;		// 10
 			UInt32		unk18;		// 18

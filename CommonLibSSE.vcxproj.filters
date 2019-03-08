@@ -250,12 +250,6 @@
     <Filter Include="include\RE\Skyrim\BSHavok\bhk">
       <UniqueIdentifier>{a6342141-a179-4586-9908-4d756c701a9e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\Skyrim\BSHavok\hkp">
-      <UniqueIdentifier>{6efa02eb-6dab-4b0e-bcf0-d21b282a4b62}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Skyrim\BSHavok\hk">
-      <UniqueIdentifier>{b4cec424-bdbb-4452-907f-3b0811996565}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Skyrim\BSHavok\ahkp">
       <UniqueIdentifier>{6c2ae4f7-99c8-4f91-96bf-f627fd26db1a}</UniqueIdentifier>
     </Filter>
@@ -321,6 +315,18 @@
     </Filter>
     <Filter Include="src\RE\Skyrim\NetImmerse\Compnents">
       <UniqueIdentifier>{c5ee7935-5c0f-4202-935b-1c7732099a99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSHavok">
+      <UniqueIdentifier>{394a210a-5b4b-4bcb-861e-10d2b7bbdfc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSHavok\hk">
+      <UniqueIdentifier>{2306e8b2-568a-4d49-a144-cc2635a69bc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSHavok\physics">
+      <UniqueIdentifier>{6efa02eb-6dab-4b0e-bcf0-d21b282a4b62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSHavok\common">
+      <UniqueIdentifier>{b4cec424-bdbb-4452-907f-3b0811996565}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -683,6 +689,18 @@
     </ClCompile>
     <ClCompile Include="src\RE\NiPoint3.cpp">
       <Filter>src\RE\Skyrim\NetImmerse\Compnents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\hkBaseObject.cpp">
+      <Filter>src\RE\Skyrim\BSHavok\hk</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\hkReferencedObject.cpp">
+      <Filter>src\RE\Skyrim\BSHavok\hk</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\hkStringPtr.cpp">
+      <Filter>src\RE\Skyrim\BSHavok\hk</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ActorKnowledge.cpp">
+      <Filter>src\RE\Skyrim\TESForms\World\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2046,85 +2064,85 @@
       <Filter>include\RE\Skyrim\BSHavok\bhk</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkBaseObject.h">
-      <Filter>include\RE\Skyrim\BSHavok\hk</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\common</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpAllCdPointCollector.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpCachingShapePhantom.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpCdPointCollector.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpCharacterContext.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpCharacterProxy.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpCharacterProxyListener.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpCharacterState.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpCharacterStateManager.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpConstraintOwner.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpEntity.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpEntityListener.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpFixedRigidMotion.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpKeyframedRigidMotion.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpListShape.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpMotion.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpPhantom.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpPhantomListener.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpRigidBody.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpShape.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpShapeCollection.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpShapeContainer.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpShapePhantom.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpSimulationIsland.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpWorld.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpWorldObject.h">
-      <Filter>include\RE\Skyrim\BSHavok\hkp</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\physics</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkReferencedObject.h">
-      <Filter>include\RE\Skyrim\BSHavok\hk</Filter>
+      <Filter>include\RE\Skyrim\BSHavok\common</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\Memory.h">
       <Filter>include\RE\Skyrim</Filter>
@@ -2320,6 +2338,30 @@
     </ClInclude>
     <ClInclude Include="include\RE\hkbBehaviorGraph.h">
       <Filter>include\RE\Skyrim\BSHavok\hkb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkRefPtr.h">
+      <Filter>include\RE\Skyrim\BSHavok\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkArray.h">
+      <Filter>include\RE\Skyrim\BSHavok\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkStringPtr.h">
+      <Filter>include\RE\Skyrim\BSHavok\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkRefVariant.h">
+      <Filter>include\RE\Skyrim\BSHavok\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkbEventBase.h">
+      <Filter>include\RE\Skyrim\BSHavok\hkb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkbEvent.h">
+      <Filter>include\RE\Skyrim\BSHavok\hkb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorKnowledge.h">
+      <Filter>include\RE\Skyrim\TESForms\World\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraGhost.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

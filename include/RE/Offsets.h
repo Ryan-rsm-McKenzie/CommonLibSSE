@@ -21,6 +21,9 @@ namespace RE
 	// 48 89 5C 24 10 57 48 83  EC 60 48 89 74 24 70 48
 	constexpr std::uintptr_t ACTOR_IS_RUNNING = 0x005D1380;												// 1_5_62
 
+	// 40 53 48 83 EC 20 48 8B  59 20 F3 0F 10 0D 82 8D
+	constexpr std::uintptr_t ACTOR_KNOWLEDGE_GET_DETECTION_STATE = 0x007188B0;							// 1_5_62
+
 	// 40 53 48 83 EC 20 48 8B  01 48 63 DA 8B D3 FF 50
 	constexpr std::uintptr_t ACTOR_VALUE_OWNER_GET_PLAYER_ACTOR_VALUE_CURRENT = 0x003E5440;				// 1_5_62
 
@@ -200,6 +203,7 @@ namespace RE
 	constexpr std::uintptr_t TES_OBJECT_ACTI_VTBL = 0x01571750;											// 1_5_62
 	constexpr std::uintptr_t TES_OBJECT_CONT_VTBL = 0x01573990;											// 1_5_62
 	constexpr std::uintptr_t TES_NPC_VTBL = 0x015B9D30;													// 1_5_62
+	constexpr std::uintptr_t PLAYER_CHARACTER_VTBL = 0x0167D640;										// 1_5_62
 
 	constexpr std::uintptr_t FAVORITES_MENU_VTBL = 0x016CB0C8;											// 1_5_62
 	constexpr std::uintptr_t MENU_OPEN_HANDLER_VTBL = 0x016D24E0;										// 1_5_62

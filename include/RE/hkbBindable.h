@@ -1,10 +1,16 @@
 #pragma once
 
+#include "RE/hkArray.h"  // hkArray
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
+#include "RE/hkRefPtr.h"  // hkRefPtr
 
 
 namespace RE
 {
+	class hkRefVariant;
+	class hkbVariableBindingSet;
+
+
 	class hkbBindable : public hkReferencedObject
 	{
 	public:
@@ -15,10 +21,12 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
-		UInt64	unk20;	// 20
-		UInt64	unk28;	// 28
+		hkRefPtr<hkbVariableBindingSet>	variableBindingSet;	// 10
+		hkArray<hkRefVariant>			cachedBindables;	// 18
+		bool							areBindablesCached;	// 28
+		UInt8							pad29;				// 29
+		UInt16							pad2A;				// 2A
+		UInt32							pad2C;				// 2C
 	};
 	STATIC_ASSERT(sizeof(hkbBindable) == 0x30);
 }
