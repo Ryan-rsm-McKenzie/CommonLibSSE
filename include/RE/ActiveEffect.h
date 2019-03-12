@@ -52,7 +52,7 @@ namespace RE
 		virtual void	Unk_17(void);	// 17 - { return 1; }
 		virtual void	Unk_18(void);	// 18 - { return 1.0; }
 
-		EffectSetting*	GetBaseObject() const;
+		EffectSetting*	GetBaseEffect() const;
 		bool			Dispell(bool a_force);	// Returns success?
 
 

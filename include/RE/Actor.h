@@ -112,9 +112,10 @@ namespace RE
 			{
 				enum
 				{
-					kPermanent,
+					kPermanent = 0,
 					kTemporary,
 					kDamage,
+
 					kTotal
 				};
 			};
@@ -192,8 +193,8 @@ namespace RE
 		virtual bool							SendEquipEvent(uintptr_t a_arg1, uintptr_t a_arg2) override;																																		// 0A1
 
 		// override (MagicTarget)
-		virtual Actor*							GetMagicTargetActor() const override;																																								// 002
-		virtual bool							IsActorMagicTarget() const override;																																								// 003
+		virtual Actor*							GetMagicTargetActor() const override;																																								// 002 - { return this; }
+		virtual bool							IsActorMagicTarget() const override;																																								// 003 - { return true; }
 		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffects() override;																																										// 007
 
 		// add

@@ -27,7 +27,7 @@ namespace RE
 
 		EffectSetting* setting = 0;
 		for (auto& effect : *effects) {
-			setting = effect ? effect->GetBaseObject() : 0;
+			setting = effect ? effect->GetBaseEffect() : 0;
 			if (setting && setting->HasArchetype(a_type)) {
 				return true;
 			}
@@ -45,7 +45,7 @@ namespace RE
 
 		EffectSetting* setting = 0;
 		for (auto& effect : *effects) {
-			setting = effect ? effect->GetBaseObject() : 0;
+			setting = effect ? effect->GetBaseEffect() : 0;
 			if (setting && setting->HasArchetype(a_type)) {
 				effect->Dispell(a_force);
 			}

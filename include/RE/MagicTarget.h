@@ -16,25 +16,31 @@ namespace RE
 		using Archetype = EffectSetting::Data::Archetype;
 
 
-		class ActiveEffectVisitor
+		class ForEachActiveEffectVisitor
 		{
-			virtual bool Accept(ActiveEffect* a_effect) = 0;
+		public:
+			virtual ~ForEachActiveEffectVisitor();				// 00
+
+			// add
+			virtual bool Accept(ActiveEffect* a_effect) = 0;	// 01
 		};
+		STATIC_ASSERT(sizeof(ForEachActiveEffectVisitor) == 0x8);
 
 
-		virtual ~MagicTarget();													// 0
+		virtual ~MagicTarget();													// 00
 
-		virtual void							Unk_01(void);					// 1
-		virtual Actor*							GetMagicTargetActor() const;	// 2
-		virtual bool							IsActorMagicTarget() const;		// 3
-		virtual void							Unk_04(void);					// 4
-		virtual void							Unk_05(void);					// 5
-		virtual void							Unk_06(void);					// 6
-		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffects();				// 7
-		virtual void							Unk_08(void);					// 8
-		virtual void							Unk_09(void);					// 9
-		virtual void							Unk_0A(void);					// A
-		virtual void							Unk_0B(void);					// B
+		// add
+		virtual void							Unk_01(void);					// 01
+		virtual Actor*							GetMagicTargetActor() const;	// 02 - { return 0; }
+		virtual bool							IsActorMagicTarget() const;		// 03 - { return false; }
+		virtual void							Unk_04(void);					// 04 - { return 0; }
+		virtual void							Unk_05(void);					// 05 - { return; }
+		virtual void							Unk_06(void);					// 06 - pure
+		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffects();				// 07 - pure
+		virtual void							Unk_08(void);					// 08 - { return; }
+		virtual void							Unk_09(void);					// 09 - { return; }
+		virtual void							Unk_0A(void);					// 0A - { return 1.0; }
+		virtual void							Unk_0B(void);					// 0B - { return 0; }
 
 		bool									HasMagicEffect(EffectSetting* a_effect);
 		bool									HasEffectWithArchetype(Archetype a_type);
@@ -42,8 +48,8 @@ namespace RE
 
 
 		// members
-		void*	unk04;	// 08
-		void*	unk08;	// 10
+		UInt64	unk04;	// 08
+		UInt64	unk08;	// 10
 	};
 	STATIC_ASSERT(sizeof(MagicTarget) == 0x18);
 }
