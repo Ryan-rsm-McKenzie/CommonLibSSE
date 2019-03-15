@@ -19,10 +19,7 @@ namespace RE
 
 	IMenu::~IMenu()
 	{
-		typedef void _IMenu_dtor_t(IMenu* a_this);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::IMenu*>(this)->_dtor_GetPtr());
-		_IMenu_dtor_t* _IMenu_dtor = reinterpret_cast<_IMenu_dtor_t*>(*ptr);
-		_IMenu_dtor(this);
+		dtor_internal();
 	}
 
 
@@ -40,19 +37,17 @@ namespace RE
 
 	IMenu::Result IMenu::ProcessMessage(UIMessage* a_message)
 	{
-		typedef IMenu::Result _ProcessMessage_t(IMenu* a_this, UIMessage* a_message);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::IMenu*>(this)->_ProcessMessage_internal_GetPtr());
-		_ProcessMessage_t* _ProcessMessage = reinterpret_cast<_ProcessMessage_t*>(*ptr);
-		return _ProcessMessage(this, a_message);
+		using func_t = function_type_t<decltype(&IMenu::ProcessMessage)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::IMenu, ProcessMessage_internal, func_t*);
+		return func(this, a_message);
 	}
 
 
 	void IMenu::NextFrame(UInt32 a_arg1, UInt32 a_arg2)
 	{
-		typedef void _NextFrame_t(IMenu* a_this, UInt32 a_arg1, UInt32 a_arg2);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::IMenu*>(this)->_NextFrame_internal_GetPtr());
-		_NextFrame_t* _NextFrame = reinterpret_cast<_NextFrame_t*>(*ptr);
-		_NextFrame(this, a_arg1, a_arg2);
+		using func_t = function_type_t<decltype(&IMenu::NextFrame)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::IMenu, NextFrame_internal, func_t*);
+		return func(this, a_arg1, a_arg2);
 	}
 
 
@@ -70,10 +65,9 @@ namespace RE
 
 	void IMenu::InitMovie()
 	{
-		typedef void _InitMovie_t(IMenu* a_this, GFxMovieView* a_view);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::IMenu*>(this)->_InitMovie_internal_GetPtr());
-		_InitMovie_t* _InitMovie = reinterpret_cast<_InitMovie_t*>(*ptr);
-		_InitMovie(this, view);
+		using func_t = void(IMenu*, GFxMovieView*);
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::IMenu, InitMovie_internal, func_t*);
+		return func(this, view);
 	}
 
 
@@ -176,5 +170,13 @@ namespace RE
 	bool IMenu::HasFlag10000() const
 	{
 		return (flags & Flag::kUnk10000) != Flag::kNone;
+	}
+
+
+	void IMenu::dtor_internal()
+	{
+		using func_t = function_type_t<decltype(&IMenu::dtor_internal)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::IMenu, dtor, func_t*);
+		return func(this);
 	}
 }

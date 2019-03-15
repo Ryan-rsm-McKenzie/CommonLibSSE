@@ -29,55 +29,49 @@ namespace RE
 {
 	bool TESObjectREFR::LookupByHandle(UInt32& a_refHandle, TESObjectREFRPtr& a_refrOut)
 	{
-		typedef bool _Lookup_t(const UInt32& a_refHandle, TESObjectREFRPtr& a_refrOut);
-		static _Lookup_t* _Lookup = reinterpret_cast<_Lookup_t*>(::LookupREFRObjectByHandle.GetUIntPtr());
-
-		return _Lookup(a_refHandle, a_refrOut);
+		using func_t = function_type_t<decltype(&TESObjectREFR::LookupByHandle)>;
+		func_t* func = reinterpret_cast<func_t*>(::LookupREFRObjectByHandle.GetUIntPtr());
+		return func(a_refHandle, a_refrOut);
 	}
 
 
 	float TESObjectREFR::GetBaseScale() const
 	{
-		typedef float _GetBaseScale_t(const TESObjectREFR* a_this);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(const_cast<::TESObjectREFR*>(reinterpret_cast<const ::TESObjectREFR*>(this))->_GetBaseScale_GetPtr());
-		_GetBaseScale_t* _GetBaseScale = reinterpret_cast<_GetBaseScale_t*>(*ptr);
-		return _GetBaseScale(this);
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetBaseScale)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetBaseScale, func_t*);
+		return func(this);
 	}
 
 
 	bool TESObjectREFR::IsOffLimits() const
 	{
-		typedef bool _IsOffLimits_t(const TESObjectREFR* a_this);
-		uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(const_cast<::TESObjectREFR*>(reinterpret_cast<const ::TESObjectREFR*>(this))->_IsOffLimits_GetPtr());
-		_IsOffLimits_t* _IsOffLimits = reinterpret_cast<_IsOffLimits_t*>(*ptr);
-		return _IsOffLimits(this);
+		using func_t = function_type_t<decltype(&TESObjectREFR::IsOffLimits)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, IsOffLimits, func_t*);
+		return func(this);
 	}
 
 
 	float TESObjectREFR::GetWeight() const
 	{
-		typedef float _GetWeight_t(const TESObjectREFR* a_this);
-		uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(const_cast<::TESObjectREFR*>(reinterpret_cast<const ::TESObjectREFR*>(this))->_GetWeight_GetPtr());
-		_GetWeight_t* _GetWeight = reinterpret_cast<_GetWeight_t*>(*ptr);
-		return _GetWeight(this);
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetWeight)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetWeight, func_t*);
+		return func(this);
 	}
 
 
 	const char* TESObjectREFR::GetReferenceName() const
 	{
-		typedef const char* _GetReferenceName_t(const TESObjectREFR* a_this);
-		uintptr_t* ptr = reinterpret_cast<std::uintptr_t*>(const_cast<::TESObjectREFR*>(reinterpret_cast<const ::TESObjectREFR*>(this))->_GetReferenceName_GetPtr());
-		_GetReferenceName_t* _GetReferenceName = reinterpret_cast<_GetReferenceName_t*>(*ptr);
-		return _GetReferenceName(this);
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetReferenceName)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetReferenceName, func_t*);
+		return func(this);
 	}
 
 
 	TESWorldSpace* TESObjectREFR::GetWorldspace() const
 	{
-		typedef TESWorldSpace* _GetWorldspace_t(const TESObjectREFR* a_this);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(const_cast<::TESObjectREFR*>(reinterpret_cast<const ::TESObjectREFR*>(this))->_GetWorldspace_GetPtr());
-		_GetWorldspace_t* _GetWorldspace = reinterpret_cast<_GetWorldspace_t*>(*ptr);
-		return _GetWorldspace(this);
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetWorldspace)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetWorldspace, func_t*);
+		return func(this);
 	}
 
 
@@ -90,12 +84,12 @@ namespace RE
 
 	UInt32 TESObjectREFR::CreateRefHandle()
 	{
-		typedef void _CreateRefHandleByREFR_t(UInt32& a_refHandleOut, TESObjectREFR* a_refr);
-		_CreateRefHandleByREFR_t* _CreateRefHandleByREFR = reinterpret_cast<_CreateRefHandleByREFR_t*>(::CreateRefHandleByREFR.GetUIntPtr());
+		using func_t = void(UInt32&, TESObjectREFR*);
+		func_t* func = reinterpret_cast<func_t*>(::CreateRefHandleByREFR.GetUIntPtr());
 
 		if (GetRefCount() > 0) {
 			UInt32 refHandle = 0;
-			_CreateRefHandleByREFR(refHandle, this);
+			func(refHandle, this);
 			return refHandle;
 		} else {
 			return *g_invalidRefHandle;
@@ -180,9 +174,9 @@ namespace RE
 
 	TESForm* TESObjectREFR::GetOwner() const
 	{
-		typedef TESForm* _GetOwner_Impl_t(const TESObjectREFR* a_this);
-		RelocAddr<_GetOwner_Impl_t*> _GetOwner_Impl(TES_OBJECT_REFR_GET_OWNER_IMPL);
-		return _GetOwner_Impl(this);
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetOwner)>;
+		RelocUnrestricted<func_t*> func(Offset::TESObjectREFR::GetOwner);
+		return func(this);
 	}
 
 
@@ -250,9 +244,9 @@ namespace RE
 
 	LockState* TESObjectREFR::GetLockState() const
 	{
-		typedef LockState* _GetLockState_Impl_t(const TESObjectREFR* a_this);
-		RelocAddr<_GetLockState_Impl_t*> _GetLockState_Impl(TES_OBJECT_REFR_GET_LOCK_STATE_IMPL);
-		return _GetLockState_Impl(this);
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetLockState)>;
+		RelocUnrestricted<func_t*> func(Offset::TESObjectREFR::GetLockState);
+		return func(this);
 	}
 
 
@@ -265,9 +259,9 @@ namespace RE
 
 	UInt32 TESObjectREFR::GetNumItems(bool a_arg1, bool a_arg2)
 	{
-		typedef UInt32 _GetNumItems_t(TESObjectREFR* a_this, bool a_arg1, bool a_arg2);
-		RelocAddr<_GetNumItems_t*> _GetNumItems(TES_OBJECT_REFR_GET_NUM_ITEMS);
-		return _GetNumItems(this, a_arg1, a_arg2);
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetNumItems)>;
+		RelocUnrestricted<func_t*> func(Offset::TESObjectREFR::GetNumItems);
+		return func(this, a_arg1, a_arg2);
 	}
 
 
@@ -281,13 +275,13 @@ namespace RE
 
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
-		typedef InventoryChanges* _GetInventoryChanges_t(TESObjectREFR* a_this);
-		RelocAddr<_GetInventoryChanges_t*> _GetInventoryChanges(TES_OBJECT_REFR_GET_INVENTORY_CHANGES);
+		using func_t = InventoryChanges * (TESObjectREFR*);
+		RelocUnrestricted<func_t*> func(Offset::TESObjectREFR::GetInventoryChanges);
 
 		ExtraContainerChanges* xContainerChanges = extraData.GetByType<ExtraContainerChanges>();
 		InventoryChanges* changes = xContainerChanges ? xContainerChanges->changes : 0;
 		if (!changes) {
-			changes = _GetInventoryChanges(this);
+			changes = func(this);
 			if (changes) {
 				changes->InitContainer();
 				changes->GenerateLeveledListChanges();
@@ -323,16 +317,16 @@ namespace RE
 
 	UInt32 TESObjectREFR::ActivateRefChildren(TESObjectREFR* a_activator)
 	{
-		typedef UInt32 _ActivateRefChildren_t(TESObjectREFR* a_this, TESObjectREFR* a_activator);
-		RelocAddr<_ActivateRefChildren_t*> _ActivateRefChildren(TES_OBJECT_REFR_ACTIVATE_REF_CHILDREN);
-		return _ActivateRefChildren(this, a_activator);
+		using func_t = function_type_t<decltype(&TESObjectREFR::ActivateRefChildren)>;
+		RelocUnrestricted<func_t*> func(Offset::TESObjectREFR::ActivateRefChildren);
+		return func(this, a_activator);
 	}
 
 
 	void TESObjectREFR::PlayAnimation(RE::NiControllerManager* a_manager, RE::NiControllerSequence* a_toSeq, RE::NiControllerSequence* a_fromSeq, bool a_arg4)
 	{
-		typedef void _PlayAnimation_t(TESObjectREFR* a_this, NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4);
-		RelocAddr<_PlayAnimation_t*> _PlayAnimation(TES_OBJECT_REFR_PLAY_ANIMATION);
-		_PlayAnimation(this, a_manager, a_toSeq, a_fromSeq, a_arg4);
+		using func_t = function_type_t<decltype(&TESObjectREFR::PlayAnimation)>;
+		RelocUnrestricted<func_t*> func(Offset::TESObjectREFR::PlayAnimation);
+		return func(this, a_manager, a_toSeq, a_fromSeq, a_arg4);
 	}
 }

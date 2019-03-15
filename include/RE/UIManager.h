@@ -26,7 +26,7 @@ namespace RE
 
 
 		static UIManager*	GetSingleton();
-		void				AddMessage(BSFixedString& a_menuName, UIMessage::Message a_msgID, IUIMessageData* a_pData);
+		void				AddMessage(const BSFixedString& a_menuName, UIMessage::Message a_msgID, IUIMessageData* a_data);
 		IUIMessageData*		CreateUIMessageData(const BSFixedString& a_name);
 		void				ProcessCommands();
 		void				QueueCommand(UIDelegate* a_cmd);

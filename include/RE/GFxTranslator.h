@@ -63,6 +63,9 @@ namespace RE
 			UInt8			pad19;			// 19
 			UInt16			pad1A;			// 1A
 			UInt32			pad1C;			// 1C
+
+		private:
+			void SetResult_internalW(const wchar_t* a_resultText, UPInt a_resultLen = UPINT_MAX);
 		};
 		STATIC_ASSERT(sizeof(TranslateInfo) == 0x20);
 

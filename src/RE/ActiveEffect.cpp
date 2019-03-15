@@ -1,14 +1,12 @@
 #include "RE/ActiveEffect.h"
 
-#include "skse64_common/Relocation.h"  // RelocAddr
-
 #include "RE/Effect.h"  // Effect
 #include "RE/Offsets.h"
 
 
 namespace RE
 {
-	EffectSetting* ActiveEffect::GetBaseObject() const
+	EffectSetting* ActiveEffect::GetBaseEffect() const
 	{
 		return effect->baseEffect;
 	}
@@ -16,8 +14,8 @@ namespace RE
 
 	bool ActiveEffect::Dispell(bool a_force)
 	{
-		typedef bool _Dispell_t(ActiveEffect* a_this, bool a_force);
-		RelocAddr<_Dispell_t*> _Dispell(ACTIVE_EFFECT_DISPELL);
-		return _Dispell(this, a_force);
+		using func_t = function_type_t<decltype(&ActiveEffect::Dispell)>;
+		RelocUnrestricted<func_t*> func(Offset::ActiveEffect::Dispell);
+		return func(this, a_force);
 	}
 }

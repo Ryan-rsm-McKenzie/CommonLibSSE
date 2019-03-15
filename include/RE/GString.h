@@ -65,6 +65,7 @@ namespace RE
 		~GString();
 
 	protected:
+		GString*	ctor_internal(const char* a_s);
 		HeapType	GetHeapType() const;
 		DataDesc*	GetData() const;
 		void		SetData(DataDesc* a_desc);

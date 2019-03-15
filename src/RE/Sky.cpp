@@ -1,15 +1,14 @@
 #include "RE/Sky.h"
 
-#include "skse64_common/Relocation.h"  // RelocPtr
-
-#include "RE/Offsets.h"  // SKY_SINGLETON
+#include "RE/Offsets.h"
 
 
 namespace RE
 {
 	Sky* Sky::GetSingleton()
 	{
-		static RelocPtr<Sky> singleton(SKY_SINGLETON);
-		return singleton;
+		using func_t = function_type_t<decltype(&Sky::GetSingleton)>;
+		RelocUnrestricted<func_t*> func(Offset::Sky::GetSingleton);
+		return func();
 	}
 }

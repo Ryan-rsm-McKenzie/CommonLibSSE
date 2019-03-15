@@ -1,6 +1,6 @@
 #include "RE/GMemory.h"
 
-#include "skse64_common/Relocation.h"  // RelocAddr
+#include "skse64_common/Relocation.h"  // RelocPtr
 
 #include "RE/GMemoryHeap.h"  // GMemoryHeap
 #include "RE/Offsets.h"
@@ -87,6 +87,14 @@ namespace RE
 	}
 
 
+	void GMemory::FreeInHeap(GMemoryHeap* a_heap, void* a_ptr)
+	{
+		if (a_ptr) {
+			a_heap->Free(a_ptr);
+		}
+	}
+
+
 	GMemoryHeap* GMemory::GetHeapByAddress(const void* a_ptr)
 	{
 		return GetGlobalHeapRef()->GetAllocHeap(a_ptr);
@@ -101,7 +109,7 @@ namespace RE
 
 	GMemoryHeap*& GMemory::GetGlobalHeapRef()
 	{
-		RelocPtr<GMemoryHeap*> globalHeap(SCALEFORM_GLOBAL_HEAP);
+		RelocPtr<GMemoryHeap*> globalHeap(Offset::GMemory::GlobalHeap);
 		return *globalHeap.GetPtr();
 	}
 }

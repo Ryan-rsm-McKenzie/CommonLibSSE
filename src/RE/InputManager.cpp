@@ -12,9 +12,9 @@ namespace RE
 {
 	InputManager* InputManager::GetSingleton()
 	{
-		typedef InputManager* _GetSingleton_t();
-		static _GetSingleton_t* _GetSingleton = reinterpret_cast<_GetSingleton_t*>(GetFnAddr(&::InputEventDispatcher::GetSingleton));
-		return _GetSingleton();
+		using func_t = function_type_t<decltype(&InputManager::GetSingleton)>;
+		func_t* func = function_cast<func_t*>(&::InputEventDispatcher::GetSingleton);
+		return func();
 	}
 
 

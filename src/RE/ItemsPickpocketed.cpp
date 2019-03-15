@@ -1,16 +1,22 @@
 #include "RE/ItemsPickpocketed.h"
 
-#include "skse64_common/Relocation.h"  // RelocAddr
-
 #include "RE/Offsets.h"
 
 
 namespace RE
 {
+	BSTEventSource<ItemsPickpocketed::Event>* ItemsPickpocketed::GetEventSource()
+	{
+		using func_t = function_type_t<decltype(&ItemsPickpocketed::GetEventSource)>;
+		RelocUnrestricted<func_t*> func(Offset::ItemsPickpocketed::GetEventSource);
+		return func();
+	}
+
+
 	void ItemsPickpocketed::SendEvent(UInt32 a_numItems)
 	{
-		typedef void _SendEvent_t(UInt32 a_numItems);
-		static RelocAddr<_SendEvent_t*> _SendEvent(ITEMS_PICKPOCKETED_SEND_EVENT);
-		_SendEvent(a_numItems);
+		Event e = { a_numItems, 0 };
+		auto source = GetEventSource();
+		source->SendEvent(&e);
 	}
 }

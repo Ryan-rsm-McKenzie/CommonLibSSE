@@ -7,8 +7,8 @@ namespace RE
 {
 	InputStringHolder* InputStringHolder::GetSingleton()
 	{
-		typedef InputStringHolder* _GetSingleton_t();
-		static _GetSingleton_t* _GetSingleton = reinterpret_cast<_GetSingleton_t*>(GetFnAddr(&::InputStringHolder::GetSingleton));
-		return _GetSingleton();
+		using func_t = function_type_t<decltype(&InputStringHolder::GetSingleton)>;
+		func_t* func = function_cast<func_t*>(&::InputStringHolder::GetSingleton);
+		return func();
 	}
 }

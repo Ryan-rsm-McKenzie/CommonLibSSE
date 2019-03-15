@@ -51,6 +51,9 @@ namespace RE
 		NiObject*		niCamera;		// 58
 		float			northRotation;	// 60
 		UInt32			pad64;			// 64
+
+	protected:
+		LocalMapCamera* ctor_internal(float a_northRotation);
 	};
 	STATIC_ASSERT(sizeof(LocalMapCamera) == 0x68);
 }

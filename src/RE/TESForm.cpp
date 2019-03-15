@@ -12,9 +12,7 @@ namespace RE
 {
 	TESForm* TESForm::LookupByID(UInt32 a_formID)
 	{
-		typedef TESForm* _LookupByID_t(UInt32 a_formID);
-		static _LookupByID_t* _LookupByID = reinterpret_cast<_LookupByID_t*>(::LookupFormByID.GetUIntPtr());
-		return _LookupByID(a_formID);
+		return LookupByID_internal(a_formID);
 	}
 
 
@@ -32,9 +30,9 @@ namespace RE
 
 	void TESForm::CopyFromEx(TESForm* a_rhs)
 	{
-		typedef void _CopyFromEx_t(TESForm* a_this, TESForm* a_rhs);
-		_CopyFromEx_t* _CopyFromEx = reinterpret_cast<_CopyFromEx_t*>(GetFnAddr(&::TESForm::CopyFromEx));
-		_CopyFromEx(this, a_rhs);
+		using func_t = function_type_t<decltype(&TESForm::CopyFromEx)>;
+		func_t* func = function_cast<func_t*>(&::TESForm::CopyFromEx);
+		return func(this, a_rhs);
 	}
 
 
@@ -106,11 +104,10 @@ namespace RE
 
 	float TESForm::GetWeight() const
 	{
-		typedef float _GetWeight_t(const TESForm* a_this);
-		_GetWeight_t* _GetWeight = reinterpret_cast<_GetWeight_t*>(GetFnAddr(&::GetFormWeight));
-
-		TESObjectREFR* ref = const_cast<TESForm*>(this)->GetReference();
-		return _GetWeight(ref ? ref->baseForm : this);
+		using func_t = float(const TESForm*);
+		func_t* func = function_cast<func_t*>(&::GetFormWeight);
+		const TESObjectREFR* ref = const_cast<TESForm*>(this)->GetReference();
+		return func(ref ? ref->baseForm : this);
 	}
 
 
@@ -123,5 +120,13 @@ namespace RE
 			MagicItem* magicItem = DYNAMIC_CAST(this, TESForm, MagicItem);
 			return magicItem ? magicItem->GetValue() : -1;
 		}
+	}
+
+
+	TESForm* TESForm::LookupByID_internal(UInt32 a_formID)
+	{
+		using func_t = function_type_t<decltype(&TESForm::LookupByID_internal)>;
+		func_t* func = reinterpret_cast<func_t*>(::LookupFormByID.GetUIntPtr());
+		return func(a_formID);
 	}
 }

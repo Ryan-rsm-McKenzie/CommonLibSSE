@@ -22,7 +22,7 @@ namespace RE
 		public BSTEventSource<void*>				// 0B8
 	{
 	public:
-		typedef IMenu* (*CreatorFunc)(void);
+		using CreatorFunc = IMenu * (*)();
 
 
 		struct MenuTableItem
@@ -62,7 +62,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(Unknown3) == 0x40);
 
 
-		static MenuManager*						GetSingleton(void);
+		static MenuManager*						GetSingleton();
 		bool									IsMenuOpen(BSFixedString& a_menuName);
 		GFxMovieView*							GetMovieView(BSFixedString& a_menuName);
 		void									ShowMenus(bool a_show);

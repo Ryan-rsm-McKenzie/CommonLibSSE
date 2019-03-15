@@ -1,6 +1,6 @@
 #include "RE/NiRefObject.h"
 
-#include "skse64_common/Relocation.h"
+#include "skse64_common/Relocation.h"  // RelocPtr
 
 #include "RE/Offsets.h"
 
@@ -54,7 +54,7 @@ namespace RE
 
 	volatile UInt32& NiRefObject::GetTotalObjectCount()
 	{
-		static RelocPtr<volatile UInt32> totalObjectCount(NI_REF_OBJECT_TOTAL_OBJECT_COUNT);
+		static RelocPtr<volatile UInt32> totalObjectCount(Offset::NiRefObject::TotalObjectCount);
 		return *totalObjectCount.GetPtr();
 	}
 }

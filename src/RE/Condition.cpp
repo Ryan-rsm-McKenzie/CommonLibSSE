@@ -1,7 +1,5 @@
 #include "RE/Condition.h"
 
-#include "skse64_common/Relocation.h"  // RelocAddr
-
 #include "RE/Offsets.h"
 
 
@@ -9,16 +7,16 @@ namespace RE
 {
 	bool Condition::Node::Run(Solution& a_solution)
 	{
-		typedef bool _Run_t(Node* a_this, Solution& a_visitor);
-		RelocAddr<_Run_t*> _Run(CONDITION_NODE_RUN);
-		return _Run(this, a_solution);
+		using func_t = function_type_t<decltype(&Condition::Node::Run)>;
+		RelocUnrestricted<func_t*> func(Offset::Condition::Node::Run);
+		return func(this, a_solution);
 	}
 
 
 	bool Condition::Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target)
 	{
-		typedef bool _Match_t(Condition* a_this, TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);
-		RelocAddr<_Match_t*> _Match(CONDITION_RUN);
-		return _Match(this, a_perkOwner, a_target);
+		using func_t = function_type_t<decltype(&Condition::Run)>;
+		RelocUnrestricted<func_t*> func(Offset::Condition::Run);
+		return func(this, a_perkOwner, a_target);
 	}
 }

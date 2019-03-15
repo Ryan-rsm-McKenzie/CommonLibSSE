@@ -274,11 +274,11 @@ namespace RE
 
 
 	template <std::uint32_t LOCAL_SIZE>
-	RelocAddr<typename BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Allocate_Impl_t*> BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Allocate_Impl(BST_SMALL_ARRAY_HEAP_ALLOCATOR_ALLOCATE_IMPL);
+	RelocAddr<typename BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Allocate_Impl_t*> BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Allocate_Impl(Offset::BSTSmallArrayHeapAllocator::Allocate);
 	template <std::uint32_t LOCAL_SIZE>
-	RelocAddr<typename BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Resize_Impl_t*> BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Resize_Impl(BST_SMALL_ARRAY_HEAP_ALLOCATOR_RESIZE_IMPL);
+	RelocAddr<typename BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Resize_Impl_t*> BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Resize_Impl(Offset::BSTSmallArrayHeapAllocator::Resize);
 	template <std::uint32_t LOCAL_SIZE>
-	RelocAddr<typename BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Free_Impl_t*> BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Free_Impl(BST_SMALL_ARRAY_HEAP_ALLOCATOR_FREE_IMPL);
+	RelocAddr<typename BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Free_Impl_t*> BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Free_Impl(Offset::BSTSmallArrayHeapAllocator::Free);
 
 
 	class BSScrapArrayAllocator

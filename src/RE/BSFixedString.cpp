@@ -1,6 +1,5 @@
 #include "RE/BSFixedString.h"
 
-#include "skse64_common/Relocation.h"  // RelocAddr
 #include "skse64/GameTypes.h"  // BSFixedString
 
 #include <cctype>  // tolower
@@ -151,7 +150,7 @@ namespace RE
 	BSFixedString::BSFixedString() :
 		_data(0)
 	{
-		ctor_internal(this, "");
+		ctor_internal("");
 	}
 
 
@@ -159,7 +158,7 @@ namespace RE
 		_data(0)
 	{
 		char* arr = insert_char_internal(0, a_count, a_ch);
-		ctor_internal(this, arr);
+		ctor_internal(arr);
 		::delete[] arr;
 	}
 
@@ -170,7 +169,7 @@ namespace RE
 		a_other.assert_out_of_range(a_pos, __FUNCTION__);
 		size_type size = ((a_count == npos) || ((a_count - a_pos) > a_other.size())) ? (a_other.size() - a_pos) : (a_count - a_pos);
 		char* arr = insert_internal(0, a_other.c_str() + a_pos, size);
-		ctor_internal(this, arr);
+		ctor_internal(arr);
 		::delete[] arr;
 	}
 
@@ -178,13 +177,13 @@ namespace RE
 	BSFixedString::BSFixedString(const char* a_s) :
 		_data(0)
 	{
-		ctor_internal(this, a_s);
+		ctor_internal(a_s);
 	}
 
 
 	BSFixedString::BSFixedString(const BSFixedString& a_other)
 	{
-		ctor_copy_internal(this, a_other);
+		ctor_copy_internal(a_other);
 	}
 
 
@@ -198,24 +197,24 @@ namespace RE
 	BSFixedString::BSFixedString(std::initializer_list<char> a_ilist)
 	{
 		char* arr = insert_internal(0, a_ilist.begin(), a_ilist.size());
-		ctor_internal(this, arr);
+		ctor_internal(arr);
 		::delete[] arr;
 	}
 
 
 	BSFixedString::~BSFixedString()
 	{
-		dtor_internal(this);
+		dtor_internal();
 	}
 
 
 	BSFixedString& BSFixedString::operator=(const BSFixedString& a_rhs)
 	{
 		if (_data && _data[0]) {
-			dtor_internal(this);
+			dtor_internal();
 		}
 
-		return *set_copy_internal(this, a_rhs);
+		return *set_copy_internal(a_rhs);
 	}
 
 
@@ -231,10 +230,10 @@ namespace RE
 	BSFixedString& BSFixedString::operator=(const char* a_rhs)
 	{
 		if (_data && _data[0]) {
-			dtor_internal(this);
+			dtor_internal();
 		}
 
-		return *set_internal(this, a_rhs);
+		return *set_internal(a_rhs);
 	}
 
 
@@ -365,7 +364,7 @@ namespace RE
 
 	void BSFixedString::clear() noexcept
 	{
-		set_internal(this, "");
+		set_internal("");
 	}
 
 
@@ -381,7 +380,7 @@ namespace RE
 	{
 		assert_out_of_range(std::strlen(a_s), __FUNCTION__);
 		char* arr = insert_internal(a_index, a_s, std::strlen(a_s));
-		set_internal(this, arr);
+		set_internal(arr);
 		::delete[] arr;
 		return *this;
 	}
@@ -391,7 +390,7 @@ namespace RE
 	{
 		assert_out_of_range(a_count, __FUNCTION__);
 		char* arr = insert_internal(a_index, a_s, a_count);
-		set_internal(this, arr);
+		set_internal(arr);
 		::delete[] arr;
 		return *this;
 	}
@@ -401,7 +400,7 @@ namespace RE
 	{
 		assert_out_of_range(a_str.size(), __FUNCTION__);
 		char* arr = insert_internal(a_index, a_str.c_str(), a_str.size());
-		set_internal(this, arr);
+		set_internal(arr);
 		::delete[] arr;
 		return *this;
 	}
@@ -432,7 +431,7 @@ namespace RE
 		}
 		arr[size() - 1] = '\0';
 
-		set_internal(this, arr);
+		set_internal(arr);
 
 		::delete[] arr;
 	}
@@ -442,7 +441,7 @@ namespace RE
 	{
 		assert_length_error(a_count, __FUNCTION__);
 		char* arr = insert_char_internal(size(), a_count, a_ch);
-		set_internal(this, arr);
+		set_internal(arr);
 		::delete[] arr;
 		return *this;
 	}
@@ -452,7 +451,7 @@ namespace RE
 	{
 		assert_length_error(a_str.size(), __FUNCTION__);
 		char* arr = insert_internal(size(), a_str.c_str(), a_str.size());
-		set_internal(this, arr);
+		set_internal(arr);
 		::delete[] arr;
 		return *this;
 	}
@@ -468,7 +467,7 @@ namespace RE
 	{
 		assert_length_error(a_count, __FUNCTION__);
 		char* arr = insert_internal(size(), a_s, a_count);
-		set_internal(this, arr);
+		set_internal(arr);
 		::delete[] arr;
 		return *this;
 	}
@@ -478,7 +477,7 @@ namespace RE
 	{
 		assert_length_error(std::strlen(a_s), __FUNCTION__);
 		char* arr = insert_internal(size(), a_s, std::strlen(a_s));
-		set_internal(this, arr);
+		set_internal(arr);
 		::delete[] arr;
 		return *this;
 	}
@@ -488,7 +487,7 @@ namespace RE
 	{
 		assert_length_error(a_ilist.size(), __FUNCTION__);
 		char* arr = insert_internal(size(), 0, a_ilist.size());
-		set_internal(this, arr);
+		set_internal(arr);
 		::delete[] arr;
 		return *this;
 	}
@@ -622,46 +621,43 @@ namespace RE
 	}
 
 
-	BSFixedString* BSFixedString::ctor_internal(BSFixedString* a_this, const char* a_s)
+	BSFixedString* BSFixedString::ctor_internal(const char* a_s)
 	{
-		typedef BSFixedString* _ctor_t(BSFixedString* a_this, const char* a_s);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSFixedString*>(a_this)->_ctor_GetPtr());
-		static _ctor_t* _ctor = reinterpret_cast<_ctor_t*>(*ptr);
-		return _ctor(a_this, a_s);
+		using func_t = function_type_t<decltype(&BSFixedString::ctor_internal)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSFixedString, ctor, func_t*);
+		return func(this, a_s);
 	}
 
 
-	BSFixedString* BSFixedString::ctor_copy_internal(BSFixedString* a_this, const BSFixedString& a_other)
+	BSFixedString* BSFixedString::ctor_copy_internal(const BSFixedString& a_other)
 	{
-		typedef BSFixedString* _ctor_copy_t(BSFixedString* a_this, const BSFixedString& a_other);
-		static RelocAddr<_ctor_copy_t*> _ctor_copy(BS_FIXED_STRING_COPY_CTOR);
-		return _ctor_copy(a_this, a_other);
+		using func_t = function_type_t<decltype(&BSFixedString::ctor_copy_internal)>;
+		RelocUnrestricted<func_t*> func(Offset::BSFixedString::CtorCopy);
+		return func(this, a_other);
 	}
 
 
-	void BSFixedString::dtor_internal(BSFixedString* a_this)
+	void BSFixedString::dtor_internal()
 	{
-		typedef void _dtor_t(BSFixedString* a_this);
-		static uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSFixedString*>(a_this)->_Release_GetPtr());
-		static _dtor_t* _dtor = reinterpret_cast<_dtor_t*>(*ptr);
-		_dtor(a_this);
+		using func_t = function_type_t<decltype(&BSFixedString::dtor_internal)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSFixedString, Release, func_t*);
+		return func(this);
 	}
 
 
-	BSFixedString* BSFixedString::set_internal(BSFixedString* a_this, const char* a_rhs)
+	BSFixedString* BSFixedString::set_internal(const char* a_rhs)
 	{
-		typedef BSFixedString* _set_t(BSFixedString* a_this, const char* a_rhs);
-		static uintptr_t* ptr2 = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSFixedString*>(a_this)->_Set_GetPtr());
-		static _set_t* _set = reinterpret_cast<_set_t*>(*ptr2);
-		return _set(a_this, a_rhs);
+		using func_t = function_type_t<decltype(&BSFixedString::set_internal)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSFixedString, Set, func_t*);
+		return func(this, a_rhs);
 	}
 
 
-	BSFixedString* BSFixedString::set_copy_internal(BSFixedString* a_this, const BSFixedString& a_rhs)
+	BSFixedString* BSFixedString::set_copy_internal(const BSFixedString& a_rhs)
 	{
-		typedef BSFixedString* _set_copy_t(BSFixedString* a_this, const BSFixedString& a_rhs);
-		static RelocAddr<_set_copy_t*> _set_copy(BS_FIXED_STRING_SET_COPY);
-		return _set_copy(a_this, a_rhs);
+		using func_t = function_type_t<decltype(&BSFixedString::set_copy_internal)>;
+		RelocUnrestricted<func_t*> func(Offset::BSFixedString::SetCopy);
+		return func(this, a_rhs);
 	}
 
 

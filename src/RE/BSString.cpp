@@ -137,9 +137,8 @@ namespace RE
 
 	bool BSString::Set(const char* a_str, UInt32 a_len)
 	{
-		typedef bool _Set_t(BSString* a_this, const char* a_str, UInt32 a_len);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::BSString*>(this)->_Set_GetPtr());
-		_Set_t* _Set = reinterpret_cast<_Set_t*>(*ptr);
-		return _Set(this, a_str, a_len);
+		using func_t = function_type_t<decltype(&BSString::Set)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSString, Set, func_t*);
+		return func(this, a_str, a_len);
 	}
 }

@@ -20,9 +20,9 @@ namespace RE
 
 		InventoryEntryData*	FindItemEntry(TESForm* a_item);
 		InventoryEntryData*	CreateEquipEntryData(TESForm* a_item);
-		void				GetEquipItemData(::InventoryEntryData::EquipData& a_stateOut, TESForm* a_item, SInt32 a_itemId);
+		void				GetEquipItemData(::InventoryEntryData::EquipData& a_stateOut, TESForm* a_item, SInt32 a_itemID);
 		void				SetUniqueID(BaseExtraList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm);
-		void				TransferItemUID(BaseExtraList* a_extraList, TESForm* a_oldForm, TESForm* a_newForm, UInt32 a_unk1);
+		void				TransferItemUID(BaseExtraList* a_extraList, TESForm* a_oldForm, TESForm* a_newForm, UInt32 a_arg4);
 		void				InitContainer();
 		void				GenerateLeveledListChanges();
 		void				SendContainerChangedEvent(BaseExtraList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, SInt32 a_count);
@@ -39,6 +39,9 @@ namespace RE
 		UInt8								unk1A;			// 1A
 		UInt8								unk1B;			// 1B
 		UInt32								unk1C;			// 1C
+
+	private:
+		InventoryChanges* ctor_internal(TESObjectREFR* a_ref);
 	};
 	STATIC_ASSERT(sizeof(InventoryChanges) == 0x20);
 }

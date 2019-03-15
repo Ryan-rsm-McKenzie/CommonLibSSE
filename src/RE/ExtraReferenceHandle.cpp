@@ -15,6 +15,6 @@ namespace RE
 		}
 
 		TESObjectREFR::LookupByHandle(handle, refPtr);
-		return refPtr;
+		return refPtr.get();
 	}
 }

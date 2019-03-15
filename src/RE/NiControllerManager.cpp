@@ -1,6 +1,5 @@
 #include "RE/NiControllerManager.h"
 
-#include "skse64_common/Relocation.h"  // RelocAddr
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/Offsets.h"
 
@@ -9,8 +8,8 @@ namespace RE
 {
 	NiControllerSequence* NiControllerManager::GetSequenceByName(const BSFixedString& a_name)
 	{
-		typedef NiControllerSequence* _GetSequenceByName_Impl_t(NiControllerManager* a_this, const BSFixedString& a_name);
-		RelocAddr<_GetSequenceByName_Impl_t*> _GetSequenceByName_Impl(NI_CONTROLLER_MANAGER_GET_SEQUENCE_BY_NAME_IMPL);
-		return _GetSequenceByName_Impl(this, a_name);
+		using func_t = function_type_t<decltype(&NiControllerManager::GetSequenceByName)>;
+		RelocUnrestricted<func_t*> func(Offset::NiControllerManager::GetSequenceByName);
+		return func(this, a_name);
 	}
 }

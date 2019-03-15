@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdlib>  // size_t
 #include <new>  // operator new, operator delete
 
 #include "RE/GMemoryHeap.h"  // GMemoryHeap, GSysAllocPaged, GAllocDebugInfo
@@ -23,6 +24,7 @@ namespace RE
 		static void*			AllocInHeap(GMemoryHeap* a_heap, UPInt a_count, UPInt a_al);
 		static void*			Realloc(void* a_ptr, UPInt a_newCount);
 		static void				Free(void* a_ptr);
+		static void				FreeInHeap(GMemoryHeap* a_heap, void* a_ptr);
 		static GMemoryHeap*		GetHeapByAddress(const void* a_ptr);
 		static bool				DetectMemoryLeaks();
 
@@ -34,8 +36,8 @@ namespace RE
 
 // Global heap
 #define GALLOC(a_count)				RE::GMemory::Alloc((a_count))
-#define GMEMALIGN(a_sz, a_al)		RE::GMemory::Alloc((a_count),(a_al))
-#define GREALLOC(a_ptr, a_count)	RE::GMemory::Realloc((a_ptr),(a_count))
+#define GMEMALIGN(a_sz, a_al)		RE::GMemory::Alloc((a_count), (a_al))
+#define GREALLOC(a_ptr, a_count)	RE::GMemory::Realloc((a_ptr), (a_count))
 #define GFREE(a_ptr)				RE::GMemory::Free((a_ptr))
 #define GFREE_ALIGN(a_count)		RE::GMemory::Free((a_count))
 
@@ -44,14 +46,24 @@ namespace RE
 #define GHEAP_ALLOC(a_heap, a_count)			RE::GMemory::AllocInHeap((a_heap), (a_count))
 #define GHEAP_MEMALIGN(a_heap, a_count, a_al)	RE::GMemory::AllocInHeap((a_heap), (a_count), (a_al))
 #define GHEAP_AUTO_ALLOC(a_addr, a_count)		RE::GMemory::AllocAutoHeap((a_addr), (a_count))
-#define GHEAP_FREE(a_heap, a_ptr)				RE::GMemory::Free((a_ptr))
+#define GHEAP_FREE(a_heap, a_ptr)				RE::GMemory::FreeInHeap((a_heap), (a_ptr))
 
 
-#define GFC_MEMORY_REDEFINE_NEW_IMPL(a_className, a_check_delete, a_statType)									\
-	void*	operator new(UPInt a_count)								{ return GALLOC(a_count); }					\
-	void*	operator new(UPInt a_count, RE::GMemoryHeap* a_heap)	{ return GHEAP_ALLOC(a_heap, a_count); }	\
-	void	operator delete(void* a_ptr)							{ GFREE(a_ptr); }							\
-	void	operator delete(void* a_ptr, RE::GMemoryHeap* a_heap)	{ GHEAP_FREE(a_heap, a_ptr); }
+#define GFC_MEMORY_REDEFINE_NEW_IMPL(a_className, a_check_delete, a_statType)											\
+__pragma(warning(push))																									\
+__pragma(warning(disable : 4100))																						\
+	void*	operator new(std::size_t a_count)								{ return GALLOC(a_count); }					\
+	void*	operator new[](std::size_t a_count)								{ return GALLOC(a_count); }					\
+	void*	operator new(std::size_t a_count, void* a_plcmnt)				{ return a_plcmnt; }						\
+	void*	operator new[](std::size_t a_count, void* a_plcmnt)				{ return a_plcmnt; }						\
+	void*	operator new(std::size_t a_count, RE::GMemoryHeap* a_heap)		{ return GHEAP_ALLOC(a_heap, a_count); }	\
+	void*	operator new[](std::size_t a_count, RE::GMemoryHeap* a_heap)	{ return GHEAP_ALLOC(a_heap, a_count); }	\
+	void	operator delete(void* a_ptr)									{ GFREE(a_ptr); }							\
+	void	operator delete[](void* a_ptr)									{ GFREE(a_ptr); }							\
+	void	operator delete(void* a_ptr, void* a_plcmnt)					{ }											\
+	void	operator delete[](void* a_ptr, void* a_plcmnt)					{ }											\
+	void	operator delete(void* a_ptr, RE::GMemoryHeap* a_heap)			{ GHEAP_FREE(a_heap, a_ptr); }				\
+__pragma(warning(pop))
 
 
 #define GFC_MEMORY_CHECK_DELETE_NONE(a_className, a_ptr)

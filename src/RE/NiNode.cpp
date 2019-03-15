@@ -7,8 +7,8 @@ namespace RE
 {
 	NiNode* NiNode::Create(UInt32 a_arrBufLen)
 	{
-		typedef NiNode* _Create_t();
-		static _Create_t* _Create = reinterpret_cast<_Create_t*>(GetFnAddr(&::NiNode::Create));
-		return _Create();
+		using func_t = function_type_t<decltype(&NiNode::Create)>;
+		func_t* func = function_cast<func_t*>(&::NiNode::Create);
+		return func(a_arrBufLen);
 	}
 }

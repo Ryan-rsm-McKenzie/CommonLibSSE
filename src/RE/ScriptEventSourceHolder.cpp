@@ -1,7 +1,6 @@
 #include "RE/ScriptEventSourceHolder.h"
 
-#include "skse64_common/Relocation.h"  // RelocAddr
-#include "skse64/GameEvents.h"  // GetEventDispatcherList()
+#include "skse64/GameEvents.h"  // GetEventDispatcherList
 
 #include "RE/Offsets.h"
 #include "RE/TESObjectREFR.h"  // TESObjectREFRPtr
@@ -11,16 +10,16 @@ namespace RE
 {
 	ScriptEventSourceHolder* ScriptEventSourceHolder::GetSingleton()
 	{
-		typedef ScriptEventSourceHolder* _GetEventSourceList_t();
-		static _GetEventSourceList_t* _GetEventSourceList = reinterpret_cast<_GetEventSourceList_t*>(::GetEventDispatcherList.GetUIntPtr());
-		return _GetEventSourceList();
+		using func_t = function_type_t<decltype(&ScriptEventSourceHolder::GetSingleton)>;
+		func_t* func = reinterpret_cast<func_t*>(::GetEventDispatcherList.GetUIntPtr());
+		return func();
 	}
 
 
 	void ScriptEventSourceHolder::SendActivateEvent(TESObjectREFRPtr& a_target, TESObjectREFRPtr& a_caster)
 	{
-		typedef void _SendActivateEvent_t(ScriptEventSourceHolder* a_this, TESObjectREFRPtr& a_target, TESObjectREFRPtr& a_caster);
-		RelocAddr<_SendActivateEvent_t*> _SendActivateEvent(SCRIPT_EVENT_SOURCE_HOLDER_SEND_ACTIVATE_EVENT);
-		_SendActivateEvent(this, a_target, a_caster);
+		using func_t = function_type_t<decltype(&ScriptEventSourceHolder::SendActivateEvent)>;
+		RelocUnrestricted<func_t*> func(Offset::ScriptEventSourceHolder::SendActivateEvent);
+		return func(this, a_target, a_caster);
 	}
 }

@@ -7,17 +7,16 @@ namespace RE
 {
 	GFxLoader* GFxLoader::GetSingleton()
 	{
-		typedef GFxLoader* _GetSingleton_t();
-		static _GetSingleton_t* _GetSingleton = reinterpret_cast<_GetSingleton_t*>(GetFnAddr(&::GFxLoader::GetSingleton));
-		return _GetSingleton();
+		using func_t = function_type_t<decltype(&GFxLoader::GetSingleton)>;
+		func_t* func = function_cast<func_t*>(&::GFxLoader::GetSingleton);
+		return func();
 	}
 
 
 	bool GFxLoader::LoadMovie(IMenu* a_menu, GFxMovieView*& a_viewOut, const char* a_swfName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha)
 	{
-		typedef bool _LoadMovie_t(GFxLoader* a_this, IMenu* a_menu, GFxMovieView*& a_viewOut, const char* a_swfName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::GFxLoader*>(this)->_LoadMovie_GetPtr());
-		_LoadMovie_t* _LoadMovie = reinterpret_cast<_LoadMovie_t*>(*ptr);
-		return _LoadMovie(this, a_menu, a_viewOut, a_swfName, a_mode, a_backGroundAlpha);
+		using func_t = function_type_t<decltype(&GFxLoader::LoadMovie)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::GFxLoader, LoadMovie, func_t*);
+		return func(this, a_menu, a_viewOut, a_swfName, a_mode, a_backGroundAlpha);
 	}
 }

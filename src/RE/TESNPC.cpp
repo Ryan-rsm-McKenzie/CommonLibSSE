@@ -2,8 +2,6 @@
 
 #include "skse64/GameObjects.h"  // TESNPC
 
-class TESRace;
-
 
 namespace RE
 {
@@ -15,94 +13,89 @@ namespace RE
 
 	TESNPC::Sex TESNPC::GetSex()
 	{
-		typedef Sex _GetSex_t(TESNPC* a_this);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESNPC*>(this)->_GetSex_GetPtr());
-		_GetSex_t* _GetSex = reinterpret_cast<_GetSex_t*>(*ptr);
-		return _GetSex(this);
+		using func_t = function_type_t<decltype(&TESNPC::GetSex)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESNPC, GetSex, func_t*);
+		return func(this);
 	}
 
 
 	bool TESNPC::HasOverlays()
 	{
-		typedef bool _HasOverlays_t(TESNPC* a_this);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESNPC*>(this)->_HasOverlays_GetPtr());
-		_HasOverlays_t* _HasOverlays = reinterpret_cast<_HasOverlays_t*>(*ptr);
-		return _HasOverlays(this);
+		using func_t = function_type_t<decltype(&TESNPC::HasOverlays)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESNPC, HasOverlays, func_t*);
+		return func(this);
 	}
 
 
 	void TESNPC::ChangeHeadPart(BGSHeadPart* a_target)
 	{
-		typedef void _ChangeHeadPart_t(TESNPC* a_this, BGSHeadPart* a_target);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESNPC*>(this)->_ChangeHeadPart_GetPtr());
-		_ChangeHeadPart_t* _ChangeHeadPart = reinterpret_cast<_ChangeHeadPart_t*>(*ptr);
-		_ChangeHeadPart(this, a_target);
+		using func_t = function_type_t<decltype(&TESNPC::ChangeHeadPart)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESNPC, ChangeHeadPart, func_t*);
+		return func(this, a_target);
 	}
 
 
 	void TESNPC::UpdateNeck(BSFaceGenNiNode* a_faceNode)
 	{
-		typedef void _UpdateNeck_t(TESNPC* a_this, BSFaceGenNiNode* a_faceNode);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESNPC*>(this)->_UpdateNeck_GetPtr());
-		_UpdateNeck_t* _UpdateNeck = reinterpret_cast<_UpdateNeck_t*>(*ptr);
-		_UpdateNeck(this, a_faceNode);
+		using func_t = function_type_t<decltype(&TESNPC::UpdateNeck)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESNPC, UpdateNeck, func_t*);
+		return func(this, a_faceNode);
 	}
 
 
 	void TESNPC::SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute)
 	{
-		typedef void _SetSkinFromTint_t(TESNPC* a_this, NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::TESNPC*>(this)->_SetSkinFromTint_GetPtr());
-		_SetSkinFromTint_t* _SetSkinFromTint = reinterpret_cast<_SetSkinFromTint_t*>(*ptr);
-		_SetSkinFromTint(this, a_result, a_tintMask, a_compute);
+		using func_t = function_type_t<decltype(&TESNPC::SetSkinFromTint)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESNPC, SetSkinFromTint, func_t*);
+		return func(this, a_result, a_tintMask, a_compute);
 	}
 
 
 	void TESNPC::SetFaceTexture(BGSTextureSet* a_textureSet)
 	{
-		typedef void _SetFaceTexture_t(TESNPC* a_this, BGSTextureSet* a_textureSet);
-		_SetFaceTexture_t* _SetFaceTexture = reinterpret_cast<_SetFaceTexture_t*>(GetFnAddr(&::TESNPC::SetFaceTexture));
-		_SetFaceTexture(this, a_textureSet);
+		using func_t = function_type_t<decltype(&TESNPC::SetFaceTexture)>;
+		func_t* func = function_cast<func_t*>(&::TESNPC::SetFaceTexture);
+		return func(this, a_textureSet);
 	}
 
 
 	void TESNPC::SetHairColor(BGSColorForm* a_hairColor)
 	{
-		typedef void _SetHairColor_t(TESNPC* a_this, BGSColorForm* a_hairColor);
-		_SetHairColor_t* _SetHairColor = reinterpret_cast<_SetHairColor_t*>(GetFnAddr(&::TESNPC::SetHairColor));
-		_SetHairColor(this, a_hairColor);
+		using func_t = function_type_t<decltype(&TESNPC::SetHairColor)>;
+		func_t* func = function_cast<func_t*>(&::TESNPC::SetHairColor);
+		return func(this, a_hairColor);
 	}
 
 
 	BGSHeadPart* TESNPC::GetHeadPartByType(UInt32 a_type)
 	{
-		typedef BGSHeadPart* _GetHeadPartByType_t(TESNPC* a_this, UInt32 a_type);
-		_GetHeadPartByType_t* _GetHeadPartByType = reinterpret_cast<_GetHeadPartByType_t*>(GetFnAddr(&::TESNPC::GetCurrentHeadPartByType));
-		return _GetHeadPartByType(this, a_type);
+		using func_t = function_type_t<decltype(&TESNPC::GetHeadPartByType)>;
+		func_t* func = function_cast<func_t*>(&::TESNPC::GetHeadPartByType);
+		return func(this, a_type);
 	}
 
 
 	BGSHeadPart* TESNPC::GetHeadPartOverlayByType(UInt32 a_type)
 	{
-		typedef BGSHeadPart* _GetHeadPartOverlayByType_t(TESNPC* a_this, UInt32 a_type);
-		_GetHeadPartOverlayByType_t* _GetHeadPartOverlayByType = reinterpret_cast<_GetHeadPartOverlayByType_t*>(GetFnAddr(&::TESNPC::GetHeadPartOverlayByType));
-		return _GetHeadPartOverlayByType(this, a_type);
+		using func_t = function_type_t<decltype(&TESNPC::GetHeadPartOverlayByType)>;
+		func_t* func = function_cast<func_t*>(&::TESNPC::GetHeadPartOverlayByType);
+		return func(this, a_type);
 	}
 
 
 	BGSHeadPart* TESNPC::GetCurrentHeadPartByType(UInt32 a_type)
 	{
-		typedef BGSHeadPart* _GetCurrentHeadPartByType_t(TESNPC* a_this, UInt32 a_type);
-		_GetCurrentHeadPartByType_t* _GetCurrentHeadPartByType = reinterpret_cast<_GetCurrentHeadPartByType_t*>(GetFnAddr(&::TESNPC::GetCurrentHeadPartByType));
-		return _GetCurrentHeadPartByType(this, a_type);
+		using func_t = function_type_t<decltype(&TESNPC::GetCurrentHeadPartByType)>;
+		func_t* func = function_cast<func_t*>(&::TESNPC::GetCurrentHeadPartByType);
+		return func(this, a_type);
 	}
 
 
 	TESNPC* TESNPC::GetRootTemplate()
 	{
-		typedef TESNPC* _GetRootTemplate_t(TESNPC* a_this);
-		_GetRootTemplate_t* _GetRootTemplate = reinterpret_cast<_GetRootTemplate_t*>(GetFnAddr(&::TESNPC::GetRootTemplate));
-		return _GetRootTemplate(this);
+		using func_t = function_type_t<decltype(&TESNPC::GetRootTemplate)>;
+		func_t* func = function_cast<func_t*>(&::TESNPC::GetRootTemplate);
+		return func(this);
 	}
 
 

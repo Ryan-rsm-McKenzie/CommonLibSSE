@@ -3,13 +3,13 @@
 
 namespace RE
 {
-	float TESWorldSpace::ObjectBounds::Bounds::X() const
+	float TESWorldSpace::ObjectBounds::Bounds::GetX() const
 	{
 		return x / 4096.0;
 	}
 
 
-	float TESWorldSpace::ObjectBounds::Bounds::Y() const
+	float TESWorldSpace::ObjectBounds::Bounds::GetY() const
 	{
 		return y / 4096.0;
 	}

@@ -142,18 +142,18 @@ namespace RE
 	float NiPoint3::QuickLength() const
 	{
 		float length = SqrLength();
-		unsigned int *pUIRep = (unsigned int*)&length;
+		unsigned int *rep = (unsigned int*)&length;
 
-		if (*pUIRep == 0) {
+		if (*rep == 0) {
 			length = 0.0f;
 		} else {
-			short exp = ((*pUIRep) >> 23) - 127;
-			*pUIRep &= 0x007fffff;
+			short exp = ((*rep) >> 23) - 127;
+			*rep &= 0x007fffff;
 			if (exp & 1) {
-				*pUIRep |= 0x00800000;
+				*rep |= 0x00800000;
 			}
 			exp >>= 1;
-			*pUIRep = _sqrtTable[(*pUIRep) >> 16] | ((exp + 127) << 23);
+			*rep = _sqrtTable[(*rep) >> 16] | ((exp + 127) << 23);
 		}
 
 		return length;

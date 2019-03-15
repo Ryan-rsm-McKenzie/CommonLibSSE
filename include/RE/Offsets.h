@@ -5,206 +5,478 @@
 
 namespace RE
 {
-	// 40 53 48 83 EC 20 48 8B  D9 8B 49 7C 8B C1 C1 E8
-	constexpr std::uintptr_t ACTIVE_EFFECT_DISPELL = 0x0053E570;										// 1_5_62
+	namespace Offset
+	{
+		namespace ActivateHandler
+		{
+			// ??_7ActivateHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0166F298;	// 1_5_73
+		}
 
-	// 48 83 EC 48 48 C7 44 24  20 FE FF FF FF 48 85 C9
-	constexpr std::uintptr_t ACTOR_DISPEL_WORN_ITEM_ENCHANTMENTS = 0x00557110;							// 1_5_62
-	// 48 8B C4 44 89 48 20 4C  89 40 18 48 89 50 10 55  53 56 57 41 54 41 55 41  56 41 57 48 8D 68 88 48
-	constexpr std::uintptr_t ACTOR_SEND_STEAL_ALARM = 0x005DD960;										// 1_5_62
-	// 48 89 5C 24 10 48 89 6C  24 18 56 57 41 56 48 83  EC 20 33 FF 45 0F B6 F1  41 8B F0 48 8B DA 48 8B
-	constexpr std::uintptr_t ACTOR_CALC_ENTRY_VALUE = 0x001D9270;										// 1_5_62
-	// 40 53 48 83 EC 20 41 8B  D8 4C 8B C2 48 8B D1 48  8B 89 F0 00 00 00 48 85  ?? ?? 2B 80 B9 37 01 00
-	constexpr std::uintptr_t ACTOR_GET_DETECTION_LEVEL = 0x005FCB90;									// 1_5_62
-	// 40 56 57 41 56 48 83 EC  30 48 C7 44 24 20 FE FF  FF FF 48 89 5C 24 58 48  89 6C 24 60 48 8B F9 48  8B 49 40 48 83 C1 30 48
-	constexpr std::uintptr_t ACTOR_IS_GHOST = 0x005D2710;												// 1_5_62
-	// 48 89 5C 24 10 57 48 83  EC 60 48 89 74 24 70 48
-	constexpr std::uintptr_t ACTOR_IS_RUNNING = 0x005D1380;												// 1_5_62
 
-	// 40 53 48 83 EC 20 48 8B  59 20 F3 0F 10 0D 82 8D
-	constexpr std::uintptr_t ACTOR_KNOWLEDGE_GET_DETECTION_STATE = 0x007188B0;							// 1_5_62
+		namespace ActiveEffect
+		{
+			// E8 ? ? ? ? 48 85 DB 75 C9
+			constexpr std::uintptr_t Dispell = 0x0053E380;	// 1_5_73
+		}
 
-	// 40 53 48 83 EC 20 48 8B  01 48 63 DA 8B D3 FF 50
-	constexpr std::uintptr_t ACTOR_VALUE_OWNER_GET_PLAYER_ACTOR_VALUE_CURRENT = 0x003E5440;				// 1_5_62
 
-	// 40 55 56 57 41 56 41 57  48 83 EC 30 48 C7 44 24  20 FE FF FF FF 48 89 5C  24 78 48 8B EA 4C 8B F9  44 8B 05 C1 D2 3A 03 65
-	constexpr std::uintptr_t BASE_EXTRA_LIST_SET_INVENTORY_CHANGES_IMPL = 0x0010F7B0;					// 1_5_62
-	// 40 57 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 48  89 5C 24 48 48 89 74 24  50 48 8B F2 48 8B F9 C7  02 00 00 00 00 48 8D 59  10 48 89 5C 24 40 48 8B  CB ?? ?? ?? ?? ?? 90 BA  85 00 00 00 48 8B CF ??
-	constexpr std::uintptr_t BASE_EXTRA_LIST_GET_ASH_PILE_REF_HANDLE_IMPL = 0x00117170;					// 1_5_62
-	// 40 56 57 41 54 41 56 41  57 48 83 EC 30 48 C7 44  24 20 FE FF FF FF 48 89  5C 24 68 48 89 6C 24 70  45 0F B6 F8 8B EA 4C 8B
-	constexpr std::uintptr_t BASE_EXTRA_LIST_SET_EXTRA_FLAGS = 0x00125F70;								// 1_5_62
+		namespace Actor
+		{
+			// E8 ? ? ? ? 41 8B CE 3B C1
+			constexpr std::uintptr_t CalcEntryValue = 0x001D9080;				// 1_5_73
+			// E8 ? ? ? ? 49 8B D5 49 8B 8D ? ? ? ?
+			constexpr std::uintptr_t DispelWornItemEnchantments = 0x00556F20;	// 1_5_73
+			// E8 ? ? ? ? 85 C0 7E 2D
+			constexpr std::uintptr_t GetDetectionLevel = 0x005FC9A0;			// 1_5_73
+			// E8 ? ? ? ? 84 C0 49 0F 45 F4
+			constexpr std::uintptr_t IsGhost = 0x005D2520;						// 1_5_73
+			// E8 ? ? ? ? 48 8B CF 0F B6 E8
+			constexpr std::uintptr_t IsRunning = 0x005D1190;					// 1_5_73
+			// E8 ? ? ? ? EB 1D 8B 4D 7F
+			constexpr std::uintptr_t SendStealAlarm = 0x005DD770;				// 1_5_73
+			// ??_7Actor@@6B@
+			constexpr std::uintptr_t Vtbl = 0x01655650;							// 1_5_73
+		}
 
-	// 40 53 48 83 EC 60 8B 19  0F 29 74 24 50 0F 28 F3
-	constexpr std::uintptr_t BGS_SOUND_DESCRIPTOR_SOUND_DATA_SET_POSITION = 0x00BEDB10;					// 1_5_62 - There's a function very similar to this once, just makes different calls
-	// 48 89 5C 24 08 57 48 83  EC 20 83 39 FF 48 8B DA
-	constexpr std::uintptr_t BGS_SOUND_DESCRIPTOR_SOUND_DATA_SET_NI_NODE = 0x00BEDD00;					// 1_5_62
-	// 40 53 48 83 EC 20 8B 19  83 FB FF ?? ?? C7 41 08  01 00 00 00 ?? ?? ?? ??
-	constexpr std::uintptr_t BGS_SOUND_DESCRIPTOR_SOUND_DATA_PLAY = 0x00BED720;							// 1_5_62
 
-	// 48 89 5C 24 10 48 89 74  24 18 57 48 83 EC 20 48  8B 81 78 01 00 00 41 8B
-	constexpr std::uintptr_t BS_AUDIO_MANAGER_SET_UP = 0x00BEF060;										// 1_5_62
-	//
-	constexpr std::uintptr_t BS_AUDIO_MANAGER_GET_SINGLETON = 0x00BEE770;								// 1_5_62
+		namespace ActorKnowledge
+		{
+			// E8 ? ? ? ? 48 85 C0 74 09 8B 40 10
+			constexpr std::uintptr_t GetDetectionState = 0x007186C0;	// 1_5_73
+		}
 
-	// 4C 8B 02 4C 8B C9 4D 85  C0 ?? ?? 41 8B 40 F0 90
-	constexpr std::uintptr_t BS_FIXED_STRING_COPY_CTOR = 0x00C289C0;									// 1_5_62 - There's an exact copy of this function
-	// 40 53 48 83 EC 20 4C 8B  02 48 8B D9 48 8B 01 4C
-	constexpr std::uintptr_t BS_FIXED_STRING_SET_COPY = 0x00C28B60;										// 1_5_62 - There's an exact copy of this function
 
-	// 48 89 5C 24 08 48 89 74  24 10 57 48 83 EC 20 ??  ?? ?? ?? ?? ?? ?? 41 8B  F0 8B FA 48 8B D9 ?? ??
-	constexpr std::uintptr_t BS_SCRAP_ARRAY_ALLOCATOR_ALLOCATE_IMPL = 0x00C05200;						// 1_5_62
-	// 48 89 5C 24 18 48 89 74  24 20 57 41 54 41 56 48  83 EC 20 8B 41 10 8B FA
-	constexpr std::uintptr_t BS_SCRAP_ARRAY_ALLOCATOR_RESIZE_IMPL = 0x00C05290;							// 1_5_62
-	// 40 53 48 83 EC 20 48 8B  51 08 48 8B D9 48 85 D2  ?? ?? 48 8B 09 ?? ?? ??
-	constexpr std::uintptr_t BS_SCRAP_ARRAY_ALLOCATOR_FREE_IMPL = 0x00C053E0;							// 1_5_62
+		namespace ActorValueOwner
+		{
+			// E8 ? ? ? ? F3 44 0F 2C C0
+			constexpr std::uintptr_t GetPlayerActorValueCurrent = 0x003E5250;	// 1_5_73
+		}
 
-	// 40 53 48 83 EC 30 41 8B  C0 4C 8B D2 44 8B 01 48
-	constexpr std::uintptr_t BST_ARRAY_BASE_PUSH = 0x00C04C10;											// 1_5_62
-	// 48 83 EC 28 8B 4C 24 58  44 8B 54 24 50 44 0F AF
-	constexpr std::uintptr_t BST_ARRAY_BASE_MOVE = 0x00C04B70;											// 1_5_62
 
-	// 48 89 5C 24 08 48 89 74  24 10 57 48 83 EC 20 BB
-	constexpr std::uintptr_t BST_ARRAY_HEAP_ALLOCATOR_ALLOCATE_IMPL = 0x00C04EB0;						// 1_5_62
-	// 48 89 5C 24 18 48 89 74  24 20 57 41 54 41 56 48  83 EC 20 8B 41 08 8B FA
-	constexpr std::uintptr_t BST_ARRAY_HEAP_ALLOCATOR_RESIZE_IMPL = 0x00C04F30;							// 1_5_62
-	// 48 89 5C 24 08 57 48 83  EC 20 ?? ?? ?? ?? ?? ??  02 48 8B D9 48 8B 39 ??  ?? ?? ?? ?? ?? ?? ?? ??  ?? ?? ?? ?? ?? ?? ?? ??  ?? ?? ?? ?? 45 33 C0 48
-	constexpr std::uintptr_t BST_ARRAY_HEAP_ALLOCATOR_FREE_IMPL = 0x00C050B0;							// 1_5_62
+		namespace AttackBlockHandler
+		{
+			// ??_7AttackBlockHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0166F228;	// 1_5_73
+		}
 
-	// 40 53 48 83 EC 20 44 8B  D2 44 8B DA 45 0F AF D0
-	constexpr std::uintptr_t BST_SMALL_ARRAY_HEAP_ALLOCATOR_ALLOCATE_IMPL = 0x00C06830;					// 1_5_62
-	// 41 54 41 55 41 56 48 83  EC 30 8B 01 45 8B E9 45
-	constexpr std::uintptr_t BST_SMALL_ARRAY_HEAP_ALLOCATOR_RESIZE_IMPL = 0x00C068F0;					// 1_5_62
-	// 40 53 48 83 EC 20 F7 01  00 00 00 80 48 8B D9 ??
-	constexpr std::uintptr_t BST_SMALL_ARRAY_HEAP_ALLOCATOR_FREE_IMPL = 0x00C06A70;						// 1_5_62
 
-	// 48 83 EC 28 E8 97 1B 00  00 48 8B C8 48 8D 54 24
-	constexpr std::uintptr_t CHESTS_LOOTED_SEND_EVENT = 0x008607B0;										// 1_5_62
+		namespace AutoMoveHandler
+		{
+			// ??_7AutoMoveHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0166F2D8;	// 1_5_73
+		}
 
-	// 48 83 EC 68 33 C0 48 89  54 24 20 4C 89 44 24 28
-	constexpr std::uintptr_t CONDITION_RUN = 0x00444990;												// 1_5_62
 
-	// 48 89 4C 24 08 55 53 56  57 41 54 41 55 41 56 41  57 48 8D 6C 24 E1 48 81  EC E8 00 00 00 48 C7 45  F7 FE FF FF FF 0F 29 B4
-	constexpr std::uintptr_t CONDITION_NODE_RUN = 0x004456B0;											// 1_5_62
+		namespace BaseExtraList
+		{
+			// E8 ? ? ? ? 33 FF 48 89 7C 24 30
+			constexpr std::uintptr_t GetAshPileRefHandle = 0x00116F80;	// 1_5_73
+			// E8 ? ? ? ? F7 43 28 FF 03 00 00 75 0C
+			constexpr std::uintptr_t SetExtraFlags = 0x00125D80;		// 1_5_73
+			// E8 ? ? ? ? 90 41 89 1E 48 8B C7 48 8B 5C 24 60 48 8B 6C 24 68 48 83 C4 30 41 5E
+			constexpr std::uintptr_t SetInventoryChanges = 0x0010F5C0;	// 1_5_73
+		}
 
-	// 40 53 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 8B  0D 63 D5 2C 03 65 48 8B
-	constexpr std::uintptr_t INVENTORY_GET_EVENT_SOURCE = 0x001EF520;									// 1_5_62
 
-	// 40 57 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 48  89 5C 24 48 48 89 6C 24  50 48 89 74 24 58 48 8B  F9 ?? ?? ?? ?? ?? ?? ??  65 48 8B 04 25 58 00 00  00 BD 68 07 00 00 4A 8B  34 C0 8B 1C 2E 89 5C 24  40 C7 04 2E 62 00 00 00
-	constexpr std::uintptr_t INVENTORY_CHANGES_CTOR = 0x001D93F0;										// 1_5_62
-	// 40 55 56 57 41 54 41 55  41 56 41 57 48 8B EC 48  81 EC 80 00 00 00 48 C7  45 B0 FE FF FF FF 48 89  9C 24 D0 00 00 00 0F 29
-	constexpr std::uintptr_t INVENTORY_CHANGES_INIT_CONTAINER = 0x001E9F80;								// 1_5_62
-	// 48 89 4C 24 08 55 53 56  57 41 54 41 55 41 56 41  57 48 8B EC 48 83 EC 68  48 C7 45 D0 FE FF FF FF
-	constexpr std::uintptr_t INVENTORY_CHANGES_GENERATE_LEVELED_LIST_CHANGES = 0x001E0AA0;				// 1_5_62
-	// 40 53 55 56 57 41 56 41  57 48 83 EC 48 48 C7 44  24 20 FE FF FF FF 48 8B  DA 4C 8B F9 33 FF 4D 85
-	constexpr std::uintptr_t INVENTORY_CHANGES_SEND_CONTAINER_CHANGED_EVENT = 0x001ED010;				// 1_5_62
+		namespace BSAudioManager
+		{
+			// E8 ? ? ? ? BA 33 00 00 00
+			constexpr std::uintptr_t GetSingleton = 0x00BEE580;	// 1_5_73
+			// E8 ? ? ? ? F3 0F 10 5E 5C
+			constexpr std::uintptr_t SetUp = 0x00BEEE70;		// 1_5_73
+		}
 
-	// 48 89 5C 24 10 48 89 6C  24 18 48 89 7C 24 20 41  56 48 83 EC 30 0F 29 74
-	constexpr std::uintptr_t INVENTORY_ENTRY_DATA_IS_OWNED_BY = 0x001D7780;								// 1_5_62
-	// 40 53 48 83 EC 20 48 8B  59 08 48 85 DB ?? ?? 48  8B 1B 48 85 DB ?? ?? 48  8B CB ?? ?? ?? ?? ?? 48  85 C0 ?? ?? 48 8B CB 48  83 C4 20 5B ?? ?? ?? ??  ?? 33 C0 48 83 C4 20 5B  C3 CC CC CC CC CC CC CC
-	constexpr std::uintptr_t INVENTORY_ENTRY_DATA_GET_OWNER = 0x001D6810;								// 1_5_62 - There's a function very similar to this once, just makes different calls
-	// 40 53 48 83 EC 30 0F 29  74 24 20 48 8B D9 ?? ??  ?? ?? ?? ?? ?? ?? 48 85
-	constexpr std::uintptr_t INVENTORY_ENTRY_DATA_GET_WEIGHT = 0x001A1920;								// 1_5_62
 
-	// 40 53 48 83 EC 50 48 C7  44 24 30 FE FF FF FF 48  8B D9 80 79 50 00 0F 85
-	constexpr std::uintptr_t INVENTORY_MENU_INVENTORY_DATA_GET_SELECTED_ITEM = 0x008565F0;				// 1_5_62 - There's an exact copy of this function
+		namespace BSFixedString
+		{
+			// E8 ? ? ? ? 89 7D 98
+			constexpr std::uintptr_t CtorCopy = 0x00C287D0;	// 1_5_73
+			// E8 ? ? ? ? F7 DF
+			constexpr std::uintptr_t SetCopy = 0x00C28970;	// 1_5_73
+		}
 
-	// 40 57 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 48  89 5C 24 48 4C 8B CA 44  8B 05 3A 5E C6 02 65 48
-	constexpr std::uintptr_t INVENTORY_MENU_INVENTORY_DATA_UPDATE = 0x00856C40;							// 1_5_62
 
-	// 40 53 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 8B  0D F3 BF C4 02 65 48 8B
-	constexpr std::uintptr_t ITEM_CRAFTED_GET_EVENT_SOURCE = 0x00870A90;								// 1_5_62
+		namespace BSScaleformTranslator
+		{
+			// ??_7BSScaleformTranslator@@6B@
+			constexpr std::uintptr_t Vtbl = 0x017B6BE0;	// 1_5_62
+		}
 
-	// 48 83 EC 28 89 4C 24 30  E8 53 1C 00 00 48 8B C8
-	constexpr std::uintptr_t ITEMS_PICKPOCKETED_SEND_EVENT = 0x008607E0;								// 1_5_62
 
-	// 40 53 48 83 EC 20 0F B6  19 48 8B C2 ?? ?? ?? ??  ?? ?? ?? ?? F6 41 10 04  ?? ?? 48 85 D2 ?? ?? 33  D2 48 8B C8 ?? ?? ?? ??  00 ?? ?? ?? ?? ?? ?? ??  E1 02 ?? ?? ?? ?? ?? F3
-	constexpr std::uintptr_t LOCK_STATE_GET_LOCK_LEVEL = 0x00134C80;									// 1_5_62
+		namespace BSScrapArrayAllocator
+		{
+			// E8 ? ? ? ? EB 10 89 6C 24 28
+			constexpr std::uintptr_t Allocate = 0x00C05010;	// 1_5_73
+			// E8 ? ? ? ? 89 75 DF
+			constexpr std::uintptr_t Free = 0x00C051F0;		// 1_5_73
+			// E8 ? ? ? ? 84 C0 8B 45 6F
+			constexpr std::uintptr_t Resize = 0x00C050A0;	// 1_5_73
+		}
 
-	// 48 89 5C 24 18 56 48 83  EC 20 48 8B 01 48 8B F2  FF 50 38 32 DB 48 85 C0
-	constexpr std::uintptr_t MAGIC_TARGET_HAS_MAGIC_EFFECT = 0x005532C0;								// 1_5_62
 
-	// 48 85 D2 ?? ?? ?? ?? ??  ?? 57 48 83 EC 50 48 C7  44 24 20 FE FF FF FF 48  89 5C 24 60 48 8B DA ??
-	constexpr std::uintptr_t MENU_CONTROLS_REGISTER_HANDLER_IMPL = 0x008A8110;							// 1_5_62
-	// 40 53 48 83 EC 60 48 C7  44 24 30 FE FF FF FF 4C
-	constexpr std::uintptr_t MENU_CONTROLS_REMOVE_HANDLER_IMPL = 0x008A81E0;							// 1_5_62
+		namespace BSTArrayBase
+		{
+			// E8 ? ? ? ? 29 3E
+			constexpr std::uintptr_t Move = 0x00C04980;	// 1_5_73
+			// E8 ? ? ? ? 89 85 C8 00 00 00
+			constexpr std::uintptr_t Push = 0x00C04A20;	// 1_5_73
+		}
 
-	// 40 57 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 48  89 5C 24 48 48 8B D9 33  FF 48 8D 4C 24 50 ?? ??
-	constexpr std::uintptr_t NI_CONTROLLER_MANAGER_GET_SEQUENCE_BY_NAME_IMPL = 0x00189CF0;				// 1_5_62
 
-	//
-	constexpr std::uintptr_t NI_REF_OBJECT_TOTAL_OBJECT_COUNT = 0x03039520;								// 1_5_62
+		namespace BSTArrayHeapAllocator
+		{
+			// E8 ? ? ? ? 33 F6 EB 19
+			constexpr std::uintptr_t Allocate = 0x00C04CC0;	// 1_5_73
+			// E8 ? ? ? ? 89 73 60
+			constexpr std::uintptr_t Free = 0x00C04EC0;		// 1_5_73
+			// E8 ? ? ? ? 84 C0 8B 44 24 50
+			constexpr std::uintptr_t Resize = 0x00C04D40;	// 1_5_73
+		}
 
-	// 48 83 EC 38 48 C7 44 24  20 FE FF FF FF 48 C7 44  24 40 00 00 00 00 48 81  C1 94 08 00 00 48 8D 54
-	constexpr std::uintptr_t PLAYER_CHARACTER_GET_ACTOR_IN_FAVOR_STATE = 0x006B3860;					// 1_5_62
-	// 48 8B C4 56 57 41 56 48  83 EC 70 48 C7 40 C0 FE  FF FF FF 48 89 58 08 48
-	constexpr std::uintptr_t PLAYER_CHARACTER_PLAY_PICKUP_EVENT = 0x006A0050;							// 1_5_62
-	// 40 55 53 56 57 41 54 41  56 41 57 48 8B EC 48 83  EC 60 48 C7 45 F0 FE FF
-	constexpr std::uintptr_t PLAYER_CHARACTER_START_ACTIVATION = 0x006AA180;							// 1_5_62
-	// 48 89 5C 24 18 55 57 41  54 41 56 41 57 48 83 EC  70 41 8B F9 49 8B D8 4C
-	constexpr std::uintptr_t PLAYER_CHARACTER_TRY_TO_PICK_POCKET = 0x006B2720;							// 1_5_62
 
-	// 40 53 48 83 EC 40 48 C7  44 24 20 FE FF FF FF 48  8B 02 48 89 44 24 28 48  85 C0 ?? ?? F0 FF 40 28  48 89 44 24 28 49 8B 00  48 89 44 24 30 48 85 C0  ?? ?? F0 FF 40 28 48 89  44 24 30 48 83 C1 58 48
-	constexpr std::uintptr_t SCRIPT_EVENT_SOURCE_HOLDER_SEND_ACTIVATE_EVENT = 0x002A2260;				// 1_5_62
+		namespace BSTSmallArrayHeapAllocator
+		{
+			// E9 ? ? ? ? CC 48 85 C9
+			constexpr std::uintptr_t Allocate = 0x00C06640;	// 1_5_73
+			// E8 ? ? ? ? 44 89 3F
+			constexpr std::uintptr_t Free = 0x00C06880;		// 1_5_73
+			// E8 ? ? ? ? F7 07 00 00 00 80
+			constexpr std::uintptr_t Resize = 0x00C06700;	// 1_5_73
+		}
 
-	//
-	constexpr std::uintptr_t SKY_SINGLETON = 0x02F283D8;												// 1_5_62
 
-	// 40 57 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 48  89 5C 24 50 48 89 74 24  58 48 8B F1 48 83 C1 70  ?? ?? ?? ?? ?? 48 8B F8  33 D2 80 7E 1A 3E 48 0F
-	constexpr std::uintptr_t TES_OBJECT_REFR_GET_OWNER_IMPL = 0x002A6860;								// 1_5_62
-	// 40 57 48 83 EC 30 48 C7  44 24 20 FE FF FF FF 48  89 5C 24 50 48 8D 59 70
-	constexpr std::uintptr_t TES_OBJECT_REFR_GET_LOCK_STATE_IMPL = 0x002A76B0;							// 1_5_62
-	// 48 89 5C 24 08 48 89 74  24 10 57 48 83 EC 20 48  8B 41 40 33 DB 41 0F B6
-	constexpr std::uintptr_t TES_OBJECT_REFR_GET_NUM_ITEMS = 0x0028E440;								// 1_5_62
-	// 40 55 56 57 41 54 41 55  41 56 41 57 48 83 EC 50  48 C7 44 24 30 FE FF FF  FF 48 89 9C 24 98 00 00  00 0F 29 74 24 40 4C 8B
-	constexpr std::uintptr_t TES_OBJECT_REFR_ACTIVATE_REF_CHILDREN = 0x002A8EB0;						// 1_5_62
-	// 48 8B C4 57 41 56 41 57  48 83 EC 70 48 C7 40 C8  FE FF FF FF 48 89 58 08  48 89 68 10 48 89 70 18  0F 29 70 D8 49 8B F1 4D
-	constexpr std::uintptr_t TES_OBJECT_REFR_PLAY_ANIMATION = 0x0018A020;								// 1_5_62
-	// 40 56 57 41 56 48 83 EC  30 48 C7 44 24 20 FE FF  FF FF 48 89 5C 24 60 48  89 6C 24 68 48 8B F1 33
-	constexpr std::uintptr_t TES_OBJECT_REFR_GET_INVENTORY_CHANGES = 0x001D9030;						// 1_5_62
+		namespace ChestsLooted
+		{
+			// E8 ? ? ? ? 48 8B C8 48 8D 54 24 51
+			constexpr std::uintptr_t GetEventSource = 0x00862160;	// 1_5_73
+		}
 
-	// 48 85 D2 74 69 48 89 6C  24 10 48 89 74 24 18 57
-	constexpr std::uintptr_t GFX_TRANSLATOR_TRANSLATE_INFO_SET_RESULTW = 0x00F4B4E0;					// 1_5_62
 
-	// 48 83 EC 18 F3 41 0F 10  60 04 F3 41 0F 10 28 0F
-	constexpr std::uintptr_t WORLD_PT_TO_SCREEN_PT_3 = 0x00C662C0;										// 1_5_62
+		namespace Condition
+		{
+			namespace Node
+			{
+				// E8 ? ? ? ? 44 0F B6 C0 45 84 F6
+				constexpr std::uintptr_t Run = 0x004454C0;	// 1_5_73
+			}
 
-	// 48 83 EC 08 33 C0 45 8B  C8 4C 8B D2 4C 8B D9 45
-	constexpr std::uintptr_t CALCULATE_CRC32_SIZE = 0x00C06680;											// 1_5_62
-	// 48 89 5C 24 08 0F B6 C2  48 8D 1D 01 F9 B6 00 44
-	constexpr std::uintptr_t CALCULATE_CRC32_32 = 0x00C066E0;											// 1_5_62
-	// 48 89 5C 24 08 0F B6 C2  48 8D 1D 81 F8 B6 00 4C
-	constexpr std::uintptr_t CALCULATE_CRC32_64 = 0x00C06760;											// 1_5_62
 
-	constexpr std::uintptr_t SCALEFORM_GLOBAL_HEAP = 0x03059C50;										// 1_5_62
+			// E8 ? ? ? ? 0F B6 D8 EB 08
+			constexpr std::uintptr_t Run = 0x004447A0;	// 1_5_73
+		}
 
-	// 40 57 41 54 41 55 41 56  41 57 48 83 EC 30 48 C7  44 24 28 FE FF FF FF 48
-	constexpr std::uintptr_t DEBUG_NOTIFICATION = 0x008DA5C0;											// 1_5_62
-	// 48 83 EC 38 80 7C 24 70  00 F3 0F 10 15 5F 3A A4
-	constexpr std::uintptr_t GET_PICK_POCKET_CHANCE = 0x003BD130;										// 1_5_62
 
-	constexpr std::uintptr_t FIRST_PERSON_STATE_VTBL = 0x016C3EC0;										// 1_5_62
-	constexpr std::uintptr_t THIRD_PERSON_STATE_VTBL = 0x01649300;										// 1_5_62
-	constexpr std::uintptr_t FAVORITES_HANDLER_VTBL = 0x016D2518;										// 1_5_62
+		namespace CRC32Calculator
+		{
+			// E8 ? ? ? ? 8B 75 AB
+			constexpr std::uintptr_t SizeOf32 = 0x00C064F0;		// 1_5_73
+			// E8 ? ? ? ? 8B 5D C0
+			constexpr std::uintptr_t SizeOf64 = 0x00C06570;		// 1_5_73
+			// E8 ? ? ? ? 8B 9D B8 00 00 00
+			constexpr std::uintptr_t SizeOfSize = 0x00C06490;	// 1_5_73
+		}
 
-	constexpr std::uintptr_t MOVEMENT_HANDLER_VTBL = 0x01689208;										// 1_5_62
-	constexpr std::uintptr_t LOOK_HANDLER_VTBL = 0x016891A0;											// 1_5_62
-	constexpr std::uintptr_t SPRINT_HANDLER_VTBL = 0x01689238;											// 1_5_62
-	constexpr std::uintptr_t READY_WEAPON_HANDLER_VTBL = 0x016892B8;									// 1_5_62
-	constexpr std::uintptr_t AUTO_MOVE_HANDLER_VTBL = 0x01689328;										// 1_5_62
-	constexpr std::uintptr_t TOGGLE_RUN_HANDLER_VTBL = 0x01689358;										// 1_5_62
-	constexpr std::uintptr_t ACTIVATE_HANDLER_VTBL = 0x016892E8;										// 1_5_62
-	constexpr std::uintptr_t JUMP_HANDLER_VTBL = 0x016893E8;											// 1_5_62
-	constexpr std::uintptr_t SHOUT_HANDLER_VTBL = 0x01689448;											// 1_5_62
-	constexpr std::uintptr_t ATTACK_BLOCK_HANDLER_VTBL = 0x01689278;									// 1_5_62
-	constexpr std::uintptr_t RUN_HANDLER_VTBL = 0x01689388;												// 1_5_62
-	constexpr std::uintptr_t SNEAK_HANDLER_VTBL = 0x01689418;											// 1_5_62
-	constexpr std::uintptr_t TOGGLE_POV_HANDLER_VTBL = 0x01689478;										// 1_5_62
 
-	constexpr std::uintptr_t TES_OBJECT_ACTI_VTBL = 0x01571750;											// 1_5_62
-	constexpr std::uintptr_t TES_OBJECT_CONT_VTBL = 0x01573990;											// 1_5_62
-	constexpr std::uintptr_t TES_NPC_VTBL = 0x015B9D30;													// 1_5_62
-	constexpr std::uintptr_t PLAYER_CHARACTER_VTBL = 0x0167D640;										// 1_5_62
+		namespace FavoritesHandler
+		{
+			// ??_7FavoritesHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x016B84C8;	// 1_5_73
+		}
 
-	constexpr std::uintptr_t FAVORITES_MENU_VTBL = 0x016CB0C8;											// 1_5_62
-	constexpr std::uintptr_t MENU_OPEN_HANDLER_VTBL = 0x016D24E0;										// 1_5_62
+
+		namespace FavoritesMenu
+		{
+			// ??_7FavoritesMenu@@6B@
+			constexpr std::uintptr_t Vtbl = 0x016B1078;	// 1_5_73
+		}
+
+
+		namespace FirstPersonState
+		{
+			// ??_7FirstPersonState@@6B@
+			constexpr std::uintptr_t Vtbl = 0x016A9E70;	// 1_5_73
+		}
+
+
+		namespace Inventory
+		{
+			// E8 ? ? ? ? 48 8B C8 48 8D 54 24 58 E8 ? ? ? ? 49 8B 0F
+			constexpr std::uintptr_t GetEventSource = 0x001EF330;	// 1_5_73
+		}
+
+
+		namespace InventoryChanges
+		{
+			// E8 ? ? ? ? 48 8B F8 48 8B D7 48 8B CD
+			constexpr std::uintptr_t Ctor = 0x001D9200;							// 1_5_73
+			// E8 ? ? ? ? 90 8B 44 24 68 41 89 06 48 83 C4 38
+			constexpr std::uintptr_t GenerateLeveledListChanges = 0x001E08B0;	// 1_5_73
+			// E8 ? ? ? ? 40 84 F6 75 08
+			constexpr std::uintptr_t InitContainer = 0x001E9D90;				// 1_5_73
+			// E8 ? ? ? ? 48 85 ED 74 3F
+			constexpr std::uintptr_t SendContainerChangedEvent = 0x001ECE20;	// 1_5_73
+		}
+
+
+		namespace InventoryEntryData
+		{
+			// E8 ? ? ? ? 48 3B C7 74 25
+			constexpr std::uintptr_t GetOwner = 0x001D6620;		// 1_5_73
+			// E8 ? ? ? ? 4C 8B 2B
+			constexpr std::uintptr_t GetWeight = 0x001A1730;	// 1_5_73
+			// E8 ? ? ? ? 84 C0 0F 85 ? ? ? ? 48 8B 3F
+			constexpr std::uintptr_t IsOwnedBy = 0x001D7590;	// 1_5_73
+		}
+
+
+		namespace InventoryMenu
+		{
+			namespace InventoryData
+			{
+				// E8 ? ? ? ? 48 8B D0 48 8D 8B 90 00 00 00
+				constexpr std::uintptr_t GetSelectedItem = 0x00856400;	// 1_5_73
+				// E8 ? ? ? ? EB 4A 80 7D 1A 1B
+				constexpr std::uintptr_t Update = 0x00856A50;			// 1_5_73
+			}
+		}
+
+
+		namespace ItemCrafted
+		{
+			// E8 ? ? ? ? 48 8B C8 48 8D 55 B8 E8 ? ? ? ? 45 85 E4
+			constexpr std::uintptr_t GetEventSource = 0x008708A0;	// 1_5_73
+		}
+
+
+		namespace ItemsPickpocketed
+		{
+			// E8 ? ? ? ? 48 8B C8 48 8D 54 24 58 E8 ? ? ? ? EB 7B
+			constexpr std::uintptr_t GetEventSource = 0x00862250;	// 1_5_73
+		}
+
+
+		namespace JumpHandler
+		{
+			// ??_7JumpHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0166F398;	// 1_5_73
+		}
+
+
+		namespace LockState
+		{
+			// E8 ? ? ? ? 66 0F 6E C0 0F 5B C0 0F 5A C8 F2 0F 11 0F
+			constexpr std::uintptr_t GetLockLevel = 0x00134A90;	// 1_5_73
+		}
+
+
+		namespace LookHandler
+		{
+			// ??_7LookHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0166F150;	// 1_5_73
+		}
+
+
+		namespace MagicTarget
+		{
+			// 48 89 5C 24 18 56 48 83 EC 20 48 8B 01 48 8B F2 FF 50 38
+			constexpr std::uintptr_t HasMagicEffect = 0x005530D0;	// 1_5_73
+		}
+
+
+		namespace MenuControls
+		{
+			// E8 ? ? ? ? 8D 56 07
+			constexpr std::uintptr_t RegisterHandler = 0x008A7F20;	// 1_5_73
+			// E8 ? ? ? ? 90 C6 43 0C 00
+			constexpr std::uintptr_t RemoveHandler = 0x008A7FF0;	// 1_5_73
+		}
+
+
+		namespace MenuOpenHandler
+		{
+			// ??_7MenuOpenHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x016B8490;	// 1_5_73
+		}
+
+
+		namespace MovementHandler
+		{
+			// ??_7MovementHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0166F1B8;	// 1_5_73
+		}
+
+
+		namespace NiControllerManager
+		{
+			// E8 ? ? ? ? 48 8B E8 E8 ? ? ? ?
+			constexpr std::uintptr_t GetSequenceByName = 0x00189B00;	// 1_5_73
+		}
+
+
+		namespace NiRefObject
+		{
+			// NiRefObject::virt_dtor + 13
+			constexpr std::uintptr_t TotalObjectCount = 0x03012520;	// 1_5_73
+		}
+
+
+		namespace PlayerCharacter
+		{
+			// E8 ? ? ? ? 48 3B C6 74 16
+			constexpr std::uintptr_t GetActorInFavorState = 0x006B3670;	// 1_5_73
+			// 48 83 EC 38 80 7C 24 70 00
+			constexpr std::uintptr_t GetPickpocketChance = 0x003BCF40;	// 1_5_73
+			// E8 ? ? ? ? 44 89 65 67
+			constexpr std::uintptr_t PlayPickupEvent = 0x0069FE60;		// 1_5_73
+			// E8 ? ? ? ? 66 C7 43 18 00 00
+			constexpr std::uintptr_t StartActivation = 0x006A9F90;		// 1_5_73
+			// E8 ? ? ? ? 84 C0 75 08 40 32 F6
+			constexpr std::uintptr_t TryToPickPocket = 0x006B2530;		// 1_5_73
+			// ??_7PlayerCharacter@@6B@
+			constexpr std::uintptr_t Vtbl = 0x016635F0;					// 1_5_73
+		}
+
+
+		namespace ReadyWeaponHandler
+		{
+			// ??_7ReadyWeaponHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0166F268;	// 1_5_73
+		}
+
+
+		namespace RunHandler
+		{
+			// ??_7RunHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0166F308;	// 1_5_73
+		}
+
+
+		namespace ScriptEventSourceHolder
+		{
+			// E8 ? ? ? ? 90 48 8B 45 D7 48 85 C0 74 1C
+			constexpr std::uintptr_t SendActivateEvent = 0x002A2070;	// 1_5_73
+		}
+
+
+		namespace ShoutHandler
+		{
+			// ??_7ShoutHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0166F3F8;	// 1_5_73
+		}
+
+
+		namespace Sky
+		{
+			// E8 ? ? ? ? 48 8B 40 48
+			constexpr std::uintptr_t GetSingleton = 0x00177790;	// 1_5_73
+		}
+
+
+		namespace SneakHandler
+		{
+			// ??_7SneakHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0166F3C8;	// 1_5_73
+		}
+
+
+		namespace SoundData
+		{
+			// E8 ? ? ? ? EB 0E 84 C0
+			constexpr std::uintptr_t Play = 0x00BED530;			// 1_5_73
+			// E8 ? ? ? ? F3 0F 10 5D 9F
+			constexpr std::uintptr_t SetNode = 0x00BEDB10;		// 1_5_73
+			// E8 ? ? ? ? 4C 8D 7E 20
+			constexpr std::uintptr_t SetPosition = 0x00BED920;	// 1_5_73
+		}
+
+
+		namespace SprintHandler
+		{
+			// ??_7SprintHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0166F1E8;	// 1_5_73
+		}
+
+
+		namespace TESNPC
+		{
+			// ??_7TESNPC@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0159FCE0;	// 1_5_73
+		}
+
+
+		namespace TESObjectACTI
+		{
+			// ??_7TESObjectACTI@@6B@
+			constexpr std::uintptr_t Vtbl = 0x01557700;	// 1_5_73
+		}
+
+
+		namespace TESObjectCONT
+		{
+			// E8 ? ? ? ? 48 8B C8 EB 03 49 8B CF 48 89 0D ? ? ? ? 48 8B 01 41 B0 01 BA 0E 00 00 00 + 71
+			constexpr std::uintptr_t Vtbl = 0x01559940;	// 1_5_73
+		}
+
+
+		namespace TESObjectREFR
+		{
+			// E8 ? ? ? ? 48 8B 4E 40 48 8B 01 8B 55 77
+			constexpr std::uintptr_t ActivateRefChildren = 0x002A8CC0;	// 1_5_73
+			// E8 ? ? ? ? 8B 7B 14
+			constexpr std::uintptr_t GetInventoryChanges = 0x001D8E40;	// 1_5_73
+			// E8 ? ? ? ? FF 40 18
+			constexpr std::uintptr_t GetLockState = 0x002A74C0;			// 1_5_73
+			// E8 ? ? ? ? 85 C0 48 8B CB
+			constexpr std::uintptr_t GetNumItems = 0x0028E250;			// 1_5_73
+			// E8 ? ? ? ? 48 3B D8 75 08
+			constexpr std::uintptr_t GetOwner = 0x002A6670;				// 1_5_73
+			// E8 ? ? ? ? 41 B4 01 EB 1B
+			constexpr std::uintptr_t PlayAnimation = 0x00189E30;		// 1_5_73
+		}
+
+
+		namespace ThirdPersonState
+		{
+			// ??_7ThirdPersonState@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0162F2B0;	// 1_5_73
+		}
+
+
+		namespace TogglePOVHandler
+		{
+			// ??_7TogglePOVHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0166F428;	// 1_5_73
+		}
+
+
+		namespace ToggleRunHandler
+		{
+			// ??_7ToggleRunHandler@@6B@
+			constexpr std::uintptr_t Vtbl = 0x0166F308;	// 1_5_73
+		}
+
+
+		namespace GFxTranslator
+		{
+			namespace TranslateInfo
+			{
+				// 48 85 D2 74 69 48 89 6C 24 10
+				constexpr std::uintptr_t SetResultW = 0x00F4B2F0;	// 1_5_73
+			}
+		}
+
+
+		namespace GMemory
+		{
+			// GFxFunctionHandler::virt_dtor + 35
+			constexpr std::uintptr_t GlobalHeap = 0x03032C50;	// 1_5_73
+		}
+
+
+		// 48 83 EC 18 F3 41 0F 10 60 04
+		constexpr std::uintptr_t WorldPtToScreenPt3 = 0x00C660D0;	// 1_5_73
+		// E8 ? ? ? ? 83 FE 0C
+		constexpr std::uintptr_t DebugNotification = 0x008DA3D0;	// 1_5_73
+	}
 }

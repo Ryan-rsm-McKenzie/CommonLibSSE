@@ -7,19 +7,15 @@ namespace RE
 {
 	LocalMapCamera::LocalMapCamera(float a_northRotation)
 	{
-		typedef LocalMapCamera* _ctor_t(LocalMapCamera* a_this, float a_northRotation);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::LocalMapCamera*>(this)->_ctor_GetPtr());
-		_ctor_t* _ctor = reinterpret_cast<_ctor_t*>(*ptr);
-		_ctor(this, a_northRotation);
+		ctor_internal(a_northRotation);
 	}
 
 
 	void LocalMapCamera::SetNorthRotation(float a_northRotation)
 	{
-		typedef void _SetNorthRotation_t(LocalMapCamera* a_this, float a_northRotation);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::LocalMapCamera*>(this)->_SetNorthRotation_GetPtr());
-		_SetNorthRotation_t* _SetNorthRotation = reinterpret_cast<_SetNorthRotation_t*>(*ptr);
-		_SetNorthRotation(this, a_northRotation);
+		using func_t = function_type_t<decltype(&LocalMapCamera::SetNorthRotation)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::LocalMapCamera, SetNorthRotation, func_t*);
+		return func(this, a_northRotation);
 	}
 
 
@@ -50,5 +46,13 @@ namespace RE
 		defaultState->someBoundMin.x = a_x - defaultState->someBoundMax.x;
 		defaultState->someBoundMin.y = a_y - defaultState->someBoundMax.y;
 		defaultState->someBoundMin.z = a_z - defaultState->someBoundMax.z;
+	}
+
+
+	LocalMapCamera* LocalMapCamera::ctor_internal(float a_northRotation)
+	{
+		using func_t = function_type_t<decltype(&LocalMapCamera::ctor_internal)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::LocalMapCamera, ctor, func_t*);
+		return func(this, a_northRotation);
 	}
 }

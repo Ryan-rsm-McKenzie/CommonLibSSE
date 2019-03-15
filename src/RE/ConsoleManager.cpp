@@ -2,6 +2,8 @@
 
 #include "skse64/GameAPI.h"  // ConsoleManager
 
+#include <cstdarg>  // va_list
+
 
 namespace RE
 {
@@ -19,13 +21,11 @@ namespace RE
 
 	void ConsoleManager::Print(const char* a_fmt, ...)
 	{
-		typedef void _Print_t(ConsoleManager* a_this, const char* a_fmt, va_list args);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::ConsoleManager*>(this)->_VPrint_GetPtr());
-		_Print_t* _Print = reinterpret_cast<_Print_t*>(*ptr);
-
-		va_list	args;
+		using func_t = void(ConsoleManager*, const char*, ...);
+		func_t* func = reinterpret_cast<func_t*>(((::ConsoleManager*)0)->_VPrint_GetPtr());
+		std::va_list args;
 		va_start(args, a_fmt);
-		_Print(this, a_fmt, args);
+		func(this, a_fmt, args);
 		va_end(args);
 	}
 }

@@ -55,9 +55,7 @@ namespace RE
 
 	GString::GString(const char* a_s)
 	{
-		typedef GString* _ctor_t(GString* a_this, const char* a_s);
-		_ctor_t* _ctor = (_ctor_t*)((::GString*)this)->_ctor_GetPtr();
-		_ctor(this, a_s);
+		ctor_internal(a_s);
 	}
 
 
@@ -67,9 +65,17 @@ namespace RE
 	}
 
 
+	GString* GString::ctor_internal(const char* a_s)
+	{
+		using func_t = function_type_t<decltype(&GString::ctor_internal)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::GString, ctor, func_t*);
+		return func(this, a_s);
+	}
+
+
 	GString::HeapType GString::GetHeapType() const
 	{
-		return (HeapType)(_dataDesc.heapTypeBits & HeapType::kMask);
+		return static_cast<HeapType>(_dataDesc.heapTypeBits & HeapType::kMask);
 	}
 
 

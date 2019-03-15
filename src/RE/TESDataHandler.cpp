@@ -1,28 +1,27 @@
 #include "RE/TESDataHandler.h"
 
-#include <string.h>  // _stricmp
-
 #include "skse64/GameData.h"  // DataHandler
 
-#include "RE/TESFile.h"
+#include <string.h>  // _stricmp
+
+#include "RE/TESFile.h"  // TESFile
 
 
 namespace RE
 {
 	TESDataHandler* TESDataHandler::GetSingleton()
 	{
-		typedef TESDataHandler* _GetSingleton_t();
-		_GetSingleton_t* _GetSingleton = reinterpret_cast<_GetSingleton_t*>(GetFnAddr(&::DataHandler::GetSingleton));
-		return _GetSingleton();
+		using func_t = function_type_t<decltype(&TESDataHandler::GetSingleton)>;
+		func_t* func = function_cast<func_t*>(&::DataHandler::GetSingleton);
+		return func();
 	}
 
 
 	UInt32 TESDataHandler::LoadScripts()
 	{
-		typedef UInt32 _LoadScripts_t(TESDataHandler* a_this);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::DataHandler*>(this)->_LoadScripts_GetPtr());
-		_LoadScripts_t* _LoadScripts = reinterpret_cast<_LoadScripts_t*>(*ptr);
-		return _LoadScripts(this);
+		using func_t = function_type_t<decltype(&TESDataHandler::LoadScripts)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::DataHandler, LoadScripts, func_t*);
+		return func(this);
 	}
 
 

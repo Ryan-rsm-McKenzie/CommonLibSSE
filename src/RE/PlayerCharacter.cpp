@@ -14,63 +14,72 @@ namespace RE
 	}
 
 
-	TintMask* PlayerCharacter::GetOverlayTintMask(TintMask* a_original)
+	UInt32 PlayerCharacter::GetPickpocketChance(float a_playerSkill, float a_targetSkill, UInt32 a_totalValue, float a_itemWeight, Actor* a_player, Actor* a_target, bool a_isDetected, TESForm* a_item)
 	{
-		typedef TintMask* _GetOverlayTintMask_t(PlayerCharacter* a_this, TintMask* a_original);
-		_GetOverlayTintMask_t* _GetOverlayTintMask = reinterpret_cast<_GetOverlayTintMask_t*>(GetFnAddr(&::PlayerCharacter::GetOverlayTintMask));
-		return _GetOverlayTintMask(this, a_original);
+		using func_t = function_type_t<decltype(&PlayerCharacter::GetPickpocketChance)>;
+		RelocUnrestricted<func_t*> func(Offset::PlayerCharacter::GetPickpocketChance);
+		return func(a_playerSkill, a_targetSkill, a_totalValue, a_itemWeight, a_player, a_target, a_isDetected, a_item);
 	}
 
 
-	tArray<TintMask*>* PlayerCharacter::GetTintList()
+	TintMask* PlayerCharacter::GetOverlayTintMask(TintMask* a_original)
 	{
-		typedef tArray<TintMask*>* _GetTintList_t(PlayerCharacter* a_this);
-		_GetTintList_t* _GetTintList = reinterpret_cast<_GetTintList_t*>(GetFnAddr(&::PlayerCharacter::GetTintList));
-		return _GetTintList(this);
+		if (!overlayTintMasks) {
+			return 0;
+		}
+
+		for (UInt32 i = 0; i < tintMasks.size(); ++i) {
+			if (tintMasks[i] == a_original) {
+				return i < overlayTintMasks->size() ? (*overlayTintMasks)[i] : 0;
+			}
+		}
+		return 0;
+	}
+
+
+	BSTArray<TintMask*>& PlayerCharacter::GetTintList()
+	{
+		return overlayTintMasks ? *overlayTintMasks : tintMasks;
 	}
 
 
 	UInt32 PlayerCharacter::GetNumTints(UInt32 a_tintType)
 	{
-		typedef UInt32 _GetNumTints_t(PlayerCharacter* a_this, UInt32 a_tintType);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::PlayerCharacter*>(this)->_GetNumTints_GetPtr());
-		_GetNumTints_t* _GetNumTints = reinterpret_cast<_GetNumTints_t*>(*ptr);
-		return _GetNumTints(this, a_tintType);
+		using func_t = function_type_t<decltype(&PlayerCharacter::GetNumTints)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::PlayerCharacter, GetNumTints, func_t*);
+		return func(this, a_tintType);
 	}
 
 
 	TintMask* PlayerCharacter::GetTintMask(UInt32 a_tintType, UInt32 a_index)
 	{
-		typedef TintMask* _GetTintMask_t(PlayerCharacter* a_this, UInt32 a_tintType, UInt32 a_index);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::PlayerCharacter*>(this)->_GetTintMask_GetPtr());
-		_GetTintMask_t* _GetTintMask = reinterpret_cast<_GetTintMask_t*>(*ptr);
-		return _GetTintMask(this, a_tintType, a_index);
+		using func_t = function_type_t<decltype(&PlayerCharacter::GetTintMask)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::PlayerCharacter, GetTintMask, func_t*);
+		return func(this, a_tintType, a_index);
 	}
 
 
-	float PlayerCharacter::GetDamage(InventoryEntryData* a_pForm)
+	float PlayerCharacter::GetDamage(InventoryEntryData* a_form)
 	{
-		typedef float _GetDamage_t(PlayerCharacter* a_this, InventoryEntryData* a_pForm);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::PlayerCharacter*>(this)->_GetDamage_GetPtr());
-		_GetDamage_t* _GetDamage = reinterpret_cast<_GetDamage_t*>(*ptr);
-		return _GetDamage(this, a_pForm);
+		using func_t = function_type_t<decltype(&PlayerCharacter::GetDamage)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::PlayerCharacter, GetDamage, func_t*);
+		return func(this, a_form);
 	}
 
 
-	float PlayerCharacter::GetArmorValue(InventoryEntryData* a_pForm)
+	float PlayerCharacter::GetArmorValue(InventoryEntryData* a_form)
 	{
-		typedef float _GetArmorValue_t(PlayerCharacter* a_this, InventoryEntryData* a_pForm);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::PlayerCharacter*>(this)->_GetArmorValue_GetPtr());
-		_GetArmorValue_t* _GetArmorValue = reinterpret_cast<_GetArmorValue_t*>(*ptr);
-		return _GetArmorValue(this, a_pForm);
+		using func_t = function_type_t<decltype(&PlayerCharacter::GetArmorValue)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::PlayerCharacter, GetArmorValue, func_t*);
+		return func(this, a_form);
 	}
 
 
 	Actor* PlayerCharacter::GetActorInFavorState()
 	{
-		typedef Actor* _GetActorInFavorState_t(PlayerCharacter* a_this);
-		RelocAddr<_GetActorInFavorState_t*> _GetActorInFavorState(PLAYER_CHARACTER_GET_ACTOR_IN_FAVOR_STATE);
-		return _GetActorInFavorState(this);
+		using func_t = function_type_t<decltype(&PlayerCharacter::GetActorInFavorState)>;
+		RelocUnrestricted<func_t*> func(Offset::PlayerCharacter::GetActorInFavorState);
+		return func(this);
 	}
 
 
@@ -81,30 +90,30 @@ namespace RE
 		if (handle != *g_invalidRefHandle) {
 			TESObjectREFR::LookupByHandle(handle, refPtr);
 		}
-		return refPtr;
+		return refPtr.get();
 	}
 
 
 	void PlayerCharacter::PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType)
 	{
-		typedef void _PlayPickupEvent_t(PlayerCharacter* a_this, TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
-		RelocAddr<_PlayPickupEvent_t*> _PlayPickupEvent(PLAYER_CHARACTER_PLAY_PICKUP_EVENT);
-		_PlayPickupEvent(this, a_item, a_containerOwner, a_containerRef, a_eventType);
+		using func_t = function_type_t<decltype(&PlayerCharacter::PlayPickupEvent)>;
+		RelocUnrestricted<func_t*> func(Offset::PlayerCharacter::PlayPickupEvent);
+		return func(this, a_item, a_containerOwner, a_containerRef, a_eventType);
 	}
 
 
 	void PlayerCharacter::StartActivation()
 	{
-		typedef void _StartActivation_t(PlayerCharacter* a_this);
-		RelocAddr<_StartActivation_t*> _StartActivation(PLAYER_CHARACTER_START_ACTIVATION);
-		_StartActivation(this);
+		using func_t = function_type_t<decltype(&PlayerCharacter::StartActivation)>;
+		RelocUnrestricted<func_t*> func(Offset::PlayerCharacter::StartActivation);
+		return func(this);
 	}
 
 
-	bool PlayerCharacter::TryToPickPocket(Actor* a_target, InventoryEntryData* a_pEntry, UInt32 a_numItems, bool a_unk4)
+	bool PlayerCharacter::TryToPickPocket(Actor* a_target, InventoryEntryData* a_entry, UInt32 a_numItems, bool a_arg4)
 	{
-		typedef bool _TryToPickPocket_t(PlayerCharacter* a_this, Actor* a_target, InventoryEntryData* a_pEntry, UInt32 a_numItems, bool a_unk4);
-		RelocAddr<_TryToPickPocket_t*> _TryToPickPocket(PLAYER_CHARACTER_TRY_TO_PICK_POCKET);
-		return _TryToPickPocket(this, a_target, a_pEntry, a_numItems, a_unk4);
+		using func_t = function_type_t<decltype(&PlayerCharacter::TryToPickPocket)>;
+		RelocUnrestricted<func_t*> func(Offset::PlayerCharacter::TryToPickPocket);
+		return func(this, a_target, a_entry, a_numItems, a_arg4);
 	}
 }

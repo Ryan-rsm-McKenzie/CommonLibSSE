@@ -1,6 +1,5 @@
 #include "RE/GFxTranslator.h"
 
-#include "skse64_common/Relocation.h"  // RelocAddr
 #include "RE/Offsets.h"
 
 
@@ -37,9 +36,7 @@ namespace RE
 
 	void GFxTranslator::TranslateInfo::SetResult(const wchar_t* a_resultText, UPInt a_resultLen)
 	{
-		typedef void _SetResult_t(TranslateInfo* a_this, const wchar_t* a_resultText, UPInt a_resultLen);
-		RelocAddr<_SetResult_t*> _SetResult(GFX_TRANSLATOR_TRANSLATE_INFO_SET_RESULTW);
-		_SetResult(this, a_resultText, a_resultLen);
+		return SetResult_internalW(a_resultText, a_resultLen);
 	}
 
 
@@ -47,6 +44,14 @@ namespace RE
 	{
 		SetResult(a_resultHTML, a_resultLen);
 		flags |= Flag::kResultHTML;
+	}
+
+
+	void GFxTranslator::TranslateInfo::SetResult_internalW(const wchar_t* a_resultText, UPInt a_resultLen)
+	{
+		using func_t = function_type_t<decltype(&GFxTranslator::TranslateInfo::SetResult_internalW)>;
+		RelocUnrestricted<func_t*> func(Offset::GFxTranslator::TranslateInfo::SetResultW);
+		return func(this, a_resultText, a_resultLen);
 	}
 
 

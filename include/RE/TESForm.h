@@ -136,6 +136,9 @@ namespace RE
 		FormType		formType;		// 1A
 		UInt8			pad1B;			// 1B
 		UInt32			pad1C;			// 1C
+
+	private:
+		static TESForm* LookupByID_internal(UInt32 a_formID);
 	};
 	STATIC_ASSERT(sizeof(TESForm) == 0x20);
 }

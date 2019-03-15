@@ -8,11 +8,12 @@ namespace RE
 	class ThumbstickEvent : public IDEvent
 	{
 	public:
-		enum InputType : UInt32
+		enum class InputType : UInt32
 		{
-			kInputType_LeftThumbstick = 0x0B,
-			kInputType_RightThumbstick = 0x0C
+			kLeftThumbstick = 0x0B,
+			kRightThumbstick = 0x0C
 		};
+
 
 
 		bool	IsLeft() const;

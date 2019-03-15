@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include "RE/BSTEvent.h"  // BSTEventSource
+
+
 namespace RE
 {
 	struct ChestsLooted
@@ -9,9 +12,12 @@ namespace RE
 		struct Event
 		{
 		public:
+			UInt64 pad0;	// 0
 		};
+		STATIC_ASSERT(sizeof(Event) == 0x8);
 
 
-		static void SendEvent();
+		static BSTEventSource<Event>*	GetEventSource();
+		static void						SendEvent();
 	};
 }

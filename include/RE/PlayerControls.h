@@ -57,13 +57,13 @@ namespace RE
 		};
 
 
+		PlayerControls();
 		virtual	~PlayerControls();
 
 		virtual UInt32			Unk_01();
 
 		static PlayerControls*	GetSingleton();
 		PlayerControls*			ctor_Hook();
-		PlayerControls*			ctor();
 
 
 		// members
@@ -93,6 +93,9 @@ namespace RE
 		RunHandler*						runHandler;			// 1C0
 		SneakHandler*					sneakHandler;		// 1C8
 		TogglePOVHandler*				togglePOVHandler;	// 1D0
+
+	private:
+		PlayerControls* ctor_internal();
 	};
 	STATIC_ASSERT(offsetof(PlayerControls, data024) == 0x024);
 }

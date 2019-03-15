@@ -124,8 +124,8 @@ namespace RE
 			// The bounds are the CK value * 4096
 			struct Bounds
 			{
-				float	X() const;
-				float	Y() const;
+				float	GetX() const;
+				float	GetY() const;
 
 
 				float	x;	// 0

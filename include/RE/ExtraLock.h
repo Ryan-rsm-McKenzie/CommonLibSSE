@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/BSExtraData.h"  // BSExtraData
-#include "RE/FormTypes.h"
+#include "RE/FormTypes.h"  // TESObjectREFR
 
 
 namespace RE

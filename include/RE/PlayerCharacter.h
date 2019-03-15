@@ -77,13 +77,14 @@ namespace RE
 		virtual void			Unk_12E(void);	// 12E
 
 		static PlayerCharacter*	GetSingleton();
+		static UInt32			GetPickpocketChance(float a_playerSkill, float a_targetSkill, UInt32 a_totalValue, float a_itemWeight, Actor* a_player, Actor* a_target, bool a_isDetected, TESForm* a_item);
 
 		TintMask*				GetOverlayTintMask(TintMask* a_original);
-		tArray<TintMask*>*		GetTintList();
+		BSTArray<TintMask*>&	GetTintList();
 		UInt32					GetNumTints(UInt32 a_tintType);
 		TintMask*				GetTintMask(UInt32 a_tintType, UInt32 a_index);
-		float					GetDamage(InventoryEntryData* a_pForm);
-		float					GetArmorValue(InventoryEntryData* a_pForm);
+		float					GetDamage(InventoryEntryData* a_form);
+		float					GetArmorValue(InventoryEntryData* a_form);
 		Actor*					GetActorInFavorState();
 		TESObjectREFR*			GetGrabbedRef();
 		void					PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);

@@ -107,7 +107,7 @@ namespace RE
 		virtual void		LoadData(TESFile* a_mod) = 0;					// 6F
 		virtual void		ByteSwapData() = 0;								// 70
 
-		Effect*				GetCostliestEffectItem(int a_arg1 = 5, bool a_arg2 = false);
+		Effect*				GetCostliestEffectItem(UInt32 a_arg1 = 5, bool a_arg2 = false);
 		float				GetEffectiveMagickaCost(Character* a_caster);
 
 

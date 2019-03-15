@@ -72,7 +72,7 @@ namespace RE
 		BSFixedString(InputIt a_first, InputIt a_last)
 		{
 			char* arr = insert_internal(0, a_first.operator->(), a_last - a_first);
-			ctor_internal(this, arr);
+			ctor_internal(arr);
 			::delete[] arr;
 		}
 		BSFixedString(const BSFixedString& a_other);
@@ -160,16 +160,15 @@ namespace RE
 		static constexpr size_type npos{ static_cast<size_type>(-1) };	// NOT PART OF NATIVE TYPE
 
 	protected:
-		static BSFixedString*	ctor_internal(BSFixedString* a_this, const char* a_s);
-		static BSFixedString*	ctor_copy_internal(BSFixedString* a_this, const BSFixedString& a_other);
-		static void				dtor_internal(BSFixedString* a_this);
-		static BSFixedString*	set_internal(BSFixedString* a_this, const char* a_rhs);
-		static BSFixedString*	set_copy_internal(BSFixedString* a_this, const BSFixedString& a_rhs);
-
-		void					assert_out_of_range(size_type a_index, const char* a_func) const;
-		void					assert_length_error(size_type a_count, const char* a_func) const;
-		char*					insert_internal(size_type a_index, const char* a_s, size_type a_count);
-		char*					insert_char_internal(size_type a_index, size_type a_count, char a_ch);
+		BSFixedString*	ctor_internal(const char* a_s);
+		BSFixedString*	ctor_copy_internal(const BSFixedString& a_other);
+		void			dtor_internal();
+		BSFixedString*	set_internal(const char* a_rhs);
+		BSFixedString*	set_copy_internal(const BSFixedString& a_rhs);
+		void			assert_out_of_range(size_type a_index, const char* a_func) const;
+		void			assert_length_error(size_type a_count, const char* a_func) const;
+		char*			insert_internal(size_type a_index, const char* a_s, size_type a_count);
+		char*			insert_char_internal(size_type a_index, size_type a_count, char a_ch);
 
 
 		static constexpr const_reference NULL_CHARACTER{ char() };	// NOT PART OF NATIVE TYPE

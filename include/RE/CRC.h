@@ -31,7 +31,7 @@ namespace RE
 		inline CRC32Calculator& operator=(const Ty& a_val)
 		{
 			typedef void(*Fn)(UInt32*, const void*, UInt32);
-			RelocAddr<Fn> fn(CALCULATE_CRC32_SIZE);
+			RelocAddr<Fn> fn(Offset::CRC32Calculator::SizeOfSize);
 
 			fn(&_checksum, &a_val, SIZE);
 			return *this;
@@ -42,7 +42,7 @@ namespace RE
 		inline CRC32Calculator& operator=<4>(const Ty& a_val)
 		{
 			typedef void(*Fn)(UInt32*, Ty);
-			RelocAddr<Fn> fn(CALCULATE_CRC32_32);
+			RelocAddr<Fn> fn(Offset::CRC32Calculator::SizeOf32);
 
 			fn(&_checksum, a_val);
 			return *this;
@@ -53,7 +53,7 @@ namespace RE
 		inline CRC32Calculator& operator=<8>(const Ty& a_val)
 		{
 			typedef void(*Fn)(UInt32*, Ty);
-			RelocAddr<Fn> fn(CALCULATE_CRC32_64);
+			RelocAddr<Fn> fn(Offset::CRC32Calculator::SizeOf64);
 
 			fn(&_checksum, a_val);
 			return *this;

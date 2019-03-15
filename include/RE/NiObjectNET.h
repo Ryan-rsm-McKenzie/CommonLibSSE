@@ -3,12 +3,12 @@
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/NiObject.h"  // NiObject
 
-class NiExtraData;
-class NiTimeController;
-
 
 namespace RE
 {
+	class NiExtraData;
+	class NiTimeController;
+
 	class NiObjectNET : public NiObject
 	{
 	public:

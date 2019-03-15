@@ -7,33 +7,33 @@ namespace RE
 {
 	void NiObjectNET::AddExtraData(NiExtraData* a_extraData)
 	{
-		typedef void _AddExtraData_t(NiObjectNET* a_this, NiExtraData* a_extraData);
-		_AddExtraData_t* _AddExtraData = reinterpret_cast<_AddExtraData_t*>(GetFnAddr(&::NiObjectNET::AddExtraData));
-		_AddExtraData(this, a_extraData);
+		using func_t = function_type_t<decltype(&NiObjectNET::AddExtraData)>;
+		func_t* func = function_cast<func_t*>(&::NiObjectNET::AddExtraData);
+		return func(this, a_extraData);
 	}
 
 
 	bool NiObjectNET::RemoveExtraData(NiExtraData* a_extraData)
 	{
-		typedef bool _RemoveExtraData_t(NiObjectNET* a_this, NiExtraData* a_extraData);
-		_RemoveExtraData_t* _RemoveExtraData = reinterpret_cast<_RemoveExtraData_t*>(GetFnAddr(&::NiObjectNET::RemoveExtraData));
-		return _RemoveExtraData(this, a_extraData);
+		using func_t = function_type_t<decltype(&NiObjectNET::RemoveExtraData)>;
+		func_t* func = function_cast<func_t*>(&::NiObjectNET::RemoveExtraData);
+		return func(this, a_extraData);
 	}
 
 
 	SInt32 NiObjectNET::GetIndexOf(NiExtraData* a_extraData)
 	{
-		typedef SInt32 _GetIndexOf_t(NiObjectNET* a_this, NiExtraData* a_extraData);
-		_GetIndexOf_t* _GetIndexOf = reinterpret_cast<_GetIndexOf_t*>(GetFnAddr(&::NiObjectNET::GetIndexOf));
-		return _GetIndexOf(this, a_extraData);
+		using func_t = function_type_t<decltype(&NiObjectNET::GetIndexOf)>;
+		func_t* func = function_cast<func_t*>(&::NiObjectNET::GetIndexOf);
+		return func(this, a_extraData);
 	}
 
 
 	NiExtraData* NiObjectNET::GetExtraData(BSFixedString a_name)
 	{
-		typedef NiExtraData* _GetExtraData_t(NiObjectNET* a_this, BSFixedString a_name);
-		_GetExtraData_t* _GetExtraData = reinterpret_cast<_GetExtraData_t*>(GetFnAddr(&::NiObjectNET::GetExtraData));
-		return _GetExtraData(this, a_name);
+		using func_t = function_type_t<decltype(&NiObjectNET::GetExtraData)>;
+		func_t* func = function_cast<func_t*>(&::NiObjectNET::GetExtraData);
+		return func(this, a_name);
 	}
 
 

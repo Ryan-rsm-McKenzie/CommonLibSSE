@@ -239,7 +239,7 @@ namespace RE
 		virtual void							Unk_C8(void);																																														// 0C8
 		virtual void							Unk_C9(void);																																														// 0C9
 		virtual void							OnArmorActorValueChanged();																																											// 0CA
-		virtual void							DropItem(UInt32* a_droppedItemHandle, TESForm* a_akItem, BaseExtraList* a_extraList, UInt32 a_count, UInt32 a_arg5, UInt32 a_arg6);																	// 0CB
+		virtual void							DropItem(UInt32& a_droppedItemHandle, TESForm* a_item, BaseExtraList* a_extraList, UInt32 a_count, UInt32 a_arg5, UInt32 a_arg6);																	// 0CB
 		virtual void							PickUpItem(TESObjectREFR* a_item, UInt32 a_count, bool a_arg3 = false, bool a_playSound = true);																									// 0CC
 		virtual void							Unk_CD(void);																																														// 0CD
 		virtual void							Unk_CE(void);																																														// 0CE
@@ -340,10 +340,10 @@ namespace RE
 		bool		HasPerk(BGSPerk* a_perk) const;
 		UInt16		GetLevel() const;
 		void		SetRace(TESRace* a_race, bool a_isPlayer);
-		void		UpdateWeaponAbility(TESForm* a_weapon, BaseExtraList* a_extraData, bool a_bLeftHand);
+		void		UpdateWeaponAbility(TESForm* a_weapon, BaseExtraList* a_extraData, bool a_leftHand);
 		void		UpdateArmorAbility(TESForm* a_armor, BaseExtraList* a_extraData);
 		bool		IsHostileToActor(Actor* a_actor) const;
-		void		ResetAI(UInt32 a_unk1, UInt32 a_unk2);
+		void		ResetAI(UInt32 a_arg1, UInt32 a_arg2);
 		bool		VisitFactions(FactionVisitor& a_visitor);
 		TESNPC*		GetActorBase() const;
 		TESRace*	GetRace() const;

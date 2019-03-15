@@ -5,20 +5,18 @@
 
 namespace RE
 {
-	Effect* MagicItem::GetCostliestEffectItem(int a_arg1, bool a_arg2)
+	Effect* MagicItem::GetCostliestEffectItem(UInt32 a_arg1, bool a_arg2)
 	{
-		typedef Effect* _GetCostliestEffectItem_t(MagicItem* a_this, int a_arg1, bool a_arg2);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::MagicItem*>(this)->_GetCostliestEffectItem_GetPtr());
-		_GetCostliestEffectItem_t* _GetCostliestEffectItem = reinterpret_cast<_GetCostliestEffectItem_t*>(*ptr);
-		return _GetCostliestEffectItem(this, a_arg1, a_arg2);
+		using func_t = function_type_t<decltype(&MagicItem::GetCostliestEffectItem)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::MagicItem, GetCostliestEffectItem, func_t*);
+		return func(this, a_arg1, a_arg2);
 	}
 
 
 	float MagicItem::GetEffectiveMagickaCost(Character* a_caster)
 	{
-		typedef float _GetEffectiveMagickaCost_t(MagicItem* a_this, Character* a_caster);
-		uintptr_t* ptr = reinterpret_cast<uintptr_t*>(reinterpret_cast<::MagicItem*>(this)->_GetEffectiveMagickaCost_GetPtr());
-		_GetEffectiveMagickaCost_t* _GetEffectiveMagickaCost = reinterpret_cast<_GetEffectiveMagickaCost_t*>(*ptr);
-		return _GetEffectiveMagickaCost(this, a_caster);
+		using func_t = function_type_t<decltype(&MagicItem::GetEffectiveMagickaCost)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::MagicItem, GetEffectiveMagickaCost, func_t*);
+		return func(this, a_caster);
 	}
 }

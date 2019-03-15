@@ -391,6 +391,7 @@
 #include "RE/NiTArray.h"
 #include "RE/NiTDefaultAllocator.h"
 #include "RE/NiTexture.h"
+#include "RE/NiTimeController.h"
 #include "RE/NiTMap.h"
 #include "RE/NiTMapBase.h"
 #include "RE/NiTPointerAllocator.h"

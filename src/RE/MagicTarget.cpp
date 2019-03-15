@@ -1,7 +1,5 @@
 #include "RE/MagicTarget.h"
 
-#include "skse64_common/Relocation.h"  // RelocAddr
-
 #include "RE/ActiveEffect.h"  // ActiveEffect
 #include "RE/EffectSetting.h"  // EffectSetting
 #include "RE/BSTList.h"  // BSSimpleList
@@ -12,9 +10,9 @@ namespace RE
 {
 	bool MagicTarget::HasMagicEffect(EffectSetting* a_effect)
 	{
-		typedef bool _HasMagicEffect_t(MagicTarget* a_this, EffectSetting* a_effect);
-		RelocAddr<_HasMagicEffect_t*> _HasMagicEffect(MAGIC_TARGET_HAS_MAGIC_EFFECT);
-		return _HasMagicEffect(this, a_effect);
+		using func_t = function_type_t<decltype(&MagicTarget::HasMagicEffect)>;
+		RelocUnrestricted<func_t*> func(Offset::MagicTarget::HasMagicEffect);
+		return func(this, a_effect);
 	}
 
 

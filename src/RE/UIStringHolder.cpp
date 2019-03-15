@@ -7,8 +7,8 @@ namespace RE
 {
 	UIStringHolder* UIStringHolder::GetSingleton()
 	{
-		typedef UIStringHolder* _GetSingleton_t();
-		static _GetSingleton_t* _GetSingleton = reinterpret_cast<_GetSingleton_t*>(GetFnAddr(&::UIStringHolder::GetSingleton));
-		return _GetSingleton();
+		using func_t = function_type_t<decltype(&UIStringHolder::GetSingleton)>;
+		func_t* func = function_cast<func_t*>(&::UIStringHolder::GetSingleton);
+		return func();
 	}
 }

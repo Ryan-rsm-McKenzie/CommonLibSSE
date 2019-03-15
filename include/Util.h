@@ -1,10 +1,16 @@
 #pragma once
 
+#include "skse64_common/Relocation.h"  // RelocationManager
+
+#include <cstdint>  // uintptr_t
 #include <type_traits>  // underlying_type_t, is_enum
 
 
 #define MAKE_STR_HELPER(a_str) #a_str
 #define MAKE_STR(a_str) MAKE_STR_HELPER(a_str)
+
+#define EXTRACT_SKSE_MEMBER_FN_ADDR(a_class, a_func, a_castTo)	\
+*reinterpret_cast<a_castTo*>(((a_class*)0)->_##a_func##_GetPtr());
 
 
 template <typename Enum>
@@ -104,3 +110,69 @@ template <typename T, template <typename> class Op>
 struct is_detected<T, Op, void_t<Op<T>>> : std::true_type {};
 
 // END
+
+
+template <class T, class S>
+T function_cast(S a_func)
+{
+	return reinterpret_cast<T>(GetFnAddr(a_func));
+}
+
+
+template <class F> class function_type;
+
+
+// member function
+template <class R, class Cls, class... Args>
+class function_type<R(Cls::*)(Args...)>
+{
+public:
+	using type = R(Cls*, Args...);
+};
+
+
+// const member function
+template <class R, class Cls, class... Args>
+class function_type<R(Cls::*)(Args...) const>
+{
+public:
+	using type = R(const Cls*, Args...);
+};
+
+
+// static function
+template <class R, class... Args>
+class function_type<R(*)(Args...)>
+{
+public:
+	using type = R(Args...);
+};
+
+
+template <class F> using function_type_t = typename function_type<F>::type;
+
+
+template <class T>
+class RelocUnrestricted
+{
+public:
+	RelocUnrestricted() = delete;
+
+
+	constexpr RelocUnrestricted(std::uintptr_t a_offset) :
+		offset(RelocationManager::s_baseAddr + a_offset)
+	{}
+
+
+	operator T()
+	{
+		return type;
+	}
+
+private:
+	union
+	{
+		T type;
+		std::uintptr_t offset;
+	};
+};

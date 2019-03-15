@@ -10,17 +10,17 @@ namespace RE
 {
 	InputMappingManager* InputMappingManager::GetSingleton()
 	{
-		typedef InputMappingManager* _GetSingleton_t();
-		static _GetSingleton_t* _GetSingleton = reinterpret_cast<_GetSingleton_t*>(GetFnAddr(&::InputManager::GetSingleton));
-		return _GetSingleton();
+		using func_t = function_type_t<decltype(&InputMappingManager::GetSingleton)>;
+		func_t* func = function_cast<func_t*>(&::InputManager::GetSingleton);
+		return func();
 	}
 
 
 	UInt8 InputMappingManager::AllowTextInput(bool a_allow)
 	{
-		typedef UInt8 _AllowTextInput_t(InputMappingManager* a_this, bool a_allow);
-		static _AllowTextInput_t* _AllowTextInput = reinterpret_cast<_AllowTextInput_t*>(GetFnAddr(&::InputManager::AllowTextInput));
-		return _AllowTextInput(this, a_allow);
+		using func_t = function_type_t<decltype(&InputMappingManager::AllowTextInput)>;
+		func_t* func = function_cast<func_t*>(&::InputManager::AllowTextInput);
+		return func(this, a_allow);
 	}
 
 

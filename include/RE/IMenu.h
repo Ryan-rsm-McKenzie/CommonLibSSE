@@ -93,6 +93,9 @@ namespace RE
 		Context			context;	// 20 - input context - init'd to 0x12 (Context::kInvalid)
 		UInt32			pad24;		// 24
 		FxDelegate*		fxDelegate;	// 28
+
+	private:
+		void dtor_internal();
 	};
 	STATIC_ASSERT(offsetof(IMenu, view) == 0x10);
 	STATIC_ASSERT(sizeof(IMenu) == 0x30);

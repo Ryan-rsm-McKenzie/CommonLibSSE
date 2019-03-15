@@ -1,6 +1,5 @@
 #include "RE/BaseExtraList.h"
 
-#include "skse64_common/Relocation.h"  // RelocAddr
 #include "skse64/GameTypes.h"  // BSReadLocker
 
 #include "RE/BSExtraData.h"  // BSExtraData
@@ -277,24 +276,24 @@ namespace RE
 
 	UInt32 BaseExtraList::GetAshPileRefHandle(UInt32& a_refHandle)
 	{
-		typedef UInt32 _GetAshPileRefHandle_Impl_t(BaseExtraList* a_this, UInt32& refHandle);
-		RelocAddr<_GetAshPileRefHandle_Impl_t*> _GetAshPileRefHandle_Impl(BASE_EXTRA_LIST_GET_ASH_PILE_REF_HANDLE_IMPL);
-		return _GetAshPileRefHandle_Impl(this, a_refHandle);
+		using func_t = function_type_t<decltype(&BaseExtraList::GetAshPileRefHandle)>;
+		RelocUnrestricted<func_t*> func(Offset::BaseExtraList::GetAshPileRefHandle);
+		return func(this, a_refHandle);
 	}
 
 
 	void BaseExtraList::SetInventoryChanges(InventoryChanges* a_changes)
 	{
-		typedef void _SetInventoryChanges_Impl_t(BaseExtraList* a_this, InventoryChanges* a_changes);
-		RelocAddr<_SetInventoryChanges_Impl_t*> _SetInventoryChanges_Impl(BASE_EXTRA_LIST_SET_INVENTORY_CHANGES_IMPL);
-		_SetInventoryChanges_Impl(this, a_changes);
+		using func_t = function_type_t<decltype(&BaseExtraList::SetInventoryChanges)>;
+		RelocUnrestricted<func_t*> func(Offset::BaseExtraList::SetInventoryChanges);
+		return func(this, a_changes);
 	}
 
 
 	void BaseExtraList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
 	{
-		typedef void _BlockActivation_t(BaseExtraList* a_this, ExtraFlags::Flag a_flags, bool a_enable);
-		RelocAddr<_BlockActivation_t*> _BlockActivation(BASE_EXTRA_LIST_SET_EXTRA_FLAGS);
-		_BlockActivation(this, a_flags, a_enable);
+		using func_t = function_type_t<decltype(&BaseExtraList::SetExtraFlags)>;
+		RelocUnrestricted<func_t*> func(Offset::BaseExtraList::SetExtraFlags);
+		return func(this, a_flags, a_enable);
 	}
 }
