@@ -41,7 +41,7 @@ namespace RE
 		UInt32								unk1C;			// 1C
 
 	private:
-		InventoryChanges* ctor_internal(TESObjectREFR* a_ref);
+		InventoryChanges* Ctor_Internal(TESObjectREFR* a_ref);
 	};
 	STATIC_ASSERT(sizeof(InventoryChanges) == 0x20);
 }

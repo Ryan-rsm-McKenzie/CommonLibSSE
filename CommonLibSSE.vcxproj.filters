@@ -2363,5 +2363,8 @@
     <ClInclude Include="include\RE\NiTimeController.h">
       <Filter>include\RE\Skyrim\NetImmerse</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\Skyrim.h">
+      <Filter>include\RE\Skyrim</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

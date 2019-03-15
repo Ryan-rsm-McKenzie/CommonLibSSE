@@ -9,10 +9,15 @@ namespace RE
 	template <class TKEY, class TVAL>
 	class NiTMap : public NiTMapBase<NiTDefaultAllocator<NiTMapItem<TKEY, TVAL>>, TKEY, TVAL>
 	{
+	private:
+		using Base = NiTMapBase<NiTDefaultAllocator<NiTMapItem<TKEY, TVAL>>, TKEY, TVAL>;
+		using Base::_allocator;
+
 	public:
-		using key_type = typename NiTMapBase::key_type;
-		using value_type = typename NiTMapBase::value_type;
-		using item_type = typename NiTMapBase::item_type;
+		using key_type = typename Base::key_type;
+		using value_type = typename Base::value_type;
+		using item_type = typename Base::item_type;
+		using Base::RemoveAll;
 
 
 		NiTMap(unsigned int a_hashSize = 37) :

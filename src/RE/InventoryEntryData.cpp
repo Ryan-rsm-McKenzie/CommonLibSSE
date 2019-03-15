@@ -46,13 +46,13 @@ namespace RE
 
 	bool InventoryEntryData::IsOwnedBy(Actor* a_actor, bool a_defaultTo)
 	{
-		return IsOwnedBy_internal1(a_actor, a_defaultTo);
+		return IsOwnedBy_Internal1(a_actor, a_defaultTo);
 	}
 
 
 	bool InventoryEntryData::IsOwnedBy(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo)
 	{
-		return IsOwnedBy_internal2(a_actor, a_itemOwner, a_defaultTo);
+		return IsOwnedBy_Internal2(a_actor, a_itemOwner, a_defaultTo);
 	}
 
 
@@ -95,17 +95,17 @@ namespace RE
 	}
 
 
-	bool InventoryEntryData::IsOwnedBy_internal1(Actor* a_actor, bool a_defaultTo)
+	bool InventoryEntryData::IsOwnedBy_Internal1(Actor* a_actor, bool a_defaultTo)
 	{
-		using func_t = function_type_t<decltype(&InventoryEntryData::IsOwnedBy_internal1)>;
+		using func_t = function_type_t<decltype(&InventoryEntryData::IsOwnedBy_Internal1)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::InventoryEntryData, IsOwnedBy, func_t*);
 		return func(this, a_actor, a_defaultTo);
 	}
 
 
-	bool InventoryEntryData::IsOwnedBy_internal2(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo)
+	bool InventoryEntryData::IsOwnedBy_Internal2(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo)
 	{
-		using func_t = function_type_t<decltype(&InventoryEntryData::IsOwnedBy_internal2)>;
+		using func_t = function_type_t<decltype(&InventoryEntryData::IsOwnedBy_Internal2)>;
 		RelocUnrestricted<func_t*> func(Offset::InventoryEntryData::IsOwnedBy);
 		return func(this, a_actor, a_itemOwner, a_defaultTo);
 	}

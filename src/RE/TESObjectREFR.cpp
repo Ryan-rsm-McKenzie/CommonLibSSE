@@ -84,12 +84,9 @@ namespace RE
 
 	UInt32 TESObjectREFR::CreateRefHandle()
 	{
-		using func_t = void(UInt32&, TESObjectREFR*);
-		func_t* func = reinterpret_cast<func_t*>(::CreateRefHandleByREFR.GetUIntPtr());
-
 		if (GetRefCount() > 0) {
-			UInt32 refHandle = 0;
-			func(refHandle, this);
+			UInt32 refHandle = *g_invalidRefHandle;
+			CreateRefHandle_Internal(refHandle, this);
 			return refHandle;
 		} else {
 			return *g_invalidRefHandle;
@@ -275,7 +272,7 @@ namespace RE
 
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
-		using func_t = InventoryChanges * (TESObjectREFR*);
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetInventoryChanges)>;
 		RelocUnrestricted<func_t*> func(Offset::TESObjectREFR::GetInventoryChanges);
 
 		ExtraContainerChanges* xContainerChanges = extraData.GetByType<ExtraContainerChanges>();
@@ -328,5 +325,13 @@ namespace RE
 		using func_t = function_type_t<decltype(&TESObjectREFR::PlayAnimation)>;
 		RelocUnrestricted<func_t*> func(Offset::TESObjectREFR::PlayAnimation);
 		return func(this, a_manager, a_toSeq, a_fromSeq, a_arg4);
+	}
+
+
+	void TESObjectREFR::CreateRefHandle_Internal(UInt32& a_refHandle, TESObjectREFR* a_refrTo)
+	{
+		using func_t = function_type_t<decltype(&TESObjectREFR::CreateRefHandle_Internal)>;
+		func_t* func = reinterpret_cast<func_t*>(::CreateRefHandleByREFR.GetUIntPtr());
+		return func(a_refHandle, a_refrTo);
 	}
 }

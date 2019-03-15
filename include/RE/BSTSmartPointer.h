@@ -46,7 +46,7 @@ namespace RE
 
 		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
 		explicit BSTSmartPointer(Y* a_ptr) :
-			_ptr(a_r._ptr)
+			_ptr(a_ptr._ptr)
 		{
 			reference_manager::Attach(_ptr);
 		}

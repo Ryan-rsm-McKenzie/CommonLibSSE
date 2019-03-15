@@ -5,12 +5,6 @@
 
 namespace RE
 {
-	PlayerControls::PlayerControls()
-	{
-		ctor_internal();
-	}
-
-
 	PlayerControls* PlayerControls::GetSingleton()
 	{
 		using func_t = function_type_t<decltype(&PlayerControls::GetSingleton)>;
@@ -27,9 +21,15 @@ namespace RE
 	}
 
 
-	PlayerControls* PlayerControls::ctor_internal()
+	PlayerControls::PlayerControls()
 	{
-		using func_t = function_type_t<decltype(&PlayerControls::ctor_internal)>;
+		Ctor_Internal();
+	}
+
+
+	PlayerControls* PlayerControls::Ctor_Internal()
+	{
+		using func_t = function_type_t<decltype(&PlayerControls::Ctor_Internal)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::PlayerControls, ctor, func_t*);
 		return func(this);
 	}

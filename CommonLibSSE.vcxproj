@@ -77,6 +77,7 @@
       <TreatSpecificWarningsAsErrors>%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <TreatWarningAsError>true</TreatWarningAsError>
       <UndefinePreprocessorDefinitions>min;max;%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
@@ -129,6 +130,7 @@
       <TreatWarningAsError>true</TreatWarningAsError>
       <UndefinePreprocessorDefinitions>min;max;%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
       <DisableSpecificWarnings>4201;4100;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
@@ -718,6 +720,7 @@
     <ClInclude Include="include\RE\Sky.h" />
     <ClInclude Include="include\RE\SkyEffectController.h" />
     <ClInclude Include="include\RE\SkyObject.h" />
+    <ClInclude Include="include\RE\Skyrim.h" />
     <ClInclude Include="include\RE\SkyrimScriptObjectBindPolicy.h" />
     <ClInclude Include="include\RE\SkyrimScriptStore.h" />
     <ClInclude Include="include\RE\SneakHandler.h" />

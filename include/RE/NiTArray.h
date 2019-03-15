@@ -98,10 +98,10 @@ namespace RE
 		void Resize(UInt32 a_size)
 		{
 			// not reclaiming memory yet
-			if (a_size <= m_size) return;
+			if (a_size <= _size) return;
 
 			// obey min grow size
-			UInt32	growSize = a_size - m_size;
+			UInt32	growSize = a_size - _size;
 			if (growSize < _growSize)
 				growSize = _growSize;
 

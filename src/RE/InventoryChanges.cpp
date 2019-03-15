@@ -7,7 +7,7 @@ namespace RE
 {
 	InventoryChanges::InventoryChanges(TESObjectREFR* a_ref)
 	{
-		ctor_internal(a_ref);
+		Ctor_Internal(a_ref);
 	}
 
 
@@ -75,9 +75,9 @@ namespace RE
 	}
 
 
-	InventoryChanges* InventoryChanges::ctor_internal(TESObjectREFR* a_ref)
+	InventoryChanges* InventoryChanges::Ctor_Internal(TESObjectREFR* a_ref)
 	{
-		using func_t = function_type_t<decltype(&InventoryChanges::ctor_internal)>;
+		using func_t = function_type_t<decltype(&InventoryChanges::Ctor_Internal)>;
 		RelocUnrestricted<func_t*> func(Offset::InventoryChanges::Ctor);
 		return func(this, a_ref);
 	}

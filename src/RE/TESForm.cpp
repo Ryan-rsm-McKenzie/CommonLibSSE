@@ -12,7 +12,7 @@ namespace RE
 {
 	TESForm* TESForm::LookupByID(UInt32 a_formID)
 	{
-		return LookupByID_internal(a_formID);
+		return LookupByID_Internal(a_formID);
 	}
 
 
@@ -104,7 +104,7 @@ namespace RE
 
 	float TESForm::GetWeight() const
 	{
-		using func_t = float(const TESForm*);
+		using func_t = function_type_t<decltype(&TESForm::GetWeight)>;
 		func_t* func = function_cast<func_t*>(&::GetFormWeight);
 		const TESObjectREFR* ref = const_cast<TESForm*>(this)->GetReference();
 		return func(ref ? ref->baseForm : this);
@@ -123,9 +123,9 @@ namespace RE
 	}
 
 
-	TESForm* TESForm::LookupByID_internal(UInt32 a_formID)
+	TESForm* TESForm::LookupByID_Internal(UInt32 a_formID)
 	{
-		using func_t = function_type_t<decltype(&TESForm::LookupByID_internal)>;
+		using func_t = function_type_t<decltype(&TESForm::LookupByID_Internal)>;
 		func_t* func = reinterpret_cast<func_t*>(::LookupFormByID.GetUIntPtr());
 		return func(a_formID);
 	}

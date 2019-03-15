@@ -57,7 +57,6 @@ namespace RE
 		};
 
 
-		PlayerControls();
 		virtual	~PlayerControls();
 
 		virtual UInt32			Unk_01();
@@ -94,8 +93,11 @@ namespace RE
 		SneakHandler*					sneakHandler;		// 1C8
 		TogglePOVHandler*				togglePOVHandler;	// 1D0
 
+	protected:
+		PlayerControls();
+
 	private:
-		PlayerControls* ctor_internal();
+		PlayerControls* Ctor_Internal();
 	};
 	STATIC_ASSERT(offsetof(PlayerControls, data024) == 0x024);
 }

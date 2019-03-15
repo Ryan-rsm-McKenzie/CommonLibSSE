@@ -286,6 +286,9 @@ namespace RE
 		UInt8			unk92;			// 92
 		UInt8			unk93;			// 93
 		UInt32			pad94;			// 94
+
+	private:
+		static void CreateRefHandle_Internal(UInt32& a_refHandle, TESObjectREFR* a_refrTo);
 	};
 	STATIC_ASSERT(offsetof(TESObjectREFR, extraData) == 0x70);
 	STATIC_ASSERT(offsetof(TESObjectREFR, loadedState) == 0x68);

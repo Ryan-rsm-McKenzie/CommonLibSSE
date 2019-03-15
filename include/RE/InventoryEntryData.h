@@ -37,8 +37,8 @@ namespace RE
 		UInt32							pad14;		// 14
 
 	private:
-		bool	IsOwnedBy_internal1(Actor* a_actor, bool a_defaultTo);
-		bool	IsOwnedBy_internal2(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo = true);
+		bool	IsOwnedBy_Internal1(Actor* a_actor, bool a_defaultTo);
+		bool	IsOwnedBy_Internal2(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo = true);
 	};
 	STATIC_ASSERT(sizeof(InventoryEntryData) == 0x18);
 }

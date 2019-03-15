@@ -9,8 +9,14 @@ namespace RE
 	template <class TKEY, class TVAL>
 	class NiTPointerMap : public NiTMapBase<NiTPointerAllocator<std::uint32_t>, TKEY, TVAL>
 	{
+	private:
+		using Base = NiTMapBase<NiTPointerAllocator<std::uint32_t>, TKEY, TVAL>;
+
 	public:
-		typedef typename NiTMapBase::item_type item_type;
+		using item_type = typename Base::item_type;
+
+		using Base::RemoveAll;
+		using Base::_allocator;
 
 
 		NiTPointerMap(std::uint32_t a_hashSize = 37) :

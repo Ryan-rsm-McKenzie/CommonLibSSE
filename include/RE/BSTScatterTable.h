@@ -25,7 +25,7 @@ namespace RE
 	template <class Key, class Enable = void>
 	struct BSTScatterTableDefaultHashPolicy
 	{
-		typedef std::uint32_t	hash_type;
+		using hash_type = std::uint32_t;
 
 
 		inline static hash_type get_hash(const Key& a_key)
@@ -54,7 +54,7 @@ namespace RE
 	template <class Key>
 	struct BSTScatterTableDefaultHashPolicy<Key, std::enable_if_t<has_op_c_str<Key>::value>>
 	{
-		typedef std::uint32_t	hash_type;
+		using hash_type = std::uint32_t;
 
 
 		inline static hash_type get_hash(const Key& a_key)
@@ -80,25 +80,25 @@ namespace RE
 	template <typename T>
 	struct is_charT_pointer<T, std::enable_if_t<is_char_pointer<T>::value>> : std::true_type
 	{
-		typedef const char* char_type;
+		using char_type = const char*;
 	};
 
 	template <typename T>
 	struct is_charT_pointer<T, std::enable_if_t<is_wchar_pointer<T>::value>> : std::true_type
 	{
-		typedef const wchar_t* char_type;
+		using char_type = const wchar_t*;
 	};
 
 	template <typename T>
 	struct is_charT_pointer<T, std::enable_if_t<is_char16_pointer<T>::value>> : std::true_type
 	{
-		typedef const char16_t* char_type;
+		using char_type = const char16_t*;
 	};
 
 	template <typename T>
 	struct is_charT_pointer<T, std::enable_if_t<is_char32_pointer<T>::value>> : std::true_type
 	{
-		typedef const char32_t* char_type;
+		using char_type = const char32_t*;
 	};
 
 
@@ -106,14 +106,18 @@ namespace RE
 	// Requires implicit conversion to "const CharT*" to be defined
 	// Be sure to include the class you want to instantiate this for, a forward delcaration will not suffice
 	template <class Key>
-	struct BSTScatterTableDefaultHashPolicy<Key, std::enable_if_t<is_char_pointer<Key>::value>>
+	struct BSTScatterTableDefaultHashPolicy<Key, std::enable_if_t<is_charT_pointer<Key>::value>>
 	{
-		typedef std::uint32_t	hash_type;
+	private:
+		using char_type = typename is_charT_pointer<Key>::char_type;
+
+	public:
+		using hash_type = std::uint32_t;
 
 
 		inline static hash_type get_hash(const Key& a_key)
 		{
-			return CalcCRC32String((is_char_pointer<Key>::char_type)a_key);
+			return CalcCRC32String(static_cast<char_type>(a_key));
 		}
 
 
@@ -127,8 +131,8 @@ namespace RE
 	template <class Key, class Value, class Enable = void>
 	struct BSTScatterTableDefaultKVStorage
 	{
-		typedef Key		key_type;
-		typedef Value	value_type;
+		using key_type = Key;
+		using value_type = Value;
 
 
 		TES_HEAP_REDEFINE_NEW();
@@ -192,8 +196,8 @@ namespace RE
 	template <class Key, class Value>
 	struct BSTScatterTableDefaultKVStorage<Key, Value, typename std::enable_if_t<std::is_base_of<TESForm, Value>::value>>
 	{
-		typedef Key		key_type;
-		typedef Value*	value_type;
+		using key_type = Key;
+		using value_type = Value * ;
 
 
 		TES_HEAP_REDEFINE_NEW();
@@ -218,9 +222,7 @@ namespace RE
 
 
 		inline void DestroyKey()
-		{
-			_key.~key_type();
-		}
+		{}
 
 
 		inline value_type& GetValue()
@@ -255,7 +257,7 @@ namespace RE
 	struct BSTScatterTableEntry : public Storage<Key, Value>
 	{
 	private:
-		typedef Storage<Key, Value> _base_t;
+		using _base_t = Storage<Key, Value>;
 
 	public:
 		BSTScatterTableEntry() :
@@ -286,9 +288,9 @@ namespace RE
 	struct BSTScatterTableHeapAllocator
 	{
 	public:
-		typedef Entry							entry_type;
-		typedef typename entry_type::key_type	key_type;
-		typedef typename entry_type::value_type	value_type;
+		using entry_type = Entry;
+		using key_type = typename entry_type::key_type;
+		using value_type = typename entry_type::value_type;
 
 	protected:
 		static inline entry_type* Allocate(std::size_t a_num)
@@ -340,17 +342,17 @@ namespace RE
 	template <class Key, class Value, template <class, class> class Storage, class HashPolicy, class Allocator, std::size_t INITIAL_TABLE_SIZE>
 	struct BSTScatterTableTraits
 	{
-		typedef std::uint32_t		size_type;
-		typedef Key					key_type;
-		typedef Value				value_type;
-		typedef Storage<Key, Value>	storage_type;
-		typedef HashPolicy			hash_policy;
-		typedef Allocator			allocator_type;
+		using size_type = std::uint32_t;
+		using key_type = Key;
+		using value_type = Value;
+		using storage_type = Storage<Key, Value>;
+		using hash_policy = HashPolicy;
+		using allocator_type = Allocator;
 
-		typedef typename allocator_type::entry_type		entry_type;
-		typedef typename hash_policy::hash_type			hash_type;
+		using entry_type = typename allocator_type::entry_type;
+		using hash_type = typename hash_policy::hash_type;
 
-		const static size_type		initial_table_size = INITIAL_TABLE_SIZE;
+		const static size_type initial_table_size = INITIAL_TABLE_SIZE;
 	};
 
 
@@ -754,16 +756,18 @@ namespace RE
 		protected Traits::allocator_type		// 18
 	{
 	public:
-		typedef BSTScatterTableKernel<Traits>	Kernel;
+		using Kernel = BSTScatterTableKernel<Traits>;
 
-		typedef typename Kernel::size_type			size_type;
-		typedef typename Kernel::key_type			key_type;
-		typedef typename Kernel::value_type			value_type;
-		typedef typename Kernel::storage_type		storage_type;
-		typedef typename Kernel::hash_policy		hash_policy;
-		typedef typename Kernel::allocator_type		allocator_type;
-		typedef typename Kernel::entry_type			entry_type;
-		typedef typename Kernel::hash_type			hash_type;
+		using size_type = typename Kernel::size_type;
+		using key_type = typename Kernel::key_type;
+		using value_type = typename Kernel::value_type;
+		using storage_type = typename Kernel::storage_type;
+		using hash_policy = typename Kernel::hash_policy;
+		using allocator_type = typename Kernel::allocator_type;
+		using entry_type = typename Kernel::entry_type;
+		using hash_type = typename Kernel::hash_type;
+		using hasher = typename Kernel::hasher;
+		using key_equal = typename Kernel::key_equal;
 
 		// compile hints for GCC
 		using Kernel::_size;
@@ -772,6 +776,8 @@ namespace RE
 		using Kernel::_eolPtr;
 		using Kernel::size;
 		using Kernel::max_size;
+		using Kernel::empty;
+		using Kernel::initial_table_size;
 
 
 		class const_iterator
@@ -1125,19 +1131,20 @@ namespace RE
 		template <class> class Allocator,
 		std::uint32_t INITIAL_TABLE_SIZE
 	>
-		class BSTScatterTable : public BSTScatterTableBase< BSTScatterTableTraits<Key, Value, Storage, Policy<Key>, Allocator<BSTScatterTableEntry<Key, Value, Storage> >, INITIAL_TABLE_SIZE> >
+		class BSTScatterTable : public BSTScatterTableBase<BSTScatterTableTraits<Key, Value, Storage, Policy<Key>, Allocator<BSTScatterTableEntry<Key, Value, Storage>>, INITIAL_TABLE_SIZE>>
 	{
-	public:
-		typedef BSTScatterTableBase< BSTScatterTableTraits<Key, Value, Storage, Policy<Key>, Allocator<BSTScatterTableEntry<Key, Value, Storage> >, INITIAL_TABLE_SIZE> > Base;
+	private:
+		using Base = BSTScatterTableBase<BSTScatterTableTraits<Key, Value, Storage, Policy<Key>, Allocator<BSTScatterTableEntry<Key, Value, Storage>>, INITIAL_TABLE_SIZE>>;
 
-		typedef typename Base::size_type		size_type;
-		typedef typename Base::key_type			key_type;
-		typedef typename Base::value_type		value_type;
-		typedef typename Base::storage_type		storage_type;
-		typedef typename Base::hash_policy		hash_policy;
-		typedef typename Base::allocator_type	allocator_type;
-		typedef typename Base::entry_type		entry_type;
-		typedef typename Base::hash_type		hash_type;
+	public:
+		using size_type = typename Base::size_type;
+		using key_type = typename Base::key_type;
+		using value_type = typename Base::value_type;
+		using storage_type = typename Base::storage_type;
+		using hash_policy = typename Base::hash_policy;
+		using allocator_type = typename Base::allocator_type;
+		using entry_type = typename Base::entry_type;
+		using hash_type = typename Base::hash_type;
 
 		// compiler hints for GCC
 		using typename Base::const_iterator;
@@ -1150,11 +1157,16 @@ namespace RE
 		using Base::size;
 		using Base::max_size;
 		using Base::free_count;
-		using Base::initial_table_size;
 		using Base::empty;
 		using Base::clear;
 		using Base::hash_function;
 		using Base::key_eq;
+		using Base::cend;
+		using Base::end;
+		using Base::initial_table_size;
+		using Base::_grow_table;
+		using Base::get_hash;
+		using Base::_find;
 
 
 		TES_HEAP_REDEFINE_NEW();

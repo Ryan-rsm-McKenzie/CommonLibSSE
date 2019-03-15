@@ -115,7 +115,14 @@ struct is_detected<T, Op, void_t<Op<T>>> : std::true_type {};
 template <class T, class S>
 T function_cast(S a_func)
 {
-	return reinterpret_cast<T>(GetFnAddr(a_func));
+	union
+	{
+		std::uintptr_t addr;
+		T type;
+	};
+
+	addr = GetFnAddr(a_func);
+	return type;
 }
 
 
@@ -131,6 +138,15 @@ public:
 };
 
 
+// variadic member function
+template <class R, class Cls, class... Args>
+class function_type<R(Cls::*)(Args..., ...)>
+{
+public:
+	using type = R(Cls*, Args..., ...);
+};
+
+
 // const member function
 template <class R, class Cls, class... Args>
 class function_type<R(Cls::*)(Args...) const>
@@ -140,12 +156,30 @@ public:
 };
 
 
+// variadic const member function
+template <class R, class Cls, class... Args>
+class function_type<R(Cls::*)(Args..., ...) const>
+{
+public:
+	using type = R(const Cls*, Args..., ...);
+};
+
+
 // static function
 template <class R, class... Args>
 class function_type<R(*)(Args...)>
 {
 public:
 	using type = R(Args...);
+};
+
+
+// variadic static function
+template <class R, class... Args>
+class function_type<R(*)(Args..., ...)>
+{
+public:
+	using type = R(Args..., ...);
 };
 
 

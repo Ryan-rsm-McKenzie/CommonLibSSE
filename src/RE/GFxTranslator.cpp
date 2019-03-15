@@ -36,7 +36,7 @@ namespace RE
 
 	void GFxTranslator::TranslateInfo::SetResult(const wchar_t* a_resultText, UPInt a_resultLen)
 	{
-		return SetResult_internalW(a_resultText, a_resultLen);
+		return SetResult_InternalW(a_resultText, a_resultLen);
 	}
 
 
@@ -47,9 +47,9 @@ namespace RE
 	}
 
 
-	void GFxTranslator::TranslateInfo::SetResult_internalW(const wchar_t* a_resultText, UPInt a_resultLen)
+	void GFxTranslator::TranslateInfo::SetResult_InternalW(const wchar_t* a_resultText, UPInt a_resultLen)
 	{
-		using func_t = function_type_t<decltype(&GFxTranslator::TranslateInfo::SetResult_internalW)>;
+		using func_t = function_type_t<decltype(&GFxTranslator::TranslateInfo::SetResult_InternalW)>;
 		RelocUnrestricted<func_t*> func(Offset::GFxTranslator::TranslateInfo::SetResultW);
 		return func(this, a_resultText, a_resultLen);
 	}

@@ -63,13 +63,17 @@ namespace RE
 		template <class U>
 		class iterator_base : public iterator_traits<U>
 		{
+		private:
 			friend class GList<T>;
+
+			using Traits = iterator_traits<U>;
+
 		public:
-			using difference_type = typename iterator_traits::difference_type;
-			using value_type = typename iterator_traits::value_type;
-			using pointer = typename iterator_traits::pointer;
-			using reference = typename iterator_traits::reference;
-			using iterator_category = typename iterator_traits::iterator_category;
+			using difference_type = typename Traits::difference_type;
+			using value_type = typename Traits::value_type;
+			using pointer = typename Traits::pointer;
+			using reference = typename Traits::reference;
+			using iterator_category = typename Traits::iterator_category;
 
 
 			iterator_base() :

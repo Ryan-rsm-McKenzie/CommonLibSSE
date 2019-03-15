@@ -65,7 +65,7 @@ namespace RE
 			UInt32			pad1C;			// 1C
 
 		private:
-			void SetResult_internalW(const wchar_t* a_resultText, UPInt a_resultLen = UPINT_MAX);
+			void SetResult_InternalW(const wchar_t* a_resultText, UPInt a_resultLen = UPINT_MAX);
 		};
 		STATIC_ASSERT(sizeof(TranslateInfo) == 0x20);
 

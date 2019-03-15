@@ -43,6 +43,11 @@ namespace RE
 	class GAtomicValueBase
 	{
 	public:
+		GAtomicValueBase() :
+			value{}
+		{}
+
+
 		GAtomicValueBase(const GAtomicValueBase& a_rhs) :
 			value(a_rhs.value)
 		{}
@@ -62,14 +67,25 @@ namespace RE
 	class GAtomicInt : public GAtomicValueBase<T>
 	{
 		STATIC_ASSERT(std::is_integral<T>::value);
+
+		using Base = GAtomicValueBase<T>;
+
 	public:
+		using Base::value;
+
+
+		GAtomicInt() :
+			Base{}
+		{}
+
+
 		GAtomicInt(const GAtomicInt& a_rhs) :
-			GAtomicValueBase(a_rhs)
+			Base(a_rhs)
 		{}
 
 
 		GAtomicInt(const T& a_rhs) :
-			GAtomicValueBase(a_rhs)
+			Base(a_rhs)
 		{}
 
 
@@ -152,6 +168,14 @@ namespace RE
 	{
 		STATIC_ASSERT(std::is_integral<T>::value);
 	public:
+		using GAtomicValueBase<T>::value;
+
+
+		GAtomicInt() :
+			GAtomicValueBase{}
+		{}
+
+
 		GAtomicInt(const GAtomicInt& a_rhs) :
 			GAtomicValueBase(a_rhs)
 		{}

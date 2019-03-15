@@ -65,9 +65,7 @@ namespace RE
 
 	void IMenu::InitMovie()
 	{
-		using func_t = void(IMenu*, GFxMovieView*);
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::IMenu, InitMovie_internal, func_t*);
-		return func(this, view);
+		InitMovie_internal(view);
 	}
 
 
@@ -170,6 +168,14 @@ namespace RE
 	bool IMenu::HasFlag10000() const
 	{
 		return (flags & Flag::kUnk10000) != Flag::kNone;
+	}
+
+
+	void IMenu::InitMovie_internal(GFxMovieView* a_view)
+	{
+		using func_t = function_type_t<decltype(&IMenu::InitMovie_internal)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::IMenu, InitMovie_internal, func_t*);
+		return func(this, view);
 	}
 
 

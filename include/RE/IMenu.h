@@ -95,6 +95,7 @@ namespace RE
 		FxDelegate*		fxDelegate;	// 28
 
 	private:
+		void InitMovie_internal(GFxMovieView* a_view);
 		void dtor_internal();
 	};
 	STATIC_ASSERT(offsetof(IMenu, view) == 0x10);

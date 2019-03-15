@@ -21,8 +21,8 @@ namespace RE
 
 	void ConsoleManager::Print(const char* a_fmt, ...)
 	{
-		using func_t = void(ConsoleManager*, const char*, ...);
-		func_t* func = reinterpret_cast<func_t*>(((::ConsoleManager*)0)->_VPrint_GetPtr());
+		using func_t = function_type_t<decltype(&ConsoleManager::Print)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::ConsoleManager, VPrint, func_t*);
 		std::va_list args;
 		va_start(args, a_fmt);
 		func(this, a_fmt, args);

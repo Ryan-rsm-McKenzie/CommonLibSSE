@@ -7,7 +7,7 @@ namespace RE
 {
 	LocalMapCamera::LocalMapCamera(float a_northRotation)
 	{
-		ctor_internal(a_northRotation);
+		Ctor_Internal(a_northRotation);
 	}
 
 
@@ -49,9 +49,9 @@ namespace RE
 	}
 
 
-	LocalMapCamera* LocalMapCamera::ctor_internal(float a_northRotation)
+	LocalMapCamera* LocalMapCamera::Ctor_Internal(float a_northRotation)
 	{
-		using func_t = function_type_t<decltype(&LocalMapCamera::ctor_internal)>;
+		using func_t = function_type_t<decltype(&LocalMapCamera::Ctor_Internal)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::LocalMapCamera, ctor, func_t*);
 		return func(this, a_northRotation);
 	}
