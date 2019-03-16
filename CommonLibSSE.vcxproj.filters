@@ -2366,5 +2366,11 @@
     <ClInclude Include="include\RE\Skyrim.h">
       <Filter>include\RE\Skyrim</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\BSWin32SaveDataSystemUtility.h">
+      <Filter>include\RE\Skyrim\BSSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSSaveDataSystemUtility.h">
+      <Filter>include\RE\Skyrim\BSSystem</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

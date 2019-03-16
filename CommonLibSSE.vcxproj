@@ -424,6 +424,7 @@
     <ClInclude Include="include\RE\BSNavmeshInfoMap.h" />
     <ClInclude Include="include\RE\BSPrecomputedNavmeshInfoPathMap.h" />
     <ClInclude Include="include\RE\BSReloadShaderI.h" />
+    <ClInclude Include="include\RE\BSSaveDataSystemUtility.h" />
     <ClInclude Include="include\RE\BSScaleformTranslator.h" />
     <ClInclude Include="include\RE\BSScriptObjectBindPolicy.h" />
     <ClInclude Include="include\RE\BSShader.h" />
@@ -442,6 +443,7 @@
     <ClInclude Include="include\RE\BSTList.h" />
     <ClInclude Include="include\RE\BSTransformDeltaEvent.h" />
     <ClInclude Include="include\RE\BSTSingleton.h" />
+    <ClInclude Include="include\RE\BSWin32SaveDataSystemUtility.h" />
     <ClInclude Include="include\RE\BSXAudio2GameSound.h" />
     <ClInclude Include="include\RE\ChestsLooted.h" />
     <ClInclude Include="include\RE\Clouds.h" />
