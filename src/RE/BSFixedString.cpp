@@ -358,7 +358,7 @@ namespace RE
 
 	BSFixedString::size_type BSFixedString::max_size() noexcept
 	{
-		return 0xFFFFFFE6;
+		return 0xFFFF;
 	}
 
 

@@ -8,6 +8,58 @@ namespace RE
 	class NiTexture : public NiObject
 	{
 	public:
+		class FormatPrefs
+		{
+		public:
+			enum class PixelLayout : UInt32
+			{
+				kPalettized8,
+				kHighColor16,
+				kTrueColor32,
+				kCompressed,
+				kBumpmap,
+				kPalettized4,
+				kDefault,
+				kSingleColor8,
+				kSingleColor16,
+				kSingleColor32,
+				kDoubleColor32,
+				kDoubleColor64,
+				kFloatColor32,
+				kFloatColor64,
+				kFloatColor128
+			};
+
+
+			enum class AlphaFormat : UInt32
+			{
+				kNone,
+				kBinary,	// 1-bit
+				kSmooth,	// multi-bit
+				kDefault
+			};
+
+
+			enum class MipFlag : UInt32
+			{
+				kNo = false,
+				kYes = true,
+				kDefault
+			};
+
+
+			FormatPrefs();
+
+
+			// members
+			PixelLayout	pixelLayout;	// 00
+			AlphaFormat	alphaFormat;	// 04
+			MipFlag		mipMapped;		// 08
+			UInt32		pad0C;			// 0C
+		};
+		STATIC_ASSERT(sizeof(FormatPrefs) == 0x10);
+
+
 		virtual ~NiTexture();
 
 		// override (NiObject)
@@ -23,15 +75,12 @@ namespace RE
 
 
 		// members
-		UInt32		unk10;			// 10 - 6
-		UInt32		unk14;			// 14 - 3
-		UInt32		unk18;			// 18 - 2
-		UInt32		unk1C;			// 1C
+		FormatPrefs	formatPrefs;	// 10
 		const char*	name;			// 20
-		UInt32		unk28;			// 28 - FFFFFF
+		UInt32		unk28;			// 28
 		UInt32		unk2C;			// 2C
-		NiTexture*	prevTexture;	// 30
-		NiTexture*	nextTexture;	// 38
+		NiTexture*	prev;			// 30
+		NiTexture*	next;			// 38
 	};
 	STATIC_ASSERT(sizeof(NiTexture) == 0x40);
 }

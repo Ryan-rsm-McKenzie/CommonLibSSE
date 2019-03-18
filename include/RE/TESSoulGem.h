@@ -19,7 +19,7 @@ namespace RE
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12,
-				kCAnHoldNPCSoul = 1 << 17
+				kCanHoldNPCSoul = 1 << 17
 			};
 		};
 

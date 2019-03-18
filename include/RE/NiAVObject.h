@@ -20,10 +20,16 @@ namespace RE
 	public:
 		enum class Flag : UInt32
 		{
+			kNone = 0,
+			kAppCulled = 1 << 0,
 			kSelectiveUpdate = 1 << 1,
-			kUpdatePropertyControllers = 1 << 2,
-			kSelectiveUpdateRigid = 1 << 4,
-			kOverrideSelectiveTransforms = 1 << 7,
+			kSelectiveXForms = 1 << 2,
+			kSelectivePropController = 1 << 3,
+			kSelectiveRigid = 1 << 4,
+			kDisplayObject = 1 << 5,
+			kDisableSorting = 1 << 6,
+			kSelectiveXFormsOverride = 1 << 7,
+			kIsNode = 1 << 8
 		};
 
 
@@ -50,7 +56,7 @@ namespace RE
 		virtual bool		RegisterStreamables(NiStream* a_stream) override;													// 1A
 		virtual void		SaveBinary(NiStream* a_stream) override;															// 1B
 		virtual bool		IsEqual(NiObject* a_object) override;																// 1C
-		virtual void		ProcessClone(NiCloningProcess* a_cloner) override;													// 1D
+		virtual void		ProcessClone(NiCloningProcess& a_cloning) override;													// 1D
 
 		// add
 		virtual void		UpdateControllers(ControllerUpdateContext* a_ctx);													// 25

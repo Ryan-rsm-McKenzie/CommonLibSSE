@@ -20,7 +20,7 @@ namespace RE
 		virtual bool			RegisterStreamables(NiStream* a_stream) override;															// 1A
 		virtual void			SaveBinary(NiStream* a_stream) override;																	// 1B
 		virtual bool			IsEqual(NiObject* a_object) override;																		// 1C
-		virtual void			ProcessClone(NiCloningProcess* a_cloner) override;															// 1D
+		virtual void			ProcessClone(NiCloningProcess& a_cloning) override;															// 1D
 		virtual void			UpdateControllers(ControllerUpdateContext* a_ctx) override;													// 25
 		virtual void			UpdateNodeBound(ControllerUpdateContext* a_ctx) override;													// 26
 		virtual void			ApplyTransform(NiMatrix33* a_mtx, NiPoint3* a_translate, bool a_postTransform) override;					// 27

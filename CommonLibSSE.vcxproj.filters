@@ -238,9 +238,6 @@
     <Filter Include="include\RE\Skyrim\Menus\IMenu\Components">
       <UniqueIdentifier>{89a86e1a-a2df-43c2-a955-504eae459447}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\Skyrim\NetImmerse\Components">
-      <UniqueIdentifier>{24a3ccb1-aaa9-4379-a1fc-f1d958c9b2c2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Skyrim\BSDevices\Handlers">
       <UniqueIdentifier>{578c9acd-47ee-4aaf-9bf0-719a93df441e}</UniqueIdentifier>
     </Filter>
@@ -267,18 +264,6 @@
     </Filter>
     <Filter Include="include\RE\Skyrim\Events\MenuEvent">
       <UniqueIdentifier>{9b97804e-d33e-44fe-979f-3b8b01874963}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Skyrim\NetImmerse\Containers">
-      <UniqueIdentifier>{d1946150-0299-43c7-a1aa-5513222decda}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Skyrim\NetImmerse\Containers\Components">
-      <UniqueIdentifier>{5c514ee3-e8b3-4be1-9c38-f0d44c656281}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Skyrim\NetImmerse\Interpolators">
-      <UniqueIdentifier>{8219badf-f2d2-4ecb-b9fd-4320592088d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Skyrim\NetImmerse\Data">
-      <UniqueIdentifier>{56206222-767c-423e-a0da-84faac8723a9}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\RE\Skyrim\Events\BGSStoryEvent">
       <UniqueIdentifier>{dd35ac2d-278e-4dd8-900b-ceb68b4feb4c}</UniqueIdentifier>
@@ -307,15 +292,6 @@
     <Filter Include="src\RE\Skyrim\Menus\IMenu">
       <UniqueIdentifier>{bcafa373-e88b-4f98-88ef-d87a5b464bfb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\RE\Skyrim\NetImmerse\Containers">
-      <UniqueIdentifier>{ebb129b0-59be-43db-852c-aabb7260983b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\Skyrim\NetImmerse\Containers\Components">
-      <UniqueIdentifier>{c64809a7-254d-4abd-b843-3bf2099989d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\Skyrim\NetImmerse\Compnents">
-      <UniqueIdentifier>{c5ee7935-5c0f-4202-935b-1c7732099a99}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\RE\Skyrim\BSHavok">
       <UniqueIdentifier>{394a210a-5b4b-4bcb-861e-10d2b7bbdfc5}</UniqueIdentifier>
     </Filter>
@@ -327,6 +303,111 @@
     </Filter>
     <Filter Include="include\RE\Skyrim\BSHavok\common">
       <UniqueIdentifier>{b4cec424-bdbb-4452-907f-3b0811996565}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\NetImmerse\NiMain">
+      <UniqueIdentifier>{7ae4d21f-ac90-44af-9494-79997e18b479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\NetImmerse\NiAnimation">
+      <UniqueIdentifier>{5097f252-90be-4351-9f47-4fadaf471e84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\NetImmerse\BS">
+      <UniqueIdentifier>{b32d982b-d771-453c-a44a-8423583b4131}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GRefCount">
+      <UniqueIdentifier>{ae9dc83a-060e-4ebd-b29a-f861d3d1f8aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\BS">
+      <UniqueIdentifier>{c121cdf3-0eec-45fb-ac67-24ddd5f81b6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\FxGameDelegate">
+      <UniqueIdentifier>{e7ccf7c6-1d6b-4721-9bcb-c52dbe3eb306}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GAtomic">
+      <UniqueIdentifier>{c294422a-c115-4ce9-8192-fbecc63cb7a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GColor">
+      <UniqueIdentifier>{d7fcaaa2-2855-48cf-a87c-21984b153f58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GFxEvent">
+      <UniqueIdentifier>{f6c76815-c325-4ec4-9355-91a73e51f174}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GFxLoader">
+      <UniqueIdentifier>{1793a37b-ecbe-4d37-838f-7cdbe8f0b0cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GFxPlayer">
+      <UniqueIdentifier>{f726886e-8536-4432-81dc-2cf165710ca1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GFxPlayerStats">
+      <UniqueIdentifier>{963c140d-4a78-4869-aa5d-bff3f6d5ec6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GFxResource">
+      <UniqueIdentifier>{c6626758-dc2b-4bfb-a80f-1a162d33cf2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GMemory">
+      <UniqueIdentifier>{effc48f3-16e8-4677-8e3d-0e15794d2e8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GMemoryHeap">
+      <UniqueIdentifier>{abe80048-6dfc-40fe-9fd8-f7b5ff4917df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GMatrix2D">
+      <UniqueIdentifier>{8632e06f-027b-4715-9dde-4ba0cca14219}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GList">
+      <UniqueIdentifier>{d20ac82a-4d2e-47b2-9300-99dc931e7c32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GString">
+      <UniqueIdentifier>{d55e57e8-efc0-494b-a594-5cb46d5047bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GRenderer">
+      <UniqueIdentifier>{eaf43620-0901-4657-81a4-c6aabdcb2c4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GTypes2DF">
+      <UniqueIdentifier>{9f405c4c-92f7-4c18-b3b2-1575aaaf3252}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GStats">
+      <UniqueIdentifier>{b23cd309-bccd-4914-adf3-02704ad71ebd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GTypes">
+      <UniqueIdentifier>{56123a3b-1253-4866-a927-abe4f178d873}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\NetImmerse\NiAnimation">
+      <UniqueIdentifier>{ebb129b0-59be-43db-852c-aabb7260983b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\NetImmerse\NiMain">
+      <UniqueIdentifier>{1319a525-f6a5-41ab-bde4-3893c91e96a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Scaleform\FxGameDelegate">
+      <UniqueIdentifier>{6dc559a4-ad77-4602-95cc-921d5a11d321}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Scaleform\GAtomic">
+      <UniqueIdentifier>{328dce3d-8b87-4646-b822-3f13598ed31f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Scaleform\GFxEvent">
+      <UniqueIdentifier>{15fa7f3c-b3f5-4b67-a367-b8fa270cc305}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Scaleform\GFxLoader">
+      <UniqueIdentifier>{5ed5e10a-c68f-4434-b6b9-499d7ca7a525}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Scaleform\GFxPlayer">
+      <UniqueIdentifier>{bcec8b05-cbe3-493c-8411-50cf39433bf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Scaleform\GFxResource">
+      <UniqueIdentifier>{76510870-3269-481a-b66e-289c50eb0f44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Scaleform\GMemory">
+      <UniqueIdentifier>{6a7d611e-70fb-49ff-aa9a-c559fc402adb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Scaleform\GMemoryHeap">
+      <UniqueIdentifier>{8983fc1e-5cd9-4948-89ed-d797366510cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Scaleform\GRefCount">
+      <UniqueIdentifier>{3489eb82-b482-444e-9068-a7b4f0ec91c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Scaleform\GRenderer">
+      <UniqueIdentifier>{89d3e5bc-2a3c-476e-b67b-923b31a2d0da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Scaleform\GString">
+      <UniqueIdentifier>{5630e7c8-065d-49fc-a702-66e1197c00a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -362,21 +443,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\InventoryEntryData.cpp">
       <Filter>src\RE\Skyrim\Misc</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiControllerManager.cpp">
-      <Filter>src\RE\Skyrim\NetImmerse</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiControllerSequence.cpp">
-      <Filter>src\RE\Skyrim\NetImmerse</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiNode.cpp">
-      <Filter>src\RE\Skyrim\NetImmerse</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiObjectNET.cpp">
-      <Filter>src\RE\Skyrim\NetImmerse</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GFxLoader.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\TESNPC.cpp">
       <Filter>src\RE\Skyrim\TESForms\Character</Filter>
@@ -510,14 +576,8 @@
     <ClCompile Include="src\RE\BSAudioManager.cpp">
       <Filter>src\RE\Skyrim\BSAudio</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\NiRefObject.cpp">
-      <Filter>src\RE\Skyrim\NetImmerse</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSHandleRefObject.cpp">
       <Filter>src\RE\Skyrim\BSMain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiObject.cpp">
-      <Filter>src\RE\Skyrim\NetImmerse</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\TESDescription.cpp">
       <Filter>src\RE\Skyrim\FormComponents</Filter>
@@ -537,71 +597,14 @@
     <ClCompile Include="src\RE\LocalMapCamera.cpp">
       <Filter>src\RE\Skyrim\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\NiExtraData.cpp">
-      <Filter>src\RE\Skyrim\NetImmerse</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GRefCountImplCore.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GRefCountImpl.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GFxTranslator.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\TESRace.cpp">
       <Filter>src\RE\Skyrim\TESForms\Character</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSSpinLock.cpp">
       <Filter>src\RE\Skyrim\BSCore</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\NiAVObject.cpp">
-      <Filter>src\RE\Skyrim\NetImmerse</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp">
       <Filter>src\RE\Skyrim\BSSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GFxValue.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GMemoryHeap.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GMemory.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GAtomic.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GFxMovieDef.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GFxResource.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GFxResourceID.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GFxStateBag.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GFxMovie.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GFxState.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GFxExternalInterface.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GViewport.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GFxMovieView.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GString.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BGSBaseAlias.cpp">
       <Filter>src\RE\Skyrim\TESForms\Character</Filter>
@@ -623,9 +626,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp">
       <Filter>src\RE\Skyrim\TESForms\Character\PerkEntry</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\FxDelegateHandler.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\TESSoulGem.cpp">
       <Filter>src\RE\Skyrim\TESForms\Objects</Filter>
@@ -681,12 +681,6 @@
     <ClCompile Include="src\RE\InventoryMenu.cpp">
       <Filter>src\RE\Skyrim\Menus\IMenu</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\NiMemory.cpp">
-      <Filter>src\RE\Skyrim\NetImmerse\Containers\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiPoint3.cpp">
-      <Filter>src\RE\Skyrim\NetImmerse\Compnents</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\hkBaseObject.cpp">
       <Filter>src\RE\Skyrim\BSHavok\hk</Filter>
     </ClCompile>
@@ -698,6 +692,120 @@
     </ClCompile>
     <ClCompile Include="src\RE\ActorKnowledge.cpp">
       <Filter>src\RE\Skyrim\TESForms\World\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiAnimationKey.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiColorData.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiColorKey.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiControllerManager.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiFloatData.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiFloatKey.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiAVObject.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiColor.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiExtraData.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiNode.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiObject.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiObjectNET.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiPoint3.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiRefObject.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiTexture.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\FxDelegateHandler.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\FxGameDelegate</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GAtomic.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GAtomic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxKeyboardState.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GFxEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxLoader.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GFxLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxState.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GFxLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxStateBag.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GFxLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxTranslator.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GFxLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxExternalInterface.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GFxPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxMovie.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GFxPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxMovieDef.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GFxPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxMovieView.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GFxPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxValue.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GFxPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxResource.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GFxResource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxResourceID.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GFxResource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GMemory.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GMemory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GMemoryHeap.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GMemoryHeap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GRefCountImpl.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GRefCount</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GRefCountImplCore.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GRefCount</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GRefCountNTSImpl.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GRefCount</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GViewport.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GString.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GString</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiTCollection.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\FxDelegateArgs.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\FxGameDelegate</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -785,47 +893,11 @@
     <ClInclude Include="include\RE\ActorProcessManager.h">
       <Filter>include\RE\Skyrim\TESForms\World\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\NiNode.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiObjectNET.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiControllerManager.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiControllerSequence.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GFxMovieView.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GFxMovieDef.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GFxFileConstants.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GFxStateBag.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GFxState.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GFxResource.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GFxLoader.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESObjectBOOK.h">
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\InventoryEntryData.h">
       <Filter>include\RE\Skyrim\Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GFxMovie.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESBoundAnimObject.h">
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
@@ -1088,9 +1160,6 @@
     <ClInclude Include="include\RE\StringCache.h">
       <Filter>include\RE\Skyrim\BSCore</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\NiCamera.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESSound.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
     </ClInclude>
@@ -1105,9 +1174,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSHandleRefObject.h">
       <Filter>include\RE\Skyrim\BSMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiRefObject.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\IXAudio2VoiceCallback.h">
       <Filter>include\RE\Skyrim\BSAudio</Filter>
@@ -1129,12 +1195,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\BGSTextureSet.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSTextureSet.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiObject.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSMenuIcon.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
@@ -1187,20 +1247,11 @@
     <ClInclude Include="include\RE\ImageSpaceShaderParam.h">
       <Filter>include\RE\Skyrim\BSShader</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\NiTexture.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\MiddleProcess.h">
       <Filter>include\RE\Skyrim\TESForms\World\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\AnimationVariableData.h">
       <Filter>include\RE\Skyrim\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiExtraData.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSBound.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESEyes.h">
       <Filter>include\RE\Skyrim\TESForms\Character</Filter>
@@ -1271,41 +1322,8 @@
     <ClInclude Include="include\RE\BGSOpenCloseForm.h">
       <Filter>include\RE\Skyrim\FormComponents</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\GRefCountImplCore.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GRefCountImpl.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GRefCountBaseStatImpl.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GStats.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GRefCountBase.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GFxTranslator.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScaleformTranslator.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GFxExternalInterface.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\FxDelegate.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\StandardItemData.h">
       <Filter>include\RE\Skyrim\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\SFTypes.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GFxFunctionHandler.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSShaderParticleGeometryData.h">
       <Filter>include\RE\Skyrim\TESForms\World</Filter>
@@ -1448,9 +1466,6 @@
     <ClInclude Include="include\RE\UIMessage.h">
       <Filter>include\RE\Skyrim\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\NiAVObject.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ExtraHealth.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
     </ClInclude>
@@ -1511,52 +1526,10 @@
     <ClInclude Include="include\RE\TESFlora.h">
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\GFxValue.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GMatrix.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GNewOverrideBase.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GMemoryHeap.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GList.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GAtomic.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GMemory.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GFxPlayerStats.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\UISaveLoadManager.h">
       <Filter>include\RE\Skyrim\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\GFxResourceID.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\GPtr.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GRect.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GFxResourceKey.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="src\RE\GFxResourceKey.cpp">
-      <Filter>src\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GViewport.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GString.h">
       <Filter>include\RE\Skyrim\Scaleform</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraAliasInstanceArray.h">
@@ -1889,39 +1862,6 @@
     <ClInclude Include="include\RE\IMapCameraCallbacks.h">
       <Filter>include\RE\Skyrim\Menus\IMenu\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\NiBoneMatrixSetterI.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiPoint3.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiRect.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiSmartPointer.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTArray.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTDefaultAllocator.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Containers\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiMemory.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Containers\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTMap.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTMapBase.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Containers\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTPointerAllocator.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Containers\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTPointerMap.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Containers</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ActivateHandler.h">
       <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
     </ClInclude>
@@ -2231,9 +2171,6 @@
     <ClInclude Include="include\RE\BGSDebris.h">
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\FxDelegateHandler.h">
-      <Filter>include\RE\Skyrim\Scaleform</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESCombatEvent.h">
       <Filter>include\RE\Skyrim\Events\ScriptEvent</Filter>
     </ClInclude>
@@ -2245,27 +2182,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESImageSpaceModifier.h">
       <Filter>include\RE\Skyrim\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiInterpolator.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Interpolators</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiKeyBasedInterpolator.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Interpolators</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiFloatInterpolator.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Interpolators</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiColorInterpolator.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Interpolators</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiColorData.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiFloatData.h">
-      <Filter>include\RE\Skyrim\NetImmerse\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiColors.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraFlags.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
@@ -2360,9 +2276,6 @@
     <ClInclude Include="include\RE\ExtraGhost.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\NiTimeController.h">
-      <Filter>include\RE\Skyrim\NetImmerse</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\Skyrim.h">
       <Filter>include\RE\Skyrim</Filter>
     </ClInclude>
@@ -2371,6 +2284,240 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSSaveDataSystemUtility.h">
       <Filter>include\RE\Skyrim\BSSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiColorInterpolator.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiFloatInterpolator.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiInterpolator.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiKeyBasedInterpolator.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiColorData.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiFloatData.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTDefaultAllocator.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTMapBase.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTArray.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTMap.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTPointerMap.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiPoint3.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiRect.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiSmartPointer.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiBoneMatrixSetterI.h">
+      <Filter>include\RE\Skyrim\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSBound.h">
+      <Filter>include\RE\Skyrim\NetImmerse\BS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTextureSet.h">
+      <Filter>include\RE\Skyrim\NetImmerse\BS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiAnimationKey.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiAVObject.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiCamera.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiColorKey.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiColor.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiControllerManager.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiControllerSequence.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiExtraData.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiFloatKey.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiNode.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiObject.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiObjectNET.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiRefObject.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTexture.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTimeController.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTPointerAllocator.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTCollection.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScaleformTranslator.h">
+      <Filter>include\RE\Skyrim\Scaleform\BS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FxDelegate.h">
+      <Filter>include\RE\Skyrim\Scaleform\FxGameDelegate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FxDelegateHandler.h">
+      <Filter>include\RE\Skyrim\Scaleform\FxGameDelegate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GAtomic.h">
+      <Filter>include\RE\Skyrim\Scaleform\GAtomic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GColor.h">
+      <Filter>include\RE\Skyrim\Scaleform\GColor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxEvent.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxKey.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxKeyboardState.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxMovieDef.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxMovieView.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxMovie.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxExternalInterface.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxFileConstants.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxFunctionHandler.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxLoader.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxPlayerStats.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxPlayerStats</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxResource.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxResourceID.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxResourceKey.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxSpecialKeysState.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GRefCountNTSImpl.h">
+      <Filter>include\RE\Skyrim\Scaleform\GRefCount</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GRefCountBase.h">
+      <Filter>include\RE\Skyrim\Scaleform\GRefCount</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GRefCountBaseNTS.h">
+      <Filter>include\RE\Skyrim\Scaleform\GRefCount</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GRefCountBaseStatImpl.h">
+      <Filter>include\RE\Skyrim\Scaleform\GRefCount</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GRefCountImpl.h">
+      <Filter>include\RE\Skyrim\Scaleform\GRefCount</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GRefCountImplCore.h">
+      <Filter>include\RE\Skyrim\Scaleform\GRefCount</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxTranslator.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxState.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxStateBag.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxValue.h">
+      <Filter>include\RE\Skyrim\Scaleform\GFxPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxMovieRoot.h">
+      <Filter>include\RE\Skyrim\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GMemory.h">
+      <Filter>include\RE\Skyrim\Scaleform\GMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GNewOverrideBase.h">
+      <Filter>include\RE\Skyrim\Scaleform\GMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GMemoryHeap.h">
+      <Filter>include\RE\Skyrim\Scaleform\GMemoryHeap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GMatrix2D.h">
+      <Filter>include\RE\Skyrim\Scaleform\GMatrix2D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GList.h">
+      <Filter>include\RE\Skyrim\Scaleform\GList</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GString.h">
+      <Filter>include\RE\Skyrim\Scaleform\GString</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GViewport.h">
+      <Filter>include\RE\Skyrim\Scaleform\GRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GRect.h">
+      <Filter>include\RE\Skyrim\Scaleform\GTypes2DF</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GStats.h">
+      <Filter>include\RE\Skyrim\Scaleform\GStats</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SFTypes.h">
+      <Filter>include\RE\Skyrim\Scaleform\GTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RE\GFxResourceKey.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\GFxResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FxDelegateArgs.h">
+      <Filter>include\RE\Skyrim\Scaleform\FxGameDelegate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCount.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

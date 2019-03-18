@@ -1,243 +1,179 @@
 #pragma once
 
+#include <type_traits>  // remove_extent_t, enable_if_t, is_convertible
+
 
 namespace RE
 {
-	template<class C>
+	template<class T>
 	class GPtr
 	{
 	public:
-		GPtr() :
+		using element_type = std::remove_extent_t<T>;
+
+
+		constexpr GPtr() noexcept :
 			_object(0)
 		{}
 
 
-		GPtr(C& a_obj)
+		constexpr GPtr(std::nullptr_t) noexcept :
+			_object(0)
+		{}
+
+
+		template <class Y, typename std::enable_if_t<std::is_convertible<Y, T>::value, int> = 0>
+		explicit GPtr(Y* a_ptr) :
+			_object(a_ptr)
 		{
-			_object = &a_obj;
+			AddRef();
 		}
 
 
-		GPtr(C* a_obj)
+		GPtr(const GPtr& a_r) noexcept :
+			_object(a_r._object)
 		{
-			if (a_obj) {
-				a_obj->AddRef();
-			}
-			_object = a_obj;
+			AddRef();
 		}
 
 
-		GPtr(const GPtr<C>& a_src)
+		template <class Y, typename std::enable_if_t<std::is_convertible<Y, T>::value, int> = 0>
+		GPtr(const GPtr<Y>& a_r) noexcept :
+			_object(a_r._object)
 		{
-			if (a_src._object) {
-				a_src._object->AddRef();
-			}
-			_object = a_src._object;
+			AddRef();
 		}
 
 
-		template<class R>
-		GPtr(GPtr<R>& a_src)
+		GPtr(GPtr&& a_r) noexcept :
+			_object(a_r._object)
 		{
-			if (a_src) {
-				a_src->AddRef();
-			}
-			_object = a_src;
+			a_r._object = 0;
+		}
+
+
+		template <class Y, typename std::enable_if_t<std::is_convertible<Y, T>::value, int> = 0>
+		GPtr(GPtr<Y>&& a_r) noexcept :
+			_object(a_r._object)
+		{
+			a_r._object = 0;
 		}
 
 
 		~GPtr()
 		{
-			if (_object) {
-				_object->Release();
-			}
+			Release();
 		}
 
 
-		bool operator==(const GPtr& a_rhs) const
+		GPtr& operator=(const GPtr& a_r) noexcept
 		{
-			return _object == a_rhs._object;
-		}
-
-
-		bool operator!=(const GPtr& a_rhs) const
-		{
-			return _object != a_rhs._object;
-		}
-
-
-		bool operator==(const C* a_rhs) const
-		{
-			return _object == a_rhs;
-		}
-
-
-		bool operator!=(const C* a_rhs) const
-		{
-			return _object != a_rhs;
-		}
-
-
-		bool operator==(C* a_rhs) const
-		{
-			return _object == a_rhs;
-		}
-
-
-		bool operator!=(C* a_rhs) const
-		{
-			return _object != a_rhs;
-		}
-
-
-		bool operator<(const GPtr & a_rhs) const
-		{
-			return _object < a_rhs._object;
-		}
-
-
-		template<class R>
-		const GPtr<C>& operator=(const GPtr<R>& a_src)
-		{
-			if (a_src) {
-				a_src->AddRef();
-			}
-			if (_object) {
-				_object->Release();
-			}
-			_object = a_src;
+			Release();
+			_object = a_r._object;
+			AddRef();
 			return *this;
 		}
 
 
-		const GPtr<C> & operator = (const GPtr<C> & src)
+		template <class Y, typename std::enable_if_t<std::is_convertible<Y, T>::value, int> = 0>
+		GPtr& operator=(const GPtr<Y>& a_r) noexcept
 		{
-			if (src) src->AddRef();
-			if (_object) _object->Release();
-			_object = src;
-			return *this;
-		}
-
-		const GPtr<C>& operator=(C* a_src)
-		{
-			if (a_src) {
-				a_src->AddRef();
-			}
-			if (_object) {
-				_object->Release();
-			}
-			_object = a_src;
+			Release();
+			_object = a_r._object;
+			AddRef();
 			return *this;
 		}
 
 
-		const GPtr<C>& operator=(C& a_src)
+		GPtr& operator=(GPtr&& a_r) noexcept
+		{
+			Release();
+			_object = a_r._object;
+			if (_object) {
+				a_r._object = 0;
+				_object->AddRef();
+			}
+		}
+
+
+		template <class Y, typename std::enable_if_t<std::is_convertible<Y, T>::value, int> = 0>
+		GPtr& operator=(GPtr<Y>&& a_r) noexcept
+		{
+			Release();
+			_object = a_r._object;
+			if (_object) {
+				a_r._object = 0;
+				_object->AddRef();
+			}
+		}
+
+
+		void reset() noexcept
 		{
 			if (_object) {
 				_object->Release();
+				_object = 0;
 			}
-			_object = &a_src;
-			return *this;
 		}
 
 
-		template<class R>
-		GPtr<C>& SetPtr(const GPtr<R>& a_src)
+		template<class Y, typename std::enable_if_t<std::is_convertible<Y, T>::value, int> = 0>
+		void reset(Y* a_ptr)
 		{
-			if (a_src) {
-				a_src->AddRef();
-			}
-			if (_object) {
-				_object->Release();
-			}
-			_object = a_src;
-			return *this;
+			reset();
+			_object = a_ptr;
+			AddRef();
 		}
 
 
-		GPtr<C>& SetPtr(const GPtr<C>& a_src)
+		void swap(GPtr& a_r) noexcept
 		{
-			if (a_src) {
-				a_src->AddRef();
-			}
-			if (_object) {
-				_object->Release();
-			}
-			_object = a_src;
-			return *this;
+			std::swap(_object, a_r._object);
 		}
 
 
-		GPtr<C>& SetPtr(C* a_src)
-		{
-			if (a_src) {
-				a_src->AddRef();
-			}
-			if (_object) {
-				_object->Release();
-			}
-			_object = a_src;
-			return *this;
-		}
-
-
-		GPtr<C>& SetPtr(C& a_src)
-		{
-			if (_object) {
-				_object->Release();
-			}
-			_object = &a_src;
-			return *this;
-		}
-
-
-		void NullWithoutRelease()
-		{
-			_object = 0;
-		}
-
-
-		void Clear()
-		{
-			if (_object) {
-				_object->Release();
-			}
-			_object = 0;
-		}
-
-
-		C*& GetRawRef()
+		element_type* get() const noexcept
 		{
 			return _object;
 		}
 
 
-		C* GetPtr() const
+		T& operator*() const noexcept
 		{
-			return _object;
+			return *get();
 		}
 
 
-		C& operator*() const
+		T* operator->() const noexcept
 		{
-			return *_object;
+			return get();
 		}
 
 
-		C* operator->()  const
+		explicit operator bool() const noexcept
 		{
-			return _object;
-		}
-
-
-		operator C*() const
-		{
-			return _object;
+			return get() != 0;
 		}
 
 	protected:
+		void AddRef()
+		{
+			if (_object) {
+				_object->AddRef();
+			}
+		}
+
+
+		void Release()
+		{
+			if (_object) {
+				_object->Release();
+			}
+		}
+
+
 		// members
-		C* _object;	// 0
+		T* _object;	// 0
 	};
 	STATIC_ASSERT(sizeof(GPtr<void*>) == 0x8);
 }

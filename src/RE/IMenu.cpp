@@ -19,7 +19,7 @@ namespace RE
 
 	IMenu::~IMenu()
 	{
-		dtor_internal();
+		dtor_Internal();
 	}
 
 
@@ -65,7 +65,7 @@ namespace RE
 
 	void IMenu::InitMovie()
 	{
-		InitMovie_internal(view);
+		InitMovie_Internal(view);
 	}
 
 
@@ -171,17 +171,17 @@ namespace RE
 	}
 
 
-	void IMenu::InitMovie_internal(GFxMovieView* a_view)
+	void IMenu::InitMovie_Internal(GFxMovieView* a_view)
 	{
-		using func_t = function_type_t<decltype(&IMenu::InitMovie_internal)>;
+		using func_t = function_type_t<decltype(&IMenu::InitMovie_Internal)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::IMenu, InitMovie_internal, func_t*);
 		return func(this, view);
 	}
 
 
-	void IMenu::dtor_internal()
+	void IMenu::dtor_Internal()
 	{
-		using func_t = function_type_t<decltype(&IMenu::dtor_internal)>;
+		using func_t = function_type_t<decltype(&IMenu::dtor_Internal)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::IMenu, dtor, func_t*);
 		return func(this);
 	}

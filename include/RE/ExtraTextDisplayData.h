@@ -2,7 +2,7 @@
 
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/FormTypes.h"
+#include "RE/FormTypes.h"  // BGSMessage, TESQuest
 
 
 namespace RE

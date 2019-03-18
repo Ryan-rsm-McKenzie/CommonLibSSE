@@ -1,11 +1,54 @@
 #pragma once
 
+#include <cstring>  // strlen
+
+#include "RE/FxDelegateHandler.h"  // FxDelegateHandler
 #include "RE/GFxExternalInterface.h"  // GFxExternalInterface
+#include "RE/GPtr.h"  // GPtr
 
 
 namespace RE
 {
 	class GFxMovieView;
+
+
+#if 0
+	class FxDelegate : public GFxExternalInterface
+	{
+	public:
+		struct CallbackDefn
+		{
+			GPtr<FxDelegateHandler>			thisPtr;	// 00
+			FxDelegateHandler::CallbackFn*	callback;	// 08
+		};
+		STATIC_ASSERT(sizeof(CallbackDefn) == 0x10);
+
+
+		struct CallbackHashFunctor
+		{
+			UPInt  operator()(const char* a_data) const
+			{
+				UPInt size = std::strlen(a_data);
+				return GString::BernsteinHashFunction(a_data, size);
+			}
+		};
+		using CallbackHash = GHash<GString, CallbackDefn, CallbackHashFunctor>;
+
+
+		FxDelegate();
+
+		static void	Invoke(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args);
+		static void	Invoke2(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args);
+
+		void		RegisterHandler(FxDelegateHandler* a_callback);
+		void		UnregisterHandler(FxDelegateHandler* a_callback);
+		void		Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, UInt32 a_argCount);
+
+
+		// members
+		CallbackHash Callbacks;	// 00
+	};
+#endif
 
 
 	class FxDelegate : public GFxExternalInterface
@@ -20,7 +63,7 @@ namespace RE
 					UInt32	fnNameLength;	// 00
 					UInt32	unk04;			// 04
 					UInt32	unk08;			// 08
-					char	fnName;			// 0C - null terminated char array
+					char	fnName[1];		// 0C - null terminated char array
 				};
 
 
@@ -43,6 +86,7 @@ namespace RE
 
 		virtual ~FxDelegate();																											// 00
 
+		// override (GFxExternalInterface)
 		virtual void Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, UInt32 a_numArgs) override;	// 01
 
 

@@ -16,7 +16,6 @@ namespace RE
 
 		void					IncRefCount();
 		void					DecRefCount();
-		bool					Release();
 		UInt32					GetRefCount() const;
 
 		static volatile UInt32&	GetTotalObjectCount();

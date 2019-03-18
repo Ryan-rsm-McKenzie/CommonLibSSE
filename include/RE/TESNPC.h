@@ -17,8 +17,8 @@ namespace RE
 {
 	class BSFaceGenNiNode;
 	class MenuOpenCloseEvent;
+	class NiColorA;
 	class TintMask;
-	struct NiColorA;
 
 
 	class TESNPC :

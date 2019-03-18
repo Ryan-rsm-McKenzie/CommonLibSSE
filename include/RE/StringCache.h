@@ -31,8 +31,7 @@ namespace RE
 			void*	next;		// 00
 			State	state;		// 08
 			UInt32	unk0C;		// 0C
-			UInt32	length;		// 10
-			UInt32	unk14;		// 14
+			UInt64	length;		// 10
 			char	data[1];	// 18
 		};
 		STATIC_ASSERT(sizeof(Entry) == 0x20);

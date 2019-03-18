@@ -15,6 +15,6 @@ namespace RE
 	};
 
 
-	typedef GRect<float> GRectF;
+	using GRectF = GRect<float>;
 	STATIC_ASSERT(sizeof(GRectF) == 0x10);
 }

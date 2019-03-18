@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/NiFloatKey.h"  // NiFloatKey
 #include "RE/NiObject.h"  // NiObject
 
 
@@ -8,14 +9,10 @@ namespace RE
 	class NiFloatData : public NiObject
 	{
 	public:
-		struct FloatData
-		{
-			float	time;	// 0
-			float	value;	// 4
-		};
-		STATIC_ASSERT(sizeof(FloatData) == 0x8);
+		using KeyType = NiFloatKey::KeyType;
 
 
+		NiFloatData();
 		virtual ~NiFloatData();										// 00
 
 		// override (NiObject)
@@ -24,15 +21,19 @@ namespace RE
 		virtual void	SaveBinary(NiStream* a_stream) override;	// 1B
 		virtual bool	IsEqual(NiObject* a_object) override;		// 1C
 
-		
+
+		UInt32		GetNumKeys() const;
+		NiFloatKey*	GetAnim(UInt32& a_numKeys, KeyType& a_type, UInt8& a_size) const;
+
+
 		// members
-		UInt32		count;		// 10
-		UInt32		unk14;		// 14
-		FloatData*	arr;		// 18
-		UInt32		content;	// 20
-		UInt8		stride;		// 24
-		UInt8		unk25;		// 25
-		UInt16		unk26;		// 26
+		UInt32		numKeys;	// 10
+		UInt32		pad14;		// 14
+		NiFloatKey*	keys;		// 18
+		KeyType		type;		// 20
+		UInt8		keySize;	// 24
+		UInt8		pad25;		// 25
+		UInt16		pad26;		// 26
 	};
 	STATIC_ASSERT(sizeof(NiFloatData) == 0x28);
 }

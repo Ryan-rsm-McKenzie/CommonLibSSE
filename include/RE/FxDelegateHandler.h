@@ -22,7 +22,7 @@ namespace RE
 			virtual ~CallbackProcessor();
 
 			// add
-			virtual void Process(const GString& a_methodName, CallbackFn a_method) = 0;	// 01
+			virtual void Process(const GString& a_methodName, CallbackFn* a_method) = 0;	// 01
 		};
 		STATIC_ASSERT(sizeof(CallbackProcessor) == 0x8);
 

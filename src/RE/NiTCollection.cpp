@@ -1,4 +1,4 @@
-#include "RE/NiMemory.h"
+#include "RE/NiTCollection.h"
 
 #include "skse64/GameAPI.h"  // Heap
 

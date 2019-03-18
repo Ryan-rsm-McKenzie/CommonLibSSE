@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/GFxPlayerStats.h"  // GFxStatMovieViews
-#include "RE/GMatrix.h"  // GMatrix3D
+#include "RE/GMatrix2D.h"  // GMatrix3D
 #include "RE/GMemory.h"  // GFC_MEMORY_REDEFINE_NEW
 #include "RE/GNewOverrideBase.h"  // GNewOverrideBase
 #include "RE/GStats.h"  // GStatGroups
@@ -192,8 +192,8 @@ namespace RE
 		STATIC_ASSERT(sizeof(ObjectInterface) == 0x8);
 
 
-		typedef	ObjectInterface::ObjVisitor	ObjectVisitor;
-		typedef	ObjectInterface::ArrVisitor	ArrayVisitor;
+		using ObjectVisitor = ObjectInterface::ObjVisitor;
+		using ArrayVisitor = ObjectInterface::ArrVisitor;
 
 
 		GFxValue();
@@ -237,7 +237,7 @@ namespace RE
 		void			SetConvertString();
 		void			SetConvertStringW();
 
-		// AS Object support. Valid for Array and DisplayObject types
+		// AS Object support. Valid for Object, Array and DisplayObject types
 		bool			HasMember(const char* a_name) const;
 		bool			GetMember(const char* a_name, GFxValue* a_val) const;
 		bool			SetMember(const char* a_name, const GFxValue& a_val);
@@ -284,6 +284,7 @@ namespace RE
 			const wchar_t**	managedWideString;
 			void*			obj;
 		};
+		STATIC_ASSERT(sizeof(ValueUnion) == 0x8);
 
 
 		// members

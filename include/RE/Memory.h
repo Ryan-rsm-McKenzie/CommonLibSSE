@@ -27,18 +27,15 @@ namespace RE
 	{
 		return reinterpret_cast<T*>(Heap_Allocate(sizeof(T)));
 	}
-
-
-#define TES_HEAP_REDEFINE_NEW()																				\
-__pragma(warning(push))																						\
-__pragma(warning(disable : 4100))																			\
-	void*	operator new(std::size_t a_count)						{ return RE::Heap_Allocate(a_count); }	\
-	void*	operator new[](std::size_t a_count)						{ return RE::Heap_Allocate(a_count); }	\
-	void*	operator new(std::size_t a_count, void* a_plcmnt)		{ return a_plcmnt; }					\
-	void*	operator new[](std::size_t a_count, void* a_plcmnt)		{ return a_plcmnt; }					\
-	void	operator delete(void* a_ptr)							{ RE::Heap_Free(a_ptr); }				\
-	void	operator delete[](void* a_ptr)							{ RE::Heap_Free(a_ptr); }				\
-	void	operator delete(void* a_ptr, void* a_plcmnt)			{ }										\
-	void	operator delete[](void* a_ptr, void* a_plcmnt)			{ }										\
-__pragma(warning(pop))
 }
+
+
+#define TES_HEAP_REDEFINE_NEW()																											\
+	void*	operator new(std::size_t a_count)													{ return RE::Heap_Allocate(a_count); }	\
+	void*	operator new[](std::size_t a_count)													{ return RE::Heap_Allocate(a_count); }	\
+	void*	operator new([[maybe_unused]] std::size_t a_count, void* a_plcmnt)					{ return a_plcmnt; }					\
+	void*	operator new[]([[maybe_unused]] std::size_t a_count, void* a_plcmnt)				{ return a_plcmnt; }					\
+	void	operator delete(void* a_ptr)														{ RE::Heap_Free(a_ptr); }				\
+	void	operator delete[](void* a_ptr)														{ RE::Heap_Free(a_ptr); }				\
+	void	operator delete([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt)		{ }										\
+	void	operator delete[]([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt)	{ }

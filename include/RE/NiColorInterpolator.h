@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NiColors.h"  // NiColorA
+#include "RE/NiColor.h"  // NiColorA
 #include "RE/NiKeyBasedInterpolator.h"  // NiKeyBasedInterpolator
 #include "RE/NiSmartPointer.h"  // NiPointer
 
@@ -28,19 +28,19 @@ namespace RE
 		virtual void			GuaranteeTimeRange(float a_start, float a_end) override;					// 33
 		virtual NiInterpolator*	GetSequenceInterpolator(float a_start, float a_end) override;				// 34
 		virtual UInt16			GetKeyChannelCount() const override;										// 39 - { return 1; }
-		virtual UInt32			GetKeyCount(UInt16 a_channel) const override;								// 3A - { return data ? data->count : 0; }
-		virtual UInt32			GetKeyContent(UInt16 a_channel) const override;								// 3B - { return data ? data->content : 0; }
-		virtual KeyType			GetKeyType(UInt16 a_channel) const override;								// 3C - { return 3; }
-		virtual void*			GetKeyArray(UInt16 a_channel) const override;								// 3D - { return data ? data->arr : 0; }
-		virtual UInt8			GetKeyStride(UInt16 a_channel) const override;								// 3E - { return data ? data->stride : 0; }
+		virtual UInt32			GetKeyCount(UInt16 a_channel) const override;								// 3A - { return colorData ? colorData->numKeys : 0; }
+		virtual KeyContent		GetKeyContent(UInt16 a_channel) const override;								// 3B - { KeyContent::kColor; }
+		virtual KeyType			GetKeyType(UInt16 a_channel) const override;								// 3C - { return colorData ? colorData->type : 0; }
+		virtual void*			GetKeyArray(UInt16 a_channel) const override;								// 3D - { return colorData ? colorData->keys : 0; }
+		virtual UInt8			GetKeyStride(UInt16 a_channel) const override;								// 3E - { return colorData ? colorData->keySize : 0; }
 		virtual bool			GetChannelPosed(UInt16 a_channel) const override;							// 3F
 
 
 		// members
-		NiColorA				value;		// 18
-		NiPointer<NiColorData>	data;		// 28
+		NiColorA				colorValue;	// 18
+		NiPointer<NiColorData>	colorData;	// 28
 		UInt32					lastIndex;	// 30
-		UInt32					unk34;		// 34
+		UInt32					pad34;		// 34
 	};
 	STATIC_ASSERT(sizeof(NiColorInterpolator) == 0x38);
 }

@@ -19,7 +19,6 @@ namespace RE
 
 		virtual ~GFxExternalInterface();																							// 00
 
-
 		// add
 		virtual void Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, UInt32 a_numArgs) = 0;	// 01
 	};

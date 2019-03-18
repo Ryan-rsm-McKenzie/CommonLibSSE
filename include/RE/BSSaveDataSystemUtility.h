@@ -97,10 +97,10 @@ namespace RE
 		UInt32	profileHash;	// 064
 		UInt64	unk068;			// 068
 		Entry	entry;			// 070
-		UInt64	unk200;			// 208
-		UInt64	unk200;			// 210
-		UInt64	unk200;			// 218
-		UInt64	unk200;			// 220
+		UInt64	unk208;			// 208
+		UInt64	unk210;			// 210
+		UInt64	unk218;			// 218
+		UInt64	unk220;			// 220
 	};
 	STATIC_ASSERT(sizeof(BSSaveDataSystemUtility) == 0x228);
 }

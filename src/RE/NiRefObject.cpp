@@ -7,9 +7,9 @@
 
 namespace RE
 {
-	NiRefObject::NiRefObject()
+	NiRefObject::NiRefObject() :
+		_refCount(0)
 	{
-		_refCount = 0;
 		InterlockedIncrement(&_refCount);
 	}
 
@@ -34,15 +34,9 @@ namespace RE
 
 	void NiRefObject::DecRefCount()
 	{
-		if (Release()) {
+		if (InterlockedDecrement(&_refCount) == 0) {
 			DeleteThis();
 		}
-	}
-
-
-	bool NiRefObject::Release()
-	{
-		return InterlockedDecrement(&_refCount) == 0;
 	}
 
 

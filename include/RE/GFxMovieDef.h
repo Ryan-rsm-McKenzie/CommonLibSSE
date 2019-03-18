@@ -121,4 +121,5 @@ namespace RE
 
 		GFxMovieView*					CreateInstance(bool a_initFirstFrame = true, UPInt a_memoryArena = 0);
 	};
+	STATIC_ASSERT(sizeof(GFxMovieDef) == 0x20);
 }

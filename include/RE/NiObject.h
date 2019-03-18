@@ -51,10 +51,10 @@ namespace RE
 		virtual bool			RegisterStreamables(NiStream* a_stream);	// 1A
 		virtual void			SaveBinary(NiStream* a_stream);				// 1B - { return; }
 		virtual bool			IsEqual(NiObject* a_object);				// 1C
-		virtual void			ProcessClone(NiCloningProcess* a_cloner);	// 1D
-		virtual void			PostLinkObject(NiStream* a_stream);			// 1E - { return; }
+		virtual void			ProcessClone(NiCloningProcess& a_cloning);	// 1D
+		virtual void			PostLinkObject(NiStream& a_stream);			// 1E - { return; }
 		virtual bool			StreamCanSkip();							// 1F - { return 0; }
-		virtual const void*		GetStreamableRTTI() const;					// 20 - { return GetRTTI(); }
+		virtual const NiRTTI*	GetStreamableRTTI() const;					// 20 - { return GetRTTI(); }
 		virtual UInt32			GetBlockAllocationSize() const;				// 21 - { return 0; }
 		virtual NiObjectGroup*	GetGroup() const;							// 22 - { return 0; }
 		virtual void			SetGroup(NiObjectGroup* a_group);			// 23 - { return; }

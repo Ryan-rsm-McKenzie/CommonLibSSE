@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NiMemory.h"
+#include "RE/NiTCollection.h"
 
 
 namespace RE

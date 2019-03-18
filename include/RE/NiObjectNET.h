@@ -21,8 +21,8 @@ namespace RE
 		virtual bool		RegisterStreamables(NiStream* a_stream) override;	// 1A
 		virtual void		SaveBinary(NiStream* a_stream) override;			// 1B
 		virtual bool		IsEqual(NiObject* a_object) override;				// 1C
-		virtual void		ProcessClone(NiCloningProcess* a_cloner) override;	// 1D
-		virtual void		PostLinkObject(NiStream* a_stream) override;		// 1E
+		virtual void		ProcessClone(NiCloningProcess& a_cloning) override;	// 1D
+		virtual void		PostLinkObject(NiStream& a_stream) override;		// 1E
 
 		void				AddExtraData(NiExtraData* a_extraData);
 		bool				RemoveExtraData(NiExtraData* a_extraData);

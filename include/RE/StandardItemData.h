@@ -11,14 +11,14 @@ namespace RE
 	class StandardItemData
 	{
 	public:
-		virtual ~StandardItemData();
+		virtual ~StandardItemData();			// 00
 
-		virtual const char*	GetName();
-		virtual UInt32		GetCount();
-		virtual UInt32		GetEquipState();
-		virtual UInt32		GetFilterFlag();
-		virtual UInt32		GetFavorite();
-		virtual bool		GetEnabled();
+		virtual const char*	GetName();			// 01 - { return objDesc->GenerateName(); }
+		virtual UInt32		GetCount();			// 02 - { return objDesc->GetCount(); }
+		virtual UInt32		GetEquipState();	// 03
+		virtual UInt32		GetFilterFlag();	// 04
+		virtual UInt32		GetFavorite();		// 05
+		virtual bool		GetEnabled();		// 06 - { return true; }
 
 
 		// members

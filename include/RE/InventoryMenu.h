@@ -8,11 +8,15 @@
 
 namespace RE
 {
+	class GFxMovieView;
+
+
 	class InventoryMenu : public IMenu
 	{
 		// menuDepth = 0
 		// flags = kPauseGame | kPreventGameLoad | kUnk0400 | kItemMenu | kUnk8000
 	public:
+		// ItemMenu?
 		struct InventoryData
 		{
 			struct Item
@@ -30,14 +34,14 @@ namespace RE
 
 
 			// members
-			void*			unk00;				// 00
-			GFxValue		categoryListRoot;	// 08 - kDisplayObject
-			GFxValue		unk20;				// 20 - kArray
-			BSTArray<Item*>	items;				// 38
-			bool			selected;			// 50
-			UInt8			unk41;				// 51
-			UInt16			unk42;				// 52
-			UInt32			unk44;				// 54
+			GFxMovieView*	view;			// 00
+			GFxValue		itemMenuRoot;	// 08 - kDisplayObject
+			GFxValue		unk20;			// 20 - kArray
+			BSTArray<Item*>	items;			// 38
+			bool			selected;		// 50
+			UInt8			unk51;			// 51
+			UInt16			unk52;			// 52
+			UInt32			unk54;			// 54
 		};
 
 
@@ -51,7 +55,7 @@ namespace RE
 
 		// members
 		GFxValue		root;				// 30 - kDisplayObject
-		InventoryData*	inventoryData;		// 48
+		InventoryData*	inventoryData;		// 48 - doesn't own the object
 		GFxValue*		unk50;				// 50 - kObject
 		GFxValue*		unk58;				// 58 - kObject
 		BSTArray<void*>	unk60;				// 60
