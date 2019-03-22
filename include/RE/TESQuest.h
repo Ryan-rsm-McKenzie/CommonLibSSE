@@ -2,12 +2,14 @@
 
 #include "RE/BGSStoryManagerTreeForm.h"  // BGSStoryManagerTreeForm
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSReadWriteLock.h"  // BSReadWriteLock
 #include "RE/BSString.h"  // BSString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/Condition.h"  // Condition
 #include "RE/FormTypes.h"  // FormType
+#include "RE/QuestEvents.h"  // QuestEvent
 #include "RE/TESFullName.h"  // TESFullName
 
 
@@ -83,7 +85,7 @@ namespace RE
 			};
 
 
-			bool IsValid() const;	// Call this to know if the node is valid while traversing the simple list
+			bool IsValid() const;	// Call this to know if the node is valid while traversing executedStages
 
 
 			UInt16	index;	// 0
@@ -156,11 +158,11 @@ namespace RE
 		UInt32													unk050;					// 050
 		UInt32													pad054;					// 054
 		BSTArray<BGSBaseAlias*>									aliases;				// 058
-		BSTHashMap<UnkKey, UnkValue>							unk070;					// 070
-		BSTHashMap<UnkKey, UnkValue>							unk0A0;					// 0A0
-		UInt64													unk0D0;					// 0D0
+		BSTHashMap<UnkKey, UnkValue>							unk070;					// 070 - alias related
+		BSTHashMap<UnkKey, UnkValue>							unk0A0;					// 0A0 - alias related
+		BSReadWriteLock											unk0D0;					// 0D0
 		General													general;				// 0D8 - DNAM
-		UInt32													unk0E0;					// 0E0
+		QuestEvent												event;					// 0E0 - ENAM
 		UInt32													pad0E4;					// 0E4
 		BSSimpleList<Stage>*									executedStages;			// 0E8 - I think its actually templated on a pointer, and they store the stage info in the pointer itself
 		BSSimpleList<Stage*>*									waitingStages;			// 0F0
@@ -182,7 +184,7 @@ namespace RE
 		BSString												editorID;				// 230
 		UInt64													unk240;					// 240
 		UInt64													unk248;					// 248
-		BSTArray<void*>											unk250;					// 250
+		BSTArray<RefHandle>										unk250;					// 250 - dynamically assigned ref handles?
 	};
 	STATIC_ASSERT(sizeof(TESQuest) == 0x268);
 }

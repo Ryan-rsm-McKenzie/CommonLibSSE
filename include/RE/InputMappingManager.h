@@ -1,6 +1,6 @@
 #pragma once
 
-#include "skse64/GameInput.h"  // InputManager
+#include <type_traits>  // underlying_type_t
 
 #include "RE/BSTEvent.h"  // BSTEventSource
 #include "RE/BSFixedString.h"  // BSFixedString
@@ -12,6 +12,9 @@
 
 namespace RE
 {
+	class InputEvent;
+
+
 	class InputMappingManager :
 		public BSTSingletonSDM<InputMappingManager>,
 		public BSTEventSource<InputEvent*>
@@ -47,13 +50,13 @@ namespace RE
 
 		enum class ControlState : UInt32
 		{
-			kInvalid = 0xFFFFFFFF,
-			kNone = 0x0,
-			kLooking = 0x002,
-			kFlying = 0x040,
-			kSneaking = 0x080,
-			kMenu = 0x100,
-			kMovement = 0x401
+			kInvalid = static_cast<std::underlying_type_t<ControlState>>(-1),
+			kNone = 0,
+			kLooking = 1 << 1,
+			kFlying = 1 << 6,
+			kSneaking = 1 << 7,
+			kMenu = 1 << 8,
+			kMovement = 1 << 10 | 1 << 0
 		};
 
 
@@ -68,17 +71,19 @@ namespace RE
 				UInt32			flags;		// 10 - User Event Binary Flag
 				UInt32			pad14;		// 14
 			};
+			STATIC_ASSERT(sizeof(Mapping) == 0x18);
 
 
-			BSTArray<Mapping>	keyboardMap;
-			BSTArray<Mapping>	mouseMap;
-			BSTArray<Mapping>	gamepadMap;
+			BSTArray<Mapping>	keyboardMap;	// 00
+			BSTArray<Mapping>	mouseMap;		// 18
+			BSTArray<Mapping>	gamepadMap;		// 30
 		};
+		STATIC_ASSERT(sizeof(InputContext) == 0x48);
 
 
 		static InputMappingManager*	GetSingleton();
-		UInt8						AllowTextInput(bool a_allow);
 
+		UInt8						AllowTextInput(bool a_allow);
 		UInt32						GetMappedKey(const BSFixedString& a_name, DeviceType a_deviceType, Contexts::Context a_contextIdx = Contexts::kGameplay) const;
 		const BSFixedString&		GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Contexts::Context a_contextIdx = Contexts::kGameplay) const;
 		bool						IsLookingControlsEnabled() const;

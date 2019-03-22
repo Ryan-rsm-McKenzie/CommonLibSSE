@@ -185,6 +185,7 @@
     <ClCompile Include="src\RE\BGSPerkEntry.cpp" />
     <ClCompile Include="src\RE\BSAudioManager.cpp" />
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
+    <ClCompile Include="src\RE\BSReadWriteLock.cpp" />
     <ClCompile Include="src\RE\BSSpinLock.cpp" />
     <ClCompile Include="src\RE\BSString.cpp" />
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp" />
@@ -432,6 +433,7 @@
     <ClInclude Include="include\RE\BSNavmesh.h" />
     <ClInclude Include="include\RE\BSNavmeshInfoMap.h" />
     <ClInclude Include="include\RE\BSPrecomputedNavmeshInfoPathMap.h" />
+    <ClInclude Include="include\RE\BSReadWriteLock.h" />
     <ClInclude Include="include\RE\BSReloadShaderI.h" />
     <ClInclude Include="include\RE\BSSaveDataSystemUtility.h" />
     <ClInclude Include="include\RE\BSScaleformTranslator.h" />
@@ -703,6 +705,7 @@
     <ClInclude Include="include\RE\Precipitation.h" />
     <ClInclude Include="include\RE\PrecomputedNavmeshInfoPathMap.h" />
     <ClInclude Include="include\RE\Projectile.h" />
+    <ClInclude Include="include\RE\QuestEvents.h" />
     <ClInclude Include="include\RE\ReferenceEffectController.h" />
     <ClInclude Include="include\RE\GMatrix2D.h" />
     <ClInclude Include="include\RE\SavePatcher.h" />

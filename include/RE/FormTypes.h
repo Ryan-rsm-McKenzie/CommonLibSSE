@@ -274,12 +274,7 @@ namespace RE
 		LensFlare,					//	87 LENS
 		Unk88,						//	88 LSPR
 		VolumetricLighting,			//	89 VOLI
-		Unk8A,						//	8A
-		Alias,						//	8B     	BGSBaseAlias
-		ReferenceAlias,				//	8C     	BGSRefAlias
-		LocationAlias,				//	8D     	BGSLocAlias
-		ActiveMagicEffect,			//	8E      ActiveMagicEffect
 
-		Max = Unk8A					//	8A
+		Max							//	8A
 	};
 }

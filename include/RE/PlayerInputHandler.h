@@ -2,13 +2,12 @@
 
 #include "RE/PlayerControls.h"  // PlayerControls::Data024
 
-class MouseMoveEvent;
-
 
 namespace RE
 {
 	class ButtonEvent;
 	class InputEvent;
+	class MouseMoveEvent;
 	class ThumbstickEvent;
 
 

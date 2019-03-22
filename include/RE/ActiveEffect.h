@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/ActiveEffectReferenceEffectController.h"  // ActiveEffectReferenceEffectController
-#include "RE/FormTypes.h"  // FormType
+#include "RE/FormTypes.h"  // MagicItem, TESObjectREFR
 
 
 namespace RE
@@ -13,9 +13,6 @@ namespace RE
 	class ActiveEffect
 	{
 	public:
-		enum { kTypeID = FormType::ActiveMagicEffect };
-
-
 		enum class Flag : UInt32
 		{
 			kInactive = 1 << 15,

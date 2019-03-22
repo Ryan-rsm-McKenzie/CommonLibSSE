@@ -16,7 +16,7 @@ namespace RE
 	class BSTArrayBase
 	{
 	public:
-		typedef std::uint32_t size_type;
+		using size_type = std::uint32_t;
 
 
 		BSTArrayBase() :
@@ -110,8 +110,8 @@ namespace RE
 	{
 		friend class BSTArrayAllocatorFunctor<BSTArrayHeapAllocator>;
 	public:
-		typedef BSTArrayBase::size_type size_type;
-		typedef BSTArrayAllocatorFunctor<BSTArrayHeapAllocator> functor_type;
+		using size_type = typename BSTArrayBase::size_type;
+		using functor_type = BSTArrayAllocatorFunctor<BSTArrayHeapAllocator>;
 
 
 		BSTArrayHeapAllocator() :
@@ -184,8 +184,8 @@ namespace RE
 	class BSTSmallArrayHeapAllocator
 	{
 	public:
-		typedef BSTArrayBase::size_type size_type;
-		typedef BSTArrayAllocatorFunctor<BSTSmallArrayHeapAllocator> functor_type;
+		using size_type = typename BSTArrayBase::size_type;
+		using functor_type = BSTArrayAllocatorFunctor<BSTSmallArrayHeapAllocator>;
 
 
 		enum { kLocalAlloc = 0x80000000 };
@@ -244,48 +244,34 @@ namespace RE
 		friend class BSTArrayAllocatorFunctor<BSTSmallArrayHeapAllocator>;
 
 
-		inline bool _Allocate(size_type a_num, size_type a_value_size, size_type a_local_size = LOCAL_SIZE)
+		inline bool _Allocate(size_type a_num, size_type a_valueSize, size_type a_localSize = LOCAL_SIZE)
 		{
-			return _Allocate_Impl(this, a_num, a_value_size, a_local_size);
+			using func_t = function_type_t<decltype(&_Allocate)>;
+			static RelocUnrestricted<func_t*> func(Offset::BSTSmallArrayHeapAllocator::Allocate);
+			return func(this, a_num, a_valueSize, a_localSize);
 		}
 
-
-		inline bool _Resize(size_type a_needNum, size_type a_copyFrontNum, size_type a_copySkipNum, size_type a_copyTailNum, size_type a_value_size, size_type a_local_size = LOCAL_SIZE)
+		inline bool _Resize(size_type a_needNum, size_type a_copyFrontNum, size_type a_copySkipNum, size_type a_copyTailNum, size_type a_valueSize, size_type a_localSize = LOCAL_SIZE)
 		{
-			return _Resize_Impl(this, a_needNum, a_copyFrontNum, a_copySkipNum, a_copyTailNum, a_value_size, a_local_size);
+			using func_t = function_type_t<decltype(&_Resize)>;
+			RelocUnrestricted<func_t*> func(Offset::BSTSmallArrayHeapAllocator::Resize);
+			return func(this, a_needNum, a_copyFrontNum, a_copySkipNum, a_copyTailNum, a_valueSize, a_localSize);
 		}
-
 
 		inline void _Free()
 		{
-			_Free_Impl(this);
+			using func_t = function_type_t<decltype(&_Free)>;
+			RelocUnrestricted<func_t*> func(Offset::BSTSmallArrayHeapAllocator::Free);
+			return func(this);
 		}
-
-	private:
-		typedef bool _Allocate_Impl_t(BSTSmallArrayHeapAllocator* a_this, size_type a_num, size_type a_value_size, size_type a_local_size);
-		static RelocAddr<_Allocate_Impl_t*> _Allocate_Impl;
-
-		typedef bool _Resize_Impl_t(BSTSmallArrayHeapAllocator* a_this, size_type a_needNum, size_type a_copyFrontNum, size_type a_copySkipNum, size_type a_copyTailNum, size_type a_value_size, size_type a_local_size);
-		static RelocAddr<_Resize_Impl_t*> _Resize_Impl;
-
-		typedef void _Free_Impl_t(BSTSmallArrayHeapAllocator* a_this);
-		static RelocAddr<_Free_Impl_t*> _Free_Impl;
 	};
-
-
-	template <std::uint32_t LOCAL_SIZE>
-	RelocAddr<typename BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Allocate_Impl_t*> BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Allocate_Impl(Offset::BSTSmallArrayHeapAllocator::Allocate);
-	template <std::uint32_t LOCAL_SIZE>
-	RelocAddr<typename BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Resize_Impl_t*> BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Resize_Impl(Offset::BSTSmallArrayHeapAllocator::Resize);
-	template <std::uint32_t LOCAL_SIZE>
-	RelocAddr<typename BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Free_Impl_t*> BSTSmallArrayHeapAllocator<LOCAL_SIZE>::_Free_Impl(Offset::BSTSmallArrayHeapAllocator::Free);
 
 
 	class BSScrapArrayAllocator
 	{
 	public:
-		typedef BSTArrayBase::size_type size_type;
-		typedef BSTArrayAllocatorFunctor<BSScrapArrayAllocator> functor_type;
+		using size_type = typename BSTArrayBase::size_type;
+		using functor_type = BSTArrayAllocatorFunctor<BSScrapArrayAllocator>;
 
 
 		BSScrapArrayAllocator() :
@@ -366,8 +352,8 @@ namespace RE
 	class BSTArrayAllocatorFunctor : public BSTArrayBase::IAllocatorFunctor
 	{
 	public:
-		typedef BSTArrayBase::size_type size_type;
-		typedef _TAlloc allocator_type;
+		using size_type = typename BSTArrayBase::size_type;
+		using allocator_type = _TAlloc;
 
 
 		explicit BSTArrayAllocatorFunctor(allocator_type * a_allocator) :
@@ -406,27 +392,23 @@ namespace RE
 	class BSTArray : public _TAlloc, public BSTArrayBase
 	{
 	public:
-		typedef _TAlloc allocator_type;
-		typedef BSTArrayAllocatorFunctor<allocator_type> functor_type;
-		typedef _Ty value_type;
-		typedef _Ty* pointer;
-		typedef const _Ty* const_pointer;
-		typedef _Ty& reference;
-		typedef const _Ty& const_reference;
-		typedef BSTArrayBase::size_type size_type;
-		typedef std::ptrdiff_t difference_type;
+		using allocator_type = _TAlloc;
+		using functor_type = BSTArrayAllocatorFunctor<allocator_type>;
+		using value_type = _Ty;
+		using pointer = _Ty * ;
+		using const_pointer = const _Ty*;
+		using reference = _Ty & ;
+		using const_reference = const _Ty&;
+		using size_type = BSTArrayBase::size_type;
+		using difference_type = std::ptrdiff_t;
+		using iterator = pointer;
+		using const_iterator = const_pointer;
 
-
-		// compiler hints for GCC
 		using _TAlloc::_GetEntries;
 		using _TAlloc::capacity;
 
 
 		TES_HEAP_REDEFINE_NEW();
-
-
-		typedef pointer			iterator;
-		typedef const_pointer	const_iterator;
 
 	protected:
 		pointer _head() const
@@ -847,7 +829,7 @@ namespace RE
 		//size_type _M_count;		// 10
 		//size_type pad14;			// 14
 	};
-	using TestBSTArray = BSTArray<uint32_t>;
+	namespace { using TestBSTArray = BSTArray<uint32_t>; }
 	STATIC_ASSERT(offsetof(TestBSTArray, _M_entries) == 0x00);
 	STATIC_ASSERT(offsetof(TestBSTArray, _M_capacity) == 0x08);
 	STATIC_ASSERT(offsetof(TestBSTArray, _M_count) == 0x10);
@@ -862,7 +844,7 @@ namespace RE
 	//Entry		_M_entries;		// 08
 	//size_type _M_count;		// 10
 	//size_type pad14;			// 14
-	using TestBSTSmallArray = BSTSmallArray<std::uint32_t>;
+	namespace { using TestBSTSmallArray = BSTSmallArray<std::uint32_t>; }
 	STATIC_ASSERT(offsetof(TestBSTSmallArray, _M_capacity) == 0x00);
 	STATIC_ASSERT(offsetof(TestBSTSmallArray, _M_entries) == 0x08);
 	STATIC_ASSERT(offsetof(TestBSTSmallArray, _M_count) == 0x10);
@@ -885,7 +867,7 @@ namespace RE
 		//size_type _M_count;		// 18
 		//size_type pad14;			// 1C
 	};
-	using TestBSScrapArray = BSScrapArray<std::uint32_t>;
+	namespace { using TestBSScrapArray = BSScrapArray<std::uint32_t>; }
 #if 0
 	STATIC_ASSERT(offsetof(TestBSScrapArray, _M_allocator) == 0x00);
 	STATIC_ASSERT(offsetof(TestBSScrapArray, _M_entries) == 0x08);

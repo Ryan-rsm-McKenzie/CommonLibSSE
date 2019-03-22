@@ -3,12 +3,11 @@
 #include "RE/HeldStateHandler.h"  // HeldStateHandler
 #include "RE/PlayerControls.h"  // PlayerControls::Data024
 
-class InputEvent;
-
 
 namespace RE
 {
 	class ButtonEvent;
+	class InputEvent;
 
 
 	struct ActivateHandler : public HeldStateHandler

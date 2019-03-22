@@ -2,14 +2,13 @@
 
 #include "skse64/GameTypes.h"  // BSIntrusiveRefCounted
 
-class KinectEvent;
-class MouseMoveEvent;
-
 
 namespace RE
 {
 	class ButtonEvent;
 	class InputEvent;
+	class KinectEvent;
+	class MouseMoveEvent;
 	class ThumbstickEvent;
 
 

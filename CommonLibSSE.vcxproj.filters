@@ -807,6 +807,9 @@
     <ClCompile Include="src\RE\FxDelegateArgs.cpp">
       <Filter>src\RE\Skyrim\Scaleform\FxGameDelegate</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BSReadWriteLock.cpp">
+      <Filter>src\RE\Skyrim\BSCore</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -2518,6 +2521,12 @@
     </ClInclude>
     <ClInclude Include="include\RE\ExtraCount.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\QuestEvents.h">
+      <Filter>include\RE\Skyrim\FormComponents\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSReadWriteLock.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

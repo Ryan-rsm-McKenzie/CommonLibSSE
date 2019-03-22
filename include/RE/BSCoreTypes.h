@@ -3,6 +3,7 @@
 
 namespace RE
 {
+	using RefHandle = UInt32;
 	using VMTypeID = UInt32;
 	using VMHandle = UInt64;
 
