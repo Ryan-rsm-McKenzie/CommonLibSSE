@@ -66,7 +66,7 @@ namespace RE
 		TESObjectREFR*							magicTarget;		// 50
 		TESForm*								sourceItem;			// 58
 		void*									unk60;				// 60
-		void*									un68;				// 68
+		void*									unk68;				// 68
 		float									elapsed;			// 70
 		float									duration;			// 74
 		float									magnitude;			// 78

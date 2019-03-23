@@ -13,7 +13,7 @@ namespace RE
 
 	void BSReadWriteLock::LockForRead()
 	{
-		using func_t = function_type_t<decltype(&LockForRead)>;
+		using func_t = function_type_t<decltype(&BSReadWriteLock::LockForRead)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSReadWriteLock, LockForRead, func_t*);
 		func(this);
 	}
@@ -21,7 +21,7 @@ namespace RE
 
 	void BSReadWriteLock::UnlockRead()
 	{
-		using func_t = function_type_t<decltype(&LockForRead)>;
+		using func_t = function_type_t<decltype(&BSReadWriteLock::LockForRead)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSReadWriteLock, UnlockRead, func_t*);
 		func(this);
 	}
@@ -29,7 +29,7 @@ namespace RE
 
 	void BSReadWriteLock::LockForWrite()
 	{
-		using func_t = function_type_t<decltype(&LockForRead)>;
+		using func_t = function_type_t<decltype(&BSReadWriteLock::LockForRead)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSReadWriteLock, LockForWrite, func_t*);
 		func(this);
 	}
@@ -37,7 +37,7 @@ namespace RE
 
 	void BSReadWriteLock::UnlockWrite()
 	{
-		using func_t = function_type_t<decltype(&LockForRead)>;
+		using func_t = function_type_t<decltype(&BSReadWriteLock::LockForRead)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSReadWriteLock, UnlockWrite, func_t*);
 		func(this);
 	}
@@ -45,7 +45,7 @@ namespace RE
 
 	void BSReadWriteLock::LockForReadAndWrite()
 	{
-		using func_t = function_type_t<decltype(&LockForRead)>;
+		using func_t = function_type_t<decltype(&BSReadWriteLock::LockForRead)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSReadWriteLock, LockForReadAndWrite, func_t*);
 		func(this);
 	}
@@ -53,7 +53,7 @@ namespace RE
 
 	void BSReadWriteLock::TryLockForWrite()
 	{
-		using func_t = function_type_t<decltype(&LockForRead)>;
+		using func_t = function_type_t<decltype(&BSReadWriteLock::LockForRead)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSReadWriteLock, TryLockForWrite, func_t*);
 		func(this);
 	}

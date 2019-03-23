@@ -10,6 +10,13 @@ namespace RE
 	class ExtraTextDisplayData : public BSExtraData
 	{
 	public:
+		enum class Type : SInt32
+		{
+			kDefault = -1,
+			kExplicit = -2
+		};
+
+
 		virtual ~ExtraTextDisplayData();							// 00
 
 		// override (BSExtraData)
@@ -24,9 +31,9 @@ namespace RE
 		BSFixedString	name;				// 10
 		BGSMessage*		message;			// 18
 		TESQuest*		owner;				// 20
-		SInt32			unk14;				// 28 -1 default -2 explicit name?
+		Type			type;				// 28
 		float			extraHealthValue;	// 2C
-		UInt16			unk30;				// 30
+		UInt16			rawNameLen;			// 30 - length w/o temper string
 		UInt16			pad32;				// 32
 		UInt32			pad34;				// 34
 	};

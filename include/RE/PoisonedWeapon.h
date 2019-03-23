@@ -9,7 +9,7 @@ namespace RE
 		struct Event
 		{
 		public:
-			UInt32 refHandle;	// 0 - always invalid
+			UInt32 pad0;	// 0
 		};
 		STATIC_ASSERT(sizeof(Event) == 0x4);
 	};
