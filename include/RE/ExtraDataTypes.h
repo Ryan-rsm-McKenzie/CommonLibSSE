@@ -100,12 +100,12 @@ namespace RE
 		kDismemberedLimbs,			// 0x5C
 		kActorCause,				// 0x5D
 		kMultiBound,				// 0x5E
-		kMultiBoundData,			// 0x5F - kExtraMultiBoundData, removed in 1.7.7.0
+		kMultiBoundData,			// 0x5F - kMultiBoundData, removed in 1.7.7.0
 		kMultiBoundRef,				// 0x60
 		kReflectedRefs,				// 0x61
 		kReflectorRefs,				// 0x62
 		kEmittanceSource,			// 0x63
-		kRadioData,					// 0x64 - kExtraRadioData, removed in 1.7.7.0
+		kRadioData,					// 0x64 - kRadioData, removed in 1.7.7.0
 		kCombatStyle,				// 0x65
 		kUnk66,						// 0x66
 		kPrimitive,					// 0x67

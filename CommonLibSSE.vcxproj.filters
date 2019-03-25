@@ -79,9 +79,6 @@
     <Filter Include="include\RE\Skyrim\Scaleform">
       <UniqueIdentifier>{ddbc9483-11ab-4ce5-8204-11dc08f668ba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\Skyrim\Misc">
-      <UniqueIdentifier>{9c902473-086f-40d9-a348-20edac18af80}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Skyrim\Magic">
       <UniqueIdentifier>{7aeed777-d24f-49d2-9397-7684e696fd4f}</UniqueIdentifier>
     </Filter>
@@ -408,6 +405,9 @@
     </Filter>
     <Filter Include="src\RE\Skyrim\Scaleform\GString">
       <UniqueIdentifier>{5630e7c8-065d-49fc-a702-66e1197c00a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Inventory.h">
+      <UniqueIdentifier>{9c902473-086f-40d9-a348-20edac18af80}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -900,7 +900,7 @@
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\InventoryEntryData.h">
-      <Filter>include\RE\Skyrim\Misc</Filter>
+      <Filter>include\RE\Skyrim\Inventory.h</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESBoundAnimObject.h">
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
@@ -910,9 +910,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESObjectACTI.h">
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ActiveEffect.h">
-      <Filter>include\RE\Skyrim\Magic</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\EffectSetting.h">
       <Filter>include\RE\Skyrim\Magic</Filter>
@@ -954,7 +951,7 @@
       <Filter>include\RE\Skyrim\BSCore</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\InventoryChanges.h">
-      <Filter>include\RE\Skyrim\Misc</Filter>
+      <Filter>include\RE\Skyrim\Inventory.h</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSTList.h">
       <Filter>include\RE\Skyrim\BSCore</Filter>
@@ -1080,7 +1077,7 @@
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\EquipManager.h">
-      <Filter>include\RE\Skyrim\Misc</Filter>
+      <Filter>include\RE\Skyrim\Inventory.h</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESObjectARMA.h">
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
@@ -1814,9 +1811,6 @@
     <ClInclude Include="include\RE\ActorValues.h">
       <Filter>include\RE\Skyrim\FormComponents\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BaseExtraList.h">
-      <Filter>include\RE\Skyrim\FormComponents\Misc</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\Color.h">
       <Filter>include\RE\Skyrim\FormComponents\Misc</Filter>
     </ClInclude>
@@ -2527,6 +2521,27 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSReadWriteLock.h">
       <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraRaceData.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraDismemberedLimbs.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraAshPileRef.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraItemDropper.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraTerminalState.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActiveEffect.h">
+      <Filter>include\RE\Skyrim\Magic\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BaseExtraList.h">
+      <Filter>include\RE\Skyrim\Inventory.h</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

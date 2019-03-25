@@ -20,7 +20,8 @@ namespace RE
 
 		// members
 		UInt32	ownerFormID;	// 10
-		UInt32	uniqueID;		// 14
+		UInt16	uniqueID;		// 14
+		UInt16	pad16;			// 16
 	};
 	STATIC_ASSERT(sizeof(ExtraUniqueID) == 0x18);
 }

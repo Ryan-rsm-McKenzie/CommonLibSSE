@@ -97,17 +97,6 @@ namespace RE
 		STATIC_ASSERT(sizeof(HeadData) == 0x10);
 
 
-		struct RelationshipArray
-		{
-			BGSRelationship**	entries;	// 00
-			UInt32				size;		// 08
-			UInt32				unk0C;		// 0C
-			UInt32				count;		// 10
-			UInt32				unk14;		// 14
-		};
-		STATIC_ASSERT(sizeof(RelationshipArray) == 0x18);
-
-
 		struct FaceData
 		{
 			struct Morphs

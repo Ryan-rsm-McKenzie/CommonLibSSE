@@ -1,8 +1,10 @@
 #include "RE/BaseExtraList.h"
 
+#include "skse64/GameReferences.h"  // g_invalidRefHandle
 #include "skse64/GameTypes.h"  // BSReadLocker
 
 #include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/ExtraAshPileRef.h"  // ExtraAshPileRef
 #include "RE/Offsets.h"
 
 
@@ -217,24 +219,11 @@ namespace RE
 	}
 
 
-	bool BaseExtraList::Add(UInt8 type, BSExtraData* toAdd)
+	BSExtraData* BaseExtraList::Add(BSExtraData* a_toAdd)
 	{
-		if (!toAdd || HasType(type)) {
-			return false;
-		}
-
-		BSWriteLocker locker(&_lock);
-		BSExtraData* next = _data;
-		_data = toAdd;
-		toAdd->next = next;
-		MarkType(type, false);
-		return true;
-	}
-
-
-	bool BaseExtraList::Add(ExtraDataType a_type, BSExtraData* a_toAdd)
-	{
-		return Add((UInt8)a_type, a_toAdd);
+		using func_t = function_type_t<decltype(&BaseExtraList::Add)>;
+		RelocUnrestricted<func_t*> func(Offset::BaseExtraList::Add);
+		return func(this, a_toAdd);
 	}
 
 
@@ -276,9 +265,13 @@ namespace RE
 
 	UInt32 BaseExtraList::GetAshPileRefHandle(UInt32& a_refHandle)
 	{
-		using func_t = function_type_t<decltype(&BaseExtraList::GetAshPileRefHandle)>;
-		RelocUnrestricted<func_t*> func(Offset::BaseExtraList::GetAshPileRefHandle);
-		return func(this, a_refHandle);
+		ExtraAshPileRef* xAshRef = GetByType<ExtraAshPileRef>();
+		if (xAshRef) {
+			a_refHandle = xAshRef->refHandle;
+		} else {
+			a_refHandle = *g_invalidRefHandle;
+		}
+		return a_refHandle;
 	}
 
 

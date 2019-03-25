@@ -221,7 +221,7 @@ namespace RE
 
 		struct Data050
 		{
-			enum class Flag : UInt32
+			enum class Flag2 : UInt32
 			{
 				kNone = 0,
 				kGhost = 1 << 20
@@ -233,8 +233,8 @@ namespace RE
 			UInt64			unk10;	// 10
 			UInt64			unk18;	// 18
 			UInt64			unk20;	// 20
-			UInt32			unk28;	// 28
-			Flag			flags;	// 2C
+			UInt32			flags1;	// 28
+			Flag2			flags2;	// 2C
 			BSTArray<void*>	unk30;	// 30
 			BSTArray<void*>	unk48;	// 48
 		};

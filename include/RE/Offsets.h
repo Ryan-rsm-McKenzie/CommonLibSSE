@@ -70,8 +70,8 @@ namespace RE
 
 		namespace BaseExtraList
 		{
-			// E8 ? ? ? ? 33 FF 48 89 7C 24 30
-			constexpr std::uintptr_t GetAshPileRefHandle = 0x00116F80;	// 1_5_73
+			// E8 ? ? ? ? 4C 8D 75 10
+			constexpr std::uintptr_t Add = 0x00131990;					// 1_5_73
 			// E8 ? ? ? ? F7 43 28 FF 03 00 00 75 0C
 			constexpr std::uintptr_t SetExtraFlags = 0x00125D80;		// 1_5_73
 			// E8 ? ? ? ? 90 41 89 1E 48 8B C7 48 8B 5C 24 60 48 8B 6C 24 68 48 83 C4 30 41 5E

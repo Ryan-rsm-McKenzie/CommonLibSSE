@@ -55,16 +55,6 @@ namespace RE
 		};
 
 
-		enum class TESFormFlag : UInt32
-		{
-			kMarkedForDeletion = 1 << 5,
-			kDisabled = 1 << 11,
-			kHarvested = 1 << 13,
-			kIgnoreFriendlyHits = 1 << 20,
-			kDestroyed = 1 << 23
-		};
-
-
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32
@@ -160,11 +150,11 @@ namespace RE
 		virtual void					Unk_53(void);																																												// 53
 		virtual void					Unk_54(void);																																												// 54
 		virtual void					Unk_55(void);																																												// 55
-		virtual UInt32&					RemoveItem(UInt32& a_droppedItemHandle, TESForm* a_item, UInt32 a_count, RemoveType a_mode, BaseExtraList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0);	// 56
-		virtual bool					EquipItem(TESForm* a_akItem, UInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5);																									// 57
+		virtual RefHandle&				RemoveItem(RefHandle& a_dropHandle, TESForm* a_item, SInt32 a_count, RemoveType a_mode, BaseExtraList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0);		// 56
+		virtual bool					EquipItem(TESForm* a_akItem, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5);																									// 57
 		virtual void					Unk_58(void);																																												// 58
 		virtual void					Unk_59(void);																																												// 59
-		virtual void					AddItem(TESForm* a_item, BaseExtraList* a_extraList, UInt32 a_count, TESObjectREFR* a_fromRefr);																							// 5A
+		virtual void					AddItem(TESForm* a_item, BaseExtraList* a_extraList, SInt32 a_count, TESObjectREFR* a_fromRefr);																							// 5A
 		virtual void					GetMarkerPosition(NiPoint3* a_pos);																																							// 5B
 		virtual MagicCaster*			GetMagicCaster(UInt32 a_slot) const;																																						// 5C
 		virtual MagicTarget*			GetMagicTarget() const;																																										// 5D

@@ -82,7 +82,7 @@ namespace RE
 		template<typename T>
 		inline T*			GetByType() const
 		{
-			return (T*)GetByType(T::kExtraTypeID);
+			return static_cast<T*>(GetByType(T::kExtraTypeID));
 		}
 		bool				Remove(UInt8 a_type, BSExtraData* a_toRemove);
 		bool				Remove(ExtraDataType a_type, BSExtraData* a_toRemove);
@@ -91,13 +91,7 @@ namespace RE
 		{
 			return Remove(T::kExtraTypeID, a_toRemove);
 		}
-		bool				Add(UInt8 a_type, BSExtraData* a_toAdd);
-		bool				Add(ExtraDataType a_type, BSExtraData* a_toAdd);
-		template<typename T>
-		inline bool			Add(T* a_toAdd)
-		{
-			return Add(T::kExtraTypeID, a_toAdd);
-		}
+		BSExtraData*		Add(BSExtraData* a_toAdd);
 		const char*			GetDisplayName(TESForm* a_type);
 		UInt32				GetAshPileRefHandle(UInt32& a_refHandle);
 		void				SetInventoryChanges(InventoryChanges* a_changes);

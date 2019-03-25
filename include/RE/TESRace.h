@@ -237,6 +237,7 @@ namespace RE
 				kBrows,
 				kEyes,
 				kLips,
+
 				kNumVariants
 			};
 

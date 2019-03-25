@@ -314,7 +314,7 @@ namespace RE
 		virtual void							SetLastRiddenHorseHandle(UInt32 a_horseRefHandle);																																					// 113
 		virtual UInt32							GetLastRiddenHorseHandle(UInt32& a_outHandle);																																						// 114
 		virtual void							Unk_115(void);																																														// 115
-		virtual void							Unk_116(void);																																														// 116
+		virtual bool							IsNPCType();																																														// 116 - used for soulgems
 		virtual void							Unk_117(void);																																														// 117
 		virtual void							Unk_118(void);																																														// 118
 		virtual void							Unk_119(void);																																														// 119

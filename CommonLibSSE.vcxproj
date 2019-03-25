@@ -473,8 +473,10 @@
     <ClInclude Include="include\RE\EquipManager.h" />
     <ClInclude Include="include\RE\ErrorLogger.h" />
     <ClInclude Include="include\RE\ExtraAliasInstanceArray.h" />
+    <ClInclude Include="include\RE\ExtraAshPileRef.h" />
     <ClInclude Include="include\RE\ExtraCount.h" />
     <ClInclude Include="include\RE\ExtraDataTypes.h" />
+    <ClInclude Include="include\RE\ExtraDismemberedLimbs.h" />
     <ClInclude Include="include\RE\ExtraDroppedItemList.h" />
     <ClInclude Include="include\RE\ExtraEnchantment.h" />
     <ClInclude Include="include\RE\ExtraEncounterZone.h" />
@@ -484,6 +486,7 @@
     <ClInclude Include="include\RE\ExtraGhost.h" />
     <ClInclude Include="include\RE\ExtraHealth.h" />
     <ClInclude Include="include\RE\ExtraHotkey.h" />
+    <ClInclude Include="include\RE\ExtraItemDropper.h" />
     <ClInclude Include="include\RE\ExtraLastFinishedSequence.h" />
     <ClInclude Include="include\RE\ExtraLeveledCreature.h" />
     <ClInclude Include="include\RE\ExtraLocationRefType.h" />
@@ -494,8 +497,10 @@
     <ClInclude Include="include\RE\ExtraOwnership.h" />
     <ClInclude Include="include\RE\ExtraPoison.h" />
     <ClInclude Include="include\RE\ExtraPromotedRef.h" />
+    <ClInclude Include="include\RE\ExtraRaceData.h" />
     <ClInclude Include="include\RE\ExtraReferenceHandle.h" />
     <ClInclude Include="include\RE\ExtraStartingPosition.h" />
+    <ClInclude Include="include\RE\ExtraTerminalState.h" />
     <ClInclude Include="include\RE\ExtraTextDisplayData.h" />
     <ClInclude Include="include\RE\ExtraUniqueID.h" />
     <ClInclude Include="include\RE\FavoritesHandler.h" />
