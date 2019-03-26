@@ -90,6 +90,7 @@ namespace RE
 			TES_HEAP_REDEFINE_NEW();
 
 
+			// members
 			value_type	item;
 			Node*		next;
 		};
@@ -122,30 +123,47 @@ namespace RE
 
 
 			iterator_base() :
-				_cur{ 0 }
+				_cur(0),
+				_managed(0)
 			{}
 
 
-			iterator_base(Node* a_node)
-			{
-				_cur = a_node;
-			}
+			iterator_base(Node* a_node, Node* a_managed = 0) :
+				_cur(a_node),
+				_managed(a_managed)
+			{}
 
 
 			iterator_base(const iterator_base& a_rhs) :
-				_cur(a_rhs._cur)
-			{}
+				_cur(a_rhs._cur),
+				_managed(0)
+			{
+				if (a_rhs._managed) {
+					_managed = new Node(*a_rhs._managed);
+				}
+			}
 
 
 			iterator_base(iterator_base&& a_rhs) :
-				_cur(std::move(a_rhs._cur))
+				_cur(std::move(a_rhs._cur)),
+				_managed(std::move(a_rhs._managed))
 			{
 				a_rhs._cur = 0;
+				a_rhs._managed = 0;
+			}
+
+
+			~iterator_base()
+			{
+				if (_managed) {
+					delete _managed;
+				}
 			}
 
 
 			static void swap(iterator_base& a_lhs, iterator_base& a_rhs)
 			{
+				std::swap(a_lhs._cur, a_rhs._cur);
 				std::swap(a_lhs._cur, a_rhs._cur);
 			}
 
@@ -162,6 +180,10 @@ namespace RE
 			{
 				_cur = std::move(a_rhs._cur);
 				a_rhs._cur = 0;
+
+				_managed = std::move(a_rhs._managed);
+				a_rhs._managed = 0;
+
 				return *this;
 			}
 
@@ -208,6 +230,7 @@ namespace RE
 
 		protected:
 			Node* _cur;
+			Node* _managed;
 		};
 
 
@@ -243,19 +266,22 @@ namespace RE
 
 		iterator before_begin() noexcept
 		{
-			return iterator{ get_before_begin() };
+			Node* node = new Node(&_listHead);
+			return iterator{ node, node };
 		}
 
 
 		const_iterator before_begin() const noexcept
 		{
-			return const_iterator{ get_before_begin() };
+			Node* node = new Node(const_cast<Node*>(&_listHead));
+			return const_iterator{ node, node };
 		}
 
 
 		const_iterator cbefore_begin() const noexcept
 		{
-			return const_iterator{ get_before_begin() };
+			Node* node = new Node(const_cast<Node*>(&_listHead));
+			return const_iterator{ node, node };
 		}
 
 
@@ -523,13 +549,7 @@ namespace RE
 		}
 
 	protected:
-		Node* get_before_begin() const noexcept
-		{
-			static Node node{ {}, const_cast<Node*>(&_listHead) };
-			return &node;
-		}
-
-
+		// members
 		Node _listHead;	// 00
 	};
 }
