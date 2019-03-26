@@ -182,7 +182,7 @@ namespace RE
 		virtual bool							HasKeyword(BGSKeyword* a_keyword) override;																																							// 048
 		virtual BGSScene*						GetCurrentScene() const override;																																									// 04A
 		virtual void							SetCurrentScene(BGSScene* a_scene) override;																																						// 04B
-		virtual UInt32&							RemoveItem(UInt32& a_droppedItemHandle, TESForm* a_item, UInt32 a_count, RemoveType a_mode, BaseExtraList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0) override;	// 056
+        virtual RefHandle&				        RemoveItem(RefHandle& a_dropHandle, TESForm* a_item, SInt32 a_count, RemoveType a_mode, BaseExtraList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0) override;		// 056
 		virtual void							GetMarkerPosition(NiPoint3* a_pos) override;																																						// 05B
 		virtual MagicCaster*					GetMagicCaster(UInt32 a_slot) const override;																																						// 05C
 		virtual MagicTarget*					GetMagicTarget() const override;																																									// 05D

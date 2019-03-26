@@ -51,6 +51,6 @@ namespace RE
 
 	bool ActorProcessManager::IsGhost() const
 	{
-		return unk050 && (unk050->flags & Data050::Flag::kGhost) != Data050::Flag::kNone;
+		return unk050 && (unk050->flags2 & Data050::Flag2::kGhost) != Data050::Flag2::kNone;
 	}
 }

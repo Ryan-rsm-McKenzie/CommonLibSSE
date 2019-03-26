@@ -2552,5 +2552,8 @@
     <ClInclude Include="include\RE\TESUniqueIDChangeEvent.h">
       <Filter>include\RE\Skyrim\Events\ScriptEvent</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\BSFadeNode.h">
+      <Filter>include\RE\Skyrim\NetImmerse\BS</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

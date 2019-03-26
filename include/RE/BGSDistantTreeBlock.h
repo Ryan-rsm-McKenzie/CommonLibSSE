@@ -18,7 +18,8 @@ namespace RE
 			bool	hidden;	// 10 - alpha <= 0.0f or set by object flags
 			UInt8	unk11;	// 11
 			UInt16	unk12;	// 12
-			UInt32	unk14;	// 14
+			// Pretty sure LODGroupInstance is just 0x14 because having this extra UInt32 here breaks the array, but haven't had time to check this further.
+			// UInt32	unk14;	// 14
 		};
 		STATIC_ASSERT(offsetof(LODGroupInstance, formId) == 0x00);
 		STATIC_ASSERT(offsetof(LODGroupInstance, alpha) == 0x0E);
