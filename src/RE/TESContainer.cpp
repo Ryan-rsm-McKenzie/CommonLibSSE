@@ -6,35 +6,6 @@
 
 namespace RE
 {
-	class ItemCounter
-	{
-	public:
-		constexpr ItemCounter(TESForm* a_item) :
-			_count(0),
-			_item(a_item)
-		{}
-
-
-		bool Accept(TESContainer::Entry* a_entry)
-		{
-			if (a_entry->form == _item) {
-				_count += a_entry->count;
-			}
-			return true;
-		}
-
-
-		constexpr UInt32 Count() const
-		{
-			return _count;
-		}
-
-	private:
-		UInt32		_count;
-		TESForm*	_item;
-	};
-
-
 	bool TESContainer::GetContainerItemAt(UInt32 a_idx, Entry*& a_entry) const
 	{
 		if (a_idx < numEntries) {
@@ -48,9 +19,15 @@ namespace RE
 
 	UInt32 TESContainer::CountItem(TESForm* a_item) const
 	{
-		ItemCounter v(a_item);
-		Visit(v);
-		return v.Count();
+		UInt32 count = 0;
+		ForEach([&](Entry* a_entry)
+		{
+			if (a_entry->form == a_item) {
+				count += a_entry->count;
+			}
+			return true;
+		});
+		return count;
 	}
 
 

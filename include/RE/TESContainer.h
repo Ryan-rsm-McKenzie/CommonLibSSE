@@ -1,5 +1,7 @@
 #pragma once
 
+#include "function_view.h"  // function_view
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // TESForm
 
@@ -38,49 +40,10 @@ namespace RE
 		virtual void	CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
 
 
-		template <class Op>
-		UInt32 CountIf(Op& a_op) const
-		{
-			UInt32 count = 0;
-			for (UInt32 n = 0; n < numEntries; n++) {
-				Entry* pEntry = entries[n];
-				if (pEntry && a_op.Accept(pEntry)) {
-					count++;
-				}
-			}
-			return count;
-		}
-
-		template <class Op>
-		Entry* Find(Op& a_op) const
-		{
-			bool bFound = false;
-			UInt32 n = 0;
-			Entry* pEntry = 0;
-			for (UInt32 n = 0; n < numEntries && !bFound; n++) {
-				pEntry = entries[n];
-				if (pEntry) {
-					bFound = a_op.Accept(pEntry);
-				}
-			}
-			return (bFound && pEntry) ? pEntry : 0;
-		}
-
-		template <class Op>
-		void Visit(Op& a_op) const
-		{
-			bool bContinue = true;
-			for (UInt32 n = 0; n < numEntries && bContinue; n++) {
-				Entry* pEntry = entries[n];
-				if (pEntry) {
-					bContinue = a_op.Accept(pEntry);
-				}
-			}
-		}
-
-		bool	GetContainerItemAt(UInt32 a_idx, Entry*& a_entry) const;
-		bool	GetContainerLevItemAt(UInt32 a_idx, Entry*& a_entry) const;
-		UInt32	CountItem(TESForm* a_item) const;
+		inline void	ForEach(ext::function_view<bool(Entry*)> a_fn) const;
+		bool		GetContainerItemAt(UInt32 a_idx, Entry*& a_entry) const;
+		bool		GetContainerLevItemAt(UInt32 a_idx, Entry*& a_entry) const;
+		UInt32		CountItem(TESForm* a_item) const;
 
 
 		// members
@@ -89,4 +52,17 @@ namespace RE
 		UInt32	pad14;		// 14
 	};
 	STATIC_ASSERT(sizeof(TESContainer) == 0x18);
+
+
+	inline void TESContainer::ForEach(ext::function_view<bool(Entry*)> a_fn) const
+	{
+		for (UInt32 n = 0; n < numEntries; n++) {
+			Entry* entry = entries[n];
+			if (entry) {
+				if (!a_fn(entry)) {
+					break;
+				}
+			}
+		}
+	}
 }

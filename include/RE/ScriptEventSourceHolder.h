@@ -10,10 +10,15 @@ namespace RE
 {
 	struct BGSEventProcessedEvent;
 	struct TESActivateEvent;
+	struct TESActiveEffectApplyRemoveEvent;
 	struct TESActorLocationChangeEvent;
 	struct TESBookReadEvent;
+	struct TESCellAttachDetachEvent;
 	struct TESCellFullyLoadedEvent;
 	struct TESCellReadyToApplyDecalsEvent;
+	struct TESCombatEvent;
+	struct TESContainerChangedEvent;
+	struct TESDeathEvent;
 	struct TESDestructionStageChangedEvent;
 	struct TESEnterBleedoutEvent;
 	struct TESEquipEvent;
@@ -21,6 +26,7 @@ namespace RE
 	struct TESFurnitureEvent;
 	struct TESGrabReleaseEvent;
 	struct TESHitEvent;
+	struct TESInitScriptEvent;
 	struct TESLoadGameEvent;
 	struct TESLockChangedEvent;
 	struct TESMagicEffectApplyEvent;
@@ -51,6 +57,10 @@ namespace RE
 	struct TESTriggerEvent;
 	struct TESTriggerEnterEvent;
 	struct TESTriggerLeaveEvent;
+	struct TESUniqueIDChangeEvent;
+	struct TESWaitStartEvent;
+	struct TESWaitStopEvent;
+	struct TESSwitchRaceCompleteEvent;
 
 
 	class ScriptEventSourceHolder

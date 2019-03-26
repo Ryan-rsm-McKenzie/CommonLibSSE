@@ -24,7 +24,7 @@ namespace RE
 		using pointer = value_type * ;
 		using const_pointer = std::pointer_traits<pointer>::rebind<const value_type>;
 
-	protected:
+
 		struct Node
 		{
 			Node() :
@@ -95,7 +95,7 @@ namespace RE
 			Node*		next;
 		};
 
-	public:
+
 		template <class U>
 		struct iterator_traits
 		{

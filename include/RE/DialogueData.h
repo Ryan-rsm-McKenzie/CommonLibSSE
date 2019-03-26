@@ -29,12 +29,12 @@ namespace RE
 
 
 		// members
-		BSSimpleList<ResponseData*>				dataList;	// 00
-		BSSimpleList<ResponseData >::iterator	current;	// 10
-		TESTopicInfo*							topicInfo;	// 18
-		TESTopic*								topic;		// 20
-		TESQuest*								quest;		// 28
-		Actor*									speaker;	// 30
+		BSSimpleList<ResponseData*>			dataList;	// 00
+		BSSimpleList<ResponseData*>::Node*	current;	// 10
+		TESTopicInfo*						topicInfo;	// 18
+		TESTopic*							topic;		// 20
+		TESQuest*							quest;		// 28
+		Actor*								speaker;	// 30
 	};
 	STATIC_ASSERT(sizeof(DialogueData) == 0x38);
 }
