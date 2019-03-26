@@ -22,7 +22,7 @@ namespace RE
 	}
 
 
-	template<typename T>
+	template <typename T>
 	inline T* Heap_Allocate(void)
 	{
 		return reinterpret_cast<T*>(Heap_Allocate(sizeof(T)));

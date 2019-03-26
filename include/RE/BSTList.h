@@ -266,21 +266,21 @@ namespace RE
 
 		iterator before_begin() noexcept
 		{
-			Node* node = new Node(&_listHead);
+			Node* node = new Node({}, &_listHead);
 			return iterator{ node, node };
 		}
 
 
 		const_iterator before_begin() const noexcept
 		{
-			Node* node = new Node(const_cast<Node*>(&_listHead));
+			Node* node = new Node({}, const_cast<Node*>(&_listHead));
 			return const_iterator{ node, node };
 		}
 
 
 		const_iterator cbefore_begin() const noexcept
 		{
-			Node* node = new Node(const_cast<Node*>(&_listHead));
+			Node* node = new Node({}, const_cast<Node*>(&_listHead));
 			return const_iterator{ node, node };
 		}
 
