@@ -304,7 +304,7 @@ namespace RE
 		} else {
 			ExtraTextDisplayData* newTextData = ExtraTextDisplayData::Create();
 			newTextData->SetName(name.c_str());
-			extraData.Add(ExtraDataType::kTextDisplayData, newTextData);
+			extraData.Add(newTextData);
 			renamed = true;
 		}
 

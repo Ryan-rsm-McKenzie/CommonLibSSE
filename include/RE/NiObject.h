@@ -5,6 +5,7 @@
 
 namespace RE
 {
+    class BSFadeNode;
 	class BSGeometry;
 	class BSTriShape;
 	class NiCloningProcess;
@@ -27,7 +28,7 @@ namespace RE
 		virtual NiRTTI*			GetRTTI();									// 02
 		virtual NiNode*			GetAsNiNode();								// 03 - { return 0; }
 		virtual NiSwitchNode*	GetAsNiSwitchNode();						// 04 - { return 0; }
-		virtual void			Unk_05(void);								// 05 - { return 0; }
+		virtual BSFadeNode*     GetAsBSFadeNode();							// 05 - { return 0; }
 		virtual UInt32			Unk_06(void);								// 06 - { return 0; }
 		virtual BSGeometry*		GetAsBSGeometry();							// 07 - { return 0; }
 		virtual void			Unk_08(void);								// 08 - { return 0; }

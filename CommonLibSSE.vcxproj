@@ -420,6 +420,7 @@
     <ClInclude Include="include\RE\BSBound.h" />
     <ClInclude Include="include\RE\BSCoreTypes.h" />
     <ClInclude Include="include\RE\BSExtraData.h" />
+    <ClInclude Include="include\RE\BSFadeNode.h" />
     <ClInclude Include="include\RE\BSFixedString.h" />
     <ClInclude Include="include\RE\BSGameSound.h" />
     <ClInclude Include="include\RE\BSHandleRefObject.h" />

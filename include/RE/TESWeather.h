@@ -192,7 +192,7 @@ namespace RE
 		AlphaLayer						cloudAlphas[kTotalLayers];								// 460 - JNAM
 		UInt32							disabledCloudLayers;									// 660 - NAM1 - bitfield
 		Data							data;													// 664 - DATA
-		FogDistance						fogDistance;											// 664 - FNAM
+		FogDistance						fogDistance;											// 678 - FNAM
 		ColorLayer						weatherColors[ColorTypes::kTotal];						// 698 - NAM0
 		BSSimpleList<Sound*>			sounds;													// 7A8
 		BSTArray<TESObjectSTAT*>		skyStatics;												// 7B8
