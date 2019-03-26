@@ -126,21 +126,17 @@ constexpr inline Enum& operator>>=(Enum& a_lhs, Enum a_rhs)
 
 // BEGIN
 // https://stackoverflow.com/a/30848101
-
 // See http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4502.pdf.
-template <typename...>
-using void_t = void;
 
 
 // Primary template handles all types not supporting the operation.
-template <typename T, template <typename> class Op, typename = void_t<>>
+template <typename T, template <typename> class Op, typename = std::void_t<>>
 struct is_detected : std::false_type {};
 
 
 // Specialization recognizes/validates only types supporting the archetype.
 template <typename T, template <typename> class Op>
-struct is_detected<T, Op, void_t<Op<T>>> : std::true_type {};
-
+struct is_detected<T, Op, std::void_t<Op<T>>> : std::true_type {};
 // END
 
 

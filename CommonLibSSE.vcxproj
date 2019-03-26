@@ -304,6 +304,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ForceInclude.h" />
+    <ClInclude Include="include\function_view.h" />
     <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h" />
     <ClInclude Include="include\RE\ActorKnowledge.h" />
     <ClInclude Include="include\RE\ActorMover.h" />
@@ -493,6 +494,7 @@
     <ClInclude Include="include\RE\ExtraMapMarker.h" />
     <ClInclude Include="include\RE\ExtraMissingLinkedRefIDs.h" />
     <ClInclude Include="include\RE\ExtraMultiBoundRef.h" />
+    <ClInclude Include="include\RE\ExtraObjectHealth.h" />
     <ClInclude Include="include\RE\ExtraOutfitItem.h" />
     <ClInclude Include="include\RE\ExtraOwnership.h" />
     <ClInclude Include="include\RE\ExtraPoison.h" />
@@ -862,6 +864,7 @@
     <ClInclude Include="include\RE\TESTopic.h" />
     <ClInclude Include="include\RE\TESTopicInfo.h" />
     <ClInclude Include="include\RE\TESTrackedStatsEvent.h" />
+    <ClInclude Include="include\RE\TESUniqueIDChangeEvent.h" />
     <ClInclude Include="include\RE\TESValueForm.h" />
     <ClInclude Include="include\RE\TESWaterForm.h" />
     <ClInclude Include="include\RE\TESWeather.h" />
