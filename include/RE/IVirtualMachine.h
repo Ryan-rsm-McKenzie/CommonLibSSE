@@ -41,6 +41,7 @@ namespace RE
 		public:
 			enum class FunctionFlag : UInt32
 			{
+				kNone = 0,
 				kNoWait = 1 << 0
 			};
 

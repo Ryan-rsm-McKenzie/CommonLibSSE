@@ -144,5 +144,11 @@ namespace RE
 
 		template <class T, class Enable = void> struct is_static_base_pointer : std::false_type {};
 		template <class T> struct is_static_base_pointer<T, std::enable_if_t<is_static_base<T>::value>> : std::is_pointer<T> {};
+
+		template <class T> struct is_valid_base : std::disjunction<is_static_base_pointer<T>, is_form_pointer<T>> {};
+		template <class T> struct is_valid_param : std::disjunction<is_builtin_type<T>, is_vm_builtin_array_pointer<T>, is_form_pointer<T>, is_vm_form_array_pointer<T>> {};
+		template <class T> struct is_valid_return : std::disjunction<std::is_void<T>, is_valid_param<T>> {};
+		template <class R, class Cls, class... Args> struct is_valid_short_sig : std::conjunction<is_valid_return<R>, is_valid_base<Cls>, is_valid_param<Args>...> {};
+		template <class Int, class R, class Cls, class... Args> struct is_valid_long_sig : std::conjunction<is_uint32<std::make_unsigned_t<Int>>, is_valid_short_sig<R, Cls, Args...>> {};
 	}
 }
