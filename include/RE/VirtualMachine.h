@@ -86,6 +86,8 @@ namespace RE
 				virtual bool							CreateObject(const BSFixedString& a_className, UInt32 a_numProperties, BSTSmartPointer<BSScriptObject>& a_objPtr) override;																					// 09
 				virtual bool							SetProperty(BSTSmartPointer<BSScriptObject>& a_objPtr, void* a_property, bool a_arg3) override;																												// 0A
 
+				static VirtualMachine*					GetSingleton();
+
 
 				// members
 				BSTEventSource<StatsEvent>							statsEventSource;	// 0028

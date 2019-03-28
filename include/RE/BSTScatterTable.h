@@ -76,30 +76,10 @@ namespace RE
 	template <typename T> using is_char32_pointer = std::is_convertible<T, const char32_t*>;
 
 	template <typename T, class Enable = void> struct is_charT_pointer : std::false_type {};
-
-	template <typename T>
-	struct is_charT_pointer<T, std::enable_if_t<is_char_pointer<T>::value>> : std::true_type
-	{
-		using char_type = const char*;
-	};
-
-	template <typename T>
-	struct is_charT_pointer<T, std::enable_if_t<is_wchar_pointer<T>::value>> : std::true_type
-	{
-		using char_type = const wchar_t*;
-	};
-
-	template <typename T>
-	struct is_charT_pointer<T, std::enable_if_t<is_char16_pointer<T>::value>> : std::true_type
-	{
-		using char_type = const char16_t*;
-	};
-
-	template <typename T>
-	struct is_charT_pointer<T, std::enable_if_t<is_char32_pointer<T>::value>> : std::true_type
-	{
-		using char_type = const char32_t*;
-	};
+	template <typename T> struct is_charT_pointer<T, std::enable_if_t<is_char_pointer<T>::value>> : std::true_type { using char_type = const char*; };
+	template <typename T> struct is_charT_pointer<T, std::enable_if_t<is_wchar_pointer<T>::value>> : std::true_type { using char_type = const wchar_t*; };
+	template <typename T> struct is_charT_pointer<T, std::enable_if_t<is_char16_pointer<T>::value>> : std::true_type { using char_type = const char16_t*; };
+	template <typename T> struct is_charT_pointer<T, std::enable_if_t<is_char32_pointer<T>::value>> : std::true_type { using char_type = const char32_t*; };
 
 
 	// Specialization for "const CharT*" types

@@ -28,8 +28,8 @@ namespace RE
 		struct MenuTableItem
 		{
 		public:
-			IMenu*			menuInstance;		// 08 - 0 if the menu is not currently open
-			CreatorFunc*	menuConstructor;	// 10
+			IMenu*			menuInstance;		// 00 - null if the menu is not currently open
+			CreatorFunc*	menuConstructor;	// 08
 		};
 		STATIC_ASSERT(sizeof(MenuTableItem) == 0x10);
 
@@ -73,25 +73,21 @@ namespace RE
 		bool									GameIsPaused();
 		bool									CrosshairIsPaused();
 		IMenu*									GetMenu(BSFixedString& a_menuName);
-		template <typename T>
-		T*										GetMenu(BSFixedString& a_menuName)
-		{
-			return static_cast<T*>(GetMenu(a_menuName));
-		}
+		template <class T> T*					GetMenu(BSFixedString& a_menuName);
 
 
 		// members
 		BSTArray<IMenu*>	menuStack;					// 110
 		MenuTable			menuTable;					// 128 (Entries ptr at 150)
 		SimpleLock			menuTableLock;				// 158
-		UInt32				numPauseGame;				// 160 (= 0) += 1 if (imenu->flags & 0x0001)
-		UInt32				numItemMenu;				// 164 (= 0) += 1 if (imenu->flags & 0x2000)
-		UInt32				numPreventGameLoad;			// 168 (= 0) += 1 if (imenu->flags & 0x0080)
-		UInt32				numDoNotPreventSaveGame;	// 16C (= 0) += 1 if (imenu->flags & 0x0800)
-		UInt32				numStopCrosshairUpdate;		// 170 (= 0) += 1 if (imenu->flags & 0x4000)
-		UInt32				numFlag8000;				// 174 (= 0) += 1 if (imenu->flags & 0x8000)
+		UInt32				numPauseGame;				// 160 (= 0) += 1 if (imenu->flags & 0x00001)
+		UInt32				numItemMenu;				// 164 (= 0) += 1 if (imenu->flags & 0x02000)
+		UInt32				numPreventGameLoad;			// 168 (= 0) += 1 if (imenu->flags & 0x00080)
+		UInt32				numDoNotPreventSaveGame;	// 16C (= 0) += 1 if (imenu->flags & 0x00800)
+		UInt32				numStopCrosshairUpdate;		// 170 (= 0) += 1 if (imenu->flags & 0x04000)
+		UInt32				numFlag8000;				// 174 (= 0) += 1 if (imenu->flags & 0x08000)
 		UInt32				numFlag20000;				// 178 (= 0)  = 1 if (imenu->flags & 0x20000)
-		UInt8				numModal;					// 17C (= 0)  = 1 if (imenu->flags & 0x10)
+		UInt8				numModal;					// 17C (= 0)  = 1 if (imenu->flags & 0x00010)
 		UInt8				pad17D[3];					// 17D
 		Unknown3			unk180;						// 180
 		bool				showMenus;					// 1C0 (= 0)
@@ -101,4 +97,11 @@ namespace RE
 	};
 	STATIC_ASSERT(offsetof(MenuManager, menuStack) == 0x110);
 	STATIC_ASSERT(sizeof(MenuManager) == 0x1C8);
+
+
+	template <class T>
+	inline T* MenuManager::GetMenu(BSFixedString& a_menuName)
+	{
+		return static_cast<T*>(GetMenu(a_menuName));
+	}
 }

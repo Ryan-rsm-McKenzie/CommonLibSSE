@@ -140,8 +140,22 @@ struct is_detected<T, Op, std::void_t<Op<T>>> : std::true_type {};
 // END
 
 
-template <class T, class S>
-T function_cast(S a_func)
+template <class T, class U>
+T unrestricted_cast(U a_from)
+{
+	union
+	{
+		U from;
+		T to;
+	};
+
+	from = a_from;
+	return to;
+}
+
+
+template <class T, class U>
+T function_cast(U a_func)
 {
 	union
 	{
@@ -222,19 +236,41 @@ public:
 
 
 	constexpr RelocUnrestricted(std::uintptr_t a_offset) :
-		offset(RelocationManager::s_baseAddr + a_offset)
+		_offset(RelocationManager::s_baseAddr + a_offset)
 	{}
 
 
 	operator T()
 	{
-		return type;
+		return _type;
 	}
 
 private:
 	union
 	{
-		T type;
-		std::uintptr_t offset;
+		T _type;
+		std::uintptr_t _offset;
 	};
+};
+
+
+template <>
+class RelocUnrestricted<std::uintptr_t>
+{
+public:
+	RelocUnrestricted() = delete;
+
+
+	constexpr RelocUnrestricted(std::uintptr_t a_offset) :
+		_offset(RelocationManager::s_baseAddr + a_offset)
+	{}
+
+
+	operator std::uintptr_t()
+	{
+		return _offset;
+	}
+
+private:
+	std::uintptr_t _offset;
 };

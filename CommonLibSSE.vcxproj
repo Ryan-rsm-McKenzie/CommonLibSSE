@@ -186,6 +186,13 @@
     <ClCompile Include="src\RE\BSAudioManager.cpp" />
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
     <ClCompile Include="src\RE\BSReadWriteLock.cpp" />
+    <ClCompile Include="src\RE\BSScriptArray.cpp" />
+    <ClCompile Include="src\RE\BSScriptClass.cpp" />
+    <ClCompile Include="src\RE\BSScriptObject.cpp" />
+    <ClCompile Include="src\RE\BSScriptPackUnpack.cpp" />
+    <ClCompile Include="src\RE\BSScriptStack.cpp" />
+    <ClCompile Include="src\RE\BSScriptType.cpp" />
+    <ClCompile Include="src\RE\BSScriptVariable.cpp" />
     <ClCompile Include="src\RE\BSSpinLock.cpp" />
     <ClCompile Include="src\RE\BSString.cpp" />
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp" />
@@ -214,10 +221,12 @@
     <ClCompile Include="src\RE\hkBaseObject.cpp" />
     <ClCompile Include="src\RE\hkReferencedObject.cpp" />
     <ClCompile Include="src\RE\hkStringPtr.cpp" />
+    <ClCompile Include="src\RE\IFunction.cpp" />
     <ClCompile Include="src\RE\Inventory.cpp" />
     <ClCompile Include="src\RE\ItemCrafted.cpp" />
     <ClCompile Include="src\RE\ItemsPickpocketed.cpp" />
     <ClCompile Include="src\RE\LocalMapCamera.cpp" />
+    <ClCompile Include="src\RE\NativeFunctionBase.cpp" />
     <ClCompile Include="src\RE\NiAnimationKey.cpp" />
     <ClCompile Include="src\RE\NiAVObject.cpp" />
     <ClCompile Include="src\RE\NiColor.cpp" />
@@ -229,6 +238,7 @@
     <ClCompile Include="src\RE\NiObject.cpp" />
     <ClCompile Include="src\RE\NiRefObject.cpp" />
     <ClCompile Include="src\RE\NiTexture.cpp" />
+    <ClCompile Include="src\RE\BSScriptObjectBindPolicy.cpp" />
     <ClCompile Include="src\RE\Sky.cpp" />
     <ClCompile Include="src\RE\SoundData.cpp" />
     <ClCompile Include="src\RE\BSExtraData.cpp" />
@@ -273,6 +283,7 @@
     <ClCompile Include="src\RE\PlayerControls.cpp" />
     <ClCompile Include="src\RE\PlayerInputHandler.cpp" />
     <ClCompile Include="src\RE\SpellItem.cpp" />
+    <ClCompile Include="src\RE\StackFrame.cpp" />
     <ClCompile Include="src\RE\TESActorBaseData.cpp" />
     <ClCompile Include="src\RE\TESAIForm.cpp" />
     <ClCompile Include="src\RE\TESAmmo.cpp" />
@@ -301,6 +312,7 @@
     <ClCompile Include="src\RE\GFxTranslator.cpp" />
     <ClCompile Include="src\RE\UIManager.cpp" />
     <ClCompile Include="src\RE\UIStringHolder.cpp" />
+    <ClCompile Include="src\RE\VirtualMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ForceInclude.h" />
@@ -439,7 +451,15 @@
     <ClInclude Include="include\RE\BSReloadShaderI.h" />
     <ClInclude Include="include\RE\BSSaveDataSystemUtility.h" />
     <ClInclude Include="include\RE\BSScaleformTranslator.h" />
+    <ClInclude Include="include\RE\BSScriptArray.h" />
+    <ClInclude Include="include\RE\BSScriptClass.h" />
+    <ClInclude Include="include\RE\BSScriptObject.h" />
     <ClInclude Include="include\RE\BSScriptObjectBindPolicy.h" />
+    <ClInclude Include="include\RE\BSScriptPackUnpack.h" />
+    <ClInclude Include="include\RE\BSScriptStack.h" />
+    <ClInclude Include="include\RE\BSScriptType.h" />
+    <ClInclude Include="include\RE\BSScriptTypeTraits.h" />
+    <ClInclude Include="include\RE\BSScriptVariable.h" />
     <ClInclude Include="include\RE\BSShader.h" />
     <ClInclude Include="include\RE\BSSpinLock.h" />
     <ClInclude Include="include\RE\BSStorage.h" />
@@ -620,6 +640,7 @@
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h" />
     <ClInclude Include="include\RE\IAnimationSetCallbackFunctor.h" />
     <ClInclude Include="include\RE\IDEvent.h" />
+    <ClInclude Include="include\RE\IFunction.h" />
     <ClInclude Include="include\RE\ILoader.h" />
     <ClInclude Include="include\RE\ImageSpaceEffect.h" />
     <ClInclude Include="include\RE\ImageSpaceEffectParam.h" />
@@ -677,6 +698,8 @@
     <ClInclude Include="include\RE\GFxMovieRoot.h" />
     <ClInclude Include="include\RE\MoviePlayer.h" />
     <ClInclude Include="include\RE\GNewOverrideBase.h" />
+    <ClInclude Include="include\RE\NativeFunction.h" />
+    <ClInclude Include="include\RE\NativeFunctionBase.h" />
     <ClInclude Include="include\RE\NavMesh.h" />
     <ClInclude Include="include\RE\NavMeshInfoMap.h" />
     <ClInclude Include="include\RE\NiAnimationKey.h" />
@@ -764,6 +787,7 @@
     <ClInclude Include="include\RE\SoundLevels.h" />
     <ClInclude Include="include\RE\SpellItem.h" />
     <ClInclude Include="include\RE\SprintHandler.h" />
+    <ClInclude Include="include\RE\StackFrame.h" />
     <ClInclude Include="include\RE\StandardItemData.h" />
     <ClInclude Include="include\RE\Stars.h" />
     <ClInclude Include="include\RE\StatsEvent.h" />
@@ -881,6 +905,7 @@
     <ClInclude Include="include\RE\UserEventEnabledEvent.h" />
     <ClInclude Include="include\RE\TESFile.h" />
     <ClInclude Include="include\RE\VirtualMachine.h" />
+    <ClInclude Include="include\RE\VMArray.h" />
     <ClInclude Include="include\RE\WeatherType.h" />
     <ClInclude Include="include\Util.h" />
     <ClInclude Include="src\RE\GFxResourceKey.cpp" />

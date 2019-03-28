@@ -5,6 +5,21 @@
 
 namespace RE
 {
+	namespace BSScript
+	{
+		namespace Offset
+		{
+			namespace BSScriptObject
+			{
+				// E8 ? ? ? ? 49 89 3F
+				constexpr std::uintptr_t IncRefCount = 0x01233EB0;	// 1_5_73
+				// E8 ? ? ? ? 85 C0 75 10 49 8B CE
+				constexpr std::uintptr_t DecRefCount = 0x01233F60;	// 1_5_73
+			}
+		}
+	}
+
+
 	namespace Offset
 	{
 		namespace ActivateHandler

@@ -3,25 +3,28 @@
 
 namespace RE
 {
+	class BSFixedString;
+
+
 	namespace BSScript
 	{
 		struct IObjectHandlePolicy
 		{
 		public:
-			virtual ~IObjectHandlePolicy();	// 00
+			virtual ~IObjectHandlePolicy();													// 00
 
 			// add
-			virtual void	Unk_01(void);	// 01 - pure
-			virtual void	Unk_02(void);	// 02 - pure
-			virtual void	Unk_03(void);	// 03 - pure
-			virtual void	Unk_04(void);	// 04 - pure
-			virtual void	Unk_05(void);	// 05 - pure
-			virtual void	Unk_06(void);	// 06 - pure
-			virtual void	Unk_07(void);	// 07 - pure
-			virtual void	Unk_08(void);	// 08 - pure
-			virtual void	Unk_09(void);	// 09 - pure
-			virtual void	Unk_0A(void);	// 0A - pure
-			virtual void	Unk_0B(void);	// 0B - pure
+			virtual bool		IsType(UInt32 a_typeID, VMHandle a_handle) = 0;				// 01
+			virtual bool		IsValidHandle(VMHandle a_handle) = 0;						// 02
+			virtual VMHandle	GetInvalidHandle() = 0;										// 03
+			virtual VMHandle	Create(UInt32 a_typeID, const void* a_srcData) = 0;			// 04
+			virtual bool		IsREFR(VMHandle a_handle) = 0;								// 05
+			virtual void		Unk_06(void) = 0;											// 06
+			virtual void		Unk_07(void) = 0;											// 07
+			virtual void*		Resolve(UInt32 a_typeID, VMHandle a_handle) = 0;			// 08
+			virtual void		AddRef(VMHandle a_handle) = 0;								// 09
+			virtual void		Release(VMHandle a_handle) = 0;								// 0A
+			virtual void		ToString(VMHandle a_handle, BSFixedString& a_strOut) = 0;	// 0B
 		};
 		STATIC_ASSERT(sizeof(IObjectHandlePolicy) == 0x8);
 	}
