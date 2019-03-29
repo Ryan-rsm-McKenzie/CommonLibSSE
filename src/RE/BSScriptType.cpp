@@ -35,7 +35,7 @@ namespace RE
 		VMTypeID BSScriptType::GetUnmangledType() const
 		{
 			if (type < VMTypeID::kArraysEnd) {
-				return (VMTypeID)type;
+				return type;
 			} else {
 				return (type & VMTypeID::kObject) != VMTypeID::kNone ? VMTypeID::kObjectArray : VMTypeID::kObject;
 			}

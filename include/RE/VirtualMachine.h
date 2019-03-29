@@ -5,6 +5,7 @@
 #include "RE/BSTFreeList.h"  // BSTStaticFreeList
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/BSTMessageQueue.h"  // BSTCommonLLMessageQueue, BSTCommonStaticMessageQueue
+#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 #include "RE/FunctionMessage.h"  // BSScript::Internal::FunctionMessage
 #include "RE/IVirtualMachine.h"  // BSScript::IVirtualMachine
 #include "RE/IVMDebugInterface.h"  // BSScript::IVMDebugInterface
@@ -19,6 +20,7 @@ namespace RE
 {
 	namespace BSScript
 	{
+		class BSScriptArray;
 		class ErrorLogger;
 		class ISavePatcherInterface;
 		class ObjectBindPolicy;
@@ -88,6 +90,8 @@ namespace RE
 
 				static VirtualMachine*					GetSingleton();
 
+				bool									AllocateArray(const VMTypeID& a_typeID, std::size_t a_size, BSTSmartPointer<BSScriptArray>& a_array);
+
 
 				// members
 				BSTEventSource<StatsEvent>							statsEventSource;	// 0028
@@ -143,7 +147,7 @@ namespace RE
 				UInt64												unk93E0;			// 93E0
 				UInt64												unk93E8;			// 93E8
 				UInt64												unk93F0;			// 93F0
-				UInt64												unk93F8;			// 93F8
+				BSSpinLock											unk93F8;			// 93F8
 				UInt64												unk9400;			// 9400
 				UInt64												unk9408;			// 9408
 				UInt64												unk9410;			// 9410

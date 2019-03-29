@@ -137,19 +137,19 @@ namespace RE
 						{
 							if constexpr (IS_LONG)
 							{
-								DoCallBack(callback, args, a_vm, a_stackID, base);
+								DoCallBack(callback, std::move(args), a_vm, a_stackID, std::move(base));
 								a_resultValue->SetNone();
 							} else {
-								DoCallBack(callback, args, base);
+								DoCallBack(callback, std::move(args), std::move(base));
 								a_resultValue->SetNone();
 							}
 						} else {
 							if constexpr (IS_LONG)
 							{
-								auto result = DoCallBack(callback, args, a_vm, a_stackID, base);
+								auto result = DoCallBack(callback, std::move(args), a_vm, a_stackID, std::move(base));
 								a_resultValue->Pack<return_type>(result);
 							} else {
-								auto result = DoCallBack(callback, args, base);
+								auto result = DoCallBack(callback, std::move(args), std::move(base));
 								a_resultValue->Pack<return_type>(result);
 							}
 						}

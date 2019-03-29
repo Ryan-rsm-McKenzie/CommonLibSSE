@@ -2642,5 +2642,14 @@
     <ClInclude Include="include\RE\BSScriptPackUnpack.h">
       <Filter>include\RE\Skyrim\BSScript</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\BSScriptCommonTypeTraits.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScriptArrayTypeTraits.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScriptObjectTypeTraits.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

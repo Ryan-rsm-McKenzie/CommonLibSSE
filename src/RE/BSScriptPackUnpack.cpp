@@ -76,7 +76,7 @@ namespace RE
 
 		void* UnpackHandle(const BSScriptVariable* a_src, UInt32 a_typeID)
 		{
-			const BSScriptObject* object = a_src->GetObject();
+			auto object = a_src->GetObject();
 			return object ? object->Resolve(a_typeID) : 0;
 		}
 	}

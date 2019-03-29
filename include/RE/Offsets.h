@@ -7,6 +7,19 @@ namespace RE
 {
 	namespace BSScript
 	{
+		namespace Internal
+		{
+			namespace Offset
+			{
+				namespace VirtualMachine
+				{
+					// E8 ? ? ? ? 84 C0 0F 84 ? ? ? ? 48 83 7C 24 48 00
+					constexpr std::uintptr_t AllocateArray = 0x01264A00;	// 1_5_73
+				}
+			}
+		}
+
+
 		namespace Offset
 		{
 			namespace BSScriptObject

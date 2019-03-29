@@ -8,8 +8,7 @@ namespace RE
 	struct BSIntrusiveRefCounted
 	{
 	protected:
-		template <class T>
-		friend struct BSTSmartPointerIntrusiveRefCount;
+		template <class T> friend struct BSTSmartPointerIntrusiveRefCount;
 
 	public:
 		BSIntrusiveRefCounted();

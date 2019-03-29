@@ -164,7 +164,7 @@ namespace RE
 			static void swap(iterator_base& a_lhs, iterator_base& a_rhs)
 			{
 				std::swap(a_lhs._cur, a_rhs._cur);
-				std::swap(a_lhs._cur, a_rhs._cur);
+				std::swap(a_lhs._managed, a_rhs._managed);
 			}
 
 

@@ -452,9 +452,12 @@
     <ClInclude Include="include\RE\BSSaveDataSystemUtility.h" />
     <ClInclude Include="include\RE\BSScaleformTranslator.h" />
     <ClInclude Include="include\RE\BSScriptArray.h" />
+    <ClInclude Include="include\RE\BSScriptArrayTypeTraits.h" />
     <ClInclude Include="include\RE\BSScriptClass.h" />
+    <ClInclude Include="include\RE\BSScriptCommonTypeTraits.h" />
     <ClInclude Include="include\RE\BSScriptObject.h" />
     <ClInclude Include="include\RE\BSScriptObjectBindPolicy.h" />
+    <ClInclude Include="include\RE\BSScriptObjectTypeTraits.h" />
     <ClInclude Include="include\RE\BSScriptPackUnpack.h" />
     <ClInclude Include="include\RE\BSScriptStack.h" />
     <ClInclude Include="include\RE\BSScriptType.h" />
