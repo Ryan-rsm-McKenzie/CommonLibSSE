@@ -41,7 +41,12 @@ namespace RE
 
 
 				constexpr iterator_base();
+				constexpr iterator_base(const iterator_base& a_rhs);
+				constexpr iterator_base(iterator_base&& a_rhs);
 				constexpr explicit iterator_base(pointer a_ptr, std::size_t a_idx = 0);
+
+				constexpr iterator_base& operator=(const iterator_base& a_rhs);
+				constexpr iterator_base& operator=(iterator_base&& a_rhs);
 
 				[[nodiscard]] constexpr reference operator*() const;
 				[[nodiscard]] constexpr pointer operator->() const;
@@ -124,6 +129,8 @@ namespace RE
 
 			[[nodiscard]] constexpr size_type size() const noexcept;
 
+			[[nodiscard]] constexpr size_type max_size() const noexcept;
+
 			[[nodiscard]] BSScriptType& type();
 			[[nodiscard]] const BSScriptType& type() const;
 
@@ -131,6 +138,8 @@ namespace RE
 
 		protected:
 			template <class T> friend class iterator_base;
+
+			enum { kMaxSize = 128 };
 
 			// members
 			BSScriptType		_type;		// 08
@@ -148,8 +157,28 @@ namespace RE
 
 		template <class T>
 		constexpr BSScriptArray::iterator_base<T>::iterator_base() :
-			_ptr{},
-			_idx(0)
+			_ptr{}
+#if _DEBUG
+			, _idx(0)
+#endif
+		{}
+
+
+		template <class T>
+		constexpr BSScriptArray::iterator_base<T>::iterator_base(const iterator_base& a_rhs) :
+			_ptr(a_rhs._ptr)
+#if _DEBUG
+			, _idx(a_rhs._idx)
+#endif
+		{}
+
+
+		template <class T>
+		constexpr BSScriptArray::iterator_base<T>::iterator_base(iterator_base&& a_rhs) :
+			_ptr(std::move(a_rhs._ptr))
+#if _DEBUG
+			, _idx(std::move(a_rhs._idx))
+#endif
 		{}
 
 
@@ -162,6 +191,30 @@ namespace RE
 			_ptr(a_ptr + a_idx)
 #endif
 		{}
+
+
+		template <class T>
+		constexpr auto BSScriptArray::iterator_base<T>::operator=(const iterator_base& a_rhs)
+			-> iterator_base&
+		{
+			_ptr = a_rhs._ptr;
+#if _DEBUG
+			_idx = a_rhs._idx;
+#endif
+			return *this;
+		}
+
+
+		template <class T>
+		constexpr auto BSScriptArray::iterator_base<T>::operator=(iterator_base&& a_rhs)
+			-> iterator_base&
+		{
+			_ptr = std::move(a_rhs._ptr);
+#if _DEBUG
+			_idx = std::mvoe(a_rhs._idx);
+#endif
+			return *this;
+		}
 
 
 		template <class T>
@@ -273,7 +326,7 @@ namespace RE
 		constexpr auto BSScriptArray::iterator_base<T>::operator-=(const difference_type a_offset)
 			-> iterator_base&
 		{
-			return operator-=(a_offset);
+			return operator+=(-a_offset);
 		}
 
 
@@ -564,6 +617,13 @@ namespace RE
 			-> size_type
 		{
 			return _len;
+		}
+
+
+		[[nodiscard]] constexpr auto BSScriptArray::max_size() const noexcept
+			-> size_type
+		{
+			return kMaxSize;
 		}
 	}
 }

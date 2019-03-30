@@ -2,6 +2,8 @@
 
 #include <cassert>  // assert
 
+#include <string.h>  // _stricmp
+
 #include "skse64/PapyrusValue.h"  // VMValue
 
 
@@ -107,9 +109,59 @@ namespace RE
 		}
 
 
-		bool BSScriptVariable::operator!=(const BSScriptVariable& rhs) const
+		bool BSScriptVariable::operator!=(const BSScriptVariable& a_rhs) const
 		{
-			return !operator==(rhs);
+			return !operator==(a_rhs);
+		}
+
+
+		bool BSScriptVariable::operator<(const BSScriptVariable& a_rhs) const
+		{
+			if (type != a_rhs.type) {
+				return type < a_rhs.type;
+			}
+
+			switch (type) {
+			case VMTypeID::kNone:
+			case VMTypeID::kNoneArray:
+				return false;
+			case VMTypeID::kObject:
+				return data.obj < a_rhs.data.obj;
+			case VMTypeID::kString:
+				return _stricmp(data.str.c_str(), a_rhs.data.str.c_str()) < 0;
+			case VMTypeID::kInt:
+				return data.u < a_rhs.data.u;
+			case VMTypeID::kFloat:
+				return data.f < a_rhs.data.f;
+			case VMTypeID::kBool:
+				return data.b < a_rhs.data.b;
+			case VMTypeID::kObjectArray:
+			case VMTypeID::kStringArray:
+			case VMTypeID::kIntArray:
+			case VMTypeID::kFloatArray:
+			case VMTypeID::kBoolArray:
+				return data.arr < a_rhs.data.arr;
+			default:
+				return data.p < a_rhs.data.p;
+			}
+		}
+
+
+		bool BSScriptVariable::operator>(const BSScriptVariable& a_rhs) const
+		{
+			return a_rhs < *this;
+		}
+
+
+		bool BSScriptVariable::operator<=(const BSScriptVariable& a_rhs) const
+		{
+			return !(a_rhs < *this);
+		}
+
+
+		bool BSScriptVariable::operator>=(const BSScriptVariable& a_rhs) const
+		{
+			return !(*this < a_rhs);
 		}
 
 
@@ -134,14 +186,14 @@ namespace RE
 		}
 
 
-		BSScriptArray* BSScriptVariable::GetArray() const
+		BSScriptArray* BSScriptVariable::GetArray()
 		{
 			assert(IsArray());
 			return data.arr;
 		}
 
 
-		BSScriptObject* BSScriptVariable::GetObject() const
+		BSScriptObject* BSScriptVariable::GetObject()
 		{
 			assert(IsObject());
 			return data.obj;

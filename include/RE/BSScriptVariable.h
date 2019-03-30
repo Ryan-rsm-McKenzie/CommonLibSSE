@@ -49,29 +49,36 @@ namespace RE
 
 			BSScriptVariable&	operator=(const BSScriptVariable& a_rhs);
 			BSScriptVariable&	operator=(BSScriptVariable&& a_rhs);
-			bool				operator==(const BSScriptVariable& a_rhs) const;
-			bool				operator!=(const BSScriptVariable & rhs) const;
+
+			bool	operator==(const BSScriptVariable& a_rhs) const;
+			bool	operator!=(const BSScriptVariable& a_rhs) const;
+			bool	operator<(const BSScriptVariable& a_rhs) const;
+			bool	operator>(const BSScriptVariable& a_rhs) const;
+			bool	operator<=(const BSScriptVariable& a_rhs) const;
+			bool	operator>=(const BSScriptVariable& a_rhs) const;
 
 			SInt32					GetSInt() const;
 			UInt32					GetUInt() const;
 			float					GetFloat() const;
-			BSScriptArray*			GetArray() const;
-			BSScriptObject*			GetObject() const;
+			BSScriptArray*			GetArray();
+			BSScriptObject*			GetObject();
 			const BSFixedString&	GetString() const;
 			void					SetNone();
 
-			template <class T, typename std::enable_if_t<is_sint32_no_cvr<T>::value, int> = 0>					void SetData(T a_val);
-			template <class T, typename std::enable_if_t<is_uint32_no_cvr<T>::value, int> = 0>					void SetData(T a_val);
-			template <class T, typename std::enable_if_t<is_float_no_cvr<T>::value, int> = 0>					void SetData(T a_val);
+			template <class T, typename std::enable_if_t<is_sint32_compat<T>::value, int> = 0>					void SetData(T a_val);
+			template <class T, typename std::enable_if_t<is_uint32_compat<T>::value, int> = 0>					void SetData(T a_val);
+			template <class T, typename std::enable_if_t<is_float_compat<T>::value, int> = 0>					void SetData(T a_val);
 			template <class T, typename std::enable_if_t<is_bool_no_cvr<T>::value, int> = 0>					void SetData(T a_val);
 			template <class T, typename std::enable_if_t<is_script_array_pointer_no_cvr<T>::value, int> = 0>	void SetData(T a_val);
 			template <class T, typename std::enable_if_t<is_script_object_pointer_no_cvr<T>::value, int> = 0>	void SetData(T a_val);
-			template <class T, typename std::enable_if_t<is_string_no_cvr<T>::value, int> = 0>					void SetData(T a_val);
+			template <class T, typename std::enable_if_t<is_string_compat<T>::value, int> = 0>					void SetData(T a_val);
 
 			template <class T> void	Pack(const T a_src);
 			template <class T> T	Unpack();
 
 		protected:
+			template <class T> friend class VMArray;
+
 			// members
 			Data data;	// 08
 
@@ -83,7 +90,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(BSScriptVariable) == 0x10);
 
 
-		template <class T, typename std::enable_if_t<is_sint32_no_cvr<T>::value, int>>
+		template <class T, typename std::enable_if_t<is_sint32_compat<T>::value, int>>
 		inline void BSScriptVariable::SetData(T a_val)
 		{
 			ChangeType(VMTypeID::kInt);
@@ -91,7 +98,7 @@ namespace RE
 		}
 
 
-		template <class T, typename std::enable_if_t<is_uint32_no_cvr<T>::value, int>>
+		template <class T, typename std::enable_if_t<is_uint32_compat<T>::value, int>>
 		inline void BSScriptVariable::SetData(T a_val)
 		{
 			ChangeType(VMTypeID::kInt);
@@ -99,7 +106,7 @@ namespace RE
 		}
 
 
-		template <class T, typename std::enable_if_t<is_float_no_cvr<T>::value, int>>
+		template <class T, typename std::enable_if_t<is_float_compat<T>::value, int>>
 		inline void BSScriptVariable::SetData(T a_val)
 		{
 			ChangeType(VMTypeID::kFloat);
@@ -118,7 +125,7 @@ namespace RE
 		template <class T, typename std::enable_if_t<is_script_array_pointer_no_cvr<T>::value, int>>
 		void BSScriptVariable::SetData(T a_val)
 		{
-			ChangeType(a_val->type.GetTypeID());
+			ChangeType(a_val->type_id());
 			data.arr = a_val;
 		}
 
@@ -131,7 +138,7 @@ namespace RE
 		}
 
 
-		template <class T, typename std::enable_if_t<is_string_no_cvr<T>::value, int>>
+		template <class T, typename std::enable_if_t<is_string_compat<T>::value, int>>
 		inline void BSScriptVariable::SetData(T a_val)
 		{
 			ChangeType(VMTypeID::kString);

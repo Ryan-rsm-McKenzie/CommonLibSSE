@@ -858,6 +858,12 @@
     <ClCompile Include="src\RE\BSScriptPackUnpack.cpp">
       <Filter>src\RE\Skyrim\BSScript</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\IFunctionArguments.cpp">
+      <Filter>src\RE\Skyrim\BSScript</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ZeroFunctionArguments.cpp">
+      <Filter>src\RE\Skyrim\BSScript</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -2649,6 +2655,18 @@
       <Filter>include\RE\Skyrim\BSScript</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSScriptObjectTypeTraits.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IFunctionArguments.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ZeroFunctionArguments.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FunctionArguments.h">
+      <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IStackCallbackFunctor.h">
       <Filter>include\RE\Skyrim\BSScript</Filter>
     </ClInclude>
   </ItemGroup>

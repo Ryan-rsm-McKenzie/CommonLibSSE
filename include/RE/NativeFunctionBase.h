@@ -3,7 +3,6 @@
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSScriptType.h"  // BSScriptType
 #include "RE/IFunction.h"  // IFunction
-#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
 
 
 namespace RE
@@ -45,7 +44,7 @@ namespace RE
 				virtual ~NativeFunctionBase();																																					// 00
 
 				// override (IFunction)
-				virtual const BSFixedString&	GetName() const override;																														// 01
+				virtual const BSFixedString&	GetFunctionName() const override;																												// 01
 				virtual const BSFixedString&	GetScriptName() const override;																													// 02
 				virtual const BSFixedString&	GetStateName() const override;																													// 03
 				virtual void					GetReturnType(BSScriptType& a_dst) const override;																								// 04
@@ -59,7 +58,7 @@ namespace RE
 				virtual UInt32					GetUnk44() const override;																														// 0C
 				virtual const BSFixedString&	GetStr48() const override;																														// 0D
 				virtual void					Unk_0E(UInt32 a_arg1) override;																													// 0E
-				virtual UInt32					Invoke(BSScriptStackPtr& a_stack, void* a_arg2, Internal::VirtualMachine* a_vm, UInt32 a_arg4) override;										// 0F
+				virtual UInt32					Invoke(BSScriptStackPtr& a_stack, ErrorLogger* a_logger, Internal::VirtualMachine* a_vm, UInt32 a_arg4) override;								// 0F
 				virtual const BSFixedString&	GetSource() const override;																														// 10
 				virtual bool					Unk_11(UInt32 a_arg1, UInt32* a_arg2) override;																									// 11
 				virtual bool					GetParamName(UInt32 a_idx, BSFixedString& a_out) const override;																				// 12
@@ -70,21 +69,19 @@ namespace RE
 				virtual bool					HasCallback() const = 0;																														// 15
 				virtual bool					Run(BSScriptVariable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, BSScriptVariable* a_resultValue, StackFrame* a_frame) = 0;	// 16
 
-				TES_HEAP_REDEFINE_NEW();
-
-
+			protected:
 				// members
-				BSFixedString	fnName;		// 10
-				BSFixedString	scriptName;	// 18
-				BSFixedString	stateName;	// 20
-				VMTypeID		returnType;	// 28
-				ParameterInfo	params;		// 30
-				bool			isStatic;	// 40
-				bool			unk41;		// 41
-				bool			isLatent;	// 42
-				UInt8			pad43;		// 43
-				UInt32			unk44;		// 44
-				BSFixedString	unk48;		// 48
+				BSFixedString	_fnName;		// 10
+				BSFixedString	_scriptName;	// 18
+				BSFixedString	_stateName;		// 20
+				VMTypeID		_returnType;	// 28
+				ParameterInfo	_params;		// 30
+				bool			_isStatic;		// 40
+				bool			_unk41;			// 41
+				bool			_isLatent;		// 42
+				UInt8			_pad43;			// 43
+				UInt32			_unk44;			// 44
+				BSFixedString	_unk48;			// 48
 
 			private:
 				NativeFunctionBase* Ctor(const char* a_fnName, const char* a_className, bool a_isStatic, UInt32 a_numParams);

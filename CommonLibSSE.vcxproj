@@ -222,6 +222,7 @@
     <ClCompile Include="src\RE\hkReferencedObject.cpp" />
     <ClCompile Include="src\RE\hkStringPtr.cpp" />
     <ClCompile Include="src\RE\IFunction.cpp" />
+    <ClCompile Include="src\RE\IFunctionArguments.cpp" />
     <ClCompile Include="src\RE\Inventory.cpp" />
     <ClCompile Include="src\RE\ItemCrafted.cpp" />
     <ClCompile Include="src\RE\ItemsPickpocketed.cpp" />
@@ -313,6 +314,7 @@
     <ClCompile Include="src\RE\UIManager.cpp" />
     <ClCompile Include="src\RE\UIStringHolder.cpp" />
     <ClCompile Include="src\RE\VirtualMachine.cpp" />
+    <ClCompile Include="src\RE\ZeroFunctionArguments.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ForceInclude.h" />
@@ -532,6 +534,7 @@
     <ClInclude Include="include\RE\FavoritesHandler.h" />
     <ClInclude Include="include\RE\FlameProjectile.h" />
     <ClInclude Include="include\RE\FormTypes.h" />
+    <ClInclude Include="include\RE\FunctionArguments.h" />
     <ClInclude Include="include\RE\FunctionMessage.h" />
     <ClInclude Include="include\RE\FxDelegate.h" />
     <ClInclude Include="include\RE\FxDelegateArgs.h" />
@@ -644,6 +647,7 @@
     <ClInclude Include="include\RE\IAnimationSetCallbackFunctor.h" />
     <ClInclude Include="include\RE\IDEvent.h" />
     <ClInclude Include="include\RE\IFunction.h" />
+    <ClInclude Include="include\RE\IFunctionArguments.h" />
     <ClInclude Include="include\RE\ILoader.h" />
     <ClInclude Include="include\RE\ImageSpaceEffect.h" />
     <ClInclude Include="include\RE\ImageSpaceEffectParam.h" />
@@ -673,6 +677,7 @@
     <ClInclude Include="include\RE\IPostAnimationChannelUpdateFunctor.h" />
     <ClInclude Include="include\RE\IProcedureTreeItem.h" />
     <ClInclude Include="include\RE\ISavePatcherInterface.h" />
+    <ClInclude Include="include\RE\IStackCallbackFunctor.h" />
     <ClInclude Include="include\RE\IStore.h" />
     <ClInclude Include="include\RE\ItemCrafted.h" />
     <ClInclude Include="include\RE\ItemsPickpocketed.h" />
@@ -910,6 +915,7 @@
     <ClInclude Include="include\RE\VirtualMachine.h" />
     <ClInclude Include="include\RE\VMArray.h" />
     <ClInclude Include="include\RE\WeatherType.h" />
+    <ClInclude Include="include\RE\ZeroFunctionArguments.h" />
     <ClInclude Include="include\Util.h" />
     <ClInclude Include="src\RE\GFxResourceKey.cpp" />
   </ItemGroup>

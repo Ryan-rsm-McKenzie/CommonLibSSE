@@ -63,7 +63,7 @@ namespace RE
 				virtual bool							GetObjectProperty(BSTSmartPointer<BSScriptObject>& a_obj, const char* a_propertyName, BSScriptVariable& a_getVal) override;																					// 21
 				virtual bool							ExtractValue(const BSTSmartPointer<BSScriptObject>& a_objPtr, UInt32 a_index, BSScriptVariable& a_out) override;																							// 22
 				virtual bool							ExtractValueFromHandle(VMHandle a_handle, const BSFixedString& a_className, SInt32 a_variableIndex, BSScriptVariable& a_out) override;																		// 23
-				virtual void							QueueEvent(VMHandle a_handle, const BSFixedString & a_eventName, IFunctionArguments* a_args) override;																										// 24
+				virtual void							QueueEvent(VMHandle a_handle, const BSFixedString& a_eventName, IFunctionArguments* a_args) override;																										// 24
 				virtual bool							QueueEventAll(const BSFixedString& a_eventName, IFunctionArguments* a_args) override;																														// 25
 				virtual bool							CallStaticFunction(const BSFixedString& a_className, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) override;									// 26
 				virtual bool							CallMemberFunction(BSTSmartPointer<BSScriptObject>& a_obj, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) override;							// 27

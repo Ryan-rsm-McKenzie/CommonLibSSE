@@ -81,21 +81,21 @@ namespace RE
 		}
 
 
-		template <class T, typename std::enable_if_t<is_sint32_no_cvr<T>::value, int> = 0>
+		template <class T, typename std::enable_if_t<is_sint32_compat<T>::value, int> = 0>
 		inline T UnpackValue(const BSScriptVariable* a_src)
 		{
 			return a_src->GetSInt();
 		}
 
 
-		template <class T, typename std::enable_if_t<is_uint32_no_cvr<T>::value, int> = 0>
+		template <class T, typename std::enable_if_t<is_uint32_compat<T>::value, int> = 0>
 		inline T UnpackValue(const BSScriptVariable* a_src)
 		{
 			return a_src->GetUInt();
 		}
 
 
-		template <class T, typename std::enable_if_t<is_float_no_cvr<T>::value, int> = 0>
+		template <class T, typename std::enable_if_t<is_float_compat<T>::value, int> = 0>
 		inline T UnpackValue(const BSScriptVariable* a_src)
 		{
 			return a_src->GetFloat();
@@ -117,21 +117,21 @@ namespace RE
 
 
 		template <class T, typename std::enable_if_t<is_vm_builtin_array_no_cvr<T>::value, int> = 0>
-		inline T UnpackValue(const BSScriptVariable* a_src)
+		inline T UnpackValue(BSScriptVariable* a_src)
 		{
 			return a_src->GetArray();
 		}
 
 
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
-		inline T UnpackValue(const BSScriptVariable* a_src)
+		inline T UnpackValue(BSScriptVariable* a_src)
 		{
 			return static_cast<T>(UnpackHandle(a_src, remove_cvpr_t<T>::kTypeID));
 		}
 
 
 		template <class T, typename std::enable_if_t<is_vm_form_array_no_cvr<T>::value, int> = 0>
-		inline T UnpackValue(const BSScriptVariable* a_src)
+		inline T UnpackValue(BSScriptVariable* a_src)
 		{
 			return a_src->GetArray();
 		}

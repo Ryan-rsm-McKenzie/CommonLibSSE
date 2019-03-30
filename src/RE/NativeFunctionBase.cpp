@@ -23,33 +23,33 @@ namespace RE
 			}
 
 
-			const BSFixedString& NativeFunctionBase::GetName() const
+			const BSFixedString& NativeFunctionBase::GetFunctionName() const
 			{
-				return fnName;
+				return _fnName;
 			}
 
 
 			const BSFixedString& NativeFunctionBase::GetScriptName() const
 			{
-				return scriptName;
+				return _scriptName;
 			}
 
 
 			const BSFixedString& NativeFunctionBase::GetStateName() const
 			{
-				return stateName;
+				return _stateName;
 			}
 
 
 			void NativeFunctionBase::GetReturnType(BSScriptType& a_dst) const
 			{
-				a_dst.SetTypeID(returnType);
+				a_dst.SetTypeID(_returnType);
 			}
 
 
 			UInt32 NativeFunctionBase::GetNumParams() const
 			{
-				return params.unk0A;
+				return _params.unk0A;
 			}
 
 
@@ -63,7 +63,7 @@ namespace RE
 
 			UInt32 NativeFunctionBase::GetNumParams2() const
 			{
-				return params.unk0A;
+				return _params.unk0A;
 			}
 
 
@@ -75,7 +75,7 @@ namespace RE
 
 			bool NativeFunctionBase::IsStatic() const
 			{
-				return isStatic;
+				return _isStatic;
 			}
 
 
@@ -93,13 +93,13 @@ namespace RE
 
 			UInt32 NativeFunctionBase::GetUnk44() const
 			{
-				return unk44;
+				return _unk44;
 			}
 
 
 			const BSFixedString& NativeFunctionBase::GetStr48() const
 			{
-				return unk48;
+				return _unk48;
 			}
 
 
@@ -109,11 +109,11 @@ namespace RE
 			}
 
 
-			UInt32 NativeFunctionBase::Invoke(BSScriptStackPtr& a_stack, void* a_arg2, Internal::VirtualMachine* a_vm, UInt32 a_arg4)
+			UInt32 NativeFunctionBase::Invoke(BSScriptStackPtr& a_stack, ErrorLogger* a_logger, Internal::VirtualMachine* a_vm, UInt32 a_arg4)
 			{
 				using func_t = function_type_t<decltype(&NativeFunctionBase::Invoke)>;
 				func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::NativeFunctionBase, Impl_Invoke, func_t*);
-				return func(this, a_stack, a_arg2, a_vm, a_arg4);
+				return func(this, a_stack, a_logger, a_vm, a_arg4);
 			}
 
 
@@ -142,13 +142,13 @@ namespace RE
 
 			bool NativeFunctionBase::GetUnk41() const
 			{
-				return unk41;
+				return _unk41;
 			}
 
 
 			void NativeFunctionBase::SetUnk41(bool a_arg)
 			{
-				unk41 = a_arg;
+				_unk41 = a_arg;
 			}
 
 

@@ -41,11 +41,8 @@ namespace RE
 	};
 
 
-	template <typename T>
-	using op_c_str_t = decltype(std::declval<T>().c_str());
-
-	template <typename T>
-	using has_op_c_str = is_detected<T, op_c_str_t>;
+	template <class T> using op_c_str_t = decltype(std::declval<T>().c_str());
+	template <class T> using has_op_c_str = is_detected<T, op_c_str_t>;
 
 
 	// Specialization for BSFixedString, BSFixedStringCI, etc
@@ -70,16 +67,16 @@ namespace RE
 	};
 
 
-	template <typename T> using is_char_pointer = std::is_convertible<T, const char*>;
-	template <typename T> using is_wchar_pointer = std::is_convertible<T, const wchar_t*>;
-	template <typename T> using is_char16_pointer = std::is_convertible<T, const char16_t*>;
-	template <typename T> using is_char32_pointer = std::is_convertible<T, const char32_t*>;
+	template <class T> using is_char_pointer = std::is_convertible<T, const char*>;
+	template <class T> using is_wchar_pointer = std::is_convertible<T, const wchar_t*>;
+	template <class T> using is_char16_pointer = std::is_convertible<T, const char16_t*>;
+	template <class T> using is_char32_pointer = std::is_convertible<T, const char32_t*>;
 
-	template <typename T, class Enable = void> struct is_charT_pointer : std::false_type {};
-	template <typename T> struct is_charT_pointer<T, std::enable_if_t<is_char_pointer<T>::value>> : std::true_type { using char_type = const char*; };
-	template <typename T> struct is_charT_pointer<T, std::enable_if_t<is_wchar_pointer<T>::value>> : std::true_type { using char_type = const wchar_t*; };
-	template <typename T> struct is_charT_pointer<T, std::enable_if_t<is_char16_pointer<T>::value>> : std::true_type { using char_type = const char16_t*; };
-	template <typename T> struct is_charT_pointer<T, std::enable_if_t<is_char32_pointer<T>::value>> : std::true_type { using char_type = const char32_t*; };
+	template <class T, class Enable = void> struct is_charT_pointer : std::false_type {};
+	template <class T> struct is_charT_pointer<T, std::enable_if_t<is_char_pointer<T>::value>> : std::true_type { using char_type = const char*; };
+	template <class T> struct is_charT_pointer<T, std::enable_if_t<is_wchar_pointer<T>::value>> : std::true_type { using char_type = const wchar_t*; };
+	template <class T> struct is_charT_pointer<T, std::enable_if_t<is_char16_pointer<T>::value>> : std::true_type { using char_type = const char16_t*; };
+	template <class T> struct is_charT_pointer<T, std::enable_if_t<is_char32_pointer<T>::value>> : std::true_type { using char_type = const char32_t*; };
 
 
 	// Specialization for "const CharT*" types

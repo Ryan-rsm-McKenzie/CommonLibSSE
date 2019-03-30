@@ -8,6 +8,13 @@ namespace RE
 {
 	namespace BSScript
 	{
+		namespace
+		{
+			template <class T> struct _is_integer_type : std::is_integral<T> {};
+			template <> struct _is_integer_type<bool> : std::false_type {};
+		}
+		template <class T> struct is_integer_type : _is_integer_type<T> {};
+
 		template <class T> struct make_index_sequence_from_tuple : std::make_index_sequence<std::tuple_size<typename std::remove_reference_t<T>>::value> {};
 
 		template <class T> struct remove_cvp { using type = typename std::remove_pointer_t<typename std::remove_cv_t<T>>; };
@@ -50,6 +57,15 @@ namespace RE
 		template <class T> struct is_string : _is_string<typename std::remove_cv_t<T>>::type {};
 		template <class T> struct is_string_no_cvr : is_string<typename remove_cvr_t<T>> {};
 
+		namespace
+		{
+			template <class T> struct _is_string_compat : std::false_type {};
+			template <> struct _is_string_compat<char*> : std::true_type {};
+			template <> struct _is_string_compat<const char*> : std::true_type {};
+			template <> struct _is_string_compat<BSFixedString> : std::true_type {};
+		}
+		template <class T> struct is_string_compat : _is_string_compat<typename remove_cvr_t<T>> {};
+
 		template <class T> struct is_string_cref_compat : std::conjunction<std::disjunction<is_cref<T>, is_not_p_or_r<T>>, is_string_no_cvr<T>> {};
 
 		namespace
@@ -63,6 +79,12 @@ namespace RE
 
 		namespace
 		{
+			template <class T> struct _is_sint32_compat : std::conjunction<std::is_signed<T>, is_integer_type<T>> {};
+		}
+		template <class T> struct is_sint32_compat : _is_sint32_compat<typename remove_cvr_t<T>> {};
+
+		namespace
+		{
 			template <class T> struct _is_uint32 : std::false_type {};
 			template <> struct _is_uint32<unsigned int> : std::true_type {};
 			template <> struct _is_uint32<unsigned long> : std::true_type {};
@@ -72,11 +94,19 @@ namespace RE
 
 		namespace
 		{
+			template <class T> struct _is_uint32_compat : std::conjunction<std::is_unsigned<T>, is_integer_type<T>> {};
+		}
+		template <class T> struct is_uint32_compat : _is_uint32_compat<typename remove_cvr_t<T>> {};
+
+		namespace
+		{
 			template <class T> struct _is_float : std::false_type {};
 			template <> struct _is_float<float> : std::true_type {};
 		}
 		template <class T> struct is_float : _is_float<typename std::remove_cv_t<T>>::type {};
 		template <class T> struct is_float_no_cvr : is_float<typename remove_cvr_t<T>> {};
+
+		template <class T> struct is_float_compat : std::is_floating_point<typename remove_cvr_t<T>> {};
 
 		namespace
 		{
@@ -98,6 +128,18 @@ namespace RE
 		}
 		template <class T> struct is_builtin_type : _is_builtin_type<typename std::remove_cv_t<T>>::type {};
 		template <class T> struct is_builtin_type_no_cvr : is_builtin_type<typename remove_cvr_t<T>> {};
+
+		namespace
+		{
+			template <class T, class Enable = void> struct _is_builtin_compat : std::false_type {};
+			template <> struct _is_builtin_compat<void> : std::true_type {};
+			template <class T> struct _is_builtin_compat<T, std::enable_if_t<is_string_compat<T>::value>> : std::true_type {};
+			template <class T> struct _is_builtin_compat<T, std::enable_if_t<is_sint32_compat<T>::value>> : std::true_type {};
+			template <class T> struct _is_builtin_compat<T, std::enable_if_t<is_uint32_compat<T>::value>> : std::true_type {};
+			template <class T> struct _is_builtin_compat<T, std::enable_if_t<is_float_compat<T>::value>> : std::true_type {};
+			template <class T> struct _is_builtin_compat<T, std::enable_if_t<is_bool<T>::value>> : std::true_type {};
+		}
+		template <class T> struct is_builtin_compat : _is_builtin_compat<typename remove_cvr_t<T>> {};
 
 		template <class T> struct is_form_type : std::is_base_of<TESForm, typename remove_cvpr_t<T>> {};
 		template <class T> struct is_form_pointer : std::conjunction<is_form_type<T>, std::is_pointer<T>> {};

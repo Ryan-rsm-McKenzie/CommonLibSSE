@@ -27,7 +27,7 @@ namespace RE
 
 		[[nodiscard]] VMTypeID BSScriptArray::type_id() const
 		{
-			return _type.GetTypeID();
+			return _type.GetTypeID() + VMTypeID::kNoneArray;
 		}
 
 

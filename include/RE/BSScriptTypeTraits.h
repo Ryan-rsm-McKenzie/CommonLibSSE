@@ -43,5 +43,7 @@ namespace RE
 		template <class T> struct is_valid_return : std::disjunction<std::is_void<T>, is_valid_param<T>> {};
 		template <class R, class Cls, class... Args> struct is_valid_short_sig : std::conjunction<is_valid_return<R>, is_valid_base<Cls>, is_valid_param<Args>...> {};
 		template <class Int, class R, class Cls, class... Args> struct is_valid_long_sig : std::conjunction<is_uint32<typename std::make_unsigned_t<Int>>, is_valid_short_sig<R, Cls, Args...>> {};
+
+		template <class T> struct is_param_compat : std::disjunction<is_builtin_compat<T>, is_vm_builtin_array<T>, is_form_pointer<T>, is_vm_form_array<T>> {};
 	}
 }

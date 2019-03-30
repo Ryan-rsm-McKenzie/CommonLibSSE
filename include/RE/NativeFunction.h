@@ -22,55 +22,32 @@ namespace RE
 	{
 		namespace
 		{
-			template <class Last>
-			inline void SetTypesImpl(NF_util::NativeFunctionBase::ParameterInfo::Entry* a_data, std::size_t a_idx)
-			{
-				a_data[a_idx].type.SetTypeID(GetTypeID<Last>());
-			}
-
-
-			template <class First, class Second, class... Rest>
-			inline void SetTypesImpl(NF_util::NativeFunctionBase::ParameterInfo::Entry* a_data, std::size_t a_idx)
-			{
-				a_data[a_idx++].type.SetTypeID(GetTypeID<First>());
-				SetTypesImpl<Second, Rest...>(a_data, a_idx);
-			}
-
-
 			template <class F, class Tuple, std::size_t... I, class... Args>
-			inline constexpr decltype(auto) DoCallbackImpl(F&& a_func, Tuple&& a_tuple, std::index_sequence<I...>, Args&&... a_args)
+			inline constexpr decltype(auto) CallbackImpl(F&& a_func, Tuple&& a_tuple, std::index_sequence<I...>, Args&&... a_args)
 			{
 				return std::invoke(std::forward<F>(a_func), std::forward<Args>(a_args)..., std::get<I>(std::forward<Tuple>(a_tuple))...);
 			}
 
 
-			template <class... Args>
-			inline void SetTypes(NF_util::NativeFunctionBase::ParameterInfo::Entry* a_data)
-			{
-				std::size_t i = 0;
-				SetTypesImpl<Args...>(a_data, i);
-			}
-
-
 			template <class F, class Tuple, class... Args>
-			inline constexpr decltype(auto) DoCallBack(F&& a_func, Tuple&& a_tuple, Args&&... a_args)
+			inline constexpr decltype(auto) CallBack(F&& a_func, Tuple&& a_tuple, Args&&... a_args)
 			{
-				return DoCallbackImpl(std::forward<F>(a_func), std::forward<Tuple>(a_tuple), make_index_sequence_from_tuple<Tuple>{}, std::forward<Args>(a_args)...);
+				return CallbackImpl(std::forward<F>(a_func), std::forward<Tuple>(a_tuple), make_index_sequence_from_tuple<Tuple>{}, std::forward<Args>(a_args)...);
 			}
 
 
-			template <std::size_t I = 0, class Tuple, std::size_t SIZE = std::tuple_size_v<std::remove_reference_t<Tuple>>, class F, class... Args>
-			inline void ForEachTupleElem(Tuple&& a_tuple, F&& a_func, Args&&... a_args)
+			template <class... Args, std::size_t... Is>
+			std::tuple<Args...> MakeTupleImpl(StackFrame* a_frame, UInt32 a_offset, std::index_sequence<Is...>)
 			{
-				if constexpr (I < SIZE)
-				{
-					std::invoke(a_func, a_args..., std::get<I>(a_tuple));
+				return std::forward_as_tuple(Args{ a_frame->Get(Is, a_offset)->Unpack<Args>() }...);
+			}
 
-					if constexpr (I + 1 < SIZE)
-					{
-						ForEachTupleElem<I + 1>(std::forward<Tuple>(a_tuple), std::forward<F>(a_func), std::forward<Args>(a_args)...);
-					}
-				}
+
+			// tuple element construction order isn't guaranteed, so we need to wrap it
+			template <class... Args>
+			std::tuple<Args...> MakeTuple(StackFrame* a_frame, UInt32 a_offset)
+			{
+				return MakeTupleImpl<Args...>(a_frame, a_offset, std::make_index_sequence<sizeof...(Args)>{});
 			}
 
 
@@ -80,7 +57,7 @@ namespace RE
 				class NativeFunction : public NF_util::NativeFunctionBase
 				{
 				public:
-					using return_type = R;
+					using result_type = R;
 					using base_type = Base;
 					using function_type = F;
 					using FunctionFlag = IVirtualMachine::FunctionFlag;
@@ -89,77 +66,79 @@ namespace RE
 					NativeFunction() = delete;
 					NativeFunction(const NativeFunction&) = delete;
 					NativeFunction(NativeFunction&&) = delete;
+					NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags);
+					virtual ~NativeFunction() = default;																														// 00
 
+					virtual bool HasCallback() const override;																													// 15
+					virtual bool Run(BSScriptVariable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, BSScriptVariable* a_resultValue, StackFrame* a_frame);	// 16
 
-					NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags) :
-						NativeFunctionBase(a_fnName, a_className, is_static_base<base_type>::value, sizeof...(Args)),
-						callback(a_callback)
-					{
-						SetTypes<Args...>(params.data);
-						returnType = GetTypeID<return_type>();
-						if (a_flags != FunctionFlag::kNone) {
-							Internal::VirtualMachine::GetSingleton()->SetFunctionFlags(a_className, a_fnName, a_flags);
-						}
-					}
-
-
-					virtual ~NativeFunction() = default;	// 00
-
-
-					virtual bool HasCallback() const override	// 15
-					{
-						return callback != 0;
-					}
-
-
-					virtual bool Run(BSScriptVariable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, BSScriptVariable* a_resultValue, StackFrame* a_frame)	// 16
-					{
-						auto offset = a_frame->stack->GetOffset(a_frame);
-
-						base_type base{};
-						if constexpr (std::negation<is_static_base<base_type>>::value)
-						{
-							base = a_baseValue->Unpack<base_type>();
-							if (!base) {
-								return false;
-							}
-						}
-
-						std::tuple<Args...> args;
-						std::size_t i = 0;
-						ForEachTupleElem(args, [&](auto& a_elem)
-						{
-							using elem_type = remove_cvr_t<decltype(a_elem)>;
-							a_elem = a_frame->Get(i++, offset)->Unpack<elem_type>();
-						});
-
-						if constexpr (std::is_void<return_type>::value)
-						{
-							if constexpr (IS_LONG)
-							{
-								DoCallBack(callback, std::move(args), a_vm, a_stackID, std::move(base));
-								a_resultValue->SetNone();
-							} else {
-								DoCallBack(callback, std::move(args), std::move(base));
-								a_resultValue->SetNone();
-							}
-						} else {
-							if constexpr (IS_LONG)
-							{
-								auto result = DoCallBack(callback, std::move(args), a_vm, a_stackID, std::move(base));
-								a_resultValue->Pack<return_type>(result);
-							} else {
-								auto result = DoCallBack(callback, std::move(args), std::move(base));
-								a_resultValue->Pack<return_type>(result);
-							}
-						}
-						return true;
-					}
-
-
+				protected:
 					// members
-					function_type* callback;	// 50
+					function_type* _callback;	// 50
+
+				private:
 				};
+
+
+				template <bool IS_LONG, class F, class R, class Base, class... Args>
+				NativeFunction<IS_LONG, F, R, Base, Args...>::NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags) :
+					NativeFunctionBase(a_fnName, a_className, is_static_base<base_type>::value, sizeof...(Args)),
+					_callback(a_callback)
+				{
+					std::size_t i = 0;
+					((_params.data[i++].type.SetTypeID(GetTypeID<Args>())), ...);
+					_returnType = GetTypeID<result_type>();
+					if (a_flags != FunctionFlag::kNone) {
+						Internal::VirtualMachine::GetSingleton()->SetFunctionFlags(a_className, a_fnName, a_flags);
+					}
+				}
+
+
+				template <bool IS_LONG, class F, class R, class Base, class... Args>
+				bool NativeFunction<IS_LONG, F, R, Base, Args...>::HasCallback() const
+				{
+					return _callback != 0;
+				}
+
+
+				template <bool IS_LONG, class F, class R, class Base, class... Args>
+				bool NativeFunction<IS_LONG, F, R, Base, Args...>::Run(BSScriptVariable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, BSScriptVariable* a_resultValue, StackFrame* a_frame)
+				{
+					auto offset = a_frame->stack->GetOffset(a_frame);
+
+					base_type base{};
+					if constexpr (std::negation<is_static_base<base_type>>::value)
+					{
+						base = a_baseValue->Unpack<base_type>();
+						if (!base) {
+							return false;
+						}
+					}
+
+					UInt32 i = sizeof...(Args);
+					std::tuple<Args...> args = MakeTuple<Args...>(a_frame, offset);
+					if constexpr (std::is_void<result_type>::value)
+					{
+						if constexpr (IS_LONG)
+						{
+							CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
+							a_resultValue->SetNone();
+						} else {
+							CallBack(_callback, std::move(args), std::move(base));
+							a_resultValue->SetNone();
+						}
+					} else {
+						if constexpr (IS_LONG)
+						{
+							auto result = CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
+							a_resultValue->Pack<result_type>(result);
+						} else {
+							auto result = CallBack(_callback, std::move(args), std::move(base));
+							a_resultValue->Pack<result_type>(result);
+						}
+					}
+					return true;
+				}
 			}
 		}
 
@@ -175,7 +154,7 @@ namespace RE
 			using base = Impl::NativeFunction<false, R(Cls, Args...), R, Cls, Args...>;
 
 		public:
-			using return_type = typename base::return_type;
+			using result_type = typename base::result_type;
 			using base_type = typename base::base_type;
 			using function_type = typename base::function_type;
 			using FunctionFlag = IVirtualMachine::FunctionFlag;
@@ -195,7 +174,7 @@ namespace RE
 			using base = Impl::NativeFunction<true, R(Internal::VirtualMachine*, Int, Cls, Args...), R, Cls, Args...>;
 
 		public:
-			using return_type = typename base::return_type;
+			using result_type = typename base::result_type;
 			using base_type = typename base::base_type;
 			using function_type = typename base::function_type;
 			using FunctionFlag = IVirtualMachine::FunctionFlag;

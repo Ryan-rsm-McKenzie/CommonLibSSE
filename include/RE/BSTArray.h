@@ -308,7 +308,7 @@ namespace RE
 
 	public:
 		// members
-		void*		_M_allocator;	// 00 - memory allocator
+		void*		_M_allocator;	// 00 - ScrapHeap*
 		void*		_M_entries;		// 08
 		size_type	_M_capacity;	// 10
 		size_type	pad14;			// 14
@@ -868,14 +868,11 @@ namespace RE
 		//size_type pad14;			// 1C
 	};
 	namespace { using TestBSScrapArray = BSScrapArray<std::uint32_t>; }
-#if 0
 	STATIC_ASSERT(offsetof(TestBSScrapArray, _M_allocator) == 0x00);
 	STATIC_ASSERT(offsetof(TestBSScrapArray, _M_entries) == 0x08);
-	STATIC_ASSERT(offsetof(TestBSScrapArray, _M_capacity) == 0x18);
+	STATIC_ASSERT(offsetof(TestBSScrapArray, _M_capacity) == 0x10);
 	STATIC_ASSERT(offsetof(TestBSScrapArray, _M_count) == 0x18);
 	STATIC_ASSERT(sizeof(TestBSScrapArray) == 0x20);
-#endif
-	// DOUBLE CHECK OFFSETS
 
 
 	// Returns if/where the element was found, otherwise indexOut can be used as insert position
