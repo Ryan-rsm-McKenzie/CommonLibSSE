@@ -864,6 +864,9 @@
     <ClCompile Include="src\RE\ZeroFunctionArguments.cpp">
       <Filter>src\RE\Skyrim\BSScript</Filter>
     </ClCompile>
+    <ClCompile Include="src\SKSEInterface.cpp">
+      <Filter>src\RE\SKSE</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -2668,6 +2671,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\IStackCallbackFunctor.h">
       <Filter>include\RE\Skyrim\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSEInterface.h">
+      <Filter>include\RE\SKSE</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

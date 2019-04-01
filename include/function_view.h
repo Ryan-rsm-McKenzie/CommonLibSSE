@@ -9,8 +9,7 @@
 
 namespace ext
 {
-	template <class>
-	class result_of;
+	template <class> class result_of;
 
 
 	template <class F, class... ArgTypes>
@@ -25,13 +24,11 @@ namespace ext
 
 
 	template <class T, class R = void, class = void>
-	struct is_callable : std::false_type
-	{};
+	struct is_callable : std::false_type {};
 
 
 	template <class T>
-	struct is_callable<T, void, std::void_t<result_of_t<T>>> : std::true_type
-	{};
+	struct is_callable<T, void, std::void_t<result_of_t<T>>> : std::true_type {};
 
 
 	template <class T, class R>
@@ -40,28 +37,7 @@ namespace ext
 	{};
 
 
-	template <typename TSignature>
-	struct signature_helper;
-
-
-	template <typename TReturn, typename... TArgs>
-	struct signature_helper<TReturn(TArgs...)>
-	{
-		using fn_ptr_type = TReturn(*)(TArgs...);
-	};
-
-
-	template <typename TSignature>
-	using fn_ptr = typename signature_helper<TSignature>::fn_ptr_type;
-
-
-	template <typename T>
-	struct dependent_false : std::false_type
-	{};
-
-
-	template <typename TSignature>
-	class function_view;
+	template <typename TSignature> class function_view;
 
 
 	template <typename TReturn, typename... TArgs>

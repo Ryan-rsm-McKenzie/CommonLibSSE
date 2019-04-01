@@ -49,140 +49,143 @@ namespace RE
 			{
 				return MakeTupleImpl<Args...>(a_frame, a_offset, std::make_index_sequence<sizeof...(Args)>{});
 			}
+		}
 
 
-			namespace Impl
-			{
-				template <bool IS_LONG, class F, class R, class Base, class... Args>
-				class NativeFunction : public NF_util::NativeFunctionBase
-				{
-				public:
-					using result_type = R;
-					using base_type = Base;
-					using function_type = F;
-					using FunctionFlag = IVirtualMachine::FunctionFlag;
+		template <bool IS_LONG, class F, class R, class Base, class... Args>
+		class NativeFunction : public NF_util::NativeFunctionBase
+		{
+		public:
+			using result_type = R;
+			using base_type = Base;
+			using function_type = F;
+			using FunctionFlag = IVirtualMachine::FunctionFlag;
 
 
-					NativeFunction() = delete;
-					NativeFunction(const NativeFunction&) = delete;
-					NativeFunction(NativeFunction&&) = delete;
-					NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags);
-					virtual ~NativeFunction() = default;																														// 00
+			NativeFunction() = delete;
+			NativeFunction(const NativeFunction&) = delete;
+			NativeFunction(NativeFunction&&) = delete;
+			NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags);
+			virtual ~NativeFunction() = default;																														// 00
 
-					virtual bool HasCallback() const override;																													// 15
-					virtual bool Run(BSScriptVariable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, BSScriptVariable* a_resultValue, StackFrame* a_frame);	// 16
+			virtual bool HasCallback() const override;																													// 15
+			virtual bool Run(BSScriptVariable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, BSScriptVariable* a_resultValue, StackFrame* a_frame);	// 16
 
-				protected:
-					// members
-					function_type* _callback;	// 50
+		protected:
+			// members
+			function_type* _callback;	// 50
 
-				private:
-				};
-
-
-				template <bool IS_LONG, class F, class R, class Base, class... Args>
-				NativeFunction<IS_LONG, F, R, Base, Args...>::NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags) :
-					NativeFunctionBase(a_fnName, a_className, is_static_base<base_type>::value, sizeof...(Args)),
-					_callback(a_callback)
-				{
-					std::size_t i = 0;
-					((_params.data[i++].type.SetTypeID(GetTypeID<Args>())), ...);
-					_returnType = GetTypeID<result_type>();
-					if (a_flags != FunctionFlag::kNone) {
-						Internal::VirtualMachine::GetSingleton()->SetFunctionFlags(a_className, a_fnName, a_flags);
-					}
-				}
+		private:
+		};
 
 
-				template <bool IS_LONG, class F, class R, class Base, class... Args>
-				bool NativeFunction<IS_LONG, F, R, Base, Args...>::HasCallback() const
-				{
-					return _callback != 0;
-				}
+#define TmpltParams_ IS_LONG, F, R, Base, Args...
 
 
-				template <bool IS_LONG, class F, class R, class Base, class... Args>
-				bool NativeFunction<IS_LONG, F, R, Base, Args...>::Run(BSScriptVariable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, BSScriptVariable* a_resultValue, StackFrame* a_frame)
-				{
-					auto offset = a_frame->stack->GetOffset(a_frame);
-
-					base_type base{};
-					if constexpr (std::negation<is_static_base<base_type>>::value)
-					{
-						base = a_baseValue->Unpack<base_type>();
-						if (!base) {
-							return false;
-						}
-					}
-
-					UInt32 i = sizeof...(Args);
-					std::tuple<Args...> args = MakeTuple<Args...>(a_frame, offset);
-					if constexpr (std::is_void<result_type>::value)
-					{
-						if constexpr (IS_LONG)
-						{
-							CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
-							a_resultValue->SetNone();
-						} else {
-							CallBack(_callback, std::move(args), std::move(base));
-							a_resultValue->SetNone();
-						}
-					} else {
-						if constexpr (IS_LONG)
-						{
-							auto result = CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
-							a_resultValue->Pack<result_type>(result);
-						} else {
-							auto result = CallBack(_callback, std::move(args), std::move(base));
-							a_resultValue->Pack<result_type>(result);
-						}
-					}
-					return true;
-				}
+		template <bool IS_LONG, class F, class R, class Base, class... Args>
+		NativeFunction<TmpltParams_>::NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags) :
+			NativeFunctionBase(a_fnName, a_className, is_static_base<base_type>::value, sizeof...(Args)),
+			_callback(a_callback)
+		{
+			std::size_t i = 0;
+			((_params.data[i++].type.SetTypeID(GetTypeID<Args>())), ...);
+			_returnType = GetTypeID<result_type>();
+			if (a_flags != FunctionFlag::kNone) {
+				Internal::VirtualMachine::GetSingleton()->SetFunctionFlags(a_className, a_fnName, a_flags);
 			}
 		}
 
 
-		template <class F, class Enable = void> class NativeFunction;
-
-
-		template <class R, class Cls, class... Args>
-		class NativeFunction<R(Cls, Args...), std::enable_if_t<is_valid_short_sig<R, Cls, Args...>::value>> :
-			public Impl::NativeFunction<false, R(Cls, Args...), R, Cls, Args...>
+		template <bool IS_LONG, class F, class R, class Base, class... Args>
+		bool NativeFunction<TmpltParams_>::HasCallback() const
 		{
-		private:
-			using base = Impl::NativeFunction<false, R(Cls, Args...), R, Cls, Args...>;
-
-		public:
-			using result_type = typename base::result_type;
-			using base_type = typename base::base_type;
-			using function_type = typename base::function_type;
-			using FunctionFlag = IVirtualMachine::FunctionFlag;
+			return _callback != 0;
+		}
 
 
-			NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags = FunctionFlag::kNone) :
-				base(a_fnName, a_className, a_callback, a_flags)
-			{}
-		};
-
-
-		template <class Int, class R, class Cls, class... Args>
-		class NativeFunction<R(Internal::VirtualMachine*, Int, Cls, Args...), std::enable_if_t<is_valid_long_sig<Int, R, Cls, Args...>::value>> :
-			public Impl::NativeFunction<true, R(Internal::VirtualMachine*, Int, Cls, Args...), R, Cls, Args...>
+		template <bool IS_LONG, class F, class R, class Base, class... Args>
+		bool NativeFunction<TmpltParams_>::Run(BSScriptVariable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, BSScriptVariable* a_resultValue, StackFrame* a_frame)
 		{
-		private:
-			using base = Impl::NativeFunction<true, R(Internal::VirtualMachine*, Int, Cls, Args...), R, Cls, Args...>;
+			auto offset = a_frame->stack->GetOffset(a_frame);
 
-		public:
-			using result_type = typename base::result_type;
-			using base_type = typename base::base_type;
-			using function_type = typename base::function_type;
-			using FunctionFlag = IVirtualMachine::FunctionFlag;
+			base_type base{};
+			if constexpr (std::negation<is_static_base<base_type>>::value)
+			{
+				base = a_baseValue->Unpack<base_type>();
+				if (!base) {
+					return false;
+				}
+			}
+
+			UInt32 i = sizeof...(Args);
+			std::tuple<Args...> args = MakeTuple<Args...>(a_frame, offset);
+			if constexpr (std::is_void<result_type>::value)
+			{
+				if constexpr (IS_LONG)
+				{
+					CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
+					a_resultValue->SetNone();
+				} else {
+					CallBack(_callback, std::move(args), std::move(base));
+					a_resultValue->SetNone();
+				}
+			} else {
+				if constexpr (IS_LONG)
+				{
+					auto result = CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
+					a_resultValue->Pack<result_type>(result);
+				} else {
+					auto result = CallBack(_callback, std::move(args), std::move(base));
+					a_resultValue->Pack<result_type>(result);
+				}
+			}
+			return true;
+		}
 
 
-			NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags = FunctionFlag::kNone) :
-				base(a_fnName, a_className, a_callback, a_flags)
-			{}
-		};
+#undef TmpltParams_
 	}
+
+
+	template <class F, class Enable = void> class NativeFunction;
+
+
+	template <class R, class Cls, class... Args>
+	class NativeFunction<R(Cls, Args...), std::enable_if_t<BSScript::is_valid_short_sig<R, Cls, Args...>::value>> :
+		public BSScript::NativeFunction<false, R(Cls, Args...), R, Cls, Args...>
+	{
+	private:
+		using base = BSScript::NativeFunction<false, R(Cls, Args...), R, Cls, Args...>;
+
+	public:
+		using result_type = typename base::result_type;
+		using base_type = typename base::base_type;
+		using function_type = typename base::function_type;
+		using FunctionFlag = BSScript::IVirtualMachine::FunctionFlag;
+
+
+		NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags = FunctionFlag::kNone) :
+			base(a_fnName, a_className, a_callback, a_flags)
+		{}
+	};
+
+
+	template <class Int, class R, class Cls, class... Args>
+	class NativeFunction<R(BSScript::Internal::VirtualMachine*, Int, Cls, Args...), std::enable_if_t<BSScript::is_valid_long_sig<Int, R, Cls, Args...>::value>> :
+		public BSScript::NativeFunction<true, R(BSScript::Internal::VirtualMachine*, Int, Cls, Args...), R, Cls, Args...>
+	{
+	private:
+		using base = BSScript::NativeFunction<true, R(BSScript::Internal::VirtualMachine*, Int, Cls, Args...), R, Cls, Args...>;
+
+	public:
+		using result_type = typename base::result_type;
+		using base_type = typename base::base_type;
+		using function_type = typename base::function_type;
+		using FunctionFlag = BSScript::IVirtualMachine::FunctionFlag;
+
+
+		NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags = FunctionFlag::kNone) :
+			base(a_fnName, a_className, a_callback, a_flags)
+		{}
+	};
 }
