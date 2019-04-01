@@ -412,6 +412,7 @@ namespace RE
 		}
 
 
+#if _DEBUG
 		template <class T>
 		constexpr BSScriptArray* BSScriptArray::iterator_base<T>::get_proxy() const
 		{
@@ -439,6 +440,7 @@ namespace RE
 		{
 			assert(_ptr == a_rhs._ptr);	// iterators incompatible
 		}
+#endif
 
 
 		[[nodiscard]] constexpr auto BSScriptArray::at(size_type a_pos)

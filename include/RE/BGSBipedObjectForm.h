@@ -10,7 +10,7 @@ namespace RE
 	public:
 		enum class BipedObject : UInt32
 		{
-			kNone = 0xFFFFFFFF,
+			kNone = static_cast<std::underlying_type_t<BipedObject>>(-1),
 			kHead = 0,
 			kHair = 1,
 			kBody = 2,
