@@ -1,5 +1,7 @@
 #pragma once
 
+#include <minwinbase.h>  // CRITICAL_SECTION
+
 #include "RE/ActiveEffect.h"  // ActiveEffect
 #include "RE/ActorProcessManager.h"  // ActorProcessManager
 #include "RE/ActorState.h"  // ActorState
@@ -129,20 +131,21 @@ namespace RE
 
 		struct ActorValueMap
 		{
-			template<typename T>
+			template <class T>
 			struct LocalMap
 			{
 				T* operator[](ActorValue8 a_actorValue)
 				{
-					if (actorValues && entries) {
+					ActorValue8* akVals = actorValues.data();
+					if (akVals && entries) {
 						UInt32 idx = 0;
-						while (actorValues[idx] != (ActorValue8)0) {
-							if (actorValues[idx] == a_actorValue) {
+						while (akVals[idx] != (ActorValue8)0) {
+							if (akVals[idx] == a_actorValue) {
 								break;
 							}
 							++idx;
 						}
-						if (actorValues[idx] != (ActorValue8)0) {
+						if (akVals[idx] != (ActorValue8)0) {
 							return &entries[idx];
 						}
 					}
@@ -151,7 +154,7 @@ namespace RE
 
 
 				// members
-				ActorValue8*	actorValues;	// 00
+				BSFixedString	actorValues;	// 00
 				T*				entries;		// 08
 			};
 			STATIC_ASSERT(sizeof(LocalMap<float>) == 0x10);
@@ -182,7 +185,7 @@ namespace RE
 		virtual bool							HasKeyword(BGSKeyword* a_keyword) override;																																							// 048
 		virtual BGSScene*						GetCurrentScene() const override;																																									// 04A
 		virtual void							SetCurrentScene(BGSScene* a_scene) override;																																						// 04B
-        virtual RefHandle&				        RemoveItem(RefHandle& a_dropHandle, TESForm* a_item, SInt32 a_count, RemoveType a_mode, BaseExtraList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0) override;		// 056
+		virtual RefHandle&				        RemoveItem(RefHandle& a_dropHandle, TESForm* a_item, SInt32 a_count, RemoveType a_mode, BaseExtraList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0) override;		// 056
 		virtual void							GetMarkerPosition(NiPoint3* a_pos) override;																																						// 05B
 		virtual MagicCaster*					GetMagicCaster(UInt32 a_slot) const override;																																						// 05C
 		virtual MagicTarget*					GetMagicTarget() const override;																																									// 05D
@@ -239,7 +242,7 @@ namespace RE
 		virtual void							Unk_C8(void);																																														// 0C8
 		virtual void							Unk_C9(void);																																														// 0C9
 		virtual void							OnArmorActorValueChanged();																																											// 0CA
-		virtual void							DropItem(UInt32& a_droppedItemHandle, TESForm* a_item, BaseExtraList* a_extraList, UInt32 a_count, UInt32 a_arg5, UInt32 a_arg6);																	// 0CB
+		virtual void							DropItem(RefHandle& a_droppedItemHandle, TESForm* a_item, BaseExtraList* a_extraList, UInt32 a_count, UInt32 a_arg5, UInt32 a_arg6);																// 0CB
 		virtual void							PickUpItem(TESObjectREFR* a_item, UInt32 a_count, bool a_arg3 = false, bool a_playSound = true);																									// 0CC
 		virtual void							Unk_CD(void);																																														// 0CD
 		virtual void							Unk_CE(void);																																														// 0CE
@@ -311,8 +314,8 @@ namespace RE
 		virtual void							Unk_110(void);																																														// 110
 		virtual void							Unk_111(void);																																														// 111
 		virtual SInt32							GetCurrentShoutVariation();																																											// 112
-		virtual void							SetLastRiddenHorseHandle(UInt32 a_horseRefHandle);																																					// 113
-		virtual UInt32							GetLastRiddenHorseHandle(UInt32& a_outHandle);																																						// 114
+		virtual void							SetLastRiddenHorseHandle(RefHandle a_horseRefHandle);																																				// 113
+		virtual RefHandle						GetLastRiddenHorseHandle(RefHandle& a_outHandle);																																					// 114
 		virtual void							Unk_115(void);																																														// 115
 		virtual bool							IsNPCType();																																														// 116 - used for soulgems
 		virtual void							Unk_117(void);																																														// 117
@@ -372,9 +375,9 @@ namespace RE
 		UInt32						unk0E8;										// 0E8
 		UInt32						pad0EC;										// 0EC
 		ActorProcessManager*		processManager;								// 0F0
-		UInt32						refHandleDialogueTarget;					// 0F8
-		UInt32						refHandleCombatTarget;						// 0FC
-		UInt32						refHandleKiller;							// 100
+		RefHandle					dialogueTarget;								// 0F8
+		RefHandle					combatTarget;								// 0FC
+		RefHandle					killer;										// 100
 		UInt32						unk104;										// 104
 		float						unk108;										// 108 - init'd to -1
 		UInt32						unk10C;										// 10C
@@ -415,18 +418,14 @@ namespace RE
 		ActorValueModifiers			avVoicePoints;								// 24C
 		float						unk258;										// 258 - init'd to -1
 		UInt32						unk25C;										// 25C
-		UInt64						unk260;										// 260
+		WeightData*					smallWeightData;							// 260
 		float						unk268;										// 268
 		float						unk26C;										// 26C
 		UInt32						unk270;										// 270
 		UInt32						unk274;										// 274
 		UInt64						unk278;										// 278
 		UInt64						unk280;										// 280
-		UInt64						unk288;										// 288
-		UInt64						unk290;										// 290
-		UInt64						unk298;										// 298
-		UInt64						unk2A0;										// 2A0
-		UInt64						unk2A8;										// 2A8
+		CRITICAL_SECTION			unk288;										// 288
 	};
 	STATIC_ASSERT(offsetof(Actor, addedSpells) == 0x188);
 	STATIC_ASSERT(sizeof(Actor) == 0x2B0);

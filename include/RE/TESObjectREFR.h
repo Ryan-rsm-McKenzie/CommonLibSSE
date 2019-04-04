@@ -19,6 +19,7 @@ namespace RE
 	class BSAnimNoteReceiver;
 	class BSFaceGenAnimationData;
 	class BSFaceGenNiNode;
+	class BSFlattenedBoneTree;
 	class InventoryChanges;
 	class MagicCaster;
 	class MagicTarget;
@@ -73,6 +74,13 @@ namespace RE
 		};
 
 
+		struct WeightData : BSIntrusiveRefCounted
+		{
+			UInt64 unk0008[(0x2778 - 0x8) >> 3];	// 08
+		};
+		STATIC_ASSERT(sizeof(WeightData) == 0x2778);
+
+
 		struct LoadedState
 		{
 			UInt8	todo[0x68];	// 00
@@ -96,7 +104,7 @@ namespace RE
 		virtual void					Unk_11(void) override;																																										// 11
 		virtual void					Unk_12(void) override;																																										// 12
 		virtual void					InitItem() override;																																										// 13
-		virtual FormType				GetFormType() override;																																										// 15 - { return FormType::Reference; }
+		virtual FormType				GetFormType() override;																																										// 15
 		virtual void					GetFormDesc(char* a_buf, UInt32 a_bufLen) override;																																			// 16
 		virtual bool					GetFlag00010000() override;																																									// 18
 		virtual bool					NeverFades() override;																																										// 1A
@@ -190,8 +198,8 @@ namespace RE
 		virtual void					Unk_7B(void);																																												// 7B
 		virtual void					Unk_7C(void);																																												// 7C
 		virtual void					Unk_7D(void);																																												// 7D
-		virtual ActorWeightModel*		GetWeightModel(UInt32 a_weightModel);																																						// 7E - 0 Small 1 Large
-		virtual void					Unk_7F(void);																																												// 7F
+		virtual WeightData*				GetWeightData(bool a_large);																																								// 7E - { return GetSmallWeightData(); }
+		virtual WeightData*				GetSmallWeightData();																																										// 7F
 		virtual void					Unk_80(void);																																												// 80
 		virtual void					Unk_81(void);																																												// 81
 		virtual void					Unk_82(void);																																												// 82

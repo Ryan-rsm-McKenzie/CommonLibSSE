@@ -57,7 +57,7 @@ private:
 	};
 
 
-	inline static PluginHandle									_pluginHandle = kPluginHandle_Invalid;
+	inline static PluginHandle									_pluginHandle = static_cast<PluginHandle>(kPluginHandle_Invalid);
 	inline static UInt32										_releaseIndex = 0;
 
 	inline static SKSEScaleformInterface*						_scaleformInterface = 0;
