@@ -10,10 +10,11 @@
 
 namespace RE
 {
+	struct StaticFunctionTag {};
+
+
 	namespace BSScript
 	{
-		struct StaticFunctionTag {};
-
 		namespace
 		{
 			template <class T> struct _is_vm_array : std::false_type {};

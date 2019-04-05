@@ -59,7 +59,7 @@ namespace RE
 				reference& operator=(reference&& a_rhs);
 				reference& operator=(const value_type& a_val);
 
-				template <typename std::enable_if_t<std::is_integral<T>::value, int> = 0> reference& operator+=(const value_type& a_val);
+				template <typename std::enable_if_t<std::is_arithmetic<T>::value, int> = 0> reference& operator+=(const value_type& a_val);
 
 			protected:
 				friend class VMArray<T>;
@@ -286,7 +286,7 @@ namespace RE
 
 
 		template <class T>
-		template <typename std::enable_if_t<std::is_integral<T>::value, int>>
+		template <typename std::enable_if_t<std::is_arithmetic<T>::value, int>>
 		auto VMArray<T>::reference::operator+=(const value_type& a_val)
 			-> reference&
 		{

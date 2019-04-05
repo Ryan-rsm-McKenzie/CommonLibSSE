@@ -15,7 +15,7 @@ namespace RE
 		VMTypeID	GetTypeIDFromFormTypeID(UInt32 a_typeID);
 		void		BindID(BSTSmartPointer<BSScriptObject>& a_object, const void* a_srcData, UInt32 a_typeID);
 		void		PackHandle(BSScriptVariable* a_dst, const void* a_src, UInt32 a_typeID);
-		void*		UnpackHandle(const BSScriptVariable* a_src, UInt32 a_typeID);
+		void*		UnpackHandle(BSScriptVariable* a_src, UInt32 a_typeID);
 
 
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
@@ -75,42 +75,42 @@ namespace RE
 
 
 		template <class T, typename std::enable_if_t<is_static_base_pointer<T>::value, int> = 0>
-		inline T UnpackValue(const BSScriptVariable* a_src)
+		inline T UnpackValue(BSScriptVariable* a_src)
 		{
 			return static_cast<T>(0);
 		}
 
 
 		template <class T, typename std::enable_if_t<is_sint32_compat<T>::value, int> = 0>
-		inline T UnpackValue(const BSScriptVariable* a_src)
+		inline T UnpackValue(BSScriptVariable* a_src)
 		{
 			return a_src->GetSInt();
 		}
 
 
 		template <class T, typename std::enable_if_t<is_uint32_compat<T>::value, int> = 0>
-		inline T UnpackValue(const BSScriptVariable* a_src)
+		inline T UnpackValue(BSScriptVariable* a_src)
 		{
 			return a_src->GetUInt();
 		}
 
 
 		template <class T, typename std::enable_if_t<is_float_compat<T>::value, int> = 0>
-		inline T UnpackValue(const BSScriptVariable* a_src)
+		inline T UnpackValue(BSScriptVariable* a_src)
 		{
 			return a_src->GetFloat();
 		}
 
 
 		template <class T, typename std::enable_if_t<is_bool_no_cvr<T>::value, int> = 0>
-		inline T UnpackValue(const BSScriptVariable* a_src)
+		inline T UnpackValue(BSScriptVariable* a_src)
 		{
 			return a_src->GetBool();
 		}
 
 
 		template <class T, typename std::enable_if_t<is_string_cref_compat<T>::value, int> = 0>
-		inline T UnpackValue(const BSScriptVariable* a_src)
+		inline T UnpackValue(BSScriptVariable* a_src)
 		{
 			return a_src->GetString();
 		}

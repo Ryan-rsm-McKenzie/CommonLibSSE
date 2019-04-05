@@ -315,7 +315,8 @@
     <ClCompile Include="src\RE\UIStringHolder.cpp" />
     <ClCompile Include="src\RE\VirtualMachine.cpp" />
     <ClCompile Include="src\RE\ZeroFunctionArguments.cpp" />
-    <ClCompile Include="src\SKSEInterface.cpp" />
+    <ClCompile Include="src\SKSE\Interface.cpp" />
+    <ClCompile Include="src\SKSE\RegistrationSet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ForceInclude.h" />
@@ -917,7 +918,8 @@
     <ClInclude Include="include\RE\VMArray.h" />
     <ClInclude Include="include\RE\WeatherType.h" />
     <ClInclude Include="include\RE\ZeroFunctionArguments.h" />
-    <ClInclude Include="include\SKSEInterface.h" />
+    <ClInclude Include="include\SKSE\RegistrationSet.h" />
+    <ClInclude Include="include\SKSE\Interface.h" />
     <ClInclude Include="include\Util.h" />
     <ClInclude Include="src\RE\GFxResourceKey.cpp" />
   </ItemGroup>

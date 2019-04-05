@@ -6,6 +6,7 @@
 
 #include "RE/BSScriptTypeTraits.h"
 #include "RE/IFunctionArguments.h"  // IFunctionArguments
+#include "RE/ZeroFunctionArguments.h"  // ZeroFunctionArguments
 
 
 namespace RE
@@ -51,35 +52,35 @@ namespace RE
 
 
 		template <class... Args>
-		FunctionArguments<TmpltParams_>::FunctionArguments(Args... a_args) :
+		inline FunctionArguments<TmpltParams_>::FunctionArguments(Args... a_args) :
 			_args(a_args...)
 		{}
 
 
 		template <class... Args>
-		FunctionArguments<TmpltParams_>::FunctionArguments()
+		inline FunctionArguments<TmpltParams_>::FunctionArguments()
 		{}
 
 
 		template <class... Args>
-		FunctionArguments<TmpltParams_>::FunctionArguments(const FunctionArguments& a_rhs) :
+		inline FunctionArguments<TmpltParams_>::FunctionArguments(const FunctionArguments& a_rhs) :
 			_args(a_rhs._args)
 		{}
 
 
 		template <class... Args>
-		FunctionArguments<TmpltParams_>::FunctionArguments(FunctionArguments&& a_rhs) :
+		inline FunctionArguments<TmpltParams_>::FunctionArguments(FunctionArguments&& a_rhs) :
 			_args(std::move(a_rhs._args))
 		{}
 
 
 		template <class... Args>
-		FunctionArguments<TmpltParams_>::~FunctionArguments()
+		inline FunctionArguments<TmpltParams_>::~FunctionArguments()
 		{}
 
 
 		template <class... Args>
-		bool FunctionArguments<TmpltParams_>::Copy(BSScrapArray<BSScriptVariable>& a_dst)
+		inline bool FunctionArguments<TmpltParams_>::Copy(BSScrapArray<BSScriptVariable>& a_dst)
 		{
 			ResizeArguments(a_dst, sizeof...(Args));
 			CopyArgs(_args, a_dst);
@@ -96,8 +97,15 @@ namespace RE
 
 
 	template <class... Args>
-	FunctionArguments<Args...>* MakeFunctionArguments(Args... a_args)
+	inline BSScript::IFunctionArguments* MakeFunctionArguments(Args... a_args)
 	{
 		return new FunctionArguments<Args...>{ a_args... };
+	}
+
+
+	template <>
+	inline BSScript::IFunctionArguments* MakeFunctionArguments()
+	{
+		return new BSScript::ZeroFunctionArguments();
 	}
 }

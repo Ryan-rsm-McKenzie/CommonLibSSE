@@ -864,7 +864,10 @@
     <ClCompile Include="src\RE\ZeroFunctionArguments.cpp">
       <Filter>src\RE\Skyrim\BSScript</Filter>
     </ClCompile>
-    <ClCompile Include="src\SKSEInterface.cpp">
+    <ClCompile Include="src\SKSE\Interface.cpp">
+      <Filter>src\RE\SKSE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SKSE\RegistrationSet.cpp">
       <Filter>src\RE\SKSE</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2672,7 +2675,10 @@
     <ClInclude Include="include\RE\IStackCallbackFunctor.h">
       <Filter>include\RE\Skyrim\BSScript</Filter>
     </ClInclude>
-    <ClInclude Include="include\SKSEInterface.h">
+    <ClInclude Include="include\SKSE\RegistrationSet.h">
+      <Filter>include\RE\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\Interface.h">
       <Filter>include\RE\SKSE</Filter>
     </ClInclude>
   </ItemGroup>

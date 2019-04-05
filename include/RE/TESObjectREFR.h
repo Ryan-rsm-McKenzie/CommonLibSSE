@@ -184,7 +184,7 @@ namespace RE
 		virtual void					SetNiNode(NiNode* a_root, UInt32 a_unk1);																																					// 6D - NULL, 1?
 		virtual void					Unk_6E(void);																																												// 6E
 		virtual NiNode*					GetNiRootNode(UInt32 a_firstPerson);																																						// 6F
-		virtual NiNode*					GetNiNode(void) const;																																										// 70 - Root of the skeleton (Get3D)
+		virtual NiNode*					GetNiNode() const;																																											// 70 - Root of the skeleton (Get3D)
 		virtual void					Unk_71(void);																																												// 71
 		virtual void					Unk_72(void);																																												// 72
 		virtual NiPoint3*				GetBoundLeftFrontBottom(NiPoint3* a_out) const;																																				// 73
@@ -210,7 +210,7 @@ namespace RE
 		virtual void					Unk_87(void);																																												// 87
 		virtual void					Unk_88(void);																																												// 88
 		virtual void					Disable();																																													// 89
-		virtual void					ResetInventory(bool a_unk);																																									// 8A
+		virtual void					ResetInventory(bool a_regenerate);																																							// 8A
 		virtual void					Unk_8B(void);																																												// 8B
 		virtual void					Unk_8C(void);																																												// 8C
 		virtual void					Unk_8D(void);																																												// 8D

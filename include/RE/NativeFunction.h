@@ -188,4 +188,11 @@ namespace RE
 			base(a_fnName, a_className, a_callback, a_flags)
 		{}
 	};
+
+
+	template <class F>
+	NativeFunction<F>* MakeNativeFunction(const char* a_fnName, const char* a_className, F* a_callback, BSScript::IVirtualMachine::FunctionFlag a_flags = BSScript::IVirtualMachine::FunctionFlag::kNone)
+	{
+		return new NativeFunction<F>(a_fnName, a_className, a_callback, a_flags);
+	}
 }
