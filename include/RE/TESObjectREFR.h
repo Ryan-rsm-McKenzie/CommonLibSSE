@@ -14,7 +14,6 @@
 
 namespace RE
 {
-	class ActorWeightModel;
 	class BaseExtraList;
 	class BSAnimNoteReceiver;
 	class BSFaceGenAnimationData;

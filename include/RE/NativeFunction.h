@@ -195,4 +195,17 @@ namespace RE
 	{
 		return new NativeFunction<F>(a_fnName, a_className, a_callback, a_flags);
 	}
+
+
+	namespace BSScript
+	{
+		namespace Internal
+		{
+			template <class F>
+			void VirtualMachine::RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, FunctionFlag a_flags)
+			{
+				RegisterFunction(MakeNativeFunction(a_fnName, a_className, a_callback, a_flags));
+			}
+		}
+	}
 }

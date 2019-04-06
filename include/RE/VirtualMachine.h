@@ -91,6 +91,7 @@ namespace RE
 				static VirtualMachine*					GetSingleton();
 
 				bool									AllocateArray(const VMTypeID& a_typeID, std::size_t a_size, BSTSmartPointer<BSScriptArray>& a_array);
+				template <class F> void					RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, FunctionFlag a_flags = FunctionFlag::kNone);
 
 
 				// members
