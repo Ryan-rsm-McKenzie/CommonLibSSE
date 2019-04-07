@@ -32,10 +32,11 @@ namespace RE
 		UInt64	unk20;	// 20
 		UInt64	unk28;	// 28
 		UInt64	unk30;	// 30
-		UInt64	unk38;	// 38
-		UInt64	unk40;	// 40
+		void*	unk38;	// 38
+		void*	unk40;	// 40
 		UInt64	unk48;	// 48
-		UInt64	unk50;	// 50
+		UInt32	unk50;	// 50
+		UInt32	pad54;	// 54
 		UInt64	unk58;	// 58
 		UInt64	unk60;	// 60
 		UInt64	unk68;	// 68

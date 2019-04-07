@@ -221,6 +221,7 @@
     <ClCompile Include="src\RE\hkBaseObject.cpp" />
     <ClCompile Include="src\RE\hkReferencedObject.cpp" />
     <ClCompile Include="src\RE\hkStringPtr.cpp" />
+    <ClCompile Include="src\RE\IFormFactory.cpp" />
     <ClCompile Include="src\RE\IFunction.cpp" />
     <ClCompile Include="src\RE\IFunctionArguments.cpp" />
     <ClCompile Include="src\RE\Inventory.cpp" />
@@ -490,6 +491,8 @@
     <ClInclude Include="include\RE\Color.h" />
     <ClInclude Include="include\RE\CommandTable.h" />
     <ClInclude Include="include\RE\CompiledScriptLoader.h" />
+    <ClInclude Include="include\RE\ConcreteFormFactory.h" />
+    <ClInclude Include="include\RE\ConcreteObjectFormFactory.h" />
     <ClInclude Include="include\RE\Condition.h" />
     <ClInclude Include="include\RE\ConeProjectile.h" />
     <ClInclude Include="include\RE\ConsoleManager.h" />
@@ -648,6 +651,7 @@
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h" />
     <ClInclude Include="include\RE\IAnimationSetCallbackFunctor.h" />
     <ClInclude Include="include\RE\IDEvent.h" />
+    <ClInclude Include="include\RE\IFormFactory.h" />
     <ClInclude Include="include\RE\IFunction.h" />
     <ClInclude Include="include\RE\IFunctionArguments.h" />
     <ClInclude Include="include\RE\ILoader.h" />

@@ -38,13 +38,6 @@ namespace RE
 	}
 
 
-	void CommandInfo::SetParameters()
-	{
-		numParams = 0;
-		params = 0;
-	}
-
-
 	CommandInfo* CommandInfo::GetFirstScriptCommand()
 	{
 		return reinterpret_cast<CommandInfo*>(g_firstObScriptCommand.GetPtr());
@@ -66,5 +59,12 @@ namespace RE
 			}
 		}
 		return 0;
+	}
+
+
+	void CommandInfo::SetParameters()
+	{
+		numParams = 0;
+		params = 0;
 	}
 }

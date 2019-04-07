@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstddef>  // nullptr_t
-#include <type_traits>  // remove_extent_t, enable_if_t, is_convertible
+#include <type_traits>  // enable_if_t, is_convertible
 #include <utility>  // swap
 
 
@@ -16,7 +16,7 @@ namespace RE
 	class NiPointer
 	{
 	public:
-		using element_type = std::remove_extent_t<T>;
+		using element_type = T;
 
 
 		constexpr NiPointer() noexcept :
@@ -161,6 +161,7 @@ namespace RE
 		{
 			return get() != 0;
 		}
+
 	protected:
 		void IncRefCount()
 		{
@@ -178,6 +179,7 @@ namespace RE
 		}
 
 
+		// members
 		T* _object;	// 0
 	};
 	using TestNiPointer = NiPointer<std::size_t>;

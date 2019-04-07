@@ -870,6 +870,9 @@
     <ClCompile Include="src\SKSE\RegistrationSet.cpp">
       <Filter>src\RE\SKSE</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\IFormFactory.cpp">
+      <Filter>src\RE\Skyrim\BSSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -2683,6 +2686,15 @@
     </ClInclude>
     <ClInclude Include="include\SKSE\Events.h">
       <Filter>include\RE\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IFormFactory.h">
+      <Filter>include\RE\Skyrim\BSSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ConcreteFormFactory.h">
+      <Filter>include\RE\Skyrim\BSSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ConcreteObjectFormFactory.h">
+      <Filter>include\RE\Skyrim\BSSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

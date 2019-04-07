@@ -2,6 +2,7 @@
 
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // FormType
+#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
 
 
 namespace RE
@@ -90,42 +91,30 @@ namespace RE
 		virtual const char*		GetTypeString() const;																										// 39 - { return ""; }
 		virtual bool			Unk_3A(void);																												// 3A - { return 1; }
 
-		static TESForm*	LookupByID(UInt32 a_formID);
-		template <typename T>
-		static T* LookupByID(UInt32 a_formID)
-		{
-			TESForm* form = LookupByID(a_formID);
-			return (form && (UInt8)form->formType == T::kTypeID) ? static_cast<T*>(form) : 0;
-		}
+		static TESForm*					LookupByID(UInt32 a_formID);
+		template <class T> static T*	LookupByID(UInt32 a_formID);
 
-		bool			Is(FormType a_type) const;
-		template <class First, class... Rest>
-		bool			Is(First a_first, Rest... a_rest) const
-		{
-			return Is(a_first) || Is(a_rest...);
-		}
+		bool										Is(FormType a_type) const;
+		template <class First, class... Rest> bool	Is(First a_first, Rest... a_rest) const;
+		bool										IsNot(FormType a_type) const;
+		template <class First, class... Rest> bool	IsNot(First a_first, Rest... a_rest) const;
 
-		bool			IsNot(FormType a_type) const;
-		template <class First, class... Rest>
-		bool			IsNot(First a_first, Rest... a_rest) const
-		{
-			return IsNot(a_first) && IsNot(a_rest...);
-		}
+		void	CopyFromEx(TESForm* a_rhs);
+		bool	IsKey() const;
+		bool	IsWeapon() const;
+		bool	IsAmmo() const;
+		bool	IsArmor() const;
+		bool	IsSoulGem() const;
+		bool	IsLockpick() const;
+		bool	IsGold() const;
+		bool	IsPlayer() const;
+		bool	IsPlayerRef() const;
+		bool	HasWorldModel() const;
+		UInt32	GetFormID() const;
+		float	GetWeight() const;
+		SInt32	GetValue() const;
 
-		void			CopyFromEx(TESForm* a_rhs);
-		bool			IsKey() const;
-		bool			IsWeapon() const;
-		bool			IsAmmo() const;
-		bool			IsArmor() const;
-		bool			IsSoulGem() const;
-		bool			IsLockpick() const;
-		bool			IsGold() const;
-		bool			IsPlayer() const;
-		bool			IsPlayerRef() const;
-		bool			HasWorldModel() const;
-		UInt32			GetFormID() const;
-		float			GetWeight() const;
-		SInt32			GetValue() const;
+		TES_HEAP_REDEFINE_NEW();
 
 
 		// members
@@ -141,4 +130,26 @@ namespace RE
 		static TESForm* LookupByID_Internal(UInt32 a_formID);
 	};
 	STATIC_ASSERT(sizeof(TESForm) == 0x20);
+
+
+	template <class T>
+	inline static T* TESForm::LookupByID(UInt32 a_formID)
+	{
+		TESForm* form = LookupByID(a_formID);
+		return (form && (UInt8)form->formType == T::kTypeID) ? static_cast<T*>(form) : 0;
+	}
+
+
+	template <class First, class... Rest>
+	inline bool TESForm::Is(First a_first, Rest... a_rest) const
+	{
+		return Is(a_first) || Is(a_rest...);
+	}
+
+
+	template <class First, class... Rest>
+	inline bool TESForm::IsNot(First a_first, Rest... a_rest) const
+	{
+		return IsNot(a_first) && IsNot(a_rest...);
+	}
 }

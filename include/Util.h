@@ -245,6 +245,18 @@ public:
 		return _type;
 	}
 
+
+	T GetType()
+	{
+		return _type;
+	}
+
+
+	std::uintptr_t GetUIntPtr()
+	{
+		return _offset;
+	}
+
 private:
 	union
 	{
@@ -267,6 +279,18 @@ public:
 
 
 	operator std::uintptr_t()
+	{
+		return _offset;
+	}
+
+
+	std::uintptr_t GetType()
+	{
+		return _offset;
+	}
+
+
+	std::uintptr_t GetUIntPtr()
 	{
 		return _offset;
 	}

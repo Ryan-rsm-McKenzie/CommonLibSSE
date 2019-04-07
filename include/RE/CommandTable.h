@@ -89,11 +89,12 @@ namespace RE
 		Type		typeID;		// 08 - ParamType
 		UInt32		isOptional;	// 0C - do other bits do things?
 	};
+	STATIC_ASSERT(sizeof(SCRIPT_PARAMETER) == 0x10);
 
 
 	struct CommandInfo
 	{
-		enum
+		enum : UInt32
 		{
 			kCommand_ConsoleCommandsBegin = 0x0000,
 			kCommand_ConsoleCommandsend = 0x01B3,
@@ -130,14 +131,14 @@ namespace RE
 
 			// members
 			char	unk00;	// 00
-			int		value;	// 01
+			SInt32	value;	// 01
 		};
 #pragma pack(pop)
 
 
 		struct ScriptData
 		{
-			Chunk*	GetChunk();
+			Chunk* GetChunk();
 
 
 			// members
@@ -149,9 +150,17 @@ namespace RE
 		};
 
 
-		typedef bool(*FnExecute)(const SCRIPT_PARAMETER* a_paramInfo, ScriptData* a_scriptData, TESObjectREFR* a_thisObj, TESObjectREFR* a_containingObj, Script* a_scriptObj, ScriptLocals* a_locals, double& a_result, UInt32& a_opcodeOffsetPtr);
-		typedef bool(*FnParse)(UInt32 a_numParams, const SCRIPT_PARAMETER* a_paramInfo, ScriptLineBuffer* a_lineBuf, ScriptBuffer* a_scriptBuf);
-		typedef bool(*FnEval)(TESObjectREFR* a_thisObj, void* a_arg1, void* a_arg2, double& a_result);
+		using FnExecute = bool(const SCRIPT_PARAMETER* a_paramInfo, ScriptData* a_scriptData, TESObjectREFR* a_thisObj, TESObjectREFR* a_containingObj, Script* a_scriptObj, ScriptLocals* a_locals, double& a_result, UInt32& a_opcodeOffsetPtr);
+		using FnParse = bool(UInt32 a_numParams, const SCRIPT_PARAMETER* a_paramInfo, ScriptLineBuffer* a_lineBuf, ScriptBuffer* a_scriptBuf);
+		using FnEval = bool(TESObjectREFR* a_thisObj, void* a_arg1, void* a_arg2, double& a_result);
+
+
+		static CommandInfo*			GetFirstScriptCommand();
+		static CommandInfo*			GetFirstConsoleCommand();
+		static CommandInfo*			Locate(const char* a_longName);
+
+		template <UInt16 SIZE> void	SetParameters(const SCRIPT_PARAMETER(&a_params)[SIZE]);
+		void						SetParameters();
 
 
 		// members
@@ -165,29 +174,19 @@ namespace RE
 		UInt16					numParams;		// 22
 		UInt32					pad24;			// 24
 		const SCRIPT_PARAMETER*	params;			// 28
-
-		// handlers
-		FnExecute				execute;		// 30
-		FnParse					parse;			// 38
-		FnEval					eval;			// 40
-
+		FnExecute*				execute;		// 30
+		FnParse*				parse;			// 38
+		FnEval*					eval;			// 40
 		UInt32					flags;			// 48
 		UInt32					pad4C;			// 4C
-
-		template <std::size_t SIZE>
-		void					SetParameters(const SCRIPT_PARAMETER(&a_params)[SIZE])
-		{
-			numParams = SIZE;
-			params = a_params;
-		}
-		void					SetParameters();
-		static CommandInfo*		GetFirstScriptCommand();
-		static CommandInfo*		GetFirstConsoleCommand();
-		static CommandInfo*		Locate(const char* a_longName);
-		static bool				ExtractArgs(SCRIPT_PARAMETER* a_paramInfo, void* a_scriptData, UInt32* a_arg2, TESObjectREFR* a_thisObj, TESObjectREFR* a_containingObj, Script* a_script, ScriptLocals* a_eventList, ...);
-		static bool				Cmd_Default_Execute(const SCRIPT_PARAMETER* a_paramInfo, const char* a_scriptData, TESObjectREFR* a_thisObj, TESObjectREFR* a_containingObj, Script* a_scriptObj, ScriptLocals* a_locals, double& a_result, UInt32& a_opcodeOffsetPtr);
-		static bool				Cmd_Default_Parse(UInt32 a_numParams, const SCRIPT_PARAMETER* a_paramInfo, ScriptLineBuffer* a_lineBuf, ScriptBuffer* a_scriptBuf);
-		static bool				Cmd_Default_Eval(TESObjectREFR* a_thisObj, void* a_arg1, void* a_arg2, double* a_result);
 	};
 	STATIC_ASSERT(sizeof(CommandInfo) == 0x50);
+
+
+	template <UInt16 SIZE>
+	void CommandInfo::SetParameters(const SCRIPT_PARAMETER(&a_params)[SIZE])
+	{
+		numParams = SIZE;
+		params = a_params;
+	}
 }
