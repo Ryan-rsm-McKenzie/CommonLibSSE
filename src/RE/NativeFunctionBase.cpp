@@ -41,9 +41,10 @@ namespace RE
 			}
 
 
-			void NativeFunctionBase::GetReturnType(BSScriptType& a_dst) const
+			BSScriptType& NativeFunctionBase::GetReturnType(BSScriptType& a_dst) const
 			{
 				a_dst.SetTypeID(_returnType);
+				return a_dst;
 			}
 
 

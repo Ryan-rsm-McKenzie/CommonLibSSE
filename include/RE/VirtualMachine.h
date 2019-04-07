@@ -104,7 +104,7 @@ namespace RE
 				UInt64												unk00A8;			// 00A8
 				UInt64												unk00B0;			// 00B0
 				ISavePatcherInterface*								savePatcher;		// 00B8
-				UInt64												unk00C0;			// 00C0
+				BSSpinLock											unk00C0;			// 00C0
 				LinkerProcessor										linkerProcessor;	// 00C8
 				BSTHashMap<UnkKey, UnkValue>						unk0158;			// 0158
 				BSTHashMap<UnkKey, UnkValue>						unk0188;			// 0188

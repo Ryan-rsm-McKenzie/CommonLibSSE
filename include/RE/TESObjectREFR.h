@@ -235,7 +235,7 @@ namespace RE
 		virtual bool					SendEquipEvent(UInt64 a_arg1, UInt64 a_arg2);																																				// A1
 
 
-		static bool						LookupByHandle(UInt32& a_refHandle, TESObjectREFRPtr& a_refrOut);
+		static bool						LookupByHandle(RefHandle& a_refHandle, TESObjectREFRPtr& a_refrOut);
 
 		float							GetBaseScale() const;
 		bool							IsOffLimits() const;

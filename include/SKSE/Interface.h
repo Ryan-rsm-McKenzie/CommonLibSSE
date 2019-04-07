@@ -8,6 +8,7 @@
 
 #include <functional>  // function
 
+#include "SKSE/Events.h"  // ModCallbackEvent, CameraEvent, CrosshairRefEvent, ActionEvent, NiNodeUpdateEvent
 #include "RE/BSTEvent.h"  // BSTEventSource
 #include "RE/VirtualMachine.h"  // VirtualMachine
 
@@ -36,12 +37,12 @@ namespace SKSE
 	void				AddTask(TaskDelegate* a_delegate);
 	void				AddTask(UIDelegate_v1* a_delegate);
 
-	SKSEMessagingInterface*						GetMessagingInterface();
-	RE::BSTEventSource<SKSEModCallbackEvent>*	GetModCallbackEventSource();
-	RE::BSTEventSource<SKSECameraEvent>*		GetCameraEventSource();
-	RE::BSTEventSource<SKSECrosshairRefEvent>*	GetCrosshairRefEventSource();
-	RE::BSTEventSource<SKSEActionEvent>*		GetActionEventSource();
-	RE::BSTEventSource<SKSENiNodeUpdateEvent>*	GetNiNodeUpdateEventSource();
+	SKSEMessagingInterface*							GetMessagingInterface();
+	RE::BSTEventSource<SKSE::ModCallbackEvent>*		GetModCallbackEventSource();
+	RE::BSTEventSource<SKSE::CameraEvent>*			GetCameraEventSource();
+	RE::BSTEventSource<SKSE::CrosshairRefEvent>*	GetCrosshairRefEventSource();
+	RE::BSTEventSource<SKSE::ActionEvent>*			GetActionEventSource();
+	RE::BSTEventSource<SKSE::NiNodeUpdateEvent>*	GetNiNodeUpdateEventSource();
 
 	SKSEObjectInterface*			GetObjectInterface();
 	SKSEDelayFunctorManager*		GetDelayFunctorManager();
@@ -73,11 +74,11 @@ namespace SKSE
 		inline SKSETaskInterface*			g_taskInterface = 0;
 
 		inline SKSEMessagingInterface*						g_messagingInterface = 0;
-		inline RE::BSTEventSource<SKSEModCallbackEvent>*	g_modCallbackEventSource = 0;
-		inline RE::BSTEventSource<SKSECameraEvent>*			g_cameraEventSource = 0;
-		inline RE::BSTEventSource<SKSECrosshairRefEvent>*	g_crosshairRefEventSource = 0;
-		inline RE::BSTEventSource<SKSEActionEvent>*			g_actionEventSource = 0;
-		inline RE::BSTEventSource<SKSENiNodeUpdateEvent>*	g_niNodeUpdateEventSource = 0;
+		inline RE::BSTEventSource<SKSE::ModCallbackEvent>*	g_modCallbackEventSource = 0;
+		inline RE::BSTEventSource<SKSE::CameraEvent>*		g_cameraEventSource = 0;
+		inline RE::BSTEventSource<SKSE::CrosshairRefEvent>*	g_crosshairRefEventSource = 0;
+		inline RE::BSTEventSource<SKSE::ActionEvent>*		g_actionEventSource = 0;
+		inline RE::BSTEventSource<SKSE::NiNodeUpdateEvent>*	g_niNodeUpdateEventSource = 0;
 
 		inline SKSEObjectInterface*			g_objectInterface = 0;
 		inline SKSEDelayFunctorManager*		g_delayFunctorManager = 0;

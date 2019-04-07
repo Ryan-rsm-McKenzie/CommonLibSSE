@@ -59,13 +59,12 @@ namespace RE
 			using result_type = R;
 			using base_type = Base;
 			using function_type = F;
-			using FunctionFlag = IVirtualMachine::FunctionFlag;
 
 
 			NativeFunction() = delete;
 			NativeFunction(const NativeFunction&) = delete;
 			NativeFunction(NativeFunction&&) = delete;
-			NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags);
+			NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback);
 			virtual ~NativeFunction() = default;																														// 00
 
 			virtual bool HasCallback() const override;																													// 15
@@ -83,16 +82,13 @@ namespace RE
 
 
 		template <bool IS_LONG, class F, class R, class Base, class... Args>
-		NativeFunction<TmpltParams_>::NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags) :
+		NativeFunction<TmpltParams_>::NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback) :
 			NativeFunctionBase(a_fnName, a_className, is_static_base<base_type>::value, sizeof...(Args)),
 			_callback(a_callback)
 		{
 			std::size_t i = 0;
 			((_params.data[i++].type.SetTypeID(GetTypeID<Args>())), ...);
 			_returnType = GetTypeID<result_type>();
-			if (a_flags != FunctionFlag::kNone) {
-				Internal::VirtualMachine::GetSingleton()->SetFunctionFlags(a_className, a_fnName, a_flags);
-			}
 		}
 
 
@@ -161,11 +157,10 @@ namespace RE
 		using result_type = typename base::result_type;
 		using base_type = typename base::base_type;
 		using function_type = typename base::function_type;
-		using FunctionFlag = BSScript::IVirtualMachine::FunctionFlag;
 
 
-		NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags = FunctionFlag::kNone) :
-			base(a_fnName, a_className, a_callback, a_flags)
+		NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback) :
+			base(a_fnName, a_className, a_callback)
 		{}
 	};
 
@@ -181,19 +176,18 @@ namespace RE
 		using result_type = typename base::result_type;
 		using base_type = typename base::base_type;
 		using function_type = typename base::function_type;
-		using FunctionFlag = BSScript::IVirtualMachine::FunctionFlag;
 
 
-		NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback, FunctionFlag a_flags = FunctionFlag::kNone) :
-			base(a_fnName, a_className, a_callback, a_flags)
+		NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback) :
+			base(a_fnName, a_className, a_callback)
 		{}
 	};
 
 
 	template <class F>
-	NativeFunction<F>* MakeNativeFunction(const char* a_fnName, const char* a_className, F* a_callback, BSScript::IVirtualMachine::FunctionFlag a_flags = BSScript::IVirtualMachine::FunctionFlag::kNone)
+	NativeFunction<F>* MakeNativeFunction(const char* a_fnName, const char* a_className, F* a_callback)
 	{
-		return new NativeFunction<F>(a_fnName, a_className, a_callback, a_flags);
+		return new NativeFunction<F>(a_fnName, a_className, a_callback);
 	}
 
 
@@ -204,7 +198,10 @@ namespace RE
 			template <class F>
 			void VirtualMachine::RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, FunctionFlag a_flags)
 			{
-				RegisterFunction(MakeNativeFunction(a_fnName, a_className, a_callback, a_flags));
+				RegisterFunction(MakeNativeFunction(a_fnName, a_className, a_callback));
+				if (a_flags != FunctionFlag::kNone) {
+					Internal::VirtualMachine::GetSingleton()->SetFunctionFlags(a_className, a_fnName, a_flags);
+				}
 			}
 		}
 	}

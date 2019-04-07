@@ -29,7 +29,7 @@ namespace RE
 			virtual const BSFixedString&	GetFunctionName() const = 0;																					// 01
 			virtual const BSFixedString&	GetScriptName() const = 0;																						// 02
 			virtual const BSFixedString&	GetStateName() const = 0;																						// 03
-			virtual void					GetReturnType(BSScriptType& a_dst) const = 0;																	// 04
+			virtual BSScriptType&			GetReturnType(BSScriptType& a_dst) const = 0;																	// 04
 			virtual UInt32					GetNumParams() const = 0;																						// 05
 			virtual BSScriptType&			GetParam(UInt32 a_idx, BSFixedString& a_nameOut, BSScriptType& a_typeOut) const = 0;							// 06
 			virtual UInt32					GetNumParams2() const = 0;																						// 07

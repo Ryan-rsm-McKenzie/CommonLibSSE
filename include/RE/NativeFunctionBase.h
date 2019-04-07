@@ -47,7 +47,7 @@ namespace RE
 				virtual const BSFixedString&	GetFunctionName() const override;																												// 01
 				virtual const BSFixedString&	GetScriptName() const override;																													// 02
 				virtual const BSFixedString&	GetStateName() const override;																													// 03
-				virtual void					GetReturnType(BSScriptType& a_dst) const override;																								// 04
+				virtual BSScriptType&			GetReturnType(BSScriptType& a_dst) const override;																								// 04
 				virtual UInt32					GetNumParams() const override;																													// 05
 				virtual BSScriptType&			GetParam(UInt32 a_idx, BSFixedString& a_nameOut, BSScriptType& a_typeOut) const override;														// 06
 				virtual UInt32					GetNumParams2() const override;																													// 07

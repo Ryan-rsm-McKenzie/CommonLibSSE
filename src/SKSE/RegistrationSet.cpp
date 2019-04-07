@@ -1,5 +1,7 @@
 #include "SKSE/RegistrationSet.h"
 
+#include "skse64/PapyrusVM.h"  // g_skyrimVM
+
 
 namespace SKSE
 {
@@ -13,12 +15,15 @@ namespace SKSE
 
 
 		RegistrationSetBase::RegistrationSetBase(const RegistrationSetBase& a_rhs) :
-			_handles(a_rhs._handles),
+			_handles(),
 			_eventName(a_rhs._eventName),
 			_lock()
 		{
-			auto policy = RE::BSScript::Internal::VirtualMachine::GetSingleton()->GetHandlePolicyBS();
+			a_rhs._lock.lock();
+			_handles = a_rhs._handles;
+			a_rhs._lock.unlock();
 
+			auto policy = RE::BSScript::Internal::VirtualMachine::GetSingleton()->GetHandlePolicyBS();
 			for (auto& handle : _handles) {
 				policy->AddRef(handle);
 			}
@@ -36,22 +41,23 @@ namespace SKSE
 
 		RegistrationSetBase::~RegistrationSetBase()
 		{
-			auto policy = RE::BSScript::Internal::VirtualMachine::GetSingleton()->GetHandlePolicyBS();
-			for (auto& handle : _handles) {
-				policy->Release(handle);
+			if (g_skyrimVM.GetPtr()) {
+				auto policy = RE::BSScript::Internal::VirtualMachine::GetSingleton()->GetHandlePolicyBS();
+				for (auto& handle : _handles) {
+					policy->Release(handle);
+				}
 			}
 		}
 
 
 		RegistrationSetBase& RegistrationSetBase::operator=(const RegistrationSetBase& a_rhs)
 		{
-			auto policy = RE::BSScript::Internal::VirtualMachine::GetSingleton()->GetHandlePolicyBS();
-
 			Locker lhsLocker(_lock);
 			Locker rhsLocker(a_rhs._lock);
 			Clear();
 			_eventName = a_rhs._eventName;
 
+			auto policy = RE::BSScript::Internal::VirtualMachine::GetSingleton()->GetHandlePolicyBS();
 			for (auto& handle : a_rhs._handles) {
 				policy->AddRef(handle);
 				_handles.insert(handle);
@@ -64,7 +70,6 @@ namespace SKSE
 		RegistrationSetBase& RegistrationSetBase::operator=(RegistrationSetBase&& a_rhs)
 		{
 			Locker lhsLocker(_lock);
-			Locker rhsLocker(a_rhs._lock);
 			Clear();
 			_eventName = std::move(a_rhs._eventName);
 			_handles = std::move(a_rhs._handles);

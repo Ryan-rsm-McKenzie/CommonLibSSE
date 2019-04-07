@@ -27,7 +27,7 @@
 
 namespace RE
 {
-	bool TESObjectREFR::LookupByHandle(UInt32& a_refHandle, TESObjectREFRPtr& a_refrOut)
+	bool TESObjectREFR::LookupByHandle(RefHandle& a_refHandle, TESObjectREFRPtr& a_refrOut)
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::LookupByHandle)>;
 		func_t* func = reinterpret_cast<func_t*>(::LookupREFRObjectByHandle.GetUIntPtr());

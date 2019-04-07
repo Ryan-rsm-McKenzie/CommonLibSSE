@@ -2681,5 +2681,8 @@
     <ClInclude Include="include\SKSE\Interface.h">
       <Filter>include\RE\SKSE</Filter>
     </ClInclude>
+    <ClInclude Include="include\SKSE\Events.h">
+      <Filter>include\RE\SKSE</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
