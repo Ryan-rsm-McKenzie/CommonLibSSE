@@ -50,16 +50,19 @@ namespace SKSE
 	template <class... Args>
 	class RegistrationSet : public Impl::RegistrationSetBase
 	{
+	private:
+		using Base = Impl::RegistrationSetBase;
+
 	public:
 		RegistrationSet() = delete;
-		RegistrationSet(const char* a_eventName) : Impl::RegistrationSetBase(a_eventName) {}
-		RegistrationSet(const RegistrationSet& a_rhs) : Impl::RegistrationSetBase(a_rhs) {}
-		RegistrationSet(RegistrationSet&& a_rhs) : Impl::RegistrationSetBase(std::move(a_rhs)) {}
+		RegistrationSet(const char* a_eventName) : Base(a_eventName) {}
+		RegistrationSet(const RegistrationSet& a_rhs) : Base(a_rhs) {}
+		RegistrationSet(RegistrationSet&& a_rhs) : Base(std::move(a_rhs)) {}
 		~RegistrationSet() {}
 
 
-		inline RegistrationSet& operator=(const RegistrationSet& a_rhs) { Impl::RegistrationSetBase::operator=(a_rhs); return *this; }
-		inline RegistrationSet& operator=(RegistrationSet&& a_rhs) { Impl::RegistrationSetBase::operator=(std::move(a_rhs)); return *this; }
+		inline RegistrationSet& operator=(const RegistrationSet& a_rhs) { Base::operator=(a_rhs); return *this; }
+		inline RegistrationSet& operator=(RegistrationSet&& a_rhs) { Base::operator=(std::move(a_rhs)); return *this; }
 
 
 		void SendEvent(Args... a_args)
@@ -75,7 +78,8 @@ namespace SKSE
 
 		void QueueEvent(Args... a_args)
 		{
-			AddTask([&]()
+			auto task - GetTaskInterface();
+			task->AddTask([&]()
 			{
 				SendEvent(a_args);
 			});
@@ -86,16 +90,19 @@ namespace SKSE
 	template <>
 	class RegistrationSet<> : public Impl::RegistrationSetBase
 	{
+	private:
+		using Base = Impl::RegistrationSetBase;
+
 	public:
 		RegistrationSet() = delete;
-		RegistrationSet(const char* a_eventName) : Impl::RegistrationSetBase(a_eventName) {}
-		RegistrationSet(const RegistrationSet& a_rhs) : Impl::RegistrationSetBase(a_rhs) {}
-		RegistrationSet(RegistrationSet&& a_rhs) : Impl::RegistrationSetBase(std::move(a_rhs)) {}
+		RegistrationSet(const char* a_eventName) : Base(a_eventName) {}
+		RegistrationSet(const RegistrationSet& a_rhs) : Base(a_rhs) {}
+		RegistrationSet(RegistrationSet&& a_rhs) : Base(std::move(a_rhs)) {}
 		~RegistrationSet() {}
 
 
-		inline RegistrationSet& operator=(const RegistrationSet& a_rhs) { Impl::RegistrationSetBase::operator=(a_rhs); return *this; }
-		inline RegistrationSet& operator=(RegistrationSet&& a_rhs) { Impl::RegistrationSetBase::operator=(std::move(a_rhs)); return *this; }
+		inline RegistrationSet& operator=(const RegistrationSet& a_rhs) { Base::operator=(a_rhs); return *this; }
+		inline RegistrationSet& operator=(RegistrationSet&& a_rhs) { Base::operator=(std::move(a_rhs)); return *this; }
 
 
 		void SendEvent()

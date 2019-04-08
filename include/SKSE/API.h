@@ -16,9 +16,6 @@
 
 namespace SKSE
 {
-	using TaskFn = std::function<void()>;
-
-
 	bool Init(const SKSE::LoadInterface* a_skse);
 
 	const PluginHandle	GetPluginHandle();
