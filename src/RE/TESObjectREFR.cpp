@@ -75,17 +75,17 @@ namespace RE
 	}
 
 
-	UInt32 TESObjectREFR::GetRefHandle() const
+	RefHandle TESObjectREFR::GetRefHandle() const
 	{
 		ExtraReferenceHandle* xRefHandle = extraData.GetByType<ExtraReferenceHandle>();
 		return xRefHandle ? xRefHandle->handle : *g_invalidRefHandle;
 	}
 
 
-	UInt32 TESObjectREFR::CreateRefHandle()
+	RefHandle TESObjectREFR::CreateRefHandle()
 	{
 		if (GetRefCount() > 0) {
-			UInt32 refHandle = *g_invalidRefHandle;
+			RefHandle refHandle = *g_invalidRefHandle;
 			CreateRefHandle_Internal(refHandle, this);
 			return refHandle;
 		} else {
@@ -94,9 +94,9 @@ namespace RE
 	}
 
 
-	UInt32 TESObjectREFR::GetOrCreateRefHandle()
+	RefHandle TESObjectREFR::GetOrCreateRefHandle()
 	{
-		UInt32 refHandle = GetRefHandle();
+		RefHandle refHandle = GetRefHandle();
 		if (refHandle == *g_invalidRefHandle) {
 			refHandle = CreateRefHandle();
 		}

@@ -4,11 +4,12 @@
 #include "skse64/PapyrusEvents.h"  // SKSEModCallbackEvent, SKSECameraEvent, SKSECrosshairRefEvent, SKSEActionEvent, SKSENiNodeUpdateEvent
 #include "skse64/PapyrusObjects.h"  // SKSEObjectRegistry, SKSEPersistentObjectStorage
 #include "skse64/gamethreads.h"  // TaskDelegate
-#include "skse64/PluginAPI.h"  // SKSEInterface, PluginHandle, SKSEScaleformInterface, SKSEPapyrusInterface, SKSESerializationInterface, SKSETaskInterface, SKSEMessagingInterface, SKSEObjectInterface
+#include "skse64/PluginAPI.h"  // PluginHandle
 
 #include <functional>  // function
 
 #include "SKSE/Events.h"  // ModCallbackEvent, CameraEvent, CrosshairRefEvent, ActionEvent, NiNodeUpdateEvent
+#include "SKSE/Interfaces.h"  // LoadInterface, ScaleformInterface, PapyrusInterface, SerializationInterface, TaskInterface, MessagingInterface, ObjectInterface
 #include "RE/BSTEvent.h"  // BSTEventSource
 #include "RE/VirtualMachine.h"  // VirtualMachine
 
@@ -16,71 +17,49 @@
 namespace SKSE
 {
 	using TaskFn = std::function<void()>;
-	using PapyrusRegFunction = bool(RE::BSScript::Internal::VirtualMachine*);
 
 
-	bool Init(const SKSEInterface* a_skse);
+	bool Init(const SKSE::LoadInterface* a_skse);
 
-	PluginHandle	GetPluginHandle();
-	UInt32			GetReleaseIndex();
+	const PluginHandle	GetPluginHandle();
+	const UInt32		GetReleaseIndex();
 
-	SKSEScaleformInterface* GetScaleformInterface();
+	const SKSE::ScaleformInterface*		GetScaleformInterface();
+	const SKSE::PapyrusInterface*		GetPapyrusInterface();
+	const SKSE::SerializationInterface*	GetSerializationInterface();
+	const SKSE::TaskInterface*			GetTaskInterface();
 
-	SKSEPapyrusInterface*	GetPapyrusInterface();
-	bool					RegisterPapyrusCallback(PapyrusRegFunction* a_fn);
-	bool					RegisterPapyrusCallback(SKSEPapyrusInterface::RegisterFunctions a_fn);
-
-	SKSESerializationInterface* GetSerializationInterface();
-
-	SKSETaskInterface*	GetTaskInterface();
-	void				AddTask(TaskFn a_fn);
-	void				AddTask(TaskDelegate* a_delegate);
-	void				AddTask(UIDelegate_v1* a_delegate);
-
-	SKSEMessagingInterface*							GetMessagingInterface();
+	const SKSE::MessagingInterface*					GetMessagingInterface();
 	RE::BSTEventSource<SKSE::ModCallbackEvent>*		GetModCallbackEventSource();
 	RE::BSTEventSource<SKSE::CameraEvent>*			GetCameraEventSource();
 	RE::BSTEventSource<SKSE::CrosshairRefEvent>*	GetCrosshairRefEventSource();
 	RE::BSTEventSource<SKSE::ActionEvent>*			GetActionEventSource();
 	RE::BSTEventSource<SKSE::NiNodeUpdateEvent>*	GetNiNodeUpdateEventSource();
 
-	SKSEObjectInterface*			GetObjectInterface();
-	SKSEDelayFunctorManager*		GetDelayFunctorManager();
-	SKSEObjectRegistry*				GetObjectRegistry();
-	SKSEPersistentObjectStorage*	GetPersistentObjectStorage();
+	const SKSE::ObjectInterface*		GetObjectInterface();
+	const SKSEDelayFunctorManager*		GetDelayFunctorManager();
+	const SKSEObjectRegistry*			GetObjectRegistry();
+	const SKSEPersistentObjectStorage*	GetPersistentObjectStorage();
 
 
 	namespace
 	{
-		class Task : public TaskDelegate
-		{
-		public:
-			Task(TaskFn a_fn);
-
-			virtual void Run() override;
-			virtual void Dispose() override;
-
-		private:
-			TaskFn _fn;
-		};
-
-
 		inline PluginHandle	g_pluginHandle = static_cast<PluginHandle>(kPluginHandle_Invalid);
 		inline UInt32		g_releaseIndex = 0;
 
-		inline SKSEScaleformInterface*		g_scaleformInterface = 0;
-		inline SKSEPapyrusInterface*		g_papyrusInterface = 0;
-		inline SKSESerializationInterface*	g_serializationInterface = 0;
-		inline SKSETaskInterface*			g_taskInterface = 0;
+		inline SKSE::ScaleformInterface*		g_scaleformInterface = 0;
+		inline SKSE::PapyrusInterface*			g_papyrusInterface = 0;
+		inline SKSE::SerializationInterface*	g_serializationInterface = 0;
+		inline SKSE::TaskInterface*				g_taskInterface = 0;
 
-		inline SKSEMessagingInterface*						g_messagingInterface = 0;
+		inline SKSE::MessagingInterface*					g_messagingInterface = 0;
 		inline RE::BSTEventSource<SKSE::ModCallbackEvent>*	g_modCallbackEventSource = 0;
 		inline RE::BSTEventSource<SKSE::CameraEvent>*		g_cameraEventSource = 0;
 		inline RE::BSTEventSource<SKSE::CrosshairRefEvent>*	g_crosshairRefEventSource = 0;
 		inline RE::BSTEventSource<SKSE::ActionEvent>*		g_actionEventSource = 0;
 		inline RE::BSTEventSource<SKSE::NiNodeUpdateEvent>*	g_niNodeUpdateEventSource = 0;
 
-		inline SKSEObjectInterface*			g_objectInterface = 0;
+		inline SKSE::ObjectInterface*		g_objectInterface = 0;
 		inline SKSEDelayFunctorManager*		g_delayFunctorManager = 0;
 		inline SKSEObjectRegistry*			g_objectRegistry = 0;
 		inline SKSEPersistentObjectStorage*	g_persistentObjectStorage = 0;

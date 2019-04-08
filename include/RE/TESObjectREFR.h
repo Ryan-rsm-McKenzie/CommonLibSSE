@@ -242,9 +242,9 @@ namespace RE
 		float							GetWeight() const;
 		const char*						GetReferenceName() const;
 		TESWorldSpace*					GetWorldspace() const;
-		UInt32							GetRefHandle() const;
-		UInt32							CreateRefHandle();
-		UInt32							GetOrCreateRefHandle();
+		RefHandle						GetRefHandle() const;
+		RefHandle						CreateRefHandle();
+		RefHandle						GetOrCreateRefHandle();
 		TESNPC*							GetActorOwner() const;
 		TESForm*						GetBaseObject() const;
 		TESContainer*					GetContainer() const;

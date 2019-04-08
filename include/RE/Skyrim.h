@@ -196,6 +196,7 @@
 #include "RE/ConcreteObjectFormFactory.h"
 #include "RE/Condition.h"
 #include "RE/ConeProjectile.h"
+#include "RE/Console.h"
 #include "RE/ConsoleManager.h"
 #include "RE/CRC.h"
 #include "RE/DeviceTypes.h"

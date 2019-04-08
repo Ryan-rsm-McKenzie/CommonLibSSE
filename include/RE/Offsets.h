@@ -195,6 +195,15 @@ namespace RE
 		}
 
 
+		namespace Console
+		{
+			// 89 05 ? ? ? ? 49 C7 43 08 00 00 00 00
+			constexpr std::uintptr_t SelectedRef = 0x02F4C31C;		// 1_5_73
+			// E8 ? ? ? ? BE 02 00 00 00 8B C6
+			constexpr std::uintptr_t SetSelectedRef = 0x0085BB30;	// 1_5_73
+		}
+
+
 		namespace CRC32Calculator
 		{
 			// E8 ? ? ? ? 8B 75 AB

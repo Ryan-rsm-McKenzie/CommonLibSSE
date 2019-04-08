@@ -8,11 +8,13 @@ namespace RE
 	public:
 		static ConsoleManager*	GetSingleton();
 		static bool				IsConsoleMode();
+
 		void					Print(const char* a_fmt, ...);
 
 
 		// members
-		void* scriptContext;	// 00
+		char	unk0;			// 0
+		char	lastMessage[0];	// 1
 	};
-	STATIC_ASSERT(sizeof(ConsoleManager) == 0x8);
+	STATIC_ASSERT(sizeof(ConsoleManager) == 0x1);
 }

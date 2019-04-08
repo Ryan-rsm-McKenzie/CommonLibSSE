@@ -1,6 +1,6 @@
 #pragma once
 
-#include "skse64/GameAPI.h"  // Heap
+#include "skse64/GameAPI.h"  // Heap_Allocate, Heap_Free
 
 #include <cstdlib>  // size_t
 #include <new>  // operator new, operator delete
@@ -8,9 +8,9 @@
 
 namespace RE
 {
-	inline void* Heap_Allocate(std::size_t a_size)
+	inline void* Heap_Allocate(std::size_t a_count)
 	{
-		return ::Heap_Allocate(a_size);
+		return ::Heap_Allocate(a_count);
 	}
 
 
@@ -23,7 +23,7 @@ namespace RE
 
 
 	template <typename T>
-	inline T* Heap_Allocate(void)
+	inline T* Heap_Allocate()
 	{
 		return reinterpret_cast<T*>(Heap_Allocate(sizeof(T)));
 	}

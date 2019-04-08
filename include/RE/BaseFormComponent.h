@@ -1,5 +1,7 @@
 #pragma once
 
+#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
+
 
 namespace RE
 {
@@ -12,6 +14,8 @@ namespace RE
 		virtual void	Init() = 0;								// 01
 		virtual void	ReleaseRefs() = 0;						// 02
 		virtual void	CopyFromBase(BaseFormComponent* a_rhs);	// 03 - { return; }
+
+		TES_HEAP_REDEFINE_NEW();
 	};
 	STATIC_ASSERT(sizeof(BaseFormComponent) == 0x8);
 }

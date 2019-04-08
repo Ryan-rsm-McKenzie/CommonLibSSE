@@ -22,8 +22,8 @@ namespace RE
 
 
 		// members
-		UInt32	handle;		// 10
-		UInt32	pad14;		// 14
+		RefHandle	handle;		// 10
+		UInt32		pad14;		// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraReferenceHandle) == 0x18);
 }

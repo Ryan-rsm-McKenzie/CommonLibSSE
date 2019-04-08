@@ -2,7 +2,6 @@
 
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // FormType
-#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
 
 
 namespace RE
@@ -113,8 +112,6 @@ namespace RE
 		UInt32	GetFormID() const;
 		float	GetWeight() const;
 		SInt32	GetValue() const;
-
-		TES_HEAP_REDEFINE_NEW();
 
 
 		// members

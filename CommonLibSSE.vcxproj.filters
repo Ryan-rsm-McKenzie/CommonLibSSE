@@ -124,12 +124,6 @@
     <Filter Include="src\RE\Skyrim\Camera">
       <UniqueIdentifier>{6298f838-184d-4eac-90de-0f7638c6f2f4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\SKSE\obscript">
-      <UniqueIdentifier>{fd4c90cc-6cf9-40f7-8fae-02d2ffabb296}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\SKSE\obscript">
-      <UniqueIdentifier>{ad8683f1-c449-4c65-943e-cb9e7b1c3610}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Skyrim\FileIO">
       <UniqueIdentifier>{e94d49e5-573f-465f-8dcf-37c235cf3bfb}</UniqueIdentifier>
     </Filter>
@@ -421,6 +415,12 @@
     <Filter Include="src\RE\Skyrim\BSScript\Internal">
       <UniqueIdentifier>{32138d8a-3f32-4aff-a5fb-806822ada7f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\Obscript">
+      <UniqueIdentifier>{fd4c90cc-6cf9-40f7-8fae-02d2ffabb296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\Obscript">
+      <UniqueIdentifier>{ad8683f1-c449-4c65-943e-cb9e7b1c3610}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -502,7 +502,7 @@
       <Filter>src\RE\Skyrim\ExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\CommandTable.cpp">
-      <Filter>src\RE\SKSE\obscript</Filter>
+      <Filter>src\RE\Skyrim\Obscript</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ConsoleManager.cpp">
       <Filter>src\RE\Skyrim\Menus</Filter>
@@ -864,14 +864,20 @@
     <ClCompile Include="src\RE\ZeroFunctionArguments.cpp">
       <Filter>src\RE\Skyrim\BSScript</Filter>
     </ClCompile>
-    <ClCompile Include="src\SKSE\Interface.cpp">
-      <Filter>src\RE\SKSE</Filter>
-    </ClCompile>
     <ClCompile Include="src\SKSE\RegistrationSet.cpp">
       <Filter>src\RE\SKSE</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\IFormFactory.cpp">
       <Filter>src\RE\Skyrim\BSSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Console.cpp">
+      <Filter>src\RE\Skyrim\Menus\IMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SKSE\API.cpp">
+      <Filter>src\RE\SKSE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SKSE\Interfaces.cpp">
+      <Filter>src\RE\SKSE</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1050,7 +1056,7 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\CommandTable.h">
-      <Filter>include\RE\SKSE\obscript</Filter>
+      <Filter>include\RE\Skyrim\Obscript</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ConsoleManager.h">
       <Filter>include\RE\Skyrim\Menus</Filter>
@@ -2681,9 +2687,6 @@
     <ClInclude Include="include\SKSE\RegistrationSet.h">
       <Filter>include\RE\SKSE</Filter>
     </ClInclude>
-    <ClInclude Include="include\SKSE\Interface.h">
-      <Filter>include\RE\SKSE</Filter>
-    </ClInclude>
     <ClInclude Include="include\SKSE\Events.h">
       <Filter>include\RE\SKSE</Filter>
     </ClInclude>
@@ -2695,6 +2698,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\ConcreteObjectFormFactory.h">
       <Filter>include\RE\Skyrim\BSSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Console.h">
+      <Filter>include\RE\Skyrim\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\API.h">
+      <Filter>include\RE\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\Interfaces.h">
+      <Filter>include\RE\SKSE</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,12 +1,11 @@
 #pragma once
 
-#include "skse64/PluginAPI.h"  // SKSESerializationInterface
-
 #include <mutex>  // mutex, lock_guard
 #include <set>  // set
 #include <string>  // string
 
-#include "SKSE/Interface.h"  // AddTask
+#include "SKSE/API.h"  // GetTaskInterface
+#include "SKSE/Interfaces.h"  // SerializationInterface
 
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/FunctionArguments.h"  // FunctionArguments
@@ -34,8 +33,8 @@ namespace SKSE
 			bool Register(RE::TESForm* a_form);
 			bool Unregister(RE::TESForm* a_form);
 			void Clear();
-			bool Save(SKSESerializationInterface* a_intfc, UInt32 a_type, UInt32 a_version);
-			bool Load(SKSESerializationInterface* a_intfc);
+			bool Save(SerializationInterface* a_intfc, UInt32 a_type, UInt32 a_version);
+			bool Load(SerializationInterface* a_intfc);
 
 		protected:
 			using Locker = std::lock_guard<std::mutex>;
@@ -112,7 +111,8 @@ namespace SKSE
 
 		void QueueEvent()
 		{
-			AddTask([&]()
+			auto task = GetTaskInterface();
+			task->AddTask([&]()
 			{
 				SendEvent();
 			});
