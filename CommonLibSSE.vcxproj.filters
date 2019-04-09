@@ -421,6 +421,12 @@
     <Filter Include="src\RE\Skyrim\Obscript">
       <UniqueIdentifier>{ad8683f1-c449-4c65-943e-cb9e7b1c3610}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\Menus\IUIMessageData">
+      <UniqueIdentifier>{97eae63c-2a4f-4a62-b982-c3fbf378bc02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Menus\CraftingSubMenus">
+      <UniqueIdentifier>{1068b6ee-a717-41a9-afd1-f765a8c9b0f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -1531,9 +1537,6 @@
     </ClInclude>
     <ClInclude Include="include\ForceInclude.h">
       <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\UIMessage.h">
-      <Filter>include\RE\Skyrim\Menus</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraHealth.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
@@ -2707,6 +2710,36 @@
     </ClInclude>
     <ClInclude Include="include\SKSE\Interfaces.h">
       <Filter>include\RE\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MessageBoxMenu.h">
+      <Filter>include\RE\Skyrim\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MessageBoxData.h">
+      <Filter>include\RE\Skyrim\Menus\IUIMessageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IUIMessageData.h">
+      <Filter>include\RE\Skyrim\Menus\IUIMessageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\UIMessage.h">
+      <Filter>include\RE\Skyrim\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ConstructibleObjectMenu.h">
+      <Filter>include\RE\Skyrim\Menus\CraftingSubMenus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\CraftingSubMenu.h">
+      <Filter>include\RE\Skyrim\Menus\CraftingSubMenus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMessageBoxCallback.h">
+      <Filter>include\RE\Skyrim\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\CraftingMenu.h">
+      <Filter>include\RE\Skyrim\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AlchemyMenu.h">
+      <Filter>include\RE\Skyrim\Menus\CraftingSubMenus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SmithingMenu.h">
+      <Filter>include\RE\Skyrim\Menus\CraftingSubMenus</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

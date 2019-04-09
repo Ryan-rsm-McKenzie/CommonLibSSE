@@ -93,7 +93,7 @@ namespace SKSE
 			auto result = _handles.insert(handle);
 			_lock.unlock();
 			if (!result.second) {
-				_ERROR("[ERROR] Handle already registered!\n");
+				_WARNING("[WARNING] Handle already registered!\n");
 			}
 			return result.second;
 		}
@@ -114,7 +114,7 @@ namespace SKSE
 			Locker locker(_lock);
 			auto result = _handles.find(handle);
 			if (result == _handles.end()) {
-				_ERROR("[ERROR] Could not find registration");
+				_WARNING("[WARNING] Could not find registration");
 				return false;
 			} else {
 				policy->Release(handle);
@@ -168,7 +168,7 @@ namespace SKSE
 			for (std::size_t i = 0; i < numRegs; ++i) {
 				a_intfc->ReadRecordData(&handle, sizeof(handle));
 				if (!a_intfc->ResolveHandle(handle, handle)) {
-					_ERROR("[ERROR] Failed to resolve handle (%u)!\n", handle);
+					_WARNING("[WARNING] Failed to resolve handle (%u)!\n", handle);
 				} else {
 					auto result = _handles.insert(handle);
 					if (!result.second) {

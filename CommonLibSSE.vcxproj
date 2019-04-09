@@ -328,6 +328,7 @@
     <ClInclude Include="include\RE\ActorKnowledge.h" />
     <ClInclude Include="include\RE\ActorMover.h" />
     <ClInclude Include="include\RE\AlchemyItem.h" />
+    <ClInclude Include="include\RE\AlchemyMenu.h" />
     <ClInclude Include="include\RE\ArrowProjectile.h" />
     <ClInclude Include="include\RE\Atmosphere.h" />
     <ClInclude Include="include\RE\BarrierProjectile.h" />
@@ -499,6 +500,9 @@
     <ClInclude Include="include\RE\ConeProjectile.h" />
     <ClInclude Include="include\RE\Console.h" />
     <ClInclude Include="include\RE\ConsoleManager.h" />
+    <ClInclude Include="include\RE\ConstructibleObjectMenu.h" />
+    <ClInclude Include="include\RE\CraftingMenu.h" />
+    <ClInclude Include="include\RE\CraftingSubMenu.h" />
     <ClInclude Include="include\RE\DeviceTypes.h" />
     <ClInclude Include="include\RE\DialogueData.h" />
     <ClInclude Include="include\RE\DirectionalAmbientLightingColor.h" />
@@ -664,6 +668,7 @@
     <ClInclude Include="include\RE\IMapCameraCallbacks.h" />
     <ClInclude Include="include\RE\IMemoryPagePolicy.h" />
     <ClInclude Include="include\RE\IMenu.h" />
+    <ClInclude Include="include\RE\IMessageBoxCallback.h" />
     <ClInclude Include="include\RE\IMovementControllerRegisterInterface.h" />
     <ClInclude Include="include\RE\IMovementDirectControl.h" />
     <ClInclude Include="include\RE\IMovementInterface.h" />
@@ -690,6 +695,7 @@
     <ClInclude Include="include\RE\IStore.h" />
     <ClInclude Include="include\RE\ItemCrafted.h" />
     <ClInclude Include="include\RE\ItemsPickpocketed.h" />
+    <ClInclude Include="include\RE\IUIMessageData.h" />
     <ClInclude Include="include\RE\IVirtualMachine.h" />
     <ClInclude Include="include\RE\IVMDebugInterface.h" />
     <ClInclude Include="include\RE\IVMObjectBindInterface.h" />
@@ -707,6 +713,8 @@
     <ClInclude Include="include\RE\MapMoveHandler.h" />
     <ClInclude Include="include\RE\MapZoomHandler.h" />
     <ClInclude Include="include\RE\MenuOpenHandler.h" />
+    <ClInclude Include="include\RE\MessageBoxData.h" />
+    <ClInclude Include="include\RE\MessageBoxMenu.h" />
     <ClInclude Include="include\RE\MiddleProcess.h" />
     <ClInclude Include="include\RE\MissileProjectile.h" />
     <ClInclude Include="include\RE\Moon.h" />
@@ -798,6 +806,7 @@
     <ClInclude Include="include\RE\Skyrim.h" />
     <ClInclude Include="include\RE\SkyrimScriptObjectBindPolicy.h" />
     <ClInclude Include="include\RE\SkyrimScriptStore.h" />
+    <ClInclude Include="include\RE\SmithingMenu.h" />
     <ClInclude Include="include\RE\SneakHandler.h" />
     <ClInclude Include="include\RE\SoulLevels.h" />
     <ClInclude Include="include\RE\SoundData.h" />

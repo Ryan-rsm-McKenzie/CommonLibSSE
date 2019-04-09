@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64_common/Relocation.h"  // RelocationManager
+#include "skse64/GameRTTI.h"  // Runtime_DynamicCast
 
 #include <cstdint>  // uintptr_t
 #include <type_traits>  // underlying_type_t, is_enum
@@ -138,6 +139,14 @@ struct is_detected : std::false_type {};
 template <typename T, template <typename> class Op>
 struct is_detected<T, Op, std::void_t<Op<T>>> : std::true_type {};
 // END
+
+
+namespace { template <class V> using remove_cvpr_t = std::remove_pointer_t<std::remove_reference_t<std::remove_cv_t<V>>>; }
+template<class T, class U>
+T skyrim_cast(U a_from)
+{
+	return static_cast<T>(Runtime_DynamicCast(static_cast<void*>(a_from), remove_cvpr_t<T>::RTTI, remove_cvpr_t<U>::RTTI));
+}
 
 
 template <class T, class U>

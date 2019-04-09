@@ -29,16 +29,16 @@ namespace RE
 		virtual ~BeamProjectile();																											// 00
 
 		// override (Projectile)
-		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;																		// 0E
-		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																		// 0F
-		virtual void	Unk_12(void) override;																								// 12
-		virtual void	Unk_A5(void) override;																								// A5
-		virtual void	Unk_A9(void) override;																								// A9
-		virtual void	Unk_AB(void) override;																								// AB
-		virtual void	Unk_B8(void) override;																								// B8
-		virtual void	Unk_BD(void) override;																								// BD
-		virtual void	Unk_C0(void) override;																								// C0
-		virtual void	Unk_C1(void) override;																								// C1
+		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;																	// 0E
+		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;																	// 0F
+		virtual void		Unk_12(void) override;																							// 12
+		virtual void		Unk_A5(void) override;																							// A5
+		virtual void		Unk_A9(void) override;																							// A9
+		virtual void		Unk_AB(void) override;																							// AB
+		virtual void		Unk_B8(void) override;																							// B8
+		virtual void		Unk_BD(void) override;																							// BD
+		virtual void		Unk_C0(void) override;																							// C0
+		virtual void		Unk_C1(void) override;																							// C1
 
 		// override (BSTEventSink<BSProceduralGeomEvent>)
 		virtual	EventResult	ReceiveEvent(BSProceduralGeomEvent* a_event, BSTEventSource<BSProceduralGeomEvent>* a_eventSource) override;	// 01

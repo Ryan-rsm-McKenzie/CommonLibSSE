@@ -30,67 +30,56 @@ namespace SKSE
 	};
 
 
-	struct QueryInterface
+	class QueryInterface
 	{
-		UInt32	skseVersion;
-		UInt32	runtimeVersion;
-		UInt32	editorVersion;
-		BOOL	isEditor;
+	public:
+		UInt32 SKSEVersion() const;
+		UInt32 RuntimeVersion() const;
+		UInt32 EditorVersion() const;
+		bool IsEditor() const;
+
+	protected:
+		const SKSEInterface* GetProxy() const;
 	};
-	STATIC_ASSERT(offsetof(QueryInterface, skseVersion) == offsetof(SKSEInterface, skseVersion));
-	STATIC_ASSERT(offsetof(QueryInterface, runtimeVersion) == offsetof(SKSEInterface, runtimeVersion));
-	STATIC_ASSERT(offsetof(QueryInterface, editorVersion) == offsetof(SKSEInterface, editorVersion));
-	STATIC_ASSERT(offsetof(QueryInterface, isEditor) == offsetof(SKSEInterface, isEditor));
 
 
-	struct LoadInterface : QueryInterface
+	class LoadInterface : public QueryInterface
 	{
 	public:
 		void* QueryInterface(InterfaceID a_id) const;
 		PluginHandle GetPluginHandle() const;
 		UInt32 GetReleaseIndex() const;
-
-	private:
-		void* _queryInterface;
-		void* _getPluginHandle;
-		void* _getReleaseIndex;
 	};
-	STATIC_ASSERT(offsetof(LoadInterface, skseVersion) == offsetof(SKSEInterface, skseVersion));
-	STATIC_ASSERT(offsetof(LoadInterface, runtimeVersion) == offsetof(SKSEInterface, runtimeVersion));
-	STATIC_ASSERT(offsetof(LoadInterface, editorVersion) == offsetof(SKSEInterface, editorVersion));
-	STATIC_ASSERT(offsetof(LoadInterface, isEditor) == offsetof(SKSEInterface, isEditor));
-	STATIC_ASSERT(sizeof(LoadInterface) == sizeof(SKSEInterface));
 
 
-	struct ScaleformInterface
+	class ScaleformInterface
 	{
 	public:
 		using RegCallback = bool(RE::GFxMovieView* a_view, RE::GFxValue* a_root);
-		using RegInvCallback = void(RE::GFxMovieView* a_view, GFxValue* a_object, RE::InventoryEntryData* a_item);
+		using RegInvCallback = void(RE::GFxMovieView* a_view, RE::GFxValue* a_object, RE::InventoryEntryData* a_item);
 
 		enum { kVersion = 2 };
+
+		UInt32 Version() const;
 
 		bool Register(RegCallback* a_callback, const char* a_name) const;
 		void Register(RegInvCallback* a_callback) const;
 
-		UInt32 version;
-
-	private:
-		void* _register;
-		void* _registerForInventory;
+	protected:
+		const SKSEScaleformInterface* GetProxy() const;
 	};
 	STATIC_ASSERT(ScaleformInterface::kVersion == SKSEScaleformInterface::kInterfaceVersion);
-	STATIC_ASSERT(offsetof(ScaleformInterface, version) == offsetof(SKSEScaleformInterface, interfaceVersion));
-	STATIC_ASSERT(sizeof(ScaleformInterface) == sizeof(SKSEScaleformInterface));
 
 
-	struct SerializationInterface
+	class SerializationInterface
 	{
 	public:
 		using EventCallback = void(SerializationInterface* a_intfc);
 		using FormDeleteCallback = void(UInt64 a_handle);
 
 		enum { kVersion = 4 };
+
+		UInt32 Version() const;
 
 		void SetUniqueID(UInt32 a_uid) const;
 
@@ -108,41 +97,26 @@ namespace SKSE
 		bool ResolveHandle(RE::VMHandle a_oldHandle, RE::VMHandle& a_newHandle) const;
 		bool ResolveFormID(UInt32 a_oldFormID, UInt32& a_newFormID) const;
 
-		UInt32 version;
-
-	private:
-		void* _setUniqueID;
-		void* _setRevertCallback;
-		void* _setSaveCallback;
-		void* _setLoadCallback;
-		void* _setFormDeleteCallback;
-		void* _writeRecord;
-		void* _openRecord;
-		void* _writeRecordData;
-		void* _getNextRecordInfo;
-		void* _readRecordData;
-		void* _resolveHandle;
-		void* _resolveFormID;
+	protected:
+		const SKSESerializationInterface* GetProxy() const;
 	};
 	STATIC_ASSERT(SerializationInterface::kVersion == SKSESerializationInterface::kVersion);
-	STATIC_ASSERT(offsetof(SerializationInterface, version) == offsetof(SKSESerializationInterface, version));
-	STATIC_ASSERT(sizeof(SerializationInterface) == sizeof(SKSESerializationInterface));
 
 
-	struct TaskInterface
+	class TaskInterface
 	{
 	public:
 		using TaskFn = std::function<void()>;
 
 		enum { kVersion = 2 };
 
+		UInt32 Version() const;
+
 		void AddTask(TaskFn a_task) const;
 		void AddTask(TaskDelegate* a_task) const;
 		void AddTask(UIDelegate_v1* a_task) const;
 
-		UInt32 version;
-
-	private:
+	protected:
 		class Task : public TaskDelegate
 		{
 		public:
@@ -155,35 +129,31 @@ namespace SKSE
 			TaskFn _fn;
 		};
 
-		void* _addTask;
-		void* _addUITask;
+		const SKSETaskInterface* GetProxy() const;
 	};
 	STATIC_ASSERT(TaskInterface::kVersion == SKSETaskInterface::kInterfaceVersion);
-	STATIC_ASSERT(offsetof(TaskInterface, version) == offsetof(SKSETaskInterface, interfaceVersion));
-	STATIC_ASSERT(sizeof(TaskInterface) == sizeof(SKSETaskInterface));
 
 
-	struct PapyrusInterface
+	class PapyrusInterface
 	{
 	public:
 		using RegFunction = bool(RE::BSScript::Internal::VirtualMachine* a_vm);
 
 		enum { kVersion = 1 };
 
+		UInt32 Version() const;
+
 		bool Register(RegFunction* a_fn) const;
 
-		UInt32 version;
-
-	private:
-		void* _register;
+	protected:
+		const SKSEPapyrusInterface* GetProxy() const;
 	};
 	STATIC_ASSERT(PapyrusInterface::kVersion == SKSEPapyrusInterface::kInterfaceVersion);
-	STATIC_ASSERT(offsetof(PapyrusInterface, version) == offsetof(SKSEPapyrusInterface, interfaceVersion));
-	STATIC_ASSERT(sizeof(PapyrusInterface) == sizeof(SKSEPapyrusInterface));
 
 
-	struct MessagingInterface
+	class MessagingInterface
 	{
+	public:
 		struct Message
 		{
 			const char*	sender;
@@ -222,41 +192,33 @@ namespace SKSE
 			kTotal
 		};
 
+		UInt32 Version() const;
+
 		bool RegisterListener(const char* a_sender, EventCallback* a_callback) const;
 		bool Dispatch(UInt32 a_messageType, void* a_data, UInt32 a_dataLen, const char* a_receiver) const;
 		void* GetEventDispatcher(Dispatcher a_dispatcherID) const;
 
-		UInt32 version;
-
-	private:
-		void* _registerListener;
-		void* _dispatch;
-		void* _getEventDispatcher;
+	protected:
+		const SKSEMessagingInterface* GetProxy() const;
 	};
 	STATIC_ASSERT(MessagingInterface::kVersion == SKSEMessagingInterface::kInterfaceVersion);
-	STATIC_ASSERT(offsetof(MessagingInterface, version) == offsetof(SKSEMessagingInterface, interfaceVersion));
-	STATIC_ASSERT(sizeof(MessagingInterface) == sizeof(SKSEMessagingInterface));
 
 
-	struct ObjectInterface
+	class ObjectInterface
 	{
 	public:
 		enum { kVersion = 1 };
+
+		UInt32 Version() const;
 
 		SKSEDelayFunctorManager& GetDelayFunctorManager() const;
 		SKSEObjectRegistry& GetObjectRegistry() const;
 		SKSEPersistentObjectStorage& GetPersistentObjectStorage() const;
 
-		UInt32 version;
-
 	private:
-		void* _getDelayFunctorManager;
-		void* _getObjectRegistry;
-		void* _getPersistentObjectStorage;
+		const SKSEObjectInterface* GetProxy() const;
 	};
 	STATIC_ASSERT(ObjectInterface::kVersion == SKSEObjectInterface::kInterfaceVersion);
-	STATIC_ASSERT(offsetof(ObjectInterface, version) == offsetof(SKSEObjectInterface, interfaceVersion));
-	STATIC_ASSERT(sizeof(ObjectInterface) == sizeof(SKSEObjectInterface));
 
 
 	struct PluginInfo

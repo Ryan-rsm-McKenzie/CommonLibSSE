@@ -78,7 +78,7 @@ namespace RE
 
 		// members
 		BSTArray<IMenu*>	menuStack;					// 110
-		MenuTable			menuTable;					// 128 (Entries ptr at 150)
+		MenuTable			menuTable;					// 128
 		SimpleLock			menuTableLock;				// 158
 		UInt32				numPauseGame;				// 160 (= 0) += 1 if (imenu->flags & 0x00001)
 		UInt32				numItemMenu;				// 164 (= 0) += 1 if (imenu->flags & 0x02000)

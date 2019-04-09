@@ -132,6 +132,7 @@ namespace RE
 	class BGSCollisionLayer;
 	class BGSColorForm;
 	class BGSReverbParameters;
+	class BGSLensFlare;
 
 
 	enum class FormType : UInt8
@@ -271,7 +272,7 @@ namespace RE
 		CollisionLayer,				//	84 COLL	BGSCollisionLayer
 		ColorForm,					//	85 CLFM	BGSColorForm
 		ReverbParam,				//	86 REVB	BGSReverbParameters
-		LensFlare,					//	87 LENS
+		LensFlare,					//	87 LENS BGSLensFlare
 		Unk88,						//	88 LSPR
 		VolumetricLighting,			//	89 VOLI
 

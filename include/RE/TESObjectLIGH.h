@@ -69,6 +69,7 @@ namespace RE
 				float GetPeriod() const;
 
 
+				// members
 				float	period;				// 0 - CK value * 100
 				float	intensityAmplitude;	// 4
 				float	movementAmplitude;	// 8
@@ -76,6 +77,7 @@ namespace RE
 			STATIC_ASSERT(sizeof(FlickerEffect) == 0xC);
 
 
+			// members
 			SInt32			time;			// 00
 			UInt32			radius;			// 04
 			Color			color;			// 08
@@ -97,17 +99,21 @@ namespace RE
 		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																						// 0F
 		virtual void	InitItem() override;																												// 13
 		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
+		virtual void	Unk_41(void) override;																												// 41
+		virtual void	Unk_47(void) override;																												// 47
+		virtual void	Unk_4A(void) override;																												// 4A
 
 		bool			CanBeCarried() const;
 
 
+		// members
 		Data					data;		// 0E0 - DATA
 		float					fadeValue;	// 108 - FNAM
 		UInt32					pad10C;		// 10C
 		BGSSoundDescriptorForm*	sound;		// 110 - SNAM
 		UInt64					unk118;		// 118
 		UInt64					unk120;		// 120
-		UInt64					unk128;		// 128
+		BGSLensFlare*			unk128;		// 128
 	};
 	STATIC_ASSERT(sizeof(TESObjectLIGH) == 0x130);
 }

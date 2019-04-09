@@ -8,21 +8,14 @@
 
 namespace RE
 {
-	template <typename T> class BSTEventSink;
+	template <class T> class BSTEventSink;
 
 
-	enum class EventResult
-	{
-		kContinue = 0,
-		kAbort
-	};
-
-
-	template <typename EventT>
+	template <class EventT>
 	class BSTEventSource
 	{
 	public:
-		typedef BSTEventSink<EventT> SinkT;
+		using SinkT = BSTEventSink<EventT>;
 
 
 		BSTEventSource() :
@@ -32,33 +25,33 @@ namespace RE
 
 		void AddEventSink(SinkT* a_eventSink)
 		{
-			typedef void _AddEventSink_Internal_t(BSTEventSource<EventT>* a_this, SinkT* a_eventSink);
-			static _AddEventSink_Internal_t* _AddEventSink_Internal = reinterpret_cast<_AddEventSink_Internal_t*>(GetFnAddr(&::EventDispatcher<EventT>::AddEventSink));
-			_AddEventSink_Internal(this, a_eventSink);
+			using func_t = function_type_t<decltype(&BSTEventSource::AddEventSink)>;
+			func_t* func = function_cast<func_t*>(&::EventDispatcher<EventT>::AddEventSink);
+			return func(this, a_eventSink);
 		}
 
 
 		void RemoveEventSink(SinkT* a_eventSink)
 		{
-			typedef void _RemoveEventSink_Internal_t(BSTEventSource<EventT>* a_this, SinkT* a_eventSink);
-			static _RemoveEventSink_Internal_t* _RemoveEventSink_Internal = reinterpret_cast<_RemoveEventSink_Internal_t*>(GetFnAddr(&::EventDispatcher<EventT>::RemoveEventSink));
-			_RemoveEventSink_Internal(this, a_eventSink);
+			using func_t = function_type_t<decltype(&BSTEventSource::RemoveEventSink)>;
+			func_t* func = function_cast<func_t*>(&::EventDispatcher<EventT>::RemoveEventSink);
+			return func(this, a_eventSink);
 		}
 
 
 		void SendEvent(EventT* a_event)
 		{
-			typedef void _SendEvent_Internal_t(BSTEventSource<EventT>* a_this, EventT* a_event);
-			static _SendEvent_Internal_t* _SendEvent_Internal = reinterpret_cast<_SendEvent_Internal_t*>(GetFnAddr(&::EventDispatcher<EventT>::SendEvent));
-			_SendEvent_Internal(this, a_event);
+			using func_t = function_type_t<decltype(&BSTEventSource::SendEvent)>;
+			func_t* func = function_cast<func_t*>(&::EventDispatcher<EventT>::SendEvent);
+			return func(this, a_event);
 		}
 
 
 		void operator()(EventT* a_event)
 		{
-			typedef void _SendEvent_Internal_t(BSTEventSource<EventT>* a_this, EventT* a_event);
-			static _SendEvent_Internal_t* _SendEvent_Internal = reinterpret_cast<_SendEvent_Internal_t*>(GetFnAddr(&::EventDispatcher<EventT>::SendEvent));
-			_SendEvent_Internal(this, a_event);
+			using func_t = function_type_t<decltype(&BSTEventSource::operator())>;
+			func_t* func = function_cast<func_t*>(&::EventDispatcher<EventT>::SendEvent);
+			return func(this, a_event);
 		}
 
 
@@ -75,11 +68,19 @@ namespace RE
 	STATIC_ASSERT(sizeof(BSTEventSource<void*>) == 0x58);
 
 
-	template <typename EventT>
+	enum class EventResult
+	{
+		kContinue = 0,
+		kAbort
+	};
+
+
+	template <class EventT>
 	class BSTEventSink
 	{
 	public:
 		virtual ~BSTEventSink() {}																		// 00
 		virtual	EventResult	ReceiveEvent(EventT* a_event, BSTEventSource<EventT>* a_eventSource) = 0;	// 01
 	};
+	STATIC_ASSERT(sizeof(BSTEventSink<void*>) == 0x8);
 }

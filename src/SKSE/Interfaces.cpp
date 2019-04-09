@@ -7,123 +7,183 @@
 
 namespace SKSE
 {
+	UInt32 QueryInterface::SKSEVersion() const
+	{
+		return GetProxy()->skseVersion;
+	}
+
+
+	UInt32 QueryInterface::RuntimeVersion() const
+	{
+		return GetProxy()->runtimeVersion;
+	}
+
+
+	UInt32 QueryInterface::EditorVersion() const
+	{
+		return GetProxy()->editorVersion;
+	}
+
+
+	bool QueryInterface::IsEditor() const
+	{
+		return GetProxy()->isEditor;
+	}
+
+
+	const SKSEInterface* QueryInterface::GetProxy() const
+	{
+		return reinterpret_cast<const SKSEInterface*>(this);
+	}
+
+
 	void* LoadInterface::QueryInterface(InterfaceID a_id) const
 	{
-		return reinterpret_cast<const SKSEInterface*>(this)->QueryInterface(static_cast<UInt32>(a_id));
+		return GetProxy()->QueryInterface(static_cast<UInt32>(a_id));
 	}
 
 
 	PluginHandle LoadInterface::GetPluginHandle() const
 	{
-		return reinterpret_cast<const SKSEInterface*>(this)->GetPluginHandle();
+		return GetProxy()->GetPluginHandle();
 	}
 
 
 	UInt32 LoadInterface::GetReleaseIndex() const
 	{
-		return reinterpret_cast<const SKSEInterface*>(this)->GetReleaseIndex();
+		return GetProxy()->GetReleaseIndex();
+	}
+
+
+	UInt32 ScaleformInterface::Version() const
+	{
+		return GetProxy()->interfaceVersion;
 	}
 
 
 	bool ScaleformInterface::Register(RegCallback* a_callback, const char* a_name) const
 	{
-		return reinterpret_cast<const SKSEScaleformInterface*>(this)->Register(a_name, reinterpret_cast<SKSEScaleformInterface::RegisterCallback>(a_callback));
+		return GetProxy()->Register(a_name, reinterpret_cast<SKSEScaleformInterface::RegisterCallback>(a_callback));
 	}
 
 
 	void ScaleformInterface::Register(RegInvCallback* a_callback) const
 	{
-		reinterpret_cast<const SKSEScaleformInterface*>(this)->RegisterForInventory(reinterpret_cast<SKSEScaleformInterface::RegisterInventoryCallback>(a_callback));
+		GetProxy()->RegisterForInventory(reinterpret_cast<SKSEScaleformInterface::RegisterInventoryCallback>(a_callback));
+	}
+
+
+	const SKSEScaleformInterface* ScaleformInterface::GetProxy() const
+	{
+		return reinterpret_cast<const SKSEScaleformInterface*>(this);
+	}
+
+
+	UInt32 SerializationInterface::Version() const
+	{
+		return GetProxy()->version;
 	}
 
 
 	void SerializationInterface::SetUniqueID(UInt32 a_uid) const
 	{
-		reinterpret_cast<const SKSESerializationInterface*>(this)->SetUniqueID(GetPluginHandle(), a_uid);
+		GetProxy()->SetUniqueID(GetPluginHandle(), a_uid);
 	}
 
 
 	void SerializationInterface::SetRevertCallback(EventCallback* a_callback) const
 	{
-		reinterpret_cast<const SKSESerializationInterface*>(this)->SetRevertCallback(GetPluginHandle(), reinterpret_cast<SKSESerializationInterface::EventCallback>(a_callback));
+		GetProxy()->SetRevertCallback(GetPluginHandle(), reinterpret_cast<SKSESerializationInterface::EventCallback>(a_callback));
 	}
 
 
 	void SerializationInterface::SetSaveCallback(EventCallback* a_callback) const
 	{
-		reinterpret_cast<const SKSESerializationInterface*>(this)->SetSaveCallback(GetPluginHandle(), reinterpret_cast<SKSESerializationInterface::EventCallback>(a_callback));
+		GetProxy()->SetSaveCallback(GetPluginHandle(), reinterpret_cast<SKSESerializationInterface::EventCallback>(a_callback));
 	}
 
 
 	void SerializationInterface::SetLoadCallback(EventCallback* a_callback) const
 	{
-		reinterpret_cast<const SKSESerializationInterface*>(this)->SetLoadCallback(GetPluginHandle(), reinterpret_cast<SKSESerializationInterface::EventCallback>(a_callback));
+		GetProxy()->SetLoadCallback(GetPluginHandle(), reinterpret_cast<SKSESerializationInterface::EventCallback>(a_callback));
 	}
 
 
 	void SerializationInterface::SetFormDeleteCallback(FormDeleteCallback* a_callback) const
 	{
-		reinterpret_cast<const SKSESerializationInterface*>(this)->SetFormDeleteCallback(GetPluginHandle(), reinterpret_cast<SKSESerializationInterface::FormDeleteCallback>(a_callback));
+		GetProxy()->SetFormDeleteCallback(GetPluginHandle(), reinterpret_cast<SKSESerializationInterface::FormDeleteCallback>(a_callback));
 	}
 
 
 	bool SerializationInterface::WriteRecord(UInt32 a_type, UInt32 a_version, const void* a_buf, UInt32 a_length) const
 	{
-		return reinterpret_cast<const SKSESerializationInterface*>(this)->WriteRecord(a_type, a_version, a_buf, a_length);
+		return GetProxy()->WriteRecord(a_type, a_version, a_buf, a_length);
 	}
 
 
 	bool SerializationInterface::OpenRecord(UInt32 a_type, UInt32 a_version) const
 	{
-		return reinterpret_cast<const SKSESerializationInterface*>(this)->OpenRecord(a_type, a_version);
+		return GetProxy()->OpenRecord(a_type, a_version);
 	}
 
 
 	bool SerializationInterface::WriteRecordData(const void* a_buf, UInt32 a_length) const
 	{
-		return reinterpret_cast<const SKSESerializationInterface*>(this)->WriteRecordData(a_buf, a_length);
+		return GetProxy()->WriteRecordData(a_buf, a_length);
 	}
 
 
 	bool SerializationInterface::GetNextRecordInfo(UInt32& a_type, UInt32& a_version, UInt32& a_length) const
 	{
-		return reinterpret_cast<const SKSESerializationInterface*>(this)->GetNextRecordInfo(&a_type, &a_version, &a_length);
+		return GetProxy()->GetNextRecordInfo(&a_type, &a_version, &a_length);
 	}
 
 
 	UInt32 SerializationInterface::ReadRecordData(void* a_buf, UInt32 a_length) const
 	{
-		return reinterpret_cast<const SKSESerializationInterface*>(this)->ReadRecordData(a_buf, a_length);
+		return GetProxy()->ReadRecordData(a_buf, a_length);
 	}
 
 
 	bool SerializationInterface::ResolveHandle(RE::VMHandle a_oldHandle, RE::VMHandle& a_newHandle) const
 	{
-		return reinterpret_cast<const SKSESerializationInterface*>(this)->ResolveHandle(a_oldHandle, &a_newHandle);
+		return GetProxy()->ResolveHandle(a_oldHandle, &a_newHandle);
 	}
 
 
 	bool SerializationInterface::ResolveFormID(UInt32 a_oldFormID, UInt32& a_newFormID) const
 	{
-		return reinterpret_cast<const SKSESerializationInterface*>(this)->ResolveFormId(a_oldFormID, &a_newFormID);
+		return GetProxy()->ResolveFormId(a_oldFormID, &a_newFormID);
+	}
+
+
+	const SKSESerializationInterface* SerializationInterface::GetProxy() const
+	{
+		return reinterpret_cast<const SKSESerializationInterface*>(this);
+	}
+
+
+	UInt32 TaskInterface::Version() const
+	{
+		return GetProxy()->interfaceVersion;
 	}
 
 
 	void TaskInterface::AddTask(TaskFn a_task) const
 	{
-		reinterpret_cast<const SKSETaskInterface*>(this)->AddTask(new Task(std::move(a_task)));
+		GetProxy()->AddTask(new Task(std::move(a_task)));
 	}
 
 
 	void TaskInterface::AddTask(TaskDelegate* a_task) const
 	{
-		reinterpret_cast<const SKSETaskInterface*>(this)->AddTask(a_task);
+		GetProxy()->AddTask(a_task);
 	}
 
 
 	void TaskInterface::AddTask(UIDelegate_v1* a_task) const
 	{
-		reinterpret_cast<const SKSETaskInterface*>(this)->AddUITask(a_task);
+		GetProxy()->AddUITask(a_task);
 	}
 
 
@@ -144,44 +204,86 @@ namespace SKSE
 	}
 
 
+	const SKSETaskInterface* TaskInterface::GetProxy() const
+	{
+		return reinterpret_cast<const SKSETaskInterface*>(this);
+	}
+
+
+	UInt32 PapyrusInterface::Version() const
+	{
+		return GetProxy()->interfaceVersion;
+	}
+
+
 	bool PapyrusInterface::Register(RegFunction* a_fn) const
 	{
-		return reinterpret_cast<const SKSEPapyrusInterface*>(this)->Register(reinterpret_cast<SKSEPapyrusInterface::RegisterFunctions>(a_fn));
+		return GetProxy()->Register(reinterpret_cast<SKSEPapyrusInterface::RegisterFunctions>(a_fn));
+	}
+
+
+	const SKSEPapyrusInterface* PapyrusInterface::GetProxy() const
+	{
+		return reinterpret_cast<const SKSEPapyrusInterface*>(this);
+	}
+
+
+	UInt32 MessagingInterface::Version() const
+	{
+		return GetProxy()->interfaceVersion;
 	}
 
 
 	bool MessagingInterface::RegisterListener(const char* a_sender, EventCallback* a_callback) const
 	{
-		return reinterpret_cast<const SKSEMessagingInterface*>(this)->RegisterListener(GetPluginHandle(), a_sender, reinterpret_cast<SKSEMessagingInterface::EventCallback>(a_callback));
+		return GetProxy()->RegisterListener(GetPluginHandle(), a_sender, reinterpret_cast<SKSEMessagingInterface::EventCallback>(a_callback));
 	}
 
 
 	bool MessagingInterface::Dispatch(UInt32 a_messageType, void* a_data, UInt32 a_dataLen, const char* a_receiver) const
 	{
-		return reinterpret_cast<const SKSEMessagingInterface*>(this)->Dispatch(GetPluginHandle(), a_messageType, a_data, a_dataLen, a_receiver);
+		return GetProxy()->Dispatch(GetPluginHandle(), a_messageType, a_data, a_dataLen, a_receiver);
 	}
 
 
 	void* MessagingInterface::GetEventDispatcher(Dispatcher a_dispatcherID) const
 	{
-		return reinterpret_cast<const SKSEMessagingInterface*>(this)->GetEventDispatcher(static_cast<UInt32>(a_dispatcherID));
+		return GetProxy()->GetEventDispatcher(static_cast<UInt32>(a_dispatcherID));
+	}
+
+
+	const SKSEMessagingInterface* MessagingInterface::GetProxy() const
+	{
+		return reinterpret_cast<const SKSEMessagingInterface*>(this);
+	}
+
+
+	UInt32 ObjectInterface::Version() const
+	{
+		return GetProxy()->interfaceVersion;
 	}
 
 
 	SKSEDelayFunctorManager& ObjectInterface::GetDelayFunctorManager() const
 	{
-		return reinterpret_cast<const SKSEObjectInterface*>(this)->GetDelayFunctorManager();
+		return GetProxy()->GetDelayFunctorManager();
 	}
 
 
 	SKSEObjectRegistry& ObjectInterface::GetObjectRegistry() const
 	{
-		return reinterpret_cast<const SKSEObjectInterface*>(this)->GetObjectRegistry();
+		return GetProxy()->GetObjectRegistry();
 	}
 
 
 	SKSEPersistentObjectStorage& ObjectInterface::GetPersistentObjectStorage() const
 	{
-		return reinterpret_cast<const SKSEObjectInterface*>(this)->GetPersistentObjectStorage();
+		return GetProxy()->GetPersistentObjectStorage();
+	}
+
+
+	const SKSEObjectInterface* ObjectInterface::GetProxy() const
+	{
+		return reinterpret_cast<const SKSEObjectInterface*>(this);
 	}
 }
