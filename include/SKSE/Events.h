@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/PapyrusEvents.h"  // SKSEModCallbackEvent, SKSECameraEvent, SKSECrosshairRefEvent, SKSEActionEvent, SKSENiNodeUpdateEvent
+
 #include "RE/Actor.h"  // Actor
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/NiSmartPointer.h"  // NiPointer
@@ -25,6 +27,11 @@ namespace SKSE
 		float				numArg;
 		RE::TESForm*		sender;
 	};
+	STATIC_ASSERT(offsetof(ModCallbackEvent, eventName) == offsetof(SKSEModCallbackEvent, eventName));
+	STATIC_ASSERT(offsetof(ModCallbackEvent, strArg) == offsetof(SKSEModCallbackEvent, strArg));
+	STATIC_ASSERT(offsetof(ModCallbackEvent, numArg) == offsetof(SKSEModCallbackEvent, numArg));
+	STATIC_ASSERT(offsetof(ModCallbackEvent, sender) == offsetof(SKSEModCallbackEvent, sender));
+	STATIC_ASSERT(sizeof(ModCallbackEvent) == sizeof(SKSEModCallbackEvent));
 
 
 	struct CameraEvent
@@ -38,6 +45,9 @@ namespace SKSE
 		RE::TESCameraState*	oldState;
 		RE::TESCameraState*	newState;
 	};
+	STATIC_ASSERT(offsetof(CameraEvent, oldState) == offsetof(SKSECameraEvent, oldState));
+	STATIC_ASSERT(offsetof(CameraEvent, newState) == offsetof(SKSECameraEvent, newState));
+	STATIC_ASSERT(sizeof(CameraEvent) == sizeof(SKSECameraEvent));
 
 
 	struct CrosshairRefEvent
@@ -49,6 +59,8 @@ namespace SKSE
 
 		RE::NiPointer<RE::TESObjectREFR> crosshairRef;
 	};
+	STATIC_ASSERT(offsetof(CrosshairRefEvent, crosshairRef) == offsetof(SKSECrosshairRefEvent, crosshairRef));
+	STATIC_ASSERT(sizeof(CrosshairRefEvent) == sizeof(SKSECrosshairRefEvent));
 
 
 	struct ActionEvent
@@ -90,6 +102,11 @@ namespace SKSE
 		RE::TESForm*	sourceForm;
 		Slot			slot;
 	};
+	STATIC_ASSERT(offsetof(ActionEvent, type) == offsetof(SKSEActionEvent, type));
+	STATIC_ASSERT(offsetof(ActionEvent, actor) == offsetof(SKSEActionEvent, actor));
+	STATIC_ASSERT(offsetof(ActionEvent, sourceForm) == offsetof(SKSEActionEvent, sourceForm));
+	STATIC_ASSERT(offsetof(ActionEvent, slot) == offsetof(SKSEActionEvent, slot));
+	STATIC_ASSERT(sizeof(ActionEvent) == sizeof(SKSEActionEvent));
 
 
 	struct NiNodeUpdateEvent
@@ -101,4 +118,6 @@ namespace SKSE
 
 		RE::TESObjectREFR* reference;
 	};
+	STATIC_ASSERT(offsetof(NiNodeUpdateEvent, reference) == offsetof(SKSENiNodeUpdateEvent, reference));
+	STATIC_ASSERT(sizeof(NiNodeUpdateEvent) == sizeof(SKSENiNodeUpdateEvent));
 }

@@ -1232,9 +1232,6 @@
     <ClInclude Include="include\RE\BGSSoundDescriptor.h">
       <Filter>include\RE\Skyrim\BSAudio</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\StringCache.h">
-      <Filter>include\RE\Skyrim\BSCore</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESSound.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
     </ClInclude>
@@ -2740,6 +2737,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\SmithingMenu.h">
       <Filter>include\RE\Skyrim\Menus\CraftingSubMenus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSGlobalStringTable.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

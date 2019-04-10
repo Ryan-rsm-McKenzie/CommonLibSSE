@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	class StringCache
+	class BSGlobalStringTable
 	{
 	public:
 		struct Entry
@@ -37,7 +37,6 @@ namespace RE
 		STATIC_ASSERT(sizeof(Entry) == 0x20);
 
 
-		// 10
 		struct Lock
 		{
 			BSSpinLock	lock;	// 00
@@ -49,7 +48,10 @@ namespace RE
 		// members
 		Entry*	table[0x10000];	// 00000
 		Lock	locks[0x80];	// 80000
-		UInt8	isInit;			// 80800
+		bool	isInit;			// 80800
+		UInt8	pad80801;		// 80801
+		UInt16	pad80802;		// 80802
+		UInt32	pad80804;		// 80804
 	};
-	STATIC_ASSERT(sizeof(StringCache) == 0x80808);
+	STATIC_ASSERT(sizeof(BSGlobalStringTable) == 0x80808);
 }

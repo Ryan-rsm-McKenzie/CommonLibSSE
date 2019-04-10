@@ -17,11 +17,11 @@ namespace RE
 		struct const_iterator
 		{
 		public:
-			typedef std::int64_t					difference_type;
-			typedef const char						value_type;
-			typedef value_type*						pointer;
-			typedef value_type&						reference;
-			typedef std::random_access_iterator_tag	iterator_category;
+			using difference_type = std::ptrdiff_t;
+			using value_type = const char;
+			using pointer = value_type * ;
+			using reference = value_type & ;
+			using iterator_category = std::random_access_iterator_tag;
 
 
 			const_iterator();
@@ -54,30 +54,20 @@ namespace RE
 		};
 
 
-		typedef char									value_type;
-		typedef UInt32									size_type;
-		typedef value_type								reference;
-		typedef const value_type&						const_reference;
-		typedef value_type*								pointer;
-		typedef const value_type*						const_pointer;
-		typedef std::reverse_iterator<const_iterator>	const_reverse_iterator;
+		using value_type = char;
+		using size_type = UInt32;
+		using reference = value_type;
+		using const_reference = const value_type&;
+		using pointer = value_type * ;
+		using const_pointer = const value_type*;
+		using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
 
 		// (constructor)
 		BSFixedString();
-		BSFixedString(size_type a_count, char a_ch);
-		BSFixedString(const BSFixedString& a_other, size_type a_pos, size_type a_count = npos);
-		BSFixedString(const char* a_s);
-		template <class InputIt>
-		BSFixedString(InputIt a_first, InputIt a_last)
-		{
-			char* arr = insert_internal(0, a_first.operator->(), a_last - a_first);
-			ctor_internal(arr);
-			::delete[] arr;
-		}
-		BSFixedString(const BSFixedString& a_other);
-		BSFixedString(BSFixedString&& a_other) noexcept;
-		BSFixedString(std::initializer_list<char> a_ilist);
+		BSFixedString(const char* a_rhs);
+		BSFixedString(const BSFixedString& a_rhs);
+		BSFixedString(BSFixedString&& a_rhs) noexcept;
 
 		// (destructor)
 		~BSFixedString();
@@ -112,47 +102,18 @@ namespace RE
 		static size_type	max_size() noexcept;
 
 		// Operations
-		void			clear() noexcept;
-		BSFixedString&	insert(size_type a_index, size_type a_count, char a_ch);
-		BSFixedString&	insert(size_type a_index, const char* a_s);
-		BSFixedString&	insert(size_type a_index, const char* a_s, size_type a_count);
-		BSFixedString&	insert(size_type a_index, const BSFixedString& a_str);
-		BSFixedString&	insert(size_type a_index, const BSFixedString& a_str, size_type a_index_str, size_type a_count = npos);
-		void			push_back(char a_ch);
-		void			pop_back();
-		BSFixedString&	append(size_type a_count, char a_ch);
-		BSFixedString&	append(const BSFixedString& a_str);
-		BSFixedString&	append(const BSFixedString& a_str, size_type a_pos, size_type a_count = npos);
-		BSFixedString&	append(const char* a_s, size_type a_count);
-		BSFixedString&	append(const char* a_s);
-		template <class InputIt>
-		BSFixedString&	append(InputIt a_first, InputIt a_last)
-		{
-			char* arr = insert_internal(0, a_first.operator->(), a_last - a_first);
-			set_internal(this, arr);
-			::delete[] arr;
-			return *this;
-		}
-		BSFixedString&	append(std::initializer_list<char> a_ilist);
-		BSFixedString&	operator+=(const BSFixedString& a_str);
-		BSFixedString&	operator+=(char a_ch);
-		BSFixedString&	operator+=(const char* a_s);
-		BSFixedString&	operator+=(std::initializer_list<char> a_ilist);
-		int				compare(const BSFixedString& a_str) const noexcept;
-		int				compare(size_type a_pos1, size_type a_count1, const BSFixedString& a_str) const;
-		int				compare(size_type a_pos1, size_type a_count1, const BSFixedString& a_str, size_type a_pos2, size_type a_count2 = npos) const;
-		int				compare(const char* a_s) const;
-		int				compare(size_type a_pos1, size_type a_count1, const char* a_s) const;
-		BSFixedString	substr(size_type a_pos = 0, size_type a_count = npos) const;
+		void	clear() noexcept;
+		int		compare(const BSFixedString& a_rhs) const noexcept;
+		int		compare(const char* a_rhs) const;
 
-		friend bool	operator==(const BSFixedString& a_lhs, const char* a_rhs) { return (a_lhs._data == a_rhs || _stricmp(a_lhs._data, a_rhs) == 0); }
-		friend bool	operator!=(const BSFixedString& a_lhs, const char* a_rhs) { return !(a_lhs == a_rhs); }
-		friend bool	operator==(const char* a_lhs, const BSFixedString& a_rhs) { return (a_rhs == a_lhs); }
-		friend bool	operator!=(const char* a_lhs, const BSFixedString& a_rhs) { return !(a_lhs == a_rhs); }
-		friend bool	operator==(const BSFixedString& a_lhs, const BSFixedString& a_rhs) { return (a_lhs == a_rhs._data); }
-		friend bool	operator!=(const BSFixedString& a_lhs, const BSFixedString& a_rhs) { return !(a_lhs == a_rhs); }
-		bool		operator==(const BSString& a_rhs) const;
-		bool		operator!=(const BSString& a_rhs) const;
+		inline friend bool	operator==(const BSFixedString& a_lhs, const char* a_rhs) { return (a_lhs._data == a_rhs || _stricmp(a_lhs._data, a_rhs) == 0); }
+		inline friend bool	operator!=(const BSFixedString& a_lhs, const char* a_rhs) { return !(a_lhs == a_rhs); }
+		inline friend bool	operator==(const char* a_lhs, const BSFixedString& a_rhs) { return (a_rhs == a_lhs); }
+		inline friend bool	operator!=(const char* a_lhs, const BSFixedString& a_rhs) { return !(a_lhs == a_rhs); }
+		inline friend bool	operator==(const BSFixedString& a_lhs, const BSFixedString& a_rhs) { return (a_lhs == a_rhs._data); }
+		inline friend bool	operator!=(const BSFixedString& a_lhs, const BSFixedString& a_rhs) { return !(a_lhs == a_rhs); }
+		bool				operator==(const BSString& a_rhs) const;
+		bool				operator!=(const BSString& a_rhs) const;
 
 		TES_HEAP_REDEFINE_NEW();
 
@@ -160,18 +121,16 @@ namespace RE
 		static constexpr size_type npos{ static_cast<size_type>(-1) };	// NOT PART OF NATIVE TYPE
 
 	protected:
-		BSFixedString*	ctor_internal(const char* a_s);
-		BSFixedString*	ctor_copy_internal(const BSFixedString& a_other);
-		void			dtor_internal();
-		BSFixedString*	set_internal(const char* a_rhs);
-		BSFixedString*	set_copy_internal(const BSFixedString& a_rhs);
+		BSFixedString*	ctor_cstr(const char* a_rhs);
+		BSFixedString*	ctor_copy(const BSFixedString& a_rhs);
+		void			dtor();
+		BSFixedString*	set_cstr(const char* a_rhs);
+		BSFixedString*	set_copy(const BSFixedString& a_rhs);
 		void			assert_out_of_range(size_type a_index, const char* a_func) const;
 		void			assert_length_error(size_type a_count, const char* a_func) const;
-		char*			insert_internal(size_type a_index, const char* a_s, size_type a_count);
-		char*			insert_char_internal(size_type a_index, size_type a_count, char a_ch);
 
 
-		static constexpr const_reference NULL_CHARACTER{ char() };	// NOT PART OF NATIVE TYPE
+		static constexpr value_type NULL_CHARACTER{ char() };	// NOT PART OF NATIVE TYPE
 
 		// members
 		const char* _data;	// 0

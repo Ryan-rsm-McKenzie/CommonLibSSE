@@ -817,7 +817,7 @@
     <ClInclude Include="include\RE\StandardItemData.h" />
     <ClInclude Include="include\RE\Stars.h" />
     <ClInclude Include="include\RE\StatsEvent.h" />
-    <ClInclude Include="include\RE\StringCache.h" />
+    <ClInclude Include="include\RE\BSGlobalStringTable.h" />
     <ClInclude Include="include\RE\Sun.h" />
     <ClInclude Include="include\RE\SuspendedStack.h" />
     <ClInclude Include="include\RE\TESActorBase.h" />

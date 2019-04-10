@@ -116,15 +116,6 @@ namespace RE
 		}
 
 
-		namespace BSFixedString
-		{
-			// E8 ? ? ? ? 89 7D 98
-			constexpr std::uintptr_t CtorCopy = 0x00C287D0;	// 1_5_73
-			// E8 ? ? ? ? F7 DF
-			constexpr std::uintptr_t SetCopy = 0x00C28970;	// 1_5_73
-		}
-
-
 		namespace BSScaleformTranslator
 		{
 			// ??_7BSScaleformTranslator@@6B@
