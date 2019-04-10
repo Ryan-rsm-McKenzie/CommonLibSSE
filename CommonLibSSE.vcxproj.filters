@@ -19,9 +19,6 @@
     <Filter Include="include\RE\Skyrim\FormComponents">
       <UniqueIdentifier>{9410f289-c830-479f-b772-32ed0af95f26}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\SKSE">
-      <UniqueIdentifier>{0e1c98bf-fd76-4eda-8fb3-7a50f879a87a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Skyrim\ExtraData">
       <UniqueIdentifier>{a9418d25-6fa2-43e9-9a9b-82ab52cea883}</UniqueIdentifier>
     </Filter>
@@ -84,9 +81,6 @@
     </Filter>
     <Filter Include="src\RE\Skyrim\Magic">
       <UniqueIdentifier>{0f744115-aeec-45b4-886a-05c36f067ae5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\SKSE">
-      <UniqueIdentifier>{3d9a3353-0c7b-43b5-a7a7-b90abb0487ff}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\RE\Skyrim\Events">
       <UniqueIdentifier>{9979b69c-714e-47ef-948a-19a9293bdb01}</UniqueIdentifier>
@@ -426,6 +420,12 @@
     </Filter>
     <Filter Include="include\RE\Skyrim\Menus\CraftingSubMenus">
       <UniqueIdentifier>{1068b6ee-a717-41a9-afd1-f765a8c9b0f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\SKSE">
+      <UniqueIdentifier>{0e1c98bf-fd76-4eda-8fb3-7a50f879a87a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SKSE">
+      <UniqueIdentifier>{3d9a3353-0c7b-43b5-a7a7-b90abb0487ff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -871,7 +871,7 @@
       <Filter>src\RE\Skyrim\BSScript</Filter>
     </ClCompile>
     <ClCompile Include="src\SKSE\RegistrationSet.cpp">
-      <Filter>src\RE\SKSE</Filter>
+      <Filter>src\SKSE</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\IFormFactory.cpp">
       <Filter>src\RE\Skyrim\BSSystem</Filter>
@@ -880,10 +880,10 @@
       <Filter>src\RE\Skyrim\Menus\IMenu</Filter>
     </ClCompile>
     <ClCompile Include="src\SKSE\API.cpp">
-      <Filter>src\RE\SKSE</Filter>
+      <Filter>src\SKSE</Filter>
     </ClCompile>
     <ClCompile Include="src\SKSE\Interfaces.cpp">
-      <Filter>src\RE\SKSE</Filter>
+      <Filter>src\SKSE</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2685,10 +2685,10 @@
       <Filter>include\RE\Skyrim\BSScript</Filter>
     </ClInclude>
     <ClInclude Include="include\SKSE\RegistrationSet.h">
-      <Filter>include\RE\SKSE</Filter>
+      <Filter>include\SKSE</Filter>
     </ClInclude>
     <ClInclude Include="include\SKSE\Events.h">
-      <Filter>include\RE\SKSE</Filter>
+      <Filter>include\SKSE</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\IFormFactory.h">
       <Filter>include\RE\Skyrim\BSSystem</Filter>
@@ -2703,10 +2703,10 @@
       <Filter>include\RE\Skyrim\Menus\IMenu</Filter>
     </ClInclude>
     <ClInclude Include="include\SKSE\API.h">
-      <Filter>include\RE\SKSE</Filter>
+      <Filter>include\SKSE</Filter>
     </ClInclude>
     <ClInclude Include="include\SKSE\Interfaces.h">
-      <Filter>include\RE\SKSE</Filter>
+      <Filter>include\SKSE</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\MessageBoxMenu.h">
       <Filter>include\RE\Skyrim\Menus\IMenu</Filter>

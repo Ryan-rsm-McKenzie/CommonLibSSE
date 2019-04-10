@@ -96,10 +96,7 @@ namespace RE
 		{
 			DecRefCount();
 			_object = a_r._object;
-			if (_object) {
-				a_r._object = 0;
-				_object->IncRefCount();
-			}
+			a_r._object = 0;
 		}
 
 
@@ -108,10 +105,6 @@ namespace RE
 		{
 			DecRefCount();
 			_object = a_r._object;
-			if (_object) {
-				a_r._object = 0;
-				_object->IncRefCount();
-			}
 		}
 
 
@@ -127,7 +120,7 @@ namespace RE
 		template<class Y, typename std::enable_if_t<std::is_convertible<Y, T>::value, int> = 0>
 		void reset(Y* a_ptr)
 		{
-			reset();
+			DecRefCount();
 			_object = a_ptr;
 			IncRefCount();
 		}

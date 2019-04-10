@@ -16,24 +16,24 @@
 
 namespace SKSE
 {
-	bool Init(const SKSE::LoadInterface* a_skse);
+	bool Init(const LoadInterface* a_skse);
 
 	const PluginHandle	GetPluginHandle();
 	const UInt32		GetReleaseIndex();
 
-	const SKSE::ScaleformInterface*		GetScaleformInterface();
-	const SKSE::PapyrusInterface*		GetPapyrusInterface();
-	const SKSE::SerializationInterface*	GetSerializationInterface();
-	const SKSE::TaskInterface*			GetTaskInterface();
+	const ScaleformInterface*		GetScaleformInterface();
+	const PapyrusInterface*			GetPapyrusInterface();
+	const SerializationInterface*	GetSerializationInterface();
+	const TaskInterface*			GetTaskInterface();
 
-	const SKSE::MessagingInterface*					GetMessagingInterface();
-	RE::BSTEventSource<SKSE::ModCallbackEvent>*		GetModCallbackEventSource();
-	RE::BSTEventSource<SKSE::CameraEvent>*			GetCameraEventSource();
-	RE::BSTEventSource<SKSE::CrosshairRefEvent>*	GetCrosshairRefEventSource();
-	RE::BSTEventSource<SKSE::ActionEvent>*			GetActionEventSource();
-	RE::BSTEventSource<SKSE::NiNodeUpdateEvent>*	GetNiNodeUpdateEventSource();
+	const MessagingInterface*				GetMessagingInterface();
+	RE::BSTEventSource<ModCallbackEvent>*	GetModCallbackEventSource();
+	RE::BSTEventSource<CameraEvent>*		GetCameraEventSource();
+	RE::BSTEventSource<CrosshairRefEvent>*	GetCrosshairRefEventSource();
+	RE::BSTEventSource<ActionEvent>*		GetActionEventSource();
+	RE::BSTEventSource<NiNodeUpdateEvent>*	GetNiNodeUpdateEventSource();
 
-	const SKSE::ObjectInterface*		GetObjectInterface();
+	const ObjectInterface*				GetObjectInterface();
 	const SKSEDelayFunctorManager*		GetDelayFunctorManager();
 	const SKSEObjectRegistry*			GetObjectRegistry();
 	const SKSEPersistentObjectStorage*	GetPersistentObjectStorage();
@@ -44,19 +44,19 @@ namespace SKSE
 		inline PluginHandle	g_pluginHandle = static_cast<PluginHandle>(kPluginHandle_Invalid);
 		inline UInt32		g_releaseIndex = 0;
 
-		inline SKSE::ScaleformInterface*		g_scaleformInterface = 0;
-		inline SKSE::PapyrusInterface*			g_papyrusInterface = 0;
-		inline SKSE::SerializationInterface*	g_serializationInterface = 0;
-		inline SKSE::TaskInterface*				g_taskInterface = 0;
+		inline ScaleformInterface*		g_scaleformInterface = 0;
+		inline PapyrusInterface*		g_papyrusInterface = 0;
+		inline SerializationInterface*	g_serializationInterface = 0;
+		inline TaskInterface*			g_taskInterface = 0;
 
-		inline SKSE::MessagingInterface*					g_messagingInterface = 0;
-		inline RE::BSTEventSource<SKSE::ModCallbackEvent>*	g_modCallbackEventSource = 0;
-		inline RE::BSTEventSource<SKSE::CameraEvent>*		g_cameraEventSource = 0;
-		inline RE::BSTEventSource<SKSE::CrosshairRefEvent>*	g_crosshairRefEventSource = 0;
-		inline RE::BSTEventSource<SKSE::ActionEvent>*		g_actionEventSource = 0;
-		inline RE::BSTEventSource<SKSE::NiNodeUpdateEvent>*	g_niNodeUpdateEventSource = 0;
+		inline MessagingInterface*						g_messagingInterface = 0;
+		inline RE::BSTEventSource<ModCallbackEvent>*	g_modCallbackEventSource = 0;
+		inline RE::BSTEventSource<CameraEvent>*			g_cameraEventSource = 0;
+		inline RE::BSTEventSource<CrosshairRefEvent>*	g_crosshairRefEventSource = 0;
+		inline RE::BSTEventSource<ActionEvent>*			g_actionEventSource = 0;
+		inline RE::BSTEventSource<NiNodeUpdateEvent>*	g_niNodeUpdateEventSource = 0;
 
-		inline SKSE::ObjectInterface*		g_objectInterface = 0;
+		inline ObjectInterface*				g_objectInterface = 0;
 		inline SKSEDelayFunctorManager*		g_delayFunctorManager = 0;
 		inline SKSEObjectRegistry*			g_objectRegistry = 0;
 		inline SKSEPersistentObjectStorage*	g_persistentObjectStorage = 0;

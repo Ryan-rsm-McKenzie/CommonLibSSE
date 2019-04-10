@@ -3,6 +3,7 @@
 #include <iterator>  // random_access_iterator_tag, reverse_iterator
 #include <initializer_list>  // initializer_list
 
+#include "RE/BSGlobalStringTable.h"  // GlobalStringHandle
 #include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
 
 
@@ -118,8 +119,6 @@ namespace RE
 		TES_HEAP_REDEFINE_NEW();
 
 
-		static constexpr size_type npos{ static_cast<size_type>(-1) };	// NOT PART OF NATIVE TYPE
-
 	protected:
 		BSFixedString*	ctor_cstr(const char* a_rhs);
 		BSFixedString*	ctor_copy(const BSFixedString& a_rhs);
@@ -130,10 +129,8 @@ namespace RE
 		void			assert_length_error(size_type a_count, const char* a_func) const;
 
 
-		static constexpr value_type NULL_CHARACTER{ char() };	// NOT PART OF NATIVE TYPE
-
 		// members
-		const char* _data;	// 0
+		GlobalStringHandle _data;	// 0
 	};
 	STATIC_ASSERT(sizeof(BSFixedString) == 0x8);
 }

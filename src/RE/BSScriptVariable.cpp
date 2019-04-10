@@ -6,6 +6,10 @@
 
 #include "skse64/PapyrusValue.h"  // VMValue
 
+#include "RE/BSScriptArray.h"  // BSScriptArray
+#include "RE/BSScriptClass.h"  // BSScriptClass
+#include "RE/BSScriptObject.h"  // BSScriptObject
+
 
 namespace RE
 {
@@ -88,7 +92,7 @@ namespace RE
 			case VMTypeID::kNoneArray:
 				return true;
 			case VMTypeID::kObject:
-				return data.obj == a_rhs.data.obj;
+				return data.obj.get() == a_rhs.data.obj.get();
 			case VMTypeID::kString:
 				return data.str == a_rhs.data.str;
 			case VMTypeID::kInt:
@@ -102,7 +106,7 @@ namespace RE
 			case VMTypeID::kIntArray:
 			case VMTypeID::kFloatArray:
 			case VMTypeID::kBoolArray:
-				return data.arr == a_rhs.data.arr;
+				return data.arr.get() == a_rhs.data.arr.get();
 			default:
 				return false;
 			}
@@ -126,7 +130,7 @@ namespace RE
 			case VMTypeID::kNoneArray:
 				return false;
 			case VMTypeID::kObject:
-				return data.obj < a_rhs.data.obj;
+				return data.obj.get() < a_rhs.data.obj.get();
 			case VMTypeID::kString:
 				return _stricmp(data.str.c_str(), a_rhs.data.str.c_str()) < 0;
 			case VMTypeID::kInt:
@@ -140,7 +144,7 @@ namespace RE
 			case VMTypeID::kIntArray:
 			case VMTypeID::kFloatArray:
 			case VMTypeID::kBoolArray:
-				return data.arr < a_rhs.data.arr;
+				return data.arr.get() < a_rhs.data.arr.get();
 			default:
 				return data.p < a_rhs.data.p;
 			}
@@ -186,21 +190,28 @@ namespace RE
 		}
 
 
+		bool BSScriptVariable::GetBool() const
+		{
+			assert(IsBool());
+			return data.b;
+		}
+
+
 		BSScriptArray* BSScriptVariable::GetArray()
 		{
 			assert(IsArray());
-			return data.arr;
+			return data.arr.get();
 		}
 
 
 		BSScriptObject* BSScriptVariable::GetObject()
 		{
 			assert(IsObject());
-			return data.obj;
+			return data.obj.get();
 		}
 
 
-		const BSFixedString& BSScriptVariable::GetString() const
+		BSFixedString BSScriptVariable::GetString() const
 		{
 			assert(IsString());
 			return data.str;
@@ -210,6 +221,55 @@ namespace RE
 		void BSScriptVariable::SetNone()
 		{
 			ChangeType(VMTypeID::kNone);
+		}
+
+
+		void BSScriptVariable::SetSInt(SInt32 a_val)
+		{
+			ChangeType(VMTypeID::kInt);
+			data.i = a_val;
+		}
+
+
+		void BSScriptVariable::SetUInt(UInt32 a_val)
+		{
+			ChangeType(VMTypeID::kInt);
+			data.u = a_val;
+		}
+
+
+		void BSScriptVariable::SetFloat(float a_val)
+		{
+			ChangeType(VMTypeID::kFloat);
+			data.f = a_val;
+		}
+
+
+		void BSScriptVariable::SetBool(bool a_val)
+		{
+			ChangeType(VMTypeID::kBool);
+			data.b = a_val;
+		}
+
+
+		void BSScriptVariable::SetArray(BSScriptArray* a_val)
+		{
+			ChangeType(a_val->type_id());
+			data.arr.reset(a_val);
+		}
+
+
+		void BSScriptVariable::SetObject(BSScriptObject* a_val)
+		{
+			ChangeType(a_val->GetClass()->GetTypeID());
+			data.obj.reset(a_val);
+		}
+
+
+		void BSScriptVariable::SetString(BSFixedString a_val)
+		{
+			ChangeType(VMTypeID::kString);
+			data.str = std::move(a_val);
 		}
 
 

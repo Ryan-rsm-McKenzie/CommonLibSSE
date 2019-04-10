@@ -221,11 +221,7 @@ namespace RE
 
 	BSFixedString::const_reference BSFixedString::operator[](size_type a_pos) const
 	{
-		if (a_pos == size()) {
-			return NULL_CHARACTER;
-		} else {
-			return _data[a_pos];
-		}
+		return _data[a_pos];
 	}
 
 

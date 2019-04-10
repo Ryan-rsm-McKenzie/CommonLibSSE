@@ -109,7 +109,7 @@ namespace RE
 		}
 
 
-		template <class T, typename std::enable_if_t<is_string_cref_compat<T>::value, int> = 0>
+		template <class T, typename std::enable_if_t<is_string_compat<T>::value, int> = 0>
 		inline T UnpackValue(BSScriptVariable* a_src)
 		{
 			return a_src->GetString();

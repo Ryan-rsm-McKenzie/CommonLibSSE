@@ -5,6 +5,9 @@
 
 namespace RE
 {
+	using GlobalStringHandle = char*;
+
+
 	class BSGlobalStringTable
 	{
 	public:

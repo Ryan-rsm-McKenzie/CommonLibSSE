@@ -28,7 +28,6 @@ namespace RE
 			bool 			IsLiteralArray() const;
 			bool 			IsArray() const;
 
-
 		protected:
 			// members
 			VMTypeID type;	// 00

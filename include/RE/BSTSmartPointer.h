@@ -67,6 +67,9 @@ namespace RE
 		[[nodiscard]] explicit constexpr operator bool() const noexcept;
 
 	protected:
+		void Attach();
+		void Detach();
+
 		// members
 		T* _ptr;	// 0
 	};
@@ -90,7 +93,7 @@ namespace RE
 	BSTSmartPointer<T, RefManager>::BSTSmartPointer(Y* a_ptr) :
 		_ptr(a_ptr)
 	{
-		reference_manager::Attach(_ptr);
+		Attach();
 	}
 
 
@@ -98,7 +101,7 @@ namespace RE
 	BSTSmartPointer<T, RefManager>::BSTSmartPointer(const BSTSmartPointer& a_r) noexcept :
 		_ptr(a_r._ptr)
 	{
-		reference_manager::Attach(_ptr);
+		Attach();
 	}
 
 
@@ -107,7 +110,7 @@ namespace RE
 	BSTSmartPointer<T, RefManager>::BSTSmartPointer(const BSTSmartPointer<Y>& a_r) noexcept :
 		_ptr(a_r._ptr)
 	{
-		reference_manager::Attach(_ptr);
+		Attach();
 	}
 
 
@@ -131,9 +134,7 @@ namespace RE
 	template <class T, class RefManager>
 	BSTSmartPointer<T, RefManager>::~BSTSmartPointer()
 	{
-		if (_ptr) {
-			reference_manager::Detach(_ptr);
-		}
+		Detach();
 	}
 
 
@@ -142,7 +143,6 @@ namespace RE
 		-> BSTSmartPointer&
 	{
 		reset(a_r._ptr);
-		reference_manager::Attach(_ptr);
 		return *this;
 	}
 
@@ -153,7 +153,6 @@ namespace RE
 		-> BSTSmartPointer&
 	{
 		reset(a_r._ptr);
-		reference_manager::Attach(_ptr);
 		return *this;
 	}
 
@@ -162,6 +161,7 @@ namespace RE
 	auto BSTSmartPointer<T, RefManager>::operator=(BSTSmartPointer&& a_r) noexcept
 		-> BSTSmartPointer&
 	{
+		Detach();
 		_ptr = std::move(a_r._ptr);
 		a_r._ptr = 0;
 		return *this;
@@ -173,6 +173,7 @@ namespace RE
 	auto BSTSmartPointer<T, RefManager>::operator=(BSTSmartPointer<Y>&& a_r) noexcept
 		-> BSTSmartPointer&
 	{
+		Detach();
 		_ptr = std::move(a_r._ptr);
 		a_r._ptr = 0;
 		return *this;
@@ -193,10 +194,8 @@ namespace RE
 	template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int>>
 	void BSTSmartPointer<T, RefManager>::reset(Y* a_ptr)
 	{
-		if (_ptr) {
-			reference_manager::Detach(_ptr);
-		}
 		_ptr = a_ptr;
+		Attach();
 	}
 
 
@@ -227,6 +226,24 @@ namespace RE
 	[[nodiscard]] constexpr BSTSmartPointer<T, RefManager>::operator bool() const noexcept
 	{
 		return _ptr != 0;
+	}
+
+
+	template <class T, class RefManager>
+	void BSTSmartPointer<T, RefManager>::Attach()
+	{
+		if (_ptr) {
+			reference_manager::Attach(_ptr);
+		}
+	}
+
+
+	template <class T, class RefManager>
+	void BSTSmartPointer<T, RefManager>::Detach()
+	{
+		if (_ptr) {
+			reference_manager::Detach(_ptr);
+		}
 	}
 
 

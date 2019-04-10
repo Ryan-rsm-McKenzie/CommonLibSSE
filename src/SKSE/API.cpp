@@ -15,7 +15,7 @@ namespace SKSE
 	}
 
 
-	bool Init(const SKSE::LoadInterface* a_skse)
+	bool Init(const LoadInterface* a_skse)
 	{
 		g_pluginHandle = a_skse->GetPluginHandle();
 		g_releaseIndex = a_skse->GetReleaseIndex();
@@ -49,31 +49,31 @@ namespace SKSE
 			_ERROR("[ERROR] Failed to query messaging interface!\n");
 			return false;
 		} else {
-			g_modCallbackEventSource = static_cast<decltype(g_modCallbackEventSource)>(g_messagingInterface->GetEventDispatcher(SKSE::MessagingInterface::Dispatcher::kModEvent));
+			g_modCallbackEventSource = static_cast<decltype(g_modCallbackEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kModEvent));
 			if (!g_modCallbackEventSource) {
 				_ERROR("[ERROR] Failed to get mod callback event source!\n");
 				return false;
 			}
 
-			g_cameraEventSource = static_cast<decltype(g_cameraEventSource)>(g_messagingInterface->GetEventDispatcher(SKSE::MessagingInterface::Dispatcher::kCameraEvent));
+			g_cameraEventSource = static_cast<decltype(g_cameraEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kCameraEvent));
 			if (!g_cameraEventSource) {
 				_ERROR("[ERROR] Failed to get camera event source!\n");
 				return false;
 			}
 
-			g_crosshairRefEventSource = static_cast<decltype(g_crosshairRefEventSource)>(g_messagingInterface->GetEventDispatcher(SKSE::MessagingInterface::Dispatcher::kCrosshairEvent));
+			g_crosshairRefEventSource = static_cast<decltype(g_crosshairRefEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kCrosshairEvent));
 			if (!g_crosshairRefEventSource) {
 				_ERROR("[ERROR] Failed to get crosshair ref event source!\n");
 				return false;
 			}
 
-			g_actionEventSource = static_cast<decltype(g_actionEventSource)>(g_messagingInterface->GetEventDispatcher(SKSE::MessagingInterface::Dispatcher::kActionEvent));
+			g_actionEventSource = static_cast<decltype(g_actionEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kActionEvent));
 			if (!g_actionEventSource) {
 				_ERROR("[ERROR] Failed to get action event source!\n");
 				return false;
 			}
 
-			g_niNodeUpdateEventSource = static_cast<decltype(g_niNodeUpdateEventSource)>(g_messagingInterface->GetEventDispatcher(SKSE::MessagingInterface::Dispatcher::kNiNodeUpdateEvent));
+			g_niNodeUpdateEventSource = static_cast<decltype(g_niNodeUpdateEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kNiNodeUpdateEvent));
 			if (!g_niNodeUpdateEventSource) {
 				_ERROR("[ERROR] Failed to get ni node update event source!\n");
 				return false;

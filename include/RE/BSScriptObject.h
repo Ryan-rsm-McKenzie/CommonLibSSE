@@ -2,6 +2,7 @@
 
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
 
 
 namespace RE
@@ -25,6 +26,8 @@ namespace RE
 			void*					Resolve(UInt32 a_typeID) const;
 			void					IncRefCount();
 			SInt32					DecRefCount();
+
+			TES_HEAP_REDEFINE_NEW();
 
 
 			// members
