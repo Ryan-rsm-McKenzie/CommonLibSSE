@@ -12,6 +12,27 @@ namespace SKSE
 		}
 		template <class T> struct make_const : _make_const_ptr<T> {};
 		template <class T> using make_const_t = typename make_const<T>::type;
+
+
+		PluginHandle	g_pluginHandle = static_cast<PluginHandle>(kPluginHandle_Invalid);
+		UInt32			g_releaseIndex = 0;
+
+		ScaleformInterface*		g_scaleformInterface = 0;
+		PapyrusInterface*		g_papyrusInterface = 0;
+		SerializationInterface*	g_serializationInterface = 0;
+		TaskInterface*			g_taskInterface = 0;
+
+		MessagingInterface*						g_messagingInterface = 0;
+		RE::BSTEventSource<ModCallbackEvent>*	g_modCallbackEventSource = 0;
+		RE::BSTEventSource<CameraEvent>*		g_cameraEventSource = 0;
+		RE::BSTEventSource<CrosshairRefEvent>*	g_crosshairRefEventSource = 0;
+		RE::BSTEventSource<ActionEvent>*		g_actionEventSource = 0;
+		RE::BSTEventSource<NiNodeUpdateEvent>*	g_niNodeUpdateEventSource = 0;
+
+		ObjectInterface*				g_objectInterface = 0;
+		SKSEDelayFunctorManager*		g_delayFunctorManager = 0;
+		SKSEObjectRegistry*				g_objectRegistry = 0;
+		SKSEPersistentObjectStorage*	g_persistentObjectStorage = 0;
 	}
 
 

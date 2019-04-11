@@ -2,6 +2,7 @@
 
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -9,7 +10,7 @@ namespace RE
 	NiControllerSequence* NiControllerManager::GetSequenceByName(const BSFixedString& a_name)
 	{
 		using func_t = function_type_t<decltype(&NiControllerManager::GetSequenceByName)>;
-		RelocUnrestricted<func_t*> func(Offset::NiControllerManager::GetSequenceByName);
+		REL::Offset<func_t*> func(Offset::NiControllerManager::GetSequenceByName);
 		return func(this, a_name);
 	}
 }

@@ -3,6 +3,7 @@
 #include <cstring>  // memset
 
 #include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -19,7 +20,7 @@ namespace RE
 	bool SoundData::SetPosition(NiPoint3 a_pos)
 	{
 		using func_t = function_type_t<decltype(&SoundData::SetPosition)>;
-		RelocUnrestricted<func_t*> func(Offset::SoundData::SetPosition);
+		REL::Offset<func_t*> func(Offset::SoundData::SetPosition);
 		return func(this, a_pos);
 	}
 
@@ -27,7 +28,7 @@ namespace RE
 	void SoundData::SetNode(NiNode* a_node)
 	{
 		using func_t = function_type_t<decltype(&SoundData::SetNode)>;
-		RelocUnrestricted<func_t*> func(Offset::SoundData::SetNode);
+		REL::Offset<func_t*> func(Offset::SoundData::SetNode);
 		return func(this, a_node);
 	}
 
@@ -35,7 +36,7 @@ namespace RE
 	bool SoundData::Play()
 	{
 		using func_t = function_type_t<decltype(&SoundData::Play)>;
-		RelocUnrestricted<func_t*> func(Offset::SoundData::Play);
+		REL::Offset<func_t*> func(Offset::SoundData::Play);
 		return func(this);
 	}
 }

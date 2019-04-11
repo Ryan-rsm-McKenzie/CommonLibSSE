@@ -3,6 +3,7 @@
 #include "skse64/GameExtraData.h"  // InventoryEntryData
 
 #include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -67,7 +68,7 @@ namespace RE
 	TESForm* InventoryEntryData::GetOwner()
 	{
 		using func_t = function_type_t<decltype(&InventoryEntryData::GetOwner)>;
-		RelocUnrestricted<func_t*> func(Offset::InventoryEntryData::GetOwner);
+		REL::Offset<func_t*> func(Offset::InventoryEntryData::GetOwner);
 		return func(this);
 	}
 
@@ -75,7 +76,7 @@ namespace RE
 	float InventoryEntryData::GetWeight()
 	{
 		using func_t = function_type_t<decltype(&InventoryEntryData::GetWeight)>;
-		RelocUnrestricted<func_t*> func(Offset::InventoryEntryData::GetWeight);
+		REL::Offset<func_t*> func(Offset::InventoryEntryData::GetWeight);
 		return func(this);
 	}
 
@@ -106,7 +107,7 @@ namespace RE
 	bool InventoryEntryData::IsOwnedBy_Internal2(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo)
 	{
 		using func_t = function_type_t<decltype(&InventoryEntryData::IsOwnedBy_Internal2)>;
-		RelocUnrestricted<func_t*> func(Offset::InventoryEntryData::IsOwnedBy);
+		REL::Offset<func_t*> func(Offset::InventoryEntryData::IsOwnedBy);
 		return func(this, a_actor, a_itemOwner, a_defaultTo);
 	}
 }

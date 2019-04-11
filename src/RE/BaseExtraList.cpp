@@ -6,6 +6,7 @@
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/ExtraAshPileRef.h"  // ExtraAshPileRef
 #include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -222,7 +223,7 @@ namespace RE
 	BSExtraData* BaseExtraList::Add(BSExtraData* a_toAdd)
 	{
 		using func_t = function_type_t<decltype(&BaseExtraList::Add)>;
-		RelocUnrestricted<func_t*> func(Offset::BaseExtraList::Add);
+		REL::Offset<func_t*> func(Offset::BaseExtraList::Add);
 		return func(this, a_toAdd);
 	}
 
@@ -278,7 +279,7 @@ namespace RE
 	void BaseExtraList::SetInventoryChanges(InventoryChanges* a_changes)
 	{
 		using func_t = function_type_t<decltype(&BaseExtraList::SetInventoryChanges)>;
-		RelocUnrestricted<func_t*> func(Offset::BaseExtraList::SetInventoryChanges);
+		REL::Offset<func_t*> func(Offset::BaseExtraList::SetInventoryChanges);
 		return func(this, a_changes);
 	}
 
@@ -286,7 +287,7 @@ namespace RE
 	void BaseExtraList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
 	{
 		using func_t = function_type_t<decltype(&BaseExtraList::SetExtraFlags)>;
-		RelocUnrestricted<func_t*> func(Offset::BaseExtraList::SetExtraFlags);
+		REL::Offset<func_t*> func(Offset::BaseExtraList::SetExtraFlags);
 		return func(this, a_flags, a_enable);
 	}
 }

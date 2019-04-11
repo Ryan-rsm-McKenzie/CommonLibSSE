@@ -4,6 +4,7 @@
 #include "RE/EffectSetting.h"  // EffectSetting
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -11,14 +12,14 @@ namespace RE
 	bool MagicTarget::HasMagicEffect(EffectSetting* a_effect)
 	{
 		using func_t = function_type_t<decltype(&MagicTarget::HasMagicEffect)>;
-		RelocUnrestricted<func_t*> func(Offset::MagicTarget::HasMagicEffect);
+		REL::Offset<func_t*> func(Offset::MagicTarget::HasMagicEffect);
 		return func(this, a_effect);
 	}
 
 
 	bool MagicTarget::HasEffectWithArchetype(Archetype a_type)
 	{
-		BSSimpleList<ActiveEffect*>* effects = GetActiveEffects();
+		auto effects = GetActiveEffects();
 		if (!effects) {
 			return false;
 		}
@@ -36,7 +37,7 @@ namespace RE
 
 	void MagicTarget::DispellEffectsWithArchetype(Archetype a_type, bool a_force)
 	{
-		BSSimpleList<ActiveEffect*>* effects = GetActiveEffects();
+		auto effects = GetActiveEffects();
 		if (!effects) {
 			return;
 		}

@@ -3,6 +3,7 @@
 #include "RE/IObjectHandlePolicy.h"  // IObjectHandlePolicy
 #include "RE/Offsets.h"
 #include "RE/VirtualMachine.h"  // Internal::VirtualMachine
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -35,7 +36,7 @@ namespace RE
 		void BSScriptObject::IncRefCount()
 		{
 			using func_t = function_type_t<decltype(&BSScriptObject::IncRefCount)>;
-			RelocUnrestricted<func_t*> func(Offset::BSScriptObject::IncRefCount);
+			REL::Offset<func_t*> func(Offset::BSScriptObject::IncRefCount);
 			return func(this);
 		}
 
@@ -43,7 +44,7 @@ namespace RE
 		SInt32 BSScriptObject::DecRefCount()
 		{
 			using func_t = function_type_t<decltype(&BSScriptObject::DecRefCount)>;
-			RelocUnrestricted<func_t*> func(Offset::BSScriptObject::DecRefCount);
+			REL::Offset<func_t*> func(Offset::BSScriptObject::DecRefCount);
 			return func(this);
 		}
 	}

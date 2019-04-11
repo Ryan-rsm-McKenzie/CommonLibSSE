@@ -1,6 +1,7 @@
 #include "RE/InventoryChanges.h"
 
 #include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -54,7 +55,7 @@ namespace RE
 	void InventoryChanges::InitContainer()
 	{
 		using func_t = function_type_t<decltype(&InventoryChanges::InitContainer)>;
-		RelocUnrestricted<func_t*> func(Offset::InventoryChanges::InitContainer);
+		REL::Offset<func_t*> func(Offset::InventoryChanges::InitContainer);
 		return func(this);
 	}
 
@@ -62,7 +63,7 @@ namespace RE
 	void InventoryChanges::GenerateLeveledListChanges()
 	{
 		using func_t = function_type_t<decltype(&InventoryChanges::GenerateLeveledListChanges)>;
-		RelocUnrestricted<func_t*> func(Offset::InventoryChanges::GenerateLeveledListChanges);
+		REL::Offset<func_t*> func(Offset::InventoryChanges::GenerateLeveledListChanges);
 		return func(this);
 	}
 
@@ -70,7 +71,7 @@ namespace RE
 	void InventoryChanges::SendContainerChangedEvent(BaseExtraList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, SInt32 a_count)
 	{
 		using func_t = function_type_t<decltype(&InventoryChanges::SendContainerChangedEvent)>;
-		RelocUnrestricted<func_t*> func(Offset::InventoryChanges::SendContainerChangedEvent);
+		REL::Offset<func_t*> func(Offset::InventoryChanges::SendContainerChangedEvent);
 		return func(this, a_itemExtraList, a_fromRefr, a_item, a_count);
 	}
 
@@ -78,7 +79,7 @@ namespace RE
 	InventoryChanges* InventoryChanges::Ctor_Internal(TESObjectREFR* a_ref)
 	{
 		using func_t = function_type_t<decltype(&InventoryChanges::Ctor_Internal)>;
-		RelocUnrestricted<func_t*> func(Offset::InventoryChanges::Ctor);
+		REL::Offset<func_t*> func(Offset::InventoryChanges::Ctor);
 		return func(this, a_ref);
 	}
 }

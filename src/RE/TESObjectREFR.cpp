@@ -23,6 +23,7 @@
 #include "RE/TESFullName.h"  // TESFullName
 #include "RE/TESNPC.h"  // TESNPC
 #include "RE/TESObjectCONT.h"  // TESObjectCONT
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -77,7 +78,7 @@ namespace RE
 
 	RefHandle TESObjectREFR::GetRefHandle() const
 	{
-		ExtraReferenceHandle* xRefHandle = extraData.GetByType<ExtraReferenceHandle>();
+		auto xRefHandle = extraData.GetByType<ExtraReferenceHandle>();
 		return xRefHandle ? xRefHandle->handle : *g_invalidRefHandle;
 	}
 
@@ -106,7 +107,7 @@ namespace RE
 
 	TESNPC* TESObjectREFR::GetActorOwner() const
 	{
-		ExtraOwnership* exOwnership = static_cast<ExtraOwnership*>(extraData.GetByType(ExtraDataType::kOwnership));
+		auto exOwnership = static_cast<ExtraOwnership*>(extraData.GetByType(ExtraDataType::kOwnership));
 		if (exOwnership && exOwnership->owner && exOwnership->owner->formType == FormType::ActorCharacter) {
 			return static_cast<TESNPC*>(exOwnership->owner);
 		} else {
@@ -160,7 +161,7 @@ namespace RE
 
 	TESFaction* TESObjectREFR::GetFactionOwner() const
 	{
-		ExtraOwnership* exOwnership = static_cast<ExtraOwnership*>(extraData.GetByType(ExtraDataType::kOwnership));
+		auto exOwnership = static_cast<ExtraOwnership*>(extraData.GetByType(ExtraDataType::kOwnership));
 		if (exOwnership && exOwnership->owner && exOwnership->owner->formType == FormType::Faction) {
 			return static_cast<TESFaction*>(exOwnership->owner);
 		} else {
@@ -172,7 +173,7 @@ namespace RE
 	TESForm* TESObjectREFR::GetOwner() const
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::GetOwner)>;
-		RelocUnrestricted<func_t*> func(Offset::TESObjectREFR::GetOwner);
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetOwner);
 		return func(this);
 	}
 
@@ -221,7 +222,7 @@ namespace RE
 
 	bool TESObjectREFR::IsActivationBlocked() const
 	{
-		ExtraFlags* xFlags = extraData.GetByType<ExtraFlags>();
+		auto xFlags = extraData.GetByType<ExtraFlags>();
 		return xFlags && xFlags->IsActivationBlocked();
 	}
 
@@ -234,7 +235,7 @@ namespace RE
 
 	bool TESObjectREFR::IsLocked() const
 	{
-		LockState* state = GetLockState();
+		auto state = GetLockState();
 		return state && state->isLocked;
 	}
 
@@ -242,14 +243,14 @@ namespace RE
 	LockState* TESObjectREFR::GetLockState() const
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::GetLockState)>;
-		RelocUnrestricted<func_t*> func(Offset::TESObjectREFR::GetLockState);
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetLockState);
 		return func(this);
 	}
 
 
 	SInt32 TESObjectREFR::GetLockLevel() const
 	{
-		LockState* state = GetLockState();
+		auto state = GetLockState();
 		return state ? state->GetLockLevel(this) : -1 * std::numeric_limits<SInt32>::max();
 	}
 
@@ -257,15 +258,15 @@ namespace RE
 	UInt32 TESObjectREFR::GetNumItems(bool a_arg1, bool a_arg2)
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::GetNumItems)>;
-		RelocUnrestricted<func_t*> func(Offset::TESObjectREFR::GetNumItems);
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetNumItems);
 		return func(this, a_arg1, a_arg2);
 	}
 
 
 	bool TESObjectREFR::HasInventoryChanges() const
 	{
-		ExtraContainerChanges* xContainerChanges = extraData.GetByType<ExtraContainerChanges>();
-		InventoryChanges* changes = xContainerChanges ? xContainerChanges->changes : 0;
+		auto xContainerChanges = extraData.GetByType<ExtraContainerChanges>();
+		auto changes = xContainerChanges ? xContainerChanges->changes : 0;
 		return changes != 0;
 	}
 
@@ -273,10 +274,10 @@ namespace RE
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::GetInventoryChanges)>;
-		RelocUnrestricted<func_t*> func(Offset::TESObjectREFR::GetInventoryChanges);
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetInventoryChanges);
 
-		ExtraContainerChanges* xContainerChanges = extraData.GetByType<ExtraContainerChanges>();
-		InventoryChanges* changes = xContainerChanges ? xContainerChanges->changes : 0;
+		auto xContainerChanges = extraData.GetByType<ExtraContainerChanges>();
+		auto changes = xContainerChanges ? xContainerChanges->changes : 0;
 		if (!changes) {
 			changes = func(this);
 			if (changes) {
@@ -292,7 +293,7 @@ namespace RE
 	{
 		bool renamed = false;
 
-		ExtraTextDisplayData* xTextData = reinterpret_cast<ExtraTextDisplayData*>(extraData.GetByType(ExtraDataType::kTextDisplayData));
+		auto xTextData = reinterpret_cast<ExtraTextDisplayData*>(extraData.GetByType(ExtraDataType::kTextDisplayData));
 		if (xTextData) {
 			bool inUse = (xTextData->message || xTextData->owner);
 			if (inUse && force) {
@@ -302,7 +303,7 @@ namespace RE
 			renamed = (!inUse || force);
 			xTextData->SetName(name.c_str());
 		} else {
-			ExtraTextDisplayData* newTextData = ExtraTextDisplayData::Create();
+			auto newTextData = ExtraTextDisplayData::Create();
 			newTextData->SetName(name.c_str());
 			extraData.Add(newTextData);
 			renamed = true;
@@ -315,7 +316,7 @@ namespace RE
 	UInt32 TESObjectREFR::ActivateRefChildren(TESObjectREFR* a_activator)
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::ActivateRefChildren)>;
-		RelocUnrestricted<func_t*> func(Offset::TESObjectREFR::ActivateRefChildren);
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::ActivateRefChildren);
 		return func(this, a_activator);
 	}
 
@@ -323,7 +324,7 @@ namespace RE
 	void TESObjectREFR::PlayAnimation(RE::NiControllerManager* a_manager, RE::NiControllerSequence* a_toSeq, RE::NiControllerSequence* a_fromSeq, bool a_arg4)
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::PlayAnimation)>;
-		RelocUnrestricted<func_t*> func(Offset::TESObjectREFR::PlayAnimation);
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::PlayAnimation);
 		return func(this, a_manager, a_toSeq, a_fromSeq, a_arg4);
 	}
 

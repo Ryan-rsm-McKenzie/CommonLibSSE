@@ -11,6 +11,7 @@
 #include "RE/TESFaction.h"  // TESFaction
 #include "RE/TESNPC.h"  // TESNPC
 #include "RE/TESRace.h"  // TESRace
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -220,7 +221,7 @@ namespace RE
 	void Actor::DispelWornItemEnchantments()
 	{
 		using func_t = function_type_t<decltype(&Actor::DispelWornItemEnchantments)>;
-		RelocUnrestricted<func_t*> func(Offset::Actor::DispelWornItemEnchantments);
+		REL::Offset<func_t*> func(Offset::Actor::DispelWornItemEnchantments);
 		return func(this);
 	}
 
@@ -228,7 +229,7 @@ namespace RE
 	Actor::CaughtState Actor::SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage)
 	{
 		using func_t = function_type_t<decltype(&Actor::SendStealAlarm)>;
-		RelocUnrestricted<func_t*> func(Offset::Actor::SendStealAlarm);
+		REL::Offset<func_t*> func(Offset::Actor::SendStealAlarm);
 		return func(this, a_refItemOrContainer, a_stolenItem, a_numItems, a_value, a_owner, a_allowGetBackStolenItemPackage);
 	}
 
@@ -236,7 +237,7 @@ namespace RE
 	SInt32 Actor::CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const
 	{
 		using func_t = function_type_t<decltype(&Actor::CalcEntryValue)>;
-		RelocUnrestricted<func_t*> func(Offset::Actor::CalcEntryValue);
+		REL::Offset<func_t*> func(Offset::Actor::CalcEntryValue);
 		return func(this, a_entryData, a_numItems, a_multiplyValueByRemainingItems);
 	}
 
@@ -244,7 +245,7 @@ namespace RE
 	SInt32 Actor::GetDetectionLevel(Actor* a_target, UInt32 a_idx)
 	{
 		using func_t = function_type_t<decltype(&Actor::GetDetectionLevel)>;
-		RelocUnrestricted<func_t*> func(Offset::Actor::GetDetectionLevel);
+		REL::Offset<func_t*> func(Offset::Actor::GetDetectionLevel);
 		return func(this, a_target, a_idx);
 	}
 
@@ -252,7 +253,7 @@ namespace RE
 	bool Actor::IsGhost() const
 	{
 		using func_t = function_type_t<decltype(&Actor::IsGhost)>;
-		RelocUnrestricted<func_t*> func(Offset::Actor::IsGhost);
+		REL::Offset<func_t*> func(Offset::Actor::IsGhost);
 		return func(this);
 	}
 
@@ -266,7 +267,7 @@ namespace RE
 	bool Actor::IsRunning() const
 	{
 		using func_t = function_type_t<decltype(&Actor::IsRunning)>;
-		RelocUnrestricted<func_t*> func(Offset::Actor::IsRunning);
+		REL::Offset<func_t*> func(Offset::Actor::IsRunning);
 		return func(this);
 	}
 }

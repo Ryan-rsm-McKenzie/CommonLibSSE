@@ -324,6 +324,7 @@
   <ItemGroup>
     <ClInclude Include="include\ForceInclude.h" />
     <ClInclude Include="include\function_view.h" />
+    <ClInclude Include="include\REL\Relocation.h" />
     <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h" />
     <ClInclude Include="include\RE\ActorKnowledge.h" />
     <ClInclude Include="include\RE\ActorMover.h" />

@@ -14,7 +14,7 @@
 *reinterpret_cast<a_castTo*>(((a_class*)0)->_##a_func##_GetPtr());
 
 
-template <typename Enum>
+template <class Enum>
 constexpr auto to_underlying(Enum a_val) noexcept
 {
 	return static_cast<std::underlying_type_t<Enum>>(a_val);
@@ -131,12 +131,12 @@ constexpr inline Enum& operator>>=(Enum& a_lhs, Enum a_rhs)
 
 
 // Primary template handles all types not supporting the operation.
-template <typename T, template <typename> class Op, typename = std::void_t<>>
+template <class T, template <typename> class Op, typename = std::void_t<>>
 struct is_detected : std::false_type {};
 
 
 // Specialization recognizes/validates only types supporting the archetype.
-template <typename T, template <typename> class Op>
+template <class T, template <typename> class Op>
 struct is_detected<T, Op, std::void_t<Op<T>>> : std::true_type {};
 // END
 
@@ -149,7 +149,7 @@ T skyrim_cast(U a_from)
 }
 
 
-template <class T, class U>
+template <class T, class U, class Enable = void>
 T unrestricted_cast(U a_from)
 {
 	union
@@ -163,17 +163,17 @@ T unrestricted_cast(U a_from)
 }
 
 
+template <class T, class U, std::enable_if_t<std::is_same<T, U>::value>>
+T unrestricted_cast(U a_from)
+{
+	return a_from;
+}
+
+
 template <class T, class U>
 T function_cast(U a_func)
 {
-	union
-	{
-		std::uintptr_t addr;
-		T type;
-	};
-
-	addr = GetFnAddr(a_func);
-	return type;
+	return unrestricted_cast<T>(GetFnAddr(a_func));
 }
 
 
@@ -235,75 +235,3 @@ public:
 
 
 template <class F> using function_type_t = typename function_type<F>::type;
-
-
-template <class T>
-class RelocUnrestricted
-{
-public:
-	RelocUnrestricted() = delete;
-
-
-	constexpr RelocUnrestricted(std::uintptr_t a_offset) :
-		_offset(RelocationManager::s_baseAddr + a_offset)
-	{}
-
-
-	operator T()
-	{
-		return _type;
-	}
-
-
-	T GetType()
-	{
-		return _type;
-	}
-
-
-	std::uintptr_t GetUIntPtr()
-	{
-		return _offset;
-	}
-
-private:
-	union
-	{
-		T _type;
-		std::uintptr_t _offset;
-	};
-};
-
-
-template <>
-class RelocUnrestricted<std::uintptr_t>
-{
-public:
-	RelocUnrestricted() = delete;
-
-
-	constexpr RelocUnrestricted(std::uintptr_t a_offset) :
-		_offset(RelocationManager::s_baseAddr + a_offset)
-	{}
-
-
-	operator std::uintptr_t()
-	{
-		return _offset;
-	}
-
-
-	std::uintptr_t GetType()
-	{
-		return _offset;
-	}
-
-
-	std::uintptr_t GetUIntPtr()
-	{
-		return _offset;
-	}
-
-private:
-	std::uintptr_t _offset;
-};

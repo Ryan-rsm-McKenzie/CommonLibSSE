@@ -1,6 +1,7 @@
 #include "RE/ItemsPickpocketed.h"
 
 #include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -8,7 +9,7 @@ namespace RE
 	BSTEventSource<ItemsPickpocketed::Event>* ItemsPickpocketed::GetEventSource()
 	{
 		using func_t = function_type_t<decltype(&ItemsPickpocketed::GetEventSource)>;
-		RelocUnrestricted<func_t*> func(Offset::ItemsPickpocketed::GetEventSource);
+		REL::Offset<func_t*> func(Offset::ItemsPickpocketed::GetEventSource);
 		return func();
 	}
 

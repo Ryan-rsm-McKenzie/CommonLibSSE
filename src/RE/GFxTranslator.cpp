@@ -1,6 +1,7 @@
 #include "RE/GFxTranslator.h"
 
 #include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -50,7 +51,7 @@ namespace RE
 	void GFxTranslator::TranslateInfo::SetResult_InternalW(const wchar_t* a_resultText, UPInt a_resultLen)
 	{
 		using func_t = function_type_t<decltype(&GFxTranslator::TranslateInfo::SetResult_InternalW)>;
-		RelocUnrestricted<func_t*> func(Offset::GFxTranslator::TranslateInfo::SetResultW);
+		REL::Offset<func_t*> func(Offset::GFxTranslator::TranslateInfo::SetResultW);
 		return func(this, a_resultText, a_resultLen);
 	}
 

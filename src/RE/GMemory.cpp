@@ -1,9 +1,8 @@
 #include "RE/GMemory.h"
 
-#include "skse64_common/Relocation.h"  // RelocPtr
-
 #include "RE/GMemoryHeap.h"  // GMemoryHeap
 #include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -109,7 +108,7 @@ namespace RE
 
 	GMemoryHeap*& GMemory::GetGlobalHeapRef()
 	{
-		RelocPtr<GMemoryHeap*> globalHeap(Offset::GMemory::GlobalHeap);
-		return *globalHeap.GetPtr();
+		REL::Offset<GMemoryHeap**> globalHeap(Offset::GMemory::GlobalHeap);
+		return *globalHeap;
 	}
 }

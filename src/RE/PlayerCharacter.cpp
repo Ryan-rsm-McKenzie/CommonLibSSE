@@ -3,6 +3,7 @@
 #include "skse64/GameReferences.h"  // PlayerCharacter
 
 #include "RE/Offsets.h"
+#include "REL/Relocation.h"
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
 
 
@@ -17,7 +18,7 @@ namespace RE
 	UInt32 PlayerCharacter::GetPickpocketChance(float a_playerSkill, float a_targetSkill, UInt32 a_totalValue, float a_itemWeight, Actor* a_player, Actor* a_target, bool a_isDetected, TESForm* a_item)
 	{
 		using func_t = function_type_t<decltype(&PlayerCharacter::GetPickpocketChance)>;
-		RelocUnrestricted<func_t*> func(Offset::PlayerCharacter::GetPickpocketChance);
+		REL::Offset<func_t*> func(Offset::PlayerCharacter::GetPickpocketChance);
 		return func(a_playerSkill, a_targetSkill, a_totalValue, a_itemWeight, a_player, a_target, a_isDetected, a_item);
 	}
 
@@ -78,7 +79,7 @@ namespace RE
 	Actor* PlayerCharacter::GetActorInFavorState()
 	{
 		using func_t = function_type_t<decltype(&PlayerCharacter::GetActorInFavorState)>;
-		RelocUnrestricted<func_t*> func(Offset::PlayerCharacter::GetActorInFavorState);
+		REL::Offset<func_t*> func(Offset::PlayerCharacter::GetActorInFavorState);
 		return func(this);
 	}
 
@@ -97,7 +98,7 @@ namespace RE
 	void PlayerCharacter::PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType)
 	{
 		using func_t = function_type_t<decltype(&PlayerCharacter::PlayPickupEvent)>;
-		RelocUnrestricted<func_t*> func(Offset::PlayerCharacter::PlayPickupEvent);
+		REL::Offset<func_t*> func(Offset::PlayerCharacter::PlayPickupEvent);
 		return func(this, a_item, a_containerOwner, a_containerRef, a_eventType);
 	}
 
@@ -105,7 +106,7 @@ namespace RE
 	void PlayerCharacter::StartActivation()
 	{
 		using func_t = function_type_t<decltype(&PlayerCharacter::StartActivation)>;
-		RelocUnrestricted<func_t*> func(Offset::PlayerCharacter::StartActivation);
+		REL::Offset<func_t*> func(Offset::PlayerCharacter::StartActivation);
 		return func(this);
 	}
 
@@ -113,7 +114,7 @@ namespace RE
 	bool PlayerCharacter::TryToPickPocket(Actor* a_target, InventoryEntryData* a_entry, UInt32 a_numItems, bool a_arg4)
 	{
 		using func_t = function_type_t<decltype(&PlayerCharacter::TryToPickPocket)>;
-		RelocUnrestricted<func_t*> func(Offset::PlayerCharacter::TryToPickPocket);
+		REL::Offset<func_t*> func(Offset::PlayerCharacter::TryToPickPocket);
 		return func(this, a_target, a_entry, a_numItems, a_arg4);
 	}
 }

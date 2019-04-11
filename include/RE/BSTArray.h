@@ -9,6 +9,7 @@
 
 #include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
 #include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -81,7 +82,7 @@ namespace RE
 		SInt32 _push(IAllocatorFunctor& a_functor, size_type a_capacity, size_type a_valueSize)
 		{
 			using func_t = function_type_t<decltype(&BSTArrayBase::_push)>;
-			RelocUnrestricted<func_t*> func(RE::Offset::BSTArrayBase::Push);
+			REL::Offset<func_t*> func(RE::Offset::BSTArrayBase::Push);
 			return func(this, a_functor, a_capacity, a_valueSize);
 		}
 
@@ -89,7 +90,7 @@ namespace RE
 		void _move(void* a_entries, size_type a_to, size_type a_from, size_type a_num, size_type a_valueSize)
 		{
 			using func_t = function_type_t<decltype(&BSTArrayBase::_move)>;
-			RelocUnrestricted<func_t*> func(RE::Offset::BSTArrayBase::Move);
+			REL::Offset<func_t*> func(RE::Offset::BSTArrayBase::Move);
 			return func(this, a_entries, a_to, a_from, a_num, a_valueSize);
 		}
 
@@ -151,7 +152,7 @@ namespace RE
 		inline bool _Allocate(size_type a_num, size_type a_valueSize)
 		{
 			using func_t = function_type_t<decltype(&BSTArrayHeapAllocator::_Allocate)>;
-			RelocUnrestricted<func_t*> func(RE::Offset::BSTArrayHeapAllocator::Allocate);
+			REL::Offset<func_t*> func(RE::Offset::BSTArrayHeapAllocator::Allocate);
 			return func(this, a_num, a_valueSize);
 		}
 
@@ -159,7 +160,7 @@ namespace RE
 		inline bool _Resize(size_type a_needNum, size_type a_copyFrontNum, size_type a_copySkipNum, size_type a_copyTailNum, size_type a_valueSize)
 		{
 			using func_t = function_type_t<decltype(&BSTArrayHeapAllocator::_Resize)>;
-			RelocUnrestricted<func_t*> func(RE::Offset::BSTArrayHeapAllocator::Resize);
+			REL::Offset<func_t*> func(RE::Offset::BSTArrayHeapAllocator::Resize);
 			return func(this, a_needNum, a_copyFrontNum, a_copySkipNum, a_copyTailNum, a_valueSize);
 		}
 
@@ -167,7 +168,7 @@ namespace RE
 		inline void _Free()
 		{
 			using func_t = function_type_t<decltype(&BSTArrayHeapAllocator::_Free)>;
-			RelocUnrestricted<func_t*> func(RE::Offset::BSTArrayHeapAllocator::Free);
+			REL::Offset<func_t*> func(RE::Offset::BSTArrayHeapAllocator::Free);
 			return func(this);
 		}
 
@@ -251,7 +252,7 @@ namespace RE
 		inline bool _Allocate(size_type a_num, size_type a_valueSize, size_type a_localSize = LOCAL_SIZE)
 		{
 			using func_t = function_type_t<decltype(&_Allocate)>;
-			static RelocUnrestricted<func_t*> func(Offset::BSTSmallArrayHeapAllocator::Allocate);
+			REL::Offset<func_t*> func(Offset::BSTSmallArrayHeapAllocator::Allocate);
 			return func(this, a_num, a_valueSize, a_localSize);
 		}
 
@@ -259,7 +260,7 @@ namespace RE
 		inline bool _Resize(size_type a_needNum, size_type a_copyFrontNum, size_type a_copySkipNum, size_type a_copyTailNum, size_type a_valueSize, size_type a_localSize = LOCAL_SIZE)
 		{
 			using func_t = function_type_t<decltype(&_Resize)>;
-			RelocUnrestricted<func_t*> func(Offset::BSTSmallArrayHeapAllocator::Resize);
+			REL::Offset<func_t*> func(Offset::BSTSmallArrayHeapAllocator::Resize);
 			return func(this, a_needNum, a_copyFrontNum, a_copySkipNum, a_copyTailNum, a_valueSize, a_localSize);
 		}
 
@@ -267,7 +268,7 @@ namespace RE
 		inline void _Free()
 		{
 			using func_t = function_type_t<decltype(&_Free)>;
-			RelocUnrestricted<func_t*> func(Offset::BSTSmallArrayHeapAllocator::Free);
+			REL::Offset<func_t*> func(Offset::BSTSmallArrayHeapAllocator::Free);
 			return func(this);
 		}
 	};
@@ -328,7 +329,7 @@ namespace RE
 		inline bool _Allocate(size_type a_num, size_type a_valueSize)
 		{
 			using func_t = function_type_t<decltype(&BSScrapArrayAllocator::_Allocate)>;
-			RelocUnrestricted<func_t*> func(RE::Offset::BSScrapArrayAllocator::Allocate);
+			REL::Offset<func_t*> func(RE::Offset::BSScrapArrayAllocator::Allocate);
 			return func(this, a_num, a_valueSize);
 		}
 
@@ -336,7 +337,7 @@ namespace RE
 		inline bool _Resize(size_type a_needNum, size_type a_copyFrontNum, size_type a_copySkipNum, size_type a_copyTailNum, size_type a_valueSize)
 		{
 			using func_t = function_type_t<decltype(&BSScrapArrayAllocator::_Resize)>;
-			RelocUnrestricted<func_t*> func(RE::Offset::BSScrapArrayAllocator::Resize);
+			REL::Offset<func_t*> func(RE::Offset::BSScrapArrayAllocator::Resize);
 			return func(this, a_needNum, a_copyFrontNum, a_copySkipNum, a_copyTailNum, a_valueSize);
 		}
 
@@ -344,7 +345,7 @@ namespace RE
 		inline void _Free()
 		{
 			using func_t = function_type_t<decltype(&BSScrapArrayAllocator::_Free)>;
-			RelocUnrestricted<func_t*> func(RE::Offset::BSScrapArrayAllocator::Free);
+			REL::Offset<func_t*> func(RE::Offset::BSScrapArrayAllocator::Free);
 			return func(this);
 		}
 	};

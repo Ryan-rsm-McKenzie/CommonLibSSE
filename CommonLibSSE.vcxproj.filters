@@ -427,6 +427,9 @@
     <Filter Include="src\SKSE">
       <UniqueIdentifier>{3d9a3353-0c7b-43b5-a7a7-b90abb0487ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\REL">
+      <UniqueIdentifier>{ef5b1d2d-7a1b-4cf0-b7b6-0560f7b4c328}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -2740,6 +2743,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSGlobalStringTable.h">
       <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\REL\Relocation.h">
+      <Filter>include\REL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

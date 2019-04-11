@@ -3,6 +3,7 @@
 #include "skse64/GameInput.h"  // MenuControls
 
 #include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -18,7 +19,7 @@ namespace RE
 	void MenuControls::RegisterHandler(MenuEventHandler* a_handler)
 	{
 		using func_t = function_type_t<decltype(&MenuControls::RegisterHandler)>;
-		RelocUnrestricted<func_t*> func(Offset::MenuControls::RegisterHandler);
+		REL::Offset<func_t*> func(Offset::MenuControls::RegisterHandler);
 		return func(this, a_handler);
 	}
 
@@ -26,7 +27,7 @@ namespace RE
 	void MenuControls::RemoveHandler(MenuEventHandler* a_handler)
 	{
 		using func_t = function_type_t<decltype(&MenuControls::RegisterHandler)>;
-		RelocUnrestricted<func_t*> func(Offset::MenuControls::RemoveHandler);
+		REL::Offset<func_t*> func(Offset::MenuControls::RemoveHandler);
 		return func(this, a_handler);
 	}
 }
