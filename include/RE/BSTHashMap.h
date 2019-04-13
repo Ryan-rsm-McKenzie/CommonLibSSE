@@ -11,7 +11,7 @@ namespace RE
 	template <class Key, class Value, class Table>
 	struct BSTHashMapTraits
 	{
-		typedef Table	table_type;
+		using table_type = Table;
 	};
 
 
@@ -27,8 +27,8 @@ namespace RE
 	{};
 
 
-	typedef UInt64 UnkKey;
-	typedef UInt64 UnkValue;
+	using UnkKey = UInt64;
+	using UnkValue = UInt64;
 
 
 	//class BSTHashMap<unsigned int, unsigned int, struct BSTDefaultScatterTable>	size(30) :
@@ -62,10 +62,8 @@ namespace RE
 	// verified
 
 
-	using TestHashMap = BSTHashMap<std::uint32_t, std::uint32_t>;
-
+	namespace { using TestHashMap = BSTHashMap<std::uint32_t, std::uint32_t>; }
 	STATIC_ASSERT(offsetof(TestHashMap, _size) == 0x0C);
 	STATIC_ASSERT(offsetof(TestHashMap, _entries) == 0x28);
-
 	STATIC_ASSERT(sizeof(TestHashMap) == 0x30);
 }

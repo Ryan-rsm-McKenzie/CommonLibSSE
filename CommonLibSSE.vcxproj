@@ -332,6 +332,8 @@
     <ClInclude Include="include\RE\AlchemyMenu.h" />
     <ClInclude Include="include\RE\ArrowProjectile.h" />
     <ClInclude Include="include\RE\Atmosphere.h" />
+    <ClInclude Include="include\RE\AutoRegisterCreator.h" />
+    <ClInclude Include="include\RE\AutoRegisterFactory.h" />
     <ClInclude Include="include\RE\BarrierProjectile.h" />
     <ClInclude Include="include\RE\BaseFormComponent.h" />
     <ClInclude Include="include\RE\BeamProjectile.h" />
@@ -478,6 +480,7 @@
     <ClInclude Include="include\RE\BSString.h" />
     <ClInclude Include="include\RE\BSSystemFileStorage.h" />
     <ClInclude Include="include\RE\BSTAnimationGraphDataChannel.h" />
+    <ClInclude Include="include\RE\BSTDerivedCreator.h" />
     <ClInclude Include="include\RE\BSTextureSet.h" />
     <ClInclude Include="include\RE\BSTFreeList.h" />
     <ClInclude Include="include\RE\BSThread.h" />
@@ -500,6 +503,7 @@
     <ClInclude Include="include\RE\Condition.h" />
     <ClInclude Include="include\RE\ConeProjectile.h" />
     <ClInclude Include="include\RE\Console.h" />
+    <ClInclude Include="include\RE\ConsoleData.h" />
     <ClInclude Include="include\RE\ConsoleManager.h" />
     <ClInclude Include="include\RE\ConstructibleObjectMenu.h" />
     <ClInclude Include="include\RE\CraftingMenu.h" />
@@ -658,6 +662,7 @@
     <ClInclude Include="include\RE\IAIWorldLocationHandle.h" />
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h" />
     <ClInclude Include="include\RE\IAnimationSetCallbackFunctor.h" />
+    <ClInclude Include="include\RE\IBSTCreator.h" />
     <ClInclude Include="include\RE\IDEvent.h" />
     <ClInclude Include="include\RE\IFormFactory.h" />
     <ClInclude Include="include\RE\IFunction.h" />
@@ -927,6 +932,7 @@
     <ClInclude Include="include\RE\ToggleRunHandler.h" />
     <ClInclude Include="include\RE\UIManager.h" />
     <ClInclude Include="include\RE\UIMessage.h" />
+    <ClInclude Include="include\RE\BSTCreateFactoryManager.h" />
     <ClInclude Include="include\RE\UISaveLoadManager.h" />
     <ClInclude Include="include\RE\UIStringHolder.h" />
     <ClInclude Include="include\RE\UserEventEnabledEvent.h" />

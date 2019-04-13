@@ -16,12 +16,12 @@ namespace RE
 	class UIManager
 	{
 	public:
-		typedef BSTCommonStaticMessageQueue<UIMessage*, 100> MessageQueue;
+		using MessageQueue = BSTCommonStaticMessageQueue<UIMessage*, 100>;
 
 
 		enum
 		{
-			kPoolSize = 0x40,
+			kPoolSize = 0x40
 		};
 
 

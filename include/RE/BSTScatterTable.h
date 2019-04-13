@@ -267,7 +267,7 @@ namespace RE
 	public:
 		using entry_type = Entry;
 		using key_type = typename entry_type::key_type;
-		using value_type = typename entry_type::value_type;
+		using mapped_type = typename entry_type::value_type;
 
 	protected:
 		static inline entry_type* Allocate(std::size_t a_num)
@@ -321,7 +321,7 @@ namespace RE
 	{
 		using size_type = std::uint32_t;
 		using key_type = Key;
-		using value_type = Value;
+		using mapped_type = Value;
 		using storage_type = Storage<Key, Value>;
 		using hash_policy = HashPolicy;
 		using allocator_type = Allocator;
@@ -340,14 +340,14 @@ namespace RE
 		protected Traits::hash_policy		// 01
 	{
 	public:
-		typedef typename Traits::size_type			size_type;
-		typedef typename Traits::key_type			key_type;
-		typedef typename Traits::value_type			value_type;
-		typedef typename Traits::storage_type		storage_type;
-		typedef typename Traits::hash_policy		hash_policy;
-		typedef typename Traits::allocator_type		allocator_type;
-		typedef typename Traits::entry_type			entry_type;
-		typedef typename Traits::hash_type			hash_type;
+		using size_type = typename Traits::size_type;
+		using key_type = typename Traits::key_type;
+		using mapped_type = typename Traits::mapped_type;
+		using storage_type = typename Traits::storage_type;
+		using hash_policy = typename Traits::hash_policy;
+		using allocator_type = typename Traits::allocator_type;
+		using entry_type = typename Traits::entry_type;
+		using hash_type = typename Traits::hash_type;
 
 		using hash_policy::get_hash;
 		using hash_policy::is_key_equal;
@@ -419,7 +419,7 @@ namespace RE
 		}
 
 
-		static void _entry_new(entry_type* a_ptr, entry_type* a_next, const key_type& a_key, const value_type& a_value)
+		static void _entry_new(entry_type* a_ptr, entry_type* a_next, const key_type& a_key, const mapped_type& a_value)
 		{
 			if (a_ptr) {
 				a_ptr->SetKeyNew(a_key);
@@ -493,7 +493,7 @@ namespace RE
 		}
 
 
-		bool _insert(entry_type* a_entries, hash_type a_hash, const key_type& a_key, const value_type& a_value, UInt16& a_unk)
+		bool _insert(entry_type* a_entries, hash_type a_hash, const key_type& a_key, const mapped_type& a_value, UInt16& a_unk)
 		{
 			if (!a_entries) {
 				return false;
@@ -737,7 +737,7 @@ namespace RE
 
 		using size_type = typename Kernel::size_type;
 		using key_type = typename Kernel::key_type;
-		using value_type = typename Kernel::value_type;
+		using mapped_type = typename Kernel::mapped_type;
 		using storage_type = typename Kernel::storage_type;
 		using hash_policy = typename Kernel::hash_policy;
 		using allocator_type = typename Kernel::allocator_type;
@@ -1116,7 +1116,7 @@ namespace RE
 	public:
 		using size_type = typename Base::size_type;
 		using key_type = typename Base::key_type;
-		using value_type = typename Base::value_type;
+		using mapped_type = typename Base::mapped_type;
 		using storage_type = typename Base::storage_type;
 		using hash_policy = typename Base::hash_policy;
 		using allocator_type = typename Base::allocator_type;
@@ -1201,7 +1201,7 @@ namespace RE
 		}
 
 
-		bool insert(const key_type& a_key, const value_type& a_lvalue)
+		bool insert(const key_type& a_key, const mapped_type& a_lvalue)
 		{
 			hash_type hash = get_hash(a_key);
 			entry_type* p = 0;
@@ -1218,7 +1218,7 @@ namespace RE
 		}
 
 
-		bool insert(const key_type& a_key, value_type&& a_rvalue)
+		bool insert(const key_type& a_key, mapped_type&& a_rvalue)
 		{
 			hash_type hash = get_hash(a_key);
 			entry_type* p = 0;
@@ -1236,7 +1236,7 @@ namespace RE
 
 
 		// original implementation
-		bool insert(const key_type& a_key, const value_type& a_value, UInt16& a_unk)
+		bool insert(const key_type& a_key, const mapped_type& a_value, UInt16& a_unk)
 		{
 			hash_type hash = get_hash(a_key);
 			while (!insert_original(_entries, hash, a_key, a_value, a_unk)) {
@@ -1252,7 +1252,7 @@ namespace RE
 		}
 
 
-		bool GetAt(key_type a_key, value_type& a_value) const
+		bool GetAt(key_type a_key, mapped_type& a_value) const
 		{
 			entry_type* entry = _find(_entries, get_hash(a_key), a_key);
 			if (entry) {
@@ -1263,13 +1263,13 @@ namespace RE
 		}
 
 
-		inline bool SetAt(key_type a_key, const value_type& a_lvalue)
+		inline bool SetAt(key_type a_key, const mapped_type& a_lvalue)
 		{
 			return insert(a_key, a_lvalue);
 		}
 
 
-		inline bool SetAt(key_type a_key, value_type&& a_rvalue)
+		inline bool SetAt(key_type a_key, mapped_type&& a_rvalue)
 		{
 			return insert(a_key, a_rvalue);
 		}

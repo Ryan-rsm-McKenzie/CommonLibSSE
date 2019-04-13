@@ -430,6 +430,9 @@
     <Filter Include="include\REL">
       <UniqueIdentifier>{ef5b1d2d-7a1b-4cf0-b7b6-0560f7b4c328}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\BSCore\IBSTCreator">
+      <UniqueIdentifier>{61d360d5-4296-474d-b0fd-b4abdf16f135}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -2746,6 +2749,24 @@
     </ClInclude>
     <ClInclude Include="include\REL\Relocation.h">
       <Filter>include\REL</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IBSTCreator.h">
+      <Filter>include\RE\Skyrim\BSCore\IBSTCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTDerivedCreator.h">
+      <Filter>include\RE\Skyrim\BSCore\IBSTCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AutoRegisterFactory.h">
+      <Filter>include\RE\Skyrim\BSCore\IBSTCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AutoRegisterCreator.h">
+      <Filter>include\RE\Skyrim\BSCore\IBSTCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTCreateFactoryManager.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ConsoleData.h">
+      <Filter>include\RE\Skyrim\Menus\IUIMessageData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

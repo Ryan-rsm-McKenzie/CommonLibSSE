@@ -7,7 +7,7 @@ namespace RE
 	// BSTSingletonExplicit
 	//=====================================================
 
-	template<class Ty>
+	template<class T>
 	struct BSTSingletonExplicit
 	{};
 
@@ -16,7 +16,7 @@ namespace RE
 	// BSTSingletonImplicit
 	//=====================================================
 
-	template<class Ty>
+	template<class T>
 	struct BSTSingletonImplicit
 	{};
 
@@ -28,28 +28,28 @@ namespace RE
 	template <class> struct BSTSingletonSDMBase;
 
 
-	template <class Ty>
+	template <class T>
 	struct BSTSingletonSDMOpStaticBuffer
 	{};
 
 
-	template <class Ty, class Alloc = BSTSingletonSDMOpStaticBuffer<Ty>>
+	template <class T, class Alloc = BSTSingletonSDMOpStaticBuffer<T>>
 	struct BSTSDMTraits
 	{
-		typedef Ty Type;
-		typedef Alloc Allocator;
+		using Type = T;
+		using Allocator = Alloc;
 	};
 
 
 	template <class Traits>
 	struct BSTSingletonSDMBase : public Traits, public Traits::Allocator
 	{
-		typedef typename Traits::Type Type;
-		typedef typename Traits::Allocator Allocator;
+		using Type = typename Traits::Type;
+		using Allocator = typename Traits::Allocator;
 	};
 
 
-	template <class Ty, template <class> class _SingletonT = BSTSingletonSDMOpStaticBuffer>
-	struct BSTSingletonSDM : BSTSingletonSDMBase<BSTSDMTraits<Ty, _SingletonT<Ty>>>
+	template <class T, template <class> class Singleton = BSTSingletonSDMOpStaticBuffer>
+	struct BSTSingletonSDM : BSTSingletonSDMBase<BSTSDMTraits<T, Singleton<T>>>
 	{};
 }

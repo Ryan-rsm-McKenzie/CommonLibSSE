@@ -5,34 +5,6 @@
 
 namespace RE
 {
-	namespace BSScript
-	{
-		namespace Internal
-		{
-			namespace Offset
-			{
-				namespace VirtualMachine
-				{
-					// E8 ? ? ? ? 84 C0 0F 84 ? ? ? ? 48 83 7C 24 48 00
-					constexpr std::uintptr_t AllocateArray = 0x01264A00;	// 1_5_73
-				}
-			}
-		}
-
-
-		namespace Offset
-		{
-			namespace BSScriptObject
-			{
-				// E8 ? ? ? ? 49 89 3F
-				constexpr std::uintptr_t IncRefCount = 0x01233EB0;	// 1_5_73
-				// E8 ? ? ? ? 85 C0 75 10 49 8B CE
-				constexpr std::uintptr_t DecRefCount = 0x01233F60;	// 1_5_73
-			}
-		}
-	}
-
-
 	namespace Offset
 	{
 		namespace ActivateHandler
@@ -134,6 +106,28 @@ namespace RE
 		}
 
 
+		namespace BSScript
+		{
+			namespace BSScriptObject
+			{
+				// E8 ? ? ? ? 49 89 3F
+				constexpr std::uintptr_t IncRefCount = 0x01233EB0;	// 1_5_73
+				// E8 ? ? ? ? 85 C0 75 10 49 8B CE
+				constexpr std::uintptr_t DecRefCount = 0x01233F60;	// 1_5_73
+			}
+
+
+			namespace Internal
+			{
+				namespace VirtualMachine
+				{
+					// E8 ? ? ? ? 84 C0 0F 84 ? ? ? ? 48 83 7C 24 48 00
+					constexpr std::uintptr_t AllocateArray = 0x01264A00;	// 1_5_73
+				}
+			}
+		}
+
+
 		namespace BSTArrayBase
 		{
 			// E8 ? ? ? ? 29 3E
@@ -224,6 +218,23 @@ namespace RE
 		{
 			// ??_7FirstPersonState@@6B@
 			constexpr std::uintptr_t Vtbl = 0x016A9E70;	// 1_5_73
+		}
+
+
+		namespace GFxTranslator
+		{
+			namespace TranslateInfo
+			{
+				// 48 85 D2 74 69 48 89 6C 24 10
+				constexpr std::uintptr_t SetResultW = 0x00F4B2F0;	// 1_5_73
+			}
+		}
+
+
+		namespace GMemory
+		{
+			// GFxFunctionHandler::virt_dtor + 35
+			constexpr std::uintptr_t GlobalHeap = 0x03032C50;	// 1_5_73
 		}
 
 
@@ -325,6 +336,15 @@ namespace RE
 		{
 			// ??_7MenuOpenHandler@@6B@
 			constexpr std::uintptr_t Vtbl = 0x016B8490;	// 1_5_73
+		}
+
+
+		namespace MessageDataFactoryManager
+		{
+			// E8 ? ? ? ? 48 8B C8 48 85 C0 74 0C 48 8B 00
+			constexpr std::uintptr_t GetCreator = 0x003262F0;	// 1_5_73
+			// E8 ? ? ? ? 48 8B C8 48 8D 57 08
+			constexpr std::uintptr_t GetSingleton = 0x00326460;		// 1_5_73
 		}
 
 
@@ -482,23 +502,6 @@ namespace RE
 		{
 			// ??_7ToggleRunHandler@@6B@
 			constexpr std::uintptr_t Vtbl = 0x0166F308;	// 1_5_73
-		}
-
-
-		namespace GFxTranslator
-		{
-			namespace TranslateInfo
-			{
-				// 48 85 D2 74 69 48 89 6C 24 10
-				constexpr std::uintptr_t SetResultW = 0x00F4B2F0;	// 1_5_73
-			}
-		}
-
-
-		namespace GMemory
-		{
-			// GFxFunctionHandler::virt_dtor + 35
-			constexpr std::uintptr_t GlobalHeap = 0x03032C50;	// 1_5_73
 		}
 
 
