@@ -9,154 +9,15 @@
 #include <stdexcept>  // out_of_range, length_error
 #include <string>  // string
 
-#include "RE/BSString.h"  // BSString
 #include "RE/BSGlobalStringTable.h"  // BSGlobalStringTable::Entry
 
 
 namespace RE
 {
-	BSFixedString::const_iterator::const_iterator() :
-		_ptr(0)
-	{}
-
-
-	BSFixedString::const_iterator::const_iterator(pointer a_ptr) :
-		_ptr(a_ptr)
-	{}
-
-
-	BSFixedString::const_iterator::reference BSFixedString::const_iterator::operator*() const
-	{
-		return *_ptr;
-	}
-
-
-	BSFixedString::const_iterator::pointer BSFixedString::const_iterator::operator->() const
-	{
-		return std::pointer_traits<pointer>::pointer_to(operator*());
-	}
-
-
-	// prefix
-	BSFixedString::const_iterator& BSFixedString::const_iterator::operator++()
-	{
-		++_ptr;
-		return *this;
-	}
-
-
-	// postfix
-	BSFixedString::const_iterator BSFixedString::const_iterator::operator++(int)
-	{
-		const_iterator tmp(*this);
-		operator++();
-		return tmp;
-	}
-
-
-	// prefix
-	BSFixedString::const_iterator& BSFixedString::const_iterator::operator--()
-	{
-		--_ptr;
-		return *this;
-	}
-
-
-	// postfix
-	BSFixedString::const_iterator BSFixedString::const_iterator::operator--(int)
-	{
-		const_iterator tmp(*this);
-		operator--();
-		return tmp;
-	}
-
-
-	BSFixedString::const_iterator& BSFixedString::const_iterator::operator+=(const difference_type a_off)
-	{
-		_ptr += a_off;
-		return *this;
-	}
-
-
-	BSFixedString::const_iterator BSFixedString::const_iterator::operator+(const difference_type a_off) const
-	{
-		const_iterator tmp(*this);
-		return tmp += a_off;
-	}
-
-
-	BSFixedString::const_iterator& BSFixedString::const_iterator::operator-=(const difference_type a_off)
-	{
-		return operator+=(-a_off);
-	}
-
-
-	BSFixedString::const_iterator BSFixedString::const_iterator::operator-(const difference_type a_off) const
-	{
-		const_iterator tmp(*this);
-		return tmp -= a_off;
-	}
-
-
-	BSFixedString::const_iterator::difference_type BSFixedString::const_iterator::operator-(const const_iterator& a_rhs) const
-	{
-		return _ptr - a_rhs._ptr;
-	}
-
-
-	BSFixedString::const_iterator::reference BSFixedString::const_iterator::operator[](const difference_type a_off) const
-	{
-		return *(operator+(a_off));
-	}
-
-
-	bool BSFixedString::const_iterator::operator==(const const_iterator& a_rhs) const
-	{
-		return _ptr == a_rhs._ptr;
-	}
-
-
-	bool BSFixedString::const_iterator::operator!=(const const_iterator& a_rhs) const
-	{
-		return !operator==(a_rhs);
-	}
-
-
-	bool BSFixedString::const_iterator::operator<(const const_iterator& a_rhs) const
-	{
-		return _ptr < a_rhs._ptr;
-	}
-
-
-	bool BSFixedString::const_iterator::operator>(const const_iterator& a_rhs) const
-	{
-		return a_rhs.operator<(*this);
-	}
-
-
-	bool BSFixedString::const_iterator::operator<=(const const_iterator& a_rhs) const
-	{
-		return !operator>(a_rhs);
-	}
-
-
-	bool BSFixedString::const_iterator::operator>=(const const_iterator& a_rhs) const
-	{
-		return !operator<(a_rhs);
-	}
-
-
 	BSFixedString::BSFixedString() :
 		_data(0)
 	{
 		ctor_cstr("");
-	}
-
-
-	BSFixedString::BSFixedString(const char* a_rhs) :
-		_data(0)
-	{
-		ctor_cstr(a_rhs);
 	}
 
 
@@ -171,6 +32,19 @@ namespace RE
 		_data(std::move(a_rhs._data))
 	{
 		a_rhs._data = 0;
+	}
+
+
+	BSFixedString::BSFixedString(const char* a_rhs) :
+		_data(0)
+	{
+		ctor_cstr(a_rhs);
+	}
+
+
+	BSFixedString::BSFixedString(const std::string_view& a_rhs)
+	{
+		ctor_cstr(a_rhs.data());
 	}
 
 
@@ -205,7 +79,14 @@ namespace RE
 	}
 
 
-	BSFixedString::const_reference BSFixedString::at(size_type a_pos) const
+	BSFixedString& BSFixedString::operator=(const std::string_view& a_rhs)
+	{
+		return *set_cstr(a_rhs.data());
+	}
+
+
+	auto BSFixedString::at(size_type a_pos) const
+		-> const_reference
 	{
 		if (a_pos >= size()) {
 			std::string err = __FUNCTION__;
@@ -219,7 +100,8 @@ namespace RE
 	}
 
 
-	BSFixedString::const_reference BSFixedString::operator[](size_type a_pos) const
+	auto BSFixedString::operator[](size_type a_pos) const
+		-> const_reference
 	{
 		return _data[a_pos];
 	}
@@ -239,7 +121,7 @@ namespace RE
 
 	const char* BSFixedString::data() const noexcept
 	{
-		return _data;
+		return _data ? _data : "";
 	}
 
 
@@ -249,51 +131,9 @@ namespace RE
 	}
 
 
-	BSFixedString::const_iterator BSFixedString::begin() const noexcept
+	BSFixedString::operator std::string_view() const noexcept
 	{
-		return const_iterator(std::addressof(_data[0]));
-	}
-
-
-	BSFixedString::const_iterator BSFixedString::cbegin() const noexcept
-	{
-		return begin();
-	}
-
-
-	BSFixedString::const_iterator BSFixedString::end() const noexcept
-	{
-		return const_iterator(std::addressof(_data[size()]));
-	}
-
-
-	BSFixedString::const_iterator BSFixedString::cend() const noexcept
-	{
-		return end();
-	}
-
-
-	BSFixedString::const_reverse_iterator BSFixedString::rbegin() const noexcept
-	{
-		return const_reverse_iterator(std::addressof(_data[size() - 1]));
-	}
-
-
-	BSFixedString::const_reverse_iterator BSFixedString::crbegin() const noexcept
-	{
-		return rbegin();
-	}
-
-
-	BSFixedString::const_reverse_iterator BSFixedString::rend() const noexcept
-	{
-		return const_reverse_iterator(std::addressof(_data[-1]));
-	}
-
-
-	BSFixedString::const_reverse_iterator BSFixedString::crend() const noexcept
-	{
-		return rend();
+		return { data(), size() };
 	}
 
 
@@ -303,24 +143,27 @@ namespace RE
 	}
 
 
-	BSFixedString::size_type BSFixedString::size() const noexcept
+	auto BSFixedString::size() const noexcept
+		-> size_type
 	{
 		size_type len = 0;
 		if (_data) {
-			BSGlobalStringTable::Entry* entry = (BSGlobalStringTable::Entry*)((std::uintptr_t)_data - offsetof(BSGlobalStringTable::Entry, data));
+			auto entry = reinterpret_cast<BSGlobalStringTable::Entry*>((std::uintptr_t)_data - offsetof(BSGlobalStringTable::Entry, data));
 			len = entry->length & BSGlobalStringTable::Entry::kLengthMask;
 		}
 		return len;
 	}
 
 
-	BSFixedString::size_type BSFixedString::length() const noexcept
+	auto BSFixedString::length() const noexcept
+		-> size_type
 	{
 		return size();
 	}
 
 
-	BSFixedString::size_type BSFixedString::max_size() noexcept
+	auto BSFixedString::max_size() noexcept
+		-> size_type
 	{
 		return 0x7FFF;
 	}
@@ -341,18 +184,6 @@ namespace RE
 	int BSFixedString::compare(const char* a_s) const
 	{
 		return _stricmp(data(), a_s);
-	}
-
-
-	bool BSFixedString::operator==(const BSString& a_rhs) const
-	{
-		return *this == a_rhs.c_str();
-	}
-
-
-	bool BSFixedString::operator!=(const BSString& a_rhs) const
-	{
-		return !operator==(a_rhs);
 	}
 
 

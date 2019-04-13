@@ -2,10 +2,8 @@
 
 #include "skse64/GameTypes.h"  // BSString
 
+#include <cassert>  // assert
 #include <string>  // char_traits
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/Memory.h"  // Heap_Free
 
 
 namespace RE
@@ -15,130 +13,189 @@ namespace RE
 		_dataLen(0),
 		_bufLen(0),
 		_pad0C(0)
-	{}
-
-
-	BSString::BSString(const BSString& a_str) :
-		_data(0),
-		_dataLen(0),
-		_bufLen(0),
-		_pad0C(0)
 	{
-		Set(a_str.c_str());
+		set_cstr("");
 	}
 
 
-	BSString::BSString(BSString&& a_str) :
+	BSString::BSString(const BSString& a_rhs) :
 		_data(0),
 		_dataLen(0),
 		_bufLen(0),
 		_pad0C(0)
 	{
-		_data = a_str._data;
-		a_str._data = 0;
-
-		_dataLen = a_str._dataLen;
-		a_str._dataLen = 0;
-
-		_bufLen = a_str._bufLen;
-		a_str._bufLen = 0;
+		set_cstr(a_rhs.c_str());
 	}
 
 
-	BSString::BSString(const char* a_str) :
+	BSString::BSString(BSString&& a_rhs) :
+		_data(std::move(a_rhs._data)),
+		_dataLen(std::move(a_rhs._dataLen)),
+		_bufLen(std::move(a_rhs._bufLen)),
+		_pad0C(0)
+	{
+		a_rhs._data = 0;
+		a_rhs._dataLen = 0;
+		a_rhs._bufLen = 0;
+	}
+
+
+	BSString::BSString(const char* a_rhs) :
 		_data(0),
 		_dataLen(0),
 		_bufLen(0),
 		_pad0C(0)
 	{
-		Set(a_str);
+		set_cstr(a_rhs);
+	}
+
+
+	BSString::BSString(const std::string_view& a_rhs)
+	{
+		set_cstr(a_rhs.data());
 	}
 
 
 	BSString::~BSString()
 	{
-		if (_data) {
-			Heap_Free(_data);
-			_data = 0;
-		}
-	}
-
-
-	BSString::operator const char*() const
-	{
-		return c_str();
+		delete _data;
 	}
 
 
 	BSString& BSString::operator=(const BSString& a_rhs)
 	{
-		Set(a_rhs.c_str());
+		set_cstr(a_rhs.c_str());
 		return *this;
 	}
 
 
 	BSString& BSString::operator=(BSString&& a_rhs)
 	{
-		_data = a_rhs._data;
+		_data = std::move(a_rhs._data);
 		a_rhs._data = 0;
 
-		_dataLen = a_rhs._dataLen;
+		_dataLen = std::move(a_rhs._dataLen);
 		a_rhs._dataLen = 0;
 
-		_bufLen = a_rhs._bufLen;
+		_bufLen = std::move(a_rhs._bufLen);
 		a_rhs._bufLen = 0;
 
 		return *this;
 	}
 
 
-	BSString& BSString::operator=(const BSFixedString& str)
-	{
-		return operator=(str.c_str());
-	}
-
-
 	BSString& BSString::operator=(const char* a_rhs)
 	{
-		Set(a_rhs);
+		set_cstr(a_rhs);
 		return *this;
 	}
 
 
-	const char* BSString::c_str() const noexcept
+	BSString& BSString::operator=(const std::string_view& a_rhs)
+	{
+		set_cstr(a_rhs.data());
+		return *this;
+	}
+
+
+	auto BSString::operator[](size_type a_pos)
+		-> reference
+	{
+		return _data[a_pos];
+	}
+
+
+	auto BSString::operator[](size_type a_pos) const
+		-> const_reference
+	{
+		return _data[a_pos];
+	}
+
+
+	char& BSString::front()
+	{
+		return operator[](0);
+	}
+
+
+	const char& BSString::front() const
+	{
+		return operator[](0);
+	}
+
+
+	char& BSString::back()
+	{
+		return operator[](size() - 1);
+	}
+
+
+	const char& BSString::back() const
+	{
+		return operator[](size() - 1);
+	}
+
+
+	const char* BSString::data() const noexcept
 	{
 		return _data ? _data : "";
 	}
 
 
+	char* BSString::data() noexcept
+	{
+		return _data ? _data : "";
+	}
+
+
+	const char* BSString::c_str() const noexcept
+	{
+		return data();
+	}
+
+
+	BSString::operator std::string_view() const noexcept
+	{
+		return { data(), size() };
+	}
+
+
 	[[nodiscard]] bool BSString::empty() const noexcept
 	{
-		return length() != 0;
+		return length() == 0;
 	}
 
 
-	BSString::size_type BSString::length() const noexcept
+	auto BSString::size() const noexcept
+		-> size_type
 	{
-		return (_dataLen != NPOS) ? _dataLen : std::char_traits<char>::length(_data);
+		return (_dataLen != kMaxSize) ? _dataLen : std::char_traits<char>::length(_data);
 	}
 
 
-	bool BSString::operator==(const BSFixedString& a_rhs) const
+	auto BSString::length() const noexcept
+		-> size_type
 	{
-		return (*this == a_rhs.c_str());
+		return size();
 	}
 
 
-	bool BSString::operator!=(const BSFixedString& a_rhs) const
+	void BSString::clear() noexcept
 	{
-		return !operator==(a_rhs);
+		set_cstr("");
 	}
 
 
-	bool BSString::Set(const char* a_str, UInt32 a_len)
+	bool BSString::set_cstr(const char* a_str, UInt32 a_len)
 	{
-		using func_t = function_type_t<decltype(&BSString::Set)>;
+		using func_t = function_type_t<decltype(&BSString::set_cstr)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSString, Set, func_t*);
+#if _DEBUG
+		bool result = func(this, a_str, a_len);
+		assert(result == true);
+		return result;
+#else
 		return func(this, a_str, a_len);
+#endif
 	}
 }
