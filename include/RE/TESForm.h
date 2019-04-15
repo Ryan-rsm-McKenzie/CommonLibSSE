@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESForm
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // FormType
 
@@ -15,6 +17,9 @@ namespace RE
 	class TESForm : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESForm;
+
+
 		enum { kTypeID = FormType::None };	// special-case
 
 

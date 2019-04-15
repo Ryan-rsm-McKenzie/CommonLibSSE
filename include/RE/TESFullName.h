@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESFullName
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/BSFixedString.h"  // BSFixedString
 
@@ -9,6 +11,9 @@ namespace RE
 	class TESFullName : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESFullName;
+
+
 		virtual ~TESFullName();
 
 		// override (BaseFormComponent)

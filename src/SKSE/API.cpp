@@ -7,10 +7,10 @@ namespace SKSE
 	{
 		namespace
 		{
-			template <class T> struct _make_const_ptr { using type = typename const T; };
-			template <class T> struct _make_const_ptr<T*> { using type = typename const T*; };
+			template <class T> struct _make_const { using type = typename const T; };
+			template <class T> struct _make_const<T*> { using type = typename const T*; };
 		}
-		template <class T> struct make_const : _make_const_ptr<T> {};
+		template <class T> struct make_const : _make_const<T> {};
 		template <class T> using make_const_t = typename make_const<T>::type;
 
 
@@ -39,6 +39,11 @@ namespace SKSE
 	bool Init(const LoadInterface* a_skse)
 	{
 		g_pluginHandle = a_skse->GetPluginHandle();
+		if (g_pluginHandle == kPluginHandle_Invalid) {
+			_ERROR("[ERROR] Failed to get valid plugin handle!\n");
+			return false;
+		}
+
 		g_releaseIndex = a_skse->GetReleaseIndex();
 
 		g_scaleformInterface = static_cast<decltype(g_scaleformInterface)>(a_skse->QueryInterface(InterfaceID::kScaleform));
@@ -107,8 +112,22 @@ namespace SKSE
 			return false;
 		} else {
 			g_delayFunctorManager = &g_objectInterface->GetDelayFunctorManager();
+			if (!g_delayFunctorManager) {
+				_ERROR("[ERROR] Failed to get delay functor manager!\n");
+				return false;
+			}
+
 			g_objectRegistry = &g_objectInterface->GetObjectRegistry();
+			if (!g_objectRegistry) {
+				_ERROR("[ERROR] Failed to get object registry!\n");
+				return false;
+			}
+
 			g_persistentObjectStorage = &g_objectInterface->GetPersistentObjectStorage();
+			if (!g_persistentObjectStorage) {
+				_ERROR("[ERROR] Failed to get persistent object storage!\n");
+				return false;
+			}
 		}
 
 		return true;
@@ -116,14 +135,14 @@ namespace SKSE
 
 
 	auto GetPluginHandle()
-		->make_const_t<decltype(g_pluginHandle)>
+		-> make_const_t<decltype(g_pluginHandle)>
 	{
 		return g_pluginHandle;
 	}
 
 
 	auto GetReleaseIndex()
-		->make_const_t<decltype(g_releaseIndex)>
+		-> make_const_t<decltype(g_releaseIndex)>
 	{
 		return g_releaseIndex;
 	}

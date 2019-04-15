@@ -491,6 +491,7 @@
     <ClInclude Include="include\RE\BSTList.h" />
     <ClInclude Include="include\RE\BSTransformDeltaEvent.h" />
     <ClInclude Include="include\RE\BSTSingleton.h" />
+    <ClInclude Include="include\RE\BSUIMessageData.h" />
     <ClInclude Include="include\RE\BSWin32SaveDataSystemUtility.h" />
     <ClInclude Include="include\RE\BSXAudio2GameSound.h" />
     <ClInclude Include="include\RE\ChestsLooted.h" />
@@ -513,6 +514,7 @@
     <ClInclude Include="include\RE\DirectionalAmbientLightingColor.h" />
     <ClInclude Include="include\RE\Effect.h" />
     <ClInclude Include="include\RE\EffectSetting.h" />
+    <ClInclude Include="include\RE\EnchantConstructMenu.h" />
     <ClInclude Include="include\RE\EnchantmentItem.h" />
     <ClInclude Include="include\RE\EquipManager.h" />
     <ClInclude Include="include\RE\ErrorLogger.h" />
@@ -761,6 +763,7 @@
     <ClInclude Include="include\RE\NiTMapBase.h" />
     <ClInclude Include="include\RE\NiTPointerAllocator.h" />
     <ClInclude Include="include\RE\NiTPointerMap.h" />
+    <ClInclude Include="include\RE\OldMessageBoxCallback.h" />
     <ClInclude Include="include\RE\PackageLocation.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
     <ClInclude Include="include\RE\PoisonedWeapon.h" />

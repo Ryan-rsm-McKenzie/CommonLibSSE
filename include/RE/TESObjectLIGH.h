@@ -83,7 +83,7 @@ namespace RE
 			Color			color;			// 08
 			Flag			flags;			// 0C
 			float			fallofExponent;	// 10
-			float			FOV;			// 14
+			float			fov;			// 14
 			float			nearClip;		// 18
 			FlickerEffect	flickerEffect;	// 1C
 		};

@@ -142,10 +142,10 @@ struct is_detected<T, Op, std::void_t<Op<T>>> : std::true_type {};
 
 
 namespace { template <class V> using remove_cvpr_t = std::remove_pointer_t<std::remove_reference_t<std::remove_cv_t<V>>>; }
-template<class T, class U>
-T skyrim_cast(U a_from)
+template<class To, class From>
+To skyrim_cast(From a_from)
 {
-	return static_cast<T>(Runtime_DynamicCast(static_cast<void*>(a_from), remove_cvpr_t<T>::RTTI, remove_cvpr_t<U>::RTTI));
+	return static_cast<To>(Runtime_DynamicCast(static_cast<void*>(a_from), remove_cvpr_t<From>::RTTI, remove_cvpr_t<To>::RTTI));
 }
 
 

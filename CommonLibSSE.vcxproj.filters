@@ -433,6 +433,9 @@
     <Filter Include="include\RE\Skyrim\BSCore\IBSTCreator">
       <UniqueIdentifier>{61d360d5-4296-474d-b0fd-b4abdf16f135}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\Menus\IMessageBoxCallback">
+      <UniqueIdentifier>{1bcd961a-527a-4fcd-8d4d-fc93d99b468e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -2732,9 +2735,6 @@
     <ClInclude Include="include\RE\CraftingSubMenu.h">
       <Filter>include\RE\Skyrim\Menus\CraftingSubMenus</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\IMessageBoxCallback.h">
-      <Filter>include\RE\Skyrim\Menus</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\CraftingMenu.h">
       <Filter>include\RE\Skyrim\Menus\IMenu</Filter>
     </ClInclude>
@@ -2766,6 +2766,18 @@
       <Filter>include\RE\Skyrim\BSCore</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ConsoleData.h">
+      <Filter>include\RE\Skyrim\Menus\IUIMessageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMessageBoxCallback.h">
+      <Filter>include\RE\Skyrim\Menus\IMessageBoxCallback</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\OldMessageBoxCallback.h">
+      <Filter>include\RE\Skyrim\Menus\IMessageBoxCallback</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\EnchantConstructMenu.h">
+      <Filter>include\RE\Skyrim\Menus\CraftingSubMenus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSUIMessageData.h">
       <Filter>include\RE\Skyrim\Menus\IUIMessageData</Filter>
     </ClInclude>
   </ItemGroup>

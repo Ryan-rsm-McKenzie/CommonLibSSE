@@ -26,7 +26,7 @@ namespace RE
 				virtual ~CreationConfirmCallback();			// 00
 
 				// override (IMessageBoxCallback)
-				virtual void Run(bool a_cancel) override;	// 01
+				virtual void Run(Message a_msg) override;	// 01
 
 
 				// members
