@@ -436,6 +436,12 @@
     <Filter Include="include\RE\Skyrim\Menus\IMessageBoxCallback">
       <UniqueIdentifier>{1bcd961a-527a-4fcd-8d4d-fc93d99b468e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\NetImmerse\NiSystem">
+      <UniqueIdentifier>{a24c0d83-6379-4281-89aa-d1279c609e4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\NetImmerse\NiSystem">
+      <UniqueIdentifier>{48bc5856-8cf1-4c7e-b4db-c17b1aa453e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -893,6 +899,12 @@
     </ClCompile>
     <ClCompile Include="src\SKSE\Interfaces.cpp">
       <Filter>src\SKSE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiBinaryStream.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSResourceNiBinaryStream.cpp">
+      <Filter>src\RE\Skyrim\NetImmerse\NiSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2779,6 +2791,12 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSUIMessageData.h">
       <Filter>include\RE\Skyrim\Menus\IUIMessageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiBinaryStream.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceNiBinaryStream.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

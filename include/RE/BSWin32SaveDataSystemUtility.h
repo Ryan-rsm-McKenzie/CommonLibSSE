@@ -12,7 +12,7 @@ namespace RE
 
 		// override (BSSaveDataSystemUtility)
 		virtual bool	CreateSaveDirectory(const char* a_pathName, bool a_ignoreINI) override;									// 01
-		virtual bool	PrepareFileSavePath(const char* a_fileName, char* a_dst, bool a_tmpSave, bool a_ignoreINI) override;	// 02
+		virtual errno_t	PrepareFileSavePath(const char* a_fileName, char* a_dst, bool a_tmpSave, bool a_ignoreINI) override;	// 02
 		virtual void	Unk_05(void) override;																					// 05
 		virtual void	Unk_06(void) override;																					// 06
 		virtual void	Unk_07(void) override;																					// 07

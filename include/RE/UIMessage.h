@@ -13,7 +13,7 @@ namespace RE
 	public:
 		enum class Message : UInt32
 		{
-			kRefresh = 0,	// used after ShowAllMapMarkers
+			kRefresh = 0,
 			kOpen = 1,
 			kClose = 3,
 			kScaleform = 6,	// BSUIScaleformData

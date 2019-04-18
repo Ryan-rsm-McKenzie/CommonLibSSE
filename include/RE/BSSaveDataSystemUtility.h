@@ -74,7 +74,7 @@ namespace RE
 
 		// add
 		virtual bool	CreateSaveDirectory(const char* a_pathName, bool a_ignoreINI) = 0;								// 01
-		virtual bool	PrepareFileSavePath(const char* a_fileName, char* a_dst, bool a_tmpSave, bool a_ignoreINI) = 0;	// 02 - std::strlen(a_dst) == 0x104, return false == success
+		virtual errno_t	PrepareFileSavePath(const char* a_fileName, char* a_dst, bool a_tmpSave, bool a_ignoreINI) = 0;	// 02 - a_dst must be 0x104 in length
 		virtual void	Unk_03(void);																					// 03 - { return Unk_04(); }
 		virtual void	Unk_04(void);																					// 04 - { return; }
 		virtual void	Unk_05(void);																					// 05

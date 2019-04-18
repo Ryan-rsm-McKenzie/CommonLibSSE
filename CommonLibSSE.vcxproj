@@ -186,6 +186,7 @@
     <ClCompile Include="src\RE\BSAudioManager.cpp" />
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
     <ClCompile Include="src\RE\BSReadWriteLock.cpp" />
+    <ClCompile Include="src\RE\BSResourceNiBinaryStream.cpp" />
     <ClCompile Include="src\RE\BSScriptArray.cpp" />
     <ClCompile Include="src\RE\BSScriptClass.cpp" />
     <ClCompile Include="src\RE\BSScriptObject.cpp" />
@@ -232,6 +233,7 @@
     <ClCompile Include="src\RE\NativeFunctionBase.cpp" />
     <ClCompile Include="src\RE\NiAnimationKey.cpp" />
     <ClCompile Include="src\RE\NiAVObject.cpp" />
+    <ClCompile Include="src\RE\NiBinaryStream.cpp" />
     <ClCompile Include="src\RE\NiColor.cpp" />
     <ClCompile Include="src\RE\NiColorData.cpp" />
     <ClCompile Include="src\RE\NiColorKey.cpp" />
@@ -460,6 +462,7 @@
     <ClInclude Include="include\RE\BSPrecomputedNavmeshInfoPathMap.h" />
     <ClInclude Include="include\RE\BSReadWriteLock.h" />
     <ClInclude Include="include\RE\BSReloadShaderI.h" />
+    <ClInclude Include="include\RE\BSResourceNiBinaryStream.h" />
     <ClInclude Include="include\RE\BSSaveDataSystemUtility.h" />
     <ClInclude Include="include\RE\BSScaleformTranslator.h" />
     <ClInclude Include="include\RE\BSScriptArray.h" />
@@ -737,6 +740,7 @@
     <ClInclude Include="include\RE\NavMeshInfoMap.h" />
     <ClInclude Include="include\RE\NiAnimationKey.h" />
     <ClInclude Include="include\RE\NiAVObject.h" />
+    <ClInclude Include="include\RE\NiBinaryStream.h" />
     <ClInclude Include="include\RE\NiBoneMatrixSetterI.h" />
     <ClInclude Include="include\RE\NiCamera.h" />
     <ClInclude Include="include\RE\NiColorData.h" />
