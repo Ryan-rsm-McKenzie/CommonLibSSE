@@ -2798,5 +2798,17 @@
     <ClInclude Include="include\RE\BSResourceNiBinaryStream.h">
       <Filter>include\RE\Skyrim\NetImmerse\NiSystem</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\ActorValueInfo.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSkillPerkTreeNode.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSCameraShot.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSCameraPath.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
