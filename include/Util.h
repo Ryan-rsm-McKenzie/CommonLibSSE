@@ -145,7 +145,7 @@ namespace { template <class V> using remove_cvpr_t = std::remove_pointer_t<std::
 template<class To, class From>
 To skyrim_cast(From a_from)
 {
-	return static_cast<To>(Runtime_DynamicCast(static_cast<void*>(a_from), remove_cvpr_t<From>::RTTI, remove_cvpr_t<To>::RTTI));
+	return static_cast<To>(Runtime_DynamicCast((void*)a_from, remove_cvpr_t<From>::RTTI, remove_cvpr_t<To>::RTTI));
 }
 
 
