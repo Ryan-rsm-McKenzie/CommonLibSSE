@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESWeightForm
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class TESWeightForm : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESWeightForm;
+
+
 		virtual ~TESWeightForm();	// 00
 
 		// override (BaseFormComponent)

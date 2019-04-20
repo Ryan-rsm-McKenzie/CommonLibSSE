@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESModel
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/BSFixedString.h"  // BSFixedString
 
@@ -9,6 +11,9 @@ namespace RE
 	class TESModel : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESModel;
+
+
 		struct FileHash
 		{
 			UInt32	fileNameHash;	// 0

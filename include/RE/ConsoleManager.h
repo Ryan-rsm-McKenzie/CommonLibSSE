@@ -14,7 +14,7 @@ namespace RE
 
 		// members
 		char	unk0;			// 0
-		char	lastMessage[0];	// 1
+		char	lastMessage[1];	// 1
 	};
-	STATIC_ASSERT(sizeof(ConsoleManager) == 0x1);
+	STATIC_ASSERT(sizeof(ConsoleManager) == 0x2);
 }

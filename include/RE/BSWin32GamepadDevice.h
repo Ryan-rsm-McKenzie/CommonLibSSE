@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSWin32GamepadDevice
+
 #include "RE/BSPCGamepadDeviceDelegate.h"  // BSPCGamepadDeviceDelegate
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BSWin32GamepadDevice : public BSPCGamepadDeviceDelegate
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSWin32GamepadDevice;
+
+
 		enum class Gamepad : UInt32
 		{
 			kUp = 0x0001,

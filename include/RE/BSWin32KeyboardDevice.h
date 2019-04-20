@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSWin32KeyboardDevice
+
 #include "RE/BSKeyboardDevice.h"  // BSKeyboardDevice
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BSWin32KeyboardDevice : public BSKeyboardDevice
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSWin32KeyboardDevice;
+
+
 		virtual ~BSWin32KeyboardDevice();				// 00
 
 		// override (BSKeyboardDevice)

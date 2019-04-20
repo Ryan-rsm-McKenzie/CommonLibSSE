@@ -4,7 +4,6 @@
 #undef max
 
 #include "skse64/GameReferences.h"  // TESObjectREFR
-#include "skse64/GameRTTI.h"  // DYNAMIC_CAST
 
 #include <limits>  // numeric_limits
 
@@ -129,13 +128,13 @@ namespace RE
 			switch (baseForm->formType) {
 			case FormType::Container:
 				{
-					TESObjectCONT* cont = static_cast<TESObjectCONT*>(baseForm);
+					auto cont = static_cast<TESObjectCONT*>(baseForm);
 					container = static_cast<TESContainer*>(cont);
 				}
 				break;
 			case FormType::NPC:
 				{
-					TESActorBase* actorBase = static_cast<TESActorBase*>(baseForm);
+					auto actorBase = static_cast<TESActorBase*>(baseForm);
 					container = actorBase;
 				}
 				break;
@@ -149,8 +148,7 @@ namespace RE
 	{
 		const char* result = 0;
 		if (baseForm) {
-			TESFullName* fullName = 0;
-			fullName = DYNAMIC_CAST(baseForm, TESForm, TESFullName);
+			auto fullName = skyrim_cast<TESFullName*>(baseForm);
 			if (fullName) {
 				result = fullName->GetName();
 			}

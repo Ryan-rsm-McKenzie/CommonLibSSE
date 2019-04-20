@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSGamepadDevice
+
 #include "RE/BSInputDevice.h"  // BSInputDevice
 #include "RE/BSTEvent.h"  // BSTEventSource
 
@@ -14,6 +16,9 @@ namespace RE
 		public BSTEventSource<BSGamepadEvent>	// 70
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSGamepadDevice;
+
+
 		virtual ~BSGamepadDevice();					// 00
 
 		// override (BSInputDevice)

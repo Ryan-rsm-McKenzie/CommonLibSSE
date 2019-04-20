@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESNPC
+
 #include <type_traits>  // underlying_type_t
 
 #include "RE/BGSOverridePackCollection.h"  // BGSOverridePackCollection
@@ -28,6 +30,9 @@ namespace RE
 		public BSTEventSink<MenuOpenCloseEvent>	// 188
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESNPC;
+
+
 		enum { kTypeID = FormType::NPC };
 
 

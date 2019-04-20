@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSKeyboardDevice
+
 #include "RE/BSInputDevice.h"  // BSInputDevice
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BSKeyboardDevice : public BSInputDevice
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSKeyboardDevice;
+
+
 		enum class Keyboard : UInt32
 		{
 			kKeyboard_Escape = 0x01,

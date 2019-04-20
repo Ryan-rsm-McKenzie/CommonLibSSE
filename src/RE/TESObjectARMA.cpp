@@ -1,7 +1,5 @@
 #include "RE/TESObjectARMA.h"
 
-#include "skse64/GameRTTI.h"  // DYNAMIC_CAST
-
 #include <stdio.h>  // sprintf_s
 
 #include "RE/TESNPC.h"  // TESNPC
@@ -52,9 +50,9 @@ namespace RE
 	void TESObjectARMA::GetNodeName(char* a_dstBuff, TESObjectREFR* a_refr, TESObjectARMO* a_armor, float a_weightOverride)
 	{
 		float weight = 100.0;
-		TESNPC* npc = DYNAMIC_CAST(a_refr->baseForm, TESForm, TESNPC);
+		auto npc = skyrim_cast<TESNPC*>(a_refr->baseForm);
 		if (npc && npc->nextTemplate) {
-			TESNPC* templ = npc->GetRootTemplate();
+			auto templ = npc->GetRootTemplate();
 			if (templ) {
 				weight = templ->weight;
 			}

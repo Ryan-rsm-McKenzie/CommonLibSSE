@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESEnchantableForm
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // EnchantmentItem
 
@@ -9,6 +11,9 @@ namespace RE
 	class TESEnchantableForm : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESEnchantableForm;
+
+
 		virtual ~TESEnchantableForm();										// 00
 
 		// override (BaseFormComponent0

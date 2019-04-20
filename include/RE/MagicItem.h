@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_MagicItem
+
 #include "RE/ActorValues.h"  // ActorValue
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
 #include "RE/BSTArray.h"  // BSTArray
@@ -20,6 +22,9 @@ namespace RE
 		public BGSKeywordForm	// 40
 	{
 	public:
+		inline static const void* RTTI = RTTI_MagicItem;
+
+
 		enum class MagicType : UInt32
 		{
 			kSpell = 0,
