@@ -79,7 +79,7 @@ namespace RE
 	class BSTEventSink
 	{
 	public:
-		virtual ~BSTEventSink() {}																		// 00
+		virtual ~BSTEventSink() = default;																// 00
 		virtual	EventResult	ReceiveEvent(EventT* a_event, BSTEventSource<EventT>* a_eventSource) = 0;	// 01
 	};
 	STATIC_ASSERT(sizeof(BSTEventSink<void*>) == 0x8);
