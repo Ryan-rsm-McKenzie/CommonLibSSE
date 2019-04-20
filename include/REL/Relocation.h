@@ -144,6 +144,7 @@ namespace REL
 
 				if (j == sig.size()) {
 					_address = Module::BaseAddr() + i;
+					break;
 				}
 			}
 

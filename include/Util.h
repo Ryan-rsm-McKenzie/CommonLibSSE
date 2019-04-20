@@ -131,12 +131,12 @@ constexpr inline Enum& operator>>=(Enum& a_lhs, Enum a_rhs)
 
 
 // Primary template handles all types not supporting the operation.
-template <class T, template <typename> class Op, typename = std::void_t<>>
+template <class T, template <class> class Op, typename = std::void_t<>>
 struct is_detected : std::false_type {};
 
 
 // Specialization recognizes/validates only types supporting the archetype.
-template <class T, template <typename> class Op>
+template <class T, template <class> class Op>
 struct is_detected<T, Op, std::void_t<Op<T>>> : std::true_type {};
 // END
 

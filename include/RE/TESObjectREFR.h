@@ -180,7 +180,7 @@ namespace RE
 		virtual void					Unk_6A(void);																																												// 6A
 		virtual void					Unk_6B(void);																																												// 6B
 		virtual void					Unk_6C(void);																																												// 6C
-		virtual void					SetNiNode(NiNode* a_root, UInt32 a_unk1);																																					// 6D - NULL, 1?
+		virtual void					SetNiNode(NiNode* a_root, UInt32 a_arg2);																																					// 6D - NULL, 1?
 		virtual void					Unk_6E(void);																																												// 6E
 		virtual NiNode*					GetNiRootNode(UInt32 a_firstPerson);																																						// 6F
 		virtual NiNode*					GetNiNode() const;																																											// 70 - Root of the skeleton (Get3D)
