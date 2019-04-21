@@ -35,8 +35,8 @@ namespace RE
 		virtual bool							IsActorMagicTarget() const;		// 03 - { return false; }
 		virtual void							Unk_04(void);					// 04 - { return 0; }
 		virtual void							Unk_05(void);					// 05 - { return; }
-		virtual void							Unk_06(void);					// 06 - pure
-		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffects();				// 07 - pure
+		virtual void							Unk_06(void) = 0;				// 06
+		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffects() = 0;			// 07
 		virtual void							Unk_08(void);					// 08 - { return; }
 		virtual void							Unk_09(void);					// 09 - { return; }
 		virtual void							Unk_0A(void);					// 0A - { return 1.0; }

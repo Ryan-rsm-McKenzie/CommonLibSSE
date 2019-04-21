@@ -218,12 +218,12 @@ namespace REL
 			return _address;
 		}
 
-	private:
+	protected:
 		mutable std::uintptr_t _address;
 	};
 
 
-	// pattern scans exe for given sig and reads effective address from first opcode
+	// pattern scans exe for given sig, reads offset from first opcode, and calculates effective address from next op code
 	template <class T>
 	class IndirectSig : public DirectSig<T>
 	{
@@ -232,43 +232,15 @@ namespace REL
 
 
 		IndirectSig(const char* a_sig) :
-			DirectSig<T>(a_sig),
-			_address(0xDEADBEEF),
-			_init(false)
-		{}
+			DirectSig<T>(a_sig)
+		{
+			auto offset = reinterpret_cast<std::int32_t*>(_address + 1);
+			auto nextOp = _address + 5;
+			_address = nextOp + *offset;
+		}
 
 
 		~IndirectSig()
 		{}
-
-
-		operator T() const
-		{
-			return unrestricted_cast<T>(GetAddress());
-		}
-
-
-		T GetType() const
-		{
-			return unrestricted_cast<T>(GetAddress());
-		}
-
-
-		std::uintptr_t GetAddress() const
-		{
-			if (!_init) {
-				auto indirectAddr = DirectSig<T>::GetAddress();
-				auto offset = reinterpret_cast<std::int32_t*>(indirectAddr + 1);
-				auto nextOp = indirectAddr + 5;
-				_address = nextOp + *offset;
-				_init = true;
-			}
-			assert(_address != 0xDEADBEEF);
-			return _address;
-		}
-
-	private:
-		mutable std::uintptr_t _address;
-		mutable bool _init;
 	};
 }

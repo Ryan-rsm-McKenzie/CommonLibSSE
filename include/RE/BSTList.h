@@ -238,7 +238,7 @@ namespace RE
 		using const_iterator = iterator_base<const T>;
 
 
-		constexpr BSSimpleList() :
+		BSSimpleList() :
 			_listHead{}
 		{}
 

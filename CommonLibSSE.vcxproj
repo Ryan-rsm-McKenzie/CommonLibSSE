@@ -327,6 +327,7 @@
     <ClInclude Include="include\ForceInclude.h" />
     <ClInclude Include="include\function_view.h" />
     <ClInclude Include="include\REL\Relocation.h" />
+    <ClInclude Include="include\RE\AbsorbEffect.h" />
     <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h" />
     <ClInclude Include="include\RE\ActorKnowledge.h" />
     <ClInclude Include="include\RE\ActorMover.h" />
@@ -835,6 +836,7 @@
     <ClInclude Include="include\RE\Stars.h" />
     <ClInclude Include="include\RE\StatsEvent.h" />
     <ClInclude Include="include\RE\BSGlobalStringTable.h" />
+    <ClInclude Include="include\RE\SummonCreatureEffect.h" />
     <ClInclude Include="include\RE\Sun.h" />
     <ClInclude Include="include\RE\SuspendedStack.h" />
     <ClInclude Include="include\RE\TESActorBase.h" />
@@ -948,6 +950,7 @@
     <ClInclude Include="include\RE\UIStringHolder.h" />
     <ClInclude Include="include\RE\UserEventEnabledEvent.h" />
     <ClInclude Include="include\RE\TESFile.h" />
+    <ClInclude Include="include\RE\ValueModifierEffect.h" />
     <ClInclude Include="include\RE\VirtualMachine.h" />
     <ClInclude Include="include\RE\VMArray.h" />
     <ClInclude Include="include\RE\WeatherType.h" />

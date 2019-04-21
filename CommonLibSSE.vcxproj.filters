@@ -442,6 +442,15 @@
     <Filter Include="src\RE\Skyrim\NetImmerse\NiSystem">
       <UniqueIdentifier>{48bc5856-8cf1-4c7e-b4db-c17b1aa453e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\Magic\Components\ActiveEffect">
+      <UniqueIdentifier>{25b0e9c2-ad2f-41e9-b092-010559ba4885}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Magic\Components\ActiveEffect\ValueModifierEffect">
+      <UniqueIdentifier>{4f98f23a-d19e-44cc-8b54-6b9d0605ba0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Magic\Components\ReferenceEffectController">
+      <UniqueIdentifier>{fad1b7a6-eb05-4d2d-9f48-7efb3591c1a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -1778,16 +1787,10 @@
     <ClInclude Include="include\RE\Hazard.h">
       <Filter>include\RE\Skyrim\TESForms\World</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h">
-      <Filter>include\RE\Skyrim\Magic\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\Effect.h">
       <Filter>include\RE\Skyrim\Magic\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\MagicTarget.h">
-      <Filter>include\RE\Skyrim\Magic\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ReferenceEffectController.h">
       <Filter>include\RE\Skyrim\Magic\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSStandardSoundDef.h">
@@ -2627,9 +2630,6 @@
     <ClInclude Include="include\RE\ExtraTerminalState.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\ActiveEffect.h">
-      <Filter>include\RE\Skyrim\Magic\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BaseExtraList.h">
       <Filter>include\RE\Skyrim\Inventory</Filter>
     </ClInclude>
@@ -2809,6 +2809,24 @@
     </ClInclude>
     <ClInclude Include="include\RE\BGSCameraPath.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActiveEffect.h">
+      <Filter>include\RE\Skyrim\Magic\Components\ActiveEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h">
+      <Filter>include\RE\Skyrim\Magic\Components\ReferenceEffectController</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ReferenceEffectController.h">
+      <Filter>include\RE\Skyrim\Magic\Components\ReferenceEffectController</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AbsorbEffect.h">
+      <Filter>include\RE\Skyrim\Magic\Components\ActiveEffect\ValueModifierEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ValueModifierEffect.h">
+      <Filter>include\RE\Skyrim\Magic\Components\ActiveEffect\ValueModifierEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SummonCreatureEffect.h">
+      <Filter>include\RE\Skyrim\Magic\Components\ActiveEffect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

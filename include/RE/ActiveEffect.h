@@ -16,6 +16,8 @@ namespace RE
 	public:
 		enum class Flag : UInt32
 		{
+			kHasConditions = 1 << 7,
+			kRecovers = 1 << 9,
 			kInactive = 1 << 15,
 			kDispelled = 1 << 18
 		};

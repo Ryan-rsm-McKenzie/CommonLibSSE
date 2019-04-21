@@ -38,7 +38,7 @@ namespace RE
 		virtual void	Unk_1B(void);			// 1B - { return 0; }
 		virtual void	Unk_1C(void);			// 1C - { return 1; }
 		virtual void	Unk_1D(void);			// 1D - { return 1; }
-		virtual void	Unk_1E(void);			// 1E - { return; }3
+		virtual void	Unk_1E(void);			// 1E - { return; }
 		virtual void	Unk_1F(void);			// 1F
 		virtual void	Unk_20(void);			// 20 - { return 0; }
 		virtual void	Unk_21(void);			// 21 - { return; }

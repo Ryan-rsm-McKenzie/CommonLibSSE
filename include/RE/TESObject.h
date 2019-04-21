@@ -8,11 +8,11 @@ namespace RE
 	class TESObject : public TESForm
 	{
 	public:
-		virtual ~TESObject();					// 00
+		virtual ~TESObject();						// 00
 
 		// override (TESForm)
-		virtual void	Unk_28(void) override;	// 28 - { return 1; }
-		virtual void	Unk_2D(void) override;	// 2D - { return 0; }
+		virtual void	Unk_28(void) override;		// 28 - { return 1; }
+		virtual void	Unk_2D(void) override;		// 2D - { return 0; }
 
 		// add
 		virtual void	Unk_3B(void);				// 3B - { return 0; }
