@@ -29,6 +29,8 @@ namespace RE
 			constexpr std::uintptr_t DispelWornItemEnchantments = 0x00556F20;	// 1_5_73
 			// E8 ? ? ? ? 85 C0 7E 2D
 			constexpr std::uintptr_t GetDetectionLevel = 0x005FC9A0;			// 1_5_73
+			// E8 ? ? ? ? F3 0F 58 43 5C
+			constexpr std::uintptr_t GetHeight = 0x005E1300;					// 1_5_73
 			// E8 ? ? ? ? 84 C0 49 0F 45 F4
 			constexpr std::uintptr_t IsGhost = 0x005D2520;						// 1_5_73
 			// E8 ? ? ? ? 48 8B CF 0F B6 E8

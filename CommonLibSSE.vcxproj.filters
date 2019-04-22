@@ -451,6 +451,9 @@
     <Filter Include="include\RE\Skyrim\Magic\Components\ReferenceEffectController">
       <UniqueIdentifier>{fad1b7a6-eb05-4d2d-9f48-7efb3591c1a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\World\Components\GetActorsFilter">
+      <UniqueIdentifier>{9af68fb2-a9de-4079-886e-c6001feec197}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -2827,6 +2830,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\SummonCreatureEffect.h">
       <Filter>include\RE\Skyrim\Magic\Components\ActiveEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraAction.h">
+      <Filter>include\RE\Skyrim\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GetActorsFilter.h">
+      <Filter>include\RE\Skyrim\TESForms\World\Components\GetActorsFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorTargetCheck.h">
+      <Filter>include\RE\Skyrim\TESForms\World\Components\GetActorsFilter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

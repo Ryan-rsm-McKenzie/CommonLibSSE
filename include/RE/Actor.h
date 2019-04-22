@@ -367,6 +367,7 @@ namespace RE
 		bool		IsGhost() const;
 		bool		IsSummoned() const;
 		bool		IsRunning() const;
+		float		GetHeight();
 
 
 		// members

@@ -270,4 +270,12 @@ namespace RE
 		REL::Offset<func_t*> func(Offset::Actor::IsRunning);
 		return func(this);
 	}
+
+
+	float Actor::GetHeight()
+	{
+		using func_t = function_type_t<decltype(&Actor::GetHeight)>;
+		REL::Offset<func_t*> func(Offset::Actor::GetHeight);
+		return func(this);
+	}
 }

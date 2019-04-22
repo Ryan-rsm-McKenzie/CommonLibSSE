@@ -331,6 +331,7 @@
     <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h" />
     <ClInclude Include="include\RE\ActorKnowledge.h" />
     <ClInclude Include="include\RE\ActorMover.h" />
+    <ClInclude Include="include\RE\ActorTargetCheck.h" />
     <ClInclude Include="include\RE\ActorValueInfo.h" />
     <ClInclude Include="include\RE\AlchemyItem.h" />
     <ClInclude Include="include\RE\AlchemyMenu.h" />
@@ -526,6 +527,7 @@
     <ClInclude Include="include\RE\EnchantmentItem.h" />
     <ClInclude Include="include\RE\EquipManager.h" />
     <ClInclude Include="include\RE\ErrorLogger.h" />
+    <ClInclude Include="include\RE\ExtraAction.h" />
     <ClInclude Include="include\RE\ExtraAliasInstanceArray.h" />
     <ClInclude Include="include\RE\ExtraAshPileRef.h" />
     <ClInclude Include="include\RE\ExtraCount.h" />
@@ -567,6 +569,7 @@
     <ClInclude Include="include\RE\FxDelegateArgs.h" />
     <ClInclude Include="include\RE\FxDelegateHandler.h" />
     <ClInclude Include="include\RE\GColor.h" />
+    <ClInclude Include="include\RE\GetActorsFilter.h" />
     <ClInclude Include="include\RE\GFxEvent.h" />
     <ClInclude Include="include\RE\GFxExternalInterface.h" />
     <ClInclude Include="include\RE\GFxFileConstants.h" />

@@ -1,17 +1,18 @@
 #include "RE/BSExtraData.h"
 
-#include <cstdint>  // uintptr_t
 #include <cstring>  // memset
+
+#include "RE/Memory.h"  // malloc
 
 
 namespace RE
 {
-	BSExtraData* BSExtraData::Create(UInt32 a_size, uintptr_t a_vtbl)
+	BSExtraData* BSExtraData::Create(std::size_t a_size, std::uintptr_t a_vtbl)
 	{
-		void* memory = Heap_Allocate(a_size);
+		void* memory = malloc(a_size);
 		std::memset(memory, 0, a_size);
 		((std::uintptr_t*)memory)[0] = a_vtbl;
-		BSExtraData* xData = (BSExtraData*)memory;
+		BSExtraData* xData = static_cast<BSExtraData*>(memory);
 		return xData;
 	}
 }

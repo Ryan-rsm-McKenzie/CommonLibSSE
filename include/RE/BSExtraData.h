@@ -19,7 +19,7 @@ namespace RE
 		virtual ExtraDataType	GetType() const = 0;						// 01
 		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const;	// 02 - { return false; }
 
-		static BSExtraData*		Create(UInt32 a_size, uintptr_t a_vtbl);
+		static BSExtraData*		Create(std::size_t a_size, std::uintptr_t a_vtbl);
 
 		TES_HEAP_REDEFINE_NEW();
 
