@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/BSTArray.h"  // BSTArray
-#include "RE/FormTypes.h"  // FormType, BGSMessage
+#include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
 
 
@@ -35,9 +35,9 @@ namespace RE
 
 
 		// members
-		BSTArray<BGSMessage*>	forms;	// 20 - LNAM
-		UInt64					unk38;	// 38
-		UInt64					unk40;	// 40
+		BSTArray<TESForm*>	forms;		// 20 - LNAM
+		BSTArray<TESForm*>*	addedForms;	// 38
+		UInt64				unk40;		// 40
 	};
 	STATIC_ASSERT(sizeof(BGSListForm) == 0x48);
 }
