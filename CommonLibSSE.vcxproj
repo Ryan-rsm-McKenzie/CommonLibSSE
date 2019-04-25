@@ -205,6 +205,7 @@
     <ClCompile Include="src\RE\GAtomic.cpp" />
     <ClCompile Include="src\RE\GFxExternalInterface.cpp" />
     <ClCompile Include="src\RE\GFxKeyboardState.cpp" />
+    <ClCompile Include="src\RE\GFxLog.cpp" />
     <ClCompile Include="src\RE\GFxMovie.cpp" />
     <ClCompile Include="src\RE\GFxMovieDef.cpp" />
     <ClCompile Include="src\RE\GFxMovieView.cpp" />
@@ -230,6 +231,7 @@
     <ClCompile Include="src\RE\ItemCrafted.cpp" />
     <ClCompile Include="src\RE\ItemsPickpocketed.cpp" />
     <ClCompile Include="src\RE\LocalMapCamera.cpp" />
+    <ClCompile Include="src\RE\LoggingDisabler.cpp" />
     <ClCompile Include="src\RE\NativeFunctionBase.cpp" />
     <ClCompile Include="src\RE\NiAnimationKey.cpp" />
     <ClCompile Include="src\RE\NiAVObject.cpp" />
@@ -353,12 +355,16 @@
     <ClInclude Include="include\RE\BGSConstructibleObject.h" />
     <ClInclude Include="include\RE\BGSDebris.h" />
     <ClInclude Include="include\RE\BGSDistantTreeBlock.h" />
+    <ClInclude Include="include\RE\BGSEncounterZone.h" />
     <ClInclude Include="include\RE\BGSEntryPointFunctionDataOneValue.h" />
     <ClInclude Include="include\RE\BGSExplosion.h" />
     <ClInclude Include="include\RE\BGSHazard.h" />
     <ClInclude Include="include\RE\BGSIdleCollection.h" />
     <ClInclude Include="include\RE\BGSIdleMarker.h" />
+    <ClInclude Include="include\RE\BGSImpactData.h" />
+    <ClInclude Include="include\RE\BGSImpactDataSet.h" />
     <ClInclude Include="include\RE\BGSListForm.h" />
+    <ClInclude Include="include\RE\BGSMaterialType.h" />
     <ClInclude Include="include\RE\BGSMessageIcon.h" />
     <ClInclude Include="include\RE\BGSMovableStatic.h" />
     <ClInclude Include="include\RE\BGSNamedPackageData.h" />
@@ -422,6 +428,7 @@
     <ClInclude Include="include\RE\BGSTextureModel.h" />
     <ClInclude Include="include\RE\BGSTextureSet.h" />
     <ClInclude Include="include\RE\BGSTypedItem.h" />
+    <ClInclude Include="include\RE\BGSVoiceType.h" />
     <ClInclude Include="include\RE\bhkCachingShapePhantom.h" />
     <ClInclude Include="include\RE\bhkCharacterController.h" />
     <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
@@ -570,6 +577,7 @@
     <ClInclude Include="include\RE\FxDelegateHandler.h" />
     <ClInclude Include="include\RE\GColor.h" />
     <ClInclude Include="include\RE\GetActorsFilter.h" />
+    <ClInclude Include="include\RE\GFxActionControl.h" />
     <ClInclude Include="include\RE\GFxEvent.h" />
     <ClInclude Include="include\RE\GFxExternalInterface.h" />
     <ClInclude Include="include\RE\GFxFileConstants.h" />
@@ -577,6 +585,9 @@
     <ClInclude Include="include\RE\GFxKey.h" />
     <ClInclude Include="include\RE\GFxKeyboardState.h" />
     <ClInclude Include="include\RE\GFxLoader.h" />
+    <ClInclude Include="include\RE\GFxLog.h" />
+    <ClInclude Include="include\RE\GFxLogBase.h" />
+    <ClInclude Include="include\RE\GFxLogConstants.h" />
     <ClInclude Include="include\RE\GFxMovie.h" />
     <ClInclude Include="include\RE\GFxMovieDef.h" />
     <ClInclude Include="include\RE\GFxMovieView.h" />
@@ -725,6 +736,7 @@
     <ClInclude Include="include\RE\LocalMapMenu.h" />
     <ClInclude Include="include\RE\LogEvent.h" />
     <ClInclude Include="include\RE\Logger.h" />
+    <ClInclude Include="include\RE\LoggingDisabler.h" />
     <ClInclude Include="include\RE\MapCamera.h" />
     <ClInclude Include="include\RE\MapInputHandler.h" />
     <ClInclude Include="include\RE\MapLookHandler.h" />

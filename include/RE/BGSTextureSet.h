@@ -49,18 +49,18 @@ namespace RE
 			};
 
 
-			float		minWidth;		// 00
-			float		maxWidth;		// 04
-			float		minHeight;		// 08
-			float		maxHeight;		// 0C
-			float		depth;			// 10
-			float		shininess;		// 14
-			float		parallaxScale;	// 18
-			UInt8		parralaxPasses;	// 1C
-			Flag		flags;			// 1D
-			UInt16		unk1E;			// 1E
-			Color		color;			// 20
-			UInt32		pad24;			// 24
+			float	minWidth;		// 00
+			float	maxWidth;		// 04
+			float	minHeight;		// 08
+			float	maxHeight;		// 0C
+			float	depth;			// 10
+			float	shininess;		// 14
+			float	parallaxScale;	// 18
+			UInt8	parralaxPasses;	// 1C
+			Flag	flags;			// 1D
+			UInt16	unk1E;			// 1E
+			Color	color;			// 20
+			UInt32	pad24;			// 24
 		};
 		STATIC_ASSERT(sizeof(DecalData) == 0x28);
 

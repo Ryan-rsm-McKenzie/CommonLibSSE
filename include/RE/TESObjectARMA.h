@@ -19,7 +19,17 @@ namespace RE
 		enum { kTypeID = FormType::Armature };
 
 
-		struct Data	// DATA
+		struct RecordFlags
+		{
+			enum RecordFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
+		struct Data	// DNAM
 		{
 			enum class WeightSlider : UInt8
 			{
@@ -41,23 +51,31 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x10);
 
 
-		bool	IsValidRace(TESRace* a_sourceRace) const;
-		void	GetNodeName(char* a_dstBuff, TESObjectREFR* a_refr, TESObjectARMO* a_armor, float a_weightOverride);
+		virtual ~TESObjectARMA();							// 00
+
+		// override (TESObject)
+		virtual void	InitDefaults() override;			// 04
+		virtual void	ReleaseManagedData() override;		// 05
+		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
+		virtual void	InitItem() override;				// 13
+
+		bool			IsValidRace(TESRace* a_sourceRace) const;
+		void			GetNodeName(char* a_dstBuff, TESObjectREFR* a_refr, TESObjectARMO* a_armor, float a_weightOverride);
 
 
 		// members
-		Data						data;						// 040
-		TESModelTextureSwap			maleWorldModel;				// 050
-		TESModelTextureSwap			femaleWorldModel;			// 088
-		TESModelTextureSwap			maleFirstPerson;			// 0C0
-		TESModelTextureSwap			femaleFirstPerson;			// 0F8
-		BGSTextureSet*				maleSkinTexture;			// 130 - NAM0
-		BGSTextureSet*				femaleSkinTexture;			// 138 - NAM1
-		BGSTextureSet*				maleSkinTextureSwapList;	// 140 - NAM2
-		BGSTextureSet*				femaleSkinTextureSwapList;	// 148 - NAM3
-		BSTArray<TESRace*>			additionalRaces;			// 150
-		BGSFootstepSet*				footstepSound;				// 168 - SNDD
-		BGSArtObject*				artObject;					// 170 - ONAM
+		Data				data;						// 040 - DNAM
+		TESModelTextureSwap	maleWorldModel;				// 050
+		TESModelTextureSwap	femaleWorldModel;			// 088
+		TESModelTextureSwap	maleFirstPerson;			// 0C0
+		TESModelTextureSwap	femaleFirstPerson;			// 0F8
+		BGSTextureSet*		maleSkinTexture;			// 130 - NAM0
+		BGSTextureSet*		femaleSkinTexture;			// 138 - NAM1
+		BGSTextureSet*		maleSkinTextureSwapList;	// 140 - NAM2
+		BGSTextureSet*		femaleSkinTextureSwapList;	// 148 - NAM3
+		BSTArray<TESRace*>	additionalRaces;			// 150 - MODL
+		BGSFootstepSet*		footstepSound;				// 168 - SNDD
+		BGSArtObject*		artObject;					// 170 - ONAM
 	};
 	STATIC_ASSERT(sizeof(TESObjectARMA) == 0x178);
 }

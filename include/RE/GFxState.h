@@ -70,10 +70,7 @@ namespace RE
 
 
 		// GetStateType obtains the StateType of this state. The state type of a given object never changes after construction
-		constexpr StateType GetStateType() const
-		{
-			return stateType;
-		}
+		constexpr StateType GetStateType() const { return stateType; }
 
 	protected:
 		StateType	stateType;	// 10

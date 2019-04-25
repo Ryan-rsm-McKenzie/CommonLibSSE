@@ -439,7 +439,7 @@ namespace RE
 		{
 			pointer *p = _head() + a_index;
 			while (a_num > 0) {
-				new(p)value_type(a_val);
+				new(p) value_type(a_val);
 				--a_num;
 			}
 		}
@@ -455,8 +455,8 @@ namespace RE
 			if (size > 0) {
 				functor_type pred(this);
 				_allocate(pred, size, sizeof(value_type));
-				pointer p = a_rhs->_head();
-				pointer last = a_rhs->_last();
+				pointer p = a_rhs._head();
+				pointer last = a_rhs._last();
 				while (p <= last)
 					push_back(*p++);
 			}
