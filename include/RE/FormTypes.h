@@ -106,6 +106,7 @@ namespace RE
 	class BGSLocation;
 	class BGSMessage;
 	class BGSRagdoll;
+	class BGSDefaultObjectManager;
 	class BGSLightingTemplate;
 	class BGSMusicType;
 	class BGSFootstep;
@@ -244,7 +245,7 @@ namespace RE
 		Location,					//	68 LCTN	BGSLocation
 		Message,					//	69 MESH	BGSMessage
 		Ragdoll,					//	6A RGDL	BGSRagdoll
-		DefaultObject,				//	6B DOBJ
+		DefaultObject,				//	6B DOBJ BGSDefaultObjectManager
 		LightingMaster,				//	6C LGTM	BGSLightingTemplate
 		MusicType,					//	6D MUSC	BGSMusicType
 		Footstep,					//	6E FSTP	BGSFootstep

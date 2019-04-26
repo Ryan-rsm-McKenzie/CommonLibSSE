@@ -32,7 +32,7 @@ namespace RE
 	void ActorProcessManager::UpdateEquipment_Hooked(Actor* a_actor)
 	{
 		using func_t = function_type_t<decltype(&ActorProcessManager::UpdateEquipment_Hooked)>;
-		func_t* func = function_cast<func_t*>(&::ActorProcessManager::UpdateEquipment_Hooked);
+		func_t* func = unrestricted_cast<func_t*>(&::ActorProcessManager::UpdateEquipment_Hooked);
 		return func(this, a_actor);
 	}
 

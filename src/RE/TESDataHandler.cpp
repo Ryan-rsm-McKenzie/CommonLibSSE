@@ -12,7 +12,7 @@ namespace RE
 	TESDataHandler* TESDataHandler::GetSingleton()
 	{
 		using func_t = function_type_t<decltype(&TESDataHandler::GetSingleton)>;
-		func_t* func = function_cast<func_t*>(&::DataHandler::GetSingleton);
+		func_t* func = unrestricted_cast<func_t*>(&::DataHandler::GetSingleton);
 		return func();
 	}
 

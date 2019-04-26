@@ -8,7 +8,7 @@ namespace RE
 	ExtraTextDisplayData* ExtraTextDisplayData::Create()
 	{
 		using func_t = function_type_t<decltype(&ExtraTextDisplayData::Create)>;
-		func_t* func = function_cast<func_t*>(&::ExtraTextDisplayData::Create);
+		func_t* func = unrestricted_cast<func_t*>(&::ExtraTextDisplayData::Create);
 		return func();
 	}
 

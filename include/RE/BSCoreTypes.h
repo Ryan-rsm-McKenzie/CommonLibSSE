@@ -3,6 +3,7 @@
 
 namespace RE
 {
+	using FormID = UInt32;
 	using RefHandle = UInt32;
 	using VMHandle = UInt64;
 

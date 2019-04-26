@@ -8,7 +8,7 @@ namespace RE
 	PlayerCamera* PlayerCamera::GetSingleton()
 	{
 		using func_t = function_type_t<decltype(&PlayerCamera::GetSingleton)>;
-		func_t* func = function_cast<func_t*>(&::PlayerCamera::GetSingleton);
+		func_t* func = unrestricted_cast<func_t*>(&::PlayerCamera::GetSingleton);
 		return func();
 	}
 

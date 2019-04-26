@@ -11,7 +11,7 @@ namespace RE
 	MenuControls* MenuControls::GetSingleton()
 	{
 		using func_t = function_type_t<decltype(&MenuControls::GetSingleton)>;
-		func_t* func = function_cast<func_t*>(&::MenuControls::GetSingleton);
+		func_t* func = unrestricted_cast<func_t*>(&::MenuControls::GetSingleton);
 		return func();
 	}
 

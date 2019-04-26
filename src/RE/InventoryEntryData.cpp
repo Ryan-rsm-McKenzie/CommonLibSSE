@@ -24,7 +24,7 @@ namespace RE
 	void InventoryEntryData::GetExtraWornBaseLists(BaseExtraList*& a_wornBaseListOut, BaseExtraList*& a_wornLeftBaseListOut)
 	{
 		using func_t = function_type_t<decltype(&InventoryEntryData::GetExtraWornBaseLists)>;
-		func_t* func = function_cast<func_t*>(&::InventoryEntryData::GetExtraWornBaseLists);
+		func_t* func = unrestricted_cast<func_t*>(&::InventoryEntryData::GetExtraWornBaseLists);
 		return func(this, a_wornBaseListOut, a_wornLeftBaseListOut);
 	}
 

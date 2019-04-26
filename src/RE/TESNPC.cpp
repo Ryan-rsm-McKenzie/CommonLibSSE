@@ -54,7 +54,7 @@ namespace RE
 	void TESNPC::SetFaceTexture(BGSTextureSet* a_textureSet)
 	{
 		using func_t = function_type_t<decltype(&TESNPC::SetFaceTexture)>;
-		func_t* func = function_cast<func_t*>(&::TESNPC::SetFaceTexture);
+		func_t* func = unrestricted_cast<func_t*>(&::TESNPC::SetFaceTexture);
 		return func(this, a_textureSet);
 	}
 
@@ -62,7 +62,7 @@ namespace RE
 	void TESNPC::SetHairColor(BGSColorForm* a_hairColor)
 	{
 		using func_t = function_type_t<decltype(&TESNPC::SetHairColor)>;
-		func_t* func = function_cast<func_t*>(&::TESNPC::SetHairColor);
+		func_t* func = unrestricted_cast<func_t*>(&::TESNPC::SetHairColor);
 		return func(this, a_hairColor);
 	}
 
@@ -70,7 +70,7 @@ namespace RE
 	BGSHeadPart* TESNPC::GetHeadPartByType(UInt32 a_type)
 	{
 		using func_t = function_type_t<decltype(&TESNPC::GetHeadPartByType)>;
-		func_t* func = function_cast<func_t*>(&::TESNPC::GetHeadPartByType);
+		func_t* func = unrestricted_cast<func_t*>(&::TESNPC::GetHeadPartByType);
 		return func(this, a_type);
 	}
 
@@ -78,7 +78,7 @@ namespace RE
 	BGSHeadPart* TESNPC::GetHeadPartOverlayByType(UInt32 a_type)
 	{
 		using func_t = function_type_t<decltype(&TESNPC::GetHeadPartOverlayByType)>;
-		func_t* func = function_cast<func_t*>(&::TESNPC::GetHeadPartOverlayByType);
+		func_t* func = unrestricted_cast<func_t*>(&::TESNPC::GetHeadPartOverlayByType);
 		return func(this, a_type);
 	}
 
@@ -86,7 +86,7 @@ namespace RE
 	BGSHeadPart* TESNPC::GetCurrentHeadPartByType(UInt32 a_type)
 	{
 		using func_t = function_type_t<decltype(&TESNPC::GetCurrentHeadPartByType)>;
-		func_t* func = function_cast<func_t*>(&::TESNPC::GetCurrentHeadPartByType);
+		func_t* func = unrestricted_cast<func_t*>(&::TESNPC::GetCurrentHeadPartByType);
 		return func(this, a_type);
 	}
 
@@ -94,7 +94,7 @@ namespace RE
 	TESNPC* TESNPC::GetRootTemplate()
 	{
 		using func_t = function_type_t<decltype(&TESNPC::GetRootTemplate)>;
-		func_t* func = function_cast<func_t*>(&::TESNPC::GetRootTemplate);
+		func_t* func = unrestricted_cast<func_t*>(&::TESNPC::GetRootTemplate);
 		return func(this);
 	}
 

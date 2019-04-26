@@ -10,7 +10,7 @@ namespace RE
 	MenuManager* MenuManager::GetSingleton()
 	{
 		using func_t = function_type_t<decltype(&MenuManager::GetSingleton)>;
-		func_t* func = function_cast<func_t*>(&::MenuManager::GetSingleton);
+		func_t* func = unrestricted_cast<func_t*>(&::MenuManager::GetSingleton);
 		return func();
 	}
 
@@ -18,7 +18,7 @@ namespace RE
 	bool MenuManager::IsMenuOpen(BSFixedString& a_menuName)
 	{
 		using func_t = function_type_t<decltype(&MenuManager::IsMenuOpen)>;
-		func_t* func = function_cast<func_t*>(&::MenuManager::IsMenuOpen);
+		func_t* func = unrestricted_cast<func_t*>(&::MenuManager::IsMenuOpen);
 		return func(this, a_menuName);
 	}
 
@@ -56,7 +56,7 @@ namespace RE
 	void MenuManager::Register(const char* a_name, CreatorFunc a_creator)
 	{
 		using func_t = function_type_t<decltype(&MenuManager::Register)>;
-		func_t* func = function_cast<func_t*>(&::MenuManager::Register);
+		func_t* func = unrestricted_cast<func_t*>(&::MenuManager::Register);
 		return func(this, a_name, a_creator);
 	}
 

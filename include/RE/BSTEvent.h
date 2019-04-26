@@ -26,7 +26,7 @@ namespace RE
 		void AddEventSink(SinkT* a_eventSink)
 		{
 			using func_t = function_type_t<decltype(&BSTEventSource::AddEventSink)>;
-			func_t* func = function_cast<func_t*>(&::EventDispatcher<EventT>::AddEventSink);
+			func_t* func = unrestricted_cast<func_t*>(&::EventDispatcher<EventT>::AddEventSink);
 			return func(this, a_eventSink);
 		}
 
@@ -34,7 +34,7 @@ namespace RE
 		void RemoveEventSink(SinkT* a_eventSink)
 		{
 			using func_t = function_type_t<decltype(&BSTEventSource::RemoveEventSink)>;
-			func_t* func = function_cast<func_t*>(&::EventDispatcher<EventT>::RemoveEventSink);
+			func_t* func = unrestricted_cast<func_t*>(&::EventDispatcher<EventT>::RemoveEventSink);
 			return func(this, a_eventSink);
 		}
 
@@ -42,7 +42,7 @@ namespace RE
 		void SendEvent(EventT* a_event)
 		{
 			using func_t = function_type_t<decltype(&BSTEventSource::SendEvent)>;
-			func_t* func = function_cast<func_t*>(&::EventDispatcher<EventT>::SendEvent);
+			func_t* func = unrestricted_cast<func_t*>(&::EventDispatcher<EventT>::SendEvent);
 			return func(this, a_event);
 		}
 
@@ -50,7 +50,7 @@ namespace RE
 		void operator()(EventT* a_event)
 		{
 			using func_t = function_type_t<decltype(&BSTEventSource::operator())>;
-			func_t* func = function_cast<func_t*>(&::EventDispatcher<EventT>::SendEvent);
+			func_t* func = unrestricted_cast<func_t*>(&::EventDispatcher<EventT>::SendEvent);
 			return func(this, a_event);
 		}
 

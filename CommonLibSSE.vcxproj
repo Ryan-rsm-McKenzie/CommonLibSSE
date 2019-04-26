@@ -178,10 +178,12 @@
     <ClCompile Include="src\RE\BaseExtraList.cpp" />
     <ClCompile Include="src\RE\BGSBaseAlias.cpp" />
     <ClCompile Include="src\RE\BGSBipedObjectForm.cpp" />
+    <ClCompile Include="src\RE\BGSDefaultObjectManager.cpp" />
     <ClCompile Include="src\RE\BGSEntryPointFunctionDataActivateChoice.cpp" />
     <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp" />
     <ClCompile Include="src\RE\BGSHeadPart.cpp" />
     <ClCompile Include="src\RE\BGSKeywordForm.cpp" />
+    <ClCompile Include="src\RE\BGSLocation.cpp" />
     <ClCompile Include="src\RE\BGSPerkEntry.cpp" />
     <ClCompile Include="src\RE\BSAudioManager.cpp" />
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
@@ -354,6 +356,7 @@
     <ClInclude Include="include\RE\BGSCameraShot.h" />
     <ClInclude Include="include\RE\BGSConstructibleObject.h" />
     <ClInclude Include="include\RE\BGSDebris.h" />
+    <ClInclude Include="include\RE\BGSDefaultObjectManager.h" />
     <ClInclude Include="include\RE\BGSDistantTreeBlock.h" />
     <ClInclude Include="include\RE\BGSEncounterZone.h" />
     <ClInclude Include="include\RE\BGSEntryPointFunctionDataOneValue.h" />
@@ -364,7 +367,9 @@
     <ClInclude Include="include\RE\BGSImpactData.h" />
     <ClInclude Include="include\RE\BGSImpactDataSet.h" />
     <ClInclude Include="include\RE\BGSListForm.h" />
+    <ClInclude Include="include\RE\BGSLocation.h" />
     <ClInclude Include="include\RE\BGSMaterialType.h" />
+    <ClInclude Include="include\RE\BGSMessage.h" />
     <ClInclude Include="include\RE\BGSMessageIcon.h" />
     <ClInclude Include="include\RE\BGSMovableStatic.h" />
     <ClInclude Include="include\RE\BGSNamedPackageData.h" />
@@ -378,6 +383,7 @@
     <ClInclude Include="include\RE\BGSProcedureTreeProcedure.h" />
     <ClInclude Include="include\RE\BGSProcedureTreeSequence.h" />
     <ClInclude Include="include\RE\BGSProjectile.h" />
+    <ClInclude Include="include\RE\BGSRagdoll.h" />
     <ClInclude Include="include\RE\BGSRefAlias.h" />
     <ClInclude Include="include\RE\BGSReferenceEffect.h" />
     <ClInclude Include="include\RE\BGSShaderParticleGeometryData.h" />

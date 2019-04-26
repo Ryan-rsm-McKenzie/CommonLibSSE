@@ -8,7 +8,7 @@ namespace RE
 	GFxLoader* GFxLoader::GetSingleton()
 	{
 		using func_t = function_type_t<decltype(&GFxLoader::GetSingleton)>;
-		func_t* func = function_cast<func_t*>(&::GFxLoader::GetSingleton);
+		func_t* func = unrestricted_cast<func_t*>(&::GFxLoader::GetSingleton);
 		return func();
 	}
 

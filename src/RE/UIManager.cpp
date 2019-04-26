@@ -11,7 +11,7 @@ namespace RE
 	UIManager* UIManager::GetSingleton()
 	{
 		using func_t = function_type_t<decltype(&UIManager::GetSingleton)>;
-		func_t* func = function_cast<func_t*>(&::UIManager::GetSingleton);
+		func_t* func = unrestricted_cast<func_t*>(&::UIManager::GetSingleton);
 		return func();
 	}
 
@@ -35,7 +35,7 @@ namespace RE
 	void UIManager::ProcessCommands()
 	{
 		using func_t = function_type_t<decltype(&UIManager::ProcessCommands)>;
-		func_t* func = function_cast<func_t*>(&::UIManager::ProcessCommands);
+		func_t* func = unrestricted_cast<func_t*>(&::UIManager::ProcessCommands);
 		return func(this);
 	}
 

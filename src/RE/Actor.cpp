@@ -33,7 +33,7 @@ namespace RE
 	void Actor::UpdateSkinColor()
 	{
 		using func_t = function_type_t<decltype(&Actor::UpdateSkinColor)>;
-		func_t* func = function_cast<func_t*>(&::Actor::UpdateSkinColor);
+		func_t* func = unrestricted_cast<func_t*>(&::Actor::UpdateSkinColor);
 		return func(this);
 	}
 
@@ -41,7 +41,7 @@ namespace RE
 	void Actor::UpdateHairColor()
 	{
 		using func_t = function_type_t<decltype(&Actor::UpdateHairColor)>;
-		func_t* func = function_cast<func_t*>(&::Actor::UpdateHairColor);
+		func_t* func = unrestricted_cast<func_t*>(&::Actor::UpdateHairColor);
 		return func(this);
 	}
 

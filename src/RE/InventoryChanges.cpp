@@ -15,7 +15,7 @@ namespace RE
 	InventoryEntryData* InventoryChanges::FindItemEntry(TESForm* a_item)
 	{
 		using func_t = function_type_t<decltype(&InventoryChanges::FindItemEntry)>;
-		func_t* func = function_cast<func_t*>(&::ExtraContainerChanges::Data::FindItemEntry);
+		func_t* func = unrestricted_cast<func_t*>(&::ExtraContainerChanges::Data::FindItemEntry);
 		return func(this, a_item);
 	}
 
@@ -23,7 +23,7 @@ namespace RE
 	InventoryEntryData* InventoryChanges::CreateEquipEntryData(TESForm* a_item)
 	{
 		using func_t = function_type_t<decltype(&InventoryChanges::CreateEquipEntryData)>;
-		func_t* func = function_cast<func_t*>(&::ExtraContainerChanges::Data::CreateEquipEntryData);
+		func_t* func = unrestricted_cast<func_t*>(&::ExtraContainerChanges::Data::CreateEquipEntryData);
 		return func(this, a_item);
 	}
 
@@ -31,7 +31,7 @@ namespace RE
 	void InventoryChanges::GetEquipItemData(::InventoryEntryData::EquipData& a_stateOut, TESForm* a_item, SInt32 a_itemID)
 	{
 		using func_t = function_type_t<decltype(&InventoryChanges::GetEquipItemData)>;
-		func_t* func = function_cast<func_t*>(&::ExtraContainerChanges::Data::GetEquipItemData);
+		func_t* func = unrestricted_cast<func_t*>(&::ExtraContainerChanges::Data::GetEquipItemData);
 		return func(this, a_stateOut, a_item, a_itemID);
 	}
 

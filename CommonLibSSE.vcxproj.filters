@@ -463,6 +463,9 @@
     <Filter Include="src\RE\Skyrim\Scaleform\BS">
       <UniqueIdentifier>{245be1f7-7bc3-4f18-8713-d3292bc9b489}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\Skyrim\TESForms\Gameplay">
+      <UniqueIdentifier>{b7288ada-661d-4773-a738-8217cd6bf3d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -932,6 +935,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\LoggingDisabler.cpp">
       <Filter>src\RE\Skyrim\Scaleform\BS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSLocation.cpp">
+      <Filter>src\RE\Skyrim\TESForms\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSDefaultObjectManager.cpp">
+      <Filter>src\RE\Skyrim\TESForms\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2884,6 +2893,18 @@
     </ClInclude>
     <ClInclude Include="include\RE\LoggingDisabler.h">
       <Filter>include\RE\Skyrim\Scaleform\BS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSLocation.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMessage.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSRagdoll.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSDefaultObjectManager.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

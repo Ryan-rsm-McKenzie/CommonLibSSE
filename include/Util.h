@@ -149,13 +149,13 @@ To skyrim_cast(From a_from)
 }
 
 
-template <class T, class U, class Enable = void>
-T unrestricted_cast(U a_from)
+template <class To, class From, class Enable = void>
+To unrestricted_cast(From a_from)
 {
 	union
 	{
-		U from;
-		T to;
+		From from;
+		To to;
 	};
 
 	from = a_from;
@@ -163,17 +163,10 @@ T unrestricted_cast(U a_from)
 }
 
 
-template <class T, class U, std::enable_if_t<std::is_same<T, U>::value>>
-T unrestricted_cast(U a_from)
+template <class To, class From, std::enable_if_t<std::is_same<To, From>::value>>
+To unrestricted_cast(From a_from)
 {
 	return a_from;
-}
-
-
-template <class T, class U>
-T function_cast(U a_func)
-{
-	return unrestricted_cast<T>(GetFnAddr(a_func));
 }
 
 

@@ -11,7 +11,7 @@ namespace RE
 	InputMappingManager* InputMappingManager::GetSingleton()
 	{
 		using func_t = function_type_t<decltype(&InputMappingManager::GetSingleton)>;
-		func_t* func = function_cast<func_t*>(&::InputManager::GetSingleton);
+		func_t* func = unrestricted_cast<func_t*>(&::InputManager::GetSingleton);
 		return func();
 	}
 
@@ -19,7 +19,7 @@ namespace RE
 	UInt8 InputMappingManager::AllowTextInput(bool a_allow)
 	{
 		using func_t = function_type_t<decltype(&InputMappingManager::AllowTextInput)>;
-		func_t* func = function_cast<func_t*>(&::InputManager::AllowTextInput);
+		func_t* func = unrestricted_cast<func_t*>(&::InputManager::AllowTextInput);
 		return func(this, a_allow);
 	}
 

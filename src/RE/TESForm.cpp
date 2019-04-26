@@ -31,7 +31,7 @@ namespace RE
 	void TESForm::CopyFromEx(TESForm* a_rhs)
 	{
 		using func_t = function_type_t<decltype(&TESForm::CopyFromEx)>;
-		func_t* func = function_cast<func_t*>(&::TESForm::CopyFromEx);
+		func_t* func = unrestricted_cast<func_t*>(&::TESForm::CopyFromEx);
 		return func(this, a_rhs);
 	}
 
@@ -105,7 +105,7 @@ namespace RE
 	float TESForm::GetWeight() const
 	{
 		using func_t = function_type_t<decltype(&TESForm::GetWeight)>;
-		func_t* func = function_cast<func_t*>(&::GetFormWeight);
+		func_t* func = unrestricted_cast<func_t*>(&::GetFormWeight);
 		const TESObjectREFR* ref = const_cast<TESForm*>(this)->GetReference();
 		return func(ref ? ref->baseForm : this);
 	}

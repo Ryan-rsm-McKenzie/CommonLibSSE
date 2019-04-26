@@ -13,7 +13,7 @@ namespace RE
 	InputManager* InputManager::GetSingleton()
 	{
 		using func_t = function_type_t<decltype(&InputManager::GetSingleton)>;
-		func_t* func = function_cast<func_t*>(&::InputEventDispatcher::GetSingleton);
+		func_t* func = unrestricted_cast<func_t*>(&::InputEventDispatcher::GetSingleton);
 		return func();
 	}
 
