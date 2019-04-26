@@ -187,6 +187,7 @@
     <ClCompile Include="src\RE\BGSPerkEntry.cpp" />
     <ClCompile Include="src\RE\BSAudioManager.cpp" />
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
+    <ClCompile Include="src\RE\BSIMusicType.cpp" />
     <ClCompile Include="src\RE\BSReadWriteLock.cpp" />
     <ClCompile Include="src\RE\BSResourceNiBinaryStream.cpp" />
     <ClCompile Include="src\RE\BSScriptArray.cpp" />
@@ -361,17 +362,21 @@
     <ClInclude Include="include\RE\BGSEncounterZone.h" />
     <ClInclude Include="include\RE\BGSEntryPointFunctionDataOneValue.h" />
     <ClInclude Include="include\RE\BGSExplosion.h" />
+    <ClInclude Include="include\RE\BGSFootstep.h" />
+    <ClInclude Include="include\RE\BGSFootstepSet.h" />
     <ClInclude Include="include\RE\BGSHazard.h" />
     <ClInclude Include="include\RE\BGSIdleCollection.h" />
     <ClInclude Include="include\RE\BGSIdleMarker.h" />
     <ClInclude Include="include\RE\BGSImpactData.h" />
     <ClInclude Include="include\RE\BGSImpactDataSet.h" />
+    <ClInclude Include="include\RE\BGSLightingTemplate.h" />
     <ClInclude Include="include\RE\BGSListForm.h" />
     <ClInclude Include="include\RE\BGSLocation.h" />
     <ClInclude Include="include\RE\BGSMaterialType.h" />
     <ClInclude Include="include\RE\BGSMessage.h" />
     <ClInclude Include="include\RE\BGSMessageIcon.h" />
     <ClInclude Include="include\RE\BGSMovableStatic.h" />
+    <ClInclude Include="include\RE\BGSMusicType.h" />
     <ClInclude Include="include\RE\BGSNamedPackageData.h" />
     <ClInclude Include="include\RE\BGSNote.h" />
     <ClInclude Include="include\RE\BGSOverridePackCollection.h" />
@@ -471,6 +476,7 @@
     <ClInclude Include="include\RE\BShkbAnimationGraph.h" />
     <ClInclude Include="include\RE\BSImagespaceShader.h" />
     <ClInclude Include="include\RE\BSImagespaceShaderBlur3.h" />
+    <ClInclude Include="include\RE\BSIMusicType.h" />
     <ClInclude Include="include\RE\BSIntrusiveRefCounted.h" />
     <ClInclude Include="include\RE\BSIRagdollDriver.h" />
     <ClInclude Include="include\RE\BSISoundCategory.h" />

@@ -20,11 +20,11 @@ namespace RE
 		STATIC_ASSERT(sizeof(BSIPlaybackCharacteristics) == 0x8);
 
 
-		virtual ~BSISoundDescriptor();	// 00
+		virtual ~BSISoundDescriptor();		// 00
 
 		// add
-		virtual void	Unk_01(void);	// 01 - pure
-		virtual void	Unk_02(void);	// 02 - pure
+		virtual void	Unk_01(void) = 0;	// 01
+		virtual void	Unk_02(void) = 0;	// 02
 	};
 	STATIC_ASSERT(sizeof(BSISoundDescriptor) == 0x8);
 }

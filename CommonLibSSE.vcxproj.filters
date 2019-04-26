@@ -942,6 +942,9 @@
     <ClCompile Include="src\RE\BGSDefaultObjectManager.cpp">
       <Filter>src\RE\Skyrim\TESForms\Gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BSIMusicType.cpp">
+      <Filter>src\RE\Skyrim\BSAudio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -2904,6 +2907,21 @@
       <Filter>include\RE\Skyrim\TESForms\Character</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSDefaultObjectManager.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSLightingTemplate.h">
+      <Filter>include\RE\Skyrim\TESForms\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMusicType.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSIMusicType.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSFootstep.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSFootstepSet.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>

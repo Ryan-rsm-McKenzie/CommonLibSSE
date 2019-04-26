@@ -18,15 +18,16 @@ namespace RE
 		enum { kTypeID = FormType::SoundRecord };
 
 
-		virtual ~BGSSoundDescriptorForm();			// 00
+		virtual ~BGSSoundDescriptorForm();							// 00
 
 		// override (TESForm)
-		virtual bool	LoadForm(TESFile* a_mod);	// 06
-		virtual void	InitItem();					// 13
-		virtual bool	SetName(const char* a_str);	// 33
+		virtual void	ReleaseManagedData() override;				// 05
+		virtual bool	LoadForm(TESFile* a_mod) override;			// 06
+		virtual void	InitItem() override;						// 13
+		virtual bool	SetEditorID(const char* a_str) override;	// 33
 
 		// add
-		virtual void	Unk_3B(void);				// 3B - calls some virtual function on standardSoundDef
+		virtual void	Unk_3B(void);								// 3B - { return standardSoundDef->Unk_05(); }
 
 
 		// members
