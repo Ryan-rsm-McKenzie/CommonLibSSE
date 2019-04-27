@@ -9,6 +9,7 @@
 #include "RE/BGSTextureModel.h"  // BGSTextureModel
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTArray.h"  // BSTArray
+#include "RE/FileHash.h"  // FileHash
 #include "RE/FormTypes.h"  // FormType, BGSVoiceType, BGSSoundDescriptorForm, BGSColorForm
 #include "RE/TESDescription.h"  // TESDescription
 #include "RE/TESForm.h"  // TESForm
@@ -334,11 +335,11 @@ namespace RE
 
 		struct UnkData
 		{
-			TESModel::FileHash**	unkHashes;			// 00
-			UInt32					Unk1_NumUnkHashes;	// 08
-			UInt32					Unk1_Unk0C;			// 0C - TESModel::unk24
-			UInt32					Unk2_NumUnkHashes;	// 10
-			UInt32					Unk2_Unk14;			// 14 - TESModel::unk24
+			FileHash**	unkHashes;			// 00
+			UInt32		Unk1_NumUnkHashes;	// 08
+			UInt32		Unk1_Unk0C;			// 0C - TESModel::unk24
+			UInt32		Unk2_NumUnkHashes;	// 10
+			UInt32		Unk2_Unk14;			// 14 - TESModel::unk24
 		};
 		STATIC_ASSERT(sizeof(UnkData) == 0x18);
 

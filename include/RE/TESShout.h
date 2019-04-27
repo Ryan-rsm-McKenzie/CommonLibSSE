@@ -21,14 +21,25 @@ namespace RE
 		enum { kTypeID = FormType::Shout };
 
 
-		struct SNAM	// SNAM
+		struct RecordFlags
+		{
+			enum RecordFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kTreatSpellsAsPowers = 1 << 7,
+				kIgnored = 1 << 12
+			};
+		};
+
+
+		struct WordOfPower	// SNAM
 		{
 			TESWordOfPower*	word;			// 00
 			SpellItem*		spell;			// 08
 			float			recoveryTime;	// 10
 			UInt32			pad14;			// 14
 		};
-		STATIC_ASSERT(sizeof(SNAM) == 0x18);
+		STATIC_ASSERT(sizeof(WordOfPower) == 0x18);
 
 
 		struct Levels
@@ -38,6 +49,7 @@ namespace RE
 				kLevel1,
 				kLevel2,
 				kLevel3,
+
 				kTotal
 			};
 		};
@@ -52,7 +64,7 @@ namespace RE
 
 
 		// members
-		SNAM wordsOfPower[Levels::kTotal];	// 60
+		WordOfPower wordsOfPower[Levels::kTotal];	// 60 - SNAM
 	};
 	STATIC_ASSERT(sizeof(TESShout) == 0xA8);
 }

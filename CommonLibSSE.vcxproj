@@ -376,6 +376,11 @@
     <ClInclude Include="include\RE\BGSMessage.h" />
     <ClInclude Include="include\RE\BGSMessageIcon.h" />
     <ClInclude Include="include\RE\BGSMovableStatic.h" />
+    <ClInclude Include="include\RE\BGSMusicPaletteTrack.h" />
+    <ClInclude Include="include\RE\BGSMusicSilenceTrack.h" />
+    <ClInclude Include="include\RE\BGSMusicSingleTrack.h" />
+    <ClInclude Include="include\RE\BGSMusicTrack.h" />
+    <ClInclude Include="include\RE\BGSMusicTrackFormWrapper.h" />
     <ClInclude Include="include\RE\BGSMusicType.h" />
     <ClInclude Include="include\RE\BGSNamedPackageData.h" />
     <ClInclude Include="include\RE\BGSNote.h" />
@@ -391,6 +396,12 @@
     <ClInclude Include="include\RE\BGSRagdoll.h" />
     <ClInclude Include="include\RE\BGSRefAlias.h" />
     <ClInclude Include="include\RE\BGSReferenceEffect.h" />
+    <ClInclude Include="include\RE\BGSRelationship.h" />
+    <ClInclude Include="include\RE\BGSScene.h" />
+    <ClInclude Include="include\RE\BGSSceneAction.h" />
+    <ClInclude Include="include\RE\BGSSceneActionDialogue.h" />
+    <ClInclude Include="include\RE\BGSSceneActionPackage.h" />
+    <ClInclude Include="include\RE\BGSSceneActionTimer.h" />
     <ClInclude Include="include\RE\BGSShaderParticleGeometryData.h" />
     <ClInclude Include="include\Logging.h" />
     <ClInclude Include="include\RE\ActivateHandler.h" />
@@ -434,6 +445,10 @@
     <ClInclude Include="include\RE\BGSSoundDescriptorForm.h" />
     <ClInclude Include="include\RE\BGSStandardSoundDef.h" />
     <ClInclude Include="include\RE\BGSStaticCollection.h" />
+    <ClInclude Include="include\RE\BGSStoryManagerBranchNode.h" />
+    <ClInclude Include="include\RE\BGSStoryManagerEventNode.h" />
+    <ClInclude Include="include\RE\BGSStoryManagerNodeBase.h" />
+    <ClInclude Include="include\RE\BGSStoryManagerQuestNode.h" />
     <ClInclude Include="include\RE\BGSStoryManagerTreeForm.h" />
     <ClInclude Include="include\RE\BGSTalkingActivator.h" />
     <ClInclude Include="include\RE\BGSTextureModel.h" />
@@ -476,6 +491,7 @@
     <ClInclude Include="include\RE\BShkbAnimationGraph.h" />
     <ClInclude Include="include\RE\BSImagespaceShader.h" />
     <ClInclude Include="include\RE\BSImagespaceShaderBlur3.h" />
+    <ClInclude Include="include\RE\BSIMusicTrack.h" />
     <ClInclude Include="include\RE\BSIMusicType.h" />
     <ClInclude Include="include\RE\BSIntrusiveRefCounted.h" />
     <ClInclude Include="include\RE\BSIRagdollDriver.h" />
@@ -580,6 +596,7 @@
     <ClInclude Include="include\RE\ExtraTextDisplayData.h" />
     <ClInclude Include="include\RE\ExtraUniqueID.h" />
     <ClInclude Include="include\RE\FavoritesHandler.h" />
+    <ClInclude Include="include\RE\FileHash.h" />
     <ClInclude Include="include\RE\FlameProjectile.h" />
     <ClInclude Include="include\RE\FormTypes.h" />
     <ClInclude Include="include\RE\FunctionArguments.h" />
@@ -966,6 +983,7 @@
     <ClInclude Include="include\RE\TESWaterForm.h" />
     <ClInclude Include="include\RE\TESWeather.h" />
     <ClInclude Include="include\RE\TESWeightForm.h" />
+    <ClInclude Include="include\RE\TESWordOfPower.h" />
     <ClInclude Include="include\RE\TESWorldSpace.h" />
     <ClInclude Include="include\RE\ThumbstickEvent.h" />
     <ClInclude Include="include\RE\TogglePOVHandler.h" />

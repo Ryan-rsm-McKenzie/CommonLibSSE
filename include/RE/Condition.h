@@ -503,6 +503,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(Node) == 0x38);
 
 
+		explicit operator bool() const;
 		bool Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);	// Perk fragments will short circuit
 
 

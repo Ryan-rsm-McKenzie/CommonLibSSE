@@ -11,9 +11,9 @@ namespace RE
 
 
 	class BGSMoviePlayer :
-		public MoviePlayer,						// 00
-		public BSTEventSink<InputEvent*>,		// 58
-		public BSTEventSource<BSMusicEvent>		// 60
+		public MoviePlayer,					// 00
+		public BSTEventSink<InputEvent*>,	// 58
+		public BSTEventSource<BSMusicEvent>	// 60
 	{
 	public:
 		virtual ~BGSMoviePlayer();	// 00

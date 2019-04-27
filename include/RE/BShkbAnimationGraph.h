@@ -6,8 +6,8 @@
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTEvent.h"  // BSTEventSource
 #include "RE/BSTSmartPointer.h"  // BSSmartPointer
+#include "RE/FileHash.h"  // FileHash
 #include "RE/hkbCharacter.h"  // hkbCharacter
-#include "RE/TESModel.h"  // TESModel::FileHash
 
 
 namespace RE
@@ -64,7 +64,7 @@ namespace RE
 		UInt64							unk1E0;			// 1E0
 		UInt64							unk1E8;			// 1E8
 		BSFixedString					unk1F0;			// 1F0
-		TESModel::FileHash*				unk1F8;			// 1F8
+		FileHash*						unk1F8;			// 1F8
 		void*							unk200;			// 200 - BShkbHkxDB::ProjectDBData*
 		hkbBehaviorGraph*				behaviourGraph;	// 208
 		UInt64							unk210;			// 210

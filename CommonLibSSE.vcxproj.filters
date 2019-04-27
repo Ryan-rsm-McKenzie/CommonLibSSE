@@ -466,6 +466,18 @@
     <Filter Include="src\RE\Skyrim\TESForms\Gameplay">
       <UniqueIdentifier>{b7288ada-661d-4773-a738-8217cd6bf3d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\BSAudio\BSIMusicTrack">
+      <UniqueIdentifier>{361fd138-c532-4dc3-8a8c-c026a38cf474}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSAudio\IXAudio2VoiceCallback">
+      <UniqueIdentifier>{1f5fd8e5-14fd-434c-88a6-20e6b98c777f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSAudio\BSISoundDescriptor">
+      <UniqueIdentifier>{128dfde5-9078-4b86-a908-0a7cf8e7a77f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\Character\BGSSceneAction">
+      <UniqueIdentifier>{18c535a4-8388-499f-b369-c711b3a50d3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -1286,12 +1298,6 @@
     <ClInclude Include="include\RE\BGSDialogueBranch.h">
       <Filter>include\RE\Skyrim\TESForms\Character</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSISoundDescriptor.h">
-      <Filter>include\RE\Skyrim\BSAudio</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSSoundDescriptor.h">
-      <Filter>include\RE\Skyrim\BSAudio</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESSound.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
     </ClInclude>
@@ -1306,15 +1312,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSHandleRefObject.h">
       <Filter>include\RE\Skyrim\BSMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IXAudio2VoiceCallback.h">
-      <Filter>include\RE\Skyrim\BSAudio</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSGameSound.h">
-      <Filter>include\RE\Skyrim\BSAudio</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSXAudio2GameSound.h">
-      <Filter>include\RE\Skyrim\BSAudio</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSThread.h">
       <Filter>include\RE\Skyrim\BSMain</Filter>
@@ -2915,14 +2912,83 @@
     <ClInclude Include="include\RE\BGSMusicType.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSIMusicType.h">
-      <Filter>include\RE\Skyrim\BSAudio</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BGSFootstep.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSFootstepSet.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStoryManagerNodeBase.h">
+      <Filter>include\RE\Skyrim\RadiantStory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStoryManagerBranchNode.h">
+      <Filter>include\RE\Skyrim\RadiantStory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStoryManagerQuestNode.h">
+      <Filter>include\RE\Skyrim\RadiantStory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStoryManagerEventNode.h">
+      <Filter>include\RE\Skyrim\RadiantStory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMusicTrackFormWrapper.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FileHash.h">
+      <Filter>include\RE\Skyrim\FormComponents\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSIMusicType.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSIMusicTrack.h">
+      <Filter>include\RE\Skyrim\BSAudio\BSIMusicTrack</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMusicTrack.h">
+      <Filter>include\RE\Skyrim\BSAudio\BSIMusicTrack</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMusicPaletteTrack.h">
+      <Filter>include\RE\Skyrim\BSAudio\BSIMusicTrack</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMusicSilenceTrack.h">
+      <Filter>include\RE\Skyrim\BSAudio\BSIMusicTrack</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMusicSingleTrack.h">
+      <Filter>include\RE\Skyrim\BSAudio\BSIMusicTrack</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IXAudio2VoiceCallback.h">
+      <Filter>include\RE\Skyrim\BSAudio\IXAudio2VoiceCallback</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSGameSound.h">
+      <Filter>include\RE\Skyrim\BSAudio\IXAudio2VoiceCallback</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSXAudio2GameSound.h">
+      <Filter>include\RE\Skyrim\BSAudio\IXAudio2VoiceCallback</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSISoundDescriptor.h">
+      <Filter>include\RE\Skyrim\BSAudio\BSISoundDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSoundDescriptor.h">
+      <Filter>include\RE\Skyrim\BSAudio\BSISoundDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESWordOfPower.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSRelationship.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSScene.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSceneAction.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\BGSSceneAction</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSceneActionDialogue.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\BGSSceneAction</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSceneActionPackage.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\BGSSceneAction</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSceneActionTimer.h">
+      <Filter>include\RE\Skyrim\TESForms\Character\BGSSceneAction</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

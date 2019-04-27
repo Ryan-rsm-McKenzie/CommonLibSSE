@@ -27,7 +27,9 @@ namespace RE
 		{
 			enum RecordFlag : UInt32
 			{
-				kInitialized = 1 << 3
+				kIsPlayable = 1 << 2,
+				kInitialized = 1 << 3,
+				kPlayerKnows = 1 << 10
 			};
 		};
 
@@ -82,7 +84,7 @@ namespace RE
 		virtual void			SetFlag00000020(bool a_set);																								// 23 - { bool result = (flags >> 5) & 1; if (result != a_set) { if (a_set) flags |= 0x20; else flags &= 0xFFFFFFDF; MarkChanged(1); return result; }
 		virtual void			SetFlag00000002(bool a_set);																								// 24
 		virtual void			Unk_25(void);																												// 25 - { return; }
-		virtual void			Unk_26(void);																												// 26 - { return; } - "void LoadBounds(TESFile* a_mod)"?
+		virtual void			LoadBounds(TESFile* a_mod);																									// 26 - { return; }
 		virtual bool			Has3D();																													// 27 - { return false; }
 		virtual void			Unk_28(void);																												// 28 - { return 0; }
 		virtual bool			IsMagicItem() const;																										// 29 - { return false; }

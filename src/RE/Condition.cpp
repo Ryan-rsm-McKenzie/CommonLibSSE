@@ -14,6 +14,12 @@ namespace RE
 	}
 
 
+	Condition::operator bool() const
+	{
+		return head != 0;
+	}
+
+
 	bool Condition::Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target)
 	{
 		using func_t = function_type_t<decltype(&Condition::Run)>;

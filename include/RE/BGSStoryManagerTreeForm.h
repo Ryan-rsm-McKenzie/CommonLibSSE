@@ -15,10 +15,10 @@ namespace RE
 		virtual ~BGSStoryManagerTreeForm();	// 00
 
 		// add
-		virtual void		Unk_3B(void);			// 3B - { return 0; }
-		virtual void		Unk_3C(void);			// 3C - { return 0; }
-		virtual Condition*	GetConditions() = 0;	// 3D
-		virtual void		Unk_3E(void) = 0;		// 3E
+		virtual UInt32						GetNumChildren() const;		// 3B - { return 0; }
+		virtual BGSStoryManagerEventNode*	GetNthChild(UInt32 a_idx);	// 3C - { return 0; }
+		virtual Condition*					GetConditions() = 0;		// 3D
+		virtual void						Unk_3E(void) = 0;			// 3E
 
 
 		// members

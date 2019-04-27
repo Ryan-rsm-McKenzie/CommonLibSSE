@@ -40,15 +40,25 @@ namespace RE
 				virtual ~VirtualMachine();
 
 				// override (IVirtualMachine)
+				virtual void							Unk_01(void) override;																																														// 01
 				virtual void							TraceStack(const char* a_str, UInt32 a_stackID, Severity a_severity = Severity::kInfo) override;																											// 02
+				virtual void							Unk_03(void) override;																																														// 03
 				virtual void							OnUpdate(float a_arg1) override;																																											// 04
 				virtual void							OnUpdateGameTime(float a_arg1) override;																																									// 05
+				virtual void							Unk_06(void) override;																																														// 06
 				virtual bool							OnChangeVMState() override;																																													// 07
-				virtual void							RegisterForm(UInt32 a_typeID, const char* a_papyrusClassName) override;																																		// 08
+				virtual void							RegisterForm(FormID a_typeID, const char* a_papyrusClassName) override;																																		// 08
 				virtual bool							GetScriptClassByName(const BSFixedString& a_className, BSTSmartPointer<BSScriptClass>& a_outClassPtr) override;																								// 09
 				virtual bool							GetScriptClassByTypeID(UInt32 a_typeID, BSTSmartPointer<BSScriptClass>& a_outClass) override;																												// 0A
 				virtual bool							RegisterScriptClass(const BSFixedString& a_className, BSTSmartPointer<BSScriptClass>& a_classPtr) override;																									// 0B
+				virtual void							Unk_0C(void) override;																																														// 0C
 				virtual bool							GetFormTypeID(const BSFixedString& a_className, UInt32& a_typeID) override;																																	// 0D
+				virtual void							Unk_0E(void) override;																																														// 0E
+				virtual void							Unk_0F(void) override;																																														// 0F
+				virtual void							Unk_10(void) override;																																														// 10
+				virtual void							Unk_11(void) override;																																														// 11
+				virtual void							Unk_12(void) override;																																														// 12
+				virtual void							Unk_13(void) override;																																														// 13
 				virtual bool							CreateScriptObjectWithProperty(const BSFixedString& a_className, void* a_property, BSTSmartPointer<BSScriptObject>& a_objPtr) override;																		// 14
 				virtual bool							CreateScriptObject(const BSFixedString& a_className, BSTSmartPointer<BSScriptObject>& a_result) override;																									// 15
 				virtual bool							CreateScriptArray(const BSScriptType& a_typeID, UInt32 a_size, BSTSmartPointer<BSScriptArray>& a_arrayPtr) override;																						// 16
@@ -58,6 +68,8 @@ namespace RE
 				virtual void							SetFunctionFlags(const char* a_className, const char* a_fnName, FunctionFlag a_flags) override;																												// 1A - { SetFunctionFlagsEx(a_className, 0, a_fnName, a_flags); }
 				virtual void							VisitScripts(VMHandle a_handle, IForEachScriptObjectFunctor* a_functor) override;																															// 1B
 				virtual bool							ResolveScriptObject(VMHandle a_handle, const char* a_className, BSTSmartPointer<BSScriptObject>& a_result) override;																						// 1C
+				virtual void							Unk_1D(void) override;																																														// 1D
+				virtual void							Unk_1E(void) override;																																														// 1E
 				virtual bool							CastScriptObject(const BSTSmartPointer<BSScriptObject>& a_fromObjPtr, const BSTSmartPointer<BSScriptClass>& a_toClassPtr, BSTSmartPointer<BSScriptObject>& a_toObjPtr) override;							// 1F
 				virtual bool							SetObjectProperty(BSTSmartPointer<BSScriptObject>& a_obj, const char* a_propertyName, BSScriptVariable& a_setVal) override;																					// 20
 				virtual bool							GetObjectProperty(BSTSmartPointer<BSScriptObject>& a_obj, const char* a_propertyName, BSScriptVariable& a_getVal) override;																					// 21
@@ -68,6 +80,7 @@ namespace RE
 				virtual bool							CallStaticFunction(const BSFixedString& a_className, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) override;									// 26
 				virtual bool							CallMemberFunction(BSTSmartPointer<BSScriptObject>& a_obj, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) override;							// 27
 				virtual bool							CallMemberFunctionFromHandle(VMHandle a_handle, const BSFixedString& a_className, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) override;	// 28
+				virtual void							Unk_29(void) override;																																														// 29
 				virtual bool							IsWaitingStack(UInt32 a_stackID) override;																																									// 2A
 				virtual void							SetLatentReturn(UInt32 a_stackID, const BSScriptVariable& a_val) override;																																	// 2B
 				virtual ErrorLogger*					GetLogger() override;																																														// 2C

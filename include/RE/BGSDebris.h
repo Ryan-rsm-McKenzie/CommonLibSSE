@@ -3,9 +3,9 @@
 #include "RE/BGSPreloadable.h"  // BGSPreloadable
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTList.h"  // BSSimpleList
+#include "RE/FileHash.h"  // FileHash
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
-#include "RE/TESModel.h"  // TESModel::FileHash
 
 
 namespace RE
@@ -47,9 +47,9 @@ namespace RE
 			STATIC_ASSERT(sizeof(Data) == 0x8);
 
 
-			Data							data;				// 00 - DATA
-			const char*						modelFileName;		// 10
-			BSTArray<TESModel::FileHash*>	textureFileHashes;	// 18 - MODT
+			Data				data;				// 00 - DATA
+			const char*			modelFileName;		// 10
+			BSTArray<FileHash*>	textureFileHashes;	// 18 - MODT
 		};
 		STATIC_ASSERT(sizeof(Model) == 0x28);
 

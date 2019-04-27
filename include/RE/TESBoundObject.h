@@ -27,7 +27,7 @@ namespace RE
 		virtual ~TESBoundObject();																																	// 00
 
 		// override (TESForm)
-		virtual void			Unk_26(void) override;																												// 26 - loads bounds
+		virtual void			LoadBounds(TESFile* a_mod) override;																								// 26
 		virtual bool			Has3D() override;																													// 27 - { return true; }
 		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
 		virtual void			Unk_44(void) override;																												// 44

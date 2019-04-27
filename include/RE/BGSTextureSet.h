@@ -4,7 +4,6 @@
 #include "RE/Color.h"  // Color
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESBoundObject.h"  // TESBoundObject
-#include "RE/TESModel.h"  // TESModel
 #include "RE/TESTexture.h"  // TESTexture
 
 
@@ -63,9 +62,6 @@ namespace RE
 			UInt32	pad24;			// 24
 		};
 		STATIC_ASSERT(sizeof(DecalData) == 0x28);
-
-
-		using FileHash = TESModel::FileHash;
 
 
 		virtual ~BGSTextureSet();							// 00
