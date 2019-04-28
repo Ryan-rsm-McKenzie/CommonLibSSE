@@ -10,6 +10,7 @@ namespace RE
 	public:
 		enum { kExtraTypeID = ExtraDataType::kHotkey };
 
+
 		enum class Hotkey : UInt8
 		{
 			kUnbound = static_cast<std::underlying_type_t<Hotkey>>(-1),
@@ -24,6 +25,8 @@ namespace RE
 		};
 
 
+		ExtraHotkey();
+		ExtraHotkey(Hotkey a_hotkey);
 		virtual ~ExtraHotkey();															// 00
 
 		// override (BSExtraData)

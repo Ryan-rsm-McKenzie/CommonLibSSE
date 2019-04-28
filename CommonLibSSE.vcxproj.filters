@@ -478,6 +478,9 @@
     <Filter Include="include\RE\Skyrim\TESForms\Gameplay\Components">
       <UniqueIdentifier>{1ef0afbd-0b93-4a04-991a-ccc80ffb4c9b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\ExtraData\Enums">
+      <UniqueIdentifier>{f7fd847d-098e-44b0-9d61-4adeca2dceac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -957,6 +960,27 @@
     <ClCompile Include="src\RE\BSIMusicType.cpp">
       <Filter>src\RE\Skyrim\BSAudio</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\ExtraHealth.cpp">
+      <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraCount.cpp">
+      <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraOwnership.cpp">
+      <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraAliasInstanceArray.cpp">
+      <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraHotkey.cpp">
+      <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraEnchantment.cpp">
+      <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraUniqueID.cpp">
+      <Filter>src\RE\Skyrim\ExtraData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -1209,9 +1233,6 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSExtraData.h">
-      <Filter>include\RE\Skyrim\ExtraData</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ExtraDataTypes.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraTextDisplayData.h">
@@ -3040,6 +3061,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSVolumetricLightingRenderData.h">
       <Filter>include\RE\Skyrim\TESForms\Gameplay\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraDataTypes.h">
+      <Filter>include\RE\Skyrim\ExtraData\Enums</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

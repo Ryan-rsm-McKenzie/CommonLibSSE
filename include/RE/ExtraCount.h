@@ -11,6 +11,8 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kCount };
 
 
+		ExtraCount();
+		ExtraCount(SInt32 a_count);
 		virtual ~ExtraCount();															// 00
 
 		// override (BSExtraData)

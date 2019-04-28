@@ -12,6 +12,8 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kHealth };
 
 
+		ExtraHealth();
+		ExtraHealth(float a_health);
 		virtual ~ExtraHealth();															// 00
 
 		// override (BSExtraData)
@@ -21,7 +23,7 @@ namespace RE
 
 		// members
 		float	health;	// 10
-		float	unk14;	// 14
+		UInt32	pad14;	// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraHealth) == 0x18);
 }

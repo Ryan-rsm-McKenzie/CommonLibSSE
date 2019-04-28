@@ -1,23 +1,69 @@
 #include "RE/ExtraTextDisplayData.h"
 
-#include "skse64/GameExtraData.h"  // ExtraTextDisplayData
+#include "skse64/GameExtraData.h"  // ExtraTextDisplayData, s_ExtraTextDisplayVtbl
 
 
 namespace RE
 {
-	ExtraTextDisplayData* ExtraTextDisplayData::Create()
+	ExtraTextDisplayData::ExtraTextDisplayData() :
+		name(""),
+		message(0),
+		owner(0),
+		type(Type::kDefault),
+		temperFactor(1.0),
+		rawNameLen(0),
+		pad32(0),
+		pad34(0)
 	{
-		using func_t = function_type_t<decltype(&ExtraTextDisplayData::Create)>;
-		func_t* func = unrestricted_cast<func_t*>(&::ExtraTextDisplayData::Create);
-		return func();
+		((std::uintptr_t*)this)[0] = s_ExtraTextDisplayVtbl.GetUIntPtr();
 	}
 
 
-	const char* ExtraTextDisplayData::GenerateName(TESForm* a_form, float a_extraHealthValue)
+	ExtraTextDisplayData::ExtraTextDisplayData(const char* a_name) :
+		name(""),
+		message(0),
+		owner(0),
+		type(Type::kDefault),
+		temperFactor(1.0),
+		rawNameLen(0),
+		pad32(0),
+		pad34(0)
+	{
+		((std::uintptr_t*)this)[0] = s_ExtraTextDisplayVtbl.GetUIntPtr();
+		SetName(a_name);
+	}
+
+
+	ExtraTextDisplayData::ExtraTextDisplayData(TESForm* a_form, float a_temperFactor) :
+		name(""),
+		message(0),
+		owner(0),
+		type(Type::kDefault),
+		temperFactor(1.0),
+		rawNameLen(0),
+		pad32(0),
+		pad34(0)
+	{
+		((std::uintptr_t*)this)[0] = s_ExtraTextDisplayVtbl.GetUIntPtr();
+		GenerateName(a_form, a_temperFactor);
+	}
+
+
+	ExtraTextDisplayData::~ExtraTextDisplayData()
+	{}
+
+
+	ExtraDataType ExtraTextDisplayData::GetType() const
+	{
+		return ExtraDataType::kTextDisplayData;
+	}
+
+
+	const char* ExtraTextDisplayData::GenerateName(TESForm* a_form, float a_temperFactor)
 	{
 		using func_t = function_type_t<decltype(&ExtraTextDisplayData::GenerateName)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::ExtraTextDisplayData, GenerateName_Internal, func_t*);
-		return func(this, a_form, a_extraHealthValue);
+		return func(this, a_form, a_temperFactor);
 	}
 
 

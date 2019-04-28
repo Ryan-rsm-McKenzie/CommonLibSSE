@@ -12,11 +12,13 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kEnchantment };
 
 
+		ExtraEnchantment();
+		ExtraEnchantment(EnchantmentItem* a_objectEffect, UInt16 a_enchantmentAmount);
 		virtual ~ExtraEnchantment();													// 00
 
 		// override(BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kEnchantment; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return objectEffect != a_rhs->objectEffect || enchantmentAmount != a_rhs->enchantmentAmount || unk0E != a_rhs->unk0E; }
 
 
 		// members

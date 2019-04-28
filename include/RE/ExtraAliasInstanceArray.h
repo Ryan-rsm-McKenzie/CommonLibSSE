@@ -26,10 +26,11 @@ namespace RE
 		STATIC_ASSERT(sizeof(AliasInfo) == 0x18);
 
 
-		virtual ~ExtraAliasInstanceArray();					// 00
+		ExtraAliasInstanceArray();
+		virtual ~ExtraAliasInstanceArray();				// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;	// 01 - { return kAliasInstanceArray; }
+		virtual ExtraDataType GetType() const override;	// 01 - { return kAliasInstanceArray; }
 
 
 		// members

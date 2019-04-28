@@ -202,7 +202,14 @@
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp" />
     <ClCompile Include="src\RE\ChestsLooted.cpp" />
     <ClCompile Include="src\RE\Console.cpp" />
+    <ClCompile Include="src\RE\ExtraAliasInstanceArray.cpp" />
+    <ClCompile Include="src\RE\ExtraCount.cpp" />
+    <ClCompile Include="src\RE\ExtraEnchantment.cpp" />
     <ClCompile Include="src\RE\ExtraFlags.cpp" />
+    <ClCompile Include="src\RE\ExtraHealth.cpp" />
+    <ClCompile Include="src\RE\ExtraHotkey.cpp" />
+    <ClCompile Include="src\RE\ExtraOwnership.cpp" />
+    <ClCompile Include="src\RE\ExtraUniqueID.cpp" />
     <ClCompile Include="src\RE\FxDelegateArgs.cpp" />
     <ClCompile Include="src\RE\FxDelegateHandler.cpp" />
     <ClCompile Include="src\RE\GAtomic.cpp" />
