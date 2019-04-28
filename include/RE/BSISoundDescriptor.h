@@ -8,7 +8,7 @@ namespace RE
 		class BSIPlaybackCharacteristics
 		{
 		public:
-			virtual ~BSIPlaybackCharacteristics();			// 00
+			virtual ~BSIPlaybackCharacteristics();		// 00
 
 			// add
 			virtual UInt8	GetFrequencyShift() = 0;	// 01

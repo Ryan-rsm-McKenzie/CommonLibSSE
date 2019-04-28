@@ -1,7 +1,8 @@
 #pragma once
 
 #include "RE/BGSSoundDescriptor.h"  // BGSSoundDescriptor
-#include "RE/BSString.h"  // BSString
+#include "RE/BSTArray.h"  // BSTArray
+#include "RE/FileHash.h"  // FileHash
 #include "RE/FormTypes.h"  // BGSSoundOutput
 
 
@@ -17,20 +18,20 @@ namespace RE
 		{
 		public:
 			// override (BSIPlaybackCharacteristics)
-			virtual UInt8	GetFrequencyShift() override;		// 01
-			virtual UInt8	GetFrequencyVariance() override;	// 02
-			virtual UInt8	GetPriority() override;				// 03
-			virtual UInt16	GetStaticAttenuation() override;	// 04
-			virtual UInt8	GetDBVariance() override;			// 05
+			virtual UInt8	GetFrequencyShift() override;		// 01 - { return frequencyShift; }
+			virtual UInt8	GetFrequencyVariance() override;	// 02 - { return frequencyVariance; }
+			virtual UInt8	GetPriority() override;				// 03 - { return priority; }
+			virtual UInt16	GetStaticAttenuation() override;	// 04 - { return staticAttenuation; }
+			virtual UInt8	GetDBVariance() override;			// 05 - { return dbVariance; }
 
 
 			// members
-			UInt8			frequencyShift;		// 08
-			UInt8			frequencyVariance;	// 09
-			UInt8			priority;			// 0A
-			UInt8			dbVariance;			// 0B
-			UInt16			staticAttenuation;	// 0C - CK Value * 100
-			UInt16			pad0E;				// 0E
+			UInt8	frequencyShift;		// 08
+			UInt8	frequencyVariance;	// 09
+			UInt8	priority;			// 0A
+			UInt8	dbVariance;			// 0B
+			UInt16	staticAttenuation;	// 0C - CK Value * 100
+			UInt16	pad0E;				// 0E
 		};
 		STATIC_ASSERT(sizeof(SoundPlaybackCharacteristics) == 0x10);
 
@@ -40,27 +41,33 @@ namespace RE
 			enum class Looping : UInt8
 			{
 				kNone = 0,
-				kLoop = 8,
-				kEnvelopeFast = 16,
-				kEnvelopeSlow = 32
+				kLoop = 1 << 3,
+				kEnvelopeFast = 1 << 4,
+				kEnvelopeSlow = 1 << 5
 			};
 
 
 			UInt8	unk0;				// 0
 			Looping	looping;			// 1
 			UInt8	unk2;				// 2
-			UInt8	rumbleSendValue;	// 2
+			UInt8	rumbleSendValue;	// 3
 		};
 		STATIC_ASSERT(sizeof(LengthCharacteristics) == 0x4);
 
 
-		virtual ~BGSStandardSoundDef();	// 00
+		virtual ~BGSStandardSoundDef();						// 00
+
+		// override (BGSSoundDescriptor)
+		virtual void	Unk_01(void) override;				// 01
+		virtual void	Unk_02(void) override;				// 02
+		virtual void	InitSound(TESForm* a_src) override;	// 03
+		virtual bool	LoadSound(TESFile* a_mod) override;	// 04
+		virtual UInt32	GetType() const override;			// 05 - "BGSStandardSoundDef"
+		virtual void	Unk_06(void) override;				// 06
 
 
 		// members
-		BSString						fileNames;				// 18 - ANAM
-		UInt32							numSoundFiles;			// 28
-		UInt32							pad2C;					// 2C
+		BSTArray<FileHash>				soundFiles;				// 18 - ANAM
 		SoundPlaybackCharacteristics	soundCharacteristics;	// 30 - BNAM
 		Condition*						conditions;				// 40 - CTDA
 		BGSSoundOutput*					outputModel;			// 48 - ONAM

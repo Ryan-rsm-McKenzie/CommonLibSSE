@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	class BGSStandardSoundDef;
+	class BGSSoundDescriptor;
 
 
 	class BGSSoundDescriptorForm :
@@ -16,6 +16,16 @@ namespace RE
 	{
 	public:
 		enum { kTypeID = FormType::SoundRecord };
+
+
+		struct RecordFlags
+		{
+			enum RecordFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
 
 
 		virtual ~BGSSoundDescriptorForm();							// 00
@@ -27,11 +37,11 @@ namespace RE
 		virtual bool	SetEditorID(const char* a_str) override;	// 33
 
 		// add
-		virtual void	Unk_3B(void);								// 3B - { return standardSoundDef->Unk_05(); }
+		virtual UInt32	GetDescriptorType();						// 3B - { return soundDescriptor->GetType(); }
 
 
 		// members
-		BGSStandardSoundDef* standardSoundDef;	// 28
+		BGSSoundDescriptor* soundDescriptor;	// 28
 	};
 	STATIC_ASSERT(sizeof(BGSSoundDescriptorForm) == 0x30);
 }

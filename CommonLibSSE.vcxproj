@@ -350,15 +350,20 @@
     <ClInclude Include="include\RE\BGSAbilityPerkEntry.h" />
     <ClInclude Include="include\RE\BGSAddonNode.h" />
     <ClInclude Include="include\RE\BGSApparatus.h" />
+    <ClInclude Include="include\RE\BGSArtObject.h" />
+    <ClInclude Include="include\RE\BGSAssociationType.h" />
     <ClInclude Include="include\RE\BGSBaseAlias.h" />
     <ClInclude Include="include\RE\BGSBlockBashData.h" />
     <ClInclude Include="include\RE\BGSBodyPartData.h" />
     <ClInclude Include="include\RE\BGSCameraPath.h" />
     <ClInclude Include="include\RE\BGSCameraShot.h" />
+    <ClInclude Include="include\RE\BGSCollisionLayer.h" />
+    <ClInclude Include="include\RE\BGSColorForm.h" />
     <ClInclude Include="include\RE\BGSConstructibleObject.h" />
     <ClInclude Include="include\RE\BGSDebris.h" />
     <ClInclude Include="include\RE\BGSDefaultObjectManager.h" />
     <ClInclude Include="include\RE\BGSDistantTreeBlock.h" />
+    <ClInclude Include="include\RE\BGSDualCastData.h" />
     <ClInclude Include="include\RE\BGSEncounterZone.h" />
     <ClInclude Include="include\RE\BGSEntryPointFunctionDataOneValue.h" />
     <ClInclude Include="include\RE\BGSExplosion.h" />
@@ -369,6 +374,7 @@
     <ClInclude Include="include\RE\BGSIdleMarker.h" />
     <ClInclude Include="include\RE\BGSImpactData.h" />
     <ClInclude Include="include\RE\BGSImpactDataSet.h" />
+    <ClInclude Include="include\RE\BGSLensFlare.h" />
     <ClInclude Include="include\RE\BGSLightingTemplate.h" />
     <ClInclude Include="include\RE\BGSListForm.h" />
     <ClInclude Include="include\RE\BGSLocation.h" />
@@ -376,6 +382,7 @@
     <ClInclude Include="include\RE\BGSMessage.h" />
     <ClInclude Include="include\RE\BGSMessageIcon.h" />
     <ClInclude Include="include\RE\BGSMovableStatic.h" />
+    <ClInclude Include="include\RE\BGSMovementType.h" />
     <ClInclude Include="include\RE\BGSMusicPaletteTrack.h" />
     <ClInclude Include="include\RE\BGSMusicSilenceTrack.h" />
     <ClInclude Include="include\RE\BGSMusicSingleTrack.h" />
@@ -384,6 +391,7 @@
     <ClInclude Include="include\RE\BGSMusicType.h" />
     <ClInclude Include="include\RE\BGSNamedPackageData.h" />
     <ClInclude Include="include\RE\BGSNote.h" />
+    <ClInclude Include="include\RE\BGSOutfit.h" />
     <ClInclude Include="include\RE\BGSOverridePackCollection.h" />
     <ClInclude Include="include\RE\BGSPackageDataBool.h" />
     <ClInclude Include="include\RE\BGSPerkRankArray.h" />
@@ -397,6 +405,7 @@
     <ClInclude Include="include\RE\BGSRefAlias.h" />
     <ClInclude Include="include\RE\BGSReferenceEffect.h" />
     <ClInclude Include="include\RE\BGSRelationship.h" />
+    <ClInclude Include="include\RE\BGSReverbParameters.h" />
     <ClInclude Include="include\RE\BGSScene.h" />
     <ClInclude Include="include\RE\BGSSceneAction.h" />
     <ClInclude Include="include\RE\BGSSceneActionDialogue.h" />
@@ -443,6 +452,7 @@
     <ClInclude Include="include\RE\BGSSoundCategory.h" />
     <ClInclude Include="include\RE\BGSSoundDescriptor.h" />
     <ClInclude Include="include\RE\BGSSoundDescriptorForm.h" />
+    <ClInclude Include="include\RE\BGSSoundOutput.h" />
     <ClInclude Include="include\RE\BGSStandardSoundDef.h" />
     <ClInclude Include="include\RE\BGSStaticCollection.h" />
     <ClInclude Include="include\RE\BGSStoryManagerBranchNode.h" />
@@ -455,6 +465,7 @@
     <ClInclude Include="include\RE\BGSTextureSet.h" />
     <ClInclude Include="include\RE\BGSTypedItem.h" />
     <ClInclude Include="include\RE\BGSVoiceType.h" />
+    <ClInclude Include="include\RE\BGSVolumetricLighting.h" />
     <ClInclude Include="include\RE\bhkCachingShapePhantom.h" />
     <ClInclude Include="include\RE\bhkCharacterController.h" />
     <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
@@ -495,8 +506,12 @@
     <ClInclude Include="include\RE\BSIMusicType.h" />
     <ClInclude Include="include\RE\BSIntrusiveRefCounted.h" />
     <ClInclude Include="include\RE\BSIRagdollDriver.h" />
+    <ClInclude Include="include\RE\BSIReverbType.h" />
     <ClInclude Include="include\RE\BSISoundCategory.h" />
     <ClInclude Include="include\RE\BSISoundDescriptor.h" />
+    <ClInclude Include="include\RE\BSISoundOutputModel.h" />
+    <ClInclude Include="include\RE\BSLensFlareRenderData.h" />
+    <ClInclude Include="include\RE\BSMaterialObject.h" />
     <ClInclude Include="include\RE\BSMusicEvent.h" />
     <ClInclude Include="include\RE\BSNavmesh.h" />
     <ClInclude Include="include\RE\BSNavmeshInfoMap.h" />
@@ -536,6 +551,7 @@
     <ClInclude Include="include\RE\BSTransformDeltaEvent.h" />
     <ClInclude Include="include\RE\BSTSingleton.h" />
     <ClInclude Include="include\RE\BSUIMessageData.h" />
+    <ClInclude Include="include\RE\BSVolumetricLightingRenderData.h" />
     <ClInclude Include="include\RE\BSWin32SaveDataSystemUtility.h" />
     <ClInclude Include="include\RE\BSXAudio2GameSound.h" />
     <ClInclude Include="include\RE\ChestsLooted.h" />
@@ -772,6 +788,7 @@
     <ClInclude Include="include\RE\MapMenu.h" />
     <ClInclude Include="include\RE\MapMoveHandler.h" />
     <ClInclude Include="include\RE\MapZoomHandler.h" />
+    <ClInclude Include="include\RE\BGSMaterialObject.h" />
     <ClInclude Include="include\RE\MenuOpenHandler.h" />
     <ClInclude Include="include\RE\MessageBoxData.h" />
     <ClInclude Include="include\RE\MessageBoxMenu.h" />

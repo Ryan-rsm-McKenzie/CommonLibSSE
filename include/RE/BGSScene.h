@@ -96,7 +96,7 @@ namespace RE
 		TESQuest*					quest;		// 98 - PNAM
 		Flag						flags;		// A0 - FNAM
 		UInt32						padA4;		// A4
-		Condition					conditions;	// A8 - CITC
+		Condition					conditions;	// A8 - CTDA
 		UInt64						unkB0;		// B0
 		UInt64						unkB8;		// B8
 		UInt32						unkC0;		// C0

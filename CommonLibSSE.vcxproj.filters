@@ -187,9 +187,6 @@
     <Filter Include="include\RE\Skyrim\Magic\Components">
       <UniqueIdentifier>{3e7f8996-42ad-425a-8149-9d1933409824}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\Skyrim\TESForms\Gameplay\Components">
-      <UniqueIdentifier>{708ae38f-4d6a-4a65-b0b2-9bbc7afcbf92}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Skyrim\TESForms\Character\Components">
       <UniqueIdentifier>{5f9423c9-5be6-4705-96ba-137dc00abdb4}</UniqueIdentifier>
     </Filter>
@@ -477,6 +474,9 @@
     </Filter>
     <Filter Include="include\RE\Skyrim\TESForms\Character\BGSSceneAction">
       <UniqueIdentifier>{18c535a4-8388-499f-b369-c711b3a50d3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\TESForms\Gameplay\Components">
+      <UniqueIdentifier>{1ef0afbd-0b93-4a04-991a-ccc80ffb4c9b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1817,9 +1817,6 @@
     <ClInclude Include="include\RE\MagicTarget.h">
       <Filter>include\RE\Skyrim\Magic\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSStandardSoundDef.h">
-      <Filter>include\RE\Skyrim\TESForms\Gameplay\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\AttackAnimationArrayMap.h">
       <Filter>include\RE\Skyrim\TESForms\Character\Components</Filter>
     </ClInclude>
@@ -2989,6 +2986,60 @@
     </ClInclude>
     <ClInclude Include="include\RE\BGSSceneActionTimer.h">
       <Filter>include\RE\Skyrim\TESForms\Character\BGSSceneAction</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAssociationType.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSOutfit.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSArtObject.h">
+      <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMaterialObject.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSMaterialObject.h">
+      <Filter>include\RE\Skyrim\FormComponents\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMovementType.h">
+      <Filter>include\RE\Skyrim\TESForms\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStandardSoundDef.h">
+      <Filter>include\RE\Skyrim\BSAudio\BSISoundDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSDualCastData.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSoundOutput.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSISoundOutputModel.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSCollisionLayer.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSColorForm.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSReverbParameters.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSIReverbType.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSLensFlare.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLensFlareRenderData.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSVolumetricLighting.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSVolumetricLightingRenderData.h">
+      <Filter>include\RE\Skyrim\TESForms\Gameplay\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

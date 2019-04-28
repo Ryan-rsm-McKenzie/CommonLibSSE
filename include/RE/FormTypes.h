@@ -274,8 +274,8 @@ namespace RE
 		ColorForm,					//	85 CLFM	BGSColorForm
 		ReverbParam,				//	86 REVB	BGSReverbParameters
 		LensFlare,					//	87 LENS BGSLensFlare
-		Unk88,						//	88 LSPR
-		VolumetricLighting,			//	89 VOLI
+		LensSprite,					//	88 LSPR
+		VolumetricLighting,			//	89 VOLI BGSVolumetricLighting
 
 		Max							//	8A
 	};
