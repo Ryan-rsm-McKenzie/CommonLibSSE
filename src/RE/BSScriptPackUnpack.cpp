@@ -12,27 +12,27 @@ namespace RE
 {
 	namespace BSScript
 	{
-		VMTypeID GetTypeIDFromFormTypeID(UInt32 a_typeID)
+		VMTypeID GetTypeIDFromFormType(UInt32 a_formType)
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			BSTSmartPointer<BSScriptClass> classPtr;
-			if (vm->GetScriptClassByTypeID(a_typeID, classPtr)) {
+			if (vm->GetScriptClassByTypeID(a_formType, classPtr)) {
 				return classPtr->GetTypeID();
 			} else {
-				_FATALERROR("[FATAL ERROR] Failed to get vm type id for class!\n");
+				_ERROR("[ERROR] Failed to get vm type id for class!\n");
 				return VMTypeID::kNone;
 			}
 		}
 
 
-		void BindID(BSTSmartPointer<BSScriptObject>& a_objectPtr, const void* a_srcData, UInt32 a_typeID)
+		void BindID(BSTSmartPointer<BSScriptObject>& a_objectPtr, const TESForm* a_srcData, UInt32 a_formType)
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			UInt32 id = 0;
 			BSTSmartPointer<BSScriptClass> classPtr(a_objectPtr->GetClass());
 			if (vm->GetFormTypeID(classPtr->GetName(), id)) {
 				auto handlePolicy = vm->GetHandlePolicyBS();
-				VMHandle handle = handlePolicy->Create(a_typeID, a_srcData);
+				VMHandle handle = handlePolicy->Create(a_formType, a_srcData);
 
 				if (handlePolicy->IsType(id, handle) || handle == handlePolicy->GetInvalidHandle()) {
 					vm->GetObjectBindPolicyBS()->BindObject(a_objectPtr, handle);
@@ -41,7 +41,7 @@ namespace RE
 		}
 
 
-		void PackHandle(BSScriptVariable* a_dst, const void* a_src, UInt32 a_typeID)
+		void PackHandle(BSScriptVariable* a_dst, const TESForm* a_src, UInt32 a_formType)
 		{
 			a_dst->SetNone();
 
@@ -51,33 +51,33 @@ namespace RE
 
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			BSTSmartPointer<BSScriptClass> classPtr;
-			vm->GetScriptClassByTypeID(a_typeID, classPtr);
+			vm->GetScriptClassByTypeID(a_formType, classPtr);
 			if (!classPtr) {
 				return;
 			}
 
 			auto handlePolicy = vm->GetHandlePolicyBS();
-			VMHandle handle = handlePolicy->Create(a_typeID, a_src);
+			VMHandle handle = handlePolicy->Create(a_formType, a_src);
 
 			BSTSmartPointer<BSScriptObject> objectPtr;
 			if (!vm->ResolveScriptObject(handle, classPtr->GetName(), objectPtr)) {
 				// when cannot be resolved, then create new objectPtr
 				if (vm->CreateScriptObject(classPtr->GetName(), objectPtr) && objectPtr) {
 					// create handle and bind it to the new objectPtr
-					BindID(objectPtr, a_src, a_typeID);
+					BindID(objectPtr, a_src, a_formType);
 				}
 			}
 
 			if (objectPtr) {
-				a_dst->SetData<BSScriptObject*>(objectPtr.get());
+				a_dst->SetObject(objectPtr.get(), classPtr->GetTypeID());
 			}
 		}
 
 
-		void* UnpackHandle(BSScriptVariable* a_src, UInt32 a_typeID)
+		void* UnpackHandle(BSScriptVariable* a_src, UInt32 a_formType)
 		{
 			auto object = a_src->GetObject();
-			return object ? object->Resolve(a_typeID) : 0;
+			return object ? object->Resolve(a_formType) : 0;
 		}
 	}
 }

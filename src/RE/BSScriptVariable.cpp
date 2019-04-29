@@ -266,6 +266,13 @@ namespace RE
 		}
 
 
+		void BSScriptVariable::SetObject(BSScriptObject* a_val, VMTypeID a_typeID)
+		{
+			ChangeType(a_typeID);
+			data.obj.reset(a_val);
+		}
+
+
 		void BSScriptVariable::SetString(BSFixedString a_val)
 		{
 			ChangeType(VMTypeID::kString);

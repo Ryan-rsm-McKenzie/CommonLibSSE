@@ -1,8 +1,5 @@
 #include "RE/TESObjectREFR.h"
 
-#undef min
-#undef max
-
 #include "skse64/GameReferences.h"  // TESObjectREFR
 
 #include <limits>  // numeric_limits
@@ -106,9 +103,9 @@ namespace RE
 
 	TESNPC* TESObjectREFR::GetActorOwner() const
 	{
-		auto exOwnership = static_cast<ExtraOwnership*>(extraData.GetByType(ExtraDataType::kOwnership));
-		if (exOwnership && exOwnership->owner && exOwnership->owner->formType == FormType::ActorCharacter) {
-			return static_cast<TESNPC*>(exOwnership->owner);
+		auto xOwnership = extraData.GetByType<ExtraOwnership>();
+		if (xOwnership && xOwnership->owner && xOwnership->owner->Is(FormType::ActorCharacter)) {
+			return static_cast<TESNPC*>(xOwnership->owner);
 		} else {
 			return 0;
 		}
@@ -127,16 +124,10 @@ namespace RE
 		if (baseForm) {
 			switch (baseForm->formType) {
 			case FormType::Container:
-				{
-					auto cont = static_cast<TESObjectCONT*>(baseForm);
-					container = static_cast<TESContainer*>(cont);
-				}
+				container = static_cast<TESObjectCONT*>(baseForm);
 				break;
 			case FormType::NPC:
-				{
-					auto actorBase = static_cast<TESActorBase*>(baseForm);
-					container = actorBase;
-				}
+				container = static_cast<TESActorBase*>(baseForm);
 				break;
 			}
 		}
@@ -159,9 +150,9 @@ namespace RE
 
 	TESFaction* TESObjectREFR::GetFactionOwner() const
 	{
-		auto exOwnership = static_cast<ExtraOwnership*>(extraData.GetByType(ExtraDataType::kOwnership));
-		if (exOwnership && exOwnership->owner && exOwnership->owner->formType == FormType::Faction) {
-			return static_cast<TESFaction*>(exOwnership->owner);
+		auto xOwnership = extraData.GetByType<ExtraOwnership>();
+		if (xOwnership && xOwnership->owner && xOwnership->owner->Is(FormType::Faction)) {
+			return static_cast<TESFaction*>(xOwnership->owner);
 		} else {
 			return 0;
 		}
@@ -291,18 +282,18 @@ namespace RE
 	{
 		bool renamed = false;
 
-		auto xTextData = reinterpret_cast<ExtraTextDisplayData*>(extraData.GetByType(ExtraDataType::kTextDisplayData));
+		auto xTextData = extraData.GetByType<ExtraTextDisplayData>();
 		if (xTextData) {
 			bool inUse = (xTextData->message || xTextData->owner);
 			if (inUse && force) {
-				xTextData->message = nullptr;
-				xTextData->owner = nullptr;
+				xTextData->message = 0;
+				xTextData->owner = 0;
 			}
 			renamed = (!inUse || force);
 			xTextData->SetName(name.c_str());
 		} else {
-			auto newTextData = new ExtraTextDisplayData(name.c_str());
-			extraData.Add(newTextData);
+			xTextData = new ExtraTextDisplayData(name.c_str());
+			extraData.Add(xTextData);
 			renamed = true;
 		}
 

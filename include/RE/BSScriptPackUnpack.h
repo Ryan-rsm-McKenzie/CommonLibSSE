@@ -12,23 +12,23 @@ namespace RE
 		class BSScriptObject;
 
 
-		VMTypeID	GetTypeIDFromFormTypeID(UInt32 a_typeID);
-		void		BindID(BSTSmartPointer<BSScriptObject>& a_object, const void* a_srcData, UInt32 a_typeID);
-		void		PackHandle(BSScriptVariable* a_dst, const void* a_src, UInt32 a_typeID);
-		void*		UnpackHandle(BSScriptVariable* a_src, UInt32 a_typeID);
+		VMTypeID	GetTypeIDFromFormType(UInt32 a_formType);
+		void		BindID(BSTSmartPointer<BSScriptObject>& a_object, const TESForm* a_srcData, UInt32 a_formType);
+		void		PackHandle(BSScriptVariable* a_dst, const TESForm* a_src, UInt32 a_formType);
+		void*		UnpackHandle(BSScriptVariable* a_src, UInt32 a_formType);
 
 
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
 		inline VMTypeID GetTypeID()
 		{
-			return GetTypeIDFromFormTypeID(remove_cvpr_t<T>::kTypeID);
+			return GetTypeIDFromFormType(remove_cvpr_t<T>::kTypeID);
 		}
 
 
 		template <class T, typename std::enable_if_t<is_vm_form_array_no_cvr<T>::value, int> = 0>
 		inline VMTypeID GetTypeID()
 		{
-			return GetTypeIDFromFormTypeID(remove_cvpr_t<remove_vm_array_t<T>>::kTypeID) + VMTypeID::kObject;
+			return GetTypeIDFromFormType(remove_cvpr_t<remove_vm_array_t<T>>::kTypeID) + VMTypeID::kObject;
 		}
 
 

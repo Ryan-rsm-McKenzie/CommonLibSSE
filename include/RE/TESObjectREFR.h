@@ -151,8 +151,8 @@ namespace RE
 		virtual void					Unk_4D(void);																																												// 4D
 		virtual void					Unk_4E(void);																																												// 4E
 		virtual void					Unk_4F(void);																																												// 4F
-		virtual void					SetActorCause(UInt32& a_cause);																																								// 50
-		virtual UInt32&					GetActorCause() const;																																										// 51
+		virtual void					SetActorCause(RefHandle& a_cause);																																							// 50
+		virtual RefHandle&				GetActorCause() const;																																										// 51
 		virtual void					Unk_52(void);																																												// 52
 		virtual void					Unk_53(void);																																												// 53
 		virtual void					Unk_54(void);																																												// 54

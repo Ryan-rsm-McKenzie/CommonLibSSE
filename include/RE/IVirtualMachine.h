@@ -64,12 +64,12 @@ namespace RE
 			virtual void							OnUpdateGameTime(float a_arg1) = 0;																																									// 05
 			virtual void							Unk_06(void) = 0;																																													// 06
 			virtual bool							OnChangeVMState() = 0;																																												// 07
-			virtual void							RegisterForm(FormID a_typeID, const char* a_papyrusClassName) = 0;																																	// 08
+			virtual void							RegisterForm(UInt32 a_formType, const char* a_papyrusClassName) = 0;																																// 08
 			virtual bool							GetScriptClassByName(const BSFixedString& a_className, BSTSmartPointer<BSScriptClass>& a_outClassPtr) = 0;																							// 09
-			virtual bool							GetScriptClassByTypeID(UInt32 a_typeID, BSTSmartPointer<BSScriptClass>& a_outClass) = 0;																											// 0A
+			virtual bool							GetScriptClassByTypeID(UInt32 a_formType, BSTSmartPointer<BSScriptClass>& a_outClass) = 0;																											// 0A
 			virtual bool							RegisterScriptClass(const BSFixedString& a_className, BSTSmartPointer<BSScriptClass>& a_classPtr) = 0;																								// 0B
 			virtual void							Unk_0C(void) = 0;																																													// 0C
-			virtual bool							GetFormTypeID(const BSFixedString& a_className, UInt32& a_typeID) = 0;																																// 0D
+			virtual bool							GetFormTypeID(const BSFixedString& a_className, UInt32& a_formType) = 0;																															// 0D
 			virtual void							Unk_0E(void) = 0;																																													// 0E
 			virtual void							Unk_0F(void) = 0;																																													// 0F
 			virtual void							Unk_10(void) = 0;																																													// 10

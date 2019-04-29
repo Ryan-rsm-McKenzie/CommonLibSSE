@@ -73,6 +73,7 @@ namespace RE
 			void			SetBool(bool a_val);
 			void			SetArray(BSScriptArray* a_val);
 			void			SetObject(BSScriptObject* a_val);
+			void			SetObject(BSScriptObject* a_val, VMTypeID a_typeID);
 			void			SetString(BSFixedString a_val);
 
 			template <class T, typename std::enable_if_t<is_sint32_compat<T>::value, int> = 0>					inline void SetData(T a_val) { SetSInt(a_val); }

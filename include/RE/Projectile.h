@@ -23,8 +23,8 @@ namespace RE
 		virtual void			Unk_12(void) override;							// 12
 		virtual void			Unk_47(void) override;							// 47 - { return 0; }
 		virtual bool			HasKeyword(BGSKeyword* a_keyword) override;		// 48
-		virtual void			SetActorCause(UInt32& a_cause) override;		// 50
-		virtual UInt32&			GetActorCause() const override;					// 51 - { return unk118; }
+		virtual void			SetActorCause(RefHandle& a_cause) override;		// 50
+		virtual RefHandle&		GetActorCause() const override;					// 51 - { return unk118; }
 		virtual MagicCaster*	GetMagicCaster(UInt32 a_slot) const override;	// 5C
 		virtual void			Unk_65(void) override;							// 65
 		virtual void			Unk_66(void) override;							// 66

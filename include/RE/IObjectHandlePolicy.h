@@ -4,6 +4,7 @@
 namespace RE
 {
 	class BSFixedString;
+	class TESForm;
 
 
 	namespace BSScript
@@ -17,7 +18,7 @@ namespace RE
 			virtual bool		IsType(UInt32 a_typeID, VMHandle a_handle) = 0;				// 01
 			virtual bool		IsValidHandle(VMHandle a_handle) = 0;						// 02
 			virtual VMHandle	GetInvalidHandle() = 0;										// 03
-			virtual VMHandle	Create(UInt32 a_typeID, const void* a_srcData) = 0;			// 04
+			virtual VMHandle	Create(UInt32 a_typeID, const TESForm* a_srcData) = 0;		// 04
 			virtual bool		IsREFR(VMHandle a_handle) = 0;								// 05
 			virtual void		Unk_06(void) = 0;											// 06
 			virtual void		Unk_07(void) = 0;											// 07

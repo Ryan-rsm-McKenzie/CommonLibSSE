@@ -47,12 +47,12 @@ namespace RE
 				virtual void							OnUpdateGameTime(float a_arg1) override;																																									// 05
 				virtual void							Unk_06(void) override;																																														// 06
 				virtual bool							OnChangeVMState() override;																																													// 07
-				virtual void							RegisterForm(FormID a_typeID, const char* a_papyrusClassName) override;																																		// 08
+				virtual void							RegisterForm(UInt32 a_formType, const char* a_papyrusClassName) override;																																	// 08
 				virtual bool							GetScriptClassByName(const BSFixedString& a_className, BSTSmartPointer<BSScriptClass>& a_outClassPtr) override;																								// 09
-				virtual bool							GetScriptClassByTypeID(UInt32 a_typeID, BSTSmartPointer<BSScriptClass>& a_outClass) override;																												// 0A
+				virtual bool							GetScriptClassByTypeID(UInt32 a_formType, BSTSmartPointer<BSScriptClass>& a_outClass) override;																												// 0A
 				virtual bool							RegisterScriptClass(const BSFixedString& a_className, BSTSmartPointer<BSScriptClass>& a_classPtr) override;																									// 0B
 				virtual void							Unk_0C(void) override;																																														// 0C
-				virtual bool							GetFormTypeID(const BSFixedString& a_className, UInt32& a_typeID) override;																																	// 0D
+				virtual bool							GetFormTypeID(const BSFixedString& a_className, UInt32& a_formType) override;																																// 0D
 				virtual void							Unk_0E(void) override;																																														// 0E
 				virtual void							Unk_0F(void) override;																																														// 0F
 				virtual void							Unk_10(void) override;																																														// 10
@@ -83,12 +83,12 @@ namespace RE
 				virtual void							Unk_29(void) override;																																														// 29
 				virtual bool							IsWaitingStack(UInt32 a_stackID) override;																																									// 2A
 				virtual void							SetLatentReturn(UInt32 a_stackID, const BSScriptVariable& a_val) override;																																	// 2B
-				virtual ErrorLogger*					GetLogger() override;																																														// 2C
-				virtual SkyrimScript::HandlePolicy*		GetHandlePolicySK() override;																																												// 2D
-				virtual IObjectHandlePolicy*			GetHandlePolicyBS() override;																																												// 2E
-				virtual SkyrimScript::ObjectBindPolicy*	GetObjectBindPolicySK() override;																																											// 2F
-				virtual ObjectBindPolicy*				GetObjectBindPolicyBS() override;																																											// 30
-				virtual ISavePatcherInterface*			GetSavePatcher() override;																																													// 31
+				virtual ErrorLogger*					GetLogger() override;																																														// 2C - { return logger; }
+				virtual SkyrimScript::HandlePolicy*		GetHandlePolicySK() override;																																												// 2D - { return objectHandlePolicy; }
+				virtual IObjectHandlePolicy*			GetHandlePolicyBS() override;																																												// 2E - { return objectHandlePolicy; }
+				virtual SkyrimScript::ObjectBindPolicy*	GetObjectBindPolicySK() override;																																											// 2F - { return objectBindPolicy; }
+				virtual ObjectBindPolicy*				GetObjectBindPolicyBS() override;																																											// 30 - { return objectBindPolicy; }
+				virtual ISavePatcherInterface*			GetSavePatcher() override;																																													// 31 - { return savePatcher; }
 				virtual void							AddLogEventSink(BSTEventSink<LogEvent>* a_sink) override;																																					// 32
 				virtual void							RemoveLogEventSink(BSTEventSink<LogEvent>* a_sink) override;																																				// 33
 				virtual void							AddStatsEventSink(BSTEventSink<StatsEvent>* a_sink) override;																																				// 34
