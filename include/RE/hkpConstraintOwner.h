@@ -11,10 +11,10 @@ namespace RE
 		virtual ~hkpConstraintOwner();	// 00
 
 		// add
-		virtual void	Unk_03(void);	// 03 - {}
-		virtual void	Unk_04(void);	// 04 - {}
-		virtual void	Unk_05(void);	// 05 - {}
-		virtual void	Unk_06(void);	// 06 - {}
+		virtual void	Unk_03(void);	// 03 - { return; }
+		virtual void	Unk_04(void);	// 04 - { return; }
+		virtual void	Unk_05(void);	// 05 - { return; }
+		virtual void	Unk_06(void);	// 06 - { return; }
 
 
 		// members
