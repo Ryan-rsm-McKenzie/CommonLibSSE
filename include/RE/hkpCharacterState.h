@@ -5,6 +5,7 @@
 
 namespace RE
 {
+	class hkpCharacterContext;
 	struct hkpCharacterInput;
 	struct hkpCharacterOutput;
 

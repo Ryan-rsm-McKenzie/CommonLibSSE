@@ -10,8 +10,10 @@
 namespace RE
 {
 	class hkpAllCdPointCollector;
+	class hkpCharacterProxyListener;
 	class hkpPhantom;
 	class hkpRigidBody;
+	class hkpShapePhantom;
 	class hkpTriggerVolume;
 	struct hkpRootCdPoint;
 	struct hkpSurfaceConstraintInfo;

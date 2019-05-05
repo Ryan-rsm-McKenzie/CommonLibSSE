@@ -103,7 +103,7 @@ namespace RE
 		UInt32								unk1FC;					// 1FC
 		UInt32								unk200;					// 200
 		UInt32								unk204;					// 204 - init'd to FF7FFFFF
-		UInt32								furnitureHandle;		// 208
+		RefHandle							furnitureHandle;		// 208
 		UInt32								pad20C;					// 20C
 		UInt64								unk210;					// 210
 		UInt32								unk218;					// 218
