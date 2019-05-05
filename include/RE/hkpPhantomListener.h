@@ -3,16 +3,18 @@
 
 namespace RE
 {
+	class hkpPhantom;
+
+
 	class hkpPhantomListener
 	{
 	public:
-		virtual ~hkpPhantomListener();	// 00
+		virtual ~hkpPhantomListener();									// 00
 
-		// add
-		virtual void	Unk_01(void);	// 01 - {}
-		virtual void	Unk_02(void);	// 02 - {}
-		virtual void	Unk_03(void);	// 03
-		virtual void	Unk_04(void);	// 04 - {}
+		virtual void	PhantomAddedCallback(hkpPhantom* a_phantom);	// 01 - { return; }
+		virtual void	PhantomRemovedCallback(hkpPhantom* a_phantom);	// 02 - { return; }
+		virtual void	PhantomShapeSetCallback(hkpPhantom* a_phantom);	// 03
+		virtual void	PhantomDeletedCallback(hkpPhantom* a_phantom);	// 04 - { return; }
 	};
 	STATIC_ASSERT(sizeof(hkpPhantomListener) == 0x8);
 }

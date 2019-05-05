@@ -7,8 +7,6 @@ namespace RE
 	class hkArrayBase
 	{
 	public:
-
-	protected:
 		enum
 		{
 			kCapacityMask = 0x3FFFFFFF,
@@ -18,9 +16,9 @@ namespace RE
 		};
 
 
-		T*		data;
-		SInt32	size;
-		SInt32	capacityAndFlags;
+		T*		data;				// 00
+		SInt32	size;				// 08
+		SInt32	capacityAndFlags;	// 0C
 	};
 	STATIC_ASSERT(sizeof(hkArrayBase<void*>) == 0x10);
 
@@ -31,4 +29,12 @@ namespace RE
 	public:
 	};
 	STATIC_ASSERT(sizeof(hkArray<void*>) == 0x10);
+
+
+	template <class T, std::size_t N, class Allocator = void>
+	class hkInplaceArray : public hkArray<T, Allocator>
+	{
+	public:
+		T storage[N];	// 10
+	};
 }

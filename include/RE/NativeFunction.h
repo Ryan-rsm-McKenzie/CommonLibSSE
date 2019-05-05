@@ -73,8 +73,6 @@ namespace RE
 		protected:
 			// members
 			function_type* _callback;	// 50
-
-		private:
 		};
 
 

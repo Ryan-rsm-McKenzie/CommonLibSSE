@@ -1,32 +1,40 @@
 #pragma once
 
+#include "RE/hkArray.h"  // hkArray
+#include "RE/hkpPhantomType.h"  // hkpPhantomType
 #include "RE/hkpWorldObject.h"  // hkpWorldObject
 
 
 namespace RE
 {
+	class hkAabb;
+	class hkpCollidable;
+	class hkpPhantomOverlapListener;
+
+
 	class hkpPhantom : public hkpWorldObject
 	{
 	public:
-		virtual ~hkpPhantom();			// 00
+		virtual ~hkpPhantom();																										// 00
+
+		// override (hkpWorldObject)
+		virtual void			CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;	// 02
 
 		// add
-		virtual void	Unk_06(void);	// 06 - pure
-		virtual void	Unk_07(void);	// 07 - pure
-		virtual void	Unk_08(void);	// 08 - pure
-		virtual void	Unk_09(void);	// 09 - pure
-		virtual void	Unk_0A(void);	// 0A - pure
-		virtual void	Unk_0B(void);	// 0B - pure
-		virtual void	Unk_0C(void);	// 0C - pure
-		virtual void	Unk_0D(void);	// 0D - {}
-		virtual void	Unk_0E(void);	// 0E - { return 0; }
+		virtual hkpPhantomType	GetType() const = 0;																				// 06
+		virtual void			CalcAabb(hkAabb& a_aabb) = 0;																		// 07
+		virtual void			AddOverlappingCollidable(hkpCollidable* a_collidable) = 0;											// 08
+		virtual bool			IsOverlappingCollidableAdded(const hkpCollidable* a_collidable) = 0;								// 09
+		virtual void			RemoveOverlappingCollidable(hkpCollidable* a_collidable) = 0;										// 0A
+		virtual void			EnsureDeterministicOrder() = 0;																		// 0B
+		virtual hkpPhantom*		Clone() const = 0;																					// 0C
+		virtual void			UpdateShapeCollectionFilter();																		// 0D - { return; }
+		virtual void			DeallocateInternalArrays();																			// 0E
 
 
 		// members
-		UInt64	unkD0;	// D0
-		UInt64	unkD8;	// D8
-		UInt64	unkE0;	// E0
-		UInt64	unkE8;	// E8
+		hkArray<hkpPhantomOverlapListener*>	overlapListeners;	// D0
+		hkArray<hkpPhantomListener*>		phantomListeners;	// E0
 	};
 	STATIC_ASSERT(sizeof(hkpPhantom) == 0xF0);
 }

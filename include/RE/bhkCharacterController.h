@@ -20,27 +20,27 @@ namespace RE
 		public BSTEventSource<bhkCharacterMoveFinishEvent>	// 010
 	{
 	public:
-		virtual ~bhkCharacterController();	// 00
+		virtual ~bhkCharacterController();		// 00
 
 		// add
-		virtual void	Unk_02(void);		// 02 - pure
-		virtual void	Unk_03(void);		// 03 - pure
-		virtual void	Unk_04(void);		// 04 - pure
-		virtual void	Unk_05(void);		// 05 - pure
-		virtual void	Unk_06(void);		// 06 - pure
-		virtual void	Unk_07(void);		// 07 - pure
-		virtual void	Unk_08(void);		// 08 - pure
-		virtual void	Unk_09(void);		// 09 - pure
-		virtual void	Unk_0A(void);		// 0A - pure
-		virtual void	Unk_0B(void);		// 0B - pure
-		virtual void	Unk_0C(void);		// 0C - pure
-		virtual void	Unk_0D(void);		// 0D - pure
-		virtual void	Unk_0E(void);		// 0E - pure
-		virtual void	Unk_0F(void);		// 0F - pure
-		virtual void	Unk_10(void);		// 10 - pure
-		virtual void	Unk_11(void);		// 11 - pure
-		virtual void	Unk_12(void);		// 12 - pure
-		virtual void	Unk_13(void);		// 13 - pure
+		virtual void	Unk_02(void) = 0;		// 02
+		virtual void	Unk_03(void) = 0;		// 03
+		virtual void	Unk_04(void) = 0;		// 04
+		virtual void	Unk_05(void) = 0;		// 05
+		virtual void	Unk_06(void) = 0;		// 06
+		virtual void	Unk_07(void) = 0;		// 07
+		virtual void	Unk_08(void) = 0;		// 08
+		virtual void	Unk_09(void) = 0;		// 09
+		virtual void	Unk_0A(void) = 0;		// 0A
+		virtual void	Unk_0B(void) = 0;		// 0B
+		virtual void	Unk_0C(void) = 0;		// 0C
+		virtual void	Unk_0D(void) = 0;		// 0D
+		virtual void	Unk_0E(void) = 0;		// 0E
+		virtual void	Unk_0F(void) = 0;		// 0F
+		virtual void	Unk_10(void) = 0;		// 10
+		virtual void	Unk_11(void) = 0;		// 11
+		virtual void	Unk_12(void) = 0;		// 12
+		virtual void	Unk_13(void) = 0;		// 13
 
 
 		// members

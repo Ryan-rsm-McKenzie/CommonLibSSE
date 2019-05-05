@@ -25,9 +25,6 @@ namespace RE
 	class MiddleProcess
 	{
 	public:
-		typedef BSTArray<UInt64> UnkArray;
-
-
 		struct Data
 		{
 			BSSpinLock	lock;		// 00
@@ -45,13 +42,13 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x30);
 
 
-		UnkArray							unk000;					// 000
-		UnkArray							unk018;					// 018
-		UnkArray							unk030;					// 030
+		BSTArray<void*>						unk000;					// 000
+		BSTArray<void*>						unk018;					// 018
+		BSTArray<void*>						unk030;					// 030
 		UInt64								unk048;					// 048
 		void*								unk050;					// 050
 		Data								unk058;					// 058
-		UnkArray							unk088;					// 088
+		BSTArray<void*>						unk088;					// 088
 		UInt64								unk0A0;					// 0A0
 		UInt64								unk0A8;					// 0A8
 		float								unk0B0;					// 0B0
@@ -73,7 +70,7 @@ namespace RE
 		UInt32								unk0F0;					// 0F0
 		UInt32								pad0F4;					// 0F4
 		void*								unk0F8;					// 0F8 - BSResponse<BSFixedStringCI, Actor, BSFixedStringCI, DoNothingUnhandledPolicy>*
-		UnkArray							unk100;					// 100
+		BSTArray<void*>						unk100;					// 100
 		NiNode*								unk118;					// 118
 		NiNode*								unk120;					// 120
 		NiNode*								unk128;					// 128
@@ -97,7 +94,7 @@ namespace RE
 		void*								unk1B8;					// 1B8 - BSScrapArray<void*>*?
 		UInt64								unk1C0;					// 1C0
 		UInt64								unk1C8;					// 1C8
-		UnkArray							unk1D0;					// 1D0
+		BSTArray<void*>						unk1D0;					// 1D0
 		UInt64								unk1E8;					// 1E8
 		UInt32								unk1F0;					// 1F0
 		UInt32								unk1F4;					// 1F4

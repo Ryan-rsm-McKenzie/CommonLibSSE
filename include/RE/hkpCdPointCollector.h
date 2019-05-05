@@ -3,18 +3,22 @@
 
 namespace RE
 {
+	struct hkpCdPoint;
+
+
 	class hkpCdPointCollector
 	{
 	public:
-		virtual ~hkpCdPointCollector();	// 00
+		virtual ~hkpCdPointCollector();								// 00
 
 		// add
-		virtual void	Unk_01(void);	// 01 - pure
-		virtual void	Unk_02(void);	// 02 - pure
+		virtual void	AddCdPoint(const hkpCdPoint& a_point) = 0;	// 01
+		virtual void	Reset();									// 02 - { earlyOutDistance = 0x7F7FFFEE; }
 
 
 		// members
-		UInt64 unk08;	// 08
+		float	earlyOutDistance;	// 08
+		float	pad0C;				// 0C
 	};
 	STATIC_ASSERT(sizeof(hkpCdPointCollector) == 0x10);
 }

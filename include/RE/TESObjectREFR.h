@@ -59,15 +59,43 @@ namespace RE
 		{
 			enum RecordFlag : UInt32
 			{
+				kIsGroundPiece = 1 << 4,
 				kDeleted = 1 << 5,
+				kHiddenFromLocalMap = 1 << 6,	// TESObjectSTAT
+				kTurnOffFire = 1 << 7,
+
+				kFlag8 = 1 << 8,
+				kInaccessible = kFlag8,	// TESObjectDOOR
+				kLODRespectsEnableState = kFlag8,	// TESObjectSTAT
+				kStartsDead = kFlag8,	// TESNPC
+				kDoesntLightWater = kFlag8,
+
+				kMotionBlur = 1 << 9,	// TESObjectSTAT
 				kPersistent = 1 << 10,
 				kInitiallyDisabled = 1 << 11,
 				kIgnored = 1 << 12,
+
+				kFlag13 = 1 << 13,
+				kStartUnconscious = kFlag13,	// TESNPC
+				kSkyMarker = kFlag13,
+
 				kIsFullLOD = 1 << 16,
+
+				kFlag17 = 1 << 17,
+				kNeverFades = kFlag17,	// TESObjectLIGH
+				kDoesntLightLandscape = kFlag17,
+
+				kNoAIAcquire = 1 << 25,
 				kCollisionGeometry_Filter = 1 << 26,
 				kCollisionGeometry_BoundingBox = 1 << 27,
 				kReflectedByAutoWater = 1 << 28,
-				kGround = 1 << 30,
+
+				kDontHavokSettle = 1 << 29,
+
+				kFlag30 = 1 << 30,
+				kGround = kFlag30,
+				kRespawns = kFlag30,
+
 				kMultibound = (UInt32)1 << 31
 			};
 		};

@@ -1,46 +1,69 @@
 #pragma once
 
+#include "RE/hkMultiThreadCheck.h"  // hkMultiThreadCheck
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
+#include "RE/hkpLinkedCollidable.h"  // hkpLinkedCollidable
+#include "RE/hkpProperty.h"  // hkpProperty
 
 
 namespace RE
 {
+	class hkMotionState;
+	class hkpShapeModifier;
+
+
+	namespace hkWorldOperation
+	{
+		enum class Result : UInt32
+		{
+			kPostponed,
+			kDone
+		};
+	}
+
+
 	class hkpWorldObject : public hkReferencedObject
 	{
 	public:
-		virtual ~hkpWorldObject();		// 00
+		enum class MultiThreadingChecks : UInt32
+		{
+			kEnable,
+			kIgnore
+		};
+
+
+		enum class BroadPhaseType : UInt32
+		{
+			kInvalid,
+			kEntity,
+			kPhantom,
+			kPhaseBorder,
+
+			kTotal
+		};
+
+
+		virtual ~hkpWorldObject();																												// 00
+
+		// override (hkReferencedObject)
+		virtual void						CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;	// 02
 
 		// add
-		virtual void	Unk_03(void);	// 03 - { return 1; }
-		virtual void	Unk_04(void);	// 04 - { return 1; }
-		virtual void	Unk_05(void);	// 05 - pure
+		virtual hkWorldOperation::Result	SetShape(const hkpShape* a_shape);																	// 03 - { return hkWorldOperation::Result::kDone; }
+		virtual hkWorldOperation::Result	UpdateShape(hkpShapeModifier* a_shapeModifier);														// 04 - { return hkWorldOperation::Result::kDone; }
+		virtual hkMotionState*				GetMotionState() = 0;																				// 05
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
-		UInt64	unk20;	// 20
-		UInt64	unk28;	// 28
-		UInt64	unk30;	// 30
-		UInt64	unk38;	// 38
-		UInt64	unk40;	// 40
-		UInt64	unk48;	// 48
-		UInt64	unk50;	// 50
-		UInt64	unk58;	// 58
-		UInt64	unk60;	// 60
-		UInt64	unk68;	// 68
-		UInt64	unk70;	// 70
-		UInt64	unk78;	// 78
-		UInt64	unk80;	// 80
-		UInt64	unk88;	// 88
-		UInt64	unk90;	// 90
-		UInt64	unk98;	// 98
-		UInt64	unkA0;	// A0
-		UInt64	unkA8;	// A8
-		UInt64	unkB0;	// B0
-		UInt64	unkB8;	// B8
-		UInt64	unkC0;	// C0
-		UInt64	unkC8;	// C8
+		hkpWorld*				world;				// 10
+		UInt32					userData;			// 18
+		UInt32					pad0C;				// 1C
+		hkpLinkedCollidable		collidable;			// 20
+		hkMultiThreadCheck		multiThreadCheck;	// A0
+		UInt32					padAC;				// AC
+		hkStringPtr				name;				// B0
+		hkArray<hkpProperty>	properties;			// B8
+		void*					treeData;			// C8
 	};
 	STATIC_ASSERT(sizeof(hkpWorldObject) == 0xD0);
 }

@@ -20,14 +20,10 @@ namespace RE
 		size_type length() const noexcept;
 
 	protected:
-		enum
-		{
-			kManaged = 1 << 0
-		};
+		enum { kManaged = 1 << 0 };
 
 
 		const char* _data;	// 0
 	};
-
 	STATIC_ASSERT(sizeof(hkStringPtr) == 0x8);
 }

@@ -1,14 +1,20 @@
 #pragma once
 
+#include "RE/hkArray.h"  // hkArray
+#include "RE/hkVector4.h"  // hkVector4
 #include "RE/hkpEntityListener.h"  // hkpEntityListener
 #include "RE/hkpPhantomListener.h"  // hkpPhantomListener
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
-#include "RE/NiPoint3.h"  // NiPoint3
 
 
 namespace RE
 {
-	class hkpCachingShapePhantom;
+	class hkpAllCdPointCollector;
+	class hkpPhantom;
+	class hkpRigidBody;
+	class hkpTriggerVolume;
+	struct hkpRootCdPoint;
+	struct hkpSurfaceConstraintInfo;
 
 
 	class hkpCharacterProxy :
@@ -17,40 +23,47 @@ namespace RE
 		public hkpPhantomListener	// 18
 	{
 	public:
-		virtual ~hkpCharacterProxy();	// 00
+		virtual ~hkpCharacterProxy();																																																													// 00
+
+		// override (hkReferencedObject)
+		virtual void	CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;																																								// 02
+
+		// override (hkpEntityListener)
+		virtual void	EntityRemovedCallback(hkpEntity* a_entity) override;																																																			// 02
+
+		// override (hkpPhantomListener)
+		virtual void	PhantomRemovedCallback(hkpPhantom* a_phantom) override;																																																			// 02
 
 		// add
-		virtual void	Unk_03(void);	// 03
-		virtual void	Unk_04(void);	// 04
+		virtual void	UpdateManifold(const hkpAllCdPointCollector& a_startPointCollector, const hkpAllCdPointCollector& a_castCollector, hkArray<hkpRootCdPoint>& a_manifold, hkArray<hkpRigidBody*>& a_bodies, hkArray<hkpPhantom*>& a_phantoms, bool a_isMultithreaded = false);	// 03
+		virtual void	ExtractSurfaceConstraintInfo(const hkpRootCdPoint& a_hit, hkpSurfaceConstraintInfo& a_surfaceOut, float a_timeTravelled) const;																																	// 04
 
 
-		// members
-		UInt64					unk20;					// 20
-		UInt64					unk28;					// 28
-		UInt64					unk30;					// 30
-		UInt64					unk38;					// 38
-		UInt64					unk40;					// 40
-		UInt64					unk48;					// 48
-		UInt64					unk50;					// 50
-		UInt64					unk58;					// 58
-		NiPoint3				velocity;				// 60
-		UInt32					unk6C;					// 6C
-		NiPoint3				unk70;					// 70
-		UInt32					unk7C;					// 7C
-		hkpCachingShapePhantom*	cachingShapePhantom;	// 80
-		UInt64					unk88;					// 88
-		UInt64					unk90;					// 90
-		UInt64					unk98;					// 98
-		UInt64					unkA0;					// A0
-		UInt64					unkA8;					// A8
-		UInt64					unkB0;					// B0
-		UInt64					unkB8;					// B8
-		UInt64					unkC0;					// C0
-		UInt64					unkC8;					// C8
-		UInt64					unkD0;					// D0
-		UInt64					unkD8;					// D8
-		UInt64					unkE0;					// E0
-		UInt64					unkE8;					// E8
+		hkArray<hkpRootCdPoint>				manifold;						// 20
+		hkArray<hkpRigidBody*>				bodies;							// 30
+		hkArray<hkpPhantom*>				phantoms;						// 40
+		hkArray<hkpTriggerVolume*>			overlappingTriggerVolumes;		// 50
+		hkVector4							velocity;						// 60
+		hkVector4							oldDisplacement;				// 70
+		hkpShapePhantom*					shapePhantom;					// 80
+		float								dynamicFriction;				// 88
+		float								staticFriction;					// 8C
+		hkVector4							up;								// 90
+		float								extraUpStaticFriction;			// A0
+		float								extraDownStaticFriction;		// A4
+		float								keepDistance;					// A8
+		float								keepContactTolerance;			// AC
+		float								contactAngleSensitivity;		// B0
+		SInt32								userPlanes;						// B4
+		float								maxCharacterSpeedForSolver;		// B8
+		float								characterStrength;				// BC
+		float								characterMass;					// C0
+		UInt32								padC4;							// C4
+		hkArray<hkpCharacterProxyListener*>	listeners;						// C8
+		float								maxSlopeCosine;					// D8
+		float								penetrationRecoverySpeed;		// DC
+		SInt32								maxCastIterations;				// E0
+		bool								refreshManifoldInCheckSupport;	// E4
 	};
 	STATIC_ASSERT(sizeof(hkpCharacterProxy) == 0xF0);
 }

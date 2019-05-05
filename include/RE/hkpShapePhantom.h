@@ -1,45 +1,38 @@
 #pragma once
 
+#include "RE/hkMotionState.h"  // hkMotionState
 #include "RE/hkpPhantom.h"  // hkpPhantom
 
 
 namespace RE
 {
+	class hkTransform;
+	class hkpCdBodyPairCollector;
+	class hkpCdPointCollector;
+	struct hkpCollisionInput;
+	struct hkpLinearCastInput;
+
+
 	class hkpShapePhantom : public hkpPhantom
 	{
 	public:
-		virtual ~hkpShapePhantom();	// 00
+		virtual ~hkpShapePhantom();																																															// 00
+
+		// override (hkpPhantom)
+		virtual hkWorldOperation::Result	SetShape(const hkpShape* a_shape) override;																																		// 03
+		virtual hkMotionState*				GetMotionState() override;																																						// 05 - { return &motionState; }
+		virtual void						CalcAabb(hkAabb& a_aabb) override;																																				// 07
+		virtual void						DeallocateInternalArrays() override;																																			// 0E - { hkpPhantom::DeallocateInternalArrays(); }
 
 		// add
-		virtual void	Unk_0F(void);	// 0F
-		virtual void	Unk_10(void);	// 10
-		virtual void	Unk_11(void);	// 11
-		virtual void	Unk_12(void);	// 12
+		virtual void						SetPositionAndLinearCast(const hkVector4& a_position, const hkpLinearCastInput& a_input, hkpCdPointCollector& a_castCollector, hkpCdPointCollector* a_startCollector) = 0;		// 0F
+		virtual void						SetTransformAndLinearCast(const hkTransform& a_transform, const hkpLinearCastInput& a_input, hkpCdPointCollector& a_castCollector, hkpCdPointCollector* a_startCollector) = 0;	// 10
+		virtual void						GetClosestPoints(hkpCdPointCollector& a_collector, const hkpCollisionInput* a_input = 0) = 0;																					// 11
+		virtual void						GetPenetrations(hkpCdBodyPairCollector& a_collector, const hkpCollisionInput* a_input = 0) = 0;																					// 12
 
 
 		// members
-		UInt64	unk0F0;	// 0F0
-		UInt64	unk0F8;	// 0F8
-		UInt64	unk100;	// 100
-		UInt64	unk108;	// 108
-		UInt64	unk110;	// 110
-		UInt64	unk118;	// 118
-		UInt64	unk120;	// 120
-		UInt64	unk128;	// 128
-		UInt64	unk130;	// 130
-		UInt64	unk138;	// 138
-		UInt64	unk140;	// 140
-		UInt64	unk148;	// 148
-		UInt64	unk150;	// 150
-		UInt64	unk158;	// 158
-		UInt64	unk160;	// 160
-		UInt64	unk168;	// 168
-		UInt64	unk170;	// 170
-		UInt64	unk178;	// 178
-		UInt64	unk180;	// 180
-		UInt64	unk188;	// 188
-		UInt64	unk190;	// 190
-		UInt64	unk198;	// 198
+		hkMotionState motionState;	// 0F0
 	};
 	STATIC_ASSERT(sizeof(hkpShapePhantom) == 0x1A0);
 }

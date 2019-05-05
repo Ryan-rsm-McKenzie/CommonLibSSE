@@ -11,7 +11,7 @@ namespace RE
 	template <class T>
 	class hkRefPtr
 	{
-		//static_assert(std::is_convertible<hkReferencedObject, T>::value);
+		//static_assert(std::is_convertible<T*, hkReferencedObject*>::value);
 	public:
 		constexpr hkRefPtr() noexcept :
 			ptr(0)
