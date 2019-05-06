@@ -7,6 +7,13 @@ namespace RE
 	using hkTime = float;
 
 
+	enum class hkResult : UInt32
+	{
+		kSuccess = 0,
+		kFailure = 1
+	};
+
+
 	// 16-bit float with 7-bit precision
 	class hkHalf
 	{

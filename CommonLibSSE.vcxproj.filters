@@ -637,6 +637,33 @@
     <Filter Include="include\RE\Skyrim\BSHavok\NetImmerse">
       <UniqueIdentifier>{a6342141-a179-4586-9908-4d756c701a9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\Skyrim\BSHavok\Physics">
+      <UniqueIdentifier>{721557a2-1bde-4bc1-b29b-75e762ebb3a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSHavok\Physics\Utilities">
+      <UniqueIdentifier>{4b03f06d-9c94-4d1d-acde-864d5abe5f42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSHavok\Physics\Utilities\CharacterControl">
+      <UniqueIdentifier>{f748f6bd-7cb0-4d5e-a3f8-3eca6915310a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSHavok\Physics\Utilities\CharacterControl\CharacterProxy">
+      <UniqueIdentifier>{f47e0099-71d4-4143-9fdc-1e206d2ff238}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSHavok\Common\Base\Memory">
+      <UniqueIdentifier>{0dec1321-e480-4c7f-a887-782cc44aa34f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSHavok\Common\Base\Memory\Allocator">
+      <UniqueIdentifier>{3efac8ff-833c-4e1b-8b5d-27a1dd0cc7c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSHavok\Common\Base\Container">
+      <UniqueIdentifier>{c3da93d9-7bd0-44e5-9a5b-90e7978708f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSHavok\Physics\ConstraintSolver">
+      <UniqueIdentifier>{807a2df8-b6d2-4f7b-a6fe-23352a444409}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSHavok\Physics\ConstraintSolver\Simplex">
+      <UniqueIdentifier>{6af75ffb-cdfa-4854-8e19-bd513c5c547d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -1139,6 +1166,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\hkBaseTypes.cpp">
       <Filter>src\RE\Skyrim\BSHavok\Common\Base\Types\Physics\MotionState</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\hkpCharacterProxyListener.cpp">
+      <Filter>src\RE\Skyrim\BSHavok\Physics\Utilities\CharacterControl\CharacterProxy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\hkContainerAllocators.cpp">
+      <Filter>src\RE\Skyrim\BSHavok\Common\Base\Container</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -3307,6 +3340,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\hkpSimulationIsland.h">
       <Filter>include\RE\Skyrim\BSHavok\Physics\Dynamics\World</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkMemoryAllocator.h">
+      <Filter>include\RE\Skyrim\BSHavok\Common\Base\Memory\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkContainerAllocators.h">
+      <Filter>include\RE\Skyrim\BSHavok\Common\Base\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpSimplexSolver.h">
+      <Filter>include\RE\Skyrim\BSHavok\Physics\ConstraintSolver\Simplex</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

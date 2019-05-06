@@ -42,7 +42,7 @@ namespace RE
 		float	z;	// 8
 
 	protected:
-		static unsigned int _sqrtTable[256];
+		static UInt32 _sqrtTable[256];
 	};
 	STATIC_ASSERT(sizeof(NiPoint3) == 0xC);
 }

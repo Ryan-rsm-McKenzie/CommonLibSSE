@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/NiObject.h"  // NiObject
 
 
@@ -26,7 +27,7 @@ namespace RE
 
 
 		// members
-		char* name;	// 10
+		BSFixedString name;	// 10
 	};
 	STATIC_ASSERT(sizeof(NiExtraData) == 0x18);
 }

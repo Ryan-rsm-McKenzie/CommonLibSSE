@@ -233,6 +233,8 @@
     <ClCompile Include="src\RE\GViewport.cpp" />
     <ClCompile Include="src\RE\hkBaseObject.cpp" />
     <ClCompile Include="src\RE\hkBaseTypes.cpp" />
+    <ClCompile Include="src\RE\hkContainerAllocators.cpp" />
+    <ClCompile Include="src\RE\hkpCharacterProxyListener.cpp" />
     <ClCompile Include="src\RE\hkReferencedObject.cpp" />
     <ClCompile Include="src\RE\hkStringPtr.cpp" />
     <ClCompile Include="src\RE\IFormFactory.cpp" />
@@ -709,7 +711,9 @@
     <ClInclude Include="include\RE\hkbRagdollDriver.h" />
     <ClInclude Include="include\RE\hkbStateMachine.h" />
     <ClInclude Include="include\RE\hkContactPoint.h" />
+    <ClInclude Include="include\RE\hkContainerAllocators.h" />
     <ClInclude Include="include\RE\hkMatrix3.h" />
+    <ClInclude Include="include\RE\hkMemoryAllocator.h" />
     <ClInclude Include="include\RE\hkMotionState.h" />
     <ClInclude Include="include\RE\hkMultiThreadCheck.h" />
     <ClInclude Include="include\RE\hkpAgentNnTrack.h" />
@@ -747,6 +751,7 @@
     <ClInclude Include="include\RE\hkpShapeContainer.h" />
     <ClInclude Include="include\RE\hkpShapePhantom.h" />
     <ClInclude Include="include\RE\hkpShapeType.h" />
+    <ClInclude Include="include\RE\hkpSimplexSolver.h" />
     <ClInclude Include="include\RE\hkpSimulationIsland.h" />
     <ClInclude Include="include\RE\hkpTypedBroadPhaseHandle.h" />
     <ClInclude Include="include\RE\hkpWeldingUtility.h" />

@@ -41,6 +41,7 @@ namespace RE
 		virtual void	ExtractSurfaceConstraintInfo(const hkpRootCdPoint& a_hit, hkpSurfaceConstraintInfo& a_surfaceOut, float a_timeTravelled) const;																																	// 04
 
 
+		// members
 		hkArray<hkpRootCdPoint>				manifold;						// 20
 		hkArray<hkpRigidBody*>				bodies;							// 30
 		hkArray<hkpPhantom*>				phantoms;						// 40

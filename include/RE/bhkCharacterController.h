@@ -13,34 +13,35 @@ namespace RE
 	class bhkCharacterMoveFinishEvent;
 	class bhkListShape;
 	class hkpEntity;
+	class hkVector4;
 
 
-	class bhkCharacterController :
+	class alignas(0x10) bhkCharacterController :
 		public NiRefObject,									// 000
 		public BSTEventSource<bhkCharacterMoveFinishEvent>	// 010
 	{
 	public:
-		virtual ~bhkCharacterController();		// 00
+		virtual ~bhkCharacterController();									// 00
 
 		// add
-		virtual void	Unk_02(void) = 0;		// 02
-		virtual void	Unk_03(void) = 0;		// 03
-		virtual void	Unk_04(void) = 0;		// 04
-		virtual void	Unk_05(void) = 0;		// 05
-		virtual void	Unk_06(void) = 0;		// 06
-		virtual void	Unk_07(void) = 0;		// 07
-		virtual void	Unk_08(void) = 0;		// 08
-		virtual void	Unk_09(void) = 0;		// 09
-		virtual void	Unk_0A(void) = 0;		// 0A
-		virtual void	Unk_0B(void) = 0;		// 0B
-		virtual void	Unk_0C(void) = 0;		// 0C
-		virtual void	Unk_0D(void) = 0;		// 0D
-		virtual void	Unk_0E(void) = 0;		// 0E
-		virtual void	Unk_0F(void) = 0;		// 0F
-		virtual void	Unk_10(void) = 0;		// 10
-		virtual void	Unk_11(void) = 0;		// 11
-		virtual void	Unk_12(void) = 0;		// 12
-		virtual void	Unk_13(void) = 0;		// 13
+		virtual void	Unk_02(void) = 0;									// 02
+		virtual void	Unk_03(void) = 0;									// 03
+		virtual void	Unk_04(void) = 0;									// 04
+		virtual void	Unk_05(void) = 0;									// 05
+		virtual void	GetLinearVelocity(hkVector4& a_velOut) const = 0;	// 06 - might also return hkVector4
+		virtual void	SetLinearVelocity(const hkVector4& a_vel) = 0;		// 07
+		virtual void	Unk_08(void) = 0;									// 08
+		virtual void	Unk_09(void) = 0;									// 09
+		virtual void	Unk_0A(void) = 0;									// 0A
+		virtual void	Unk_0B(void) = 0;									// 0B
+		virtual void	Unk_0C(void) = 0;									// 0C
+		virtual void	Unk_0D(void) = 0;									// 0D
+		virtual void	Unk_0E(void) = 0;									// 0E
+		virtual void	Unk_0F(void) = 0;									// 0F
+		virtual void	Unk_10(void) = 0;									// 10
+		virtual void	Unk_11(void) = 0;									// 11
+		virtual void	Unk_12(void) = 0;									// 12
+		virtual void	Unk_13(void) = 0;									// 13
 
 
 		// members
@@ -109,8 +110,8 @@ namespace RE
 		UInt64							unk2A8;						// 2A8
 		hkpEntity*						groundEntity;				// 2B0
 		UInt64							unk2B8;						// 2B8
-		UInt64							unk2C0;						// 2C0
-		UInt64							unk2C8;						// 2C8
+		hkReferencedObject*				unk2C0;						// 2C0
+		hkReferencedObject*				unk2C8;						// 2C8
 		UInt64							unk2D0;						// 2D0
 		UInt64							unk2D8;						// 2D8
 		UInt64							unk2E0;						// 2E0

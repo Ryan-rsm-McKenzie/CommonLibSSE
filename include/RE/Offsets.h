@@ -240,6 +240,13 @@ namespace RE
 		}
 
 
+		namespace hkContainerHeapAllocator
+		{
+			// 48 8D 0D ? ? ? ? 48 8B 93 C8 00 00 00
+			constexpr std::uintptr_t Singleton = 0x01DF5E70;	// 1_5_73
+		}
+
+
 		namespace Inventory
 		{
 			// E8 ? ? ? ? 48 8B C8 48 8D 54 24 58 E8 ? ? ? ? 49 8B 0F

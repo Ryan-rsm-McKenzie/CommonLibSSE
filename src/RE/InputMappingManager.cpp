@@ -74,7 +74,8 @@ namespace RE
 			}
 		}
 
-		return "";
+		static BSFixedString empty = "";
+		return empty;
 	}
 
 
