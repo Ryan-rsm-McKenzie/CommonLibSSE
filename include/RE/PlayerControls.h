@@ -28,10 +28,10 @@ namespace RE
 
 
 	class PlayerControls :
-		public BSTEventSink<InputEvent*>,
-		public BSTEventSink<MenuOpenCloseEvent>,
-		public BSTEventSink<MenuModeChangeEvent>,
-		public BSTEventSink<TESFurnitureEvent>
+		public BSTEventSink<InputEvent*>,			// 000
+		public BSTEventSink<MenuOpenCloseEvent>,	// 008
+		public BSTEventSink<MenuModeChangeEvent>,	// 010
+		public BSTEventSink<TESFurnitureEvent>		// 018
 	{
 	public:
 		struct Data024
@@ -57,16 +57,14 @@ namespace RE
 		};
 
 
-		virtual	~PlayerControls();
+		PlayerControls();
+		virtual	~PlayerControls();	// 00
 
-		virtual UInt32			Unk_01();
-
-		static PlayerControls*	GetSingleton();
-		PlayerControls*			ctor_Hook();
+		static PlayerControls* GetSingleton();
 
 
 		// members
-		UInt32							pad020;				// 020
+		UInt32							unk020;				// 020
 		Data024							data024;			// 024
 		BSTArray<PlayerInputHandler*>	handlers;			// 058
 		BSTArray<void*>					unk070;				// 070
@@ -92,12 +90,11 @@ namespace RE
 		RunHandler*						runHandler;			// 1C0
 		SneakHandler*					sneakHandler;		// 1C8
 		TogglePOVHandler*				togglePOVHandler;	// 1D0
-
-	protected:
-		PlayerControls();
+		UInt64							unk1D8;				// 1D8
 
 	private:
 		PlayerControls* Ctor_Internal();
 	};
 	STATIC_ASSERT(offsetof(PlayerControls, data024) == 0x024);
+	STATIC_ASSERT(sizeof(PlayerControls) == 0x1E0);
 }

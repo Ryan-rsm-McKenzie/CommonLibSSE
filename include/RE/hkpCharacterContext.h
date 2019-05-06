@@ -28,8 +28,7 @@ namespace RE
 		hkVector4		position;			// 90
 		hkVector4		velocity;			// A0
 		hkVector4		characterGravity;	// B0
-		UInt32			userData;			// C0
-		UInt32			padC4;				// C4
+		UInt64			userData;			// C0
 		UInt64			padC8;				// C8
 	};
 	STATIC_ASSERT(sizeof(hkpCharacterInput) == 0xD0);

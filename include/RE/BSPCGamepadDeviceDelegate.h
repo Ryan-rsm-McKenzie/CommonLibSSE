@@ -12,7 +12,7 @@ namespace RE
 
 		// override (BSGamepadDevice)
 		virtual void	Initialize() override;			// 01
-		virtual	void	Process(float a_unk1) override;	// 02
+		virtual	void	Process(float a_arg1) override;	// 02
 
 
 		// members

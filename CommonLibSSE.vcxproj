@@ -712,6 +712,7 @@
     <ClInclude Include="include\RE\hkMatrix3.h" />
     <ClInclude Include="include\RE\hkMotionState.h" />
     <ClInclude Include="include\RE\hkMultiThreadCheck.h" />
+    <ClInclude Include="include\RE\hkpAgentNnTrack.h" />
     <ClInclude Include="include\RE\hkpAllCdPointCollector.h" />
     <ClInclude Include="include\RE\hkpBroadPhaseHandle.h" />
     <ClInclude Include="include\RE\hkpCachingShapePhantom.h" />
@@ -724,6 +725,7 @@
     <ClInclude Include="include\RE\hkpCharacterState.h" />
     <ClInclude Include="include\RE\hkpCharacterStateManager.h" />
     <ClInclude Include="include\RE\hkpCollidable.h" />
+    <ClInclude Include="include\RE\hkpConstraintInfo.h" />
     <ClInclude Include="include\RE\hkpConstraintOwner.h" />
     <ClInclude Include="include\RE\hkpEntity.h" />
     <ClInclude Include="include\RE\hkpEntityListener.h" />
@@ -731,6 +733,7 @@
     <ClInclude Include="include\RE\hkpKeyframedRigidMotion.h" />
     <ClInclude Include="include\RE\hkpLinkedCollidable.h" />
     <ClInclude Include="include\RE\hkpListShape.h" />
+    <ClInclude Include="include\RE\hkpMaterial.h" />
     <ClInclude Include="include\RE\hkpMotion.h" />
     <ClInclude Include="include\RE\hkpPhantom.h" />
     <ClInclude Include="include\RE\hkpPhantomListener.h" />
@@ -739,11 +742,14 @@
     <ClInclude Include="include\RE\hkpRigidBody.h" />
     <ClInclude Include="include\RE\hkpRootCdPoint.h" />
     <ClInclude Include="include\RE\hkpShape.h" />
+    <ClInclude Include="include\RE\hkpShapeBuffer.h" />
     <ClInclude Include="include\RE\hkpShapeCollection.h" />
     <ClInclude Include="include\RE\hkpShapeContainer.h" />
     <ClInclude Include="include\RE\hkpShapePhantom.h" />
+    <ClInclude Include="include\RE\hkpShapeType.h" />
     <ClInclude Include="include\RE\hkpSimulationIsland.h" />
     <ClInclude Include="include\RE\hkpTypedBroadPhaseHandle.h" />
+    <ClInclude Include="include\RE\hkpWeldingUtility.h" />
     <ClInclude Include="include\RE\hkpWorld.h" />
     <ClInclude Include="include\RE\hkpWorldObject.h" />
     <ClInclude Include="include\RE\hkQuaternion.h" />
@@ -751,6 +757,7 @@
     <ClInclude Include="include\RE\hkRefPtr.h" />
     <ClInclude Include="include\RE\hkRefVariant.h" />
     <ClInclude Include="include\RE\hkRotation.h" />
+    <ClInclude Include="include\RE\hkSmallArray.h" />
     <ClInclude Include="include\RE\hkSseMathTypes.h" />
     <ClInclude Include="include\RE\hkStepInfo.h" />
     <ClInclude Include="include\RE\hkStringPtr.h" />

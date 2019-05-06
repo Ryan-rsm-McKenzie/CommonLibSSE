@@ -8,26 +8,30 @@ namespace RE
 	class BSWin32MouseDevice : public BSMouseDevice
 	{
 	public:
-		enum class Mouse : UInt32
+		struct Keys
 		{
-			kLeftButton,
-			kRightButton,
-			kMiddleButton,
-			kButton3,
-			kButton4,
-			kButton5,
-			kButton6,
-			kButton7,
-			kWheelUp,
-			kWheelDown
+			enum Key : UInt32
+			{
+				kLeftButton,
+				kRightButton,
+				kMiddleButton,
+				kButton3,
+				kButton4,
+				kButton5,
+				kButton6,
+				kButton7,
+				kWheelUp,
+				kWheelDown
+			};
 		};
+		using Key = Keys::Key;
 
 
 		virtual ~BSWin32MouseDevice();					// 00
 
 		// override (BSMouseDevice)
 		virtual void	Initialize() override;			// 01
-		virtual	void	Process(float a_unk1) override;	// 02
+		virtual	void	Process(float a_arg1) override;	// 02
 
 
 		// members

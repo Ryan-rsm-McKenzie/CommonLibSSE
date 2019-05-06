@@ -6,15 +6,22 @@ namespace RE
 	class hkpShapeContainer
 	{
 	public:
-		virtual ~hkpShapeContainer();	// 00
+		enum class ReferencePolicy : UInt32
+		{
+			kIgnore,
+			kIncrement
+		};
+
+
+		virtual ~hkpShapeContainer();																	// 00
 
 		// add
-		virtual void	Unk_01(void);	// 01
-		virtual void	Unk_02(void);	// 02
-		virtual void	Unk_03(void);	// 03
-		virtual void	Unk_04(void);	// 04 - { return 0; }
-		virtual void	Unk_05(void);	// 05
-		virtual void	Unk_06(void);	// 06 - { return 1; }
+		virtual SInt32			GetNumChildShapes() const;												// 01
+		virtual hkpShapeKey		GetFirstKey() const = 0;												// 02
+		virtual hkpShapeKey		GetNextKey(hkpShapeKey a_oldKey) const = 0;								// 03
+		virtual UInt32			GetCollisionFilterInfo(hkpShapeKey a_key) const;						// 04 - { return 0; }
+		virtual const hkpShape*	GetChildShape(hkpShapeKey a_key, hkpShapeBuffer& a_buffer) const = 0;	// 05
+		virtual bool			IsWeldingEnabled() const;												// 06 - { return true; }
 	};
 	STATIC_ASSERT(sizeof(hkpShapeContainer) == 0x8);
 }

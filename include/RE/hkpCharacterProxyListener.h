@@ -1,19 +1,29 @@
 #pragma once
 
+#include "RE/hkArray.h"  // hkArray
+
 
 namespace RE
 {
+	class hkContactPoint;
+	class hkpCharacterProxy;
+	struct hkpCharacterObjectInteractionEvent;
+	struct hkpCharacterObjectInteractionResult;
+	struct hkpRootCdPoint;
+	struct hkpSimplexSolverInput;
+
+
 	class hkpCharacterProxyListener
 	{
 	public:
-		virtual ~hkpCharacterProxyListener();	// 00
+		virtual ~hkpCharacterProxyListener();																																		// 00
 
 		// add
-		virtual void	Unk_01(void);			// 01 - { return; }
-		virtual void	Unk_02(void);			// 02 - { return; }
-		virtual void	Unk_03(void);			// 03 - { return; }
-		virtual void	Unk_04(void);			// 04 - { return; }
-		virtual void	Unk_05(void);			// 05 - { return; }
+		virtual void	ProcessConstraintsCallback(const hkpCharacterProxy* a_proxy, const hkArray<hkpRootCdPoint>& a_manifold, hkpSimplexSolverInput& a_input);					// 01 - { return; }
+		virtual void	ContactPointAddedCallback(const hkpCharacterProxy* a_proxy, const hkpRootCdPoint& a_point);																	// 02 - { return; }
+		virtual void	ContactPointRemovedCallback(const hkpCharacterProxy* a_proxy, const hkpRootCdPoint& a_point);																// 03 - { return; }
+		virtual void	CharacterInteractionCallback(hkpCharacterProxy* a_proxy, hkpCharacterProxy* a_otherProxy, const hkContactPoint& a_contact);									// 04 - { return; }
+		virtual void	ObjectInteractionCallback(hkpCharacterProxy* a_proxy, const hkpCharacterObjectInteractionEvent& a_input, hkpCharacterObjectInteractionResult& a_output);	// 05 - { return; }
 	};
 	STATIC_ASSERT(sizeof(hkpCharacterProxyListener) == 0x8);
 }

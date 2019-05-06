@@ -1,25 +1,28 @@
 #pragma once
 
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
+#include "RE/hkpConstraintInfo.h"  // hkpConstraintInfo
 
 
 namespace RE
 {
+	class hkpConstraintInstance;
+
+
 	class hkpConstraintOwner : public hkReferencedObject
 	{
 	public:
-		virtual ~hkpConstraintOwner();	// 00
+		virtual ~hkpConstraintOwner();																	// 00
 
 		// add
-		virtual void	Unk_03(void);	// 03 - { return; }
-		virtual void	Unk_04(void);	// 04 - { return; }
-		virtual void	Unk_05(void);	// 05 - { return; }
-		virtual void	Unk_06(void);	// 06 - { return; }
+		virtual void	AddConstraintToCriticalLockedIsland(hkpConstraintInstance* a_constraint);		// 03 - { return; }
+		virtual void	RemoveConstraintFromCriticalLockedIsland(hkpConstraintInstance* a_constraint);	// 04 - { return; }
+		virtual void	AddCallbackRequest(hkpConstraintInstance* a_constraint, SInt32 a_request);		// 05 - { return; }
+		virtual void	CheckAccessRW();																// 06 - { return; }
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
+		hkpConstraintInfo constraintInfo;	// 10
 	};
 	STATIC_ASSERT(sizeof(hkpConstraintOwner) == 0x20);
 }

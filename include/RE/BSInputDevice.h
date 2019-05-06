@@ -27,7 +27,7 @@ namespace RE
 		bool		IsKeyboard() const;
 		bool		IsMouse() const;
 		bool		IsGamepad() const;
-		bool		IsPressed(UInt32 keyCode) const;
+		bool		IsPressed(UInt32 a_keyCode) const;
 
 
 		// members

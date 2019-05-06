@@ -5,25 +5,17 @@
 
 namespace RE
 {
+	PlayerControls::PlayerControls()
+	{
+		Ctor_Internal();
+	}
+
+
 	PlayerControls* PlayerControls::GetSingleton()
 	{
 		using func_t = function_type_t<decltype(&PlayerControls::GetSingleton)>;
 		func_t* func = unrestricted_cast<func_t*>(&::PlayerControls::GetSingleton);
 		return func();
-	}
-
-
-	PlayerControls* PlayerControls::ctor_Hook()
-	{
-		using func_t = function_type_t<decltype(&PlayerControls::ctor_Hook)>;
-		func_t* func = unrestricted_cast<func_t*>(&::PlayerControls::ctor_Hook);
-		return func(this);
-	}
-
-
-	PlayerControls::PlayerControls()
-	{
-		Ctor_Internal();
 	}
 
 

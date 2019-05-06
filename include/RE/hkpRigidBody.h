@@ -8,10 +8,15 @@ namespace RE
 	class hkpRigidBody : public hkpEntity
 	{
 	public:
-		virtual ~hkpRigidBody();	// 00
+		virtual ~hkpRigidBody();																		// 00
+
+		// override (hkpEntity)
+		virtual hkWorldOperation::Result	SetShape(const hkpShape* a_shape) override;					// 03
+		virtual hkWorldOperation::Result	UpdateShape(hkpShapeModifier* a_shapeModifier) override;	// 04
+		virtual hkMotionState*				GetMotionState() override;									// 05 - { return &motion.motionState; }
 
 		// add
-		virtual void Unk_07(void);	// 07
+		virtual hkpRigidBody*				Clone() const;												// 07
 	};
 	STATIC_ASSERT(sizeof(hkpRigidBody) == 0x2D0);
 }

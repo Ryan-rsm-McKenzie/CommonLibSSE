@@ -41,11 +41,13 @@ namespace RE
 				kMapDebug,
 				kLockpicking,
 				kFavor,
-				kCount = 17,
+
+				kTotal = 17,
 
 				kInvalid = 18
 			};
 		};
+		using Context = Contexts::Context;
 
 
 		enum class ControlState : UInt32
@@ -84,8 +86,8 @@ namespace RE
 		static InputMappingManager*	GetSingleton();
 
 		UInt8						AllowTextInput(bool a_allow);
-		UInt32						GetMappedKey(const BSFixedString& a_name, DeviceType a_deviceType, Contexts::Context a_contextIdx = Contexts::kGameplay) const;
-		const BSFixedString&		GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Contexts::Context a_contextIdx = Contexts::kGameplay) const;
+		UInt32						GetMappedKey(const BSFixedString& a_name, DeviceType a_deviceType, Context a_contextIdx = Context::kGameplay) const;
+		const BSFixedString&		GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Context a_contextIdx = Context::kGameplay) const;
 		bool						IsLookingControlsEnabled() const;
 		bool						IsFlyingControlsEnabled() const;
 		bool						IsSneakingControlsEnabled() const;
@@ -94,7 +96,7 @@ namespace RE
 
 
 		// members
-		InputContext*	context[Contexts::kCount];	// 060
+		InputContext*	context[Context::kTotal];	// 060
 		BSTArray<void*>	unk0E8;						// 0E8
 		BSTArray<void*>	unk100;						// 100
 		ControlState	controlState;				// 118 - init'd to kInvalid

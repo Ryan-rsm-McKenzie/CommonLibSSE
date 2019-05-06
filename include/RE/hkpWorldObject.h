@@ -56,8 +56,7 @@ namespace RE
 
 		// members
 		hkpWorld*				world;				// 10
-		UInt32					userData;			// 18
-		UInt32					pad0C;				// 1C
+		UInt64					userData;			// 18
 		hkpLinkedCollidable		collidable;			// 20
 		hkMultiThreadCheck		multiThreadCheck;	// A0
 		UInt32					padAC;				// AC

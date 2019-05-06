@@ -3,6 +3,7 @@
 
 namespace RE
 {
+	using hkObjectIndex = UInt16;
 	using hkTime = float;
 
 

@@ -10,13 +10,13 @@ namespace RE
 
 		// add
 		virtual void	Initialize() = 0;			// 01
-		virtual	void	Process(float a_unk1) = 0;	// 02
-		virtual	void	Unk_03();					// 03 - pure
-		virtual	void	Unk_04();					// 04 - pure
-		virtual void	Unk_05();					// 05 - pure
-		virtual void	Unk_06();					// 06 - pure
+		virtual	void	Process(float a_arg1) = 0;	// 02
+		virtual	void	Unk_03() = 0;				// 03
+		virtual	void	Unk_04() = 0;				// 04
+		virtual void	Unk_05() = 0;				// 05
+		virtual void	Unk_06() = 0;				// 06
 		virtual bool	IsEnabled() const = 0;		// 07
-		virtual void	Unk_08();					// 08 - pure
+		virtual void	Unk_08() = 0;				// 08
 	};
 	STATIC_ASSERT(sizeof(BSIInputDevice) == 0x8);
 }

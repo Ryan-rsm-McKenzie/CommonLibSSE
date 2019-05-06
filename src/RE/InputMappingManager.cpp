@@ -24,10 +24,9 @@ namespace RE
 	}
 
 
-	UInt32 InputMappingManager::GetMappedKey(const BSFixedString& a_name, DeviceType a_deviceType, Contexts::Context a_contextIdx) const
+	UInt32 InputMappingManager::GetMappedKey(const BSFixedString& a_name, DeviceType a_deviceType, Context a_contextIdx) const
 	{
 		BSTArray<InputContext::Mapping>* maps = 0;
-
 		switch (a_deviceType) {
 		case DeviceType::kMouse:
 			maps = &context[a_contextIdx]->mouseMap;
@@ -52,10 +51,9 @@ namespace RE
 	}
 
 
-	const BSFixedString& InputMappingManager::GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Contexts::Context a_contextIdx) const
+	const BSFixedString& InputMappingManager::GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Context a_contextIdx) const
 	{
 		BSTArray<InputContext::Mapping>* maps = 0;
-
 		switch (a_deviceType) {
 		case DeviceType::kMouse:
 			maps = &context[a_contextIdx]->mouseMap;
@@ -68,8 +66,6 @@ namespace RE
 			break;
 		}
 
-		static BSFixedString none = "";
-
 		if (maps) {
 			for (auto& mapping : *maps) {
 				if (mapping.buttonID == a_buttonID) {
@@ -78,7 +74,7 @@ namespace RE
 			}
 		}
 
-		return none;
+		return "";
 	}
 
 

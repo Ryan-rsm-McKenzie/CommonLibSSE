@@ -19,7 +19,7 @@ namespace RE
 		virtual void	Initialize() override;			// 01
 		virtual	void	Process(float a_unk1) override;	// 02
 
-		bool			IsPressed(UInt32 keyCode) const;
+		bool			IsPressed(UInt32 a_keyCode) const;
 
 
 		// members

@@ -13,30 +13,34 @@ namespace RE
 		inline static const void* RTTI = RTTI_BSWin32GamepadDevice;
 
 
-		enum class Gamepad : UInt32
+		struct Keys
 		{
-			kUp = 0x0001,
-			kDown = 0x0002,
-			kLeft = 0x0004,
-			kRight = 0x0008,
-			kStart = 0x0010,
-			kBack = 0x0020,
-			kLeftThumb = 0x0040,
-			kRightThumb = 0x0080,
-			kLeftShoulder = 0x0100,
-			kRightShoulder = 0x0200,
-			kA = 0x1000,
-			kB = 0x2000,
-			kX = 0x4000,
-			kY = 0x8000,
-			kLT = 0x0009,
-			kRT = 0x000A
+			enum Key : UInt32
+			{
+				kUp = 0x0001,
+				kDown = 0x0002,
+				kLeft = 0x0004,
+				kRight = 0x0008,
+				kStart = 0x0010,
+				kBack = 0x0020,
+				kLeftThumb = 0x0040,
+				kRightThumb = 0x0080,
+				kLeftShoulder = 0x0100,
+				kRightShoulder = 0x0200,
+				kA = 0x1000,
+				kB = 0x2000,
+				kX = 0x4000,
+				kY = 0x8000,
+				kLT = 0x0009,
+				kRT = 0x000A
+			};
 		};
+		using Key = Keys::Key;
 
 
 		// override (BSPCGamepadDeviceDelegate)
 		virtual void	Initialize() override;			// 01
-		virtual	void	Process(float a_unk1) override;	// 02
+		virtual	void	Process(float a_arg1) override;	// 02
 
 
 		// members
