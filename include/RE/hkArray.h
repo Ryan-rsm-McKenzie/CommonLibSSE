@@ -40,6 +40,30 @@ namespace RE
 		}
 
 
+		void reserve(size_type a_newCap)
+		{
+			assert(a_newCap <= kCapacityMask);
+			if (a_newCap <= capacity()) {
+				return;
+			}
+
+			auto allocator = hkContainerHeapAllocator::GetSingleton();
+			size_type newSize = a_newCap * sizeof(T);
+			T* newMem = static_cast<T*>(allocator->BufAlloc(newSize));
+			if (_data) {
+				size_type oldSize = size() * sizeof(T);
+				std::memcpy(newMem, _data, oldSize);
+				if ((_capacityAndFlags & kDontDeallocFlag) == 0) {
+					allocator->BufFree(_data, oldSize);
+				}
+			}
+
+			_data = newMem;
+			_capacityAndFlags &= ~kCapacityMask;
+			_capacityAndFlags |= a_newCap & kCapacityMask;
+		}
+
+
 		size_type capacity() const noexcept
 		{
 			return _capacityAndFlags & kCapacityMask;
@@ -49,7 +73,7 @@ namespace RE
 		void push_back(const T& a_value)
 		{
 			if (size() == capacity()) {
-				resize(static_cast<size_type>(std::ceil(size() * GROWTH_FACTOR)));
+				reserve(static_cast<size_type>(std::ceil(size() * GROWTH_FACTOR)));
 			}
 			_data[_size++] = a_value;
 		}
@@ -57,7 +81,7 @@ namespace RE
 
 		void resize(size_type a_count)
 		{
-			assert(a_count > 0 && a_count < kCapacityMask);
+			assert(a_count > 0 && a_count <= kCapacityMask);
 			if (a_count == size()) {
 				return;
 			}
@@ -86,17 +110,20 @@ namespace RE
 			}
 
 			_data = newMem;
+			_size = a_count;
 			_capacityAndFlags &= ~kCapacityMask;
 			_capacityAndFlags |= a_count & kCapacityMask;
 		}
+
+
+
 
 
 		enum : UInt32
 		{
 			kCapacityMask = 0x3FFFFFFF,
 			kFlagMask = 0xC0000000,
-			kDontDeallocFlag = (UInt32)1 << 31,
-			kForceSigned = static_cast<UInt32>(-1)
+			kDontDeallocFlag = (UInt32)1 << 31
 		};
 
 
