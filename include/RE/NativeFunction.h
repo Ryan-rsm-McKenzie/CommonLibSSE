@@ -65,10 +65,10 @@ namespace RE
 			NativeFunction(const NativeFunction&) = delete;
 			NativeFunction(NativeFunction&&) = delete;
 			NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback);
-			virtual ~NativeFunction() = default;																														// 00
+			virtual ~NativeFunction() = default;																																// 00
 
-			virtual bool HasCallback() const override;																													// 15
-			virtual bool Run(BSScriptVariable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, BSScriptVariable* a_resultValue, StackFrame* a_frame);	// 16
+			virtual bool HasCallback() const override;																															// 15
+			virtual bool Run(BSScriptVariable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, BSScriptVariable* a_resultValue, StackFrame* a_frame) override;	// 16
 
 		protected:
 			// members

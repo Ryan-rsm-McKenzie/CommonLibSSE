@@ -6,43 +6,44 @@
 
 namespace RE
 {
-	template <class TKEY, class TVAL>
-	class NiTPointerMap : public NiTMapBase<NiTPointerAllocator<std::uint32_t>, TKEY, TVAL>
+	// 20
+	template <class Key, class T>
+	class NiTPointerMap : public NiTMapBase<NiTPointerAllocator<UInt32>, Key, T>
 	{
 	private:
-		using Base = NiTMapBase<NiTPointerAllocator<std::uint32_t>, TKEY, TVAL>;
+		using Base = NiTMapBase<NiTPointerAllocator<UInt32>, Key, T>;
 
 	public:
-		using item_type = typename Base::item_type;
-
-		using Base::RemoveAll;
+		using key_type = typename Base::key_type;
+		using mapped_type = typename Base::mapped_type;
+		using value_type = typename Base::value_type;
+		using size_type = typename Base::size_type;
+		using Base::clear;
 		using Base::_allocator;
 
 
-		NiTPointerMap(std::uint32_t a_hashSize = 37) :
+		NiTPointerMap(UInt32 a_hashSize = 37) :
 			NiTMapBase(a_hashSize)
 		{}
 
 
 		~NiTPointerMap()
-		{
-			RemoveAll();
-		}
+		{}
 
 	protected:
 		// override (NiTMapBase)
-		virtual item_type* NewItem() override
+		virtual value_type* malloc_value() override
 		{
-			return (item_type*)_allocator.Allocate();
+			return static_cast<value_type*>(_allocator.Allocate());
 		}
 
 
-		virtual void DeleteItem(item_type* a_item) override
+		virtual void free_value(value_type* a_value) override
 		{
-			a_item->~item_type();
-			_allocator.Deallocate(a_item);
+			a_value->~value_type();
+			_allocator.Deallocate(a_value);
 		}
 	};
-	using TestNiTPointerMap = NiTPointerMap<uint32_t, uint64_t>;
+	namespace { using TestNiTPointerMap = NiTPointerMap<std::uint32_t, std::uint64_t>; }
 	STATIC_ASSERT(sizeof(TestNiTPointerMap) == 0x20);
 }

@@ -1,11 +1,28 @@
 #include "RE/Misc.h"
 
+#include "RE/INIPrefSettingCollection.h"  // INIPrefSettingCollection
+#include "RE/INISettingCollection.h"  // INISettingCollection
 #include "RE/Offsets.h"
-#include "REL/Relocation.h"
+#include "RE/Setting.h"  // Setting
+#include "REL/Relocation.h"  // Offset
 
 
 namespace RE
 {
+	Setting* GetINISetting(const char* a_name)
+	{
+		Setting* setting = 0;
+
+		auto iniPrefs = INIPrefSettingCollection::GetSingleton();
+		setting = iniPrefs->GetSetting(a_name);
+		if (!setting) {
+			auto ini = INISettingCollection::GetSingleton();
+			setting = ini->GetSetting(a_name);
+		}
+		return setting;
+	}
+
+
 	void DebugNotification(const char* a_notification, void* a_arg2, bool a_arg3)
 	{
 		using func_t = function_type_t<decltype(&DebugNotification)>;

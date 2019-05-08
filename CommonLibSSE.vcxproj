@@ -212,6 +212,7 @@
     <ClCompile Include="src\RE\ExtraUniqueID.cpp" />
     <ClCompile Include="src\RE\FxDelegateArgs.cpp" />
     <ClCompile Include="src\RE\FxDelegateHandler.cpp" />
+    <ClCompile Include="src\RE\GameSettingCollection.cpp" />
     <ClCompile Include="src\RE\GAtomic.cpp" />
     <ClCompile Include="src\RE\GFxExternalInterface.cpp" />
     <ClCompile Include="src\RE\GFxKeyboardState.cpp" />
@@ -240,6 +241,8 @@
     <ClCompile Include="src\RE\IFormFactory.cpp" />
     <ClCompile Include="src\RE\IFunction.cpp" />
     <ClCompile Include="src\RE\IFunctionArguments.cpp" />
+    <ClCompile Include="src\RE\INIPrefSettingCollection.cpp" />
+    <ClCompile Include="src\RE\INISettingCollection.cpp" />
     <ClCompile Include="src\RE\Inventory.cpp" />
     <ClCompile Include="src\RE\ItemCrafted.cpp" />
     <ClCompile Include="src\RE\ItemsPickpocketed.cpp" />
@@ -259,6 +262,7 @@
     <ClCompile Include="src\RE\NiRefObject.cpp" />
     <ClCompile Include="src\RE\NiTexture.cpp" />
     <ClCompile Include="src\RE\BSScriptObjectBindPolicy.cpp" />
+    <ClCompile Include="src\RE\Setting.cpp" />
     <ClCompile Include="src\RE\Sky.cpp" />
     <ClCompile Include="src\RE\SoundData.cpp" />
     <ClCompile Include="src\RE\BSExtraData.cpp" />
@@ -549,6 +553,7 @@
     <ClInclude Include="include\RE\BSString.h" />
     <ClInclude Include="include\RE\BSSystemFileStorage.h" />
     <ClInclude Include="include\RE\BSTAnimationGraphDataChannel.h" />
+    <ClInclude Include="include\RE\BSTCaseInsensitiveStringMap.h" />
     <ClInclude Include="include\RE\BSTDerivedCreator.h" />
     <ClInclude Include="include\RE\BSTextureSet.h" />
     <ClInclude Include="include\RE\BSTFreeList.h" />
@@ -630,6 +635,7 @@
     <ClInclude Include="include\RE\FxDelegate.h" />
     <ClInclude Include="include\RE\FxDelegateArgs.h" />
     <ClInclude Include="include\RE\FxDelegateHandler.h" />
+    <ClInclude Include="include\RE\GameSettingCollection.h" />
     <ClInclude Include="include\RE\GColor.h" />
     <ClInclude Include="include\RE\GetActorsFilter.h" />
     <ClInclude Include="include\RE\GFxActionControl.h" />
@@ -794,6 +800,8 @@
     <ClInclude Include="include\RE\IMovementSelectIdle.h" />
     <ClInclude Include="include\RE\IMovementState.h" />
     <ClInclude Include="include\RE\IngredientItem.h" />
+    <ClInclude Include="include\RE\INIPrefSettingCollection.h" />
+    <ClInclude Include="include\RE\INISettingCollection.h" />
     <ClInclude Include="include\RE\InputEvent.h" />
     <ClInclude Include="include\RE\InputManager.h" />
     <ClInclude Include="include\RE\InputMappingManager.h" />
@@ -874,6 +882,7 @@
     <ClInclude Include="include\RE\NiTMapBase.h" />
     <ClInclude Include="include\RE\NiTPointerAllocator.h" />
     <ClInclude Include="include\RE\NiTPointerMap.h" />
+    <ClInclude Include="include\RE\NiTStringMap.h" />
     <ClInclude Include="include\RE\OldMessageBoxCallback.h" />
     <ClInclude Include="include\RE\PackageLocation.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
@@ -884,6 +893,7 @@
     <ClInclude Include="include\RE\QuestEvents.h" />
     <ClInclude Include="include\RE\ReferenceEffectController.h" />
     <ClInclude Include="include\RE\GMatrix2D.h" />
+    <ClInclude Include="include\RE\RegSettingCollection.h" />
     <ClInclude Include="include\RE\SavePatcher.h" />
     <ClInclude Include="include\RE\Script.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
@@ -917,6 +927,11 @@
     <ClInclude Include="include\RE\RunHandler.h" />
     <ClInclude Include="include\RE\ScrollItem.h" />
     <ClInclude Include="include\RE\SetEventData.h" />
+    <ClInclude Include="include\RE\Setting.h" />
+    <ClInclude Include="include\RE\SettingCollection.h" />
+    <ClInclude Include="include\RE\SettingCollectionList.h" />
+    <ClInclude Include="include\RE\SettingCollectionMap.h" />
+    <ClInclude Include="include\RE\SettingT.h" />
     <ClInclude Include="include\RE\SFTypes.h" />
     <ClInclude Include="include\RE\ShoutHandler.h" />
     <ClInclude Include="include\RE\SimpleAllocMemoryPagePolicy.h" />

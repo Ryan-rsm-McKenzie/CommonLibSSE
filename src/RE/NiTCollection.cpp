@@ -1,20 +1,18 @@
 #include "RE/NiTCollection.h"
 
-#include "skse64/GameAPI.h"  // Heap
+#include "RE/Memory.h"  // malloc, free
 
 
 namespace RE
 {
-	void* NiMalloc(std::size_t a_size)
+	void* NiMalloc(std::size_t a_count)
 	{
-		return Heap_Allocate(a_size);
+		return malloc(a_count);
 	}
 
 
 	void NiFree(void* a_ptr)
 	{
-		if (a_ptr) {
-			Heap_Free(a_ptr);
-		}
+		free(a_ptr);
 	}
 }

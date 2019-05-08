@@ -75,7 +75,7 @@ namespace SKSE
 	{
 	public:
 		using EventCallback = void(SerializationInterface* a_intfc);
-		using FormDeleteCallback = void(UInt64 a_handle);
+		using FormDeleteCallback = void(RE::VMHandle a_handle);
 
 		enum { kVersion = 4 };
 
@@ -114,7 +114,7 @@ namespace SKSE
 
 		void AddTask(TaskFn a_task) const;
 		void AddTask(TaskDelegate* a_task) const;
-		void AddTask(UIDelegate_v1* a_task) const;
+		[[deprecated("Use TaskDelegate instead")]] void AddTask(UIDelegate_v1* a_task) const;
 
 	protected:
 		class Task : public TaskDelegate

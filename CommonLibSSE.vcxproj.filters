@@ -664,6 +664,21 @@
     <Filter Include="include\RE\Skyrim\BSHavok\Physics\ConstraintSolver\Simplex">
       <UniqueIdentifier>{6af75ffb-cdfa-4854-8e19-bd513c5c547d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\BSMain\SettingCollection">
+      <UniqueIdentifier>{938f3af0-1fd1-4568-ab5d-2bacbbd74c39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSMain\BSThread">
+      <UniqueIdentifier>{eaf927d2-5e9e-4a3f-ad7e-c4f56764a7d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSMain\SettingCollection">
+      <UniqueIdentifier>{57b32279-e4f6-412e-958e-37ca2c649262}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSMain\Setting">
+      <UniqueIdentifier>{3374d7ec-84b7-4b4c-95c5-7a75ae1594b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSMain\Setting">
+      <UniqueIdentifier>{da8a0709-8d8f-48a8-b67b-da0bce867551}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -1173,6 +1188,18 @@
     <ClCompile Include="src\RE\hkContainerAllocators.cpp">
       <Filter>src\RE\Skyrim\BSHavok\Common\Base\Container</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\INISettingCollection.cpp">
+      <Filter>src\RE\Skyrim\BSMain\SettingCollection</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GameSettingCollection.cpp">
+      <Filter>src\RE\Skyrim\BSMain\SettingCollection</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\INIPrefSettingCollection.cpp">
+      <Filter>src\RE\Skyrim\BSMain\SettingCollection</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Setting.cpp">
+      <Filter>src\RE\Skyrim\BSMain\Setting</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
@@ -1524,12 +1551,6 @@
       <Filter>include\RE\Skyrim\BSAudio</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSHandleRefObject.h">
-      <Filter>include\RE\Skyrim\BSMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSThread.h">
-      <Filter>include\RE\Skyrim\BSMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSAudioManagerThread.h">
       <Filter>include\RE\Skyrim\BSMain</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSAction.h">
@@ -3349,6 +3370,45 @@
     </ClInclude>
     <ClInclude Include="include\RE\hkpSimplexSolver.h">
       <Filter>include\RE\Skyrim\BSHavok\Physics\ConstraintSolver\Simplex</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SettingCollection.h">
+      <Filter>include\RE\Skyrim\BSMain\SettingCollection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SettingCollectionMap.h">
+      <Filter>include\RE\Skyrim\BSMain\SettingCollection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSThread.h">
+      <Filter>include\RE\Skyrim\BSMain\BSThread</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSAudioManagerThread.h">
+      <Filter>include\RE\Skyrim\BSMain\BSThread</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GameSettingCollection.h">
+      <Filter>include\RE\Skyrim\BSMain\SettingCollection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTStringMap.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTCaseInsensitiveStringMap.h">
+      <Filter>include\RE\Skyrim\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SettingCollectionList.h">
+      <Filter>include\RE\Skyrim\BSMain\SettingCollection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\INISettingCollection.h">
+      <Filter>include\RE\Skyrim\BSMain\SettingCollection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\INIPrefSettingCollection.h">
+      <Filter>include\RE\Skyrim\BSMain\SettingCollection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\RegSettingCollection.h">
+      <Filter>include\RE\Skyrim\BSMain\SettingCollection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Setting.h">
+      <Filter>include\RE\Skyrim\BSMain\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SettingT.h">
+      <Filter>include\RE\Skyrim\BSMain\Setting</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

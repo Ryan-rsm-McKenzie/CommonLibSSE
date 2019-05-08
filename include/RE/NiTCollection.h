@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	void* NiMalloc(std::size_t a_size);
+	void* NiMalloc(std::size_t a_count);
 	void NiFree(void* a_ptr);
 
 
@@ -11,13 +11,13 @@ namespace RE
 	class NiTMallocInterface
 	{
 	public:
-		static T* Allocate(UInt32 a_numElements)
+		inline static T* Allocate(std::size_t a_numElements)
 		{
 			return NiMalloc(sizeof(T)* a_numElements);
 		};
 
 
-		static void Deallocate(T* a_array)
+		inline static void Deallocate(T* a_array)
 		{
 			NiFree(a_array);
 		};
@@ -28,11 +28,13 @@ namespace RE
 	class NiTNewInterface
 	{
 	public:
-		static T* Allocate(UInt32 a_numElements)
+		inline static T* Allocate(std::size_t a_numElements)
 		{
 			return new T[a_numElements];
 		};
-		static void Deallocate(T* a_array)
+
+
+		inline static void Deallocate(T* a_array)
 		{
 			delete[] a_array;
 		};

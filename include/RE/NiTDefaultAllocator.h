@@ -7,13 +7,13 @@
 
 namespace RE
 {
-	template <class Ty>
+	template <class T>
 	class NiTDefaultAllocator
 	{
 	public:
 		void* Allocate()
 		{
-			return NiMalloc(sizeof(Ty));
+			return NiMalloc(sizeof(T));
 		}
 
 

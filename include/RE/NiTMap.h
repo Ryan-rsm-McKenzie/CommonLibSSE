@@ -6,42 +6,41 @@
 
 namespace RE
 {
-	template <class TKEY, class TVAL>
-	class NiTMap : public NiTMapBase<NiTDefaultAllocator<NiTMapItem<TKEY, TVAL>>, TKEY, TVAL>
+	template <class Key, class T>
+	class NiTMap : public NiTMapBase<NiTDefaultAllocator<NiTMapItem<Key, T>>, Key, T>
 	{
 	private:
-		using Base = NiTMapBase<NiTDefaultAllocator<NiTMapItem<TKEY, TVAL>>, TKEY, TVAL>;
-		using Base::_allocator;
+		using Base = NiTMapBase<NiTDefaultAllocator<NiTMapItem<Key, T>>, Key, T>;
 
 	public:
 		using key_type = typename Base::key_type;
+		using mapped_type = typename Base::mapped_type;
 		using value_type = typename Base::value_type;
-		using item_type = typename Base::item_type;
-		using Base::RemoveAll;
+		using size_type = typename Base::size_type;
+		using Base::clear;
+		using Base::_allocator;
 
 
-		NiTMap(unsigned int a_hashSize = 37) :
-			NiTMapBase(a_hashSize)
+		NiTMap(UInt32 a_hashSize = 37) :
+			Base(a_hashSize)
 		{}
 
 
-		~NiTMap()
-		{
-			RemoveAll();
-		}
+		virtual ~NiTMap()
+		{}
 
 	protected:
 		// override (NiTMapBase)
-		virtual item_type* NewItem() override
+		virtual value_type* malloc_value() override
 		{
-			return (item_type*)_allocator.Allocate();
+			return static_cast<value_type*>(_allocator.Allocate());
 		}
 
 
-		virtual void DeleteItem(item_type *item) override
+		virtual void free_value(value_type* a_value) override
 		{
-			item->~item_type();
-			_allocator.Deallocate(item);
+			a_value->~value_type();
+			_allocator.Deallocate(a_value);
 		}
 	};
 }
