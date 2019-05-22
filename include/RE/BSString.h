@@ -15,9 +15,9 @@ namespace RE
 	public:
 		using value_type = char;
 		using size_type = UInt16;
-		using reference = value_type & ;
+		using reference = value_type&;
 		using const_reference = const value_type&;
-		using pointer = value_type * ;
+		using pointer = value_type*;
 		using const_pointer = const value_type*;
 
 

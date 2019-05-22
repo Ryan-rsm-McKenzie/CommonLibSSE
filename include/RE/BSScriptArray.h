@@ -21,9 +21,9 @@ namespace RE
 			using value_type = BSScriptVariable;
 			using size_type = UInt32;
 			using difference_type = SInt32;
-			using reference = value_type & ;
-			using const_reference = const value_type &;
-			using pointer = value_type * ;
+			using reference = value_type&;
+			using const_reference = const value_type&;
+			using pointer = value_type*;
 			using const_pointer = const value_type*;
 
 
@@ -35,8 +35,8 @@ namespace RE
 			public:
 				using difference_type = std::ptrdiff_t;
 				using value_type = T;
-				using pointer = T * ;
-				using reference = T & ;
+				using pointer = T*;
+				using reference = T&;
 				using iterator_category = std::random_access_iterator_tag;
 
 

@@ -29,6 +29,17 @@ namespace RE
 		};
 
 
+		struct Sexes
+		{
+			enum
+			{
+				kMale,
+				kFemale,
+				kTotal
+			};
+		};
+
+
 		struct Data	// DNAM
 		{
 			enum class WeightSlider : UInt8
@@ -38,15 +49,13 @@ namespace RE
 			};
 
 
-			UInt8			malePriority;			// 00
-			UInt8			femalePriority;			// 01
-			WeightSlider	maleWeightSlider;		// 02
-			WeightSlider	femaleWeightSlider;		// 03
-			UInt16			unk04;					// 04
-			UInt8			detectionSoundValue;	// 06
-			UInt8			unk07;					// 07
-			float			weaponAdjust;			// 08
-			UInt32			pad0C;					// 0C
+			UInt8			priorities[Sexes::kTotal];		// 00
+			WeightSlider	weightSliders[Sexes::kTotal];	// 02
+			UInt16			unk04;							// 04
+			UInt8			detectionSoundValue;			// 06
+			UInt8			unk07;							// 07
+			float			weaponAdjust;					// 08
+			UInt32			pad0C;							// 0C
 		};
 		STATIC_ASSERT(sizeof(Data) == 0x10);
 
@@ -64,18 +73,14 @@ namespace RE
 
 
 		// members
-		Data				data;						// 040 - DNAM
-		TESModelTextureSwap	maleWorldModel;				// 050
-		TESModelTextureSwap	femaleWorldModel;			// 088
-		TESModelTextureSwap	maleFirstPerson;			// 0C0
-		TESModelTextureSwap	femaleFirstPerson;			// 0F8
-		BGSTextureSet*		maleSkinTexture;			// 130 - NAM0
-		BGSTextureSet*		femaleSkinTexture;			// 138 - NAM1
-		BGSTextureSet*		maleSkinTextureSwapList;	// 140 - NAM2
-		BGSTextureSet*		femaleSkinTextureSwapList;	// 148 - NAM3
-		BSTArray<TESRace*>	additionalRaces;			// 150 - MODL
-		BGSFootstepSet*		footstepSound;				// 168 - SNDD
-		BGSArtObject*		artObject;					// 170 - ONAM
+		Data				data;									// 040 - DNAM
+		TESModelTextureSwap	worldModels[Sexes::kTotal];				// 050
+		TESModelTextureSwap	firstPersons[Sexes::kTotal];			// 0C0
+		BGSTextureSet*		skinTextures[Sexes::kTotal];			// 130 - NAM0 - NAM1
+		BGSListForm*		skinTextureSwapLists[Sexes::kTotal];	// 140 - NAM2 - NAM3
+		BSTArray<TESRace*>	additionalRaces;						// 150 - MODL
+		BGSFootstepSet*		footstepSound;							// 168 - SNDD
+		BGSArtObject*		artObject;								// 170 - ONAM
 	};
 	STATIC_ASSERT(sizeof(TESObjectARMA) == 0x178);
 }

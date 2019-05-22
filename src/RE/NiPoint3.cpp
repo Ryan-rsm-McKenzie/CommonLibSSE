@@ -120,7 +120,7 @@ namespace RE
 
 	float NiPoint3::Length() const
 	{
-		return std::sqrt(x*x + y * y + z * z);
+		return std::sqrt(x * x + y * y + z * z);
 	}
 
 
@@ -142,7 +142,7 @@ namespace RE
 	float NiPoint3::QuickLength() const
 	{
 		float length = SqrLength();
-		unsigned int *rep = (unsigned int*)&length;
+		UInt32* rep = (UInt32*)&length;
 
 		if (*rep == 0) {
 			length = 0.0f;

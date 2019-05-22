@@ -21,7 +21,7 @@ namespace RE
 			using value_type = T;
 			using size_type = typename BSScriptArray::size_type;
 			using difference_type = BSScriptArray::difference_type;
-			using pointer = value_type * ;
+			using pointer = value_type*;
 			using const_pointer = const value_type*;
 
 

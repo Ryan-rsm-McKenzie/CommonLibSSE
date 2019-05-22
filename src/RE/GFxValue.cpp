@@ -577,7 +577,7 @@ namespace RE
 
 
 	GFxValue::GFxValue(const GFxValue& a_rhs) :
-		_objectInterface(NULL),
+		_objectInterface(0),
 		_type(a_rhs._type),
 		_pad0C(0)
 	{

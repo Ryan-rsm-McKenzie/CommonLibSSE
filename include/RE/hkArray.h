@@ -16,7 +16,7 @@ namespace RE
 	public:
 		using value_type = T;
 		using size_type = SInt32;
-		using reference = value_type & ;
+		using reference = value_type&;
 		using const_reference = const value_type&;
 
 

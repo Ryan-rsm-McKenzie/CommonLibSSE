@@ -25,7 +25,7 @@ namespace RE
 	template <class Key, class Enable = void>
 	struct BSTScatterTableDefaultHashPolicy
 	{
-		using hash_type = std::uint32_t;
+		using hash_type = UInt32;
 
 
 		inline static hash_type get_hash(const Key& a_key)
@@ -174,7 +174,7 @@ namespace RE
 	struct BSTScatterTableDefaultKVStorage<Key, Value, typename std::enable_if_t<std::is_base_of<TESForm, Value>::value>>
 	{
 		using key_type = Key;
-		using value_type = Value * ;
+		using value_type = Value*;
 
 
 		TES_HEAP_REDEFINE_NEW();
@@ -272,9 +272,9 @@ namespace RE
 	protected:
 		static inline entry_type* Allocate(std::size_t a_num)
 		{
-			entry_type* entries = (entry_type*)Heap_Allocate(sizeof(entry_type)* a_num);
+			auto entries = calloc<entry_type>(a_num);
 			if (entries) {
-				entry_type* p = entries;
+				auto p = entries;
 				while (a_num--) {
 					p->next = 0;
 					++p;
@@ -287,7 +287,7 @@ namespace RE
 		static inline void Free(entry_type* a_ptr)
 		{
 			if (a_ptr) {
-				Heap_Free(a_ptr);
+				free(a_ptr);
 			}
 		}
 
@@ -301,7 +301,7 @@ namespace RE
 		}
 
 	private:
-		static inline std::size_t _msb(unsigned int a_x)
+		static inline std::size_t _msb(UInt32 a_x)
 		{
 			union
 			{
@@ -493,7 +493,7 @@ namespace RE
 		}
 
 
-		bool _insert(entry_type* a_entries, hash_type a_hash, const key_type& a_key, const mapped_type& a_value, UInt16& a_unk)
+		bool _insert(entry_type* a_entries, hash_type a_hash, const key_type& a_key, const mapped_type& a_value, UInt16& a_arg5)
 		{
 			if (!a_entries) {
 				return false;
@@ -856,9 +856,9 @@ namespace RE
 		class iterator : public const_iterator
 		{
 		public:
-			typedef iterator		_iter;
-			typedef storage_type*	pointer;
-			typedef storage_type&	reference;
+			using _iter = iterator;
+			using pointer = storage_type*;
+			using reference = storage_type&;
 
 			// compiler hits for GCC
 			using const_iterator::_entry;

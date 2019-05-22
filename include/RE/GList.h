@@ -43,9 +43,9 @@ namespace RE
 		using value_type = T;
 		using size_type = std::size_t;
 		using difference_type = std::ptrdiff_t;
-		using reference = value_type & ;
+		using reference = value_type&;
 		using const_reference = const value_type&;
-		using pointer = value_type * ;
+		using pointer = value_type*;
 		using const_pointer = std::pointer_traits<pointer>::rebind<const value_type>;
 
 
@@ -54,8 +54,8 @@ namespace RE
 		{
 			using difference_type = std::ptrdiff_t;
 			using value_type = U;
-			using pointer = U * ;
-			using reference = U & ;
+			using pointer = U*;
+			using reference = U&;
 			using iterator_category = std::bidirectional_iterator_tag;
 		};
 

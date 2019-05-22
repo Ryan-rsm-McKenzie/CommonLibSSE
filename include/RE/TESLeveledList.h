@@ -68,7 +68,7 @@ namespace RE
 		UInt8		numEntries;		// 12 - LLCT
 		UInt8		unk13;			// 13
 		UInt32		pad14;			// 14
-		UInt64		unk18;			// 18
+		void*		unk18;			// 18
 		TESGlobal*	global;			// 20 - LVLG
 	};
 	STATIC_ASSERT(sizeof(TESLeveledList) == 0x28);

@@ -37,7 +37,8 @@ namespace RE
 		// members
 		BSTArray<TESForm*>	forms;		// 20 - LNAM
 		BSTArray<TESForm*>*	addedForms;	// 38
-		UInt64				unk40;		// 40
+		UInt32				unk40;		// 40
+		UInt32				unk44;		// 44
 	};
 	STATIC_ASSERT(sizeof(BGSListForm) == 0x48);
 }

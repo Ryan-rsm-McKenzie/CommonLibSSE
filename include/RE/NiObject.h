@@ -5,7 +5,7 @@
 
 namespace RE
 {
-    class BSFadeNode;
+	class BSFadeNode;
 	class BSGeometry;
 	class BSTriShape;
 	class NiCloningProcess;

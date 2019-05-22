@@ -9,7 +9,7 @@ namespace RE
 {
 #define NiSmartPointer(className)					\
 	class className;								\
-	typedef NiPointer<className> className##Ptr;
+	using className##Ptr = NiPointer<className>;
 
 
 	template <class T>

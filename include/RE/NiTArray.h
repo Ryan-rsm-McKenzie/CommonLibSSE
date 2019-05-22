@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/Memory.h"  // calloc, free
 #include "RE/NiTCollection.h"
 
 
@@ -58,7 +59,7 @@ namespace RE
 	class NiTObjectArray : public NiTArray<T, NiTNewInterface<T>>
 	{
 	public:
-		NiTObjectArray(unsigned int a_maxSize = 0, unsigned int a_growBy = 1);
+		NiTObjectArray(UInt32 a_maxSize = 0, UInt32 a_growBy = 1);
 	};
 	STATIC_ASSERT(sizeof(NiTObjectArray<void*>) == 0x18);
 
@@ -67,7 +68,7 @@ namespace RE
 	class NiTPrimitiveArray : public NiTArray<T, NiTMallocInterface<T>>
 	{
 	public:
-		NiTPrimitiveArray(unsigned int a_maxSize = 0, unsigned int a_growBy = 1);
+		NiTPrimitiveArray(UInt32 a_maxSize = 0, UInt32 a_growBy = 1);
 	};
 	STATIC_ASSERT(sizeof(NiTPrimitiveArray<void*>) == 0x18);
 
@@ -102,13 +103,14 @@ namespace RE
 
 			// obey min grow size
 			UInt32	growSize = a_size - _size;
-			if (growSize < _growSize)
+			if (growSize < _growSize) {
 				growSize = _growSize;
+			}
 
 			a_size = _arrayBufLen + growSize;
 
 			// create new array
-			T* newData = (T*)FormHeap_Allocate(sizeof(T) * a_size);
+			auto newData = calloc<T>(a_size);
 
 			for (UInt32 i = 0; i < a_size; i++) {
 				new (&newData[i]) T;
@@ -140,7 +142,7 @@ namespace RE
 						oldData[i].~T();
 					}
 				}
-				::Heap_Free(oldData);
+				free(oldData);
 			}
 		}
 
@@ -158,7 +160,7 @@ namespace RE
 	class NiTLargePrimitiveArray : public NiTLargeArray<T, NiTMallocInterface<T>>
 	{
 	public:
-		NiTLargePrimitiveArray(unsigned int a_maxSize = 0, unsigned int a_growBy = 1);
+		NiTLargePrimitiveArray(UInt32 a_maxSize = 0, UInt32 a_growBy = 1);
 	};
 	STATIC_ASSERT(sizeof(NiTLargePrimitiveArray<void*>) == 0x20);
 }

@@ -17,7 +17,7 @@ namespace RE
 	class BSTArrayBase
 	{
 	public:
-		using size_type = std::uint32_t;
+		using size_type = UInt32;
 
 
 		class IAllocatorFunctor
@@ -401,9 +401,9 @@ namespace RE
 		using allocator_type = Allocator;
 		using functor_type = BSTArrayAllocatorFunctor<allocator_type>;
 		using value_type = T;
-		using pointer = T * ;
+		using pointer = T*;
 		using const_pointer = const T*;
-		using reference = T & ;
+		using reference = T&;
 		using const_reference = const T&;
 		using size_type = typename BSTArrayBase::size_type;
 		using difference_type = std::ptrdiff_t;
@@ -616,25 +616,25 @@ namespace RE
 		}
 
 
-		template <class... ValTy>
-		void emplace_front(ValTy&&... a_val)
+		template <class... Args>
+		void emplace_front(Args&& ... a_args)
 		{
 			functor_type pred(this);
 			SInt32 index = _push(pred, capacity(), sizeof(value_type));
 			if (index >= 0) {
 				_move(_head(), 1, 0, index, sizeof(value_type));
-				new(_head())value_type(std::forward<ValTy>(a_val)...);
+				new(_head())value_type(std::forward<Args>(a_args)...);
 			}
 		}
 
 
-		template <class... ValTy>
-		void emplace_back(ValTy&&... a_val)
+		template <class... Args>
+		void emplace_back(Args&& ... a_args)
 		{
 			functor_type pred(this);
 			SInt32 index = _push(pred, capacity(), sizeof(value_type));
 			if (index >= 0) {
-				new(_head() + index)value_type(std::forward<ValTy>(a_val)...);
+				new(_head() + index)value_type(std::forward<Args>(a_args)...);
 			}
 		}
 
@@ -651,7 +651,7 @@ namespace RE
 
 		void pop_back()
 		{
-			std::uint32_t num = size();
+			UInt32 num = size();
 			if (num) {
 				pointer p = &front() + (num - 1);
 				p->~value_type();
@@ -667,9 +667,10 @@ namespace RE
 				a_it->~value_type();
 
 				difference_type next = index + 1;
-				std::uint32_t num = size() - next;
-				if (num > 0)
+				UInt32 num = size() - next;
+				if (num > 0) {
 					_move(_head(), index, next, num, sizeof(value_type));
+				}
 				_pop(1);
 			}
 			return a_it;
@@ -748,8 +749,9 @@ namespace RE
 
 				UInt32 next = index + 1;
 				std::uint32_t num = size() - next;
-				if (num > 0)
+				if (num > 0) {
 					_move(_head(), index, next, num, sizeof(value_type));
+				}
 				_pop(1);
 			}
 		}
@@ -882,24 +884,24 @@ namespace RE
 
 
 	// Returns if/where the element was found, otherwise indexOut can be used as insert position
-	template <typename Ty>
-	bool GetSortIndex(const BSTArray<Ty>& a_sortedArray, const Ty& a_elem, std::uint32_t* a_indexOut)
+	template <class T>
+	bool GetSortIndex(const BSTArray<T>& a_sortedArray, const T& a_elem, std::size_t& a_indexOut)
 	{
 		if (a_sortedArray.empty()) {
-			*a_indexOut = 0;
+			a_indexOut = 0;
 			return false;
 		}
 
-		int leftIdx = 0;
-		int rightIdx = a_sortedArray.size() - 1;
+		std::size_t leftIdx = 0;
+		std::size_t rightIdx = a_sortedArray.size() - 1;
 
 		while (true) {
 			int pivotIdx = leftIdx + ((rightIdx - leftIdx) / 2);
 
-			const Ty &val = a_sortedArray[pivotIdx];
+			const T& val = a_sortedArray[pivotIdx];
 
 			if (a_elem == val) {
-				*a_indexOut = pivotIdx;
+				a_indexOut = pivotIdx;
 				return true;
 			} else if (a_elem > val) {
 				leftIdx = pivotIdx + 1;
@@ -908,7 +910,7 @@ namespace RE
 			}
 
 			if (leftIdx > rightIdx) {
-				*a_indexOut = leftIdx;
+				a_indexOut = leftIdx;
 				return false;
 			}
 		}

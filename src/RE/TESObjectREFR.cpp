@@ -309,7 +309,7 @@ namespace RE
 	}
 
 
-	void TESObjectREFR::PlayAnimation(RE::NiControllerManager* a_manager, RE::NiControllerSequence* a_toSeq, RE::NiControllerSequence* a_fromSeq, bool a_arg4)
+	void TESObjectREFR::PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4)
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::PlayAnimation)>;
 		REL::Offset<func_t*> func(Offset::TESObjectREFR::PlayAnimation);

@@ -18,13 +18,13 @@ namespace RE
 		public:
 			~BSScriptClass();
 
-			const char*		GetName() const;
-			UInt32			GetNumVariables() const;
-			UInt32			GetNumMemberFunctions() const;
-			UInt32			GetNumGlobalFunctions() const;
-			VMTypeID		GetTypeID() const;
-			SInt32			GetVariableIndex(const BSFixedString& a_name) const;
-			IFunction*		GetFunction(const char* a_name) const;
+			const char*	GetName() const;
+			UInt32		GetNumVariables() const;
+			UInt32		GetNumMemberFunctions() const;
+			UInt32		GetNumGlobalFunctions() const;
+			VMTypeID	GetTypeID() const;
+			SInt32		GetVariableIndex(const BSFixedString& a_name) const;
+			IFunction*	GetFunction(const char* a_name) const;
 
 
 			// members
