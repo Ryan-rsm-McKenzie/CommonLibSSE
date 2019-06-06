@@ -1,6 +1,6 @@
 #pragma once
 
-#include "function_view.h"  // function_view
+#include "function_ref.h"  // function_view
 
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // TESForm
@@ -40,7 +40,7 @@ namespace RE
 		virtual void	CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
 
 
-		inline void	ForEach(ext::function_view<bool(Entry*)> a_fn) const;
+		inline void	ForEach(llvm::function_ref<bool(Entry*)> a_fn) const;
 		bool		GetContainerItemAt(UInt32 a_idx, Entry*& a_entry) const;
 		bool		GetContainerLevItemAt(UInt32 a_idx, Entry*& a_entry) const;
 		UInt32		CountItem(TESForm* a_item) const;
@@ -54,7 +54,7 @@ namespace RE
 	STATIC_ASSERT(sizeof(TESContainer) == 0x18);
 
 
-	inline void TESContainer::ForEach(ext::function_view<bool(Entry*)> a_fn) const
+	inline void TESContainer::ForEach(llvm::function_ref<bool(Entry*)> a_fn) const
 	{
 		for (UInt32 n = 0; n < numEntries; n++) {
 			Entry* entry = entries[n];

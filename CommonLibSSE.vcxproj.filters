@@ -2798,9 +2798,6 @@
     <ClInclude Include="include\RE\BaseExtraList.h">
       <Filter>include\RE\Skyrim\Inventory</Filter>
     </ClInclude>
-    <ClInclude Include="include\function_view.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ExtraObjectHealth.h">
       <Filter>include\RE\Skyrim\ExtraData</Filter>
     </ClInclude>
@@ -3409,6 +3406,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\SettingT.h">
       <Filter>include\RE\Skyrim\BSMain\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="include\function_ref.h">
+      <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
