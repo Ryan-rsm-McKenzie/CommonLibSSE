@@ -3410,5 +3410,11 @@
     <ClInclude Include="include\function_ref.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\TweenMenu.h">
+      <Filter>include\RE\Skyrim\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\StatsMenu.h">
+      <Filter>include\RE\Skyrim\Menus\IMenu</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

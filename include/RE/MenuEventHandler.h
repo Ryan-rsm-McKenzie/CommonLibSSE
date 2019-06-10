@@ -1,6 +1,6 @@
 #pragma once
 
-#include "skse64/GameTypes.h"  // BSIntrusiveRefCounted
+#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 
 
 namespace RE

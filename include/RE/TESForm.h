@@ -66,7 +66,7 @@ namespace RE
 		virtual void			Unk_11(void);																												// 11 - { return; }
 		virtual void			Unk_12(void);																												// 12 - { return; } - "void Reset(void* a_arg1)"?
 		virtual void			InitItem();																													// 13 - { return; }
-		virtual void			Unk_14(void);																												// 14
+		virtual void			Unk_14(void);																												// 14 - "TESFile* GetSourceFile()"?
 		virtual FormType		GetFormType();																												// 15 - { return formType; }
 		virtual void			GetFormDesc(char* a_buf, UInt32 a_bufLen);																					// 16 - { return std::sprintf_s(a_buf, a_bufLen, "%s Form '%s' (%08X)", g_formStrings[3 * formID], "", formID); }
 		virtual bool			PlayerKnows() const;																										// 17 - { return (flags >> 10 ) & 1; }

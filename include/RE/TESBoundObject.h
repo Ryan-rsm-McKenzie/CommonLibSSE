@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESBoundObject
+
 #include "RE/FormTypes.h"  // TESObjectREFR, BGSVoiceType
 #include "RE/TESObject.h"  // TESObject
 
@@ -12,6 +14,9 @@ namespace RE
 	class TESBoundObject : public TESObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESBoundObject;
+
+
 		struct ObjectBounds	// OBND
 		{
 			UInt16	x1;	// 0

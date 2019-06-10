@@ -9,7 +9,7 @@ namespace RE
 	class BGSSkillPerkTreeNode
 	{
 	public:
-		virtual ~BGSSkillPerkTreeNode();					// 00
+		virtual ~BGSSkillPerkTreeNode();	// 00
 
 
 		// members

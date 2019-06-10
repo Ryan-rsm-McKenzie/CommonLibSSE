@@ -1,5 +1,7 @@
 #pragma once
 
+#include <type_traits>  // underlying_type_t
+
 #include "RE/ActorValues.h"  // ActorValue
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
@@ -59,7 +61,7 @@ namespace RE
 			enum class Type : UInt8
 			{
 				kBookTome = 0x00,
-				kNoteScroll = 0xFF,
+				kNoteScroll = static_cast<std::underlying_type_t<Type>>(-1),
 			};
 
 

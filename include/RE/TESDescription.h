@@ -23,8 +23,8 @@ namespace RE
 
 
 		// members
-		UInt32	unk08;	// 08
-		UInt32	unk0C;	// 0C - init'd to FFFFFFFF
+		UInt32	fileOffset;	// 08
+		UInt32	tableIdx;	// 0C
 	};
 	STATIC_ASSERT(sizeof(TESDescription) == 0x10);
 }

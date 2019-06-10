@@ -25,6 +25,7 @@ namespace RE
 	class NiControllerManager;
 	class NiControllerSequence;
 	class NiNode;
+	class TESBoundObject;
 	class TESContainer;
 	struct BSAnimationGraphEvent;
 	struct DialogueData;
@@ -300,7 +301,7 @@ namespace RE
 
 
 		// members
-		TESForm*		baseForm;		// 40
+		TESBoundObject*	baseForm;		// 40
 		NiPoint3		rot;			// 48
 		NiPoint3		pos;			// 54
 		TESObjectCELL*	parentCell;		// 60
