@@ -115,7 +115,7 @@ namespace RE
 
 		union LightingCoordinates
 		{
-			Lighting*		lighting;	// XCLL
+			Lighting*		lighting;		// XCLL
 			Coordinates*	coordinates;	// XCLC
 		};
 		STATIC_ASSERT(sizeof(LightingCoordinates) == 0x8);
