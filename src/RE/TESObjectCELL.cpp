@@ -11,4 +11,24 @@ namespace RE
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectCELL, GetNorthRotation, func_t*);
 		return func(this);
 	}
+
+
+	bool TESObjectCELL::IsInteriorCell() const
+	{
+		return (flags & Flag::kIsInteriorCell) != Flag::kNone;
+	}
+
+
+	auto TESObjectCELL::GetLighting()
+		-> Lighting*
+	{
+		return IsInteriorCell() ? lightingCoordinates.lighting : 0;
+	}
+
+
+	auto TESObjectCELL::GetCoordinates()
+		-> Coordinates*
+	{
+		return IsInteriorCell() ? 0 : lightingCoordinates.coordinates;
+	}
 }

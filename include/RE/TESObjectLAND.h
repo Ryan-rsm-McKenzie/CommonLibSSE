@@ -1,21 +1,41 @@
 #pragma once
 
+#include "RE/TESChildCell.h"  // TESChildCell
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
 
 
 namespace RE
 {
-	class TESObjectLAND : public TESForm
+	class QueuedFile;
+
+
+	class TESObjectLAND :
+		public TESForm,		// 00
+		public TESChildCell	// 20
 	{
 	public:
 		enum { kTypeID = FormType::Land };
 
 
+		enum class Flag : UInt32	// DATA
+		{
+			kNone = 0,
+			kVertexNormals_HeightMap = 1 << 0,
+			kVertexColors = 1 << 1,
+			kLayers = 1 << 2,
+			kMPCD = 1 << 10
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32
-			{};
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12,
+				kCompressed = 1 << 18
+			};
 		};
 
 
@@ -30,11 +50,11 @@ namespace RE
 
 
 		// members
-		UInt64	unk20;	// 20
-		UInt64	unk28;	// 28
-		UInt64	unk30;	// 30
-		UInt64	unk38;	// 38
-		UInt64	unk40;	// 40
+		Flag			flags;	// 28 - DATA
+		UInt32			pad2C;	// 2C
+		TESObjectCELL*	cell;	// 30
+		QueuedFile*		unk38;	// 38
+		void*			unk40;	// 40
 	};
 	STATIC_ASSERT(sizeof(TESObjectLAND) == 0x48);
 }

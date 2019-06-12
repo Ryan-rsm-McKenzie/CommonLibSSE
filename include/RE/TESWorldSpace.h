@@ -180,7 +180,7 @@ namespace RE
 		BGSMusicType*											music;						// 1B8 - ZNAM
 		ObjectBounds											objectBounds;				// 1C0
 		BSTHashMap<UnkKey, UnkValue>							unk1D0;						// 1D0
-		BSString												editorId;					// 200 - EDID
+		BSString												editorID;					// 200 - EDID
 		LandData												landData;					// 210 - DNAM
 		float													distantLODMultiplier;		// 218 - NAMA
 		UInt32													pad21C;						// 21C
@@ -198,7 +198,7 @@ namespace RE
 	STATIC_ASSERT(offsetof(TESWorldSpace, cell) == 0x088);
 	STATIC_ASSERT(offsetof(TESWorldSpace, unk100) == 0x100);
 	STATIC_ASSERT(offsetof(TESWorldSpace, unk180) == 0x180);
-	STATIC_ASSERT(offsetof(TESWorldSpace, editorId) == 0x200);
+	STATIC_ASSERT(offsetof(TESWorldSpace, editorID) == 0x200);
 	STATIC_ASSERT(offsetof(TESWorldSpace, largeReferenceData) == 0x250);
 	STATIC_ASSERT(offsetof(TESWorldSpace, unk318) == 0x318);
 	STATIC_ASSERT(offsetof(TESWorldSpace, maxHeightData) == 0x350);

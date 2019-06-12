@@ -14,6 +14,9 @@
 
 namespace RE
 {
+	class NavMesh;
+
+
 	class TESObjectCELL :
 		public TESForm,		// 000
 		public TESFullName	// 020
@@ -24,6 +27,7 @@ namespace RE
 
 		enum class Flag : UInt16	// DATA
 		{
+			kNone = 0,
 			kIsInteriorCell = 1 << 0,
 			kHasWater = 1 << 1,
 			kCantTravelFromHere = 1 << 2,
@@ -91,9 +95,30 @@ namespace RE
 			float							lightFadeBegin;			// 50
 			float							lightFadeEnd;			// 54
 			Inherit							inherits;				// 58
-			UInt32							pad5C;					// 5C
+			UInt32							unk5C;					// 5C
 		};
 		STATIC_ASSERT(sizeof(Lighting) == 0x60);
+
+
+		struct Coordinates	// XCLC
+		{
+			SInt32	x;		// 00
+			SInt32	y;		// 04
+			UInt64	unk08;	// 08
+			UInt64	unk18;	// 10
+			float	fx;		// 18 - fx = (float)(x << 12)
+			float	fy;		// 1C - fy = (float)(y << 12)
+			UInt64	unk20;	// 20
+		};
+		STATIC_ASSERT(sizeof(Coordinates) == 0x28);
+
+
+		union LightingCoordinates
+		{
+			Lighting*		lighting;	// XCLL
+			Coordinates*	coordinates;	// XCLC
+		};
+		STATIC_ASSERT(sizeof(LightingCoordinates) == 0x8);
 
 
 		virtual ~TESObjectCELL();													// 00
@@ -117,35 +142,38 @@ namespace RE
 		virtual void		Unk_36(void) override;									// 36
 
 		double				GetNorthRotation();
+		bool				IsInteriorCell() const;
+		Lighting*			GetLighting();
+		Coordinates*		GetCoordinates();
 
 
 		// members
-		Data								unk030;				// 030
-		Data								unk038;				// 038
-		Flag								flags;				// 040
-		UInt16								unk042;				// 042
-		UInt8								unk044;				// 044
-		UInt8								unk045;				// 045
-		UInt8								unk046;				// 046
-		UInt8								pad047;				// 047
-		BSExtraData*						extraData;			// 048
-		UInt32*								unk050;				// 050
-		UInt64								unk058;				// 058
-		Lighting*							lighting;			// 060
-		TESObjectLAND*						land;				// 068 - NEEDS CHECKING
-		float								waterHeight;		// 070 - XCLW
-		void*								unk078;				// 078
-		BSTHashMap<UInt32, TESObjectREFR>	persistentRefMap;	// 080
-		TESForm*							unk0B0;				// 0B0 - REFR owner of cell?
-		BSTArray<TESObjectREFR*>			objectList;			// 0B8 - persistent
-		UnkArray							unk0D0;				// 0D0
-		UnkArray							unk0F8;				// 0F8
-		UnkArray							unk100;				// 100
-		mutable BSSpinLock					cellRefLock;		// 118
-		TESWorldSpace*						worldSpace;			// 120
-		UInt64								unk128;				// 128
-		BGSLightingTemplate*				lightingTemplate;	// 130 - LTMP
-		UInt64								unk138;				// 138
+		Data								unk030;					// 030
+		Data								unk038;					// 038
+		Flag								flags;					// 040
+		UInt16								unk042;					// 042
+		UInt8								unk044;					// 044
+		UInt8								unk045;					// 045
+		UInt8								unk046;					// 046
+		UInt8								pad047;					// 047
+		BSExtraData*						extraData;				// 048
+		UInt32*								unk050;					// 050
+		UInt64								unk058;					// 058
+		LightingCoordinates					lightingCoordinates;	// 060 - XCLL if interior, XCLC if exterior
+		TESObjectLAND*						land;					// 068
+		float								waterHeight;			// 070 - XCLW
+		BSTArray<NavMesh*>*					unk078;					// 078
+		BSTHashMap<UInt32, TESObjectREFR>	persistentRefMap;		// 080
+		TESForm*							unk0B0;					// 0B0 - REFR owner of cell?
+		BSTArray<TESObjectREFR*>			objectList;				// 0B8 - persistent
+		BSTArray<void*>						unk0D0;					// 0D0
+		BSTArray<void*>						unk0F8;					// 0F8
+		BSTArray<void*>						unk100;					// 100
+		mutable BSSpinLock					cellRefLock;			// 118
+		TESWorldSpace*						worldSpace;				// 120
+		UInt64								unk128;					// 128
+		BGSLightingTemplate*				lightingTemplate;		// 130 - LTMP
+		UInt64								unk138;					// 138
 	};
 	STATIC_ASSERT(offsetof(TESObjectCELL, persistentRefMap) == 0x80);
 	STATIC_ASSERT(offsetof(TESObjectCELL, objectList) == 0xB8);

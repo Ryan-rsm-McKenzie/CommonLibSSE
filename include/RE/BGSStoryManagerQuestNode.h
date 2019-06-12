@@ -32,7 +32,7 @@ namespace RE
 		virtual void						SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
 		virtual void						LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
 		virtual void						InitItem() override;							// 13
-		virtual void						Unk_14(void) override;							// 14
+		virtual TESFile*					GetFinalSourceFile() override;					// 14
 		virtual UInt32						GetNumChildren() const override;				// 3B - { return quests.size(); }
 		virtual BGSStoryManagerEventNode*	GetNthChild(UInt32 a_idx) override;				// 3C - { return quests[a_idx]; }
 		virtual void						Unk_3E(void) override;							// 3E - { return a_arg1->Unk_02(this); }

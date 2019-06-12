@@ -47,10 +47,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(FormInfo) == 0x18);
 
 
-		TESFile();
-		~TESFile();
-
-
+		// members
 		UInt32			unk000;					// 000
 		UInt8			unk004[0xC];			// 004
 		UInt32*			pointerMap;				// 010 - NiTPointerMap<TESFile*>* - CHECK

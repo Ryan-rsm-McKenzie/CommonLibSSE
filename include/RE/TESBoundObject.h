@@ -19,12 +19,12 @@ namespace RE
 
 		struct ObjectBounds	// OBND
 		{
-			UInt16	x1;	// 0
-			UInt16	y1;	// 2
-			UInt16	z1;	// 4
-			UInt16	x2;	// 6
-			UInt16	y2;	// 8
-			UInt16	z2;	// A
+			SInt16	x1;	// 0
+			SInt16	y1;	// 2
+			SInt16	z1;	// 4
+			SInt16	x2;	// 6
+			SInt16	y2;	// 8
+			SInt16	z2;	// A
 		};
 		STATIC_ASSERT(sizeof(ObjectBounds) == 0xC);
 

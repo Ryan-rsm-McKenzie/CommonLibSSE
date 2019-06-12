@@ -2,6 +2,8 @@
 
 #include "skse64/ObScript.h"  // g_firstObScriptCommand, g_firstConsoleCommand
 
+#include <string.h>  // _stricmp
+
 #include <cstdint>  // uintptr_t
 #include <string>  // string
 
@@ -44,18 +46,30 @@ namespace RE
 	}
 
 
+	CommandInfo* CommandInfo::LocateScriptCommand(const char* a_longName)
+	{
+		auto scriptCommands = GetFirstScriptCommand();
+		for (UInt16 i = 0; i < Commands::kScriptCommandsEnd; ++i) {
+			if (_stricmp(scriptCommands[i].longName, a_longName) == 0) {
+				return &scriptCommands[i];
+			}
+		}
+		return 0;
+	}
+
+
 	CommandInfo* CommandInfo::GetFirstConsoleCommand()
 	{
 		return reinterpret_cast<CommandInfo*>(g_firstConsoleCommand.GetPtr());
 	}
 
 
-	CommandInfo* CommandInfo::Locate(const char* a_longName)
+	CommandInfo* CommandInfo::LocateConsoleCommand(const char* a_longName)
 	{
-		CommandInfo* commands = GetFirstConsoleCommand();
-		for (UInt16 i = kCommand_ConsoleCommandsBegin; i <= kCommand_ScriptCommandsEnd; ++i) {
-			if (!strcmp(commands[i].longName, a_longName)) {
-				return &commands[i];
+		auto consoleCommands = GetFirstConsoleCommand();
+		for (UInt16 i = 0; i < Commands::kConsoleCommandsEnd; ++i) {
+			if (_stricmp(consoleCommands[i].longName, a_longName) == 0) {
+				return &consoleCommands[i];
 			}
 		}
 		return 0;

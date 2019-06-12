@@ -94,15 +94,16 @@ namespace RE
 
 	struct CommandInfo
 	{
-		enum : UInt32
+		struct Commands
 		{
-			kCommand_ConsoleCommandsBegin = 0x0000,
-			kCommand_ConsoleCommandsend = 0x01B3,
-			kCommand_ConsoleOpBase = 0x0100,
+			enum : UInt32
+			{
+				kConsoleCommandsEnd = 0x01B4,
+				kConsoleOpBase = 0x0100,
 
-			kCommand_ScriptCommandsBegin = 0x01B4,
-			kCommand_ScriptCommandsEnd = 0x02DF,
-			kCommand_ScriptOpBase = 0x1000
+				kScriptCommandsEnd = 0x02E0,
+				kScriptOpBase = 0x1000
+			};
 		};
 
 
@@ -155,9 +156,11 @@ namespace RE
 		using FnEval = bool(TESObjectREFR* a_thisObj, void* a_arg1, void* a_arg2, double& a_result);
 
 
-		static CommandInfo*			GetFirstScriptCommand();
-		static CommandInfo*			GetFirstConsoleCommand();
-		static CommandInfo*			Locate(const char* a_longName);
+		static CommandInfo*	GetFirstScriptCommand();
+		static CommandInfo*	LocateScriptCommand(const char* a_longName);
+
+		static CommandInfo*	GetFirstConsoleCommand();
+		static CommandInfo*	LocateConsoleCommand(const char* a_longName);
 
 		template <UInt16 SIZE> void	SetParameters(const SCRIPT_PARAMETER(&a_params)[SIZE]);
 		void						SetParameters();

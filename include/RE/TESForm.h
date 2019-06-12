@@ -36,10 +36,11 @@ namespace RE
 
 		struct TESFileArray
 		{
-			TESFile**	files;		// 0
-			UInt32		numFiles;	// 8
-			UInt32		padC;		// C
+			TESFile**	files;		// 00
+			UInt32		numFiles;	// 08
+			UInt32		padC;		// 0C
 		};
+		STATIC_ASSERT(sizeof(TESFileArray) == 0x10);
 
 
 		virtual ~TESForm();																																	// 00
@@ -66,7 +67,7 @@ namespace RE
 		virtual void			Unk_11(void);																												// 11 - { return; }
 		virtual void			Unk_12(void);																												// 12 - { return; } - "void Reset(void* a_arg1)"?
 		virtual void			InitItem();																													// 13 - { return; }
-		virtual void			Unk_14(void);																												// 14 - "TESFile* GetSourceFile()"?
+		virtual TESFile*		GetFinalSourceFile();																										// 14 - returns the file that last modified this form
 		virtual FormType		GetFormType();																												// 15 - { return formType; }
 		virtual void			GetFormDesc(char* a_buf, UInt32 a_bufLen);																					// 16 - { return std::sprintf_s(a_buf, a_bufLen, "%s Form '%s' (%08X)", g_formStrings[3 * formID], "", formID); }
 		virtual bool			PlayerKnows() const;																										// 17 - { return (flags >> 10 ) & 1; }
