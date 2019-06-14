@@ -16,7 +16,8 @@ namespace RE
 	}
 
 
-	CommandInfo::Chunk* CommandInfo::StringChunk::GetNext()
+	auto CommandInfo::StringChunk::GetNext()
+		-> Chunk*
 	{
 		return (Chunk*)(str + length);
 	}
@@ -28,15 +29,31 @@ namespace RE
 	}
 
 
-	CommandInfo::Chunk* CommandInfo::IntegerChunk::GetNext()
+	auto CommandInfo::IntegerChunk::GetNext()
+		-> Chunk*
 	{
 		return (Chunk*)(this + 1);
 	}
 
 
-	CommandInfo::Chunk* CommandInfo::ScriptData::GetChunk()
+	auto CommandInfo::ScriptData::GetChunk()
+		-> Chunk*
 	{
 		return (Chunk*)((std::uintptr_t)this + 6);
+	}
+
+
+	auto CommandInfo::ScriptData::GetStringChunk()
+		-> StringChunk*
+	{
+		return static_cast<StringChunk*>(GetChunk());
+	}
+
+
+	auto CommandInfo::ScriptData::GetIntegerChunk()
+		-> IntegerChunk*
+	{
+		return static_cast<IntegerChunk*>(GetChunk());
 	}
 
 

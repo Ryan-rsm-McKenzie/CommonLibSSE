@@ -139,15 +139,15 @@ namespace RE
 
 		struct ScriptData
 		{
-			Chunk* GetChunk();
+			Chunk*			GetChunk();
+			StringChunk*	GetStringChunk();
+			IntegerChunk*	GetIntegerChunk();
 
 
 			// members
 			UInt16	opcode;		// 00
 			UInt16	chunkSize;	// 02
 			UInt16	numParams;	// 04
-			UInt16	strLen;		// 06
-			char	str[1];		// 08
 		};
 
 

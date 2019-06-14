@@ -30,7 +30,7 @@ namespace RE
 			kNone = 0,
 			kIsInteriorCell = 1 << 0,
 			kHasWater = 1 << 1,
-			kCantTravelFromHere = 1 << 2,
+			kCanTravelFromHere = 1 << 2,
 			kNoLODWater = 1 << 3,
 			kPublicArea = 1 << 5,
 			kHandChanged = 1 << 6,
@@ -143,6 +143,7 @@ namespace RE
 
 		double				GetNorthRotation();
 		bool				IsInteriorCell() const;
+		bool				IsExteriorCell() const;
 		Lighting*			GetLighting();
 		Coordinates*		GetCoordinates();
 

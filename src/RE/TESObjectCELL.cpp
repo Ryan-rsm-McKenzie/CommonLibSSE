@@ -19,6 +19,12 @@ namespace RE
 	}
 
 
+	bool TESObjectCELL::IsExteriorCell() const
+	{
+		return !IsInteriorCell();
+	}
+
+
 	auto TESObjectCELL::GetLighting()
 		-> Lighting*
 	{
@@ -29,6 +35,6 @@ namespace RE
 	auto TESObjectCELL::GetCoordinates()
 		-> Coordinates*
 	{
-		return IsInteriorCell() ? 0 : lightingCoordinates.coordinates;
+		return IsExteriorCell() ? lightingCoordinates.coordinates : 0;
 	}
 }
