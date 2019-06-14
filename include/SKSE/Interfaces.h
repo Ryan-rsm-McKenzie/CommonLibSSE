@@ -114,13 +114,26 @@ namespace SKSE
 
 		void AddTask(TaskFn a_task) const;
 		void AddTask(TaskDelegate* a_task) const;
-		[[deprecated("Use TaskDelegate instead")]] void AddTask(UIDelegate_v1* a_task) const;
+		void AddUITask(TaskFn a_task) const;
+		void AddUITask(UIDelegate_v1* a_task) const;
 
 	protected:
 		class Task : public TaskDelegate
 		{
 		public:
 			Task(TaskFn&& a_fn);
+
+			virtual void Run() override;
+			virtual void Dispose() override;
+
+		private:
+			TaskFn _fn;
+		};
+
+		class UITask : public UIDelegate_v1
+		{
+		public:
+			UITask(TaskFn&& a_fn);
 
 			virtual void Run() override;
 			virtual void Dispose() override;

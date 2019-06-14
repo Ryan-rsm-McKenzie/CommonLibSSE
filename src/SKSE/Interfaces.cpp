@@ -181,7 +181,13 @@ namespace SKSE
 	}
 
 
-	void TaskInterface::AddTask(UIDelegate_v1* a_task) const
+	void TaskInterface::AddUITask(TaskFn a_task) const
+	{
+		GetProxy()->AddUITask(new UITask(std::move(a_task)));
+	}
+
+
+	void TaskInterface::AddUITask(UIDelegate_v1* a_task) const
 	{
 		GetProxy()->AddUITask(a_task);
 	}
@@ -199,6 +205,23 @@ namespace SKSE
 
 
 	void TaskInterface::Task::Dispose()
+	{
+		delete this;
+	}
+
+
+	TaskInterface::UITask::UITask(TaskFn&& a_fn) :
+		_fn(std::move(a_fn))
+	{}
+
+
+	void TaskInterface::UITask::Run()
+	{
+		_fn();
+	}
+
+
+	void TaskInterface::UITask::Dispose()
 	{
 		delete this;
 	}
