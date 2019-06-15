@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiTexture
+
 #include "RE/NiObject.h"  // NiObject
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class NiTexture : public NiObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiTexture;
+
+
 		class FormatPrefs
 		{
 		public:

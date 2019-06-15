@@ -139,42 +139,6 @@ namespace RE
 	}
 
 
-	float NiPoint3::QuickLength() const
-	{
-		float length = SqrLength();
-		UInt32* rep = (UInt32*)&length;
-
-		if (*rep == 0) {
-			length = 0.0f;
-		} else {
-			short exp = ((*rep) >> 23) - 127;
-			*rep &= 0x007fffff;
-			if (exp & 1) {
-				*rep |= 0x00800000;
-			}
-			exp >>= 1;
-			*rep = _sqrtTable[(*rep) >> 16] | ((exp + 127) << 23);
-		}
-
-		return length;
-	}
-
-
-	float NiPoint3::QuickUnitize()
-	{
-		float length = QuickLength();
-		if (length > 1e-6f) {
-			(*this) /= length;
-		} else {
-			x = 0.0f;
-			y = 0.0f;
-			z = 0.0f;
-			length = 0.0f;
-		}
-		return length;
-	}
-
-
 	NiPoint3 NiPoint3::Cross(const NiPoint3& a_pt) const
 	{
 		return NiPoint3(
@@ -190,17 +154,5 @@ namespace RE
 		NiPoint3 cross = Cross(a_pt);
 		cross.Unitize();
 		return cross;
-	}
-
-
-	float NiPoint3::VectorLength(const NiPoint3& a_vec)
-	{
-		return a_vec.QuickLength();
-	}
-
-
-	float NiPoint3::UnitizeVector(NiPoint3& a_vec)
-	{
-		return a_vec.QuickUnitize();
 	}
 }

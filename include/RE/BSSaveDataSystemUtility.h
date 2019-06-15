@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSSaveDataSystemUtility, RTTI_BSSaveDataSystemUtility__Entry
+
 #include "RE/BSString.h"  // BSString
 #include "RE/BSTEvent.h"  // BSTEventSource
 
@@ -13,9 +15,15 @@ namespace RE
 		public BSTEventSource<BSSaveDataEvent>	// 008
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSSaveDataSystemUtility;
+
+
 		class Entry
 		{
 		public:
+			inline static const void* RTTI = RTTI_BSSaveDataSystemUtility__Entry;
+
+
 			virtual void Unk_00(void);	// 00
 
 
@@ -70,7 +78,7 @@ namespace RE
 		};
 
 
-		virtual ~BSSaveDataSystemUtility();	// 00
+		virtual ~BSSaveDataSystemUtility();																				// 00
 
 		// add
 		virtual bool	CreateSaveDirectory(const char* a_pathName, bool a_ignoreINI) = 0;								// 01

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkbRagdollDriver
+
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class hkbRagdollDriver : public hkReferencedObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkbRagdollDriver;
+
+
 		virtual ~hkbRagdollDriver();	// 00
 
 

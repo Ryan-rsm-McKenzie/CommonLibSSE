@@ -1,11 +1,16 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_IPostAnimationChannelUpdateFunctor
+
 
 namespace RE
 {
 	class IPostAnimationChannelUpdateFunctor
 	{
 	public:
+		inline static const void* RTTI = RTTI_IPostAnimationChannelUpdateFunctor;
+
+
 		virtual ~IPostAnimationChannelUpdateFunctor();	// 00
 
 		// add

@@ -1,11 +1,16 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_GRefCountImplCore
+
 
 namespace RE
 {
 	class GRefCountImplCore
 	{
 	public:
+		inline static const void* RTTI = RTTI_GRefCountImplCore;
+
+
 		constexpr GRefCountImplCore() : refCount(1), pad0C(0) {}
 		virtual ~GRefCountImplCore();	// 00
 

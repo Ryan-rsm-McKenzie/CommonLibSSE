@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__CompiledScriptLoader
+
 #include "RE/ILoader.h"  // BSScript::ILoader
 
 
@@ -14,6 +16,9 @@ namespace RE
 		class CompiledScriptLoader : public ILoader
 		{
 		public:
+			inline static const void* RTTI = RTTI_BSScript__CompiledScriptLoader;
+
+
 			virtual ~CompiledScriptLoader();	// 00
 
 

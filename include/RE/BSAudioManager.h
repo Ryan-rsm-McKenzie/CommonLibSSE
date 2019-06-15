@@ -14,9 +14,6 @@ namespace RE
 	class BSAudioManager
 	{
 	public:
-		typedef UInt32 UnkKey;
-		typedef UInt64 UnkValue;
-
 		static BSAudioManager*	GetSingleton();
 		bool					SetUp(SoundData& a_soundData, UInt32 a_soundFormID);
 

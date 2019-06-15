@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpListShape
+
 #include "RE/hkArray.h"  // hkArray
 #include "RE/hkVector4.h"  // hkVector4
 #include "RE/hkpShapeCollection.h"  // hkpShapeCollection
@@ -10,6 +12,9 @@ namespace RE
 	class hkpListShape : public hkpShapeCollection
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpListShape;
+
+
 		enum
 		{
 			kMaxChildrenForSPUMidPhase = 252,

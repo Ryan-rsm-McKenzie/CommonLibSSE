@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSWin32SaveDataSystemUtility
+
 #include "RE/BSSaveDataSystemUtility.h"  // BSSaveDataSystemUtility
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BSWin32SaveDataSystemUtility : public BSSaveDataSystemUtility
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSWin32SaveDataSystemUtility;
+
+
 		virtual ~BSWin32SaveDataSystemUtility();
 
 		// override (BSSaveDataSystemUtility)

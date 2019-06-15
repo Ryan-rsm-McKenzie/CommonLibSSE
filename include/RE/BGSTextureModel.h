@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSTextureModel
+
 #include "RE/TESModel.h"  // TESModel
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BGSTextureModel : public TESModel
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSTextureModel;
+
+
 		virtual ~BGSTextureModel();										// 00
 
 		// override (TESModel)

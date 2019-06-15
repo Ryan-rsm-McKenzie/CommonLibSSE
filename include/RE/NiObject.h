@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiObject
+
 #include "RE/NiRefObject.h"  // NiRefObject
 
 
@@ -22,6 +24,9 @@ namespace RE
 	class NiObject : public NiRefObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiObject;
+
+
 		virtual ~NiObject();												// 00
 
 		// add

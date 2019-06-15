@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpShape
+
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
 #include "RE/hkSseMathTypes.h"  // hkVector4Comparison
 #include "RE/hkpShapeBuffer.h"  // hkpShapeBuffer
@@ -32,6 +34,9 @@ namespace RE
 	class hkpShape : public hkReferencedObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpShape;
+
+
 		using GetSupportingVertexFunc = void(const void* a_this, const hkVector4& a_direction, hkpCdVertex& a_supportVertex);
 		using ConvertVertexIdsToVerticesFunc = void(const void* a_this, const hkpVertexID* a_ids, int a_numIDs, class hkpCdVertex* a_verticesOut);
 		using WeldContactPointFunc = SInt32(const void* a_this, hkpVertexID* a_featurePoints, UInt8& a_numFeaturePoints, hkVector4& a_contactPointWs, const hkTransform* a_thisTransform, const hkpConvexShape* a_collidingShape, const hkTransform* a_collidingTransform, hkVector4& a_separatingNormalInOut);

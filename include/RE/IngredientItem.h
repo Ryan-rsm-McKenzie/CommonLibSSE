@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_IngredientItem
+
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/BGSEquipType.h"  // BGSEquipType
 #include "RE/BGSPickupPutdownSounds.h"  // BGSPickupPutdownSounds
@@ -24,6 +26,9 @@ namespace RE
 		public TESValueForm						// 120
 	{
 	public:
+		inline static const void* RTTI = RTTI_IngredientItem;
+
+
 		enum { kTypeID = FormType::Ingredient };
 
 

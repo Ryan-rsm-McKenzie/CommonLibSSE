@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpShapePhantom
+
 #include "RE/hkMotionState.h"  // hkMotionState
 #include "RE/hkpPhantom.h"  // hkpPhantom
 
@@ -16,6 +18,9 @@ namespace RE
 	class hkpShapePhantom : public hkpPhantom
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpShapePhantom;
+
+
 		virtual ~hkpShapePhantom();																																															// 00
 
 		// override (hkpPhantom)

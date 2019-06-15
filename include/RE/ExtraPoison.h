@@ -1,6 +1,9 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraPoison
+
 #include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/ExtraDataTypes.h"  // ExtraDataType
 
 
 namespace RE
@@ -11,6 +14,9 @@ namespace RE
 	class ExtraPoison : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraPoison;
+
+
 		enum { kExtraTypeID = ExtraDataType::kPoison };
 
 

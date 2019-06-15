@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_SkyrimScript__Logger
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/ErrorLogger.h"  // ErrorLogger
 
@@ -11,6 +13,9 @@ namespace RE
 		class Logger : BSScript::ErrorLogger
 		{
 		public:
+			inline static const void* RTTI = RTTI_SkyrimScript__Logger;
+
+
 			virtual ~Logger();												// 00
 
 			// override (BSScript::ErrorLogger)

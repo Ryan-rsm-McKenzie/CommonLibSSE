@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpCharacterContext
+
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
 #include "RE/hkStepInfo.h"  // hkStepInfo
 #include "RE/hkVector4.h"  // hkVector4
@@ -44,6 +46,9 @@ namespace RE
 	class hkpCharacterContext : public hkReferencedObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpCharacterContext;
+
+
 		enum class CharacterType : UInt32
 		{
 			kProxy = 0,

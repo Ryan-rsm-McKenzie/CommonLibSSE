@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_MagicTarget, RTTI_MagicTarget__ForEachActiveEffectVisitor
+
 #include "RE/ActiveEffect.h"  // ActiveEffect
 #include "RE/EffectSetting.h"  // EffectSetting::Properties::Archetype
 #include "RE/BSTList.h"  // BSSimpleList
@@ -13,12 +15,18 @@ namespace RE
 	class MagicTarget
 	{
 	public:
+		inline static const void* RTTI = RTTI_MagicTarget;
+
+
 		using Archetype = EffectSetting::Data::Archetype;
 
 
 		class ForEachActiveEffectVisitor
 		{
 		public:
+			inline static const void* RTTI = RTTI_MagicTarget__ForEachActiveEffectVisitor;
+
+
 			virtual ~ForEachActiveEffectVisitor();				// 00
 
 			// add

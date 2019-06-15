@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraAliasInstanceArray
+
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/ExtraDataTypes.h"  // ExtraDataType
@@ -14,6 +16,9 @@ namespace RE
 	class ExtraAliasInstanceArray : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraAliasInstanceArray;
+
+
 		enum { kExtraTypeID = ExtraDataType::kAliasInstanceArray };
 
 

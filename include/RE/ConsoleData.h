@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ConsoleData
+
 #include "RE/IUIMessageData.h"  // IUIMessageData
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class ConsoleData : public IUIMessageData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ConsoleData;
+
+
 		virtual ~ConsoleData();	// 00
 
 

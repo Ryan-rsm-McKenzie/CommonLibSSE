@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_Setting
+
 #include "RE/Color.h"
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class Setting
 	{
 	public:
+		inline static const void* RTTI = RTTI_Setting;
+
+
 		enum class Type
 		{
 			kUnknown = 0,

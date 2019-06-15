@@ -1,7 +1,10 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiObjectNET
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/NiObject.h"  // NiObject
+#include "RE/NiSmartPointer.h"  // NiPointer
 
 
 namespace RE
@@ -9,9 +12,13 @@ namespace RE
 	class NiExtraData;
 	class NiTimeController;
 
+
 	class NiObjectNET : public NiObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiObjectNET;
+
+
 		virtual ~NiObjectNET();													// 00
 
 		// override (NiObject)
@@ -32,12 +39,12 @@ namespace RE
 
 
 		// members
-		const char*			name;				// 10
-		NiTimeController*	controller;			// 18 next pointer at +0x30
-		NiExtraData**		extraData;			// 20 extra data
-		UInt16				extraDataLen;		// 28 max valid entry
-		UInt16				extraDataCapacity;	// 2A array len
-		UInt32				pad2C;				// 2C
+		BSFixedString				name;			// 10
+		NiPointer<NiTimeController>	controllers;	// 18
+		NiExtraData**				extra;			// 20
+		UInt16						extraDataSize;	// 28
+		UInt16						maxSize;		// 2A
+		UInt32						pad2C;			// 2C
 	};
 	STATIC_ASSERT(sizeof(NiObjectNET) == 0x30);
 }

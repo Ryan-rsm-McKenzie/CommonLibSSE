@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ToggleRunHandler
+
 #include "RE/PlayerInputHandler.h"  // PlayerInputHandler
 
 
@@ -8,6 +10,9 @@ namespace RE
 	struct ToggleRunHandler : public PlayerInputHandler
 	{
 	public:
+		inline static const void* RTTI = RTTI_ToggleRunHandler;
+
+
 		virtual ~ToggleRunHandler();																	// 00
 
 		// override (PlayerInputHandler)

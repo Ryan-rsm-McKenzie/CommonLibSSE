@@ -866,8 +866,10 @@
     <ClInclude Include="include\RE\NiFloatData.h" />
     <ClInclude Include="include\RE\NiFloatInterpolator.h" />
     <ClInclude Include="include\RE\NiFloatKey.h" />
+    <ClInclude Include="include\RE\NiFrustum.h" />
     <ClInclude Include="include\RE\NiInterpolator.h" />
     <ClInclude Include="include\RE\NiKeyBasedInterpolator.h" />
+    <ClInclude Include="include\RE\NiMatrix3.h" />
     <ClInclude Include="include\RE\NiTCollection.h" />
     <ClInclude Include="include\RE\NiObject.h" />
     <ClInclude Include="include\RE\NiPoint3.h" />
@@ -882,6 +884,7 @@
     <ClInclude Include="include\RE\NiTMapBase.h" />
     <ClInclude Include="include\RE\NiTPointerAllocator.h" />
     <ClInclude Include="include\RE\NiTPointerMap.h" />
+    <ClInclude Include="include\RE\NiTransform.h" />
     <ClInclude Include="include\RE\NiTStringMap.h" />
     <ClInclude Include="include\RE\OldMessageBoxCallback.h" />
     <ClInclude Include="include\RE\PackageLocation.h" />

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_AutoMoveHandler
+
 #include "RE/PlayerInputHandler.h"  // PlayerInputHandler
 
 
@@ -8,6 +10,9 @@ namespace RE
 	struct AutoMoveHandler : public PlayerInputHandler
 	{
 	public:
+		inline static const void* RTTI = RTTI_AutoMoveHandler;
+
+
 		virtual ~AutoMoveHandler();																		// 00
 
 		// override (PlayerInputHandler)

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkContainerHeapAllocator__Allocator
+
 #include "RE/hkMemoryAllocator.h"  // hkMemoryAllocator
 
 
@@ -9,6 +11,9 @@ namespace RE
 	{
 		struct Allocator : public hkMemoryAllocator
 		{
+			inline static const void* RTTI = RTTI_hkContainerHeapAllocator__Allocator;
+
+
 			virtual ~Allocator();																// 00
 
 			virtual void*	BlockAlloc(SInt32 a_numBytes) override;								// 01

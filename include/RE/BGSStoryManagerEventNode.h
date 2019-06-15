@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSStoryManagerEventNode
+
 #include "RE/BGSStoryManagerBranchNode.h"  // BGSStoryManagerBranchNode
 #include "RE/BSString.h"  // BSString
 #include "RE/BSTArray.h"  // BSTArray
@@ -11,6 +13,9 @@ namespace RE
 	class BGSStoryManagerEventNode : public BGSStoryManagerBranchNode
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSStoryManagerEventNode;
+
+
 		enum { kTypeID = FormType::StoryManagerEventNode };
 
 

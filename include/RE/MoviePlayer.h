@@ -1,10 +1,15 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_MoviePlayer
+
 
 namespace RE
 {
 	class MoviePlayer
 	{
+		inline static const void* RTTI = RTTI_MoviePlayer;
+
+
 		virtual ~MoviePlayer();				// 00
 
 		// add

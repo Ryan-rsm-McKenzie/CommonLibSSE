@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiControllerManager
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/NiTArray.h"  // NiTArray
 #include "RE/NiTimeController.h"  // NiTimeController
@@ -13,6 +15,9 @@ namespace RE
 	class NiControllerManager : public NiTimeController
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiControllerManager;
+
+
 		virtual ~NiControllerManager();											// 00
 
 		// override (NiTimeController)

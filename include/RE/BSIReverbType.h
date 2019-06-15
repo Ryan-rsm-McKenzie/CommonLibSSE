@@ -1,11 +1,16 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSIReverbType
+
 
 namespace RE
 {
 	class BSIReverbType
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSIReverbType;
+
+
 		// add
 		virtual UInt32	GetRoomFilter() const = 0;		// 00
 		virtual UInt32	GetRoomHFFilter() const = 0;	// 01

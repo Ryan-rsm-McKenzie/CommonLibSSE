@@ -1,12 +1,12 @@
 #pragma once
 
 #include "RE/Memory.h"  // calloc, free
-#include "RE/NiTCollection.h"
+#include "RE/NiTCollection.h"  // NiTMallocInterface
 
 
 namespace RE
 {
-	template <class T, class TAlloc = NiTMallocInterface<T>>
+	template <class T, class Allocator = NiTMallocInterface<T>>
 	class NiTArray
 	{
 	public:
@@ -74,7 +74,7 @@ namespace RE
 
 
 	// 18
-	template <typename T, class TAlloc = NiTMallocInterface<T>>
+	template <class T, class Allocator = NiTMallocInterface<T >>
 	class NiTLargeArray
 	{
 	public:

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSPerkRankArray
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // BGSPerk
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSPerkRankArray : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSPerkRankArray;
+
+
 		struct Entry
 		{
 			BGSPerk*	perk;	// 00
@@ -20,7 +25,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(Entry) == 0x10);
 
 
-		virtual ~BGSPerkRankArray();	// 00
+		virtual ~BGSPerkRankArray();									// 00
 
 		// override (BaseFormComponent)
 		virtual void	Init() override;								// 01 - { return; }

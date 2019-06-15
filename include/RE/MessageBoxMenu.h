@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_MessageBoxMenu
+
 #include "RE/IMenu.h"
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class MessageBoxMenu : public IMenu
 	{
 	public:
+		inline static const void* RTTI = RTTI_MessageBoxMenu;
+
+
 		virtual ~MessageBoxMenu();											// 00
 
 		// override (IMenu)

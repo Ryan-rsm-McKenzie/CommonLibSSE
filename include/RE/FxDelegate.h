@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_FxDelegate
+
 #include <cstring>  // strlen
 
 #include "RE/FxDelegateHandler.h"  // FxDelegateHandler
@@ -36,17 +38,17 @@ namespace RE
 
 
 		FxDelegate();
+		virtual ~FxDelegate();																												// 00
 
-		static void	Invoke(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args);
-		static void	Invoke2(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args);
+		// override (GFxExternalInterface)
+		virtual void	Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, UInt32 a_argCount) override;	// 01
 
-		void		RegisterHandler(FxDelegateHandler* a_callback);
-		void		UnregisterHandler(FxDelegateHandler* a_callback);
-		void		Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, UInt32 a_argCount);
+		void	RegisterHandler(FxDelegateHandler* a_callback);
+		void	UnregisterHandler(FxDelegateHandler* a_callback);
 
 
 		// members
-		CallbackHash Callbacks;	// 00
+		CallbackHash callbacks;	// 00
 	};
 #endif
 
@@ -54,34 +56,7 @@ namespace RE
 	class FxDelegate : public GFxExternalInterface
 	{
 	public:
-		struct Callbacks
-		{
-			struct Entry
-			{
-				struct FuncInfo
-				{
-					UInt32	fnNameLength;	// 00
-					UInt32	unk04;			// 04
-					UInt32	unk08;			// 08
-					char	fnName[1];		// 0C - null terminated char array
-				};
-
-
-				UInt64			unk00;		// 00
-				UInt32			index;		// 08
-				UInt32			unk0C;		// 0C
-				FuncInfo*		funcInfo;	// 10
-				GFxMovieView*	movieView;	// 18
-				void*			fnCallback;	// 20
-			};
-
-
-			UInt32	unk00;		// 00 - numEntries?
-			UInt32	unk04;		// 04 - pad?
-			UInt32	unk08;		// 08 - size?
-			UInt32	unk0C;		// 0C - pad?
-			Entry	entries;	// 10 - array
-		};
+		inline static const void* RTTI = RTTI_FxDelegate;
 
 
 		virtual ~FxDelegate();																											// 00
@@ -91,7 +66,7 @@ namespace RE
 
 
 		// members
-		Callbacks* callbacks;	// 18
+		void* callbacks;	// 18
 	};
 	STATIC_ASSERT(sizeof(FxDelegate) == 0x20);
 }

@@ -1,7 +1,8 @@
 #pragma once
 
-#include "RE/ExtraDataTypes.h"  // ExtraDataType
+#include "skse64/GameRTTI.h"  // RTTI_BSExtraData
 
+#include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
 
 
@@ -10,15 +11,18 @@ namespace RE
 	class BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSExtraData;
+
+
 		enum { kExtraTypeID = ExtraDataType::kNone };
 
 
 		BSExtraData();
-		virtual ~BSExtraData();														// 00
+		virtual ~BSExtraData();												// 00
 
 		// add
-		virtual ExtraDataType			GetType() const = 0;						// 01
-		virtual bool					IsNotEqual(const BSExtraData* a_rhs) const;	// 02 - { return false; }
+		virtual ExtraDataType	GetType() const = 0;						// 01
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const;	// 02 - { return false; }
 
 		static BSExtraData*				Create(std::size_t a_size, std::uintptr_t a_vtbl);
 		template <class T> static T*	Create(std::uintptr_t a_vtbl);

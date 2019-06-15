@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpCachingShapePhantom
+
 #include "RE/hkpShapePhantom.h"  // hkpShapePhantom
 
 
@@ -11,6 +13,9 @@ namespace RE
 	class hkpCachingShapePhantom : public hkpShapePhantom
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpCachingShapePhantom;
+
+
 		class OrderByUid
 		{
 		public:

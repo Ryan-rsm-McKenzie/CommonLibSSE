@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_PlayerInputHandler
+
 #include "RE/PlayerControls.h"  // PlayerControls::Data024
 
 
@@ -14,6 +16,9 @@ namespace RE
 	class PlayerInputHandler
 	{
 	public:
+		inline static const void* RTTI = RTTI_PlayerInputHandler;
+
+
 		virtual ~PlayerInputHandler();																	// 00
 
 		virtual	bool	CanProcess(InputEvent* a_event) = 0;											// 01

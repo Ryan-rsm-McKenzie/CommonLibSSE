@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ScrollItem
+
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/BGSPickupPutdownSounds.h"  // BGSPickupPutdownSounds
 #include "RE/SpellItem.h"  // SpellItem
@@ -19,6 +21,9 @@ namespace RE
 		public TESValueForm					// 158
 	{
 	public:
+		inline static const void* RTTI = RTTI_ScrollItem;
+
+
 		enum { kTypeID = FormType::Scroll };
 
 

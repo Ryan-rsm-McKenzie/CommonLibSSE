@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__ErrorLogger
+
 #include "RE/BSTEvent.h"  // BSTEventSource
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/LogEvent.h"  // LogEvent
@@ -12,6 +14,9 @@ namespace RE
 		class ErrorLogger : public BSTEventSource<LogEvent>
 		{
 		public:
+			inline static const void* RTTI = RTTI_BSScript__ErrorLogger;
+
+
 			virtual ~ErrorLogger();										// 00
 
 			// add

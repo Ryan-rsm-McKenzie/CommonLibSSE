@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSEquipType
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // BGSEquipSlot
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSEquipType : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSEquipType;
+
+
 		virtual ~BGSEquipType();													// 00
 
 		// override (BaseFormComponent)

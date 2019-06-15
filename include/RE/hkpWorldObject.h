@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpWorldObject
+
 #include "RE/hkMultiThreadCheck.h"  // hkMultiThreadCheck
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
 #include "RE/hkpLinkedCollidable.h"  // hkpLinkedCollidable
@@ -25,6 +27,9 @@ namespace RE
 	class hkpWorldObject : public hkReferencedObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpWorldObject;
+
+
 		enum class MultiThreadingChecks : UInt32
 		{
 			kEnable,

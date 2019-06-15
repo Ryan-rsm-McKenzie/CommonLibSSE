@@ -22,7 +22,7 @@ namespace RE
 		public BSTEventSource<void*>				// 0B8
 	{
 	public:
-		using CreatorFunc = IMenu * (*)();
+		using CreatorFunc = IMenu*(*)();
 
 
 		struct MenuTableItem

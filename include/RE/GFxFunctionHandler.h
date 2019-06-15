@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_GFxFunctionHandler
+
 #include "RE/GRefCountBase.h"  // GRefCountBase
 #include "RE/GStats.h"  // GStatGroups
 
@@ -13,6 +15,9 @@ namespace RE
 	class GFxFunctionHandler : public GRefCountBase<GFxFunctionHandler, GStatGroups::kGStat_Default_Mem>
 	{
 	public:
+		inline static const void* RTTI = RTTI_GFxFunctionHandler;
+
+
 		struct Params
 		{
 			GFxValue*	retVal;				// 00

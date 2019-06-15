@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSResourceNiBinaryStream
+
 #include <string>  // string
 
 #include "RE/NiBinaryStream.h"  // NiBinaryStream
@@ -10,6 +12,9 @@ namespace RE
 	class BSResourceNiBinaryStream : public NiBinaryStream
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSResourceNiBinaryStream;
+
+
 		BSResourceNiBinaryStream();
 		BSResourceNiBinaryStream(const char* a_fileName);
 		BSResourceNiBinaryStream(const std::string& a_fileName);

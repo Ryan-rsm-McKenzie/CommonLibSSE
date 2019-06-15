@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiKeyBasedInterpolator
+
 #include "NiAnimationKey.h"  // NiAnimationKey::KeyContent
 #include "RE/NiInterpolator.h"  // NiInterpolator
 
@@ -12,6 +14,9 @@ namespace RE
 	class NiKeyBasedInterpolator : public NiInterpolator
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiKeyBasedInterpolator;
+
+
 		using KeyType = NiAnimationKey::KeyType;
 		using KeyContent = NiAnimationKey::KeyContent;
 

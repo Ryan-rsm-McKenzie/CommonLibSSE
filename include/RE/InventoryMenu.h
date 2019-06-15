@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_InventoryMenu
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/GFxValue.h"  // GFxValue
 #include "RE/IMenu.h"  // IMenu
@@ -16,6 +18,9 @@ namespace RE
 		// menuDepth = 0
 		// flags = kPauseGame | kPreventGameLoad | kUnk0400 | kItemMenu | kUnk8000
 	public:
+		inline static const void* RTTI = RTTI_InventoryMenu;
+
+
 		// ItemMenu?
 		struct InventoryData
 		{

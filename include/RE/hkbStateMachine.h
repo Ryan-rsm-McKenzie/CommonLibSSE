@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkbStateMachine
+
 #include "RE/hkArray.h"  // hkArray
 #include "RE/hkbEvent.h"  // hkbEvent
 #include "RE/hkbGenerator.h"  // hkbGenerator
@@ -16,6 +18,9 @@ namespace RE
 	class hkbStateMachine : public hkbGenerator
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkbStateMachine;
+
+
 		enum class StartStateMode : UInt8
 		{
 			kDefault = 0,

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiRefObject
+
 #include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class NiRefObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiRefObject;
+
+
 		NiRefObject();
 		virtual ~NiRefObject();					// 00
 

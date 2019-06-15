@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__LinkerProcessor
+
 #include "RE/IObjectProcessor.h"  // BSScript::IObjectProcessor
 
 
@@ -20,7 +22,15 @@ namespace RE
 		class LinkerProcessor : public IObjectProcessor
 		{
 		public:
-			virtual ~LinkerProcessor();	// 00
+			inline static const void* RTTI = RTTI_BSScript__LinkerProcessor;
+
+
+			virtual ~LinkerProcessor();				// 00
+
+			// override (IObjectProcessor)
+			virtual void	Unk_01(void) override;	// 01
+			virtual void	Unk_02(void) override;	// 02
+			virtual void	Unk_03(void) override;	// 03
 
 
 			// members

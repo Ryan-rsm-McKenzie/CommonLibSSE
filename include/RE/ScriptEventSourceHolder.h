@@ -66,8 +66,9 @@ namespace RE
 	class ScriptEventSourceHolder
 	{
 	public:
-		static ScriptEventSourceHolder*	GetSingleton();
-		void							SendActivateEvent(TESObjectREFRPtr& a_target, TESObjectREFRPtr& a_caster);
+		static ScriptEventSourceHolder* GetSingleton();
+
+		void SendActivateEvent(TESObjectREFRPtr& a_target, TESObjectREFRPtr& a_caster);
 
 
 		// members

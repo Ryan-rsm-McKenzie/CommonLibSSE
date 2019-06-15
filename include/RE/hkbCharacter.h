@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkbCharacter
+
 #include "RE/hkArray.h"  // hkArray
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
 #include "RE/hkRefVariant.h"  // hkRefVariant
@@ -17,6 +19,9 @@ namespace RE
 	class hkbCharacter : public hkReferencedObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkbCharacter;
+
+
 		virtual ~hkbCharacter();		// 00
 
 		// add

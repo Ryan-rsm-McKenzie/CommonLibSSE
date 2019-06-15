@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/NiTypes.h"  // NiTransform
+#include "skse64/GameRTTI.h"  // RTTI_NiAVObject
 
 #include "RE/NiObjectNET.h"  // NiObjectNET
-
-class NiMatrix33;
-class NiProperty;
+#include "RE/NiTransform.h"  // NiTransform
 
 
 namespace RE
@@ -13,11 +11,15 @@ namespace RE
 	class BSFixedString;
 	class NiNode;
 	class NiPoint3;
+	class NiProperty;
 
 
 	class NiAVObject : public NiObjectNET
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiAVObject;
+
+
 		enum class Flag : UInt32
 		{
 			kNone = 0,
@@ -61,7 +63,7 @@ namespace RE
 		// add
 		virtual void		UpdateControllers(ControllerUpdateContext* a_ctx);													// 25
 		virtual void		UpdateNodeBound(ControllerUpdateContext* a_ctx);													// 26
-		virtual void		ApplyTransform(NiMatrix33* a_mtx, NiPoint3* a_translate, bool a_postTransform);						// 27 - { return; }
+		virtual void		ApplyTransform(NiMatrix3* a_mtx, NiPoint3* a_translate, bool a_postTransform);						// 27 - { return; }
 		virtual void		SetPropertyState(NiProperty* a_prop);																// 28 - { return; }
 		virtual void		Unk_29(void);																						// 29 - { return; }
 		virtual NiAVObject*	GetObjectByName(const BSFixedString& a_name);														// 2A
@@ -76,17 +78,17 @@ namespace RE
 		virtual void		Unk_33(void);																						// 33
 		virtual void		Unk_34(void);																						// 34 - { return; }
 
-		void				UpdateNode(ControllerUpdateContext* a_ctx);
+		void UpdateNode(ControllerUpdateContext* a_ctx);
 
 
 		// members
 		NiNode*		parent;				// 030
-		UInt32		unk038;				// 038 - New in SE, init'd to FFFFFFFF
+		UInt32		unk038;				// 038
 		UInt32		pad03C;				// 03C
 		NiAVObject*	unk040;				// 040
 		NiTransform	localTransform;		// 048
 		NiTransform	worldTransform;		// 07C
-		NiTransform	oldWorldTransform;	// 0B0 - SE: this one is new
+		NiTransform	oldWorldTransform;	// 0B0
 		float		unkE4;				// 0E4
 		float		unkE8;				// 0E8
 		float		unkEC;				// 0EC
@@ -94,8 +96,8 @@ namespace RE
 		UInt32		flags;				// 0F4 - bitfield
 		float		unkF8;				// 0F8
 		UInt32		unkFC;				// 0FC
-		float		unk100;				// 100 - New in SE? init's to 1.0
-		UInt32		unk104;				// 104 - New in SE? init'd to 0
+		float		unk100;				// 100
+		UInt32		unk104;				// 104
 		UInt8		unk108;				// 108
 		UInt8		unk109;				// 109 - bitfield
 		UInt16		pad10A;				// 10A

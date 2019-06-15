@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSIMusicType
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FormTypes.h"  // BGSMusicTrackFormWrapper
 
@@ -9,6 +11,9 @@ namespace RE
 	class BSIMusicType
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSIMusicType;
+
+
 		enum class Flag : UInt32	// FNAM
 		{
 			kNone = 0,

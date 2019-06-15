@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSAudioManagerThread
+
 #include "RE/BSThread.h"  // BSThread
 
 
@@ -8,7 +10,13 @@ namespace RE
 	class BSAudioManagerThread : public BSThread
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSAudioManagerThread;
+
+
 		virtual ~BSAudioManagerThread();	// 00
+
+		// override (BSThread)
+		virtual void Unk_01(void) override;	// 01
 
 
 		// members

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiNode
+
 #include "RE/NiAVObject.h"  // NiAVObject
 #include "RE/NiTArray.h"  // NiTArray
 
@@ -9,6 +11,9 @@ namespace RE
 	class NiNode : public NiAVObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiNode;
+
+
 		virtual ~NiNode();																													// 00
 
 		// override (NiAVObject)
@@ -23,7 +28,7 @@ namespace RE
 		virtual void			ProcessClone(NiCloningProcess& a_cloning) override;															// 1D
 		virtual void			UpdateControllers(ControllerUpdateContext* a_ctx) override;													// 25
 		virtual void			UpdateNodeBound(ControllerUpdateContext* a_ctx) override;													// 26
-		virtual void			ApplyTransform(NiMatrix33* a_mtx, NiPoint3* a_translate, bool a_postTransform) override;					// 27
+		virtual void			ApplyTransform(NiMatrix3* a_mtx, NiPoint3* a_translate, bool a_postTransform) override;						// 27
 		virtual NiAVObject*		GetObjectByName(const BSFixedString& a_name) override;														// 2A
 		virtual void			SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid) override;	// 2B
 		virtual void			UpdateDownwardPass(ControllerUpdateContext* a_ctx, void* a_arg2) override;									// 2C

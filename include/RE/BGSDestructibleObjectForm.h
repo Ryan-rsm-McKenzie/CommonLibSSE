@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSDestructibleObjectForm
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // BGSExplosion, BGSDebris
 
@@ -12,6 +14,9 @@ namespace RE
 	class BGSDestructibleObjectForm : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSDestructibleObjectForm;
+
+
 		struct Destructible
 		{
 			struct Header	// DEST

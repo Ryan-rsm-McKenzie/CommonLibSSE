@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_LocalMapCamera, RTTI_LocalMapCamera__DefaultState
+
 #include "RE/NiPoint3.h"  // NiPoint3
 #include "RE/TESCamera.h"  // TESCamera
 #include "RE/TESCameraState.h"  // TESCameraState
@@ -13,9 +15,15 @@ namespace RE
 	class LocalMapCamera : public TESCamera
 	{
 	public:
+		inline static const void* RTTI = RTTI_LocalMapCamera;
+
+
 		class DefaultState : public TESCameraState
 		{
 		public:
+			inline static const void* RTTI = RTTI_LocalMapCamera__DefaultState;
+
+
 			virtual ~DefaultState();							// 00
 
 			// add

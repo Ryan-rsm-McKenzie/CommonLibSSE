@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_AbsorbEffect
+
 #include "RE/ValueModifierEffect.h"  // ValueModifierEffect
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class AbsorbEffect : public ValueModifierEffect
 	{
 	public:
+		inline static const void* RTTI = RTTI_AbsorbEffect;
+
+
 		// override (ValueModifierEffect)
 		virtual ~AbsorbEffect();				// 13
 

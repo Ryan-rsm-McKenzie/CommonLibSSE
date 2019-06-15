@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSOverridePackCollection
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BGSOverridePackCollection : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSOverridePackCollection;
+
+
 		virtual ~BGSOverridePackCollection();								// 00
 
 		// override (BaseFormComponent)

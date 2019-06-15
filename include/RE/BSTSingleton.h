@@ -7,7 +7,7 @@ namespace RE
 	// BSTSingletonExplicit
 	//=====================================================
 
-	template<class T>
+	template <class T>
 	struct BSTSingletonExplicit
 	{};
 
@@ -16,7 +16,7 @@ namespace RE
 	// BSTSingletonImplicit
 	//=====================================================
 
-	template<class T>
+	template <class T>
 	struct BSTSingletonImplicit
 	{};
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScaleformTranslator
+
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/GFxTranslator.h"  // GFxTranslator
 
@@ -9,7 +11,10 @@ namespace RE
 	class BSScaleformTranslator : public GFxTranslator
 	{
 	public:
-		typedef BSTHashMap<wchar_t*, wchar_t*> TranslationTable;
+		inline static const void* RTTI = RTTI_BSScaleformTranslator;
+
+
+		using TranslationTable = BSTHashMap<wchar_t*, wchar_t*>;
 
 
 		virtual ~BSScaleformTranslator();									// 00

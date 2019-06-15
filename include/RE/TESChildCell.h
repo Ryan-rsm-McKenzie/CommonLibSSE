@@ -1,11 +1,16 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESChildCell
+
 
 namespace RE
 {
 	class TESChildCell
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESChildCell;
+
+
 		virtual ~TESChildCell();		// 00
 
 		// add

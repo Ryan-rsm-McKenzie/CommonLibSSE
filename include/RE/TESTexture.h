@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESTexture
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/BSFixedString.h"  // BSFixedString
 
@@ -12,6 +14,9 @@ namespace RE
 	class TESTexture : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESTexture;
+
+
 		virtual ~TESTexture();													// 00
 
 		// override (BaseFormComponent)

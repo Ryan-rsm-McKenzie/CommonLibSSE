@@ -1,6 +1,9 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraLock
+
 #include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/FormTypes.h"  // TESObjectREFR
 
 
@@ -24,6 +27,9 @@ namespace RE
 	class ExtraLock : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraLock;
+
+
 		enum { kExtraTypeID = ExtraDataType::kLock };
 
 

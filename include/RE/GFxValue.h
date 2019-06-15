@@ -15,7 +15,9 @@ namespace RE
 
 	class GFxValue
 	{
+	private:
 		friend class GFxMovieRoot;
+
 	public:
 		enum class ValueType : UInt32
 		{

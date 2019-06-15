@@ -1,11 +1,16 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_IUIMessageData
+
 
 namespace RE
 {
 	class IUIMessageData
 	{
 	public:
+		inline static const void* RTTI = RTTI_IUIMessageData;
+
+
 		virtual ~IUIMessageData();	// 00
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESProduceForm
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // BGSSoundDescriptorForm
 
@@ -9,6 +11,9 @@ namespace RE
 	class TESProduceForm : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESProduceForm;
+
+
 		struct IngredientProduction	// PFPC
 		{
 			UInt8	spring;	// 0

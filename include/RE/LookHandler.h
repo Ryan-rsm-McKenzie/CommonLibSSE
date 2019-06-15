@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_LookHandler
+
 #include "RE/PlayerInputHandler.h"  // PlayerInputHandler
 
 
@@ -8,6 +10,9 @@ namespace RE
 	struct LookHandler : public PlayerInputHandler
 	{
 	public:
+		inline static const void* RTTI = RTTI_LookHandler;
+
+
 		virtual ~LookHandler();																					// 00
 
 		// override (PlayerInputHandler)

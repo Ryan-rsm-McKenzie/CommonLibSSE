@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiExtraData
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/NiObject.h"  // NiObject
 
@@ -9,6 +11,9 @@ namespace RE
 	class NiExtraData : public NiObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiExtraData;
+
+
 		virtual ~NiExtraData();													// 00
 
 		// override (NiObject)
@@ -23,7 +28,7 @@ namespace RE
 		virtual void		Unk_25(void);										// 25 - { return 1; }
 		virtual void		Unk_26(void);										// 26 - { return 1; }
 
-		static NiExtraData*	Create(UInt32 a_size, uintptr_t a_vtbl);
+		static NiExtraData* Create(std::size_t a_size, std::uintptr_t a_vtbl);
 
 
 		// members

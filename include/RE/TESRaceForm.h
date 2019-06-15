@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESRaceForm
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // TESRace
 
@@ -9,6 +11,9 @@ namespace RE
 	class TESRaceForm : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESRaceForm;
+
+
 		virtual ~TESRaceForm();												// 00
 
 		// override (BaseFormComponent)

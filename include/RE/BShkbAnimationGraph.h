@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BShkbAnimationGraph
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 #include "RE/BSIRagdollDriver.h"  // BSIRagdollDriver
@@ -30,6 +32,9 @@ namespace RE
 		public BSTEventSource<BSAnimationGraphEvent>	// 068
 	{
 	public:
+		inline static const void* RTTI = RTTI_BShkbAnimationGraph;
+
+
 		virtual ~BShkbAnimationGraph();							// 00
 
 		// override (BSIRagdollDriver)

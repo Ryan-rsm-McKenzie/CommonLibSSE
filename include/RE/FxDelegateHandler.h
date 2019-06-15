@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_FxDelegateHandler
+
 #include "RE/GRefCountBase.h"  // GRefCountBase
 #include "RE/GStats.h"  // GStatGroups
 
@@ -13,6 +15,9 @@ namespace RE
 	class FxDelegateHandler : public GRefCountBase<FxDelegateHandler, GStatGroups::kGStat_Default_Mem>
 	{
 	public:
+		inline static const void* RTTI = RTTI_FxDelegateHandler;
+
+
 		using CallbackFn = void(const FxDelegateArgs& a_params);
 
 
@@ -27,7 +32,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(CallbackProcessor) == 0x8);
 
 
-		virtual ~FxDelegateHandler();
+		virtual ~FxDelegateHandler();							// 00
 
 		// add
 		virtual void Accept(CallbackProcessor* a_cbReg) = 0;	// 01

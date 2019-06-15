@@ -9,7 +9,7 @@ namespace RE
 		static ConsoleManager*	GetSingleton();
 		static bool				IsConsoleMode();
 
-		void					Print(const char* a_fmt, ...);
+		void Print(const char* a_fmt, ...);
 
 
 		// members

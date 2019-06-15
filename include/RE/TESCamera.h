@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESCamera
+
 #include "RE/NiPoint3.h"  // NiPoint3
 
 
@@ -12,6 +14,9 @@ namespace RE
 	class TESCamera
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESCamera;
+
+
 		virtual ~TESCamera();						// 00
 
 		virtual void	SetNode(NiNode* a_node);	// 01

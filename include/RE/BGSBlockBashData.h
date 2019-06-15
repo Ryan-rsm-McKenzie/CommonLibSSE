@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSBlockBashData
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // BGSImpactDataSet, BGSMaterialType
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSBlockBashData : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSBlockBashData;
+
+
 		virtual ~BGSBlockBashData();										// 00
 
 		// override (BaseFormComponent)

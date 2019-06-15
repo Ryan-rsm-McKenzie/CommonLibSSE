@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ahkpWorld
+
 #include "RE/hkpWorld.h"  // hkpWorld
 
 
@@ -7,6 +9,10 @@ namespace RE
 {
 	class ahkpWorld : public hkpWorld
 	{
+	public:
+		inline static const void* RTTI = RTTI_ahkpWorld;
+
+
 		virtual ~ahkpWorld();	// 00
 
 

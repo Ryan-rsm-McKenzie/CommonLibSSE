@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkbNode
+
 #include "RE/hkbBindable.h"  // hkbBindable
 #include "RE/hkStringPtr.h"  // hkStringPtr
 
@@ -9,6 +11,9 @@ namespace RE
 	class hkbNode : public hkbBindable
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkbNode;
+
+
 		virtual ~hkbNode();				// 00
 
 		// add

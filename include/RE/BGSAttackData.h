@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSAttackData
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/FormTypes.h"  // SpellItem, BGSKeyword
 #include "RE/NiRefObject.h"  // NiRefObject
@@ -14,6 +16,9 @@ namespace RE
 	class BGSAttackData : public NiRefObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSAttackData;
+
+
 		struct AttackData	// ATKD
 		{
 			enum class AttackFlag : UInt32

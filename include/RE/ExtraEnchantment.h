@@ -1,6 +1,9 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraEnchantment
+
 #include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/FormTypes.h"  // EnchantmentItem
 
 
@@ -9,6 +12,9 @@ namespace RE
 	class ExtraEnchantment : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraEnchantment;
+
+
 		enum { kExtraTypeID = ExtraDataType::kEnchantment };
 
 

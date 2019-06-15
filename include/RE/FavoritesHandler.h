@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_FavoritesHandler
+
 #include "RE/MenuEventHandler.h"
 
 
@@ -8,6 +10,9 @@ namespace RE
 	struct FavoritesHandler : public MenuEventHandler
 	{
 	public:
+		inline static const void* RTTI = RTTI_FavoritesHandler;
+
+
 		virtual ~FavoritesHandler();									// 00
 
 		// add

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ActiveEffectReferenceEffectController
+
 #include "RE/ReferenceEffectController.h"  // ReferenceEffectController
 
 
@@ -11,6 +13,9 @@ namespace RE
 	class ActiveEffectReferenceEffectController : public ReferenceEffectController
 	{
 	public:
+		inline static const void* RTTI = RTTI_ActiveEffectReferenceEffectController;
+
+
 		virtual ~ActiveEffectReferenceEffectController();	// 00
 
 		// override (ReferenceEffectController)

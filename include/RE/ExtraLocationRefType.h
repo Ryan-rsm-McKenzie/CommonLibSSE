@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraLocationRefType
+
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/FormTypes.h"  // BGSLocationRefType
@@ -10,6 +12,9 @@ namespace RE
 	class ExtraLocationRefType : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraLocationRefType;
+
+
 		enum { kExtraTypeID = ExtraDataType::kLocationRefType };
 
 

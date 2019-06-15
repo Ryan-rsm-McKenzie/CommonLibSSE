@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_GFxLog
+
 #include <cstdarg>  // va_list
 
 #include "RE/GFxLogBase.h"  // GFxLogBase
@@ -13,6 +15,9 @@ namespace RE
 		public GFxLogBase<GFxLog>	// 18
 	{
 	public:
+		inline static const void* RTTI = RTTI_GFxLog;
+
+
 		constexpr GFxLog() : GFxState(StateType::kLog) {}
 		virtual ~GFxLog();																					// 00
 

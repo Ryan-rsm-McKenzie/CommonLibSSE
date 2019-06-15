@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	template <typename Ty>
+	template <class T>
 	class NiTPointerAllocator
 	{
 	public:
@@ -14,7 +14,7 @@ namespace RE
 		public:
 			AllocNode*	next;		// 00
 			void*		data;		// 08
-			Ty			element;	// 10
+			T			element;	// 10
 		};
 
 

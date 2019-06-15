@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_Console
+
 #include "RE/IMenu.h"  // IMenu
 
 
@@ -8,7 +10,10 @@ namespace RE
 	class Console : IMenu
 	{
 	public:
-		virtual ~Console();													// 00
+		inline static const void* RTTI = RTTI_Console;
+
+
+		virtual ~Console();														// 00
 
 		// override (IMenu)
 		virtual void		Accept(CallbackProcessor* a_processor) override;	// 01

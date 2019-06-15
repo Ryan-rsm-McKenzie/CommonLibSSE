@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSMaterialObject
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/NiColor.h"  // NiColor
 
@@ -9,6 +11,9 @@ namespace RE
 	class BSMaterialObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSMaterialObject;
+
+
 		struct DirectionalMaterialData	// DATA
 		{
 			enum class Flag1 : UInt32

@@ -27,22 +27,14 @@ namespace RE
 		float			SqrLength() const;
 		float			Length() const;
 		float			Unitize();
-		float			QuickLength() const;
-		float			QuickUnitize();
 		NiPoint3		Cross(const NiPoint3 &pt) const;
 		NiPoint3		UnitCross(const NiPoint3& a_pt) const;
-
-		static float	VectorLength(const NiPoint3& a_vec);
-		static float	UnitizeVector(NiPoint3& a_vec);
 
 
 		// members
 		float	x;	// 0
 		float	y;	// 4
 		float	z;	// 8
-
-	protected:
-		static UInt32 _sqrtTable[256];
 	};
 	STATIC_ASSERT(sizeof(NiPoint3) == 0xC);
 }

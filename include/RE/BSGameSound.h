@@ -1,41 +1,44 @@
 #pragma once
 
-#include "RE/IXAudio2VoiceCallback.h"
+#include "skse64/GameRTTI.h"  // RTTI_BSGameSound
 
 
 namespace RE
 {
-	class BSGameSound : public IXAudio2VoiceCallback
+	class BSGameSound
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSGameSound;
+
+
 		// add
-		virtual void	Unk_00();		// 00
+		virtual void	Unk_00(void);		// 00 - { return; }
 
-		virtual ~BSGameSound();			// 01
+		virtual ~BSGameSound();				// 01
 
-		virtual void	Unk_02(void);	// 02
-		virtual void	Unk_03(void);	// 03
-		virtual void	Unk_04(void);	// 04 - pure
-		virtual void	Unk_05(void);	// 05
-		virtual void	Unk_06(void);	// 06 - pure
-		virtual void	Unk_07(void);	// 07 - pure
-		virtual void	Unk_08(void);	// 08 - pure
-		virtual void	Unk_09(void);	// 09 - pure
-		virtual void	Unk_0A(void);	// 0A - pure
-		virtual void	Unk_0B(void);	// 0B
-		virtual void	Unk_0C(void);	// 0C
-		virtual void	Unk_0D(void);	// 0D - pure
-		virtual void	Unk_0E(void);	// 0E
-		virtual void	Unk_0F(void);	// 0F - pure
-		virtual void	Unk_10(void);	// 10 - pure
-		virtual void	Unk_11(void);	// 11 - pure
-		virtual void	Unk_12(void);	// 12 - pure
-		virtual void	Unk_13(void);	// 13
-		virtual void	Unk_14(void);	// 14 - pure
-		virtual void	Unk_15(void);	// 15 - pure
-		virtual void	Unk_16(void);	// 16 - pure
-		virtual void	Unk_17(void);	// 17 - pure
-		virtual void	Unk_18(void);	// 18 - pure
+		virtual void	Unk_02(void);		// 02 - { return (unk5C >> 4) & 1; }
+		virtual void	Unk_03(void);		// 03
+		virtual void	Unk_04(void) = 0;	// 04
+		virtual void	Unk_05(void);		// 05
+		virtual void	Unk_06(void) = 0;	// 06
+		virtual void	Unk_07(void) = 0;	// 07
+		virtual void	Unk_08(void) = 0;	// 08
+		virtual void	Unk_09(void) = 0;	// 09
+		virtual void	Unk_0A(void) = 0;	// 0A
+		virtual void	Unk_0B(void);		// 0B - { unk5C |= 0x800; }
+		virtual void	Unk_0C(void);		// 0C
+		virtual void	Unk_0D(void) = 0;	// 0D
+		virtual void	Unk_0E(void);		// 0E
+		virtual void	Unk_0F(void) = 0;	// 0F
+		virtual void	Unk_10(void) = 0;	// 10
+		virtual void	Unk_11(void) = 0;	// 11
+		virtual void	Unk_12(void) = 0;	// 12
+		virtual void	Unk_13(void);		// 13 - { return; }
+		virtual void	Unk_14(void) = 0;	// 14
+		virtual void	Unk_15(void) = 0;	// 15
+		virtual void	Unk_16(void) = 0;	// 16
+		virtual void	Unk_17(void) = 0;	// 17
+		virtual void	Unk_18(void) = 0;	// 18
 
 
 		// members

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpConstraintOwner
+
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
 #include "RE/hkpConstraintInfo.h"  // hkpConstraintInfo
 
@@ -12,6 +14,9 @@ namespace RE
 	class hkpConstraintOwner : public hkReferencedObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpConstraintOwner;
+
+
 		virtual ~hkpConstraintOwner();																	// 00
 
 		// add

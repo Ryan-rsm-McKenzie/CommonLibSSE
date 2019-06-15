@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__IObjectHandlePolicy
+
 
 namespace RE
 {
@@ -12,6 +14,9 @@ namespace RE
 		struct IObjectHandlePolicy
 		{
 		public:
+			inline static const void* RTTI = RTTI_BSScript__IObjectHandlePolicy;
+
+
 			virtual ~IObjectHandlePolicy();													// 00
 
 			// add

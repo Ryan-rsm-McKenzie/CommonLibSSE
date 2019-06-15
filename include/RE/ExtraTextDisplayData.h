@@ -1,7 +1,10 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraTextDisplayData
+
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/FormTypes.h"  // BGSMessage, TESQuest
 
 
@@ -10,6 +13,9 @@ namespace RE
 	class ExtraTextDisplayData : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraTextDisplayData;
+
+
 		enum { kExtraTypeID = ExtraDataType::kTextDisplayData };
 
 

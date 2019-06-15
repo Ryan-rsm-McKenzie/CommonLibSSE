@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_SpellItem
+
 #include "RE/BGSEquipType.h"  // BGSEquipType
 #include "RE/BGSMenuDisplayObject.h"  // BGSMenuDisplayObject
 #include "RE/FormTypes.h"  // FormType, BGSPerk
@@ -16,6 +18,9 @@ namespace RE
 		public TESDescription			// B0
 	{
 	public:
+		inline static const void* RTTI = RTTI_SpellItem;
+
+
 		enum { kTypeID = FormType::Spell };
 
 

@@ -13,9 +13,9 @@ namespace RE
 	class GFxLoader
 	{
 	public:
-		static GFxLoader*	GetSingleton();
+		static GFxLoader* GetSingleton();
 
-		bool				LoadMovie(IMenu* a_menu, GFxMovieView*& a_viewOut, const char* a_swfName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha);
+		bool LoadMovie(IMenu* a_menu, GFxMovieView*& a_viewOut, const char* a_swfName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha);
 
 
 		// members

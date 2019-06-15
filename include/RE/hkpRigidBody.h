@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpRigidBody
+
 #include "RE/hkpEntity.h"  // hkpEntity
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class hkpRigidBody : public hkpEntity
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpRigidBody;
+
+
 		virtual ~hkpRigidBody();																		// 00
 
 		// override (hkpEntity)

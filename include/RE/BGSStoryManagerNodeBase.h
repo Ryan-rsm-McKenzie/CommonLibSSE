@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSStoryManagerNodeBase
+
 #include "RE/BGSStoryManagerTreeForm.h"  // BGSStoryManagerTreeForm
 #include "RE/Condition.h"  // Condition
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSStoryManagerNodeBase : public BGSStoryManagerTreeForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSStoryManagerNodeBase;
+
+
 		struct Flags	// DNAM
 		{
 			enum class NodeFlag : UInt16

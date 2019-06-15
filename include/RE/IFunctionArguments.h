@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__IFunctionArguments
+
 #include "RE/BSScriptVariable.h"  // BSScriptVariable
 #include "RE/BSTArray.h"  // BSScrapArray
 #include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
@@ -12,6 +14,9 @@ namespace RE
 		class IFunctionArguments
 		{
 		public:
+			inline static const void* RTTI = RTTI_BSScript__IFunctionArguments;
+
+
 			IFunctionArguments();
 			virtual ~IFunctionArguments();									// 00
 

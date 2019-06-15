@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSHandleRefObject
+
 #include "RE/NiRefObject.h"  // NiRefObject
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BSHandleRefObject : public NiRefObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSHandleRefObject;
+
+
 		enum
 		{
 			kMask_RefCount = 0x3FF

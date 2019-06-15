@@ -1,7 +1,10 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraDroppedItemList
+
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/BSTList.h"  // BSSimpleList
+#include "RE/ExtraDataTypes.h"  // ExtraDataType
 
 
 namespace RE
@@ -9,6 +12,9 @@ namespace RE
 	class ExtraDroppedItemList : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraDroppedItemList;
+
+
 		enum { kExtraTypeID = ExtraDataType::kDroppedItemList };
 
 

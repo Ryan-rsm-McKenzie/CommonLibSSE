@@ -1,6 +1,9 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraCount
+
 #include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/ExtraDataTypes.h"  // ExtraDataType
 
 
 namespace RE
@@ -8,6 +11,9 @@ namespace RE
 	class ExtraCount : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraCount;
+
+
 		enum { kExtraTypeID = ExtraDataType::kCount };
 
 

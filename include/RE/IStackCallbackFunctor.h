@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__IStackCallbackFunctor
+
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 
 
@@ -10,6 +12,9 @@ namespace RE
 		class IStackCallbackFunctor : public BSIntrusiveRefCounted
 		{
 		public:
+			inline static const void* RTTI = RTTI_BSScript__IStackCallbackFunctor;
+
+
 			virtual ~IStackCallbackFunctor();	// 00
 
 			// add

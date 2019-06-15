@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSAnimationGraphManager
+
 #include "RE/ActorSpeedChannel.h"  // ActorSpeedChannel
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
@@ -23,6 +25,9 @@ namespace RE
 		public BSIntrusiveRefCounted				// 08
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSAnimationGraphManager;
+
+
 		struct AnimationVariable
 		{
 			union Value

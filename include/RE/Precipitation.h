@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_Precipitation
+
 
 namespace RE
 {
@@ -11,6 +13,9 @@ namespace RE
 	class Precipitation
 	{
 	public:
+		inline static const void* RTTI = RTTI_Precipitation;
+
+
 		virtual ~Precipitation();	// 00
 
 

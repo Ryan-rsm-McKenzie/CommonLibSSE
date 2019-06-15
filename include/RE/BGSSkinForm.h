@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSSkinForm
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // TESObjectARMO
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSSkinForm : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSSkinForm;
+
+
 		virtual ~BGSSkinForm();												// 00
 
 		// override (BaseFormComponent)

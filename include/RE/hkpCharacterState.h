@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpCharacterState
+
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
 
 
@@ -19,7 +21,10 @@ namespace RE
 			kInAir,
 			kClimbing,
 			kFlying,
+
 			kUserState0,
+			kSwimming = kUserState0,
+
 			kUserState1,
 			kUserState2,
 			kUserState3,
@@ -35,6 +40,9 @@ namespace RE
 	class hkpCharacterState : public hkReferencedObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpCharacterState;
+
+
 		virtual ~hkpCharacterState();																																					// 00
 
 		virtual hkpCharacterStateType	GetType() const = 0;																															// 03

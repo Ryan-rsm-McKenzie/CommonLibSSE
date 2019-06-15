@@ -1,11 +1,16 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpShapeContainer
+
 
 namespace RE
 {
 	class hkpShapeContainer
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpShapeContainer;
+
+
 		enum class ReferencePolicy : UInt32
 		{
 			kIgnore,

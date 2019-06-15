@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESContainer
+
 #include "function_ref.h"  // function_view
 
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
@@ -11,6 +13,9 @@ namespace RE
 	class TESContainer : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESContainer;
+
+
 		struct Entry	// CNTO
 		{
 			struct ExtraData // COED

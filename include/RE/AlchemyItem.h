@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_AlchemyItem
+
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/BGSEquipType.h"  // BGSEquipType
 #include "RE/BGSMessageIcon.h"  // BGSMessageIcon
@@ -24,6 +26,9 @@ namespace RE
 		public BGSPickupPutdownSounds		// 120
 	{
 	public:
+		inline static const void* RTTI = RTTI_AlchemyItem;
+
+
 		enum { kTypeID = FormType::AlchemyItem };
 
 

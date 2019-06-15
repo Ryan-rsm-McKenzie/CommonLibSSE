@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpCharacterProxy
+
 #include "RE/hkArray.h"  // hkArray
 #include "RE/hkVector4.h"  // hkVector4
 #include "RE/hkpEntityListener.h"  // hkpEntityListener
@@ -25,6 +27,9 @@ namespace RE
 		public hkpPhantomListener	// 18
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpCharacterProxy;
+
+
 		virtual ~hkpCharacterProxy();																																																													// 00
 
 		// override (hkReferencedObject)

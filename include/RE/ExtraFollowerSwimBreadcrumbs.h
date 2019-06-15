@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraFollowerSwimBreadcrumbs
+
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/ExtraDataTypes.h"  // ExtraDataType
@@ -10,6 +12,9 @@ namespace RE
 	class ExtraFollowerSwimBreadcrumbs : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraFollowerSwimBreadcrumbs;
+
+
 		enum { kExtraTypeID = ExtraDataType::kFollowerSwimBreadcrumbs };
 
 

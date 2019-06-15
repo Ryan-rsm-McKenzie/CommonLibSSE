@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSStandardSoundDef, RTTI_BGSStandardSoundDef__SoundPlaybackCharacteristics
+
 #include "RE/BGSSoundDescriptor.h"  // BGSSoundDescriptor
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FileHash.h"  // FileHash
@@ -14,9 +16,15 @@ namespace RE
 	class BGSStandardSoundDef : public BGSSoundDescriptor
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSStandardSoundDef;
+
+
 		struct SoundPlaybackCharacteristics : public BSISoundDescriptor::BSIPlaybackCharacteristics	// BNAM
 		{
 		public:
+			inline static const void* RTTI = RTTI_BGSStandardSoundDef__SoundPlaybackCharacteristics;
+
+
 			// override (BSIPlaybackCharacteristics)
 			virtual UInt8	GetFrequencyShift() override;		// 01 - { return frequencyShift; }
 			virtual UInt8	GetFrequencyVariance() override;	// 02 - { return frequencyVariance; }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_bhkCharProxyController
+
 #include "RE/bhkCharacterController.h"  // bhkCharacterController
 #include "RE/bhkCharacterProxy.h"  // bhkCharacterProxy
 #include "RE/hkpCharacterProxyListener.h"  // hkpCharacterProxyListener
@@ -12,6 +14,9 @@ namespace RE
 		public bhkCharacterController			// 010
 	{
 	public:
+		inline static const void* RTTI = RTTI_bhkCharProxyController;
+
+
 		virtual ~bhkCharProxyController();																																					// 00
 
 		// override (hkpCharacterProxyListener)

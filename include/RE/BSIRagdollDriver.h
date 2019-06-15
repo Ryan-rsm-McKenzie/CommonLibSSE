@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSIRagdollDriver
+
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 
 
@@ -11,6 +13,9 @@ namespace RE
 	class BSIRagdollDriver
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSIRagdollDriver;
+
+
 		virtual void	Unk_01(void) = 0;					// 01
 		virtual void	Unk_02(void) = 0;					// 02
 		virtual void	Unk_03(void) = 0;					// 03

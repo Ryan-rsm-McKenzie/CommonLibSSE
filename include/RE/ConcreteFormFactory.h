@@ -2,7 +2,9 @@
 
 #include "RE/IFormFactory.h"  // IFormFactory
 
-#include "RE/TESForm.h"
+#include "RE/TESForm.h"  // TESForm
+
+
 namespace RE
 {
 	template <class T, FormType FORM_TYPE>

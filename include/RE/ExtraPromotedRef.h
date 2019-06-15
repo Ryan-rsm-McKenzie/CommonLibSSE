@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraPromotedRef
+
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/ExtraDataTypes.h"  // ExtraDataType
@@ -11,6 +13,9 @@ namespace RE
 	class ExtraPromotedRef : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraPromotedRef;
+
+
 		enum { kExtraTypeID = ExtraDataType::kPromotedRef };
 
 

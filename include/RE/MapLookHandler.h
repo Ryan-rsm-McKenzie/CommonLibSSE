@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_MapLookHandler
+
 #include "RE/MapInputHandler.h"  // MapInputHandler
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class MapLookHandler : public MapInputHandler
 	{
 	public:
+		inline static const void* RTTI = RTTI_MapLookHandler;
+
+
 		virtual ~MapLookHandler();												// 00
 
 		// override (MapInputHandler)

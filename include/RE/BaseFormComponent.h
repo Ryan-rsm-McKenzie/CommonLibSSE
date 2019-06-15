@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BaseFormComponent
+
 #include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_BaseFormComponent;
+
+
 		virtual ~BaseFormComponent();							// 00
 
 		// add

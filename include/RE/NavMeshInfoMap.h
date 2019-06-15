@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NavMeshInfoMap
+
 #include "RE/BSNavmeshInfoMap.h"  // BSNavmeshInfoMap
 #include "RE/FormTypes.h"  // FormType
 #include "RE/PrecomputedNavmeshInfoPathMap.h"  // PrecomputedNavmeshInfoPathMap
@@ -14,6 +16,9 @@ namespace RE
 		public PrecomputedNavmeshInfoPathMap	// 30
 	{
 	public:
+		inline static const void* RTTI = RTTI_NavMeshInfoMap;
+
+
 		enum { kTypeID = FormType::Navigation };
 
 

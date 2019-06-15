@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSSoundDescriptor
+
 #include "RE/BSISoundDescriptor.h"  // BSISoundDescriptor
 
 
@@ -13,6 +15,9 @@ namespace RE
 	class BGSSoundDescriptor : public BSISoundDescriptor
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSSoundDescriptor;
+
+
 		virtual ~BGSSoundDescriptor();				// 00
 
 		// add

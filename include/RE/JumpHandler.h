@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_JumpHandler
+
 #include "RE/PlayerInputHandler.h"  // PlayerInputHandler
 
 
@@ -8,6 +10,9 @@ namespace RE
 	struct JumpHandler : public PlayerInputHandler
 	{
 	public:
+		inline static const void* RTTI = RTTI_JumpHandler;
+
+
 		virtual ~JumpHandler();																			// 00
 
 		// override (PlayerInputHandler)

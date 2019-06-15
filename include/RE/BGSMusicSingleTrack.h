@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSMusicSingleTrack
+
 #include "RE/BGSMusicTrack.h"  // BGSMusicTrack
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FileHash.h"  // FileHash
@@ -11,6 +13,9 @@ namespace RE
 	class BGSMusicSingleTrack : public BGSMusicTrack
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSMusicSingleTrack;
+
+
 		struct LoopData	// LNAM
 		{
 			float	loopBegin;	// 0

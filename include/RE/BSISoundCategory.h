@@ -1,11 +1,16 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSISoundCategory
+
 
 namespace RE
 {
 	class BSISoundCategory
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSISoundCategory;
+
+
 		virtual ~BSISoundCategory();		// 00
 
 		// add

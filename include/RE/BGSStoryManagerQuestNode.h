@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSStoryManagerQuestNode
+
 #include "RE/BGSStoryManagerNodeBase.h"  // BGSStoryManagerNodeBase
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/BSTArray.h"  // BSTArray
@@ -11,6 +13,9 @@ namespace RE
 	class BGSStoryManagerQuestNode : public BGSStoryManagerNodeBase
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSStoryManagerQuestNode;
+
+
 		enum { kTypeID = FormType::StoryManagerQuestNode };
 
 

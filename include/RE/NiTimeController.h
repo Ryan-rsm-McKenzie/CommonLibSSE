@@ -1,6 +1,9 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiTimeController
+
 #include "RE/NiObject.h"  // NiObject
+#include "RE/NiSmartPointer.h"  // NiSmartPointer
 
 
 namespace RE
@@ -8,21 +11,31 @@ namespace RE
 	class NiObjectNET;
 
 
+	NiSmartPointer(NiTimeController);
+
+
 	class NiTimeController : public NiObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiTimeController;
+
+
 		enum class Flag : UInt16
 		{
-			kAnimType_AppTime = 0,
+			kAnimType_AppTime = 0 << 0,
 			kAnimType_AppInit = 1 << 0,
+			kAnimType_Mask = 1,
 
 			kCycleType_Loop = 0 << 1,
 			kCycleType_Reverse = 1 << 1,
 			kCycleType_Clamp = 2 << 1,
+			kCycleType_Mask = 6,
 
 			kActive = 1 << 3,
-
-			kPlayBackwards = 1 << 4
+			kPlayBackwards = 1 << 4,
+			kManagerControlled = 1 << 5,
+			kComputeScaledTime = 1 << 6,
+			kForceUpdate = 1 << 7
 		};
 
 
@@ -51,19 +64,19 @@ namespace RE
 
 
 		// members
-		Flag				flags;		// 10
-		UInt16				pad12;		// 12
-		float				frequency;	// 14
-		float				phase;		// 18
-		float				loKeyTime;	// 1C
-		float				hiKeyTime;	// 20
-		float				startTime;	// 24
-		float				lastTime;	// 28
-		UInt32				unk2C;		// 2C
-		UInt64				unk30;		// 30
-		void*				target;		// 38
-		UInt64				unk40;		// 40
+		Flag				flags;				// 10
+		UInt16				pad12;				// 12
+		float				frequency;			// 14
+		float				phase;				// 18
+		float				loKeyTime;			// 1C
+		float				hiKeyTime;			// 20
+		float				startTime;			// 24
+		float				lastTime;			// 28
+		float				weightedLastTime;	// 2C
+		float				scaledTime;			// 30
+		UInt32				pad34;				// 34
+		NiObjectNET*		target;				// 38
+		NiTimeControllerPtr	next;				// 40 - singly-linked list
 	};
 	STATIC_ASSERT(sizeof(NiTimeController) == 0x48);
 }
-class NiTimeController;

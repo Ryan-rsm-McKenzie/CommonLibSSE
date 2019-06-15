@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_MovementControllerNPC
+
 #include "RE/IAnimationSetCallbackFunctor.h"  // IAnimationSetCallbackFunctor
 #include "RE/IMovementDirectControl.h"  // IMovementDirectControl
 #include "RE/IMovementMessageInterface.h"  // IMovementMessageInterface
@@ -21,6 +23,9 @@ namespace RE
 		public IAnimationSetCallbackFunctor		// 148
 	{
 	public:
+		inline static const void* RTTI = RTTI_MovementControllerNPC;
+
+
 		virtual ~MovementControllerNPC();	// 00
 
 		// add

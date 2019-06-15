@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESAttackDamageForm
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class TESAttackDamageForm : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESAttackDamageForm;
+
+
 		virtual ~TESAttackDamageForm();										// 00
 
 		// override (BaseFormComponent)

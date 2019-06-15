@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_MapMenu
+
 #include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/IMapCameraCallbacks.h"  // IMapCameraCallbacks
 #include "RE/IMenu.h"  // IMenu
@@ -21,6 +23,9 @@ namespace RE
 		public IMapCameraCallbacks						// 00038
 	{
 	public:
+		inline static const void* RTTI = RTTI_MapMenu;
+
+
 		virtual ~MapMenu();																											// 00
 
 		// override (IMenu)

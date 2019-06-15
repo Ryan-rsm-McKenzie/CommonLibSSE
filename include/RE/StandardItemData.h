@@ -1,6 +1,6 @@
 #pragma once
 
-#include "skse64/ScaleformValue.h"  // GFxValue
+#include "skse64/GameRTTI.h"  // RTTI_StandardItemData
 
 
 namespace RE
@@ -11,6 +11,9 @@ namespace RE
 	class StandardItemData
 	{
 	public:
+		inline static const void* RTTI = RTTI_StandardItemData;
+
+
 		virtual ~StandardItemData();			// 00
 
 		virtual const char*	GetName();			// 01 - { return objDesc->GenerateName(); }

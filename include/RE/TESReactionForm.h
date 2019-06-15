@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESReactionForm
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/FormTypes.h"  // TESFaction
@@ -10,6 +12,9 @@ namespace RE
 	class TESReactionForm : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESReactionForm;
+
+
 		struct Relation	// XNAM
 		{
 			enum class GroupCombatReaction : UInt32

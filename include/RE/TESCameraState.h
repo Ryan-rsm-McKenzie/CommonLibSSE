@@ -1,6 +1,8 @@
 #pragma once
 
-#include "skse64/GameTypes.h"  // BSIntrusiveRefCounted
+#include "skse64/GameRTTI.h"  // RTTI_TESCameraState
+
+#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 
 
 namespace RE
@@ -11,6 +13,9 @@ namespace RE
 	class TESCameraState : public BSIntrusiveRefCounted
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESCameraState;
+
+
 		virtual ~TESCameraState();				// 00
 
 		// add

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESLeveledList
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // FormType, TESForm, TESGlobal, TESFaction
 
@@ -9,6 +11,9 @@ namespace RE
 	class TESLeveledList : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESLeveledList;
+
+
 		struct Entry
 		{
 			struct BaseData	// LVLO

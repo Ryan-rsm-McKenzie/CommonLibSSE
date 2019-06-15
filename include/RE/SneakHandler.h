@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_SneakHandler
+
 #include "RE/PlayerInputHandler.h"  // PlayerInputHandler
 
 
@@ -8,6 +10,9 @@ namespace RE
 	struct SneakHandler : public PlayerInputHandler
 	{
 	public:
+		inline static const void* RTTI = RTTI_SneakHandler;
+
+
 		virtual ~SneakHandler();																		// 00
 
 		// override (PlayerInputHandler)

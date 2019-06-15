@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_StatsMenu
+
 #include "RE/ActorValues.h"  // ActorValue
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FileHash.h"  // FileHash
@@ -26,6 +28,9 @@ namespace RE
 		public MenuEventHandler	// 030
 	{
 	public:
+		inline static const void* RTTI = RTTI_StatsMenu;
+
+
 		enum { kTotalTrees = 18 };
 
 

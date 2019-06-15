@@ -1,18 +1,22 @@
 #pragma once
 
-#include "RE/GFxState.h"  // GFxState
+#include "skse64/GameRTTI.h"  // RTTI_GFxExternalInterface
 
-class GFxValue;
+#include "RE/GFxState.h"  // GFxState
 
 
 namespace RE
 {
 	class GFxMovieView;
+	class GFxValue;
 
 
 	class GFxExternalInterface : public GFxState
 	{
 	public:
+		inline static const void* RTTI = RTTI_GFxExternalInterface;
+
+
 		constexpr GFxExternalInterface() :
 			GFxState(StateType::kExternalInterface)
 		{}

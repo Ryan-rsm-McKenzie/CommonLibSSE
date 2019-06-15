@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkReferencedObject
+
 #include "RE/hkBaseObject.h"  // hkBaseObject
 
 
@@ -12,6 +14,9 @@ namespace RE
 	class hkReferencedObject : public hkBaseObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkReferencedObject;
+
+
 		enum class LockMode : UInt32
 		{
 			kNone = 0,

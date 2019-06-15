@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_bhkCharacterProxy
+
 #include "RE/bhkCharacterPointCollector.h"  // bhkCharacterPointCollector
 #include "RE/bhkSerializable.h"  // bhkSerializable
 
@@ -9,6 +11,9 @@ namespace RE
 	class bhkCharacterProxy : public bhkSerializable
 	{
 	public:
+		inline static const void* RTTI = RTTI_bhkCharacterProxy;
+
+
 		virtual ~bhkCharacterProxy();											// 00
 
 		// override (bhkSerializable)

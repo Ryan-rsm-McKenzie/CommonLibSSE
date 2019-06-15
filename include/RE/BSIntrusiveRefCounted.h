@@ -10,6 +10,7 @@ namespace RE
 	public:
 		template <class T> friend struct BSTSmartPointerIntrusiveRefCount;
 
+
 		BSIntrusiveRefCounted();
 
 		SInt32	IncRefCount();

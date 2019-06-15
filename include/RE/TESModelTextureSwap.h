@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESModelTextureSwap
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/FormTypes.h"  // BGSTextureSet
 #include "RE/TESModel.h"  // TESModel
@@ -10,6 +12,9 @@ namespace RE
 	class TESModelTextureSwap : public TESModel
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESModelTextureSwap;
+
+
 		struct AlternateTexture	// MODS
 		{
 			BGSTextureSet*	textureSet;	// 00

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSMusicSilenceTrack
+
 #include "RE/BGSMusicTrack.h"  // BGSMusicTrack
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BGSMusicSilenceTrack : public BGSMusicTrack
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSMusicSilenceTrack;
+
+
 		virtual ~BGSMusicSilenceTrack();						// 00
 
 		// override (BGSMusicTrack)

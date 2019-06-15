@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	class alignas(16) hkRotation : public hkMatrix3
+	class alignas(0x10) hkRotation : public hkMatrix3
 	{
 	public:
 	};

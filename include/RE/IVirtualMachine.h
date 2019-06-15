@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__IVirtualMachine
+
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 #include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 #include "RE/BSTEvent.h"  // BSTEventSink
@@ -39,6 +41,9 @@ namespace RE
 		class IVirtualMachine : public BSIntrusiveRefCounted
 		{
 		public:
+			inline static const void* RTTI = RTTI_BSScript__IVirtualMachine;
+
+
 			enum class FunctionFlag : UInt32
 			{
 				kNone = 0,

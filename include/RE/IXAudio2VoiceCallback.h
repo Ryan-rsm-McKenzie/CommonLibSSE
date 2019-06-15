@@ -3,6 +3,6 @@
 
 namespace RE
 {
-	class IXAudio2VoiceCallback
+	struct IXAudio2VoiceCallback
 	{};
 }

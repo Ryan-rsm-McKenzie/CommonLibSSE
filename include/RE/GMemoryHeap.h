@@ -16,10 +16,12 @@ namespace RE
 
 	class GMemoryHeap : public GListNode<GMemoryHeap>
 	{
+	private:
 		friend class GMemoryHeapPT;
 		friend class GMemoryHeapMH;
 		friend class GHeapRoot;
 		friend class GHeapRootMH;
+
 	public:
 		enum class MemReportType : UInt32
 		{

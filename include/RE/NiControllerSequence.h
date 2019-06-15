@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiControllerSequence
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/NiObject.h"  // NiObject
 
@@ -9,6 +11,9 @@ namespace RE
 	class NiControllerSequence : public NiObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiControllerSequence;
+
+
 		virtual ~NiControllerSequence();											// 00
 
 		// override (NiObject)

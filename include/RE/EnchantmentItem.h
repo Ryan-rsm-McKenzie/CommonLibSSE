@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_EnchantmentItem
+
 #include "RE/FormTypes.h"  //FormType
 #include "RE/MagicItem.h"  // MagicItem
 
@@ -9,6 +11,9 @@ namespace RE
 	class EnchantmentItem : public MagicItem
 	{
 	public:
+		inline static const void* RTTI = RTTI_EnchantmentItem;
+
+
 		enum { kTypeID = FormType::Enchantment };
 
 

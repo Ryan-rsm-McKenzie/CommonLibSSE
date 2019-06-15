@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSWin32MouseDevice
+
 #include "RE/BSMouseDevice.h"  // BSMouseDevice
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BSWin32MouseDevice : public BSMouseDevice
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSWin32MouseDevice;
+
+
 		struct Keys
 		{
 			enum Key : UInt32
@@ -32,6 +37,9 @@ namespace RE
 		// override (BSMouseDevice)
 		virtual void	Initialize() override;			// 01
 		virtual	void	Process(float a_arg1) override;	// 02
+		virtual	void	Unk_03(void) override;			// 03
+		virtual void	Unk_08(void) override;			// 08
+		virtual void	Unk_09(void) override;			// 09
 
 
 		// members

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__IFunction
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 
@@ -23,6 +25,9 @@ namespace RE
 		class IFunction : public BSIntrusiveRefCounted
 		{
 		public:
+			inline static const void* RTTI = RTTI_BSScript__IFunction;
+
+
 			virtual ~IFunction();																															// 00
 
 			// add

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESQualityForm
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class TESQualityForm : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESQualityForm;
+
+
 		enum class Quality : UInt32
 		{
 			kNovice = 0,

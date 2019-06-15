@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_SummonCreatureEffect
+
 #include "RE/ActiveEffect.h"  // ActiveEffect
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class SummonCreatureEffect : public ActiveEffect
 	{
 	public:
+		inline static const void* RTTI = RTTI_SummonCreatureEffect;
+
+
 		// override (ActiveEffect)
 		virtual void	Unk_04(void) override;	// 04
 		virtual void	Unk_07(void) override;	// 07

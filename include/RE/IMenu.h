@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_IMenu
+
 #include "RE/FxDelegateHandler.h"  // FxDelegateHandler
 #include "RE/GFxMovieView.h"  // GFxMovieView
 #include "RE/InputMappingManager.h"  // InputMappingManager::Context
@@ -19,6 +21,9 @@ namespace RE
 		using Context = InputMappingManager::Contexts::Context;
 
 	public:
+		inline static const void* RTTI = RTTI_IMenu;
+
+
 		enum class Flag : UInt32
 		{
 			kNone = 0,

@@ -1,11 +1,16 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ReferenceEffectController
+
 
 namespace RE
 {
 	class ReferenceEffectController
 	{
 	public:
+		inline static const void* RTTI = RTTI_ReferenceEffectController;
+
+
 		virtual ~ReferenceEffectController();	// 00
 
 		// add

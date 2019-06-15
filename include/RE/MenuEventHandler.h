@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_MenuEventHandler
+
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 
 
@@ -15,6 +17,9 @@ namespace RE
 	class MenuEventHandler : public BSIntrusiveRefCounted
 	{
 	public:
+		inline static const void* RTTI = RTTI_MenuEventHandler;
+
+
 		MenuEventHandler();
 		virtual ~MenuEventHandler() {}									// 00
 

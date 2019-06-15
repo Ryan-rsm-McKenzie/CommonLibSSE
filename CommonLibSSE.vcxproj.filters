@@ -169,9 +169,6 @@
     <Filter Include="include\RE\Skyrim\SkyrimScript">
       <UniqueIdentifier>{3840665a-7fce-4caa-b058-fda1d0c94768}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\Skyrim\BSScript\Internal">
-      <UniqueIdentifier>{a6838020-6637-43eb-893b-0078dc5986aa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Skyrim\RadiantStory">
       <UniqueIdentifier>{4b718e2d-555e-43fa-8e20-f09116ee9c12}</UniqueIdentifier>
     </Filter>
@@ -219,9 +216,6 @@
     </Filter>
     <Filter Include="include\RE\Skyrim\Menus\IMenu\Components">
       <UniqueIdentifier>{89a86e1a-a2df-43c2-a955-504eae459447}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Skyrim\BSDevices\Handlers">
-      <UniqueIdentifier>{578c9acd-47ee-4aaf-9bf0-719a93df441e}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\RE\Skyrim\BSDevices\Enums">
       <UniqueIdentifier>{8562e94b-7529-4c9e-9ce7-571595f2cc75}</UniqueIdentifier>
@@ -378,9 +372,6 @@
     </Filter>
     <Filter Include="include\RE\Skyrim\Inventory">
       <UniqueIdentifier>{9c902473-086f-40d9-a348-20edac18af80}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Skyrim\BSScript\NF_util">
-      <UniqueIdentifier>{fef718be-422d-4ea4-aada-2dac250ff019}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\RE\Skyrim\BSScript">
       <UniqueIdentifier>{be6ad1e2-adcc-41d6-b1f0-d855748699e9}</UniqueIdentifier>
@@ -678,6 +669,60 @@
     </Filter>
     <Filter Include="src\RE\Skyrim\BSMain\Setting">
       <UniqueIdentifier>{da8a0709-8d8f-48a8-b67b-da0bce867551}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSDevices\MenuEventHandler">
+      <UniqueIdentifier>{af61fd1d-0cae-4296-8f5c-f0884ba4cfd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSDevices\MenuEventHandler\MapInputHandler">
+      <UniqueIdentifier>{542ddc8c-d45d-4ce0-9a08-ebf1d8f09a1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSDevices\PlayerInputHandler">
+      <UniqueIdentifier>{e7c34e74-ffd6-46b7-918b-0652fa1c407d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSDevices\PlayerInputHandler\HeldStateHandler">
+      <UniqueIdentifier>{77f7050a-ef56-4279-8071-5e04c20b6ef8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSDevices\BSIInputDevice">
+      <UniqueIdentifier>{61ef3b70-99a2-4745-accf-1bff2e5a6e1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSDevices\BSIInputDevice\BSInputDevice">
+      <UniqueIdentifier>{0f475805-655f-46d4-b876-96f8bd5b0fbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSDevices\BSIInputDevice\BSInputDevice\BSGamepadDevice">
+      <UniqueIdentifier>{58ef18d8-9685-401e-b1d0-4700a4d14a93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice">
+      <UniqueIdentifier>{7dfad5a3-3592-4fdf-99d5-0dcc6ac402c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSDevices\BSIInputDevice\BSInputDevice\BSGamepadDevice\BSPCGamepadDeviceDelegate">
+      <UniqueIdentifier>{d457b60e-c2dd-4a12-b72a-24d15f9d2d3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSDevices\BSIInputDevice\BSInputDevice\BSMouseDevice">
+      <UniqueIdentifier>{4d445f14-2436-441b-ab6f-2afa1016bd5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSScript\IFunctionArguments">
+      <UniqueIdentifier>{edbdd568-edb3-448e-8956-7f1424d06be7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSScript\ILoader">
+      <UniqueIdentifier>{9032677b-fb2b-43ec-8607-c537d461112b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSScript\Internal">
+      <UniqueIdentifier>{a6838020-6637-43eb-893b-0078dc5986aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSScript\Traits">
+      <UniqueIdentifier>{49d54268-1204-4c29-8731-88b9e5fec802}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSScript\IFunction">
+      <UniqueIdentifier>{62f72e93-1d54-4897-b07c-92af51dac03e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSScript\IObjectProcessor">
+      <UniqueIdentifier>{4dc50f02-6d21-4d8f-a42d-9921b159d49a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSScript\IFunction\NF_util">
+      <UniqueIdentifier>{fef718be-422d-4ea4-aada-2dac250ff019}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSScript\IMemoryPagePolicy">
+      <UniqueIdentifier>{e611bc95-e095-40fd-af9d-b4346678d38b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1250,36 +1295,6 @@
     <ClInclude Include="include\RE\CRC.h">
       <Filter>include\RE\Skyrim\BSCore</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSIInputDevice.h">
-      <Filter>include\RE\Skyrim\BSDevices</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSInputDevice.h">
-      <Filter>include\RE\Skyrim\BSDevices</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSGamepadDevice.h">
-      <Filter>include\RE\Skyrim\BSDevices</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSKeyboardDevice.h">
-      <Filter>include\RE\Skyrim\BSDevices</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSMouseDevice.h">
-      <Filter>include\RE\Skyrim\BSDevices</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSVirtualKeyboardDevice.h">
-      <Filter>include\RE\Skyrim\BSDevices</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSWin32KeyboardDevice.h">
-      <Filter>include\RE\Skyrim\BSDevices</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSWin32MouseDevice.h">
-      <Filter>include\RE\Skyrim\BSDevices</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSPCGamepadDeviceDelegate.h">
-      <Filter>include\RE\Skyrim\BSDevices</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSWin32GamepadDevice.h">
-      <Filter>include\RE\Skyrim\BSDevices</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESBoundObject.h">
       <Filter>include\RE\Skyrim\TESForms\Objects</Filter>
     </ClInclude>
@@ -1760,12 +1775,6 @@
     <ClInclude Include="include\RE\LogEvent.h">
       <Filter>include\RE\Skyrim\BSScript</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\IMemoryPagePolicy.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\SimpleAllocMemoryPagePolicy.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\IObjectHandlePolicy.h">
       <Filter>include\RE\Skyrim\BSScript</Filter>
     </ClInclude>
@@ -1783,18 +1792,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\SavePatcher.h">
       <Filter>include\RE\Skyrim\SkyrimScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IObjectProcessor.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\LinkerProcessor.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ILoader.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\CompiledScriptLoader.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSStorage.h">
       <Filter>include\RE\Skyrim\BSSystem</Filter>
@@ -2206,75 +2203,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\IMapCameraCallbacks.h">
       <Filter>include\RE\Skyrim\Menus\IMenu\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ActivateHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\AttackBlockHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\AutoMoveHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSPCGamepadDeviceHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\FavoritesHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\HeldStateHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\JumpHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\LookHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MapInputHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MapLookHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MapMoveHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MapZoomHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MenuEventHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MenuOpenHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MovementHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\PlayerInputHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ReadyWeaponHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\RunHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ShoutHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\SneakHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\SprintHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TogglePOVHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ToggleRunHandler.h">
-      <Filter>include\RE\Skyrim\BSDevices\Handlers</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\DeviceTypes.h">
       <Filter>include\RE\Skyrim\BSDevices\Enums</Filter>
@@ -2807,16 +2735,10 @@
     <ClInclude Include="include\RE\BSFadeNode.h">
       <Filter>include\RE\Skyrim\NetImmerse\BS</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\IFunction.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\NativeFunctionBase.h">
-      <Filter>include\RE\Skyrim\BSScript\NF_util</Filter>
+      <Filter>include\RE\Skyrim\BSScript\IFunction\NF_util</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSScriptType.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NativeFunction.h">
       <Filter>include\RE\Skyrim\BSScript</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSScriptClass.h">
@@ -2837,31 +2759,10 @@
     <ClInclude Include="include\RE\BSScriptObject.h">
       <Filter>include\RE\Skyrim\BSScript</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSScriptTypeTraits.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSScriptArray.h">
       <Filter>include\RE\Skyrim\BSScript</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSScriptPackUnpack.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScriptCommonTypeTraits.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScriptArrayTypeTraits.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScriptObjectTypeTraits.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IFunctionArguments.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ZeroFunctionArguments.h">
-      <Filter>include\RE\Skyrim\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\FunctionArguments.h">
       <Filter>include\RE\Skyrim\BSScript</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\IStackCallbackFunctor.h">
@@ -3093,9 +2994,6 @@
       <Filter>include\RE\Skyrim\BSAudio\BSIMusicTrack</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\IXAudio2VoiceCallback.h">
-      <Filter>include\RE\Skyrim\BSAudio\IXAudio2VoiceCallback</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSGameSound.h">
       <Filter>include\RE\Skyrim\BSAudio\IXAudio2VoiceCallback</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSXAudio2GameSound.h">
@@ -3415,6 +3313,162 @@
     </ClInclude>
     <ClInclude Include="include\RE\StatsMenu.h">
       <Filter>include\RE\Skyrim\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSGameSound.h">
+      <Filter>include\RE\Skyrim\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PlayerInputHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\HeldStateHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler\HeldStateHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActivateHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler\HeldStateHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AttackBlockHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler\HeldStateHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MenuEventHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\MenuEventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FavoritesHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\MenuEventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\JumpHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\LookHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MapLookHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\MenuEventHandler\MapInputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MapInputHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\MenuEventHandler\MapInputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MapMoveHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\MenuEventHandler\MapInputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MapZoomHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\MenuEventHandler\MapInputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MenuOpenHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\MenuEventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MovementHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ReadyWeaponHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\RunHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler\HeldStateHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ShoutHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SneakHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SprintHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler\HeldStateHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TogglePOVHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler\HeldStateHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ToggleRunHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSIInputDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices\BSIInputDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSInputDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices\BSIInputDevice\BSInputDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSGamepadDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices\BSIInputDevice\BSInputDevice\BSGamepadDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSPCGamepadDeviceHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\BSIInputDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSKeyboardDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSVirtualKeyboardDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSPCGamepadDeviceDelegate.h">
+      <Filter>include\RE\Skyrim\BSDevices\BSIInputDevice\BSInputDevice\BSGamepadDevice\BSPCGamepadDeviceDelegate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSWin32GamepadDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices\BSIInputDevice\BSInputDevice\BSGamepadDevice\BSPCGamepadDeviceDelegate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSWin32KeyboardDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSWin32MouseDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices\BSIInputDevice\BSInputDevice\BSMouseDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSMouseDevice.h">
+      <Filter>include\RE\Skyrim\BSDevices\BSIInputDevice\BSInputDevice\BSMouseDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AutoMoveHandler.h">
+      <Filter>include\RE\Skyrim\BSDevices\PlayerInputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScriptTypeTraits.h">
+      <Filter>include\RE\Skyrim\BSScript\Traits</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScriptArrayTypeTraits.h">
+      <Filter>include\RE\Skyrim\BSScript\Traits</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScriptCommonTypeTraits.h">
+      <Filter>include\RE\Skyrim\BSScript\Traits</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScriptObjectTypeTraits.h">
+      <Filter>include\RE\Skyrim\BSScript\Traits</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IFunctionArguments.h">
+      <Filter>include\RE\Skyrim\BSScript\IFunctionArguments</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ZeroFunctionArguments.h">
+      <Filter>include\RE\Skyrim\BSScript\IFunctionArguments</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ILoader.h">
+      <Filter>include\RE\Skyrim\BSScript\ILoader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\CompiledScriptLoader.h">
+      <Filter>include\RE\Skyrim\BSScript\ILoader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FunctionArguments.h">
+      <Filter>include\RE\Skyrim\BSScript\IFunctionArguments</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IFunction.h">
+      <Filter>include\RE\Skyrim\BSScript\IFunction</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IObjectProcessor.h">
+      <Filter>include\RE\Skyrim\BSScript\IObjectProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\LinkerProcessor.h">
+      <Filter>include\RE\Skyrim\BSScript\IObjectProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NativeFunction.h">
+      <Filter>include\RE\Skyrim\BSScript\IFunction\NF_util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMemoryPagePolicy.h">
+      <Filter>include\RE\Skyrim\BSScript\IMemoryPagePolicy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SimpleAllocMemoryPagePolicy.h">
+      <Filter>include\RE\Skyrim\BSScript\IMemoryPagePolicy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTransform.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiMatrix3.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiFrustum.h">
+      <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_bhkWorldObject
+
 #include "RE/bhkSerializable.h"  // bhkSerializable
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class bhkWorldObject : public bhkSerializable
 	{
 	public:
+		inline static const void* RTTI = RTTI_bhkWorldObject;
+
+
 		virtual ~bhkWorldObject();											// 00
 
 		// override (bhkSerializable)

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_LocalMapMenu__InputHandler
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/ImageSpaceShaderParam.h"  // ImageSpaceShaderParam
 #include "RE/LocalMapCamera.h"  // LocalMapCamera
@@ -19,6 +21,9 @@ namespace RE
 		class InputHandler : public MenuEventHandler
 		{
 		public:
+			inline static const void* RTTI = RTTI_LocalMapMenu__InputHandler;
+
+
 			virtual ~InputHandler();												// 00
 
 			// override (MenuEventHandler)

@@ -20,7 +20,7 @@ namespace RE
 		public BSTSingletonSDM<MenuControls>
 	{
 	public:
-		virtual ~MenuControls();
+		virtual ~MenuControls();	// 00
 
 		static MenuControls*	GetSingleton();
 

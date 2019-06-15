@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_IAnimationGraphManagerHolder
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 
@@ -13,6 +15,9 @@ namespace RE
 	class IAnimationGraphManagerHolder
 	{
 	public:
+		inline static const void* RTTI = RTTI_IAnimationGraphManagerHolder;
+
+
 		virtual ~IAnimationGraphManagerHolder();														// 00
 
 		// add

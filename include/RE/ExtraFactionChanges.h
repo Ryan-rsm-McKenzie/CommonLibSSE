@@ -1,8 +1,11 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraFactionChanges
+
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/BSTArray.h"  // BSTArray
-#include "RE/FormTypes.h"
+#include "RE/ExtraDataTypes.h"  // ExtraDataType
+#include "RE/FormTypes.h"  // TESFaction
 
 
 namespace RE
@@ -10,6 +13,9 @@ namespace RE
 	class ExtraFactionChanges : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraFactionChanges;
+
+
 		enum { kExtraTypeID = ExtraDataType::kFactionChanges };
 
 

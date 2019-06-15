@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSStoryManagerBranchNode
+
 #include "RE/BGSStoryManagerNodeBase.h"  // BGSStoryManagerNodeBase
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FormTypes.h"  // FormType
@@ -10,6 +12,9 @@ namespace RE
 	class BGSStoryManagerBranchNode : public BGSStoryManagerNodeBase
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSStoryManagerBranchNode;
+
+
 		enum { kTypeID = FormType::StoryManagerBranchNode };
 
 

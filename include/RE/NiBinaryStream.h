@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiBinaryStream
+
 #include <locale>  // use_facet, ctype
 #include <string>  // basic_string, char_traits
 
@@ -9,6 +11,9 @@ namespace RE
 	class NiBinaryStream
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiBinaryStream;
+
+
 		using int_type = SInt32;
 		using pos_type = UInt32;
 		using off_type = SInt32;

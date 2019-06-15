@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TogglePOVHandler
+
 #include "RE/HeldStateHandler.h"  // HeldStateHandler
 
 
@@ -8,6 +10,9 @@ namespace RE
 	struct TogglePOVHandler : public HeldStateHandler
 	{
 	public:
+		inline static const void* RTTI = RTTI_TogglePOVHandler;
+
+
 		virtual ~TogglePOVHandler();																	// 00
 
 		// override (PlayerInputHandler)
@@ -16,8 +21,7 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
+		UInt64 unk18;	// 18
 	};
 	STATIC_ASSERT(sizeof(TogglePOVHandler) == 0x20);
 }

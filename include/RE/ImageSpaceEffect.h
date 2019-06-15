@@ -1,11 +1,16 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ImageSpaceEffect
+
 
 namespace RE
 {
 	class ImageSpaceEffect
 	{
 	public:
+		inline static const void* RTTI = RTTI_ImageSpaceEffect;
+
+
 		virtual ~ImageSpaceEffect();	// 00
 
 		// add

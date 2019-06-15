@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiColorData
+
 #include "RE/NiColorKey.h"  // NiColorKey
 #include "RE/NiObject.h"  // NiObject
 
@@ -9,6 +11,9 @@ namespace RE
 	class NiColorData : public NiObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiColorData;
+
+
 		using KeyType = NiColorKey::KeyType;
 
 

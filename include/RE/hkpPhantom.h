@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpPhantom
+
 #include "RE/hkArray.h"  // hkArray
 #include "RE/hkpPhantomType.h"  // hkpPhantomType
 #include "RE/hkpWorldObject.h"  // hkpWorldObject
@@ -15,6 +17,9 @@ namespace RE
 	class hkpPhantom : public hkpWorldObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpPhantom;
+
+
 		virtual ~hkpPhantom();																										// 00
 
 		// override (hkpWorldObject)

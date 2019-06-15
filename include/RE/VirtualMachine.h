@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__Internal__VirtualMachine
+
 #include "RE/BSSpinLock.h"  // BSSpinLock
 #include "RE/BSTEvent.h"  // BSTEvent
 #include "RE/BSTFreeList.h"  // BSTStaticFreeList
@@ -37,6 +39,9 @@ namespace RE
 				public IVMDebugInterface		// 0020
 			{
 			public:
+				inline static const void* RTTI = RTTI_BSScript__Internal__VirtualMachine;
+
+
 				virtual ~VirtualMachine();
 
 				// override (IVirtualMachine)

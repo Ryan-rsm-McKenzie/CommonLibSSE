@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSStorage
+
 #include <winnt.h>  // PLARGE_INTEGER, LARGE_INTEGER
 #include <minwindef.h>  // BOOL, DWORD, LPVOID, LPCVOID
 
@@ -11,6 +13,9 @@ namespace RE
 	class BSStorage : public BSIntrusiveRefCounted
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSStorage;
+
+
 		virtual ~BSStorage();																			// 00
 
 		// add

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSPreloadable
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BGSPreloadable : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSPreloadable;
+
+
 		virtual ~BGSPreloadable();											// 00
 
 		// override (BaseFormComponent)

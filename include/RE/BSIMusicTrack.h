@@ -1,11 +1,16 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSIMusicTrack
+
 
 namespace RE
 {
 	class BSIMusicTrack
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSIMusicTrack;
+
+
 		enum class TrackType : UInt32
 		{
 			kSilentTrack = 0xA1A9C4D5,

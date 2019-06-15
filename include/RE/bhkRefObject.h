@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_bhkRefObject
+
 #include "RE/NiObject.h" // NiObject
 
 
@@ -11,6 +13,9 @@ namespace RE
 	class bhkRefObject : public NiObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_bhkRefObject;
+
+
 		virtual ~bhkRefObject();			// 00
 
 		// override(NiObject)

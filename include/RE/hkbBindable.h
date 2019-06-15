@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkbBindable
+
 #include "RE/hkArray.h"  // hkArray
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
 #include "RE/hkRefPtr.h"  // hkRefPtr
@@ -14,6 +16,9 @@ namespace RE
 	class hkbBindable : public hkReferencedObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkbBindable;
+
+
 		virtual ~hkbBindable();			// 00
 
 		// add

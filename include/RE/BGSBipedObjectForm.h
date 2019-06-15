@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSBipedObjectForm
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BGSBipedObjectForm : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSBipedObjectForm;
+
+
 		enum class BipedObject : UInt32
 		{
 			kNone = static_cast<std::underlying_type_t<BipedObject>>(-1),

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSShader
+
 #include "RE/BSReloadShaderI.h"  // BSReloadShaderI
 #include "RE/NiBoneMatrixSetterI.h"  // NiBoneMatrixSetterI
 #include "RE/NiRefObject.h"  // NiRefObject
@@ -13,17 +15,20 @@ namespace RE
 		public BSReloadShaderI		// 18
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSShader;
+
+
 		virtual ~BSShader();			// 00
 
 		// add
-		virtual void	Unk_02(void);	// 02 - pure
-		virtual void	Unk_03(void);	// 03 - pure
-		virtual void	Unk_04(void);	// 04 - { return; }
-		virtual void	Unk_05(void);	// 05 - { return; }
-		virtual void	Unk_06(void);	// 06 - pure
-		virtual void	Unk_07(void);	// 07 - pure
-		virtual void	Unk_08(void);	// 08 - { return; }
-		virtual void	Unk_09(void);	// 09
+		virtual void	Unk_02(void) = 0;	// 02
+		virtual void	Unk_03(void) = 0;	// 03
+		virtual void	Unk_04(void);		// 04 - { return; }
+		virtual void	Unk_05(void);		// 05 - { return; }
+		virtual void	Unk_06(void) = 0;	// 06
+		virtual void	Unk_07(void) = 0;	// 07
+		virtual void	Unk_08(void);		// 08 - { return; }
+		virtual void	Unk_09(void);		// 09
 
 		// members
 		UInt64	unk20;	// 20

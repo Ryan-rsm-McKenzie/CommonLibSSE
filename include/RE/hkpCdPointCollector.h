@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpCdPointCollector
+
 
 namespace RE
 {
@@ -9,6 +11,9 @@ namespace RE
 	class hkpCdPointCollector
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpCdPointCollector;
+
+
 		virtual ~hkpCdPointCollector();								// 00
 
 		// add

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ValueModifierEffect
+
 #include "RE/ActiveEffect.h"  // ActiveEffect
 #include "RE/ActorValues.h"  // ActorValue
 
@@ -9,6 +11,9 @@ namespace RE
 	class ValueModifierEffect : public ActiveEffect
 	{
 	public:
+		inline static const void* RTTI = RTTI_ValueModifierEffect;
+
+
 		// override (ActiveEffect)
 		virtual void	Unk_01(void) override;	// 01
 		virtual void	Unk_04(void) override;	// 04

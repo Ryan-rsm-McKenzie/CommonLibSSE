@@ -5,9 +5,9 @@
 
 namespace RE
 {
-	template <class Ty, class TVal, template<class Ty, class TVal> class TChannel>
+	template <class T, class Val, template<class T, class Val> class Channel>
 	class BSTAnimationGraphDataChannel :
 		public BSAnimationGraphChannel,	// 00
-		public TChannel<Ty, TVal>		// 20
+		public Channel<T, Val>			// 20
 	{};
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_MapCamera
+
 #include "RE/TESCamera.h"  // TESCamera
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class MapCamera : public TESCamera
 	{
 	public:
+		inline static const void* RTTI = RTTI_MapCamera;
+
+
 		virtual ~MapCamera();		// 00
 
 		// add

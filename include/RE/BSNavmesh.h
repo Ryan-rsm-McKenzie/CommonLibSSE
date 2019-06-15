@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSNavmesh
+
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/NiPoint3.h"  // NiPoint3
@@ -13,6 +15,9 @@ namespace RE
 	class BSNavmesh : public BSIntrusiveRefCounted
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSNavmesh;
+
+
 		struct Vertex
 		{
 			float	x;	// 0

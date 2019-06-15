@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_Clouds
+
 #include "RE/SkyObject.h"  // SkyObject
 
 
@@ -11,6 +13,9 @@ namespace RE
 	class Clouds : public SkyObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_Clouds;
+
+
 		enum
 		{
 			kTotalLayers = 32

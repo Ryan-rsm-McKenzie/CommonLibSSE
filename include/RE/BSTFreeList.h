@@ -4,7 +4,7 @@
 namespace RE
 {
 	// Need more examples of this class instance to be able to differentiate between the class and the template
-	template <typename T>
+	template <class T>
 	class BSTFreeList
 	{
 	public:
@@ -29,7 +29,7 @@ namespace RE
 	STATIC_ASSERT(sizeof(BSTFreeList<void*>) == 0x18);
 
 
-	template <typename T, std::size_t SIZE>
+	template <class T, std::size_t SIZE>
 	class BSTStaticFreeList : public BSTFreeList<T>
 	{
 		using Entry = BSTFreeList<T>::Entry;

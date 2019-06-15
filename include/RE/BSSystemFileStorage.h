@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSSystemFileStorage
+
 #include "RE/BSStorage.h"  // BSStorage
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BSSystemFileStorage : public BSStorage
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSSystemFileStorage;
+
+
 		struct Attributes
 		{
 			enum class Error : UInt32

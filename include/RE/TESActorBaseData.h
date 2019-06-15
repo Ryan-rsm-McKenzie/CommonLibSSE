@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESActorBaseData
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FormTypes.h"  // BGSVoiceType, TESLevItem, TESNPC
@@ -10,6 +12,9 @@ namespace RE
 	class TESActorBaseData : public BaseFormComponent	// ACBS
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESActorBaseData;
+
+
 		enum class Flag : UInt32
 		{
 			kNone = 0,

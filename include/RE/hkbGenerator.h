@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkbGenerator
+
 #include "RE/hkbNode.h"  // hkbNode
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class hkbGenerator : public hkbNode
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkbGenerator;
+
+
 		virtual ~hkbGenerator();				// 00
 
 		// override (hkbNode)

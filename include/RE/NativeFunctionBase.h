@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__NF_util__NativeFunctionBase
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSScriptType.h"  // BSScriptType
 #include "RE/IFunction.h"  // IFunction
@@ -19,6 +21,9 @@ namespace RE
 			class NativeFunctionBase : public IFunction
 			{
 			public:
+				inline static const void* RTTI = RTTI_BSScript__NF_util__NativeFunctionBase;
+
+
 				struct ParameterInfo
 				{
 					struct Entry

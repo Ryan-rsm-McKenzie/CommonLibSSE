@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESBipedModelForm
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/BGSMessageIcon.h"  // BGSMessageIcon
 #include "RE/TESIcon.h"  // TESIcon
@@ -12,6 +14,9 @@ namespace RE
 	class TESBipedModelForm : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESBipedModelForm;
+
+
 		struct Sexes
 		{
 			enum

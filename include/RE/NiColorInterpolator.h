@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiColorInterpolator
+
 #include "RE/NiColor.h"  // NiColorA
 #include "RE/NiKeyBasedInterpolator.h"  // NiKeyBasedInterpolator
 #include "RE/NiSmartPointer.h"  // NiPointer
@@ -13,6 +15,9 @@ namespace RE
 	class NiColorInterpolator : public NiKeyBasedInterpolator
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiColorInterpolator;
+
+
 		virtual ~NiColorInterpolator();																		// 00
 
 		// override (NiKeyBasedInterpolator)

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_PerkEntryVisitor
+
 
 namespace RE
 {
@@ -9,6 +11,9 @@ namespace RE
 	class PerkEntryVisitor
 	{
 	public:
+		inline static const void* RTTI = RTTI_PerkEntryVisitor;
+
+
 		enum class ReturnType : UInt32
 		{
 			kBreak,
@@ -16,6 +21,6 @@ namespace RE
 		};
 
 
-		virtual ReturnType Visit(BGSPerkEntry* a_perkEntry) = 0;
+		virtual ReturnType Visit(BGSPerkEntry* a_perkEntry) = 0;	// 00
 	};
 }

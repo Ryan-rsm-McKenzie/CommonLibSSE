@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkbBehaviorGraph
+
 #include "RE/hkArray.h"  // hkArray
 #include "RE/hkRefVariant.h"  // hkRefVariant
 #include "RE/hkbGenerator.h"  // hkbGenerator
@@ -13,6 +15,9 @@ namespace RE
 	class hkbBehaviorGraph : public hkbGenerator
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkbBehaviorGraph;
+
+
 		enum class VariableMode : UInt8
 		{
 			kDiscardWhenActive = 0,

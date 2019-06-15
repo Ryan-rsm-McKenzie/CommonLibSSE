@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_INISettingCollection
+
 #include "RE/Setting.h"  // Setting
 #include "RE/SettingCollectionList.h"  // SettingCollectionList
 
@@ -9,6 +11,9 @@ namespace RE
 	class INISettingCollection : public SettingCollectionList<Setting>
 	{
 	public:
+		inline static const void* RTTI = RTTI_INISettingCollection;
+
+
 		virtual ~INISettingCollection();							// 00
 
 		// override (SettingCollectionList<Setting>)

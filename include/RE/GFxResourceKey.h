@@ -6,7 +6,7 @@ namespace RE
 	class GFxResourceKey
 	{
 	public:
-		typedef void*	KeyHandle;
+		using KeyHandle = void*;
 
 
 		enum class KeyType

@@ -12,7 +12,7 @@ namespace RE
 
 
 	class BSGamepadDevice :
-		public BSInputDevice,							// 00
+		public BSInputDevice,					// 00
 		public BSTEventSource<BSGamepadEvent>	// 70
 	{
 	public:

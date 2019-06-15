@@ -2,15 +2,17 @@
 
 #include <cstring>  // memset
 
+#include "RE/Memory.h"
+
 
 namespace RE
 {
-	NiExtraData* NiExtraData::Create(UInt32 a_size, uintptr_t a_vtbl)
+	NiExtraData* NiExtraData::Create(std::size_t a_size, std::uintptr_t a_vtbl)
 	{
-		void* memory = Heap_Allocate(a_size);
+		void* memory = malloc(a_size);
 		std::memset(memory, 0, a_size);
 		NiExtraData* xData = (NiExtraData*)memory;
-		((uintptr_t*)memory)[0] = a_vtbl;
+		((std::uintptr_t*)memory)[0] = a_vtbl;
 		return xData;
 	}
 }

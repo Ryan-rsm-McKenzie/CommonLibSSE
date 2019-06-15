@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSKeywordForm
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/BGSKeyword.h"  // BGSKeyword
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSKeywordForm : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSKeywordForm;
+
+
 		virtual ~BGSKeywordForm();												// 00
 
 		// override (BaseFormComponent)

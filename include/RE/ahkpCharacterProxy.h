@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ahkpCharacterProxy
+
 #include "RE/hkpCharacterProxy.h"  // hkpCharacterProxy
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class ahkpCharacterProxy : public hkpCharacterProxy
 	{
 	public:
+		inline static const void* RTTI = RTTI_ahkpCharacterProxy;
+
+
 		virtual ~ahkpCharacterProxy();	// 00
 
 

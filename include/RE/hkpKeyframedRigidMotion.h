@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpKeyframedRigidMotion, RTTI_hkpMaxSizeMotion
+
 #include "RE/hkpMotion.h"  // hkpMotion
 
 
@@ -11,6 +13,9 @@ namespace RE
 	class hkpKeyframedRigidMotion : public hkpMotion
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpKeyframedRigidMotion;
+
+
 		virtual ~hkpKeyframedRigidMotion();																															// 00
 
 		// override (hkpMotion)
@@ -40,6 +45,7 @@ namespace RE
 	class hkpMaxSizeMotion : public hkpKeyframedRigidMotion
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpMaxSizeMotion;
 	};
 	STATIC_ASSERT(sizeof(hkpMaxSizeMotion) == 0x140);
 }

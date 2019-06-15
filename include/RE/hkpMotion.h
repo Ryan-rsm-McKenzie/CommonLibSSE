@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESForm
+
 #include "RE/hkBaseTypes.h"  // hkHalf
 #include "RE/hkMotionState.h"  // hkMotionState
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
@@ -17,6 +19,9 @@ namespace RE
 	class hkpMotion : public hkReferencedObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpMotion;
+
+
 		enum { kNumInactiveFramesToDeactivate = 5 };
 
 

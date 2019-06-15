@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpShapeCollection
+
 #include "RE/hkpShape.h"  // hkpShape
 #include "RE/hkpShapeContainer.h"  // hkpShapeContainer
 #include "RE/hkpWeldingUtility.h"  // hkpWeldingUtility::WeldingType
@@ -12,6 +14,9 @@ namespace RE
 		public hkpShapeContainer	// 20
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpShapeCollection;
+
+
 		enum class CollectionType : UInt8
 		{
 			kList,

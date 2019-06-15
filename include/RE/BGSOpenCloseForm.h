@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSOpenCloseForm
+
 #include "RE/FormTypes.h"  // TESObjectREFR, Actor
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BGSOpenCloseForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSOpenCloseForm;
+
+
 		virtual ~BGSOpenCloseForm();												// 00
 
 		// add

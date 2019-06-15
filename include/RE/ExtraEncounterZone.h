@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraEncounterZone
+
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/FormTypes.h"  // BGSEncounterZone
@@ -10,6 +12,9 @@ namespace RE
 	class ExtraEncounterZone : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraEncounterZone;
+
+
 		enum { kExtraTypeID = ExtraDataType::kEncounterZone };
 
 

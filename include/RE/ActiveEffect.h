@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ActiveEffect
+
 #include "RE/ActiveEffectReferenceEffectController.h"  // ActiveEffectReferenceEffectController
 #include "RE/FormTypes.h"  // MagicItem
 
@@ -14,6 +16,9 @@ namespace RE
 	class ActiveEffect
 	{
 	public:
+		inline static const void* RTTI = RTTI_ActiveEffect;
+
+
 		enum class Flag : UInt32
 		{
 			kHasConditions = 1 << 7,

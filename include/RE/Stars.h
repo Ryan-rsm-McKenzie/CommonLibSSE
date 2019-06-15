@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_Stars
+
 #include "RE/SkyObject.h"  // SkyObject
 
 
@@ -11,6 +13,9 @@ namespace RE
 	class Stars : public SkyObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_Stars;
+
+
 		virtual ~Stars();					// 00
 
 		// override (SkyObject)

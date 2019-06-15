@@ -18,6 +18,10 @@ namespace RE
 		// override (BSKeyboardDevice)
 		virtual void	Initialize() override;			// 01
 		virtual	void	Process(float a_unk1) override;	// 02
+		virtual	void	Unk_03(void) override;			// 03
+		virtual void	Unk_08(void) override;			// 08
+		virtual void	Unk_09(void) override;			// 09
+		virtual void	Unk_0A(void) override;			// 0A
 
 		bool			IsPressed(UInt32 a_keyCode) const;
 

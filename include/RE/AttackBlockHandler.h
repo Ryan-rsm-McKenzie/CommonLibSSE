@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_AttackBlockHandler
+
 #include "RE/HeldStateHandler.h"  // HeldStateHandler
 
 
@@ -8,15 +10,19 @@ namespace RE
 	struct AttackBlockHandler : public HeldStateHandler
 	{
 	public:
+		inline static const void* RTTI = RTTI_AttackBlockHandler;
+
+
 		virtual ~AttackBlockHandler();																	// 00
 
 		// override (PlayerInputHandler)
 		virtual	bool	CanProcess(InputEvent* a_event) override;										// 01
 		virtual	void	ProcessButton(ButtonEvent* a_event, PlayerControls::Data024* a_arg2) override;	// 04
+		virtual void	Unk_05(void) override;															// 05
+		virtual void	SetHeldState(bool a_held) override;												// 06
 
 
 		// members
-		UInt64	unk10;	// 10
 		UInt64	unk18;	// 18
 		UInt64	unk20;	// 20
 		UInt64	unk28;	// 28

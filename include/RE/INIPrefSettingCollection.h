@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_INIPrefSettingCollection
+
 #include "RE/INISettingCollection.h"  // INISettingCollection
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class INIPrefSettingCollection : public INISettingCollection
 	{
 	public:
+		inline static const void* RTTI = RTTI_INIPrefSettingCollection;
+
+
 		virtual ~INIPrefSettingCollection();	// 00
 
 		// override (INISettingCollection)

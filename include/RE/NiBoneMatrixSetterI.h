@@ -1,11 +1,16 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiBoneMatrixSetterI
+
 
 namespace RE
 {
 	class NiBoneMatrixSetterI
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiBoneMatrixSetterI;
+
+
 		virtual ~NiBoneMatrixSetterI();	// 00
 
 		// add

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_bhkCharacterController
+
 #include "RE/BSBound.h"  // BSBound
 #include "RE/BSTEvent.h"  // BSTEventSource
 #include "RE/hkpCharacterContext.h"  // hkpCharacterContext
@@ -21,6 +23,9 @@ namespace RE
 		public BSTEventSource<bhkCharacterMoveFinishEvent>	// 010
 	{
 	public:
+		inline static const void* RTTI = RTTI_bhkCharacterController;
+
+
 		virtual ~bhkCharacterController();									// 00
 
 		// add

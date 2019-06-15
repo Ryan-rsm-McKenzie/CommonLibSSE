@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSNavmeshInfoMap
+
 #include "RE/BSTSingleton.h"  // BSTSingletonExplicit
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BSNavmeshInfoMap : public BSTSingletonExplicit<BSNavmeshInfoMap>
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSNavmeshInfoMap;
+
+
 		virtual ~BSNavmeshInfoMap();		// 00
 
 		// add

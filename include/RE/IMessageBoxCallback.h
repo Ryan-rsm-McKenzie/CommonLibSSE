@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_IMessageBoxCallback
+
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class IMessageBoxCallback : public BSIntrusiveRefCounted
 	{
 	public:
+		inline static const void* RTTI = RTTI_IMessageBoxCallback;
+
+
 		enum class Message : UInt8
 		{
 			kUnk0 = 0,

@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	template <typename T>
+	template <class T>
 	class BSTMessageQueue
 	{
 	public:
@@ -18,7 +18,7 @@ namespace RE
 	STATIC_ASSERT(sizeof(BSTMessageQueue<void*>) == 0x8);
 
 
-	template <typename T>
+	template <class T>
 	class BSTCommonMessageQueue : public BSTMessageQueue<T>
 	{
 	public:
@@ -42,7 +42,7 @@ namespace RE
 	STATIC_ASSERT(sizeof(BSTCommonMessageQueue<void*>) == 0x10);
 
 
-	template <typename T>
+	template <class T>
 	class BSTCommonLLMessageQueue : public BSTCommonMessageQueue<T>
 	{
 	public:
@@ -61,7 +61,7 @@ namespace RE
 	STATIC_ASSERT(sizeof(BSTCommonLLMessageQueue<void*>) == 0x28);
 
 
-	template <typename T, std::size_t SIZE>
+	template <class T, std::size_t SIZE>
 	class BSTCommonStaticMessageQueue : public BSTCommonMessageQueue<T>
 	{
 	public:

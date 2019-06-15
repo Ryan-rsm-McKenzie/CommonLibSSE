@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ActorValueOwner
+
 #include "RE/ActorValues.h"  // ActorValue
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class ActorValueOwner
 	{
 	public:
+		inline static const void* RTTI = RTTI_ActorValueOwner;
+
+
 		virtual ~ActorValueOwner();													// 00
 
 		// add

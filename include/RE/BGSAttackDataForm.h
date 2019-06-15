@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSAttackDataForm
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/BGSAttackDataMap.h"  // BGSAttackDataMap
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSAttackDataForm : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSAttackDataForm;
+
+
 		virtual ~BGSAttackDataForm();										// 00
 
 		// override (BaseFormComponent)

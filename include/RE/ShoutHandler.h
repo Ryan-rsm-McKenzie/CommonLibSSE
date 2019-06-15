@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ShoutHandler
+
 #include "RE/PlayerInputHandler.h"  // PlayerInputHandler
 
 
@@ -8,6 +10,9 @@ namespace RE
 	struct ShoutHandler : public PlayerInputHandler
 	{
 	public:
+		inline static const void* RTTI = RTTI_ShoutHandler;
+
+
 		virtual ~ShoutHandler();																		// 00
 
 		// override (PlayerInputHandler)

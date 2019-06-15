@@ -1,6 +1,9 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraReferenceHandle
+
 #include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/NiSmartPointer.h"  // NiSmartPointer
 
 
@@ -12,6 +15,9 @@ namespace RE
 	class ExtraReferenceHandle : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraReferenceHandle;
+
+
 		enum { kExtraTypeID = ExtraDataType::kReferenceHandle };
 
 

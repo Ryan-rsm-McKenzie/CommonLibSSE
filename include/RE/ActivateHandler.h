@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ActivateHandler
+
 #include "RE/HeldStateHandler.h"  // HeldStateHandler
 #include "RE/PlayerControls.h"  // PlayerControls::Data024
 
@@ -13,6 +15,9 @@ namespace RE
 	struct ActivateHandler : public HeldStateHandler
 	{
 	public:
+		inline static const void* RTTI = RTTI_ActivateHandler;
+
+
 		virtual ~ActivateHandler();																		// 00
 
 		// override (PlayerInputHandler)
@@ -21,8 +26,7 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
+		UInt64 unk18;	// 18
 	};
 	STATIC_ASSERT(sizeof(ActivateHandler) == 0x20);
 }

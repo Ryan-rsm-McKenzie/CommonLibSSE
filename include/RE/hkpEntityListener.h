@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpEntityListener
+
 
 namespace RE
 {
@@ -9,6 +11,9 @@ namespace RE
 	class hkpEntityListener
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpEntityListener;
+
+
 		virtual ~hkpEntityListener();										// 00
 
 		// add

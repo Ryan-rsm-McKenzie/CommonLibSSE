@@ -1,6 +1,9 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraContainerChanges
+
 #include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/ExtraDataTypes.h"  // ExtraDataType
 
 
 namespace RE
@@ -11,6 +14,9 @@ namespace RE
 	class ExtraContainerChanges : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraContainerChanges;
+
+
 		enum { kExtraTypeID = ExtraDataType::kContainerChanges };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_MovementControllerAI
+
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 #include "RE/IMovementControllerRegisterInterface.h"  // IMovementControllerRegisterInterface
 
@@ -11,6 +13,9 @@ namespace RE
 		public IMovementControllerRegisterInterface	// 000
 	{
 	public:
+		inline static const void* RTTI = RTTI_MovementControllerAI;
+
+
 		virtual ~MovementControllerAI();	// 00
 
 		// add

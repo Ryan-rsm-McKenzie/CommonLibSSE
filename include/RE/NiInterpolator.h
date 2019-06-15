@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NiInterpolator
+
 #include "RE/NiObject.h"  // NiObject
 
 
@@ -16,6 +18,9 @@ namespace RE
 	class NiInterpolator : public NiObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_NiInterpolator;
+
+
 		virtual ~NiInterpolator();																				// 00
 
 		// override (NiObject)

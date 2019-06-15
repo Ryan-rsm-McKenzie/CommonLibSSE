@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_bhkCharacterPointCollector
+
 #include "RE/hkpAllCdPointCollector.h"  // hkpAllCdPointCollector
 
 
@@ -8,7 +10,14 @@ namespace RE
 	class bhkCharacterPointCollector : public hkpAllCdPointCollector
 	{
 	public:
-		virtual ~bhkCharacterPointCollector();	// 00
+		inline static const void* RTTI = RTTI_bhkCharacterPointCollector;
+
+
+		virtual ~bhkCharacterPointCollector();							// 00
+
+		// override (hkpAllCdPointCollector)
+		virtual void	AddCdPoint(const hkpCdPoint& a_point) override;	// 01
+		virtual void	Reset() override;								// 02
 
 
 		// members

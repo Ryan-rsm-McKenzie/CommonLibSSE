@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSStoryManagerTreeForm
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
 
@@ -12,7 +14,10 @@ namespace RE
 	class BGSStoryManagerTreeForm : public TESForm
 	{
 	public:
-		virtual ~BGSStoryManagerTreeForm();	// 00
+		inline static const void* RTTI = RTTI_BGSStoryManagerTreeForm;
+
+
+		virtual ~BGSStoryManagerTreeForm();								// 00
 
 		// add
 		virtual UInt32						GetNumChildren() const;		// 3B - { return 0; }

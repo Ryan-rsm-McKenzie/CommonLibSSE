@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_Sky
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTextureSet.h"  // NiSourceTexture
 #include "RE/SkyEffectController.h"  // SkyEffectController
@@ -23,6 +25,9 @@ namespace RE
 	class Sky
 	{
 	public:
+		inline static const void* RTTI = RTTI_Sky;
+
+
 		virtual ~Sky();	// 00
 
 		static Sky* GetSingleton();

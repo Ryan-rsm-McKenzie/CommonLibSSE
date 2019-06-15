@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_NavMesh
+
 #include "RE/BSNavmesh.h"  // BSNavmesh
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESChildCell.h"  // TESChildCell
@@ -14,6 +16,9 @@ namespace RE
 		public BSNavmesh		// 028
 	{
 	public:
+		inline static const void* RTTI = RTTI_NavMesh;
+
+
 		enum { kTypeID = FormType::NavMesh };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSMusicPaletteTrack
+
 #include "RE/BGSMusicTrack.h"  // BGSMusicTrack
 #include "RE/BSTArray.h"  // BSTArray
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSMusicPaletteTrack : public BGSMusicTrack
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSMusicPaletteTrack;
+
+
 		struct Tracks	// SNAM
 		{
 			BSTArray<BSIMusicTrack*>	first;	// 00

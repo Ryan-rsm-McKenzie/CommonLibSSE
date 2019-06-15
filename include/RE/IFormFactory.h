@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_IFormFactory
+
 #include "RE/FormTypes.h"  // FormType, TESForm
 
 
@@ -11,6 +13,9 @@ namespace RE
 	class IFormFactory
 	{
 	public:
+		inline static const void* RTTI = RTTI_IFormFactory;
+
+
 		virtual ~IFormFactory();							// 00
 
 	protected:

@@ -1,13 +1,21 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSISoundOutputModel, RTTI_BSISoundOutputModel__BSIAttenuationCharacteristics
+
 
 namespace RE
 {
 	class BSISoundOutputModel
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSISoundOutputModel;
+
+
 		struct BSIAttenuationCharacteristics
 		{
+			inline static const void* RTTI = RTTI_BSISoundOutputModel__BSIAttenuationCharacteristics;
+
+
 			virtual ~BSIAttenuationCharacteristics();				// 00
 
 			// add
@@ -18,7 +26,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(BSIAttenuationCharacteristics) == 0x8);
 
 
-		virtual ~BSISoundOutputModel();								// 00
+		virtual ~BSISoundOutputModel();														// 00
 
 		// add
 		virtual bool							UsesHRTF() const = 0;						// 01

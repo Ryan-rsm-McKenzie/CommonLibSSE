@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_Moon
+
 #include "RE/BSString.h"  // BSString
 #include "RE/SkyObject.h"  // SkyObject
 
@@ -13,6 +15,9 @@ namespace RE
 	class Moon : public SkyObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_Moon;
+
+
 		struct States
 		{
 			enum

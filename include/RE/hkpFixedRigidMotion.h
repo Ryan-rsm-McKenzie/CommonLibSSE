@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpFixedRigidMotion
+
 #include "RE/hkpKeyframedRigidMotion.h"  // hkpKeyframedRigidMotion
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class hkpFixedRigidMotion : public hkpKeyframedRigidMotion
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpFixedRigidMotion;
+
+
 		virtual ~hkpFixedRigidMotion();													// 00
 
 		// override (hkpKeyframedRigidMotion)

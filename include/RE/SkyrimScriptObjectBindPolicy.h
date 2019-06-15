@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_SkyrimScript__ObjectBindPolicy
+
 #include "RE/BSScriptObjectBindPolicy.h"  // BSScript::ObjectBindPolicy
 #include "RE/BSTHashMap.h"  // BSTHashMap
 
@@ -11,6 +13,9 @@ namespace RE
 		class ObjectBindPolicy : public BSScript::ObjectBindPolicy
 		{
 		public:
+			inline static const void* RTTI = RTTI_SkyrimScript__ObjectBindPolicy;
+
+
 			virtual ~ObjectBindPolicy();			// 00
 
 			// override (BSScript::ObjectBindPolicy)

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSInputDevice
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSIInputDevice.h"  // BSIInputDevice
 #include "RE/BSTHashMap.h"  // BSTHashMap
@@ -11,6 +13,9 @@ namespace RE
 	class BSInputDevice : public BSIInputDevice
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSInputDevice;
+
+
 		struct Data
 		{
 			BSFixedString	name;	// 00
@@ -22,12 +27,15 @@ namespace RE
 		virtual ~BSInputDevice();					// 00
 
 		// override (BSIInputDevice)
-		virtual bool IsEnabled() const override;	// 07
+		virtual	void	Unk_04(void) override;		// 04
+		virtual void	Unk_05(void) override;		// 05
+		virtual void	Unk_06(void) override;		// 06
+		virtual bool	IsEnabled() const override;	// 07
 
-		bool		IsKeyboard() const;
-		bool		IsMouse() const;
-		bool		IsGamepad() const;
-		bool		IsPressed(UInt32 a_keyCode) const;
+		bool			IsKeyboard() const;
+		bool			IsMouse() const;
+		bool			IsGamepad() const;
+		bool			IsPressed(UInt32 a_keyCode) const;
 
 
 		// members

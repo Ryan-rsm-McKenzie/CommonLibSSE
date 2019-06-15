@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSMessageIcon
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/TESIcon.h"  // TESIcon
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSMessageIcon : public BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSMessageIcon;
+
+
 		virtual ~BGSMessageIcon();											// 00
 
 		// override (BaseFormComponent)

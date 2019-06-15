@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_MessageBoxData
+
 #include "RE/BSString.h"  // BSString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/IUIMessageData.h"  // IUIMessageData
@@ -13,6 +15,9 @@ namespace RE
 	class MessageBoxData : public IUIMessageData
 	{
 	public:
+		inline static const void* RTTI = RTTI_MessageBoxData;
+
+
 		virtual ~MessageBoxData();	// 00
 
 

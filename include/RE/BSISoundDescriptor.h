@@ -1,13 +1,22 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSISoundDescriptor, RTTI_BSISoundDescriptor__BSIPlaybackCharacteristics
+
+
 namespace RE
 {
 	class BSISoundDescriptor
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSISoundDescriptor;
+
+
 		class BSIPlaybackCharacteristics
 		{
 		public:
+			inline static const void* RTTI = RTTI_BSISoundDescriptor__BSIPlaybackCharacteristics;
+
+
 			virtual ~BSIPlaybackCharacteristics();		// 00
 
 			// add

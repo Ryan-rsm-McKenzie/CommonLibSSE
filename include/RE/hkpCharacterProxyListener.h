@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpCharacterProxyListener
+
 #include "RE/hkArray.h"  // hkArray
 
 
@@ -16,6 +18,9 @@ namespace RE
 	class hkpCharacterProxyListener
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpCharacterProxyListener;
+
+
 		virtual ~hkpCharacterProxyListener();																																		// 00
 
 		// add

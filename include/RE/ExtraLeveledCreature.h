@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraLeveledCreature
+
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/FormTypes.h"  // TESNPC
@@ -10,6 +12,9 @@ namespace RE
 	class ExtraLeveledCreature : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraLeveledCreature;
+
+
 		enum { kExtraTypeID = ExtraDataType::kLeveledCreature };
 
 

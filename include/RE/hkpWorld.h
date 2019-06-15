@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpWorld
+
 #include "RE/hkReferencedObject.h"  // hkReferencedObject
 
 
@@ -8,7 +10,13 @@ namespace RE
 	class hkpWorld : public hkReferencedObject
 	{
 	public:
-		virtual ~hkpWorld();	// 00
+		inline static const void* RTTI = RTTI_hkpWorld;
+
+
+		virtual ~hkpWorld();																							// 00
+
+		// override (hkReferencedObject)
+		virtual void CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;	// 02
 
 
 		// members

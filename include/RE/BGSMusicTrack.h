@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSMusicTrack
+
 #include "RE/BSIMusicTrack.h"  // BSIMusicTrack
 #include "RE/Condition.h"  // Condition
 
@@ -12,6 +14,9 @@ namespace RE
 	class BGSMusicTrack : public BSIMusicTrack
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSMusicTrack;
+
+
 		virtual ~BGSMusicTrack();						// 00
 
 		// override (BSIMusicTrack)

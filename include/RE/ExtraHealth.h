@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraHealth
+
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/ExtraDataTypes.h"  // ExtraDataType
 
@@ -9,6 +11,9 @@ namespace RE
 	class ExtraHealth : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraHealth;
+
+
 		enum { kExtraTypeID = ExtraDataType::kHealth };
 
 

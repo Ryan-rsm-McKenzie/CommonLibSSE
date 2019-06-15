@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ImageSpaceShaderParam
+
 #include "RE/ImageSpaceEffectParam.h"  // ImageSpaceEffectParam
 #include "RE/NiTArray.h"  // NiTObjectArray
 #include "RE/NiSmartPointer.h"  // NiPointer
@@ -11,6 +13,9 @@ namespace RE
 	class ImageSpaceShaderParam : public ImageSpaceEffectParam
 	{
 	public:
+		inline static const void* RTTI = RTTI_ImageSpaceShaderParam;
+
+
 		virtual ~ImageSpaceShaderParam();	// 00
 
 

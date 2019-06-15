@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ExtraStartingPosition
+
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/FormTypes.h"  // BGSLocation
@@ -10,6 +12,9 @@ namespace RE
 	class ExtraStartingPosition : public BSExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_ExtraStartingPosition;
+
+
 		enum { kExtraTypeID = ExtraDataType::kStartingPosition };
 
 

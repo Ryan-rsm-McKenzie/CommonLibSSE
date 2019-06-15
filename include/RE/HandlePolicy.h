@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_SkyrimScript__HandlePolicy
+
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/IObjectHandlePolicy.h"  // BSScript::IObjectHandlePolicy
 
@@ -11,6 +13,9 @@ namespace RE
 		class HandlePolicy : public BSScript::IObjectHandlePolicy
 		{
 		public:
+			inline static const void* RTTI = RTTI_SkyrimScript__HandlePolicy;
+
+
 			virtual ~HandlePolicy();															// 00
 
 			// override (BSScript::IObjectHandlePolicy)

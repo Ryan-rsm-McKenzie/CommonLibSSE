@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpSimulationIsland
+
 #include "RE/hkArray.h"  // hkArray, hkInplaceArray
 #include "RE/hkBaseTypes.h"  // hkObjectIndex, hkTime
 #include "RE/hkMultiThreadCheck.h"  // hkMultiThreadCheck
@@ -17,6 +19,9 @@ namespace RE
 	class hkpSimulationIsland : public hkpConstraintOwner
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpSimulationIsland;
+
+
 		virtual ~hkpSimulationIsland();																								// 00
 
 		// override (hkpConstraintOwner)

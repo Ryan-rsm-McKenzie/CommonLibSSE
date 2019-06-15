@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_hkpEntity
+
 #include "RE/hkArray.h"  // hkArray
 #include "RE/hkBaseTypes.h"  // hkObjectIndex
 #include "RE/hkSmallArray.h"  // hkSmallArray
@@ -23,6 +25,9 @@ namespace RE
 	class hkpEntity : public hkpWorldObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_hkpEntity;
+
+
 		enum class SpuCollisionCallbackEventFilter : UInt8
 		{
 			kNone = 0,

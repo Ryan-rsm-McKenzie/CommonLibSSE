@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESSpellList
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // SpellItem, TESLevSpell, TESShout
 
@@ -9,6 +11,9 @@ namespace RE
 	class TESSpellList : BaseFormComponent
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESSpellList;
+
+
 		struct ActorEffect	// SPLO
 		{
 			SpellItem**		spells;				// 00

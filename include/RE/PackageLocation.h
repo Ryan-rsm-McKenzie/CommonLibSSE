@@ -1,6 +1,10 @@
 #pragma once
 
-#include "RE/IAIWorldLocationHandle.h"
+#include "skse64/GameRTTI.h"  // RTTI_PackageLocation
+
+#include <type_traits>  // underlying_type_t
+
+#include "RE/IAIWorldLocationHandle.h"  // IAIWorldLocationHandle
 
 
 namespace RE
@@ -8,9 +12,12 @@ namespace RE
 	class PackageLocation : public IAIWorldLocationHandle
 	{
 	public:
+		inline static const void* RTTI = RTTI_PackageLocation;
+
+
 		enum class Type : UInt32
 		{
-			kNone = 0xFFFFFFFF,
+			kNone = static_cast<std::underlying_type_t<Type>>(-1),
 			kNearReference = 0,
 			kInCell = 1,
 			kNearPackageStartLocation = 2,
@@ -25,10 +32,12 @@ namespace RE
 		};
 
 
-		virtual ~PackageLocation();	// 00
+		virtual ~PackageLocation();				// 00
 
-		// add
-		virtual void Unk_03(void);	// 03
+		// override (IAIWorldLocationHandle)
+		virtual void	Unk_00(void) override;	// 00
+		virtual void	Unk_01(void) override;	// 01 - { return this; }
+		virtual void	Unk_02(void) override;	// 02
 
 
 		// members

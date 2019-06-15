@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_EffectSetting
+
 #include "RE/ActorValues.h"  // ActorValue
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
@@ -21,6 +23,9 @@ namespace RE
 		public BGSKeywordForm			// 040
 	{
 	public:
+		inline static const void* RTTI = RTTI_EffectSetting;
+
+
 		enum { kTypeID = FormType::MagicEffect };
 
 

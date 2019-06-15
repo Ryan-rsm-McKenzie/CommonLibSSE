@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_SkyEffectController
+
 #include "RE/ReferenceEffectController.h"  // ReferenceEffectController
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class SkyEffectController : public ReferenceEffectController
 	{
 	public:
+		inline static const void* RTTI = RTTI_SkyEffectController;
+
+
 		virtual ~SkyEffectController();			// 00
 
 		// override (ReferenceEffectController)
