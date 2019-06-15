@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSEntryPointFunctionDataOneValue
+
 #include "RE/BGSEntryPointFunctionData.h"  // BGSEntryPointFunctionData
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BGSEntryPointFunctionDataOneValue : public BGSEntryPointFunctionData
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSEntryPointFunctionDataOneValue;
+
+
 		virtual ~BGSEntryPointFunctionDataOneValue();						// 00
 
 		// override (BGSEntryPointFunctionData)

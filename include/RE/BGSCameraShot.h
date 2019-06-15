@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSCameraShot
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESImageSpaceModifiableForm.h"  // TESImageSpaceModifiableForm
@@ -14,6 +16,9 @@ namespace RE
 		public TESImageSpaceModifiableForm	// 48
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSCameraShot;
+
+
 		enum { kTypeID = FormType::CameraShot };
 
 

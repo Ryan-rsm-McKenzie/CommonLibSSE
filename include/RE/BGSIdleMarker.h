@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSIdleMarker
+
 #include "RE/BGSIdleCollection.h"  // BGSIdleCollection
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESBoundObject.h"  // TESBoundObject
@@ -14,6 +16,9 @@ namespace RE
 		public BGSIdleCollection	// 58
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSIdleMarker;
+
+
 		enum { kTypeID = FormType::IdleMarker };
 
 

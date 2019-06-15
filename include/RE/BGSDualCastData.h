@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSDualCastData
+
 #include "RE/FormTypes.h"  // FormType, BGSProjectile, BGSExplosion, BGSArtObject
 #include "RE/TESBoundObject.h"  // TESBoundObject
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSDualCastData : public TESBoundObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSDualCastData;
+
+
 		enum { kTypeID = FormType::DualCastData };
 
 

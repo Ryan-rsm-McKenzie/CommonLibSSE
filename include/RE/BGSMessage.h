@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSMessage
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/Condition.h"  // Condition
@@ -17,6 +19,9 @@ namespace RE
 		public TESDescription	// 30
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSMessage;
+
+
 		enum { kTypeID = FormType::Message };
 
 

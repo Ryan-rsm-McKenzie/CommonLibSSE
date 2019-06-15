@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSAction
+
 #include "RE/BGSKeyword.h"  // BGSKeyword
 #include "RE/FormTypes.h"  // FormType
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSAction : public BGSKeyword
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSAction;
+
+
 		enum { kTypeID = FormType::Action };
 
 

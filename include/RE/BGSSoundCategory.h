@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSSoundCategory
+
 #include "RE/BSISoundCategory.h"  // BSISoundCategory
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -14,6 +16,9 @@ namespace RE
 		public BSISoundCategory	// 30
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSSoundCategory;
+
+
 		enum { kTypeID = FormType::SoundCategory };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSEntryPointFunctionDataText
+
 #include "RE/BGSEntryPointFunctionData.h"  // BGSEntryPointFunctionData
 #include "RE/BSFixedString.h"  // BSFixedString
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSEntryPointFunctionDataText : public BGSEntryPointFunctionData
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSEntryPointFunctionDataText;
+
+
 		virtual ~BGSEntryPointFunctionDataText();							// 00
 
 		// override (BGSEntryPointFunctionData)

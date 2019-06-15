@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESPackage
+
 #include "RE/Condition.h"  // Condition
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -14,6 +16,9 @@ namespace RE
 	class TESPackage : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESPackage;
+
+
 		enum { kTypeID = FormType::Package };
 
 

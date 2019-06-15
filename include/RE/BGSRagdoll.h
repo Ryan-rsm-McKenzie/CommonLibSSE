@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSRagdoll
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -16,6 +18,9 @@ namespace RE
 		public TESModel	// 020
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSRagdoll;
+
+
 		enum { kTypeID = FormType::Ragdoll };
 
 

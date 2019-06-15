@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSSceneActionTimer
+
 #include "RE/BGSSceneAction.h"  // BGSSceneAction
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class BGSSceneActionTimer : public BGSSceneAction
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSSceneActionTimer;
+
+
 		enum { kTypeID = Type::kTimer };
 
 

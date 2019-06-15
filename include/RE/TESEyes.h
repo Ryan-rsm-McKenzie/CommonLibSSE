@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESEyes
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESFullName.h"  // TESFullName
@@ -14,6 +16,9 @@ namespace RE
 		public TESTexture	// 30
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESEyes;
+
+
 		enum { kTypeID = FormType::Eyes };
 
 

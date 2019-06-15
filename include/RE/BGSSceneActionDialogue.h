@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSSceneActionDialogue
+
 #include "RE/BGSSceneAction.h"  // BGSSceneAction
 #include "RE/FormTypes.h"  // TESTopic
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSSceneActionDialogue : public BGSSceneAction
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSSceneActionDialogue;
+
+
 		enum { kTypeID = Type::kDialogue };
 
 

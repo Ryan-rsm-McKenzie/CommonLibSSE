@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSPerkEntry
+
 #include "RE/FormTypes.h"  // BGSPerk
 
 
@@ -12,6 +14,9 @@ namespace RE
 	class BGSPerkEntry
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSPerkEntry;
+
+
 		enum class EntryPoint : UInt8
 		{
 			kCalculateWeaponDamage = 0,

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSPerk, RTTI_BGSPerk__FindPerkInRanksVisitor, RTTI_BGSPerk__ApplyPerksVisitor, RTTI_BGSPerk__AddPerkVisitor
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/Condition.h"  // Condition
 #include "RE/FormTypes.h"  // FormType
@@ -22,6 +24,9 @@ namespace RE
 		public TESIcon			// 40
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSPerk;
+
+
 		enum { kTypeID = FormType::Perk };
 
 
@@ -39,6 +44,9 @@ namespace RE
 		class FindPerkInRanksVisitor : public PerkRankVisitor
 		{
 		public:
+			inline static const void* RTTI = RTTI_BGSPerk__FindPerkInRanksVisitor;
+
+
 			virtual bool operator()(const BGSPerkRankArray::Entry* a_entry) override;	// 00
 		};
 
@@ -46,6 +54,9 @@ namespace RE
 		class ApplyPerksVisitor : public PerkRankVisitor
 		{
 		public:
+			inline static const void* RTTI = RTTI_BGSPerk__ApplyPerksVisitor;
+
+
 			virtual bool operator()(const BGSPerkRankArray::Entry* a_entry) override;	// 00
 		};
 
@@ -53,6 +64,9 @@ namespace RE
 		class AddPerkVisitor : public PerkRankVisitor
 		{
 		public:
+			inline static const void* RTTI = RTTI_BGSPerk__AddPerkVisitor;
+
+
 			virtual bool operator()(const BGSPerkRankArray::Entry* a_entry) override;	// 00
 		};
 

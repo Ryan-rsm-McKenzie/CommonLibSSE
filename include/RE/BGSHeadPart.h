@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSHeadPart
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FormTypes.h"  // BGSTextureSet, BGSListForm
@@ -17,6 +19,9 @@ namespace RE
 		public TESModelTextureSwap	// 030
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSHeadPart;
+
+
 		enum { kTypeID = FormType::HeadPart };
 
 

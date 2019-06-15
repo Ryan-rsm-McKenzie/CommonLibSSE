@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESCustomPackageData
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/TESPackageData.h"  // TESPackageData
@@ -15,6 +17,9 @@ namespace RE
 	class TESCustomPackageData : public TESPackageData
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESCustomPackageData;
+
+
 		struct PackageData
 		{
 			IPackageData**	dataInputValues;	// 00

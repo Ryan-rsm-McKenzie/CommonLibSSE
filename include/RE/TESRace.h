@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESRace
+
 #include "RE/ActorValues.h"  // ActorValue8
 #include "RE/BGSAttackDataForm.h"  // BGSAttackDataForm
 #include "RE/BGSBehaviorGraphModel.h"  // BGSBehaviorGraphModel
@@ -35,6 +37,9 @@ namespace RE
 		public BGSAttackDataForm	// 088
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESRace;
+
+
 		enum { kTypeID = FormType::Race };
 
 

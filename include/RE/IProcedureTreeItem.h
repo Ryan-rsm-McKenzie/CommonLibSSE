@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_IProcedureTreeItem
+
 
 namespace RE
 {
@@ -9,6 +11,9 @@ namespace RE
 	class IProcedureTreeItem
 	{
 	public:
+		inline static const void* RTTI = RTTI_IProcedureTreeItem;
+
+
 		virtual ~IProcedureTreeItem();				// 00
 
 		// add

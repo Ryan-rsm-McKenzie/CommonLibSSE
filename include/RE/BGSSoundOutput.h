@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSSoundOutput
+
 #include "RE/BSISoundOutputModel.h"  // BSISoundOutputModel
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -12,6 +14,9 @@ namespace RE
 		public BSISoundOutputModel	// 20
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSSoundOutput;
+
+
 		enum { kTypeID = FormType::SoundOutputModel };
 
 

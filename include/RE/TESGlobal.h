@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESGlobal
+
 #include "RE/BSString.h"  // BSString
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -10,7 +12,10 @@ namespace RE
 	class TESGlobal : public TESForm
 	{
 	public:
-		enum { kTypeID = (UInt32)FormType::Global };
+		inline static const void* RTTI = RTTI_TESGlobal;
+
+
+		enum { kTypeID = FormType::Global };
 
 
 		enum class Type : UInt8

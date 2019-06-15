@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSMusicType
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSIMusicType.h"  // BSIMusicType
 #include "RE/FormTypes.h"  // FormType
@@ -13,6 +15,9 @@ namespace RE
 		public BSIMusicType	// 20
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSMusicType;
+
+
 		enum { kTypeID = FormType::MusicType };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSSkillPerkTreeNode
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FormTypes.h"  // ActorValueInfo, BGSPerk
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSSkillPerkTreeNode
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSSkillPerkTreeNode;
+
+
 		virtual ~BGSSkillPerkTreeNode();	// 00
 
 

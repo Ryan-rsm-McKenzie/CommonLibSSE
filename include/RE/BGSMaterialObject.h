@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSMaterialObject
+
 #include "RE/BSMaterialObject.h"  // BSMaterialObject
 #include "RE/BSString.h"  // BSString
 #include "RE/BSTArray.h"  // BSTArray
@@ -16,6 +18,9 @@ namespace RE
 		public BSMaterialObject	// 48
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSMaterialObject;
+
+
 		enum { kTypeID = FormType::MaterialObject };
 
 

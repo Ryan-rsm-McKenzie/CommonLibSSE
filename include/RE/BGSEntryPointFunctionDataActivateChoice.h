@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSEntryPointFunctionDataActivateChoice
+
 #include "RE/BGSEntryPointFunctionData.h"  // BGSEntryPointFunctionData
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/FormTypes.h"  // BGSPerk, SpellItem
@@ -10,6 +12,9 @@ namespace RE
 	class BGSEntryPointFunctionDataActivateChoice : public BGSEntryPointFunctionData
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSEntryPointFunctionDataActivateChoice;
+
+
 		enum class Flag1 : UInt16
 		{
 			kNone = 0,

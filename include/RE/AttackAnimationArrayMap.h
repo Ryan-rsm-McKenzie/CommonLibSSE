@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_AttackAnimationArrayMap
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/NiRefObject.h"  // NiRefObject
@@ -13,6 +15,9 @@ namespace RE
 		public BSTHashMap<UInt32, BSTArray<SetEventData> const*>	// 10
 	{
 	public:
+		inline static const void* RTTI = RTTI_AttackAnimationArrayMap;
+
+
 		// hash key (hiword = right hand | loward = left hand)
 		enum HashKey : UInt32
 		{

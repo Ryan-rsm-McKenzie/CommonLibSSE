@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSKeyword
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/TESForm.h"  // TESForm
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSKeyword : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSKeyword;
+
+
 		enum { kTypeID = FormType::Keyword };
 
 

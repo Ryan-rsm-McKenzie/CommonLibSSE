@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSVoiceType
+
 #include "RE/BSString.h"  // BSString
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -10,6 +12,9 @@ namespace RE
 	class BGSVoiceType : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSVoiceType;
+
+
 		enum { kTypeID = FormType::VoiceType };
 
 

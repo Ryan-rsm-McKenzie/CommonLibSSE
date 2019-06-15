@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSMenuIcon
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESIcon.h"  // TESIcon
@@ -12,6 +14,9 @@ namespace RE
 		public TESIcon	// 20
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSMenuIcon;
+
+
 		enum { kTypeID = FormType::MenuIcon };
 
 

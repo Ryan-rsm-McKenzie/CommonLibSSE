@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESActorBase
+
 #include "RE/ActorValueOwner.h"  // ActorValueOwner
 #include "RE/BGSAttackDataForm.h"  // BGSAttackDataForm
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
@@ -32,6 +34,9 @@ namespace RE
 		public BGSPerkRankArray				// 138
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESActorBase;
+
+
 		virtual ~TESActorBase();												// 00
 
 		// override (TESBoundAnimObject)

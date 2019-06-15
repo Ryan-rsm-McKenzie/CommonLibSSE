@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSMovementType
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -10,6 +12,9 @@ namespace RE
 	class BGSMovementType : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSMovementType;
+
+
 		enum { kTypeID = FormType::MovementType };
 
 

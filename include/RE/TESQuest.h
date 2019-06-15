@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESQuest
+
 #include "RE/BGSStoryManagerTreeForm.h"  // BGSStoryManagerTreeForm
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSReadWriteLock.h"  // BSReadWriteLock
@@ -23,6 +25,9 @@ namespace RE
 		public TESFullName				// 028
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESQuest;
+
+
 		enum { kTypeID = FormType::Quest };
 
 

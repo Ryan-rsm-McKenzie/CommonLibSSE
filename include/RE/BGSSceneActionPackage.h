@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSSceneActionPackage
+
 #include "RE/BGSSceneAction.h"  // BGSSceneAction
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FormTypes.h"  // TESPackage
@@ -10,6 +12,9 @@ namespace RE
 	class BGSSceneActionPackage : public BGSSceneAction
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSSceneActionPackage;
+
+
 		enum { kTypeID = Type::kPackage };
 
 

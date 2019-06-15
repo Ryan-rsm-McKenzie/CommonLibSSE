@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESFaction
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/FormTypes.h"  // FormType, TESObjectREFR, BGSListForm, BGSOutfit
@@ -21,6 +23,9 @@ namespace RE
 		public TESReactionForm	// 030
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESFaction;
+
+
 		enum { kTypeID = FormType::Faction };
 
 

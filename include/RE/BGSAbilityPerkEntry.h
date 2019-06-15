@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSAbilityPerkEntry
+
 #include "RE/BGSPerkEntry.h"  // BGSPerkEntry
 
 
@@ -11,6 +13,9 @@ namespace RE
 	class BGSAbilityPerkEntry : public BGSPerkEntry
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSAbilityPerkEntry;
+
+
 		virtual ~BGSAbilityPerkEntry();						// 00
 
 		// override (BGSPerkEntry)

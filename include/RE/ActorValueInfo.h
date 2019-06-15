@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ActorValueInfo
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESDescription.h"  // TESDescription
@@ -20,6 +22,9 @@ namespace RE
 		public TESIcon			// 040
 	{
 	public:
+		inline static const void* RTTI = RTTI_ActorValueInfo;
+
+
 		enum { kTypeID = FormType::ActorValueInfo };
 
 

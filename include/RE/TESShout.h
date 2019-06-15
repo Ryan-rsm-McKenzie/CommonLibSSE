@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESShout
+
 #include "RE/BGSEquipType.h"  // BGSEquipType
 #include "RE/BGSMenuDisplayObject.h"  // BGSMenuDisplayObject
 #include "RE/FormTypes.h"  // FormType
@@ -18,6 +20,9 @@ namespace RE
 		public TESDescription			// 50
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESShout;
+
+
 		enum { kTypeID = FormType::Shout };
 
 

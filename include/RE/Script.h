@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_Script
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
 
@@ -9,6 +11,9 @@ namespace RE
 	class Script : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_Script;
+
+
 		enum { kTypeID = FormType::Script };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSRefAlias
+
 #include "RE/BGSBaseAlias.h"  // BGSBaseAlias
 #include "RE/FormTypes.h"  // TESNPC, TESObjectSTAT, TESQuest, BGSLocation
 #include "RE/QuestEvents.h"  // QuestEvent
@@ -13,6 +15,9 @@ namespace RE
 	class BGSRefAlias : public BGSBaseAlias
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSRefAlias;
+
+
 		union FillData
 		{
 			struct LocationAliasReference

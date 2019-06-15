@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSImpactData
+
 #include "RE/Color.h"  // Color
 #include "RE/FormTypes.h"  // FormType
 #include "RE/SoundLevels.h"  // SoundLevel
@@ -14,6 +16,9 @@ namespace RE
 		public TESModel	// 20
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSImpactData;
+
+
 		enum { kTypeID = FormType::Impact };
 
 

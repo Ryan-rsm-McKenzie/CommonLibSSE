@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSCameraPath
+
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/Condition.h"  // Condition
 #include "RE/FormTypes.h"  // FormType
@@ -11,6 +13,9 @@ namespace RE
 	class BGSCameraPath : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSCameraPath;
+
+
 		enum { kTypeID = FormType::CameraPath };
 
 

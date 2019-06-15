@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSCollisionLayer
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/Color.h"  // Color
@@ -15,6 +17,9 @@ namespace RE
 		public TESDescription	// 20
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSCollisionLayer;
+
+
 		enum { kTypeID = FormType::CollisionLayer };
 
 

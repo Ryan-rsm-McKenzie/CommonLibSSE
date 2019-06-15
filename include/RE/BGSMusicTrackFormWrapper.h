@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSMusicTrackFormWrapper
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
 
@@ -14,6 +16,9 @@ namespace RE
 		public BSIMusicTrack	// 20
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSMusicTrackFormWrapper;
+
+
 		enum { kTypeID = FormType::MusicTrack };
 
 

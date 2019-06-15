@@ -2,6 +2,9 @@
 
 #undef GetObject
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSDefaultObjectManager
+
+
 #include "RE/BSTSingleton.h"  // BSTSingletonImplicit
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -14,6 +17,9 @@ namespace RE
 		public BSTSingletonImplicit<BGSDefaultObjectManager>	// 020
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSDefaultObjectManager;
+
+
 		enum { kTypeID = FormType::DefaultObject };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSScene
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/Condition.h"  // Condition
 #include "RE/FormTypes.h"  // FormType, BGSStoryManagerQuestNode
@@ -14,6 +16,9 @@ namespace RE
 	class BGSScene : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSScene;
+
+
 		enum { kTypeID = FormType::Scene };
 
 

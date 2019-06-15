@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSMaterialType
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/FormTypes.h"  // FormType
 #include "RE/NiColor.h"  // NiColor
@@ -11,6 +13,9 @@ namespace RE
 	class BGSMaterialType : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSMaterialType;
+
+
 		enum { kTypeID = FormType::MaterialType };
 
 

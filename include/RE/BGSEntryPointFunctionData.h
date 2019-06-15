@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSEntryPointFunctionData
+
 #include "RE/FormTypes.h"  // BGSPerk
 
 
@@ -11,6 +13,9 @@ namespace RE
 	class BGSEntryPointFunctionData
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSEntryPointFunctionData;
+
+
 		enum class FunctionType : UInt32
 		{
 			kInvalid = 0,

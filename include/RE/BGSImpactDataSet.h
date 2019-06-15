@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSImpactDataSet
+
 #include "RE/BGSPreloadable.h"  // BGSPreloadable
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/FormTypes.h"  // FormType
@@ -13,6 +15,9 @@ namespace RE
 		public BGSPreloadable	// 20
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSImpactDataSet;
+
+
 		enum { kTypeID = FormType::ImpactDataSet };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSEntryPointPerkEntry
+
 #include "RE/BGSPerkEntry.h"  // RE::BGSPerkEntry
 #include "RE/FormTypes.h"  // BGSPerk, TESObjectREFR
 
@@ -13,6 +15,9 @@ namespace RE
 	class BGSEntryPointPerkEntry : public BGSPerkEntry
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSEntryPointPerkEntry;
+
+
 		struct EntryData	// DATA
 		{
 			enum class Function : UInt8

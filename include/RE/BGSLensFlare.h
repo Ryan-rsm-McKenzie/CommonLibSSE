@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSLensFlare
+
 #include "RE/BSLensFlareRenderData.h"  // BSLensFlareRenderData
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -12,6 +14,9 @@ namespace RE
 		public BSLensFlareRenderData	// 20
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSLensFlare;
+
+
 		enum { kTypeID = FormType::LensFlare };
 
 

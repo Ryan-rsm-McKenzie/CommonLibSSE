@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSBaseAlias
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/FormTypes.h"  // TESQuest
 
@@ -12,6 +14,9 @@ namespace RE
 	class BGSBaseAlias
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSBaseAlias;
+
+
 		enum class FillType : UInt16
 		{
 			kNone = 0,

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSBodyPartData
+
 #include "RE/ActorValues.h"  // ActorValue8
 #include "RE/BGSPreloadable.h"  // BGSPreloadable
 #include "RE/BSFixedString.h"  // BSFixedString
@@ -17,6 +19,9 @@ namespace RE
 		public BGSPreloadable	// 48
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSBodyPartData;
+
+
 		enum { kTypeID = FormType::BodyPartData };
 
 

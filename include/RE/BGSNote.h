@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSNote
+
 #include "RE/BGSPickupPutdownSounds.h"  // BGSPickupPutdownSounds
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESBoundObject.h"  // TESBoundObject
@@ -18,6 +20,9 @@ namespace RE
 		public BGSPickupPutdownSounds	// 78
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSNote;
+
+
 		enum { kTypeID = FormType::Note };
 
 

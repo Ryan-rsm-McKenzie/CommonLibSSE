@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSTextureSet
+
 #include "RE/BSTextureSet.h"  // BSTextureSet
 #include "RE/Color.h"  // Color
 #include "RE/FormTypes.h"  // FormType
@@ -14,6 +16,9 @@ namespace RE
 		public BSTextureSet		// 30
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSTextureSet;
+
+
 		enum { kTypeID = FormType::TextureSet };
 
 

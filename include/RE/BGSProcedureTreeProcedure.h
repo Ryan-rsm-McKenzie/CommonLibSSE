@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSProcedureTreeProcedure
+
 #include "RE/BGSProcedureTreeConditionalItem.h"  // BGSProcedureTreeConditionalItem
 #include "RE/BGSTypedItem.h"  // BGSTypedItem
 
@@ -12,6 +14,9 @@ namespace RE
 	class BGSProcedureTreeProcedure : public BGSTypedItem<BGSProcedureTreeProcedure, BGSProcedureTreeConditionalItem>
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSProcedureTreeProcedure;
+
+
 		virtual ~BGSProcedureTreeProcedure();			// 00
 
 		// override (BGSProcedureTreeConditionalItem)

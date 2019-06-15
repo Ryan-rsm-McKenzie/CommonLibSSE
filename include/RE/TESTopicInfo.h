@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESTopicInfo
+
 #include "RE/Condition.h"  // Condition
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -10,6 +12,9 @@ namespace RE
 	class TESTopicInfo : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESTopicInfo;
+
+
 		enum { kTypeID = FormType::Info };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSAcousticSpace
+
 #include "RE/FormTypes.h"  // BGSSoundDescriptorForm, TESRegion, BGSReverbParameters
 #include "RE/TESBoundObject.h"  // TESBoundObject
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSAcousticSpace : public TESBoundObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSAcousticSpace;
+
+
 		enum { kTypeID = FormType::AcousticSpace };
 
 

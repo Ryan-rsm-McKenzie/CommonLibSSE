@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESClass
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESDescription.h"  // TESDescription
 #include "RE/TESForm.h"  // TESForm
@@ -16,6 +18,9 @@ namespace RE
 		public TESTexture		// 40
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESClass;
+
+
 		enum { kTypeID = FormType::Class };
 
 

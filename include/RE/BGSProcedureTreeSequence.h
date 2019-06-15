@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSProcedureTreeSequence
+
 #include "RE/BGSProcedureTreeBranch.h"  // BGSProcedureTreeBranch
 #include "RE/BGSTypedItem.h"  // BGSTypedItem
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSProcedureTreeSequence : public BGSTypedItem<BGSProcedureTreeSequence, BGSProcedureTreeBranch>
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSProcedureTreeSequence;
+
+
 		virtual ~BGSProcedureTreeSequence();	// 00
 
 		// override (BGSProcedureTreeBranch)

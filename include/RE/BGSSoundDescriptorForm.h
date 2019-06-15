@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSSoundDescriptorForm
+
 #include "RE/BSISoundDescriptor.h"  // BSISoundDescriptor
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -15,6 +17,9 @@ namespace RE
 		public BSISoundDescriptor	// 20
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSSoundDescriptorForm;
+
+
 		enum { kTypeID = FormType::SoundRecord };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_IPackageData
+
 
 namespace RE
 {
@@ -11,6 +13,9 @@ namespace RE
 	class IPackageData
 	{
 	public:
+		inline static const void* RTTI = RTTI_IPackageData;
+
+
 		virtual ~IPackageData();										// 00
 
 		// add

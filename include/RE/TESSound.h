@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESSound
+
 #include "RE/FormTypes.h"  // FormType, BGSSoundDescriptorForm
 #include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
 
@@ -9,6 +11,9 @@ namespace RE
 	class TESSound : public TESBoundAnimObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESSound;
+
+
 		enum { kTypeID = FormType::Sound };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSSceneAction
+
 
 namespace RE
 {
@@ -10,6 +12,9 @@ namespace RE
 	class BGSSceneAction
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSSceneAction;
+
+
 		enum class Type : UInt32
 		{
 			kDialogue = 0,

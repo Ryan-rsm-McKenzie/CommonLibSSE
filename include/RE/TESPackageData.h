@@ -1,11 +1,16 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESPackageData
+
 
 namespace RE
 {
 	class TESPackageData
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESPackageData;
+
+
 		virtual ~TESPackageData();		// 00
 
 		// add

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSPackageDataBool
+
 #include "RE/BGSNamedPackageData.h"  // BGSNamedPackageData
 #include "RE/IPackageData.h"  // IPackageData
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSPackageDataBool : public BGSNamedPackageData<IPackageData>
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSPackageDataBool;
+
+
 		virtual ~BGSPackageDataBool();										// 00
 
 		// override (BGSNamedPackageData<IPackageData>)

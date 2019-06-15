@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSListForm
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -10,6 +12,9 @@ namespace RE
 	class BGSListForm : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSListForm;
+
+
 		enum { kTypeID = FormType::FormList };
 
 

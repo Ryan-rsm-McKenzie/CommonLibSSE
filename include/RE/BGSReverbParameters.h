@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSReverbParameters
+
 #include "RE/BSIReverbType.h"  // BSIReverbType
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -12,6 +14,9 @@ namespace RE
 		public BSIReverbType	// 20
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSReverbParameters;
+
+
 		enum { kTypeID = FormType::ReverbParam };
 
 
