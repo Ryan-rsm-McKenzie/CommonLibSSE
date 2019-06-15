@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESObjectBOOK
+
 #include <type_traits>  // underlying_type_t
 
 #include "RE/ActorValues.h"  // ActorValue
@@ -33,6 +35,9 @@ namespace RE
 		public BGSKeywordForm				// F8
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESObjectBOOK;
+
+
 		enum { kTypeID = FormType::Book };
 
 

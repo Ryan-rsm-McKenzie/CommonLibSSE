@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESRegionDataWeather
+
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/TESRegionData.h"  // TESRegionData
 
@@ -12,6 +14,9 @@ namespace RE
 	class TESRegionDataWeather : public TESRegionData
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESRegionDataWeather;
+
+
 		enum { kTypeID = Type::kWeather };
 
 

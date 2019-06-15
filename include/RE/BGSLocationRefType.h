@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSLocationRefType
+
 #include "RE/BGSKeyword.h"  // BGSKeyword
 #include "RE/FormTypes.h"  // FormType
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSLocationRefType : public BGSKeyword
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSLocationRefType;
+
+
 		enum { kTypeID = FormType::LocationRefType };
 
 

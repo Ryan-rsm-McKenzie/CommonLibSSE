@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESLoadScreen
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/Condition.h"  // Condition
 #include "RE/FormTypes.h"  // FormType
@@ -12,6 +14,9 @@ namespace RE
 	class TESLoadScreen : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESLoadScreen;
+
+
 		enum { kTypeID = FormType::LoadScreen };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSMovableStatic
+
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESFullName.h"  // TESFullName
@@ -14,6 +16,9 @@ namespace RE
 		public TESObjectSTAT				// 20
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSMovableStatic;
+
+
 		enum { kTypeID = FormType::MovableStatic };
 
 

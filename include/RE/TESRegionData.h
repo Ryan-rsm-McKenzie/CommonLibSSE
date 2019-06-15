@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESRegionData
+
 
 namespace RE
 {
@@ -9,6 +11,9 @@ namespace RE
 	class TESRegionData
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESRegionData;
+
+
 		enum class Type : UInt16
 		{
 			kObjects = 2,

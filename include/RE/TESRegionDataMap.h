@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESRegionDataMap
+
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/TESRegionData.h"  // TESRegionData
 
@@ -9,6 +11,9 @@ namespace RE
 	class TESRegionDataMap : public TESRegionData
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESRegionDataMap;
+
+
 		enum { kTypeID = Type::kMap };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSConstructibleObject
+
 #include "RE/Condition.h"  // Condition
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESContainer.h"  // TESForm
@@ -11,6 +13,9 @@ namespace RE
 	class BGSConstructibleObject : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSConstructibleObject;
+
+
 		enum { kTypeID = FormType::ConstructibleObject };
 
 

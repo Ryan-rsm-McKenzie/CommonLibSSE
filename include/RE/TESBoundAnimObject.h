@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESBoundAnimObject
+
 #include "RE/TESBoundObject.h"  // TESBoundObject
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class TESBoundAnimObject : public TESBoundObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESBoundAnimObject;
+
+
 		virtual ~TESBoundAnimObject();					// 00
 
 		// override (TESBoundObject)

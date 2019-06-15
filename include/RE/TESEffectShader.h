@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESEffectShader
+
 #include "RE/Color.h"  // Color
 #include "RE/FormTypes.h"  // FormType, BGSSoundDescriptorForm
 #include "RE/TESForm.h"  // TESForm
@@ -11,6 +13,9 @@ namespace RE
 	class TESEffectShader : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESEffectShader;
+
+
 		enum { kTypeID = FormType::EffectShader };
 
 

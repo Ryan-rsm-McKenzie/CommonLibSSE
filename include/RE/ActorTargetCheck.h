@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ActorTargetCheck
+
 #include "RE/GetActorsFilter.h"  // GetActorsFilter
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class ActorTargetCheck : public ProcessLists::GetActorsFilter
 	{
 	public:
+		inline static const void* RTTI = RTTI_ActorTargetCheck;
+
+
 		virtual ~ActorTargetCheck();		// 00
 
 		// override (GetActorsFilter)

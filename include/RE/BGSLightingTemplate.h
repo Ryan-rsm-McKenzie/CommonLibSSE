@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSLightingTemplate
+
 #include "RE/Color.h"  // Color
 #include "RE/DirectionalAmbientLightingColor.h"  // DirectionalAmbientLightingColor
 #include "RE/FormTypes.h"  // FormType
@@ -11,6 +13,9 @@ namespace RE
 	class BGSLightingTemplate : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSLightingTemplate;
+
+
 		enum { kTypeID = FormType::LightingMaster };
 
 

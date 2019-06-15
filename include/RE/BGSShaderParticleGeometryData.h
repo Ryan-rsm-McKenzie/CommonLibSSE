@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSShaderParticleGeometryData
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -11,12 +13,15 @@ namespace RE
 	class BGSShaderParticleGeometryData : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSShaderParticleGeometryData;
+
+
 		enum { kTypeID = FormType::ShaderParticleGeometryData };
 
 
 		struct Entries
 		{
-			enum
+			enum Entry : UInt32
 			{
 				kGravityVelocity = 0,
 				kRotationVelocity,
@@ -34,16 +39,18 @@ namespace RE
 				kTotal
 			};
 		};
+		using Entry = Entries::Entry;
 
 
 		struct Types
 		{
-			enum
+			enum Type : UInt32
 			{
 				kRain = 0,
 				kSnow = 1
 			};
 		};
+		using Type = Types::Type;
 
 
 		struct RecordFlags
@@ -73,7 +80,7 @@ namespace RE
 		virtual void	InitItem() override;				// 13
 
 
-		BSTArray<Entry>	data;				// 20 - DATA - size == Entries::kTotal
+		BSTArray<Entry>	data;				// 20 - DATA - size == Entry::kTotal
 		TESTexture		particleTexture;	// 38 - ICON
 	};
 	STATIC_ASSERT(sizeof(BGSShaderParticleGeometryData) == 0x48);

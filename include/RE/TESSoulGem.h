@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESSoulGem
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/SoulLevels.h"  // SoulLevel
 #include "RE/TESObjectMISC.h"  // TESObjectMISC
@@ -10,6 +12,9 @@ namespace RE
 	class TESSoulGem : public TESObjectMISC
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESSoulGem;
+
+
 		enum { kTypeID = FormType::SoulGem };
 
 

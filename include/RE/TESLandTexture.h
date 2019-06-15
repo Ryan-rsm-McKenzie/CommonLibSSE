@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESLandTexture
+
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/FormTypes.h"  // FormType, BGSTextureSet, BGSMaterialType, TESGrass
 #include "RE/TESForm.h"  // TESForm
@@ -10,6 +12,9 @@ namespace RE
 	class TESLandTexture : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESLandTexture;
+
+
 		enum { kTypeID = FormType::LandTexture };
 
 

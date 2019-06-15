@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESObjectMISC
+
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
 #include "RE/BGSMessageIcon.h"  // BGSMessageIcon
@@ -28,6 +30,9 @@ namespace RE
 		public BGSKeywordForm				// 0E8
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESObjectMISC;
+
+
 		enum { kTypeID = FormType::Misc };
 
 

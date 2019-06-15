@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_Actor
+
 #include <minwinbase.h>  // CRITICAL_SECTION
 
 #include "RE/ActiveEffect.h"  // ActiveEffect
@@ -42,6 +44,9 @@ namespace RE
 		using EntryPoint = BGSEntryPointPerkEntry::EntryPoint;
 
 	public:
+		inline static const void* RTTI = RTTI_Actor;
+
+
 		enum { kTypeID = FormType::ActorCharacter };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSApparatus
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESDescription.h"  // TESDescription
 #include "RE/TESObjectMISC.h"  // TESObjectMISC
@@ -14,6 +16,9 @@ namespace RE
 		public TESDescription	// 110
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSApparatus;
+
+
 		enum { kTypeID = FormType::Apparatus };
 
 

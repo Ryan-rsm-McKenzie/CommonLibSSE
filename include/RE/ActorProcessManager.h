@@ -15,18 +15,16 @@ namespace RE
 	class ActorProcessManager
 	{
 	public:
-		typedef BSTArray<TESForm*> UnkFormArray;
-
-
 		struct Hands
 		{
-			enum
+			enum Hand : UInt32
 			{
 				kLeft,
 				kRight,
 				kTotal
 			};
 		};
+		using Hand = Hands::Hand;
 
 
 		enum class Flag : UInt8
@@ -270,9 +268,9 @@ namespace RE
 		float					timeOfDeath;						// 094 - GetTimeDead = (GameDaysPassed*24) - timeOfDeath
 		float					unk098;								// 098 - related with above
 		UInt32					pad09C;								// 09C
-		UnkFormArray			forms;								// 0A0  seen containing [left hand, equip slot, right hand, equip slot, right hand, equip slot)
+		BSTArray<TESForm*>		forms;								// 0A0  seen containing [left hand, equip slot, right hand, equip slot, right hand, equip slot)
 		UInt64					unk0B8[7];							// 0B8 2nd slot points back to this adress
-		TESForm*				equippedObjects[Hands::kTotal];		// 0F0
+		TESForm*				equippedObjects[Hand::kTotal];		// 0F0
 		UInt64					unk100;								// 100
 		UInt64					unk108;								// 108
 		UInt64					unk110;								// 110

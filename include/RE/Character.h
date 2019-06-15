@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_Character
+
 #include "RE/Actor.h"  // Actor
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class Character : public Actor
 	{
 	public:
+		inline static const void* RTTI = RTTI_Character;
+
+
 		enum { kTypeID = FormType::ActorCharacter };
 
 

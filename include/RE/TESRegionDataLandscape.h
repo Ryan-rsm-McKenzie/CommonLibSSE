@@ -2,6 +2,8 @@
 
 #undef LoadIcon
 
+#include "skse64/GameRTTI.h"  // RTTI_TESRegionDataLandscape
+
 #include "RE/TESRegionData.h"  // TESRegionData
 
 
@@ -15,6 +17,9 @@ namespace RE
 	class TESRegionDataLandscape : public TESRegionData
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESRegionDataLandscape;
+
+
 		enum { kTypeID = Type::kLand };
 
 

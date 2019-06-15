@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESObjectLIGH
+
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/BGSEquipType.h"  // BGSEquipType
 #include "RE/BGSMessageIcon.h"  // BGSMessageIcon
@@ -27,6 +29,9 @@ namespace RE
 		public BGSEquipType					// 0D0
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESObjectLIGH;
+
+
 		enum { kTypeID = FormType::Light };
 
 

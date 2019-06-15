@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSTalkingActivator
+
 #include "RE/FormTypes.h"  // FormType, BGSVoiceType
 #include "RE/TESObjectACTI.h"  // TESObjectACTI
 
@@ -9,6 +11,9 @@ namespace RE
 	class BGSTalkingActivator : public TESObjectACTI
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSTalkingActivator;
+
+
 		enum { kTypeID = FormType::TalkingActivator };
 
 

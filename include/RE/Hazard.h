@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_Hazard
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
 
@@ -9,6 +11,9 @@ namespace RE
 	class Hazard : public TESObjectREFR
 	{
 	public:
+		inline static const void* RTTI = RTTI_Hazard;
+
+
 		enum { kTypeID = FormType::PlacedHazard };
 
 

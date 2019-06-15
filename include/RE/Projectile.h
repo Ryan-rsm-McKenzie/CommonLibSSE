@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_Projectile
+
 #include "RE/BSSpinLock.h"  // BSSpinLock
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
 
@@ -13,6 +15,9 @@ namespace RE
 	class Projectile : public TESObjectREFR
 	{
 	public:
+		inline static const void* RTTI = RTTI_Projectile;
+
+
 		virtual ~Projectile();													// 00
 
 		// override (TESObjectREFR)

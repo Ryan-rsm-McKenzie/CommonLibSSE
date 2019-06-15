@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESObjectARMA
+
 #include "RE/BGSBipedObjectForm.h"  // BGSBipedObjectForm
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FormTypes.h"  // FormType
@@ -16,6 +18,9 @@ namespace RE
 		public BGSBipedObjectForm	// 30
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESObjectARMA;
+
+
 		enum { kTypeID = FormType::Armature };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESObjectANIO
+
 #include "RE/BSString.h"  // BSString
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -13,6 +15,9 @@ namespace RE
 		public TESModelTextureSwap	// 20
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESObjectANIO;
+
+
 		enum { kTypeID = FormType::AnimatedObject };
 
 

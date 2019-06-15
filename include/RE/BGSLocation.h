@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSLocation
+
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTHashMap.h"  // BSTHashMap
@@ -16,6 +18,9 @@ namespace RE
 		public BGSKeywordForm	// 30
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSLocation;
+
+
 		enum { kTypeID = FormType::Location };
 
 
@@ -25,7 +30,7 @@ namespace RE
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12,
-				kCleared = (UInt32)(1 << 31)
+				kCleared = static_cast<RecordFlag>(1 << 31)
 			};
 		};
 

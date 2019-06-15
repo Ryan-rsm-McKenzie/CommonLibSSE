@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSHazard
+
 #include "RE/BGSPreloadable.h"  // BGSPreloadable
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESBoundObject.h"  // TESBoundObject
@@ -18,6 +20,9 @@ namespace RE
 		public TESImageSpaceModifiableForm	// 70
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSHazard;
+
+
 		enum { kTypeID = FormType::Hazard };
 
 

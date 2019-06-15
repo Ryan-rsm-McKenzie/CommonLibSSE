@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESObjectACTI
+
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/BGSKeywordForm.h"  // BGSKeywordForm
 #include "RE/BGSOpenCloseForm.h"  // BGSOpenCloseForm
@@ -22,6 +24,9 @@ namespace RE
 		public BGSKeywordForm				// 90
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESObjectACTI;
+
+
 		enum { kTypeID = FormType::Activator };
 
 

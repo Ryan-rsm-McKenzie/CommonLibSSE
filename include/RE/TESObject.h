@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESObject
+
 #include "RE/TESForm.h"  // TESForm
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class TESObject : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESObject;
+
+
 		virtual ~TESObject();						// 00
 
 		// override (TESForm)

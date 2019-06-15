@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESRegionDataSound
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/TESRegionData.h"  // TESRegionData
 
@@ -14,6 +16,9 @@ namespace RE
 	class TESRegionDataSound : public TESRegionData
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESRegionDataSound;
+
+
 		enum { kTypeID = Type::kSound };
 
 

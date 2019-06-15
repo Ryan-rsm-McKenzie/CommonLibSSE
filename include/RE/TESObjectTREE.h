@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESObjectTREE
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESBoundObject.h"  // TESBoundObject
 #include "RE/TESFullName.h"  // TESFullName
@@ -16,6 +18,9 @@ namespace RE
 		public TESProduceForm	// 68
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESObjectTREE;
+
+
 		enum { kTypeID = FormType::Tree };
 
 

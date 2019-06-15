@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESWeather
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/Color.h"  // Color
@@ -18,13 +20,13 @@ namespace RE
 	class TESWeather : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESWeather;
+
+
 		enum { kTypeID = FormType::Weather };
 
 
-		enum
-		{
-			kTotalLayers = 32
-		};
+		enum { kTotalLayers = 32 };
 
 
 		struct TimePeriods

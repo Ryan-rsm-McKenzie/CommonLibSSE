@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESObjectCONT
+
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/BGSOpenCloseForm.h"  // BGSOpenCloseForm
 #include "RE/FormTypes.h"  // FormType, BGSSoundDescriptorForm
@@ -22,6 +24,9 @@ namespace RE
 		public BGSOpenCloseForm				// B0
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESObjectCONT;
+
+
 		enum { kTypeID = FormType::Container };
 
 

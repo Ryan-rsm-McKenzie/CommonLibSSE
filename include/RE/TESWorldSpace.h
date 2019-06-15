@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESWorldSpace
+
 #include "RE/BSString.h"  // BSString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTHashMap.h"  // BSTHashMap
@@ -20,6 +22,9 @@ namespace RE
 		public TESModel		// 030
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESWorldSpace;
+
+
 		enum { kTypeID = FormType::WorldSpace };
 
 

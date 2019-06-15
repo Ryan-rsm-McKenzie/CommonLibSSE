@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESRegionDataManager
+
 
 namespace RE
 {
@@ -10,6 +12,9 @@ namespace RE
 	class TESRegionDataManager
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESRegionDataManager;
+
+
 		virtual ~TESRegionDataManager();									// 00
 
 		// add

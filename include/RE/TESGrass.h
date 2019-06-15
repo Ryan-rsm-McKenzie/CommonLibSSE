@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESGrass
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESBoundObject.h"  // TESBoundObject
 #include "RE/TESModel.h"  // TESModel
@@ -12,6 +14,9 @@ namespace RE
 		public TESModel			// 30
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESGrass;
+
+
 		enum { kTypeID = FormType::Grass };
 
 

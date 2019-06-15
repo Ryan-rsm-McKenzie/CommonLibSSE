@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESWaterForm
+
 #include "RE/Color.h"  // Color
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESAttackDamageForm.h"  // TESAttackDamageForm
@@ -16,6 +18,9 @@ namespace RE
 		public TESAttackDamageForm	// 030
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESWaterForm;
+
+
 		enum { kTypeID = FormType::Water };
 
 

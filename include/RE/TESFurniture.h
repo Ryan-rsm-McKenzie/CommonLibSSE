@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESFurniture
+
 #include "RE/ActorValues.h"  // ActorValue8
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FormTypes.h"  // FormType
@@ -11,6 +13,9 @@ namespace RE
 	class TESFurniture : public TESObjectACTI
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESFurniture;
+
+
 		enum { kTypeID = FormType::Furniture };
 
 

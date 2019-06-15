@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESObjectWEAP
+
 #include "RE/ActorValues.h"  // ActorValue, ActorValue8
 #include "RE/BGSBlockBashData.h"  // BGSBlockBashData
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
@@ -41,6 +43,9 @@ namespace RE
 		public TESDescription				// 158
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESObjectWEAP;
+
+
 		enum { kTypeID = FormType::Weapon };
 
 

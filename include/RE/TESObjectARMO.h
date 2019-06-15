@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESObjectARMO
+
 #include "RE/BGSBipedObjectForm.h"  // BGSBipedObjectForm
 #include "RE/BGSBlockBashData.h"  // BGSBlockBashData
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
@@ -36,6 +38,9 @@ namespace RE
 		public TESDescription				// 1F0
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESObjectARMO;
+
+
 		enum { kTypeID = FormType::Armor };
 
 

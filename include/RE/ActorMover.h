@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ActorMover
+
 #include "RE/FormTypes.h"  // Actor
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class ActorMover
 	{
 	public:
+		inline static const void* RTTI = RTTI_ActorMover;
+
+
 		virtual ~ActorMover();			// 00
 
 		// add

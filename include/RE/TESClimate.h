@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESClimate
+
 #include <ctime>  // tm
 
 #include "RE/BSTList.h"  // BSSimpleList
@@ -15,6 +17,9 @@ namespace RE
 	class TESClimate : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESClimate;
+
+
 		enum { kTypeID = FormType::Climate };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESLevSpell
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESBoundObject.h"  // TESBoundObject
 #include "RE/TESLeveledList.h"  // TESLeveledList
@@ -12,6 +14,9 @@ namespace RE
 		public TESLeveledList	// 30
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESLevSpell;
+
+
 		enum { kTypeID = FormType::LeveledSpell };
 
 

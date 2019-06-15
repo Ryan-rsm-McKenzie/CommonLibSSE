@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESRegion
+
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -13,6 +15,9 @@ namespace RE
 	class TESRegion : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESRegion;
+
+
 		enum { kTypeID = FormType::Region };
 
 

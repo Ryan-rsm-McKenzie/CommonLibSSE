@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ActorKnowledge
+
 #include "RE/NiRefObject.h"  // NiRefObject
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class ActorKnowledge : public NiRefObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_ActorKnowledge;
+
+
 		virtual ~ActorKnowledge();	// 00
 
 		SInt32 GetDetectionState();

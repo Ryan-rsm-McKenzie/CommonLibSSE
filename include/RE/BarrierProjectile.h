@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BarrierProjectile
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/Projectile.h"  // Projectile
 
@@ -9,6 +11,9 @@ namespace RE
 	class BarrierProjectile : public Projectile
 	{
 	public:
+		inline static const void* RTTI = RTTI_BarrierProjectile;
+
+
 		enum { kTypeID = FormType::ProjectileBarrier };
 
 

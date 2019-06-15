@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_PlayerCharacter
+
 #include "RE/BGSActorCellEvent.h"  // BGSActorCellEvent
 #include "RE/BGSActorDeathEvent.h"  // BGSActorDeathEvent
 #include "RE/BGSPerkRankArray.h"  // BGSPerkRankArray
@@ -39,6 +41,9 @@ namespace RE
 		public BSTEventSource<PositionPlayerEvent>	// 380
 	{
 	public:
+		inline static const void* RTTI = RTTI_PlayerCharacter;
+
+
 		enum { kTypeID = FormType::ActorCharacter };
 
 

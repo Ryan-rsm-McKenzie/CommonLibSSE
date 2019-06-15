@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSExplosion
+
 #include "RE/BGSPreloadable.h"  // BGSPreloadable
 #include "RE/FormTypes.h"  // FormType
 #include "RE/SoundLevels.h"  // SoundLevel
@@ -21,6 +23,9 @@ namespace RE
 		public TESImageSpaceModifiableForm	// 88
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSExplosion;
+
+
 		enum { kTypeID = FormType::Explosion };
 
 

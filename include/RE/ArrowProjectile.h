@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ArrowProjectile
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/MissileProjectile.h"  // MissileProjectile
 
@@ -9,6 +11,9 @@ namespace RE
 	class ArrowProjectile : public MissileProjectile
 	{
 	public:
+		inline static const void* RTTI = RTTI_ArrowProjectile;
+
+
 		enum { kTypeID = FormType::ProjectileArrow };
 
 

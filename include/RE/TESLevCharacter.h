@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESLevCharacter
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
 #include "RE/TESLeveledList.h"  // TESLeveledList
@@ -14,6 +16,9 @@ namespace RE
 		public TESModelTextureSwap	// 58
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESLevCharacter;
+
+
 		enum { kTypeID = FormType::LeveledNPC };
 
 

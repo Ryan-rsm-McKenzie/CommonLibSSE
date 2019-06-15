@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESRegionList
+
 #include "RE/BSTList.h"  // BSSimpleList
 
 
@@ -11,6 +13,9 @@ namespace RE
 	class TESRegionList : public BSSimpleList<TESRegion*>
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESRegionList;
+
+
 		virtual ~TESRegionList();	// 00
 
 

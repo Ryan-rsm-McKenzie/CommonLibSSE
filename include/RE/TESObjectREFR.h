@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESObjectREFR
+
 #include "RE/BaseExtraList.h"  // BaseExtraList
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSHandleRefObject.h"  // BSHandleRefObject
@@ -42,6 +44,9 @@ namespace RE
 		public IAnimationGraphManagerHolder			// 38
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESObjectREFR;
+
+
 		enum { kTypeID = FormType::Reference };
 
 

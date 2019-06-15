@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSProjectile
+
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/BGSPreloadable.h"  // BGSPreloadable
 #include "RE/FormTypes.h"  // FormType
@@ -19,6 +21,9 @@ namespace RE
 		public BGSDestructibleObjectForm	// 070
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSProjectile;
+
+
 		enum { kTypeID = FormType::Projectile };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_ActorState
+
 #include "RE/IMovementState.h"  // IMovementState
 
 
@@ -8,6 +10,9 @@ namespace RE
 	class ActorState : public IMovementState
 	{
 	public:
+		inline static const void* RTTI = RTTI_ActorState;
+
+
 		enum class PrimaryAnimState : UInt8
 		{
 			kSit1 = 1,
@@ -156,11 +161,21 @@ namespace RE
 		};
 
 
-		virtual ~ActorState();			// 00
+		virtual ~ActorState();					// 00
+
+		// override (IMovementState)
+		virtual void	Unk_01(void) override;	// 01
+		virtual void	Unk_02(void) override;	// 02
+		virtual void	Unk_03(void) override;	// 03
+		virtual void	Unk_04(void) override;	// 04
+		virtual void	Unk_05(void) override;	// 05
+		virtual void	Unk_06(void) override;	// 06
+		virtual void	Unk_07(void) override;	// 07
+		virtual void	Unk_08(void) override;	// 08
 
 		// add
-		virtual void	Unk_14(void);	// 14
-		virtual void	Unk_15(void);	// 15
+		virtual void	Unk_14(void);			// 14
+		virtual void	Unk_15(void);			// 15
 
 		SitState	GetSitState() const;
 		SleepState	GetSleepState() const;

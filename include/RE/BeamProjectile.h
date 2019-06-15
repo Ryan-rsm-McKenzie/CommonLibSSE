@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BeamProjectile
+
 #include "RE/BSTEvent.h"  // BSTEventSource, BSTEventSink
 #include "RE/Projectile.h"  // Projectile
 
@@ -16,6 +18,9 @@ namespace RE
 		public BSTEventSink<BSProceduralGeomEvent>			// 1D8
 	{
 	public:
+		inline static const void* RTTI = RTTI_BeamProjectile;
+
+
 		enum { kTypeID = FormType::ProjectileBeam };
 
 

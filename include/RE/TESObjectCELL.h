@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESObjectCELL
+
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/BSSpinLock.h"  // BSSpinLock
 #include "RE/BSTArray.h"  // BSTArray
@@ -22,6 +24,9 @@ namespace RE
 		public TESFullName	// 020
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESObjectCELL;
+
+
 		enum { kTypeID = FormType::Cell };
 
 

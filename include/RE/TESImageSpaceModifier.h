@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESImageSpaceModifier
+
 #include "RE/BSString.h"  // BSString
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
@@ -14,6 +16,9 @@ namespace RE
 	class TESImageSpaceModifier : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESImageSpaceModifier;
+
+
 		enum { kTypeID = FormType::ImageAdapter };
 
 

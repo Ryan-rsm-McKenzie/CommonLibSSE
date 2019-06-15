@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSStaticCollection
+
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESBoundObject.h"  // TESBoundObject
 #include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
@@ -12,6 +14,9 @@ namespace RE
 		public TESModelTextureSwap	// 30
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSStaticCollection;
+
+
 		enum { kTypeID = FormType::StaticCollection };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BGSOutfit
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/FormTypes.h"  // FormType, TESObjectARMO
 #include "RE/TESForm.h"  // TESForm
@@ -10,6 +12,9 @@ namespace RE
 	class BGSOutfit : public TESForm
 	{
 	public:
+		inline static const void* RTTI = RTTI_BGSOutfit;
+
+
 		enum { kTypeID = FormType::Outfit };
 
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TESObjectDOOR
+
 #include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
 #include "RE/BGSOpenCloseForm.h"  // BGSOpenCloseForm
 #include "RE/FormTypes.h"  // FormType
@@ -18,6 +20,9 @@ namespace RE
 		public BGSOpenCloseForm				// 88
 	{
 	public:
+		inline static const void* RTTI = RTTI_TESObjectDOOR;
+
+
 		enum { kTypeID = FormType::Door };
 
 
