@@ -39,7 +39,6 @@ namespace RE
 				kTotal
 			};
 		};
-		using Entry = Entries::Entry;
 
 
 		struct Types
@@ -50,7 +49,6 @@ namespace RE
 				kSnow = 1
 			};
 		};
-		using Type = Types::Type;
 
 
 		struct RecordFlags
@@ -80,7 +78,7 @@ namespace RE
 		virtual void	InitItem() override;				// 13
 
 
-		BSTArray<Entry>	data;				// 20 - DATA - size == Entry::kTotal
+		BSTArray<Entry>	data;				// 20 - DATA - size == Entries::kTotal
 		TESTexture		particleTexture;	// 38 - ICON
 	};
 	STATIC_ASSERT(sizeof(BGSShaderParticleGeometryData) == 0x48);

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_LoggingDisabler
-
 #include "RE/GFxLog.h"  // GFxLog
 
 
@@ -10,9 +8,6 @@ namespace RE
 	class LoggingDisabler : public GFxLog
 	{
 	public:
-		inline static const void* RTTI = RTTI_LoggingDisabler;
-
-
 		constexpr LoggingDisabler() : GFxLog() {}
 		virtual ~LoggingDisabler();																					// 00
 

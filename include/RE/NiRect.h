@@ -7,7 +7,7 @@ namespace RE
 	class NiRect
 	{
 	public:
-		NiRect(T a_left = T(0), T a_right = T(0), Ty a_top = T(0), Ty a_bottom = T(0)) :
+		NiRect(T a_left = T(0), T a_right = T(0), T a_top = T(0), T a_bottom = T(0)) :
 			left(a_left),
 			right(a_right),
 			top(a_top),

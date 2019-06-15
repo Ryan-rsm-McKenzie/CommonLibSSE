@@ -13,12 +13,15 @@ namespace RE
 		inline static const void* RTTI = RTTI_ThumbstickEvent;
 
 
-		enum class InputType : UInt32
+		struct InputTypes
 		{
-			kLeftThumbstick = 0x0B,
-			kRightThumbstick = 0x0C
+			enum InputType : UInt32
+			{
+				kLeftThumbstick = 0x0B,
+				kRightThumbstick = 0x0C
+			};
 		};
-
+		using InputType = InputTypes::InputType;
 
 
 		bool	IsLeft() const;
