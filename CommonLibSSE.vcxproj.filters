@@ -376,9 +376,6 @@
     <Filter Include="src\RE\Skyrim\BSScript">
       <UniqueIdentifier>{be6ad1e2-adcc-41d6-b1f0-d855748699e9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\RE\Skyrim\BSScript\NF_util">
-      <UniqueIdentifier>{94c0cc03-4d26-4432-9338-b1f5449d4b93}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\RE\Skyrim\BSScript\Internal">
       <UniqueIdentifier>{32138d8a-3f32-4aff-a5fb-806822ada7f9}</UniqueIdentifier>
     </Filter>
@@ -724,6 +721,18 @@
     <Filter Include="include\RE\Skyrim\BSScript\IMemoryPagePolicy">
       <UniqueIdentifier>{e611bc95-e095-40fd-af9d-b4346678d38b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\BSResource">
+      <UniqueIdentifier>{567d2997-7fa6-4237-8ff7-1c4c56b62739}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSScript\IFunctionArguments">
+      <UniqueIdentifier>{abdda457-6c9c-41f1-b77f-0999fd5f924d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSScript\IFunction">
+      <UniqueIdentifier>{7b9228d8-ed68-444f-aeb5-2148b665cfab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Skyrim\BSScript\IFunction\NF_util">
+      <UniqueIdentifier>{94c0cc03-4d26-4432-9338-b1f5449d4b93}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -797,9 +806,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\PlayerCamera.cpp">
       <Filter>src\RE\Skyrim\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Logging.cpp">
-      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraLock.cpp">
       <Filter>src\RE\Skyrim\ExtraData</Filter>
@@ -1126,12 +1132,9 @@
       <Filter>src\RE\Skyrim\BSCore</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\NativeFunctionBase.cpp">
-      <Filter>src\RE\Skyrim\BSScript\NF_util</Filter>
+      <Filter>src\RE\Skyrim\BSScript\IFunction\NF_util</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSScriptType.cpp">
-      <Filter>src\RE\Skyrim\BSScript</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\IFunction.cpp">
       <Filter>src\RE\Skyrim\BSScript</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSScriptClass.cpp">
@@ -1159,12 +1162,6 @@
       <Filter>src\RE\Skyrim\BSScript</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSScriptPackUnpack.cpp">
-      <Filter>src\RE\Skyrim\BSScript</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\IFunctionArguments.cpp">
-      <Filter>src\RE\Skyrim\BSScript</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\ZeroFunctionArguments.cpp">
       <Filter>src\RE\Skyrim\BSScript</Filter>
     </ClCompile>
     <ClCompile Include="src\SKSE\RegistrationSet.cpp">
@@ -1244,6 +1241,18 @@
     </ClCompile>
     <ClCompile Include="src\RE\Setting.cpp">
       <Filter>src\RE\Skyrim\BSMain\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SKSE\Logger.cpp">
+      <Filter>src\SKSE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\IFunctionArguments.cpp">
+      <Filter>src\RE\Skyrim\BSScript\IFunctionArguments</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\IFunction.cpp">
+      <Filter>src\RE\Skyrim\BSScript\IFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ZeroFunctionArguments.cpp">
+      <Filter>src\RE\Skyrim\BSScript\IFunctionArguments</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1387,9 +1396,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\PlayerCamera.h">
       <Filter>include\RE\Skyrim\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Logging.h">
-      <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\CommandTable.h">
       <Filter>include\RE\Skyrim\Obscript</Filter>
@@ -3469,6 +3475,45 @@
     </ClInclude>
     <ClInclude Include="include\RE\NiFrustum.h">
       <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceLocation.h">
+      <Filter>include\RE\Skyrim\BSResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceLooseFileLocation.h">
+      <Filter>include\RE\Skyrim\BSResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceLocationTraverser.h">
+      <Filter>include\RE\Skyrim\BSResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceRegisterPrefix.h">
+      <Filter>include\RE\Skyrim\BSResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceGlobalLocations.h">
+      <Filter>include\RE\Skyrim\BSResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceGlobalPaths.h">
+      <Filter>include\RE\Skyrim\BSResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\Logger.h">
+      <Filter>include\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Atomic.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceLocationTree.h">
+      <Filter>include\RE\Skyrim\BSResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceLooseFileStream.h">
+      <Filter>include\RE\Skyrim\BSResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceStream.h">
+      <Filter>include\RE\Skyrim\BSResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceStreamBase.h">
+      <Filter>include\RE\Skyrim\BSResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceLooseFileStreamBase.h">
+      <Filter>include\RE\Skyrim\BSResource</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

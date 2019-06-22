@@ -61,7 +61,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ForcedIncludeFiles>common/IPrefix.h;Logging.h;ForceInclude.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>ForceInclude.h;SKSE/Logger.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ExceptionHandling>Sync</ExceptionHandling>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -76,7 +76,7 @@
       <DisableSpecificWarnings>4201;4100;4189;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <TreatSpecificWarningsAsErrors>%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <UndefinePreprocessorDefinitions>min;max;%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
@@ -114,7 +114,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ForcedIncludeFiles>common/IPrefix.h;Logging.h;ForceInclude.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>ForceInclude.h;SKSE/Logger.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <OmitFramePointers>
       </OmitFramePointers>
@@ -128,7 +128,7 @@
       <EnableModules>false</EnableModules>
       <TreatSpecificWarningsAsErrors>%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <UndefinePreprocessorDefinitions>min;max;%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
       <DisableSpecificWarnings>4201;4100;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ConformanceMode>false</ConformanceMode>
     </ClCompile>
@@ -157,18 +157,11 @@
     <None Include="exports.def" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\common\common_vc14.vcxproj">
-      <Project>{472e19ab-def0-42df-819b-18722e8dc822}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\skse64\skse64.vcxproj">
       <Project>{7028b79c-06e3-4d9a-b38c-1dc3680b1bdb}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\skse64_common\skse64_common.vcxproj">
-      <Project>{5fd1c08d-db80-480c-a1c6-f0920005cd13}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Logging.cpp" />
     <ClCompile Include="src\RE\ActiveEffect.cpp" />
     <ClCompile Include="src\RE\Actor.cpp" />
     <ClCompile Include="src\RE\ActorKnowledge.cpp" />
@@ -340,11 +333,13 @@
     <ClCompile Include="src\RE\ZeroFunctionArguments.cpp" />
     <ClCompile Include="src\SKSE\API.cpp" />
     <ClCompile Include="src\SKSE\Interfaces.cpp" />
+    <ClCompile Include="src\SKSE\Logger.cpp" />
     <ClCompile Include="src\SKSE\RegistrationSet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ForceInclude.h" />
     <ClInclude Include="include\function_ref.h" />
+    <ClInclude Include="include\Atomic.h" />
     <ClInclude Include="include\REL\Relocation.h" />
     <ClInclude Include="include\RE\AbsorbEffect.h" />
     <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h" />
@@ -426,7 +421,6 @@
     <ClInclude Include="include\RE\BGSSceneActionPackage.h" />
     <ClInclude Include="include\RE\BGSSceneActionTimer.h" />
     <ClInclude Include="include\RE\BGSShaderParticleGeometryData.h" />
-    <ClInclude Include="include\Logging.h" />
     <ClInclude Include="include\RE\ActivateHandler.h" />
     <ClInclude Include="include\RE\ActiveEffect.h" />
     <ClInclude Include="include\RE\ActorSpeedChannel.h" />
@@ -532,7 +526,16 @@
     <ClInclude Include="include\RE\BSPrecomputedNavmeshInfoPathMap.h" />
     <ClInclude Include="include\RE\BSReadWriteLock.h" />
     <ClInclude Include="include\RE\BSReloadShaderI.h" />
+    <ClInclude Include="include\RE\BSResourceGlobalLocations.h" />
+    <ClInclude Include="include\RE\BSResourceGlobalPaths.h" />
+    <ClInclude Include="include\RE\BSResourceLocationTraverser.h" />
+    <ClInclude Include="include\RE\BSResourceLocationTree.h" />
+    <ClInclude Include="include\RE\BSResourceLooseFileStream.h" />
+    <ClInclude Include="include\RE\BSResourceLooseFileStreamBase.h" />
     <ClInclude Include="include\RE\BSResourceNiBinaryStream.h" />
+    <ClInclude Include="include\RE\BSResourceRegisterPrefix.h" />
+    <ClInclude Include="include\RE\BSResourceStream.h" />
+    <ClInclude Include="include\RE\BSResourceStreamBase.h" />
     <ClInclude Include="include\RE\BSSaveDataSystemUtility.h" />
     <ClInclude Include="include\RE\BSScaleformTranslator.h" />
     <ClInclude Include="include\RE\BSScriptArray.h" />
@@ -828,9 +831,11 @@
     <ClInclude Include="include\RE\LinkerProcessor.h" />
     <ClInclude Include="include\RE\LocalMapCamera.h" />
     <ClInclude Include="include\RE\LocalMapMenu.h" />
+    <ClInclude Include="include\RE\BSResourceLocation.h" />
     <ClInclude Include="include\RE\LogEvent.h" />
     <ClInclude Include="include\RE\Logger.h" />
     <ClInclude Include="include\RE\LoggingDisabler.h" />
+    <ClInclude Include="include\RE\BSResourceLooseFileLocation.h" />
     <ClInclude Include="include\RE\MapCamera.h" />
     <ClInclude Include="include\RE\MapInputHandler.h" />
     <ClInclude Include="include\RE\MapLookHandler.h" />
@@ -1080,6 +1085,7 @@
     <ClInclude Include="include\RE\ZeroFunctionArguments.h" />
     <ClInclude Include="include\SKSE\Events.h" />
     <ClInclude Include="include\SKSE\Interfaces.h" />
+    <ClInclude Include="include\SKSE\Logger.h" />
     <ClInclude Include="include\SKSE\RegistrationSet.h" />
     <ClInclude Include="include\SKSE\API.h" />
     <ClInclude Include="include\Util.h" />

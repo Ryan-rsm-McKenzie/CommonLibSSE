@@ -20,7 +20,7 @@ namespace RE
 {
 	namespace BSScript
 	{
-		namespace
+		namespace Impl
 		{
 			template <class F, class Tuple, std::size_t... I, class... Args>
 			inline constexpr decltype(auto) CallbackImpl(F&& a_func, Tuple&& a_tuple, std::index_sequence<I...>, Args&&... a_args)
@@ -112,24 +112,24 @@ namespace RE
 			}
 
 			UInt32 i = sizeof...(Args);
-			std::tuple<Args...> args = MakeTuple<Args...>(a_frame, offset);
+			std::tuple<Args...> args = Impl::MakeTuple<Args...>(a_frame, offset);
 			if constexpr (std::is_void<result_type>::value)
 			{
 				if constexpr (IS_LONG)
 				{
-					CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
+					Impl::CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
 					a_resultValue->SetNone();
 				} else {
-					CallBack(_callback, std::move(args), std::move(base));
+					Impl::CallBack(_callback, std::move(args), std::move(base));
 					a_resultValue->SetNone();
 				}
 			} else {
 				if constexpr (IS_LONG)
 				{
-					auto result = CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
+					auto result = Impl::CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
 					a_resultValue->Pack<result_type>(result);
 				} else {
-					auto result = CallBack(_callback, std::move(args), std::move(base));
+					auto result = Impl::CallBack(_callback, std::move(args), std::move(base));
 					a_resultValue->Pack<result_type>(result);
 				}
 			}
