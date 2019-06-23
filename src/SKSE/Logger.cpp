@@ -108,7 +108,7 @@ namespace SKSE
 
 	decltype(Logger::_file) Logger::_file;
 	decltype(Logger::_printLevel) Logger::_printLevel = Logger::Level::kMessage;
-	decltype(Logger::_flushLevel) Logger::_flushLevel = Logger::Level::kMessage;
+	decltype(Logger::_flushLevel) Logger::_flushLevel = Logger::Level::kError;
 
 
 	namespace Impl
