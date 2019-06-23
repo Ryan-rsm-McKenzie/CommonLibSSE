@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	class PositionPlayerEvent
+	struct PositionPlayerEvent
 	{
 	public:
 	};

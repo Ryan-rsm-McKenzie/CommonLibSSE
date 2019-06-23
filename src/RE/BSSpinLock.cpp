@@ -4,43 +4,43 @@
 namespace RE
 {
 	BSSpinLock::BSSpinLock() :
-		threadID(0),
-		lockCount(0)
+		_threadID(0),
+		_lockCount(0)
 	{}
 
 
-	void BSSpinLock::Lock()
+	void BSSpinLock::lock()
 	{
 		UInt32 myThreadID = GetCurrentThreadId();
 
 		_mm_lfence();
-		if (threadID == myThreadID) {
-			++lockCount;
+		if (_threadID == myThreadID) {
+			++_lockCount;
 		} else {
 			UInt32 spinCount = 0;
-			while (InterlockedCompareExchange(&threadID, myThreadID, 0)) {
+			while (InterlockedCompareExchange(&_threadID, myThreadID, 0)) {
 				Sleep(++spinCount > kFastSpinThreshold);
 			}
 
-			lockCount = 1;
+			_lockCount = 1;
 			_mm_sfence();
 		}
 	}
 
 
-	bool BSSpinLock::TryToLock()
+	bool BSSpinLock::try_lock()
 	{
 		UInt32 myThreadID = GetCurrentThreadId();
 
 		_mm_lfence();
-		if (threadID == myThreadID) {
-			++lockCount;
+		if (_threadID == myThreadID) {
+			++_lockCount;
 			return true;
 		} else {
-			if (InterlockedCompareExchange(&threadID, myThreadID, 0)) {
+			if (InterlockedCompareExchange(&_threadID, myThreadID, 0)) {
 				return false;
 			} else {
-				lockCount = 1;
+				_lockCount = 1;
 				_mm_sfence();
 				return true;
 			}
@@ -48,16 +48,10 @@ namespace RE
 	}
 
 
-	void BSSpinLock::Unlock()
+	void BSSpinLock::unlock()
 	{
-		if (--lockCount == 0) {
-			InterlockedCompareExchange(&threadID, 0, threadID);
+		if (--_lockCount == 0) {
+			InterlockedCompareExchange(&_threadID, 0, _threadID);
 		}
-	}
-
-
-	void BSSpinLock::Release()
-	{
-		Unlock();
 	}
 }

@@ -54,12 +54,12 @@ namespace RE
 		UInt64			unk018[2];				// 018
 		UInt8			unk028;					// 028
 		UInt8			unk029;					// 029
-		UInt8			pad02A[6];				// 029
+		UInt8			pad02A[6];				// 02A
 		UInt64			unk030;					// 030
 		BSFile*			unkFile;				// 038
 		UInt64			unk040[3];				// 040
-		char			name[0x104];			// 058
-		char			filepath[0x104];		// 15C
+		char			name[MAX_PATH];			// 058
+		char			filepath[MAX_PATH];		// 15C
 		void*			unk260;					// 260
 		UInt32			unk268;					// 268 - init'd to ctor arg(0x800) or 0x10000 if arg is 0
 		UInt32			unk26C;					// 26C

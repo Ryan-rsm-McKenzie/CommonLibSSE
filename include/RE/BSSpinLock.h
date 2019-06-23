@@ -6,24 +6,19 @@ namespace RE
 	class BSSpinLock
 	{
 	public:
-		enum
-		{
-			kFastSpinThreshold = 10000
-		};
+		enum { kFastSpinThreshold = 10000 };
 
 
 		BSSpinLock();
 
-		void	Lock();
-		bool	TryToLock();
-		void	Unlock();
-		void	Release();
-
+		void	lock();
+		bool	try_lock();
+		void	unlock();
 
 	private:
 		// members
-		volatile UInt32	threadID;	// 0
-		volatile UInt32	lockCount;	// 4
+		volatile UInt32	_threadID;	// 0
+		volatile UInt32	_lockCount;	// 4
 	};
 	STATIC_ASSERT(sizeof(BSSpinLock) == 0x8);
 }

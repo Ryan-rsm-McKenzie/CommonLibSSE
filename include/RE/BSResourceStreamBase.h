@@ -23,7 +23,8 @@ namespace RE
 
 
 			// members
-			UInt64 unk08;	// 08
+			UInt32	unk08;	// 08
+			UInt32	unk0C;	// 0C - related to ref counting
 		};
 		STATIC_ASSERT(sizeof(StreamBase) == 0x10);
 	}

@@ -733,6 +733,21 @@
     <Filter Include="src\RE\Skyrim\BSScript\IFunction\NF_util">
       <UniqueIdentifier>{94c0cc03-4d26-4432-9338-b1f5449d4b93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\BSResource\Location">
+      <UniqueIdentifier>{38a53d49-2c9c-47ae-acc6-0887f995406f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSResource\StreamBase">
+      <UniqueIdentifier>{aefb0426-0b64-4d30-83fd-280259755fe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSResource\StreamBase\Stream">
+      <UniqueIdentifier>{3f60ca8c-05ab-4189-b622-d2ba236735e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSResource\StreamBase\Stream\Components">
+      <UniqueIdentifier>{fa2bcff8-b271-456d-b4be-456c8b5a2ea7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\BSResource\LocationTraverser">
+      <UniqueIdentifier>{6ff8a9ab-07ae-4ed4-a4e1-de1d779c9066}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -3476,44 +3491,53 @@
     <ClInclude Include="include\RE\NiFrustum.h">
       <Filter>include\RE\Skyrim\NetImmerse\NiMain</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSResourceLocation.h">
-      <Filter>include\RE\Skyrim\BSResource</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSResourceLooseFileLocation.h">
-      <Filter>include\RE\Skyrim\BSResource</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSResourceLocationTraverser.h">
-      <Filter>include\RE\Skyrim\BSResource</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSResourceRegisterPrefix.h">
-      <Filter>include\RE\Skyrim\BSResource</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSResourceGlobalLocations.h">
-      <Filter>include\RE\Skyrim\BSResource</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSResourceGlobalPaths.h">
-      <Filter>include\RE\Skyrim\BSResource</Filter>
-    </ClInclude>
     <ClInclude Include="include\SKSE\Logger.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
     <ClInclude Include="include\Atomic.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSResourceLocationTree.h">
-      <Filter>include\RE\Skyrim\BSResource</Filter>
+    <ClInclude Include="include\RE\BSResourceLocation.h">
+      <Filter>include\RE\Skyrim\BSResource\Location</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSResourceLooseFileStream.h">
-      <Filter>include\RE\Skyrim\BSResource</Filter>
+    <ClInclude Include="include\RE\BSResourceGlobalLocations.h">
+      <Filter>include\RE\Skyrim\BSResource\Location</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceGlobalPaths.h">
+      <Filter>include\RE\Skyrim\BSResource\Location</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceLocationTree.h">
+      <Filter>include\RE\Skyrim\BSResource\Location</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSResourceStream.h">
-      <Filter>include\RE\Skyrim\BSResource</Filter>
+      <Filter>include\RE\Skyrim\BSResource\StreamBase\Stream</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSResourceStreamBase.h">
-      <Filter>include\RE\Skyrim\BSResource</Filter>
+      <Filter>include\RE\Skyrim\BSResource\StreamBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceLooseFileLocation.h">
+      <Filter>include\RE\Skyrim\BSResource\Location</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceLooseFileStream.h">
+      <Filter>include\RE\Skyrim\BSResource\StreamBase\Stream</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSResourceLooseFileStreamBase.h">
-      <Filter>include\RE\Skyrim\BSResource</Filter>
+      <Filter>include\RE\Skyrim\BSResource\StreamBase\Stream\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceLocationTraverser.h">
+      <Filter>include\RE\Skyrim\BSResource\LocationTraverser</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceRegisterPrefix.h">
+      <Filter>include\RE\Skyrim\BSResource\LocationTraverser</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceDevNull.h">
+      <Filter>include\RE\Skyrim\BSResource\Location</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TES.h">
+      <Filter>include\RE\Skyrim\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ICellAttachDetachEventSource.h">
+      <Filter>include\RE\Skyrim\FileIO</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

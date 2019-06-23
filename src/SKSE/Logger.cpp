@@ -33,7 +33,7 @@ namespace SKSE
 		}
 		fullPath[prefixLen + postfixLen] = L'\0';
 
-		_file.open(path.get(), a_mode);
+		_file.open(fullPath.data(), a_mode);
 		return _file.is_open();
 	}
 

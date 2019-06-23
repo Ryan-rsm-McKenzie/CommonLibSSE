@@ -1,6 +1,9 @@
 #pragma once
 
-#include <Windows.h>
+#undef _WIN32_WINNT
+#define _WIN32_WINNT 0x0601	// SSE requires minimum windows 7
+
+#include <WinSock2.h>
 
 #undef min
 #undef max
@@ -19,9 +22,6 @@
 #define __MACRO_JOIN__(a, b)	__MACRO_JOIN_2__(a, b)
 #define __MACRO_JOIN_2__(a, b)	__MACRO_JOIN_3__(a, b)
 #define __MACRO_JOIN_3__(a, b)	a##b
-
-#undef _WIN32_WINNT
-#define _WIN32_WINNT 0x0601	// SSE requires minimum windows 7
 
 #include <cstdint>
 

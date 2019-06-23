@@ -17,7 +17,7 @@ namespace RE
 
 
 			// add
-			virtual void Traverse(const char* a_relFilePath, Location* a_location) = 0;	// 00
+			virtual void Traverse(const char* a_relPath, Location* a_location) = 0;	// 00
 		};
 		STATIC_ASSERT(sizeof(LocationTraverser) == 0x8);
 	}

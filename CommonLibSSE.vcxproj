@@ -526,6 +526,7 @@
     <ClInclude Include="include\RE\BSPrecomputedNavmeshInfoPathMap.h" />
     <ClInclude Include="include\RE\BSReadWriteLock.h" />
     <ClInclude Include="include\RE\BSReloadShaderI.h" />
+    <ClInclude Include="include\RE\BSResourceDevNull.h" />
     <ClInclude Include="include\RE\BSResourceGlobalLocations.h" />
     <ClInclude Include="include\RE\BSResourceGlobalPaths.h" />
     <ClInclude Include="include\RE\BSResourceLocationTraverser.h" />
@@ -782,6 +783,7 @@
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h" />
     <ClInclude Include="include\RE\IAnimationSetCallbackFunctor.h" />
     <ClInclude Include="include\RE\IBSTCreator.h" />
+    <ClInclude Include="include\RE\ICellAttachDetachEventSource.h" />
     <ClInclude Include="include\RE\IDEvent.h" />
     <ClInclude Include="include\RE\IFormFactory.h" />
     <ClInclude Include="include\RE\IFunction.h" />
@@ -965,6 +967,7 @@
     <ClInclude Include="include\RE\SummonCreatureEffect.h" />
     <ClInclude Include="include\RE\Sun.h" />
     <ClInclude Include="include\RE\SuspendedStack.h" />
+    <ClInclude Include="include\RE\TES.h" />
     <ClInclude Include="include\RE\TESActorBase.h" />
     <ClInclude Include="include\RE\TESActorBaseData.h" />
     <ClInclude Include="include\RE\TESAIForm.h" />

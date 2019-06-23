@@ -16,10 +16,10 @@ namespace RE
 		{
 		public:
 			// override (LocationTraverser)
-			virtual void Traverse(const char* a_relFilePath, Location* a_location) override;	// 00
+			virtual void Traverse(const char* a_relPath, Location* a_location) override;	// 00
 
 			// add
-			virtual ~Traverser();																// 01
+			virtual ~Traverser();															// 01
 
 
 			// members
