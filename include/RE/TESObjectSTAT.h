@@ -70,7 +70,7 @@ namespace RE
 
 
 		// members
-		DirectionalMaterial directionalMaterial;	// 68
+		DirectionalMaterial directionalMaterial;	// 68 - DNAM
 	};
 	STATIC_ASSERT(sizeof(TESObjectSTAT) == 0x80);
 }
