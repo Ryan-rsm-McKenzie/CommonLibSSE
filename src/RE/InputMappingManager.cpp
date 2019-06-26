@@ -47,7 +47,7 @@ namespace RE
 			}
 		}
 
-		return static_cast<UInt32>(-1);
+		return kInvalid;
 	}
 
 

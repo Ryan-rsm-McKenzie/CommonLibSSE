@@ -62,6 +62,9 @@ namespace RE
 		};
 
 
+		enum : UInt32 { kInvalid = static_cast<UInt32>(-1) };
+
+
 		struct InputContext
 		{
 			struct Mapping

@@ -30,7 +30,7 @@ namespace RE
 			BSSpinLock	lock;		// 00
 			TESPackage*	package;	// 08
 			UInt64		unk10;		// 10
-			UInt32		unk18;		// 18
+			float		unk18;		// 18 - shout cooldown?
 			UInt32		unk1C;		// 1C - init'd to FFFFFFFF
 			float		unk20;		// 20 - init'd to -1
 			UInt32		unk24;		// 24

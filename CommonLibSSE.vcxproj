@@ -779,6 +779,9 @@
     <ClInclude Include="include\RE\hkSweptTransform.h" />
     <ClInclude Include="include\RE\hkTransform.h" />
     <ClInclude Include="include\RE\hkVector4.h" />
+    <ClInclude Include="include\RE\HUDMenu.h" />
+    <ClInclude Include="include\RE\HUDMeter.h" />
+    <ClInclude Include="include\RE\HUDObject.h" />
     <ClInclude Include="include\RE\IAIWorldLocationHandle.h" />
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h" />
     <ClInclude Include="include\RE\IAnimationSetCallbackFunctor.h" />
@@ -944,6 +947,7 @@
     <ClInclude Include="include\RE\SettingT.h" />
     <ClInclude Include="include\RE\SFTypes.h" />
     <ClInclude Include="include\RE\ShoutHandler.h" />
+    <ClInclude Include="include\RE\ShoutMeter.h" />
     <ClInclude Include="include\RE\SimpleAllocMemoryPagePolicy.h" />
     <ClInclude Include="include\RE\Sky.h" />
     <ClInclude Include="include\RE\SkyEffectController.h" />

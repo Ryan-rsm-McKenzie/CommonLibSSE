@@ -748,6 +748,12 @@
     <Filter Include="include\RE\Skyrim\BSResource\LocationTraverser">
       <UniqueIdentifier>{6ff8a9ab-07ae-4ed4-a4e1-de1d779c9066}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\Menus\HUDObject">
+      <UniqueIdentifier>{2ff6f1a9-a0e6-4581-a81b-fc13efcf33bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Menus\HUDObject\HUDMeter">
+      <UniqueIdentifier>{b90eff8a-9ead-4283-82b2-a04ace6906bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -3538,6 +3544,18 @@
     </ClInclude>
     <ClInclude Include="include\RE\ICellAttachDetachEventSource.h">
       <Filter>include\RE\Skyrim\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\HUDObject.h">
+      <Filter>include\RE\Skyrim\Menus\HUDObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\HUDMeter.h">
+      <Filter>include\RE\Skyrim\Menus\HUDObject\HUDMeter</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ShoutMeter.h">
+      <Filter>include\RE\Skyrim\Menus\HUDObject\HUDMeter</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\HUDMenu.h">
+      <Filter>include\RE\Skyrim\Menus\IMenu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
