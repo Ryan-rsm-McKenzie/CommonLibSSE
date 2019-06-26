@@ -22,7 +22,7 @@ namespace RE
 
 		// members
 		float	cooldown;	// 48 - in seconds
-		UInt32	pad4C;		// 4C
+		UInt32	unk4C;		// 4C
 	};
 	STATIC_ASSERT(sizeof(ShoutMeter) == 0x50);
 }
