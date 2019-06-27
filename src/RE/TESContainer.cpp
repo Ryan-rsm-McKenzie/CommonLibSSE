@@ -19,7 +19,7 @@ namespace RE
 
 	UInt32 TESContainer::CountItem(TESBoundObject* a_item) const
 	{
-		std::size_t count = 0;
+		UInt32 count = 0;
 		ForEach([&](Entry* a_entry)
 		{
 			if (a_entry->form == a_item) {
