@@ -2,7 +2,7 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_TESContainer
 
-#include "function_ref.h"  // function_view
+#include "function_ref.h"  // function_ref
 
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/FormTypes.h"  // TESForm
@@ -10,6 +10,9 @@
 
 namespace RE
 {
+	class TESBoundObject;
+
+
 	class TESContainer : public BaseFormComponent
 	{
 	public:
@@ -29,10 +32,10 @@ namespace RE
 			STATIC_ASSERT(sizeof(ExtraData) == 0x18);
 
 
-			UInt32		count;	// 00
-			UInt32		pad04;	// 04
-			TESForm*	form;	// 08
-			ExtraData*	data;	// 10
+			UInt32			count;	// 00
+			UInt32			pad04;	// 04
+			TESBoundObject*	form;	// 08
+			ExtraData*		data;	// 10
 		};
 		STATIC_ASSERT(sizeof(Entry) == 0x18);
 
@@ -47,8 +50,7 @@ namespace RE
 
 		inline void	ForEach(llvm::function_ref<bool(Entry*)> a_fn) const;
 		bool		GetContainerItemAt(UInt32 a_idx, Entry*& a_entry) const;
-		bool		GetContainerLevItemAt(UInt32 a_idx, Entry*& a_entry) const;
-		UInt32		CountItem(TESForm* a_item) const;
+		UInt32		CountItem(TESBoundObject* a_item) const;
 
 
 		// members

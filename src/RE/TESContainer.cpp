@@ -17,9 +17,9 @@ namespace RE
 	}
 
 
-	UInt32 TESContainer::CountItem(TESForm* a_item) const
+	UInt32 TESContainer::CountItem(TESBoundObject* a_item) const
 	{
-		UInt32 count = 0;
+		std::size_t count = 0;
 		ForEach([&](Entry* a_entry)
 		{
 			if (a_entry->form == a_item) {
@@ -28,24 +28,5 @@ namespace RE
 			return true;
 		});
 		return count;
-	}
-
-
-	bool TESContainer::GetContainerLevItemAt(UInt32 a_idx, TESContainer::Entry*& a_entry) const
-	{
-		UInt32 n = 0;
-
-		for (UInt32 i = 0; i < numEntries; ++i) {
-			Entry* p = entries[i];
-			if (p->form->Is(FormType::LeveledItem)) {
-				if (n == a_idx) {
-					a_entry = p;
-					return true;
-				}
-				++n;
-			}
-		}
-
-		return false;
 	}
 }
