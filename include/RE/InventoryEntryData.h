@@ -9,12 +9,13 @@
 namespace RE
 {
 	class BaseExtraList;
+	class TESBoundObject;
 
 
 	class InventoryEntryData
 	{
 	public:
-		InventoryEntryData(TESForm* a_item, SInt32 a_count);
+		InventoryEntryData(TESBoundObject* a_item, SInt32 a_count);
 		~InventoryEntryData();
 
 		void		GetExtraWornBaseLists(BaseExtraList*& a_wornBaseListOut, BaseExtraList*& a_wornLeftBaseListOut);
@@ -31,7 +32,7 @@ namespace RE
 
 
 		// members
-		TESForm*						type;		// 00
+		TESBoundObject*					type;		// 00
 		BSSimpleList<BaseExtraList*>*	extraList;	// 08
 		SInt32							countDelta;	// 10
 		UInt32							pad14;		// 14

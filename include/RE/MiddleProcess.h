@@ -108,7 +108,7 @@ namespace RE
 		UInt64								unk210;					// 210
 		UInt32								unk218;					// 218
 		UInt32								pad21C;					// 21C
-		InventoryEntryData*					unk220;					// 220
+		InventoryEntryData*					leftHand;				// 220
 		TESIdleForm* 						currentIdle;			// 228
 		UInt64								unk230;					// 230
 		UInt64								unk238;					// 238
@@ -116,7 +116,7 @@ namespace RE
 		UInt64								unk248;					// 248
 		bhkCharacterController*				characterController;	// 250
 		bhkRagdollPenetrationUtil*			ragdollPenetrationUtil;	// 258
-		InventoryEntryData*					unk164;					// 260
+		InventoryEntryData*					rightHand;				// 260
 		UInt64								unk268;					// 268
 		QueuedFile*							unk270;					// 270
 		UInt64								unk278;					// 278

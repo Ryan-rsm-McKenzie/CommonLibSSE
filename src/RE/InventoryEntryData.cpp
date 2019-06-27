@@ -8,7 +8,7 @@
 
 namespace RE
 {
-	InventoryEntryData::InventoryEntryData(TESForm* a_item, SInt32 a_count) :
+	InventoryEntryData::InventoryEntryData(TESBoundObject* a_item, SInt32 a_count) :
 		type(a_item),
 		extraList(0),
 		countDelta(a_count)
