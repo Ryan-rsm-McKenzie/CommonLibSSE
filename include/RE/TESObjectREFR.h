@@ -297,7 +297,7 @@ namespace RE
 		bool							IsLocked() const;
 		LockState*						GetLockState() const;
 		SInt32							GetLockLevel() const;
-		UInt32							GetNumItems(bool a_arg1 = false, bool a_arg2 = false);
+		UInt32							GetNumItems(bool a_useDataHandlerChanges = false, bool a_arg2 = false);
 		bool							HasInventoryChanges() const;
 		InventoryChanges*				GetInventoryChanges();	// Creates inventory changes if none found
 		bool							SetDisplayName(const BSFixedString& name, bool force);

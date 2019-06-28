@@ -244,11 +244,11 @@ namespace RE
 	}
 
 
-	UInt32 TESObjectREFR::GetNumItems(bool a_arg1, bool a_arg2)
+	UInt32 TESObjectREFR::GetNumItems(bool a_useDataHandlerChanges, bool a_arg2)
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::GetNumItems)>;
 		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetNumItems);
-		return func(this, a_arg1, a_arg2);
+		return func(this, a_useDataHandlerChanges, a_arg2);
 	}
 
 

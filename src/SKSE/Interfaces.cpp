@@ -151,7 +151,7 @@ namespace SKSE
 	}
 
 
-	bool SerializationInterface::ResolveFormID(UInt32 a_oldFormID, UInt32& a_newFormID) const
+	bool SerializationInterface::ResolveFormID(RE::FormID a_oldFormID, RE::FormID& a_newFormID) const
 	{
 		return GetProxy()->ResolveFormId(a_oldFormID, &a_newFormID);
 	}

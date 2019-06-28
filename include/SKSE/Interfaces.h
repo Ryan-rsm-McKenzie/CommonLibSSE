@@ -95,7 +95,7 @@ namespace SKSE
 		bool GetNextRecordInfo(UInt32& a_type, UInt32& a_version, UInt32& a_length) const;
 		UInt32 ReadRecordData(void* a_buf, UInt32 a_length) const;
 		bool ResolveHandle(RE::VMHandle a_oldHandle, RE::VMHandle& a_newHandle) const;
-		bool ResolveFormID(UInt32 a_oldFormID, UInt32& a_newFormID) const;
+		bool ResolveFormID(RE::FormID a_oldFormID, RE::FormID& a_newFormID) const;
 
 	protected:
 		const SKSESerializationInterface* GetProxy() const;
