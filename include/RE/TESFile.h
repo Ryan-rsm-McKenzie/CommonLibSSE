@@ -38,6 +38,7 @@ namespace RE
 		{
 			kNone = 0,
 			kESM = 1 << 0,
+			kActive = 1 << 3,
 			kLocalized = 1 << 7,
 			kESL = 1 << 9
 		};
