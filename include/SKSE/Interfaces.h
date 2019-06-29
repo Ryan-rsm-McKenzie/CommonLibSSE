@@ -8,10 +8,10 @@
 
 #include <functional>  // function
 
+#include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
 #include "RE/GFxMovieView.h"  // GFxMovieView
 #include "RE/GFxValue.h"  // GFxValue
 #include "RE/InventoryEntryData.h"  // InventoryEntryData
-#include "RE/VirtualMachine.h"  // VirtualMachine
 
 
 namespace SKSE

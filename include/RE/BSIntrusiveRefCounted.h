@@ -20,8 +20,7 @@ namespace RE
 
 
 		// members
-		volatile SInt32	_refCount;	// 0
-		UInt32			pad04;		// 4
+		volatile SInt32 _refCount;	// 0
 	};
-	STATIC_ASSERT(sizeof(BSIntrusiveRefCounted) == 0x8);
+	STATIC_ASSERT(sizeof(BSIntrusiveRefCounted) == 0x4);
 }

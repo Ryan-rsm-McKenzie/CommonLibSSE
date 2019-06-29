@@ -3,27 +3,24 @@
 
 namespace RE
 {
-	// Need more examples of this class instance to be able to differentiate between the class and the template
 	template <class T>
 	class BSTFreeList
 	{
 	public:
 		struct Entry
 		{
-			UInt32	unk00;	// 00
-			UInt32	unk04;	// 04
-			void*	unk08;	// 08 - memPolicy?
-			T*		unk10;	// 10
-			Entry*	next;	// 18
+			T		item;	// 00
+			Entry*	next;	// ??
 		};
-		STATIC_ASSERT(sizeof(Entry) == 0x20);
+		// size == sizeof(T) + 0x8
 
 
 		virtual ~BSTFreeList();	// 00
 
 
 		// members
-		UInt64	unk08;	// 08
+		UInt32	unk08;	// 08
+		UInt32	unk0C;	// 0C
 		Entry*	eol;	// 10
 	};
 	STATIC_ASSERT(sizeof(BSTFreeList<void*>) == 0x18);
@@ -32,7 +29,7 @@ namespace RE
 	template <class T, std::size_t SIZE>
 	class BSTStaticFreeList : public BSTFreeList<T>
 	{
-		using Entry = BSTFreeList<T>::Entry;
+		using Entry = typename BSTFreeList<T>::Entry;
 
 
 		virtual ~BSTStaticFreeList();	// 00
@@ -41,4 +38,5 @@ namespace RE
 		// members
 		Entry entries[SIZE];	// 18
 	};
+	// size == 0x18 + sizeof(Entry) * SIZE
 }

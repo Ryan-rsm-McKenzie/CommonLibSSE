@@ -94,6 +94,7 @@ namespace RE
 
 
 		// members
+		UInt32				unk00C;				// 00C
 		BSTArray<Vertex>	vertices;			// 010
 		BSTArray<Triangle>	triangles;			// 028
 		BSTArray<EdgeLink>	edgeLinks;			// 040

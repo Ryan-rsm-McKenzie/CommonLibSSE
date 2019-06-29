@@ -28,6 +28,10 @@ namespace RE
 		virtual bool	ProcessThumbstick(ThumbstickEvent* a_event);	// 03 - { return false; }
 		virtual bool	ProcessMouseMove(MouseMoveEvent* a_event);		// 04 - { return false; }
 		virtual bool	ProcessButton(ButtonEvent* a_event);			// 05 - { return false; }
+
+
+		// members
+		UInt32 unk0C;	// 0C
 	};
 	STATIC_ASSERT(sizeof(MenuEventHandler) == 0x10);
 }

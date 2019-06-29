@@ -25,6 +25,10 @@ namespace RE
 
 		// add
 		virtual void Run(Message a_msg) = 0;	// 01
+
+
+		// members
+		UInt32 unk0C;	// 0C
 	};
 	STATIC_ASSERT(sizeof(IMessageBoxCallback) == 0x10);
 }

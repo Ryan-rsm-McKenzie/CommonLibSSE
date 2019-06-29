@@ -13,15 +13,11 @@ namespace RE
 		inline static const void* RTTI = RTTI_BSHandleRefObject;
 
 
-		enum
-		{
-			kMask_RefCount = 0x3FF
-		};
+		enum { kMask_RefCount = 0x3FF };
 
 
 		virtual ~BSHandleRefObject();	// 00
 
-		// override (NiRefObject)
 		void	DecRefCount();
 		UInt32	GetRefCount() const;
 	};

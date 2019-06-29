@@ -22,6 +22,7 @@ namespace RE
 
 
 		// members
+		UInt32			unk0C;	// 0C
 		BSFixedString	unk10;	// 10
 		UInt64			unk18;	// 18
 	};

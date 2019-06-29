@@ -30,6 +30,7 @@ namespace RE
 
 
 		// members
+		UInt32		unk0C;		// 0C
 		TESCamera*	camera;		// 10
 		UInt32		stateID;	// 18
 		UInt32		pad1C;		// 1C

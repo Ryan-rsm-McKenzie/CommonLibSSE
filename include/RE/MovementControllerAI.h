@@ -27,6 +27,7 @@ namespace RE
 
 
 		// members
+		UInt32	unk00C;	// 00C
 		UInt64	unk010;	// 010
 		UInt64	unk018;	// 018
 		UInt64	unk020;	// 020

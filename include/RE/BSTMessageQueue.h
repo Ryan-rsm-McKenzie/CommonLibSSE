@@ -3,6 +3,9 @@
 
 namespace RE
 {
+	template <class T> class BSTFreeList;
+
+
 	template <class T>
 	class BSTMessageQueue
 	{
@@ -54,9 +57,9 @@ namespace RE
 		virtual bool	PopInternal(T* a_obj) override;		// 06
 
 	public:
-		void*	unk10;	// 10
-		UInt64	unk18;	// 18
-		void*	unk20;	// 20
+		BSTFreeList<T>*	unk10;	// 10
+		void*			begin;	// 18
+		void*			end;	// 20
 	};
 	STATIC_ASSERT(sizeof(BSTCommonLLMessageQueue<void*>) == 0x28);
 

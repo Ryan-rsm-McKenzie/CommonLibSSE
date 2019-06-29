@@ -7,11 +7,11 @@
 #include "SKSE/API.h"  // GetTaskInterface
 #include "SKSE/Interfaces.h"  // SerializationInterface
 
+#include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
+#include "RE/BSScript/FunctionArguments.h"  // BSScript::FunctionArguments
+#include "RE/BSScript/IObjectHandlePolicy.h"  // BSScript::IObjectHandlePolicy
 #include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/FunctionArguments.h"  // FunctionArguments
-#include "RE/IObjectHandlePolicy.h"  // IObjectHandlePolicy
 #include "RE/TESForm.h"  // TESForm
-#include "RE/VirtualMachine.h"  // VirtualMachine
 
 
 namespace SKSE

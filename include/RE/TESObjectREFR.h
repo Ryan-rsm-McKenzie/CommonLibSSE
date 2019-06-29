@@ -109,7 +109,7 @@ namespace RE
 
 		struct WeightData : BSIntrusiveRefCounted
 		{
-			UInt64 unk0008[(0x2778 - 0x8) >> 3];	// 08
+			UInt32 unk0004[(0x2778 - 0x4) >> 2];	// 04
 		};
 		STATIC_ASSERT(sizeof(WeightData) == 0x2778);
 

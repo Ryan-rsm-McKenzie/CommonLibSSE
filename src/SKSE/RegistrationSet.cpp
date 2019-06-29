@@ -1,7 +1,5 @@
 #include "SKSE/RegistrationSet.h"
 
-#include "skse64/PapyrusVM.h"  // g_skyrimVM
-
 
 namespace SKSE
 {
@@ -41,8 +39,9 @@ namespace SKSE
 
 		RegistrationSetBase::~RegistrationSetBase()
 		{
-			if (*g_skyrimVM.GetPtr()) {
-				auto policy = RE::BSScript::Internal::VirtualMachine::GetSingleton()->GetHandlePolicyBS();
+			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+			if (vm) {
+				auto policy = vm->GetHandlePolicyBS();
 				for (auto& handle : _handles) {
 					policy->Release(handle);
 				}

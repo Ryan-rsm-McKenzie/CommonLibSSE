@@ -1,8 +1,8 @@
 #pragma once
 
-#include "skse64_common/Utilities.h"  // GetFnAddr
 #include "skse64/GameEvents.h"  // EventDispatcher
 
+#include "RE/BSSpinLock.h"  // BSpinLock
 #include "RE/BSTArray.h"  // BSTArray
 
 
@@ -19,7 +19,14 @@ namespace RE
 
 
 		BSTEventSource() :
-			stateFlag(false)
+			eventSinks(),
+			addBuffer(),
+			removeBuffer(),
+			lock(),
+			stateFlag(false),
+			pad51(0),
+			pad52(0),
+			pad54(0)
 		{}
 
 
@@ -49,18 +56,16 @@ namespace RE
 
 		void operator()(Event* a_event)
 		{
-			using func_t = function_type_t<decltype(&BSTEventSource::operator())>;
-			func_t* func = unrestricted_cast<func_t*>(&::EventDispatcher<Event>::SendEvent);
-			return func(this, a_event);
+			return AddEventSink(a_event);
 		}
 
 
 		// members
 		BSTArray<Sink*>	eventSinks;		// 00
-		BSTArray<Sink*>	addBuffer;		// 18 - schedule for add
-		BSTArray<Sink*>	removeBuffer;	// 30 - schedule for remove
-		SimpleLock		lock;			// 48
-		bool			stateFlag;		// 50 - some internal state changed while sending
+		BSTArray<Sink*>	addBuffer;		// 18
+		BSTArray<Sink*>	removeBuffer;	// 30
+		BSSpinLock		lock;			// 48
+		bool			stateFlag;		// 50
 		UInt8			pad51;			// 51
 		UInt16			pad52;			// 52
 		UInt32			pad54;			// 54

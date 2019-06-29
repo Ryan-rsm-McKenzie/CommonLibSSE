@@ -52,6 +52,7 @@ namespace RE
 
 
 		// members
+		UInt32																	unk0C;				// 0C
 		BSTArray<BSTAnimationGraphDataChannel<Actor, float, ActorSpeedChannel>>	unk10;				// 10
 		UInt64																	unk28;				// 28
 		void*																	unk30;				// 30

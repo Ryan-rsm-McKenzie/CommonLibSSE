@@ -4,10 +4,7 @@
 #include "skse64/PapyrusObjects.h"  // SKSEObjectRegistry, SKSEPersistentObjectStorage
 #include "skse64/PluginAPI.h"  // PluginHandle
 
-#include <functional>  // function
-
 #include "RE/BSTEvent.h"  // BSTEventSource
-#include "RE/VirtualMachine.h"  // VirtualMachine
 #include "SKSE/Events.h"  // ModCallbackEvent, CameraEvent, CrosshairRefEvent, ActionEvent, NiNodeUpdateEvent
 #include "SKSE/Interfaces.h"  // LoadInterface, ScaleformInterface, PapyrusInterface, SerializationInterface, TaskInterface, MessagingInterface, ObjectInterface
 
