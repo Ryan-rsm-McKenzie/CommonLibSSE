@@ -24,7 +24,7 @@ namespace RE
 	}
 
 
-	UInt32 InputMappingManager::GetMappedKey(const BSFixedString& a_name, DeviceType a_deviceType, Context a_contextIdx) const
+	UInt32 InputMappingManager::GetMappedKey(const std::string_view& a_name, DeviceType a_deviceType, Context a_contextIdx) const
 	{
 		BSTArray<InputContext::Mapping>* maps = 0;
 		switch (a_deviceType) {

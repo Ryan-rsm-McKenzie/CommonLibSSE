@@ -489,6 +489,7 @@
 #include "RE/Moon.h"
 #include "RE/MovementControllerAI.h"
 #include "RE/MovementControllerNPC.h"
+#include "RE/MovementData.h"
 #include "RE/MovementHandler.h"
 #include "RE/MoviePlayer.h"
 #include "RE/NavMesh.h"

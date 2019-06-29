@@ -1,18 +1,18 @@
 #pragma once
 
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSTSingleton.h"  // BSTSingletonSDM
 
 
 namespace RE
 {
-	class InputStringHolder
+	class InputStringHolder : public BSTSingletonSDM<InputStringHolder>
 	{
 	public:
 		static InputStringHolder* GetSingleton();
 
 
 		// members
-		void*			unk00;				// 000 Singleton?
 		BSFixedString	forward;			// 008 "Forward"
 		BSFixedString	back;				// 010 "Back"
 		BSFixedString	strafeLeft;			// 018 "Strafe Left"

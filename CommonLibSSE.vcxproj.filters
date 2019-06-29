@@ -3587,5 +3587,8 @@
     <ClInclude Include="include\RE\SkyrimVM.h">
       <Filter>include\RE\Skyrim\SkyrimScript</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\MovementData.h">
+      <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -13,13 +13,13 @@ namespace RE
 		inline static const void* RTTI = RTTI_AttackBlockHandler;
 
 
-		virtual ~AttackBlockHandler();																	// 00
+		virtual ~AttackBlockHandler();																// 00
 
 		// override (PlayerInputHandler)
-		virtual	bool	CanProcess(InputEvent* a_event) override;										// 01
-		virtual	void	ProcessButton(ButtonEvent* a_event, PlayerControls::Data024* a_arg2) override;	// 04
-		virtual void	Unk_05(void) override;															// 05
-		virtual void	SetHeldState(bool a_held) override;												// 06
+		virtual	bool	CanProcess(InputEvent* a_event) override;									// 01
+		virtual	void	ProcessButton(ButtonEvent* a_event, MovementData* a_movementData) override;	// 04
+		virtual void	Unk_05(void) override;														// 05
+		virtual void	SetHeldState(bool a_held) override;											// 06
 
 
 		// members

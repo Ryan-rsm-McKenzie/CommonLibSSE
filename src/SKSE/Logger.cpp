@@ -3,6 +3,7 @@
 #include <debugapi.h>  // OutputDebugStringA
 #include <objbase.h>  // CoTaskMemFree
 
+#include <cassert>  // assert
 #include <cstdarg>  // va_list, va_start, va_copy, va_end
 #include <cstdio>  // snprintf, vsnprintf
 #include <cwchar>  // wcslen
@@ -13,7 +14,7 @@
 
 namespace SKSE
 {
-	bool Logger::OpenRelative(REFKNOWNFOLDERID a_referenceID, const wchar_t* a_fileName, std::ios_base::openmode a_mode)
+	bool Logger::OpenRelative(REFKNOWNFOLDERID a_referenceID, const std::filesystem::path& a_fileName, std::ios_base::openmode a_mode)
 	{
 		wchar_t* pathBuffer;
 		auto result = SHGetKnownFolderPath(a_referenceID, KNOWN_FOLDER_FLAG::KF_FLAG_DEFAULT, NULL, &pathBuffer);
@@ -22,33 +23,44 @@ namespace SKSE
 			return false;
 		}
 
-		std::size_t prefixLen = std::wcslen(path.get());
-		std::size_t postfixLen = std::wcslen(a_fileName);
-		std::vector<wchar_t> fullPath(prefixLen + postfixLen + 1);
-		for (std::size_t i = 0; i < prefixLen; ++i) {
-			fullPath[i] = path[i];
-		}
-		for (std::size_t i = 0; i < postfixLen; ++i) {
-			fullPath[prefixLen + i] = a_fileName[i];
-		}
-		fullPath[prefixLen + postfixLen] = L'\0';
+		auto fileName = a_fileName.native();
+		fileName.insert(0, path.get());
+		std::filesystem::path filePath(std::move(fileName));
+		auto parentPath = filePath.parent_path();
+		std::error_code err;
+		std::filesystem::create_directories(parentPath, err);
+		assert(!err);
 
-		_file.open(fullPath.data(), a_mode);
-		return _file.is_open();
+		_file.open(filePath, a_mode);
+		auto isOpen = _file.is_open();
+		assert(isOpen);
+		return isOpen;
 	}
 
 
-	bool Logger::OpenAbsolute(const char* a_fileName, std::ios_base::openmode a_mode)
+	bool Logger::OpenRelative(REFKNOWNFOLDERID a_referenceID, std::filesystem::path&& a_fileName, std::ios_base::openmode a_mode)
 	{
-		_file.open(a_fileName, a_mode);
-		return _file.is_open();
+		return OpenRelative(a_referenceID, a_fileName, a_mode);
 	}
 
 
-	bool Logger::OpenAbsolute(const wchar_t* a_fileName, std::ios_base::openmode a_mode)
+	bool Logger::OpenAbsolute(const std::filesystem::path& a_fileName, std::ios_base::openmode a_mode)
 	{
+		auto parentPath = a_fileName.parent_path();
+		std::error_code err;
+		std::filesystem::create_directories(parentPath, err);
+		assert(!err);
+
 		_file.open(a_fileName, a_mode);
-		return _file.is_open();
+		auto isOpen = _file.is_open();
+		assert(isOpen);
+		return isOpen;
+	}
+
+
+	bool Logger::OpenAbsolute(std::filesystem::path&& a_fileName, std::ios_base::openmode a_mode)
+	{
+		return OpenAbsolute(a_fileName, a_mode);
 	}
 
 

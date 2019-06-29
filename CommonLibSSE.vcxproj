@@ -868,6 +868,7 @@
     <ClInclude Include="include\RE\MovementControllerAI.h" />
     <ClInclude Include="include\RE\MovementControllerNPC.h" />
     <ClInclude Include="include\RE\GFxMovieRoot.h" />
+    <ClInclude Include="include\RE\MovementData.h" />
     <ClInclude Include="include\RE\MoviePlayer.h" />
     <ClInclude Include="include\RE\GNewOverrideBase.h" />
     <ClInclude Include="include\RE\NavMesh.h" />

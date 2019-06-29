@@ -11,8 +11,8 @@ namespace RE
 {
 	class GFxMovieView;
 	class IMenu;
+	class MenuModeChangeEvent;
 	class MenuOpenCloseEvent;
-	struct MenuModeChangeEvent;
 
 
 	class MenuManager :

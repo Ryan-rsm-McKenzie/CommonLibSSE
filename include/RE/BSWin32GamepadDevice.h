@@ -31,8 +31,8 @@ namespace RE
 				kB = 0x2000,
 				kX = 0x4000,
 				kY = 0x8000,
-				kLT = 0x0009,
-				kRT = 0x000A
+				kLeftTrigger = 0x0009,
+				kRightTrigger = 0x000A
 			};
 		};
 		using Key = Keys::Key;

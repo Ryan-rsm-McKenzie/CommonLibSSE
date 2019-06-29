@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string_view>  // string_view
 #include <type_traits>  // underlying_type_t
 
 #include "RE/BSTEvent.h"  // BSTEventSource
@@ -62,7 +63,7 @@ namespace RE
 		};
 
 
-		enum : UInt32 { kInvalid = static_cast<UInt32>(-1) };
+		enum : UInt32 { kInvalid = static_cast<UInt8>(-1) };
 
 
 		struct InputContext
@@ -82,32 +83,46 @@ namespace RE
 			BSTArray<Mapping>	keyboardMap;	// 00
 			BSTArray<Mapping>	mouseMap;		// 18
 			BSTArray<Mapping>	gamepadMap;		// 30
+			BSTArray<Mapping>	unk48;			// 48 - kinect?
 		};
-		STATIC_ASSERT(sizeof(InputContext) == 0x48);
+		STATIC_ASSERT(sizeof(InputContext) == 0x60);
+
+
+		struct ActionMapping
+		{
+			BSFixedString	buttonName;	// 00
+			UInt32			unk08;		// 08
+			UInt32			unk0C;		// 0C
+			UInt32			unk10;		// 10
+			UInt32			unk14;		// 14
+			BSFixedString	actionName;	// 18
+		};
+		STATIC_ASSERT(sizeof(ActionMapping) == 0x20);
 
 
 		static InputMappingManager*	GetSingleton();
 
-		UInt8						AllowTextInput(bool a_allow);
-		UInt32						GetMappedKey(const BSFixedString& a_name, DeviceType a_deviceType, Context a_contextIdx = Context::kGameplay) const;
-		const BSFixedString&		GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Context a_contextIdx = Context::kGameplay) const;
-		bool						IsLookingControlsEnabled() const;
-		bool						IsFlyingControlsEnabled() const;
-		bool						IsSneakingControlsEnabled() const;
-		bool						IsMenuControlsEnabled() const;
-		bool						IsMovementControlsEnabled() const;
+		UInt8					AllowTextInput(bool a_allow);
+		UInt32					GetMappedKey(const std::string_view& a_name, DeviceType a_deviceType, Context a_contextIdx = Context::kGameplay) const;
+		const BSFixedString&	GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Context a_contextIdx = Context::kGameplay) const;
+		bool					IsLookingControlsEnabled() const;
+		bool					IsFlyingControlsEnabled() const;
+		bool					IsSneakingControlsEnabled() const;
+		bool					IsMenuControlsEnabled() const;
+		bool					IsMovementControlsEnabled() const;
 
 
 		// members
-		InputContext*	context[Context::kTotal];	// 060
-		BSTArray<void*>	unk0E8;						// 0E8
-		BSTArray<void*>	unk100;						// 100
-		ControlState	controlState;				// 118 - init'd to kInvalid
-		UInt32			unk11C;						// 11C - init'd to 0x80000000
-		UInt8			allowTextInput;				// 120 - init'd to 0
-		UInt8			unk121;						// 121 - init'd to 0
-		UInt8			unk122;						// 122 - init'd to 0
-		UInt8			pad[5];						// 123
+		InputContext*			context[Context::kTotal];	// 060
+		BSTArray<ActionMapping>	actionMap;					// 0E8
+		BSTArray<void*>			unk100;						// 100
+		ControlState			controlState;				// 118
+		UInt32					unk11C;						// 11C
+		UInt8					allowTextInput;				// 120
+		UInt8					unk121;						// 121
+		UInt8					unk122;						// 122
+		UInt8					unk123;						// 123
+		UInt32					unk124;						// 124
 	};
 	STATIC_ASSERT(offsetof(InputMappingManager, context) == 0x060);
 	STATIC_ASSERT(sizeof(InputMappingManager) == 0x128);

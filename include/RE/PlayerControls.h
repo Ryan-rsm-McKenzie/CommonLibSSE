@@ -3,11 +3,13 @@
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
+#include "RE/MovementData.h"  // MovementData
 
 
 namespace RE
 {
 	class InputEvent;
+	class MenuModeChangeEvent;
 	class MenuOpenCloseEvent;
 	class PlayerInputHandler;
 	struct ActivateHandler;
@@ -15,7 +17,6 @@ namespace RE
 	struct AutoMoveHandler;
 	struct JumpHandler;
 	struct LookHandler;
-	struct MenuModeChangeEvent;
 	struct MovementHandler;
 	struct ReadyWeaponHandler;
 	struct RunHandler;
@@ -31,32 +32,10 @@ namespace RE
 		public BSTEventSink<InputEvent*>,			// 000
 		public BSTEventSink<MenuOpenCloseEvent>,	// 008
 		public BSTEventSink<MenuModeChangeEvent>,	// 010
+		public BSTSingletonSDM<PlayerControls>,		// 020
 		public BSTEventSink<TESFurnitureEvent>		// 018
 	{
 	public:
-		struct Data024
-		{
-			float		movementX;	// 00 - Strafe Left=-1, Strafe Right=1
-			float		movementY;	// 04 - Forward=1, Back=-1
-			float		unk08;		// 08
-			float		unk0C;		// 0C
-			float		unk10;		// 10
-			float		unk14;		// 14
-			float		unk18;		// 18
-			float		unk1C;		// 1C
-			UInt32		unk20;		// 20
-			UInt8		autoRun;	// 24
-			UInt8		runMode;	// 25
-			UInt8		unk26;		// 26
-			UInt8		unk27;		// 27
-			UInt16		unk28;		// 28
-			UInt8		unk2A;		// 2A
-			UInt8		unk2B;		// 2B
-			bool		remapMod;	// 2C
-			UInt8		pad2D[7];	// 2D
-		};
-
-
 		PlayerControls();
 		virtual	~PlayerControls();	// 00
 
@@ -64,8 +43,7 @@ namespace RE
 
 
 		// members
-		UInt32							unk020;				// 020
-		Data024							data024;			// 024
+		MovementData					movementData;		// 024
 		BSTArray<PlayerInputHandler*>	handlers;			// 058
 		BSTArray<void*>					unk070;				// 070
 		BSTArray<void*>					unk088;				// 088
@@ -95,6 +73,5 @@ namespace RE
 	private:
 		PlayerControls* Ctor_Internal();
 	};
-	STATIC_ASSERT(offsetof(PlayerControls, data024) == 0x024);
 	STATIC_ASSERT(sizeof(PlayerControls) == 0x1E0);
 }

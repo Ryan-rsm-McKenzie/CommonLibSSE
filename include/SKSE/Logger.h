@@ -3,6 +3,7 @@
 #include <KnownFolders.h>
 #include <ShlObj.h>  // REFKNOWNFOLDERID
 
+#include <filesystem> // path
 #include <fstream>  // ofstream
 #include <ios>  // ios_base
 
@@ -32,9 +33,10 @@ namespace SKSE
 		static constexpr std::ios_base::openmode DEFAULT_OPENMODE = std::ios_base::out | std::ios_base::trunc;
 
 
-		static bool OpenRelative(REFKNOWNFOLDERID a_referenceID, const wchar_t* a_fileName, std::ios_base::openmode a_mode = DEFAULT_OPENMODE);
-		static bool OpenAbsolute(const char* a_fileName, std::ios_base::openmode a_mode = DEFAULT_OPENMODE);
-		static bool OpenAbsolute(const wchar_t* a_fileName, std::ios_base::openmode a_mode = DEFAULT_OPENMODE);
+		static bool OpenRelative(REFKNOWNFOLDERID a_referenceID, const std::filesystem::path& a_fileName, std::ios_base::openmode a_mode = DEFAULT_OPENMODE);
+		static bool OpenRelative(REFKNOWNFOLDERID a_referenceID, std::filesystem::path&& a_fileName, std::ios_base::openmode a_mode = DEFAULT_OPENMODE);
+		static bool OpenAbsolute(const std::filesystem::path& a_fileName, std::ios_base::openmode a_mode = DEFAULT_OPENMODE);
+		static bool OpenAbsolute(std::filesystem::path&& a_fileName, std::ios_base::openmode a_mode = DEFAULT_OPENMODE);
 
 		static void SetPrintLevel(Level a_printLevel);
 		static void SetFlushLevel(Level a_flushLevel);

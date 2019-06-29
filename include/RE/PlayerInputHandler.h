@@ -2,7 +2,7 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_PlayerInputHandler
 
-#include "RE/PlayerControls.h"  // PlayerControls::Data024
+#include "RE/MovementData.h"  // MovementData
 
 
 namespace RE
@@ -19,12 +19,12 @@ namespace RE
 		inline static const void* RTTI = RTTI_PlayerInputHandler;
 
 
-		virtual ~PlayerInputHandler();																	// 00
+		virtual ~PlayerInputHandler();																// 00
 
-		virtual	bool	CanProcess(InputEvent* a_event) = 0;											// 01
-		virtual	void	ProcessThumbstick(ThumbstickEvent* a_event, PlayerControls::Data024* a_arg2);	// 02
-		virtual	void	ProcessMouseMove(MouseMoveEvent* a_event, PlayerControls::Data024* a_arg2);		// 03
-		virtual	void	ProcessButton(ButtonEvent* a_event, PlayerControls::Data024* a_arg2);			// 04
+		virtual	bool	CanProcess(InputEvent* a_event) = 0;										// 01
+		virtual	void	ProcessThumbstick(ThumbstickEvent* a_event, MovementData* a_movementData);	// 02 - { return; }
+		virtual	void	ProcessMouseMove(MouseMoveEvent* a_event, MovementData* a_movementData);	// 03 - { return; }
+		virtual	void	ProcessButton(ButtonEvent* a_event, MovementData* a_movementData);			// 04 - { return; }
 
 		bool			IsEnabled() const;
 		void			Enable(bool a_enable = true);

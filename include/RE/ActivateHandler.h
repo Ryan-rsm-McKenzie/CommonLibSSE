@@ -18,11 +18,11 @@ namespace RE
 		inline static const void* RTTI = RTTI_ActivateHandler;
 
 
-		virtual ~ActivateHandler();																		// 00
+		virtual ~ActivateHandler();																	// 00
 
 		// override (PlayerInputHandler)
-		virtual	bool	CanProcess(InputEvent* a_event) override;										// 01
-		virtual	void	ProcessButton(ButtonEvent* a_event, PlayerControls::Data024* a_arg2) override;	// 04
+		virtual	bool	CanProcess(InputEvent* a_event) override;									// 01
+		virtual	void	ProcessButton(ButtonEvent* a_event, MovementData* a_movementData) override;	// 04
 
 
 		// members
