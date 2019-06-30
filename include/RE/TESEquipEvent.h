@@ -8,8 +8,8 @@ namespace RE
 	struct TESEquipEvent
 	{
 		TESObjectREFR*	akSource;		// 00
-		UInt32			formID;			// 08
-		UInt32			unk0C;			// 0C - formID of a ref handle
+		FormID			formID;			// 08
+		FormID			unk0C;			// 0C - formID of a ref handle
 		UInt16			uniqueID;		// 10
 		bool			isEquipping;	// 12
 		UInt8			pad13;			// 13

@@ -32,7 +32,7 @@ namespace RE
 		virtual void	Unk_11(void) override;							// 11
 		virtual void	Unk_12(void) override;							// 12
 		virtual void	InitItem() override;							// 13
-		virtual void	SetActorCause(UInt32& a_cause) override;		// 50
+		virtual void	SetActorCause(void* a_cause) override;			// 50
 		virtual void	Unk_6B(void) override;							// 6B
 		virtual void	Unk_90(void) override;							// 90 - { return 0; }
 

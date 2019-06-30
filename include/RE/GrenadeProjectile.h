@@ -31,7 +31,7 @@ namespace RE
 		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
 		virtual void	Unk_11(void) override;							// 11
 		virtual void	Unk_12(void) override;							// 12
-		virtual void	Unk_9F(void) override;							// 9F - { return unk1D8; }
+		virtual void*	GetDecalGroup() override;						// 9F - { return unk1D8; }
 		virtual void	Unk_A3(void) override;							// A3 - { return 1; }
 		virtual void	Unk_A8(void) override;							// A8
 		virtual void	Unk_A9(void) override;							// A9

@@ -13,7 +13,7 @@ namespace RE
 	}
 
 
-	void EquipManager::EquipItem(Actor* a_actor, TESForm* a_item, BaseExtraList* a_extraData, SInt32 a_count, BGSEquipSlot* a_equipSlot, bool a_withEquipSound, bool a_preventUnequip, bool a_showMsg, void* a_arg9)
+	void EquipManager::EquipItem(Actor* a_actor, TESForm* a_item, BaseExtraList* a_extraData, SInt32 a_count, BGSEquipSlot* a_equipSlot, bool a_withEquipSound, bool a_preventUnequip, bool a_showMsg, bool a_arg9)
 	{
 		using func_t = function_type_t<decltype(&EquipManager::EquipItem)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::EquipManager, EquipItem, func_t*);

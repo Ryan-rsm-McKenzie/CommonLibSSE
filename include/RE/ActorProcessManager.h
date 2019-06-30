@@ -52,7 +52,7 @@ namespace RE
 
 			UInt64							unk000;			// 000
 			UInt64							unk008;			// 008
-			float							unk010;			// 010
+			SInt32							shoutLevel;		// 010
 			UInt32							unk014;			// 014
 			UInt64							unk018;			// 018
 			UInt64							unk020;			// 020

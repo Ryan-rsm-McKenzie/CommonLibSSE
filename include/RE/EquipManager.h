@@ -17,7 +17,7 @@ namespace RE
 		/*
 		 * @param a_arg9 = 0
 		 */
-		void EquipItem(Actor* a_actor, TESForm* a_item, BaseExtraList* a_extraData, SInt32 a_count, BGSEquipSlot* a_equipSlot, bool a_withEquipSound, bool a_preventUnequip, bool a_showMsg, void* a_arg9 = 0);
+		void EquipItem(Actor* a_actor, TESForm* a_item, BaseExtraList* a_extraData, SInt32 a_count, BGSEquipSlot* a_equipSlot, bool a_withEquipSound, bool a_preventUnequip, bool a_showMsg, bool a_arg9 = 0);
 		/*
 		 * @param a_arg6 = true
 		 * @param a_arg8 = true
