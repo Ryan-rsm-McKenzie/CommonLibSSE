@@ -343,9 +343,6 @@
     <Filter Include="src\RE\Skyrim\Scaleform\GAtomic">
       <UniqueIdentifier>{328dce3d-8b87-4646-b822-3f13598ed31f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\RE\Skyrim\Scaleform\GFxEvent">
-      <UniqueIdentifier>{15fa7f3c-b3f5-4b67-a367-b8fa270cc305}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\RE\Skyrim\Scaleform\GFxLoader">
       <UniqueIdentifier>{5ed5e10a-c68f-4434-b6b9-499d7ca7a525}</UniqueIdentifier>
     </Filter>
@@ -429,9 +426,6 @@
     </Filter>
     <Filter Include="src\RE\Skyrim\Scaleform\GFxLog">
       <UniqueIdentifier>{82a0756e-add4-4d73-b90c-ef4bd09f7a72}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\Skyrim\Scaleform\BS">
-      <UniqueIdentifier>{245be1f7-7bc3-4f18-8713-d3292bc9b489}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\RE\Skyrim\TESForms\Gameplay">
       <UniqueIdentifier>{b7288ada-661d-4773-a738-8217cd6bf3d5}</UniqueIdentifier>
@@ -760,6 +754,12 @@
     <Filter Include="src\RE\Skyrim\SkyrimScript">
       <UniqueIdentifier>{4f968ef9-868a-4eee-91ff-cdd422ce022f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GHash">
+      <UniqueIdentifier>{cba0a4bd-cbbd-476a-a0b8-2ec4a55088f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Skyrim\Scaleform\GMath">
+      <UniqueIdentifier>{47c4968a-33ec-4494-a114-44a7a023c84f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -1086,19 +1086,10 @@
     <ClCompile Include="src\RE\NiTexture.cpp">
       <Filter>src\RE\Skyrim\NetImmerse\NiMain</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\FxDelegateHandler.cpp">
-      <Filter>src\RE\Skyrim\Scaleform\FxGameDelegate</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\GAtomic.cpp">
       <Filter>src\RE\Skyrim\Scaleform\GAtomic</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\GFxKeyboardState.cpp">
-      <Filter>src\RE\Skyrim\Scaleform\GFxEvent</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\GFxLoader.cpp">
-      <Filter>src\RE\Skyrim\Scaleform\GFxLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GFxState.cpp">
       <Filter>src\RE\Skyrim\Scaleform\GFxLoader</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\GFxStateBag.cpp">
@@ -1106,9 +1097,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\GFxTranslator.cpp">
       <Filter>src\RE\Skyrim\Scaleform\GFxLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GFxExternalInterface.cpp">
-      <Filter>src\RE\Skyrim\Scaleform\GFxPlayer</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\GFxMovie.cpp">
       <Filter>src\RE\Skyrim\Scaleform\GFxPlayer</Filter>
@@ -1135,9 +1123,6 @@
       <Filter>src\RE\Skyrim\Scaleform\GMemoryHeap</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\GRefCountImpl.cpp">
-      <Filter>src\RE\Skyrim\Scaleform\GRefCount</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\GRefCountImplCore.cpp">
       <Filter>src\RE\Skyrim\Scaleform\GRefCount</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\GRefCountNTSImpl.cpp">
@@ -1181,9 +1166,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\GFxLog.cpp">
       <Filter>src\RE\Skyrim\Scaleform\GFxLog</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\LoggingDisabler.cpp">
-      <Filter>src\RE\Skyrim\Scaleform\BS</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BGSLocation.cpp">
       <Filter>src\RE\Skyrim\TESForms\World</Filter>
@@ -1283,6 +1265,15 @@
     </ClCompile>
     <ClCompile Include="src\RE\BSScript\Internal\VirtualMachine.cpp">
       <Filter>src\RE\Skyrim\BSScript\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\AddCallbackVisitor.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\FxGameDelegate</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\FxDelegate.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\FxGameDelegate</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\RemoveCallbackVisitor.cpp">
+      <Filter>src\RE\Skyrim\Scaleform\FxGameDelegate</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -3589,6 +3580,45 @@
     </ClInclude>
     <ClInclude Include="include\RE\MovementData.h">
       <Filter>include\RE\Skyrim\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GHash.h">
+      <Filter>include\RE\Skyrim\Scaleform\GHash</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GAllocatorBaseGH.h">
+      <Filter>include\RE\Skyrim\Scaleform\GHash</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GConstructorMov.h">
+      <Filter>include\RE\Skyrim\Scaleform\GHash</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GHashNode.h">
+      <Filter>include\RE\Skyrim\Scaleform\GHash</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFixedSizeHash.h">
+      <Filter>include\RE\Skyrim\Scaleform\GHash</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GHashsetCachedNodeEntry.h">
+      <Filter>include\RE\Skyrim\Scaleform\GHash</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GHashsetCachedEntry.h">
+      <Filter>include\RE\Skyrim\Scaleform\GHash</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GHashAllocator.h">
+      <Filter>include\RE\Skyrim\Scaleform\GHash</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GHashSetBase.h">
+      <Filter>include\RE\Skyrim\Scaleform\GHash</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GHashSet.h">
+      <Filter>include\RE\Skyrim\Scaleform\GHash</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AddCallbackVisitor.h">
+      <Filter>include\RE\Skyrim\Scaleform\FxGameDelegate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\RemoveCallbackVisitor.h">
+      <Filter>include\RE\Skyrim\Scaleform\FxGameDelegate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GMath.h">
+      <Filter>include\RE\Skyrim\Scaleform\GMath</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

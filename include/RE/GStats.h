@@ -46,6 +46,7 @@ namespace RE
 			kGStat_EntryCount = 512
 		};
 	};
+	using GStatGroup = GStatGroups::GStatGroup;
 
 
 	enum class GHeapID : UPInt

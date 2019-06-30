@@ -1,8 +1,8 @@
 #pragma once
 
+#include <cassert>  // assert
 #include <cstddef>  // nullptr_t
 #include <type_traits>  // enable_if_t, is_convertible
-#include <utility>  // swap
 
 
 namespace RE
@@ -19,162 +19,209 @@ namespace RE
 		using element_type = T;
 
 
-		constexpr NiPointer() noexcept :
-			_object(0)
-		{}
+		constexpr NiPointer() noexcept;
+		constexpr NiPointer(std::nullptr_t) noexcept;
+		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0> explicit NiPointer(Y * a_ptr);
+		NiPointer(const NiPointer& a_r) noexcept;
+		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0> NiPointer(const NiPointer<Y> & a_r) noexcept;
+		NiPointer(NiPointer&& a_r) noexcept;
+		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0> NiPointer(NiPointer<Y> && a_r) noexcept;
 
+		~NiPointer();
 
-		constexpr NiPointer(std::nullptr_t) noexcept :
-			_object(0)
-		{}
+		NiPointer& operator=(const NiPointer& a_r) noexcept;
+		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0> NiPointer & operator=(const NiPointer<Y> & a_r) noexcept;
+		NiPointer& operator=(NiPointer&& a_r) noexcept;
+		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0> NiPointer & operator=(NiPointer<Y> && a_r) noexcept;
 
+		void reset() noexcept;
+		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0> void reset(Y * a_ptr);
 
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y, T>::value, int> = 0>
-		explicit NiPointer(Y* a_ptr) :
-			_object(a_ptr)
-		{
-			IncRefCount();
-		}
+		[[nodiscard]] constexpr element_type* get() const noexcept;
 
+		[[nodiscard]] constexpr T& operator*() const noexcept;
+		[[nodiscard]] constexpr T* operator->() const noexcept;
 
-		NiPointer(const NiPointer& a_r) noexcept :
-			_object(a_r._object)
-		{
-			IncRefCount();
-		}
-
-
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y, T>::value, int> = 0>
-		NiPointer(const NiPointer<Y>& a_r) noexcept :
-			_object(a_r._object)
-		{
-			IncRefCount();
-		}
-
-
-		NiPointer(NiPointer&& a_r) noexcept :
-			_object(a_r._object)
-		{
-			a_r._object = 0;
-		}
-
-
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y, T>::value, int> = 0>
-		NiPointer(NiPointer<Y>&& a_r) noexcept :
-			_object(a_r._object)
-		{
-			a_r._object = 0;
-		}
-
-
-		~NiPointer()
-		{
-			DecRefCount();
-		}
-
-
-		NiPointer& operator=(const NiPointer& a_r) noexcept
-		{
-			DecRefCount();
-			_object = a_r._object;
-			IncRefCount();
-			return *this;
-		}
-
-
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y, T>::value, int> = 0>
-		NiPointer& operator=(const NiPointer<Y>& a_r) noexcept
-		{
-			DecRefCount();
-			_object = a_r._object;
-			IncRefCount();
-			return *this;
-		}
-
-
-		NiPointer& operator=(NiPointer&& a_r) noexcept
-		{
-			DecRefCount();
-			_object = a_r._object;
-			a_r._object = 0;
-		}
-
-
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y, T>::value, int> = 0>
-		NiPointer& operator=(NiPointer<Y>&& a_r) noexcept
-		{
-			DecRefCount();
-			_object = a_r._object;
-		}
-
-
-		void reset() noexcept
-		{
-			if (_object) {
-				_object->DecRefCount();
-				_object = 0;
-			}
-		}
-
-
-		template<class Y, typename std::enable_if_t<std::is_convertible<Y, T>::value, int> = 0>
-		void reset(Y* a_ptr)
-		{
-			DecRefCount();
-			_object = a_ptr;
-			IncRefCount();
-		}
-
-
-		void swap(NiPointer& a_r) noexcept
-		{
-			std::swap(_object, a_r._object);
-		}
-
-
-		element_type* get() const noexcept
-		{
-			return _object;
-		}
-
-
-		T& operator*() const noexcept
-		{
-			return *get();
-		}
-
-
-		T* operator->() const noexcept
-		{
-			return get();
-		}
-
-
-		explicit operator bool() const noexcept
-		{
-			return get() != 0;
-		}
+		[[nodiscard]] explicit constexpr operator bool() const noexcept;
 
 	protected:
-		void IncRefCount()
-		{
-			if (_object) {
-				_object->IncRefCount();
-			}
-		}
-
-
-		void DecRefCount()
-		{
-			if (_object) {
-				_object->DecRefCount();
-			}
-		}
+		void IncRefCount();
+		void DecRefCount();
 
 
 		// members
-		T* _object;	// 0
+		T* _ptr;	// 0
 	};
-	using TestNiPointer = NiPointer<std::size_t>;
-	STATIC_ASSERT(sizeof(TestNiPointer) == 0x8);
+	STATIC_ASSERT(sizeof(NiPointer<void*>) == 0x8);
+
+
+	template <class T>
+	constexpr NiPointer<T>::NiPointer() noexcept :
+		_ptr(0)
+	{}
+
+
+	template <class T>
+	constexpr NiPointer<T>::NiPointer(std::nullptr_t) noexcept :
+		_ptr(0)
+	{}
+
+
+	template <class T>
+	template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int>>
+	NiPointer<T>::NiPointer(Y* a_ptr) :
+		_ptr(a_ptr)
+	{
+		IncRefCount();
+	}
+
+
+	template <class T>
+	NiPointer<T>::NiPointer(const NiPointer& a_r) noexcept :
+		_ptr(a_r._ptr)
+	{
+		IncRefCount();
+	}
+
+
+	template <class T>
+	template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int>>
+	NiPointer<T>::NiPointer(const NiPointer<Y>& a_r) noexcept :
+		_ptr(a_r._ptr)
+	{
+		IncRefCount();
+	}
+
+
+	template <class T>
+	NiPointer<T>::NiPointer(NiPointer&& a_r) noexcept :
+		_ptr(std::move(a_r._ptr))
+	{
+		a_r._ptr = 0;
+	}
+
+
+	template <class T>
+	template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int>>
+	NiPointer<T>::NiPointer(NiPointer<Y>&& a_r) noexcept :
+		_ptr(std::move(a_r._ptr))
+	{
+		a_r._ptr = 0;
+	}
+
+
+	template <class T>
+	NiPointer<T>::~NiPointer()
+	{
+		DecRefCount();
+	}
+
+
+	template <class T>
+	auto NiPointer<T>::operator=(const NiPointer& a_r) noexcept
+		-> NiPointer &
+	{
+		reset(a_r._ptr);
+		return *this;
+	}
+
+
+	template <class T>
+	template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int>>
+	auto NiPointer<T>::operator=(const NiPointer<Y>& a_r) noexcept
+		-> NiPointer &
+	{
+		reset(a_r._ptr);
+		return *this;
+	}
+
+
+	template <class T>
+	auto NiPointer<T>::operator=(NiPointer&& a_r) noexcept
+		-> NiPointer &
+	{
+		DecRefCount();
+		_ptr = std::move(a_r._ptr);
+		a_r._ptr = 0;
+		return *this;
+	}
+
+
+	template <class T>
+	template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int>>
+	auto NiPointer<T>::operator=(NiPointer<Y>&& a_r) noexcept
+		-> NiPointer &
+	{
+		DecRefCount();
+		_ptr = std::move(a_r._ptr);
+		a_r._ptr = 0;
+		return *this;
+	}
+
+
+	template <class T>
+	void NiPointer<T>::reset() noexcept
+	{
+		if (_ptr) {
+			_ptr->DecRefCount();
+			_ptr = 0;
+		}
+	}
+
+
+	template <class T>
+	template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int>>
+	void NiPointer<T>::reset(Y* a_ptr)
+	{
+		_ptr = a_ptr;
+		IncRefCount();
+	}
+
+
+	template <class T>
+	[[nodiscard]] constexpr auto NiPointer<T>::get() const noexcept
+		-> element_type*
+	{
+		return _ptr;
+	}
+
+
+	template <class T>
+	[[nodiscard]] constexpr T& NiPointer<T>::operator*() const noexcept
+	{
+		assert(_ptr != 0);
+		return *get();
+	}
+
+
+	template <class T>
+	[[nodiscard]] constexpr T* NiPointer<T>::operator->() const noexcept
+	{
+		return get();
+	}
+
+
+	template <class T>
+	[[nodiscard]] constexpr NiPointer<T>::operator bool() const noexcept
+	{
+		return _ptr != 0;
+	}
+
+
+	template <class T>
+	void NiPointer<T>::IncRefCount()
+	{
+		if (_ptr) {
+			_ptr->IncRefCount();
+		}
+	}
+
+
+	template <class T>
+	void NiPointer<T>::DecRefCount()
+	{
+		if (_ptr) {
+			_ptr->DecRefCount();
+		}
+	}
 }

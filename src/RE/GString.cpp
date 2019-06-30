@@ -2,15 +2,27 @@
 
 #include "skse64/ScaleformTypes.h"  // GString
 
-#include <minwindef.h>  // InterlockedIncrement
-
 #include <cassert>  // assert
+#include <cstring>  // strlen, memcpy
 
 #include "RE/GMemory.h"  // GFREE
 
 
 namespace RE
 {
+	GString::DataDesc::DataDesc() :
+		capacity(1),
+		refCount(1),
+		data{ 0 }
+	{}
+
+
+	GString::DataDesc::~DataDesc()
+	{
+		Release();
+	}
+
+
 	void GString::DataDesc::AddRef()
 	{
 		InterlockedIncrement(&refCount);
@@ -25,21 +37,25 @@ namespace RE
 	}
 
 
-	UPInt GString::DataDesc::GetSize() const
+	UPInt GString::DataDesc::GetCapacity() const
 	{
-		return size & ~FlagConstants::kLengthFlagBit;
+		return capacity & ~kFullFlag;
 	}
 
 
-	UPInt GString::DataDesc::GetLengthFlag()  const
+	bool GString::DataDesc::IsFull() const
 	{
-		return size & FlagConstants::kLengthFlagBit;
+		return (capacity & kFullFlag) != 0;
 	}
 
 
-	bool GString::DataDesc::LengthIsSize() const
+	void GString::DataDesc::SetFull(bool a_set)
 	{
-		return GetLengthFlag() != 0;
+		if (a_set) {
+			capacity |= kFullFlag;
+		} else {
+			capacity &= ~kFullFlag;
+		}
 	}
 
 
@@ -50,18 +66,214 @@ namespace RE
 
 	GString::GString() :
 		_dataDesc()
-	{}
-
-
-	GString::GString(const char* a_s)
 	{
-		ctor_internal(a_s);
+		std::string_view view("");
+		operator=(view);
+	}
+
+
+	GString::GString(const GString& a_rhs) :
+		_dataDesc()
+	{
+		auto desc = a_rhs.get_desc();
+		set_desc(desc);
+		desc->AddRef();
+	}
+
+
+	GString::GString(GString&& a_rhs) :
+		_dataDesc()
+	{
+		auto desc = a_rhs.get_desc();
+		set_desc(desc);
+		a_rhs.set_desc(0);
+	}
+
+
+	GString::GString(const char* a_rhs) :
+		_dataDesc()
+	{
+		ctor_internal(a_rhs);
 	}
 
 
 	GString::~GString()
 	{
-		GetData()->Release();
+		auto desc = get_desc();
+		if (desc) {
+			desc->Release();
+		}
+	}
+
+
+	GString& GString::operator=(const GString& a_rhs)
+	{
+		auto desc = get_desc();
+		if (desc) {
+			desc->Release();
+		}
+		desc = a_rhs.get_desc();
+		set_desc(desc);
+		if (desc) {
+			desc->AddRef();
+		}
+		return *this;
+	}
+
+
+	GString& GString::operator=(GString&& a_rhs)
+	{
+		auto desc = get_desc();
+		if (desc) {
+			desc->Release();
+		}
+		desc = a_rhs.get_desc();
+		set_desc(desc);
+		a_rhs.set_desc(0);
+		return *this;
+	}
+
+
+	GString& GString::operator=(const char* a_rhs)
+	{
+		std::string_view view(a_rhs);
+		return operator=(view);
+	}
+
+
+	GString& GString::operator=(const std::string_view& a_rhs)
+	{
+		auto desc = get_desc();
+		if (desc) {
+			desc->Release();
+		}
+
+		auto len = a_rhs.length();
+		auto memSize = len + sizeof(UPInt) + sizeof(SInt32) + sizeof(char);
+		desc = static_cast<DataDesc*>(GMemory::Alloc(memSize, alignof(DataDesc)));
+		desc->capacity = len;
+		desc->SetFull(true);
+		desc->refCount = 1;
+		std::memcpy(desc->data, a_rhs.data(), len);
+		desc->data[len] = '\0';
+
+		set_desc(desc);
+
+		return *this;
+	}
+
+
+	auto GString::operator[](size_type a_pos)
+		-> reference
+	{
+		auto desc = get_desc();
+		assert(desc != 0);
+		return desc->data[a_pos];
+	}
+
+
+	auto GString::operator[](size_type a_pos) const
+		-> const_reference
+	{
+		auto desc = get_desc();
+		assert(desc != 0);
+		return desc->data[a_pos];
+	}
+
+
+	char& GString::front()
+	{
+		return operator[](0);
+	}
+
+
+	const char& GString::front() const
+	{
+		return operator[](0);
+	}
+
+
+	char& GString::back()
+	{
+		return operator[](size() - 1);
+	}
+
+
+	const char& GString::back() const
+	{
+		return operator[](size() - 1);
+	}
+
+
+	const char* GString::data() const noexcept
+	{
+		auto desc = get_desc();
+		return desc ? desc->data : "";
+	}
+
+
+	char* GString::data() noexcept
+	{
+		auto desc = get_desc();
+		return desc ? desc->data : "";
+	}
+
+
+	const char* GString::c_str() const noexcept
+	{
+		return data();
+	}
+
+
+	GString::operator std::string_view() const noexcept
+	{
+		return { data(), size() };
+	}
+
+
+	[[nodiscard]] bool GString::empty() const noexcept
+	{
+		return size() == 0;
+	}
+
+
+	auto GString::size() const noexcept
+		-> size_type
+	{
+		auto desc = get_desc();
+		if (!desc) {
+			return 0;
+		} else {
+			return desc->IsFull() ? desc->capacity : std::strlen(desc->data);
+		}
+	}
+
+
+	auto GString::length() const noexcept
+		-> size_type
+	{
+		return size();
+	}
+
+
+	void GString::clear() noexcept
+	{
+		auto desc = get_desc();
+		if (desc) {
+			desc->data[0] = '\0';
+		}
+	}
+
+
+	UPInt GString::BernsteinHashFunction(const void* a_dataIn, UPInt a_size, UPInt a_seed)
+	{
+		const UInt8* dataIn = static_cast<const UInt8*>(a_dataIn);
+		UPInt hash;
+		UInt8 byte;
+		for (hash = a_seed; a_size; hash = byte ^ 33 * hash) {
+			byte = *(dataIn + a_size-- - 1);
+		}
+		return hash;
 	}
 
 
@@ -73,26 +285,26 @@ namespace RE
 	}
 
 
-	GString::HeapType GString::GetHeapType() const
+	GString::HeapType GString::heap_type() const
 	{
-		return static_cast<HeapType>(_dataDesc.heapTypeBits & HeapType::kMask);
+		return static_cast<HeapType>(_dataDesc.heapType & HeapType::kMask);
 	}
 
 
-	GString::DataDesc* GString::GetData() const
+	GString::DataDesc* GString::get_desc() const
 	{
 		DataDescUnion desc;
 		desc.data = _dataDesc.data;
-		desc.heapTypeBits = (desc.heapTypeBits & ~HeapType::kMask);
+		desc.heapType = (desc.heapType & ~HeapType::kMask);
 		return desc.data;
 	}
 
 
-	void GString::SetData(DataDesc* a_desc)
+	void GString::set_desc(DataDesc* a_desc)
 	{
-		HeapType ht = GetHeapType();
+		HeapType type = heap_type();
 		_dataDesc.data = a_desc;
-		assert((_dataDesc.heapTypeBits & HeapType::kMask) == HeapType::kGlobal);
-		_dataDesc.heapTypeBits |= ht;
+		assert((_dataDesc.heapType & HeapType::kMask) == static_cast<HeapType>(0));
+		_dataDesc.heapType |= type;
 	}
 }

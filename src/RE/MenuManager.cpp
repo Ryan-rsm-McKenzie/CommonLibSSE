@@ -23,9 +23,9 @@ namespace RE
 	}
 
 
-	IMenu* MenuManager::GetMenu(BSFixedString& a_menuName)
+	IMenu* MenuManager::GetMenu(const BSFixedString& a_menuName)
 	{
-		if (!a_menuName.c_str()) {
+		if (a_menuName.empty()) {
 			return 0;
 		}
 

@@ -12,9 +12,9 @@ namespace RE
 
 
 		constexpr GRefCountImplCore() : refCount(1), pad0C(0) {}
-		virtual ~GRefCountImplCore();	// 00
+		virtual ~GRefCountImplCore() = default;	// 00
 
-		static void			CheckInvalidDelete(GRefCountImplCore*);
+		static void			CheckInvalidDelete(GRefCountImplCore*) {};
 		constexpr SInt32	GetRefCount() const { return refCount; }
 
 	protected:

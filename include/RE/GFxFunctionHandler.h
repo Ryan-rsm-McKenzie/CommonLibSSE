@@ -32,12 +32,9 @@ namespace RE
 		STATIC_ASSERT(sizeof(Params) == 0x38);
 
 
-		virtual ~GFxFunctionHandler();					// 00
+		virtual ~GFxFunctionHandler() = default;		// 00
 
 		// add
 		virtual void Call(const Params& a_params) = 0;	// 01
 	};
-
-
-	typedef GFxFunctionHandler GFxFunctionContext;
 }

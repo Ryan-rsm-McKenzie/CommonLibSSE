@@ -71,7 +71,7 @@ namespace RE
 		{}
 
 
-		virtual ~GFxState();	// 00
+		virtual ~GFxState() = default;	// 00
 
 
 		// GetStateType obtains the StateType of this state. The state type of a given object never changes after construction

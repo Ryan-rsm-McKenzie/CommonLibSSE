@@ -1,6 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_FxDelegateHandler
+#include "skse64/GameRTTI.h"  // RTTI_FxDelegateHandler, RTTI_FxDelegateHandler__CallbackProcessor
 
 #include "RE/GRefCountBase.h"  // GRefCountBase
 #include "RE/GStats.h"  // GStatGroups
@@ -24,7 +24,10 @@ namespace RE
 		class CallbackProcessor
 		{
 		public:
-			virtual ~CallbackProcessor();
+			inline static const void* RTTI = RTTI_FxDelegateHandler__CallbackProcessor;
+
+
+			virtual ~CallbackProcessor() = default;											// 00
 
 			// add
 			virtual void Process(const GString& a_methodName, CallbackFn* a_method) = 0;	// 01
@@ -32,7 +35,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(CallbackProcessor) == 0x8);
 
 
-		virtual ~FxDelegateHandler();							// 00
+		virtual ~FxDelegateHandler() = default;					// 00
 
 		// add
 		virtual void Accept(CallbackProcessor* a_cbReg) = 0;	// 01

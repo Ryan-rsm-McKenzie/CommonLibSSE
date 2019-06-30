@@ -18,7 +18,7 @@ namespace RE
 		class IListener
 		{
 		public:
-			virtual ~IListener();																										// 00
+			virtual ~IListener() = default;																								// 00
 
 			// add
 			virtual void OnKeyDown(GASStringContext* a_sc, int a_code, UInt8 a_ascii, UInt32 a_charCode, UInt8 a_keyboardIndex) = 0;	// 01

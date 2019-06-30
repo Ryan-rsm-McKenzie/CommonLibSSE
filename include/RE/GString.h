@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstring>  // strcmp
+
 
 namespace RE
 {
@@ -8,10 +10,16 @@ namespace RE
 
 	class GString
 	{
-		friend class GStringLH;
-		friend class GStringDH;
 	public:
-		enum class HeapType : UInt32
+		using value_type = char;	// can also be wchar_t
+		using size_type = UPInt;
+		using reference = value_type&;
+		using const_reference = const value_type&;
+		using pointer = value_type*;
+		using const_pointer = const value_type*;
+
+
+		enum class HeapType : UPInt
 		{
 			kGlobal = 0,	// Global
 			kLocal = 1,		// Address-based
@@ -22,27 +30,34 @@ namespace RE
 
 		struct FlagConstants
 		{
-#pragma warning(push)
-#pragma warning(disable: 4293)
 			enum FlagConstant : UPInt
 			{
-				kLengthFlagBit = 1 << (sizeof(UPInt) * 8 - 1)
+				kReserveIsSizeShift = static_cast<UPInt>((sizeof(UPInt) * 8 - 1))	// indicates reserve == size
 			};
 		};
-#pragma warning(pop)
+		using FlagConstant = FlagConstants::FlagConstant;
 
 
 		struct DataDesc
 		{
+#pragma warning(push)
+#pragma warning(disable: 4293)	// '<<': shift count negative or too big, undefined behavior
+			enum : UPInt { kFullFlag = static_cast<UPInt>(1 << FlagConstant::kReserveIsSizeShift) };
+#pragma warning(pop)
+
+
+			DataDesc();
+			~DataDesc();
+
 			void	AddRef();
 			void	Release();
-			UPInt	GetSize() const;
-			UPInt	GetLengthFlag() const;
-			bool	LengthIsSize() const;
+			UPInt	GetCapacity() const;
+			bool	IsFull() const;
+			void	SetFull(bool a_set);
 
 
 			// members
-			UPInt			size;		// 00
+			UPInt			capacity;	// 00
 			volatile SInt32	refCount;	// 08
 			char			data[1];	// 0C
 		};
@@ -55,20 +70,72 @@ namespace RE
 
 
 			DataDesc*	data;
-			HeapType	heapTypeBits;
+			HeapType	heapType;
 		};
 		STATIC_ASSERT(sizeof(DataDescUnion) == 0x8);
 
 
+		// (constructor)
 		GString();
-		GString(const char* a_s);
+		GString(const GString& a_rhs);
+		GString(GString&& a_rhs);
+		GString(const char* a_rhs);
+		GString(const std::string_view& a_rhs);
+
+		// (destructor)
 		~GString();
+
+		// operator=
+		GString& operator=(const GString& a_rhs);
+		GString& operator=(GString&& a_rhs);
+		GString& operator=(const char* a_rhs);
+		GString& operator=(const std::string_view& a_rhs);
+
+		// element access
+		reference operator[](size_type a_pos);
+		const_reference operator[](size_type a_pos) const;
+
+		char& front();
+		const char& front() const;
+
+		char& back();
+		const char& back() const;
+
+		const char* data() const noexcept;
+		char* data() noexcept;
+
+		const char* c_str() const noexcept;
+
+		operator std::string_view() const noexcept;
+
+		// Capacity
+		[[nodiscard]] bool empty() const noexcept;
+
+		size_type size() const noexcept;
+
+		size_type length() const noexcept;
+
+		// Operations
+		void clear() noexcept;
+
+		inline friend bool operator==(const GString& a_lhs, const char* a_rhs) { return (a_lhs.data() == a_rhs || std::strcmp(a_lhs.data(), a_rhs) == 0); }
+		inline friend bool operator!=(const GString& a_lhs, const char* a_rhs) { return !(a_lhs == a_rhs); }
+		inline friend bool operator==(const char* a_lhs, const GString& a_rhs) { return a_rhs == a_lhs; }
+		inline friend bool operator!=(const char* a_lhs, const GString& a_rhs) { return !(a_lhs == a_rhs); }
+		inline friend bool operator==(const GString& a_lhs, const GString& a_rhs) { return a_lhs == a_rhs.c_str(); }
+		inline friend bool operator!=(const GString& a_lhs, const GString& a_rhs) { return !(a_lhs == a_rhs); }
+		inline friend bool operator==(const GString& a_lhs, const std::string_view& a_rhs) { return a_lhs == a_rhs.data(); }
+		inline friend bool operator!=(const GString& a_lhs, const std::string_view& a_rhs) { return !(a_lhs == a_rhs); }
+		inline friend bool operator==(const std::string_view& a_lhs, const GString& a_rhs) { return a_rhs == a_lhs; }
+		inline friend bool operator!=(const std::string_view& a_lhs, const GString& a_rhs) { return !(a_lhs == a_rhs); }
+
+		static UPInt BernsteinHashFunction(const void* a_dataIn, UPInt a_size, UPInt a_seed = 5381);
 
 	protected:
 		GString*	ctor_internal(const char* a_s);
-		HeapType	GetHeapType() const;
-		DataDesc*	GetData() const;
-		void		SetData(DataDesc* a_desc);
+		HeapType	heap_type() const;
+		DataDesc*	get_desc() const;
+		void		set_desc(DataDesc* a_desc);
 
 
 		// members

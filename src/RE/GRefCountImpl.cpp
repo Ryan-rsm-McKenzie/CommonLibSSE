@@ -1,7 +1,5 @@
 #include "RE/GRefCountImpl.h"
 
-#include <winnt.h>  // InterlockedIncrement, InterlockedDecrement
-
 
 namespace RE
 {

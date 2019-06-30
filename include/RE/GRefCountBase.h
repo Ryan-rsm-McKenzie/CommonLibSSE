@@ -2,21 +2,20 @@
 
 #include "RE/GRefCountImpl.h"  // GRefCountImpl
 #include "RE/GRefCountBaseStatImpl.h"  // GRefCountBaseStatImpl
-#include "RE/BSFixedString.h"
 
 
 namespace RE
 {
 	// Overrides new/delete operators to use MemoryHeap
-	template <class C, UInt32 Stat>
-	class GRefCountBase : public GRefCountBaseStatImpl<GRefCountImpl, Stat>
+	template <class T, UInt32 STAT>
+	class GRefCountBase : public GRefCountBaseStatImpl<GRefCountImpl, STAT>
 	{
 	public:
-		enum { kStatType = Stat };
+		enum { kStatType = STAT };
 
 
 		constexpr GRefCountBase() :
-			GRefCountBaseStatImpl<GRefCountImpl, Stat>()
+			GRefCountBaseStatImpl<GRefCountImpl, STAT>()
 		{}
 	};
 }

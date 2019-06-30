@@ -72,8 +72,8 @@ namespace RE
 		BSTEventSource<MenuModeChangeEvent>*	GetMenuModeChangeEventSource();
 		bool									GameIsPaused();
 		bool									CrosshairIsPaused();
-		IMenu*									GetMenu(BSFixedString& a_menuName);
-		template <class T> T*					GetMenu(BSFixedString& a_menuName);
+		IMenu*									GetMenu(const BSFixedString& a_menuName);
+		template <class T> T*					GetMenu(const BSFixedString& a_menuName);
 
 
 		// members
@@ -100,7 +100,7 @@ namespace RE
 
 
 	template <class T>
-	inline T* MenuManager::GetMenu(BSFixedString& a_menuName)
+	inline T* MenuManager::GetMenu(const BSFixedString& a_menuName)
 	{
 		return static_cast<T*>(GetMenu(a_menuName));
 	}
