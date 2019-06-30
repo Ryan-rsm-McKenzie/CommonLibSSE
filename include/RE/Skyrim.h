@@ -1,3 +1,5 @@
+#pragma once
+
 #include "RE/AbsorbEffect.h"
 #include "RE/ActivateHandler.h"
 #include "RE/ActiveEffect.h"
