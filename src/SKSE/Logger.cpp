@@ -95,9 +95,9 @@ namespace SKSE
 		std::va_list args2;
 		va_copy(args2, args1);
 
-		std::vector<char> buf(std::snprintf(0, 0, a_format, args1) + 1);
+		std::vector<char> buf(std::vsnprintf(0, 0, a_format, args1) + 1);
 		va_end(args1);
-		std::snprintf(buf.data(), buf.size(), a_format, args2);
+		std::vsnprintf(buf.data(), buf.size(), a_format, args2);
 		va_end(args2);
 
 		_file << buf.data() << '\n';

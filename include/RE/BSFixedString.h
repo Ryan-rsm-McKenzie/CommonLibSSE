@@ -13,10 +13,7 @@ namespace RE
 	public:
 		using value_type = char;
 		using size_type = UInt32;
-		using reference = value_type&;
 		using const_reference = const value_type&;
-		using pointer = value_type*;
-		using const_pointer = const value_type*;
 
 
 		// (constructor)
@@ -36,9 +33,9 @@ namespace RE
 		BSFixedString& operator=(const std::string_view& a_rhs);
 
 		// Element access
-		const_reference	at(size_type a_pos) const;
+		const_reference at(size_type a_pos) const;
 
-		const_reference	operator[](size_type a_pos) const;
+		const_reference operator[](size_type a_pos) const;
 
 		const char& front() const;
 
