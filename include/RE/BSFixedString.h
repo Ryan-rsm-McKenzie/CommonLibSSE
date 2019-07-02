@@ -45,19 +45,19 @@ namespace RE
 
 		const char* c_str() const noexcept;
 
-		operator std::string_view() const noexcept;
+		operator std::string_view() const;
 
 		// Capacity
-		bool empty() const noexcept;
+		bool empty() const;
 
-		size_type size() const noexcept;
+		size_type size() const;
 
-		size_type length() const noexcept;
+		size_type length() const;
 
 		static size_type max_size() noexcept;
 
 		// Operations
-		void clear() noexcept;
+		void clear();
 
 		int compare(const BSFixedString& a_rhs) const noexcept;
 		int compare(const char* a_rhs) const;

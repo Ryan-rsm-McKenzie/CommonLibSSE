@@ -171,9 +171,9 @@ namespace RE
 		virtual void*			Alloc(UPInt a_size, UPInt a_align) = 0;									// 0A
 		virtual void*			Realloc(void* a_oldPtr, UPInt a_newSize) = 0;							// 0B
 		virtual void			Free(void* a_ptr) = 0;													// 0C
-		virtual void*			AllocAutoHeap(const void* a_thisPtr, UPInt a_size) = 0;					// 0D
-		virtual void*			AllocAutoHeap(const void* a_thisPtr, UPInt a_size, UPInt a_align) = 0;	// 0E
-		virtual GMemoryHeap*	GetAllocHeap(const void* a_thisPtr) = 0;								// 0F
+		virtual void*			AllocAutoHeap(const void* a_this, UPInt a_size) = 0;					// 0D
+		virtual void*			AllocAutoHeap(const void* a_this, UPInt a_size, UPInt a_align) = 0;		// 0E
+		virtual GMemoryHeap*	GetAllocHeap(const void* a_this) = 0;									// 0F
 		virtual UPInt			GetUsableSize(const void* a_ptr) = 0;									// 10
 		virtual void*			AllocSysDirect(UPInt a_size) = 0;										// 11
 		virtual void			FreeSysDirect(void* a_ptr, UPInt a_size) = 0;							// 12
@@ -183,7 +183,7 @@ namespace RE
 		virtual UPInt			GetUsedSpace() const = 0;												// 16
 		virtual UPInt			GetTotalUsedSpace() const = 0;											// 17
 		virtual void			GetRootStats(RootStats* a_stats) = 0;									// 18
-		virtual void			VisitMem(GHeapMemVisitor* a_visitor, unsigned a_flags) = 0;				// 19
+		virtual void			VisitMem(GHeapMemVisitor* a_visitor, UInt32 a_flags) = 0;				// 19
 		virtual void			VisitRootSegments(GHeapSegVisitor* a_visitor) = 0;						// 1A
 		virtual void			VisitHeapSegments(GHeapSegVisitor* a_visitor) const = 0;				// 1B
 		virtual void			SetTracer(HeapTracer* a_tracer) = 0;									// 1C - { return; }
@@ -222,7 +222,7 @@ namespace RE
 		void					CheckIntegrity();
 
 	protected:
-		typedef GList<GMemoryHeap> ChildListType;
+		using ChildListType = GList<GMemoryHeap>;
 
 
 		// members

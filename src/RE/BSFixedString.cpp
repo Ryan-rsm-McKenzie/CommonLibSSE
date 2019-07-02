@@ -56,12 +56,20 @@ namespace RE
 
 	BSFixedString& BSFixedString::operator=(const BSFixedString& a_rhs)
 	{
+		if (this == &a_rhs) {
+			return *this;
+		}
+
 		return *set_copy(a_rhs);
 	}
 
 
 	BSFixedString& BSFixedString::operator=(BSFixedString&& a_rhs)
 	{
+		if (this == &a_rhs) {
+			return *this;
+		}
+
 		if (_data) {
 			dtor();
 		}
@@ -131,19 +139,19 @@ namespace RE
 	}
 
 
-	BSFixedString::operator std::string_view() const noexcept
+	BSFixedString::operator std::string_view() const
 	{
 		return { data(), size() };
 	}
 
 
-	bool BSFixedString::empty() const noexcept
+	bool BSFixedString::empty() const
 	{
 		return size() == 0;
 	}
 
 
-	auto BSFixedString::size() const noexcept
+	auto BSFixedString::size() const
 		-> size_type
 	{
 		size_type len = 0;
@@ -155,7 +163,7 @@ namespace RE
 	}
 
 
-	auto BSFixedString::length() const noexcept
+	auto BSFixedString::length() const
 		-> size_type
 	{
 		return size();
@@ -169,7 +177,7 @@ namespace RE
 	}
 
 
-	void BSFixedString::clear() noexcept
+	void BSFixedString::clear()
 	{
 		set_cstr("");
 	}
