@@ -72,21 +72,21 @@ namespace RE
 
 		bool				HasType(UInt32 a_type) const;
 		bool				HasType(ExtraDataType a_type) const;
-		template<typename T>
+		template <class T>
 		inline bool			HasType() const
 		{
 			return HasType(T::kExtraTypeID);
 		}
 		BSExtraData*		GetByType(UInt32 a_type) const;
 		BSExtraData*		GetByType(ExtraDataType a_type) const;
-		template<typename T>
+		template <class T>
 		inline T*			GetByType() const
 		{
 			return static_cast<T*>(GetByType(T::kExtraTypeID));
 		}
 		bool				Remove(UInt8 a_type, BSExtraData* a_toRemove);
 		bool				Remove(ExtraDataType a_type, BSExtraData* a_toRemove);
-		template<typename T>
+		template <class T>
 		inline bool			Remove(T* a_toRemove)
 		{
 			return Remove(T::kExtraTypeID, a_toRemove);
