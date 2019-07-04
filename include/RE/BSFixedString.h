@@ -59,9 +59,6 @@ namespace RE
 		// Operations
 		void clear();
 
-		int compare(const BSFixedString& a_rhs) const noexcept;
-		int compare(const char* a_rhs) const;
-
 		inline friend bool operator==(const BSFixedString& a_lhs, const char* a_rhs) { return a_lhs._data == a_rhs || _stricmp(a_lhs._data, a_rhs) == 0; }
 		inline friend bool operator!=(const BSFixedString& a_lhs, const char* a_rhs) { return !(a_lhs == a_rhs); }
 		inline friend bool operator==(const char* a_lhs, const BSFixedString& a_rhs) { return a_rhs == a_lhs; }
@@ -82,8 +79,6 @@ namespace RE
 		void			dtor();
 		BSFixedString*	set_cstr(const char* a_rhs);
 		BSFixedString*	set_copy(const BSFixedString& a_rhs);
-		void			assert_out_of_range(size_type a_index, const char* a_func) const;
-		void			assert_length_error(size_type a_count, const char* a_func) const;
 
 
 		// members

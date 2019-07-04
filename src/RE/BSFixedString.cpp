@@ -183,18 +183,6 @@ namespace RE
 	}
 
 
-	int BSFixedString::compare(const BSFixedString& a_str) const noexcept
-	{
-		return _stricmp(data(), a_str.data());
-	}
-
-
-	int BSFixedString::compare(const char* a_s) const
-	{
-		return _stricmp(data(), a_s);
-	}
-
-
 	BSFixedString* BSFixedString::ctor_cstr(const char* a_rhs)
 	{
 		using func_t = function_type_t<decltype(&BSFixedString::ctor_cstr)>;
@@ -232,30 +220,5 @@ namespace RE
 		using func_t = function_type_t<decltype(&BSFixedString::set_copy)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSFixedString, Set_ref, func_t*);
 		return func(this, a_rhs);
-	}
-
-
-	void BSFixedString::assert_out_of_range(size_type a_index, const char* a_func) const
-	{
-		if (a_index > size()) {
-			std::string err = a_func;
-			err += ": ";
-			err += MAKE_STR(a_index);
-			err += "(which is " + std::to_string(a_index) + ") > ";
-			err += MAKE_STR(this->size());
-			err += " (which is" + std::to_string(this->size()) + ")";
-			throw std::out_of_range(err);
-		}
-	}
-
-
-	void BSFixedString::assert_length_error(size_type a_count, const char* a_func) const
-	{
-		if (size() + a_count > max_size()) {
-			std::string err = a_func;
-			err += ": operation would result in ";
-			err += MAKE_STR(size() > max_size());
-			throw std::length_error(err);
-		}
 	}
 }

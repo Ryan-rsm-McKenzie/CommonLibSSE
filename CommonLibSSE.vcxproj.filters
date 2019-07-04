@@ -754,6 +754,18 @@
     <Filter Include="include\RE\TESForms\Regions">
       <UniqueIdentifier>{4ec10876-b2e2-4669-824a-cc18e2ef7153}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Animation\BSIRagdollDriver">
+      <UniqueIdentifier>{99802223-d8a9-4f68-b36c-8a13575a6ffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Animation\BSAnimationGraphChannel">
+      <UniqueIdentifier>{8db935fc-2727-4998-8725-1576dbf25c03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Animation\IAnimationGraphManagerHolder">
+      <UniqueIdentifier>{6a7699ad-c52f-4351-bb29-ce2880eacf07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Animation\IAnimationGraphManagerHolder\SimpleAnimationGraphManagerHolder">
+      <UniqueIdentifier>{db421c55-374f-4401-8e07-52a4c1eceeb5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -1271,9 +1283,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
-      <Filter>include\RE\Animation</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\PlayerControls.h">
       <Filter>include\RE\BSDevices</Filter>
     </ClInclude>
@@ -1517,12 +1526,6 @@
     <ClInclude Include="include\RE\ExtraEnchantment.h">
       <Filter>include\RE\ExtraData</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BShkbAnimationGraph.h">
-      <Filter>include\RE\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSIRagdollDriver.h">
-      <Filter>include\RE\Animation</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BGSMoviePlayer.h">
       <Filter>include\RE\BSAudio</Filter>
     </ClInclude>
@@ -1554,12 +1557,6 @@
       <Filter>include\RE\ExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSAnimationGraphManager.h">
-      <Filter>include\RE\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSAnimationGraphChannel.h">
-      <Filter>include\RE\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSTAnimationGraphDataChannel.h">
       <Filter>include\RE\Animation</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ActorSpeedChannel.h">
@@ -3613,6 +3610,27 @@
     </ClInclude>
     <ClInclude Include="include\RE\Memory.h">
       <Filter>include\RE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSIRagdollDriver.h">
+      <Filter>include\RE\Animation\BSIRagdollDriver</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BShkbAnimationGraph.h">
+      <Filter>include\RE\Animation\BSIRagdollDriver</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSAnimationGraphChannel.h">
+      <Filter>include\RE\Animation\BSAnimationGraphChannel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTAnimationGraphDataChannel.h">
+      <Filter>include\RE\Animation\BSAnimationGraphChannel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h">
+      <Filter>include\RE\Animation\IAnimationGraphManagerHolder</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SimpleAnimationGraphManagerHolder.h">
+      <Filter>include\RE\Animation\IAnimationGraphManagerHolder\SimpleAnimationGraphManagerHolder</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\StatsNode.h">
+      <Filter>include\RE\Animation\IAnimationGraphManagerHolder\SimpleAnimationGraphManagerHolder</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

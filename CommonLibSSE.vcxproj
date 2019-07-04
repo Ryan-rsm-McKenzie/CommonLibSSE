@@ -967,6 +967,7 @@
     <ClInclude Include="include\RE\SFTypes.h" />
     <ClInclude Include="include\RE\ShoutHandler.h" />
     <ClInclude Include="include\RE\ShoutMeter.h" />
+    <ClInclude Include="include\RE\SimpleAnimationGraphManagerHolder.h" />
     <ClInclude Include="include\RE\Sky.h" />
     <ClInclude Include="include\RE\SkyEffectController.h" />
     <ClInclude Include="include\RE\SkyObject.h" />
@@ -991,6 +992,7 @@
     <ClInclude Include="include\RE\Stars.h" />
     <ClInclude Include="include\RE\BSGlobalStringTable.h" />
     <ClInclude Include="include\RE\StatsMenu.h" />
+    <ClInclude Include="include\RE\StatsNode.h" />
     <ClInclude Include="include\RE\SummonCreatureEffect.h" />
     <ClInclude Include="include\RE\Sun.h" />
     <ClInclude Include="include\RE\TES.h" />

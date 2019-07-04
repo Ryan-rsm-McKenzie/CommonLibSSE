@@ -5,6 +5,7 @@
 #include "RE/ActorSpeedChannel.h"  // ActorSpeedChannel
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
+#include "RE/BSSpinLock.h"  // BSSpinLock
 #include "RE/BSTAnimationGraphDataChannel.h"  // BSTAnimationGraphDataChannel
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTEvent.h"  // BSTEventSink, EventResult, BSTEventSource
@@ -64,7 +65,7 @@ namespace RE
 		BSTArray<AnimationVariable>												animationVariables;	// 70
 		void*																	unk88;				// 88
 		BShkbAnimationGraph*													unk90;				// 90 - The active animation graph?
-		UInt64																	unk98;				// 98
+		BSSpinLock																unk98;				// 98
 		UInt64																	unkA0;				// A0
 		UInt64																	unkA8;				// A8
 	};
