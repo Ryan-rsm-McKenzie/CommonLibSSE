@@ -62,19 +62,6 @@ namespace RE
 
 		struct Data	// DATA
 		{
-			struct ExtraData
-			{
-				float	sightFOV;					// 00
-				float	unk04;						// 04
-				float	rumbleLeftMotorStrength;	// 08
-				float	rumbleRightMotorStrength;	// 0C
-				float	rumbleDuration;				// 10
-				UInt32	unk14;						// 14
-				UInt32	numProjectiles;				// 18
-				UInt32	unk1C;						// 1C
-			};
-
-
 			enum class OnHit : UInt32
 			{
 				kNoFormulaBehavior,
@@ -154,6 +141,19 @@ namespace RE
 			};
 
 
+			struct ExtraData
+			{
+				float	sightFOV;					// 00
+				float	unk04;						// 04
+				float	rumbleLeftMotorStrength;	// 08
+				float	rumbleRightMotorStrength;	// 0C
+				float	rumbleDuration;				// 10
+				UInt32	unk14;						// 14
+				UInt32	numProjectiles;				// 18
+			};
+			STATIC_ASSERT(sizeof(ExtraData) == 0x1C);
+
+
 			ExtraData*		extraData;				// 00
 			float			speed;					// 08
 			float			reach;					// 0C
@@ -196,23 +196,26 @@ namespace RE
 		STATIC_ASSERT(sizeof(CriticalData) == 0x18);
 
 
-		virtual ~TESObjectWEAP();									// 00
+		virtual ~TESObjectWEAP();											// 00
 
-		virtual void		InitDefaults();							// 04
-		virtual bool		LoadForm(TESFile* a_mod);				// 06
-		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf);	// 0E
-		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf);	// 0F
-		virtual void		InitItem();								// 13
-		virtual bool		IsPlayable();							// 19 - { return ~((data.flags >> 7) & 1); }
-		virtual const char*	GetTypeString() const;					// 39 - { return g_animationStrings[data.animationType]; }
+		// override (TESBoundObject)
+		virtual void		InitDefaults() override;						// 04
+		virtual void		ReleaseManagedData() override;					// 05
+		virtual bool		LoadForm(TESFile* a_mod) override;				// 06
+		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void		InitItem() override;							// 13
+		virtual TESFile*	GetFinalSourceFile() override;					// 14
+		virtual bool		IsPlayable() override;							// 19 - { return ~((data.flags >> 7) & 1); }
+		virtual const char*	GetTypeString() const override;					// 39 - { return g_animationStrings[data.animationType]; }
 
-		float				speed();
-		float				reach();
-		float				stagger();
-		float				minRange();
-		float				maxRange();
-		Data::AnimationType	animationType();
-		UInt16				critDamage();
+		float				GetSpeed();
+		float				GetReach();
+		float				GetStagger();
+		float				GetMinRange();
+		float				GetMaxRange();
+		Data::AnimationType	GetAnimationType();
+		UInt16				GetCritDamage();
 		void				GetNodeName(char* a_dstBuff);
 		bool				IsBound() const;
 		bool				IsMelee() const;
@@ -230,8 +233,8 @@ namespace RE
 
 
 		// members
-		Data					data;					// 168
-		CriticalData			criticalData;			// 1A0
+		Data					data;					// 168 - DNAM
+		CriticalData			criticalData;			// 1A0 - CRDT
 		TESForm*				scopeEffect;			// 1B8
 		BGSSoundDescriptorForm*	attackSound;			// 1C0 - SNAM
 		BGSSoundDescriptorForm*	attackSound2D;			// 1C8 - XNAM
@@ -241,10 +244,10 @@ namespace RE
 		BGSSoundDescriptorForm*	equipSound;				// 1E8 - NAM9
 		BGSSoundDescriptorForm*	unequipSound;			// 1F0 - NAM8
 		BGSImpactDataSet*		impactDataSet;			// 1F8
-		TESObjectSTAT*			model;					// 200
+		TESObjectSTAT*			firstPersonModelObject;	// 200 - WNAM
 		TESObjectWEAP*			templateForm;			// 208 - CNAM
 		BSFixedString			embeddedNode;			// 210
-		SoundLevel				detectionSoundLevel;	// 218
+		SoundLevel				detectionSoundLevel;	// 218 - VNAM
 		UInt32					pad21C;					// 21C
 	};
 	STATIC_ASSERT(sizeof(TESObjectWEAP) == 0x220);

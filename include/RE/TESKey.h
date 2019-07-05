@@ -29,6 +29,9 @@ namespace RE
 
 
 		virtual ~TESKey();	// 00
+
+		// override (BGSKeywordForm)
+		virtual BGSKeyword* GetDefaultKeyword() override;	// 05 - { return BGSDefaultObjectManager::GetSingleton()->objects[192]; } - this index is a nullptr
 	};
 	STATIC_ASSERT(sizeof(TESKey) == 0x100);
 }

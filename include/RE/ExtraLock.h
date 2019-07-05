@@ -15,13 +15,16 @@ namespace RE
 
 
 		// members
-		void*	unk00;		// 00
-		UInt64	unk08;		// 08
-		bool	isLocked;	// 10
-		UInt8	pad11;		// 11
-		UInt16	pad12;		// 12
-		UInt32	pad14;		// 14
+		UInt64	unk00;		// 00
+		TESKey*	key;		// 08
+		UInt8	lockLevel;	// 10
+		UInt8	unk11;		// 11
+		UInt16	unk12;		// 12
+		UInt32	unk14;		// 14
+		UInt32	unk18;		// 18
+		UInt32	unk1C;		// 1C
 	};
+	STATIC_ASSERT(sizeof(LockState) == 0x20);
 
 
 	class ExtraLock : public BSExtraData

@@ -47,18 +47,21 @@ namespace RE
 		};
 
 
-		virtual ~TESObjectMISC();												// 00
+		virtual ~TESObjectMISC();													// 00
 
 		// override (TESBoundObject)
-		virtual bool	LoadForm(TESFile* a_mod) override;						// 06
-		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;			// 0E
-		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;			// 0F
-		virtual void	InitItem() override;									// 13
+		virtual bool		LoadForm(TESFile* a_mod) override;						// 06
+		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;			// 0E
+		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;			// 0F
+		virtual void		InitItem() override;									// 13
+
+		// override (BGSKeywordForm)
+		virtual BGSKeyword*	GetDefaultKeyword() override;							// 05 - { return BGSDefaultObjectManager::GetSingleton()->objects[193]; } - this index is a nullptr
 
 		// add
-		virtual void	Unk_53(void);											// 53 - { return; }
-		virtual void	LoadRecordByType(TESFile* a_mod, UInt32 a_recordType);	// 54 - { return; }
-		virtual void	Unk_55(void);											// 55 - { return; }
+		virtual void		Unk_53(void);											// 53 - { return; }
+		virtual void		LoadRecordByType(TESFile* a_mod, UInt32 a_recordType);	// 54 - { return; }
+		virtual void		Unk_55(void);											// 55 - { return; }
 	};
 	STATIC_ASSERT(sizeof(TESObjectMISC) == 0x100);
 }

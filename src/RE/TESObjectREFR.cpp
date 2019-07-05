@@ -225,7 +225,7 @@ namespace RE
 	bool TESObjectREFR::IsLocked() const
 	{
 		auto state = GetLockState();
-		return state && state->isLocked;
+		return state && state->lockLevel > 0;
 	}
 
 

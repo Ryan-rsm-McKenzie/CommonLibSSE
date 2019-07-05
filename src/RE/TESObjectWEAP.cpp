@@ -3,43 +3,43 @@
 
 namespace RE
 {
-	float TESObjectWEAP::speed()
+	float TESObjectWEAP::GetSpeed()
 	{
 		return data.speed;
 	}
 
 
-	float TESObjectWEAP::reach()
+	float TESObjectWEAP::GetReach()
 	{
 		return data.reach;
 	}
 
 
-	float TESObjectWEAP::stagger()
+	float TESObjectWEAP::GetStagger()
 	{
 		return data.stagger;
 	}
 
 
-	float TESObjectWEAP::minRange()
+	float TESObjectWEAP::GetMinRange()
 	{
 		return data.rangeMin;
 	}
 
 
-	float TESObjectWEAP::maxRange()
+	float TESObjectWEAP::GetMaxRange()
 	{
 		return data.rangeMax;
 	}
 
 
-	TESObjectWEAP::Data::AnimationType TESObjectWEAP::animationType()
+	TESObjectWEAP::Data::AnimationType TESObjectWEAP::GetAnimationType()
 	{
 		return data.animationType;
 	}
 
 
-	UInt16 TESObjectWEAP::critDamage()
+	UInt16 TESObjectWEAP::GetCritDamage()
 	{
 		return criticalData.damage;
 	}

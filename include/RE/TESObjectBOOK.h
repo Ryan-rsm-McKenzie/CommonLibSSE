@@ -101,10 +101,14 @@ namespace RE
 		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
 		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4D
 
-		bool			TeachesSkill() const;
-		bool			TeachesSpell() const;
-		bool			IsRead() const;
-		bool			CanBeTaken() const;
+		bool		TeachesSkill() const;
+		bool		TeachesSpell() const;
+		bool		IsRead() const;
+		bool		CanBeTaken() const;
+		bool		IsBookTome() const;
+		bool		IsNoteScroll() const;
+		ActorValue	GetSkill() const;
+		SpellItem*	GetSpell();
 
 
 		// members

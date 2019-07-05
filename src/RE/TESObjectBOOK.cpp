@@ -37,4 +37,28 @@ namespace RE
 	{
 		return (data.flags & Data::Flag::kCantBeTaken) == Data::Flag::kNone;
 	}
+
+
+	bool TESObjectBOOK::IsBookTome() const
+	{
+		return data.type == Data::Type::kBookTome;
+	}
+
+
+	bool TESObjectBOOK::IsNoteScroll() const
+	{
+		return data.type == Data::Type::kNoteScroll;
+	}
+
+
+	ActorValue TESObjectBOOK::GetSkill() const
+	{
+		return TeachesSkill() ? data.teaches.skill : ActorValue::kNone;
+	}
+
+
+	SpellItem* TESObjectBOOK::GetSpell()
+	{
+		return TeachesSpell() ? data.teaches.spell : 0;
+	}
 }
