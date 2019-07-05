@@ -1,7 +1,9 @@
 #include "RE/BSAudioManager.h"
 
+#include "RE/BGSSoundDescriptorForm.h"  // BGSSoundDescriptorForm
 #include "RE/Offsets.h"
 #include "RE/SoundData.h"  // SoundData
+#include "RE/TESForm.h"  // TESForm
 #include "REL/Relocation.h"
 
 
@@ -15,10 +17,24 @@ namespace RE
 	}
 
 
-	bool BSAudioManager::SetUp(SoundData& a_soundData, UInt32 a_soundFormID)
+	bool BSAudioManager::Play(RE::FormID a_soundFormID)
 	{
-		using func_t = function_type_t<decltype(&BSAudioManager::SetUp)>;
-		REL::Offset<func_t*> func(Offset::BSAudioManager::SetUp);
-		return func(this, a_soundData, a_soundFormID);
+		auto descriptor = TESForm::LookupByID<BGSSoundDescriptorForm>(a_soundFormID);
+		return descriptor && Play(descriptor);
+	}
+
+
+	bool BSAudioManager::Play(BSISoundDescriptor* a_descriptor)
+	{
+		SoundData soundData;
+		return BuildSoundDataFromDescriptor(soundData, a_descriptor) && soundData.Play();
+	}
+
+
+	bool BSAudioManager::BuildSoundDataFromDescriptor(SoundData& a_soundData, BSISoundDescriptor* a_descriptor, UInt32 a_flags)
+	{
+		using func_t = function_type_t<decltype(&BSAudioManager::BuildSoundDataFromDescriptor)>;
+		REL::Offset<func_t*> func(Offset::BSAudioManager::BuildSoundDataFromDescriptor);
+		return func(this, a_soundData, a_descriptor, a_flags);
 	}
 }

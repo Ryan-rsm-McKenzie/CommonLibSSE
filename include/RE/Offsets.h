@@ -84,9 +84,9 @@ namespace RE
 		namespace BSAudioManager
 		{
 			// IndirectSig: E8 ? ? ? ? BA 33 00 00 00
-			constexpr std::uintptr_t GetSingleton = 0x00BEE580;	// 1_5_80
-			// IndirectSig: E8 ? ? ? ? F3 0F 10 5E 5C
-			constexpr std::uintptr_t SetUp = 0x00BEEE70;		// 1_5_80
+			constexpr std::uintptr_t GetSingleton = 0x00BEE580;					// 1_5_80
+			// IndirectSig: E8 ? ? ? ? C6 46 04 01
+			constexpr std::uintptr_t BuildSoundDataFromDescriptor = 0x00BEF0B0;	// 1_5_80
 		}
 
 

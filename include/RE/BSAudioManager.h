@@ -7,6 +7,7 @@
 
 namespace RE
 {
+	class BSISoundDescriptor;
 	class BSXAudio2GameSound;
 	struct SoundData;
 
@@ -14,8 +15,11 @@ namespace RE
 	class BSAudioManager
 	{
 	public:
-		static BSAudioManager*	GetSingleton();
-		bool					SetUp(SoundData& a_soundData, UInt32 a_soundFormID);
+		static BSAudioManager* GetSingleton();
+
+		bool	Play(FormID a_soundFormID);
+		bool	Play(BSISoundDescriptor* a_descriptor);
+		bool	BuildSoundDataFromDescriptor(SoundData& a_soundData, BSISoundDescriptor* a_descriptor, UInt32 a_flags = 0x1A);
 
 
 		// members
@@ -47,5 +51,8 @@ namespace RE
 		UInt64									unk168;	// 168
 		UInt64									unk170;	// 170
 		UInt64									unk178;	// 178
+		UInt64									unk180;	// 180
+		UInt64									unk188;	// 188
 	};
+	STATIC_ASSERT(sizeof(BSAudioManager) == 0x190);
 }

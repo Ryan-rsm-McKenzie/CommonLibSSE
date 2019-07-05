@@ -23,7 +23,6 @@ namespace RE
 		UInt8	pad05;	// 05
 		UInt16	pad06;	// 06
 		UInt32	unk08;	// 08
-		UInt32	pad0C;	// 0C
 	};
-	STATIC_ASSERT(sizeof(SoundData) == 0x10);
+	STATIC_ASSERT(sizeof(SoundData) == 0xC);
 }
