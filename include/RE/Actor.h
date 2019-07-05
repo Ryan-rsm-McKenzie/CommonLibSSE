@@ -263,7 +263,7 @@ namespace RE
 
 		// add
 		virtual void							Unk_A2(void);																																														// 0A2
-		virtual void							PlaySounds(TESForm* a_item, bool a_isPickup);																																						// 0A3
+		virtual void							PlaySounds(TESBoundObject* a_item, bool a_pickup, bool a_consume);																																	// 0A3
 		virtual void							Unk_A4(void);																																														// 0A4
 		virtual void							Unk_A5(void);																																														// 0A5 - { return; }
 		virtual void							DrawSheatheWeapon(bool a_draw);																																										// 0A6
