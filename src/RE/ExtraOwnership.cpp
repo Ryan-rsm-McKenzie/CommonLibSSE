@@ -6,6 +6,7 @@
 namespace RE
 {
 	ExtraOwnership::ExtraOwnership() :
+		BSExtraData(),
 		owner(0)
 	{
 		((std::uintptr_t*)this)[0] = s_ExtraOwnershipVtbl.GetUIntPtr();
@@ -13,6 +14,7 @@ namespace RE
 
 
 	ExtraOwnership::ExtraOwnership(TESForm* a_owner) :
+		BSExtraData(),
 		owner(a_owner)
 	{
 		((std::uintptr_t*)this)[0] = s_ExtraOwnershipVtbl.GetUIntPtr();

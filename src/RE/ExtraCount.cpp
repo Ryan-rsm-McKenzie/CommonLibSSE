@@ -4,6 +4,7 @@
 namespace RE
 {
 	ExtraCount::ExtraCount() :
+		BSExtraData(),
 		count(0),
 		pad14(0)
 	{
@@ -12,6 +13,7 @@ namespace RE
 
 
 	ExtraCount::ExtraCount(SInt32 a_count) :
+		BSExtraData(),
 		count(a_count),
 		pad14(0)
 	{

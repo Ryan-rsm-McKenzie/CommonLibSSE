@@ -204,6 +204,8 @@
     <ClCompile Include="src\RE\ChestsLooted.cpp" />
     <ClCompile Include="src\RE\Console.cpp" />
     <ClCompile Include="src\RE\ExtraAliasInstanceArray.cpp" />
+    <ClCompile Include="src\RE\ExtraCannotWear.cpp" />
+    <ClCompile Include="src\RE\ExtraCharge.cpp" />
     <ClCompile Include="src\RE\ExtraCount.cpp" />
     <ClCompile Include="src\RE\ExtraEnchantment.cpp" />
     <ClCompile Include="src\RE\ExtraFlags.cpp" />
@@ -630,6 +632,8 @@
     <ClInclude Include="include\RE\ExtraAction.h" />
     <ClInclude Include="include\RE\ExtraAliasInstanceArray.h" />
     <ClInclude Include="include\RE\ExtraAshPileRef.h" />
+    <ClInclude Include="include\RE\ExtraCannotWear.h" />
+    <ClInclude Include="include\RE\ExtraCharge.h" />
     <ClInclude Include="include\RE\ExtraCount.h" />
     <ClInclude Include="include\RE\ExtraDataTypes.h" />
     <ClInclude Include="include\RE\ExtraDismemberedLimbs.h" />
@@ -662,6 +666,7 @@
     <ClInclude Include="include\RE\ExtraUniqueID.h" />
     <ClInclude Include="include\RE\FavoritesHandler.h" />
     <ClInclude Include="include\RE\FileHash.h" />
+    <ClInclude Include="include\RE\FirstPersonState.h" />
     <ClInclude Include="include\RE\FlameProjectile.h" />
     <ClInclude Include="include\RE\FormTypes.h" />
     <ClInclude Include="include\RE\FxDelegate.h" />
@@ -1098,6 +1103,7 @@
     <ClInclude Include="include\RE\TESWeightForm.h" />
     <ClInclude Include="include\RE\TESWordOfPower.h" />
     <ClInclude Include="include\RE\TESWorldSpace.h" />
+    <ClInclude Include="include\RE\ThirdPersonState.h" />
     <ClInclude Include="include\RE\ThumbstickEvent.h" />
     <ClInclude Include="include\RE\TogglePOVHandler.h" />
     <ClInclude Include="include\RE\ToggleRunHandler.h" />

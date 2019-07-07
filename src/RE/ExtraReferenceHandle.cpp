@@ -9,6 +9,7 @@
 namespace RE
 {
 	ExtraReferenceHandle::ExtraReferenceHandle() :
+		BSExtraData(),
 		handle(*g_invalidRefHandle),
 		pad14(0)
 	{
@@ -17,6 +18,7 @@ namespace RE
 
 
 	ExtraReferenceHandle::ExtraReferenceHandle(RefHandle a_refHandle) :
+		BSExtraData(),
 		handle(a_refHandle),
 		pad14(0)
 	{

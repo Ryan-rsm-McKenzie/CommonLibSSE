@@ -6,6 +6,7 @@
 namespace RE
 {
 	ExtraEnchantment::ExtraEnchantment() :
+		BSExtraData(),
 		objectEffect(0),
 		enchantmentAmount(0),
 		unk0E(0),
@@ -17,6 +18,7 @@ namespace RE
 
 
 	ExtraEnchantment::ExtraEnchantment(EnchantmentItem* a_objectEffect, UInt16 a_enchantmentAmount) :
+		BSExtraData(),
 		objectEffect(a_objectEffect),
 		enchantmentAmount(a_enchantmentAmount),
 		unk0E(0),

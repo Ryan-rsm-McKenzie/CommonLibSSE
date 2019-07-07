@@ -6,6 +6,7 @@
 namespace RE
 {
 	ExtraHealth::ExtraHealth() :
+		BSExtraData(),
 		health(1.0),
 		pad14(0.0)
 	{
@@ -14,6 +15,7 @@ namespace RE
 
 
 	ExtraHealth::ExtraHealth(float a_health) :
+		BSExtraData(),
 		health(a_health),
 		pad14(0.0)
 	{

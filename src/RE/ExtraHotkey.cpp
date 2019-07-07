@@ -6,6 +6,7 @@
 namespace RE
 {
 	ExtraHotkey::ExtraHotkey() :
+		BSExtraData(),
 		hotkey(Hotkey::kUnbound),
 		unk11(0),
 		unk12(0),
@@ -16,6 +17,7 @@ namespace RE
 
 
 	ExtraHotkey::ExtraHotkey(Hotkey a_hotkey) :
+		BSExtraData(),
 		hotkey(a_hotkey),
 		unk11(0),
 		unk12(0),

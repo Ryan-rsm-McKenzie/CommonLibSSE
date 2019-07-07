@@ -8,6 +8,7 @@
 namespace RE
 {
 	ExtraAliasInstanceArray::ExtraAliasInstanceArray() :
+		BSExtraData(),
 		aliasInfoArr(),
 		unk28(0),
 		unk2C(0)

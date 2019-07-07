@@ -766,6 +766,15 @@
     <Filter Include="include\RE\Animation\IAnimationGraphManagerHolder\SimpleAnimationGraphManagerHolder">
       <UniqueIdentifier>{db421c55-374f-4401-8e07-52a4c1eceeb5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Camera\TESCamera">
+      <UniqueIdentifier>{a6f8a533-5d16-46f7-b75f-c5ea2bf3ac0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Camera\TESCamera">
+      <UniqueIdentifier>{fe07071a-a2aa-4e38-bf2e-7e854daa6a65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Camera\TESCameraState">
+      <UniqueIdentifier>{65cb61aa-2daf-4a32-bd34-f372fcea94e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\ActorState.cpp">
@@ -836,9 +845,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\UIStringHolder.cpp">
       <Filter>src\RE\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\PlayerCamera.cpp">
-      <Filter>src\RE\Camera</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraLock.cpp">
       <Filter>src\RE\ExtraData</Filter>
@@ -944,12 +950,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\BSString.cpp">
       <Filter>src\RE\BSCore</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESCamera.cpp">
-      <Filter>src\RE\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\LocalMapCamera.cpp">
-      <Filter>src\RE\Camera</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\TESRace.cpp">
       <Filter>src\RE\TESForms\Character</Filter>
@@ -1281,6 +1281,21 @@
     <ClCompile Include="src\RE\RemoveCallbackVisitor.cpp">
       <Filter>src\RE\Scaleform\FxGameDelegate</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\ExtraCannotWear.cpp">
+      <Filter>src\RE\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraCharge.cpp">
+      <Filter>src\RE\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESCamera.cpp">
+      <Filter>src\RE\Camera\TESCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\PlayerCamera.cpp">
+      <Filter>src\RE\Camera\TESCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\LocalMapCamera.cpp">
+      <Filter>src\RE\Camera\TESCamera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -1417,9 +1432,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\UIStringHolder.h">
       <Filter>include\RE\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\PlayerCamera.h">
-      <Filter>include\RE\Camera</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\CommandTable.h">
       <Filter>include\RE\Obscript</Filter>
@@ -1624,18 +1636,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSString.h">
       <Filter>include\RE\BSCore</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESCamera.h">
-      <Filter>include\RE\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MapCamera.h">
-      <Filter>include\RE\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\LocalMapCamera.h">
-      <Filter>include\RE\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESCameraState.h">
-      <Filter>include\RE\Camera</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ImageSpaceEffectParam.h">
       <Filter>include\RE\BSShader</Filter>
@@ -3631,6 +3631,33 @@
     </ClInclude>
     <ClInclude Include="include\RE\StatsNode.h">
       <Filter>include\RE\Animation\IAnimationGraphManagerHolder\SimpleAnimationGraphManagerHolder</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCharge.h">
+      <Filter>include\RE\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCannotWear.h">
+      <Filter>include\RE\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESCamera.h">
+      <Filter>include\RE\Camera\TESCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PlayerCamera.h">
+      <Filter>include\RE\Camera\TESCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\LocalMapCamera.h">
+      <Filter>include\RE\Camera\TESCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MapCamera.h">
+      <Filter>include\RE\Camera\TESCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESCameraState.h">
+      <Filter>include\RE\Camera\TESCameraState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ThirdPersonState.h">
+      <Filter>include\RE\Camera\TESCameraState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FirstPersonState.h">
+      <Filter>include\RE\Camera\TESCameraState</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

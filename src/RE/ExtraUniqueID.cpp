@@ -6,6 +6,7 @@
 namespace RE
 {
 	ExtraUniqueID::ExtraUniqueID() :
+		BSExtraData(),
 		owner(0),
 		uniqueID(0),
 		pad16(0)
@@ -15,6 +16,7 @@ namespace RE
 
 
 	ExtraUniqueID::ExtraUniqueID(FormID a_owner, UInt16 a_uniqueID) :
+		BSExtraData(),
 		owner(a_owner),
 		uniqueID(a_uniqueID),
 		pad16(0)

@@ -6,6 +6,7 @@
 namespace RE
 {
 	ExtraTextDisplayData::ExtraTextDisplayData() :
+		BSExtraData(),
 		name(""),
 		message(0),
 		owner(0),
@@ -20,6 +21,7 @@ namespace RE
 
 
 	ExtraTextDisplayData::ExtraTextDisplayData(const char* a_name) :
+		BSExtraData(),
 		name(""),
 		message(0),
 		owner(0),
@@ -35,6 +37,7 @@ namespace RE
 
 
 	ExtraTextDisplayData::ExtraTextDisplayData(TESForm* a_form, float a_temperFactor) :
+		BSExtraData(),
 		name(""),
 		message(0),
 		owner(0),

@@ -8,7 +8,7 @@
 
 namespace RE
 {
-	class BGSEquipType : public BaseFormComponent
+	class BGSEquipType : public BaseFormComponent	// EQUP
 	{
 	public:
 		inline static const void* RTTI = RTTI_BGSEquipType;

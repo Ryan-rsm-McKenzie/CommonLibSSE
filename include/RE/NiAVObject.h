@@ -63,9 +63,9 @@ namespace RE
 		// add
 		virtual void		UpdateControllers(ControllerUpdateContext* a_ctx);													// 25
 		virtual void		UpdateNodeBound(ControllerUpdateContext* a_ctx);													// 26
-		virtual void		ApplyTransform(NiMatrix3* a_mtx, NiPoint3* a_translate, bool a_postTransform);						// 27 - { return; }
-		virtual void		SetPropertyState(NiProperty* a_prop);																// 28 - { return; }
-		virtual void		Unk_29(void);																						// 29 - { return; }
+		virtual void		ApplyTransform(const NiMatrix3& a_mtx, const NiPoint3& a_translate, bool a_onLeft);					// 27 - { return; }
+		virtual void		SetMaterialNeedsUpdate(bool a_needsUpdate);															// 28 - { return; }
+		virtual void		SetDefaultMaterialNeedsUpdateFlag(bool a_flag);														// 29 - { return; }
 		virtual NiAVObject*	GetObjectByName(const BSFixedString& a_name);														// 2A
 		virtual void		SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid);	// 2B
 		virtual void		UpdateDownwardPass(ControllerUpdateContext* a_ctx, void* a_arg2);									// 2C

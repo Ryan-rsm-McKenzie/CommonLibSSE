@@ -158,6 +158,12 @@ namespace SKSE
 
 		bool Register(RegFunction* a_fn) const;
 
+		template <class First, class... Rest>
+		bool Register(First a_first, Rest... a_rest) const
+		{
+			return Register(a_first) && Register(a_rest...);
+		}
+
 	protected:
 		const SKSEPapyrusInterface* GetProxy() const;
 	};
