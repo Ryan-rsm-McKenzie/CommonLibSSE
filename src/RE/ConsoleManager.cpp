@@ -21,11 +21,17 @@ namespace RE
 
 	void ConsoleManager::Print(const char* a_fmt, ...)
 	{
-		using func_t = function_type_t<decltype(&ConsoleManager::Print)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::ConsoleManager, VPrint, func_t*);
 		std::va_list args;
 		va_start(args, a_fmt);
-		func(this, a_fmt, args);
+		VPrint(a_fmt, args);
 		va_end(args);
+	}
+
+
+	void ConsoleManager::VPrint(const char* a_fmt, std::va_list a_args)
+	{
+		using func_t = function_type_t<decltype(&ConsoleManager::Print)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::ConsoleManager, VPrint, func_t*);
+		func(this, a_fmt, a_args);
 	}
 }

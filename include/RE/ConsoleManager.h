@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdarg>  // va_list
+
 
 namespace RE
 {
@@ -10,6 +12,7 @@ namespace RE
 		static bool				IsConsoleMode();
 
 		void Print(const char* a_fmt, ...);
+		void VPrint(const char* a_fmt, std::va_list a_args);
 
 
 		// members
