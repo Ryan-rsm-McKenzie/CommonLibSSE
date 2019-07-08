@@ -6,9 +6,12 @@
 #include <cassert>  // assert
 #include <cstdarg>  // va_list, va_start, va_copy, va_end
 #include <cstdio>  // snprintf, vsnprintf
+#include <ctime>  // time
 #include <cwchar>  // wcslen
+#include <iomanip>  // put_time
 #include <memory>  // unique_ptr
 #include <sstream>  // ostringstream
+#include <time.h>  // localtime_s
 #include <vector>  // vector
 
 
@@ -64,15 +67,44 @@ namespace SKSE
 	}
 
 
-	void Logger::SetPrintLevel(Level a_printLevel)
+	auto Logger::SetPrintLevel(Level a_printLevel)
+		-> Level
 	{
+		auto result = _printLevel;
 		_printLevel = a_printLevel;
+		return result;
 	}
 
 
-	void Logger::SetFlushLevel(Level a_flushLevel)
+	auto Logger::SetFlushLevel(Level a_flushLevel)
+		-> Level
 	{
+		auto result = _flushLevel;
 		_flushLevel = a_flushLevel;
+		return result;
+	}
+
+
+	bool Logger::UseLogStamp(bool a_enable)
+	{
+		auto result = _logStamp;
+		_logStamp = a_enable;
+		return result;
+	}
+
+
+	std::pair<bool, bool> Logger::UseTimeStamp(bool a_enable, bool a_fmt24Hour)
+	{
+		auto result = std::make_pair(_timeStamp, _fmt24Hour);
+		_timeStamp = a_enable;
+		_fmt24Hour = a_fmt24Hour;
+		return result;
+	}
+
+
+	void Logger::Print(const char* a_string)
+	{
+		Print_Impl(Level::kMessage, a_string);
 	}
 
 
@@ -84,23 +116,75 @@ namespace SKSE
 	}
 
 
+	void Logger::VPrint(const char* a_format, ...)
+	{
+		std::va_list args;
+		va_start(args, a_format);
+		VPrint_Impl(Level::kMessage, a_format, args);
+		va_end(args);
+	}
+
+
 	void Logger::VPrint(Level a_level, const char* a_format, ...)
 	{
-		if (a_level < _printLevel) {
-			return;
+		if (a_level >= _printLevel) {
+			std::va_list args;
+			va_start(args, a_format);
+			VPrint_Impl(a_level, a_format, args);
+			va_end(args);
+		}
+	}
+
+
+	const char* Logger::GetLogStamp(Level a_level)
+	{
+		if (_logStamp) {
+			switch (a_level) {
+			case Level::kDebugMessage:
+				return "[DEBUG] ";
+			case Level::kVerboseMessage:
+				return "[VERBOSE] ";
+			case Level::kMessage:
+				return "[MESSAGE] ";
+			case Level::kWarning:
+				return "[WARNING] ";
+			case Level::kError:
+				return "[ERROR] ";
+			case Level::kFatalError:
+				return "[FATAL ERROR] ";
+			}
 		}
 
-		std::va_list args1;
-		va_start(args1, a_format);
-		std::va_list args2;
-		va_copy(args2, args1);
+		return "";
+	}
 
-		std::vector<char> buf(std::vsnprintf(0, 0, a_format, args1) + 1);
-		va_end(args1);
-		std::vsnprintf(buf.data(), buf.size(), a_format, args2);
-		va_end(args2);
 
-		_file << buf.data() << '\n';
+	std::string Logger::GetTimeStamp(Level a_level)
+	{
+		if (!_timeStamp) {
+			return "";
+		}
+
+		auto time = std::time(0);
+		std::tm localTime;
+		auto err = localtime_s(&localTime, &time);
+		if (err) {
+			return "";
+		}
+
+		std::ostringstream buf;
+		if (_fmt24Hour) {
+			buf << std::put_time(&localTime, "(%F %T) ");
+		} else {
+			buf << std::put_time(&localTime, "(%F %I:%M:%S %p) ");
+		}
+		return buf.str();
+	}
+
+
+	void Logger::Print_Impl(Level a_level, const char* a_string)
+	{
+		_file << GetLogStamp(a_level) << GetTimeStamp(a_level) << a_string << '\n';
 
 		if (a_level >= _flushLevel) {
 			_file.flush();
@@ -108,19 +192,26 @@ namespace SKSE
 	}
 
 
-	void Logger::Print_Impl(Level a_level, const char* a_string)
+	void Logger::VPrint_Impl(Level a_level, const char* a_format, std::va_list a_args)
 	{
-		_file << a_string << '\n';
+		std::va_list argsCopy;
+		va_copy(argsCopy, a_args);
 
-		if (a_level >= _flushLevel) {
-			_file.flush();
-		}
+		std::vector<char> buf(std::vsnprintf(0, 0, a_format, a_args) + 1);
+		std::vsnprintf(buf.data(), buf.size(), a_format, argsCopy);
+
+		va_end(argsCopy);
+
+		Print_Impl(a_level, buf.data());
 	}
 
 
 	decltype(Logger::_file) Logger::_file;
 	decltype(Logger::_printLevel) Logger::_printLevel = Logger::Level::kMessage;
 	decltype(Logger::_flushLevel) Logger::_flushLevel = Logger::Level::kError;
+	decltype(Logger::_logStamp) Logger::_logStamp = false;
+	decltype(Logger::_timeStamp) Logger::_timeStamp = false;
+	decltype(Logger::_fmt24Hour) Logger::_fmt24Hour = true;
 
 
 	namespace Impl
@@ -142,11 +233,14 @@ namespace SKSE
 			va_end(args2);
 
 			std::ostringstream oss;
-			oss << a_file << '(' << a_line << "): " << buf.data();
-			Logger::Print_Impl(a_level, oss.str().c_str());
+			oss << a_file << '(' << a_line << "): " << Logger::GetLogStamp(a_level) << Logger::GetTimeStamp(a_level) << buf.data() << '\n';
+			Logger::_file << oss.str().c_str();
+
+			if (a_level >= Logger::_flushLevel) {
+				Logger::_file.flush();
+			}
 
 #if _DEBUG
-			oss << '\n';
 			OutputDebugStringA(oss.str().c_str());
 #endif
 		}

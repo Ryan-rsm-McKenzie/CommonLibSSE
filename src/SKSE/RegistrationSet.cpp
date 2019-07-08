@@ -84,7 +84,7 @@ namespace SKSE
 			auto invalidHandle = policy->GetInvalidHandle();
 			auto handle = policy->Create(static_cast<UInt32>(a_form->formType), a_form);
 			if (handle == invalidHandle) {
-				_ERROR("[ERROR] Failed to create handle!\n");
+				_ERROR("Failed to create handle!\n");
 				return false;
 			}
 
@@ -92,7 +92,7 @@ namespace SKSE
 			auto result = _handles.insert(handle);
 			_lock.unlock();
 			if (!result.second) {
-				_WARNING("[WARNING] Handle already registered!\n");
+				_WARNING("Handle already registered!\n");
 			}
 			return result.second;
 		}
@@ -104,7 +104,7 @@ namespace SKSE
 			auto invalidHandle = policy->GetInvalidHandle();
 			auto handle = policy->Create(static_cast<UInt32>(a_form->formType), a_form);
 			if (handle == invalidHandle) {
-				_ERROR("[ERROR] Failed to create handle!\n");
+				_ERROR("Failed to create handle!\n");
 				return false;
 			} else {
 				policy->Release(handle);
@@ -113,7 +113,7 @@ namespace SKSE
 			Locker locker(_lock);
 			auto result = _handles.find(handle);
 			if (result == _handles.end()) {
-				_WARNING("[WARNING] Could not find registration");
+				_WARNING("Could not find registration");
 				return false;
 			} else {
 				policy->Release(handle);
@@ -136,20 +136,20 @@ namespace SKSE
 		bool RegistrationSetBase::Save(SerializationInterface* a_intfc, UInt32 a_type, UInt32 a_version)
 		{
 			if (!a_intfc->OpenRecord(a_type, a_version)) {
-				_ERROR("[ERROR] Failed to open record!\n");
+				_ERROR("Failed to open record!\n");
 				return false;
 			}
 
 			Locker locker(_lock);
 			std::size_t numRegs = _handles.size();
 			if (!a_intfc->WriteRecordData(&numRegs, sizeof(numRegs))) {
-				_ERROR("[ERROR] Failed to save number of regs (%zu)!\n", numRegs);
+				_ERROR("Failed to save number of regs (%zu)!\n", numRegs);
 				return false;
 			}
 
 			for (auto& handle : _handles) {
 				if (!a_intfc->WriteRecordData(&handle, sizeof(handle))) {
-					_ERROR("[ERROR] Failed to save reg (%u)!\n", handle);
+					_ERROR("Failed to save reg (%u)!\n", handle);
 					return false;
 				}
 			}
@@ -167,11 +167,11 @@ namespace SKSE
 			for (std::size_t i = 0; i < numRegs; ++i) {
 				a_intfc->ReadRecordData(&handle, sizeof(handle));
 				if (!a_intfc->ResolveHandle(handle, handle)) {
-					_WARNING("[WARNING] Failed to resolve handle (%u)!\n", handle);
+					_WARNING("Failed to resolve handle (%u)!\n", handle);
 				} else {
 					auto result = _handles.insert(handle);
 					if (!result.second) {
-						_ERROR("[ERROR] Loaded duplicate handle (%u)!\n", handle);
+						_ERROR("Loaded duplicate handle (%u)!\n", handle);
 					}
 				}
 			}

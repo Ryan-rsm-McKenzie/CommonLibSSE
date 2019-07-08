@@ -188,7 +188,7 @@ namespace REL
 			_address = kmp_search(str, sig, mask);
 
 			if (_address == 0xDEADBEEF) {
-				_FATALERROR("[FATAL ERROR] Sig scan failed for pattern (%s)!\n", a_sig);
+				_FATALERROR("Sig scan failed for pattern (%s)!\n", a_sig);
 				assert(false);
 			} else {
 				_address += Module::BaseAddr();
