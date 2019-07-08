@@ -1,5 +1,7 @@
 #include "RE/Console.h"
 
+#include "skse64/GameAPI.h"  // g_consoleHandle
+
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
@@ -8,7 +10,7 @@ namespace RE
 {
 	RefHandle Console::GetSelectedRef()
 	{
-		return *REL::Offset<RefHandle*>(Offset::Console::SelectedRef);
+		return *unrestricted_cast<RefHandle*>(g_consoleHandle.GetUIntPtr());
 	}
 
 
