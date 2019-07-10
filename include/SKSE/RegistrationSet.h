@@ -1,8 +1,9 @@
 #pragma once
 
-#include <mutex>  // mutex, lock_guard
+#include <mutex>  // recursive_mutex, lock_guard
 #include <set>  // set
 #include <string>  // string
+#include <string_view>  // string_view
 
 #include "SKSE/API.h"  // GetTaskInterface
 #include "SKSE/Interfaces.h"  // SerializationInterface
@@ -22,7 +23,7 @@ namespace SKSE
 		{
 		public:
 			RegistrationSetBase() = delete;
-			RegistrationSetBase(const char* a_eventName);
+			RegistrationSetBase(const std::string_view& a_eventName);
 			RegistrationSetBase(const RegistrationSetBase& a_rhs);
 			RegistrationSetBase(RegistrationSetBase&& a_rhs);
 			~RegistrationSetBase();
@@ -37,12 +38,13 @@ namespace SKSE
 			bool Load(SerializationInterface* a_intfc);
 
 		protected:
-			using Locker = std::lock_guard<std::mutex>;
+			using Lock = std::recursive_mutex;
+			using Locker = std::lock_guard<Lock>;
 
 
-			std::set<RE::VMHandle>	_handles;
-			std::string				_eventName;
-			mutable std::mutex		_lock;
+			std::set<RE::VMHandle> _handles;
+			std::string _eventName;
+			mutable Lock _lock;
 		};
 	}
 
@@ -55,7 +57,7 @@ namespace SKSE
 
 	public:
 		RegistrationSet() = delete;
-		RegistrationSet(const char* a_eventName) : Base(a_eventName) {}
+		RegistrationSet(const std::string_view& a_eventName) : Base(a_eventName) {}
 		RegistrationSet(const RegistrationSet& a_rhs) : Base(a_rhs) {}
 		RegistrationSet(RegistrationSet&& a_rhs) : Base(std::move(a_rhs)) {}
 		~RegistrationSet() {}
@@ -79,7 +81,7 @@ namespace SKSE
 		void QueueEvent(Args... a_args)
 		{
 			auto task - GetTaskInterface();
-			task->AddTask([&]()
+			task->AddTask([=]()
 			{
 				SendEvent(a_args);
 			});
@@ -95,7 +97,7 @@ namespace SKSE
 
 	public:
 		RegistrationSet() = delete;
-		RegistrationSet(const char* a_eventName) : Base(a_eventName) {}
+		RegistrationSet(const std::string_view& a_eventName) : Base(a_eventName) {}
 		RegistrationSet(const RegistrationSet& a_rhs) : Base(a_rhs) {}
 		RegistrationSet(RegistrationSet&& a_rhs) : Base(std::move(a_rhs)) {}
 		~RegistrationSet() {}
@@ -119,7 +121,7 @@ namespace SKSE
 		void QueueEvent()
 		{
 			auto task = GetTaskInterface();
-			task->AddTask([&]()
+			task->AddTask([=]()
 			{
 				SendEvent();
 			});

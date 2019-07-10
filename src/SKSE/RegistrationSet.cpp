@@ -5,7 +5,7 @@ namespace SKSE
 {
 	namespace Impl
 	{
-		RegistrationSetBase::RegistrationSetBase(const char* a_eventName) :
+		RegistrationSetBase::RegistrationSetBase(const std::string_view& a_eventName) :
 			_handles(),
 			_eventName(a_eventName),
 			_lock()
@@ -51,9 +51,14 @@ namespace SKSE
 
 		RegistrationSetBase& RegistrationSetBase::operator=(const RegistrationSetBase& a_rhs)
 		{
+			if (this == &a_rhs) {
+				return *this;
+			}
+
 			Locker lhsLocker(_lock);
 			Locker rhsLocker(a_rhs._lock);
 			Clear();
+
 			_eventName = a_rhs._eventName;
 
 			auto policy = RE::BSScript::Internal::VirtualMachine::GetSingleton()->GetHandlePolicyBS();
@@ -68,9 +73,17 @@ namespace SKSE
 
 		RegistrationSetBase& RegistrationSetBase::operator=(RegistrationSetBase&& a_rhs)
 		{
+			if (this == &a_rhs) {
+				return *this;
+			}
+
 			Locker lhsLocker(_lock);
+			Locker rhsLocker(a_rhs._lock);
 			Clear();
+
 			_eventName = std::move(a_rhs._eventName);
+			a_rhs._eventName = "";
+
 			_handles = std::move(a_rhs._handles);
 			a_rhs._handles.clear();
 
@@ -92,7 +105,7 @@ namespace SKSE
 			auto result = _handles.insert(handle);
 			_lock.unlock();
 			if (!result.second) {
-				_WARNING("Handle already registered!\n");
+				_WARNING("Handle already registered (%u)", handle);
 			}
 			return result.second;
 		}
@@ -163,11 +176,13 @@ namespace SKSE
 			std::size_t numRegs;
 			a_intfc->ReadRecordData(&numRegs, sizeof(numRegs));
 
+			Locker locker(_lock);
+			_handles.clear();
 			RE::VMHandle handle;
 			for (std::size_t i = 0; i < numRegs; ++i) {
 				a_intfc->ReadRecordData(&handle, sizeof(handle));
 				if (!a_intfc->ResolveHandle(handle, handle)) {
-					_WARNING("Failed to resolve handle (%u)!\n", handle);
+					_WARNING("Failed to resolve handle (%u)", handle);
 				} else {
 					auto result = _handles.insert(handle);
 					if (!result.second) {
