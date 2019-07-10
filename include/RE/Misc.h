@@ -1,12 +1,10 @@
 #pragma once
 
-#include "RE/FormTypes.h"  // Actor, TESForm
-#include "RE/NiPoint3.h"  // NiPoint3
-#include "RE/NiRect.h"  // NiRect
-
 
 namespace RE
 {
+	class NiPoint3;
+	template <class T> class NiRect;
 	class Setting;
 
 

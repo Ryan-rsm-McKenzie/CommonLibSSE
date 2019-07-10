@@ -1,6 +1,6 @@
 #include "RE/BSInputDevice.h"
 
-#include "RE/InputEvent.h"  //
+
 namespace RE
 {
 	bool BSInputDevice::IsKeyboard() const

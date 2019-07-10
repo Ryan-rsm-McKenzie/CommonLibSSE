@@ -66,7 +66,7 @@ namespace RE
 		virtual void	BlockFreeBatch(void** a_ptrsIn, SInt32 a_numPtrs, SInt32 a_blockSize);			// 07
 		virtual void	GetMemoryStatistics(MemoryStatistics& a_usage) = 0;								// 08
 		virtual SInt32	GetAllocatedSize(const void* a_obj, SInt32 a_numBytes) = 0;						// 09
-		virtual void	ResetPeakMemoryStatistics();													// 0A
+		virtual void	ResetPeakMemoryStatistics();													// 0A - { return; }
 	};
 	STATIC_ASSERT(sizeof(hkMemoryAllocator) == 0x8);
 }

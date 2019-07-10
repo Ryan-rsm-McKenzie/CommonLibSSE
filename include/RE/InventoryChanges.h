@@ -4,7 +4,7 @@
 
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/FormTypes.h"  // TESForm, TESObjectREFR
-#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
 
 
 namespace RE

@@ -2,7 +2,7 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_ActorTargetCheck
 
-#include "RE/GetActorsFilter.h"  // GetActorsFilter
+#include "RE/ProcessLists/GetActorsFilter.h"  // ProcessLists::GetActorsFilter
 
 
 namespace RE

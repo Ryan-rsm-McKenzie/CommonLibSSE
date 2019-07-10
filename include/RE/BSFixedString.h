@@ -3,7 +3,7 @@
 #include <string_view>  // string_view
 
 #include "RE/BSGlobalStringTable.h"  // GlobalStringHandle
-#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
 
 
 namespace RE

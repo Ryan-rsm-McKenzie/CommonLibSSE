@@ -313,6 +313,7 @@
     <ClCompile Include="src\RE\TESDescription.cpp" />
     <ClCompile Include="src\RE\TESFaction.cpp" />
     <ClCompile Include="src\RE\TESForm.cpp" />
+    <ClCompile Include="src\RE\TESMemoryManager.cpp" />
     <ClCompile Include="src\RE\TESNPC.cpp" />
     <ClCompile Include="src\RE\TESObjectARMA.cpp" />
     <ClCompile Include="src\RE\TESObjectARMO.cpp" />
@@ -342,6 +343,7 @@
     <ClInclude Include="include\Atomic.h" />
     <ClInclude Include="include\REL\Relocation.h" />
     <ClInclude Include="include\RE\AbsorbEffect.h" />
+    <ClInclude Include="include\RE\AbstractHeap.h" />
     <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h" />
     <ClInclude Include="include\RE\ActorKnowledge.h" />
     <ClInclude Include="include\RE\ActorMover.h" />
@@ -495,6 +497,7 @@
     <ClInclude Include="include\RE\bhkShape.h" />
     <ClInclude Include="include\RE\bhkShapeCollection.h" />
     <ClInclude Include="include\RE\bhkShapePhantom.h" />
+    <ClInclude Include="include\RE\bhkThreadMemorySource.h" />
     <ClInclude Include="include\RE\bhkWorldObject.h" />
     <ClInclude Include="include\RE\BSAnimationGraphChannel.h" />
     <ClInclude Include="include\RE\BSAnimationGraphEvent.h" />
@@ -586,6 +589,7 @@
     <ClInclude Include="include\RE\BSScript\VMArray.h" />
     <ClInclude Include="include\RE\BSScript\ZeroFunctionArguments.h" />
     <ClInclude Include="include\RE\BSShader.h" />
+    <ClInclude Include="include\RE\BSSmallBlockAllocator.h" />
     <ClInclude Include="include\RE\BSSpinLock.h" />
     <ClInclude Include="include\RE\BSStorage.h" />
     <ClInclude Include="include\RE\BSString.h" />
@@ -676,7 +680,6 @@
     <ClInclude Include="include\RE\GameSettingCollection.h" />
     <ClInclude Include="include\RE\GColor.h" />
     <ClInclude Include="include\RE\GConstructorMov.h" />
-    <ClInclude Include="include\RE\GetActorsFilter.h" />
     <ClInclude Include="include\RE\GFixedSizeHash.h" />
     <ClInclude Include="include\RE\GFxActionControl.h" />
     <ClInclude Include="include\RE\GFxEvent.h" />
@@ -836,6 +839,9 @@
     <ClInclude Include="include\RE\ImageSpaceEffectParam.h" />
     <ClInclude Include="include\RE\ImageSpaceShaderParam.h" />
     <ClInclude Include="include\RE\IMapCameraCallbacks.h" />
+    <ClInclude Include="include\RE\IMemoryHeap.h" />
+    <ClInclude Include="include\RE\IMemoryStore.h" />
+    <ClInclude Include="include\RE\IMemoryStoreBase.h" />
     <ClInclude Include="include\RE\IMenu.h" />
     <ClInclude Include="include\RE\IMessageBoxCallback.h" />
     <ClInclude Include="include\RE\IMovementControllerRegisterInterface.h" />
@@ -873,6 +879,7 @@
     <ClInclude Include="include\RE\MapMoveHandler.h" />
     <ClInclude Include="include\RE\MapZoomHandler.h" />
     <ClInclude Include="include\RE\BGSMaterialObject.h" />
+    <ClInclude Include="include\RE\MemoryHeap.h" />
     <ClInclude Include="include\RE\MenuOpenHandler.h" />
     <ClInclude Include="include\RE\MessageBoxData.h" />
     <ClInclude Include="include\RE\MessageBoxMenu.h" />
@@ -926,12 +933,14 @@
     <ClInclude Include="include\RE\PoisonedWeapon.h" />
     <ClInclude Include="include\RE\Precipitation.h" />
     <ClInclude Include="include\RE\PrecomputedNavmeshInfoPathMap.h" />
+    <ClInclude Include="include\RE\ProcessLists\GetActorsFilter.h" />
     <ClInclude Include="include\RE\Projectile.h" />
     <ClInclude Include="include\RE\QuestEvents.h" />
     <ClInclude Include="include\RE\ReferenceEffectController.h" />
     <ClInclude Include="include\RE\GMatrix2D.h" />
     <ClInclude Include="include\RE\RegSettingCollection.h" />
     <ClInclude Include="include\RE\RemoveCallbackVisitor.h" />
+    <ClInclude Include="include\RE\ScrapHeap.h" />
     <ClInclude Include="include\RE\Script.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
     <ClInclude Include="include\RE\ExtraContainerChanges.h" />
@@ -942,7 +951,6 @@
     <ClInclude Include="include\RE\LookHandler.h" />
     <ClInclude Include="include\RE\MagicItem.h" />
     <ClInclude Include="include\RE\MagicTarget.h" />
-    <ClInclude Include="include\RE\Memory.h" />
     <ClInclude Include="include\RE\MenuControls.h" />
     <ClInclude Include="include\RE\MenuEventHandler.h" />
     <ClInclude Include="include\RE\MenuManager.h" />
@@ -1048,6 +1056,7 @@
     <ClInclude Include="include\RE\TESLoadScreen.h" />
     <ClInclude Include="include\RE\TESMagicEffectApplyEvent.h" />
     <ClInclude Include="include\RE\TESMagicTargetForm.h" />
+    <ClInclude Include="include\RE\TESMemoryManager.h" />
     <ClInclude Include="include\RE\TESModel.h" />
     <ClInclude Include="include\RE\TESModelPSA.h" />
     <ClInclude Include="include\RE\TESModelRDT.h" />
@@ -1117,6 +1126,7 @@
     <ClInclude Include="include\RE\TESFile.h" />
     <ClInclude Include="include\RE\ValueModifierEffect.h" />
     <ClInclude Include="include\RE\WeatherType.h" />
+    <ClInclude Include="include\RE\ZeroOverheadHeap.h" />
     <ClInclude Include="include\SKSE\Events.h" />
     <ClInclude Include="include\SKSE\Interfaces.h" />
     <ClInclude Include="include\SKSE\Logger.h" />

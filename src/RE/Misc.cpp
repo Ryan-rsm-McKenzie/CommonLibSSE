@@ -2,6 +2,8 @@
 
 #include "RE/INIPrefSettingCollection.h"  // INIPrefSettingCollection
 #include "RE/INISettingCollection.h"  // INISettingCollection
+#include "RE/NiPoint3.h"  // NiPoint3
+#include "RE/NiRect.h"  // NiRect
 #include "RE/Offsets.h"
 #include "RE/Setting.h"  // Setting
 #include "REL/Relocation.h"  // Offset

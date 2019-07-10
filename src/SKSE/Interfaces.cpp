@@ -2,6 +2,7 @@
 
 #include "skse64/PluginAPI.h"  // SKSEInterface, SKSEScaleformInterface, SKSESerializationInterface, SKSETaskInterface, SKSEPapyrusInterface, SKSEMessagingInterface, SKSEObjectInterface
 
+#include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
 #include "SKSE/API.h"  // GetPluginHandle
 
 
@@ -241,7 +242,13 @@ namespace SKSE
 
 	bool PapyrusInterface::Register(RegFunction* a_fn) const
 	{
-		return GetProxy()->Register(reinterpret_cast<SKSEPapyrusInterface::RegisterFunctions>(a_fn));
+		auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+		if (vm) {
+			a_fn(vm);
+			return true;
+		} else {
+			return GetProxy()->Register(reinterpret_cast<SKSEPapyrusInterface::RegisterFunctions>(a_fn));
+		}
 	}
 
 

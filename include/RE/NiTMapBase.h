@@ -4,7 +4,7 @@
 #include <cstring>  // memset
 #include <utility>  // forward
 
-#include "RE/Memory.h"  // malloc, free
+#include "RE/TESMemoryManager.h"  // malloc, free
 
 
 namespace RE

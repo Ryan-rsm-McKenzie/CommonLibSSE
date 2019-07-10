@@ -2,7 +2,7 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_NiRefObject
 
-#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
 
 
 namespace RE

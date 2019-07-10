@@ -7,8 +7,8 @@
 #include <utility>
 #include <functional>
 
-#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
 #include "RE/Offsets.h"
+#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
 #include "REL/Relocation.h"
 
 

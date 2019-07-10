@@ -2,7 +2,7 @@
 
 #include "skse64/GameExtraData.h"  // s_ExtraAliasInstanceArrayVtbl
 
-#include "RE/Memory.h"  // free
+#include "RE/TESMemoryManager.h"  // free
 
 
 namespace RE

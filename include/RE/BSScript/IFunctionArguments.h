@@ -4,7 +4,7 @@
 
 #include "RE/BSScript/BSScriptVariable.h"  // BSScript::BSScriptVariable
 #include "RE/BSTArray.h"  // BSScrapArray
-#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
 
 
 namespace RE

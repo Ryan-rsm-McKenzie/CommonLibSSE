@@ -1,6 +1,6 @@
 #include "RE/NiTCollection.h"
 
-#include "RE/Memory.h"  // malloc, free
+#include "RE/TESMemoryManager.h"  // malloc, free
 
 
 namespace RE

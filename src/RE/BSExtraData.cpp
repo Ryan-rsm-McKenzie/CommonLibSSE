@@ -2,7 +2,7 @@
 
 #include <cstring>  // memset
 
-#include "RE/Memory.h"  // malloc
+#include "RE/TESMemoryManager.h"  // malloc
 
 
 namespace RE

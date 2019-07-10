@@ -15,8 +15,8 @@
 #include <memory.h>	// for memcpy_s
 
 #include "RE/CRC.h"  // CalcCRC32
-#include "RE/Memory.h"  // TES_HEAP_REDEFINE_NEW
 #include "RE/TESForm.h"  // TESForm
+#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
 
 
 namespace RE

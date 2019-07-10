@@ -37,9 +37,6 @@
     <Filter Include="src\RE\BSDevices">
       <UniqueIdentifier>{70b8f39b-eb73-4984-9340-39fccbb3fe42}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\RE\BSDevices\Handlers">
-      <UniqueIdentifier>{59658924-308b-457f-9989-4cc947c1f5c7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\RE\BSHavok">
       <UniqueIdentifier>{394a210a-5b4b-4bcb-861e-10d2b7bbdfc5}</UniqueIdentifier>
     </Filter>
@@ -124,23 +121,11 @@
     <Filter Include="src\RE\FormComponents">
       <UniqueIdentifier>{34e6db25-f8f5-41e8-9618-0e56420cbca2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\RE\FormComponents\Misc">
-      <UniqueIdentifier>{bc475c18-3779-451f-a9b7-06ce2e9c927b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\Magic">
-      <UniqueIdentifier>{0f744115-aeec-45b4-886a-05c36f067ae5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\Magic\Components">
-      <UniqueIdentifier>{a9f295b4-28b4-466b-87f7-a43222748439}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\RE\Menus">
       <UniqueIdentifier>{8639fa70-bb65-41f8-9703-7197f8b3da10}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\RE\Menus\IMenu">
       <UniqueIdentifier>{bcafa373-e88b-4f98-88ef-d87a5b464bfb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\Misc">
-      <UniqueIdentifier>{e4c29fee-7193-4742-a331-6ec4390487ac}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\RE\NetImmerse">
       <UniqueIdentifier>{18a7224a-297f-431e-a39c-16a3621488e3}</UniqueIdentifier>
@@ -198,27 +183,6 @@
     </Filter>
     <Filter Include="src\RE\SkyrimScript">
       <UniqueIdentifier>{4f968ef9-868a-4eee-91ff-cdd422ce022f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\TESForms">
-      <UniqueIdentifier>{ae428fd3-8d0d-4b50-bc50-7ae47ba44515}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\TESForms\World">
-      <UniqueIdentifier>{f9355b9c-1d53-4ef5-8940-a232a06e3d53}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\TESForms\World\Components">
-      <UniqueIdentifier>{dace98c7-fe0d-4868-a748-332583e67e8a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\TESForms\Character">
-      <UniqueIdentifier>{85837295-49fe-48c5-b835-4b196640d002}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\TESForms\Character\PerkEntry">
-      <UniqueIdentifier>{fc57e9d2-cbfd-47a6-adea-a0832bcce9ae}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\TESForms\Objects">
-      <UniqueIdentifier>{a45b72b2-4bd0-44e0-b255-a4941cbc080a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\TESForms\Gameplay">
-      <UniqueIdentifier>{b7288ada-661d-4773-a738-8217cd6bf3d5}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\RE\AI">
       <UniqueIdentifier>{908cdcc8-be3b-487e-9f25-17ca3a6de7c4}</UniqueIdentifier>
@@ -553,32 +517,8 @@
     <Filter Include="include\RE\FileIO">
       <UniqueIdentifier>{e94d49e5-573f-465f-8dcf-37c235cf3bfb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\FormComponents">
-      <UniqueIdentifier>{9410f289-c830-479f-b772-32ed0af95f26}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\FormComponents\Misc">
-      <UniqueIdentifier>{94c69802-109b-4557-aba1-2ad9f8bfa1c9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\FormComponents\Enums">
-      <UniqueIdentifier>{cfab6a52-7c17-4fbb-8bf3-f2e8f0a4bd09}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Inventory">
       <UniqueIdentifier>{9c902473-086f-40d9-a348-20edac18af80}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Magic">
-      <UniqueIdentifier>{7aeed777-d24f-49d2-9397-7684e696fd4f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Magic\Components">
-      <UniqueIdentifier>{3e7f8996-42ad-425a-8149-9d1933409824}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Magic\Components\ActiveEffect">
-      <UniqueIdentifier>{25b0e9c2-ad2f-41e9-b092-010559ba4885}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Magic\Components\ActiveEffect\ValueModifierEffect">
-      <UniqueIdentifier>{4f98f23a-d19e-44cc-8b54-6b9d0605ba0d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Magic\Components\ReferenceEffectController">
-      <UniqueIdentifier>{fad1b7a6-eb05-4d2d-9f48-7efb3591c1a5}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\RE\Menus">
       <UniqueIdentifier>{70b8132a-3f5c-42c1-bd53-cb660cf26a26}</UniqueIdentifier>
@@ -624,15 +564,6 @@
     </Filter>
     <Filter Include="include\RE\Pathfinding">
       <UniqueIdentifier>{42929457-a518-470f-aa8b-5583507fb07c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Pathfinding\NavMeshInfo">
-      <UniqueIdentifier>{985f2601-3f27-48a6-bfc8-a41417f9f8e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\Pathfinding\NavMesh">
-      <UniqueIdentifier>{18f51f26-388f-4745-9bb8-b679f2a36760}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\RadiantStory">
-      <UniqueIdentifier>{4b718e2d-555e-43fa-8e20-f09116ee9c12}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\RE\Scaleform">
       <UniqueIdentifier>{ddbc9483-11ab-4ce5-8204-11dc08f668ba}</UniqueIdentifier>
@@ -712,48 +643,6 @@
     <Filter Include="include\RE\SkyrimScript\DelayFunctor">
       <UniqueIdentifier>{7cab393f-7e1e-4164-91e6-fa0b7670bc57}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\TESForms">
-      <UniqueIdentifier>{bdd31fbf-8dd7-40f6-bb15-e5dc251bf5f6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\TESForms\World">
-      <UniqueIdentifier>{4f543887-cc65-4ce5-845f-01f2377ddf86}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\TESForms\World\Components">
-      <UniqueIdentifier>{29a1fe8c-10e4-4020-9fb3-0cf7919e1544}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\TESForms\World\Components\GetActorsFilter">
-      <UniqueIdentifier>{9af68fb2-a9de-4079-886e-c6001feec197}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\TESForms\Objects">
-      <UniqueIdentifier>{b299a0f7-f05a-44da-a1dd-913d2f4aedd0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\TESForms\Character">
-      <UniqueIdentifier>{d7f094f4-06d5-4040-9339-310dfbb93cb8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\TESForms\Character\Components">
-      <UniqueIdentifier>{5f9423c9-5be6-4705-96ba-137dc00abdb4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\TESForms\Character\Procedure">
-      <UniqueIdentifier>{f41fc8d3-f5e8-46a6-87bc-da2a624fd3b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\TESForms\Character\Procedure\PackageData">
-      <UniqueIdentifier>{731bf9fa-1d1b-41d3-aea2-41e2557eb50a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\TESForms\Character\Perks">
-      <UniqueIdentifier>{ecfde3ba-0814-4a1c-9f34-bfd01a8917fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\TESForms\Character\BGSSceneAction">
-      <UniqueIdentifier>{18c535a4-8388-499f-b369-c711b3a50d3d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\TESForms\Gameplay">
-      <UniqueIdentifier>{c84257dd-2f60-400b-9585-9e30d8ded77c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\TESForms\Gameplay\Components">
-      <UniqueIdentifier>{1ef0afbd-0b93-4a04-991a-ccc80ffb4c9b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\TESForms\Regions">
-      <UniqueIdentifier>{4ec10876-b2e2-4669-824a-cc18e2ef7153}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Animation\BSIRagdollDriver">
       <UniqueIdentifier>{99802223-d8a9-4f68-b36c-8a13575a6ffe}</UniqueIdentifier>
     </Filter>
@@ -775,14 +664,260 @@
     <Filter Include="include\RE\Camera\TESCameraState">
       <UniqueIdentifier>{65cb61aa-2daf-4a32-bd34-f372fcea94e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Pathfinding\IMovementInterface">
+      <UniqueIdentifier>{1e4ba559-0ee5-4f2d-9d17-01ecc17f5e42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Pathfinding\IMovementControllerRegisterInterface">
+      <UniqueIdentifier>{023b6659-051d-4ab5-9bd3-596de4fb25b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSPathFinding\BSPrecomputedNavmeshInfoPathMap">
+      <UniqueIdentifier>{cbfe97b8-b192-46ed-b5c5-11374af14abe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Pathfinding\IMovementControllerRegisterInterface\MovementControllerAI">
+      <UniqueIdentifier>{7948e0ba-48ae-46d8-a36e-2c89cf707c6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Sky\SkyObject">
+      <UniqueIdentifier>{d1deaec5-e897-4c50-8441-61df7922e7b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents">
+      <UniqueIdentifier>{9410f289-c830-479f-b772-32ed0af95f26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components">
+      <UniqueIdentifier>{9dff09e6-63a9-40e1-96b9-74301c6ac60e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\BGSBaseAlias">
+      <UniqueIdentifier>{88fc3c09-eefe-42e2-952d-8a3a67c84404}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\BGSEntryPointFunctionData">
+      <UniqueIdentifier>{f442af1e-5f6e-4e76-b8a8-f40b7b80a835}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\BGSPerkEntry">
+      <UniqueIdentifier>{4cff4fef-ceea-478b-a5c6-6c4a2bf8ec24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\BGSSceneAction">
+      <UniqueIdentifier>{18c535a4-8388-499f-b369-c711b3a50d3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\IPackageData">
+      <UniqueIdentifier>{f3c4f0f2-f496-495e-9490-700718c9db85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\IProcedureTreeItem">
+      <UniqueIdentifier>{609449cc-dbdc-49e4-b304-c7c30d629cc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\IProcedureTreeItem\BGSProcedureTreeConditionalItem">
+      <UniqueIdentifier>{1a9365b7-b54e-4cbc-b349-15b94b0245ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\IProcedureTreeItem\BGSProcedureTreeConditionalItem\BGSProcedureTreeBranch">
+      <UniqueIdentifier>{d34e0deb-49e6-40e1-b3ee-97e2ff529cf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\TESPackageData">
+      <UniqueIdentifier>{b25d19d9-59a9-49ff-b333-caae355d7f1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\TESRegionData">
+      <UniqueIdentifier>{d069ce3e-0d25-47b6-814e-081eb72f79bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\GetActorsFilter">
+      <UniqueIdentifier>{9af68fb2-a9de-4079-886e-c6001feec197}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\ActiveEffect">
+      <UniqueIdentifier>{25b0e9c2-ad2f-41e9-b092-010559ba4885}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\ActiveEffect\ValueModifierEffect">
+      <UniqueIdentifier>{4f98f23a-d19e-44cc-8b54-6b9d0605ba0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\ReferenceEffectController">
+      <UniqueIdentifier>{fad1b7a6-eb05-4d2d-9f48-7efb3591c1a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESModel">
+      <UniqueIdentifier>{8af8cbee-3f6a-461f-9c54-da31d41b7d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESTexture">
+      <UniqueIdentifier>{2a3a33c2-b5bd-42bd-8481-ed1eacdc84b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm">
+      <UniqueIdentifier>{fd4f0bd9-1bbe-4861-8389-c61671571576}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\BGSKeyword">
+      <UniqueIdentifier>{0ee7f17e-afa2-4a3e-95ad-91beb078d7f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\BGSStoryManagerTreeForm">
+      <UniqueIdentifier>{b2ba8a61-1e0d-4fb0-b307-1eb4f406fed0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\BGSStoryManagerTreeForm\BGSStoryManagerNodeBase">
+      <UniqueIdentifier>{1dd14e7f-c8ba-438f-94cc-00e9429bd4d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\BGSStoryManagerTreeForm\BGSStoryManagerNodeBase\BGSStoryManagerBranchNode">
+      <UniqueIdentifier>{2179a8e6-4bbf-417b-ac3d-a4433dd2c0ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESObject">
+      <UniqueIdentifier>{90ab4345-522b-4b43-9d9d-35ae8d6487c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESObject\TESBoundObject">
+      <UniqueIdentifier>{df9449ae-443d-4196-96f1-72193e224274}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject">
+      <UniqueIdentifier>{9310bf1a-7598-46a7-ac15-fb68c635303b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESActorBase">
+      <UniqueIdentifier>{79040a32-eef1-4b6b-b52d-53b0a2ed1641}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESObjectACTI">
+      <UniqueIdentifier>{168ec09a-b645-4f48-b7cf-7050362cbf9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT">
+      <UniqueIdentifier>{aec52ea0-2bf4-460d-849f-f5d29f8f7785}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC">
+      <UniqueIdentifier>{6b3c6c65-f249-4c0b-8740-2667e9833551}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem">
+      <UniqueIdentifier>{8603af30-4cd6-44f6-a78e-1dcc4dc5260c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem\SpellItem">
+      <UniqueIdentifier>{12813863-aaaa-4a2a-bd87-4ac8f2a4c32d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESObjectREFR">
+      <UniqueIdentifier>{5db28aec-0549-4753-9a24-c2f5f14bb840}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESObjectREFR\Actor">
+      <UniqueIdentifier>{0e3eab02-b540-4a53-b5b7-8b339de91319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESObjectREFR\Actor\Character">
+      <UniqueIdentifier>{c1267cae-c87e-44f3-9307-23caa283cf0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESObjectREFR\Projectile">
+      <UniqueIdentifier>{c3963483-de30-4456-a31d-79080ea0bab4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESObjectREFR\Projectile\MissileProjectile">
+      <UniqueIdentifier>{56a0457a-cae6-4250-9f25-1964ccccffd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Enums">
+      <UniqueIdentifier>{cfab6a52-7c17-4fbb-8bf3-f2e8f0a4bd09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\Components">
+      <UniqueIdentifier>{bc475c18-3779-451f-a9b7-06ce2e9c927b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Inventory">
+      <UniqueIdentifier>{a49eb633-5a0b-42c4-872f-e0b01ab1a725}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\Components\ActiveEffect">
+      <UniqueIdentifier>{b2345563-eccb-483e-a8cf-f90423c3e916}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\TESForm">
+      <UniqueIdentifier>{c90e180e-eed1-471f-ac7b-b80d549aa000}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\TESForm\TESObject">
+      <UniqueIdentifier>{d51eef26-bf49-48d8-9072-d7b94e036f34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject">
+      <UniqueIdentifier>{275ca39e-9f11-48a2-b56c-00eaa5bba3fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem">
+      <UniqueIdentifier>{61364166-11da-4441-bd0a-2efb7add9fae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject">
+      <UniqueIdentifier>{ac22e12a-ec8d-4622-bba0-145e08b36748}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESActorBase">
+      <UniqueIdentifier>{ee158a00-b2b4-4305-9b72-e8d1320f2d32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\TESForm\BGSStoryManagerTreeForm">
+      <UniqueIdentifier>{a394b632-c19f-40fc-baf6-20680bcbc4e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\Components\BGSBaseAlias">
+      <UniqueIdentifier>{6398f176-ca51-49aa-95e4-d4b4089d6c75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\Components\BGSPerkEntry">
+      <UniqueIdentifier>{88cec994-6d64-4477-b0f6-2a3081833aaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\Components\BGSEntryPointFunctionData">
+      <UniqueIdentifier>{1300f9be-6f78-4b68-ae2c-1ee5042cc4e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC">
+      <UniqueIdentifier>{e6b969e9-6e9e-4701-b897-925005ad5538}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Pathfinding">
+      <UniqueIdentifier>{84218a71-0337-4b6b-831b-fd76e138e5d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Pathfinding\IMovementInterface">
+      <UniqueIdentifier>{0903505b-5ae0-44a7-b511-415d0a50e760}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Pathfinding\IMovementInterface\IMovementState">
+      <UniqueIdentifier>{8017f2e9-b6e7-4634-aabc-ea499fa0b713}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Pathfinding\IMovementInterface\IMovementState">
+      <UniqueIdentifier>{af1533fa-39bc-4acd-8983-6cb8a541ab13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\TESForm\TESObjectREFR">
+      <UniqueIdentifier>{6398e7e8-31a0-483b-bbf9-e3812176b927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\TESForm\TESObjectREFR\Actor">
+      <UniqueIdentifier>{5f9e2d63-9b27-4600-a957-d2c2b557b57c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FormComponents\TESForm\TESObjectREFR\Actor\Character">
+      <UniqueIdentifier>{4247af99-add3-4b2d-badf-da985d6bff13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Animation\BSIRagdollDriver">
+      <UniqueIdentifier>{1945d699-f7b5-4cc1-b5f5-1ac8b0dae6c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSDevices\BSIInputDevice">
+      <UniqueIdentifier>{8b80d781-200c-4140-a62e-4ed71419f520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSDevices\BSIInputDevice\BSInputDevice">
+      <UniqueIdentifier>{cf49f02a-635f-4ba1-a266-095fa6c64512}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice">
+      <UniqueIdentifier>{71f4daca-d081-4b50-b5dc-82b2abdccab7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSDevices\MenuEventHandler">
+      <UniqueIdentifier>{ba1dbcef-0f4c-45b8-8020-bc249c89d8cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSDevices\PlayerInputHandler">
+      <UniqueIdentifier>{c1c2ed2d-8829-46a4-8a7c-f4aa152e1a79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSSystem\IFormFactory">
+      <UniqueIdentifier>{bb93e349-25dc-4f35-bdb9-84ce8dc7231b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSSystem\IFormFactory\ConcreteFormFactory">
+      <UniqueIdentifier>{3bfcbc68-dc15-44f4-9b57-6393bd76ecec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSSystem\BSSaveDataSystemUtility">
+      <UniqueIdentifier>{6726974d-c9f7-4c2b-9ddc-919024f3a823}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSSystem\BSStorage">
+      <UniqueIdentifier>{52793eb8-3a7f-40b8-8e3c-136aa6b0d5b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSSystem\BSStorage">
+      <UniqueIdentifier>{bc45bc1a-ab15-42cc-bb81-c39246940c67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSSystem\IFormFactory">
+      <UniqueIdentifier>{0171e555-3cb8-47af-974d-5f37d190fad8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FileIO\ICellAttachDetachEventSource">
+      <UniqueIdentifier>{91e8d6b1-97d3-48bb-8f61-d650120521d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\FileIO\ICellAttachDetachEventSource">
+      <UniqueIdentifier>{d3986ffa-10ac-4bae-853c-c663cc48d838}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Memory">
+      <UniqueIdentifier>{b022612f-da5c-487a-88f1-873d87dbbba6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Memory\IMemoryStoreBase">
+      <UniqueIdentifier>{91aac95f-0879-4e31-97a9-d1962b214a18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Memory\IMemoryStoreBase\IMemoryStore">
+      <UniqueIdentifier>{8c1c75f7-e13c-4f66-89cb-06437f10040a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Memory\IMemoryStoreBase\IMemoryStore\IMemoryHeap">
+      <UniqueIdentifier>{f617876b-ee59-470c-8bdc-59ae95c6e74f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Memory\IMemoryStoreBase\IMemoryStore\IMemoryHeap\AbstractHeap">
+      <UniqueIdentifier>{8526d040-326c-408b-8396-33bd93807c9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Memory">
+      <UniqueIdentifier>{0e4a0060-86b6-45c8-aef4-30c0f9cb47dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\RE\ActorState.cpp">
-      <Filter>src\RE\TESForms\World\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSInputDevice.cpp">
-      <Filter>src\RE\BSDevices</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\MenuControls.cpp">
       <Filter>src\RE\BSDevices</Filter>
     </ClCompile>
@@ -795,44 +930,14 @@
     <ClCompile Include="src\RE\TESActorBaseData.cpp">
       <Filter>src\RE\FormComponents</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\ActiveEffect.cpp">
-      <Filter>src\RE\Magic</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\EffectSetting.cpp">
-      <Filter>src\RE\Magic</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\MagicItem.cpp">
-      <Filter>src\RE\Magic</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\MenuManager.cpp">
       <Filter>src\RE\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\InventoryEntryData.cpp">
-      <Filter>src\RE\Misc</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESNPC.cpp">
-      <Filter>src\RE\TESForms\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESObjectBOOK.cpp">
-      <Filter>src\RE\TESForms\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESObjectLIGH.cpp">
-      <Filter>src\RE\TESForms\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\ActorProcessManager.cpp">
-      <Filter>src\RE\TESForms\World\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESFaction.cpp">
-      <Filter>src\RE\TESForms\Character</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\UIManager.cpp">
       <Filter>src\RE\Menus</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSTArray.cpp">
       <Filter>src\RE\BSCore</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\InventoryChanges.cpp">
-      <Filter>src\RE\Misc</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\Misc.cpp">
       <Filter>src\RE</Filter>
@@ -870,47 +975,11 @@
     <ClCompile Include="src\RE\TESContainer.cpp">
       <Filter>src\RE\FormComponents</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\TESObjectWEAP.cpp">
-      <Filter>src\RE\TESForms\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESDataHandler.cpp">
-      <Filter>src\RE\FileIO</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\SpellItem.cpp">
-      <Filter>src\RE\Magic</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\Actor.cpp">
-      <Filter>src\RE\TESForms\World</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\PlayerCharacter.cpp">
-      <Filter>src\RE\TESForms\World</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESObjectREFR.cpp">
-      <Filter>src\RE\TESForms\World</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESObjectCELL.cpp">
-      <Filter>src\RE\TESForms\World</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSExtraData.cpp">
       <Filter>src\RE\ExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraTextDisplayData.cpp">
       <Filter>src\RE\ExtraData</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESAmmo.cpp">
-      <Filter>src\RE\TESForms\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\EquipManager.cpp">
-      <Filter>src\RE\Misc</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESObjectARMO.cpp">
-      <Filter>src\RE\TESForms\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESObjectARMA.cpp">
-      <Filter>src\RE\TESForms\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BShkbAnimationGraph.cpp">
-      <Filter>src\RE\Animation</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraReferenceHandle.cpp">
       <Filter>src\RE\ExtraData</Filter>
@@ -918,17 +987,8 @@
     <ClCompile Include="src\RE\BSIntrusiveRefCounted.cpp">
       <Filter>src\RE\BSSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\TESWorldSpace.cpp">
-      <Filter>src\RE\TESForms\World</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\ExtraMapMarker.cpp">
       <Filter>src\RE\ExtraData</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESTopicInfo.cpp">
-      <Filter>src\RE\TESForms\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESTopic.cpp">
-      <Filter>src\RE\TESForms\Character</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\SoundData.cpp">
       <Filter>src\RE\BSAudio</Filter>
@@ -942,47 +1002,17 @@
     <ClCompile Include="src\RE\TESDescription.cpp">
       <Filter>src\RE\FormComponents</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BGSHeadPart.cpp">
-      <Filter>src\RE\TESForms\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSWin32KeyboardDevice.cpp">
-      <Filter>src\RE\BSDevices</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSString.cpp">
       <Filter>src\RE\BSCore</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESRace.cpp">
-      <Filter>src\RE\TESForms\Character</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSSpinLock.cpp">
       <Filter>src\RE\BSCore</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSSystemFileStorage.cpp">
-      <Filter>src\RE\BSSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BGSBaseAlias.cpp">
-      <Filter>src\RE\TESForms\Character</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\TESAIForm.cpp">
       <Filter>src\RE\FormComponents</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\TESClimate.cpp">
-      <Filter>src\RE\TESForms\World</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\Sky.cpp">
       <Filter>src\RE\Sky</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESQuest.cpp">
-      <Filter>src\RE\TESForms\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BGSEntryPointFunctionDataActivateChoice.cpp">
-      <Filter>src\RE\TESForms\Character\PerkEntry</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp">
-      <Filter>src\RE\TESForms\Character\PerkEntry</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESSoulGem.cpp">
-      <Filter>src\RE\TESForms\Objects</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraFlags.cpp">
       <Filter>src\RE\ExtraData</Filter>
@@ -1008,26 +1038,11 @@
     <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp">
       <Filter>src\RE\Events\ScriptEvent</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BGSPerkEntry.cpp">
-      <Filter>src\RE\TESForms\Character\PerkEntry</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\MenuEventHandler.cpp">
-      <Filter>src\RE\BSDevices\Handlers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\PlayerInputHandler.cpp">
-      <Filter>src\RE\BSDevices\Handlers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BaseExtraList.cpp">
-      <Filter>src\RE\FormComponents\Misc</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\Condition.cpp">
-      <Filter>src\RE\FormComponents\Misc</Filter>
+      <Filter>src\RE\FormComponents\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ActorValueOwner.cpp">
-      <Filter>src\RE\FormComponents\Misc</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\MagicTarget.cpp">
-      <Filter>src\RE\Magic\Components</Filter>
+      <Filter>src\RE\FormComponents\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\IMenu.cpp">
       <Filter>src\RE\Menus\IMenu</Filter>
@@ -1043,9 +1058,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\hkStringPtr.cpp">
       <Filter>src\RE\BSHavok\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\ActorKnowledge.cpp">
-      <Filter>src\RE\TESForms\World\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\NiAnimationKey.cpp">
       <Filter>src\RE\NetImmerse\NiAnimation</Filter>
@@ -1152,9 +1164,6 @@
     <ClCompile Include="src\SKSE\RegistrationSet.cpp">
       <Filter>src\SKSE</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\IFormFactory.cpp">
-      <Filter>src\RE\BSSystem</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\Console.cpp">
       <Filter>src\RE\Menus\IMenu</Filter>
     </ClCompile>
@@ -1172,12 +1181,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\GFxLog.cpp">
       <Filter>src\RE\Scaleform\GFxLog</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BGSLocation.cpp">
-      <Filter>src\RE\TESForms\World</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BGSDefaultObjectManager.cpp">
-      <Filter>src\RE\TESForms\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSIMusicType.cpp">
       <Filter>src\RE\BSAudio</Filter>
@@ -1231,9 +1234,6 @@
       <Filter>src\RE\SkyrimScript</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSScript\NF_util\NativeFunctionBase.cpp">
-      <Filter>src\RE\BSScript\IFunction\NF_util</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSScript\IFunction.cpp">
       <Filter>src\RE\BSScript\IFunction\NF_util</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSScript\IFunctionArguments.cpp">
@@ -1296,6 +1296,150 @@
     <ClCompile Include="src\RE\LocalMapCamera.cpp">
       <Filter>src\RE\Camera\TESCamera</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BaseExtraList.cpp">
+      <Filter>src\RE\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\MagicTarget.cpp">
+      <Filter>src\RE\FormComponents\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ActiveEffect.cpp">
+      <Filter>src\RE\FormComponents\Components\ActiveEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\EffectSetting.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\MagicItem.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\SpellItem.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSHeadPart.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESFaction.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESNPC.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESActorBase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESQuest.cpp">
+      <Filter>src\RE\FormComponents\TESForm\BGSStoryManagerTreeForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESRace.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESTopic.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESTopicInfo.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSBaseAlias.cpp">
+      <Filter>src\RE\FormComponents\Components\BGSBaseAlias</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSPerkEntry.cpp">
+      <Filter>src\RE\FormComponents\Components\BGSPerkEntry</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp">
+      <Filter>src\RE\FormComponents\Components\BGSPerkEntry</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSEntryPointFunctionDataActivateChoice.cpp">
+      <Filter>src\RE\FormComponents\Components\BGSEntryPointFunctionData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSDefaultObjectManager.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESAmmo.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectARMA.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectARMO.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectBOOK.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectLIGH.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectWEAP.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESSoulGem.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ActorKnowledge.cpp">
+      <Filter>src\RE\FormComponents\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ActorProcessManager.cpp">
+      <Filter>src\RE\FormComponents\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ActorState.cpp">
+      <Filter>src\RE\Pathfinding\IMovementInterface\IMovementState</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Actor.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObjectREFR\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSLocation.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\PlayerCharacter.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObjectREFR\Actor\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESClimate.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectCELL.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectREFR.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObjectREFR</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESWorldSpace.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BShkbAnimationGraph.cpp">
+      <Filter>src\RE\Animation\BSIRagdollDriver</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSInputDevice.cpp">
+      <Filter>src\RE\BSDevices\BSIInputDevice\BSInputDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSWin32KeyboardDevice.cpp">
+      <Filter>src\RE\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\MenuEventHandler.cpp">
+      <Filter>src\RE\BSDevices\MenuEventHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\PlayerInputHandler.cpp">
+      <Filter>src\RE\BSDevices\PlayerInputHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\IFunction.cpp">
+      <Filter>src\RE\BSScript\IFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSSystemFileStorage.cpp">
+      <Filter>src\RE\BSSystem\BSStorage</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\IFormFactory.cpp">
+      <Filter>src\RE\BSSystem\IFormFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESDataHandler.cpp">
+      <Filter>src\RE\FileIO\ICellAttachDetachEventSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\EquipManager.cpp">
+      <Filter>src\RE\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\InventoryChanges.cpp">
+      <Filter>src\RE\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\InventoryEntryData.cpp">
+      <Filter>src\RE\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESMemoryManager.cpp">
+      <Filter>src\RE\Memory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -1316,24 +1460,6 @@
     <ClInclude Include="include\RE\ExtraLock.h">
       <Filter>include\RE\ExtraData</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\ActorState.h">
-      <Filter>include\RE\TESForms\World\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Actor.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Character.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\PlayerCharacter.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObjectLIGH.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObjectREFR.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSTHashMap.h">
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
@@ -1343,38 +1469,11 @@
     <ClInclude Include="include\RE\CRC.h">
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESBoundObject.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ActorProcessManager.h">
-      <Filter>include\RE\TESForms\World\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObjectBOOK.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\InventoryEntryData.h">
       <Filter>include\RE\Inventory</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESBoundAnimObject.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObjectCONT.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObjectACTI.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\EffectSetting.h">
-      <Filter>include\RE\Magic</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MagicItem.h">
-      <Filter>include\RE\Magic</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESActorBaseData.h">
       <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESNPC.h">
-      <Filter>include\RE\TESForms\Character</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\PositionPlayerEvent.h">
       <Filter>include\RE\Events</Filter>
@@ -1382,17 +1481,11 @@
     <ClInclude Include="include\RE\BSTSingleton.h">
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESFaction.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ExtraFactionChanges.h">
       <Filter>include\RE\ExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\UIManager.h">
       <Filter>include\RE\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESRace.h">
-      <Filter>include\RE\TESForms\Character</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESRaceForm.h">
       <Filter>include\RE\FormComponents</Filter>
@@ -1408,9 +1501,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSTList.h">
       <Filter>include\RE\BSCore</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESLevItem.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraDroppedItemList.h">
       <Filter>include\RE\ExtraData</Filter>
@@ -1445,14 +1535,8 @@
     <ClInclude Include="include\RE\InputManager.h">
       <Filter>include\RE\BSDevices</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESForm.h">
-      <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BGSKeywordForm.h">
       <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObject.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraOwnership.h">
       <Filter>include\RE\ExtraData</Filter>
@@ -1460,47 +1544,14 @@
     <ClInclude Include="include\RE\TESContainer.h">
       <Filter>include\RE\FormComponents</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSKeyword.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObjectARMO.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObjectMISC.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObjectWEAP.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESEffectShader.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESTexture.h">
-      <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESDataHandler.h">
       <Filter>include\RE\FileIO</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\SpellItem.h">
-      <Filter>include\RE\Magic</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESFullName.h">
       <Filter>include\RE\FormComponents</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESModelTextureSwap.h">
-      <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESModel.h">
-      <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BGSMenuDisplayObject.h">
       <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObjectSTAT.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObjectCELL.h">
-      <Filter>include\RE\TESForms\World</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESAIForm.h">
       <Filter>include\RE\FormComponents</Filter>
@@ -1517,20 +1568,11 @@
     <ClInclude Include="include\RE\ExtraUniqueID.h">
       <Filter>include\RE\ExtraData</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESAmmo.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\EquipManager.h">
       <Filter>include\RE\Inventory</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESObjectARMA.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BGSEquipType.h">
       <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\EnchantmentItem.h">
-      <Filter>include\RE\Magic</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESEnchantableForm.h">
       <Filter>include\RE\FormComponents</Filter>
@@ -1556,14 +1598,8 @@
     <ClInclude Include="include\RE\BSIntrusiveRefCounted.h">
       <Filter>include\RE\BSSystem</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESWorldSpace.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ExtraLocationRefType.h">
       <Filter>include\RE\ExtraData</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSLocationRefType.h">
-      <Filter>include\RE\TESForms\World</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraMapMarker.h">
       <Filter>include\RE\ExtraData</Filter>
@@ -1574,21 +1610,6 @@
     <ClInclude Include="include\RE\ActorSpeedChannel.h">
       <Filter>include\RE\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESTopic.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESTopicInfo.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSDialogueBranch.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESSound.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSSoundDescriptorForm.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSAudioManager.h">
       <Filter>include\RE\BSAudio</Filter>
     </ClInclude>
@@ -1597,24 +1618,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSHandleRefObject.h">
       <Filter>include\RE\BSMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSAction.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSTextureSet.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSMenuIcon.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESIcon.h">
-      <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESGlobal.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESClass.h">
-      <Filter>include\RE\TESForms\Character</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESDescription.h">
       <Filter>include\RE\FormComponents</Filter>
@@ -1628,12 +1631,6 @@
     <ClInclude Include="include\RE\PackageLocation.h">
       <Filter>include\RE\AI</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSHeadPart.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESModelTri.h">
-      <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSString.h">
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
@@ -1643,14 +1640,8 @@
     <ClInclude Include="include\RE\ImageSpaceShaderParam.h">
       <Filter>include\RE\BSShader</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\MiddleProcess.h">
-      <Filter>include\RE\TESForms\World\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\AnimationVariableData.h">
       <Filter>include\RE\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESEyes.h">
-      <Filter>include\RE\TESForms\Character</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESSpellList.h">
       <Filter>include\RE\FormComponents</Filter>
@@ -1667,12 +1658,6 @@
     <ClInclude Include="include\RE\BGSAttackData.h">
       <Filter>include\RE\AI</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSTextureModel.h">
-      <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSBehaviorGraphModel.h">
-      <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ImageSpaceEffect.h">
       <Filter>include\RE\BSShader</Filter>
     </ClInclude>
@@ -1688,21 +1673,6 @@
     <ClInclude Include="include\RE\BSImagespaceShaderBlur3.h">
       <Filter>include\RE\BSShader</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSAcousticSpace.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Script.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESLandTexture.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSEquipSlot.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ScrollItem.h">
-      <Filter>include\RE\Magic</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BGSDestructibleObjectForm.h">
       <Filter>include\RE\FormComponents</Filter>
     </ClInclude>
@@ -1715,14 +1685,8 @@
     <ClInclude Include="include\RE\TESWeightForm.h">
       <Filter>include\RE\FormComponents</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSOpenCloseForm.h">
-      <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\StandardItemData.h">
       <Filter>include\RE\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSShaderParticleGeometryData.h">
-      <Filter>include\RE\TESForms\World</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESFile.h">
       <Filter>include\RE\FileIO</Filter>
@@ -1730,20 +1694,11 @@
     <ClInclude Include="include\RE\BGSDistantTreeBlock.h">
       <Filter>include\RE\DistantTerrain</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSAddonNode.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSSoundCategory.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSISoundCategory.h">
       <Filter>include\RE\BSAudio</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\IPostAnimationChannelUpdateFunctor.h">
       <Filter>include\RE\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSTalkingActivator.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESBipedModelForm.h">
       <Filter>include\RE\FormComponents</Filter>
@@ -1751,26 +1706,14 @@
     <ClInclude Include="include\RE\BGSMessageIcon.h">
       <Filter>include\RE\FormComponents</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESModelRDT.h">
-      <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BGSBlockBashData.h">
       <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESShout.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\IAnimationSetCallbackFunctor.h">
       <Filter>include\RE\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\ActorMover.h">
-      <Filter>include\RE\TESForms\World\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSCoreTypes.h">
       <Filter>include\RE\BSCore</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSStorage.h">
-      <Filter>include\RE\BSSystem</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSTFreeList.h">
       <Filter>include\RE\BSCore</Filter>
@@ -1796,32 +1739,8 @@
     <ClInclude Include="include\RE\ExtraPoison.h">
       <Filter>include\RE\ExtraData</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSSystemFileStorage.h">
-      <Filter>include\RE\BSSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObjectDOOR.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IngredientItem.h">
-      <Filter>include\RE\Magic</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSApparatus.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESQualityForm.h">
       <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSStaticCollection.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSMovableStatic.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESGrass.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObjectTREE.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESProduceForm.h">
       <Filter>include\RE\FormComponents</Filter>
@@ -1841,229 +1760,25 @@
     <ClInclude Include="include\RE\TESAttackDamageForm.h">
       <Filter>include\RE\FormComponents</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESFlora.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\UISaveLoadManager.h">
       <Filter>include\RE\Menus</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraAliasInstanceArray.h">
       <Filter>include\RE\ExtraData</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSBaseAlias.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESQuest.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSStoryManagerTreeForm.h">
-      <Filter>include\RE\RadiantStory</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSRefAlias.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESFurniture.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESTexture1024.h">
-      <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESLevCharacter.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESKey.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\AlchemyItem.h">
-      <Filter>include\RE\Magic</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSIdleMarker.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BGSIdleCollection.h">
       <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSNote.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSConstructibleObject.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSProjectile.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSHazard.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESImageSpaceModifiableForm.h">
       <Filter>include\RE\FormComponents</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESSoulGem.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESWeather.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESClimate.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSReferenceEffect.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESRegion.h">
-      <Filter>include\RE\TESForms\Regions</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESRegionData.h">
-      <Filter>include\RE\TESForms\Regions</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESRegionDataWeather.h">
-      <Filter>include\RE\TESForms\Regions</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESRegionDataSound.h">
-      <Filter>include\RE\TESForms\Regions</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESRegionDataMap.h">
-      <Filter>include\RE\TESForms\Regions</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESRegionDataLandscape.h">
-      <Filter>include\RE\TESForms\Regions</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NavMeshInfoMap.h">
-      <Filter>include\RE\Pathfinding\NavMeshInfo</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\PrecomputedNavmeshInfoPathMap.h">
-      <Filter>include\RE\Pathfinding\NavMeshInfo</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSPrecomputedNavmeshInfoPathMap.h">
-      <Filter>include\RE\BSPathFinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementControllerRegisterInterface.h">
-      <Filter>include\RE\Pathfinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementDirectControl.h">
-      <Filter>include\RE\Pathfinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementInterface.h">
-      <Filter>include\RE\Pathfinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementMessageInterface.h">
-      <Filter>include\RE\Pathfinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementMotionDrivenControl.h">
-      <Filter>include\RE\Pathfinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementPlannerDirectControl.h">
-      <Filter>include\RE\Pathfinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementSelectIdle.h">
-      <Filter>include\RE\Pathfinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IMovementState.h">
-      <Filter>include\RE\Pathfinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MovementControllerAI.h">
-      <Filter>include\RE\Pathfinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MovementControllerNPC.h">
-      <Filter>include\RE\Pathfinding</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSNavmeshInfoMap.h">
       <Filter>include\RE\BSPathFinding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESRegionList.h">
-      <Filter>include\RE\TESForms\Regions</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESRegionDataManager.h">
-      <Filter>include\RE\TESForms\Regions</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MissileProjectile.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Projectile.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ArrowProjectile.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GrenadeProjectile.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BeamProjectile.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\FlameProjectile.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ConeProjectile.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BarrierProjectile.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Hazard.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Effect.h">
-      <Filter>include\RE\Magic\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MagicTarget.h">
-      <Filter>include\RE\Magic\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\AttackAnimationArrayMap.h">
-      <Filter>include\RE\TESForms\Character\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSEntryPointFunctionData.h">
-      <Filter>include\RE\TESForms\Character\Perks</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSEntryPointFunctionDataActivateChoice.h">
-      <Filter>include\RE\TESForms\Character\Perks</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSEntryPointFunctionDataText.h">
-      <Filter>include\RE\TESForms\Character\Perks</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSEntryPointPerkEntry.h">
-      <Filter>include\RE\TESForms\Character\Perks</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSPerkEntry.h">
-      <Filter>include\RE\TESForms\Character\Perks</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\DialogueData.h">
-      <Filter>include\RE\TESForms\Character\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\SetEventData.h">
-      <Filter>include\RE\TESForms\Character\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESActorBase.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObjectLAND.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NavMesh.h">
-      <Filter>include\RE\Pathfinding\NavMesh</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSNavmesh.h">
       <Filter>include\RE\BSPathFinding</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\Sky.h">
-      <Filter>include\RE\Sky</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\SkyObject.h">
-      <Filter>include\RE\Sky</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Atmosphere.h">
-      <Filter>include\RE\Sky</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Stars.h">
-      <Filter>include\RE\Sky</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Sun.h">
-      <Filter>include\RE\Sky</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Clouds.h">
-      <Filter>include\RE\Sky</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Moon.h">
       <Filter>include\RE\Sky</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\Precipitation.h">
@@ -2072,83 +1787,17 @@
     <ClInclude Include="include\RE\SkyEffectController.h">
       <Filter>include\RE\Sky</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESIdleForm.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESPackage.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IProcedureTreeItem.h">
-      <Filter>include\RE\TESForms\Character\Procedure</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSProcedureTreeConditionalItem.h">
-      <Filter>include\RE\TESForms\Character\Procedure</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSProcedureTreeBranch.h">
-      <Filter>include\RE\TESForms\Character\Procedure</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSProcedureTreeSequence.h">
-      <Filter>include\RE\TESForms\Character\Procedure</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSTypedItem.h">
-      <Filter>include\RE\TESForms\Character\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSProcedureTreeProcedure.h">
-      <Filter>include\RE\TESForms\Character\Procedure</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IPackageData.h">
-      <Filter>include\RE\TESForms\Character\Procedure\PackageData</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSNamedPackageData.h">
-      <Filter>include\RE\TESForms\Character\Procedure\PackageData</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSPackageDataBool.h">
-      <Filter>include\RE\TESForms\Character\Procedure\PackageData</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESCustomPackageData.h">
-      <Filter>include\RE\TESForms\Character\Procedure\PackageData</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESPackageData.h">
-      <Filter>include\RE\TESForms\Character\Procedure\PackageData</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ActorValueOwner.h">
-      <Filter>include\RE\FormComponents\Misc</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ActorValues.h">
       <Filter>include\RE\FormComponents\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\Color.h">
-      <Filter>include\RE\FormComponents\Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Condition.h">
-      <Filter>include\RE\FormComponents\Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\DirectionalAmbientLightingColor.h">
-      <Filter>include\RE\FormComponents\Misc</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\FormTypes.h">
       <Filter>include\RE\FormComponents\Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\PerkEntryVisitor.h">
-      <Filter>include\RE\FormComponents\Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\PerkRankVisitor.h">
-      <Filter>include\RE\FormComponents\Misc</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\SoulLevels.h">
       <Filter>include\RE\FormComponents\Enums</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\SoundLevels.h">
       <Filter>include\RE\FormComponents\Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESChildCell.h">
-      <Filter>include\RE\FormComponents\Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESMagicTargetForm.h">
-      <Filter>include\RE\FormComponents\Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\WeatherType.h">
-      <Filter>include\RE\FormComponents\Misc</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\IMenu.h">
       <Filter>include\RE\Menus\IMenu</Filter>
@@ -2303,38 +1952,11 @@
     <ClInclude Include="include\RE\MenuOpenCloseEvent.h">
       <Filter>include\RE\Events\MenuEvent</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESCombatStyle.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESLoadScreen.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESLevSpell.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESObjectANIO.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESWaterForm.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSExplosion.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSDebris.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESCombatEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESContainerChangedEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESImageSpace.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESImageSpaceModifier.h">
-      <Filter>include\RE\TESForms\World</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraFlags.h">
       <Filter>include\RE\ExtraData</Filter>
@@ -2366,24 +1988,6 @@
     <ClInclude Include="include\RE\PoisonedWeapon.h">
       <Filter>include\RE\Events\BGSStoryEvent</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSListForm.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSPerk.h">
-      <Filter>include\RE\TESForms\Character\Perks</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSAbilityPerkEntry.h">
-      <Filter>include\RE\TESForms\Character\Perks</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSEntryPointFunctionDataOneValue.h">
-      <Filter>include\RE\TESForms\Character\Perks</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSBodyPartData.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESModelPSA.h">
-      <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\hkbCharacter.h">
       <Filter>include\RE\BSHavok\BS</Filter>
     </ClInclude>
@@ -2411,17 +2015,8 @@
     <ClInclude Include="include\RE\hkbEvent.h">
       <Filter>include\RE\BSHavok\BS</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\ActorKnowledge.h">
-      <Filter>include\RE\TESForms\World\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ExtraGhost.h">
       <Filter>include\RE\ExtraData</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSWin32SaveDataSystemUtility.h">
-      <Filter>include\RE\BSSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSSaveDataSystemUtility.h">
-      <Filter>include\RE\BSSystem</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NiColorInterpolator.h">
       <Filter>include\RE\NetImmerse\NiAnimation</Filter>
@@ -2696,15 +2291,6 @@
     <ClInclude Include="include\SKSE\Events.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\IFormFactory.h">
-      <Filter>include\RE\BSSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ConcreteFormFactory.h">
-      <Filter>include\RE\BSSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ConcreteObjectFormFactory.h">
-      <Filter>include\RE\BSSystem</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\Console.h">
       <Filter>include\RE\Menus\IMenu</Filter>
     </ClInclude>
@@ -2783,59 +2369,29 @@
     <ClInclude Include="include\RE\BSResourceNiBinaryStream.h">
       <Filter>include\RE\NetImmerse\NiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\ActorValueInfo.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSSkillPerkTreeNode.h">
-      <Filter>include\RE\TESForms\Character\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSCameraShot.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSCameraPath.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ActiveEffect.h">
-      <Filter>include\RE\Magic\Components\ActiveEffect</Filter>
+      <Filter>include\RE\FormComponents\Components\ActiveEffect</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h">
-      <Filter>include\RE\Magic\Components\ReferenceEffectController</Filter>
+      <Filter>include\RE\FormComponents\Components\ReferenceEffectController</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ReferenceEffectController.h">
-      <Filter>include\RE\Magic\Components\ReferenceEffectController</Filter>
+      <Filter>include\RE\FormComponents\Components\ReferenceEffectController</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\AbsorbEffect.h">
-      <Filter>include\RE\Magic\Components\ActiveEffect\ValueModifierEffect</Filter>
+      <Filter>include\RE\FormComponents\Components\ActiveEffect\ValueModifierEffect</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ValueModifierEffect.h">
-      <Filter>include\RE\Magic\Components\ActiveEffect\ValueModifierEffect</Filter>
+      <Filter>include\RE\FormComponents\Components\ActiveEffect\ValueModifierEffect</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\SummonCreatureEffect.h">
-      <Filter>include\RE\Magic\Components\ActiveEffect</Filter>
+      <Filter>include\RE\FormComponents\Components\ActiveEffect</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraAction.h">
       <Filter>include\RE\ExtraData</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\GetActorsFilter.h">
-      <Filter>include\RE\TESForms\World\Components\GetActorsFilter</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ActorTargetCheck.h">
-      <Filter>include\RE\TESForms\World\Components\GetActorsFilter</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSVoiceType.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSMaterialType.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSImpactData.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSImpactDataSet.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSEncounterZone.h">
-      <Filter>include\RE\TESForms\World</Filter>
+      <Filter>include\RE\FormComponents\Components\GetActorsFilter</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\GFxActionControl.h">
       <Filter>include\RE\Scaleform\GFxLoader</Filter>
@@ -2854,48 +2410,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\LoggingDisabler.h">
       <Filter>include\RE\Scaleform\BS</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSLocation.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSMessage.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSRagdoll.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSDefaultObjectManager.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSLightingTemplate.h">
-      <Filter>include\RE\TESForms\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSMusicType.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSFootstep.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSFootstepSet.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSStoryManagerNodeBase.h">
-      <Filter>include\RE\RadiantStory</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSStoryManagerBranchNode.h">
-      <Filter>include\RE\RadiantStory</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSStoryManagerQuestNode.h">
-      <Filter>include\RE\RadiantStory</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSStoryManagerEventNode.h">
-      <Filter>include\RE\RadiantStory</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSMusicTrackFormWrapper.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\FileHash.h">
-      <Filter>include\RE\FormComponents\Misc</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSIMusicType.h">
       <Filter>include\RE\BSAudio</Filter>
@@ -2927,80 +2441,26 @@
     <ClInclude Include="include\RE\BGSSoundDescriptor.h">
       <Filter>include\RE\BSAudio\BSISoundDescriptor</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TESWordOfPower.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSRelationship.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSScene.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BGSSceneAction.h">
-      <Filter>include\RE\TESForms\Character\BGSSceneAction</Filter>
+      <Filter>include\RE\FormComponents\Components\BGSSceneAction</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSSceneActionDialogue.h">
-      <Filter>include\RE\TESForms\Character\BGSSceneAction</Filter>
+      <Filter>include\RE\FormComponents\Components\BGSSceneAction</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSSceneActionPackage.h">
-      <Filter>include\RE\TESForms\Character\BGSSceneAction</Filter>
+      <Filter>include\RE\FormComponents\Components\BGSSceneAction</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSSceneActionTimer.h">
-      <Filter>include\RE\TESForms\Character\BGSSceneAction</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSAssociationType.h">
-      <Filter>include\RE\TESForms\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSOutfit.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSArtObject.h">
-      <Filter>include\RE\TESForms\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSMaterialObject.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSMaterialObject.h">
-      <Filter>include\RE\FormComponents\Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSMovementType.h">
-      <Filter>include\RE\TESForms\Character</Filter>
+      <Filter>include\RE\FormComponents\Components\BGSSceneAction</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSStandardSoundDef.h">
       <Filter>include\RE\BSAudio\BSISoundDescriptor</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSDualCastData.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSSoundOutput.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSISoundOutputModel.h">
       <Filter>include\RE\BSAudio</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSCollisionLayer.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSColorForm.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSReverbParameters.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSIReverbType.h">
       <Filter>include\RE\BSAudio</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSLensFlare.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSLensFlareRenderData.h">
-      <Filter>include\RE\TESForms\Gameplay\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSVolumetricLighting.h">
-      <Filter>include\RE\TESForms\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSVolumetricLightingRenderData.h">
-      <Filter>include\RE\TESForms\Gameplay\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraDataTypes.h">
       <Filter>include\RE\ExtraData\Enums</Filter>
@@ -3353,12 +2813,6 @@
     <ClInclude Include="include\Atomic.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\TES.h">
-      <Filter>include\RE\FileIO</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ICellAttachDetachEventSource.h">
-      <Filter>include\RE\FileIO</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\HUDObject.h">
       <Filter>include\RE\Menus\HUDObject</Filter>
     </ClInclude>
@@ -3608,9 +3062,6 @@
     <ClInclude Include="include\RE\Skyrim.h">
       <Filter>include\RE</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\Memory.h">
-      <Filter>include\RE</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSIRagdollDriver.h">
       <Filter>include\RE\Animation\BSIRagdollDriver</Filter>
     </ClInclude>
@@ -3658,6 +3109,726 @@
     </ClInclude>
     <ClInclude Include="include\RE\FirstPersonState.h">
       <Filter>include\RE\Camera\TESCameraState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegionData.h">
+      <Filter>include\RE\FormComponents\Components\TESRegionData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegionDataLandscape.h">
+      <Filter>include\RE\FormComponents\Components\TESRegionData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegionDataMap.h">
+      <Filter>include\RE\FormComponents\Components\TESRegionData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegionDataWeather.h">
+      <Filter>include\RE\FormComponents\Components\TESRegionData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegionDataSound.h">
+      <Filter>include\RE\FormComponents\Components\TESRegionData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESModel.h">
+      <Filter>include\RE\FormComponents\TESModel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSBehaviorGraphModel.h">
+      <Filter>include\RE\FormComponents\TESModel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSOpenCloseForm.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSTextureModel.h">
+      <Filter>include\RE\FormComponents\TESModel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESIcon.h">
+      <Filter>include\RE\FormComponents\TESTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESForm.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESModelPSA.h">
+      <Filter>include\RE\FormComponents\TESModel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESModelRDT.h">
+      <Filter>include\RE\FormComponents\TESModel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESModelTextureSwap.h">
+      <Filter>include\RE\FormComponents\TESModel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESModelTri.h">
+      <Filter>include\RE\FormComponents\TESModel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESTexture1024.h">
+      <Filter>include\RE\FormComponents\TESTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESTexture.h">
+      <Filter>include\RE\FormComponents\TESTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorValueOwner.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSMaterialObject.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\WeatherType.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Color.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Condition.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DirectionalAmbientLightingColor.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FileHash.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PerkEntryVisitor.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PerkRankVisitor.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESChildCell.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESMagicTargetForm.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAction.h">
+      <Filter>include\RE\FormComponents\TESForm\BGSKeyword</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSIdleMarker.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSKeyword.h">
+      <Filter>include\RE\FormComponents\TESForm\BGSKeyword</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSNote.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSRefAlias.h">
+      <Filter>include\RE\FormComponents\Components\BGSBaseAlias</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSBaseAlias.h">
+      <Filter>include\RE\FormComponents\Components\BGSBaseAlias</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESNPC.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESActorBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESQuest.h">
+      <Filter>include\RE\FormComponents\TESForm\BGSStoryManagerTreeForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorValueInfo.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAssociationType.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSBodyPartData.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSDialogueBranch.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEquipSlot.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSHeadPart.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMovementType.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSRagdoll.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSRelationship.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSScene.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSVoiceType.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESClass.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESEyes.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESFaction.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESIdleForm.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESPackage.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRace.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESTopic.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESTopicInfo.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSPerk.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSPerkEntry.h">
+      <Filter>include\RE\FormComponents\Components\BGSPerkEntry</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPointPerkEntry.h">
+      <Filter>include\RE\FormComponents\Components\BGSPerkEntry</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAbilityPerkEntry.h">
+      <Filter>include\RE\FormComponents\Components\BGSPerkEntry</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPointFunctionData.h">
+      <Filter>include\RE\FormComponents\Components\BGSEntryPointFunctionData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPointFunctionDataActivateChoice.h">
+      <Filter>include\RE\FormComponents\Components\BGSEntryPointFunctionData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPointFunctionDataOneValue.h">
+      <Filter>include\RE\FormComponents\Components\BGSEntryPointFunctionData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPointFunctionDataText.h">
+      <Filter>include\RE\FormComponents\Components\BGSEntryPointFunctionData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IProcedureTreeItem.h">
+      <Filter>include\RE\FormComponents\Components\IProcedureTreeItem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSProcedureTreeConditionalItem.h">
+      <Filter>include\RE\FormComponents\Components\IProcedureTreeItem\BGSProcedureTreeConditionalItem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSProcedureTreeProcedure.h">
+      <Filter>include\RE\FormComponents\Components\IProcedureTreeItem\BGSProcedureTreeConditionalItem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSProcedureTreeBranch.h">
+      <Filter>include\RE\FormComponents\Components\IProcedureTreeItem\BGSProcedureTreeConditionalItem\BGSProcedureTreeBranch</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSProcedureTreeSequence.h">
+      <Filter>include\RE\FormComponents\Components\IProcedureTreeItem\BGSProcedureTreeConditionalItem\BGSProcedureTreeBranch</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IPackageData.h">
+      <Filter>include\RE\FormComponents\Components\IPackageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSPackageDataBool.h">
+      <Filter>include\RE\FormComponents\Components\IPackageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESPackageData.h">
+      <Filter>include\RE\FormComponents\Components\TESPackageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESCustomPackageData.h">
+      <Filter>include\RE\FormComponents\Components\TESPackageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AttackAnimationArrayMap.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSNamedPackageData.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSkillPerkTreeNode.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSTypedItem.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DialogueData.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SetEventData.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSCameraPath.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSCameraShot.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSCollisionLayer.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSColorForm.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSDefaultObjectManager.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSFootstep.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSFootstepSet.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSImpactData.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSImpactDataSet.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSLensFlare.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSListForm.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMaterialObject.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMaterialType.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMenuIcon.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMessage.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMusicTrackFormWrapper.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMusicType.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSReverbParameters.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSoundCategory.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSoundDescriptorForm.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSoundOutput.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSVolumetricLighting.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Script.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESGlobal.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESShout.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESWordOfPower.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAcousticSpace.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSDualCastData.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSTextureSet.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESSound.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLensFlareRenderData.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSVolumetricLightingRenderData.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSApparatus.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMovableStatic.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSTalkingActivator.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESObjectACTI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESFlora.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESObjectACTI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESFurniture.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESObjectACTI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESKey.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESSoulGem.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSConstructibleObject.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSDebris.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSOutfit.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESCombatStyle.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESEffectShader.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESLoadScreen.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectANIO.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectLAND.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectARMA.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAddonNode.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSArtObject.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSExplosion.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSHazard.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSProjectile.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStaticCollection.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESAmmo.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESBoundObject.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESGrass.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESLevItem.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESLevSpell.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectARMO.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectBOOK.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectTREE.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectWEAP.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESLevCharacter.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectCONT.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectDOOR.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectLIGH.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObject.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectSTAT.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectMISC.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESBoundAnimObject.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectACTI.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESObjectACTI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESActorBase.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESActorBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStoryManagerTreeForm.h">
+      <Filter>include\RE\FormComponents\TESForm\BGSStoryManagerTreeForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStoryManagerNodeBase.h">
+      <Filter>include\RE\FormComponents\TESForm\BGSStoryManagerTreeForm\BGSStoryManagerNodeBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStoryManagerBranchNode.h">
+      <Filter>include\RE\FormComponents\TESForm\BGSStoryManagerTreeForm\BGSStoryManagerNodeBase\BGSStoryManagerBranchNode</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStoryManagerEventNode.h">
+      <Filter>include\RE\FormComponents\TESForm\BGSStoryManagerTreeForm\BGSStoryManagerNodeBase\BGSStoryManagerBranchNode</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStoryManagerQuestNode.h">
+      <Filter>include\RE\FormComponents\TESForm\BGSStoryManagerTreeForm\BGSStoryManagerNodeBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegionDataManager.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegionList.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESRegion.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectREFR.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObjectREFR</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Actor.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObjectREFR\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Projectile.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObjectREFR\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Character.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObjectREFR\Actor\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PlayerCharacter.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObjectREFR\Actor\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MissileProjectile.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObjectREFR\Projectile\MissileProjectile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ConeProjectile.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObjectREFR\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FlameProjectile.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObjectREFR\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GrenadeProjectile.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObjectREFR\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BarrierProjectile.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObjectREFR\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ArrowProjectile.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObjectREFR\Projectile\MissileProjectile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BeamProjectile.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObjectREFR\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEncounterZone.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSLocationRefType.h">
+      <Filter>include\RE\FormComponents\TESForm\BGSKeyword</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Hazard.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObjectREFR</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSLightingTemplate.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSLocation.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSReferenceEffect.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSShaderParticleGeometryData.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESClimate.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESImageSpace.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESImageSpaceModifier.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESLandTexture.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESObjectCELL.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESWaterForm.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESWeather.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESWorldSpace.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ProcessLists\GetActorsFilter.h">
+      <Filter>include\RE\FormComponents\Components\GetActorsFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MiddleProcess.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorProcessManager.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorMover.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorKnowledge.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementDirectControl.h">
+      <Filter>include\RE\Pathfinding\IMovementInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementInterface.h">
+      <Filter>include\RE\Pathfinding\IMovementInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementMessageInterface.h">
+      <Filter>include\RE\Pathfinding\IMovementInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementMotionDrivenControl.h">
+      <Filter>include\RE\Pathfinding\IMovementInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementPlannerDirectControl.h">
+      <Filter>include\RE\Pathfinding\IMovementInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementSelectIdle.h">
+      <Filter>include\RE\Pathfinding\IMovementInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementControllerRegisterInterface.h">
+      <Filter>include\RE\Pathfinding\IMovementControllerRegisterInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NavMesh.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NavMeshInfoMap.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSPrecomputedNavmeshInfoPathMap.h">
+      <Filter>include\RE\BSPathFinding\BSPrecomputedNavmeshInfoPathMap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PrecomputedNavmeshInfoPathMap.h">
+      <Filter>include\RE\BSPathFinding\BSPrecomputedNavmeshInfoPathMap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MovementControllerAI.h">
+      <Filter>include\RE\Pathfinding\IMovementControllerRegisterInterface\MovementControllerAI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MovementControllerNPC.h">
+      <Filter>include\RE\Pathfinding\IMovementControllerRegisterInterface\MovementControllerAI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SkyObject.h">
+      <Filter>include\RE\Sky\SkyObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Atmosphere.h">
+      <Filter>include\RE\Sky\SkyObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Moon.h">
+      <Filter>include\RE\Sky\SkyObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Clouds.h">
+      <Filter>include\RE\Sky\SkyObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Stars.h">
+      <Filter>include\RE\Sky\SkyObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Sun.h">
+      <Filter>include\RE\Sky\SkyObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MagicItem.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\EnchantmentItem.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AlchemyItem.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IngredientItem.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ScrollItem.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem\SpellItem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SpellItem.h">
+      <Filter>include\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem\SpellItem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\EffectSetting.h">
+      <Filter>include\RE\FormComponents\TESForm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Effect.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MagicTarget.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMovementState.h">
+      <Filter>include\RE\Pathfinding\IMovementInterface\IMovementState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorState.h">
+      <Filter>include\RE\Pathfinding\IMovementInterface\IMovementState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IFormFactory.h">
+      <Filter>include\RE\BSSystem\IFormFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ConcreteFormFactory.h">
+      <Filter>include\RE\BSSystem\IFormFactory\ConcreteFormFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ConcreteObjectFormFactory.h">
+      <Filter>include\RE\BSSystem\IFormFactory\ConcreteFormFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSSaveDataSystemUtility.h">
+      <Filter>include\RE\BSSystem\BSSaveDataSystemUtility</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSWin32SaveDataSystemUtility.h">
+      <Filter>include\RE\BSSystem\BSSaveDataSystemUtility</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSStorage.h">
+      <Filter>include\RE\BSSystem\BSStorage</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSSystemFileStorage.h">
+      <Filter>include\RE\BSSystem\BSStorage</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ICellAttachDetachEventSource.h">
+      <Filter>include\RE\FileIO\ICellAttachDetachEventSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TES.h">
+      <Filter>include\RE\FileIO\ICellAttachDetachEventSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMemoryStoreBase.h">
+      <Filter>include\RE\Memory\IMemoryStoreBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMemoryStore.h">
+      <Filter>include\RE\Memory\IMemoryStoreBase\IMemoryStore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ZeroOverheadHeap.h">
+      <Filter>include\RE\Memory\IMemoryStoreBase\IMemoryStore\IMemoryHeap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IMemoryHeap.h">
+      <Filter>include\RE\Memory\IMemoryStoreBase\IMemoryStore\IMemoryHeap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AbstractHeap.h">
+      <Filter>include\RE\Memory\IMemoryStoreBase\IMemoryStore\IMemoryHeap\AbstractHeap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MemoryHeap.h">
+      <Filter>include\RE\Memory\IMemoryStoreBase\IMemoryStore\IMemoryHeap\AbstractHeap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ScrapHeap.h">
+      <Filter>include\RE\Memory\IMemoryStoreBase\IMemoryStore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESMemoryManager.h">
+      <Filter>include\RE\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSSmallBlockAllocator.h">
+      <Filter>include\RE\Memory\IMemoryStoreBase\IMemoryStore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkThreadMemorySource.h">
+      <Filter>include\RE\Memory\IMemoryStoreBase\IMemoryStore\IMemoryHeap</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

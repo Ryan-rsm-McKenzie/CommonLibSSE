@@ -42,8 +42,16 @@ namespace RE
 			STATIC_ASSERT(sizeof(Point) == 0x8);
 
 
+			struct Unk10
+			{
+				UInt64	unk00;	// 00
+				UInt64	unk08;	// 08
+			};
+			STATIC_ASSERT(sizeof(Unk10) == 0x10);
+
+
 			BSSimpleList<Point*>	regionPointListData;	// 00 - RPLD
-			UInt64					unk10;					// 10
+			Unk10*					unk10;					// 10
 			UInt32					unk18;					// 18
 			float					xMin;					// 1C
 			float					yMin;					// 20
@@ -56,15 +64,15 @@ namespace RE
 		STATIC_ASSERT(sizeof(RegionArea) == 0x38);
 
 
-		virtual ~TESRegion();						// 00
+		virtual ~TESRegion();								// 00
 
 		// override (TESForm)
-		virtual void	Unk_05(void);				// 05
-		virtual bool	LoadForm(TESFile* a_mod);	// 06
-		virtual void	InitItem();					// 13
+		virtual void	ReleaseManagedData(void) override;	// 05
+		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
+		virtual void	InitItem() override;				// 13
 
 		// add
-		virtual bool	IsLoaded() const;			// 3B
+		virtual bool	IsLoaded() const;					// 3B
 
 
 		// members
