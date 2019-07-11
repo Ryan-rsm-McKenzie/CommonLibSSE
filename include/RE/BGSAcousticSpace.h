@@ -30,8 +30,11 @@ namespace RE
 		virtual ~BGSAcousticSpace();						// 00
 
 		// override (TESBoundObject)
+		virtual void	InitDefaults() override;			// 04
 		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
 		virtual void	InitItem() override;				// 13
+		virtual void	Unk_41(void) override;				// 41
+		virtual void	Unk_4A(void) override;				// 4A - { return 0; }
 
 
 		// members

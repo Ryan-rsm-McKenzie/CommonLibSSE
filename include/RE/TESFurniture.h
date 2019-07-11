@@ -125,10 +125,13 @@ namespace RE
 
 		// override (TESObjectACTI)
 		virtual void	InitDefaults() override;																											// 04
+		virtual void	ReleaseManagedData() override;																										// 05
 		virtual bool	LoadForm(TESFile* a_mod) override;																									// 06
 		virtual void	InitItem() override;																												// 13
 		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
+		virtual void	Unk_4A(void) override;																												// 4A - related to showing markers
 		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4C
+		virtual void	Unk_4D(void) override;																												// 4D
 
 
 		// members

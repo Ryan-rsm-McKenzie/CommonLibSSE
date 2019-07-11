@@ -916,6 +916,9 @@
     <Filter Include="src\RE\Memory">
       <UniqueIdentifier>{0e4a0060-86b6-45c8-aef4-30c0f9cb47dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Inventory\ArmorRatingVisitorBase">
+      <UniqueIdentifier>{74bf67cc-4d6b-4366-a70c-ff797ce8c427}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -3829,6 +3832,18 @@
     </ClInclude>
     <ClInclude Include="include\RE\bhkThreadMemorySource.h">
       <Filter>include\RE\Memory\IMemoryStoreBase\IMemoryStore\IMemoryHeap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESWaitStopEvent.h">
+      <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FormTraits.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ArmorRatingVisitorBase.h">
+      <Filter>include\RE\Inventory\ArmorRatingVisitorBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ArmorRatingVisitor.h">
+      <Filter>include\RE\Inventory\ArmorRatingVisitorBase</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

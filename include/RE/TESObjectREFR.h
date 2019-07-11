@@ -278,7 +278,6 @@ namespace RE
 		TESWorldSpace*					GetWorldspace() const;
 		RefHandle						GetRefHandle() const;
 		RefHandle						CreateRefHandle();
-		RefHandle						GetOrCreateRefHandle();
 		TESNPC*							GetActorOwner() const;
 		TESForm*						GetBaseObject() const;
 		TESContainer*					GetContainer() const;

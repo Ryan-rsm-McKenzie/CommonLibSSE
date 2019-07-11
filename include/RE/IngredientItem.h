@@ -63,8 +63,10 @@ namespace RE
 
 		// override (MagicItem)
 		virtual void		InitDefaults() override;								// 04
+		virtual void		ReleaseManagedData() override;							// 05
 		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;			// 0E
 		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;			// 0F
+		virtual void		Unk_12(void) override;									// 12
 		virtual void		InitItem() override;									// 13
 		virtual MagicType	GetMagicType() const override;							// 53 - { return MagicType::kIngredient; }
 		virtual CastType	GetCastType() const override;							// 55 - { return CastType::kFireAndForget; }

@@ -13,10 +13,10 @@ namespace RE
 {
 	namespace BSScript
 	{
-		template <class... Args, std::size_t... Is>
-		void CopyArgsImpl(std::tuple<Args...>& a_tuple, BSScrapArray<BSScriptVariable>& a_dst, std::index_sequence<Is...>)
+		template <class... Args, std::size_t... I>
+		void CopyArgsImpl(std::tuple<Args...>& a_tuple, BSScrapArray<BSScriptVariable>& a_dst, std::index_sequence<I...>)
 		{
-			((a_dst[Is].SetData<Args>(std::get<Is>(a_tuple))), ...);
+			((a_dst[I].Pack<Args>(std::get<I>(a_tuple))), ...);
 		}
 
 
@@ -30,65 +30,44 @@ namespace RE
 		template <class Enable, class... Args> class FunctionArguments;
 
 
-#define TmpltParams_ std::enable_if_t<std::conjunction<is_param_compat<Args>...>::value>, Args...
-
-
 		template <class... Args>
-		class FunctionArguments<TmpltParams_>
-			: public IFunctionArguments
+		class FunctionArguments<std::enable_if_t<std::conjunction<is_param_compat<Args>...>::value>, Args...> :
+			public IFunctionArguments
 		{
 		public:
-			FunctionArguments(Args... a_args);
-			FunctionArguments();
-			FunctionArguments(const FunctionArguments& a_rhs);
-			FunctionArguments(FunctionArguments&& a_rhs);
-			virtual ~FunctionArguments();										// 00
+			FunctionArguments(Args... a_args) :
+				_args(a_args...)
+			{}
 
-			virtual bool Copy(BSScrapArray<BSScriptVariable>& a_dst) override;	// 01
+
+			FunctionArguments()
+			{}
+
+
+			FunctionArguments(const FunctionArguments& a_rhs) :
+				_args(a_rhs._args)
+			{}
+
+
+			FunctionArguments(FunctionArguments&& a_rhs) :
+				_args(std::move(a_rhs._args))
+			{}
+
+
+			virtual ~FunctionArguments()										// 00
+			{}
+
+
+			virtual bool Copy(BSScrapArray<BSScriptVariable>& a_dst) override	// 01
+			{
+				ResizeArguments(a_dst, sizeof...(Args));
+				CopyArgs(_args, a_dst);
+				return true;
+			}
 
 		protected:
 			std::tuple<Args...> _args;
 		};
-
-
-		template <class... Args>
-		inline FunctionArguments<TmpltParams_>::FunctionArguments(Args... a_args) :
-			_args(a_args...)
-		{}
-
-
-		template <class... Args>
-		inline FunctionArguments<TmpltParams_>::FunctionArguments()
-		{}
-
-
-		template <class... Args>
-		inline FunctionArguments<TmpltParams_>::FunctionArguments(const FunctionArguments& a_rhs) :
-			_args(a_rhs._args)
-		{}
-
-
-		template <class... Args>
-		inline FunctionArguments<TmpltParams_>::FunctionArguments(FunctionArguments&& a_rhs) :
-			_args(std::move(a_rhs._args))
-		{}
-
-
-		template <class... Args>
-		inline FunctionArguments<TmpltParams_>::~FunctionArguments()
-		{}
-
-
-		template <class... Args>
-		inline bool FunctionArguments<TmpltParams_>::Copy(BSScrapArray<BSScriptVariable>& a_dst)
-		{
-			ResizeArguments(a_dst, sizeof...(Args));
-			CopyArgs(_args, a_dst);
-			return true;
-		}
-
-
-#undef TmpltParams_
 	}
 
 

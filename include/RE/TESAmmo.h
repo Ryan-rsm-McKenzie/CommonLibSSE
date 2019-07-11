@@ -76,6 +76,7 @@ namespace RE
 		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
 		virtual void	InitItem() override;							// 13
 		virtual bool	IsPlayable() override;							// 19 - { return ~((data.flags >> 1) & 1); }
+		virtual void	Unk_40(void) override;							// 40
 		virtual void	OnRemovedFrom(TESObjectREFR* a_ref) override;	// 4E
 
 		bool			IgnoresNormalWeaponResistance();

@@ -43,7 +43,7 @@ namespace RE
 		virtual void			Unk_4A(void);																														// 4A
 		virtual void			Unk_4B(void);																														// 4B
 		virtual bool			GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst);																			// 4C
-		virtual void			Unk_4D(void);																														// 4D
+		virtual void			Unk_4D(void);																														// 4D - "bool CanActivate(Actor* a_activator, bool, TESObjectREFR* a_toActivate, float)"?
 		virtual void			OnRemovedFrom(TESObjectREFR* a_ref);																								// 4E - { return; }
 		virtual void			Unk_4F(void);																														// 4F - { return; }
 		virtual void			Unk_50(void);																														// 50 - { return; }

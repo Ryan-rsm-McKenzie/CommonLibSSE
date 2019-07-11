@@ -860,7 +860,7 @@ namespace RE
 
 
 	template <class T>
-	class BSScrapArray : public BSTArray <T, BSScrapArrayAllocator>
+	class BSScrapArray : public BSTArray<T, BSScrapArrayAllocator>
 	{
 	public:
 		BSScrapArray() : BSTArray() {}

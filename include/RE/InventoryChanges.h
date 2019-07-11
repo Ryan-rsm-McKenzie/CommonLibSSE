@@ -1,6 +1,6 @@
 #pragma once
 
-#include "skse64/GameExtraData.h"  // ::InventoryEntryData::EquipData
+#include "skse64/GameRTTI.h"  // RTTI_InventoryChanges__IItemChangeVisitor
 
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/FormTypes.h"  // TESForm, TESObjectREFR
@@ -16,16 +16,29 @@ namespace RE
 	class InventoryChanges
 	{
 	public:
+		class IItemChangeVisitor
+		{
+		public:
+			inline static const void* RTTI = RTTI_InventoryChanges__IItemChangeVisitor;
+
+
+			virtual ~IItemChangeVisitor();								// 00
+
+			// add
+			virtual bool	Visit(InventoryEntryData* a_entryData) = 0;	// 01
+			virtual void	Unk_02(void);								// 02 - { return 1; }
+			virtual void	Unk_03(void);								// 03
+		};
+		STATIC_ASSERT(sizeof(IItemChangeVisitor) == 0x8);
+
+
 		explicit InventoryChanges(TESObjectREFR* a_ref);
 
-		InventoryEntryData*	FindItemEntry(TESForm* a_item);
-		InventoryEntryData*	CreateEquipEntryData(TESForm* a_item);
-		void				GetEquipItemData(::InventoryEntryData::EquipData& a_stateOut, TESForm* a_item, SInt32 a_itemID);
-		void				SetUniqueID(BaseExtraList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm);
-		void				TransferItemUID(BaseExtraList* a_extraList, TESForm* a_oldForm, TESForm* a_newForm, UInt32 a_arg4);
-		void				InitContainer();
-		void				GenerateLeveledListChanges();
-		void				SendContainerChangedEvent(BaseExtraList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, SInt32 a_count);
+		void	SetUniqueID(BaseExtraList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm);
+		void	TransferItemUID(BaseExtraList* a_extraList, TESForm* a_oldForm, TESForm* a_newForm, UInt32 a_arg4);
+		void	InitContainer();
+		void	GenerateLeveledListChanges();
+		void	SendContainerChangedEvent(BaseExtraList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, SInt32 a_count);
 
 		TES_HEAP_REDEFINE_NEW();
 
@@ -41,7 +54,7 @@ namespace RE
 		UInt32								unk1C;			// 1C
 
 	private:
-		InventoryChanges* Ctor_Internal(TESObjectREFR* a_ref);
+		InventoryChanges* Ctor(TESObjectREFR* a_ref);
 	};
 	STATIC_ASSERT(sizeof(InventoryChanges) == 0x20);
 }

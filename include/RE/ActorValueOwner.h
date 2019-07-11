@@ -16,14 +16,14 @@ namespace RE
 		virtual ~ActorValueOwner();													// 00
 
 		// add
-		virtual float	GetActorValueCurrent(ActorValue a_akValue);					// 01
-		virtual float	GetActorValueMaximum(ActorValue a_akValue);					// 02
-		virtual float	GetActorValueBase(ActorValue a_akValue);					// 03
+		virtual float	GetActorValueCurrent(ActorValue a_akValue);					// 01 - { return 0.0; }
+		virtual float	GetActorValueMaximum(ActorValue a_akValue);					// 02 - { return 0.0; }
+		virtual float	GetActorValueBase(ActorValue a_akValue);					// 03 - { return 0.0; }
 		virtual void	SetActorValueBase(ActorValue a_akValue, float a_value);		// 04 - { return; }
 		virtual void	ModActorValueBase(ActorValue a_akValue, float a_value);		// 05 - { return; }
 		virtual void	Unk_06(void);												// 06 - { return; }
-		virtual void	SetActorValueCurrent(ActorValue a_akValue, float a_value);	// 07
-		virtual void	Unk_08(void);												// 08
+		virtual void	SetActorValueCurrent(ActorValue a_akValue, float a_value);	// 07 - { SetActorValueBase(a_akValue, a_value); }
+		virtual bool	UsePCAVMult() const;										// 08 - { return false; }
 
 		float			GetPlayerActorValueCurrent(ActorValue a_akValue);
 	};

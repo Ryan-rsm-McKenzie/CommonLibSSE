@@ -11,13 +11,23 @@ namespace RE
 {
 	struct LockState
 	{
+		enum class Flag : UInt8
+		{
+			kNone = 0,
+			kLevelScaling = 1 << 4
+		};
+
+
 		SInt32 GetLockLevel(const TESObjectREFR* a_containerRef);
 
 
 		// members
-		UInt64	unk00;		// 00
+		UInt8	lockLevel;	// 00
+		UInt8	unk01;		// 01
+		UInt16	unk02;		// 02
+		UInt32	unk04;		// 04
 		TESKey*	key;		// 08
-		UInt8	lockLevel;	// 10
+		Flag	flags;		// 10
 		UInt8	unk11;		// 11
 		UInt16	unk12;		// 12
 		UInt32	unk14;		// 14

@@ -481,9 +481,11 @@ namespace RE
 		float						unk258;										// 258 - init'd to -1
 		UInt32						unk25C;										// 25C
 		WeightData*					smallWeightData;							// 260
-		float						unk268;										// 268
-		float						unk26C;										// 26C
-		UInt32						unk270;										// 270
+		float						unk268;										// 268 - related to armor rating
+		float						unk26C;										// 26C - related to armor rating
+		UInt16						unk270;										// 270
+		UInt8						unk272;										// 272
+		UInt8						unk273;										// 273
 		UInt32						unk274;										// 274
 		UInt64						unk278;										// 278
 		UInt64						unk280;										// 280

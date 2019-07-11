@@ -12,6 +12,7 @@
 #include "RE/ExtraOwnership.h"  // ExtraOwnership
 #include "RE/ExtraReferenceHandle.h"  // ExtraReferenceHandle
 #include "RE/ExtraTextDisplayData.h"  // ExtraTextDisplayData
+#include "RE/FormTraits.h"  // As
 #include "RE/InventoryChanges.h"  // InventoryChanges
 #include "RE/Offsets.h"
 #include "RE/TESActorBase.h"  // TESActorBase
@@ -91,16 +92,6 @@ namespace RE
 	}
 
 
-	RefHandle TESObjectREFR::GetOrCreateRefHandle()
-	{
-		RefHandle refHandle = GetRefHandle();
-		if (refHandle == *g_invalidRefHandle) {
-			refHandle = CreateRefHandle();
-		}
-		return refHandle;
-	}
-
-
 	TESNPC* TESObjectREFR::GetActorOwner() const
 	{
 		auto xOwnership = extraData.GetByType<ExtraOwnership>();
@@ -139,7 +130,7 @@ namespace RE
 	{
 		const char* result = 0;
 		if (baseForm) {
-			auto fullName = skyrim_cast<TESFullName*>(baseForm);
+			auto fullName = baseForm->As<TESFullName*>();
 			if (fullName) {
 				result = fullName->GetName();
 			}

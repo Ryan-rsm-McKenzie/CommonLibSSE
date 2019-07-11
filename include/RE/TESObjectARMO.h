@@ -57,14 +57,15 @@ namespace RE
 
 
 		// override (TESBoundObject)
-		virtual void	InitDefaults() override;						// 04
-		virtual bool	LoadForm(TESFile* a_mod) override;				// 06
-		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void	InitItem() override;							// 13
-		virtual void	CopyFrom(TESForm* a_srcForm) override;			// 2F
+		virtual void		InitDefaults() override;						// 04
+		virtual bool		LoadForm(TESFile* a_mod) override;				// 06
+		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void		InitItem() override;							// 13
+		virtual TESFile*	GetFinalSourceFile() override;					// 14 - { return templateArmor ? templateArmor->GetFile(-1) : GetFile(-1); }
+		virtual void		CopyFrom(TESForm* a_srcForm) override;			// 2F
 
-		float			GetArmorRating();
+		float GetArmorRating();
 
 
 		// members
@@ -74,5 +75,4 @@ namespace RE
 		TESObjectARMO*				templateArmor;	// 220 - TNAM
 	};
 	STATIC_ASSERT(sizeof(TESObjectARMO) == 0x228);
-	//virtual UInt64 Unk_14(void) override; - { if (templateArmor) this = templateArmor; return sub_1401947E0(this, -1); } - InstantiateTemplate()?
 }

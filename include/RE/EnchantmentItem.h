@@ -55,6 +55,7 @@ namespace RE
 
 		// override (MagicItem)
 		virtual void		InitDefaults() override;							// 04
+		virtual void		ReleaseManagedData() override;						// 05
 		virtual void		InitItem() override;								// 13
 		virtual MagicType	GetMagicType() const override;						// 53 - { return data.enchantmentType; }
 		virtual void		SetCastType(CastType a_castType) override;			// 54 - { data.castType = a_castType; }

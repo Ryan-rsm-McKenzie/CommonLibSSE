@@ -2,6 +2,7 @@
 
 #include "skse64/GameForms.h"  // TESForm
 
+#include "RE/FormTraits.h"  // As
 #include "RE/MagicItem.h"  // MagicItem
 #include "RE/TESModel.h"  // TESModel
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
@@ -92,7 +93,7 @@ namespace RE
 
 	bool TESForm::HasWorldModel() const
 	{
-		return skyrim_cast<TESModel*>(this) != 0;
+		return As<TESModel*>() != 0;
 	}
 
 
@@ -113,11 +114,11 @@ namespace RE
 
 	SInt32 TESForm::GetValue() const
 	{
-		auto valueForm = skyrim_cast<TESValueForm*>(this);
+		auto valueForm = As<TESValueForm*>();
 		if (valueForm) {
 			return valueForm->value;
 		} else {
-			auto magicItem = skyrim_cast<MagicItem*>(this);
+			auto magicItem = As<MagicItem*>();
 			return magicItem ? magicItem->GetValue() : -1;
 		}
 	}

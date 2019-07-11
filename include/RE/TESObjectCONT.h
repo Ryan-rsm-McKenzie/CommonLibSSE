@@ -75,5 +75,4 @@ namespace RE
 		BGSSoundDescriptorForm*	closeSound;	// C8 - QNAM
 	};
 	STATIC_ASSERT(sizeof(TESObjectCONT) == 0xD0);
-	// virtual void Unk_4D(void) - CanOpen()?
 }

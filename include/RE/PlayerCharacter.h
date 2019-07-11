@@ -79,7 +79,7 @@ namespace RE
 		virtual void			Unk_12B(void);	// 12B
 		virtual void			Unk_12C(void);	// 12C
 		virtual void			Unk_12D(void);	// 12D
-		virtual void			Unk_12E(void);	// 12E
+		virtual void			Unk_12E(void);	// 12E - { return 0; }
 
 		static PlayerCharacter*	GetSingleton();
 		static UInt32			GetPickpocketChance(float a_playerSkill, float a_targetSkill, UInt32 a_totalValue, float a_itemWeight, Actor* a_player, Actor* a_target, bool a_isDetected, TESForm* a_item);
@@ -284,13 +284,19 @@ namespace RE
 		UInt32								unkB48;					// B48
 		UInt32								unkB4C;					// B4C
 		BSTArray<UInt64>					unkB50;					// B50
-		UInt64								unkB68[5];				// B68
+		UInt64								unkB68;					// B68
+		UInt64								unkB70;					// B70
+		UInt64								unkB78;					// B78
+		UInt64								unkB80;					// B80
+		UInt64								unkB88;					// B88
 		UInt64								unkB90;					// B90
 		UInt64								unkB98;					// B98
 		UInt32								unkBA0;					// BA0
 		UInt32								unkBA4;					// BA4
 		UInt64								unkBA8;					// BA8
-		UInt64								unkBB0[3];				// BB0
+		UInt64								unkBB0;					// BB0
+		UInt64								unkBB8;					// BB8
+		UInt64								unkBC0;					// BC0
 		UInt32								unkBC8;					// BC8
 		UInt32								unkBCC;					// BCC
 		UInt64								unkBD0;					// BD0

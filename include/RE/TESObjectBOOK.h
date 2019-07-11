@@ -94,6 +94,7 @@ namespace RE
 
 		// override (TESBoundObject)
 		virtual void	InitDefaults() override;																											// 04
+		virtual void	ReleaseManagedData() override;																										// 05 - { return TESForm::ReleaseManagedData(); }
 		virtual bool	LoadForm(TESFile* a_mod) override;																									// 06
 		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;																						// 0E
 		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																						// 0F

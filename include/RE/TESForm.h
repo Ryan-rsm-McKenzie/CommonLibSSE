@@ -115,6 +115,9 @@ namespace RE
 		bool										IsNot(FormType a_type) const;
 		template <class First, class... Rest> bool	IsNot(First a_first, Rest... a_rest) const;
 
+		template <class T> constexpr T			As();
+		template <class T> constexpr const T	As() const;
+
 		void	CopyFromEx(TESForm* a_rhs);
 		bool	IsKey() const;
 		bool	IsWeapon() const;

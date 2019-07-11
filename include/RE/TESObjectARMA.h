@@ -73,8 +73,8 @@ namespace RE
 		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
 		virtual void	InitItem() override;				// 13
 
-		bool			IsValidRace(TESRace* a_sourceRace) const;
-		void			GetNodeName(char* a_dstBuff, TESObjectREFR* a_refr, TESObjectARMO* a_armor, float a_weightOverride);
+		bool	IsValidRace(TESRace* a_sourceRace) const;
+		void	GetNodeName(char* a_dstBuff, TESObjectREFR* a_refr, TESObjectARMO* a_armor, float a_weightOverride);
 
 
 		// members

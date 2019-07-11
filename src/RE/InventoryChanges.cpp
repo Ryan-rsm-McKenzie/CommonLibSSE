@@ -1,5 +1,7 @@
 #include "RE/InventoryChanges.h"
 
+#include "skse64/GameExtraData.h"  // ExtraContainerChanges::Data
+
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
@@ -8,31 +10,7 @@ namespace RE
 {
 	InventoryChanges::InventoryChanges(TESObjectREFR* a_ref)
 	{
-		Ctor_Internal(a_ref);
-	}
-
-
-	InventoryEntryData* InventoryChanges::FindItemEntry(TESForm* a_item)
-	{
-		using func_t = function_type_t<decltype(&InventoryChanges::FindItemEntry)>;
-		func_t* func = unrestricted_cast<func_t*>(&::ExtraContainerChanges::Data::FindItemEntry);
-		return func(this, a_item);
-	}
-
-
-	InventoryEntryData* InventoryChanges::CreateEquipEntryData(TESForm* a_item)
-	{
-		using func_t = function_type_t<decltype(&InventoryChanges::CreateEquipEntryData)>;
-		func_t* func = unrestricted_cast<func_t*>(&::ExtraContainerChanges::Data::CreateEquipEntryData);
-		return func(this, a_item);
-	}
-
-
-	void InventoryChanges::GetEquipItemData(::InventoryEntryData::EquipData& a_stateOut, TESForm* a_item, SInt32 a_itemID)
-	{
-		using func_t = function_type_t<decltype(&InventoryChanges::GetEquipItemData)>;
-		func_t* func = unrestricted_cast<func_t*>(&::ExtraContainerChanges::Data::GetEquipItemData);
-		return func(this, a_stateOut, a_item, a_itemID);
+		Ctor(a_ref);
 	}
 
 
@@ -76,9 +54,9 @@ namespace RE
 	}
 
 
-	InventoryChanges* InventoryChanges::Ctor_Internal(TESObjectREFR* a_ref)
+	InventoryChanges* InventoryChanges::Ctor(TESObjectREFR* a_ref)
 	{
-		using func_t = function_type_t<decltype(&InventoryChanges::Ctor_Internal)>;
+		using func_t = function_type_t<decltype(&InventoryChanges::Ctor)>;
 		REL::Offset<func_t*> func(Offset::InventoryChanges::Ctor);
 		return func(this, a_ref);
 	}

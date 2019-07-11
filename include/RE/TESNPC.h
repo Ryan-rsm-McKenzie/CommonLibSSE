@@ -185,6 +185,7 @@ namespace RE
 		virtual void			SaveBuffer(BGSSaveFormBuffer* a_buf) override;																						// 0E
 		virtual void			LoadBuffer(BGSLoadFormBuffer* a_buf) override;																						// 0F
 		virtual void			Unk_12(void) override;																												// 12
+		virtual void			InitItem() override;																												// 13
 		virtual const char*		GetAliasName(const BSFixedString& a_alias) override;																				// 2E
 		virtual void			CopyFrom(TESForm* a_srcForm) override;																								// 2F
 		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
@@ -197,18 +198,18 @@ namespace RE
 		virtual TESCombatStyle*	GetCombatStyle() override;																											// 54 - { return combatStyle; }
 		virtual void			SetCombatStyle(TESCombatStyle* a_combatStyle) override;																				// 55 - { combatStyle = a_combatStyle; }
 
-		Sex						GetSex();
-		bool					HasOverlays();
-		void					ChangeHeadPart(BGSHeadPart* a_target);
-		void					UpdateNeck(BSFaceGenNiNode* a_faceNode);
-		void					SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute);
-		void					SetFaceTexture(BGSTextureSet* a_textureSet);
-		void					SetHairColor(BGSColorForm* a_hairColor);
-		BGSHeadPart*			GetHeadPartByType(UInt32 a_type);
-		BGSHeadPart*			GetHeadPartOverlayByType(UInt32 a_type);
-		BGSHeadPart*			GetCurrentHeadPartByType(UInt32 a_type);
-		TESNPC*					GetRootTemplate();
-		TESRace*				GetRace();
+		Sex				GetSex();
+		bool			HasOverlays();
+		void			ChangeHeadPart(BGSHeadPart* a_target);
+		void			UpdateNeck(BSFaceGenNiNode* a_faceNode);
+		void			SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute);
+		void			SetFaceTexture(BGSTextureSet* a_textureSet);
+		void			SetHairColor(BGSColorForm* a_hairColor);
+		BGSHeadPart*	GetHeadPartByType(UInt32 a_type);
+		BGSHeadPart*	GetHeadPartOverlayByType(UInt32 a_type);
+		BGSHeadPart*	GetCurrentHeadPartByType(UInt32 a_type);
+		TESNPC*			GetRootTemplate();
+		TESRace*		GetRace();
 
 
 		// members

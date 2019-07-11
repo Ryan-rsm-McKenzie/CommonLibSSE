@@ -60,7 +60,12 @@ namespace RE
 		virtual bool	LoadForm(TESFile* a_mod) override;																									// 06
 		virtual void	InitItem() override;																												// 13
 		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
+		virtual void	Unk_44(void) override;																												// 44
 		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4C
+		virtual void	Unk_4F(void) override;																												// 4F
+		virtual void	Unk_50(void) override;																												// 50 - { return; }
+		virtual void	Unk_51(void) override;																												// 51 - { return; }
+		virtual void	Unk_52(void) override;																												// 52 - { return; }
 
 
 		// members

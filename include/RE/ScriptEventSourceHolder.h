@@ -63,69 +63,82 @@ namespace RE
 	struct TESSwitchRaceCompleteEvent;
 
 
-	class ScriptEventSourceHolder
+	class ScriptEventSourceHolder :
+		public BSTEventSource<BGSEventProcessedEvent>,			// 0000
+		public BSTEventSource<TESActivateEvent>,				// 0058
+		public BSTEventSource<TESActiveEffectApplyRemoveEvent>,	// 00B0
+		public BSTEventSource<TESActorLocationChangeEvent>,		// 0108
+		public BSTEventSource<TESBookReadEvent>,				// 0160
+		public BSTEventSource<TESCellAttachDetachEvent>,		// 01B8
+		public BSTEventSource<TESCellFullyLoadedEvent>,			// 0210
+		public BSTEventSource<TESCellReadyToApplyDecalsEvent>,	// 0268
+		public BSTEventSource<TESCombatEvent>,					// 02C0
+		public BSTEventSource<TESContainerChangedEvent>,		// 0318
+		public BSTEventSource<TESDeathEvent>,					// 0370
+		public BSTEventSource<TESDestructionStageChangedEvent>,	// 03C8
+		public BSTEventSource<TESEnterBleedoutEvent>,			// 0420
+		public BSTEventSource<TESEquipEvent>,					// 0478
+		public BSTEventSource<TESFormDeleteEvent>,				// 04D0
+		public BSTEventSource<TESFurnitureEvent>,				// 0528
+		public BSTEventSource<TESGrabReleaseEvent>,				// 0580
+		public BSTEventSource<TESHitEvent>,						// 05D8
+		public BSTEventSource<TESInitScriptEvent>,				// 0630
+		public BSTEventSource<TESLoadGameEvent>,				// 0688
+		public BSTEventSource<TESLockChangedEvent>,				// 06E0
+		public BSTEventSource<TESMagicEffectApplyEvent>,		// 0738
+		public BSTEventSource<TESMagicWardHitEvent>,			// 0790
+		public BSTEventSource<TESMoveAttachDetachEvent>,		// 07E8
+		public BSTEventSource<TESObjectLoadedEvent>,			// 0840
+		public BSTEventSource<TESObjectREFRTranslationEvent>,	// 0898
+		public BSTEventSource<TESOpenCloseEvent>,				// 08F0
+		public BSTEventSource<TESPackageEvent>,					// 0948
+		public BSTEventSource<TESPerkEntryRunEvent>,			// 09A0
+		public BSTEventSource<TESQuestInitEvent>,				// 09F8
+		public BSTEventSource<TESQuestStageEvent>,				// 0A50
+		public BSTEventSource<TESQuestStageItemDoneEvent>,		// 0AA8
+		public BSTEventSource<TESQuestStartStopEvent>,			// 0B00
+		public BSTEventSource<TESResetEvent>,					// 0B58
+		public BSTEventSource<TESResolveNPCTemplatesEvent>,		// 0BB0
+		public BSTEventSource<TESSceneEvent>,					// 0C08
+		public BSTEventSource<TESSceneActionEvent>,				// 0C60
+		public BSTEventSource<TESScenePhaseEvent>,				// 0CB8
+		public BSTEventSource<TESSellEvent>,					// 0D10
+		public BSTEventSource<TESSleepStartEvent>,				// 0D68
+		public BSTEventSource<TESSleepStopEvent>,				// 0DC0
+		public BSTEventSource<TESSpellCastEvent>,				// 0E18
+		public BSTEventSource<TESPlayerBowShotEvent>,			// 0E70
+		public BSTEventSource<TESTopicInfoEvent>,				// 0EC8
+		public BSTEventSource<TESTrackedStatsEvent>,			// 0F20
+		public BSTEventSource<TESTrapHitEvent>,					// 0F78
+		public BSTEventSource<TESTriggerEvent>,					// 0FD0
+		public BSTEventSource<TESTriggerEnterEvent>,			// 1028
+		public BSTEventSource<TESTriggerLeaveEvent>,			// 1080
+		public BSTEventSource<TESUniqueIDChangeEvent>,			// 10D8
+		public BSTEventSource<TESWaitStartEvent>,				// 1130
+		public BSTEventSource<TESWaitStopEvent>,				// 1188
+		public BSTEventSource<TESSwitchRaceCompleteEvent>,		// 11E0
+		public BSTEventSource<void>								// 1238
 	{
 	public:
 		static ScriptEventSourceHolder* GetSingleton();
 
-		void SendActivateEvent(TESObjectREFRPtr& a_target, TESObjectREFRPtr& a_caster);
-
-
-		// members
-		BSTEventSource<BGSEventProcessedEvent>			eventProcessedEventSource;			// 0000 - sink offset 000
-		BSTEventSource<TESActivateEvent>				activateEventSource;				// 0058 - sink offset 008
-		BSTEventSource<TESActiveEffectApplyRemoveEvent>	activeEffectApplyRemoveEventSource;	// 00B0 - sink offset 010
-		BSTEventSource<TESActorLocationChangeEvent>		actorLocationChangeEventSource;		// 0108 - sink offset 018
-		BSTEventSource<TESBookReadEvent>				bookReadEventSource;				// 0160 - sink offset 020
-		BSTEventSource<TESCellAttachDetachEvent>		cellAttachDetachEventSource;		// 01B8 - sink offset 028
-		BSTEventSource<TESCellFullyLoadedEvent>			cellFullyLoadedEventSource;			// 0210 - sink offset 030
-		BSTEventSource<TESCellReadyToApplyDecalsEvent>	cellReadyToApplyDecalsEventSource;	// 0268 - sink offset 038
-		BSTEventSource<TESCombatEvent>					combatEventSource;					// 02C0 - sink offset 040
-		BSTEventSource<TESContainerChangedEvent>		containerChangedEventSource;		// 0318 - sink offset 048
-		BSTEventSource<TESDeathEvent>					deathEventSource;					// 0370 - sink offset 050
-		BSTEventSource<TESDestructionStageChangedEvent>	destructionStageChangedEventSource;	// 03C8 - sink offset 058
-		BSTEventSource<TESEnterBleedoutEvent>			enterBleedoutEventSource;			// 0420 - sink offset 060
-		BSTEventSource<TESEquipEvent>					equipEventSource;					// 0478 - sink offset 078
-		BSTEventSource<TESFormDeleteEvent>				formDeleteEventSource;				// 04D0 - sink offset 080
-		BSTEventSource<TESFurnitureEvent>				furnitureEventSource;				// 0528 - sink offset 088
-		BSTEventSource<TESGrabReleaseEvent>				grabReleaseEventSource;				// 0580 - sink offset 090
-		BSTEventSource<TESHitEvent>						hitEventSource;						// 05D8 - sink offset 098
-		BSTEventSource<TESInitScriptEvent>				initScriptEventSource;				// 0630 - sink offset 0A0
-		BSTEventSource<TESLoadGameEvent>				loadGameEventSource;				// 0688 - sink offset 0A8
-		BSTEventSource<TESLockChangedEvent>				lockChangedEventSource;				// 06E0 - sink offset 0B0
-		BSTEventSource<TESMagicEffectApplyEvent>		magicEffectApplyEventSource;		// 0738 - sink offset 0B8
-		BSTEventSource<TESMagicWardHitEvent>			magicWardHitEventSource;			// 0790 - sink offset 0C0
-		BSTEventSource<TESMoveAttachDetachEvent>		moveAttachDetachEventSource;		// 07E8 - sink offset 0C8
-		BSTEventSource<TESObjectLoadedEvent>			objectLoadedEventSource;			// 0840 - sink offset 0D0
-		BSTEventSource<TESObjectREFRTranslationEvent>	objectREFRTranslationEventSource;	// 0898 - sink offset 0D8
-		BSTEventSource<TESOpenCloseEvent>				openCloseEventSource;				// 08F0 - sink offset 0E0
-		BSTEventSource<TESPackageEvent>					packageEventSource;					// 0948 - sink offset 0E8
-		BSTEventSource<TESPerkEntryRunEvent>			perkEntryRunEventSource;			// 09A0 - sink offset 0F0
-		BSTEventSource<TESQuestInitEvent>				questInitEventSource;				// 09F8 - sink offset 0F8
-		BSTEventSource<TESQuestStageEvent>				questStageEventSource;				// 0A50 - sink offset 100
-		BSTEventSource<TESQuestStageItemDoneEvent>		questStageItemDoneEventSource;		// 0AA8 - sink offset 108
-		BSTEventSource<TESQuestStartStopEvent>			questStartStopEventSource;			// 0B00 - sink offset 110
-		BSTEventSource<TESResetEvent>					resetEventSource;					// 0B58 - sink offset 118
-		BSTEventSource<TESResolveNPCTemplatesEvent>		resolveNPCTemplatesEventSource;		// 0BB0 - sink offset 120
-		BSTEventSource<TESSceneEvent>					sceneEventSource;					// 0C08 - sink offset 128
-		BSTEventSource<TESSceneActionEvent>				sceneActionEventSource;				// 0C60 - sink offset 130
-		BSTEventSource<TESScenePhaseEvent>				scenePhaseEventSource;				// 0CB8 - sink offset 138
-		BSTEventSource<TESSellEvent>					sellEventSource;					// 0D10 - sink offset 140
-		BSTEventSource<TESSleepStartEvent>				sleepStartEventSource;				// 0D68 - sink offset 148
-		BSTEventSource<TESSleepStopEvent>				sleepStopEventSource;				// 0DC0 - sink offset 150
-		BSTEventSource<TESSpellCastEvent>				spellCastEventSource;				// 0E18 - sink offset 158
-		BSTEventSource<TESPlayerBowShotEvent>			playerBowShotEventSource;			// 0E70 - sink offset 160
-		BSTEventSource<TESTopicInfoEvent>				topicInfoEventSource;				// 0EC8 - sink offset 168
-		BSTEventSource<TESTrackedStatsEvent>			trackedStatsEventSource;			// 0F20 - sink offset 170
-		BSTEventSource<TESTrapHitEvent>					trapHitEventSource;					// 0F78 - sink offset 178
-		BSTEventSource<TESTriggerEvent>					triggerEventSource;					// 0FD0 - sink offset 180
-		BSTEventSource<TESTriggerEnterEvent>			triggerEnterEventSource;			// 1028 - sink offset 188
-		BSTEventSource<TESTriggerLeaveEvent>			triggerLeaveEventSource;			// 1080 - sink offset 190
-		BSTEventSource<TESUniqueIDChangeEvent>			uniqueIDChangeEventSource;			// 10D8 - sink offset 198
-		BSTEventSource<TESWaitStartEvent>				waitStartEventSource;				// 1130 - sink offset 1A0
-		BSTEventSource<TESWaitStopEvent>				waitStopEventSource;				// 1188 - sink offset 1A8
-		BSTEventSource<TESSwitchRaceCompleteEvent>		switchRaceCompleteEventSource;		// 11E0 - sink offset 1B0
-		BSTEventSource<void>							unk1238;							// 1238 - sink offset 1B8 - new in SE?
+		void									SendActivateEvent(TESObjectREFRPtr& a_target, TESObjectREFRPtr& a_caster);
+		template <class T> BSTEventSource<T>*	GetEventSource();
+		template <class T> void					AddEventSink(BSTEventSink<T>* a_sink);
 	};
 	STATIC_ASSERT(sizeof(ScriptEventSourceHolder) == 0x1290);
+
+
+	template <class T>
+	BSTEventSource<T>* ScriptEventSourceHolder::GetEventSource()
+	{
+		return static_cast<BSTEventSource<T>*>(this);
+	}
+
+
+	template <class T>
+	void ScriptEventSourceHolder::AddEventSink(BSTEventSink<T>* a_sink)
+	{
+		GetEventSource<T>()->AddEventSink(a_sink);
+	}
 }

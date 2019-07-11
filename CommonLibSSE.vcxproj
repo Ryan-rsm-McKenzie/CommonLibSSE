@@ -352,6 +352,8 @@
     <ClInclude Include="include\RE\AddCallbackVisitor.h" />
     <ClInclude Include="include\RE\AlchemyItem.h" />
     <ClInclude Include="include\RE\AlchemyMenu.h" />
+    <ClInclude Include="include\RE\ArmorRatingVisitor.h" />
+    <ClInclude Include="include\RE\ArmorRatingVisitorBase.h" />
     <ClInclude Include="include\RE\ArrowProjectile.h" />
     <ClInclude Include="include\RE\Atmosphere.h" />
     <ClInclude Include="include\RE\AutoRegisterCreator.h" />
@@ -672,6 +674,7 @@
     <ClInclude Include="include\RE\FileHash.h" />
     <ClInclude Include="include\RE\FirstPersonState.h" />
     <ClInclude Include="include\RE\FlameProjectile.h" />
+    <ClInclude Include="include\RE\FormTraits.h" />
     <ClInclude Include="include\RE\FormTypes.h" />
     <ClInclude Include="include\RE\FxDelegate.h" />
     <ClInclude Include="include\RE\FxDelegateArgs.h" />
@@ -1107,6 +1110,7 @@
     <ClInclude Include="include\RE\TESTrackedStatsEvent.h" />
     <ClInclude Include="include\RE\TESUniqueIDChangeEvent.h" />
     <ClInclude Include="include\RE\TESValueForm.h" />
+    <ClInclude Include="include\RE\TESWaitStopEvent.h" />
     <ClInclude Include="include\RE\TESWaterForm.h" />
     <ClInclude Include="include\RE\TESWeather.h" />
     <ClInclude Include="include\RE\TESWeightForm.h" />

@@ -66,14 +66,17 @@ namespace RE
 		class PreloadableVisitor
 		{
 		public:
-			virtual ~PreloadableVisitor();
-			virtual void Visit(void) = 0;
+			// add
+			virtual void	Unk_00(void) = 0;	// 00
+			virtual void	Unk_01(void) = 0;	// 01
 		};
+		STATIC_ASSERT(sizeof(PreloadableVisitor) == 0x8);
 
 
 		virtual ~MagicItem();												// 00
 
 		// override (TESBoundObject)
+		virtual void		InitDefaults() override;						// 04 - { TESForm::InitDefaults(); }
 		virtual bool		LoadForm(TESFile* a_mod) override;				// 06
 		virtual void		InitItem() override;							// 13
 		virtual bool		IsMagicItem() const override;					// 29 - { return true; }

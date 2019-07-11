@@ -2,6 +2,7 @@
 
 #include <stdio.h>  // sprintf_s
 
+#include "RE/FormTraits.h"  // As
 #include "RE/TESNPC.h"  // TESNPC
 #include "RE/TESObjectARMO.h"  // TESObjectARMO
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
@@ -50,7 +51,7 @@ namespace RE
 	void TESObjectARMA::GetNodeName(char* a_dstBuff, TESObjectREFR* a_refr, TESObjectARMO* a_armor, float a_weightOverride)
 	{
 		float weight = 100.0;
-		auto npc = skyrim_cast<TESNPC*>(a_refr->baseForm);
+		auto npc = a_refr->baseForm->As<TESNPC*>();
 		if (npc && npc->nextTemplate) {
 			auto templ = npc->GetRootTemplate();
 			if (templ) {

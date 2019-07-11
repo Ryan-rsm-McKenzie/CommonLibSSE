@@ -1,6 +1,7 @@
 #pragma once
 
 #undef GetObject
+#undef SetForm
 
 #include <type_traits>  // enable_if_t
 

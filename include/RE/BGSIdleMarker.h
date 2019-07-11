@@ -40,7 +40,7 @@ namespace RE
 		virtual void	InitItem() override;				// 13
 		virtual bool	IgnoredBySandbox() const override;	// 22 - { return (BGSIdleCollection::flags >> 4) & 1; }
 		virtual void	Unk_41(void) override;				// 41
-		virtual void	Unk_4A(void) override;				// 4A
+		virtual void	Unk_4A(void) override;				// 4A - returns BSFadeNode*
 	};
 	STATIC_ASSERT(sizeof(BGSIdleMarker) == 0x78);
 }

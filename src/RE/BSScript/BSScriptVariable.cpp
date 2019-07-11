@@ -9,6 +9,7 @@
 #include "RE/BSScript/BSScriptArray.h"  // BSScript::BSScriptArray
 #include "RE/BSScript/BSScriptClass.h"  // BSScript::BSScriptClass
 #include "RE/BSScript/BSScriptObject.h"  // BSScript::BSScriptObject
+#include "RE/BSScript/PackUnpack.h"  // BSScript::BindID
 
 
 namespace RE
