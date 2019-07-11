@@ -18,6 +18,8 @@
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
 
+#include "RE/BSScript/BSScriptClass.h"	// TODO
+#include "RE/BSScript/BSScriptObject.h"	// TODO
 
 namespace SKSE
 {
@@ -77,7 +79,7 @@ namespace SKSE
 
 		// default
 		template <class T>
-		inline T UnpackArg(T a_val)
+		inline T& UnpackArg(T& a_val)
 		{
 			return a_val;
 		}
@@ -175,7 +177,7 @@ namespace SKSE
 			template <class Tuple, std::size_t... I>
 			void SendEvent_Tuple(Tuple&& a_tuple, std::index_sequence<I...>)
 			{
-				SendEvent(UnpackArg(std::get<I>(std::forward<Tuple>(a_tuple)))...);
+				SendEvent(std::move(UnpackArg(std::get<I>(std::forward<Tuple>(a_tuple))))...);
 			}
 		};
 

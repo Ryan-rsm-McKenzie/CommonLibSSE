@@ -142,7 +142,7 @@ namespace RE
 			enum { kMaxSize = 128 };
 
 			// members
-			UInt32				_unk04;		// 04
+			UInt32				_pad04;		// 04
 			BSScriptType		_type;		// 08
 			UInt32				_len;		// 10
 			UInt32				_pad14;		// 14
@@ -196,7 +196,7 @@ namespace RE
 
 		template <class T>
 		constexpr auto BSScriptArray::iterator_base<T>::operator=(const iterator_base& a_rhs)
-			-> iterator_base &
+			-> iterator_base&
 		{
 			_ptr = a_rhs._ptr;
 #if _DEBUG
@@ -208,7 +208,7 @@ namespace RE
 
 		template <class T>
 		constexpr auto BSScriptArray::iterator_base<T>::operator=(iterator_base&& a_rhs)
-			-> iterator_base &
+			-> iterator_base&
 		{
 			_ptr = std::move(a_rhs._ptr);
 #if _DEBUG
@@ -248,7 +248,7 @@ namespace RE
 		// prefix
 		template <class T>
 		constexpr auto BSScriptArray::iterator_base<T>::operator++()
-			-> iterator_base &
+			-> iterator_base&
 		{
 #if _DEBUG
 			assert(_ptr != 0);	// cannot dereference value-initialized iterator
@@ -276,7 +276,7 @@ namespace RE
 		// prefix
 		template <class T>
 		constexpr auto BSScriptArray::iterator_base<T>::operator--()
-			-> iterator_base &
+			-> iterator_base&
 		{
 #if _DEBUG
 			assert(_ptr != 0);	// cannot dereference value-initialized iterator
@@ -302,7 +302,7 @@ namespace RE
 
 		template <class T>
 		constexpr auto BSScriptArray::iterator_base<T>::operator+=(const difference_type a_offset)
-			-> iterator_base &
+			-> iterator_base&
 		{
 #if _DEBUG
 			verify_offset(a_offset);
@@ -325,7 +325,7 @@ namespace RE
 
 		template <class T>
 		constexpr auto BSScriptArray::iterator_base<T>::operator-=(const difference_type a_offset)
-			-> iterator_base &
+			-> iterator_base&
 		{
 			return operator+=(-a_offset);
 		}

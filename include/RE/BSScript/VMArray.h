@@ -59,7 +59,7 @@ namespace RE
 				reference& operator=(reference&& a_rhs);
 				reference& operator=(const value_type& a_val);
 
-				template <typename std::enable_if_t<std::is_arithmetic<T>::value, int> = 0> reference & operator+=(const value_type & a_val);
+				template <class Test = T, typename std::enable_if_t<std::is_arithmetic<Test>::value, int> = 0> reference& operator+=(const value_type& a_val);
 
 			protected:
 				friend class VMArray<T>;
@@ -260,7 +260,7 @@ namespace RE
 
 		template <class T>
 		auto VMArray<T>::reference::operator=(const reference& a_rhs)
-			-> reference &
+			-> reference&
 		{
 			_val = a_rhs._val;
 			return *this;
@@ -269,7 +269,7 @@ namespace RE
 
 		template <class T>
 		auto VMArray<T>::reference::operator=(reference&& a_rhs)
-			-> reference &
+			-> reference&
 		{
 			_val = std::move(a_rhs._val);
 			return *this;
@@ -278,7 +278,7 @@ namespace RE
 
 		template <class T>
 		auto VMArray<T>::reference::operator=(const value_type& a_val)
-			-> reference &
+			-> reference&
 		{
 			_val.Pack(a_val);
 			return *this;
@@ -286,9 +286,9 @@ namespace RE
 
 
 		template <class T>
-		template <typename std::enable_if_t<std::is_arithmetic<T>::value, int>>
+		template <class Test, typename std::enable_if_t<std::is_arithmetic<Test>::value, int>>
 		auto VMArray<T>::reference::operator+=(const value_type& a_val)
-			-> reference &
+			-> reference&
 		{
 			_val.Pack(_val.Unpack<value_type>() + a_val);
 			return *this;
@@ -298,6 +298,13 @@ namespace RE
 		template <class T>
 		constexpr VMArray<T>::reference::reference(BSScriptVariable& a_val) :
 			const_reference(a_val)
+		{}
+
+
+		template <class T>
+		template <class U>
+		constexpr VMArray<T>::iterator_base<U>::iterator_base() :
+			_iter()
 		{}
 
 
@@ -325,7 +332,7 @@ namespace RE
 		template <class T>
 		template <class U>
 		constexpr auto VMArray<T>::iterator_base<U>::operator=(const iterator_base& a_rhs)
-			-> iterator_base &
+			-> iterator_base&
 		{
 			_iter = a_rhs._iter;
 			return *this;
@@ -335,7 +342,7 @@ namespace RE
 		template <class T>
 		template <class U>
 		constexpr auto VMArray<T>::iterator_base<U>::operator=(iterator_base&& a_rhs)
-			-> iterator_base &
+			-> iterator_base&
 		{
 			_iter = std::move(a_rhs._iter);
 			return *this;
@@ -363,7 +370,7 @@ namespace RE
 		template <class T>
 		template <class U>
 		constexpr auto VMArray<T>::iterator_base<U>::operator++()
-			-> iterator_base &
+			-> iterator_base&
 		{
 			_iter.operator++();
 			return *this;
@@ -382,7 +389,7 @@ namespace RE
 		template <class T>
 		template <class U>
 		constexpr auto VMArray<T>::iterator_base<U>::operator--()
-			-> iterator_base &
+			-> iterator_base&
 		{
 			_iter.operator--();
 			return *this;
@@ -401,7 +408,7 @@ namespace RE
 		template <class T>
 		template <class U>
 		constexpr auto VMArray<T>::iterator_base<U>::operator+=(const difference_type a_offset)
-			-> iterator_base &
+			-> iterator_base&
 		{
 			_iter.operator+=(a_offset);
 			return *this;
@@ -420,7 +427,7 @@ namespace RE
 		template <class T>
 		template <class U>
 		constexpr auto VMArray<T>::iterator_base<U>::operator-=(const difference_type a_offset)
-			-> iterator_base &
+			-> iterator_base&
 		{
 			_iter.operator-=(a_offset);
 			return *this;
@@ -561,7 +568,7 @@ namespace RE
 
 		template <class T>
 		auto VMArray<T>::operator=(const VMArray& a_rhs)
-			-> VMArray &
+			-> VMArray&
 		{
 			if (!a_rhs._data) {
 				_data = nullptr;
@@ -590,7 +597,7 @@ namespace RE
 
 		template <class T>
 		auto VMArray<T>::operator=(VMArray&& a_rhs)
-			-> VMArray &
+			-> VMArray&
 		{
 			_data = std::move(a_rhs._data);
 			if (_proxy) {
@@ -602,7 +609,7 @@ namespace RE
 
 		template <class T>
 		auto VMArray<T>::operator=(BSScriptVariable* a_var)
-			-> VMArray &
+			-> VMArray&
 		{
 			_data.reset(a_var->GetArray());
 			_proxy = a_var;
@@ -612,7 +619,7 @@ namespace RE
 
 		template <class T>
 		auto VMArray<T>::operator=(BSScriptArray* a_var)
-			-> VMArray &
+			-> VMArray&
 		{
 			_data.reset(a_var);
 			if (_proxy) {
@@ -624,7 +631,7 @@ namespace RE
 
 		template <class T>
 		auto VMArray<T>::operator=(const BSTSmartPointer<BSScriptArray>& a_var)
-			-> VMArray &
+			-> VMArray&
 		{
 			_data = a_var;
 			if (_proxy) {
@@ -636,7 +643,7 @@ namespace RE
 
 		template <class T>
 		auto VMArray<T>::operator=(BSTSmartPointer<BSScriptArray>&& a_var)
-			-> VMArray &
+			-> VMArray&
 		{
 			_data = std::move(a_var);
 			if (_proxy) {
@@ -676,7 +683,10 @@ namespace RE
 		template <class T>
 		[[nodiscard]] constexpr auto VMArray<T>::operator[](size_type a_pos) const
 			-> const_reference
-		{}
+		{
+			assert(_data.get() != 0);
+			return const_reference(_data->operator[](a_pos));
+		}
 
 
 		template <class T>
@@ -729,8 +739,7 @@ namespace RE
 		[[nodiscard]] constexpr auto VMArray<T>::begin() noexcept
 			-> iterator
 		{
-			assert(_data.get() != 0);
-			return iterator(_data->begin());
+			return _data ? iterator(_data->begin()) : iterator();
 		}
 
 
@@ -738,8 +747,7 @@ namespace RE
 		[[nodiscard]] constexpr auto VMArray<T>::begin() const noexcept
 			-> const_iterator
 		{
-			assert(_data.get() != 0);
-			return const_iterator(_data->cbegin());
+			return _data ? const_iterator(_data->begin()) : const_iterator()
 		}
 
 
@@ -755,8 +763,7 @@ namespace RE
 		[[nodiscard]] constexpr auto VMArray<T>::end() noexcept
 			-> iterator
 		{
-			assert(_data.get() != 0);
-			return iterator(_data->end());
+			return _data ? iterator(_data->end()) : iterator();
 		}
 
 
@@ -764,8 +771,7 @@ namespace RE
 		[[nodiscard]] constexpr auto VMArray<T>::end() const noexcept
 			-> const_iterator
 		{
-			assert(_data.get() != 0);
-			return const_iterator(_data->cend());
+			return _data ? const_iterator(_data->end()) : const_iterator();
 		}
 
 
@@ -781,8 +787,7 @@ namespace RE
 		[[nodiscard]] constexpr auto VMArray<T>::rbegin() noexcept
 			-> reverse_iterator
 		{
-			assert(_data.get() != 0);
-			return reverse_iterator(_data->rbegin());
+			return _data ? reverse_iterator(_data->rbegin()) : reverse_iterator();
 		}
 
 
@@ -790,8 +795,7 @@ namespace RE
 		[[nodiscard]] constexpr auto VMArray<T>::rbegin() const noexcept
 			-> const_reverse_iterator
 		{
-			assert(_data.get() != 0);
-			return const_reverse_iterator(_data->crbegin());
+			return _data ? const_reverse_iterator(_data->rbegin()) : const_reverse_iterator();
 		}
 
 
@@ -807,8 +811,7 @@ namespace RE
 		[[nodiscard]] constexpr auto VMArray<T>::rend() noexcept
 			-> reverse_iterator
 		{
-			assert(_data.get() != 0);
-			return reverse_iterator(_data->rend());
+			return _data ? reverse_iterator(_data->rend()) : reverse_iterator();
 		}
 
 
@@ -816,8 +819,7 @@ namespace RE
 		[[nodiscard]] constexpr auto VMArray<T>::rend() const noexcept
 			-> const_reverse_iterator
 		{
-			assert(_data.get() != 0);
-			return const_reverse_iterator(_data->crend());
+			return _data ? const_reverse_iterator(_data->rend()) : const_reverse_iterator();
 		}
 
 
@@ -832,7 +834,7 @@ namespace RE
 		template <class T>
 		[[nodiscard]] constexpr bool VMArray<T>::empty() const noexcept
 		{
-			return _data ? true : _data->empty();
+			return _data ? _data->empty() : true;
 		}
 
 
@@ -840,7 +842,7 @@ namespace RE
 		[[nodiscard]] constexpr auto VMArray<T>::size() const noexcept
 			-> size_type
 		{
-			return _data ? 0 : _data->size();
+			return _data ? _data->size() : 0;
 		}
 
 
@@ -860,7 +862,8 @@ namespace RE
 				if (_data) {
 					auto& oldArr = *_data.get();
 					auto& newArr = *newArrPtr.get();
-					for (std::size_t i = 0; i < oldArr.size(); ++i) {
+					auto size = std::min(oldArr.size(), newArr.size());
+					for (std::size_t i = 0; i < size; ++i) {
 						newArr[i] = oldArr[i];
 					}
 				}

@@ -47,28 +47,28 @@ namespace RE
 
 
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
-		inline void PackValue(BSScriptVariable* a_dst, const T& a_src)
+		inline void PackValue(BSScriptVariable* a_dst, T& a_src)
 		{
 			PackHandle(a_dst, a_src, remove_cvpr_t<T>::kTypeID);
 		}
 
 
 		template <class T, typename std::enable_if_t<is_vm_form_array_no_cvr<T>::value, int> = 0>
-		inline void PackValue(BSScriptVariable* a_dst, const T& a_src)
+		inline void PackValue(BSScriptVariable* a_dst, T& a_src)
 		{
 			a_dst->SetData(a_src.data());
 		}
 
 
 		template <class T, typename std::enable_if_t<is_builtin_type_no_cvr<T>::value, int> = 0>
-		inline void PackValue(BSScriptVariable* a_dst, const T& a_src)
+		inline void PackValue(BSScriptVariable* a_dst, T& a_src)
 		{
 			a_dst->SetData(a_src);
 		}
 
 
 		template <class T, typename std::enable_if_t<is_vm_builtin_array_no_cvr<T>::value, int> = 0>
-		inline void PackValue(BSScriptVariable* a_dst, const T& a_src)
+		inline void PackValue(BSScriptVariable* a_dst, T& a_src)
 		{
 			a_dst->SetData(a_src.data());
 		}
@@ -110,7 +110,7 @@ namespace RE
 
 
 		template <class T, typename std::enable_if_t<is_string_compat<T>::value, int> = 0>
-		inline T UnpackValue(BSScriptVariable * a_src)
+		inline T UnpackValue(BSScriptVariable* a_src)
 		{
 			return a_src->GetString();
 		}
@@ -138,7 +138,7 @@ namespace RE
 
 
 		template <class T>
-		inline void BSScriptVariable::Pack(const T a_src)
+		inline void BSScriptVariable::Pack(T a_src)
 		{
 			PackValue<T>(this, a_src);
 		}
