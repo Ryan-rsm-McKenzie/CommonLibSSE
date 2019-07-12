@@ -211,6 +211,7 @@
     <ClCompile Include="src\RE\ExtraFlags.cpp" />
     <ClCompile Include="src\RE\ExtraHealth.cpp" />
     <ClCompile Include="src\RE\ExtraHotkey.cpp" />
+    <ClCompile Include="src\RE\ExtraMissingLinkedRefIDs.cpp" />
     <ClCompile Include="src\RE\ExtraOwnership.cpp" />
     <ClCompile Include="src\RE\ExtraUniqueID.cpp" />
     <ClCompile Include="src\RE\FxDelegate.cpp" />
@@ -253,6 +254,8 @@
     <ClCompile Include="src\RE\NiExtraData.cpp" />
     <ClCompile Include="src\RE\NiFloatData.cpp" />
     <ClCompile Include="src\RE\NiFloatKey.cpp" />
+    <ClCompile Include="src\RE\NiMath.cpp" />
+    <ClCompile Include="src\RE\NiMatrix3.cpp" />
     <ClCompile Include="src\RE\NiObject.cpp" />
     <ClCompile Include="src\RE\NiRefObject.cpp" />
     <ClCompile Include="src\RE\NiTexture.cpp" />
@@ -644,6 +647,7 @@
     <ClInclude Include="include\RE\ExtraDataTypes.h" />
     <ClInclude Include="include\RE\ExtraDismemberedLimbs.h" />
     <ClInclude Include="include\RE\ExtraDroppedItemList.h" />
+    <ClInclude Include="include\RE\ExtraEditorID.h" />
     <ClInclude Include="include\RE\ExtraEnchantment.h" />
     <ClInclude Include="include\RE\ExtraEncounterZone.h" />
     <ClInclude Include="include\RE\ExtraFactionChanges.h" />
@@ -655,6 +659,7 @@
     <ClInclude Include="include\RE\ExtraItemDropper.h" />
     <ClInclude Include="include\RE\ExtraLastFinishedSequence.h" />
     <ClInclude Include="include\RE\ExtraLeveledCreature.h" />
+    <ClInclude Include="include\RE\ExtraLinkedRef.h" />
     <ClInclude Include="include\RE\ExtraLocationRefType.h" />
     <ClInclude Include="include\RE\ExtraMapMarker.h" />
     <ClInclude Include="include\RE\ExtraMissingLinkedRefIDs.h" />
@@ -913,6 +918,7 @@
     <ClInclude Include="include\RE\NiFrustum.h" />
     <ClInclude Include="include\RE\NiInterpolator.h" />
     <ClInclude Include="include\RE\NiKeyBasedInterpolator.h" />
+    <ClInclude Include="include\RE\NiMath.h" />
     <ClInclude Include="include\RE\NiMatrix3.h" />
     <ClInclude Include="include\RE\NiTCollection.h" />
     <ClInclude Include="include\RE\NiObject.h" />
@@ -989,12 +995,15 @@
     <ClInclude Include="include\RE\SkyObject.h" />
     <ClInclude Include="include\RE\Skyrim.h" />
     <ClInclude Include="include\RE\SkyrimScript\DelayFunctor.h" />
+    <ClInclude Include="include\RE\SkyrimScript\DropObjectFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\HandlePolicy.h" />
     <ClInclude Include="include\RE\SkyrimScript\Logger.h" />
+    <ClInclude Include="include\RE\SkyrimScript\MoveToFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\Profiler.h" />
     <ClInclude Include="include\RE\SkyrimScript\RemoveItemFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\SavePatcher.h" />
     <ClInclude Include="include\RE\SkyrimScript\ObjectBindPolicy.h" />
+    <ClInclude Include="include\RE\SkyrimScript\SetMotionTypeFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\Store.h" />
     <ClInclude Include="include\RE\SkyrimVM.h" />
     <ClInclude Include="include\RE\SmithingMenu.h" />

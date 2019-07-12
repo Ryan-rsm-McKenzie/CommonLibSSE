@@ -1,13 +1,12 @@
 #pragma once
 
-#include "skse64/GameEvents.h"  // TESActiveEffectApplyRemoveEvent, TESCellAttachDetachEvent, TESCombatEvent, TESContainerChangedEvent, TESDeathEvent, TESInitScriptEvent, TESObjectLoadedEvent, TESUniqueIDChangeEvent
-
 #include "RE/BSTEvent.h"  // BSTEventSource
-#include "RE/TESObjectREFR.h"  // TESObjectREFRPtr
+#include "RE/NiSmartPointer.h"  // NiPointer
 
 
 namespace RE
 {
+	class TESObjectREFR;
 	struct BGSEventProcessedEvent;
 	struct TESActivateEvent;
 	struct TESActiveEffectApplyRemoveEvent;
@@ -122,7 +121,7 @@ namespace RE
 	public:
 		static ScriptEventSourceHolder* GetSingleton();
 
-		void									SendActivateEvent(TESObjectREFRPtr& a_target, TESObjectREFRPtr& a_caster);
+		void									SendActivateEvent(NiPointer<TESObjectREFR>& a_target, NiPointer<TESObjectREFR>& a_caster);
 		template <class T> BSTEventSource<T>*	GetEventSource();
 		template <class T> void					AddEventSink(BSTEventSink<T>* a_sink);
 	};

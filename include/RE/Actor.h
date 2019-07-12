@@ -351,7 +351,7 @@ namespace RE
 		virtual void							Unk_F8(void);																																														// 0F8
 		virtual bool							IsInFaction(TESFaction* faction);																																									// 0F9
 		virtual void							VisitPerks(PerkEntryVisitor& a_visitor);																																							// 0FA
-		virtual void							AddPerk(BGSPerk* a_perk, UInt32 a_arg2);																																							// 0FB - { return; }
+		virtual void							AddPerk(BGSPerk* a_perk, UInt32 a_rank = 0);																																						// 0FB - { return; }
 		virtual void							RemovePerk(BGSPerk* a_perk);																																										// 0FC - { return; }
 		virtual void							Unk_FD(void);																																														// 0FD - { return; }
 		virtual void							Unk_FE(void);																																														// 0FE - { return; }

@@ -91,6 +91,12 @@ namespace RE
 	}
 
 
+	bool TESForm::IsDynamicForm() const
+	{
+		return formID >= 0xFF000000;
+	}
+
+
 	bool TESForm::HasWorldModel() const
 	{
 		return As<TESModel*>() != 0;

@@ -14,30 +14,26 @@ namespace RE
 
 	namespace SkyrimScript
 	{
-		class RemoveItemFunctor : public DelayFunctor
+		class DropObjectFunctor : public DelayFunctor
 		{
 		public:
-			virtual ~RemoveItemFunctor();																// 00
+			virtual ~DropObjectFunctor();																// 00
 
 			// override (DelayFunctor)
 			virtual RE::BSScript::BSScriptVariable&	Run(BSScript::BSScriptVariable& a_result) override;	// 01
 			virtual void							Unk_02(void) override;								// 02 - { return 1; }
 			virtual void							Unk_04(void) override;								// 04
-			virtual void							Unk_05(void) override;								// 05 - { return 24; }
+			virtual void							Unk_05(void) override;								// 05 - { return 12; }
 			virtual void							Unk_06(void) override;								// 06
 
 
 			// members
-			RefHandle									removeFrom;		// 10
-			RefHandle									moveTo;			// 14
-			FormID										toRemove;		// 18
-			SInt32										count;			// 1C
-			bool										silent;			// 20
-			UInt8										pad21;			// 21
-			UInt16										pad22;			// 22
-			UInt32										pad24;			// 24
-			BSTSmartPointer<BSScript::IVirtualMachine>	virtualMachine;	// 28
+			RefHandle									selfHandle;		// 10
+			FormID										objectID;		// 14
+			UInt32										count;			// 18
+			UInt32										pad1C;			// 1C
+			BSTSmartPointer<BSScript::IVirtualMachine>	virtualMachine;	// 20
 		};
-		STATIC_ASSERT(sizeof(RemoveItemFunctor) == 0x30);
+		STATIC_ASSERT(sizeof(DropObjectFunctor) == 0x28);
 	}
 }

@@ -17,7 +17,7 @@ namespace RE
 	}
 
 
-	void ScriptEventSourceHolder::SendActivateEvent(TESObjectREFRPtr& a_target, TESObjectREFRPtr& a_caster)
+	void ScriptEventSourceHolder::SendActivateEvent(NiPointer<TESObjectREFR>& a_target, NiPointer<TESObjectREFR>& a_caster)
 	{
 		using func_t = function_type_t<decltype(&ScriptEventSourceHolder::SendActivateEvent)>;
 		REL::Offset<func_t*> func(Offset::ScriptEventSourceHolder::SendActivateEvent);

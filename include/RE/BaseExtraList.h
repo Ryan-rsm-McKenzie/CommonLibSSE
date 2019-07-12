@@ -1,8 +1,7 @@
 #pragma once
 
-#include "skse64/GameTypes.h"  // BSReadWriteLock
-
 #include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/BSSpinLock.h"  // BSSpinLock
 #include "RE/ExtraFlags.h"  // ExtraFlags::Flag
 #include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/FormTypes.h"
@@ -67,9 +66,6 @@ namespace RE
 		const_iterator	end() const;
 
 
-		BaseExtraList();
-		~BaseExtraList();
-
 		bool				HasType(UInt32 a_type) const;
 		bool				HasType(ExtraDataType a_type) const;
 		template <class T>
@@ -93,9 +89,10 @@ namespace RE
 		}
 		BSExtraData*		Add(BSExtraData* a_toAdd);
 		const char*			GetDisplayName(TESForm* a_type);
-		UInt32				GetAshPileRefHandle(UInt32& a_refHandle);
+		bool				GetAshPileRefHandle(RefHandle& a_refHandle);
 		void				SetInventoryChanges(InventoryChanges* a_changes);
 		void				SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
+		TESObjectREFR*		GetLinkedRef(BGSKeyword* a_keyword);
 
 	protected:
 		struct PresenceBitfield
@@ -116,9 +113,9 @@ namespace RE
 
 
 		// members
-		BSExtraData*			_data;		// 00
-		PresenceBitfield*		_presence;	// 08
-		mutable BSReadWriteLock	_lock;		// 10
+		BSExtraData*		_data;		// 00
+		PresenceBitfield*	_presence;	// 08
+		mutable BSSpinLock	_lock;		// 10
 	};
 	STATIC_ASSERT(sizeof(BaseExtraList) == 0x18);
 }

@@ -128,6 +128,7 @@ namespace RE
 		bool	IsGold() const;
 		bool	IsPlayer() const;
 		bool	IsPlayerRef() const;
+		bool	IsDynamicForm() const;
 		bool	HasWorldModel() const;
 		UInt32	GetFormID() const;
 		float	GetWeight() const;

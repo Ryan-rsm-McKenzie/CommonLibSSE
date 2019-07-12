@@ -45,6 +45,12 @@ namespace RE
 	}
 
 
+	bool BGSBipedObjectForm::IsShield() const
+	{
+		return (bipedBodyTemplate.firstPersonFlag & FirstPersonFlag::kShield) != FirstPersonFlag::kNone;
+	}
+
+
 	BGSBipedObjectForm::FirstPersonFlag BGSBipedObjectForm::AddSlotToMask(FirstPersonFlag a_slot)
 	{
 		bipedBodyTemplate.firstPersonFlag |= a_slot;

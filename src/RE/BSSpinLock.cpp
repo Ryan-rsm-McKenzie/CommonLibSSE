@@ -1,5 +1,7 @@
 #include "RE/BSSpinLock.h"  // BSSpinLock
 
+#include "skse64/GameTypes.h"  // BSReadWriteLock
+
 
 namespace RE
 {
@@ -9,49 +11,60 @@ namespace RE
 	{}
 
 
-	void BSSpinLock::lock()
+	void BSSpinLock::LockForRead()
 	{
-		UInt32 myThreadID = GetCurrentThreadId();
-
-		_mm_lfence();
-		if (_threadID == myThreadID) {
-			++_lockCount;
-		} else {
-			UInt32 spinCount = 0;
-			while (InterlockedCompareExchange(&_threadID, myThreadID, 0)) {
-				Sleep(++spinCount > kFastSpinThreshold);
-			}
-
-			_lockCount = 1;
-			_mm_sfence();
-		}
+		using func_t = function_type_t<decltype(&BSSpinLock::LockForRead)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(BSReadWriteLock, LockForRead, func_t*);
+		func(this);
 	}
 
 
-	bool BSSpinLock::try_lock()
+	void BSSpinLock::UnlockForRead()
 	{
-		UInt32 myThreadID = GetCurrentThreadId();
-
-		_mm_lfence();
-		if (_threadID == myThreadID) {
-			++_lockCount;
-			return true;
-		} else {
-			if (InterlockedCompareExchange(&_threadID, myThreadID, 0)) {
-				return false;
-			} else {
-				_lockCount = 1;
-				_mm_sfence();
-				return true;
-			}
-		}
+		using func_t = function_type_t<decltype(&BSSpinLock::UnlockForRead)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(BSReadWriteLock, UnlockRead, func_t*);
+		func(this);
 	}
 
 
-	void BSSpinLock::unlock()
+	void BSSpinLock::LockForWrite()
 	{
-		if (--_lockCount == 0) {
-			InterlockedCompareExchange(&_threadID, 0, _threadID);
-		}
+		using func_t = function_type_t<decltype(&BSSpinLock::LockForWrite)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(BSReadWriteLock, LockForWrite, func_t*);
+		func(this);
+	}
+
+
+	void BSSpinLock::UnlockForWrite()
+	{
+		using func_t = function_type_t<decltype(&BSSpinLock::UnlockForWrite)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(BSReadWriteLock, UnlockWrite, func_t*);
+		func(this);
+	}
+
+
+	BSReadLockGuard::BSReadLockGuard(BSSpinLock& a_lock) :
+		_lock(a_lock)
+	{
+		_lock.LockForRead();
+	}
+
+
+	BSReadLockGuard::~BSReadLockGuard()
+	{
+		_lock.UnlockForRead();
+	}
+
+
+	BSWriteLockGuard::BSWriteLockGuard(BSSpinLock& a_lock) :
+		_lock(a_lock)
+	{
+		_lock.LockForWrite();
+	}
+
+
+	BSWriteLockGuard::~BSWriteLockGuard()
+	{
+		_lock.UnlockForWrite();
 	}
 }

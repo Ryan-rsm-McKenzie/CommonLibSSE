@@ -1443,6 +1443,15 @@
     <ClCompile Include="src\RE\TESMemoryManager.cpp">
       <Filter>src\RE\Memory</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\ExtraMissingLinkedRefIDs.cpp">
+      <Filter>src\RE\ExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiMatrix3.cpp">
+      <Filter>src\RE\NetImmerse\NiMain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiMath.cpp">
+      <Filter>src\RE\NetImmerse\NiMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -3844,6 +3853,24 @@
     </ClInclude>
     <ClInclude Include="include\RE\ArmorRatingVisitor.h">
       <Filter>include\RE\Inventory\ArmorRatingVisitorBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraLinkedRef.h">
+      <Filter>include\RE\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraEditorID.h">
+      <Filter>include\RE\ExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SkyrimScript\MoveToFunctor.h">
+      <Filter>include\RE\SkyrimScript\DelayFunctor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiMath.h">
+      <Filter>include\RE\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SkyrimScript\DropObjectFunctor.h">
+      <Filter>include\RE\SkyrimScript\DelayFunctor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SkyrimScript\SetMotionTypeFunctor.h">
+      <Filter>include\RE\SkyrimScript\DelayFunctor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

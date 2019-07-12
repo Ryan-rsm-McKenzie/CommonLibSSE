@@ -1,11 +1,14 @@
 #include "RE/BaseExtraList.h"
 
 #include "skse64/GameReferences.h"  // g_invalidRefHandle
-#include "skse64/GameTypes.h"  // BSReadLocker
 
+#include "RE/BGSKeyword.h"  // BGSKeyword
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/ExtraAshPileRef.h"  // ExtraAshPileRef
+#include "RE/ExtraLinkedRef.h"  // ExtraLinkedRef
+#include "RE/ExtraMissingLinkedRefIDs.h"  // ExtraMissingLinkedRefIDs
 #include "RE/Offsets.h"
+#include "RE/TESObjectREFR.h"  // TESObjectREFR
 #include "REL/Relocation.h"
 
 
@@ -148,27 +151,27 @@ namespace RE
 
 	bool BaseExtraList::HasType(UInt32 a_type) const
 	{
-		BSReadLocker locker(&_lock);
+		BSReadLockGuard locker(_lock);
 		return _presence ? _presence->HasType(a_type) : false;
 	}
 
 
 	bool BaseExtraList::HasType(ExtraDataType a_type) const
 	{
-		return HasType((UInt32)a_type);
+		return HasType(static_cast<UInt32>(a_type));
 	}
 
 
 	BSExtraData* BaseExtraList::GetByType(UInt32 a_type) const
 	{
-		BSReadLocker locker(&_lock);
+		BSReadLockGuard locker(_lock);
 		if (!HasType(a_type)) {
 			return 0;
 		}
 
 		BSExtraData* result = 0;
 
-		for (BSExtraData* cur = _data; cur; cur = cur->next) {
+		for (auto cur = _data; cur; cur = cur->next) {
 			if (to_underlying(cur->GetType()) == a_type) {
 				result = cur;
 				break;
@@ -181,7 +184,7 @@ namespace RE
 
 	BSExtraData* BaseExtraList::GetByType(ExtraDataType a_type) const
 	{
-		return GetByType((UInt32)a_type);
+		return GetByType(static_cast<UInt32>(a_type));
 	}
 
 
@@ -197,7 +200,7 @@ namespace RE
 			_data = _data->next;
 			removed = true;
 		} else {
-			for (BSExtraData* traverse = _data; traverse; traverse = traverse->next) {
+			for (auto traverse = _data; traverse; traverse = traverse->next) {
 				if (traverse->next == a_toRemove) {
 					traverse->next = a_toRemove->next;
 					removed = true;
@@ -216,7 +219,7 @@ namespace RE
 
 	bool BaseExtraList::Remove(ExtraDataType a_type, BSExtraData* a_toRemove)
 	{
-		return Remove((UInt8)a_type, a_toRemove);
+		return Remove(static_cast<UInt8>(a_type), a_toRemove);
 	}
 
 
@@ -264,15 +267,15 @@ namespace RE
 	}
 
 
-	UInt32 BaseExtraList::GetAshPileRefHandle(UInt32& a_refHandle)
+	bool BaseExtraList::GetAshPileRefHandle(RefHandle& a_refHandle)
 	{
-		ExtraAshPileRef* xAshRef = GetByType<ExtraAshPileRef>();
+		auto xAshRef = GetByType<ExtraAshPileRef>();
 		if (xAshRef) {
 			a_refHandle = xAshRef->refHandle;
 		} else {
 			a_refHandle = *g_invalidRefHandle;
 		}
-		return a_refHandle;
+		return a_refHandle != *g_invalidRefHandle;
 	}
 
 
@@ -289,5 +292,33 @@ namespace RE
 		using func_t = function_type_t<decltype(&BaseExtraList::SetExtraFlags)>;
 		REL::Offset<func_t*> func(Offset::BaseExtraList::SetExtraFlags);
 		return func(this, a_flags, a_enable);
+	}
+
+
+	TESObjectREFR* BaseExtraList::GetLinkedRef(BGSKeyword* a_keyword)
+	{
+		BSReadLockGuard locker(_lock);
+
+		auto xLinkedRef = GetByType<ExtraLinkedRef>();
+		if (!xLinkedRef) {
+			return 0;
+		}
+
+		TESObjectREFR* linkedRef = 0;
+		for (auto& entry : xLinkedRef->entries) {
+			if (entry.keyword == a_keyword) {
+				linkedRef = entry.linkedRef;
+				if (!linkedRef && HasType(ExtraDataType::kEditorID)) {
+					auto xMissingLinkedRefIDs = GetByType<ExtraMissingLinkedRefIDs>();
+					linkedRef = xMissingLinkedRefIDs->GetLinkedRef(a_keyword);
+				}
+			}
+
+			if (linkedRef) {
+				break;
+			}
+		}
+
+		return linkedRef;
 	}
 }

@@ -369,6 +369,13 @@ namespace RE
 		}
 
 
+		namespace NiNode
+		{
+			// IndirectSig: E8 ? ? ? ? 44 88 65 6F
+			constexpr std::uintptr_t SetMotionType = 0x00DA7D30;	// 1_5_80
+		}
+
+
 		namespace NiRefObject
 		{
 			// NiRefObject::virt_dtor + 13

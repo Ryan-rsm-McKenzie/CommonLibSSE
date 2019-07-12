@@ -14,6 +14,7 @@
 #include "RE/ExtraTextDisplayData.h"  // ExtraTextDisplayData
 #include "RE/FormTraits.h"  // As
 #include "RE/InventoryChanges.h"  // InventoryChanges
+#include "RE/NiNode.h"  // NiNode
 #include "RE/Offsets.h"
 #include "RE/TESActorBase.h"  // TESActorBase
 #include "RE/TESFaction.h"  // TESFaction
@@ -82,13 +83,11 @@ namespace RE
 
 	RefHandle TESObjectREFR::CreateRefHandle()
 	{
+		RefHandle refHandle = *g_invalidRefHandle;
 		if (GetRefCount() > 0) {
-			RefHandle refHandle = *g_invalidRefHandle;
-			CreateRefHandle_Internal(refHandle, this);
-			return refHandle;
-		} else {
-			return *g_invalidRefHandle;
+			CreateRefHandle_Impl(refHandle, this);
 		}
+		return refHandle;
 	}
 
 
@@ -103,7 +102,7 @@ namespace RE
 	}
 
 
-	TESForm* TESObjectREFR::GetBaseObject() const
+	TESBoundObject* TESObjectREFR::GetBaseObject() const
 	{
 		return baseForm;
 	}
@@ -269,21 +268,21 @@ namespace RE
 	}
 
 
-	bool TESObjectREFR::SetDisplayName(const BSFixedString& name, bool force)
+	bool TESObjectREFR::SetDisplayName(const BSFixedString& a_name, bool a_force)
 	{
 		bool renamed = false;
 
 		auto xTextData = extraData.GetByType<ExtraTextDisplayData>();
 		if (xTextData) {
 			bool inUse = (xTextData->message || xTextData->owner);
-			if (inUse && force) {
+			if (inUse && a_force) {
 				xTextData->message = 0;
 				xTextData->owner = 0;
 			}
-			renamed = (!inUse || force);
-			xTextData->SetName(name.c_str());
+			renamed = (!inUse || a_force);
+			xTextData->SetName(a_name.c_str());
 		} else {
-			xTextData = new ExtraTextDisplayData(name.c_str());
+			xTextData = new ExtraTextDisplayData(a_name.c_str());
 			extraData.Add(xTextData);
 			renamed = true;
 		}
@@ -308,10 +307,72 @@ namespace RE
 	}
 
 
-	void TESObjectREFR::CreateRefHandle_Internal(UInt32& a_refHandle, TESObjectREFR* a_refrTo)
+	TESObjectREFR* TESObjectREFR::GetLinkedRef(BGSKeyword* a_keyword)
 	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::CreateRefHandle_Internal)>;
-		func_t* func = reinterpret_cast<func_t*>(::CreateRefHandleByREFR.GetUIntPtr());
+		return extraData.GetLinkedRef(a_keyword);
+	}
+
+
+	NiAVObject* TESObjectREFR::GetNodeByName(const BSFixedString& a_nodeName)
+	{
+		auto node = GetNiNode();
+		return node ? node->GetObjectByName(a_nodeName) : 0;
+	}
+
+
+	bool TESObjectREFR::MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName)
+	{
+		auto node = a_target->GetNiNode();
+		if (!node) {
+			_DMESSAGE("Cannot move the target because it does not have 3D");
+			return false;
+		}
+
+		auto object = node->GetObjectByName(a_nodeName);
+		if (!object) {
+			_DMESSAGE("Target does not have a node named %s", a_nodeName.c_str());
+			return false;
+		}
+
+		return MoveToNode(a_target, object);
+	}
+
+
+	bool TESObjectREFR::MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node)
+	{
+		auto& position = a_node->worldTransform.translate;
+		NiPoint3 rotation;
+		a_node->worldTransform.rotate.ToEulerAnglesXYZ(rotation);
+		RefHandle handle = a_target->CreateRefHandle();
+		MoveTo_Impl(handle, a_target->GetParentCell(), GetWorldspace(), position, rotation);
+		return true;
+	}
+
+
+	bool TESObjectREFR::SetMotionType(MotionType a_motionType, bool a_allowActivate)
+	{
+		auto node = GetNiNode();
+		if (!node) {
+			_DMESSAGE("Target does not have 3D");
+			return false;
+		}
+
+		return node->SetMotionType(static_cast<UInt32>(a_motionType), true, false, a_allowActivate);
+	}
+
+
+	void TESObjectREFR::CreateRefHandle_Impl(RefHandle& a_refHandle, TESObjectREFR* a_refrTo)
+	{
+		using func_t = function_type_t<decltype(&TESObjectREFR::CreateRefHandle_Impl)>;
+		func_t* func = unrestricted_cast<func_t*>(::CreateRefHandleByREFR.GetUIntPtr());
 		return func(a_refHandle, a_refrTo);
+	}
+
+
+	void TESObjectREFR::MoveTo_Impl(RefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, NiPoint3& a_position, NiPoint3& a_rotation)
+	{
+		using func_t = function_type_t<decltype(&TESObjectREFR::MoveTo_Impl)>;
+		func_t* func = unrestricted_cast<func_t*>(::MoveRefrToPosition.GetUIntPtr());
+		return func(this, a_targetHandle, a_targetCell, a_selfWorldSpace, a_position, a_rotation);
 	}
 }

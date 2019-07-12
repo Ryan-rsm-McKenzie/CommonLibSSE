@@ -92,6 +92,7 @@ namespace RE
 		bool			IsLightArmor() const;
 		bool			IsHeavyArmor() const;
 		bool			IsClothing() const;
+		bool			IsShield() const;
 		FirstPersonFlag	AddSlotToMask(FirstPersonFlag a_slot);
 		FirstPersonFlag	RemoveSlotFromMask(FirstPersonFlag a_slot);
 
