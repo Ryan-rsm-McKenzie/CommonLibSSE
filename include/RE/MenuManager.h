@@ -62,14 +62,15 @@ namespace RE
 		STATIC_ASSERT(sizeof(Unknown3) == 0x40);
 
 
-		static MenuManager*						GetSingleton();
+		static MenuManager* GetSingleton();
+
+		template <class T> BSTEventSource<T>*	GetEventSource();
+		template <class T> void					AddEventSink(BSTEventSink<T>* a_sink);
 		bool									IsMenuOpen(BSFixedString& a_menuName);
 		GFxMovieView*							GetMovieView(BSFixedString& a_menuName);
 		void									ShowMenus(bool a_show);
 		bool									IsShowingMenus();
 		void									Register(const char* a_name, CreatorFunc a_creator);
-		BSTEventSource<MenuOpenCloseEvent>*		GetMenuOpenCloseEventSource();
-		BSTEventSource<MenuModeChangeEvent>*	GetMenuModeChangeEventSource();
 		bool									GameIsPaused();
 		bool									CrosshairIsPaused();
 		IMenu*									GetMenu(const BSFixedString& a_menuName);
@@ -97,6 +98,20 @@ namespace RE
 	};
 	STATIC_ASSERT(offsetof(MenuManager, menuStack) == 0x110);
 	STATIC_ASSERT(sizeof(MenuManager) == 0x1C8);
+
+
+	template <class T>
+	BSTEventSource<T>* MenuManager::GetEventSource()
+	{
+		return static_cast<BSTEventSource<T>*>(this);
+	}
+
+
+	template <class T>
+	void MenuManager::AddEventSink(BSTEventSink<T>* a_sink)
+	{
+		GetEventSource<T>()->AddEventSink(a_sink);
+	}
 
 
 	template <class T>

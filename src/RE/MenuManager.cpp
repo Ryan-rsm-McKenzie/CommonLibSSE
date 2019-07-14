@@ -61,18 +61,6 @@ namespace RE
 	}
 
 
-	BSTEventSource<MenuOpenCloseEvent>* MenuManager::GetMenuOpenCloseEventSource()
-	{
-		return static_cast<BSTEventSource<MenuOpenCloseEvent>*>(this);
-	}
-
-
-	BSTEventSource<MenuModeChangeEvent>* MenuManager::GetMenuModeChangeEventSource()
-	{
-		return static_cast<BSTEventSource<MenuModeChangeEvent>*>(this);
-	}
-
-
 	bool MenuManager::GameIsPaused()
 	{
 		return numPauseGame > 0;

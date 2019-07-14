@@ -161,6 +161,13 @@ namespace RE
 		}
 
 
+		namespace BSWin32SaveDataSystemUtility
+		{
+			// IndirectSig: E8 ? ? ? ? 4C 8B 18
+			constexpr std::uintptr_t GetSingleton = 0x0133EC10;	// 1_5_80
+		}
+
+
 		namespace ChestsLooted
 		{
 			// IndirectSig: E8 ? ? ? ? 48 8B C8 48 8D 54 24 51

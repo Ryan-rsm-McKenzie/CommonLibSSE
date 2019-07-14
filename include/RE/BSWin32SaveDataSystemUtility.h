@@ -25,6 +25,9 @@ namespace RE
 		virtual void	Unk_09(void) override;																					// 09 - { return; }
 		virtual void	Unk_0C(void) override;																					// 0C
 		virtual void	Unk_11(void) override;																					// 11 - { return; }
+
+
+		static BSWin32SaveDataSystemUtility* GetSingleton();
 	};
 	STATIC_ASSERT(sizeof(BSWin32SaveDataSystemUtility) == 0x228);
 }

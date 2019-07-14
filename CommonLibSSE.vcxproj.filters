@@ -919,6 +919,9 @@
     <Filter Include="include\RE\Inventory\ArmorRatingVisitorBase">
       <UniqueIdentifier>{74bf67cc-4d6b-4366-a70c-ff797ce8c427}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\BSSystem\BSSaveDataSystemUtility">
+      <UniqueIdentifier>{dfefa24b-0f37-450f-af42-4a5a93f05270}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1451,6 +1454,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\NiMath.cpp">
       <Filter>src\RE\NetImmerse\NiMain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSWin32SaveDataSystemUtility.cpp">
+      <Filter>src\RE\BSSystem\BSSaveDataSystemUtility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
