@@ -1248,24 +1248,6 @@
     <ClCompile Include="src\RE\BSScript\ZeroFunctionArguments.cpp">
       <Filter>src\RE\BSScript\IFunctionArguments</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSScript\BSScriptArray.cpp">
-      <Filter>src\RE\BSScript</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSScript\BSScriptClass.cpp">
-      <Filter>src\RE\BSScript</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSScript\BSScriptObject.cpp">
-      <Filter>src\RE\BSScript</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSScript\BSScriptStack.cpp">
-      <Filter>src\RE\BSScript</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSScript\BSScriptType.cpp">
-      <Filter>src\RE\BSScript</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSScript\BSScriptVariable.cpp">
-      <Filter>src\RE\BSScript</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSScript\ObjectBindPolicy.cpp">
       <Filter>src\RE\BSScript</Filter>
     </ClCompile>
@@ -1422,9 +1404,6 @@
     <ClCompile Include="src\RE\PlayerInputHandler.cpp">
       <Filter>src\RE\BSDevices\PlayerInputHandler</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSScript\IFunction.cpp">
-      <Filter>src\RE\BSScript\IFunction</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp">
       <Filter>src\RE\BSSystem\BSStorage</Filter>
     </ClCompile>
@@ -1457,6 +1436,24 @@
     </ClCompile>
     <ClCompile Include="src\RE\BSWin32SaveDataSystemUtility.cpp">
       <Filter>src\RE\BSSystem\BSSaveDataSystemUtility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\Stack.cpp">
+      <Filter>src\RE\BSScript</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\Array.cpp">
+      <Filter>src\RE\BSScript</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\Class.cpp">
+      <Filter>src\RE\BSScript</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\Object.cpp">
+      <Filter>src\RE\BSScript</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\Type.cpp">
+      <Filter>src\RE\BSScript</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\Variable.cpp">
+      <Filter>src\RE\BSScript</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2924,35 +2921,11 @@
     <ClInclude Include="include\RE\BSScript\LinkerProcessor.h">
       <Filter>include\RE\BSScript\IObjectProcessor</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSScript\BSScriptArrayTypeTraits.h">
-      <Filter>include\RE\BSScript\Traits</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScript\BSScriptObjectTypeTraits.h">
-      <Filter>include\RE\BSScript\Traits</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSScript\CommonTypeTraits.h">
       <Filter>include\RE\BSScript\Traits</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSScript\TypeTraits.h">
       <Filter>include\RE\BSScript\Traits</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScript\BSScriptArray.h">
-      <Filter>include\RE\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScript\BSScriptClass.h">
-      <Filter>include\RE\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScript\BSScriptObject.h">
-      <Filter>include\RE\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScript\BSScriptStack.h">
-      <Filter>include\RE\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScript\BSScriptType.h">
-      <Filter>include\RE\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScript\BSScriptVariable.h">
-      <Filter>include\RE\BSScript</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSScript\ErrorLogger.h">
       <Filter>include\RE\BSScript</Filter>
@@ -3877,6 +3850,36 @@
     </ClInclude>
     <ClInclude Include="include\RE\SkyrimScript\SetMotionTypeFunctor.h">
       <Filter>include\RE\SkyrimScript\DelayFunctor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\Stack.h">
+      <Filter>include\RE\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\Array.h">
+      <Filter>include\RE\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\Class.h">
+      <Filter>include\RE\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\Object.h">
+      <Filter>include\RE\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\Type.h">
+      <Filter>include\RE\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\Variable.h">
+      <Filter>include\RE\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\ArrayTypeTraits.h">
+      <Filter>include\RE\BSScript\Traits</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\ObjectTypeTraits.h">
+      <Filter>include\RE\BSScript\Traits</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\Internal\IFuncCallQuery.h">
+      <Filter>include\RE\BSScript\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\Internal\CodeTasklet.h">
+      <Filter>include\RE\BSScript\Internal</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

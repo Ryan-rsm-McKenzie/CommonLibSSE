@@ -16,7 +16,7 @@ namespace RE
 
 
 			// override (IFunctionArguments)
-			virtual bool Copy(BSScrapArray<BSScriptVariable>& a_dst) override;	// 01
+			virtual bool Copy(BSScrapArray<Variable>& a_dst) override;	// 01
 		};
 		STATIC_ASSERT(sizeof(ZeroFunctionArguments) == 0x8);
 	}

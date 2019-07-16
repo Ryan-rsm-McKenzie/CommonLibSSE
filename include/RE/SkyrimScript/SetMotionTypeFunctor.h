@@ -17,14 +17,14 @@ namespace RE
 		class SetMotionTypeFunctor : public DelayFunctor
 		{
 		public:
-			virtual ~SetMotionTypeFunctor();															// 00
+			virtual ~SetMotionTypeFunctor();											// 00
 
 			// override (DelayFunctor)
-			virtual RE::BSScript::BSScriptVariable&	Run(BSScript::BSScriptVariable& a_result) override;	// 01
-			virtual void							Unk_02(void) override;								// 02 - { return 1; }
-			virtual void							Unk_04(void) override;								// 04
-			virtual void							Unk_05(void) override;								// 05 - { return 8; }
-			virtual void							Unk_06(void) override;								// 06
+			virtual RE::BSScript::Variable&	Run(BSScript::Variable& a_result) override;	// 01
+			virtual void					Unk_02(void) override;						// 02 - { return 1; }
+			virtual void					Unk_04(void) override;						// 04
+			virtual void					Unk_05(void) override;						// 05 - { return 8; }
+			virtual void					Unk_06(void) override;						// 06
 
 
 			// members

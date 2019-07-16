@@ -1,32 +1,32 @@
 #pragma once
 
-#include "RE/BSScript/BSScriptVariable.h"  // BSScript::BSScriptVariable
+#include "RE/BSScript/Variable.h"  // BSScript::Variable
 
 
 namespace RE
 {
 	namespace BSScript
 	{
-		class BSScriptStack;
 		class IFunction;
+		class Stack;
 
 
 		class StackFrame
 		{
 		public:
-			BSScriptVariable* Get(UInt32 a_idx, UInt32 a_offset);
+			Variable* Get(UInt32 a_idx, UInt32 a_chunkIdx);
 
 
-			BSScriptStack*		stack;		// 00
-			StackFrame*			parent;		// 08
-			IFunction*			func;		// 10
-			void*				unk0C;		// 18
-			UInt64				unk10;		// 20
-			BSScriptVariable	baseValue;	// 28
-			UInt32				numArgs;	// 38
-			UInt32				pad3C;		// 3C
-			//BSScriptVariable	args[0];	// 40
+			Stack*		stack;			// 00
+			StackFrame*	parent;			// 08
+			IFunction*	func;			// 10
+			Class*		scriptClass;	// 18
+			UInt64		unk20;			// 20
+			Variable	baseValue;		// 28
+			UInt32		numArgs;		// 38
+			UInt32		unk3C;			// 3C
+			Variable	args[4];		// 40 - minimum space for 4 args is allocated
 		};
-		STATIC_ASSERT(sizeof(StackFrame) == 0x40);
+		STATIC_ASSERT(sizeof(StackFrame) == 0x80);	// frames can be larger
 	}
 }

@@ -2,7 +2,7 @@
 
 #include "skse64/PapyrusNativeFunctions.h"  // NativeFunctionBase, NativeFunction
 
-#include "RE/BSScript/BSScriptType.h"  // BSScript::BSScriptType
+#include "RE/BSScript/Type.h"  // BSScript::Type
 
 
 namespace RE
@@ -41,7 +41,7 @@ namespace RE
 			}
 
 
-			BSScriptType& NativeFunctionBase::GetReturnType(BSScriptType& a_dst) const
+			Type& NativeFunctionBase::GetReturnType(Type& a_dst) const
 			{
 				a_dst.SetTypeID(_returnType);
 				return a_dst;
@@ -54,7 +54,7 @@ namespace RE
 			}
 
 
-			BSScriptType& NativeFunctionBase::GetParam(UInt32 a_idx, BSFixedString& a_nameOut, BSScriptType& a_typeOut) const
+			Type& NativeFunctionBase::GetParam(UInt32 a_idx, BSFixedString& a_nameOut, Type& a_typeOut) const
 			{
 				using func_t = function_type_t<decltype(&NativeFunctionBase::GetParam)>;
 				func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::NativeFunctionBase, Impl_GetParam, func_t*);
@@ -110,7 +110,7 @@ namespace RE
 			}
 
 
-			UInt32 NativeFunctionBase::Invoke(BSScriptStackPtr& a_stack, ErrorLogger* a_logger, Internal::VirtualMachine* a_vm, UInt32 a_arg4)
+			UInt32 NativeFunctionBase::Invoke(BSTSmartPointer<Stack>& a_stack, ErrorLogger* a_logger, Internal::VirtualMachine* a_vm, bool a_arg4)
 			{
 				using func_t = function_type_t<decltype(&NativeFunctionBase::Invoke)>;
 				func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::NativeFunctionBase, Impl_Invoke, func_t*);

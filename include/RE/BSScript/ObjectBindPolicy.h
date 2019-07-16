@@ -8,7 +8,7 @@ namespace RE
 {
 	namespace BSScript
 	{
-		class BSScriptObject;
+		class Object;
 
 
 		class ObjectBindPolicy
@@ -30,7 +30,7 @@ namespace RE
 			virtual void	Unk_0B(void) = 0;	// 0B
 			virtual void	Unk_0C(void) = 0;	// 0C
 
-			void BindObject(BSTSmartPointer<BSScriptObject>& a_objectPtr, VMHandle a_handle);
+			void BindObject(BSTSmartPointer<Object>& a_objectPtr, VMHandle a_handle);
 
 
 			// members

@@ -7,9 +7,9 @@
 #include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
 #include "RE/BSScript/NF_util/NativeFunctionBase.h"  // BSScript::NF_util::NativeFunctionBase
 #include "RE/BSScript/PackUnpack.h"  // GetTypeID, PackValue, UnpackValue
-#include "RE/BSScript/BSScriptStack.h"  // BSScript::BSScriptStack
+#include "RE/BSScript/Stack.h"  // BSScript::Stack
 #include "RE/BSScript/TypeTraits.h"  // BSScript::is_static_base
-#include "RE/BSScript/BSScriptVariable.h"  // BSScript::BSScriptVariable
+#include "RE/BSScript/Variable.h"  // BSScript::Variable
 #include "RE/BSScript/IObjectHandlePolicy.h"  // BSScript::IObjectHandlePolicy
 #include "RE/BSScript/StackFrame.h"  // BSScript::StackFrame
 #include "RE/BSScript/VMArray.h"  // BSScript::VMArray
@@ -65,10 +65,10 @@ namespace RE
 			NativeFunction(const NativeFunction&) = delete;
 			NativeFunction(NativeFunction&&) = delete;
 			NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback);
-			virtual ~NativeFunction() = default;																																// 00
+			virtual ~NativeFunction() = default;																												// 00
 
-			virtual bool HasCallback() const override;																															// 15
-			virtual bool Run(BSScriptVariable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, BSScriptVariable* a_resultValue, StackFrame* a_frame) override;	// 16
+			virtual bool HasCallback() const override;																											// 15
+			virtual bool Run(Variable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, Variable* a_resultValue, StackFrame* a_frame) override;	// 16
 
 		protected:
 			// members
@@ -98,9 +98,9 @@ namespace RE
 
 
 		template <bool IS_LONG, class F, class R, class Base, class... Args>
-		bool NativeFunction<TmpltParams_>::Run(BSScriptVariable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, BSScriptVariable* a_resultValue, StackFrame* a_frame)
+		bool NativeFunction<TmpltParams_>::Run(Variable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, Variable* a_resultValue, StackFrame* a_frame)
 		{
-			auto offset = a_frame->stack->GetOffset(a_frame);
+			auto chunkIdx = a_frame->stack->GetChunkIdx(a_frame);
 
 			base_type base{};
 			if constexpr (std::negation<is_static_base<base_type>>::value)
@@ -112,7 +112,7 @@ namespace RE
 			}
 
 			UInt32 i = sizeof...(Args);
-			std::tuple<Args...> args = Impl::MakeTuple<Args...>(a_frame, offset);
+			std::tuple<Args...> args = Impl::MakeTuple<Args...>(a_frame, chunkIdx);
 			if constexpr (std::is_void<result_type>::value)
 			{
 				if constexpr (IS_LONG)

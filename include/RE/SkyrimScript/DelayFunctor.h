@@ -9,7 +9,7 @@ namespace RE
 {
 	namespace BSScript
 	{
-		class BSScriptVariable;
+		class Variable;
 	}
 
 
@@ -21,15 +21,15 @@ namespace RE
 			inline static const void* RTTI = RTTI_SkyrimScript__DelayFunctor;
 
 
-			virtual ~DelayFunctor();																// 00
+			virtual ~DelayFunctor();												// 00
 
 			// add
-			virtual RE::BSScript::BSScriptVariable&	Run(BSScript::BSScriptVariable& a_result) = 0;	// 01
-			virtual void							Unk_02(void) = 0;								// 02
-			virtual void							Unk_03(void);									// 03 - { return 0; }
-			virtual void							Unk_04(void);									// 04
-			virtual void							Unk_05(void) = 0;								// 05
-			virtual void							Unk_06(void);									// 06
+			virtual RE::BSScript::Variable&	Run(BSScript::Variable& a_result) = 0;	// 01 - probably return by value
+			virtual void					Unk_02(void) = 0;						// 02
+			virtual void					Unk_03(void);							// 03 - { return 0; }
+			virtual void					Unk_04(void);							// 04
+			virtual void					Unk_05(void) = 0;						// 05
+			virtual void					Unk_06(void);							// 06
 
 
 			// members

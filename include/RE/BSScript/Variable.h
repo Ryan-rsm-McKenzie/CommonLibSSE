@@ -5,10 +5,10 @@
 
 #include <type_traits>  // enable_if_t
 
-#include "RE/BSScript/BSScriptType.h"  // BSScriptType
-#include "RE/BSScript/BSScriptArrayTypeTraits.h"  // is_script_array_pointer_no_cvr
-#include "RE/BSScript/BSScriptObjectTypeTraits.h"  // is_script_object_pointer_no_cvr
+#include "RE/BSScript/ArrayTypeTraits.h"  // is_script_array_pointer_no_cvr
+#include "RE/BSScript/ObjectTypeTraits.h"  // is_script_object_pointer_no_cvr
 #include "RE/BSScript/CommonTypeTraits.h"  // is_sint32_no_cvr, is_uint32_no_cvr, is_float_no_cvr, is_bool_no_cvr, is_string_no_cvr
+#include "RE/BSScript/Type.h"  // BSScript::Type
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 
@@ -17,11 +17,11 @@ namespace RE
 {
 	namespace BSScript
 	{
-		class BSScriptArray;
-		class BSScriptObject;
+		class Array;
+		class Object;
 
 
-		class BSScriptVariable : public BSScriptType
+		class Variable : public Type
 		{
 		public:
 			union Data
@@ -31,40 +31,40 @@ namespace RE
 
 
 				// members
-				SInt32							i;
-				UInt32							u;
-				float							f;
-				bool							b;
-				void*							p;
-				BSTSmartPointer<BSScriptArray>	arr;
-				BSTSmartPointer<BSScriptObject>	obj;
-				BSFixedString					str;
+				SInt32					i;
+				UInt32					u;
+				float					f;
+				bool					b;
+				void*					p;
+				BSTSmartPointer<Array>	arr;
+				BSTSmartPointer<Object>	obj;
+				BSFixedString			str;
 			};
 			STATIC_ASSERT(sizeof(Data) == 0x8);
 
 
-			BSScriptVariable();
-			BSScriptVariable(const BSScriptType& a_type);
-			BSScriptVariable(const BSScriptVariable& a_rhs);
-			BSScriptVariable(BSScriptVariable&& a_rhs);
-			~BSScriptVariable();
+			Variable();
+			Variable(const Type& a_type);
+			Variable(const Variable& a_rhs);
+			Variable(Variable&& a_rhs);
+			~Variable();
 
-			BSScriptVariable&	operator=(const BSScriptVariable& a_rhs);
-			BSScriptVariable&	operator=(BSScriptVariable&& a_rhs);
+			Variable&	operator=(const Variable& a_rhs);
+			Variable&	operator=(Variable&& a_rhs);
 
-			bool	operator==(const BSScriptVariable& a_rhs) const;
-			bool	operator!=(const BSScriptVariable& a_rhs) const;
-			bool	operator<(const BSScriptVariable& a_rhs) const;
-			bool	operator>(const BSScriptVariable& a_rhs) const;
-			bool	operator<=(const BSScriptVariable& a_rhs) const;
-			bool	operator>=(const BSScriptVariable& a_rhs) const;
+			bool	operator==(const Variable& a_rhs) const;
+			bool	operator!=(const Variable& a_rhs) const;
+			bool	operator<(const Variable& a_rhs) const;
+			bool	operator>(const Variable& a_rhs) const;
+			bool	operator<=(const Variable& a_rhs) const;
+			bool	operator>=(const Variable& a_rhs) const;
 
 			SInt32			GetSInt() const;
 			UInt32			GetUInt() const;
 			float			GetFloat() const;
 			bool			GetBool() const;
-			BSScriptArray*	GetArray();
-			BSScriptObject*	GetObject();
+			Array*			GetArray();
+			Object*			GetObject();
 			BSFixedString	GetString() const;
 
 			void			SetNone();
@@ -72,9 +72,9 @@ namespace RE
 			void			SetUInt(UInt32 a_val);
 			void			SetFloat(float a_val);
 			void			SetBool(bool a_val);
-			void			SetArray(BSScriptArray* a_val);
-			void			SetObject(BSScriptObject* a_val);
-			void			SetObject(BSScriptObject* a_val, VMTypeID a_typeID);
+			void			SetArray(Array* a_val);
+			void			SetObject(Object* a_val);
+			void			SetObject(Object* a_val, VMTypeID a_typeID);
 			void			SetString(BSFixedString a_val);
 
 			template <class T, typename std::enable_if_t<is_sint32_compat<T>::value, int> = 0>					inline void SetData(T a_val) { SetSInt(a_val); }
@@ -96,9 +96,9 @@ namespace RE
 
 		private:
 			void	ChangeType(VMTypeID a_type);
-			void	Assign(const BSScriptVariable& a_rhs);
+			void	Assign(const Variable& a_rhs);
 			void	Destroy();
 		};
-		STATIC_ASSERT(sizeof(BSScriptVariable) == 0x10);
+		STATIC_ASSERT(sizeof(Variable) == 0x10);
 	}
 }

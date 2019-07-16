@@ -1,4 +1,4 @@
-#include "RE/BSScript/BSScriptVariable.h"
+#include "RE/BSScript/Variable.h"
 
 #include <cassert>  // assert
 
@@ -6,9 +6,9 @@
 
 #include "skse64/PapyrusValue.h"  // VMValue
 
-#include "RE/BSScript/BSScriptArray.h"  // BSScript::BSScriptArray
-#include "RE/BSScript/BSScriptClass.h"  // BSScript::BSScriptClass
-#include "RE/BSScript/BSScriptObject.h"  // BSScript::BSScriptObject
+#include "RE/BSScript/Array.h"  // BSScript::Array
+#include "RE/BSScript/Class.h"  // BSScript::Class
+#include "RE/BSScript/Object.h"  // BSScript::Object
 #include "RE/BSScript/PackUnpack.h"  // BSScript::BindID
 
 
@@ -16,37 +16,37 @@ namespace RE
 {
 	namespace BSScript
 	{
-		BSScriptVariable::Data::Data(void* a_val) :
+		Variable::Data::Data(void* a_val) :
 			p(a_val)
 		{}
 
 
-		BSScriptVariable::Data::~Data()
+		Variable::Data::~Data()
 		{}
 
 
-		BSScriptVariable::BSScriptVariable() :
-			BSScriptType(VMTypeID::kNone),
+		Variable::Variable() :
+			Type(VMTypeID::kNone),
 			data()
 		{}
 
 
-		BSScriptVariable::BSScriptVariable(const BSScriptType& a_type) :
-			BSScriptType(a_type),
+		Variable::Variable(const Type& a_type) :
+			Type(a_type),
 			data()
 		{}
 
 
-		BSScriptVariable::BSScriptVariable(const BSScriptVariable& a_rhs) :
-			BSScriptType(),
+		Variable::Variable(const Variable& a_rhs) :
+			Type(),
 			data()
 		{
 			Assign(a_rhs);
 		}
 
 
-		BSScriptVariable::BSScriptVariable(BSScriptVariable&& a_rhs) :
-			BSScriptType(std::move(a_rhs.type)),
+		Variable::Variable(Variable&& a_rhs) :
+			Type(std::move(a_rhs.type)),
 			data(std::move(a_rhs.data.p))
 		{
 			a_rhs.type = VMTypeID::kNone;
@@ -54,22 +54,30 @@ namespace RE
 		}
 
 
-		BSScriptVariable::~BSScriptVariable()
+		Variable::~Variable()
 		{
 			Destroy();
 		}
 
 
-		BSScriptVariable& BSScriptVariable::operator=(const BSScriptVariable& a_rhs)
+		Variable& Variable::operator=(const Variable& a_rhs)
 		{
+			if (this == &a_rhs) {
+				return *this;
+			}
+
 			Destroy();
 			Assign(a_rhs);
 			return *this;
 		}
 
 
-		BSScriptVariable& BSScriptVariable::operator=(BSScriptVariable&& a_rhs)
+		Variable& Variable::operator=(Variable&& a_rhs)
 		{
+			if (this == &a_rhs) {
+				return *this;
+			}
+
 			Destroy();
 
 			type = std::move(a_rhs.type);
@@ -82,7 +90,7 @@ namespace RE
 		}
 
 
-		bool BSScriptVariable::operator==(const BSScriptVariable& a_rhs) const
+		bool Variable::operator==(const Variable& a_rhs) const
 		{
 			if (type != a_rhs.type) {
 				return false;
@@ -114,13 +122,13 @@ namespace RE
 		}
 
 
-		bool BSScriptVariable::operator!=(const BSScriptVariable& a_rhs) const
+		bool Variable::operator!=(const Variable& a_rhs) const
 		{
 			return !operator==(a_rhs);
 		}
 
 
-		bool BSScriptVariable::operator<(const BSScriptVariable& a_rhs) const
+		bool Variable::operator<(const Variable& a_rhs) const
 		{
 			if (type != a_rhs.type) {
 				return type < a_rhs.type;
@@ -152,136 +160,136 @@ namespace RE
 		}
 
 
-		bool BSScriptVariable::operator>(const BSScriptVariable& a_rhs) const
+		bool Variable::operator>(const Variable& a_rhs) const
 		{
 			return a_rhs < *this;
 		}
 
 
-		bool BSScriptVariable::operator<=(const BSScriptVariable& a_rhs) const
+		bool Variable::operator<=(const Variable& a_rhs) const
 		{
 			return !(a_rhs < *this);
 		}
 
 
-		bool BSScriptVariable::operator>=(const BSScriptVariable& a_rhs) const
+		bool Variable::operator>=(const Variable& a_rhs) const
 		{
 			return !(*this < a_rhs);
 		}
 
 
-		SInt32 BSScriptVariable::GetSInt() const
+		SInt32 Variable::GetSInt() const
 		{
 			assert(IsInt());
 			return data.i;
 		}
 
 
-		UInt32 BSScriptVariable::GetUInt() const
+		UInt32 Variable::GetUInt() const
 		{
 			assert(IsInt());
 			return data.u;
 		}
 
 
-		float BSScriptVariable::GetFloat() const
+		float Variable::GetFloat() const
 		{
 			assert(IsFloat());
 			return data.f;
 		}
 
 
-		bool BSScriptVariable::GetBool() const
+		bool Variable::GetBool() const
 		{
 			assert(IsBool());
 			return data.b;
 		}
 
 
-		BSScriptArray* BSScriptVariable::GetArray()
+		Array* Variable::GetArray()
 		{
 			assert(IsArray());
 			return data.arr.get();
 		}
 
 
-		BSScriptObject* BSScriptVariable::GetObject()
+		Object* Variable::GetObject()
 		{
 			assert(IsObject());
 			return data.obj.get();
 		}
 
 
-		BSFixedString BSScriptVariable::GetString() const
+		BSFixedString Variable::GetString() const
 		{
 			assert(IsString());
 			return data.str;
 		}
 
 
-		void BSScriptVariable::SetNone()
+		void Variable::SetNone()
 		{
 			ChangeType(VMTypeID::kNone);
 		}
 
 
-		void BSScriptVariable::SetSInt(SInt32 a_val)
+		void Variable::SetSInt(SInt32 a_val)
 		{
 			ChangeType(VMTypeID::kInt);
 			data.i = a_val;
 		}
 
 
-		void BSScriptVariable::SetUInt(UInt32 a_val)
+		void Variable::SetUInt(UInt32 a_val)
 		{
 			ChangeType(VMTypeID::kInt);
 			data.u = a_val;
 		}
 
 
-		void BSScriptVariable::SetFloat(float a_val)
+		void Variable::SetFloat(float a_val)
 		{
 			ChangeType(VMTypeID::kFloat);
 			data.f = a_val;
 		}
 
 
-		void BSScriptVariable::SetBool(bool a_val)
+		void Variable::SetBool(bool a_val)
 		{
 			ChangeType(VMTypeID::kBool);
 			data.b = a_val;
 		}
 
 
-		void BSScriptVariable::SetArray(BSScriptArray* a_val)
+		void Variable::SetArray(Array* a_val)
 		{
 			ChangeType(a_val->type_id());
 			data.arr.reset(a_val);
 		}
 
 
-		void BSScriptVariable::SetObject(BSScriptObject* a_val)
+		void Variable::SetObject(Object* a_val)
 		{
 			ChangeType(a_val->GetClass()->GetTypeID());
 			data.obj.reset(a_val);
 		}
 
 
-		void BSScriptVariable::SetObject(BSScriptObject* a_val, VMTypeID a_typeID)
+		void Variable::SetObject(Object* a_val, VMTypeID a_typeID)
 		{
 			ChangeType(a_typeID);
 			data.obj.reset(a_val);
 		}
 
 
-		void BSScriptVariable::SetString(BSFixedString a_val)
+		void Variable::SetString(BSFixedString a_val)
 		{
 			ChangeType(VMTypeID::kString);
 			data.str = std::move(a_val);
 		}
 
 
-		void BSScriptVariable::ChangeType(VMTypeID a_type)
+		void Variable::ChangeType(VMTypeID a_type)
 		{
 			Destroy();
 			type = a_type;
@@ -289,7 +297,7 @@ namespace RE
 		}
 
 
-		void BSScriptVariable::Assign(const BSScriptVariable& a_rhs)
+		void Variable::Assign(const Variable& a_rhs)
 		{
 			switch (a_rhs.type) {
 			case VMTypeID::kNone:
@@ -305,7 +313,7 @@ namespace RE
 				break;
 			default:
 				{
-					using func_t = function_type_t<decltype(&BSScriptVariable::Assign)>;
+					using func_t = function_type_t<decltype(&Variable::Assign)>;
 					func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::VMValue, Set, func_t*);
 					func(this, a_rhs);
 				}
@@ -314,7 +322,7 @@ namespace RE
 		}
 
 
-		void BSScriptVariable::Destroy()
+		void Variable::Destroy()
 		{
 			switch (type) {
 			case VMTypeID::kNone:
@@ -327,7 +335,7 @@ namespace RE
 				break;
 			default:
 				{
-					using func_t = function_type_t<decltype(&BSScriptVariable::Destroy)>;
+					using func_t = function_type_t<decltype(&Variable::Destroy)>;
 					func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::VMValue, Destroy, func_t*);
 					func(this);
 				}

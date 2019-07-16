@@ -2,10 +2,10 @@
 
 #include <type_traits>
 
-#include "RE/BSScript/BSScriptArrayTypeTraits.h"
-#include "RE/BSScript/BSScriptObjectTypeTraits.h"
+#include "RE/BSScript/ArrayTypeTraits.h"
+#include "RE/BSScript/ObjectTypeTraits.h"
 #include "RE/BSScript/CommonTypeTraits.h"
-#include "RE/BSScript/VMArray.h"  // VMArray
+#include "RE/BSScript/VMArray.h"  // BSScript::VMArray
 
 
 namespace RE

@@ -23,7 +23,7 @@ namespace RE
 {
 	namespace BSScript
 	{
-		class BSScriptArray;
+		class Array;
 		class ErrorLogger;
 		class ISavePatcherInterface;
 		class ObjectBindPolicy;
@@ -54,9 +54,9 @@ namespace RE
 				virtual void							Unk_06(void) override;																																														// 06
 				virtual bool							OnChangeVMState() override;																																													// 07
 				virtual void							RegisterForm(UInt32 a_formType, const char* a_papyrusClassName) override;																																	// 08
-				virtual bool							GetScriptClassByName(const BSFixedString& a_className, BSTSmartPointer<BSScriptClass>& a_outClassPtr) override;																								// 09
-				virtual bool							GetScriptClassByTypeID(UInt32 a_formType, BSTSmartPointer<BSScriptClass>& a_outClass) override;																												// 0A
-				virtual bool							RegisterScriptClass(const BSFixedString& a_className, BSTSmartPointer<BSScriptClass>& a_classPtr) override;																									// 0B
+				virtual bool							GetScriptClassByName(const BSFixedString& a_className, BSTSmartPointer<Class>& a_outClassPtr) override;																										// 09
+				virtual bool							GetScriptClassByTypeID(UInt32 a_formType, BSTSmartPointer<Class>& a_outClass) override;																														// 0A
+				virtual bool							RegisterScriptClass(const BSFixedString& a_className, BSTSmartPointer<Class>& a_classPtr) override;																											// 0B
 				virtual void							Unk_0C(void) override;																																														// 0C
 				virtual bool							GetFormTypeID(const BSFixedString& a_className, UInt32& a_formType) override;																																// 0D
 				virtual void							Unk_0E(void) override;																																														// 0E
@@ -65,30 +65,30 @@ namespace RE
 				virtual void							Unk_11(void) override;																																														// 11
 				virtual void							Unk_12(void) override;																																														// 12
 				virtual void							Unk_13(void) override;																																														// 13
-				virtual bool							CreateScriptObjectWithProperty(const BSFixedString& a_className, void* a_property, BSTSmartPointer<BSScriptObject>& a_objPtr) override;																		// 14
-				virtual bool							CreateScriptObject(const BSFixedString& a_className, BSTSmartPointer<BSScriptObject>& a_result) override;																									// 15
-				virtual bool							CreateScriptArray(const BSScriptType& a_typeID, UInt32 a_size, BSTSmartPointer<BSScriptArray>& a_arrayPtr) override;																						// 16
-				virtual bool							CreateScriptArray2(VMTypeID a_typeID, const BSFixedString& a_className, UInt32 a_size, BSTSmartPointer<BSScriptArray>& a_arrayPtr) override;																// 17
+				virtual bool							CreateScriptObjectWithProperty(const BSFixedString& a_className, void* a_property, BSTSmartPointer<Object>& a_objPtr) override;																				// 14
+				virtual bool							CreateScriptObject(const BSFixedString& a_className, BSTSmartPointer<Object>& a_result) override;																											// 15
+				virtual bool							CreateScriptArray(const Type& a_typeID, UInt32 a_size, BSTSmartPointer<Array>& a_arrayPtr) override;																										// 16
+				virtual bool							CreateScriptArray2(VMTypeID a_typeID, const BSFixedString& a_className, UInt32 a_size, BSTSmartPointer<Array>& a_arrayPtr) override;																		// 17
 				virtual void							RegisterFunction(IFunction* a_fn) override;																																									// 18
 				virtual void							SetFunctionFlagsEx(const char* a_className, UInt32 a_arg2, const char* a_fnName, FunctionFlag a_flags) override;																							// 19
 				virtual void							SetFunctionFlags(const char* a_className, const char* a_fnName, FunctionFlag a_flags) override;																												// 1A - { SetFunctionFlagsEx(a_className, 0, a_fnName, a_flags); }
 				virtual void							VisitScripts(VMHandle a_handle, IForEachScriptObjectFunctor* a_functor) override;																															// 1B
-				virtual bool							ResolveScriptObject(VMHandle a_handle, const char* a_className, BSTSmartPointer<BSScriptObject>& a_result) override;																						// 1C
+				virtual bool							ResolveScriptObject(VMHandle a_handle, const char* a_className, BSTSmartPointer<Object>& a_result) override;																								// 1C
 				virtual void							Unk_1D(void) override;																																														// 1D
 				virtual void							Unk_1E(void) override;																																														// 1E
-				virtual bool							CastScriptObject(const BSTSmartPointer<BSScriptObject>& a_fromObjPtr, const BSTSmartPointer<BSScriptClass>& a_toClassPtr, BSTSmartPointer<BSScriptObject>& a_toObjPtr) override;							// 1F
-				virtual bool							SetObjectProperty(BSTSmartPointer<BSScriptObject>& a_obj, const char* a_propertyName, BSScriptVariable& a_setVal) override;																					// 20
-				virtual bool							GetObjectProperty(BSTSmartPointer<BSScriptObject>& a_obj, const char* a_propertyName, BSScriptVariable& a_getVal) override;																					// 21
-				virtual bool							ExtractValue(const BSTSmartPointer<BSScriptObject>& a_objPtr, UInt32 a_index, BSScriptVariable& a_out) override;																							// 22
-				virtual bool							ExtractValueFromHandle(VMHandle a_handle, const BSFixedString& a_className, SInt32 a_variableIndex, BSScriptVariable& a_out) override;																		// 23
+				virtual bool							CastScriptObject(const BSTSmartPointer<Object>& a_fromObjPtr, const BSTSmartPointer<Class>& a_toClassPtr, BSTSmartPointer<Object>& a_toObjPtr) override;													// 1F
+				virtual bool							SetObjectProperty(BSTSmartPointer<Object>& a_obj, const char* a_propertyName, Variable& a_setVal) override;																									// 20
+				virtual bool							GetObjectProperty(BSTSmartPointer<Object>& a_obj, const char* a_propertyName, Variable& a_getVal) override;																									// 21
+				virtual bool							ExtractValue(const BSTSmartPointer<Object>& a_objPtr, UInt32 a_index, Variable& a_out) override;																											// 22
+				virtual bool							ExtractValueFromHandle(VMHandle a_handle, const BSFixedString& a_className, SInt32 a_variableIndex, Variable& a_out) override;																				// 23
 				virtual void							QueueEvent(VMHandle a_handle, const BSFixedString& a_eventName, IFunctionArguments* a_args) override;																										// 24
 				virtual bool							QueueEventAll(const BSFixedString& a_eventName, IFunctionArguments* a_args) override;																														// 25
 				virtual bool							CallStaticFunction(const BSFixedString& a_className, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) override;									// 26
-				virtual bool							CallMemberFunction(BSTSmartPointer<BSScriptObject>& a_obj, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) override;							// 27
+				virtual bool							CallMemberFunction(BSTSmartPointer<Object>& a_obj, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) override;									// 27
 				virtual bool							CallMemberFunctionFromHandle(VMHandle a_handle, const BSFixedString& a_className, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) override;	// 28
 				virtual void							Unk_29(void) override;																																														// 29
 				virtual bool							IsWaitingStack(UInt32 a_stackID) override;																																									// 2A
-				virtual void							SetLatentReturn(UInt32 a_stackID, const BSScriptVariable& a_val) override;																																	// 2B
+				virtual void							SetLatentReturn(UInt32 a_stackID, const Variable& a_val) override;																																			// 2B
 				virtual ErrorLogger*					GetLogger() override;																																														// 2C - { return logger; }
 				virtual SkyrimScript::HandlePolicy*		GetHandlePolicySK() override;																																												// 2D - { return objectHandlePolicy; }
 				virtual IObjectHandlePolicy*			GetHandlePolicyBS() override;																																												// 2E - { return objectHandlePolicy; }
@@ -101,15 +101,15 @@ namespace RE
 				virtual void							RemoveStatsEventSink(BSTEventSink<StatsEvent>* a_sink) override;																																			// 35
 
 				// override (IVMObjectBindInterface)
-				virtual VMHandle						GetHandle(const BSTSmartPointer<BSScriptObject>& a_objPtr) override;																																		// 01
-				virtual void							BindObject(BSTSmartPointer<BSScriptObject>& a_objPtr, VMHandle a_handle, bool a_counditional) override;																										// 03
-				virtual void							RegisterObject(BSTSmartPointer<BSScriptObject>& a_objPtr, VMHandle a_handle, bool a_counditional) override;																									// 04
-				virtual bool							CreateObject(const BSFixedString& a_className, UInt32 a_numProperties, BSTSmartPointer<BSScriptObject>& a_objPtr) override;																					// 09
-				virtual bool							SetProperty(BSTSmartPointer<BSScriptObject>& a_objPtr, void* a_property, bool a_arg3) override;																												// 0A
+				virtual VMHandle						GetHandle(const BSTSmartPointer<Object>& a_objPtr) override;																																				// 01
+				virtual void							BindObject(BSTSmartPointer<Object>& a_objPtr, VMHandle a_handle, bool a_counditional) override;																												// 03
+				virtual void							RegisterObject(BSTSmartPointer<Object>& a_objPtr, VMHandle a_handle, bool a_counditional) override;																											// 04
+				virtual bool							CreateObject(const BSFixedString& a_className, UInt32 a_numProperties, BSTSmartPointer<Object>& a_objPtr) override;																							// 09
+				virtual bool							SetProperty(BSTSmartPointer<Object>& a_objPtr, void* a_property, bool a_arg3) override;																														// 0A
 
 				static VirtualMachine*					GetSingleton();
 
-				bool									AllocateArray(const VMTypeID& a_typeID, std::size_t a_size, BSTSmartPointer<BSScriptArray>& a_array);
+				bool									AllocateArray(const VMTypeID& a_typeID, std::size_t a_size, BSTSmartPointer<Array>& a_array);
 				template <class F> void					RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, FunctionFlag a_flags = FunctionFlag::kNone);
 
 

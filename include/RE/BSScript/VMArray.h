@@ -4,9 +4,9 @@
 #include <iterator>  // random_access_iterator_tag
 #include <type_traits>  // enable_if_t, is_integral
 
-#include "RE/BSScript/BSScriptArray.h"  // BSScript::BSScriptArray
-#include "RE/BSScript/BSScriptVariable.h"  // BSScript::BSScriptVariable
 #include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
+#include "RE/BSScript/Array.h"  // BSScript::Array
+#include "RE/BSScript/Variable.h"  // BSScript::Variable
 #include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 
 
@@ -19,8 +19,8 @@ namespace RE
 		{
 		public:
 			using value_type = T;
-			using size_type = typename BSScriptArray::size_type;
-			using difference_type = typename BSScriptArray::difference_type;
+			using size_type = typename Array::size_type;
+			using difference_type = typename Array::difference_type;
 			using pointer = value_type*;
 			using const_pointer = const value_type*;
 
@@ -43,9 +43,9 @@ namespace RE
 			protected:
 				friend class VMArray<T>;
 
-				constexpr const_reference(BSScriptVariable& a_val);
+				constexpr const_reference(Variable& a_val);
 
-				BSScriptVariable& _val;
+				Variable& _val;
 			};
 
 
@@ -64,7 +64,7 @@ namespace RE
 			protected:
 				friend class VMArray<T>;
 
-				constexpr reference(BSScriptVariable& a_val);
+				constexpr reference(Variable& a_val);
 			};
 
 
@@ -82,7 +82,7 @@ namespace RE
 				constexpr iterator_base();
 				constexpr iterator_base(const iterator_base& a_rhs);
 				constexpr iterator_base(iterator_base&& a_rhs);
-				constexpr iterator_base(BSScriptArray::iterator_base<U> a_iter);
+				constexpr iterator_base(Array::iterator_base<U> a_iter);
 
 				constexpr iterator_base& operator=(const iterator_base& a_rhs);
 				constexpr iterator_base& operator=(iterator_base&& a_rhs);
@@ -113,12 +113,12 @@ namespace RE
 				[[nodiscard]] constexpr bool operator>=(const iterator_base& a_rhs) const;
 
 			protected:
-				BSScriptArray::iterator_base<U> _iter;
+				Array::iterator_base<U> _iter;
 			};
 
 
-			using iterator = iterator_base<BSScriptVariable>;
-			using const_iterator = iterator_base<const BSScriptVariable>;
+			using iterator = iterator_base<Variable>;
+			using const_iterator = iterator_base<const Variable>;
 			using reverse_iterator = std::reverse_iterator<iterator>;
 			using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
@@ -126,17 +126,17 @@ namespace RE
 			VMArray();
 			VMArray(const VMArray& a_rhs);
 			VMArray(VMArray&& a_rhs);
-			VMArray(BSScriptVariable* a_var);
-			VMArray(BSScriptArray* a_var);
-			VMArray(const BSTSmartPointer<BSScriptArray>& a_var);
-			VMArray(BSTSmartPointer<BSScriptArray>&& a_var);
+			VMArray(Variable* a_var);
+			VMArray(Array* a_var);
+			VMArray(const BSTSmartPointer<Array>& a_var);
+			VMArray(BSTSmartPointer<Array>&& a_var);
 
 			VMArray& operator=(const VMArray& a_rhs);
 			VMArray& operator=(VMArray&& a_rhs);
-			VMArray& operator=(BSScriptVariable* a_var);
-			VMArray& operator=(BSScriptArray* a_var);
-			VMArray& operator=(const BSTSmartPointer<BSScriptArray>& a_var);
-			VMArray& operator=(BSTSmartPointer<BSScriptArray>&& a_var);
+			VMArray& operator=(Variable* a_var);
+			VMArray& operator=(Array* a_var);
+			VMArray& operator=(const BSTSmartPointer<Array>& a_var);
+			VMArray& operator=(BSTSmartPointer<Array>&& a_var);
 
 			[[nodiscard]] constexpr reference at(size_type a_pos);
 			[[nodiscard]] constexpr const_reference at(size_type a_pos) const;
@@ -150,8 +150,8 @@ namespace RE
 			[[nodiscard]] constexpr reference back();
 			[[nodiscard]] constexpr const_reference back() const;
 
-			[[nodiscard]] constexpr BSScriptArray* data() noexcept;
-			[[nodiscard]] constexpr const BSScriptArray* data() const noexcept;
+			[[nodiscard]] constexpr Array* data() noexcept;
+			[[nodiscard]] constexpr const Array* data() const noexcept;
 
 			[[nodiscard]] constexpr iterator begin() noexcept;
 			[[nodiscard]] constexpr const_iterator begin() const noexcept;
@@ -178,11 +178,11 @@ namespace RE
 			void resize(size_type a_count);
 
 		protected:
-			[[nodiscard]] BSTSmartPointer<BSScriptArray> alloc(size_type a_count);
+			[[nodiscard]] BSTSmartPointer<Array> alloc(size_type a_count);
 
 			// members
-			BSTSmartPointer<BSScriptArray> _data;
-			BSScriptVariable* _proxy;
+			BSTSmartPointer<Array> _data;
+			Variable* _proxy;
 		};
 
 
@@ -241,7 +241,7 @@ namespace RE
 
 
 		template <class T>
-		constexpr VMArray<T>::const_reference::const_reference(BSScriptVariable& a_val) :
+		constexpr VMArray<T>::const_reference::const_reference(Variable& a_val) :
 			_val(a_val)
 		{}
 
@@ -296,7 +296,7 @@ namespace RE
 
 
 		template <class T>
-		constexpr VMArray<T>::reference::reference(BSScriptVariable& a_val) :
+		constexpr VMArray<T>::reference::reference(Variable& a_val) :
 			const_reference(a_val)
 		{}
 
@@ -324,7 +324,7 @@ namespace RE
 
 		template <class T>
 		template <class U>
-		constexpr VMArray<T>::iterator_base<U>::iterator_base(BSScriptArray::iterator_base<U> a_iter) :
+		constexpr VMArray<T>::iterator_base<U>::iterator_base(Array::iterator_base<U> a_iter) :
 			_iter(a_iter)
 		{}
 
@@ -539,28 +539,28 @@ namespace RE
 
 
 		template <class T>
-		VMArray<T>::VMArray(BSScriptVariable* a_var) :
+		VMArray<T>::VMArray(Variable* a_var) :
 			_data(a_var->GetArray()),
 			_proxy(a_var)
 		{}
 
 
 		template <class T>
-		VMArray<T>::VMArray(BSScriptArray* a_var) :
+		VMArray<T>::VMArray(Array* a_var) :
 			_data(a_var),
 			_proxy(0)
 		{}
 
 
 		template <class T>
-		VMArray<T>::VMArray(const BSTSmartPointer<BSScriptArray>& a_var) :
+		VMArray<T>::VMArray(const BSTSmartPointer<Array>& a_var) :
 			_data(a_var),
 			_proxy(0)
 		{}
 
 
 		template <class T>
-		VMArray<T>::VMArray(BSTSmartPointer<BSScriptArray>&& a_var) :
+		VMArray<T>::VMArray(BSTSmartPointer<Array>&& a_var) :
 			_data(std::move(a_var)),
 			_proxy(0)
 		{}
@@ -570,6 +570,10 @@ namespace RE
 		auto VMArray<T>::operator=(const VMArray& a_rhs)
 			-> VMArray&
 		{
+			if (this == &a_rhs) {
+				return *this;
+			}
+
 			if (!a_rhs._data) {
 				_data = nullptr;
 				if (_proxy) {
@@ -599,6 +603,10 @@ namespace RE
 		auto VMArray<T>::operator=(VMArray&& a_rhs)
 			-> VMArray&
 		{
+			if (this == &a_rhs) {
+				return *this;
+			}
+
 			_data = std::move(a_rhs._data);
 			if (_proxy) {
 				_proxy->SetData(_data.get());
@@ -608,7 +616,7 @@ namespace RE
 
 
 		template <class T>
-		auto VMArray<T>::operator=(BSScriptVariable* a_var)
+		auto VMArray<T>::operator=(Variable* a_var)
 			-> VMArray&
 		{
 			_data.reset(a_var->GetArray());
@@ -618,7 +626,7 @@ namespace RE
 
 
 		template <class T>
-		auto VMArray<T>::operator=(BSScriptArray* a_var)
+		auto VMArray<T>::operator=(Array* a_var)
 			-> VMArray&
 		{
 			_data.reset(a_var);
@@ -630,7 +638,7 @@ namespace RE
 
 
 		template <class T>
-		auto VMArray<T>::operator=(const BSTSmartPointer<BSScriptArray>& a_var)
+		auto VMArray<T>::operator=(const BSTSmartPointer<Array>& a_var)
 			-> VMArray&
 		{
 			_data = a_var;
@@ -642,7 +650,7 @@ namespace RE
 
 
 		template <class T>
-		auto VMArray<T>::operator=(BSTSmartPointer<BSScriptArray>&& a_var)
+		auto VMArray<T>::operator=(BSTSmartPointer<Array>&& a_var)
 			-> VMArray&
 		{
 			_data = std::move(a_var);
@@ -722,14 +730,14 @@ namespace RE
 
 
 		template <class T>
-		[[nodiscard]] constexpr BSScriptArray* VMArray<T>::data() noexcept
+		[[nodiscard]] constexpr Array* VMArray<T>::data() noexcept
 		{
 			return _data.get();
 		}
 
 
 		template <class T>
-		[[nodiscard]] constexpr const BSScriptArray* VMArray<T>::data() const noexcept
+		[[nodiscard]] constexpr const Array* VMArray<T>::data() const noexcept
 		{
 			return _data.get();
 		}
@@ -876,7 +884,7 @@ namespace RE
 
 
 		template <class T>
-		[[nodiscard]] BSTSmartPointer<BSScriptArray> VMArray<T>::alloc(size_type a_count)
+		[[nodiscard]] BSTSmartPointer<Array> VMArray<T>::alloc(size_type a_count)
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			BSTSmartPointer<BSScriptArray> arrPtr;

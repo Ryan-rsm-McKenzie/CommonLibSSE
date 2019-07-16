@@ -1,11 +1,11 @@
 #include "RE/BSScript/PackUnpack.h"
 
 #include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
-#include "RE/BSScript/BSScriptClass.h"  // BSScript::BSScriptClass
-#include "RE/BSScript/ObjectBindPolicy.h"  // BSScript::ObjectBindPolicy
-#include "RE/BSScript/BSScriptObject.h"  // BSScript::BSScriptObject
-#include "RE/BSScript/BSScriptVariable.h"  // BSScript::BSScriptVariable
+#include "RE/BSScript/Class.h"  // BSScript::Class
 #include "RE/BSScript/IObjectHandlePolicy.h"  // BSScript::IObjectHandlePolicy
+#include "RE/BSScript/Object.h"  // BSScript::Object
+#include "RE/BSScript/ObjectBindPolicy.h"  // BSScript::ObjectBindPolicy
+#include "RE/BSScript/Variable.h"  // BSScript::Variable
 
 
 namespace RE
@@ -15,7 +15,7 @@ namespace RE
 		VMTypeID GetTypeIDFromFormType(UInt32 a_formType)
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
-			BSTSmartPointer<BSScriptClass> classPtr;
+			BSTSmartPointer<Class> classPtr;
 			if (vm->GetScriptClassByTypeID(a_formType, classPtr)) {
 				return classPtr->GetTypeID();
 			} else {
@@ -25,11 +25,11 @@ namespace RE
 		}
 
 
-		void BindID(BSTSmartPointer<BSScriptObject>& a_objectPtr, const TESForm* a_srcData, UInt32 a_formType)
+		void BindID(BSTSmartPointer<Object>& a_objectPtr, const TESForm* a_srcData, UInt32 a_formType)
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			UInt32 id = 0;
-			BSTSmartPointer<BSScriptClass> classPtr(a_objectPtr->GetClass());
+			BSTSmartPointer<Class> classPtr(a_objectPtr->GetClass());
 			if (vm->GetFormTypeID(classPtr->GetName(), id)) {
 				auto handlePolicy = vm->GetHandlePolicyBS();
 				VMHandle handle = handlePolicy->Create(a_formType, a_srcData);
@@ -41,7 +41,7 @@ namespace RE
 		}
 
 
-		void PackHandle(BSScriptVariable* a_dst, const TESForm* a_src, UInt32 a_formType)
+		void PackHandle(Variable* a_dst, const TESForm* a_src, UInt32 a_formType)
 		{
 			a_dst->SetNone();
 
@@ -50,7 +50,7 @@ namespace RE
 			}
 
 			auto vm = Internal::VirtualMachine::GetSingleton();
-			BSTSmartPointer<BSScriptClass> classPtr;
+			BSTSmartPointer<Class> classPtr;
 			vm->GetScriptClassByTypeID(a_formType, classPtr);
 			if (!classPtr) {
 				return;
@@ -59,7 +59,7 @@ namespace RE
 			auto handlePolicy = vm->GetHandlePolicyBS();
 			VMHandle handle = handlePolicy->Create(a_formType, a_src);
 
-			BSTSmartPointer<BSScriptObject> objectPtr;
+			BSTSmartPointer<Object> objectPtr;
 			if (!vm->ResolveScriptObject(handle, classPtr->GetName(), objectPtr)) {
 				// when cannot be resolved, then create new objectPtr
 				if (vm->CreateScriptObject(classPtr->GetName(), objectPtr) && objectPtr) {
@@ -74,7 +74,7 @@ namespace RE
 		}
 
 
-		void* UnpackHandle(BSScriptVariable* a_src, UInt32 a_formType)
+		void* UnpackHandle(Variable* a_src, UInt32 a_formType)
 		{
 			auto object = a_src->GetObject();
 			return object ? object->Resolve(a_formType) : 0;

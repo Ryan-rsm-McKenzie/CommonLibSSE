@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSScript/BSScriptType.h"  // BSScriptType
+#include "RE/BSScript/Type.h"  // BSScript::Type
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 
@@ -9,11 +9,10 @@ namespace RE
 {
 	namespace BSScript
 	{
-		class BSScriptType;
 		class IFunction;
 
 
-		class BSScriptClass : public BSIntrusiveRefCounted
+		class Class : public BSIntrusiveRefCounted
 		{
 		public:
 			struct BitPun
@@ -125,7 +124,7 @@ namespace RE
 			};
 
 
-			~BSScriptClass();
+			~Class();
 
 			const char*	GetName() const;
 			UInt32		GetFlags() const;
@@ -144,7 +143,7 @@ namespace RE
 			// members
 			UInt32			unk04;					// 04
 			BSFixedString	name;					// 08
-			BSScriptClass*	parent;					// 10
+			Class*			parent;					// 10
 			BSFixedString	unk18;					// 18
 
 			bool			flag1 : 1;				// 20 - 0
@@ -261,6 +260,6 @@ namespace RE
 		private:
 			void Dtor();
 		};
-		STATIC_ASSERT(sizeof(BSScriptClass) == 0x38);
+		STATIC_ASSERT(sizeof(Class) == 0x38);
 	}
 }

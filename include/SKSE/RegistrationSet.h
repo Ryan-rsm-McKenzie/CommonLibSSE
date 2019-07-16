@@ -18,8 +18,6 @@
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
 
-#include "RE/BSScript/BSScriptClass.h"	// TODO
-#include "RE/BSScript/BSScriptObject.h"	// TODO
 
 namespace SKSE
 {
