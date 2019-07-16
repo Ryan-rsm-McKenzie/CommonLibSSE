@@ -133,6 +133,7 @@ namespace RE
 					a_resultValue->Pack<result_type>(result);
 				}
 			}
+
 			return true;
 		}
 

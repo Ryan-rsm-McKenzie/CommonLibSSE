@@ -36,9 +36,9 @@ namespace RE
 
 
 					// members
-					Entry*	data;		// 00 length = numParams + unk0A
+					Entry*	data;		// 00 length = numParams + numVars
 					UInt16	numParams;	// 08
-					UInt16	unk0A;		// 0A
+					UInt16	numVars;	// 0A
 					UInt32	pad0C;		// 0C
 				};
 				STATIC_ASSERT(sizeof(ParameterInfo) == 0x10);
@@ -55,18 +55,18 @@ namespace RE
 				virtual Type&					GetReturnType(Type& a_dst) const override;																						// 04
 				virtual UInt32					GetNumParams() const override;																									// 05
 				virtual Type&					GetParam(UInt32 a_idx, BSFixedString& a_nameOut, Type& a_typeOut) const override;												// 06
-				virtual UInt32					GetNumParams2() const override;																									// 07
+				virtual UInt32					GetNumVars() const override;																									// 07
 				virtual bool					IsNative() const override;																										// 08
 				virtual bool					IsStatic() const override;																										// 09
 				virtual bool					IsEvent() const override;																										// 0A
 				virtual UInt32					Unk_0B() override;																												// 0B
 				virtual UInt32					GetUnk44() const override;																										// 0C
 				virtual const BSFixedString&	GetStr48() const override;																										// 0D
-				virtual void					Unk_0E(UInt32 a_arg1) override;																									// 0E
+				virtual void					MoveVariablesToStack(StackFrame* a_frame) override;																				// 0E
 				virtual UInt32					Invoke(BSTSmartPointer<Stack>& a_stack, ErrorLogger* a_logger, Internal::VirtualMachine* a_vm, bool a_arg4) override;			// 0F
 				virtual const BSFixedString&	GetSource() const override;																										// 10
 				virtual bool					Unk_11(UInt32 a_arg1, UInt32* a_arg2) override;																					// 11
-				virtual bool					GetParamName(UInt32 a_idx, BSFixedString& a_out) const override;																// 12
+				virtual bool					GetVarName(UInt32 a_idx, BSFixedString& a_out) const override;																	// 12
 				virtual bool					GetUnk41() const override;																										// 13
 				virtual void					SetUnk41(bool a_arg) override;																									// 14
 

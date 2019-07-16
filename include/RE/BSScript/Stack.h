@@ -15,8 +15,8 @@ namespace RE
 		}
 
 
+		class SimpleAllocMemoryPagePolicy;
 		class StackFrame;
-		struct IMemoryPagePolicy;
 
 
 		class Stack : public BSIntrusiveRefCounted
@@ -39,7 +39,7 @@ namespace RE
 			{
 				Chunk*	chunk;			// 00
 				UInt32	unusedArgSize;	// 08 - e.g. a function with 1 arg will have 3 unused args, so this will be 0x30, a function with 6 args will have 0 unused args, so this will be 0x0
-				UInt32	unk0C;			// 0C
+				UInt32	pad0C;			// 0C
 			};
 			STATIC_ASSERT(sizeof(Pair) == 0x10);
 
@@ -50,7 +50,7 @@ namespace RE
 
 			// members
 			UInt32									unk04;				// 04
-			IMemoryPagePolicy*						memoryPagePolicy;	// 08
+			SimpleAllocMemoryPagePolicy*			memoryPagePolicy;	// 08
 			void*									unk10;				// 10
 			BSTSmallArray<Pair, 3>					chunks;				// 18
 			UInt32									numChunks;			// 58

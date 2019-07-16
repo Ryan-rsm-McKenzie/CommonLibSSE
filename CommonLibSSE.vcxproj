@@ -555,6 +555,7 @@
     <ClInclude Include="include\RE\BSScript\Class.h" />
     <ClInclude Include="include\RE\BSScript\Internal\CodeTasklet.h" />
     <ClInclude Include="include\RE\BSScript\Internal\IFuncCallQuery.h" />
+    <ClInclude Include="include\RE\BSScript\Internal\ScriptFunction.h" />
     <ClInclude Include="include\RE\BSScript\Object.h" />
     <ClInclude Include="include\RE\BSScript\ObjectBindPolicy.h" />
     <ClInclude Include="include\RE\BSScript\PackUnpack.h" />

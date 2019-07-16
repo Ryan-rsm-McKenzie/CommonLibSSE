@@ -50,7 +50,7 @@ namespace RE
 
 			UInt32 NativeFunctionBase::GetNumParams() const
 			{
-				return _params.unk0A;
+				return _params.numVars;
 			}
 
 
@@ -62,9 +62,9 @@ namespace RE
 			}
 
 
-			UInt32 NativeFunctionBase::GetNumParams2() const
+			UInt32 NativeFunctionBase::GetNumVars() const
 			{
-				return _params.unk0A;
+				return _params.numVars;
 			}
 
 
@@ -104,7 +104,7 @@ namespace RE
 			}
 
 
-			void NativeFunctionBase::Unk_0E(UInt32 a_arg1)
+			void NativeFunctionBase::MoveVariablesToStack(StackFrame* a_stack)
 			{
 				return;
 			}
@@ -133,9 +133,9 @@ namespace RE
 			}
 
 
-			bool NativeFunctionBase::GetParamName(UInt32 a_idx, BSFixedString& a_out) const
+			bool NativeFunctionBase::GetVarName(UInt32 a_idx, BSFixedString& a_out) const
 			{
-				using func_t = function_type_t<decltype(&NativeFunctionBase::GetParamName)>;
+				using func_t = function_type_t<decltype(&NativeFunctionBase::GetVarName)>;
 				func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::NativeFunctionBase, Impl_Fn12, func_t*);
 				return func(this, a_idx, a_out);
 			}

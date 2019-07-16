@@ -25,7 +25,9 @@ namespace RE
 	{
 		class Array;
 		class ErrorLogger;
+		class IFreezeQuery;
 		class ISavePatcherInterface;
+		class IStackCallbackSaveInterface;
 		class ObjectBindPolicy;
 		class SimpleAllocMemoryPagePolicy;
 		struct IObjectHandlePolicy;
@@ -33,6 +35,9 @@ namespace RE
 
 		namespace Internal
 		{
+			class CodeTasklet;
+
+
 			class VirtualMachine :
 				public IVirtualMachine,			// 0000
 				public IVMObjectBindInterface,	// 0010
@@ -107,74 +112,75 @@ namespace RE
 				virtual bool							CreateObject(const BSFixedString& a_className, UInt32 a_numProperties, BSTSmartPointer<Object>& a_objPtr) override;																							// 09
 				virtual bool							SetProperty(BSTSmartPointer<Object>& a_objPtr, void* a_property, bool a_arg3) override;																														// 0A
 
-				static VirtualMachine*					GetSingleton();
+				static VirtualMachine* GetSingleton();
 
-				bool									AllocateArray(const VMTypeID& a_typeID, std::size_t a_size, BSTSmartPointer<Array>& a_array);
-				template <class F> void					RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, FunctionFlag a_flags = FunctionFlag::kNone);
+				bool					AllocateArray(const VMTypeID& a_typeID, std::size_t a_size, BSTSmartPointer<Array>& a_array);
+				template <class F> void	RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, FunctionFlag a_flags = FunctionFlag::kNone);
 
 
 				// members
-				BSTEventSource<StatsEvent>							statsEventSource;	// 0028
-				ErrorLogger*										logger;				// 0080
-				SimpleAllocMemoryPagePolicy*						memoryPagePolicy;	// 0088
-				IObjectHandlePolicy*								objectHandlePolicy;	// 0090
-				ObjectBindPolicy*									objectBindPolicy;	// 0098
-				UInt64												unk00A0;			// 00A0
-				UInt64												unk00A8;			// 00A8
-				UInt64												unk00B0;			// 00B0
-				ISavePatcherInterface*								savePatcher;		// 00B8
-				BSSpinLock											unk00C0;			// 00C0
-				LinkerProcessor										linkerProcessor;	// 00C8
-				BSTHashMap<UnkKey, UnkValue>						unk0158;			// 0158
-				BSTHashMap<UnkKey, UnkValue>						unk0188;			// 0188
-				BSTHashMap<UnkKey, UnkValue>						unk01B8;			// 01B8
-				BSTArray<void*>										unk01E8;			// 01E8
-				UInt64												unk0200;			// 0200
-				BSTStaticFreeList<FunctionMessage, 1024>			unk0208;			// 0208
-				BSTCommonLLMessageQueue<FunctionMessage>			unk8220;			// 8220
-				BSTArray<void*>										unk8248;			// 8248
-				BSTArray<void*>										unk8260;			// 8260
-				UInt64												unk8278;			// 8278
-				BSTCommonStaticMessageQueue<SuspendedStack, 128>	unk8280;			// 8280
-				BSTCommonStaticMessageQueue<SuspendedStack, 128>	unk8AA0;			// 8AA0
-				BSTArray<void*>										unk92C0;			// 92C0
-				BSTArray<void*>										unk92D8;			// 92D8
-				UInt64												unk92F0;			// 92F0
-				void*												unk92F8;			// 92F8
-				void*												unk9300;			// 9300
-				void*												unk9308;			// 9308
-				void*												unk9310;			// 9310
-				BSSpinLock											stackLock;			// 9318
-				BSTHashMap<UInt32, UnkValue>						allStacks;			// 9320
-				BSTHashMap<UInt32, UnkValue>						waitingStacks;		// 9350
-				UInt64												unk9380;			// 9380
-				UInt64												unk9388;			// 9388
-				UInt64												unk9390;			// 9390
-				UInt64												unk9398;			// 9398
-				UInt64												unk93A0;			// 93A0
-				BSTHashMap<UnkKey, UnkValue>						unk93A8;			// 93A8
-				UInt64												unk93D8;			// 93D8
-				BSTArray<void*>										unk93E0;			// 93E0
-				BSSpinLock											unk93F8;			// 93F8
-				UInt64												unk9400;			// 9400
-				BSTArray<void*>										unk9408;			// 9408
-				UInt64												unk9420;			// 9420
-				BSTArray<void*>										unk9428;			// 9428
-				UInt64												unk9440;			// 9440
-				BSTHashMap<UnkKey, UnkValue>						unk9448;			// 9448
-				BSTHashMap<UnkKey, UnkValue>						unk9478;			// 9478
-				UInt64												unk94A8;			// 94A8
-				BSTArray<void*>										unk94B0;			// 94B0
-				UInt64												unk94C8;			// 94C8
-				UInt64												unk94D0;			// 94D0
-				UInt64												unk94D8;			// 94D8
-				UInt64												unk94E0;			// 94E0
-				UInt64												unk94E8;			// 94E8
-				UInt64												unk94F0;			// 94F0
-				UInt64												unk94F8;			// 94F8
-				UInt64												unk9500;			// 9500
-				UInt64												unk9508;			// 9508
-				UInt64												unk9518;			// 9510
+				BSTEventSource<StatsEvent>							statsEventSource;			// 0028
+				ErrorLogger*										logger;						// 0080
+				SimpleAllocMemoryPagePolicy*						memoryPagePolicy;			// 0088
+				IObjectHandlePolicy*								objectHandlePolicy;			// 0090
+				ObjectBindPolicy*									objectBindPolicy;			// 0098
+				IFreezeQuery*										freezeQuery;				// 00A0
+				IStackCallbackSaveInterface*						stackCallbackSaveInterface;	// 00A8
+				UInt64												unk00B0;					// 00B0
+				ISavePatcherInterface*								savePatcher;				// 00B8
+				BSSpinLock											unk00C0;					// 00C0
+				LinkerProcessor										linkerProcessor;			// 00C8
+				BSTHashMap<UnkKey, UnkValue>						unk0158;					// 0158
+				BSTHashMap<UnkKey, UnkValue>						unk0188;					// 0188
+				BSTHashMap<UnkKey, UnkValue>						unk01B8;					// 01B8
+				BSTArray<void*>										unk01E8;					// 01E8
+				BSSpinLock											unk0200;					// 0200
+				BSTStaticFreeList<FunctionMessage, 1024>			unk0208;					// 0208
+				BSTCommonLLMessageQueue<FunctionMessage>			unk8220;					// 8220
+				BSTArray<void*>										unk8248;					// 8248
+				BSTArray<CodeTasklet*>								codeTasklets;				// 8260
+				UInt32												unk8278;					// 8278
+				UInt32												unk827C;					// 827C
+				BSTCommonStaticMessageQueue<SuspendedStack, 128>	unk8280;					// 8280
+				BSTCommonStaticMessageQueue<SuspendedStack, 128>	unk8AA0;					// 8AA0
+				BSTArray<void*>										unk92C0;					// 92C0
+				BSTArray<void*>										unk92D8;					// 92D8
+				UInt64												unk92F0;					// 92F0
+				void*												unk92F8;					// 92F8
+				void*												unk9300;					// 9300
+				void*												unk9308;					// 9308
+				void*												unk9310;					// 9310
+				BSSpinLock											stackLock;					// 9318
+				BSTHashMap<UInt32, UnkValue>						allStacks;					// 9320
+				BSTHashMap<UInt32, UnkValue>						waitingStacks;				// 9350
+				UInt64												unk9380;					// 9380
+				UInt64												unk9388;					// 9388
+				UInt64												unk9390;					// 9390
+				UInt64												unk9398;					// 9398
+				UInt64												unk93A0;					// 93A0
+				BSTHashMap<UnkKey, UnkValue>						unk93A8;					// 93A8
+				UInt64												unk93D8;					// 93D8
+				BSTArray<void*>										unk93E0;					// 93E0
+				BSSpinLock											unk93F8;					// 93F8
+				UInt64												unk9400;					// 9400
+				BSTArray<void*>										unk9408;					// 9408
+				UInt64												unk9420;					// 9420
+				BSTArray<void*>										unk9428;					// 9428
+				UInt64												unk9440;					// 9440
+				BSTHashMap<UnkKey, UnkValue>						unk9448;					// 9448
+				BSTHashMap<UnkKey, UnkValue>						unk9478;					// 9478
+				UInt64												unk94A8;					// 94A8
+				BSTArray<void*>										unk94B0;					// 94B0
+				UInt64												unk94C8;					// 94C8
+				UInt64												unk94D0;					// 94D0
+				UInt64												unk94D8;					// 94D8
+				UInt64												unk94E0;					// 94E0
+				UInt64												unk94E8;					// 94E8
+				UInt64												unk94F0;					// 94F0
+				UInt64												unk94F8;					// 94F8
+				UInt64												unk9500;					// 9500
+				UInt64												unk9508;					// 9508
+				UInt64												unk9518;					// 9510
 			};
 			STATIC_ASSERT(sizeof(VirtualMachine) == 0x9518);
 		}

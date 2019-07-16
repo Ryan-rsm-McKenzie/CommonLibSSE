@@ -77,9 +77,8 @@ namespace RE
 
 	public:
 		T		entries[SIZE];	// 10
-		UInt32	unk1;			// ??
-		UInt32	unk2;			// ??
-		UInt32	unk3;			// ??
-		UInt32	pad;			// ??
+		UInt32	numEntries;		// ??
+		UInt32	pushIdx;		// ??
+		UInt32	popIdx;			// ??
 	};
 }

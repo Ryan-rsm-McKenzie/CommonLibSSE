@@ -3881,5 +3881,8 @@
     <ClInclude Include="include\RE\BSScript\Internal\CodeTasklet.h">
       <Filter>include\RE\BSScript\Internal</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\BSScript\Internal\ScriptFunction.h">
+      <Filter>include\RE\BSScript\IFunction</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,11 +1,10 @@
 #pragma once
 
-#include "skse64/GameAPI.h"
-
-#include <stdint.h>
+#include <cassert>
+#include <cstdint>
+#include <functional>
 #include <memory>
 #include <utility>
-#include <functional>
 
 #include "RE/Offsets.h"
 #include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
@@ -881,6 +880,65 @@ namespace RE
 	STATIC_ASSERT(offsetof(TestBSScrapArray, _capacity) == 0x10);
 	STATIC_ASSERT(offsetof(TestBSScrapArray, _count) == 0x18);
 	STATIC_ASSERT(sizeof(TestBSScrapArray) == 0x20);
+
+
+	template <class T>
+	class BSTSimpleArray
+	{
+	public:
+		using value_type = T;
+		using size_type = std::size_t;
+		using reference = value_type&;
+		using iterator = T*;
+
+
+		struct Head
+		{
+			size_type size;
+		};
+
+
+		struct Data
+		{
+			value_type entries[1];
+		};
+
+
+		reference operator[](size_type a_pos)
+		{
+			assert(a_pos < size());
+			return _data.entries[a_pos];
+		}
+
+
+		iterator begin()
+		{
+			return _data ? std::addressof(_data.entries[0]) : 0;
+		}
+
+
+		iterator end()
+		{
+			return _data ? std::addressof(_data.entries[size()]) : 0;
+		}
+
+
+		size_type size() const
+		{
+			return _data ? get_head()->size : 0;
+		}
+
+	protected:
+		Head* get_head() const
+		{
+			return reinterpret_cast<Head*>((std::uintptr_t)_data - sizeof(Head));
+		}
+
+
+		// members
+		Data* _data;	// 0
+	};
+	STATIC_ASSERT(sizeof(BSTSimpleArray<void*>) == 0x8);
 
 
 	// Returns if/where the element was found, otherwise indexOut can be used as insert position
