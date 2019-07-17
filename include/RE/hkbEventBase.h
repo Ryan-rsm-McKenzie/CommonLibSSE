@@ -15,7 +15,7 @@ namespace RE
 	public:
 		enum SystemEventIDs : UInt32
 		{
-			kNull = static_cast<std::underlying_type<SystemEventIDs>::type>(-1)
+			kNull = static_cast<std::underlying_type_t<SystemEventIDs>>(-1)
 		};
 
 

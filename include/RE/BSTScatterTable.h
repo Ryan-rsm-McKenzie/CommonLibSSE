@@ -8,8 +8,6 @@
 //
 // c:_skyrim\code\tesv\bscore\BSTScatterTable.h
 
-#include "skse64/GameAPI.h"
-
 #include <type_traits>  // enable_if_t, is_base_of
 #include <new>
 #include <memory.h>	// for memcpy_s

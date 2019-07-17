@@ -1,18 +1,18 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkbStateMachine
+#include "skse64/GameRTTI.h"  // RTTI_hkbStateMachine, RTTI_hkbStateMachine__StateInfo, RTTI_hkbStateMachine__TransitionInfoArray
 
 #include "RE/hkArray.h"  // hkArray
+#include "RE/hkbBindable.h"  // hkbBindable
 #include "RE/hkbEvent.h"  // hkbEvent
 #include "RE/hkbGenerator.h"  // hkbGenerator
+#include "RE/hkReferencedObject.h"  // hkReferencedObject
 #include "RE/hkRefPtr.h"  // hkRefPtr
 
 
 namespace RE
 {
 	class hkbStateChooser;
-	class hkbStateMachineStateInfo;
-	class hkbStateMachineTransitionInfoArray;
 
 
 	class hkbStateMachine : public hkbGenerator
@@ -36,6 +36,45 @@ namespace RE
 			kTransitionToStartState = 1,
 			kForceTransitionToStartState = 2
 		};
+
+
+		class StateInfo : public hkbBindable
+		{
+		public:
+			inline static const void* RTTI = RTTI_hkbStateMachine__StateInfo;
+
+
+			virtual ~StateInfo();	// 00
+
+
+			// members
+			UInt64	unk30;	// 30
+			UInt64	unk38;	// 38
+			UInt64	unk40;	// 40
+			UInt64	unk48;	// 48
+			UInt64	unk50;	// 50
+			UInt64	unk58;	// 58
+			UInt64	unk60;	// 60
+			UInt64	unk68;	// 68
+			UInt64	unk70;	// 70
+		};
+		STATIC_ASSERT(sizeof(StateInfo) == 0x78);
+
+
+		class TransitionInfoArray : public hkReferencedObject
+		{
+		public:
+			inline static const void* RTTI = RTTI_hkbStateMachine__TransitionInfoArray;
+
+
+			virtual ~TransitionInfoArray();	// 00
+
+
+			// members
+			UInt64	unk10;	// 10
+			UInt64	unk18;	// 18
+		};
+		STATIC_ASSERT(sizeof(TransitionInfoArray) == 0x20);
 
 
 		virtual ~hkbStateMachine();																								// 00
@@ -66,38 +105,38 @@ namespace RE
 
 
 		// members
-		hkbEvent										eventToSendWhenStateOrTransitionChanges;	// 048
-		hkRefPtr<hkbStateChooser>						startStateChooser;							// 060
-		SInt32											startStateID;								// 068
-		SInt32 											returnToPreviousStateEventID;				// 06C
-		SInt32 											randomTransitionEventID;					// 070
-		SInt32 											transitionToNextHigherStateEventID;			// 074
-		SInt32 											transitionToNextLowerStateEventID;			// 078
-		SInt32 											syncVariableIndex;							// 07C
-		SInt32 											currentStateID;								// 080
-		bool 											wrapAroundStateID;							// 084
-		SInt8 											maxSimultaneousTransitions;					// 085
-		StartStateMode									startStateMode;								// 086
-		StateMachineSelfTransitionMode 					selfTransitionMode;							// 087
-		bool 											isActive;									// 088
-		UInt8 											pad41;										// 089
-		UInt16 											pad42;										// 08A
-		UInt32 											pad44;										// 08C
-		hkArray<hkbStateMachineStateInfo*> 				states;										// 090
-		hkRefPtr<hkbStateMachineTransitionInfoArray>	wildcardTransitions;						// 0A0 - hkbStateMachine::TransitionInfoArray
-		hkRefVariant 									stateIDToIndexMap;							// 0A8
-		hkArray<hkRefVariant> 							activeTransitions;							// 0B0
-		hkArray<hkRefVariant> 							transitionFlags;							// 0C0
-		hkArray<hkRefVariant> 							wildcardTransitionFlags;					// 0D0
-		hkArray<hkRefVariant> 							delayedTransitions;							// 0E0
-		float 											timeInState;								// 0F0
-		float 											lastLocalTime;								// 0F4
-		SInt32 											previousStateID;							// 0F8
-		SInt32 											nextStartStateIndexOverride;				// 0FC
-		bool 											stateOrTransitionChanged;					// 100
-		bool 											echoNextUpdate;								// 101
-		UInt16 											currentStateIndexAndEntered;				// 102
-		UInt32 											pad0BC;										// 104
+		hkbEvent						eventToSendWhenStateOrTransitionChanges;	// 048
+		hkRefPtr<hkbStateChooser>		startStateChooser;							// 060
+		SInt32							startStateID;								// 068
+		SInt32 							returnToPreviousStateEventID;				// 06C
+		SInt32 							randomTransitionEventID;					// 070
+		SInt32 							transitionToNextHigherStateEventID;			// 074
+		SInt32 							transitionToNextLowerStateEventID;			// 078
+		SInt32 							syncVariableIndex;							// 07C
+		SInt32 							currentStateID;								// 080
+		bool 							wrapAroundStateID;							// 084
+		SInt8 							maxSimultaneousTransitions;					// 085
+		StartStateMode					startStateMode;								// 086
+		StateMachineSelfTransitionMode 	selfTransitionMode;							// 087
+		bool 							isActive;									// 088
+		UInt8 							pad41;										// 089
+		UInt16 							pad42;										// 08A
+		UInt32 							pad44;										// 08C
+		hkArray<StateInfo*> 			states;										// 090
+		hkRefPtr<TransitionInfoArray>	wildcardTransitions;						// 0A0
+		hkRefVariant 					stateIDToIndexMap;							// 0A8
+		hkArray<hkRefVariant> 			activeTransitions;							// 0B0
+		hkArray<hkRefVariant> 			transitionFlags;							// 0C0
+		hkArray<hkRefVariant> 			wildcardTransitionFlags;					// 0D0
+		hkArray<hkRefVariant> 			delayedTransitions;							// 0E0
+		float 							timeInState;								// 0F0
+		float 							lastLocalTime;								// 0F4
+		SInt32 							previousStateID;							// 0F8
+		SInt32 							nextStartStateIndexOverride;				// 0FC
+		bool 							stateOrTransitionChanged;					// 100
+		bool 							echoNextUpdate;								// 101
+		UInt16 							currentStateIndexAndEntered;				// 102
+		UInt32 							pad0BC;										// 104
 	};
 	STATIC_ASSERT(sizeof(hkbStateMachine) == 0x108);
 }

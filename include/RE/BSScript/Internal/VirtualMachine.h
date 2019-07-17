@@ -30,6 +30,7 @@ namespace RE
 		class IStackCallbackSaveInterface;
 		class ObjectBindPolicy;
 		class SimpleAllocMemoryPagePolicy;
+		class Stack;
 		struct IObjectHandlePolicy;
 
 
@@ -46,6 +47,8 @@ namespace RE
 			{
 			public:
 				inline static const void* RTTI = RTTI_BSScript__Internal__VirtualMachine;
+
+				using StackID = UInt32;
 
 
 				virtual ~VirtualMachine();
@@ -151,9 +154,10 @@ namespace RE
 				void*												unk9308;					// 9308
 				void*												unk9310;					// 9310
 				BSSpinLock											stackLock;					// 9318
-				BSTHashMap<UInt32, UnkValue>						allStacks;					// 9320
+				BSTHashMap<StackID, BSTSmartPointer<Stack>>			allStacks;					// 9320
 				BSTHashMap<UInt32, UnkValue>						waitingStacks;				// 9350
-				UInt64												unk9380;					// 9380
+				StackID												nextFreeStackID;			// 9380
+				UInt32												unk9384;					// 9384
 				UInt64												unk9388;					// 9388
 				UInt64												unk9390;					// 9390
 				UInt64												unk9398;					// 9398
