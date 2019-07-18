@@ -3893,5 +3893,8 @@
     <ClInclude Include="include\RE\BSResourceNiBinaryStream.h">
       <Filter>include\RE\NetImmerse\BS</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\TESInitScriptEvent.h">
+      <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

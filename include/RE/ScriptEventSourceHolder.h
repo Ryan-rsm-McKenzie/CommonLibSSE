@@ -21,6 +21,7 @@ namespace RE
 	struct TESDestructionStageChangedEvent;
 	struct TESEnterBleedoutEvent;
 	struct TESEquipEvent;
+	struct TESFastTravelEndEvent;
 	struct TESFormDeleteEvent;
 	struct TESFurnitureEvent;
 	struct TESGrabReleaseEvent;
@@ -36,30 +37,30 @@ namespace RE
 	struct TESOpenCloseEvent;
 	struct TESPackageEvent;
 	struct TESPerkEntryRunEvent;
+	struct TESPlayerBowShotEvent;
 	struct TESQuestInitEvent;
 	struct TESQuestStageEvent;
 	struct TESQuestStageItemDoneEvent;
 	struct TESQuestStartStopEvent;
 	struct TESResetEvent;
 	struct TESResolveNPCTemplatesEvent;
-	struct TESSceneEvent;
 	struct TESSceneActionEvent;
+	struct TESSceneEvent;
 	struct TESScenePhaseEvent;
 	struct TESSellEvent;
 	struct TESSleepStartEvent;
 	struct TESSleepStopEvent;
 	struct TESSpellCastEvent;
-	struct TESPlayerBowShotEvent;
+	struct TESSwitchRaceCompleteEvent;
 	struct TESTopicInfoEvent;
 	struct TESTrackedStatsEvent;
 	struct TESTrapHitEvent;
-	struct TESTriggerEvent;
 	struct TESTriggerEnterEvent;
+	struct TESTriggerEvent;
 	struct TESTriggerLeaveEvent;
 	struct TESUniqueIDChangeEvent;
 	struct TESWaitStartEvent;
 	struct TESWaitStopEvent;
-	struct TESSwitchRaceCompleteEvent;
 
 
 	class ScriptEventSourceHolder :
@@ -113,10 +114,10 @@ namespace RE
 		public BSTEventSource<TESTriggerEnterEvent>,			// 1028
 		public BSTEventSource<TESTriggerLeaveEvent>,			// 1080
 		public BSTEventSource<TESUniqueIDChangeEvent>,			// 10D8
-		public BSTEventSource<TESWaitStartEvent>,				// 1130
-		public BSTEventSource<TESWaitStopEvent>,				// 1188
+		public BSTEventSource<TESWaitStartEvent>,				// 1130 - ?
+		public BSTEventSource<TESWaitStopEvent>,				// 1188 - ?
 		public BSTEventSource<TESSwitchRaceCompleteEvent>,		// 11E0
-		public BSTEventSource<void>								// 1238
+		public BSTEventSource<TESFastTravelEndEvent>			// 1238
 	{
 	public:
 		static ScriptEventSourceHolder* GetSingleton();

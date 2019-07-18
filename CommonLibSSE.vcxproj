@@ -1062,6 +1062,7 @@
     <ClInclude Include="include\RE\TESImageSpace.h" />
     <ClInclude Include="include\RE\TESImageSpaceModifiableForm.h" />
     <ClInclude Include="include\RE\TESImageSpaceModifier.h" />
+    <ClInclude Include="include\RE\TESInitScriptEvent.h" />
     <ClInclude Include="include\RE\TESKey.h" />
     <ClInclude Include="include\RE\TESLandTexture.h" />
     <ClInclude Include="include\RE\TESLevCharacter.h" />
