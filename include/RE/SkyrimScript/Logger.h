@@ -10,7 +10,7 @@ namespace RE
 {
 	namespace SkyrimScript
 	{
-		class Logger : BSScript::ErrorLogger
+		class Logger : public BSScript::ErrorLogger
 		{
 		public:
 			inline static const void* RTTI = RTTI_SkyrimScript__Logger;

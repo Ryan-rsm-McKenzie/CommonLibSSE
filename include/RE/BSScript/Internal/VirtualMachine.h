@@ -9,7 +9,6 @@
 #include "RE/BSScript/IVMObjectBindInterface.h"  // BSScript::IVMObjectBindInterface
 #include "RE/BSScript/IVMSaveLoadInterface.h"  // BSScript::IVMSaveLoadInterface
 #include "RE/BSScript/LinkerProcessor.h"  // BSScript::LinkerProcessor
-#include "RE/BSScript/StatsEvent.h"  // BSScript::StatsEvent
 #include "RE/BSSpinLock.h"  // BSSpinLock
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTEvent.h"  // BSTEvent
@@ -32,6 +31,7 @@ namespace RE
 		class SimpleAllocMemoryPagePolicy;
 		class Stack;
 		struct IObjectHandlePolicy;
+		struct StatsEvent;
 
 
 		namespace Internal
@@ -40,10 +40,11 @@ namespace RE
 
 
 			class VirtualMachine :
-				public IVirtualMachine,			// 0000
-				public IVMObjectBindInterface,	// 0010
-				public IVMSaveLoadInterface,	// 0018
-				public IVMDebugInterface		// 0020
+				public IVirtualMachine,				// 0000
+				public IVMObjectBindInterface,		// 0010
+				public IVMSaveLoadInterface,		// 0018
+				public IVMDebugInterface,			// 0020
+				public BSTEventSource<StatsEvent>	// 0028
 			{
 			public:
 				inline static const void* RTTI = RTTI_BSScript__Internal__VirtualMachine;
@@ -122,7 +123,6 @@ namespace RE
 
 
 				// members
-				BSTEventSource<StatsEvent>							statsEventSource;			// 0028
 				ErrorLogger*										logger;						// 0080
 				SimpleAllocMemoryPagePolicy*						memoryPagePolicy;			// 0088
 				IObjectHandlePolicy*								objectHandlePolicy;			// 0090
@@ -149,10 +149,10 @@ namespace RE
 				BSTArray<void*>										unk92C0;					// 92C0
 				BSTArray<void*>										unk92D8;					// 92D8
 				UInt64												unk92F0;					// 92F0
-				void*												unk92F8;					// 92F8
-				void*												unk9300;					// 9300
-				void*												unk9308;					// 9308
-				void*												unk9310;					// 9310
+				BSTCommonStaticMessageQueue<SuspendedStack, 128>*	unk92F8;					// 92F8 - ref to unk8AA0
+				BSTArray<void*>*									unk9300;					// 9300 - ref to unk92D8
+				BSTCommonStaticMessageQueue<SuspendedStack, 128>*	unk9308;					// 9308 - ref to unk8280
+				BSTArray<void*>*									unk9310;					// 9310 - ref to unk92C0
 				BSSpinLock											stackLock;					// 9318
 				BSTHashMap<StackID, BSTSmartPointer<Stack>>			allStacks;					// 9320
 				BSTHashMap<UInt32, UnkValue>						waitingStacks;				// 9350

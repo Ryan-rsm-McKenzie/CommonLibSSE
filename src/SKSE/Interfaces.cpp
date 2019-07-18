@@ -240,7 +240,7 @@ namespace SKSE
 	}
 
 
-	bool PapyrusInterface::Register(RegFunction* a_fn) const
+	bool PapyrusInterface::Register_Impl(RegFunction* a_fn) const
 	{
 		auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 		if (vm) {

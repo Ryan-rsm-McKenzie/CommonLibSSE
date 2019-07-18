@@ -2,6 +2,7 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_BSScript__IVirtualMachine
 
+#include "RE/BSScript/LogEvent.h"  // BSScript::LogEvent::Severity
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 #include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 #include "RE/BSTEvent.h"  // BSTEventSink
@@ -44,18 +45,13 @@ namespace RE
 			inline static const void* RTTI = RTTI_BSScript__IVirtualMachine;
 
 
+			using Severity = BSScript::LogEvent::Severity;
+
+
 			enum class FunctionFlag : UInt32
 			{
 				kNone = 0,
 				kNoWait = 1 << 0
-			};
-
-
-			enum class Severity : UInt32
-			{
-				kInfo,
-				kWarning,
-				kError
 			};
 
 

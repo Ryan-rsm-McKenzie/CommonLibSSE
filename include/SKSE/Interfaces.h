@@ -156,16 +156,23 @@ namespace SKSE
 
 		UInt32 Version() const;
 
-		bool Register(RegFunction* a_fn) const;
+		template <class Last>
+		bool Register(Last a_last) const
+		{
+			return Register_Impl(a_last);
+		}
 
 		template <class First, class... Rest>
 		bool Register(First a_first, Rest... a_rest) const
 		{
-			return Register(a_first) && Register(a_rest...);
+			return Register_Impl(a_first) && Register(a_rest...);
 		}
 
 	protected:
 		const SKSEPapyrusInterface* GetProxy() const;
+
+	private:
+		bool Register_Impl(RegFunction* a_fn) const;
 	};
 	STATIC_ASSERT(PapyrusInterface::kVersion == SKSEPapyrusInterface::kInterfaceVersion);
 

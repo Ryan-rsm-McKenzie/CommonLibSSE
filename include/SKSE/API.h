@@ -4,6 +4,8 @@
 #include "skse64/PapyrusObjects.h"  // SKSEObjectRegistry, SKSEPersistentObjectStorage
 #include "skse64/PluginAPI.h"  // PluginHandle
 
+#include <functional>  // function
+
 #include "RE/BSTEvent.h"  // BSTEventSource
 #include "SKSE/Events.h"  // ModCallbackEvent, CameraEvent, CrosshairRefEvent, ActionEvent, NiNodeUpdateEvent
 #include "SKSE/Interfaces.h"  // LoadInterface, ScaleformInterface, PapyrusInterface, SerializationInterface, TaskInterface, MessagingInterface, ObjectInterface
@@ -11,7 +13,8 @@
 
 namespace SKSE
 {
-	bool Init(const LoadInterface* a_skse);
+	bool	Init(const LoadInterface* a_skse);
+	void	RegisterForAPIInitEvent(std::function<void()> a_fn);
 
 	const PluginHandle	GetPluginHandle();
 	const UInt32		GetReleaseIndex();

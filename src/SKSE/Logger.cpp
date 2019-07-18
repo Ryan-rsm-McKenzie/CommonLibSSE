@@ -11,8 +11,12 @@
 #include <iomanip>  // put_time
 #include <memory>  // unique_ptr
 #include <sstream>  // ostringstream
+#include <string>  // string
 #include <time.h>  // localtime_s
 #include <vector>  // vector
+
+#include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
+#include "SKSE/API.h"  // RegisterForAPIInitEvent
 
 
 namespace SKSE
@@ -70,35 +74,86 @@ namespace SKSE
 	auto Logger::SetPrintLevel(Level a_printLevel)
 		-> Level
 	{
-		auto result = _printLevel;
-		_printLevel = a_printLevel;
-		return result;
+		auto prev = std::move(_printLevel);
+		_printLevel = std::move(a_printLevel);
+		return prev;
 	}
 
 
 	auto Logger::SetFlushLevel(Level a_flushLevel)
 		-> Level
 	{
-		auto result = _flushLevel;
-		_flushLevel = a_flushLevel;
-		return result;
+		auto prev = std::move(_flushLevel);
+		_flushLevel = std::move(a_flushLevel);
+		return prev;
 	}
 
 
 	bool Logger::UseLogStamp(bool a_enable)
 	{
-		auto result = _logStamp;
-		_logStamp = a_enable;
-		return result;
+		auto prev = std::move(_logStamp);
+		_logStamp = std::move(a_enable);
+		return prev;
 	}
 
 
 	std::pair<bool, bool> Logger::UseTimeStamp(bool a_enable, bool a_fmt24Hour)
 	{
-		auto result = std::make_pair(_timeStamp, _fmt24Hour);
-		_timeStamp = a_enable;
-		_fmt24Hour = a_fmt24Hour;
-		return result;
+		auto prev = std::make_pair(std::move(_timeStamp), std::move(_fmt24Hour));
+		_timeStamp = std::move(a_enable);
+		_fmt24Hour = std::move(a_fmt24Hour);
+		return prev;
+	}
+
+
+	bool Logger::HookPapyrusLog(bool a_enable)
+	{
+		auto prev = std::move(_hookPapyrusLog);
+		_hookPapyrusLog = std::move(a_enable);
+
+		if (_hookPapyrusLog) {
+			if (!prev) {
+				SKSE::RegisterForAPIInitEvent([]()
+				{
+					auto papyrus = SKSE::GetPapyrusInterface();
+					papyrus->Register([](RE::BSScript::Internal::VirtualMachine* a_vm)
+					{
+						a_vm->AddLogEventSink(LogEventHandler::GetSingleton());
+						return true;
+					});
+				});
+			}
+		} else {
+			if (prev) {
+				SKSE::RegisterForAPIInitEvent([]()
+				{
+					auto papyrus = SKSE::GetPapyrusInterface();
+					papyrus->Register([](RE::BSScript::Internal::VirtualMachine* a_vm)
+					{
+						a_vm->RemoveLogEventSink(LogEventHandler::GetSingleton());
+						return true;
+					});
+				});
+			}
+		}
+
+		return prev;
+	}
+
+
+	std::regex Logger::SetPapyrusLogFilter(std::string a_filter, std::regex::flag_type a_flags)
+	{
+		auto prev = std::move(_papyrusLogFilter);
+		_papyrusLogFilter.assign(a_filter, a_flags);
+		return prev;
+	}
+
+
+	std::regex Logger::SetPapyrusLogFilter(std::regex a_filter)
+	{
+		auto prev = std::move(_papyrusLogFilter);
+		_papyrusLogFilter = std::move(a_filter);
+		return prev;
 	}
 
 
@@ -136,6 +191,42 @@ namespace SKSE
 	}
 
 
+	auto Logger::LogEventHandler::GetSingleton()
+		-> LogEventHandler*
+	{
+		static LogEventHandler singleton;
+		return &singleton;
+	}
+
+
+	RE::EventResult Logger::LogEventHandler::ReceiveEvent(RE::BSScript::LogEvent* a_event, RE::BSTEventSource<RE::BSScript::LogEvent>* a_eventSource)
+	{
+		if (!std::regex_search(a_event->text, Logger::_papyrusLogFilter)) {
+			return RE::EventResult::kContinue;
+		}
+
+		std::string msg;
+
+		if (Logger::_logStamp) {
+			msg += "[PAPYRUS] ";
+		}
+
+		if (Logger::_timeStamp) {
+			msg += Logger::GetTimeStamp();
+		}
+
+		msg += a_event->text;
+		msg += '\n';
+		Logger::Print(msg.c_str());
+
+#if _DEBUG
+		OutputDebugStringA(msg.c_str());
+#endif
+
+		return RE::EventResult::kContinue;
+	}
+
+
 	const char* Logger::GetLogStamp(Level a_level)
 	{
 		if (_logStamp) {
@@ -159,7 +250,7 @@ namespace SKSE
 	}
 
 
-	std::string Logger::GetTimeStamp(Level a_level)
+	std::string Logger::GetTimeStamp()
 	{
 		if (!_timeStamp) {
 			return "";
@@ -184,7 +275,7 @@ namespace SKSE
 
 	void Logger::Print_Impl(Level a_level, const char* a_string)
 	{
-		_file << GetLogStamp(a_level) << GetTimeStamp(a_level) << a_string << '\n';
+		_file << GetLogStamp(a_level) << GetTimeStamp() << a_string << '\n';
 
 		if (a_level >= _flushLevel) {
 			_file.flush();
@@ -207,11 +298,13 @@ namespace SKSE
 
 
 	decltype(Logger::_file) Logger::_file;
+	decltype(Logger::_papyrusLogFilter) Logger::_papyrusLogFilter(".", Logger::DF_REGEXFLAGS);
 	decltype(Logger::_printLevel) Logger::_printLevel = Logger::Level::kMessage;
 	decltype(Logger::_flushLevel) Logger::_flushLevel = Logger::Level::kError;
 	decltype(Logger::_logStamp) Logger::_logStamp = false;
 	decltype(Logger::_timeStamp) Logger::_timeStamp = false;
 	decltype(Logger::_fmt24Hour) Logger::_fmt24Hour = true;
+	decltype(Logger::_hookPapyrusLog) Logger::_hookPapyrusLog = false;
 
 
 	namespace Impl
@@ -233,7 +326,7 @@ namespace SKSE
 			va_end(args2);
 
 			std::ostringstream oss;
-			oss << a_file << '(' << a_line << "): " << Logger::GetLogStamp(a_level) << Logger::GetTimeStamp(a_level) << buf.data() << '\n';
+			oss << a_file << '(' << a_line << "): " << Logger::GetLogStamp(a_level) << Logger::GetTimeStamp() << buf.data() << '\n';
 			Logger::_file << oss.str().c_str();
 
 			if (a_level >= Logger::_flushLevel) {

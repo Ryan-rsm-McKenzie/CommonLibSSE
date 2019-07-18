@@ -929,7 +929,8 @@ namespace RE
 
 		const_reference operator[](size_type a_pos) const
 		{
-			return const_cast<BSTSimpleArray<T>*>(this)->operator[](a_pos);
+			assert(a_pos < size());
+			return _data->entries[a_pos];
 		}
 
 
@@ -941,7 +942,7 @@ namespace RE
 
 		const_reference front() const
 		{
-			return const_cast<BSTSimpleArray<T>*>(this)->front();
+			return operator[](0);
 		}
 
 
@@ -953,7 +954,7 @@ namespace RE
 
 		const_reference back() const
 		{
-			return const_cast<BSTSimpleArray<T>*>(this)->back();
+			return operator[](size() - 1);
 		}
 
 
@@ -965,7 +966,7 @@ namespace RE
 
 		const T* data() const
 		{
-			return const_cast<BSTSimpleArray<T>*>(this)->data();
+			return _data ? _data->entries : 0;
 		}
 
 
@@ -977,7 +978,7 @@ namespace RE
 
 		const_iterator begin() const
 		{
-			return const_cast<BSTSimpleArray<T>*>(this)->begin();
+			return _data ? std::addressof(_data->entries[0]) : 0;
 		}
 
 
@@ -995,7 +996,7 @@ namespace RE
 
 		const_iterator end() const
 		{
-			return const_cast<BSTSimpleArray<T>*>(this)->end();
+			return _data ? std::addressof(_data->entries[size()]) : 0;
 		}
 
 

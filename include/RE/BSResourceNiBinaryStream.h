@@ -9,6 +9,12 @@
 
 namespace RE
 {
+	namespace BSResource
+	{
+		class LooseFileStream;
+	}
+
+
 	class BSResourceNiBinaryStream : public NiBinaryStream
 	{
 	public:
@@ -29,10 +35,10 @@ namespace RE
 
 
 		// members
-		void*	unk20;	// 20 - BSResource::LooseFileStream*
-		UInt64	unk28;	// 28
-		UInt32	unk30;	// 30
-		UInt32	unk34;	// 34
+		BSResource::LooseFileStream*	unk20;	// 20
+		UInt64							unk28;	// 28
+		UInt32							unk30;	// 30
+		UInt32							unk34;	// 34
 
 	private:
 		BSResourceNiBinaryStream* ctor(const char* a_fileName, UInt32 a_arg2 = 0, UInt32 a_arg3 = 0);

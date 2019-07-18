@@ -102,8 +102,8 @@ namespace std
 	{
 		a_str.erase();
 		CharT c;
-		UInt32 bytesRead = a_input.get(c);
-		if (bytesRead == 1) {	// if not eof
+		auto notEOF = a_input.get(c);
+		if (notEOF) {
 			do {
 				if (!std::char_traits<CharT>::eq(c, a_delim)) {
 					a_str.push_back(c);
@@ -112,11 +112,11 @@ namespace std
 				}
 
 				if (a_str.size() != a_str.max_size()) {
-					bytesRead = a_input.get(c);
+					notEOF = a_input.get(c);
 				} else {
 					break;
 				}
-			} while (bytesRead == 1);
+			} while (notEOF);
 			return true;
 		} else {
 			return false;

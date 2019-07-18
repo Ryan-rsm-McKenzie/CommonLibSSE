@@ -32,7 +32,7 @@ namespace RE
 
 			// members
 			UInt32					flags : 3;				// 00 - 00
-			UInt32					numProperties : 19;		// 00 - 03
+			UInt32					numProperties : 19;		// 00 - 03 - msvc handles bitfields differently than gcc, so i need a pun for this
 			UInt32					pad04;					// 04
 			BSTSmartPointer<Class>	classPtr;				// 08
 			BSFixedString			currentState;			// 10

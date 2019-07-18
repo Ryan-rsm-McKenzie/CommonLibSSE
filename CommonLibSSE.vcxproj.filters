@@ -922,6 +922,12 @@
     <Filter Include="src\RE\BSSystem\BSSaveDataSystemUtility">
       <UniqueIdentifier>{dfefa24b-0f37-450f-af42-4a5a93f05270}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\BSSystem\BSStorage\IStore">
+      <UniqueIdentifier>{2d953ad2-4a63-46e6-9818-cb34051c3600}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSScript\Internal\IFuncCallQuery">
+      <UniqueIdentifier>{9b4a3583-5739-4894-9aad-8f4af31380f3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -2381,9 +2387,6 @@
     <ClInclude Include="include\RE\NiBinaryStream.h">
       <Filter>include\RE\NetImmerse\NiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSResourceNiBinaryStream.h">
-      <Filter>include\RE\NetImmerse\NiSystem</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ActiveEffect.h">
       <Filter>include\RE\FormComponents\Components\ActiveEffect</Filter>
     </ClInclude>
@@ -2948,9 +2951,6 @@
     <ClInclude Include="include\RE\BSScript\IStackCallbackSaveInterface.h">
       <Filter>include\RE\BSScript</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSScript\IStore.h">
-      <Filter>include\RE\BSScript</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSScript\IVirtualMachine.h">
       <Filter>include\RE\BSScript</Filter>
     </ClInclude>
@@ -3000,9 +3000,6 @@
       <Filter>include\RE\SkyrimScript</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\SkyrimScript\ObjectBindPolicy.h">
-      <Filter>include\RE\SkyrimScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\SkyrimScript\Store.h">
       <Filter>include\RE\SkyrimScript</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\SkyrimVM.h">
@@ -3875,14 +3872,26 @@
     <ClInclude Include="include\RE\BSScript\ObjectTypeTraits.h">
       <Filter>include\RE\BSScript\Traits</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSScript\Internal\IFuncCallQuery.h">
-      <Filter>include\RE\BSScript\Internal</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSScript\Internal\CodeTasklet.h">
       <Filter>include\RE\BSScript\Internal</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSScript\Internal\ScriptFunction.h">
       <Filter>include\RE\BSScript\IFunction</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\IStore.h">
+      <Filter>include\RE\BSSystem\BSStorage\IStore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SkyrimScript\Store.h">
+      <Filter>include\RE\BSSystem\BSStorage\IStore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\Internal\IFuncCallQuery.h">
+      <Filter>include\RE\BSScript\Internal\IFuncCallQuery</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\Internal\RawFuncCallQuery.h">
+      <Filter>include\RE\BSScript\Internal\IFuncCallQuery</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceNiBinaryStream.h">
+      <Filter>include\RE\NetImmerse\BS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -46,7 +46,7 @@ namespace RE
 		virtual BOOL			ReadFile(DWORD a_numberOfBytesToRead, LPVOID a_buffer) override;				// 04
 		virtual BOOL			WriteFile(DWORD a_numberOfBytesToWrite, LPCVOID a_buffer) override;				// 05
 
-		bool					IsGoodForRead() const;
+		bool IsGoodForRead() const;
 
 
 		// members
