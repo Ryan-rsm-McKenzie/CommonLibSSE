@@ -142,6 +142,10 @@ namespace RE
 	auto BSTSmartPointer<T, RefManager>::operator=(const BSTSmartPointer& a_r) noexcept
 		-> BSTSmartPointer&
 	{
+		if (this == &a_r) {
+			return *this;
+		}
+
 		reset(a_r._ptr);
 		return *this;
 	}
@@ -161,6 +165,10 @@ namespace RE
 	auto BSTSmartPointer<T, RefManager>::operator=(BSTSmartPointer&& a_r) noexcept
 		-> BSTSmartPointer&
 	{
+		if (this == &a_r) {
+			return *this;
+		}
+
 		Detach();
 		_ptr = std::move(a_r._ptr);
 		a_r._ptr = 0;
