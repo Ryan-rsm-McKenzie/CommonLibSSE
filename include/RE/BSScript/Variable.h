@@ -85,7 +85,7 @@ namespace RE
 			template <class T, typename std::enable_if_t<is_script_object_pointer_no_cvr<T>::value, int> = 0>	inline void SetData(T a_val) { SetObject(a_val); }
 			template <class T, typename std::enable_if_t<is_string_compat<T>::value, int> = 0>					inline void SetData(T a_val) { SetString(a_val); }
 
-			template <class T> void	Pack(const T a_src);
+			template <class T> void	Pack(T& a_src);
 			template <class T> T	Unpack();
 
 		protected:

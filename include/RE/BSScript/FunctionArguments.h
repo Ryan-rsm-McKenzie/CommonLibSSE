@@ -54,8 +54,7 @@ namespace RE
 			{}
 
 
-			virtual ~FunctionArguments()										// 00
-			{}
+			virtual ~FunctionArguments() = default;						// 00
 
 
 			virtual bool Copy(BSScrapArray<Variable>& a_dst) override	// 01

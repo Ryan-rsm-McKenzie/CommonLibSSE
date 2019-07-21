@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__Internal__IFuncCallQuery
+
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 
 
@@ -12,6 +14,9 @@ namespace RE
 			class IFuncCallQuery : public BSIntrusiveRefCounted
 			{
 			public:
+				inline static const void* RTTI = RTTI_BSScript__Internal__IFuncCallQuery;
+
+
 				virtual ~IFuncCallQuery();		// 00
 
 				// add

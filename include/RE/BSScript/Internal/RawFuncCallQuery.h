@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__Internal__RawFuncCallQuery
+
 #include "RE/BSScript/Internal/IFuncCallQuery.h"  // BSScript::Internal::IFuncCallQuery
 #include "RE/BSScript/Variable.h"  // BSScript::Variable
 #include "RE/BSFixedString.h"  // BSFixedString
@@ -19,6 +21,9 @@ namespace RE
 			class RawFuncCallQuery : public IFuncCallQuery
 			{
 			public:
+				inline static const void* RTTI = RTTI_BSScript__Internal__RawFuncCallQuery;
+
+
 				virtual ~RawFuncCallQuery();		// 00
 
 				// override (IFuncCallQuery)

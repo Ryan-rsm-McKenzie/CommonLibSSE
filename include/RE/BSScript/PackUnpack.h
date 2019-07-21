@@ -138,7 +138,7 @@ namespace RE
 
 
 		template <class T>
-		inline void Variable::Pack(T a_src)
+		inline void Variable::Pack(T& a_src)
 		{
 			PackValue<T>(this, a_src);
 		}

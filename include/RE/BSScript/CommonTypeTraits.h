@@ -67,12 +67,11 @@ namespace RE
 		}
 		template <class T> struct is_string_compat : _is_string_compat<typename remove_cvr_t<T>> {};
 
-		//namespace
-		//{
+
 		template <class T> struct is_not_ptr_or_ref : std::conjunction<is_not_pointer<typename std::remove_reference_t<T>>, is_not_reference<typename std::remove_pointer_t<T>>> {};
 		template<class T> struct is_cref_or_copy : std::disjunction<is_cref<T>, is_not_ptr_or_ref<T>> {};
-		//}
 		template <class T> struct is_string_cref_compat : std::conjunction<is_cref_or_copy<T>, is_string_no_cvr<T>> {};
+
 
 		namespace
 		{

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__Internal__ScriptFunction
+
 #include "RE/BSScript/IFunction.h"  // BSScript::IFunction
 #include "RE/BSScript/Type.h"  // BSScript::Type
 #include "RE/BSFixedString.h"  // BSFixedString
@@ -15,6 +17,9 @@ namespace RE
 			class ScriptFunction : public IFunction
 			{
 			public:
+				inline static const void* RTTI = RTTI_BSScript__Internal__ScriptFunction;
+
+
 				struct Variable
 				{
 					BSFixedString	name;	// 00

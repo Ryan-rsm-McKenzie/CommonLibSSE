@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__IStackCallbackSaveInterface
+
 
 namespace RE
 {
@@ -8,6 +10,9 @@ namespace RE
 		class IStackCallbackSaveInterface
 		{
 		public:
+			inline static const void* RTTI = RTTI_BSScript__IStackCallbackSaveInterface;
+
+
 			virtual ~IStackCallbackSaveInterface();	// 00
 
 			// add

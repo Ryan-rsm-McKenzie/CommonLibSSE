@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_BSScript__Internal__CodeTasklet
+
 #include "RE/BSScript/Internal/IFuncCallQuery.h"  // BSScript::Internal::IFuncCallQuery
 
 
@@ -20,6 +22,9 @@ namespace RE
 			class CodeTasklet : public IFuncCallQuery
 			{
 			public:
+				inline static const void* RTTI = RTTI_BSScript__Internal__CodeTasklet;
+
+
 				enum class OpCode : UInt32
 				{
 					kNOP,
