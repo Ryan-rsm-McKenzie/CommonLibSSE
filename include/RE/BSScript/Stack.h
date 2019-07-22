@@ -15,6 +15,7 @@ namespace RE
 		}
 
 
+		class IStackCallbackFunctor;
 		class SimpleAllocMemoryPagePolicy;
 		class StackFrame;
 
@@ -61,7 +62,7 @@ namespace RE
 			UInt32									stackID;			// 80
 			UInt32									unk84;				// 84
 			BSTSmartPointer<Internal::CodeTasklet>	codeTasklet;		// 88
-			BSTSmartPointer<BSIntrusiveRefCounted>	unk90;				// 90
+			BSTSmartPointer<IStackCallbackFunctor>	callbackFunctor;	// 90
 			BSTSmartPointer<Stack>					unk98;				// 98
 		};
 		STATIC_ASSERT(sizeof(Stack) == 0xA0);

@@ -9,18 +9,22 @@ namespace RE
 {
 	namespace BSScript
 	{
+		class Variable;
+
+
 		class IStackCallbackFunctor : public BSIntrusiveRefCounted
 		{
 		public:
 			inline static const void* RTTI = RTTI_BSScript__IStackCallbackFunctor;
 
 
-			virtual ~IStackCallbackFunctor();	// 00
+			IStackCallbackFunctor();
+			virtual ~IStackCallbackFunctor() = default;			// 00
 
 			// add
-			virtual void	Unk_01(void) = 0;	// 01
-			virtual bool	Unk_02(void);		// 02 - { return false; }
-			virtual void	Unk_03(void) = 0;	// 03
+			virtual void	SetResult(Variable* a_result) = 0;	// 01
+			virtual bool	Unk_02();							// 02 - { return false; }
+			virtual void	Unk_03(void) = 0;					// 03
 
 
 			// members

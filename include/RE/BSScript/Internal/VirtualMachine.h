@@ -26,6 +26,7 @@ namespace RE
 		class ErrorLogger;
 		class IFreezeQuery;
 		class ISavePatcherInterface;
+		class IStackCallbackFunctor;
 		class IStackCallbackSaveInterface;
 		class ObjectBindPolicy;
 		class SimpleAllocMemoryPagePolicy;

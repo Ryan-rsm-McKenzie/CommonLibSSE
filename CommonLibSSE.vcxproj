@@ -186,6 +186,7 @@
     <ClCompile Include="src\RE\BSResourceNiBinaryStream.cpp" />
     <ClCompile Include="src\RE\BSScript\Array.cpp" />
     <ClCompile Include="src\RE\BSScript\Class.cpp" />
+    <ClCompile Include="src\RE\BSScript\IStackCallbackFunctor.cpp" />
     <ClCompile Include="src\RE\BSScript\Object.cpp" />
     <ClCompile Include="src\RE\BSScript\Stack.cpp" />
     <ClCompile Include="src\RE\BSScript\Type.cpp" />
