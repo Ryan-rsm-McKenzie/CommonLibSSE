@@ -19,15 +19,15 @@ namespace RE
 
 
 		// members
-		UInt64	unk08;	// 08
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
-		UInt64	unk20;	// 20
-		UInt64	unk28;	// 28
-		UInt64	unk30;	// 30
-		UInt64	unk38;	// 38
-		UInt64	unk40;	// 40
-		UInt64	unk48;	// 48
+		CRITICAL_SECTION	lock;			// 08
+		HANDLE				thread;			// 30
+		HANDLE				ownerThread;	// 38
+		UInt32				threadID;		// 40
+		UInt32				ownerThreadID;	// 44
+		bool				initialized;	// 48
+		UInt8				pad49;			// 49
+		UInt16				pad4A;			// 4A
+		UInt32				pad4C;			// 4C
 	};
 	STATIC_ASSERT(sizeof(BSThread) == 0x50);
 }

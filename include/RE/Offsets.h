@@ -110,7 +110,7 @@ namespace RE
 
 		namespace BSScript
 		{
-			namespace BSScriptObject
+			namespace Object
 			{
 				// IndirectSig: E8 ? ? ? ? 49 89 3F
 				constexpr std::uintptr_t IncRefCount = 0x01233EB0;	// 1_5_80

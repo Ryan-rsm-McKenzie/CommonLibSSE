@@ -928,6 +928,12 @@
     <Filter Include="include\RE\BSScript\Internal\IFuncCallQuery">
       <UniqueIdentifier>{9b4a3583-5739-4894-9aad-8f4af31380f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\bgs">
+      <UniqueIdentifier>{45f66835-59d8-4c95-a816-947173c23840}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\bgs\saveload">
+      <UniqueIdentifier>{629163d0-bd86-49cc-97c7-11539bf627ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1463,6 +1469,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\BSScript\IStackCallbackFunctor.cpp">
       <Filter>src\RE\BSScript</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSSaveLoadManager.cpp">
+      <Filter>src\RE\FileIO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -3898,6 +3907,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESInitScriptEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bgs\saveload\Request.h">
+      <Filter>include\RE\bgs\saveload</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSSaveLoadManager.h">
+      <Filter>include\RE\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\RaceSexMenuEvent.h">
+      <Filter>include\RE\Events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

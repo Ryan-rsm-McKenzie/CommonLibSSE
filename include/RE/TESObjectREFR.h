@@ -5,6 +5,7 @@
 #include "RE/BaseExtraList.h"  // BaseExtraList
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSHandleRefObject.h"  // BSHandleRefObject
+#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 #include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 #include "RE/FormTypes.h"  // FormTypes

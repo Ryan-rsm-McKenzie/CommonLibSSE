@@ -36,7 +36,7 @@ namespace RE
 		void Object::IncRefCount()
 		{
 			using func_t = function_type_t<decltype(&Object::IncRefCount)>;
-			REL::Offset<func_t*> func(Offset::BSScript::BSScriptObject::IncRefCount);
+			REL::Offset<func_t*> func(Offset::BSScript::Object::IncRefCount);
 			return func(this);
 		}
 
@@ -44,7 +44,7 @@ namespace RE
 		SInt32 Object::DecRefCount()
 		{
 			using func_t = function_type_t<decltype(&Object::DecRefCount)>;
-			REL::Offset<func_t*> func(Offset::BSScript::BSScriptObject::DecRefCount);
+			REL::Offset<func_t*> func(Offset::BSScript::Object::DecRefCount);
 			return func(this);
 		}
 	}

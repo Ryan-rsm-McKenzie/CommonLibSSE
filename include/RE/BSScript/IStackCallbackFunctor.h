@@ -23,7 +23,7 @@ namespace RE
 
 			// add
 			virtual void	SetResult(Variable* a_result) = 0;	// 01
-			virtual bool	Unk_02();							// 02 - { return false; }
+			virtual bool	CanBeSaved();						// 02 - { return false; }
 			virtual void	Unk_03(void) = 0;					// 03
 
 

@@ -179,6 +179,7 @@
     <ClCompile Include="src\RE\BGSKeywordForm.cpp" />
     <ClCompile Include="src\RE\BGSLocation.cpp" />
     <ClCompile Include="src\RE\BGSPerkEntry.cpp" />
+    <ClCompile Include="src\RE\BGSSaveLoadManager.cpp" />
     <ClCompile Include="src\RE\BSAudioManager.cpp" />
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
     <ClCompile Include="src\RE\BSIMusicType.cpp" />
@@ -424,6 +425,7 @@
     <ClInclude Include="include\RE\BGSReferenceEffect.h" />
     <ClInclude Include="include\RE\BGSRelationship.h" />
     <ClInclude Include="include\RE\BGSReverbParameters.h" />
+    <ClInclude Include="include\RE\BGSSaveLoadManager.h" />
     <ClInclude Include="include\RE\BGSScene.h" />
     <ClInclude Include="include\RE\BGSSceneAction.h" />
     <ClInclude Include="include\RE\BGSSceneActionDialogue.h" />
@@ -483,6 +485,7 @@
     <ClInclude Include="include\RE\BGSTypedItem.h" />
     <ClInclude Include="include\RE\BGSVoiceType.h" />
     <ClInclude Include="include\RE\BGSVolumetricLighting.h" />
+    <ClInclude Include="include\RE\bgs\saveload\Request.h" />
     <ClInclude Include="include\RE\bhkCachingShapePhantom.h" />
     <ClInclude Include="include\RE\bhkCharacterController.h" />
     <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
@@ -950,6 +953,7 @@
     <ClInclude Include="include\RE\ProcessLists\GetActorsFilter.h" />
     <ClInclude Include="include\RE\Projectile.h" />
     <ClInclude Include="include\RE\QuestEvents.h" />
+    <ClInclude Include="include\RE\RaceSexMenuEvent.h" />
     <ClInclude Include="include\RE\ReferenceEffectController.h" />
     <ClInclude Include="include\RE\GMatrix2D.h" />
     <ClInclude Include="include\RE\RegSettingCollection.h" />

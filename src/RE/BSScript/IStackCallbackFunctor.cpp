@@ -10,7 +10,7 @@ namespace RE
 		{}
 
 
-		bool IStackCallbackFunctor::Unk_02()
+		bool IStackCallbackFunctor::CanBeSaved()
 		{
 			return false;
 		}

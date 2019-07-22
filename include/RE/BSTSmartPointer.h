@@ -4,8 +4,6 @@
 #include <cstddef>  // nullptr_t
 #include <type_traits>  // enable_if_t, is_convertible
 
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
-
 
 namespace RE
 {
