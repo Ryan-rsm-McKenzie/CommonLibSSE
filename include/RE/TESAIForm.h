@@ -104,45 +104,6 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x4);
 
 
-		struct DataStruct
-		{
-			constexpr DataStruct(bool a_bit0, bool a_bit1, bool a_bit2, bool a_bit3, bool a_bit4, bool a_bit5, bool a_bit6, bool a_bit7) :
-				bit0(a_bit0),
-				bit1(a_bit1),
-				bit2(a_bit2),
-				bit3(a_bit3),
-				bit4(a_bit4),
-				bit5(a_bit5),
-				bit6(a_bit6),
-				bit7(a_bit7)
-			{}
-
-
-			bool bit0 : 1;	// 00
-			bool bit1 : 1;	// 01
-			bool bit2 : 1;	// 02
-			bool bit3 : 1;	// 03
-			bool bit4 : 1;	// 04
-			bool bit5 : 1;	// 05
-			bool bit6 : 1;	// 06
-			bool bit7 : 1;	// 07
-		};
-		STATIC_ASSERT(sizeof(DataStruct) == 0x1);
-
-
-		union DataPun
-		{
-			constexpr DataPun(bool a_bit0 = 0, bool a_bit1 = 0, bool a_bit2 = 0, bool a_bit3 = 0, bool a_bit4 = 0, bool a_bit5 = 0, bool a_bit6 = 0, bool a_bit7 = 0) :
-				s(a_bit0, a_bit1, a_bit2, a_bit3, a_bit4, a_bit5, a_bit6, a_bit7)
-			{}
-
-
-			DataStruct	s;
-			UInt8		v;
-		};
-		STATIC_ASSERT(sizeof(DataPun) == 0x1);
-
-
 		Aggression		GetAggression() const;
 		Confidence		GetConfidence() const;
 		UInt8			GetEnergyLevel() const;

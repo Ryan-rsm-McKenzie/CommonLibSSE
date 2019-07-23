@@ -17,7 +17,7 @@ namespace RE
 
 		// override (IMemoryHeap)
 		virtual void		Unk_02(void) override;										// 02
-		virtual void		Allocate(std::size_t a_size, UInt32 a_alignment) override;	// 04
+		virtual void*		Allocate(std::size_t a_size, UInt32 a_alignment) override;	// 04
 		virtual void		Unk_06(void) override;										// 06
 		virtual const char*	GetName() override;											// 07 - { return name; }
 		virtual bool		IsCommittedInHeap(void* a_memory) override;					// 0A

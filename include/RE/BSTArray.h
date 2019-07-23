@@ -1,18 +1,17 @@
 #pragma once
 
-#include <cassert>
-#include <cstdint>
-#include <functional>
-#include <memory>
-#include <utility>
+#include "skse64/GameRTTI.h"  // RTTI_BSTArrayBase__IAllocatorFunctor
 
-#include "RE/Offsets.h"
+#include <cassert>
+
 #include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
-#include "REL/Relocation.h"
 
 
 namespace RE
 {
+	class ScrapHeap;
+
+
 	class BSTArrayBase
 	{
 	public:
@@ -22,165 +21,79 @@ namespace RE
 		class IAllocatorFunctor
 		{
 		public:
-			IAllocatorFunctor();
+			inline static const void* RTTI = RTTI_BSTArrayBase__IAllocatorFunctor;
+
 
 			// add
-			virtual bool	Allocate(size_type a_num, size_type a_valueSize) = 0;																				// 00
-			virtual bool	Resize(size_type a_needNum, size_type a_copyFrontNum, size_type a_copySkipNum, size_type a_copyTailNum, size_type a_valueSize) = 0;	// 01
-			virtual void	Free(void* a_ptr) = 0;																												// 02
+			virtual bool	Allocate(UInt32 a_num, UInt32 a_valueSize) = 0;																			// 00
+			virtual bool	Resize(UInt32 a_needNum, UInt32 a_copyFrontNum, UInt32 a_copySkipNum, UInt32 a_copyTailNum, UInt32 a_valueSize) = 0;	// 01
+			virtual void	Free(void* a_ptr) = 0;																									// 02
 
-			virtual ~IAllocatorFunctor();																														// 03
+			IAllocatorFunctor() = default;
+			virtual ~IAllocatorFunctor() = default;																									// 03
 
 			TES_HEAP_REDEFINE_NEW();
 		};
 		STATIC_ASSERT(sizeof(IAllocatorFunctor) == 0x8);
 
 
-		BSTArrayBase() :
-			_count(0),
-			_pad4(0)
-		{}
+		BSTArrayBase();
+		~BSTArrayBase();
 
+		[[nodiscard]] bool empty() const;
 
-		bool empty() const
-		{
-			return _count == 0;
-		}
-
-
-		size_type size() const
-		{
-			return _count;
-		}
+		size_type size() const;
 
 	protected:
-		void _allocate(IAllocatorFunctor& a_functor, size_type a_num, size_type a_valueSize)
-		{
-			a_functor.Allocate(a_num, a_valueSize);
-		}
+		void set_size(UInt32 a_size);
 
-
-		void _resize(IAllocatorFunctor& a_functor, size_type a_num, size_type a_valueSize)
-		{
-			a_functor.Resize(a_num, _count, 0, 0, a_valueSize);
-		}
-
-
-		void _pop(size_type a_num)
-		{
-			_count -= a_num;
-		}
-
-
-		void _clear()
-		{
-			_count = 0;
-		}
-
-
-		SInt32 _push(IAllocatorFunctor& a_functor, size_type a_capacity, size_type a_valueSize)
-		{
-			using func_t = function_type_t<decltype(&BSTArrayBase::_push)>;
-			REL::Offset<func_t*> func(RE::Offset::BSTArrayBase::Push);
-			return func(this, a_functor, a_capacity, a_valueSize);
-		}
-
-
-		void _move(void* a_entries, size_type a_to, size_type a_from, size_type a_num, size_type a_valueSize)
-		{
-			using func_t = function_type_t<decltype(&BSTArrayBase::_move)>;
-			REL::Offset<func_t*> func(RE::Offset::BSTArrayBase::Move);
-			return func(this, a_entries, a_to, a_from, a_num, a_valueSize);
-		}
-
-	public:
+	private:
 		// members
-		size_type	_count;	// 0
-		size_type	_pad4;	// 4
+		UInt32 _size;	// 0
 	};
-	STATIC_ASSERT(sizeof(BSTArrayBase) == 0x8);
+	STATIC_ASSERT(sizeof(BSTArrayBase) == 0x4);
 
 
-	/*---------------------------------------------------
-	/ Allocator
-	/----------------------------------------------------*/
 	template <class Allocator> class BSTArrayAllocatorFunctor;
 
 
 	class BSTArrayHeapAllocator
 	{
-		friend class BSTArrayAllocatorFunctor<BSTArrayHeapAllocator>;
 	public:
 		using size_type = typename BSTArrayBase::size_type;
 		using functor_type = BSTArrayAllocatorFunctor<BSTArrayHeapAllocator>;
 
 
-		BSTArrayHeapAllocator() :
-			_entries(nullptr),
-			_capacity(0),
-			_pad0C(0)
-		{}
+		BSTArrayHeapAllocator();
+		BSTArrayHeapAllocator(const BSTArrayHeapAllocator&) = delete;
+		BSTArrayHeapAllocator(BSTArrayHeapAllocator&& a_rhs);
+		~BSTArrayHeapAllocator();
 
+		TES_HEAP_REDEFINE_NEW();
 
-		~BSTArrayHeapAllocator()
-		{
-			if (_entries) {
-				_Free();
-			}
-		}
+		void* data();
+		const void* data() const;
 
-
-		size_type capacity() const
-		{
-			return _capacity;
-		}
+		size_type capacity() const;
 
 	protected:
-		void* _GetEntries()
-		{
-			return _entries;
-		}
+		void* allocate(std::size_t a_size);
+		void deallocate(void* a_ptr);
+		void set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t a_typeSize);
+
+	private:
+		friend class BSTArrayAllocatorFunctor<BSTArrayHeapAllocator>;
 
 
-		const void* _GetEntries() const
-		{
-			return _entries;
-		}
-
-
-		inline bool _Allocate(size_type a_num, size_type a_valueSize)
-		{
-			using func_t = function_type_t<decltype(&BSTArrayHeapAllocator::_Allocate)>;
-			REL::Offset<func_t*> func(RE::Offset::BSTArrayHeapAllocator::Allocate);
-			return func(this, a_num, a_valueSize);
-		}
-
-
-		inline bool _Resize(size_type a_needNum, size_type a_copyFrontNum, size_type a_copySkipNum, size_type a_copyTailNum, size_type a_valueSize)
-		{
-			using func_t = function_type_t<decltype(&BSTArrayHeapAllocator::_Resize)>;
-			REL::Offset<func_t*> func(RE::Offset::BSTArrayHeapAllocator::Resize);
-			return func(this, a_needNum, a_copyFrontNum, a_copySkipNum, a_copyTailNum, a_valueSize);
-		}
-
-
-		inline void _Free()
-		{
-			using func_t = function_type_t<decltype(&BSTArrayHeapAllocator::_Free)>;
-			REL::Offset<func_t*> func(RE::Offset::BSTArrayHeapAllocator::Free);
-			return func(this);
-		}
-
-	public:
 		// members
-		void*		_entries;	// 00
-		size_type	_capacity;	// 08
-		size_type	_pad0C;		// 0C
+		void*	_data;		// 00
+		UInt32	_capacity;	// 08
+		UInt32	_pad0C;		// 0C
 	};
 	STATIC_ASSERT(sizeof(BSTArrayHeapAllocator) == 0x10);
 
 
-	template <std::uint32_t LOCAL_SIZE>
+	template <UInt32 BUFFER_SIZE>
 	class BSTSmallArrayHeapAllocator
 	{
 	public:
@@ -188,21 +101,62 @@ namespace RE
 		using functor_type = BSTArrayAllocatorFunctor<BSTSmallArrayHeapAllocator>;
 
 
-		enum { kLocalAlloc = 0x80000000 };
+		enum : UInt32 { kLocalAlloc = static_cast<UInt32>(1 << 31) };
+
+
+		union Data
+		{
+			Data() :
+				local{ 0 }
+			{}
+
+			void*	heap;
+			char	local[BUFFER_SIZE];
+		};
 
 
 		BSTSmallArrayHeapAllocator() :
+			_capacity(kLocalAlloc),
 			_pad04(0),
-			_capacity(LOCAL_SIZE | kLocalAlloc),
-			_entries()
+			_data()
 		{}
+
+
+		BSTSmallArrayHeapAllocator(const BSTSmallArrayHeapAllocator&) = delete;
+
+
+		BSTSmallArrayHeapAllocator(BSTSmallArrayHeapAllocator&& a_rhs) :
+			_capacity(std::move(a_rhs._capacity)),
+			_pad04(0),
+			_data()
+		{
+			a_rhs._capacity = BUFFER_SIZE | kLocalAlloc;
+			std::memmove(_data.local, a_rhs._data.local, BUFFER_SIZE);
+			std::memset(a_rhs._data.local, 0, BUFFER_SIZE);
+		}
 
 
 		~BSTSmallArrayHeapAllocator()
 		{
-			if (!_IsLocal() && _capacity) {
-				_Free();
+			if (!is_local()) {
+				free(_data.heap);
 			}
+			memzero(this);
+		}
+
+
+		TES_HEAP_REDEFINE_NEW();
+
+
+		void* data()
+		{
+			return is_local() ? _data.local : _data.heap;
+		}
+
+
+		const void* data() const
+		{
+			return is_local() ? _data.local : _data.heap;
 		}
 
 
@@ -212,65 +166,69 @@ namespace RE
 		}
 
 	protected:
-		void* _GetEntries()
+		void* allocate(std::size_t a_size)
 		{
-			return _IsLocal() ? _entries.local : _entries.heap;
+			if (a_size > BUFFER_SIZE) {
+				auto mem = malloc(a_size);
+				assert(mem != 0);
+				std::memset(mem, 0, a_size);
+				return mem;
+			} else {
+				return _data.local;
+			}
 		}
 
 
-		const void* _GetEntries() const
+		void deallocate(void* a_ptr)
 		{
-			return _IsLocal() ? _entries.local : _entries.heap;
+			free(a_ptr);
 		}
 
 
-		bool _IsLocal() const
+		void set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t a_typeSize)
 		{
-			return (_capacity & kLocalAlloc) != 0;
+			if (a_capacity * a_typeSize > BUFFER_SIZE) {
+				_capacity = a_capacity;
+				_data.heap = a_data;
+			} else {
+				_capacity = kLocalAlloc | a_capacity;
+			}
 		}
-
-	protected:
-		union Entry
-		{
-			Entry() : heap(0) {}
-
-			void*	heap;
-			char	local[LOCAL_SIZE];
-		};
-
-	public:
-		// members
-		size_type	_capacity;	// 00
-		size_type	_pad04;		// 04
-		Entry		_entries;	// 08
 
 	private:
 		friend class BSTArrayAllocatorFunctor<BSTSmallArrayHeapAllocator>;
 
 
-		inline bool _Allocate(size_type a_num, size_type a_valueSize, size_type a_localSize = LOCAL_SIZE)
+		bool is_local() const
 		{
-			using func_t = function_type_t<decltype(&_Allocate)>;
-			REL::Offset<func_t*> func(Offset::BSTSmallArrayHeapAllocator::Allocate);
-			return func(this, a_num, a_valueSize, a_localSize);
+			return (_capacity & kLocalAlloc) != 0;
 		}
 
 
-		inline bool _Resize(size_type a_needNum, size_type a_copyFrontNum, size_type a_copySkipNum, size_type a_copyTailNum, size_type a_valueSize, size_type a_localSize = LOCAL_SIZE)
+		void set_local(bool a_local)
 		{
-			using func_t = function_type_t<decltype(&_Resize)>;
-			REL::Offset<func_t*> func(Offset::BSTSmallArrayHeapAllocator::Resize);
-			return func(this, a_needNum, a_copyFrontNum, a_copySkipNum, a_copyTailNum, a_valueSize, a_localSize);
+			if (a_local) {
+				_capacity |= kLocalAlloc;
+			} else {
+				_capacity &= ~kLocalAlloc;
+			}
 		}
 
 
-		inline void _Free()
+		void set_capacity(UInt32 a_capacity)
 		{
-			using func_t = function_type_t<decltype(&_Free)>;
-			REL::Offset<func_t*> func(Offset::BSTSmallArrayHeapAllocator::Free);
-			return func(this);
+			auto local = is_local();
+			_capacity = a_capacity;
+			set_local(local);
 		}
+
+
+		// members
+		UInt32	_capacity;	// 00
+		UInt32	_pad04;		// 04
+		Data	_data;		// 08
 	};
+	STATIC_ASSERT(sizeof(BSTSmallArrayHeapAllocator<sizeof(void*)>) == 0x10);
 
 
 	class BSScrapArrayAllocator
@@ -280,606 +238,460 @@ namespace RE
 		using functor_type = BSTArrayAllocatorFunctor<BSScrapArrayAllocator>;
 
 
-		BSScrapArrayAllocator() :
-			_allocator(nullptr),
-			_entries(nullptr),
-			_capacity(0),
-			_pad14(0)
-		{}
+		BSScrapArrayAllocator();
+		BSScrapArrayAllocator(const BSScrapArrayAllocator&) = delete;
+		BSScrapArrayAllocator(BSScrapArrayAllocator&& a_rhs);
+		~BSScrapArrayAllocator();
 
+		TES_HEAP_REDEFINE_NEW();
 
-		~BSScrapArrayAllocator()
-		{
-			if (_entries) {
-				_Free();
-			}
-		}
+		void* data();
+		const void* data() const;
 
-
-		size_type capacity() const
-		{
-			return _capacity;
-		}
+		size_type capacity() const;
 
 	protected:
-		void* _GetEntries()
-		{
-			return _entries;
-		}
-
-
-		const void* _GetEntries() const
-		{
-			return _entries;
-		}
-
-	public:
-		// members
-		void*		_allocator;	// 00 - ScrapHeap*
-		void*		_entries;	// 08
-		size_type	_capacity;	// 10
-		size_type	_pad14;		// 14
+		void* allocate(std::size_t a_size);
+		void deallocate(void* a_ptr);
+		void set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t a_typeSize);
 
 	private:
 		friend class BSTArrayAllocatorFunctor<BSScrapArrayAllocator>;
 		friend class BSTArrayAllocatorFunctor<BSTArrayHeapAllocator>;
 
 
-		inline bool _Allocate(size_type a_num, size_type a_valueSize)
-		{
-			using func_t = function_type_t<decltype(&BSScrapArrayAllocator::_Allocate)>;
-			REL::Offset<func_t*> func(RE::Offset::BSScrapArrayAllocator::Allocate);
-			return func(this, a_num, a_valueSize);
-		}
-
-
-		inline bool _Resize(size_type a_needNum, size_type a_copyFrontNum, size_type a_copySkipNum, size_type a_copyTailNum, size_type a_valueSize)
-		{
-			using func_t = function_type_t<decltype(&BSScrapArrayAllocator::_Resize)>;
-			REL::Offset<func_t*> func(RE::Offset::BSScrapArrayAllocator::Resize);
-			return func(this, a_needNum, a_copyFrontNum, a_copySkipNum, a_copyTailNum, a_valueSize);
-		}
-
-
-		inline void _Free()
-		{
-			using func_t = function_type_t<decltype(&BSScrapArrayAllocator::_Free)>;
-			REL::Offset<func_t*> func(RE::Offset::BSScrapArrayAllocator::Free);
-			return func(this);
-		}
-	};
-
-
-	// AllocatorFunctor
-	template <class Allocator>
-	class BSTArrayAllocatorFunctor : public BSTArrayBase::IAllocatorFunctor
-	{
-	public:
-		using size_type = typename BSTArrayBase::size_type;
-		using allocator_type = Allocator;
-
-
-		explicit BSTArrayAllocatorFunctor(allocator_type* a_allocator) :
-			_allocator(a_allocator)
-		{}
-
-
-		virtual bool Allocate(size_type a_num, size_type a_value_size) override
-		{
-			return _allocator->_Allocate(a_num, a_value_size);
-		}
-
-
-		virtual bool Resize(size_type a_needNum, size_type a_copyFrontNum, size_type a_copySkipNum, size_type a_copyTailNum, size_type a_value_size) override
-		{
-			return _allocator->_Resize(a_needNum, a_copyFrontNum, a_copySkipNum, a_copyTailNum, a_value_size);
-		}
-
-
-		virtual void Free(void* a_ptr) override
-		{
-			_allocator->_Free();
-		}
-
-	public:
 		// members
-		allocator_type* _allocator;	// 08
+		ScrapHeap*	_allocator;	// 00
+		void*		_data;		// 08
+		size_type	_capacity;	// 10
+		size_type	_pad14;		// 14
 	};
+	STATIC_ASSERT(sizeof(BSScrapArrayAllocator) == 0x18);
 
-	/*---------------------------------------------------
-	/ BSTArray
-	/----------------------------------------------------*/
 
-	// the same type as tArray in skse
 	template <class T, class Allocator = BSTArrayHeapAllocator>
 	class BSTArray :
 		public Allocator,
 		public BSTArrayBase
 	{
 	public:
-		using allocator_type = Allocator;
-		using functor_type = BSTArrayAllocatorFunctor<allocator_type>;
 		using value_type = T;
-		using pointer = T*;
-		using const_pointer = const T*;
-		using reference = T&;
-		using const_reference = const T&;
+		using allocator_type = Allocator;
 		using size_type = typename BSTArrayBase::size_type;
-		using difference_type = std::ptrdiff_t;
-		using iterator = pointer;
-		using const_iterator = const_pointer;
-
-		using Allocator::_GetEntries;
-		using Allocator::capacity;
+		using reference = value_type&;
+		using const_reference = const value_type&;
+		using iterator = T*;
+		using const_iterator = const T*;
 
 
-		TES_HEAP_REDEFINE_NEW();
-
-	protected:
-		pointer _head() const
-		{
-			return const_cast<pointer>((const_pointer)_GetEntries());
-		}
-
-
-		pointer _tail() const
-		{
-			return _head() + size() - 1;
-		}
-
-
-		pointer _last() const
-		{
-			return _head() + size();
-		}
-
-
-		void _set(UInt32 a_index, UInt32 a_num, const value_type& a_val)
-		{
-			pointer *p = _head() + a_index;
-			while (a_num > 0) {
-				new(p) value_type(a_val);
-				--a_num;
-			}
-		}
-
-	public:
-		BSTArray()
+		BSTArray() :
+			Allocator(),
+			BSTArrayBase()
 		{}
 
 
-		BSTArray(const BSTArray& a_rhs)
+		explicit BSTArray(size_type a_count) :
+			Allocator(),
+			BSTArrayBase()
 		{
-			UInt32 size = a_rhs.GetSize();
-			if (size > 0) {
-				functor_type pred(this);
-				_allocate(pred, size, sizeof(value_type));
-				pointer p = a_rhs._head();
-				pointer last = a_rhs._last();
-				while (p <= last)
-					push_back(*p++);
+			if (a_count == 0) {
+				return;
 			}
+
+			auto newCapacity = a_count;
+			auto newSize = a_count;
+			auto newData = allocate(newCapacity);
+			for (UInt32 i = 0; i < newSize; ++i) {
+				new(std::addressof(newData[i])) value_type();
+			}
+
+			set_allocator_traits(newData, newCapacity);
+			set_size(newSize);
 		}
 
 
-		explicit BSTArray(std::uint32_t a_num)
+		BSTArray(const BSTArray& a_rhs) :
+			Allocator(),
+			BSTArrayBase()
 		{
-			functor_type pred(this);
-			_allocate(pred, a_num, sizeof(value_type));
+			auto newCapacity = a_rhs.capacity();
+			if (newCapacity == 0) {
+				return;
+			}
+
+			auto newSize = a_rhs.size();
+			auto newData = allocate(newCapacity);
+			for (UInt32 i = 0; i < newSize; ++i) {
+				new(std::addressof(newData[i])) value_type(a_rhs[i]);
+			}
+
+			set_allocator_traits(newData, newCapacity);
+			set_size(newSize);
 		}
+
+
+		BSTArray(BSTArray&& a_rhs) :
+			Allocator(std::move(a_rhs)),
+			BSTArrayBase(std::move(a_rhs))
+		{}
 
 
 		~BSTArray()
-		{
-			for (std::uint32_t i = 0; i < size(); ++i) {
-				(*this)[i].~value_type();
-			}
-		}
-
-
-		iterator begin()
-		{
-			return _head();
-		}
-
-
-		const_iterator cbegin() const
-		{
-			return _head();
-		}
-
-
-		const_iterator begin() const
-		{
-			return cbegin();
-		}
-
-
-		iterator end()
-		{
-			return _last();
-		}
-
-
-		const_iterator cend() const
-		{
-			return _last();
-		}
-
-
-		const_iterator end() const
-		{
-			return cend();
-		}
-
-
-		reference front()
-		{
-			return *_head();
-		}
-
-
-		const_reference front() const
-		{
-			return *_head();
-		}
-
-
-		reference back()
-		{
-			return *_tail();
-		}
-
-
-		const_reference back() const
-		{
-			return *_tail();
-		}
-
-
-		reference operator[] (size_type a_index)
-		{
-			return *(&front() + a_index);
-		}
-
-
-		const_reference operator[] (size_type a_index) const
-		{
-			return *(&front() + a_index);
-		}
-
-
-		void clear()
-		{
-			pointer last = _last();
-			for (pointer p = _head(); p < last; ++p)
-				p->~value_type();
-			_clear();
-		}
-
-
-		void reserve(size_type a_num)
-		{
-			const size_type cap = capacity();
-			if (cap >= a_num)
-				return;
-
-			functor_type pred(this);
-			if (cap) {
-				_resize(pred, a_num, sizeof(value_type));
-			} else {
-				_allocate(pred, a_num, sizeof(value_type));
-			}
-		}
-
-
-		void push_front(const_reference a_ref)
-		{
-			functor_type pred(this);
-			SInt32 index = _push(pred, capacity(), sizeof(value_type));
-			if (index >= 0) {
-				_move(_head(), 1, 0, index, sizeof(value_type));
-				new(_head())value_type(a_ref);
-			}
-		}
-
-
-		void push_front(value_type&& a_ref)
-		{
-			functor_type pred(this);
-			SInt32 index = _push(pred, capacity(), sizeof(value_type));
-			if (index >= 0) {
-				_move(_head(), 1, 0, index, sizeof(value_type));
-				new(_head())value_type(a_ref);
-			}
-		}
-
-
-		void push_back(const_reference a_ref)
-		{
-			functor_type pred(this);
-			SInt32 index = _push(pred, capacity(), sizeof(value_type));
-			if (index >= 0) {
-				new(_head() + index)value_type(a_ref);
-			}
-		}
-
-
-		void push_back(value_type&& a_ref)
-		{
-			functor_type pred(this);
-			SInt32 index = _push(pred, capacity(), sizeof(value_type));
-			if (index >= 0) {
-				new(_head() + index)value_type(a_ref);
-			}
-		}
-
-
-		template <class... Args>
-		void emplace_front(Args&& ... a_args)
-		{
-			functor_type pred(this);
-			SInt32 index = _push(pred, capacity(), sizeof(value_type));
-			if (index >= 0) {
-				_move(_head(), 1, 0, index, sizeof(value_type));
-				new(_head())value_type(std::forward<Args>(a_args)...);
-			}
-		}
-
-
-		template <class... Args>
-		void emplace_back(Args&& ... a_args)
-		{
-			functor_type pred(this);
-			SInt32 index = _push(pred, capacity(), sizeof(value_type));
-			if (index >= 0) {
-				new(_head() + index)value_type(std::forward<Args>(a_args)...);
-			}
-		}
-
-
-		void pop_front()
-		{
-			if (size()) {
-				_head()->~value_type();
-				_move(_head(), 0, size() - 1, 1, sizeof(value_type));
-				_pop(1);
-			}
-		}
-
-
-		void pop_back()
-		{
-			UInt32 num = size();
-			if (num) {
-				pointer p = &front() + (num - 1);
-				p->~value_type();
-				_pop(1);
-			}
-		}
-
-
-		inline iterator erase(iterator a_it)
-		{
-			if (begin() <= a_it && a_it < end()) {
-				difference_type index = a_it - begin();
-				a_it->~value_type();
-
-				difference_type next = index + 1;
-				UInt32 num = size() - next;
-				if (num > 0) {
-					_move(_head(), index, next, num, sizeof(value_type));
-				}
-				_pop(1);
-			}
-			return a_it;
-		}
-
-
-		//==================================================
-
-
-		inline UInt32 GetSize() const
-		{
-			return size();
-		}
-
-
-		inline UInt32 GetCapacity() const
-		{
-			return capacity();
-		}
-
-
-		inline reference Front()
-		{
-			return front();
-		}
-
-
-		inline const_reference Front() const
-		{
-			return front();
-		}
-
-
-		inline bool GetAt(size_type a_index, reference a_val) const
-		{
-			return (a_index < size()) ? (a_val = *(_head() + a_index), true) : false;
-		}
-
-
-		inline bool SetAt(size_type a_index, const_reference a_val)
-		{
-			return (a_index < size()) ? (*(_head() + a_index) = a_val, true) : false;
-		}
-
-
-		inline bool SetAt(size_type a_index, value_type&& a_rval)
-		{
-			return (a_index < size()) ? (*(_head() + a_index) = a_rval, true) : false;
-		}
-
-
-		inline bool GetNthItem(size_type a_index, reference a_val) const
-		{
-			return (a_index < size()) ? (a_val = *(_head() + a_index), true) : false;
-		}
-
-
-		inline void Add(const_reference a_ref)
-		{
-			push_back(a_ref);
-		}
-
-
-		inline void Add(value_type&& a_ref)
-		{
-			push_back(a_ref);
-		}
-
-
-		void Remove(const_reference a_ref)
-		{
-			SInt32 index = Find(a_ref);
-			if (index != -1) {
-				pointer p = _head() + index;
-				p->~value_type();
-
-				UInt32 next = index + 1;
-				std::uint32_t num = size() - next;
-				if (num > 0) {
-					_move(_head(), index, next, num, sizeof(value_type));
-				}
-				_pop(1);
-			}
-		}
-
-
-		void RemoveAtEndFill(size_type a_index, size_type a_num = 1)
-		{
-			pointer p = _head() + a_index;
-			for (std::uint32_t i = 0; i < a_num; i++) {
-				(p++)->~value_type();
-			}
-
-			size_type n = size();
-			size_type tailNum = n - (a_index + a_num);
-			if (tailNum > 0) {
-				if (tailNum >= a_num)
-					tailNum = a_num;
-				size_type from = n - tailNum;
-				size_type to = a_index;
-				_move(_head(), to, from, tailNum, sizeof(value_type));
-			}
-			_pop(a_num);
-		}
-
-
-		inline void RemoveEnd()
-		{
-			pop_back();
-		}
-
-
-		inline void RemoveAll()
 		{
 			clear();
 		}
 
 
-		inline void PopBack()
+		TES_HEAP_REDEFINE_NEW();
+
+
+		reference operator[](size_type a_pos)
 		{
-			pop_back();
+			assert(a_pos < size());
+			return data()[a_pos];
 		}
 
 
-		inline void PopFront()
+		const_reference operator[](size_type a_pos) const
 		{
-			pop_front();
+			assert(a_pos < size());
+			return data()[a_pos];
 		}
 
 
-		SInt32 Find(const_reference a_ref) const
+		reference front()
 		{
-			const_pointer entries = _head();
-			SInt32 index = -1;
-			for (size_type i = 0; i < size(); ++i) {
-				if (entries[i] == a_ref) {
-					index = i;
-					break;
+			return data()[0];
+		}
+
+
+		const_reference front() const
+		{
+			return data()[0];
+		}
+
+
+		reference back()
+		{
+			return data()[size() - 1];
+		}
+
+
+		const_reference back() const
+		{
+			return data()[size() - 1];
+		}
+
+
+		T* data()
+		{
+			return static_cast<T*>(allocator_type::data());
+		}
+
+
+		const T* data() const
+		{
+			return static_cast<const T*>(allocator_type::data());
+		}
+
+
+		iterator begin()
+		{
+			return empty() ? iterator{} : std::addressof(data()[0]);
+		}
+
+
+		const_iterator begin() const
+		{
+			return empty() ? const_iterator{} : std::addressof(data()[0]);
+		}
+
+
+		const_iterator cbegin() const
+		{
+			return begin();
+		}
+
+
+		iterator end()
+		{
+			return empty() ? iterator{} : std::addressof(data()[size()]);
+		}
+
+
+		const_iterator end() const
+		{
+			return empty() ? const_iterator{} : std::addressof(data()[size()]);
+		}
+
+
+		const_iterator cend() const
+		{
+			return end();
+		}
+
+
+		[[nodiscard]] bool empty() const
+		{
+			return BSTArrayBase::empty();
+		}
+
+
+		size_type size() const
+		{
+			return BSTArrayBase::size();
+		}
+
+
+		void reserve(size_type a_newCap)
+		{
+			if (a_newCap > capacity()) {
+				change_capacity(a_newCap);
+			}
+		}
+
+
+		size_type capacity() const
+		{
+			return allocator_type::capacity();
+		}
+
+
+		void shrink_to_fit()
+		{
+			auto newCapacity = size();
+			if (newCapacity != capacity()) {
+				change_capacity(newCapacity);
+			}
+		}
+
+
+		void clear()
+		{
+			if (!empty()) {
+				change_size(0);
+			}
+		}
+
+
+		void push_back(const T& a_value)
+		{
+			if (size() == capacity()) {
+				grow_capacity();
+			}
+
+			set_size(size() + 1);
+			new(std::addressof(back())) value_type(a_value);
+		}
+
+
+		void push_back(T&& a_value)
+		{
+			if (size() == capacity()) {
+				grow_capacity();
+			}
+
+			set_size(size() + 1);
+			new(std::addressof(back())) value_type(std::move(a_value));
+		}
+
+
+		template <class... Args>
+		reference emplace_back(Args&&... a_args)
+		{
+			if (size() == capacity()) {
+				grow_capacity();
+			}
+
+			set_size(size() + 1);
+			auto elem = back();
+			new(std::addressof(elem)) value_type(std::forward<Args>(a_args)...);
+			return elem;
+		}
+
+
+		void pop_back()
+		{
+			assert(!empty());
+			back().~value_type();
+			set_size(size() - 1);
+		}
+
+
+		void resize(size_type a_count)
+		{
+			if (a_count != size()) {
+				change_size(a_count);
+			}
+		}
+
+
+		void resize(size_type a_count, const value_type& a_value)
+		{
+			if (a_count != size()) {
+				change_size(a_count, a_value);
+			}
+		}
+
+
+	private:
+		static constexpr size_type DF_CAP = 4;	// beth default
+		static constexpr float GROWTH_FACTOR = 1.5;	// not part of native type
+
+
+		T* allocate(UInt32 a_num)
+		{
+			return static_cast<T*>(allocator_type::allocate(a_num * sizeof(T)));
+		}
+
+
+		void deallocate(void* a_ptr)
+		{
+			allocator_type::deallocate(a_ptr);
+		}
+
+
+		void set_allocator_traits(void* a_data, UInt32 a_capacity)
+		{
+			allocator_type::set_allocator_traits(a_data, a_capacity, sizeof(T));
+		}
+
+
+		void set_size(UInt32 a_size)
+		{
+			BSTArrayBase::set_size(a_size);
+		}
+
+
+		void change_capacity(size_type a_newCapacity)
+		{
+			auto newData = allocate(a_newCapacity);
+			auto oldData = data();
+			if (oldData) {
+				std::memcpy(newData, oldData, size() * sizeof(T));
+				deallocate(oldData);
+			}
+			set_allocator_traits(newData, a_newCapacity);
+		}
+
+
+		template <class... Args>
+		void change_size(size_type a_newSize, Args... a_args)
+		{
+			if (a_newSize > capacity()) {
+				grow_capacity(a_newSize);
+			}
+
+			auto oldSize = size();
+			if (a_newSize > oldSize) {
+				for (size_type i = oldSize; i < a_newSize; ++i) {
+					new(std::addressof(data()[i])) value_type(std::forward<Args>(a_args)...);
+				}
+			} else {
+				for (size_type i = a_newSize; i < oldSize; ++i) {
+					data()[i].~value_type();
 				}
 			}
-			return index;
+
+			set_size(a_newSize);
 		}
 
 
-		template <class Predicate>
-		SInt32 FindIf(Predicate a_pred) const
+		void grow_capacity()
 		{
-			const_pointer entries = _head();
-			SInt32 index = -1;
-			for (size_type i = 0; i < size(); ++i) {
-				if (a_pred(entries[i])) {
-					index = i;
-					break;
-				}
-			}
-			return index;
+			auto cap = capacity();
+			cap = cap ? static_cast<size_type>(std::floor(cap * GROWTH_FACTOR)) : DF_CAP;
+			change_capacity(cap);
 		}
 
-	protected:
+
+		void grow_capacity(size_type a_hint)
+		{
+			auto cap = a_hint;
+			cap = cap ? static_cast<size_type>(std::floor(cap * GROWTH_FACTOR)) : DF_CAP;
+			change_capacity(cap);
+		}
+
+
 		//members
-		//void*		_entries;	// 00
-		//size_type	_capacity;	// 08
-		//size_type	_pad0C;		// 0C
-		//size_type _count;		// 10
-		//size_type _pad14;		// 14
+		//void*		_data;		// 00
+		//UInt32	_capacity;	// 08
+		//UInt32	_pad0C;		// 0C
+		//UInt32	_size;		// 10
+		//UInt32	_pad14;		// 14
 	};
-	namespace { using TestBSTArray = BSTArray<std::uint32_t>; }
-	STATIC_ASSERT(offsetof(TestBSTArray, _entries) == 0x00);
-	STATIC_ASSERT(offsetof(TestBSTArray, _capacity) == 0x08);
-	STATIC_ASSERT(offsetof(TestBSTArray, _count) == 0x10);
-	STATIC_ASSERT(sizeof(TestBSTArray) == 0x18);
+	STATIC_ASSERT(sizeof(BSTArray<void*>) == 0x18);
 
 
-	template<class T, std::uint32_t SIZE = 1>
-	using BSTSmallArray = BSTArray<T, BSTSmallArrayHeapAllocator<sizeof(T) * SIZE>>;
-	//members
-	//size_type	_capacity;	// 00
-	//size_type	_pad04;		// 04
-	//Entry		_entries;	// 08
-	//size_type _count;		// 10
-	//size_type _pad14;		// 14
-	namespace { using TestBSTSmallArray = BSTSmallArray<std::uint32_t>; }
-	STATIC_ASSERT(offsetof(TestBSTSmallArray, _capacity) == 0x00);
-	STATIC_ASSERT(offsetof(TestBSTSmallArray, _entries) == 0x08);
-	STATIC_ASSERT(offsetof(TestBSTSmallArray, _count) == 0x10);
-	STATIC_ASSERT(sizeof(TestBSTSmallArray) == 0x18);
+	template <class T, UInt32 SIZE = 1>
+	class BSTSmallArray : public BSTArray<T, BSTSmallArrayHeapAllocator<sizeof(T) * SIZE>>
+	{
+	private:
+		using Base = BSTArray<T, BSTSmallArrayHeapAllocator<sizeof(T) * SIZE>>;
+
+	public:
+		using size_type = typename Base::size_type;
+
+
+		BSTSmallArray() :
+			Base()
+		{
+			Base::set_allocator_traits(0, SIZE, sizeof(T));
+		}
+
+
+		explicit BSTSmallArray(size_type a_count) :
+			Base(a_count)
+		{}
+
+
+		BSTSmallArray(const BSTSmallArray&) = default;
+		BSTSmallArray(BSTSmallArray&&) = default;
+		~BSTSmallArray() = default;
+
+	private:
+		//members
+		//UInt32	_capacity;	// 00
+		//UInt32	_pad04;		// 04
+		//Data		_data;		// 08
+		//UInt32	_size;		// 10
+		//UInt32	_pad14;		// 14
+	};
+	STATIC_ASSERT(sizeof(BSTSmallArray<void*>) == 0x18);
 
 
 	template <class T>
 	class BSScrapArray : public BSTArray<T, BSScrapArrayAllocator>
 	{
+	private:
+		using Base = BSTArray<T, BSScrapArrayAllocator>;
+
 	public:
-		BSScrapArray() : BSTArray() {}
-		explicit BSScrapArray(std::uint32_t a_size) : BSTArray(a_size) {}
+		using size_type = typename Base::size_type;
+
+
+		BSScrapArray() = default;
+
+
+		explicit BSScrapArray(size_type a_count) :
+			Base(a_count)
+		{}
+
+
+		BSScrapArray(const BSScrapArray&) = default;
+		BSScrapArray(BSScrapArray&&) = default;
+		~BSScrapArray() = default;
 
 	protected:
-		// members
-		//void*		_allocator;	// 00 - memory allocator
-		//void*		_entries;	// 08
-		//size_type	_capacity;	// 10
-		//size_type	_pad14;		// 14
-		//size_type _count;		// 18
-		//size_type _pad14;		// 1C
+		//members
+		//ScrapArray*	_allocator;	// 00
+		//void*			_data;		// 08
+		//UInt32		_capacity;	// 10
+		//UInt32		_pad14;		// 14
+		//UInt32		_size;		// 18
+		//UInt32		_pad14;		// 1C
 	};
-	namespace { using TestBSScrapArray = BSScrapArray<std::uint32_t>; }
-	STATIC_ASSERT(offsetof(TestBSScrapArray, _allocator) == 0x00);
-	STATIC_ASSERT(offsetof(TestBSScrapArray, _entries) == 0x08);
-	STATIC_ASSERT(offsetof(TestBSScrapArray, _capacity) == 0x10);
-	STATIC_ASSERT(offsetof(TestBSScrapArray, _count) == 0x18);
-	STATIC_ASSERT(sizeof(TestBSScrapArray) == 0x20);
+	STATIC_ASSERT(sizeof(BSScrapArray<void*>) == 0x20);
 
 
 	template <class T>
@@ -1097,38 +909,4 @@ namespace RE
 		Data* _data;	// 0
 	};
 	STATIC_ASSERT(sizeof(BSTSimpleArray<void*>) == 0x8);
-
-
-	// Returns if/where the element was found, otherwise indexOut can be used as insert position
-	template <class T>
-	bool GetSortIndex(const BSTArray<T>& a_sortedArray, const T& a_elem, std::size_t& a_indexOut)
-	{
-		if (a_sortedArray.empty()) {
-			a_indexOut = 0;
-			return false;
-		}
-
-		std::size_t leftIdx = 0;
-		std::size_t rightIdx = a_sortedArray.size() - 1;
-
-		while (true) {
-			int pivotIdx = leftIdx + ((rightIdx - leftIdx) / 2);
-
-			const T& val = a_sortedArray[pivotIdx];
-
-			if (a_elem == val) {
-				a_indexOut = pivotIdx;
-				return true;
-			} else if (a_elem > val) {
-				leftIdx = pivotIdx + 1;
-			} else {
-				rightIdx = pivotIdx - 1;
-			}
-
-			if (leftIdx > rightIdx) {
-				a_indexOut = leftIdx;
-				return false;
-			}
-		}
-	}
 }

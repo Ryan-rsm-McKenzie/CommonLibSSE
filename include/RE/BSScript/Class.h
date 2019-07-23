@@ -15,121 +15,13 @@ namespace RE
 		class Class : public BSIntrusiveRefCounted
 		{
 		public:
-			struct BitPun
-			{
-				struct Bits
-				{
-					constexpr Bits(bool a_bit00,
-								   bool a_bit01,
-								   bool a_bit02,
-								   bool a_bit03,
-								   bool a_bit04,
-								   bool a_bit05,
-								   bool a_bit06,
-								   bool a_bit07,
-								   bool a_bit08,
-								   bool a_bit09,
-								   bool a_bit10,
-								   bool a_bit11,
-								   bool a_bit12,
-								   bool a_bit13,
-								   bool a_bit14,
-								   bool a_bit15) :
-						bit00(a_bit00),
-						bit01(a_bit01),
-						bit02(a_bit02),
-						bit03(a_bit03),
-						bit04(a_bit04),
-						bit05(a_bit05),
-						bit06(a_bit06),
-						bit07(a_bit07),
-						bit08(a_bit08),
-						bit09(a_bit09),
-						bit10(a_bit10),
-						bit11(a_bit11),
-						bit12(a_bit12),
-						bit13(a_bit13),
-						bit14(a_bit14),
-						bit15(a_bit15)
-					{}
-
-
-					bool bit00 : 1;
-					bool bit01 : 1;
-					bool bit02 : 1;
-					bool bit03 : 1;
-					bool bit04 : 1;
-					bool bit05 : 1;
-					bool bit06 : 1;
-					bool bit07 : 1;
-					bool bit08 : 1;
-					bool bit09 : 1;
-					bool bit10 : 1;
-					bool bit11 : 1;
-					bool bit12 : 1;
-					bool bit13 : 1;
-					bool bit14 : 1;
-					bool bit15 : 1;
-				};
-
-
-				union Pun
-				{
-					constexpr Pun(bool a_bit00,
-								  bool a_bit01,
-								  bool a_bit02,
-								  bool a_bit03,
-								  bool a_bit04,
-								  bool a_bit05,
-								  bool a_bit06,
-								  bool a_bit07,
-								  bool a_bit08,
-								  bool a_bit09,
-								  bool a_bit10,
-								  bool a_bit11,
-								  bool a_bit12,
-								  bool a_bit13,
-								  bool a_bit14,
-								  bool a_bit15) :
-						bits(a_bit00, a_bit01, a_bit02, a_bit03, a_bit04, a_bit05, a_bit06, a_bit07, a_bit08, a_bit09, a_bit10, a_bit11, a_bit12, a_bit13, a_bit14, a_bit15)
-					{}
-
-
-					Bits bits;
-					UInt16 value;
-				};
-
-
-				constexpr BitPun(const bool a_bit00 = 0,
-								 const bool a_bit01 = 0,
-								 const bool a_bit02 = 0,
-								 const bool a_bit03 = 0,
-								 const bool a_bit04 = 0,
-								 const bool a_bit05 = 0,
-								 const bool a_bit06 = 0,
-								 const bool a_bit07 = 0,
-								 const bool a_bit08 = 0,
-								 const bool a_bit09 = 0,
-								 const bool a_bit10 = 0,
-								 const bool a_bit11 = 0,
-								 const bool a_bit12 = 0,
-								 const bool a_bit13 = 0,
-								 const bool a_bit14 = 0,
-								 const bool a_bit15 = 0) :
-					pun(a_bit00, a_bit01, a_bit02, a_bit03, a_bit04, a_bit05, a_bit06, a_bit07, a_bit08, a_bit09, a_bit10, a_bit11, a_bit12, a_bit13, a_bit14, a_bit15)
-				{}
-
-
-				Pun pun;
-			};
-
-
 			~Class();
 
 			const char*	GetName() const;
 			UInt32		GetFlags() const;
 			UInt32		GetNumScriptFlags() const;
 			UInt32		GetNumVariables() const;
+			UInt32		GetTotalNumVariables() const;
 			UInt32		GetNumDefaultValues() const;
 			UInt32		GetNumProperties() const;
 			UInt32		GetNumGlobalFuncs() const;
@@ -155,7 +47,7 @@ namespace RE
 			bool			numScriptFlags5 : 1;	// 20 - 6
 			bool			numScriptFlags6 : 1;	// 20 - 7
 
-			bool			numVariables1 : 1;		// 21 - 0 - double check
+			bool			numVariables1 : 1;		// 21 - 0
 			bool			numVariables2 : 1;		// 21 - 1
 			bool			numVariables3 : 1;		// 21 - 2
 			bool			numVariables4 : 1;		// 21 - 3

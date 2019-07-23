@@ -22,6 +22,18 @@ namespace RE
 		}
 
 
+		UInt32 Object::GetFlags() const
+		{
+			return pun_bits(flags1, flags2, flags3);
+		}
+
+
+		UInt32 Object::GetNumProperties() const
+		{
+			return pun_bits(numProperties01, numProperties02, numProperties03, numProperties04, numProperties05, numProperties06, numProperties07, numProperties08, numProperties09, numProperties10, numProperties11, numProperties12, numProperties13, numProperties14, numProperties15, numProperties16, numProperties17, numProperties18, numProperties19);
+		}
+
+
 		void* Object::Resolve(UInt32 a_typeID) const
 		{
 			auto policy = Internal::VirtualMachine::GetSingleton()->GetHandlePolicyBS();

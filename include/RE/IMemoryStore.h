@@ -16,7 +16,7 @@ namespace RE
 		virtual ~IMemoryStore();												// 00
 
 		// add
-		virtual void	Allocate(std::size_t a_size, UInt32 a_alignment) = 0;	// 04
+		virtual void*	Allocate(std::size_t a_size, UInt32 a_alignment) = 0;	// 04
 		virtual void	Free(void* a_memory) = 0;								// 05
 		virtual void	Unk_06(void);											// 06 - { return 0; }
 	};

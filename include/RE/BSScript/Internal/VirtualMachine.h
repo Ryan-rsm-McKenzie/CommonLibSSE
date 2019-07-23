@@ -112,8 +112,8 @@ namespace RE
 
 				// override (IVMObjectBindInterface)
 				virtual VMHandle						GetHandle(const BSTSmartPointer<Object>& a_objPtr) override;																																				// 01
-				virtual void							BindObject(BSTSmartPointer<Object>& a_objPtr, VMHandle a_handle, bool a_counditional) override;																												// 03
-				virtual void							RegisterObject(BSTSmartPointer<Object>& a_objPtr, VMHandle a_handle, bool a_counditional) override;																											// 04
+				virtual void							BindObject(BSTSmartPointer<Object>& a_objPtr, VMHandle a_handle, bool a_conditional) override;																												// 03
+				virtual void							RegisterObject(BSTSmartPointer<Object>& a_objPtr, VMHandle a_handle, bool a_conditional) override;																											// 04
 				virtual bool							CreateObject(const BSFixedString& a_className, UInt32 a_numProperties, BSTSmartPointer<Object>& a_objPtr) override;																							// 09
 				virtual bool							SetProperty(BSTSmartPointer<Object>& a_objPtr, void* a_property, bool a_arg3) override;																														// 0A
 

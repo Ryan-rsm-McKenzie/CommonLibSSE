@@ -20,7 +20,7 @@ namespace RE
 		virtual void		Unk_01(void) override;										// 01
 		virtual void		Unk_02(void) override;										// 02
 		virtual void		Unk_03(void) override;										// 03
-		virtual void		Allocate(std::size_t a_size, UInt32 a_alignment) override;	// 04
+		virtual void*		Allocate(std::size_t a_size, UInt32 a_alignment) override;	// 04
 		virtual const char*	GetName() override;											// 07 - { return name; }
 		virtual void		Unk_08(void) override;										// 08
 		virtual void		Unk_09(void) override;										// 09 - { return; }

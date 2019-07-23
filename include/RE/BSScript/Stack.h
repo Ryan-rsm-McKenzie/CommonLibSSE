@@ -45,6 +45,8 @@ namespace RE
 			STATIC_ASSERT(sizeof(Pair) == 0x10);
 
 
+			~Stack();
+
 			UInt32		GetChunkIdx(StackFrame* a_frame);
 			Variable*	Get(StackFrame* a_frame, UInt32 a_idx, UInt32 a_chunkIdx);
 
@@ -64,6 +66,9 @@ namespace RE
 			BSTSmartPointer<Internal::CodeTasklet>	codeTasklet;		// 88
 			BSTSmartPointer<IStackCallbackFunctor>	callbackFunctor;	// 90
 			BSTSmartPointer<Stack>					unk98;				// 98
+
+		private:
+			void dtor();
 		};
 		STATIC_ASSERT(sizeof(Stack) == 0xA0);
 	}

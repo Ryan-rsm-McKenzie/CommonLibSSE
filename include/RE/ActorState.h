@@ -77,77 +77,42 @@ namespace RE
 		};
 
 
-		struct StateStruct
-		{
-			constexpr StateStruct(bool a_state1, bool a_state2, bool a_state3, bool a_state4) :
-				state1(a_state1),
-				state2(a_state2),
-				state3(a_state3),
-				state4(a_state4),
-				pad4(0)
-			{}
-
-
-			bool	state1 : 1;	// 00
-			bool	state2 : 1;	// 01
-			bool	state3 : 1;	// 02
-			bool	state4 : 1;	// 03
-			bool	pad4 : 4;	// 04
-		};
-		STATIC_ASSERT(sizeof(StateStruct) == 0x1);
-
-
-		union StatePun
-		{
-			constexpr StatePun(bool a_state1, bool a_state2, bool a_state3, bool a_state4) :
-				s(a_state1, a_state2, a_state3, a_state4)
-			{}
-
-
-			StateStruct			s;
-			PrimaryAnimState	primaryAnimState;
-			FlyingState			flyingState;
-			SecondaryAnimState	secondaryAnimState;
-			AttackState			attackState;
-		};
-		STATIC_ASSERT(sizeof(StatePun) == 0x1);
-
-
 		struct Flags08
 		{
-			bool	movingBack : 1;				// 00
-			bool	movingForward : 1;			// 01
-			bool	movingRight : 1;			// 02
-			bool	movingLeft : 1;				// 03
-			bool	unk04 : 1;					// 04
-			bool	unk05 : 1;					// 05
-			bool	walking : 1;				// 06
-			bool	running : 1;				// 07
-			bool	sprinting : 1;				// 08
-			bool	sneaking : 1;				// 09
-			bool	swimming : 1;				// 0A
-			bool	unk0B : 1;					// 0B
-			bool	unk0C : 1;					// 0C
-			bool	unk0D : 1;					// 0D
-			bool	primaryAnimState1 : 1;		// 0E
-			bool	primaryAnimState2 : 1;		// 0F
-			bool	primaryAnimState3 : 1;		// 10
-			bool	primaryAnimState4 : 1;		// 11
-			bool	flyingState1 : 1;			// 12
-			bool	flyingState2 : 1;			// 13
-			bool	flyingState3 : 1;			// 14
-			bool	secondaryAnimState1 : 1;	// 15
-			bool	secondaryAnimState2 : 1;	// 16
-			bool	secondaryAnimState3 : 1;	// 17
-			bool	secondaryAnimState4 : 1;	// 18
-			bool	unk19 : 1;					// 19
-			bool	unk1A : 1;					// 1A
-			bool	unk1B : 1;					// 1B
-			bool	attackState1 : 1;			// 1C
-			bool	attackState2 : 1;			// 1D
-			bool	attackState3 : 1;			// 1E
-			bool	attackState4 : 1;			// 1F
+			bool	movingBack : 1;				// 0 - 0
+			bool	movingForward : 1;			// 0 - 1
+			bool	movingRight : 1;			// 0 - 2
+			bool	movingLeft : 1;				// 0 - 3
+			bool	unk0_4 : 1;					// 0 - 4
+			bool	unk0_5 : 1;					// 0 - 5
+			bool	walking : 1;				// 0 - 6
+			bool	running : 1;				// 0 - 7
+			bool	sprinting : 1;				// 1 - 0
+			bool	sneaking : 1;				// 1 - 1
+			bool	swimming : 1;				// 1 - 2
+			bool	unk1_3 : 1;					// 1 - 3
+			bool	unk1_4 : 1;					// 1 - 4
+			bool	unk1_5 : 1;					// 1 - 5
+			bool	primaryAnimState1 : 1;		// 1 - 6
+			bool	primaryAnimState2 : 1;		// 1 - 7
+			bool	primaryAnimState3 : 1;		// 2 - 0
+			bool	primaryAnimState4 : 1;		// 2 - 1
+			bool	flyingState1 : 1;			// 2 - 2
+			bool	flyingState2 : 1;			// 2 - 3
+			bool	flyingState3 : 1;			// 2 - 4
+			bool	secondaryAnimState1 : 1;	// 2 - 5
+			bool	secondaryAnimState2 : 1;	// 2 - 6
+			bool	secondaryAnimState3 : 1;	// 2 - 7
+			bool	secondaryAnimState4 : 1;	// 3 - 0
+			bool	unk3_1 : 1;					// 3 - 1
+			bool	unk3_2 : 1;					// 3 - 2
+			bool	unk3_3 : 1;					// 3 - 3
+			bool	attackState1 : 1;			// 3 - 4
+			bool	attackState2 : 1;			// 3 - 5
+			bool	attackState3 : 1;			// 3 - 6
+			bool	attackState4 : 1;			// 3 - 7
 		};
+		STATIC_ASSERT(sizeof(Flags08) == 0x4);
 
 
 		enum class Flag0C : UInt32
@@ -164,14 +129,14 @@ namespace RE
 		virtual ~ActorState();					// 00
 
 		// override (IMovementState)
-		virtual void	Unk_01(void) override;	// 01
-		virtual void	Unk_02(void) override;	// 02
-		virtual void	Unk_03(void) override;	// 03
-		virtual void	Unk_04(void) override;	// 04
-		virtual void	Unk_05(void) override;	// 05
-		virtual void	Unk_06(void) override;	// 06
-		virtual void	Unk_07(void) override;	// 07
-		virtual void	Unk_08(void) override;	// 08
+		virtual void	Unk_01(void) override;	// 01 - { return 0; }
+		virtual void	Unk_02(void) override;	// 02 - { return; }
+		virtual void	Unk_03(void) override;	// 03 - { return; }
+		virtual void	Unk_04(void) override;	// 04 - { return; }
+		virtual void	Unk_05(void) override;	// 05 - { return 0.0; }
+		virtual void	Unk_06(void) override;	// 06 - { return 0.0; }
+		virtual void	Unk_07(void) override;	// 07 - { return; }
+		virtual void	Unk_08(void) override;	// 08 - { return 0; }
 
 		// add
 		virtual void	Unk_14(void);			// 14

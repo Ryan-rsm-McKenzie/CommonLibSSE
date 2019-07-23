@@ -26,8 +26,8 @@ namespace RE
 			// add
 			virtual VMHandle	GetHandle(const BSTSmartPointer<Object>& a_objPtr) = 0;															// 01
 			virtual void		Unk_02(void) = 0;																								// 02
-			virtual void		BindObject(BSTSmartPointer<Object>& a_objPtr, VMHandle a_handle, bool a_counditional) = 0;						// 03
-			virtual void		RegisterObject(BSTSmartPointer<Object>& a_objPtr, VMHandle a_handle, bool a_counditional) = 0;					// 04
+			virtual void		BindObject(BSTSmartPointer<Object>& a_objPtr, VMHandle a_handle, bool a_conditional) = 0;						// 03
+			virtual void		RegisterObject(BSTSmartPointer<Object>& a_objPtr, VMHandle a_handle, bool a_conditional) = 0;					// 04
 			virtual void		Unk_05(void) = 0;																								// 05
 			virtual void		Unk_06(void) = 0;																								// 06
 			virtual void		Unk_07(void) = 0;																								// 07

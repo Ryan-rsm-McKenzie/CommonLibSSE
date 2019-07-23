@@ -3,10 +3,11 @@
 
 namespace RE
 {
-	ActorState::SitState ActorState::GetSitState() const
+	auto ActorState::GetSitState() const
+		-> SitState
 	{
-		StatePun statePun(flags08.primaryAnimState1, flags08.primaryAnimState2, flags08.primaryAnimState3, flags08.primaryAnimState4);
-		switch (statePun.primaryAnimState) {
+		auto primaryAnimState = static_cast<PrimaryAnimState>(pun_bits(flags08.primaryAnimState1, flags08.primaryAnimState2, flags08.primaryAnimState3, flags08.primaryAnimState4));
+		switch (primaryAnimState) {
 		case PrimaryAnimState::kSit1:
 		case PrimaryAnimState::kSit2:
 			return SitState::kWantsToSit;
@@ -20,10 +21,11 @@ namespace RE
 	}
 
 
-	ActorState::SleepState ActorState::GetSleepState() const
+	auto ActorState::GetSleepState() const
+		-> SleepState
 	{
-		StatePun statePun(flags08.primaryAnimState1, flags08.primaryAnimState2, flags08.primaryAnimState3, flags08.primaryAnimState4);
-		switch (statePun.primaryAnimState) {
+		auto primaryAnimState = static_cast<PrimaryAnimState>(pun_bits(flags08.primaryAnimState1, flags08.primaryAnimState2, flags08.primaryAnimState3, flags08.primaryAnimState4));
+		switch (primaryAnimState) {
 		case PrimaryAnimState::kSleep5:
 		case PrimaryAnimState::kSleep6:
 			return SleepState::kWantsToSleep;
@@ -37,32 +39,33 @@ namespace RE
 	}
 
 
-	ActorState::FlyingState ActorState::GetFlyingState() const
+	auto ActorState::GetFlyingState() const
+		-> FlyingState
 	{
-		StatePun statePun(flags08.flyingState1, flags08.flyingState2, flags08.flyingState3, 0);
-		switch (statePun.flyingState) {
+		auto flyingState = static_cast<FlyingState>(pun_bits(flags08.flyingState1, flags08.flyingState2, flags08.flyingState3));
+		switch (flyingState) {
 		case FlyingState::kTakingOff:
 		case FlyingState::kCruising:
 		case FlyingState::kHovering:
 		case FlyingState::kLanding:
-			return statePun.flyingState;
+			return flyingState;
 		default:
 			return FlyingState::kNotFlying;
 		}
 	}
 
 
-	ActorState::AttackState ActorState::GetAttackState() const
+	auto ActorState::GetAttackState() const
+		-> AttackState
 	{
-		StatePun statePun(flags08.attackState1, flags08.attackState2, flags08.attackState3, flags08.attackState4);
-		return statePun.attackState;
+		return static_cast<AttackState>(pun_bits(flags08.attackState1, flags08.attackState2, flags08.attackState3, flags08.attackState4));
 	}
 
 
 	bool ActorState::IsBleedingOut() const
 	{
-		StatePun statePun(flags08.secondaryAnimState1, flags08.secondaryAnimState2, flags08.secondaryAnimState3, flags08.secondaryAnimState4);
-		switch (statePun.secondaryAnimState) {
+		auto secondaryAnimState = static_cast<SecondaryAnimState>(pun_bits(flags08.secondaryAnimState1, flags08.secondaryAnimState2, flags08.secondaryAnimState3, flags08.secondaryAnimState4));
+		switch (secondaryAnimState) {
 		case SecondaryAnimState::kBleedOut7:
 		case SecondaryAnimState::kBleedOut8:
 			return true;
@@ -110,7 +113,7 @@ namespace RE
 
 	bool ActorState::IsUnconscious() const
 	{
-		StatePun statePun(flags08.secondaryAnimState1, flags08.secondaryAnimState2, flags08.secondaryAnimState3, flags08.secondaryAnimState4);
-		return statePun.secondaryAnimState == SecondaryAnimState::kUnconscious3;
+		auto secondaryAnimState = static_cast<SecondaryAnimState>(pun_bits(flags08.secondaryAnimState1, flags08.secondaryAnimState2, flags08.secondaryAnimState3, flags08.secondaryAnimState4));
+		return secondaryAnimState == SecondaryAnimState::kUnconscious3;
 	}
 }

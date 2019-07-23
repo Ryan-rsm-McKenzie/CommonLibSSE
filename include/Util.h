@@ -2,6 +2,7 @@
 
 #include "skse64/GameRTTI.h"  // Runtime_DynamicCast
 
+#include <bitset>  // bitset
 #include <cstdint>  // uintptr_t
 #include <type_traits>  // underlying_type_t, is_enum
 
@@ -227,3 +228,64 @@ public:
 
 
 template <class F> using function_type_t = typename function_type<F>::type;
+
+
+namespace
+{
+	namespace
+	{
+		template <class Enable, class... Args> struct _ulong_compat : std::false_type {};
+		template <class... Args> struct _ulong_compat<typename std::enable_if_t<(sizeof...(Args) <= 32)>, Args...> : std::true_type {};
+	}
+	template <class... Args> struct ulong_compat : _ulong_compat<void, Args...> {};
+
+	namespace
+	{
+		template <class Enable, class... Args> struct _ullong_compat : std::false_type {};
+		template <class... Args> struct _ullong_compat<typename std::enable_if_t<(sizeof...(Args) > 32) && (sizeof...(Args) <= 64)>, Args...> : std::true_type {};
+	}
+	template <class... Args> struct ullong_compat : _ullong_compat<void, Args...> {};
+
+	namespace
+	{
+		template <class T> struct _is_bool : std::false_type {};
+		template <> struct _is_bool<bool> : std::true_type {};
+	}
+	template <class T> struct is_bool : _is_bool<T> {};
+}
+
+
+template <class... Args, typename std::enable_if_t<std::conjunction<is_bool<Args>..., ulong_compat<Args...>>::value, int> = 0>
+unsigned long pun_bits(Args... a_args)
+{
+	std::bitset<sizeof...(Args)> bits;
+	std::size_t i = 0;
+	((bits[i++] = a_args), ...);
+	return bits.to_ulong();
+}
+
+
+template <class... Args, typename std::enable_if_t<std::conjunction<is_bool<Args>..., ullong_compat<Args...>>::value, int> = 0>
+unsigned long long pun_bits(Args... a_args)
+{
+	std::bitset<sizeof...(Args)> bits;
+	std::size_t i = 0;
+	((bits[i++] = a_args), ...);
+	return bits.to_ullong();
+}
+
+
+inline void memzero(void* a_dst, std::size_t a_size)
+{
+	volatile auto beg = static_cast<char*>(a_dst);
+	volatile auto end = static_cast<char*>(a_dst) + a_size;
+	constexpr char val = 0;
+	std::fill(beg, end, val);
+}
+
+
+template <class T>
+inline void memzero(T* a_dst)
+{
+	return memzero(a_dst, sizeof(T));
+}

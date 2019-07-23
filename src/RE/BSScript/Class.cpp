@@ -21,57 +21,59 @@ namespace RE
 
 		UInt32 Class::GetFlags() const
 		{
-			BitPun bitPun(flag1, flag2);
-			return bitPun.pun.value;
+			return pun_bits(flag1, flag2);
 		}
 
 
 		UInt32 Class::GetNumScriptFlags() const
 		{
-			BitPun bitPun(numScriptFlags1, numScriptFlags2, numScriptFlags3, numScriptFlags4, numScriptFlags5, numScriptFlags6);
-			return bitPun.pun.value;
+			return pun_bits(numScriptFlags1, numScriptFlags2, numScriptFlags3, numScriptFlags4, numScriptFlags5, numScriptFlags6);
 		}
 
 
 		UInt32 Class::GetNumVariables() const
 		{
-			BitPun bitPun(numVariables1, numVariables2, numVariables3, numVariables4, numVariables5, numVariables6, numVariables7, numVariables8, numVariables9, numVariables10);
-			return bitPun.pun.value;
+			return pun_bits(numVariables1, numVariables2, numVariables3, numVariables4, numVariables5, numVariables6, numVariables7, numVariables8, numVariables9, numVariables10);
+		}
+
+
+		UInt32 Class::GetTotalNumVariables() const
+		{
+			auto numVars = GetNumVariables();
+			for (auto iter = parent; iter; iter = iter->parent) {
+				numVars += iter->GetNumVariables();
+			}
+			return numVars;
 		}
 
 
 		UInt32 Class::GetNumDefaultValues() const
 		{
-			BitPun bitPun(numDefaultValues1, numDefaultValues2, numDefaultValues3, numDefaultValues4, numDefaultValues5, numDefaultValues6, numDefaultValues7, numDefaultValues8, numDefaultValues9, numDefaultValues10);
-			return bitPun.pun.value;
+			return pun_bits(numDefaultValues1, numDefaultValues2, numDefaultValues3, numDefaultValues4, numDefaultValues5, numDefaultValues6, numDefaultValues7, numDefaultValues8, numDefaultValues9, numDefaultValues10);
 		}
 
 
 		UInt32 Class::GetNumProperties() const
 		{
-			BitPun bitPun(numProperties1, numProperties2, numProperties3, numProperties4, numProperties5, numProperties6, numProperties7, numProperties8, numProperties9, numProperties10);
-			return bitPun.pun.value;
+			return pun_bits(numProperties1, numProperties2, numProperties3, numProperties4, numProperties5, numProperties6, numProperties7, numProperties8, numProperties9, numProperties10);
 		}
 
 
 		UInt32 Class::GetNumGlobalFuncs() const
 		{
-			BitPun bitPun(numGlobalFuncs1, numGlobalFuncs2, numGlobalFuncs3, numGlobalFuncs4, numGlobalFuncs5, numGlobalFuncs6, numGlobalFuncs7, numGlobalFuncs8, numGlobalFuncs9);
-			return bitPun.pun.value;
+			return pun_bits(numGlobalFuncs1, numGlobalFuncs2, numGlobalFuncs3, numGlobalFuncs4, numGlobalFuncs5, numGlobalFuncs6, numGlobalFuncs7, numGlobalFuncs8, numGlobalFuncs9);
 		}
 
 
 		UInt32 Class::GetNumMemberFuncs() const
 		{
-			BitPun bitPun(numMemberFuncs1, numMemberFuncs2, numMemberFuncs3, numMemberFuncs4, numMemberFuncs5, numMemberFuncs6, numMemberFuncs7, numMemberFuncs8, numMemberFuncs9);
-			return bitPun.pun.value;
+			return pun_bits(numMemberFuncs1, numMemberFuncs2, numMemberFuncs3, numMemberFuncs4, numMemberFuncs5, numMemberFuncs6, numMemberFuncs7, numMemberFuncs8, numMemberFuncs9);
 		}
 
 
 		UInt32 Class::GetNumStates() const
 		{
-			BitPun bitPun(numStates1, numStates2, numStates3, numStates4, numStates5);
-			return bitPun.pun.value;
+			return pun_bits(numStates1, numStates2, numStates3, numStates4, numStates5);
 		}
 
 

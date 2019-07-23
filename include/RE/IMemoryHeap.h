@@ -17,7 +17,7 @@ namespace RE
 
 		// override (IMemoryStore)
 		virtual void		Unk_03(void) override;										// 03
-		virtual void		Allocate(std::size_t a_size, UInt32 a_alignment) override;	// 04
+		virtual void*		Allocate(std::size_t a_size, UInt32 a_alignment) override;	// 04
 		virtual void		Free(void* a_memory) override;								// 05
 
 		// add

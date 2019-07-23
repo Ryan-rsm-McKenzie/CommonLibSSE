@@ -97,17 +97,6 @@ namespace RE
 		}
 
 
-		namespace BSScrapArrayAllocator
-		{
-			// IndirectSig: E8 ? ? ? ? EB 10 89 6C 24 28
-			constexpr std::uintptr_t Allocate = 0x00C05010;	// 1_5_80
-			// IndirectSig: E8 ? ? ? ? 89 75 DF
-			constexpr std::uintptr_t Free = 0x00C051F0;		// 1_5_80
-			// IndirectSig: E8 ? ? ? ? 84 C0 8B 45 6F
-			constexpr std::uintptr_t Resize = 0x00C050A0;	// 1_5_80
-		}
-
-
 		namespace BSScript
 		{
 			namespace Object
@@ -127,37 +116,13 @@ namespace RE
 					constexpr std::uintptr_t AllocateArray = 0x01264A00;	// 1_5_80
 				}
 			}
-		}
 
 
-		namespace BSTArrayBase
-		{
-			// IndirectSig: E8 ? ? ? ? 29 3E
-			constexpr std::uintptr_t Move = 0x00C04980;	// 1_5_80
-			// IndirectSig: E8 ? ? ? ? 89 85 C8 00 00 00
-			constexpr std::uintptr_t Push = 0x00C04A20;	// 1_5_80
-		}
-
-
-		namespace BSTArrayHeapAllocator
-		{
-			// IndirectSig: E8 ? ? ? ? 33 F6 EB 19
-			constexpr std::uintptr_t Allocate = 0x00C04CC0;	// 1_5_80
-			// IndirectSig: E8 ? ? ? ? 89 73 60
-			constexpr std::uintptr_t Free = 0x00C04EC0;		// 1_5_80
-			// IndirectSig: E8 ? ? ? ? 84 C0 8B 44 24 50
-			constexpr std::uintptr_t Resize = 0x00C04D40;	// 1_5_80
-		}
-
-
-		namespace BSTSmallArrayHeapAllocator
-		{
-			// IndirectSig: E9 ? ? ? ? CC 48 85 C9
-			constexpr std::uintptr_t Allocate = 0x00C06640;	// 1_5_80
-			// IndirectSig: E8 ? ? ? ? 44 89 3F
-			constexpr std::uintptr_t Free = 0x00C06880;		// 1_5_80
-			// IndirectSig: E8 ? ? ? ? F7 07 00 00 00 80
-			constexpr std::uintptr_t Resize = 0x00C06700;	// 1_5_80
+			namespace Stack
+			{
+				// IndirectSig: E8 ? ? ? ? BA A0 00 00 00 49 8B CF
+				constexpr std::uintptr_t Dtor = 0x01244010;	// 1_5_80
+			}
 		}
 
 

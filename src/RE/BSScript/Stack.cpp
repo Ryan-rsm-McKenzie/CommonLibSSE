@@ -2,11 +2,23 @@
 
 #include "skse64/PapyrusArgs.h"  // VMArgList
 
+#include "RE/BSScript/Internal/CodeTasklet.h"  // BSScript::Internal::CodeTasklet
+#include "RE/BSScript/IStackCallbackFunctor.h"  // BSScript::IStackCallbackFunctor
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
+
 
 namespace RE
 {
 	namespace BSScript
 	{
+		Stack::~Stack()
+		{
+			dtor();
+			memzero(this);
+		}
+
+
 		StackFrame* Stack::Chunk::GetStackFrame()
 		{
 			return reinterpret_cast<StackFrame*>(buf);
@@ -26,6 +38,14 @@ namespace RE
 			using func_t = function_type_t<decltype(&Stack::Get)>;
 			func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::VMArgList, Get, func_t*);
 			return func(this, a_frame, a_idx, a_chunkIdx);
+		}
+
+
+		void Stack::dtor()
+		{
+			using func_t = function_type_t<decltype(&Stack::dtor)>;
+			REL::Offset<func_t*> func(Offset::BSScript::Stack::Dtor);
+			return func(this);
 		}
 	}
 }

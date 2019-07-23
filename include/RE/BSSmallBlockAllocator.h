@@ -30,7 +30,7 @@ namespace RE
 		virtual	void	Unk_01(void) override;										// 01
 		virtual	void	Unk_02(void) override;										// 02
 		virtual	void	Unk_03(void) override;										// 03
-		virtual	void	Allocate(std::size_t a_size, UInt32 a_alignment) override;	// 04
+		virtual	void*	Allocate(std::size_t a_size, UInt32 a_alignment) override;	// 04
 		virtual	void	Free(void* a_memory) override;								// 05
 		virtual	void	Unk_06(void) override;										// 06
 

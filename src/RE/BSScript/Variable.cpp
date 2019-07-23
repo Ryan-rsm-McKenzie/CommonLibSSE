@@ -57,6 +57,7 @@ namespace RE
 		Variable::~Variable()
 		{
 			Destroy();
+			memzero(this);
 		}
 
 

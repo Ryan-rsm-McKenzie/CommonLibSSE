@@ -273,12 +273,12 @@ namespace RE
 }
 
 
-#define TES_HEAP_REDEFINE_NEW()																										\
-	void*	operator new(std::size_t a_count)													{ return RE::malloc(a_count); }		\
-	void*	operator new[](std::size_t a_count)													{ return RE::malloc(a_count); }		\
-	void*	operator new([[maybe_unused]] std::size_t a_count, void* a_plcmnt)					{ return a_plcmnt; }				\
-	void*	operator new[]([[maybe_unused]] std::size_t a_count, void* a_plcmnt)				{ return a_plcmnt; }				\
-	void	operator delete(void* a_ptr)														{ if (a_ptr) { RE::free(a_ptr); } }	\
-	void	operator delete[](void* a_ptr)														{ if (a_ptr) { RE::free(a_ptr); } }	\
-	void	operator delete([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt)		{ return; }							\
-	void	operator delete[]([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt)	{ return; }
+#define TES_HEAP_REDEFINE_NEW()																												\
+	inline void*	operator new(std::size_t a_count)													{ return RE::malloc(a_count); }		\
+	inline void*	operator new[](std::size_t a_count)													{ return RE::malloc(a_count); }		\
+	inline void*	operator new([[maybe_unused]] std::size_t a_count, void* a_plcmnt)					{ return a_plcmnt; }				\
+	inline void*	operator new[]([[maybe_unused]] std::size_t a_count, void* a_plcmnt)				{ return a_plcmnt; }				\
+	inline void		operator delete(void* a_ptr)														{ if (a_ptr) { RE::free(a_ptr); } }	\
+	inline void		operator delete[](void* a_ptr)														{ if (a_ptr) { RE::free(a_ptr); } }	\
+	inline void		operator delete([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt)		{ return; }							\
+	inline void		operator delete[]([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt)	{ return; }
