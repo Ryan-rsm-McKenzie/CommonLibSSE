@@ -90,6 +90,15 @@ namespace RE
 		}
 
 
+		namespace BSFixedStringW
+		{
+			// DirectSig: 40 53 48 83 EC 20 48 C7 01 00 00 00 00 4C 8B DA
+			constexpr std::uintptr_t Ctor = 0x00C29060;	// 1_5_80
+			// IndirectSig: E8 ? ? ? ? 4C 8D 45 C8 48 8D 55 D8
+			constexpr std::uintptr_t Dtor = 0x00C29170;	// 1_5_80
+		}
+
+
 		namespace BSScaleformTranslator
 		{
 			// ??_7BSScaleformTranslator@@6B@

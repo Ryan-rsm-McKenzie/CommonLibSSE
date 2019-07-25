@@ -30,7 +30,7 @@ namespace RE
 		}
 
 		auto it = menuTable.find(a_menuName);
-		return (it != menuTable.end()) ? it->GetValue().menuInstance : 0;
+		return (it != menuTable.end()) ? it->second.menuInstance : 0;
 	}
 
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSSpinLock.h"  // BSSpinLock
+#include "RE/BSLock.h"  // BSUniqueLock
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/FormTypes.h"  // TESPackage, TESIdleForm
@@ -27,17 +27,17 @@ namespace RE
 	public:
 		struct Data
 		{
-			BSSpinLock	lock;		// 00
-			TESPackage*	package;	// 08
-			UInt64		unk10;		// 10
-			float		unk18;		// 18 - shout cooldown?
-			UInt32		unk1C;		// 1C - init'd to FFFFFFFF
-			float		unk20;		// 20 - init'd to -1
-			UInt32		unk24;		// 24
-			UInt16		unk28;		// 28
-			UInt8		unk2A;		// 2A
-			UInt8		unk2B;		// 2B
-			UInt32		pad2C;		// 2C
+			mutable BSUniqueLock	lock;		// 00
+			TESPackage*				package;	// 08
+			UInt64					unk10;		// 10
+			float					unk18;		// 18 - shout cooldown?
+			UInt32					unk1C;		// 1C - init'd to FFFFFFFF
+			float					unk20;		// 20 - init'd to -1
+			UInt32					unk24;		// 24
+			UInt16					unk28;		// 28
+			UInt8					unk2A;		// 2A
+			UInt8					unk2B;		// 2B
+			UInt32					pad2C;		// 2C
 		};
 		STATIC_ASSERT(sizeof(Data) == 0x30);
 

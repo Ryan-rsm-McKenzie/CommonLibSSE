@@ -3,12 +3,13 @@
 #include "skse64/GameRTTI.h"  // RTTI_TESObjectCELL
 
 #include "RE/BSExtraData.h"  // BSExtraData
-#include "RE/BSSpinLock.h"  // BSSpinLock
+#include "RE/BSLock.h"  // BSUniqueLock
 #include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTHashMap.h"  // BSTHashMap
+#include "RE/BSTHashMap.h"  // BSTHashSet
 #include "RE/Color.h"  // Color
 #include "RE/DirectionalAmbientLightingColor.h"  // DirectionalAmbientLightingColor
 #include "RE/FormTypes.h"  // FormType
+#include "RE/NiSmartPointer.h"  // NiPointer
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESFullName.h"  // TESFullName
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
@@ -126,12 +127,29 @@ namespace RE
 		STATIC_ASSERT(sizeof(LightingCoordinates) == 0x8);
 
 
+		struct Hasher
+		{
+			UInt32 operator()(const NiPointer<TESObjectREFR>& a_key) const
+			{
+				return CRC32Hash<RE::FormID>()(a_key->formID);
+			}
+		};
+
+
+		struct KeyEqual
+		{
+			bool operator()(const NiPointer<TESObjectREFR>& a_lhs, const NiPointer<TESObjectREFR>& a_rhs) const {
+				return a_lhs->formID == a_rhs->formID;
+			}
+		};
+
+
 		virtual ~TESObjectCELL();													// 00
 
 		// override (TESForm)
 		virtual void		ReleaseManagedData() override;							// 05
 		virtual bool		LoadForm(TESFile* a_mod) override;						// 06
-		virtual TESForm*	DupulicateForm(void* a_arg1, void* a_arg2) override;	// 09
+		virtual TESForm*	DupulicateForm(void* a_arg1, void* a_arg2) override;	// 09 - { return 0; }
 		virtual void		Unk_0C(void) override;									// 0C
 		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;			// 0E
 		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;			// 0F
@@ -143,7 +161,7 @@ namespace RE
 		virtual void		Unk_31(void) override;									// 31
 		virtual const char*	GetEditorID() override;									// 32
 		virtual bool		SetEditorID(const char* a_str) override;				// 33
-		virtual void		Unk_34(void) override;									// 34 - { return true; }
+		virtual void		Unk_34(void) override;									// 34 - { return 1; }
 		virtual void		Unk_36(void) override;									// 36
 
 		double				GetNorthRotation();
@@ -154,32 +172,32 @@ namespace RE
 
 
 		// members
-		Data								unk030;					// 030
-		Data								unk038;					// 038
-		Flag								flags;					// 040
-		UInt16								unk042;					// 042
-		UInt8								unk044;					// 044
-		UInt8								unk045;					// 045
-		UInt8								unk046;					// 046
-		UInt8								pad047;					// 047
-		BSExtraData*						extraData;				// 048
-		UInt32*								unk050;					// 050
-		UInt64								unk058;					// 058
-		LightingCoordinates					lightingCoordinates;	// 060 - XCLL if interior, XCLC if exterior
-		TESObjectLAND*						land;					// 068
-		float								waterHeight;			// 070 - XCLW
-		BSTArray<NavMesh*>*					unk078;					// 078
-		BSTHashMap<UInt32, TESObjectREFR>	persistentRefMap;		// 080
-		TESForm*							unk0B0;					// 0B0 - REFR owner of cell?
-		BSTArray<TESObjectREFR*>			objectList;				// 0B8 - persistent
-		BSTArray<void*>						unk0D0;					// 0D0
-		BSTArray<void*>						unk0F8;					// 0F8
-		BSTArray<void*>						unk100;					// 100
-		mutable BSSpinLock					cellRefLock;			// 118
-		TESWorldSpace*						worldSpace;				// 120
-		UInt64								unk128;					// 128
-		BGSLightingTemplate*				lightingTemplate;		// 130 - LTMP
-		UInt64								unk138;					// 138
+		mutable BSUniqueLock									unk030;					// 030
+		Data													unk038;					// 038
+		Flag													flags;					// 040
+		UInt16													unk042;					// 042
+		UInt8													unk044;					// 044
+		UInt8													unk045;					// 045
+		UInt8													unk046;					// 046
+		UInt8													pad047;					// 047
+		BSExtraData*											extraData;				// 048
+		UInt32*													unk050;					// 050
+		UInt64													unk058;					// 058
+		LightingCoordinates										lightingCoordinates;	// 060 - XCLL if interior, XCLC if exterior
+		TESObjectLAND*											land;					// 068
+		float													waterHeight;			// 070 - XCLW
+		BSTArray<NavMesh*>*										unk078;					// 078
+		BSTHashSet<NiPointer<TESObjectREFR>, Hasher, KeyEqual>	persistentRefMap;		// 080
+		TESForm*												unk0B0;					// 0B0 - REFR owner of cell?
+		BSTArray<TESObjectREFR*>								objectList;				// 0B8 - persistent
+		BSTArray<void*>											unk0D0;					// 0D0
+		BSTArray<void*>											unk0F8;					// 0F8
+		BSTArray<void*>											unk100;					// 100
+		mutable BSUniqueLock									cellRefLock;			// 118
+		TESWorldSpace*											worldSpace;				// 120
+		UInt64													unk128;					// 128
+		BGSLightingTemplate*									lightingTemplate;		// 130 - LTMP
+		UInt64													unk138;					// 138
 	};
 	STATIC_ASSERT(offsetof(TESObjectCELL, persistentRefMap) == 0x80);
 	STATIC_ASSERT(offsetof(TESObjectCELL, objectList) == 0xB8);

@@ -8,7 +8,7 @@
 #include "RE/BSScript/Type.h"  // BSScript::Type
 #include "RE/BSScript/Variable.h"  // BSScript::Variable
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
-#include "RE/BSSpinLock.h"  // BSSpinLock
+#include "RE/BSLock.h"  // BSUniqueLock
 
 
 namespace RE
@@ -142,12 +142,12 @@ namespace RE
 			enum { kMaxSize = 128 };
 
 			// members
-			UInt32		_pad04;		// 04
-			Type		_type;		// 08
-			UInt32		_len;		// 10
-			UInt32		_pad14;		// 14
-			BSSpinLock	_lock;		// 18
-			Variable	_data[0];	// 20
+			UInt32					_pad04;		// 04
+			Type					_type;		// 08
+			UInt32					_len;		// 10
+			UInt32					_pad14;		// 14
+			mutable BSUniqueLock	_lock;		// 18
+			Variable				_data[0];	// 20
 
 		private:
 			void dtor();

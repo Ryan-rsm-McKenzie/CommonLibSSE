@@ -181,9 +181,9 @@
     <ClCompile Include="src\RE\BGSPerkEntry.cpp" />
     <ClCompile Include="src\RE\BGSSaveLoadManager.cpp" />
     <ClCompile Include="src\RE\BSAudioManager.cpp" />
+    <ClCompile Include="src\RE\BSGlobalStringTable.cpp" />
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
     <ClCompile Include="src\RE\BSIMusicType.cpp" />
-    <ClCompile Include="src\RE\BSReadWriteLock.cpp" />
     <ClCompile Include="src\RE\BSResourceNiBinaryStream.cpp" />
     <ClCompile Include="src\RE\BSScript\Array.cpp" />
     <ClCompile Include="src\RE\BSScript\Class.cpp" />
@@ -199,7 +199,7 @@
     <ClCompile Include="src\RE\BSScript\PackUnpack.cpp" />
     <ClCompile Include="src\RE\BSScript\StackFrame.cpp" />
     <ClCompile Include="src\RE\BSScript\ZeroFunctionArguments.cpp" />
-    <ClCompile Include="src\RE\BSSpinLock.cpp" />
+    <ClCompile Include="src\RE\BSLock.cpp" />
     <ClCompile Include="src\RE\BSString.cpp" />
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp" />
     <ClCompile Include="src\RE\BSWin32SaveDataSystemUtility.cpp" />
@@ -537,7 +537,6 @@
     <ClInclude Include="include\RE\BSNavmesh.h" />
     <ClInclude Include="include\RE\BSNavmeshInfoMap.h" />
     <ClInclude Include="include\RE\BSPrecomputedNavmeshInfoPathMap.h" />
-    <ClInclude Include="include\RE\BSReadWriteLock.h" />
     <ClInclude Include="include\RE\BSReloadShaderI.h" />
     <ClInclude Include="include\RE\BSResourceNiBinaryStream.h" />
     <ClInclude Include="include\RE\BSResource\DevNull.h" />
@@ -603,7 +602,7 @@
     <ClInclude Include="include\RE\BSScript\ZeroFunctionArguments.h" />
     <ClInclude Include="include\RE\BSShader.h" />
     <ClInclude Include="include\RE\BSSmallBlockAllocator.h" />
-    <ClInclude Include="include\RE\BSSpinLock.h" />
+    <ClInclude Include="include\RE\BSLock.h" />
     <ClInclude Include="include\RE\BSStorage.h" />
     <ClInclude Include="include\RE\BSString.h" />
     <ClInclude Include="include\RE\BSSystemFileStorage.h" />
@@ -726,7 +725,6 @@
     <ClInclude Include="include\RE\BSPCGamepadDeviceDelegate.h" />
     <ClInclude Include="include\RE\BSPCGamepadDeviceHandler.h" />
     <ClInclude Include="include\RE\BSTHashMap.h" />
-    <ClInclude Include="include\RE\BSTScatterTable.h" />
     <ClInclude Include="include\RE\BSVirtualKeyboardDevice.h" />
     <ClInclude Include="include\RE\BSWin32GamepadDevice.h" />
     <ClInclude Include="include\RE\BSWin32KeyboardDevice.h" />

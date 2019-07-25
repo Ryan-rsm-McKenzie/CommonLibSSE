@@ -2,7 +2,7 @@
 
 #include "skse64/GameEvents.h"  // EventDispatcher
 
-#include "RE/BSSpinLock.h"  // BSpinLock
+#include "RE/BSLock.h"  // BSUniqueLock
 #include "RE/BSTArray.h"  // BSTArray
 
 
@@ -61,14 +61,14 @@ namespace RE
 
 
 		// members
-		BSTArray<Sink*>	eventSinks;		// 00
-		BSTArray<Sink*>	addBuffer;		// 18
-		BSTArray<Sink*>	removeBuffer;	// 30
-		BSSpinLock		lock;			// 48
-		bool			stateFlag;		// 50
-		UInt8			pad51;			// 51
-		UInt16			pad52;			// 52
-		UInt32			pad54;			// 54
+		BSTArray<Sink*>			eventSinks;		// 00
+		BSTArray<Sink*>			addBuffer;		// 18
+		BSTArray<Sink*>			removeBuffer;	// 30
+		mutable BSUniqueLock	lock;			// 48
+		bool					stateFlag;		// 50
+		UInt8					pad51;			// 51
+		UInt16					pad52;			// 52
+		UInt32					pad54;			// 54
 	};
 	STATIC_ASSERT(sizeof(BSTEventSource<void*>) == 0x58);
 

@@ -21,9 +21,9 @@ namespace RE
 	}
 
 
-	bool BSInputDevice::IsPressed(UInt32 keyCode) const
+	bool BSInputDevice::IsPressed(UInt32 a_keyCode) const
 	{
-		Data* data = 0;
-		return (codeMap.GetAt(keyCode, data) && data->timer > 0.0f);
+		auto it = codeMap.find(a_keyCode);
+		return (it != codeMap.end()) && (it->second->timer > 0.0f);
 	}
 }

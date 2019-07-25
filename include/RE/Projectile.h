@@ -2,7 +2,7 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_Projectile
 
-#include "RE/BSSpinLock.h"  // BSSpinLock
+#include "RE/BSLock.h"  // BSUniqueLock
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
 
 
@@ -91,7 +91,7 @@ namespace RE
 		float					unk0D8;			// 0D8
 		float					unk0DC;			// 0DC
 		bhkSimpleShapePhantom*	unk0E0;			// 0E0
-		BSSpinLock				unk0E8;			// 0E8
+		mutable BSUniqueLock	unk0E8;			// 0E8
 		NiPoint3				unk0F0;			// 0F0
 		float					unk0FC;			// 0FC
 		float					unk100;			// 100

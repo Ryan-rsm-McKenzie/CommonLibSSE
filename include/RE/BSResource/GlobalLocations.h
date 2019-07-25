@@ -1,7 +1,7 @@
 #pragma once
 
+#include "RE/BSLock.h"  // BSUniqueLock
 #include "RE/BSResource/Location.h"  // BSResource::Location
-#include "RE/BSSpinLock.h"  // BSSpinLock
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
 
 
@@ -38,13 +38,13 @@ namespace RE
 
 
 			// members
-			UInt8				pad11;		// 11
-			UInt16				pad12;		// 12
-			mutable BSSpinLock	lock;		// 14
-			UInt32				unk1C;		// 1C
-			List<Location*>*	locations;	// 20
-			List<void*>*		unk28;		// 28
-			List<void*>*		unk30;		// 30
+			UInt8					pad11;		// 11
+			UInt16					pad12;		// 12
+			mutable BSUniqueLock	lock;		// 14
+			UInt32					unk1C;		// 1C
+			List<Location*>*		locations;	// 20
+			List<void*>*			unk28;		// 28
+			List<void*>*			unk30;		// 30
 		};
 		STATIC_ASSERT(sizeof(GlobalLocations) == 0x38);
 	}

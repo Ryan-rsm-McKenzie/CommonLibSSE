@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		NiTArray();
-		virtual ~NiTArray();
+		virtual ~NiTArray();	// 00
 
 		// sparse array, can have nullptr entries that should be skipped
 		// iterate from 0 to m_emptyRunStart - 1

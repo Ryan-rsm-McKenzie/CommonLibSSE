@@ -2,7 +2,7 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_ZeroOverheadHeap
 
-#include "RE/BSSpinLock.h"  // BSSpinLock
+#include "RE/BSLock.h"  // BSUniqueLock
 #include "RE/IMemoryHeap.h"  // IMemoryHeap
 
 
@@ -32,13 +32,13 @@ namespace RE
 
 
 		// members
-		std::size_t			memSize;		// 08
-		const char*			name;			// 10
-		void*				memoryBase;		// 18
-		void*				nextFreeMem;	// 20
-		UInt32				unk28;			// 28
-		mutable BSSpinLock	unk2C;			// 2C
-		UInt32				unk34;			// 34
+		std::size_t				memSize;		// 08
+		const char*				name;			// 10
+		void*					memoryBase;		// 18
+		void*					nextFreeMem;	// 20
+		UInt32					unk28;			// 28
+		mutable BSUniqueLock	unk2C;			// 2C
+		UInt32					unk34;			// 34
 	};
 	STATIC_ASSERT(sizeof(ZeroOverheadHeap) == 0x38);
 }

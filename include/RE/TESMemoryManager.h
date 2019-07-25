@@ -250,14 +250,6 @@ namespace RE
 	}
 
 
-	template <class T>
-	inline auto calloc()
-		-> std::remove_extent_t<T>*
-	{
-		return calloc<std::remove_extent_t<T>>(std::extent<T>::value);
-	}
-
-
 	inline void free(void* a_ptr)
 	{
 		auto heap = TESMemoryManager::GetSingleton();

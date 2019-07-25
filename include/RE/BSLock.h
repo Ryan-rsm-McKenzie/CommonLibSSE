@@ -3,21 +3,40 @@
 
 namespace RE
 {
-	class BSSpinLock
+	class BSUniqueLock
 	{
 	public:
 		enum
 		{
 			kFastSpinThreshold = 10000,
+		};
+
+
+		BSUniqueLock();
+
+		void	Lock(UInt32 a_pauseAttempts = 0);
+		void	Unlock();
+
+	private:
+		// members
+		volatile UInt32	_threadID;	// 0
+		volatile UInt32	_lockCount;	// 4
+	};
+	STATIC_ASSERT(sizeof(BSUniqueLock) == 0x8);
+
+
+	class BSReadWriteLock
+	{
+	public:
+		enum
+		{
 			kLockWrite = 0x80000000,
 			kLockCountMask = 0xFFFFFFF
 		};
 
 
-		BSSpinLock();
+		BSReadWriteLock();
 
-		void	Lock(UInt32 a_pauseAttempts = 0);
-		void	Unlock();
 		void	LockForRead();
 		void	UnlockForRead();
 		void	LockForWrite();
@@ -28,25 +47,25 @@ namespace RE
 		volatile UInt32	_threadID;	// 0
 		volatile UInt32	_lockCount;	// 4
 	};
-	STATIC_ASSERT(sizeof(BSSpinLock) == 0x8);
+	STATIC_ASSERT(sizeof(BSReadWriteLock) == 0x8);
 
 
-	class BSLockGuard
+	class BSUniqueLockGuard
 	{
 	public:
-		BSLockGuard() = delete;
-		BSLockGuard(const BSLockGuard&) = delete;
-		BSLockGuard(BSLockGuard&&) = delete;
-		explicit BSLockGuard(BSSpinLock& a_lock);
-		~BSLockGuard();
+		BSUniqueLockGuard() = delete;
+		BSUniqueLockGuard(const BSUniqueLockGuard&) = delete;
+		BSUniqueLockGuard(BSUniqueLockGuard&&) = delete;
+		explicit BSUniqueLockGuard(BSUniqueLock& a_lock);
+		~BSUniqueLockGuard();
 
-		BSLockGuard& operator=(const BSLockGuard&) = delete;
-		BSLockGuard& operator=(BSLockGuard&&) = delete;
+		BSUniqueLockGuard& operator=(const BSUniqueLockGuard&) = delete;
+		BSUniqueLockGuard& operator=(BSUniqueLockGuard&&) = delete;
 
 	private:
-		BSSpinLock& _lock;	// 0
+		BSUniqueLock& _lock;	// 0
 	};
-	STATIC_ASSERT(sizeof(BSLockGuard) == 0x8);
+	STATIC_ASSERT(sizeof(BSUniqueLockGuard) == 0x8);
 
 
 	class BSReadLockGuard
@@ -55,14 +74,14 @@ namespace RE
 		BSReadLockGuard() = delete;
 		BSReadLockGuard(const BSReadLockGuard&) = delete;
 		BSReadLockGuard(BSReadLockGuard&&) = delete;
-		explicit BSReadLockGuard(BSSpinLock& a_lock);
+		explicit BSReadLockGuard(BSReadWriteLock& a_lock);
 		~BSReadLockGuard();
 
 		BSReadLockGuard& operator=(const BSReadLockGuard&) = delete;
 		BSReadLockGuard& operator=(BSReadLockGuard&&) = delete;
 
 	private:
-		BSSpinLock& _lock;	// 0
+		BSReadWriteLock& _lock;	// 0
 	};
 	STATIC_ASSERT(sizeof(BSReadLockGuard) == 0x8);
 
@@ -73,14 +92,14 @@ namespace RE
 		BSWriteLockGuard() = delete;
 		BSWriteLockGuard(const BSWriteLockGuard&) = delete;
 		BSWriteLockGuard(BSWriteLockGuard&&) = delete;
-		explicit BSWriteLockGuard(BSSpinLock& a_lock);
+		explicit BSWriteLockGuard(BSReadWriteLock& a_lock);
 		~BSWriteLockGuard();
 
 		BSWriteLockGuard& operator=(const BSWriteLockGuard&) = delete;
 		BSWriteLockGuard& operator=(BSWriteLockGuard&&) = delete;
 
 	private:
-		BSSpinLock& _lock;	// 0
+		BSReadWriteLock& _lock;	// 0
 	};
 	STATIC_ASSERT(sizeof(BSWriteLockGuard) == 0x8);
 }

@@ -2,6 +2,7 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_BSScaleformTranslator
 
+#include "RE/BSFixedString.h"  // BSFixedStringW
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/GFxTranslator.h"  // GFxTranslator
 
@@ -14,7 +15,7 @@ namespace RE
 		inline static const void* RTTI = RTTI_BSScaleformTranslator;
 
 
-		using TranslationTable = BSTHashMap<wchar_t*, wchar_t*>;
+		using TranslationTable = BSTHashMap<BSFixedStringW, BSFixedStringW>;
 
 
 		virtual ~BSScaleformTranslator();									// 00

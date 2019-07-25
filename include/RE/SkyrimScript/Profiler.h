@@ -3,7 +3,7 @@
 #include "skse64/GameRTTI.h"  // RTTI_SkyrimScript__Profiler
 
 #include "RE/BSScript/IProfilePolicy.h"  // BSScript::IProfilePolicy
-#include "RE/BSSpinLock.h"  // BSSpinLock
+#include "RE/BSLock.h"  // BSUniqueLock
 #include "RE/BSTHashMap.h"  // BSTHashMap
 
 
@@ -27,7 +27,7 @@ namespace RE
 
 
 			// members
-			BSSpinLock						unk08;	// 08
+			mutable BSUniqueLock			unk08;	// 08
 			BSTHashMap<UnkKey, UnkValue>	unk10;	// 10
 			BSTHashMap<UnkKey, UnkValue>	unk40;	// 40
 			BSTHashMap<UnkKey, UnkValue>	unk70;	// 70

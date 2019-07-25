@@ -1,17 +1,17 @@
-#include "RE/BSSpinLock.h"  // BSSpinLock
+#include "RE/BSLock.h"
 
 #include "skse64/GameTypes.h"  // BSReadWriteLock
 
 
 namespace RE
 {
-	BSSpinLock::BSSpinLock() :
+	BSUniqueLock::BSUniqueLock() :
 		_threadID(0),
 		_lockCount(0)
 	{}
 
 
-	void BSSpinLock::Lock(UInt32 a_pauseAttempts)
+	void BSUniqueLock::Lock(UInt32 a_pauseAttempts)
 	{
 		UInt32 myThreadID = GetCurrentThreadId();
 
@@ -41,7 +41,7 @@ namespace RE
 	}
 
 
-	void BSSpinLock::Unlock()
+	void BSUniqueLock::Unlock()
 	{
 		UInt32 myThreadID = GetCurrentThreadId();
 
@@ -58,52 +58,58 @@ namespace RE
 	}
 
 
-	void BSSpinLock::LockForRead()
+	BSReadWriteLock::BSReadWriteLock() :
+		_threadID(0),
+		_lockCount(0)
+	{}
+
+
+	void BSReadWriteLock::LockForRead()
 	{
-		using func_t = function_type_t<decltype(&BSSpinLock::LockForRead)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(BSReadWriteLock, LockForRead, func_t*);
+		using func_t = function_type_t<decltype(&BSReadWriteLock::LockForRead)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSReadWriteLock, LockForRead, func_t*);
 		func(this);
 	}
 
 
-	void BSSpinLock::UnlockForRead()
+	void BSReadWriteLock::UnlockForRead()
 	{
-		using func_t = function_type_t<decltype(&BSSpinLock::UnlockForRead)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(BSReadWriteLock, UnlockRead, func_t*);
+		using func_t = function_type_t<decltype(&BSReadWriteLock::UnlockForRead)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSReadWriteLock, UnlockRead, func_t*);
 		func(this);
 	}
 
 
-	void BSSpinLock::LockForWrite()
+	void BSReadWriteLock::LockForWrite()
 	{
-		using func_t = function_type_t<decltype(&BSSpinLock::LockForWrite)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(BSReadWriteLock, LockForWrite, func_t*);
+		using func_t = function_type_t<decltype(&BSReadWriteLock::LockForWrite)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSReadWriteLock, LockForWrite, func_t*);
 		func(this);
 	}
 
 
-	void BSSpinLock::UnlockForWrite()
+	void BSReadWriteLock::UnlockForWrite()
 	{
-		using func_t = function_type_t<decltype(&BSSpinLock::UnlockForWrite)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(BSReadWriteLock, UnlockWrite, func_t*);
+		using func_t = function_type_t<decltype(&BSReadWriteLock::UnlockForWrite)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSReadWriteLock, UnlockWrite, func_t*);
 		func(this);
 	}
 
 
-	BSLockGuard::BSLockGuard(BSSpinLock& a_lock) :
+	BSUniqueLockGuard::BSUniqueLockGuard(BSUniqueLock& a_lock) :
 		_lock(a_lock)
 	{
 		_lock.Lock();
 	}
 
 
-	BSLockGuard::~BSLockGuard()
+	BSUniqueLockGuard::~BSUniqueLockGuard()
 	{
 		_lock.Unlock();
 	}
 
 
-	BSReadLockGuard::BSReadLockGuard(BSSpinLock& a_lock) :
+	BSReadLockGuard::BSReadLockGuard(BSReadWriteLock& a_lock) :
 		_lock(a_lock)
 	{
 		_lock.LockForRead();
@@ -116,7 +122,7 @@ namespace RE
 	}
 
 
-	BSWriteLockGuard::BSWriteLockGuard(BSSpinLock& a_lock) :
+	BSWriteLockGuard::BSWriteLockGuard(BSReadWriteLock& a_lock) :
 		_lock(a_lock)
 	{
 		_lock.LockForWrite();

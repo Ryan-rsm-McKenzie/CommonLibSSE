@@ -4,7 +4,7 @@
 
 #include "RE/BGSStoryManagerTreeForm.h"  // BGSStoryManagerTreeForm
 #include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSReadWriteLock.h"  // BSReadWriteLock
+#include "RE/BSLock.h"  // BSReadWriteLock
 #include "RE/BSString.h"  // BSString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTHashMap.h"  // BSTHashMap
@@ -165,7 +165,7 @@ namespace RE
 		BSTArray<BGSBaseAlias*>									aliases;				// 058
 		BSTHashMap<UnkKey, UnkValue>							unk070;					// 070 - alias related
 		BSTHashMap<UnkKey, UnkValue>							unk0A0;					// 0A0 - alias related
-		BSReadWriteLock											unk0D0;					// 0D0
+		mutable BSReadWriteLock									unk0D0;					// 0D0
 		General													general;				// 0D8 - DNAM
 		QuestEvent												event;					// 0E0 - ENAM
 		UInt32													pad0E4;					// 0E4

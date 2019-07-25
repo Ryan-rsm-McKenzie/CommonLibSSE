@@ -1023,9 +1023,6 @@
     <ClCompile Include="src\RE\BSString.cpp">
       <Filter>src\RE\BSCore</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSSpinLock.cpp">
-      <Filter>src\RE\BSCore</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\TESAIForm.cpp">
       <Filter>src\RE\FormComponents</Filter>
     </ClCompile>
@@ -1175,9 +1172,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\FxDelegateArgs.cpp">
       <Filter>src\RE\Scaleform\FxGameDelegate</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSReadWriteLock.cpp">
-      <Filter>src\RE\BSCore</Filter>
     </ClCompile>
     <ClCompile Include="src\SKSE\RegistrationSet.cpp">
       <Filter>src\SKSE</Filter>
@@ -1473,6 +1467,12 @@
     <ClCompile Include="src\RE\BGSSaveLoadManager.cpp">
       <Filter>src\RE\FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BSGlobalStringTable.cpp">
+      <Filter>src\RE\BSCore</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSLock.cpp">
+      <Filter>src\RE\BSCore</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -1494,9 +1494,6 @@
       <Filter>include\RE\ExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSTHashMap.h">
-      <Filter>include\RE\BSCore</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSTScatterTable.h">
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\CRC.h">
@@ -1752,9 +1749,6 @@
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSTMessageQueue.h">
-      <Filter>include\RE\BSCore</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSSpinLock.h">
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
     <ClInclude Include="include\ForceInclude.h">
@@ -2287,9 +2281,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\QuestEvents.h">
       <Filter>include\RE\FormComponents\Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSReadWriteLock.h">
-      <Filter>include\RE\BSCore</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraRaceData.h">
       <Filter>include\RE\ExtraData</Filter>
@@ -3916,6 +3907,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\RaceSexMenuEvent.h">
       <Filter>include\RE\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLock.h">
+      <Filter>include\RE\BSCore</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
