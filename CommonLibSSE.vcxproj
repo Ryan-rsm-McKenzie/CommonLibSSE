@@ -839,6 +839,7 @@
     <ClInclude Include="include\RE\hkSweptTransform.h" />
     <ClInclude Include="include\RE\hkTransform.h" />
     <ClInclude Include="include\RE\hkVector4.h" />
+    <ClInclude Include="include\RE\HUDData.h" />
     <ClInclude Include="include\RE\HUDMenu.h" />
     <ClInclude Include="include\RE\HUDMeter.h" />
     <ClInclude Include="include\RE\HUDObject.h" />

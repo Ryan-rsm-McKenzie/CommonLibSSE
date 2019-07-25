@@ -17,7 +17,7 @@ namespace RE
 
 	UInt32 BSGlobalStringTable::Entry::GetLength() const
 	{
-		return _lengthAndRef.length;
+		return _lengthAndRef.length & kLengthMask;
 	}
 
 

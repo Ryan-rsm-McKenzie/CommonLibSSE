@@ -17,7 +17,8 @@ namespace RE
 			kOpen = 1,
 			kClose = 3,
 			kScaleform = 6,	// BSUIScaleformData
-			kMessage = 7	// BSUIMessageData
+			kMessage = 7,	// BSUIMessageData
+			kUnk13 = 13
 		};
 
 

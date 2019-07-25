@@ -441,6 +441,7 @@
 #include "RE/hkSweptTransform.h"
 #include "RE/hkTransform.h"
 #include "RE/hkVector4.h"
+#include "RE/HUDData.h"
 #include "RE/HUDMenu.h"
 #include "RE/HUDMeter.h"
 #include "RE/HUDObject.h"

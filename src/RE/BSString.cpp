@@ -58,7 +58,8 @@ namespace RE
 
 	BSString::~BSString()
 	{
-		delete _data;
+		free(_data);
+		_data = 0;
 	}
 
 

@@ -329,8 +329,6 @@ namespace RE
 
 		namespace MessageDataFactoryManager
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B C8 48 85 C0 74 0C 48 8B 00
-			constexpr std::uintptr_t GetCreator = 0x003262F0;	// 1_5_80
 			// IndirectSig: E8 ? ? ? ? 48 8B C8 48 8D 57 08
 			constexpr std::uintptr_t GetSingleton = 0x00326460;		// 1_5_80
 		}

@@ -58,8 +58,10 @@ namespace RE
 				reference& operator=(const reference& a_rhs);
 				reference& operator=(reference&& a_rhs);
 				reference& operator=(const value_type& a_val);
+				reference& operator=(value_type&& a_val);
+				template <class... Args> reference& operator=(Args&&... a_args);
 
-				template <class Test = T, typename std::enable_if_t<std::is_arithmetic<Test>::value, int> = 0> reference& operator+=(const value_type& a_val);
+				template <class U = T, typename std::enable_if_t<std::is_arithmetic<U>::value, int> = 0> reference& operator+=(const value_type& a_val);
 
 			protected:
 				friend class VMArray<T>;
@@ -286,7 +288,27 @@ namespace RE
 
 
 		template <class T>
-		template <class Test, typename std::enable_if_t<std::is_arithmetic<Test>::value, int>>
+		auto VMArray<T>::reference::operator=(value_type&& a_val)
+			-> reference &
+		{
+			_val.Pack(a_val);
+			return *this;
+		}
+
+
+		template <class T>
+		template <class... Args>
+		auto VMArray<T>::reference::operator=(Args&&... a_args)
+			-> reference &
+		{
+			value_type val(std::forward<Args>(a_args)...);
+			_val.Pack(val);
+			return *this;
+		}
+
+
+		template <class T>
+		template <class U, typename std::enable_if_t<std::is_arithmetic<U>::value, int>>
 		auto VMArray<T>::reference::operator+=(const value_type& a_val)
 			-> reference&
 		{
@@ -513,7 +535,9 @@ namespace RE
 		VMArray<T>::VMArray() :
 			_data(nullptr),
 			_proxy(nullptr)
-		{}
+		{
+			_data = alloc(0);
+		}
 
 
 		template <class T>
@@ -887,7 +911,7 @@ namespace RE
 		[[nodiscard]] BSTSmartPointer<Array> VMArray<T>::alloc(size_type a_count)
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
-			BSTSmartPointer<BSScriptArray> arrPtr;
+			BSTSmartPointer<Array> arrPtr;
 			auto typeID = GetTypeID<value_type>();
 			bool allocSuccess = vm->AllocateArray(typeID, a_count, arrPtr);
 			assert(allocSuccess);	// alloc failed

@@ -3911,5 +3911,8 @@
     <ClInclude Include="include\RE\BSLock.h">
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\HUDData.h">
+      <Filter>include\RE\Menus\IUIMessageData</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

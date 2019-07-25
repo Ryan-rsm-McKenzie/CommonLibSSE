@@ -74,7 +74,6 @@ namespace RE
 		using mapped_type = T;
 		using value_type = pair<const Key, T>;
 		using size_type = UInt32;
-		using difference_type = SInt32;
 		using hasher = Hash;
 		using key_equal = KeyEqual;
 
@@ -572,7 +571,6 @@ namespace RE
 		using key_type = Key;
 		using value_type = Key;
 		using size_type = UInt32;
-		using difference_type = SInt32;
 		using hasher = Hash;
 		using key_equal = KeyEqual;
 

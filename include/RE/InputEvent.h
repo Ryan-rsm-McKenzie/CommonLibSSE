@@ -31,9 +31,9 @@ namespace RE
 		virtual const BSFixedString&	GetControlID() const;	// 02 - { static BSFixedString str(""); return str; }
 
 
-		DeviceType		deviceType;	// 08
-		EventType		eventType;	// 0C
-		InputEvent*		next;		// 10
+		DeviceType	deviceType;	// 08
+		EventType	eventType;	// 0C
+		InputEvent*	next;		// 10
 	};
 	STATIC_ASSERT(sizeof(InputEvent) == 0x18);
 }

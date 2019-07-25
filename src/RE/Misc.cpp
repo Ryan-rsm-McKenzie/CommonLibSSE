@@ -25,11 +25,11 @@ namespace RE
 	}
 
 
-	void DebugNotification(const char* a_notification, void* a_arg2, bool a_arg3)
+	void DebugNotification(const char* a_notification, const char* a_soundToPlay, bool a_cancelIfAlreadyQueued)
 	{
 		using func_t = function_type_t<decltype(&DebugNotification)>;
 		REL::Offset<func_t*> func(Offset::DebugNotification);
-		return func(a_notification, a_arg2, a_arg3);
+		return func(a_notification, a_soundToPlay, a_cancelIfAlreadyQueued);
 	}
 
 
