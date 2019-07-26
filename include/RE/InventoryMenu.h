@@ -11,6 +11,7 @@
 namespace RE
 {
 	class GFxMovieView;
+	class TESObjectREFR;
 
 
 	class InventoryMenu : public IMenu
