@@ -2,6 +2,9 @@
 
 #include "skse64/GameObjects.h"  // MagicItem
 
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
+
 
 namespace RE
 {
@@ -17,6 +20,14 @@ namespace RE
 	{
 		using func_t = function_type_t<decltype(&MagicItem::GetEffectiveMagickaCost)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::MagicItem, GetEffectiveMagickaCost, func_t*);
+		return func(this, a_caster);
+	}
+
+
+	float MagicItem::CalculateTotalGoldValue(Actor* a_caster) const
+	{
+		using func_t = function_type_t<decltype(&MagicItem::CalculateTotalGoldValue)>;
+		REL::Offset<func_t*> func(Offset::MagicItem::CalculateTotalGoldValue);
 		return func(this, a_caster);
 	}
 }

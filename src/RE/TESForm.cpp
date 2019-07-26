@@ -2,6 +2,7 @@
 
 #include "skse64/GameForms.h"  // TESForm
 
+#include "RE/ExtraEnchantment.h"  // ExtraEnchantment
 #include "RE/FormTraits.h"  // As
 #include "RE/MagicItem.h"  // MagicItem
 #include "RE/TESModel.h"  // TESModel
@@ -113,29 +114,38 @@ namespace RE
 	{
 		using func_t = function_type_t<decltype(&TESForm::GetWeight)>;
 		func_t* func = unrestricted_cast<func_t*>(&::GetFormWeight);
-		const TESObjectREFR* ref = const_cast<TESForm*>(this)->GetReference();
-		return func(ref ? ref->baseForm : this);
+		auto ref = As<TESObjectREFR*>();
+		auto form = ref ? ref->baseForm : this;
+		return func(form);
 	}
 
 
 	SInt32 TESForm::GetGoldValue() const
 	{
-		return -1;
-
-#if 0
+		SInt32 value = 0;
 		auto form = this;
-		if (GetFlag00000100()) {
-			form = static_cast<const TESObjectREFR*>(this)->baseForm;
+		auto objRef = As<TESObjectREFR*>();
+		if (objRef) {
+			form = objRef->baseForm;
+			auto xEnch = objRef->extraData.GetByType<ExtraEnchantment>();
+			if (xEnch && xEnch->objectEffect) {
+				value += xEnch->objectEffect->CalculateTotalGoldValue();
+			}
 		}
 
 		auto valueForm = form->As<TESValueForm*>();
 		if (valueForm) {
-			return valueForm->value;
+			value += valueForm->value;
 		} else {
 			auto magicItem = form->As<MagicItem*>();
-			return magicItem ? magicItem->GetValue() : -1;
+			if (magicItem) {
+				value += magicItem->CalculateTotalGoldValue();
+			} else {
+				value = -1;
+			}
 		}
-#endif
+
+		return value;
 	}
 
 

@@ -931,9 +931,21 @@ namespace RE
 	}
 
 
-	template <class T>
-	constexpr const T TESForm::As() const
+	namespace
 	{
-		return const_cast<const T>(const_cast<TESForm*>(this)->As<T>());
+		namespace
+		{
+			template <class T> struct _make_const { using type = const T; };
+			template <class T> struct _make_const<T*> { using type = const T*; };
+		}
+		template <class T> struct make_const : _make_const<T> {};
+		template <class T> using make_const_t = typename make_const<T>::type;
+	}
+
+
+	template <class T>
+	constexpr auto TESForm::As() const
+	{
+		return const_cast<typename make_const_t<T>>(const_cast<TESForm*>(this)->As<T>());
 	}
 }

@@ -165,7 +165,7 @@ namespace RE
 		virtual void					SetFlag00000002(bool a_set) override;																																						// 24
 		virtual bool					IsWaterActivator() override;																																								// 2A - { return baseForm ? baseForm->IsWaterActivator() : false; }
 		virtual void					Unk_2B(void) override;																																										// 2B - { return this; }
-		virtual TESObjectREFR*			GetReference() override;																																									// 2C - { return this; }
+		virtual TESObjectREFR*			GetReference() const override;																																								// 2C - { return this; }
 		virtual void					Unk_30(void) override;																																										// 30
 		virtual void					Unk_31(void) override;																																										// 31
 		virtual const char*				GetEditorID() override;																																										// 32

@@ -304,6 +304,13 @@ namespace RE
 		}
 
 
+		namespace MagicItem
+		{
+			// IndirectSig: E8 ? ? ? ? F3 0F 59 C6 B0 01
+			constexpr std::uintptr_t CalculateTotalGoldValue = 0x00101A30;	// 1_5_80
+		}
+
+
 		namespace MagicTarget
 		{
 			// DirectSig: 48 89 5C 24 18 56 48 83 EC 20 48 8B 01 48 8B F2 FF 50 38

@@ -91,7 +91,7 @@ namespace RE
 		virtual bool			IsMagicItem() const;																												// 29 - { return false; }
 		virtual bool			IsWaterActivator();																													// 2A - { return false; }
 		virtual void			Unk_2B(void);																														// 2B - { return 0; }
-		virtual TESObjectREFR*	GetReference();																														// 2C - { return 0; }
+		virtual TESObjectREFR*	GetReference() const;																												// 2C - { return 0; }
 		virtual void			Unk_2D(void);																														// 2D - { return 0; }
 		virtual const char*		GetAliasName(const BSFixedString& a_alias);																							// 2E - alias: "Pronoun" "PronounObj" "PronounPos" "PronounPosObj" "PronounRef" "PronounInt" "Race" "Gender" "ShortName". see http://www.creationkit.com/Text_Replacement
 		virtual void			CopyFrom(TESForm* a_srcForm);																										// 2F - { return; }
@@ -115,8 +115,8 @@ namespace RE
 		bool										IsNot(FormType a_type) const;
 		template <class First, class... Rest> bool	IsNot(First a_first, Rest... a_rest) const;
 
-		template <class T> constexpr T			As();
-		template <class T> constexpr const T	As() const;
+		template <class T> constexpr T		As();
+		template <class T> constexpr auto	As() const;
 
 		void	CopyFromEx(TESForm* a_rhs);
 		bool	IsKey() const;
