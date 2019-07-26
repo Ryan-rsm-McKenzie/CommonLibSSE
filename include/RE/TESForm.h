@@ -79,7 +79,7 @@ namespace RE
 		virtual bool			GetFlag02000000();																													// 1D - { return (flags >> 25) & 1; }
 		virtual void			Unk_1E(void);																														// 1E - { return 0; }
 		virtual bool			GetFlag00000200();																													// 1F - { return (flags >> 9) & 1; }
-		virtual bool			GetFlag00000100();																													// 20 - { return (flags >> 8) & 1; }
+		virtual bool			GetFlag00000100() const;																											// 20 - { return (flags >> 8) & 1; }
 		virtual void			SetFlag00000200(bool a_set);																										// 21 - { if (a_set) flags &= 0xFFFFFDFF; else flags |= 0x200; }
 		virtual bool			IgnoredBySandbox() const;																											// 22 - { return false; }
 		virtual void			SetFlag00000020(bool a_set);																										// 23 - { bool result = (flags >> 5) & 1; if (result != a_set) { if (a_set) flags |= 0x20; else flags &= 0xFFFFFFDF; MarkChanged(1); return result; }
@@ -132,7 +132,7 @@ namespace RE
 		bool	HasWorldModel() const;
 		UInt32	GetFormID() const;
 		float	GetWeight() const;
-		SInt32	GetValue() const;
+		SInt32	GetGoldValue() const;
 
 
 		// members

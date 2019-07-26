@@ -118,15 +118,24 @@ namespace RE
 	}
 
 
-	SInt32 TESForm::GetValue() const
+	SInt32 TESForm::GetGoldValue() const
 	{
-		auto valueForm = As<TESValueForm*>();
+		return -1;
+
+#if 0
+		auto form = this;
+		if (GetFlag00000100()) {
+			form = static_cast<const TESObjectREFR*>(this)->baseForm;
+		}
+
+		auto valueForm = form->As<TESValueForm*>();
 		if (valueForm) {
 			return valueForm->value;
 		} else {
-			auto magicItem = As<MagicItem*>();
+			auto magicItem = form->As<MagicItem*>();
 			return magicItem ? magicItem->GetValue() : -1;
 		}
+#endif
 	}
 
 

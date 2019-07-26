@@ -158,7 +158,7 @@ namespace RE
 		virtual bool					GetFlag00020000() override;																																									// 1B - { return baseForm->GetFlag00020000(); }
 		virtual bool					GetFlag02000000() override;																																									// 1D - { return baseForm ? baseForm->GetFlag02000000() : false; }
 		virtual bool					GetFlag00000200() override;																																									// 1F - { return (flags >> 9) & 1 && baseForm->GetFlag00000200(); }
-		virtual bool					GetFlag00000100() override;																																									// 20 - { return baseForm->GetFlag00000100(); }
+		virtual bool					GetFlag00000100() const override;																																							// 20 - { return baseForm->GetFlag00000100(); }
 		virtual void					SetFlag00000200(bool a_set) override;																																						// 21
 		virtual bool					IgnoredBySandbox() const override;																																							// 22
 		virtual void					SetFlag00000020(bool a_set) override;																																						// 23

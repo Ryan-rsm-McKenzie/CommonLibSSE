@@ -11,6 +11,7 @@
 
 namespace RE
 {
+	class Actor;
 	class Character;
 	class EffectSetting;
 	struct Effect;
@@ -100,7 +101,7 @@ namespace RE
 		virtual void		Unk_60(void);									// 60 - { return 0; }
 		virtual bool		IsPoison() const;								// 61 - { return GetMagicType() == MagicType::kPoison; }
 		virtual bool		IsHealingItem() const;							// 62 - { return false; }
-		virtual void		Unk_63(void);									// 63 - { return; }
+		virtual void		GetSkillCost(float& a_cost, Actor* a_actor);	// 63 - { return; }
 		virtual float		GetChargeTime() const;							// 64 - { return 0.0; }
 		virtual void		Unk_65(void);									// 65 - { return 0; }
 		virtual ActorValue	GetActorValueType() const;						// 66 - { return ActorValue::kNone; } used for Actor::AdvanceSkill()
@@ -115,8 +116,8 @@ namespace RE
 		virtual void		LoadData(TESFile* a_mod) = 0;					// 6F
 		virtual void		ByteSwapData() = 0;								// 70
 
-		Effect*				GetCostliestEffectItem(UInt32 a_arg1 = 5, bool a_arg2 = false);
-		float				GetEffectiveMagickaCost(Character* a_caster);
+		Effect*	GetCostliestEffectItem(UInt32 a_arg1 = 5, bool a_arg2 = false);
+		float	GetEffectiveMagickaCost(Character* a_caster);
 
 
 		// members

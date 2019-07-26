@@ -79,7 +79,7 @@ namespace RE
 		virtual bool		DisallowsAbsorbReflection() override;					// 5E - { return (GetData()->flags >> 21) & 1; }
 		virtual bool		AllowsDualCastModification() override;					// 5F - { return (GetData()->flags >> 23) & 1; }
 		virtual void		Unk_60(void) override;									// 60
-		virtual void		Unk_63(void) override;									// 63
+		virtual void		GetSkillCost(float& a_cost, Actor* a_actor) override;	// 63
 		virtual float		GetChargeTime() const override;							// 64
 		virtual ActorValue	GetActorValueType() const override;						// 66
 		virtual void		Unk_67(void) override;									// 67 - { BGSEquipSlot* equipSlot = BGSEquipType::GetEquipSlot(); return equipSlot && equipSlot->flags & 1; } - UsesAllEquipSlotParents()?
