@@ -5,6 +5,7 @@
 #include "RE/ExtraFlags.h"  // ExtraFlags::Flag
 #include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/FormTypes.h"
+#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
 
 
 namespace RE
@@ -58,6 +59,11 @@ namespace RE
 		};
 
 
+		BaseExtraList();
+		~BaseExtraList();
+
+		TES_HEAP_REDEFINE_NEW();
+
 		iterator		begin();
 		const_iterator	cbegin() const;
 		const_iterator	begin() const;
@@ -66,33 +72,36 @@ namespace RE
 		const_iterator	end() const;
 
 
-		bool				HasType(UInt32 a_type) const;
-		bool				HasType(ExtraDataType a_type) const;
+		bool		HasType(UInt32 a_type) const;
+		bool		HasType(ExtraDataType a_type) const;
 		template <class T>
-		inline bool			HasType() const
+		inline bool	HasType() const
 		{
 			return HasType(T::kExtraTypeID);
 		}
-		BSExtraData*		GetByType(UInt32 a_type) const;
-		BSExtraData*		GetByType(ExtraDataType a_type) const;
+
+		BSExtraData*	GetByType(UInt32 a_type) const;
+		BSExtraData*	GetByType(ExtraDataType a_type) const;
 		template <class T>
-		inline T*			GetByType() const
+		inline T*		GetByType() const
 		{
 			return static_cast<T*>(GetByType(T::kExtraTypeID));
 		}
-		bool				Remove(UInt8 a_type, BSExtraData* a_toRemove);
-		bool				Remove(ExtraDataType a_type, BSExtraData* a_toRemove);
+
+		bool		Remove(UInt8 a_type, BSExtraData* a_toRemove);
+		bool		Remove(ExtraDataType a_type, BSExtraData* a_toRemove);
 		template <class T>
-		inline bool			Remove(T* a_toRemove)
+		inline bool	Remove(T* a_toRemove)
 		{
 			return Remove(T::kExtraTypeID, a_toRemove);
 		}
-		BSExtraData*		Add(BSExtraData* a_toAdd);
-		const char*			GetDisplayName(TESForm* a_type);
-		bool				GetAshPileRefHandle(RefHandle& a_refHandle);
-		void				SetInventoryChanges(InventoryChanges* a_changes);
-		void				SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
-		TESObjectREFR*		GetLinkedRef(BGSKeyword* a_keyword);
+
+		BSExtraData*			Add(BSExtraData* a_toAdd);
+		const char*				GetDisplayName(TESForm* a_type);
+		bool					GetAshPileRefHandle(RefHandle& a_refHandle);
+		void					SetInventoryChanges(InventoryChanges* a_changes);
+		void					SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
+		TESObjectREFR*			GetLinkedRef(BGSKeyword* a_keyword);
 
 	protected:
 		struct PresenceBitfield
@@ -108,8 +117,8 @@ namespace RE
 		STATIC_ASSERT(sizeof(PresenceBitfield) == 0x18);
 
 
-		inline void	MarkType(UInt32 a_type, bool a_cleared);
-		inline void	MarkType(ExtraDataType a_type, bool a_cleared);
+		void	MarkType(UInt32 a_type, bool a_cleared);
+		void	MarkType(ExtraDataType a_type, bool a_cleared);
 
 
 		// members

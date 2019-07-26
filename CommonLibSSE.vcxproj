@@ -626,6 +626,7 @@
     <ClInclude Include="include\RE\ChestsLooted.h" />
     <ClInclude Include="include\RE\Clouds.h" />
     <ClInclude Include="include\RE\Color.h" />
+    <ClInclude Include="include\RE\CombatGroupDetectionListener.h" />
     <ClInclude Include="include\RE\CommandTable.h" />
     <ClInclude Include="include\RE\ConcreteFormFactory.h" />
     <ClInclude Include="include\RE\ConcreteObjectFormFactory.h" />
@@ -637,6 +638,8 @@
     <ClInclude Include="include\RE\ConstructibleObjectMenu.h" />
     <ClInclude Include="include\RE\CraftingMenu.h" />
     <ClInclude Include="include\RE\CraftingSubMenu.h" />
+    <ClInclude Include="include\RE\DetectionListener.h" />
+    <ClInclude Include="include\RE\DetectionState.h" />
     <ClInclude Include="include\RE\DeviceTypes.h" />
     <ClInclude Include="include\RE\DialogueData.h" />
     <ClInclude Include="include\RE\DirectionalAmbientLightingColor.h" />

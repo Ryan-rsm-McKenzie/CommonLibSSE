@@ -226,7 +226,7 @@ namespace RE
 	}
 
 
-	Actor::CaughtState Actor::SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage)
+	void Actor::SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage)
 	{
 		using func_t = function_type_t<decltype(&Actor::SendStealAlarm)>;
 		REL::Offset<func_t*> func(Offset::Actor::SendStealAlarm);

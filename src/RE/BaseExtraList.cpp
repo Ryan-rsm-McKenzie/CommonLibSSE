@@ -113,6 +113,25 @@ namespace RE
 	}
 
 
+	BaseExtraList::BaseExtraList() :
+		_data(0),
+		_presence(0),
+		_lock()
+	{}
+
+
+	BaseExtraList::~BaseExtraList()
+	{
+		while (_data) {
+			auto xData = _data;
+			_data = xData->next;
+			delete xData;
+		}
+		free(_presence);
+		_presence = 0;
+	}
+
+
 	BaseExtraList::iterator BaseExtraList::begin()
 	{
 		return iterator(_data);

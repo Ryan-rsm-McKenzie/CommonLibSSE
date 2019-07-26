@@ -6,10 +6,10 @@
 
 namespace RE
 {
-	SInt32 ActorKnowledge::GetDetectionState()
+	DetectionState* ActorKnowledge::GetDetectionState(UInt32 a_level)
 	{
 		using func_t = function_type_t<decltype(&ActorKnowledge::GetDetectionState)>;
 		REL::Offset<func_t*> func(Offset::ActorKnowledge::GetDetectionState);
-		return func(this);
+		return func(this, a_level);
 	}
 }

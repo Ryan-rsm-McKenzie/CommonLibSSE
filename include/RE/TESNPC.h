@@ -175,28 +175,28 @@ namespace RE
 		STATIC_ASSERT(sizeof(Layer) == 0x10);
 
 
-		virtual ~TESNPC();																																			// 00
+		virtual ~TESNPC();																																					// 00
 
 		// override (TESActorBase)
-		virtual void			InitDefaults() override;																											// 04
-		virtual void			ReleaseManagedData() override;																										// 05
-		virtual bool			LoadForm(TESFile* a_mod) override;																									// 06
-		virtual void			Unk_0C(void)  override;																												// 0C
-		virtual void			SaveBuffer(BGSSaveFormBuffer* a_buf) override;																						// 0E
-		virtual void			LoadBuffer(BGSLoadFormBuffer* a_buf) override;																						// 0F
-		virtual void			Unk_12(void) override;																												// 12
-		virtual void			InitItem() override;																												// 13
-		virtual const char*		GetAliasName(const BSFixedString& a_alias) override;																				// 2E
-		virtual void			CopyFrom(TESForm* a_srcForm) override;																								// 2F
-		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
-		virtual void			Unk_41(void) override;																												// 41
-		virtual void			SetVoiceType(BGSVoiceType* a_voiceType) override;																					// 48 - { TESActorBaseData::voice = a_voiceType; }
-		virtual BGSVoiceType*	GetVoiceType() const override;																										// 49
-		virtual void			Unk_4A(void) override;																												// 4A
-		virtual bool			GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4C
-		virtual void			Unk_4D(void) override;																												// 4D
-		virtual TESCombatStyle*	GetCombatStyle() override;																											// 54 - { return combatStyle; }
-		virtual void			SetCombatStyle(TESCombatStyle* a_combatStyle) override;																				// 55 - { combatStyle = a_combatStyle; }
+		virtual void			InitDefaults() override;																													// 04
+		virtual void			ReleaseManagedData() override;																												// 05
+		virtual bool			LoadForm(TESFile* a_mod) override;																											// 06
+		virtual void			Unk_0C(void)  override;																														// 0C
+		virtual void			SaveBuffer(BGSSaveFormBuffer* a_buf) override;																								// 0E
+		virtual void			LoadBuffer(BGSLoadFormBuffer* a_buf) override;																								// 0F
+		virtual void			Unk_12(void) override;																														// 12
+		virtual void			InitItem() override;																														// 13
+		virtual const char*		GetAliasName(const BSFixedString& a_alias) override;																						// 2E
+		virtual void			CopyFrom(TESForm* a_srcForm) override;																										// 2F
+		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount) override;	// 37
+		virtual void			Unk_41(void) override;																														// 41
+		virtual void			SetVoiceType(BGSVoiceType* a_voiceType) override;																							// 48 - { TESActorBaseData::voice = a_voiceType; }
+		virtual BGSVoiceType*	GetVoiceType() const override;																												// 49
+		virtual void			Unk_4A(void) override;																														// 4A
+		virtual bool			GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																			// 4C
+		virtual void			Unk_4D(void) override;																														// 4D
+		virtual TESCombatStyle*	GetCombatStyle() override;																													// 54 - { return combatStyle; }
+		virtual void			SetCombatStyle(TESCombatStyle* a_combatStyle) override;																						// 55 - { combatStyle = a_combatStyle; }
 
 		Sex				GetSex();
 		bool			HasOverlays();

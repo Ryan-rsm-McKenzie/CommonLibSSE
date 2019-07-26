@@ -90,14 +90,6 @@ namespace RE
 		};
 
 
-		enum class CaughtState : UInt32
-		{
-			kError = static_cast<std::underlying_type_t<CaughtState>>(-1),
-			kUncaught = 0,
-			kCaught = 1
-		};
-
-
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32
@@ -422,7 +414,7 @@ namespace RE
 		bool		IsSneaking() const;
 		bool		IsTrespassing() const;
 		void		DispelWornItemEnchantments();
-		CaughtState	SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);
+		void		SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);
 		SInt32		CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const;
 		SInt32		GetDetectionLevel(Actor* a_target, UInt32 a_idx = 3);
 		bool		IsGhost() const;

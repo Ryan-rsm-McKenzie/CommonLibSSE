@@ -934,6 +934,9 @@
     <Filter Include="include\RE\bgs\saveload">
       <UniqueIdentifier>{629163d0-bd86-49cc-97c7-11539bf627ba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\FormComponents\Components\DetectionListener">
+      <UniqueIdentifier>{d8aaeb61-40b8-48a6-a2d0-53aa3b7ab6e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -3913,6 +3916,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\HUDData.h">
       <Filter>include\RE\Menus\IUIMessageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DetectionState.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DetectionListener.h">
+      <Filter>include\RE\FormComponents\Components\DetectionListener</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\CombatGroupDetectionListener.h">
+      <Filter>include\RE\FormComponents\Components\DetectionListener</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

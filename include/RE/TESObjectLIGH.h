@@ -95,18 +95,18 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x28);
 
 
-		virtual ~TESObjectLIGH();																															// 00
+		virtual ~TESObjectLIGH();																																	// 00
 
 		// override (TESBoundAnimObject)
-		virtual void	InitDefaults() override;																											// 04
-		virtual bool	LoadForm(TESFile* a_mod) override;																									// 06
-		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;																						// 0E
-		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																						// 0F
-		virtual void	InitItem() override;																												// 13
-		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, UInt32 a_arg5) override;	// 37
-		virtual void	Unk_41(void) override;																												// 41
-		virtual void	Unk_47(void) override;																												// 47
-		virtual void	Unk_4A(void) override;																												// 4A
+		virtual void	InitDefaults() override;																													// 04
+		virtual bool	LoadForm(TESFile* a_mod) override;																											// 06
+		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;																								// 0E
+		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																								// 0F
+		virtual void	InitItem() override;																														// 13
+		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount) override;	// 37
+		virtual void	Unk_41(void) override;																														// 41
+		virtual void	Unk_47(void) override;																														// 47
+		virtual void	Unk_4A(void) override;																														// 4A
 
 		bool			CanBeCarried() const;
 
