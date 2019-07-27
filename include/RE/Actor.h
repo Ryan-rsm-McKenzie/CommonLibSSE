@@ -295,7 +295,7 @@ namespace RE
 		virtual void							Unk_C8(void);																																														// 0C8
 		virtual void							Unk_C9(void);																																														// 0C9
 		virtual void							OnArmorActorValueChanged();																																											// 0CA - { return; }
-		virtual void							DropItem(RefHandle& a_droppedItemHandle, TESForm* a_item, BaseExtraList* a_extraList, UInt32 a_count, UInt32 a_arg5, UInt32 a_arg6);																// 0CB
+		virtual void							DropItem(RefHandle& a_droppedItemHandle, TESForm* a_item, BaseExtraList* a_extraList, UInt32 a_count, void* a_arg5, void* a_arg6);																	// 0CB
 		virtual void							PickUpItem(TESObjectREFR* a_item, UInt32 a_count, bool a_arg3 = false, bool a_playSound = true);																									// 0CC
 		virtual void							Unk_CD(void);																																														// 0CD
 		virtual void							Unk_CE(void);																																														// 0CE
