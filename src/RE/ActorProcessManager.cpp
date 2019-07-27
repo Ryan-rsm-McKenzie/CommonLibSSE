@@ -2,6 +2,8 @@
 
 #include "skse64/GameFormComponents.h"  // ActorProcessManager
 
+#include "SKSE/API.h"  // NiNodeUpdateEvent
+
 
 namespace RE
 {
@@ -31,9 +33,10 @@ namespace RE
 
 	void ActorProcessManager::UpdateEquipment_Hooked(Actor* a_actor)
 	{
-		using func_t = function_type_t<decltype(&ActorProcessManager::UpdateEquipment_Hooked)>;
-		func_t* func = unrestricted_cast<func_t*>(&::ActorProcessManager::UpdateEquipment_Hooked);
-		return func(this, a_actor);
+		UpdateEquipment(a_actor);
+		SKSE::NiNodeUpdateEvent event(a_actor);
+		auto source = SKSE::GetNiNodeUpdateEventSource();
+		source->SendEvent(&event);
 	}
 
 

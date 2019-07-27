@@ -95,6 +95,7 @@ namespace RE
 		void					PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void					StartActivation();
 		bool					TryToPickPocket(Actor* a_target, InventoryEntryData* a_entry, UInt32 a_numItems, bool a_arg4 = true);
+		void					SetCollision(bool a_enable);
 
 
 		// members

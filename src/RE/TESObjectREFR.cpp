@@ -361,6 +361,22 @@ namespace RE
 	}
 
 
+	bool TESObjectREFR::HasCollision() const
+	{
+		return (flags & RecordFlags::kCollisionsDisabled) == 0;
+	}
+
+
+	void TESObjectREFR::SetCollision(bool a_enable)
+	{
+		if (a_enable) {
+			flags &= ~RecordFlags::kCollisionsDisabled;
+		} else {
+			flags |= RecordFlags::kCollisionsDisabled;
+		}
+	}
+
+
 	void TESObjectREFR::CreateRefHandle_Impl(RefHandle& a_refHandle, TESObjectREFR* a_refrTo)
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::CreateRefHandle_Impl)>;

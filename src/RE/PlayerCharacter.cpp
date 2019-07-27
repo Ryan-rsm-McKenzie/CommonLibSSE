@@ -3,8 +3,8 @@
 #include "skse64/GameReferences.h"  // PlayerCharacter
 
 #include "RE/Offsets.h"
-#include "REL/Relocation.h"
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -116,5 +116,17 @@ namespace RE
 		using func_t = function_type_t<decltype(&PlayerCharacter::TryToPickPocket)>;
 		REL::Offset<func_t*> func(Offset::PlayerCharacter::TryToPickPocket);
 		return func(this, a_target, a_entry, a_numItems, a_arg4);
+	}
+
+
+	void PlayerCharacter::SetCollision(bool a_enable)
+	{
+		REL::Offset<bool*> g_collisionDisabled(Offset::PlayerCharacter::CollisionDisabled);
+		if (a_enable) {
+			*g_collisionDisabled = false;
+		} else {
+			*g_collisionDisabled = true;
+		}
+		Character::SetCollision(a_enable);
 	}
 }

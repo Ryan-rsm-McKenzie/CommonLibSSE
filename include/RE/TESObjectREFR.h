@@ -79,7 +79,10 @@ namespace RE
 		{
 			enum RecordFlag : UInt32
 			{
-				kIsGroundPiece = 1 << 4,
+				kFlag4 = 1 << 4,
+				kIsGroundPiece = kFlag4,
+				kCollisionsDisabled = kFlag4,
+
 				kDeleted = 1 << 5,
 				kHiddenFromLocalMap = 1 << 6,	// TESObjectSTAT
 				kTurnOffFire = 1 << 7,
@@ -321,6 +324,8 @@ namespace RE
 		bool				MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool				MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
 		bool				SetMotionType(MotionType a_motionType, bool a_allowActivate = true);
+		bool				HasCollision() const;
+		void				SetCollision(bool a_enable);
 
 
 		// members

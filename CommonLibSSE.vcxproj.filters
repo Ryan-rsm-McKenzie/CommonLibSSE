@@ -1368,9 +1368,6 @@
     <ClCompile Include="src\RE\TESSoulGem.cpp">
       <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\ActorKnowledge.cpp">
-      <Filter>src\RE\FormComponents\Components</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\ActorProcessManager.cpp">
       <Filter>src\RE\FormComponents\Components</Filter>
     </ClCompile>
@@ -1418,9 +1415,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\IFormFactory.cpp">
       <Filter>src\RE\BSSystem\IFormFactory</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESDataHandler.cpp">
-      <Filter>src\RE\FileIO\ICellAttachDetachEventSource</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\EquipManager.cpp">
       <Filter>src\RE\Inventory</Filter>
@@ -1475,6 +1469,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\BSLock.cpp">
       <Filter>src\RE\BSCore</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESDataHandler.cpp">
+      <Filter>src\RE\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TES.cpp">
+      <Filter>src\RE\FileIO\ICellAttachDetachEventSource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

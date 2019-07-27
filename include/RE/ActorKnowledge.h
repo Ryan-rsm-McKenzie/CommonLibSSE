@@ -20,8 +20,6 @@ namespace RE
 
 		virtual ~ActorKnowledge();	// 00
 
-		DetectionState* GetDetectionState(UInt32 a_level = 3);
-
 
 		// members
 		RefHandle								fromHandle;		// 10

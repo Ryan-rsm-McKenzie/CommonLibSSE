@@ -164,7 +164,6 @@
   <ItemGroup>
     <ClCompile Include="src\RE\ActiveEffect.cpp" />
     <ClCompile Include="src\RE\Actor.cpp" />
-    <ClCompile Include="src\RE\ActorKnowledge.cpp" />
     <ClCompile Include="src\RE\ActorProcessManager.cpp" />
     <ClCompile Include="src\RE\ActorState.cpp" />
     <ClCompile Include="src\RE\ActorValueOwner.cpp" />
@@ -308,6 +307,7 @@
     <ClCompile Include="src\RE\PlayerControls.cpp" />
     <ClCompile Include="src\RE\PlayerInputHandler.cpp" />
     <ClCompile Include="src\RE\SpellItem.cpp" />
+    <ClCompile Include="src\RE\TES.cpp" />
     <ClCompile Include="src\RE\TESActorBaseData.cpp" />
     <ClCompile Include="src\RE\TESAIForm.cpp" />
     <ClCompile Include="src\RE\TESAmmo.cpp" />

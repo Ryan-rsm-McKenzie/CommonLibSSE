@@ -42,13 +42,6 @@ namespace RE
 		}
 
 
-		namespace ActorKnowledge
-		{
-			// IndirectSig: E8 ? ? ? ? 48 85 C0 74 09 8B 40 10
-			constexpr std::uintptr_t GetDetectionState = 0x007186C0;	// 1_5_80
-		}
-
-
 		namespace ActorValueOwner
 		{
 			// IndirectSig: E8 ? ? ? ? F3 44 0F 2C C0
@@ -371,6 +364,8 @@ namespace RE
 
 		namespace PlayerCharacter
 		{
+			//
+			constexpr std::uintptr_t CollisionDisabled = 0x01EBEB50;	// 1_5_80
 			// IndirectSig: E8 ? ? ? ? 48 3B C6 74 16
 			constexpr std::uintptr_t GetActorInFavorState = 0x006B3670;	// 1_5_80
 			// IndirectSig: 48 83 EC 38 80 7C 24 70 00
@@ -443,6 +438,13 @@ namespace RE
 		{
 			// ??_7SprintHandler@@6B@
 			constexpr std::uintptr_t Vtbl = 0x0166F1E8;	// 1_5_80
+		}
+
+
+		namespace TES
+		{
+			//
+			constexpr std::uintptr_t Singleton = 0x02F26B20;		// 1_5_80
 		}
 
 

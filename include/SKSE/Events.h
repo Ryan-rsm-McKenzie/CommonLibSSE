@@ -52,7 +52,7 @@ namespace SKSE
 
 	struct CrosshairRefEvent
 	{
-		CrosshairRefEvent(RE::NiPointer<RE::TESObjectREFR> a_crosshairRef) :
+		explicit CrosshairRefEvent(RE::NiPointer<RE::TESObjectREFR> a_crosshairRef) :
 			crosshairRef(a_crosshairRef)
 		{}
 
@@ -111,7 +111,7 @@ namespace SKSE
 
 	struct NiNodeUpdateEvent
 	{
-		NiNodeUpdateEvent(RE::TESObjectREFR* a_reference) :
+		explicit NiNodeUpdateEvent(RE::TESObjectREFR* a_reference) :
 			reference(a_reference)
 		{}
 
