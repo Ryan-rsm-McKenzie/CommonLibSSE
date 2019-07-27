@@ -16,7 +16,7 @@ namespace RE
 
 	void FxDelegate::Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, UInt32 a_argCount)
 	{
-		CallbackDefn* cbDef = callbacks.GetAlt(a_methodName);
+		auto cbDef = callbacks.GetAlt(a_methodName);
 		if (cbDef) {
 			FxDelegateArgs params(GFxValue(), cbDef->handler.get(), a_movieView, a_args, a_argCount);
 			cbDef->callback(params);

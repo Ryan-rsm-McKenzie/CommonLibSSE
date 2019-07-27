@@ -267,7 +267,7 @@ namespace RE
 
 	UPInt GString::BernsteinHashFunction(const void* a_dataIn, UPInt a_size, UPInt a_seed)
 	{
-		const UInt8* dataIn = static_cast<const UInt8*>(a_dataIn);
+		auto dataIn = static_cast<const UInt8*>(a_dataIn);
 		UPInt hash;
 		UInt8 byte;
 		for (hash = a_seed; a_size; hash = byte ^ 33 * hash) {
@@ -302,7 +302,7 @@ namespace RE
 
 	void GString::set_desc(DataDesc* a_desc)
 	{
-		HeapType type = heap_type();
+		auto type = heap_type();
 		_dataDesc.data = a_desc;
 		assert((_dataDesc.heapType & HeapType::kMask) == static_cast<HeapType>(0));
 		_dataDesc.heapType |= type;
