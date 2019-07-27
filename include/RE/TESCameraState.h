@@ -17,17 +17,17 @@ namespace RE
 		inline static const void* RTTI = RTTI_TESCameraState;
 
 
-		virtual ~TESCameraState();									// 00
+		virtual ~TESCameraState();												// 00
 
 		// add
-		virtual void	OnStateStart();								// 01 - { return; }
-		virtual void	OnStateEnd();								// 02 - { return; }
-		virtual void	OnUpdate(void* a_arg1);						// 03
-		virtual void	Unk_04(void);								// 04
-		virtual void	Unk_05(void);								// 05
-		virtual void	Unk_06(void);								// 06 - { return; }
-		virtual void	LoadCameraState(BGSLoadGameBuffer* a_buf);	// 07 - { return; }
-		virtual void	Unk_08(void);								// 08 - { return; }
+		virtual void	OnStateStart();											// 01 - { return; }
+		virtual void	OnStateEnd();											// 02 - { return; }
+		virtual void	OnUpdate(BSTSmartPointer<TESCameraState>& a_newState);	// 03
+		virtual void	Unk_04(void);											// 04
+		virtual void	Unk_05(void);											// 05
+		virtual void	Unk_06(void);											// 06 - { return; }
+		virtual void	LoadCameraState(BGSLoadGameBuffer* a_buf);				// 07 - { return; }
+		virtual void	Unk_08(void);											// 08 - { return; }
 
 
 		// members

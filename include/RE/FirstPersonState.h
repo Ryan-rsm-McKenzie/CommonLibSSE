@@ -20,7 +20,7 @@ namespace RE
 		// override (TESCameraState)
 		virtual void	OnStateStart() override;													// 01
 		virtual void	OnStateEnd() override;														// 02
-		virtual void	OnUpdate(void* a_arg1) override;											// 03
+		virtual void	OnUpdate(BSTSmartPointer<TESCameraState>& a_newState) override;				// 03
 		virtual void	Unk_04(void) override;														// 04
 		virtual void	Unk_05(void) override;														// 05
 		virtual void	Unk_06(void) override;														// 06

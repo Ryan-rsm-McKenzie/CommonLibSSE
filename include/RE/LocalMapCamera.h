@@ -24,11 +24,11 @@ namespace RE
 			inline static const void* RTTI = RTTI_LocalMapCamera__DefaultState;
 
 
-			virtual ~DefaultState();							// 00
+			virtual ~DefaultState();														// 00
 
 			// add
-			virtual void	OnStateStart() override;			// 01
-			virtual void	OnUpdate(void* a_arg1) override;	// 03
+			virtual void	OnStateStart() override;										// 01
+			virtual void	OnUpdate(BSTSmartPointer<TESCameraState>& a_newState) override;	// 03
 
 
 			// members
