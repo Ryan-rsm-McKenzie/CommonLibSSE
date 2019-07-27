@@ -6,7 +6,6 @@
 namespace RE
 {
 	class FxDelegateHandler;
-	class FxResponseArgsBase;
 	class GFxMovieView;
 
 
@@ -15,6 +14,7 @@ namespace RE
 	public:
 		FxDelegateArgs(GFxValue a_responseID, FxDelegateHandler* a_handler, GFxMovieView* a_movie, const GFxValue* a_vals, UInt32 a_numArgs);
 
+		const GFxValue&		at(UPInt a_pos) const;
 		const GFxValue&		operator[](UPInt a_pos) const;
 		FxDelegateHandler*	GetHandler() const;
 		GFxMovieView*		GetMovie() const;

@@ -1,6 +1,8 @@
 #include "RE/FxDelegateArgs.h"
 
 #include <cassert>  // assert
+#include <stdexcept>  // out_of_range
+#include <string>  // string
 
 
 namespace RE
@@ -15,9 +17,23 @@ namespace RE
 	{}
 
 
+	const GFxValue& FxDelegateArgs::at(UPInt a_pos) const
+	{
+		if (a_pos >= _numArgs) {
+			std::string err = __FUNCTION__;
+			err += ": ";
+			err += MAKE_STR(a_pos);
+			err += " (which is" + std::to_string(a_pos) + ") >= this->GetArgCount() (which is" + std::to_string(this->GetArgCount()) + ")";
+			throw std::out_of_range(err);
+		} else {
+			return _args[a_pos];
+		}
+	}
+
+
 	const GFxValue& FxDelegateArgs::operator[](UPInt a_pos) const
 	{
-		assert(a_pos >= 0 && a_pos < _numArgs);
+		assert(a_pos < _numArgs);
 		return _args[a_pos];
 	}
 
