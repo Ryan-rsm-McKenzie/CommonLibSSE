@@ -34,8 +34,8 @@ namespace RE
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;	// 01 - { return kTextDisplayData; }
 
-		const char*				GenerateName(TESForm* a_form, float a_temperFactor);
-		void					SetName(const char* a_name);
+		const char*	GenerateName(TESForm* a_form, float a_temperFactor);
+		void		SetName(const char* a_name);
 
 
 		// members
