@@ -40,10 +40,10 @@ namespace RE
 
 
 		// members
-		BSTArray<TESForm*>	forms;		// 20 - LNAM
-		BSTArray<TESForm*>*	addedForms;	// 38
-		UInt32				unk40;		// 40
-		UInt32				unk44;		// 44
+		BSTArray<TESForm*>		forms;			// 20 - LNAM
+		BSTArray<RE::FormID>*	formIDs;		// 38 - holds references and generated form ids
+		UInt32					numAddedForms;	// 40
+		UInt32					pad44;			// 44
 	};
 	STATIC_ASSERT(sizeof(BGSListForm) == 0x48);
 }
