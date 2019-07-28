@@ -52,7 +52,7 @@ namespace RE
 
 	BSString::BSString(const std::string_view& a_rhs)
 	{
-		set_cstr(a_rhs.data());
+		set_cstr(a_rhs.data(), a_rhs.size());
 	}
 
 
@@ -94,7 +94,7 @@ namespace RE
 
 	BSString& BSString::operator=(const std::string_view& a_rhs)
 	{
-		set_cstr(a_rhs.data());
+		set_cstr(a_rhs.data(), a_rhs.size());
 		return *this;
 	}
 
