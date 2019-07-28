@@ -34,7 +34,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(MenuTableItem) == 0x10);
 
 
-		typedef BSTHashMap<BSFixedString, MenuTableItem> MenuTable;
+		using MenuTable = BSTHashMap<BSFixedString, MenuTableItem>;
 
 
 		struct Unknown3

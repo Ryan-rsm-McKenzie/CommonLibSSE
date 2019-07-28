@@ -379,7 +379,7 @@ namespace RE
 				} else {
 					probe = probe->next;
 				}
-			} while (probe->next != _sentinel);	// follow chain
+			} while (probe != _sentinel);	// follow chain
 
 			return 0;
 		}
