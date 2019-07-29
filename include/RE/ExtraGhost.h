@@ -24,7 +24,7 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
+		UInt64 unk10;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraGhost) == 0x18);
 }

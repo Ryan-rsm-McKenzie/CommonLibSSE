@@ -55,7 +55,7 @@ namespace RE
 		kScale,						// 0x2F
 		kMissingLinkedRefIDs,		// 0x30
 		kMagicCaster,				// 0x31
-		kMagicTarget,				// 0x32
+		kNonActorMagicTarget,		// 0x32
 		kUnk33,						// 0x33
 		kPlayerCrimeList,			// 0x34
 		kUnk35,						// 0x35
@@ -139,7 +139,7 @@ namespace RE
 		kActivateLoopSound,			// 0x83
 		kPatrolRefInUseData,		// 0x84
 		kAshPileRef,				// 0x85
-		kUnk86,						// 0x86
+		kCreatureMovementSound,		// 0x86
 		kFollowerSwimBreadcrumbs,	// 0x87
 		kAliasInstanceArray,		// 0x88
 		kLocation,					// 0x89
@@ -184,6 +184,6 @@ namespace RE
 		kCachedScale,				// 0xB0
 		kRaceData,					// 0xB1
 		kGIDBuffer,					// 0xB2
-		kUnkB3,						// 0xB3
+		kMissingRefIDs				// 0xB3
 	};
 }

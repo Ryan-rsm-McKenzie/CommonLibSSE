@@ -508,12 +508,6 @@
     <Filter Include="include\RE\Events\MenuEvent">
       <UniqueIdentifier>{9b97804e-d33e-44fe-979f-3b8b01874963}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\ExtraData">
-      <UniqueIdentifier>{a9418d25-6fa2-43e9-9a9b-82ab52cea883}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\ExtraData\Enums">
-      <UniqueIdentifier>{f7fd847d-098e-44b0-9d61-4adeca2dceac}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\FileIO">
       <UniqueIdentifier>{e94d49e5-573f-465f-8dcf-37c235cf3bfb}</UniqueIdentifier>
     </Filter>
@@ -936,6 +930,12 @@
     </Filter>
     <Filter Include="include\RE\FormComponents\Components\DetectionListener">
       <UniqueIdentifier>{d8aaeb61-40b8-48a6-a2d0-53aa3b7ab6e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSExtraData">
+      <UniqueIdentifier>{a9418d25-6fa2-43e9-9a9b-82ab52cea883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSExtraData\Enums">
+      <UniqueIdentifier>{f7fd847d-098e-44b0-9d61-4adeca2dceac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1482,7 +1482,7 @@
       <Filter>include\RE\BSDevices</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraContainerChanges.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSBipedObjectForm.h">
       <Filter>include\RE\FormComponents</Filter>
@@ -1494,7 +1494,7 @@
       <Filter>include\RE\BSDevices</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraLock.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSTHashMap.h">
       <Filter>include\RE\BSCore</Filter>
@@ -1515,7 +1515,7 @@
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraFactionChanges.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\UIManager.h">
       <Filter>include\RE\Menus</Filter>
@@ -1536,7 +1536,7 @@
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraDroppedItemList.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\Offsets.h">
       <Filter>include\RE</Filter>
@@ -1572,7 +1572,7 @@
       <Filter>include\RE\FormComponents</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraOwnership.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESContainer.h">
       <Filter>include\RE\FormComponents</Filter>
@@ -1593,13 +1593,13 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSExtraData.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraTextDisplayData.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraUniqueID.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\EquipManager.h">
       <Filter>include\RE\Inventory</Filter>
@@ -1611,7 +1611,7 @@
       <Filter>include\RE\FormComponents</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraEnchantment.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSMoviePlayer.h">
       <Filter>include\RE\BSAudio</Filter>
@@ -1623,7 +1623,7 @@
       <Filter>include\RE\BSAudio</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraReferenceHandle.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSTSmartPointer.h">
       <Filter>include\RE\BSSystem</Filter>
@@ -1632,10 +1632,10 @@
       <Filter>include\RE\BSSystem</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraLocationRefType.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraMapMarker.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSAnimationGraphManager.h">
       <Filter>include\RE\Animation</Filter>
@@ -1758,16 +1758,16 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraHealth.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraHotkey.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraOutfitItem.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraPoison.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESQualityForm.h">
       <Filter>include\RE\FormComponents</Filter>
@@ -1794,7 +1794,7 @@
       <Filter>include\RE\Menus</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraAliasInstanceArray.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSIdleCollection.h">
       <Filter>include\RE\FormComponents</Filter>
@@ -1989,31 +1989,31 @@
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraFlags.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraPromotedRef.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraMissingLinkedRefIDs.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraEncounterZone.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraFollowerSwimBreadcrumbs.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraMultiBoundRef.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraLastFinishedSequence.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraLeveledCreature.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraStartingPosition.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\PoisonedWeapon.h">
       <Filter>include\RE\Events\BGSStoryEvent</Filter>
@@ -2046,7 +2046,7 @@
       <Filter>include\RE\BSHavok\BS</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraGhost.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NiColorInterpolator.h">
       <Filter>include\RE\NetImmerse\NiAnimation</Filter>
@@ -2280,31 +2280,31 @@
       <Filter>include\RE\Scaleform\FxGameDelegate</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraCount.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\QuestEvents.h">
       <Filter>include\RE\FormComponents\Enums</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraRaceData.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraDismemberedLimbs.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraAshPileRef.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraItemDropper.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraTerminalState.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BaseExtraList.h">
       <Filter>include\RE\Inventory</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraObjectHealth.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESUniqueIDChangeEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
@@ -2412,7 +2412,7 @@
       <Filter>include\RE\FormComponents\Components\ActiveEffect</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraAction.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ActorTargetCheck.h">
       <Filter>include\RE\FormComponents\Components\GetActorsFilter</Filter>
@@ -2487,7 +2487,7 @@
       <Filter>include\RE\BSAudio</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraDataTypes.h">
-      <Filter>include\RE\ExtraData\Enums</Filter>
+      <Filter>include\RE\BSExtraData\Enums</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpAllCdPointCollector.h">
       <Filter>include\RE\BSHavok\Physics\Collide\Query\Collector\PointCollector</Filter>
@@ -3078,10 +3078,10 @@
       <Filter>include\RE\Animation\IAnimationGraphManagerHolder\SimpleAnimationGraphManagerHolder</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraCharge.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraCannotWear.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESCamera.h">
       <Filter>include\RE\Camera\TESCamera</Filter>
@@ -3837,10 +3837,10 @@
       <Filter>include\RE\Inventory\ArmorRatingVisitorBase</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraLinkedRef.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraEditorID.h">
-      <Filter>include\RE\ExtraData</Filter>
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\SkyrimScript\MoveToFunctor.h">
       <Filter>include\RE\SkyrimScript\DelayFunctor</Filter>
@@ -3925,6 +3925,300 @@
     </ClInclude>
     <ClInclude Include="include\RE\CombatGroupDetectionListener.h">
       <Filter>include\RE\FormComponents\Components\DetectionListener</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraHealthPerc.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraWorn.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraWornLeft.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraMagicLight.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraFollower.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraFromAlias.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraOpenCloseActivateRef.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraTeleport.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraTeleportName.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraOriginalReference.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraGlobal.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraRank.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraTimeLeft.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraScale.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCachedScale.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraPackageStartLocation.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraLocation.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraTresPassPackage.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraLeveledItem.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraRagDollData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraEnableStateParent.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraEnableStateChildren.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraAttachRef.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraAttachRefChildren.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraRandomTeleportMarker.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraLeveledItemBase.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraLinkedRefChildren.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraActivateRef.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FxResponseArgsBase.h">
+      <Filter>include\RE\Scaleform\FxGameDelegate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FxResponseArgs.h">
+      <Filter>include\RE\Scaleform\FxGameDelegate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraActivateRefChildren.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraReflectedRefs.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraReflectorRefs.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraWaterLightRefs.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraLitWaterRefs.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraLevCreaModifier.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraSpawnContainer.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraEmittanceSource.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraMultiBound.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraRoom.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraSavedAnimation.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraSavedHavokData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraFriendHits.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraHeadingTarget.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraRefractionProperty.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraStartingWorldOrCell.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraHasNoRumors.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraSound.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCreatureAwakeSound.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCreatureMovementSound.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraWeaponIdleSound.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraWeaponAttackSound.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraActivateLoopSound.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCanTalkToPlayer.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraNavMeshPortal.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraModelSwap.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraRadius.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraActorCause.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraAmmo.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCombatStyle.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraPrimitive.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraPatrolRefData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraOcclusionPlaneRefData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraPortalRefData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraRoomRefData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraPackageData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCollisionData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraGuardedRefData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraIgnoredBySandbox.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraLargeRefOwnerCells.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraLightData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraSceneData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraBadPosition.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraHeadTrackingWeight.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraFavorCost.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraMissingRefIDs.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraAttachedArrows3D.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraAlphaCutoff.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraHorse.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraForcedTarget.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraForcedLandingMarker.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraRefrPath.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraDecalGroup.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCellWaterEnvMap.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraWaterData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraWaterCurrentZoneData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraScriptedAnimDependence.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCell3D.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraRegionList.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCellMusicType.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCellAcousticSpace.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCellSkyRegion.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCellImageSpace.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCellWaterType.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraNorthRotation.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraDetachTime.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraGIDBuffer.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NonActorMagicTarget.h">
+      <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

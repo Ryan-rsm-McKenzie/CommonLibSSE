@@ -19,12 +19,6 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kFactionChanges };
 
 
-		virtual ~ExtraFactionChanges();					// 00
-
-		// override(BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kFactionChanges; }
-
-
 		struct FactionInfo
 		{
 			TESFaction* faction;	// 00
@@ -36,6 +30,13 @@ namespace RE
 		STATIC_ASSERT(sizeof(FactionInfo) == 0x10);
 
 
+		virtual ~ExtraFactionChanges();					// 00
+
+		// override (BSExtraData)
+		virtual ExtraDataType GetType() const override;	// 01 - { return kFactionChanges; }
+
+
+		// members
 		BSTArray<FactionInfo>	factions;	// 10
 		void*					unk28;		// 28
 		UInt8					unk30;		// 30 - bool?

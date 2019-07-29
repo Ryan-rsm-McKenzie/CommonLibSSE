@@ -24,6 +24,7 @@ namespace RE
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kEncounterZone; }
 		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return encounterZone != a_rhs->encounterZone; }
 
+
 		// members
 		BGSEncounterZone* encounterZone;	// 10
 	};

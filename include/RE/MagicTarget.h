@@ -2,14 +2,14 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_MagicTarget, RTTI_MagicTarget__ForEachActiveEffectVisitor
 
-#include "RE/ActiveEffect.h"  // ActiveEffect
-#include "RE/EffectSetting.h"  // EffectSetting::Properties::Archetype
+#include "RE/EffectSetting.h"  // EffectSetting::Data::Archetype
 #include "RE/BSTList.h"  // BSSimpleList
 
 
 namespace RE
 {
-	class Character;
+	class Actor;
+	class ActiveEffect;
 
 
 	class MagicTarget
