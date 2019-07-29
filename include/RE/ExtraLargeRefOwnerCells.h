@@ -26,7 +26,7 @@ namespace RE
 
 		// members
 		BSTArray<void*>	unk10;	// 10
-		UInt64			unk10;	// 28
+		UInt64			unk28;	// 28
 	};
 	STATIC_ASSERT(sizeof(ExtraLargeRefOwnerCells) == 0x30);
 }

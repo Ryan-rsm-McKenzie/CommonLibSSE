@@ -702,6 +702,7 @@
     <ClInclude Include="include\RE\ExtraGlobal.h" />
     <ClInclude Include="include\RE\ExtraGuardedRefData.h" />
     <ClInclude Include="include\RE\ExtraHasNoRumors.h" />
+    <ClInclude Include="include\RE\ExtraHavok.h" />
     <ClInclude Include="include\RE\ExtraHeadingTarget.h" />
     <ClInclude Include="include\RE\ExtraHeadTrackingWeight.h" />
     <ClInclude Include="include\RE\ExtraHealth.h" />
@@ -743,6 +744,7 @@
     <ClInclude Include="include\RE\ExtraPoison.h" />
     <ClInclude Include="include\RE\ExtraPortalRefData.h" />
     <ClInclude Include="include\RE\ExtraPrimitive.h" />
+    <ClInclude Include="include\RE\ExtraProcessMiddleLow.h" />
     <ClInclude Include="include\RE\ExtraPromotedRef.h" />
     <ClInclude Include="include\RE\ExtraRaceData.h" />
     <ClInclude Include="include\RE\ExtraRadius.h" />
@@ -762,6 +764,7 @@
     <ClInclude Include="include\RE\ExtraScale.h" />
     <ClInclude Include="include\RE\ExtraSceneData.h" />
     <ClInclude Include="include\RE\ExtraScriptedAnimDependence.h" />
+    <ClInclude Include="include\RE\ExtraSeenData.h" />
     <ClInclude Include="include\RE\ExtraSound.h" />
     <ClInclude Include="include\RE\ExtraSpawnContainer.h" />
     <ClInclude Include="include\RE\ExtraStartingPosition.h" />

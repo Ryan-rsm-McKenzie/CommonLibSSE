@@ -4220,5 +4220,14 @@
     <ClInclude Include="include\RE\NonActorMagicTarget.h">
       <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\ExtraHavok.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraSeenData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraProcessMiddleLow.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
