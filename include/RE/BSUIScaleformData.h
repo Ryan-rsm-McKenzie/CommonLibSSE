@@ -1,11 +1,13 @@
 #pragma once
 
-#include "RE/GFxEvent.h"  // GFxEvent
 #include "RE/IUIMessageData.h"  // IUIMessageData
 
 
 namespace RE
 {
+	class GFxEvent;
+
+
 	class BSUIScaleformData : public IUIMessageData
 	{
 	public:
@@ -16,8 +18,7 @@ namespace RE
 
 
 		// members
-		GFxEvent	event;	// 10
-		UInt32		pad14;	// 14
+		GFxEvent* event;	// 10
 	};
 	STATIC_ASSERT(sizeof(BSUIScaleformData) == 0x18);
 }

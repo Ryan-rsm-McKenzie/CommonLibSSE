@@ -55,7 +55,7 @@ namespace RE
 			return Result::kNotProcessed;
 		}
 
-		view->HandleEvent(data->event);
+		view->HandleEvent(*data->event);
 		return Result::kProcessed;
 	}
 
