@@ -60,7 +60,7 @@ namespace RE
 	}
 
 
-	void IMenu::NextFrame(UInt32 a_arg1, UInt32 a_currentTime)
+	void IMenu::NextFrame(float a_arg1, UInt32 a_currentTime)
 	{
 		if (view) {
 			GFxValue currentTime(static_cast<double>(a_currentTime));

@@ -65,7 +65,7 @@ namespace RE
 		virtual void	OnOpen();											// 02 - { return; }
 		virtual void	Unk_03(void);										// 03 - { return; }
 		virtual Result	ProcessMessage(UIMessage* a_message);				// 04
-		virtual void	NextFrame(UInt32 a_arg1, UInt32 a_currentTime);		// 05
+		virtual void	NextFrame(float a_arg1, UInt32 a_currentTime);		// 05
 		virtual void	Render();											// 06
 		virtual void	Unk_07(void);										// 07 - { return; }
 		virtual void	InitMovie();										// 08
