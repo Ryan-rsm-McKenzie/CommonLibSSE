@@ -339,10 +339,61 @@ namespace RE
 		~BSTArray()
 		{
 			clear();
+			// parents will free their own data
 		}
 
 
 		TES_HEAP_REDEFINE_NEW();
+
+
+		BSTArray& operator=(const BSTArray& a_rhs)
+		{
+			if (this == &a_rhs) {
+				return *this;
+			}
+
+			clear();
+
+			auto newCapacity = a_rhs.capacity();
+			change_capacity(newCapacity);
+
+			auto newSize = a_rhs.size();
+			set_size(newSize);
+
+			auto newData = data();
+			for (UInt32 i = 0; i < newSize; ++i) {
+				new(std::addressof(newData[i])) value_type(a_rhs[i]);
+			}
+
+			return *this;
+		}
+
+
+		BSTArray& operator=(BSTArray&& a_rhs)
+		{
+			if (this == &a_rhs) {
+				return *this;
+			}
+
+			clear();
+
+			auto newCapacity = a_rhs.capacity();
+			auto newSize = a_rhs.size();
+			auto newData = a_rhs.data();
+
+			auto oldData = data();
+			if (oldData) {
+				deallocate(oldData);
+			}
+
+			set_allocator_traits(newData, newCapacity);
+			a_rhs.set_allocator_traits(0, 0);
+
+			set_size(newSize);
+			a_rhs.set_size(0);
+
+			return *this;
+		}
 
 
 		reference operator[](size_type a_pos)
@@ -565,10 +616,14 @@ namespace RE
 
 		void change_capacity(size_type a_newCapacity)
 		{
-			auto newData = allocate(a_newCapacity);
+			auto newData = a_newCapacity > 0 ? allocate(a_newCapacity) : 0;
 			auto oldData = data();
 			if (oldData) {
-				std::memcpy(newData, oldData, size() * sizeof(T));
+				auto oldCapacity = capacity();
+				if (newData) {
+					auto bytesToCopy = std::min(oldCapacity, a_newCapacity) * sizeof(T);
+					std::memcpy(newData, oldData, bytesToCopy);
+				}
 				deallocate(oldData);
 			}
 			set_allocator_traits(newData, a_newCapacity);
@@ -649,6 +704,20 @@ namespace RE
 		BSTSmallArray(BSTSmallArray&&) = default;
 		~BSTSmallArray() = default;
 
+
+		BSTSmallArray& operator=(const BSTSmallArray& a_rhs)
+		{
+			Base::operator=(a_rhs);
+			return *this;
+		}
+
+
+		BSTSmallArray& operator=(BSTSmallArray&& a_rhs)
+		{
+			Base::operator=(std::move(a_rhs));
+			return *this;
+		}
+
 	private:
 		//members
 		//UInt32	_capacity;	// 00
@@ -681,6 +750,20 @@ namespace RE
 		BSScrapArray(const BSScrapArray&) = default;
 		BSScrapArray(BSScrapArray&&) = default;
 		~BSScrapArray() = default;
+
+
+		BSScrapArray& operator=(const BSScrapArray& a_rhs)
+		{
+			Base::operator=(a_rhs);
+			return *this;
+		}
+
+
+		BSScrapArray& operator=(BSScrapArray&& a_rhs)
+		{
+			Base::operator=(std::move(a_rhs));
+			return *this;
+		}
 
 	protected:
 		//members
