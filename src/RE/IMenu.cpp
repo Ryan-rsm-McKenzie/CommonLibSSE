@@ -2,6 +2,16 @@
 
 #include "skse64/GameMenus.h"  // IMenu
 
+#include <type_traits>  // extent
+
+#include "RE/BSUIScaleformData.h"  // BSUIScaleformData
+#include "RE/GFxValue.h"  // GFxValue
+#include "RE/InputManager.h"  // InputManager
+#include "RE/MenuManager.h"  // MenuManager
+#include "RE/UIManager.h"  // UIManager
+#include "RE/UIMessage.h"  // UIMessage
+#include "RE/UIStringHolder.h"  // UIStringHolder
+
 
 namespace RE
 {
@@ -17,12 +27,6 @@ namespace RE
 	{}
 
 
-	IMenu::~IMenu()
-	{
-		dtor_Internal();
-	}
-
-
 	void IMenu::Accept(CallbackProcessor* a_processor)
 	{}
 
@@ -35,19 +39,34 @@ namespace RE
 	{}
 
 
-	IMenu::Result IMenu::ProcessMessage(UIMessage* a_message)
+	auto IMenu::ProcessMessage(UIMessage* a_message)
+		-> Result
 	{
-		using func_t = function_type_t<decltype(&IMenu::ProcessMessage)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::IMenu, ProcessMessage_internal, func_t*);
-		return func(this, a_message);
+		if (a_message->message != UIMessage::Message::kScaleform) {
+			return Result::kNotProcessed;
+		}
+
+		if (!view) {
+			return Result::kNotProcessed;
+		}
+
+		auto data = static_cast<BSUIScaleformData*>(a_message->objData);
+		if (!data) {
+			return Result::kNotProcessed;
+		}
+
+		view->HandleEvent(data->event);
+		return Result::kProcessed;
 	}
 
 
-	void IMenu::NextFrame(UInt32 a_arg1, UInt32 a_arg2)
+	void IMenu::NextFrame(UInt32 a_arg1, UInt32 a_currentTime)
 	{
-		using func_t = function_type_t<decltype(&IMenu::NextFrame)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::IMenu, NextFrame_internal, func_t*);
-		return func(this, a_arg1, a_arg2);
+		if (view) {
+			GFxValue currentTime(static_cast<double>(a_currentTime));
+			view->SetVariable("CurrentTime", &currentTime, GFxMovie::SetVarType::kNormal);
+			view->Advance(currentTime.GetNumber());
+		}
 	}
 
 
@@ -65,7 +84,33 @@ namespace RE
 
 	void IMenu::InitMovie()
 	{
-		InitMovie_Internal(view);
+		using Message = UIMessage::Message;
+
+		auto inputManager = InputManager::GetSingleton();
+		auto gamepad = inputManager->IsGamepadEnabled();
+		if (view && view->IsAvailable("_root.SetPlatform")) {
+			GFxValue args[2];
+			double platform = gamepad ? 1.0 : 0.0;
+			args[0].SetNumber(platform);
+			bool swapPS3 = false;
+			args[1].SetBoolean(swapPS3);
+			view->Invoke("_root.SetPlatform", 0, args, std::extent<decltype(args)>::value);
+		}
+
+		if (TriesToShowCursor()) {
+			Message messageID;
+			auto uiStrHolder = UIStringHolder::GetSingleton();
+			if (gamepad) {
+				flags &= ~Flag::kShowCursor;
+				messageID = Message::kClose;
+			} else {
+				flags |= Flag::kShowCursor;
+				auto mm = MenuManager::GetSingleton();
+				messageID = mm->IsMenuOpen(uiStrHolder->cursorMenu) ? Message::kRefresh : Message::kOpen;
+			}
+			auto uiManager = UIManager::GetSingleton();
+			uiManager->AddMessage(uiStrHolder->cursorMenu, messageID, 0);
+		}
 	}
 
 
@@ -129,9 +174,9 @@ namespace RE
 	}
 
 
-	bool IMenu::HasFlag0400() const
+	bool IMenu::TriesToShowCursor() const
 	{
-		return (flags & Flag::kUnk0400) != Flag::kNone;
+		return (flags & Flag::kTryShowCursor) != Flag::kNone;
 	}
 
 
@@ -168,21 +213,5 @@ namespace RE
 	bool IMenu::HasFlag10000() const
 	{
 		return (flags & Flag::kUnk10000) != Flag::kNone;
-	}
-
-
-	void IMenu::InitMovie_Internal(GFxMovieView* a_view)
-	{
-		using func_t = function_type_t<decltype(&IMenu::InitMovie_Internal)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::IMenu, InitMovie_internal, func_t*);
-		return func(this, view);
-	}
-
-
-	void IMenu::dtor_Internal()
-	{
-		using func_t = function_type_t<decltype(&IMenu::dtor_Internal)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::IMenu, dtor, func_t*);
-		return func(this);
 	}
 }

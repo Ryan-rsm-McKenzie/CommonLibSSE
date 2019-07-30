@@ -109,6 +109,7 @@ namespace RE
 	GPtr<T>::~GPtr()
 	{
 		Release();
+		_ptr = 0;
 	}
 
 

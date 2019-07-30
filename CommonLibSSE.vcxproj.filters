@@ -1485,6 +1485,9 @@
     <ClCompile Include="src\RE\ExtraRank.cpp">
       <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\GRefCountImplCore.cpp">
+      <Filter>src\RE\Scaleform\GRefCount</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -4330,6 +4333,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\Biped.h">
       <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSUIScaleformData.h">
+      <Filter>include\RE\Menus\IUIMessageData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

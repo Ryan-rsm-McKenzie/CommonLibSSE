@@ -5,13 +5,13 @@ namespace RE
 {
 	void GRefCountNTSImpl::AddRef()
 	{
-		++refCount;
+		++_refCount;
 	}
 
 
 	void GRefCountNTSImpl::Release()
 	{
-		if (--refCount == 0) {
+		if (--_refCount == 0) {
 			delete this;
 		}
 	}

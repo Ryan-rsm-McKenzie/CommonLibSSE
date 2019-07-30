@@ -233,6 +233,7 @@
     <ClCompile Include="src\RE\GMemory.cpp" />
     <ClCompile Include="src\RE\GMemoryHeap.cpp" />
     <ClCompile Include="src\RE\GRefCountImpl.cpp" />
+    <ClCompile Include="src\RE\GRefCountImplCore.cpp" />
     <ClCompile Include="src\RE\GRefCountNTSImpl.cpp" />
     <ClCompile Include="src\RE\GString.cpp" />
     <ClCompile Include="src\RE\GViewport.cpp" />
@@ -624,6 +625,7 @@
     <ClInclude Include="include\RE\BSTransformDeltaEvent.h" />
     <ClInclude Include="include\RE\BSTSingleton.h" />
     <ClInclude Include="include\RE\BSUIMessageData.h" />
+    <ClInclude Include="include\RE\BSUIScaleformData.h" />
     <ClInclude Include="include\RE\BSVolumetricLightingRenderData.h" />
     <ClInclude Include="include\RE\BSWin32SaveDataSystemUtility.h" />
     <ClInclude Include="include\RE\BSXAudio2GameSound.h" />

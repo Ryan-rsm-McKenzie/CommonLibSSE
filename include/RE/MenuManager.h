@@ -1,10 +1,13 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/BSTEvent.h"  // BSTEventSource
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
+#include "RE/GPtr.h"  // GPtr
 
 
 namespace RE
@@ -22,13 +25,13 @@ namespace RE
 		public BSTEventSource<void*>				// 0B8
 	{
 	public:
-		using CreatorFunc = IMenu*(*)();
+		using CreatorFunc = IMenu*();
 
 
 		struct MenuTableItem
 		{
 		public:
-			IMenu*			menuInstance;		// 00 - null if the menu is not currently open
+			GPtr<IMenu>		menuInstance;		// 00 - null if the menu is not currently open
 			CreatorFunc*	menuConstructor;	// 08
 		};
 		STATIC_ASSERT(sizeof(MenuTableItem) == 0x10);
@@ -66,21 +69,21 @@ namespace RE
 
 		template <class T> BSTEventSource<T>*	GetEventSource();
 		template <class T> void					AddEventSink(BSTEventSink<T>* a_sink);
-		bool									IsMenuOpen(BSFixedString& a_menuName);
-		GFxMovieView*							GetMovieView(BSFixedString& a_menuName);
+		bool									IsMenuOpen(const std::string_view& a_menuName);
+		GFxMovieView*							GetMovieView(const std::string_view& a_menuName);
 		void									ShowMenus(bool a_show);
 		bool									IsShowingMenus();
-		void									Register(const char* a_name, CreatorFunc a_creator);
+		void									Register(const std::string_view& a_menuName, CreatorFunc* a_creator);
 		bool									GameIsPaused();
 		bool									CrosshairIsPaused();
-		IMenu*									GetMenu(const BSFixedString& a_menuName);
-		template <class T> T*					GetMenu(const BSFixedString& a_menuName);
+		GPtr<IMenu>								GetMenu(const std::string_view& a_menuName);
+		template <class T> T*					GetMenu(const std::string_view& a_menuName);
 
 
 		// members
 		BSTArray<IMenu*>	menuStack;					// 110
 		MenuTable			menuTable;					// 128
-		SimpleLock			menuTableLock;				// 158
+		UInt64				unk158;						// 158
 		UInt32				numPauseGame;				// 160 (= 0) += 1 if (imenu->flags & 0x00001)
 		UInt32				numItemMenu;				// 164 (= 0) += 1 if (imenu->flags & 0x02000)
 		UInt32				numPreventGameLoad;			// 168 (= 0) += 1 if (imenu->flags & 0x00080)
@@ -114,7 +117,7 @@ namespace RE
 
 
 	template <class T>
-	inline T* MenuManager::GetMenu(const BSFixedString& a_menuName)
+	inline T* MenuManager::GetMenu(const std::string_view& a_menuName)
 	{
 		return static_cast<T*>(GetMenu(a_menuName));
 	}

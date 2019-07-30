@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/GFxMovieView.h"  // GFxMovieView::ScaleModeType
+#include "RE/GPtr.h"  // GPtr
 
 
 namespace RE
@@ -15,7 +16,7 @@ namespace RE
 	public:
 		static GFxLoader* GetSingleton();
 
-		bool LoadMovie(IMenu* a_menu, GFxMovieView*& a_viewOut, const char* a_swfName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha);
+		bool LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_swfName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha);
 
 
 		// members

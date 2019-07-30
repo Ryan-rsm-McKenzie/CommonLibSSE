@@ -389,11 +389,13 @@ namespace RE
 		std::pair<iterator, bool> insert_impl(Arg&& a_value)
 		{
 			if (!_entries || !_freeCount) {
-				return std::make_pair({ end() }, false);
+				return std::make_pair(end(), false);
 			}
 
 			auto idealEntry = calc_pos(a_value.first);
 			if (!idealEntry->next) {	// if slot empty
+				new(std::addressof(idealEntry->value)) value_type(std::forward<Arg>(a_value));
+				idealEntry->next = const_cast<Entry*>(_sentinel);
 				return std::make_pair(make_iterator(idealEntry), true);
 			}
 
@@ -422,7 +424,7 @@ namespace RE
 			freeEntry->next = idealEntry->next;
 			takenIdealEntry->next = freeEntry;
 			new(std::addressof(idealEntry->value)) value_type(std::forward<Arg>(a_value));
-			idealEntry->next = _sentinel;
+			idealEntry->next = const_cast<Entry*>(_sentinel);
 			return std::make_pair(make_iterator(idealEntry), true);
 		}
 

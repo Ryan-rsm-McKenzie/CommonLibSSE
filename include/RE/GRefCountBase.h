@@ -14,8 +14,6 @@ namespace RE
 		enum { kStatType = STAT };
 
 
-		constexpr GRefCountBase() :
-			GRefCountBaseStatImpl<GRefCountImpl, STAT>()
-		{}
+		GRefCountBase() = default;
 	};
 }

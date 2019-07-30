@@ -15,29 +15,24 @@ namespace RE
 	}
 
 
-	bool MenuManager::IsMenuOpen(BSFixedString& a_menuName)
+	bool MenuManager::IsMenuOpen(const std::string_view& a_menuName)
 	{
-		using func_t = function_type_t<decltype(&MenuManager::IsMenuOpen)>;
-		func_t* func = unrestricted_cast<func_t*>(&::MenuManager::IsMenuOpen);
-		return func(this, a_menuName);
+		auto menu = GetMenu(a_menuName);
+		return menu ? menu->IsOpen() : false;
 	}
 
 
-	IMenu* MenuManager::GetMenu(const BSFixedString& a_menuName)
+	GPtr<IMenu> MenuManager::GetMenu(const std::string_view& a_menuName)
 	{
-		if (a_menuName.empty()) {
-			return 0;
-		}
-
 		auto it = menuTable.find(a_menuName);
-		return (it != menuTable.end()) ? it->second.menuInstance : 0;
+		return it != menuTable.end() ? it->second.menuInstance : nullptr;
 	}
 
 
-	GFxMovieView* MenuManager::GetMovieView(BSFixedString& a_menuName)
+	GFxMovieView* MenuManager::GetMovieView(const std::string_view& a_menuName)
 	{
-		IMenu* menu = GetMenu(a_menuName);
-		return menu ? menu->view : 0;
+		auto menu = GetMenu(a_menuName);
+		return menu ? menu->view.get() : 0;
 	}
 
 
@@ -53,11 +48,9 @@ namespace RE
 	}
 
 
-	void MenuManager::Register(const char* a_name, CreatorFunc a_creator)
+	void MenuManager::Register(const std::string_view& a_menuName, CreatorFunc* a_creator)
 	{
-		using func_t = function_type_t<decltype(&MenuManager::Register)>;
-		func_t* func = unrestricted_cast<func_t*>(&::MenuManager::Register);
-		return func(this, a_name, a_creator);
+		menuTable.insert({ a_menuName, { nullptr, a_creator } });
 	}
 
 

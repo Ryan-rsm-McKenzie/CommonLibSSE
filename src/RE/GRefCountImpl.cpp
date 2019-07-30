@@ -5,13 +5,13 @@ namespace RE
 {
 	void GRefCountImpl::AddRef()
 	{
-		InterlockedIncrement(&refCount);
+		InterlockedIncrement(&_refCount);
 	}
 
 
 	void GRefCountImpl::Release()
 	{
-		if (InterlockedDecrement(&refCount) == 0) {
+		if (InterlockedDecrement(&_refCount) == 0) {
 			delete this;
 		}
 	}

@@ -234,6 +234,7 @@
 #include "RE/BSTSingleton.h"
 #include "RE/BSTSmartPointer.h"
 #include "RE/BSUIMessageData.h"
+#include "RE/BSUIScaleformData.h"
 #include "RE/BSVirtualKeyboardDevice.h"
 #include "RE/BSVolumetricLightingRenderData.h"
 #include "RE/BSWin32GamepadDevice.h"

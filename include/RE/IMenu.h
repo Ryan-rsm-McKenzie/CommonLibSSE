@@ -2,16 +2,16 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_IMenu
 
+#include "RE/FxDelegate.h"  // FxDelegate
 #include "RE/FxDelegateHandler.h"  // FxDelegateHandler
 #include "RE/GFxMovieView.h"  // GFxMovieView
+#include "RE/GPtr.h"  // GPtr
 #include "RE/InputMappingManager.h"  // InputMappingManager::Context
 
 
 namespace RE
 {
 	class CallbackProcessor;
-	class FxDelegate;
-	class GFxMovieView;
 	class UIMessage;
 
 
@@ -37,7 +37,7 @@ namespace RE
 			kPreventGameLoad = 1 << 7,
 			kUnk0100 = 1 << 8,
 			kHideOther = 1 << 9,
-			kUnk0400 = 1 << 10,
+			kTryShowCursor = 1 << 10,
 			kDoNotPreventGameSave = 1 << 11,
 			kUnk1000 = 1 << 12,
 			kItemMenu = 1 << 13,
@@ -56,7 +56,7 @@ namespace RE
 
 
 		IMenu();
-		virtual ~IMenu();													// 00
+		virtual ~IMenu() = default;											// 00
 
 		// override (FxDelegateHandler)
 		virtual void	Accept(CallbackProcessor* a_processor) override;	// 01 - { return; }
@@ -65,43 +65,39 @@ namespace RE
 		virtual void	OnOpen();											// 02 - { return; }
 		virtual void	Unk_03(void);										// 03 - { return; }
 		virtual Result	ProcessMessage(UIMessage* a_message);				// 04
-		virtual void	NextFrame(UInt32 a_arg1, UInt32 a_arg2);			// 05
+		virtual void	NextFrame(UInt32 a_arg1, UInt32 a_currentTime);		// 05
 		virtual void	Render();											// 06
 		virtual void	Unk_07(void);										// 07 - { return; }
 		virtual void	InitMovie();										// 08
 
-		bool			PausesGame() const;
-		bool			DeletesOnClose() const;
-		bool			ShowsCursor() const;
-		bool			HasFlag0008() const;
-		bool			IsModal() const;
-		bool			StopsDrawingWorld() const;
-		bool			IsOpen() const;
-		bool			PreventsGameLoad() const;
-		bool			HasFlag0100() const;
-		bool			HidesOtherMenus() const;
-		bool			HasFlag0400() const;
-		bool			PreventsGameSave() const;
-		bool			HasFlag1000() const;
-		bool			IsItemMenu() const;
-		bool			StopsCrosshairUpdates() const;
-		bool			HasFlag8000() const;
-		bool			HasFlag10000() const;
+		bool	PausesGame() const;
+		bool	DeletesOnClose() const;
+		bool	ShowsCursor() const;
+		bool	HasFlag0008() const;
+		bool	IsModal() const;
+		bool	StopsDrawingWorld() const;
+		bool	IsOpen() const;
+		bool	PreventsGameLoad() const;
+		bool	HasFlag0100() const;
+		bool	HidesOtherMenus() const;
+		bool	TriesToShowCursor() const;
+		bool	PreventsGameSave() const;
+		bool	HasFlag1000() const;
+		bool	IsItemMenu() const;
+		bool	StopsCrosshairUpdates() const;
+		bool	HasFlag8000() const;
+		bool	HasFlag10000() const;
 
 
 		// members
-		GFxMovieView*	view;		// 10 - init'd to 0, view->Release() called in dtor
-		UInt8			menuDepth;	// 18 - init'd to 3
-		UInt8			pad19;		// 19
-		UInt16			pad20;		// 1A
-		Flag			flags;		// 1C - init'd to 0
-		Context			context;	// 20 - input context - init'd to 0x12 (Context::kInvalid)
-		UInt32			pad24;		// 24
-		FxDelegate*		fxDelegate;	// 28
-
-	private:
-		void InitMovie_Internal(GFxMovieView* a_view);
-		void dtor_Internal();
+		GPtr<GFxMovieView>	view;		// 10
+		UInt8				menuDepth;	// 18
+		UInt8				pad19;		// 19
+		UInt16				pad20;		// 1A
+		Flag				flags;		// 1C
+		Context				context;	// 20
+		UInt32				pad24;		// 24
+		GPtr<FxDelegate>	fxDelegate;	// 28
 	};
 	STATIC_ASSERT(offsetof(IMenu, view) == 0x10);
 	STATIC_ASSERT(sizeof(IMenu) == 0x30);

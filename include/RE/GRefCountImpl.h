@@ -13,6 +13,9 @@ namespace RE
 		inline static const void* RTTI = RTTI_GRefCountImpl;
 
 
+		GRefCountImpl() = default;
+		virtual ~GRefCountImpl() = default;	// 00
+
 		void	AddRef();
 		void	Release();
 	};

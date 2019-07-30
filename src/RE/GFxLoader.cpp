@@ -13,7 +13,7 @@ namespace RE
 	}
 
 
-	bool GFxLoader::LoadMovie(IMenu* a_menu, GFxMovieView*& a_viewOut, const char* a_swfName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha)
+	bool GFxLoader::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_swfName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		using func_t = function_type_t<decltype(&GFxLoader::LoadMovie)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::GFxLoader, LoadMovie, func_t*);
