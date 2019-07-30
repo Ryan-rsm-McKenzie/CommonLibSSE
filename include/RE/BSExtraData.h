@@ -18,7 +18,7 @@ namespace RE
 
 
 		BSExtraData();
-		virtual ~BSExtraData();												// 00
+		virtual ~BSExtraData() = default;									// 00
 
 		// add
 		virtual ExtraDataType	GetType() const = 0;						// 01

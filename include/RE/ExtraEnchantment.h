@@ -20,7 +20,7 @@ namespace RE
 
 		ExtraEnchantment();
 		ExtraEnchantment(EnchantmentItem* a_objectEffect, UInt16 a_enchantmentAmount);
-		virtual ~ExtraEnchantment();													// 00
+		virtual ~ExtraEnchantment() = default;											// 00
 
 		// override(BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kEnchantment; }

@@ -12,10 +12,6 @@ namespace RE
 	}
 
 
-	ExtraCannotWear::~ExtraCannotWear()
-	{}
-
-
 	ExtraDataType ExtraCannotWear::GetType() const
 	{
 		return ExtraDataType::kCannotWear;

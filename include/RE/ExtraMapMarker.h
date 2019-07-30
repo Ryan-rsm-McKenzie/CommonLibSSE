@@ -18,9 +18,8 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kMapMarker };
 
 
-		class MapMarker : public TESFullName
+		struct MapMarker
 		{
-		public:
 			enum class Flag : UInt8
 			{
 				kNone = 0,
@@ -103,12 +102,20 @@ namespace RE
 
 
 			// members
-			Flag	flags;	// 10
-			Type	type;	// 11
-			UInt16	pad02;	// 12
-			UInt32	pad04;	// 14
+			TESFullName	name;	// 00
+			Flag		flags;	// 10
+			Type		type;	// 11
+			UInt16		pad02;	// 12
+			UInt32		pad04;	// 14
 		};
 		STATIC_ASSERT(sizeof(MapMarker) == 0x18);
+
+
+		virtual ~ExtraMapMarker();														// 00
+
+		// override (BSExtraData)
+		virtual ExtraDataType	GetType() const override;								// 01 - { return kMapMarker; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
 
 
 		// members

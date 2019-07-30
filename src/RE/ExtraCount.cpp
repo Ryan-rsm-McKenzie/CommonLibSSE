@@ -21,10 +21,6 @@ namespace RE
 	}
 
 
-	ExtraCount::~ExtraCount()
-	{}
-
-
 	ExtraDataType ExtraCount::GetType() const
 	{
 		return ExtraDataType::kCount;

@@ -22,7 +22,7 @@ namespace RE
 
 		ExtraOwnership();
 		ExtraOwnership(TESForm* a_owner);
-		virtual ~ExtraOwnership();														// 00
+		virtual ~ExtraOwnership() = default;											// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kOwnership; }

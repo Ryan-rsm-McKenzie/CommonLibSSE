@@ -52,10 +52,6 @@ namespace RE
 	}
 
 
-	ExtraTextDisplayData::~ExtraTextDisplayData()
-	{}
-
-
 	ExtraDataType ExtraTextDisplayData::GetType() const
 	{
 		return ExtraDataType::kTextDisplayData;

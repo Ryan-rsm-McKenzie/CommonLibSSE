@@ -205,7 +205,7 @@ namespace RE
 		UInt64								unk8D8;					// 8D8
 		UInt32								unk8E0;					// 8E0
 		UInt32								unk8E4;					// 8E4
-		WeightData*							largeWeightData;		// 8E8
+		Biped*								largeBiped;				// 8E8
 		BSFadeNode*							firstPersonSkeleton;	// 8F0
 		float								unk8F8;					// 8F8
 		UInt32								pad8FC;					// 8FC

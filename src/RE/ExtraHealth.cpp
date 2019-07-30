@@ -23,10 +23,6 @@ namespace RE
 	}
 
 
-	ExtraHealth::~ExtraHealth()
-	{}
-
-
 	ExtraDataType ExtraHealth::GetType() const
 	{
 		return ExtraDataType::kHealth;

@@ -27,10 +27,6 @@ namespace RE
 	}
 
 
-	ExtraHotkey::~ExtraHotkey()
-	{}
-
-
 	ExtraDataType ExtraHotkey::GetType() const
 	{
 		return ExtraDataType::kHotkey;

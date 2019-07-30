@@ -25,10 +25,6 @@ namespace RE
 	}
 
 
-	ExtraUniqueID::~ExtraUniqueID()
-	{}
-
-
 	ExtraDataType ExtraUniqueID::GetType() const
 	{
 		return ExtraDataType::kUniqueID;

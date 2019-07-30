@@ -26,10 +26,6 @@ namespace RE
 	}
 
 
-	ExtraReferenceHandle::~ExtraReferenceHandle()
-	{}
-
-
 	ExtraDataType ExtraReferenceHandle::GetType() const
 	{
 		return ExtraDataType::kReferenceHandle;

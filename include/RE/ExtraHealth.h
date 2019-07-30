@@ -19,7 +19,7 @@ namespace RE
 
 		ExtraHealth();
 		ExtraHealth(float a_health);
-		virtual ~ExtraHealth();															// 00
+		virtual ~ExtraHealth() = default;												// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kHealth; }

@@ -19,7 +19,7 @@ namespace RE
 
 		ExtraUniqueID();
 		ExtraUniqueID(FormID a_owner, UInt16 a_uniqueID);
-		virtual ~ExtraUniqueID();														// 00
+		virtual ~ExtraUniqueID() = default;												// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kUniqueID; }

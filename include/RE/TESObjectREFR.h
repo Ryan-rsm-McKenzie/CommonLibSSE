@@ -5,7 +5,6 @@
 #include "RE/BaseExtraList.h"  // BaseExtraList
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSHandleRefObject.h"  // BSHandleRefObject
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 #include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 #include "RE/FormTypes.h"  // FormTypes
@@ -31,6 +30,7 @@ namespace RE
 	class NiNode;
 	class TESBoundObject;
 	class TESContainer;
+	struct Biped;
 	struct BSAnimationGraphEvent;
 	struct DialogueData;
 	struct LockState;
@@ -122,13 +122,6 @@ namespace RE
 				kMultibound = (UInt32)1 << 31
 			};
 		};
-
-
-		struct WeightData : BSIntrusiveRefCounted
-		{
-			UInt32 unk0004[(0x2778 - 0x4) >> 2];	// 04
-		};
-		STATIC_ASSERT(sizeof(WeightData) == 0x2778);
 
 
 		struct LoadedState
@@ -248,9 +241,9 @@ namespace RE
 		virtual void					Unk_7B(void);																																												// 7B
 		virtual void					Unk_7C(void);																																												// 7C - { return 1; }
 		virtual void					Unk_7D(void);																																												// 7D
-		virtual WeightData*				GetWeightData(bool a_large);																																								// 7E - { return GetSmallWeightData(); }
-		virtual WeightData*				GetSmallWeightData();																																										// 7F
-		virtual void					Unk_80(void);																																												// 80 - { return GetSmallWeightData(); }
+		virtual Biped*					GetBiped(bool a_large);																																										// 7E - { return GetSmallBiped(); }
+		virtual Biped*					GetSmallBiped();																																											// 7F
+		virtual void					Unk_80(void);																																												// 80 - { return GetSmallBiped(); }
 		virtual void					Unk_81(void);																																												// 81 - { return; }
 		virtual void					Unk_82(void);																																												// 82 - { return; }
 		virtual void					Unk_83(void);																																												// 83 - { return; }

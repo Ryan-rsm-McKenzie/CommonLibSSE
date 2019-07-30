@@ -29,10 +29,6 @@ namespace RE
 	}
 
 
-	ExtraEnchantment::~ExtraEnchantment()
-	{}
-
-
 	ExtraDataType ExtraEnchantment::GetType() const
 	{
 		return ExtraDataType::kEnchantment;

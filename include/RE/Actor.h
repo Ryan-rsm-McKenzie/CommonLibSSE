@@ -472,7 +472,7 @@ namespace RE
 		ActorValueModifiers			avVoicePoints;								// 24C
 		float						unk258;										// 258 - init'd to -1
 		UInt32						unk25C;										// 25C
-		WeightData*					smallWeightData;							// 260
+		Biped*						smallBiped;									// 260
 		float						unk268;										// 268 - related to armor rating
 		float						unk26C;										// 26C - related to armor rating
 		UInt16						unk270;										// 270

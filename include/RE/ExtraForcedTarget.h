@@ -4,10 +4,14 @@
 
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/ExtraDataTypes.h"  // ExtraDataType
+#include "RE/NiSmartPointer.h"  // NiPointer
 
 
 namespace RE
 {
+	class TESObjectREFR;
+
+
 	class ExtraForcedTarget : public BSExtraData
 	{
 	public:
@@ -17,16 +21,20 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kForcedTarget };
 
 
-		virtual ~ExtraForcedTarget();													// 00
+		ExtraForcedTarget();
+		ExtraForcedTarget(RefHandle a_handle);
+		virtual ~ExtraForcedTarget() = default;											// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kForcedTarget; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return unk10 != a_rhs->unk10; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return handle != a_rhs->handle; }
+
+		NiPointer<TESObjectREFR> GetTarget();
 
 
 		// members
-		UInt32	unk10;	// 10
-		UInt32	pad14;	// 14
+		RefHandle	handle;	// 10
+		UInt32		pad14;	// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraForcedTarget) == 0x18);
 }

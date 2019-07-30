@@ -12,10 +12,6 @@ namespace RE
 	{}
 
 
-	BSExtraData::~BSExtraData()
-	{}
-
-
 	bool BSExtraData::IsNotEqual(const BSExtraData* a_rhs) const
 	{
 		return false;

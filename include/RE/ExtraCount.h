@@ -19,7 +19,7 @@ namespace RE
 
 		ExtraCount();
 		ExtraCount(SInt32 a_count);
-		virtual ~ExtraCount();															// 00
+		virtual ~ExtraCount() = default;												// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kCount; }

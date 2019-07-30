@@ -13,10 +13,6 @@ namespace RE
 	}
 
 
-	ExtraCharge::~ExtraCharge()
-	{}
-
-
 	ExtraDataType ExtraCharge::GetType() const
 	{
 		return ExtraDataType::kCannotWear;

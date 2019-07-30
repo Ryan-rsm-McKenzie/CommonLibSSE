@@ -23,7 +23,7 @@ namespace RE
 
 		ExtraReferenceHandle();
 		ExtraReferenceHandle(RefHandle a_refHandle);
-		virtual ~ExtraReferenceHandle();													// 00
+		virtual ~ExtraReferenceHandle() = default;											// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType		GetType() const override;								// 01 - { return kReferenceHandle; }

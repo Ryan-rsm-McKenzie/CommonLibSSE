@@ -17,7 +17,7 @@ namespace RE
 
 
 		ExtraCannotWear();
-		virtual ~ExtraCannotWear();						// 00
+		virtual ~ExtraCannotWear() = default;			// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	// 01 - { return kCannotWear; }

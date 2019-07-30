@@ -33,7 +33,7 @@ namespace RE
 
 		ExtraHotkey();
 		ExtraHotkey(Hotkey a_hotkey);
-		virtual ~ExtraHotkey();															// 00
+		virtual ~ExtraHotkey() = default;												// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kHotkey }

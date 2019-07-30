@@ -21,10 +21,6 @@ namespace RE
 	}
 
 
-	ExtraOwnership::~ExtraOwnership()
-	{}
-
-
 	ExtraDataType ExtraOwnership::GetType() const
 	{
 		return ExtraDataType::kOwnership;

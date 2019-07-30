@@ -112,9 +112,6 @@
     <Filter Include="src\RE\Events\ScriptEvent">
       <UniqueIdentifier>{b1536fb0-6bbc-418c-ac35-b00835645861}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\RE\ExtraData">
-      <UniqueIdentifier>{9c1e4a5f-2023-47a5-95d3-f3245b226161}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\RE\FileIO">
       <UniqueIdentifier>{6a60f52c-744c-4825-af1b-63f6e6e0f7d8}</UniqueIdentifier>
     </Filter>
@@ -937,6 +934,9 @@
     <Filter Include="include\RE\BSExtraData\Enums">
       <UniqueIdentifier>{f7fd847d-098e-44b0-9d61-4adeca2dceac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\BSExtraData">
+      <UniqueIdentifier>{9c1e4a5f-2023-47a5-95d3-f3245b226161}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -973,7 +973,7 @@
       <Filter>src\RE\Menus</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraLock.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\CommandTable.cpp">
       <Filter>src\RE\Obscript</Filter>
@@ -997,19 +997,19 @@
       <Filter>src\RE\FormComponents</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSExtraData.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraTextDisplayData.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraReferenceHandle.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSIntrusiveRefCounted.cpp">
       <Filter>src\RE\BSSystem</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraMapMarker.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\SoundData.cpp">
       <Filter>src\RE\BSAudio</Filter>
@@ -1033,7 +1033,7 @@
       <Filter>src\RE\Sky</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraFlags.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ChestsLooted.cpp">
       <Filter>src\RE\Events\BGSStoryEvent</Filter>
@@ -1201,25 +1201,25 @@
       <Filter>src\RE\BSAudio</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraHealth.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraCount.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraOwnership.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraAliasInstanceArray.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraHotkey.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraEnchantment.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraUniqueID.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\hkBaseTypes.cpp">
       <Filter>src\RE\BSHavok\Common\Base\Types\Physics\MotionState</Filter>
@@ -1279,10 +1279,10 @@
       <Filter>src\RE\Scaleform\FxGameDelegate</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraCannotWear.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraCharge.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\TESCamera.cpp">
       <Filter>src\RE\Camera\TESCamera</Filter>
@@ -1429,7 +1429,7 @@
       <Filter>src\RE\Memory</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraMissingLinkedRefIDs.cpp">
-      <Filter>src\RE\ExtraData</Filter>
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\NiMatrix3.cpp">
       <Filter>src\RE\NetImmerse\NiMain</Filter>
@@ -1475,6 +1475,15 @@
     </ClCompile>
     <ClCompile Include="src\RE\TES.cpp">
       <Filter>src\RE\FileIO\ICellAttachDetachEventSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraSoul.cpp">
+      <Filter>src\RE\BSExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraForcedTarget.cpp">
+      <Filter>src\RE\BSExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraRank.cpp">
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4228,6 +4237,99 @@
     </ClInclude>
     <ClInclude Include="include\RE\ExtraProcessMiddleLow.h">
       <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraAnimGraphManager.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraBiped.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraLight.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraLockList.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraShouldWear.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraSoul.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraInfoGeneralTopic.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraPackage.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraPlayerCrimeList.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraPersistentCell.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraRunOncePacks.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraDistantData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraResourcesPreload.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraPortal.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraOcclusionShape.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraEditorRef3DData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraEditorRefMoveData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraAnimNoteReceiver.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraPatrolRefInUseData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraSayTopicInfoOnceADay.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraSayToTopicInfo.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraAnimationSequencer.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraCellGrassData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraInteraction.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraGroupConstraint.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MultiBoundMarkerData.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraUsedMarkers.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraReservedMarkers.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraMagicCaster.h">
+      <Filter>include\RE\BSExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MagicCaster.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Biped.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
