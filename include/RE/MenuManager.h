@@ -79,7 +79,7 @@ namespace RE
 		bool									GameIsPaused();
 		bool									CrosshairIsPaused();
 		GPtr<IMenu>								GetMenu(const std::string_view& a_menuName);
-		template <class T> T*					GetMenu(const std::string_view& a_menuName);
+		template <class T> GPtr<T>				GetMenu(const std::string_view& a_menuName);
 
 
 		// members
@@ -119,8 +119,8 @@ namespace RE
 
 
 	template <class T>
-	inline T* MenuManager::GetMenu(const std::string_view& a_menuName)
+	inline GPtr<T> MenuManager::GetMenu(const std::string_view& a_menuName)
 	{
-		return static_cast<T*>(GetMenu(a_menuName));
+		return GPtr<T>(static_cast<T*>(GetMenu(a_menuName).get()));
 	}
 }

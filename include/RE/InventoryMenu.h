@@ -41,7 +41,7 @@ namespace RE
 
 			// members
 			GFxMovieView*	view;			// 00
-			GFxValue		itemMenuRoot;	// 08 - kDisplayObject
+			GFxValue		itemMenuRoot;	// 08 - kDisplayObject - "_level0.Menu_mc.inventoryLists.panelContainer.itemList"
 			GFxValue		unk20;			// 20 - kArray
 			BSTArray<Item*>	items;			// 38
 			bool			selected;		// 50
@@ -60,7 +60,7 @@ namespace RE
 
 
 		// members
-		GFxValue		root;				// 30 - kDisplayObject
+		GFxValue		root;				// 30 - kDisplayObject - "_level0.Menu_mc"
 		InventoryData*	inventoryData;		// 48 - doesn't own the object
 		GFxValue*		unk50;				// 50 - kObject
 		GFxValue*		unk58;				// 58 - kObject
