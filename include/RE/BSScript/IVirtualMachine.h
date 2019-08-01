@@ -102,10 +102,10 @@ namespace RE
 			virtual bool							IsWaitingStack(UInt32 a_stackID) = 0;																																								// 2A
 			virtual void							SetLatentReturn(UInt32 a_stackID, const Variable& a_val) = 0;																																		// 2B
 			virtual ErrorLogger*					GetLogger() = 0;																																													// 2C
-			virtual SkyrimScript::HandlePolicy*		GetHandlePolicySK() = 0;																																											// 2D
-			virtual IObjectHandlePolicy*			GetHandlePolicyBS() = 0;																																											// 2E
-			virtual SkyrimScript::ObjectBindPolicy*	GetObjectBindPolicySK() = 0;																																										// 2F
-			virtual ObjectBindPolicy*				GetObjectBindPolicyBS() = 0;																																										// 30
+			virtual IObjectHandlePolicy*			GetHandlePolicy() = 0;																																												// 2D
+			virtual const IObjectHandlePolicy*		GetHandlePolicy() const = 0;																																										// 2E
+			virtual ObjectBindPolicy*				GetObjectBindPolicy() = 0;																																											// 2F
+			virtual const ObjectBindPolicy*			GetObjectBindPolicy() const = 0;																																									// 30
 			virtual ISavePatcherInterface*			GetSavePatcher() = 0;																																												// 31
 			virtual void							AddLogEventSink(BSTEventSink<LogEvent>* a_sink) = 0;																																				// 32
 			virtual void							RemoveLogEventSink(BSTEventSink<LogEvent>* a_sink) = 0;																																				// 33

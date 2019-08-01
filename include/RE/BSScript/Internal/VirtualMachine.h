@@ -100,10 +100,10 @@ namespace RE
 				virtual bool							IsWaitingStack(UInt32 a_stackID) override;																																									// 2A
 				virtual void							SetLatentReturn(UInt32 a_stackID, const Variable& a_val) override;																																			// 2B
 				virtual ErrorLogger*					GetLogger() override;																																														// 2C - { return logger; }
-				virtual SkyrimScript::HandlePolicy*		GetHandlePolicySK() override;																																												// 2D - { return objectHandlePolicy; }
-				virtual IObjectHandlePolicy*			GetHandlePolicyBS() override;																																												// 2E - { return objectHandlePolicy; }
-				virtual SkyrimScript::ObjectBindPolicy*	GetObjectBindPolicySK() override;																																											// 2F - { return objectBindPolicy; }
-				virtual ObjectBindPolicy*				GetObjectBindPolicyBS() override;																																											// 30 - { return objectBindPolicy; }
+				virtual IObjectHandlePolicy*			GetHandlePolicy() override;																																													// 2D - { return objectHandlePolicy; }
+				virtual const IObjectHandlePolicy*		GetHandlePolicy() const override;																																											// 2E - { return objectHandlePolicy; }
+				virtual ObjectBindPolicy*				GetObjectBindPolicy() override;																																												// 2F - { return objectBindPolicy; }
+				virtual const ObjectBindPolicy*			GetObjectBindPolicy() const override;																																										// 30 - { return objectBindPolicy; }
 				virtual ISavePatcherInterface*			GetSavePatcher() override;																																													// 31 - { return savePatcher; }
 				virtual void							AddLogEventSink(BSTEventSink<LogEvent>* a_sink) override;																																					// 32
 				virtual void							RemoveLogEventSink(BSTEventSink<LogEvent>* a_sink) override;																																				// 33

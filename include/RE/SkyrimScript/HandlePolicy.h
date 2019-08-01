@@ -22,7 +22,7 @@ namespace RE
 			virtual bool		IsType(UInt32 a_typeID, VMHandle a_handle) override;			// 01
 			virtual bool		IsValidHandle(VMHandle a_handle) override;						// 02
 			virtual VMHandle	GetInvalidHandle() override;									// 03
-			virtual VMHandle	Create(UInt32 a_typeID, const TESForm* a_srcData) override;		// 04
+			virtual VMHandle	GetHandle(UInt32 a_typeID, const TESForm* a_srcData) override;	// 04
 			virtual bool		IsREFR(VMHandle a_handle) override;								// 05
 			virtual void		Unk_06(void) override;											// 06
 			virtual void		Unk_07(void) override;											// 07

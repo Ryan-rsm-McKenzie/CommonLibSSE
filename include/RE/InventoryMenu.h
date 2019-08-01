@@ -5,13 +5,13 @@
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/GFxValue.h"  // GFxValue
 #include "RE/IMenu.h"  // IMenu
-#include "RE/StandardItemData.h"  // StandardItemData
 
 
 namespace RE
 {
 	class GFxMovieView;
 	class TESObjectREFR;
+	struct ItemList;
 
 
 	class InventoryMenu : public IMenu
@@ -20,35 +20,6 @@ namespace RE
 		// flags = kPauseGame | kPreventGameLoad | kUnk0400 | kItemMenu | kUnk8000
 	public:
 		inline static const void* RTTI = RTTI_InventoryMenu;
-
-
-		// ItemMenu?
-		struct InventoryData
-		{
-			struct Item
-			{
-				StandardItemData	data;	// 00
-				GFxValue			unk18;	// 18 - kObject
-				UInt64				unk30;	// 30
-				UInt64				unk38;	// 38
-			};
-			STATIC_ASSERT(sizeof(Item) == 0x40);
-
-
-			Item*	GetSelectedItem();
-			void	Update(TESObjectREFR* a_owner);
-
-
-			// members
-			GFxMovieView*	view;			// 00
-			GFxValue		itemMenuRoot;	// 08 - kDisplayObject - "_level0.Menu_mc.inventoryLists.panelContainer.itemList"
-			GFxValue		unk20;			// 20 - kArray
-			BSTArray<Item*>	items;			// 38
-			bool			selected;		// 50
-			UInt8			unk51;			// 51
-			UInt16			unk52;			// 52
-			UInt32			unk54;			// 54
-		};
 
 
 		virtual ~InventoryMenu();											// 00
@@ -61,7 +32,7 @@ namespace RE
 
 		// members
 		GFxValue		root;				// 30 - kDisplayObject - "_level0.Menu_mc"
-		InventoryData*	inventoryData;		// 48 - doesn't own the object
+		ItemList*		list;				// 48
 		GFxValue*		unk50;				// 50 - kObject
 		GFxValue*		unk58;				// 58 - kObject
 		BSTArray<void*>	unk60;				// 60

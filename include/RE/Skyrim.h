@@ -617,6 +617,7 @@
 #include "RE/IPostAnimationChannelUpdateFunctor.h"
 #include "RE/IProcedureTreeItem.h"
 #include "RE/ItemCrafted.h"
+#include "RE/ItemList.h"
 #include "RE/ItemsPickpocketed.h"
 #include "RE/IUIMessageData.h"
 #include "RE/IXAudio2VoiceCallback.h"

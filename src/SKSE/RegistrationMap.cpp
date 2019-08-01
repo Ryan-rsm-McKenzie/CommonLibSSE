@@ -1,59 +1,56 @@
-#include "SKSE/RegistrationSet.h"
+#include "SKSE/RegistrationMap.h"
 
 
 namespace SKSE
 {
 	namespace Impl
 	{
-		RegistrationSetBase::RegistrationSetBase(const std::string_view& a_eventName) :
-			_handles(),
-			_eventName(a_eventName),
+		RegistrationMapBase::RegistrationMapBase() :
+			_regs(),
 			_lock()
 		{}
 
 
-		RegistrationSetBase::RegistrationSetBase(const RegistrationSetBase& a_rhs) :
-			_handles(),
-			_eventName(a_rhs._eventName),
+		RegistrationMapBase::RegistrationMapBase(const RegistrationMapBase& a_rhs) :
+			_regs(),
 			_lock()
 		{
 			a_rhs._lock.lock();
-			_handles = a_rhs._handles;
+			_regs = a_rhs._regs;
 			a_rhs._lock.unlock();
 
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm->GetHandlePolicy();
-			for (auto& handle : _handles) {
-				policy->AddRef(handle);
+			for (auto& reg : _regs) {
+				policy->AddRef(reg.first);
 			}
 		}
 
 
-		RegistrationSetBase::RegistrationSetBase(RegistrationSetBase&& a_rhs) :
-			_handles(std::move(a_rhs._handles)),
-			_eventName(a_rhs._eventName),
+		RegistrationMapBase::RegistrationMapBase(RegistrationMapBase&& a_rhs) :
+			_regs(),
 			_lock()
 		{
 			a_rhs._lock.lock();
-			_handles = std::move(a_rhs._handles);
-			a_rhs._handles.clear();
+			_regs = std::move(a_rhs._regs);
+			a_rhs._regs.clear();
 			a_rhs._lock.unlock();
 		}
 
 
-		RegistrationSetBase::~RegistrationSetBase()
+		RegistrationMapBase::~RegistrationMapBase()
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			if (vm) {
 				auto policy = vm->GetHandlePolicy();
-				for (auto& handle : _handles) {
-					policy->Release(handle);
+				for (auto& reg : _regs) {
+					policy->Release(reg.first);
 				}
 			}
 		}
 
 
-		RegistrationSetBase& RegistrationSetBase::operator=(const RegistrationSetBase& a_rhs)
+		RegistrationMapBase& RegistrationMapBase::operator=(const RegistrationMapBase& a_rhs)
 		{
 			if (this == &a_rhs) {
 				return *this;
@@ -63,21 +60,20 @@ namespace SKSE
 			Clear();
 
 			a_rhs._lock.lock();
-			_handles = a_rhs._handles;
-			_eventName = a_rhs._eventName;
+			_regs = a_rhs._regs;
 			a_rhs._lock.unlock();
 
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm->GetHandlePolicy();
-			for (auto& handle : _handles) {
-				policy->AddRef(handle);
+			for (auto& reg : _regs) {
+				policy->AddRef(reg.first);
 			}
 
 			return *this;
 		}
 
 
-		RegistrationSetBase& RegistrationSetBase::operator=(RegistrationSetBase&& a_rhs)
+		RegistrationMapBase& RegistrationMapBase::operator=(RegistrationMapBase&& a_rhs)
 		{
 			if (this == &a_rhs) {
 				return *this;
@@ -87,16 +83,14 @@ namespace SKSE
 			Locker rhsLocker(a_rhs._lock);
 			Clear();
 
-			_eventName = a_rhs._eventName;
-
-			_handles = std::move(a_rhs._handles);
-			a_rhs._handles.clear();
+			_regs = std::move(a_rhs._regs);
+			a_rhs._regs.clear();
 
 			return *this;
 		}
 
 
-		bool RegistrationSetBase::Register(RE::TESForm* a_form)
+		bool RegistrationMapBase::Register(RE::TESForm* a_form, RE::BSFixedString a_callback)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm->GetHandlePolicy();
@@ -110,7 +104,7 @@ namespace SKSE
 			policy->AddRef(handle);
 
 			_lock.lock();
-			auto result = _handles.insert(handle);
+			auto result = _regs.insert(std::make_pair(handle, a_callback));
 			_lock.unlock();
 
 			if (!result.second) {
@@ -120,7 +114,7 @@ namespace SKSE
 		}
 
 
-		bool RegistrationSetBase::Unregister(RE::TESForm* a_form)
+		bool RegistrationMapBase::Unregister(RE::TESForm* a_form)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm->GetHandlePolicy();
@@ -132,30 +126,30 @@ namespace SKSE
 			}
 
 			Locker locker(_lock);
-			auto it = _handles.find(handle);
-			if (it == _handles.end()) {
+			auto it = _regs.find(handle);
+			if (it == _regs.end()) {
 				_WARNING("Could not find registration");
 				return false;
 			} else {
-				policy->Release(*it);
+				policy->Release(it->first);
 				return true;
 			}
 		}
 
 
-		void RegistrationSetBase::Clear()
+		void RegistrationMapBase::Clear()
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm->GetHandlePolicy();
 			Locker locker(_lock);
-			for (auto& handle : _handles) {
-				policy->Release(handle);
+			for (auto& reg : _regs) {
+				policy->Release(reg.first);
 			}
-			_handles.clear();
+			_regs.clear();
 		}
 
 
-		bool RegistrationSetBase::Save(SerializationInterface* a_intfc, UInt32 a_type, UInt32 a_version)
+		bool RegistrationMapBase::Save(SerializationInterface* a_intfc, UInt32 a_type, UInt32 a_version)
 		{
 			if (!a_intfc->OpenRecord(a_type, a_version)) {
 				_ERROR("Failed to open record!\n");
@@ -166,18 +160,26 @@ namespace SKSE
 		}
 
 
-		bool RegistrationSetBase::Save(SerializationInterface* a_intfc)
+		bool RegistrationMapBase::Save(SerializationInterface* a_intfc)
 		{
 			Locker locker(_lock);
-			std::size_t numRegs = _handles.size();
+			std::size_t numRegs = _regs.size();
 			if (!a_intfc->WriteRecordData(&numRegs, sizeof(numRegs))) {
 				_ERROR("Failed to save number of regs (%zu)!\n", numRegs);
 				return false;
 			}
 
-			for (auto& handle : _handles) {
-				if (!a_intfc->WriteRecordData(&handle, sizeof(handle))) {
-					_ERROR("Failed to save reg (%u)!\n", handle);
+			std::size_t size;
+			for (auto& reg : _regs) {
+				if (!a_intfc->WriteRecordData(&reg.first, sizeof(reg.first))) {
+					_ERROR("Failed to save reg (%u: %s)!\n", reg.first, reg.second.c_str());
+					return false;
+				}
+
+				size = reg.second.size() + 1;
+				if (!a_intfc->WriteRecordData(&size, sizeof(size)) ||
+					!a_intfc->WriteRecordData(reg.second.data(), size)) {
+					_ERROR("Failed to save reg (%u: %s)!\n", reg.first, reg.second.c_str());
 					return false;
 				}
 			}
@@ -186,22 +188,27 @@ namespace SKSE
 		}
 
 
-		bool RegistrationSetBase::Load(SerializationInterface* a_intfc)
+		bool RegistrationMapBase::Load(SerializationInterface* a_intfc)
 		{
 			std::size_t numRegs;
 			a_intfc->ReadRecordData(&numRegs, sizeof(numRegs));
 
 			Locker locker(_lock);
-			_handles.clear();
+			_regs.clear();
 			RE::VMHandle handle;
+			std::size_t size;
+			EventName evnName;
 			for (std::size_t i = 0; i < numRegs; ++i) {
 				a_intfc->ReadRecordData(&handle, sizeof(handle));
+				a_intfc->ReadRecordData(&size, sizeof(size));
+				evnName.reserve(size);
+				a_intfc->ReadRecordData(evnName.data(), size);
 				if (!a_intfc->ResolveHandle(handle, handle)) {
-					_WARNING("Failed to resolve handle (%u)", handle);
+					_WARNING("Failed to resolve handle (%u: %s)", handle, evnName.c_str());
 				} else {
-					auto result = _handles.insert(handle);
+					auto result = _regs.insert(std::make_pair(handle, evnName));
 					if (!result.second) {
-						_ERROR("Loaded duplicate handle (%u)!\n", handle);
+						_ERROR("Loaded duplicate handle (%u: %s)!\n", handle, evnName.c_str());
 					}
 				}
 			}

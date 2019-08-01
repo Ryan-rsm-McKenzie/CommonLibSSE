@@ -36,7 +36,8 @@ namespace RE
 
 		void* Object::Resolve(UInt32 a_typeID) const
 		{
-			auto policy = Internal::VirtualMachine::GetSingleton()->GetHandlePolicyBS();
+			auto vm = Internal::VirtualMachine::GetSingleton();
+			auto policy = vm->GetHandlePolicy();
 			if (policy->IsType(a_typeID, handle) && policy->IsValidHandle(handle)) {
 				return policy->Resolve(a_typeID, handle);
 			} else {

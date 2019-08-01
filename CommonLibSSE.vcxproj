@@ -248,6 +248,7 @@
     <ClCompile Include="src\RE\INISettingCollection.cpp" />
     <ClCompile Include="src\RE\Inventory.cpp" />
     <ClCompile Include="src\RE\ItemCrafted.cpp" />
+    <ClCompile Include="src\RE\ItemList.cpp" />
     <ClCompile Include="src\RE\ItemsPickpocketed.cpp" />
     <ClCompile Include="src\RE\LocalMapCamera.cpp" />
     <ClCompile Include="src\RE\NiAnimationKey.cpp" />
@@ -285,7 +286,6 @@
     <ClCompile Include="src\RE\ExtraMapMarker.cpp" />
     <ClCompile Include="src\RE\ExtraReferenceHandle.cpp" />
     <ClCompile Include="src\RE\ExtraTextDisplayData.cpp" />
-    <ClCompile Include="src\RE\InventoryMenu.cpp" />
     <ClCompile Include="src\RE\NiTCollection.cpp" />
     <ClCompile Include="src\RE\NiPoint3.cpp" />
     <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp" />
@@ -344,6 +344,7 @@
     <ClCompile Include="src\SKSE\API.cpp" />
     <ClCompile Include="src\SKSE\Interfaces.cpp" />
     <ClCompile Include="src\SKSE\Logger.cpp" />
+    <ClCompile Include="src\SKSE\RegistrationMap.cpp" />
     <ClCompile Include="src\SKSE\RegistrationSet.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -1018,6 +1019,7 @@
     <ClInclude Include="include\RE\IPostAnimationChannelUpdateFunctor.h" />
     <ClInclude Include="include\RE\IProcedureTreeItem.h" />
     <ClInclude Include="include\RE\ItemCrafted.h" />
+    <ClInclude Include="include\RE\ItemList.h" />
     <ClInclude Include="include\RE\ItemsPickpocketed.h" />
     <ClInclude Include="include\RE\IUIMessageData.h" />
     <ClInclude Include="include\RE\IXAudio2VoiceCallback.h" />
@@ -1292,8 +1294,10 @@
     <ClInclude Include="include\SKSE\Events.h" />
     <ClInclude Include="include\SKSE\Interfaces.h" />
     <ClInclude Include="include\SKSE\Logger.h" />
+    <ClInclude Include="include\SKSE\RegistrationMap.h" />
     <ClInclude Include="include\SKSE\RegistrationSet.h" />
     <ClInclude Include="include\SKSE\API.h" />
+    <ClInclude Include="include\SKSE\RegistrationTraits.h" />
     <ClInclude Include="include\Util.h" />
     <ClInclude Include="src\RE\GFxResourceKey.cpp" />
   </ItemGroup>

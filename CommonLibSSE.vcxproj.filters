@@ -937,6 +937,9 @@
     <Filter Include="src\RE\BSExtraData">
       <UniqueIdentifier>{9c1e4a5f-2023-47a5-95d3-f3245b226161}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\Menus\IMenu\Components">
+      <UniqueIdentifier>{d642ce94-720d-41a7-bbc8-70c2cb95ef08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1063,9 +1066,6 @@
       <Filter>src\RE\FormComponents\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\IMenu.cpp">
-      <Filter>src\RE\Menus\IMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\InventoryMenu.cpp">
       <Filter>src\RE\Menus\IMenu</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\hkBaseObject.cpp">
@@ -1487,6 +1487,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\GRefCountImplCore.cpp">
       <Filter>src\RE\Scaleform\GRefCount</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ItemList.cpp">
+      <Filter>src\RE\Menus\IMenu\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SKSE\RegistrationMap.cpp">
+      <Filter>src\SKSE</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4336,6 +4342,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSUIScaleformData.h">
       <Filter>include\RE\Menus\IUIMessageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ItemList.h">
+      <Filter>include\RE\Menus\IMenu\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\RegistrationMap.h">
+      <Filter>include\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\RegistrationTraits.h">
+      <Filter>include\SKSE</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

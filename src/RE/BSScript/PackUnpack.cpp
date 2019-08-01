@@ -31,11 +31,12 @@ namespace RE
 			UInt32 id = 0;
 			BSTSmartPointer<Class> classPtr(a_objectPtr->GetClass());
 			if (vm->GetFormTypeID(classPtr->GetName(), id)) {
-				auto handlePolicy = vm->GetHandlePolicyBS();
-				VMHandle handle = handlePolicy->Create(a_formType, a_srcData);
+				auto policy = vm->GetHandlePolicy();
+				auto handle = policy->GetHandle(a_formType, a_srcData);
 
-				if (handlePolicy->IsType(id, handle) || handle == handlePolicy->GetInvalidHandle()) {
-					vm->GetObjectBindPolicyBS()->BindObject(a_objectPtr, handle);
+				// if handle is of expected type and not invalid
+				if (policy->IsType(id, handle) && handle != policy->GetInvalidHandle()) {
+					vm->GetObjectBindPolicy()->BindObject(a_objectPtr, handle);
 				}
 			}
 		}
@@ -56,8 +57,8 @@ namespace RE
 				return;
 			}
 
-			auto handlePolicy = vm->GetHandlePolicyBS();
-			VMHandle handle = handlePolicy->Create(a_formType, a_src);
+			auto policy = vm->GetHandlePolicy();
+			auto handle = policy->GetHandle(a_formType, a_src);
 
 			BSTSmartPointer<Object> objectPtr;
 			if (!vm->ResolveScriptObject(handle, classPtr->GetName(), objectPtr)) {
