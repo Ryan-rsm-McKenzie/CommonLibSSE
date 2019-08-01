@@ -259,10 +259,8 @@ namespace RE
 
 		namespace ItemList
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B D0 48 8D 8B 90 00 00 00
-			constexpr std::uintptr_t GetSelectedItem = 0x00856400;	// 1_5_80
 			// IndirectSig: E8 ? ? ? ? EB 4A 80 7D 1A 1B
-			constexpr std::uintptr_t Update = 0x00856A50;			// 1_5_80
+			constexpr std::uintptr_t Update = 0x00856A50;	// 1_5_80
 		}
 
 

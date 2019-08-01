@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/GFxValue.h"  // GFxValue
+#include "RE/GPtr.h"  // GPtr
 #include "RE/StandardItemData.h"  // StandardItemData
 
 
@@ -26,13 +27,14 @@ namespace RE
 
 
 		// members
-		GFxMovieView*	view;		// 00
-		GFxValue		root;		// 08 - kDisplayObject - "_level0.Menu_mc.inventoryLists.panelContainer.itemList"
-		GFxValue		unk20;		// 20 - kArray
-		BSTArray<Item*>	items;		// 38
-		bool			selected;	// 50
-		UInt8			unk51;		// 51
-		UInt16			unk52;		// 52
-		UInt32			unk54;		// 54
+		GPtr<GFxMovieView>	view;		// 00
+		GFxValue			root;		// 08 - kDisplayObject - "_level0.Menu_mc.inventoryLists.panelContainer.itemList"
+		GFxValue			entryList;	// 20 - kArray - root.GetMember("entryList", &entryList);
+		BSTArray<Item*>		items;		// 38
+		bool				unk50;		// 50
+		UInt8				pad51;		// 51
+		UInt16				pad52;		// 52
+		UInt32				pad54;		// 54
 	};
+	STATIC_ASSERT(sizeof(ItemList) == 0x58);
 }

@@ -2,8 +2,10 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_InventoryMenu
 
+#include "RE/BSString.h"  // BSString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/GFxValue.h"  // GFxValue
+#include "RE/GPtr.h"  // GPtr
 #include "RE/IMenu.h"  // IMenu
 
 
@@ -22,6 +24,18 @@ namespace RE
 		inline static const void* RTTI = RTTI_InventoryMenu;
 
 
+		struct ItemCard
+		{
+			GFxValue			obj;		// 00 - kObject
+			BSString			infoText;	// 18
+			UInt64				unk28;		// 28
+			UInt32				unk30;		// 30
+			UInt32				pad34;		// 34
+			GPtr<GFxMovieView>	unk38;		// 38
+		};
+		STATIC_ASSERT(sizeof(ItemCard) == 0x40);
+
+
 		virtual ~InventoryMenu();											// 00
 
 		// override (IMenu)
@@ -33,8 +47,8 @@ namespace RE
 		// members
 		GFxValue		root;				// 30 - kDisplayObject - "_level0.Menu_mc"
 		ItemList*		list;				// 48
-		GFxValue*		unk50;				// 50 - kObject
-		GFxValue*		unk58;				// 58 - kObject
+		ItemCard*		itemCard;			// 50
+		GFxValue*		bottomBarInfo;		// 58 - kObject
 		BSTArray<void*>	unk60;				// 60
 		UInt32			unk78;				// 78
 		UInt32			unk7C;				// 7C

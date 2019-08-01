@@ -9,9 +9,22 @@ namespace RE
 	auto ItemList::GetSelectedItem()
 		-> Item*
 	{
-		using func_t = function_type_t<decltype(&ItemList::GetSelectedItem)>;
-		REL::Offset<func_t*> func(Offset::ItemList::GetSelectedItem);
-		return func(this);
+		if (unk50) {
+			return 0;
+		}
+
+		GFxValue selectedIndex;
+		auto success = root.GetMember("selectedIndex", &selectedIndex);
+		if (!success || !selectedIndex.IsNumber()) {
+			return 0;
+		}
+
+		auto idx = static_cast<SInt32>(selectedIndex.GetNumber());
+		if (idx < 0 || idx >= items.size()) {
+			return 0;
+		}
+
+		return items[idx];
 	}
 
 
