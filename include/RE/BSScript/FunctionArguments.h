@@ -35,8 +35,8 @@ namespace RE
 			public IFunctionArguments
 		{
 		public:
-			FunctionArguments(Args... a_args) :
-				_args(a_args...)
+			FunctionArguments(Args&&... a_args) :
+				_args(std::forward<Args>(a_args)...)
 			{}
 
 
@@ -75,9 +75,9 @@ namespace RE
 
 
 	template <class... Args>
-	inline BSScript::IFunctionArguments* MakeFunctionArguments(Args... a_args)
+	inline BSScript::IFunctionArguments* MakeFunctionArguments(Args&&... a_args)
 	{
-		return new FunctionArguments<Args...>{ a_args... };
+		return new FunctionArguments<Args...>(std::forward<Args>(a_args)...);
 	}
 
 
