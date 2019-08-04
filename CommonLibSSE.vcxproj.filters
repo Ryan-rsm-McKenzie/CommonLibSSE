@@ -940,6 +940,12 @@
     <Filter Include="src\RE\Menus\IMenu\Components">
       <UniqueIdentifier>{d642ce94-720d-41a7-bbc8-70c2cb95ef08}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\BSScript\IFunction\Components">
+      <UniqueIdentifier>{68256469-3641-4299-b1f0-0f649a424e79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSScript\IFunction\Components">
+      <UniqueIdentifier>{be93d64a-37e7-4ce3-8506-0c32f451b625}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1493,6 +1499,12 @@
     </ClCompile>
     <ClCompile Include="src\SKSE\RegistrationMap.cpp">
       <Filter>src\SKSE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\IFunction.cpp">
+      <Filter>src\RE\BSScript\IFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\VariableInfo.cpp">
+      <Filter>src\RE\BSScript\IFunction\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4351,6 +4363,9 @@
     </ClInclude>
     <ClInclude Include="include\SKSE\RegistrationTraits.h">
       <Filter>include\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\VariableInfo.h">
+      <Filter>include\RE\BSScript\IFunction\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

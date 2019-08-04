@@ -2,6 +2,8 @@
 
 #include "skse64/PapyrusNativeFunctions.h"  // NativeFunctionBase, NativeFunction
 
+#include <string>
+
 #include "RE/BSScript/Type.h"  // BSScript::Type
 
 
@@ -11,15 +13,25 @@ namespace RE
 	{
 		namespace NF_util
 		{
-			NativeFunctionBase::NativeFunctionBase(const char* a_fnName, const char* a_className, bool a_isStatic, UInt32 a_numParams)
+			NativeFunctionBase::NativeFunctionBase(const char* a_fnName, const char* a_className, bool a_isStatic, UInt32 a_numParams) :
+				_fnName(a_fnName),
+				_scriptName(a_className),
+				_stateName(""),
+				_returnType(VMTypeID::kNone),
+				_vars(a_numParams, 0),
+				_isStatic(a_isStatic),
+				_unk41(false),
+				_isLatent(false),
+				_pad43(0),
+				_unk44(0),
+				_unk48("")
 			{
-				Ctor(a_fnName, a_className, a_isStatic, a_numParams);
-			}
-
-
-			NativeFunctionBase::~NativeFunctionBase()
-			{
-				Dtor();
+				// native supports max 11
+				std::string param("param");
+				std::size_t num = 1;
+				for (auto& elem : _vars.variables) {
+					elem.name = param + std::to_string(num++);
+				}
 			}
 
 
@@ -50,21 +62,27 @@ namespace RE
 
 			UInt32 NativeFunctionBase::GetNumParams() const
 			{
-				return _params.numVars;
+				return _vars.numVars;
 			}
 
 
 			Type& NativeFunctionBase::GetParam(UInt32 a_idx, BSFixedString& a_nameOut, Type& a_typeOut) const
 			{
-				using func_t = function_type_t<decltype(&NativeFunctionBase::GetParam)>;
-				func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::NativeFunctionBase, Impl_GetParam, func_t*);
-				return func(this, a_idx, a_nameOut, a_typeOut);
+				if (a_idx < _vars.numParams) {
+					auto& elem = _vars.variables[a_idx];
+					a_nameOut = elem.name;
+					a_typeOut = elem.type;
+				} else {
+					a_nameOut = "";
+					a_typeOut = {};
+				}
+				return a_typeOut;
 			}
 
 
 			UInt32 NativeFunctionBase::GetNumVars() const
 			{
-				return _params.numVars;
+				return _vars.numVars;
 			}
 
 
@@ -120,24 +138,27 @@ namespace RE
 
 			const BSFixedString& NativeFunctionBase::GetSource() const
 			{
-				using func_t = function_type_t<decltype(&NativeFunctionBase::GetSource)>;
-				func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::NativeFunctionBase, Impl_Fn10, func_t*);
-				return func(this);
+				static BSFixedString native("<native>");
+				return native;
 			}
 
 
-			bool NativeFunctionBase::Unk_11(UInt32 a_arg1, UInt32* a_arg2)
+			bool NativeFunctionBase::GetLineNumber(UInt32 a_taskletExecutionOffset, UInt32& a_lineNumber)
 			{
-				*a_arg2 = 0;
+				a_lineNumber = 0;
 				return false;
 			}
 
 
 			bool NativeFunctionBase::GetVarName(UInt32 a_idx, BSFixedString& a_out) const
 			{
-				using func_t = function_type_t<decltype(&NativeFunctionBase::GetVarName)>;
-				func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::NativeFunctionBase, Impl_Fn12, func_t*);
-				return func(this, a_idx, a_out);
+				if (a_idx < _vars.numVars) {
+					a_out = _vars.variables[a_idx].name;
+					return true;
+				} else {
+					a_out = "";
+					return false;
+				}
 			}
 
 
@@ -150,22 +171,6 @@ namespace RE
 			void NativeFunctionBase::SetUnk41(bool a_arg)
 			{
 				_unk41 = a_arg;
-			}
-
-
-			NativeFunctionBase* NativeFunctionBase::Ctor(const char* a_fnName, const char* a_className, bool a_isStatic, UInt32 a_numParams)
-			{
-				using func_t = function_type_t<decltype(&NativeFunctionBase::Ctor)>;
-				func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::NativeFunction, Impl_ctor, func_t*);
-				return func(this, a_fnName, a_className, a_isStatic, a_numParams);
-			}
-
-
-			void NativeFunctionBase::Dtor()
-			{
-				using func_t = function_type_t<decltype(&NativeFunctionBase::Dtor)>;
-				func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::NativeFunctionBase, Impl_dtor, func_t*);
-				return func(this);
 			}
 		}
 	}

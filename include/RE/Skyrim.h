@@ -916,6 +916,7 @@
 #include "RE/BSScript/Type.h"
 #include "RE/BSScript/TypeTraits.h"
 #include "RE/BSScript/Variable.h"
+#include "RE/BSScript/VariableInfo.h"
 #include "RE/BSScript/VMArray.h"
 #include "RE/BSScript/ZeroFunctionArguments.h"
 #include "RE/BSScript/Internal/CodeTasklet.h"

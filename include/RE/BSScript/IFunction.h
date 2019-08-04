@@ -30,6 +30,7 @@ namespace RE
 			inline static const void* RTTI = RTTI_BSScript__IFunction;
 
 
+			IFunction();
 			virtual ~IFunction() = default;																														// 00
 
 			// add
@@ -49,7 +50,7 @@ namespace RE
 			virtual void					MoveVariablesToStack(StackFrame* a_frame) = 0;																		// 0E
 			virtual UInt32					Invoke(BSTSmartPointer<Stack>& a_stack, ErrorLogger* a_logger, Internal::VirtualMachine* a_vm, bool a_arg4) = 0;	// 0F
 			virtual const BSFixedString&	GetSource() const = 0;																								// 10
-			virtual bool					Unk_11(UInt32 a_arg1, UInt32* a_arg2) = 0;																			// 11
+			virtual bool					GetLineNumber(UInt32 a_taskletExecutionOffset, UInt32& a_lineNumber) = 0;											// 11
 			virtual bool					GetVarName(UInt32 a_idx, BSFixedString& a_out) const = 0;															// 12
 			virtual bool					GetUnk41() const = 0;																								// 13
 			virtual void					SetUnk41(bool a_arg) = 0;																							// 14

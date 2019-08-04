@@ -186,6 +186,7 @@
     <ClCompile Include="src\RE\BSResourceNiBinaryStream.cpp" />
     <ClCompile Include="src\RE\BSScript\Array.cpp" />
     <ClCompile Include="src\RE\BSScript\Class.cpp" />
+    <ClCompile Include="src\RE\BSScript\IFunction.cpp" />
     <ClCompile Include="src\RE\BSScript\IStackCallbackFunctor.cpp" />
     <ClCompile Include="src\RE\BSScript\Object.cpp" />
     <ClCompile Include="src\RE\BSScript\Stack.cpp" />
@@ -197,6 +198,7 @@
     <ClCompile Include="src\RE\BSScript\ObjectBindPolicy.cpp" />
     <ClCompile Include="src\RE\BSScript\PackUnpack.cpp" />
     <ClCompile Include="src\RE\BSScript\StackFrame.cpp" />
+    <ClCompile Include="src\RE\BSScript\VariableInfo.cpp" />
     <ClCompile Include="src\RE\BSScript\ZeroFunctionArguments.cpp" />
     <ClCompile Include="src\RE\BSLock.cpp" />
     <ClCompile Include="src\RE\BSString.cpp" />
@@ -604,6 +606,7 @@
     <ClInclude Include="include\RE\BSScript\NativeFunction.h" />
     <ClInclude Include="include\RE\BSScript\NF_util\NativeFunctionBase.h" />
     <ClInclude Include="include\RE\BSScript\SimpleAllocMemoryPagePolicy.h" />
+    <ClInclude Include="include\RE\BSScript\VariableInfo.h" />
     <ClInclude Include="include\RE\BSScript\VMArray.h" />
     <ClInclude Include="include\RE\BSScript\ZeroFunctionArguments.h" />
     <ClInclude Include="include\RE\BSShader.h" />

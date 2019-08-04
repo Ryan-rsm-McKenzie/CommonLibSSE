@@ -18,11 +18,8 @@ namespace RE
 	public:
 		using value_type = T;
 		using size_type = UInt32;
-		using difference_type = SInt32;
 		using reference = value_type&;
 		using const_reference = const value_type&;
-		using pointer = value_type*;
-		using const_pointer = std::pointer_traits<pointer>::rebind<const value_type>;
 
 
 		struct Node

@@ -64,81 +64,67 @@ namespace RE
 			NativeFunction() = delete;
 			NativeFunction(const NativeFunction&) = delete;
 			NativeFunction(NativeFunction&&) = delete;
-			NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback);
+
+
+			NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback) :
+				NativeFunctionBase(a_fnName, a_className, is_static_base<base_type>::value, sizeof...(Args)),
+				_callback(a_callback)
+			{
+				std::size_t i = 0;
+				((_vars.variables[i++].type.SetTypeID(GetTypeID<Args>())), ...);
+				_returnType = GetTypeID<result_type>();
+			}
+
+
 			virtual ~NativeFunction() = default;																												// 00
 
-			virtual bool HasCallback() const override;																											// 15
-			virtual bool Run(Variable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, Variable* a_resultValue, StackFrame* a_frame) override;	// 16
+
+			virtual bool HasCallback() const override																											// 15
+			{
+				return _callback != 0;
+			}
+
+
+			virtual bool Run(Variable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, Variable* a_resultValue, StackFrame* a_frame) override	// 16
+			{
+				auto chunkIdx = a_frame->stack->GetChunkIdx(a_frame);
+
+				base_type base{};
+				if constexpr (std::negation<is_static_base<base_type>>::value)
+				{
+					base = a_baseValue->Unpack<base_type>();
+					if (!base) {
+						return false;
+					}
+				}
+
+				UInt32 i = sizeof...(Args);
+				auto args = Impl::MakeTuple<Args...>(a_frame, chunkIdx);
+				if constexpr (std::is_void<result_type>::value) {
+					if constexpr (IS_LONG) {
+						Impl::CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
+						a_resultValue->SetNone();
+					} else {
+						Impl::CallBack(_callback, std::move(args), std::move(base));
+						a_resultValue->SetNone();
+					}
+				} else {
+					if constexpr (IS_LONG) {
+						auto result = Impl::CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
+						a_resultValue->Pack<result_type>(result);
+					} else {
+						auto result = Impl::CallBack(_callback, std::move(args), std::move(base));
+						a_resultValue->Pack<result_type>(result);
+					}
+				}
+
+				return true;
+			}
 
 		protected:
 			// members
 			function_type* _callback;	// 50
 		};
-
-
-#define TmpltParams_ IS_LONG, F, R, Base, Args...
-
-
-		template <bool IS_LONG, class F, class R, class Base, class... Args>
-		NativeFunction<TmpltParams_>::NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback) :
-			NativeFunctionBase(a_fnName, a_className, is_static_base<base_type>::value, sizeof...(Args)),
-			_callback(a_callback)
-		{
-			std::size_t i = 0;
-			((_params.data[i++].type.SetTypeID(GetTypeID<Args>())), ...);
-			_returnType = GetTypeID<result_type>();
-		}
-
-
-		template <bool IS_LONG, class F, class R, class Base, class... Args>
-		bool NativeFunction<TmpltParams_>::HasCallback() const
-		{
-			return _callback != 0;
-		}
-
-
-		template <bool IS_LONG, class F, class R, class Base, class... Args>
-		bool NativeFunction<TmpltParams_>::Run(Variable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, Variable* a_resultValue, StackFrame* a_frame)
-		{
-			auto chunkIdx = a_frame->stack->GetChunkIdx(a_frame);
-
-			base_type base{};
-			if constexpr (std::negation<is_static_base<base_type>>::value)
-			{
-				base = a_baseValue->Unpack<base_type>();
-				if (!base) {
-					return false;
-				}
-			}
-
-			UInt32 i = sizeof...(Args);
-			std::tuple<Args...> args = Impl::MakeTuple<Args...>(a_frame, chunkIdx);
-			if constexpr (std::is_void<result_type>::value)
-			{
-				if constexpr (IS_LONG)
-				{
-					Impl::CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
-					a_resultValue->SetNone();
-				} else {
-					Impl::CallBack(_callback, std::move(args), std::move(base));
-					a_resultValue->SetNone();
-				}
-			} else {
-				if constexpr (IS_LONG)
-				{
-					auto result = Impl::CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
-					a_resultValue->Pack<result_type>(result);
-				} else {
-					auto result = Impl::CallBack(_callback, std::move(args), std::move(base));
-					a_resultValue->Pack<result_type>(result);
-				}
-			}
-
-			return true;
-		}
-
-
-#undef TmpltParams_
 	}
 
 

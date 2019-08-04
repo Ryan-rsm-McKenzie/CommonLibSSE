@@ -806,6 +806,13 @@ namespace RE
 		{}
 
 
+		explicit BSTSimpleArray(size_type a_count) :
+			_data(0)
+		{
+			resize(a_count);
+		}
+
+
 		~BSTSimpleArray()
 		{
 			clear();
