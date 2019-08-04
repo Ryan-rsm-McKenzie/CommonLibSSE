@@ -10,7 +10,7 @@ namespace RE
 
 	namespace BSScript
 	{
-		class ILoader;
+		struct ILoader;
 
 
 		class IObjectProcessor

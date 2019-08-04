@@ -15,7 +15,6 @@ namespace RE
 	{
 		class Class;
 		class ErrorLogger;
-		class ILoader;
 
 
 		namespace Internal
