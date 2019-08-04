@@ -50,25 +50,23 @@ namespace RE
 			public:
 				inline static const void* RTTI = RTTI_BSScript__Internal__VirtualMachine;
 
-				using StackID = UInt32;
-
 
 				virtual ~VirtualMachine();
 
 				// override (IVirtualMachine)
 				virtual void							Unk_01(void) override;																																														// 01
-				virtual void							TraceStack(const char* a_str, UInt32 a_stackID, Severity a_severity = Severity::kInfo) override;																											// 02
+				virtual void							TraceStack(const char* a_str, StackID a_stackID, Severity a_severity = Severity::kInfo) override;																											// 02
 				virtual void							Unk_03(void) override;																																														// 03
 				virtual void							OnUpdate(float a_arg1) override;																																											// 04
 				virtual void							OnUpdateGameTime(float a_arg1) override;																																									// 05
 				virtual void							Unk_06(void) override;																																														// 06
 				virtual bool							OnChangeVMState() override;																																													// 07
-				virtual void							RegisterForm(UInt32 a_formType, const char* a_papyrusClassName) override;																																	// 08
+				virtual void							RegisterForm(FormType32 a_formType, const char* a_papyrusClassName) override;																																// 08
 				virtual bool							GetScriptClassByName(const BSFixedString& a_className, BSTSmartPointer<Class>& a_outClassPtr) override;																										// 09
-				virtual bool							GetScriptClassByTypeID(UInt32 a_formType, BSTSmartPointer<Class>& a_outClass) override;																														// 0A
+				virtual bool							GetScriptClassByTypeID(FormType32 a_formType, BSTSmartPointer<Class>& a_outClassPtr) override;																												// 0A
 				virtual bool							RegisterScriptClass(const BSFixedString& a_className, BSTSmartPointer<Class>& a_classPtr) override;																											// 0B
 				virtual void							Unk_0C(void) override;																																														// 0C
-				virtual bool							GetFormTypeID(const BSFixedString& a_className, UInt32& a_formType) override;																																// 0D
+				virtual bool							GetFormTypeID(const BSFixedString& a_className, FormType32& a_formType) override;																															// 0D
 				virtual void							Unk_0E(void) override;																																														// 0E
 				virtual void							Unk_0F(void) override;																																														// 0F
 				virtual void							Unk_10(void) override;																																														// 10
@@ -97,8 +95,8 @@ namespace RE
 				virtual bool							CallMemberFunction(BSTSmartPointer<Object>& a_obj, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) override;									// 27
 				virtual bool							CallMemberFunctionFromHandle(VMHandle a_handle, const BSFixedString& a_className, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) override;	// 28
 				virtual void							Unk_29(void) override;																																														// 29
-				virtual bool							IsWaitingStack(UInt32 a_stackID) override;																																									// 2A
-				virtual void							SetLatentReturn(UInt32 a_stackID, const Variable& a_val) override;																																			// 2B
+				virtual bool							IsWaitingStack(StackID a_stackID) override;																																									// 2A
+				virtual void							SetLatentReturn(StackID a_stackID, const Variable& a_val) override;																																			// 2B
 				virtual ErrorLogger*					GetLogger() override;																																														// 2C - { return logger; }
 				virtual IObjectHandlePolicy*			GetHandlePolicy() override;																																													// 2D - { return objectHandlePolicy; }
 				virtual const IObjectHandlePolicy*		GetHandlePolicy() const override;																																											// 2E - { return objectHandlePolicy; }
@@ -132,11 +130,11 @@ namespace RE
 				IStackCallbackSaveInterface*						stackCallbackSaveInterface;	// 00A8
 				UInt64												unk00B0;					// 00B0
 				ISavePatcherInterface*								savePatcher;				// 00B8
-				mutable BSUniqueLock								unk00C0;					// 00C0
+				mutable BSUniqueLock								classLock;					// 00C0
 				LinkerProcessor										linkerProcessor;			// 00C8
-				BSTHashMap<UnkKey, UnkValue>						unk0158;					// 0158
-				BSTHashMap<UnkKey, UnkValue>						unk0188;					// 0188
-				BSTHashMap<UnkKey, UnkValue>						unk01B8;					// 01B8
+				BSTHashMap<BSFixedString, BSTSmartPointer<Class>>	linkedClassMap;				// 0158
+				BSTHashMap<FormType32, BSFixedString>				typeToClassNameMap;			// 0188
+				BSTHashMap<BSFixedString, FormType32>				classNameToTypeMap;			// 01B8
 				BSTArray<void*>										unk01E8;					// 01E8
 				mutable BSUniqueLock								unk0200;					// 0200
 				BSTStaticFreeList<FunctionMessage, 1024>			unk0208;					// 0208

@@ -46,6 +46,8 @@ namespace RE
 
 
 			using Severity = BSScript::LogEvent::Severity;
+			using StackID = UInt32;
+			using FormType32 = UInt32;
 
 
 			enum class FunctionFlag : UInt32
@@ -59,18 +61,18 @@ namespace RE
 
 			// add
 			virtual void							Unk_01(void) = 0;																																													// 01
-			virtual void							TraceStack(const char* a_str, UInt32 a_stackID, Severity a_severity = Severity::kInfo) = 0;																											// 02
+			virtual void							TraceStack(const char* a_str, StackID a_stackID, Severity a_severity = Severity::kInfo) = 0;																										// 02
 			virtual void							Unk_03(void) = 0;																																													// 03
 			virtual void							OnUpdate(float a_arg1) = 0;																																											// 04
 			virtual void							OnUpdateGameTime(float a_arg1) = 0;																																									// 05
 			virtual void							Unk_06(void) = 0;																																													// 06
 			virtual bool							OnChangeVMState() = 0;																																												// 07
-			virtual void							RegisterForm(UInt32 a_formType, const char* a_papyrusClassName) = 0;																																// 08
+			virtual void							RegisterForm(FormType32 a_formType, const char* a_papyrusClassName) = 0;																															// 08
 			virtual bool							GetScriptClassByName(const BSFixedString& a_className, BSTSmartPointer<Class>& a_outClassPtr) = 0;																									// 09
-			virtual bool							GetScriptClassByTypeID(UInt32 a_formType, BSTSmartPointer<Class>& a_outClass) = 0;																													// 0A
+			virtual bool							GetScriptClassByTypeID(FormType32 a_formType, BSTSmartPointer<Class>& a_outClassPtr) = 0;																											// 0A
 			virtual bool							RegisterScriptClass(const BSFixedString& a_className, BSTSmartPointer<Class>& a_classPtr) = 0;																										// 0B
 			virtual void							Unk_0C(void) = 0;																																													// 0C
-			virtual bool							GetFormTypeID(const BSFixedString& a_className, UInt32& a_formType) = 0;																															// 0D
+			virtual bool							GetFormTypeID(const BSFixedString& a_className, FormType32& a_formType) = 0;																														// 0D
 			virtual void							Unk_0E(void) = 0;																																													// 0E
 			virtual void							Unk_0F(void) = 0;																																													// 0F
 			virtual void							Unk_10(void) = 0;																																													// 10
@@ -93,14 +95,14 @@ namespace RE
 			virtual bool							GetObjectProperty(BSTSmartPointer<Object>& a_obj, const char* a_propertyName, Variable& a_getVal) = 0;																								// 21
 			virtual bool							ExtractValue(const BSTSmartPointer<Object>& a_objPtr, UInt32 a_index, Variable& a_out) = 0;																											// 22
 			virtual bool							ExtractValueFromHandle(VMHandle a_handle, const BSFixedString& a_className, SInt32 a_variableIndex, Variable& a_out) = 0;																			// 23
-			virtual void							QueueEvent(VMHandle a_handle, const BSFixedString & a_eventName, IFunctionArguments* a_args) = 0;																									// 24
+			virtual void							QueueEvent(VMHandle a_handle, const BSFixedString& a_eventName, IFunctionArguments* a_args) = 0;																									// 24
 			virtual bool							QueueEventAll(const BSFixedString& a_eventName, IFunctionArguments* a_args) = 0;																													// 25
 			virtual bool							CallStaticFunction(const BSFixedString& a_className, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) = 0;								// 26
 			virtual bool							CallMemberFunction(BSTSmartPointer<Object>& a_obj, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) = 0;								// 27
 			virtual bool							CallMemberFunctionFromHandle(VMHandle a_handle, const BSFixedString& a_className, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) = 0;	// 28
 			virtual void							Unk_29(void) = 0;																																													// 29
-			virtual bool							IsWaitingStack(UInt32 a_stackID) = 0;																																								// 2A
-			virtual void							SetLatentReturn(UInt32 a_stackID, const Variable& a_val) = 0;																																		// 2B
+			virtual bool							IsWaitingStack(StackID a_stackID) = 0;																																								// 2A
+			virtual void							SetLatentReturn(StackID a_stackID, const Variable& a_val) = 0;																																		// 2B
 			virtual ErrorLogger*					GetLogger() = 0;																																													// 2C
 			virtual IObjectHandlePolicy*			GetHandlePolicy() = 0;																																												// 2D
 			virtual const IObjectHandlePolicy*		GetHandlePolicy() const = 0;																																										// 2E

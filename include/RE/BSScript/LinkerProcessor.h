@@ -3,14 +3,19 @@
 #include "skse64/GameRTTI.h"  // RTTI_BSScript__LinkerProcessor
 
 #include "RE/BSScript/IObjectProcessor.h"  // BSScript::IObjectProcessor
+#include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSTArray.h"  // BSScrapArray
+#include "RE/BSTHashMap.h"  // BSTHashMap
+#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 
 
 namespace RE
 {
 	namespace BSScript
 	{
-		class CompiledScriptLoader;
+		class Class;
 		class ErrorLogger;
+		class ILoader;
 
 
 		namespace Internal
@@ -25,32 +30,23 @@ namespace RE
 			inline static const void* RTTI = RTTI_BSScript__LinkerProcessor;
 
 
-			virtual ~LinkerProcessor();				// 00
+			virtual ~LinkerProcessor();														// 00
 
 			// override (IObjectProcessor)
-			virtual void	Unk_01(void) override;	// 01
-			virtual void	Unk_02(void) override;	// 02
-			virtual void	Unk_03(void) override;	// 03
+			virtual IObjectProcessor*	Duplicate() override;								// 01
+			virtual void				SetLoader(ILoader* a_loader) override;				// 02 - { loader = a_loader; }
+			virtual bool				Link(const BSFixedString& a_className) override;	// 03
 
 
 			// members
-			Internal::VirtualMachine*	virtualMachine;			// 08
-			ErrorLogger*				errorLogger;			// 10
-			CompiledScriptLoader*		compiledScriptLoader;	// 18
-			UInt64						unk20;					// 20
-			UInt64						unk28;					// 28
-			UInt64						unk30;					// 30
-			UInt64						unk38;					// 38
-			UInt64						unk40;					// 40
-			UInt64						unk48;					// 48
-			UInt64						unk50;					// 50
-			UInt64						unk58;					// 58
-			UInt64						unk60;					// 60
-			UInt64						unk68;					// 68
-			UInt64						unk70;					// 70
-			UInt64						unk78;					// 78
-			UInt64						unk80;					// 80
-			UInt64						unk88;					// 88
+			Internal::VirtualMachine*							virtualMachine;	// 08
+			ErrorLogger*										errorLogger;	// 10
+			ILoader*											loader;			// 18
+			UInt64												unk20;			// 20
+			BSScrapArray<BSFixedString>							unk28;			// 28
+			BSScrapArray<BSFixedString>							unk48;			// 48
+			BSScrapArray<BSFixedString>							unk68;			// 68
+			BSTHashMap<BSFixedString, BSTSmartPointer<Class>>*	classMap;		// 88
 		};
 		STATIC_ASSERT(sizeof(LinkerProcessor) == 0x90);
 	}

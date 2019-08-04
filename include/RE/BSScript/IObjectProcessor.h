@@ -5,20 +5,26 @@
 
 namespace RE
 {
+	class BSFixedString;
+
+
 	namespace BSScript
 	{
+		class ILoader;
+
+
 		class IObjectProcessor
 		{
 		public:
 			inline static const void* RTTI = RTTI_BSScript__IObjectProcessor;
 
 
-			virtual ~IObjectProcessor();		// 00
+			virtual ~IObjectProcessor();											// 00
 
 			// add
-			virtual void	Unk_01(void) = 0;	// 01
-			virtual void	Unk_02(void) = 0;	// 02
-			virtual void	Unk_03(void) = 0;	// 03
+			virtual IObjectProcessor*	Duplicate() = 0;							// 01
+			virtual void				SetLoader(ILoader* a_loader) = 0;			// 02
+			virtual bool				Link(const BSFixedString& a_className) = 0;	// 03
 		};
 		STATIC_ASSERT(sizeof(IObjectProcessor) == 0x8);
 	}
