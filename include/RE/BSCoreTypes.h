@@ -6,6 +6,7 @@ namespace RE
 	using FormID = UInt32;
 	using RefHandle = UInt32;
 	using VMHandle = UInt64;
+	using FormType32 = UInt32;
 
 
 	enum class VMTypeID : std::size_t

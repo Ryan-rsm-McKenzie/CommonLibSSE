@@ -34,7 +34,7 @@ namespace RE
 		}
 
 
-		void* Object::Resolve(UInt32 a_typeID) const
+		void* Object::Resolve(FormType32 a_typeID) const
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			auto policy = vm->GetHandlePolicy();

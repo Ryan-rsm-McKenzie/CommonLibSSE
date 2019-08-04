@@ -47,7 +47,6 @@ namespace RE
 
 			using Severity = BSScript::LogEvent::Severity;
 			using StackID = UInt32;
-			using FormType32 = UInt32;
 
 
 			enum class FunctionFlag : UInt32

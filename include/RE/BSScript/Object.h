@@ -27,7 +27,7 @@ namespace RE
 			const Class*	GetClass() const;
 			UInt32			GetFlags() const;
 			UInt32			GetNumProperties() const;
-			void*			Resolve(UInt32 a_typeID) const;
+			void*			Resolve(FormType32 a_typeID) const;
 			void			IncRefCount();
 			SInt32			DecRefCount();
 

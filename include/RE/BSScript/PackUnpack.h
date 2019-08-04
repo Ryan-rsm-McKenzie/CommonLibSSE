@@ -12,16 +12,16 @@ namespace RE
 		class Object;
 
 
-		VMTypeID	GetTypeIDFromFormType(UInt32 a_formType);
-		void		BindID(BSTSmartPointer<Object>& a_object, const TESForm* a_srcData, UInt32 a_formType);
-		void		PackHandle(Variable* a_dst, const TESForm* a_src, UInt32 a_formType);
-		void*		UnpackHandle(Variable* a_src, UInt32 a_formType);
+		VMTypeID	GetTypeIDFromFormType(FormType32 a_formType);
+		void		BindID(BSTSmartPointer<Object>& a_object, const TESForm* a_srcData, FormType32 a_formType);
+		void		PackHandle(Variable* a_dst, const TESForm* a_src, FormType32 a_formType);
+		void*		UnpackHandle(Variable* a_src, FormType32 a_formType);
 
 
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
 		inline VMTypeID GetTypeID()
 		{
-			return GetTypeIDFromFormType(remove_cvpr_t<T>::kTypeID);
+			return GetTypeIDFromFormType(static_cast<FormType32>(remove_cvpr_t<T>::kTypeID));
 		}
 
 
@@ -49,7 +49,7 @@ namespace RE
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
 		inline void PackValue(Variable* a_dst, T& a_src)
 		{
-			PackHandle(a_dst, a_src, remove_cvpr_t<T>::kTypeID);
+			PackHandle(a_dst, a_src, static_cast<FormType32>(remove_cvpr_t<T>::kTypeID));
 		}
 
 
@@ -126,7 +126,7 @@ namespace RE
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
 		inline T UnpackValue(Variable* a_src)
 		{
-			return static_cast<T>(UnpackHandle(a_src, remove_cvpr_t<T>::kTypeID));
+			return static_cast<T>(UnpackHandle(a_src, static_cast<FormType32>(remove_cvpr_t<T>::kTypeID)));
 		}
 
 

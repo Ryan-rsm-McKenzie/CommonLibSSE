@@ -12,7 +12,7 @@ namespace RE
 {
 	namespace BSScript
 	{
-		VMTypeID GetTypeIDFromFormType(UInt32 a_formType)
+		VMTypeID GetTypeIDFromFormType(FormType32 a_formType)
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			BSTSmartPointer<Class> classPtr;
@@ -25,10 +25,10 @@ namespace RE
 		}
 
 
-		void BindID(BSTSmartPointer<Object>& a_objectPtr, const TESForm* a_srcData, UInt32 a_formType)
+		void BindID(BSTSmartPointer<Object>& a_objectPtr, const TESForm* a_srcData, FormType32 a_formType)
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
-			UInt32 id = 0;
+			FormType32 id = 0;
 			BSTSmartPointer<Class> classPtr(a_objectPtr->GetClass());
 			if (vm->GetFormTypeID(classPtr->GetName(), id)) {
 				auto policy = vm->GetHandlePolicy();
@@ -42,7 +42,7 @@ namespace RE
 		}
 
 
-		void PackHandle(Variable* a_dst, const TESForm* a_src, UInt32 a_formType)
+		void PackHandle(Variable* a_dst, const TESForm* a_src, FormType32 a_formType)
 		{
 			a_dst->SetNone();
 
@@ -75,7 +75,7 @@ namespace RE
 		}
 
 
-		void* UnpackHandle(Variable* a_src, UInt32 a_formType)
+		void* UnpackHandle(Variable* a_src, FormType32 a_formType)
 		{
 			auto object = a_src->GetObject();
 			return object ? object->Resolve(a_formType) : 0;
