@@ -8,6 +8,7 @@
 namespace RE
 {
 	class GFxMovieView;
+	class TESObjectREFR;
 
 
 	struct ItemList
