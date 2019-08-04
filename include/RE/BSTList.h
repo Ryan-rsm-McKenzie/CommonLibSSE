@@ -1,7 +1,7 @@
 #pragma once
 
+#include <cassert>  // assert
 #include <cstddef>  // size_t, ptrdiff_t
-#include <cstdint>  // uint32_t
 #include <memory>  // pointer_traits
 #include <utility>  // move, swap, forward
 #include <iterator>  // forward_iterator_tag
@@ -17,8 +17,8 @@ namespace RE
 	{
 	public:
 		using value_type = T;
-		using size_type = std::uint32_t;
-		using difference_type = std::ptrdiff_t;
+		using size_type = UInt32;
+		using difference_type = SInt32;
 		using reference = value_type&;
 		using const_reference = const value_type&;
 		using pointer = value_type*;
@@ -29,7 +29,7 @@ namespace RE
 		{
 			Node() :
 				item{},
-				next{ 0 }
+				next(0)
 			{}
 
 
@@ -40,50 +40,59 @@ namespace RE
 
 
 			Node(const Node& a_rhs) :
-				item{ a_rhs.item },
-				next{ a_rhs.next }
+				item(a_rhs.item),
+				next(a_rhs.next)
 			{}
 
 
 			Node(Node&& a_rhs) :
-				item{ std::move(a_rhs.item) },
-				next{ std::move(a_rhs.next) }
+				item(std::move(a_rhs.item)),
+				next(std::move(a_rhs.next))
 			{
 				a_rhs.next = 0;
 			}
 
 
 			Node(const value_type& a_value) :
-				item{ a_value },
-				next{ 0 }
+				item(a_value),
+				next(0)
 			{}
 
 
 			Node(value_type&& a_value) :
-				item{ a_value },
-				next{ 0 }
+				item(std::move(a_value)),
+				next(0)
 			{}
 
 
-			static void swap(Node& a_lhs, Node& a_rhs)
-			{
-				std::swap(a_lhs.item, a_rhs.item);
-				std::swap(a_lhs.next, a_rhs.next);
-			}
+			~Node() = default;
 
 
 			Node& operator=(const Node& a_rhs)
 			{
-				Node tmp(a_rhs);
-				swap(*this, tmp);
+				if (this == &a_rhs) {
+					return *this;
+				}
+
+				item = a_rhs.item;
+				next = a_rhs.next;
+
 				return *this;
 			}
 
 
 			Node& operator=(Node&& a_rhs)
 			{
-				item = a_rhs.item;
-				next = a_rhs.next;
+				if (this == &a_rhs) {
+					return *this;
+				}
+
+				item = std::move(a_rhs.item);
+
+				next = std::move(a_rhs.next);
+				a_rhs.next = 0;
+
+				return *this;
 			}
 
 
@@ -91,35 +100,20 @@ namespace RE
 
 
 			// members
-			value_type	item;
-			Node*		next;
+			value_type	item;	// 00
+			Node*		next;	// ??
 		};
 
 
 		template <class U>
-		struct iterator_traits
+		class iterator_base
 		{
+		public:
 			using difference_type = std::ptrdiff_t;
 			using value_type = U;
 			using pointer = U*;
 			using reference = U&;
 			using iterator_category = std::forward_iterator_tag;
-		};
-
-
-		template <class U>
-		class iterator_base : public iterator_traits<U>
-		{
-			friend class BSSimpleList<T>;
-
-			using Traits = iterator_traits<U>;
-
-		public:
-			using difference_type = typename Traits::difference_type;
-			using value_type = typename Traits::value_type;
-			using pointer = typename Traits::pointer;
-			using reference = typename Traits::reference;
-			using iterator_category = typename Traits::iterator_category;
 
 
 			iterator_base() :
@@ -128,7 +122,13 @@ namespace RE
 			{}
 
 
-			iterator_base(Node* a_node, Node* a_managed = 0) :
+			iterator_base(Node* a_node) :
+				_cur(a_node),
+				_managed(0)
+			{}
+
+
+			iterator_base(Node* a_node, Node* a_managed) :
 				_cur(a_node),
 				_managed(a_managed)
 			{}
@@ -161,26 +161,38 @@ namespace RE
 			}
 
 
-			static void swap(iterator_base& a_lhs, iterator_base& a_rhs)
-			{
-				std::swap(a_lhs._cur, a_rhs._cur);
-				std::swap(a_lhs._managed, a_rhs._managed);
-			}
-
-
 			iterator_base& operator=(const iterator_base& a_rhs)
 			{
-				iterator_base tmp(a_rhs);
-				swap(*this, tmp);
+				if (this == &a_rhs) {
+					return *this;
+				}
+
+				_cur = a_rhs._cur;
+
+				if (_managed) {
+					delete _managed;
+					_managed = 0;
+				}
+				if (a_rhs._managed) {
+					_managed = new Node(*a_rhs._managed);
+				}
+
 				return *this;
 			}
 
 
 			iterator_base& operator=(iterator_base&& a_rhs)
 			{
+				if (this == &a_rhs) {
+					return *this;
+				}
+
 				_cur = std::move(a_rhs._cur);
 				a_rhs._cur = 0;
 
+				if (_managed) {
+					delete _managed;
+				}
 				_managed = std::move(a_rhs._managed);
 				a_rhs._managed = 0;
 
@@ -196,7 +208,7 @@ namespace RE
 
 			[[nodiscard]] pointer operator->() const
 			{
-				return std::pointer_traits<pointer>::pointer_to(operator*());
+				return std::addressof(_cur->item);
 			}
 
 
@@ -215,6 +227,7 @@ namespace RE
 			// prefix
 			iterator_base& operator++()
 			{
+				assert(_cur);
 				_cur = _cur->next;
 				return *this;
 			}
@@ -223,12 +236,28 @@ namespace RE
 			// postfix
 			iterator_base operator++(int)
 			{
-				iterator_base tmp{ *this };
+				iterator_base tmp(*this);
 				operator++();
 				return tmp;
 			}
 
 		protected:
+			friend class BSSimpleList<T>;
+
+
+			bool comes_before(const iterator_base& a_it) const
+			{
+				auto node = _cur;
+				while (node != a_it._cur) {
+					if (!node) {
+						return false;
+					}
+					node = node->next;
+				}
+				return true;
+			}
+
+
 			Node* _cur;
 			Node* _managed;
 		};
@@ -266,58 +295,58 @@ namespace RE
 
 		iterator before_begin() noexcept
 		{
-			Node* node = new Node({}, &_listHead);
-			return iterator{ node, node };
+			auto node = new Node(value_type{}, head_node());
+			return iterator(node, node);
 		}
 
 
 		const_iterator before_begin() const noexcept
 		{
-			Node* node = new Node({}, const_cast<Node*>(&_listHead));
-			return const_iterator{ node, node };
+			auto node = new Node(value_type{}, head_node());
+			return const_iterator(node, node);
 		}
 
 
 		const_iterator cbefore_begin() const noexcept
 		{
-			Node* node = new Node({}, const_cast<Node*>(&_listHead));
-			return const_iterator{ node, node };
+			auto node = new Node(value_type{}, head_node());
+			return const_iterator(node, node);
 		}
 
 
 		iterator begin() noexcept
 		{
-			return empty() ? end() : iterator{ &_listHead };
+			return empty() ? end() : iterator(head_node());
 		}
 
 
 		const_iterator begin() const noexcept
 		{
-			return empty() ? end() : const_iterator{ const_cast<Node*>(&_listHead) };
+			return empty() ? end() : const_iterator(head_node());
 		}
 
 
 		const_iterator cbegin() const noexcept
 		{
-			return empty() ? cend() : const_iterator{ const_cast<Node*>(&_listHead) };
+			return empty() ? end() : const_iterator(head_node());
 		}
 
 
 		iterator end() noexcept
 		{
-			return { 0 };
+			return iterator(0);
 		}
 
 
 		const_iterator end() const noexcept
 		{
-			return { 0 };
+			return const_iterator(0);
 		}
 
 
 		const_iterator cend() const noexcept
 		{
-			return { 0 };
+			return const_iterator(0);
 		}
 
 
@@ -337,21 +366,19 @@ namespace RE
 
 		iterator insert_after(const_iterator a_pos, const T& a_value)
 		{
-			Node* node = new Node();
-			node->item = a_value;
+			auto node = new Node(a_value);
 			node->next = a_pos._cur->next;
 			a_pos._cur->next = node;
-			return iterator{ node };
+			return iterator(node);
 		}
 
 
 		iterator insert_after(const_iterator a_pos, T&& a_value)
 		{
-			Node* node = new Node();
-			node->item = std::move(a_value);
+			auto node = new Node(std::move(a_value));
 			node->next = a_pos._cur->next;
 			a_pos._cur->next = node;
-			return iterator{ node };
+			return iterator(node);
 		}
 
 
@@ -359,73 +386,61 @@ namespace RE
 		{
 			Node* node = 0;
 			while (a_count--) {
-				node = new Node();
-				node->item = a_value;
+				node = new Node(a_value);
 				node->next = a_pos._cur->next;
 				a_pos._cur->next = node;
 				++a_pos;
 			}
-			return iterator{ a_pos._cur };
-		}
-
-
-		template <class InputIt>
-		iterator insert_after(const_iterator a_pos, InputIt a_first, InputIt a_last)
-		{
-			Node* node = 0;
-			while (a_first != a_last) {
-				node = new Node();
-				node->item = *a_first;
-				node->next = a_pos._cur->next;
-				a_pos._cur->next = node;
-				++a_pos;
-				++a_first;
-			}
-			return iterator{ a_pos._cur };
-		}
-
-
-		iterator insert_after(const_iterator a_pos, std::initializer_list<T> a_ilist)
-		{
-			Node* node = 0;
-			for (auto& elem : a_ilist) {
-				node = new Node();
-				node->item = elem;
-				node->next = a_pos._cur->next;
-				a_pos._cur->next = node;
-				++a_pos;
-			}
-			return iterator{ a_pos._cur };
+			return iterator(a_pos._cur);
 		}
 
 
 		iterator erase_after(const_iterator a_pos)
 		{
-			const_iterator before = a_pos++;
+			if (a_pos == cend()) {
+				return end();
+			}
+
+			auto before = a_pos++;
 			before._cur->next = a_pos._cur->next;
 			delete a_pos._cur;
-			return before._cur->next == 0 ? end() : iterator{ ++before._cur };
+			a_pos._cur = 0;
+			return before._cur->next == 0 ? end() : iterator((++before)._cur);
 		}
 
 
 		iterator erase_after(const_iterator a_first, const_iterator a_last)
 		{
-			const_iterator pos{ a_first };
-			while (++pos != a_last) {
-				delete pos._cur;
+			assert(a_first.comes_before(a_last));
+			const_iterator pos(a_first._cur);
+			if (pos == a_last) {
+				return iterator(a_last._cur);
+			}
+
+			++pos;
+			while (pos != a_last) {
+				auto old = pos._cur;
+				++pos;
+				if (old == &_listHead) {
+					old->item.~value_type();
+					new(std::addressof(old->item)) value_type{};
+					old->next = 0;
+				} else {
+					delete old;
+				}
 			}
 			a_first._cur->next = a_last._cur;
-			return iterator{ a_last._cur };
+			return iterator(a_last._cur);
 		}
 
 
 		void push_front(const T& a_value)
 		{
 			if (empty()) {
-				_listHead.item = a_value;
+				new(std::addressof(_listHead.item)) value_type(a_value);
 			} else {
-				Node* node = new Node(_listHead);
-				_listHead.item = a_value;
+				auto node = new Node(std::move(_listHead));
+				new(std::addressof(_listHead.item)) value_type(a_value);
 				_listHead.next = node;
 			}
 		}
@@ -434,10 +449,10 @@ namespace RE
 		void push_front(T&& a_value)
 		{
 			if (empty()) {
-				_listHead.item = a_value;
+				new(std::addressof(_listHead.item)) value_type(std::move(a_value));
 			} else {
-				Node* node = new Node(_listHead);
-				_listHead.item = a_value;
+				auto node = new Node(std::move(_listHead));
+				new(std::addressof(_listHead.item)) value_type(std::move(a_value));
 				_listHead.next = node;
 			}
 		}
@@ -445,12 +460,16 @@ namespace RE
 
 		void pop_front()
 		{
+			assert(!empty());
+			_listHead.item.~value_type();
+			
 			if (_listHead.next) {
-				_listHead.item = _listHead.next->item;
-				_listHead.next = _listHead.next->next;
+				new(std::addressof(_listHead.item)) value_type(std::move(_listHead.next->item));
+				auto old = _listHead.next;
+				_listHead.next = old->next;
+				delete old;
 			} else {
-				_listHead.item = value_type{};
-				_listHead.next = 0;
+				new(std::addressof(_listHead.item)) value_type{};
 			}
 		}
 
@@ -461,39 +480,37 @@ namespace RE
 				if (a_count == 0) {
 					return;
 				} else {
-					_listHead.item = value_type{};
+					new(std::addressof(_listHead.item)) value_type{};
 					_listHead.next = 0;
 				}
 			}
 
-			iterator pos = begin();
+			auto cur = begin();
 			size_type elems = 1;
-			while (pos._cur->next != 0 && elems != a_count) {
+			while (cur != end() && elems != a_count) {
+				++cur;
 				++elems;
-				++pos;
 			}
 
-			if (elems > a_count) {
-				// need to shrink
-				if (pos == begin()) {
-					_listHead.item = value_type{};
-				}
-				pos++._cur->next = 0;
-				while (pos != end()) {
-					delete pos++._cur;
-				}
-			} else if (elems == a_count) {
-				// already required size
-				return;
-			} else {
-				// need to expand
+			if (elems < a_count) {
+				// need to grow
 				Node* node = 0;
 				while (elems < a_count) {
 					node = new Node();
-					pos._cur->next = node;
-					++pos;
+					cur._cur->next = node;
+					++cur;
 					++elems;
 				}
+			} else if (cur != end()) {
+				// need to shrink
+				auto prev = cur++;
+				prev._cur->next = 0;
+				while (cur != end()) {
+					prev = cur++;
+					delete prev._cur;
+				}
+			} else {
+				// already required size
 			}
 		}
 
@@ -504,51 +521,59 @@ namespace RE
 				if (a_count == 0) {
 					return;
 				} else {
-					_listHead.item = value_type{ a_value };
+					new(std::addressof(_listHead.item)) value_type(a_value);
 					_listHead.next = 0;
 				}
 			}
 
-			iterator pos = begin();
+			auto cur = begin();
 			size_type elems = 1;
-			while (pos._cur->next != 0 && elems != a_count) {
+			while (cur != end() && elems != a_count) {
+				++cur;
 				++elems;
-				++pos;
 			}
 
-			if (elems > a_count) {
-				// need to shrink
-				if (pos == begin()) {
-					_listHead.item = value_type{};
-				}
-				pos++._cur->next = 0;
-				while (pos != end()) {
-					delete pos++._cur;
-				}
-			} else if (elems == a_count) {
-				// already required size
-				return;
-			} else {
-				// need to expand
+			if (elems < a_count) {
+				// need to grow
 				Node* node = 0;
 				while (elems < a_count) {
 					node = new Node(a_value);
-					pos._cur->next = node;
-					++pos;
+					cur._cur->next = node;
+					++cur;
 					++elems;
 				}
+			} else if (cur != end()) {
+				// need to shrink
+				auto prev = cur++;
+				prev._cur->next = 0;
+				while (cur != end()) {
+					prev = cur++;
+					delete prev._cur;
+				}
+			} else {
+				// already required size
 			}
 		}
 
-
-		void swap(BSSimpleList& a_other) noexcept
+	protected:
+		Node* head_node()
 		{
-			Node tmp = _listHead;
-			_listHead = a_other._listHead;
-			a_other._listHead = tmp;
+			return std::addressof(_listHead);
 		}
 
-	protected:
+
+		const Node* head_node() const
+		{
+			return std::addressof(_listHead);
+		}
+
+
+		const Node* chead_node() const
+		{
+			return std::addressof(_listHead);
+		}
+
+
 		// members
 		Node _listHead;	// 00
 	};

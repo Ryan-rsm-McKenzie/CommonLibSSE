@@ -14,12 +14,6 @@ namespace RE
 	{}
 
 
-	BSResourceNiBinaryStream::~BSResourceNiBinaryStream()
-	{
-		dtor();
-	}
-
-
 	BSResourceNiBinaryStream::BSResourceNiBinaryStream(const char* a_fileName) :
 		NiBinaryStream(),
 		unk20(0),
@@ -39,6 +33,12 @@ namespace RE
 		unk34(0)
 	{
 		ctor(a_fileName.c_str());
+	}
+
+
+	BSResourceNiBinaryStream::~BSResourceNiBinaryStream()
+	{
+		dtor();
 	}
 
 

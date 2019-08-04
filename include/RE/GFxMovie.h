@@ -58,7 +58,7 @@ namespace RE
 		virtual bool			IsAvailable(const char* a_pathToVar) const;																																// 0A - pure - Checks for availability of a field, method, or nested clip.
 		virtual void			CreateString(GFxValue* a_value, const char* a_string);																													// 0B - pure - Creates strings that are managed by ActionScript runtime.
 		virtual void			CreateStringW(GFxValue* a_value, const wchar_t* a_string);																												// 0C - pure - Creates wide character strings that are managed by ActionScript runtime.
-		virtual void			CreateObject(GFxValue* a_value, const char* a_className = 0, const GFxValue* a_args = 0, UInt32 a_numArgs = 0);															// 0D - pure - Creates an instance of ActionScript Object.
+		virtual void			CreateObject(GFxValue* a_value, const char* a_className = 0, const GFxValue* a_args = 0, UInt32 a_numArgs = 0);															// 0D - pure - Creates an instance of an ActionScript Object.
 		virtual void			CreateArray(GFxValue* a_value);																																			// 0E - pure - Creates an instance of an ActionScript Array object.
 		virtual void			CreateFunction(GFxValue* a_value, GFxFunctionHandler* a_fc, void* a_userData = 0);																						// 0F - pure - Creates a function object that wraps a C++ function.
 		virtual bool			SetVariable(const char* a_pathToVar, const GFxValue& a_value, SetVarType a_setType = SetVarType::kSticky);																// 10 - pure - Sets a variable identified by a path to a new value, specified in UTF-8 encoding.

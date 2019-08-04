@@ -526,7 +526,8 @@ namespace RE
 	GFxValue::GFxValue() :
 		_objectInterface(0),
 		_type(ValueType::kUndefined),
-		_pad0C(0)
+		_pad0C(0),
+		_value()
 	{}
 
 
@@ -543,7 +544,8 @@ namespace RE
 	GFxValue::GFxValue(double a_val) :
 		_objectInterface(0),
 		_type(ValueType::kNumber),
-		_pad0C(0)
+		_pad0C(0),
+		_value()
 	{
 		_value.number = a_val;
 	}
@@ -552,7 +554,8 @@ namespace RE
 	GFxValue::GFxValue(bool a_val) :
 		_objectInterface(0),
 		_type(ValueType::kBoolean),
-		_pad0C(0)
+		_pad0C(0),
+		_value()
 	{
 		_value.boolean = a_val;
 	}
@@ -561,7 +564,8 @@ namespace RE
 	GFxValue::GFxValue(const char* a_str) :
 		_objectInterface(0),
 		_type(ValueType::kString),
-		_pad0C(0)
+		_pad0C(0),
+		_value()
 	{
 		_value.string = a_str;
 	}
@@ -570,7 +574,8 @@ namespace RE
 	GFxValue::GFxValue(const wchar_t* a_str) :
 		_objectInterface(0),
 		_type(ValueType::kStringW),
-		_pad0C(0)
+		_pad0C(0),
+		_value()
 	{
 		_value.wideString = a_str;
 	}
@@ -579,12 +584,27 @@ namespace RE
 	GFxValue::GFxValue(const GFxValue& a_rhs) :
 		_objectInterface(0),
 		_type(a_rhs._type),
-		_pad0C(0)
+		_pad0C(0),
+		_value()
 	{
 		_value = a_rhs._value;
 		if (a_rhs.IsManagedValue()) {
 			AcquireManagedValue(a_rhs);
 		}
+	}
+
+
+	GFxValue::GFxValue(GFxValue&& a_rhs) :
+		_objectInterface(std::move(a_rhs._objectInterface)),
+		_type(std::move(a_rhs._type)),
+		_pad0C(0),
+		_value()
+	{
+		a_rhs._objectInterface = 0;
+		a_rhs._type = ValueType::kUndefined;
+
+		_value.obj = std::move(a_rhs._value.obj);
+		a_rhs._value.obj = 0;
 	}
 
 
@@ -598,18 +618,41 @@ namespace RE
 
 	const GFxValue& GFxValue::operator=(const GFxValue& a_rhs)
 	{
-		if (this != &a_rhs) {
-			if (IsManagedValue()) {
-				ReleaseManagedValue();
-			}
-			_type = a_rhs._type;
-			_value = a_rhs._value;
-			if (a_rhs.IsManagedValue()) {
-				AcquireManagedValue(a_rhs);
-			}
+		if (this == &a_rhs) {
+			return *this;
 		}
+
+		if (IsManagedValue()) {
+			ReleaseManagedValue();
+		}
+		_type = a_rhs._type;
+		_value = a_rhs._value;
+		if (a_rhs.IsManagedValue()) {
+			AcquireManagedValue(a_rhs);
+		}
+
 		return *this;
 	}
+
+
+	const GFxValue& GFxValue::operator=(GFxValue&& a_rhs)
+	{
+		if (this == &a_rhs) {
+			return *this;
+		}
+
+		_objectInterface = std::move(a_rhs._objectInterface);
+		a_rhs._objectInterface = 0;
+
+		_type = std::move(a_rhs._type);
+		a_rhs._type = ValueType::kUndefined;
+
+		_value.obj = std::move(a_rhs._value.obj);
+		a_rhs._value.obj = 0;
+
+		return *this;
+	}
+
 
 	bool GFxValue::operator==(const GFxValue& a_rhs) const
 	{

@@ -205,9 +205,11 @@ namespace RE
 		GFxValue(const char* a_str);
 		GFxValue(const wchar_t* a_str);
 		GFxValue(const GFxValue& a_rhs);
+		GFxValue(GFxValue&& a_rhs);
 		~GFxValue();
 
 		const GFxValue&	operator=(const GFxValue& a_rhs);
+		const GFxValue&	operator=(GFxValue&& a_rhs);
 		bool			operator==(const GFxValue& a_rhs) const;
 
 		GString			ToString() const;

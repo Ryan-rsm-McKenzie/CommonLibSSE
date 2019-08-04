@@ -29,10 +29,10 @@ namespace RE
 		ExtraTextDisplayData();
 		ExtraTextDisplayData(const char* a_name);
 		ExtraTextDisplayData(TESForm* a_form, float a_temperFactor);
-		virtual ~ExtraTextDisplayData() = default;			// 00
+		virtual ~ExtraTextDisplayData() = default;		// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;	// 01 - { return kTextDisplayData; }
+		virtual ExtraDataType GetType() const override;	// 01 - { return kTextDisplayData; }
 
 		const char*	GenerateName(TESForm* a_form, float a_temperFactor);
 		void		SetName(const char* a_name);
