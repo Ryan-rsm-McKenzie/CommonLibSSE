@@ -3,31 +3,17 @@
 
 namespace RE
 {
-	NiPoint3::NiPoint3() :
-		x(0.0f),
-		y(0.0f),
-		z(0.0f)
-	{}
-
-
-	NiPoint3::NiPoint3(float a_x, float a_y, float a_z) :
-		x(a_x),
-		y(a_y),
-		z(a_z)
-	{};
-
-
 	float& NiPoint3::operator[](std::size_t a_idx)
 	{
-		const float *arr = &x;
-		return (float &)arr[a_idx];
+		float* arr = &x;
+		return reinterpret_cast<float&>(arr[a_idx]);
 	}
 
 
 	const float& NiPoint3::operator[](std::size_t a_idx) const
 	{
-		const float *arr = &x;
-		return (float &)arr[a_idx];
+		const float* arr = &x;
+		return reinterpret_cast<const float&>(arr[a_idx]);
 	}
 
 
@@ -69,7 +55,7 @@ namespace RE
 
 	NiPoint3 NiPoint3::operator/(float a_scalar) const
 	{
-		return (*this) * (1.0f / a_scalar);
+		return operator*(1.0 / a_scalar);
 	}
 
 
@@ -108,7 +94,7 @@ namespace RE
 
 	NiPoint3& NiPoint3::operator/=(float a_scalar)
 	{
-		return (*this) *= (1.0f / a_scalar);
+		return operator*=(1.0 / a_scalar);
 	}
 
 
@@ -120,20 +106,20 @@ namespace RE
 
 	float NiPoint3::Length() const
 	{
-		return std::sqrt(x * x + y * y + z * z);
+		return std::sqrtf(x * x + y * y + z * z);
 	}
 
 
 	float NiPoint3::Unitize()
 	{
-		float length = Length();
-		if (length > 1e-6f) {
-			(*this) /= length;
+		auto length = Length();
+		if (length != NAN) {
+			operator/=(length);
 		} else {
-			x = 0.0f;
-			y = 0.0f;
-			z = 0.0f;
-			length = 0.0f;
+			x = 0.0;
+			y = 0.0;
+			z = 0.0;
+			length = 0.0;
 		}
 		return length;
 	}
@@ -151,7 +137,7 @@ namespace RE
 
 	NiPoint3 NiPoint3::UnitCross(const NiPoint3& a_pt) const
 	{
-		NiPoint3 cross = Cross(a_pt);
+		auto cross = Cross(a_pt);
 		cross.Unitize();
 		return cross;
 	}

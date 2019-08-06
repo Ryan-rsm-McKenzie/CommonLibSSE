@@ -23,7 +23,7 @@ namespace RE
 			virtual RE::BSScript::Variable&	Run(BSScript::Variable& a_result) override;	// 01
 			virtual void					Unk_02(void) override;						// 02 - { return 1; }
 			virtual void					Unk_04(void) override;						// 04
-			virtual void					Unk_05(void) override;						// 05 - { return 24; }
+			virtual UInt32					GetFactoryType() const override;			// 05 - { return 24; }
 			virtual void					Unk_06(void) override;						// 06
 
 

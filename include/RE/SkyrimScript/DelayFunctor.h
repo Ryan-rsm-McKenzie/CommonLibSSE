@@ -28,7 +28,7 @@ namespace RE
 			virtual void					Unk_02(void) = 0;						// 02
 			virtual void					Unk_03(void);							// 03 - { return 0; }
 			virtual void					Unk_04(void);							// 04
-			virtual void					Unk_05(void) = 0;						// 05
+			virtual UInt32					GetFactoryType() const = 0;				// 05
 			virtual void					Unk_06(void);							// 06
 
 

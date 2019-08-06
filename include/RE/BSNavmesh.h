@@ -4,12 +4,13 @@
 
 #include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
 #include "RE/BSTArray.h"  // BSTArray
+#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 #include "RE/NiPoint3.h"  // NiPoint3
 
 
 namespace RE
 {
-	class PathingCell;
+	class BSPathingCell;
 
 
 	class BSNavmesh : public BSIntrusiveRefCounted
@@ -18,12 +19,7 @@ namespace RE
 		inline static const void* RTTI = RTTI_BSNavmesh;
 
 
-		struct Vertex
-		{
-			float	x;	// 0
-			float	y;	// 4
-			float	z;	// 8
-		};
+		using Vertex = NiPoint3;
 		STATIC_ASSERT(sizeof(Vertex) == 0xC);
 
 
@@ -94,25 +90,25 @@ namespace RE
 
 
 		// members
-		UInt32				unk00C;				// 00C
-		BSTArray<Vertex>	vertices;			// 010
-		BSTArray<Triangle>	triangles;			// 028
-		BSTArray<EdgeLink>	edgeLinks;			// 040
-		BSTArray<void*>		unk058;				// 058
-		BSTArray<void*>		unk070;				// 070
-		BSTArray<UInt16>	coverTriangles;		// 088
-		UInt32				naxMeshGridDivisor;	// 0A0
-		float				maxXDistance;		// 0A4
-		float				maxYDistance;		// 0A8
-		NiPoint3			min;				// 0AC
-		NiPoint3			max;				// 0B8
-		UInt32				unk0C4;				// 0C4
-		BSTArray<UInt16>**	navMeshGrid;		// 0C8 - array of arrays, size == (std::size_t)((std::uintptr_t)*unk0C8 - sizeof(void*))
-		BSTArray<void*>		unk0D0;				// 0D0
-		UInt64				unk0E8;				// 0E8
-		BSTArray<void*>		unk0F0;				// 0F0
-		PathingCell*		unk108;				// 108
-		UInt64				unk110;				// 110
+		UInt32								unk00C;				// 00C
+		BSTArray<Vertex>					vertices;			// 010
+		BSTArray<Triangle>					triangles;			// 028
+		BSTArray<EdgeLink>					edgeLinks;			// 040
+		BSTArray<void*>						unk058;				// 058
+		BSTArray<void*>						unk070;				// 070
+		BSTArray<UInt16>					coverTriangles;		// 088
+		UInt32								naxMeshGridDivisor;	// 0A0
+		float								maxXDistance;		// 0A4
+		float								maxYDistance;		// 0A8
+		NiPoint3							min;				// 0AC
+		NiPoint3							max;				// 0B8
+		UInt32								unk0C4;				// 0C4
+		BSTSimpleArray<BSTArray<UInt16>*>	navMeshGrid;		// 0C8
+		BSTArray<void*>						unk0D0;				// 0D0
+		UInt64								unk0E8;				// 0E8
+		BSTArray<void*>						unk0F0;				// 0F0
+		BSTSmartPointer<BSPathingCell>		unk108;				// 108
+		UInt64								unk110;				// 110
 	};
 	STATIC_ASSERT(sizeof(BSNavmesh) == 0x118);
 }

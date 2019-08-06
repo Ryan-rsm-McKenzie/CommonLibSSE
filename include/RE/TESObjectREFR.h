@@ -279,46 +279,48 @@ namespace RE
 		virtual void					UnequipItem(UInt64 a_arg1, TESForm* a_item);																																				// A1 - { return; }
 
 
-		static bool LookupByHandle(RefHandle& a_refHandle, TESObjectREFRPtr& a_refrOut);
+		static bool LookupByHandle(const RefHandle& a_refHandle, TESObjectREFRPtr& a_refrOut);
 
-		float				GetBaseScale() const;
-		bool				IsOffLimits() const;
-		float				GetWeight() const;
-		const char*			GetReferenceName() const;
-		TESWorldSpace*		GetWorldspace() const;
-		RefHandle			GetRefHandle() const;
+		void				ActivateRefChildren(TESObjectREFR* a_activator);
 		RefHandle			CreateRefHandle();
 		TESNPC*				GetActorOwner() const;
 		TESBoundObject*		GetBaseObject() const;
+		float				GetBaseScale() const;
 		TESContainer*		GetContainer() const;
-		const char*			GetFullName() const;
 		TESFaction*			GetFactionOwner() const;
+		const char*			GetFullName() const;
+		InventoryChanges*	GetInventoryChanges();	// Creates inventory changes if none found
+		TESObjectREFR*		GetLinkedRef(BGSKeyword* a_keyword);
+		SInt32				GetLockLevel() const;
+		LockState*			GetLockState() const;
+		NiAVObject*			GetNodeByName(const BSFixedString& a_nodeName);
+		UInt32				GetNumItems(bool a_useDataHandlerChanges = false, bool a_arg2 = false);
 		TESForm*			GetOwner() const;
 		TESObjectCELL*		GetParentCell() const;
 		float				GetPositionX() const;
 		float				GetPositionY() const;
 		float				GetPositionZ() const;
-		bool				Is3DLoaded() const;
-		bool				IsMarkedForDeletion() const;
-		bool				IsDisabled() const;
-		bool				IsActivationBlocked() const;
-		void				SetActivationBlocked(bool a_blocked);
-		bool				IsLocked() const;
-		LockState*			GetLockState() const;
-		SInt32				GetLockLevel() const;
-		UInt32				GetNumItems(bool a_useDataHandlerChanges = false, bool a_arg2 = false);
+		const char*			GetReferenceName() const;
+		RefHandle			GetRefHandle() const;
+		float				GetWeight() const;
+		TESWorldSpace*		GetWorldspace() const;
+		bool				HasCollision() const;
 		bool				HasInventoryChanges() const;
-		InventoryChanges*	GetInventoryChanges();	// Creates inventory changes if none found
-		bool				SetDisplayName(const BSFixedString& a_name, bool a_force);
-		UInt32				ActivateRefChildren(TESObjectREFR* a_activator);
-		void				PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4 = false);
-		TESObjectREFR*		GetLinkedRef(BGSKeyword* a_keyword);
-		NiAVObject*			GetNodeByName(const BSFixedString& a_nodeName);
+		bool				Is3DLoaded() const;
+		bool				IsActivationBlocked() const;
+		bool				IsDisabled() const;
+		bool				IsLocked() const;
+		bool				IsMarkedForDeletion() const;
+		bool				IsOffLimits() const;
 		bool				MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool				MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
-		bool				SetMotionType(MotionType a_motionType, bool a_allowActivate = true);
-		bool				HasCollision() const;
+		void				PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4 = false);
+		void				SetActivationBlocked(bool a_blocked);
 		void				SetCollision(bool a_enable);
+		bool				SetDisplayName(const BSFixedString& a_name, bool a_force);
+		bool				SetMotionType(MotionType a_motionType, bool a_allowActivate = true);
+		void				SetPosition(float a_x, float a_y, float a_z);
+		void				SetPosition(NiPoint3 a_pos);
 
 
 		// members
@@ -336,6 +338,7 @@ namespace RE
 
 	private:
 		static void CreateRefHandle_Impl(RefHandle& a_refHandle, TESObjectREFR* a_refrTo);
+
 		void MoveTo_Impl(RefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, NiPoint3& a_position, NiPoint3& a_rotation);
 	};
 	STATIC_ASSERT(offsetof(TESObjectREFR, extraData) == 0x70);

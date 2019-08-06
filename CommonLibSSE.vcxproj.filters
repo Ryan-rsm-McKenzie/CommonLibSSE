@@ -946,6 +946,9 @@
     <Filter Include="src\RE\BSScript\IFunction\Components">
       <UniqueIdentifier>{be93d64a-37e7-4ce3-8506-0c32f451b625}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Pathfinding\BSPathingCell">
+      <UniqueIdentifier>{77c774a0-e687-4cbf-b899-cfa3961f9220}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -4366,6 +4369,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSScript\VariableInfo.h">
       <Filter>include\RE\BSScript\IFunction\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSPathingCell.h">
+      <Filter>include\RE\Pathfinding\BSPathingCell</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PathingCell.h">
+      <Filter>include\RE\Pathfinding\BSPathingCell</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SkyrimScript\SetPositionFunctor.h">
+      <Filter>include\RE\SkyrimScript\DelayFunctor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -186,7 +186,7 @@ namespace RE
 		LightingCoordinates										lightingCoordinates;	// 060 - XCLL if interior, XCLC if exterior
 		TESObjectLAND*											land;					// 068
 		float													waterHeight;			// 070 - XCLW
-		BSTArray<NavMesh*>*										unk078;					// 078
+		BSTArray<BSTSmartPointer<NavMesh>>*						navMeshes;				// 078
 		BSTHashSet<NiPointer<TESObjectREFR>, Hasher, KeyEqual>	persistentRefMap;		// 080
 		TESForm*												unk0B0;					// 0B0 - REFR owner of cell?
 		BSTArray<TESObjectREFR*>								objectList;				// 0B8 - persistent

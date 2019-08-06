@@ -23,8 +23,8 @@ namespace RE
 			// override (DelayFunctor)
 			virtual RE::BSScript::Variable&	Run(BSScript::Variable& a_result) override;	// 01
 			virtual void					Unk_02(void) override;						// 02 - { return 1; }
-			virtual void					Unk_04(void) override;						// 04 - { return 0; }
-			virtual void					Unk_05(void) override;						// 05
+			virtual void					Unk_04(void) override;						// 04
+			virtual UInt32					GetFactoryType() const override;			// 05 - { return 0; }
 			virtual void					Unk_06(void) override;						// 06
 
 

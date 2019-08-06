@@ -544,6 +544,7 @@
     <ClInclude Include="include\RE\BSMusicEvent.h" />
     <ClInclude Include="include\RE\BSNavmesh.h" />
     <ClInclude Include="include\RE\BSNavmeshInfoMap.h" />
+    <ClInclude Include="include\RE\BSPathingCell.h" />
     <ClInclude Include="include\RE\BSPrecomputedNavmeshInfoPathMap.h" />
     <ClInclude Include="include\RE\BSReloadShaderI.h" />
     <ClInclude Include="include\RE\BSResourceNiBinaryStream.h" />
@@ -1090,6 +1091,7 @@
     <ClInclude Include="include\RE\NonActorMagicTarget.h" />
     <ClInclude Include="include\RE\OldMessageBoxCallback.h" />
     <ClInclude Include="include\RE\PackageLocation.h" />
+    <ClInclude Include="include\RE\PathingCell.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
     <ClInclude Include="include\RE\PoisonedWeapon.h" />
     <ClInclude Include="include\RE\Precipitation.h" />
@@ -1157,6 +1159,7 @@
     <ClInclude Include="include\RE\SkyrimScript\SavePatcher.h" />
     <ClInclude Include="include\RE\SkyrimScript\ObjectBindPolicy.h" />
     <ClInclude Include="include\RE\SkyrimScript\SetMotionTypeFunctor.h" />
+    <ClInclude Include="include\RE\SkyrimScript\SetPositionFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\Store.h" />
     <ClInclude Include="include\RE\SkyrimVM.h" />
     <ClInclude Include="include\RE\SmithingMenu.h" />

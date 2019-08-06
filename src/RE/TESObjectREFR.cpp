@@ -26,7 +26,7 @@
 
 namespace RE
 {
-	bool TESObjectREFR::LookupByHandle(RefHandle& a_refHandle, TESObjectREFRPtr& a_refrOut)
+	bool TESObjectREFR::LookupByHandle(const RefHandle& a_refHandle, TESObjectREFRPtr& a_refrOut)
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::LookupByHandle)>;
 		func_t* func = reinterpret_cast<func_t*>(::LookupREFRObjectByHandle.GetUIntPtr());
@@ -34,50 +34,11 @@ namespace RE
 	}
 
 
-	float TESObjectREFR::GetBaseScale() const
+	void TESObjectREFR::ActivateRefChildren(TESObjectREFR* a_activator)
 	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::GetBaseScale)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetBaseScale, func_t*);
-		return func(this);
-	}
-
-
-	bool TESObjectREFR::IsOffLimits() const
-	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::IsOffLimits)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, IsOffLimits, func_t*);
-		return func(this);
-	}
-
-
-	float TESObjectREFR::GetWeight() const
-	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::GetWeight)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetWeight, func_t*);
-		return func(this);
-	}
-
-
-	const char* TESObjectREFR::GetReferenceName() const
-	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::GetReferenceName)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetReferenceName, func_t*);
-		return func(this);
-	}
-
-
-	TESWorldSpace* TESObjectREFR::GetWorldspace() const
-	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::GetWorldspace)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetWorldspace, func_t*);
-		return func(this);
-	}
-
-
-	RefHandle TESObjectREFR::GetRefHandle() const
-	{
-		auto xRefHandle = extraData.GetByType<ExtraReferenceHandle>();
-		return xRefHandle ? xRefHandle->handle : *g_invalidRefHandle;
+		using func_t = function_type_t<decltype(&TESObjectREFR::ActivateRefChildren)>;
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::ActivateRefChildren);
+		return func(this, a_activator);
 	}
 
 
@@ -108,6 +69,14 @@ namespace RE
 	}
 
 
+	float TESObjectREFR::GetBaseScale() const
+	{
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetBaseScale)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetBaseScale, func_t*);
+		return func(this);
+	}
+
+
 	TESContainer* TESObjectREFR::GetContainer() const
 	{
 		TESContainer* container = 0;
@@ -125,6 +94,17 @@ namespace RE
 	}
 
 
+	TESFaction* TESObjectREFR::GetFactionOwner() const
+	{
+		auto xOwnership = extraData.GetByType<ExtraOwnership>();
+		if (xOwnership && xOwnership->owner && xOwnership->owner->Is(FormType::Faction)) {
+			return static_cast<TESFaction*>(xOwnership->owner);
+		} else {
+			return 0;
+		}
+	}
+
+
 	const char* TESObjectREFR::GetFullName() const
 	{
 		const char* result = 0;
@@ -138,14 +118,57 @@ namespace RE
 	}
 
 
-	TESFaction* TESObjectREFR::GetFactionOwner() const
+	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
-		auto xOwnership = extraData.GetByType<ExtraOwnership>();
-		if (xOwnership && xOwnership->owner && xOwnership->owner->Is(FormType::Faction)) {
-			return static_cast<TESFaction*>(xOwnership->owner);
-		} else {
-			return 0;
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetInventoryChanges)>;
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetInventoryChanges);
+
+		auto xContainerChanges = extraData.GetByType<ExtraContainerChanges>();
+		auto changes = xContainerChanges ? xContainerChanges->changes : 0;
+		if (!changes) {
+			changes = func(this);
+			if (changes) {
+				changes->InitContainer();
+				changes->GenerateLeveledListChanges();
+			}
 		}
+		return changes;
+	}
+
+
+	TESObjectREFR* TESObjectREFR::GetLinkedRef(BGSKeyword* a_keyword)
+	{
+		return extraData.GetLinkedRef(a_keyword);
+	}
+
+
+	SInt32 TESObjectREFR::GetLockLevel() const
+	{
+		auto state = GetLockState();
+		return state ? state->GetLockLevel(this) : -1 * std::numeric_limits<SInt32>::max();
+	}
+
+
+	LockState* TESObjectREFR::GetLockState() const
+	{
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetLockState)>;
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetLockState);
+		return func(this);
+	}
+
+
+	NiAVObject* TESObjectREFR::GetNodeByName(const BSFixedString& a_nodeName)
+	{
+		auto node = GetNiNode();
+		return node ? node->GetObjectByName(a_nodeName) : 0;
+	}
+
+
+	UInt32 TESObjectREFR::GetNumItems(bool a_useDataHandlerChanges, bool a_arg2)
+	{
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetNumItems)>;
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetNumItems);
+		return func(this, a_useDataHandlerChanges, a_arg2);
 	}
 
 
@@ -181,64 +204,40 @@ namespace RE
 	}
 
 
-	bool TESObjectREFR::Is3DLoaded() const
+	const char* TESObjectREFR::GetReferenceName() const
 	{
-		return GetNiNode() != 0;
-	}
-
-
-	bool TESObjectREFR::IsMarkedForDeletion() const
-	{
-		return (flags & RecordFlags::kDeleted) != 0;
-	}
-
-
-	bool TESObjectREFR::IsDisabled() const
-	{
-		return (flags & RecordFlags::kInitiallyDisabled) != 0;
-	}
-
-
-	bool TESObjectREFR::IsActivationBlocked() const
-	{
-		auto xFlags = extraData.GetByType<ExtraFlags>();
-		return xFlags && xFlags->IsActivationBlocked();
-	}
-
-
-	void TESObjectREFR::SetActivationBlocked(bool a_blocked)
-	{
-		extraData.SetExtraFlags(ExtraFlags::Flag::kActivationBlocked, a_blocked);
-	}
-
-
-	bool TESObjectREFR::IsLocked() const
-	{
-		auto state = GetLockState();
-		return state && state->lockLevel > 0;
-	}
-
-
-	LockState* TESObjectREFR::GetLockState() const
-	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::GetLockState)>;
-		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetLockState);
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetReferenceName)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetReferenceName, func_t*);
 		return func(this);
 	}
 
 
-	SInt32 TESObjectREFR::GetLockLevel() const
+	RefHandle TESObjectREFR::GetRefHandle() const
 	{
-		auto state = GetLockState();
-		return state ? state->GetLockLevel(this) : -1 * std::numeric_limits<SInt32>::max();
+		auto xRefHandle = extraData.GetByType<ExtraReferenceHandle>();
+		return xRefHandle ? xRefHandle->handle : *g_invalidRefHandle;
 	}
 
 
-	UInt32 TESObjectREFR::GetNumItems(bool a_useDataHandlerChanges, bool a_arg2)
+	float TESObjectREFR::GetWeight() const
 	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::GetNumItems)>;
-		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetNumItems);
-		return func(this, a_useDataHandlerChanges, a_arg2);
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetWeight)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetWeight, func_t*);
+		return func(this);
+	}
+
+
+	TESWorldSpace* TESObjectREFR::GetWorldspace() const
+	{
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetWorldspace)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetWorldspace, func_t*);
+		return func(this);
+	}
+
+
+	bool TESObjectREFR::HasCollision() const
+	{
+		return (flags & RecordFlags::kCollisionsDisabled) == 0;
 	}
 
 
@@ -250,73 +249,43 @@ namespace RE
 	}
 
 
-	InventoryChanges* TESObjectREFR::GetInventoryChanges()
+	bool TESObjectREFR::Is3DLoaded() const
 	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::GetInventoryChanges)>;
-		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetInventoryChanges);
-
-		auto xContainerChanges = extraData.GetByType<ExtraContainerChanges>();
-		auto changes = xContainerChanges ? xContainerChanges->changes : 0;
-		if (!changes) {
-			changes = func(this);
-			if (changes) {
-				changes->InitContainer();
-				changes->GenerateLeveledListChanges();
-			}
-		}
-		return changes;
+		return GetNiNode() != 0;
 	}
 
 
-	bool TESObjectREFR::SetDisplayName(const BSFixedString& a_name, bool a_force)
+	bool TESObjectREFR::IsActivationBlocked() const
 	{
-		bool renamed = false;
-
-		auto xTextData = extraData.GetByType<ExtraTextDisplayData>();
-		if (xTextData) {
-			bool inUse = (xTextData->message || xTextData->owner);
-			if (inUse && a_force) {
-				xTextData->message = 0;
-				xTextData->owner = 0;
-			}
-			renamed = (!inUse || a_force);
-			xTextData->SetName(a_name.c_str());
-		} else {
-			xTextData = new ExtraTextDisplayData(a_name.c_str());
-			extraData.Add(xTextData);
-			renamed = true;
-		}
-
-		return renamed;
+		auto xFlags = extraData.GetByType<ExtraFlags>();
+		return xFlags && xFlags->IsActivationBlocked();
 	}
 
 
-	UInt32 TESObjectREFR::ActivateRefChildren(TESObjectREFR* a_activator)
+	bool TESObjectREFR::IsDisabled() const
 	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::ActivateRefChildren)>;
-		REL::Offset<func_t*> func(Offset::TESObjectREFR::ActivateRefChildren);
-		return func(this, a_activator);
+		return (flags & RecordFlags::kInitiallyDisabled) != 0;
 	}
 
 
-	void TESObjectREFR::PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4)
+	bool TESObjectREFR::IsLocked() const
 	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::PlayAnimation)>;
-		REL::Offset<func_t*> func(Offset::TESObjectREFR::PlayAnimation);
-		return func(this, a_manager, a_toSeq, a_fromSeq, a_arg4);
+		auto state = GetLockState();
+		return state && state->lockLevel > 0;
 	}
 
 
-	TESObjectREFR* TESObjectREFR::GetLinkedRef(BGSKeyword* a_keyword)
+	bool TESObjectREFR::IsMarkedForDeletion() const
 	{
-		return extraData.GetLinkedRef(a_keyword);
+		return (flags & RecordFlags::kDeleted) != 0;
 	}
 
 
-	NiAVObject* TESObjectREFR::GetNodeByName(const BSFixedString& a_nodeName)
+	bool TESObjectREFR::IsOffLimits() const
 	{
-		auto node = GetNiNode();
-		return node ? node->GetObjectByName(a_nodeName) : 0;
+		using func_t = function_type_t<decltype(&TESObjectREFR::IsOffLimits)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, IsOffLimits, func_t*);
+		return func(this);
 	}
 
 
@@ -349,6 +318,53 @@ namespace RE
 	}
 
 
+	void TESObjectREFR::PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4)
+	{
+		using func_t = function_type_t<decltype(&TESObjectREFR::PlayAnimation)>;
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::PlayAnimation);
+		return func(this, a_manager, a_toSeq, a_fromSeq, a_arg4);
+	}
+
+
+	void TESObjectREFR::SetActivationBlocked(bool a_blocked)
+	{
+		extraData.SetExtraFlags(ExtraFlags::Flag::kActivationBlocked, a_blocked);
+	}
+
+
+	void TESObjectREFR::SetCollision(bool a_enable)
+	{
+		if (a_enable) {
+			flags &= ~RecordFlags::kCollisionsDisabled;
+		} else {
+			flags |= RecordFlags::kCollisionsDisabled;
+		}
+	}
+
+
+	bool TESObjectREFR::SetDisplayName(const BSFixedString& a_name, bool a_force)
+	{
+		bool renamed = false;
+
+		auto xTextData = extraData.GetByType<ExtraTextDisplayData>();
+		if (xTextData) {
+			bool inUse = xTextData->message || xTextData->owner;
+			if (inUse && a_force) {
+				xTextData->message = 0;
+				xTextData->owner = 0;
+			}
+			renamed = !inUse || a_force;
+			xTextData->SetName(a_name.c_str());
+		} else {
+			xTextData = new ExtraTextDisplayData(a_name.c_str());
+			extraData.Add(xTextData);
+			renamed = true;
+		}
+
+		return renamed;
+	}
+
+
 	bool TESObjectREFR::SetMotionType(MotionType a_motionType, bool a_allowActivate)
 	{
 		auto node = GetNiNode();
@@ -361,19 +377,15 @@ namespace RE
 	}
 
 
-	bool TESObjectREFR::HasCollision() const
+	void TESObjectREFR::SetPosition(float a_x, float a_y, float a_z)
 	{
-		return (flags & RecordFlags::kCollisionsDisabled) == 0;
+		return SetPosition(NiPoint3(a_x, a_y, a_z));
 	}
 
 
-	void TESObjectREFR::SetCollision(bool a_enable)
+	void TESObjectREFR::SetPosition(NiPoint3 a_pos)
 	{
-		if (a_enable) {
-			flags &= ~RecordFlags::kCollisionsDisabled;
-		} else {
-			flags |= RecordFlags::kCollisionsDisabled;
-		}
+		MoveTo_Impl(*g_invalidRefHandle, GetParentCell(), GetWorldspace(), a_pos, rot);
 	}
 
 

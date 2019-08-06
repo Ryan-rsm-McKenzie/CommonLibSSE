@@ -101,7 +101,7 @@ namespace SKSE
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm->GetHandlePolicy();
 			auto invalidHandle = policy->GetInvalidHandle();
-			auto handle = policy->GetHandle(static_cast<UInt32>(a_form->formType), a_form);
+			auto handle = policy->GetHandle(static_cast<RE::FormType32>(a_form->formType), a_form);
 			if (handle == invalidHandle) {
 				_ERROR("Failed to create handle!\n");
 				return false;
@@ -125,7 +125,7 @@ namespace SKSE
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm->GetHandlePolicy();
 			auto invalidHandle = policy->GetInvalidHandle();
-			auto handle = policy->GetHandle(static_cast<UInt32>(a_form->formType), a_form);
+			auto handle = policy->GetHandle(static_cast<RE::FormType32>(a_form->formType), a_form);
 			if (handle == invalidHandle) {
 				_ERROR("Failed to create handle!\n");
 				return false;
