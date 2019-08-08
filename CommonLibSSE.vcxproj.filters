@@ -949,6 +949,9 @@
     <Filter Include="include\RE\Pathfinding\BSPathingCell">
       <UniqueIdentifier>{77c774a0-e687-4cbf-b899-cfa3961f9220}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\AI">
+      <UniqueIdentifier>{92bbe7b0-648c-49fc-9f08-64a5d8322032}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1508,6 +1511,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\BSScript\VariableInfo.cpp">
       <Filter>src\RE\BSScript\IFunction\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESHitEvent.cpp">
+      <Filter>src\RE\Events\ScriptEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSAttackData.cpp">
+      <Filter>src\RE\AI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4378,6 +4387,12 @@
     </ClInclude>
     <ClInclude Include="include\RE\SkyrimScript\SetPositionFunctor.h">
       <Filter>include\RE\SkyrimScript\DelayFunctor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\RTTI.h">
+      <Filter>include\RE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESHitEvent.h">
+      <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -125,6 +125,7 @@ namespace RE
 		void									SendActivateEvent(NiPointer<TESObjectREFR>& a_target, NiPointer<TESObjectREFR>& a_caster);
 		template <class T> BSTEventSource<T>*	GetEventSource();
 		template <class T> void					AddEventSink(BSTEventSink<T>* a_sink);
+		template <class T> void					SendEvent(T* a_event);
 	};
 	STATIC_ASSERT(sizeof(ScriptEventSourceHolder) == 0x1290);
 
@@ -140,5 +141,12 @@ namespace RE
 	void ScriptEventSourceHolder::AddEventSink(BSTEventSink<T>* a_sink)
 	{
 		GetEventSource<T>()->AddEventSink(a_sink);
+	}
+
+
+	template <class T>
+	void ScriptEventSourceHolder::SendEvent(T* a_event)
+	{
+		GetEventSource<T>()->SendEvent(a_event);
 	}
 }

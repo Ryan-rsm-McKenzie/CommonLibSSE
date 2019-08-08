@@ -9,7 +9,7 @@ namespace RE
 	{
 		TESObjectREFR*	target;	// 00
 		TESObjectREFR*	caster;	// 08
-		UInt32			formID;	// 10
+		FormID			formID;	// 10
 		UInt32			pad14;	// 14
 	};
 	STATIC_ASSERT(sizeof(TESMagicEffectApplyEvent) == 0x18);

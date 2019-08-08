@@ -62,7 +62,7 @@ namespace RE
 		struct FactionInfo	// SNAM
 		{
 			TESFaction*	faction;	// 00
-			UInt8		rank;		// 08
+			SInt8		rank;		// 08
 			UInt8		pad09;		// 09
 			UInt16		pad0A;		// 0A
 			UInt32		pad0C;		// 0C

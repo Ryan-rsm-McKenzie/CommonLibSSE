@@ -506,5 +506,7 @@ namespace RE
 		constexpr std::uintptr_t WorldPtToScreenPt3 = 0x00C660D0;	// 1_5_80
 		// IndirectSig: E8 ? ? ? ? 83 FE 0C
 		constexpr std::uintptr_t DebugNotification = 0x008DA3D0;	// 1_5_80
+		// IndirectSig: E8 ? ? ? ? 48 8B F5
+		constexpr std::uintptr_t RTDynamicCast = 0x0134B900;		// 1_5_80
 	}
 }

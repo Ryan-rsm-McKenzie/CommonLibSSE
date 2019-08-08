@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // Runtime_DynamicCast
-
 #include <bitset>  // bitset
 #include <cstdint>  // uintptr_t
-#include <type_traits>  // underlying_type_t, is_enum
+#include <type_traits>
 
 
 #define MAKE_STR_HELPER(a_str) #a_str
@@ -122,30 +120,6 @@ template <class Enum, typename std::enable_if_t<std::is_enum<Enum>::value, int> 
 constexpr inline Enum& operator>>=(Enum& a_lhs, Enum a_rhs)
 {
 	return a_lhs = static_cast<Enum>(static_cast<std::underlying_type_t<Enum>>(a_lhs) >> static_cast<std::underlying_type_t<Enum>>(a_rhs));
-}
-
-
-// BEGIN
-// https://stackoverflow.com/a/30848101
-// See http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4502.pdf.
-
-
-// Primary template handles all types not supporting the operation.
-template <class T, template <class> class Op, typename = std::void_t<>>
-struct is_detected : std::false_type {};
-
-
-// Specialization recognizes/validates only types supporting the archetype.
-template <class T, template <class> class Op>
-struct is_detected<T, Op, std::void_t<Op<T>>> : std::true_type {};
-// END
-
-
-namespace { template <class V> using remove_cvpr_t = std::remove_pointer_t<std::remove_reference_t<std::remove_cv_t<V>>>; }
-template<class To, class From>
-To skyrim_cast(From a_from)
-{
-	return static_cast<To>(Runtime_DynamicCast((void*)a_from, remove_cvpr_t<From>::RTTI, remove_cvpr_t<To>::RTTI));
 }
 
 

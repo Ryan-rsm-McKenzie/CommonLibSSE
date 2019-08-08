@@ -2,6 +2,8 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_BGSKeywordForm
 
+#include <optional>  // optional
+
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
 #include "RE/BGSKeyword.h"  // BGSKeyword
 
@@ -25,9 +27,9 @@ namespace RE
 		virtual bool		HasKeyword(BGSKeyword* a_keyword) const;			// 04
 		virtual BGSKeyword*	GetDefaultKeyword();								// 05 - { return 0; }
 
-		bool				HasKeyword(UInt32 a_formID) const;
-		bool				GetKeywordAt(UInt32 a_idx, BGSKeyword*& a_keyword) const;
-		UInt32				GetSize() const;
+		bool						HasKeyword(UInt32 a_formID) const;
+		std::optional<BGSKeyword*>	GetKeywordAt(UInt32 a_idx);
+		UInt32						GetSize() const;
 
 
 		// members

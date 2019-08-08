@@ -1,10 +1,8 @@
 #include "RE/Actor.h"
 
 #include "skse64/GameReferences.h"  // Actor
-#include "skse64/GameRTTI.h"  // DYNAMIC_CAST
 
-#include <cstdint>  // uintptr_t
-
+#include "RE/BGSAttackData.h"  // BGSAttackData
 #include "RE/ExtraFactionChanges.h"  // ExtraFactionChanges
 #include "RE/Offsets.h"
 #include "RE/TESActorBaseData.h"  // TESActorBaseData
@@ -16,6 +14,83 @@
 
 namespace RE
 {
+	SInt32 Actor::CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const
+	{
+		using func_t = function_type_t<decltype(&Actor::CalcEntryValue)>;
+		REL::Offset<func_t*> func(Offset::Actor::CalcEntryValue);
+		return func(this, a_entryData, a_numItems, a_multiplyValueByRemainingItems);
+	}
+
+	void Actor::DispelWornItemEnchantments()
+	{
+		using func_t = function_type_t<decltype(&Actor::DispelWornItemEnchantments)>;
+		REL::Offset<func_t*> func(Offset::Actor::DispelWornItemEnchantments);
+		return func(this);
+	}
+
+
+	TESNPC* Actor::GetActorBase() const
+	{
+		return baseForm->As<TESNPC*>();
+	}
+
+
+	InventoryEntryData* Actor::GetAttackingWeapon()
+	{
+		if (!processManager || !processManager->unk010 || !processManager->unk010->attackData || !processManager->middleProcess) {
+			return 0;
+		}
+
+		auto attackData = processManager->unk010->attackData;
+		auto middleProcess = processManager->middleProcess;
+
+		return attackData->IsLeftAttack() ? middleProcess->leftHand : middleProcess->rightHand;
+	}
+
+
+	const InventoryEntryData* Actor::GetAttackingWeapon() const
+	{
+		if (!processManager || !processManager->unk010 || !processManager->unk010->attackData || !processManager->middleProcess) {
+			return 0;
+		}
+
+		auto attackData = processManager->unk010->attackData;
+		auto middleProcess = processManager->middleProcess;
+
+		return attackData->IsLeftAttack() ? middleProcess->leftHand : middleProcess->rightHand;
+	}
+
+
+	InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand)
+	{
+		if (!processManager || !processManager->middleProcess) {
+			return 0;
+		}
+
+		auto middleProcess = processManager->middleProcess;
+		return a_leftHand ? middleProcess->leftHand : middleProcess->rightHand;
+	}
+
+
+	const InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand) const
+	{
+		if (!processManager || !processManager->middleProcess) {
+			return 0;
+		}
+
+		auto middleProcess = processManager->middleProcess;
+		return a_leftHand ? middleProcess->leftHand : middleProcess->rightHand;
+	}
+
+
+	SInt32 Actor::GetDetectionLevel(Actor* a_target, UInt32 a_idx)
+	{
+		using func_t = function_type_t<decltype(&Actor::GetDetectionLevel)>;
+		REL::Offset<func_t*> func(Offset::Actor::GetDetectionLevel);
+		return func(this, a_target, a_idx);
+	}
+
+
 	TESForm* Actor::GetEquippedObject(bool a_leftHand) const
 	{
 		if (processManager) {
@@ -30,35 +105,11 @@ namespace RE
 	}
 
 
-	void Actor::UpdateSkinColor()
+	float Actor::GetHeight()
 	{
-		using func_t = function_type_t<decltype(&Actor::UpdateSkinColor)>;
-		func_t* func = unrestricted_cast<func_t*>(&::Actor::UpdateSkinColor);
+		using func_t = function_type_t<decltype(&Actor::GetHeight)>;
+		REL::Offset<func_t*> func(Offset::Actor::GetHeight);
 		return func(this);
-	}
-
-
-	void Actor::UpdateHairColor()
-	{
-		using func_t = function_type_t<decltype(&Actor::UpdateHairColor)>;
-		func_t* func = unrestricted_cast<func_t*>(&::Actor::UpdateHairColor);
-		return func(this);
-	}
-
-
-	void Actor::QueueNiNodeUpdate(bool a_updateWeight)
-	{
-		using func_t = function_type_t<decltype(&Actor::QueueNiNodeUpdate)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::Actor, QueueNiNodeUpdate, func_t*);
-		return func(this, a_updateWeight);
-	}
-
-
-	bool Actor::HasPerk(BGSPerk* a_perk) const
-	{
-		using func_t = function_type_t<decltype(&Actor::HasPerk)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::Actor, HasPerk, func_t*);
-		return func(this, a_perk);
 	}
 
 
@@ -70,79 +121,24 @@ namespace RE
 	}
 
 
-	void Actor::SetRace(TESRace* a_race, bool a_isPlayer)
-	{
-		using func_t = function_type_t<decltype(&Actor::SetRace)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::Actor, SetRace, func_t*);
-		return func(this, a_race, a_isPlayer);
-	}
-
-
-	void Actor::UpdateWeaponAbility(TESForm* a_weapon, BaseExtraList* a_extraData, bool a_leftHand)
-	{
-		using func_t = function_type_t<decltype(&Actor::UpdateWeaponAbility)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::Actor, UpdateWeaponAbility, func_t*);
-		return func(this, a_weapon, a_extraData, a_leftHand);
-	}
-
-
-	void Actor::UpdateArmorAbility(TESForm* a_armor, BaseExtraList* a_extraData)
-	{
-		using func_t = function_type_t<decltype(&Actor::UpdateArmorAbility)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::Actor, UpdateArmorAbility, func_t*);
-		return func(this, a_armor, a_extraData);
-	}
-
-
-	bool Actor::IsHostileToActor(Actor* a_actor) const
-	{
-		using func_t = function_type_t<decltype(&Actor::IsHostileToActor)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::Actor, IsHostileToActor, func_t*);
-		return func(this, a_actor);
-	}
-
-
-	void Actor::ResetAI(UInt32 a_arg1, UInt32 a_arg2)
-	{
-		using func_t = function_type_t<decltype(&Actor::ResetAI)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::Actor, ResetAI, func_t*);
-		return func(this, a_arg1, a_arg2);
-	}
-
-
-	bool Actor::VisitFactions(FactionVisitor& visitor)
-	{
-		TESNPC* npc = GetActorBase();
-		if (npc) {
-			for (auto& factionInfo : npc->factions) {
-				if (visitor.Accept(factionInfo.faction, factionInfo.rank)) {
-					return true;
-				}
-			}
-
-			ExtraFactionChanges* pFactionChanges = static_cast<ExtraFactionChanges*>(extraData.GetByType(ExtraDataType::kFactionChanges));
-			if (pFactionChanges) {
-				for (auto& info : pFactionChanges->factions) {
-					if (visitor.Accept(info.faction, info.rank)) {
-						return true;
-					}
-				}
-			}
-		}
-
-		return false;
-	}
-
-
-	TESNPC* Actor::GetActorBase() const
-	{
-		return static_cast<TESNPC*>(baseForm);
-	}
-
-
 	TESRace* Actor::GetRace() const
 	{
-		return GetActorBase() ? GetActorBase()->race : 0;
+		auto base = GetActorBase();
+		return base ? base->race : 0;
+	}
+
+
+	bool Actor::HasPerk(BGSPerk* a_perk) const
+	{
+		using func_t = function_type_t<decltype(&Actor::HasPerk)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::Actor, HasPerk, func_t*);
+		return func(this, a_perk);
+	}
+
+
+	bool Actor::IsAIEnabled() const
+	{
+		return (flags1 & Flag1::kAIEnabled) != Flag1::kNone;
 	}
 
 
@@ -164,21 +160,31 @@ namespace RE
 	}
 
 
+	bool Actor::IsGhost() const
+	{
+		using func_t = function_type_t<decltype(&Actor::IsGhost)>;
+		REL::Offset<func_t*> func(Offset::Actor::IsGhost);
+		return func(this);
+	}
+
+
 	bool Actor::IsGuard() const
 	{
 		return (flags1 & Flag1::kIsGuard) != Flag1::kNone;
 	}
 
 
-	bool Actor::IsInKillMove() const
+	bool Actor::IsHostileToActor(Actor* a_actor) const
 	{
-		return (flags2 & Flag2::kIsInKillMove) != Flag2::kNone;
+		using func_t = function_type_t<decltype(&Actor::IsHostileToActor)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::Actor, IsHostileToActor, func_t*);
+		return func(this, a_actor);
 	}
 
 
-	bool Actor::IsAIEnabled() const
+	bool Actor::IsInKillMove() const
 	{
-		return (flags1 & Flag1::kAIEnabled) != Flag1::kNone;
+		return (flags2 & Flag2::kIsInKillMove) != Flag2::kNone;
 	}
 
 
@@ -191,6 +197,14 @@ namespace RE
 	bool Actor::IsPlayerTeammate() const
 	{
 		return (flags1 & Flag1::kIsPlayerTeammate) != Flag1::kNone;
+	}
+
+
+	bool Actor::IsRunning() const
+	{
+		using func_t = function_type_t<decltype(&Actor::IsRunning)>;
+		REL::Offset<func_t*> func(Offset::Actor::IsRunning);
+		return func(this);
 	}
 
 
@@ -212,21 +226,36 @@ namespace RE
 	}
 
 
+	bool Actor::IsSummoned() const
+	{
+		auto base = GetActorBase();
+		return base ? base->IsSummonable() : false;
+	}
+
+
 	bool Actor::IsTrespassing() const
 	{
 		return (flags2 & Flag2::kIsTrespassing) != Flag2::kNone;
 	}
 
 
-	void Actor::DispelWornItemEnchantments()
+	void Actor::QueueNiNodeUpdate(bool a_updateWeight)
 	{
-		using func_t = function_type_t<decltype(&Actor::DispelWornItemEnchantments)>;
-		REL::Offset<func_t*> func(Offset::Actor::DispelWornItemEnchantments);
-		return func(this);
+		using func_t = function_type_t<decltype(&Actor::QueueNiNodeUpdate)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::Actor, QueueNiNodeUpdate, func_t*);
+		return func(this, a_updateWeight);
 	}
 
 
-	void Actor::SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, UInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage)
+	void Actor::ResetAI(bool a_arg1, bool a_arg2)
+	{
+		using func_t = function_type_t<decltype(&Actor::ResetAI)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::Actor, ResetAI, func_t*);
+		return func(this, a_arg1, a_arg2);
+	}
+
+
+	void Actor::SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, SInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage)
 	{
 		using func_t = function_type_t<decltype(&Actor::SendStealAlarm)>;
 		REL::Offset<func_t*> func(Offset::Actor::SendStealAlarm);
@@ -234,48 +263,66 @@ namespace RE
 	}
 
 
-	SInt32 Actor::CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const
+	void Actor::SetRace(TESRace* a_race, bool a_isPlayer)
 	{
-		using func_t = function_type_t<decltype(&Actor::CalcEntryValue)>;
-		REL::Offset<func_t*> func(Offset::Actor::CalcEntryValue);
-		return func(this, a_entryData, a_numItems, a_multiplyValueByRemainingItems);
+		using func_t = function_type_t<decltype(&Actor::SetRace)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::Actor, SetRace, func_t*);
+		return func(this, a_race, a_isPlayer);
 	}
 
 
-	SInt32 Actor::GetDetectionLevel(Actor* a_target, UInt32 a_idx)
+	void Actor::UpdateArmorAbility(TESForm* a_armor, BaseExtraList* a_extraData)
 	{
-		using func_t = function_type_t<decltype(&Actor::GetDetectionLevel)>;
-		REL::Offset<func_t*> func(Offset::Actor::GetDetectionLevel);
-		return func(this, a_target, a_idx);
+		using func_t = function_type_t<decltype(&Actor::UpdateArmorAbility)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::Actor, UpdateArmorAbility, func_t*);
+		return func(this, a_armor, a_extraData);
 	}
 
 
-	bool Actor::IsGhost() const
+	void Actor::UpdateHairColor()
 	{
-		using func_t = function_type_t<decltype(&Actor::IsGhost)>;
-		REL::Offset<func_t*> func(Offset::Actor::IsGhost);
+		using func_t = function_type_t<decltype(&Actor::UpdateHairColor)>;
+		func_t* func = unrestricted_cast<func_t*>(&::Actor::UpdateHairColor);
 		return func(this);
 	}
 
 
-	bool Actor::IsSummoned() const
+	void Actor::UpdateSkinColor()
 	{
-		return GetActorBase() ? GetActorBase()->IsSummonable() : false;
-	}
-
-
-	bool Actor::IsRunning() const
-	{
-		using func_t = function_type_t<decltype(&Actor::IsRunning)>;
-		REL::Offset<func_t*> func(Offset::Actor::IsRunning);
+		using func_t = function_type_t<decltype(&Actor::UpdateSkinColor)>;
+		func_t* func = unrestricted_cast<func_t*>(&::Actor::UpdateSkinColor);
 		return func(this);
 	}
 
 
-	float Actor::GetHeight()
+	void Actor::UpdateWeaponAbility(TESForm* a_weapon, BaseExtraList* a_extraData, bool a_leftHand)
 	{
-		using func_t = function_type_t<decltype(&Actor::GetHeight)>;
-		REL::Offset<func_t*> func(Offset::Actor::GetHeight);
-		return func(this);
+		using func_t = function_type_t<decltype(&Actor::UpdateWeaponAbility)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::Actor, UpdateWeaponAbility, func_t*);
+		return func(this, a_weapon, a_extraData, a_leftHand);
+	}
+
+
+	bool Actor::VisitFactions(llvm::function_ref<bool(RE::TESFaction* a_faction, SInt8 a_rank)> a_visitor)
+	{
+		auto base = GetActorBase();
+		if (base) {
+			for (auto& factionInfo : base->factions) {
+				if (a_visitor(factionInfo.faction, factionInfo.rank)) {
+					return true;
+				}
+			}
+
+			auto factionChanges = extraData.GetByType<ExtraFactionChanges>();
+			if (factionChanges) {
+				for (auto& info : factionChanges->factions) {
+					if (a_visitor(info.faction, info.rank)) {
+						return true;
+					}
+				}
+			}
+		}
+
+		return false;
 	}
 }

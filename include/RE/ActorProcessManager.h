@@ -10,6 +10,7 @@
 namespace RE
 {
 	class ActorKnowledge;
+	class BGSAttackData;
 
 
 	class ActorProcessManager
@@ -130,7 +131,7 @@ namespace RE
 			BSTArray<ActorKnowledgeData>	knowledgeData;		// 220
 			mutable BSReadWriteLock			knowledgeDataLock;	// 238
 			BSTArray<void*>					unk240;				// 240
-			UInt64							unk258;				// 258
+			BGSAttackData*					attackData;			// 258
 			UInt64							unk260;				// 260
 			UInt64							unk268;				// 268
 			UInt64							unk270;				// 270

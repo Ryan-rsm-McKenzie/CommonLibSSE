@@ -113,7 +113,7 @@ namespace RE
 	float NiPoint3::Unitize()
 	{
 		auto length = Length();
-		if (std::isnan(length)) {
+		if (!std::isnan(length)) {
 			operator/=(length);
 		} else {
 			x = 0.0;

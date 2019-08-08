@@ -169,6 +169,7 @@
     <ClCompile Include="src\RE\ActorValueOwner.cpp" />
     <ClCompile Include="src\RE\AddCallbackVisitor.cpp" />
     <ClCompile Include="src\RE\BaseExtraList.cpp" />
+    <ClCompile Include="src\RE\BGSAttackData.cpp" />
     <ClCompile Include="src\RE\BGSBaseAlias.cpp" />
     <ClCompile Include="src\RE\BGSBipedObjectForm.cpp" />
     <ClCompile Include="src\RE\BGSDefaultObjectManager.cpp" />
@@ -324,6 +325,7 @@
     <ClCompile Include="src\RE\TESDescription.cpp" />
     <ClCompile Include="src\RE\TESFaction.cpp" />
     <ClCompile Include="src\RE\TESForm.cpp" />
+    <ClCompile Include="src\RE\TESHitEvent.cpp" />
     <ClCompile Include="src\RE\TESMemoryManager.cpp" />
     <ClCompile Include="src\RE\TESNPC.cpp" />
     <ClCompile Include="src\RE\TESObjectARMA.cpp" />
@@ -1104,6 +1106,7 @@
     <ClInclude Include="include\RE\GMatrix2D.h" />
     <ClInclude Include="include\RE\RegSettingCollection.h" />
     <ClInclude Include="include\RE\RemoveCallbackVisitor.h" />
+    <ClInclude Include="include\RE\RTTI.h" />
     <ClInclude Include="include\RE\ScrapHeap.h" />
     <ClInclude Include="include\RE\Script.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
@@ -1209,6 +1212,7 @@
     <ClInclude Include="include\RE\TESFurniture.h" />
     <ClInclude Include="include\RE\TESGlobal.h" />
     <ClInclude Include="include\RE\TESGrass.h" />
+    <ClInclude Include="include\RE\TESHitEvent.h" />
     <ClInclude Include="include\RE\TESIcon.h" />
     <ClInclude Include="include\RE\TESIdleForm.h" />
     <ClInclude Include="include\RE\TESImageSpace.h" />

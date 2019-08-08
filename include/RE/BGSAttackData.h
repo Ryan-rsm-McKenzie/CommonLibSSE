@@ -51,6 +51,8 @@ namespace RE
 
 		virtual ~BGSAttackData();	// 00
 
+		bool IsLeftAttack() const;
+
 
 		// members
 		BSFixedString	attackEvent;	// 10 - ATKE
