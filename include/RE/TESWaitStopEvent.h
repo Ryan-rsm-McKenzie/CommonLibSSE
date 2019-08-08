@@ -5,7 +5,7 @@ namespace RE
 {
 	struct TESWaitStopEvent
 	{
-		bool unk0;	// 0
+		UInt8 pad0;	// 0
 	};
 	STATIC_ASSERT(sizeof(TESWaitStopEvent) == 0x1);
 }

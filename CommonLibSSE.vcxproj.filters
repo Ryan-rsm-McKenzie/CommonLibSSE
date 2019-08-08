@@ -4394,5 +4394,8 @@
     <ClInclude Include="include\RE\TESHitEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\TESActiveEffectApplyRemoveEvent.h">
+      <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

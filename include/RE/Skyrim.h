@@ -750,6 +750,7 @@
 #include "RE/SummonCreatureEffect.h"
 #include "RE/Sun.h"
 #include "RE/TES.h"
+#include "RE/TESActiveEffectApplyRemoveEvent.h"
 #include "RE/TESActorBase.h"
 #include "RE/TESActorBaseData.h"
 #include "RE/TESAIForm.h"

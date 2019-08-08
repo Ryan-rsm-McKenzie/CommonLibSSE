@@ -212,13 +212,6 @@ namespace RE
 	}
 
 
-	RefHandle TESObjectREFR::GetRefHandle() const
-	{
-		auto xRefHandle = extraData.GetByType<ExtraReferenceHandle>();
-		return xRefHandle ? xRefHandle->handle : *g_invalidRefHandle;
-	}
-
-
 	float TESObjectREFR::GetWeight() const
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::GetWeight)>;

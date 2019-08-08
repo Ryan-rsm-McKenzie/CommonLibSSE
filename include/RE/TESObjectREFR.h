@@ -301,7 +301,6 @@ namespace RE
 		float				GetPositionY() const;
 		float				GetPositionZ() const;
 		const char*			GetReferenceName() const;
-		RefHandle			GetRefHandle() const;
 		float				GetWeight() const;
 		TESWorldSpace*		GetWorldspace() const;
 		bool				HasCollision() const;

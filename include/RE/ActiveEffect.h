@@ -4,12 +4,14 @@
 
 #include "RE/ActiveEffectReferenceEffectController.h"  // ActiveEffectReferenceEffectController
 #include "RE/FormTypes.h"  // MagicItem
+#include "RE/NiSmartPointer.h"  // NiPointer
 
 
 namespace RE
 {
 	class MagicItem;
 	class MagicTarget;
+	class NiRefObject;
 	struct Effect;
 
 
@@ -57,32 +59,38 @@ namespace RE
 		virtual void	Unk_17(void);			// 17 - { return 1; }
 		virtual void	Unk_18(void);			// 18 - { return 1.0; }
 
-		EffectSetting*	GetBaseEffect() const;
-		bool			Dispell(bool a_force);	// Returns success?
+		void					Dispell(bool a_force);
+		EffectSetting*			GetBaseObject();
+		const EffectSetting*	GetBaseObject() const;
+		Actor*					GetCasterActor();
+		const Actor*			GetCasterActor() const;
+		Actor*					GetTargetActor();
+		const Actor*			GetTargetActor() const;
 
 
-		ActiveEffectReferenceEffectController	controller;			// 08
-		UInt32									unk28;				// 28
-		UInt8									unk2C;				// 2C
-		UInt8									pad2D;				// 2D
-		UInt16									pad2E;				// 2E
-		UInt32									unk30;				// 30
-		RefHandle								casterRefhandle;	// 34
-		void*									niNode;				// 38
-		MagicItem*								item;				// 40
-		Effect*									effect;				// 48
-		MagicTarget*							magicTarget;		// 50
-		TESForm*								sourceItem;			// 58
-		void*									unk60;				// 60
-		void*									unk68;				// 68
-		float									elapsed;			// 70
-		float									duration;			// 74
-		float									magnitude;			// 78
-		Flag									flags;				// 7C
-		UInt32									unk80;				// 80
-		UInt32									effectNum;			// 84 - Some kind of counter used to determine whether the ActiveMagicEffect handle is valid
-		UInt32									unk88;				// 88
-		UInt32									pad8C;				// 8C
+		ActiveEffectReferenceEffectController	controller;		// 08
+		UInt32									unk28;			// 28
+		UInt8									unk2C;			// 2C
+		UInt8									pad2D;			// 2D
+		UInt16									pad2E;			// 2E
+		UInt32									unk30;			// 30
+		RefHandle								casterActor;	// 34
+		NiPointer<NiRefObject>					node;			// 38
+		MagicItem*								item;			// 40
+		Effect*									effect;			// 48
+		MagicTarget*							magicTarget;	// 50
+		TESForm*								sourceItem;		// 58
+		void*									unk60;			// 60
+		void*									unk68;			// 68
+		float									elapsed;		// 70
+		float									duration;		// 74
+		float									magnitude;		// 78
+		Flag									flags;			// 7C
+		UInt32									unk80;			// 80
+		UInt16									handle;			// 84
+		UInt16									unk86;			// 86
+		UInt32									unk88;			// 88
+		UInt32									pad8C;			// 8C
 	};
 	STATIC_ASSERT(sizeof(ActiveEffect) == 0x90);
 }

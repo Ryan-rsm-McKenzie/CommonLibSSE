@@ -1,5 +1,7 @@
 #pragma once
 
+#include "RE/NiSmartPointer.h"  // NiPointer
+
 
 namespace RE
 {
@@ -17,10 +19,10 @@ namespace RE
 		};
 
 
-		TESObjectREFR*	source;	// 00
-		TESObjectREFR*	target;	// 08
-		State			state;	// 10
-		UInt32			pad14;	// 14
+		NiPointer<TESObjectREFR>	source;	// 00
+		NiPointer<TESObjectREFR>	target;	// 08
+		State						state;	// 10
+		UInt32						pad14;	// 14
 	};
 	STATIC_ASSERT(sizeof(TESCombatEvent) == 0x18);
 }
