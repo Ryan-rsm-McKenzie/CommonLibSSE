@@ -27,9 +27,14 @@ namespace RE
 			const Class*	GetClass() const;
 			UInt32			GetFlags() const;
 			UInt32			GetNumProperties() const;
-			void*			Resolve(FormType32 a_typeID) const;
-			void			IncRefCount();
-			SInt32			DecRefCount();
+
+			void* Resolve(FormType32 a_typeID) const;
+
+			void	IncRefCount();
+			SInt32	DecRefCount();
+
+			Variable*		GetProperty(const BSFixedString& a_name);
+			const Variable*	GetProperty(const BSFixedString& a_name) const;
 
 			TES_HEAP_REDEFINE_NEW();
 

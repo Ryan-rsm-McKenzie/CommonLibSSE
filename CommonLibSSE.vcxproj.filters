@@ -1518,6 +1518,12 @@
     <ClCompile Include="src\RE\BGSAttackData.cpp">
       <Filter>src\RE\AI</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\DialogueData.cpp">
+      <Filter>src\RE\FormComponents\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\IObjectHandlePolicy.cpp">
+      <Filter>src\RE\BSScript</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">

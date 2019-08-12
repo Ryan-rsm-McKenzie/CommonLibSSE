@@ -90,7 +90,7 @@ namespace RE
 		virtual void			Unk_28(void);																														// 28 - { return 0; }
 		virtual bool			IsMagicItem() const;																												// 29 - { return false; }
 		virtual bool			IsWaterActivator();																													// 2A - { return false; }
-		virtual void			Unk_2B(void);																														// 2B - { return 0; }
+		virtual void			Unk_2B(void);																														// 2B - { return 0; } - vmad related
 		virtual TESObjectREFR*	GetReference() const;																												// 2C - { return 0; }
 		virtual void			Unk_2D(void);																														// 2D - { return 0; }
 		virtual const char*		GetAliasName(const BSFixedString& a_alias);																							// 2E - alias: "Pronoun" "PronounObj" "PronounPos" "PronounPosObj" "PronounRef" "PronounInt" "Race" "Gender" "ShortName". see http://www.creationkit.com/Text_Replacement

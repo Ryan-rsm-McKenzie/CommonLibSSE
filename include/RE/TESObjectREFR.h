@@ -32,7 +32,6 @@ namespace RE
 	class TESContainer;
 	struct Biped;
 	struct BSAnimationGraphEvent;
-	struct DialogueData;
 	struct LockState;
 
 
@@ -179,7 +178,7 @@ namespace RE
 		virtual bool					GetStartingData(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_veryRarelyUsedFallback);																// 3D
 		virtual void					SetStartingLocation(BGSLocation* a_location);																																				// 3E
 		virtual void					Unk_3F(void);																																												// 3F
-		virtual void					Unk_40(void);																																												// 40
+		virtual void					SayQueuedDialogue();																																										// 40
 		virtual void					Unk_41(void);																																												// 41
 		virtual void					Unk_42(void);																																												// 42
 		virtual void					Unk_43(void);																																												// 43 - checks flag 17 if this != ACHR && baseform != LIGH

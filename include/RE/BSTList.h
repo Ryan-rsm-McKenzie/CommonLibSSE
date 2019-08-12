@@ -265,7 +265,7 @@ namespace RE
 
 
 		BSSimpleList() :
-			_listHead{}
+			_listHead()
 		{}
 
 
@@ -452,6 +452,20 @@ namespace RE
 				new(std::addressof(_listHead.item)) value_type(std::move(a_value));
 				_listHead.next = node;
 			}
+		}
+
+
+		template <class... Args>
+		reference emplace_front(Args&&... a_args)
+		{
+			if (empty()) {
+				new(std::addressof(_listHead.item)) value_type{ std::forward<Args>(a_args)... };
+			} else {
+				auto node = new Node(std::move(_listHead));
+				new(std::addressof(_listHead.item)) value_type{ std::forward<Args>(a_args)... };
+				_listHead.next = node;
+			}
+			return _listHead.item;
 		}
 
 

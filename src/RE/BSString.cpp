@@ -10,8 +10,8 @@ namespace RE
 {
 	BSString::BSString() :
 		_data(0),
-		_dataLen(0),
-		_bufLen(0),
+		_size(0),
+		_capacity(0),
 		_pad0C(0)
 	{
 		set_cstr("");
@@ -20,8 +20,8 @@ namespace RE
 
 	BSString::BSString(const BSString& a_rhs) :
 		_data(0),
-		_dataLen(0),
-		_bufLen(0),
+		_size(0),
+		_capacity(0),
 		_pad0C(0)
 	{
 		set_cstr(a_rhs.c_str());
@@ -30,20 +30,20 @@ namespace RE
 
 	BSString::BSString(BSString&& a_rhs) :
 		_data(std::move(a_rhs._data)),
-		_dataLen(std::move(a_rhs._dataLen)),
-		_bufLen(std::move(a_rhs._bufLen)),
+		_size(std::move(a_rhs._size)),
+		_capacity(std::move(a_rhs._capacity)),
 		_pad0C(0)
 	{
 		a_rhs._data = 0;
-		a_rhs._dataLen = 0;
-		a_rhs._bufLen = 0;
+		a_rhs._size = 0;
+		a_rhs._capacity = 0;
 	}
 
 
 	BSString::BSString(const char* a_rhs) :
 		_data(0),
-		_dataLen(0),
-		_bufLen(0),
+		_size(0),
+		_capacity(0),
 		_pad0C(0)
 	{
 		set_cstr(a_rhs);
@@ -75,11 +75,11 @@ namespace RE
 		_data = std::move(a_rhs._data);
 		a_rhs._data = 0;
 
-		_dataLen = std::move(a_rhs._dataLen);
-		a_rhs._dataLen = 0;
+		_size = std::move(a_rhs._size);
+		a_rhs._size = 0;
 
-		_bufLen = std::move(a_rhs._bufLen);
-		a_rhs._bufLen = 0;
+		_capacity = std::move(a_rhs._capacity);
+		a_rhs._capacity = 0;
 
 		return *this;
 	}
@@ -170,7 +170,7 @@ namespace RE
 	auto BSString::size() const noexcept
 		-> size_type
 	{
-		return (_dataLen != kMaxSize) ? _dataLen : std::char_traits<char>::length(_data);
+		return (_size != kMaxSize) ? _size : std::char_traits<char>::length(_data);
 	}
 
 

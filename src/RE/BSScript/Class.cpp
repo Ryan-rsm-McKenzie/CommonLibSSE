@@ -7,6 +7,33 @@ namespace RE
 {
 	namespace BSScript
 	{
+		BSFixedString Class::ScriptFlag::GetFlag() const
+		{
+			auto sanitizedType = flag & ~kUnkFlag;
+			return *reinterpret_cast<BSFixedString*>(&sanitizedType);
+		}
+		
+		
+		UInt32 Class::ScriptState::GetNumFuncs() const
+		{
+			return data & kFuncCountMask;
+		}
+
+
+		auto Class::ScriptState::GetFuncIter()
+			-> Func*
+		{
+			return reinterpret_cast<Func*>((std::uintptr_t)this + (data >> kFuncOffsetShift));
+		}
+
+
+		auto Class::ScriptState::GetFuncIter() const
+			-> const Func*
+		{
+			return reinterpret_cast<const Func*>((std::uintptr_t)this + (data >> kFuncOffsetShift));
+		}
+
+
 		Class::~Class()
 		{
 			Dtor();
@@ -19,15 +46,55 @@ namespace RE
 		}
 
 
-		UInt32 Class::GetFlags() const
+		VMTypeID Class::GetTypeID() const
 		{
-			return pun_bits(flag1, flag2);
+			return unrestricted_cast<VMTypeID>(this);
 		}
 
 
-		UInt32 Class::GetNumScriptFlags() const
+		bool Class::IsInherited() const
 		{
-			return pun_bits(numScriptFlags1, numScriptFlags2, numScriptFlags3, numScriptFlags4, numScriptFlags5, numScriptFlags6);
+			return inherited;
+		}
+
+
+		bool Class::IsRemoved() const
+		{
+			return removed;
+		}
+
+
+		auto Class::GetFunctionIter()
+			-> Function*
+		{
+			return reinterpret_cast<Function*>(data);
+		}
+
+
+		auto Class::GetFunctionIter() const
+			-> const Function*
+		{
+			return reinterpret_cast<const Function*>(data);
+		}
+
+
+		UInt32 Class::GetNumFlags() const
+		{
+			return pun_bits(numFlags1, numFlags2, numFlags3, numFlags4, numFlags5, numFlags6);
+		}
+
+
+		auto Class::GetFlagIter()
+			-> ScriptFlag*
+		{
+			return reinterpret_cast<ScriptFlag*>(data);
+		}
+
+
+		auto Class::GetFlagIter() const
+			-> const ScriptFlag*
+		{
+			return reinterpret_cast<const ScriptFlag*>(data);
 		}
 
 
@@ -47,9 +114,37 @@ namespace RE
 		}
 
 
+		auto Class::GetVariableIter()
+			-> ScriptVariable*
+		{
+			return reinterpret_cast<ScriptVariable*>(GetFlagIter() + GetNumFlags());
+		}
+
+
+		auto Class::GetVariableIter() const
+			-> const ScriptVariable*
+		{
+			return reinterpret_cast<const ScriptVariable*>(GetFlagIter() + GetNumFlags());
+		}
+
+
 		UInt32 Class::GetNumDefaultValues() const
 		{
 			return pun_bits(numDefaultValues1, numDefaultValues2, numDefaultValues3, numDefaultValues4, numDefaultValues5, numDefaultValues6, numDefaultValues7, numDefaultValues8, numDefaultValues9, numDefaultValues10);
+		}
+
+
+		auto Class::GetDefaultValueIter()
+			-> DefaultScriptValue*
+		{
+			return reinterpret_cast<DefaultScriptValue*>(GetVariableIter() + GetNumVariables());
+		}
+
+
+		auto Class::GetDefaultValueIter() const
+			-> const DefaultScriptValue*
+		{
+			return reinterpret_cast<const DefaultScriptValue*>(GetVariableIter() + GetNumVariables());
 		}
 
 
@@ -59,43 +154,89 @@ namespace RE
 		}
 
 
+		auto Class::GetPropertyIter()
+			-> ScriptProperty*
+		{
+			return reinterpret_cast<ScriptProperty*>(GetDefaultValueIter() + GetNumDefaultValues());
+		}
+
+
+		auto Class::GetPropertyIter() const
+			-> const ScriptProperty*
+		{
+			return reinterpret_cast<const ScriptProperty*>(GetDefaultValueIter() + GetNumDefaultValues());
+		}
+
+
 		UInt32 Class::GetNumGlobalFuncs() const
 		{
 			return pun_bits(numGlobalFuncs1, numGlobalFuncs2, numGlobalFuncs3, numGlobalFuncs4, numGlobalFuncs5, numGlobalFuncs6, numGlobalFuncs7, numGlobalFuncs8, numGlobalFuncs9);
 		}
 
 
+		auto Class::GetGlobalFuncIter()
+			-> ScriptGlobalFunc*
+		{
+			return reinterpret_cast<ScriptGlobalFunc*>(GetPropertyIter() + GetNumProperties());
+		}
+
+
+		auto Class::GetGlobalFuncIter() const
+			-> const ScriptGlobalFunc*
+		{
+			return reinterpret_cast<const ScriptGlobalFunc*>(GetPropertyIter() + GetNumProperties());
+		}
+
+
 		UInt32 Class::GetNumMemberFuncs() const
 		{
-			return pun_bits(numMemberFuncs1, numMemberFuncs2, numMemberFuncs3, numMemberFuncs4, numMemberFuncs5, numMemberFuncs6, numMemberFuncs7, numMemberFuncs8, numMemberFuncs9);
+			return pun_bits(numMemberFuncs1, numMemberFuncs2, numMemberFuncs3, numMemberFuncs4, numMemberFuncs5, numMemberFuncs6, numMemberFuncs7, numMemberFuncs8, numMemberFuncs9, numMemberFuncs10, numMemberFuncs11);
+		}
+
+
+		auto Class::GetMemberFuncIter()
+			-> ScriptMemberFunc*
+		{
+			return reinterpret_cast<ScriptMemberFunc*>(GetGlobalFuncIter() + GetNumGlobalFuncs());
+		}
+
+
+		auto Class::GetMemberFuncIter() const
+			-> const ScriptMemberFunc*
+		{
+			return reinterpret_cast<const ScriptMemberFunc*>(GetGlobalFuncIter() + GetNumGlobalFuncs());
 		}
 
 
 		UInt32 Class::GetNumStates() const
 		{
-			return pun_bits(numStates1, numStates2, numStates3, numStates4, numStates5);
+			return pun_bits(numStates1, numStates2, numStates3, numStates4, numStates5, numStates6, numStates7);
 		}
 
 
-		VMTypeID Class::GetTypeID() const
+		auto Class::GetStateIter()
+			-> ScriptState*
 		{
-			return unrestricted_cast<VMTypeID>(this);
+			return reinterpret_cast<ScriptState*>(GetMemberFuncIter() + GetNumMemberFuncs());
 		}
 
 
-		SInt32 Class::GetVariableIndex(const BSFixedString& a_name) const
+		auto Class::GetStateIter() const
+			-> const ScriptState*
 		{
-			using func_t = function_type_t<decltype(&Class::GetVariableIndex)>;
-			func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::VMClassInfo, GetVariable, func_t*);
-			return func(this, a_name);
+			return reinterpret_cast<const ScriptState*>(GetMemberFuncIter() + GetNumMemberFuncs());
 		}
 
 
-		IFunction* Class::GetFunction(const char* a_name) const
+		UInt32 Class::GetPropertyIndex(const BSFixedString& a_name) const
 		{
-			using func_t = function_type_t<decltype(&Class::GetFunction)>;
-			func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::VMClassInfo, GetFunction, func_t*);
-			return func(this, a_name);
+			auto prop = GetPropertyIter();
+			for (UInt32 i = 0; i < GetNumVariables(); ++i) {
+				if (prop->name == a_name) {
+					return prop->idx;
+				}
+			}
+			return static_cast<UInt32>(-1);
 		}
 
 

@@ -1,6 +1,7 @@
 #include "RE/BSScript/Object.h"
 
 #include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
+#include "RE/BSScript/Class.h"  // BSScript::Class
 #include "RE/BSScript/IObjectHandlePolicy.h"  // BSScript::IObjectHandlePolicy
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
@@ -59,6 +60,36 @@ namespace RE
 			using func_t = function_type_t<decltype(&Object::DecRefCount)>;
 			REL::Offset<func_t*> func(Offset::BSScript::Object::DecRefCount);
 			return func(this);
+		}
+
+
+		Variable* Object::GetProperty(const BSFixedString& a_name)
+		{
+			if (!classPtr) {
+				return 0;
+			}
+
+			auto idx = classPtr->GetPropertyIndex(a_name);
+			if (idx == static_cast<UInt32>(-1)) {
+				return 0;
+			}
+
+			return &variables[idx];
+		}
+
+
+		const Variable*	Object::GetProperty(const BSFixedString& a_name) const
+		{
+			if (!classPtr) {
+				return 0;
+			}
+
+			auto idx = classPtr->GetPropertyIndex(a_name);
+			if (idx == static_cast<UInt32>(-1)) {
+				return 0;
+			}
+
+			return &variables[idx];
 		}
 	}
 }

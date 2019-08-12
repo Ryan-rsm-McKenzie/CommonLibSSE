@@ -2,6 +2,8 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_BSScript__IObjectHandlePolicy
 
+#include "RE/FormTypes.h"  // FormType
+
 
 namespace RE
 {
@@ -31,6 +33,10 @@ namespace RE
 			virtual void		AddRef(VMHandle a_handle) = 0;									// 09
 			virtual void		Release(VMHandle a_handle) = 0;									// 0A
 			virtual void		ToString(VMHandle a_handle, BSFixedString& a_strOut) = 0;		// 0B
+
+			bool		IsType(FormType a_typeID, VMHandle a_handle);
+			VMHandle	GetHandle(FormType a_typeID, const TESForm* a_srcData);
+			void*		Resolve(FormType a_typeID, VMHandle a_handle);
 		};
 		STATIC_ASSERT(sizeof(IObjectHandlePolicy) == 0x8);
 	}

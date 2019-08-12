@@ -227,7 +227,7 @@ namespace RE
 		virtual bool							GetStartingData(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_veryRarelyUsedFallback) override;																// 03D
 		virtual void							SetStartingLocation(BGSLocation* a_location) override;																																				// 03E - { startingLocation = a_location; }
 		virtual void							Unk_3F(void) override;																																												// 03F
-		virtual void							Unk_40(void) override;																																												// 040
+		virtual void							SayQueuedDialogue() override;																																										// 040
 		virtual void							Unk_41(void) override;																																												// 041
 		virtual void							Unk_45(void) override;																																												// 045
 		virtual bool							HasKeyword(BGSKeyword* a_keyword) override;																																							// 048

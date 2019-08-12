@@ -174,6 +174,13 @@ namespace RE
 		}
 
 
+		namespace DialogueData
+		{
+			// IndirectSig: E8 ? ? ? ? 48 8B F8 41 89 1E 48 8B C7 48 8B 5C 24 70
+			constexpr std::uintptr_t Ctor = 0x0056C9D0;	// 1_5_80
+		}
+
+
 		namespace FavoritesHandler
 		{
 			// ??_7FavoritesHandler@@6B@

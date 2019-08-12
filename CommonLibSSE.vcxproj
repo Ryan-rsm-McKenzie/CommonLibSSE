@@ -188,6 +188,7 @@
     <ClCompile Include="src\RE\BSScript\Array.cpp" />
     <ClCompile Include="src\RE\BSScript\Class.cpp" />
     <ClCompile Include="src\RE\BSScript\IFunction.cpp" />
+    <ClCompile Include="src\RE\BSScript\IObjectHandlePolicy.cpp" />
     <ClCompile Include="src\RE\BSScript\IStackCallbackFunctor.cpp" />
     <ClCompile Include="src\RE\BSScript\Object.cpp" />
     <ClCompile Include="src\RE\BSScript\Stack.cpp" />
@@ -207,6 +208,7 @@
     <ClCompile Include="src\RE\BSWin32SaveDataSystemUtility.cpp" />
     <ClCompile Include="src\RE\ChestsLooted.cpp" />
     <ClCompile Include="src\RE\Console.cpp" />
+    <ClCompile Include="src\RE\DialogueData.cpp" />
     <ClCompile Include="src\RE\ExtraAliasInstanceArray.cpp" />
     <ClCompile Include="src\RE\ExtraCannotWear.cpp" />
     <ClCompile Include="src\RE\ExtraCharge.cpp" />

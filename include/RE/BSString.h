@@ -87,8 +87,8 @@ namespace RE
 
 		// members
 		char*	_data;		// 00
-		UInt16	_dataLen;	// 08
-		UInt16	_bufLen;	// 0A
+		UInt16	_size;		// 08
+		UInt16	_capacity;	// 0A
 		UInt32	_pad0C;		// 0C
 	};
 	STATIC_ASSERT(sizeof(BSString) == 0x10);

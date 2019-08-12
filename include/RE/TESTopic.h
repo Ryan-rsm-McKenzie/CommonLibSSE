@@ -176,9 +176,9 @@ namespace RE
 		virtual void			InitItem() override;						// 13
 		virtual const char*		GetEditorID() override;						// 32 - { return editorID.c_str() ? editorID.c_str() : ""; }
 		virtual bool			SetEditorID(const char* a_str) override;	// 33 - { bool result = editorID == a_str; editorID = a_str; return result; }
-		virtual void			Unk_36(void);								// 36 - { return a_arg1 == FormType::Info }
+		virtual void			Unk_36(void) override;						// 36 - { return a_arg1 == FormType::Info }
 
-		float					GetPriority() const;
+		float GetPriority() const;
 
 
 		// members
@@ -191,7 +191,7 @@ namespace RE
 		TESQuest*			quest;		// 40 -	QNAM
 		TESTopicInfo**		infoTopics;	// 48 - infoTopics[infoCount]
 		UInt32				infoCount;	// 50 - TIFC
-		UInt32				pad54;		// 54
+		UInt32				fileOffset;	// 54
 		BSFixedString		editorID;	// 58
 	};
 	STATIC_ASSERT(sizeof(TESTopic) == 0x60);
