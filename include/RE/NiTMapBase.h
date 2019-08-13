@@ -29,7 +29,7 @@ namespace RE
 	STATIC_ASSERT(sizeof(TestNiTMapItem) == 0x18);
 
 
-	// 20
+	// hash table with separate chaining
 	template <class Allocator, class Key, class T>
 	class NiTMapBase
 	{
@@ -74,7 +74,7 @@ namespace RE
 			{
 				assert(_proxy);
 				a_rhs._iter = 0;
-				a_rhs._idx = a_rhs._proxy->_allocator.count;
+				a_rhs._idx = a_rhs._proxy->_capacity;
 			}
 
 
@@ -84,12 +84,10 @@ namespace RE
 				_idx(a_idx)
 			{
 				assert(_proxy);
-				while (_idx < _proxy->_allocator.count) {
-					_iter = _proxy->_hashTable[_idx];
-					if (_iter) {
-						break;
-					}
+				_iter = _proxy->_data[_idx];
+				while (!_iter && _idx < _proxy->_capacity) {
 					++_idx;
+					_iter = _proxy->_data[_idx];
 				}
 			}
 
@@ -114,7 +112,7 @@ namespace RE
 				a_rhs._iter = 0;
 
 				_idx = std::move(a_rhs._idx);
-				a_rhs._idx = a_rhs._proxy->_allocator.count;
+				a_rhs._idx = a_rhs._proxy->_capacity;
 			}
 
 
@@ -129,7 +127,7 @@ namespace RE
 			[[nodiscard]] reference operator*() const
 			{
 				assert(_iter);
-				assert(_idx < _proxy->_allocator.count);
+				assert(_idx < _proxy->_capacity);
 				return *_iter;
 			}
 
@@ -137,7 +135,7 @@ namespace RE
 			[[nodiscard]] pointer operator->() const
 			{
 				assert(_iter);
-				assert(_idx < _proxy->_allocator.count);
+				assert(_idx < _proxy->_capacity);
 				return _iter;
 			}
 
@@ -145,7 +143,7 @@ namespace RE
 			[[nodiscard]] bool operator==(const iterator_base& a_rhs) const
 			{
 				assert(_proxy == a_rhs._proxy);
-				return _idx == a_rhs._idx;
+				return _idx == a_rhs._idx && _iter == a_rhs._iter;
 			}
 
 
@@ -160,19 +158,15 @@ namespace RE
 			{
 				assert(_proxy);
 				assert(_iter);
-				assert(_idx < _proxy->_allocator.count);
+				assert(_idx < _proxy->_capacity);
 
 				if (_iter->next) {
 					_iter = _iter->next;
 				} else {
-					_idx = _proxy->hash_function(_iter->key) + 1;
-					while (_idx < _proxy->_allocator.count) {
-						_iter = _proxy->_hashTable[_idx];
-						if (_iter) {
-							break;
-						}
+					do {
 						++_idx;
-					}
+						_iter = _proxy->_data[_idx];
+					} while (!_iter && _idx < _proxy->_capacity);
 				}
 				
 				return *this;
@@ -202,37 +196,39 @@ namespace RE
 		{
 			AntiBloatAllocator() :
 				Allocator(),
-				count(0)
+				size(0)
 			{}
 
 
 			// members
-			size_type count;	// ??
+			size_type size;	// ??
 		};
 
 
-		NiTMapBase(size_type a_hashSize = 37) :
-			_hashSize(a_hashSize),
+		NiTMapBase(size_type a_capacity = 37) :
+			_capacity(a_capacity),
 			_pad0C(0),
-			_hashTable(0),
+			_data(0),
 			_allocator()
 		{
-			std::size_t tableSize = sizeof(value_type*) * _hashSize;
-			_hashTable = malloc<value_type*>(tableSize);
-			std::memset(_hashTable, 0, tableSize);
+			std::size_t memSize = sizeof(value_type*) * _capacity;
+			_data = malloc<value_type*>(memSize);
+			std::memset(_data, 0, memSize);
 		}
 
 
 		virtual ~NiTMapBase()
 		{
 			clear();
-			if (_hashTable) {
-				free(_hashTable);
+			if (_data) {
+				free(_data);
+				_data = 0;
 			}
+			_capacity = 0;
 		}
 
 	protected:
-		virtual	UInt32		hash_function(key_type a_key) const;										// 01 - { return a_key % _hashSize; }
+		virtual	UInt32		hash_function(key_type a_key) const;										// 01 - { return a_key % _capacity; }
 		virtual	bool		key_eq(key_type a_lhs, key_type a_rhs) const;								// 02 - { return stricmp(a_lhs == a_rhs); }
 		virtual	void		assign_value(value_type* a_value, key_type a_key, mapped_type a_mapped);	// 03 - { a_value->key = a_key; a_value->mapped = a_mapped; }
 		virtual void		clear_value(value_type* a_value);											// 04 - { return; }
@@ -260,46 +256,46 @@ namespace RE
 
 		iterator end()
 		{
-			return iterator(this, _hashSize);
+			return iterator(this, _capacity);
 		}
 
 
 		const_iterator end() const
 		{
-			return const_iterator(this, _hashSize);
+			return const_iterator(this, _capacity);
 		}
 
 
 		const_iterator cend() const
 		{
-			return const_iterator(this, _hashSize);
+			return const_iterator(this, _capacity);
 		}
 
 
 		[[nodiscard]] bool empty() const noexcept
 		{
-			return _allocator.count == 0;
+			return _allocator.size == 0;
 		}
 
 
 		size_type size() const noexcept
 		{
-			return _allocator.count;
+			return _allocator.size;
 		}
 
 
 		void clear() noexcept
 		{
-			for (size_type i = 0; i < _hashSize; i++) {
-				while (_hashTable[i]) {
-					auto elem = _hashTable[i];
-					_hashTable[i] = _hashTable[i]->next;
+			for (UInt32 i = 0; i < _capacity; i++) {
+				while (_data[i]) {
+					auto elem = _data[i];
+					_data[i] = _data[i]->next;
 					clear_value(elem);
 					free_value(elem);
 				}
 			}
 
-			_allocator.count = 0;
+			_allocator.size = 0;
 		}
 
 
@@ -308,7 +304,7 @@ namespace RE
 		{
 			// look up hash table location for key
 			auto index = hash_function(a_key);
-			auto item = _hashTable[index];
+			auto item = _data[index];
 
 			// search list at hash table location for key
 			while (item) {
@@ -325,9 +321,9 @@ namespace RE
 
 			assert(item != 0);
 			assign_value(item, std::move(a_key), std::forward<M>(a_obj));
-			item->next = _hashTable[index];
-			_hashTable[index] = item;
-			++_allocator.count;
+			item->next = _data[index];
+			_data[index] = item;
+			++_allocator.size;
 			return true;
 		}
 
@@ -336,32 +332,22 @@ namespace RE
 		{
 			// look up hash table location for key
 			auto index = hash_function(a_key);
-			auto item = _hashTable[index];
+			auto item = _data[index];
 
-			// search list at hash table location for key
-			if (item) {
+			value_type* prev = 0;
+			while (item) {
 				if (key_eq(a_key, item->key)) {
-					// item at front of list, remove it
-					_hashTable[index] = item->next;
+					if (prev) {
+						prev->next = item->next;
+					} else {
+						_data[index] = item->next;
+					}
 					remove_value(item);
 					return 1;
-				} else {
-					// search rest of list for item
-					auto prev = item;
-					auto curr = prev->next;
-					while (curr && !key_eq(a_key, curr->key)) {
-						prev = curr;
-						curr = curr->next;
-					}
-					if (curr) {
-						// found the item, remove it
-						prev->next = curr->next;
-						remove_value(curr);
-						return 1;
-					}
 				}
+				prev = item;
+				item = item->next;
 			}
-
 			return 0;
 		}
 
@@ -369,7 +355,7 @@ namespace RE
 		std::pair<mapped_type, bool> find(const Key& a_key) const
 		{
 			size_type idx = hash_function(a_key);
-			for (auto iter = _hashTable[idx]; iter; iter = iter->next) {
+			for (auto iter = _data[idx]; iter; iter = iter->next) {
 				if (key_eq(a_key, iter->key)) {
 					return std::make_pair(iter->mapped, true);
 				}
@@ -383,14 +369,14 @@ namespace RE
 		{
 			clear_value(a_value);
 			free_value(a_value);
-			--_allocator.count;
+			--_allocator.size;
 		}
 
 	public:
 		// members
-		UInt32				_hashSize;	// 08
+		UInt32				_capacity;	// 08
 		UInt32				_pad0C;		// 0C
-		value_type**		_hashTable;	// 10 - hash table storage
+		value_type**		_data;		// 10
 		AntiBloatAllocator	_allocator;	// 18
 	};
 }
