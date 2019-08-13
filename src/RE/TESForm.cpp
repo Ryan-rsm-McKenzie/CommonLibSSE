@@ -1,9 +1,8 @@
 #include "RE/TESForm.h"
 
-#include "skse64/GameForms.h"  // TESForm
-
 #include "RE/ExtraEnchantment.h"  // ExtraEnchantment
 #include "RE/FormTraits.h"  // As
+#include "RE/GlobalLookupInfo.h"  // GlobalLookupInfo
 #include "RE/MagicItem.h"  // MagicItem
 #include "RE/TESModel.h"  // TESModel
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
@@ -12,9 +11,31 @@
 
 namespace RE
 {
-	TESForm* TESForm::LookupByID(UInt32 a_formID)
+	TESForm* TESForm::LookupByID(FormID a_formID)
 	{
-		return LookupByID_Internal(a_formID);
+		auto lookup = GlobalLookupInfo::GetSingleton();
+		RE::BSReadLockGuard locker(lookup->formIDsLock);
+		if (!lookup->formIDs) {
+			return 0;
+		}
+
+		auto& formIDs = *lookup->formIDs;
+		auto it = formIDs.find(a_formID);
+		return it != formIDs.end() ? it->second : 0;
+	}
+
+
+	TESForm* TESForm::LookupByEditorID(const std::string_view& a_editorID)
+	{
+		auto lookup = GlobalLookupInfo::GetSingleton();
+		RE::BSReadLockGuard locker(lookup->editorIDsLock);
+		if (!lookup->editorIDs) {
+			return 0;
+		}
+
+		auto& editorIDs = *lookup->editorIDs;
+		auto it = editorIDs.find(a_editorID);
+		return it != editorIDs.end() ? it->second : 0;
 	}
 
 
@@ -27,14 +48,6 @@ namespace RE
 	bool TESForm::IsNot(FormType a_type) const
 	{
 		return formType != a_type;
-	}
-
-
-	void TESForm::CopyFromEx(TESForm* a_rhs)
-	{
-		using func_t = function_type_t<decltype(&TESForm::CopyFromEx)>;
-		func_t* func = unrestricted_cast<func_t*>(&::TESForm::CopyFromEx);
-		return func(this, a_rhs);
 	}
 
 
@@ -104,7 +117,7 @@ namespace RE
 	}
 
 
-	UInt32 TESForm::GetFormID() const
+	FormID TESForm::GetFormID() const
 	{
 		return formID;
 	}
@@ -112,11 +125,14 @@ namespace RE
 
 	float TESForm::GetWeight() const
 	{
-		using func_t = function_type_t<decltype(&TESForm::GetWeight)>;
-		func_t* func = unrestricted_cast<func_t*>(&::GetFormWeight);
 		auto ref = As<TESObjectREFR*>();
 		auto form = ref ? ref->baseForm : this;
-		return func(form);
+		auto weightForm = form->As<TESWeightForm*>();
+		if (weightForm) {
+			return weightForm->weight;
+		} else {
+			return -1.0;
+		}
 	}
 
 
@@ -146,13 +162,5 @@ namespace RE
 		}
 
 		return value;
-	}
-
-
-	TESForm* TESForm::LookupByID_Internal(UInt32 a_formID)
-	{
-		using func_t = function_type_t<decltype(&TESForm::LookupByID_Internal)>;
-		func_t* func = reinterpret_cast<func_t*>(::LookupFormByID.GetUIntPtr());
-		return func(a_formID);
 	}
 }

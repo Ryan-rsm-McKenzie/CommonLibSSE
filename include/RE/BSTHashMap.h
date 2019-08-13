@@ -151,7 +151,7 @@ namespace RE
 				_entry(std::move(a_rhs._entry)),
 				_end(a_rhs._end)
 			{
-				a_rhs._entry = 0;
+				a_rhs._entry = a_rhs._end;
 			}
 
 
@@ -180,7 +180,7 @@ namespace RE
 			{
 				assert(_end == a_rhs._end);
 				_entry = std::move(a_rhs._entry);
-				a_rhs._entry = 0;
+				a_rhs._entry = a_rhs._end;
 			}
 
 
@@ -650,7 +650,7 @@ namespace RE
 				_entry(std::move(a_rhs._entry)),
 				_end(a_rhs._end)
 			{
-				a_rhs._entry = 0;
+				a_rhs._entry = a_rhs._end;
 			}
 
 
@@ -679,7 +679,7 @@ namespace RE
 			{
 				assert(_end == a_rhs._end);
 				_entry = std::move(a_rhs._entry);
-				a_rhs._entry = 0;
+				a_rhs._entry = a_rhs._end;
 			}
 
 

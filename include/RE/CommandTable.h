@@ -107,9 +107,15 @@ namespace RE
 		};
 
 
-#pragma pack(push, 1)
+		struct StringChunk;
+		struct IntegerChunk;
+
+
 		struct Chunk
-		{};
+		{
+			StringChunk*	AsString();
+			IntegerChunk*	AsInteger();
+		};
 
 
 		struct StringChunk : public Chunk
@@ -120,10 +126,11 @@ namespace RE
 
 			// members
 			UInt16	length;	// 00
-			char	str[1];	// 02
+			char	str[0];	// 02
 		};
 
 
+#pragma pack(push, 1)
 		struct IntegerChunk : public Chunk
 		{
 			int		GetInteger() const;
@@ -131,9 +138,11 @@ namespace RE
 
 
 			// members
-			char	unk00;	// 00
+			char	unk00;	// 00 - magic val?
 			SInt32	value;	// 01
 		};
+		STATIC_ASSERT(offsetof(IntegerChunk, value) == 0x1);
+		STATIC_ASSERT(sizeof(IntegerChunk) == 0x5);
 #pragma pack(pop)
 
 

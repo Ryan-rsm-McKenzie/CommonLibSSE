@@ -123,6 +123,24 @@ constexpr inline Enum& operator>>=(Enum& a_lhs, Enum a_rhs)
 }
 
 
+// prefix ++ operator
+template <class Enum, typename std::enable_if_t<std::is_enum<Enum>::value, int> = 0>
+constexpr inline Enum& operator++(Enum& a_this)
+{
+	return a_this = static_cast<Enum>(static_cast<std::underlying_type_t<Enum>>(a_this) + static_cast<std::underlying_type_t<Enum>>(1));
+}
+
+
+// postfix ++ operator
+template <class Enum, typename std::enable_if_t<std::is_enum<Enum>::value, int> = 0>
+constexpr inline Enum operator++(Enum& a_this, int)
+{
+	auto tmp = a_this;
+	a_this = static_cast<Enum>(static_cast<std::underlying_type_t<Enum>>(a_this) + static_cast<std::underlying_type_t<Enum>>(1));
+	return tmp;
+}
+
+
 template <class To, class From, class Enable = void>
 To unrestricted_cast(From a_from)
 {

@@ -33,6 +33,9 @@ namespace RE
 	template <class Allocator, class Key, class T>
 	class NiTMapBase
 	{
+	private:
+		template <class U> friend class iterator_base;
+
 	public:
 		using key_type = Key;
 		using mapped_type = T;
@@ -40,7 +43,161 @@ namespace RE
 		using size_type = UInt32;
 
 
-		// 4
+		template <class U>
+		struct iterator_base
+		{
+		public:
+			using difference_type = std::ptrdiff_t;
+			using value_type = U;
+			using pointer = U*;
+			using reference = U&;
+			using iterator_category = std::forward_iterator_tag;
+
+
+			iterator_base() :
+				_entry(0),
+				_end(0)
+			{}
+
+
+			iterator_base(const iterator_base& a_rhs) :
+				_proxy(a_rhs._proxy),
+				_iter(a_rhs._iter),
+				_idx(a_rhs._idx)
+			{}
+
+
+			iterator_base(iterator_base&& a_rhs) :
+				_proxy(a_rhs._proxy),
+				_iter(std::move(a_rhs._iter)),
+				_idx(std::move(a_rhs._idx))
+			{
+				assert(_proxy);
+				a_rhs._iter = 0;
+				a_rhs._idx = a_rhs._proxy->_allocator.count;
+			}
+
+
+			iterator_base(NiTMapBase* a_proxy, UInt32 a_idx) :
+				_proxy(a_proxy),
+				_iter(0),
+				_idx(a_idx)
+			{
+				assert(_proxy);
+				while (_idx < _proxy->_allocator.count) {
+					_iter = _proxy->_hashTable[_idx];
+					if (_iter) {
+						break;
+					}
+					++_idx;
+				}
+			}
+
+
+			~iterator_base()
+			{}
+
+
+			iterator_base& operator=(const iterator_base& a_rhs)
+			{
+				assert(_proxy == a_rhs._proxy);
+				_iter = a_rhs._iter;
+				_idx = a_rhs._idx;
+			}
+
+
+			iterator_base& operator=(iterator_base&& a_rhs)
+			{
+				assert(_proxy == a_rhs._proxy);
+
+				_iter = std::move(a_rhs._iter);
+				a_rhs._iter = 0;
+
+				_idx = std::move(a_rhs._idx);
+				a_rhs._idx = a_rhs._proxy->_allocator.count;
+			}
+
+
+			void swap(iterator_base& a_rhs)
+			{
+				assert(_proxy == a_rhs._proxy);
+				std::swap(_iter, a_rhs._iter);
+				std::swap(_idx, a_rhs._idx);
+			}
+
+
+			[[nodiscard]] reference operator*() const
+			{
+				assert(_iter);
+				assert(_idx < _proxy->_allocator.count);
+				return *_iter;
+			}
+
+
+			[[nodiscard]] pointer operator->() const
+			{
+				assert(_iter);
+				assert(_idx < _proxy->_allocator.count);
+				return _iter;
+			}
+
+
+			[[nodiscard]] bool operator==(const iterator_base& a_rhs) const
+			{
+				assert(_proxy == a_rhs._proxy);
+				return _idx == a_rhs._idx;
+			}
+
+
+			[[nodiscard]] bool operator!=(const iterator_base& a_rhs) const
+			{
+				return !operator==(a_rhs);
+			}
+
+
+			// prefix
+			iterator_base& operator++()
+			{
+				assert(_proxy);
+				assert(_iter);
+				assert(_idx < _proxy->_allocator.count);
+
+				if (_iter->next) {
+					_iter = _iter->next;
+				} else {
+					_idx = _proxy->hash_function(_iter->key) + 1;
+					while (_idx < _proxy->_allocator.count) {
+						_iter = _proxy->_hashTable[_idx];
+						if (_iter) {
+							break;
+						}
+						++_idx;
+					}
+				}
+				
+				return *this;
+			}
+
+
+			// postfix
+			iterator_base operator++(int)
+			{
+				iterator_base tmp(*this);
+				operator++();
+				return tmp;
+			}
+
+		private:
+			NiTMapBase* _proxy;
+			U* _iter;
+			UInt32 _idx;
+		};
+
+
+		using iterator = iterator_base<value_type>;
+		using const_iterator = iterator_base<const value_type>;
+
+
 		struct AntiBloatAllocator : public Allocator
 		{
 			AntiBloatAllocator() :
@@ -55,13 +212,13 @@ namespace RE
 
 
 		NiTMapBase(size_type a_hashSize = 37) :
-			_hashSize(a_hasSize),
+			_hashSize(a_hashSize),
 			_pad0C(0),
 			_hashTable(0),
 			_allocator()
 		{
 			std::size_t tableSize = sizeof(value_type*) * _hashSize;
-			_hashTable = malloc<value_type**>(tableSize);
+			_hashTable = malloc<value_type*>(tableSize);
 			std::memset(_hashTable, 0, tableSize);
 		}
 
@@ -83,6 +240,42 @@ namespace RE
 		virtual	void		free_value(value_type* a_value) = 0;										// 06
 
 	public:
+		iterator begin()
+		{
+			return iterator(this, 0);
+		}
+
+
+		const_iterator begin() const
+		{
+			return const_iterator(this, 0);
+		}
+
+
+		const_iterator cbegin() const
+		{
+			return const_iterator(this, 0);
+		}
+
+
+		iterator end()
+		{
+			return iterator(this, _hashSize);
+		}
+
+
+		const_iterator end() const
+		{
+			return const_iterator(this, _hashSize);
+		}
+
+
+		const_iterator cend() const
+		{
+			return const_iterator(this, _hashSize);
+		}
+
+
 		[[nodiscard]] bool empty() const noexcept
 		{
 			return _allocator.count == 0;
@@ -195,7 +388,7 @@ namespace RE
 
 	public:
 		// members
-		size_type			_hashSize;	// 08
+		UInt32				_hashSize;	// 08
 		UInt32				_pad0C;		// 0C
 		value_type**		_hashTable;	// 10 - hash table storage
 		AntiBloatAllocator	_allocator;	// 18

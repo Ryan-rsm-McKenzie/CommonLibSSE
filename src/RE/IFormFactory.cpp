@@ -1,13 +1,14 @@
 #include "RE/IFormFactory.h"
 
-#include "skse64/GameForms.h"  // IFormFactory
+#include "RE/GlobalLookupInfo.h"  // GlobalLookupInfo
 
 
 namespace RE
 {
 	IFormFactory* IFormFactory::GetFormFactoryByType(FormType a_formType)
 	{
-		return reinterpret_cast<IFormFactory*>(::IFormFactory::GetFactoryForType(static_cast<UInt32>(a_formType)));
+		auto lookup = GlobalLookupInfo::GetSingleton();
+		return lookup->formFactoriesInit ? lookup->formFactories[static_cast<UInt32>(a_formType)] : 0;
 	}
 
 

@@ -212,6 +212,13 @@ namespace RE
 		}
 
 
+		namespace GlobalLookupInfo
+		{
+			//
+			constexpr std::uintptr_t Singleton = 0x01EC3CB0;	// 1_5_80
+		}
+
+
 		namespace GMemory
 		{
 			// GFxFunctionHandler::virt_dtor + 35

@@ -2,10 +2,13 @@
 
 #include <cstdarg>  // va_list
 
+#include "RE/BSString.h"  // BSString
+#include "RE/BSTSingleton.h"  // BSTSingletonSDM
+
 
 namespace RE
 {
-	class ConsoleManager
+	class ConsoleManager : public BSTSingletonSDM<ConsoleManager>
 	{
 	public:
 		static ConsoleManager*	GetSingleton();
@@ -16,8 +19,12 @@ namespace RE
 
 
 		// members
-		char	unk0;			// 0
-		char	lastMessage[1];	// 1
+		char		lastMessage[0x400];	// 001
+		UInt8		pad401;				// 401
+		UInt16		pad402;				// 402
+		UInt32		pad404;				// 404
+		BSString	history;			// 408
 	};
-	STATIC_ASSERT(sizeof(ConsoleManager) == 0x2);
+	STATIC_ASSERT(offsetof(ConsoleManager, lastMessage) == 0x1);
+	STATIC_ASSERT(sizeof(ConsoleManager) == 0x418);
 }

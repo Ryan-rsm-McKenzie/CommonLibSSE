@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	class Console : IMenu
+	class Console : public IMenu
 	{
 	public:
 		inline static const void* RTTI = RTTI_Console;

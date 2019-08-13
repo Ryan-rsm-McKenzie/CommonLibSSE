@@ -53,6 +53,12 @@ namespace RE
 	}
 
 
+	const char* Setting::GetName() const
+	{
+		return name;
+	}
+
+
 	bool Setting::GetBool() const
 	{
 		return data.b;

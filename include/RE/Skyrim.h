@@ -485,6 +485,7 @@
 #include "RE/GHashsetCachedEntry.h"
 #include "RE/GHashsetCachedNodeEntry.h"
 #include "RE/GList.h"
+#include "RE/GlobalLookupInfo.h"
 #include "RE/GMath.h"
 #include "RE/GMatrix2D.h"
 #include "RE/GMemory.h"

@@ -1524,6 +1524,12 @@
     <ClCompile Include="src\RE\BSScript\IObjectHandlePolicy.cpp">
       <Filter>src\RE\BSScript</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\Script.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GlobalLookupInfo.cpp">
+      <Filter>src\RE\FileIO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -4402,6 +4408,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESActiveEffectApplyRemoveEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GlobalLookupInfo.h">
+      <Filter>include\RE\FileIO</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

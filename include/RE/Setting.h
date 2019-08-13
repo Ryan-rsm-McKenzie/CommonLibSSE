@@ -42,8 +42,9 @@ namespace RE
 		// add
 		virtual bool Unk_01(void);	// 01 - { return false; }
 
-		bool	IsManaged() const;
-		Type	GetType() const;
+		bool		IsManaged() const;
+		Type		GetType() const;
+		const char*	GetName() const;
 
 		bool		GetBool() const;
 		float		GetFloat() const;

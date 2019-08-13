@@ -107,8 +107,10 @@ namespace RE
 		virtual const char*		GetTypeString() const;																												// 39 - { return ""; }
 		virtual bool			Unk_3A(void);																														// 3A - { return 1; }
 
-		static TESForm*					LookupByID(UInt32 a_formID);
-		template <class T> static T*	LookupByID(UInt32 a_formID);
+		static TESForm*					LookupByID(FormID a_formID);
+		template <class T> static T*	LookupByID(FormID a_formID);
+		static TESForm*					LookupByEditorID(const std::string_view& a_editorID);
+		template <class T> static T*	LookupByEditorID(const std::string_view& a_editorID);
 
 		bool										Is(FormType a_type) const;
 		template <class First, class... Rest> bool	Is(First a_first, Rest... a_rest) const;
@@ -118,7 +120,6 @@ namespace RE
 		template <class T> constexpr T		As();
 		template <class T> constexpr auto	As() const;
 
-		void	CopyFromEx(TESForm* a_rhs);
 		bool	IsKey() const;
 		bool	IsWeapon() const;
 		bool	IsAmmo() const;
@@ -130,7 +131,7 @@ namespace RE
 		bool	IsPlayerRef() const;
 		bool	IsDynamicForm() const;
 		bool	HasWorldModel() const;
-		UInt32	GetFormID() const;
+		FormID	GetFormID() const;
 		float	GetWeight() const;
 		SInt32	GetGoldValue() const;
 
@@ -143,9 +144,6 @@ namespace RE
 		FormType		formType;		// 1A
 		UInt8			pad1B;			// 1B
 		UInt32			pad1C;			// 1C
-
-	private:
-		static TESForm* LookupByID_Internal(FormID a_formID);
 	};
 	STATIC_ASSERT(sizeof(TESForm) == 0x20);
 
@@ -153,8 +151,16 @@ namespace RE
 	template <class T>
 	inline static T* TESForm::LookupByID(FormID a_formID)
 	{
-		TESForm* form = LookupByID(a_formID);
-		return (form && (UInt8)form->formType == T::kTypeID) ? static_cast<T*>(form) : 0;
+		auto form = LookupByID(a_formID);
+		return (form && form->formType == static_cast<FormType>(T::kTypeID)) ? static_cast<T*>(form) : 0;
+	}
+
+
+	template <class T>
+	inline static T* TESForm::LookupByEditorID(const std::string_view& a_editorID)
+	{
+		auto form = LookupByEditorID(a_editorID);
+		return (form && form->formType == static_cast<FormType>(T::kTypeID)) ? static_cast<T*>(form) : 0;
 	}
 
 

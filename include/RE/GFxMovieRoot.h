@@ -43,7 +43,7 @@ namespace RE
 		virtual UInt32						GetVariableArraySize(const char* a_pathToVar) override;																															// 14 - Returns the size of array buffer necessary for GetVariableArray.
 		virtual bool						GetVariableArray(SetArrayType a_type, const char* a_pathToVar, UInt32 a_index, void* a_data, UInt32 a_count) override;															// 15 - Populates a buffer with results from an ActionScript array.
 		virtual bool						Invoke(const char* a_methodName, GFxValue* a_result, const GFxValue* a_args, UInt32 a_numArgs) override;																		// 16 - Calls an ActionScript method on the movie clip.
-		virtual bool						Invoke(const char* a_methodName, GFxValue* a_result, const char* a_argFmt, ...) override;																						// 17 - Calls an ActionScript method on the movie clip.
+		virtual bool						InvokeFmt(const char* a_methodName, GFxValue* a_result, const char* a_argFmt, ...) override;																					// 17 - Calls an ActionScript method on the movie clip.
 		virtual bool						InvokeArgs(const char* a_methodName, GFxValue* a_result, const char* a_argFmt, std::va_list a_args) override;																	// 18 - Invokes an ActionScript method on the movie clip using a format string followed by a variable argument list.
 		virtual void						SetViewport(const GViewport& a_viewDesc) override;																																// 19 - Sets the render-target surface viewport to which the movie is scaled.
 		virtual void						GetViewport(GViewport* a_viewDesc) const override;																																// 1A - Obtains the render-target surface viewport to which the movie is scaled.

@@ -10,6 +10,20 @@
 
 namespace RE
 {
+	auto CommandInfo::Chunk::AsString()
+		-> StringChunk*
+	{
+		return static_cast<StringChunk*>(this);
+	}
+
+
+	auto CommandInfo::Chunk::AsInteger()
+		-> IntegerChunk*
+	{
+		return static_cast<IntegerChunk*>(this);
+	}
+
+
 	std::string CommandInfo::StringChunk::GetString() const
 	{
 		return std::string(str, length);
@@ -19,27 +33,27 @@ namespace RE
 	auto CommandInfo::StringChunk::GetNext()
 		-> Chunk*
 	{
-		return (Chunk*)(str + length);
+		return reinterpret_cast<Chunk*>(str + length);
 	}
 
 
 	int CommandInfo::IntegerChunk::GetInteger() const
 	{
-		return *(int*)((char*)this + 1);
+		return *(int*)((std::uintptr_t)this + 1);
 	}
 
 
 	auto CommandInfo::IntegerChunk::GetNext()
 		-> Chunk*
 	{
-		return (Chunk*)(this + 1);
+		return reinterpret_cast<Chunk*>(this + 1);
 	}
 
 
 	auto CommandInfo::ScriptData::GetChunk()
 		-> Chunk*
 	{
-		return (Chunk*)((std::uintptr_t)this + 6);
+		return reinterpret_cast<Chunk*>(this + 1);
 	}
 
 

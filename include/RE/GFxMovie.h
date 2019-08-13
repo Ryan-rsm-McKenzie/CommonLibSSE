@@ -68,7 +68,7 @@ namespace RE
 		virtual UInt32			GetVariableArraySize(const char* a_pathToVar);																															// 14 - pure - Returns the size of array buffer necessary for GetVariableArray.
 		virtual bool			GetVariableArray(SetArrayType a_type, const char* a_pathToVar, UInt32 a_index, void* a_data, UInt32 a_count);															// 15 - pure - Populates a buffer with results from an ActionScript array.
 		virtual bool			Invoke(const char* a_methodName, GFxValue* a_result, const GFxValue* a_args, UInt32 a_numArgs);																			// 16 - pure - Calls an ActionScript method on the movie clip.
-		virtual bool			Invoke(const char* a_methodName, GFxValue* a_result, const char* a_argFmt, ...);																						// 17 - pure - Calls an ActionScript method on the movie clip.
+		virtual bool			InvokeFmt(const char* a_methodName, GFxValue* a_result, const char* a_argFmt, ...);																						// 17 - pure - Calls an ActionScript method on the movie clip.
 		virtual bool			InvokeArgs(const char* a_methodName, GFxValue* a_result, const char* a_argFmt, std::va_list a_args);																	// 18 - pure - Invokes an ActionScript method on the movie clip using a format string followed by a variable argument list.
 
 		static float			GetRenderPixelScale();
