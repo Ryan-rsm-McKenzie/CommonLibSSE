@@ -143,7 +143,16 @@ namespace RE
 			[[nodiscard]] bool operator==(const iterator_base& a_rhs) const
 			{
 				assert(_proxy == a_rhs._proxy);
-				return _idx == a_rhs._idx && _iter == a_rhs._iter;
+
+				if (_idx != a_rhs._idx) {
+					return false;
+				}
+
+				if (_idx < _proxy->_capacity) {
+					return _iter == a_rhs._iter;
+				}
+
+				return true;
 			}
 
 

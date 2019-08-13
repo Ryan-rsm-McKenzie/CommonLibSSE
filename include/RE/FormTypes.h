@@ -243,7 +243,7 @@ namespace RE
 		Armature,					//	66 ARMA	TESObjectARMA
 		EncounterZone,				//	67 ECZN	BGSEncounterZone
 		Location,					//	68 LCTN	BGSLocation
-		Message,					//	69 MESH	BGSMessage
+		Message,					//	69 MESG	BGSMessage
 		Ragdoll,					//	6A RGDL	BGSRagdoll
 		DefaultObject,				//	6B DOBJ BGSDefaultObjectManager
 		LightingMaster,				//	6C LGTM	BGSLightingTemplate

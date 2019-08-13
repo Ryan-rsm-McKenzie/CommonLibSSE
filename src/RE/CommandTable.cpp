@@ -26,7 +26,7 @@ namespace RE
 
 	std::string CommandInfo::StringChunk::GetString() const
 	{
-		return std::string(str, length);
+		return length ? std::string(str, length) : "";
 	}
 
 
