@@ -248,6 +248,8 @@
     <ClCompile Include="src\RE\hkpCharacterProxyListener.cpp" />
     <ClCompile Include="src\RE\hkReferencedObject.cpp" />
     <ClCompile Include="src\RE\hkStringPtr.cpp" />
+    <ClCompile Include="src\RE\HUDMeter.cpp" />
+    <ClCompile Include="src\RE\HUDObject.cpp" />
     <ClCompile Include="src\RE\IFormFactory.cpp" />
     <ClCompile Include="src\RE\INIPrefSettingCollection.cpp" />
     <ClCompile Include="src\RE\INISettingCollection.cpp" />
@@ -991,6 +993,7 @@
     <ClInclude Include="include\RE\HUDData.h" />
     <ClInclude Include="include\RE\HUDMenu.h" />
     <ClInclude Include="include\RE\HUDMeter.h" />
+    <ClInclude Include="include\RE\HUDNotifications.h" />
     <ClInclude Include="include\RE\HUDObject.h" />
     <ClInclude Include="include\RE\IAIWorldLocationHandle.h" />
     <ClInclude Include="include\RE\IAnimationGraphManagerHolder.h" />

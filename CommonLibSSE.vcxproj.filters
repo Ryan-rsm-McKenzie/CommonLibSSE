@@ -952,6 +952,12 @@
     <Filter Include="src\RE\AI">
       <UniqueIdentifier>{92bbe7b0-648c-49fc-9f08-64a5d8322032}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\Menus\HUDObject">
+      <UniqueIdentifier>{d088dc45-ca63-4d2c-befe-3f82b2808932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Menus\HUDObject\HUDMeter">
+      <UniqueIdentifier>{01bc5a67-f484-4fc9-9ce1-c41c6df8bfe0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1529,6 +1535,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\GlobalLookupInfo.cpp">
       <Filter>src\RE\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\HUDObject.cpp">
+      <Filter>src\RE\Menus\HUDObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\HUDMeter.cpp">
+      <Filter>src\RE\Menus\HUDObject\HUDMeter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4414,6 +4426,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\ActorValueMeter.h">
       <Filter>include\RE\Menus\HUDObject\HUDMeter</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\HUDNotifications.h">
+      <Filter>include\RE\Menus\HUDObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
