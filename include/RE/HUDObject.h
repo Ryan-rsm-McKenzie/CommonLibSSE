@@ -3,11 +3,15 @@
 #include "skse64/GameRTTI.h"  // RTTI_HUDObject
 
 #include "RE/GFxValue.h"  // GFxValue
+#include "RE/GPtr.h"  // GPtr
+#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
 
 
 namespace RE
 {
+	class FxDelegateArgs;
 	class GFxMovieView;
+	class UIMessage;
 
 
 	class HUDObject
@@ -16,18 +20,21 @@ namespace RE
 		inline static const void* RTTI = RTTI_HUDObject;
 
 
-		virtual ~HUDObject();				// 00
+		HUDObject(GFxMovieView* a_view);
+		virtual ~HUDObject() = default;									// 00
 
 		// add
-		virtual void	Update(void) = 0;	// 01
-		virtual void	Unk_02(void);		// 02 - { return 0; }
-		virtual void	Unk_03(void);		// 03
-		virtual void	Unk_04(void);		// 04 - { return; }
+		virtual void	Update() = 0;									// 01
+		virtual bool	ProcessMessage(UIMessage* a_message);			// 02 - { return false; }
+		virtual void	RegisterHUDComponent(FxDelegateArgs& a_params);	// 03 - { root = a_params[0]; }
+		virtual void	CleanUp();										// 04 - { return; }
+
+		TES_HEAP_REDEFINE_NEW();
 
 
 		// members
-		GFxMovieView*	view;	// 08
-		GFxValue		unk18;	// 10
+		GPtr<GFxMovieView>	view;	// 08
+		GFxValue			root;	// 10 - kDisplayObject - "_level0.HUDMovieBaseInstance"
 	};
 	STATIC_ASSERT(sizeof(HUDObject) == 0x28);
 }

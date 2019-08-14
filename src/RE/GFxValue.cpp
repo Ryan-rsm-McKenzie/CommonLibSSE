@@ -6,6 +6,9 @@
 #include <cstring>  // strcmp
 #include <cwchar>  // wcscoll
 
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
+
 
 namespace RE
 {
@@ -461,10 +464,26 @@ namespace RE
 	}
 
 
+	bool GFxValue::ObjectInterface::SetArraySize(void* a_data, UInt32 a_size)
+	{
+		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::SetArraySize)>;
+		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::SetArraySize);
+		return func(this, a_data, a_size);
+	}
+
+
 	bool GFxValue::ObjectInterface::GetElement(void* a_data, UInt32 a_idx, GFxValue* a_val) const
 	{
 		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::GetElement)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::GFxValue::ObjectInterface, GetElement, func_t*);
+		return func(this, a_data, a_idx, a_val);
+	}
+
+
+	bool GFxValue::ObjectInterface::SetElement(void* a_data, UInt32 a_idx, const GFxValue& a_val)
+	{
+		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::SetElement)>;
+		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::SetElement);
 		return func(this, a_data, a_idx, a_val);
 	}
 
@@ -474,6 +493,14 @@ namespace RE
 		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::PushBack)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::GFxValue::ObjectInterface, PushBack, func_t*);
 		return func(this, a_data, a_value);
+	}
+
+
+	bool GFxValue::ObjectInterface::RemoveElements(void* a_data, UInt32 a_idx, SInt32 a_count)
+	{
+		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::RemoveElements)>;
+		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::RemoveElements);
+		return func(this, a_data, a_idx, a_count);
 	}
 
 
@@ -888,6 +915,13 @@ namespace RE
 	}
 
 
+	bool GFxValue::SetArraySize(UInt32 a_size)
+	{
+		assert(IsArray());
+		return _objectInterface->SetArraySize(_value.obj, a_size);
+	}
+
+
 	bool GFxValue::GetElement(UInt32 a_idx, GFxValue* a_val) const
 	{
 		assert(IsArray());
@@ -895,10 +929,36 @@ namespace RE
 	}
 
 
+	bool GFxValue::SetElement(UInt32 a_idx, const GFxValue& a_val)
+	{
+		assert(IsArray());
+		return _objectInterface->SetElement(_value.obj, a_idx, a_val);
+	}
+
+
 	bool GFxValue::PushBack(const GFxValue& a_val)
 	{
 		assert(IsArray());
 		return _objectInterface->PushBack(_value.obj, a_val);
+	}
+
+
+	bool GFxValue::RemoveElements(UInt32 a_idx, SInt32 a_count)
+	{
+		assert(IsArray());
+		return _objectInterface->RemoveElements(_value.obj, a_count, a_count);
+	}
+
+
+	bool GFxValue::RemoveElement(UInt32 a_idx)
+	{
+		return RemoveElements(a_idx, 1);
+	}
+
+
+	bool GFxValue::ClearElements()
+	{
+		return RemoveElements(0);
 	}
 
 

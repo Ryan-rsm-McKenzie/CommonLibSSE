@@ -212,6 +212,20 @@ namespace RE
 		}
 
 
+		namespace GFxValue
+		{
+			namespace ObjectInterface
+			{
+				// DirectSig: 48 83 EC 28 45 8B D0
+				constexpr std::uintptr_t RemoveElements = 0x00ECB210;	// 1_5_80
+				// IndirectSig: E8 ? ? ? ? 80 BE FE 03 03 00 00
+				constexpr std::uintptr_t SetArraySize = 0x00ECB870;		// 1_5_80
+				// IndirectSig: E8 ? ? ? ? FF C3 48 83 C6 18
+				constexpr std::uintptr_t SetElement = 0x0ECC4B0;		// 1_5_80
+			}
+		}
+
+
 		namespace GlobalLookupInfo
 		{
 			//

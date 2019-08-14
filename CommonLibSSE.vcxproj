@@ -367,6 +367,7 @@
     <ClInclude Include="include\RE\ActorMover.h" />
     <ClInclude Include="include\RE\ActorTargetCheck.h" />
     <ClInclude Include="include\RE\ActorValueInfo.h" />
+    <ClInclude Include="include\RE\ActorValueMeter.h" />
     <ClInclude Include="include\RE\AddCallbackVisitor.h" />
     <ClInclude Include="include\RE\AlchemyItem.h" />
     <ClInclude Include="include\RE\AlchemyMenu.h" />

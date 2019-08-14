@@ -4412,5 +4412,8 @@
     <ClInclude Include="include\RE\GlobalLookupInfo.h">
       <Filter>include\RE\FileIO</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\ActorValueMeter.h">
+      <Filter>include\RE\Menus\HUDObject\HUDMeter</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

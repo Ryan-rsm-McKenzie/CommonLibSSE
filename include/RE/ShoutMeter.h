@@ -13,11 +13,11 @@ namespace RE
 		inline static const void* RTTI = RTTI_ShoutMeter;
 
 
-		virtual ~ShoutMeter();					// 00
+		virtual ~ShoutMeter();											// 00
 
 		// override (HUDMeter)
-		virtual void	Unk_02(void) override;	// 02
-		virtual float	GetFillPct() override;	// 05
+		virtual bool	ProcessMessage(UIMessage* a_message) override;	// 02
+		virtual float	GetFillPct() override;							// 05
 
 
 		// members

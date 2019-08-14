@@ -170,12 +170,15 @@ namespace RE
 			bool	HasMember(void* a_data, const char* a_name, bool a_isDObj) const;
 			bool	GetMember(void* a_data, const char* a_name, GFxValue* a_val, bool a_isDObj) const;
 			bool	SetMember(void* a_data, const char* a_name, const GFxValue& a_value, bool a_isDObj);
-			bool	Invoke(void* a_data, GFxValue* a_result, const char* a_name, const GFxValue* a_args, UPInt a_numArgs, bool isDObj);
+			bool	Invoke(void* a_data, GFxValue* a_result, const char* a_name, const GFxValue* a_args, UPInt a_numArgs, bool a_isDObj);
 			bool	DeleteMember(void* a_data, const char* a_name, bool a_isDObj);
 
 			UInt32	GetArraySize(void* a_data) const;
+			bool	SetArraySize(void* a_data, UInt32 a_size);
 			bool	GetElement(void* a_data, UInt32 a_idx, GFxValue* a_val) const;
+			bool	SetElement(void* a_data, UInt32 a_idx, const GFxValue& a_val);
 			bool	PushBack(void* a_data, const GFxValue& a_value);
+			bool	RemoveElements(void* a_data, UInt32 a_idx, SInt32 a_count);
 
 			bool	GetDisplayInfo(void* a_data, DisplayInfo* a_info) const;
 			bool	SetDisplayInfo(void* a_data, const DisplayInfo& a_info);
@@ -251,8 +254,13 @@ namespace RE
 
 		// AS Array support. Valid for Array type
 		UInt32			GetArraySize() const;
+		bool			SetArraySize(UInt32 a_size);
 		bool			GetElement(UInt32 a_idx, GFxValue* a_val) const;
+		bool			SetElement(UInt32 a_idx, const GFxValue& a_val);
 		bool			PushBack(const GFxValue& a_val);
+		bool			RemoveElements(UInt32 a_idx, SInt32 a_count = -1);
+		bool			RemoveElement(UInt32 a_idx);
+		bool			ClearElements();
 
 		// AS MovieClips, Buttons, TextFields support. Valid for DisplayObject type
 		bool			GetDisplayInfo(DisplayInfo* a_info) const;

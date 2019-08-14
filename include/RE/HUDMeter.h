@@ -14,14 +14,17 @@ namespace RE
 		inline static const void* RTTI = RTTI_HUDMeter;
 
 
-		virtual ~HUDMeter();					// 00
+		HUDMeter(GFxMovieView* a_view);
+		virtual ~HUDMeter() = default;									// 00
 
 		// override (HUDObject)
-		virtual void	Update(void) override;	// 01
-		virtual void	Unk_02(void) override;	// 02 - { return 0; }
+		virtual void	Update() override;								// 01
+		virtual bool	ProcessMessage(UIMessage* a_message) override;	// 02 - { return false; }
 
 		// add
-		virtual float	GetFillPct();			// 05 - { return 100.0; }
+		virtual float	GetFillPct();									// 05 - { return 100.0; }
+
+		void SetFillPct(bool a_forceUpdate);
 
 
 		// members

@@ -47,7 +47,7 @@ namespace RE
 		ActorValueMeter*		stamina;	// 60
 		ActorValueMeter*		magicka;	// 68
 		ShoutMeter*				shout;		// 70
-		GFxValue				unk78;		// 78
+		GFxValue				root;		// 78 - kDisplayObject - "_level0.HUDMovieBaseInstance"
 		UInt64					unk90;		// 90
 	};
 	STATIC_ASSERT(sizeof(HUDMenu) == 0x98);
