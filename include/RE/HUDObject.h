@@ -20,8 +20,27 @@ namespace RE
 		inline static const void* RTTI = RTTI_HUDObject;
 
 
+		struct HudComponents
+		{
+			enum HudComponent : UInt32
+			{
+				kThis = 0,
+				kHudElements,
+				kQuestUpdateBaseInstance,
+				kEnemyHealthMeter,
+				kStealthMeterInstance,
+				kSneakAnimInstance,
+				kBracketsInstance,
+				kRolloverNameInstance,
+				kSneakTextHolder,
+				kSneakTextInstance
+			};
+		};
+		using HudComponent = HudComponents::HudComponent;
+
+
 		HUDObject(GFxMovieView* a_view);
-		virtual ~HUDObject() = default;									// 00
+		virtual ~HUDObject();											// 00
 
 		// add
 		virtual void	Update() = 0;									// 01

@@ -1019,7 +1019,7 @@ namespace RE
 
 	void GFxValue::AcquireManagedValue(const GFxValue& a_rhs)
 	{
-		assert(_value.obj && _objectInterface);
+		assert(a_rhs._value.obj && a_rhs._objectInterface);
 		_objectInterface = a_rhs._objectInterface;
 		_objectInterface->ObjectAddRef(this, _value.obj);
 	}
