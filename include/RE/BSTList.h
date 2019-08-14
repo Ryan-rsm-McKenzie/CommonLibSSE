@@ -473,7 +473,7 @@ namespace RE
 		{
 			assert(!empty());
 			_listHead.item.~value_type();
-			
+
 			if (_listHead.next) {
 				new(std::addressof(_listHead.item)) value_type(std::move(_listHead.next->item));
 				auto old = _listHead.next;

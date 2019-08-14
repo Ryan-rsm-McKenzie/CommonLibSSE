@@ -139,7 +139,7 @@ namespace RE
 				kLeftHand = 1 << 17
 			};
 
-			
+
 			// members
 			float					unk00;		// 00
 			float					unk04;		// 04

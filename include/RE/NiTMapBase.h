@@ -177,7 +177,7 @@ namespace RE
 						_iter = _proxy->_data[_idx];
 					} while (!_iter && _idx < _proxy->_capacity);
 				}
-				
+
 				return *this;
 			}
 

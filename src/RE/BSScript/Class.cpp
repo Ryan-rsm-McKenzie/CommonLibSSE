@@ -12,8 +12,8 @@ namespace RE
 			auto sanitizedType = flag & ~kUnkFlag;
 			return *reinterpret_cast<BSFixedString*>(&sanitizedType);
 		}
-		
-		
+
+
 		UInt32 Class::ScriptState::GetNumFuncs() const
 		{
 			return data & kFuncCountMask;

@@ -138,7 +138,8 @@ namespace RE
 
 		struct KeyEqual
 		{
-			bool operator()(const NiPointer<TESObjectREFR>& a_lhs, const NiPointer<TESObjectREFR>& a_rhs) const {
+			bool operator()(const NiPointer<TESObjectREFR>& a_lhs, const NiPointer<TESObjectREFR>& a_rhs) const
+			{
 				return a_lhs->formID == a_rhs->formID;
 			}
 		};

@@ -70,7 +70,7 @@ namespace RE
 		};
 		STATIC_ASSERT(sizeof(UnkData) == 0x78);
 
-		
+
 		virtual ~BGSSaveLoadManager();																																// 00
 
 		// override (BSTEventSink<BSSaveDataEvent>)

@@ -38,7 +38,7 @@ namespace RE
 
 
 		using GetSupportingVertexFunc = void(const void* a_this, const hkVector4& a_direction, hkpCdVertex& a_supportVertex);
-		using ConvertVertexIdsToVerticesFunc = void(const void* a_this, const hkpVertexID* a_ids, int a_numIDs, class hkpCdVertex* a_verticesOut);
+		using ConvertVertexIdsToVerticesFunc = void(const void* a_this, const hkpVertexID* a_ids, SInt32 a_numIDs, class hkpCdVertex* a_verticesOut);
 		using WeldContactPointFunc = SInt32(const void* a_this, hkpVertexID* a_featurePoints, UInt8& a_numFeaturePoints, hkVector4& a_contactPointWs, const hkTransform* a_thisTransform, const hkpConvexShape* a_collidingShape, const hkTransform* a_collidingTransform, hkVector4& a_separatingNormalInOut);
 		using GetCentreFunc = void(const void* a_this, hkVector4& a_centreOut);
 		using GetNumCollisionSpheresFunc = SInt32(const void* a_this);

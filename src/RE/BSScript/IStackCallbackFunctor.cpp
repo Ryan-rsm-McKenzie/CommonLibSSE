@@ -14,6 +14,5 @@ namespace RE
 		{
 			return false;
 		}
-
 	}
 }

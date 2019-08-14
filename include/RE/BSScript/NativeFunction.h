@@ -90,8 +90,7 @@ namespace RE
 				auto chunkIdx = a_frame->stack->GetChunkIdx(a_frame);
 
 				base_type base{};
-				if constexpr (std::negation<is_static_base<base_type>>::value)
-				{
+				if constexpr (std::negation<is_static_base<base_type>>::value) {
 					base = a_baseValue->Unpack<base_type>();
 					if (!base) {
 						return false;
