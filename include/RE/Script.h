@@ -2,6 +2,7 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_Script
 
+#include <string>  // string
 #include <string_view>  // string_view
 
 #include "RE/FormTypes.h"  // FormType
@@ -19,6 +20,14 @@ namespace RE
 		enum { kTypeID = FormType::Script };
 
 
+		enum class InvokeType : std::size_t
+		{
+			kDefaultCompiler,
+			kSysWindowCompileAndRun,
+			kDialogueCompileAndRun
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32
@@ -34,8 +43,10 @@ namespace RE
 		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
 		virtual void	InitItem() override;				// 13
 
+		std::string GetCommand() const;
 		void SetCommand(std::string_view a_command);
 		void ClearCommand();
+		void Invoke(TESObjectREFR* a_targetRef, InvokeType a_type = InvokeType::kSysWindowCompileAndRun);
 
 
 		// members
@@ -52,6 +63,9 @@ namespace RE
 		UInt64	unk68;		// 68
 		UInt64	unk70;		// 70
 		UInt64	unk78;		// 78
+
+	private:
+		void Invoke_Impl(void* a_arg1, InvokeType a_type, TESObjectREFR* a_targetRef);
 	};
 	STATIC_ASSERT(sizeof(Script) == 0x80);
 }

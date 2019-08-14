@@ -1,5 +1,7 @@
 #include "SKSE/API.h"
 
+#include "skse64_common/BranchTrampoline.h"  // g_localTrampoline, g_branchTrampoline
+
 #include <mutex>  // mutex
 #include <vector>  // vector
 
@@ -275,5 +277,27 @@ namespace SKSE
 		-> make_const_t<decltype(g_persistentObjectStorage)>
 	{
 		return g_persistentObjectStorage;
+	}
+
+
+	bool AllocLocalTrampoline(std::size_t a_size)
+	{
+		if (!g_localTrampoline.Create(a_size)) {
+			_ERROR("Local trmapoline creation failed!\n");
+			return false;
+		}
+
+		return true;
+	}
+
+
+	bool AllocBranchTrampoline(std::size_t a_size)
+	{
+		if (!g_branchTrampoline.Create(a_size)) {
+			_ERROR("Branch trmapoline creation failed!\n");
+			return false;
+		}
+
+		return true;
 	}
 }

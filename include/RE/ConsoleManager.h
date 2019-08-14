@@ -23,7 +23,7 @@ namespace RE
 		UInt8		pad401;				// 401
 		UInt16		pad402;				// 402
 		UInt32		pad404;				// 404
-		BSString	history;			// 408
+		BSString	buffer;				// 408
 	};
 	STATIC_ASSERT(offsetof(ConsoleManager, lastMessage) == 0x1);
 	STATIC_ASSERT(sizeof(ConsoleManager) == 0x418);

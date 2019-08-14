@@ -35,4 +35,7 @@ namespace SKSE
 	const SKSEDelayFunctorManager*		GetDelayFunctorManager();
 	const SKSEObjectRegistry*			GetObjectRegistry();
 	const SKSEPersistentObjectStorage*	GetPersistentObjectStorage();
+
+	bool	AllocLocalTrampoline(std::size_t a_size);
+	bool	AllocBranchTrampoline(std::size_t a_size);
 }
