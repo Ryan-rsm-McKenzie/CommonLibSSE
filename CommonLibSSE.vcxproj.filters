@@ -4430,5 +4430,8 @@
     <ClInclude Include="include\RE\HUDNotifications.h">
       <Filter>include\RE\Menus\HUDObject</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\LevelUpMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -8,6 +8,7 @@
 #undef min
 #undef max
 #undef GetClassName
+#undef PlaySound
 
 #pragma warning(disable: 4018)	// signed/unsigned mismatch
 #pragma warning(disable: 4200)	// nonstandard extension used : zero-sized array in struct/union

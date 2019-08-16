@@ -11,6 +11,14 @@
 
 namespace RE
 {
+	void DebugNotification(const char* a_notification, const char* a_soundToPlay, bool a_cancelIfAlreadyQueued)
+	{
+		using func_t = function_type_t<decltype(&DebugNotification)>;
+		REL::Offset<func_t*> func(Offset::DebugNotification);
+		return func(a_notification, a_soundToPlay, a_cancelIfAlreadyQueued);
+	}
+
+
 	Setting* GetINISetting(const char* a_name)
 	{
 		Setting* setting = 0;
@@ -25,11 +33,11 @@ namespace RE
 	}
 
 
-	void DebugNotification(const char* a_notification, const char* a_soundToPlay, bool a_cancelIfAlreadyQueued)
+	void PlaySound(const char* a_editorID)
 	{
-		using func_t = function_type_t<decltype(&DebugNotification)>;
-		REL::Offset<func_t*> func(Offset::DebugNotification);
-		return func(a_notification, a_soundToPlay, a_cancelIfAlreadyQueued);
+		using func_t = function_type_t<decltype(&PlaySound)>;
+		REL::Offset<func_t*> func(Offset::PlaySound);
+		return func(a_editorID);
 	}
 
 

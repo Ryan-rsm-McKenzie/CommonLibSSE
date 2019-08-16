@@ -39,7 +39,7 @@ namespace RE
 			kInt,		// Array of 'Int'
 			kDouble,	// Array of 'Double' in memory
 			kFloat,		// Array of 'Float' in memory
-			kString,	// Array of 'const char*'. (Deprecated; use SAkValue)
+			kString,	// Array of 'const char*'. (Deprecated; use kValue)
 			kStringW,	// Array of 'const wchar_t*'. (Deprecated; use kValue)
 			kValue		// Array of Value
 		};

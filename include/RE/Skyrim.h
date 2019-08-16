@@ -626,6 +626,7 @@
 #include "RE/IUIMessageData.h"
 #include "RE/IXAudio2VoiceCallback.h"
 #include "RE/JumpHandler.h"
+#include "RE/LevelUpMenu.h"
 #include "RE/LocalMapCamera.h"
 #include "RE/LocalMapMenu.h"
 #include "RE/LoggingDisabler.h"

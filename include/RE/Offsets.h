@@ -537,11 +537,13 @@ namespace RE
 		}
 
 
-		// 48 83 EC 18 F3 41 0F 10 60 04
-		constexpr std::uintptr_t WorldPtToScreenPt3 = 0x00C660D0;	// 1_5_80
 		// IndirectSig: E8 ? ? ? ? 83 FE 0C
 		constexpr std::uintptr_t DebugNotification = 0x008DA3D0;	// 1_5_80
+		// IndirectSig: E8 ? ? ? ? 44 38 7E 50
+		constexpr std::uintptr_t PlaySound = 0x08DA860;				// 1_5_80
 		// IndirectSig: E8 ? ? ? ? 48 8B F5
 		constexpr std::uintptr_t RTDynamicCast = 0x0134B900;		// 1_5_80
+		// 48 83 EC 18 F3 41 0F 10 60 04
+		constexpr std::uintptr_t WorldPtToScreenPt3 = 0x00C660D0;	// 1_5_80
 	}
 }

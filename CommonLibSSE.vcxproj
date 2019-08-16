@@ -1037,6 +1037,7 @@
     <ClInclude Include="include\RE\ItemsPickpocketed.h" />
     <ClInclude Include="include\RE\IUIMessageData.h" />
     <ClInclude Include="include\RE\IXAudio2VoiceCallback.h" />
+    <ClInclude Include="include\RE\LevelUpMenu.h" />
     <ClInclude Include="include\RE\LocalMapCamera.h" />
     <ClInclude Include="include\RE\LocalMapMenu.h" />
     <ClInclude Include="include\RE\LoggingDisabler.h" />

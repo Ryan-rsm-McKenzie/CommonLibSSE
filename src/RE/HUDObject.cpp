@@ -7,8 +7,8 @@
 namespace RE
 {
 	HUDObject::HUDObject(GFxMovieView* a_view) :
-		view(a_view),
-		root()
+		_view(a_view),
+		_root()
 	{}
 
 
@@ -24,7 +24,7 @@ namespace RE
 
 	void HUDObject::RegisterHUDComponent(FxDelegateArgs& a_params)
 	{
-		root = a_params[HudComponent::kThis];
+		_root = a_params[HudComponent::kThis];
 	}
 
 
