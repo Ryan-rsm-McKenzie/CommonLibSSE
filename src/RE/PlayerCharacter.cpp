@@ -9,6 +9,14 @@
 
 namespace RE
 {
+	void PlayerCharacter::PlayerSkills::AdvanceLevel(bool a_addThreshold)
+	{
+		using func_t = function_type_t<decltype(&PlayerCharacter::PlayerSkills::AdvanceLevel)>;
+		REL::Offset<func_t*> func(Offset::PlayerCharacter::PlayerSkills::AdvanceLevel);
+		return func(this, a_addThreshold);
+	}
+
+
 	PlayerCharacter* PlayerCharacter::GetSingleton()
 	{
 		return reinterpret_cast<PlayerCharacter*>(*g_thePlayer);

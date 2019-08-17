@@ -68,7 +68,7 @@ namespace RE
 
 
 		// members
-		RefHandle									unk03C;								// 03C
+		RefHandle									handle;								// 03C
 		BSTSmallArray<void*, CameraState::kTotal>	unk040;								// 040
 		BSTSmartPointer<TESCameraState>				cameraStates[CameraState::kTotal];	// 0B8
 		Unk120*										unk120;								// 120

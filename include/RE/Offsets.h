@@ -387,6 +387,13 @@ namespace RE
 
 		namespace PlayerCharacter
 		{
+			namespace PlayerSkills
+			{
+				// IndirectSig: E8 ? ? ? ? 48 8B 15 ? ? ? ? 48 81 C2 40 01 00 00
+				constexpr std::uintptr_t AdvanceLevel = 0x006E6740;	// 1_5_80
+			}
+
+
 			//
 			constexpr std::uintptr_t CollisionDisabled = 0x01EBEB50;	// 1_5_80
 			// IndirectSig: E8 ? ? ? ? 48 3B C6 74 16

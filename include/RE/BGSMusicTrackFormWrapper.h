@@ -2,6 +2,7 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_BGSMusicTrackFormWrapper
 
+#include "RE/BSIMusicTrack.h"  // BSIMusicTrack
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
 
