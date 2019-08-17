@@ -202,6 +202,13 @@ namespace RE
 		}
 
 
+		namespace GFxMovieView
+		{
+			// IndirectSig: E8 ? ? ? ? C6 44 24 20 01 41 B9 03 00 00 00 44 8D 47 69
+			constexpr std::uintptr_t InvokeNoReturn = 0x00ED7C00;	// 1_5_80
+		}
+
+
 		namespace GFxTranslator
 		{
 			namespace TranslateInfo

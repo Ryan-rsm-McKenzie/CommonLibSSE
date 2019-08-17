@@ -118,7 +118,8 @@ namespace RE
 		virtual GFxMovieDef::MemoryContext*	GetMemoryContext() const;																							// 44 - pure
 		virtual void						Release();																											// 45 - pure
 
-		void								SetViewport(SInt32 a_bufW, SInt32 a_bufH, SInt32 a_left, SInt32 a_top, SInt32 a_width, SInt32 a_height, GViewport::Flag a_flags = GViewport::Flag::kNone);
+		void	SetViewport(SInt32 a_bufW, SInt32 a_bufH, SInt32 a_left, SInt32 a_top, SInt32 a_width, SInt32 a_height, GViewport::Flag a_flags = GViewport::Flag::kNone);
+		void	InvokeNoReturn(const char* a_methodName, const GFxValue* a_args, UInt32 a_numArgs);
 	};
 	STATIC_ASSERT(sizeof(GFxMovieView) == 0x18);
 }

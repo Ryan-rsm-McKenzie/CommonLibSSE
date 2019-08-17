@@ -2,6 +2,8 @@
 
 #include "RE/AddCallbackVisitor.h"  // AddCallbackVisitor
 #include "RE/FxDelegateArgs.h"  // FxDelegateArgs
+#include "RE/FxResponseArgsBase.h"  // FxResponseArgsBase
+#include "RE/GFxMovieView.h"  // GFxMovieView
 #include "RE/GFxValue.h"  // GFxValue
 #include "RE/RemoveCallbackVisitor.h"  // RemoveCallbackVisitor
 
@@ -21,6 +23,23 @@ namespace RE
 			FxDelegateArgs params(GFxValue(), cbDef->handler.get(), a_movieView, a_args, a_argCount);
 			cbDef->callback(params);
 		}
+	}
+
+
+	void FxDelegate::Invoke(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args)
+	{
+		GFxValue* values = 0;
+		UInt32 numValues = a_args.GetValues(&values);
+		values[0] = a_methodName;
+		a_movieView->InvokeNoReturn("call", values, numValues);
+	}
+
+
+	void FxDelegate::Invoke2(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args)
+	{
+		GFxValue* values = 0;
+		UInt32 numValues = a_args.GetValues(&values);
+		a_movieView->Invoke(a_methodName, 0, values + 1, numValues - 1);
 	}
 
 

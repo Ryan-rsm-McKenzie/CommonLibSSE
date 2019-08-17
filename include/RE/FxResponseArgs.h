@@ -20,6 +20,7 @@ namespace RE
 
 		virtual ~FxResponseArgs() = default;					// 00
 
+
 		// override (FxResponseArgsBase)
 		virtual UInt32 GetValues(GFxValue** a_params) override	// 01
 		{

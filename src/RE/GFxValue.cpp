@@ -789,6 +789,18 @@ namespace RE
 	}
 
 
+	std::ptrdiff_t GFxValue::GetSInt() const
+	{
+		return static_cast<std::ptrdiff_t>(std::round(GetNumber()));
+	}
+
+
+	std::size_t GFxValue::GetUInt() const
+	{
+		return static_cast<std::size_t>(std::round(GetNumber()));
+	}
+
+
 	const char* GFxValue::GetString() const
 	{
 		assert(IsString());

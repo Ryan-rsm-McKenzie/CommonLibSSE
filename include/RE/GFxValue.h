@@ -229,6 +229,8 @@ namespace RE
 		bool			IsDisplayObject() const;
 		bool			GetBool() const;
 		double			GetNumber() const;
+		std::ptrdiff_t	GetSInt() const;
+		std::size_t		GetUInt() const;
 		const char*		GetString() const;
 		const wchar_t*	GetStringW() const;
 

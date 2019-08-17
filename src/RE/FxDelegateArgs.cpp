@@ -4,6 +4,9 @@
 #include <stdexcept>  // out_of_range
 #include <string>  // string
 
+#include "RE/FxResponseArgsBase.h"  // FxResponseArgsBase
+#include "RE/GFxMovieView.h"  // GFxMovieView
+
 
 namespace RE
 {
@@ -15,6 +18,15 @@ namespace RE
 		_numArgs(a_numArgs),
 		_pad34(0)
 	{}
+
+
+	void FxDelegateArgs::Respond(FxResponseArgsBase& a_params) const
+	{
+		GFxValue* values = 0;
+		UInt32 numValues = a_params.GetValues(&values);
+		values[0] = _responseID;
+		_movieView->InvokeNoReturn("respond", values, numValues);
+	}
 
 
 	const GFxValue& FxDelegateArgs::at(UPInt a_pos) const

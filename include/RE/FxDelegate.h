@@ -11,6 +11,7 @@
 
 namespace RE
 {
+	class FxResponseArgsBase;
 	class GFxMovieView;
 
 
@@ -43,6 +44,9 @@ namespace RE
 
 		// override (GFxExternalInterface)
 		virtual void Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, UInt32 a_argCount) override;	// 01
+
+		static void Invoke(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args);	// Call a method registered with the AS2 GameDelegate instance
+		static void Invoke2(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args);
 
 		void	RegisterHandler(FxDelegateHandler* a_callback);
 		void	UnregisterHandler(FxDelegateHandler* a_callback);
