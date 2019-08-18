@@ -3,11 +3,14 @@
 #include "skse64/GameRTTI.h"  // RTTI_BGSAttackDataForm
 
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/BGSAttackDataMap.h"  // BGSAttackDataMap
+#include "RE/NiSmartPointer.h"  // NiPointer
 
 
 namespace RE
 {
+	class BGSAttackDataMap;
+
+
 	class BGSAttackDataForm : public BaseFormComponent
 	{
 	public:
@@ -23,7 +26,7 @@ namespace RE
 
 
 		// members
-		BGSAttackDataMapPtr attackDataMap;	// 08
+		NiPointer<BGSAttackDataMap> attackDataMap;	// 08
 	};
 	STATIC_ASSERT(sizeof(BGSAttackDataForm) == 0x10);
 }

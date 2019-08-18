@@ -64,7 +64,11 @@ namespace SKSE
 
 	bool ScaleformInterface::Register(RegCallback* a_callback, const char* a_name) const
 	{
-		return GetProxy()->Register(a_name, reinterpret_cast<SKSEScaleformInterface::RegisterCallback>(a_callback));
+		auto result = GetProxy()->Register(a_name, reinterpret_cast<SKSEScaleformInterface::RegisterCallback>(a_callback));
+		if (!result) {
+			_ERROR("Failed to register %s for scaleform interface callback", a_name);
+		}
+		return result;
 	}
 
 
@@ -247,7 +251,11 @@ namespace SKSE
 			a_fn(vm);
 			return true;
 		} else {
-			return GetProxy()->Register(reinterpret_cast<SKSEPapyrusInterface::RegisterFunctions>(a_fn));
+			auto result = GetProxy()->Register(reinterpret_cast<SKSEPapyrusInterface::RegisterFunctions>(a_fn));
+			if (!result) {
+				_ERROR("Failed to register for papyrus interface");
+			}
+			return result;
 		}
 	}
 
@@ -266,13 +274,21 @@ namespace SKSE
 
 	bool MessagingInterface::RegisterListener(const char* a_sender, EventCallback* a_callback) const
 	{
-		return GetProxy()->RegisterListener(GetPluginHandle(), a_sender, reinterpret_cast<SKSEMessagingInterface::EventCallback>(a_callback));
+		auto result = GetProxy()->RegisterListener(GetPluginHandle(), a_sender, reinterpret_cast<SKSEMessagingInterface::EventCallback>(a_callback));
+		if (!result) {
+			_ERROR("Failed to register messaging listener for %s", a_sender);
+		}
+		return result;
 	}
 
 
 	bool MessagingInterface::Dispatch(UInt32 a_messageType, void* a_data, UInt32 a_dataLen, const char* a_receiver) const
 	{
-		return GetProxy()->Dispatch(GetPluginHandle(), a_messageType, a_data, a_dataLen, a_receiver);
+		auto result = GetProxy()->Dispatch(GetPluginHandle(), a_messageType, a_data, a_dataLen, a_receiver);
+		if (!result) {
+			_ERROR("Failed to dispatch message to %s", (a_receiver ? a_receiver : "all listeners"));
+		}
+		return result;
 	}
 
 

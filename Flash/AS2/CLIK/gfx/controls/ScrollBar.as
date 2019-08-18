@@ -94,7 +94,11 @@ class gfx.controls.ScrollBar extends ScrollIndicator
 
 		super.disabled = value;
 		gotoAndPlay(_disabled ? "disabled" : "default");
-		if (initialized) { upArrow.disabled = _disabled; downArrow.disabled = _disabled; track.disabled = _disabled; }
+		if (initialized) {
+			upArrow.disabled = _disabled;
+			downArrow.disabled = _disabled;
+			track.disabled = _disabled;
+		}
 	}
 
 

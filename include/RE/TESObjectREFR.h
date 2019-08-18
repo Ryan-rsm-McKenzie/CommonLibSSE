@@ -100,6 +100,7 @@ namespace RE
 				kFlag13 = 1 << 13,
 				kStartUnconscious = kFlag13,	// TESNPC
 				kSkyMarker = kFlag13,
+				kHarvested = kFlag13,	// TESObjectTREE
 
 				kIsFullLOD = 1 << 16,
 

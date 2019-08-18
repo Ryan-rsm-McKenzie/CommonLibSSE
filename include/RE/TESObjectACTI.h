@@ -73,7 +73,7 @@ namespace RE
 		virtual bool			IgnoredBySandbox() const;																													// 22 - { return (flags >> 1) & 1; }
 		virtual bool			IsWaterActivator() override;																												// 2A - { return waterType != 0; }
 		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount) override;	// 37
-		virtual TESWaterForm*	GetWaterActivator(void);																													// 3D - { return waterType; }
+		virtual TESWaterForm*	GetWaterActivator();																														// 3D - { return waterType; }
 		virtual bool			GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																			// 4C
 		virtual void			Unk_4D(void) override;																														// 4D
 
