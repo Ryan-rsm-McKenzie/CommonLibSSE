@@ -13,12 +13,16 @@ namespace RE
 		public:
 			Type();
 			explicit Type(VMTypeID a_type);
-			explicit Type(const Type& a_rhs);
+			Type(const Type& a_rhs);
+			Type(Type&& a_rhs);
+
+			Type&	operator=(const Type& a_rhs);
+			Type&	operator=(Type&& a_rhs);
 
 			VMTypeID	GetTypeID() const;
 			void		SetTypeID(VMTypeID a_type);
 			VMTypeID	GetUnmangledType() const;
-			Class*		GetScriptClass() const;
+			Class*		GetClass() const;
 			bool		IsObject(void)	const;
 			bool 		IsInt() const;
 			bool 		IsFloat() const;

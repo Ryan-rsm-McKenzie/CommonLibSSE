@@ -11,6 +11,13 @@ namespace RE
 {
 	namespace BSScript
 	{
+		Object::~Object()
+		{
+			Dtor();
+			memzero(this);
+		}
+
+
 		Class* Object::GetClass()
 		{
 			return classPtr.get();
@@ -25,7 +32,7 @@ namespace RE
 
 		UInt32 Object::GetFlags() const
 		{
-			return pun_bits(flags1, flags2, flags3);
+			return pun_bits(variablesSet, flags2, initialized);
 		}
 
 
@@ -65,31 +72,35 @@ namespace RE
 
 		Variable* Object::GetProperty(const BSFixedString& a_name)
 		{
-			if (!classPtr) {
-				return 0;
+			constexpr auto INVALID = static_cast<UInt32>(-1);
+
+			auto idx = INVALID;
+			for (auto cls = classPtr.get(); cls && idx == INVALID; cls = cls->parent.get()) {
+				idx = cls->GetPropertyIndex(a_name);
 			}
 
-			auto idx = classPtr->GetPropertyIndex(a_name);
-			if (idx == static_cast<UInt32>(-1)) {
-				return 0;
-			}
-
-			return &variables[idx];
+			return idx != INVALID ? &variables[idx] : 0;
 		}
 
 
 		const Variable*	Object::GetProperty(const BSFixedString& a_name) const
 		{
-			if (!classPtr) {
-				return 0;
+			constexpr auto INVALID = static_cast<UInt32>(-1);
+
+			auto idx = INVALID;
+			for (auto cls = classPtr.get(); cls && idx == INVALID; cls = cls->parent.get()) {
+				idx = cls->GetPropertyIndex(a_name);
 			}
 
-			auto idx = classPtr->GetPropertyIndex(a_name);
-			if (idx == static_cast<UInt32>(-1)) {
-				return 0;
-			}
+			return idx != INVALID ? &variables[idx] : 0;
+		}
 
-			return &variables[idx];
+
+		void Object::Dtor()
+		{
+			using func_t = function_type_t<decltype(&Object::Dtor)>;
+			REL::Offset<func_t*> func(Offset::BSScript::Object::Dtor);
+			return func(this);
 		}
 	}
 }

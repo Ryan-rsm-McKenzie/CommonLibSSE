@@ -68,7 +68,7 @@ namespace RE
 			BSTSmartPointer<Stack>					unk98;				// 98
 
 		private:
-			void dtor();
+			void Dtor();
 		};
 		STATIC_ASSERT(sizeof(Stack) == 0xA0);
 	}

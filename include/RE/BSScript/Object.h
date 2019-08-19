@@ -23,6 +23,8 @@ namespace RE
 		class Object
 		{
 		public:
+			~Object();
+
 			Class*			GetClass();
 			const Class*	GetClass() const;
 			UInt32			GetFlags() const;
@@ -40,9 +42,9 @@ namespace RE
 
 
 			// members
-			bool					flags1 : 1;				// 00 - 0
+			bool					variablesSet : 1;		// 00 - 0
 			bool					flags2 : 1;				// 00 - 1
-			bool					flags3 : 1;				// 00 - 2
+			bool					initialized : 1;		// 00 - 2
 			bool					numProperties01 : 1;	// 00 - 3
 			bool					numProperties02 : 1;	// 00 - 4
 			bool					numProperties03 : 1;	// 00 - 5
@@ -71,11 +73,14 @@ namespace RE
 			UInt32					pad04;					// 04
 			BSTSmartPointer<Class>	classPtr;				// 08
 			BSFixedString			currentState;			// 10
-			UInt32*					unk0C;					// 18 - some ref count, first bit used as flag
+			UInt32*					unk18;					// 18 - some ref count, first bit used as flag
 			volatile VMHandle		handle;					// 20
 			volatile SInt32			refCount;				// 28
 			UInt32					pad2C;					// 2C
-			Variable				variables[0];			// 30 - size == classPtr->GetTotalNumVariables()
+			Variable				variables[0];			// 30 - size == classPtr->GetTotalNumVariables() + 3
+
+		private:
+			void Dtor();
 		};
 		STATIC_ASSERT(sizeof(Object) == 0x30);
 	}

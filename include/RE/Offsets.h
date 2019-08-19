@@ -103,6 +103,8 @@ namespace RE
 		{
 			namespace Object
 			{
+				// IndirectSig: E8 ? ? ? ? 49 8B CE E8 ? ? ? ? 48 85 DB 74 08
+				constexpr std::uintptr_t Dtor = 0x012331C0;			// 1_5_80
 				// IndirectSig: E8 ? ? ? ? 49 89 3F
 				constexpr std::uintptr_t IncRefCount = 0x01233EB0;	// 1_5_80
 				// IndirectSig: E8 ? ? ? ? 85 C0 75 10 49 8B CE

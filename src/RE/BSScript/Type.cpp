@@ -20,6 +20,28 @@ namespace RE
 		{}
 
 
+		Type::Type(Type&& a_rhs) :
+			type(std::move(a_rhs.type))
+		{
+			a_rhs.type = VMTypeID::kNone;
+		}
+
+
+		Type& Type::operator=(const Type& a_rhs)
+		{
+			type = a_rhs.type;
+			return *this;
+		}
+
+
+		Type& Type::operator=(Type&& a_rhs)
+		{
+			type = std::move(a_rhs.type);
+			a_rhs.type = VMTypeID::kNone;
+			return *this;
+		}
+
+
 		VMTypeID Type::GetTypeID() const
 		{
 			return type;
@@ -42,13 +64,14 @@ namespace RE
 		}
 
 
-		Class* Type::GetScriptClass() const
+		Class* Type::GetClass() const
 		{
-			return type > VMTypeID::kBoolArray ? reinterpret_cast<Class*>(type & ~static_cast<VMTypeID>(1)) : 0;
+			assert(IsObject());
+			return reinterpret_cast<Class*>(type & ~VMTypeID::kObject);
 		}
 
 
-		bool Type::IsObject(void)	const
+		bool Type::IsObject() const
 		{
 			return GetUnmangledType() == VMTypeID::kObject;
 		}
@@ -80,13 +103,21 @@ namespace RE
 
 		bool Type::IsObjectArray() const
 		{
-			return (type >= VMTypeID::kArraysEnd && (type & VMTypeID::kObject) != VMTypeID::kNone);
+			return (type >= VMTypeID::kArraysEnd) && ((type & VMTypeID::kObject) != VMTypeID::kNone);
 		}
 
 
 		bool Type::IsLiteralArray() const
 		{
-			return (type >= VMTypeID::kStringArray) && (type <= VMTypeID::kBoolArray);
+			switch (type) {
+			case VMTypeID::kStringArray:
+			case VMTypeID::kIntArray:
+			case VMTypeID::kFloatArray:
+			case VMTypeID::kBoolArray:
+				return true;
+			default:
+				return false;
+			}
 		}
 
 

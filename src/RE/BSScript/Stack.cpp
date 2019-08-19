@@ -14,7 +14,7 @@ namespace RE
 	{
 		Stack::~Stack()
 		{
-			dtor();
+			Dtor();
 			memzero(this);
 		}
 
@@ -41,9 +41,9 @@ namespace RE
 		}
 
 
-		void Stack::dtor()
+		void Stack::Dtor()
 		{
-			using func_t = function_type_t<decltype(&Stack::dtor)>;
+			using func_t = function_type_t<decltype(&Stack::Dtor)>;
 			REL::Offset<func_t*> func(Offset::BSScript::Stack::Dtor);
 			return func(this);
 		}

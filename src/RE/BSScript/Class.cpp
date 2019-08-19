@@ -230,10 +230,11 @@ namespace RE
 
 		UInt32 Class::GetPropertyIndex(const BSFixedString& a_name) const
 		{
-			auto prop = GetPropertyIter();
+			auto props = GetPropertyIter();
 			for (UInt32 i = 0; i < GetNumVariables(); ++i) {
-				if (prop->name == a_name) {
-					return prop->idx;
+				auto& prop = props[i];
+				if (prop.name == a_name) {
+					return prop.idx;
 				}
 			}
 			return static_cast<UInt32>(-1);
