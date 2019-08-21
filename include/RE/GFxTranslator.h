@@ -8,6 +8,9 @@
 
 namespace RE
 {
+	class GFxWStringBuffer;
+
+
 	class GFxTranslator : public GFxState
 	{
 	public:
@@ -55,22 +58,17 @@ namespace RE
 			const wchar_t*	GetKey() const;																// An input method which returns the 'key' string - original text value of the textfield being translated.
 			bool			IsKeyHTML() const;															// Determines if the key string (returned by GetKey) is HTML or not.
 			void			SetResult(const wchar_t* a_resultText, UPInt a_resultLen = UPINT_MAX);		// An output method which sets the translated string as a plain text.
-			void			SetResult(const char* a_resultTextUTF8, UPInt a_resultUTF8Len = UPINT_MAX);	// An output method which sets the translated string as a plain text.
 			void			SetResultHTML(const wchar_t* a_resultHTML, UPInt a_resultLen = UPINT_MAX);	// An output method which sets translated string as a HTML text.
-			void			SetResultHTML(const char* a_resultHTMLUTF8, UPInt a_resultLen = UPINT_MAX);	// An output method which sets translated string as a HTML text.
 
 
 			// members
-			const wchar_t*	key;			// 00
-			UInt64			result;			// 08 - GFxWStringBuffer*
-			const char*		instanceName;	// 10
-			Flag			flags;			// 18
-			UInt8			pad19;			// 19
-			UInt16			pad1A;			// 1A
-			UInt32			pad1C;			// 1C
-
-		private:
-			void SetResult_InternalW(const wchar_t* a_resultText, UPInt a_resultLen = UPINT_MAX);
+			const wchar_t*		key;			// 00
+			GFxWStringBuffer*	result;			// 08
+			const char*			instanceName;	// 10
+			Flag				flags;			// 18
+			UInt8				pad19;			// 19
+			UInt16				pad1A;			// 1A
+			UInt32				pad1C;			// 1C
 		};
 		STATIC_ASSERT(sizeof(TranslateInfo) == 0x20);
 

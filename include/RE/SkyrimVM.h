@@ -11,6 +11,7 @@
 #include "RE/SkyrimScript/SavePatcher.h"  // SkyrimScript::SavePatcher
 #include "RE/SkyrimScript/ObjectBindPolicy.h"  // SkyrimScript::ObjectBindPolicy
 #include "RE/SkyrimScript/Store.h"  // SkyrimScript::Store
+#include "RE/BSLock.h"
 #include "RE/BSTEvent.h"  // BSTEvent
 #include "RE/BSTFreeList.h"  // BSTStaticFreeList
 #include "RE/BSTHashMap.h"  // BSTHashMap
@@ -196,7 +197,7 @@ namespace RE
 		UInt64																	unk88C8;						// 88C8
 		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	unk88D0;						// 88D0
 		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	unk88D8;						// 88D8
-		UInt64																	unk88E0;						// 88E0
+		mutable BSUniqueLock													unk88E0;						// 88E0
 		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	unk88E8;						// 88E8
 		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	unk88F0;						// 88F0
 		UInt64																	unk88F8;						// 88F8

@@ -235,6 +235,7 @@
     <ClCompile Include="src\RE\GFxResourceID.cpp" />
     <ClCompile Include="src\RE\GFxStateBag.cpp" />
     <ClCompile Include="src\RE\GFxValue.cpp" />
+    <ClCompile Include="src\RE\GFxWStringBuffer.cpp" />
     <ClCompile Include="src\RE\GMemory.cpp" />
     <ClCompile Include="src\RE\GMemoryHeap.cpp" />
     <ClCompile Include="src\RE\GRefCountImpl.cpp" />
@@ -893,6 +894,7 @@
     <ClInclude Include="include\RE\GFxStateBag.h" />
     <ClInclude Include="include\RE\GFxTranslator.h" />
     <ClInclude Include="include\RE\GFxValue.h" />
+    <ClInclude Include="include\RE\GFxWStringBuffer.h" />
     <ClInclude Include="include\RE\GHash.h" />
     <ClInclude Include="include\RE\GHashAllocator.h" />
     <ClInclude Include="include\RE\GHashNode.h" />

@@ -15,8 +15,6 @@ namespace RE
 		using size_type = UPInt;
 		using reference = value_type&;
 		using const_reference = const value_type&;
-		using pointer = value_type*;
-		using const_pointer = const value_type*;
 
 
 		enum class HeapType : UPInt

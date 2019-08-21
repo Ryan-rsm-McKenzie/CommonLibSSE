@@ -958,6 +958,12 @@
     <Filter Include="src\RE\Menus\HUDObject\HUDMeter">
       <UniqueIdentifier>{01bc5a67-f484-4fc9-9ce1-c41c6df8bfe0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Scaleform\GFxString">
+      <UniqueIdentifier>{7922f8c9-326c-4cd6-bcd6-2567f1407a81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Scaleform\GFxString">
+      <UniqueIdentifier>{b6103bd4-2742-4108-832d-ce2f0827828c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1541,6 +1547,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\HUDMeter.cpp">
       <Filter>src\RE\Menus\HUDObject\HUDMeter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxWStringBuffer.cpp">
+      <Filter>src\RE\Scaleform\GFxString</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4432,6 +4441,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\LevelUpMenu.h">
       <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxWStringBuffer.h">
+      <Filter>include\RE\Scaleform\GFxString</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

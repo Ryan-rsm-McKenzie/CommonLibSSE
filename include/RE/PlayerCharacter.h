@@ -2,6 +2,8 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_PlayerCharacter
 
+#include <ctime>
+
 #include "RE/BGSActorCellEvent.h"  // BGSActorCellEvent
 #include "RE/BGSActorDeathEvent.h"  // BGSActorDeathEvent
 #include "RE/BGSPerkRankArray.h"  // BGSPerkRankArray
@@ -323,7 +325,7 @@ namespace RE
 		UInt32								tickCount;					// 970
 		UInt32								unk974;						// 974
 		UInt64								unk978;						// 978
-		__time64_t							unk980;						// 980
+		std::time_t							unk980;						// 980
 		TESObjectCELL*						currentCell;				// 988
 		UInt32								unk990;						// 990
 		UInt32								unk994;						// 994

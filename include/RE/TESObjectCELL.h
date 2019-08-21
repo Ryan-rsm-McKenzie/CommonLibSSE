@@ -2,7 +2,7 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_TESObjectCELL
 
-#include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/BaseExtraList.h"  // BaseExtraList
 #include "RE/BSLock.h"  // BSUniqueLock
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTHashMap.h"  // BSTHashSet
@@ -181,9 +181,7 @@ namespace RE
 		UInt8													unk045;					// 045
 		UInt8													unk046;					// 046
 		UInt8													pad047;					// 047
-		BSExtraData*											extraData;				// 048
-		UInt32*													unk050;					// 050
-		UInt64													unk058;					// 058
+		BaseExtraList											extraList;				// 048
 		LightingCoordinates										lightingCoordinates;	// 060 - XCLL if interior, XCLC if exterior
 		TESObjectLAND*											land;					// 068
 		float													waterHeight;			// 070 - XCLW

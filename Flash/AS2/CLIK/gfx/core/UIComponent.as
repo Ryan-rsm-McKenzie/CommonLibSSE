@@ -309,7 +309,8 @@ class gfx.core.UIComponent extends MovieClip
 	/**
 	 * An internal property of the component has changed, requiring a redraw.  The invalidation mechanism lets components trigger multiple redraw commands at the same time, resulting in only a single redraw. the {@code invalidate()} method is public so that it can be called externally.
 	 */
-	public function invalidate():Void {
+	public function invalidate(): Void
+	{
 		if (invalidationIntervalID) {
 			return;
 		}

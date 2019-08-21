@@ -211,16 +211,6 @@ namespace RE
 		}
 
 
-		namespace GFxTranslator
-		{
-			namespace TranslateInfo
-			{
-				// DirectSig: 48 85 D2 74 69 48 89 6C 24 10
-				constexpr std::uintptr_t SetResultW = 0x00F4B2F0;	// 1_5_80
-			}
-		}
-
-
 		namespace GFxValue
 		{
 			namespace ObjectInterface

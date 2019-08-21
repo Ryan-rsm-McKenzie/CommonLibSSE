@@ -69,7 +69,7 @@ namespace RE
 		// members
 		UInt32						unk000;					// 000
 		UInt8						unk004[0xC];			// 004
-		UInt32*						pointerMap;				// 010 - NiTPointerMap<TESFile*>* - CHECK
+		void*						pointerMap;				// 010 - NiTPointerMap<UInt32, TESFile*>* - CHECK
 		UInt64						unk018[2];				// 018
 		UInt8						unk028;					// 028
 		UInt8						unk029;					// 029

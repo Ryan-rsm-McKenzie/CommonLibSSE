@@ -65,7 +65,7 @@ namespace RE
 		virtual void						SetBackgroundColor(const GColor a_bgColor) override;																															// 2A
 		virtual void						SetBackgroundAlpha(float a_alpha) override;																																		// 2B
 		virtual float						GetBackgroundAlpha() const override;																																			// 2C
-		virtual UInt32						HandleEvent(const GFxEvent& a_event) override;																																	// 2D
+		virtual HEResult					HandleEvent(const GFxEvent& a_event) override;																																	// 2D
 		virtual void						GetMouseState(UInt32 a_mouseIndex, float* a_x, float* a_y, UInt32* a_buttons) override;																							// 2E
 		virtual void						NotifyMouseState(float a_x, float a_y, UInt32 a_buttons, UInt32 a_mouseIndex = 0) override;																						// 2F
 		virtual bool						HitTest(float a_x, float a_y, HitTestType a_testCond = HitTestType::kShapes, UInt32 a_controllerIdx = 0) override;																// 30

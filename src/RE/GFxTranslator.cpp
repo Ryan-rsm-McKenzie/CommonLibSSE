@@ -1,7 +1,8 @@
 #include "RE/GFxTranslator.h"
 
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
+#include <string_view>  // wstring_view
+
+#include "RE/GFxWStringBuffer.h"  // GFxWStringBuffer
 
 
 namespace RE
@@ -37,7 +38,13 @@ namespace RE
 
 	void GFxTranslator::TranslateInfo::SetResult(const wchar_t* a_resultText, UPInt a_resultLen)
 	{
-		return SetResult_InternalW(a_resultText, a_resultLen);
+		if (a_resultLen != UPINT_MAX) {
+			std::wstring_view view(a_resultText, a_resultLen);
+			*result = view;
+		} else {
+			*result = a_resultText;
+		}
+		flags |= Flag::kTranslated;
 	}
 
 
@@ -45,14 +52,6 @@ namespace RE
 	{
 		SetResult(a_resultHTML, a_resultLen);
 		flags |= Flag::kResultHTML;
-	}
-
-
-	void GFxTranslator::TranslateInfo::SetResult_InternalW(const wchar_t* a_resultText, UPInt a_resultLen)
-	{
-		using func_t = function_type_t<decltype(&GFxTranslator::TranslateInfo::SetResult_InternalW)>;
-		REL::Offset<func_t*> func(Offset::GFxTranslator::TranslateInfo::SetResultW);
-		return func(this, a_resultText, a_resultLen);
 	}
 
 

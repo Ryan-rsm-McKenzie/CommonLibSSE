@@ -105,7 +105,6 @@ class gfx.controls.CoreList extends UIComponent
 			return;
 		}
 
-		// LM: I recommend that we move this check to the DataProvider.initialize(), and change it so it takes a second parameter (component instance).
 		if ((value instanceof Array) && !value.isDataProvider) {
 			DataProvider.initialize(_dataProvider);
 		} else if (_dataProvider.initialize != null) {

@@ -25,7 +25,7 @@ namespace RE
 
 
 		// members
-		BSSimpleList<UInt32> handles;	// 10
+		BSSimpleList<RefHandle> handles;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraDroppedItemList) == 0x20);
 }

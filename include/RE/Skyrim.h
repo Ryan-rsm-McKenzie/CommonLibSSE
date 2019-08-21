@@ -478,6 +478,7 @@
 #include "RE/GFxStateBag.h"
 #include "RE/GFxTranslator.h"
 #include "RE/GFxValue.h"
+#include "RE/GFxWStringBuffer.h"
 #include "RE/GHash.h"
 #include "RE/GHashAllocator.h"
 #include "RE/GHashNode.h"

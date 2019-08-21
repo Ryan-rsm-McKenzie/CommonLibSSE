@@ -51,7 +51,7 @@ namespace RE
 		};
 
 
-		enum class HE_ReturnValueType : UInt32
+		enum class HEResult : UInt32
 		{
 			kNotHandled = 0,
 			kHandled = 1,
@@ -92,7 +92,7 @@ namespace RE
 		virtual void						SetBackgroundColor(const GColor a_bgColor);																			// 2A - pure
 		virtual void						SetBackgroundAlpha(float a_alpha);																					// 2B - pure
 		virtual float						GetBackgroundAlpha() const;																							// 2C - pure
-		virtual UInt32						HandleEvent(const GFxEvent& a_event);																				// 2D - pure
+		virtual HEResult					HandleEvent(const GFxEvent& a_event);																				// 2D - pure
 		virtual void						GetMouseState(UInt32 a_mouseIndex, float* a_x, float* a_y, UInt32* a_buttons);										// 2E - pure
 		virtual void						NotifyMouseState(float a_x, float a_y, UInt32 a_buttons, UInt32 a_mouseIndex = 0);									// 2F - pure
 		virtual bool						HitTest(float a_x, float a_y, HitTestType a_testCond = HitTestType::kShapes, UInt32 a_controllerIdx = 0);			// 30 - pure
