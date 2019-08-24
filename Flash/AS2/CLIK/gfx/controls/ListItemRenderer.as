@@ -96,7 +96,7 @@ class gfx.controls.ListItemRenderer extends Button
 	/* PUBLIC FUNCTIONS */
 
 	/**
-	 * Set the selected state of the Button. Buttons can have two sets of mouse states, a selected and unselected.  When a Button's {@code toggle} property is {@code true} the selected state will be changed when the button is clicked, however the selected state can be set using ActionScript even if the toggle property is false.
+	 * Set the selected state of the Button. Buttons can have two sets of mouse states, a selected and unselected. When a Button's {@code toggle} property is {@code true} the selected state will be changed when the button is clicked, however the selected state can be set using ActionScript even if the toggle property is false.
 	 */
 	[Inspectable(defaultValue="false")]
 	public function get selected(): Boolean

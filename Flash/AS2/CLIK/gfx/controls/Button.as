@@ -255,7 +255,7 @@ class gfx.controls.Button extends UIComponent
 
 		// The event is dispatched after the frame change so that listening objects can override the behavior.
 		if (dispatchEvent != null) { // Prevent the selected event from firing before the EventDispatcher is ready.
-			dispatchEventAndSound({type:"select", selected:_selected});
+			dispatchEventAndSound( { type: "select", selected: _selected } );
 		}
 	}
 

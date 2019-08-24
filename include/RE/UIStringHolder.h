@@ -1,18 +1,21 @@
 #pragma once
 
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSTSingleton.h"  // BSTSingletonSDM
 
 
 namespace RE
 {
-	class UIStringHolder
+	class UIStringHolder : public BSTSingletonSDM<UIStringHolder>
 	{
 	public:
 		static UIStringHolder* GetSingleton();
 
 
 		// members
-		void*			unk00;						// 000
+		UInt8			pad001;						// 001
+		UInt16			pad002;						// 002
+		UInt32			pad004;						// 004
 		BSFixedString	faderData;					// 008 "FaderData"
 		BSFixedString	hudData;					// 010 "HUDData"
 		BSFixedString	hudCamData;					// 018 "HUDCamData"
@@ -63,29 +66,31 @@ namespace RE
 		BSFixedString	tutorialMenu;				// 180 "Tutorial Menu"
 		BSFixedString	creditsMenu;				// 188 "Credits Menu"
 		BSFixedString	modManagerMenu;				// 190 "Mod Manager Menu"
-		BSFixedString	titleSequenceMenu;			// 198 "TitleSequence Menu"
-		BSFixedString	consoleNativeUIMenu;		// 1A0 "Console Native UI Menu"
-		BSFixedString	kinectMenu;					// 1A8 "Kinect Menu"
-		BSFixedString	loadWaitSpinner;			// 1B0 "LoadWaitSpinner"
-		BSFixedString	streamingInstallMenu;		// 1B8 "StreamingInstallMenu"
-		BSFixedString	textWidget;					// 1C0 "TextWidget"
-		BSFixedString	buttonBarWidget;			// 1C8 "ButtonBarWidget"
-		BSFixedString	graphWidget;				// 1D0 "GraphWidget"
-		BSFixedString	textureWidget;				// 1D8 "TextWidget"
-		BSFixedString	uiMenuOK;					// 1E0 "UIMenuOK"
-		BSFixedString	uiMenuCancel;				// 1E8 "UIMenuCancel"
-		BSFixedString	showText;					// 1F0 "Show Text"
-		BSFixedString	hideText;					// 1F8 "Hide Text"
-		BSFixedString	showList;					// 200 "Show List"
-		BSFixedString	voiceReady;					// 208 "Voice Ready"
-		BSFixedString	dmfoStr;					// 210 "DMFOStr"
-		BSFixedString	showJournal;				// 218 "Show Journal"
-		BSFixedString	journalSettingsSaved;		// 220 "Journal Settings Saved"
-		BSFixedString	closeMenu;					// 228 "CloseMenu"
-		BSFixedString	closingAllMenus;			// 230 "Closing All Menus"
-		BSFixedString	refreshMenu;				// 238 "RefreshMenu"
-		BSFixedString	cancelLoading;				// 240 "CancelLoading"
-		BSFixedString	menuTextureDegradeEvent;	// 248 "Menu Texture Degrade Event"
-		BSFixedString	diamondMarker;				// 250 "<img src='DiamondMarker' width='10' height='15' align='baseline' vspace='5'>"
+		BSFixedString	creationClubMenu;			// 198 "Creation Club Menu"
+		BSFixedString	titleSequenceMenu;			// 1A0 "TitleSequence Menu"
+		BSFixedString	consoleNativeUIMenu;		// 1A8 "Console Native UI Menu"
+		BSFixedString	kinectMenu;					// 1B0 "Kinect Menu"
+		BSFixedString	loadWaitSpinner;			// 1B8 "LoadWaitSpinner"
+		BSFixedString	streamingInstallMenu;		// 1C0 "StreamingInstallMenu"
+		BSFixedString	textWidget;					// 1C8 "TextWidget"
+		BSFixedString	buttonBarWidget;			// 1D0 "ButtonBarWidget"
+		BSFixedString	graphWidget;				// 1D8 "GraphWidget"
+		BSFixedString	textureWidget;				// 1E0 "TextureWidget"
+		BSFixedString	uiMenuOK;					// 1E8 "UIMenuOK"
+		BSFixedString	uiMenuCancel;				// 1F0 "UIMenuCancel"
+		BSFixedString	showText;					// 1F8 "Show Text"
+		BSFixedString	hideText;					// 200 "Hide Text"
+		BSFixedString	showList;					// 208 "Show List"
+		BSFixedString	voiceReady;					// 210 "Voice Ready"
+		BSFixedString	dmfoStr;					// 218 "DMFOStr"
+		BSFixedString	showJournal;				// 220 "Show Journal"
+		BSFixedString	journalSettingsSaved;		// 228 "Journal Settings Saved"
+		BSFixedString	closeMenu;					// 230 "CloseMenu"
+		BSFixedString	closingAllMenus;			// 238 "Closing All Menus"
+		BSFixedString	refreshMenu;				// 240 "RefreshMenu"
+		BSFixedString	cancelLoading;				// 248 "CancelLoading"
+		BSFixedString	menuTextureDegradeEvent;	// 250 "Menu Texture Degrade Event"
+		BSFixedString	diamondMarker;				// 258 "<img src='DiamondMarker' width='10' height='15' align='baseline' vspace='5'>"
 	};
+	STATIC_ASSERT(sizeof(UIStringHolder) == 0x260);
 }

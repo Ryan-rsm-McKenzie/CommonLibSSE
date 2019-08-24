@@ -227,7 +227,7 @@ class gfx.controls.ScrollingList extends CoreList
 
 	public function set scrollPosition(value: Number): Void
 	{
-		value = Math.max(0, Math.min(_dataProvider.length-totalRenderers, Math.round(value)));
+		value = Math.max(0, Math.min(_dataProvider.length - totalRenderers, Math.round(value)));
 		if (_scrollPosition == value) {
 			return;
 		}
@@ -346,7 +346,7 @@ class gfx.controls.ScrollingList extends CoreList
 	{
 		_scrollPosition = Math.min(Math.max(0, _dataProvider.length - totalRenderers), _scrollPosition);
 		selectedIndex = Math.min(_dataProvider.length - 1, _selectedIndex);
-		_dataProvider.requestItemRange(_scrollPosition, Math.min(_dataProvider.length - 1, _scrollPosition+totalRenderers - 1), this, "populateData");
+		_dataProvider.requestItemRange(_scrollPosition, Math.min(_dataProvider.length - 1, _scrollPosition + totalRenderers - 1), this, "populateData");
 		// Set pending items to "waiting" state.
 	}
 

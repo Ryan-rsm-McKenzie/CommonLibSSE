@@ -1,22 +1,21 @@
 #include "RE/GFxLoader.h"
 
-#include "skse64/ScaleformLoader.h"  // GFxLoader
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
 {
-	GFxLoader* GFxLoader::GetSingleton()
+	GFxMovieDef* GFxLoader::CreateMovie(const char* a_filename, LoadConstants a_loadConstants, UPInt a_memoryArena)
 	{
-		using func_t = function_type_t<decltype(&GFxLoader::GetSingleton)>;
-		func_t* func = unrestricted_cast<func_t*>(&::GFxLoader::GetSingleton);
-		return func();
+		using func_t = function_type_t<decltype(&GFxLoader::CreateMovie)>;
+		REL::Offset<func_t*> func(Offset::GFxLoader::CreateMovie);
+		return func(this, a_filename, a_loadConstants, a_memoryArena);
 	}
 
 
-	bool GFxLoader::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_swfName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha)
+	GFxLoaderImpl* GFxLoader::GetLoaderImpl() const
 	{
-		using func_t = function_type_t<decltype(&GFxLoader::LoadMovie)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::GFxLoader, LoadMovie, func_t*);
-		return func(this, a_menu, a_viewOut, a_swfName, a_mode, a_backGroundAlpha);
+		return impl;
 	}
 }

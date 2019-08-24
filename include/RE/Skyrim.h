@@ -214,6 +214,7 @@
 #include "RE/BSReloadShaderI.h"
 #include "RE/BSResourceNiBinaryStream.h"
 #include "RE/BSSaveDataSystemUtility.h"
+#include "RE/BSScaleformMovieLoader.h"
 #include "RE/BSScaleformTranslator.h"
 #include "RE/BSShader.h"
 #include "RE/BSSmallBlockAllocator.h"

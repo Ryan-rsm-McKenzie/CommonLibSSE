@@ -1,18 +1,19 @@
 #pragma once
 
-#include "RE/FormTypes.h"
+#include "RE/BSTSingleton.h"  // BSTSingletonSDM
 
 
 namespace RE
 {
+	class Actor;
 	class BaseExtraList;
+	class BGSEquipSlot;
+	class TESForm;
 
 
-	class EquipManager
+	class EquipManager : public BSTSingletonSDM<EquipManager>
 	{
 	public:
-		virtual ~EquipManager();
-
 		static EquipManager* GetSingleton();
 		/*
 		 * @param a_arg9 = 0
@@ -28,7 +29,8 @@ namespace RE
 
 
 		// members
-		UInt8	unk0;	// 0
-		bool	unk1;	// 1
+		bool unk01;	// 01
 	};
+	STATIC_ASSERT(offsetof(EquipManager, unk01) == 0x1);
+	STATIC_ASSERT(sizeof(EquipManager) == 0x2);
 }

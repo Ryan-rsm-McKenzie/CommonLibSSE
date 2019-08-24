@@ -185,6 +185,7 @@
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
     <ClCompile Include="src\RE\BSIMusicType.cpp" />
     <ClCompile Include="src\RE\BSResourceNiBinaryStream.cpp" />
+    <ClCompile Include="src\RE\BSScaleformMovieLoader.cpp" />
     <ClCompile Include="src\RE\BSScript\Array.cpp" />
     <ClCompile Include="src\RE\BSScript\Class.cpp" />
     <ClCompile Include="src\RE\BSScript\IFunction.cpp" />
@@ -331,6 +332,7 @@
     <ClCompile Include="src\RE\TESDataHandler.cpp" />
     <ClCompile Include="src\RE\TESDescription.cpp" />
     <ClCompile Include="src\RE\TESFaction.cpp" />
+    <ClCompile Include="src\RE\TESFile.cpp" />
     <ClCompile Include="src\RE\TESForm.cpp" />
     <ClCompile Include="src\RE\TESHitEvent.cpp" />
     <ClCompile Include="src\RE\TESMemoryManager.cpp" />
@@ -571,6 +573,7 @@
     <ClInclude Include="include\RE\BSResource\Stream.h" />
     <ClInclude Include="include\RE\BSResource\StreamBase.h" />
     <ClInclude Include="include\RE\BSSaveDataSystemUtility.h" />
+    <ClInclude Include="include\RE\BSScaleformMovieLoader.h" />
     <ClInclude Include="include\RE\BSScaleformTranslator.h" />
     <ClInclude Include="include\RE\BSScript\Array.h" />
     <ClInclude Include="include\RE\BSScript\ArrayTypeTraits.h" />

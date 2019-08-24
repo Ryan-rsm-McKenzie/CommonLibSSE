@@ -49,7 +49,7 @@ class gfx.data.DataProvider extends Array
 	/**
 	 * Mix-in the DataProvider functionality to an Array.
 	 */
-	public static function initialize(data: Object)
+	public static function initialize(data: Object): Void
 	{
 		if (instance == undefined) {
 			instance = new DataProvider();

@@ -24,7 +24,7 @@ namespace RE
 		virtual void	ReleaseRefs() override;								// 02
 		virtual void	CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
 
-		void			GetDescription(BSString& a_out, TESForm* a_parent, UInt32 a_fieldType = 'DESC');
+		void			GetDescription(BSString& a_out, TESForm* a_parent, UInt32 a_fieldType = 'CSED');
 
 
 		// members

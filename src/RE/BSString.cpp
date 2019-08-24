@@ -191,8 +191,7 @@ namespace RE
 	{
 		using func_t = function_type_t<decltype(&BSString::set_cstr)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSString, Set, func_t*);
-		bool result = func(this, a_str, a_len);
-		assert(result == true);
+		auto result = func(this, a_str, a_len);
 		return result;
 	}
 }

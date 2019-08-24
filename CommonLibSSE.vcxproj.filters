@@ -964,6 +964,9 @@
     <Filter Include="src\RE\Scaleform\GFxString">
       <UniqueIdentifier>{b6103bd4-2742-4108-832d-ce2f0827828c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\Scaleform\BS">
+      <UniqueIdentifier>{fa9ac539-2fdd-4b83-bbe1-4f85c668327f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1550,6 +1553,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\GFxWStringBuffer.cpp">
       <Filter>src\RE\Scaleform\GFxString</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScaleformMovieLoader.cpp">
+      <Filter>src\RE\Scaleform\BS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESFile.cpp">
+      <Filter>src\RE\FileIO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4444,6 +4453,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\GFxWStringBuffer.h">
       <Filter>include\RE\Scaleform\GFxString</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScaleformMovieLoader.h">
+      <Filter>include\RE\Scaleform\BS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

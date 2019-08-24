@@ -204,6 +204,13 @@ namespace RE
 		}
 
 
+		namespace GFxLoader
+		{
+			// DirectSig: 45 8B D0 48 8B C1
+			constexpr std::uintptr_t CreateMovie = 0x00EDBAF0;	// 1_5_80
+		}
+
+
 		namespace GFxMovieView
 		{
 			// IndirectSig: E8 ? ? ? ? C6 44 24 20 01 41 B9 03 00 00 00 44 8D 47 69
@@ -481,6 +488,23 @@ namespace RE
 		{
 			//
 			constexpr std::uintptr_t Singleton = 0x02F26B20;		// 1_5_80
+		}
+
+
+		namespace TESFile
+		{
+			// IndirectSig: E8 ? ? ? ? 48 8B 07 EB CA
+			constexpr std::uintptr_t Duplicate = 0x0017E4B0;				// 1_5_80
+			// IndirectSig: E8 ? ? ? ? EB E0
+			constexpr std::uintptr_t GetCurrentSubRecordType = 0x0017D910;	// 1_5_80
+			// IndirectSig: E8 ? ? ? ? 3C 5E
+			constexpr std::uintptr_t GetFormType = 0x0017D4C0;				// 1_5_80
+			// IndirectSig: E8 ? ? ? ? 44 8B DB
+			constexpr std::uintptr_t ReadData = 0x0017DA10;					// 1_5_80
+			// IndirectSig: E8 ? ? ? ? 33 FF 8B B3 88 02 00 00
+			constexpr std::uintptr_t Seek = 0x0017D550;						// 1_5_80
+			// IndirectSig: E8 ? ? ? ? 49 83 C6 28
+			constexpr std::uintptr_t SeekNextSubrecord = 0x0017D960;		// 1_5_80
 		}
 
 

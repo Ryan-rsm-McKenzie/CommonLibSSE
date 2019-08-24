@@ -182,7 +182,8 @@ class gfx.controls.CoreList extends UIComponent
 	 * @see #labelField
 	 * @see #labelFunction
 	 */
-	public function itemToLabel(item: Object): String {
+	public function itemToLabel(item: Object): String
+	{
 		if (item == null) {
 			return "";
 		}
@@ -326,7 +327,7 @@ class gfx.controls.CoreList extends UIComponent
 	 */
 	private function createItemRenderer(index: Number): MovieClip
 	{
-		var clip:MovieClip = container.attachMovie(_itemRenderer, "renderer"+index, index);
+		var clip: MovieClip = container.attachMovie(_itemRenderer, "renderer" + index, index);
 		if (clip == null) {
 			return null;
 		}
@@ -454,7 +455,6 @@ class gfx.controls.CoreList extends UIComponent
 			controllerIdx: event.controllerIdx
 		};
 		dispatchEventAndSound(newEvent);
-
 	}
 
 

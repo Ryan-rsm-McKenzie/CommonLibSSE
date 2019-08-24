@@ -66,10 +66,21 @@ namespace RE
 		STATIC_ASSERT(sizeof(FormInfo) >= 0x8);
 
 
+		TESFile*	Duplicate(UInt32 a_cacheSize = 0x4000);
+		UInt32		GetCurrentSubRecordType();
+		UInt32		GetCurrentSubRecordSize() const;
+		FormType	GetFormType();
+		bool		IsLoaded() const;
+		bool		IsLocalized() const;
+		void		ReadData(void* a_buf, UInt32 a_size);
+		bool		Seek(UInt32 a_offset);
+		bool		SeekNextSubrecord();
+
+
 		// members
 		UInt32						unk000;					// 000
 		UInt8						unk004[0xC];			// 004
-		void*						pointerMap;				// 010 - NiTPointerMap<UInt32, TESFile*>* - CHECK
+		void*						pointerMap;				// 010 - NiTPointerMap<UInt32, TESFile*>* - size == 0x20
 		UInt64						unk018[2];				// 018
 		UInt8						unk028;					// 028
 		UInt8						unk029;					// 029
@@ -129,8 +140,6 @@ namespace RE
 		UInt32						unk4B8;					// 4B8
 		UInt32						pad4BC;					// 4BC
 		void*						unk4C0;					// 4C0
-
-		constexpr bool IsLoaded() const { return true; }
 	};
 	STATIC_ASSERT(offsetof(TESFile, formInfo) == 0x284);
 	STATIC_ASSERT(offsetof(TESFile, subRecord) == 0x29C);
