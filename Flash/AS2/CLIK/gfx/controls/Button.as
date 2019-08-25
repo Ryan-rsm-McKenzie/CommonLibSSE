@@ -376,7 +376,7 @@ class gfx.controls.Button extends UIComponent
 	}
 
 
-	public function handleInput(details:InputDetails, pathToFocus:Array): Boolean
+	public function handleInput(details: InputDetails, pathToFocus: Array): Boolean
 	{
 		switch(details.navEquivalent) {
 			case NavigationCode.ENTER:

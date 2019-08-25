@@ -167,10 +167,10 @@ class gfx.controls.ScrollingList extends CoreList
 		if (typeof(value) == "string") {
 			_scrollBar = MovieClip(_parent[value.toString()]); // Outside reference by name
 			if (_scrollBar == null) {
-				_scrollBar = container.attachMovie(value.toString(), "_scrollBar", 1000, {offsetTop: thumbOffsetTop, offsetBottom: thumbOffsetBottom}); // Created using linkage
+				_scrollBar = container.attachMovie(value.toString(), "_scrollBar", 1000, { offsetTop: thumbOffsetTop, offsetBottom: thumbOffsetBottom } ); // Created using linkage
 				if (_scrollBar != null) {
 					autoScrollBar = true;
-					//if (_scrollBar.scale9Grid == null) { _scrollBar.scale9Grid = new Rectangle(0,16,1,1); }
+					//if (_scrollBar.scale9Grid == null) { _scrollBar.scale9Grid = new Rectangle(0, 16, 1, 1); }
 				}
 			}
 		} else { // Outside reference
