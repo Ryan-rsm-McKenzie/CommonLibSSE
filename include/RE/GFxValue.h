@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/GFxPlayerStats.h"  // GFxStatMovieViews
 #include "RE/GMatrix2D.h"  // GMatrix3D
 #include "RE/GMemory.h"  // GFC_MEMORY_REDEFINE_NEW
@@ -206,16 +208,25 @@ namespace RE
 		GFxValue(double a_val);
 		GFxValue(bool a_val);
 		GFxValue(const char* a_str);
+		GFxValue(std::string_view a_str);
 		GFxValue(const wchar_t* a_str);
+		GFxValue(std::wstring_view a_str);
 		GFxValue(const GFxValue& a_rhs);
 		GFxValue(GFxValue&& a_rhs);
 		~GFxValue();
 
-		const GFxValue&	operator=(const GFxValue& a_rhs);
-		const GFxValue&	operator=(GFxValue&& a_rhs);
-		bool			operator==(const GFxValue& a_rhs) const;
+		GFxValue&	operator=(double a_rhs);
+		GFxValue&	operator=(bool a_rhs);
+		GFxValue&	operator=(const char* a_rhs);
+		GFxValue&	operator=(std::string_view a_rhs);
+		GFxValue&	operator=(const wchar_t* a_rhs);
+		GFxValue&	operator=(std::wstring_view a_rhs);
+		GFxValue&	operator=(const GFxValue& a_rhs);
+		GFxValue&	operator=(GFxValue&& a_rhs);
 
-		GString			ToString() const;
+		bool operator==(const GFxValue& a_rhs) const;
+
+		GString ToString() const;
 
 		ValueType		GetType() const;
 		bool			IsUndefined() const;
@@ -234,56 +245,56 @@ namespace RE
 		const char*		GetString() const;
 		const wchar_t*	GetStringW() const;
 
-		void			SetUndefined();
-		void			SetNull();
-		void			SetBoolean(bool a_val);
-		void			SetNumber(double a_val);
-		void			SetString(const char* a_str);
-		void			SetStringW(const wchar_t* a_str);
+		void	SetUndefined();
+		void	SetNull();
+		void	SetBoolean(bool a_val);
+		void	SetNumber(double a_val);
+		void	SetString(const char* a_str);
+		void	SetStringW(const wchar_t* a_str);
 
-		void			SetConvertBoolean();
-		void			SetConvertNumber();
-		void			SetConvertString();
-		void			SetConvertStringW();
+		void	SetConvertBoolean();
+		void	SetConvertNumber();
+		void	SetConvertString();
+		void	SetConvertStringW();
 
 		// AS Object support. Valid for Object, Array and DisplayObject types
-		bool			HasMember(const char* a_name) const;
-		bool			GetMember(const char* a_name, GFxValue* a_val) const;
-		bool			SetMember(const char* a_name, const GFxValue& a_val);
-		bool			Invoke(const char* a_name, GFxValue* a_result, const GFxValue* a_args, UPInt a_numArgs);
-		bool			Invoke(const char* a_name, GFxValue* a_result = 0);
-		bool			DeleteMember(const char* a_name);
+		bool	HasMember(const char* a_name) const;
+		bool	GetMember(const char* a_name, GFxValue* a_val) const;
+		bool	SetMember(const char* a_name, const GFxValue& a_val);
+		bool	Invoke(const char* a_name, GFxValue* a_result, const GFxValue* a_args, UPInt a_numArgs);
+		bool	Invoke(const char* a_name, GFxValue* a_result = 0);
+		bool	DeleteMember(const char* a_name);
 
 		// AS Array support. Valid for Array type
-		UInt32			GetArraySize() const;
-		bool			SetArraySize(UInt32 a_size);
-		bool			GetElement(UInt32 a_idx, GFxValue* a_val) const;
-		bool			SetElement(UInt32 a_idx, const GFxValue& a_val);
-		bool			PushBack(const GFxValue& a_val);
-		bool			RemoveElements(UInt32 a_idx, SInt32 a_count = -1);
-		bool			RemoveElement(UInt32 a_idx);
-		bool			ClearElements();
+		UInt32	GetArraySize() const;
+		bool	SetArraySize(UInt32 a_size);
+		bool	GetElement(UInt32 a_idx, GFxValue* a_val) const;
+		bool	SetElement(UInt32 a_idx, const GFxValue& a_val);
+		bool	PushBack(const GFxValue& a_val);
+		bool	RemoveElements(UInt32 a_idx, SInt32 a_count = -1);
+		bool	RemoveElement(UInt32 a_idx);
+		bool	ClearElements();
 
 		// AS MovieClips, Buttons, TextFields support. Valid for DisplayObject type
-		bool			GetDisplayInfo(DisplayInfo* a_info) const;
-		bool			SetDisplayInfo(const DisplayInfo& a_info);
+		bool	GetDisplayInfo(DisplayInfo* a_info) const;
+		bool	SetDisplayInfo(const DisplayInfo& a_info);
 
 		// AS TextField support. Valid for DisplayObject type.
-		bool			SetText(const char* a_text);
-		bool			SetTextHTML(const char* a_html);
+		bool	SetText(const char* a_text);
+		bool	SetTextHTML(const char* a_html);
 
 		// AS MovieClip support. Valid for MovieClips.
-		bool			AttachMovie(GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, SInt32 a_depth = -1, const GFxValue* a_initObj = 0);
-		bool			GotoAndPlay(const char* a_frame);
-		bool			GotoAndStop(const char* a_frame);
+		bool	AttachMovie(GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, SInt32 a_depth = -1, const GFxValue* a_initObj = 0);
+		bool	GotoAndPlay(const char* a_frame);
+		bool	GotoAndStop(const char* a_frame);
 
 		GFC_MEMORY_REDEFINE_NEW(GFxValue, GStatGroups::kGStatGroup_Default);
 
 	protected:
-		bool			IsManagedValue() const;
-		void			AcquireManagedValue(const GFxValue& a_rhs);
-		void			ReleaseManagedValue();
-		void			ChangeType(ValueType a_type);
+		bool	IsManagedValue() const;
+		void	AcquireManagedValue(const GFxValue& a_rhs);
+		void	ReleaseManagedValue();
+		void	ChangeType(ValueType a_type);
 
 
 		union ValueUnion

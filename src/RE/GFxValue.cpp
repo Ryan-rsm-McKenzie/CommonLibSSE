@@ -598,6 +598,16 @@ namespace RE
 	}
 
 
+	GFxValue::GFxValue(std::string_view a_str) :
+		_objectInterface(0),
+		_type(ValueType::kString),
+		_pad0C(0),
+		_value()
+	{
+		_value.string = a_str.data();
+	}
+
+
 	GFxValue::GFxValue(const wchar_t* a_str) :
 		_objectInterface(0),
 		_type(ValueType::kStringW),
@@ -605,6 +615,16 @@ namespace RE
 		_value()
 	{
 		_value.wideString = a_str;
+	}
+
+
+	GFxValue::GFxValue(std::wstring_view a_str) :
+		_objectInterface(0),
+		_type(ValueType::kStringW),
+		_pad0C(0),
+		_value()
+	{
+		_value.wideString = a_str.data();
 	}
 
 
@@ -643,7 +663,85 @@ namespace RE
 	}
 
 
-	const GFxValue& GFxValue::operator=(const GFxValue& a_rhs)
+	GFxValue& GFxValue::operator=(double a_rhs)
+	{
+		if (IsManagedValue()) {
+			ReleaseManagedValue();
+		}
+
+		_type = ValueType::kNumber;
+		_value.number = a_rhs;
+
+		return *this;
+	}
+
+
+	GFxValue& GFxValue::operator=(bool a_rhs)
+	{
+		if (IsManagedValue()) {
+			ReleaseManagedValue();
+		}
+
+		_type = ValueType::kBoolean;
+		_value.boolean = a_rhs;
+
+		return *this;
+	}
+
+
+	GFxValue& GFxValue::operator=(const char* a_rhs)
+	{
+		if (IsManagedValue()) {
+			ReleaseManagedValue();
+		}
+
+		_type = ValueType::kString;
+		_value.string = a_rhs;
+
+		return *this;
+	}
+
+
+	GFxValue& GFxValue::operator=(std::string_view a_rhs)
+	{
+		if (IsManagedValue()) {
+			ReleaseManagedValue();
+		}
+
+		_type = ValueType::kString;
+		_value.string = a_rhs.data();
+
+		return *this;
+	}
+
+
+	GFxValue& GFxValue::operator=(const wchar_t* a_rhs)
+	{
+		if (IsManagedValue()) {
+			ReleaseManagedValue();
+		}
+
+		_type = ValueType::kStringW;
+		_value.wideString = a_rhs;
+
+		return *this;
+	}
+
+
+	GFxValue& GFxValue::operator=(std::wstring_view a_rhs)
+	{
+		if (IsManagedValue()) {
+			ReleaseManagedValue();
+		}
+
+		_type = ValueType::kStringW;
+		_value.wideString = a_rhs.data();
+
+		return *this;
+	}
+
+
+	GFxValue& GFxValue::operator=(const GFxValue& a_rhs)
 	{
 		if (this == &a_rhs) {
 			return *this;
@@ -662,7 +760,7 @@ namespace RE
 	}
 
 
-	const GFxValue& GFxValue::operator=(GFxValue&& a_rhs)
+	GFxValue& GFxValue::operator=(GFxValue&& a_rhs)
 	{
 		if (this == &a_rhs) {
 			return *this;
