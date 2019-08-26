@@ -20,9 +20,9 @@ namespace RE
 
 		enum class Type : UInt8
 		{
-			kFloat = 102,
-			kLong = 108,
-			kShort = 115
+			kFloat = 'f',
+			kLong = 'l',
+			kShort = 's'
 		};
 
 

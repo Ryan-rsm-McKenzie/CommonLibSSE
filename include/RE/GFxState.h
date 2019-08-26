@@ -64,18 +64,11 @@ namespace RE
 
 
 		// State constructor, only invoked from derived classes. The constructor takes a StateType as an argument, which defines the state type; this value cannot be changed after object creation
-		constexpr GFxState(StateType a_st = StateType::kNone) :
-			GRefCountBase<GFxState, GStatGroups::kGStat_Default_Mem>(),
-			stateType(a_st),
-			pad14(0)
-		{}
-
-
+		GFxState(StateType a_st = StateType::kNone);
 		virtual ~GFxState() = default;	// 00
 
-
 		// GetStateType obtains the StateType of this state. The state type of a given object never changes after construction
-		constexpr StateType GetStateType() const { return stateType; }
+		StateType GetStateType() const;
 
 	protected:
 		StateType	stateType;	// 10

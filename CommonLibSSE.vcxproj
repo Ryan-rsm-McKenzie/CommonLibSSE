@@ -234,6 +234,7 @@
     <ClCompile Include="src\RE\GFxMovieView.cpp" />
     <ClCompile Include="src\RE\GFxResource.cpp" />
     <ClCompile Include="src\RE\GFxResourceID.cpp" />
+    <ClCompile Include="src\RE\GFxState.cpp" />
     <ClCompile Include="src\RE\GFxStateBag.cpp" />
     <ClCompile Include="src\RE\GFxValue.cpp" />
     <ClCompile Include="src\RE\GFxWStringBuffer.cpp" />

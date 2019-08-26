@@ -1560,6 +1560,9 @@
     <ClCompile Include="src\RE\TESFile.cpp">
       <Filter>src\RE\FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\GFxState.cpp">
+      <Filter>src\RE\Scaleform\GFxLoader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
