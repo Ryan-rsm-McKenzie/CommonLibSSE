@@ -2,6 +2,8 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_TESContainer
 
+#include <optional>  // optional
+
 #include "function_ref.h"  // function_ref
 
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
@@ -32,7 +34,7 @@ namespace RE
 			STATIC_ASSERT(sizeof(ExtraData) == 0x18);
 
 
-			UInt32			count;	// 00
+			SInt32			count;	// 00
 			UInt32			pad04;	// 04
 			TESBoundObject*	form;	// 08
 			ExtraData*		data;	// 10
@@ -48,9 +50,9 @@ namespace RE
 		virtual void	CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
 
 
-		inline void	ForEach(llvm::function_ref<bool(Entry*)> a_fn) const;
-		bool		GetContainerItemAt(UInt32 a_idx, Entry*& a_entry) const;
-		UInt32		CountItem(TESBoundObject* a_item) const;
+		inline void				ForEach(llvm::function_ref<bool(Entry*)> a_fn) const;
+		std::optional<Entry*>	GetContainerItemAt(UInt32 a_idx) const;
+		SInt32					CountItem(TESBoundObject* a_item) const;
 
 
 		// members
@@ -63,8 +65,8 @@ namespace RE
 
 	inline void TESContainer::ForEach(llvm::function_ref<bool(Entry*)> a_fn) const
 	{
-		for (UInt32 n = 0; n < numEntries; n++) {
-			Entry* entry = entries[n];
+		for (UInt32 i = 0; i < numEntries; i++) {
+			auto entry = entries[i];
 			if (entry) {
 				if (!a_fn(entry)) {
 					break;
