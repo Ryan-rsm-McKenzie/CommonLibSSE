@@ -109,39 +109,29 @@ namespace RE
 
 	SInt32 Actor::GetGoldAmount()
 	{
+		SInt32 gold = 0;
+
 		auto invChanges = GetInventoryChanges();
 		if (invChanges && invChanges->entryList) {
-			bool found = false;
-			SInt32 gold = 0;
 			for (auto& entry : *invChanges->entryList) {
 				if (entry->type && entry->type->IsGold()) {
-					found = true;
 					gold += entry->countDelta;
 				}
-			}
-			if (found) {
-				return gold;
 			}
 		}
 
 		auto cont = GetContainer();
 		if (cont) {
-			bool found = false;
-			SInt32 gold = 0;
 			cont->ForEach([&](RE::TESContainer::Entry* a_entry) -> bool
 			{
 				if (a_entry->form && a_entry->form->IsGold()) {
-					found = true;
 					gold += a_entry->count;
 				}
 				return true;
 			});
-			if (found) {
-				return gold;
-			}
 		}
 
-		return 0;
+		return gold;
 	}
 
 
