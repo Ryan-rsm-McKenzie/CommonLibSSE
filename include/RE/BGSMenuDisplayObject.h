@@ -22,7 +22,7 @@ namespace RE
 		virtual void			CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
 
 		// add
-		virtual TESObjectSTAT*	GetMenuDisplayObject();								// 04 - { return worldStatic; }
+		virtual TESObjectSTAT*	GetMenuDisplayObject();								// 04 - { return menuDisplayObject; }
 
 
 		// members

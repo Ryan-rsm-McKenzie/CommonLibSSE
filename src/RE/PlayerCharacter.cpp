@@ -31,6 +31,49 @@ namespace RE
 	}
 
 
+	Actor* PlayerCharacter::GetActorInFavorState()
+	{
+		using func_t = function_type_t<decltype(&PlayerCharacter::GetActorInFavorState)>;
+		REL::Offset<func_t*> func(Offset::PlayerCharacter::GetActorInFavorState);
+		return func(this);
+	}
+
+
+	float PlayerCharacter::GetArmorValue(InventoryEntryData* a_form)
+	{
+		using func_t = function_type_t<decltype(&PlayerCharacter::GetArmorValue)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::PlayerCharacter, GetArmorValue, func_t*);
+		return func(this, a_form);
+	}
+
+
+	float PlayerCharacter::GetDamage(InventoryEntryData* a_form)
+	{
+		using func_t = function_type_t<decltype(&PlayerCharacter::GetDamage)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::PlayerCharacter, GetDamage, func_t*);
+		return func(this, a_form);
+	}
+
+
+	NiPointer<TESObjectREFR> PlayerCharacter::GetGrabbedRef()
+	{
+		TESObjectREFRPtr refPtr;
+		UInt32 handle = playerGrabbedHandle;
+		if (handle != *g_invalidRefHandle) {
+			TESObjectREFR::LookupByHandle(handle, refPtr);
+		}
+		return refPtr;
+	}
+
+
+	UInt32 PlayerCharacter::GetNumTints(UInt32 a_tintType)
+	{
+		using func_t = function_type_t<decltype(&PlayerCharacter::GetNumTints)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::PlayerCharacter, GetNumTints, func_t*);
+		return func(this, a_tintType);
+	}
+
+
 	TintMask* PlayerCharacter::GetOverlayTintMask(TintMask* a_original)
 	{
 		if (!overlayTintMasks) {
@@ -52,14 +95,6 @@ namespace RE
 	}
 
 
-	UInt32 PlayerCharacter::GetNumTints(UInt32 a_tintType)
-	{
-		using func_t = function_type_t<decltype(&PlayerCharacter::GetNumTints)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::PlayerCharacter, GetNumTints, func_t*);
-		return func(this, a_tintType);
-	}
-
-
 	TintMask* PlayerCharacter::GetTintMask(UInt32 a_tintType, UInt32 a_index)
 	{
 		using func_t = function_type_t<decltype(&PlayerCharacter::GetTintMask)>;
@@ -67,42 +102,7 @@ namespace RE
 		return func(this, a_tintType, a_index);
 	}
 
-
-	float PlayerCharacter::GetDamage(InventoryEntryData* a_form)
-	{
-		using func_t = function_type_t<decltype(&PlayerCharacter::GetDamage)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::PlayerCharacter, GetDamage, func_t*);
-		return func(this, a_form);
-	}
-
-
-	float PlayerCharacter::GetArmorValue(InventoryEntryData* a_form)
-	{
-		using func_t = function_type_t<decltype(&PlayerCharacter::GetArmorValue)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::PlayerCharacter, GetArmorValue, func_t*);
-		return func(this, a_form);
-	}
-
-
-	Actor* PlayerCharacter::GetActorInFavorState()
-	{
-		using func_t = function_type_t<decltype(&PlayerCharacter::GetActorInFavorState)>;
-		REL::Offset<func_t*> func(Offset::PlayerCharacter::GetActorInFavorState);
-		return func(this);
-	}
-
-
-	TESObjectREFR* PlayerCharacter::GetGrabbedRef()
-	{
-		TESObjectREFRPtr refPtr;
-		UInt32 handle = playerGrabbedHandle;
-		if (handle != *g_invalidRefHandle) {
-			TESObjectREFR::LookupByHandle(handle, refPtr);
-		}
-		return refPtr.get();
-	}
-
-
+	
 	void PlayerCharacter::PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType)
 	{
 		using func_t = function_type_t<decltype(&PlayerCharacter::PlayPickupEvent)>;
@@ -110,7 +110,19 @@ namespace RE
 		return func(this, a_item, a_containerOwner, a_containerRef, a_eventType);
 	}
 
+	
+	void PlayerCharacter::SetCollision(bool a_enable)
+	{
+		REL::Offset<bool*> g_collisionDisabled(Offset::PlayerCharacter::CollisionDisabled);
+		if (a_enable) {
+			*g_collisionDisabled = false;
+		} else {
+			*g_collisionDisabled = true;
+		}
+		Character::SetCollision(a_enable);
+	}
 
+	
 	void PlayerCharacter::StartActivation()
 	{
 		using func_t = function_type_t<decltype(&PlayerCharacter::StartActivation)>;
@@ -124,17 +136,5 @@ namespace RE
 		using func_t = function_type_t<decltype(&PlayerCharacter::TryToPickPocket)>;
 		REL::Offset<func_t*> func(Offset::PlayerCharacter::TryToPickPocket);
 		return func(this, a_target, a_entry, a_numItems, a_arg4);
-	}
-
-
-	void PlayerCharacter::SetCollision(bool a_enable)
-	{
-		REL::Offset<bool*> g_collisionDisabled(Offset::PlayerCharacter::CollisionDisabled);
-		if (a_enable) {
-			*g_collisionDisabled = false;
-		} else {
-			*g_collisionDisabled = true;
-		}
-		Character::SetCollision(a_enable);
 	}
 }

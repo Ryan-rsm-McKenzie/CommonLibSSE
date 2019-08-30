@@ -23,6 +23,8 @@ namespace RE
 
 		namespace Actor
 		{
+			// IndirectSig: E8 ? ? ? ? 0F B6 F0 49 8D 4E 30
+			constexpr std::uintptr_t AddSpell = 0x0062F560;						// 1_5_80
 			// IndirectSig: E8 ? ? ? ? 41 8B CE 3B C1
 			constexpr std::uintptr_t CalcEntryValue = 0x001D9080;				// 1_5_80
 			// IndirectSig: E8 ? ? ? ? 49 8B D5 49 8B 8D ? ? ? ?

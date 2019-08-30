@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/Condition.h"  // Condition
+#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
 
 
 namespace RE
@@ -12,16 +13,25 @@ namespace RE
 	{
 		struct EffectItem	// EFIT
 		{
-			float	magnitude;	// 00
-			UInt32	area;		// 04
-			UInt32	duration;	// 08
-			UInt32	pad0C;		// 0C
+			EffectItem();
+			~EffectItem() = default;
+
+			float	magnitude;	// 0
+			UInt32	area;		// 4
+			UInt32	duration;	// 8
 		};
-		STATIC_ASSERT(sizeof(EffectItem) == 0x10);
+		STATIC_ASSERT(sizeof(EffectItem) == 0xC);
+
+
+		Effect();
+		~Effect() = default;
+
+		TES_HEAP_REDEFINE_NEW();
 
 
 		// members
 		EffectItem		effectItem;	// 00 - EFIT
+		UInt32			pad0C;		// 0C
 		EffectSetting*	baseEffect;	// 10 - EFID
 		float			cost;		// 18
 		UInt32			pad1C;		// 1C

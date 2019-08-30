@@ -380,7 +380,7 @@ class gfx.controls.Button extends UIComponent
 	{
 		switch(details.navEquivalent) {
 			case NavigationCode.ENTER:
-				var controllerIdx:Number = details.controllerIdx;
+				var controllerIdx: Number = details.controllerIdx;
 				if (details.value == "keyDown" || details.value == "keyHold") { // A more generic solution may be required for Button
 					if (!pressedByKeyboard) {
 						handlePress(controllerIdx);
@@ -663,7 +663,7 @@ class gfx.controls.Button extends UIComponent
 				doubleClickInterval = setInterval(this, "doubleClickExpired", doubleClickDuration);
 			} else {
 				doubleClickExpired();
-				dispatchEventAndSound({type: "doubleClick", controllerIdx: controllerIdx, button: button});
+				dispatchEventAndSound( { type: "doubleClick", controllerIdx: controllerIdx, button: button } );
 				setState("release");
 				return;
 			}

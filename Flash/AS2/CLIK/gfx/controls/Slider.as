@@ -237,26 +237,26 @@ class gfx.controls.Slider extends UIComponent
 			case NavigationCode.RIGHT:
 				if (keyPress) {
 					value += _snapInterval;
-					dispatchEventAndSound({type: "change"});
+					dispatchEventAndSound( { type: "change" } );
 				}
 				break;
 			case NavigationCode.LEFT:
 				if (keyPress) {
 					value -= _snapInterval;
-					dispatchEventAndSound({type: "change"});
+					dispatchEventAndSound( { type: "change" } );
 				}
 				break;
 
 			case NavigationCode.HOME:
 				if (!keyPress) {
 					value = minimum;
-					dispatchEventAndSound({type: "change"});
+					dispatchEventAndSound( { type: "change" } );
 				}
 				break;
 			case NavigationCode.END:
 				if (!keyPress) {
 					value = maximum;
-					dispatchEventAndSound({type: "change"});
+					dispatchEventAndSound( { type: "change" } );
 				}
 				break;
 			default:
@@ -324,7 +324,7 @@ class gfx.controls.Slider extends UIComponent
 		}
 
 		var trackWidth: Number = (__width - offsetLeft - offsetRight);
-		thumb._x = ((_value - _minimum) / (_maximum - _minimum) * trackWidth) - thumb._width/2 + offsetLeft;
+		thumb._x = ((_value - _minimum) / (_maximum - _minimum) * trackWidth) - thumb._width / 2 + offsetLeft;
 	}
 
 
@@ -332,7 +332,7 @@ class gfx.controls.Slider extends UIComponent
 	{
 		thumbPressed = true;
 		Selection.setFocus(thumb, event.controllerIdx);
-		dragOffset = {x:_xmouse-thumb._x-thumb._width/2};
+		dragOffset = {x: _xmouse - thumb._x - thumb._width / 2};
 		onMouseMove = doDrag;
 		onMouseUp = endDrag;
 	}
@@ -350,7 +350,7 @@ class gfx.controls.Slider extends UIComponent
 
 		_value = newValue;
 		if (liveDragging) {
-			dispatchEventAndSound({type: "change"});
+			dispatchEventAndSound( { type: "change" } );
 		}
 	}
 
@@ -360,7 +360,7 @@ class gfx.controls.Slider extends UIComponent
 		delete onMouseUp;
 		delete onMouseMove;
 		if (!liveDragging) {
-			dispatchEventAndSound({type: "change"});
+			dispatchEventAndSound( { type: "change" } );
 		}
 
 		// If the thumb became draggable on a track press,
@@ -391,7 +391,7 @@ class gfx.controls.Slider extends UIComponent
 
 		value = newValue;
 		if (liveDragging) {
-			dispatchEventAndSound({type: "change"});
+			dispatchEventAndSound( { type: "change" } );
 		}
 
 		// Pressing on the track moves the grip to the cursor
@@ -406,7 +406,9 @@ class gfx.controls.Slider extends UIComponent
 	private function lockValue(value: Number): Number
 	{
 		value = Math.max(_minimum, Math.min(_maximum, value));
-		if (!snapping) { return value; }
+		if (!snapping) {
+			return value;
+		}
 		return Math.round(value / snapInterval) * snapInterval;
 	}
 
@@ -415,7 +417,7 @@ class gfx.controls.Slider extends UIComponent
 	{
 		if (_focused) {
 			value -= delta * _snapInterval;
-			dispatchEventAndSound({type:"change"});
+			dispatchEventAndSound( { type: "change" } );
 		}
 	}
 }

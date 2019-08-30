@@ -16,6 +16,14 @@
 
 namespace RE
 {
+	bool Actor::AddSpell(SpellItem* a_spell)
+	{
+		using func_t = function_type_t<decltype(&Actor::AddSpell)>;
+		REL::Offset<func_t*> func(Offset::Actor::AddSpell);
+		return func(this, a_spell);
+	}
+
+
 	SInt32 Actor::CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const
 	{
 		using func_t = function_type_t<decltype(&Actor::CalcEntryValue)>;

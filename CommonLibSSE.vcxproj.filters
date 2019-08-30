@@ -1563,6 +1563,9 @@
     <ClCompile Include="src\RE\GFxState.cpp">
       <Filter>src\RE\Scaleform\GFxLoader</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\Effect.cpp">
+      <Filter>src\RE\FormComponents\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">

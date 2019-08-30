@@ -430,6 +430,7 @@ namespace RE
 		virtual void							Unk_126(void);																																														// 126
 		virtual float							IncerceptActorValueChange(UInt32 a_avIndex, float a_avChangeBy);																																	// 127
 
+		bool						AddSpell(SpellItem* a_spell);
 		SInt32						CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const;
 		void						DispelWornItemEnchantments();
 		TESNPC*						GetActorBase() const;

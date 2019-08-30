@@ -210,6 +210,7 @@
     <ClCompile Include="src\RE\ChestsLooted.cpp" />
     <ClCompile Include="src\RE\Console.cpp" />
     <ClCompile Include="src\RE\DialogueData.cpp" />
+    <ClCompile Include="src\RE\Effect.cpp" />
     <ClCompile Include="src\RE\ExtraAliasInstanceArray.cpp" />
     <ClCompile Include="src\RE\ExtraCannotWear.cpp" />
     <ClCompile Include="src\RE\ExtraCharge.cpp" />

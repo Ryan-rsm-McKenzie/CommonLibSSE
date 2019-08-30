@@ -446,6 +446,7 @@ class gfx.controls.CoreList extends UIComponent
 			default:
 				return;
 		}
+
 		var newEvent: Object = {
 			target: this,
 			type: type,
@@ -454,6 +455,7 @@ class gfx.controls.CoreList extends UIComponent
 			index: event.target.index,
 			controllerIdx: event.controllerIdx
 		};
+
 		dispatchEventAndSound(newEvent);
 	}
 

@@ -176,18 +176,18 @@ namespace RE
 		static PlayerCharacter*	GetSingleton();
 		static UInt32			GetPickpocketChance(float a_playerSkill, float a_targetSkill, UInt32 a_totalValue, float a_itemWeight, Actor* a_player, Actor* a_target, bool a_isDetected, TESForm* a_item);
 
-		TintMask*				GetOverlayTintMask(TintMask* a_original);
-		BSTArray<TintMask*>&	GetTintList();
-		UInt32					GetNumTints(UInt32 a_tintType);
-		TintMask*				GetTintMask(UInt32 a_tintType, UInt32 a_index);
-		float					GetDamage(InventoryEntryData* a_form);
-		float					GetArmorValue(InventoryEntryData* a_form);
-		Actor*					GetActorInFavorState();
-		TESObjectREFR*			GetGrabbedRef();
-		void					PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
-		void					StartActivation();
-		bool					TryToPickPocket(Actor* a_target, InventoryEntryData* a_entry, UInt32 a_numItems, bool a_arg4 = true);
-		void					SetCollision(bool a_enable);
+		Actor*						GetActorInFavorState();
+		float						GetArmorValue(InventoryEntryData* a_form);
+		float						GetDamage(InventoryEntryData* a_form);
+		NiPointer<TESObjectREFR>	GetGrabbedRef();
+		UInt32						GetNumTints(UInt32 a_tintType);
+		TintMask*					GetOverlayTintMask(TintMask* a_original);
+		BSTArray<TintMask*>&		GetTintList();
+		TintMask*					GetTintMask(UInt32 a_tintType, UInt32 a_index);
+		void						PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
+		void						SetCollision(bool a_enable);
+		void						StartActivation();
+		bool						TryToPickPocket(Actor* a_target, InventoryEntryData* a_entry, UInt32 a_numItems, bool a_arg4 = true);
 
 
 		// members
@@ -364,7 +364,7 @@ namespace RE
 		UInt32								unkAFC;						// AFC
 		UInt8								unkB00;						// B00
 		UInt8								numPerkPoints;				// B01
-		UInt8								unkB02;						// B02
+		UInt8								unkB02;						// B02 - flags
 		UInt8								padB03;						// B03
 		UInt32								unkB04;						// B04
 		void*								unkB08;						// B08
