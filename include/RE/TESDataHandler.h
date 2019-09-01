@@ -1,5 +1,8 @@
 #pragma once
 
+#include <optional>  // optional
+#include <string_view>  // string_view
+
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
@@ -29,16 +32,16 @@ namespace RE
 		static TESDataHandler*	GetSingleton();
 		UInt32					LoadScripts();
 
-		const TESFile*	LookupModByName(const char* a_modName);
-		SInt32			GetModIndex(const char* a_modName);
+		const TESFile*			LookupModByName(std::string_view a_modName);
+		std::optional<UInt8>	GetModIndex(std::string_view a_modName);
 
-		const TESFile*	LookupLoadedModByName(const char* a_modName);
-		const TESFile*	LookupLoadedModByIndex(UInt8 a_index);
-		UInt8			GetLoadedModIndex(const char* a_modName);
+		const TESFile*			LookupLoadedModByName(std::string_view a_modName);
+		const TESFile*			LookupLoadedModByIndex(UInt8 a_index);
+		std::optional<UInt8>	GetLoadedModIndex(std::string_view a_modName);
 
-		const TESFile*	LookupLoadedLightModByName(const char* a_modName);
-		const TESFile*	LookupLoadedLightModByIndex(UInt16 a_index);
-		UInt16			GetLoadedLightModIndex(const char* a_modName);
+		const TESFile*			LookupLoadedLightModByName(std::string_view a_modName);
+		const TESFile*			LookupLoadedLightModByIndex(UInt16 a_index);
+		std::optional<UInt16>	GetLoadedLightModIndex(std::string_view a_modName);
 
 		bool	IsGeneratedID(UInt32 a_formID);
 

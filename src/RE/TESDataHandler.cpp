@@ -25,10 +25,10 @@ namespace RE
 	}
 
 
-	const TESFile* TESDataHandler::LookupModByName(const char* a_modName)
+	const TESFile* TESDataHandler::LookupModByName(std::string_view a_modName)
 	{
 		for (auto& mod : modList.loadOrder) {
-			if (_stricmp(mod->name, a_modName) == 0) {
+			if (_stricmp(mod->name, a_modName.data()) == 0) {
 				return mod;
 			}
 		}
@@ -36,17 +36,17 @@ namespace RE
 	}
 
 
-	SInt32 TESDataHandler::GetModIndex(const char* a_modName)
+	std::optional<UInt8> TESDataHandler::GetModIndex(std::string_view a_modName)
 	{
-		const TESFile* mod = LookupModByName(a_modName);
-		return mod ? mod->modIndex : -1;
+		auto mod = LookupModByName(a_modName);
+		return mod ? std::make_optional(mod->modIndex) : std::nullopt;
 	}
 
 
-	const TESFile* TESDataHandler::LookupLoadedModByName(const char* a_modName)
+	const TESFile* TESDataHandler::LookupLoadedModByName(std::string_view a_modName)
 	{
 		for (auto& mod : modList.loadedMods) {
-			if (_stricmp(mod->name, a_modName) == 0) {
+			if (_stricmp(mod->name, a_modName.data()) == 0) {
 				return mod;
 			}
 		}
@@ -65,17 +65,17 @@ namespace RE
 	}
 
 
-	UInt8 TESDataHandler::GetLoadedModIndex(const char* a_modName)
+	std::optional<UInt8> TESDataHandler::GetLoadedModIndex(std::string_view a_modName)
 	{
-		const TESFile* mod = LookupLoadedModByName(a_modName);
-		return mod ? mod->lightIndex : static_cast<UInt8>(-1);
+		auto mod = LookupLoadedModByName(a_modName);
+		return mod ? std::make_optional(mod->modIndex) : std::nullopt;
 	}
 
 
-	const TESFile* TESDataHandler::LookupLoadedLightModByName(const char* a_modName)
+	const TESFile* TESDataHandler::LookupLoadedLightModByName(std::string_view a_modName)
 	{
 		for (auto& mod : modList.loadedCCMods) {
-			if (_stricmp(mod->name, a_modName) == 0) {
+			if (_stricmp(mod->name, a_modName.data()) == 0) {
 				return mod;
 			}
 		}
@@ -94,10 +94,10 @@ namespace RE
 	}
 
 
-	UInt16 TESDataHandler::GetLoadedLightModIndex(const char* a_modName)
+	std::optional<UInt16> TESDataHandler::GetLoadedLightModIndex(std::string_view a_modName)
 	{
-		const TESFile* mod = LookupLoadedLightModByName(a_modName);
-		return mod ? mod->lightIndex : static_cast<UInt16>(-1);
+		auto mod = LookupLoadedLightModByName(a_modName);
+		return mod ? std::make_optional(mod->lightIndex) : std::nullopt;
 	}
 
 

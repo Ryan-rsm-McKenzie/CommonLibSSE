@@ -484,7 +484,7 @@ class gfx.controls.TextInput extends UIComponent
 	{
 		if (!changeLock) {
 			_text = isHtml ? textField.htmlText : textField.text;
-			dispatchEventAndSound({type:"textChange"});
+			dispatchEventAndSound( {type: "textChange" } );
 		}
 	}
 }
