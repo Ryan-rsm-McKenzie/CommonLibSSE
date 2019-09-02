@@ -2,6 +2,15 @@
 
 #include "skse64/ScaleformLoader.h"  // GFxLoader
 
+#include <string>  // string
+
+#include "RE/BSResourceNiBinaryStream.h"  // BSResourceNiBinaryStream
+#include "RE/FxDelegate.h"  // FxDelegate
+#include "RE/GFxLoader.h"  // GFxLoader
+#include "RE/IMenu.h"  // IMenu
+#include "RE/Misc.h"  // GetINISetting
+#include "RE/Setting.h"  // Setting
+
 
 namespace RE
 {
@@ -13,10 +22,111 @@ namespace RE
 	}
 
 
-	bool BSScaleformMovieLoader::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_swfName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha)
+	bool BSScaleformMovieLoader::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		using func_t = function_type_t<decltype(&BSScaleformMovieLoader::LoadMovie)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::GFxLoader, LoadMovie, func_t*);
-		return func(this, a_menu, a_viewOut, a_swfName, a_mode, a_backGroundAlpha);
+		return func(this, a_menu, a_viewOut, a_fileName, a_mode, a_backGroundAlpha);
+	}
+
+
+	bool BSScaleformMovieLoader::LoadMovieStd(RE::IMenu* a_menu, RE::GPtr<RE::GFxMovieView>& a_viewOut, const char* a_fileName, RE::GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha)
+	{
+		using LoadConstants = RE::GFxLoader::LoadConstants;
+		using StateType = RE::GFxState::StateType;
+
+		if (!gfxLoader) {
+			return false;
+		}
+
+		auto filePath = BuildFilePath(a_fileName);
+		if (!filePath) {
+			return false;
+		}
+
+		auto def = gfxLoader->CreateMovie(filePath->c_str(), LoadConstants::kLoadKeepBindData | LoadConstants::kLoadWaitFrame1);
+		if (!def) {
+			return false;
+		}
+
+		a_viewOut.reset(def->CreateInstance());
+		if (!a_viewOut) {
+			delete def;
+			return false;
+		}
+		a_viewOut->Release();
+
+		a_viewOut->SetViewScaleMode(a_mode);
+		a_viewOut->SetBackgroundAlpha(a_backGroundAlpha);
+
+		float safeZoneX;
+		float safeZoneY;
+		SInt32 sizeW;
+		SInt32 sizeH;
+		std::tie(safeZoneX, safeZoneY, sizeW, sizeH) = CollectDisplayInfo();
+
+		auto visibleRect = a_viewOut->GetVisibleFrameRect();
+		RE::GRectF safeRect;
+		safeRect.left = safeZoneX;
+		safeRect.top = safeZoneY;
+		safeRect.right = (visibleRect.right - visibleRect.left) - safeZoneX;
+		safeRect.bottom = (visibleRect.bottom - visibleRect.top) - safeZoneY;
+		a_viewOut->SetSafeRect(safeRect);
+
+		RE::GViewport viewPort;
+		viewPort.bufferWidth = sizeW;
+		viewPort.bufferHeight = sizeH;
+		viewPort.width = sizeW;
+		viewPort.height = sizeH;
+		a_viewOut->SetViewport(viewPort);
+
+		a_menu->fxDelegate.reset(new RE::FxDelegate());
+		a_menu->fxDelegate->Release();
+		a_menu->fxDelegate->RegisterHandler(a_menu);
+		a_viewOut->SetState(StateType::kExternalInterface, a_menu->fxDelegate.get());
+
+		a_viewOut->Advance(0.0);
+
+		if (a_viewOut->IsAvailable("_root.InitExtensions")) {
+			a_viewOut->Invoke("_root.InitExtensions", 0, 0, 0);
+		}
+		a_menu->InitMovie();
+
+		return true;
+	}
+
+
+	std::optional<std::string> BSScaleformMovieLoader::BuildFilePath(const char* a_fileName)
+	{
+		std::string filePath;
+		filePath = "Interface/";
+		filePath += a_fileName;
+		filePath += ".swf";
+		if (!FileExists(filePath.c_str())) {
+			filePath = "Interface/Exported/";
+			filePath += a_fileName;
+			filePath += ".gfx";
+			if (!FileExists(filePath.c_str())) {
+				return std::nullopt;
+			}
+		}
+		return std::make_optional(filePath);
+	}
+
+
+	std::tuple<float, float, SInt32, SInt32> BSScaleformMovieLoader::CollectDisplayInfo()
+	{
+		auto fSafeZoneX = RE::GetINISetting("fSafeZoneX:Interface");
+		auto fSafeZoneY = RE::GetINISetting("fSafeZoneY:Interface");
+		auto iSizeW = RE::GetINISetting("iSize W:Display");
+		auto iSizeH = RE::GetINISetting("iSize H:Display");
+		return std::make_tuple(fSafeZoneX->GetFloat(), fSafeZoneY->GetFloat(), iSizeW->GetSInt(), iSizeH->GetSInt());
+	}
+
+
+	bool BSScaleformMovieLoader::FileExists(const char* a_fileName)
+	{
+		RE::BSResourceNiBinaryStream file(a_fileName);
+		return file.is_open();
 	}
 }

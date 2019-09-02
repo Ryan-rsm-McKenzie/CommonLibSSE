@@ -175,15 +175,15 @@ class gfx.controls.ProgressBar extends StatusIndicator
 	 */
 	private function setPercent(percent: Number): Void
 	{
-		var newValue:Number = percent * (_maximum - _minimum) + _minimum;
+		var newValue: Number = percent * (_maximum - _minimum) + _minimum;
 		if (value == newValue) {
 			return;
 		}
 
 		value = newValue;
-		dispatchEventAndSound({type: "progress"});
+		dispatchEventAndSound( { type: "progress" } );
 		if (value == _maximum) {
-			dispatchEventAndSound({type: "complete"});
+			dispatchEventAndSound( { type: "complete" } );
 		}
 	}
 

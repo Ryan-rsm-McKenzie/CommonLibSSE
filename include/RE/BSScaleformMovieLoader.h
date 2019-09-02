@@ -1,5 +1,9 @@
 #pragma once
 
+#include <optional>  // optional
+#include <string>  // string
+#include <tuple>  // tuple
+
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
 #include "RE/GFxMovieView.h"  // GFxMovieView::ScaleModeType
 #include "RE/GPtr.h"  // GPtr
@@ -18,7 +22,8 @@ namespace RE
 	public:
 		static BSScaleformMovieLoader* GetSingleton();
 
-		bool LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_swfName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha);
+		bool	LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha);
+		bool	LoadMovieStd(RE::IMenu* a_menu, RE::GPtr<RE::GFxMovieView>& a_viewOut, const char* a_fileName, RE::GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha);
 
 
 		// members
@@ -33,6 +38,11 @@ namespace RE
 		UInt32					unk30;				// 30
 		UInt32					unk34;				// 34
 		UInt64					unk38;				// 38
+
+	private:
+		std::optional<std::string> BuildFilePath(const char* a_fileName);
+		std::tuple<float, float, SInt32, SInt32> CollectDisplayInfo();
+		bool FileExists(const char* a_fileName);
 	};
 	STATIC_ASSERT(sizeof(BSScaleformMovieLoader) == 0x40);
 }

@@ -114,21 +114,9 @@ namespace RE
 	}
 
 
-	bool IMenu::PausesGame() const
-	{
-		return (flags & Flag::kPauseGame) != Flag::kNone;
-	}
-
-
 	bool IMenu::DeletesOnClose() const
 	{
 		return (flags & Flag::kDoNotDeleteOnClose) == Flag::kNone;
-	}
-
-
-	bool IMenu::ShowsCursor() const
-	{
-		return (flags & Flag::kShowCursor) != Flag::kNone;
 	}
 
 
@@ -138,69 +126,15 @@ namespace RE
 	}
 
 
-	bool IMenu::IsModal() const
-	{
-		return (flags & Flag::kModal) != Flag::kNone;
-	}
-
-
-	bool IMenu::StopsDrawingWorld() const
-	{
-		return (flags & Flag::kStopDrawingWorld) != Flag::kNone;
-	}
-
-
-	bool IMenu::IsOpen() const
-	{
-		return (flags & Flag::kOpen) != Flag::kNone;
-	}
-
-
-	bool IMenu::PreventsGameLoad() const
-	{
-		return (flags & Flag::kPreventGameLoad) != Flag::kNone;
-	}
-
-
 	bool IMenu::HasFlag0100() const
 	{
 		return (flags & Flag::kUnk0100) != Flag::kNone;
 	}
 
 
-	bool IMenu::HidesOtherMenus() const
-	{
-		return (flags & Flag::kHideOther) != Flag::kNone;
-	}
-
-
-	bool IMenu::TriesToShowCursor() const
-	{
-		return (flags & Flag::kTryShowCursor) != Flag::kNone;
-	}
-
-
-	bool IMenu::PreventsGameSave() const
-	{
-		return (flags & Flag::kDoNotPreventGameSave) == Flag::kNone;
-	}
-
-
 	bool IMenu::HasFlag1000() const
 	{
 		return (flags & Flag::kUnk1000) != Flag::kNone;
-	}
-
-
-	bool IMenu::IsItemMenu() const
-	{
-		return (flags & Flag::kItemMenu) != Flag::kNone;
-	}
-
-
-	bool IMenu::StopsCrosshairUpdates() const
-	{
-		return (flags & Flag::kStopCrosshairUpdate) != Flag::kNone;
 	}
 
 
@@ -213,5 +147,71 @@ namespace RE
 	bool IMenu::HasFlag10000() const
 	{
 		return (flags & Flag::kUnk10000) != Flag::kNone;
+	}
+
+
+	bool IMenu::HidesOtherMenus() const
+	{
+		return (flags & Flag::kHideOther) != Flag::kNone;
+	}
+
+
+	bool IMenu::IsItemMenu() const
+	{
+		return (flags & Flag::kItemMenu) != Flag::kNone;
+	}
+
+
+	bool IMenu::IsModal() const
+	{
+		return (flags & Flag::kModal) != Flag::kNone;
+	}
+
+
+	bool IMenu::IsOpen() const
+	{
+		return (flags & Flag::kOpen) != Flag::kNone;
+	}
+
+
+	bool IMenu::PausesGame() const
+	{
+		return (flags & Flag::kPauseGame) != Flag::kNone;
+	}
+
+
+	bool IMenu::PreventsGameLoad() const
+	{
+		return (flags & Flag::kPreventGameLoad) != Flag::kNone;
+	}
+
+
+	bool IMenu::PreventsGameSave() const
+	{
+		return (flags & Flag::kDoNotPreventGameSave) == Flag::kNone;
+	}
+
+
+	bool IMenu::ShowsCursor() const
+	{
+		return (flags & Flag::kShowCursor) != Flag::kNone;
+	}
+
+
+	bool IMenu::StopsCrosshairUpdates() const
+	{
+		return (flags & Flag::kStopCrosshairUpdate) != Flag::kNone;
+	}
+
+
+	bool IMenu::StopsDrawingWorld() const
+	{
+		return (flags & Flag::kStopDrawingWorld) != Flag::kNone;
+	}
+
+
+	bool IMenu::TriesToShowCursor() const
+	{
+		return (flags & Flag::kTryShowCursor) != Flag::kNone;
 	}
 }

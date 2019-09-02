@@ -20,7 +20,7 @@ namespace RE
 	{
 		auto cbDef = callbacks.GetAlt(a_methodName);
 		if (cbDef) {
-			FxDelegateArgs params(GFxValue(), cbDef->handler.get(), a_movieView, a_args, a_argCount);
+			FxDelegateArgs params(a_args[0], cbDef->handler.get(), a_movieView, &a_args[1], a_argCount - 1);
 			cbDef->callback(params);
 		}
 	}

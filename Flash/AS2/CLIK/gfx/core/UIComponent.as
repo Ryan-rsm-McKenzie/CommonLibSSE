@@ -118,7 +118,9 @@ class gfx.core.UIComponent extends MovieClip
 
 	private function onUnload(): Void
 	{
-		if (enableInitCallback && _global.CLIK_unloadCallback) { _global.CLIK_unloadCallback(this._name, targetPath(this), this); }
+		if (enableInitCallback && _global.CLIK_unloadCallback) {
+			_global.CLIK_unloadCallback(this._name, targetPath(this), this);
+		}
 	}
 
 

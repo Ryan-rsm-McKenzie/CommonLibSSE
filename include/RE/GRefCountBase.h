@@ -2,6 +2,7 @@
 
 #include "RE/GRefCountImpl.h"  // GRefCountImpl
 #include "RE/GRefCountBaseStatImpl.h"  // GRefCountBaseStatImpl
+#include "RE/GMemory.h"
 
 
 namespace RE
