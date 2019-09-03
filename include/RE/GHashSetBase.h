@@ -2,8 +2,8 @@
 
 #include <cassert>  // assert
 
+#include "RE/GAllocator.h"  // GAllocatorGH
 #include "RE/GFixedSizeHash.h"  // GFixedSizeHash
-#include "RE/GHashAllocator.h"  // GAllocatorGH
 #include "RE/GHashsetCachedEntry.h"  // GHashsetCachedEntry
 #include "GMath.h"  // gfchop, glog2f
 #include "RE/GMemory.h"  // GFC_MEMORY_REDEFINE_NEW

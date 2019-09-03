@@ -3,6 +3,7 @@
 #include "RE/GFxMovie.h"  // GFxMovie
 #include "RE/GFxMovieDef.h"  // GFxMovieDef
 #include "RE/GFxStateBag.h"  // GFxStateBag
+#include "RE/GPoint.h"  // GPointF
 #include "RE/GRect.h"  // GRectF
 #include "RE/GViewport.h"  // GViewport
 
@@ -15,7 +16,6 @@ namespace RE
 	class GMatrix3D;
 	class GMemoryHeap;
 	class GPoint3F;
-	class GPointF;
 	class GViewport;
 	struct GStatBag;
 

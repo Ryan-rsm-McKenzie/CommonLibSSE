@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	template<GStatGroup SID = GStatGroup::kGStat_Default_Mem>
+	template <UInt32 SID = GStatGroup::kGStat_Default_Mem>
 	class GAllocatorBaseGH
 	{
 	public:

@@ -967,6 +967,27 @@
     <Filter Include="src\RE\Scaleform\BS">
       <UniqueIdentifier>{fa9ac539-2fdd-4b83-bbe1-4f85c668327f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Scaleform\GFxRenderConfig">
+      <UniqueIdentifier>{ddf24b74-d6b4-4740-ad7b-a40b7849bba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Scaleform\GMatrix3D">
+      <UniqueIdentifier>{fff793fa-3688-4664-83d6-7d29aba5caf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Scaleform\GImage">
+      <UniqueIdentifier>{7cc491ea-087c-401b-bf2a-cc3d3d1ddac9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Scaleform\GArray">
+      <UniqueIdentifier>{57cad1b5-60ad-4b8c-9f8b-e9d45f014c39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Scaleform\GAllocator">
+      <UniqueIdentifier>{87e178ba-a5c9-4662-9817-e9d7cc04b576}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Scaleform\GRendererEventHandler">
+      <UniqueIdentifier>{2f7134b0-3da4-4596-aace-e42dc994b835}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Scaleform\GFxRenderConfig">
+      <UniqueIdentifier>{4dbb568c-af12-43ab-9134-177635c8bdae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1565,6 +1586,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\Effect.cpp">
       <Filter>src\RE\FormComponents\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GRenderer.cpp">
+      <Filter>src\RE\Scaleform\GRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxRenderConfig.cpp">
+      <Filter>src\RE\Scaleform\GFxRenderConfig</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2329,9 +2356,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\GFxValue.h">
       <Filter>include\RE\Scaleform\GFxPlayer</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GFxMovieRoot.h">
-      <Filter>include\RE\Scaleform</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\GMemory.h">
       <Filter>include\RE\Scaleform\GMemory</Filter>
@@ -3107,12 +3131,6 @@
     <ClInclude Include="include\RE\GHash.h">
       <Filter>include\RE\Scaleform\GHash</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\GAllocatorBaseGH.h">
-      <Filter>include\RE\Scaleform\GHash</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GConstructorMov.h">
-      <Filter>include\RE\Scaleform\GHash</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\GHashNode.h">
       <Filter>include\RE\Scaleform\GHash</Filter>
     </ClInclude>
@@ -3123,9 +3141,6 @@
       <Filter>include\RE\Scaleform\GHash</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\GHashsetCachedEntry.h">
-      <Filter>include\RE\Scaleform\GHash</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GHashAllocator.h">
       <Filter>include\RE\Scaleform\GHash</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\GHashSetBase.h">
@@ -4462,6 +4477,57 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSScaleformMovieLoader.h">
       <Filter>include\RE\Scaleform\BS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GRenderer.h">
+      <Filter>include\RE\Scaleform\GRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxRenderConfig.h">
+      <Filter>include\RE\Scaleform\GFxRenderConfig</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxMovieRoot.h">
+      <Filter>include\RE\Scaleform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GMatrix3D.h">
+      <Filter>include\RE\Scaleform\GMatrix3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GPoint.h">
+      <Filter>include\RE\Scaleform\GTypes2DF</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GTexture.h">
+      <Filter>include\RE\Scaleform\GRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GImage.h">
+      <Filter>include\RE\Scaleform\GImage</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GImageBase.h">
+      <Filter>include\RE\Scaleform\GImage</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GArray.h">
+      <Filter>include\RE\Scaleform\GArray</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GArrayBase.h">
+      <Filter>include\RE\Scaleform\GArray</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GArrayData.h">
+      <Filter>include\RE\Scaleform\GArray</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GArrayDataBase.h">
+      <Filter>include\RE\Scaleform\GArray</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GArrayDefaultPolicy.h">
+      <Filter>include\RE\Scaleform\GArray</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GAllocator.h">
+      <Filter>include\RE\Scaleform\GAllocator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GAllocatorBaseGH.h">
+      <Filter>include\RE\Scaleform\GAllocator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GConstructorMov.h">
+      <Filter>include\RE\Scaleform\GAllocator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GRendererEventHandler.h">
+      <Filter>include\RE\Scaleform\GRendererEventHandler</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

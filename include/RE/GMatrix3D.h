@@ -3,15 +3,15 @@
 
 namespace RE
 {
-	class GMatrix2D
+	class GMatrix3D
 	{
 	public:
-		GMatrix2D() :
+		GMatrix3D() :
 			data{ 0.0 }
 		{}
 
 
-		GMatrix2D& operator=(const GMatrix2D& a_rhs)
+		GMatrix3D& operator=(const GMatrix3D& a_rhs)
 		{
 			for (std::size_t i = 0; i < std::extent<decltype(data), 0>::value; ++i) {
 				for (std::size_t j = 0; j < std::extent<decltype(data), 1>::value; ++j) {
@@ -22,7 +22,7 @@ namespace RE
 		}
 
 
-		float data[2][3];	// 00
+		float data[4][4];	// 00
 	};
-	STATIC_ASSERT(sizeof(GMatrix2D) == 0x18);
+	STATIC_ASSERT(sizeof(GMatrix3D) == 0x40);
 }

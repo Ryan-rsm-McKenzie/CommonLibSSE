@@ -1,7 +1,7 @@
 #pragma once
 
+#include "RE/GAllocator.h"  // GAllocatorGH
 #include "RE/GFixedSizeHash.h"  // GFixedSizeHash
-#include "RE/GHashAllocator.h"  // GAllocatorGH
 #include "RE/GHashNode.h"  // GHashNode
 #include "RE/GHashSet.h"  // GHashSet
 #include "RE/GHashsetCachedNodeEntry.h"  // GHashsetCachedNodeEntry

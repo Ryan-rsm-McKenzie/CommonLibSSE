@@ -3,7 +3,7 @@
 #include <string_view>
 
 #include "RE/GFxPlayerStats.h"  // GFxStatMovieViews
-#include "RE/GMatrix2D.h"  // GMatrix3D
+#include "RE/GMatrix3D.h"  // GMatrix3D
 #include "RE/GMemory.h"  // GFC_MEMORY_REDEFINE_NEW
 #include "RE/GNewOverrideBase.h"  // GNewOverrideBase
 #include "RE/GStats.h"  // GStatGroups

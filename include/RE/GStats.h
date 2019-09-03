@@ -49,6 +49,35 @@ namespace RE
 	using GStatGroup = GStatGroups::GStatGroup;
 
 
+	struct GStatRenderers
+	{
+		enum GStatRenderer
+		{
+			kDefault = GStatGroup::kGStatGroup_Renderer,
+
+			kMem,
+
+			// Video Memory.
+			kVMem,
+			kTextureVMem,
+			kBufferVMem,
+
+			// Counts
+			kCounters,
+			kTextureUploadCnt,
+			kTextureUpdateCnt,
+			kDPCnt,
+			kDPLineCnt,
+			kDPTriangleCnt,
+			kTriangleCnt,
+			kLineCnt,
+			kMaskCnt,
+			kFilterCnt,
+		};
+	};
+	using GStatRenderer = GStatRenderers::GStatRenderer;
+
+
 	enum class GHeapID : UPInt
 	{
 		kReserved = 0,
