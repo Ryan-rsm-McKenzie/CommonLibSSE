@@ -14,6 +14,7 @@ namespace RE
 	{
 	public:
 		using RenderCapBits = GRenderer::RenderCapBits;
+		using VertexFormat = GRenderer::VertexFormat;
 
 
 		enum class RenderFlag : UInt32
@@ -35,7 +36,7 @@ namespace RE
 		bool			IsEdgeAATextured() const;
 		bool			IsOptimizingTriangles() const;
 		bool			HasCxformAddAlpha() const;
-		bool			HasVertexFormat(SInt32 a_fmt) const;
+		bool			HasVertexFormat(VertexFormat a_fmt) const;
 		RenderFlag		GetStrokeRenderFlags() const;
 		RenderCapBits	GetRendererCapBits() const;
 		GRenderer*		GetRenderer() const;
@@ -53,7 +54,7 @@ namespace RE
 		RenderFlag		renderFlags;		// 24
 		float			strokerAAWidth;		// 28
 		RenderCapBits	rendererCapBits;	// 2C
-		UInt32			rendererVtxFmts;	// 30
+		VertexFormat	rendererVtxFmts;	// 30
 		UInt32			pad34;				// 34
 	};
 	STATIC_ASSERT(sizeof(GFxRenderConfig) == 0x38);

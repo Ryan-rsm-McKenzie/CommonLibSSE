@@ -149,7 +149,9 @@ namespace RE
 				float	rumbleRightMotorStrength;	// 0C
 				float	rumbleDuration;				// 10
 				UInt32	unk14;						// 14
-				UInt32	numProjectiles;				// 18
+				UInt8	numProjectiles;				// 18
+				UInt8	pad19;						// 19
+				UInt16	pad1A;						// 1A
 			};
 			STATIC_ASSERT(sizeof(ExtraData) == 0x1C);
 
@@ -171,7 +173,7 @@ namespace RE
 			ActorValue8		embeddedWeaponAV;		// 34 - unused
 			AnimationType	animationType;			// 35
 			Flag			flags;					// 36
-			UInt8			pad37;					// 37
+			UInt8			unk37;					// 37
 		};
 		STATIC_ASSERT(sizeof(Data) == 0x38);
 

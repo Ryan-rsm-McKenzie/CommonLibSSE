@@ -11,7 +11,7 @@ namespace RE
 		inline static const void* RTTI = RTTI_IUIMessageData;
 
 
-		virtual ~IUIMessageData();	// 00
+		virtual ~IUIMessageData() = default;	// 00
 
 
 		// members

@@ -22,7 +22,7 @@ namespace RE
 	}
 
 
-	bool BSScaleformMovieLoader::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha)
+	bool BSScaleformMovieLoader::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		using func_t = function_type_t<decltype(&BSScaleformMovieLoader::LoadMovie)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::GFxLoader, LoadMovie, func_t*);
@@ -30,7 +30,70 @@ namespace RE
 	}
 
 
-	bool BSScaleformMovieLoader::LoadMovieStd(RE::IMenu* a_menu, RE::GPtr<RE::GFxMovieView>& a_viewOut, const char* a_fileName, RE::GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha)
+	bool BSScaleformMovieLoader::LoadMovieStd(IMenu* a_menu, const char* a_fileName, llvm::function_ref<void(GFxMovieDef*)> a_callback, ScaleModeType a_mode, float a_backGroundAlpha)
+	{
+		using LoadConstants = RE::GFxLoader::LoadConstants;
+
+		if (!gfxLoader) {
+			return false;
+		}
+
+		auto filePath = BuildFilePath(a_fileName);
+		if (!filePath) {
+			return false;
+		}
+
+		auto def = gfxLoader->CreateMovie(filePath->c_str(), LoadConstants::kLoadKeepBindData | LoadConstants::kLoadWaitFrame1);
+		if (!def) {
+			return false;
+		}
+
+		a_callback(def);
+
+		auto& view = a_menu->view;
+		view.reset(def->CreateInstance());
+		if (!view) {
+			delete def;
+			return false;
+		}
+		view->Release();
+
+		view->SetViewScaleMode(a_mode);
+		view->SetBackgroundAlpha(a_backGroundAlpha);
+
+		float safeZoneX;
+		float safeZoneY;
+		SInt32 sizeW;
+		SInt32 sizeH;
+		std::tie(safeZoneX, safeZoneY, sizeW, sizeH) = CollectDisplayInfo();
+
+		auto visibleRect = view->GetVisibleFrameRect();
+		RE::GRectF safeRect;
+		safeRect.left = safeZoneX;
+		safeRect.top = safeZoneY;
+		safeRect.right = (visibleRect.right - visibleRect.left) - safeZoneX;
+		safeRect.bottom = (visibleRect.bottom - visibleRect.top) - safeZoneY;
+		view->SetSafeRect(safeRect);
+
+		RE::GViewport viewPort;
+		viewPort.bufferWidth = sizeW;
+		viewPort.bufferHeight = sizeH;
+		viewPort.width = sizeW;
+		viewPort.height = sizeH;
+		view->SetViewport(viewPort);
+
+		view->Advance(0.0);
+
+		if (view->IsAvailable("_root.InitExtensions")) {
+			view->Invoke("_root.InitExtensions", 0, 0, 0);
+		}
+		a_menu->InitMovie();
+
+		return true;
+	}
+
+
+	bool BSScaleformMovieLoader::LoadMovie_Impl(RE::IMenu* a_menu, RE::GPtr<RE::GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		using LoadConstants = RE::GFxLoader::LoadConstants;
 		using StateType = RE::GFxState::StateType;

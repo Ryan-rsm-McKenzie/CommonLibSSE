@@ -27,9 +27,9 @@ namespace RE
 	}
 
 
-	bool GFxRenderConfig::HasVertexFormat(SInt32 a_fmt) const
+	bool GFxRenderConfig::HasVertexFormat(VertexFormat a_fmt) const
 	{
-		return (rendererVtxFmts & (1 << a_fmt)) != 0;
+		return (rendererVtxFmts & a_fmt) != VertexFormat::kNone;
 	}
 
 

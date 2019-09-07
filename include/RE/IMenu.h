@@ -31,7 +31,7 @@ namespace RE
 			kDoNotDeleteOnClose = 1 << 1,
 			kShowCursor = 1 << 2,
 			kUnk0008 = 1 << 3,
-			kModal = 1 << 4,
+			kModal = 1 << 4,	// prevents lower movies with this flag from advancing
 			kStopDrawingWorld = 1 << 5,
 			kOpen = 1 << 6,
 			kPreventGameLoad = 1 << 7,

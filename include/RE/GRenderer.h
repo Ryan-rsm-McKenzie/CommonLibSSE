@@ -58,10 +58,10 @@ namespace RE
 		enum class VertexFormat : UInt32
 		{
 			kNone = 0,
-			kXY16i = 1,
-			kXY32f = 2,
-			kXY16iC32 = 3,
-			kXY16iCF32 = 4
+			kXY16i = 1 << 1,
+			kXY32f = 1 << 2,
+			kXY16iC32 = 1 << 3,
+			kXY16iCF32 = 1 << 4
 		};
 
 		enum class IndexFormat : UInt32

@@ -4,6 +4,8 @@
 #include <string>  // string
 #include <tuple>  // tuple
 
+#include "function_ref.h"
+
 #include "RE/BSString.h"  // BSString
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
 #include "RE/GFxMovieView.h"  // GFxMovieView::ScaleModeType
@@ -15,6 +17,7 @@ namespace RE
 	class BSScaleformImageLoader;
 	class GFxDrawTextManager;
 	class GFxLoader;
+	class GFxMovieDef;
 	class GFxRenderConfig;
 	class IMenu;
 
@@ -22,6 +25,9 @@ namespace RE
 	class BSScaleformMovieLoader : public BSTSingletonSDM<BSScaleformMovieLoader>
 	{
 	public:
+		using ScaleModeType = GFxMovieView::ScaleModeType;
+
+
 		struct Config
 		{
 			GPtr<GFxRenderConfig> renderConfig;	// 0
@@ -31,8 +37,9 @@ namespace RE
 
 		static BSScaleformMovieLoader* GetSingleton();
 
-		bool	LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha);
-		bool	LoadMovieStd(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, GFxMovieView::ScaleModeType a_mode, float a_backGroundAlpha);
+		bool	LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode = ScaleModeType::kShowAll, float a_backGroundAlpha = 0.0);
+		bool	LoadMovieStd(IMenu* a_menu, const char* a_fileName, llvm::function_ref<void(GFxMovieDef*)> a_callback, ScaleModeType a_mode = ScaleModeType::kShowAll, float a_backGroundAlpha = 0.0);
+		bool	LoadMovie_Impl(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode = ScaleModeType::kShowAll, float a_backGroundAlpha = 0.0);
 
 
 		// members

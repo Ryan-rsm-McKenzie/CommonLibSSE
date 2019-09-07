@@ -75,41 +75,41 @@ namespace RE
 			DisplayInfo(double a_rotation);																																																																				// Initializes the DisplayInfo structure.
 			DisplayInfo(bool a_visible);																																																																				// Initializes the DisplayInfo structure.
 
-			void					Clear();																																																																			// Clears all properties from the DisplayInfo object.
-			double					GetAlpha() const;																																																																	// Retrieves the alpha transparency of the display object.
-			double					GetFOV() const;																																																																		// Retrieves the perspective Field of View angle on the object.
-			double					GetRotation() const;																																																																// Retrieves the rotation of the display object.
-			bool					GetVisible() const;																																																																	// Retrieves the Boolean value to indicate the visibility of the display object.
-			const GMatrix3D*		GetPerspectiveMatrix3D() const;																																																														// Returns a temporary pointer to the 3D perspective matrix set on a 3D movie clip.
-			const GMatrix3D*		GetViewMatrix3D() const;																																																															// Returns a temporary pointer to the 3D view matrix set on the 3D movie clip.
-			double					GetX() const;																																																																		// Retrieves the x coordinate of the display object relative to the parent movie clip.
-			double					GetY() const;																																																																		// Retrieves the y coordinate of the display object relative to the parent movie clip.
-			double					GetZ() const;																																																																		// Retrieves the z coordinate of the display object relative to the parent movie clip.
-			double					GetXRotation() const;																																																																// Returns the rotation of the object around the X axis.
-			double					GetYRotation() const;																																																																// Returns the rotation of the object around the Y axis.
-			double					GetXScale() const;																																																																	// Retrieves the horizontal scale of the display object.
-			double					GetYScale() const;																																																																	// Retrieves the vertical scale of the display object.
-			double					GetZScale() const;																																																																	// Retrieves the scale of the object along the Z axis.
-			bool					IsFlagSet(Flag a_flag) const;																																																														// Determines if a property of the DisplayInfo object is set
-			void					Initialize(Flag a_varsSet, double a_x, double a_y, double a_rotation, double a_xScale, double a_yScale, double a_alpha, bool a_visible, double a_z, double a_xRotation, double a_yRotation, double a_zScale, double a_fov, const GMatrix3D* a_viewM, const GMatrix3D* a_perspM);	// Initializes the display properties of a display object.
-			void					SetVisible(bool a_visible);																																																															// Sets the visibility of the display object.
-			void					SetPerspectiveMatrix3D(const GMatrix3D* a_mat);																																																										// Sets the erspective matrix for a 3D movie clip.
-			void					Set(double a_x, double a_y, double a_rotation, double a_xScale, double a_yScale, double a_alpha, bool a_visible);																																									// Sets the values in Flag structure indicating the display properties of objects on stage.
-			void					Set(double a_x, double a_y, double a_rotation, double a_xScale, double a_yScale, double a_alpha, bool a_visible, double a_z, double a_xRotation, double a_yRotation, double a_zScale);																								// Sets the values in Flags structure indicating the display properties of objects on stage.
-			void					SetViewMatrix3D(const GMatrix3D* a_mat);																																																											// Sets the view matrix for a 3D movie clip.
-			void					SetAlpha(double a_alpha);																																																															// Sets the alpha transparency of the display object.
-			void					SetFOV(double a_fov);																																																																// Sets the perspective Field of View angle in degrees.
-			void					SetPosition(double a_x, double a_y);																																																												// Sets the coordinate position of the display object.
-			void					SetRotation(double a_degrees);																																																														// Sets the rotation of the display object.
-			void					SetScale(double a_xScale, double a_yScale);																																																											// Sets the scaling factor of the display object.
-			void					SetX(double a_x);																																																																	// Sets the x coordinate of the display object relative to the parent movie clip.
-			void					SetXRotation(double a_degrees);																																																														// Sets the rotation of the object around the X axis.
-			void					SetXScale(double a_xScale);																																																															// Sets the horizontal scale of the display object.
-			void					SetY(double a_y);																																																																	// Sets the y coordinate of the display object relative to the parent movie clip.
-			void					SetYRotation(double a_degrees);																																																														// Sets the rotation of the object around the Y axis.
-			void					SetYScale(double a_yScale);																																																															// Sets the vertical scale of the display object.
-			void					SetZ(double a_z);																																																																	// Sets the z coordinate of the display object relative to the parent movie clip.
-			void					SetZScale(double a_zScale);																																																															// Sets the scale of the object along the Z axis
+			void				Clear();																																																																			// Clears all properties from the DisplayInfo object.
+			double				GetAlpha() const;																																																																	// Retrieves the alpha transparency of the display object.
+			double				GetFOV() const;																																																																		// Retrieves the perspective Field of View angle on the object.
+			double				GetRotation() const;																																																																// Retrieves the rotation of the display object.
+			bool				GetVisible() const;																																																																	// Retrieves the Boolean value to indicate the visibility of the display object.
+			const GMatrix3D*	GetPerspectiveMatrix3D() const;																																																														// Returns a temporary pointer to the 3D perspective matrix set on a 3D movie clip.
+			const GMatrix3D*	GetViewMatrix3D() const;																																																															// Returns a temporary pointer to the 3D view matrix set on the 3D movie clip.
+			double				GetX() const;																																																																		// Retrieves the x coordinate of the display object relative to the parent movie clip.
+			double				GetY() const;																																																																		// Retrieves the y coordinate of the display object relative to the parent movie clip.
+			double				GetZ() const;																																																																		// Retrieves the z coordinate of the display object relative to the parent movie clip.
+			double				GetXRotation() const;																																																																// Returns the rotation of the object around the X axis.
+			double				GetYRotation() const;																																																																// Returns the rotation of the object around the Y axis.
+			double				GetXScale() const;																																																																	// Retrieves the horizontal scale of the display object.
+			double				GetYScale() const;																																																																	// Retrieves the vertical scale of the display object.
+			double				GetZScale() const;																																																																	// Retrieves the scale of the object along the Z axis.
+			bool				IsFlagSet(Flag a_flag) const;																																																														// Determines if a property of the DisplayInfo object is set
+			void				Initialize(Flag a_varsSet, double a_x, double a_y, double a_rotation, double a_xScale, double a_yScale, double a_alpha, bool a_visible, double a_z, double a_xRotation, double a_yRotation, double a_zScale, double a_fov, const GMatrix3D* a_viewM, const GMatrix3D* a_perspM);	// Initializes the display properties of a display object.
+			void				SetVisible(bool a_visible);																																																															// Sets the visibility of the display object.
+			void				SetPerspectiveMatrix3D(const GMatrix3D* a_mat);																																																										// Sets the erspective matrix for a 3D movie clip.
+			void				Set(double a_x, double a_y, double a_rotation, double a_xScale, double a_yScale, double a_alpha, bool a_visible);																																									// Sets the values in Flag structure indicating the display properties of objects on stage.
+			void				Set(double a_x, double a_y, double a_rotation, double a_xScale, double a_yScale, double a_alpha, bool a_visible, double a_z, double a_xRotation, double a_yRotation, double a_zScale);																								// Sets the values in Flags structure indicating the display properties of objects on stage.
+			void				SetViewMatrix3D(const GMatrix3D* a_mat);																																																											// Sets the view matrix for a 3D movie clip.
+			void				SetAlpha(double a_alpha);																																																															// Sets the alpha transparency of the display object.
+			void				SetFOV(double a_fov);																																																																// Sets the perspective Field of View angle in degrees.
+			void				SetPosition(double a_x, double a_y);																																																												// Sets the coordinate position of the display object.
+			void				SetRotation(double a_degrees);																																																														// Sets the rotation of the display object.
+			void				SetScale(double a_xScale, double a_yScale);																																																											// Sets the scaling factor of the display object.
+			void				SetX(double a_x);																																																																	// Sets the x coordinate of the display object relative to the parent movie clip.
+			void				SetXRotation(double a_degrees);																																																														// Sets the rotation of the object around the X axis.
+			void				SetXScale(double a_xScale);																																																															// Sets the horizontal scale of the display object.
+			void				SetY(double a_y);																																																																	// Sets the y coordinate of the display object relative to the parent movie clip.
+			void				SetYRotation(double a_degrees);																																																														// Sets the rotation of the object around the Y axis.
+			void				SetYScale(double a_yScale);																																																															// Sets the vertical scale of the display object.
+			void				SetZ(double a_z);																																																																	// Sets the z coordinate of the display object relative to the parent movie clip.
+			void				SetZScale(double a_zScale);																																																															// Sets the scale of the object along the Z axis
 
 		protected:
 			void					SetFlags(Flag a_flags);
