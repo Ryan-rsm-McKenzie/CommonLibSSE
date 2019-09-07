@@ -112,8 +112,8 @@ namespace RE
 			void				SetZScale(double a_zScale);																																																															// Sets the scale of the object along the Z axis
 
 		protected:
-			void					SetFlags(Flag a_flags);
-			void					ClearFlags(Flag a_flags);
+			void	SetFlags(Flag a_flags);
+			void	ClearFlags(Flag a_flags);
 
 
 			// members

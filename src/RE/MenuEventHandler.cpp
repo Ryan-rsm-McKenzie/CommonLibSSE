@@ -3,10 +3,6 @@
 
 namespace RE
 {
-	MenuEventHandler::MenuEventHandler()
-	{}
-
-
 	bool MenuEventHandler::ProcessKinect(KinectEvent* a_event)
 	{
 		return false;
