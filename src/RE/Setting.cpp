@@ -55,7 +55,7 @@ namespace RE
 
 	const char* Setting::GetName() const
 	{
-		return name;
+		return name ? name : "";
 	}
 
 
