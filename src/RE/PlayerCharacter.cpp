@@ -58,10 +58,8 @@ namespace RE
 	NiPointer<TESObjectREFR> PlayerCharacter::GetGrabbedRef()
 	{
 		TESObjectREFRPtr refPtr;
-		UInt32 handle = playerGrabbedHandle;
-		if (handle != *g_invalidRefHandle) {
-			TESObjectREFR::LookupByHandle(handle, refPtr);
-		}
+		UInt32 handle = grabbedHandle;
+		TESObjectREFR::LookupByHandle(handle, refPtr);
 		return refPtr;
 	}
 

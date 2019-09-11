@@ -231,6 +231,7 @@
 #include "RE/BSTFreeList.h"
 #include "RE/BSTHashMap.h"
 #include "RE/BSThread.h"
+#include "RE/BSTimeManager.h"
 #include "RE/BSTList.h"
 #include "RE/BSTMessageQueue.h"
 #include "RE/BSTransformDeltaEvent.h"

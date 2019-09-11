@@ -988,6 +988,12 @@
     <Filter Include="src\RE\Scaleform\GFxRenderConfig">
       <UniqueIdentifier>{4dbb568c-af12-43ab-9134-177635c8bdae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Misc">
+      <UniqueIdentifier>{24bdb8f0-a32f-42fb-92a6-ac8ab6b78258}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Misc">
+      <UniqueIdentifier>{5124e739-be3b-47ec-bb50-c7251e5eb942}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1593,6 +1599,9 @@
     <ClCompile Include="src\RE\GFxRenderConfig.cpp">
       <Filter>src\RE\Scaleform\GFxRenderConfig</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BSTimeManager.cpp">
+      <Filter>src\RE\Misc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -1656,9 +1665,6 @@
       <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\Offsets.h">
-      <Filter>include\RE</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Misc.h">
       <Filter>include\RE</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSTEvent.h">
@@ -4528,6 +4534,12 @@
     </ClInclude>
     <ClInclude Include="include\RE\GRendererEventHandler.h">
       <Filter>include\RE\Scaleform\GRendererEventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTimeManager.h">
+      <Filter>include\RE\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Misc.h">
+      <Filter>include\RE\Misc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

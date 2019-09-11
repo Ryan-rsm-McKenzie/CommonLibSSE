@@ -18,6 +18,7 @@ namespace RE
 	class hkpBreakableBody;
 	class hkpContactListener;
 	class hkpEntityActivationListener;
+	class hkpEntityListener;
 	class hkpSimulationIsland;
 	struct hkConstraintInternal;
 

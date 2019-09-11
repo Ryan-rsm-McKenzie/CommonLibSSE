@@ -11,6 +11,7 @@ namespace RE
 {
 	class hkAabb;
 	class hkpCollidable;
+	class hkpPhantomListener;
 	class hkpPhantomOverlapListener;
 
 

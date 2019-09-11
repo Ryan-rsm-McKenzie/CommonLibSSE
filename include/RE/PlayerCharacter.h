@@ -293,7 +293,7 @@ namespace RE
 		Data7DC								unk7DC;						// 7DC
 		RefHandle							pad894;						// 894
 		BSTSmallArray<void*, 4>				unk898;						// 898
-		RefHandle							playerGrabbedHandle;		// 8C8
+		RefHandle							grabbedHandle;				// 8C8
 		float								unk8CC;						// 8CC - related to grabbed item
 		UInt32								unk8D0;						// 8D0
 		float								unk8D4;						// 8D4
@@ -394,6 +394,5 @@ namespace RE
 		UInt8								unkBDD;						// BDD
 		UInt16								padBDE;						// BDE
 	};
-	STATIC_ASSERT(offsetof(PlayerCharacter, playerGrabbedHandle) == 0x8C8);
 	STATIC_ASSERT(sizeof(PlayerCharacter) == 0xBE0);
 }

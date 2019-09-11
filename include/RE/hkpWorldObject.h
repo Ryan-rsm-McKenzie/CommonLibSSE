@@ -12,6 +12,7 @@ namespace RE
 {
 	class hkMotionState;
 	class hkpShapeModifier;
+	class hkpWorld;
 
 
 	namespace hkWorldOperation

@@ -132,6 +132,13 @@ namespace RE
 		}
 
 
+		namespace BSTimeManager
+		{
+			//
+			constexpr std::uintptr_t Singleton = 0x01EC0A80;	// 1_5_80
+		}
+
+
 		namespace BSWin32SaveDataSystemUtility
 		{
 			// IndirectSig: E8 ? ? ? ? 4C 8B 18

@@ -206,6 +206,7 @@
     <ClCompile Include="src\RE\BSLock.cpp" />
     <ClCompile Include="src\RE\BSString.cpp" />
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp" />
+    <ClCompile Include="src\RE\BSTimeManager.cpp" />
     <ClCompile Include="src\RE\BSWin32SaveDataSystemUtility.cpp" />
     <ClCompile Include="src\RE\ChestsLooted.cpp" />
     <ClCompile Include="src\RE\Console.cpp" />
@@ -639,6 +640,7 @@
     <ClInclude Include="include\RE\BSTextureSet.h" />
     <ClInclude Include="include\RE\BSTFreeList.h" />
     <ClInclude Include="include\RE\BSThread.h" />
+    <ClInclude Include="include\RE\BSTimeManager.h" />
     <ClInclude Include="include\RE\BSTMessageQueue.h" />
     <ClInclude Include="include\RE\BSTSmartPointer.h" />
     <ClInclude Include="include\RE\BSTArray.h" />
