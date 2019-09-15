@@ -1126,6 +1126,7 @@
     <ClInclude Include="include\RE\NiTStringMap.h" />
     <ClInclude Include="include\RE\NonActorMagicTarget.h" />
     <ClInclude Include="include\RE\OldMessageBoxCallback.h" />
+    <ClInclude Include="include\RE\PackageData.h" />
     <ClInclude Include="include\RE\PackageLocation.h" />
     <ClInclude Include="include\RE\PathingCell.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
@@ -1334,6 +1335,7 @@
     <ClInclude Include="include\RE\UserEventEnabledEvent.h" />
     <ClInclude Include="include\RE\TESFile.h" />
     <ClInclude Include="include\RE\ValueModifierEffect.h" />
+    <ClInclude Include="include\RE\WeaponStrikeData.h" />
     <ClInclude Include="include\RE\WeatherType.h" />
     <ClInclude Include="include\RE\ZeroOverheadHeap.h" />
     <ClInclude Include="include\SKSE\Events.h" />

@@ -2,10 +2,12 @@
 
 #include "skse64/GameReferences.h"  // Actor
 
+#include "RE/ActorProcessManager.h"  // ActorProcessManager
 #include "RE/BGSAttackData.h"  // BGSAttackData
 #include "RE/ExtraFactionChanges.h"  // ExtraFactionChanges
 #include "RE/InventoryChanges.h"  // InventoryChanges
 #include "RE/InventoryEntryData.h"  // InventoryEntryData
+#include "RE/MiddleProcess.h"  // MiddleProcess
 #include "RE/Offsets.h"
 #include "RE/TESActorBaseData.h"  // TESActorBaseData
 #include "RE/TESFaction.h"  // TESFaction

@@ -245,7 +245,7 @@ namespace RE
 		TESQuest*				ownerQuest;					// 70 - QNAM
 		OnEvent					onEvents[OnEvent::kTotal];	// 78
 		UInt32					unkD8;						// D8
-		UInt32					unkDC;						// DC
+		UInt32					unkDC;						// DC - some kind of ref count
 	};
 	STATIC_ASSERT(sizeof(TESPackage) == 0xE0);
 }

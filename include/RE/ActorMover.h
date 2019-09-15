@@ -2,11 +2,12 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_ActorMover
 
-#include "RE/FormTypes.h"  // Actor
-
 
 namespace RE
 {
+	class Actor;
+
+
 	class ActorMover
 	{
 	public:
