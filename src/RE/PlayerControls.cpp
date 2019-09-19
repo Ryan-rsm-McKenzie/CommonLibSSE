@@ -7,7 +7,7 @@ namespace RE
 {
 	PlayerControls::PlayerControls()
 	{
-		Ctor_Internal();
+		Ctor();
 	}
 
 
@@ -19,9 +19,9 @@ namespace RE
 	}
 
 
-	PlayerControls* PlayerControls::Ctor_Internal()
+	PlayerControls* PlayerControls::Ctor()
 	{
-		using func_t = function_type_t<decltype(&PlayerControls::Ctor_Internal)>;
+		using func_t = function_type_t<decltype(&PlayerControls::Ctor)>;
 		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::PlayerControls, ctor, func_t*);
 		return func(this);
 	}

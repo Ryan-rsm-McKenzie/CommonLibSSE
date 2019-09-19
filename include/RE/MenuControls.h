@@ -28,6 +28,9 @@ namespace RE
 	public:
 		struct QueuedReg
 		{
+			QueuedReg(MenuEventHandler* a_handler, bool a_add);
+			~QueuedReg() = default;
+
 			MenuEventHandler*	handler;	// 00
 			bool				add;		// 08
 			UInt8				pad08;		// 09
@@ -48,11 +51,16 @@ namespace RE
 
 		static MenuControls* GetSingleton();
 
+		void	AddHandler(MenuEventHandler* a_handler);
 		void	RegisterHandler(MenuEventHandler* a_handler);
 		void	RemoveHandler(MenuEventHandler* a_handler);
+		void	UnregisterHandler(MenuEventHandler* a_handler);
 
 
 		// members
+		UInt8									pad11;					// 11
+		UInt16									pad12;					// 12
+		UInt32									pad14;					// 14
 		BSTArray<MenuEventHandler*>				handlers;				// 18
 		BSTArray<QueuedReg>						regBuffer;				// 30
 		BSTSmartPointer<ClickHandler>			clickHandler;			// 48
@@ -62,8 +70,8 @@ namespace RE
 		BSTSmartPointer<MenuOpenHandler>		menuOpenHandler;		// 68
 		BSTSmartPointer<FavoritesHandler>		favoritesHandler;		// 70
 		BSTSmartPointer<ScreenshotHandler>		screenshotHandler;		// 78
-		bool									nowProcessing;			// 80
-		UInt8									unk81;					// 81
+		bool									isProcessing;			// 80
+		bool									beastForm;				// 81
 		bool									remapMode;				// 82
 		UInt8									unk83;					// 83
 		UInt32									unk84;					// 84

@@ -349,15 +349,6 @@ namespace RE
 		}
 
 
-		namespace MenuControls
-		{
-			// IndirectSig: E8 ? ? ? ? 8D 56 07
-			constexpr std::uintptr_t RegisterHandler = 0x008A7F20;	// 1_5_80
-			// IndirectSig: E8 ? ? ? ? 90 C6 43 0C 00
-			constexpr std::uintptr_t RemoveHandler = 0x008A7FF0;	// 1_5_80
-		}
-
-
 		namespace MenuOpenHandler
 		{
 			// ??_7MenuOpenHandler@@6B@
@@ -411,8 +402,6 @@ namespace RE
 
 			//
 			constexpr std::uintptr_t CollisionDisabled = 0x01EBEB50;	// 1_5_80
-			// IndirectSig: E8 ? ? ? ? 48 3B C6 74 16
-			constexpr std::uintptr_t GetActorInFavorState = 0x006B3670;	// 1_5_80
 			// IndirectSig: 48 83 EC 38 80 7C 24 70 00
 			constexpr std::uintptr_t GetPickpocketChance = 0x003BCF40;	// 1_5_80
 			// IndirectSig: E8 ? ? ? ? 44 89 65 67

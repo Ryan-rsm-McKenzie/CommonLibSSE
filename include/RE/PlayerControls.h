@@ -43,7 +43,10 @@ namespace RE
 
 
 		// members
+		UInt8							pad021;				// 021
+		UInt16							pad022;				// 022
 		MovementData					movementData;		// 024
+		UInt32							unk054;				// 054
 		BSTArray<PlayerInputHandler*>	handlers;			// 058
 		BSTArray<void*>					unk070;				// 070
 		BSTArray<void*>					unk088;				// 088
@@ -68,10 +71,13 @@ namespace RE
 		RunHandler*						runHandler;			// 1C0
 		SneakHandler*					sneakHandler;		// 1C8
 		TogglePOVHandler*				togglePOVHandler;	// 1D0
-		UInt64							unk1D8;				// 1D8
+		bool							enableLook;			// 1D8
+		UInt8							unk1D9;				// 1D9
+		UInt16							unk1DA;				// 1DA
+		UInt32							unk1DC;				// 1DC
 
 	private:
-		PlayerControls* Ctor_Internal();
+		PlayerControls* Ctor();
 	};
 	STATIC_ASSERT(sizeof(PlayerControls) == 0x1E0);
 }

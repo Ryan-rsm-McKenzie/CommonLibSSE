@@ -90,7 +90,7 @@ namespace RE
 			};
 
 
-			bool IsValid() const;	// Call this to know if the node is valid while traversing executedStages
+			explicit operator bool() const;
 
 
 			UInt16	index;	// 0

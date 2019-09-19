@@ -4547,5 +4547,11 @@
     <ClInclude Include="include\RE\PackageData.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\NiQuaternion.h">
+      <Filter>include\RE\NetImmerse\NiMain</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiPoint2.h">
+      <Filter>include\RE\NetImmerse\NiAnimation</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -464,7 +464,9 @@ class gfx.controls.Button extends UIComponent
 			return;
 		}
 
-		if (textField != null && _label != null) { textField.text = _label; }
+		if (textField != null && _label != null) {
+			textField.text = _label;
+		}
 
 		validateNow();// Ensure that the width/height is up to date.
 		if (constraints != null) {

@@ -228,7 +228,7 @@ namespace RE
 		virtual void					Unk_6E(void);																																												// 6E - { return; }
 		virtual NiNode*					GetNiRootNode(UInt32 a_firstPerson);																																						// 6F - { return GetNiNode(); }
 		virtual NiNode*					GetNiNode() const;																																											// 70
-		virtual void					Unk_71(void);																																												// 71 - { return 1; }
+		virtual bool					IsInThirdPerson();																																											// 71 - { return true; }
 		virtual void					Unk_72(void);																																												// 72
 		virtual NiPoint3*				GetBoundLeftFrontBottom(NiPoint3& a_out) const;																																				// 73
 		virtual NiPoint3*				GetBoundRightBackTop(NiPoint3& a_out) const;																																				// 74
@@ -330,7 +330,7 @@ namespace RE
 		LoadedState*	loadedState;	// 68
 		BaseExtraList	extraData;		// 70
 		UInt64			unk88;			// 88
-		UInt16			unk90;			// 90
+		UInt16			scale;			// 90
 		UInt8			unk92;			// 92
 		UInt8			unk93;			// 93
 		UInt32			pad94;			// 94

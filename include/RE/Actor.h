@@ -442,9 +442,9 @@ namespace RE
 		UInt32						unk11C;										// 11C
 		NiPoint3					startingPos;								// 120
 		float						startingRotZ;								// 12C
-		void*						unk130;										// 130
+		TESObjectCELL*				startingCell;								// 130
 		BGSLocation*				startingLocation;							// 138
-		ActorMover*					unk140;										// 140
+		ActorMover*					mover;										// 140
 		MovementControllerNPC*		unk148;										// 148
 		void*						unk150;										// 150
 		void*						unk158;										// 158
@@ -458,7 +458,7 @@ namespace RE
 		UInt64						unk180;										// 180
 		BSTSmallArray<SpellItem*>	addedSpells;								// 188
 		MagicCaster*				magicCaster[SlotTypes::kNumSlots];			// 1A0
-		MagicCaster*				equippingMagicItems[SlotTypes::kNumSlots];	// 1C0
+		SpellItem*					equippingMagicItems[SlotTypes::kNumSlots];	// 1C0
 		TESForm*					equippedShout;								// 1E0
 		UInt32						unk1E8;										// 1E8
 		UInt32						pad1EC;										// 1EC

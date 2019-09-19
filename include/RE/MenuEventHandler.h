@@ -31,7 +31,9 @@ namespace RE
 
 
 		// members
-		UInt32 unk0C;	// 0C
+		bool	registered;	// 0C
+		UInt8	pad0D;		// 0D
+		UInt16	pad0E;		// 0E
 	};
 	STATIC_ASSERT(sizeof(MenuEventHandler) == 0x10);
 }

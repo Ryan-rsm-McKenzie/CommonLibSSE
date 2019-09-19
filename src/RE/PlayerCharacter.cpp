@@ -31,11 +31,11 @@ namespace RE
 	}
 
 
-	Actor* PlayerCharacter::GetActorInFavorState()
+	Actor* PlayerCharacter::GetActorInFavorState() const
 	{
-		using func_t = function_type_t<decltype(&PlayerCharacter::GetActorInFavorState)>;
-		REL::Offset<func_t*> func(Offset::PlayerCharacter::GetActorInFavorState);
-		return func(this);
+		RE::TESObjectREFRPtr ref;
+		RE::TESObjectREFR::LookupByHandle(actorInFavorState, ref);
+		return static_cast<Actor*>(ref.get());
 	}
 
 

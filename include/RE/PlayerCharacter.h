@@ -176,7 +176,7 @@ namespace RE
 		static PlayerCharacter*	GetSingleton();
 		static UInt32			GetPickpocketChance(float a_playerSkill, float a_targetSkill, UInt32 a_totalValue, float a_itemWeight, Actor* a_player, Actor* a_target, bool a_isDetected, TESForm* a_item);
 
-		Actor*						GetActorInFavorState();
+		Actor*						GetActorInFavorState() const;
 		float						GetArmorValue(InventoryEntryData* a_form);
 		float						GetDamage(InventoryEntryData* a_form);
 		NiPointer<TESObjectREFR>	GetGrabbedRef();
@@ -264,7 +264,7 @@ namespace RE
 		UInt16								pad6A6;						// 6A6
 		UInt32								unk6A8;						// 6A8
 		UInt32								pad6AC;						// 6AC
-		UInt64								unk6B0;						// 6B0
+		TESPackage*							inGameDialoguePackage;		// 6B0
 		UInt32								unk6B8;						// 6B8
 		UInt32								unk6BC;						// 6BC
 		UInt64								unk6C0;						// 6C0
@@ -291,7 +291,7 @@ namespace RE
 		UInt32								unk7D4;						// 7D4
 		RefHandle							unk7D8;						// 7D8
 		Data7DC								unk7DC;						// 7DC
-		RefHandle							pad894;						// 894
+		RefHandle							actorInFavorState;			// 894
 		BSTSmallArray<void*, 4>				unk898;						// 898
 		RefHandle							grabbedHandle;				// 8C8
 		float								unk8CC;						// 8CC - related to grabbed item

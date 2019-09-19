@@ -119,10 +119,21 @@ namespace RE
 		{
 			kNone = 0,
 
-			kCanAttack = 1 << 3,
+			kForceRun = 1 << 1,
+			kForceSneak = 1 << 2,
+			kHeadtracking = 1 << 3,
 
 			kLeftHandReadied = 1 << 5,
 			kRightHandReadied = 1 << 6,
+
+			kBlocking = 1 << 8,
+
+			kUnk10 = 1 << 10,
+			kUnk11 = 1 << 11,
+			kRecoiling = kUnk10 | kUnk11,
+
+			kAllowFlying = 1 << 12,
+			kStaggering = 1 << 13
 		};
 
 

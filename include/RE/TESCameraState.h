@@ -9,6 +9,8 @@
 namespace RE
 {
 	class BGSLoadGameBuffer;
+	class NiPoint3;
+	class NiQuaternion;
 	class TESCamera;
 
 
@@ -24,8 +26,8 @@ namespace RE
 		virtual void	OnStateStart();											// 01 - { return; }
 		virtual void	OnStateEnd();											// 02 - { return; }
 		virtual void	OnUpdate(BSTSmartPointer<TESCameraState>& a_newState);	// 03
-		virtual void	Unk_04(void);											// 04
-		virtual void	Unk_05(void);											// 05
+		virtual void	GetRotation(NiQuaternion* a_rot);						// 04
+		virtual void	GetPosition(NiPoint3* a_pos);							// 05
 		virtual void	Unk_06(void);											// 06 - { return; }
 		virtual void	LoadCameraState(BGSLoadGameBuffer* a_buf);				// 07 - { return; }
 		virtual void	Unk_08(void);											// 08 - { return; }

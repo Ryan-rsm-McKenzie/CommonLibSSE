@@ -5,6 +5,7 @@
 #include "RE/BSTArray.h"  // BSTSmallArray
 #include "RE/BSTSingleton.h"  // BSTSingletonSDM
 #include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/BSLock.h"  // BSUniqueLock
 #include "RE/NiPoint3.h"  // NiPoint3
 #include "RE/TESCamera.h"  // TESCamera
 
@@ -68,27 +69,29 @@ namespace RE
 
 
 		// members
-		RefHandle									handle;								// 03C
-		BSTSmallArray<void*, CameraState::kTotal>	unk040;								// 040
-		BSTSmartPointer<TESCameraState>				cameraStates[CameraState::kTotal];	// 0B8
-		Unk120*										unk120;								// 120
-		NiPointer<bhkRigidBody>						unk128;								// 128
-		UInt64										unk130;								// 130
-		UInt32										unk138;								// 138
-		float										worldFOV;							// 13C
-		float										firstPersonFOV;						// 140
-		NiPoint3									pos;								// 144
-		float										timeSinceLastInput;					// 150
-		float										yaw;								// 154 - in radians
-		UInt32										unk158;								// 158
-		UInt32										unk15C;								// 15C
-		bool										enableAutoVanityMode;				// 160
-		UInt8										unk161;								// 161
-		UInt8										unk162;								// 162
-		UInt8										unk163;								// 163
-		UInt8										unk164;								// 164
-		UInt8										unk165;								// 165
-		UInt16										pad166;								// 166
+		UInt8												pad039;								// 039
+		UInt16												pad03A;								// 03A
+		RefHandle											handle;								// 03C
+		BSTSmallArray<TESCameraState*, CameraState::kTotal>	unk040;								// 040
+		BSTSmartPointer<TESCameraState>						cameraStates[CameraState::kTotal];	// 0B8
+		Unk120*												unk120;								// 120
+		NiPointer<bhkRigidBody>								rigidBody;							// 128
+		RefHandle											objectFadeHandle;					// 130
+		BSUniqueLock										lock;								// 134
+		float												worldFOV;							// 13C
+		float												firstPersonFOV;						// 140
+		NiPoint3											pos;								// 144
+		float												idleTimer;							// 150
+		float												yaw;								// 154 - in radians
+		UInt32												unk158;								// 158
+		UInt32												unk15C;								// 15C
+		bool												allowAutoVanity;					// 160
+		bool												isBowZoom;							// 161
+		bool												isWeapSheathed;						// 162
+		bool												isProcessed;						// 163
+		UInt8												unk164;								// 164
+		UInt8												unk165;								// 165
+		UInt16												pad166;								// 166
 	};
 	STATIC_ASSERT(offsetof(PlayerCamera, cameraStates) == 0x0B8);
 	STATIC_ASSERT(offsetof(PlayerCamera, worldFOV) == 0x13C);
