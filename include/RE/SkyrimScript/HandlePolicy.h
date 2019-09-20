@@ -16,20 +16,20 @@ namespace RE
 			inline static const void* RTTI = RTTI_SkyrimScript__HandlePolicy;
 
 
-			virtual ~HandlePolicy();																// 00
+			virtual ~HandlePolicy();															// 00
 
 			// override (BSScript::IObjectHandlePolicy)
-			virtual bool		IsType(FormType32 a_typeID, VMHandle a_handle) override;			// 01
-			virtual bool		IsValidHandle(VMHandle a_handle) override;							// 02
-			virtual VMHandle	GetInvalidHandle() override;										// 03
-			virtual VMHandle	GetHandle(FormType32 a_typeID, const TESForm* a_srcData) override;	// 04
-			virtual bool		IsREFR(VMHandle a_handle) override;									// 05
-			virtual void		Unk_06(void) override;												// 06
-			virtual void		Unk_07(void) override;												// 07
-			virtual void*		Resolve(FormType32 a_typeID, VMHandle a_handle) override;			// 08
-			virtual void		AddRef(VMHandle a_handle) override;									// 09
-			virtual void		Release(VMHandle a_handle) override;								// 0A
-			virtual void		ToString(VMHandle a_handle, BSFixedString& a_strOut) override;		// 0B
+			virtual bool		IsType(UInt32 a_typeID, VMHandle a_handle) override;			// 01
+			virtual bool		IsValidHandle(VMHandle a_handle) override;						// 02
+			virtual VMHandle	GetInvalidHandle() override;									// 03
+			virtual VMHandle	GetHandle(UInt32 a_typeID, const void* a_srcData) override;		// 04
+			virtual bool		IsREFR(VMHandle a_handle) override;								// 05
+			virtual void		Unk_06(void) override;											// 06
+			virtual void		Unk_07(void) override;											// 07
+			virtual void*		Resolve(UInt32 a_typeID, VMHandle a_handle) override;			// 08
+			virtual void		AddRef(VMHandle a_handle) override;								// 09
+			virtual void		Release(VMHandle a_handle) override;							// 0A
+			virtual void		ToString(VMHandle a_handle, BSFixedString& a_strOut) override;	// 0B
 
 
 			// members

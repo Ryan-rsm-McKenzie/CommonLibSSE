@@ -650,6 +650,7 @@
 #include "RE/MagicCaster.h"
 #include "RE/MagicItem.h"
 #include "RE/MagicTarget.h"
+#include "RE/Main.h"
 #include "RE/MapCamera.h"
 #include "RE/MapInputHandler.h"
 #include "RE/MapLookHandler.h"

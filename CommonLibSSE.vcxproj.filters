@@ -4553,5 +4553,8 @@
     <ClInclude Include="include\RE\NiPoint2.h">
       <Filter>include\RE\NetImmerse\NiAnimation</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\Main.h">
+      <Filter>include\RE\BSMain</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

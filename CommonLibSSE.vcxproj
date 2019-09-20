@@ -1067,6 +1067,7 @@
     <ClInclude Include="include\RE\LoggingDisabler.h" />
     <ClInclude Include="include\RE\GlobalLookupInfo.h" />
     <ClInclude Include="include\RE\MagicCaster.h" />
+    <ClInclude Include="include\RE\Main.h" />
     <ClInclude Include="include\RE\MapCamera.h" />
     <ClInclude Include="include\RE\MapInputHandler.h" />
     <ClInclude Include="include\RE\MapLookHandler.h" />

@@ -4,6 +4,7 @@
 namespace RE
 {
 	template <class T> class BSTFreeList;
+	class ScrapHeap;
 
 
 	template <class T>
@@ -39,10 +40,22 @@ namespace RE
 		virtual bool	PopInternal(T* a_obj);		// 06 - { return false; }
 
 	public:
-		volatile UInt32	lock;	// 08
-		volatile UInt32	pad0C;	// 0C
+		volatile mutable UInt32	lock;	// 08
+		volatile UInt32			pad0C;	// 0C
 	};
 	STATIC_ASSERT(sizeof(BSTCommonMessageQueue<void*>) == 0x10);
+
+
+	template <class T>
+	class BSTCommonScrapHeapMessageQueue : public BSTCommonMessageQueue<T>
+	{
+	public:
+		// members
+		ScrapHeap*	unk10;	// 10
+		UInt64		unk18;	// 18
+		UInt64		unk20;	// 20
+	};
+	STATIC_ASSERT(sizeof(BSTCommonScrapHeapMessageQueue<void*>) == 0x28);
 
 
 	template <class T>

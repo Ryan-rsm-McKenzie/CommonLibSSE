@@ -3,12 +3,14 @@
 #include "skse64/GameRTTI.h"  // RTTI_TweenMenu
 
 #include "RE/BSTArray.h"  // BSTArray
-#include "RE/FileHash.h"  // FileHash
 #include "RE/IMenu.h"  // IMenu
 
 
 namespace RE
 {
+	struct FileHash;
+
+
 	class TweenMenu : public IMenu
 	{
 	public:
