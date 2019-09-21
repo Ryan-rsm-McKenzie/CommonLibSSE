@@ -127,24 +127,6 @@ namespace RE
 		STATIC_ASSERT(sizeof(LightingCoordinates) == 0x8);
 
 
-		struct Hasher
-		{
-			UInt32 operator()(const NiPointer<TESObjectREFR>& a_key) const
-			{
-				return CRC32Hash<RE::FormID>()(a_key->formID);
-			}
-		};
-
-
-		struct KeyEqual
-		{
-			bool operator()(const NiPointer<TESObjectREFR>& a_lhs, const NiPointer<TESObjectREFR>& a_rhs) const
-			{
-				return a_lhs->formID == a_rhs->formID;
-			}
-		};
-
-
 		virtual ~TESObjectCELL();													// 00
 
 		// override (TESForm)
@@ -173,30 +155,30 @@ namespace RE
 
 
 		// members
-		mutable BSUniqueLock									unk030;					// 030
-		Data													unk038;					// 038
-		Flag													flags;					// 040
-		UInt16													unk042;					// 042
-		UInt8													unk044;					// 044
-		UInt8													unk045;					// 045
-		UInt8													unk046;					// 046
-		UInt8													pad047;					// 047
-		BaseExtraList											extraList;				// 048
-		LightingCoordinates										lightingCoordinates;	// 060 - XCLL if interior, XCLC if exterior
-		TESObjectLAND*											land;					// 068
-		float													waterHeight;			// 070 - XCLW
-		BSTArray<BSTSmartPointer<NavMesh>>*						navMeshes;				// 078
-		BSTHashSet<NiPointer<TESObjectREFR>, Hasher, KeyEqual>	persistentRefMap;		// 080
-		TESForm*												unk0B0;					// 0B0 - REFR owner of cell?
-		BSTArray<TESObjectREFR*>								objectList;				// 0B8 - persistent
-		BSTArray<void*>											unk0D0;					// 0D0
-		BSTArray<void*>											unk0F8;					// 0F8
-		BSTArray<void*>											unk100;					// 100
-		mutable BSUniqueLock									cellRefLock;			// 118
-		TESWorldSpace*											worldSpace;				// 120
-		UInt64													unk128;					// 128
-		BGSLightingTemplate*									lightingTemplate;		// 130 - LTMP
-		UInt64													unk138;					// 138
+		mutable BSUniqueLock					unk030;					// 030
+		Data									unk038;					// 038
+		Flag									flags;					// 040
+		UInt16									unk042;					// 042
+		UInt8									unk044;					// 044
+		UInt8									unk045;					// 045
+		UInt8									unk046;					// 046
+		UInt8									pad047;					// 047
+		BaseExtraList							extraList;				// 048
+		LightingCoordinates						lightingCoordinates;	// 060 - XCLL if interior, XCLC if exterior
+		TESObjectLAND*							land;					// 068
+		float									waterHeight;			// 070 - XCLW
+		BSTArray<BSTSmartPointer<NavMesh>>*		navMeshes;				// 078
+		BSTHashSet<NiPointer<TESObjectREFR>>	persistentRefMap;		// 080
+		TESForm*								unk0B0;					// 0B0 - REFR owner of cell?
+		BSTArray<TESObjectREFR*>				objectList;				// 0B8 - persistent
+		BSTArray<void*>							unk0D0;					// 0D0
+		BSTArray<void*>							unk0F8;					// 0F8
+		BSTArray<void*>							unk100;					// 100
+		mutable BSUniqueLock					cellRefLock;			// 118
+		TESWorldSpace*							worldSpace;				// 120
+		UInt64									unk128;					// 128
+		BGSLightingTemplate*					lightingTemplate;		// 130 - LTMP
+		UInt64									unk138;					// 138
 	};
 	STATIC_ASSERT(offsetof(TESObjectCELL, persistentRefMap) == 0x80);
 	STATIC_ASSERT(offsetof(TESObjectCELL, objectList) == 0xB8);

@@ -99,9 +99,7 @@ namespace RE
 	public:
 		UInt32 operator()(const BSFixedString& a_key) const
 		{
-			UInt32 crc32;
-			Impl::CalcCRC32_64(crc32, (UInt64)a_key.c_str());
-			return crc32;
+			return CRC32Hash<const char*>()(a_key.c_str());
 		}
 	};
 
@@ -188,9 +186,7 @@ namespace RE
 	public:
 		UInt32 operator()(const BSFixedStringW& a_key) const
 		{
-			UInt32 crc32;
-			Impl::CalcCRC32_64(crc32, (UInt64)a_key.c_str());
-			return crc32;
+			return CRC32Hash<const wchar_t*>()(a_key.c_str());
 		}
 	};
 }

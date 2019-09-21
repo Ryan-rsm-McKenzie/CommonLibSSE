@@ -72,7 +72,7 @@ namespace RE
 	}
 
 
-	template <class Key>
+	template <class Key, class Enable = void>
 	struct CRC32Hash
 	{
 	public:
@@ -164,36 +164,10 @@ namespace RE
 
 
 	template <class T>
-	struct CRC32Hash<T*>
+	struct CRC32Hash<T, typename std::enable_if_t<std::is_pointer<T>::value>>
 	{
 	public:
-		UInt32 operator()(const T*& a_key) const
-		{
-			UInt32 crc32;
-			Impl::CalcCRC32_64(crc32, (UInt64)a_key);
-			return crc32;
-		}
-	};
-
-
-	template <>
-	struct CRC32Hash<char*>
-	{
-	public:
-		UInt32 operator()(const char*& a_key) const
-		{
-			UInt32 crc32;
-			Impl::CalcCRC32_64(crc32, (UInt64)a_key);
-			return crc32;
-		}
-	};
-
-
-	template <>
-	struct CRC32Hash<wchar_t*>
-	{
-	public:
-		UInt32 operator()(const wchar_t*& a_key) const
+		UInt32 operator()(const T& a_key) const
 		{
 			UInt32 crc32;
 			Impl::CalcCRC32_64(crc32, (UInt64)a_key);
