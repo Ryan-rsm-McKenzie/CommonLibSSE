@@ -886,6 +886,7 @@
 #include "RE/ThumbstickEvent.h"
 #include "RE/TogglePOVHandler.h"
 #include "RE/ToggleRunHandler.h"
+#include "RE/TrainingMenu.h"
 #include "RE/TweenMenu.h"
 #include "RE/UIManager.h"
 #include "RE/UIMessage.h"

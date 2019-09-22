@@ -26,12 +26,12 @@ namespace RE
 		virtual	void	ProcessMouseMove(MouseMoveEvent* a_event, MovementData* a_movementData);	// 03 - { return; }
 		virtual	void	ProcessButton(ButtonEvent* a_event, MovementData* a_movementData);			// 04 - { return; }
 
-		bool			IsEnabled() const;
-		void			Enable(bool a_enable = true);
+		bool	IsEnabled() const;
+		void	Enable(bool a_enable = true);
 
 		// members
-		UInt32			enabled;	// 08
-		UInt32			pad0C;		// 08
+		UInt32	enabled;	// 08
+		UInt32	pad0C;		// 08
 	};
 	STATIC_ASSERT(sizeof(PlayerInputHandler) == 0x10);
 }

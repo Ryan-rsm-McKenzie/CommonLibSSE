@@ -313,7 +313,8 @@ namespace RE
 		UInt32								unk91C;						// 91C
 		UInt64								unk920;						// 920
 		Data928*							unk928;						// 928
-		UInt64								unk930;						// 930
+		UInt32								timesTrained;				// 930
+		UInt32								unk934;						// 934
 		UInt64								unk938;						// 938
 		UInt64								unk940;						// 940
 		UInt64								unk948;						// 948

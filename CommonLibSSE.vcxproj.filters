@@ -4556,5 +4556,8 @@
     <ClInclude Include="include\RE\Main.h">
       <Filter>include\RE\BSMain</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\TrainingMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

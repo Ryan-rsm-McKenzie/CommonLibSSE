@@ -1329,6 +1329,7 @@
     <ClInclude Include="include\RE\ThumbstickEvent.h" />
     <ClInclude Include="include\RE\TogglePOVHandler.h" />
     <ClInclude Include="include\RE\ToggleRunHandler.h" />
+    <ClInclude Include="include\RE\TrainingMenu.h" />
     <ClInclude Include="include\RE\TweenMenu.h" />
     <ClInclude Include="include\RE\UIManager.h" />
     <ClInclude Include="include\RE\UIMessage.h" />
