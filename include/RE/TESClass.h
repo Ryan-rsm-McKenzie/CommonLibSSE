@@ -34,10 +34,11 @@ namespace RE
 		};
 
 
-		virtual ~TESClass();							// 00
+		virtual ~TESClass();								// 00
 
 		// override (TESForm)
-		virtual bool LoadForm(TESFile* a_mod) override;	// 06
+		virtual void	InitDefaults() override;			// 04
+		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
 
 
 		struct Data	// DATA
@@ -94,9 +95,8 @@ namespace RE
 				UInt8	health;		// 0
 				UInt8	magicka;	// 1
 				UInt8	stamina;	// 2
-				UInt8	pad3;		// 3
 			};
-			STATIC_ASSERT(sizeof(AttributeWeights) == 0x4);
+			STATIC_ASSERT(sizeof(AttributeWeights) == 0x3);
 
 
 			UInt32				unk00;					// 00
@@ -106,6 +106,7 @@ namespace RE
 			float				bleedoutDefault;		// 18
 			UInt32				voicePoints;			// 1C
 			AttributeWeights	attributeWeights;		// 20
+			UInt8				pad23;					// 23
 		};
 		STATIC_ASSERT(sizeof(Data) == 0x24);
 

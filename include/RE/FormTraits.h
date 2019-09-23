@@ -157,7 +157,7 @@ namespace RE
 			break;
 		case FormType::Action:
 			if constexpr (std::is_convertible<BGSAction*, T>::value) {
-				return static_cast<BGSLocationRefType*>(this);
+				return static_cast<BGSAction*>(this);
 			}
 			break;
 		case FormType::TextureSet:
