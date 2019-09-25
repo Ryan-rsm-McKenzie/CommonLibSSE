@@ -10,7 +10,7 @@
 namespace RE
 {
 	class BGSIdleCollection;
-	class TESCustomPackageData;
+	class TESPackageData;
 
 
 	class TESPackage : public TESForm
@@ -143,7 +143,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(PackData) == 0x10);
 
 
-		struct Data
+		struct UnkData
 		{
 			union UnkVal
 			{
@@ -157,7 +157,7 @@ namespace RE
 			UnkVal	unk08;	// 08
 			UInt64	unk10;	// 10
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x18);
+		STATIC_ASSERT(sizeof(UnkData) == 0x18);
 
 
 		struct Schedule	// PSDT
@@ -251,18 +251,18 @@ namespace RE
 
 
 		// members
-		PackData				packData;					// 20 - PKDT
-		TESCustomPackageData*	package;					// 30
-		void*					unk38;						// 38
-		Data*					unk40;						// 40
-		BGSIdleCollection*		idleAnimations;				// 48
-		Schedule				schedule;					// 50 - PSDT
-		Condition				conditions;					// 60
-		TESCombatStyle*			combatStyle;				// 68 - CNAM
-		TESQuest*				ownerQuest;					// 70 - QNAM
-		OnEvent					onEvents[OnEvent::kTotal];	// 78
-		UInt32					unkD8;						// D8
-		UInt32					unkDC;						// DC - some kind of ref count
+		PackData			packData;					// 20 - PKDT
+		TESPackageData*		data;						// 30 - only ever TESCustomPackageData
+		void*				unk38;						// 38
+		UnkData*			unk40;						// 40
+		BGSIdleCollection*	idleAnimations;				// 48
+		Schedule			schedule;					// 50 - PSDT
+		Condition			conditions;					// 60
+		TESCombatStyle*		combatStyle;				// 68 - CNAM
+		TESQuest*			ownerQuest;					// 70 - QNAM
+		OnEvent				onEvents[OnEvent::kTotal];	// 78
+		UInt32				unkD8;						// D8
+		UInt32				unkDC;						// DC - some kind of ref count
 	};
 	STATIC_ASSERT(sizeof(TESPackage) == 0xE0);
 }
