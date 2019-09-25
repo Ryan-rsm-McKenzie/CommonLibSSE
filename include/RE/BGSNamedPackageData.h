@@ -25,7 +25,7 @@ namespace RE
 
 
 		// override (IPackageData)
-		virtual void	SwapFormIDForRefHandle() override;					// 01 - { return; }
+		virtual void	InitPackage() override;								// 01 - { return; }
 		virtual void	LoadPackage(TESFile* a_mod) override;				// 02
 		virtual void	Assign(IPackageData* a_other) override;				// 03 - { return; }
 		virtual bool	IsNotEqual(IPackageData* a_other) const override;	// 04
