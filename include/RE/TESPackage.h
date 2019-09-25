@@ -74,7 +74,7 @@ namespace RE
 				kGuard = 14,
 				kDialogue = 15,
 				kUseWeapon = 16,
-				kFindExecState = 17,
+				kFind2 = 17,
 				kPackage = 18,
 				kPackageTemplate = 19,
 				kActivate = 20,
@@ -83,7 +83,7 @@ namespace RE
 				kTrespass = 23,
 				kSpectator = 24,
 				kReactToDead = 25,
-				kGetUpFromChair = 26,
+				kGetUpFromChairBed = 26,
 				kDoNothing = 27,
 				kInGameDialogue = 28,
 				kSurface = 29,
@@ -240,7 +240,7 @@ namespace RE
 		virtual void		Unk_12(void) override;							// 12
 		virtual void		InitItem() override;							// 13
 		virtual void		Unk_2D(void) override;							// 2D - { return unkDC; }
-		virtual const char*	GetTypeString() const override;					// 39 - { return g_packageTypeStrings[unk24]; }
+		virtual const char*	GetTypeString() const override;					// 39 - { return g_packageTypeStrings[packData.type]; }
 
 		// add
 		virtual void		Unk_3B(void);									// 3B
