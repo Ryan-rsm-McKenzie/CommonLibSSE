@@ -14,9 +14,9 @@ namespace RE
 		virtual ~IAIWorldLocationHandle();	// 00
 
 		// add
-		virtual void	Unk_00(void) = 0;	// 00
-		virtual void	Unk_01(void);		// 01 - { return 0; }
-		virtual void	Unk_02(void) = 0;	// 02
+		virtual void	Unk_01(void) = 0;	// 01
+		virtual void	Unk_02(void);		// 02 - { return 0; }
+		virtual void	Unk_03(void) = 0;	// 03
 	};
 	STATIC_ASSERT(sizeof(IAIWorldLocationHandle) == 0x8);
 }

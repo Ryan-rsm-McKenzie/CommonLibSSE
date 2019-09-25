@@ -10,8 +10,10 @@ namespace RE
 	template <class Parent>
 	class BGSNamedPackageData : public Parent
 	{
-		static_assert(std::is_base_of<IPackageData, Parent>::value);
 	public:
+		static_assert(std::is_base_of<IPackageData, Parent>::value);
+
+
 		union Data
 		{
 			bool	b;

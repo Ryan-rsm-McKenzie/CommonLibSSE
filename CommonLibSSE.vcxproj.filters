@@ -994,6 +994,15 @@
     <Filter Include="src\RE\Misc">
       <UniqueIdentifier>{5124e739-be3b-47ec-bb50-c7251e5eb942}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\FormComponents\Components\IPackageData\BGSNamedPackageData">
+      <UniqueIdentifier>{7d08d064-4206-4ab1-b726-c0b059a3b7eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\IPackageData\BGSNamedPackageData\BGSPackageDataPointerTemplate">
+      <UniqueIdentifier>{681e34a1-0c10-4edc-addc-4f8c4282d15d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FormComponents\Components\IAIWorldLocationHandle">
+      <UniqueIdentifier>{4d502242-c66c-4a55-8fa4-0f5ed5fec774}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1780,12 +1789,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESReactionForm.h">
       <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IAIWorldLocationHandle.h">
-      <Filter>include\RE\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\PackageLocation.h">
-      <Filter>include\RE\AI</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSString.h">
       <Filter>include\RE\BSCore</Filter>
@@ -3422,9 +3425,6 @@
     <ClInclude Include="include\RE\IPackageData.h">
       <Filter>include\RE\FormComponents\Components\IPackageData</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSPackageDataBool.h">
-      <Filter>include\RE\FormComponents\Components\IPackageData</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESPackageData.h">
       <Filter>include\RE\FormComponents\Components\TESPackageData</Filter>
     </ClInclude>
@@ -3432,9 +3432,6 @@
       <Filter>include\RE\FormComponents\Components\TESPackageData</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\AttackAnimationArrayMap.h">
-      <Filter>include\RE\FormComponents\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSNamedPackageData.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSSkillPerkTreeNode.h">
@@ -4558,6 +4555,27 @@
     </ClInclude>
     <ClInclude Include="include\RE\TrainingMenu.h">
       <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IPackageDataAIWorldLocationHandle.h">
+      <Filter>include\RE\FormComponents\Components\IPackageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSNamedPackageData.h">
+      <Filter>include\RE\FormComponents\Components\IPackageData\BGSNamedPackageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSPackageDataBool.h">
+      <Filter>include\RE\FormComponents\Components\IPackageData\BGSNamedPackageData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSPackageDataPointerTemplate.h">
+      <Filter>include\RE\FormComponents\Components\IPackageData\BGSNamedPackageData\BGSPackageDataPointerTemplate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSPackageDataLocation.h">
+      <Filter>include\RE\FormComponents\Components\IPackageData\BGSNamedPackageData\BGSPackageDataPointerTemplate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IAIWorldLocationHandle.h">
+      <Filter>include\RE\FormComponents\Components\IAIWorldLocationHandle</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PackageLocation.h">
+      <Filter>include\RE\FormComponents\Components\IAIWorldLocationHandle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

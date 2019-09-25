@@ -437,6 +437,8 @@
     <ClInclude Include="include\RE\BGSOutfit.h" />
     <ClInclude Include="include\RE\BGSOverridePackCollection.h" />
     <ClInclude Include="include\RE\BGSPackageDataBool.h" />
+    <ClInclude Include="include\RE\BGSPackageDataLocation.h" />
+    <ClInclude Include="include\RE\BGSPackageDataPointerTemplate.h" />
     <ClInclude Include="include\RE\BGSPerkRankArray.h" />
     <ClInclude Include="include\RE\BGSPreloadable.h" />
     <ClInclude Include="include\RE\BGSProcedureTreeBranch.h" />
@@ -1054,6 +1056,7 @@
     <ClInclude Include="include\RE\Inventory.h" />
     <ClInclude Include="include\RE\InventoryMenu.h" />
     <ClInclude Include="include\RE\IPackageData.h" />
+    <ClInclude Include="include\RE\IPackageDataAIWorldLocationHandle.h" />
     <ClInclude Include="include\RE\IPostAnimationChannelUpdateFunctor.h" />
     <ClInclude Include="include\RE\IProcedureTreeItem.h" />
     <ClInclude Include="include\RE\ItemCrafted.h" />

@@ -74,7 +74,7 @@ namespace RE
 				kGuard = 14,
 				kDialogue = 15,
 				kUseWeapon = 16,
-				kFind2 = 17,
+				kFindExecState = 17,
 				kPackage = 18,
 				kPackageTemplate = 19,
 				kActivate = 20,
@@ -143,6 +143,23 @@ namespace RE
 		STATIC_ASSERT(sizeof(PackData) == 0x10);
 
 
+		struct Data
+		{
+			union UnkVal
+			{
+				TESForm*	form;
+				RefHandle	handle;
+			};
+			STATIC_ASSERT(sizeof(UnkVal) == 0x8);
+
+
+			UInt64	unk00;	// 00
+			UnkVal	unk08;	// 08
+			UInt64	unk10;	// 10
+		};
+		STATIC_ASSERT(sizeof(Data) == 0x18);
+
+
 		struct Schedule	// PSDT
 		{
 			enum class DayOfWeek : SInt8
@@ -206,7 +223,7 @@ namespace RE
 
 			TESIdleForm*	idle;	// 00 - INAM
 			Index			index;	// 08
-			UInt32			pad0C;	// 0C
+			UInt32			unk0C;	// 0C
 			TopicData		topic;	// 10 - PDTO
 		};
 		STATIC_ASSERT(sizeof(OnEvent) == 0x20);
@@ -236,8 +253,8 @@ namespace RE
 		// members
 		PackData				packData;					// 20 - PKDT
 		TESCustomPackageData*	package;					// 30
-		UInt64					unk38;						// 38
-		UInt64					unk40;						// 40
+		void*					unk38;						// 38
+		Data*					unk40;						// 40
 		BGSIdleCollection*		idleAnimations;				// 48
 		Schedule				schedule;					// 50 - PSDT
 		Condition				conditions;					// 60

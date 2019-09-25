@@ -35,15 +35,16 @@ namespace RE
 		virtual ~PackageLocation();				// 00
 
 		// override (IAIWorldLocationHandle)
-		virtual void	Unk_00(void) override;	// 00
-		virtual void	Unk_01(void) override;	// 01 - { return this; }
-		virtual void	Unk_02(void) override;	// 02
+		virtual void	Unk_01(void) override;	// 01
+		virtual void	Unk_02(void) override;	// 02 - { return this; }
+		virtual void	Unk_03(void) override;	// 03
 
 
 		// members
-		Type	type;	// 08
-		UInt32	radius;	// 0C
-		UInt32	handle;	// 10
-		UInt32	pad14;	// 14
+		Type		type;	// 08
+		UInt32		radius;	// 0C
+		RefHandle	handle;	// 10
+		UInt32		unk14;	// 14
 	};
+	STATIC_ASSERT(sizeof(PackageLocation) == 0x18);
 }
