@@ -28,7 +28,7 @@ namespace RE
 		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;		// 08
 		virtual void	Unk_09(void) override;								// 09 - { return; }
 		virtual bool	GetDataAsString(BSString* a_dst) const override;	// 0A
-		virtual void	Unk_0C(void) override;								// 0C - { return static_cast<PackageLocation*>(pointer)->type == PackageLocation::Type::kNearPackageStartLocation; }
+		virtual void	Unk_0C(void) override;								// 0C - { return pointer->type == PackageLocation::Type::kNearPackageStartLocation; }
 	};
 	STATIC_ASSERT(sizeof(BGSPackageDataLocation) == 0x20);
 }
