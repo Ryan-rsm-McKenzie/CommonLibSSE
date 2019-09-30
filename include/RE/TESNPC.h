@@ -4,6 +4,7 @@
 
 #include <type_traits>  // underlying_type_t
 
+#include "RE/BGSHeadPart.h"  // BGSHeadPart
 #include "RE/BGSOverridePackCollection.h"  // BGSOverridePackCollection
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTArray.h"  // BSTArray
@@ -12,6 +13,7 @@
 #include "RE/FormTypes.h"  // BGSColorForm, BGSTextureSet, BGSHeadPart, TESClass, BGSOutfit, TESFaction, BGSHeadPart, TESRace
 #include "RE/SoundLevels.h"  // SoundLevel8
 #include "RE/TESActorBase.h"  // TESActorBase
+#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
 #include "RE/TESRaceForm.h"  // TESRaceForm
 
 
@@ -96,6 +98,13 @@ namespace RE
 
 		struct HeadData
 		{
+			HeadData();
+			~HeadData() = default;
+
+			TES_HEAP_REDEFINE_NEW();
+
+
+			// members
 			BGSColorForm*	hairColor;		// 00 - HCLF
 			BGSTextureSet*	headTexture;	// 08 - FTST
 		};
@@ -198,18 +207,20 @@ namespace RE
 		virtual TESCombatStyle*	GetCombatStyle() override;																													// 54 - { return combatStyle; }
 		virtual void			SetCombatStyle(TESCombatStyle* a_combatStyle) override;																						// 55 - { combatStyle = a_combatStyle; }
 
+		void			ChangeHeadPart(BGSHeadPart* a_target);
+		BGSHeadPart**	GetBaseOverlays() const;
+		BGSHeadPart*	GetCurrentHeadPartByType(BGSHeadPart::Type a_type);
+		BGSHeadPart*	GetHeadPartByType(BGSHeadPart::Type a_type);
+		BGSHeadPart*	GetHeadPartOverlayByType(BGSHeadPart::Type a_type);
+		UInt32			GetNumBaseOverlays() const;
+		TESRace*		GetRace();
+		TESNPC*			GetRootTemplate();
 		Sex				GetSex();
 		bool			HasOverlays();
-		void			ChangeHeadPart(BGSHeadPart* a_target);
-		void			UpdateNeck(BSFaceGenNiNode* a_faceNode);
-		void			SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute);
 		void			SetFaceTexture(BGSTextureSet* a_textureSet);
 		void			SetHairColor(BGSColorForm* a_hairColor);
-		BGSHeadPart*	GetHeadPartByType(UInt32 a_type);
-		BGSHeadPart*	GetHeadPartOverlayByType(UInt32 a_type);
-		BGSHeadPart*	GetCurrentHeadPartByType(UInt32 a_type);
-		TESNPC*			GetRootTemplate();
-		TESRace*		GetRace();
+		void			SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, UInt32 a_compute);
+		void			UpdateNeck(BSFaceGenNiNode* a_faceNode);
 
 
 		// members

@@ -18,13 +18,13 @@ namespace RE
 
 
 		NiFloatData();
-		virtual ~NiFloatData();										// 00
+		virtual ~NiFloatData();												// 00
 
 		// override (NiObject)
-		virtual NiRTTI*	GetRTTI() override;							// 02
-		virtual void	LoadBinary(NiStream* a_stream) override;	// 18
-		virtual void	SaveBinary(NiStream* a_stream) override;	// 1B
-		virtual bool	IsEqual(NiObject* a_object) override;		// 1C
+		virtual const NiRTTI*	GetRTTI() const override;					// 02
+		virtual void			LoadBinary(NiStream& a_stream) override;	// 18
+		virtual void			SaveBinary(NiStream& a_stream) override;	// 1B
+		virtual bool			IsEqual(NiObject* a_object) override;		// 1C
 
 
 		UInt32		GetNumKeys() const;

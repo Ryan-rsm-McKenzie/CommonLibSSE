@@ -3,6 +3,7 @@
 #include "skse64/GameRTTI.h"  // RTTI_NiObject
 
 #include "RE/NiRefObject.h"  // NiRefObject
+#include "RE/NiSmartPointer.h"  // NiPointer
 
 
 namespace RE
@@ -21,6 +22,10 @@ namespace RE
 	class NiTriShape;
 
 
+	NiSmartPointer(NiObject);
+
+
+
 	class NiObject : public NiRefObject
 	{
 	public:
@@ -30,11 +35,11 @@ namespace RE
 		virtual ~NiObject();												// 00
 
 		// add
-		virtual NiRTTI*			GetRTTI();									// 02
+		virtual const NiRTTI*	GetRTTI() const;							// 02
 		virtual NiNode*			GetAsNiNode();								// 03 - { return 0; }
 		virtual NiSwitchNode*	GetAsNiSwitchNode();						// 04 - { return 0; }
 		virtual BSFadeNode*     GetAsBSFadeNode();							// 05 - { return 0; }
-		virtual UInt32			Unk_06(void);								// 06 - { return 0; }
+		virtual void			Unk_06(void);								// 06 - { return 0; }
 		virtual BSGeometry*		GetAsBSGeometry();							// 07 - { return 0; }
 		virtual void			Unk_08(void);								// 08 - { return 0; }
 		virtual BSTriShape*		GetAsBSTriShape();							// 09 - { return 0; }
@@ -51,11 +56,11 @@ namespace RE
 		virtual void			Unk_14(void);								// 14 - { return 0; }
 		virtual void			Unk_15(void);								// 15 - { return 0; }
 		virtual void			Unk_16(void);								// 16 - { return 0; }
-		virtual NiObject*		CreateClone(NiCloningProcess a_cloner);		// 17 - { return this; }
-		virtual void			LoadBinary(NiStream* a_stream);				// 18 - { return; }
-		virtual void			LinkObject(NiStream* a_stream);				// 19 - { return; }
-		virtual bool			RegisterStreamables(NiStream* a_stream);	// 1A
-		virtual void			SaveBinary(NiStream* a_stream);				// 1B - { return; }
+		virtual NiObject*		CreateClone(NiCloningProcess& a_cloning);	// 17 - { return this; }
+		virtual void			LoadBinary(NiStream& a_stream);				// 18 - { return; }
+		virtual void			LinkObject(NiStream& a_stream);				// 19 - { return; }
+		virtual bool			RegisterStreamables(NiStream& a_stream);	// 1A
+		virtual void			SaveBinary(NiStream& a_stream);				// 1B - { return; }
 		virtual bool			IsEqual(NiObject* a_object);				// 1C
 		virtual void			ProcessClone(NiCloningProcess& a_cloning);	// 1D
 		virtual void			PostLinkObject(NiStream& a_stream);			// 1E - { return; }
@@ -66,7 +71,7 @@ namespace RE
 		virtual void			SetGroup(NiObjectGroup* a_group);			// 23 - { return; }
 		virtual void			Unk_24(void);								// 24 - { return 0; }
 
-		NiStream*				DeepCopy(NiObject*& a_result);
+		void CreateDeepCopy(NiPointer<NiObject>& a_result);
 	};
 	STATIC_ASSERT(sizeof(NiObject) == 0x10);
 }

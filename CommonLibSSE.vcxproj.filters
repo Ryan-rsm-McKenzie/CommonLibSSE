@@ -127,15 +127,6 @@
     <Filter Include="src\RE\NetImmerse">
       <UniqueIdentifier>{18a7224a-297f-431e-a39c-16a3621488e3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\RE\NetImmerse\NiAnimation">
-      <UniqueIdentifier>{ebb129b0-59be-43db-852c-aabb7260983b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\NetImmerse\NiMain">
-      <UniqueIdentifier>{1319a525-f6a5-41ab-bde4-3893c91e96a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\NetImmerse\NiSystem">
-      <UniqueIdentifier>{48bc5856-8cf1-4c7e-b4db-c17b1aa453e4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\RE\Obscript">
       <UniqueIdentifier>{ad8683f1-c449-4c65-943e-cb9e7b1c3610}</UniqueIdentifier>
     </Filter>
@@ -537,18 +528,6 @@
     </Filter>
     <Filter Include="include\RE\NetImmerse">
       <UniqueIdentifier>{aa1d5fd2-7d10-468c-9f19-21f907656000}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\NetImmerse\NiMain">
-      <UniqueIdentifier>{7ae4d21f-ac90-44af-9494-79997e18b479}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\NetImmerse\NiAnimation">
-      <UniqueIdentifier>{5097f252-90be-4351-9f47-4fadaf471e84}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\NetImmerse\BS">
-      <UniqueIdentifier>{b32d982b-d771-453c-a44a-8423583b4131}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\NetImmerse\NiSystem">
-      <UniqueIdentifier>{a24c0d83-6379-4281-89aa-d1279c609e4d}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\RE\Obscript">
       <UniqueIdentifier>{fd4c90cc-6cf9-40f7-8fae-02d2ffabb296}</UniqueIdentifier>
@@ -1003,6 +982,120 @@
     <Filter Include="include\RE\FormComponents\Components\IAIWorldLocationHandle">
       <UniqueIdentifier>{4d502242-c66c-4a55-8fa4-0f5ed5fec774}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject">
+      <UniqueIdentifier>{aa0ce7b4-31e5-45d6-9541-4e08f97a4e2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject">
+      <UniqueIdentifier>{a914e303-f2b4-47a2-a47e-792328d3d84e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET">
+      <UniqueIdentifier>{117d60bb-bb14-45b3-b96c-552db16484e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject">
+      <UniqueIdentifier>{b4a2d265-59dc-4a90-94bb-b48154cd2388}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiAnimationKey">
+      <UniqueIdentifier>{a997d5ef-fa68-4615-8dc0-f4713539a0b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiTimeController">
+      <UniqueIdentifier>{6038581e-04c0-44f4-8e38-8738761b1c1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiInterpolator">
+      <UniqueIdentifier>{4407c5d2-caeb-4d61-96d8-b5851306cb7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiInterpolator\NiKeyBasedInterpolator">
+      <UniqueIdentifier>{9469b286-9242-4493-9d4c-ca0dc87b883a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiBinaryStream">
+      <UniqueIdentifier>{bdc9dc68-c85f-48b3-bbcc-41a5f47480e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiExtraData">
+      <UniqueIdentifier>{2c1861c0-5207-46a1-bbcd-52569a33d29d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode">
+      <UniqueIdentifier>{0fddb6e5-a9bd-413e-bc09-d9b5cd93f9e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiTMapBase">
+      <UniqueIdentifier>{60335219-f0e1-4bf5-9694-2a701721e839}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiTMapBase\NiTMap">
+      <UniqueIdentifier>{6434fb3b-1a78-4581-9e38-18de5d1668f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\NetImmerse\NiAnimationKey">
+      <UniqueIdentifier>{4017ce68-d7ae-418f-91cc-732643b44270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\NetImmerse\NiBinaryStream">
+      <UniqueIdentifier>{2be434da-b45c-4768-9956-7bce610fd84a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\NetImmerse\NiRefObject">
+      <UniqueIdentifier>{5921c30d-6b26-47e4-bba1-b9b75125d108}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\NetImmerse\NiRefObject\NiObject">
+      <UniqueIdentifier>{3f0abd79-8201-477a-8ff3-50f4465573d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET">
+      <UniqueIdentifier>{e9c1327b-f02d-4034-8bce-7731a42bdadb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject">
+      <UniqueIdentifier>{c419f3d3-7854-4af8-ae28-c0f2c634dc5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\NetImmerse\NiRefObject\NiObject\NiExtraData">
+      <UniqueIdentifier>{327c130e-3893-43ea-a6f4-d1e8d744c4a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode">
+      <UniqueIdentifier>{6c6ce413-6a69-4352-acbd-03e4c8c1c16c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController">
+      <UniqueIdentifier>{7376405a-d1e0-4928-9e22-18742b8cd6c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect">
+      <UniqueIdentifier>{7b415df0-f974-4c86-8ca4-ae304cf4c281}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect">
+      <UniqueIdentifier>{f71fa2b0-8f86-47f7-86f6-3fd16c10ef15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty">
+      <UniqueIdentifier>{e36f8438-dd1f-406c-85c1-a03941f42cbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty\NiShadeProperty">
+      <UniqueIdentifier>{baeb201b-5251-4151-9ae3-b6ec04a71774}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty\NiShadeProperty\BSShaderProperty">
+      <UniqueIdentifier>{c721bcf1-ce5d-4492-9e71-8e682647864a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSShader\BSShaderMaterial">
+      <UniqueIdentifier>{a002251d-2074-437a-b7d8-c66eec14da5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase">
+      <UniqueIdentifier>{dbc04638-9553-4af3-8bc1-64043fba1db0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\NetImmerse\bhkRefObject">
+      <UniqueIdentifier>{b3315784-7e3f-4744-8e7d-c9cd5f9ba242}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable">
+      <UniqueIdentifier>{331b29bf-f1b6-4f58-8d07-6183276c0538}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkWorldObject">
+      <UniqueIdentifier>{965a5155-7ca3-4277-9311-9df07d5bc6e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom">
+      <UniqueIdentifier>{31ea761c-6a1d-4c09-a894-daceeec5990e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkShape">
+      <UniqueIdentifier>{e57bd042-da9f-46e4-9e4c-4845682e4070}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection">
+      <UniqueIdentifier>{e1f95cb0-5d21-4d46-b583-15ae6e824439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom\bhkShapePhantom">
+      <UniqueIdentifier>{a3e01449-1bbc-44ff-8b16-416370a80e4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\BS\bhkCharacterState">
+      <UniqueIdentifier>{931a7e4d-57d4-421d-a708-634d960263a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\NetImmerse\bhkCharacterController">
+      <UniqueIdentifier>{b3eca426-8a21-4504-99d3-77f921e21c45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1140,51 +1233,6 @@
     <ClCompile Include="src\RE\hkStringPtr.cpp">
       <Filter>src\RE\BSHavok\Common</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\NiAnimationKey.cpp">
-      <Filter>src\RE\NetImmerse\NiAnimation</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiColorData.cpp">
-      <Filter>src\RE\NetImmerse\NiAnimation</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiColorKey.cpp">
-      <Filter>src\RE\NetImmerse\NiAnimation</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiControllerManager.cpp">
-      <Filter>src\RE\NetImmerse\NiAnimation</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiFloatData.cpp">
-      <Filter>src\RE\NetImmerse\NiAnimation</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiFloatKey.cpp">
-      <Filter>src\RE\NetImmerse\NiAnimation</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiAVObject.cpp">
-      <Filter>src\RE\NetImmerse\NiMain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiColor.cpp">
-      <Filter>src\RE\NetImmerse\NiMain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiExtraData.cpp">
-      <Filter>src\RE\NetImmerse\NiMain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiNode.cpp">
-      <Filter>src\RE\NetImmerse\NiMain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiObject.cpp">
-      <Filter>src\RE\NetImmerse\NiMain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiObjectNET.cpp">
-      <Filter>src\RE\NetImmerse\NiMain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiPoint3.cpp">
-      <Filter>src\RE\NetImmerse\NiMain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiRefObject.cpp">
-      <Filter>src\RE\NetImmerse\NiMain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiTexture.cpp">
-      <Filter>src\RE\NetImmerse\NiMain</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\GAtomic.cpp">
       <Filter>src\RE\Scaleform\GAtomic</Filter>
     </ClCompile>
@@ -1233,9 +1281,6 @@
     <ClCompile Include="src\RE\GString.cpp">
       <Filter>src\RE\Scaleform\GString</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\NiTCollection.cpp">
-      <Filter>src\RE\NetImmerse\NiMain</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\FxDelegateArgs.cpp">
       <Filter>src\RE\Scaleform\FxGameDelegate</Filter>
     </ClCompile>
@@ -1250,12 +1295,6 @@
     </ClCompile>
     <ClCompile Include="src\SKSE\Interfaces.cpp">
       <Filter>src\SKSE</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiBinaryStream.cpp">
-      <Filter>src\RE\NetImmerse\NiSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSResourceNiBinaryStream.cpp">
-      <Filter>src\RE\NetImmerse\NiSystem</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\GFxLog.cpp">
       <Filter>src\RE\Scaleform\GFxLog</Filter>
@@ -1494,12 +1533,6 @@
     <ClCompile Include="src\RE\ExtraMissingLinkedRefIDs.cpp">
       <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\NiMatrix3.cpp">
-      <Filter>src\RE\NetImmerse\NiMain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NiMath.cpp">
-      <Filter>src\RE\NetImmerse\NiMain</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSWin32SaveDataSystemUtility.cpp">
       <Filter>src\RE\BSSystem\BSSaveDataSystemUtility</Filter>
     </ClCompile>
@@ -1610,6 +1643,72 @@
     </ClCompile>
     <ClCompile Include="src\RE\BSTimeManager.cpp">
       <Filter>src\RE\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiAnimationKey.cpp">
+      <Filter>src\RE\NetImmerse\NiAnimationKey</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiColorKey.cpp">
+      <Filter>src\RE\NetImmerse\NiAnimationKey</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiFloatKey.cpp">
+      <Filter>src\RE\NetImmerse\NiAnimationKey</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiBinaryStream.cpp">
+      <Filter>src\RE\NetImmerse\NiBinaryStream</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSResourceNiBinaryStream.cpp">
+      <Filter>src\RE\NetImmerse\NiBinaryStream</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiRefObject.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiPoint3.cpp">
+      <Filter>src\RE\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiObject.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiObjectNET.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiAVObject.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiColor.cpp">
+      <Filter>src\RE\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiExtraData.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiMath.cpp">
+      <Filter>src\RE\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiMatrix3.cpp">
+      <Filter>src\RE\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiNode.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiTCollection.cpp">
+      <Filter>src\RE\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiTexture.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiColorData.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiControllerManager.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiFloatData.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiRTTI.cpp">
+      <Filter>src\RE\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiSkinInstance.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1979,66 +2078,6 @@
     <ClInclude Include="include\RE\ahkpWorld.h">
       <Filter>include\RE\BSHavok\ahkp</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\bhkCachingShapePhantom.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharacterController.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharacterPointCollector.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharacterProxy.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharacterState.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharacterStateClimbing.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharacterStateFlying.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharacterStateInAir.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharacterStateJumping.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharacterStateOnGround.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharacterStateSwimming.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharProxyController.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkListShape.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkPhantom.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkRefObject.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkSerializable.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkShape.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkShapeCollection.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkShapePhantom.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkWorldObject.h">
-      <Filter>include\RE\BSHavok\NetImmerse</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\hkpWorld.h">
       <Filter>include\RE\BSHavok\Physics</Filter>
     </ClInclude>
@@ -2174,107 +2213,8 @@
     <ClInclude Include="include\RE\ExtraGhost.h">
       <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\NiColorInterpolator.h">
-      <Filter>include\RE\NetImmerse\NiAnimation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiFloatInterpolator.h">
-      <Filter>include\RE\NetImmerse\NiAnimation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiInterpolator.h">
-      <Filter>include\RE\NetImmerse\NiAnimation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiKeyBasedInterpolator.h">
-      <Filter>include\RE\NetImmerse\NiAnimation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiColorData.h">
-      <Filter>include\RE\NetImmerse\NiAnimation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiFloatData.h">
-      <Filter>include\RE\NetImmerse\NiAnimation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTDefaultAllocator.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTMapBase.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTArray.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTMap.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTPointerMap.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiPoint3.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiRect.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiSmartPointer.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\NiBoneMatrixSetterI.h">
       <Filter>include\RE\NetImmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSBound.h">
-      <Filter>include\RE\NetImmerse\BS</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSTextureSet.h">
-      <Filter>include\RE\NetImmerse\BS</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiAnimationKey.h">
-      <Filter>include\RE\NetImmerse\NiAnimation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiAVObject.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiCamera.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiColorKey.h">
-      <Filter>include\RE\NetImmerse\NiAnimation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiColor.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiControllerManager.h">
-      <Filter>include\RE\NetImmerse\NiAnimation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiControllerSequence.h">
-      <Filter>include\RE\NetImmerse\NiAnimation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiExtraData.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiFloatKey.h">
-      <Filter>include\RE\NetImmerse\NiAnimation</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiNode.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiObject.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiObjectNET.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiRefObject.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTexture.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTimeController.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTPointerAllocator.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTCollection.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSScaleformTranslator.h">
       <Filter>include\RE\Scaleform\BS</Filter>
@@ -2432,9 +2372,6 @@
     <ClInclude Include="include\RE\TESUniqueIDChangeEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSFadeNode.h">
-      <Filter>include\RE\NetImmerse\BS</Filter>
-    </ClInclude>
     <ClInclude Include="include\SKSE\RegistrationSet.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
@@ -2512,9 +2449,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSUIMessageData.h">
       <Filter>include\RE\Menus\IUIMessageData</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiBinaryStream.h">
-      <Filter>include\RE\NetImmerse\NiSystem</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ActiveEffect.h">
       <Filter>include\RE\FormComponents\Components\ActiveEffect</Filter>
@@ -2810,9 +2744,6 @@
     <ClInclude Include="include\RE\GameSettingCollection.h">
       <Filter>include\RE\BSMain\SettingCollection</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\NiTStringMap.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSTCaseInsensitiveStringMap.h">
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
@@ -2944,15 +2875,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\AutoMoveHandler.h">
       <Filter>include\RE\BSDevices\PlayerInputHandler</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiTransform.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiMatrix3.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiFrustum.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
     </ClInclude>
     <ClInclude Include="include\SKSE\Logger.h">
       <Filter>include\SKSE</Filter>
@@ -3953,9 +3875,6 @@
     <ClInclude Include="include\RE\SkyrimScript\MoveToFunctor.h">
       <Filter>include\RE\SkyrimScript\DelayFunctor</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\NiMath.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\SkyrimScript\DropObjectFunctor.h">
       <Filter>include\RE\SkyrimScript\DelayFunctor</Filter>
     </ClInclude>
@@ -4003,9 +3922,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSScript\Internal\RawFuncCallQuery.h">
       <Filter>include\RE\BSScript\Internal\IFuncCallQuery</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSResourceNiBinaryStream.h">
-      <Filter>include\RE\NetImmerse\BS</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESInitScriptEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
@@ -4544,12 +4460,6 @@
     <ClInclude Include="include\RE\PackageData.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\NiQuaternion.h">
-      <Filter>include\RE\NetImmerse\NiMain</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NiPoint2.h">
-      <Filter>include\RE\NetImmerse\NiAnimation</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\Main.h">
       <Filter>include\RE\BSMain</Filter>
     </ClInclude>
@@ -4576,6 +4486,252 @@
     </ClInclude>
     <ClInclude Include="include\RE\PackageLocation.h">
       <Filter>include\RE\FormComponents\Components\IAIWorldLocationHandle</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiRefObject.h">
+      <Filter>include\RE\NetImmerse\NiRefObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiObject.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiObjectNET.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiAVObject.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiCamera.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTexture.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiColorData.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiAnimationKey.h">
+      <Filter>include\RE\NetImmerse\NiAnimationKey</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiColorKey.h">
+      <Filter>include\RE\NetImmerse\NiAnimationKey</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTimeController.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiTimeController</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiControllerManager.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiTimeController</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiControllerSequence.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiFloatData.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiFloatKey.h">
+      <Filter>include\RE\NetImmerse\NiAnimationKey</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiInterpolator.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiInterpolator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiKeyBasedInterpolator.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiInterpolator\NiKeyBasedInterpolator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiColorInterpolator.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiInterpolator\NiKeyBasedInterpolator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiFloatInterpolator.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiInterpolator\NiKeyBasedInterpolator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiBinaryStream.h">
+      <Filter>include\RE\NetImmerse\NiBinaryStream</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResourceNiBinaryStream.h">
+      <Filter>include\RE\NetImmerse\NiBinaryStream</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiExtraData.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTextureSet.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSBound.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiNode.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSFadeNode.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTMapBase.h">
+      <Filter>include\RE\NetImmerse\NiTMapBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTPointerMap.h">
+      <Filter>include\RE\NetImmerse\NiTMapBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTMap.h">
+      <Filter>include\RE\NetImmerse\NiTMapBase\NiTMap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTStringMap.h">
+      <Filter>include\RE\NetImmerse\NiTMapBase\NiTMap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiColor.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiFrustum.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiMath.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiMatrix3.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiPoint2.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiPoint3.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiQuaternion.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiRect.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiSmartPointer.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTArray.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTCollection.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTDefaultAllocator.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTPointerAllocator.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTransform.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTempEffect.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiRTTI.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ReferenceEffect.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ShaderReferenceEffect.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSFaceGenNiNode.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSGeometry.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiSkinInstance.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiSkinData.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiBound.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiSkinPartition.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiGeometryData.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiProperty.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiShadeProperty.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty\NiShadeProperty</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSShaderProperty.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty\NiShadeProperty\BSShaderProperty</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderProperty.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty\NiShadeProperty\BSShaderProperty</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSShaderMaterial.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialBase.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialHairTint.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterial.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkRefObject.h">
+      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkSerializable.h">
+      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkWorldObject.h">
+      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkWorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkPhantom.h">
+      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkShape.h">
+      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkShape</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkShapeCollection.h">
+      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkListShape.h">
+      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkShapePhantom.h">
+      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom\bhkShapePhantom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCachingShapePhantom.h">
+      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom\bhkShapePhantom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterProxy.h">
+      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterPointCollector.h">
+      <Filter>include\RE\BSHavok\BS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterState.h">
+      <Filter>include\RE\BSHavok\BS\bhkCharacterState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterStateClimbing.h">
+      <Filter>include\RE\BSHavok\BS\bhkCharacterState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterStateFlying.h">
+      <Filter>include\RE\BSHavok\BS\bhkCharacterState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterStateInAir.h">
+      <Filter>include\RE\BSHavok\BS\bhkCharacterState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterStateJumping.h">
+      <Filter>include\RE\BSHavok\BS\bhkCharacterState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterStateOnGround.h">
+      <Filter>include\RE\BSHavok\BS\bhkCharacterState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterStateSwimming.h">
+      <Filter>include\RE\BSHavok\BS\bhkCharacterState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterController.h">
+      <Filter>include\RE\BSHavok\NetImmerse\bhkCharacterController</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharProxyController.h">
+      <Filter>include\RE\BSHavok\NetImmerse\bhkCharacterController</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

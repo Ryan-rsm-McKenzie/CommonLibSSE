@@ -33,7 +33,7 @@ namespace RE
 
 		// members
 		bhkCharacterProxy	characterProxy;	// 340
-		UInt64				unk5A0;			// 5A0
+		void*				unk5A0;			// 5A0 - smart ptr
 		UInt64				unk5A8;			// 5A8
 	};
 	STATIC_ASSERT(sizeof(bhkCharProxyController) == 0x5B0);

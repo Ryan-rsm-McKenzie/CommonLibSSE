@@ -18,27 +18,27 @@ namespace RE
 		inline static const void* RTTI = RTTI_NiControllerManager;
 
 
-		virtual ~NiControllerManager();											// 00
+		virtual ~NiControllerManager();												// 00
 
 		// override (NiTimeController)
-		virtual NiRTTI*		GetRTTI() override;									// 02
-		virtual NiObject*	CreateClone(NiCloningProcess a_cloner) override;	// 17
-		virtual void		LoadBinary(NiStream* a_stream) override;			// 18
-		virtual void		LinkObject(NiStream* a_stream) override;			// 19
-		virtual bool		RegisterStreamables(NiStream* a_stream) override;	// 1A
-		virtual void		SaveBinary(NiStream* a_stream) override;			// 1B
-		virtual bool		IsEqual(NiObject* a_object) override;				// 1C
-		virtual void		ProcessClone(NiCloningProcess& a_cloning) override;	// 1D
-		virtual void		PostLinkObject(NiStream& a_stream) override;		// 1E
-		virtual void		Unk_24(void) override;								// 24 - { return this; }
-		virtual void		Start(float a_time) override;						// 25
-		virtual void		Stop() override;									// 26
-		virtual void		Update(float a_time) override;						// 27
-		virtual void		SetTarget(NiObjectNET* a_node) override;			// 28
-		virtual void		Unk_2E(void) override;								// 2E
+		virtual const NiRTTI*	GetRTTI() const override;							// 02
+		virtual NiObject*		CreateClone(NiCloningProcess& a_cloning) override;	// 17
+		virtual void			LoadBinary(NiStream& a_stream) override;			// 18
+		virtual void			LinkObject(NiStream& a_stream) override;			// 19
+		virtual bool			RegisterStreamables(NiStream& a_stream) override;	// 1A
+		virtual void			SaveBinary(NiStream& a_stream) override;			// 1B
+		virtual bool			IsEqual(NiObject* a_object) override;				// 1C
+		virtual void			ProcessClone(NiCloningProcess& a_cloning) override;	// 1D
+		virtual void			PostLinkObject(NiStream& a_stream) override;		// 1E
+		virtual void			Unk_24(void) override;								// 24 - { return this; }
+		virtual void			Start(float a_time) override;						// 25
+		virtual void			Stop() override;									// 26
+		virtual void			Update(float a_time) override;						// 27
+		virtual void			SetTarget(NiObjectNET* a_node) override;			// 28
+		virtual void			Unk_2E(void) override;								// 2E
 
 		// add
-		virtual void		Unk_2F(void);										// 2F
+		virtual void			Unk_2F(void);										// 2F
 
 		NiControllerSequence* GetSequenceByName(const BSFixedString& a_name);
 

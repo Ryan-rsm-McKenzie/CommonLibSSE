@@ -279,6 +279,8 @@
     <ClCompile Include="src\RE\NiMatrix3.cpp" />
     <ClCompile Include="src\RE\NiObject.cpp" />
     <ClCompile Include="src\RE\NiRefObject.cpp" />
+    <ClCompile Include="src\RE\NiRTTI.cpp" />
+    <ClCompile Include="src\RE\NiSkinInstance.cpp" />
     <ClCompile Include="src\RE\NiTexture.cpp" />
     <ClCompile Include="src\RE\RemoveCallbackVisitor.cpp" />
     <ClCompile Include="src\RE\Script.cpp" />
@@ -543,9 +545,11 @@
     <ClInclude Include="include\RE\BSBound.h" />
     <ClInclude Include="include\RE\BSCoreTypes.h" />
     <ClInclude Include="include\RE\BSExtraData.h" />
+    <ClInclude Include="include\RE\BSFaceGenNiNode.h" />
     <ClInclude Include="include\RE\BSFadeNode.h" />
     <ClInclude Include="include\RE\BSFixedString.h" />
     <ClInclude Include="include\RE\BSGameSound.h" />
+    <ClInclude Include="include\RE\BSGeometry.h" />
     <ClInclude Include="include\RE\BSHandleRefObject.h" />
     <ClInclude Include="include\RE\BShkbAnimationGraph.h" />
     <ClInclude Include="include\RE\BSImagespaceShader.h" />
@@ -559,6 +563,10 @@
     <ClInclude Include="include\RE\BSISoundDescriptor.h" />
     <ClInclude Include="include\RE\BSISoundOutputModel.h" />
     <ClInclude Include="include\RE\BSLensFlareRenderData.h" />
+    <ClInclude Include="include\RE\BSLightingShaderMaterial.h" />
+    <ClInclude Include="include\RE\BSLightingShaderMaterialBase.h" />
+    <ClInclude Include="include\RE\BSLightingShaderMaterialHairTint.h" />
+    <ClInclude Include="include\RE\BSLightingShaderProperty.h" />
     <ClInclude Include="include\RE\BSMaterialObject.h" />
     <ClInclude Include="include\RE\BSMusicEvent.h" />
     <ClInclude Include="include\RE\BSNavmesh.h" />
@@ -631,6 +639,8 @@
     <ClInclude Include="include\RE\BSScript\VMArray.h" />
     <ClInclude Include="include\RE\BSScript\ZeroFunctionArguments.h" />
     <ClInclude Include="include\RE\BSShader.h" />
+    <ClInclude Include="include\RE\BSShaderMaterial.h" />
+    <ClInclude Include="include\RE\BSShaderProperty.h" />
     <ClInclude Include="include\RE\BSSmallBlockAllocator.h" />
     <ClInclude Include="include\RE\BSLock.h" />
     <ClInclude Include="include\RE\BSStorage.h" />
@@ -639,6 +649,7 @@
     <ClInclude Include="include\RE\BSTAnimationGraphDataChannel.h" />
     <ClInclude Include="include\RE\BSTCaseInsensitiveStringMap.h" />
     <ClInclude Include="include\RE\BSTDerivedCreator.h" />
+    <ClInclude Include="include\RE\BSTempEffect.h" />
     <ClInclude Include="include\RE\BSTextureSet.h" />
     <ClInclude Include="include\RE\BSTFreeList.h" />
     <ClInclude Include="include\RE\BSThread.h" />
@@ -1098,6 +1109,7 @@
     <ClInclude Include="include\RE\NiAVObject.h" />
     <ClInclude Include="include\RE\NiBinaryStream.h" />
     <ClInclude Include="include\RE\NiBoneMatrixSetterI.h" />
+    <ClInclude Include="include\RE\NiBound.h" />
     <ClInclude Include="include\RE\NiCamera.h" />
     <ClInclude Include="include\RE\NiColorData.h" />
     <ClInclude Include="include\RE\NiColorInterpolator.h" />
@@ -1108,12 +1120,19 @@
     <ClInclude Include="include\RE\NiFloatInterpolator.h" />
     <ClInclude Include="include\RE\NiFloatKey.h" />
     <ClInclude Include="include\RE\NiFrustum.h" />
+    <ClInclude Include="include\RE\NiGeometryData.h" />
     <ClInclude Include="include\RE\NiInterpolator.h" />
     <ClInclude Include="include\RE\NiKeyBasedInterpolator.h" />
     <ClInclude Include="include\RE\NiMath.h" />
     <ClInclude Include="include\RE\NiMatrix3.h" />
     <ClInclude Include="include\RE\NiPoint2.h" />
+    <ClInclude Include="include\RE\NiProperty.h" />
     <ClInclude Include="include\RE\NiQuaternion.h" />
+    <ClInclude Include="include\RE\NiRTTI.h" />
+    <ClInclude Include="include\RE\NiShadeProperty.h" />
+    <ClInclude Include="include\RE\NiSkinData.h" />
+    <ClInclude Include="include\RE\NiSkinInstance.h" />
+    <ClInclude Include="include\RE\NiSkinPartition.h" />
     <ClInclude Include="include\RE\NiTCollection.h" />
     <ClInclude Include="include\RE\NiObject.h" />
     <ClInclude Include="include\RE\NiPoint3.h" />
@@ -1143,6 +1162,7 @@
     <ClInclude Include="include\RE\Projectile.h" />
     <ClInclude Include="include\RE\QuestEvents.h" />
     <ClInclude Include="include\RE\RaceSexMenuEvent.h" />
+    <ClInclude Include="include\RE\ReferenceEffect.h" />
     <ClInclude Include="include\RE\ReferenceEffectController.h" />
     <ClInclude Include="include\RE\GMatrix2D.h" />
     <ClInclude Include="include\RE\RegSettingCollection.h" />
@@ -1186,6 +1206,7 @@
     <ClInclude Include="include\RE\SettingCollectionMap.h" />
     <ClInclude Include="include\RE\SettingT.h" />
     <ClInclude Include="include\RE\SFTypes.h" />
+    <ClInclude Include="include\RE\ShaderReferenceEffect.h" />
     <ClInclude Include="include\RE\ShoutHandler.h" />
     <ClInclude Include="include\RE\ShoutMeter.h" />
     <ClInclude Include="include\RE\SimpleAnimationGraphManagerHolder.h" />

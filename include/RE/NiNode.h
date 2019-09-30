@@ -3,7 +3,8 @@
 #include "skse64/GameRTTI.h"  // RTTI_NiNode
 
 #include "RE/NiAVObject.h"  // NiAVObject
-#include "RE/NiTArray.h"  // NiTArray
+#include "RE/NiSmartPointer.h"  // NiPointer
+#include "RE/NiTArray.h"  // NiTObjectArray
 
 
 namespace RE
@@ -17,13 +18,13 @@ namespace RE
 		virtual ~NiNode();																													// 00
 
 		// override (NiAVObject)
-		virtual NiRTTI*			GetRTTI() override;																							// 02
+		virtual const NiRTTI*	GetRTTI() const override;																					// 02
 		virtual NiNode*			GetAsNiNode() override;																						// 03 - { return this; }
-		virtual NiObject*		CreateClone(NiCloningProcess a_cloner) override;															// 17
-		virtual void			LoadBinary(NiStream* a_stream) override;																	// 18
-		virtual void			LinkObject(NiStream* a_stream) override;																	// 19
-		virtual bool			RegisterStreamables(NiStream* a_stream) override;															// 1A
-		virtual void			SaveBinary(NiStream* a_stream) override;																	// 1B
+		virtual NiObject*		CreateClone(NiCloningProcess& a_cloning) override;															// 17
+		virtual void			LoadBinary(NiStream& a_stream) override;																	// 18
+		virtual void			LinkObject(NiStream& a_stream) override;																	// 19
+		virtual bool			RegisterStreamables(NiStream& a_stream) override;															// 1A
+		virtual void			SaveBinary(NiStream& a_stream) override;																	// 1B
 		virtual bool			IsEqual(NiObject* a_object) override;																		// 1C
 		virtual void			ProcessClone(NiCloningProcess& a_cloning) override;															// 1D
 		virtual void			UpdateControllers(ControllerUpdateContext* a_ctx) override;													// 25
@@ -36,6 +37,7 @@ namespace RE
 		virtual void			UpdateRigidDownwardPass(ControllerUpdateContext* a_ctx, void* a_arg2) override;								// 2E
 		virtual void			UpdateWorldBound() override;																				// 2F
 		virtual void			UpdateNoControllers(ControllerUpdateContext* a_ctx) override;												// 31
+		virtual void			Unk_34(void) override;																						// 34
 
 		// add
 		virtual void			AttachChild(NiAVObject* a_child, bool a_firstAvail = false);												// 35
@@ -54,7 +56,7 @@ namespace RE
 
 
 		// members
-		NiTArray<NiAVObject*> children;	// 110
+		NiTObjectArray<NiPointer<NiAVObject>> children;	// 110
 	};
 	STATIC_ASSERT(sizeof(NiNode) == 0x128);
 }

@@ -13,10 +13,11 @@ namespace RE
 		inline static const void* RTTI = RTTI_bhkShapePhantom;
 
 
-		virtual ~bhkShapePhantom();			// 00
+		virtual ~bhkShapePhantom();											// 00
 
 		// override (bhkPhantom)
-		virtual NiRTTI*	GetRTTI() override;	// 02
+		virtual const NiRTTI*	GetRTTI() const override;					// 02
+		virtual void			LinkObject(NiStream& a_stream) override;	// 19 - { bhkWorldObject::LinkObject(a_stream); }
 	};
 	STATIC_ASSERT(sizeof(bhkShapePhantom) == 0x30);
 }

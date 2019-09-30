@@ -15,18 +15,18 @@ namespace RE
 		inline static const void* RTTI = RTTI_NiCamera;
 
 
-		virtual ~NiCamera();															// 00
+		virtual ~NiCamera();																// 00
 
 		// override (NiAVObject)
-		virtual NiRTTI*		GetRTTI() override;											// 02
-		virtual NiObject*	CreateClone(NiCloningProcess a_cloner) override;			// 17 - { return this; }
-		virtual void		LoadBinary(NiStream* a_stream) override;					// 18 - { return; }
-		virtual void		LinkObject(NiStream* a_stream) override;					// 19 - { return; }
-		virtual bool		RegisterStreamables(NiStream* a_stream) override;			// 1A
-		virtual void		SaveBinary(NiStream* a_stream) override;					// 1B - { return; }
-		virtual bool		IsEqual(NiObject* a_object) override;						// 1C
-		virtual void		UpdateWorldBound() override;								// 2F - { return; }
-		virtual void		UpdateWorldData(ControllerUpdateContext* a_ctx) override;	// 30
+		virtual const NiRTTI*	GetRTTI() const override;									// 02
+		virtual NiObject*		CreateClone(NiCloningProcess& a_cloning) override;			// 17 - { return this; }
+		virtual void			LoadBinary(NiStream& a_stream) override;					// 18 - { return; }
+		virtual void			LinkObject(NiStream& a_stream) override;					// 19 - { return; }
+		virtual bool			RegisterStreamables(NiStream& a_stream) override;			// 1A
+		virtual void			SaveBinary(NiStream& a_stream) override;					// 1B - { return; }
+		virtual bool			IsEqual(NiObject* a_object) override;						// 1C
+		virtual void			UpdateWorldBound() override;								// 2F - { return; }
+		virtual void			UpdateWorldData(ControllerUpdateContext* a_ctx) override;	// 30
 
 
 		// members

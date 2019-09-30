@@ -13,10 +13,11 @@ namespace RE
 		inline static const void* RTTI = RTTI_bhkPhantom;
 
 
-		virtual ~bhkPhantom();				// 00
+		virtual ~bhkPhantom();								// 00
 
 		// override (bhkWorldObject)
-		virtual NiRTTI*	GetRTTI() override;	// 02
+		virtual const NiRTTI*	GetRTTI() const override;	// 02
+		virtual void			Unk_2A(void);				// 2A
 
 
 		// members

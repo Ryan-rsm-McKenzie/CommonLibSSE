@@ -1,13 +1,30 @@
 #include "RE/TESNPC.h"
 
+#include "skse64/GameData.h"  // GetNumActorBaseOverlays
 #include "skse64/GameObjects.h"  // TESNPC
 
 
 namespace RE
 {
-	float TESNPC::Layer::GetInterpolationValue() const
+	TESNPC::HeadData::HeadData() :
+		hairColor(0),
+		headTexture(0)
+	{}
+
+
+	void TESNPC::ChangeHeadPart(BGSHeadPart* a_target)
 	{
-		return static_cast<float>(interpolationValue) / 100.0;
+		using func_t = function_type_t<decltype(&TESNPC::ChangeHeadPart)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESNPC, ChangeHeadPart, func_t*);
+		return func(this, a_target);
+	}
+
+
+	BGSHeadPart** TESNPC::GetBaseOverlays() const
+	{
+		using func_t = function_type_t<decltype(&TESNPC::GetBaseOverlays)>;
+		func_t* func = reinterpret_cast<func_t*>(GetActorBaseOverlays.GetUIntPtr());
+		return func(this);
 	}
 
 
@@ -19,6 +36,72 @@ namespace RE
 	}
 
 
+	BGSHeadPart* TESNPC::GetCurrentHeadPartByType(BGSHeadPart::Type a_type)
+	{
+		return HasOverlays() ? GetHeadPartOverlayByType(a_type) : GetHeadPartByType(a_type);
+	}
+
+
+	BGSHeadPart* TESNPC::GetHeadPartByType(BGSHeadPart::Type a_type)
+	{
+		if (headparts) {
+			for (UInt8 i = 0; i < numHeadParts; ++i) {
+				if (headparts[i] && headparts[i]->type == a_type) {
+					return headparts[i];
+				}
+			}
+		}
+		return 0;
+	}
+
+
+	BGSHeadPart* TESNPC::GetHeadPartOverlayByType(BGSHeadPart::Type a_type)
+	{
+		auto numOverlays = GetNumBaseOverlays();
+		auto overlays = GetBaseOverlays();
+		if (overlays) {
+			for (UInt8 i = 0; i < numOverlays; ++i) {
+				if (overlays[i]->type == a_type) {
+					return overlays[i];
+				}
+			}
+		}
+		return 0;
+	}
+
+
+	UInt32 TESNPC::GetNumBaseOverlays() const
+	{
+		using func_t = function_type_t<decltype(&TESNPC::GetNumBaseOverlays)>;
+		func_t* func = reinterpret_cast<func_t*>(GetNumActorBaseOverlays.GetUIntPtr());
+		return func(this);
+	}
+
+
+	TESRace* TESNPC::GetRace()
+	{
+		return race;
+	}
+
+
+	TESNPC* TESNPC::GetRootTemplate()
+	{
+		auto node = nextTemplate;
+		if (node) {
+			while (node->nextTemplate) {
+				node = node->nextTemplate;
+			}
+		}
+		return node;
+	}
+
+
+	float TESNPC::Layer::GetInterpolationValue() const
+	{
+		return static_cast<float>(interpolationValue) / 100.0;
+	}
+
+
 	bool TESNPC::HasOverlays()
 	{
 		using func_t = function_type_t<decltype(&TESNPC::HasOverlays)>;
@@ -27,19 +110,27 @@ namespace RE
 	}
 
 
-	void TESNPC::ChangeHeadPart(BGSHeadPart* a_target)
+	void TESNPC::SetFaceTexture(BGSTextureSet* a_textureSet)
 	{
-		using func_t = function_type_t<decltype(&TESNPC::ChangeHeadPart)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESNPC, ChangeHeadPart, func_t*);
-		return func(this, a_target);
+		if (!headData && a_textureSet) {
+			headData = new HeadData();
+		}
+
+		if (headData) {
+			headData->headTexture = a_textureSet;
+		}
 	}
 
 
-	void TESNPC::UpdateNeck(BSFaceGenNiNode* a_faceNode)
+	void TESNPC::SetHairColor(BGSColorForm* a_hairColor)
 	{
-		using func_t = function_type_t<decltype(&TESNPC::UpdateNeck)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESNPC, UpdateNeck, func_t*);
-		return func(this, a_faceNode);
+		if (!headData && a_hairColor) {
+			headData = new HeadData();
+		}
+
+		if (headData) {
+			headData->hairColor = a_hairColor;
+		}
 	}
 
 
@@ -51,56 +142,10 @@ namespace RE
 	}
 
 
-	void TESNPC::SetFaceTexture(BGSTextureSet* a_textureSet)
+	void TESNPC::UpdateNeck(BSFaceGenNiNode* a_faceNode)
 	{
-		using func_t = function_type_t<decltype(&TESNPC::SetFaceTexture)>;
-		func_t* func = unrestricted_cast<func_t*>(&::TESNPC::SetFaceTexture);
-		return func(this, a_textureSet);
-	}
-
-
-	void TESNPC::SetHairColor(BGSColorForm* a_hairColor)
-	{
-		using func_t = function_type_t<decltype(&TESNPC::SetHairColor)>;
-		func_t* func = unrestricted_cast<func_t*>(&::TESNPC::SetHairColor);
-		return func(this, a_hairColor);
-	}
-
-
-	BGSHeadPart* TESNPC::GetHeadPartByType(UInt32 a_type)
-	{
-		using func_t = function_type_t<decltype(&TESNPC::GetHeadPartByType)>;
-		func_t* func = unrestricted_cast<func_t*>(&::TESNPC::GetHeadPartByType);
-		return func(this, a_type);
-	}
-
-
-	BGSHeadPart* TESNPC::GetHeadPartOverlayByType(UInt32 a_type)
-	{
-		using func_t = function_type_t<decltype(&TESNPC::GetHeadPartOverlayByType)>;
-		func_t* func = unrestricted_cast<func_t*>(&::TESNPC::GetHeadPartOverlayByType);
-		return func(this, a_type);
-	}
-
-
-	BGSHeadPart* TESNPC::GetCurrentHeadPartByType(UInt32 a_type)
-	{
-		using func_t = function_type_t<decltype(&TESNPC::GetCurrentHeadPartByType)>;
-		func_t* func = unrestricted_cast<func_t*>(&::TESNPC::GetCurrentHeadPartByType);
-		return func(this, a_type);
-	}
-
-
-	TESNPC* TESNPC::GetRootTemplate()
-	{
-		using func_t = function_type_t<decltype(&TESNPC::GetRootTemplate)>;
-		func_t* func = unrestricted_cast<func_t*>(&::TESNPC::GetRootTemplate);
-		return func(this);
-	}
-
-
-	TESRace* TESNPC::GetRace()
-	{
-		return race;
+		using func_t = function_type_t<decltype(&TESNPC::UpdateNeck)>;
+		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESNPC, UpdateNeck, func_t*);
+		return func(this, a_faceNode);
 	}
 }

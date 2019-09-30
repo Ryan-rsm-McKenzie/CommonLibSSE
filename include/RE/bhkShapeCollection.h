@@ -13,13 +13,15 @@ namespace RE
 		inline static const void* RTTI = RTTI_bhkShapeCollection;
 
 
-		virtual ~bhkShapeCollection();		// 00
+		virtual ~bhkShapeCollection();						// 00
 
 		// override (bhkShape)
-		virtual NiRTTI*	GetRTTI() override;	// 02
+		virtual const NiRTTI*	GetRTTI() const override;	// 02
+		virtual void			Unk_34(void) override;		// 34 - { return this; }
+		virtual void			Unk_35(void) override;		// 35
 
 		// add
-		virtual void	Unk_36(void);		// 36 - pure
+		virtual void			Unk_36(void) = 0;			// 36
 	};
 	STATIC_ASSERT(sizeof(bhkShapeCollection) == 0x28);
 }

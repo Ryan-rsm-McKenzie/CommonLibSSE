@@ -16,13 +16,13 @@ namespace RE
 		virtual ~BSFadeNode();																						// 00
 
 		// override (NiObject)
-		virtual NiRTTI*			GetRTTI() override;																	// 02
+		virtual const NiRTTI*	GetRTTI() const override;															// 02
 		virtual BSFadeNode*		GetAsBSFadeNode() override;															// 05 - { return this; }
-		virtual NiObject*		CreateClone(NiCloningProcess a_cloner) override;									// 17
-		virtual void			LoadBinary(NiStream* a_stream) override;											// 18
-		virtual void			LinkObject(NiStream* a_stream) override;											// 19
-		virtual bool			RegisterStreamables(NiStream* a_stream) override;									// 1A
-		virtual void			SaveBinary(NiStream* a_stream) override;											// 1B
+		virtual NiObject*		CreateClone(NiCloningProcess& a_cloning) override;									// 17
+		virtual void			LoadBinary(NiStream& a_stream) override;											// 18
+		virtual void			LinkObject(NiStream& a_stream) override;											// 19
+		virtual bool			RegisterStreamables(NiStream& a_stream) override;									// 1A
+		virtual void			SaveBinary(NiStream& a_stream) override;											// 1B
 		virtual bool			IsEqual(NiObject* a_object) override;												// 1C
 		virtual void			UpdateSelectedDownwardPass(ControllerUpdateContext* a_ctx, void* a_arg2) override;	// 2D
 

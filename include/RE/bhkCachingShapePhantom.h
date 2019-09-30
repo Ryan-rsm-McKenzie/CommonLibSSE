@@ -13,11 +13,15 @@ namespace RE
 		inline static const void* RTTI = RTTI_bhkCachingShapePhantom;
 
 
-		virtual ~bhkCachingShapePhantom();										// 00
+		virtual ~bhkCachingShapePhantom();											// 00
 
 		// override (bhkShapePhantom)
-		virtual NiRTTI*		GetRTTI() override;									// 02
-		virtual NiObject*	CreateClone(NiCloningProcess a_cloner) override;	// 17
+		virtual const NiRTTI*	GetRTTI() const override;							// 02
+		virtual NiObject*		CreateClone(NiCloningProcess& a_cloning) override;	// 17
+		virtual void			Unk_2B(void) override;								// 2B
+		virtual void			Unk_2C(void) override;								// 2C - { return 112; }
+		virtual void			Unk_2E(void) override;								// 2E
+		virtual void			Unk_2F(void) override;								// 2F
 	};
 	STATIC_ASSERT(sizeof(bhkCachingShapePhantom) == 0x30);
 }

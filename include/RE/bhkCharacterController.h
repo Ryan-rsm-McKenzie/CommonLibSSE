@@ -5,8 +5,10 @@
 #include "RE/BSBound.h"  // BSBound
 #include "RE/BSTEvent.h"  // BSTEventSource
 #include "RE/hkpCharacterContext.h"  // hkpCharacterContext
+#include "RE/hkRefPtr.h"  // hkRefPtr
 #include "RE/NiPoint3.h"  // NiPoint3
 #include "RE/NiRefObject.h"  // NiRefObject
+#include "RE/NiSmartPointer.h"  // NiPointer
 
 
 namespace RE
@@ -107,16 +109,15 @@ namespace RE
 		UInt64							unk268;						// 268
 		UInt64							unk270;						// 270
 		UInt64							unk278;						// 278
-		bhkListShape*					unk280;						// 280
-		bhkListShape*					unk288;						// 288
+		NiPointer<bhkListShape>			unk280[2];					// 280
 		UInt64							unk290;						// 290
 		UInt64							unk298;						// 298
 		UInt64							unk2A0;						// 2A0
 		UInt64							unk2A8;						// 2A8
-		hkpEntity*						groundEntity;				// 2B0
+		hkRefPtr<hkpEntity>				groundEntity;				// 2B0
 		UInt64							unk2B8;						// 2B8
-		hkReferencedObject*				unk2C0;						// 2C0
-		hkReferencedObject*				unk2C8;						// 2C8
+		hkRefPtr<hkReferencedObject>	unk2C0;						// 2C0
+		hkRefPtr<hkReferencedObject>	unk2C8;						// 2C8
 		UInt64							unk2D0;						// 2D0
 		UInt64							unk2D8;						// 2D8
 		UInt64							unk2E0;						// 2E0
