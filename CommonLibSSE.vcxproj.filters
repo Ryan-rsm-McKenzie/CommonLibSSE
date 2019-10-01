@@ -1114,6 +1114,18 @@
     <Filter Include="src\RE\BSShader\BSShaderMaterial">
       <UniqueIdentifier>{534cccde-8938-421a-9557-a88317203848}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\BSShader\ImageSpaceEffectParam">
+      <UniqueIdentifier>{028cb4e8-804f-4d41-a7eb-44c265f03a4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSShader\BSShader">
+      <UniqueIdentifier>{7960ce93-145e-4b35-a31b-8dcbe255dc74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSShader\BSShader\BSImagespaceShader">
+      <UniqueIdentifier>{00f999ff-8732-4eba-8dbc-04c6ab26c26c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiCullingProcess">
+      <UniqueIdentifier>{1c4bd067-bca7-4c97-92a3-f0530c7329c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1913,12 +1925,6 @@
     <ClInclude Include="include\RE\BSString.h">
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\ImageSpaceEffectParam.h">
-      <Filter>include\RE\BSShader</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ImageSpaceShaderParam.h">
-      <Filter>include\RE\BSShader</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\AnimationVariableData.h">
       <Filter>include\RE\Animation</Filter>
     </ClInclude>
@@ -1941,15 +1947,6 @@
       <Filter>include\RE\BSShader</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSReloadShaderI.h">
-      <Filter>include\RE\BSShader</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSShader.h">
-      <Filter>include\RE\BSShader</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSImagespaceShader.h">
-      <Filter>include\RE\BSShader</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSImagespaceShaderBlur3.h">
       <Filter>include\RE\BSShader</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSDestructibleObjectForm.h">
@@ -4753,6 +4750,36 @@
     </ClInclude>
     <ClInclude Include="include\RE\hkbBehaviorGraph.h">
       <Filter>include\RE\BSHavok\BS\hkbBindable\hkbNode\hkbGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSShader.h">
+      <Filter>include\RE\BSShader\BSShader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSImagespaceShader.h">
+      <Filter>include\RE\BSShader\BSShader\BSImagespaceShader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSImagespaceShaderBlur3.h">
+      <Filter>include\RE\BSShader\BSShader\BSImagespaceShader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ImageSpaceEffectParam.h">
+      <Filter>include\RE\BSShader\ImageSpaceEffectParam</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ImageSpaceShaderParam.h">
+      <Filter>include\RE\BSShader\ImageSpaceEffectParam</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiCullingProcess.h">
+      <Filter>include\RE\NetImmerse\NiCullingProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiFrustumPlanes.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiPlane.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSCullingProcess.h">
+      <Filter>include\RE\NetImmerse\NiCullingProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTLocklessQueue.h">
+      <Filter>include\RE\BSCore</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

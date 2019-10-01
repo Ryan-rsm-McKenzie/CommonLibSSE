@@ -95,8 +95,8 @@ namespace RE
 		TESGlobal*	hour;			// 20
 		TESGlobal*	daysPassed;		// 28
 		TESGlobal*	timeScale;		// 30
-		UInt32		uDaysPassed;	// 38 - ?
-		float		fDaysPassed;	// 3C - ?
+		UInt32		uDaysPassed;	// 38
+		float		fDaysPassed;	// 3C
 	};
 	STATIC_ASSERT(sizeof(BSTimeManager) == 0x40);
 }

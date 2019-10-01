@@ -25,9 +25,9 @@ namespace RE
 		UInt64									unk18;	// 18
 		UInt64									unk20;	// 20
 		UInt64									unk28;	// 28
-		UInt64									unk30;	// 30
+		void*									unk30;	// 30
 		UInt64									unk38;	// 38
-		UInt64									unk40;	// 40
+		void*									unk40;	// 40
 		UInt64									unk48;	// 48
 		NiTObjectArray<NiPointer<NiTexture>>	unk50;	// 50
 		NiTPrimitiveArray<UInt32>				unk68;	// 68 - NiTPrimitiveArray<enum BSGraphics::TextureFilterMode>

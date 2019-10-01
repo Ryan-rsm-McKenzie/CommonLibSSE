@@ -545,6 +545,7 @@
     <ClInclude Include="include\RE\BSAudioManagerThread.h" />
     <ClInclude Include="include\RE\BSBound.h" />
     <ClInclude Include="include\RE\BSCoreTypes.h" />
+    <ClInclude Include="include\RE\BSCullingProcess.h" />
     <ClInclude Include="include\RE\BSExtraData.h" />
     <ClInclude Include="include\RE\BSFaceGenNiNode.h" />
     <ClInclude Include="include\RE\BSFadeNode.h" />
@@ -655,6 +656,7 @@
     <ClInclude Include="include\RE\BSTFreeList.h" />
     <ClInclude Include="include\RE\BSThread.h" />
     <ClInclude Include="include\RE\BSTimeManager.h" />
+    <ClInclude Include="include\RE\BSTLocklessQueue.h" />
     <ClInclude Include="include\RE\BSTMessageQueue.h" />
     <ClInclude Include="include\RE\BSTSmartPointer.h" />
     <ClInclude Include="include\RE\BSTArray.h" />
@@ -1116,16 +1118,19 @@
     <ClInclude Include="include\RE\NiColorInterpolator.h" />
     <ClInclude Include="include\RE\NiColorKey.h" />
     <ClInclude Include="include\RE\NiColor.h" />
+    <ClInclude Include="include\RE\NiCullingProcess.h" />
     <ClInclude Include="include\RE\NiExtraData.h" />
     <ClInclude Include="include\RE\NiFloatData.h" />
     <ClInclude Include="include\RE\NiFloatInterpolator.h" />
     <ClInclude Include="include\RE\NiFloatKey.h" />
     <ClInclude Include="include\RE\NiFrustum.h" />
+    <ClInclude Include="include\RE\NiFrustumPlanes.h" />
     <ClInclude Include="include\RE\NiGeometryData.h" />
     <ClInclude Include="include\RE\NiInterpolator.h" />
     <ClInclude Include="include\RE\NiKeyBasedInterpolator.h" />
     <ClInclude Include="include\RE\NiMath.h" />
     <ClInclude Include="include\RE\NiMatrix3.h" />
+    <ClInclude Include="include\RE\NiPlane.h" />
     <ClInclude Include="include\RE\NiPoint2.h" />
     <ClInclude Include="include\RE\NiProperty.h" />
     <ClInclude Include="include\RE\NiQuaternion.h" />

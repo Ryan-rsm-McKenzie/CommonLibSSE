@@ -2,14 +2,16 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_LocalMapCamera, RTTI_LocalMapCamera__DefaultState
 
+#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 #include "RE/NiPoint3.h"  // NiPoint3
+#include "RE/NiSmartPointer.h"  // NiPointer
 #include "RE/TESCamera.h"  // TESCamera
 #include "RE/TESCameraState.h"  // TESCameraState
 
 
 namespace RE
 {
-	class NiObject;
+	class NiCamera;
 
 
 	class LocalMapCamera : public TESCamera
@@ -45,20 +47,20 @@ namespace RE
 		LocalMapCamera(float a_northRotation);
 		virtual ~LocalMapCamera();	// 00
 
-		void	SetNorthRotation(float a_northRotation);
-		void	SetDefaultStateMinFrustumDimensions(float a_width, float a_height);
 		void	SetAreaBounds(NiPoint3& a_maxBound, NiPoint3& a_minBound);
-		void	SetDefaultStateMaxBound(NiPoint3& a_maxBound);
 		void	SetDefaultStateBounds(float a_x, float a_y, float a_z);
+		void	SetDefaultStateMaxBound(NiPoint3& a_maxBound);
+		void	SetDefaultStateMinFrustumDimensions(float a_width, float a_height);
+		void	SetNorthRotation(float a_northRotation);
 
 
 		// members
-		NiPoint3		areaBoundsMax;	// 38
-		NiPoint3		areaBoundsMin;	// 44
-		DefaultState*	defaultState;	// 50
-		NiObject*		niCamera;		// 58
-		float			northRotation;	// 60
-		UInt32			pad64;			// 64
+		NiPoint3						areaBoundsMax;	// 38
+		NiPoint3						areaBoundsMin;	// 44
+		BSTSmartPointer<DefaultState>	defaultState;	// 50
+		NiPointer<NiCamera>				niCamera;		// 58
+		float							northRotation;	// 60
+		UInt32							pad64;			// 64
 
 	protected:
 		LocalMapCamera* Ctor_Internal(float a_northRotation);
