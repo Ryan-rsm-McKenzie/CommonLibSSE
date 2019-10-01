@@ -37,6 +37,11 @@ namespace RE
 		virtual void				Unk_0C(void);							// 0C
 		virtual void				Unk_0D(void);							// 0D
 
+		static BSLightingShaderMaterialBase* CreateMaterial(Type a_type);
+
+		NiPointer<BSTextureSet>	GetTextureSet() const;
+		void					SetTextureSet(NiPointer<BSTextureSet> a_textureSet);
+
 
 		// members
 		UInt64					unk38;				// 38
@@ -47,7 +52,7 @@ namespace RE
 		NiPointer<NiTexture>	unk60;				// 60
 		NiPointer<NiTexture>	unk68;				// 68
 		UInt64					unk70;				// 70
-		NiPointer<BSTextureSet>	unk78;				// 78
+		NiPointer<BSTextureSet>	textureSet;			// 78
 		float					alpha;				// 80
 		float					unk84;				// 84
 		float					glossiness;			// 88

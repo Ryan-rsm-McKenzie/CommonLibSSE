@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_NiSkinInstance
+#include "skse64/NiRTTI.h"  // NiRTTI_NiSkinInstance
 
 #include "RE/NiSmartPointer.h"  // NiPointer
 #include "RE/NiObject.h"  // NiObject
@@ -18,6 +19,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_NiSkinInstance;
+		inline static const void* Ni_RTTI = NiRTTI_NiSkinInstance;
 
 
 		virtual ~NiSkinInstance();													// 00

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_NiControllerManager
+#include "skse64/NiRTTI.h"  // NiRTTI_NiControllerManager
 
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/NiTArray.h"  // NiTArray
@@ -16,6 +17,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_NiControllerManager;
+		inline static const void* Ni_RTTI = NiRTTI_NiControllerManager;
 
 
 		virtual ~NiControllerManager();												// 00

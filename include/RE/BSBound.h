@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_BSBound
+#include "skse64/NiRTTI.h"  // NiRTTI_BSBound
 
 #include "RE/NiExtraData.h"  // NiExtraData
 
@@ -11,6 +12,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_BSBound;
+		inline static const void* Ni_RTTI = NiRTTI_BSBound;
 
 
 		virtual ~BSBound();															// 00

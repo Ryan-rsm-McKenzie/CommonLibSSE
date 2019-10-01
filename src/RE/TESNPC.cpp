@@ -23,7 +23,7 @@ namespace RE
 	BGSHeadPart** TESNPC::GetBaseOverlays() const
 	{
 		using func_t = function_type_t<decltype(&TESNPC::GetBaseOverlays)>;
-		func_t* func = reinterpret_cast<func_t*>(GetActorBaseOverlays.GetUIntPtr());
+		func_t* func = unrestricted_cast<func_t*>(GetActorBaseOverlays.GetUIntPtr());
 		return func(this);
 	}
 
@@ -73,7 +73,7 @@ namespace RE
 	UInt32 TESNPC::GetNumBaseOverlays() const
 	{
 		using func_t = function_type_t<decltype(&TESNPC::GetNumBaseOverlays)>;
-		func_t* func = reinterpret_cast<func_t*>(GetNumActorBaseOverlays.GetUIntPtr());
+		func_t* func = unrestricted_cast<func_t*>(GetNumActorBaseOverlays.GetUIntPtr());
 		return func(this);
 	}
 

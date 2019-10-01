@@ -184,6 +184,7 @@
     <ClCompile Include="src\RE\BSGlobalStringTable.cpp" />
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
     <ClCompile Include="src\RE\BSIMusicType.cpp" />
+    <ClCompile Include="src\RE\BSLightingShaderMaterialBase.cpp" />
     <ClCompile Include="src\RE\BSResourceNiBinaryStream.cpp" />
     <ClCompile Include="src\RE\BSScaleformMovieLoader.cpp" />
     <ClCompile Include="src\RE\BSScript\Array.cpp" />

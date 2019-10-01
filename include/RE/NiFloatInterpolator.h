@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_NiFloatInterpolator
+#include "skse64/NiRTTI.h"  // NiRTTI_NiFloatInterpolator
 
 #include "RE/NiKeyBasedInterpolator.h"  // NiKeyBasedInterpolator
 #include "RE/NiSmartPointer.h"  // NiPointer
@@ -15,6 +16,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_NiFloatInterpolator;
+		inline static const void* Ni_RTTI = NiRTTI_NiFloatInterpolator;
 
 
 		virtual ~NiFloatInterpolator();																					// 00

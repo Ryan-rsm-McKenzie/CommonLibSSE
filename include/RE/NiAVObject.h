@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_NiAVObject
+#include "skse64/NiRTTI.h"  // NiRTTI_NiAVObject
 
 #include "RE/NiObjectNET.h"  // NiObjectNET
 #include "RE/NiSmartPointer.h"  // NiPointer
@@ -19,6 +20,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_NiAVObject;
+		inline static const void* Ni_RTTI = NiRTTI_NiAVObject;
 
 
 		enum class Flag : UInt32

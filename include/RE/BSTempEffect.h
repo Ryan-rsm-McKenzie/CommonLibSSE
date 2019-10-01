@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_BSTempEffect
+#include "skse64/NiRTTI.h"  // NiRTTI_BSTempEffect
 
 #include "RE/NiObject.h"  // NiObject
 
@@ -11,6 +12,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_BSTempEffect;
+		inline static const void* Ni_RTTI = NiRTTI_BSTempEffect;
 
 
 		virtual ~BSTempEffect();										// 00

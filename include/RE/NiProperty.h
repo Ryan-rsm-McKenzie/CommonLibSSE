@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_NiProperty
+#include "skse64/NiRTTI.h"  // NiRTTI_NiProperty
 
 #include "RE/NiObjectNET.h"  // NiObjectNET
 
@@ -11,6 +12,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_NiProperty;
+		inline static const void* Ni_RTTI = NiRTTI_NiProperty;
 
 
 		enum class Type : SInt32

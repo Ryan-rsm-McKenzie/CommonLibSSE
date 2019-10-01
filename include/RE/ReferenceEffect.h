@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_ReferenceEffect
+#include "skse64/NiRTTI.h"  // NiRTTI_ReferenceEffect
 
 #include "RE/BSTempEffect.h"  // BSTempEffect
 
@@ -14,6 +15,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_ReferenceEffect;
+		inline static const void* Ni_RTTI = NiRTTI_ReferenceEffect;
 
 
 		virtual ~ReferenceEffect();												// 00

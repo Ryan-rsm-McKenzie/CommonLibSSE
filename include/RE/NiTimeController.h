@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_NiTimeController
+#include "skse64/NiRTTI.h"  // NiRTTI_NiTimeController
 
 #include "RE/NiObject.h"  // NiObject
 #include "RE/NiSmartPointer.h"  // NiSmartPointer
@@ -18,6 +19,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_NiTimeController;
+		inline static const void* Ni_RTTI = NiRTTI_NiTimeController;
 
 
 		enum class Flag : UInt16

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_bhkCachingShapePhantom
+#include "skse64/NiRTTI.h"  // NiRTTI_bhkCachingShapePhantom
 
 #include "RE/bhkShapePhantom.h"  // bhkShapePhantom
 
@@ -11,6 +12,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_bhkCachingShapePhantom;
+		inline static const void* Ni_RTTI = NiRTTI_bhkCachingShapePhantom;
 
 
 		virtual ~bhkCachingShapePhantom();											// 00

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_NiSkinPartition
+#include "skse64/NiRTTI.h"  // NiRTTI_NiSkinPartition
 
 #include "RE/NiGeometryData.h"  // NiGeometryData
 #include "RE/NiObject.h"  // NiObject
@@ -15,6 +16,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_NiSkinPartition;
+		inline static const void* Ni_RTTI = NiRTTI_NiSkinPartition;
 
 
 		struct TriShape

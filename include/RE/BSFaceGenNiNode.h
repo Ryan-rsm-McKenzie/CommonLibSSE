@@ -1,9 +1,9 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_BSFaceGenNiNode
+#include "skse64/NiRTTI.h"  // NiRTTI_BSFaceGenNiNode
 
 #include "RE/NiNode.h"  // NiNode
-
 
 
 namespace RE
@@ -12,6 +12,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_BSFaceGenNiNode;
+		inline static const void* Ni_RTTI = NiRTTI_BSFaceGenNiNode;
 
 
 		virtual ~BSFaceGenNiNode();																			// 00

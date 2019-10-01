@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_NiNode
+#include "skse64/NiRTTI.h"  // NiRTTI_NiNode
 
 #include "RE/NiAVObject.h"  // NiAVObject
 #include "RE/NiSmartPointer.h"  // NiPointer
@@ -13,6 +14,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_NiNode;
+		inline static const void* Ni_RTTI = NiRTTI_NiNode;
 
 
 		virtual ~NiNode();																													// 00

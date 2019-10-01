@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_NiFloatData
+#include "skse64/NiRTTI.h"  // NiRTTI_NiFloatData
 
 #include "RE/NiFloatKey.h"  // NiFloatKey
 #include "RE/NiObject.h"  // NiObject
@@ -12,6 +13,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_NiFloatData;
+		inline static const void* Ni_RTTI = NiRTTI_NiFloatData;
 
 
 		using KeyType = NiFloatKey::KeyType;

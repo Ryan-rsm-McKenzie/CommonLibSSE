@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_NiCamera
+#include "skse64/NiRTTI.h"  // NiRTTI_NiCamera
 
 #include "RE/NiAVObject.h"  // NiAVObject
 #include "RE/NiFrustum.h"  // NiFrustum
@@ -13,6 +14,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_NiCamera;
+		inline static const void* Ni_RTTI = NiRTTI_NiCamera;
 
 
 		virtual ~NiCamera();																// 00

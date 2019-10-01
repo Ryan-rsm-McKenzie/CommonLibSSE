@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_NiObject
+#include "skse64/NiRTTI.h"  // NiRTTI_NiObject
 
 #include "RE/NiRefObject.h"  // NiRefObject
 #include "RE/NiSmartPointer.h"  // NiPointer
@@ -25,11 +26,11 @@ namespace RE
 	NiSmartPointer(NiObject);
 
 
-
 	class NiObject : public NiRefObject
 	{
 	public:
 		inline static const void* RTTI = RTTI_NiObject;
+		inline static const void* Ni_RTTI = NiRTTI_NiObject;
 
 
 		virtual ~NiObject();												// 00

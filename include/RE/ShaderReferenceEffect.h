@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_ShaderReferenceEffect
+#include "skse64/NiRTTI.h"  // NiRTTI_ShaderReferenceEffect
 
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/ReferenceEffect.h"  // ReferenceEffect
@@ -16,6 +17,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_ShaderReferenceEffect;
+		inline static const void* Ni_RTTI = NiRTTI_ShaderReferenceEffect;
 
 
 		struct Data048

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_BSShaderProperty
+#include "skse64/NiRTTI.h"  // NiRTTI_BSShaderProperty
 
 #include "RE/NiShadeProperty.h"  // NiShadeProperty
 
@@ -14,6 +15,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_BSShaderProperty;
+		inline static const void* Ni_RTTI = NiRTTI_BSShaderProperty;
 
 
 		enum class ShaderFlag1 : UInt32

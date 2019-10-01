@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_NiShadeProperty
+#include "skse64/NiRTTI.h"  // NiRTTI_NiShadeProperty
 
 #include "RE/NiProperty.h"  // NiProperty
 
@@ -11,6 +12,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_NiShadeProperty;
+		inline static const void* Ni_RTTI = NiRTTI_NiShadeProperty;
 
 
 		virtual ~NiShadeProperty();													// 00

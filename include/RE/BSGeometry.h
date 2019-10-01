@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_BSGeometry
+#include "skse64/NiRTTI.h"  // NiRTTI_BSGeometry
 
 #include "RE/NiAVObject.h"  // NiAVObject
 #include "RE/NiSmartPointer.h"  // NiPointer
@@ -16,6 +17,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_BSGeometry;
+		inline static const void* Ni_RTTI = NiRTTI_BSGeometry;
 
 
 		struct States

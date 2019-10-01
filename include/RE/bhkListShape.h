@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_bhkListShape
+#include "skse64/NiRTTI.h"  // NiRTTI_bhkListShape
 
 #include "RE/bhkShapeCollection.h"  // bhkShapeCollection
 
@@ -11,6 +12,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_bhkListShape;
+		inline static const void* Ni_RTTI = NiRTTI_bhkListShape;
 
 
 		virtual ~bhkListShape();													// 00

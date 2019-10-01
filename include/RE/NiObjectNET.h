@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_NiObjectNET
+#include "skse64/NiRTTI.h"  // NiRTTI_NiObjectNET
 
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/NiObject.h"  // NiObject
@@ -17,6 +18,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_NiObjectNET;
+		inline static const void* Ni_RTTI = NiRTTI_NiObjectNET;
 
 
 		virtual ~NiObjectNET();														// 00

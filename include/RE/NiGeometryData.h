@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_NiGeometryData
+#include "skse64/NiRTTI.h"  // NiRTTI_NiGeometryData
 
 #include "RE/NiBound.h"  // NiBound
 #include "RE/NiObject.h"  // NiObject
@@ -18,6 +19,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_NiGeometryData;
+		inline static const void* Ni_RTTI = NiRTTI_NiGeometryData;
 
 
 		enum class DataFlag: UInt16

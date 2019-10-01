@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skse64/GameRTTI.h"  // RTTI_BSFadeNode
+#include "skse64/NiRTTI.h"  // NiRTTI_BSFadeNode
 
 #include "RE/NiNode.h"  // NiNode
 
@@ -11,6 +12,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_BSFadeNode;
+		inline static const void* Ni_RTTI = NiRTTI_BSFadeNode;
 
 
 		virtual ~BSFadeNode();																						// 00
