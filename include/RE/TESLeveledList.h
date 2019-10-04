@@ -3,6 +3,7 @@
 #include "skse64/GameRTTI.h"  // RTTI_TESLeveledList
 
 #include "RE/BaseFormComponent.h"  // BaseFormComponent
+#include "RE/BSTArray.h"  // BSTSimpleArray
 #include "RE/FormTypes.h"  // FormType, TESForm, TESGlobal, TESFaction
 
 
@@ -67,14 +68,14 @@ namespace RE
 
 
 		// members
-		Entry*		entries;		// 08
-		UInt8		chanceNone;		// 10 - LVLD
-		Flag		flags;			// 11 - LVLF
-		UInt8		numEntries;		// 12 - LLCT
-		UInt8		unk13;			// 13
-		UInt32		pad14;			// 14
-		void*		unk18;			// 18
-		TESGlobal*	global;			// 20 - LVLG
+		BSTSimpleArray<Entry>	entries;	// 08
+		UInt8					chanceNone;	// 10 - LVLD
+		Flag					flags;		// 11 - LVLF
+		UInt8					numEntries;	// 12 - LLCT
+		UInt8					unk13;		// 13
+		UInt32					pad14;		// 14
+		void*					unk18;		// 18
+		TESGlobal*				global;		// 20 - LVLG
 	};
 	STATIC_ASSERT(sizeof(TESLeveledList) == 0x28);
 }

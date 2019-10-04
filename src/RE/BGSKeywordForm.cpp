@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	bool BGSKeywordForm::HasKeyword(UInt32 a_formID) const
+	bool BGSKeywordForm::HasKeyword(FormID a_formID) const
 	{
 		if (keywords) {
 			for (UInt32 idx = 0; idx < keywordCount; ++idx) {
