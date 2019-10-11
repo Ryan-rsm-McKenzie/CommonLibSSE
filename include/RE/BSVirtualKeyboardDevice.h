@@ -16,8 +16,8 @@ namespace RE
 		virtual ~BSVirtualKeyboardDevice();		// 00
 
 		// override (BSKeyboardDevice)
-		virtual void	Unk_09(void) override;	// 09
-		virtual void	Unk_0A(void) override;	// 0A
+		virtual void	Unk_09(void) override;	// 09 - { return; }
+		virtual void	Unk_0A(void) override;	// 0A - { return; }
 
 		// add
 		virtual void	Unk_0B(void) = 0;		// 0B

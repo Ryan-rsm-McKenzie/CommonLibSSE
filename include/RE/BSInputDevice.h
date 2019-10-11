@@ -16,21 +16,22 @@ namespace RE
 		inline static const void* RTTI = RTTI_BSInputDevice;
 
 
-		struct Data
+		struct Mapping
 		{
 			BSFixedString	name;	// 00
 			float			timer;	// 08
-			UInt32			pad0C;	// 0C
+			UInt32			unk0C;	// 0C
 		};
+		STATIC_ASSERT(sizeof(Mapping) == 0x10);
 
 
-		virtual ~BSInputDevice();					// 00
+		virtual ~BSInputDevice();														// 00
 
 		// override (BSIInputDevice)
-		virtual	void	Unk_04(void) override;		// 04
-		virtual void	Unk_05(void) override;		// 05
-		virtual void	Unk_06(void) override;		// 06
-		virtual bool	IsEnabled() const override;	// 07
+		virtual	bool	GetKeyMapping(UInt32 a_key, BSFixedString& a_mapping) override;	// 04
+		virtual UInt32	GetMappingKey(BSFixedString a_mapping) override;				// 05
+		virtual void	Unk_06(void) override;											// 06
+		virtual bool	IsEnabled() const override;										// 07 - { return true; }
 
 		bool			IsKeyboard() const;
 		bool			IsMouse() const;
@@ -39,17 +40,10 @@ namespace RE
 
 
 		// members
-		DeviceType					deviceType;	// 08
-		UInt32						pad0C;		// 0C
-		BSTHashMap<UInt32, Data*>	codeMap;	// 10
-		UInt64						unk40;		// 40
-		UInt64						unk48;		// 48
-		UInt64						unk50;		// 50
-		UInt64						unk58;		// 58
-		UInt64						unk60;		// 60
-		UInt64						unk68;		// 68
+		DeviceType							deviceType;		// 08
+		UInt32								pad0C;			// 0C
+		BSTHashMap<UInt32, Mapping*>		keyToMapping;	// 10
+		BSTHashMap<BSFixedString, UInt32>	mappingToKey;	// 40
 	};
-	STATIC_ASSERT(offsetof(BSInputDevice, deviceType) == 0x08);
-	STATIC_ASSERT(offsetof(BSInputDevice, codeMap) == 0x10);
 	STATIC_ASSERT(sizeof(BSInputDevice) == 0x70);
 }

@@ -668,6 +668,7 @@
     <ClInclude Include="include\RE\BSUIScaleformData.h" />
     <ClInclude Include="include\RE\BSVolumetricLightingRenderData.h" />
     <ClInclude Include="include\RE\BSWin32SaveDataSystemUtility.h" />
+    <ClInclude Include="include\RE\BSWin32VirtualKeyboardDevice.h" />
     <ClInclude Include="include\RE\BSXAudio2GameSound.h" />
     <ClInclude Include="include\RE\ChestsLooted.h" />
     <ClInclude Include="include\RE\Clouds.h" />
@@ -1078,6 +1079,11 @@
     <ClInclude Include="include\RE\ItemsPickpocketed.h" />
     <ClInclude Include="include\RE\IUIMessageData.h" />
     <ClInclude Include="include\RE\IXAudio2VoiceCallback.h" />
+    <ClInclude Include="include\RE\JournalMenu.h" />
+    <ClInclude Include="include\RE\JournalTab.h" />
+    <ClInclude Include="include\RE\Journal_QuestsTab.h" />
+    <ClInclude Include="include\RE\Journal_StatsTab.h" />
+    <ClInclude Include="include\RE\Journal_SystemTab.h" />
     <ClInclude Include="include\RE\LevelUpMenu.h" />
     <ClInclude Include="include\RE\LocalMapCamera.h" />
     <ClInclude Include="include\RE\LocalMapMenu.h" />

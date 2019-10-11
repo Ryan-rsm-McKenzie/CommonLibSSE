@@ -26,20 +26,18 @@ namespace RE
 
 		// add
 		virtual void	Unk_09(void) = 0;			// 09
-		virtual void	Unk_0A(void);				// 0A
-		virtual void	Unk_0B(void);				// 0B
-		virtual void	Unk_0C(void);				// 0C
+		virtual void	Unk_0A(void);				// 0A - { return; }
+		virtual void	Unk_0B(void);				// 0B - { return; }
+		virtual void	Unk_0C(void);				// 0C - { return 0; }
 		virtual void	Unk_0D(void);				// 0D
-		virtual void	Unk_0E(void);				// 0E
+		virtual void	Unk_0E(void);				// 0E - { return; }
 
 
 		// members
-		SInt32	userIndex;		// C8 - init'd -1
-		bool	isConnected;	// CC - init'd false
-		bool	unkCD;			// CD - init'd false
+		SInt32	userIndex;		// C8
+		bool	isConnected;	// CC
+		bool	unkCD;			// CD
 		UInt16	padCE;			// CE
 	};
-	STATIC_ASSERT(offsetof(BSGamepadDevice, userIndex) == 0xC8);
-	STATIC_ASSERT(offsetof(BSGamepadDevice, isConnected) == 0xCC);
 	STATIC_ASSERT(sizeof(BSGamepadDevice) == 0xD0);
 }

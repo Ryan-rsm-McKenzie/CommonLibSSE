@@ -1126,6 +1126,12 @@
     <Filter Include="include\RE\NetImmerse\NiCullingProcess">
       <UniqueIdentifier>{1c4bd067-bca7-4c97-92a3-f0530c7329c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Menus\IMenu\Components\JournalTab">
+      <UniqueIdentifier>{5149c219-af92-4b9f-b994-3c0b4718ebe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice\BSVirtualKeyboardDevice">
+      <UniqueIdentifier>{f4245442-d234-4164-8f5d-18cde2f14d74}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -2850,9 +2856,6 @@
       <Filter>include\RE\BSDevices\BSIInputDevice</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSKeyboardDevice.h">
-      <Filter>include\RE\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSVirtualKeyboardDevice.h">
       <Filter>include\RE\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSPCGamepadDeviceDelegate.h">
@@ -4780,6 +4783,27 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSTLocklessQueue.h">
       <Filter>include\RE\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\JournalMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\JournalTab.h">
+      <Filter>include\RE\Menus\IMenu\Components\JournalTab</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Journal_QuestsTab.h">
+      <Filter>include\RE\Menus\IMenu\Components\JournalTab</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Journal_StatsTab.h">
+      <Filter>include\RE\Menus\IMenu\Components\JournalTab</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Journal_SystemTab.h">
+      <Filter>include\RE\Menus\IMenu\Components\JournalTab</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSVirtualKeyboardDevice.h">
+      <Filter>include\RE\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice\BSVirtualKeyboardDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSWin32VirtualKeyboardDevice.h">
+      <Filter>include\RE\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice\BSVirtualKeyboardDevice</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
