@@ -3,6 +3,7 @@
 #include "skse64/GameRTTI.h"  // RTTI_TESFaction
 
 #include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSTHashMap.h"  // BSTHashMap
 #include "RE/BSTList.h"  // BSSimpleList
 #include "RE/FormTypes.h"  // FormType, TESObjectREFR, BGSListForm, BGSOutfit
 #include "RE/TESForm.h"  // TESForm
@@ -34,6 +35,8 @@ namespace RE
 			kNone = 0,
 			kHiddenFromNPC = 1 << 0,
 			kSpecialCombat = 1 << 1,
+			kPlayerIsExpelled = 1 << 2,
+			kPlayerIsEnemy = 1 << 3,
 			kTrackCrime = 1 << 6,
 			kIgnoresCrimes_Murder = 1 << 7,
 			kIgnoresCrimes_Assult = 1 << 8,
@@ -62,14 +65,14 @@ namespace RE
 		{
 			bool	arrest;				// 00
 			bool	attackOnSight;		// 01
-			UInt16	murder;				// 02
-			UInt16	assault;			// 04
-			UInt16	trespass;			// 06
-			UInt16	pickpocket;			// 08
+			SInt16	murder;				// 02
+			SInt16	assault;			// 04
+			SInt16	trespass;			// 06
+			SInt16	pickpocket;			// 08
 			UInt16	unk0A;				// 0A
 			float	stealMultiplier;	// 0C
-			UInt16	escape;				// 10
-			UInt16	werewolf;			// 12
+			SInt16	escape;				// 10
+			SInt16	werewolf;			// 12
 		};
 		STATIC_ASSERT(sizeof(CrimeValues) == 0x14);
 
@@ -99,51 +102,71 @@ namespace RE
 		virtual ~TESFaction();											// 00
 
 		// override (TESForm)
+		virtual void	InitDefaults() override;						// 04
+		virtual void	ReleaseManagedData() override;					// 05
 		virtual bool	LoadForm(TESFile* a_mod) override;				// 06
 		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
 		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void	Unk_12(void) override;							// 12
 		virtual void	InitItem() override;							// 13
 
-		bool			HiddenFromNPC();
-		bool			HasSpecialCombatState();
-		bool			TracksCrimes();
-		bool			IgnoresMurder();
-		bool			IgnoresAssault();
-		bool			IgnoresStealing();
-		bool			IgnoresTrespass();
-		bool			ReportsCrimesAgainstMembers();
-		bool			UsesCrimeGoldDefaults();
-		bool			IgnoresPickpocket();
-		bool			IsVendor();
-		bool			CanBeOwner();
-		bool			IgnoresWerewolf();
+		bool	CanBeOwner() const;
+		bool	CanPayCrimeGold() const;
+		SInt32	GetCrimeGold() const;
+		SInt32	GetCrimeGoldNonViolent() const;
+		SInt32	GetCrimeGoldViolent() const;
+		SInt32	GetInfamy() const;
+		SInt32	GetInfamyNonViolent() const;
+		SInt32	GetInfamyViolent() const;
+		SInt32	GetStolenItemValueCrime() const;
+		SInt32	GetStolenItemValueNoCrime() const;
+		bool	HasSpecialCombatState() const;
+		bool	HiddenFromNPC() const;
+		bool	IgnoresAssault() const;
+		bool	IgnoresMurder() const;
+		bool	IgnoresPickpocket() const;
+		bool	IgnoresStealing() const;
+		bool	IgnoresTrespass() const;
+		bool	IgnoresWerewolf() const;
+		bool	IsFactionInCrimeGroup(const TESFaction* a_other) const;
+		bool	IsPlayerEnemy() const;
+		bool	IsPlayerExpelled() const;
+		bool	IsVendor() const;
+		void	ModCrimeGold(SInt32 a_amount, bool a_violent);
+		void	PlayerPayCrimeGold(bool a_removeStolenItems = true, bool a_goToJail = true);
+		bool	ReportsCrimesAgainstMembers() const;
+		void	SendPlayerToJail(bool a_removeInventory = true, bool a_realJail = true);
+		void	SetCrimeGold(SInt32 a_gold);
+		void	SetCrimeGoldViolent(SInt32 a_gold);
+		bool	TracksCrimes() const;
+		bool	UsesCrimeGoldDefaults() const;
 
 
 		// members
-		void*				unk050;						// 050
-		Flag				flags;						// 058 - DATA
-		UInt32				pad05C;						// 05C
-		TESObjectREFR*		exteriorJailMarker;			// 060 - JAIL
-		TESObjectREFR*		followerWaitMarker;			// 068 - WAIT
-		TESObjectREFR*		stolenGoodsContainer;		// 070 - STOL
-		TESObjectREFR*		playerInventoryContainer;	// 078 - PLCN
-		BGSListForm*		sharedCrimeFactionList;		// 080 - CRGR
-		BGSOutfit*			jailOutfit;					// 088 - JOUT
-		CrimeValues			crimeValues;				// 090 - CRVA
-		UInt32				pad0A4;						// 0A4
-		VendorValues		vendorValues;				// 0A8 - VENV
-		UInt32				pad0B4;						// 0B4
-		PackageLocation*	location;					// 0B8 - PLVD
-		Condition*			conditions;					// 0C0
-		BGSListForm*		vendorBuySellList;			// 0C8 - VEND
-		TESObjectREFR*		merchantContainer;			// 0D0 - VENC
-		UInt32				unk0D8;						// 0D8
-		UInt32				pad0DC;						// 0DC
-		BSSimpleList<Rank*>	ranks;						// 0E0
-		UInt32				unk0F0;						// 0F0
-		UInt32				unk0F4;						// 0F4
-		UInt32				unk0F8;						// 0F8
-		UInt32				unk0FC;						// 0FC
+		BSTHashMap<TESForm*, SInt32>*	crimeMap;					// 050
+		Flag							flags;						// 058 - DATA
+		UInt32							pad05C;						// 05C
+		TESObjectREFR*					exteriorJailMarker;			// 060 - JAIL
+		TESObjectREFR*					followerWaitMarker;			// 068 - WAIT
+		TESObjectREFR*					stolenGoodsContainer;		// 070 - STOL
+		TESObjectREFR*					playerInventoryContainer;	// 078 - PLCN
+		BGSListForm*					sharedCrimeFactionList;		// 080 - CRGR
+		BGSOutfit*						jailOutfit;					// 088 - JOUT
+		CrimeValues						crimeValues;				// 090 - CRVA
+		UInt32							pad0A4;						// 0A4
+		VendorValues					vendorValues;				// 0A8 - VENV
+		UInt32							pad0B4;						// 0B4
+		PackageLocation*				location;					// 0B8 - PLVD
+		Condition*						conditions;					// 0C0
+		BGSListForm*					vendorBuySellList;			// 0C8 - VEND
+		TESObjectREFR*					merchantContainer;			// 0D0 - VENC
+		UInt32							unk0D8;						// 0D8
+		UInt32							pad0DC;						// 0DC
+		BSSimpleList<Rank*>				ranks;						// 0E0
+		UInt32							unk0F0;						// 0F0
+		UInt32							unk0F4;						// 0F4
+		UInt32							unk0F8;						// 0F8
+		float							playerIsEnemyTimeStamp;		// 0FC - current game time in hours
 	};
 	STATIC_ASSERT(sizeof(TESFaction) == 0x100);
 }

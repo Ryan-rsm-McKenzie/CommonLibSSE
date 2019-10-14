@@ -1749,6 +1749,9 @@
     <ClCompile Include="src\RE\BSLightingShaderMaterialBase.cpp">
       <Filter>src\RE\BSShader\BSShaderMaterial</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BGSListForm.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -4804,6 +4807,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSWin32VirtualKeyboardDevice.h">
       <Filter>include\RE\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice\BSVirtualKeyboardDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SkyrimScript\SendPlayerToJailFunctor.h">
+      <Filter>include\RE\SkyrimScript\DelayFunctor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

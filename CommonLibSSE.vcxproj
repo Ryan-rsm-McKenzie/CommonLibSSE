@@ -177,6 +177,7 @@
     <ClCompile Include="src\RE\BGSEntryPointPerkEntry.cpp" />
     <ClCompile Include="src\RE\BGSHeadPart.cpp" />
     <ClCompile Include="src\RE\BGSKeywordForm.cpp" />
+    <ClCompile Include="src\RE\BGSListForm.cpp" />
     <ClCompile Include="src\RE\BGSLocation.cpp" />
     <ClCompile Include="src\RE\BGSPerkEntry.cpp" />
     <ClCompile Include="src\RE\BGSSaveLoadManager.cpp" />
@@ -1235,6 +1236,7 @@
     <ClInclude Include="include\RE\SkyrimScript\RemoveItemFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\SavePatcher.h" />
     <ClInclude Include="include\RE\SkyrimScript\ObjectBindPolicy.h" />
+    <ClInclude Include="include\RE\SkyrimScript\SendPlayerToJailFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\SetMotionTypeFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\SetPositionFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\Store.h" />

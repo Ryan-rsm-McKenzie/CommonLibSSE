@@ -268,13 +268,13 @@ namespace RE
 		virtual void							OnItemEquipped(bool a_playAnim);																																									// 0B2
 		virtual void							Unk_B3(void);																																														// 0B3 - { return 1; }
 		virtual void							Unk_B4(void);																																														// 0B4
-		virtual void							SetBounty(TESFaction* a_faction, bool a_bViolent, SInt32 a_gold);																																	// 0B5
-		virtual void							ModBounty(TESFaction* a_faction, bool a_bViolent, SInt32 a_gold);																																	// 0B6
-		virtual void							AddCrimeGold(UInt32 a_gold, bool a_bViolent, TESFaction* a_faction);																																// 0B7
-		virtual UInt32							GetBounty(TESFaction* a_faction);																																									// 0B8
-		virtual void							Unk_B9(void);																																														// 0B9 - { return; }
-		virtual void							ServeJailTime();																																													// 0BA - { return; }
-		virtual void							PayBounty(TESFaction* a_faction, bool a_removeStolenItems, bool a_goToJail);																														// 0BB - { return; }
+		virtual void							SetCrimeGold(TESFaction* a_faction, bool a_violent, SInt32 a_gold);																																	// 0B5
+		virtual void							ModCrimeGold(TESFaction* a_faction, bool a_violent, SInt32 a_amount);																																// 0B6
+		virtual void							AddCrimeGold(SInt32 a_amount, bool a_violent, TESFaction* a_faction);																																// 0B7
+		virtual SInt32							GetCrimeGold(const TESFaction* a_faction) const;																																					// 0B8
+		virtual void							SendToJail(TESFaction* a_faction, bool a_removeInventory, bool a_realJail);																															// 0B9 - { return; }
+		virtual void							Unk_BA(void);																																														// 0BA - { return; }
+		virtual void							PayCrimeGold(TESFaction* a_faction, bool a_goToJail, bool a_removeStolenItems);																														// 0BB - { return; }
 		virtual UInt32							IsCannibalizing();																																													// 0BC - { return 0; }
 		virtual void							Unk_BD(void);																																														// 0BD - { return; }
 		virtual UInt32							IsVampireFeeding();																																													// 0BE - { return 0; }
