@@ -37,6 +37,7 @@ namespace RE
 	{
 		_keyInterface = a_rhs._keyInterface;
 		_keyData = a_rhs._keyData;
+		return *this;
 	}
 
 
