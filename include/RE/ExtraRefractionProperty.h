@@ -24,7 +24,8 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;	// 10
+		float	refraction;	// 10
+		UInt32	unk14;		// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraRefractionProperty) == 0x18);
 }
