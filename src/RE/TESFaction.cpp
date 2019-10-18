@@ -14,7 +14,7 @@ namespace RE
 
 	bool TESFaction::CanPayCrimeGold() const
 	{
-		auto player = RE::PlayerCharacter::GetSingleton();
+		auto player = PlayerCharacter::GetSingleton();
 		auto bounty = player->GetCrimeGold(this);
 		return player->GetGoldAmount() >= bounty;
 	}
@@ -22,28 +22,28 @@ namespace RE
 
 	SInt32 TESFaction::GetCrimeGold() const
 	{
-		auto player = RE::PlayerCharacter::GetSingleton();
+		auto player = PlayerCharacter::GetSingleton();
 		return player->GetCrimeGold(this);
 	}
 
 
 	SInt32 TESFaction::GetCrimeGoldNonViolent() const
 	{
-		auto player = RE::PlayerCharacter::GetSingleton();
+		auto player = PlayerCharacter::GetSingleton();
 		return player->GetCrimeGoldNonViolent(this);
 	}
 
 
 	SInt32 TESFaction::GetCrimeGoldViolent() const
 	{
-		auto player = RE::PlayerCharacter::GetSingleton();
+		auto player = PlayerCharacter::GetSingleton();
 		return player->GetCrimeGoldViolent(this);
 	}
 
 
 	SInt32 TESFaction::GetInfamy() const
 	{
-		auto player = RE::PlayerCharacter::GetSingleton();
+		auto player = PlayerCharacter::GetSingleton();
 		auto it = player->crimeMap.find(const_cast<TESFaction*>(this));
 		if (it != player->crimeMap.end()) {
 			return it->second.nonViolentInfamy + it->second.violentInfamy;
@@ -55,7 +55,7 @@ namespace RE
 
 	SInt32 TESFaction::GetInfamyNonViolent() const
 	{
-		auto player = RE::PlayerCharacter::GetSingleton();
+		auto player = PlayerCharacter::GetSingleton();
 		auto it = player->crimeMap.find(const_cast<TESFaction*>(this));
 		if (it != player->crimeMap.end()) {
 			return it->second.nonViolentInfamy;
@@ -67,7 +67,7 @@ namespace RE
 
 	SInt32 TESFaction::GetInfamyViolent() const
 	{
-		auto player = RE::PlayerCharacter::GetSingleton();
+		auto player = PlayerCharacter::GetSingleton();
 		auto it = player->crimeMap.find(const_cast<TESFaction*>(this));
 		if (it != player->crimeMap.end()) {
 			return it->second.violentInfamy;
@@ -79,7 +79,7 @@ namespace RE
 
 	SInt32 TESFaction::GetStolenItemValueCrime() const
 	{
-		auto player = RE::PlayerCharacter::GetSingleton();
+		auto player = PlayerCharacter::GetSingleton();
 		auto it = player->stealCrimeMap.find(const_cast<TESFaction*>(this));
 		if (it != player->stealCrimeMap.end()) {
 			return it->second.witnessed;
@@ -91,7 +91,7 @@ namespace RE
 
 	SInt32 TESFaction::GetStolenItemValueNoCrime() const
 	{
-		auto player = RE::PlayerCharacter::GetSingleton();
+		auto player = PlayerCharacter::GetSingleton();
 		auto it = player->stealCrimeMap.find(const_cast<TESFaction*>(this));
 		if (it != player->stealCrimeMap.end()) {
 			return it->second.unwitnessed;
@@ -176,14 +176,14 @@ namespace RE
 
 	void TESFaction::ModCrimeGold(SInt32 a_amount, bool a_violent)
 	{
-		auto player = RE::PlayerCharacter::GetSingleton();
+		auto player = PlayerCharacter::GetSingleton();
 		return player->ModCrimeGold(this, a_violent, a_amount);
 	}
 
 
 	void TESFaction::PlayerPayCrimeGold(bool a_removeStolenItems, bool a_goToJail)
 	{
-		auto player = RE::PlayerCharacter::GetSingleton();
+		auto player = PlayerCharacter::GetSingleton();
 		player->PayCrimeGold(this, a_goToJail, a_removeStolenItems);
 	}
 
@@ -196,21 +196,21 @@ namespace RE
 
 	void TESFaction::SendPlayerToJail(bool a_removeInventory, bool a_realJail)
 	{
-		auto player = RE::PlayerCharacter::GetSingleton();
+		auto player = PlayerCharacter::GetSingleton();
 		player->SendToJail(this, a_removeInventory, a_realJail);
 	}
 
 
 	void TESFaction::SetCrimeGold(SInt32 a_gold)
 	{
-		auto player = RE::PlayerCharacter::GetSingleton();
+		auto player = PlayerCharacter::GetSingleton();
 		player->SetCrimeGold(this, false, a_gold);
 	}
 
 
 	void TESFaction::SetCrimeGoldViolent(SInt32 a_gold)
 	{
-		auto player = RE::PlayerCharacter::GetSingleton();
+		auto player = PlayerCharacter::GetSingleton();
 		player->SetCrimeGold(this, true, a_gold);
 	}
 

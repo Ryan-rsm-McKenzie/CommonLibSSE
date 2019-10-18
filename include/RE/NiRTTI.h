@@ -29,14 +29,21 @@ namespace RE
 		template <class To, class From> struct types_are_compat<To&, From> : std::is_lvalue_reference<std::remove_cv_t<From>> {};
 		template <class To, class From> struct types_are_compat<To*, From> : std::is_pointer<std::remove_cv_t<From>> {};
 
-		template <class To, class From> struct cast_is_valid : std::conjunction<types_are_compat<To, From>, std::is_convertible<From, To>> {};
+		template <class Base, class Derived> struct is_base_of_no_cvpr : std::is_base_of<remove_cvpr_t<Base>, remove_cvpr_t<Derived>> {};
+
+		template <class To, class From> struct cast_is_valid : std::conjunction<types_are_compat<To, From>, is_base_of_no_cvpr<From, To>> {};
 	}
 }
 
 
+// downcast
 template <class To, class From, typename std::enable_if_t<RE::Ni_Impl::cast_is_valid<To, const From*>::value, int> = 0>
 To netimmerse_cast(const From* a_from)
 {
+	if (!a_from) {
+		return nullptr;
+	}
+
 	REL::Offset<const RE::NiRTTI*> to(reinterpret_cast<std::uintptr_t>(RE::Ni_Impl::remove_cvpr_t<To>::Ni_RTTI));
 
 	const RE::NiRTTI* toRTTI = to.GetType();
@@ -49,4 +56,12 @@ To netimmerse_cast(const From* a_from)
 	}
 
 	return nullptr;
+}
+
+
+// upcast
+template <class To, class From, typename std::enable_if_t<RE::Ni_Impl::cast_is_valid<const From*, To>::value, int> = 0>
+To netimmerse_cast(const From* a_from)
+{
+	return static_cast<To>(const_cast<From*>(a_from));
 }
