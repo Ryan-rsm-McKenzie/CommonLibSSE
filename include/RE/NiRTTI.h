@@ -31,7 +31,14 @@ namespace RE
 
 		template <class Base, class Derived> struct is_base_of_no_cvpr : std::is_base_of<remove_cvpr_t<Base>, remove_cvpr_t<Derived>> {};
 
-		template <class To, class From> struct cast_is_valid : std::conjunction<types_are_compat<To, From>, is_base_of_no_cvpr<From, To>> {};
+		namespace
+		{
+			template <class T, class Enable = void> struct _has_rtti : std::false_type {};
+			template <class T> struct _has_rtti <T, decltype((void)T::Ni_RTTI)> : std::true_type {};
+		}
+		template <class T> struct has_rtti : _has_rtti<typename remove_cvpr_t<T>> {};
+
+		template <class To, class From> struct cast_is_valid : std::conjunction<types_are_compat<To, From>, is_base_of_no_cvpr<From, To>, has_rtti<To>, has_rtti<From>> {};
 	}
 }
 

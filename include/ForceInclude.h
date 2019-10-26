@@ -17,9 +17,12 @@
 #pragma warning(disable: 4305)	// truncation from 'type1' to 'type2'
 #pragma warning(disable: 4312)	// conversion from 'type1' to 'type2' of greater size
 
-#define STATIC_ASSERT(bool_constexpr) \
-	static_assert(bool_constexpr)
+#undef STATIC_ASSERT
+#define STATIC_ASSERT(bool_constexpr)	static_assert(bool_constexpr)
 
+#undef __MACRO_JOIN__
+#undef __MACRO_JOIN_2__
+#undef __MACRO_JOIN_3__
 #define __MACRO_JOIN__(a, b)	__MACRO_JOIN_2__(a, b)
 #define __MACRO_JOIN_2__(a, b)	__MACRO_JOIN_3__(a, b)
 #define __MACRO_JOIN_3__(a, b)	a##b
