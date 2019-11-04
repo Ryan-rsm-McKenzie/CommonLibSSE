@@ -174,7 +174,7 @@ namespace RE
 		// override (TESForm)
 		virtual bool			LoadForm(TESFile* a_mod) override;			// 06
 		virtual void			InitItem() override;						// 13
-		virtual const char*		GetEditorID() override;						// 32 - { return editorID.c_str() ? editorID.c_str() : ""; }
+		virtual const char*		GetEditorID() override;						// 32 - { return editorID.c_str(); }
 		virtual bool			SetEditorID(const char* a_str) override;	// 33 - { bool result = editorID == a_str; editorID = a_str; return result; }
 		virtual void			Unk_36(void) override;						// 36 - { return a_arg1 == FormType::Info }
 

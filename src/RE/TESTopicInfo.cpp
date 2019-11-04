@@ -1,5 +1,7 @@
 #include "RE/TESTopicInfo.h"
 
+#include "RE/TESTopic.h"  // TESTopic
+
 
 namespace RE
 {
@@ -12,5 +14,11 @@ namespace RE
 	float TESTopicInfo::ResponseFlags::GetResetHours() const
 	{
 		return static_cast<float>(resetHours);
+	}
+
+
+	DialogueData TESTopicInfo::GetDialogueData(Actor* a_speaker)
+	{
+		return { topic->quest, topic, this, a_speaker };
 	}
 }

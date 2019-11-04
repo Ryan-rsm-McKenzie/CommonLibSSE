@@ -4,6 +4,7 @@
 
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/Condition.h"  // Condition
+#include "RE/DialogueData.h"  // DialogueData
 #include "RE/FormTypes.h"  // FormType
 #include "RE/TESForm.h"  // TESForm
 #include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
@@ -130,6 +131,8 @@ namespace RE
 		virtual void	SetFlag00000002(bool a_set) override;				// 24
 		virtual void	Unk_30(void) override;								// 30
 		virtual void	Unk_31(void) override;								// 31
+
+		DialogueData GetDialogueData(Actor* a_speaker);
 
 
 		// members

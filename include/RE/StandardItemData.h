@@ -26,7 +26,7 @@ namespace RE
 
 		// members
 		InventoryEntryData*	objDesc;	// 08
-		UInt32				refHandle;	// 10
+		RefHandle			owner;		// 10
 		UInt32				pad14;		// 14
 	};
 	STATIC_ASSERT(sizeof(StandardItemData) == 0x18);
