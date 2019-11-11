@@ -288,11 +288,11 @@ namespace RE
 		float				GetBaseScale() const;
 		TESContainer*		GetContainer() const;
 		TESFaction*			GetFactionOwner() const;
-		const char*			GetFullName() const;
 		InventoryChanges*	GetInventoryChanges();	// Creates inventory changes if none found
 		TESObjectREFR*		GetLinkedRef(BGSKeyword* a_keyword);
 		SInt32				GetLockLevel() const;
 		LockState*			GetLockState() const;
+		const char*			GetName() const;
 		NiAVObject*			GetNodeByName(const BSFixedString& a_nodeName);
 		UInt32				GetNumItems(bool a_useDataHandlerChanges = false, bool a_arg2 = false);
 		TESForm*			GetOwner() const;

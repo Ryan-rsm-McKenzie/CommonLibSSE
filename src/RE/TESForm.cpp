@@ -4,6 +4,7 @@
 #include "RE/FormTraits.h"  // As
 #include "RE/GlobalLookupInfo.h"  // GlobalLookupInfo
 #include "RE/MagicItem.h"  // MagicItem
+#include "RE/TESFullName.h"  // TESFullName
 #include "RE/TESModel.h"  // TESModel
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
 #include "RE/TESValueForm.h"  // TESValueForm
@@ -51,88 +52,9 @@ namespace RE
 	}
 
 
-	bool TESForm::IsKey() const
-	{
-		return Is(FormType::KeyMaster);
-	}
-
-
-	bool TESForm::IsWeapon() const
-	{
-		return Is(FormType::Weapon);
-	}
-
-
-	bool TESForm::IsAmmo() const
-	{
-		return Is(FormType::Ammo);
-	}
-
-
-	bool TESForm::IsArmor() const
-	{
-		return Is(FormType::Armor);
-	}
-
-
-	bool TESForm::IsSoulGem() const
-	{
-		return Is(FormType::SoulGem);
-	}
-
-
-	bool TESForm::IsLockpick() const
-	{
-		return formID == 0x0000000A;
-	}
-
-
-	bool TESForm::IsGold() const
-	{
-		return formID == 0x0000000F;
-	}
-
-
-	bool TESForm::IsPlayer() const
-	{
-		return formID == 0x00000007;
-	}
-
-
-	bool TESForm::IsPlayerRef() const
-	{
-		return formID == 0x00000014;
-	}
-
-
-	bool TESForm::IsDynamicForm() const
-	{
-		return formID >= 0xFF000000;
-	}
-
-
-	bool TESForm::HasWorldModel() const
-	{
-		return As<TESModel*>() != 0;
-	}
-
-
 	FormID TESForm::GetFormID() const
 	{
 		return formID;
-	}
-
-
-	float TESForm::GetWeight() const
-	{
-		auto ref = As<TESObjectREFR*>();
-		auto form = ref ? ref->baseForm : this;
-		auto weightForm = form->As<TESWeightForm*>();
-		if (weightForm) {
-			return weightForm->weight;
-		} else {
-			return -1.0;
-		}
 	}
 
 
@@ -162,5 +84,103 @@ namespace RE
 		}
 
 		return value;
+	}
+
+
+	const char* TESForm::GetName() const
+	{
+		auto fullName = As<TESFullName*>();
+		return fullName ? fullName->GetFullName() : "";
+	}
+
+
+	float TESForm::GetWeight() const
+	{
+		auto ref = As<TESObjectREFR*>();
+		auto form = ref ? ref->baseForm : this;
+		auto weightForm = form->As<TESWeightForm*>();
+		if (weightForm) {
+			return weightForm->weight;
+		} else {
+			return -1.0;
+		}
+	}
+
+
+	bool TESForm::HasWorldModel() const
+	{
+		return As<TESModel*>() != 0;
+	}
+
+
+	bool TESForm::IsAmmo() const
+	{
+		return Is(FormType::Ammo);
+	}
+
+
+	bool TESForm::IsArmor() const
+	{
+		return Is(FormType::Armor);
+	}
+
+
+	bool TESForm::IsDeleted() const
+	{
+		return (flags & RecordFlags::kDeleted) != 0;
+	}
+
+
+	bool TESForm::IsDynamicForm() const
+	{
+		return formID >= 0xFF000000;
+	}
+
+
+	bool TESForm::IsGold() const
+	{
+		return formID == 0x0000000F;
+	}
+
+
+	bool TESForm::IsIgnored() const
+	{
+		return (flags & RecordFlags::kIgnored) != 0;
+	}
+
+
+	bool TESForm::IsKey() const
+	{
+		return Is(FormType::KeyMaster);
+	}
+
+
+	bool TESForm::IsLockpick() const
+	{
+		return formID == 0x0000000A;
+	}
+
+
+	bool TESForm::IsPlayer() const
+	{
+		return formID == 0x00000007;
+	}
+
+
+	bool TESForm::IsPlayerRef() const
+	{
+		return formID == 0x00000014;
+	}
+
+
+	bool TESForm::IsSoulGem() const
+	{
+		return Is(FormType::SoulGem);
+	}
+
+
+	bool TESForm::IsWeapon() const
+	{
+		return Is(FormType::Weapon);
 	}
 }

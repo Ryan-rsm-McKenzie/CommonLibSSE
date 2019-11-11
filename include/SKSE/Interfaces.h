@@ -89,11 +89,30 @@ namespace SKSE
 		void SetFormDeleteCallback(FormDeleteCallback* a_callback) const;
 
 		bool WriteRecord(UInt32 a_type, UInt32 a_version, const void* a_buf, UInt32 a_length) const;
+		template <class T>
+		inline bool WriteRecord(UInt32 a_type, UInt32 a_version, const T* a_buf) const
+		{
+			return WriteRecord(a_type, a_version, a_buf, sizeof(T));
+		}
+
 		bool OpenRecord(UInt32 a_type, UInt32 a_version) const;
+
 		bool WriteRecordData(const void* a_buf, UInt32 a_length) const;
+		template <class T>
+		inline bool WriteRecordData(const T* a_buf) const
+		{
+			return WriteRecordData(a_buf, sizeof(T));
+		}
 
 		bool GetNextRecordInfo(UInt32& a_type, UInt32& a_version, UInt32& a_length) const;
+
 		UInt32 ReadRecordData(void* a_buf, UInt32 a_length) const;
+		template <class T>
+		inline UInt32 ReadRecordData(T* a_buf) const
+		{
+			return ReadRecordData(a_buf, sizeof(T));
+		}
+
 		bool ResolveHandle(RE::VMHandle a_oldHandle, RE::VMHandle& a_newHandle) const;
 		bool ResolveFormID(RE::FormID a_oldFormID, RE::FormID& a_newFormID) const;
 

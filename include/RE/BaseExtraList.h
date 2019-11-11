@@ -10,53 +10,122 @@
 
 namespace RE
 {
+	class ExtraTextDisplayData;
 	class InventoryChanges;
 
 
 	class BaseExtraList
 	{
 	public:
-		class const_iterator
+		template <class T>
+		class iterator_base
 		{
 		public:
-			typedef const_iterator		_iter;
-			typedef const BSExtraData&	reference;
-			typedef const BSExtraData*	pointer;
+			using difference_type = std::ptrdiff_t;
+			using value_type = T;
+			using pointer = T*;
+			using reference = T&;
+			using iterator_category = std::forward_iterator_tag;
 
 
-			const_iterator(const BSExtraData* a_extra);
+			iterator_base() :
+				_cur(0)
+			{}
 
-			operator pointer() const;
-			operator bool() const;
-			reference	operator*() const;
-			pointer		operator->() const;
-			_iter&		operator++();
-			_iter		operator++(int);
-			bool		operator==(const _iter& a_rhs) const;
-			bool		operator!=(const _iter& a_rhs) const;
-			bool		empty() const;
+
+			iterator_base(T* a_node) :
+				_cur(a_node)
+			{}
+
+
+			iterator_base(const iterator_base& a_rhs) :
+				_cur(a_rhs._cur)
+			{}
+
+
+			iterator_base(iterator_base&& a_rhs) :
+				_cur(std::move(a_rhs._cur))
+			{
+				a_rhs._cur = 0;
+			}
+
+
+			~iterator_base() = default;
+
+
+			iterator_base& operator=(const iterator_base& a_rhs)
+			{
+				if (this == &a_rhs) {
+					return *this;
+				}
+
+				_cur = a_rhs._cur;
+
+				return *this;
+			}
+
+
+			iterator_base& operator=(iterator_base&& a_rhs)
+			{
+				if (this == &a_rhs) {
+					return *this;
+				}
+
+				_cur = std::move(a_rhs._cur);
+				a_rhs._cur = 0;
+
+				return *this;
+			}
+
+
+			[[nodiscard]] reference operator*() const
+			{
+				return *_cur;
+			}
+
+
+			[[nodiscard]] pointer operator->() const
+			{
+				return _cur;
+			}
+
+
+			[[nodiscard]] bool operator==(const iterator_base& a_rhs) const
+			{
+				return _cur == a_rhs._cur;
+			}
+
+
+			[[nodiscard]] bool operator!=(const iterator_base& a_rhs) const
+			{
+				return !operator==(a_rhs);
+			}
+
+
+			// prefix
+			iterator_base& operator++()
+			{
+				assert(_cur);
+				_cur = _cur->next;
+				return *this;
+			}
+
+
+			// postfix
+			iterator_base operator++(int)
+			{
+				iterator_base tmp(*this);
+				operator++();
+				return tmp;
+			}
 
 		protected:
-			BSExtraData* _cur;
+			T* _cur;
 		};
 
 
-		class iterator : public const_iterator
-		{
-		public:
-			typedef iterator		_iter;
-			typedef BSExtraData&	reference;
-			typedef BSExtraData*	pointer;
-
-
-			iterator(BSExtraData* a_extra);
-
-			operator pointer() const;
-			pointer		operator*() const;
-			pointer		operator->() const;
-			_iter&		operator++();
-			_iter		operator++(int);
-		};
+		using iterator = iterator_base<BSExtraData>;
+		using const_iterator = iterator_base<const BSExtraData>;
 
 
 		BaseExtraList();
@@ -71,37 +140,25 @@ namespace RE
 		const_iterator	cend() const;
 		const_iterator	end() const;
 
+		BSExtraData*			GetByType(UInt32 a_type) const;
+		BSExtraData*			GetByType(ExtraDataType a_type) const;
+		template <class T> T*	GetByType() const;
 
-		bool		HasType(UInt32 a_type) const;
-		bool		HasType(ExtraDataType a_type) const;
-		template <class T>
-		inline bool	HasType() const
-		{
-			return HasType(T::kExtraTypeID);
-		}
+		bool					HasType(UInt32 a_type) const;
+		bool					HasType(ExtraDataType a_type) const;
+		template <class T> bool	HasType() const;
 
-		BSExtraData*	GetByType(UInt32 a_type) const;
-		BSExtraData*	GetByType(ExtraDataType a_type) const;
-		template <class T>
-		inline T*		GetByType() const
-		{
-			return static_cast<T*>(GetByType(T::kExtraTypeID));
-		}
-
-		bool		Remove(UInt8 a_type, BSExtraData* a_toRemove);
-		bool		Remove(ExtraDataType a_type, BSExtraData* a_toRemove);
-		template <class T>
-		inline bool	Remove(T* a_toRemove)
-		{
-			return Remove(T::kExtraTypeID, a_toRemove);
-		}
+		bool					Remove(UInt8 a_type, BSExtraData* a_toRemove);
+		bool					Remove(ExtraDataType a_type, BSExtraData* a_toRemove);
+		template <class T> bool	Remove(T* a_toRemove);
 
 		BSExtraData*			Add(BSExtraData* a_toAdd);
-		const char*				GetDisplayName(TESForm* a_type);
 		bool					GetAshPileRefHandle(RefHandle& a_refHandle);
+		const char*				GetDisplayName(TESForm* a_form);
+		ExtraTextDisplayData*	GetExtraTextDisplayData();
+		TESObjectREFR*			GetLinkedRef(BGSKeyword* a_keyword);
 		void					SetInventoryChanges(InventoryChanges* a_changes);
 		void					SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
-		TESObjectREFR*			GetLinkedRef(BGSKeyword* a_keyword);
 
 	protected:
 		struct PresenceBitfield
@@ -113,7 +170,6 @@ namespace RE
 			// members
 			UInt8 bits[0x18];	// 00
 		};
-		STATIC_ASSERT(offsetof(PresenceBitfield, bits) == 0x00);
 		STATIC_ASSERT(sizeof(PresenceBitfield) == 0x18);
 
 
@@ -127,4 +183,25 @@ namespace RE
 		mutable BSReadWriteLock	_lock;		// 10
 	};
 	STATIC_ASSERT(sizeof(BaseExtraList) == 0x18);
+
+
+	template <class T>
+	inline T* BaseExtraList::GetByType() const
+	{
+		return static_cast<T*>(GetByType(T::kExtraTypeID));
+	}
+
+
+	template <class T>
+	inline bool BaseExtraList::HasType() const
+	{
+		return HasType(T::kExtraTypeID);
+	}
+
+
+	template <class T>
+	inline bool BaseExtraList::Remove(T* a_toRemove)
+	{
+		return Remove(T::kExtraTypeID, a_toRemove);
+	}
 }

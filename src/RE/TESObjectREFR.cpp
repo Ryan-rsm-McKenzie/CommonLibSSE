@@ -105,19 +105,6 @@ namespace RE
 	}
 
 
-	const char* TESObjectREFR::GetFullName() const
-	{
-		const char* result = 0;
-		if (baseForm) {
-			auto fullName = baseForm->As<TESFullName*>();
-			if (fullName) {
-				result = fullName->GetName();
-			}
-		}
-		return result;
-	}
-
-
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::GetInventoryChanges)>;
@@ -154,6 +141,12 @@ namespace RE
 		using func_t = function_type_t<decltype(&TESObjectREFR::GetLockState)>;
 		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetLockState);
 		return func(this);
+	}
+
+
+	const char* TESObjectREFR::GetName() const
+	{
+		return baseForm ? baseForm->GetName() : "";
 	}
 
 

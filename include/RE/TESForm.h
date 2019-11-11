@@ -29,7 +29,9 @@ namespace RE
 			{
 				kIsPlayable = 1 << 2,
 				kInitialized = 1 << 3,
-				kPlayerKnows = 1 << 6
+				kDeleted = 1 << 5,
+				kPlayerKnows = 1 << 6,
+				kIgnored = 1 << 12
 			};
 		};
 
@@ -120,20 +122,23 @@ namespace RE
 		template <class T> constexpr T		As();
 		template <class T> constexpr auto	As() const;
 
-		bool	IsKey() const;
-		bool	IsWeapon() const;
-		bool	IsAmmo() const;
-		bool	IsArmor() const;
-		bool	IsSoulGem() const;
-		bool	IsLockpick() const;
-		bool	IsGold() const;
-		bool	IsPlayer() const;
-		bool	IsPlayerRef() const;
-		bool	IsDynamicForm() const;
-		bool	HasWorldModel() const;
-		FormID	GetFormID() const;
-		float	GetWeight() const;
-		SInt32	GetGoldValue() const;
+		FormID		GetFormID() const;
+		SInt32		GetGoldValue() const;
+		const char*	GetName() const;
+		float		GetWeight() const;
+		bool		HasWorldModel() const;
+		bool		IsAmmo() const;
+		bool		IsArmor() const;
+		bool		IsDeleted() const;
+		bool		IsDynamicForm() const;
+		bool		IsGold() const;
+		bool		IsIgnored() const;
+		bool		IsKey() const;
+		bool		IsLockpick() const;
+		bool		IsPlayer() const;
+		bool		IsPlayerRef() const;
+		bool		IsSoulGem() const;
+		bool		IsWeapon() const;
 
 
 		// members

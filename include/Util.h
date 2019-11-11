@@ -222,32 +222,35 @@ public:
 template <class F> using function_type_t = typename function_type<F>::type;
 
 
-namespace
+namespace SKSE
 {
-	namespace
+	namespace Impl
 	{
-		template <class Enable, class... Args> struct _ulong_compat : std::false_type {};
-		template <class... Args> struct _ulong_compat<typename std::enable_if_t<(sizeof...(Args) <= 32)>, Args...> : std::true_type {};
-	}
-	template <class... Args> struct ulong_compat : _ulong_compat<void, Args...> {};
+		namespace
+		{
+			template <class Enable, class... Args> struct _ulong_compat : std::false_type {};
+			template <class... Args> struct _ulong_compat<typename std::enable_if_t<(sizeof...(Args) <= 32)>, Args...> : std::true_type {};
+		}
+		template <class... Args> struct ulong_compat : _ulong_compat<void, Args...> {};
 
-	namespace
-	{
-		template <class Enable, class... Args> struct _ullong_compat : std::false_type {};
-		template <class... Args> struct _ullong_compat<typename std::enable_if_t<(sizeof...(Args) > 32) && (sizeof...(Args) <= 64)>, Args...> : std::true_type {};
-	}
-	template <class... Args> struct ullong_compat : _ullong_compat<void, Args...> {};
+		namespace
+		{
+			template <class Enable, class... Args> struct _ullong_compat : std::false_type {};
+			template <class... Args> struct _ullong_compat<typename std::enable_if_t<(sizeof...(Args) > 32) && (sizeof...(Args) <= 64)>, Args...> : std::true_type {};
+		}
+		template <class... Args> struct ullong_compat : _ullong_compat<void, Args...> {};
 
-	namespace
-	{
-		template <class T> struct _is_bool : std::false_type {};
-		template <> struct _is_bool<bool> : std::true_type {};
+		namespace
+		{
+			template <class T> struct _is_bool : std::false_type {};
+			template <> struct _is_bool<bool> : std::true_type {};
+		}
+		template <class T> struct is_bool : _is_bool<T> {};
 	}
-	template <class T> struct is_bool : _is_bool<T> {};
 }
 
 
-template <class... Args, typename std::enable_if_t<std::conjunction<is_bool<Args>..., ulong_compat<Args...>>::value, int> = 0>
+template <class... Args, typename std::enable_if_t<std::conjunction<SKSE::Impl::is_bool<Args>..., SKSE::Impl::ulong_compat<Args...>>::value, int> = 0>
 unsigned long pun_bits(Args... a_args)
 {
 	std::bitset<sizeof...(Args)> bits;
@@ -257,7 +260,7 @@ unsigned long pun_bits(Args... a_args)
 }
 
 
-template <class... Args, typename std::enable_if_t<std::conjunction<is_bool<Args>..., ullong_compat<Args...>>::value, int> = 0>
+template <class... Args, typename std::enable_if_t<std::conjunction<SKSE::Impl::is_bool<Args>..., SKSE::Impl::ullong_compat<Args...>>::value, int> = 0>
 unsigned long long pun_bits(Args... a_args)
 {
 	std::bitset<sizeof...(Args)> bits;

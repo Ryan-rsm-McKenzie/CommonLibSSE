@@ -5,114 +5,20 @@
 #include "RE/BGSKeyword.h"  // BGSKeyword
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/ExtraAshPileRef.h"  // ExtraAshPileRef
+#include "RE/ExtraHealth.h"  // ExtraHealth
 #include "RE/ExtraLinkedRef.h"  // ExtraLinkedRef
 #include "RE/ExtraMissingLinkedRefIDs.h"  // ExtraMissingLinkedRefIDs
+#include "RE/ExtraReferenceHandle.h"  // ExtraReferenceHandle
+#include "RE/ExtraTextDisplayData.h"  // ExtraTextDisplayData
+#include "RE/GameSettingCollection.h"  // GameSettingCollection
 #include "RE/Offsets.h"
 #include "RE/TESObjectREFR.h"  // TESObjectREFR
+#include "RE/TESForm.h"  // TESForm
 #include "REL/Relocation.h"
 
 
 namespace RE
 {
-	BaseExtraList::const_iterator::const_iterator(const BSExtraData* a_extra) :
-		_cur(const_cast<BSExtraData*>(a_extra))
-	{}
-
-
-	BaseExtraList::const_iterator::operator pointer() const
-	{
-		return _cur;
-	}
-
-
-	BaseExtraList::const_iterator::operator bool() const
-	{
-		return !empty();
-	}
-
-
-	BaseExtraList::const_iterator::reference BaseExtraList::const_iterator::operator*() const
-	{
-		return *_cur;
-	}
-
-
-	BaseExtraList::const_iterator::pointer BaseExtraList::const_iterator::operator->() const
-	{
-		return _cur;
-	}
-
-
-	BaseExtraList::const_iterator::_iter& BaseExtraList::const_iterator::operator++()
-	{
-		_cur = _cur->next;
-		return *this;
-	}
-
-
-	BaseExtraList::const_iterator::_iter BaseExtraList::const_iterator::operator++(int)
-	{
-		_iter tmp = *this;
-		operator++();
-		return tmp;
-	}
-
-
-	bool BaseExtraList::const_iterator::operator==(const _iter& a_rhs) const
-	{
-		return (_cur == a_rhs._cur);
-	}
-
-
-	bool BaseExtraList::const_iterator::operator!=(const _iter& a_rhs) const
-	{
-		return (!(*this == a_rhs));
-	}
-
-
-	bool BaseExtraList::const_iterator::empty() const
-	{
-		return _cur == nullptr;
-	}
-
-
-	BaseExtraList::iterator::iterator(BSExtraData* a_extra) :
-		BaseExtraList::const_iterator(a_extra)
-	{}
-
-
-	BaseExtraList::iterator::operator pointer() const
-	{
-		return _cur;
-	}
-
-
-	BaseExtraList::iterator::pointer BaseExtraList::iterator::operator*() const
-	{
-		return _cur;
-	}
-
-
-	BaseExtraList::iterator::pointer BaseExtraList::iterator::operator->() const
-	{
-		return _cur;
-	}
-
-	BaseExtraList::iterator::_iter& BaseExtraList::iterator::operator++()
-	{
-		_cur = _cur->next;
-		return *this;
-	}
-
-
-	BaseExtraList::iterator::_iter BaseExtraList::iterator::operator++(int)
-	{
-		_iter tmp = *this;
-		operator++();
-		return tmp;
-	}
-
-
 	BaseExtraList::BaseExtraList() :
 		_data(0),
 		_presence(0),
@@ -127,6 +33,8 @@ namespace RE
 			_data = xData->next;
 			delete xData;
 		}
+		_data = 0;
+
 		free(_presence);
 		_presence = 0;
 	}
@@ -250,42 +158,6 @@ namespace RE
 	}
 
 
-	bool BaseExtraList::PresenceBitfield::HasType(UInt32 a_type) const
-	{
-		UInt32 index = (a_type >> 3);
-		if (index >= 0x18) {
-			return false;
-		}
-		UInt8 bitMask = 1 << (a_type % 8);
-		return (bits[index] & bitMask) != 0;
-	}
-
-
-	void BaseExtraList::PresenceBitfield::MarkType(UInt32 a_type, bool a_cleared)
-	{
-		UInt32 index = (a_type >> 3);
-		UInt8 bitMask = 1 << (a_type % 8);
-		UInt8& flag = bits[index];
-		if (a_cleared) {
-			flag &= ~bitMask;
-		} else {
-			flag |= bitMask;
-		}
-	}
-
-
-	void BaseExtraList::MarkType(UInt32 a_type, bool a_cleared)
-	{
-		_presence->MarkType(a_type, a_cleared);
-	}
-
-
-	void BaseExtraList::MarkType(ExtraDataType a_type, bool a_cleared)
-	{
-		MarkType((UInt32)a_type, a_cleared);
-	}
-
-
 	bool BaseExtraList::GetAshPileRefHandle(RefHandle& a_refHandle)
 	{
 		auto xAshRef = GetByType<ExtraAshPileRef>();
@@ -298,19 +170,52 @@ namespace RE
 	}
 
 
-	void BaseExtraList::SetInventoryChanges(InventoryChanges* a_changes)
+	const char* BaseExtraList::GetDisplayName(TESForm* a_form)
 	{
-		using func_t = function_type_t<decltype(&BaseExtraList::SetInventoryChanges)>;
-		REL::Offset<func_t*> func(Offset::BaseExtraList::SetInventoryChanges);
-		return func(this, a_changes);
+		const char* result = 0;
+		float health = 1.0;
+
+		auto xHealth = GetByType<ExtraHealth>();
+		if (xHealth) {
+			health = xHealth->health;
+		}
+
+		auto xText = GetExtraTextDisplayData();
+		bool dfHealth = health <= 1.0 ? (1.0 - health) < 0.001 : (health - 1.0) < 0.001;	// check for health == 1.0
+		if (!xText && !dfHealth) {
+			xText = new ExtraTextDisplayData();
+			Add(xText);
+		}
+
+		if (xText) {
+			result = xText->GenerateName(a_form, health);
+		} else {
+			result = a_form->GetName();
+		}
+
+		if (!result || result[0] == '\0') {
+			auto gmst = GameSettingCollection::GetSingleton();
+			auto sMissingName = gmst->GetSetting("sMissingName");
+			result = sMissingName->GetString();
+		}
+
+		return result;
 	}
 
 
-	void BaseExtraList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
+	ExtraTextDisplayData* BaseExtraList::GetExtraTextDisplayData()
 	{
-		using func_t = function_type_t<decltype(&BaseExtraList::SetExtraFlags)>;
-		REL::Offset<func_t*> func(Offset::BaseExtraList::SetExtraFlags);
-		return func(this, a_flags, a_enable);
+		auto xRef = GetByType<ExtraReferenceHandle>();
+		if (!xRef) {
+			return 0;
+		}
+
+		auto ref = xRef->GetReference();
+		if (!ref || !ref->IsDeleted()) {
+			return GetByType<ExtraTextDisplayData>();
+		} else {
+			return 0;
+		}
 	}
 
 
@@ -339,5 +244,57 @@ namespace RE
 		}
 
 		return linkedRef;
+	}
+
+
+	void BaseExtraList::SetInventoryChanges(InventoryChanges* a_changes)
+	{
+		using func_t = function_type_t<decltype(&BaseExtraList::SetInventoryChanges)>;
+		REL::Offset<func_t*> func(Offset::BaseExtraList::SetInventoryChanges);
+		return func(this, a_changes);
+	}
+
+
+	void BaseExtraList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
+	{
+		using func_t = function_type_t<decltype(&BaseExtraList::SetExtraFlags)>;
+		REL::Offset<func_t*> func(Offset::BaseExtraList::SetExtraFlags);
+		return func(this, a_flags, a_enable);
+	}
+
+
+	bool BaseExtraList::PresenceBitfield::HasType(UInt32 a_type) const
+	{
+		UInt32 index = (a_type >> 3);
+		if (index >= 0x18) {
+			return false;
+		}
+		UInt8 bitMask = 1 << (a_type % 8);
+		return (bits[index] & bitMask) != 0;
+	}
+
+
+	void BaseExtraList::PresenceBitfield::MarkType(UInt32 a_type, bool a_cleared)
+	{
+		UInt32 index = (a_type >> 3);
+		UInt8 bitMask = 1 << (a_type % 8);
+		auto& flag = bits[index];
+		if (a_cleared) {
+			flag &= ~bitMask;
+		} else {
+			flag |= bitMask;
+		}
+	}
+
+
+	void BaseExtraList::MarkType(UInt32 a_type, bool a_cleared)
+	{
+		_presence->MarkType(a_type, a_cleared);
+	}
+
+
+	void BaseExtraList::MarkType(ExtraDataType a_type, bool a_cleared)
+	{
+		MarkType(static_cast<UInt32>(a_type), a_cleared);
 	}
 }

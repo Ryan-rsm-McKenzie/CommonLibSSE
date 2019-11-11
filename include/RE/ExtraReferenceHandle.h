@@ -29,7 +29,7 @@ namespace RE
 		virtual ExtraDataType		GetType() const override;								// 01 - { return kReferenceHandle; }
 		virtual bool				IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return handle != a_rhs->handle; }
 
-		NiPointer<TESObjectREFR>	GetReference();
+		NiPointer<TESObjectREFR> GetReference();
 
 
 		// members

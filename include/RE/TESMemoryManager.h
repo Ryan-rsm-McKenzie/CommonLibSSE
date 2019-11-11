@@ -191,7 +191,9 @@ namespace RE
 	inline void* malloc(std::size_t a_size)
 	{
 		auto heap = TESMemoryManager::GetSingleton();
-		return heap->Malloc(a_size, 0, false);
+		auto mem = heap->Malloc(a_size, 0, false);
+		assert(mem != 0);
+		return mem;
 	}
 
 
@@ -212,7 +214,9 @@ namespace RE
 	inline void* aligned_alloc(std::size_t a_alignment, std::size_t a_size)
 	{
 		auto heap = TESMemoryManager::GetSingleton();
-		return heap->Malloc(a_size, a_alignment, true);
+		auto mem = heap->Malloc(a_size, a_alignment, true);
+		assert(mem != 0);
+		return mem;
 	}
 
 
@@ -252,6 +256,7 @@ namespace RE
 
 	inline void free(void* a_ptr)
 	{
+		assert(a_ptr != 0);
 		auto heap = TESMemoryManager::GetSingleton();
 		heap->Free(a_ptr, false);
 	}
@@ -259,6 +264,7 @@ namespace RE
 
 	inline void aligned_free(void* a_ptr)
 	{
+		assert(a_ptr != 0);
 		auto heap = TESMemoryManager::GetSingleton();
 		heap->Free(a_ptr, true);
 	}

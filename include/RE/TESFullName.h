@@ -22,12 +22,12 @@ namespace RE
 		virtual void		CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
 
 		// add
-		virtual UInt32		GetFullNameLength();								// 04
-		virtual const char*	GetName();											// 05
+		virtual UInt32		GetFullNameLength() const;							// 04
+		virtual const char*	GetFullName() const;								// 05
 
 
 		// members
-		BSFixedString name;	// 08 - FULL
+		BSFixedString fullName;	// 08 - FULL
 	};
 	STATIC_ASSERT(sizeof(TESFullName) == 0x10);
 }
