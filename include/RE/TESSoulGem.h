@@ -36,8 +36,8 @@ namespace RE
 		virtual void	LoadRecordByType(TESFile* a_mod, UInt32 a_recordType) override;	// 54
 		virtual void	Unk_55(void) override;											// 55
 
-		SoulLevel		GetContainedSoul() const;
-		SoulLevel		GetMaximumCapacity() const;
+		SoulLevel	GetContainedSoul() const;
+		SoulLevel	GetMaximumCapacity() const;
 
 
 		// members

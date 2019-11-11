@@ -8,7 +8,9 @@
 #include "RE/ExtraHealth.h"  // ExtraHealth
 #include "RE/ExtraLinkedRef.h"  // ExtraLinkedRef
 #include "RE/ExtraMissingLinkedRefIDs.h"  // ExtraMissingLinkedRefIDs
+#include "RE/ExtraOwnership.h"  // ExtraOwnership
 #include "RE/ExtraReferenceHandle.h"  // ExtraReferenceHandle
+#include "RE/ExtraSoul.h"  // ExtraSoul
 #include "RE/ExtraTextDisplayData.h"  // ExtraTextDisplayData
 #include "RE/GameSettingCollection.h"  // GameSettingCollection
 #include "RE/Offsets.h"
@@ -158,19 +160,7 @@ namespace RE
 	}
 
 
-	bool BaseExtraList::GetAshPileRefHandle(RefHandle& a_refHandle)
-	{
-		auto xAshRef = GetByType<ExtraAshPileRef>();
-		if (xAshRef) {
-			a_refHandle = xAshRef->refHandle;
-		} else {
-			a_refHandle = *g_invalidRefHandle;
-		}
-		return a_refHandle != *g_invalidRefHandle;
-	}
-
-
-	const char* BaseExtraList::GetDisplayName(TESForm* a_form)
+	const char* BaseExtraList::GenerateName(TESForm* a_form)
 	{
 		const char* result = 0;
 		float health = 1.0;
@@ -200,6 +190,18 @@ namespace RE
 		}
 
 		return result;
+	}
+
+
+	bool BaseExtraList::GetAshPileRefHandle(RefHandle& a_refHandle)
+	{
+		auto xAshRef = GetByType<ExtraAshPileRef>();
+		if (xAshRef) {
+			a_refHandle = xAshRef->refHandle;
+		} else {
+			a_refHandle = *g_invalidRefHandle;
+		}
+		return a_refHandle != *g_invalidRefHandle;
 	}
 
 
@@ -247,11 +249,17 @@ namespace RE
 	}
 
 
-	void BaseExtraList::SetInventoryChanges(InventoryChanges* a_changes)
+	TESForm* BaseExtraList::GetOwner()
 	{
-		using func_t = function_type_t<decltype(&BaseExtraList::SetInventoryChanges)>;
-		REL::Offset<func_t*> func(Offset::BaseExtraList::SetInventoryChanges);
-		return func(this, a_changes);
+		auto xOwner = GetByType<ExtraOwnership>();
+		return xOwner ? xOwner->owner : 0;
+	}
+
+
+	SoulLevel BaseExtraList::GetSoulLevel() const
+	{
+		auto xSoul = GetByType<ExtraSoul>();
+		return xSoul ? xSoul->level : SoulLevel::kNone;
 	}
 
 
@@ -260,6 +268,14 @@ namespace RE
 		using func_t = function_type_t<decltype(&BaseExtraList::SetExtraFlags)>;
 		REL::Offset<func_t*> func(Offset::BaseExtraList::SetExtraFlags);
 		return func(this, a_flags, a_enable);
+	}
+
+
+	void BaseExtraList::SetInventoryChanges(InventoryChanges* a_changes)
+	{
+		using func_t = function_type_t<decltype(&BaseExtraList::SetInventoryChanges)>;
+		REL::Offset<func_t*> func(Offset::BaseExtraList::SetInventoryChanges);
+		return func(this, a_changes);
 	}
 
 

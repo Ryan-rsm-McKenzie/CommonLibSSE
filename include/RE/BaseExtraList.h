@@ -5,12 +5,12 @@
 #include "RE/ExtraFlags.h"  // ExtraFlags::Flag
 #include "RE/ExtraDataTypes.h"  // ExtraDataType
 #include "RE/FormTypes.h"
+#include "RE/SoulLevels.h"  // SoulLevel
 #include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
 
 
 namespace RE
 {
-	class ExtraTextDisplayData;
 	class InventoryChanges;
 
 
@@ -153,12 +153,14 @@ namespace RE
 		template <class T> bool	Remove(T* a_toRemove);
 
 		BSExtraData*			Add(BSExtraData* a_toAdd);
+		const char*				GenerateName(TESForm* a_form);
 		bool					GetAshPileRefHandle(RefHandle& a_refHandle);
-		const char*				GetDisplayName(TESForm* a_form);
 		ExtraTextDisplayData*	GetExtraTextDisplayData();
 		TESObjectREFR*			GetLinkedRef(BGSKeyword* a_keyword);
-		void					SetInventoryChanges(InventoryChanges* a_changes);
+		TESForm*				GetOwner();
+		SoulLevel				GetSoulLevel() const;
 		void					SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
+		void					SetInventoryChanges(InventoryChanges* a_changes);
 
 	protected:
 		struct PresenceBitfield

@@ -284,10 +284,6 @@ namespace RE
 
 		namespace InventoryEntryData
 		{
-			// IndirectSig: E8 ? ? ? ? 48 3B C7 74 25
-			constexpr std::uintptr_t GetOwner = 0x001D6620;		// 1_5_80
-			// IndirectSig: E8 ? ? ? ? 4C 8B 2B
-			constexpr std::uintptr_t GetWeight = 0x001A1730;	// 1_5_80
 			// IndirectSig: E8 ? ? ? ? 84 C0 0F 85 ? ? ? ? 48 8B 3F
 			constexpr std::uintptr_t IsOwnedBy = 0x001D7590;	// 1_5_80
 		}

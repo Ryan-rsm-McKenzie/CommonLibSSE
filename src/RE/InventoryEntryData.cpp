@@ -2,7 +2,11 @@
 
 #include "skse64/GameExtraData.h"  // InventoryEntryData
 
+#include "RE/BaseExtraList.h"  // BaseExtraList
+#include "RE/GameSettingCollection.h"  // GameSettingCollection
 #include "RE/Offsets.h"
+#include "RE/TESBoundObject.h"  // TESBoundObject
+#include "RE/TESSoulGem.h"  // TESSoulGem
 #include "REL/Relocation.h"
 
 
@@ -21,19 +25,57 @@ namespace RE
 	}
 
 
-	void InventoryEntryData::GetExtraWornBaseLists(BaseExtraList*& a_wornBaseListOut, BaseExtraList*& a_wornLeftBaseListOut)
+	void InventoryEntryData::AddEntryList(BaseExtraList* a_extra)
 	{
-		using func_t = function_type_t<decltype(&InventoryEntryData::GetExtraWornBaseLists)>;
-		func_t* func = unrestricted_cast<func_t*>(&::InventoryEntryData::GetExtraWornBaseLists);
-		return func(this, a_wornBaseListOut, a_wornLeftBaseListOut);
+		if (!a_extra) {
+			return;
+		}
+
+		if (!extraList) {
+			extraList = new BSSimpleList<BaseExtraList*>;
+		}
+
+		extraList->push_front(a_extra);
 	}
 
 
 	const char* InventoryEntryData::GenerateName()
 	{
-		using func_t = function_type_t<decltype(&InventoryEntryData::GenerateName)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::InventoryEntryData, GenerateName, func_t*);
-		return func(this);
+		if (extraList && !extraList->empty()) {
+			return extraList->front()->GenerateName(type);
+		} else {
+			auto gmst = GameSettingCollection::GetSingleton();
+			auto sMissingName = gmst->GetSetting("sMissingName");
+			return sMissingName->GetString();
+		}
+	}
+
+
+	TESForm* InventoryEntryData::GetOwner()
+	{
+		if (extraList && !extraList->empty()) {
+			return extraList->front()->GetOwner();
+		} else {
+			return 0;
+		}
+	}
+
+
+	SoulLevel InventoryEntryData::GetSoulLevel() const
+	{
+		if (extraList && !extraList->empty()) {
+			auto lvl = extraList->front()->GetSoulLevel();
+			if (lvl > SoulLevel::kNone) {
+				return lvl;
+			}
+		}
+
+		if (type && type->Is(FormType::SoulGem)) {
+			auto soulGem = static_cast<const TESSoulGem*>(type);
+			return soulGem->GetContainedSoul();
+		}
+
+		return SoulLevel::kNone;
 	}
 
 
@@ -45,68 +87,27 @@ namespace RE
 	}
 
 
+	float InventoryEntryData::GetWeight()
+	{
+		return type ? type->GetWeight() : -1.0;
+	}
+
+
 	bool InventoryEntryData::IsOwnedBy(Actor* a_actor, bool a_defaultTo)
 	{
-		return IsOwnedBy_Internal1(a_actor, a_defaultTo);
+		return IsOwnedBy(a_actor, GetOwner(), a_defaultTo);
 	}
 
 
 	bool InventoryEntryData::IsOwnedBy(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo)
 	{
-		return IsOwnedBy_Internal2(a_actor, a_itemOwner, a_defaultTo);
+		return IsOwnedBy_Impl(a_actor, a_itemOwner, a_defaultTo);
 	}
 
 
-	SoulLevel InventoryEntryData::GetSoulLevel()
+	bool InventoryEntryData::IsOwnedBy_Impl(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo)
 	{
-		using func_t = function_type_t<decltype(&InventoryEntryData::GetSoulLevel)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::InventoryEntryData, GetSoulLevel, func_t*);
-		return func(this);
-	}
-
-
-	TESForm* InventoryEntryData::GetOwner()
-	{
-		using func_t = function_type_t<decltype(&InventoryEntryData::GetOwner)>;
-		REL::Offset<func_t*> func(Offset::InventoryEntryData::GetOwner);
-		return func(this);
-	}
-
-
-	float InventoryEntryData::GetWeight()
-	{
-		using func_t = function_type_t<decltype(&InventoryEntryData::GetWeight)>;
-		REL::Offset<func_t*> func(Offset::InventoryEntryData::GetWeight);
-		return func(this);
-	}
-
-
-	void InventoryEntryData::AddEntryList(BaseExtraList* a_extra)
-	{
-		if (!a_extra) {
-			return;
-		}
-
-		if (!extraList) {
-			extraList = new BSSimpleList<BaseExtraList*>;
-		}
-		if (extraList) {
-			extraList->push_front(a_extra);
-		}
-	}
-
-
-	bool InventoryEntryData::IsOwnedBy_Internal1(Actor* a_actor, bool a_defaultTo)
-	{
-		using func_t = function_type_t<decltype(&InventoryEntryData::IsOwnedBy_Internal1)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::InventoryEntryData, IsOwnedBy, func_t*);
-		return func(this, a_actor, a_defaultTo);
-	}
-
-
-	bool InventoryEntryData::IsOwnedBy_Internal2(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo)
-	{
-		using func_t = function_type_t<decltype(&InventoryEntryData::IsOwnedBy_Internal2)>;
+		using func_t = function_type_t<decltype(&InventoryEntryData::IsOwnedBy_Impl)>;
 		REL::Offset<func_t*> func(Offset::InventoryEntryData::IsOwnedBy);
 		return func(this, a_actor, a_itemOwner, a_defaultTo);
 	}
