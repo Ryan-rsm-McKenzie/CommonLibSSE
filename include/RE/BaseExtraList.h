@@ -155,12 +155,14 @@ namespace RE
 		BSExtraData*			Add(BSExtraData* a_toAdd);
 		const char*				GenerateName(TESForm* a_form);
 		bool					GetAshPileRefHandle(RefHandle& a_refHandle);
+		BGSEncounterZone*		GetEncounterZone();
 		ExtraTextDisplayData*	GetExtraTextDisplayData();
 		TESObjectREFR*			GetLinkedRef(BGSKeyword* a_keyword);
 		TESForm*				GetOwner();
 		SoulLevel				GetSoulLevel() const;
 		void					SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
 		void					SetInventoryChanges(InventoryChanges* a_changes);
+		void					SetOwner(TESForm* a_owner);
 
 	protected:
 		struct PresenceBitfield

@@ -4811,5 +4811,8 @@
     <ClInclude Include="include\RE\SkyrimScript\SendPlayerToJailFunctor.h">
       <Filter>include\RE\SkyrimScript\DelayFunctor</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\TESLockChangedEvent.h">
+      <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -131,21 +131,21 @@ namespace RE
 
 
 	template <class T>
-	BSTEventSource<T>* ScriptEventSourceHolder::GetEventSource()
+	inline BSTEventSource<T>* ScriptEventSourceHolder::GetEventSource()
 	{
 		return static_cast<BSTEventSource<T>*>(this);
 	}
 
 
 	template <class T>
-	void ScriptEventSourceHolder::AddEventSink(BSTEventSink<T>* a_sink)
+	inline void ScriptEventSourceHolder::AddEventSink(BSTEventSink<T>* a_sink)
 	{
 		GetEventSource<T>()->AddEventSink(a_sink);
 	}
 
 
 	template <class T>
-	void ScriptEventSourceHolder::SendEvent(T* a_event)
+	inline void ScriptEventSourceHolder::SendEvent(T* a_event)
 	{
 		GetEventSource<T>()->SendEvent(a_event);
 	}

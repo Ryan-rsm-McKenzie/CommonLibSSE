@@ -1304,6 +1304,7 @@
     <ClInclude Include="include\RE\TESLevSpell.h" />
     <ClInclude Include="include\RE\TESLoadGameEvent.h" />
     <ClInclude Include="include\RE\TESLoadScreen.h" />
+    <ClInclude Include="include\RE\TESLockChangedEvent.h" />
     <ClInclude Include="include\RE\TESMagicEffectApplyEvent.h" />
     <ClInclude Include="include\RE\TESMagicTargetForm.h" />
     <ClInclude Include="include\RE\TESMemoryManager.h" />

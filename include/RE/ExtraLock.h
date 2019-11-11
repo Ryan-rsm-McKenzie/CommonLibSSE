@@ -14,25 +14,27 @@ namespace RE
 		enum class Flag : UInt8
 		{
 			kNone = 0,
+			kLocked = 1 << 0,
 			kLevelScaling = 1 << 4
 		};
 
 
-		SInt32 GetLockLevel(const TESObjectREFR* a_containerRef);
+		SInt32	GetLockLevel(const TESObjectREFR* a_containerRef);
+		void	SetLocked(bool a_locked);
 
 
 		// members
 		UInt8	lockLevel;	// 00
-		UInt8	unk01;		// 01
-		UInt16	unk02;		// 02
-		UInt32	unk04;		// 04
+		UInt8	pad01;		// 01
+		UInt16	pad02;		// 02
+		UInt32	pad04;		// 04
 		TESKey*	key;		// 08
 		Flag	flags;		// 10
-		UInt8	unk11;		// 11
-		UInt16	unk12;		// 12
+		UInt8	pad11;		// 11
+		UInt16	pad12;		// 12
 		UInt32	unk14;		// 14
 		UInt32	unk18;		// 18
-		UInt32	unk1C;		// 1C
+		UInt32	pad1C;		// 1C
 	};
 	STATIC_ASSERT(sizeof(LockState) == 0x20);
 

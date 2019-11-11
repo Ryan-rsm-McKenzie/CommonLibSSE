@@ -19,16 +19,16 @@ namespace RE
 
 		struct Data
 		{
-			UInt32	unk00;	// 00
-			float	unk04;	// 04
-			float	unk08;	// 08
-			float	unk0C;	// 0C
-			float	unk10;	// 10
-			float	unk14;	// 14
-			float	unk18;	// 18
-			UInt8	unk1C;	// 1C
-			UInt8	pad1D;	// 1D
-			UInt16	pad1E;	// 1E
+			RefHandle	dest;	// 00
+			float		unk04;	// 04
+			float		unk08;	// 08
+			float		unk0C;	// 0C
+			float		unk10;	// 10
+			float		unk14;	// 14
+			float		unk18;	// 18
+			UInt8		unk1C;	// 1C
+			UInt8		pad1D;	// 1D
+			UInt16		pad1E;	// 1E
 		};
 		STATIC_ASSERT(sizeof(Data) == 0x20);
 
@@ -41,7 +41,7 @@ namespace RE
 
 
 		// members
-		Data* unk10;	// 10
+		Data* data;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraTeleport) == 0x18);
 }

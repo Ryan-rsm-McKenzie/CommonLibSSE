@@ -6,6 +6,7 @@
 #include "RE/BSLock.h"  // BSUniqueLock
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTHashMap.h"  // BSTHashSet
+#include "RE/BSTList.h"  // BSSimpleList
 #include "RE/Color.h"  // Color
 #include "RE/DirectionalAmbientLightingColor.h"  // DirectionalAmbientLightingColor
 #include "RE/FormTypes.h"  // FormType
@@ -45,6 +46,12 @@ namespace RE
 		};
 
 
+		enum class AttachedState : UInt8
+		{
+			kAttached = 7
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32
@@ -59,12 +66,12 @@ namespace RE
 		};
 
 
-		struct Data
+		struct Data038
 		{
 			UInt32	unk0;
 			UInt32	unk4;
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x8);
+		STATIC_ASSERT(sizeof(Data038) == 0x8);
 
 
 		struct Lighting	// XCLL
@@ -127,6 +134,59 @@ namespace RE
 		STATIC_ASSERT(sizeof(LightingCoordinates) == 0x8);
 
 
+		struct Data
+		{
+			UInt64				unk000;			// 000
+			void*				unk008;			// 008
+			UInt64				unk010;			// 010
+			UInt64				unk018;			// 018
+			UInt64				unk020;			// 020
+			UInt64				unk028;			// 028
+			UInt64				unk030;			// 030
+			UInt64				unk038;			// 038
+			UInt64				unk040;			// 040
+			UInt64				unk048;			// 048
+			UInt64				unk050;			// 050
+			UInt64				unk058;			// 058
+			UInt64				unk060;			// 060
+			UInt64				unk068;			// 068
+			UInt64				unk070;			// 070
+			UInt64				unk078;			// 078
+			UInt64				unk080;			// 080
+			UInt64				unk088;			// 088
+			UInt64				unk090;			// 090
+			UInt64				unk098;			// 098
+			UInt64				unk0A0;			// 0A0
+			UInt64				unk0A8;			// 0A8
+			UInt64				unk0B0;			// 0B0
+			UInt64				unk0B8;			// 0B8
+			UInt64				unk0C0;			// 0C0
+			UInt64				unk0C8;			// 0C8
+			UInt64				unk0D0;			// 0D0
+			UInt64				unk0D8;			// 0D8
+			UInt64				unk0E0;			// 0E0
+			UInt64				unk0E8;			// 0E8
+			BSSimpleList<void*>	unk0F0;			// 0F0
+			UInt64				unk100;			// 100
+			UInt64				unk108;			// 108
+			UInt64				unk110;			// 110
+			UInt64				unk118;			// 118
+			UInt64				unk120;			// 120
+			UInt64				unk128;			// 128
+			UInt64				unk130;			// 130
+			UInt64				unk138;			// 138
+			UInt64				unk140;			// 140
+			UInt64				unk148;			// 148
+			UInt64				unk150;			// 150
+			UInt64				unk158;			// 158
+			BGSEncounterZone*	encounterZone;	// 160
+			UInt64				unk168;			// 168
+			UInt64				unk170;			// 170
+			UInt64				unk178;			// 178
+		};
+		STATIC_ASSERT(sizeof(Data) == 0x180);
+
+
 		virtual ~TESObjectCELL();													// 00
 
 		// override (TESForm)
@@ -147,19 +207,32 @@ namespace RE
 		virtual void		Unk_34(void) override;									// 34 - { return 1; }
 		virtual void		Unk_36(void) override;									// 36
 
-		double				GetNorthRotation();
-		bool				IsInteriorCell() const;
-		bool				IsExteriorCell() const;
-		Lighting*			GetLighting();
-		Coordinates*		GetCoordinates();
+		TESNPC*			GetActorOwner();
+		Coordinates*	GetCoordinates();
+		TESFaction*		GetFactionOwner();
+		Lighting*		GetLighting();
+		double			GetNorthRotation();
+		TESForm*		GetOwner();
+		bool			IsAttached() const;
+		bool			IsExteriorCell() const;
+		bool			IsInteriorCell() const;
+		void			SetActorOwner(TESNPC* a_owner);
+		void			SetFactionOwner(TESFaction* a_owner);
+		void			SetFogColor(Color a_near, Color a_far);
+		void			SetFogPlanes(float a_near, float a_far);
+		void			SetFogPower(float a_power);
+		void			SetHandChanged(bool a_changed);
+		void			SetOwner(TESForm* a_owner);
+		void			SetPublic(bool a_public);
+		bool			UsesSkyLighting() const;
 
 
 		// members
 		mutable BSUniqueLock					unk030;					// 030
-		Data									unk038;					// 038
+		Data038									unk038;					// 038
 		Flag									flags;					// 040
 		UInt16									unk042;					// 042
-		UInt8									unk044;					// 044
+		AttachedState							attachedState;			// 044
 		UInt8									unk045;					// 045
 		UInt8									unk046;					// 046
 		UInt8									pad047;					// 047
@@ -176,7 +249,7 @@ namespace RE
 		BSTArray<void*>							unk100;					// 100
 		mutable BSUniqueLock					cellRefLock;			// 118
 		TESWorldSpace*							worldSpace;				// 120
-		UInt64									unk128;					// 128
+		Data*									data;					// 128
 		BGSLightingTemplate*					lightingTemplate;		// 130 - LTMP
 		UInt64									unk138;					// 138
 	};

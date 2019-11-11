@@ -5,6 +5,7 @@
 #include "RE/BGSKeyword.h"  // BGSKeyword
 #include "RE/BSExtraData.h"  // BSExtraData
 #include "RE/ExtraAshPileRef.h"  // ExtraAshPileRef
+#include "RE/ExtraEncounterZone.h"  // ExtraEncounterZone
 #include "RE/ExtraHealth.h"  // ExtraHealth
 #include "RE/ExtraLinkedRef.h"  // ExtraLinkedRef
 #include "RE/ExtraMissingLinkedRefIDs.h"  // ExtraMissingLinkedRefIDs
@@ -205,6 +206,14 @@ namespace RE
 	}
 
 
+	BGSEncounterZone* BaseExtraList::GetEncounterZone()
+	{
+		auto xZone = GetByType<ExtraEncounterZone>();
+		return xZone ? xZone->encounterZone : 0;
+	}
+
+
+
 	ExtraTextDisplayData* BaseExtraList::GetExtraTextDisplayData()
 	{
 		auto xRef = GetByType<ExtraReferenceHandle>();
@@ -276,6 +285,26 @@ namespace RE
 		using func_t = function_type_t<decltype(&BaseExtraList::SetInventoryChanges)>;
 		REL::Offset<func_t*> func(Offset::BaseExtraList::SetInventoryChanges);
 		return func(this, a_changes);
+	}
+
+
+	void BaseExtraList::SetOwner(TESForm* a_owner)
+	{
+		if (a_owner && a_owner->IsDynamicForm()) {
+			return;
+		}
+
+		auto xOwner = GetByType<ExtraOwnership>();
+		if (xOwner) {
+			if (a_owner) {
+				xOwner->owner = a_owner;
+			} else {
+				Remove(xOwner);
+			}
+		} else if (a_owner) {
+			xOwner = new ExtraOwnership(a_owner);
+			Add(xOwner);
+		}
 	}
 
 
