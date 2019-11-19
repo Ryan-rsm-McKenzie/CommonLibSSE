@@ -4814,5 +4814,8 @@
     <ClInclude Include="include\RE\TESLockChangedEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\BarterMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

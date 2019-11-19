@@ -392,6 +392,7 @@
     <ClInclude Include="include\RE\AutoRegisterCreator.h" />
     <ClInclude Include="include\RE\AutoRegisterFactory.h" />
     <ClInclude Include="include\RE\BarrierProjectile.h" />
+    <ClInclude Include="include\RE\BarterMenu.h" />
     <ClInclude Include="include\RE\BaseFormComponent.h" />
     <ClInclude Include="include\RE\BeamProjectile.h" />
     <ClInclude Include="include\RE\BGSAbilityPerkEntry.h" />
