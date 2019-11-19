@@ -2,10 +2,8 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_InventoryMenu
 
-#include "RE/BSString.h"  // BSString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/GFxValue.h"  // GFxValue
-#include "RE/GPtr.h"  // GPtr
 #include "RE/IMenu.h"  // IMenu
 
 
@@ -13,6 +11,8 @@ namespace RE
 {
 	class GFxMovieView;
 	class TESObjectREFR;
+	struct BottomBar;
+	struct ItemCard;
 	struct ItemList;
 
 
@@ -22,19 +22,6 @@ namespace RE
 		// flags = kPauseGame | kPreventGameLoad | kUnk0400 | kItemMenu | kUnk8000
 	public:
 		inline static const void* RTTI = RTTI_InventoryMenu;
-
-
-		struct ItemCard
-		{
-			GFxValue			obj;		// 00 - kObject
-			BSString			infoText;	// 18
-			UInt64				unk28;		// 28
-			UInt32				unk30;		// 30
-			UInt32				pad34;		// 34
-			GPtr<GFxMovieView>	unk38;		// 38
-		};
-		STATIC_ASSERT(sizeof(ItemCard) == 0x40);
-
 
 		virtual ~InventoryMenu();											// 00
 
@@ -48,12 +35,14 @@ namespace RE
 		GFxValue		root;				// 30 - kDisplayObject - "_level0.Menu_mc"
 		ItemList*		list;				// 48
 		ItemCard*		itemCard;			// 50
-		GFxValue*		bottomBarInfo;		// 58 - kObject
+		BottomBar*		bottomBar;			// 58
 		BSTArray<void*>	unk60;				// 60
-		UInt32			unk78;				// 78
+		UInt8			unk78;				// 78
+		UInt8			pad79;				// 79
+		UInt16			pad7A;				// 7A
 		UInt32			unk7C;				// 7C
 		bool			pcControlsReady;	// 80
-		UInt8			pad81;				// 81
+		UInt8			unk81;				// 81
 		UInt16			pad82;				// 82
 		UInt32			pad84;				// 84
 	};

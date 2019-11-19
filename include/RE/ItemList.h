@@ -16,7 +16,7 @@ namespace RE
 		struct Item
 		{
 			StandardItemData	data;	// 00
-			GFxValue			object;	// 18 - kObject
+			GFxValue			obj;	// 18 - kObject
 			UInt64				unk30;	// 30
 			UInt64				unk38;	// 38
 		};

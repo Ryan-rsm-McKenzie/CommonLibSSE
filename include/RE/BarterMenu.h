@@ -2,7 +2,6 @@
 
 #include "skse64/GameRTTI.h"  // RTTI_BarterMenu
 
-#include "RE/BSString.h"  // BSString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/GFxValue.h"  // GFxValue
 #include "RE/IMenu.h"  // IMenu
@@ -10,25 +9,15 @@
 
 namespace RE
 {
-	class ItemList;
+	struct BottomBar;
+	struct ItemCard;
+	struct ItemList;
 
 
 	class BarterMenu : public IMenu
 	{
 	public:
 		inline static const void* RTTI = RTTI_BarterMenu;
-
-
-		struct Data
-		{
-			GFxValue			unk00;	// 00 - kObject
-			BSString			unk18;	// 18
-			UInt64				unk28;	// 28
-			UInt32				unk30;	// 30
-			UInt32				pad34;	// 34
-			GPtr<GFxMovieView>	view;	// 38
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x40);
 
 
 		virtual ~BarterMenu();												// 00
@@ -41,8 +30,8 @@ namespace RE
 
 		// members
 		ItemList*		list;				// 30
-		Data*			unk38;				// 38
-		GFxValue*		unk40;				// 40 - kObject
+		ItemCard*		itemCard;			// 38
+		BottomBar*		bottomBar;			// 40
 		GFxValue		root;				// 48 - "Menu_mc"
 		UInt64			unk60;				// 60
 		UInt64			unk68;				// 68
