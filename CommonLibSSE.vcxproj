@@ -540,6 +540,7 @@
     <ClInclude Include="include\RE\bhkThreadMemorySource.h" />
     <ClInclude Include="include\RE\bhkWorldObject.h" />
     <ClInclude Include="include\RE\Biped.h" />
+    <ClInclude Include="include\RE\BottomBar.h" />
     <ClInclude Include="include\RE\BSAnimationGraphChannel.h" />
     <ClInclude Include="include\RE\BSAnimationGraphEvent.h" />
     <ClInclude Include="include\RE\BSAnimationGraphManager.h" />
@@ -685,6 +686,7 @@
     <ClInclude Include="include\RE\ConsoleData.h" />
     <ClInclude Include="include\RE\ConsoleManager.h" />
     <ClInclude Include="include\RE\ConstructibleObjectMenu.h" />
+    <ClInclude Include="include\RE\ContainerMenu.h" />
     <ClInclude Include="include\RE\CraftingMenu.h" />
     <ClInclude Include="include\RE\CraftingSubMenu.h" />
     <ClInclude Include="include\RE\DetectionListener.h" />
@@ -1076,6 +1078,7 @@
     <ClInclude Include="include\RE\IPackageDataAIWorldLocationHandle.h" />
     <ClInclude Include="include\RE\IPostAnimationChannelUpdateFunctor.h" />
     <ClInclude Include="include\RE\IProcedureTreeItem.h" />
+    <ClInclude Include="include\RE\ItemCard.h" />
     <ClInclude Include="include\RE\ItemCrafted.h" />
     <ClInclude Include="include\RE\ItemList.h" />
     <ClInclude Include="include\RE\ItemsPickpocketed.h" />

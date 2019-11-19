@@ -4817,5 +4817,14 @@
     <ClInclude Include="include\RE\BarterMenu.h">
       <Filter>include\RE\Menus\IMenu</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\ContainerMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ItemCard.h">
+      <Filter>include\RE\Menus\IMenu\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BottomBar.h">
+      <Filter>include\RE\Menus\IMenu\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
