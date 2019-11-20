@@ -1132,6 +1132,9 @@
     <Filter Include="include\RE\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice\BSVirtualKeyboardDevice">
       <UniqueIdentifier>{f4245442-d234-4164-8f5d-18cde2f14d74}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\NetImmerse\NiAllocator">
+      <UniqueIdentifier>{bf52edf8-af25-48dc-820f-cda924305167}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1751,6 +1754,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\BGSListForm.cpp">
       <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiMemManager.cpp">
+      <Filter>src\RE\NetImmerse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4825,6 +4831,18 @@
     </ClInclude>
     <ClInclude Include="include\RE\BottomBar.h">
       <Filter>include\RE\Menus\IMenu\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiStringsExtraData.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiMemManager.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiAllocator.h">
+      <Filter>include\RE\NetImmerse\NiAllocator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSNiAllocator.h">
+      <Filter>include\RE\NetImmerse\NiAllocator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

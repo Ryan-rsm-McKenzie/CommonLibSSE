@@ -373,6 +373,13 @@ namespace RE
 		}
 
 
+		namespace NiMemManager
+		{
+			//
+			constexpr std::uintptr_t Singleton = 0x02F77208;	// 1_5_80
+		}
+
+
 		namespace NiNode
 		{
 			// IndirectSig: E8 ? ? ? ? 44 88 65 6F
@@ -499,6 +506,13 @@ namespace RE
 			constexpr std::uintptr_t Seek = 0x0017D550;						// 1_5_80
 			// IndirectSig: E8 ? ? ? ? 49 83 C6 28
 			constexpr std::uintptr_t SeekNextSubrecord = 0x0017D960;		// 1_5_80
+		}
+
+
+		namespace TESMemoryManager
+		{
+			// IndirectSig: E8 ? ? ? ? 3B 77 48
+			constexpr std::uintptr_t Realloc = 0x00C024B0;	// 1_5_80
 		}
 
 

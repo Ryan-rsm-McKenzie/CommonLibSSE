@@ -37,7 +37,7 @@ namespace RE
 	{
 	public:
 		PlayerControls();
-		virtual	~PlayerControls();	// 00
+		virtual	~PlayerControls() = default;	// 00
 
 		static PlayerControls* GetSingleton();
 

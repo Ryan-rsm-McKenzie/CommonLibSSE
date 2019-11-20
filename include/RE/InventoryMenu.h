@@ -23,6 +23,7 @@ namespace RE
 	public:
 		inline static const void* RTTI = RTTI_InventoryMenu;
 
+
 		virtual ~InventoryMenu();											// 00
 
 		// override (IMenu)

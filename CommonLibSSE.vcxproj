@@ -279,6 +279,7 @@
     <ClCompile Include="src\RE\NiFloatKey.cpp" />
     <ClCompile Include="src\RE\NiMath.cpp" />
     <ClCompile Include="src\RE\NiMatrix3.cpp" />
+    <ClCompile Include="src\RE\NiMemManager.cpp" />
     <ClCompile Include="src\RE\NiObject.cpp" />
     <ClCompile Include="src\RE\NiRefObject.cpp" />
     <ClCompile Include="src\RE\NiRTTI.cpp" />
@@ -576,6 +577,7 @@
     <ClInclude Include="include\RE\BSMusicEvent.h" />
     <ClInclude Include="include\RE\BSNavmesh.h" />
     <ClInclude Include="include\RE\BSNavmeshInfoMap.h" />
+    <ClInclude Include="include\RE\BSNiAllocator.h" />
     <ClInclude Include="include\RE\BSPathingCell.h" />
     <ClInclude Include="include\RE\BSPrecomputedNavmeshInfoPathMap.h" />
     <ClInclude Include="include\RE\BSReloadShaderI.h" />
@@ -1119,6 +1121,7 @@
     <ClInclude Include="include\RE\MultiBoundMarkerData.h" />
     <ClInclude Include="include\RE\NavMesh.h" />
     <ClInclude Include="include\RE\NavMeshInfoMap.h" />
+    <ClInclude Include="include\RE\NiAllocator.h" />
     <ClInclude Include="include\RE\NiAnimationKey.h" />
     <ClInclude Include="include\RE\NiAVObject.h" />
     <ClInclude Include="include\RE\NiBinaryStream.h" />
@@ -1141,6 +1144,7 @@
     <ClInclude Include="include\RE\NiKeyBasedInterpolator.h" />
     <ClInclude Include="include\RE\NiMath.h" />
     <ClInclude Include="include\RE\NiMatrix3.h" />
+    <ClInclude Include="include\RE\NiMemManager.h" />
     <ClInclude Include="include\RE\NiPlane.h" />
     <ClInclude Include="include\RE\NiPoint2.h" />
     <ClInclude Include="include\RE\NiProperty.h" />
@@ -1150,6 +1154,7 @@
     <ClInclude Include="include\RE\NiSkinData.h" />
     <ClInclude Include="include\RE\NiSkinInstance.h" />
     <ClInclude Include="include\RE\NiSkinPartition.h" />
+    <ClInclude Include="include\RE\NiStringsExtraData.h" />
     <ClInclude Include="include\RE\NiTCollection.h" />
     <ClInclude Include="include\RE\NiObject.h" />
     <ClInclude Include="include\RE\NiPoint3.h" />

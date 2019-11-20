@@ -2,6 +2,8 @@
 
 #include "skse64/GameInput.h"  // PlayerControls
 
+#include "RE/PlayerInputHandler.h"  // PlayerInputHandler
+
 
 namespace RE
 {
