@@ -541,6 +541,7 @@
     <ClInclude Include="include\RE\bhkThreadMemorySource.h" />
     <ClInclude Include="include\RE\bhkWorldObject.h" />
     <ClInclude Include="include\RE\Biped.h" />
+    <ClInclude Include="include\RE\BookMenu.h" />
     <ClInclude Include="include\RE\BottomBar.h" />
     <ClInclude Include="include\RE\BSAnimationGraphChannel.h" />
     <ClInclude Include="include\RE\BSAnimationGraphEvent.h" />
@@ -687,14 +688,19 @@
     <ClInclude Include="include\RE\Console.h" />
     <ClInclude Include="include\RE\ConsoleData.h" />
     <ClInclude Include="include\RE\ConsoleManager.h" />
+    <ClInclude Include="include\RE\ConsoleNativeUIMenu.h" />
     <ClInclude Include="include\RE\ConstructibleObjectMenu.h" />
     <ClInclude Include="include\RE\ContainerMenu.h" />
     <ClInclude Include="include\RE\CraftingMenu.h" />
     <ClInclude Include="include\RE\CraftingSubMenu.h" />
+    <ClInclude Include="include\RE\CreationClubMenu.h" />
+    <ClInclude Include="include\RE\CreditsMenu.h" />
+    <ClInclude Include="include\RE\CursorMenu.h" />
     <ClInclude Include="include\RE\DetectionListener.h" />
     <ClInclude Include="include\RE\DetectionState.h" />
     <ClInclude Include="include\RE\DeviceTypes.h" />
     <ClInclude Include="include\RE\DialogueData.h" />
+    <ClInclude Include="include\RE\DialogueMenu.h" />
     <ClInclude Include="include\RE\DirectionalAmbientLightingColor.h" />
     <ClInclude Include="include\RE\Effect.h" />
     <ClInclude Include="include\RE\EffectSetting.h" />
@@ -864,7 +870,9 @@
     <ClInclude Include="include\RE\ExtraWeaponIdleSound.h" />
     <ClInclude Include="include\RE\ExtraWorn.h" />
     <ClInclude Include="include\RE\ExtraWornLeft.h" />
+    <ClInclude Include="include\RE\FaderMenu.h" />
     <ClInclude Include="include\RE\FavoritesHandler.h" />
+    <ClInclude Include="include\RE\FavoritesMenu.h" />
     <ClInclude Include="include\RE\FileHash.h" />
     <ClInclude Include="include\RE\FirstPersonState.h" />
     <ClInclude Include="include\RE\FlameProjectile.h" />
@@ -940,6 +948,7 @@
     <ClInclude Include="include\RE\GHashSetBase.h" />
     <ClInclude Include="include\RE\GHashsetCachedEntry.h" />
     <ClInclude Include="include\RE\GHashsetCachedNodeEntry.h" />
+    <ClInclude Include="include\RE\GiftMenu.h" />
     <ClInclude Include="include\RE\GImage.h" />
     <ClInclude Include="include\RE\GImageBase.h" />
     <ClInclude Include="include\RE\GList.h" />
@@ -1049,6 +1058,7 @@
     <ClInclude Include="include\RE\ICellAttachDetachEventSource.h" />
     <ClInclude Include="include\RE\IDEvent.h" />
     <ClInclude Include="include\RE\IFormFactory.h" />
+    <ClInclude Include="include\RE\ImageData.h" />
     <ClInclude Include="include\RE\ImageSpaceEffect.h" />
     <ClInclude Include="include\RE\ImageSpaceEffectParam.h" />
     <ClInclude Include="include\RE\ImageSpaceShaderParam.h" />
@@ -1091,13 +1101,18 @@
     <ClInclude Include="include\RE\Journal_QuestsTab.h" />
     <ClInclude Include="include\RE\Journal_StatsTab.h" />
     <ClInclude Include="include\RE\Journal_SystemTab.h" />
+    <ClInclude Include="include\RE\KinectMenu.h" />
     <ClInclude Include="include\RE\LevelUpMenu.h" />
+    <ClInclude Include="include\RE\LoadingMenu.h" />
     <ClInclude Include="include\RE\LocalMapCamera.h" />
     <ClInclude Include="include\RE\LocalMapMenu.h" />
+    <ClInclude Include="include\RE\LockpickingMenu.h" />
     <ClInclude Include="include\RE\LoggingDisabler.h" />
     <ClInclude Include="include\RE\GlobalLookupInfo.h" />
     <ClInclude Include="include\RE\MagicCaster.h" />
+    <ClInclude Include="include\RE\MagicMenu.h" />
     <ClInclude Include="include\RE\Main.h" />
+    <ClInclude Include="include\RE\MainMenu.h" />
     <ClInclude Include="include\RE\MapCamera.h" />
     <ClInclude Include="include\RE\MapInputHandler.h" />
     <ClInclude Include="include\RE\MapLookHandler.h" />
@@ -1111,6 +1126,7 @@
     <ClInclude Include="include\RE\MessageBoxMenu.h" />
     <ClInclude Include="include\RE\MiddleProcess.h" />
     <ClInclude Include="include\RE\MissileProjectile.h" />
+    <ClInclude Include="include\RE\MistMenu.h" />
     <ClInclude Include="include\RE\Moon.h" />
     <ClInclude Include="include\RE\MovementControllerAI.h" />
     <ClInclude Include="include\RE\MovementControllerNPC.h" />
@@ -1183,6 +1199,8 @@
     <ClInclude Include="include\RE\ProcessLists\GetActorsFilter.h" />
     <ClInclude Include="include\RE\Projectile.h" />
     <ClInclude Include="include\RE\QuestEvents.h" />
+    <ClInclude Include="include\RE\RaceSexCamera.h" />
+    <ClInclude Include="include\RE\RaceSexMenu.h" />
     <ClInclude Include="include\RE\RaceSexMenuEvent.h" />
     <ClInclude Include="include\RE\ReferenceEffect.h" />
     <ClInclude Include="include\RE\ReferenceEffectController.h" />
@@ -1190,6 +1208,7 @@
     <ClInclude Include="include\RE\RegSettingCollection.h" />
     <ClInclude Include="include\RE\RemoveCallbackVisitor.h" />
     <ClInclude Include="include\RE\RTTI.h" />
+    <ClInclude Include="include\RE\SafeZoneMenu.h" />
     <ClInclude Include="include\RE\ScrapHeap.h" />
     <ClInclude Include="include\RE\Script.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
@@ -1250,6 +1269,7 @@
     <ClInclude Include="include\RE\SkyrimScript\SetPositionFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\Store.h" />
     <ClInclude Include="include\RE\SkyrimVM.h" />
+    <ClInclude Include="include\RE\SleepWaitMenu.h" />
     <ClInclude Include="include\RE\SmithingMenu.h" />
     <ClInclude Include="include\RE\SneakHandler.h" />
     <ClInclude Include="include\RE\SoulLevels.h" />
@@ -1375,9 +1395,11 @@
     <ClInclude Include="include\RE\TESWorldSpace.h" />
     <ClInclude Include="include\RE\ThirdPersonState.h" />
     <ClInclude Include="include\RE\ThumbstickEvent.h" />
+    <ClInclude Include="include\RE\TitleSequenceMenu.h" />
     <ClInclude Include="include\RE\TogglePOVHandler.h" />
     <ClInclude Include="include\RE\ToggleRunHandler.h" />
     <ClInclude Include="include\RE\TrainingMenu.h" />
+    <ClInclude Include="include\RE\TutorialMenu.h" />
     <ClInclude Include="include\RE\TweenMenu.h" />
     <ClInclude Include="include\RE\UIManager.h" />
     <ClInclude Include="include\RE\UIMessage.h" />

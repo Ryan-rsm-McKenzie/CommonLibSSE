@@ -37,4 +37,5 @@ namespace RE
 		// add
 		virtual void Call(Params& a_params) = 0;	// 01
 	};
+	STATIC_ASSERT(sizeof(GFxFunctionHandler) == 0x10);
 }

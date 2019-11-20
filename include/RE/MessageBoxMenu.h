@@ -21,7 +21,10 @@ namespace RE
 
 
 		// members
-		UInt64 unk30;	// 30
+		UInt8	unk30;	// 30
+		UInt8	pad31;	// 31
+		UInt16	pad32;	// 32
+		UInt32	pad34;	// 34
 	};
 	STATIC_ASSERT(sizeof(MessageBoxMenu) == 0x38);
 }

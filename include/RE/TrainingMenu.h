@@ -1,5 +1,7 @@
 #pragma once
 
+#include "skse64/GameRTTI.h"  // RTTI_TrainingMenu
+
 #include "RE/ActorValues.h"  // ActorValue
 #include "RE/BSTEvent.h"  // BSTEventSink
 #include "RE/GFxValue.h"  // GFxValue
@@ -16,6 +18,9 @@ namespace RE
 		public BSTEventSink<MenuOpenCloseEvent>	// 30
 	{
 	public:
+		inline static const void* RTTI = RTTI_TrainingMenu;
+
+
 		virtual ~TrainingMenu();																									// 00
 
 		// override (IMenu)

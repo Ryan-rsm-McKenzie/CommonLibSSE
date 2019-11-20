@@ -514,9 +514,6 @@
     <Filter Include="include\RE\Menus\IUIMessageData">
       <UniqueIdentifier>{97eae63c-2a4f-4a62-b982-c3fbf378bc02}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\Menus\CraftingSubMenus">
-      <UniqueIdentifier>{1068b6ee-a717-41a9-afd1-f765a8c9b0f4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Menus\IMessageBoxCallback">
       <UniqueIdentifier>{1bcd961a-527a-4fcd-8d4d-fc93d99b468e}</UniqueIdentifier>
     </Filter>
@@ -1134,6 +1131,9 @@
     </Filter>
     <Filter Include="include\RE\NetImmerse\NiAllocator">
       <UniqueIdentifier>{bf52edf8-af25-48dc-820f-cda924305167}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Menus\IMenu\Components\CraftingSubMenus">
+      <UniqueIdentifier>{1068b6ee-a717-41a9-afd1-f765a8c9b0f4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2412,19 +2412,19 @@
       <Filter>include\RE\Menus</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ConstructibleObjectMenu.h">
-      <Filter>include\RE\Menus\CraftingSubMenus</Filter>
+      <Filter>include\RE\Menus\IMenu\Components\CraftingSubMenus</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\CraftingSubMenu.h">
-      <Filter>include\RE\Menus\CraftingSubMenus</Filter>
+      <Filter>include\RE\Menus\IMenu\Components\CraftingSubMenus</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\CraftingMenu.h">
       <Filter>include\RE\Menus\IMenu</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\AlchemyMenu.h">
-      <Filter>include\RE\Menus\CraftingSubMenus</Filter>
+      <Filter>include\RE\Menus\IMenu\Components\CraftingSubMenus</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\SmithingMenu.h">
-      <Filter>include\RE\Menus\CraftingSubMenus</Filter>
+      <Filter>include\RE\Menus\IMenu\Components\CraftingSubMenus</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSGlobalStringTable.h">
       <Filter>include\RE\BSCore</Filter>
@@ -2457,7 +2457,7 @@
       <Filter>include\RE\Menus\IMessageBoxCallback</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\EnchantConstructMenu.h">
-      <Filter>include\RE\Menus\CraftingSubMenus</Filter>
+      <Filter>include\RE\Menus\IMenu\Components\CraftingSubMenus</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSUIMessageData.h">
       <Filter>include\RE\Menus\IUIMessageData</Filter>
@@ -4843,6 +4843,72 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSNiAllocator.h">
       <Filter>include\RE\NetImmerse\NiAllocator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BookMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FavoritesMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\CreationClubMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ImageData.h">
+      <Filter>include\RE\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\KinectMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ConsoleNativeUIMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\CreditsMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\CursorMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DialogueMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FaderMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GiftMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\LoadingMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\LockpickingMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MagicMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MainMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MistMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\RaceSexMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\RaceSexCamera.h">
+      <Filter>include\RE\Camera\TESCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SafeZoneMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SleepWaitMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TitleSequenceMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TutorialMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

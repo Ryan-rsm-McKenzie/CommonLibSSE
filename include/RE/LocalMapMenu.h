@@ -3,10 +3,10 @@
 #include "skse64/GameRTTI.h"  // RTTI_LocalMapMenu__InputHandler
 
 #include "RE/BSCullingProcess.h"  // BSCullingProcess
-#include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/BSTArray.h"  // BSTArray
 #include "RE/BSTSmartPointer.h"  // BSTSmartPointer
 #include "RE/GFxValue.h"  // GFxValue
+#include "RE/ImageData.h"  // ImageData
 #include "RE/ImageSpaceShaderParam.h"  // ImageSpaceShaderParam
 #include "RE/LocalMapCamera.h"  // LocalMapCamera
 #include "RE/MenuEventHandler.h"  // MenuEventHandler
@@ -55,15 +55,6 @@ namespace RE
 		STATIC_ASSERT(sizeof(LocalMapCullingProcess) == 0x30360);
 
 
-		struct Data
-		{
-			void*			unk303A0;	// 00 - smart ptr
-			UInt64			unk303A8;	// 08
-			BSFixedString	unk303B0;	// 10
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x18);
-
-
 		class InputHandler : public MenuEventHandler
 		{
 		public:
@@ -93,7 +84,7 @@ namespace RE
 		float							unk00038;				// 00038
 		float							unk0003C;				// 0003C
 		LocalMapCullingProcess			localCullingProcess;	// 00040
-		Data							unk303A0;				// 303A0
+		ImageData						unk303A0;				// 303A0
 		GFxValue						unk303B8;				// 303B8
 		GFxValue						unk303D0;				// 303D0
 		void*							unk303E8;				// 303E8

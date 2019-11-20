@@ -487,83 +487,13 @@ namespace RE
 
 		void resize(size_type a_count)
 		{
-			if (empty()) {
-				if (a_count == 0) {
-					return;
-				} else {
-					new(std::addressof(_listHead.item)) value_type{};
-					_listHead.next = 0;
-				}
-			}
-
-			auto cur = begin();
-			size_type elems = 1;
-			while (cur != end() && elems != a_count) {
-				++cur;
-				++elems;
-			}
-
-			if (elems < a_count) {
-				// need to grow
-				Node* node = 0;
-				while (elems < a_count) {
-					node = new Node();
-					cur._cur->next = node;
-					++cur;
-					++elems;
-				}
-			} else if (cur != end()) {
-				// need to shrink
-				auto prev = cur++;
-				prev._cur->next = 0;
-				while (cur != end()) {
-					prev = cur++;
-					delete prev._cur;
-				}
-			} else {
-				// already required size
-			}
+			resize(a_count);
 		}
 
 
 		void resize(size_type a_count, const value_type& a_value)
 		{
-			if (empty()) {
-				if (a_count == 0) {
-					return;
-				} else {
-					new(std::addressof(_listHead.item)) value_type(a_value);
-					_listHead.next = 0;
-				}
-			}
-
-			auto cur = begin();
-			size_type elems = 1;
-			while (cur != end() && elems != a_count) {
-				++cur;
-				++elems;
-			}
-
-			if (elems < a_count) {
-				// need to grow
-				Node* node = 0;
-				while (elems < a_count) {
-					node = new Node(a_value);
-					cur._cur->next = node;
-					++cur;
-					++elems;
-				}
-			} else if (cur != end()) {
-				// need to shrink
-				auto prev = cur++;
-				prev._cur->next = 0;
-				while (cur != end()) {
-					prev = cur++;
-					delete prev._cur;
-				}
-			} else {
-				// already required size
-			}
+			resize(a_count, a_value);
 		}
 
 	protected:
@@ -582,6 +512,45 @@ namespace RE
 		const Node* chead_node() const
 		{
 			return std::addressof(_listHead);
+		}
+
+
+		template <class... Args>
+		void resize_impl(size_type a_count, Args&&... a_args)
+		{
+			if (empty() && a_count == 0) {
+				return;
+			}
+
+			auto cur = begin();
+			size_type elems = 1;
+			while (cur != end() && elems != a_count) {
+				++cur;
+				++elems;
+			}
+
+			if (elems < a_count) {
+				// need to grow
+				Node* node = 0;
+				while (elems < a_count) {
+					node = new Node(std::forward<Args>(a_args)...);
+					cur._cur->next = node;
+					++cur;
+					++elems;
+				}
+			} else if (cur != end()) {
+				// need to shrink
+				auto prev = cur++;
+				prev._cur->next = 0;
+				while (cur != end()) {
+					prev = cur++;
+					if (prev._cur != head_node()) {
+						delete prev._cur;
+					}
+				}
+			} else {
+				// already required size
+			}
 		}
 
 
