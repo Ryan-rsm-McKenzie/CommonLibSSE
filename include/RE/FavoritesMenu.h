@@ -44,7 +44,7 @@ namespace RE
 
 		// members
 		GFxValue			root;				// 40 - "Menu_mc"
-		BSTArray<Entry*>	favorites;			// 58
+		BSTArray<Entry>		favorites;			// 58
 		UInt16				unk70;				// 70
 		bool				pcControlsReady;	// 72
 		bool				isVampire;			// 73
