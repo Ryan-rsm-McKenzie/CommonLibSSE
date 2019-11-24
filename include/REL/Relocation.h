@@ -30,7 +30,7 @@ namespace REL
 		namespace
 		{
 			// https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm
-			constexpr std::size_t NPOS = static_cast<std::size_t>(-1);
+			constexpr auto NPOS = static_cast<std::size_t>(-1);
 
 			void kmp_table(const std::basic_string_view<std::uint8_t>& W, std::vector<std::size_t>& T);
 			void kmp_table(const std::vector<std::uint8_t>& W, const std::vector<bool>& M, std::vector<std::size_t>& T);
