@@ -9,7 +9,7 @@ namespace RE
 	{
 		namespace ActivateHandler
 		{
-			// ??_7ActivateHandler@@6B@
+			// VTable: .?AUActivateHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F288;	// 1_5_97
 		}
 
@@ -39,7 +39,7 @@ namespace RE
 			constexpr std::uintptr_t IsRunning = 0x005D1190;					// 1_5_97
 			// IndirectSig: E8 ? ? ? ? EB 1D 8B 4D 7F
 			constexpr std::uintptr_t SendStealAlarm = 0x005DD770;				// 1_5_97
-			// ??_7Actor@@6B@
+			// VTable: .?AVActor@@
 			constexpr std::uintptr_t Vtbl = 0x01655640;							// 1_5_97
 		}
 
@@ -53,14 +53,14 @@ namespace RE
 
 		namespace AttackBlockHandler
 		{
-			// ??_7AttackBlockHandler@@6B@
+			// VTable: .?AUAttackBlockHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F218;	// 1_5_97
 		}
 
 
 		namespace AutoMoveHandler
 		{
-			// ??_7AutoMoveHandler@@6B@
+			// VTable: .?AUAutoMoveHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F2C8;	// 1_5_97
 		}
 
@@ -73,6 +73,13 @@ namespace RE
 			constexpr std::uintptr_t SetExtraFlags = 0x00125D80;		// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 90 41 89 1E 48 8B C7 48 8B 5C 24 60 48 8B 6C 24 68 48 83 C4 30 41 5E
 			constexpr std::uintptr_t SetInventoryChanges = 0x0010F5C0;	// 1_5_97
+		}
+
+
+		namespace BGSDefaultObjectManager
+		{
+			// IndirectSig: E8 ? ? ? ? 4C 63 C3
+			constexpr std::uintptr_t GetSingleton = 0x000F7210;	// 1_5_97
 		}
 
 
@@ -96,7 +103,7 @@ namespace RE
 
 		namespace BSScaleformTranslator
 		{
-			// ??_7BSScaleformTranslator@@6B@
+			// VTable: .?AVBSScaleformTranslator@@
 			constexpr std::uintptr_t Vtbl = 0x017B6B50;	// 1_5_97
 		}
 
@@ -194,21 +201,21 @@ namespace RE
 
 		namespace FavoritesHandler
 		{
-			// ??_7FavoritesHandler@@6B@
+			// VTable: .?AUFavoritesHandler@@
 			constexpr std::uintptr_t Vtbl = 0x016B84B8;	// 1_5_97
 		}
 
 
 		namespace FavoritesMenu
 		{
-			// ??_7FavoritesMenu@@6B@
+			// VTable: .?AVFavoritesMenu@@
 			constexpr std::uintptr_t Vtbl = 0x016B1068;	// 1_5_97
 		}
 
 
 		namespace FirstPersonState
 		{
-			// ??_7FirstPersonState@@6B@
+			// VTable: .?AVFirstPersonState@@
 			constexpr std::uintptr_t Vtbl = 0x016A9E60;	// 1_5_97
 		}
 
@@ -312,7 +319,7 @@ namespace RE
 
 		namespace JumpHandler
 		{
-			// ??_7JumpHandler@@6B@
+			// VTable: .?AUJumpHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F388;	// 1_5_97
 		}
 
@@ -326,7 +333,7 @@ namespace RE
 
 		namespace LookHandler
 		{
-			// ??_7LookHandler@@6B@
+			// VTable: .?AULookHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F140;	// 1_5_97
 		}
 
@@ -347,7 +354,7 @@ namespace RE
 
 		namespace MenuOpenHandler
 		{
-			// ??_7MenuOpenHandler@@6B@
+			// VTable: .?AUMenuOpenHandler@@
 			constexpr std::uintptr_t Vtbl = 0x016B8480;	// 1_5_97
 		}
 
@@ -361,7 +368,7 @@ namespace RE
 
 		namespace MovementHandler
 		{
-			// ??_7MovementHandler@@6B@
+			// VTable: .?AUMovementHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F1A8;	// 1_5_97
 		}
 
@@ -413,21 +420,21 @@ namespace RE
 			constexpr std::uintptr_t StartActivation = 0x006A9F90;		// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 84 C0 75 08 40 32 F6
 			constexpr std::uintptr_t TryToPickPocket = 0x006B2530;		// 1_5_97
-			// ??_7PlayerCharacter@@6B@
+			// VTable: .?AVPlayerCharacter@@
 			constexpr std::uintptr_t Vtbl = 0x016635E0;					// 1_5_97
 		}
 
 
 		namespace ReadyWeaponHandler
 		{
-			// ??_7ReadyWeaponHandler@@6B@
+			// VTable: .?AUReadyWeaponHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F258;	// 1_5_97
 		}
 
 
 		namespace RunHandler
 		{
-			// ??_7RunHandler@@6B@
+			// VTable: .?AURunHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F328;	// 1_5_97
 		}
 
@@ -448,7 +455,7 @@ namespace RE
 
 		namespace ShoutHandler
 		{
-			// ??_7ShoutHandler@@6B@
+			// VTable: .?AUShoutHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F3E8;	// 1_5_97
 		}
 
@@ -462,7 +469,7 @@ namespace RE
 
 		namespace SneakHandler
 		{
-			// ??_7SneakHandler@@6B@
+			// VTable: .?AUSneakHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F3B8;	// 1_5_97
 		}
 
@@ -480,7 +487,7 @@ namespace RE
 
 		namespace SprintHandler
 		{
-			// ??_7SprintHandler@@6B@
+			// VTable: .?AUSprintHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F1D8;	// 1_5_97
 		}
 
@@ -518,21 +525,21 @@ namespace RE
 
 		namespace TESNPC
 		{
-			// ??_7TESNPC@@6B@
+			// VTable: .?AVTESNPC@@
 			constexpr std::uintptr_t Vtbl = 0x0159FCD0;	// 1_5_97
 		}
 
 
 		namespace TESObjectACTI
 		{
-			// ??_7TESObjectACTI@@6B@
+			// VTable: .?AVTESObjectACTI@@
 			constexpr std::uintptr_t Vtbl = 0x015576F0;	// 1_5_97
 		}
 
 
 		namespace TESObjectCONT
 		{
-			// ??_7TESObjectCONT@@6B@
+			// VTable: .?AVTESObjectCONT@@
 			constexpr std::uintptr_t Vtbl = 0x01559930;	// 1_5_97
 		}
 
@@ -556,21 +563,21 @@ namespace RE
 
 		namespace ThirdPersonState
 		{
-			// ??_7ThirdPersonState@@6B@
+			// VTable: .?AVThirdPersonState@@
 			constexpr std::uintptr_t Vtbl = 0x0162F2A0;	// 1_5_97
 		}
 
 
 		namespace TogglePOVHandler
 		{
-			// ??_7TogglePOVHandler@@6B@
+			// VTable: .?AUTogglePOVHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F418;	// 1_5_97
 		}
 
 
 		namespace ToggleRunHandler
 		{
-			// ??_7ToggleRunHandler@@6B@
+			// VTable: .?AUToggleRunHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F2F8;	// 1_5_97
 		}
 

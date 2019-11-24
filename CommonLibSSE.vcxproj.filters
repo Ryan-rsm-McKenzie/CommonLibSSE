@@ -1135,6 +1135,9 @@
     <Filter Include="include\RE\Menus\IMenu\Components\CraftingSubMenus">
       <UniqueIdentifier>{1068b6ee-a717-41a9-afd1-f765a8c9b0f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\REL">
+      <UniqueIdentifier>{da1e44f4-1c74-46b8-9b83-1f874a75ba05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1757,6 +1760,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\NiMemManager.cpp">
       <Filter>src\RE\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\REL\Relocation.cpp">
+      <Filter>src\REL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

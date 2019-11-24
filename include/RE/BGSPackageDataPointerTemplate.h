@@ -9,7 +9,7 @@ namespace RE
 	class TESFile;
 
 
-	template <class Parent, class Pointer, const BSFixedString& TYPE_NAME>
+	template <class Parent, class Pointer /*, const BSFixedString& TYPE_NAME*/>
 	class BGSPackageDataPointerTemplate : public BGSNamedPackageData<Parent>
 	{
 	public:

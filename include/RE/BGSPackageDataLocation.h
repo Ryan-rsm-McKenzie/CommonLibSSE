@@ -10,11 +10,10 @@ namespace RE
 {
 	class PackageLocation;
 
+	//const BSFixedString kPackageDataLocationTypeName("Location");
 
-	const BSFixedString kPackageDataLocationTypeName("Location");
 
-
-	class BGSPackageDataLocation : public BGSPackageDataPointerTemplate<IPackageDataAIWorldLocationHandle, PackageLocation, kPackageDataLocationTypeName>
+	class BGSPackageDataLocation : public BGSPackageDataPointerTemplate<IPackageDataAIWorldLocationHandle, PackageLocation /*, kPackageDataLocationTypeName*/>
 	{
 	public:
 		inline static const void* RTTI = RTTI_BGSPackageDataLocation;

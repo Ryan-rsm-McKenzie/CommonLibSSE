@@ -2,6 +2,7 @@
 
 #include "skse64_common/BranchTrampoline.h"  // g_branchTrampoline
 
+#include <array>  // array
 #include <cassert>  // assert
 #include <cstdlib>  // size_t
 #include <cstdint>  // uint8_t, uintptr_t
@@ -12,63 +13,30 @@
 #include <libloaderapi.h>  // GetModuleHandle
 
 
+namespace RE
+{
+	namespace RTTI
+	{
+		struct CompleteObjectLocator;
+		struct TypeDescriptor;
+	}
+}
+
+
 namespace REL
 {
-	namespace
+	namespace Impl
 	{
-		// https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm
-		constexpr std::size_t NPOS = static_cast<std::size_t>(-1);
-
-
-		void kmp_table(const std::vector<std::uint8_t>& W, const std::vector<bool>& M, std::vector<std::size_t>& T)
+		namespace
 		{
-			std::size_t pos = 1;
-			std::size_t cnd = 0;
+			// https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm
+			constexpr std::size_t NPOS = static_cast<std::size_t>(-1);
 
-			T[0] = NPOS;
+			void kmp_table(const std::basic_string_view<std::uint8_t>& W, std::vector<std::size_t>& T);
+			void kmp_table(const std::vector<std::uint8_t>& W, const std::vector<bool>& M, std::vector<std::size_t>& T);
 
-			while (pos < W.size()) {
-				if (!M[pos] || !M[cnd] || W[pos] == W[cnd]) {
-					T[pos] = T[cnd];
-				} else {
-					T[pos] = cnd;
-					cnd = T[cnd];
-					while (cnd != NPOS && M[pos] && M[cnd] && W[pos] != W[cnd]) {
-						cnd = T[cnd];
-					}
-				}
-				++pos;
-				++cnd;
-			}
-
-			T[pos] = cnd;
-		}
-
-
-		std::size_t kmp_search(const std::basic_string_view<std::uint8_t>& S, const std::vector<std::uint8_t>& W, const std::vector<bool>& M)
-		{
-			std::size_t j = 0;
-			std::size_t k = 0;
-			std::vector<std::size_t> T(W.size() + 1);
-			kmp_table(W, M, T);
-
-			while (j < S.size()) {
-				if (!M[k] || W[k] == S[j]) {
-					++j;
-					++k;
-					if (k == W.size()) {
-						return j - k;
-					}
-				} else {
-					k = T[k];
-					if (k == NPOS) {
-						++j;
-						++k;
-					}
-				}
-			}
-
-			return 0xDEADBEEF;
+			std::size_t kmp_search(const std::basic_string_view<std::uint8_t>& S, const std::basic_string_view<std::uint8_t>& W);
+			std::size_t kmp_search(const std::basic_string_view<std::uint8_t>& S, const std::vector<std::uint8_t>& W, const std::vector<bool>& M);
 		}
 	}
 
@@ -76,10 +44,59 @@ namespace REL
 	class Module
 	{
 	public:
-		inline static std::uintptr_t BaseAddr()
+		struct IDs
 		{
-			return _info.base;
-		}
+			enum ID
+			{
+				kTextX,
+				kIData,
+				kRData,
+				kData,
+				kPData,
+				kTLS,
+				kTextW,
+				kGFIDs,
+
+				kTotal
+			};
+		};
+		using ID = IDs::ID;
+
+
+		class Section
+		{
+		public:
+			constexpr Section() :
+				addr(0),
+				size(0),
+				rva(0)
+			{}
+
+
+			std::uint32_t RVA() const;
+			std::uintptr_t BaseAddr() const;
+			std::size_t Size() const;
+
+
+			template <class T = void>
+			inline T* BasePtr() const
+			{
+				return reinterpret_cast<T*>(BaseAddr());
+			}
+
+		protected:
+			friend class Module;
+
+
+			std::uintptr_t addr;
+			std::size_t size;
+			std::uint32_t rva;
+		};
+
+
+		static std::uintptr_t BaseAddr();
+		static std::size_t Size();
+		static Section GetSection(ID a_id);
 
 
 		template <class T = void>
@@ -88,30 +105,45 @@ namespace REL
 			return reinterpret_cast<T*>(_info.base);
 		}
 
-
-		inline static std::uintptr_t Size()
-		{
-			return _info.size;
-		}
-
 	private:
 		struct ModuleInfo
 		{
-			ModuleInfo()
+			struct Sections
 			{
-				base = reinterpret_cast<std::uintptr_t>(GetModuleHandle(0));
-				auto dosHeader = reinterpret_cast<const IMAGE_DOS_HEADER*>(base);
-				auto ntHeader = reinterpret_cast<const IMAGE_NT_HEADERS64*>(reinterpret_cast<const std::uint8_t*>(dosHeader) + dosHeader->e_lfanew);
-				size = ntHeader->OptionalHeader.SizeOfCode;
-			}
+				struct Elem
+				{
+					constexpr Elem(std::string_view a_view, UInt32 a_flags = 0) :
+						name(a_view),
+						section(),
+						flags(a_flags)
+					{}
+
+
+					std::string_view name;
+					Section	section;
+					UInt32 flags;
+				};
+
+
+				constexpr Sections() :
+					arr{ Elem(".text", IMAGE_SCN_MEM_EXECUTE), ".idata", ".rdata", ".data", ".pdata", ".tls", Elem(".text", IMAGE_SCN_MEM_WRITE), ".gfids" }
+				{}
+
+
+				std::array<Elem, ID::kTotal> arr;
+			};
+
+
+			ModuleInfo();
 
 
 			std::uintptr_t base;
 			std::size_t size;
+			Sections sections;
 		};
 
 
-		inline static ModuleInfo _info;
+		static ModuleInfo _info;
 	};
 
 
@@ -186,20 +218,17 @@ namespace REL
 				}
 			}
 
-			std::basic_string_view<std::uint8_t> str(Module::BasePtr<std::uint8_t>(), Module::Size());
-			_address = kmp_search(str, sig, mask);
+			auto text = Module::GetSection(Module::ID::kTextX);
+			std::basic_string_view<std::uint8_t> haystack(text.BasePtr<std::uint8_t>(), text.Size());
+			_address = Impl::kmp_search(haystack, sig, mask);
 
 			if (_address == 0xDEADBEEF) {
 				_FATALERROR("Sig scan failed for pattern (%s)!\n", a_sig);
 				assert(false);
 			} else {
-				_address += Module::BaseAddr();
+				_address += text.BaseAddr();
 			}
 		}
-
-
-		~DirectSig()
-		{}
 
 
 		operator T() const
@@ -240,10 +269,31 @@ namespace REL
 			auto nextOp = _address + 5;
 			_address = nextOp + *offset;
 		}
+	};
 
 
-		~IndirectSig()
-		{}
+	// scans exe for type descriptor name, then retrieves vtbl address at specified offset
+	class VTable
+	{
+	public:
+		VTable() = delete;
+
+
+		VTable(const char* a_name, std::uint32_t a_offset = 0);
+
+		void* GetPtr() const;
+		std::uintptr_t GetAddress() const;
+
+	private:
+		using ID = Module::ID;
+
+
+		RE::RTTI::TypeDescriptor* LocateTypeDescriptor(const char* a_name) const;
+		RE::RTTI::CompleteObjectLocator* LocateCOL(RE::RTTI::TypeDescriptor* a_typeDesc, std::uint32_t a_offset) const;
+		void* LocateVtbl(RE::RTTI::CompleteObjectLocator* a_col) const;
+
+
+		std::uintptr_t _address;
 	};
 
 
