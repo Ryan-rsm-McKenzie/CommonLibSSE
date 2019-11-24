@@ -4,6 +4,8 @@
 
 #include <cstdarg>  // va_list
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {

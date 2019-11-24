@@ -2,6 +2,8 @@
 
 #include "skse64/PapyrusVM.h"  // VMClassInfo
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {

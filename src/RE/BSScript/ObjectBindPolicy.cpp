@@ -2,6 +2,8 @@
 
 #include "skse64/PapyrusInterfaces.h"  // ObjectBindPolicy
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {

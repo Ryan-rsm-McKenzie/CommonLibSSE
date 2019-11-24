@@ -2,6 +2,8 @@
 
 #include "skse64/GameExtraData.h"  // ExtraTextDisplayData, s_ExtraTextDisplayVtbl
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {

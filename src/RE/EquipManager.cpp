@@ -2,6 +2,8 @@
 
 #include "skse64/GameData.h"  // EquipManager
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {

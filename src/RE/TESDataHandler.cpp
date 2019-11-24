@@ -5,6 +5,7 @@
 #include <string.h>  // _stricmp
 
 #include "RE/TESFile.h"  // TESFile
+#include "REL/Relocation.h"
 
 
 namespace RE

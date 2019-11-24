@@ -10,6 +10,7 @@
 #include "RE/IMenu.h"  // IMenu
 #include "RE/Misc.h"  // GetINISetting
 #include "RE/Setting.h"  // Setting
+#include "REL/Relocation.h"
 
 
 namespace RE

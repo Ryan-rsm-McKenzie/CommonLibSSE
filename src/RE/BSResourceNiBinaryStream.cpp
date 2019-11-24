@@ -2,6 +2,8 @@
 
 #include "skse64/GameStreams.h"  // BSResourceNiBinaryStream
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {

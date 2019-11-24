@@ -2,6 +2,8 @@
 
 #include "skse64/NiGeometry.h"  // NiSkinInstance
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {

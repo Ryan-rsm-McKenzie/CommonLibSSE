@@ -4,6 +4,7 @@
 
 #include "RE/BSFixedString.h"  // BSFixedString
 #include "RE/UIMessage.h"  // UIMessage
+#include "REL/Relocation.h"
 
 
 namespace RE

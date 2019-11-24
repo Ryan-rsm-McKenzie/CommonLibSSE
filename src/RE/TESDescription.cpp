@@ -3,6 +3,7 @@
 #include "skse64/GameFormComponents.h"  // TESDescription
 
 #include "RE/BSString.h"  // BSString
+#include "REL/Relocation.h"
 
 
 namespace RE

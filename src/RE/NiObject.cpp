@@ -2,6 +2,8 @@
 
 #include "skse64/NiObjects.h"  // NiObject
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {

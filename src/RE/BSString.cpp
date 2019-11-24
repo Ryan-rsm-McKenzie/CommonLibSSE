@@ -5,6 +5,8 @@
 #include <cassert>  // assert
 #include <string>  // char_traits
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {

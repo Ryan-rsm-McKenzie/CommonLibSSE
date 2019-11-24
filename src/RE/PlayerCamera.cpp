@@ -2,6 +2,8 @@
 
 #include "skse64/GameCamera.h"  // PlayerCamera
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {

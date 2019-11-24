@@ -3,6 +3,7 @@
 #include "skse64/GameCamera.h"  // LocalMapCamera
 
 #include "RE/NiCamera.h"  // NiCamera
+#include "REL/Relocation.h"
 
 
 namespace RE

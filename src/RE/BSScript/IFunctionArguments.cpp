@@ -2,6 +2,8 @@
 
 #include "skse64/PapyrusVM.h"  // IFunctionArguments::Output
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {

@@ -6,6 +6,7 @@
 #include <cstring>  // strlen, memcpy
 
 #include "RE/GMemory.h"  // GFREE
+#include "REL/Relocation.h"
 
 
 namespace RE

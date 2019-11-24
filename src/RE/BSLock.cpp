@@ -2,6 +2,8 @@
 
 #include "skse64/GameTypes.h"  // BSReadWriteLock
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {

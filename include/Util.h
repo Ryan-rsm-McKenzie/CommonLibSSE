@@ -9,7 +9,7 @@
 #define MAKE_STR(a_str) MAKE_STR_HELPER(a_str)
 
 #define EXTRACT_SKSE_MEMBER_FN_ADDR(a_class, a_func, a_castTo)	\
-	*reinterpret_cast<a_castTo*>(((a_class*)0)->_##a_func##_GetPtr());
+	REL::Offset<a_castTo>(a_class::a_func##_Address).GetType()
 
 
 template <class Enum>

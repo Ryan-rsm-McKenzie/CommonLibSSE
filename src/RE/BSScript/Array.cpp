@@ -2,6 +2,8 @@
 
 #include "skse64/PapyrusValue.h"  // VMValue::ArrayData
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {

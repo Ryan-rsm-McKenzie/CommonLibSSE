@@ -6,6 +6,7 @@
 #include "RE/TESFaction.h"  // TESFaction
 #include "RE/TESNPC.h"  // TESNPC
 #include "RE/TESWorldSpace.h"  // TESWorldSpace
+#include "REL/Relocation.h"
 
 
 namespace RE

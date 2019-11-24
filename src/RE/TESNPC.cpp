@@ -3,6 +3,8 @@
 #include "skse64/GameData.h"  // GetNumActorBaseOverlays
 #include "skse64/GameObjects.h"  // TESNPC
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {

@@ -5,6 +5,7 @@
 #include <string>
 
 #include "RE/BSScript/Type.h"  // BSScript::Type
+#include "REL/Relocation.h"
 
 
 namespace RE

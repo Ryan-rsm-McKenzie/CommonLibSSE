@@ -3,6 +3,7 @@
 #include "skse64/GameFormComponents.h"  // ActorProcessManager
 
 #include "SKSE/API.h"  // NiNodeUpdateEvent
+#include "REL/Relocation.h"
 
 
 namespace RE

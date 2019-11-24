@@ -3,6 +3,7 @@
 #include "skse64/GameInput.h"  // PlayerControls
 
 #include "RE/PlayerInputHandler.h"  // PlayerInputHandler
+#include "REL/Relocation.h"
 
 
 namespace RE

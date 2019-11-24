@@ -10,6 +10,7 @@
 #include "RE/BSScript/Class.h"  // BSScript::Class
 #include "RE/BSScript/Object.h"  // BSScript::Object
 #include "RE/BSScript/PackUnpack.h"  // BSScript::BindID
+#include "REL/Relocation.h"
 
 
 namespace RE
