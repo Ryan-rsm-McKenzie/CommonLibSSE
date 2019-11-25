@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSAttackData
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/FormTypes.h"  // SpellItem, BGSKeyword
-#include "RE/NiRefObject.h"  // NiRefObject
-#include "RE/NiSmartPointer.h"  // NiSmartPointer
+#include "RE/BSFixedString.h"
+#include "RE/FormTypes.h"
+#include "RE/NiRefObject.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

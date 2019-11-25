@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESObjectARMA
-
-#include "RE/BGSBipedObjectForm.h"  // BGSBipedObjectForm
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
-#include "RE/TESObject.h"  // TESObject
-#include "RE/TESRaceForm.h"  // TESRaceForm
+#include "RE/BGSBipedObjectForm.h"
+#include "RE/BSTArray.h"
+#include "RE/FormTypes.h"
+#include "RE/TESModelTextureSwap.h"
+#include "RE/TESObject.h"
+#include "RE/TESRaceForm.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSFixedString.h"
 
 
 namespace RE

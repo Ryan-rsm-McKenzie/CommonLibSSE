@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSWin32VirtualKeyboardDevice
-
-#include "RE/BSVirtualKeyboardDevice.h"  // BSVirtualKeyboardDevice
+#include "RE/BSVirtualKeyboardDevice.h"
 
 
 namespace RE

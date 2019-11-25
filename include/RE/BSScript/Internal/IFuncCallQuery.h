@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__Internal__IFuncCallQuery
-
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
+#include "RE/BSIntrusiveRefCounted.h"
 
 
 namespace RE

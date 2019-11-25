@@ -1,7 +1,7 @@
 #pragma once
 
-#include <cstdlib>  // size_t
-#include <limits>  // numeric_limits
+#include <cstdlib>
+#include <limits>
 
 
 namespace RE

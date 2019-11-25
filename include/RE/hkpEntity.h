@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpEntity
-
-#include "RE/hkArray.h"  // hkArray
-#include "RE/hkBaseTypes.h"  // hkObjectIndex
-#include "RE/hkSmallArray.h"  // hkSmallArray
-#include "RE/hkpFixedRigidMotion.h"  // hkpFixedRigidMotion
-#include "RE/hkpMaterial.h"  // hkpMaterial
-#include "RE/hkpWorldObject.h"  // hkpWorldObject
+#include "RE/hkArray.h"
+#include "RE/hkBaseTypes.h"
+#include "RE/hkSmallArray.h"
+#include "RE/hkpFixedRigidMotion.h"
+#include "RE/hkpMaterial.h"
+#include "RE/hkpWorldObject.h"
 
 
 namespace RE

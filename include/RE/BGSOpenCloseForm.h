@@ -1,12 +1,12 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSOpenCloseForm
-
-#include "RE/FormTypes.h"  // TESObjectREFR, Actor
-
 
 namespace RE
 {
+	class Actor;
+	class TESObjectREFR;
+
+
 	class BGSOpenCloseForm
 	{
 	public:

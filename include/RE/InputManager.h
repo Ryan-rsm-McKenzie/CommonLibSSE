@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSTEvent.h"  // BSTEventSource
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
+#include "RE/BSTEvent.h"
+#include "RE/BSTSingleton.h"
 
 
 namespace RE

@@ -1,13 +1,14 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSSkillPerkTreeNode
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/FormTypes.h"  // ActorValueInfo, BGSPerk
+#include "RE/BSTArray.h"
 
 
 namespace RE
 {
+	class ActorValueInfo;
+	class BGSPerk;
+
+
 	class BGSSkillPerkTreeNode
 	{
 	public:

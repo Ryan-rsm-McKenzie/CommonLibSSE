@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSAcousticSpace
-
-#include "RE/FormTypes.h"  // BGSSoundDescriptorForm, TESRegion, BGSReverbParameters
-#include "RE/TESBoundObject.h"  // TESBoundObject
+#include "RE/FormTypes.h"
+#include "RE/TESBoundObject.h"
 
 
 namespace RE

@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_IMenu
-
-#include "RE/FxDelegate.h"  // FxDelegate
-#include "RE/FxDelegateHandler.h"  // FxDelegateHandler
-#include "RE/GFxMovieView.h"  // GFxMovieView
-#include "RE/GPtr.h"  // GPtr
-#include "RE/InputMappingManager.h"  // InputMappingManager::Context
+#include "RE/FxDelegate.h"
+#include "RE/FxDelegateHandler.h"
+#include "RE/GFxMovieView.h"
+#include "RE/GPtr.h"
+#include "RE/InputMappingManager.h"
 
 
 namespace RE

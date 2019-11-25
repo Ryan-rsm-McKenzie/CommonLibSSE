@@ -1,15 +1,13 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSExplosion
-
-#include "RE/BGSPreloadable.h"  // BGSPreloadable
-#include "RE/FormTypes.h"  // FormType
-#include "RE/SoundLevels.h"  // SoundLevel
-#include "RE/TESBoundObject.h"  // TESBoundObject
-#include "RE/TESEnchantableForm.h"  // TESEnchantableForm
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESImageSpaceModifiableForm.h"  // TESImageSpaceModifiableForm
-#include "RE/TESModel.h"  // TESModel
+#include "RE/BGSPreloadable.h"
+#include "RE/FormTypes.h"
+#include "RE/SoundLevels.h"
+#include "RE/TESBoundObject.h"
+#include "RE/TESEnchantableForm.h"
+#include "RE/TESFullName.h"
+#include "RE/TESImageSpaceModifiableForm.h"
+#include "RE/TESModel.h"
 
 
 namespace RE

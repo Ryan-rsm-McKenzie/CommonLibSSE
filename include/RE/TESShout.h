@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESShout
-
-#include "RE/BGSEquipType.h"  // BGSEquipType
-#include "RE/BGSMenuDisplayObject.h"  // BGSMenuDisplayObject
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESDescription.h"  // TESDescription
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESFullName.h"  // TESFullName
+#include "RE/BGSEquipType.h"
+#include "RE/BGSMenuDisplayObject.h"
+#include "RE/FormTypes.h"
+#include "RE/TESDescription.h"
+#include "RE/TESForm.h"
+#include "RE/TESFullName.h"
 
 
 namespace RE

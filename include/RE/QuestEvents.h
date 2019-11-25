@@ -1,6 +1,6 @@
 #pragma once
 
-#include <type_traits>  // underlying_type_t
+#include <type_traits>
 
 
 namespace RE

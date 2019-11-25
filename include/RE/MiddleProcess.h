@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/BSLock.h"  // BSUniqueLock
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
-#include "RE/NiSmartPointer.h"  // NiPointer
-#include "RE/PackageData.h"  // PackageData
+#include "RE/BSLock.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTList.h"
+#include "RE/BSTSmartPointer.h"
+#include "RE/NiSmartPointer.h"
+#include "RE/PackageData.h"
 
 
 namespace RE

@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSRagdoll
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESModel.h"  // TESModel
+#include "RE/BSTArray.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
+#include "RE/TESModel.h"
 
 
 namespace RE

@@ -1,13 +1,13 @@
 #pragma once
 
-#include <optional>  // optional
-#include <string_view>  // string_view
+#include <optional>
+#include <string_view>
 
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
-#include "RE/FormTypes.h"  // TESForm
-#include "RE/NiTArray.h"  // NiTPrimitiveArray
+#include "RE/BSTArray.h"
+#include "RE/BSTList.h"
+#include "RE/BSTSingleton.h"
+#include "RE/FormTypes.h"
+#include "RE/NiTArray.h"
 
 
 namespace RE

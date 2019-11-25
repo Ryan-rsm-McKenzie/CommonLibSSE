@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NavMeshInfoMap
-
-#include "RE/BSNavmeshInfoMap.h"  // BSNavmeshInfoMap
-#include "RE/FormTypes.h"  // FormType
-#include "RE/PrecomputedNavmeshInfoPathMap.h"  // PrecomputedNavmeshInfoPathMap
-#include "RE/TESForm.h"  // TESForm
+#include "RE/BSNavmeshInfoMap.h"
+#include "RE/FormTypes.h"
+#include "RE/PrecomputedNavmeshInfoPathMap.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

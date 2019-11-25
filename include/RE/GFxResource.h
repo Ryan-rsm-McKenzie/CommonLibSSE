@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/GAtomic.h"  // GAtomicInt
-#include "RE/GFxResourceKey.h"  // GFxResourceKey
-#include "RE/GNewOverrideBase.h"  // NewOverrideBase
-#include "RE/GStats.h"  // GStatGroups
+#include "RE/GAtomic.h"
+#include "RE/GFxResourceKey.h"
+#include "RE/GNewOverrideBase.h"
+#include "RE/GStats.h"
 
 
 namespace RE

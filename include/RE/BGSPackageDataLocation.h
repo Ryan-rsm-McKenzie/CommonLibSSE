@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSPackageDataLocation
-
-#include "RE/BGSPackageDataPointerTemplate.h"  // BGSPackageDataPointerTemplate
-#include "RE/IPackageDataAIWorldLocationHandle.h"  // IPackageDataAIWorldLocationHandle
+#include "RE/BGSPackageDataPointerTemplate.h"
+#include "RE/IPackageDataAIWorldLocationHandle.h"
 
 
 namespace RE

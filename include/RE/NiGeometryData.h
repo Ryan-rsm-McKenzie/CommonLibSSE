@@ -1,10 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiGeometryData
-#include "skse64/NiRTTI.h"  // NiRTTI_NiGeometryData
-
-#include "RE/NiBound.h"  // NiBound
-#include "RE/NiObject.h"  // NiObject
+#include "RE/NiBound.h"
+#include "RE/NiObject.h"
 
 
 namespace RE

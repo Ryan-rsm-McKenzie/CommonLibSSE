@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSEntryPointFunctionDataOneValue
-
-#include "RE/BGSEntryPointFunctionData.h"  // BGSEntryPointFunctionData
+#include "RE/BGSEntryPointFunctionData.h"
 
 
 namespace RE

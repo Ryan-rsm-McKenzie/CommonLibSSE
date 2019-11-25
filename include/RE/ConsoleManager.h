@@ -1,9 +1,9 @@
 #pragma once
 
-#include <cstdarg>  // va_list
+#include <cstdarg>
 
-#include "RE/BSString.h"  // BSString
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
+#include "RE/BSString.h"
+#include "RE/BSTSingleton.h"
 
 
 namespace RE

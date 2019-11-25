@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_AddCallbackVisitor
-
-#include "RE/FxDelegate.h"  // FxDelegate::CallbackHash
-#include "RE/FxDelegateHandler.h"  // FxDelegateHandler
+#include "RE/FxDelegate.h"
+#include "RE/FxDelegateHandler.h"
 
 
 namespace RE

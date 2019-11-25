@@ -1,13 +1,13 @@
 #pragma once
 
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
-#include "RE/NiSmartPointer.h"  // NiPointer
-#include "RE/PackageData.h"  // PackageData
+#include "RE/BSFixedString.h"
+#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTHashMap.h"
+#include "RE/BSTList.h"
+#include "RE/BSTSmartPointer.h"
+#include "RE/NiSmartPointer.h"
+#include "RE/PackageData.h"
 
 
 namespace RE

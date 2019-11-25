@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TweenMenu
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/IMenu.h"  // IMenu
+#include "RE/BSTArray.h"
+#include "RE/IMenu.h"
 
 
 namespace RE

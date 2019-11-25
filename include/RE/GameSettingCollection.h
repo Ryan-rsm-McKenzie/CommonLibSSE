@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_GameSettingCollection
-
 #include "RE/Setting.h"
-#include "RE/SettingCollectionMap.h"  // SettingCollectionMap
+#include "RE/SettingCollectionMap.h"
 
 
 namespace RE

@@ -2,12 +2,12 @@
 
 #include <string_view>
 
-#include "RE/BSTEvent.h"  // BSTEventSource
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
-#include "RE/GPtr.h"  // GPtr
+#include "RE/BSTEvent.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTHashMap.h"
+#include "RE/BSTSingleton.h"
+#include "RE/GPtr.h"
 
 
 namespace RE

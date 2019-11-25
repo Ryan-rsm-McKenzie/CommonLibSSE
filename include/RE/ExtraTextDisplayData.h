@@ -1,15 +1,17 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ExtraTextDisplayData
-
-#include "RE/BSExtraData.h"  // BSExtraData
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/ExtraDataTypes.h"  // ExtraDataType
-#include "RE/FormTypes.h"  // BGSMessage, TESQuest
+#include "RE/BSExtraData.h"
+#include "RE/BSFixedString.h"
+#include "RE/ExtraDataTypes.h"
 
 
 namespace RE
 {
+	class BGSMessage;
+	class TESForm;
+	class TESQuest;
+
+
 	class ExtraTextDisplayData : public BSExtraData
 	{
 	public:

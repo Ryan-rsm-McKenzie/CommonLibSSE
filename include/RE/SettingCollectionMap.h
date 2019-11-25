@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSTCaseInsensitiveStringMap.h"  // BSTCaseInsensitiveStringMap
-#include "RE/Setting.h"  // Setting
-#include "RE/SettingCollection.h"  // SettingCollection
+#include "RE/BSTCaseInsensitiveStringMap.h"
+#include "RE/Setting.h"
+#include "RE/SettingCollection.h"
 
 
 namespace RE

@@ -1764,6 +1764,12 @@
     <ClCompile Include="src\REL\Relocation.cpp">
       <Filter>src\REL</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BSTCreateFactoryManager.cpp">
+      <Filter>src\RE\BSCore</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\CRC.cpp">
+      <Filter>src\RE\BSCore</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">

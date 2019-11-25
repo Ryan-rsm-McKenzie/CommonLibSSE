@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ActorState
-
-#include "RE/IMovementState.h"  // IMovementState
+#include "RE/IMovementState.h"
 
 
 namespace RE

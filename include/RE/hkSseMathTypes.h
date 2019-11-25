@@ -1,7 +1,5 @@
 #pragma once
 
-#include <xmmintrin.h>  // __m128
-
 
 namespace RE
 {

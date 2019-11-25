@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSMaterialObject
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/NiColor.h"  // NiColor
+#include "RE/BSTArray.h"
+#include "RE/NiColor.h"
 
 
 namespace RE

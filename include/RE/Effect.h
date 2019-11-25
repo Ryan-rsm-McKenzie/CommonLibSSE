@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Condition.h"  // Condition
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/Condition.h"
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

@@ -1,18 +1,16 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESContainer
+#include <optional>
 
-#include <optional>  // optional
+#include "function_ref.h"
 
-#include "function_ref.h"  // function_ref
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/FormTypes.h"  // TESForm
+#include "RE/BaseFormComponent.h"
 
 
 namespace RE
 {
 	class TESBoundObject;
+	class TESForm;
 
 
 	class TESContainer : public BaseFormComponent

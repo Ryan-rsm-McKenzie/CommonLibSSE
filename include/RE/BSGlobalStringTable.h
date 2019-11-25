@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSLock.h"  // BSUniqueLock
+#include "RE/BSLock.h"
 
 
 namespace RE

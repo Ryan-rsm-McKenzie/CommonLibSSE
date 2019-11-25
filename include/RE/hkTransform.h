@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/hkRotation.h"  // hkRotation
-#include "RE/hkVector4.h"  // hkVector4
+#include "RE/hkRotation.h"
+#include "RE/hkVector4.h"
 
 
 namespace RE

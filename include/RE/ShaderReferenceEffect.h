@@ -1,10 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ShaderReferenceEffect
-#include "skse64/NiRTTI.h"  // NiRTTI_ShaderReferenceEffect
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/ReferenceEffect.h"  // ReferenceEffect
+#include "RE/BSTArray.h"
+#include "RE/ReferenceEffect.h"
 
 
 namespace RE

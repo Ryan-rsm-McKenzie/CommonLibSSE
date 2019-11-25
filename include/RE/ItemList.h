@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/GPtr.h"  // GPtr
-#include "RE/StandardItemData.h"  // StandardItemData
+#include "RE/GFxValue.h"=
+#include "RE/GPtr.h"
+#include "RE/StandardItemData.h"
 
 
 namespace RE

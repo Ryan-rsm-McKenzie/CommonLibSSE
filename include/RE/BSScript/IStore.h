@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__IStore
-
-#include "RE/BSStorage.h"  // BSStorage
+#include "RE/BSStorage.h"
 
 
 namespace RE

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/GFxEvent.h"  // GFxEvent
-#include "RE/GFxKey.h"  // GFxKey
-#include "RE/GFxPlayerStats.h"  // GFxStatMovieViews
-#include "RE/GFxSpecialKeysState.h"  // GFxSpecialKeysState
-#include "RE/GRefCountBaseNTS.h"  // GRefCountBaseNTS
+#include "RE/GFxEvent.h"
+#include "RE/GFxKey.h"
+#include "RE/GFxPlayerStats.h"
+#include "RE/GFxSpecialKeysState.h"
+#include "RE/GRefCountBaseNTS.h"
 
 
 namespace RE

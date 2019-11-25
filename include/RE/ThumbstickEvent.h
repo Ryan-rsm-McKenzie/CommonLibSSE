@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ThumbstickEvent
-
-#include "RE/IDEvent.h"  // IDEvent
+#include "RE/IDEvent.h"
 
 
 namespace RE

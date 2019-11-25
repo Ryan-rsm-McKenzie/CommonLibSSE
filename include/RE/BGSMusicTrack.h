@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSMusicTrack
-
-#include "RE/BSIMusicTrack.h"  // BSIMusicTrack
-#include "RE/Condition.h"  // Condition
+#include "RE/BSIMusicTrack.h"
+#include "RE/Condition.h"
 
 
 namespace RE

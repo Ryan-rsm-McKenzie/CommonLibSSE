@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cstdint>  // uintptr_t
-
 
 namespace RE
 {

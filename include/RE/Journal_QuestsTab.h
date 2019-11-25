@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_Journal_QuestsTab
-
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/JournalTab.h"  // JournalTab
+#include "RE/GFxValue.h"
+#include "RE/JournalTab.h"
 
 
 namespace RE

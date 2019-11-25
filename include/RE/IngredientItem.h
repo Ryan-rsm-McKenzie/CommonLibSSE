@@ -1,16 +1,14 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_IngredientItem
-
-#include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
-#include "RE/BGSEquipType.h"  // BGSEquipType
-#include "RE/BGSPickupPutdownSounds.h"  // BGSPickupPutdownSounds
-#include "RE/FormTypes.h"  // FormType
-#include "RE/MagicItem.h"  // MagicItem
-#include "RE/TESIcon.h"  // TESIcon
-#include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
-#include "RE/TESValueForm.h"  // TESValueForm
-#include "RE/TESWeightForm.h"  // TESWeightForm
+#include "RE/BGSDestructibleObjectForm.h"
+#include "RE/BGSEquipType.h"
+#include "RE/BGSPickupPutdownSounds.h"
+#include "RE/FormTypes.h"
+#include "RE/MagicItem.h"
+#include "RE/TESIcon.h"
+#include "RE/TESModelTextureSwap.h"
+#include "RE/TESValueForm.h"
+#include "RE/TESWeightForm.h"
 
 
 namespace RE

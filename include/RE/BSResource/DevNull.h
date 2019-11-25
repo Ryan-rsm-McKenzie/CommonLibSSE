@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSResource/Location.h"  // BSResource::Location
-#include "RE/BSResource/Stream.h"  // BSResource::Stream
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
+#include "RE/BSResource/Location.h"
+#include "RE/BSResource/Stream.h"
+#include "RE/BSTSingleton.h"
 
 
 namespace RE

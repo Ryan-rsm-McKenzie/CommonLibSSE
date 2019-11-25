@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSScript/Variable.h"  // BSScript::Variable
+#include "RE/BSScript/Variable.h"
 
 
 namespace RE

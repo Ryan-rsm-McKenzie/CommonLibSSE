@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSWin32SaveDataSystemUtility
-
-#include "RE/BSSaveDataSystemUtility.h"  // BSSaveDataSystemUtility
+#include "RE/BSSaveDataSystemUtility.h"
 
 
 namespace RE

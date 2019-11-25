@@ -1,13 +1,11 @@
 #pragma once
 
-#undef GetFileAttributes
-
-#include "RE/GMemoryHeap.h"  // GMemoryHeap
-#include "RE/GFxResource.h"  // GFxResource
-#include "RE/GFxResourceID.h"  // GFxResourceID
-#include "RE/GFxStateBag.h"  // GFxStateBag
-#include "RE/GRect.h"  // GRectF
-#include "RE/GStats.h"  // GStatGroups
+#include "RE/GMemoryHeap.h"
+#include "RE/GFxResource.h"
+#include "RE/GFxResourceID.h"
+#include "RE/GFxStateBag.h"
+#include "RE/GRect.h"
+#include "RE/GStats.h"
 
 
 namespace RE

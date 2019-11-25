@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/NiTDefaultAllocator.h"  // NiTDefaultAllocator
-#include "RE/NiTMapBase.h"  // NiTMapBase
+#include "RE/NiTDefaultAllocator.h"
+#include "RE/NiTMapBase.h"
 
 
 namespace RE

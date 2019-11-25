@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSLocation
-
-#include "RE/BGSKeywordForm.h"  // BGSKeywordForm
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESFullName.h"  // TESFullName
+#include "RE/BGSKeywordForm.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTHashMap.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
+#include "RE/TESFullName.h"
 
 
 namespace RE

@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSShaderParticleGeometryData
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESTexture.h"  // TESTexture
+#include "RE/BSTArray.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
+#include "RE/TESTexture.h"
 
 
 namespace RE

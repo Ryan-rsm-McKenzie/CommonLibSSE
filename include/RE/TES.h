@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TES
-
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/ICellAttachDetachEventSource.h"  // ICellAttachDetachEventSource
+#include "RE/BSTEvent.h"
+#include "RE/ICellAttachDetachEventSource.h"
 
 
 namespace RE

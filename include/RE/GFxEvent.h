@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/GNewOverrideBase.h"  // GNewOverrideBase
-#include "RE/GStats.h"  // GStatGroups
+#include "RE/GNewOverrideBase.h"
+#include "RE/GStats.h"
 
 
 namespace RE

@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ExtraCellWaterEnvMap
-
-#include "RE/BSExtraData.h"  // BSExtraData
-#include "RE/ExtraDataTypes.h"  // ExtraDataType
-#include "RE/TESIcon.h"  // TESIcon
+#include "RE/BSExtraData.h"
+#include "RE/ExtraDataTypes.h"
+#include "RE/TESIcon.h"
 
 
 namespace RE

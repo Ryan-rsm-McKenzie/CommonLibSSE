@@ -2,7 +2,7 @@
 
 #include <type_traits>
 
-#include "RE/BSScript/CommonTypeTraits.h"  // remove_cvr_t
+#include "RE/BSScript/CommonTypeTraits.h"
 
 
 namespace RE

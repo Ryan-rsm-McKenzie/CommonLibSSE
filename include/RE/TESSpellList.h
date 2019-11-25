@@ -1,13 +1,15 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESSpellList
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/FormTypes.h"  // SpellItem, TESLevSpell, TESShout
+#include "RE/BaseFormComponent.h"
 
 
 namespace RE
 {
+	class SpellItem;
+	class TESLevSpell;
+	class TESShout;
+
+
 	class TESSpellList : BaseFormComponent
 	{
 	public:

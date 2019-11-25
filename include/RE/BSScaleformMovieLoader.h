@@ -1,15 +1,15 @@
 #pragma once
 
-#include <optional>  // optional
-#include <string>  // string
-#include <tuple>  // tuple
+#include <optional>
+#include <string>
+#include <tuple>
 
 #include "function_ref.h"
 
-#include "RE/BSString.h"  // BSString
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
-#include "RE/GFxMovieView.h"  // GFxMovieView::ScaleModeType
-#include "RE/GPtr.h"  // GPtr
+#include "RE/BSString.h"
+#include "RE/BSTSingleton.h"
+#include "RE/GFxMovieView.h"
+#include "RE/GPtr.h"
 
 
 namespace RE

@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSMaterialObject
-
-#include "RE/BSMaterialObject.h"  // BSMaterialObject
-#include "RE/BSString.h"  // BSString
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESModel.h"  // TESModel
+#include "RE/BSMaterialObject.h"
+#include "RE/BSString.h"
+#include "RE/BSTArray.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
+#include "RE/TESModel.h"
 
 
 namespace RE

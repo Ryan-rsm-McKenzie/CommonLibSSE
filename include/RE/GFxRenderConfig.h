@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/GFxState.h"  // GFxState
-#include "RE/GPtr.h"  // GPtr
-#include "RE/GRenderer.h"  // GRenderer
+#include "RE/GFxState.h"
+#include "RE/GPtr.h"
+#include "RE/GRenderer.h"
 
 
 namespace RE

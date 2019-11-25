@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ActorValueMeter
-
-#include "RE/ActorValues.h"  // ActorValue
-#include "RE/HUDMeter.h"  // HUDMeter
+#include "RE/ActorValues.h"
+#include "RE/HUDMeter.h"
 
 
 namespace RE

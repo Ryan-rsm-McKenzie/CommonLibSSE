@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ActiveEffect
-
-#include "RE/ActiveEffectReferenceEffectController.h"  // ActiveEffectReferenceEffectController
-#include "RE/FormTypes.h"  // MagicItem
-#include "RE/NiSmartPointer.h"  // NiPointer
+#include "RE/ActiveEffectReferenceEffectController.h"
+#include "RE/FormTypes.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

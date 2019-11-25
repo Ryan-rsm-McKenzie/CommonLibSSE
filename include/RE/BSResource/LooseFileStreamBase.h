@@ -1,8 +1,6 @@
 #pragma once
 
-#include <winnt.h>  // HANDLE
-
-#include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSFixedString.h"
 
 
 namespace RE

@@ -1,10 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiSkinInstance
-#include "skse64/NiRTTI.h"  // NiRTTI_NiSkinInstance
-
-#include "RE/NiSmartPointer.h"  // NiPointer
-#include "RE/NiObject.h"  // NiObject
+#include "RE/NiSmartPointer.h"
+#include "RE/NiObject.h"
 
 
 namespace RE

@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSIdleMarker
-
-#include "RE/BGSIdleCollection.h"  // BGSIdleCollection
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESBoundObject.h"  // TESBoundObject
-#include "RE/TESModel.h"  // TESModel
+#include "RE/BGSIdleCollection.h"
+#include "RE/FormTypes.h"
+#include "RE/TESBoundObject.h"
+#include "RE/TESModel.h"
 
 
 namespace RE

@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSStandardSoundDef, RTTI_BGSStandardSoundDef__SoundPlaybackCharacteristics
-
-#include "RE/BGSSoundDescriptor.h"  // BGSSoundDescriptor
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/FileHash.h"  // FileHash
-#include "RE/FormTypes.h"  // BGSSoundOutput
+#include "RE/BGSSoundDescriptor.h"
+#include "RE/BSTArray.h"
+#include "RE/FileHash.h"
+#include "RE/FormTypes.h"
 
 
 namespace RE

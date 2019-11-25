@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/hkpShape.h"  // hkpShape, hkpShapeKey
+#include "RE/hkpShape.h"
 
 
 namespace RE

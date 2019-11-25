@@ -3,9 +3,9 @@
 #include <type_traits>
 
 #include "RE/BSScript/ArrayTypeTraits.h"
-#include "RE/BSScript/ObjectTypeTraits.h"
 #include "RE/BSScript/CommonTypeTraits.h"
-#include "RE/BSScript/VMArray.h"  // BSScript::VMArray
+#include "RE/BSScript/ObjectTypeTraits.h"
+#include "RE/BSScript/VMArray.h"
 
 
 namespace RE

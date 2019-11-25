@@ -4,10 +4,16 @@
 #define _WIN32_WINNT 0x0601	// SSE requires minimum windows 7
 
 #include <WinSock2.h>
+#include <xmmintrin.h>
 
+#undef far
+#undef GetClassName
+#undef GetFileAttributes
+#undef GetObject
+#undef LoadIcon
 #undef min
 #undef max
-#undef GetClassName
+#undef near
 #undef PlaySound
 
 #pragma warning(disable: 4018)	// signed/unsigned mismatch
@@ -41,6 +47,9 @@ using SInt64 = signed long long;
 
 #include "Atomic.h"
 #include "Util.h"
+
+#include "skse64/GameRTTI.h"
+#include "skse64/NiRTTI.h"
 
 #include "RE/BSCoreTypes.h"
 #include "RE/SFTypes.h"

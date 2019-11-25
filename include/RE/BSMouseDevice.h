@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSMouseDevice
-
-#include "RE/BSInputDevice.h"  // BSInputDevice
+#include "RE/BSInputDevice.h"
 
 
 namespace RE

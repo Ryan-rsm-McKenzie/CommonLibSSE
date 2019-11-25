@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSScript/Stack.h"  // BSScript::Stack
+#include "RE/BSScript/Stack.h"
 
 
 namespace RE

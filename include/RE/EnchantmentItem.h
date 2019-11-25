@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_EnchantmentItem
-
-#include "RE/FormTypes.h"  //FormType
-#include "RE/MagicItem.h"  // MagicItem
+#include "RE/FormTypes.h"
+#include "RE/MagicItem.h"
 
 
 namespace RE

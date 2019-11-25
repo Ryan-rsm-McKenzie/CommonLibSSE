@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/GFxFileConstants.h"  // GFxFileConstants
-#include "RE/GFxState.h"  // GFxState::StateType
+#include "RE/GFxFileConstants.h"
+#include "RE/GFxState.h"
 
 
 namespace RE

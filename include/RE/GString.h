@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cstring>  // strcmp
+#include <cstring>
 
 
 namespace RE

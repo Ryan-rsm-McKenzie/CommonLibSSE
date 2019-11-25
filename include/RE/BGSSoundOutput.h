@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSSoundOutput
-
-#include "RE/BSISoundOutputModel.h"  // BSISoundOutputModel
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
+#include "RE/BSISoundOutputModel.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

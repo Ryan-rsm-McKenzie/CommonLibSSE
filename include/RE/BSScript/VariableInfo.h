@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSScript/Type.h"  // BSScript::Type
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTArray.h"  // BSTSimpleArray
+#include "RE/BSScript/Type.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSTArray.h"
 
 
 namespace RE

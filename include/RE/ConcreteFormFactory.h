@@ -1,8 +1,7 @@
 #pragma once
 
-#include "RE/IFormFactory.h"  // IFormFactory
-
-#include "RE/TESForm.h"  // TESForm
+#include "RE/IFormFactory.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

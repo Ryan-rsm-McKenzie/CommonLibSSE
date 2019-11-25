@@ -1,11 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiColorInterpolator
-#include "skse64/NiRTTI.h"  // NiRTTI_NiColorInterpolator
-
-#include "RE/NiColor.h"  // NiColorA
-#include "RE/NiKeyBasedInterpolator.h"  // NiKeyBasedInterpolator
-#include "RE/NiSmartPointer.h"  // NiPointer
+#include "RE/NiColor.h"
+#include "RE/NiKeyBasedInterpolator.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "hkSseMathTypes.h"  // hkQuadReal
+#include "hkSseMathTypes.h"
 
 
 namespace RE

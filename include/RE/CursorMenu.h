@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_CursorMenu
-
-#include "RE/IMenu.h"  // IMenu
-#include "RE/MenuEventHandler.h"  // MenuEventHandler
+#include "RE/IMenu.h"
+#include "RE/MenuEventHandler.h"
 
 
 namespace RE

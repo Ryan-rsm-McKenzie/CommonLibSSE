@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_IPackageDataAIWorldLocationHandle
-
-#include "RE/IAIWorldLocationHandle.h"  // IAIWorldLocationHandle
-#include "RE/IPackageData.h"  // IPackageData
+#include "RE/IAIWorldLocationHandle.h"
+#include "RE/IPackageData.h"
 
 
 namespace RE

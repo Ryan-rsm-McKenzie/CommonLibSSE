@@ -1,15 +1,13 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESFaction
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/FormTypes.h"  // FormType, TESObjectREFR, BGSListForm, BGSOutfit
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESReactionForm.h"  // TESReactionForm
-#include "RE/TESTexture.h"  // TESTexture
+#include "RE/BSFixedString.h"
+#include "RE/BSTHashMap.h"
+#include "RE/BSTList.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
+#include "RE/TESFullName.h"
+#include "RE/TESReactionForm.h"
+#include "RE/TESTexture.h"
 
 
 namespace RE

@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_PackageLocation
+#include <type_traits>
 
-#include <type_traits>  // underlying_type_t
-
-#include "RE/IAIWorldLocationHandle.h"  // IAIWorldLocationHandle
+#include "RE/IAIWorldLocationHandle.h"
 
 
 namespace RE

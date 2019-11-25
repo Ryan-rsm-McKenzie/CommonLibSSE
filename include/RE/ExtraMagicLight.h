@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ExtraMagicLight
-
-#include "RE/ExtraDataTypes.h"  // ExtraDataType
-#include "RE/ExtraLight.h"  // ExtraLight
-#include "RE/NiSmartPointer.h"  // NiPointer
+#include "RE/ExtraDataTypes.h"
+#include "RE/ExtraLight.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

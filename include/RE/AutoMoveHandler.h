@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_AutoMoveHandler
-
-#include "RE/PlayerInputHandler.h"  // PlayerInputHandler
+#include "RE/PlayerInputHandler.h"
 
 
 namespace RE

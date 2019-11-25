@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
-#include "RE/NiSmartPointer.h"  // NiPointer
+#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

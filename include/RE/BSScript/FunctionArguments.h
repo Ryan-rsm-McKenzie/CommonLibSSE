@@ -4,9 +4,9 @@
 #include <type_traits>
 #include <utility>
 
+#include "RE/BSScript/IFunctionArguments.h"
 #include "RE/BSScript/TypeTraits.h"
-#include "RE/BSScript/IFunctionArguments.h"  // BSScript::IFunctionArguments
-#include "RE/BSScript/ZeroFunctionArguments.h"  // BSScript::ZeroFunctionArguments
+#include "RE/BSScript/ZeroFunctionArguments.h"
 
 
 namespace RE

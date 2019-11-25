@@ -1,15 +1,13 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESClimate
+#include <ctime>
 
-#include <ctime>  // tm
-
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESModel.h"  // TESModel
-#include "RE/TESTexture.h"  // TESTexture
-#include "RE/WeatherType.h"  // WeatherType
+#include "RE/BSTList.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
+#include "RE/TESModel.h"
+#include "RE/TESTexture.h"
+#include "RE/WeatherType.h"
 
 
 namespace RE

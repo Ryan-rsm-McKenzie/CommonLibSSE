@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ScrollItem
-
-#include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
-#include "RE/BGSPickupPutdownSounds.h"  // BGSPickupPutdownSounds
-#include "RE/SpellItem.h"  // SpellItem
-#include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
-#include "RE/TESValueForm.h"  // TESValueForm
-#include "RE/TESWeightForm.h"  // TESWeightForm
+#include "RE/BGSDestructibleObjectForm.h"
+#include "RE/BGSPickupPutdownSounds.h"
+#include "RE/SpellItem.h"
+#include "RE/TESModelTextureSwap.h"
+#include "RE/TESValueForm.h"
+#include "RE/TESWeightForm.h"
 
 
 namespace RE

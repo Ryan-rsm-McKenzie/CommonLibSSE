@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/GStats.h"  // GStatGroups
+#include "RE/GStats.h"
 
 
 namespace RE

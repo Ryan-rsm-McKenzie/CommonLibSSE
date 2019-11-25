@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_CraftingSubMenus__SmithingMenu, RTTI_CraftingSubMenus__SmithingMenu__SmithingConfirmCallback
-
-#include "RE/CraftingSubMenu.h"  // CraftingSubMenu
-#include "RE/IMessageBoxCallback.h"  // IMessageBoxCallback
+#include "RE/CraftingSubMenu.h"
+#include "RE/IMessageBoxCallback.h"
 
 
 namespace RE

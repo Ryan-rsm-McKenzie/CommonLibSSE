@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_RaceSexCamera
-
-#include "RE/TESCamera.h"  // TESCamera
+#include "RE/TESCamera.h"
 
 
 namespace RE

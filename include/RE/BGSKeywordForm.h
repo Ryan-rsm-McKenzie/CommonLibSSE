@@ -1,15 +1,15 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSKeywordForm
+#include <optional>
 
-#include <optional>  // optional
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/BGSKeyword.h"  // BGSKeyword
+#include "RE/BaseFormComponent.h"
 
 
 namespace RE
 {
+	class BGSKeyword;
+
+
 	class BGSKeywordForm : public BaseFormComponent
 	{
 	public:

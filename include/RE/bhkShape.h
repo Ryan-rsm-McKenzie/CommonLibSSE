@@ -1,9 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_bhkShape
-#include "skse64/NiRTTI.h"  // NiRTTI_bhkShape
-
-#include "RE/bhkSerializable.h"  // bhkSerializable
+#include "RE/bhkSerializable.h"
 
 
 namespace RE

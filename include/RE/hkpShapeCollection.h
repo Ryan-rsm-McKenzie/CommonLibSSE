@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpShapeCollection
-
-#include "RE/hkpShape.h"  // hkpShape
-#include "RE/hkpShapeContainer.h"  // hkpShapeContainer
-#include "RE/hkpWeldingUtility.h"  // hkpWeldingUtility::WeldingType
+#include "RE/hkpShape.h"
+#include "RE/hkpShapeContainer.h"
+#include "RE/hkpWeldingUtility.h"
 
 
 namespace RE

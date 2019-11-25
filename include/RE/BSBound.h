@@ -1,9 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSBound
-#include "skse64/NiRTTI.h"  // NiRTTI_BSBound
-
-#include "RE/NiExtraData.h"  // NiExtraData
+#include "RE/NiExtraData.h"
 
 
 namespace RE

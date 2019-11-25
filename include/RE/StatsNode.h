@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/SimpleAnimationGraphManagerHolder.h"  // SimpleAnimationGraphManagerHolder
+#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTEvent.h"
+#include "RE/SimpleAnimationGraphManagerHolder.h"
 
 
 namespace RE
@@ -17,6 +17,9 @@ namespace RE
 		public BSTEventSink<BSAnimationGraphEvent>	// 18
 	{
 	public:
+		inline static const void* RTTI = RTTI_StatsNode;
+
+
 		virtual ~StatsNode();																												// 00
 
 		// override (SimpleAnimationGraphManagerHolder)

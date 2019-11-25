@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_CraftingSubMenus__ConstructibleObjectMenu, RTTI_CraftingSubMenus__ConstructibleObjectMenu__CreationConfirmCallback
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/CraftingSubMenu.h"  // CraftingSubMenu
-#include "RE/IMessageBoxCallback.h"  // IMessageBoxCallback
+#include "RE/BSTArray.h"
+#include "RE/CraftingSubMenu.h"
+#include "RE/IMessageBoxCallback.h"
 
 
 namespace RE

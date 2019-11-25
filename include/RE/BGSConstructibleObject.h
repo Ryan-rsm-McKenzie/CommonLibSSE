@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSConstructibleObject
-
-#include "RE/Condition.h"  // Condition
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESContainer.h"  // TESForm
-#include "RE/TESForm.h"  // TESForm
+#include "RE/Condition.h"
+#include "RE/FormTypes.h"
+#include "RE/TESContainer.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

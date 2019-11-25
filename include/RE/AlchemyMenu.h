@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_CraftingSubMenus__AlchemyMenu, RTTI_CraftingSubMenus__AlchemyMenu__QuitMenuCallback
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/CraftingSubMenu.h"  // CraftingSubMenu
-#include "RE/IMessageBoxCallback.h"  // IMessageBoxCallback
+#include "RE/BSFixedString.h"
+#include "RE/BSTArray.h"
+#include "RE/CraftingSubMenu.h"
+#include "RE/IMessageBoxCallback.h"
 
 
 namespace RE

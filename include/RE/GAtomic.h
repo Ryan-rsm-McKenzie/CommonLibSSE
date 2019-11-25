@@ -1,9 +1,6 @@
 #pragma once
 
-#include <minwinbase.h>  // CRITICAL_SECTION
-#include <winnt.h>  // Interlocked
-
-#include <type_traits>  // is_integral
+#include <type_traits>
 
 
 namespace RE

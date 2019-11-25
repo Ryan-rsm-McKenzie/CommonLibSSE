@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_IAnimationGraphManagerHolder
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/BSFixedString.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE

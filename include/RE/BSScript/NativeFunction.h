@@ -1,19 +1,19 @@
 #pragma once
 
-#include <tuple>  // tuple
+#include <tuple>
 #include <type_traits>
 #include <utility>
 
-#include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
-#include "RE/BSScript/NF_util/NativeFunctionBase.h"  // BSScript::NF_util::NativeFunctionBase
-#include "RE/BSScript/PackUnpack.h"  // GetTypeID, PackValue, UnpackValue
-#include "RE/BSScript/Stack.h"  // BSScript::Stack
-#include "RE/BSScript/TypeTraits.h"  // BSScript::is_static_base
-#include "RE/BSScript/Variable.h"  // BSScript::Variable
-#include "RE/BSScript/IObjectHandlePolicy.h"  // BSScript::IObjectHandlePolicy
-#include "RE/BSScript/StackFrame.h"  // BSScript::StackFrame
-#include "RE/BSScript/VMArray.h"  // BSScript::VMArray
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/BSScript/Internal/VirtualMachine.h"
+#include "RE/BSScript/NF_util/NativeFunctionBase.h"
+#include "RE/BSScript/PackUnpack.h"
+#include "RE/BSScript/Stack.h"
+#include "RE/BSScript/TypeTraits.h"
+#include "RE/BSScript/Variable.h"
+#include "RE/BSScript/IObjectHandlePolicy.h"
+#include "RE/BSScript/StackFrame.h"
+#include "RE/BSScript/VMArray.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE

@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ButtonEvent
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/IDEvent.h"  // IDEvent
-#include "RE/InputEvent.h"  // InputEvent
+#include "RE/BSFixedString.h"
+#include "RE/IDEvent.h"
+#include "RE/InputEvent.h"
 
 
 namespace RE

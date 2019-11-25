@@ -3,14 +3,14 @@
 #undef GetObject
 #undef SetForm
 
-#include <type_traits>  // enable_if_t
+#include <type_traits>
 
-#include "RE/BSScript/ArrayTypeTraits.h"  // is_script_array_pointer_no_cvr
-#include "RE/BSScript/ObjectTypeTraits.h"  // is_script_object_pointer_no_cvr
-#include "RE/BSScript/CommonTypeTraits.h"  // is_sint32_no_cvr, is_uint32_no_cvr, is_float_no_cvr, is_bool_no_cvr, is_string_no_cvr
-#include "RE/BSScript/Type.h"  // BSScript::Type
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/BSScript/ArrayTypeTraits.h"
+#include "RE/BSScript/CommonTypeTraits.h"
+#include "RE/BSScript/ObjectTypeTraits.h"
+#include "RE/BSScript/Type.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE

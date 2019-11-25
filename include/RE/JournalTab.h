@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_JournalTab
-
-#include "RE/FxDelegateHandler.h"  // FxDelegateHandler
-#include "RE/GPtr.h"  // GPtr
+#include "RE/FxDelegateHandler.h"
+#include "RE/GPtr.h"
 
 
 namespace RE

@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__IFunctionArguments
-
-#include "RE/BSScript/Variable.h"  // BSScript::Variable
-#include "RE/BSTArray.h"  // BSScrapArray
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/BSScript/Variable.h"
+#include "RE/BSTArray.h"
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

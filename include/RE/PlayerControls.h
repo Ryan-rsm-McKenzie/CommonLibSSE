@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
-#include "RE/MovementData.h"  // MovementData
+#include "RE/BSTArray.h"
+#include "RE/BSTEvent.h"
+#include "RE/BSTSingleton.h"
+#include "RE/MovementData.h"
 
 
 namespace RE

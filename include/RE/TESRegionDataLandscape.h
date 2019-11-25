@@ -1,10 +1,6 @@
 #pragma once
 
-#undef LoadIcon
-
-#include "skse64/GameRTTI.h"  // RTTI_TESRegionDataLandscape
-
-#include "RE/TESRegionData.h"  // TESRegionData
+#include "RE/TESRegionData.h"
 
 
 namespace RE

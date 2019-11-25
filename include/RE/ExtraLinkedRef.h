@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ExtraLinkedRef
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/ExtraDataTypes.h"  // ExtraDataType
-#include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/BSTArray.h"
+#include "RE/ExtraDataTypes.h"
+#include "RE/BSExtraData.h"
 
 
 namespace RE

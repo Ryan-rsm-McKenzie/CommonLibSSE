@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>  // string
+#include <string>
 
 #include "RE/FormTypes.h"
 

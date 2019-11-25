@@ -1,13 +1,14 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESProduceForm
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/FormTypes.h"  // BGSSoundDescriptorForm
+#include "RE/BaseFormComponent.h"
 
 
 namespace RE
 {
+	class BGSSoundDescriptorForm;
+	class IngredientItem;
+
+
 	class TESProduceForm : public BaseFormComponent
 	{
 	public:

@@ -1,10 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiCullingProcess
-#include "skse64/NiRTTI.h"  // NiRTTI_NiCullingProcess
-
-#include "RE/NiFrustum.h"  // NiFrustum
-#include "RE/NiFrustumPlanes.h"  // NiFrustumPlanes
+#include "RE/NiFrustum.h"
+#include "RE/NiFrustumPlanes.h"
 
 
 namespace RE

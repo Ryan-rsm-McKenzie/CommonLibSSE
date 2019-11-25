@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSBlockBashData
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/FormTypes.h"  // BGSImpactDataSet, BGSMaterialType
+#include "RE/BaseFormComponent.h"
+#include "RE/FormTypes.h"
 
 
 namespace RE

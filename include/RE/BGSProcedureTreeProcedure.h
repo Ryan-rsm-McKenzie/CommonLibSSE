@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSProcedureTreeProcedure
-
-#include "RE/BGSProcedureTreeConditionalItem.h"  // BGSProcedureTreeConditionalItem
-#include "RE/BGSTypedItem.h"  // BGSTypedItem
+#include "RE/BGSProcedureTreeConditionalItem.h"
+#include "RE/BGSTypedItem.h"
 
 
 namespace RE

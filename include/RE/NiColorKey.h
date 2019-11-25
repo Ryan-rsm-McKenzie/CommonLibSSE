@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/NiAnimationKey.h"  // NiAnimationKey
-#include "RE/NiColor.h"  // NiColorA
+#include "RE/NiAnimationKey.h"
+#include "RE/NiColor.h"
 
 
 namespace RE

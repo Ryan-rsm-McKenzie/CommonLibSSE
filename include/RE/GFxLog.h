@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_GFxLog
+#include <cstdarg>
 
-#include <cstdarg>  // va_list
-
-#include "RE/GFxLogBase.h"  // GFxLogBase
-#include "RE/GFxState.h"  // GFxState
+#include "RE/GFxLogBase.h"
+#include "RE/GFxState.h"
 
 
 namespace RE

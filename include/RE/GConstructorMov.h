@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cstring>  // memmove
+#include <cstring>
 
 
 namespace RE

@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_Projectile
-
-#include "RE/BSLock.h"  // BSUniqueLock
-#include "RE/TESObjectREFR.h"  // TESObjectREFR
+#include "RE/BSLock.h"
+#include "RE/TESObjectREFR.h"
 
 
 namespace RE

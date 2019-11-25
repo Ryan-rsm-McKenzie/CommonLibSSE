@@ -1,18 +1,16 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESQuest
-
-#include "RE/BGSStoryManagerTreeForm.h"  // BGSStoryManagerTreeForm
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSLock.h"  // BSReadWriteLock
-#include "RE/BSString.h"  // BSString
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/Condition.h"  // Condition
-#include "RE/FormTypes.h"  // FormType
-#include "RE/QuestEvents.h"  // QuestEvent
-#include "RE/TESFullName.h"  // TESFullName
+#include "RE/BGSStoryManagerTreeForm.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSLock.h"
+#include "RE/BSString.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTHashMap.h"
+#include "RE/BSTList.h"
+#include "RE/Condition.h"
+#include "RE/FormTypes.h"
+#include "RE/QuestEvents.h"
+#include "RE/TESFullName.h"
 
 
 namespace RE

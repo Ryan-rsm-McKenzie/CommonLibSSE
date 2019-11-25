@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_PlayerCamera
-
-#include "RE/BSTArray.h"  // BSTSmallArray
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
-#include "RE/BSLock.h"  // BSUniqueLock
-#include "RE/NiPoint3.h"  // NiPoint3
-#include "RE/TESCamera.h"  // TESCamera
+#include "RE/BSTArray.h"
+#include "RE/BSTSingleton.h"
+#include "RE/BSTSmartPointer.h"
+#include "RE/BSLock.h"
+#include "RE/NiPoint3.h"
+#include "RE/TESCamera.h"
 
 
 namespace RE

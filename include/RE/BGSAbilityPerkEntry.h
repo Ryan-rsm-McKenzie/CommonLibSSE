@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSAbilityPerkEntry
-
-#include "RE/BGSPerkEntry.h"  // BGSPerkEntry
+#include "RE/BGSPerkEntry.h"
 
 
 namespace RE

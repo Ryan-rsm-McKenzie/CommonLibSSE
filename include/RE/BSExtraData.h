@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSExtraData
-
-#include "RE/ExtraDataTypes.h"  // ExtraDataType
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/ExtraDataTypes.h"
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkbBehaviorGraph
-
-#include "RE/hkArray.h"  // hkArray
-#include "RE/hkRefVariant.h"  // hkRefVariant
-#include "RE/hkbGenerator.h"  // hkbGenerator
+#include "RE/hkArray.h"
+#include "RE/hkRefVariant.h"
+#include "RE/hkbGenerator.h"
 
 
 namespace RE

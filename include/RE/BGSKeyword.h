@@ -1,9 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSKeyword
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/TESForm.h"  // TESForm
+#include "RE/BSFixedString.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSString.h"  // BSString
-#include "RE/IUIMessageData.h"  // IUIMessageData
+#include "RE/BSString.h"
+#include "RE/IUIMessageData.h"
 
 
 namespace RE

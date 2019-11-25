@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSNavmeshInfoMap
-
-#include "RE/BSTSingleton.h"  // BSTSingletonExplicit
+#include "RE/BSTSingleton.h"
 
 
 namespace RE

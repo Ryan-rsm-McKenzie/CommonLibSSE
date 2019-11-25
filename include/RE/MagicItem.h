@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_MagicItem
-
-#include "RE/ActorValues.h"  // ActorValue
-#include "RE/BGSKeywordForm.h"  // BGSKeywordForm
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/TESBoundObject.h"  // TESBoundObject
-#include "RE/TESFullName.h"  // TESFullName
+#include "RE/ActorValues.h"
+#include "RE/BGSKeywordForm.h"
+#include "RE/BSTArray.h"
+#include "RE/TESBoundObject.h"
+#include "RE/TESFullName.h"
 
 
 namespace RE

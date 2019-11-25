@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESCustomPackageData
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
-#include "RE/TESPackageData.h"  // TESPackageData
+#include "RE/BSFixedString.h"
+#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTSmartPointer.h"
+#include "RE/TESPackageData.h"
 
 
 namespace RE

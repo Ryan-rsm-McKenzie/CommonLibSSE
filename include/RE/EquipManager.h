@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
+#include "RE/BSTSingleton.h"
 
 
 namespace RE

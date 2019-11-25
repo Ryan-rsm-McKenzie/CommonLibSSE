@@ -1,11 +1,11 @@
 #pragma once
 
-#include <algorithm>  // min
-#include <cassert>  // assert
-#include <cmath>  // ceil
-#include <cstring>  // memcpy
+#include <algorithm>
+#include <cassert>
+#include <cmath>
+#include <cstring>
 
-#include "RE/hkContainerAllocators.h"  // hkContainerHeapAllocator
+#include "RE/hkContainerAllocators.h"
 
 
 namespace RE

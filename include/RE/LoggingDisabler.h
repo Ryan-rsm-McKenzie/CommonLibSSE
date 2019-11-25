@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/GFxLog.h"  // GFxLog
+#include "RE/GFxLog.h"
 
 
 namespace RE

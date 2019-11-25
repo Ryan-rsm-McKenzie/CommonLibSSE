@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ImageSpaceShaderParam
-
-#include "RE/ImageSpaceEffectParam.h"  // ImageSpaceEffectParam
-#include "RE/NiTArray.h"  // NiTObjectArray
-#include "RE/NiSmartPointer.h"  // NiPointer
-#include "RE/NiTexture.h"  // NiTexture
+#include "RE/ImageSpaceEffectParam.h"
+#include "RE/NiTArray.h"
+#include "RE/NiSmartPointer.h"
+#include "RE/NiTexture.h"
 
 
 namespace RE

@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkbStateMachine, RTTI_hkbStateMachine__StateInfo, RTTI_hkbStateMachine__TransitionInfoArray
-
-#include "RE/hkArray.h"  // hkArray
-#include "RE/hkbBindable.h"  // hkbBindable
-#include "RE/hkbEvent.h"  // hkbEvent
-#include "RE/hkbGenerator.h"  // hkbGenerator
-#include "RE/hkReferencedObject.h"  // hkReferencedObject
-#include "RE/hkRefPtr.h"  // hkRefPtr
+#include "RE/hkArray.h"
+#include "RE/hkbBindable.h"
+#include "RE/hkbEvent.h"
+#include "RE/hkbGenerator.h"
+#include "RE/hkReferencedObject.h"
+#include "RE/hkRefPtr.h"
 
 
 namespace RE

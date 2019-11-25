@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_FlameProjectile
-
-#include "RE/FormTypes.h"  // FormType
-#include "RE/Projectile.h"  // Projectile
+#include "RE/FormTypes.h"
+#include "RE/Projectile.h"
 
 
 namespace RE

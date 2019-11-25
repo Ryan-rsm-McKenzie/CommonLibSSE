@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSCameraPath
-
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/Condition.h"  // Condition
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
+#include "RE/BSTList.h"
+#include "RE/Condition.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESFurniture
-
-#include "RE/ActorValues.h"  // ActorValue8
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESObjectACTI.h"  // TESObjectACTI
+#include "RE/ActorValues.h"
+#include "RE/BSTArray.h"
+#include "RE/FormTypes.h"
+#include "RE/TESObjectACTI.h"
 
 
 namespace RE

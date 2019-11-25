@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkbBindable
-
-#include "RE/hkArray.h"  // hkArray
-#include "RE/hkReferencedObject.h"  // hkReferencedObject
-#include "RE/hkRefPtr.h"  // hkRefPtr
+#include "RE/hkArray.h"
+#include "RE/hkReferencedObject.h"
+#include "RE/hkRefPtr.h"
 
 
 namespace RE

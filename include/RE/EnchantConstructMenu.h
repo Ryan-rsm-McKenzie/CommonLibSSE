@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_CraftingSubMenus__EnchantConstructMenu, RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuCallback, RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuDisenchantCallback, RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuCraftCallback, RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuExitCallback
-
-#include "RE/BSString.h"  // BSString
-#include "RE/CraftingSubMenu.h"  // CraftingSubMenu
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/IMessageBoxCallback.h"  // IMessageBoxCallback
+#include "RE/BSString.h"
+#include "RE/CraftingSubMenu.h"
+#include "RE/GFxValue.h"
+#include "RE/IMessageBoxCallback.h"
 
 
 namespace RE

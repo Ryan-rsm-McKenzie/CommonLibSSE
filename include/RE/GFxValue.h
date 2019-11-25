@@ -2,12 +2,12 @@
 
 #include <string_view>
 
-#include "RE/GFxPlayerStats.h"  // GFxStatMovieViews
-#include "RE/GMatrix3D.h"  // GMatrix3D
-#include "RE/GMemory.h"  // GFC_MEMORY_REDEFINE_NEW
-#include "RE/GNewOverrideBase.h"  // GNewOverrideBase
-#include "RE/GStats.h"  // GStatGroups
-#include "RE/GString.h"  // GString
+#include "RE/GFxPlayerStats.h"
+#include "RE/GMatrix3D.h"
+#include "RE/GMemory.h"
+#include "RE/GNewOverrideBase.h"
+#include "RE/GStats.h"
+#include "RE/GString.h"
 
 
 namespace RE

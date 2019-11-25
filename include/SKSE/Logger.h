@@ -1,18 +1,18 @@
 #pragma once
 
 #include <KnownFolders.h>
-#include <ShlObj.h>  // REFKNOWNFOLDERID
+#include <ShlObj.h>
 
-#include <cstdarg>  // va_list
-#include <filesystem> // path
-#include <fstream>  // ofstream
-#include <ios>  // ios_base
-#include <regex>  // regex
-#include <string>  // string
-#include <utility>  // pair
+#include <cstdarg>
+#include <filesystem>
+#include <fstream>
+#include <ios>
+#include <regex>
+#include <string>
+#include <utility>
 
-#include "RE/BSScript/LogEvent.h"  // BSScript::LogEvent
-#include "RE/BSTEvent.h"  // BSTEventSink
+#include "RE/BSScript/LogEvent.h"
+#include "RE/BSTEvent.h"
 
 
 namespace SKSE

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSReloadShaderI
-
-#include "RE/ImageSpaceEffect.h"  // ImageSpaceEffect
+#include "RE/ImageSpaceEffect.h"
 
 
 namespace RE

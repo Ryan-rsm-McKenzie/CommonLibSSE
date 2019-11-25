@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSSoundDescriptor
-
-#include "RE/BSISoundDescriptor.h"  // BSISoundDescriptor
+#include "RE/BSISoundDescriptor.h"
 
 
 namespace RE

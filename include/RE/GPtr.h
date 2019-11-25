@@ -1,8 +1,7 @@
 #pragma once
 
-#include <cassert>  // assert
-#include <cstddef>  // nullptr_t
-#include <type_traits>  // enable_if_t, is_convertible
+#include <cassert>
+#include <type_traits>
 
 
 namespace RE

@@ -1,25 +1,24 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESObjectWEAP
-
-#include "RE/ActorValues.h"  // ActorValue, ActorValue8
-#include "RE/BGSBlockBashData.h"  // BGSBlockBashData
-#include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
-#include "RE/BGSEquipType.h"  // BGSEquipType
-#include "RE/BGSKeywordForm.h"  // BGSKeywordForm
-#include "RE/BGSMessageIcon.h"  // BGSMessageIcon
-#include "RE/BGSPickupPutdownSounds.h"  // BGSPickupPutdownSounds
-#include "RE/BGSPreloadable.h"  // BGSPreloadable
-#include "RE/SoundLevels.h"  // SoundLevel
-#include "RE/TESAttackDamageForm.h"  // TESAttackDamageForm
-#include "RE/TESBoundObject.h"  // TESBoundObject
-#include "RE/TESDescription.h"  // TESDescription
-#include "RE/TESEnchantableForm.h"  // TESEnchantableForm
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESIcon.h"  // TESIcon
-#include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
-#include "RE/TESValueForm.h"  // TESValueForm
-#include "RE/TESWeightForm.h"  // TESWeightForm
+#include "RE/ActorValues.h"
+#include "RE/BGSBlockBashData.h"
+#include "RE/BGSDestructibleObjectForm.h"
+#include "RE/BGSEquipType.h"
+#include "RE/BGSKeywordForm.h"
+#include "RE/BGSMessageIcon.h"
+#include "RE/BGSPickupPutdownSounds.h"
+#include "RE/BGSPreloadable.h"
+#include "RE/FormTypes.h"
+#include "RE/SoundLevels.h"
+#include "RE/TESAttackDamageForm.h"
+#include "RE/TESBoundObject.h"
+#include "RE/TESDescription.h"
+#include "RE/TESEnchantableForm.h"
+#include "RE/TESFullName.h"
+#include "RE/TESIcon.h"
+#include "RE/TESModelTextureSwap.h"
+#include "RE/TESValueForm.h"
+#include "RE/TESWeightForm.h"
 
 
 namespace RE

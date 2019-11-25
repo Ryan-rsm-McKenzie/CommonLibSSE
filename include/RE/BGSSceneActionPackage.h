@@ -1,14 +1,14 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSSceneActionPackage
-
-#include "RE/BGSSceneAction.h"  // BGSSceneAction
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/FormTypes.h"  // TESPackage
+#include "RE/BGSSceneAction.h"
+#include "RE/BSTArray.h"
 
 
 namespace RE
 {
+	class TESPackage;
+
+
 	class BGSSceneActionPackage : public BGSSceneAction
 	{
 	public:

@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_KinectMenu
-
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/IMenu.h"  // IMenu
+#include "RE/BSTEvent.h"
+#include "RE/GFxValue.h"
+#include "RE/IMenu.h"
 
 
 namespace RE

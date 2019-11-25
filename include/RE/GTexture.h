@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/GAtomic.h"  // GAtomicInt
-#include "RE/GImage.h"  // GImage
-#include "RE/GNewOverrideBase.h"  // GNewOverrideBase
-#include "RE/GPoint.h"  // GPoint
-#include "RE/GRect.h"  // GRect
+#include "RE/GAtomic.h"
+#include "RE/GImage.h"
+#include "RE/GNewOverrideBase.h"
+#include "RE/GPoint.h"
+#include "RE/GRect.h"
 
 
 namespace RE

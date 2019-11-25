@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSRefAlias
-
-#include "RE/BGSBaseAlias.h"  // BGSBaseAlias
-#include "RE/FormTypes.h"  // TESNPC, TESObjectSTAT, TESQuest, BGSLocation
-#include "RE/QuestEvents.h"  // QuestEvent
+#include "RE/BGSBaseAlias.h"
+#include "RE/FormTypes.h"
+#include "RE/QuestEvents.h"
 
 
 namespace RE

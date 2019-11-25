@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSMusicPaletteTrack
-
-#include "RE/BGSMusicTrack.h"  // BGSMusicTrack
-#include "RE/BSTArray.h"  // BSTArray
+#include "RE/BGSMusicTrack.h"
+#include "RE/BSTArray.h"
 
 
 namespace RE

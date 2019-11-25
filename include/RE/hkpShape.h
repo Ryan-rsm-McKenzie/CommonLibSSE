@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpShape
-
-#include "RE/hkReferencedObject.h"  // hkReferencedObject
-#include "RE/hkSseMathTypes.h"  // hkVector4Comparison
-#include "RE/hkpShapeBuffer.h"  // hkpShapeBuffer
-#include "RE/hkpShapeType.h"  // hkpShapeType
+#include "RE/hkReferencedObject.h"
+#include "RE/hkSseMathTypes.h"
+#include "RE/hkpShapeBuffer.h"
+#include "RE/hkpShapeType.h"
 
 
 namespace RE

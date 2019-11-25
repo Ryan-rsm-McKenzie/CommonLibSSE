@@ -1,9 +1,9 @@
 #pragma once
 
-#include <cstdarg>  // va_list
+#include <cstdarg>
 
-#include "RE/GFxPlayerStats.h"  // GFxStatMovieViews
-#include "RE/GRefCountBase.h"  // GRefCountBase
+#include "RE/GFxPlayerStats.h"
+#include "RE/GRefCountBase.h"
 
 
 namespace RE

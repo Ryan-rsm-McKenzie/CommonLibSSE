@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSTEvent.h"  // BSTEventSource
-#include "RE/NiSmartPointer.h"  // NiPointer
+#include "RE/BSTEvent.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

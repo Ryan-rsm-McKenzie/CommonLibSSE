@@ -1,9 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSTextureSet
-#include "skse64/NiRTTI.h"  // NiRTTI_BSTextureSet
-
-#include "RE/NiObject.h"  // NiObject
+#include "RE/NiObject.h"
 
 
 namespace RE

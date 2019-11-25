@@ -1,10 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiSkinPartition
-#include "skse64/NiRTTI.h"  // NiRTTI_NiSkinPartition
-
-#include "RE/NiGeometryData.h"  // NiGeometryData
-#include "RE/NiObject.h"  // NiObject
+#include "RE/NiGeometryData.h"
+#include "RE/NiObject.h"
 
 
 namespace RE

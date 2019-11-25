@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScaleformTranslator
-
-#include "RE/BSFixedString.h"  // BSFixedStringW
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/GFxTranslator.h"  // GFxTranslator
+#include "RE/BSFixedString.h"
+#include "RE/BSTHashMap.h"
+#include "RE/GFxTranslator.h"
 
 
 namespace RE

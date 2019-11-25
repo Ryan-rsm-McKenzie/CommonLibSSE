@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_CraftingSubMenus__CraftingSubMenu
-
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/FxDelegateHandler.h"  // FxDelegateHandler
-#include "RE/GFxValue.h"  // GFxValue
+#include "RE/BSTEvent.h"
+#include "RE/FxDelegateHandler.h"
+#include "RE/GFxValue.h"
 
 
 namespace RE

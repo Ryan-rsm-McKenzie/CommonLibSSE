@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESLandTexture
-
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/FormTypes.h"  // FormType, BGSTextureSet, BGSMaterialType, TESGrass
-#include "RE/TESForm.h"  // TESForm
+#include "RE/BSTList.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_bhkCharacterStateOnGround
-
-#include "RE/bhkCharacterState.h"  // bhkCharacterState
+#include "RE/bhkCharacterState.h"
 
 
 namespace RE

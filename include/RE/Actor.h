@@ -1,23 +1,19 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_Actor
-
-#include <minwinbase.h>  // CRITICAL_SECTION
-
-#include "RE/ActiveEffect.h"  // ActiveEffect
-#include "RE/ActorState.h"  // ActorState
-#include "RE/ActorValueOwner.h"  // ActorValueOwner
-#include "RE/ActorValues.h"  // ActorValue, ActorValue8
-#include "RE/BGSEntryPointPerkEntry.h"  // BGSEntryPointPerkEntry
-#include "RE/BSTArray.h"  // BSTSmallArray
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/FormTypes.h"  // BGSPerk, TESRace, TESFaction
-#include "RE/IPostAnimationChannelUpdateFunctor.h"  // IPostAnimationChannelUpdateFunctor
-#include "RE/MagicTarget.h"  // MagicTarget
-#include "RE/NiSmartPointer.h"  // NiPointer
-#include "RE/TESNPC.h"  // TESNPC
-#include "RE/TESObjectREFR.h"  // TESObjectREFR
+#include "RE/ActiveEffect.h"
+#include "RE/ActorState.h"
+#include "RE/ActorValueOwner.h"
+#include "RE/ActorValues.h"
+#include "RE/BGSEntryPointPerkEntry.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTEvent.h"
+#include "RE/BSTList.h"
+#include "RE/FormTypes.h"
+#include "RE/IPostAnimationChannelUpdateFunctor.h"
+#include "RE/MagicTarget.h"
+#include "RE/NiSmartPointer.h"
+#include "RE/TESNPC.h"
+#include "RE/TESObjectREFR.h"
 
 
 namespace RE

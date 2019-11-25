@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSNiAllocator
-
-#include "RE/NiAllocator.h"  // NiAllocator
+#include "RE/NiAllocator.h"
 
 
 namespace RE

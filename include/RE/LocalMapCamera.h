@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_LocalMapCamera, RTTI_LocalMapCamera__DefaultState
-
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
-#include "RE/NiPoint3.h"  // NiPoint3
-#include "RE/NiSmartPointer.h"  // NiPointer
-#include "RE/TESCamera.h"  // TESCamera
-#include "RE/TESCameraState.h"  // TESCameraState
+#include "RE/BSTSmartPointer.h"
+#include "RE/NiPoint3.h"
+#include "RE/NiSmartPointer.h"
+#include "RE/TESCamera.h"
+#include "RE/TESCameraState.h"
 
 
 namespace RE

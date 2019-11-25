@@ -1,6 +1,6 @@
 #include "REL/Relocation.h"
 
-#include "RE/RTTI.h"  // RTTI
+#include "RE/RTTI.h"
 
 
 namespace REL

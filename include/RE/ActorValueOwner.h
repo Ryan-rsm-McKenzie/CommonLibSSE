@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ActorValueOwner
-
-#include "RE/ActorValues.h"  // ActorValue
+#include "RE/ActorValues.h"
 
 
 namespace RE

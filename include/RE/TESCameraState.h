@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESCameraState
-
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE

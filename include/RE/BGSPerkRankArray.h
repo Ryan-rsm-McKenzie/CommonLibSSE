@@ -1,13 +1,13 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSPerkRankArray
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/FormTypes.h"  // BGSPerk
+#include "RE/BaseFormComponent.h"
 
 
 namespace RE
 {
+	class BGSPerk;
+
+
 	class BGSPerkRankArray : public BaseFormComponent
 	{
 	public:

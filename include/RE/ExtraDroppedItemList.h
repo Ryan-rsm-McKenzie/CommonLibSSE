@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ExtraDroppedItemList
-
-#include "RE/BSExtraData.h"  // BSExtraData
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/ExtraDataTypes.h"  // ExtraDataType
+#include "RE/BSExtraData.h"
+#include "RE/BSTList.h"
+#include "RE/ExtraDataTypes.h"
 
 
 namespace RE

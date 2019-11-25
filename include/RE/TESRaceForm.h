@@ -1,13 +1,13 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESRaceForm
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/FormTypes.h"  // TESRace
+#include "RE/BaseFormComponent.h"
 
 
 namespace RE
 {
+	class TESRace;
+
+
 	class TESRaceForm : public BaseFormComponent
 	{
 	public:

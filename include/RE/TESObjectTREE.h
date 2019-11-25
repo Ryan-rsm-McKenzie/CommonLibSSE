@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESObjectTREE
-
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESBoundObject.h"  // TESBoundObject
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESModel.h"  // TESModel
-#include "RE/TESProduceForm.h"  // TESProduceForm
+#include "RE/FormTypes.h"
+#include "RE/TESBoundObject.h"
+#include "RE/TESFullName.h"
+#include "RE/TESModel.h"
+#include "RE/TESProduceForm.h"
 
 
 namespace RE

@@ -1,10 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiTimeController
-#include "skse64/NiRTTI.h"  // NiRTTI_NiTimeController
-
-#include "RE/NiObject.h"  // NiObject
-#include "RE/NiSmartPointer.h"  // NiSmartPointer
+#include "RE/NiObject.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

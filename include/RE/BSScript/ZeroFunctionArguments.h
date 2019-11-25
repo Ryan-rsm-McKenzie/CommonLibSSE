@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__ZeroFunctionArguments
-
-#include "RE/BSScript/IFunctionArguments.h"  // BSScript::IFunctionArguments
+#include "RE/BSScript/IFunctionArguments.h"
 
 
 namespace RE

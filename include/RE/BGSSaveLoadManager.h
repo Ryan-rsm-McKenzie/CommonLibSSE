@@ -1,15 +1,13 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSSaveLoadManager, RTTI_BGSSaveLoadManager__Thread
-
-#include "RE/bgs/saveload/Request.h"  // bgs::saveload::Request
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTEvent.h"  // BSTEventSink, BSTEventSource
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSThread.h"  // BSThread
-#include "RE/BSTMessageQueue.h"  // BSTCommonStaticMessageQueue
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
-#include "RE/RaceSexMenuEvent.h"  // RaceSexMenuEvent::NameChangedEvent
+#include "RE/bgs/saveload/Request.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTEvent.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSThread.h"
+#include "RE/BSTMessageQueue.h"
+#include "RE/BSTSmartPointer.h"
+#include "RE/RaceSexMenuEvent.h"
 
 
 namespace RE

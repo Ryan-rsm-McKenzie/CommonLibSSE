@@ -1,19 +1,17 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESObjectCELL
-
-#include "RE/BaseExtraList.h"  // BaseExtraList
-#include "RE/BSLock.h"  // BSUniqueLock
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTHashMap.h"  // BSTHashSet
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/Color.h"  // Color
-#include "RE/DirectionalAmbientLightingColor.h"  // DirectionalAmbientLightingColor
-#include "RE/FormTypes.h"  // FormType
-#include "RE/NiSmartPointer.h"  // NiPointer
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESObjectREFR.h"  // TESObjectREFR
+#include "RE/BaseExtraList.h"
+#include "RE/BSLock.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTHashMap.h"
+#include "RE/BSTList.h"
+#include "RE/Color.h"
+#include "RE/DirectionalAmbientLightingColor.h"
+#include "RE/FormTypes.h"
+#include "RE/NiSmartPointer.h"
+#include "RE/TESForm.h"
+#include "RE/TESFullName.h"
+#include "RE/TESObjectREFR.h"
 
 
 namespace RE

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_PlayerInputHandler
-
-#include "RE/MovementData.h"  // MovementData
+#include "RE/MovementData.h"
 
 
 namespace RE

@@ -1,14 +1,12 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_MovementControllerNPC
-
-#include "RE/IAnimationSetCallbackFunctor.h"  // IAnimationSetCallbackFunctor
-#include "RE/IMovementDirectControl.h"  // IMovementDirectControl
-#include "RE/IMovementMessageInterface.h"  // IMovementMessageInterface
-#include "RE/IMovementMotionDrivenControl.h"  // IMovementMotionDrivenControl
-#include "RE/IMovementPlannerDirectControl.h"  // IMovementPlannerDirectControl
-#include "RE/IMovementSelectIdle.h"  // IMovementSelectIdle
-#include "RE/MovementControllerAI.h"  // MovementControllerAI
+#include "RE/IAnimationSetCallbackFunctor.h"
+#include "RE/IMovementDirectControl.h"
+#include "RE/IMovementMessageInterface.h"
+#include "RE/IMovementMotionDrivenControl.h"
+#include "RE/IMovementPlannerDirectControl.h"
+#include "RE/IMovementSelectIdle.h"
+#include "RE/MovementControllerAI.h"
 
 
 namespace RE

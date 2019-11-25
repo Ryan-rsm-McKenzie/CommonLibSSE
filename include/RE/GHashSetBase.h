@@ -1,12 +1,12 @@
 #pragma once
 
-#include <cassert>  // assert
+#include <cassert>
 
-#include "RE/GAllocator.h"  // GAllocatorGH
-#include "RE/GFixedSizeHash.h"  // GFixedSizeHash
-#include "RE/GHashsetCachedEntry.h"  // GHashsetCachedEntry
-#include "GMath.h"  // gfchop, glog2f
-#include "RE/GMemory.h"  // GFC_MEMORY_REDEFINE_NEW
+#include "RE/GAllocator.h"
+#include "RE/GFixedSizeHash.h"
+#include "RE/GHashsetCachedEntry.h"
+#include "GMath.h"
+#include "RE/GMemory.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NiTMap.h"  // NiTMap
+#include "RE/NiTMap.h"
 
 
 namespace RE

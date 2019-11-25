@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_Script
+#include <string>
+#include <string_view>
 
-#include <string>  // string
-#include <string_view>  // string_view
-
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

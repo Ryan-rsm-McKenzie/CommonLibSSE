@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ShoutMeter
-
-#include "RE/HUDMeter.h"  // HUDMeter
+#include "RE/HUDMeter.h"
 
 
 namespace RE

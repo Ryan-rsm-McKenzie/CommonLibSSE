@@ -209,10 +209,12 @@
     <ClCompile Include="src\RE\BSLock.cpp" />
     <ClCompile Include="src\RE\BSString.cpp" />
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp" />
+    <ClCompile Include="src\RE\BSTCreateFactoryManager.cpp" />
     <ClCompile Include="src\RE\BSTimeManager.cpp" />
     <ClCompile Include="src\RE\BSWin32SaveDataSystemUtility.cpp" />
     <ClCompile Include="src\RE\ChestsLooted.cpp" />
     <ClCompile Include="src\RE\Console.cpp" />
+    <ClCompile Include="src\RE\CRC.cpp" />
     <ClCompile Include="src\RE\DialogueData.cpp" />
     <ClCompile Include="src\RE\Effect.cpp" />
     <ClCompile Include="src\RE\ExtraAliasInstanceArray.cpp" />

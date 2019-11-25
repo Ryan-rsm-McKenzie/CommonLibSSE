@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/hkReferencedObject.h"  // hkReferencedObject
-#include "RE/hkRefPtr.h"  // hkRefPtr
+#include "RE/hkReferencedObject.h"
+#include "RE/hkRefPtr.h"
 
 
 namespace RE

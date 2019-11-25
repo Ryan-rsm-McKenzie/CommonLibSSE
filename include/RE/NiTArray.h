@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/NiTCollection.h"  // NiTMallocInterface
-#include "RE/TESMemoryManager.h"  // calloc, free
+#include "RE/NiTCollection.h"
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

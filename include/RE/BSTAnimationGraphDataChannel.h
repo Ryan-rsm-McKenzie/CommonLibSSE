@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSAnimationGraphChannel.h"  // BSAnimationGraphChannel
+#include "RE/BSAnimationGraphChannel.h"
 
 
 namespace RE

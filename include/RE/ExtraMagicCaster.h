@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ExtraMagicCaster
-
-#include "RE/BSExtraData.h"  // BSExtraData
-#include "RE/ExtraDataTypes.h"  // ExtraDataType
-#include "RE/MagicCaster.h"  // MagicCaster
+#include "RE/BSExtraData.h"
+#include "RE/ExtraDataTypes.h"
+#include "RE/MagicCaster.h"
 
 
 namespace RE

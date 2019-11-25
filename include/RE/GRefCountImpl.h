@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_GRefCountImpl
-
-#include "RE/GRefCountImplCore.h"  // GRefCountImplCore
+#include "RE/GRefCountImplCore.h"
 
 
 namespace RE

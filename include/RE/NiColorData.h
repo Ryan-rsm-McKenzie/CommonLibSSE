@@ -1,10 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiColorData
-#include "skse64/NiRTTI.h"  // NiRTTI_NiColorData
-
-#include "RE/NiColorKey.h"  // NiColorKey
-#include "RE/NiObject.h"  // NiObject
+#include "RE/NiColorKey.h"
+#include "RE/NiObject.h"
 
 
 namespace RE

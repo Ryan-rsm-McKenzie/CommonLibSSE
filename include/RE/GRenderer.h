@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/GColor.h"  // GColor
-#include "RE/GMatrix2D.h"  // GMatrix2D
-#include "RE/GPoint.h"  // GPointF
-#include "RE/GRect.h"  // GRectF
-#include "RE/GRefCountBase.h"  // GRefCountBase
-#include "RE/GRendererEventHandler.h"  // GRendererEventHandler
-#include "RE/GTexture.h"  // GTexture
+#include "RE/GColor.h"
+#include "RE/GMatrix2D.h"
+#include "RE/GPoint.h"
+#include "RE/GRect.h"
+#include "RE/GRefCountBase.h"
+#include "RE/GRendererEventHandler.h"
+#include "RE/GTexture.h"
 
 
 namespace RE

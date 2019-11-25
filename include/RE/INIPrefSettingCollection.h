@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_INIPrefSettingCollection
-
-#include "RE/INISettingCollection.h"  // INISettingCollection
+#include "RE/INISettingCollection.h"
 
 
 namespace RE

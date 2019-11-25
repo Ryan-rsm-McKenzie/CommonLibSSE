@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkReferencedObject
-
-#include "RE/hkBaseObject.h"  // hkBaseObject
+#include "RE/hkBaseObject.h"
 
 
 namespace RE

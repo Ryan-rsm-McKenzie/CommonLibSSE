@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/GMemory.h"  // GFC_MEMORY_REDEFINE_NEW_IMPL
+#include "RE/GMemory.h"
 
 #define GFC_REFCOUNTALLOC_CHECK_DELETE(class_name, p)
 

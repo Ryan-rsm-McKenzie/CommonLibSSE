@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSMovableStatic
-
-#include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESObjectSTAT.h"  // TESObjectSTAT
+#include "RE/BGSDestructibleObjectForm.h"
+#include "RE/FormTypes.h"
+#include "RE/TESFullName.h"
+#include "RE/TESObjectSTAT.h"
 
 
 namespace RE

@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_HUDMeter
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/HUDObject.h"  // HUDObject
+#include "RE/BSFixedString.h"
+#include "RE/HUDObject.h"
 
 
 namespace RE

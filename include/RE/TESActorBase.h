@@ -1,20 +1,18 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESActorBase
-
-#include "RE/ActorValueOwner.h"  // ActorValueOwner
-#include "RE/BGSAttackDataForm.h"  // BGSAttackDataForm
-#include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
-#include "RE/BGSKeywordForm.h"  // BGSKeywordForm
-#include "RE/BGSPerkRankArray.h"  // BGSPerkRankArray
-#include "RE/BGSSkinForm.h"  // BGSSkinForm
-#include "RE/FormTypes.h"  // TESCombatStyle
-#include "RE/TESActorBaseData.h"  // TESActorBaseData
-#include "RE/TESAIForm.h"  // TESAIForm
-#include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
-#include "RE/TESContainer.h"  // TESContainer
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESSpellList.h"  // TESSpellList
+#include "RE/ActorValueOwner.h"
+#include "RE/BGSAttackDataForm.h"
+#include "RE/BGSDestructibleObjectForm.h"
+#include "RE/BGSKeywordForm.h"
+#include "RE/BGSPerkRankArray.h"
+#include "RE/BGSSkinForm.h"
+#include "RE/FormTypes.h"
+#include "RE/TESActorBaseData.h"
+#include "RE/TESAIForm.h"
+#include "RE/TESBoundAnimObject.h"
+#include "RE/TESContainer.h"
+#include "RE/TESFullName.h"
+#include "RE/TESSpellList.h"
 
 
 namespace RE

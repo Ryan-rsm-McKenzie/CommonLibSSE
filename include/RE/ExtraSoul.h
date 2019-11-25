@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ExtraSoul
-
-#include "RE/BSExtraData.h"  // BSExtraData
-#include "RE/ExtraDataTypes.h"  // ExtraDataType
-#include "RE/SoulLevels.h"  // SoulLevel
+#include "RE/BSExtraData.h"
+#include "RE/ExtraDataTypes.h"
+#include "RE/SoulLevels.h"
 
 
 namespace RE

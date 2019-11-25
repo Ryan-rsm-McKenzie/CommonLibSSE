@@ -1,17 +1,17 @@
 #pragma once
 
-#include "skse64/gamethreads.h"  // TaskDelegate
-#include "skse64/Hooks_UI.h"  // UIDelegate_v1
-#include "skse64/PapyrusDelayFunctors.h"  // SKSEDelayFunctorManager
-#include "skse64/PapyrusObjects.h"  // SKSEObjectRegistry, SKSEPersistentObjectStorage
-#include "skse64/PluginAPI.h"  // PluginHandle, SKSEInterface, SKSEScaleformInterface, SKSESerializationInterface, SKSETaskInterface, SKSEPapyrusInterface, SKSEMessagingInterface, SKSEObjectInterface
+#include "skse64/gamethreads.h"
+#include "skse64/Hooks_UI.h"
+#include "skse64/PapyrusDelayFunctors.h"
+#include "skse64/PapyrusObjects.h"
+#include "skse64/PluginAPI.h"
 
-#include <functional>  // function
+#include <functional>
 
-#include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
-#include "RE/GFxMovieView.h"  // GFxMovieView
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/InventoryEntryData.h"  // InventoryEntryData
+#include "RE/BSScript/Internal/VirtualMachine.h"
+#include "RE/GFxMovieView.h"
+#include "RE/GFxValue.h"
+#include "RE/InventoryEntryData.h"
 
 
 namespace SKSE

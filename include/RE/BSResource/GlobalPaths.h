@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSResource/Location.h"  // BSResource::Location
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
+#include "RE/BSResource/Location.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTSingleton.h"
 
 
 namespace RE

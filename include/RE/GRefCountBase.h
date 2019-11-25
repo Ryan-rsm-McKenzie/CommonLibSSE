@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/GRefCountImpl.h"  // GRefCountImpl
-#include "RE/GRefCountBaseStatImpl.h"  // GRefCountBaseStatImpl
+#include "RE/GRefCountImpl.h"
+#include "RE/GRefCountBaseStatImpl.h"
 #include "RE/GMemory.h"
 
 

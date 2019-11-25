@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSStoryManagerNodeBase
-
-#include "RE/BGSStoryManagerTreeForm.h"  // BGSStoryManagerTreeForm
-#include "RE/Condition.h"  // Condition
+#include "RE/BGSStoryManagerTreeForm.h"
+#include "RE/Condition.h"
 
 
 namespace RE

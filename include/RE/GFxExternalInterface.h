@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_GFxExternalInterface
-
-#include "RE/GFxState.h"  // GFxState
+#include "RE/GFxState.h"
 
 
 namespace RE

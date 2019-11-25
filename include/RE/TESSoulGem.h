@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESSoulGem
-
-#include "RE/FormTypes.h"  // FormType
-#include "RE/SoulLevels.h"  // SoulLevel
-#include "RE/TESObjectMISC.h"  // TESObjectMISC
+#include "RE/FormTypes.h"
+#include "RE/SoulLevels.h"
+#include "RE/TESObjectMISC.h"
 
 
 namespace RE

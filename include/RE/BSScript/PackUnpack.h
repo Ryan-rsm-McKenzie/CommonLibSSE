@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSScript/Variable.h"  // BSScript::Variable
+#include "RE/BSScript/Variable.h"
 #include "RE/BSScript/TypeTraits.h"
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE

@@ -1,11 +1,13 @@
 #pragma once
 
-#include "RE/FormTypes.h"
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE
 {
+	class TESObjectREFR;
+
+
 	class Condition
 	{
 	public:

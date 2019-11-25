@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkbNode
-
-#include "RE/hkbBindable.h"  // hkbBindable
-#include "RE/hkStringPtr.h"  // hkStringPtr
+#include "RE/hkbBindable.h"
+#include "RE/hkStringPtr.h"
 
 
 namespace RE

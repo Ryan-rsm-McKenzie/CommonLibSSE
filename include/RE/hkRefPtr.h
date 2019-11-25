@@ -1,9 +1,8 @@
 #pragma once
 
-#include <cstddef>  // nullptr_t
-#include <type_traits>  // is_base_of
+#include <type_traits>
 
-#include "RE/hkReferencedObject.h"  // hkReferencedObject
+#include "RE/hkReferencedObject.h"
 
 
 namespace RE

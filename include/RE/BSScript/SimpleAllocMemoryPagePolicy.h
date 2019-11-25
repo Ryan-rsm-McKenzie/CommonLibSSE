@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__SimpleAllocMemoryPagePolicy
-
-#include "RE/BSScript/IMemoryPagePolicy.h"  // BSScript::IMemoryPagePolicy
+#include "RE/BSScript/IMemoryPagePolicy.h"
 
 
 namespace RE

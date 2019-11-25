@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSLightingShaderMaterialBase
-
-#include "RE/BSShaderMaterial.h"  // BSShaderMaterial
-#include "RE/NiSmartPointer.h"  // NiPointer
+#include "RE/BSShaderMaterial.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_PerkRankVisitor
-
-#include "RE/BGSPerkRankArray.h"  // BGSPerkRankArray::Entry
+#include "RE/BGSPerkRankArray.h"
 
 
 namespace RE

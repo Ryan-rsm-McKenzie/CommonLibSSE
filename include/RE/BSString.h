@@ -1,11 +1,9 @@
 #pragma once
 
-#include <limits>  // numeric_limits
-#include <string_view>  // string_view
+#include <limits>
+#include <string_view>
 
-#include <string.h>  // _stricmp
-
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

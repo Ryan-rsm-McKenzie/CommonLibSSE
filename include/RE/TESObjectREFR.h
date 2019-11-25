@@ -1,17 +1,15 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESObjectREFR
-
-#include "RE/BaseExtraList.h"  // BaseExtraList
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSHandleRefObject.h"  // BSHandleRefObject
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
-#include "RE/FormTypes.h"  // FormTypes
-#include "RE/IAnimationGraphManagerHolder.h"  // IAnimationGraphManagerHolder
-#include "RE/NiPoint3.h"  // NiPoint3
-#include "RE/NiSmartPointer.h"  // NiSmartPointer
-#include "RE/TESForm.h"  // TESForm
+#include "RE/BaseExtraList.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSHandleRefObject.h"
+#include "RE/BSTEvent.h"
+#include "RE/BSTSmartPointer.h"
+#include "RE/FormTypes.h"
+#include "RE/IAnimationGraphManagerHolder.h"
+#include "RE/NiPoint3.h"
+#include "RE/NiSmartPointer.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESLevCharacter
-
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
-#include "RE/TESLeveledList.h"  // TESLeveledList
-#include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
+#include "RE/FormTypes.h"
+#include "RE/TESBoundAnimObject.h"
+#include "RE/TESLeveledList.h"
+#include "RE/TESModelTextureSwap.h"
 
 
 namespace RE

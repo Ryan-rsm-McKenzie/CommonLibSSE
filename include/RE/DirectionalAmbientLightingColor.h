@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/Color.h"  // Color
+#include "RE/Color.h"
 
 
 namespace RE

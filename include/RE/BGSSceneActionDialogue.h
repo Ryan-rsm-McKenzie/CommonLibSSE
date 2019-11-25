@@ -1,13 +1,13 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSSceneActionDialogue
-
-#include "RE/BGSSceneAction.h"  // BGSSceneAction
-#include "RE/FormTypes.h"  // TESTopic
+#include "RE/BGSSceneAction.h"
 
 
 namespace RE
 {
+	class TESTopic;
+
+
 	class BGSSceneActionDialogue : public BGSSceneAction
 	{
 	public:

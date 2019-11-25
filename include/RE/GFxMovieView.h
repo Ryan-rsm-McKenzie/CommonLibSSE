@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/GFxMovie.h"  // GFxMovie
-#include "RE/GFxMovieDef.h"  // GFxMovieDef
-#include "RE/GFxStateBag.h"  // GFxStateBag
-#include "RE/GPoint.h"  // GPointF
-#include "RE/GRect.h"  // GRectF
-#include "RE/GViewport.h"  // GViewport
+#include "RE/GFxMovie.h"
+#include "RE/GFxMovieDef.h"
+#include "RE/GFxStateBag.h"
+#include "RE/GPoint.h"
+#include "RE/GRect.h"
+#include "RE/GViewport.h"
 
 
 namespace RE

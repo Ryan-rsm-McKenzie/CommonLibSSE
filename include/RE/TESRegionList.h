@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESRegionList
-
-#include "RE/BSTList.h"  // BSSimpleList
+#include "RE/BSTList.h"
 
 
 namespace RE

@@ -1,16 +1,12 @@
 #pragma once
 
-#include "skse64_common/BranchTrampoline.h"  // g_branchTrampoline
+#include "skse64_common/BranchTrampoline.h"
 
-#include <array>  // array
-#include <cassert>  // assert
-#include <cstdlib>  // size_t
-#include <cstdint>  // uint8_t, uintptr_t
-#include <string>  // stoi
-#include <string_view>  // basic_string_view
-#include <vector>  // vector
-
-#include <libloaderapi.h>  // GetModuleHandle
+#include <array>
+#include <cassert>
+#include <string>
+#include <string_view>
+#include <vector>
 
 
 namespace RE

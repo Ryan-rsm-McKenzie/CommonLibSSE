@@ -2,10 +2,8 @@
 
 #include <utility>
 
-#include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSFixedString.h"
 #include "RE/CRC.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"  // Offset
 
 
 namespace RE
@@ -506,15 +504,11 @@ namespace RE
 		using Base = BSTCreateFactoryManager<BSFixedString, IUIMessageData, 16>;
 
 	public:
-		inline static MessageDataFactoryManager* GetSingleton()
-		{
-			using func_t = function_type_t<decltype(&MessageDataFactoryManager::GetSingleton)>;
-			REL::Offset<func_t*> func(Offset::MessageDataFactoryManager::GetSingleton);
-			return func();
-		}
+		static MessageDataFactoryManager* GetSingleton();
 
 
-		template <class T = IUIMessageData> inline BSTDerivedCreator<T, IUIMessageData>* GetCreator(const BSFixedString& a_type) const
+		template <class T = IUIMessageData>
+		inline BSTDerivedCreator<T, IUIMessageData>* GetCreator(const BSFixedString& a_type) const
 		{
 			auto it = Base::find(a_type);
 			return it != Base::end() ? static_cast<BSTDerivedCreator<T, IUIMessageData>*>(it->second) : 0;

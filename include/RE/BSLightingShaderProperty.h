@@ -1,10 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSLightingShaderProperty
-#include "skse64/NiRTTI.h"  // NiRTTI_BSLightingShaderProperty
-
-#include "RE/BSShaderProperty.h"  // BSShaderProperty
-#include "RE/BSTArray.h"  // BSTArray
+#include "RE/BSShaderProperty.h"
+#include "RE/BSTArray.h"
 
 
 namespace RE

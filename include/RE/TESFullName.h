@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESFullName
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BaseFormComponent.h"
+#include "RE/BSFixedString.h"
 
 
 namespace RE

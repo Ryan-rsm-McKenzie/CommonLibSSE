@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/GMemory.h"  // GMemory
-#include "RE/GStats.h"  // GStatGroup
+#include "RE/GMemory.h"
+#include "RE/GStats.h"
 
 
 namespace RE

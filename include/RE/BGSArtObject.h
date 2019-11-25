@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSArtObject
-
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESBoundObject.h"  // TESBoundObject
-#include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
+#include "RE/FormTypes.h"
+#include "RE/TESBoundObject.h"
+#include "RE/TESModelTextureSwap.h"
 
 
 namespace RE

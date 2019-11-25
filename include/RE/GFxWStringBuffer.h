@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string_view>  // wstring_view
+#include <string_view>
 
 
 namespace RE

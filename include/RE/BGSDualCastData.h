@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSDualCastData
-
-#include "RE/FormTypes.h"  // FormType, BGSProjectile, BGSExplosion, BGSArtObject
-#include "RE/TESBoundObject.h"  // TESBoundObject
+#include "RE/FormTypes.h"
+#include "RE/TESBoundObject.h"
 
 
 namespace RE

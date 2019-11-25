@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSMusicSilenceTrack
-
-#include "RE/BGSMusicTrack.h"  // BGSMusicTrack
+#include "RE/BGSMusicTrack.h"
 
 
 namespace RE

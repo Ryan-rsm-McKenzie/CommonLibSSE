@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_CreditsMenu
-
-#include "RE/GFxFunctionHandler.h"  // GFxFunctionHandler
-#include "RE/IMenu.h"  // IMenu
+#include "RE/GFxFunctionHandler.h"
+#include "RE/IMenu.h"
 
 
 namespace RE

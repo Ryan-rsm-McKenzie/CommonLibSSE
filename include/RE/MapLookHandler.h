@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_MapLookHandler
-
-#include "RE/MapInputHandler.h"  // MapInputHandler
+#include "RE/MapInputHandler.h"
 
 
 namespace RE

@@ -3,9 +3,9 @@
 // https://github.com/llvm-mirror/llvm/blob/master/include/llvm/ADT/STLExtras.h#L110
 // Apache License 2.0
 
-#include <cstddef>  // nullptr_t
-#include <type_traits>  // enable_if, is_same, remove_reference
-#include <utility>  // forward
+#include <cstddef>
+#include <type_traits>
+#include <utility>
 
 
 namespace llvm

@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSAttackDataMap
-
-#include "RE/BGSAttackData.h"  // BGSAttackData
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/FormTypes.h"  // TESRace
-#include "RE/NiRefObject.h"  // NiRefObject
-#include "RE/NiSmartPointer.h"  // NiSmartPointer
+#include "RE/BGSAttackData.h"
+#include "RE/BSTHashMap.h"
+#include "RE/FormTypes.h"
+#include "RE/NiRefObject.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

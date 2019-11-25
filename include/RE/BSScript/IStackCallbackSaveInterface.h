@@ -1,7 +1,5 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__IStackCallbackSaveInterface
-
 
 namespace RE
 {

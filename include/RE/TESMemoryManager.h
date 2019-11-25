@@ -1,7 +1,7 @@
 #pragma once
 
-#include <new>  // operator new, operator delete
-#include <type_traits>  // remove_extent_t, extent
+#include <new>
+#include <type_traits>
 
 
 namespace RE

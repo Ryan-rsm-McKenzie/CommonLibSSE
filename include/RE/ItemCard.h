@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSString.h"  // BSString
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/GPtr.h"  // GPtr
+#include "RE/BSString.h"
+#include "RE/GFxValue.h"
+#include "RE/GPtr.h"
 
 
 namespace RE

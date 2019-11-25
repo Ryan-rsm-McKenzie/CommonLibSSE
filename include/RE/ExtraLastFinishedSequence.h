@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ExtraLastFinishedSequence
-
-#include "RE/BSExtraData.h"  // BSExtraData
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/ExtraDataTypes.h"  // ExtraDataType
+#include "RE/BSExtraData.h"
+#include "RE/BSFixedString.h"
+#include "RE/ExtraDataTypes.h"
 
 
 namespace RE

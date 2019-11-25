@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESRegionDataMap
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/TESRegionData.h"  // TESRegionData
+#include "RE/BSFixedString.h"
+#include "RE/TESRegionData.h"
 
 
 namespace RE

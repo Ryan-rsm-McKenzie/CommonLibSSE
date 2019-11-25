@@ -1,22 +1,21 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESObjectARMO
-
-#include "RE/BGSBipedObjectForm.h"  // BGSBipedObjectForm
-#include "RE/BGSBlockBashData.h"  // BGSBlockBashData
-#include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
-#include "RE/BGSEquipType.h"  // BGSEquipType
-#include "RE/BGSKeywordForm.h"  // BGSKeywordForm
-#include "RE/BGSPickupPutdownSounds.h"  // BGSPickupPutdownSounds
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/TESBipedModelForm.h"  // TESBipedModelForm
-#include "RE/TESBoundObject.h"  // TESBoundObject
-#include "RE/TESDescription.h"  // TESDescription
-#include "RE/TESEnchantableForm.h"  // TESEnchantableForm
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESRaceForm.h"  // TESRaceForm
-#include "RE/TESValueForm.h"  // TESValueForm
-#include "RE/TESWeightForm.h"  // TESWeightForm
+#include "RE/BGSBipedObjectForm.h"
+#include "RE/BGSBlockBashData.h"
+#include "RE/BGSDestructibleObjectForm.h"
+#include "RE/BGSEquipType.h"
+#include "RE/BGSKeywordForm.h"
+#include "RE/BGSPickupPutdownSounds.h"
+#include "RE/BSTArray.h"
+#include "RE/FormTypes.h"
+#include "RE/TESBipedModelForm.h"
+#include "RE/TESBoundObject.h"
+#include "RE/TESDescription.h"
+#include "RE/TESEnchantableForm.h"
+#include "RE/TESFullName.h"
+#include "RE/TESRaceForm.h"
+#include "RE/TESValueForm.h"
+#include "RE/TESWeightForm.h"
 
 
 namespace RE

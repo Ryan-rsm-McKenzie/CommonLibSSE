@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_IMovementPlannerDirectControl
-
-#include "RE/IMovementInterface.h"  // IMovementInterface
+#include "RE/IMovementInterface.h"
 
 
 namespace RE

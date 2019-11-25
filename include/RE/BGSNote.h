@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSNote
-
-#include "RE/BGSPickupPutdownSounds.h"  // BGSPickupPutdownSounds
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESBoundObject.h"  // TESBoundObject
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESIcon.h"  // TESIcon
-#include "RE/TESModel.h"  // TESModel
+#include "RE/BGSPickupPutdownSounds.h"
+#include "RE/FormTypes.h"
+#include "RE/TESBoundObject.h"
+#include "RE/TESFullName.h"
+#include "RE/TESIcon.h"
+#include "RE/TESModel.h"
 
 
 namespace RE

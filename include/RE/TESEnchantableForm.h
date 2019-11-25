@@ -1,13 +1,13 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESEnchantableForm
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/FormTypes.h"  // EnchantmentItem
+#include "RE/BaseFormComponent.h"
 
 
 namespace RE
 {
+	class EnchantmentItem;
+
+
 	class TESEnchantableForm : public BaseFormComponent
 	{
 	public:

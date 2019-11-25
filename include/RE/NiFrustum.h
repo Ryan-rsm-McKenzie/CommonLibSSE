@@ -1,8 +1,5 @@
 #pragma once
 
-#undef near
-#undef far
-
 
 namespace RE
 {

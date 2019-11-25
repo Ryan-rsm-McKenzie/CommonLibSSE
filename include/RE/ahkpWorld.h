@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ahkpWorld
-
-#include "RE/hkpWorld.h"  // hkpWorld
+#include "RE/hkpWorld.h"
 
 
 namespace RE

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ActorTargetCheck
-
-#include "RE/ProcessLists/GetActorsFilter.h"  // ProcessLists::GetActorsFilter
+#include "RE/ProcessLists/GetActorsFilter.h"
 
 
 namespace RE

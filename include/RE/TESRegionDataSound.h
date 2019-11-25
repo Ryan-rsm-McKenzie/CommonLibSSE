@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESRegionDataSound
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/TESRegionData.h"  // TESRegionData
+#include "RE/BSTArray.h"
+#include "RE/TESRegionData.h"
 
 
 namespace RE

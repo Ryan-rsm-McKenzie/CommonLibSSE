@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/BSTMessageQueue.h"  // BSTCommonStaticMessageQueue
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
-#include "RE/UIMessage.h"  // UIMessage
+#include "RE/BSFixedString.h"
+#include "RE/BSTHashMap.h"
+#include "RE/BSTMessageQueue.h"
+#include "RE/BSTSingleton.h"
+#include "RE/UIMessage.h"
 
 
 class UIDelegate;

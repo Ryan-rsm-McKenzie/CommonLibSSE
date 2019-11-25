@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESBipedModelForm
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/BGSMessageIcon.h"  // BGSMessageIcon
-#include "RE/TESIcon.h"  // TESIcon
-#include "RE/TESModelRDT.h"  // TESModelRDT
-#include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
+#include "RE/BaseFormComponent.h"
+#include "RE/BGSMessageIcon.h"
+#include "RE/TESIcon.h"
+#include "RE/TESModelRDT.h"
+#include "RE/TESModelTextureSwap.h"
 
 
 namespace RE

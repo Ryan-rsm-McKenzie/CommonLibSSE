@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/GFxLogConstants.h"  // GFxLogConstants
+#include "RE/GFxLogConstants.h"
 
 
 namespace RE

@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSEntryPointFunctionDataActivateChoice
-
-#include "RE/BGSEntryPointFunctionData.h"  // BGSEntryPointFunctionData
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/FormTypes.h"  // BGSPerk, SpellItem
+#include "RE/BGSEntryPointFunctionData.h"
+#include "RE/BSFixedString.h"
+#include "RE/FormTypes.h"
 
 
 namespace RE

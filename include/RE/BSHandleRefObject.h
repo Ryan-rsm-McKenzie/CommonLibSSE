@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSHandleRefObject
-
-#include "RE/NiRefObject.h"  // NiRefObject
+#include "RE/NiRefObject.h"
 
 
 namespace RE

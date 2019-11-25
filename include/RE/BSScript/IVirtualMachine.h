@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__IVirtualMachine
-
-#include "RE/BSScript/LogEvent.h"  // BSScript::LogEvent::Severity
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
-#include "RE/BSTEvent.h"  // BSTEventSink
+#include "RE/BSScript/LogEvent.h"
+#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSTSmartPointer.h"
+#include "RE/BSTEvent.h"
 
 
 namespace RE

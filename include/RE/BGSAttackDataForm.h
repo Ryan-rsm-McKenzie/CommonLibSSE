@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSAttackDataForm
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/NiSmartPointer.h"  // NiPointer
+#include "RE/BaseFormComponent.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSShaderMaterial
-
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
+#include "RE/BSIntrusiveRefCounted.h"
 
 
 namespace RE

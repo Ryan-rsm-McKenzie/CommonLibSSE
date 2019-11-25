@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESModel
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/FileHash.h"  // FileHash
+#include "RE/BaseFormComponent.h"
+#include "RE/BSFixedString.h"
+#include "RE/FileHash.h"
 
 
 namespace RE

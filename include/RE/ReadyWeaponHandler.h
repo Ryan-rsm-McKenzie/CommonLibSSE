@@ -1,9 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ReadyWeaponHandler
-
-#include "RE/PlayerControls.h"  // PlayerControls::Data024
-#include "RE/PlayerInputHandler.h"  // PlayerInputHandler
+#include "RE/PlayerInputHandler.h"
 
 
 namespace RE

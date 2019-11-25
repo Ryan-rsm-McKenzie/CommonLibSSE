@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpFixedRigidMotion
-
-#include "RE/hkpKeyframedRigidMotion.h"  // hkpKeyframedRigidMotion
+#include "RE/hkpKeyframedRigidMotion.h"
 
 
 namespace RE

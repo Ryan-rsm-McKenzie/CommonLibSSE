@@ -1,24 +1,22 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESRace
-
-#include "RE/ActorValues.h"  // ActorValue8
-#include "RE/BGSAttackDataForm.h"  // BGSAttackDataForm
-#include "RE/BGSBehaviorGraphModel.h"  // BGSBehaviorGraphModel
-#include "RE/BGSBipedObjectForm.h"  // BGSBipedObjectForm
-#include "RE/BGSKeywordForm.h"  // BGSKeywordForm
-#include "RE/BGSSkinForm.h"  // BGSSkinForm
-#include "RE/BGSTextureModel.h"  // BGSTextureModel
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/FileHash.h"  // FileHash
-#include "RE/FormTypes.h"  // FormType, BGSVoiceType, BGSSoundDescriptorForm, BGSColorForm
-#include "RE/TESDescription.h"  // TESDescription
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESModel.h"  // TESModel
-#include "RE/TESSpellList.h"  // TESSpellList
-#include "RE/TESTexture.h"  // TESTexture
+#include "RE/ActorValues.h"
+#include "RE/BGSAttackDataForm.h"
+#include "RE/BGSBehaviorGraphModel.h"
+#include "RE/BGSBipedObjectForm.h"
+#include "RE/BGSKeywordForm.h"
+#include "RE/BGSSkinForm.h"
+#include "RE/BGSTextureModel.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSTArray.h"
+#include "RE/FileHash.h"
+#include "RE/FormTypes.h"
+#include "RE/TESDescription.h"
+#include "RE/TESForm.h"
+#include "RE/TESFullName.h"
+#include "RE/TESModel.h"
+#include "RE/TESSpellList.h"
+#include "RE/TESTexture.h"
 
 
 namespace RE

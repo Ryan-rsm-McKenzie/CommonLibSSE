@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSMaterialType
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/FormTypes.h"  // FormType
-#include "RE/NiColor.h"  // NiColor
-#include "RE/TESForm.h"  // TESForm
+#include "RE/BSFixedString.h"
+#include "RE/FormTypes.h"
+#include "RE/NiColor.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

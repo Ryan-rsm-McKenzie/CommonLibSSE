@@ -1,10 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiFloatData
-#include "skse64/NiRTTI.h"  // NiRTTI_NiFloatData
-
-#include "RE/NiFloatKey.h"  // NiFloatKey
-#include "RE/NiObject.h"  // NiObject
+#include "RE/NiFloatKey.h"
+#include "RE/NiObject.h"
 
 
 namespace RE

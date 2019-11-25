@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/BSExtraData.h"  // BSExtraData
-#include "RE/BSLock.h"  // BSReadWriteLock
-#include "RE/ExtraFlags.h"  // ExtraFlags::Flag
-#include "RE/ExtraDataTypes.h"  // ExtraDataType
+#include "RE/BSExtraData.h"
+#include "RE/BSLock.h"
+#include "RE/ExtraFlags.h"
+#include "RE/ExtraDataTypes.h"
 #include "RE/FormTypes.h"
-#include "RE/SoulLevels.h"  // SoulLevel
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/SoulLevels.h"
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

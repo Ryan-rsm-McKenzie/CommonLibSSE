@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpCharacterStateManager
-
-#include "RE/hkReferencedObject.h"  // hkReferencedObject
-#include "RE/hkpCharacterState.h"  // hkpCharacterState, hkpCharacterStateType
+#include "RE/hkReferencedObject.h"
+#include "RE/hkpCharacterState.h"
 
 
 namespace RE

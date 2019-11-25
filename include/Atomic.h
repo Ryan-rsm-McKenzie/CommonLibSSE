@@ -2,7 +2,7 @@
 
 #include <winnt.h>
 
-#include <type_traits>  // enable_if_t, is_integral
+#include <type_traits>
 
 
 #pragma region InterlockedAnd

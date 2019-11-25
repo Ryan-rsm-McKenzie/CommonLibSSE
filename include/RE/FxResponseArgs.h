@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FxResponseArgsBase.h"  // FxResponseArgsBase
-#include "RE/GFxValue.h"  // GFxValue
+#include "RE/FxResponseArgsBase.h"
+#include "RE/GFxValue.h"
 
 
 namespace RE

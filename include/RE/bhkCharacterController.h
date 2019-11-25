@@ -1,14 +1,12 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_bhkCharacterController
-
-#include "RE/BSBound.h"  // BSBound
-#include "RE/BSTEvent.h"  // BSTEventSource
-#include "RE/hkpCharacterContext.h"  // hkpCharacterContext
-#include "RE/hkRefPtr.h"  // hkRefPtr
-#include "RE/NiPoint3.h"  // NiPoint3
-#include "RE/NiRefObject.h"  // NiRefObject
-#include "RE/NiSmartPointer.h"  // NiPointer
+#include "RE/BSBound.h"
+#include "RE/BSTEvent.h"
+#include "RE/hkpCharacterContext.h"
+#include "RE/hkRefPtr.h"
+#include "RE/NiPoint3.h"
+#include "RE/NiRefObject.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

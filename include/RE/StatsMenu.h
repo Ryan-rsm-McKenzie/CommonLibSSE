@@ -1,14 +1,12 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_StatsMenu
-
-#include "RE/ActorValues.h"  // ActorValue
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/FileHash.h"  // FileHash
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/IMenu.h"  // IMenu
-#include "RE/MenuEventHandler.h"  // MenuEventHandler
-#include "RE/NiPoint3.h"  // NiPoint3
+#include "RE/ActorValues.h"
+#include "RE/BSTArray.h"
+#include "RE/FileHash.h"
+#include "RE/GFxValue.h"
+#include "RE/IMenu.h"
+#include "RE/MenuEventHandler.h"
+#include "RE/NiPoint3.h"
 
 
 namespace RE

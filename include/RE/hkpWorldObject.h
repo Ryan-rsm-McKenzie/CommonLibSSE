@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpWorldObject
-
-#include "RE/hkMultiThreadCheck.h"  // hkMultiThreadCheck
-#include "RE/hkReferencedObject.h"  // hkReferencedObject
-#include "RE/hkpLinkedCollidable.h"  // hkpLinkedCollidable
-#include "RE/hkpProperty.h"  // hkpProperty
+#include "RE/hkMultiThreadCheck.h"
+#include "RE/hkReferencedObject.h"
+#include "RE/hkpLinkedCollidable.h"
+#include "RE/hkpProperty.h"
 
 
 namespace RE

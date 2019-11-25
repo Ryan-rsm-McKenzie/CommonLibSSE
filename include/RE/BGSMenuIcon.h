@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSMenuIcon
-
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESIcon.h"  // TESIcon
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
+#include "RE/TESIcon.h"
 
 
 namespace RE

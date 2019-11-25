@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpPhantom
-
-#include "RE/hkArray.h"  // hkArray
-#include "RE/hkpPhantomType.h"  // hkpPhantomType
-#include "RE/hkpWorldObject.h"  // hkpWorldObject
+#include "RE/hkArray.h"
+#include "RE/hkpPhantomType.h"
+#include "RE/hkpWorldObject.h"
 
 
 namespace RE

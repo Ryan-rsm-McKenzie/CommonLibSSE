@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_FxDelegate
-
-#include "RE/FxDelegateHandler.h"  // FxDelegateHandler
-#include "RE/GFxExternalInterface.h"  // GFxExternalInterface
-#include "RE/GHash.h"  // GHash
-#include "RE/GPtr.h"  // GPtr
-#include "RE/GString.h"  // GString
+#include "RE/FxDelegateHandler.h"
+#include "RE/GFxExternalInterface.h"
+#include "RE/GHash.h"
+#include "RE/GPtr.h"
+#include "RE/GString.h"
 
 
 namespace RE

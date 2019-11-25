@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__CompiledScriptLoader
-
-#include "RE/BSScript/ILoader.h"  // BSScript::ILoader
+#include "RE/BSScript/ILoader.h"
 
 
 namespace RE

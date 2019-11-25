@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/GRefCountImplCore.h"  // GRefCountImplCore
+#include "RE/GRefCountImplCore.h"
 
 
 namespace RE

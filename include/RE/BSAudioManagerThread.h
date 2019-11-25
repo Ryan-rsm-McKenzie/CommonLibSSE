@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSAudioManagerThread
-
-#include "RE/BSThread.h"  // BSThread
+#include "RE/BSThread.h"
 
 
 namespace RE

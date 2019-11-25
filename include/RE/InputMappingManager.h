@@ -1,14 +1,14 @@
 #pragma once
 
-#include <string_view>  // string_view
-#include <type_traits>  // underlying_type_t
+#include <string_view>
+#include <type_traits>
 
-#include "RE/BSTEvent.h"  // BSTEventSource
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSInputDevice.h"  // BSInputDevice
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
-#include "RE/DeviceTypes.h"  // DeviceType
+#include "RE/BSTEvent.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSInputDevice.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTSingleton.h"
+#include "RE/DeviceTypes.h"
 
 
 namespace RE

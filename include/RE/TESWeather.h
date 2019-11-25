@@ -1,15 +1,13 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESWeather
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/Color.h"  // Color
-#include "RE/DirectionalAmbientLightingColor.h"  // DirectionalAmbientLightingColor
-#include "RE/FormTypes.h"  // FormType, TESObjectSTAT
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESModel.h"  // TESModel
-#include "RE/TESTexture1024.h"  // TESTexture1024
+#include "RE/BSTArray.h"
+#include "RE/BSTList.h"
+#include "RE/Color.h"
+#include "RE/DirectionalAmbientLightingColor.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
+#include "RE/TESModel.h"
+#include "RE/TESTexture1024.h"
 
 
 namespace RE

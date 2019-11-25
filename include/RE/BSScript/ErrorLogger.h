@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__ErrorLogger
-
-#include "RE/BSScript/LogEvent.h"  // LogEvent
-#include "RE/BSTEvent.h"  // BSTEventSource
-#include "RE/BSTHashMap.h"  // BSTHashMap
+#include "RE/BSScript/LogEvent.h"
+#include "RE/BSTEvent.h"
+#include "RE/BSTHashMap.h"
 
 
 namespace RE

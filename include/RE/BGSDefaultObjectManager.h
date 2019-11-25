@@ -1,13 +1,9 @@
 #pragma once
 
-#undef GetObject
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSDefaultObjectManager
-
-
-#include "RE/BSTSingleton.h"  // BSTSingletonImplicit
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
+#include "RE/BSTSingleton.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

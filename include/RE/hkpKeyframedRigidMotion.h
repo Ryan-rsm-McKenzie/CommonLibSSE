@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpKeyframedRigidMotion, RTTI_hkpMaxSizeMotion
-
-#include "RE/hkpMotion.h"  // hkpMotion
+#include "RE/hkpMotion.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/GColor.h"  // GColor
-#include "RE/GFxKeyboardState.h"  // GFxKeyboardState
-#include "RE/GFxMovieView.h"  // GFxMovieView
+#include "RE/GColor.h"
+#include "RE/GFxKeyboardState.h"
+#include "RE/GFxMovieView.h"
 
 
 namespace RE

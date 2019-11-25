@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiBinaryStream
-
-#include <locale>  // use_facet, ctype
-#include <string>  // basic_string, char_traits
+#include <locale>
+#include <string>
 
 
 namespace RE

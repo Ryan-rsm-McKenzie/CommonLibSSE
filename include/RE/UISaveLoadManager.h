@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_UISaveLoadManager
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
-#include "RE/GFxValue.h"  // GFxValue
+#include "RE/BSFixedString.h"
+#include "RE/BSTEvent.h"
+#include "RE/BSTSingleton.h"
+#include "RE/GFxValue.h"
 
 
 namespace RE

@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSMusicTrackFormWrapper
-
-#include "RE/BSIMusicTrack.h"  // BSIMusicTrack
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
+#include "RE/BSIMusicTrack.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpShapePhantom
-
-#include "RE/hkMotionState.h"  // hkMotionState
-#include "RE/hkpPhantom.h"  // hkpPhantom
+#include "RE/hkMotionState.h"
+#include "RE/hkpPhantom.h"
 
 
 namespace RE

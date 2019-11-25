@@ -1,11 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSStorage
-
-#include <winnt.h>  // PLARGE_INTEGER, LARGE_INTEGER
-#include <minwindef.h>  // BOOL, DWORD, LPVOID, LPCVOID
-
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
+#include "RE/BSIntrusiveRefCounted.h"
 
 
 namespace RE

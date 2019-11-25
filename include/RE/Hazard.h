@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_Hazard
-
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESObjectREFR.h"  // TESObjectREFR
+#include "RE/FormTypes.h"
+#include "RE/TESObjectREFR.h"
 
 
 namespace RE

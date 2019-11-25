@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSResource/LooseFileStreamBase.h"  // BSResource::LooseFileStreamBase
-#include "RE/BSResource/Stream.h"  // BSResource::Stream
+#include "RE/BSResource/LooseFileStreamBase.h"
+#include "RE/BSResource/Stream.h"
 
 
 namespace RE

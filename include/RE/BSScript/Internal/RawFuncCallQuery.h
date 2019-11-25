@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__Internal__RawFuncCallQuery
-
-#include "RE/BSScript/Internal/IFuncCallQuery.h"  // BSScript::Internal::IFuncCallQuery
-#include "RE/BSScript/Variable.h"  // BSScript::Variable
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/BSScript/Internal/IFuncCallQuery.h"
+#include "RE/BSScript/Variable.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE

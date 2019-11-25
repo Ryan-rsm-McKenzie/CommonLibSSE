@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSSceneActionTimer
-
-#include "RE/BGSSceneAction.h"  // BGSSceneAction
+#include "RE/BGSSceneAction.h"
 
 
 namespace RE

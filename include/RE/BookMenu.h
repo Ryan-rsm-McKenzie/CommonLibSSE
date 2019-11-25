@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BookMenu
-
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/GPtr.h"  // GPtr
-#include "RE/ImageData.h"  // ImageData
-#include "RE/IMenu.h"  // IMenu
-#include "RE/SimpleAnimationGraphManagerHolder.h"  // SimpleAnimationGraphManagerHolder
+#include "RE/BSTEvent.h"
+#include "RE/GPtr.h"
+#include "RE/ImageData.h"
+#include "RE/IMenu.h"
+#include "RE/SimpleAnimationGraphManagerHolder.h"
 
 
 namespace RE

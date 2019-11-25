@@ -1,14 +1,16 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESLeveledList
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/BSTArray.h"  // BSTSimpleArray
-#include "RE/FormTypes.h"  // FormType, TESForm, TESGlobal, TESFaction
+#include "RE/BaseFormComponent.h"
+#include "RE/BSTArray.h"
 
 
 namespace RE
 {
+	class TESFaction;
+	class TESForm;
+	class TESGlobal;
+
+
 	class TESLeveledList : public BaseFormComponent
 	{
 	public:

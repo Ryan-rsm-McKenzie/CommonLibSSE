@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESValueForm
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
+#include "RE/BaseFormComponent.h"
 
 
 namespace RE
@@ -22,7 +20,7 @@ namespace RE
 
 
 		// members
-		UInt32	value;	// 08
+		SInt32	value;	// 08
 		UInt32	pad0C;	// 0C
 	};
 	STATIC_ASSERT(sizeof(TESValueForm) == 0x10);

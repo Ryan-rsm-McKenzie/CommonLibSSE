@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSWin32MouseDevice
-
-#include "RE/BSLock.h"  // BSUniqueLock
-#include "RE/BSMouseDevice.h"  // BSMouseDevice
+#include "RE/BSLock.h"
+#include "RE/BSMouseDevice.h"
 
 
 namespace RE

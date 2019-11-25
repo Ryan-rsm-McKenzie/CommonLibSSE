@@ -1,9 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_bhkShapePhantom
-#include "skse64/NiRTTI.h"  // NiRTTI_bhkShapePhantom
-
-#include "RE/bhkPhantom.h"  // bhkPhantom
+#include "RE/bhkPhantom.h"
 
 
 namespace RE

@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSPackageDataBool
-
-#include "RE/BGSNamedPackageData.h"  // BGSNamedPackageData
-#include "RE/IPackageData.h"  // IPackageData
+#include "RE/BGSNamedPackageData.h"
+#include "RE/IPackageData.h"
 
 
 namespace RE

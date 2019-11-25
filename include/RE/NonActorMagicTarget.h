@@ -1,13 +1,17 @@
 #pragma once
 
-#include "RE/BSExtraData.h"  // BSExtraData
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/ExtraDataTypes.h"  // ExtraDataType
-#include "RE/MagicTarget.h"  // MagicTarget
+#include "RE/BSExtraData.h"
+#include "RE/BSTList.h"
+#include "RE/ExtraDataTypes.h"
+#include "RE/MagicTarget.h"
 
 
 namespace RE
 {
+	class ActiveEffect;
+	class Actor;
+
+
 	class NonActorMagicTarget :
 		public BSExtraData,	// 00
 		public MagicTarget	// 10

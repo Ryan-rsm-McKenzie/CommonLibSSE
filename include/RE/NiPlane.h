@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NiPoint3.h"  // NiPoint3
+#include "RE/NiPoint3.h"
 
 
 namespace RE

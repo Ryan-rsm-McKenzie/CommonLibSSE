@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_SpellItem
-
-#include "RE/BGSEquipType.h"  // BGSEquipType
-#include "RE/BGSMenuDisplayObject.h"  // BGSMenuDisplayObject
-#include "RE/FormTypes.h"  // FormType, BGSPerk
-#include "RE/MagicItem.h"  // MagicItem
-#include "RE/TESDescription.h"  // TESDescription
+#include "RE/BGSEquipType.h"
+#include "RE/BGSMenuDisplayObject.h"
+#include "RE/FormTypes.h"
+#include "RE/MagicItem.h"
+#include "RE/TESDescription.h"
 
 
 namespace RE

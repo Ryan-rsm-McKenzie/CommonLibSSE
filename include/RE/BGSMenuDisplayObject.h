@@ -1,13 +1,13 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSMenuDisplayObject
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/FormTypes.h"  // TESObjectSTAT
+#include "RE/BaseFormComponent.h"
 
 
 namespace RE
 {
+	class TESObjectSTAT;
+
+
 	class BGSMenuDisplayObject : public BaseFormComponent
 	{
 	public:

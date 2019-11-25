@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_Journal_SystemTab
-
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/JournalTab.h"  // JournalTab
+#include "RE/BSTEvent.h"
+#include "RE/JournalTab.h"
 
 
 namespace RE

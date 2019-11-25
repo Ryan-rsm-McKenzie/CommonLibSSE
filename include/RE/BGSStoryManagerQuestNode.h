@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSStoryManagerQuestNode
-
-#include "RE/BGSStoryManagerNodeBase.h"  // BGSStoryManagerNodeBase
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/FormTypes.h"  // FormType
+#include "RE/BGSStoryManagerNodeBase.h"
+#include "RE/BSTHashMap.h"
+#include "RE/BSTArray.h"
+#include "RE/FormTypes.h"
 
 
 namespace RE

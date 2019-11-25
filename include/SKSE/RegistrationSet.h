@@ -1,21 +1,21 @@
 #pragma once
 
-#include <mutex>  // recursive_mutex, lock_guard
-#include <set>  // set
-#include <string>  // string
-#include <string_view>  // string_view
-#include <tuple>  // tuple
+#include <mutex>
+#include <set>
+#include <string>
+#include <string_view>
+#include <tuple>
 
-#include "SKSE/API.h"  // GetTaskInterface
-#include "SKSE/Interfaces.h"  // SerializationInterface
+#include "SKSE/API.h"
+#include "SKSE/Interfaces.h"
 #include "SKSE/RegistrationTraits.h"
 
-#include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
-#include "RE/BSScript/FunctionArguments.h"  // BSScript::FunctionArguments
-#include "RE/BSScript/IObjectHandlePolicy.h"  // BSScript::IObjectHandlePolicy
-#include "RE/BSScript/TypeTraits.h"  // BSScript::is_param_compat
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/TESForm.h"  // TESForm
+#include "RE/BSScript/Internal/VirtualMachine.h"
+#include "RE/BSScript/FunctionArguments.h"
+#include "RE/BSScript/IObjectHandlePolicy.h"
+#include "RE/BSScript/TypeTraits.h"
+#include "RE/BSFixedString.h"
+#include "RE/TESForm.h"
 
 
 namespace SKSE

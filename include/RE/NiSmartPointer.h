@@ -1,10 +1,10 @@
 #pragma once
 
-#include <cassert>  // assert
-#include <cstddef>  // nullptr_t
-#include <type_traits>  // enable_if_t, is_convertible
+#include <cassert>
+#include <cstddef>
+#include <type_traits>
 
-#include "RE/CRC.h"  // CRC32Hash
+#include "RE/CRC.h"
 
 
 namespace RE

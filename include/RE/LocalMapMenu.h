@@ -1,16 +1,14 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_LocalMapMenu__InputHandler
-
-#include "RE/BSCullingProcess.h"  // BSCullingProcess
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/ImageData.h"  // ImageData
-#include "RE/ImageSpaceShaderParam.h"  // ImageSpaceShaderParam
-#include "RE/LocalMapCamera.h"  // LocalMapCamera
-#include "RE/MenuEventHandler.h"  // MenuEventHandler
-#include "RE/NiSmartPointer.h"  // NiPointer
+#include "RE/BSCullingProcess.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTSmartPointer.h"
+#include "RE/GFxValue.h"
+#include "RE/ImageData.h"
+#include "RE/ImageSpaceShaderParam.h"
+#include "RE/LocalMapCamera.h"
+#include "RE/MenuEventHandler.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

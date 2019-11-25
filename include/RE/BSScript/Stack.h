@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSScript/Variable.h"  // BSScript::Variable
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
-#include "RE/BSTArray.h"  // BSTSmallArray
+#include "RE/BSScript/Variable.h"
+#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSTArray.h"
 
 
 namespace RE

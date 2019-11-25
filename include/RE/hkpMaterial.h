@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/hkBaseTypes.h"  // hkHalf
+#include "RE/hkBaseTypes.h"
 
 
 namespace RE

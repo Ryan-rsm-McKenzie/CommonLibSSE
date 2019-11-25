@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"
-
-#include <typeinfo>  // bad_cast
+#include <typeinfo>
 #include <type_traits>
 
 #include "RE/Offsets.h"

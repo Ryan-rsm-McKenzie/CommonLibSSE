@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSMusicSingleTrack
-
-#include "RE/BGSMusicTrack.h"  // BGSMusicTrack
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/FileHash.h"  // FileHash
-#include "RE/SoundData.h"  // SoundData
+#include "RE/BGSMusicTrack.h"
+#include "RE/BSTArray.h"
+#include "RE/FileHash.h"
+#include "RE/SoundData.h"
 
 
 namespace RE

@@ -1,12 +1,11 @@
 #pragma once
 
-#include <cassert>  // assert
-#include <cstddef>  // size_t, ptrdiff_t
-#include <memory>  // pointer_traits
-#include <utility>  // move, swap, forward
-#include <iterator>  // forward_iterator_tag
+#include <cassert>
+#include <memory>
+#include <utility>
+#include <iterator>
 
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

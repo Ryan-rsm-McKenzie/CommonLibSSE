@@ -1,18 +1,16 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESObjectLIGH
-
-#include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
-#include "RE/BGSEquipType.h"  // BGSEquipType
-#include "RE/BGSMessageIcon.h"  // BGSMessageIcon
-#include "RE/Color.h"  // Color
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESIcon.h"  // TESIcon
-#include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
-#include "RE/TESValueForm.h"  // TESValueForm
-#include "RE/TESWeightForm.h"  // TESWeightForm
+#include "RE/BGSDestructibleObjectForm.h"
+#include "RE/BGSEquipType.h"
+#include "RE/BGSMessageIcon.h"
+#include "RE/Color.h"
+#include "RE/FormTypes.h"
+#include "RE/TESBoundAnimObject.h"
+#include "RE/TESFullName.h"
+#include "RE/TESIcon.h"
+#include "RE/TESModelTextureSwap.h"
+#include "RE/TESValueForm.h"
+#include "RE/TESWeightForm.h"
 
 
 namespace RE

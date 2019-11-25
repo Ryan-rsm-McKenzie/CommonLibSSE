@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_RaceSexMenu
-
-#include "RE/IMenu.h"  // IMenu
-#include "RE/MenuEventHandler.h"  // MenuEventHandler
-#include "RE/RaceSexCamera.h"  // RaceSexCamera
+#include "RE/IMenu.h"
+#include "RE/MenuEventHandler.h"
+#include "RE/RaceSexCamera.h"
 
 
 namespace RE

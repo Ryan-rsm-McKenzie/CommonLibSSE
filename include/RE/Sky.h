@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_Sky
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTextureSet.h"  // NiSourceTexture
-#include "RE/SkyEffectController.h"  // SkyEffectController
+#include "RE/BSTArray.h"
+#include "RE/BSTextureSet.h"
+#include "RE/SkyEffectController.h"
 
 
 namespace RE

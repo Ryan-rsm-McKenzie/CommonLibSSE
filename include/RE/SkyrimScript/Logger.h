@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_SkyrimScript__Logger
-
-#include "RE/BSScript/ErrorLogger.h"  // BSScript::ErrorLogger
-#include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSScript/ErrorLogger.h"
+#include "RE/BSFixedString.h"
 
 
 namespace RE

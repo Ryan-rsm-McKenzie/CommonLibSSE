@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSResource__Stream
-
-#include "RE/BSResource/StreamBase.h"  // BSResource::StreamBase
+#include "RE/BSResource/StreamBase.h"
 
 
 namespace RE

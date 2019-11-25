@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSCameraShot
-
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESImageSpaceModifiableForm.h"  // TESImageSpaceModifiableForm
-#include "RE/TESModel.h"  // TESModel
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
+#include "RE/TESImageSpaceModifiableForm.h"
+#include "RE/TESModel.h"
 
 
 namespace RE

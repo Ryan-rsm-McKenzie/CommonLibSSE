@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpCharacterProxy
-
-#include "RE/hkArray.h"  // hkArray
-#include "RE/hkVector4.h"  // hkVector4
-#include "RE/hkpEntityListener.h"  // hkpEntityListener
-#include "RE/hkpPhantomListener.h"  // hkpPhantomListener
-#include "RE/hkReferencedObject.h"  // hkReferencedObject
+#include "RE/hkArray.h"
+#include "RE/hkVector4.h"
+#include "RE/hkpEntityListener.h"
+#include "RE/hkpPhantomListener.h"
+#include "RE/hkReferencedObject.h"
 
 
 namespace RE

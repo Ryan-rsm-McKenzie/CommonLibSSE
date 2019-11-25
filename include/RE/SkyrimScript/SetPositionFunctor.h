@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/SkyrimScript/DelayFunctor.h"  // SkyrimScript::DelayFunctor
-#include "RE/NiPoint3.h"  // NiPoint3
+#include "RE/SkyrimScript/DelayFunctor.h"
+#include "RE/NiPoint3.h"
 
 
 namespace RE

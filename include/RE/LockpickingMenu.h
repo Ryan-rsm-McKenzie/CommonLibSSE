@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_LockpickingMenu
-
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/IMenu.h"  // IMenu
-#include "RE/MenuEventHandler.h"  // MenuEventHandler
-#include "RE/SoundData.h"  // SoundData
+#include "RE/BSTEvent.h"
+#include "RE/IMenu.h"
+#include "RE/MenuEventHandler.h"
+#include "RE/SoundData.h"
 
 
 namespace RE

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_SkyrimScript__Store
-
-#include "RE/BSScript/IStore.h"  // BSScript::IStore
+#include "RE/BSScript/IStore.h"
 
 
 namespace RE

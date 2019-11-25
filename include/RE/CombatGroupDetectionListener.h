@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_CombatGroupDetectionListener
-
-#include "RE/DetectionListener.h"  // DetectionListener
+#include "RE/DetectionListener.h"
 
 
 namespace RE

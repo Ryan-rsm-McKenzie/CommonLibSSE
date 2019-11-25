@@ -1,10 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiKeyBasedInterpolator
-#include "skse64/NiRTTI.h"  // NiRTTI_NiKeyBasedInterpolator
-
-#include "NiAnimationKey.h"  // NiAnimationKey::KeyContent
-#include "RE/NiInterpolator.h"  // NiInterpolator
+#include "NiAnimationKey.h"
+#include "RE/NiInterpolator.h"
 
 
 namespace RE

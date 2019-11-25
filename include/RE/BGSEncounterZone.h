@@ -1,9 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSEncounterZone
+#include "skse64/GameRTTI.h"
 
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

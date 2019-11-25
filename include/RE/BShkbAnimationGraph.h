@@ -1,15 +1,13 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BShkbAnimationGraph
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
-#include "RE/BSIRagdollDriver.h"  // BSIRagdollDriver
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTEvent.h"  // BSTEventSource
-#include "RE/BSTSmartPointer.h"  // BSSmartPointer
-#include "RE/FileHash.h"  // FileHash
-#include "RE/hkbCharacter.h"  // hkbCharacter
+#include "RE/BSFixedString.h"
+#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSIRagdollDriver.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTEvent.h"
+#include "RE/BSTSmartPointer.h"
+#include "RE/FileHash.h"
+#include "RE/hkbCharacter.h"
 
 
 namespace RE

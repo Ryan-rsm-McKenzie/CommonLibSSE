@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSSaveDataSystemUtility, RTTI_BSSaveDataSystemUtility__Entry
-
-#include "RE/BSString.h"  // BSString
-#include "RE/BSTEvent.h"  // BSTEventSource
+#include "RE/BSString.h"
+#include "RE/BSTEvent.h"
 
 
 namespace RE

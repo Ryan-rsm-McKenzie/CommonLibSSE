@@ -1,22 +1,20 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_PlayerCharacter
-
 #include <ctime>
 
-#include "RE/BGSActorCellEvent.h"  // BGSActorCellEvent
-#include "RE/BGSActorDeathEvent.h"  // BGSActorDeathEvent
-#include "RE/BGSPerkRankArray.h"  // BGSPerkRankArray
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTEvent.h"  // BSTEventSink, BSTEventSource
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/Character.h"  // Character
-#include "RE/FormTypes.h"  // FormType, TESForm, TESRace, TESWorldSpace, BGSPerk, BGSTextureSet
-#include "RE/NiSmartPointer.h"  // NiPointer
-#include "RE/NiTMap.h"  // NiTMap
-#include "RE/PositionPlayerEvent.h"  // PositionPlayerEvent
-#include "RE/UserEventEnabledEvent.h"  // UserEventEnabledEvent
+#include "RE/BGSActorCellEvent.h"
+#include "RE/BGSActorDeathEvent.h"
+#include "RE/BGSPerkRankArray.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTEvent.h"
+#include "RE/BSTHashMap.h"
+#include "RE/BSTList.h"
+#include "RE/Character.h"
+#include "RE/FormTypes.h"
+#include "RE/NiSmartPointer.h"
+#include "RE/NiTMap.h"
+#include "RE/PositionPlayerEvent.h"
+#include "RE/UserEventEnabledEvent.h"
 
 
 namespace RE

@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESForm
-
-#include "RE/hkBaseTypes.h"  // hkHalf
-#include "RE/hkMotionState.h"  // hkMotionState
-#include "RE/hkReferencedObject.h"  // hkReferencedObject
-#include "RE/hkVector4.h"  // hkVector4
+#include "RE/hkBaseTypes.h"
+#include "RE/hkMotionState.h"
+#include "RE/hkReferencedObject.h"
+#include "RE/hkVector4.h"
 
 
 namespace RE

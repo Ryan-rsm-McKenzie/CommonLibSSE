@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_Main
-
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/BSTMessageQueue.h"  // BSTCommonScrapHeapMessageQueue
-#include "RE/ScrapHeap.h"  // ScrapHeap
+#include "RE/BSTEvent.h"
+#include "RE/BSTMessageQueue.h"
+#include "RE/ScrapHeap.h"
 
 
 namespace RE

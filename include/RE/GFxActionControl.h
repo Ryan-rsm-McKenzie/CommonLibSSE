@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/GFxState.h"  // GFxState
+#include "RE/GFxState.h"
 
 
 namespace RE

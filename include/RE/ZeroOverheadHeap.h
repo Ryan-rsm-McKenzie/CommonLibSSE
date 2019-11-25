@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ZeroOverheadHeap
-
-#include "RE/BSLock.h"  // BSUniqueLock
-#include "RE/IMemoryHeap.h"  // IMemoryHeap
+#include "RE/BSLock.h"
+#include "RE/IMemoryHeap.h"
 
 
 namespace RE

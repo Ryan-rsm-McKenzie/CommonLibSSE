@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESAIForm
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/BSTList.h"  // BSSimpleList
+#include "RE/BaseFormComponent.h"
+#include "RE/BSTList.h"
 
 
 namespace RE

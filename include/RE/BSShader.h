@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSShader
-
-#include "RE/BSReloadShaderI.h"  // BSReloadShaderI
-#include "RE/NiBoneMatrixSetterI.h"  // NiBoneMatrixSetterI
-#include "RE/NiRefObject.h"  // NiRefObject
+#include "RE/BSReloadShaderI.h"
+#include "RE/NiBoneMatrixSetterI.h"
+#include "RE/NiRefObject.h"
 
 
 namespace RE

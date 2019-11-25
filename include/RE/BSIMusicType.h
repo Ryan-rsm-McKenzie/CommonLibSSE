@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSIMusicType
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/FormTypes.h"  // BGSMusicTrackFormWrapper
+#include "RE/BSTArray.h"
+#include "RE/FormTypes.h"
 
 
 namespace RE

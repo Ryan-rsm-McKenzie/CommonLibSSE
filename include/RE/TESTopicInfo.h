@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESTopicInfo
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/Condition.h"  // Condition
-#include "RE/DialogueData.h"  // DialogueData
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/BSFixedString.h"
+#include "RE/Condition.h"
+#include "RE/DialogueData.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

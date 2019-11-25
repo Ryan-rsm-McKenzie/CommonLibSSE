@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ConsoleData
-
-#include "RE/IUIMessageData.h"  // IUIMessageData
+#include "RE/IUIMessageData.h"
 
 
 namespace RE

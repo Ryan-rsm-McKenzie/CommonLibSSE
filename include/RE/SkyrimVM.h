@@ -1,23 +1,23 @@
 #pragma once
 
-#include "RE/BSScript/CompiledScriptLoader.h"  // BSScript::CompiledScriptLoader
-#include "RE/BSScript/IFreezeQuery.h"  // BSScript::IFreezeQuery
-#include "RE/BSScript/IStackCallbackSaveInterface.h"  // BSScript::IStackCallbackSaveInterface
-#include "RE/BSScript/SimpleAllocMemoryPagePolicy.h"  // BSScript::SimpleAllocMemoryPagePolicy
-#include "RE/SkyrimScript/DelayFunctor.h"  // SkyrimScript::DelayFunctor
-#include "RE/SkyrimScript/HandlePolicy.h"  // SkyrimScript::HandlePolicy
-#include "RE/SkyrimScript/Logger.h"  // SkyrimScript::Logger
-#include "RE/SkyrimScript/Profiler.h"  // SkyrimScript::Profiler
-#include "RE/SkyrimScript/SavePatcher.h"  // SkyrimScript::SavePatcher
-#include "RE/SkyrimScript/ObjectBindPolicy.h"  // SkyrimScript::ObjectBindPolicy
-#include "RE/SkyrimScript/Store.h"  // SkyrimScript::Store
+#include "RE/BSScript/CompiledScriptLoader.h"
+#include "RE/BSScript/IFreezeQuery.h"
+#include "RE/BSScript/IStackCallbackSaveInterface.h"
+#include "RE/BSScript/SimpleAllocMemoryPagePolicy.h"
+#include "RE/SkyrimScript/DelayFunctor.h"
+#include "RE/SkyrimScript/HandlePolicy.h"
+#include "RE/SkyrimScript/Logger.h"
+#include "RE/SkyrimScript/Profiler.h"
+#include "RE/SkyrimScript/SavePatcher.h"
+#include "RE/SkyrimScript/ObjectBindPolicy.h"
+#include "RE/SkyrimScript/Store.h"
 #include "RE/BSLock.h"
-#include "RE/BSTEvent.h"  // BSTEvent
-#include "RE/BSTFreeList.h"  // BSTStaticFreeList
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/BSTMessageQueue.h"  // BSTCommonLLMessageQueue
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/BSTEvent.h"
+#include "RE/BSTFreeList.h"
+#include "RE/BSTHashMap.h"
+#include "RE/BSTMessageQueue.h"
+#include "RE/BSTSingleton.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE

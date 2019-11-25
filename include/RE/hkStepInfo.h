@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/hkBaseTypes.h"  // hkTime
+#include "RE/hkBaseTypes.h"
 
 
 namespace RE

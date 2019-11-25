@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSPrecomputedNavmeshInfoPathMap.h"  // BSPrecomputedNavmeshInfoPathMap
+#include "RE/BSPrecomputedNavmeshInfoPathMap.h"
 
 
 namespace RE

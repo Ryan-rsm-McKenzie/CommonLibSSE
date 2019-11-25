@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSResourceNiBinaryStream
+#include <string>
 
-#include <string>  // string
-
-#include "RE/NiBinaryStream.h"  // NiBinaryStream
+#include "RE/NiBinaryStream.h"
 
 
 namespace RE

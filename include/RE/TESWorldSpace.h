@@ -1,17 +1,15 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESWorldSpace
-
-#include "RE/BSString.h"  // BSString
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/FormTypes.h"  // FormType, TESForm
-#include "RE/NiTPointerMap.h"  // NiTPointerMap
-#include "RE/TESForm.h"  // FormType
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESModel.h"  // TESModel
-#include "RE/TESTexture.h"  // TESTexture
+#include "RE/BSString.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTHashMap.h"
+#include "RE/BSTList.h"
+#include "RE/FormTypes.h"
+#include "RE/NiTPointerMap.h"
+#include "RE/TESForm.h"
+#include "RE/TESFullName.h"
+#include "RE/TESModel.h"
+#include "RE/TESTexture.h"
 
 
 namespace RE

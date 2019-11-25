@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_IFormFactory
-
-#include "RE/FormTypes.h"  // FormType, TESForm
+#include "RE/FormTypes.h"
 
 
 namespace RE

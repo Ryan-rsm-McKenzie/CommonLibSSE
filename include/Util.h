@@ -1,7 +1,6 @@
 #pragma once
 
-#include <bitset>  // bitset
-#include <cstdint>  // uintptr_t
+#include <bitset>
 #include <type_traits>
 
 

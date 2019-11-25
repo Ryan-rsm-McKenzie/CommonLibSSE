@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_Character
-
-#include "RE/Actor.h"  // Actor
+#include "RE/Actor.h"
 
 
 namespace RE

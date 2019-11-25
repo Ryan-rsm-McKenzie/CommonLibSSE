@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_AbsorbEffect
-
-#include "RE/ValueModifierEffect.h"  // ValueModifierEffect
+#include "RE/ValueModifierEffect.h"
 
 
 namespace RE

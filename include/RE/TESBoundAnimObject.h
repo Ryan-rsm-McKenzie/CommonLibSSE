@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESBoundAnimObject
-
-#include "RE/TESBoundObject.h"  // TESBoundObject
+#include "RE/TESBoundObject.h"
 
 
 namespace RE

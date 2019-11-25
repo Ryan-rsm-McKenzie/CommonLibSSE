@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSMoviePlayer
-
-#include "RE/BSTEvent.h"  // BSTEventSource, BSTEventSink
-#include "RE/MoviePlayer.h"  // MoviePlayer
+#include "RE/BSTEvent.h"
+#include "RE/MoviePlayer.h"
 
 
 namespace RE

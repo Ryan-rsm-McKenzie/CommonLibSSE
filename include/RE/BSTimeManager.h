@@ -1,9 +1,9 @@
 #pragma once
 
-#include <ctime>  // tm
-#include <string>  // string
+#include <ctime>
+#include <string>
 
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
+#include "RE/BSTSingleton.h"
 
 
 namespace RE

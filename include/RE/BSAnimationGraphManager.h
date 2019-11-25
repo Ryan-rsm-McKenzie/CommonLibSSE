@@ -1,15 +1,13 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSAnimationGraphManager
-
-#include "RE/ActorSpeedChannel.h"  // ActorSpeedChannel
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
-#include "RE/BSLock.h"  // BSUniqueLock
-#include "RE/BSTAnimationGraphDataChannel.h"  // BSTAnimationGraphDataChannel
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTEvent.h"  // BSTEventSink, EventResult, BSTEventSource
-#include "RE/BSTSmartPointer.h"  // BSSmartPointer
+#include "RE/ActorSpeedChannel.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSLock.h"
+#include "RE/BSTAnimationGraphDataChannel.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTEvent.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE

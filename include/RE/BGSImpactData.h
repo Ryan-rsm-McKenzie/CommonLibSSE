@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSImpactData
-
-#include "RE/Color.h"  // Color
-#include "RE/FormTypes.h"  // FormType
-#include "RE/SoundLevels.h"  // SoundLevel
-#include "RE/TESForm.h"  // TESModel
-#include "RE/TESModel.h"  // TESModel
+#include "RE/Color.h"
+#include "RE/FormTypes.h"
+#include "RE/SoundLevels.h"
+#include "RE/TESForm.h"
+#include "RE/TESModel.h"
 
 
 namespace RE

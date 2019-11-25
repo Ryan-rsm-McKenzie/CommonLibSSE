@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESObjectDOOR
-
-#include "RE/BGSDestructibleObjectForm.h"  // BGSDestructibleObjectForm
-#include "RE/BGSOpenCloseForm.h"  // BGSOpenCloseForm
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESModelTextureSwap.h"  // TESModelTextureSwap
+#include "RE/BGSDestructibleObjectForm.h"
+#include "RE/BGSOpenCloseForm.h"
+#include "RE/FormTypes.h"
+#include "RE/TESBoundAnimObject.h"
+#include "RE/TESFullName.h"
+#include "RE/TESModelTextureSwap.h"
 
 
 namespace RE

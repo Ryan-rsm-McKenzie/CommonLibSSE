@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/GFxStateBag.h"  // GFxStateBag
-#include "RE/GPtr.h"  // GPtr
+#include "RE/GFxStateBag.h"
+#include "RE/GPtr.h"
 
 
 namespace RE

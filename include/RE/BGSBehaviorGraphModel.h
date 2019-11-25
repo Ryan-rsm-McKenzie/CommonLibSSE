@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSBehaviorGraphModel
-
-#include "RE/TESModel.h"  // TESModel
+#include "RE/TESModel.h"
 
 
 namespace RE

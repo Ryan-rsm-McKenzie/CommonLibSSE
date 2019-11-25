@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSBaseAlias
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/FormTypes.h"  // TESQuest
+#include "RE/BSFixedString.h"
+#include "RE/FormTypes.h"
 
 
 namespace RE

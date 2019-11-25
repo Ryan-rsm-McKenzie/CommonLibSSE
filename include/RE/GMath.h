@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cmath>  // logf
+#include <cmath>
 
 
 namespace RE

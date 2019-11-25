@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSAnimationGraphChannel
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
+#include "RE/BSFixedString.h"
+#include "RE/BSIntrusiveRefCounted.h"
 
 
 namespace RE

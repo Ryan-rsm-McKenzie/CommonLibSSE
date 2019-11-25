@@ -1,9 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSShaderProperty
-#include "skse64/NiRTTI.h"  // NiRTTI_BSShaderProperty
-
-#include "RE/NiShadeProperty.h"  // NiShadeProperty
+#include "RE/NiShadeProperty.h"
 
 
 namespace RE

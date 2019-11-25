@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSImagespaceShaderBlur3
-
-#include "RE/BSImagespaceShader.h"  // BSImagespaceShader
+#include "RE/BSImagespaceShader.h"
 
 
 namespace RE

@@ -1,9 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BeamProjectile
-
-#include "RE/BSTEvent.h"  // BSTEventSource, BSTEventSink
-#include "RE/Projectile.h"  // Projectile
+#include "RE/BSTEvent.h"
+#include "RE/FormTypes.h"
+#include "RE/Projectile.h"
 
 
 namespace RE

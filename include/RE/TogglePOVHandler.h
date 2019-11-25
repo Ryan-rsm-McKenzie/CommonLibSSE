@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TogglePOVHandler
-
-#include "RE/HeldStateHandler.h"  // HeldStateHandler
+#include "RE/HeldStateHandler.h"
 
 
 namespace RE

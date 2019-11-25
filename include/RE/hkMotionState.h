@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/hkBaseTypes.h"  // hkHalf, hkUFloat8
-#include "RE/hkSweptTransform.h"  // hkSweptTransform
-#include "RE/hkTransform.h"  // hkTransform
-#include "RE/hkVector4.h"  // hkVector4
+#include "RE/hkBaseTypes.h"
+#include "RE/hkSweptTransform.h"
+#include "RE/hkTransform.h"
+#include "RE/hkVector4.h"
 
 
 namespace RE

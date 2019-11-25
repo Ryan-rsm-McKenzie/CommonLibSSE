@@ -1,16 +1,14 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_MapMenu
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/IMapCameraCallbacks.h"  // IMapCameraCallbacks
-#include "RE/IMenu.h"  // IMenu
-#include "RE/LocalMapMenu.h"  // LocalMapMenu
-#include "RE/MapCamera.h"  // MapCamera
-#include "RE/SoundData.h"  // SoundData
+#include "RE/BSTArray.h"
+#include "RE/BSTEvent.h"
+#include "RE/BSTSmartPointer.h"
+#include "RE/GFxValue.h"
+#include "RE/IMapCameraCallbacks.h"
+#include "RE/IMenu.h"
+#include "RE/LocalMapMenu.h"
+#include "RE/MapCamera.h"
+#include "RE/SoundData.h"
 
 
 namespace RE

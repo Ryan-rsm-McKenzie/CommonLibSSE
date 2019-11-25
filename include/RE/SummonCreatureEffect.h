@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_SummonCreatureEffect
-
-#include "RE/ActiveEffect.h"  // ActiveEffect
+#include "RE/ActiveEffect.h"
 
 
 namespace RE

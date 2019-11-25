@@ -1,11 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiCamera
-#include "skse64/NiRTTI.h"  // NiRTTI_NiCamera
-
-#include "RE/NiAVObject.h"  // NiAVObject
-#include "RE/NiFrustum.h"  // NiFrustum
-#include "RE/NiRect.h"  // NiRect
+#include "RE/NiAVObject.h"
+#include "RE/NiFrustum.h"
+#include "RE/NiRect.h"
 
 
 namespace RE

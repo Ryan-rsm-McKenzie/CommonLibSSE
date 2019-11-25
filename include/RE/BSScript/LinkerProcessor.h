@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__LinkerProcessor
-
-#include "RE/BSScript/IObjectProcessor.h"  // BSScript::IObjectProcessor
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTArray.h"  // BSScrapArray
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/BSScript/IObjectProcessor.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTHashMap.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE

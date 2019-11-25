@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/GRefCountBaseStatImpl.h"  // GRefCountBaseStatImpl
-#include "RE/GRefCountNTSImpl.h"  // GRefCountNTSImpl
+#include "RE/GRefCountBaseStatImpl.h"
+#include "RE/GRefCountNTSImpl.h"
 
 
 namespace RE

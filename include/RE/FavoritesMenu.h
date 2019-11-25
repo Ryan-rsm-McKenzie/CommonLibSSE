@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_FavoritesMenu
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/IMenu.h"  // IMenu
-#include "RE/MenuEventHandler.h"  // MenuEventHandler
+#include "RE/BSTArray.h"
+#include "RE/GFxValue.h"
+#include "RE/IMenu.h"
+#include "RE/MenuEventHandler.h"
 
 
 namespace RE

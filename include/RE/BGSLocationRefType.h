@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSLocationRefType
-
-#include "RE/BGSKeyword.h"  // BGSKeyword
-#include "RE/FormTypes.h"  // FormType
+#include "RE/BGSKeyword.h"
+#include "RE/FormTypes.h"
 
 
 namespace RE

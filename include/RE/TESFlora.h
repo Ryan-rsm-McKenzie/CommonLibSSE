@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESFlora
-
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESObjectACTI.h"  // TESObjectACTI
-#include "RE/TESProduceForm.h"  // TESObjectACTI
+#include "RE/FormTypes.h"
+#include "RE/TESObjectACTI.h"
+#include "RE/TESProduceForm.h"
 
 
 namespace RE

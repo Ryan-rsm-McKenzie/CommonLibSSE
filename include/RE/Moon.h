@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_Moon
-
-#include "RE/BSString.h"  // BSString
-#include "RE/SkyObject.h"  // SkyObject
+#include "RE/BSString.h"
+#include "RE/SkyObject.h"
 
 
 namespace RE

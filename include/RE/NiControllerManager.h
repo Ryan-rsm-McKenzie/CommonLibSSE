@@ -1,11 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiControllerManager
-#include "skse64/NiRTTI.h"  // NiRTTI_NiControllerManager
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/NiTArray.h"  // NiTArray
-#include "RE/NiTimeController.h"  // NiTimeController
+#include "RE/BSFixedString.h"
+#include "RE/NiTArray.h"
+#include "RE/NiTimeController.h"
 
 
 namespace RE

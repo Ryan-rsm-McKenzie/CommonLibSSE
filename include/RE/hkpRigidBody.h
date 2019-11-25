@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpRigidBody
-
-#include "RE/hkpEntity.h"  // hkpEntity
+#include "RE/hkpEntity.h"
 
 
 namespace RE

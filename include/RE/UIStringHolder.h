@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
+#include "RE/BSFixedString.h"
+#include "RE/BSTSingleton.h"
 
 
 namespace RE

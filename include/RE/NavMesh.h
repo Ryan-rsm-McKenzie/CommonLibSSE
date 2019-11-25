@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NavMesh
-
-#include "RE/BSNavmesh.h"  // BSNavmesh
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESChildCell.h"  // TESChildCell
-#include "RE/TESForm.h"  // TESForm
+#include "RE/BSNavmesh.h"
+#include "RE/FormTypes.h"
+#include "RE/TESChildCell.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

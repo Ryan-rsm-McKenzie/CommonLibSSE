@@ -3,6 +3,9 @@
 
 namespace RE
 {
+	class TESObjectREFR;
+
+
 	struct TESInitScriptEvent
 	{
 		TESObjectREFR* objRef;	// 0

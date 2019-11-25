@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSImpactDataSet
-
-#include "RE/BGSPreloadable.h"  // BGSPreloadable
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESModel
+#include "RE/BGSPreloadable.h"
+#include "RE/BSTHashMap.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

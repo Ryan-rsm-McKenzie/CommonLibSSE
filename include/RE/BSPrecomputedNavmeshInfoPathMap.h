@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSTSingleton.h"  // BSTSingletonExplicit
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTHashMap.h"  // BSTHashMap
+#include "RE/BSTSingleton.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTHashMap.h"
 
 
 namespace RE

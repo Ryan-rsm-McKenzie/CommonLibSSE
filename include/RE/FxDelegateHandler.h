@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_FxDelegateHandler, RTTI_FxDelegateHandler__CallbackProcessor
-
-#include "RE/GRefCountBase.h"  // GRefCountBase
-#include "RE/GStats.h"  // GStatGroups
+#include "RE/GRefCountBase.h"
+#include "RE/GStats.h"
 
 
 namespace RE

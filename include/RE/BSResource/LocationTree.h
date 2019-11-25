@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSResource/Location.h"  // BSResource::Location
+#include "RE/BSResource/Location.h"
 
 
 namespace RE

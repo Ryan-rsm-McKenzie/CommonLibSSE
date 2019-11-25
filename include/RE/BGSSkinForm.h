@@ -1,13 +1,13 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSSkinForm
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/FormTypes.h"  // TESObjectARMO
+#include "RE/BaseFormComponent.h"
 
 
 namespace RE
 {
+	class TESObjectARMO;
+
+
 	class BGSSkinForm : public BaseFormComponent
 	{
 	public:

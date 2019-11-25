@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpSimulationIsland
-
-#include "RE/hkArray.h"  // hkArray, hkInplaceArray
-#include "RE/hkBaseTypes.h"  // hkObjectIndex, hkTime
-#include "RE/hkMultiThreadCheck.h"  // hkMultiThreadCheck
-#include "RE/hkpAgentNnTrack.h"  // hkpAgentNnTrack
-#include "RE/hkpConstraintOwner.h"  // hkpConstraintOwner
+#include "RE/hkArray.h"
+#include "RE/hkBaseTypes.h"
+#include "RE/hkMultiThreadCheck.h"
+#include "RE/hkpAgentNnTrack.h"
+#include "RE/hkpConstraintOwner.h"
 
 
 namespace RE

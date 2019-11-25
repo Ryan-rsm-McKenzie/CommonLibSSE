@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESModelPSA
-
-#include "RE/TESModel.h"  // TESModel
+#include "RE/TESModel.h"
 
 
 namespace RE

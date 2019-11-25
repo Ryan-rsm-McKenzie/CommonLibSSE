@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_MapCamera
-
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
-#include "RE/TESCamera.h"  // TESCamera
+#include "RE/BSTSmartPointer.h"
+#include "RE/TESCamera.h"
 
 
 namespace RE

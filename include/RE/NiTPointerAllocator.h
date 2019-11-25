@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NiTCollection.h"  // NiMalloc, NiFree
+#include "RE/NiTCollection.h"
 
 
 namespace RE

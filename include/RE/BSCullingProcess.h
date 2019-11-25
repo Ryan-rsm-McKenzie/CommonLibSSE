@@ -1,12 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSCullingProcess
-#include "skse64/NiRTTI.h"  // NiRTTI_BSCullingProcess
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTLocklessQueue.h"  // BSTLocklessQueue
-#include "RE/NiCullingProcess.h"  // NiCullingProcess
-#include "RE/NiSmartPointer.h"  // NiPointer
+#include "RE/BSTArray.h"
+#include "RE/BSTLocklessQueue.h"
+#include "RE/NiCullingProcess.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

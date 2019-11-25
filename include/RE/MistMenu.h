@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_MistMenu
-
-#include "RE/IMenu.h"  // IMenu
-#include "RE/MenuEventHandler.h"  // MenuEventHandler
-#include "RE/NiColor.h"  // NiColor
-#include "RE/SimpleAnimationGraphManagerHolder.h"  // SimpleAnimationGraphManagerHolder
+#include "RE/IMenu.h"
+#include "RE/MenuEventHandler.h"
+#include "RE/NiColor.h"
+#include "RE/SimpleAnimationGraphManagerHolder.h"
 
 
 namespace RE

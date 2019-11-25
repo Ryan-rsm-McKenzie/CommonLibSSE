@@ -1,13 +1,13 @@
 #pragma once
 
-#include "skse64/PapyrusEvents.h"  // SKSEModCallbackEvent, SKSECameraEvent, SKSECrosshairRefEvent, SKSEActionEvent, SKSENiNodeUpdateEvent
+#include "skse64/PapyrusEvents.h"
 
-#include "RE/Actor.h"  // Actor
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/NiSmartPointer.h"  // NiPointer
-#include "RE/TESCameraState.h"  // TESCameraState
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESObjectREFR.h"  // TESObjectREFR
+#include "RE/Actor.h"
+#include "RE/BSFixedString.h"
+#include "RE/NiSmartPointer.h"
+#include "RE/TESCameraState.h"
+#include "RE/TESForm.h"
+#include "RE/TESObjectREFR.h"
 
 
 namespace SKSE

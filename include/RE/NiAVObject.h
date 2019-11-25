@@ -1,11 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiAVObject
-#include "skse64/NiRTTI.h"  // NiRTTI_NiAVObject
-
-#include "RE/NiObjectNET.h"  // NiObjectNET
-#include "RE/NiSmartPointer.h"  // NiPointer
-#include "RE/NiTransform.h"  // NiTransform
+#include "RE/NiObjectNET.h"
+#include "RE/NiSmartPointer.h"
+#include "RE/NiTransform.h"
 
 
 namespace RE

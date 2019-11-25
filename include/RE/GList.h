@@ -1,9 +1,8 @@
 #pragma once
 
-#include <cstddef>  // size_t, ptrdiff_t
-#include <memory>  // pointer_traits
-#include <iterator>  // bidirectional_iterator_tag, reverse_iterator
-#include <type_traits>  // is_base_of_v
+#include <memory>
+#include <iterator>
+#include <type_traits>
 
 
 namespace RE

@@ -1,11 +1,10 @@
 #pragma once
 
-#include <cwchar>
-#include <string_view>  // string_view
+#include <string_view>
 
-#include "RE/BSGlobalStringTable.h"  // GlobalStringHandle
+#include "RE/BSGlobalStringTable.h"
 #include "RE/CRC.h"
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

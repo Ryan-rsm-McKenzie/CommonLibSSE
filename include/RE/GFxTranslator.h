@@ -1,9 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_GFxTranslator
-
-#include "RE/GFxState.h"  // GFxState
-#include "RE/SFTypes.h"  // UPInt
+#include "RE/GFxState.h"
 
 
 namespace RE

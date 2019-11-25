@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_MemoryHeap
-
-#include "RE/AbstractHeap.h"  // AbstractHeap
+#include "RE/AbstractHeap.h"
 
 
 namespace RE

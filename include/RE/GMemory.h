@@ -1,9 +1,8 @@
 #pragma once
 
-#include <cstdlib>  // size_t
-#include <new>  // operator new, operator delete
+#include <new>
 
-#include "RE/GMemoryHeap.h"  // GMemoryHeap, GSysAllocPaged, GAllocDebugInfo
+#include "RE/GMemoryHeap.h"
 
 
 namespace RE

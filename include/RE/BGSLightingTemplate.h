@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSLightingTemplate
-
-#include "RE/Color.h"  // Color
-#include "RE/DirectionalAmbientLightingColor.h"  // DirectionalAmbientLightingColor
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
+#include "RE/Color.h"
+#include "RE/DirectionalAmbientLightingColor.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__Internal__CodeTasklet
-
-#include "RE/BSScript/Internal/IFuncCallQuery.h"  // BSScript::Internal::IFuncCallQuery
+#include "RE/BSScript/Internal/IFuncCallQuery.h"
 
 
 namespace RE

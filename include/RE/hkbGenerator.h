@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkbGenerator
-
-#include "RE/hkbNode.h"  // hkbNode
+#include "RE/hkbNode.h"
 
 
 namespace RE

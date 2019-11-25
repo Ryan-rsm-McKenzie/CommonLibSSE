@@ -1,14 +1,18 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESActorBaseData
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/FormTypes.h"  // BGSVoiceType, TESLevItem, TESNPC
+#include "RE/BaseFormComponent.h"
+#include "RE/BSTArray.h"
 
 
 namespace RE
 {
+	class BGSVoiceType;
+	class TESFaction;
+	class TESForm;
+	class TESLevItem;
+	class TESNPC;
+
+
 	class TESActorBaseData : public BaseFormComponent	// ACBS
 	{
 	public:

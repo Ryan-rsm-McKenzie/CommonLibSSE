@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpCachingShapePhantom
-
-#include "RE/hkpShapePhantom.h"  // hkpShapePhantom
+#include "RE/hkpShapePhantom.h"
 
 
 namespace RE

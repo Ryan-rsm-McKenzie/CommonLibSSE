@@ -1,10 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_bhkCharacterProxy
-#include "skse64/NiRTTI.h"  // NiRTTI_bhkCharacterProxy
-
-#include "RE/bhkCharacterPointCollector.h"  // bhkCharacterPointCollector
-#include "RE/bhkSerializable.h"  // bhkSerializable
+#include "RE/bhkCharacterPointCollector.h"
+#include "RE/bhkSerializable.h"
 
 
 namespace RE

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_Stars
-
-#include "RE/SkyObject.h"  // SkyObject
+#include "RE/SkyObject.h"
 
 
 namespace RE

@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpCharacterContext
-
-#include "RE/hkReferencedObject.h"  // hkReferencedObject
-#include "RE/hkStepInfo.h"  // hkStepInfo
-#include "RE/hkVector4.h"  // hkVector4
-#include "RE/hkpCharacterControl.h"  // hkpSurfaceInfo
-#include "RE/hkpCharacterState.h"  // hkpCharacterStateType
+#include "RE/hkReferencedObject.h"
+#include "RE/hkStepInfo.h"
+#include "RE/hkVector4.h"
+#include "RE/hkpCharacterControl.h"
+#include "RE/hkpCharacterState.h"
 
 
 namespace RE

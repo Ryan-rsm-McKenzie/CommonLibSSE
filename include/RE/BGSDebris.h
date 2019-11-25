@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSDebris
-
-#include "RE/BGSPreloadable.h"  // BGSPreloadable
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/FileHash.h"  // FileHash
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
+#include "RE/BGSPreloadable.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTList.h"
+#include "RE/FileHash.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

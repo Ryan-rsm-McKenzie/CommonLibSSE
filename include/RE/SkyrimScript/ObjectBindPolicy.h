@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_SkyrimScript__ObjectBindPolicy
-
-#include "RE/BSScript/ObjectBindPolicy.h"  // BSScript::ObjectBindPolicy
-#include "RE/BSTHashMap.h"  // BSTHashMap
+#include "RE/BSScript/ObjectBindPolicy.h"
+#include "RE/BSTHashMap.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSLock.h"  // BSUniqueLock
-#include "RE/BSResource/Location.h"  // BSResource::Location
-#include "RE/BSTSingleton.h"  // BSTSingletonSDM
+#include "RE/BSResource/Location.h"
+#include "RE/BSLock.h"
+#include "RE/BSTSingleton.h"
 
 
 namespace RE

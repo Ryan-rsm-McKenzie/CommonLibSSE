@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkMemoryAllocator
-
-#include "RE/hkBaseTypes.h"  // hkResult
+#include "RE/hkBaseTypes.h"
 
 
 namespace RE

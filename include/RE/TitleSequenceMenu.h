@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TitleSequenceMenu
-
-#include "RE/IMenu.h"  // IMenu
+#include "RE/IMenu.h"
 
 
 namespace RE

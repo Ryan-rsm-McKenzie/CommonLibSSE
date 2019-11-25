@@ -1,12 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiSkinData
-#include "skse64/NiRTTI.h"  // NiRTTI_NiSkinData
-
-#include "RE/NiBound.h"  // NiBound
-#include "RE/NiObject.h"  // NiObject
-#include "RE/NiSmartPointer.h"  // NiPointer
-#include "RE/NiTransform.h"  // NiTransform
+#include "RE/NiBound.h"
+#include "RE/NiObject.h"
+#include "RE/NiSmartPointer.h"
+#include "RE/NiTransform.h"
 
 
 namespace RE

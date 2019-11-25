@@ -1,11 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_NiObjectNET
-#include "skse64/NiRTTI.h"  // NiRTTI_NiObjectNET
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/NiObject.h"  // NiObject
-#include "RE/NiSmartPointer.h"  // NiPointer
+#include "RE/BSFixedString.h"
+#include "RE/NiObject.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ScrapHeap
-
-#include "RE/IMemoryStore.h"  // IMemoryStore
+#include "RE/IMemoryStore.h"
 
 
 namespace RE

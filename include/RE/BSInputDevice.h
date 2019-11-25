@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSInputDevice
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSIInputDevice.h"  // BSIInputDevice
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/DeviceTypes.h"  // DeviceType
+#include "RE/BSFixedString.h"
+#include "RE/BSIInputDevice.h"
+#include "RE/BSTHashMap.h"
+#include "RE/DeviceTypes.h"
 
 
 namespace RE

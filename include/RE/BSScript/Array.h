@@ -1,14 +1,14 @@
 #pragma once
 
-#include <cassert>  // assert
-#include <iterator>  // random_access_iterator_tag
-#include <stdexcept>  // out_of_range
-#include <string>  // string, to_string
+#include <cassert>
+#include <iterator>
+#include <stdexcept>
+#include <string>
 
-#include "RE/BSScript/Type.h"  // BSScript::Type
-#include "RE/BSScript/Variable.h"  // BSScript::Variable
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
-#include "RE/BSLock.h"  // BSUniqueLock
+#include "RE/BSScript/Type.h"
+#include "RE/BSScript/Variable.h"
+#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSLock.h"
 
 
 namespace RE

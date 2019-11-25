@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/AutoRegisterFactory.h"  // AutoRegisterFactory
-#include "RE/BSTDerivedCreator.h"  // BSTDerivedCreator
+#include "RE/AutoRegisterFactory.h"
+#include "RE/BSTDerivedCreator.h"
 
 
 namespace RE

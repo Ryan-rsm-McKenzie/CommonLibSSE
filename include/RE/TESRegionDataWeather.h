@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESRegionDataWeather
-
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/TESRegionData.h"  // TESRegionData
+#include "RE/BSTList.h"
+#include "RE/TESRegionData.h"
 
 
 namespace RE

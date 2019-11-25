@@ -1,15 +1,20 @@
 #pragma once
 
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSString.h"  // BSString
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/FormTypes.h"  // TESIdleForm, TESTopicInfo, TESTopic, TESQuest, Actor
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/BSFixedString.h"
+#include "RE/BSString.h"
+#include "RE/BSTList.h"
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE
 {
+	class Actor;
+	class BGSSoundDescriptorForm;
 	class ExtraSayToTopicInfo;
+	class TESIdleForm;
+	class TESQuest;
+	class TESTopic;
+	class TESTopicInfo;
 
 
 	class DialogueData

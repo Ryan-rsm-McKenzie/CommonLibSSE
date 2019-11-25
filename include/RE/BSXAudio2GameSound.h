@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSXAudio2GameSound
-
-#include "RE/BSGameSound.h"  // BSGameSound
-#include "RE/IXAudio2VoiceCallback.h"  // IXAudio2VoiceCallback
+#include "RE/BSGameSound.h"
+#include "RE/IXAudio2VoiceCallback.h"
 
 
 namespace RE

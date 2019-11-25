@@ -1,10 +1,11 @@
 #pragma once
 
-#include "RE/FormTypes.h"  // TESObjectCELL
-
 
 namespace RE
 {
+	class TESObjectCELL;
+
+
 	struct TESCellFullyLoadedEvent
 	{
 		TESObjectCELL* cell;

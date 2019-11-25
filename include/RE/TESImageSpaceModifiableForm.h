@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESImageSpaceModifiableForm
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
+#include "RE/BaseFormComponent.h"
 
 
 namespace RE

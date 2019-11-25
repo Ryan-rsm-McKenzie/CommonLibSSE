@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ahkpCharacterProxy
-
-#include "RE/hkpCharacterProxy.h"  // hkpCharacterProxy
+#include "RE/hkpCharacterProxy.h"
 
 
 namespace RE

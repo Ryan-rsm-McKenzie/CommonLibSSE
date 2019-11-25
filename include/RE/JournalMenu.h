@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_JournalMenu
-
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/IMenu.h"  // IMenu
-#include "RE/Journal_QuestsTab.h"  // Journal_QuestsTab
-#include "RE/Journal_StatsTab.h"  // Journal_StatsTab
-#include "RE/Journal_SystemTab.h"  // Journal_SystemTab
-#include "RE/MenuEventHandler.h"  // MenuEventHandler
+#include "RE/BSTEvent.h"
+#include "RE/IMenu.h"
+#include "RE/Journal_QuestsTab.h"
+#include "RE/Journal_StatsTab.h"
+#include "RE/Journal_SystemTab.h"
+#include "RE/MenuEventHandler.h"
 
 
 namespace RE

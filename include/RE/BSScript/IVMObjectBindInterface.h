@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__IVMObjectBindInterface
-
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/hkVector4.h"  // hkVector4
+#include "RE/hkVector4.h"
 
 
 namespace RE

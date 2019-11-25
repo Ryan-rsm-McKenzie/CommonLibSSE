@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/FormTypes.h"  // TESObjectREFR
+#include "RE/BSFixedString.h"
+#include "RE/FormTypes.h"
 
 
 namespace RE

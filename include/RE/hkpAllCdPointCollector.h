@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpAllCdPointCollector
-
-#include "RE/hkArray.h"  // hkInplaceArray
-#include "RE/hkpCdPointCollector.h"  // hkpCdPointCollector
-#include "RE/hkpRootCdPoint.h"  // hkpRootCdPoint
+#include "RE/hkArray.h"
+#include "RE/hkpCdPointCollector.h"
+#include "RE/hkpRootCdPoint.h"
 
 
 namespace RE

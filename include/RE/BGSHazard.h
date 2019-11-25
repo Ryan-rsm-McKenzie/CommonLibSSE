@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSHazard
-
-#include "RE/BGSPreloadable.h"  // BGSPreloadable
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESBoundObject.h"  // TESBoundObject
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESImageSpaceModifiableForm.h"  // TESImageSpaceModifiableForm
-#include "RE/TESModel.h"  // TESModel
+#include "RE/BGSPreloadable.h"
+#include "RE/FormTypes.h"
+#include "RE/TESBoundObject.h"
+#include "RE/TESFullName.h"
+#include "RE/TESImageSpaceModifiableForm.h"
+#include "RE/TESModel.h"
 
 
 namespace RE

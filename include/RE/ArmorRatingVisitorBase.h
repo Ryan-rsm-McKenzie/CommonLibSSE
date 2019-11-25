@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/InventoryChanges.h"  // InventoryChanges::IItemChangeVisitor
+#include "RE/InventoryChanges.h"
 
 
 namespace RE

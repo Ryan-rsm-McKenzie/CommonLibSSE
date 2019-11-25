@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSPerkEntry
-
-#include "RE/FormTypes.h"  // BGSPerk
+#include "RE/FormTypes.h"
 
 
 namespace RE

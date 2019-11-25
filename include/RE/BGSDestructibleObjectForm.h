@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSDestructibleObjectForm
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/FormTypes.h"  // BGSExplosion, BGSDebris
+#include "RE/BaseFormComponent.h"
+#include "RE/FormTypes.h"
 
 
 namespace RE

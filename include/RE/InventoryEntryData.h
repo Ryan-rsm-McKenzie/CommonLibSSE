@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/FormTypes.h"  // TESForm, Actor
-#include "RE/SoulLevels.h"  // SoulLevel
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/BSTList.h"
+#include "RE/FormTypes.h"
+#include "RE/SoulLevels.h"
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

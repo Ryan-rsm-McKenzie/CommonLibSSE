@@ -1,9 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ReferenceEffect
-#include "skse64/NiRTTI.h"  // NiRTTI_ReferenceEffect
-
-#include "RE/BSTempEffect.h"  // BSTempEffect
+#include "RE/BSTempEffect.h"
 
 
 namespace RE

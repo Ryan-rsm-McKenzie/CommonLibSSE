@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_SkyrimScript__Profiler
-
-#include "RE/BSScript/IProfilePolicy.h"  // BSScript::IProfilePolicy
-#include "RE/BSLock.h"  // BSUniqueLock
-#include "RE/BSTHashMap.h"  // BSTHashMap
+#include "RE/BSScript/IProfilePolicy.h"
+#include "RE/BSLock.h"
+#include "RE/BSTHashMap.h"
 
 
 namespace RE

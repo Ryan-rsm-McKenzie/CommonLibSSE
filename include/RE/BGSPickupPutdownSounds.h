@@ -1,13 +1,13 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSPickupPutdownSounds
-
-#include "RE/BaseFormComponent.h"  // BaseFormComponent
-#include "RE/FormTypes.h"  // BGSSoundDescriptorForm
+#include "RE/BaseFormComponent.h"
 
 
 namespace RE
 {
+	class BGSSoundDescriptorForm;
+
+
 	class BGSPickupPutdownSounds : public BaseFormComponent
 	{
 	public:

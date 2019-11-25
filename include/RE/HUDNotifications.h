@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_HUDNotifications
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/HUDObject.h"  // HUDObject
+#include "RE/BSFixedString.h"
+#include "RE/BSTArray.h"
+#include "RE/GFxValue.h"
+#include "RE/HUDObject.h"
 
 
 namespace RE

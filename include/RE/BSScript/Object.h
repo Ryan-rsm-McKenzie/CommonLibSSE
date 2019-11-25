@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSScript/Variable.h"  // BSScript::Variable
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/BSScript/Variable.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSTSmartPointer.h"
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

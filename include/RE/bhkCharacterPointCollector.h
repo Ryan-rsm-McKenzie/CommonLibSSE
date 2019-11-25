@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_bhkCharacterPointCollector
-
-#include "RE/hkpAllCdPointCollector.h"  // hkpAllCdPointCollector
+#include "RE/hkpAllCdPointCollector.h"
 
 
 namespace RE

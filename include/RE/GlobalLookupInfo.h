@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSLock.h"  // BSReadWriteLock
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/FormTypes.h"  // FormType, TESForm
+#include "RE/BSFixedString.h"
+#include "RE/BSLock.h"
+#include "RE/BSTHashMap.h"
+#include "RE/FormTypes.h"
 
 
 namespace RE

@@ -1,9 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSFaceGenNiNode
-#include "skse64/NiRTTI.h"  // NiRTTI_BSFaceGenNiNode
-
-#include "RE/NiNode.h"  // NiNode
+#include "RE/NiNode.h"
 
 
 namespace RE

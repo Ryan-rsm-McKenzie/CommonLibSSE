@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkbRagdollDriver
-
-#include "RE/hkReferencedObject.h"  // hkReferencedObject
+#include "RE/hkReferencedObject.h"
 
 
 namespace RE

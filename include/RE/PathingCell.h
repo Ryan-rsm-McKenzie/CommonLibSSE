@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_PathingCell
-
-#include "RE/BSPathingCell.h"  // BSPathingCell
+#include "RE/BSPathingCell.h"
 
 
 namespace RE

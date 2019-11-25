@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ActorValueInfo
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESDescription.h"  // TESDescription
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESIcon.h"  // TESIcon
+#include "RE/BSFixedString.h"
+#include "RE/FormTypes.h"
+#include "RE/TESDescription.h"
+#include "RE/TESForm.h"
+#include "RE/TESFullName.h"
+#include "RE/TESIcon.h"
 
 
 namespace RE

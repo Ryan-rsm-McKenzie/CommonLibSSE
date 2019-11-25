@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ValueModifierEffect
-
-#include "RE/ActiveEffect.h"  // ActiveEffect
-#include "RE/ActorValues.h"  // ActorValue
+#include "RE/ActiveEffect.h"
+#include "RE/ActorValues.h"
 
 
 namespace RE

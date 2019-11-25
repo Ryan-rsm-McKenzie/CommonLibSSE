@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

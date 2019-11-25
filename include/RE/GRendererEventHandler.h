@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/GList.h"  // GListNode
-#include "RE/GNewOverrideBase.h"  // GNewOverrideBase
+#include "RE/GList.h"
+#include "RE/GNewOverrideBase.h"
 
 
 namespace RE

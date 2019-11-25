@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__IObjectHandlePolicy
-
-#include "RE/FormTypes.h"  // FormType
+#include "RE/FormTypes.h"
 
 
 namespace RE

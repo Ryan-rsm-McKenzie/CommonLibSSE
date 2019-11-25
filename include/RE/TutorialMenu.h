@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TutorialMenu
-
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/IMenu.h"  // IMenu
+#include "RE/GFxValue.h"
+#include "RE/IMenu.h"
 
 
 namespace RE

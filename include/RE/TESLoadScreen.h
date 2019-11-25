@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESLoadScreen
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/Condition.h"  // Condition
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESModel.h"  // TESModel
+#include "RE/BSFixedString.h"
+#include "RE/Condition.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
+#include "RE/TESModel.h"
 
 
 namespace RE

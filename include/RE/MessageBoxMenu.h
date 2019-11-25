@@ -1,7 +1,5 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_MessageBoxMenu
-
 #include "RE/IMenu.h"
 
 

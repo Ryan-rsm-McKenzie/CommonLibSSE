@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESTexture1024
-
-#include "RE/TESTexture.h"  // TESTexture
+#include "RE/TESTexture.h"
 
 
 namespace RE

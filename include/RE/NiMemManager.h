@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NiAllocator.h"  // NiAllocator, NiMemEventType
+#include "RE/NiAllocator.h"
 
 
 namespace RE

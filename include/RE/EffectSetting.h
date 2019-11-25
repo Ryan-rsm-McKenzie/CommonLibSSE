@@ -1,17 +1,15 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_EffectSetting
-
-#include "RE/ActorValues.h"  // ActorValue
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BGSKeywordForm.h"  // BGSKeywordForm
-#include "RE/BGSMenuDisplayObject.h"  // BGSMenuDisplayObject
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTList.h"  // BSSimpleList
-#include "RE/Condition.h"  // Condition
-#include "RE/FormTypes.h"  // FormType, TESObjectLIGH, TESEffectShader, BGSImpactDataSet, BGSProjectile, SpellItem, BGSSoundDescriptorForm, BGSArtObject, BGSExplosion, BGSPerk, BGSDualCastData, TESImageSpaceModifier
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESFullName.h"  // TESFullName
+#include "RE/ActorValues.h"
+#include "RE/BSFixedString.h"
+#include "RE/BGSKeywordForm.h"
+#include "RE/BGSMenuDisplayObject.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTList.h"
+#include "RE/Condition.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
+#include "RE/TESFullName.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NiAnimationKey.h"  // NiAnimationKey
+#include "RE/NiAnimationKey.h"
 
 
 namespace RE

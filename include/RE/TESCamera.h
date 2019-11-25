@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESCamera
-
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
-#include "RE/NiNode.h"  // NiNode
-#include "RE/NiPoint3.h"  // NiPoint3
-#include "RE/NiSmartPointer.h"  // NiPointer
+#include "RE/BSTSmartPointer.h"
+#include "RE/NiNode.h"
+#include "RE/NiPoint3.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE

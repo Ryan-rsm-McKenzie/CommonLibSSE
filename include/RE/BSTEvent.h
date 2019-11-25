@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSLock.h"  // BSUniqueLock
-#include "RE/BSTArray.h"  // BSTArray
+#include "RE/BSLock.h"
+#include "RE/BSTArray.h"
 
 
 namespace RE

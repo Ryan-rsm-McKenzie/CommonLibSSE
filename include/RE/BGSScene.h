@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSScene
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/Condition.h"  // Condition
-#include "RE/FormTypes.h"  // FormType, BGSStoryManagerQuestNode
-#include "RE/TESForm.h"  // TESForm
+#include "RE/BSTArray.h"
+#include "RE/Condition.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

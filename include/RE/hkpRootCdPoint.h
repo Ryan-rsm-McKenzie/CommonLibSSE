@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/hkContactPoint.h"  // hkContactPoint
-#include "RE/hkpShape.h"  // hkpShapeKey
+#include "RE/hkContactPoint.h"
+#include "RE/hkpShape.h"
 
 
 namespace RE

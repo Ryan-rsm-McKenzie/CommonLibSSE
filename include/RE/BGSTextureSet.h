@@ -1,13 +1,11 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSTextureSet
-
-#include "RE/BSTextureSet.h"  // BSTextureSet
-#include "RE/Color.h"  // Color
-#include "RE/FormTypes.h"  // FormType
-#include "RE/FileHash.h"  // FileHash
-#include "RE/TESBoundObject.h"  // TESBoundObject
-#include "RE/TESTexture.h"  // TESTexture
+#include "RE/BSTextureSet.h"
+#include "RE/Color.h"
+#include "RE/FormTypes.h"
+#include "RE/FileHash.h"
+#include "RE/TESBoundObject.h"
+#include "RE/TESTexture.h"
 
 
 namespace RE

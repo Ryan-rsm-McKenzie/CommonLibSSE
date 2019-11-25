@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ExtraCannotWear
-
-#include "RE/BSExtraData.h"  // BSExtraData
+#include "RE/BSExtraData.h"
 
 
 namespace RE

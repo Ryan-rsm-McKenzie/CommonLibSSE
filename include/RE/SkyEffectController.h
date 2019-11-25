@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_SkyEffectController
-
-#include "RE/ReferenceEffectController.h"  // ReferenceEffectController
+#include "RE/ReferenceEffectController.h"
 
 
 namespace RE

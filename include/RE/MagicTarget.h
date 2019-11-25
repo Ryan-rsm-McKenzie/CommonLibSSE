@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_MagicTarget, RTTI_MagicTarget__ForEachActiveEffectVisitor
-
-#include "RE/EffectSetting.h"  // EffectSetting::Data::Archetype
-#include "RE/BSTList.h"  // BSSimpleList
+#include "RE/EffectSetting.h"
+#include "RE/BSTList.h"
 
 
 namespace RE

@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_bhkThreadMemorySource
-
-#include "RE/hkMemoryAllocator.h"  // hkMemoryAllocator
-#include "RE/IMemoryHeap.h"  // IMemoryHeap
+#include "RE/hkMemoryAllocator.h"
+#include "RE/IMemoryHeap.h"
 
 
 namespace RE

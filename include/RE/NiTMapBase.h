@@ -1,10 +1,10 @@
 #pragma once
 
-#include <cassert>  // assert
-#include <cstring>  // memset
-#include <utility>  // forward
+#include <cassert>
+#include <cstring>
+#include <utility>
 
-#include "RE/TESMemoryManager.h"  // malloc, free
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/GAllocator.h"  // GAllocatorGH
-#include "RE/GFixedSizeHash.h"  // GFixedSizeHash
-#include "RE/GHashNode.h"  // GHashNode
-#include "RE/GHashSet.h"  // GHashSet
-#include "RE/GHashsetCachedNodeEntry.h"  // GHashsetCachedNodeEntry
-#include "RE/GMemory.h"  // GFC_MEMORY_REDEFINE_NEW
+#include "RE/GAllocator.h"
+#include "RE/GFixedSizeHash.h"
+#include "RE/GHashNode.h"
+#include "RE/GHashSet.h"
+#include "RE/GHashsetCachedNodeEntry.h"
+#include "RE/GMemory.h"
 
 
 namespace RE

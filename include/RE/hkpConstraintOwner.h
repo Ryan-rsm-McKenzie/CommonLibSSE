@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_hkpConstraintOwner
-
-#include "RE/hkReferencedObject.h"  // hkReferencedObject
-#include "RE/hkpConstraintInfo.h"  // hkpConstraintInfo
+#include "RE/hkReferencedObject.h"
+#include "RE/hkpConstraintInfo.h"
 
 
 namespace RE

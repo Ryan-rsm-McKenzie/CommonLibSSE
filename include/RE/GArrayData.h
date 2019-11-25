@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/GArrayDataBase.h"  // GArrayDataBase
+#include "RE/GArrayDataBase.h"
 
 
 namespace RE

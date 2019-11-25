@@ -1,14 +1,12 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSBodyPartData
-
-#include "RE/ActorValues.h"  // ActorValue8
-#include "RE/BGSPreloadable.h"  // BGSPreloadable
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESModel.h"  // TESModel
-#include "RE/TESModelPSA.h"  // TESModelPSA
+#include "RE/ActorValues.h"
+#include "RE/BGSPreloadable.h"
+#include "RE/BSFixedString.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
+#include "RE/TESModel.h"
+#include "RE/TESModelPSA.h"
 
 
 namespace RE

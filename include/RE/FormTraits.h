@@ -435,9 +435,9 @@ namespace RE
 				return static_cast<Actor*>(this);
 			} else if constexpr (std::is_convertible<Character*, T>::value) {
 				return static_cast<Character*>(this);
-			} else if constexpr (std::is_convertible<PlayerCharacter*, T>::value) {
+			}/* else if constexpr (std::is_convertible<PlayerCharacter*, T>::value) {
 				return static_cast<PlayerCharacter*>(this);
-			}
+			}*/
 			break;
 		case FormType::ProjectileMissile:
 			if constexpr (std::is_convertible<MissileProjectile*, T>::value) {

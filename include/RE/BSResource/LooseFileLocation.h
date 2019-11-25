@@ -1,13 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSResource__LooseFileLocation
-
-#include <minwinbase.h>  // WIN32_FIND_DATAA
-#include <minwindef.h>  // MAX_PATH
-#include <winnt.h>  // HANDLE
-
-#include "RE/BSResource/Location.h"  // BSResource::Location
-#include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSResource/Location.h"
+#include "RE/BSFixedString.h"
 
 
 namespace RE

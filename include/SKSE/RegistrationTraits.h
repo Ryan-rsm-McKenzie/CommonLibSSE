@@ -3,9 +3,9 @@
 #include <tuple>
 #include <type_traits>
 
-#include "RE/NiSmartPointer.h"  // NiPointer
-#include "RE/TESForm.h"  // TESForm
-#include "RE/TESObjectREFR.h"  // TESObjectREFR
+#include "RE/NiSmartPointer.h"
+#include "RE/TESForm.h"
+#include "RE/TESObjectREFR.h"
 
 
 namespace SKSE

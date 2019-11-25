@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSMusicType
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSIMusicType.h"  // BSIMusicType
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
+#include "RE/BSFixedString.h"
+#include "RE/BSIMusicType.h"
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

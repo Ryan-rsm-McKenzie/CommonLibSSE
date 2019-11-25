@@ -1,8 +1,6 @@
 #pragma once
 
 
-#include "skse64/GameRTTI.h"  // RTTI_SkyObject
-
 namespace RE
 {
 	class NiNode;

@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_SkyrimScript__HandlePolicy
-
-#include "RE/BSScript/IObjectHandlePolicy.h"  // BSScript::IObjectHandlePolicy
-#include "RE/BSTHashMap.h"  // BSTHashMap
+#include "RE/BSScript/IObjectHandlePolicy.h"
+#include "RE/BSTHashMap.h"
 
 
 namespace RE

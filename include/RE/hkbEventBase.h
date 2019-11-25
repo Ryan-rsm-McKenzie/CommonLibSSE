@@ -1,8 +1,8 @@
 #pragma once
 
-#include <type_traits>  // underlying_type
+#include <type_traits>
 
-#include "RE/hkRefPtr.h"  // hkRefPtr
+#include "RE/hkRefPtr.h"
 
 
 namespace RE

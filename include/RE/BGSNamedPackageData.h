@@ -1,8 +1,8 @@
 #pragma once
 
-#include <type_traits>  // is_base_of_v
+#include <type_traits>
 
-#include "RE/IPackageData.h"  // IPackageData
+#include "RE/IPackageData.h"
 
 
 namespace RE

@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_MovementControllerAI
-
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
-#include "RE/IMovementControllerRegisterInterface.h"  // IMovementControllerRegisterInterface
+#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/IMovementControllerRegisterInterface.h"
 
 
 namespace RE

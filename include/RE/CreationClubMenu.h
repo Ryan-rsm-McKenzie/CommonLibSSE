@@ -1,12 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_CraftingMenu
-
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/GFxFunctionHandler.h"  // GFxFunctionHandler
-#include "RE/ImageData.h"  // ImageData
-#include "RE/IMenu.h"  // IMenu
-#include "RE/MenuEventHandler.h"  // MenuEventHandler
+#include "RE/BSTEvent.h"
+#include "RE/GFxFunctionHandler.h"
+#include "RE/ImageData.h"
+#include "RE/IMenu.h"
+#include "RE/MenuEventHandler.h"
 
 
 namespace RE

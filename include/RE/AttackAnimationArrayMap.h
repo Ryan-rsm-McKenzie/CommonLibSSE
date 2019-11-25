@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_AttackAnimationArrayMap
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/NiRefObject.h"  // NiRefObject
-#include "RE/SetEventData.h"  // SetEventData
+#include "RE/BSTArray.h"
+#include "RE/BSTHashMap.h"
+#include "RE/NiRefObject.h"
+#include "RE/SetEventData.h"
 
 
 namespace RE

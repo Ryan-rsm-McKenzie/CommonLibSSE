@@ -1,17 +1,10 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_ActivateHandler
-
-#include "RE/HeldStateHandler.h"  // HeldStateHandler
-#include "RE/PlayerControls.h"  // PlayerControls::Data024
+#include "RE/HeldStateHandler.h"
 
 
 namespace RE
 {
-	class ButtonEvent;
-	class InputEvent;
-
-
 	struct ActivateHandler : public HeldStateHandler
 	{
 	public:

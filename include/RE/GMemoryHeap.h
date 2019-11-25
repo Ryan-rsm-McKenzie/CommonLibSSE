@@ -1,8 +1,8 @@
 #pragma once
 
-#include "GAtomic.h"  // GLock
-#include "GList.h"  // GListNode, GList
-#include "GStats.h"  // GHeapID
+#include "GAtomic.h"
+#include "GList.h"
+#include "GStats.h"
 
 
 namespace RE

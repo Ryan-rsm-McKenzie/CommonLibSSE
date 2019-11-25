@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/ConcreteFormFactory.h"  // ConcreteFormFactory
+#include "RE/ConcreteFormFactory.h"
 
 
 namespace RE

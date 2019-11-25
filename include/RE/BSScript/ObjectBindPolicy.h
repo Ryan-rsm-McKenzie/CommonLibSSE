@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/BSTHashMap.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE

@@ -1,20 +1,18 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESNPC
+#include <type_traits>
 
-#include <type_traits>  // underlying_type_t
-
-#include "RE/BGSHeadPart.h"  // BGSHeadPart
-#include "RE/BGSOverridePackCollection.h"  // BGSOverridePackCollection
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/Color.h"  // Color
-#include "RE/FormTypes.h"  // BGSColorForm, BGSTextureSet, BGSHeadPart, TESClass, BGSOutfit, TESFaction, BGSHeadPart, TESRace
-#include "RE/SoundLevels.h"  // SoundLevel8
-#include "RE/TESActorBase.h"  // TESActorBase
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
-#include "RE/TESRaceForm.h"  // TESRaceForm
+#include "RE/BGSHeadPart.h"
+#include "RE/BGSOverridePackCollection.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTEvent.h"
+#include "RE/Color.h"
+#include "RE/FormTypes.h"
+#include "RE/SoundLevels.h"
+#include "RE/TESActorBase.h"
+#include "RE/TESMemoryManager.h"
+#include "RE/TESRaceForm.h"
 
 
 namespace RE

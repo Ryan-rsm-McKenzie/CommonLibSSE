@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSScript/Type.h"  // BSScript::Type
-#include "RE/BSScript/Variable.h"  // BSScript::Variable
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSIntrusiveRefCounted.h"  // BSIntrusiveRefCounted
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/BSScript/Type.h"
+#include "RE/BSScript/Variable.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE

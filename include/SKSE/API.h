@@ -1,14 +1,14 @@
 #pragma once
 
-#include "skse64/PapyrusDelayFunctors.h"  // SKSEDelayFunctorManager
-#include "skse64/PapyrusObjects.h"  // SKSEObjectRegistry, SKSEPersistentObjectStorage
-#include "skse64/PluginAPI.h"  // PluginHandle
+#include "skse64/PapyrusDelayFunctors.h"
+#include "skse64/PapyrusObjects.h"
+#include "skse64/PluginAPI.h"
 
-#include <functional>  // function
+#include <functional>
 
-#include "RE/BSTEvent.h"  // BSTEventSource
-#include "SKSE/Events.h"  // ModCallbackEvent, CameraEvent, CrosshairRefEvent, ActionEvent, NiNodeUpdateEvent
-#include "SKSE/Interfaces.h"  // LoadInterface, ScaleformInterface, PapyrusInterface, SerializationInterface, TaskInterface, MessagingInterface, ObjectInterface
+#include "RE/BSTEvent.h"
+#include "SKSE/Events.h"
+#include "SKSE/Interfaces.h"
 
 
 namespace SKSE

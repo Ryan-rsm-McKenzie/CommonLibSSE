@@ -1,11 +1,9 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__Internal__ScriptFunction
-
-#include "RE/BSScript/IFunction.h"  // BSScript::IFunction
-#include "RE/BSScript/Type.h"  // BSScript::Type
-#include "RE/BSScript/VariableInfo.h"  // BSScript::VariableInfo
-#include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSScript/IFunction.h"
+#include "RE/BSScript/Type.h"
+#include "RE/BSScript/VariableInfo.h"
+#include "RE/BSFixedString.h"
 
 
 namespace RE

@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BGSEntryPointPerkEntry
-
-#include "RE/BGSPerkEntry.h"  // RE::BGSPerkEntry
-#include "RE/FormTypes.h"  // BGSPerk, TESObjectREFR
+#include "RE/BGSPerkEntry.h"
+#include "RE/FormTypes.h"
 
 
 namespace RE

@@ -1,13 +1,13 @@
 #pragma once
 
-#include <cassert>  // assert
-#include <iterator>  // random_access_iterator_tag
-#include <type_traits>  // enable_if_t, is_integral
+#include <cassert>
+#include <iterator>
+#include <type_traits>
 
-#include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
-#include "RE/BSScript/Array.h"  // BSScript::Array
-#include "RE/BSScript/Variable.h"  // BSScript::Variable
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/BSScript/Internal/VirtualMachine.h"
+#include "RE/BSScript/Array.h"
+#include "RE/BSScript/Variable.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE

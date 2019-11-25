@@ -1,8 +1,6 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSPCGamepadDeviceHandler
-
-#include "RE/BSIInputDevice.h"  // BSIInputDevice
+#include "RE/BSIInputDevice.h"
 
 
 namespace RE

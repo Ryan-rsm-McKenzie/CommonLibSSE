@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_HUDObject
-
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/GPtr.h"  // GPtr
-#include "RE/TESMemoryManager.h"  // TES_HEAP_REDEFINE_NEW
+#include "RE/GFxValue.h"
+#include "RE/GPtr.h"
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

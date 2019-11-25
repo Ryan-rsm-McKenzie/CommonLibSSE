@@ -1,9 +1,7 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_TESSound
-
-#include "RE/FormTypes.h"  // FormType, BGSSoundDescriptorForm
-#include "RE/TESBoundAnimObject.h"  // TESBoundAnimObject
+#include "RE/FormTypes.h"
+#include "RE/TESBoundAnimObject.h"
 
 
 namespace RE

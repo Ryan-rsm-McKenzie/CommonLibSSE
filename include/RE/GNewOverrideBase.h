@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/GMemory.h"  // GFC_MEMORY_REDEFINE_NEW
+#include "RE/GMemory.h"
 
 
 namespace RE

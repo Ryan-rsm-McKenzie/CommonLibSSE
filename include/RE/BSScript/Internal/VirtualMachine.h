@@ -1,21 +1,19 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_BSScript__Internal__VirtualMachine
-
-#include "RE/BSScript/Internal/FunctionMessage.h"  // BSScript::Internal::FunctionMessage
-#include "RE/BSScript/Internal/SuspendedStack.h"  // BSScript::Internal::SuspendedStack
-#include "RE/BSScript/IVirtualMachine.h"  // BSScript::IVirtualMachine
-#include "RE/BSScript/IVMDebugInterface.h"  // BSScript::IVMDebugInterface
-#include "RE/BSScript/IVMObjectBindInterface.h"  // BSScript::IVMObjectBindInterface
-#include "RE/BSScript/IVMSaveLoadInterface.h"  // BSScript::IVMSaveLoadInterface
-#include "RE/BSScript/LinkerProcessor.h"  // BSScript::LinkerProcessor
-#include "RE/BSLock.h"  // BSUniqueLock
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTEvent.h"  // BSTEvent
-#include "RE/BSTFreeList.h"  // BSTStaticFreeList
-#include "RE/BSTHashMap.h"  // BSTHashMap
-#include "RE/BSTMessageQueue.h"  // BSTCommonLLMessageQueue, BSTCommonStaticMessageQueue
-#include "RE/BSTSmartPointer.h"  // BSTSmartPointer
+#include "RE/BSScript/Internal/FunctionMessage.h"
+#include "RE/BSScript/Internal/SuspendedStack.h"
+#include "RE/BSScript/IVirtualMachine.h"
+#include "RE/BSScript/IVMDebugInterface.h"
+#include "RE/BSScript/IVMObjectBindInterface.h"
+#include "RE/BSScript/IVMSaveLoadInterface.h"
+#include "RE/BSScript/LinkerProcessor.h"
+#include "RE/BSLock.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTEvent.h"
+#include "RE/BSTFreeList.h"
+#include "RE/BSTHashMap.h"
+#include "RE/BSTMessageQueue.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE

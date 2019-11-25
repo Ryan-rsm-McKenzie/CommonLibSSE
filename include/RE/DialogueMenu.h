@@ -1,10 +1,8 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"  // RTTI_DialogueMenu
-
-#include "RE/BSTArray.h"  // BSTArray
-#include "RE/BSTEvent.h"  // BSTEventSink
-#include "RE/IMenu.h"  // IMenu
+#include "RE/BSTArray.h"
+#include "RE/BSTEvent.h"
+#include "RE/IMenu.h"
 
 
 namespace RE
