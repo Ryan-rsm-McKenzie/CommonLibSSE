@@ -1,7 +1,5 @@
 #include "RE/BGSEntryPointPerkEntry.h"
 
-#include <cstdint>  // uintptr_t
-
 
 namespace RE
 {

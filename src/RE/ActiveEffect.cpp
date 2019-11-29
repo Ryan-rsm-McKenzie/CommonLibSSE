@@ -1,9 +1,9 @@
 #include "RE/ActiveEffect.h"
 
-#include "RE/Actor.h"  // Actor
-#include "RE/Effect.h"  // Effect
+#include "RE/Actor.h"
+#include "RE/Effect.h"
 #include "RE/Offsets.h"
-#include "RE/TESObjectREFR.h"  // TESObjectREFR
+#include "RE/TESObjectREFR.h"
 #include "REL/Relocation.h"
 
 

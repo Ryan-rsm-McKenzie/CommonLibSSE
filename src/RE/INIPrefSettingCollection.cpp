@@ -1,12 +1,14 @@
 #include "RE/INIPrefSettingCollection.h"
 
-#include "skse64/GameSettings.h"  // g_iniPrefSettingCollection
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
 {
 	INIPrefSettingCollection* INIPrefSettingCollection::GetSingleton()
 	{
-		return *unrestricted_cast<INIPrefSettingCollection**>(g_iniPrefSettingCollection.GetUIntPtr());
+		REL::Offset<INIPrefSettingCollection**> singleton(Offset::INIPrefSettingCollection::Singleton);
+		return *singleton;
 	}
 }

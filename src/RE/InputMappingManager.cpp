@@ -1,26 +1,33 @@
 #include "RE/InputMappingManager.h"
 
-#include "skse64/GameInput.h"  // InputManager
-
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/BSTArray.h"  // BSTArray
+#include "RE/BSFixedString.h"
+#include "RE/BSTArray.h"
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
 {
 	InputMappingManager* InputMappingManager::GetSingleton()
 	{
-		using func_t = function_type_t<decltype(&InputMappingManager::GetSingleton)>;
-		func_t* func = unrestricted_cast<func_t*>(&::InputManager::GetSingleton);
-		return func();
+		REL::Offset<InputMappingManager**> singleton(Offset::InputMappingManager::Singleton);
+		return *singleton;
 	}
 
 
 	UInt8 InputMappingManager::AllowTextInput(bool a_allow)
 	{
-		using func_t = function_type_t<decltype(&InputMappingManager::AllowTextInput)>;
-		func_t* func = unrestricted_cast<func_t*>(&::InputManager::AllowTextInput);
-		return func(this, a_allow);
+		if (a_allow) {
+			if (allowTextInput != static_cast<UInt8>(-1)) {
+				allowTextInput++;
+			}
+		} else {
+			if (allowTextInput != 0) {
+				allowTextInput--;
+			}
+		}
+
+		return allowTextInput;
 	}
 
 

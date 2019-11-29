@@ -1,9 +1,9 @@
 #include "SKSE/API.h"
 
-#include "skse64_common/BranchTrampoline.h"  // g_localTrampoline, g_branchTrampoline
+#include "skse64_common/BranchTrampoline.h"
 
-#include <mutex>  // mutex
-#include <vector>  // vector
+#include <mutex>
+#include <vector>
 
 
 namespace SKSE

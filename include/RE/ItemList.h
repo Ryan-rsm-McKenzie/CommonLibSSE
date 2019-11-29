@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/GFxValue.h"=
+#include "RE/GFxValue.h"
 #include "RE/GPtr.h"
 #include "RE/StandardItemData.h"
 

@@ -7,131 +7,128 @@ namespace REL
 {
 	namespace Impl
 	{
-		namespace
+		void kmp_table(const Array<std::uint8_t>& W, Array<std::size_t>& T)
 		{
-			void kmp_table(const std::basic_string_view<std::uint8_t>& W, std::vector<std::size_t>& T)
-			{
-				std::size_t pos = 1;
-				std::size_t cnd = 0;
+			std::size_t pos = 1;
+			std::size_t cnd = 0;
 
-				T[0] = NPOS;
+			T[0] = NPOS;
 
-				while (pos < W.size()) {
-					if (W[pos] == W[cnd]) {
-						T[pos] = T[cnd];
-					} else {
-						T[pos] = cnd;
+			while (pos < W.size()) {
+				if (W[pos] == W[cnd]) {
+					T[pos] = T[cnd];
+				} else {
+					T[pos] = cnd;
+					cnd = T[cnd];
+					while (cnd != NPOS && W[pos] != W[cnd]) {
 						cnd = T[cnd];
-						while (cnd != NPOS && W[pos] != W[cnd]) {
-							cnd = T[cnd];
-						}
 					}
-					++pos;
-					++cnd;
 				}
-
-				T[pos] = cnd;
+				++pos;
+				++cnd;
 			}
 
+			T[pos] = cnd;
+		}
 
-			void kmp_table(const std::vector<std::uint8_t>& W, const std::vector<bool>& M, std::vector<std::size_t>& T)
-			{
-				std::size_t pos = 1;
-				std::size_t cnd = 0;
 
-				T[0] = NPOS;
+		void kmp_table(const Array<std::uint8_t>& W, const Array<bool>& M, Array<std::size_t>& T)
+		{
+			std::size_t pos = 1;
+			std::size_t cnd = 0;
 
-				while (pos < W.size()) {
-					if (!M[pos] || !M[cnd] || W[pos] == W[cnd]) {
-						T[pos] = T[cnd];
-					} else {
-						T[pos] = cnd;
+			T[0] = NPOS;
+
+			while (pos < W.size()) {
+				if (!M[pos] || !M[cnd] || W[pos] == W[cnd]) {
+					T[pos] = T[cnd];
+				} else {
+					T[pos] = cnd;
+					cnd = T[cnd];
+					while (cnd != NPOS && M[pos] && M[cnd] && W[pos] != W[cnd]) {
 						cnd = T[cnd];
-						while (cnd != NPOS && M[pos] && M[cnd] && W[pos] != W[cnd]) {
-							cnd = T[cnd];
-						}
 					}
-					++pos;
-					++cnd;
 				}
-
-				T[pos] = cnd;
+				++pos;
+				++cnd;
 			}
 
+			T[pos] = cnd;
+		}
 
-			std::size_t kmp_search(const std::basic_string_view<std::uint8_t>& S, const std::basic_string_view<std::uint8_t>& W)
-			{
-				std::size_t j = 0;
-				std::size_t k = 0;
-				std::vector<std::size_t> T(W.size() + 1);
-				kmp_table(W, T);
 
-				while (j < S.size()) {
-					if (W[k] == S[j]) {
+		std::size_t kmp_search(const Array<std::uint8_t>& S, const Array<std::uint8_t>& W)
+		{
+			std::size_t j = 0;
+			std::size_t k = 0;
+			Array<std::size_t> T(W.size() + 1);
+			kmp_table(W, T);
+
+			while (j < S.size()) {
+				if (W[k] == S[j]) {
+					++j;
+					++k;
+					if (k == W.size()) {
+						return j - k;
+					}
+				} else {
+					k = T[k];
+					if (k == NPOS) {
 						++j;
 						++k;
-						if (k == W.size()) {
-							return j - k;
-						}
-					} else {
-						k = T[k];
-						if (k == NPOS) {
-							++j;
-							++k;
-						}
 					}
 				}
-
-				return 0xDEADBEEF;
 			}
 
+			return 0xDEADBEEF;
+		}
 
-			std::size_t kmp_search(const std::basic_string_view<std::uint8_t>& S, const std::vector<std::uint8_t>& W, const std::vector<bool>& M)
-			{
-				std::size_t j = 0;
-				std::size_t k = 0;
-				std::vector<std::size_t> T(W.size() + 1);
-				kmp_table(W, M, T);
 
-				while (j < S.size()) {
-					if (!M[k] || W[k] == S[j]) {
+		std::size_t kmp_search(const Array<std::uint8_t>& S, const Array<std::uint8_t>& W, const Array<bool>& M)
+		{
+			std::size_t j = 0;
+			std::size_t k = 0;
+			Array<std::size_t> T(W.size() + 1);
+			kmp_table(W, M, T);
+
+			while (j < S.size()) {
+				if (!M[k] || W[k] == S[j]) {
+					++j;
+					++k;
+					if (k == W.size()) {
+						return j - k;
+					}
+				} else {
+					k = T[k];
+					if (k == NPOS) {
 						++j;
 						++k;
-						if (k == W.size()) {
-							return j - k;
-						}
-					} else {
-						k = T[k];
-						if (k == NPOS) {
-							++j;
-							++k;
-						}
 					}
 				}
-
-				return 0xDEADBEEF;
 			}
+
+			return 0xDEADBEEF;
 		}
 	}
 
 
 	std::uint32_t Module::Section::RVA() const
 	{
-		assert(rva != 0);
+		assert(rva != 0xDEADBEEF);
 		return rva;
 	}
 
 
 	std::uintptr_t Module::Section::BaseAddr() const
 	{
-		assert(addr != 0);
+		assert(addr != 0xDEADBEEF);
 		return addr;
 	}
 
 
 	std::size_t Module::Section::Size() const
 	{
-		assert(size != 0);
+		assert(size != 0xDEADBEEF);
 		return size;
 	}
 
@@ -224,13 +221,20 @@ namespace REL
 	}
 
 
+	std::uintptr_t VTable::GetOffset() const
+	{
+		return GetAddress() - Module::BaseAddr();
+	}
+
+
 	RE::RTTI::TypeDescriptor* VTable::LocateTypeDescriptor(const char* a_name) const
 	{
+		auto name = const_cast<std::uint8_t*>(reinterpret_cast<const std::uint8_t*>(a_name));
 		auto section = Module::GetSection(ID::kData);
 		auto start = section.BasePtr<std::uint8_t>();
 
-		std::basic_string_view<std::uint8_t> haystack(start, section.Size());
-		std::basic_string_view<std::uint8_t> needle(reinterpret_cast<const std::uint8_t*>(a_name));
+		Impl::Array<std::uint8_t> haystack(start, section.Size());
+		Impl::Array<std::uint8_t> needle(name, std::strlen(a_name));
 		auto addr = start + Impl::kmp_search(haystack, needle);
 		addr -= offsetof(RE::RTTI::TypeDescriptor, name);
 
@@ -272,7 +276,7 @@ namespace REL
 
 	void* VTable::LocateVtbl(RE::RTTI::CompleteObjectLocator* a_col) const
 	{
-		auto addr = reinterpret_cast<std::uintptr_t>(a_col);
+		auto col = reinterpret_cast<std::uintptr_t>(a_col);
 
 		auto section = Module::GetSection(ID::kRData);
 		auto base = section.BasePtr<std::uint8_t>();
@@ -280,7 +284,7 @@ namespace REL
 		auto end = reinterpret_cast<std::uintptr_t*>(base + section.Size());
 
 		for (auto iter = start; iter < end; ++iter) {
-			if (*iter == addr) {
+			if (*iter == col) {
 				return iter + 1;
 			}
 		}

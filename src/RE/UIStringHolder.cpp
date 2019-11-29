@@ -1,14 +1,14 @@
 #include "RE/UIStringHolder.h"
 
-#include "skse64/GameMenus.h"  // UIStringHolder
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
 {
 	UIStringHolder* UIStringHolder::GetSingleton()
 	{
-		using func_t = function_type_t<decltype(&UIStringHolder::GetSingleton)>;
-		func_t* func = unrestricted_cast<func_t*>(&::UIStringHolder::GetSingleton);
-		return func();
+		REL::Offset<UIStringHolder**> singleton(Offset::UIStringHolder::Singleton);
+		return *singleton;
 	}
 }

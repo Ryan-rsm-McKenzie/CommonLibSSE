@@ -1,10 +1,9 @@
 #include "RE/BSScript/NF_util/NativeFunctionBase.h"
 
-#include "skse64/PapyrusNativeFunctions.h"  // NativeFunctionBase, NativeFunction
-
 #include <string>
 
-#include "RE/BSScript/Type.h"  // BSScript::Type
+#include "RE/BSScript/Type.h"
+#include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
 
@@ -132,7 +131,7 @@ namespace RE
 			UInt32 NativeFunctionBase::Invoke(BSTSmartPointer<Stack>& a_stack, ErrorLogger* a_logger, Internal::VirtualMachine* a_vm, bool a_arg4)
 			{
 				using func_t = function_type_t<decltype(&NativeFunctionBase::Invoke)>;
-				func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::NativeFunctionBase, Impl_Invoke, func_t*);
+				REL::Offset<func_t*> func(Offset::BSScript::NF_util::NativeFunctionBase::Invoke);
 				return func(this, a_stack, a_logger, a_vm, a_arg4);
 			}
 

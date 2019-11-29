@@ -182,6 +182,10 @@ namespace RE
 		Thread																	unk2B0;			// 2B0
 
 		BSTCommonStaticMessageQueue<BSTSmartPointer<bgs::saveload::Request>, 8>	unk370;			// 370
+
+	protected:
+		bool	Save_Internal(SInt32 a_arg1, UInt32 a_arg2, const char* a_name);
+		bool	Load_Internal(const char* a_name, SInt32 a_arg2, UInt32 a_arg3, UInt32 a_arg4);
 	};
 	STATIC_ASSERT(sizeof(BGSSaveLoadManager) == 0x3D0);
 }

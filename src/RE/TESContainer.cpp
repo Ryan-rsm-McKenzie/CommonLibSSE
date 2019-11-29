@@ -1,7 +1,7 @@
 #include "RE/TESContainer.h"
 
-#include "RE/FormTypes.h"  // FormType
-#include "RE/TESForm.h"  // TESForm
+#include "RE/FormTypes.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

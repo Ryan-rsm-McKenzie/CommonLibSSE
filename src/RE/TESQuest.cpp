@@ -1,7 +1,5 @@
 #include "RE/TESQuest.h"
 
-#include <cstdint>  // uintptr_t
-
 
 namespace RE
 {

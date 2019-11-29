@@ -1,16 +1,26 @@
 #include "RE/Misc.h"
 
-#include "RE/INIPrefSettingCollection.h"  // INIPrefSettingCollection
-#include "RE/INISettingCollection.h"  // INISettingCollection
-#include "RE/NiPoint3.h"  // NiPoint3
-#include "RE/NiRect.h"  // NiRect
+#include "RE/INIPrefSettingCollection.h"
+#include "RE/INISettingCollection.h"
+#include "RE/NiPoint3.h"
+#include "RE/NiRect.h"
+#include "RE/NiSmartPointer.h"
 #include "RE/Offsets.h"
-#include "RE/Setting.h"  // Setting
-#include "REL/Relocation.h"  // Offset
+#include "RE/Setting.h"
+#include "RE/TESObjectREFR.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
 {
+	void CreateRefHandle(RefHandle& a_handleOut, TESObjectREFR* a_refTo)
+	{
+		using func_t = function_type_t<decltype(&CreateRefHandle)>;
+		REL::Offset<func_t*> func(Offset::CreateRefHandle);
+		return func(a_handleOut, a_refTo);
+	}
+
+
 	void DebugNotification(const char* a_notification, const char* a_soundToPlay, bool a_cancelIfAlreadyQueued)
 	{
 		using func_t = function_type_t<decltype(&DebugNotification)>;
@@ -30,6 +40,14 @@ namespace RE
 			setting = ini->GetSetting(a_name);
 		}
 		return setting;
+	}
+
+
+	bool LookupReferenceByHandle(const RefHandle& a_handle, NiPointer<TESObjectREFR> a_refrOut)
+	{
+		using func_t = function_type_t<decltype(&LookupReferenceByHandle)>;
+		REL::Offset<func_t*> func(Offset::LookupReferenceByHandle);
+		return func(a_handle, a_refrOut);
 	}
 
 

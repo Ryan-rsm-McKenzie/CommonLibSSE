@@ -1,8 +1,6 @@
 #include "RE/BSFixedString.h"
 
-#include "skse64/GameTypes.h"  // BSFixedString
-
-#include <stdexcept>  // out_of_range
+#include <stdexcept>
 
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
@@ -178,7 +176,7 @@ namespace RE
 	BSFixedString* BSFixedString::ctor_cstr(const char* a_rhs)
 	{
 		using func_t = function_type_t<decltype(&BSFixedString::ctor_cstr)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSFixedString, ctor, func_t*);
+		REL::Offset<func_t*> func(Offset::BSFixedString::Ctor_CStr);
 		return func(this, a_rhs);
 	}
 
@@ -186,7 +184,7 @@ namespace RE
 	BSFixedString* BSFixedString::ctor_copy(const BSFixedString& a_rhs)
 	{
 		using func_t = function_type_t<decltype(&BSFixedString::ctor_copy)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSFixedString, ctor_ref, func_t*);
+		REL::Offset<func_t*> func(Offset::BSFixedString::Ctor_Copy);
 		return func(this, a_rhs);
 	}
 
@@ -194,7 +192,7 @@ namespace RE
 	void BSFixedString::dtor()
 	{
 		using func_t = function_type_t<decltype(&BSFixedString::dtor)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSFixedString, Release, func_t*);
+		REL::Offset<func_t*> func(Offset::BSFixedString::Dtor);
 		return func(this);
 	}
 
@@ -202,7 +200,7 @@ namespace RE
 	BSFixedString* BSFixedString::set_cstr(const char* a_rhs)
 	{
 		using func_t = function_type_t<decltype(&BSFixedString::set_cstr)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSFixedString, Set, func_t*);
+		REL::Offset<func_t*> func(Offset::BSFixedString::Set_CStr);
 		return func(this, a_rhs);
 	}
 
@@ -210,7 +208,7 @@ namespace RE
 	BSFixedString* BSFixedString::set_copy(const BSFixedString& a_rhs)
 	{
 		using func_t = function_type_t<decltype(&BSFixedString::set_copy)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSFixedString, Set_ref, func_t*);
+		REL::Offset<func_t*> func(Offset::BSFixedString::Set_Copy);
 		return func(this, a_rhs);
 	}
 

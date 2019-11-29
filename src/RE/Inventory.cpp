@@ -1,6 +1,5 @@
 #include "RE/Inventory.h"
 
-#include "RE/BSTEvent.h"  // BSTEventSource
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 

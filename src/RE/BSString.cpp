@@ -1,10 +1,9 @@
 #include "RE/BSString.h"
 
-#include "skse64/GameTypes.h"  // BSString
+#include <cassert>
+#include <string>
 
-#include <cassert>  // assert
-#include <string>  // char_traits
-
+#include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
 
@@ -192,8 +191,7 @@ namespace RE
 	bool BSString::set_cstr(const char* a_str, UInt32 a_len)
 	{
 		using func_t = function_type_t<decltype(&BSString::set_cstr)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSString, Set, func_t*);
-		auto result = func(this, a_str, a_len);
-		return result;
+		REL::Offset<func_t*> func(Offset::BSString::Set_CStr);
+		return func(this, a_str, a_len);
 	}
 }

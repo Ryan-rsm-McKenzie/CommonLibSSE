@@ -23,17 +23,91 @@ namespace REL
 {
 	namespace Impl
 	{
-		namespace
+		// msvc's safety checks increase debug builds' execution time by several orders of magnitude
+		// so i've introduced this class to speed up debug builds which leverage exe scanning
+		template <class T>
+		class Array
 		{
-			// https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm
-			constexpr auto NPOS = static_cast<std::size_t>(-1);
+		public:
+			using value_type = T;
+			using size_type = std::size_t;
+			using reference = value_type&;
+			using const_reference = const value_type&;
+			using pointer = value_type*;
 
-			void kmp_table(const std::basic_string_view<std::uint8_t>& W, std::vector<std::size_t>& T);
-			void kmp_table(const std::vector<std::uint8_t>& W, const std::vector<bool>& M, std::vector<std::size_t>& T);
 
-			std::size_t kmp_search(const std::basic_string_view<std::uint8_t>& S, const std::basic_string_view<std::uint8_t>& W);
-			std::size_t kmp_search(const std::basic_string_view<std::uint8_t>& S, const std::vector<std::uint8_t>& W, const std::vector<bool>& M);
-		}
+			Array() = delete;
+
+
+			Array(size_type a_size) :
+				_data(0),
+				_size(a_size),
+				_owned(true)
+			{
+				_data = new value_type[_size];
+			}
+
+
+			Array(pointer a_data, size_type a_size) :
+				_data(a_data),
+				_size(a_size),
+				_owned(false)
+			{}
+
+
+			Array(const std::vector<value_type>& a_vec) :
+				_data(0),
+				_size(0),
+				_owned(true)
+			{
+				_size = a_vec.size();
+				_data = new value_type[_size];
+				for (size_type i = 0; i < _size; ++i) {
+					_data[i] = a_vec[i];
+				}
+			}
+
+
+			~Array()
+			{
+				if (_owned) {
+					delete[] _data;
+				}
+			}
+
+
+			reference operator[](size_type a_pos)
+			{
+				return _data[a_pos];
+			}
+
+
+			const_reference operator[](size_type a_pos) const
+			{
+				return _data[a_pos];
+			}
+
+
+			size_type size() const
+			{
+				return _size;
+			}
+
+		private:
+			pointer _data;
+			size_type _size;
+			bool _owned;
+		};
+
+
+		// https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm
+		constexpr auto NPOS = static_cast<std::size_t>(-1);
+
+		void kmp_table(const Array<std::uint8_t>& W, Array<std::size_t>& T);
+		void kmp_table(const Array<std::uint8_t>& W, const Array<bool>& M, Array<std::size_t>& T);
+
+		std::size_t kmp_search(const Array<std::uint8_t>& S, const Array<std::uint8_t>& W);
+		std::size_t kmp_search(const Array<std::uint8_t>& S, const Array<std::uint8_t>& W, const Array<bool>& M);
 	}
 
 
@@ -63,9 +137,9 @@ namespace REL
 		{
 		public:
 			constexpr Section() :
-				addr(0),
-				size(0),
-				rva(0)
+				addr(0xDEADBEEF),
+				size(0xDEADBEEF),
+				rva(0xDEADBEEF)
 			{}
 
 
@@ -172,6 +246,12 @@ namespace REL
 			return _address;
 		}
 
+
+		std::uintptr_t GetOffset() const
+		{
+			return GetAddress() - Module::BaseAddr();
+		}
+
 	private:
 		std::uintptr_t _address;
 	};
@@ -215,8 +295,10 @@ namespace REL
 			}
 
 			auto text = Module::GetSection(Module::ID::kTextX);
-			std::basic_string_view<std::uint8_t> haystack(text.BasePtr<std::uint8_t>(), text.Size());
-			_address = Impl::kmp_search(haystack, sig, mask);
+			Impl::Array<std::uint8_t> haystack(text.BasePtr<std::uint8_t>(), text.Size());
+			Impl::Array<std::uint8_t> needle(sig.data(), sig.size());
+			Impl::Array<bool> needleMask(mask);
+			_address = Impl::kmp_search(haystack, needle, needleMask);
 
 			if (_address == 0xDEADBEEF) {
 				_FATALERROR("Sig scan failed for pattern (%s)!\n", a_sig);
@@ -243,6 +325,12 @@ namespace REL
 		{
 			assert(_address != 0xDEADBEEF);
 			return _address;
+		}
+
+
+		std::uintptr_t GetOffset() const
+		{
+			return GetAddress() - Module::BaseAddr();
 		}
 
 	protected:
@@ -273,12 +361,11 @@ namespace REL
 	{
 	public:
 		VTable() = delete;
-
-
 		VTable(const char* a_name, std::uint32_t a_offset = 0);
 
 		void* GetPtr() const;
 		std::uintptr_t GetAddress() const;
+		std::uintptr_t GetOffset() const;
 
 	private:
 		using ID = Module::ID;

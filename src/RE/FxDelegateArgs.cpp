@@ -1,11 +1,11 @@
 #include "RE/FxDelegateArgs.h"
 
-#include <cassert>  // assert
-#include <stdexcept>  // out_of_range
-#include <string>  // string
+#include <cassert>
+#include <stdexcept>
+#include <string>
 
-#include "RE/FxResponseArgsBase.h"  // FxResponseArgsBase
-#include "RE/GFxMovieView.h"  // GFxMovieView
+#include "RE/FxResponseArgsBase.h"
+#include "RE/GFxMovieView.h"
 
 
 namespace RE

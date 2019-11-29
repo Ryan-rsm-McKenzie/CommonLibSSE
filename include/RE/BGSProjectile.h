@@ -5,7 +5,7 @@
 #include "RE/FormTypes.h"
 #include "RE/SoundLevels.h"
 #include "RE/TESBoundObject.h"
-#include "RE/TESFullName.h
+#include "RE/TESFullName.h"
 #include "RE/TESModel.h"
 
 

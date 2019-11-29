@@ -1,7 +1,7 @@
 #include "RE/HUDObject.h"
 
-#include "RE/FxDelegateArgs.h"  // FxDelegateArgs
-#include "RE/GFxMovieView.h"  // GFxMovieView
+#include "RE/FxDelegateArgs.h"
+#include "RE/GFxMovieView.h"
 
 
 namespace RE

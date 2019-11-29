@@ -392,13 +392,12 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data0B8) == 0x38);
 
 
-		void		SetEquipFlag(Flag a_flag);
-		void		UpdateEquipment(Actor* a_actor);
-		void		SetDataFlag(float a_flag);
-		void		UpdateEquipment_Hooked(Actor* a_actor);
 		TESForm*	GetEquippedLeftHand();
 		TESForm*	GetEquippedRightHand();
 		bool		IsGhost() const;
+		void		SetBaseScale(float a_scale);
+		void		SetEquipFlag(Flag a_flag);
+		void		UpdateEquipment(Actor* a_actor);
 
 
 		// members
@@ -438,6 +437,9 @@ namespace RE
 		UInt8					unk13A;							// 13A
 		UInt8					unk13B;							// 13B
 		UInt32					pad13C;							// 13C
+
+	protected:
+		void UpdateEquipment_Internal(Actor* a_actor);
 	};
 	STATIC_ASSERT(sizeof(ActorProcessManager) == 0x140);
 }

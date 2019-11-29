@@ -22,9 +22,6 @@ namespace RE
 			virtual bool Copy(BSScrapArray<Variable>& a_dst) = 0;	// 01
 
 			TES_HEAP_REDEFINE_NEW();
-
-		protected:
-			static bool ResizeArguments(BSScrapArray<Variable>& a_dst, UInt32 a_size);
 		};
 		STATIC_ASSERT(sizeof(IFunctionArguments) == 0x8);
 	}

@@ -1,6 +1,7 @@
 #include "RE/ExtraOwnership.h"
 
-#include "skse64/GameExtraData.h"  // s_ExtraOwnershipVtbl
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -9,7 +10,8 @@ namespace RE
 		BSExtraData(),
 		owner(0)
 	{
-		((std::uintptr_t*)this)[0] = s_ExtraOwnershipVtbl.GetUIntPtr();
+		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraOwnership::Vtbl);
+		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
 	}
 
 
@@ -17,7 +19,8 @@ namespace RE
 		BSExtraData(),
 		owner(a_owner)
 	{
-		((std::uintptr_t*)this)[0] = s_ExtraOwnershipVtbl.GetUIntPtr();
+		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraOwnership::Vtbl);
+		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
 	}
 
 

@@ -1,22 +1,18 @@
 #include "SKSE/Logger.h"
 
-#include <debugapi.h>  // OutputDebugStringA
-#include <objbase.h>  // CoTaskMemFree
+#include <cassert>
+#include <cstdarg>
+#include <cstdio>
+#include <ctime>
+#include <cwchar>
+#include <iomanip>
+#include <memory>
+#include <sstream>
+#include <string>
+#include <vector>
 
-#include <cassert>  // assert
-#include <cstdarg>  // va_list, va_start, va_copy, va_end
-#include <cstdio>  // snprintf, vsnprintf
-#include <ctime>  // time
-#include <cwchar>  // wcslen
-#include <iomanip>  // put_time
-#include <memory>  // unique_ptr
-#include <sstream>  // ostringstream
-#include <string>  // string
-#include <time.h>  // localtime_s
-#include <vector>  // vector
-
-#include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
-#include "SKSE/API.h"  // RegisterForAPIInitEvent
+#include "RE/BSScript/Internal/VirtualMachine.h"
+#include "SKSE/API.h"
 
 
 namespace SKSE

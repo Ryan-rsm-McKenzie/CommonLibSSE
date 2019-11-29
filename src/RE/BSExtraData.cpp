@@ -1,8 +1,8 @@
 #include "RE/BSExtraData.h"
 
-#include <cstring>  // memset
+#include <cstring>
 
-#include "RE/TESMemoryManager.h"  // malloc
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

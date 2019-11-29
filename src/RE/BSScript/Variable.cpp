@@ -1,16 +1,11 @@
 #include "RE/BSScript/Variable.h"
 
-#include <cassert>  // assert
+#include <cassert>
 
-#include <string.h>  // _stricmp
-
-#include "skse64/PapyrusValue.h"  // VMValue
-
-#include "RE/BSScript/Array.h"  // BSScript::Array
-#include "RE/BSScript/Class.h"  // BSScript::Class
-#include "RE/BSScript/Object.h"  // BSScript::Object
-#include "RE/BSScript/PackUnpack.h"  // BSScript::BindID
-#include "REL/Relocation.h"
+#include "RE/BSScript/Array.h"
+#include "RE/BSScript/Class.h"
+#include "RE/BSScript/Object.h"
+#include "RE/BSScript/PackUnpack.h"
 
 
 namespace RE
@@ -119,7 +114,7 @@ namespace RE
 			case VMTypeID::kBoolArray:
 				return data.arr.get() == a_rhs.data.arr.get();
 			default:
-				return false;
+				return data.p == a_rhs.data.p;
 			}
 		}
 
@@ -313,12 +308,11 @@ namespace RE
 				type = VMTypeID::kString;
 				data.str = a_rhs.data.str;
 				break;
+			case VMTypeID::kObject:
+				data.obj = a_rhs.data.obj;
+				break;
 			default:
-				{
-					using func_t = function_type_t<decltype(&Variable::Assign)>;
-					func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::VMValue, Set, func_t*);
-					func(this, a_rhs);
-				}
+				data.arr = a_rhs.data.arr;
 				break;
 			}
 		}
@@ -335,12 +329,11 @@ namespace RE
 			case VMTypeID::kString:
 				data.str.~BSFixedString();
 				break;
+			case VMTypeID::kObject:
+				data.obj.~BSTSmartPointer();
+				break;
 			default:
-				{
-					using func_t = function_type_t<decltype(&Variable::Destroy)>;
-					func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::VMValue, Destroy, func_t*);
-					func(this);
-				}
+				data.arr.~BSTSmartPointer();
 				break;
 			}
 		}

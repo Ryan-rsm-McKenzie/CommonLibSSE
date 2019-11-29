@@ -1,7 +1,7 @@
 #include "RE/ExtraCharge.h"
 
-
-#include "skse64/GameExtraData.h"  // s_ExtraChargeVtbl
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -9,7 +9,8 @@ namespace RE
 	ExtraCharge::ExtraCharge() :
 		BSExtraData()
 	{
-		((std::uintptr_t*)this)[0] = s_ExtraChargeVtbl.GetUIntPtr();
+		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraCharge::Vtbl);
+		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
 	}
 
 

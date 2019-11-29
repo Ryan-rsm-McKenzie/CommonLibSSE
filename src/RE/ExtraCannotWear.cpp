@@ -1,6 +1,7 @@
 #include "RE/ExtraCannotWear.h"
 
-#include "skse64/GameExtraData.h"  // s_ExtraCannotWearVtbl
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -8,7 +9,8 @@ namespace RE
 	ExtraCannotWear::ExtraCannotWear() :
 		BSExtraData()
 	{
-		((std::uintptr_t*)this)[0] = s_ExtraCannotWearVtbl.GetUIntPtr();
+		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraCannotWear::Vtbl);
+		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
 	}
 
 

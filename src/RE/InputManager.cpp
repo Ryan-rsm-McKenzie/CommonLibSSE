@@ -1,21 +1,20 @@
 #include "RE/InputManager.h"
 
-#include "skse64/GameInput.h"  // InputEventDispatcher
-
-#include "RE/BSPCGamepadDeviceDelegate.h"  // BSPCGamepadDeviceDelegate
-#include "RE/BSPCGamepadDeviceHandler.h"  // BSPCGamepadDeviceHandler
-#include "RE/BSWin32KeyboardDevice.h"  // BSWin32KeyboardDevice
-#include "RE/BSWin32MouseDevice.h"  // BSWin32MouseDevice
-#include "RE/BSWin32VirtualKeyboardDevice.h"  // BSWin32VirtualKeyboardDevice
+#include "RE/BSPCGamepadDeviceDelegate.h"
+#include "RE/BSPCGamepadDeviceHandler.h"
+#include "RE/BSWin32KeyboardDevice.h"
+#include "RE/BSWin32MouseDevice.h"
+#include "RE/BSWin32VirtualKeyboardDevice.h"
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
 {
 	InputManager* InputManager::GetSingleton()
 	{
-		using func_t = function_type_t<decltype(&InputManager::GetSingleton)>;
-		func_t* func = unrestricted_cast<func_t*>(&::InputEventDispatcher::GetSingleton);
-		return func();
+		REL::Offset<InputManager**> singleton(Offset::InputManager::Singleton);
+		return *singleton;
 	}
 
 

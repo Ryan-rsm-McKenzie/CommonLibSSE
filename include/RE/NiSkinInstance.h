@@ -34,7 +34,7 @@ namespace RE
 		// add
 		virtual void			Unk_25(void);										// 25
 
-		static NiSkinInstance* CreateObject();
+		static NiSkinInstance* Create();
 
 
 		// members

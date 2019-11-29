@@ -1,15 +1,14 @@
 #include "RE/BSScaleformMovieLoader.h"
 
-#include "skse64/ScaleformLoader.h"  // GFxLoader
+#include <string>
 
-#include <string>  // string
-
-#include "RE/BSResourceNiBinaryStream.h"  // BSResourceNiBinaryStream
-#include "RE/FxDelegate.h"  // FxDelegate
-#include "RE/GFxLoader.h"  // GFxLoader
-#include "RE/IMenu.h"  // IMenu
-#include "RE/Misc.h"  // GetINISetting
-#include "RE/Setting.h"  // Setting
+#include "RE/BSResourceNiBinaryStream.h"
+#include "RE/FxDelegate.h"
+#include "RE/GFxLoader.h"
+#include "RE/IMenu.h"
+#include "RE/Misc.h"
+#include "RE/Offsets.h"
+#include "RE/Setting.h"
 #include "REL/Relocation.h"
 
 
@@ -17,16 +16,15 @@ namespace RE
 {
 	BSScaleformMovieLoader* BSScaleformMovieLoader::GetSingleton()
 	{
-		using func_t = function_type_t<decltype(&BSScaleformMovieLoader::GetSingleton)>;
-		func_t* func = unrestricted_cast<func_t*>(&::GFxLoader::GetSingleton);
-		return func();
+		REL::Offset<BSScaleformMovieLoader**> singleton(Offset::BSScaleformMovieLoader::Singleton);
+		return *singleton;
 	}
 
 
 	bool BSScaleformMovieLoader::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		using func_t = function_type_t<decltype(&BSScaleformMovieLoader::LoadMovie)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::GFxLoader, LoadMovie, func_t*);
+		REL::Offset<func_t*> func(Offset::BSScaleformMovieLoader::LoadMovie);
 		return func(this, a_menu, a_viewOut, a_fileName, a_mode, a_backGroundAlpha);
 	}
 

@@ -1,7 +1,5 @@
 #include "RE/InventoryChanges.h"
 
-#include "skse64/GameExtraData.h"  // ExtraContainerChanges::Data
-
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
@@ -17,16 +15,8 @@ namespace RE
 	void InventoryChanges::SetUniqueID(BaseExtraList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm)
 	{
 		using func_t = function_type_t<decltype(&InventoryChanges::SetUniqueID)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::ExtraContainerChanges::Data, SetUniqueID, func_t*);
+		REL::Offset<func_t*> func(Offset::InventoryChanges::SetUniqueID);
 		return func(this, a_itemList, a_oldForm, a_newForm);
-	}
-
-
-	void InventoryChanges::TransferItemUID(BaseExtraList* a_extraList, TESForm* a_oldForm, TESForm* a_newForm, UInt32 a_arg4)
-	{
-		using func_t = function_type_t<decltype(&InventoryChanges::TransferItemUID)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::ExtraContainerChanges::Data, TransferItemUID, func_t*);
-		return func(this, a_extraList, a_oldForm, a_newForm, a_arg4);
 	}
 
 

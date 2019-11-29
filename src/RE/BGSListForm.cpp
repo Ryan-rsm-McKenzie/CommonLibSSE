@@ -1,6 +1,6 @@
 #include "RE/BGSListForm.h"
 
-#include <algorithm>  // find
+#include <algorithm>
 
 
 namespace RE

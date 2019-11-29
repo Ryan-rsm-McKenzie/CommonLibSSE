@@ -1,6 +1,6 @@
 #include "RE/NiControllerManager.h"
 
-#include "RE/BSFixedString.h"  // BSFixedString
+#include "RE/BSFixedString.h"
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 

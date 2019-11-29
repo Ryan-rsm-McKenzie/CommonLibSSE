@@ -1,17 +1,16 @@
 #include "RE/MenuManager.h"
 
-#include "skse64/GameMenus.h"  // MenuManager
-
-#include "RE/IMenu.h"  // IMenu
+#include "RE/IMenu.h"
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
 {
 	MenuManager* MenuManager::GetSingleton()
 	{
-		using func_t = function_type_t<decltype(&MenuManager::GetSingleton)>;
-		func_t* func = unrestricted_cast<func_t*>(&::MenuManager::GetSingleton);
-		return func();
+		REL::Offset<MenuManager**> singleton(Offset::MenuManager::Singleton);
+		return *singleton;
 	}
 
 

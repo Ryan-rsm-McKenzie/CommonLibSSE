@@ -1,16 +1,14 @@
 #include "RE/IMenu.h"
 
-#include "skse64/GameMenus.h"  // IMenu
+#include <type_traits>
 
-#include <type_traits>  // extent
-
-#include "RE/BSUIScaleformData.h"  // BSUIScaleformData
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/InputManager.h"  // InputManager
-#include "RE/MenuManager.h"  // MenuManager
-#include "RE/UIManager.h"  // UIManager
-#include "RE/UIMessage.h"  // UIMessage
-#include "RE/UIStringHolder.h"  // UIStringHolder
+#include "RE/BSUIScaleformData.h"
+#include "RE/GFxValue.h"
+#include "RE/InputManager.h"
+#include "RE/MenuManager.h"
+#include "RE/UIManager.h"
+#include "RE/UIMessage.h"
+#include "RE/UIStringHolder.h"
 
 
 namespace RE

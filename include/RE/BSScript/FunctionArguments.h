@@ -13,17 +13,20 @@ namespace RE
 {
 	namespace BSScript
 	{
-		template <class... Args, std::size_t... I>
-		void CopyArgsImpl(std::tuple<Args...>& a_tuple, BSScrapArray<Variable>& a_dst, std::index_sequence<I...>)
+		namespace Impl
 		{
-			((a_dst[I].Pack<Args>(std::get<I>(a_tuple))), ...);
-		}
+			template <class... Args, std::size_t... I>
+			void CopyArgsImpl(std::tuple<Args...>& a_tuple, BSScrapArray<Variable>& a_dst, std::index_sequence<I...>)
+			{
+				((a_dst[I].Pack<Args>(std::get<I>(a_tuple))), ...);
+			}
 
 
-		template <class... Args>
-		void CopyArgs(std::tuple<Args...>& a_tuple, BSScrapArray<Variable>& a_dst)
-		{
-			CopyArgsImpl(a_tuple, a_dst, std::index_sequence_for<Args...>{});
+			template <class... Args>
+			void CopyArgs(std::tuple<Args...>& a_tuple, BSScrapArray<Variable>& a_dst)
+			{
+				CopyArgsImpl(a_tuple, a_dst, std::index_sequence_for<Args...>{});
+			}
 		}
 
 
@@ -59,8 +62,8 @@ namespace RE
 
 			virtual bool Copy(BSScrapArray<Variable>& a_dst) override	// 01
 			{
-				ResizeArguments(a_dst, sizeof...(Args));
-				CopyArgs(_args, a_dst);
+				a_dst.resize(sizeof...(Args));
+				Impl::CopyArgs(_args, a_dst);
 				return true;
 			}
 

@@ -114,9 +114,9 @@ namespace RE
 		virtual void		LoadData(TESFile* a_mod) = 0;						// 6F
 		virtual void		ByteSwapData() = 0;									// 70
 
-		Effect*	GetCostliestEffectItem(UInt32 a_arg1 = 5, bool a_arg2 = false);
-		float	GetEffectiveMagickaCost(Character* a_caster);
+		float	CalculateMagickaCost(Actor* a_caster) const;
 		float	CalculateTotalGoldValue(Actor* a_caster = 0) const;
+		Effect*	GetCostliestEffectItem(UInt32 a_arg1 = 5, bool a_arg2 = false);
 
 
 		// members
@@ -127,6 +127,9 @@ namespace RE
 		UInt32				unk80;			// 80
 		UInt32				unk84;			// 84
 		void*				unk88;			// 88
+
+	protected:
+		float CalculateCost(Actor* a_caster) const;
 	};
 	STATIC_ASSERT(sizeof(MagicItem) == 0x90);
 }

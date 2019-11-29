@@ -1,6 +1,7 @@
 #include "RE/ExtraUniqueID.h"
 
-#include "skse64/GameExtraData.h"  // s_ExtraEnchantmentVtbl
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -11,7 +12,8 @@ namespace RE
 		uniqueID(0),
 		pad16(0)
 	{
-		((std::uintptr_t*)this)[0] = s_ExtraUniqueIdVtbl.GetUIntPtr();
+		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraUniqueID::Vtbl);
+		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
 	}
 
 
@@ -21,7 +23,8 @@ namespace RE
 		uniqueID(a_uniqueID),
 		pad16(0)
 	{
-		((std::uintptr_t*)this)[0] = s_ExtraUniqueIdVtbl.GetUIntPtr();
+		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraUniqueID::Vtbl);
+		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
 	}
 
 

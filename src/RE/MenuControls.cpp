@@ -1,8 +1,8 @@
 #include "RE/MenuControls.h"
 
-#include "skse64/GameInput.h"  // MenuControls
-
-#include "RE/MenuEventHandler.h"	// MenuEventHandler
+#include "RE/MenuEventHandler.h"
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -18,9 +18,8 @@ namespace RE
 
 	MenuControls* MenuControls::GetSingleton()
 	{
-		using func_t = function_type_t<decltype(&MenuControls::GetSingleton)>;
-		func_t* func = unrestricted_cast<func_t*>(&::MenuControls::GetSingleton);
-		return func();
+		REL::Offset<MenuControls**> singelton(Offset::MenuControls::Singleton);
+		return *singelton;
 	}
 
 

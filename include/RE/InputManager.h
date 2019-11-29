@@ -17,8 +17,8 @@ namespace RE
 
 
 	class InputManager :
-		public BSTEventSource<InputEvent*>,
-		public BSTSingletonSDM<InputManager>
+		public BSTEventSource<InputEvent*>,		// 00
+		public BSTSingletonSDM<InputManager>	// 58
 	{
 	public:
 		struct Devices

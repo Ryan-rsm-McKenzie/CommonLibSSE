@@ -27,7 +27,10 @@ namespace RE
 			// The actual stack frame is kept here
 			struct Chunk
 			{
-				StackFrame* GetStackFrame();
+				void*		GetHead();
+				StackFrame*	GetStackFrame();
+				void*		GetTail();
+				bool		IsInRange(void* a_ptr);
 
 
 				UInt32	stackFrameSize;	// 00 - minimum size of 0x80, but can be larger
@@ -47,8 +50,7 @@ namespace RE
 
 			~Stack();
 
-			UInt32		GetChunkIdx(StackFrame* a_frame);
-			Variable*	Get(StackFrame* a_frame, UInt32 a_idx, UInt32 a_chunkIdx);
+			UInt32 GetChunkIdx(StackFrame* a_frame);
 
 
 			// members

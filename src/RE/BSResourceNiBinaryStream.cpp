@@ -1,7 +1,6 @@
 #include "RE/BSResourceNiBinaryStream.h"
 
-#include "skse64/GameStreams.h"  // BSResourceNiBinaryStream
-
+#include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
 
@@ -53,7 +52,7 @@ namespace RE
 	void BSResourceNiBinaryStream::seek(SInt32 a_numBytes)
 	{
 		using func_t = function_type_t<decltype(&BSResourceNiBinaryStream::seek)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSResourceNiBinaryStream, Seek, func_t*);
+		REL::Offset<func_t*> func(Offset::BSResourceNiBinaryStream::Seek);
 		return func(this, a_numBytes);
 	}
 
@@ -71,7 +70,7 @@ namespace RE
 	void BSResourceNiBinaryStream::set_endian_swap(bool a_doSwap)
 	{
 		using func_t = function_type_t<decltype(&BSResourceNiBinaryStream::set_endian_swap)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSResourceNiBinaryStream, EnableEndianSwap, func_t*);
+		REL::Offset<func_t*> func(Offset::BSResourceNiBinaryStream::SetEndianSwap);
 		return func(this, a_doSwap);
 	}
 
@@ -79,7 +78,7 @@ namespace RE
 	BSResourceNiBinaryStream* BSResourceNiBinaryStream::ctor(const char* a_fileName, UInt32 a_arg2, UInt32 a_arg3)
 	{
 		using func_t = function_type_t<decltype(&BSResourceNiBinaryStream::ctor)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSResourceNiBinaryStream, Construct, func_t*);
+		REL::Offset<func_t*> func(Offset::BSResourceNiBinaryStream::Ctor);
 		return func(this, a_fileName, a_arg2, a_arg3);
 	}
 
@@ -87,7 +86,7 @@ namespace RE
 	void BSResourceNiBinaryStream::dtor()
 	{
 		using func_t = function_type_t<decltype(&BSResourceNiBinaryStream::dtor)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSResourceNiBinaryStream, Destroy, func_t*);
+		REL::Offset<func_t*> func(Offset::BSResourceNiBinaryStream::Dtor);
 		return func(this);
 	}
 }

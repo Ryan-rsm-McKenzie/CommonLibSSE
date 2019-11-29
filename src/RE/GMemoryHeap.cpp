@@ -1,7 +1,6 @@
 #include "RE/GMemoryHeap.h"
 
-#include <cassert>  // assert
-#include <processthreadsapi.h>  // GetCurrentThreadId
+#include <cassert>
 
 
 namespace RE

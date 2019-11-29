@@ -1,6 +1,6 @@
 #include "RE/GMemory.h"
 
-#include "RE/GMemoryHeap.h"  // GMemoryHeap
+#include "RE/GMemoryHeap.h"
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 

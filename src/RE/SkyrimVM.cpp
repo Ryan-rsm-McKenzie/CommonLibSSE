@@ -1,12 +1,14 @@
-#include "RE/SkyrimVM.h"  // SkyrimVM
+#include "RE/SkyrimVM.h"
 
-#include "skse64/PapyrusVM.h"  // g_skyrimVM
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
 {
 	SkyrimVM* SkyrimVM::GetSingleton()
 	{
-		return *reinterpret_cast<SkyrimVM**>(g_skyrimVM.GetUIntPtr());
+		REL::Offset<SkyrimVM**> singleton(Offset::SkyrimVM::Singleton);
+		return *singleton;
 	}
 }

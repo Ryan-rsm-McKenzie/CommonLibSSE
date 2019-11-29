@@ -19,9 +19,6 @@ namespace RE
 		class StackFrame
 		{
 		public:
-			Variable* Get(UInt32 a_idx, UInt32 a_chunkIdx);
-
-
 			Stack*						stack;					// 00
 			StackFrame*					parent;					// 08
 			Internal::ScriptFunction*	func;					// 10

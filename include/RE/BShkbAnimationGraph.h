@@ -50,8 +50,7 @@ namespace RE
 		virtual void	Unk_0C(void) override;					// 0C
 		virtual void	Unk_0D(void) override;					// 0D
 
-		BSTEventSource<BSTransformDeltaEvent>*	GetBSTransformDeltaEventSource();
-		BSTEventSource<BSAnimationGraphEvent>*	GetBSAnimationGraphEventSource();
+		template <class T> inline BSTEventSource<T>* GetEventSource();
 
 
 		// members
@@ -80,4 +79,11 @@ namespace RE
 		UInt64							unk248;			// 248
 	};
 	STATIC_ASSERT(sizeof(BShkbAnimationGraph) == 0x250);
+
+
+	template <class T>
+	BSTEventSource<T>* BShkbAnimationGraph::GetEventSource()
+	{
+		return static_cast<BSTEventSource<T>*>(this);
+	}
 }

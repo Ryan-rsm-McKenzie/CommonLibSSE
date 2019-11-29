@@ -209,7 +209,7 @@ namespace RE
 		Coordinates*	GetCoordinates();
 		TESFaction*		GetFactionOwner();
 		Lighting*		GetLighting();
-		double			GetNorthRotation();
+		float			GetNorthRotation();
 		TESForm*		GetOwner();
 		bool			IsAttached() const;
 		bool			IsExteriorCell() const;

@@ -1,7 +1,6 @@
 #include "RE/hkStringPtr.h"
 
-#include <cstdint>  // uintptr_t
-#include <cstring>  // strlen
+#include <cstring>
 
 
 namespace RE

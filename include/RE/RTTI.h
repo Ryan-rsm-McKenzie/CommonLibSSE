@@ -53,7 +53,7 @@ namespace RE
 		template <class T>
 		T* RVA<T>::get() const
 		{
-			return is_good ? REL::Offset<T*>(_rva).GetType() : nullptr;
+			return is_good() ? REL::Offset<T*>(_rva).GetType() : nullptr;
 		}
 
 

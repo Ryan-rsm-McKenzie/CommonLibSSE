@@ -1,9 +1,5 @@
 #include "RE/BSScript/Array.h"
 
-#include "skse64/PapyrusValue.h"  // VMValue::ArrayData
-
-#include "REL/Relocation.h"
-
 
 namespace RE
 {
@@ -11,7 +7,9 @@ namespace RE
 	{
 		Array::~Array()
 		{
-			dtor();
+			for (size_type i = 0; i < size(); ++i) {
+				operator[](i).~Variable();
+			}
 		}
 
 
@@ -227,14 +225,6 @@ namespace RE
 			default:
 				return typeID + VMTypeID::kObject;
 			}
-		}
-
-
-		void Array::dtor()
-		{
-			using func_t = function_type_t<decltype(&Array::dtor)>;
-			func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::VMValue::ArrayData, Destroy, func_t*);
-			return func(this);
 		}
 
 

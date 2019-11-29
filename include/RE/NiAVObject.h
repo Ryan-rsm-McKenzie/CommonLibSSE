@@ -8,6 +8,7 @@
 namespace RE
 {
 	class BSFixedString;
+	class NiColorA;
 	class NiNode;
 	class NiPoint3;
 	class NiProperty;
@@ -78,7 +79,9 @@ namespace RE
 		virtual void			Unk_33(void);																						// 33
 		virtual void			Unk_34(void);																						// 34 - { return; }
 
-		void UpdateNode(ControllerUpdateContext* a_ctx);
+		void	UpdateModelHair(NiColorA** a_color);
+		void	UpdateModelSkin(NiColorA** a_color);
+		void	UpdateNode(ControllerUpdateContext* a_ctx);
 
 
 		// members

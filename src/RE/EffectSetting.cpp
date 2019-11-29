@@ -1,7 +1,5 @@
 #include "RE/EffectSetting.h"
 
-#include "RE/ActorValues.h"  // ActorValue
-
 
 namespace RE
 {

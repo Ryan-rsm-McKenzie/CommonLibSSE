@@ -25,9 +25,6 @@
     <Filter Include="include\REL">
       <UniqueIdentifier>{ef5b1d2d-7a1b-4cf0-b7b6-0560f7b4c328}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\RE\Animation">
-      <UniqueIdentifier>{d0042e06-6676-4162-9ef2-0292c1365ee3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\RE\BSAudio">
       <UniqueIdentifier>{6ece1f79-14e5-40e0-9191-680ac868432d}</UniqueIdentifier>
     </Filter>
@@ -823,9 +820,6 @@
     <Filter Include="src\RE\FormComponents\TESForm\TESObjectREFR\Actor\Character">
       <UniqueIdentifier>{4247af99-add3-4b2d-badf-da985d6bff13}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\RE\Animation\BSIRagdollDriver">
-      <UniqueIdentifier>{1945d699-f7b5-4cc1-b5f5-1ac8b0dae6c8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\RE\BSDevices\BSIInputDevice">
       <UniqueIdentifier>{8b80d781-200c-4140-a62e-4ed71419f520}</UniqueIdentifier>
     </Filter>
@@ -1395,9 +1389,6 @@
     <ClCompile Include="src\RE\BSScript\NF_util\NativeFunctionBase.cpp">
       <Filter>src\RE\BSScript\IFunction\NF_util</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSScript\IFunctionArguments.cpp">
-      <Filter>src\RE\BSScript\IFunctionArguments</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSScript\ZeroFunctionArguments.cpp">
       <Filter>src\RE\BSScript\IFunctionArguments</Filter>
     </ClCompile>
@@ -1405,9 +1396,6 @@
       <Filter>src\RE\BSScript</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSScript\PackUnpack.cpp">
-      <Filter>src\RE\BSScript</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSScript\StackFrame.cpp">
       <Filter>src\RE\BSScript</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSScript\Internal\VirtualMachine.cpp">
@@ -1538,9 +1526,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\TESWorldSpace.cpp">
       <Filter>src\RE\FormComponents\TESForm</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BShkbAnimationGraph.cpp">
-      <Filter>src\RE\Animation\BSIRagdollDriver</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSInputDevice.cpp">
       <Filter>src\RE\BSDevices\BSIInputDevice\BSInputDevice</Filter>
@@ -1769,6 +1754,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\CRC.cpp">
       <Filter>src\RE\BSCore</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiSystem.cpp">
+      <Filter>src\RE\NetImmerse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4921,6 +4909,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\TutorialMenu.h">
       <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiSystem.h">
+      <Filter>include\RE\NetImmerse</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

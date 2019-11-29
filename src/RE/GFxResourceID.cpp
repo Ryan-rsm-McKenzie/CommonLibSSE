@@ -1,6 +1,6 @@
 #include "RE/GFxResourceID.h"
 
-#include <cassert>  // assert
+#include <cassert>
 
 
 namespace RE

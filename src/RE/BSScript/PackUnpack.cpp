@@ -1,11 +1,11 @@
 #include "RE/BSScript/PackUnpack.h"
 
-#include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
-#include "RE/BSScript/Class.h"  // BSScript::Class
-#include "RE/BSScript/IObjectHandlePolicy.h"  // BSScript::IObjectHandlePolicy
-#include "RE/BSScript/Object.h"  // BSScript::Object
-#include "RE/BSScript/ObjectBindPolicy.h"  // BSScript::ObjectBindPolicy
-#include "RE/BSScript/Variable.h"  // BSScript::Variable
+#include "RE/BSScript/Internal/VirtualMachine.h"
+#include "RE/BSScript/Class.h"
+#include "RE/BSScript/IObjectHandlePolicy.h"
+#include "RE/BSScript/Object.h"
+#include "RE/BSScript/ObjectBindPolicy.h"
+#include "RE/BSScript/Variable.h"
 
 
 namespace RE

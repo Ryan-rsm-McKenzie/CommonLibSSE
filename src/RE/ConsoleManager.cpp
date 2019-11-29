@@ -1,9 +1,6 @@
 #include "RE/ConsoleManager.h"
 
-#include "skse64/GameAPI.h"  // ConsoleManager
-
-#include <cstdarg>  // va_list
-
+#include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
 
@@ -11,13 +8,22 @@ namespace RE
 {
 	ConsoleManager* ConsoleManager::GetSingleton()
 	{
-		return reinterpret_cast<ConsoleManager*>(*g_console);
+		REL::Offset<ConsoleManager**> singleton(Offset::ConsoleManager::Singleton);
+		return *singleton;
 	}
 
 
 	bool ConsoleManager::IsConsoleMode()
 	{
-		return ::IsConsoleMode();
+		struct TLSData
+		{
+			UInt8	unk000[0x600];	// 000
+			bool	consoleMode;	// 600
+		};
+
+		REL::Offset<UInt32*> tlsIndex(Offset::TlsIndex);
+		auto tlsData = reinterpret_cast<TLSData**>(__readgsqword(0x58));
+		return tlsData[*tlsIndex]->consoleMode;
 	}
 
 
@@ -33,7 +39,7 @@ namespace RE
 	void ConsoleManager::VPrint(const char* a_fmt, std::va_list a_args)
 	{
 		using func_t = function_type_t<decltype(&ConsoleManager::Print)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::ConsoleManager, VPrint, func_t*);
+		REL::Offset<func_t*> func(Offset::ConsoleManager::VPrint);
 		func(this, a_fmt, a_args);
 	}
 }

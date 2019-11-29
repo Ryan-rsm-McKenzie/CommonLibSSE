@@ -1,6 +1,6 @@
 #include "RE/TESTopicInfo.h"
 
-#include "RE/TESTopic.h"  // TESTopic
+#include "RE/TESTopic.h"
 
 
 namespace RE

@@ -1,12 +1,24 @@
 #include "RE/NiExtraData.h"
 
-#include <cstring>  // memset
+#include <cstring>
 
 #include "RE/TESMemoryManager.h"
 
 
 namespace RE
 {
+	const BSFixedString& NiExtraData::GetName() const
+	{
+		return name;
+	}
+
+
+	void NiExtraData::SetName(const BSFixedString& a_name)
+	{
+		name = a_name;
+	}
+
+
 	NiExtraData* NiExtraData::Create(std::size_t a_size, std::uintptr_t a_vtbl)
 	{
 		void* memory = malloc(a_size);

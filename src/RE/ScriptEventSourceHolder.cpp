@@ -1,10 +1,8 @@
 #include "RE/ScriptEventSourceHolder.h"
 
-#include "skse64/GameEvents.h"  // GetEventDispatcherList
-
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
-#include "RE/TESObjectREFR.h"  // TESObjectREFRPtr
+#include "RE/TESObjectREFR.h"
 
 
 namespace RE
@@ -12,7 +10,7 @@ namespace RE
 	ScriptEventSourceHolder* ScriptEventSourceHolder::GetSingleton()
 	{
 		using func_t = function_type_t<decltype(&ScriptEventSourceHolder::GetSingleton)>;
-		func_t* func = reinterpret_cast<func_t*>(::GetEventDispatcherList.GetUIntPtr());
+		REL::Offset<func_t*> func(Offset::ScriptEventSourceHolder::GetSingleton);
 		return func();
 	}
 

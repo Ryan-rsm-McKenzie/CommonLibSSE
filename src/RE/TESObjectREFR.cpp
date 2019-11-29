@@ -1,26 +1,27 @@
 #include "RE/TESObjectREFR.h"
 
-#include "skse64/GameReferences.h"  // TESObjectREFR
+#include "skse64/GameReferences.h"
 
-#include <limits>  // numeric_limits
+#include <limits>
 
-#include "RE/BSFixedString.h"  // BSFixedString
-#include "RE/ExtraContainerChanges.h"  // ExtraContainerChanges
-#include "RE/ExtraDataTypes.h"  // ExtraDataType
-#include "RE/ExtraFlags.h"  // ExtraFlags
-#include "RE/ExtraLock.h"  // ExtraLock
-#include "RE/ExtraOwnership.h"  // ExtraOwnership
-#include "RE/ExtraReferenceHandle.h"  // ExtraReferenceHandle
-#include "RE/ExtraTextDisplayData.h"  // ExtraTextDisplayData
-#include "RE/FormTraits.h"  // As
-#include "RE/InventoryChanges.h"  // InventoryChanges
-#include "RE/NiNode.h"  // NiNode
+#include "RE/BSFixedString.h"
+#include "RE/ExtraContainerChanges.h"
+#include "RE/ExtraDataTypes.h"
+#include "RE/ExtraFlags.h"
+#include "RE/ExtraLock.h"
+#include "RE/ExtraOwnership.h"
+#include "RE/ExtraReferenceHandle.h"
+#include "RE/ExtraTextDisplayData.h"
+#include "RE/FormTraits.h"
+#include "RE/InventoryChanges.h"
+#include "RE/Misc.h"
+#include "RE/NiNode.h"
 #include "RE/Offsets.h"
-#include "RE/TESActorBase.h"  // TESActorBase
-#include "RE/TESFaction.h"  // TESFaction
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESNPC.h"  // TESNPC
-#include "RE/TESObjectCONT.h"  // TESObjectCONT
+#include "RE/TESActorBase.h"
+#include "RE/TESFaction.h"
+#include "RE/TESFullName.h"
+#include "RE/TESNPC.h"
+#include "RE/TESObjectCONT.h"
 #include "REL/Relocation.h"
 
 
@@ -28,9 +29,7 @@ namespace RE
 {
 	bool TESObjectREFR::LookupByHandle(const RefHandle& a_refHandle, TESObjectREFRPtr& a_refrOut)
 	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::LookupByHandle)>;
-		func_t* func = reinterpret_cast<func_t*>(::LookupREFRObjectByHandle.GetUIntPtr());
-		return func(a_refHandle, a_refrOut);
+		return LookupReferenceByHandle(a_refHandle, a_refrOut);
 	}
 
 
@@ -46,7 +45,7 @@ namespace RE
 	{
 		RefHandle refHandle = *g_invalidRefHandle;
 		if (GetRefCount() > 0) {
-			CreateRefHandle_Impl(refHandle, this);
+			RE::CreateRefHandle(refHandle, this);
 		}
 		return refHandle;
 	}
@@ -72,7 +71,7 @@ namespace RE
 	float TESObjectREFR::GetBaseScale() const
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::GetBaseScale)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetBaseScale, func_t*);
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetBaseScale);
 		return func(this);
 	}
 
@@ -200,24 +199,29 @@ namespace RE
 	const char* TESObjectREFR::GetReferenceName() const
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::GetReferenceName)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetReferenceName, func_t*);
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetReferenceName);
 		return func(this);
 	}
 
 
 	float TESObjectREFR::GetWeight() const
 	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::GetWeight)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetWeight, func_t*);
-		return func(this);
+		return baseForm->GetWeight();
 	}
 
 
 	TESWorldSpace* TESObjectREFR::GetWorldspace() const
 	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::GetWorldspace)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, GetWorldspace, func_t*);
-		return func(this);
+		auto cell = parentCell;
+		if (!cell) {
+			cell = GetParentOrPersistentCell();
+		}
+
+		if (cell && cell->IsExteriorCell()) {
+			return cell->worldSpace;
+		} else {
+			return 0;
+		}
 	}
 
 
@@ -270,7 +274,7 @@ namespace RE
 	bool TESObjectREFR::IsOffLimits() const
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::IsOffLimits)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectREFR, IsOffLimits, func_t*);
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::IsOffLimits);
 		return func(this);
 	}
 
@@ -375,18 +379,10 @@ namespace RE
 	}
 
 
-	void TESObjectREFR::CreateRefHandle_Impl(RefHandle& a_refHandle, TESObjectREFR* a_refrTo)
-	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::CreateRefHandle_Impl)>;
-		func_t* func = unrestricted_cast<func_t*>(::CreateRefHandleByREFR.GetUIntPtr());
-		return func(a_refHandle, a_refrTo);
-	}
-
-
 	void TESObjectREFR::MoveTo_Impl(RefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, NiPoint3& a_position, NiPoint3& a_rotation)
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::MoveTo_Impl)>;
-		func_t* func = unrestricted_cast<func_t*>(::MoveRefrToPosition.GetUIntPtr());
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::MoveTo);
 		return func(this, a_targetHandle, a_targetCell, a_selfWorldSpace, a_position, a_rotation);
 	}
 }

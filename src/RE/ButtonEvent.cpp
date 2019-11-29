@@ -1,10 +1,5 @@
 #include "RE/ButtonEvent.h"
 
-#include "skse64_common/Relocation.h"  // RelocAddr
-#include "skse64/GameAPI.h"  // Heap_Allocate
-
-#include <cstring>  // memset
-
 #include "RE/Offsets.h"
 
 

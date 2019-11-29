@@ -1,7 +1,6 @@
 #include "RE/BSLock.h"
 
-#include "skse64/GameTypes.h"  // BSReadWriteLock
-
+#include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
 
@@ -69,7 +68,7 @@ namespace RE
 	void BSReadWriteLock::LockForRead()
 	{
 		using func_t = function_type_t<decltype(&BSReadWriteLock::LockForRead)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSReadWriteLock, LockForRead, func_t*);
+		REL::Offset<func_t*> func(Offset::BSReadWriteLock::LockForRead);
 		func(this);
 	}
 
@@ -77,7 +76,7 @@ namespace RE
 	void BSReadWriteLock::UnlockForRead()
 	{
 		using func_t = function_type_t<decltype(&BSReadWriteLock::UnlockForRead)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSReadWriteLock, UnlockRead, func_t*);
+		REL::Offset<func_t*> func(Offset::BSReadWriteLock::UnlockForRead);
 		func(this);
 	}
 
@@ -85,7 +84,7 @@ namespace RE
 	void BSReadWriteLock::LockForWrite()
 	{
 		using func_t = function_type_t<decltype(&BSReadWriteLock::LockForWrite)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSReadWriteLock, LockForWrite, func_t*);
+		REL::Offset<func_t*> func(Offset::BSReadWriteLock::LockForWrite);
 		func(this);
 	}
 
@@ -93,7 +92,7 @@ namespace RE
 	void BSReadWriteLock::UnlockForWrite()
 	{
 		using func_t = function_type_t<decltype(&BSReadWriteLock::UnlockForWrite)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::BSReadWriteLock, UnlockWrite, func_t*);
+		REL::Offset<func_t*> func(Offset::BSReadWriteLock::UnlockForWrite);
 		func(this);
 	}
 

@@ -1,13 +1,13 @@
 #include "RE/TESForm.h"
 
-#include "RE/ExtraEnchantment.h"  // ExtraEnchantment
-#include "RE/FormTraits.h"  // As
-#include "RE/GlobalLookupInfo.h"  // GlobalLookupInfo
-#include "RE/MagicItem.h"  // MagicItem
-#include "RE/TESFullName.h"  // TESFullName
-#include "RE/TESModel.h"  // TESModel
-#include "RE/TESObjectREFR.h"  // TESObjectREFR
-#include "RE/TESValueForm.h"  // TESValueForm
+#include "RE/ExtraEnchantment.h"
+#include "RE/FormTraits.h"
+#include "RE/GlobalLookupInfo.h"
+#include "RE/MagicItem.h"
+#include "RE/TESFullName.h"
+#include "RE/TESModel.h"
+#include "RE/TESObjectREFR.h"
+#include "RE/TESValueForm.h"
 
 
 namespace RE

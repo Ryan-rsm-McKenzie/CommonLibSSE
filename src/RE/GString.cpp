@@ -1,11 +1,10 @@
 #include "RE/GString.h"
 
-#include "skse64/ScaleformTypes.h"  // GString
+#include <cassert>
+#include <cstring>
 
-#include <cassert>  // assert
-#include <cstring>  // strlen, memcpy
-
-#include "RE/GMemory.h"  // GFREE
+#include "RE/GMemory.h"
+#include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
 
@@ -94,7 +93,7 @@ namespace RE
 	GString::GString(const char* a_rhs) :
 		_dataDesc()
 	{
-		ctor_internal(a_rhs);
+		ctor(a_rhs);
 	}
 
 
@@ -278,10 +277,10 @@ namespace RE
 	}
 
 
-	GString* GString::ctor_internal(const char* a_s)
+	GString* GString::ctor(const char* a_s)
 	{
-		using func_t = function_type_t<decltype(&GString::ctor_internal)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::GString, ctor, func_t*);
+		using func_t = function_type_t<decltype(&GString::ctor)>;
+		REL::Offset<func_t*> func(Offset::GString::Ctor);
 		return func(this, a_s);
 	}
 

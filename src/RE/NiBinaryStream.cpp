@@ -1,6 +1,6 @@
-#include "RE/NiBinaryStream.h"  // NiBinaryStream
+#include "RE/NiBinaryStream.h"
 
-#include <cassert>  // assert
+#include <cassert>
 
 
 namespace RE

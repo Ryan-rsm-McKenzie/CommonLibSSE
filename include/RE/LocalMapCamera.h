@@ -61,7 +61,7 @@ namespace RE
 		UInt32							pad64;			// 64
 
 	protected:
-		LocalMapCamera* Ctor_Internal(float a_northRotation);
+		LocalMapCamera* Ctor(float a_northRotation);
 	};
 	STATIC_ASSERT(sizeof(LocalMapCamera) == 0x68);
 }

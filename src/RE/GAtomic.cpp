@@ -1,7 +1,5 @@
 #include "RE/GAtomic.h"
 
-#include <synchapi.h>  // InitializeCriticalSectionAndSpinCount, DeleteCriticalSection, EnterCriticalSection, LeaveCriticalSection
-
 
 namespace RE
 {

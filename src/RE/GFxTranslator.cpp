@@ -1,8 +1,8 @@
 #include "RE/GFxTranslator.h"
 
-#include <string_view>  // wstring_view
+#include <string_view>
 
-#include "RE/GFxWStringBuffer.h"  // GFxWStringBuffer
+#include "RE/GFxWStringBuffer.h"
 
 
 namespace RE

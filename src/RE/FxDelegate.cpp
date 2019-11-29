@@ -1,11 +1,11 @@
 #include "RE/FxDelegate.h"
 
-#include "RE/AddCallbackVisitor.h"  // AddCallbackVisitor
-#include "RE/FxDelegateArgs.h"  // FxDelegateArgs
-#include "RE/FxResponseArgsBase.h"  // FxResponseArgsBase
-#include "RE/GFxMovieView.h"  // GFxMovieView
-#include "RE/GFxValue.h"  // GFxValue
-#include "RE/RemoveCallbackVisitor.h"  // RemoveCallbackVisitor
+#include "RE/AddCallbackVisitor.h"
+#include "RE/FxDelegateArgs.h"
+#include "RE/FxResponseArgsBase.h"
+#include "RE/GFxMovieView.h"
+#include "RE/GFxValue.h"
+#include "RE/RemoveCallbackVisitor.h"
 
 
 namespace RE

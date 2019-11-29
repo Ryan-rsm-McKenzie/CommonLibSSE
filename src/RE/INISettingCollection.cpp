@@ -1,15 +1,15 @@
 #include "RE/INISettingCollection.h"
 
-#include "skse64/GameSettings.h"  // g_iniSettingCollection
-
-#include <string.h>  // _stricmp
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
 {
 	INISettingCollection* INISettingCollection::GetSingleton()
 	{
-		return *unrestricted_cast<INISettingCollection**>(g_iniSettingCollection.GetUIntPtr());
+		REL::Offset<INISettingCollection**> singleton(Offset::INISettingCollection::Singleton);
+		return *singleton;
 	}
 
 

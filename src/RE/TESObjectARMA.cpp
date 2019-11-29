@@ -1,12 +1,10 @@
 #include "RE/TESObjectARMA.h"
 
-#include <stdio.h>  // sprintf_s
-
-#include "RE/FormTraits.h"  // As
-#include "RE/TESNPC.h"  // TESNPC
-#include "RE/TESObjectARMO.h"  // TESObjectARMO
-#include "RE/TESObjectREFR.h"  // TESObjectREFR
-#include "RE/TESRace.h"  // TESRace
+#include "RE/FormTraits.h"
+#include "RE/TESNPC.h"
+#include "RE/TESObjectARMO.h"
+#include "RE/TESObjectREFR.h"
+#include "RE/TESRace.h"
 
 
 namespace RE

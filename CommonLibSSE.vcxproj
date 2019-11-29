@@ -198,12 +198,10 @@
     <ClCompile Include="src\RE\BSScript\Stack.cpp" />
     <ClCompile Include="src\RE\BSScript\Type.cpp" />
     <ClCompile Include="src\RE\BSScript\Variable.cpp" />
-    <ClCompile Include="src\RE\BSScript\IFunctionArguments.cpp" />
     <ClCompile Include="src\RE\BSScript\Internal\VirtualMachine.cpp" />
     <ClCompile Include="src\RE\BSScript\NF_util\NativeFunctionBase.cpp" />
     <ClCompile Include="src\RE\BSScript\ObjectBindPolicy.cpp" />
     <ClCompile Include="src\RE\BSScript\PackUnpack.cpp" />
-    <ClCompile Include="src\RE\BSScript\StackFrame.cpp" />
     <ClCompile Include="src\RE\BSScript\VariableInfo.cpp" />
     <ClCompile Include="src\RE\BSScript\ZeroFunctionArguments.cpp" />
     <ClCompile Include="src\RE\BSLock.cpp" />
@@ -287,6 +285,7 @@
     <ClCompile Include="src\RE\NiRefObject.cpp" />
     <ClCompile Include="src\RE\NiRTTI.cpp" />
     <ClCompile Include="src\RE\NiSkinInstance.cpp" />
+    <ClCompile Include="src\RE\NiSystem.cpp" />
     <ClCompile Include="src\RE\NiTexture.cpp" />
     <ClCompile Include="src\RE\RemoveCallbackVisitor.cpp" />
     <ClCompile Include="src\RE\Script.cpp" />
@@ -296,7 +295,6 @@
     <ClCompile Include="src\RE\SoundData.cpp" />
     <ClCompile Include="src\RE\BSExtraData.cpp" />
     <ClCompile Include="src\RE\BSFixedString.cpp" />
-    <ClCompile Include="src\RE\BShkbAnimationGraph.cpp" />
     <ClCompile Include="src\RE\BSInputDevice.cpp" />
     <ClCompile Include="src\RE\BSTArray.cpp" />
     <ClCompile Include="src\RE\BSWin32KeyboardDevice.cpp" />
@@ -1174,6 +1172,7 @@
     <ClInclude Include="include\RE\NiSkinInstance.h" />
     <ClInclude Include="include\RE\NiSkinPartition.h" />
     <ClInclude Include="include\RE\NiStringsExtraData.h" />
+    <ClInclude Include="include\RE\NiSystem.h" />
     <ClInclude Include="include\RE\NiTCollection.h" />
     <ClInclude Include="include\RE\NiObject.h" />
     <ClInclude Include="include\RE\NiPoint3.h" />

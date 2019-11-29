@@ -1,8 +1,8 @@
 #include "RE/ExtraAliasInstanceArray.h"
 
-#include "skse64/GameExtraData.h"  // s_ExtraAliasInstanceArrayVtbl
-
-#include "RE/TESMemoryManager.h"  // free
+#include "RE/Offsets.h"
+#include "RE/TESMemoryManager.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -13,7 +13,8 @@ namespace RE
 		unk28(0),
 		unk2C(0)
 	{
-		((std::uintptr_t*)this)[0] = s_ExtraAliasInstanceArrayVtbl.GetUIntPtr();
+		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraAliasInstanceArray::Vtbl);
+		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
 	}
 
 

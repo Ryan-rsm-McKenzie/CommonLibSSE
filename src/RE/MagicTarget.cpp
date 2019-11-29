@@ -1,8 +1,8 @@
 #include "RE/MagicTarget.h"
 
-#include "RE/ActiveEffect.h"  // ActiveEffect
-#include "RE/EffectSetting.h"  // EffectSetting
-#include "RE/BSTList.h"  // BSSimpleList
+#include "RE/ActiveEffect.h"
+#include "RE/EffectSetting.h"
+#include "RE/BSTList.h"
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 

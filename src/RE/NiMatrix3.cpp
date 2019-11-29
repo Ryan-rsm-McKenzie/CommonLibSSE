@@ -1,7 +1,7 @@
 #include "RE/NiMatrix3.h"
 
 #include "RE/NiMath.h"
-#include "RE/NiPoint3.h"  // NiPoint3
+#include "RE/NiPoint3.h"
 
 
 namespace RE

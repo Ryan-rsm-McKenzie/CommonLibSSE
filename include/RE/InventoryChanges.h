@@ -33,7 +33,6 @@ namespace RE
 		explicit InventoryChanges(TESObjectREFR* a_ref);
 
 		void	SetUniqueID(BaseExtraList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm);
-		void	TransferItemUID(BaseExtraList* a_extraList, TESForm* a_oldForm, TESForm* a_newForm, UInt32 a_arg4);
 		void	InitContainer();
 		void	GenerateLeveledListChanges();
 		void	SendContainerChangedEvent(BaseExtraList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, SInt32 a_count);

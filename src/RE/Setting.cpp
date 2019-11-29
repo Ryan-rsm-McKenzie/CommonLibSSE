@@ -1,6 +1,6 @@
 #include "RE/Setting.h"
 
-#include "RE/TESMemoryManager.h"  // free
+#include "RE/TESMemoryManager.h"
 
 
 namespace RE

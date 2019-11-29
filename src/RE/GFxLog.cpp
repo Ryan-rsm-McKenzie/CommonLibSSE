@@ -1,10 +1,8 @@
 #include "RE/GFxLog.h"
 
-#include <cstdarg>  // va_list, va_start, va_copy, va_end
-#include <cstdio>  // vsnprintf
-#include <vector>  // vector
-
-#include <WinBase.h>  // OutputDebugString
+#include <cstdarg>
+#include <cstdio>
+#include <vector>
 
 
 namespace RE

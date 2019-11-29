@@ -1,7 +1,6 @@
 #include "RE/NiObject.h"
 
-#include "skse64/NiObjects.h"  // NiObject
-
+#include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
 
@@ -10,7 +9,7 @@ namespace RE
 	void NiObject::CreateDeepCopy(NiPointer<NiObject>& a_result)
 	{
 		using func_t = function_type_t<decltype(&NiObject::CreateDeepCopy)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::NiObject, DeepCopy, func_t*);
+		REL::Offset<func_t*> func(Offset::NiObject::CreateDeepCopy);
 		return func(this, a_result);
 	}
 }

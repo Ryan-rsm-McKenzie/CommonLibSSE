@@ -1,11 +1,9 @@
 #include "RE/CommandTable.h"
 
-#include "skse64/ObScript.h"  // g_firstObScriptCommand, g_firstConsoleCommand
+#include <string>
 
-#include <string.h>  // _stricmp
-
-#include <cstdint>  // uintptr_t
-#include <string>  // string
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -73,7 +71,8 @@ namespace RE
 
 	CommandInfo* CommandInfo::GetFirstScriptCommand()
 	{
-		return reinterpret_cast<CommandInfo*>(g_firstObScriptCommand.GetPtr());
+		REL::Offset<CommandInfo*> ptr(Offset::CommandInfo::FirstScriptCommand);
+		return ptr;
 	}
 
 
@@ -91,7 +90,8 @@ namespace RE
 
 	CommandInfo* CommandInfo::GetFirstConsoleCommand()
 	{
-		return reinterpret_cast<CommandInfo*>(g_firstConsoleCommand.GetPtr());
+		REL::Offset<CommandInfo*> ptr(Offset::CommandInfo::FirstConsoleCommand);
+		return ptr;
 	}
 
 

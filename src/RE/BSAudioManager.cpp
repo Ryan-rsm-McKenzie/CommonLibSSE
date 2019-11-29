@@ -1,9 +1,9 @@
 #include "RE/BSAudioManager.h"
 
-#include "RE/BGSSoundDescriptorForm.h"  // BGSSoundDescriptorForm
+#include "RE/BGSSoundDescriptorForm.h"
 #include "RE/Offsets.h"
-#include "RE/SoundData.h"  // SoundData
-#include "RE/TESForm.h"  // TESForm
+#include "RE/SoundData.h"
+#include "RE/TESForm.h"
 #include "REL/Relocation.h"
 
 

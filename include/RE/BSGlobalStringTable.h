@@ -69,6 +69,9 @@ namespace RE
 		STATIC_ASSERT(sizeof(Entry) == 0x18);
 
 
+		static BSGlobalStringTable* GetSingleton();
+
+
 		// members
 		Entry*					table[0x10000];	// 00000 - index using hash & kEntryIndexMask
 		mutable BSUniqueLock	locks[0x20];	// 80000 - index using hash & kLockIndexMask

@@ -1,22 +1,22 @@
 #include "RE/BaseExtraList.h"
 
-#include "skse64/GameReferences.h"  // g_invalidRefHandle
+#include "skse64/GameReferences.h"
 
-#include "RE/BGSKeyword.h"  // BGSKeyword
-#include "RE/BSExtraData.h"  // BSExtraData
-#include "RE/ExtraAshPileRef.h"  // ExtraAshPileRef
-#include "RE/ExtraEncounterZone.h"  // ExtraEncounterZone
-#include "RE/ExtraHealth.h"  // ExtraHealth
-#include "RE/ExtraLinkedRef.h"  // ExtraLinkedRef
-#include "RE/ExtraMissingLinkedRefIDs.h"  // ExtraMissingLinkedRefIDs
-#include "RE/ExtraOwnership.h"  // ExtraOwnership
-#include "RE/ExtraReferenceHandle.h"  // ExtraReferenceHandle
-#include "RE/ExtraSoul.h"  // ExtraSoul
-#include "RE/ExtraTextDisplayData.h"  // ExtraTextDisplayData
-#include "RE/GameSettingCollection.h"  // GameSettingCollection
+#include "RE/BGSKeyword.h"
+#include "RE/BSExtraData.h"
+#include "RE/ExtraAshPileRef.h"
+#include "RE/ExtraEncounterZone.h"
+#include "RE/ExtraHealth.h"
+#include "RE/ExtraLinkedRef.h"
+#include "RE/ExtraMissingLinkedRefIDs.h"
+#include "RE/ExtraOwnership.h"
+#include "RE/ExtraReferenceHandle.h"
+#include "RE/ExtraSoul.h"
+#include "RE/ExtraTextDisplayData.h"
+#include "RE/GameSettingCollection.h"
 #include "RE/Offsets.h"
-#include "RE/TESObjectREFR.h"  // TESObjectREFR
-#include "RE/TESForm.h"  // TESForm
+#include "RE/TESObjectREFR.h"
+#include "RE/TESForm.h"
 #include "REL/Relocation.h"
 
 

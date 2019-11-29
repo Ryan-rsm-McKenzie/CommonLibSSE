@@ -1,7 +1,7 @@
 #include "RE/TESFaction.h"
 
-#include "RE/BGSListForm.h"  // BGSListForm
-#include "RE/PlayerCharacter.h"  // PlayerCharacter
+#include "RE/BGSListForm.h"
+#include "RE/PlayerCharacter.h"
 
 
 namespace RE

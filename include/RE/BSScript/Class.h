@@ -284,7 +284,7 @@ namespace RE
 			void*					data;					// 30
 
 		private:
-			void Dtor();
+			void ReleaseData();
 		};
 		STATIC_ASSERT(sizeof(Class) == 0x38);
 	}

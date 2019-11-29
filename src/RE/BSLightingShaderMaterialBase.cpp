@@ -1,8 +1,8 @@
 #include "RE/BSLightingShaderMaterialBase.h"
 
-#include "skse64/NiMaterial.h"  // CreateShaderMaterial
-
-#include "RE/BSTextureSet.h"  // BSTextureSet
+#include "RE/BSTextureSet.h"
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
@@ -10,7 +10,7 @@ namespace RE
 	BSLightingShaderMaterialBase* BSLightingShaderMaterialBase::CreateMaterial(Type a_type)
 	{
 		using func_t = function_type_t<decltype(&BSLightingShaderMaterialBase::CreateMaterial)>;
-		func_t* func = unrestricted_cast<func_t*>(CreateShaderMaterial.GetUIntPtr());
+		REL::Offset<func_t*> func(Offset::BSLightingShaderMaterialBase::CreateMaterial);
 		return func(a_type);
 	}
 

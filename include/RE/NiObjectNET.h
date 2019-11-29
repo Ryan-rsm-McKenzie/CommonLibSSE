@@ -30,11 +30,18 @@ namespace RE
 		virtual void			ProcessClone(NiCloningProcess& a_cloning) override;	// 1D
 		virtual void			PostLinkObject(NiStream& a_stream) override;		// 1E
 
-		void				AddExtraData(NiExtraData* a_extraData);
-		bool				RemoveExtraData(NiExtraData* a_extraData);
-		SInt32				GetIndexOf(NiExtraData* a_extraData);
-		NiExtraData*		GetExtraData(BSFixedString a_name);
-		NiTimeController*	GetController() const;
+		bool				AddExtraData(const BSFixedString& a_key, NiExtraData* a_extra);
+		bool				AddExtraData(NiExtraData* a_extra);
+		void				DeleteExtraData(UInt16 a_extraDataIndex);
+		NiTimeController*	GetControllers() const;
+		NiExtraData*		GetExtraData(const BSFixedString& a_key) const;
+		NiExtraData*		GetExtraDataAt(UInt16 a_extraDataIndex) const;
+		UInt16				GetExtraDataSize() const;
+		bool				InsertExtraData(NiExtraData* a_extra);
+		void				RemoveAllExtraData();
+		bool				RemoveExtraData(const BSFixedString& a_key);
+		bool				RemoveExtraDataAt(UInt16 a_extraDataIndex);
+		bool				SetExtraDataSize(UInt16 a_size);
 
 
 		// members

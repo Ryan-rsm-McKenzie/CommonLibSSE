@@ -1,6 +1,9 @@
 #include "RE/ExtraCount.h"
 
-#include "skse64/GameExtraData.h"  // s_ExtraCountVtbl
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
+
+
 namespace RE
 {
 	ExtraCount::ExtraCount() :
@@ -8,7 +11,8 @@ namespace RE
 		count(0),
 		pad14(0)
 	{
-		((std::uintptr_t*)this)[0] = s_ExtraCountVtbl.GetUIntPtr();
+		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraCount::Vtbl);
+		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
 	}
 
 
@@ -17,7 +21,8 @@ namespace RE
 		count(a_count),
 		pad14(0)
 	{
-		((std::uintptr_t*)this)[0] = s_ExtraCountVtbl.GetUIntPtr();
+		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraCount::Vtbl);
+		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
 	}
 
 

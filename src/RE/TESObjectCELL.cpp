@@ -1,12 +1,10 @@
 #include "RE/TESObjectCELL.h"
 
-#include "skse64/GameForms.h"  // TESObjectCELL
-
-#include "RE/BGSEncounterZone.h"  // BGSEncounterZone
-#include "RE/TESFaction.h"  // TESFaction
-#include "RE/TESNPC.h"  // TESNPC
-#include "RE/TESWorldSpace.h"  // TESWorldSpace
-#include "REL/Relocation.h"
+#include "RE/BGSEncounterZone.h"
+#include "RE/ExtraNorthRotation.h"
+#include "RE/TESFaction.h"
+#include "RE/TESNPC.h"
+#include "RE/TESWorldSpace.h"
 
 
 namespace RE
@@ -39,11 +37,14 @@ namespace RE
 	}
 
 
-	double TESObjectCELL::GetNorthRotation()
+	float TESObjectCELL::GetNorthRotation()
 	{
-		using func_t = function_type_t<decltype(&TESObjectCELL::GetNorthRotation)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::TESObjectCELL, GetNorthRotation, func_t*);
-		return func(this);
+		if (IsExteriorCell()) {
+			return worldSpace->northRotation;
+		} else {
+			auto xNorth = extraList.GetByType<ExtraNorthRotation>();
+			return xNorth ? xNorth->rotation : 0.0;
+		}
 	}
 
 

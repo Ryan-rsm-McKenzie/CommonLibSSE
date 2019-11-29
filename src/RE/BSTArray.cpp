@@ -1,6 +1,6 @@
 #include "RE/BSTArray.h"
 
-#include "RE/ScrapHeap.h"  // ScrapHeap
+#include "RE/ScrapHeap.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #include "RE/BSScript/Object.h"
 
-#include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
-#include "RE/BSScript/Class.h"  // BSScript::Class
-#include "RE/BSScript/IObjectHandlePolicy.h"  // BSScript::IObjectHandlePolicy
+#include "RE/BSScript/Internal/VirtualMachine.h"
+#include "RE/BSScript/Class.h"
+#include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 

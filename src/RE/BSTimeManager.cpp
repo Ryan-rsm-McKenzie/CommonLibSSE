@@ -1,9 +1,9 @@
 #include "RE/BSTimeManager.h"
 
-#include "RE/GameSettingCollection.h"  // GameSettingCollection
+#include "RE/GameSettingCollection.h"
 #include "RE/Offsets.h"
-#include "RE/Setting.h"  // Setting
-#include "RE/TESGlobal.h"  // TESGlobal
+#include "RE/Setting.h"
+#include "RE/TESGlobal.h"
 #include "REL/Relocation.h"
 
 

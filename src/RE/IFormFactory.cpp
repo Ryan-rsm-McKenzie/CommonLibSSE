@@ -1,6 +1,6 @@
 #include "RE/IFormFactory.h"
 
-#include "RE/GlobalLookupInfo.h"  // GlobalLookupInfo
+#include "RE/GlobalLookupInfo.h"
 
 
 namespace RE

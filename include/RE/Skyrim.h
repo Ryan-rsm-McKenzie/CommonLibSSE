@@ -761,6 +761,7 @@
 #include "RE/NiSkinPartition.h"
 #include "RE/NiSmartPointer.h"
 #include "RE/NiStringsExtraData.h"
+#include "RE/NiSystem.h"
 #include "RE/NiTArray.h"
 #include "RE/NiTCollection.h"
 #include "RE/NiTDefaultAllocator.h"

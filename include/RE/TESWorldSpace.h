@@ -195,7 +195,8 @@ namespace RE
 		UInt64													unk2E0;						// 2E0
 		BSTHashMap<UnkKey, UnkValue>							unk2E8;						// 2E8
 		BSTHashMap<UnkKey, UnkValue>							unk318;						// 318
-		UInt64													unk348;						// 348
+		float													northRotation;				// 348
+		UInt32													unk34C;						// 34C
 		UInt8*													maxHeightData;				// 350 - MHDT (it's an array, but idk how big it is)
 	};
 	STATIC_ASSERT(offsetof(TESWorldSpace, cell) == 0x088);

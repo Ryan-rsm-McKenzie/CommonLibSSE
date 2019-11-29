@@ -1,9 +1,9 @@
 #include "RE/Script.h"
 
-#include <cstring>  // memcpy
+#include <cstring>
 
 #include "RE/Offsets.h"
-#include "RE/TESMemoryManager.h"  // malloc, free
+#include "RE/TESMemoryManager.h"
 #include "REL/Relocation.h"
 
 

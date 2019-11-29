@@ -1,8 +1,8 @@
 #include "RE/GFxWStringBuffer.h"
 
-#include <cstring>  // wmemcpy
+#include <cstring>
 
-#include "RE/GMemory.h"  // GALLOC, GFREE
+#include "RE/GMemory.h"
 
 
 namespace RE

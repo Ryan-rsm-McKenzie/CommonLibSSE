@@ -1,7 +1,6 @@
 #include "RE/ExtraTextDisplayData.h"
 
-#include "skse64/GameExtraData.h"  // ExtraTextDisplayData, s_ExtraTextDisplayVtbl
-
+#include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
 
@@ -18,7 +17,8 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		((std::uintptr_t*)this)[0] = s_ExtraTextDisplayVtbl.GetUIntPtr();
+		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraTextDisplayData::Vtbl);
+		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
 	}
 
 
@@ -33,7 +33,8 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		((std::uintptr_t*)this)[0] = s_ExtraTextDisplayVtbl.GetUIntPtr();
+		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraTextDisplayData::Vtbl);
+		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
 		SetName(a_name);
 	}
 
@@ -49,7 +50,8 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		((std::uintptr_t*)this)[0] = s_ExtraTextDisplayVtbl.GetUIntPtr();
+		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraTextDisplayData::Vtbl);
+		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
 		GenerateName(a_form, a_temperFactor);
 	}
 
@@ -63,15 +65,20 @@ namespace RE
 	const char* ExtraTextDisplayData::GenerateName(TESForm* a_form, float a_temperFactor)
 	{
 		using func_t = function_type_t<decltype(&ExtraTextDisplayData::GenerateName)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::ExtraTextDisplayData, GenerateName_Internal, func_t*);
+		REL::Offset<func_t*> func(Offset::ExtraTextDisplayData::GenerateName);
 		return func(this, a_form, a_temperFactor);
 	}
 
 
 	void ExtraTextDisplayData::SetName(const char* a_name)
 	{
-		using func_t = function_type_t<decltype(&ExtraTextDisplayData::SetName)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::ExtraTextDisplayData, SetName_Internal, func_t*);
-		return func(this, a_name);
+		if (message) {
+			return;
+		}
+
+		name = a_name;
+		rawNameLen = name.length();
+		type = Type::kPlayerSet;
+		temperFactor = 1.0;
 	}
 }

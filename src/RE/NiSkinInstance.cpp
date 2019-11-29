@@ -1,16 +1,15 @@
 #include "RE/NiSkinInstance.h"
 
-#include "skse64/NiGeometry.h"  // NiSkinInstance
-
+#include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
 
 namespace RE
 {
-	NiSkinInstance* NiSkinInstance::CreateObject()
+	NiSkinInstance* NiSkinInstance::Create()
 	{
-		using func_t = function_type_t<decltype(&NiSkinInstance::CreateObject)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::NiSkinInstance, ctor, func_t*);
+		using func_t = function_type_t<decltype(&NiSkinInstance::Create)>;
+		REL::Offset<func_t*> func(Offset::NiSkinInstance::Ctor);
 		return func();
 	}
 }

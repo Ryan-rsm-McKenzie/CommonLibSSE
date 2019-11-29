@@ -1,9 +1,9 @@
 #include "SKSE/Interfaces.h"
 
-#include "skse64/PluginAPI.h"  // SKSEInterface, SKSEScaleformInterface, SKSESerializationInterface, SKSETaskInterface, SKSEPapyrusInterface, SKSEMessagingInterface, SKSEObjectInterface
+#include "skse64/PluginAPI.h"
 
-#include "RE/BSScript/Internal/VirtualMachine.h"  // BSScript::Internal::VirtualMachine
-#include "SKSE/API.h"  // GetPluginHandle
+#include "RE/BSScript/Internal/VirtualMachine.h"
+#include "SKSE/API.h"
 
 
 namespace SKSE

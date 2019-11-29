@@ -1,13 +1,15 @@
 #include "RE/GameSettingCollection.h"
 
-#include "skse64/GameSettings.h"  // g_gameSettingCollection
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
 {
 	GameSettingCollection* GameSettingCollection::GetSingleton()
 	{
-		return *unrestricted_cast<GameSettingCollection**>(g_gameSettingCollection.GetUIntPtr());
+		REL::Offset<GameSettingCollection**> singleton(Offset::GameSettingCollection::Singleton);
+		return *singleton;
 	}
 
 

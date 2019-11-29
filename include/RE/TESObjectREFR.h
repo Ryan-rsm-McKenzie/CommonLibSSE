@@ -264,7 +264,7 @@ namespace RE
 		virtual void					Unk_94(void);																																												// 94 - { return; }
 		virtual void					Unk_95(void);																																												// 95 - { return; }
 		virtual void					Unk_96(void);																																												// 96 - related to lockpicking
-		virtual TESObjectCELL*			GetParentOrPersistentCell();																																								// 97
+		virtual TESObjectCELL*			GetParentOrPersistentCell() const;																																							// 97
 		virtual void					Unk_98(void);																																												// 98
 		virtual bool					IsDead(bool a_bleedout);																																									// 99
 		virtual BSAnimNoteReceiver*		CreateAnimNoteReceiver();																																									// 9A
@@ -334,8 +334,6 @@ namespace RE
 		UInt32			pad94;			// 94
 
 	private:
-		static void CreateRefHandle_Impl(RefHandle& a_refHandle, TESObjectREFR* a_refrTo);
-
 		void MoveTo_Impl(RefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, NiPoint3& a_position, NiPoint3& a_rotation);
 	};
 	STATIC_ASSERT(offsetof(TESObjectREFR, extraData) == 0x70);

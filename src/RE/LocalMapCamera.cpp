@@ -1,8 +1,8 @@
 #include "RE/LocalMapCamera.h"
 
-#include "skse64/GameCamera.h"  // LocalMapCamera
-
-#include "RE/NiCamera.h"  // NiCamera
+#include "RE/INISettingCollection.h"
+#include "RE/NiCamera.h"
+#include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
 
@@ -10,15 +10,18 @@ namespace RE
 {
 	LocalMapCamera::LocalMapCamera(float a_northRotation)
 	{
-		Ctor_Internal(a_northRotation);
+		Ctor(a_northRotation);
 	}
 
 
 	void LocalMapCamera::SetAreaBounds(NiPoint3& a_maxBound, NiPoint3& a_minBound)
 	{
+		auto ini = RE::INISettingCollection::GetSingleton();
+		auto fMapLocalHeight = ini->GetSetting("fMapLocalHeight:MapMenu");
+
 		areaBoundsMin = a_minBound;
 		areaBoundsMax = a_maxBound;
-		areaBoundsMax.z += (*g_mapLocalHeight);
+		areaBoundsMax.z += fMapLocalHeight->GetFloat();
 	}
 
 
@@ -32,8 +35,11 @@ namespace RE
 
 	void LocalMapCamera::SetDefaultStateMaxBound(NiPoint3& a_maxBound)
 	{
+		auto ini = RE::INISettingCollection::GetSingleton();
+		auto fMapLocalHeight = ini->GetSetting("fMapLocalHeight:MapMenu");
+
 		defaultState->someBoundMax = a_maxBound;
-		defaultState->someBoundMax.z += (*g_mapLocalHeight);
+		defaultState->someBoundMax.z += fMapLocalHeight->GetFloat();
 	}
 
 
@@ -47,15 +53,15 @@ namespace RE
 	void LocalMapCamera::SetNorthRotation(float a_northRotation)
 	{
 		using func_t = function_type_t<decltype(&LocalMapCamera::SetNorthRotation)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::LocalMapCamera, SetNorthRotation, func_t*);
+		REL::Offset<func_t*> func(Offset::LocalMapCamera::SetNorthRotation);
 		return func(this, a_northRotation);
 	}
 
 
-	LocalMapCamera* LocalMapCamera::Ctor_Internal(float a_northRotation)
+	LocalMapCamera* LocalMapCamera::Ctor(float a_northRotation)
 	{
-		using func_t = function_type_t<decltype(&LocalMapCamera::Ctor_Internal)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::LocalMapCamera, ctor, func_t*);
+		using func_t = function_type_t<decltype(&LocalMapCamera::Ctor)>;
+		REL::Offset<func_t*> func(Offset::LocalMapCamera::Ctor);
 		return func(this, a_northRotation);
 	}
 }

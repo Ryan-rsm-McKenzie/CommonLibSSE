@@ -1,10 +1,7 @@
 #include "RE/TESDataHandler.h"
 
-#include "skse64/GameData.h"  // DataHandler
-
-#include <string.h>  // _stricmp
-
-#include "RE/TESFile.h"  // TESFile
+#include "RE/Offsets.h"
+#include "RE/TESFile.h"
 #include "REL/Relocation.h"
 
 
@@ -12,16 +9,15 @@ namespace RE
 {
 	TESDataHandler* TESDataHandler::GetSingleton()
 	{
-		using func_t = function_type_t<decltype(&TESDataHandler::GetSingleton)>;
-		func_t* func = unrestricted_cast<func_t*>(&::DataHandler::GetSingleton);
-		return func();
+		REL::Offset<TESDataHandler**> singleton(Offset::TESDataHandler::Singleton);
+		return *singleton;
 	}
 
 
 	UInt32 TESDataHandler::LoadScripts()
 	{
 		using func_t = function_type_t<decltype(&TESDataHandler::LoadScripts)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::DataHandler, LoadScripts, func_t*);
+		REL::Offset<func_t*> func(Offset::TESDataHandler::LoadScripts);
 		return func(this);
 	}
 

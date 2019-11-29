@@ -130,7 +130,7 @@ namespace RE
 		static UPInt BernsteinHashFunction(const void* a_dataIn, UPInt a_size, UPInt a_seed = 5381);
 
 	protected:
-		GString*	ctor_internal(const char* a_s);
+		GString*	ctor(const char* a_s);
 		HeapType	heap_type() const;
 		DataDesc*	get_desc() const;
 		void		set_desc(DataDesc* a_desc);

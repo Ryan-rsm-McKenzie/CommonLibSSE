@@ -1,9 +1,9 @@
 #include "RE/ExtraMissingLinkedRefIDs.h"
 
-#include <cassert>  // assert
+#include <cassert>
 
-#include "RE/BGSKeyword.h"  // BGSKeyword
-#include "RE/TESObjectREFR.h"  // TESObjectREFR
+#include "RE/BGSKeyword.h"
+#include "RE/TESObjectREFR.h"
 
 
 namespace RE

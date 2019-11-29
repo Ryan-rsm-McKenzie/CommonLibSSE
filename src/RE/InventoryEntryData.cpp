@@ -1,12 +1,10 @@
 #include "RE/InventoryEntryData.h"
 
-#include "skse64/GameExtraData.h"  // InventoryEntryData
-
-#include "RE/BaseExtraList.h"  // BaseExtraList
-#include "RE/GameSettingCollection.h"  // GameSettingCollection
+#include "RE/BaseExtraList.h"
+#include "RE/GameSettingCollection.h"
 #include "RE/Offsets.h"
-#include "RE/TESBoundObject.h"  // TESBoundObject
-#include "RE/TESSoulGem.h"  // TESSoulGem
+#include "RE/TESBoundObject.h"
+#include "RE/TESSoulGem.h"
 #include "REL/Relocation.h"
 
 
@@ -82,7 +80,7 @@ namespace RE
 	SInt32 InventoryEntryData::GetValue()
 	{
 		using func_t = function_type_t<decltype(&InventoryEntryData::GetValue)>;
-		func_t* func = EXTRACT_SKSE_MEMBER_FN_ADDR(::InventoryEntryData, GetValue, func_t*);
+		REL::Offset<func_t*> func(Offset::InventoryEntryData::GetValue);
 		return func(this);
 	}
 

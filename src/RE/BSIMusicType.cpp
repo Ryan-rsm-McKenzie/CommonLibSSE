@@ -1,4 +1,4 @@
-#include "RE/BSIMusicType.h"  // BSIMusicType
+#include "RE/BSIMusicType.h"
 
 
 namespace RE

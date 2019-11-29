@@ -1,7 +1,7 @@
 #include "RE/GFxMovie.h"
 
-#include "RE/GFxMovieDef.h"  // GFxMovieDef
-#include "RE/GFxValue.h"  // GFxValue
+#include "RE/GFxMovieDef.h"
+#include "RE/GFxValue.h"
 
 
 namespace RE
