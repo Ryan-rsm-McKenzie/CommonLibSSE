@@ -7,6 +7,7 @@
 #include "skse64/PluginAPI.h"
 
 #include <functional>
+#include <string>
 
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/GFxMovieView.h"
@@ -33,10 +34,11 @@ namespace SKSE
 	class QueryInterface
 	{
 	public:
-		UInt32 SKSEVersion() const;
-		UInt32 RuntimeVersion() const;
 		UInt32 EditorVersion() const;
 		bool IsEditor() const;
+		UInt32 RuntimeVersion() const;
+		UInt32 SKSEVersion() const;
+		std::string UnmangledRuntimeVersion() const;
 
 	protected:
 		const SKSEInterface* GetProxy() const;
@@ -46,9 +48,9 @@ namespace SKSE
 	class LoadInterface : public QueryInterface
 	{
 	public:
-		void* QueryInterface(InterfaceID a_id) const;
 		PluginHandle GetPluginHandle() const;
 		UInt32 GetReleaseIndex() const;
+		void* QueryInterface(InterfaceID a_id) const;
 	};
 
 
@@ -83,10 +85,10 @@ namespace SKSE
 
 		void SetUniqueID(UInt32 a_uid) const;
 
+		void SetFormDeleteCallback(FormDeleteCallback* a_callback) const;
+		void SetLoadCallback(EventCallback* a_callback) const;
 		void SetRevertCallback(EventCallback* a_callback) const;
 		void SetSaveCallback(EventCallback* a_callback) const;
-		void SetLoadCallback(EventCallback* a_callback) const;
-		void SetFormDeleteCallback(FormDeleteCallback* a_callback) const;
 
 		bool WriteRecord(UInt32 a_type, UInt32 a_version, const void* a_buf, UInt32 a_length) const;
 		template <class T>
@@ -113,8 +115,8 @@ namespace SKSE
 			return ReadRecordData(a_buf, sizeof(T));
 		}
 
-		bool ResolveHandle(RE::VMHandle a_oldHandle, RE::VMHandle& a_newHandle) const;
 		bool ResolveFormID(RE::FormID a_oldFormID, RE::FormID& a_newFormID) const;
+		bool ResolveHandle(RE::VMHandle a_oldHandle, RE::VMHandle& a_newHandle) const;
 
 	protected:
 		const SKSESerializationInterface* GetProxy() const;
@@ -239,9 +241,9 @@ namespace SKSE
 
 		UInt32 Version() const;
 
-		bool RegisterListener(const char* a_sender, EventCallback* a_callback) const;
 		bool Dispatch(UInt32 a_messageType, void* a_data, UInt32 a_dataLen, const char* a_receiver) const;
 		void* GetEventDispatcher(Dispatcher a_dispatcherID) const;
+		bool RegisterListener(const char* a_sender, EventCallback* a_callback) const;
 
 	protected:
 		const SKSEMessagingInterface* GetProxy() const;

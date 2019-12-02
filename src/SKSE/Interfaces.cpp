@@ -1,6 +1,7 @@
 #include "SKSE/Interfaces.h"
 
 #include "skse64/PluginAPI.h"
+#include "skse64_common/skse_version.h"
 
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "SKSE/API.h"
@@ -8,18 +9,6 @@
 
 namespace SKSE
 {
-	UInt32 QueryInterface::SKSEVersion() const
-	{
-		return GetProxy()->skseVersion;
-	}
-
-
-	UInt32 QueryInterface::RuntimeVersion() const
-	{
-		return GetProxy()->runtimeVersion;
-	}
-
-
 	UInt32 QueryInterface::EditorVersion() const
 	{
 		return GetProxy()->editorVersion;
@@ -32,15 +21,41 @@ namespace SKSE
 	}
 
 
-	const SKSEInterface* QueryInterface::GetProxy() const
+	UInt32 QueryInterface::RuntimeVersion() const
 	{
-		return reinterpret_cast<const SKSEInterface*>(this);
+		return GetProxy()->runtimeVersion;
 	}
 
 
-	void* LoadInterface::QueryInterface(InterfaceID a_id) const
+	UInt32 QueryInterface::SKSEVersion() const
 	{
-		return GetProxy()->QueryInterface(static_cast<UInt32>(a_id));
+		return GetProxy()->skseVersion;
+	}
+
+
+	std::string QueryInterface::UnmangledRuntimeVersion() const
+	{
+		std::string verString;
+		auto version = RuntimeVersion();
+
+		verString = std::move(std::to_string(GET_EXE_VERSION_MAJOR(version)));
+		verString.push_back('.');
+
+		verString += std::to_string(GET_EXE_VERSION_MINOR(version));
+		verString.push_back('.');
+
+		verString += std::to_string(GET_EXE_VERSION_BUILD(version));
+		verString.push_back('.');
+
+		verString += std::to_string(GET_EXE_VERSION_SUB(version));
+
+		return verString;
+	}
+
+
+	const SKSEInterface* QueryInterface::GetProxy() const
+	{
+		return reinterpret_cast<const SKSEInterface*>(this);
 	}
 
 
@@ -53,6 +68,12 @@ namespace SKSE
 	UInt32 LoadInterface::GetReleaseIndex() const
 	{
 		return GetProxy()->GetReleaseIndex();
+	}
+
+
+	void* LoadInterface::QueryInterface(InterfaceID a_id) const
+	{
+		return GetProxy()->QueryInterface(static_cast<UInt32>(a_id));
 	}
 
 
@@ -96,15 +117,9 @@ namespace SKSE
 	}
 
 
-	void SerializationInterface::SetRevertCallback(EventCallback* a_callback) const
+	void SerializationInterface::SetFormDeleteCallback(FormDeleteCallback* a_callback) const
 	{
-		GetProxy()->SetRevertCallback(GetPluginHandle(), reinterpret_cast<SKSESerializationInterface::EventCallback>(a_callback));
-	}
-
-
-	void SerializationInterface::SetSaveCallback(EventCallback* a_callback) const
-	{
-		GetProxy()->SetSaveCallback(GetPluginHandle(), reinterpret_cast<SKSESerializationInterface::EventCallback>(a_callback));
+		GetProxy()->SetFormDeleteCallback(GetPluginHandle(), reinterpret_cast<SKSESerializationInterface::FormDeleteCallback>(a_callback));
 	}
 
 
@@ -114,9 +129,15 @@ namespace SKSE
 	}
 
 
-	void SerializationInterface::SetFormDeleteCallback(FormDeleteCallback* a_callback) const
+	void SerializationInterface::SetRevertCallback(EventCallback* a_callback) const
 	{
-		GetProxy()->SetFormDeleteCallback(GetPluginHandle(), reinterpret_cast<SKSESerializationInterface::FormDeleteCallback>(a_callback));
+		GetProxy()->SetRevertCallback(GetPluginHandle(), reinterpret_cast<SKSESerializationInterface::EventCallback>(a_callback));
+	}
+
+
+	void SerializationInterface::SetSaveCallback(EventCallback* a_callback) const
+	{
+		GetProxy()->SetSaveCallback(GetPluginHandle(), reinterpret_cast<SKSESerializationInterface::EventCallback>(a_callback));
 	}
 
 
@@ -150,15 +171,15 @@ namespace SKSE
 	}
 
 
-	bool SerializationInterface::ResolveHandle(RE::VMHandle a_oldHandle, RE::VMHandle& a_newHandle) const
-	{
-		return GetProxy()->ResolveHandle(a_oldHandle, &a_newHandle);
-	}
-
-
 	bool SerializationInterface::ResolveFormID(RE::FormID a_oldFormID, RE::FormID& a_newFormID) const
 	{
 		return GetProxy()->ResolveFormId(a_oldFormID, &a_newFormID);
+	}
+
+
+	bool SerializationInterface::ResolveHandle(RE::VMHandle a_oldHandle, RE::VMHandle& a_newHandle) const
+	{
+		return GetProxy()->ResolveHandle(a_oldHandle, &a_newHandle);
 	}
 
 
@@ -272,16 +293,6 @@ namespace SKSE
 	}
 
 
-	bool MessagingInterface::RegisterListener(const char* a_sender, EventCallback* a_callback) const
-	{
-		auto result = GetProxy()->RegisterListener(GetPluginHandle(), a_sender, reinterpret_cast<SKSEMessagingInterface::EventCallback>(a_callback));
-		if (!result) {
-			_ERROR("Failed to register messaging listener for %s", a_sender);
-		}
-		return result;
-	}
-
-
 	bool MessagingInterface::Dispatch(UInt32 a_messageType, void* a_data, UInt32 a_dataLen, const char* a_receiver) const
 	{
 		auto result = GetProxy()->Dispatch(GetPluginHandle(), a_messageType, a_data, a_dataLen, a_receiver);
@@ -295,6 +306,16 @@ namespace SKSE
 	void* MessagingInterface::GetEventDispatcher(Dispatcher a_dispatcherID) const
 	{
 		return GetProxy()->GetEventDispatcher(static_cast<UInt32>(a_dispatcherID));
+	}
+
+
+	bool MessagingInterface::RegisterListener(const char* a_sender, EventCallback* a_callback) const
+	{
+		auto result = GetProxy()->RegisterListener(GetPluginHandle(), a_sender, reinterpret_cast<SKSEMessagingInterface::EventCallback>(a_callback));
+		if (!result) {
+			_ERROR("Failed to register messaging listener for %s", a_sender);
+		}
+		return result;
 	}
 
 
