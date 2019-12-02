@@ -37,7 +37,7 @@ namespace RE
 
 
 			template <class... Args, std::size_t... I>
-			std::tuple<Args...> MakeTupleImpl(StackFrame* a_frame, UInt32 a_offset, std::index_sequence<I...>)
+			std::tuple<Args...> MakeTupleImpl(StackFrame* a_frame, std::index_sequence<I...>)
 			{
 				return std::forward_as_tuple(Args{ a_frame->args[I].Unpack<Args>() }...);
 			}
