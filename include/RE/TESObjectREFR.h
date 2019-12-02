@@ -277,7 +277,8 @@ namespace RE
 		virtual void					UnequipItem(UInt64 a_arg1, TESForm* a_item);																																				// A1 - { return; }
 
 
-		static bool LookupByHandle(const RefHandle& a_refHandle, TESObjectREFRPtr& a_refrOut);
+		static NiPointer<TESObjectREFR>	LookupByHandle(RefHandle a_refHandle);
+		static bool						LookupByHandle(RefHandle a_refHandle, NiPointer<TESObjectREFR>& a_refrOut);
 
 		void				ActivateRefChildren(TESObjectREFR* a_activator);
 		RefHandle			CreateRefHandle();

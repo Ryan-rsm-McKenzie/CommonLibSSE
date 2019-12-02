@@ -69,17 +69,18 @@ namespace RE
 
 		static MenuManager* GetSingleton();
 
-		template <class T> BSTEventSource<T>*	GetEventSource();
 		template <class T> void					AddEventSink(BSTEventSink<T>* a_sink);
-		bool									IsMenuOpen(const std::string_view& a_menuName);
-		GFxMovieView*							GetMovieView(const std::string_view& a_menuName);
-		void									ShowMenus(bool a_show);
-		bool									IsShowingMenus();
-		void									Register(const std::string_view& a_menuName, CreatorFunc* a_creator);
-		bool									GameIsPaused();
 		bool									CrosshairIsPaused();
+		bool									GameIsPaused();
+		template <class T> BSTEventSource<T>*	GetEventSource();
 		GPtr<IMenu>								GetMenu(const std::string_view& a_menuName);
 		template <class T> GPtr<T>				GetMenu(const std::string_view& a_menuName);
+		GFxMovieView*							GetMovieView(const std::string_view& a_menuName);
+		bool									IsMenuOpen(const std::string_view& a_menuName);
+		bool									IsShowingMenus();
+		void									Register(const std::string_view& a_menuName, CreatorFunc* a_creator);
+		template <class T> void					RemoveEventSink(BSTEventSink<T>* a_sink);
+		void									ShowMenus(bool a_show);
 
 
 		// members
@@ -105,13 +106,6 @@ namespace RE
 
 
 	template <class T>
-	BSTEventSource<T>* MenuManager::GetEventSource()
-	{
-		return static_cast<BSTEventSource<T>*>(this);
-	}
-
-
-	template <class T>
 	void MenuManager::AddEventSink(BSTEventSink<T>* a_sink)
 	{
 		GetEventSource<T>()->AddEventSink(a_sink);
@@ -119,8 +113,22 @@ namespace RE
 
 
 	template <class T>
+	BSTEventSource<T>* MenuManager::GetEventSource()
+	{
+		return static_cast<BSTEventSource<T>*>(this);
+	}
+
+
+	template <class T>
 	inline GPtr<T> MenuManager::GetMenu(const std::string_view& a_menuName)
 	{
 		return GPtr<T>(static_cast<T*>(GetMenu(a_menuName).get()));
+	}
+
+
+	template <class T>
+	inline void MenuManager::RemoveEventSink(BSTEventSink<T>* a_sink)
+	{
+		GetEventSource<T>()->RemoveEventSink(a_sink);
 	}
 }

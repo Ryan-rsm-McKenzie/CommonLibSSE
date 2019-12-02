@@ -32,8 +32,7 @@ namespace RE
 
 	Actor* PlayerCharacter::GetActorInFavorState() const
 	{
-		RE::TESObjectREFRPtr ref;
-		RE::TESObjectREFR::LookupByHandle(actorInFavorState, ref);
+		auto ref = TESObjectREFR::LookupByHandle(actorInFavorState);
 		return static_cast<Actor*>(ref.get());
 	}
 
@@ -56,10 +55,7 @@ namespace RE
 
 	NiPointer<TESObjectREFR> PlayerCharacter::GetGrabbedRef()
 	{
-		TESObjectREFRPtr refPtr;
-		UInt32 handle = grabbedHandle;
-		TESObjectREFR::LookupByHandle(handle, refPtr);
-		return refPtr;
+		return TESObjectREFR::LookupByHandle(grabbedHandle);
 	}
 
 

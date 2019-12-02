@@ -14,10 +14,15 @@ namespace RE
 	}
 
 
-	bool MenuManager::IsMenuOpen(const std::string_view& a_menuName)
+	bool MenuManager::GameIsPaused()
 	{
-		auto menu = GetMenu(a_menuName);
-		return menu ? menu->IsOpen() : false;
+		return numPauseGame > 0;
+	}
+
+
+	bool MenuManager::CrosshairIsPaused()
+	{
+		return numStopCrosshairUpdate > 0;
 	}
 
 
@@ -35,9 +40,10 @@ namespace RE
 	}
 
 
-	void MenuManager::ShowMenus(bool a_show)
+	bool MenuManager::IsMenuOpen(const std::string_view& a_menuName)
 	{
-		showMenus = a_show;
+		auto menu = GetMenu(a_menuName);
+		return menu ? menu->IsOpen() : false;
 	}
 
 
@@ -53,14 +59,8 @@ namespace RE
 	}
 
 
-	bool MenuManager::GameIsPaused()
+	void MenuManager::ShowMenus(bool a_show)
 	{
-		return numPauseGame > 0;
-	}
-
-
-	bool MenuManager::CrosshairIsPaused()
-	{
-		return numStopCrosshairUpdate > 0;
+		showMenus = a_show;
 	}
 }

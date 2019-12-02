@@ -44,8 +44,6 @@ namespace RE
 
 	NiPointer<TESObjectREFR> ExtraReferenceHandle::GetReference()
 	{
-		NiPointer<TESObjectREFR> ref;
-		TESObjectREFR::LookupByHandle(handle, ref);
-		return ref;
+		return TESObjectREFR::LookupByHandle(handle);
 	}
 }

@@ -31,16 +31,14 @@ namespace RE
 
 	Actor* ActiveEffect::GetCasterActor()
 	{
-		RE::TESObjectREFRPtr ref;
-		RE::TESObjectREFR::LookupByHandle(casterActor, ref);
+		auto ref = TESObjectREFR::LookupByHandle(casterActor);
 		return static_cast<Actor*>(ref.get());
 	}
 
 
 	const Actor* ActiveEffect::GetCasterActor() const
 	{
-		RE::TESObjectREFRPtr ref;
-		RE::TESObjectREFR::LookupByHandle(casterActor, ref);
+		auto ref = TESObjectREFR::LookupByHandle(casterActor);
 		return static_cast<const Actor*>(ref.get());
 	}
 

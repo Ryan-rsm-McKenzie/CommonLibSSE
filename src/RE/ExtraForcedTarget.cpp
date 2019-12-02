@@ -44,8 +44,6 @@ namespace RE
 
 	NiPointer<TESObjectREFR> ExtraForcedTarget::GetTarget()
 	{
-		NiPointer<TESObjectREFR> refr;
-		RE::TESObjectREFR::LookupByHandle(handle, refr);
-		return refr;
+		return TESObjectREFR::LookupByHandle(handle);
 	}
 }

@@ -947,7 +947,7 @@ namespace RE
 			// IndirectSig: E8 ? ? ? ? 83 3D ? ? ? ? ? 74 13 48 8D 15 ? ? ? ? 48 8D 0D ? ? ? ? E8 ? ? ? ? 33 D2 48 8D 0D ? ? ? ? E8 ? ? ? ? 8B 0D ? ? ? ?
 			constexpr std::uintptr_t LoadScripts = 0x001713D0;	// 1_5_97
 			// 48 89 05 ? ? ? ? 49 8B D6
-			constexpr std::uintptr_t Singleton = 0x004F5C80;	// 1_5_97
+			constexpr std::uintptr_t Singleton = 0x01EBE428;	// 1_5_97
 		}
 
 
