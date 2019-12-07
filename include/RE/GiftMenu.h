@@ -27,7 +27,7 @@ namespace RE
 
 		// members
 		GFxValue		root;				// 30 - "Menu_mc"
-		ItemList*		list;				// 48
+		ItemList*		itemList;			// 48
 		ItemCard*		itemCard;			// 50
 		BSTArray<void*>	unk58;				// 58
 		UInt64			unk70;				// 70

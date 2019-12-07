@@ -20,7 +20,7 @@ namespace RE
 
 
 		ExtraForcedTarget();
-		ExtraForcedTarget(RefHandle a_handle);
+		explicit ExtraForcedTarget(RefHandle a_handle);
 		virtual ~ExtraForcedTarget() = default;											// 00
 
 		// override (BSExtraData)

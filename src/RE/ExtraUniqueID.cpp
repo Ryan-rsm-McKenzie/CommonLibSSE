@@ -7,14 +7,8 @@
 namespace RE
 {
 	ExtraUniqueID::ExtraUniqueID() :
-		BSExtraData(),
-		owner(0),
-		uniqueID(0),
-		pad16(0)
-	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraUniqueID::Vtbl);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
-	}
+		ExtraUniqueID(0, 0)
+	{}
 
 
 	ExtraUniqueID::ExtraUniqueID(FormID a_owner, UInt16 a_uniqueID) :

@@ -10,13 +10,8 @@
 namespace RE
 {
 	ExtraReferenceHandle::ExtraReferenceHandle() :
-		BSExtraData(),
-		handle(*g_invalidRefHandle),
-		pad14(0)
-	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraReferenceHandle::Vtbl);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
-	}
+		ExtraReferenceHandle(*g_invalidRefHandle)
+	{}
 
 
 	ExtraReferenceHandle::ExtraReferenceHandle(RefHandle a_refHandle) :

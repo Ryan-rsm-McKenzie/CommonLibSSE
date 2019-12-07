@@ -368,10 +368,24 @@ namespace RE
 		}
 
 
+		namespace ExtraAshPileRef
+		{
+			// VTable: .?AVExtraAshPileRef@@
+			constexpr std::uintptr_t Vtbl = 0x0152C2E0;	// 1_5_97
+		}
+
+
 		namespace ExtraCannotWear
 		{
 			// VTable: .?AVExtraCannotWear@@
 			constexpr std::uintptr_t Vtbl = 0x0152C040;	// 1_5_97
+		}
+
+
+		namespace ExtraCanTalkToPlayer
+		{
+			// VTable: .?AVExtraCanTalkToPlayer@@
+			constexpr std::uintptr_t Vtbl = 0x0152C740;	// 1_5_97
 		}
 
 

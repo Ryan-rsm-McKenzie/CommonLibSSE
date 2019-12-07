@@ -29,7 +29,7 @@ namespace RE
 
 
 		ExtraTextDisplayData();
-		ExtraTextDisplayData(const char* a_name);
+		explicit ExtraTextDisplayData(const char* a_name);
 		ExtraTextDisplayData(TESForm* a_form, float a_temperFactor);
 		virtual ~ExtraTextDisplayData() = default;		// 00
 

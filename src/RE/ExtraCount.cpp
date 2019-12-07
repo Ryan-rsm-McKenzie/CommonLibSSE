@@ -7,13 +7,8 @@
 namespace RE
 {
 	ExtraCount::ExtraCount() :
-		BSExtraData(),
-		count(0),
-		pad14(0)
-	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraCount::Vtbl);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
-	}
+		ExtraCount(0)
+	{}
 
 
 	ExtraCount::ExtraCount(SInt32 a_count) :

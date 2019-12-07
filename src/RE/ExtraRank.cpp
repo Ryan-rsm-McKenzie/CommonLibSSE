@@ -7,13 +7,8 @@
 namespace RE
 {
 	ExtraRank::ExtraRank() :
-		BSExtraData(),
-		rank(0),
-		pad14(0)
-	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraRank::Vtbl);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
-	}
+		ExtraRank(0)
+	{}
 
 
 	ExtraRank::ExtraRank(UInt32 a_rank) :

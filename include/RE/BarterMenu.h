@@ -27,7 +27,7 @@ namespace RE
 
 
 		// members
-		ItemList*		list;				// 30
+		ItemList*		itemList;			// 30
 		ItemCard*		itemCard;			// 38
 		BottomBar*		bottomBar;			// 40
 		GFxValue		root;				// 48 - "Menu_mc"

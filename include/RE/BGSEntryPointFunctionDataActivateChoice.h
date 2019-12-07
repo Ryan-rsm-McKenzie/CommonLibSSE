@@ -31,8 +31,8 @@ namespace RE
 		virtual void			SetPerk(BGSPerk* a_perk) override;			// 06 - { perk = a_perk; }
 		virtual BGSPerk*		GetPerk() override;							// 07 - { return perk; }
 
-		bool					RunsImmediately() const;
-		bool					ReplacesDefault() const;
+		bool	ReplacesDefault() const;
+		bool	RunsImmediately() const;
 
 
 		// members

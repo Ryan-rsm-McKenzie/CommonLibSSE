@@ -30,7 +30,7 @@ namespace RE
 		// add
 		virtual const char*	GetModelName() const;								// 04 - { return modelName.c_str(); }
 		virtual void		SetModelName(const char* a_modelName);				// 05 - { modelName = name; }
-		virtual void		Unk_06(void);										// 06 - { return 0; }
+		virtual void		Unk_06(void);										// 06 - { return 0; } - set file name?
 
 
 		// members

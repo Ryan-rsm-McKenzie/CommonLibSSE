@@ -72,7 +72,7 @@ namespace RE
 	CommandInfo* CommandInfo::GetFirstScriptCommand()
 	{
 		REL::Offset<CommandInfo*> ptr(Offset::CommandInfo::FirstScriptCommand);
-		return ptr;
+		return ptr.GetType();
 	}
 
 
@@ -91,7 +91,7 @@ namespace RE
 	CommandInfo* CommandInfo::GetFirstConsoleCommand()
 	{
 		REL::Offset<CommandInfo*> ptr(Offset::CommandInfo::FirstConsoleCommand);
-		return ptr;
+		return ptr.GetType();
 	}
 
 

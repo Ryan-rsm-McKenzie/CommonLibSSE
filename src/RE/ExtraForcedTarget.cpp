@@ -1,4 +1,4 @@
-#include "RE/Skyrim.h"
+#include "RE/ExtraForcedTarget.h"
 
 #include "skse64/GameReferences.h"
 
@@ -10,13 +10,8 @@
 namespace RE
 {
 	ExtraForcedTarget::ExtraForcedTarget() :
-		BSExtraData(),
-		handle(*g_invalidRefHandle),
-		pad14(0)
-	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraForcedTarget::Vtbl);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
-	}
+		ExtraForcedTarget(*g_invalidRefHandle)
+	{}
 
 
 	ExtraForcedTarget::ExtraForcedTarget(RefHandle a_handle) :

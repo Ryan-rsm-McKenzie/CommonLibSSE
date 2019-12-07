@@ -5,7 +5,9 @@
 #include "RE/ActorProcessManager.h"
 #include "RE/BGSAttackData.h"
 #include "RE/BGSColorForm.h"
+#include "RE/ExtraCanTalkToPlayer.h"
 #include "RE/ExtraFactionChanges.h"
+#include "RE/HighProcess.h"
 #include "RE/InventoryChanges.h"
 #include "RE/InventoryEntryData.h"
 #include "RE/MiddleProcess.h"
@@ -16,6 +18,7 @@
 #include "RE/TESFaction.h"
 #include "RE/TESNPC.h"
 #include "RE/TESRace.h"
+#include "RE/TESWorldSpace.h"
 #include "REL/Relocation.h"
 
 
@@ -29,12 +32,42 @@ namespace RE
 	}
 
 
+	void Actor::AllowBleedoutDialogue(bool a_canTalk)
+	{
+		if (a_canTalk) {
+			flags2 |= Flag2::kAllowBleedoutDialogue;
+		} else {
+			flags2 &= ~Flag2::kAllowBleedoutDialogue;
+		}
+	}
+
+
+	void Actor::AllowPCDialogue(bool a_talk)
+	{
+		auto xTalk = extraData.GetByType<ExtraCanTalkToPlayer>();
+		if (xTalk) {
+			xTalk = new ExtraCanTalkToPlayer();
+			extraData.Add(xTalk);
+		}
+
+		xTalk->canTalkToPlayer = a_talk;
+	}
+
+
 	SInt32 Actor::CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const
 	{
 		using func_t = function_type_t<decltype(&Actor::CalcEntryValue)>;
 		REL::Offset<func_t*> func(Offset::Actor::CalcEntryValue);
 		return func(this, a_entryData, a_numItems, a_multiplyValueByRemainingItems);
 	}
+
+
+	bool Actor::CanFlyHere() const
+	{
+		auto worldSpace = GetWorldspace();
+		return worldSpace && worldSpace->HasMaxHeightData();
+	}
+
 
 	void Actor::DispelWornItemEnchantments()
 	{
@@ -52,11 +85,11 @@ namespace RE
 
 	InventoryEntryData* Actor::GetAttackingWeapon()
 	{
-		if (!processManager || !processManager->unk010 || !processManager->unk010->attackData || !processManager->middleProcess) {
+		if (!processManager || !processManager->highProcess || !processManager->highProcess->attackData || !processManager->middleProcess) {
 			return 0;
 		}
 
-		auto attackData = processManager->unk010->attackData;
+		auto attackData = processManager->highProcess->attackData;
 		auto middleProcess = processManager->middleProcess;
 
 		return attackData->IsLeftAttack() ? middleProcess->leftHand : middleProcess->rightHand;
@@ -65,11 +98,11 @@ namespace RE
 
 	const InventoryEntryData* Actor::GetAttackingWeapon() const
 	{
-		if (!processManager || !processManager->unk010 || !processManager->unk010->attackData || !processManager->middleProcess) {
+		if (!processManager || !processManager->highProcess || !processManager->highProcess->attackData || !processManager->middleProcess) {
 			return 0;
 		}
 
-		auto attackData = processManager->unk010->attackData;
+		auto attackData = processManager->highProcess->attackData;
 		auto middleProcess = processManager->middleProcess;
 
 		return attackData->IsLeftAttack() ? middleProcess->leftHand : middleProcess->rightHand;

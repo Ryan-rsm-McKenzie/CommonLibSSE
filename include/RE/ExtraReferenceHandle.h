@@ -20,7 +20,7 @@ namespace RE
 
 
 		ExtraReferenceHandle();
-		ExtraReferenceHandle(RefHandle a_refHandle);
+		explicit ExtraReferenceHandle(RefHandle a_refHandle);
 		virtual ~ExtraReferenceHandle() = default;											// 00
 
 		// override (BSExtraData)

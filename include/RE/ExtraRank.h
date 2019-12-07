@@ -16,7 +16,7 @@ namespace RE
 
 
 		ExtraRank();
-		ExtraRank(UInt32 a_rank);
+		explicit ExtraRank(UInt32 a_rank);
 		virtual ~ExtraRank() = default;													// 00
 
 		// override (BSExtraData)

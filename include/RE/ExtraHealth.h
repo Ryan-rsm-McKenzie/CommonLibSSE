@@ -16,7 +16,7 @@ namespace RE
 
 
 		ExtraHealth();
-		ExtraHealth(float a_health);
+		explicit ExtraHealth(float a_health);
 		virtual ~ExtraHealth() = default;												// 00
 
 		// override (BSExtraData)

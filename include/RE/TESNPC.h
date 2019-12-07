@@ -217,7 +217,7 @@ namespace RE
 		bool			HasOverlays();
 		void			SetFaceTexture(BGSTextureSet* a_textureSet);
 		void			SetHairColor(BGSColorForm* a_hairColor);
-		void			SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_compute);
+		void			SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_fromTint);
 		void			UpdateNeck(BSFaceGenNiNode* a_faceNode);
 
 

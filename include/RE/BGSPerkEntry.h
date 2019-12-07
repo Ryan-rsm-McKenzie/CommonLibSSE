@@ -147,8 +147,8 @@ namespace RE
 		virtual void						Unk_0A(void) = 0;									// 0A
 		virtual void						Unk_0B(void) = 0;									// 0B
 
-		UInt8								GetRank() const;
-		UInt8								GetPriority() const;
+		UInt8	GetRank() const;
+		UInt8	GetPriority() const;
 
 
 		// members

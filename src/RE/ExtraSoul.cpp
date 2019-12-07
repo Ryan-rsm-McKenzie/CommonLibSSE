@@ -7,15 +7,8 @@
 namespace RE
 {
 	ExtraSoul::ExtraSoul() :
-		BSExtraData(),
-		level(SoulLevel::kNone),
-		pad11(0),
-		pad12(0),
-		pad14(0)
-	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraSoul::Vtbl);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
-	}
+		ExtraSoul(SoulLevel::kNone)
+	{}
 
 
 	ExtraSoul::ExtraSoul(SoulLevel a_level) :

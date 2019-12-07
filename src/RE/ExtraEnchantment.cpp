@@ -7,16 +7,8 @@
 namespace RE
 {
 	ExtraEnchantment::ExtraEnchantment() :
-		BSExtraData(),
-		objectEffect(0),
-		enchantmentAmount(0),
-		unk0E(0),
-		pad1B(0),
-		pad1C(0)
-	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraEnchantment::Vtbl);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
-	}
+		ExtraEnchantment(0, 0)
+	{}
 
 
 	ExtraEnchantment::ExtraEnchantment(EnchantmentItem* a_objectEffect, UInt16 a_enchantmentAmount) :

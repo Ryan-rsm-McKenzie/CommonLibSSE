@@ -7,15 +7,8 @@
 namespace RE
 {
 	ExtraHotkey::ExtraHotkey() :
-		BSExtraData(),
-		hotkey(Hotkey::kUnbound),
-		unk11(0),
-		unk12(0),
-		unk14(0)
-	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraHotkey::Vtbl);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
-	}
+		ExtraHotkey(Hotkey::kUnbound)
+	{}
 
 
 	ExtraHotkey::ExtraHotkey(Hotkey a_hotkey) :

@@ -1,5 +1,6 @@
 #include "RE/ActorProcessManager.h"
 
+#include "RE/HighProcess.h"
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 #include "SKSE/API.h"
@@ -19,9 +20,23 @@ namespace RE
 	}
 
 
+	bool ActorProcessManager::IsArrested() const
+	{
+		return highProcess && highProcess->arrested;
+	}
+
+
 	bool ActorProcessManager::IsGhost() const
 	{
 		return unk050 && (unk050->flags2 & Data050::Flag2::kGhost) != Data050::Flag2::kNone;
+	}
+
+
+	void ActorProcessManager::SetArrested(bool a_arrested)
+	{
+		if (highProcess) {
+			highProcess->arrested = a_arrested;
+		}
 	}
 
 

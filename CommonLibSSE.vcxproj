@@ -216,7 +216,9 @@
     <ClCompile Include="src\RE\DialogueData.cpp" />
     <ClCompile Include="src\RE\Effect.cpp" />
     <ClCompile Include="src\RE\ExtraAliasInstanceArray.cpp" />
+    <ClCompile Include="src\RE\ExtraAshPileRef.cpp" />
     <ClCompile Include="src\RE\ExtraCannotWear.cpp" />
+    <ClCompile Include="src\RE\ExtraCanTalkToPlayer.cpp" />
     <ClCompile Include="src\RE\ExtraCharge.cpp" />
     <ClCompile Include="src\RE\ExtraCount.cpp" />
     <ClCompile Include="src\RE\ExtraEnchantment.cpp" />
@@ -399,6 +401,7 @@
     <ClInclude Include="include\RE\BeamProjectile.h" />
     <ClInclude Include="include\RE\BGSAbilityPerkEntry.h" />
     <ClInclude Include="include\RE\BGSAddonNode.h" />
+    <ClInclude Include="include\RE\AIProcessManager.h" />
     <ClInclude Include="include\RE\BGSApparatus.h" />
     <ClInclude Include="include\RE\BGSArtObject.h" />
     <ClInclude Include="include\RE\BGSAssociationType.h" />
@@ -976,6 +979,7 @@
     <ClInclude Include="include\RE\GViewport.h" />
     <ClInclude Include="include\RE\Hazard.h" />
     <ClInclude Include="include\RE\HeldStateHandler.h" />
+    <ClInclude Include="include\RE\HighProcess.h" />
     <ClInclude Include="include\RE\hkArray.h" />
     <ClInclude Include="include\RE\hkBaseObject.h" />
     <ClInclude Include="include\RE\hkBaseTypes.h" />
@@ -1257,6 +1261,7 @@
     <ClInclude Include="include\RE\SkyEffectController.h" />
     <ClInclude Include="include\RE\SkyObject.h" />
     <ClInclude Include="include\RE\Skyrim.h" />
+    <ClInclude Include="include\RE\SkyrimScript\AttachAshPileFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\DelayFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\DropObjectFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\HandlePolicy.h" />

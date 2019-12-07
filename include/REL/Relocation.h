@@ -229,9 +229,24 @@ namespace REL
 		{}
 
 
-		operator T() const
+		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
+		std::add_lvalue_reference_t<std::remove_pointer_t<U>> operator*() const
 		{
-			return unrestricted_cast<T>(GetAddress());
+			return *GetType();
+		}
+
+
+		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
+		U operator->() const
+		{
+			return GetType();
+		}
+
+
+		template <class... Args, class U = std::decay_t<T>, typename std::enable_if_t<std::is_invocable<U, Args...>::value, int> = 0>
+		std::invoke_result_t<U, Args...> operator()(Args&&... a_args) const
+		{
+			return GetType()(std::forward<Args>(a_args)...);
 		}
 
 

@@ -15,14 +15,19 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kCanTalkToPlayer };
 
 
-		virtual ~ExtraCanTalkToPlayer();				// 00
+		ExtraCanTalkToPlayer();
+		explicit ExtraCanTalkToPlayer(bool a_canTalk);
+		virtual ~ExtraCanTalkToPlayer() = default;		// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	// 01 - { return kCanTalkToPlayer; }
 
 
 		// members
-		UInt64 unk10;	// 10
+		bool	canTalkToPlayer;	// 10
+		UInt8	pad11;				// 11
+		UInt16	pad12;				// 12
+		UInt32	pad14;				// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraCanTalkToPlayer) == 0x18);
 }

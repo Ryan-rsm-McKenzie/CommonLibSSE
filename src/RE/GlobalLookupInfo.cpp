@@ -9,6 +9,6 @@ namespace RE
 	GlobalLookupInfo* GlobalLookupInfo::GetSingleton()
 	{
 		REL::Offset<GlobalLookupInfo*> singleton(RE::Offset::GlobalLookupInfo::Singleton);
-		return singleton;
+		return singleton.GetType();
 	}
 }

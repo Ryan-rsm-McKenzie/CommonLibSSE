@@ -290,7 +290,7 @@ namespace RE
 		virtual void							PickUpItem(TESObjectREFR* a_item, UInt32 a_count, bool a_arg3 = false, bool a_playSound = true);																									// 0CC
 		virtual void							Unk_CD(void);																																														// 0CD
 		virtual void							Unk_CE(void);																																														// 0CE
-		virtual void							Unk_CF(void);																																														// 0CF
+		virtual bool							AddShout(TESShout* a_shout);																																										// 0CF
 		virtual void							Unk_D0(void);																																														// 0D0 - { return; }
 		virtual void							Unk_D1(void);																																														// 0D1
 		virtual void							Unk_D2(void);																																														// 0D2
@@ -381,7 +381,10 @@ namespace RE
 		virtual float							IncerceptActorValueChange(UInt32 a_avIndex, float a_avChangeBy);																																	// 127
 
 		bool						AddSpell(SpellItem* a_spell);
+		void						AllowBleedoutDialogue(bool a_canTalk);
+		void						AllowPCDialogue(bool a_talk);
 		SInt32						CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const;
+		bool						CanFlyHere() const;
 		void						DispelWornItemEnchantments();
 		TESNPC*						GetActorBase() const;
 		InventoryEntryData*			GetAttackingWeapon();

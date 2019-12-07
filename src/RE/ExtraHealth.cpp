@@ -7,13 +7,8 @@
 namespace RE
 {
 	ExtraHealth::ExtraHealth() :
-		BSExtraData(),
-		health(1.0),
-		pad14(0.0)
-	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraHealth::Vtbl);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
-	}
+		ExtraHealth(1.0)
+	{}
 
 
 	ExtraHealth::ExtraHealth(float a_health) :

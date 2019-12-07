@@ -32,7 +32,7 @@ namespace RE
 
 		// members
 		GFxValue		root;				// 30 - kDisplayObject - "_level0.Menu_mc"
-		ItemList*		list;				// 48
+		ItemList*		itemList;			// 48
 		ItemCard*		itemCard;			// 50
 		BottomBar*		bottomBar;			// 58
 		BSTArray<void*>	unk60;				// 60

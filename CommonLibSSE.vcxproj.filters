@@ -493,9 +493,6 @@
     <Filter Include="include\RE\Events\MenuEvent">
       <UniqueIdentifier>{9b97804e-d33e-44fe-979f-3b8b01874963}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\FileIO">
-      <UniqueIdentifier>{e94d49e5-573f-465f-8dcf-37c235cf3bfb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Inventory">
       <UniqueIdentifier>{9c902473-086f-40d9-a348-20edac18af80}</UniqueIdentifier>
     </Filter>
@@ -853,9 +850,6 @@
     <Filter Include="src\RE\BSSystem\IFormFactory">
       <UniqueIdentifier>{0171e555-3cb8-47af-974d-5f37d190fad8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\FileIO\ICellAttachDetachEventSource">
-      <UniqueIdentifier>{91e8d6b1-97d3-48bb-8f61-d650120521d7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\RE\FileIO\ICellAttachDetachEventSource">
       <UniqueIdentifier>{d3986ffa-10ac-4bae-853c-c663cc48d838}</UniqueIdentifier>
     </Filter>
@@ -1131,6 +1125,12 @@
     </Filter>
     <Filter Include="src\REL">
       <UniqueIdentifier>{da1e44f4-1c74-46b8-9b83-1f874a75ba05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FileIO">
+      <UniqueIdentifier>{e94d49e5-573f-465f-8dcf-37c235cf3bfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\FileIO\ICellAttachDetachEventSource">
+      <UniqueIdentifier>{91e8d6b1-97d3-48bb-8f61-d650120521d7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1757,6 +1757,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\NiSystem.cpp">
       <Filter>src\RE\NetImmerse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraCanTalkToPlayer.cpp">
+      <Filter>src\RE\BSExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraAshPileRef.cpp">
+      <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4912,6 +4918,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\NiSystem.h">
       <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SkyrimScript\AttachAshPileFunctor.h">
+      <Filter>include\RE\SkyrimScript\DelayFunctor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\HighProcess.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AIProcessManager.h">
+      <Filter>include\RE\Misc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

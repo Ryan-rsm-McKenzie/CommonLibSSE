@@ -17,7 +17,7 @@ namespace RE
 
 
 		ExtraSoul();
-		ExtraSoul(SoulLevel a_level);
+		explicit ExtraSoul(SoulLevel a_level);
 		virtual ~ExtraSoul() = default;													// 00
 
 		// override (BSExtraData)

@@ -17,8 +17,8 @@ namespace RE
 
 	PlayerCharacter* PlayerCharacter::GetSingleton()
 	{
-		REL::Offset<PlayerCharacter**> singleton(Offset::PlayerCharacter::Singleton);
-		return *singleton;
+		REL::Offset<NiPointer<PlayerCharacter>*> singleton(Offset::PlayerCharacter::Singleton);
+		return singleton->get();
 	}
 
 

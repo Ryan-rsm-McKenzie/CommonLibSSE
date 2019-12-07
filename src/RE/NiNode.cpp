@@ -21,7 +21,7 @@ namespace RE
 	bool NiNode::SetMotionType(UInt32 a_motionType, UInt8 a_arg2, UInt8 a_arg3, bool a_allowActivate)
 	{
 		using func_t = function_type_t<decltype(&NiNode::SetMotionType)>;
-		func_t* func = REL::Offset<func_t*>(Offset::NiNode::SetMotionType);
+		REL::Offset<func_t*> func(Offset::NiNode::SetMotionType);
 		return func(this, a_motionType, a_arg2, a_arg3, a_allowActivate);
 	}
 
@@ -29,7 +29,7 @@ namespace RE
 	NiNode* NiNode::Ctor(UInt16 a_arrBuffLen)
 	{
 		using func_t = function_type_t<decltype(&NiNode::Ctor)>;
-		func_t* func = REL::Offset<func_t*>(Offset::NiNode::Ctor);
+		REL::Offset<func_t*> func(Offset::NiNode::Ctor);
 		return func(this, a_arrBuffLen);
 	}
 }

@@ -30,7 +30,7 @@ namespace RE
 
 
 		ExtraHotkey();
-		ExtraHotkey(Hotkey a_hotkey);
+		explicit ExtraHotkey(Hotkey a_hotkey);
 		virtual ~ExtraHotkey() = default;												// 00
 
 		// override (BSExtraData)

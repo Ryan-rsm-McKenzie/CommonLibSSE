@@ -24,8 +24,9 @@ namespace RE
 
 
 		Item*	GetSelectedItem();
+		void	Update();
 		void	Update(TESObjectREFR* a_owner);
-
+		
 
 		// members
 		GPtr<GFxMovieView>	view;		// 00
@@ -36,6 +37,9 @@ namespace RE
 		UInt8				pad51;		// 51
 		UInt16				pad52;		// 52
 		UInt32				pad54;		// 54
+
+	protected:
+		void Update_Impl(TESObjectREFR* a_owner);
 	};
 	STATIC_ASSERT(sizeof(ItemList) == 0x58);
 }

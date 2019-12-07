@@ -16,7 +16,7 @@ namespace RE
 
 
 		ExtraCount();
-		ExtraCount(SInt32 a_count);
+		explicit ExtraCount(SInt32 a_count);
 		virtual ~ExtraCount() = default;												// 00
 
 		// override (BSExtraData)

@@ -13,4 +13,10 @@ namespace RE
 	{
 		return y / 4096.0;
 	}
+
+
+	bool TESWorldSpace::HasMaxHeightData() const
+	{
+		return maxHeightData != 0;
+	}
 }

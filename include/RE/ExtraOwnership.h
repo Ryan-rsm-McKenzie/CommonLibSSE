@@ -19,7 +19,7 @@ namespace RE
 
 
 		ExtraOwnership();
-		ExtraOwnership(TESForm* a_owner);
+		explicit ExtraOwnership(TESForm* a_owner);
 		virtual ~ExtraOwnership() = default;											// 00
 
 		// override (BSExtraData)

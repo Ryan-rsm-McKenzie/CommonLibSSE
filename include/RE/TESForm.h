@@ -103,7 +103,7 @@ namespace RE
 		virtual void			Unk_35(void);																														// 35 - { return 0; }
 		virtual void			Unk_36(void);																														// 36 - { return 0; } - "bool IsCompatibleFormType(FormType a_formType) const"?
 		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount);	// 37 - { return false; }
-		virtual void			SetFormID(FormID a_id, bool a_bGenerateID);																							// 38
+		virtual void			SetFormID(FormID a_id, bool a_generateID);																							// 38
 		virtual const char*		GetTypeString() const;																												// 39 - { return ""; }
 		virtual bool			Unk_3A(void);																														// 3A - { return 1; }
 

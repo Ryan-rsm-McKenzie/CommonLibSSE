@@ -15,7 +15,9 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kAshPileRef };
 
 
-		virtual ~ExtraAshPileRef();						// 00
+		ExtraAshPileRef();
+		explicit ExtraAshPileRef(RefHandle a_refHandle);
+		virtual ~ExtraAshPileRef() = default;			// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	// 01 - { return kAshPileRef; }

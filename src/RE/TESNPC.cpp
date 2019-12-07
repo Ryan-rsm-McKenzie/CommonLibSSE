@@ -132,11 +132,11 @@ namespace RE
 	}
 
 
-	void TESNPC::SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_compute)
+	void TESNPC::SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_fromTint)
 	{
 		using func_t = function_type_t<decltype(&TESNPC::SetSkinFromTint)>;
 		REL::Offset<func_t*> func(Offset::TESNPC::SetSkinFromTint);
-		return func(this, a_result, a_tintMask, a_compute);
+		return func(this, a_result, a_tintMask, a_fromTint);
 	}
 
 

@@ -7,12 +7,8 @@
 namespace RE
 {
 	ExtraOwnership::ExtraOwnership() :
-		BSExtraData(),
-		owner(0)
-	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraOwnership::Vtbl);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
-	}
+		ExtraOwnership(0)
+	{}
 
 
 	ExtraOwnership::ExtraOwnership(TESForm* a_owner) :
