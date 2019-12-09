@@ -79,47 +79,43 @@ namespace RE
 	}
 
 
-	bool BaseExtraList::HasType(UInt32 a_type) const
-	{
-		BSReadLockGuard locker(_lock);
-		return _presence ? _presence->HasType(a_type) : false;
-	}
-
-
 	bool BaseExtraList::HasType(ExtraDataType a_type) const
 	{
-		return HasType(static_cast<UInt32>(a_type));
+		BSReadLockGuard locker(_lock);
+		return _presence ? _presence->HasType(static_cast<UInt32>(a_type)) : false;
 	}
 
 
-	BSExtraData* BaseExtraList::GetByType(UInt32 a_type) const
+	BSExtraData* BaseExtraList::GetByType(ExtraDataType a_type)
+	{
+		const BaseExtraList* thisPtr = this;
+		auto xData = thisPtr->GetByType(a_type);
+		return const_cast<BSExtraData*>(xData);
+	}
+
+
+	const BSExtraData* BaseExtraList::GetByType(ExtraDataType a_type) const
 	{
 		BSReadLockGuard locker(_lock);
+
 		if (!HasType(a_type)) {
 			return 0;
 		}
 
-		BSExtraData* result = 0;
-
-		for (auto cur = _data; cur; cur = cur->next) {
-			if (to_underlying(cur->GetType()) == a_type) {
-				result = cur;
-				break;
+		for (auto iter = _data; iter; iter = iter->next) {
+			if (iter->GetType() == a_type) {
+				return iter;
 			}
 		}
 
-		return result;
+		return 0;
 	}
 
 
-	BSExtraData* BaseExtraList::GetByType(ExtraDataType a_type) const
+	bool BaseExtraList::Remove(ExtraDataType a_type, BSExtraData* a_toRemove)
 	{
-		return GetByType(static_cast<UInt32>(a_type));
-	}
+		BSWriteLockGuard locker(_lock);
 
-
-	bool BaseExtraList::Remove(UInt8 a_type, BSExtraData* a_toRemove)
-	{
 		if (!a_toRemove) {
 			return false;
 		}
@@ -130,9 +126,9 @@ namespace RE
 			_data = _data->next;
 			removed = true;
 		} else {
-			for (auto traverse = _data; traverse; traverse = traverse->next) {
-				if (traverse->next == a_toRemove) {
-					traverse->next = a_toRemove->next;
+			for (auto iter = _data; iter; iter = iter->next) {
+				if (iter->next == a_toRemove) {
+					iter->next = a_toRemove->next;
 					removed = true;
 					break;
 				}
@@ -143,13 +139,40 @@ namespace RE
 			MarkType(a_type, true);
 		}
 
-		return true;
+		return removed;
 	}
 
 
-	bool BaseExtraList::Remove(ExtraDataType a_type, BSExtraData* a_toRemove)
+	bool BaseExtraList::RemoveByType(ExtraDataType a_type)
 	{
-		return Remove(static_cast<UInt8>(a_type), a_toRemove);
+		BSWriteLockGuard locker(_lock);
+
+		if (!_data) {
+			return false;
+		}
+
+		bool removed = false;
+
+		while (_data->GetType() == a_type) {
+			auto tmp = _data;
+			_data = _data->next;
+			delete tmp;
+			removed = true;
+		}
+
+		auto prev = _data;
+		for (auto cur = _data->next; cur; cur = cur->next) {
+			if (cur->GetType() == a_type) {
+				prev->next = cur->next;
+				delete cur;
+				cur = prev;
+				removed = true;
+			}
+			prev = cur;
+		}
+
+		MarkType(a_type, true);
+		return removed;
 	}
 
 

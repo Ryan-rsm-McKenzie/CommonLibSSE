@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSFixedString.h"
+#include "RE/BSIntrusiveRefCounted.h"
 #include "RE/BSString.h"
 #include "RE/BSTList.h"
 #include "RE/TESMemoryManager.h"
@@ -17,7 +18,7 @@ namespace RE
 	class TESTopicInfo;
 
 
-	class DialogueData
+	class DialogueData : public BSIntrusiveRefCounted
 	{
 	public:
 		struct ResponseData
@@ -65,7 +66,6 @@ namespace RE
 
 
 		// members
-		UInt32								unk00;				// 00
 		UInt32								pad04;				// 04
 		BSSimpleList<ResponseData*>			responses;			// 08
 		BSSimpleList<ResponseData*>::Node*	currentResponse;	// 18

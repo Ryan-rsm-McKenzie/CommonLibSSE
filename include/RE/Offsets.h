@@ -58,7 +58,14 @@ namespace RE
 		}
 
 
-		namespace ActorProcessManager
+		namespace ActorValueOwner
+		{
+			// IndirectSig: E8 ? ? ? ? F3 44 0F 2C C0
+			constexpr std::uintptr_t GetPlayerActorValueCurrent = 0x003E5250;	// 1_5_97
+		}
+
+
+		namespace AIProcess
 		{
 			// IndirectSig: E8 ? ? ? ? 0F 28 C7 0F 28 7C 24 ?
 			constexpr std::uintptr_t SetBaseScale = 0x0065C880;		// 1_5_97
@@ -69,10 +76,12 @@ namespace RE
 		}
 
 
-		namespace ActorValueOwner
+		namespace AIProcessManager
 		{
-			// IndirectSig: E8 ? ? ? ? F3 44 0F 2C C0
-			constexpr std::uintptr_t GetPlayerActorValueCurrent = 0x003E5250;	// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 48 8B 13 48 8B CB FF 92 ? ? ? ? 33 D2
+			constexpr std::uintptr_t SetCombatAlarmState = 0x006D9490;	// 1_5_97
+			// 4C 8B F9 48 89 0D ? ? ? ?
+			constexpr std::uintptr_t Singleton = 0x01EBEAD0;			// 1_5_97
 		}
 
 

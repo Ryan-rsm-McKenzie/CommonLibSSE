@@ -18,7 +18,7 @@ namespace RE
 		inline static const void* RTTI = RTTI_TESForm;
 
 
-		enum { kTypeID = FormType::None };	// special-case
+		enum { kTypeID = FormType::None };
 
 
 		struct RecordFlags

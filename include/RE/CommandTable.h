@@ -162,7 +162,7 @@ namespace RE
 
 		using FnExecute = bool(const SCRIPT_PARAMETER* a_paramInfo, ScriptData* a_scriptData, TESObjectREFR* a_thisObj, TESObjectREFR* a_containingObj, Script* a_scriptObj, ScriptLocals* a_locals, double& a_result, UInt32& a_opcodeOffsetPtr);
 		using FnParse = bool(UInt32 a_numParams, const SCRIPT_PARAMETER* a_paramInfo, ScriptLineBuffer* a_lineBuf, ScriptBuffer* a_scriptBuf);
-		using FnEval = bool(TESObjectREFR* a_thisObj, void* a_arg1, void* a_arg2, double& a_result);
+		using FnEval = bool(TESObjectREFR* a_thisObj, void* a_arg2, void* a_arg3, double& a_result);
 
 
 		static CommandInfo*	GetFirstScriptCommand();

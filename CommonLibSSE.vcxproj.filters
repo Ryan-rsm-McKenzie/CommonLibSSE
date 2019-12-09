@@ -1132,6 +1132,18 @@
     <Filter Include="include\RE\FileIO\ICellAttachDetachEventSource">
       <UniqueIdentifier>{91e8d6b1-97d3-48bb-8f61-d650120521d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\FormComponents\Components\SyncQueueObj">
+      <UniqueIdentifier>{23b3c302-f794-4c50-b894-3d19935c644d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\Components">
+      <UniqueIdentifier>{7ddf9985-854a-4cef-8ff0-446f50bff18d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\Components\BSAttachTechniques">
+      <UniqueIdentifier>{0314990e-6b3b-488b-9769-79e101c04723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\Components\BSFaceGenKeyframe">
+      <UniqueIdentifier>{3a84230d-636f-467e-bad3-f4079a30e929}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1500,9 +1512,6 @@
     <ClCompile Include="src\RE\TESSoulGem.cpp">
       <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\ActorProcessManager.cpp">
-      <Filter>src\RE\FormComponents\Components</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\ActorState.cpp">
       <Filter>src\RE\Pathfinding\IMovementInterface\IMovementState</Filter>
     </ClCompile>
@@ -1625,9 +1634,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\TESHitEvent.cpp">
       <Filter>src\RE\Events\ScriptEvent</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BGSAttackData.cpp">
-      <Filter>src\RE\AI</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\DialogueData.cpp">
       <Filter>src\RE\FormComponents\Components</Filter>
@@ -1763,6 +1769,18 @@
     </ClCompile>
     <ClCompile Include="src\RE\ExtraAshPileRef.cpp">
       <Filter>src\RE\BSExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\AIProcess.cpp">
+      <Filter>src\RE\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSAttackData.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\AIProcessManager.cpp">
+      <Filter>src\RE\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSFaceGenAnimationData.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiExtraData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1957,12 +1975,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\BGSAttackDataForm.h">
       <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSAttackDataMap.h">
-      <Filter>include\RE\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSAttackData.h">
-      <Filter>include\RE\AI</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ImageSpaceEffect.h">
       <Filter>include\RE\BSShader</Filter>
@@ -3710,12 +3722,6 @@
     <ClInclude Include="include\RE\ProcessLists\GetActorsFilter.h">
       <Filter>include\RE\FormComponents\Components\GetActorsFilter</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\MiddleProcess.h">
-      <Filter>include\RE\FormComponents\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ActorProcessManager.h">
-      <Filter>include\RE\FormComponents\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ActorMover.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
@@ -4922,11 +4928,44 @@
     <ClInclude Include="include\RE\SkyrimScript\AttachAshPileFunctor.h">
       <Filter>include\RE\SkyrimScript\DelayFunctor</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\AIProcess.h">
+      <Filter>include\RE\AI</Filter>
+    </ClInclude>
     <ClInclude Include="include\RE\HighProcess.h">
-      <Filter>include\RE\FormComponents\Components</Filter>
+      <Filter>include\RE\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MiddleProcess.h">
+      <Filter>include\RE\AI</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\AIProcessManager.h">
-      <Filter>include\RE\Misc</Filter>
+      <Filter>include\RE\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAttackData.h">
+      <Filter>include\RE\NetImmerse\NiRefObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAttackDataMap.h">
+      <Filter>include\RE\NetImmerse\NiRefObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SyncQueueObj.h">
+      <Filter>include\RE\FormComponents\Components\SyncQueueObj</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\RefrInteraction.h">
+      <Filter>include\RE\FormComponents\Components\SyncQueueObj</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ModelReferenceEffect.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSAttachTechniques\AttachTechniqueInput.h">
+      <Filter>include\RE\NetImmerse\Components\BSAttachTechniques</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSFaceGenAnimationData.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSFaceGenKeyframe.h">
+      <Filter>include\RE\NetImmerse\Components\BSFaceGenKeyframe</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSFaceGenKeyframeMultiple.h">
+      <Filter>include\RE\NetImmerse\Components\BSFaceGenKeyframe</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

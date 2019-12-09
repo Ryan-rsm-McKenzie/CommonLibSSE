@@ -8,6 +8,7 @@
 #include "RE/BSTArray.h"
 #include "RE/BSTEvent.h"
 #include "RE/BSTList.h"
+#include "RE/BSTSmartPointer.h"
 #include "RE/FormTypes.h"
 #include "RE/IPostAnimationChannelUpdateFunctor.h"
 #include "RE/MagicTarget.h"
@@ -19,7 +20,7 @@
 namespace RE
 {
 	class ActorMover;
-	class ActorProcessManager;
+	class AIProcess;
 	class BaseExtraList;
 	class bhkCharacterMoveFinishEvent;
 	class BSTransformDeltaEvent;
@@ -385,6 +386,9 @@ namespace RE
 		void						AllowPCDialogue(bool a_talk);
 		SInt32						CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const;
 		bool						CanFlyHere() const;
+		void						ClearArrested();
+		void						ClearExpressionOverride();
+		void						ClearExtraArrows();
 		void						DispelWornItemEnchantments();
 		TESNPC*						GetActorBase() const;
 		InventoryEntryData*			GetAttackingWeapon();
@@ -413,7 +417,7 @@ namespace RE
 		bool						IsSummoned() const;
 		bool						IsTrespassing() const;
 		void						QueueNiNodeUpdate(bool a_updateWeight);
-		void						ResetAI(bool a_arg1, bool a_arg2);
+		void						ResetAI(UInt32 a_arg1 = 0, UInt32 a_arg2 = 0);
 		void						SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, SInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);
 		void						SetRace(TESRace* a_race, bool a_isPlayer);
 		void						UpdateArmorAbility(TESForm* a_armor, BaseExtraList* a_extraData);
@@ -424,64 +428,64 @@ namespace RE
 
 
 		// members
-		Flag1						flags1;										// 0E0
-		float						unk0E4;										// 0E4
-		UInt32						unk0E8;										// 0E8
-		UInt32						pad0EC;										// 0EC
-		ActorProcessManager*		processManager;								// 0F0
-		RefHandle					dialogueTarget;								// 0F8
-		RefHandle					combatTarget;								// 0FC
-		RefHandle					killer;										// 100
-		UInt32						unk104;										// 104
-		float						unk108;										// 108
-		UInt32						unk10C;										// 10C
-		UInt32						unk110;										// 110
-		UInt32						unk114;										// 114
-		UInt32						unk118;										// 118
-		UInt32						unk11C;										// 11C
-		NiPoint3					startingPos;								// 120
-		float						startingRotZ;								// 12C
-		TESObjectCELL*				startingCell;								// 130
-		BGSLocation*				startingLocation;							// 138
-		ActorMover*					mover;										// 140
-		MovementControllerNPC*		unk148;										// 148
-		void*						unk150;										// 150
-		void*						unk158;										// 158
-		UInt64						unk160;										// 160
-		float						unk168;										// 168
-		UInt32						unk16C;										// 16C
-		UInt32						unk170;										// 170
-		UInt32						unk174;										// 174
-		UInt32						unk178;										// 178
-		UInt32						unk17C;										// 17C
-		UInt64						unk180;										// 180
-		BSTSmallArray<SpellItem*>	addedSpells;								// 188
-		MagicCaster*				magicCaster[SlotTypes::kNumSlots];			// 1A0
-		SpellItem*					equippingMagicItems[SlotTypes::kNumSlots];	// 1C0
-		TESForm*					equippedShout;								// 1E0
-		UInt32						unk1E8;										// 1E8
-		UInt32						pad1EC;										// 1EC
-		TESRace*					race;										// 1F0
-		float						unk1F8;										// 1F8
-		Flag2						flags2;										// 1FC
-		ActorValueMap				avMap;										// 200
-		UInt64						unk220;										// 220
-		ActorValueModifiers			avHealth;									// 228
-		ActorValueModifiers			avMagicka;									// 234
-		ActorValueModifiers			avStamina;									// 240
-		ActorValueModifiers			avVoicePoints;								// 24C
-		float						unk258;										// 258
-		UInt32						unk25C;										// 25C
-		Biped*						smallBiped;									// 260
-		float						unk268;										// 268 - related to armor rating
-		float						unk26C;										// 26C - related to armor rating
-		UInt16						unk270;										// 270
-		UInt8						unk272;										// 272
-		UInt8						unk273;										// 273
-		UInt32						unk274;										// 274
-		UInt64						unk278;										// 278
-		UInt64						unk280;										// 280
-		CRITICAL_SECTION			unk288;										// 288
+		Flag1									flags1;										// 0E0
+		float									unk0E4;										// 0E4
+		UInt32									unk0E8;										// 0E8
+		UInt32									pad0EC;										// 0EC
+		AIProcess*								aiProcess;									// 0F0
+		RefHandle								dialogueTarget;								// 0F8
+		RefHandle								combatTarget;								// 0FC
+		RefHandle								killer;										// 100
+		UInt32									unk104;										// 104
+		float									unk108;										// 108
+		UInt32									unk10C;										// 10C
+		UInt32									unk110;										// 110
+		UInt32									unk114;										// 114
+		UInt32									unk118;										// 118
+		UInt32									unk11C;										// 11C
+		NiPoint3								startingPos;								// 120
+		float									startingRotZ;								// 12C
+		TESObjectCELL*							startingCell;								// 130
+		BGSLocation*							startingLocation;							// 138
+		ActorMover*								mover;										// 140
+		BSTSmartPointer<MovementControllerNPC>	unk148;										// 148
+		void*									unk150;										// 150
+		void*									unk158;										// 158
+		UInt64									unk160;										// 160
+		float									unk168;										// 168
+		UInt32									unk16C;										// 16C
+		UInt32									unk170;										// 170
+		UInt32									unk174;										// 174
+		UInt32									unk178;										// 178
+		UInt32									unk17C;										// 17C
+		UInt64									unk180;										// 180
+		BSTSmallArray<SpellItem*>				addedSpells;								// 188
+		MagicCaster*							magicCaster[SlotTypes::kNumSlots];			// 1A0
+		SpellItem*								equippingMagicItems[SlotTypes::kNumSlots];	// 1C0
+		TESForm*								equippedShout;								// 1E0
+		UInt32									unk1E8;										// 1E8
+		UInt32									pad1EC;										// 1EC
+		TESRace*								race;										// 1F0
+		float									unk1F8;										// 1F8
+		Flag2									flags2;										// 1FC
+		ActorValueMap							avMap;										// 200
+		UInt64									unk220;										// 220
+		ActorValueModifiers						avHealth;									// 228
+		ActorValueModifiers						avMagicka;									// 234
+		ActorValueModifiers						avStamina;									// 240
+		ActorValueModifiers						avVoicePoints;								// 24C
+		float									unk258;										// 258
+		UInt32									unk25C;										// 25C
+		BSTSmartPointer<Biped>					smallBiped;									// 260
+		float									unk268;										// 268 - related to armor rating
+		float									unk26C;										// 26C - related to armor rating
+		UInt16									unk270;										// 270
+		UInt8									unk272;										// 272
+		UInt8									unk273;										// 273
+		UInt32									unk274;										// 274
+		UInt64									unk278;										// 278
+		UInt64									unk280;										// 280
+		CRITICAL_SECTION						unk288;										// 288
 	};
 	STATIC_ASSERT(offsetof(Actor, addedSpells) == 0x188);
 	STATIC_ASSERT(sizeof(Actor) == 0x2B0);

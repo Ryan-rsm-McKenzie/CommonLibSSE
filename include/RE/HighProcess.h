@@ -6,6 +6,7 @@
 #include "RE/BSTList.h"
 #include "RE/BSTSmartPointer.h"
 #include "RE/NiSmartPointer.h"
+#include "RE/SoundData.h"
 
 
 namespace RE
@@ -13,6 +14,7 @@ namespace RE
 	class ActorKnowledge;
 	class BGSAttackData;
 	class DetectionListener;
+	class DialogueData;
 	class NiRefObject;
 	class RunActionAnimationLoadedCallback;
 
@@ -79,43 +81,6 @@ namespace RE
 			Data208*	next;	// 30
 		};
 		STATIC_ASSERT(sizeof(Data208) == 0x38);
-
-
-		struct Data2FC
-		{
-			UInt32	unk0;	// 0
-			UInt32	unk4;	// 4
-			UInt32	unk8;	// 8
-		};
-		STATIC_ASSERT(sizeof(Data2FC) == 0xC);
-
-
-		struct Data360 : public BSIntrusiveRefCounted
-		{
-			struct Data
-			{
-				void*			unk00;	// 00
-				UInt64			unk08;	// 08
-				UInt64			unk10;	// 10
-				BSFixedString	unk18;	// 18
-				UInt64			unk20;	// 20
-				UInt64			unk28;	// 28
-				UInt64			unk30;	// 30
-				UInt64			unk38;	// 38
-			};
-			STATIC_ASSERT(sizeof(Data) == 0x40);
-
-
-			UInt32				unk04;	// 00
-			BSSimpleList<Data*>	unk08;	// 08
-			UInt64				unk18;	// 18
-			UInt64				unk20;	// 20
-			UInt64				unk28;	// 28
-			UInt64				unk30;	// 30
-			UInt64				unk38;	// 38
-			void*				unk40;	// 40
-		};
-		STATIC_ASSERT(sizeof(Data360) == 0x48);
 
 
 		struct Data3C8
@@ -245,9 +210,10 @@ namespace RE
 		UInt64												unk2D8;				// 2D8
 		UInt64												unk2E0;				// 2E0
 		UInt64												unk2E8;				// 2E8
-		UInt64												unk2F0;				// 2F0
+		UInt32												unk2F0;				// 2F0
+		RefHandle											unk2F4;				// 2F4
 		UInt32												unk2F8;				// 2F8
-		Data2FC												unk2FC[2];			// 2FC
+		SoundData											unk2FC[2];			// 2FC
 		UInt32												unk314;				// 314
 		UInt32												unk318;				// 318
 		float												unk31C;				// 31C
@@ -260,8 +226,9 @@ namespace RE
 		UInt64												unk348;				// 348
 		UInt64												unk350;				// 350
 		UInt64												unk358;				// 358
-		BSTSmartPointer<Data360>							unk360;				// 360
-		UInt64												unk368;				// 368
+		BSTSmartPointer<DialogueData>						currentDialogue;	// 360
+		UInt32												unk368;				// 368
+		RefHandle											unk36C;				// 36C
 		void*												unk370;				// 370 - facegen preprocessed head?
 		UInt64												unk378;				// 378
 		NiPointer<NiRefObject>								unk380;				// 380

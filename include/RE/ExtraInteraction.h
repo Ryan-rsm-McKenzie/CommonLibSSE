@@ -1,11 +1,15 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSTSmartPointer.h"
 #include "RE/ExtraDataTypes.h"
 
 
 namespace RE
 {
+	class RefrInteraction;
+
+
 	class ExtraInteraction : public BSExtraData
 	{
 	public:
@@ -23,7 +27,7 @@ namespace RE
 
 
 		// members
-		void* unk10;	// 10
+		BSTSmartPointer<RefrInteraction> interaction;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraInteraction) == 0x18);
 }

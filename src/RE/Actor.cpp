@@ -2,9 +2,11 @@
 
 #include "skse64/GameReferences.h"
 
-#include "RE/ActorProcessManager.h"
+#include "RE/AIProcess.h"
+#include "RE/AIProcessManager.h"
 #include "RE/BGSAttackData.h"
 #include "RE/BGSColorForm.h"
+#include "RE/BSFaceGenAnimationData.h"
 #include "RE/ExtraCanTalkToPlayer.h"
 #include "RE/ExtraFactionChanges.h"
 #include "RE/HighProcess.h"
@@ -69,6 +71,32 @@ namespace RE
 	}
 
 
+	void Actor::ClearArrested()
+	{
+		if (aiProcess && aiProcess->IsArrested()) {
+			aiProcess->SetArrested(false);
+			ResetAI(0, 0);
+			auto procManager = AIProcessManager::GetSingleton();
+			procManager->SetCombatAlarmState(this, true);
+		}
+	}
+
+
+	void Actor::ClearExpressionOverride()
+	{
+		auto faceGen = GetFaceGenAnimationData();
+		if (faceGen) {
+			faceGen->ClearExpressionOverride();
+		}
+	}
+
+
+	void Actor::ClearExtraArrows()
+	{
+		extraData.RemoveByType(ExtraDataType::kAttachedArrows3D);
+	}
+
+
 	void Actor::DispelWornItemEnchantments()
 	{
 		using func_t = function_type_t<decltype(&Actor::DispelWornItemEnchantments)>;
@@ -85,12 +113,12 @@ namespace RE
 
 	InventoryEntryData* Actor::GetAttackingWeapon()
 	{
-		if (!processManager || !processManager->highProcess || !processManager->highProcess->attackData || !processManager->middleProcess) {
+		if (!aiProcess || !aiProcess->highProcess || !aiProcess->highProcess->attackData || !aiProcess->middleProcess) {
 			return 0;
 		}
 
-		auto attackData = processManager->highProcess->attackData;
-		auto middleProcess = processManager->middleProcess;
+		auto attackData = aiProcess->highProcess->attackData;
+		auto middleProcess = aiProcess->middleProcess;
 
 		return attackData->IsLeftAttack() ? middleProcess->leftHand : middleProcess->rightHand;
 	}
@@ -98,12 +126,12 @@ namespace RE
 
 	const InventoryEntryData* Actor::GetAttackingWeapon() const
 	{
-		if (!processManager || !processManager->highProcess || !processManager->highProcess->attackData || !processManager->middleProcess) {
+		if (!aiProcess || !aiProcess->highProcess || !aiProcess->highProcess->attackData || !aiProcess->middleProcess) {
 			return 0;
 		}
 
-		auto attackData = processManager->highProcess->attackData;
-		auto middleProcess = processManager->middleProcess;
+		auto attackData = aiProcess->highProcess->attackData;
+		auto middleProcess = aiProcess->middleProcess;
 
 		return attackData->IsLeftAttack() ? middleProcess->leftHand : middleProcess->rightHand;
 	}
@@ -111,22 +139,22 @@ namespace RE
 
 	InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand)
 	{
-		if (!processManager || !processManager->middleProcess) {
+		if (!aiProcess || !aiProcess->middleProcess) {
 			return 0;
 		}
 
-		auto middleProcess = processManager->middleProcess;
+		auto middleProcess = aiProcess->middleProcess;
 		return a_leftHand ? middleProcess->leftHand : middleProcess->rightHand;
 	}
 
 
 	const InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand) const
 	{
-		if (!processManager || !processManager->middleProcess) {
+		if (!aiProcess || !aiProcess->middleProcess) {
 			return 0;
 		}
 
-		auto middleProcess = processManager->middleProcess;
+		auto middleProcess = aiProcess->middleProcess;
 		return a_leftHand ? middleProcess->leftHand : middleProcess->rightHand;
 	}
 
@@ -141,11 +169,11 @@ namespace RE
 
 	TESForm* Actor::GetEquippedObject(bool a_leftHand) const
 	{
-		if (processManager) {
+		if (aiProcess) {
 			if (a_leftHand) {
-				return processManager->GetEquippedLeftHand();
+				return aiProcess->GetEquippedLeftHand();
 			} else {
-				return processManager->GetEquippedRightHand();
+				return aiProcess->GetEquippedRightHand();
 			}
 		} else {
 			return 0;
@@ -323,7 +351,7 @@ namespace RE
 	}
 
 
-	void Actor::ResetAI(bool a_arg1, bool a_arg2)
+	void Actor::ResetAI(UInt32 a_arg1, UInt32 a_arg2)
 	{
 		using func_t = function_type_t<decltype(&Actor::ResetAI)>;
 		REL::Offset<func_t*> func(Offset::Actor::ResetAI);

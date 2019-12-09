@@ -140,17 +140,18 @@ namespace RE
 		const_iterator	cend() const;
 		const_iterator	end() const;
 
-		BSExtraData*			GetByType(UInt32 a_type) const;
-		BSExtraData*			GetByType(ExtraDataType a_type) const;
-		template <class T> T*	GetByType() const;
+		BSExtraData*				GetByType(ExtraDataType a_type);
+		const BSExtraData*			GetByType(ExtraDataType a_type) const;
+		template <class T> T*		GetByType();
+		template <class T> const T*	GetByType() const;
 
-		bool					HasType(UInt32 a_type) const;
 		bool					HasType(ExtraDataType a_type) const;
 		template <class T> bool	HasType() const;
 
-		bool					Remove(UInt8 a_type, BSExtraData* a_toRemove);
 		bool					Remove(ExtraDataType a_type, BSExtraData* a_toRemove);
 		template <class T> bool	Remove(T* a_toRemove);
+
+		bool RemoveByType(ExtraDataType a_type);
 
 		BSExtraData*			Add(BSExtraData* a_toAdd);
 		const char*				GenerateName(TESForm* a_form);
@@ -190,22 +191,29 @@ namespace RE
 
 
 	template <class T>
-	inline T* BaseExtraList::GetByType() const
+	inline T* BaseExtraList::GetByType()
 	{
-		return static_cast<T*>(GetByType(T::kExtraTypeID));
+		return static_cast<T*>(GetByType(static_cast<ExtraDataType>(T::kExtraTypeID)));
+	}
+
+
+	template <class T>
+	inline const T* BaseExtraList::GetByType() const
+	{
+		return static_cast<const T*>(GetByType(static_cast<ExtraDataType>(T::kExtraTypeID)));
 	}
 
 
 	template <class T>
 	inline bool BaseExtraList::HasType() const
 	{
-		return HasType(T::kExtraTypeID);
+		return HasType(static_cast<ExtraDataType>(T::kExtraTypeID));
 	}
 
 
 	template <class T>
 	inline bool BaseExtraList::Remove(T* a_toRemove)
 	{
-		return Remove(T::kExtraTypeID, a_toRemove);
+		return Remove(static_cast<ExtraDataType>(T::kExtraTypeID), a_toRemove);
 	}
 }

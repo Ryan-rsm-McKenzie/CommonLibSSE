@@ -165,10 +165,11 @@
     <ClCompile Include="src\REL\Relocation.cpp" />
     <ClCompile Include="src\RE\ActiveEffect.cpp" />
     <ClCompile Include="src\RE\Actor.cpp" />
-    <ClCompile Include="src\RE\ActorProcessManager.cpp" />
+    <ClCompile Include="src\RE\AIProcess.cpp" />
     <ClCompile Include="src\RE\ActorState.cpp" />
     <ClCompile Include="src\RE\ActorValueOwner.cpp" />
     <ClCompile Include="src\RE\AddCallbackVisitor.cpp" />
+    <ClCompile Include="src\RE\AIProcessManager.cpp" />
     <ClCompile Include="src\RE\BaseExtraList.cpp" />
     <ClCompile Include="src\RE\BGSAttackData.cpp" />
     <ClCompile Include="src\RE\BGSBaseAlias.cpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="src\RE\BGSPerkEntry.cpp" />
     <ClCompile Include="src\RE\BGSSaveLoadManager.cpp" />
     <ClCompile Include="src\RE\BSAudioManager.cpp" />
+    <ClCompile Include="src\RE\BSFaceGenAnimationData.cpp" />
     <ClCompile Include="src\RE\BSGlobalStringTable.cpp" />
     <ClCompile Include="src\RE\BSHandleRefObject.cpp" />
     <ClCompile Include="src\RE\BSIMusicType.cpp" />
@@ -550,12 +552,16 @@
     <ClInclude Include="include\RE\BSAnimationGraphChannel.h" />
     <ClInclude Include="include\RE\BSAnimationGraphEvent.h" />
     <ClInclude Include="include\RE\BSAnimationGraphManager.h" />
+    <ClInclude Include="include\RE\BSAttachTechniques\AttachTechniqueInput.h" />
     <ClInclude Include="include\RE\BSAudioManager.h" />
     <ClInclude Include="include\RE\BSAudioManagerThread.h" />
     <ClInclude Include="include\RE\BSBound.h" />
     <ClInclude Include="include\RE\BSCoreTypes.h" />
     <ClInclude Include="include\RE\BSCullingProcess.h" />
     <ClInclude Include="include\RE\BSExtraData.h" />
+    <ClInclude Include="include\RE\BSFaceGenAnimationData.h" />
+    <ClInclude Include="include\RE\BSFaceGenKeyframe.h" />
+    <ClInclude Include="include\RE\BSFaceGenKeyframeMultiple.h" />
     <ClInclude Include="include\RE\BSFaceGenNiNode.h" />
     <ClInclude Include="include\RE\BSFadeNode.h" />
     <ClInclude Include="include\RE\BSFixedString.h" />
@@ -913,7 +919,7 @@
     <ClInclude Include="include\RE\GFxMovieDef.h" />
     <ClInclude Include="include\RE\GFxMovieView.h" />
     <ClInclude Include="include\RE\Actor.h" />
-    <ClInclude Include="include\RE\ActorProcessManager.h" />
+    <ClInclude Include="include\RE\AIProcess.h" />
     <ClInclude Include="include\RE\ActorState.h" />
     <ClInclude Include="include\RE\BGSEntryPointFunctionData.h" />
     <ClInclude Include="include\RE\BGSEntryPointFunctionDataActivateChoice.h" />
@@ -1132,6 +1138,7 @@
     <ClInclude Include="include\RE\MiddleProcess.h" />
     <ClInclude Include="include\RE\MissileProjectile.h" />
     <ClInclude Include="include\RE\MistMenu.h" />
+    <ClInclude Include="include\RE\ModelReferenceEffect.h" />
     <ClInclude Include="include\RE\Moon.h" />
     <ClInclude Include="include\RE\MovementControllerAI.h" />
     <ClInclude Include="include\RE\MovementControllerNPC.h" />
@@ -1211,6 +1218,7 @@
     <ClInclude Include="include\RE\ReferenceEffect.h" />
     <ClInclude Include="include\RE\ReferenceEffectController.h" />
     <ClInclude Include="include\RE\GMatrix2D.h" />
+    <ClInclude Include="include\RE\RefrInteraction.h" />
     <ClInclude Include="include\RE\RegSettingCollection.h" />
     <ClInclude Include="include\RE\RemoveCallbackVisitor.h" />
     <ClInclude Include="include\RE\RTTI.h" />
@@ -1291,6 +1299,7 @@
     <ClInclude Include="include\RE\StatsNode.h" />
     <ClInclude Include="include\RE\SummonCreatureEffect.h" />
     <ClInclude Include="include\RE\Sun.h" />
+    <ClInclude Include="include\RE\SyncQueueObj.h" />
     <ClInclude Include="include\RE\TES.h" />
     <ClInclude Include="include\RE\TESActiveEffectApplyRemoveEvent.h" />
     <ClInclude Include="include\RE\TESActorBase.h" />

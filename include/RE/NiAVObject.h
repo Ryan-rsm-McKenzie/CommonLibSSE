@@ -96,7 +96,7 @@ namespace RE
 		float					unkE8;				// 0E8
 		float					unkEC;				// 0EC
 		float					unkF0;				// 0F0
-		UInt32					flags;				// 0F4 - bitfield
+		Flag					flags;				// 0F4
 		float					unkF8;				// 0F8
 		UInt32					unkFC;				// 0FC
 		float					unk100;				// 100

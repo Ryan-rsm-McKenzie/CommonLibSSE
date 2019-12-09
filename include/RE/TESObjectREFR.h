@@ -3,6 +3,7 @@
 #include "RE/BaseExtraList.h"
 #include "RE/BSFixedString.h"
 #include "RE/BSHandleRefObject.h"
+#include "BSTArray.h"
 #include "RE/BSTEvent.h"
 #include "RE/BSTSmartPointer.h"
 #include "RE/FormTypes.h"
@@ -124,11 +125,22 @@ namespace RE
 
 		struct LoadedState
 		{
-			UInt8	todo[0x68];	// 00
-			NiNode*	node;		// 68
-			// ... probably more
+			BSTSmallArray<void*>	unk00;	// 00
+			UInt64					unk18;	// 18
+			UInt64					unk20;	// 20
+			UInt64					unk28;	// 28
+			UInt64					unk30;	// 30 - AIProcess::Data0B8
+			UInt64					unk38;	// 38
+			UInt64					unk40;	// 40
+			UInt64					unk48;	// 48
+			UInt64					unk50;	// 50
+			UInt64					unk58;	// 58
+			UInt64					unk60;	// 60
+			NiPointer<NiNode>		node;	// 68
+			UInt64					unk70;	// 70 - smart ptr
 		};
 		STATIC_ASSERT(offsetof(LoadedState, node) == 0x68);
+		STATIC_ASSERT(sizeof(LoadedState) == 0x78);
 
 
 		virtual ~TESObjectREFR();																																																	// 00

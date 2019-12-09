@@ -13,7 +13,7 @@ namespace RE
 	class TESForm;
 
 
-	class ActorProcessManager
+	class AIProcess
 	{
 	public:
 		struct Hands
@@ -149,5 +149,5 @@ namespace RE
 	protected:
 		void UpdateEquipment_Internal(Actor* a_actor);
 	};
-	STATIC_ASSERT(sizeof(ActorProcessManager) == 0x140);
+	STATIC_ASSERT(sizeof(AIProcess) == 0x140);
 }
