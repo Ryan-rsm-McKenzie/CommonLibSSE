@@ -107,6 +107,12 @@ namespace RE
 	}
 
 
+	bool TESFaction::HasStealMultiplier() const
+	{
+		return crimeValues.stealMultiplier > 0.0;
+	}
+
+
 	bool TESFaction::HiddenFromNPC() const
 	{
 		return (flags & Flag::kHiddenFromNPC) != Flag::kNone;

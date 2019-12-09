@@ -1298,6 +1298,7 @@
     <ClInclude Include="include\RE\BSGlobalStringTable.h" />
     <ClInclude Include="include\RE\StatsMenu.h" />
     <ClInclude Include="include\RE\StatsNode.h" />
+    <ClInclude Include="include\RE\StealthMeter.h" />
     <ClInclude Include="include\RE\SummonCreatureEffect.h" />
     <ClInclude Include="include\RE\Sun.h" />
     <ClInclude Include="include\RE\SyncQueueObj.h" />

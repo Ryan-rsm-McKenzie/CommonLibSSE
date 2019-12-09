@@ -43,7 +43,7 @@ namespace RE
 	}
 
 
-	bool LookupReferenceByHandle(const RefHandle& a_handle, NiPointer<TESObjectREFR> a_refrOut)
+	bool LookupReferenceByHandle(const RefHandle& a_handle, NiPointer<TESObjectREFR>& a_refrOut)
 	{
 		using func_t = function_type_t<decltype(&LookupReferenceByHandle)>;
 		REL::Offset<func_t*> func(Offset::LookupReferenceByHandle);

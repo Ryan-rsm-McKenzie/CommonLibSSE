@@ -390,9 +390,12 @@ namespace RE
 		void						ClearExpressionOverride();
 		void						ClearExtraArrows();
 		void						DispelWornItemEnchantments();
-		TESNPC*						GetActorBase() const;
+		TESNPC*						GetActorBase();
+		const TESNPC*				GetActorBase() const;
 		InventoryEntryData*			GetAttackingWeapon();
 		const InventoryEntryData*	GetAttackingWeapon() const;
+		TESFaction*					GetCrimeFaction();
+		const TESFaction*			GetCrimeFaction() const;
 		SInt32						GetDetectionLevel(Actor* a_target, UInt32 a_idx = 3);
 		InventoryEntryData*			GetEquippedEntryData(bool a_leftHand);
 		const InventoryEntryData*	GetEquippedEntryData(bool a_leftHand) const;
@@ -406,6 +409,7 @@ namespace RE
 		bool						IsBeingRidden() const;
 		bool						IsCommandedActor() const;
 		bool						IsEssential() const;
+		bool						IsFactionInCrimeGroup(const TESFaction* a_faction) const;
 		bool						IsGhost() const;
 		bool						IsGuard() const;
 		bool						IsHostileToActor(Actor* a_actor) const;

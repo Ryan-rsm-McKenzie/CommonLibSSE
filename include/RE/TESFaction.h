@@ -119,6 +119,7 @@ namespace RE
 		SInt32	GetStolenItemValueCrime() const;
 		SInt32	GetStolenItemValueNoCrime() const;
 		bool	HasSpecialCombatState() const;
+		bool	HasStealMultiplier() const;
 		bool	HiddenFromNPC() const;
 		bool	IgnoresAssault() const;
 		bool	IgnoresMurder() const;

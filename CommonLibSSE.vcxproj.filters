@@ -4970,5 +4970,8 @@
     <ClInclude Include="include\RE\RefAttachTechniqueInput.h">
       <Filter>include\RE\NetImmerse\Components\AttachTechniqueInput</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\StealthMeter.h">
+      <Filter>include\RE\Menus\HUDObject</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

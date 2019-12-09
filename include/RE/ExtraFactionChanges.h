@@ -3,11 +3,13 @@
 #include "RE/BSExtraData.h"
 #include "RE/BSTArray.h"
 #include "RE/ExtraDataTypes.h"
-#include "RE/FormTypes.h"
 
 
 namespace RE
 {
+	class TESFaction;
+
+
 	class ExtraFactionChanges : public BSExtraData
 	{
 	public:
@@ -35,12 +37,12 @@ namespace RE
 
 
 		// members
-		BSTArray<FactionInfo>	factions;	// 10
-		void*					unk28;		// 28
-		UInt8					unk30;		// 30 - bool?
-		UInt8					pad31;		// 31
-		UInt16					pad32;		// 32
-		UInt32					pad34;		// 34
+		BSTArray<FactionInfo>	factions;		// 10
+		TESFaction*				crimeFaction;	// 28
+		bool					noTrackCrime;	// 30
+		UInt8					pad31;			// 31
+		UInt16					pad32;			// 32
+		UInt32					pad34;			// 34
 	};
 	STATIC_ASSERT(sizeof(ExtraFactionChanges) == 0x38);
 }

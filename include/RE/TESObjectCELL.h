@@ -239,7 +239,7 @@ namespace RE
 		TESObjectLAND*							land;					// 068
 		float									waterHeight;			// 070 - XCLW
 		BSTArray<BSTSmartPointer<NavMesh>>*		navMeshes;				// 078
-		BSTHashSet<NiPointer<TESObjectREFR>>	persistentRefMap;		// 080
+		BSTHashSet<NiPointer<TESObjectREFR>>	objectMap;				// 080
 		TESForm*								unk0B0;					// 0B0 - REFR owner of cell?
 		BSTArray<TESObjectREFR*>				objectList;				// 0B8 - persistent
 		BSTArray<void*>							unk0D0;					// 0D0
@@ -251,7 +251,5 @@ namespace RE
 		BGSLightingTemplate*					lightingTemplate;		// 130 - LTMP
 		UInt64									unk138;					// 138
 	};
-	STATIC_ASSERT(offsetof(TESObjectCELL, persistentRefMap) == 0x80);
-	STATIC_ASSERT(offsetof(TESObjectCELL, objectList) == 0xB8);
 	STATIC_ASSERT(sizeof(TESObjectCELL) == 0x140);
 }

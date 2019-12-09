@@ -105,7 +105,13 @@ namespace RE
 	}
 
 
-	TESNPC* Actor::GetActorBase() const
+	TESNPC* Actor::GetActorBase()
+	{
+		return baseForm->As<TESNPC*>();
+	}
+
+
+	const TESNPC* Actor::GetActorBase() const
 	{
 		return baseForm->As<TESNPC*>();
 	}
@@ -134,6 +140,30 @@ namespace RE
 		auto middleProcess = aiProcess->middleProcess;
 
 		return attackData->IsLeftAttack() ? middleProcess->leftHand : middleProcess->rightHand;
+	}
+
+
+	TESFaction* Actor::GetCrimeFaction()
+	{
+		auto thisPtr = const_cast<const Actor*>(this);
+		auto fac = thisPtr->GetCrimeFaction();
+		return const_cast<TESFaction*>(fac);
+	}
+
+
+	const TESFaction* Actor::GetCrimeFaction() const
+	{
+		if (IsCommandedActor()) {
+			return 0;
+		}
+
+		auto xFac = extraData.GetByType<ExtraFactionChanges>();
+		if (xFac && (xFac->crimeFaction || xFac->noTrackCrime)) {
+			return xFac->crimeFaction;
+		}
+
+		auto base = GetActorBase();
+		return base ? base->crimeFaction : 0;
 	}
 
 
@@ -261,6 +291,21 @@ namespace RE
 	bool Actor::IsEssential() const
 	{
 		return (flags2 & Flag2::kIsEssential) != Flag2::kNone;
+	}
+
+
+	bool Actor::IsFactionInCrimeGroup(const TESFaction* a_faction) const
+	{
+		auto crimFac = GetCrimeFaction();
+		if (!crimFac) {
+			return false;
+		}
+
+		if (crimFac == a_faction) {
+			return true;
+		} else {
+			return crimFac->IsFactionInCrimeGroup(a_faction);
+		}
 	}
 
 

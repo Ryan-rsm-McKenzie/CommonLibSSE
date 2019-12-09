@@ -841,6 +841,7 @@
 #include "RE/Stars.h"
 #include "RE/StatsMenu.h"
 #include "RE/StatsNode.h"
+#include "RE/StealthMeter.h"
 #include "RE/SummonCreatureEffect.h"
 #include "RE/Sun.h"
 #include "RE/SyncQueueObj.h"
