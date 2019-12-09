@@ -1138,11 +1138,11 @@
     <Filter Include="include\RE\NetImmerse\Components">
       <UniqueIdentifier>{7ddf9985-854a-4cef-8ff0-446f50bff18d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\NetImmerse\Components\BSAttachTechniques">
-      <UniqueIdentifier>{0314990e-6b3b-488b-9769-79e101c04723}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\NetImmerse\Components\BSFaceGenKeyframe">
       <UniqueIdentifier>{3a84230d-636f-467e-bad3-f4079a30e929}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\Components\AttachTechniqueInput">
+      <UniqueIdentifier>{0314990e-6b3b-488b-9769-79e101c04723}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -4956,7 +4956,7 @@
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSAttachTechniques\AttachTechniqueInput.h">
-      <Filter>include\RE\NetImmerse\Components\BSAttachTechniques</Filter>
+      <Filter>include\RE\NetImmerse\Components\AttachTechniqueInput</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSFaceGenAnimationData.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiExtraData</Filter>
@@ -4966,6 +4966,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSFaceGenKeyframeMultiple.h">
       <Filter>include\RE\NetImmerse\Components\BSFaceGenKeyframe</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\RefAttachTechniqueInput.h">
+      <Filter>include\RE\NetImmerse\Components\AttachTechniqueInput</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

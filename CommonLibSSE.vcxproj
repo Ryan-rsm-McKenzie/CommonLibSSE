@@ -1215,6 +1215,7 @@
     <ClInclude Include="include\RE\RaceSexCamera.h" />
     <ClInclude Include="include\RE\RaceSexMenu.h" />
     <ClInclude Include="include\RE\RaceSexMenuEvent.h" />
+    <ClInclude Include="include\RE\RefAttachTechniqueInput.h" />
     <ClInclude Include="include\RE\ReferenceEffect.h" />
     <ClInclude Include="include\RE\ReferenceEffectController.h" />
     <ClInclude Include="include\RE\GMatrix2D.h" />
