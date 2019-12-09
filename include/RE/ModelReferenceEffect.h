@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSAttachTechniques/AttachTechniqueInput.h"
 #include "RE/BSFixedString.h"
 #include "RE/BSTEvent.h"
+#include "RE/RefAttachTechniqueInput.h"
 #include "RE/ReferenceEffect.h"
 #include "RE/SimpleAnimationGraphManagerHolder.h"
 
@@ -37,17 +37,12 @@ namespace RE
 
 
 		// members
-		BSAttachTechniques::AttachTechniqueInput	attachTechnique;	// 68
-		UInt64										unk88;				// 88
-		UInt64										unk90;				// 90
-		UInt64										unk98;				// 98
-		UInt64										unkA0;				// A0
-		BSFixedString								unkA8;				// A8
-		UInt64										unkB0;				// B0
-		BGSArtObject*								artObject;			// B8
-		UInt64										unkC0;				// C0
-		void*										unkC8;				// C8 - smart ptr
-		UInt64										unkD0;				// D0
+		RefAttachTechniqueInput	attachTechnique;	// 68
+		UInt64					unkB0;				// B0
+		BGSArtObject*			artObject;			// B8
+		UInt64					unkC0;				// C0
+		void*					unkC8;				// C8 - smart ptr
+		UInt64					unkD0;				// D0
 	};
 	STATIC_ASSERT(sizeof(ModelReferenceEffect) == 0xD8);
 }

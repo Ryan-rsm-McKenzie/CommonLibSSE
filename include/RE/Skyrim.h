@@ -801,6 +801,7 @@
 #include "RE/RaceSexMenu.h"
 #include "RE/RaceSexMenuEvent.h"
 #include "RE/ReadyWeaponHandler.h"
+#include "RE/RefAttachTechniqueInput.h"
 #include "RE/ReferenceEffect.h"
 #include "RE/ReferenceEffectController.h"
 #include "RE/RefrInteraction.h"
