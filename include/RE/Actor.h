@@ -381,6 +381,9 @@ namespace RE
 		virtual void							Unk_126(void);																																														// 126
 		virtual float							IncerceptActorValueChange(UInt32 a_avIndex, float a_avChangeBy);																																	// 127
 
+		static NiPointer<Actor>	LookupByHandle(RefHandle a_refHandle);
+		static bool				LookupByHandle(RefHandle a_refHandle, NiPointer<Actor>& a_refrOut);
+
 		bool						AddSpell(SpellItem* a_spell);
 		void						AllowBleedoutDialogue(bool a_canTalk);
 		void						AllowPCDialogue(bool a_talk);

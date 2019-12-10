@@ -13,6 +13,7 @@
 #include "RE/InventoryChanges.h"
 #include "RE/InventoryEntryData.h"
 #include "RE/MiddleProcess.h"
+#include "RE/Misc.h"
 #include "RE/NiColor.h"
 #include "RE/NiNode.h"
 #include "RE/Offsets.h"
@@ -26,6 +27,20 @@
 
 namespace RE
 {
+	NiPointer<Actor> Actor::LookupByHandle(RefHandle a_refHandle)
+	{
+		NiPointer<Actor> ref;
+		LookupReferenceByHandle(a_refHandle, ref);
+		return ref;
+	}
+
+
+	bool Actor::LookupByHandle(RefHandle a_refHandle, NiPointer<Actor>& a_refrOut)
+	{
+		return LookupReferenceByHandle(a_refHandle, a_refrOut);
+	}
+
+
 	bool Actor::AddSpell(SpellItem* a_spell)
 	{
 		using func_t = function_type_t<decltype(&Actor::AddSpell)>;
