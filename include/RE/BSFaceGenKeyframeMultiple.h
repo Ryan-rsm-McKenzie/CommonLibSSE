@@ -8,6 +8,9 @@ namespace RE
 	class BSFaceGenKeyframeMultiple : public BSFaceGenKeyframe
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSFaceGenKeyframeMultiple;
+
+
 		virtual ~BSFaceGenKeyframeMultiple();	// 00
 
 		// override (BSFaceGenKeyframe)

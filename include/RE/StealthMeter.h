@@ -9,6 +9,9 @@ namespace RE
 	class StealthMeter : public HUDObject
 	{
 	public:
+		inline static const void* RTTI = RTTI_StealthMeter;
+
+
 		virtual ~StealthMeter();													// 00
 
 		// override (HUDObject)

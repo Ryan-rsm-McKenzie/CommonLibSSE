@@ -8,6 +8,9 @@ namespace RE
 		struct AttachTechniqueInput
 		{
 		public:
+			inline static const void* RTTI = RTTI_BSAttachTechniques__AttachTechniqueInput;
+
+
 			virtual ~AttachTechniqueInput();	// 00
 
 			// add

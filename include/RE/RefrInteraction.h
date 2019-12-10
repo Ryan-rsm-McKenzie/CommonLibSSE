@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/SyncQueueObj.h"  // SyncQueueObj
+#include "RE/SyncQueueObj.h"
 
 
 namespace RE
@@ -8,6 +8,9 @@ namespace RE
 	class RefrInteraction : public SyncQueueObj
 	{
 	public:
+		inline static const void* RTTI = RTTI_RefrInteraction;
+
+
 		virtual ~RefrInteraction();			// 00
 
 		// add

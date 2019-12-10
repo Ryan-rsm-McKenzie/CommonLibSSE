@@ -9,6 +9,10 @@ namespace RE
 	class BSFaceGenAnimationData : public NiExtraData
 	{
 	public:
+		inline static const void* RTTI = RTTI_BSFaceGenAnimationData;
+		inline static const void* Ni_RTTI = NiRTTI_BSFaceGenAnimationData;
+
+
 		virtual ~BSFaceGenAnimationData();				// 00
 
 		// override (NiExtraData)

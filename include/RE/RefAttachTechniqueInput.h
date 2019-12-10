@@ -9,6 +9,9 @@ namespace RE
 	class RefAttachTechniqueInput : public BSAttachTechniques::AttachTechniqueInput
 	{
 	public:
+		inline static const void* RTTI = RTTI_RefAttachTechniqueInput;
+
+
 		virtual ~RefAttachTechniqueInput();	// 00
 
 		// override (BSAttachTechniques::AttachTechniqueInput)
