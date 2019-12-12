@@ -101,6 +101,9 @@ namespace RE
 		auto weightForm = form->As<TESWeightForm*>();
 		if (weightForm) {
 			return weightForm->weight;
+		} else if (form->Is(FormType::NPC)) {
+			auto npc = static_cast<const TESNPC*>(form);
+			return npc->weight;
 		} else {
 			return -1.0;
 		}
