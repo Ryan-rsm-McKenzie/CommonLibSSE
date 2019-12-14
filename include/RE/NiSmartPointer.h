@@ -49,6 +49,9 @@ namespace RE
 		template <class T1, class T2> friend bool operator==(const NiPointer<T1>& a_lhs, const NiPointer<T2>& a_rhs);
 
 	protected:
+		template <class Y> friend class NiPointer;
+
+
 		void IncRefCount();
 		void DecRefCount();
 

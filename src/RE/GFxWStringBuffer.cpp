@@ -1,6 +1,7 @@
 #include "RE/GFxWStringBuffer.h"
 
 #include <cstring>
+#include <cwchar>
 
 #include "RE/GMemory.h"
 
@@ -118,6 +119,7 @@ namespace RE
 
 		if (a_rhs._text) {
 			std::wmemcpy(_text, a_rhs._text, _length);
+			_text[_length] = '\0';
 		}
 
 		return *this;
@@ -148,11 +150,12 @@ namespace RE
 	{
 		release();
 		_length = 0;
-		auto len = std::wcslen(a_rhs);
+		auto len = a_rhs ? std::wcslen(a_rhs) : 0;
 		resize(len);
 
 		if (a_rhs) {
 			std::wmemcpy(_text, a_rhs, _length);
+			_text[_length] = L'\0';
 		}
 
 		return *this;
@@ -167,6 +170,7 @@ namespace RE
 
 		if (!a_rhs.empty()) {
 			std::wmemcpy(_text, a_rhs.data(), _length);
+			_text[_length] = L'\0';
 		}
 
 		return *this;
@@ -271,6 +275,7 @@ namespace RE
 		if (_length == a_count) {
 			return;
 		}
+		++a_count;
 		
 		if (a_count <= _reserved.size) {
 			if (_text != _reserved.buffer) {
@@ -290,7 +295,7 @@ namespace RE
 			}
 			_text = newText;
 		}
-		_length = a_count;
+		_length = a_count - 1;
 	}
 
 

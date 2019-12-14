@@ -39,4 +39,12 @@ namespace RE
 			stateBag->GetStatesAddRef(a_stateList, a_stateTypes, a_count);
 		}
 	}
+
+
+	GPtr<GFxState> GFxStateBag::GetState(GFxState::StateType a_stateType) const
+	{
+		GPtr<GFxState> ptr(GetStateAddRef(a_stateType));
+		ptr->Release();
+		return ptr;
+	}
 }

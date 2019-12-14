@@ -64,6 +64,9 @@ namespace RE
 		[[nodiscard]] explicit constexpr operator bool() const noexcept;
 
 	protected:
+		template <class Y, class RefManager> friend class BSTSmartPointer;
+
+
 		void Attach();
 		void Detach();
 

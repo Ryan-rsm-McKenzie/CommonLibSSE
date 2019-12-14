@@ -248,12 +248,14 @@
     <ClCompile Include="src\RE\GFxStateBag.cpp" />
     <ClCompile Include="src\RE\GFxValue.cpp" />
     <ClCompile Include="src\RE\GFxWStringBuffer.cpp" />
+    <ClCompile Include="src\RE\GFxWWHelper.cpp" />
     <ClCompile Include="src\RE\GMemory.cpp" />
     <ClCompile Include="src\RE\GMemoryHeap.cpp" />
     <ClCompile Include="src\RE\GRefCountImpl.cpp" />
     <ClCompile Include="src\RE\GRefCountImplCore.cpp" />
     <ClCompile Include="src\RE\GRefCountNTSImpl.cpp" />
     <ClCompile Include="src\RE\GRenderer.cpp" />
+    <ClCompile Include="src\RE\GStd.cpp" />
     <ClCompile Include="src\RE\GString.cpp" />
     <ClCompile Include="src\RE\GViewport.cpp" />
     <ClCompile Include="src\RE\hkBaseObject.cpp" />
@@ -952,6 +954,7 @@
     <ClInclude Include="include\RE\GFxTranslator.h" />
     <ClInclude Include="include\RE\GFxValue.h" />
     <ClInclude Include="include\RE\GFxWStringBuffer.h" />
+    <ClInclude Include="include\RE\GFxWWHelper.h" />
     <ClInclude Include="include\RE\GHash.h" />
     <ClInclude Include="include\RE\GHashNode.h" />
     <ClInclude Include="include\RE\GHashSet.h" />
@@ -980,6 +983,7 @@
     <ClInclude Include="include\RE\GRenderer.h" />
     <ClInclude Include="include\RE\GRendererEventHandler.h" />
     <ClInclude Include="include\RE\GStats.h" />
+    <ClInclude Include="include\RE\GStd.h" />
     <ClInclude Include="include\RE\GString.h" />
     <ClInclude Include="include\RE\GTexture.h" />
     <ClInclude Include="include\RE\GViewport.h" />

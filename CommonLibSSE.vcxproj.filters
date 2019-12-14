@@ -1144,6 +1144,18 @@
     <Filter Include="include\RE\NetImmerse\Components\AttachTechniqueInput">
       <UniqueIdentifier>{0314990e-6b3b-488b-9769-79e101c04723}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Scaleform\GFxWWHelper">
+      <UniqueIdentifier>{8fdf9253-6c55-43e7-b87a-0cff1b356205}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Scaleform\GFxWWHelper">
+      <UniqueIdentifier>{4962084f-20f6-4021-8c21-aac1d5f9e7e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Scaleform\GStd">
+      <UniqueIdentifier>{2dad5d7e-2e75-441e-b55e-039174a3b314}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Scaleform\GStd">
+      <UniqueIdentifier>{adc03c79-08f0-49b9-9264-9a597309bdaa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1781,6 +1793,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\BSFaceGenAnimationData.cpp">
       <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GFxWWHelper.cpp">
+      <Filter>src\RE\Scaleform\GFxWWHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GStd.cpp">
+      <Filter>src\RE\Scaleform\GStd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4972,6 +4990,12 @@
     </ClInclude>
     <ClInclude Include="include\RE\StealthMeter.h">
       <Filter>include\RE\Menus\HUDObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GFxWWHelper.h">
+      <Filter>include\RE\Scaleform\GFxWWHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GStd.h">
+      <Filter>include\RE\Scaleform\GStd</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

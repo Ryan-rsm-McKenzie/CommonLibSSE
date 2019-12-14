@@ -39,6 +39,9 @@ namespace RE
 		[[nodiscard]] explicit constexpr operator bool() const noexcept;
 
 	protected:
+		template <class Y> friend class GPtr;
+
+
 		void AddRef();
 		void Release();
 
