@@ -18,7 +18,7 @@ namespace RE
 	public:
 		struct Data
 		{
-			TESForm*				armor;		// 00
+			TESForm*				item;		// 00
 			TESForm*				addon;		// 08
 			TESModelTextureSwap*	model;		// 10
 			BGSTextureSet*			textureSet;	// 18
