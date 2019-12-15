@@ -183,6 +183,7 @@
     <ClCompile Include="src\RE\BGSLocation.cpp" />
     <ClCompile Include="src\RE\BGSPerkEntry.cpp" />
     <ClCompile Include="src\RE\BGSSaveLoadManager.cpp" />
+    <ClCompile Include="src\RE\Biped.cpp" />
     <ClCompile Include="src\RE\BSAudioManager.cpp" />
     <ClCompile Include="src\RE\BSFaceGenAnimationData.cpp" />
     <ClCompile Include="src\RE\BSGlobalStringTable.cpp" />

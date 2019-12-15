@@ -128,6 +128,15 @@ namespace RE
 		}
 
 
+		namespace Biped
+		{
+			// IndirectSig: E8 ? ? ? ? BA ? ? ? ? 48 8B CF E8 ? ? ? ? 48 8B 5C 24 ? EB 76
+			constexpr std::uintptr_t Dtor = 0x001C60A0;				// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 90 48 8D 8B ? ? ? ? 4C 8D 0D ? ? ? ? BA ? ? ? ? 44 8D 42 B2
+			constexpr std::uintptr_t UpdateWeightData = 0x001C61A0;	// 1_5_97
+		}
+
+
 		namespace BSAudioManager
 		{
 			// IndirectSig: E8 ? ? ? ? BA 33 00 00 00

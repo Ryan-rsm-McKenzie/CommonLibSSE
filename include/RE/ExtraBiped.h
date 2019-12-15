@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSTSmartPointer.h"
 #include "RE/ExtraDataTypes.h"
 
 
@@ -25,7 +26,7 @@ namespace RE
 
 
 		// members
-		Biped* unk10;	// 10
+		BSTSmartPointer<Biped> biped;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraBiped) == 0x18);
 }

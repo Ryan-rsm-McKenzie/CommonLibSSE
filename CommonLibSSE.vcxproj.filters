@@ -1800,6 +1800,9 @@
     <ClCompile Include="src\RE\GStd.cpp">
       <Filter>src\RE\Scaleform\GStd</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\Biped.cpp">
+      <Filter>src\RE\FormComponents\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
