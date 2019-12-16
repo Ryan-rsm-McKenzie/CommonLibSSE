@@ -1,5 +1,6 @@
 #include "RE/Biped.h"
 
+#include "RE/NiAVObject.h"
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 

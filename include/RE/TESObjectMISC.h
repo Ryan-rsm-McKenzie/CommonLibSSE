@@ -60,6 +60,8 @@ namespace RE
 		virtual void		Unk_53(void);											// 53 - { return; }
 		virtual void		LoadRecordByType(TESFile* a_mod, UInt32 a_recordType);	// 54 - { return; }
 		virtual void		Unk_55(void);											// 55 - { return; }
+
+		static TESObjectMISC* GetGoldForm();
 	};
 	STATIC_ASSERT(sizeof(TESObjectMISC) == 0x100);
 }

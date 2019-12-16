@@ -34,7 +34,7 @@ namespace RE
 
 			SInt32			count;	// 00
 			UInt32			pad04;	// 04
-			TESBoundObject*	form;	// 08
+			TESBoundObject*	object;	// 08
 			ExtraData*		data;	// 10
 		};
 		STATIC_ASSERT(sizeof(Entry) == 0x18);

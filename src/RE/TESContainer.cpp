@@ -22,7 +22,7 @@ namespace RE
 		SInt32 count = 0;
 		ForEach([&](Entry* a_entry)
 		{
-			if (a_entry->form == a_item) {
+			if (a_entry->object == a_item) {
 				count += a_entry->count;
 			}
 			return true;

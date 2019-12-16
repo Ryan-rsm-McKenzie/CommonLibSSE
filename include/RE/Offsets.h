@@ -99,17 +99,6 @@ namespace RE
 		}
 
 
-		namespace BaseExtraList
-		{
-			// IndirectSig: E8 ? ? ? ? 4C 8D 75 10
-			constexpr std::uintptr_t Add = 0x00131990;					// 1_5_97
-			// IndirectSig: E8 ? ? ? ? F7 43 28 FF 03 00 00 75 0C
-			constexpr std::uintptr_t SetExtraFlags = 0x00125D80;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 90 41 89 1E 48 8B C7 48 8B 5C 24 60 48 8B 6C 24 68 48 83 C4 30 41 5E
-			constexpr std::uintptr_t SetInventoryChanges = 0x0010F5C0;	// 1_5_97
-		}
-
-
 		namespace BGSDefaultObjectManager
 		{
 			// IndirectSig: E8 ? ? ? ? 4C 63 C3
@@ -414,10 +403,28 @@ namespace RE
 		}
 
 
+		namespace ExtraContainerChanges
+		{
+			// VTable: .?AVExtraContainerChanges@@
+			constexpr std::uintptr_t Vtbl = 0x0152F260;	// 1_5_97
+		}
+
+
 		namespace ExtraCount
 		{
 			// VTable: .?AVExtraCount@@
 			constexpr std::uintptr_t Vtbl = 0x0152BFE0;	// 1_5_97
+		}
+
+
+		namespace ExtraDataList
+		{
+			// IndirectSig: E8 ? ? ? ? 4C 8D 75 10
+			constexpr std::uintptr_t Add = 0x00131990;					// 1_5_97
+			// IndirectSig: E8 ? ? ? ? F7 43 28 FF 03 00 00 75 0C
+			constexpr std::uintptr_t SetExtraFlags = 0x00125D80;		// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 90 41 89 1E 48 8B C7 48 8B 5C 24 60 48 8B 6C 24 68 48 83 C4 30 41 5E
+			constexpr std::uintptr_t SetInventoryChanges = 0x0010F5C0;	// 1_5_97
 		}
 
 
@@ -653,6 +660,8 @@ namespace RE
 		{
 			// IndirectSig: E8 ? ? ? ? 48 8B F8 48 8B D7 48 8B CD
 			constexpr std::uintptr_t Ctor = 0x001D9200;							// 1_5_97
+			// DirectSig: 40 57 41 56 41 57 48 83 EC 30 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 4C 8B F9 4C 8B 31
+			constexpr std::uintptr_t Dtor = 0x001D92F0;							// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 90 8B 44 24 68 41 89 06 48 83 C4 38
 			constexpr std::uintptr_t GenerateLeveledListChanges = 0x001E08B0;	// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 40 84 F6 75 08

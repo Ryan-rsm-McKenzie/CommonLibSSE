@@ -1,4 +1,4 @@
-#include "RE/BaseExtraList.h"
+#include "RE/ExtraDataList.h"
 
 #include "skse64/GameReferences.h"
 
@@ -22,14 +22,14 @@
 
 namespace RE
 {
-	BaseExtraList::BaseExtraList() :
+	ExtraDataList::ExtraDataList() :
 		_data(0),
 		_presence(0),
 		_lock()
 	{}
 
 
-	BaseExtraList::~BaseExtraList()
+	ExtraDataList::~ExtraDataList()
 	{
 		while (_data) {
 			auto xData = _data;
@@ -43,58 +43,58 @@ namespace RE
 	}
 
 
-	BaseExtraList::iterator BaseExtraList::begin()
+	ExtraDataList::iterator ExtraDataList::begin()
 	{
 		return iterator(_data);
 	}
 
 
-	BaseExtraList::const_iterator BaseExtraList::cbegin() const
+	ExtraDataList::const_iterator ExtraDataList::cbegin() const
 	{
 		return const_iterator(_data);
 	}
 
 
-	BaseExtraList::const_iterator BaseExtraList::begin() const
+	ExtraDataList::const_iterator ExtraDataList::begin() const
 	{
 		return cbegin();
 	}
 
 
-	BaseExtraList::iterator BaseExtraList::end()
+	ExtraDataList::iterator ExtraDataList::end()
 	{
 		return iterator(0);
 	}
 
 
-	BaseExtraList::const_iterator BaseExtraList::cend() const
+	ExtraDataList::const_iterator ExtraDataList::cend() const
 	{
 		return const_iterator(0);
 	}
 
 
-	BaseExtraList::const_iterator BaseExtraList::end() const
+	ExtraDataList::const_iterator ExtraDataList::end() const
 	{
 		return cend();
 	}
 
 
-	bool BaseExtraList::HasType(ExtraDataType a_type) const
+	bool ExtraDataList::HasType(ExtraDataType a_type) const
 	{
 		BSReadLockGuard locker(_lock);
 		return _presence ? _presence->HasType(static_cast<UInt32>(a_type)) : false;
 	}
 
 
-	BSExtraData* BaseExtraList::GetByType(ExtraDataType a_type)
+	BSExtraData* ExtraDataList::GetByType(ExtraDataType a_type)
 	{
-		const BaseExtraList* thisPtr = this;
+		const ExtraDataList* thisPtr = this;
 		auto xData = thisPtr->GetByType(a_type);
 		return const_cast<BSExtraData*>(xData);
 	}
 
 
-	const BSExtraData* BaseExtraList::GetByType(ExtraDataType a_type) const
+	const BSExtraData* ExtraDataList::GetByType(ExtraDataType a_type) const
 	{
 		BSReadLockGuard locker(_lock);
 
@@ -112,7 +112,7 @@ namespace RE
 	}
 
 
-	bool BaseExtraList::Remove(ExtraDataType a_type, BSExtraData* a_toRemove)
+	bool ExtraDataList::Remove(ExtraDataType a_type, BSExtraData* a_toRemove)
 	{
 		BSWriteLockGuard locker(_lock);
 
@@ -143,7 +143,7 @@ namespace RE
 	}
 
 
-	bool BaseExtraList::RemoveByType(ExtraDataType a_type)
+	bool ExtraDataList::RemoveByType(ExtraDataType a_type)
 	{
 		BSWriteLockGuard locker(_lock);
 
@@ -176,15 +176,15 @@ namespace RE
 	}
 
 
-	BSExtraData* BaseExtraList::Add(BSExtraData* a_toAdd)
+	BSExtraData* ExtraDataList::Add(BSExtraData* a_toAdd)
 	{
-		using func_t = function_type_t<decltype(&BaseExtraList::Add)>;
-		REL::Offset<func_t*> func(Offset::BaseExtraList::Add);
+		using func_t = function_type_t<decltype(&ExtraDataList::Add)>;
+		REL::Offset<func_t*> func(Offset::ExtraDataList::Add);
 		return func(this, a_toAdd);
 	}
 
 
-	const char* BaseExtraList::GenerateName(TESForm* a_form)
+	const char* ExtraDataList::GenerateName(TESForm* a_form)
 	{
 		const char* result = 0;
 		float health = 1.0;
@@ -217,7 +217,7 @@ namespace RE
 	}
 
 
-	bool BaseExtraList::GetAshPileRefHandle(RefHandle& a_refHandle)
+	bool ExtraDataList::GetAshPileRefHandle(RefHandle& a_refHandle)
 	{
 		auto xAshRef = GetByType<ExtraAshPileRef>();
 		if (xAshRef) {
@@ -229,7 +229,7 @@ namespace RE
 	}
 
 
-	BGSEncounterZone* BaseExtraList::GetEncounterZone()
+	BGSEncounterZone* ExtraDataList::GetEncounterZone()
 	{
 		auto xZone = GetByType<ExtraEncounterZone>();
 		return xZone ? xZone->encounterZone : 0;
@@ -237,7 +237,7 @@ namespace RE
 
 
 
-	ExtraTextDisplayData* BaseExtraList::GetExtraTextDisplayData()
+	ExtraTextDisplayData* ExtraDataList::GetExtraTextDisplayData()
 	{
 		auto xRef = GetByType<ExtraReferenceHandle>();
 		if (!xRef) {
@@ -253,7 +253,7 @@ namespace RE
 	}
 
 
-	TESObjectREFR* BaseExtraList::GetLinkedRef(BGSKeyword* a_keyword)
+	TESObjectREFR* ExtraDataList::GetLinkedRef(BGSKeyword* a_keyword)
 	{
 		BSReadLockGuard locker(_lock);
 
@@ -281,37 +281,37 @@ namespace RE
 	}
 
 
-	TESForm* BaseExtraList::GetOwner()
+	TESForm* ExtraDataList::GetOwner()
 	{
 		auto xOwner = GetByType<ExtraOwnership>();
 		return xOwner ? xOwner->owner : 0;
 	}
 
 
-	SoulLevel BaseExtraList::GetSoulLevel() const
+	SoulLevel ExtraDataList::GetSoulLevel() const
 	{
 		auto xSoul = GetByType<ExtraSoul>();
 		return xSoul ? xSoul->level : SoulLevel::kNone;
 	}
 
 
-	void BaseExtraList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
+	void ExtraDataList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
 	{
-		using func_t = function_type_t<decltype(&BaseExtraList::SetExtraFlags)>;
-		REL::Offset<func_t*> func(Offset::BaseExtraList::SetExtraFlags);
+		using func_t = function_type_t<decltype(&ExtraDataList::SetExtraFlags)>;
+		REL::Offset<func_t*> func(Offset::ExtraDataList::SetExtraFlags);
 		return func(this, a_flags, a_enable);
 	}
 
 
-	void BaseExtraList::SetInventoryChanges(InventoryChanges* a_changes)
+	void ExtraDataList::SetInventoryChanges(InventoryChanges* a_changes)
 	{
-		using func_t = function_type_t<decltype(&BaseExtraList::SetInventoryChanges)>;
-		REL::Offset<func_t*> func(Offset::BaseExtraList::SetInventoryChanges);
+		using func_t = function_type_t<decltype(&ExtraDataList::SetInventoryChanges)>;
+		REL::Offset<func_t*> func(Offset::ExtraDataList::SetInventoryChanges);
 		return func(this, a_changes);
 	}
 
 
-	void BaseExtraList::SetOwner(TESForm* a_owner)
+	void ExtraDataList::SetOwner(TESForm* a_owner)
 	{
 		if (a_owner && a_owner->IsDynamicForm()) {
 			return;
@@ -331,7 +331,7 @@ namespace RE
 	}
 
 
-	bool BaseExtraList::PresenceBitfield::HasType(UInt32 a_type) const
+	bool ExtraDataList::PresenceBitfield::HasType(UInt32 a_type) const
 	{
 		UInt32 index = (a_type >> 3);
 		if (index >= 0x18) {
@@ -342,7 +342,7 @@ namespace RE
 	}
 
 
-	void BaseExtraList::PresenceBitfield::MarkType(UInt32 a_type, bool a_cleared)
+	void ExtraDataList::PresenceBitfield::MarkType(UInt32 a_type, bool a_cleared)
 	{
 		UInt32 index = (a_type >> 3);
 		UInt8 bitMask = 1 << (a_type % 8);
@@ -355,13 +355,13 @@ namespace RE
 	}
 
 
-	void BaseExtraList::MarkType(UInt32 a_type, bool a_cleared)
+	void ExtraDataList::MarkType(UInt32 a_type, bool a_cleared)
 	{
 		_presence->MarkType(a_type, a_cleared);
 	}
 
 
-	void BaseExtraList::MarkType(ExtraDataType a_type, bool a_cleared)
+	void ExtraDataList::MarkType(ExtraDataType a_type, bool a_cleared)
 	{
 		MarkType(static_cast<UInt32>(a_type), a_cleared);
 	}

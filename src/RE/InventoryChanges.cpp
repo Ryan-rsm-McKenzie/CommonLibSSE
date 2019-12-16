@@ -1,30 +1,47 @@
 #include "RE/InventoryChanges.h"
 
+#include <type_traits>
+
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
 
 namespace RE
 {
-	InventoryChanges::InventoryChanges(TESObjectREFR* a_ref)
+	InventoryChanges::InventoryChanges() :
+		InventoryChanges(0)
+	{}
+
+
+	InventoryChanges::InventoryChanges(TESObjectREFR* a_ref) :
+		entryList(0),
+		owner(0),
+		totalWeight(0.0),
+		armorWeight(0.0),
+		unk19(0),
+		unk1A(0),
+		unk1B(0),
+		unk1C(0)
 	{
 		Ctor(a_ref);
 	}
 
 
-	void InventoryChanges::SetUniqueID(BaseExtraList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm)
+	InventoryChanges::~InventoryChanges()
 	{
-		using func_t = function_type_t<decltype(&InventoryChanges::SetUniqueID)>;
-		REL::Offset<func_t*> func(Offset::InventoryChanges::SetUniqueID);
-		return func(this, a_itemList, a_oldForm, a_newForm);
+		Dtor();
+		memzero(this);
 	}
 
 
-	void InventoryChanges::InitContainer()
+	void InventoryChanges::AddEntryData(InventoryEntryData* a_entry)
 	{
-		using func_t = function_type_t<decltype(&InventoryChanges::InitContainer)>;
-		REL::Offset<func_t*> func(Offset::InventoryChanges::InitContainer);
-		return func(this);
+		if (!entryList) {
+			entryList = new std::remove_pointer_t<decltype(entryList)>;
+		}
+
+		entryList->push_front(a_entry);
+		changed = true;
 	}
 
 
@@ -36,11 +53,27 @@ namespace RE
 	}
 
 
-	void InventoryChanges::SendContainerChangedEvent(BaseExtraList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, SInt32 a_count)
+	void InventoryChanges::InitContainer()
+	{
+		using func_t = function_type_t<decltype(&InventoryChanges::InitContainer)>;
+		REL::Offset<func_t*> func(Offset::InventoryChanges::InitContainer);
+		return func(this);
+	}
+
+
+	void InventoryChanges::SendContainerChangedEvent(ExtraDataList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, SInt32 a_count)
 	{
 		using func_t = function_type_t<decltype(&InventoryChanges::SendContainerChangedEvent)>;
 		REL::Offset<func_t*> func(Offset::InventoryChanges::SendContainerChangedEvent);
 		return func(this, a_itemExtraList, a_fromRefr, a_item, a_count);
+	}
+
+
+	void InventoryChanges::SetUniqueID(ExtraDataList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm)
+	{
+		using func_t = function_type_t<decltype(&InventoryChanges::SetUniqueID)>;
+		REL::Offset<func_t*> func(Offset::InventoryChanges::SetUniqueID);
+		return func(this, a_itemList, a_oldForm, a_newForm);
 	}
 
 
@@ -49,5 +82,13 @@ namespace RE
 		using func_t = function_type_t<decltype(&InventoryChanges::Ctor)>;
 		REL::Offset<func_t*> func(Offset::InventoryChanges::Ctor);
 		return func(this, a_ref);
+	}
+
+
+	void InventoryChanges::Dtor()
+	{
+		using func_t = function_type_t<decltype(&InventoryChanges::Dtor)>;
+		REL::Offset<func_t*> func(Offset::InventoryChanges::Dtor);
+		return func(this);
 	}
 }

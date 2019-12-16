@@ -19,13 +19,13 @@ namespace RE
 
 	EffectSetting* ActiveEffect::GetBaseObject()
 	{
-		return effect->baseEffect;
+		return effect ? effect->baseEffect : 0;
 	}
 
 
 	const EffectSetting* ActiveEffect::GetBaseObject() const
 	{
-		return effect->baseEffect;
+		return effect ? effect->baseEffect : 0;
 	}
 
 

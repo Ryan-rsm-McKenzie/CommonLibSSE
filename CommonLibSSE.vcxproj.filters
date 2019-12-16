@@ -1156,6 +1156,9 @@
     <Filter Include="src\RE\Scaleform\GStd">
       <UniqueIdentifier>{adc03c79-08f0-49b9-9264-9a597309bdaa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\BSGeometry">
+      <UniqueIdentifier>{43dff653-c345-4163-ae0a-4cfaaa7bec59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1448,9 +1451,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\LocalMapCamera.cpp">
       <Filter>src\RE\Camera\TESCamera</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BaseExtraList.cpp">
-      <Filter>src\RE\Inventory</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\MagicTarget.cpp">
       <Filter>src\RE\FormComponents\Components</Filter>
@@ -1802,6 +1802,15 @@
     </ClCompile>
     <ClCompile Include="src\RE\Biped.cpp">
       <Filter>src\RE\FormComponents\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraDataList.cpp">
+      <Filter>src\RE\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraContainerChanges.cpp">
+      <Filter>src\RE\BSExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectMISC.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2413,9 +2422,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\ExtraTerminalState.h">
       <Filter>include\RE\BSExtraData</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BaseExtraList.h">
-      <Filter>include\RE\Inventory</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraObjectHealth.h">
       <Filter>include\RE\BSExtraData</Filter>
@@ -4673,9 +4679,6 @@
     <ClInclude Include="include\RE\BSFaceGenNiNode.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSGeometry.h">
-      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\NiSkinInstance.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
     </ClInclude>
@@ -4999,6 +5002,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\GStd.h">
       <Filter>include\RE\Scaleform\GStd</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ExtraDataList.h">
+      <Filter>include\RE\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSGeometry.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\BSGeometry</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTriShape.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\BSGeometry</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

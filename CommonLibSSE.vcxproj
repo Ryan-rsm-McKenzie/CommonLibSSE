@@ -170,7 +170,8 @@
     <ClCompile Include="src\RE\ActorValueOwner.cpp" />
     <ClCompile Include="src\RE\AddCallbackVisitor.cpp" />
     <ClCompile Include="src\RE\AIProcessManager.cpp" />
-    <ClCompile Include="src\RE\BaseExtraList.cpp" />
+    <ClCompile Include="src\RE\ExtraContainerChanges.cpp" />
+    <ClCompile Include="src\RE\ExtraDataList.cpp" />
     <ClCompile Include="src\RE\BGSAttackData.cpp" />
     <ClCompile Include="src\RE\BGSBaseAlias.cpp" />
     <ClCompile Include="src\RE\BGSBipedObjectForm.cpp" />
@@ -360,6 +361,7 @@
     <ClCompile Include="src\RE\TESObjectBOOK.cpp" />
     <ClCompile Include="src\RE\TESObjectCELL.cpp" />
     <ClCompile Include="src\RE\TESObjectLIGH.cpp" />
+    <ClCompile Include="src\RE\TESObjectMISC.cpp" />
     <ClCompile Include="src\RE\TESObjectREFR.cpp" />
     <ClCompile Include="src\RE\TESObjectWEAP.cpp" />
     <ClCompile Include="src\RE\TESQuest.cpp" />
@@ -677,6 +679,7 @@
     <ClInclude Include="include\RE\BSTimeManager.h" />
     <ClInclude Include="include\RE\BSTLocklessQueue.h" />
     <ClInclude Include="include\RE\BSTMessageQueue.h" />
+    <ClInclude Include="include\RE\BSTriShape.h" />
     <ClInclude Include="include\RE\BSTSmartPointer.h" />
     <ClInclude Include="include\RE\BSTArray.h" />
     <ClInclude Include="include\RE\BSTEvent.h" />
@@ -1098,7 +1101,7 @@
     <ClInclude Include="include\RE\InputEvent.h" />
     <ClInclude Include="include\RE\InputManager.h" />
     <ClInclude Include="include\RE\InputMappingManager.h" />
-    <ClInclude Include="include\RE\BaseExtraList.h" />
+    <ClInclude Include="include\RE\ExtraDataList.h" />
     <ClInclude Include="include\RE\BGSBipedObjectForm.h" />
     <ClInclude Include="include\RE\Inventory.h" />
     <ClInclude Include="include\RE\InventoryMenu.h" />

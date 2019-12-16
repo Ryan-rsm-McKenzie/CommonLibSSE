@@ -8,17 +8,17 @@
 
 namespace RE
 {
-	class BaseExtraList;
+	class ExtraDataList;
 	class TESBoundObject;
 
 
 	class InventoryEntryData
 	{
 	public:
-		InventoryEntryData(TESBoundObject* a_item, SInt32 a_count);
+		InventoryEntryData(TESBoundObject* a_object, SInt32 a_countDelta);
 		~InventoryEntryData();
 
-		void		AddEntryList(BaseExtraList* a_extra);
+		void		AddExtraList(ExtraDataList* a_extra);
 		const char*	GenerateName();
 		TESForm*	GetOwner();
 		SoulLevel	GetSoulLevel() const;
@@ -31,8 +31,8 @@ namespace RE
 
 
 		// members
-		TESBoundObject*					type;		// 00
-		BSSimpleList<BaseExtraList*>*	extraList;	// 08
+		TESBoundObject*					object;		// 00
+		BSSimpleList<ExtraDataList*>*	extraLists;	// 08
 		SInt32							countDelta;	// 10
 		UInt32							pad14;		// 14
 

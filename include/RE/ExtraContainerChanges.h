@@ -18,6 +18,8 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kContainerChanges };
 
 
+		ExtraContainerChanges();
+		explicit ExtraContainerChanges(InventoryChanges* a_changes);
 		virtual	~ExtraContainerChanges();				// 00
 
 		// override (BSExtraData)

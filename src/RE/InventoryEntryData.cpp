@@ -1,6 +1,8 @@
 #include "RE/InventoryEntryData.h"
 
-#include "RE/BaseExtraList.h"
+#include <type_traits>
+
+#include "RE/ExtraDataList.h"
 #include "RE/GameSettingCollection.h"
 #include "RE/Offsets.h"
 #include "RE/TESBoundObject.h"
@@ -10,37 +12,39 @@
 
 namespace RE
 {
-	InventoryEntryData::InventoryEntryData(TESBoundObject* a_item, SInt32 a_count) :
-		type(a_item),
-		extraList(0),
-		countDelta(a_count)
-	{}
+	InventoryEntryData::InventoryEntryData(TESBoundObject* a_object, SInt32 a_countDelta) :
+		object(a_object),
+		extraLists(0),
+		countDelta(a_countDelta)
+	{
+		extraLists = new std::remove_pointer_t<decltype(extraLists)>;
+	}
 
 
 	InventoryEntryData::~InventoryEntryData()
 	{
-		delete extraList;
+		delete extraLists;
 	}
 
 
-	void InventoryEntryData::AddEntryList(BaseExtraList* a_extra)
+	void InventoryEntryData::AddExtraList(ExtraDataList* a_extra)
 	{
 		if (!a_extra) {
 			return;
 		}
 
-		if (!extraList) {
-			extraList = new BSSimpleList<BaseExtraList*>;
+		if (!extraLists) {
+			extraLists = new BSSimpleList<ExtraDataList*>;
 		}
 
-		extraList->push_front(a_extra);
+		extraLists->push_front(a_extra);
 	}
 
 
 	const char* InventoryEntryData::GenerateName()
 	{
-		if (extraList && !extraList->empty()) {
-			return extraList->front()->GenerateName(type);
+		if (extraLists && !extraLists->empty()) {
+			return extraLists->front()->GenerateName(object);
 		} else {
 			auto gmst = GameSettingCollection::GetSingleton();
 			auto sMissingName = gmst->GetSetting("sMissingName");
@@ -51,8 +55,8 @@ namespace RE
 
 	TESForm* InventoryEntryData::GetOwner()
 	{
-		if (extraList && !extraList->empty()) {
-			return extraList->front()->GetOwner();
+		if (extraLists && !extraLists->empty()) {
+			return extraLists->front()->GetOwner();
 		} else {
 			return 0;
 		}
@@ -61,15 +65,15 @@ namespace RE
 
 	SoulLevel InventoryEntryData::GetSoulLevel() const
 	{
-		if (extraList && !extraList->empty()) {
-			auto lvl = extraList->front()->GetSoulLevel();
+		if (extraLists && !extraLists->empty()) {
+			auto lvl = extraLists->front()->GetSoulLevel();
 			if (lvl > SoulLevel::kNone) {
 				return lvl;
 			}
 		}
 
-		if (type && type->Is(FormType::SoulGem)) {
-			auto soulGem = static_cast<const TESSoulGem*>(type);
+		if (object && object->Is(FormType::SoulGem)) {
+			auto soulGem = static_cast<const TESSoulGem*>(object);
 			return soulGem->GetContainedSoul();
 		}
 
@@ -87,7 +91,7 @@ namespace RE
 
 	float InventoryEntryData::GetWeight()
 	{
-		return type ? type->GetWeight() : -1.0;
+		return object ? object->GetWeight() : -1.0;
 	}
 
 

@@ -1,5 +1,8 @@
 #pragma once
 
+#include <unordered_map>
+#include <utility>
+
 #include "RE/ActiveEffect.h"
 #include "RE/ActorState.h"
 #include "RE/ActorValueOwner.h"
@@ -21,9 +24,9 @@ namespace RE
 {
 	class ActorMover;
 	class AIProcess;
-	class BaseExtraList;
 	class bhkCharacterMoveFinishEvent;
 	class BSTransformDeltaEvent;
+	class ExtraDataList;
 	class InventoryEntryData;
 	class MovementControllerNPC;
 	class NiRefObject;
@@ -44,6 +47,10 @@ namespace RE
 
 	public:
 		inline static const void* RTTI = RTTI_Actor;
+
+
+		using Count = SInt32;
+		using InventoryMap = std::unordered_map<TESBoundObject*, std::pair<Count, InventoryEntryData*>>;
 
 
 		enum { kTypeID = FormType::ActorCharacter };
@@ -108,7 +115,7 @@ namespace RE
 		{
 			struct Modifiers
 			{
-				enum
+				enum Modifier
 				{
 					kPermanent = 0,
 					kTemporary,
@@ -117,6 +124,7 @@ namespace RE
 					kTotal
 				};
 			};
+			using Modifier = Modifiers::Modifier;
 
 
 			// members
@@ -146,6 +154,12 @@ namespace RE
 						}
 					}
 					return 0;
+				}
+
+
+				T* operator[](ActorValue a_actorValue)
+				{
+					return operator[](static_cast<ActorValue>(a_actorValue));
 				}
 
 
@@ -191,11 +205,11 @@ namespace RE
 		virtual void							Unk_4F(void) override;																																												// 04F
 		virtual void							GetStartingRotation(NiPoint3& a_rotation) override;																																					// 052
 		virtual void							GetStartingPosition(NiPoint3& a_position) override;																																					// 053
-		virtual RefHandle&						RemoveItem(RefHandle& a_dropHandle, TESForm* a_item, SInt32 a_count, RemoveType a_mode, BaseExtraList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0) override;		// 056
-		virtual bool							EquipItem(TESForm* a_item, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5) override;																										// 057
+		virtual RefHandle&						RemoveItem(RefHandle& a_dropHandle, TESForm* a_item, SInt32 a_count, RemoveType a_mode, ExtraDataList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0) override;		// 056
+		virtual bool							EquipItem(TESBoundObject* a_item, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5) override;																								// 057
 		virtual void							Unk_58(void) override;																																												// 058 - attack target?
 		virtual void							Unk_59(void) override;																																												// 059
-		virtual void							AddItem(TESForm* a_item, BaseExtraList* a_extraList, SInt32 a_count, TESObjectREFR* a_fromRefr) override;																							// 05A
+		virtual void							AddItem(TESBoundObject* a_item, ExtraDataList* a_extraList, SInt32 a_count, TESObjectREFR* a_fromRefr) override;																					// 05A
 		virtual void							GetMarkerPosition(NiPoint3& a_pos) override;																																						// 05B
 		virtual MagicCaster*					GetMagicCaster(UInt32 a_slot) const override;																																						// 05C
 		virtual MagicTarget*					GetMagicTarget() const override;																																									// 05D - { return static_cast<MagicTarget*>(this); }
@@ -238,7 +252,7 @@ namespace RE
 		virtual void							Unk_9C(void) override;																																												// 09C
 		virtual void							Unk_9D(void) override;																																												// 09D
 		virtual void							Unk_9E(void) override;																																												// 09E
-		virtual void							UnequipItem(UInt64 a_arg1, TESForm* a_item) override;																																				// 0A1
+		virtual void							UnequipItem(UInt64 a_arg1, TESBoundObject* a_item) override;																																		// 0A1
 
 		// override (MagicTarget)
 		virtual Actor*							GetMagicTargetActor() const override;																																								// 002 - { return this; }
@@ -287,7 +301,7 @@ namespace RE
 		virtual void							Unk_C8(void);																																														// 0C8
 		virtual void							Unk_C9(void);																																														// 0C9
 		virtual void							OnArmorActorValueChanged();																																											// 0CA - { return; }
-		virtual void							DropItem(RefHandle& a_droppedItemHandle, TESForm* a_item, BaseExtraList* a_extraList, UInt32 a_count, void* a_arg5 = 0, void* a_arg6 = 0);															// 0CB
+		virtual void							DropItem(RefHandle& a_droppedItemHandle, TESForm* a_item, ExtraDataList* a_extraList, UInt32 a_count, void* a_arg5 = 0, void* a_arg6 = 0);															// 0CB
 		virtual void							PickUpItem(TESObjectREFR* a_item, UInt32 a_count, bool a_arg3 = false, bool a_playSound = true);																									// 0CC
 		virtual void							Unk_CD(void);																																														// 0CD
 		virtual void							Unk_CE(void);																																														// 0CE
@@ -405,6 +419,7 @@ namespace RE
 		TESForm*					GetEquippedObject(bool a_leftHand) const;
 		SInt32						GetGoldAmount();
 		float						GetHeight();
+		InventoryMap				GetInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);
 		UInt16						GetLevel() const;
 		TESRace*					GetRace() const;
 		bool						HasPerk(BGSPerk* a_perk) const;
@@ -427,11 +442,11 @@ namespace RE
 		void						ResetAI(UInt32 a_arg1 = 0, UInt32 a_arg2 = 0);
 		void						SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, SInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);
 		void						SetRace(TESRace* a_race, bool a_isPlayer);
-		void						UpdateArmorAbility(TESForm* a_armor, BaseExtraList* a_extraData);
+		void						UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData);
 		void						UpdateHairColor();
 		void						UpdateSkinColor();
-		void						UpdateWeaponAbility(TESForm* a_weapon, BaseExtraList* a_extraData, bool a_leftHand);
-		bool						VisitFactions(llvm::function_ref<bool(RE::TESFaction* a_faction, SInt8 a_rank)> a_visitor);
+		void						UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand);
+		bool						VisitFactions(llvm::function_ref<bool(TESFaction* a_faction, SInt8 a_rank)> a_visitor);
 
 
 		// members

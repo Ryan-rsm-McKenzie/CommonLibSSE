@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	class BaseExtraList;
+	class ExtraDataList;
 	class InventoryEntryData;
 
 
@@ -30,12 +30,15 @@ namespace RE
 		STATIC_ASSERT(sizeof(IItemChangeVisitor) == 0x8);
 
 
+		InventoryChanges();
 		explicit InventoryChanges(TESObjectREFR* a_ref);
+		~InventoryChanges();
 
-		void	SetUniqueID(BaseExtraList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm);
-		void	InitContainer();
+		void	AddEntryData(InventoryEntryData* a_entry);
 		void	GenerateLeveledListChanges();
-		void	SendContainerChangedEvent(BaseExtraList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, SInt32 a_count);
+		void	InitContainer();
+		void	SendContainerChangedEvent(ExtraDataList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, SInt32 a_count);
+		void	SetUniqueID(ExtraDataList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm);
 
 		TES_HEAP_REDEFINE_NEW();
 
@@ -51,7 +54,8 @@ namespace RE
 		UInt32								unk1C;			// 1C
 
 	private:
-		InventoryChanges* Ctor(TESObjectREFR* a_ref);
+		InventoryChanges*	Ctor(TESObjectREFR* a_ref);
+		void				Dtor();
 	};
 	STATIC_ASSERT(sizeof(InventoryChanges) == 0x20);
 }

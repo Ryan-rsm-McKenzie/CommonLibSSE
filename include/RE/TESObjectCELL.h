@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/BaseExtraList.h"
 #include "RE/BSLock.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTHashMap.h"
 #include "RE/BSTList.h"
 #include "RE/Color.h"
 #include "RE/DirectionalAmbientLightingColor.h"
+#include "RE/ExtraDataList.h"
 #include "RE/FormTypes.h"
 #include "RE/NiSmartPointer.h"
 #include "RE/TESForm.h"
@@ -234,7 +234,7 @@ namespace RE
 		UInt8									unk045;					// 045
 		UInt8									unk046;					// 046
 		UInt8									pad047;					// 047
-		BaseExtraList							extraList;				// 048
+		ExtraDataList							extraList;				// 048
 		LightingCoordinates						lightingCoordinates;	// 060 - XCLL if interior, XCLC if exterior
 		TESObjectLAND*							land;					// 068
 		float									waterHeight;			// 070 - XCLW

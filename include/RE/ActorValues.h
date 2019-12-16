@@ -171,7 +171,9 @@ namespace RE
 		kGrabActorOffset = 160,
 		kGrabbed = 161,
 		kUnknown162 = 162,
-		kReflectDamage = 163
+		kReflectDamage = 163,
+
+		kTotal
 	};
 
 
@@ -341,6 +343,8 @@ namespace RE
 		kGrabActorOffset = 160,
 		kGrabbed = 161,
 		kUnknown162 = 162,
-		kReflectDamage = 163
+		kReflectDamage = 163,
+
+		kTotal
 	};
 }

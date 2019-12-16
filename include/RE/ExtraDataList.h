@@ -14,7 +14,7 @@ namespace RE
 	class InventoryChanges;
 
 
-	class BaseExtraList
+	class ExtraDataList
 	{
 	public:
 		template <class T>
@@ -128,8 +128,8 @@ namespace RE
 		using const_iterator = iterator_base<const BSExtraData>;
 
 
-		BaseExtraList();
-		~BaseExtraList();
+		ExtraDataList();
+		~ExtraDataList();
 
 		TES_HEAP_REDEFINE_NEW();
 
@@ -187,32 +187,32 @@ namespace RE
 		PresenceBitfield*		_presence;	// 08
 		mutable BSReadWriteLock	_lock;		// 10
 	};
-	STATIC_ASSERT(sizeof(BaseExtraList) == 0x18);
+	STATIC_ASSERT(sizeof(ExtraDataList) == 0x18);
 
 
 	template <class T>
-	inline T* BaseExtraList::GetByType()
+	inline T* ExtraDataList::GetByType()
 	{
 		return static_cast<T*>(GetByType(static_cast<ExtraDataType>(T::kExtraTypeID)));
 	}
 
 
 	template <class T>
-	inline const T* BaseExtraList::GetByType() const
+	inline const T* ExtraDataList::GetByType() const
 	{
 		return static_cast<const T*>(GetByType(static_cast<ExtraDataType>(T::kExtraTypeID)));
 	}
 
 
 	template <class T>
-	inline bool BaseExtraList::HasType() const
+	inline bool ExtraDataList::HasType() const
 	{
 		return HasType(static_cast<ExtraDataType>(T::kExtraTypeID));
 	}
 
 
 	template <class T>
-	inline bool BaseExtraList::Remove(T* a_toRemove)
+	inline bool ExtraDataList::Remove(T* a_toRemove)
 	{
 		return Remove(static_cast<ExtraDataType>(T::kExtraTypeID), a_toRemove);
 	}
