@@ -156,6 +156,7 @@ namespace RE
 		BSExtraData*			Add(BSExtraData* a_toAdd);
 		const char*				GenerateName(TESForm* a_form);
 		bool					GetAshPileRefHandle(RefHandle& a_refHandle);
+		SInt32					GetCount() const;
 		BGSEncounterZone*		GetEncounterZone();
 		ExtraTextDisplayData*	GetExtraTextDisplayData();
 		TESObjectREFR*			GetLinkedRef(BGSKeyword* a_keyword);

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cassert>
 
 #include "RE/BSTSingleton.h"
 #include "RE/FormTypes.h"
@@ -28,7 +29,7 @@ namespace RE
 
 		struct DefaultObjects
 		{
-			enum
+			enum DefaultObject
 			{
 				kWerewolfChange = 0,
 				kSittingAngleLimit = 1,
@@ -350,6 +351,7 @@ namespace RE
 				kTotal = 364
 			};
 		};
+		using DefaultObject = DefaultObjects::DefaultObject;
 
 
 		virtual ~BGSDefaultObjectManager();					// 00
@@ -360,7 +362,8 @@ namespace RE
 
 		static BGSDefaultObjectManager* GetSingleton();
 
-		template <class T = TESForm> T* GetObject(std::size_t a_idx);
+		TESForm*				GetObject(std::size_t a_idx);
+		template <class T> T*	GetObject(std::size_t a_idx);
 
 
 		// members
@@ -374,6 +377,13 @@ namespace RE
 	template <class T>
 	inline T* BGSDefaultObjectManager::GetObject(std::size_t a_idx)
 	{
-		return loadedStates[a_idx] ? static_cast<T*>(objects[a_idx]) : 0;
+		auto obj = GetObject(a_idx);
+		if (obj) {
+			bool isType = obj->Is(static_cast<FormType>(T::kTypeID));
+			assert(isType);
+			return isType ? static_cast<T*>(obj) : 0;
+		} else {
+			return 0;
+		}
 	}
 }

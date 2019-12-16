@@ -70,6 +70,12 @@ namespace RE
 	}
 
 
+	bool ExtraTextDisplayData::IsPlayerSet() const
+	{
+		return type == Type::kPlayerSet;
+	}
+
+
 	void ExtraTextDisplayData::SetName(const char* a_name)
 	{
 		if (message) {

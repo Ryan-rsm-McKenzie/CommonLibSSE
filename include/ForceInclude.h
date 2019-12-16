@@ -9,6 +9,7 @@
 #undef far
 #undef GetClassName
 #undef GetFileAttributes
+#undef GetForm
 #undef GetObject
 #undef LoadIcon
 #undef max

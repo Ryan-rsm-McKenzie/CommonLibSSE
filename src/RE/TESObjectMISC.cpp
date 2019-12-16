@@ -1,10 +1,15 @@
 #include "RE/TESObjectMISC.h"
 
+#include "RE/BGSDefaultObjectManager.h"
+
 
 namespace RE
 {
 	TESObjectMISC* TESObjectMISC::GetGoldForm()
 	{
-		return RE::TESForm::LookupByID<TESObjectMISC>(0x0000000F);
+		using Object = BGSDefaultObjectManager::DefaultObject;
+
+		auto dobj = BGSDefaultObjectManager::GetSingleton();
+		return dobj->GetObject<TESObjectMISC>(Object::kCaps001);
 	}
 }

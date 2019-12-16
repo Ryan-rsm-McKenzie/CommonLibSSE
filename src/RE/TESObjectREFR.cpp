@@ -2,11 +2,11 @@
 
 #include "skse64/GameReferences.h"
 
+#include <cassert>
 #include <limits>
 
 #include "RE/BSFixedString.h"
 #include "RE/ExtraContainerChanges.h"
-#include "RE/ExtraDataTypes.h"
 #include "RE/ExtraFlags.h"
 #include "RE/ExtraLock.h"
 #include "RE/ExtraOwnership.h"
@@ -14,14 +14,13 @@
 #include "RE/ExtraTextDisplayData.h"
 #include "RE/FormTraits.h"
 #include "RE/InventoryChanges.h"
+#include "RE/InventoryEntryData.h"
 #include "RE/Misc.h"
 #include "RE/NiNode.h"
 #include "RE/Offsets.h"
-#include "RE/TESActorBase.h"
+#include "RE/TESContainer.h"
 #include "RE/TESFaction.h"
-#include "RE/TESFullName.h"
 #include "RE/TESNPC.h"
-#include "RE/TESObjectCONT.h"
 #include "REL/Relocation.h"
 
 
@@ -98,6 +97,46 @@ namespace RE
 		} else {
 			return 0;
 		}
+	}
+
+
+	auto TESObjectREFR::GetInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter)
+		-> InventoryMap
+	{
+		using mapped_type = typename InventoryMap::mapped_type;
+
+		InventoryMap results;
+
+		auto invChanges = GetInventoryChanges();
+		if (invChanges->entryList) {
+			for (auto& entry : *invChanges->entryList) {
+				if (entry && entry->object && a_filter(entry->object)) {
+					auto it = results.insert(std::make_pair(entry->object, mapped_type(entry->countDelta, entry)));
+					assert(it.second);
+				}
+			}
+		}
+
+		auto container = GetContainer();
+		if (container) {
+			container->ForEach([&](TESContainer::Entry* a_entry) -> bool
+			{
+				if (a_entry->object && a_filter(a_entry->object)) {
+					auto it = results.find(a_entry->object);
+					if (it == results.end()) {
+						auto entryData = new InventoryEntryData(a_entry->object, 0);
+						invChanges->AddEntryData(entryData);
+						auto insIt = results.insert(std::make_pair(a_entry->object, mapped_type(a_entry->count, entryData)));
+						assert(insIt.second);
+					} else {
+						it->second.first += a_entry->count;
+					}
+				}
+				return true;
+			});
+		}
+
+		return results;
 	}
 
 

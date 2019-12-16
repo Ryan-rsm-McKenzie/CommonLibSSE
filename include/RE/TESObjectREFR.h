@@ -1,5 +1,10 @@
 #pragma once
 
+#include <unordered_map>
+#include <utility>
+
+#include "function_ref.h"
+
 #include "RE/BSFixedString.h"
 #include "RE/BSHandleRefObject.h"
 #include "BSTArray.h"
@@ -20,6 +25,7 @@ namespace RE
 	class BSFaceGenNiNode;
 	class BSFlattenedBoneTree;
 	class InventoryChanges;
+	class InventoryEntryData;
 	class MagicCaster;
 	class MagicTarget;
 	class NiAVObject;
@@ -44,6 +50,10 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_TESObjectREFR;
+
+
+		using Count = SInt32;
+		using InventoryMap = std::unordered_map<TESBoundObject*, std::pair<Count, InventoryEntryData*>>;
 
 
 		enum { kTypeID = FormType::Reference };
@@ -298,6 +308,7 @@ namespace RE
 		float				GetBaseScale() const;
 		TESContainer*		GetContainer() const;
 		TESFaction*			GetFactionOwner() const;
+		InventoryMap		GetInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);
 		InventoryChanges*	GetInventoryChanges();	// Creates inventory changes if none found
 		TESObjectREFR*		GetLinkedRef(BGSKeyword* a_keyword);
 		SInt32				GetLockLevel() const;

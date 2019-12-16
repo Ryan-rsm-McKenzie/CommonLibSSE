@@ -30,7 +30,10 @@ namespace RE
 
 
 		static TESDataHandler*	GetSingleton();
+
 		UInt32					LoadScripts();
+		TESForm*				LookupForm(FormID a_rawFormID, std::string_view a_modName);
+		template <class T> T*	LookupForm(FormID a_rawFormID, std::string_view a_modName);
 
 		const TESFile*			LookupModByName(std::string_view a_modName);
 		std::optional<UInt8>	GetModIndex(std::string_view a_modName);
@@ -81,6 +84,19 @@ namespace RE
 	STATIC_ASSERT(offsetof(TESDataHandler, addonNodes) == 0xD20);
 	STATIC_ASSERT(offsetof(TESDataHandler, modList) == 0xD60);
 	STATIC_ASSERT(sizeof(TESDataHandler) == 0xDC0);
+
+
+	template <class T>
+	T* TESDataHandler::LookupForm(FormID a_rawFormID, std::string_view a_modName)
+	{
+		auto form = LookupForm(a_rawFormID, a_modName);
+		if (!form) {
+			return 0;
+		}
+
+		auto type = static_cast<FormType>(T::kTypeID);
+		return form->Is(type) ? static_cast<T*>(form) : 0;
+	}
 
 
 	template <class T>

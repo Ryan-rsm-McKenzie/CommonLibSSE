@@ -664,6 +664,8 @@ namespace RE
 			constexpr std::uintptr_t Dtor = 0x001D92F0;							// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 90 8B 44 24 68 41 89 06 48 83 C4 38
 			constexpr std::uintptr_t GenerateLeveledListChanges = 0x001E08B0;	// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 44 0F B7 F8
+			constexpr std::uintptr_t GetNextUniqueID = 0x001ECD33;				// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 40 84 F6 75 08
 			constexpr std::uintptr_t InitContainer = 0x001E9D90;				// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 48 85 ED 74 3F

@@ -5,6 +5,7 @@
 #include "RE/BGSKeyword.h"
 #include "RE/BSExtraData.h"
 #include "RE/ExtraAshPileRef.h"
+#include "RE/ExtraCount.h"
 #include "RE/ExtraEncounterZone.h"
 #include "RE/ExtraHealth.h"
 #include "RE/ExtraLinkedRef.h"
@@ -226,6 +227,13 @@ namespace RE
 			a_refHandle = *g_invalidRefHandle;
 		}
 		return a_refHandle != *g_invalidRefHandle;
+	}
+
+
+	SInt32 ExtraDataList::GetCount() const
+	{
+		auto xCount = GetByType<ExtraCount>();
+		return xCount ? xCount->count : 1;
 	}
 
 

@@ -2,6 +2,7 @@
 
 #include "RE/Offsets.h"
 #include "RE/TESFile.h"
+#include "RE/TESForm.h"
 #include "REL/Relocation.h"
 
 
@@ -19,6 +20,21 @@ namespace RE
 		using func_t = function_type_t<decltype(&TESDataHandler::LoadScripts)>;
 		REL::Offset<func_t*> func(Offset::TESDataHandler::LoadScripts);
 		return func(this);
+	}
+
+
+	TESForm* TESDataHandler::LookupForm(FormID a_rawFormID, std::string_view a_modName)
+	{
+		auto file = LookupModByName(a_modName);
+		if (!file || file->modIndex == 0xFF) {
+			return 0;
+		}
+
+		FormID formID = file->modIndex << (3 * 8);
+		formID += file->lightIndex << ((1 * 8) + 4);
+		formID += a_rawFormID;
+
+		return TESForm::LookupByID(formID);
 	}
 
 

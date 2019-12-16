@@ -10,23 +10,18 @@
 #include "RE/BGSColorForm.h"
 #include "RE/BSFaceGenAnimationData.h"
 #include "RE/ExtraCanTalkToPlayer.h"
-#include "RE/ExtraContainerChanges.h"
 #include "RE/ExtraFactionChanges.h"
 #include "RE/HighProcess.h"
-#include "RE/InventoryChanges.h"
 #include "RE/InventoryEntryData.h"
 #include "RE/MiddleProcess.h"
 #include "RE/Misc.h"
 #include "RE/NiColor.h"
 #include "RE/NiNode.h"
 #include "RE/Offsets.h"
-#include "RE/TESActorBaseData.h"
-#include "RE/TESContainer.h"
 #include "RE/TESFaction.h"
 #include "RE/TESNPC.h"
 #include "RE/TESObjectMISC.h"
 #include "RE/TESRace.h"
-#include "RE/TESWorldSpace.h"
 #include "REL/Relocation.h"
 
 
@@ -249,46 +244,6 @@ namespace RE
 		using func_t = function_type_t<decltype(&Actor::GetHeight)>;
 		REL::Offset<func_t*> func(Offset::Actor::GetHeight);
 		return func(this);
-	}
-
-
-	auto Actor::GetInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter)
-		-> InventoryMap
-	{
-		using mapped_type = typename InventoryMap::mapped_type;
-
-		InventoryMap results;
-
-		auto invChanges = GetInventoryChanges();
-		if (invChanges->entryList) {
-			for (auto& entry : *invChanges->entryList) {
-				if (entry->object && a_filter(entry->object)) {
-					auto it = results.insert(std::make_pair(entry->object, mapped_type(entry->countDelta, entry)));
-					assert(it.second);
-				}
-			}
-		}
-
-		auto container = GetContainer();
-		if (container) {
-			container->ForEach([&](TESContainer::Entry* a_entry) -> bool
-			{
-				if (a_entry->object && a_filter(a_entry->object)) {
-					auto it = results.find(a_entry->object);
-					if (it == results.end()) {
-						auto entryData = new InventoryEntryData(a_entry->object, 0);
-						invChanges->AddEntryData(entryData);
-						auto insIt = results.insert(std::make_pair(a_entry->object, mapped_type(a_entry->count, entryData)));
-						assert(insIt.second);
-					} else {
-						it->second.first += a_entry->count;
-					}
-				}
-				return true;
-			});
-		}
-
-		return results;
 	}
 
 

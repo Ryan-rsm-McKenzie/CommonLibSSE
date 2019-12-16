@@ -53,6 +53,14 @@ namespace RE
 	}
 
 
+	UInt16 InventoryChanges::GetNextUniqueID()
+	{
+		using func_t = function_type_t<decltype(&InventoryChanges::GetNextUniqueID)>;
+		REL::Offset<func_t*> func(Offset::InventoryChanges::GetNextUniqueID);
+		return func(this);
+	}
+
+
 	void InventoryChanges::InitContainer()
 	{
 		using func_t = function_type_t<decltype(&InventoryChanges::InitContainer)>;

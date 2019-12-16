@@ -1,8 +1,5 @@
 #pragma once
 
-#include <unordered_map>
-#include <utility>
-
 #include "RE/ActiveEffect.h"
 #include "RE/ActorState.h"
 #include "RE/ActorValueOwner.h"
@@ -47,10 +44,6 @@ namespace RE
 
 	public:
 		inline static const void* RTTI = RTTI_Actor;
-
-
-		using Count = SInt32;
-		using InventoryMap = std::unordered_map<TESBoundObject*, std::pair<Count, InventoryEntryData*>>;
 
 
 		enum { kTypeID = FormType::ActorCharacter };
@@ -419,7 +412,6 @@ namespace RE
 		TESForm*					GetEquippedObject(bool a_leftHand) const;
 		SInt32						GetGoldAmount();
 		float						GetHeight();
-		InventoryMap				GetInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);
 		UInt16						GetLevel() const;
 		TESRace*					GetRace() const;
 		bool						HasPerk(BGSPerk* a_perk) const;

@@ -22,14 +22,14 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { reutrn kSoul; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return level != a_rhs->level; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return containedSoul != a_rhs->containedSoul; }
 
 
 		// members
-		SoulLevel	level;	// 10
-		UInt8		pad11;	// 11
-		UInt16		pad12;	// 12
-		UInt32		pad14;	// 14
+		SoulLevel	containedSoul;	// 10
+		UInt8		pad11;			// 11
+		UInt16		pad12;			// 12
+		UInt32		pad14;			// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraSoul) == 0x18);
 }

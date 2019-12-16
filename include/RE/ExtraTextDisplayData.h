@@ -37,6 +37,7 @@ namespace RE
 		virtual ExtraDataType GetType() const override;	// 01 - { return kTextDisplayData; }
 
 		const char*	GenerateName(TESForm* a_form, float a_temperFactor);
+		bool		IsPlayerSet() const;
 		void		SetName(const char* a_name);
 
 
