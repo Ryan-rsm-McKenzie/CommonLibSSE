@@ -124,6 +124,7 @@ namespace RE
 		SInt32		GetGoldValue() const;
 		const char*	GetName() const;
 		float		GetWeight() const;
+		bool		HasVMAD() const;
 		bool		HasWorldModel() const;
 		bool		IsAmmo() const;
 		bool		IsArmor() const;

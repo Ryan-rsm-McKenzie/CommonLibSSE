@@ -1,5 +1,7 @@
 #include "RE/TESForm.h"
 
+#include "RE/BSScript/Internal/VirtualMachine.h"
+#include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/ExtraEnchantment.h"
 #include "RE/FormTraits.h"
 #include "RE/GlobalLookupInfo.h"
@@ -107,6 +109,23 @@ namespace RE
 		} else {
 			return -1.0;
 		}
+	}
+
+
+	bool TESForm::HasVMAD() const
+	{
+		auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+		if (!vm) {
+			return false;
+		}
+
+		auto policy = vm->GetHandlePolicy();
+		if (!policy) {
+			return false;
+		}
+
+		auto handle = policy->GetHandle(formType, this);
+		return handle != policy->GetInvalidHandle();
 	}
 
 

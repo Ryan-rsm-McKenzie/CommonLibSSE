@@ -26,11 +26,11 @@ namespace RE
 
 
 		// members
-		BSFixedString	_setPctName;		// 28
-		BSFixedString	_setBlinkingName;	// 30
-		BSFixedString	_fadeOutName;		// 38
-		float			_fillPct;			// 40
-		UInt32			_pad44;				// 44
+		BSFixedString	setPctName;			// 28
+		BSFixedString	setBlinkingName;	// 30
+		BSFixedString	fadeOutName;		// 38
+		float			fillPct;			// 40
+		UInt32			pad44;				// 44
 	};
 	STATIC_ASSERT(sizeof(HUDMeter) == 0x48);
 }

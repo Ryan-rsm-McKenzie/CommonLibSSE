@@ -220,7 +220,7 @@ namespace RE
 		virtual void					GetStartingPosition(NiPoint3& a_position);																																					// 53
 		virtual void					Unk_54(void);																																												// 54
 		virtual void					Unk_55(void);																																												// 55
-		virtual RefHandle&				RemoveItem(RefHandle& a_dropHandle, TESForm* a_item, SInt32 a_count, RemoveType a_mode, ExtraDataList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0);		// 56
+		virtual RefHandle&				RemoveItem(RefHandle& a_dropHandle, TESBoundObject* a_item, SInt32 a_count, RemoveType a_mode, ExtraDataList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0);	// 56
 		virtual bool					EquipItem(TESBoundObject* a_item, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5);																								// 57
 		virtual void					Unk_58(void);																																												// 58 - { return; }
 		virtual void					Unk_59(void);																																												// 59 - { return; }

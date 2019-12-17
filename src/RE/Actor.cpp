@@ -22,6 +22,7 @@
 #include "RE/TESNPC.h"
 #include "RE/TESObjectMISC.h"
 #include "RE/TESRace.h"
+#include "RE/TESWorldSpace.h"
 #include "REL/Relocation.h"
 
 

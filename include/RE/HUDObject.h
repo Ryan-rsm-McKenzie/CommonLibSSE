@@ -50,8 +50,8 @@ namespace RE
 
 
 		// members
-		GPtr<GFxMovieView>	_view;	// 08
-		GFxValue			_root;	// 10 - kDisplayObject - "_level0.HUDMovieBaseInstance"
+		GPtr<GFxMovieView>	view;	// 08
+		GFxValue			root;	// 10 - kDisplayObject - "_level0.HUDMovieBaseInstance"
 	};
 	STATIC_ASSERT(sizeof(HUDObject) == 0x28);
 }

@@ -5012,5 +5012,8 @@
     <ClInclude Include="include\RE\BSTriShape.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\BSGeometry</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\TESMoveAttachDetachEvent.h">
+      <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -170,223 +170,223 @@ namespace RE
 		STATIC_ASSERT(sizeof(ActorValueMap) == 0x20);
 
 
-		virtual	~Actor();																																																							// 000
+		virtual	~Actor();																																																								// 000
 
 		// override (TESObjectREFR)
-		virtual void							SaveBuffer(BGSSaveFormBuffer* a_buf) override;																																						// 00E
-		virtual void							LoadBuffer(BGSLoadFormBuffer* a_buf) override;																																						// 00F
-		virtual void							Unk_10(void) override;																																												// 010
-		virtual void							Unk_11(void) override;																																												// 011
-		virtual void							Unk_12(void) override;																																												// 012
-		virtual void							InitItem() override;																																												// 013
-		virtual void							SetFlag00000020(bool a_set) override;																																								// 023
-		virtual void							Unk_3B(void) override;																																												// 03B
-		virtual BGSLocation*					GetStartingLocation() override;																																										// 03C - { return startingLocation; }
-		virtual bool							GetStartingData(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_veryRarelyUsedFallback) override;																// 03D
-		virtual void							SetStartingLocation(BGSLocation* a_location) override;																																				// 03E - { startingLocation = a_location; }
-		virtual void							Unk_3F(void) override;																																												// 03F
-		virtual void							SayQueuedDialogue() override;																																										// 040
-		virtual void							Unk_41(void) override;																																												// 041
-		virtual void							Unk_45(void) override;																																												// 045
-		virtual bool							HasKeyword(BGSKeyword* a_keyword) override;																																							// 048
-		virtual void							Unk_49(void) override;																																												// 049 - { return 0; }
-		virtual BGSScene*						GetCurrentScene() const override;																																									// 04A
-		virtual void							SetCurrentScene(BGSScene* a_scene) override;																																						// 04B
-		virtual void							Unk_4C(void) override;																																												// 04C
-		virtual void							Unk_4D(void) override;																																												// 04D - { return unk220; }
-		virtual void							Unk_4E(void) override;																																												// 04E - { unk220 = a_arg1; }
-		virtual void							Unk_4F(void) override;																																												// 04F
-		virtual void							GetStartingRotation(NiPoint3& a_rotation) override;																																					// 052
-		virtual void							GetStartingPosition(NiPoint3& a_position) override;																																					// 053
-		virtual RefHandle&						RemoveItem(RefHandle& a_dropHandle, TESForm* a_item, SInt32 a_count, RemoveType a_mode, ExtraDataList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0) override;		// 056
-		virtual bool							EquipItem(TESBoundObject* a_item, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5) override;																								// 057
-		virtual void							Unk_58(void) override;																																												// 058 - attack target?
-		virtual void							Unk_59(void) override;																																												// 059
-		virtual void							AddItem(TESBoundObject* a_item, ExtraDataList* a_extraList, SInt32 a_count, TESObjectREFR* a_fromRefr) override;																					// 05A
-		virtual void							GetMarkerPosition(NiPoint3& a_pos) override;																																						// 05B
-		virtual MagicCaster*					GetMagicCaster(UInt32 a_slot) const override;																																						// 05C
-		virtual MagicTarget*					GetMagicTarget() const override;																																									// 05D - { return static_cast<MagicTarget*>(this); }
-		virtual bool							IsChild() const override;																																											// 05E - { return false; }
-		virtual BSFaceGenAnimationData*			GetFaceGenAnimationData() override;																																									// 063
-		virtual void							Unk_65(void) override;																																												// 065
-		virtual void							Unk_66(void) override;																																												// 066
-		virtual void							Unk_67(void) override;																																												// 067 - related to vampire lord cape
-		virtual void							Unk_68(void) override;																																												// 068
-		virtual void							Unk_69(void) override;																																												// 069
-		virtual void							Unk_6A(void) override;																																												// 06A
-		virtual void							Unk_6C(void) override;																																												// 06C
-		virtual void							Unk_72(void) override;																																												// 072
-		virtual NiPoint3*						GetBoundLeftFrontBottom(NiPoint3& a_out) const override;																																			// 073
-		virtual NiPoint3*						GetBoundRightBackTop(NiPoint3& a_out) const override;																																				// 074
-		virtual void							Unk_75(void) override;																																												// 075 - "ActorValue GetWeaponSkill()"? really weird call, only works for right hand, and defaults to 1
-		virtual void							Unk_78(void) override;																																												// 078
-		virtual void							Unk_79(void) override;																																												// 079
-		virtual void							Unk_7A(void) override;																																												// 07A - { return 0; }
-		virtual void							Unk_7B(void) override;																																												// 07B
-		virtual void							Unk_7C(void) override;																																												// 07C
-		virtual void							Unk_7D(void) override;																																												// 07D
-		virtual void							Unk_82(void) override;																																												// 082
-		virtual void							SetBaseForm(TESBoundObject* a_object) override;																																						// 084
-		virtual void							Unk_85(void) override;																																												// 085
-		virtual void							Unk_86(void) override;																																												// 086
-		virtual void							Unk_87(void) override;																																												// 087
-		virtual void							Disable() override;																																													// 089
-		virtual void							ResetInventory(bool a_regenerate) override;																																							// 08A
-		virtual void							Unk_8B(void) override;																																												// 08B
-		virtual void							Unk_8C(void) override;																																												// 08C
-		virtual void							Unk_90(void) override;																																												// 090
-		virtual void							Unk_91(void) override;																																												// 091
-		virtual void							Unk_92(void) override;																																												// 092
-		virtual void							Unk_93(void) override;																																												// 093
-		virtual void							Unk_95(void) override;																																												// 095
-		virtual void							Unk_96(void) override;																																												// 096
-		virtual void							Unk_98(void) override;																																												// 098
-		virtual bool							IsDead(bool a_bleedout = true) override;																																							// 099
-		virtual void							Unk_9C(void) override;																																												// 09C
-		virtual void							Unk_9D(void) override;																																												// 09D
-		virtual void							Unk_9E(void) override;																																												// 09E
-		virtual void							UnequipItem(UInt64 a_arg1, TESBoundObject* a_item) override;																																		// 0A1
+		virtual void							SaveBuffer(BGSSaveFormBuffer* a_buf) override;																																							// 00E
+		virtual void							LoadBuffer(BGSLoadFormBuffer* a_buf) override;																																							// 00F
+		virtual void							Unk_10(void) override;																																													// 010
+		virtual void							Unk_11(void) override;																																													// 011
+		virtual void							Unk_12(void) override;																																													// 012
+		virtual void							InitItem() override;																																													// 013
+		virtual void							SetFlag00000020(bool a_set) override;																																									// 023
+		virtual void							Unk_3B(void) override;																																													// 03B
+		virtual BGSLocation*					GetStartingLocation() override;																																											// 03C - { return startingLocation; }
+		virtual bool							GetStartingData(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_veryRarelyUsedFallback) override;																	// 03D
+		virtual void							SetStartingLocation(BGSLocation* a_location) override;																																					// 03E - { startingLocation = a_location; }
+		virtual void							Unk_3F(void) override;																																													// 03F
+		virtual void							SayQueuedDialogue() override;																																											// 040
+		virtual void							Unk_41(void) override;																																													// 041
+		virtual void							Unk_45(void) override;																																													// 045
+		virtual bool							HasKeyword(BGSKeyword* a_keyword) override;																																								// 048
+		virtual void							Unk_49(void) override;																																													// 049 - { return 0; }
+		virtual BGSScene*						GetCurrentScene() const override;																																										// 04A
+		virtual void							SetCurrentScene(BGSScene* a_scene) override;																																							// 04B
+		virtual void							Unk_4C(void) override;																																													// 04C
+		virtual void							Unk_4D(void) override;																																													// 04D - { return unk220; }
+		virtual void							Unk_4E(void) override;																																													// 04E - { unk220 = a_arg1; }
+		virtual void							Unk_4F(void) override;																																													// 04F
+		virtual void							GetStartingRotation(NiPoint3& a_rotation) override;																																						// 052
+		virtual void							GetStartingPosition(NiPoint3& a_position) override;																																						// 053
+		virtual RefHandle&						RemoveItem(RefHandle& a_dropHandle, TESBoundObject* a_item, SInt32 a_count, RemoveType a_mode, ExtraDataList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0) override;	// 056
+		virtual bool							EquipItem(TESBoundObject* a_item, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5) override;																									// 057
+		virtual void							Unk_58(void) override;																																													// 058 - attack target?
+		virtual void							Unk_59(void) override;																																													// 059
+		virtual void							AddItem(TESBoundObject* a_item, ExtraDataList* a_extraList, SInt32 a_count, TESObjectREFR* a_fromRefr) override;																						// 05A
+		virtual void							GetMarkerPosition(NiPoint3& a_pos) override;																																							// 05B
+		virtual MagicCaster*					GetMagicCaster(UInt32 a_slot) const override;																																							// 05C
+		virtual MagicTarget*					GetMagicTarget() const override;																																										// 05D - { return static_cast<MagicTarget*>(this); }
+		virtual bool							IsChild() const override;																																												// 05E - { return false; }
+		virtual BSFaceGenAnimationData*			GetFaceGenAnimationData() override;																																										// 063
+		virtual void							Unk_65(void) override;																																													// 065
+		virtual void							Unk_66(void) override;																																													// 066
+		virtual void							Unk_67(void) override;																																													// 067 - related to vampire lord cape
+		virtual void							Unk_68(void) override;																																													// 068
+		virtual void							Unk_69(void) override;																																													// 069
+		virtual void							Unk_6A(void) override;																																													// 06A
+		virtual void							Unk_6C(void) override;																																													// 06C
+		virtual void							Unk_72(void) override;																																													// 072
+		virtual NiPoint3*						GetBoundLeftFrontBottom(NiPoint3& a_out) const override;																																				// 073
+		virtual NiPoint3*						GetBoundRightBackTop(NiPoint3& a_out) const override;																																					// 074
+		virtual void							Unk_75(void) override;																																													// 075 - "ActorValue GetWeaponSkill()"? really weird call, only works for right hand, and defaults to 1
+		virtual void							Unk_78(void) override;																																													// 078
+		virtual void							Unk_79(void) override;																																													// 079
+		virtual void							Unk_7A(void) override;																																													// 07A - { return 0; }
+		virtual void							Unk_7B(void) override;																																													// 07B
+		virtual void							Unk_7C(void) override;																																													// 07C
+		virtual void							Unk_7D(void) override;																																													// 07D
+		virtual void							Unk_82(void) override;																																													// 082
+		virtual void							SetBaseForm(TESBoundObject* a_object) override;																																							// 084
+		virtual void							Unk_85(void) override;																																													// 085
+		virtual void							Unk_86(void) override;																																													// 086
+		virtual void							Unk_87(void) override;																																													// 087
+		virtual void							Disable() override;																																														// 089
+		virtual void							ResetInventory(bool a_regenerate) override;																																								// 08A
+		virtual void							Unk_8B(void) override;																																													// 08B
+		virtual void							Unk_8C(void) override;																																													// 08C
+		virtual void							Unk_90(void) override;																																													// 090
+		virtual void							Unk_91(void) override;																																													// 091
+		virtual void							Unk_92(void) override;																																													// 092
+		virtual void							Unk_93(void) override;																																													// 093
+		virtual void							Unk_95(void) override;																																													// 095
+		virtual void							Unk_96(void) override;																																													// 096
+		virtual void							Unk_98(void) override;																																													// 098
+		virtual bool							IsDead(bool a_bleedout = true) override;																																								// 099
+		virtual void							Unk_9C(void) override;																																													// 09C
+		virtual void							Unk_9D(void) override;																																													// 09D
+		virtual void							Unk_9E(void) override;																																													// 09E
+		virtual void							UnequipItem(UInt64 a_arg1, TESBoundObject* a_item) override;																																			// 0A1
 
 		// override (MagicTarget)
-		virtual Actor*							GetMagicTargetActor() const override;																																								// 002 - { return this; }
-		virtual bool							IsActorMagicTarget() const override;																																								// 003 - { return true; }
-		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffects() override;																																										// 007
+		virtual Actor*							GetMagicTargetActor() const override;																																									// 002 - { return this; }
+		virtual bool							IsActorMagicTarget() const override;																																									// 003 - { return true; }
+		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffects() override;																																											// 007
 
 		// add
-		virtual void							Unk_A2(void);																																														// 0A2
-		virtual void							PlaySounds(TESBoundObject* a_item, bool a_pickup, bool a_consume);																																	// 0A3
-		virtual void							Unk_A4(void);																																														// 0A4
-		virtual void							Unk_A5(void);																																														// 0A5 - { return; }
-		virtual void							DrawSheatheWeapon(bool a_draw);																																										// 0A6
-		virtual void							Unk_A7(void);																																														// 0A7
-		virtual void							Unk_A8(void);																																														// 0A8
-		virtual void							Unk_A9(void);																																														// 0A9
-		virtual void							Unk_AA(void);																																														// 0AA
-		virtual void							Unk_AB(void);																																														// 0AB
-		virtual void							Unk_AC(void);																																														// 0AC
-		virtual void							Unk_AD(void);																																														// 0AD
-		virtual void							Unk_AE(void);																																														// 0AE - { return unk11F(); }
-		virtual void							Unk_AF(void);																																														// 0AF
-		virtual void							Unk_B0(void);																																														// 0B0
-		virtual void							Unk_B1(void);																																														// 0B1
-		virtual void							OnItemEquipped(bool a_playAnim);																																									// 0B2
-		virtual void							Unk_B3(void);																																														// 0B3 - { return 1; }
-		virtual void							Unk_B4(void);																																														// 0B4
-		virtual void							SetCrimeGold(TESFaction* a_faction, bool a_violent, SInt32 a_gold);																																	// 0B5
-		virtual void							ModCrimeGold(TESFaction* a_faction, bool a_violent, SInt32 a_amount);																																// 0B6
-		virtual void							AddCrimeGold(SInt32 a_amount, bool a_violent, TESFaction* a_faction);																																// 0B7
-		virtual SInt32							GetCrimeGold(const TESFaction* a_faction) const;																																					// 0B8
-		virtual void							SendToJail(TESFaction* a_faction, bool a_removeInventory, bool a_realJail);																															// 0B9 - { return; }
-		virtual void							Unk_BA(void);																																														// 0BA - { return; }
-		virtual void							PayCrimeGold(TESFaction* a_faction, bool a_goToJail, bool a_removeStolenItems);																														// 0BB - { return; }
-		virtual UInt32							IsCannibalizing();																																													// 0BC - { return 0; }
-		virtual void							Unk_BD(void);																																														// 0BD - { return; }
-		virtual UInt32							IsVampireFeeding();																																													// 0BE - { return 0; }
-		virtual void							Unk_BF(void);																																														// 0BF - { return; }
-		virtual void							Unk_C0(void);																																														// 0C0 - { return; }
-		virtual void							Unk_C1(void);																																														// 0C1 - { return; }
-		virtual void							Unk_C2(void);																																														// 0C2
-		virtual void							Unk_C3(void);																																														// 0C3
-		virtual void							Unk_C4(void);																																														// 0C4 - { return; }
-		virtual void							Unk_C5(void);																																														// 0C5 - { return 1; }
-		virtual void							Unk_C6(void) = 0;																																													// 0C6
-		virtual void							Unk_C7(void);																																														// 0C7 - { return 1.0; }
-		virtual void							Unk_C8(void);																																														// 0C8
-		virtual void							Unk_C9(void);																																														// 0C9
-		virtual void							OnArmorActorValueChanged();																																											// 0CA - { return; }
-		virtual void							DropItem(RefHandle& a_droppedItemHandle, TESForm* a_item, ExtraDataList* a_extraList, UInt32 a_count, void* a_arg5 = 0, void* a_arg6 = 0);															// 0CB
-		virtual void							PickUpItem(TESObjectREFR* a_item, UInt32 a_count, bool a_arg3 = false, bool a_playSound = true);																									// 0CC
-		virtual void							Unk_CD(void);																																														// 0CD
-		virtual void							Unk_CE(void);																																														// 0CE
-		virtual bool							AddShout(TESShout* a_shout);																																										// 0CF
-		virtual void							Unk_D0(void);																																														// 0D0 - { return; }
-		virtual void							Unk_D1(void);																																														// 0D1
-		virtual void							Unk_D2(void);																																														// 0D2
-		virtual void							Unk_D3(void);																																														// 0D3
-		virtual void							Unk_D4(void);																																														// 0D4
-		virtual void							Unk_D5(void);																																														// 0D5
-		virtual void							Unk_D6(void);																																														// 0D6
-		virtual void							Unk_D7(void);																																														// 0D7 - { return 0; }
-		virtual void							Unk_D8(void);																																														// 0D8
-		virtual void							Unk_D9(void);																																														// 0D9
-		virtual void							Unk_DA(void);																																														// 0DA
-		virtual void							Unk_DB(void);																																														// 0DB
-		virtual void							Unk_DC(void);																																														// 0DC - { return; }
-		virtual void							Unk_DD(void);																																														// 0DD
-		virtual void							Unk_DE(void);																																														// 0DE
-		virtual void							Unk_DF(void);																																														// 0DF
-		virtual void							Unk_E0(void);																																														// 0E0
-		virtual void							Unk_E1(void);																																														// 0E1
-		virtual void							Unk_E2(void);																																														// 0E2
-		virtual bool							IsInCombat();																																														// 0E3
-		virtual void							Unk_E4(void);																																														// 0E4
-		virtual void							Unk_E5(void);																																														// 0E5
-		virtual void							Unk_E6(void);																																														// 0E6 - { return 0.0; }
-		virtual void							Unk_E7(void);																																														// 0E7 - { return 0.0; }
-		virtual void							Unk_E8(void);																																														// 0E8 - { return 0; }
-		virtual void							Unk_E9(void);																																														// 0E9 - { return 0; }
-		virtual void							Unk_EA(void);																																														// 0EA - { return 0; }
-		virtual void							Unk_EB(void);																																														// 0EB
-		virtual void							Unk_EC(void);																																														// 0EC
-		virtual void							Unk_ED(void);																																														// 0ED
-		virtual void							Unk_EE(void);																																														// 0EE
-		virtual void							OnWeaponSwing();																																													// 0EF
-		virtual void							Unk_F0(void);																																														// 0F0
-		virtual void							Unk_F1(void);																																														// 0F1
-		virtual void							Unk_F2(void);																																														// 0F2
-		virtual void							Unk_F3(void);																																														// 0F3
-		virtual void							Unk_F4(void);																																														// 0F4
-		virtual void							Unk_F5(void);																																														// 0F5
-		virtual void							Unk_F6(void);																																														// 0F6
-		virtual void							AdvanceSkill(ActorValue a_skillID, float a_points, UInt32 a_arg3, UInt32 a_arg4);																													// 0F7 - { return; }
-		virtual void							Unk_F8(void);																																														// 0F8
-		virtual bool							IsInFaction(TESFaction* faction);																																									// 0F9
-		virtual void							VisitPerks(PerkEntryVisitor& a_visitor);																																							// 0FA
-		virtual void							AddPerk(BGSPerk* a_perk, UInt32 a_rank = 0);																																						// 0FB - { return; }
-		virtual void							RemovePerk(BGSPerk* a_perk);																																										// 0FC - { return; }
-		virtual void							Unk_FD(void);																																														// 0FD - { return; }
-		virtual void							Unk_FE(void);																																														// 0FE - { return; }
-		virtual bool							CanProcessEntryPointPerkEntry(EntryPoint a_entryType);																																				// 0FF
-		virtual void							VisitEntryPointPerkEntries(EntryPoint a_entryType, PerkEntryVisitor& a_visitor);																													// 100
-		virtual void							Unk_101(void);																																														// 101 - related to ApplyPerksVisitor
-		virtual void							Unk_102(void);																																														// 102 - { return; }
-		virtual void							Unk_103(void);																																														// 103 - { return 0; }
-		virtual void							KillIfNoHealth(UInt32 a_unk1, float a_currentHealth);																																				// 104
-		virtual void							Unk_105(void);																																														// 105
-		virtual void							Unk_106(void);																																														// 106 - { return; }
-		virtual void							Unk_107(void);																																														// 107 - { return ~(unk0E0 >> 5) & 1; }
-		virtual void							Unk_108(void);																																														// 108
-		virtual void							Unk_109(void);																																														// 109
-		virtual void							Unk_10A(void);																																														// 10A - { return unk16C; }
-		virtual void							Unk_10B(void);																																														// 10B - { unk16C = a_arg1; }
-		virtual void							Unk_10C(void);																																														// 10C - { return unk170; }
-		virtual void							Unk_10D(void);																																														// 10D - { unk170 = a_arg1; }
-		virtual void							Unk_10E(void);																																														// 10E - related to attacking
-		virtual void							Unk_10F(void);																																														// 10F
-		virtual void							Unk_110(void);																																														// 110
-		virtual void							Unk_111(void);																																														// 111 - { return; }
-		virtual SInt32							GetCurrentShoutLevel();																																												// 112 - return -1 on error
-		virtual void							SetLastRiddenHorseHandle(RefHandle a_horseRefHandle);																																				// 113 - { return; }
-		virtual RefHandle&						GetLastRiddenHorseHandle(RefHandle& a_outHandle);																																					// 114 - { a_outHandle = *g_invalidHandle; }
-		virtual void							Unk_115(void);																																														// 115
-		virtual bool							IsNPCType();																																														// 116 - used for soulgems
-		virtual void							Unk_117(void);																																														// 117 - { return; }
-		virtual const BSFixedString&			GetResponseType();																																													// 118 - { return "ActorResponse"; } - retrieved from a global table of anim variables
-		virtual void							Unk_119(void);																																														// 119
-		virtual void							Unk_11A(void);																																														// 11A
-		virtual void							Unk_11B(void);																																														// 11B
-		virtual void							Unk_11C(void);																																														// 11C
-		virtual void							Unk_11D(void);																																														// 11D
-		virtual void							Unk_11E(void);																																														// 11E
-		virtual void							Unk_11F(void);																																														// 11F
-		virtual void							Unk_120(void);																																														// 120
-		virtual void							Unk_121(void);																																														// 121
-		virtual void							Unk_122(void);																																														// 122
-		virtual void							Unk_123(void);																																														// 123
-		virtual void							Unk_124(void);																																														// 124
-		virtual void							Unk_125(void);																																														// 125
-		virtual void							Unk_126(void);																																														// 126
-		virtual float							IncerceptActorValueChange(UInt32 a_avIndex, float a_avChangeBy);																																	// 127
+		virtual void							Unk_A2(void);																																															// 0A2
+		virtual void							PlaySounds(TESBoundObject* a_item, bool a_pickup, bool a_consume);																																		// 0A3
+		virtual void							Unk_A4(void);																																															// 0A4
+		virtual void							Unk_A5(void);																																															// 0A5 - { return; }
+		virtual void							DrawSheatheWeapon(bool a_draw);																																											// 0A6
+		virtual void							Unk_A7(void);																																															// 0A7
+		virtual void							Unk_A8(void);																																															// 0A8
+		virtual void							Unk_A9(void);																																															// 0A9
+		virtual void							Unk_AA(void);																																															// 0AA
+		virtual void							Unk_AB(void);																																															// 0AB
+		virtual void							Unk_AC(void);																																															// 0AC
+		virtual void							Unk_AD(void);																																															// 0AD
+		virtual void							Unk_AE(void);																																															// 0AE - { return unk11F(); }
+		virtual void							Unk_AF(void);																																															// 0AF
+		virtual void							Unk_B0(void);																																															// 0B0
+		virtual void							Unk_B1(void);																																															// 0B1
+		virtual void							OnItemEquipped(bool a_playAnim);																																										// 0B2
+		virtual void							Unk_B3(void);																																															// 0B3 - { return 1; }
+		virtual void							Unk_B4(void);																																															// 0B4
+		virtual void							SetCrimeGold(TESFaction* a_faction, bool a_violent, SInt32 a_gold);																																		// 0B5
+		virtual void							ModCrimeGold(TESFaction* a_faction, bool a_violent, SInt32 a_amount);																																	// 0B6
+		virtual void							AddCrimeGold(SInt32 a_amount, bool a_violent, TESFaction* a_faction);																																	// 0B7
+		virtual SInt32							GetCrimeGold(const TESFaction* a_faction) const;																																						// 0B8
+		virtual void							SendToJail(TESFaction* a_faction, bool a_removeInventory, bool a_realJail);																																// 0B9 - { return; }
+		virtual void							Unk_BA(void);																																															// 0BA - { return; }
+		virtual void							PayCrimeGold(TESFaction* a_faction, bool a_goToJail, bool a_removeStolenItems);																															// 0BB - { return; }
+		virtual UInt32							IsCannibalizing();																																														// 0BC - { return 0; }
+		virtual void							Unk_BD(void);																																															// 0BD - { return; }
+		virtual UInt32							IsVampireFeeding();																																														// 0BE - { return 0; }
+		virtual void							Unk_BF(void);																																															// 0BF - { return; }
+		virtual void							Unk_C0(void);																																															// 0C0 - { return; }
+		virtual void							Unk_C1(void);																																															// 0C1 - { return; }
+		virtual void							Unk_C2(void);																																															// 0C2
+		virtual void							Unk_C3(void);																																															// 0C3
+		virtual void							Unk_C4(void);																																															// 0C4 - { return; }
+		virtual void							Unk_C5(void);																																															// 0C5 - { return 1; }
+		virtual void							Unk_C6(void) = 0;																																														// 0C6
+		virtual void							Unk_C7(void);																																															// 0C7 - { return 1.0; }
+		virtual void							Unk_C8(void);																																															// 0C8
+		virtual void							Unk_C9(void);																																															// 0C9
+		virtual void							OnArmorActorValueChanged();																																												// 0CA - { return; }
+		virtual void							DropItem(RefHandle& a_droppedItemHandle, TESForm* a_item, ExtraDataList* a_extraList, UInt32 a_count, void* a_arg5 = 0, void* a_arg6 = 0);																// 0CB
+		virtual void							PickUpItem(TESObjectREFR* a_item, UInt32 a_count, bool a_arg3 = false, bool a_playSound = true);																										// 0CC
+		virtual void							Unk_CD(void);																																															// 0CD
+		virtual void							Unk_CE(void);																																															// 0CE
+		virtual bool							AddShout(TESShout* a_shout);																																											// 0CF
+		virtual void							Unk_D0(void);																																															// 0D0 - { return; }
+		virtual void							Unk_D1(void);																																															// 0D1
+		virtual void							Unk_D2(void);																																															// 0D2
+		virtual void							Unk_D3(void);																																															// 0D3
+		virtual void							Unk_D4(void);																																															// 0D4
+		virtual void							Unk_D5(void);																																															// 0D5
+		virtual void							Unk_D6(void);																																															// 0D6
+		virtual void							Unk_D7(void);																																															// 0D7 - { return 0; }
+		virtual void							Unk_D8(void);																																															// 0D8
+		virtual void							Unk_D9(void);																																															// 0D9
+		virtual void							Unk_DA(void);																																															// 0DA
+		virtual void							Unk_DB(void);																																															// 0DB
+		virtual void							Unk_DC(void);																																															// 0DC - { return; }
+		virtual void							Unk_DD(void);																																															// 0DD
+		virtual void							Unk_DE(void);																																															// 0DE
+		virtual void							Unk_DF(void);																																															// 0DF
+		virtual void							Unk_E0(void);																																															// 0E0
+		virtual void							Unk_E1(void);																																															// 0E1
+		virtual void							Unk_E2(void);																																															// 0E2
+		virtual bool							IsInCombat();																																															// 0E3
+		virtual void							Unk_E4(void);																																															// 0E4
+		virtual void							Unk_E5(void);																																															// 0E5
+		virtual void							Unk_E6(void);																																															// 0E6 - { return 0.0; }
+		virtual void							Unk_E7(void);																																															// 0E7 - { return 0.0; }
+		virtual void							Unk_E8(void);																																															// 0E8 - { return 0; }
+		virtual void							Unk_E9(void);																																															// 0E9 - { return 0; }
+		virtual void							Unk_EA(void);																																															// 0EA - { return 0; }
+		virtual void							Unk_EB(void);																																															// 0EB
+		virtual void							Unk_EC(void);																																															// 0EC
+		virtual void							Unk_ED(void);																																															// 0ED
+		virtual void							Unk_EE(void);																																															// 0EE
+		virtual void							OnWeaponSwing();																																														// 0EF
+		virtual void							Unk_F0(void);																																															// 0F0
+		virtual void							Unk_F1(void);																																															// 0F1
+		virtual void							Unk_F2(void);																																															// 0F2
+		virtual void							Unk_F3(void);																																															// 0F3
+		virtual void							Unk_F4(void);																																															// 0F4
+		virtual void							Unk_F5(void);																																															// 0F5
+		virtual void							Unk_F6(void);																																															// 0F6
+		virtual void							AdvanceSkill(ActorValue a_skillID, float a_points, UInt32 a_arg3, UInt32 a_arg4);																														// 0F7 - { return; }
+		virtual void							Unk_F8(void);																																															// 0F8
+		virtual bool							IsInFaction(TESFaction* faction);																																										// 0F9
+		virtual void							VisitPerks(PerkEntryVisitor& a_visitor);																																								// 0FA
+		virtual void							AddPerk(BGSPerk* a_perk, UInt32 a_rank = 0);																																							// 0FB - { return; }
+		virtual void							RemovePerk(BGSPerk* a_perk);																																											// 0FC - { return; }
+		virtual void							Unk_FD(void);																																															// 0FD - { return; }
+		virtual void							Unk_FE(void);																																															// 0FE - { return; }
+		virtual bool							CanProcessEntryPointPerkEntry(EntryPoint a_entryType);																																					// 0FF
+		virtual void							VisitEntryPointPerkEntries(EntryPoint a_entryType, PerkEntryVisitor& a_visitor);																														// 100
+		virtual void							Unk_101(void);																																															// 101 - related to ApplyPerksVisitor
+		virtual void							Unk_102(void);																																															// 102 - { return; }
+		virtual void							Unk_103(void);																																															// 103 - { return 0; }
+		virtual void							KillIfNoHealth(UInt32 a_unk1, float a_currentHealth);																																					// 104
+		virtual void							Unk_105(void);																																															// 105
+		virtual void							Unk_106(void);																																															// 106 - { return; }
+		virtual void							Unk_107(void);																																															// 107 - { return ~(unk0E0 >> 5) & 1; }
+		virtual void							Unk_108(void);																																															// 108
+		virtual void							Unk_109(void);																																															// 109
+		virtual void							Unk_10A(void);																																															// 10A - { return unk16C; }
+		virtual void							Unk_10B(void);																																															// 10B - { unk16C = a_arg1; }
+		virtual void							Unk_10C(void);																																															// 10C - { return unk170; }
+		virtual void							Unk_10D(void);																																															// 10D - { unk170 = a_arg1; }
+		virtual void							Unk_10E(void);																																															// 10E - related to attacking
+		virtual void							Unk_10F(void);																																															// 10F
+		virtual void							Unk_110(void);																																															// 110
+		virtual void							Unk_111(void);																																															// 111 - { return; }
+		virtual SInt32							GetCurrentShoutLevel();																																													// 112 - return -1 on error
+		virtual void							SetLastRiddenHorseHandle(RefHandle a_horseRefHandle);																																					// 113 - { return; }
+		virtual RefHandle&						GetLastRiddenHorseHandle(RefHandle& a_outHandle);																																						// 114 - { a_outHandle = *g_invalidHandle; }
+		virtual void							Unk_115(void);																																															// 115
+		virtual bool							IsNPCType();																																															// 116 - used for soulgems
+		virtual void							Unk_117(void);																																															// 117 - { return; }
+		virtual const BSFixedString&			GetResponseType();																																														// 118 - { return "ActorResponse"; } - retrieved from a global table of anim variables
+		virtual void							Unk_119(void);																																															// 119
+		virtual void							Unk_11A(void);																																															// 11A
+		virtual void							Unk_11B(void);																																															// 11B
+		virtual void							Unk_11C(void);																																															// 11C
+		virtual void							Unk_11D(void);																																															// 11D
+		virtual void							Unk_11E(void);																																															// 11E
+		virtual void							Unk_11F(void);																																															// 11F
+		virtual void							Unk_120(void);																																															// 120
+		virtual void							Unk_121(void);																																															// 121
+		virtual void							Unk_122(void);																																															// 122
+		virtual void							Unk_123(void);																																															// 123
+		virtual void							Unk_124(void);																																															// 124
+		virtual void							Unk_125(void);																																															// 125
+		virtual void							Unk_126(void);																																															// 126
+		virtual float							IncerceptActorValueChange(UInt32 a_avIndex, float a_avChangeBy);																																		// 127
 
 		static NiPointer<Actor>	LookupByHandle(RefHandle a_refHandle);
 		static bool				LookupByHandle(RefHandle a_refHandle, NiPointer<Actor>& a_refrOut);

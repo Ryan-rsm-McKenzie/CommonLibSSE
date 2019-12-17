@@ -1368,6 +1368,7 @@
     <ClInclude Include="include\RE\TESModelRDT.h" />
     <ClInclude Include="include\RE\TESModelTextureSwap.h" />
     <ClInclude Include="include\RE\TESModelTri.h" />
+    <ClInclude Include="include\RE\TESMoveAttachDetachEvent.h" />
     <ClInclude Include="include\RE\TESNPC.h" />
     <ClInclude Include="include\RE\TESObject.h" />
     <ClInclude Include="include\RE\TESObjectACTI.h" />

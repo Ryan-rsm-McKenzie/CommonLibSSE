@@ -1,5 +1,7 @@
 #pragma once
 
+#include "RE/NiSmartPointer.h"
+
 
 namespace RE
 {
@@ -8,7 +10,7 @@ namespace RE
 
 	struct TESInitScriptEvent
 	{
-		TESObjectREFR* objRef;	// 0
+		NiPointer<TESObjectREFR> ref;	// 0
 	};
 	STATIC_ASSERT(sizeof(TESInitScriptEvent) == 0x8);
 }
