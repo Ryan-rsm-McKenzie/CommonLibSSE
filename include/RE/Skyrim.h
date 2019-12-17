@@ -907,6 +907,7 @@
 #include "RE/TESModelRDT.h"
 #include "RE/TESModelTextureSwap.h"
 #include "RE/TESModelTri.h"
+#include "RE/TESMoveAttachDetachEvent.h"
 #include "RE/TESNPC.h"
 #include "RE/TESObject.h"
 #include "RE/TESObjectACTI.h"
