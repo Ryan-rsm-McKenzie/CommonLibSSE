@@ -2,9 +2,9 @@
 
 #include <string_view>
 
-#include "RE/BSGlobalStringTable.h"
+#include "RE/BSStringPool.h"
 #include "RE/CRC.h"
-#include "RE/TESMemoryManager.h"
+#include "RE/MemoryManager.h"
 
 
 namespace RE
@@ -75,7 +75,7 @@ namespace RE
 
 
 	protected:
-		using proxy_t = BSGlobalStringTable::Entry;
+		using proxy_t = BSStringPool::Entry;
 
 
 		BSFixedString* ctor_cstr(const char* a_rhs);
@@ -165,7 +165,7 @@ namespace RE
 		TES_HEAP_REDEFINE_NEW();
 
 	private:
-		using proxy_t = BSGlobalStringTable::Entry;
+		using proxy_t = BSStringPool::Entry;
 
 
 		void ctor(const wchar_t* a_string);

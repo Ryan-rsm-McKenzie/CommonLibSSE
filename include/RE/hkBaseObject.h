@@ -9,7 +9,7 @@ namespace RE
 		inline static const void* RTTI = RTTI_hkBaseObject;
 
 
-		virtual ~hkBaseObject();	// 00
+		virtual ~hkBaseObject() = default;	// 00
 	};
 	STATIC_ASSERT(sizeof(hkBaseObject) == 0x8);
 }

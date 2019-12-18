@@ -1,16 +1,13 @@
 #include "RE/NiControllerManager.h"
 
-#include "RE/BSFixedString.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
+#include "RE/NiControllerSequence.h"
 
 
 namespace RE
 {
 	NiControllerSequence* NiControllerManager::GetSequenceByName(const BSFixedString& a_name)
 	{
-		using func_t = function_type_t<decltype(&NiControllerManager::GetSequenceByName)>;
-		REL::Offset<func_t*> func(Offset::NiControllerManager::GetSequenceByName);
-		return func(this, a_name);
+		auto it = sequenceMap.find(a_name);
+		return it != sequenceMap.end() ? it->second : 0;
 	}
 }

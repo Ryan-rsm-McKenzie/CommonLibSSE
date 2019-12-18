@@ -1,12 +1,17 @@
 #pragma once
 
+#include "RE/BSAnimNoteListener.h"
 #include "RE/BSFixedString.h"
+#include "BSTHashMap.h"
+#include "RE/NiSmartPointer.h"
 #include "RE/NiTArray.h"
 #include "RE/NiTimeController.h"
+#include "RE/NiTSet.h"
 
 
 namespace RE
 {
+	class NiAVObjectPalette;
 	class NiControllerSequence;
 
 
@@ -43,20 +48,14 @@ namespace RE
 
 
 		// members
-		UInt64							unk48;		// 48
-		UInt64							unk50;		// 50
-		UInt64							unk58;		// 58
-		UInt64							unk60;		// 60
-		UInt64							unk68;		// 68
-		UInt64							unk70;		// 70
-		UInt64							unk78;		// 78
-		UInt64							unk80;		// 80
-		UInt64							unk88;		// 88
-		UInt64							unk90;		// 90
-		NiTArray<NiControllerSequence*>	sequences;	// 98
-		UInt64							unkB0;		// B0
-		UInt64							unkB8;		// B8
-		UInt64							unkC0;		// C0
+		NiTObjectArray<NiPointer<NiControllerSequence>>				sequences;		// 48
+		void*														unk60;			// 60
+		UInt64														unk68;			// 68
+		BSTHashMap<BSFixedString, NiControllerSequence*>			sequenceMap;	// 70
+		NiTPrimitiveArray<BSAnimNoteListener::BSAnimReceiverType*>*	unkA0;			// A0
+		UInt64														unkA8;			// A8
+		NiTObjectSet<NiPointer<NiControllerSequence>>				tempBlendSeqs;	// B0
+		NiPointer<NiAVObjectPalette>								objectPalette;	// C0
 	};
 	STATIC_ASSERT(sizeof(NiControllerManager) == 0xC8);
 }

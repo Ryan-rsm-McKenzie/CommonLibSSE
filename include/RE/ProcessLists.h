@@ -11,10 +11,24 @@ namespace RE
 	class ReferenceEffect;
 
 
-	class AIProcessManager : public BSTSingletonSDM<AIProcessManager>
+	class ProcessLists : public BSTSingletonSDM<ProcessLists>
 	{
 	public:
-		static AIProcessManager* GetSingleton();
+		class GetActorsFilter
+		{
+		public:
+			inline static const void* RTTI = RTTI_ProcessLists__GetActorsFilter;
+
+
+			virtual ~GetActorsFilter();		// 00
+
+			// add
+			virtual void Unk_01(void) = 0;	// 01
+		};
+		STATIC_ASSERT(sizeof(GetActorsFilter) == 0x8);
+
+
+		static ProcessLists* GetSingleton();
 
 		void SetCombatAlarmState(Actor* a_actor, bool a_enabled);
 
@@ -79,6 +93,6 @@ namespace RE
 		UInt8						unk1E7;							// 1E7
 		UInt64						unk1E8;							// 1E8
 	};
-	STATIC_ASSERT(sizeof(AIProcessManager) == 0x1F0);
+	STATIC_ASSERT(sizeof(ProcessLists) == 0x1F0);
 }
 

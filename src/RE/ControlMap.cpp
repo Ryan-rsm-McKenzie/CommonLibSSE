@@ -1,4 +1,4 @@
-#include "RE/InputMappingManager.h"
+#include "RE/ControlMap.h"
 
 #include "RE/BSFixedString.h"
 #include "RE/BSTArray.h"
@@ -8,14 +8,14 @@
 
 namespace RE
 {
-	InputMappingManager* InputMappingManager::GetSingleton()
+	ControlMap* ControlMap::GetSingleton()
 	{
-		REL::Offset<InputMappingManager**> singleton(Offset::InputMappingManager::Singleton);
+		REL::Offset<ControlMap**> singleton(Offset::ControlMap::Singleton);
 		return *singleton;
 	}
 
 
-	UInt8 InputMappingManager::AllowTextInput(bool a_allow)
+	UInt8 ControlMap::AllowTextInput(bool a_allow)
 	{
 		if (a_allow) {
 			if (allowTextInput != static_cast<UInt8>(-1)) {
@@ -31,7 +31,7 @@ namespace RE
 	}
 
 
-	UInt32 InputMappingManager::GetMappedKey(const std::string_view& a_name, DeviceType a_deviceType, Context a_contextIdx) const
+	UInt32 ControlMap::GetMappedKey(const std::string_view& a_name, DeviceType a_deviceType, Context a_contextIdx) const
 	{
 		BSTArray<InputContext::Mapping>* maps = 0;
 		switch (a_deviceType) {
@@ -58,7 +58,7 @@ namespace RE
 	}
 
 
-	const BSFixedString& InputMappingManager::GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Context a_contextIdx) const
+	const BSFixedString& ControlMap::GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Context a_contextIdx) const
 	{
 		BSTArray<InputContext::Mapping>* maps = 0;
 		switch (a_deviceType) {
@@ -86,31 +86,31 @@ namespace RE
 	}
 
 
-	bool InputMappingManager::IsLookingControlsEnabled() const
+	bool ControlMap::IsLookingControlsEnabled() const
 	{
 		return (controlState & ControlState::kLooking) != ControlState::kNone;
 	}
 
 
-	bool InputMappingManager::IsFlyingControlsEnabled() const
+	bool ControlMap::IsFlyingControlsEnabled() const
 	{
 		return (controlState & ControlState::kFlying) != ControlState::kNone;
 	}
 
 
-	bool InputMappingManager::IsSneakingControlsEnabled() const
+	bool ControlMap::IsSneakingControlsEnabled() const
 	{
 		return (controlState & ControlState::kSneaking) != ControlState::kNone;
 	}
 
 
-	bool InputMappingManager::IsMenuControlsEnabled() const
+	bool ControlMap::IsMenuControlsEnabled() const
 	{
 		return (controlState & ControlState::kMenu) != ControlState::kNone;
 	}
 
 
-	bool InputMappingManager::IsMovementControlsEnabled() const
+	bool ControlMap::IsMovementControlsEnabled() const
 	{
 		return (controlState & ControlState::kMovement) != ControlState::kNone;
 	}

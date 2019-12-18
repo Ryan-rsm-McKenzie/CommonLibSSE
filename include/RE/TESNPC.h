@@ -9,9 +9,9 @@
 #include "RE/BSTEvent.h"
 #include "RE/Color.h"
 #include "RE/FormTypes.h"
+#include "RE/MemoryManager.h"
 #include "RE/SoundLevels.h"
 #include "RE/TESActorBase.h"
-#include "RE/TESMemoryManager.h"
 #include "RE/TESRaceForm.h"
 
 

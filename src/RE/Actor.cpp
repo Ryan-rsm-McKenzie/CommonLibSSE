@@ -5,7 +5,6 @@
 #include <type_traits>
 
 #include "RE/AIProcess.h"
-#include "RE/AIProcessManager.h"
 #include "RE/BGSAttackData.h"
 #include "RE/BGSColorForm.h"
 #include "RE/BSFaceGenAnimationData.h"
@@ -18,6 +17,7 @@
 #include "RE/NiColor.h"
 #include "RE/NiNode.h"
 #include "RE/Offsets.h"
+#include "RE/ProcessLists.h"
 #include "RE/TESFaction.h"
 #include "RE/TESNPC.h"
 #include "RE/TESObjectMISC.h"
@@ -92,7 +92,7 @@ namespace RE
 		if (aiProcess && aiProcess->IsArrested()) {
 			aiProcess->SetArrested(false);
 			ResetAI(0, 0);
-			auto procManager = AIProcessManager::GetSingleton();
+			auto procManager = ProcessLists::GetSingleton();
 			procManager->SetCombatAlarmState(this, true);
 		}
 	}

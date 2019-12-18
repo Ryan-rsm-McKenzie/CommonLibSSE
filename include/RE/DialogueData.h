@@ -4,7 +4,7 @@
 #include "RE/BSIntrusiveRefCounted.h"
 #include "RE/BSString.h"
 #include "RE/BSTList.h"
-#include "RE/TESMemoryManager.h"
+#include "RE/MemoryManager.h"
 
 
 namespace RE

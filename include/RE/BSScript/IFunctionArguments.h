@@ -2,7 +2,7 @@
 
 #include "RE/BSScript/Variable.h"
 #include "RE/BSTArray.h"
-#include "RE/TESMemoryManager.h"
+#include "RE/MemoryManager.h"
 
 
 namespace RE

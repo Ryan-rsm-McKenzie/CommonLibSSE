@@ -30,7 +30,7 @@ namespace RE
 
 
 		hkReferencedObject();
-		virtual ~hkReferencedObject();																					// 00
+		virtual ~hkReferencedObject() = default;																			// 00
 
 		// add
 		virtual const hkClass*	GetClassType() const;																		// 01 - { return 0; }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "RE/MemoryManager.h"
+
 
 namespace RE
 {
@@ -52,13 +54,24 @@ namespace RE
 	public:
 		inline static T* Allocate(std::size_t a_numElements)
 		{
-			return new T[a_numElements];
+			auto mem = malloc(sizeof(std::size_t) + sizeof(T) * a_numElements);
+			auto head = static_cast<std::size_t*>(mem);
+			*head = a_numElements;
+			mem = head + 1;
+			return static_cast<T*>(mem);
 		};
 
 
 		inline static void Deallocate(T* a_array)
 		{
-			delete[] a_array;
+			if (a_array) {
+				auto head = reinterpret_cast<std::size_t*>(a_array) - 1;
+				auto size = *head;
+				for (std::size_t i = 0; i < size; ++i) {
+					a_array[i].~T();
+				}
+				free(head);
+			}
 		};
 	};
 }

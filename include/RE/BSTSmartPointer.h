@@ -135,7 +135,7 @@ namespace RE
 	BSTSmartPointer<T, RefManager>::~BSTSmartPointer()
 	{
 		Detach();
-		memzero(this);
+		_ptr = 0;
 	}
 
 

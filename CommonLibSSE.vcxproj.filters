@@ -37,36 +37,6 @@
     <Filter Include="src\RE\BSHavok">
       <UniqueIdentifier>{394a210a-5b4b-4bcb-861e-10d2b7bbdfc5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\RE\BSHavok\Common">
-      <UniqueIdentifier>{2306e8b2-568a-4d49-a144-cc2635a69bc5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\BSHavok\Common\Base">
-      <UniqueIdentifier>{79d4cc1f-b5e3-4cb1-8ae8-a217f4cadb48}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\BSHavok\Common\Base\Types">
-      <UniqueIdentifier>{e844db15-87ae-4458-a833-a50dee7fab97}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\BSHavok\Common\Base\Types\Physics">
-      <UniqueIdentifier>{e8bd80d5-1053-43e9-8ac8-a35570f18108}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\BSHavok\Common\Base\Types\Physics\MotionState">
-      <UniqueIdentifier>{5055d7db-8ece-4093-ba0d-f139a4e1a5af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\BSHavok\Common\Base\Container">
-      <UniqueIdentifier>{c3da93d9-7bd0-44e5-9a5b-90e7978708f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\BSHavok\Physics">
-      <UniqueIdentifier>{721557a2-1bde-4bc1-b29b-75e762ebb3a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\BSHavok\Physics\Utilities">
-      <UniqueIdentifier>{4b03f06d-9c94-4d1d-acde-864d5abe5f42}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\BSHavok\Physics\Utilities\CharacterControl">
-      <UniqueIdentifier>{f748f6bd-7cb0-4d5e-a3f8-3eca6915310a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\BSHavok\Physics\Utilities\CharacterControl\CharacterProxy">
-      <UniqueIdentifier>{f47e0099-71d4-4143-9fdc-1e206d2ff238}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\RE\BSMain">
       <UniqueIdentifier>{d5d329c4-fa1c-4698-a7ad-10c888a04a37}</UniqueIdentifier>
     </Filter>
@@ -231,177 +201,6 @@
     </Filter>
     <Filter Include="include\RE\BSHavok">
       <UniqueIdentifier>{6c265c0a-71fe-441c-b66e-6b3535e75008}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\ahkp">
-      <UniqueIdentifier>{6c2ae4f7-99c8-4f91-96bf-f627fd26db1a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common">
-      <UniqueIdentifier>{b4cec424-bdbb-4452-907f-3b0811996565}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base">
-      <UniqueIdentifier>{15b811ee-70fd-4029-aa12-82a464a7f103}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Types">
-      <UniqueIdentifier>{bd433c96-2344-4e38-a8a1-be026a442cae}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Types\Physics">
-      <UniqueIdentifier>{e9d3f42c-8ef9-457b-bd36-786b5d0f5e08}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Types\Physics\MotionState">
-      <UniqueIdentifier>{7ecd4ee3-7b07-4aac-b87a-60fd572d2728}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Math">
-      <UniqueIdentifier>{3f815f38-29a1-4668-a0f8-eb6e74b0b6a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Math\Vector">
-      <UniqueIdentifier>{a886c3c0-9540-4d6a-bac4-39570d5a66c3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Math\Matrix">
-      <UniqueIdentifier>{e7e664b1-b51c-4069-80db-06fb207ef587}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Math\SweptTransform">
-      <UniqueIdentifier>{10674d92-a1ec-4f67-9530-793620d7d216}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Math\Quaternion">
-      <UniqueIdentifier>{776c468f-a516-46b5-bd0c-022e91222046}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Math\Types">
-      <UniqueIdentifier>{19e51a95-d7e4-478a-a3fc-be7ee65d5ad1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Math\Types\Sse">
-      <UniqueIdentifier>{69c9293b-9e8a-4f16-9018-448e0d1eb291}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\DebugUtil">
-      <UniqueIdentifier>{deb58fb2-274e-4cd8-8dec-b4a72041aaa6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\DebugUtil\MultiThreadCheck">
-      <UniqueIdentifier>{fd0041b1-0a7d-4c97-ae6b-02745b21a31e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Container">
-      <UniqueIdentifier>{4479d486-6782-4f0b-970a-5f3a11cc9367}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Container\Array">
-      <UniqueIdentifier>{ea1e00bc-659c-4c9a-ab1f-e69539adcc2e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Container\String">
-      <UniqueIdentifier>{66f92e41-a69e-47ce-bd18-867b3820a2ae}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Object">
-      <UniqueIdentifier>{6298a28d-4111-4d0e-8fad-cf4f942af9a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Memory">
-      <UniqueIdentifier>{0dec1321-e480-4c7f-a887-782cc44aa34f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Common\Base\Memory\Allocator">
-      <UniqueIdentifier>{3efac8ff-833c-4e1b-8b5d-27a1dd0cc7c9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics">
-      <UniqueIdentifier>{6efa02eb-6dab-4b0e-bcf0-d21b282a4b62}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide">
-      <UniqueIdentifier>{0c628ded-765c-4581-b746-ca3d8638432a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Query">
-      <UniqueIdentifier>{c801b358-6664-4e57-9d62-6011ff98c4f8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Query\Collector">
-      <UniqueIdentifier>{be1267b1-e129-4c8b-8f85-67ca7b8cdd5d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Query\Collector\PointCollector">
-      <UniqueIdentifier>{dadc6717-e0cd-4d00-94aa-4622489c8c1c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Agent">
-      <UniqueIdentifier>{f076bab8-7de9-460d-a719-a798ea8a2d28}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Agent\Query">
-      <UniqueIdentifier>{43e4a46e-3390-4886-a4fc-423bf78eb4a7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Agent\Collidable">
-      <UniqueIdentifier>{173d419d-6086-41ce-bda1-51121f5841de}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Agent3">
-      <UniqueIdentifier>{b21c3ed6-c7da-4893-a481-48cf70c92e4d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Agent3\Machine">
-      <UniqueIdentifier>{8051d3f0-fe35-4f74-a807-3404f87bdecf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Agent3\Machine\Nn">
-      <UniqueIdentifier>{92cfa228-8a83-476c-8456-ce02a88f4381}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Dispatch">
-      <UniqueIdentifier>{340b1c98-8993-417b-9306-4a9ae409882d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Dispatch\Broadphase">
-      <UniqueIdentifier>{0945ead2-08e0-4649-9b57-e1ba526ae4f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Broadphase">
-      <UniqueIdentifier>{440e2841-3100-40d0-a41c-5066d7433c70}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Shape">
-      <UniqueIdentifier>{ff93727d-ed82-4850-9924-a2354c2b8d97}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Shape\Compound">
-      <UniqueIdentifier>{91758876-02ac-4579-9b2a-7aab466b3f05}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Shape\Compound\Collection">
-      <UniqueIdentifier>{aee1f885-e3a7-4bf7-ac62-0cfaac3c057b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Shape\Compound\Collection\List">
-      <UniqueIdentifier>{2b909407-ccc4-4ab7-97f3-44e81a533ee4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Util">
-      <UniqueIdentifier>{8e07f181-566c-406e-9a9f-a3d2c3b84b86}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Collide\Util\Welding">
-      <UniqueIdentifier>{9068cf4a-f357-4590-8b2f-fd893ca79b51}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Dynamics">
-      <UniqueIdentifier>{d6e97b48-c749-4906-84f1-ff27518dd9ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Dynamics\Phantom">
-      <UniqueIdentifier>{e7d461d6-b4b0-4931-bbd8-9d3acb8ddd9e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Dynamics\World">
-      <UniqueIdentifier>{c1f396b8-6b39-4978-a084-5af06ff18db8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Dynamics\Common">
-      <UniqueIdentifier>{d0396520-e6db-4c2c-9097-dbfa26534546}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Dynamics\Entity">
-      <UniqueIdentifier>{2c4535b2-c887-4570-afb7-a59b7f6eab22}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Dynamics\Constraint">
-      <UniqueIdentifier>{fa46e2dd-2653-45e8-979b-1531a1b120d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Dynamics\Motion">
-      <UniqueIdentifier>{7f5a9c3f-d91a-456e-a28b-ca1107d6e899}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Dynamics\Motion\Rigid">
-      <UniqueIdentifier>{16cb6fb5-0c02-46da-89d2-3daf02ed5012}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Utilities">
-      <UniqueIdentifier>{8a94caec-e90d-49f0-8921-e4f6adeed2b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Utilities\CharacterControl">
-      <UniqueIdentifier>{1b998a8f-26cc-4025-930d-6c09414991d2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Utilities\CharacterControl\StateMachine">
-      <UniqueIdentifier>{a83244f4-a397-4482-b7a5-26c81ab991c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\Utilities\CharacterControl\CharacterProxy">
-      <UniqueIdentifier>{db383f8a-b797-40dc-867f-88f34eb9fe78}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\ConstraintSolver">
-      <UniqueIdentifier>{807a2df8-b6d2-4f7b-a6fe-23352a444409}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\Physics\ConstraintSolver\Simplex">
-      <UniqueIdentifier>{6af75ffb-cdfa-4854-8e19-bd513c5c547d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\BS">
-      <UniqueIdentifier>{f10743aa-3597-472c-bbf1-d8c5423ee347}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\NetImmerse">
-      <UniqueIdentifier>{a6342141-a179-4586-9908-4d756c701a9e}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\RE\BSMain">
       <UniqueIdentifier>{452a7dde-4e53-487c-90e1-d7c35ff622ac}</UniqueIdentifier>
@@ -1054,45 +853,6 @@
     <Filter Include="include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase">
       <UniqueIdentifier>{dbc04638-9553-4af3-8bc1-64043fba1db0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\BSHavok\NetImmerse\bhkRefObject">
-      <UniqueIdentifier>{b3315784-7e3f-4744-8e7d-c9cd5f9ba242}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable">
-      <UniqueIdentifier>{331b29bf-f1b6-4f58-8d07-6183276c0538}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkWorldObject">
-      <UniqueIdentifier>{965a5155-7ca3-4277-9311-9df07d5bc6e0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom">
-      <UniqueIdentifier>{31ea761c-6a1d-4c09-a894-daceeec5990e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkShape">
-      <UniqueIdentifier>{e57bd042-da9f-46e4-9e4c-4845682e4070}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection">
-      <UniqueIdentifier>{e1f95cb0-5d21-4d46-b583-15ae6e824439}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom\bhkShapePhantom">
-      <UniqueIdentifier>{a3e01449-1bbc-44ff-8b16-416370a80e4f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\BS\bhkCharacterState">
-      <UniqueIdentifier>{931a7e4d-57d4-421d-a708-634d960263a7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\NetImmerse\bhkCharacterController">
-      <UniqueIdentifier>{b3eca426-8a21-4504-99d3-77f921e21c45}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\BS\hkbBindable">
-      <UniqueIdentifier>{2348755b-b9f0-4c4f-8ec7-20f693dd0b8c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\BS\hkbBindable\hkbNode">
-      <UniqueIdentifier>{942d9fc0-512a-4096-89ff-738694fe1b80}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\BS\hkbBindable\hkbNode\hkbGenerator">
-      <UniqueIdentifier>{1d492a8f-7381-48c1-a51b-2002e21bfda2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\RE\BSHavok\BS\hkbEventBase">
-      <UniqueIdentifier>{d692104a-44ba-425b-9195-254f619b7f6c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\RE\BSShader">
       <UniqueIdentifier>{16a3bbcc-9aa3-4862-8848-7333a2f9e509}</UniqueIdentifier>
     </Filter>
@@ -1159,6 +919,138 @@
     <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\BSGeometry">
       <UniqueIdentifier>{43dff653-c345-4163-ae0a-4cfaaa7bec59}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiExtraData\NiIntegerExtraData">
+      <UniqueIdentifier>{b418b562-862b-4af0-9aae-773374a4ef80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\NetImmerse\NiRefObject\NiObject\NiExtraData\NiIntegerExtraData">
+      <UniqueIdentifier>{38f2c6e7-88c7-4e16-a95d-faf6be3ccfa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiCollisionObject">
+      <UniqueIdentifier>{61b23eb8-36d1-4c1c-b2c3-127f0664e670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiCollisionObject\bhkNiCollisionObject">
+      <UniqueIdentifier>{fe616b08-2431-45ae-b124-a1503a09b086}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject">
+      <UniqueIdentifier>{b3315784-7e3f-4744-8e7d-c9cd5f9ba242}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable">
+      <UniqueIdentifier>{331b29bf-f1b6-4f58-8d07-6183276c0538}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject">
+      <UniqueIdentifier>{965a5155-7ca3-4277-9311-9df07d5bc6e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom">
+      <UniqueIdentifier>{31ea761c-6a1d-4c09-a894-daceeec5990e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom\bhkShapePhantom">
+      <UniqueIdentifier>{a3e01449-1bbc-44ff-8b16-416370a80e4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape">
+      <UniqueIdentifier>{e57bd042-da9f-46e4-9e4c-4845682e4070}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection">
+      <UniqueIdentifier>{e1f95cb0-5d21-4d46-b583-15ae6e824439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\Enums">
+      <UniqueIdentifier>{710038e0-8f15-4822-8266-c21a34e12736}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject">
+      <UniqueIdentifier>{8c06ad0b-a7bf-4ea7-931e-cef76547a4fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject">
+      <UniqueIdentifier>{f53d3cfb-7348-4ecc-bf10-3a7b8598d0cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkbBindable">
+      <UniqueIdentifier>{2348755b-b9f0-4c4f-8ec7-20f693dd0b8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkbBindable\hkbNode">
+      <UniqueIdentifier>{942d9fc0-512a-4096-89ff-738694fe1b80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkbBindable\hkbNode\hkbGenerator">
+      <UniqueIdentifier>{1d492a8f-7381-48c1-a51b-2002e21bfda2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpShape">
+      <UniqueIdentifier>{08d9807c-c66d-40cf-aee3-85f2aa5815e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpShape\hkpShapeCollection">
+      <UniqueIdentifier>{055f736a-9472-424f-8406-970ec09d771f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject">
+      <UniqueIdentifier>{acce500c-84bd-438c-b879-ebf7ca9d8d0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject\hkpEntity">
+      <UniqueIdentifier>{14789976-8cdb-4a47-8b3d-af98e9985806}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject\hkpPhantom">
+      <UniqueIdentifier>{faa6364b-6dc3-4271-993f-fbc474ee29b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject\hkpPhantom\hkpShapePhantom">
+      <UniqueIdentifier>{b5847aad-125c-430c-94a4-a2fd37a1cd49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpMotion">
+      <UniqueIdentifier>{a3743016-d4c5-4cf2-bb83-1e5e4b43ff77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpMotion\hkpKeyframedRigidMotion">
+      <UniqueIdentifier>{ff91a795-d39e-44d2-9a0f-f5fc0258578c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpConstraintOwner">
+      <UniqueIdentifier>{6428f65f-2dcb-44f6-80c3-dc9e1fbd725f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpCharacterProxy">
+      <UniqueIdentifier>{9fee5766-d296-4089-b187-1ad453c23fc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorld">
+      <UniqueIdentifier>{671bd115-2407-4410-aac5-2727df25440f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpCharacterState">
+      <UniqueIdentifier>{da20e434-4607-4589-8f20-6edd4584448c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpCharacterState\bhkCharacterState">
+      <UniqueIdentifier>{931a7e4d-57d4-421d-a708-634d960263a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkbEventBase">
+      <UniqueIdentifier>{d692104a-44ba-425b-9195-254f619b7f6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkMatrix3">
+      <UniqueIdentifier>{19412307-ed7f-48b9-8bfd-3a640d636464}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkMemoryAllocator">
+      <UniqueIdentifier>{11f80e77-c37d-4cf0-a0d9-9e4693ecf6d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkpBroadPhaseHandle">
+      <UniqueIdentifier>{e9deb1fc-b1d8-4ea9-91ef-c3a1ddea3dc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkpCdBody">
+      <UniqueIdentifier>{766bfc11-2870-4698-a62d-fd89afb7f9b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkpCdBody\hkpCollidable">
+      <UniqueIdentifier>{9ec79031-952b-4b3a-ab3e-102bc46f5d6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkpCdPointCollector">
+      <UniqueIdentifier>{6e486eb4-7f25-4b4c-800b-396daa75e726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkpCdPointCollector\hkpAllCdPointCollector">
+      <UniqueIdentifier>{c2497b22-c074-4a3f-ae97-7d69a5bca628}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkpCharacterProxyListener">
+      <UniqueIdentifier>{1fbcf1f9-339d-4112-b2af-0971caa5cfe1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkRefPtr">
+      <UniqueIdentifier>{758eb35c-390d-408c-88b0-2c4f475335c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSHavok\hkBaseObject">
+      <UniqueIdentifier>{afa0824a-0273-4120-b754-9c98ca0bac66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSHavok\hkBaseObject\hkReferencedObject">
+      <UniqueIdentifier>{821e73e5-a940-4a98-93d7-f4b319279662}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSHavok\hkMemoryAllocator">
+      <UniqueIdentifier>{c26488cd-38b0-4cc1-9f42-3e03c20004ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSHavok\hkpCharacterProxyListener">
+      <UniqueIdentifier>{3d7e060a-28ae-491a-ab5a-950bedc72783}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1176,9 +1068,6 @@
     <ClCompile Include="src\RE\MenuManager.cpp">
       <Filter>src\RE\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\UIManager.cpp">
-      <Filter>src\RE\Menus</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSTArray.cpp">
       <Filter>src\RE\BSCore</Filter>
     </ClCompile>
@@ -1188,23 +1077,11 @@
     <ClCompile Include="src\RE\BSFixedString.cpp">
       <Filter>src\RE\BSCore</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\InputStringHolder.cpp">
-      <Filter>src\RE\BSDevices</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\UIStringHolder.cpp">
-      <Filter>src\RE\Menus</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\ExtraLock.cpp">
       <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\CommandTable.cpp">
       <Filter>src\RE\Obscript</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\ConsoleManager.cpp">
-      <Filter>src\RE\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\InputMappingManager.cpp">
-      <Filter>src\RE\BSDevices</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\InputManager.cpp">
       <Filter>src\RE\BSDevices</Filter>
@@ -1286,15 +1163,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\IMenu.cpp">
       <Filter>src\RE\Menus\IMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\hkBaseObject.cpp">
-      <Filter>src\RE\BSHavok\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\hkReferencedObject.cpp">
-      <Filter>src\RE\BSHavok\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\hkStringPtr.cpp">
-      <Filter>src\RE\BSHavok\Common</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\GAtomic.cpp">
       <Filter>src\RE\Scaleform\GAtomic</Filter>
@@ -1385,15 +1253,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\ExtraUniqueID.cpp">
       <Filter>src\RE\BSExtraData</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\hkBaseTypes.cpp">
-      <Filter>src\RE\BSHavok\Common\Base\Types\Physics\MotionState</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\hkpCharacterProxyListener.cpp">
-      <Filter>src\RE\BSHavok\Physics\Utilities\CharacterControl\CharacterProxy</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\hkContainerAllocators.cpp">
-      <Filter>src\RE\BSHavok\Common\Base\Container</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\INISettingCollection.cpp">
       <Filter>src\RE\BSMain\SettingCollection</Filter>
@@ -1566,17 +1425,11 @@
     <ClCompile Include="src\RE\IFormFactory.cpp">
       <Filter>src\RE\BSSystem\IFormFactory</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\EquipManager.cpp">
-      <Filter>src\RE\Inventory</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\InventoryChanges.cpp">
       <Filter>src\RE\Inventory</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\InventoryEntryData.cpp">
       <Filter>src\RE\Inventory</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESMemoryManager.cpp">
-      <Filter>src\RE\Memory</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraMissingLinkedRefIDs.cpp">
       <Filter>src\RE\BSExtraData</Filter>
@@ -1607,9 +1460,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\BGSSaveLoadManager.cpp">
       <Filter>src\RE\FileIO</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSGlobalStringTable.cpp">
-      <Filter>src\RE\BSCore</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSLock.cpp">
       <Filter>src\RE\BSCore</Filter>
@@ -1668,9 +1518,6 @@
     <ClCompile Include="src\RE\GFxWStringBuffer.cpp">
       <Filter>src\RE\Scaleform\GFxString</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSScaleformMovieLoader.cpp">
-      <Filter>src\RE\Scaleform\BS</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\TESFile.cpp">
       <Filter>src\RE\FileIO</Filter>
     </ClCompile>
@@ -1685,9 +1532,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\GFxRenderConfig.cpp">
       <Filter>src\RE\Scaleform\GFxRenderConfig</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSTimeManager.cpp">
-      <Filter>src\RE\Misc</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\NiAnimationKey.cpp">
       <Filter>src\RE\NetImmerse\NiAnimationKey</Filter>
@@ -1788,9 +1632,6 @@
     <ClCompile Include="src\RE\BGSAttackData.cpp">
       <Filter>src\RE\NetImmerse\NiRefObject</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\AIProcessManager.cpp">
-      <Filter>src\RE\AI</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSFaceGenAnimationData.cpp">
       <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiExtraData</Filter>
     </ClCompile>
@@ -1811,6 +1652,57 @@
     </ClCompile>
     <ClCompile Include="src\RE\TESObjectMISC.cpp">
       <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ProcessLists.cpp">
+      <Filter>src\RE\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSXFlags.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiExtraData\NiIntegerExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Calendar.cpp">
+      <Filter>src\RE\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScaleformManager.cpp">
+      <Filter>src\RE\Scaleform\BS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\MemoryManager.cpp">
+      <Filter>src\RE\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\hkStringPtr.cpp">
+      <Filter>src\RE\BSHavok</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\hkReferencedObject.cpp">
+      <Filter>src\RE\BSHavok\hkBaseObject\hkReferencedObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\hkContainerAllocators.cpp">
+      <Filter>src\RE\BSHavok\hkMemoryAllocator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\hkBaseTypes.cpp">
+      <Filter>src\RE\BSHavok</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\hkpCharacterProxyListener.cpp">
+      <Filter>src\RE\BSHavok\hkpCharacterProxyListener</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ActorEquipManager.cpp">
+      <Filter>src\RE\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSStringPool.cpp">
+      <Filter>src\RE\BSCore</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ConsoleLog.cpp">
+      <Filter>src\RE\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ControlMap.cpp">
+      <Filter>src\RE\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\UserEvents.cpp">
+      <Filter>src\RE\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\UIMessageQueue.cpp">
+      <Filter>src\RE\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\InterfaceStrings.cpp">
+      <Filter>src\RE\Menus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1853,9 +1745,6 @@
     <ClInclude Include="include\RE\ExtraFactionChanges.h">
       <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\UIManager.h">
-      <Filter>include\RE\Menus</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESRaceForm.h">
       <Filter>include\RE\FormComponents</Filter>
     </ClInclude>
@@ -1883,20 +1772,8 @@
     <ClInclude Include="include\RE\BSFixedString.h">
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\InputStringHolder.h">
-      <Filter>include\RE\BSDevices</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\UIStringHolder.h">
-      <Filter>include\RE\Menus</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\CommandTable.h">
       <Filter>include\RE\Obscript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ConsoleManager.h">
-      <Filter>include\RE\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\InputMappingManager.h">
-      <Filter>include\RE\BSDevices</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\InputManager.h">
       <Filter>include\RE\BSDevices</Filter>
@@ -1933,9 +1810,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\ExtraUniqueID.h">
       <Filter>include\RE\BSExtraData</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\EquipManager.h">
-      <Filter>include\RE\Inventory</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSEquipType.h">
       <Filter>include\RE\FormComponents</Filter>
@@ -2153,15 +2027,6 @@
     <ClInclude Include="include\RE\DeviceTypes.h">
       <Filter>include\RE\BSDevices\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\ahkpCharacterProxy.h">
-      <Filter>include\RE\BSHavok\ahkp</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ahkpWorld.h">
-      <Filter>include\RE\BSHavok\ahkp</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpWorld.h">
-      <Filter>include\RE\BSHavok\Physics</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BGSActorCellEvent.h">
       <Filter>include\RE\Events\ActorEvent</Filter>
     </ClInclude>
@@ -2263,12 +2128,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\PoisonedWeapon.h">
       <Filter>include\RE\Events\BGSStoryEvent</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkbCharacter.h">
-      <Filter>include\RE\BSHavok\BS</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkbRagdollDriver.h">
-      <Filter>include\RE\BSHavok\BS</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ExtraGhost.h">
       <Filter>include\RE\BSExtraData</Filter>
@@ -2471,9 +2330,6 @@
     <ClInclude Include="include\RE\SmithingMenu.h">
       <Filter>include\RE\Menus\IMenu\Components\CraftingSubMenus</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSGlobalStringTable.h">
-      <Filter>include\RE\BSCore</Filter>
-    </ClInclude>
     <ClInclude Include="include\REL\Relocation.h">
       <Filter>include\REL</Filter>
     </ClInclude>
@@ -2602,189 +2458,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\ExtraDataTypes.h">
       <Filter>include\RE\BSExtraData\Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpAllCdPointCollector.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Query\Collector\PointCollector</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpCdPointCollector.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Agent\Query</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpRootCdPoint.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Query\Collector\PointCollector</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkContactPoint.h">
-      <Filter>include\RE\BSHavok\Common\Base\Types\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkVector4.h">
-      <Filter>include\RE\BSHavok\Common\Base\Math\Vector</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpCachingShapePhantom.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Phantom</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpShapePhantom.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Phantom</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpPhantom.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Phantom</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpWorldObject.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpLinkedCollidable.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Agent3\Machine\Nn</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpCollidable.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Agent\Collidable</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpTypedBroadPhaseHandle.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Dispatch\Broadphase</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpBroadPhaseHandle.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Broadphase</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpCdBody.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Agent\Collidable</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkMultiThreadCheck.h">
-      <Filter>include\RE\BSHavok\Common\Base\DebugUtil\MultiThreadCheck</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpProperty.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpPhantomType.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Phantom</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkMotionState.h">
-      <Filter>include\RE\BSHavok\Common\Base\Types\Physics\MotionState</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkBaseTypes.h">
-      <Filter>include\RE\BSHavok\Common\Base\Types</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkTransform.h">
-      <Filter>include\RE\BSHavok\Common\Base\Math\Matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkRotation.h">
-      <Filter>include\RE\BSHavok\Common\Base\Math\Matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkMatrix3.h">
-      <Filter>include\RE\BSHavok\Common\Base\Math\Matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkSweptTransform.h">
-      <Filter>include\RE\BSHavok\Common\Base\Math\SweptTransform</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkQuaternion.h">
-      <Filter>include\RE\BSHavok\Common\Base\Math\Quaternion</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpCharacterContext.h">
-      <Filter>include\RE\BSHavok\Physics\Utilities\CharacterControl\StateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpCharacterState.h">
-      <Filter>include\RE\BSHavok\Physics\Utilities\CharacterControl\StateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpCharacterControl.h">
-      <Filter>include\RE\BSHavok\Physics\Utilities\CharacterControl</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkStepInfo.h">
-      <Filter>include\RE\BSHavok\Common\Base\Types\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkSseMathTypes.h">
-      <Filter>include\RE\BSHavok\Common\Base\Math\Types\Sse</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpCharacterStateManager.h">
-      <Filter>include\RE\BSHavok\Physics\Utilities\CharacterControl\StateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpCharacterProxy.h">
-      <Filter>include\RE\BSHavok\Physics\Utilities\CharacterControl\CharacterProxy</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpEntityListener.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpPhantomListener.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Phantom</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkArray.h">
-      <Filter>include\RE\BSHavok\Common\Base\Container\Array</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkReferencedObject.h">
-      <Filter>include\RE\BSHavok\Common\Base\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkBaseObject.h">
-      <Filter>include\RE\BSHavok\Common\Base\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkRefPtr.h">
-      <Filter>include\RE\BSHavok\Common\Base\Types</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkRefVariant.h">
-      <Filter>include\RE\BSHavok\Common\Base\Types</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkStringPtr.h">
-      <Filter>include\RE\BSHavok\Common\Base\Container\String</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpCharacterProxyListener.h">
-      <Filter>include\RE\BSHavok\Physics\Utilities\CharacterControl\CharacterProxy</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpConstraintOwner.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Constraint</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpConstraintInfo.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Constraint</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpEntity.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkSmallArray.h">
-      <Filter>include\RE\BSHavok\Common\Base\Container\Array</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpMaterial.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpKeyframedRigidMotion.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Motion\Rigid</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpMotion.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Motion</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpFixedRigidMotion.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Motion\Rigid</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpShape.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpShapeType.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpShapeBuffer.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpShapeContainer.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpWeldingUtility.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Util\Welding</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpShapeCollection.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Shape\Compound\Collection</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpListShape.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Shape\Compound\Collection\List</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpRigidBody.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpAgentNnTrack.h">
-      <Filter>include\RE\BSHavok\Physics\Collide\Agent3\Machine\Nn</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpSimulationIsland.h">
-      <Filter>include\RE\BSHavok\Physics\Dynamics\World</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkMemoryAllocator.h">
-      <Filter>include\RE\BSHavok\Common\Base\Memory\Allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkContainerAllocators.h">
-      <Filter>include\RE\BSHavok\Common\Base\Container</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\hkpSimplexSolver.h">
-      <Filter>include\RE\BSHavok\Physics\ConstraintSolver\Simplex</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\SettingCollection.h">
       <Filter>include\RE\BSMain\SettingCollection</Filter>
@@ -3746,9 +3419,6 @@
     <ClInclude Include="include\RE\TESWorldSpace.h">
       <Filter>include\RE\FormComponents\TESForm</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\ProcessLists\GetActorsFilter.h">
-      <Filter>include\RE\FormComponents\Components\GetActorsFilter</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ActorMover.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
@@ -3892,9 +3562,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\ScrapHeap.h">
       <Filter>include\RE\Memory\IMemoryStoreBase\IMemoryStore</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESMemoryManager.h">
-      <Filter>include\RE\Memory</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSSmallBlockAllocator.h">
       <Filter>include\RE\Memory\IMemoryStoreBase\IMemoryStore</Filter>
@@ -4442,9 +4109,6 @@
     <ClInclude Include="include\RE\GFxWStringBuffer.h">
       <Filter>include\RE\Scaleform\GFxString</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSScaleformMovieLoader.h">
-      <Filter>include\RE\Scaleform\BS</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\GRenderer.h">
       <Filter>include\RE\Scaleform\GRenderer</Filter>
     </ClInclude>
@@ -4495,9 +4159,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\GRendererEventHandler.h">
       <Filter>include\RE\Scaleform\GRendererEventHandler</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSTimeManager.h">
-      <Filter>include\RE\Misc</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\Misc.h">
       <Filter>include\RE\Misc</Filter>
@@ -4719,85 +4380,76 @@
       <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkRefObject.h">
-      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject</Filter>
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkSerializable.h">
-      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable</Filter>
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkWorldObject.h">
-      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkWorldObject</Filter>
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkPhantom.h">
-      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom</Filter>
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkShape.h">
-      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkShape</Filter>
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkShapeCollection.h">
-      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection</Filter>
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkListShape.h">
-      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection</Filter>
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkShapePhantom.h">
-      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom\bhkShapePhantom</Filter>
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom\bhkShapePhantom</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkCachingShapePhantom.h">
-      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom\bhkShapePhantom</Filter>
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom\bhkShapePhantom</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkCharacterProxy.h">
-      <Filter>include\RE\BSHavok\NetImmerse\bhkRefObject\bhkSerializable</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharacterPointCollector.h">
-      <Filter>include\RE\BSHavok\BS</Filter>
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkCharacterState.h">
-      <Filter>include\RE\BSHavok\BS\bhkCharacterState</Filter>
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpCharacterState\bhkCharacterState</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkCharacterStateClimbing.h">
-      <Filter>include\RE\BSHavok\BS\bhkCharacterState</Filter>
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpCharacterState\bhkCharacterState</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkCharacterStateFlying.h">
-      <Filter>include\RE\BSHavok\BS\bhkCharacterState</Filter>
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpCharacterState\bhkCharacterState</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkCharacterStateInAir.h">
-      <Filter>include\RE\BSHavok\BS\bhkCharacterState</Filter>
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpCharacterState\bhkCharacterState</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkCharacterStateJumping.h">
-      <Filter>include\RE\BSHavok\BS\bhkCharacterState</Filter>
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpCharacterState\bhkCharacterState</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkCharacterStateOnGround.h">
-      <Filter>include\RE\BSHavok\BS\bhkCharacterState</Filter>
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpCharacterState\bhkCharacterState</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\bhkCharacterStateSwimming.h">
-      <Filter>include\RE\BSHavok\BS\bhkCharacterState</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharacterController.h">
-      <Filter>include\RE\BSHavok\NetImmerse\bhkCharacterController</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharProxyController.h">
-      <Filter>include\RE\BSHavok\NetImmerse\bhkCharacterController</Filter>
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpCharacterState\bhkCharacterState</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkbBindable.h">
-      <Filter>include\RE\BSHavok\BS\hkbBindable</Filter>
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkbBindable</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkbNode.h">
-      <Filter>include\RE\BSHavok\BS\hkbBindable\hkbNode</Filter>
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkbBindable\hkbNode</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkbGenerator.h">
-      <Filter>include\RE\BSHavok\BS\hkbBindable\hkbNode\hkbGenerator</Filter>
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkbBindable\hkbNode\hkbGenerator</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkbEventBase.h">
-      <Filter>include\RE\BSHavok\BS\hkbEventBase</Filter>
+      <Filter>include\RE\BSHavok\hkbEventBase</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkbEvent.h">
-      <Filter>include\RE\BSHavok\BS\hkbEventBase</Filter>
+      <Filter>include\RE\BSHavok\hkbEventBase</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkbStateMachine.h">
-      <Filter>include\RE\BSHavok\BS\hkbBindable\hkbNode\hkbGenerator</Filter>
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkbBindable\hkbNode\hkbGenerator</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkbBehaviorGraph.h">
-      <Filter>include\RE\BSHavok\BS\hkbBindable\hkbNode\hkbGenerator</Filter>
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkbBindable\hkbNode\hkbGenerator</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSShader.h">
       <Filter>include\RE\BSShader\BSShader</Filter>
@@ -4961,9 +4613,6 @@
     <ClInclude Include="include\RE\MiddleProcess.h">
       <Filter>include\RE\AI</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\AIProcessManager.h">
-      <Filter>include\RE\AI</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BGSAttackData.h">
       <Filter>include\RE\NetImmerse\NiRefObject</Filter>
     </ClInclude>
@@ -5014,6 +4663,267 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESMoveAttachDetachEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ProcessLists.h">
+      <Filter>include\RE\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiIntegerExtraData.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiExtraData\NiIntegerExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSXFlags.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiExtraData\NiIntegerExtraData</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Calendar.h">
+      <Filter>include\RE\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScaleformManager.h">
+      <Filter>include\RE\Scaleform\BS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MemoryManager.h">
+      <Filter>include\RE\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTSet.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSAnimNoteListener.h">
+      <Filter>include\RE\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiCollisionObject.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiCollisionObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkNiCollisionObject.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiCollisionObject\bhkNiCollisionObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCollisionObject.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiCollisionObject\bhkNiCollisionObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkBaseObject.h">
+      <Filter>include\RE\BSHavok\hkBaseObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkReferencedObject.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkRefPtr.h">
+      <Filter>include\RE\BSHavok\hkRefPtr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkRefVariant.h">
+      <Filter>include\RE\BSHavok\hkRefPtr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkMatrix3.h">
+      <Filter>include\RE\BSHavok\hkMatrix3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkRotation.h">
+      <Filter>include\RE\BSHavok\hkMatrix3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkContainerAllocators.h">
+      <Filter>include\RE\BSHavok\hkMemoryAllocator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkMemoryAllocator.h">
+      <Filter>include\RE\BSHavok\hkMemoryAllocator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkbCharacter.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkbRagdollDriver.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCdBody.h">
+      <Filter>include\RE\BSHavok\hkpCdBody</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCollidable.h">
+      <Filter>include\RE\BSHavok\hkpCdBody\hkpCollidable</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpLinkedCollidable.h">
+      <Filter>include\RE\BSHavok\hkpCdBody\hkpCollidable</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpBroadPhaseHandle.h">
+      <Filter>include\RE\BSHavok\hkpBroadPhaseHandle</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpTypedBroadPhaseHandle.h">
+      <Filter>include\RE\BSHavok\hkpBroadPhaseHandle</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCdPointCollector.h">
+      <Filter>include\RE\BSHavok\hkpCdPointCollector</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpShape.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpShape</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpShapeCollection.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpShape\hkpShapeCollection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpListShape.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpShape\hkpShapeCollection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpShapeType.h">
+      <Filter>include\RE\BSHavok\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpWorldObject.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpEntity.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject\hkpEntity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpRigidBody.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject\hkpEntity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpMotion.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpMotion</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpKeyframedRigidMotion.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpMotion\hkpKeyframedRigidMotion</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpFixedRigidMotion.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpMotion\hkpKeyframedRigidMotion</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpPhantomType.h">
+      <Filter>include\RE\BSHavok\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpPhantom.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject\hkpPhantom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpShapePhantom.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject\hkpPhantom\hkpShapePhantom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCachingShapePhantom.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject\hkpPhantom\hkpShapePhantom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpConstraintOwner.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpConstraintOwner</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpSimulationIsland.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpConstraintOwner</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCharacterContext.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCharacterStateManager.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCharacterProxy.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpCharacterProxy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ahkpCharacterProxy.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpCharacterProxy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpWorld.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ahkpWorld.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpAllCdPointCollector.h">
+      <Filter>include\RE\BSHavok\hkpCdPointCollector\hkpAllCdPointCollector</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterPointCollector.h">
+      <Filter>include\RE\BSHavok\hkpCdPointCollector\hkpAllCdPointCollector</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCharacterState.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpCharacterState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCharacterProxyListener.h">
+      <Filter>include\RE\BSHavok\hkpCharacterProxyListener</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharProxyController.h">
+      <Filter>include\RE\BSHavok\hkpCharacterProxyListener</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\bhkCharacterController.h">
+      <Filter>include\RE\NetImmerse\NiRefObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkArray.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkBaseTypes.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkContactPoint.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkMotionState.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkMultiThreadCheck.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpAgentNnTrack.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCharacterControl.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpConstraintInfo.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpEntityListener.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpMaterial.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpPhantomListener.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpProperty.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpRootCdPoint.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpShapeBuffer.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpShapeContainer.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpSimplexSolver.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpWeldingUtility.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkQuaternion.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkSmallArray.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkSseMathTypes.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkStepInfo.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkStringPtr.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkSweptTransform.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkTransform.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkVector4.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorEquipManager.h">
+      <Filter>include\RE\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSStringPool.h">
+      <Filter>include\RE\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ConsoleLog.h">
+      <Filter>include\RE\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ControlMap.h">
+      <Filter>include\RE\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\UserEvents.h">
+      <Filter>include\RE\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\UIMessageQueue.h">
+      <Filter>include\RE\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\InterfaceStrings.h">
+      <Filter>include\RE\Menus</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -8,10 +8,6 @@ namespace RE
 	{}
 
 
-	hkReferencedObject::~hkReferencedObject()
-	{}
-
-
 	SInt32 hkReferencedObject::GetAllocatedSize() const
 	{
 		return memSizeAndFlags & kMemSize;

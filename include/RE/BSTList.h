@@ -5,7 +5,7 @@
 #include <utility>
 #include <iterator>
 
-#include "RE/TESMemoryManager.h"
+#include "RE/MemoryManager.h"
 
 
 namespace RE

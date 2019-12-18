@@ -2,7 +2,7 @@
 
 #include "RE/BSTList.h"
 #include "RE/FormTypes.h"
-#include "RE/TESMemoryManager.h"
+#include "RE/MemoryManager.h"
 
 
 namespace RE

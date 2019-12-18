@@ -1,4 +1,4 @@
-#include "RE/ConsoleManager.h"
+#include "RE/ConsoleLog.h"
 
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
@@ -6,14 +6,14 @@
 
 namespace RE
 {
-	ConsoleManager* ConsoleManager::GetSingleton()
+	ConsoleLog* ConsoleLog::GetSingleton()
 	{
-		REL::Offset<ConsoleManager**> singleton(Offset::ConsoleManager::Singleton);
+		REL::Offset<ConsoleLog**> singleton(Offset::ConsoleLog::Singleton);
 		return *singleton;
 	}
 
 
-	bool ConsoleManager::IsConsoleMode()
+	bool ConsoleLog::IsConsoleMode()
 	{
 		struct TLSData
 		{
@@ -27,7 +27,7 @@ namespace RE
 	}
 
 
-	void ConsoleManager::Print(const char* a_fmt, ...)
+	void ConsoleLog::Print(const char* a_fmt, ...)
 	{
 		std::va_list args;
 		va_start(args, a_fmt);
@@ -36,10 +36,10 @@ namespace RE
 	}
 
 
-	void ConsoleManager::VPrint(const char* a_fmt, std::va_list a_args)
+	void ConsoleLog::VPrint(const char* a_fmt, std::va_list a_args)
 	{
-		using func_t = function_type_t<decltype(&ConsoleManager::Print)>;
-		REL::Offset<func_t*> func(Offset::ConsoleManager::VPrint);
+		using func_t = function_type_t<decltype(&ConsoleLog::Print)>;
+		REL::Offset<func_t*> func(Offset::ConsoleLog::VPrint);
 		func(this, a_fmt, a_args);
 	}
 }

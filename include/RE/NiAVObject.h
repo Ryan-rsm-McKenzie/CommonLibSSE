@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/NiBound.h"
 #include "RE/NiObjectNET.h"
 #include "RE/NiSmartPointer.h"
 #include "RE/NiTransform.h"
@@ -7,11 +8,12 @@
 
 namespace RE
 {
+	class bhkCollisionObject;
 	class BSFixedString;
 	class NiColorA;
 	class NiNode;
 	class NiPoint3;
-	class NiProperty;
+	class TESObjectREFR;
 
 
 	class NiAVObject : public NiObjectNET
@@ -24,15 +26,32 @@ namespace RE
 		enum class Flag : UInt32
 		{
 			kNone = 0,
-			kAppCulled = 1 << 0,
+			kHidden = 1 << 0,
 			kSelectiveUpdate = 1 << 1,
-			kSelectiveXForms = 1 << 2,
-			kSelectivePropController = 1 << 3,
-			kSelectiveRigid = 1 << 4,
+			kSelectiveUpdateTransforms = 1 << 2,
+			kSelectiveUpdateController = 1 << 3,
+			kSelectiveUpdateRigid = 1 << 4,
 			kDisplayObject = 1 << 5,
 			kDisableSorting = 1 << 6,
-			kSelectiveXFormsOverride = 1 << 7,
-			kIsNode = 1 << 8
+			kSelectiveUpdateTransformsOverride = 1 << 7,
+			kSaveExternalGeometryData = 1 << 9,
+			kNoDecals = 1 << 10,
+			kAlwaysDraw = 1 << 11,
+			kMeshLOD = 1 << 12,
+			kFixedBound = 1 << 13,
+			kTopFadeNode = 1 << 14,
+			kIgnoreFade = 1 << 15,
+			kNoAnimSyncX = 1 << 16,
+			kNoAnimSyncY = 1 << 17,
+			kNoAnimSyncZ = 1 << 18,
+			kNoAnimSyncS = 1 << 19,
+			kNoDismember = 1 << 20,
+			kNoDismemberValidity = 1 << 21,
+			kRenderUse = 1 << 22,
+			kMaterialsApplied = 1 << 23,
+			kHighDetail = 1 << 24,
+			kForceUpdate = 1 << 25,
+			kPreProcessedNode = 1 << 26
 		};
 
 
@@ -85,26 +104,21 @@ namespace RE
 
 
 		// members
-		NiNode*					parent;				// 030
-		UInt32					unk038;				// 038
-		UInt32					pad03C;				// 03C
-		NiPointer<NiAVObject>	unk040;				// 040
-		NiTransform				localTransform;		// 048
-		NiTransform				worldTransform;		// 07C
-		NiTransform				oldWorldTransform;	// 0B0
-		float					unkE4;				// 0E4
-		float					unkE8;				// 0E8
-		float					unkEC;				// 0EC
-		float					unkF0;				// 0F0
-		Flag					flags;				// 0F4
-		float					unkF8;				// 0F8
-		UInt32					unkFC;				// 0FC
-		float					unk100;				// 100
-		UInt32					unk104;				// 104
-		UInt8					unk108;				// 108
-		UInt8					unk109;				// 109 - bitfield
-		UInt16					pad10A;				// 10A
-		UInt32					pad10C;				// 10C
+		NiNode*							parent;				// 030
+		UInt64							unk038;				// 038
+		NiPointer<bhkCollisionObject>	collisionObject;	// 040
+		NiTransform						localTransform;		// 048
+		NiTransform						worldTransform;		// 07C
+		NiTransform						oldWorldTransform;	// 0B0
+		NiBound 						worldBound;			// 0E4
+		Flag							flags;				// 0F4
+		TESObjectREFR*					userData;			// 0F8
+		float							unk100;				// 100 - scale?
+		UInt32							unk104;				// 104
+		UInt8							unk108;				// 108
+		UInt8							unk109;				// 109 - bitfield
+		UInt16							pad10A;				// 10A
+		UInt32							pad10C;				// 10C
 	};
 	STATIC_ASSERT(sizeof(NiAVObject) == 0x110);
 }

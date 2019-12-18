@@ -1,7 +1,7 @@
 #include "RE/ExtraAliasInstanceArray.h"
 
+#include "RE/MemoryManager.h"
 #include "RE/Offsets.h"
-#include "RE/TESMemoryManager.h"
 #include "REL/Relocation.h"
 
 

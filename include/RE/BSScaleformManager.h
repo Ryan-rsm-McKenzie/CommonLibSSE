@@ -22,7 +22,7 @@ namespace RE
 	class IMenu;
 
 
-	class BSScaleformMovieLoader : public BSTSingletonSDM<BSScaleformMovieLoader>
+	class BSScaleformManager : public BSTSingletonSDM<BSScaleformManager>
 	{
 	public:
 		using ScaleModeType = GFxMovieView::ScaleModeType;
@@ -35,7 +35,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(Config) == 0x8);
 
 
-		static BSScaleformMovieLoader* GetSingleton();
+		static BSScaleformManager* GetSingleton();
 
 		bool	LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode = ScaleModeType::kShowAll, float a_backGroundAlpha = 0.0);
 		bool	LoadMovieStd(IMenu* a_menu, const char* a_fileName, llvm::function_ref<void(GFxMovieDef*)> a_callback, ScaleModeType a_mode = ScaleModeType::kShowAll, float a_backGroundAlpha = 0.0);
@@ -58,5 +58,5 @@ namespace RE
 		std::tuple<float, float, SInt32, SInt32>	CollectDisplayInfo();
 		bool										FileExists(const char* a_fileName);
 	};
-	STATIC_ASSERT(sizeof(BSScaleformMovieLoader) == 0x40);
+	STATIC_ASSERT(sizeof(BSScaleformManager) == 0x40);
 }

@@ -12,13 +12,13 @@ namespace RE
 	class IUIMessageData;
 
 
-	class UIManager : public BSTSingletonSDM<UIManager>
+	class UIMessageQueue : public BSTSingletonSDM<UIMessageQueue>
 	{
 	public:
 		enum { kPoolSize = 0x40 };
 
 
-		static UIManager* GetSingleton();
+		static UIMessageQueue* GetSingleton();
 
 		void			AddMessage(const BSFixedString& a_menuName, UIMessage::Message a_msgID, IUIMessageData* a_data);
 		IUIMessageData*	CreateUIMessageData(const BSFixedString& a_name);	// uses unk348, but doesn't seem to work like the skse thinks it does
@@ -26,11 +26,14 @@ namespace RE
 
 
 		// members
+		UInt8											pad001;					// 001
+		UInt16											pad002;					// 002
+		UInt32											pad004;					// 004
 		BSTCommonStaticMessageQueue<UIMessage*, 100>	messages;				// 008
 		BSTHashMap<UnkKey, UnkValue>					unk348;					// 348
 		UInt32											poolUsed;				// 378
 		UInt32											pad37C;					// 37C
 		UIMessage										messagePool[kPoolSize];	// 380
 	};
-	STATIC_ASSERT(sizeof(UIManager) == 0xB80);
+	STATIC_ASSERT(sizeof(UIMessageQueue) == 0xB80);
 }

@@ -58,6 +58,17 @@ namespace RE
 		}
 
 
+		namespace ActorEquipManager
+		{
+			// DirectSig: 48 85 D2 0F 84 ? ? ? ? 57 48 83 EC 50 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 49 8B D9
+			constexpr std::uintptr_t EquipItem = 0x00637A80;	// 1_5_97
+			// 88 4C 24 30 48 8B 0D ? ? ? ? 48 C7 44 24 ? ? ? ? ?
+			constexpr std::uintptr_t Singleton = 0x02EC4838;	// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 84 C0 0F 94 C0 33 F6
+			constexpr std::uintptr_t UnequipItem = 0x00638190;	// 1_5_97
+		}
+
+
 		namespace ActorValueOwner
 		{
 			// IndirectSig: E8 ? ? ? ? F3 44 0F 2C C0
@@ -73,15 +84,6 @@ namespace RE
 			constexpr std::uintptr_t SetEquipFlag = 0x0067E3B0;		// 1_5_97
 			// IndirectSig: E8 ? ? ? ? E9 ? ? ? ? 8B 4F 08
 			constexpr std::uintptr_t UpdateEquipment = 0x00650DF0;	// 1_5_97
-		}
-
-
-		namespace AIProcessManager
-		{
-			// IndirectSig: E8 ? ? ? ? 48 8B 13 48 8B CB FF 92 ? ? ? ? 33 D2
-			constexpr std::uintptr_t SetCombatAlarmState = 0x006D9490;	// 1_5_97
-			// 4C 8B F9 48 89 0D ? ? ? ?
-			constexpr std::uintptr_t Singleton = 0x01EBEAD0;			// 1_5_97
 		}
 
 
@@ -159,13 +161,6 @@ namespace RE
 		}
 
 
-		namespace BSGlobalStringTable
-		{
-			// IndirectSig: E8 ? ? ? ? 41 8B FE 41 8B CE
-			constexpr std::uintptr_t GetSingleton = 0x00C2A4D0;	// 1_5_97
-		}
-
-
 		namespace BSLightingShaderMaterialBase
 		{
 			// IndirectSig: E8 ? ? ? ? 45 33 C0 33 D2 48 8B CF 4C 8B F0
@@ -199,7 +194,7 @@ namespace RE
 		}
 
 
-		namespace BSScaleformMovieLoader
+		namespace BSScaleformManager
 		{
 			// IndirectSig: E8 ? ? ? ? 84 C0 74 50 48 8B 4F 10
 			constexpr std::uintptr_t LoadMovie = 0x00ECE790;	// 1_5_97
@@ -277,10 +272,10 @@ namespace RE
 		}
 
 
-		namespace BSTimeManager
+		namespace BSStringPool
 		{
-			//
-			constexpr std::uintptr_t Singleton = 0x01EC0A80;	// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 41 8B FE 41 8B CE
+			constexpr std::uintptr_t GetSingleton = 0x00C2A4D0;	// 1_5_97
 		}
 
 
@@ -288,6 +283,13 @@ namespace RE
 		{
 			// IndirectSig: E8 ? ? ? ? 4C 8B 18
 			constexpr std::uintptr_t GetSingleton = 0x0133F0C0;	// 1_5_97
+		}
+
+
+		namespace Calendar
+		{
+			//
+			constexpr std::uintptr_t Singleton = 0x01EC0A80;	// 1_5_97
 		}
 
 
@@ -330,12 +332,19 @@ namespace RE
 		}
 
 
-		namespace ConsoleManager
+		namespace ConsoleLog
 		{
 			// E8 ? ? ? ? 48 89 2D ? ? ? ? 48 8B 0D ? ? ? ? 48 85 C9 74 0C E8 ? ? ? ? 48 89 2D ? ? ? ? 48 8B 0D ? ? ? ? 48 85 C9 74 0C E8 ? ? ? ? 48 89 2D ? ? ? ? 48 8B 0D ? ? ? ?
 			constexpr std::uintptr_t Singleton = 0x02F000F0;	// 1_5_97
 			// DirectSig: 48 8B C4 57 41 54 41 55 41 56 41 57 48 83 EC 40 48 C7 40 ? ? ? ? ? 48 89 58 10 48 89 68 18 48 89 70 20 4D 8B F8 4C 8B E2
 			constexpr std::uintptr_t VPrint = 0x0085C2C0;		// 1_5_97
+		}
+
+
+		namespace ControlMap
+		{
+			// E8 ? ? ? ? 90 48 89 05 ? ? ? ? 8B 05 ? ? ? ?
+			constexpr std::uintptr_t Singleton = 0x02EC5BD0;	// 1_5_97
 		}
 
 
@@ -354,17 +363,6 @@ namespace RE
 		{
 			// IndirectSig: E8 ? ? ? ? 48 8B F8 41 89 1E 48 8B C7 48 8B 5C 24 70
 			constexpr std::uintptr_t Ctor = 0x0056C9D0;	// 1_5_97
-		}
-
-
-		namespace EquipManager
-		{
-			// DirectSig: 48 85 D2 0F 84 ? ? ? ? 57 48 83 EC 50 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 49 8B D9
-			constexpr std::uintptr_t EquipItem = 0x00637A80;	// 1_5_97
-			// 88 4C 24 30 48 8B 0D ? ? ? ? 48 C7 44 24 ? ? ? ? ?
-			constexpr std::uintptr_t Singleton = 0x02EC4838;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 84 C0 0F 94 C0 33 F6
-			constexpr std::uintptr_t UnequipItem = 0x00638190;	// 1_5_97
 		}
 
 
@@ -635,17 +633,10 @@ namespace RE
 		}
 
 
-		namespace InputMappingManager
+		namespace InterfaceStrings
 		{
-			// E8 ? ? ? ? 90 48 89 05 ? ? ? ? 8B 05 ? ? ? ?
-			constexpr std::uintptr_t Singleton = 0x02EC5BD0;	// 1_5_97
-		}
-
-
-		namespace InputStringHolder
-		{
-			// E8 ? ? ? ? 90 48 89 05 ? ? ? ? 48 8D 4F 60
-			constexpr std::uintptr_t Singleton = 0x02F25250;	// 1_5_97
+			// E8 ? ? ? ? 90 48 89 05 ? ? ? ? 48 8B 0D ? ? ? ? E8 ? ? ? ? 48 83 3D ? ? ? ? ? 75 20
+			constexpr std::uintptr_t Singleton = 0x01EC0A78;	// 1_5_97
 		}
 
 
@@ -753,6 +744,19 @@ namespace RE
 		}
 
 
+		namespace MemoryManager
+		{
+			// DirectSig: 48 85 D2 0F 84 ? ? ? ? 48 89 5C 24 ? 48 89 54 24 ? 57 48 83 EC 20 80 39 00
+			constexpr std::uintptr_t Free = 0x00C02560;			// 1_5_97
+			// DirectSig: 40 53 48 83 EC 20 83 3D ? ? ? ? ? 74 1F
+			constexpr std::uintptr_t GetSingleton = 0x000FCFE0;	// 1_5_97
+			// DirectSig: 48 89 5C 24 ? 55 57 41 54 41 55 41 57 48 83 EC 30 65 48 8B 04 25 ? ? ? ?
+			constexpr std::uintptr_t Malloc = 0x00C02260;		// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 3B 77 48
+			constexpr std::uintptr_t Realloc = 0x00C024B0;		// 1_5_97
+		}
+
+
 		namespace MenuControls
 		{
 			// 48 89 2D ? ? ? ? 48 8D 05 ? ? ? ? 48 89 01 48 8D 05 ? ? ? ? 48 89 41 08 48 8D 59 18
@@ -796,13 +800,6 @@ namespace RE
 			constexpr std::uintptr_t UpdateModelSkin = 0x003DC720;	// 1_5_97
 			// IndirectSig: E8 ? ? ? ? EB 09 48 8B CB E8 ? ? ? ? 90 48 8B 8C 24 ? ? ? ?
 			constexpr std::uintptr_t UpdateNode = 0x00C56B50;		// 1_5_97
-		}
-
-
-		namespace NiControllerManager
-		{
-			// IndirectSig: E8 ? ? ? ? 48 8B E8 E8 ? ? ? ?
-			constexpr std::uintptr_t GetSequenceByName = 0x00189B00;	// 1_5_97
 		}
 
 
@@ -892,6 +889,15 @@ namespace RE
 			constexpr std::uintptr_t Ctor = 0x00704970;			// 1_5_97
 			// 74 0D 48 83 C0 E0 48 89 05 ? ? ? ?
 			constexpr std::uintptr_t Singleton = 0x02EC5BD8;	// 1_5_97
+		}
+
+
+		namespace ProcessLists
+		{
+			// IndirectSig: E8 ? ? ? ? 48 8B 13 48 8B CB FF 92 ? ? ? ? 33 D2
+			constexpr std::uintptr_t SetCombatAlarmState = 0x006D9490;	// 1_5_97
+			// 4C 8B F9 48 89 0D ? ? ? ?
+			constexpr std::uintptr_t Singleton = 0x01EBEAD0;			// 1_5_97
 		}
 
 
@@ -1018,19 +1024,6 @@ namespace RE
 		}
 
 
-		namespace TESMemoryManager
-		{
-			// DirectSig: 48 85 D2 0F 84 ? ? ? ? 48 89 5C 24 ? 48 89 54 24 ? 57 48 83 EC 20 80 39 00
-			constexpr std::uintptr_t Free = 0x00C02560;			// 1_5_97
-			// DirectSig: 40 53 48 83 EC 20 83 3D ? ? ? ? ? 74 1F
-			constexpr std::uintptr_t GetSingleton = 0x000FCFE0;	// 1_5_97
-			// DirectSig: 48 89 5C 24 ? 55 57 41 54 41 55 41 57 48 83 EC 30 65 48 8B 04 25 ? ? ? ?
-			constexpr std::uintptr_t Malloc = 0x00C02260;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 3B 77 48
-			constexpr std::uintptr_t Realloc = 0x00C024B0;		// 1_5_97
-		}
-
-
 		namespace TESNPC
 		{
 			// IndirectSig: E8 ? ? ? ? EB 07 8B D5
@@ -1110,7 +1103,7 @@ namespace RE
 		}
 
 
-		namespace UIManager
+		namespace UIMessageQueue
 		{
 			// IndirectSig: E8 ? ? ? ? 48 8B 05 ? ? ? ? 48 85 C0 0F 84 ? ? ? ? 80 B8 ? ? ? ? ? 0F 85 ? ? ? ? 80 B8 ? ? ? ? ?
 			constexpr std::uintptr_t AddMessage = 0x001652D0;			// 1_5_97
@@ -1123,10 +1116,10 @@ namespace RE
 		}
 
 
-		namespace UIStringHolder
+		namespace UserEvents
 		{
-			// E8 ? ? ? ? 90 48 89 05 ? ? ? ? 48 8B 0D ? ? ? ? E8 ? ? ? ? 48 83 3D ? ? ? ? ? 75 20
-			constexpr std::uintptr_t Singleton = 0x01EC0A78;	// 1_5_97
+			// E8 ? ? ? ? 90 48 89 05 ? ? ? ? 48 8D 4F 60
+			constexpr std::uintptr_t Singleton = 0x02F25250;	// 1_5_97
 		}
 
 

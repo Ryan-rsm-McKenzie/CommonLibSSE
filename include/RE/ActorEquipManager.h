@@ -11,10 +11,10 @@ namespace RE
 	class TESForm;
 
 
-	class EquipManager : public BSTSingletonSDM<EquipManager>
+	class ActorEquipManager : public BSTSingletonSDM<ActorEquipManager>
 	{
 	public:
-		static EquipManager* GetSingleton();
+		static ActorEquipManager* GetSingleton();
 		/*
 		 * @param a_arg9 = 0
 		 */
@@ -31,6 +31,5 @@ namespace RE
 		// members
 		bool unk01;	// 01
 	};
-	STATIC_ASSERT(offsetof(EquipManager, unk01) == 0x1);
-	STATIC_ASSERT(sizeof(EquipManager) == 0x2);
+	STATIC_ASSERT(sizeof(ActorEquipManager) == 0x2);
 }

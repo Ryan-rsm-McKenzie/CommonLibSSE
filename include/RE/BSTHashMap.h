@@ -4,7 +4,7 @@
 #include <utility>
 
 #include "RE/CRC.h"
-#include "RE/TESMemoryManager.h"
+#include "RE/MemoryManager.h"
 
 
 namespace RE

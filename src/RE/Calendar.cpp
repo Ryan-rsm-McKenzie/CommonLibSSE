@@ -1,4 +1,4 @@
-#include "RE/BSTimeManager.h"
+#include "RE/Calendar.h"
 
 #include "RE/GameSettingCollection.h"
 #include "RE/Offsets.h"
@@ -9,26 +9,26 @@
 
 namespace RE
 {
-	BSTimeManager* BSTimeManager::GetSingleton()
+	Calendar* Calendar::GetSingleton()
 	{
-		REL::Offset<BSTimeManager**> singleton(Offset::BSTimeManager::Singleton);
+		REL::Offset<Calendar**> singleton(Offset::Calendar::Singleton);
 		return *singleton;
 	}
 
 
-	float BSTimeManager::GetCurrentGameTime() const
+	float Calendar::GetCurrentGameTime() const
 	{
 		return daysPassed ? daysPassed->value : 1.0;
 	}
 
 
-	float BSTimeManager::GetDay() const
+	float Calendar::GetDay() const
 	{
 		return day ? day->value : 17.0;
 	}
 
 
-	std::string	BSTimeManager::GetDayName() const
+	std::string	Calendar::GetDayName() const
 	{
 		auto gmst = RE::GameSettingCollection::GetSingleton();
 		Setting* setting = 0;
@@ -64,37 +64,37 @@ namespace RE
 	}
 
 
-	UInt32 BSTimeManager::GetDayOfWeek() const
+	UInt32 Calendar::GetDayOfWeek() const
 	{
 		return static_cast<UInt32>(GetDaysPassed()) % 7;
 	}
 
 
-	float BSTimeManager::GetDaysPassed() const
+	float Calendar::GetDaysPassed() const
 	{
 		return daysPassed ? daysPassed->value : 1.0;
 	}
 
 
-	float BSTimeManager::GetHour() const
+	float Calendar::GetHour() const
 	{
 		return hour ? hour->value : 12.0;
 	}
 
 
-	float BSTimeManager::GetHoursPassed() const
+	float Calendar::GetHoursPassed() const
 	{
 		return GetDaysPassed() * 24.0;
 	}
 
 
-	UInt32 BSTimeManager::GetMonth() const
+	UInt32 Calendar::GetMonth() const
 	{
 		return month ? month->value : 7;
 	}
 
 
-	std::string	BSTimeManager::GetMonthName() const
+	std::string	Calendar::GetMonthName() const
 	{
 		auto gmst = RE::GameSettingCollection::GetSingleton();
 		Setting* setting = 0;
@@ -145,7 +145,7 @@ namespace RE
 	}
 
 
-	std::tm BSTimeManager::GetTime() const
+	std::tm Calendar::GetTime() const
 	{
 		std::tm time;
 
@@ -168,13 +168,13 @@ namespace RE
 	}
 
 
-	float BSTimeManager::GetTimescale() const
+	float Calendar::GetTimescale() const
 	{
 		return timeScale->value;
 	}
 
 
-	UInt32 BSTimeManager::GetYear() const
+	UInt32 Calendar::GetYear() const
 	{
 		return year ? year->value : 77;
 	}

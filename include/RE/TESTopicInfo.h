@@ -4,8 +4,8 @@
 #include "RE/Condition.h"
 #include "RE/DialogueData.h"
 #include "RE/FormTypes.h"
+#include "RE/MemoryManager.h"
 #include "RE/TESForm.h"
-#include "RE/TESMemoryManager.h"
 
 
 namespace RE

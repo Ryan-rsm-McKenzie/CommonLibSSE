@@ -9,7 +9,7 @@ namespace RE
 	using GlobalStringHandleW = wchar_t*;
 
 
-	class BSGlobalStringTable
+	class BSStringPool
 	{
 	public:
 		enum HashMask
@@ -69,7 +69,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(Entry) == 0x18);
 
 
-		static BSGlobalStringTable* GetSingleton();
+		static BSStringPool* GetSingleton();
 
 
 		// members
@@ -80,5 +80,5 @@ namespace RE
 		UInt16					pad80802;		// 80102
 		UInt32					pad80804;		// 80104
 	};
-	STATIC_ASSERT(sizeof(BSGlobalStringTable) == 0x80108);
+	STATIC_ASSERT(sizeof(BSStringPool) == 0x80108);
 }

@@ -63,19 +63,19 @@ namespace RE
 
 
 		// members
-		Flag				flags;				// 10
-		UInt16				pad12;				// 12
-		float				frequency;			// 14
-		float				phase;				// 18
-		float				loKeyTime;			// 1C
-		float				hiKeyTime;			// 20
-		float				startTime;			// 24
-		float				lastTime;			// 28
-		float				weightedLastTime;	// 2C
-		float				scaledTime;			// 30
-		UInt32				pad34;				// 34
-		NiObjectNET*		target;				// 38
-		NiTimeControllerPtr	next;				// 40 - singly-linked list
+		Flag						flags;				// 10
+		UInt16						pad12;				// 12
+		float						frequency;			// 14
+		float						phase;				// 18
+		float						loKeyTime;			// 1C
+		float						hiKeyTime;			// 20
+		float						startTime;			// 24
+		float						lastTime;			// 28
+		float						weightedLastTime;	// 2C
+		float						scaledTime;			// 30
+		UInt32						pad34;				// 34
+		NiObjectNET*				target;				// 38
+		NiPointer<NiTimeController>	next;				// 40 - singly-linked list
 	};
 	STATIC_ASSERT(sizeof(NiTimeController) == 0x48);
 }

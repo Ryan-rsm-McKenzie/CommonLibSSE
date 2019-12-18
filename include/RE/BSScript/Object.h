@@ -3,7 +3,7 @@
 #include "RE/BSScript/Variable.h"
 #include "RE/BSFixedString.h"
 #include "RE/BSTSmartPointer.h"
-#include "RE/TESMemoryManager.h"
+#include "RE/MemoryManager.h"
 
 
 namespace RE

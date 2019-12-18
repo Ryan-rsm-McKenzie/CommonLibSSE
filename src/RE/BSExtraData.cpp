@@ -2,7 +2,7 @@
 
 #include <cstring>
 
-#include "RE/TESMemoryManager.h"
+#include "RE/MemoryManager.h"
 
 
 namespace RE

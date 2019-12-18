@@ -1,4 +1,4 @@
-#include "RE/BSScaleformMovieLoader.h"
+#include "RE/BSScaleformManager.h"
 
 #include <string>
 
@@ -14,22 +14,22 @@
 
 namespace RE
 {
-	BSScaleformMovieLoader* BSScaleformMovieLoader::GetSingleton()
+	BSScaleformManager* BSScaleformManager::GetSingleton()
 	{
-		REL::Offset<BSScaleformMovieLoader**> singleton(Offset::BSScaleformMovieLoader::Singleton);
+		REL::Offset<BSScaleformManager**> singleton(Offset::BSScaleformManager::Singleton);
 		return *singleton;
 	}
 
 
-	bool BSScaleformMovieLoader::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
+	bool BSScaleformManager::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
-		using func_t = function_type_t<decltype(&BSScaleformMovieLoader::LoadMovie)>;
-		REL::Offset<func_t*> func(Offset::BSScaleformMovieLoader::LoadMovie);
+		using func_t = function_type_t<decltype(&BSScaleformManager::LoadMovie)>;
+		REL::Offset<func_t*> func(Offset::BSScaleformManager::LoadMovie);
 		return func(this, a_menu, a_viewOut, a_fileName, a_mode, a_backGroundAlpha);
 	}
 
 
-	bool BSScaleformMovieLoader::LoadMovieStd(IMenu* a_menu, const char* a_fileName, llvm::function_ref<void(GFxMovieDef*)> a_callback, ScaleModeType a_mode, float a_backGroundAlpha)
+	bool BSScaleformManager::LoadMovieStd(IMenu* a_menu, const char* a_fileName, llvm::function_ref<void(GFxMovieDef*)> a_callback, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		using LoadConstants = RE::GFxLoader::LoadConstants;
 
@@ -92,7 +92,7 @@ namespace RE
 	}
 
 
-	bool BSScaleformMovieLoader::LoadMovie_Impl(RE::IMenu* a_menu, RE::GPtr<RE::GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
+	bool BSScaleformManager::LoadMovie_Impl(RE::IMenu* a_menu, RE::GPtr<RE::GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		using LoadConstants = RE::GFxLoader::LoadConstants;
 		using StateType = RE::GFxState::StateType;
@@ -158,7 +158,7 @@ namespace RE
 	}
 
 
-	std::optional<std::string> BSScaleformMovieLoader::BuildFilePath(const char* a_fileName)
+	std::optional<std::string> BSScaleformManager::BuildFilePath(const char* a_fileName)
 	{
 		std::string filePath;
 		filePath = "Interface/";
@@ -176,19 +176,19 @@ namespace RE
 	}
 
 
-	std::tuple<float, float, SInt32, SInt32> BSScaleformMovieLoader::CollectDisplayInfo()
+	std::tuple<float, float, SInt32, SInt32> BSScaleformManager::CollectDisplayInfo()
 	{
-		auto fSafeZoneX = RE::GetINISetting("fSafeZoneX:Interface");
-		auto fSafeZoneY = RE::GetINISetting("fSafeZoneY:Interface");
-		auto iSizeW = RE::GetINISetting("iSize W:Display");
-		auto iSizeH = RE::GetINISetting("iSize H:Display");
+		auto fSafeZoneX = GetINISetting("fSafeZoneX:Interface");
+		auto fSafeZoneY = GetINISetting("fSafeZoneY:Interface");
+		auto iSizeW = GetINISetting("iSize W:Display");
+		auto iSizeH = GetINISetting("iSize H:Display");
 		return std::make_tuple(fSafeZoneX->GetFloat(), fSafeZoneY->GetFloat(), iSizeW->GetSInt(), iSizeH->GetSInt());
 	}
 
 
-	bool BSScaleformMovieLoader::FileExists(const char* a_fileName)
+	bool BSScaleformManager::FileExists(const char* a_fileName)
 	{
-		RE::BSResourceNiBinaryStream file(a_fileName);
+		BSResourceNiBinaryStream file(a_fileName);
 		return file.is_open();
 	}
 }

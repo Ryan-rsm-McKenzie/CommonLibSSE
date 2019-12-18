@@ -1,0 +1,64 @@
+#pragma once
+
+#include "RE/NiCollisionObject.h"
+#include "RE/NiSmartPointer.h"
+
+
+namespace RE
+{
+	class bhkRigidBodyT;
+
+
+	class bhkNiCollisionObject : public NiCollisionObject
+	{
+	public:
+		inline static const void* RTTI = RTTI_bhkNiCollisionObject;
+		inline static const void* Ni_RTTI = NiRTTI_bhkNiCollisionObject;
+
+		
+		enum class Flag : UInt32
+		{
+			kNone = 0,
+			kActive = 1 << 0,
+			kNotify = 1 << 2,
+			kSetLocal = 1 << 3,
+			kDebugDisplay = 1 << 4,
+			kUseVelocity = 1 << 5,
+			kReset = 1 << 6,
+			kSyncOnUpdate = 1 << 7,
+			kAnimTargeted = 1 << 10,
+			kDismemberLimb = 1 << 11
+		};
+
+
+		virtual ~bhkNiCollisionObject();													// 00
+		
+		// override (NiCollisionObject)
+		virtual const NiRTTI*			GetRTTI() const override;							// 02
+		virtual bhkNiCollisionObject*	GetAsBhkNiCollisionObject() override;				// 12 - { return this; }
+		virtual void					LoadBinary(NiStream& a_stream) override;			// 18
+		virtual void					LinkObject(NiStream& a_stream) override;			// 19
+		virtual bool					RegisterStreamables(NiStream& a_stream) override;	// 1A
+		virtual void					SaveBinary(NiStream& a_stream) override;			// 1B
+		virtual bool					IsEqual(NiObject* a_object) override;				// 1C
+		virtual void					Unk_25(void) override;								// 25
+		virtual void					Unk_26(void) override;								// 26
+		virtual void					Unk_27(void) override;								// 27 - { return; }
+
+		// add
+		virtual void					Unk_2A(void);										// 2A
+		virtual void					Unk_2B(void) = 0;									// 2B
+		virtual void					Unk_2C(void) = 0;									// 2C
+		virtual void					Unk_2D(void) = 0;									// 2D
+		virtual void					Unk_2E(void) = 0;									// 2E
+		virtual void					Unk_2F(void);										// 2F
+		virtual void					Unk_30(void);										// 30 - { return 1; }
+
+
+		// members
+		Flag						flags;	// 18
+		UInt32						pad1C;	// 1C
+		NiPointer<bhkRigidBodyT>	body;	// 20
+	};
+	STATIC_ASSERT(sizeof(bhkNiCollisionObject) == 0x28);
+}

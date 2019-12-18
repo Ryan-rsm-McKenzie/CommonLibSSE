@@ -3,7 +3,7 @@
 #include <limits>
 #include <string_view>
 
-#include "RE/TESMemoryManager.h"
+#include "RE/MemoryManager.h"
 
 
 namespace RE

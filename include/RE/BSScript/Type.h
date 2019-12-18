@@ -19,18 +19,21 @@ namespace RE
 			Type&	operator=(const Type& a_rhs);
 			Type&	operator=(Type&& a_rhs);
 
-			VMTypeID	GetTypeID() const;
-			void		SetTypeID(VMTypeID a_type);
-			VMTypeID	GetUnmangledType() const;
 			Class*		GetClass() const;
-			bool		IsObject(void)	const;
-			bool 		IsInt() const;
-			bool 		IsFloat() const;
-			bool 		IsString() const;
-			bool 		IsBool() const;
-			bool 		IsObjectArray() const;
-			bool 		IsLiteralArray() const;
+			VMTypeID	GetTypeID() const;
+			VMTypeID	GetUnmangledType() const;
 			bool 		IsArray() const;
+			bool 		IsBool() const;
+			bool 		IsFloat() const;
+			bool 		IsInt() const;
+			bool 		IsLiteralArray() const;
+			bool		IsNoneArray() const;
+			bool		IsNoneObject() const;
+			bool		IsObject(void)	const;
+			bool 		IsObjectArray() const;
+			bool 		IsString() const;
+			void		SetTypeID(VMTypeID a_type);
+
 
 		protected:
 			// members

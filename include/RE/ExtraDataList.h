@@ -5,8 +5,8 @@
 #include "RE/ExtraFlags.h"
 #include "RE/ExtraDataTypes.h"
 #include "RE/FormTypes.h"
+#include "RE/MemoryManager.h"
 #include "RE/SoulLevels.h"
-#include "RE/TESMemoryManager.h"
 
 
 namespace RE

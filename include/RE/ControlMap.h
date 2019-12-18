@@ -16,8 +16,8 @@ namespace RE
 	class InputEvent;
 
 
-	class InputMappingManager :
-		public BSTSingletonSDM<InputMappingManager>,
+	class ControlMap :
+		public BSTSingletonSDM<ControlMap>,
 		public BSTEventSource<InputEvent*>
 	{
 	public:
@@ -100,7 +100,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(ActionMapping) == 0x20);
 
 
-		static InputMappingManager*	GetSingleton();
+		static ControlMap*	GetSingleton();
 
 		UInt8					AllowTextInput(bool a_allow);
 		UInt32					GetMappedKey(const std::string_view& a_name, DeviceType a_deviceType, Context a_contextIdx = Context::kGameplay) const;
@@ -124,6 +124,6 @@ namespace RE
 		UInt8					unk123;						// 123
 		UInt32					unk124;						// 124
 	};
-	STATIC_ASSERT(offsetof(InputMappingManager, context) == 0x060);
-	STATIC_ASSERT(sizeof(InputMappingManager) == 0x128);
+	STATIC_ASSERT(offsetof(ControlMap, context) == 0x060);
+	STATIC_ASSERT(sizeof(ControlMap) == 0x128);
 }

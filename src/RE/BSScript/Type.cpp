@@ -42,15 +42,16 @@ namespace RE
 		}
 
 
-		VMTypeID Type::GetTypeID() const
+		Class* Type::GetClass() const
 		{
-			return type;
+			assert(IsObject());
+			return reinterpret_cast<Class*>(type & ~VMTypeID::kObject);
 		}
 
 
-		void Type::SetTypeID(VMTypeID a_type)
+		VMTypeID Type::GetTypeID() const
 		{
-			type = a_type;
+			return type;
 		}
 
 
@@ -64,34 +65,9 @@ namespace RE
 		}
 
 
-		Class* Type::GetClass() const
+		bool Type::IsArray() const
 		{
-			assert(IsObject());
-			return reinterpret_cast<Class*>(type & ~VMTypeID::kObject);
-		}
-
-
-		bool Type::IsObject() const
-		{
-			return GetUnmangledType() == VMTypeID::kObject;
-		}
-
-
-		bool Type::IsInt() const
-		{
-			return type == VMTypeID::kInt;
-		}
-
-
-		bool Type::IsFloat() const
-		{
-			return type == VMTypeID::kFloat;
-		}
-
-
-		bool Type::IsString() const
-		{
-			return type == VMTypeID::kString;
+			return IsLiteralArray() || IsObjectArray();
 		}
 
 
@@ -101,9 +77,15 @@ namespace RE
 		}
 
 
-		bool Type::IsObjectArray() const
+		bool Type::IsFloat() const
 		{
-			return (type >= VMTypeID::kArraysEnd) && ((type & VMTypeID::kObject) != VMTypeID::kNone);
+			return type == VMTypeID::kFloat;
+		}
+
+
+		bool Type::IsInt() const
+		{
+			return type == VMTypeID::kInt;
 		}
 
 
@@ -121,9 +103,39 @@ namespace RE
 		}
 
 
-		bool Type::IsArray() const
+		bool Type::IsNoneArray() const
 		{
-			return IsLiteralArray() || IsObjectArray();
+			return type == VMTypeID::kNoneArray;
+		}
+
+
+		bool Type::IsNoneObject() const
+		{
+			return type == VMTypeID::kNone;
+		}
+
+
+		bool Type::IsObject() const
+		{
+			return GetUnmangledType() == VMTypeID::kObject;
+		}
+
+
+		bool Type::IsObjectArray() const
+		{
+			return (type >= VMTypeID::kArraysEnd) && ((type & VMTypeID::kObject) != VMTypeID::kNone);
+		}
+
+
+		bool Type::IsString() const
+		{
+			return type == VMTypeID::kString;
+		}
+
+
+		void Type::SetTypeID(VMTypeID a_type)
+		{
+			type = a_type;
 		}
 	}
 }

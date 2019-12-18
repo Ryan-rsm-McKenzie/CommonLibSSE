@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/ProcessLists/GetActorsFilter.h"
+#include "RE/ProcessLists.h"
 
 
 namespace RE

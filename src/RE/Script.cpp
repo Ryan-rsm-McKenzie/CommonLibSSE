@@ -3,7 +3,7 @@
 #include <cstring>
 
 #include "RE/Offsets.h"
-#include "RE/TESMemoryManager.h"
+#include "RE/MemoryManager.h"
 #include "REL/Relocation.h"
 
 

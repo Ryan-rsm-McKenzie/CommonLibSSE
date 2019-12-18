@@ -5,10 +5,10 @@
 #include "RE/BSUIScaleformData.h"
 #include "RE/GFxValue.h"
 #include "RE/InputManager.h"
+#include "RE/InterfaceStrings.h"
 #include "RE/MenuManager.h"
-#include "RE/UIManager.h"
 #include "RE/UIMessage.h"
-#include "RE/UIStringHolder.h"
+#include "RE/UIMessageQueue.h"
 
 
 namespace RE
@@ -97,17 +97,17 @@ namespace RE
 
 		if (TriesToShowCursor()) {
 			Message messageID;
-			auto uiStrHolder = UIStringHolder::GetSingleton();
+			auto uiStr = InterfaceStrings::GetSingleton();
 			if (gamepad) {
 				flags &= ~Flag::kShowCursor;
 				messageID = Message::kClose;
 			} else {
 				flags |= Flag::kShowCursor;
 				auto mm = MenuManager::GetSingleton();
-				messageID = mm->IsMenuOpen(uiStrHolder->cursorMenu) ? Message::kRefresh : Message::kOpen;
+				messageID = mm->IsMenuOpen(uiStr->cursorMenu) ? Message::kRefresh : Message::kOpen;
 			}
-			auto uiManager = UIManager::GetSingleton();
-			uiManager->AddMessage(uiStrHolder->cursorMenu, messageID, 0);
+			auto messageQueue = UIMessageQueue::GetSingleton();
+			messageQueue->AddMessage(uiStr->cursorMenu, messageID, 0);
 		}
 	}
 

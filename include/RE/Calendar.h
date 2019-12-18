@@ -11,7 +11,7 @@ namespace RE
 	class TESGlobal;
 
 
-	class BSTimeManager : public BSTSingletonSDM<BSTimeManager>
+	class Calendar : public BSTSingletonSDM<Calendar>
 	{
 	public:
 		static constexpr UInt8 DAYS_IN_MONTH[] = {
@@ -69,7 +69,7 @@ namespace RE
 		using Month = Months::Month;
 
 
-		static BSTimeManager* GetSingleton();
+		static Calendar* GetSingleton();
 
 		float		GetCurrentGameTime() const;
 		float		GetDay() const;
@@ -98,5 +98,5 @@ namespace RE
 		UInt32		uDaysPassed;	// 38
 		float		fDaysPassed;	// 3C
 	};
-	STATIC_ASSERT(sizeof(BSTimeManager) == 0x40);
+	STATIC_ASSERT(sizeof(Calendar) == 0x40);
 }

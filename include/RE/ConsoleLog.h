@@ -8,10 +8,10 @@
 
 namespace RE
 {
-	class ConsoleManager : public BSTSingletonSDM<ConsoleManager>
+	class ConsoleLog : public BSTSingletonSDM<ConsoleLog>
 	{
 	public:
-		static ConsoleManager*	GetSingleton();
+		static ConsoleLog*	GetSingleton();
 		static bool				IsConsoleMode();
 
 		void Print(const char* a_fmt, ...);
@@ -25,6 +25,5 @@ namespace RE
 		UInt32		pad404;				// 404
 		BSString	buffer;				// 408
 	};
-	STATIC_ASSERT(offsetof(ConsoleManager, lastMessage) == 0x1);
-	STATIC_ASSERT(sizeof(ConsoleManager) == 0x418);
+	STATIC_ASSERT(sizeof(ConsoleLog) == 0x418);
 }

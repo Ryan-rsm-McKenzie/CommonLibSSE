@@ -205,14 +205,14 @@ namespace RE
 
 		Array* Variable::GetArray()
 		{
-			assert(IsArray());
+			assert(IsArray() || IsNoneArray());
 			return data.arr.get();
 		}
 
 
 		Object* Variable::GetObject()
 		{
-			assert(IsObject());
+			assert(IsObject() || IsNoneObject());
 			return data.obj.get();
 		}
 

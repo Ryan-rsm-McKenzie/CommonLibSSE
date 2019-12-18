@@ -2,7 +2,7 @@
 
 #include "RE/GFxValue.h"
 #include "RE/GPtr.h"
-#include "RE/TESMemoryManager.h"
+#include "RE/MemoryManager.h"
 
 
 namespace RE

@@ -4,7 +4,7 @@
 #include <cstring>
 #include <utility>
 
-#include "RE/TESMemoryManager.h"
+#include "RE/MemoryManager.h"
 
 
 namespace RE

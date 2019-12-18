@@ -121,6 +121,7 @@ namespace RE
 	NiPointer<T>::~NiPointer()
 	{
 		DecRefCount();
+		_ptr = 0;
 	}
 
 
