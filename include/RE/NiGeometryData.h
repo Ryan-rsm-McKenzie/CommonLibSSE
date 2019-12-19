@@ -22,9 +22,9 @@ namespace RE
 		enum class DataFlag: UInt16
 		{
 			kNone = 0x0000,
-			kNDL = 0x1000,
-			kMax = 0x2000,
-			kATI = 0x3000,
+			kNDL = 1 << 12,
+			kMax = 1 << 13,
+			kATI = kNDL | kMax,
 		};
 
 
@@ -99,9 +99,12 @@ namespace RE
 		UInt32								unk50;				// 50
 		UInt32								unk54;				// 54
 		NiPointer<NiAdditionalGeometryData>	additionalGeomData;	// 58
-		UInt32								unk60;				// 60
-		KeepFlag							keepFlags;			// 64
-		CompressFlag						compressFlags;		// 65
+		KeepFlag							keepFlags;			// 60
+		CompressFlag						compressFlags;		// 61
+		UInt8								unk62;				// 62
+		UInt8								unk63;				// 63
+		UInt8								unk64;				// 64
+		UInt8								unk65;				// 65
 		bool								hasGeoData;			// 66
 		UInt8								unk67;				// 67
 	};

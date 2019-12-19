@@ -1051,6 +1051,9 @@
     <Filter Include="src\RE\BSHavok\hkpCharacterProxyListener">
       <UniqueIdentifier>{3d7e060a-28ae-491a-ab5a-950bedc72783}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiTimeController\NiInterpController">
+      <UniqueIdentifier>{24f4637e-5fbf-4d0a-a186-8ab710de57a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -4924,6 +4927,21 @@
     </ClInclude>
     <ClInclude Include="include\RE\InterfaceStrings.h">
       <Filter>include\RE\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiInterpController.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiTimeController\NiInterpController</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiMultiTargetTransformController.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiTimeController\NiInterpController</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpSolverInfo.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpWorldCinfo.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkAabb.h">
+      <Filter>include\RE\BSHavok</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

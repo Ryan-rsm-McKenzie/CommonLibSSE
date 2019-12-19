@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/BaseFormComponent.h"
-#include "RE/BSTArray.h"
+#include "RE/MemoryManager.h"
 
 
 namespace RE
@@ -70,14 +70,14 @@ namespace RE
 
 
 		// members
-		BSTSimpleArray<Entry>	entries;	// 08
-		UInt8					chanceNone;	// 10 - LVLD
-		Flag					flags;		// 11 - LVLF
-		UInt8					numEntries;	// 12 - LLCT
-		UInt8					unk13;		// 13
-		UInt32					pad14;		// 14
-		void*					unk18;		// 18
-		TESGlobal*				global;		// 20 - LVLG
+		SimpleArray<Entry>	entries;	// 08
+		UInt8				chanceNone;	// 10 - LVLD
+		Flag				flags;		// 11 - LVLF
+		UInt8				numEntries;	// 12 - LLCT
+		UInt8				unk13;		// 13
+		UInt32				pad14;		// 14
+		void*				unk18;		// 18
+		TESGlobal*			global;		// 20 - LVLG
 	};
 	STATIC_ASSERT(sizeof(TESLeveledList) == 0x28);
 }

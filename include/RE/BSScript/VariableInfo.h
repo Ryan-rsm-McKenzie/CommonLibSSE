@@ -2,7 +2,7 @@
 
 #include "RE/BSScript/Type.h"
 #include "RE/BSFixedString.h"
-#include "RE/BSTArray.h"
+#include "RE/MemoryManager.h"
 
 
 namespace RE
@@ -24,10 +24,10 @@ namespace RE
 
 
 			// members
-			BSTSimpleArray<Variable>	variables;	// 00
-			UInt16						numParams;	// 08
-			UInt16						numVars;	// 0A
-			UInt32						pad0C;		// 0C
+			SimpleArray<Variable>	variables;	// 00
+			UInt16					numParams;	// 08
+			UInt16					numVars;	// 0A
+			UInt32					pad0C;		// 0C
 		};
 		STATIC_ASSERT(sizeof(VariableInfo) == 0x10);
 	}

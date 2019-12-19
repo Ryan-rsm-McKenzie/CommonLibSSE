@@ -30,7 +30,7 @@ namespace RE
 
 		// members
 		float			worldToCam[4][4];	// 110
-		NiFrustum		frustum;			// 150
+		NiFrustum		viewFrustum;		// 150
 		float			minNearPlaneDist;	// 16C
 		float			maxFarNearRatio;	// 170
 		NiRect<float>	port;				// 174

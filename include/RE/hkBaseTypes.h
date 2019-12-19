@@ -28,6 +28,8 @@ namespace RE
 		void SetFloat(const float& a_val);
 		float GetFloat() const;
 
+
+		// members
 		SInt16 _value;	// 0
 	};
 	STATIC_ASSERT(sizeof(hkHalf) == 0x2);
@@ -38,6 +40,7 @@ namespace RE
 	class hkUFloat8
 	{
 	public:
+		// members
 		UInt8 value;	// 0
 	};
 	STATIC_ASSERT(sizeof(hkUFloat8) == 0x1);

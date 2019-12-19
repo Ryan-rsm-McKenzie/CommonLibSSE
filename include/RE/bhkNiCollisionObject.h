@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	class bhkRigidBodyT;
+	class bhkWorldObject;
 
 
 	class bhkNiCollisionObject : public NiCollisionObject
@@ -58,7 +58,7 @@ namespace RE
 		// members
 		Flag						flags;	// 18
 		UInt32						pad1C;	// 1C
-		NiPointer<bhkRigidBodyT>	body;	// 20
+		NiPointer<bhkWorldObject>	body;	// 20
 	};
 	STATIC_ASSERT(sizeof(bhkNiCollisionObject) == 0x28);
 }

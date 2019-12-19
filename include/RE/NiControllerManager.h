@@ -38,11 +38,11 @@ namespace RE
 		virtual void					Start(float a_time) override;						// 25
 		virtual void					Stop() override;									// 26
 		virtual void					Update(float a_time) override;						// 27
-		virtual void					SetTarget(NiObjectNET* a_node) override;			// 28
-		virtual void					Unk_2E(void) override;								// 2E
+		virtual void					SetTarget(NiObjectNET* a_target) override;			// 28
+		virtual bool					TargetIsRequiredType() const override;				// 2E
 
 		// add
-		virtual void					Unk_2F(void);										// 2F
+		virtual void					Start();											// 2F - { return; }
 
 		NiControllerSequence* GetSequenceByName(const BSFixedString& a_name);
 

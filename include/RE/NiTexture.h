@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSFixedString.h"
 #include "RE/NiObject.h"
 
 
@@ -79,12 +80,12 @@ namespace RE
 
 
 		// members
-		FormatPrefs	formatPrefs;	// 10
-		const char*	name;			// 20
-		UInt32		unk28;			// 28
-		UInt32		unk2C;			// 2C
-		NiTexture*	prev;			// 30
-		NiTexture*	next;			// 38
+		FormatPrefs		formatPrefs;	// 10
+		BSFixedString	name;			// 20
+		UInt32			unk28;			// 28
+		UInt32			unk2C;			// 2C
+		NiTexture*		prev;			// 30
+		NiTexture*		next;			// 38
 	};
 	STATIC_ASSERT(sizeof(NiTexture) == 0x40);
 }

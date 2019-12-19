@@ -412,8 +412,13 @@
     <ClInclude Include="include\RE\bhkNiCollisionObject.h" />
     <ClInclude Include="include\RE\BSAnimNoteListener.h" />
     <ClInclude Include="include\RE\BSXFlags.h" />
+    <ClInclude Include="include\RE\hkAabb.h" />
+    <ClInclude Include="include\RE\hkpSolverInfo.h" />
+    <ClInclude Include="include\RE\hkpWorldCinfo.h" />
     <ClInclude Include="include\RE\NiCollisionObject.h" />
     <ClInclude Include="include\RE\NiIntegerExtraData.h" />
+    <ClInclude Include="include\RE\NiInterpController.h" />
+    <ClInclude Include="include\RE\NiMultiTargetTransformController.h" />
     <ClInclude Include="include\RE\NiTSet.h" />
     <ClInclude Include="include\RE\ProcessLists.h" />
     <ClInclude Include="include\RE\BGSApparatus.h" />

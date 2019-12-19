@@ -30,6 +30,4 @@ namespace RE
 		// the type id for classes IS their class ptr
 		// an object is an array if its first bit is set
 	};
-
-	constexpr float FNAN = 0xFF7FFFFF;
 }

@@ -19,6 +19,16 @@ namespace RE
 		inline static const void* Ni_RTTI = NiRTTI_NiTimeController;
 
 
+		enum class CycleType : UInt32
+		{
+			kLoop,
+			kReverse,
+			kClamp,
+
+			kTotal
+		};
+
+
 		enum class Flag : UInt16
 		{
 			kAnimType_AppTime = 0 << 0,
@@ -53,13 +63,13 @@ namespace RE
 		virtual void			Start(float a_time);								// 25
 		virtual void			Stop();												// 26
 		virtual void			Update(float a_time) = 0;							// 27
-		virtual void			SetTarget(NiObjectNET* a_node);						// 28
-		virtual void			Unk_29(void);										// 29 - { return 0; }
-		virtual void			Unk_2A(void);										// 2A - { return 0; }
-		virtual void			Unk_2B(void);										// 2B
-		virtual void			Unk_2C(void);										// 2C - { return 0; }
-		virtual void			Unk_2D(void);										// 2D - { return 1; }
-		virtual void			Unk_2E(void) = 0;									// 2E
+		virtual void			SetTarget(NiObjectNET* a_target);					// 28
+		virtual bool			IsTransformController() const;						// 29 - { return false; }
+		virtual bool			IsVertexController() const;							// 2A - { return false; }
+		virtual float			ComputeScaledTime(float a_time);					// 2B
+		virtual void			OnPreDisplay();										// 2C - { return; }
+		virtual bool			IsStreamable() const;								// 2D - { return true; }
+		virtual bool			TargetIsRequiredType() const = 0;					// 2E
 
 
 		// members

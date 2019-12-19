@@ -21,7 +21,7 @@ namespace RE
 
 		// members
 		float	earlyOutDistance;	// 08
-		float	pad0C;				// 0C
+		UInt32	pad0C;				// 0C
 	};
 	STATIC_ASSERT(sizeof(hkpCdPointCollector) == 0x10);
 }

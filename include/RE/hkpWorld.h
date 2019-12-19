@@ -1,10 +1,62 @@
 #pragma once
 
+#include "RE/hkArray.h"
+#include "RE/hkMultiThreadCheck.h"
+#include "RE/hkpSolverInfo.h"
+#include "RE/hkpWorldCinfo.h"
 #include "RE/hkReferencedObject.h"
+#include "RE/hkStepInfo.h"
 
 
 namespace RE
 {
+	class hkCriticalSection;
+	class hkdWorld;
+	class hknpWorld;
+	class hkpActionListener;
+	class hkpBroadPhase;
+	class hkpBroadPhaseBorder;
+	class hkpBroadPhaseBorderListener;
+	class hkpCollisionDispatcher;
+	class hkpCollisionFilter;
+	class hkpConstraintListener;
+	class hkpContactImpulseLimitBreachedListener;
+	class hkpContactListener;
+	class hkpConvexListFilter;
+	class hkpEntityEntityBroadPhaseListener;
+	class hkpEntityListener;
+	class hkpIslandActivationListener;
+	class hkpIslandPostCollideListener;
+	class hkpIslandPostIntegrateListener;
+	class hkpPhantom;
+	class hkpPhantomBroadPhaseListener;
+	class hkpPhantomListener;
+	class hkpSimulation;
+	class hkpSimulationIsland;
+	class hkpTreeWorldManager;
+	class hkpTypedBroadPhaseDispatcher;
+	class hkpWorldDeletionListener;
+	class hkpWorldExtension;
+	class hkpWorldMaintenanceMgr;
+	class hkpWorldOperationQueue;
+	class hkpWorldPostCollideListener;
+	class hkpWorldPostIntegrateListener;
+	class hkpWorldPostSimulationListener;
+	class hkWorldMemoryAvailableWatchDog;
+	struct hkpDebugInfoOnPendingOperationQueues;
+	struct hkpMtThreadStructure;
+	struct hkpProcessCollisionInput;
+	struct hkpViolatedConstraintArray;
+
+
+	struct hkpWorldDynamicsStepInfo
+	{
+		hkStepInfo		stepInfo;	// 000
+		hkpSolverInfo	solverInfo;	// 010
+	};
+	STATIC_ASSERT(sizeof(hkpWorldDynamicsStepInfo) == 0x140);
+
+
 	class hkpWorld : public hkReferencedObject
 	{
 	public:
@@ -18,138 +70,116 @@ namespace RE
 
 
 		// members
-		UInt64	unk010;	// 010
-		UInt64	unk018;	// 018
-		UInt64	unk020;	// 020
-		UInt64	unk028;	// 028
-		UInt64	unk030;	// 030
-		UInt64	unk038;	// 038
-		UInt64	unk040;	// 040
-		UInt64	unk048;	// 048
-		UInt64	unk050;	// 050
-		UInt64	unk058;	// 058
-		UInt64	unk060;	// 060
-		UInt64	unk068;	// 068
-		UInt64	unk070;	// 070
-		UInt64	unk078;	// 078
-		UInt64	unk080;	// 080
-		UInt64	unk088;	// 088
-		UInt64	unk090;	// 090
-		UInt64	unk098;	// 098
-		UInt64	unk0A0;	// 0A0
-		UInt64	unk0A8;	// 0A8
-		UInt64	unk0B0;	// 0B0
-		UInt64	unk0B8;	// 0B8
-		UInt64	unk0C0;	// 0C0
-		UInt64	unk0C8;	// 0C8
-		UInt64	unk0D0;	// 0D0
-		UInt64	unk0D8;	// 0D8
-		UInt64	unk0E0;	// 0E0
-		UInt64	unk0E8;	// 0E8
-		UInt64	unk0F0;	// 0F0
-		UInt64	unk0F8;	// 0F8
-		UInt64	unk100;	// 100
-		UInt64	unk108;	// 108
-		UInt64	unk110;	// 110
-		UInt64	unk118;	// 118
-		UInt64	unk120;	// 120
-		UInt64	unk128;	// 128
-		UInt64	unk130;	// 130
-		UInt64	unk138;	// 138
-		UInt64	unk140;	// 140
-		UInt64	unk148;	// 148
-		UInt64	unk150;	// 150
-		UInt64	unk158;	// 158
-		UInt64	unk160;	// 160
-		UInt64	unk168;	// 168
-		UInt64	unk170;	// 170
-		UInt64	unk178;	// 178
-		UInt64	unk180;	// 180
-		UInt64	unk188;	// 188
-		UInt64	unk190;	// 190
-		UInt64	unk198;	// 198
-		UInt64	unk1A0;	// 1A0
-		UInt64	unk1A8;	// 1A8
-		UInt64	unk1B0;	// 1B0
-		UInt64	unk1B8;	// 1B8
-		UInt64	unk1C0;	// 1C0
-		UInt64	unk1C8;	// 1C8
-		UInt64	unk1D0;	// 1D0
-		UInt64	unk1D8;	// 1D8
-		UInt64	unk1E0;	// 1E0
-		UInt64	unk1E8;	// 1E8
-		UInt64	unk1F0;	// 1F0
-		UInt64	unk1F8;	// 1F8
-		UInt64	unk200;	// 200
-		UInt64	unk208;	// 208
-		UInt64	unk210;	// 210
-		UInt64	unk218;	// 218
-		UInt64	unk220;	// 220
-		UInt64	unk228;	// 228
-		UInt64	unk230;	// 230
-		UInt64	unk238;	// 238
-		UInt64	unk240;	// 240
-		UInt64	unk248;	// 248
-		UInt64	unk250;	// 250
-		UInt64	unk258;	// 258
-		UInt64	unk260;	// 260
-		UInt64	unk268;	// 268
-		UInt64	unk270;	// 270
-		UInt64	unk278;	// 278
-		UInt64	unk280;	// 280
-		UInt64	unk288;	// 288
-		UInt64	unk290;	// 290
-		UInt64	unk298;	// 298
-		UInt64	unk2A0;	// 2A0
-		UInt64	unk2A8;	// 2A8
-		UInt64	unk2B0;	// 2B0
-		UInt64	unk2B8;	// 2B8
-		UInt64	unk2C0;	// 2C0
-		UInt64	unk2C8;	// 2C8
-		UInt64	unk2D0;	// 2D0
-		UInt64	unk2D8;	// 2D8
-		UInt64	unk2E0;	// 2E0
-		UInt64	unk2E8;	// 2E8
-		UInt64	unk2F0;	// 2F0
-		UInt64	unk2F8;	// 2F8
-		UInt64	unk300;	// 300
-		UInt64	unk308;	// 308
-		UInt64	unk310;	// 310
-		UInt64	unk318;	// 318
-		UInt64	unk320;	// 320
-		UInt64	unk328;	// 328
-		UInt64	unk330;	// 330
-		UInt64	unk338;	// 338
-		UInt64	unk340;	// 340
-		UInt64	unk348;	// 348
-		UInt64	unk350;	// 350
-		UInt64	unk358;	// 358
-		UInt64	unk360;	// 360
-		UInt64	unk368;	// 368
-		UInt64	unk370;	// 370
-		UInt64	unk378;	// 378
-		UInt64	unk380;	// 380
-		UInt64	unk388;	// 388
-		UInt64	unk390;	// 390
-		UInt64	unk398;	// 398
-		UInt64	unk3A0;	// 3A0
-		UInt64	unk3A8;	// 3A8
-		UInt64	unk3B0;	// 3B0
-		UInt64	unk3B8;	// 3B8
-		UInt64	unk3C0;	// 3C0
-		UInt64	unk3C8;	// 3C8
-		UInt64	unk3D0;	// 3D0
-		UInt64	unk3D8;	// 3D8
-		UInt64	unk3E0;	// 3E0
-		UInt64	unk3E8;	// 3E8
-		UInt64	unk3F0;	// 3F0
-		UInt64	unk3F8;	// 3F8
-		UInt64	unk400;	// 400
-		UInt64	unk408;	// 408
-		UInt64	unk410;	// 410
-		UInt64	unk418;	// 418
-		UInt64	unk420;	// 420
-		UInt64	unk428;	// 428
+		hkpSimulation*										simulation;													// 010
+		UInt64												pad018;														// 018
+		hkVector4											gravity;													// 020
+		hkpSimulationIsland*								fixedIsland;												// 030
+		hkpRigidBody*										fixedRigidBody;												// 038
+		hkArray<hkpSimulationIsland*>						activeSimulationIslands;									// 040
+		hkArray<hkpSimulationIsland*>						inactiveSimulationIslands;									// 050
+		hkArray<hkpSimulationIsland*>						dirtySimulationIslands;										// 060
+		hkpWorldMaintenanceMgr*								maintenanceMgr;												// 070
+		hkRefPtr<hkWorldMemoryAvailableWatchDog>			memoryWatchDog;												// 078
+		bool												assertOnRunningOutOfSolverMemory;							// 080
+		UInt8												pad081;														// 081
+		UInt16												pad082;														// 082
+		UInt32												pad084;														// 084
+		hkpBroadPhase*										broadPhase;													// 088
+		hkpTreeWorldManager*								kdTreeManager;												// 090
+		bool												autoUpdateTree;												// 098
+		UInt8												pad099;														// 099
+		UInt16												pad09A;														// 09A
+		UInt32												pad09C;														// 09C
+		hkpTypedBroadPhaseDispatcher*						broadPhaseDispatcher;										// 0A0
+		hkpPhantomBroadPhaseListener*						phantomBroadPhaseListener;									// 0A8
+		hkpEntityEntityBroadPhaseListener*					entityEntityBroadPhaseListener;								// 0B0
+		hkpBroadPhaseBorderListener*						broadPhaseBorderListener;									// 0B8
+		hkpMtThreadStructure*								multithreadedSimulationJobData;								// 0C0
+		hkpProcessCollisionInput*							collisionInput;												// 0C8
+		hkpCollisionFilter*									collisionFilter;											// 0D0
+		hkpCollisionDispatcher*								collisionDispatcher;										// 0D8
+		hkpConvexListFilter*								convexListFilter;											// 0E0
+		hkpWorldOperationQueue*								pendingOperations;											// 0E8
+		SInt32												pendingOperationsCount;										// 0F0
+		SInt32												pendingBodyOperationsCount;									// 0F4
+		SInt32												criticalOperationsLockCount;								// 0F8
+		SInt32												criticalOperationsLockCountForPhantoms;						// 0FC
+		bool												blockExecutingPendingOperations;							// 100
+		bool												criticalOperationsAllowed;									// 101
+		UInt16												pad102;														// 102
+		UInt32												pad104;														// 104
+		hkpDebugInfoOnPendingOperationQueues*				pendingOperationQueues;										// 108
+		SInt32												pendingOperationQueueCount;									// 110
+		mutable hkMultiThreadCheck							multiThreadCheck;											// 114
+		bool												processActionsInSingleThread;								// 120
+		bool												allowIntegrationOfIslandsWithoutConstraintsInASeparateJob;	// 121
+		UInt16												pad122;														// 122
+		UInt32												minDesiredIslandSize;										// 124
+		hkCriticalSection*									modifyConstraintCriticalSection;							// 128
+		SInt32												isLocked;													// 130
+		UInt32												pad134;														// 134
+		hkCriticalSection*									islandDirtyListCriticalSection;								// 138
+		hkCriticalSection*									propertyMasterLock;											// 140
+		bool												wantSimulationIslands;										// 148
+		bool												useHybridBroadphase;										// 149
+		UInt16												pad14A;														// 14A
+		float												snapCollisionToConvexEdgeThreshold;							// 14C
+		float												snapCollisionToConcaveEdgeThreshold;						// 150
+		bool												enableToiWeldRejection;										// 154
+		bool												wantDeactivation;											// 155
+		bool												shouldActivateOnRigidBodyTransformChange;					// 156
+		UInt8												pad153;														// 157
+		float												deactivationReferenceDistance;								// 158
+		float												toiCollisionResponseRotateNormal;							// 15C
+		SInt32												maxSectorsPerMidphaseCollideTask;							// 160
+		SInt32												maxSectorsPerNarrowphaseCollideTask;						// 164
+		bool												processToisMultithreaded;									// 168
+		UInt8												pad169;														// 169
+		UInt16												pad16A;														// 16A
+		SInt32												maxEntriesPerToiMidphaseCollideTask;						// 16C
+		SInt32												maxEntriesPerToiNarrowphaseCollideTask;						// 170
+		SInt32												maxNumToiCollisionPairsSinglethreaded;						// 174
+		hkpWorldCinfo::SimulationType						simulationType;												// 178
+		UInt8												pad179;														// 179
+		UInt16												pad17A;														// 17A
+		float												numToisTillAllowedPenetrationSimplifiedToi;					// 17C
+		float												numToisTillAllowedPenetrationToi;							// 180
+		float												numToisTillAllowedPenetrationToiHigher;						// 184
+		float												numToisTillAllowedPenetrationToiForced;						// 188
+		UInt32												lastEntityUID;												// 18C
+		UInt32												lastIslandUID;												// 190
+		UInt32												lastConstraintUID;											// 194
+		hkArray<hkpPhantom*>								phantoms;													// 198
+		hkArray<hkpActionListener*>							actionListeners;											// 1A8
+		hkArray<hkpEntityListener*>							entityListeners;											// 1B8
+		hkArray<hkpPhantomListener*>						phantomListeners;											// 1C8
+		hkArray<hkpConstraintListener*>						constraintListeners;										// 1D8
+		hkArray<hkpWorldDeletionListener*>					worldDeletionListeners;										// 1E8
+		hkArray<hkpIslandActivationListener*>				islandActivationListeners;									// 1F8
+		hkArray<hkpWorldPostSimulationListener*>			worldPostSimulationListeners;								// 208
+		hkArray<hkpWorldPostIntegrateListener*>				worldPostIntegrateListeners;								// 218
+		hkArray<hkpWorldPostCollideListener*>				worldPostCollideListeners;									// 228
+		hkArray<hkpIslandPostIntegrateListener*>			islandPostIntegrateListeners;								// 238
+		hkArray<hkpIslandPostCollideListener*>				islandPostCollideListeners;									// 248
+		hkArray<hkpContactListener*>						contactListeners;											// 258
+		hkArray<hkpContactImpulseLimitBreachedListener*>	contactImpulseLimitBreachedListeners;						// 268
+		hkArray<hkpWorldExtension*>							worldExtensions;											// 278
+		hkpViolatedConstraintArray*							violatedConstraintArray;									// 288
+		hkpBroadPhaseBorder*								broadPhaseBorder;											// 290
+		hkdWorld*											destructionWorld;											// 298
+		hknpWorld*											npWorld;													// 2A0
+		UInt64												pad2A8;														// 2A8
+		hkpWorldDynamicsStepInfo							dynamicsStepInfo;											// 2B0
+		hkVector4											broadPhaseExtents[2];										// 3F0
+		SInt32												broadPhaseNumMarkers;										// 410
+		SInt32												sizeOfToiEventQueue;										// 414
+		SInt32												broadPhaseQuerySize;										// 418
+		SInt32												broadPhaseUpdateSize;										// 41C
+		hkpWorldCinfo::ContactPointGeneration				contactPointGeneration;										// 420
+		UInt8												pad421;														// 421
+		UInt16												pad422;														// 422
+		UInt32												pad424;														// 424
+		UInt64												pad428;														// 428
 	};
 	STATIC_ASSERT(sizeof(hkpWorld) == 0x430);
 }

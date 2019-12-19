@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSIntrusiveRefCounted.h"
-#include "RE/BSTArray.h"
 #include "RE/BSTSmartPointer.h"
+#include "RE/MemoryManager.h"
 #include "RE/NiPoint3.h"
 
 
@@ -88,25 +88,25 @@ namespace RE
 
 
 		// members
-		UInt32								unk00C;				// 00C
-		BSTArray<Vertex>					vertices;			// 010
-		BSTArray<Triangle>					triangles;			// 028
-		BSTArray<EdgeLink>					edgeLinks;			// 040
-		BSTArray<void*>						unk058;				// 058
-		BSTArray<void*>						unk070;				// 070
-		BSTArray<UInt16>					coverTriangles;		// 088
-		UInt32								naxMeshGridDivisor;	// 0A0
-		float								maxXDistance;		// 0A4
-		float								maxYDistance;		// 0A8
-		NiPoint3							min;				// 0AC
-		NiPoint3							max;				// 0B8
-		UInt32								unk0C4;				// 0C4
-		BSTSimpleArray<BSTArray<UInt16>*>	navMeshGrid;		// 0C8
-		BSTArray<void*>						unk0D0;				// 0D0
-		UInt64								unk0E8;				// 0E8
-		BSTArray<void*>						unk0F0;				// 0F0
-		BSTSmartPointer<BSPathingCell>		unk108;				// 108
-		UInt64								unk110;				// 110
+		UInt32							unk00C;				// 00C
+		BSTArray<Vertex>				vertices;			// 010
+		BSTArray<Triangle>				triangles;			// 028
+		BSTArray<EdgeLink>				edgeLinks;			// 040
+		BSTArray<void*>					unk058;				// 058
+		BSTArray<void*>					unk070;				// 070
+		BSTArray<UInt16>				coverTriangles;		// 088
+		UInt32							naxMeshGridDivisor;	// 0A0
+		float							maxXDistance;		// 0A4
+		float							maxYDistance;		// 0A8
+		NiPoint3						min;				// 0AC
+		NiPoint3						max;				// 0B8
+		UInt32							unk0C4;				// 0C4
+		SimpleArray<BSTArray<UInt16>*>	navMeshGrid;		// 0C8
+		BSTArray<void*>					unk0D0;				// 0D0
+		UInt64							unk0E8;				// 0E8
+		BSTArray<void*>					unk0F0;				// 0F0
+		BSTSmartPointer<BSPathingCell>	unk108;				// 108
+		UInt64							unk110;				// 110
 	};
 	STATIC_ASSERT(sizeof(BSNavmesh) == 0x118);
 }

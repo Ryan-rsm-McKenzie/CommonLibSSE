@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSTArray.h"
+#include "RE/MemoryManager.h"
 #include "RE/NiGeometryData.h"
 #include "RE/NiObject.h"
 
@@ -67,10 +67,10 @@ namespace RE
 
 
 		// members
-		UInt32						numPartitions;	// 10
-		UInt32						pad14;			// 14
-		BSTSimpleArray<Partition>	partitions;		// 18
-		UInt64						unk20;			// 20
+		UInt32					numPartitions;	// 10
+		UInt32					pad14;			// 14
+		SimpleArray<Partition>	partitions;		// 18
+		UInt64					unk20;			// 20
 	};
 	STATIC_ASSERT(sizeof(NiSkinPartition) == 0x28);
 }
