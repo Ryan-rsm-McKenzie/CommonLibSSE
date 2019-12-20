@@ -76,16 +76,16 @@ namespace RE
 			}
 
 
-			virtual ~NativeFunction() = default;																												// 00
+			virtual ~NativeFunction() = default;																																// 00
 
 
-			virtual bool HasCallback() const override																											// 15
+			virtual bool HasCallback() const override																															// 15
 			{
 				return _callback != 0;
 			}
 
 
-			virtual bool Run(Variable* a_baseValue, Internal::VirtualMachine* a_vm, UInt32 a_stackID, Variable* a_resultValue, StackFrame* a_frame) override	// 16
+			virtual bool Run(Variable* a_baseValue, [[maybe_unused]] Internal::VirtualMachine* a_vm, [[maybe_unused]] UInt32 a_stackID, Variable* a_resultValue, StackFrame* a_frame) override	// 16
 			{
 				base_type base{};
 				if constexpr (std::negation<is_static_base<base_type>>::value) {
@@ -95,7 +95,6 @@ namespace RE
 					}
 				}
 
-				UInt32 i = sizeof...(Args);
 				auto args = Impl::MakeTuple<Args...>(a_frame);
 				if constexpr (std::is_void<result_type>::value) {
 					if constexpr (IS_LONG) {

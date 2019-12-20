@@ -19,7 +19,7 @@ namespace RE
 		};
 
 
-		constexpr GFxActionControl(ActionControlFlags a_actionFlags = ActionControlFlags::kLogChildFilenames) :
+		inline GFxActionControl(ActionControlFlags a_actionFlags = ActionControlFlags::kLogChildFilenames) :
 			GFxState(StateType::kActionControl),
 			actionFlags(a_actionFlags),
 			pad1C(0)
@@ -27,7 +27,7 @@ namespace RE
 
 
 		constexpr ActionControlFlags GetFlags() const { return actionFlags; }
-		constexpr void SetFlags(ActionControlFlags a_actionFlags) { actionFlags = actionFlags; }
+		constexpr void SetFlags(ActionControlFlags a_actionFlags) { actionFlags = a_actionFlags; }
 
 		constexpr void SetVerboseLogging() { actionFlags |= ActionControlFlags::kVerbose; }
 		constexpr void UnsetVerboseLogging() { actionFlags &= ~ActionControlFlags::kVerbose; }

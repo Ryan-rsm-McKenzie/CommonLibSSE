@@ -164,20 +164,20 @@ namespace SKSE
 		{
 			Locker locker(_lock);
 			std::size_t numRegs = _regs.size();
-			if (!a_intfc->WriteRecordData(&numRegs, sizeof(numRegs))) {
+			if (!a_intfc->WriteRecordData(numRegs)) {
 				_ERROR("Failed to save number of regs (%zu)!\n", numRegs);
 				return false;
 			}
 
 			std::size_t size;
 			for (auto& reg : _regs) {
-				if (!a_intfc->WriteRecordData(&reg.first, sizeof(reg.first))) {
+				if (!a_intfc->WriteRecordData(reg.first)) {
 					_ERROR("Failed to save reg (%u: %s)!\n", reg.first, reg.second.c_str());
 					return false;
 				}
 
 				size = reg.second.size() + 1;
-				if (!a_intfc->WriteRecordData(&size, sizeof(size)) ||
+				if (!a_intfc->WriteRecordData(size) ||
 					!a_intfc->WriteRecordData(reg.second.data(), size)) {
 					_ERROR("Failed to save reg (%u: %s)!\n", reg.first, reg.second.c_str());
 					return false;
@@ -191,7 +191,7 @@ namespace SKSE
 		bool RegistrationMapBase::Load(SerializationInterface* a_intfc)
 		{
 			std::size_t numRegs;
-			a_intfc->ReadRecordData(&numRegs, sizeof(numRegs));
+			a_intfc->ReadRecordData(numRegs);
 
 			Locker locker(_lock);
 			_regs.clear();
@@ -199,8 +199,8 @@ namespace SKSE
 			std::size_t size;
 			EventName evnName;
 			for (std::size_t i = 0; i < numRegs; ++i) {
-				a_intfc->ReadRecordData(&handle, sizeof(handle));
-				a_intfc->ReadRecordData(&size, sizeof(size));
+				a_intfc->ReadRecordData(handle);
+				a_intfc->ReadRecordData(size);
 				evnName.reserve(size);
 				a_intfc->ReadRecordData(evnName.data(), size);
 				if (!a_intfc->ResolveHandle(handle, handle)) {

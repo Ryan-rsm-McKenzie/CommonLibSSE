@@ -91,28 +91,43 @@ namespace SKSE
 		void SetSaveCallback(EventCallback* a_callback) const;
 
 		bool WriteRecord(UInt32 a_type, UInt32 a_version, const void* a_buf, UInt32 a_length) const;
-		template <class T>
-		inline bool WriteRecord(UInt32 a_type, UInt32 a_version, const T* a_buf) const
+		template <class T, typename std::enable_if_t<std::negation<std::is_pointer<T>>::value, int> = 0>
+		inline UInt32 WriteRecord(UInt32 a_type, UInt32 a_version, const T& a_buf) const
 		{
-			return WriteRecord(a_type, a_version, a_buf, sizeof(T));
+			return WriteRecord(a_type, a_version, std::addressof(a_buf), sizeof(T));
+		}
+		template <class T, std::size_t N, typename std::enable_if_t<std::is_array<T>::value, int> = 0>
+		inline UInt32 WriteRecord(UInt32 a_type, UInt32 a_version, const T(&a_buf)[N]) const
+		{
+			return WriteRecord(a_type, a_version, std::addressof(a_buf), sizeof(T) * N);
 		}
 
 		bool OpenRecord(UInt32 a_type, UInt32 a_version) const;
 
 		bool WriteRecordData(const void* a_buf, UInt32 a_length) const;
-		template <class T>
-		inline bool WriteRecordData(const T* a_buf) const
+		template <class T, typename std::enable_if_t<std::negation<std::is_pointer<T>>::value, int> = 0>
+		inline UInt32 WriteRecordData(const T& a_buf) const
 		{
-			return WriteRecordData(a_buf, sizeof(T));
+			return WriteRecordData(std::addressof(a_buf), sizeof(T));
+		}
+		template <class T, std::size_t N, typename std::enable_if_t<std::is_array<T>::value, int> = 0>
+		inline UInt32 WriteRecordData(const T(&a_buf)[N]) const
+		{
+			return WriteRecordData(std::addressof(a_buf), sizeof(T) * N);
 		}
 
 		bool GetNextRecordInfo(UInt32& a_type, UInt32& a_version, UInt32& a_length) const;
 
 		UInt32 ReadRecordData(void* a_buf, UInt32 a_length) const;
-		template <class T>
-		inline UInt32 ReadRecordData(T* a_buf) const
+		template <class T, typename std::enable_if_t<std::negation<std::is_pointer<T>>::value, int> = 0>
+		inline UInt32 ReadRecordData(T& a_buf) const
 		{
-			return ReadRecordData(a_buf, sizeof(T));
+			return ReadRecordData(std::addressof(a_buf), sizeof(T));
+		}
+		template <class T, std::size_t N, typename std::enable_if_t<std::is_array<T>::value, int> = 0>
+		inline UInt32 ReadRecordData(T(&a_buf)[N]) const
+		{
+			return ReadRecordData(std::addressof(a_buf), sizeof(T) * N);
 		}
 
 		bool ResolveFormID(RE::FormID a_oldFormID, RE::FormID& a_newFormID) const;

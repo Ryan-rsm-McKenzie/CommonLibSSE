@@ -170,13 +170,13 @@ namespace SKSE
 		{
 			Locker locker(_lock);
 			std::size_t numRegs = _handles.size();
-			if (!a_intfc->WriteRecordData(&numRegs, sizeof(numRegs))) {
+			if (!a_intfc->WriteRecordData(numRegs)) {
 				_ERROR("Failed to save number of regs (%zu)!\n", numRegs);
 				return false;
 			}
 
 			for (auto& handle : _handles) {
-				if (!a_intfc->WriteRecordData(&handle, sizeof(handle))) {
+				if (!a_intfc->WriteRecordData(handle)) {
 					_ERROR("Failed to save reg (%u)!\n", handle);
 					return false;
 				}
@@ -189,13 +189,13 @@ namespace SKSE
 		bool RegistrationSetBase::Load(SerializationInterface* a_intfc)
 		{
 			std::size_t numRegs;
-			a_intfc->ReadRecordData(&numRegs, sizeof(numRegs));
+			a_intfc->ReadRecordData(numRegs);
 
 			Locker locker(_lock);
 			_handles.clear();
 			RE::VMHandle handle;
 			for (std::size_t i = 0; i < numRegs; ++i) {
-				a_intfc->ReadRecordData(&handle, sizeof(handle));
+				a_intfc->ReadRecordData(handle);
 				if (!a_intfc->ResolveHandle(handle, handle)) {
 					_WARNING("Failed to resolve handle (%u)", handle);
 				} else {

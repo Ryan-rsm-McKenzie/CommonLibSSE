@@ -1707,6 +1707,9 @@
     <ClCompile Include="src\RE\InterfaceStrings.cpp">
       <Filter>src\RE\Menus</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\ExtraPoison.cpp">
+      <Filter>src\RE\BSExtraData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">

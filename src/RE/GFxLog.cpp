@@ -7,11 +7,12 @@
 
 namespace RE
 {
-	GFxLog::~GFxLog()
+	GFxLog::GFxLog() :
+		GFxState(StateType::kLog)
 	{}
 
 
-	void GFxLog::LogMessageVarg(LogMessageType a_messageType, const char* a_fmt, va_list a_argList)
+	void GFxLog::LogMessageVarg([[maybe_unused]] LogMessageType a_messageType, const char* a_fmt, va_list a_argList)
 	{
 		va_list args;
 		va_copy(args, a_argList);

@@ -461,6 +461,13 @@ namespace RE
 		}
 
 
+		namespace ExtraPoison
+		{
+			// VTable: .?AVExtraPoison@@
+			constexpr std::uintptr_t Vtbl = 0x0152C460;	// 1_5_97
+		}
+
+
 		namespace ExtraRank
 		{
 			// VTable: .?AVExtraRank@@

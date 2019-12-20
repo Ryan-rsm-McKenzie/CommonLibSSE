@@ -133,16 +133,16 @@ namespace RE
 			{
 				T* operator[](ActorValue8 a_actorValue)
 				{
-					ActorValue8* akVals = actorValues.data();
+					auto akVals = reinterpret_cast<const ActorValue8*>(actorValues.data());
 					if (akVals && entries) {
 						UInt32 idx = 0;
-						while (akVals[idx] != (ActorValue8)0) {
+						while (akVals[idx] != static_cast<ActorValue8>(0)) {
 							if (akVals[idx] == a_actorValue) {
 								break;
 							}
 							++idx;
 						}
-						if (akVals[idx] != (ActorValue8)0) {
+						if (akVals[idx] != static_cast<ActorValue8>(0)) {
 							return &entries[idx];
 						}
 					}
@@ -152,7 +152,7 @@ namespace RE
 
 				T* operator[](ActorValue a_actorValue)
 				{
-					return operator[](static_cast<ActorValue>(a_actorValue));
+					return operator[](static_cast<ActorValue8>(a_actorValue));
 				}
 
 
