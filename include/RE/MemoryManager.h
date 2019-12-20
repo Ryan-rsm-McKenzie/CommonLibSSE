@@ -29,9 +29,10 @@ namespace RE
 
 		static MemoryManager* GetSingleton();
 
-		void*	Malloc(std::size_t a_size, SInt32 a_alignment, bool a_aligned);
-		void*	Realloc(void* a_ptr, std::size_t a_newSize, SInt32 a_alignment, bool a_aligned);
-		void	Free(void* a_ptr, bool a_aligned);
+		void		Free(void* a_ptr, bool a_aligned);
+		ScrapHeap*	GetScrapHeap();
+		void*		Malloc(std::size_t a_size, SInt32 a_alignment, bool a_aligned);
+		void*		Realloc(void* a_ptr, std::size_t a_newSize, SInt32 a_alignment, bool a_aligned);
 
 
 		// members

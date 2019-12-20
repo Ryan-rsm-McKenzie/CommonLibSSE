@@ -698,6 +698,13 @@ namespace RE
 		}
 
 
+		namespace JournalMenu
+		{
+			// VTable: .?AVJournalMenu@@
+			constexpr std::uintptr_t Vtbl = 0x016C5D28;	// 1_5_97
+		}
+
+
 		namespace JumpHandler
 		{
 			// VTable: .?AUJumpHandler@@
@@ -748,6 +755,8 @@ namespace RE
 		{
 			// DirectSig: 48 85 D2 0F 84 ? ? ? ? 48 89 5C 24 ? 48 89 54 24 ? 57 48 83 EC 20 80 39 00
 			constexpr std::uintptr_t Free = 0x00C02560;			// 1_5_97
+			// DirectSig: 40 56 57 41 54 41 56 41 57 48 83 EC 30 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 8B F1 33 ED
+			constexpr std::uintptr_t GetScrapHeap = 0x00C01800;	// 1_5_97
 			// DirectSig: 40 53 48 83 EC 20 83 3D ? ? ? ? ? 74 1F
 			constexpr std::uintptr_t GetSingleton = 0x000FCFE0;	// 1_5_97
 			// DirectSig: 48 89 5C 24 ? 55 57 41 54 41 55 41 57 48 83 EC 30 65 48 8B 04 25 ? ? ? ?
