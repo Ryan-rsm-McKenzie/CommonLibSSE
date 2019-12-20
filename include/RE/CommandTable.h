@@ -128,6 +128,7 @@ namespace RE
 			UInt16	length;	// 00
 			char	str[0];	// 02
 		};
+		STATIC_ASSERT(sizeof(StringChunk) == 0x2);
 
 
 #pragma pack(push, 1)
@@ -138,7 +139,7 @@ namespace RE
 
 
 			// members
-			char	unk00;	// 00 - magic val?
+			char	magic;	// 00
 			SInt32	value;	// 01
 		};
 		STATIC_ASSERT(offsetof(IntegerChunk, value) == 0x1);
@@ -158,11 +159,12 @@ namespace RE
 			UInt16	chunkSize;	// 02
 			UInt16	numParams;	// 04
 		};
+		STATIC_ASSERT(sizeof(ScriptData) == 0x6);
 
 
 		using FnExecute = bool(const SCRIPT_PARAMETER* a_paramInfo, ScriptData* a_scriptData, TESObjectREFR* a_thisObj, TESObjectREFR* a_containingObj, Script* a_scriptObj, ScriptLocals* a_locals, double& a_result, UInt32& a_opcodeOffsetPtr);
 		using FnParse = bool(UInt32 a_numParams, const SCRIPT_PARAMETER* a_paramInfo, ScriptLineBuffer* a_lineBuf, ScriptBuffer* a_scriptBuf);
-		using FnEval = bool(TESObjectREFR* a_thisObj, void* a_arg2, void* a_arg3, double& a_result);
+		using FnEval = bool(TESObjectREFR* a_thisObj, void* a_param1, void* a_param2, double& a_result);
 
 
 		static CommandInfo*	GetFirstScriptCommand();

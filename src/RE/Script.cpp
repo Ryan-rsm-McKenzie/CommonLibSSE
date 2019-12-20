@@ -9,9 +9,24 @@
 
 namespace RE
 {
+	void Script::ClearCommand()
+	{
+		if (command) {
+			free(command);
+			command = 0;
+		}
+	}
+
+
 	std::string Script::GetCommand() const
 	{
 		return command ? command : "";
+	}
+
+
+	void Script::Invoke(TESObjectREFR* a_targetRef, InvokeType a_type)
+	{
+		Invoke_Impl(0, a_type, a_targetRef);
 	}
 
 
@@ -24,21 +39,6 @@ namespace RE
 		command = malloc<char>(a_command.length() + 1);
 		std::memcpy(command, a_command.data(), a_command.length());
 		command[a_command.length()] = '\0';
-	}
-
-
-	void Script::ClearCommand()
-	{
-		if (command) {
-			free(command);
-			command = 0;
-		}
-	}
-
-
-	void Script::Invoke(TESObjectREFR* a_targetRef, InvokeType a_type)
-	{
-		Invoke_Impl(0, a_type, a_targetRef);
 	}
 
 

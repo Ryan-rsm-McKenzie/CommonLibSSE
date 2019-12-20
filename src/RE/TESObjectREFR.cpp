@@ -142,9 +142,6 @@ namespace RE
 
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::GetInventoryChanges)>;
-		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetInventoryChanges);
-
 		auto xContChanges = extraData.GetByType<ExtraContainerChanges>();
 		if (!xContChanges) {
 			xContChanges = new ExtraContainerChanges();
@@ -153,10 +150,7 @@ namespace RE
 
 		auto invChanges = xContChanges->changes;
 		if (!invChanges) {
-			invChanges = func(this);
-			if (!invChanges) {
-				invChanges = new InventoryChanges(this);
-			}
+			invChanges = new InventoryChanges(this);
 			invChanges->InitContainer();
 			invChanges->GenerateLeveledListChanges();
 			xContChanges->changes = invChanges;

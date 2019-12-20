@@ -1079,8 +1079,6 @@ namespace RE
 			constexpr std::uintptr_t ActivateRefChildren = 0x002A8CC0;	// 1_5_97
 			// DirectSig: 48 83 EC 38 0F B7 81 ? ? ? ? 48 8B 49 40
 			constexpr std::uintptr_t GetBaseScale = 0x0028CC60;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 8B 7B 14
-			constexpr std::uintptr_t GetInventoryChanges = 0x001D8E40;	// 1_5_97
 			// IndirectSig: E8 ? ? ? ? FF 40 18
 			constexpr std::uintptr_t GetLockState = 0x002A74C0;			// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 85 C0 48 8B CB

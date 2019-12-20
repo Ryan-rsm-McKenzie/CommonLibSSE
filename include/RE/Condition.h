@@ -37,7 +37,7 @@ namespace RE
 
 
 		// Betheseda keeps these in a giant lookup table
-		// using func_t = bool(TESObjectREFR* a_perkOwnerOrTarget, void* a_param1, void* a_param2, float& a_result);
+		// using func_t = bool(TESObjectREFR* a_perkOwnerOrTarget, void* a_param1, void* a_param2, double& a_result);
 		enum class FunctionID : UInt16
 		{
 			kGetWantBlocking = 0,
