@@ -225,7 +225,7 @@ namespace REL
 
 
 		Offset(std::uintptr_t a_offset) :
-			_address(Module::BaseAddr() + a_offset)
+			_address(a_offset)
 		{}
 
 
@@ -258,7 +258,7 @@ namespace REL
 
 		std::uintptr_t GetAddress() const
 		{
-			return _address;
+			return Module::BaseAddr() + _address;
 		}
 
 
