@@ -58,6 +58,13 @@ namespace RE
 		};
 
 
+		enum class FlagBDB : UInt8
+		{
+			kNone = 0,
+			kIsInCombat = 1 << 5
+		};
+
+
 		struct CrimeStats
 		{
 			float	violentCur;			// 00
@@ -406,7 +413,7 @@ namespace RE
 		UInt8										unkBD8;						// BD8
 		UInt8										unkBD9;						// BD9
 		UInt8										unkBDA;						// BDA
-		UInt8										unkBDB;						// BDB
+		FlagBDB										unkBDB;						// BDB
 		UInt8										unkBDC;						// BDC
 		UInt8										unkBDD;						// BDD
 		UInt16										padBDE;						// BDE

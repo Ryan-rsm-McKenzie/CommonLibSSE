@@ -50,31 +50,31 @@ namespace RE
 
 
 		// members
-		bool											quitGame;	// 010
-		UInt8											unk011;		// 011
-		UInt16											unk012;		// 012
-		UInt16											unk014;		// 014
-		UInt8											unk016;		// 016
-		UInt8											unk017;		// 017
-		UInt64											unk018;		// 018
-		UInt64											unk020;		// 020
-		UInt32											threadID;	// 028
-		UInt32											unk02C;		// 02C
-		UInt64											unk030;		// 030
-		ScrapHeap										unk038;		// 038
-		BSTCommonScrapHeapMessageQueue<BSPackedTask>	unk0C8;		// 0C8
-		mutable Semaphore								unk0F0;		// 0F0
-		void*											unk100;		// 100 - functor
-		ScrapHeap										unk108;		// 108
-		BSTCommonScrapHeapMessageQueue<BSPackedTask>	unk198;		// 198
-		mutable Semaphore								unk1C0;		// 1C0
-		void*											unk1D0;		// 1D0 - functor
-		UInt8											unk1D8;		// 1D8
-		UInt8											unk1D9;		// 1D9
-		UInt16											unk1DA;		// 1DA
-		UInt32											unk1DC;		// 1DC
-		Data											unk1E0[3];	// 1E0
-		Data											unk228[3];	// 228
+		bool											quitGame;			// 010
+		UInt8											unk011;				// 011
+		UInt16											unk012;				// 012
+		UInt16											unk014;				// 014
+		bool											advanceSimulation;	// 016
+		UInt8											unk017;				// 017
+		UInt64											unk018;				// 018
+		UInt64											unk020;				// 020
+		UInt32											threadID;			// 028
+		UInt32											unk02C;				// 02C
+		UInt64											unk030;				// 030
+		ScrapHeap										unk038;				// 038
+		BSTCommonScrapHeapMessageQueue<BSPackedTask>	unk0C8;				// 0C8
+		mutable Semaphore								unk0F0;				// 0F0
+		void*											unk100;				// 100 - functor
+		ScrapHeap										unk108;				// 108
+		BSTCommonScrapHeapMessageQueue<BSPackedTask>	unk198;				// 198
+		mutable Semaphore								unk1C0;				// 1C0
+		void*											unk1D0;				// 1D0 - functor
+		UInt8											unk1D8;				// 1D8
+		UInt8											unk1D9;				// 1D9
+		UInt16											unk1DA;				// 1DA
+		UInt32											unk1DC;				// 1DC
+		Data											unk1E0[3];			// 1E0
+		Data											unk228[3];			// 228
 	};
 	STATIC_ASSERT(sizeof(Main) == 0x270);
 }
