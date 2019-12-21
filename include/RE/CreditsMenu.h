@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/GFxFunctionHandler.h"
 #include "RE/IMenu.h"
 
@@ -12,6 +14,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_CreditsMenu;
+		constexpr static std::string_view MENU_NAME = "Credits Menu";
 
 
 		virtual ~CreditsMenu();											// 00

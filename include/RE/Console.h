@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/IMenu.h"
 #include "RE/NiSmartPointer.h"
 
@@ -13,6 +15,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_Console;
+		constexpr static std::string_view MENU_NAME = "Console";
 
 
 		virtual ~Console();														// 00

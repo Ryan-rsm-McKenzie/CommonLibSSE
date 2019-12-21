@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/BSTArray.h"
 #include "RE/GFxValue.h"
 #include "RE/IMenu.h"
@@ -16,6 +18,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_BarterMenu;
+		constexpr static std::string_view MENU_NAME = "BarterMenu";
 
 
 		virtual ~BarterMenu();												// 00

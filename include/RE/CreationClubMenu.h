@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/BSTEvent.h"
 #include "RE/GFxFunctionHandler.h"
 #include "RE/ImageData.h"
@@ -20,6 +22,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_CreationClubMenu;
+		constexpr static std::string_view MENU_NAME = "Creation Club Menu";
 
 
 		virtual ~CreationClubMenu();																								// 00

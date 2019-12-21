@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/BSTArray.h"
 #include "RE/GFxValue.h"
 #include "RE/IMenu.h"
@@ -18,6 +20,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_FavoritesMenu;
+		constexpr static std::string_view MENU_NAME = "FavoritesMenu";
 
 
 		struct Entry

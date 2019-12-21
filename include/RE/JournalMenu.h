@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/BSTEvent.h"
 #include "RE/IMenu.h"
 #include "RE/Journal_QuestsTab.h"
@@ -20,6 +22,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_JournalMenu;
+		constexpr static std::string_view MENU_NAME = "Journal Menu";
 
 
 		virtual ~JournalMenu();																								// 00

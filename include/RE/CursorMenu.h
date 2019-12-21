@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/IMenu.h"
 #include "RE/MenuEventHandler.h"
 
@@ -12,6 +14,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_CursorMenu;
+		constexpr static std::string_view MENU_NAME = "Cursor Menu";
 
 
 		virtual ~CursorMenu();													// 00

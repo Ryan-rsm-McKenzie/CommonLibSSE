@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/IMenu.h"
 #include "RE/MenuEventHandler.h"
 #include "RE/NiColor.h"
@@ -15,6 +17,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_MistMenu;
+		constexpr static std::string_view MENU_NAME = "Mist Menu";
 
 
 		struct Colors

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string_view>
+#include <type_traits>
 
 #include "RE/BSTEvent.h"
 #include "RE/BSFixedString.h"
@@ -25,6 +26,13 @@ namespace RE
 		public BSTEventSource<void*>				// 0B8
 	{
 	public:
+		template <class T, class Enable = void> struct _has_menu_name : std::false_type {};
+		template <class T> struct _has_menu_name<T, decltype((void)T::MENU_NAME)> : std::true_type {};
+		template <class T> struct has_menu_name : _has_menu_name<std::remove_cv_t<T>> {};
+
+		template <class T> struct _is_menu_ptr : std::is_convertible<T, IMenu*> {};
+		template <class T> struct is_menu_ptr : _is_menu_ptr<std::remove_cv_t<T>> {};
+
 		using CreatorFunc = IMenu*();
 
 
@@ -73,14 +81,27 @@ namespace RE
 		bool									CrosshairIsPaused();
 		bool									GameIsPaused();
 		template <class T> BSTEventSource<T>*	GetEventSource();
-		GPtr<IMenu>								GetMenu(const std::string_view& a_menuName);
-		template <class T> GPtr<T>				GetMenu(const std::string_view& a_menuName);
-		GFxMovieView*							GetMovieView(const std::string_view& a_menuName);
-		bool									IsMenuOpen(const std::string_view& a_menuName);
-		bool									IsShowingMenus();
-		void									Register(const std::string_view& a_menuName, CreatorFunc* a_creator);
-		template <class T> void					RemoveEventSink(BSTEventSink<T>* a_sink);
-		void									ShowMenus(bool a_show);
+
+		GPtr<IMenu> GetMenu(const std::string_view& a_menuName);
+
+		template <class T, typename std::enable_if_t<std::conjunction<is_menu_ptr<T*>, has_menu_name<T>>::value, int> = 0>
+		GPtr<T> GetMenu()
+		{
+			return GPtr<T>(static_cast<T*>(GetMenu(T::MENU_NAME).get()));
+		}
+
+		template <class T, typename std::enable_if_t<std::conjunction<is_menu_ptr<T*>>::value, int> = 0>
+		GPtr<T> GetMenu(const std::string_view& a_menuName)
+		{
+			return GPtr<T>(static_cast<T*>(GetMenu(a_menuName).get()));
+		}
+
+		GFxMovieView*			GetMovieView(const std::string_view& a_menuName);
+		bool					IsMenuOpen(const std::string_view& a_menuName);
+		bool					IsShowingMenus();
+		void					Register(const std::string_view& a_menuName, CreatorFunc* a_creator);
+		template <class T> void	RemoveEventSink(BSTEventSink<T>* a_sink);
+		void					ShowMenus(bool a_show);
 
 
 		// members
@@ -116,13 +137,6 @@ namespace RE
 	BSTEventSource<T>* MenuManager::GetEventSource()
 	{
 		return static_cast<BSTEventSource<T>*>(this);
-	}
-
-
-	template <class T>
-	inline GPtr<T> MenuManager::GetMenu(const std::string_view& a_menuName)
-	{
-		return GPtr<T>(static_cast<T*>(GetMenu(a_menuName).get()));
 	}
 
 

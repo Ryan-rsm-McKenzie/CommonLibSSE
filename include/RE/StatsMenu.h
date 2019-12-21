@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/ActorValues.h"
 #include "RE/BSTArray.h"
 #include "RE/FileHash.h"
@@ -27,6 +29,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_StatsMenu;
+		constexpr static std::string_view MENU_NAME = "StatsMenu";
 
 
 		enum { kTotalTrees = 18 };

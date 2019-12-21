@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/BSTArray.h"
 #include "RE/BSTEvent.h"
 #include "RE/BSTSmartPointer.h"
@@ -28,6 +30,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_MapMenu;
+		constexpr static std::string_view MENU_NAME = "MapMenu";
 
 
 		virtual ~MapMenu();																											// 00

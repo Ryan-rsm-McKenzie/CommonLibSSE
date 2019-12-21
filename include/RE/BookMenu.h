@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/BSTEvent.h"
 #include "RE/GPtr.h"
 #include "RE/ImageData.h"
@@ -19,6 +21,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_BookMenu;
+		constexpr static std::string_view MENU_NAME = "Book Menu";
 
 
 		virtual ~BookMenu();																												// 00

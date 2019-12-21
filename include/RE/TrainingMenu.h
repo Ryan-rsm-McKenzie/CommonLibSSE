@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/ActorValues.h"
 #include "RE/BSTEvent.h"
 #include "RE/GFxValue.h"
@@ -17,6 +19,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_TrainingMenu;
+		constexpr static std::string_view MENU_NAME = "Training Menu";
 
 
 		virtual ~TrainingMenu();																									// 00

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/BSTArray.h"
 #include "RE/GFxValue.h"
 #include "RE/IMenu.h"
@@ -20,6 +22,7 @@ namespace RE
 		// flags = kPauseGame | kPreventGameLoad | kUnk0400 | kItemMenu | kUnk8000
 	public:
 		inline static const void* RTTI = RTTI_InventoryMenu;
+		constexpr static std::string_view MENU_NAME = "InventoryMenu";
 
 
 		virtual ~InventoryMenu();											// 00

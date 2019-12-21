@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/IMenu.h"
 
 
@@ -9,6 +11,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_TitleSequenceMenu;
+		constexpr static std::string_view MENU_NAME = "TitleSequence Menu";
 
 
 		virtual ~TitleSequenceMenu();									// 00

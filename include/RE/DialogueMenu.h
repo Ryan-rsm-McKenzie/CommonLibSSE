@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/BSTArray.h"
 #include "RE/BSTEvent.h"
 #include "RE/IMenu.h"
@@ -16,6 +18,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_DialogueMenu;
+		constexpr static std::string_view MENU_NAME = "Dialogue Menu";
 
 
 		struct Data

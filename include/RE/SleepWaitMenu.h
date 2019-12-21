@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/GFxValue.h"
 #include "RE/IMenu.h"
 
@@ -10,6 +12,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_SleepWaitMenu;
+		constexpr static std::string_view MENU_NAME = "Sleep/Wait Menu";
 
 
 		virtual ~SleepWaitMenu();											// 00

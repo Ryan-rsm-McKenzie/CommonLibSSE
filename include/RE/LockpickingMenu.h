@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/BSTEvent.h"
 #include "RE/IMenu.h"
 #include "RE/MenuEventHandler.h"
@@ -18,6 +20,7 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_LockpickingMenu;
+		constexpr static std::string_view MENU_NAME = "Lockpicking Menu";
 
 
 		virtual ~LockpickingMenu();	// 00
