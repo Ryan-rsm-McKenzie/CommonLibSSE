@@ -48,6 +48,8 @@ namespace RE
 		// override (BSTEventSink<BSGamerProfileEvent>)
 		virtual	EventResult	ReceiveEvent(BSGamerProfileEvent* a_event, BSTEventSource<BSGamerProfileEvent>* a_eventSource) override;	// 01
 
+		static Main* GetSingleton();
+
 
 		// members
 		bool											quitGame;			// 010

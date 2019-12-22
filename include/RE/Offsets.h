@@ -758,6 +758,13 @@ namespace RE
 		}
 
 
+		namespace Main
+		{
+			// 74 04 8B 40 28
+			constexpr std::uintptr_t Singleton = 0x02F26BF8;	// 1_5_97
+		}
+
+
 		namespace MemoryManager
 		{
 			// DirectSig: 48 85 D2 0F 84 ? ? ? ? 48 89 5C 24 ? 48 89 54 24 ? 57 48 83 EC 20 80 39 00
