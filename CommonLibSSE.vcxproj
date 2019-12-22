@@ -171,6 +171,7 @@
     <ClCompile Include="src\RE\AddCallbackVisitor.cpp" />
     <ClCompile Include="src\RE\BSXFlags.cpp" />
     <ClCompile Include="src\RE\ExtraPoison.cpp" />
+    <ClCompile Include="src\RE\Main.cpp" />
     <ClCompile Include="src\RE\ProcessLists.cpp" />
     <ClCompile Include="src\RE\ExtraContainerChanges.cpp" />
     <ClCompile Include="src\RE\ExtraDataList.cpp" />

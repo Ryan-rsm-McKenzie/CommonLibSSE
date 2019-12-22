@@ -111,7 +111,7 @@ namespace RE
 		BSFixedString	xButton;			// 300 - "XButton"
 		BSFixedString	yButton;			// 308 - "YButton"
 		BSFixedString	chargeItem;			// 310 - "ChargeItem"
-		void*			unk318;				// 318 - NULL
+		BSFixedString	unk318;				// 318 - ""
 		BSFixedString	playerPosition;		// 320 - "PlayerPosition"
 		BSFixedString	localMap;			// 328 - "LocalMap"
 		BSFixedString	localMapMoveMode;	// 330 - "LocalMapMoveMode"
