@@ -30,7 +30,7 @@ namespace RE
 		virtual ~TESSoulGem();															// 00
 
 		// override (TESObjectMISC)
-		virtual void	InitDefaults() override;										// 04
+		virtual void	InitializeData() override;										// 04
 		virtual void	LoadRecordByType(TESFile* a_mod, UInt32 a_recordType) override;	// 54
 		virtual void	Unk_55(void) override;											// 55
 

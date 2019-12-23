@@ -102,6 +102,13 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x4);
 
 
+		virtual ~TESAIForm();												// 00
+
+		// override (BaseFormComponent)
+		virtual void	InitializeDataComponent() override;					// 01
+		virtual void	ClearDataComponent() override;						// 02
+		virtual void	CopyComponent(BaseFormComponent* a_rhs) override;	// 03
+
 		Aggression		GetAggression() const;
 		Confidence		GetConfidence() const;
 		UInt8			GetEnergyLevel() const;

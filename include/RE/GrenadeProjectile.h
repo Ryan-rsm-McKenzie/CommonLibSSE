@@ -25,10 +25,11 @@ namespace RE
 		virtual ~GrenadeProjectile();									// 00
 
 		// override (Projectile)
-		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void	Unk_11(void) override;							// 11
-		virtual void	Unk_12(void) override;							// 12
+		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void	InitLoadGame(void* a_arg1) override;			// 10
+		virtual void	FinishLoadGame(void* a_arg1) override;			// 11
+		virtual void	Revert(void* a_arg1) override;					// 12
 		virtual void*	GetDecalGroup() override;						// 9F - { return unk1D8; }
 		virtual void	Unk_A3(void) override;							// A3 - { return 1; }
 		virtual void	Unk_A8(void) override;							// A8

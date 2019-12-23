@@ -32,11 +32,11 @@ namespace RE
 		};
 
 
-		virtual ~BGSMaterialObject();						// 00
+		virtual ~BGSMaterialObject();					// 00
 
 		// override (TESForm)
-		virtual void	ReleaseManagedData() override;		// 05
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
+		virtual void	ClearData() override;			// 05
+		virtual bool	Load(TESFile* a_mod) override;	// 06
 
 
 		// members

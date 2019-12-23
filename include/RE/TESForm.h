@@ -25,11 +25,17 @@ namespace RE
 		{
 			enum RecordFlag : UInt32
 			{
-				kIsPlayable = 1 << 2,
+				kPlayable = 1 << 2,
 				kInitialized = 1 << 3,
 				kDeleted = 1 << 5,
-				kPlayerKnows = 1 << 6,
-				kIgnored = 1 << 12
+				kKnown = 1 << 6,
+				kMustUpdate = 1 << 8,
+				kOnLocalMap = 1 << 9,
+				kIgnored = 1 << 12,
+				kRandomAnim = 1 << 16,
+				kDangerous = 1 << 17,
+				kHasCurrents = 1 << 19,
+				kObstacle = 1 << 25
 			};
 		};
 
@@ -43,69 +49,69 @@ namespace RE
 		STATIC_ASSERT(sizeof(TESFileArray) == 0x10);
 
 
-		virtual ~TESForm();																																			// 00
+		virtual ~TESForm();																																		// 00
 
 		// override (BaseFormComponent)
-		virtual void			Init() override;																													// 01 - { return; }
-		virtual void			ReleaseRefs() override;																												// 02 - { SetEditorID(""); }
-		virtual void			CopyFromBase(BaseFormComponent* a_rhs) override;																					// 03
+		virtual void					InitializeDataComponent() override;																						// 01 - { return; }
+		virtual void					ClearDataComponent() override;																							// 02 - { SetEditorID(""); }
+		virtual void					CopyComponent(BaseFormComponent* a_rhs) override;																		// 03
 
 		// add
-		virtual void			InitDefaults();																														// 04 - { return; }
-		virtual void			ReleaseManagedData();																												// 05 - { return; }
-		virtual bool			LoadForm(TESFile* a_mod);																											// 06 - { return true; }
-		virtual void			Unk_07(void);																														// 07 - { return 1; }
-		virtual void			Unk_08(void);																														// 08 - { return LoadForm(); }
-		virtual TESForm*		DupulicateForm(void* a_arg1, void* a_arg2);																							// 09
-		virtual bool			MarkChanged(UInt32 a_changeFlags);																									// 0A
-		virtual void			UnMarkChanged(UInt32 a_changeFlags);																								// 0B
-		virtual void			Unk_0C(void);																														// 0C - { return 0; } - "bool Unk_0C(TESFile* a_mod)"?
-		virtual bool			PreSaveBuffer(BGSSaveFormBuffer* a_buf);																							// 0D - { return true; }
-		virtual void			SaveBuffer(BGSSaveFormBuffer* a_buf);																								// 0E
-		virtual void			LoadBuffer(BGSLoadFormBuffer* a_buf);																								// 0F
-		virtual void			Unk_10(void);																														// 10 - { return; }
-		virtual void			Unk_11(void);																														// 11 - { return; }
-		virtual void			Unk_12(void);																														// 12 - { return; } - "void Reset(void* a_arg1)"?
-		virtual void			InitItem();																															// 13 - { return; }
-		virtual TESFile*		GetFinalSourceFile();																												// 14 - returns the file that last modified this form
-		virtual FormType		GetFormType();																														// 15 - { return formType; }
-		virtual void			GetFormDesc(char* a_buf, UInt32 a_bufLen);																							// 16 - { return std::sprintf_s(a_buf, a_bufLen, "%s Form '%s' (%08X)", g_formStrings[3 * formID], "", formID); }
-		virtual bool			PlayerKnows() const;																												// 17 - { return (flags >> 6 ) & 1; }
-		virtual bool			GetFlag00010000();																													// 18 - { return (flags >> 16) & 1; } - PlayerLearned?
-		virtual bool			IsPlayable();																														// 19 - { return (flags >> 2) & 1; }
-		virtual bool			NeverFades();																														// 1A - { return false; }
-		virtual bool			GetFlag00020000();																													// 1B - { return (flags >> 17) & 1; } - "bool CausesDamage() const"?
-		virtual bool			GetFlag00080000();																													// 1C - { return (flags >> 19) & 1; }
-		virtual bool			GetFlag02000000();																													// 1D - { return (flags >> 25) & 1; }
-		virtual void			Unk_1E(void);																														// 1E - { return 0; }
-		virtual bool			GetFlag00000200();																													// 1F - { return (flags >> 9) & 1; }
-		virtual bool			GetFlag00000100() const;																											// 20 - { return (flags >> 8) & 1; }
-		virtual void			SetFlag00000200(bool a_set);																										// 21 - { if (a_set) flags &= 0xFFFFFDFF; else flags |= 0x200; }
-		virtual bool			IgnoredBySandbox() const;																											// 22 - { return false; }
-		virtual void			SetFlag00000020(bool a_set);																										// 23 - { bool result = (flags >> 5) & 1; if (result != a_set) { if (a_set) flags |= 0x20; else flags &= 0xFFFFFFDF; MarkChanged(1); return result; }
-		virtual void			SetFlag00000002(bool a_set);																										// 24
-		virtual void			Unk_25(void);																														// 25 - { return; }
-		virtual void			LoadBounds(TESFile* a_mod);																											// 26 - { return; }
-		virtual bool			Has3D();																															// 27 - { return false; }
-		virtual void			Unk_28(void);																														// 28 - { return 0; }
-		virtual bool			IsMagicItem() const;																												// 29 - { return false; }
-		virtual bool			IsWaterActivator();																													// 2A - { return false; }
-		virtual void			Unk_2B(void);																														// 2B - { return 0; } - vmad related
-		virtual TESObjectREFR*	GetReference() const;																												// 2C - { return 0; }
-		virtual void			Unk_2D(void);																														// 2D - { return 0; }
-		virtual const char*		GetAliasName(const BSFixedString& a_alias);																							// 2E - alias: "Pronoun" "PronounObj" "PronounPos" "PronounPosObj" "PronounRef" "PronounInt" "Race" "Gender" "ShortName". see http://www.creationkit.com/Text_Replacement
-		virtual void			CopyFrom(TESForm* a_srcForm);																										// 2F - { return; }
-		virtual void			Unk_30(void);																														// 30
-		virtual void			Unk_31(void);																														// 31
-		virtual const char*		GetEditorID();																														// 32 - { return ""; }
-		virtual bool			SetEditorID(const char* a_str);																										// 33 - { return true; }
-		virtual void			Unk_34(void);																														// 34 - { return 0; } TESTopic,TESObjectCELL,TESWorldSpace=true
-		virtual void			Unk_35(void);																														// 35 - { return 0; }
-		virtual void			Unk_36(void);																														// 36 - { return 0; } - "bool IsCompatibleFormType(FormType a_formType) const"?
-		virtual bool			ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount);	// 37 - { return false; }
-		virtual void			SetFormID(FormID a_id, bool a_generateID);																							// 38
-		virtual const char*		GetTypeString() const;																												// 39 - { return ""; }
-		virtual bool			Unk_3A(void);																														// 3A - { return 1; }
+		virtual void					InitializeData();																										// 04 - { return; }
+		virtual void					ClearData();																											// 05 - { return; }
+		virtual bool					Load(TESFile* a_mod);																									// 06 - { return true; }
+		virtual bool					LoadPartial(TESFile* a_mod);																							// 07 - { return true; }
+		virtual bool					LoadEdit(TESFile* a_mod);																								// 08 - { return Load(a_mod); }
+		virtual TESForm*				CreateDuplicateForm(void* a_arg1, void* a_arg2);																		// 09
+		virtual bool					AddChange(UInt32 a_changeFlags);																						// 0A
+		virtual void					RemoveChange(UInt32 a_changeFlags);																						// 0B
+		virtual bool					FindInFileFast(TESFile* a_mod);																							// 0C - { return false; }
+		virtual bool					CheckSaveGame(BGSSaveFormBuffer* a_buf);																				// 0D - { return true; }
+		virtual void					SaveGame(BGSSaveFormBuffer* a_buf);																						// 0E
+		virtual void					LoadGame(BGSLoadFormBuffer* a_buf);																						// 0F
+		virtual void					InitLoadGame(void* a_arg1);																								// 10 - { return; }
+		virtual void					FinishLoadGame(void* a_arg1);																							// 11 - { return; }
+		virtual void					Revert(void* a_arg1);																									// 12 - { return; }
+		virtual void					InitItemImpl();																											// 13 - { return; }
+		virtual TESFile*				GetDescriptionOwnerFile();																								// 14 - returns the file that last modified this form
+		virtual FormType				GetSavedFormType() const;																								// 15 - { return formType; }
+		virtual void					GetFormDetailedString(char* a_buf, UInt32 a_bufLen);																	// 16 - { return std::sprintf_s(a_buf, a_bufLen, "%s Form '%s' (%08X)", g_formStrings[3 * formID], "", formID); }
+		virtual bool					GetKnown() const;																										// 17 - { return (flags >> 6 ) & 1; }
+		virtual bool					GetRandomAnim() const;																									// 18 - { return (flags >> 16) & 1; }
+		virtual bool					GetPlayable() const;																									// 19 - { return (flags >> 2) & 1; }
+		virtual bool					IsHeadingMarker() const;																								// 1A - { return false; }
+		virtual bool					GetDangerous() const;																									// 1B - { return (flags >> 17) & 1; }
+		virtual bool					QHasCurrents() const;																									// 1C - { return (flags >> 19) & 1; }
+		virtual bool					GetObstacle() const;																									// 1D - { return (flags >> 25) & 1; }
+		virtual bool					QIsLODLandObject() const;																								// 1E - { return false; }
+		virtual bool					GetOnLocalMap() const;																									// 1F - { return (flags >> 9) & 1; }
+		virtual bool					GetMustUpdate() const;																									// 20 - { return (flags >> 8) & 1; }
+		virtual void					SetOnLocalMap(bool a_set);																								// 21 - { if (a_set) flags &= 0xFFFFFDFF; else flags |= 0x200; }
+		virtual bool					GetIgnoredBySandbox() const;																							// 22 - { return false; }
+		virtual void					SetDelete(bool a_set);																									// 23 - { bool result = (flags >> 5) & 1; if (result != a_set) { if (a_set) flags |= 0x20; else flags &= 0xFFFFFFDF; MarkChanged(1); return result; }
+		virtual void					SetAltered(bool a_set);																									// 24
+		virtual void					SaveObjectBound(void);																									// 25 - { return; }
+		virtual void					LoadObjectBound(TESFile* a_mod);																						// 26 - { return; }
+		virtual bool					IsBoundObject() const;																									// 27 - { return false; }
+		virtual bool					IsObject() const;																										// 28 - { return false; }
+		virtual bool					IsMagicItem() const;																									// 29 - { return false; }
+		virtual bool					IsWater() const;																										// 2A - { return false; }
+		virtual const TESObjectREFR*	AsReference() const;																									// 2B - { return 0; }
+		virtual TESObjectREFR*			AsReference();																											// 2C - { return 0; }
+		virtual UInt32					GetRefCount() const;																									// 2D - { return 0; }
+		virtual const char*				GetTextForParsedSubTag(const BSFixedString& a_alias);																	// 2E
+		virtual void					Copy(TESForm* a_srcForm);																								// 2F - { return; }
+		virtual bool					BelongsInGroup(void);																									// 30
+		virtual void					CreateGroupData(void);																									// 31
+		virtual const char*				GetFormEditorID();																										// 32 - { return ""; }
+		virtual bool					SetFormEditorID(const char* a_str);																						// 33 - { return true; }
+		virtual bool					IsParentForm() const;																									// 34 - { return false; }
+		virtual bool					IsParentFormTree() const;																								// 35 - { return false; }
+		virtual bool					IsFormTypeChild(FormType a_type) const;																					// 36 - { return false; }
+		virtual bool					Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount);	// 37 - { return false; }
+		virtual void					SetFormID(FormID a_id, bool a_generateID);																				// 38
+		virtual const char*				GetObjectTypeName() const;																								// 39 - { return ""; }
+		virtual bool					QAvailableInGame(void);																									// 3A - { return true; }
 
 		static TESForm*					LookupByID(FormID a_formID);
 		template <class T> static T*	LookupByID(FormID a_formID);

@@ -19,11 +19,12 @@ namespace RE
 		virtual ~Projectile();													// 00
 
 		// override (TESObjectREFR)
-		virtual void			SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void			LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void			Unk_10(void) override;							// 10
-		virtual void			Unk_11(void) override;							// 11
-		virtual void			Unk_12(void) override;							// 12
+		virtual bool			Load(TESFile* a_mod) override;					// 06 - { return TESObjectREFR::Load(a_mod); }
+		virtual void			SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void			LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void			InitLoadGame(void* a_arg1) override;			// 10
+		virtual void			FinishLoadGame(void* a_arg1) override;			// 11
+		virtual void			Revert(void* a_arg1) override;					// 12
 		virtual void			Unk_47(void) override;							// 47 - { return 0; }
 		virtual bool			HasKeyword(BGSKeyword* a_keyword) override;		// 48
 		virtual void			SetActorCause(void* a_cause) override;			// 50

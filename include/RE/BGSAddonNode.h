@@ -45,12 +45,12 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x8);
 
 
-		virtual ~BGSAddonNode();							// 00
+		virtual ~BGSAddonNode();						// 00
 
 		// override (TESBoundObject)
-		virtual void	InitDefaults() override;			// 04
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
-		virtual void	InitItem() override;				// 13
+		virtual void	InitializeData() override;		// 04
+		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void	InitItemImpl() override;		// 13
 
 
 		// members

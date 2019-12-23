@@ -32,13 +32,6 @@ namespace RE
 		};
 
 
-		virtual ~TESClass();								// 00
-
-		// override (TESForm)
-		virtual void	InitDefaults() override;			// 04
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
-
-
 		struct Data	// DATA
 		{
 			enum class Skill : UInt8
@@ -107,6 +100,13 @@ namespace RE
 			UInt8				pad23;					// 23
 		};
 		STATIC_ASSERT(sizeof(Data) == 0x24);
+
+
+		virtual ~TESClass();							// 00
+
+		// override (TESForm)
+		virtual void	InitializeData() override;		// 04
+		virtual bool	Load(TESFile* a_mod) override;	// 06
 
 
 		// members

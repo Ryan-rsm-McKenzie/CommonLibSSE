@@ -40,13 +40,13 @@ namespace RE
 		};
 
 
-		virtual ~BGSCollisionLayer();							// 00
+		virtual ~BGSCollisionLayer();					// 00
 
 		// override (TESForm)
-		virtual void	ReleaseManagedData() override;			// 05
-		virtual bool	LoadForm(TESFile* a_mod) override;		// 06
-		virtual void	InitItem() override;					// 13
-		virtual void	SetFlag00000020(bool a_set) override;	// 23 - { TESForm::SetFlag00000020(a_set); }
+		virtual void	ClearData() override;			// 05
+		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void	InitItemImpl() override;		// 13
+		virtual void	SetDelete(bool a_set) override;	// 23 - { TESForm::SetDelete(a_set); }
 
 
 		// members

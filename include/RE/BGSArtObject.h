@@ -36,11 +36,11 @@ namespace RE
 		};
 
 
-		virtual ~BGSArtObject();							// 00
+		virtual ~BGSArtObject();						// 00
 
 		// override (TESBoundObject)
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
-		virtual void	InitItem() override;				// 13
+		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void	InitItemImpl() override;		// 13
 
 
 		// members

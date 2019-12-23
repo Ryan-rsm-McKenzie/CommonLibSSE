@@ -57,14 +57,14 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x4);
 
 
-		virtual ~BGSCameraPath();													// 00
+		virtual ~BGSCameraPath();														// 00
 
 		// override (TESForm)
-		virtual void		InitDefaults() override;								// 04
-		virtual void		ReleaseManagedData() override;							// 05
-		virtual bool		LoadForm(TESFile* a_mod) override;						// 06
-		virtual TESForm*	DupulicateForm(void* a_arg1, void* a_arg2) override;	// 09
-		virtual void		InitItem() override;									// 13
+		virtual void		InitializeData() override;									// 04
+		virtual void		ClearData() override;										// 05
+		virtual bool		Load(TESFile* a_mod) override;								// 06
+		virtual TESForm*	CreateDuplicateForm(void* a_arg1, void* a_arg2) override;	// 09
+		virtual void		InitItemImpl() override;									// 13
 
 
 		// members

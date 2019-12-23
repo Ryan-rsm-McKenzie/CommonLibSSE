@@ -24,9 +24,9 @@ namespace RE
 		virtual ~TESQualityForm();											// 00
 
 		// override (BaseFormComponent)
-		virtual void	Init() override;									// 01 - { quality = 0; }
-		virtual void	ReleaseRefs() override;								// 02 - { return; }
-		virtual void	CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
+		virtual void	InitializeDataComponent() override;					// 01 - { quality = 0; }
+		virtual void	ClearDataComponent() override;						// 02 - { return; }
+		virtual void	CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 
 		// members

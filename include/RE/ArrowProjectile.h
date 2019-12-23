@@ -25,8 +25,8 @@ namespace RE
 		virtual ~ArrowProjectile();										// 00
 
 		// override (MissileProjectile)
-		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
 		virtual void	Unk_AA(void) override;							// AA
 		virtual void	Unk_AB(void) override;							// AB
 		virtual void	Unk_AC(void) override;							// AC

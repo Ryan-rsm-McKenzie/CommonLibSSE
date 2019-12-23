@@ -36,12 +36,12 @@ namespace RE
 		};
 
 
-		virtual ~BGSColorForm();							// 00
+		virtual ~BGSColorForm();						// 00
 
 		// override (TESForm)
-		virtual void	InitDefaults() override;			// 04
-		virtual void	ReleaseManagedData() override;		// 05
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
+		virtual void	InitializeData() override;		// 04
+		virtual void	ClearData() override;			// 05
+		virtual bool	Load(TESFile* a_mod) override;	// 06
 
 		constexpr bool	IsPlayable() const { return (flags & Flag::kPlayable) != Flag::kNone; }
 

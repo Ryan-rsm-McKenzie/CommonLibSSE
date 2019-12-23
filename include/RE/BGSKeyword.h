@@ -26,12 +26,12 @@ namespace RE
 		};
 
 
-		virtual ~BGSKeyword();											// 00
+		virtual ~BGSKeyword();												// 00
 
 		// override (TESForm)
-		virtual bool		LoadForm(TESFile* a_mod) override;			// 06
-		virtual const char*	GetEditorID() override;						// 32 - { return keyword.c_str(); }
-		virtual bool		SetEditorID(const char* a_str) override;	// 33
+		virtual bool		Load(TESFile* a_mod) override;					// 06
+		virtual const char*	GetFormEditorID() override;						// 32 - { return keyword.c_str(); }
+		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { keyword = a_str; }
 
 
 		// members

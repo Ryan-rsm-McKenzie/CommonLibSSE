@@ -60,12 +60,12 @@ namespace RE
 		virtual ~IngredientItem();													// 00
 
 		// override (MagicItem)
-		virtual void		InitDefaults() override;								// 04
-		virtual void		ReleaseManagedData() override;							// 05
-		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;			// 0E
-		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;			// 0F
-		virtual void		Unk_12(void) override;									// 12
-		virtual void		InitItem() override;									// 13
+		virtual void		InitializeData() override;								// 04
+		virtual void		ClearData() override;									// 05
+		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;			// 0E
+		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;			// 0F
+		virtual void		Revert(void* a_arg1) override;							// 12
+		virtual void		InitItemImpl() override;								// 13
 		virtual MagicType	GetMagicType() const override;							// 53 - { return MagicType::kIngredient; }
 		virtual CastType	GetCastType() const override;							// 55 - { return CastType::kFireAndForget; }
 		virtual TargetType	GetTargetType() const override;							// 57 - { return TargetType::kSelf; }
@@ -77,7 +77,7 @@ namespace RE
 		virtual void		CopyData(MagicItem* a_src) override;					// 69
 		virtual void		LoadData(TESFile* a_mod, UInt32 a_signature) override;	// 6A
 		virtual void*		GetData() override;										// 6C - { return &effectData; }
-		virtual void*		GetData2() override;									// 6D - { return &effectData; }
+		virtual const void*	GetData() const override;								// 6D - { return &effectData; }
 		virtual UInt32		GetDataSize() const override;							// 6E - { return 0x8; }
 		virtual void		LoadData(TESFile* a_mod) override;						// 6F
 		virtual void		ByteSwapData() override;								// 70

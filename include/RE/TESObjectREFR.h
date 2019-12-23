@@ -155,35 +155,35 @@ namespace RE
 		virtual ~TESObjectREFR();																																																	// 00
 
 		// override (TESForm)
-		virtual void					InitDefaults() override;																																									// 04
-		virtual void					ReleaseManagedData() override;																																								// 05
-		virtual bool					LoadForm(TESFile* a_mod) override;																																							// 06
-		virtual TESForm*				DupulicateForm(void* a_arg1, void* a_arg2) override;																																		// 09
-		virtual bool					PreSaveBuffer(BGSSaveFormBuffer* a_buf) override;																																			// 0D
-		virtual void					SaveBuffer(BGSSaveFormBuffer* a_buf) override;																																				// 0E
-		virtual void					LoadBuffer(BGSLoadFormBuffer* a_buf) override;																																				// 0F
-		virtual void					Unk_10(void) override;																																										// 10
-		virtual void					Unk_11(void) override;																																										// 11
-		virtual void					Unk_12(void) override;																																										// 12
-		virtual void					InitItem() override;																																										// 13
-		virtual FormType				GetFormType() override;																																										// 15
-		virtual void					GetFormDesc(char* a_buf, UInt32 a_bufLen) override;																																			// 16
-		virtual bool					GetFlag00010000() override;																																									// 18 - { return baseForm->GetFlag00010000(); }
-		virtual bool					NeverFades() override;																																										// 1A - { return baseForm->formType == FormType::Light ? (flags & RecordFlags::kNeverFades) != 0 : false; }
-		virtual bool					GetFlag00020000() override;																																									// 1B - { return baseForm->GetFlag00020000(); }
-		virtual bool					GetFlag02000000() override;																																									// 1D - { return baseForm ? baseForm->GetFlag02000000() : false; }
-		virtual bool					GetFlag00000200() override;																																									// 1F - { return (flags >> 9) & 1 && baseForm->GetFlag00000200(); }
-		virtual bool					GetFlag00000100() const override;																																							// 20 - { return baseForm->GetFlag00000100(); }
-		virtual void					SetFlag00000200(bool a_set) override;																																						// 21
-		virtual bool					IgnoredBySandbox() const override;																																							// 22
-		virtual void					SetFlag00000020(bool a_set) override;																																						// 23
-		virtual void					SetFlag00000002(bool a_set) override;																																						// 24
-		virtual bool					IsWaterActivator() override;																																								// 2A - { return baseForm ? baseForm->IsWaterActivator() : false; }
-		virtual void					Unk_2B(void) override;																																										// 2B - { return this; }
-		virtual TESObjectREFR*			GetReference() const override;																																								// 2C - { return this; }
-		virtual void					Unk_30(void) override;																																										// 30
-		virtual void					Unk_31(void) override;																																										// 31
-		virtual const char*				GetEditorID() override;																																										// 32
+		virtual void					InitializeData() override;																																									// 04
+		virtual void					ClearData() override;																																										// 05
+		virtual bool					Load(TESFile* a_mod) override;																																								// 06
+		virtual TESForm*				CreateDuplicateForm(void* a_arg1, void* a_arg2) override;																																	// 09
+		virtual bool					CheckSaveGame(BGSSaveFormBuffer* a_buf) override;																																			// 0D
+		virtual void					SaveGame(BGSSaveFormBuffer* a_buf) override;																																				// 0E
+		virtual void					LoadGame(BGSLoadFormBuffer* a_buf) override;																																				// 0F
+		virtual void					InitLoadGame(void* a_arg1) override;																																						// 10
+		virtual void					FinishLoadGame(void* a_arg1) override;																																								// 11
+		virtual void					Revert(void* a_arg1) override;																																								// 12
+		virtual void					InitItemImpl() override;																																									// 13
+		virtual FormType				GetSavedFormType() const override;																																							// 15
+		virtual void					GetFormDetailedString(char* a_buf, UInt32 a_bufLen) override;																																// 16
+		virtual bool					GetRandomAnim() const override;																																								// 18 - { return baseForm->GetRandomAnim(); }
+		virtual bool					IsHeadingMarker() const override;																																							// 1A - { return baseForm->formType == FormType::Light ? (flags & RecordFlags::kNeverFades) != 0 : false; }
+		virtual bool					GetDangerous() const override;																																								// 1B - { return baseForm->GetDangerous(); }
+		virtual bool					GetObstacle() const override;																																								// 1D - { return baseForm ? baseForm->GetObstacle() : false; }
+		virtual bool					GetOnLocalMap() const override;																																								// 1F - { return (flags >> 9) & 1 && baseForm->GetOnLocalMap(); }
+		virtual bool					GetMustUpdate() const override;																																								// 20 - { return baseForm->GetMustUpdate(); }
+		virtual void					SetOnLocalMap(bool a_set) override;																																							// 21
+		virtual bool					GetIgnoredBySandbox() const override;																																						// 22
+		virtual void					SetDelete(bool a_set) override;																																								// 23
+		virtual void					SetAltered(bool a_set) override;																																							// 24
+		virtual bool					IsWater() const override;																																									// 2A - { return baseForm ? baseForm->IsWater() : false; }
+		virtual const TESObjectREFR*	AsReference() const override;																																								// 2B - { return this; }
+		virtual TESObjectREFR*			AsReference() override;																																										// 2C - { return this; }
+		virtual bool					BelongsInGroup(void) override;																																								// 30
+		virtual void					CreateGroupData(void) override;																																								// 31
+		virtual const char*				GetFormEditorID() override;																																									// 32
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)
 		virtual EventResult				ReceiveEvent(BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_dispatcher) override;																					// 01
@@ -321,6 +321,7 @@ namespace RE
 		float				GetPositionX() const;
 		float				GetPositionY() const;
 		float				GetPositionZ() const;
+		UInt32				GetRefCount() const;
 		const char*			GetReferenceName() const;
 		float				GetWeight() const;
 		TESWorldSpace*		GetWorldspace() const;
@@ -359,7 +360,5 @@ namespace RE
 	private:
 		void MoveTo_Impl(RefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, NiPoint3& a_position, NiPoint3& a_rotation);
 	};
-	STATIC_ASSERT(offsetof(TESObjectREFR, extraData) == 0x70);
-	STATIC_ASSERT(offsetof(TESObjectREFR, loadedState) == 0x68);
 	STATIC_ASSERT(sizeof(TESObjectREFR) == 0x98);
 };

@@ -28,9 +28,9 @@ namespace RE
 		virtual ~BGSPerkRankArray();									// 00
 
 		// override (BaseFormComponent)
-		virtual void	Init() override;								// 01 - { return; }
-		virtual void	ReleaseRefs() override;							// 02
-		virtual void	CopyFromBase(BaseFormComponent* rhs) override;	// 03
+		virtual void	InitializeDataComponent() override;				// 01 - { return; }
+		virtual void	ClearDataComponent() override;					// 02
+		virtual void	CopyComponent(BaseFormComponent* rhs) override;	// 03
 
 
 		// members

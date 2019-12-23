@@ -25,15 +25,15 @@ namespace RE
 		};
 
 
-		virtual ~TESSound();										// 00
+		virtual ~TESSound();											// 00
 
 		// override (TESBoundAnimObject)
-		virtual void	InitDefaults() override;					// 04
-		virtual bool	LoadForm(TESFile* a_mod) override;			// 06
-		virtual void	InitItem() override;						// 13
-		virtual bool	SetEditorID(const char* a_str) override;	// 33
-		virtual void	Unk_41(void) override;						// 41
-		virtual void	Unk_4A(void) override;						// 4A - { return 0; }
+		virtual void	InitializeData() override;						// 04
+		virtual bool	Load(TESFile* a_mod) override;					// 06
+		virtual void	InitItemImpl() override;						// 13
+		virtual bool	SetFormEditorID(const char* a_str) override;	// 33
+		virtual void	Unk_41(void) override;							// 41
+		virtual void	Unk_4A(void) override;							// 4A - { return 0; }
 
 
 		// members

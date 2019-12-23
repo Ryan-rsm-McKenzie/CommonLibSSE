@@ -115,20 +115,20 @@ namespace RE
 		};
 		STATIC_ASSERT(sizeof(ResponseData) == 0x48);
 
-
-		virtual ~TESTopicInfo();											// 00
+		
+		virtual ~TESTopicInfo();														// 00
 
 		// override (TESForm)
-		virtual void	InitDefaults() override;							// 04
-		virtual void	ReleaseManagedData() override;						// 05
-		virtual bool	LoadForm(TESFile* a_mod) override;					// 06
-		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;		// 0F
-		virtual void	Unk_12(void) override;								// 12
-		virtual void	InitItem() override;								// 13
-		virtual void	GetFormDesc(char* a_buf, UInt32 a_bufLen) override;	// 16 - { return; }
-		virtual void	SetFlag00000002(bool a_set) override;				// 24
-		virtual void	Unk_30(void) override;								// 30
-		virtual void	Unk_31(void) override;								// 31
+		virtual void	InitializeData() override;										// 04
+		virtual void	ClearData() override;											// 05
+		virtual bool	Load(TESFile* a_mod) override;									// 06
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;					// 0F
+		virtual void	Revert(void* a_arg1) override;									// 12
+		virtual void	InitItemImpl() override;										// 13
+		virtual void	GetFormDetailedString(char* a_buf, UInt32 a_bufLen) override;	// 16 - { return; }
+		virtual void	SetAltered(bool a_set) override;								// 24
+		virtual bool	BelongsInGroup(void) override;									// 30
+		virtual void	CreateGroupData(void) override;									// 31
 
 		DialogueData GetDialogueData(Actor* a_speaker);
 

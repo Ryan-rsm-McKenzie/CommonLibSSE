@@ -200,15 +200,15 @@ namespace RE
 		virtual ~TESObjectWEAP();											// 00
 
 		// override (TESBoundObject)
-		virtual void		InitDefaults() override;						// 04
-		virtual void		ReleaseManagedData() override;					// 05
-		virtual bool		LoadForm(TESFile* a_mod) override;				// 06
-		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void		InitItem() override;							// 13
-		virtual TESFile*	GetFinalSourceFile() override;					// 14
-		virtual bool		IsPlayable() override;							// 19 - { return ~((data.flags >> 7) & 1); }
-		virtual const char*	GetTypeString() const override;					// 39 - { return g_animationStrings[data.animationType]; }
+		virtual void		InitializeData() override;						// 04
+		virtual void		ClearData() override;							// 05
+		virtual bool		Load(TESFile* a_mod) override;					// 06
+		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void		InitItemImpl() override;						// 13
+		virtual TESFile*	GetDescriptionOwnerFile() override;				// 14
+		virtual bool		GetPlayable() const override;					// 19 - { return ~((data.flags >> 7) & 1); }
+		virtual const char*	GetObjectTypeName() const override;				// 39 - { return g_animationStrings[data.animationType]; }
 
 		float				GetSpeed();
 		float				GetReach();

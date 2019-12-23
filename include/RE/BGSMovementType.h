@@ -48,7 +48,7 @@ namespace RE
 			struct Threshold
 			{
 				constexpr operator float&() { return val; }
-				constexpr bool IsDefault() const { return val == 0x7F7FFFFF; }
+				constexpr bool IsDefault() const { return val == FLT_MAX; }
 
 
 				float val;
@@ -63,12 +63,12 @@ namespace RE
 		STATIC_ASSERT(sizeof(AnimChangeThresholds) == 0xC);
 
 
-		virtual ~BGSMovementType();							// 00
+		virtual ~BGSMovementType();						// 00
 
 		// override (TESForm)
-		virtual void	InitDefaults() override;			// 04
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
-		virtual void	InitItem() override;				// 13
+		virtual void	InitializeData() override;		// 04
+		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void	InitItemImpl() override;		// 13
 
 
 		// members

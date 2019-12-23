@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BGSPickupPutdownSounds.h"
+#include "RE/BSTList.h"
 #include "RE/FormTypes.h"
 #include "RE/TESBoundObject.h"
 #include "RE/TESFullName.h"
@@ -31,24 +32,23 @@ namespace RE
 		};
 
 
-		virtual ~BGSNote();																																			// 00
+		virtual ~BGSNote();																																	// 00
 
 		// override (TESBoundObject)
-		virtual void	InitDefaults() override;																													// 04
-		virtual void	ReleaseManagedData() override;																												// 05
-		virtual bool	LoadForm(TESFile* a_mod) override;																											// 06
-		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;																								// 0F
-		virtual void	Unk_12(void) override;																														// 12
-		virtual void	InitItem() override;																														// 13
-		virtual bool	ActivateReference(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount) override;	// 37
+		virtual void	InitializeData() override;																											// 04
+		virtual void	ClearData() override;																												// 05
+		virtual bool	Load(TESFile* a_mod) override;																										// 06
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;																						// 0F
+		virtual void	Revert(void* a_arg1) override;																										// 12
+		virtual void	InitItemImpl() override;																											// 13
+		virtual bool	Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount) override;	// 37
 
 
 		// members
-		UInt64	unk90;	// 90
-		UInt64	unk98;	// 98
-		UInt64	unkA0;	// A0
-		UInt64	unkA8;	// A8
-		UInt64	unkB0;	// B0
+		TESTopic*				unk90;	// 90
+		TESActorBase*			unk98;	// 98
+		BSSimpleList<TESQuest*>	unkA0;	// A0
+		UInt64					unkB0;	// B0
 	};
 	STATIC_ASSERT(sizeof(BGSNote) == 0xB8);
 }

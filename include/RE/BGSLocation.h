@@ -76,13 +76,13 @@ namespace RE
 		virtual ~BGSLocation();											// 00
 
 		// override (TESForm)
-		virtual void	InitDefaults() override;						// 04
-		virtual bool	LoadForm(TESFile* a_mod) override;				// 06
-		virtual void	Unk_0C(void) override;							// 0C
-		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void	Unk_12(void) override;							// 12
-		virtual void	InitItem() override;							// 13
+		virtual void	InitializeData() override;						// 04
+		virtual bool	Load(TESFile* a_mod) override;					// 06
+		virtual bool	FindInFileFast(TESFile* a_mod) override;		// 0C
+		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void	Revert(void* a_arg1) override;					// 12
+		virtual void	InitItemImpl() override;						// 13
 
 		bool			IsCleared() const;
 		bool			IsChild(const BGSLocation* a_possibleChild) const;
@@ -104,10 +104,10 @@ namespace RE
 		UInt64									unkA8;							// A8
 		BSTArray<void*>							unkB0;							// B0
 		UInt32									loadedState;					// C8
-		UInt32									unkCC;							// CC - used in Unk_0C()
-		BSTArray<void*>							unkD0;							// D0 - used in Unk_12()
+		UInt32									fileOffset;						// CC
+		BSTArray<void*>							unkD0;							// D0
 		UInt32									unkE8;							// E8
-		bool									isCleared;						// EC - used in Unk_12()
+		bool									isCleared;						// EC
 		UInt8									unkED;							// ED
 		UInt16									unkEE;							// EE
 	};

@@ -38,17 +38,17 @@ namespace RE
 		};
 
 
-		virtual ~BGSSoundCategory();						// 00
+		virtual ~BGSSoundCategory();					// 00
 
 		// override (TESForm)
-		virtual void	InitDefaults() override;			// 04
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
-		virtual void	InitItem() override;				// 13
+		virtual void	InitializeData() override;		// 04
+		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void	InitItemImpl() override;		// 13
 
-		constexpr float	GetStaticVolumeMultiplier() const { return staticVolumeMultiplier / 65535.0; }
-		constexpr void	SetStaticVolumeMultiplier(float a_val) { staticVolumeMultiplier = static_cast<UInt16>(a_val * 65535.0); }
-		constexpr float	GetDefaultMenuValue() const { return defaultMenuValue / 65535.0; }
-		constexpr void	SetDefaultMenuValue(float a_val) { defaultMenuValue = static_cast<UInt16>(a_val * 65535.0); }
+		constexpr float	GetStaticVolumeMultiplier() const { return staticVolumeMultiplier / USHRT_MAX; }
+		constexpr void	SetStaticVolumeMultiplier(float a_val) { staticVolumeMultiplier = static_cast<UInt16>(a_val * USHRT_MAX); }
+		constexpr float	GetDefaultMenuValue() const { return defaultMenuValue / USHRT_MAX; }
+		constexpr void	SetDefaultMenuValue(float a_val) { defaultMenuValue = static_cast<UInt16>(a_val * USHRT_MAX); }
 
 
 		// members

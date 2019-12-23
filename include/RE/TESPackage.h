@@ -230,15 +230,15 @@ namespace RE
 		virtual ~TESPackage();												// 00
 
 		// override (TESForm)
-		virtual void		InitDefaults() override;						// 04
-		virtual void		ReleaseManagedData() override;					// 05
-		virtual bool		LoadForm(TESFile* a_mod) override;				// 06
-		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void		Unk_12(void) override;							// 12
-		virtual void		InitItem() override;							// 13
-		virtual void		Unk_2D(void) override;							// 2D - { return unkDC; }
-		virtual const char*	GetTypeString() const override;					// 39 - { return g_packageTypeStrings[packData.type]; }
+		virtual void		InitializeData() override;						// 04
+		virtual void		ClearData() override;							// 05
+		virtual bool		Load(TESFile* a_mod) override;					// 06
+		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void		Revert(void* a_arg1) override;					// 12
+		virtual void		InitItemImpl() override;						// 13
+		virtual UInt32		GetRefCount() const override;					// 2D - { return refCount; }
+		virtual const char*	GetObjectTypeName() const override;				// 39 - { return g_packageTypeStrings[packData.type]; }
 
 		// add
 		virtual void		Unk_3B(void);									// 3B
@@ -260,7 +260,7 @@ namespace RE
 		TESQuest*			ownerQuest;					// 70 - QNAM
 		OnEvent				onEvents[OnEvent::kTotal];	// 78
 		UInt32				unkD8;						// D8
-		UInt32				unkDC;						// DC - some kind of ref count
+		UInt32				refCount;					// DC
 	};
 	STATIC_ASSERT(sizeof(TESPackage) == 0xE0);
 }

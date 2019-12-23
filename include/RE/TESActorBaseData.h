@@ -77,15 +77,16 @@ namespace RE
 		virtual ~TESActorBaseData();
 
 		// override (BaseFormComponent)
-		virtual void	Init() override;
-		virtual void	ReleaseRefs() override;
-		virtual void	CopyFromBase(BaseFormComponent* a_rhs) override;
+		virtual void			InitializeDataComponent() override;					// 01
+		virtual void			ClearDataComponent() override;						// 02
+		virtual void			CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 		// add
-		virtual void	Unk_04(void);		// 04 - { return; }
-		virtual bool	IsGhost();			// 05 - { return (flags >> 29) & 1; }
-		virtual bool	IsInvulnerable();	// 06 - { test flags, 80000000h; }
-		virtual void	Unk_07(void);		// 07 - { return 1; }
+		virtual void			Unk_04(void);										// 04 - { return; }
+		virtual bool			IsGhost();											// 05 - { return (flags >> 29) & 1; }
+		virtual bool			IsInvulnerable();									// 06 - { test flags, 80000000h; }
+		virtual void			Unk_07(void);										// 07 - { return 1; }
+		virtual BGSVoiceType*	GetVoiceType(void);									// 08 - { return voice; }
 
 		bool			IsFemale() const;
 		bool			IsPreset() const;

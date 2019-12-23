@@ -33,22 +33,22 @@ namespace RE
 		};
 
 
-		virtual ~NavMesh();													// 00
+		virtual ~NavMesh();																// 00
 
 		// override (TESForm)
-		virtual bool	LoadForm(TESFile* a_mod) override;					// 06
-		virtual void	InitItem() override;								// 13
-		virtual void	GetFormDesc(char* a_buf, UInt32 a_bufLen) override;	// 16
-		virtual void	SetFlag00000020(bool a_set) override;				// 23
-		virtual void	SetFlag00000002(bool a_set) override;				// 24
-		virtual void	Unk_30(void) override;								// 30
-		virtual void	Unk_31(void) override;								// 31
+		virtual bool	Load(TESFile* a_mod) override;									// 06
+		virtual void	InitItemImpl() override;										// 13
+		virtual void	GetFormDetailedString(char* a_buf, UInt32 a_bufLen) override;	// 16
+		virtual void	SetDelete(bool a_set) override;									// 23
+		virtual void	SetAltered(bool a_set) override;								// 24
+		virtual bool	BelongsInGroup(void) override;									// 30
+		virtual void	CreateGroupData(void) override;									// 31
 
 		// add
-		virtual void	Unk_3B(void);										// 3B - { return; }
-		virtual void	Unk_3C(void);										// 3C - { return 0; }
-		virtual void	Unk_3D(void);										// 3D - { return 0; }
-		virtual void	Unk_3E(void);										// 3E - { return 0; }
+		virtual void	Unk_3B(void);													// 3B - { return; }
+		virtual void	Unk_3C(void);													// 3C - { return 0; }
+		virtual void	Unk_3D(void);													// 3D - { return 0; }
+		virtual void	Unk_3E(void);													// 3E - { return 0; }
 	};
 	STATIC_ASSERT(sizeof(NavMesh) == 0x140);
 }

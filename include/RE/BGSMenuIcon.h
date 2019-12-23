@@ -25,10 +25,10 @@ namespace RE
 		};
 
 
-		virtual ~BGSMenuIcon();							// 00
+		virtual ~BGSMenuIcon();						// 00
 
 		// override (TESForm)
-		virtual bool LoadForm(TESFile* a_mod) override;	// 06 - { return true; }
+		virtual bool Load(TESFile* a_mod) override;	// 06 - { return true; }
 	};
 	STATIC_ASSERT(sizeof(BGSMenuIcon) == 0x30);
 }

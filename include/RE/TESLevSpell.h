@@ -31,11 +31,11 @@ namespace RE
 		virtual ~TESLevSpell();											// 00
 
 		// override (TESBoundObject)
-		virtual bool	LoadForm(TESFile* a_mod) override;				// 06
-		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void	Unk_12(void) override;							// 12
-		virtual void	InitItem() override;							// 13
+		virtual bool	Load(TESFile* a_mod) override;					// 06
+		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void	Revert(void* a_arg1) override;					// 12
+		virtual void	InitItemImpl() override;						// 13
 	};
 	STATIC_ASSERT(sizeof(TESLevSpell) == 0x58);
 }

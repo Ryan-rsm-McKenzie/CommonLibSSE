@@ -60,11 +60,11 @@ namespace RE
 		virtual ~TESObjectSTAT();							// 00
 
 		// override (TESBoundObject)
-		virtual void	ReleaseManagedData() override;		// 05
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
-		virtual void	InitItem() override;				// 13
-		virtual bool	IsPlayable() override;				// 19 - { return true; }
-		virtual bool	NeverFades() override;				// 1A - { return (flags >> 2) & 1; }
+		virtual void	ClearData() override;				// 05
+		virtual bool	Load(TESFile* a_mod) override;		// 06
+		virtual void	InitItemImpl() override;			// 13
+		virtual bool	GetPlayable() const override;		// 19 - { return true; }
+		virtual bool	IsHeadingMarker() const override;	// 1A - { return (flags >> 2) & 1; }
 
 
 		// members

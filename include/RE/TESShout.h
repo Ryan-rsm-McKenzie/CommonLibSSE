@@ -58,12 +58,12 @@ namespace RE
 		};
 
 
-		virtual ~TESShout();								// 00
+		virtual ~TESShout();							// 00
 
 		// override (TESForm)
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
-		virtual void	InitItem() override;				// 13
-		virtual bool	PlayerKnows() const override;		// 17
+		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void	InitItemImpl() override;		// 13
+		virtual bool	GetKnown() const override;		// 17
 
 
 		// members

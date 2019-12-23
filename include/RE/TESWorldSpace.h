@@ -151,20 +151,20 @@ namespace RE
 		STATIC_ASSERT(sizeof(LandData) == 0x8);
 
 
-		virtual ~TESWorldSpace();													// 00
+		virtual ~TESWorldSpace();														// 00
 
 		// override (TESForm)
-		virtual void		InitDefaults() override;								// 04
-		virtual void		ReleaseManagedData() override;							// 05
-		virtual bool		LoadForm(TESFile* a_mod) override;						// 06
-		virtual void		Unk_07(void) override;									// 07
-		virtual TESForm*	DupulicateForm(void* a_arg1, void* a_arg2) override;	// 09
-		virtual void		Unk_0C(void) override;									// 0C
-		virtual void		InitItem() override;									// 13
-		virtual const char*	GetEditorID() override;									// 32 - { return editorID.c_str(); }
-		virtual bool		SetEditorID(const char* a_str) override;				// 33 - { editorID = a_str; }
-		virtual void		Unk_34(void) override;									// 34 - { return 1; }
-		virtual void		Unk_36(void) override;									// 36
+		virtual void		InitializeData() override;									// 04
+		virtual void		ClearData() override;										// 05
+		virtual bool		Load(TESFile* a_mod) override;								// 06
+		virtual bool		LoadPartial(TESFile* a_mod) override;						// 07
+		virtual TESForm*	CreateDuplicateForm(void* a_arg1, void* a_arg2) override;	// 09
+		virtual bool		FindInFileFast(TESFile* a_mod) override;					// 0C
+		virtual void		InitItemImpl() override;									// 13
+		virtual const char*	GetFormEditorID() override;									// 32 - { return editorID.c_str(); }
+		virtual bool		SetFormEditorID(const char* a_str) override;				// 33 - { editorID = a_str; }
+		virtual bool		IsParentForm() const override;								// 34 - { return true; }
+		virtual bool		IsFormTypeChild(FormType a_type) const override;			// 36
 
 		bool HasMaxHeightData() const;
 

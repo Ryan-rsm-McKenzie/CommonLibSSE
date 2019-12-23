@@ -47,11 +47,11 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x30);
 
 
-		virtual ~BGSDualCastData();							// 00
+		virtual ~BGSDualCastData();						// 00
 
 		// override (TESBoundObject)
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
-		virtual void	InitItem() override;				// 13
+		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void	InitItemImpl() override;		// 13
 
 
 		// members

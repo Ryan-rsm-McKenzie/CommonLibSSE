@@ -38,7 +38,7 @@ namespace RE
 		virtual ~ScrollItem();														// 00
 
 		// override (SpellItem)
-		virtual void		InitItem() override;									// 13
+		virtual void		InitItemImpl() override;								// 13
 		virtual MagicType	GetMagicType() const override;							// 53 - { return MagicType::kScroll; }
 		virtual CastType	GetCastType() const override;							// 55 - { return CastType::kFireAndForget; }
 		virtual void		Unk_60(void) override;									// 60 - { return 0; }

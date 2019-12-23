@@ -47,11 +47,11 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x10);
 
 
-		virtual ~BGSReverbParameters();						// 00
+		virtual ~BGSReverbParameters();					// 00
 
 		// override (TESForm)
-		virtual void	InitDefaults() override;			// 04
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
+		virtual void	InitializeData() override;		// 04
+		virtual bool	Load(TESFile* a_mod) override;	// 06
 
 		// override (BSIReverbType)
 		virtual UInt32	GetRoomFilter() const override;		// 00 - { return data.roomFilter * 100; }

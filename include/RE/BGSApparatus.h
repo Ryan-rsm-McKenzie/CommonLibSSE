@@ -30,10 +30,10 @@ namespace RE
 		};
 
 
-		virtual ~BGSApparatus();						// 00
+		virtual ~BGSApparatus();					// 00
 
 		// override (TESObjectMISC)
-		virtual bool LoadForm(TESFile* a_mod) override;	// 06
+		virtual bool Load(TESFile* a_mod) override;	// 06
 	};
 	STATIC_ASSERT(sizeof(BGSApparatus) == 0x120);
 }

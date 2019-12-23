@@ -68,14 +68,14 @@ namespace RE
 		STATIC_ASSERT(sizeof(DecalData) == 0x28);
 
 
-		virtual ~BGSTextureSet();							// 00
+		virtual ~BGSTextureSet();						// 00
 
 		// override (TESBoundObject)
-		virtual void	InitDefaults() override;			// 04
-		virtual void	ReleaseManagedData() override;		// 05
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
-		virtual void	Unk_40(void) override;				// 40 - returns BSFadeNode*
-		virtual void	Unk_41(void) override;				// 41
+		virtual void	InitializeData() override;		// 04
+		virtual void	ClearData() override;			// 05
+		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void	Unk_40(void) override;			// 40 - returns BSFadeNode*
+		virtual void	Unk_41(void) override;			// 41
 
 
 		// members

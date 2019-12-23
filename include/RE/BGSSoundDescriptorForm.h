@@ -31,16 +31,16 @@ namespace RE
 		};
 
 
-		virtual ~BGSSoundDescriptorForm();							// 00
+		virtual ~BGSSoundDescriptorForm();								// 00
 
 		// override (TESForm)
-		virtual void	ReleaseManagedData() override;				// 05
-		virtual bool	LoadForm(TESFile* a_mod) override;			// 06
-		virtual void	InitItem() override;						// 13
-		virtual bool	SetEditorID(const char* a_str) override;	// 33
+		virtual void	ClearData() override;							// 05
+		virtual bool	Load(TESFile* a_mod) override;					// 06
+		virtual void	InitItemImpl() override;						// 13
+		virtual bool	SetFormEditorID(const char* a_str) override;	// 33
 
 		// add
-		virtual UInt32	GetDescriptorType();						// 3B - { return soundDescriptor->GetType(); }
+		virtual UInt32	GetDescriptorType();							// 3B - { return soundDescriptor->GetType(); }
 
 
 		// members

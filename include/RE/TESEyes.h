@@ -40,10 +40,11 @@ namespace RE
 		};
 
 
-		virtual ~TESEyes();									// 00
+		virtual ~TESEyes();								// 00
 
 		// override (TESForm)
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06 - { return true; }
+		virtual void	InitializeData() override;		// 04 - { flags = 0; }
+		virtual bool	Load(TESFile* a_mod) override;	// 06 - { return true; }
 
 
 		// members

@@ -4,6 +4,7 @@
 #include "RE/BGSPreloadable.h"
 #include "RE/BSFixedString.h"
 #include "RE/FormTypes.h"
+#include "RE/NiPoint3.h"
 #include "RE/TESForm.h"
 #include "RE/TESModel.h"
 #include "RE/TESModelPSA.h"
@@ -51,72 +52,79 @@ namespace RE
 
 		struct BodyPart
 		{
-			enum class Flag : UInt8
+			struct NumericData	// BPND
 			{
-				kNone = 0,
-				kSeverable = 1 << 0,
-				kIKData = 1 << 1,
-				kIKData_BipedData = 1 << 2,
-				kExplodable = 1 << 3,
-				kIKData_IsHead = 1 << 4,
-				kIKData_HeadTracking = 1 << 5,
-				kToHitChance_Absolute = 1 << 6
-			};
-
-
-			struct GoreEffectsPositioning
-			{
-				struct XYZ
+				enum class Flag : UInt8
 				{
-					float	x;	// 0
-					float	y;	// 4
-					float	z;	// 8
+					kNone = 0,
+					kSeverable = 1 << 0,
+					kIKData = 1 << 1,
+					kIKData_BipedData = 1 << 2,
+					kExplodable = 1 << 3,
+					kIKData_IsHead = 1 << 4,
+					kIKData_HeadTracking = 1 << 5,
+					kToHitChance_Absolute = 1 << 6
 				};
-				STATIC_ASSERT(sizeof(XYZ) == 0xC);
 
 
-				XYZ	translate;	// 00
-				XYZ	rotation;	// 0C
+#pragma pack(push, 1)
+				struct Explodable
+				{
+					UInt8			explosionChance;	// 00
+					UInt8			debrisCount;		// 01
+					UInt8			pad02;				// 02
+					UInt32			pad03;				// 03
+					BGSDebris*		debris;				// 07
+					BGSExplosion*	explosion;			// 0F
+				};
+				STATIC_ASSERT(sizeof(Explodable) == 0x17);
+#pragma pack(pop)
+
+
+				struct GoreEffectsPositioning
+				{
+					NiPoint3	translate;	// 00
+					NiPoint3	rotation;	// 0C
+				};
+				STATIC_ASSERT(sizeof(GoreEffectsPositioning) == 0x18);
+
+
+				float					damageMult;					// 00
+				Flag					flags;						// 04
+				PartTypes::PartType		partType;					// 05
+				UInt8					healthPct;					// 06
+				ActorValue8				actorValue;					// 07
+				UInt8					toHitChance;				// 08
+				Explodable				explodable;					// 09
+				float					trackingMaxAngle;			// 20
+				float					explodableDebrisScale;		// 24
+				UInt8					severableDebrisCount;		// 28
+				UInt8					unk29;						// 29
+				UInt16					unk2A;						// 2A
+				UInt32					unk2C;						// 2C
+				BGSDebris*				severableDebris;			// 30
+				BGSExplosion*			severableExplosion;			// 38
+				float					severableDebrisScale;		// 40
+				GoreEffectsPositioning	goreEffectsPositioning;		// 44
+				UInt32					pad5C;						// 5C
+				BGSImpactDataSet*		severableImpactDataSet;		// 60
+				BGSImpactDataSet*		explodableImpactDataSet;	// 68
+				UInt8					severableDecalCount;		// 70
+				UInt8					explodableDecalCount;		// 71
+				UInt16					pad72;						// 72
+				float					limbReplacementScale;		// 74
 			};
-			STATIC_ASSERT(sizeof(GoreEffectsPositioning) == 0x18);
+			STATIC_ASSERT(sizeof(NumericData) == 0x78);
 
 
-			BSFixedString			partNode;					// 00 - BPNN
-			BSFixedString			vatsTarget;					// 08 - BPNT
-			BSFixedString			ikDataStartNode;			// 10 - BPNI
-			BSFixedString			partName;					// 18 - BPTN
-			BSFixedString			goreEffectsTargetBone;		// 20 - NAM4
-			TESModel				limbReplacementModel;		// 28 - NAM1
-			TESModelPSA				poseMatching;				// 50 - PNAM
-			float					damageMult;					// 78
-			Flag					flags;						// 7C
-			PartTypes::PartType		partType;					// 7D
-			UInt8					healthPct;					// 7E
-			ActorValue8				actorValue;					// 7F
-			UInt8					toHitChance;				// 80
-			UInt8					explodableExplosionChance;	// 81
-			UInt8					explodableDebrisCount;		// 82
-			UInt8					unk83;						// 83
-			UInt32					unk84;						// 84
-			BGSDebris*				explodableDebris;			// 88
-			BGSExplosion*			explodableExplosion;		// 90
-			float					trackingMaxAngle;			// 98
-			float					explodableDebrisScale;		// 9C
-			UInt8					severableDebrisCount;		// A0
-			UInt8					unkA1;						// A1
-			UInt16					unkA2;						// A2
-			UInt32					unkA4;						// A4
-			BGSDebris*				severableDebris;			// A8
-			BGSExplosion*			severableExplosion;			// B0
-			float					severableDebrisScale;		// B8
-			GoreEffectsPositioning	goreEffectsPositioning;		// BC
-			UInt32					unkD4;						// D4
-			BGSImpactDataSet*		severableImpactDataSet;		// D8
-			BGSImpactDataSet*		explodableImpactDataSet;	// E0
-			UInt8					severableDecalCount;		// E8
-			UInt8					explodableDecalCount;		// E9
-			UInt16					unkEA;						// EA
-			float					limbReplacementScale;		// EC
+			BSFixedString	partNode;				// 00 - BPNN
+			BSFixedString	vatsTarget;				// 08 - BPNT
+			BSFixedString	ikDataStartNode;		// 10 - BPNI
+			BSFixedString	partName;				// 18 - BPTN
+			BSFixedString	goreEffectsTargetBone;	// 20 - NAM4
+			TESModel		limbReplacementModel;	// 28 - NAM1
+			TESModelPSA		poseMatching;			// 50 - PNAM
+			NumericData		numericData;			// 78 - BPND
 		};
 		STATIC_ASSERT(sizeof(BodyPart) == 0xF0);
 
@@ -124,15 +132,15 @@ namespace RE
 		virtual ~BGSBodyPartData();							// 00
 
 		// override (TESForm)
-		virtual void	InitDefaults() override;			// 04
-		virtual void	ReleaseManagedData() override;		// 05
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
-		virtual void	InitItem() override;				// 13
+		virtual void	InitializeData() override;			// 04
+		virtual void	ClearData() override;				// 05
+		virtual bool	Load(TESFile* a_mod) override;		// 06
+		virtual void	InitItemImpl() override;			// 13
 
 
 		// members
 		BodyPart*	bodyParts[PartTypes::kTotal];	// 50
-		UInt64		unk80;							// 80
+		BGSRagdoll*	ragdoll;						// 80
 	};
 	STATIC_ASSERT(sizeof(BGSBodyPartData) == 0x88);
 }

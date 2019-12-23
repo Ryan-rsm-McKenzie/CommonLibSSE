@@ -29,10 +29,10 @@ namespace RE
 		};
 
 
-		virtual ~TESWordOfPower();						// 00
+		virtual ~TESWordOfPower();					// 00
 
 		// override (TESForm)
-		virtual bool LoadForm(TESFile* a_mod) override;	// 06
+		virtual bool Load(TESFile* a_mod) override;	// 06
 
 
 		// members

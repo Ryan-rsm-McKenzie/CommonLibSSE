@@ -68,12 +68,12 @@ namespace RE
 		virtual ~TESAmmo();												// 00
 
 		// override (TESBoundObject)
-		virtual void	InitDefaults() override;						// 04
-		virtual bool	LoadForm(TESFile* a_mod) override;				// 06
-		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void	InitItem() override;							// 13
-		virtual bool	IsPlayable() override;							// 19 - { return ~((data.flags >> 1) & 1); }
+		virtual void	InitializeData() override;						// 04
+		virtual bool	Load(TESFile* a_mod) override;					// 06
+		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void	InitItemImpl() override;						// 13
+		virtual bool	GetPlayable() const override;					// 19 - { return ~((data.flags >> 1) & 1); }
 		virtual void	Unk_40(void) override;							// 40
 		virtual void	OnRemovedFrom(TESObjectREFR* a_ref) override;	// 4E
 

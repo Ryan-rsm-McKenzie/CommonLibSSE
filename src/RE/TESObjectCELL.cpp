@@ -141,14 +141,14 @@ namespace RE
 		} else {
 			flags &= ~Flag::kHandChanged;
 		}
-		MarkChanged(1 << 1);
+		AddChange(1 << 1);
 	}
 
 
 	void TESObjectCELL::SetOwner(TESForm* a_owner)
 	{
 		extraList.SetOwner(a_owner);
-		MarkChanged(1 << 3);
+		AddChange(1 << 3);
 	}
 
 
@@ -159,7 +159,7 @@ namespace RE
 		} else {
 			flags &= ~Flag::kPublicArea;
 		}
-		MarkChanged(1 << 1);
+		AddChange(1 << 1);
 	}
 
 

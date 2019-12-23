@@ -173,13 +173,13 @@ namespace RE
 		virtual	~Actor();																																																								// 000
 
 		// override (TESObjectREFR)
-		virtual void							SaveBuffer(BGSSaveFormBuffer* a_buf) override;																																							// 00E
-		virtual void							LoadBuffer(BGSLoadFormBuffer* a_buf) override;																																							// 00F
-		virtual void							Unk_10(void) override;																																													// 010
-		virtual void							Unk_11(void) override;																																													// 011
-		virtual void							Unk_12(void) override;																																													// 012
-		virtual void							InitItem() override;																																													// 013
-		virtual void							SetFlag00000020(bool a_set) override;																																									// 023
+		virtual void							SaveGame(BGSSaveFormBuffer* a_buf) override;																																							// 00E
+		virtual void							LoadGame(BGSLoadFormBuffer* a_buf) override;																																							// 00F
+		virtual void							InitLoadGame(void* a_arg1) override;																																									// 010
+		virtual void							FinishLoadGame(void* a_arg1) override;																																									// 011
+		virtual void							Revert(void* a_arg1) override;																																											// 012
+		virtual void							InitItemImpl() override;																																												// 013
+		virtual void							SetDelete(bool a_set) override;																																											// 023
 		virtual void							Unk_3B(void) override;																																													// 03B
 		virtual BGSLocation*					GetStartingLocation() override;																																											// 03C - { return startingLocation; }
 		virtual bool							GetStartingData(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_veryRarelyUsedFallback) override;																	// 03D

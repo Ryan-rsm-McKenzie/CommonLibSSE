@@ -56,13 +56,13 @@ namespace RE
 
 
 		// override (TESBoundObject)
-		virtual void		InitDefaults() override;						// 04
-		virtual bool		LoadForm(TESFile* a_mod) override;				// 06
-		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void		InitItem() override;							// 13
-		virtual TESFile*	GetFinalSourceFile() override;					// 14 - { return templateArmor ? templateArmor->GetFile(-1) : GetFile(-1); }
-		virtual void		CopyFrom(TESForm* a_srcForm) override;			// 2F
+		virtual void		InitializeData() override;						// 04
+		virtual bool		Load(TESFile* a_mod) override;					// 06
+		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void		InitItemImpl() override;						// 13
+		virtual TESFile*	GetDescriptionOwnerFile() override;				// 14 - { return templateArmor ? templateArmor->GetFile(-1) : GetFile(-1); }
+		virtual void		Copy(TESForm* a_srcForm) override;				// 2F
 
 		float GetArmorRating();
 

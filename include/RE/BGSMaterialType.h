@@ -35,12 +35,12 @@ namespace RE
 		};
 
 
-		virtual ~BGSMaterialType();							// 00
+		virtual ~BGSMaterialType();						// 00
 
 		// override (TESForm)
-		virtual void	InitDefaults() override;			// 04
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
-		virtual void	InitItem() override;				// 13
+		virtual void	ClearData() override;			// 04
+		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void	InitItemImpl() override;		// 13
 
 
 		// members

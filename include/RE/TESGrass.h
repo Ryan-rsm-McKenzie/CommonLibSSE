@@ -75,9 +75,9 @@ namespace RE
 		virtual ~TESGrass();																						// 00
 
 		// override (TESBoundObject)
-		virtual void						InitDefaults() override;												// 04
-		virtual bool						LoadForm(TESFile* a_mod) override;										// 06
-		virtual void						InitItem() override;													// 13
+		virtual void						InitializeData() override;												// 04
+		virtual bool						Load(TESFile* a_mod) override;											// 06
+		virtual void						InitItemImpl() override;												// 13
 
 		// add
 		virtual UInt8						GetDensity() const;														// 53 - { return data.density; }

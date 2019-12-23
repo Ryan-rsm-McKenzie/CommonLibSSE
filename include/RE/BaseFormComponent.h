@@ -11,12 +11,12 @@ namespace RE
 		inline static const void* RTTI = RTTI_BaseFormComponent;
 
 
-		virtual ~BaseFormComponent();							// 00
+		virtual ~BaseFormComponent();								// 00
 
 		// add
-		virtual void	Init() = 0;								// 01
-		virtual void	ReleaseRefs() = 0;						// 02
-		virtual void	CopyFromBase(BaseFormComponent* a_rhs);	// 03 - { return; }
+		virtual void	InitializeDataComponent() = 0;				// 01
+		virtual void	ClearDataComponent() = 0;					// 02
+		virtual void	CopyComponent(BaseFormComponent* a_rhs);	// 03 - { return; }
 
 		TES_HEAP_REDEFINE_NEW();
 	};

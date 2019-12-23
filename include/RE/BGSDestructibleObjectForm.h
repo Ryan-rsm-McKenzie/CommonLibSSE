@@ -69,9 +69,9 @@ namespace RE
 		virtual ~BGSDestructibleObjectForm();								// 00
 
 		// override (BaseFormComponent)
-		virtual void	Init() override;									// 01
-		virtual void	ReleaseRefs() override;								// 02
-		virtual void	CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
+		virtual void	InitializeDataComponent() override;					// 01
+		virtual void	ClearDataComponent() override;						// 02
+		virtual void	CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 
 		// members

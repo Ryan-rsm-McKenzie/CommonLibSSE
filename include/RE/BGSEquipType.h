@@ -15,13 +15,13 @@ namespace RE
 		virtual ~BGSEquipType();													// 00
 
 		// override (BaseFormComponent)
-		virtual void			Init() override;									// 01
-		virtual void			ReleaseRefs() override;								// 02
-		virtual void			CopyFromBase(BaseFormComponent* a_rhs) override;	// 03
+		virtual void			InitializeDataComponent() override;					// 01 - { equipmentType = 0; }
+		virtual void			ClearDataComponent() override;						// 02 - { return; }
+		virtual void			CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 		// add
-		virtual	BGSEquipSlot*	GetEquipSlot();										// 04
-		virtual void			SetEquipSlot(BGSEquipSlot* a_slot);					// 05
+		virtual	BGSEquipSlot*	GetEquipSlot();										// 04 - { return equipmentType; }
+		virtual void			SetEquipSlot(BGSEquipSlot* a_slot);					// 05 - { equipmentType = a_slot; }
 
 
 		// members

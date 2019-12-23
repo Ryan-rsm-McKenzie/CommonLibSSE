@@ -62,9 +62,9 @@ namespace RE
 		virtual ~SpellItem();															// 00
 
 		// override (MagicItem)
-		virtual void		InitDefaults() override;									// 04
-		virtual void		ReleaseManagedData() override;								// 05
-		virtual void		InitItem() override;										// 13
+		virtual void		InitializeData() override;									// 04
+		virtual void		ClearData() override;										// 05
+		virtual void		InitItemImpl() override;									// 13
 		virtual MagicType	GetMagicType() const override;								// 53 - { return data.type; }
 		virtual void		SetCastType(CastType a_castType) override;					// 54 - { data.castType = a_castType; }
 		virtual CastType	GetCastType() const override;								// 55 - { return data.castType; }
@@ -86,12 +86,12 @@ namespace RE
 		virtual void		LoadData(TESFile* a_mod, UInt32 a_signature) override;		// 6A
 		virtual void		Unk_6B(void) override;										// 6B
 		virtual void*		GetData() override;											// 6C - { return &data; }
-		virtual void*		GetData2() override;										// 6D - { return &data; }
+		virtual const void*	GetData() const override;									// 6D - { return &data; }
 		virtual UInt32		GetDataSize() const override;								// 6E - { return 0x28; }
 		virtual void		LoadData(TESFile* a_mod) override;							// 6F
 		virtual void		ByteSwapData() override;									// 70
 
-		UInt32				GetMagickaCost();
+		UInt32 GetMagickaCost();
 
 
 		// members

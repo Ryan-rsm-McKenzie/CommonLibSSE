@@ -188,14 +188,14 @@ namespace RE
 		STATIC_ASSERT(sizeof(DOF) == 0x18);
 
 
-		virtual ~TESImageSpaceModifier();								// 00
+		virtual ~TESImageSpaceModifier();									// 00
 
 		// override (TESForm)
-		virtual void		InitDefaults() override;					// 04
-		virtual void		ReleaseManagedData() override;				// 05
-		virtual bool		LoadForm(TESFile* a_mod) override;			// 06
-		virtual const char*	GetEditorID() override;						// 32 - { return editorID.empty() ? editorID.c_str() : ""; }
-		virtual bool		SetEditorID(const char* a_str) override;	// 33
+		virtual void		InitializeData() override;						// 04
+		virtual void		ClearData() override;							// 05
+		virtual bool		Load(TESFile* a_mod) override;					// 06
+		virtual const char*	GetFormEditorID() override;						// 32 - { return editorID.c_str(); }
+		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { editorID = a_str; }
 
 
 		// members

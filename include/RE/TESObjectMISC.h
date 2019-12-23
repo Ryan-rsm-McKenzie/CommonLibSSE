@@ -48,10 +48,10 @@ namespace RE
 		virtual ~TESObjectMISC();													// 00
 
 		// override (TESBoundObject)
-		virtual bool		LoadForm(TESFile* a_mod) override;						// 06
-		virtual void		SaveBuffer(BGSSaveFormBuffer* a_buf) override;			// 0E
-		virtual void		LoadBuffer(BGSLoadFormBuffer* a_buf) override;			// 0F
-		virtual void		InitItem() override;									// 13
+		virtual bool		Load(TESFile* a_mod) override;							// 06
+		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;			// 0E
+		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;			// 0F
+		virtual void		InitItemImpl() override;								// 13
 
 		// override (BGSKeywordForm)
 		virtual BGSKeyword*	GetDefaultKeyword() override;							// 05 - { return BGSDefaultObjectManager::GetSingleton()->objects[193]; } - this index is a nullptr

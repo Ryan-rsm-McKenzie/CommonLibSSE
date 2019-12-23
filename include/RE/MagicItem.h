@@ -75,11 +75,11 @@ namespace RE
 		virtual ~MagicItem();													// 00
 
 		// override (TESBoundObject)
-		virtual void		InitDefaults() override;							// 04 - { TESForm::InitDefaults(); }
-		virtual bool		LoadForm(TESFile* a_mod) override;					// 06
-		virtual void		InitItem() override;								// 13
+		virtual void		InitializeData() override;							// 04 - { TESForm::InitDefaults(); }
+		virtual bool		Load(TESFile* a_mod) override;						// 06
+		virtual void		InitItemImpl() override;							// 13
 		virtual bool		IsMagicItem() const override;						// 29 - { return true; }
-		virtual void		CopyFrom(TESForm* a_srcForm) override;				// 2F
+		virtual void		Copy(TESForm* a_srcForm) override;					// 2F
 		virtual bool		IsAutoCalc() const override;						// 3E - { return (GetData().unk4 & 1) == 0; }
 
 		// add
@@ -109,7 +109,7 @@ namespace RE
 		virtual void		LoadData(TESFile* a_mod, UInt32 a_signature);		// 6A - { return; }
 		virtual void		Unk_6B(void);										// 6B - { return; }
 		virtual void*		GetData() = 0;										// 6C - actually returns a base data struct that all derived data structs inherit from
-		virtual void*		GetData2() = 0;										// 6D
+		virtual const void*	GetData() const = 0;								// 6D
 		virtual UInt32		GetDataSize() const = 0;							// 6E
 		virtual void		LoadData(TESFile* a_mod) = 0;						// 6F
 		virtual void		ByteSwapData() = 0;									// 70

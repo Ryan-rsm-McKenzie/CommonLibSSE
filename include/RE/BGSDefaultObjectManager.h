@@ -354,11 +354,11 @@ namespace RE
 		using DefaultObject = DefaultObjects::DefaultObject;
 
 
-		virtual ~BGSDefaultObjectManager();					// 00
+		virtual ~BGSDefaultObjectManager();				// 00
 
 		// override (TESForm)
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
-		virtual void	InitItem() override;				// 13
+		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void	InitItemImpl() override;		// 13
 
 		static BGSDefaultObjectManager* GetSingleton();
 

@@ -33,11 +33,11 @@ namespace RE
 		};
 
 
-		virtual ~BGSAssociationType();						// 00
+		virtual ~BGSAssociationType();					// 00
 
 		// override (TESForm)
-		virtual void	InitDefaults() override;			// 04
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
+		virtual void	InitializeData() override;		// 04
+		virtual bool	Load(TESFile* a_mod) override;	// 06
 
 
 		// members

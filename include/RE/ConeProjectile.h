@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSTArray.h"
 #include "RE/FormTypes.h"
 #include "RE/Projectile.h"
 
@@ -25,9 +26,11 @@ namespace RE
 		virtual ~ConeProjectile();										// 00
 
 		// override (Projectile)
-		virtual void	SaveBuffer(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void	LoadBuffer(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void	Unk_12(void) override;							// 12
+		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void	InitLoadGame(void* a_arg1) override;			// 10
+		virtual void	FinishLoadGame(void* a_arg1) override;			// 11
+		virtual void	Revert(void* a_arg1) override;					// 12
 		virtual void	Unk_A9(void) override;							// A9
 		virtual void	Unk_AB(void) override;							// AB
 		virtual void	Unk_AC(void) override;							// AC
@@ -42,14 +45,12 @@ namespace RE
 
 
 		// members
-		UInt64	unk1D8;	// 1D8
-		UInt64	unk1E0;	// 1E0
-		UInt64	unk1E8;	// 1E8
-		UInt64	unk1F0;	// 1F0
-		UInt64	unk1F8;	// 1F8
-		UInt64	unk200;	// 200
-		UInt64	unk208;	// 208
-		UInt64	unk210;	// 210
+		UInt64			unk1D8;	// 1D8
+		UInt64			unk1E0;	// 1E0
+		UInt64			unk1E8;	// 1E8
+		UInt64			unk1F0;	// 1F0
+		void*			unk1F8;	// 1F8 - smart ptr
+		BSTArray<void*>	unk200;	// 200
 	};
 	STATIC_ASSERT(sizeof(ConeProjectile) == 0x218);
 }

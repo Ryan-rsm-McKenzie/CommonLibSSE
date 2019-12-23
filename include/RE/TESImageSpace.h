@@ -98,11 +98,11 @@ namespace RE
 		STATIC_ASSERT(sizeof(DepthOfField) == 0x10);
 
 
-		virtual ~TESImageSpace();							// 00
+		virtual ~TESImageSpace();						// 00
 
 		// override (TESForm)
-		virtual void	InitDefaults() override;			// 04
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
+		virtual void	InitializeData() override;		// 04
+		virtual bool	Load(TESFile* a_mod) override;	// 06
 
 
 		// members

@@ -13,6 +13,9 @@ namespace RE
 
 
 		// members
+		UInt8			pad001;				// 001
+		UInt16			pad002;				// 002
+		UInt32			pad004;				// 004
 		BSFixedString	forward;			// 008 - "Forward"
 		BSFixedString	back;				// 010 - "Back"
 		BSFixedString	strafeLeft;			// 018 - "Strafe Left"

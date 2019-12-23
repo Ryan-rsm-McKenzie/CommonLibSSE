@@ -338,25 +338,27 @@ namespace RE
 
 		struct UnkData
 		{
-			FileHash**	unkHashes;			// 00
-			UInt32		Unk1_NumUnkHashes;	// 08
-			UInt32		Unk1_Unk0C;			// 0C - TESModel::unk24
-			UInt32		Unk2_NumUnkHashes;	// 10
-			UInt32		Unk2_Unk14;			// 14 - TESModel::unk24
+			FileHash**	unkHashes;		// 00
+			UInt32		numUnkHashes1;	// 08
+			UInt32		pad0C;			// 0C
+			UInt32		numUnkHashes2;	// 10
+			UInt32		pad14;			// 14
 		};
 		STATIC_ASSERT(sizeof(UnkData) == 0x18);
 
 
-		virtual ~TESRace();										// 00
+		virtual ~TESRace();													// 00
 
 		// override (TESForm)
-		virtual bool		LoadForm(TESFile* a_mod) override;	// 06
-		virtual void		InitItem() override;				// 13
-		virtual bool		IsPlayable() override;				// 19
-		virtual const char*	GetName();							// 32
-		virtual bool		SetName(const char* a_str);			// 33
+		virtual void		InitializeData() override;						// 04
+		virtual void		ClearData() override;							// 05
+		virtual bool		Load(TESFile* a_mod) override;					// 06
+		virtual void		InitItemImpl() override;						// 13
+		virtual bool		GetPlayable() const override;					// 19
+		virtual const char*	GetFormEditorID() override;						// 32 - { return editorID.c_str(); }
+		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { editorID = a_str; }
 
-		bool				AllowsPickpocket() const;
+		bool AllowsPickpocket() const;
 
 
 		// members

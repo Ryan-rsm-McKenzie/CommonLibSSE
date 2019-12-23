@@ -28,12 +28,12 @@ namespace RE
 		};
 
 
-		virtual ~BGSVolumetricLighting();					// 00
+		virtual ~BGSVolumetricLighting();				// 00
 
 		// override (TESForm)
-		virtual void	ReleaseManagedData() override;		// 05 - { return; }
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
-		virtual void	InitItem() override;				// 13
+		virtual void	ClearData() override;			// 05 - { return; }
+		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void	InitItemImpl() override;		// 13
 	};
 	STATIC_ASSERT(sizeof(BGSVolumetricLighting) == 0x50);
 }

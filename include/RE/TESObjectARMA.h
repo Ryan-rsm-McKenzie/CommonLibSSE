@@ -63,13 +63,13 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x10);
 
 
-		virtual ~TESObjectARMA();							// 00
+		virtual ~TESObjectARMA();						// 00
 
 		// override (TESObject)
-		virtual void	InitDefaults() override;			// 04
-		virtual void	ReleaseManagedData() override;		// 05
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
-		virtual void	InitItem() override;				// 13
+		virtual void	InitializeData() override;		// 04
+		virtual void	ClearData() override;			// 05
+		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void	InitItemImpl() override;		// 13
 
 		bool	IsValidRace(TESRace* a_sourceRace) const;
 		void	GetNodeName(char* a_dstBuff, TESObjectREFR* a_refr, TESObjectARMO* a_armor, float a_weightOverride);

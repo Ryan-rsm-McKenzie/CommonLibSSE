@@ -167,14 +167,15 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x4);
 
 
-		virtual ~TESTopic();												// 00
+		virtual ~TESTopic();														// 00
 
 		// override (TESForm)
-		virtual bool			LoadForm(TESFile* a_mod) override;			// 06
-		virtual void			InitItem() override;						// 13
-		virtual const char*		GetEditorID() override;						// 32 - { return editorID.c_str(); }
-		virtual bool			SetEditorID(const char* a_str) override;	// 33 - { bool result = editorID == a_str; editorID = a_str; return result; }
-		virtual void			Unk_36(void) override;						// 36 - { return a_arg1 == FormType::Info }
+		virtual bool			Load(TESFile* a_mod) override;						// 06
+		virtual void			InitItemImpl() override;							// 13
+		virtual const char*		GetFormEditorID() override;							// 32 - { return editorID.c_str(); }
+		virtual bool			SetFormEditorID(const char* a_str) override;		// 33 - { bool result = editorID == a_str; editorID = a_str; return result; }
+		virtual bool			IsParentForm() const override;						// 34 - { return true; }
+		virtual bool			IsFormTypeChild(FormType a_type) const override;	// 36 - { return a_type == FormType::Info }
 
 		float GetPriority() const;
 

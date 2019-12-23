@@ -57,12 +57,12 @@ namespace RE
 		STATIC_ASSERT(sizeof(Model) == 0x28);
 
 
-		virtual ~BGSDebris();								// 00
+		virtual ~BGSDebris();							// 00
 
 		// override (TESForm)
-		virtual void	InitDefaults() override;			// 04 - { return; }
-		virtual void	ReleaseManagedData() override;		// 05
-		virtual bool	LoadForm(TESFile* a_mod) override;	// 06
+		virtual void	InitializeData() override;		// 04 - { return; }
+		virtual void	ClearData() override;			// 05
+		virtual bool	Load(TESFile* a_mod) override;	// 06
 
 
 		// members

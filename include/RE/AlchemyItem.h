@@ -66,9 +66,9 @@ namespace RE
 		virtual ~AlchemyItem();														// 00
 
 		// override (MagicItem)
-		virtual void		InitDefaults() override;								// 04
-		virtual void		ReleaseManagedData() override;							// 05
-		virtual void		InitItem() override;									// 13
+		virtual void		InitializeData() override;								// 04
+		virtual void		ClearData() override;									// 05
+		virtual void		InitItemImpl() override;								// 13
 		virtual MagicType	GetMagicType() const override;							// 53 - { return MagicType::kAlchemy; }
 		virtual CastType	GetCastType() const override;							// 55 - { return CastType::kFireAndForget; }
 		virtual TargetType	GetTargetType() const override;							// 57 - { return TargetType::kSelf; }
@@ -80,7 +80,7 @@ namespace RE
 		virtual void		CopyData(MagicItem* a_src) override;					// 69
 		virtual void		LoadData(TESFile* a_mod, UInt32 a_signature) override;	// 6A
 		virtual void*		GetData() override;										// 6C - { return &effectData; }
-		virtual void*		GetData2(void) override;								// 6D - { return &effectData; }
+		virtual const void*	GetData() const override;								// 6D - { return &effectData; }
 		virtual UInt32		GetDataSize() const override;							// 6E - { return 0x20; }
 		virtual void		LoadData(TESFile* a_mod) override;						// 6F
 		virtual void		ByteSwapData() override;								// 70

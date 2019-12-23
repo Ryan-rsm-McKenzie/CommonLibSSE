@@ -48,14 +48,14 @@ namespace RE
 		STATIC_ASSERT(sizeof(Type) == 0x28);
 
 
-		virtual ~BGSStoryManagerEventNode();					// 00
+		virtual ~BGSStoryManagerEventNode();				// 00
 
 		// override (BGSStoryManagerBranchNode)
-		virtual void		InitDefaults() override;			// 04
-		virtual void		ReleaseManagedData() override;		// 05 - { BGSStoryManagerNodeBase::ReleaseManagedData(); }
-		virtual bool		LoadForm(TESFile* a_mod) override;	// 06
-		virtual void		InitItem() override;				// 13
-		virtual const char*	GetEditorID() override;				// 32 - { if (!((flags >> 3) & 1)) return "(Uninitialized event node)"; return type ? type->fullName.c_str() : "(No event)"; }
+		virtual void		InitializeData() override;		// 04
+		virtual void		ClearData() override;			// 05 - { BGSStoryManagerNodeBase::ClearData(); }
+		virtual bool		Load(TESFile* a_mod) override;	// 06
+		virtual void		InitItemImpl() override;		// 13
+		virtual const char*	GetFormEditorID() override;		// 32 - { if (!((flags >> 3) & 1)) return "(Uninitialized event node)"; return type ? type->fullName.c_str() : "(No event)"; }
 
 
 		// members
