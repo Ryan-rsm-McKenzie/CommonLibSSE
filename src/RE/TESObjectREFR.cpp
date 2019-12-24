@@ -189,7 +189,7 @@ namespace RE
 
 	NiAVObject* TESObjectREFR::GetNodeByName(const BSFixedString& a_nodeName)
 	{
-		auto node = GetNiNode();
+		auto node = Get3D();
 		return node ? node->GetObjectByName(a_nodeName) : 0;
 	}
 
@@ -285,7 +285,7 @@ namespace RE
 
 	bool TESObjectREFR::Is3DLoaded() const
 	{
-		return GetNiNode() != 0;
+		return Get3D() != 0;
 	}
 
 
@@ -325,7 +325,7 @@ namespace RE
 
 	bool TESObjectREFR::MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName)
 	{
-		auto node = a_target->GetNiNode();
+		auto node = a_target->Get3D();
 		if (!node) {
 			_DMESSAGE("Cannot move the target because it does not have 3D");
 			return false;
@@ -401,7 +401,7 @@ namespace RE
 
 	bool TESObjectREFR::SetMotionType(MotionType a_motionType, bool a_allowActivate)
 	{
-		auto node = GetNiNode();
+		auto node = Get3D();
 		if (!node) {
 			_DMESSAGE("Target does not have 3D");
 			return false;

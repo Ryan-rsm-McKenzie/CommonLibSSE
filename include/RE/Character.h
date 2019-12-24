@@ -37,9 +37,9 @@ namespace RE
 		virtual void					InitLoadGame(void* a_arg1) override;			// 10 - { Actor::InitLoadGame(a_arg1); }
 		virtual void					FinishLoadGame(void* a_arg1) override;			// 11 - { Actor::FinishLoadGame(a_arg1); }
 		virtual void					Revert(void* a_arg1) override;					// 12 - { return; }
-		virtual void					Unk_3B(void) override;							// 03B
+		virtual void					Predestroy(void) override;						// 03B
 		virtual bool					IsChild() const override;						// 05E - { return race ? (race->data.flags & Flag::kChild) != Flag::kNone : false; }
-		virtual BSFaceGenNiNode*		GetFaceGenNiNode() override;					// 061
+		virtual BSFaceGenNiNode*		GetFaceNodeSkinned() override;					// 061
 		virtual BSFaceGenAnimationData*	GetFaceGenAnimationData() override;				// 063
 		virtual void					Unk_81(void) override;							// 081
 		virtual void					Unk_C0(void) override;							// 0C0

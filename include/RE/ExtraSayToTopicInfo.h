@@ -31,7 +31,7 @@ namespace RE
 		UInt8			pad19;					// 19
 		UInt16			pad1A;					// 1A
 		float			subtitleSpeechDelay;	// 1C
-		UInt64			unk20;					// 20
+		void*			exclusiveBranch;		// 20
 		SInt32			unk28;					// 28
 		UInt8			unk2C;					// 2C
 		UInt8			pad2D;					// 2D

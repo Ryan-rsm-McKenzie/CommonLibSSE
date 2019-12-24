@@ -180,56 +180,56 @@ namespace RE
 		virtual void							Revert(void* a_arg1) override;																																											// 012
 		virtual void							InitItemImpl() override;																																												// 013
 		virtual void							SetDelete(bool a_set) override;																																											// 023
-		virtual void							Unk_3B(void) override;																																													// 03B
-		virtual BGSLocation*					GetStartingLocation() override;																																											// 03C - { return startingLocation; }
-		virtual bool							GetStartingData(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_veryRarelyUsedFallback) override;																	// 03D
-		virtual void							SetStartingLocation(BGSLocation* a_location) override;																																					// 03E - { startingLocation = a_location; }
-		virtual void							Unk_3F(void) override;																																													// 03F
-		virtual void							SayQueuedDialogue() override;																																											// 040
-		virtual void							Unk_41(void) override;																																													// 041
-		virtual void							Unk_45(void) override;																																													// 045
-		virtual bool							HasKeyword(BGSKeyword* a_keyword) override;																																								// 048
-		virtual void							Unk_49(void) override;																																													// 049 - { return 0; }
+		virtual void							Predestroy() override;																																													// 03B
+		virtual BGSLocation*					GetEditorLocation() override;																																											// 03C - { return editorLocation; }
+		virtual bool							GetEditorLocation(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_veryRarelyUsedFallback) override;																// 03D
+		virtual void							ForceEditorLocation(BGSLocation* a_location) override;																																					// 03E - { editorLocation = a_location; }
+		virtual void							Update3DPosition(bool a_arg1) override;																																									// 03F
+		virtual void							UpdateSoundCallBack() override;																																											// 040
+		virtual void							SetDialoguewithPlayer(void) override;																																									// 041
+		virtual void							GetSequencer(void) override;																																											// 045 - { return aiProcess->highProcess->unk50; }
+		virtual bool							HasKeywordHelper(BGSKeyword* a_keyword) override;																																						// 048
+		virtual void							CheckForCurrentAliasPackage(void) override;																																								// 049 - { return 0; }
 		virtual BGSScene*						GetCurrentScene() const override;																																										// 04A
 		virtual void							SetCurrentScene(BGSScene* a_scene) override;																																							// 04B
-		virtual void							Unk_4C(void) override;																																													// 04C
-		virtual void							Unk_4D(void) override;																																													// 04D - { return unk220; }
-		virtual void							Unk_4E(void) override;																																													// 04E - { unk220 = a_arg1; }
-		virtual void							Unk_4F(void) override;																																													// 04F
-		virtual void							GetStartingRotation(NiPoint3& a_rotation) override;																																						// 052
-		virtual void							GetStartingPosition(NiPoint3& a_position) override;																																						// 053
+		virtual void							UpdateInDialogue(void) override;																																										// 04C
+		virtual void*							GetExclusiveBranch() override;																																											// 04D - { return exclusiveBranch; }
+		virtual void							SetExclusiveBranch(void* a_branch) override;																																							// 04E - { exclusiveBranch = a_arg1; }
+		virtual void							PauseCurrentDialogue(void) override;																																									// 04F
+		virtual NiPoint3*						GetStartingAngle(NiPoint3& a_angle) const override;																																						// 052
+		virtual NiPoint3*						GetStartingLocation(NiPoint3& a_location) const override;																																				// 053
 		virtual RefHandle&						RemoveItem(RefHandle& a_dropHandle, TESBoundObject* a_item, SInt32 a_count, RemoveType a_mode, ExtraDataList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0) override;	// 056
-		virtual bool							EquipItem(TESBoundObject* a_item, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5) override;																									// 057
-		virtual void							Unk_58(void) override;																																													// 058 - attack target?
-		virtual void							Unk_59(void) override;																																													// 059
+		virtual bool							AddWornItem(TESBoundObject* a_item, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5) override;																								// 057
+		virtual void							DoTrap(void* a_arg1) override;																																											// 058
+		virtual void							DoTrap(void* a_arg1, void* a_arg2) override;																																							// 059
 		virtual void							AddItem(TESBoundObject* a_item, ExtraDataList* a_extraList, SInt32 a_count, TESObjectREFR* a_fromRefr) override;																						// 05A
-		virtual void							GetMarkerPosition(NiPoint3& a_pos) override;																																							// 05B
-		virtual MagicCaster*					GetMagicCaster(UInt32 a_slot) const override;																																							// 05C
-		virtual MagicTarget*					GetMagicTarget() const override;																																										// 05D - { return static_cast<MagicTarget*>(this); }
+		virtual NiPoint3*						GetLookingAtLocation(NiPoint3& a_location) const override;																																				// 05B
+		virtual MagicCaster*					GetMagicCaster(UInt32 a_slot) override;																																									// 05C
+		virtual MagicTarget*					GetMagicTarget() override;																																												// 05D - { return static_cast<MagicTarget*>(this); }
 		virtual bool							IsChild() const override;																																												// 05E - { return false; }
 		virtual BSFaceGenAnimationData*			GetFaceGenAnimationData() override;																																										// 063
-		virtual void							Unk_65(void) override;																																													// 065
-		virtual void							Unk_66(void) override;																																													// 066
+		virtual bool							DetachHavok() override;																																													// 065
+		virtual void							InitHavok() override;																																													// 066
 		virtual void							Unk_67(void) override;																																													// 067 - related to vampire lord cape
 		virtual void							Unk_68(void) override;																																													// 068
 		virtual void							Unk_69(void) override;																																													// 069
-		virtual void							Unk_6A(void) override;																																													// 06A
-		virtual void							Unk_6C(void) override;																																													// 06C
-		virtual void							Unk_72(void) override;																																													// 072
-		virtual NiPoint3*						GetBoundLeftFrontBottom(NiPoint3& a_out) const override;																																				// 073
-		virtual NiPoint3*						GetBoundRightBackTop(NiPoint3& a_out) const override;																																					// 074
+		virtual void							Load3D(bool a_arg1) override;																																											// 06A
+		virtual void							Set3D(NiNode* a_root, UInt32 a_arg2 = 1) override;																																						// 06C
+		virtual void							PopulateGraphProjectsToLoad(void) override;																																								// 072
+		virtual NiPoint3*						GetBoundMin(NiPoint3& a_min) const override;																																							// 073
+		virtual NiPoint3*						GetBoundMax(NiPoint3& a_max) const override;																																							// 074
 		virtual void							Unk_75(void) override;																																													// 075 - "ActorValue GetWeaponSkill()"? really weird call, only works for right hand, and defaults to 1
 		virtual void							Unk_78(void) override;																																													// 078
-		virtual void							Unk_79(void) override;																																													// 079
-		virtual void							Unk_7A(void) override;																																													// 07A - { return 0; }
-		virtual void							Unk_7B(void) override;																																													// 07B
-		virtual void							Unk_7C(void) override;																																													// 07C
-		virtual void							Unk_7D(void) override;																																													// 07D
+		virtual void							ModifyAnimationUpdateData(void) override;																																								// 079
+		virtual bool							ShouldSaveAnimationOnUnloading(void) override;																																							// 07A - { return false; }
+		virtual bool							ShouldSaveAnimationOnSaving(void) override;																																								// 07B
+		virtual bool							ShouldPerformRevert(void) override;																																										// 07C
+		virtual void							UpdateAnimation(void) override;																																											// 07D
 		virtual void							Unk_82(void) override;																																													// 082
-		virtual void							SetBaseForm(TESBoundObject* a_object) override;																																							// 084
-		virtual void							Unk_85(void) override;																																													// 085
-		virtual void							Unk_86(void) override;																																													// 086
-		virtual void							Unk_87(void) override;																																													// 087
+		virtual void							SetObjectReference(TESBoundObject* a_object) override;																																					// 084
+		virtual void							MoveHavok(bool a_arg1) override;																																										// 085
+		virtual NiPoint3*						GetLinearVelocity(NiPoint3& a_velocity) const override;																																					// 086
+		virtual void							SetActionComplete(void) override;																																										// 087
 		virtual void							Disable() override;																																														// 089
 		virtual void							ResetInventory(bool a_regenerate) override;																																								// 08A
 		virtual void							Unk_8B(void) override;																																													// 08B
@@ -457,10 +457,10 @@ namespace RE
 		UInt32									unk114;										// 114
 		UInt32									unk118;										// 118
 		UInt32									unk11C;										// 11C
-		NiPoint3								startingPos;								// 120
-		float									startingRotZ;								// 12C
-		TESObjectCELL*							startingCell;								// 130
-		BGSLocation*							startingLocation;							// 138
+		NiPoint3								startingLocation;							// 120
+		float									startingAngle;								// 12C
+		TESObjectCELL*							editorCell;									// 130
+		BGSLocation*							editorLocation;								// 138
 		ActorMover*								mover;										// 140
 		BSTSmartPointer<MovementControllerNPC>	unk148;										// 148
 		void*									unk150;										// 150
@@ -483,7 +483,7 @@ namespace RE
 		float									unk1F8;										// 1F8
 		Flag2									flags2;										// 1FC
 		ActorValueMap							avMap;										// 200
-		UInt64									unk220;										// 220
+		void*									exclusiveBranch;							// 220
 		ActorValueModifiers						avHealth;									// 228
 		ActorValueModifiers						avMagicka;									// 234
 		ActorValueModifiers						avStamina;									// 240

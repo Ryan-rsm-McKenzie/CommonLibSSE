@@ -32,6 +32,7 @@ namespace RE
 	class NiControllerManager;
 	class NiControllerSequence;
 	class NiNode;
+	class NiObject;
 	class TESBoundObject;
 	class TESContainer;
 	struct Biped;
@@ -110,7 +111,7 @@ namespace RE
 				kSkyMarker = kFlag13,
 				kHarvested = kFlag13,	// TESObjectTREE
 
-				kIsFullLOD = 1 << 16,
+				kIsFullLOD = 1 << 16,	// Actor
 
 				kFlag17 = 1 << 17,
 				kNeverFades = kFlag17,	// TESObjectLIGH
@@ -193,84 +194,84 @@ namespace RE
 		virtual bool					ConstructAnimationGraph(BSTSmartPointer<BShkbAnimationGraph>& a_out) override;																												// 05
 
 		// add
-		virtual void					Unk_3B(void);																																												// 3B
-		virtual BGSLocation*			GetStartingLocation();																																										// 3C
-		virtual bool					GetStartingData(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_veryRarelyUsedFallback);																// 3D
-		virtual void					SetStartingLocation(BGSLocation* a_location);																																				// 3E
-		virtual void					Unk_3F(void);																																												// 3F
-		virtual void					SayQueuedDialogue();																																										// 40
-		virtual void					Unk_41(void);																																												// 41
+		virtual void					Predestroy();																																												// 3B
+		virtual BGSLocation*			GetEditorLocation();																																										// 3C
+		virtual bool					GetEditorLocation(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_fallback);																			// 3D
+		virtual void					ForceEditorLocation(BGSLocation* a_location);																																				// 3E
+		virtual void					Update3DPosition(bool a_arg1);																																								// 3F
+		virtual void					UpdateSoundCallBack();																																										// 40
+		virtual void					SetDialoguewithPlayer(void);																																								// 41
 		virtual void					Unk_42(void);																																												// 42
-		virtual void					Unk_43(void);																																												// 43 - checks flag 17 if this != ACHR && baseform != LIGH
-		virtual void					Unk_44(void);																																												// 44
-		virtual void					Unk_45(void);																																												// 45
-		virtual void					Unk_46(void);																																												// 46 - { return 1; }
-		virtual void					Unk_47(void);																																												// 47 - { return 1; }
-		virtual bool					HasKeyword(BGSKeyword* a_keyword);																																							// 48
-		virtual void					Unk_49(void);																																												// 49 - { return 0; }
+		virtual bool					GetFullLODRef() const;																																										// 43
+		virtual void					SetFullLODRef(void);																																										// 44
+		virtual void					GetSequencer(void);																																											// 45
+		virtual bool					QCanUpdateSync(void);																																										// 46 - { return true; }
+		virtual bool					GetAllowPromoteToPersistent(void);																																							// 47 - { return true; }
+		virtual bool					HasKeywordHelper(BGSKeyword* a_keyword);																																					// 48
+		virtual void					CheckForCurrentAliasPackage(void);																																							// 49 - { return 0; }
 		virtual BGSScene*				GetCurrentScene() const;																																									// 4A
 		virtual void					SetCurrentScene(BGSScene* a_scene);																																							// 4B
-		virtual void					Unk_4C(void);																																												// 4C
-		virtual void					Unk_4D(void);																																												// 4D - getter for ExtraSayTopicInfo
-		virtual void					Unk_4E(void);																																												// 4E - setter for ExtraSayTopicInfo
-		virtual void					Unk_4F(void);																																												// 4F
+		virtual void					UpdateInDialogue(void);																																										// 4C
+		virtual void*					GetExclusiveBranch();																																										// 4D
+		virtual void					SetExclusiveBranch(void* a_branch);																																							// 4E
+		virtual void					PauseCurrentDialogue();																																										// 4F
 		virtual void					SetActorCause(void* a_cause);																																								// 50
-		virtual void*					GetActorCause() const;																																										// 51
-		virtual void					GetStartingRotation(NiPoint3& a_rotation);																																					// 52
-		virtual void					GetStartingPosition(NiPoint3& a_position);																																					// 53
-		virtual void					Unk_54(void);																																												// 54
-		virtual void					Unk_55(void);																																												// 55
+		virtual void*					GetActorCause();																																											// 51
+		virtual NiPoint3*				GetStartingAngle(NiPoint3& a_angle) const;																																					// 52
+		virtual NiPoint3*				GetStartingLocation(NiPoint3& a_location) const;																																			// 53
+		virtual void					SetStartingPosition(void);																																									// 54
+		virtual void					UpdateRefLight();																																											// 55
 		virtual RefHandle&				RemoveItem(RefHandle& a_dropHandle, TESBoundObject* a_item, SInt32 a_count, RemoveType a_mode, ExtraDataList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0);	// 56
-		virtual bool					EquipItem(TESBoundObject* a_item, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5);																								// 57
-		virtual void					Unk_58(void);																																												// 58 - { return; }
-		virtual void					Unk_59(void);																																												// 59 - { return; }
+		virtual bool					AddWornItem(TESBoundObject* a_item, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5);																								// 57
+		virtual void					DoTrap(void* a_arg1);																																										// 58 - { return; }
+		virtual void					DoTrap(void* a_arg1, void* a_arg2);																																							// 59 - { return; }
 		virtual void					AddItem(TESBoundObject* a_item, ExtraDataList* a_extraList, SInt32 a_count, TESObjectREFR* a_fromRefr);																						// 5A
-		virtual void					GetMarkerPosition(NiPoint3& a_pos);																																							// 5B
-		virtual MagicCaster*			GetMagicCaster(UInt32 a_slot) const;																																						// 5C
-		virtual MagicTarget*			GetMagicTarget() const;																																										// 5D
+		virtual NiPoint3*				GetLookingAtLocation(NiPoint3& a_location) const;																																			// 5B
+		virtual MagicCaster*			GetMagicCaster(UInt32 a_slot);																																								// 5C
+		virtual MagicTarget*			GetMagicTarget();																																											// 5D
 		virtual bool					IsChild() const;																																											// 5E - { return false; }
-		virtual void					Unk_5F(void);																																												// 5F - { return 0; }
-		virtual void					Unk_60(void);																																												// 60 - { return; }
-		virtual BSFaceGenNiNode*		GetFaceGenNiNode();																																											// 61 - { return 0; }
-		virtual void					Unk_62(void);																																												// 62 - { return GetFaceGenNiNode(); }
+		virtual void*					GetTemplateActorBase(void);																																									// 5F - { return 0; }
+		virtual void					SetTemplateActorBase(void* a_template);																																						// 60 - { return; }
+		virtual BSFaceGenNiNode*		GetFaceNodeSkinned();																																										// 61 - { return 0; }
+		virtual BSFaceGenNiNode*		GetFaceNode();																																												// 62 - { return GetFaceNodeSkinned(); }
 		virtual BSFaceGenAnimationData*	GetFaceGenAnimationData();																																									// 63 - { return 0; }
-		virtual void					Unk_64(void);																																												// 64
-		virtual void					Unk_65(void);																																												// 65
-		virtual void					Unk_66(void);																																												// 66
+		virtual bool					ClampToGround();																																											// 64
+		virtual bool					DetachHavok();																																												// 65
+		virtual void					InitHavok();																																												// 66
 		virtual void					Unk_67(void);																																												// 67 - { return; }
 		virtual void					Unk_68(void);																																												// 68 - { return; }
 		virtual void					Unk_69(void);																																												// 69 - { return; }
-		virtual void					Unk_6A(void);																																												// 6A
-		virtual void					Unk_6B(void);																																												// 6B
-		virtual void					Unk_6C(void);																																												// 6C
-		virtual void					SetNiNode(NiNode* a_root, UInt32 a_arg2);																																					// 6D - NULL, 1?
+		virtual void					Load3D(bool a_arg1);																																										// 6A
+		virtual void					Release3DRelatedData();																																										// 6B
+		virtual void					Set3D(NiNode* a_root, UInt32 a_arg2 = 1);																																					// 6C
+		virtual bool					ShouldBackgroundClone() const;																																								// 6D
 		virtual void					Unk_6E(void);																																												// 6E - { return; }
-		virtual NiNode*					GetNiRootNode(UInt32 a_firstPerson);																																						// 6F - { return GetNiNode(); }
-		virtual NiNode*					GetNiNode() const;																																											// 70
-		virtual bool					IsInThirdPerson();																																											// 71 - { return true; }
-		virtual void					Unk_72(void);																																												// 72
-		virtual NiPoint3*				GetBoundLeftFrontBottom(NiPoint3& a_out) const;																																				// 73
-		virtual NiPoint3*				GetBoundRightBackTop(NiPoint3& a_out) const;																																				// 74
+		virtual NiNode*					Get3D(UInt32 a_firstPerson);																																								// 6F - { return Get3D(); }
+		virtual NiNode*					Get3D() const;																																												// 70
+		virtual bool					Is3rdPersonVisible();																																										// 71 - { return true; }
+		virtual void					PopulateGraphProjectsToLoad(void);																																							// 72
+		virtual NiPoint3*				GetBoundMin(NiPoint3& a_min) const;																																							// 73
+		virtual NiPoint3*				GetBoundMax(NiPoint3& a_max) const;																																							// 74
 		virtual void					Unk_75(void);																																												// 75 - { return 0; }
-		virtual void					Unk_76(void);																																												// 76
-		virtual void					Unk_77(void);																																												// 77
+		virtual bool					InitNonNPCAnimation(NiObject* a_arg1);																																						// 76
+		virtual bool					CheckAndFixSkinAndBoneOrder(void* a_arg1);																																					// 77
 		virtual void					Unk_78(void);																																												// 78
-		virtual void					Unk_79(void);																																												// 79 - { return; }
-		virtual void					Unk_7A(void);																																												// 7A
-		virtual void					Unk_7B(void);																																												// 7B
-		virtual void					Unk_7C(void);																																												// 7C - { return 1; }
-		virtual void					Unk_7D(void);																																												// 7D
-		virtual Biped*					GetBiped(bool a_large);																																										// 7E - { return GetSmallBiped(); }
-		virtual Biped*					GetSmallBiped();																																											// 7F
-		virtual void					Unk_80(void);																																												// 80 - { return GetSmallBiped(); }
+		virtual void					ModifyAnimationUpdateData(void);																																							// 79 - { return; }
+		virtual bool					ShouldSaveAnimationOnUnloading(void);																																						// 7A
+		virtual bool					ShouldSaveAnimationOnSaving(void);																																							// 7B
+		virtual bool					ShouldPerformRevert(void);																																									// 7C - { return true; }
+		virtual void					UpdateAnimation(void);																																										// 7D
+		virtual Biped*					GetBiped(bool a_large);																																										// 7E - { return GetBiped(); }
+		virtual Biped*					GetBiped();																																													// 7F
+		virtual Biped*					GetCurrentBiped();																																											// 80 - { return GetBiped(); }
 		virtual void					Unk_81(void);																																												// 81 - { return; }
 		virtual void					Unk_82(void);																																												// 82 - { return; }
 		virtual void					Unk_83(void);																																												// 83 - { return; }
-		virtual void					SetBaseForm(TESBoundObject* a_object);																																						// 84 - sets flag 24 if the object has destructibles
-		virtual void					Unk_85(void);																																												// 85
-		virtual void					Unk_86(void);																																												// 86
-		virtual void					Unk_87(void);																																												// 87 - { return; }
-		virtual void					Unk_88(void);																																												// 88 - { return; }
+		virtual void					SetObjectReference(TESBoundObject* a_object);																																				// 84 - sets flag 24 if the object has destructibles
+		virtual void					MoveHavok(bool a_arg1);																																										// 85
+		virtual NiPoint3*				GetLinearVelocity(NiPoint3& a_velocity) const;																																				// 86
+		virtual void					SetActionComplete(void);																																									// 87 - { return; }
+		virtual void					SetMovementComplete(void);																																									// 88 - { return; }
 		virtual void					Disable();																																													// 89
 		virtual void					ResetInventory(bool a_regenerate);																																							// 8A
 		virtual void					Unk_8B(void);																																												// 8B - { return 0; }

@@ -707,7 +707,6 @@ namespace RE
 			kIsSprinting = 568,
 			kIsBlocking = 569,
 			kHasEquippedSpell = 570,
-			kHasSpell = kHasEquippedSpell,
 			kGetCurrentCastingType = 571,
 			kGetCasting = kGetCurrentCastingType,
 			kGetCurrentDeliveryType = 572,

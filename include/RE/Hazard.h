@@ -31,7 +31,7 @@ namespace RE
 		virtual void	Revert(void* a_arg1) override;					// 12
 		virtual void	InitItemImpl() override;						// 13
 		virtual void	SetActorCause(void* a_cause) override;			// 50
-		virtual void	Unk_6B(void) override;							// 6B
+		virtual void	Release3DRelatedData() override;				// 6B
 		virtual void	Unk_90(void) override;							// 90 - { return 0; }
 
 		// add

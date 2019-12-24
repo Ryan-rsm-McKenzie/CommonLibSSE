@@ -410,25 +410,25 @@ namespace RE
 
 		reference front()
 		{
-			return data()[0];
+			return operator[](0);
 		}
 
 
 		const_reference front() const
 		{
-			return data()[0];
+			return operator[](0);
 		}
 
 
 		reference back()
 		{
-			return data()[size() - 1];
+			return operator[](size() - 1);
 		}
 
 
 		const_reference back() const
 		{
-			return data()[size() - 1];
+			return operator[](size() - 1);
 		}
 
 
@@ -800,4 +800,121 @@ namespace RE
 		//UInt32		_pad14;		// 1C
 	};
 	STATIC_ASSERT(sizeof(BSScrapArray<void*>) == 0x20);
+
+
+	template <class T>
+	class BSStaticArray
+	{
+	public:
+		using value_type = T;
+		using size_type = UInt32;
+		using reference = value_type&;
+		using const_reference = const value_type&;
+		using iterator = T*;
+		using const_iterator = const T*;
+
+		reference operator[](size_type a_pos)
+		{
+			assert(a_pos < _size);
+			return _data[a_pos];
+		}
+
+
+		const_reference operator[](size_type a_pos) const
+		{
+			assert(a_pos < _size);
+			return _data[a_pos];
+		}
+
+
+		reference front()
+		{
+			return operator[](0);
+		}
+
+
+		const_reference front() const
+		{
+			return operator[](0);
+		}
+
+
+		reference back()
+		{
+			return operator[](size() - 1);
+		}
+
+
+		const_reference back() const
+		{
+			return operator[](size() - 1);
+		}
+
+
+		T* data()
+		{
+			return _data;
+		}
+
+
+		const T* data() const
+		{
+			return _data;
+		}
+
+
+		iterator begin()
+		{
+			return empty() ? iterator{} : std::addressof(data()[0]);
+		}
+
+
+		const_iterator begin() const
+		{
+			return empty() ? const_iterator{} : std::addressof(data()[0]);
+		}
+
+
+		const_iterator cbegin() const
+		{
+			return begin();
+		}
+
+
+		iterator end()
+		{
+			return empty() ? iterator{} : std::addressof(data()[size()]);
+		}
+
+
+		const_iterator end() const
+		{
+			return empty() ? const_iterator{} : std::addressof(data()[size()]);
+		}
+
+
+		const_iterator cend() const
+		{
+			return end();
+		}
+
+
+		[[nodiscard]] bool empty() const
+		{
+			return size() == 0;
+		}
+
+
+		size_type size() const
+		{
+			return _size;
+		}
+
+
+	private:
+		T*		_data;	// 00
+		UInt32	_size;	// 08
+		UInt32	_pad0C;	// 0C
+	};
+	STATIC_ASSERT(sizeof(BSStaticArray<void*>) == 0x10);
 }

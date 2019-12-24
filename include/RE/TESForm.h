@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BaseFormComponent.h"
+#include "RE/BSTArray.h"
 #include "RE/FormTypes.h"
 
 
@@ -40,13 +41,19 @@ namespace RE
 		};
 
 
-		struct TESFileArray
+		class TESFileArray : public BSStaticArray<TESFile*>
 		{
-			TESFile**	files;		// 00
-			UInt32		numFiles;	// 08
-			UInt32		padC;		// 0C
+		public:
 		};
 		STATIC_ASSERT(sizeof(TESFileArray) == 0x10);
+
+
+		class TESFileContainer
+		{
+		public:
+			TESFileArray* array;	// 0
+		};
+		STATIC_ASSERT(sizeof(TESFileContainer) == 0x8);
 
 
 		virtual ~TESForm();																																		// 00
@@ -147,13 +154,13 @@ namespace RE
 
 
 		// members
-		TESFileArray*	sourceFiles;	// 08
-		UInt32			flags;			// 10
-		FormID			formID;			// 14
-		UInt16			unk18;			// 18
-		FormType		formType;		// 1A
-		UInt8			pad1B;			// 1B
-		UInt32			pad1C;			// 1C
+		TESFileContainer	sourceFiles;		// 08
+		UInt32				flags;				// 10
+		FormID				formID;				// 14
+		UInt16				inGameFormFlags;	// 18
+		FormType			formType;			// 1A
+		UInt8				pad1B;				// 1B
+		UInt32				pad1C;				// 1C
 	};
 	STATIC_ASSERT(sizeof(TESForm) == 0x20);
 

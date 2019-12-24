@@ -30,8 +30,8 @@ namespace RE
 		virtual void	InitLoadGame(void* a_arg1) override;			// 10
 		virtual void	FinishLoadGame(void* a_arg1) override;			// 11
 		virtual void	Revert(void* a_arg1) override;					// 12
-		virtual void	Unk_66(void) override;							// 66
-		virtual void	Unk_6A(void) override;							// 6A
+		virtual void	InitHavok() override;							// 66
+		virtual void	Load3D(bool a_arg1) override;					// 6A
 		virtual void	Unk_A7(void) override;							// A7 - { return 1; }
 		virtual void	Unk_AB(void) override;							// AB
 		virtual void	Unk_AC(void) override;							// AC
