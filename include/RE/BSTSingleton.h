@@ -42,7 +42,9 @@ namespace RE
 
 
 	template <class Traits>
-	struct BSTSingletonSDMBase : public Traits, public Traits::Allocator
+	struct BSTSingletonSDMBase :
+		public Traits,
+		public Traits::Allocator
 	{
 		using Type = typename Traits::Type;
 		using Allocator = typename Traits::Allocator;

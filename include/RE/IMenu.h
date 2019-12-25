@@ -65,19 +65,19 @@ namespace RE
 
 
 		IMenu();
-		virtual ~IMenu() = default;											// 00
+		virtual ~IMenu() = default;												// 00
 
 		// override (FxDelegateHandler)
-		virtual void	Accept(CallbackProcessor* a_processor) override;	// 01 - { return; }
+		virtual void	Accept(CallbackProcessor* a_processor) override;		// 01 - { return; }
 
 		// add
-		virtual void	OnOpen();											// 02 - { return; }
-		virtual void	Unk_03(void);										// 03 - { return; }
-		virtual Result	ProcessMessage(UIMessage* a_message);				// 04
-		virtual void	Advance(float a_arg1, UInt32 a_currentTime);		// 05
-		virtual void	Render();											// 06
-		virtual void	Unk_07(void);										// 07 - { return; }
-		virtual void	InitMovie();										// 08
+		virtual void	PostCreate();											// 02 - { return; }
+		virtual void	Unk_03(void);											// 03 - { return; }
+		virtual Result	ProcessMessage(UIMessage* a_message);					// 04
+		virtual void	AdvanceMovie(float a_interval, UInt32 a_currentTime);	// 05
+		virtual void	PostDisplay();											// 06
+		virtual void	PreDisplay();											// 07 - { return; } - only available if kRendersOffscreenTargets is set
+		virtual void	RefreshPlatform();										// 08
 
 		bool	AdvancesUnderPauseMenu() const;
 		bool	AllowSaving() const;

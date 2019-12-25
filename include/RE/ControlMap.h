@@ -17,8 +17,8 @@ namespace RE
 
 
 	class ControlMap :
-		public BSTSingletonSDM<ControlMap>,
-		public BSTEventSource<InputEvent*>
+		public BSTSingletonSDM<ControlMap>,	// 00
+		public BSTEventSource<InputEvent*>	// 08
 	{
 	public:
 		struct Contexts
@@ -115,7 +115,7 @@ namespace RE
 		// members
 		InputContext*			context[Context::kTotal];	// 060
 		BSTArray<ActionMapping>	actionMap;					// 0E8
-		BSTArray<void*>			unk100;						// 100
+		BSTArray<Context>		unk100;						// 100
 		ControlState			controlState;				// 118
 		UInt32					unk11C;						// 11C
 		UInt8					allowTextInput;				// 120
@@ -124,6 +124,5 @@ namespace RE
 		UInt8					unk123;						// 123
 		UInt32					unk124;						// 124
 	};
-	STATIC_ASSERT(offsetof(ControlMap, context) == 0x060);
 	STATIC_ASSERT(sizeof(ControlMap) == 0x128);
 }

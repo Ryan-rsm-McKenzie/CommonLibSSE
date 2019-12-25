@@ -31,7 +31,7 @@ namespace RE
 		virtual ~CreationClubMenu();																								// 00
 
 		// override (IMenu)
-		virtual void		Advance(float a_arg1, UInt32 a_currentTime) override;													// 05
+		virtual void		AdvanceMovie(float a_interval, UInt32 a_currentTime) override;											// 05
 
 		// override (MenuEventHandler)
 		virtual bool		CanProcess(InputEvent* a_event) override;																// 01

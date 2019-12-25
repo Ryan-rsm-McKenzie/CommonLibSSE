@@ -86,7 +86,7 @@ namespace RE
 		if (view->IsAvailable("_root.InitExtensions")) {
 			view->Invoke("_root.InitExtensions", 0, 0, 0);
 		}
-		a_menu->InitMovie();
+		a_menu->RefreshPlatform();
 
 		return true;
 	}
@@ -152,7 +152,7 @@ namespace RE
 		if (a_viewOut->IsAvailable("_root.InitExtensions")) {
 			a_viewOut->Invoke("_root.InitExtensions", 0, 0, 0);
 		}
-		a_menu->InitMovie();
+		a_menu->RefreshPlatform();
 
 		return true;
 	}

@@ -29,7 +29,7 @@ namespace RE
 	{}
 
 
-	void IMenu::OnOpen()
+	void IMenu::PostCreate()
 	{}
 
 
@@ -58,7 +58,7 @@ namespace RE
 	}
 
 
-	void IMenu::Advance(float a_arg1, UInt32 a_currentTime)
+	void IMenu::AdvanceMovie(float a_arg1, UInt32 a_currentTime)
 	{
 		if (view) {
 			GFxValue currentTime(static_cast<double>(a_currentTime));
@@ -68,7 +68,7 @@ namespace RE
 	}
 
 
-	void IMenu::Render()
+	void IMenu::PostDisplay()
 	{
 		if (view) {
 			view->Display();
@@ -76,11 +76,11 @@ namespace RE
 	}
 
 
-	void IMenu::Unk_07(void)
+	void IMenu::PreDisplay()
 	{}
 
 
-	void IMenu::InitMovie()
+	void IMenu::RefreshPlatform()
 	{
 		using Message = UIMessage::Message;
 

@@ -71,16 +71,16 @@ namespace RE
 		virtual bool			InvokeFmt(const char* a_methodName, GFxValue* a_result, const char* a_argFmt, ...);																						// 17 - pure - Calls an ActionScript method on the movie clip.
 		virtual bool			InvokeArgs(const char* a_methodName, GFxValue* a_result, const char* a_argFmt, std::va_list a_args);																	// 18 - pure - Invokes an ActionScript method on the movie clip using a format string followed by a variable argument list.
 
-		static float			GetRenderPixelScale();
+		static float GetRenderPixelScale();
 
-		UInt32					GetFrameCount() const;
-		float					GetFrameRate() const;
-		bool					SetVariable(const char* a_pathToVar, const char* a_value, SetVarType a_setType = SetVarType::kSticky);
-		bool					SetVariable(const char* a_pathToVar, const wchar_t* a_value, SetVarType a_setType = SetVarType::kSticky);
-		bool					SetVariableDouble(const char* a_pathToVar, double a_value, SetVarType a_setType = SetVarType::kSticky);
-		double					GetVariableDouble(const char* a_pathToVar) const;
-		bool					SetVariableArray(const char* a_pathToVar, UInt32 a_index, const GFxValue* a_data, UInt32 a_count, SetVarType a_setType = SetVarType::kSticky);
-		bool					GetVariableArray(const char* a_pathToVar, UInt32 a_index, GFxValue* a_data, UInt32 a_count);
+		UInt32	GetFrameCount() const;
+		float	GetFrameRate() const;
+		bool	SetVariable(const char* a_pathToVar, const char* a_value, SetVarType a_setType = SetVarType::kSticky);
+		bool	SetVariable(const char* a_pathToVar, const wchar_t* a_value, SetVarType a_setType = SetVarType::kSticky);
+		bool	SetVariableDouble(const char* a_pathToVar, double a_value, SetVarType a_setType = SetVarType::kSticky);
+		double	GetVariableDouble(const char* a_pathToVar) const;
+		bool	SetVariableArray(const char* a_pathToVar, UInt32 a_index, const GFxValue* a_data, UInt32 a_count, SetVarType a_setType = SetVarType::kSticky);
+		bool	GetVariableArray(const char* a_pathToVar, UInt32 a_index, GFxValue* a_data, UInt32 a_count);
 	};
 	STATIC_ASSERT(sizeof(GFxMovie) == 0x10);
 }

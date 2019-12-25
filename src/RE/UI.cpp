@@ -61,7 +61,7 @@ namespace RE
 
 	bool UI::IsModalMenuOpen() const
 	{
-		return numModal > 0;
+		return modal;
 	}
 
 

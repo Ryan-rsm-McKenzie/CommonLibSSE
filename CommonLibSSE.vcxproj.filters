@@ -4976,5 +4976,11 @@
     <ClInclude Include="include\RE\UI.h">
       <Filter>include\RE\Menus</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\ModManagerMenu.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\LoadWaitSpinner.h">
+      <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

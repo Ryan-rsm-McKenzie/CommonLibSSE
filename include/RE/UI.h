@@ -3,8 +3,9 @@
 #include <string_view>
 #include <type_traits>
 
-#include "RE/BSTEvent.h"
 #include "RE/BSFixedString.h"
+#include "RE/BSLock.h"
+#include "RE/BSTEvent.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTHashMap.h"
 #include "RE/BSTSingleton.h"
@@ -49,7 +50,7 @@ namespace RE
 
 		struct Unknown3
 		{
-			UInt64	unk00;		// 00 - New in SE. Not init'd?
+			UInt64	unk00;		// 00
 
 			UInt32	freqLow;	// 08 (= Frequency.LowPart)
 			UInt32	freqHigh;	// 0C (= Frequency.HighPart)
@@ -77,11 +78,22 @@ namespace RE
 		static UI* GetSingleton();
 
 		template <class T> void					AddEventSink(BSTEventSink<T>* a_sink);
-		bool									CrosshairIsPaused();
 		bool									GameIsPaused();
 		template <class T> BSTEventSource<T>*	GetEventSource();
-
-		GPtr<IMenu> GetMenu(const std::string_view& a_menuName);
+		GPtr<IMenu>								GetMenu(const std::string_view& a_menuName);
+		GPtr<GFxMovieView>						GetMovieView(const std::string_view& a_menuName);
+		bool									IsApplicationMenuOpen() const;
+		bool									IsCursorHiddenWhenTopmost() const;
+		bool									IsItemMenuOpen() const;
+		bool									IsMenuOpen(const std::string_view& a_menuName);
+		bool									IsModalMenuOpen() const;
+		bool									IsPauseMenuDisabled() const;
+		bool									IsSavingAllowed() const;
+		bool									IsShowingMenus() const;
+		bool									IsUsingCustomRendering() const;
+		void									Register(const std::string_view& a_menuName, CreatorFunc* a_creator);
+		template <class T> void					RemoveEventSink(BSTEventSink<T>* a_sink);
+		void									ShowMenus(bool a_show);
 
 		template <class T, typename std::enable_if_t<std::conjunction<is_menu_ptr<T*>, has_menu_name<T>>::value, int> = 0>
 		GPtr<T> GetMenu()
@@ -95,40 +107,26 @@ namespace RE
 			return GPtr<T>(static_cast<T*>(GetMenu(a_menuName).get()));
 		}
 
-		GPtr<GFxMovieView>		GetMovieView(const std::string_view& a_menuName);
-		bool					IsApplicationMenuOpen() const;
-		bool					IsCursorHiddenWhenTopmost() const;
-		bool					IsItemMenuOpen() const;
-		bool					IsMenuOpen(const std::string_view& a_menuName);
-		bool					IsModalMenuOpen() const;
-		bool					IsPauseMenuDisabled() const;
-		bool					IsSavingAllowed() const;
-		bool					IsShowingMenus() const;
-		bool					IsUsingCustomRendering() const;
-		void					Register(const std::string_view& a_menuName, CreatorFunc* a_creator);
-		template <class T> void	RemoveEventSink(BSTEventSink<T>* a_sink);
-		void					ShowMenus(bool a_show);
-
 
 		// members
-		BSTArray<IMenu*>	menuStack;						// 110
-		MenuTable			menuTable;						// 128
-		UInt64				unk158;							// 158
-		UInt32				numPausesGame;					// 160 (= 0) += 1 if (imenu->flags & 0x00001)
-		UInt32				numItemMenus;					// 164 (= 0) += 1 if (imenu->flags & 0x02000)
-		UInt32				numDisablePauseMenu;			// 168 (= 0) += 1 if (imenu->flags & 0x00080)
-		UInt32				numAllowSaving;					// 16C (= 0) += 1 if (imenu->flags & 0x00800)
-		UInt32				numDontHideCursorWhenTopmost;	// 170 (= 0) += 1 if (imenu->flags & 0x04000)
-		UInt32				numCustomRendering;				// 174 (= 0) += 1 if (imenu->flags & 0x08000)
-		UInt32				numApplicationMenus;			// 178 (= 0)  = 1 if (imenu->flags & 0x20000)
-		UInt8				numModal;						// 17C (= 0)  = 1 if (imenu->flags & 0x00010)
-		UInt8				pad17D;							// 17D
-		UInt16				pad17E;							// 17E
-		Unknown3			unk180;							// 180
-		bool				showMenus;						// 1C0 (= 0)
-		bool				unk1C1;							// 1C1 (= 0)
-		UInt16				pad1C2;							// 1C2
-		UInt32				pad1C4;							// 1C4
+		BSTArray<GPtr<IMenu>>	menuStack;						// 110
+		MenuTable				menuTable;						// 128
+		BSUniqueLock			unk158;							// 158
+		UInt32					numPausesGame;					// 160 (= 0) += 1 if (imenu->flags & 0x00001)
+		UInt32					numItemMenus;					// 164 (= 0) += 1 if (imenu->flags & 0x02000)
+		UInt32					numDisablePauseMenu;			// 168 (= 0) += 1 if (imenu->flags & 0x00080)
+		UInt32					numAllowSaving;					// 16C (= 0) += 1 if (imenu->flags & 0x00800)
+		UInt32					numDontHideCursorWhenTopmost;	// 170 (= 0) += 1 if (imenu->flags & 0x04000)
+		UInt32					numCustomRendering;				// 174 (= 0) += 1 if (imenu->flags & 0x08000)
+		UInt32					numApplicationMenus;			// 178 (= 0) += 1 if (imenu->flags & 0x20000)
+		bool					modal;							// 17C (= 0)  = 1 if (imenu->flags & 0x00010)
+		UInt8					pad17D;							// 17D
+		UInt16					pad17E;							// 17E
+		Unknown3				unk180;							// 180
+		bool					showMenus;						// 1C0 (= 0)
+		bool					unk1C1;							// 1C1 (= 0)
+		UInt16					pad1C2;							// 1C2
+		UInt32					pad1C4;							// 1C4
 	};
 	STATIC_ASSERT(sizeof(UI) == 0x1C8);
 
