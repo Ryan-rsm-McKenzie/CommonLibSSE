@@ -6,6 +6,7 @@
 #include <WinSock2.h>
 #include <xmmintrin.h>
 
+#undef AddForm
 #undef far
 #undef GetClassName
 #undef GetFileAttributes

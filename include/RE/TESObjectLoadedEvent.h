@@ -5,6 +5,7 @@ namespace RE
 {
 	struct TESObjectLoadedEvent
 	{
+		// members
 		FormID	formID;	// 0
 		bool	loaded;	// 4
 		UInt8	pad05;	// 5

@@ -51,8 +51,6 @@ namespace RE
 
 		static NiNode* Create(UInt16 a_arrBufLen = 0);
 
-		bool SetMotionType(UInt32 a_motionType, UInt8 a_arg2, UInt8 a_arg3, bool a_allowActivate);
-
 
 		// members
 		NiTObjectArray<NiPointer<NiAVObject>> children;	// 110

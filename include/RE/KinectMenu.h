@@ -12,6 +12,9 @@ namespace RE
 	class MenuOpenCloseEvent;
 
 
+	// menuDepth = 6
+	// flags = kAllowSaving | kCustomRendering | kAssignCursorToRenderer
+	// context = kInvalid
 	class KinectMenu :
 		public IMenu,							// 00
 		public BSTEventSink<MenuOpenCloseEvent>	// 30
@@ -24,7 +27,7 @@ namespace RE
 		virtual ~KinectMenu();																										// 00
 
 		// override (IMenu)
-		virtual Result	ProcessMessage(UIMessage* a_message) override;																// 04
+		virtual Result		ProcessMessage(UIMessage* a_message) override;															// 04
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
 		virtual	EventResult	ReceiveEvent(MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;	// 01

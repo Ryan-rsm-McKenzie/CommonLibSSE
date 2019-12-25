@@ -198,7 +198,7 @@ namespace RE
 		UInt64												unk290;				// 290
 		float												unk298;				// 298
 		float												unk29C;				// 29C
-		float												unk2A0;				// 2A0
+		float												actorAlpha;			// 2A0
 		float												unk2A4;				// 2A4
 		UInt64												unk2A8;				// 2A8
 		float												unk2B0;				// 2B0

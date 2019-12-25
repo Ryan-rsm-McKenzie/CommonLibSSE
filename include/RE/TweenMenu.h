@@ -11,6 +11,9 @@ namespace RE
 	struct FileHash;
 
 
+	// menuDepth = 0
+	// flags = kPausesGame | kUpdateUsesCursor | kAllowSaving | kDontHideCursorWhenTopmost | kCustomRendering
+	// context = kMenuMode
 	class TweenMenu : public IMenu
 	{
 	public:

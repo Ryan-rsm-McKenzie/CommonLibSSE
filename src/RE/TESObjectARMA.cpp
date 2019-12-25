@@ -49,7 +49,8 @@ namespace RE
 	void TESObjectARMA::GetNodeName(char* a_dstBuff, TESObjectREFR* a_refr, TESObjectARMO* a_armor, float a_weightOverride)
 	{
 		float weight = 100.0;
-		auto npc = a_refr->baseForm->As<TESNPC*>();
+		auto baseObj = a_refr->GetBaseObject();
+		auto npc = baseObj ? baseObj->As<TESNPC*>() : 0;
 		if (npc && npc->nextTemplate) {
 			auto templ = npc->GetRootTemplate();
 			if (templ) {

@@ -16,10 +16,11 @@ namespace RE
 	struct ItemList;
 
 
+	// menuDepth = 0
+	// flags = kPausesGame | kDisablePauseMenu | kUpdateUsesCursor | kInventoryItemMenu | kCustomRendering
+	// context = kInvalid
 	class InventoryMenu : public IMenu
 	{
-		// menuDepth = 0
-		// flags = kPauseGame | kPreventGameLoad | kUnk0400 | kItemMenu | kUnk8000
 	public:
 		inline static const void* RTTI = RTTI_InventoryMenu;
 		constexpr static std::string_view MENU_NAME = "InventoryMenu";

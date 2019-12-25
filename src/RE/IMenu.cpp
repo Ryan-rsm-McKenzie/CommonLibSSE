@@ -6,7 +6,7 @@
 #include "RE/GFxValue.h"
 #include "RE/InputManager.h"
 #include "RE/InterfaceStrings.h"
-#include "RE/MenuManager.h"
+#include "RE/UI.h"
 #include "RE/UIMessage.h"
 #include "RE/UIMessageQueue.h"
 
@@ -58,7 +58,7 @@ namespace RE
 	}
 
 
-	void IMenu::NextFrame(float a_arg1, UInt32 a_currentTime)
+	void IMenu::Advance(float a_arg1, UInt32 a_currentTime)
 	{
 		if (view) {
 			GFxValue currentTime(static_cast<double>(a_currentTime));
@@ -95,16 +95,16 @@ namespace RE
 			view->Invoke("_root.SetPlatform", 0, args, std::extent<decltype(args)>::value);
 		}
 
-		if (TriesToShowCursor()) {
+		if (UpdateUsesCursor()) {
 			Message messageID;
 			auto uiStr = InterfaceStrings::GetSingleton();
 			if (gamepad) {
-				flags &= ~Flag::kShowCursor;
+				flags &= ~Flag::kUsesCursor;
 				messageID = Message::kClose;
 			} else {
-				flags |= Flag::kShowCursor;
-				auto mm = MenuManager::GetSingleton();
-				messageID = mm->IsMenuOpen(uiStr->cursorMenu) ? Message::kRefresh : Message::kOpen;
+				flags |= Flag::kUsesCursor;
+				auto ui = UI::GetSingleton();
+				messageID = ui->IsMenuOpen(uiStr->cursorMenu) ? Message::kRefresh : Message::kOpen;
 			}
 			auto messageQueue = UIMessageQueue::GetSingleton();
 			messageQueue->AddMessage(uiStr->cursorMenu, messageID, 0);
@@ -112,104 +112,170 @@ namespace RE
 	}
 
 
-	bool IMenu::DeletesOnClose() const
+	bool IMenu::AdvancesUnderPauseMenu() const
 	{
-		return (flags & Flag::kDoNotDeleteOnClose) == Flag::kNone;
+		return (flags & Flag::kAdvancesUnderPauseMenu) == Flag::kNone;
 	}
 
 
-	bool IMenu::HasFlag0008() const
+	bool IMenu::AllowSaving() const
 	{
-		return (flags & Flag::kUnk0008) != Flag::kNone;
+		return (flags & Flag::kAllowSaving) == Flag::kNone;
 	}
 
 
-	bool IMenu::HasFlag0100() const
+	bool IMenu::AlwaysOpen() const
 	{
-		return (flags & Flag::kUnk0100) != Flag::kNone;
+		return (flags & Flag::kAlwaysOpen) == Flag::kNone;
 	}
 
 
-	bool IMenu::HasFlag1000() const
+	bool IMenu::ApplicationMenu() const
 	{
-		return (flags & Flag::kUnk1000) != Flag::kNone;
+		return (flags & Flag::kApplicationMenu) == Flag::kNone;
 	}
 
 
-	bool IMenu::HasFlag8000() const
+	bool IMenu::AssignCursorToRenderer() const
 	{
-		return (flags & Flag::kUnk8000) != Flag::kNone;
+		return (flags & Flag::kAssignCursorToRenderer) == Flag::kNone;
 	}
 
 
-	bool IMenu::HasFlag10000() const
+	bool IMenu::CustomRendering() const
 	{
-		return (flags & Flag::kUnk10000) != Flag::kNone;
+		return (flags & Flag::kCustomRendering) == Flag::kNone;
 	}
 
 
-	bool IMenu::HidesOtherMenus() const
+	bool IMenu::CompanionAppAllowed() const
 	{
-		return (flags & Flag::kHideOther) != Flag::kNone;
+		return (flags & Flag::kCompanionAppAllowed) == Flag::kNone;
 	}
 
 
-	bool IMenu::IsItemMenu() const
+	bool IMenu::DisablePauseMenu() const
 	{
-		return (flags & Flag::kItemMenu) != Flag::kNone;
+		return (flags & Flag::kDisablePauseMenu) == Flag::kNone;
 	}
 
 
-	bool IMenu::IsModal() const
+	bool IMenu::DontHideCursorWhenTopmost() const
 	{
-		return (flags & Flag::kModal) != Flag::kNone;
+		return (flags & Flag::kDontHideCursorWhenTopmost) == Flag::kNone;
 	}
 
 
-	bool IMenu::IsOpen() const
+	bool IMenu::FreezeFrameBackground() const
 	{
-		return (flags & Flag::kOpen) != Flag::kNone;
+		return (flags & Flag::kFreezeFrameBackground) == Flag::kNone;
+	}
+
+
+	bool IMenu::FreezeFramePause() const
+	{
+		return (flags & Flag::kFreezeFramePause) == Flag::kNone;
+	}
+
+
+	bool IMenu::HasButtonBar() const
+	{
+		return (flags & Flag::kHasButtonBar) == Flag::kNone;
+	}
+
+
+	bool IMenu::InventoryItemMenu() const
+	{
+		return (flags & Flag::kInventoryItemMenu) == Flag::kNone;
+	}
+
+
+	bool IMenu::IsTopButtonBar() const
+	{
+		return (flags & Flag::kIsTopButtonBar) == Flag::kNone;
+	}
+
+
+	bool IMenu::LargeScaleformRenderCacheMode() const
+	{
+		return (flags & Flag::kLargeScaleformRenderCacheMode) == Flag::kNone;
+	}
+
+
+	bool IMenu::Modal() const
+	{
+		return (flags & Flag::kModal) == Flag::kNone;
+	}
+
+
+	bool IMenu::OnStack() const
+	{
+		return (flags & Flag::kOnStack) == Flag::kNone;
 	}
 
 
 	bool IMenu::PausesGame() const
 	{
-		return (flags & Flag::kPauseGame) != Flag::kNone;
+		return (flags & Flag::kPausesGame) != Flag::kNone;
 	}
 
 
-	bool IMenu::PreventsGameLoad() const
+	bool IMenu::RendersOffscreenTargets() const
 	{
-		return (flags & Flag::kPreventGameLoad) != Flag::kNone;
+		return (flags & Flag::kRendersOffscreenTargets) != Flag::kNone;
 	}
 
 
-	bool IMenu::PreventsGameSave() const
+	bool IMenu::RendersUnderPauseMenu() const
 	{
-		return (flags & Flag::kDoNotPreventGameSave) == Flag::kNone;
+		return (flags & Flag::kRendersUnderPauseMenu) != Flag::kNone;
 	}
 
 
-	bool IMenu::ShowsCursor() const
+	bool IMenu::RequiresUpdate() const
 	{
-		return (flags & Flag::kShowCursor) != Flag::kNone;
+		return (flags & Flag::kRequiresUpdate) != Flag::kNone;
 	}
 
 
-	bool IMenu::StopsCrosshairUpdates() const
+	bool IMenu::SkipRenderDuringFreezeFrameScreenshot() const
 	{
-		return (flags & Flag::kStopCrosshairUpdate) != Flag::kNone;
+		return (flags & Flag::kSkipRenderDuringFreezeFrameScreenshot) != Flag::kNone;
 	}
 
 
-	bool IMenu::StopsDrawingWorld() const
+	bool IMenu::TopmostRenderedMenu() const
 	{
-		return (flags & Flag::kStopDrawingWorld) != Flag::kNone;
+		return (flags & Flag::kTopmostRenderedMenu) != Flag::kNone;
 	}
 
 
-	bool IMenu::TriesToShowCursor() const
+	bool IMenu::UsesBlurredBackground() const
 	{
-		return (flags & Flag::kTryShowCursor) != Flag::kNone;
+		return (flags & Flag::kUsesBlurredBackground) != Flag::kNone;
+	}
+
+
+	bool IMenu::UsesCursor() const
+	{
+		return (flags & Flag::kUsesCursor) != Flag::kNone;
+	}
+
+
+	bool IMenu::UsesMenuContext() const
+	{
+		return (flags & Flag::kUsesMenuContext) != Flag::kNone;
+	}
+
+
+	bool IMenu::UsesMovementToDirection() const
+	{
+		return (flags & Flag::kUsesMovementToDirection) != Flag::kNone;
+	}
+
+
+	bool IMenu::UpdateUsesCursor() const
+	{
+		return (flags & Flag::kUpdateUsesCursor) != Flag::kNone;
 	}
 }

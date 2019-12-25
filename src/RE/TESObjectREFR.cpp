@@ -58,7 +58,7 @@ namespace RE
 	}
 
 
-	TESNPC* TESObjectREFR::GetActorOwner() const
+	TESNPC* TESObjectREFR::GetActorOwner()
 	{
 		auto xOwnership = extraData.GetByType<ExtraOwnership>();
 		if (xOwnership && xOwnership->owner && xOwnership->owner->Is(FormType::ActorCharacter)) {
@@ -69,9 +69,39 @@ namespace RE
 	}
 
 
-	TESBoundObject* TESObjectREFR::GetBaseObject() const
+	NiPoint3 TESObjectREFR::GetAngle() const
 	{
-		return baseForm;
+		return data.angle;
+	}
+
+
+	float TESObjectREFR::GetAngleX() const
+	{
+		return data.angle.x;
+	}
+
+
+	float TESObjectREFR::GetAngleY() const
+	{
+		return data.angle.y;
+	}
+
+
+	float TESObjectREFR::GetAngleZ() const
+	{
+		return data.angle.z;
+	}
+
+
+	TESBoundObject* TESObjectREFR::GetBaseObject()
+	{
+		return data.objectReference;
+	}
+
+
+	const TESBoundObject* TESObjectREFR::GetBaseObject() const
+	{
+		return data.objectReference;
 	}
 
 
@@ -83,13 +113,14 @@ namespace RE
 	}
 
 
-	TESContainer* TESObjectREFR::GetContainer() const
+	TESContainer* TESObjectREFR::GetContainer()
 	{
-		return baseForm ? baseForm->As<TESContainer*>() : 0;
+		auto obj = GetBaseObject();
+		return obj ? obj->As<TESContainer*>() : 0;
 	}
 
 
-	TESFaction* TESObjectREFR::GetFactionOwner() const
+	TESFaction* TESObjectREFR::GetFactionOwner()
 	{
 		auto xOwnership = extraData.GetByType<ExtraOwnership>();
 		if (xOwnership && xOwnership->owner && xOwnership->owner->Is(FormType::Faction)) {
@@ -173,17 +204,22 @@ namespace RE
 	}
 
 
-	LockState* TESObjectREFR::GetLockState() const
+	LockState* TESObjectREFR::GetLockState()
 	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::GetLockState)>;
-		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetLockState);
-		return func(this);
+		return const_cast<LockState*>(GetLockState_Impl());
+	}
+
+
+	const LockState* TESObjectREFR::GetLockState() const
+	{
+		return GetLockState_Impl();
 	}
 
 
 	const char* TESObjectREFR::GetName() const
 	{
-		return baseForm ? baseForm->GetName() : "";
+		auto obj = GetBaseObject();
+		return obj ? obj->GetName() : "";
 	}
 
 
@@ -202,7 +238,7 @@ namespace RE
 	}
 
 
-	TESForm* TESObjectREFR::GetOwner() const
+	TESForm* TESObjectREFR::GetOwner()
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::GetOwner)>;
 		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetOwner);
@@ -210,27 +246,33 @@ namespace RE
 	}
 
 
-	TESObjectCELL* TESObjectREFR::GetParentCell() const
+	TESObjectCELL* TESObjectREFR::GetParentCell()
 	{
 		return parentCell;
 	}
 
 
+	NiPoint3 TESObjectREFR::GetPosition() const
+	{
+		return data.location;
+	}
+
+
 	float TESObjectREFR::GetPositionX() const
 	{
-		return pos.x;
+		return data.location.x;
 	}
 
 
 	float TESObjectREFR::GetPositionY() const
 	{
-		return pos.y;
+		return data.location.y;
 	}
 
 
 	float TESObjectREFR::GetPositionZ() const
 	{
-		return pos.z;
+		return data.location.z;
 	}
 
 
@@ -250,7 +292,8 @@ namespace RE
 
 	float TESObjectREFR::GetWeight() const
 	{
-		return baseForm->GetWeight();
+		auto obj = GetBaseObject();
+		return obj->GetWeight();
 	}
 
 
@@ -419,7 +462,15 @@ namespace RE
 
 	void TESObjectREFR::SetPosition(NiPoint3 a_pos)
 	{
-		MoveTo_Impl(*g_invalidRefHandle, GetParentCell(), GetWorldspace(), a_pos, rot);
+		MoveTo_Impl(*g_invalidRefHandle, GetParentCell(), GetWorldspace(), a_pos, data.location);
+	}
+
+
+	const LockState* TESObjectREFR::GetLockState_Impl() const
+	{
+		using func_t = function_type_t<decltype(&TESObjectREFR::GetLockState_Impl)>;
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetLockState);
+		return func(this);
 	}
 
 

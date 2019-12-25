@@ -7,6 +7,9 @@
 
 namespace RE
 {
+	// menuDepth = 3
+	// flags = kPausesGame
+	// context = kInvalid
 	class ConsoleNativeUIMenu : public IMenu
 	{
 	public:

@@ -23,16 +23,16 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kNonActorMagicTarget };
 
 
-		virtual ~NonActorMagicTarget();													// 00
+		virtual ~NonActorMagicTarget();												// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType					GetType() const override;				// 01 - { return kNonActorMagicTarget; }
+		virtual ExtraDataType					GetType() const override;			// 01 - { return kNonActorMagicTarget; }
 
 		// override (MagicTarget)
-		virtual void							Unk_01(void) override;					// 01
-		virtual Actor*							GetMagicTargetActor() const override;	// 02 - { return target; }
-		virtual void							Unk_06(void) override;					// 06 - { return 1; }
-		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffects() override;			// 07 - { return &activeEffects; }
+		virtual void							Unk_01(void) override;				// 01
+		virtual Actor*							GetTargetStatsObject() override;	// 02 - { return target; }
+		virtual void							Unk_06(void) override;				// 06 - { return 1; }
+		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffectList() override;		// 07 - { return &activeEffects; }
 
 
 		// members

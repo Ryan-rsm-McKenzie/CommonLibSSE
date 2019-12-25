@@ -8,6 +8,7 @@ namespace RE
 	class MenuOpenCloseEvent
 	{
 	public:
+		// members
 		BSFixedString	menuName;	// 00
 		bool			isOpening;	// 08
 		UInt8			pad09;		// 09

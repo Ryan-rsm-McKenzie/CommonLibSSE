@@ -10,7 +10,6 @@ namespace RE
 
 	struct TESCombatEvent
 	{
-	public:
 		enum class State : UInt32
 		{
 			kNotInCombat = 0,
@@ -19,6 +18,7 @@ namespace RE
 		};
 
 
+		// members
 		NiPointer<TESObjectREFR>	source;	// 00
 		NiPointer<TESObjectREFR>	target;	// 08
 		State						state;	// 10

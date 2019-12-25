@@ -7,6 +7,10 @@
 
 namespace RE
 {
+	// menuDepth = 3
+	// flags = kPausesGame | kModal | kDisablePauseMenu
+	// kUsesCursor is gamepad is disabled
+	// context = kMenuMode
 	class LevelUpMenu : public IMenu
 	{
 	public:

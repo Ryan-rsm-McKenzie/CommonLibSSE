@@ -12,6 +12,9 @@ namespace RE
 	class MenuOpenCloseEvent;
 
 
+	// menuDepth = 3
+	// flags = kUpdateUsesCursor | kDontHideCursorWhenTopmost
+	// context = kMenuMode
 	class DialogueMenu :
 		public IMenu,							// 00
 		public BSTEventSink<MenuOpenCloseEvent>	// 30

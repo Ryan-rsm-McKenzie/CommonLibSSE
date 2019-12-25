@@ -13,6 +13,9 @@ namespace RE
 	struct ItemList;
 
 
+	// menuDepth = 3
+	// flags = kPausesGame | kUsesMenuContext | kDisablePauseMenu | kUpdateUsesCursor | kInventoryItemMenu | kCustomRendering
+	// context = kItemMenu
 	class GiftMenu : public IMenu
 	{
 	public:

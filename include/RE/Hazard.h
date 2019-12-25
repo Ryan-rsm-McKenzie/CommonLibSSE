@@ -22,22 +22,22 @@ namespace RE
 		};
 
 
-		virtual ~Hazard();												// 00
+		virtual ~Hazard();																		// 00
 
 		// override (TESObjectREFR)
-		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void	FinishLoadGame(void* a_arg1) override;			// 11
-		virtual void	Revert(void* a_arg1) override;					// 12
-		virtual void	InitItemImpl() override;						// 13
-		virtual void	SetActorCause(void* a_cause) override;			// 50
-		virtual void	Release3DRelatedData() override;				// 6B
-		virtual void	Unk_90(void) override;							// 90 - { return 0; }
+		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;							// 0E
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;							// 0F
+		virtual void	FinishLoadGame(void* a_arg1) override;									// 11
+		virtual void	Revert(void* a_arg1) override;											// 12
+		virtual void	InitItemImpl() override;												// 13
+		virtual void	SetActorCause(ActorCause* a_cause) override;							// 50
+		virtual void	Release3DRelatedData() override;										// 6B
+		virtual bool	OnAddCellPerformQueueReference(TESObjectCELL* a_cell) const override;	// 90 - { return false; }
 
 		// add
-		virtual void	Unk_A2(void);									// A2
-		virtual void	Unk_A3(void);									// A3 - { return; }
-		virtual bool	IsNotGeneratedForm() const;						// A4 - { return TESDataHandler::GetSingleton()->IsGeneratedFormID(formID) == 0; }
+		virtual void	Unk_A2(void);															// A2
+		virtual void	Unk_A3(void);															// A3 - { return; }
+		virtual bool	IsNotGeneratedForm() const;												// A4 - { return TESDataHandler::GetSingleton()->IsGeneratedFormID(formID) == 0; }
 
 
 		// members

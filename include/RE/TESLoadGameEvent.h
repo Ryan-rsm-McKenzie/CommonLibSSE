@@ -11,6 +11,7 @@ namespace RE
 		};
 
 
+		// members
 		Flag	flags;	// 0
 		UInt32	pad4;	// 4
 	};

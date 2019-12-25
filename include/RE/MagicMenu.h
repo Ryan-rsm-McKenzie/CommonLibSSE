@@ -12,6 +12,9 @@ namespace RE
 	struct ItemCard;
 
 
+	// menuDepth = 0
+	// flags = kPausesGame | kUsesMenuContext | kDisablePauseMenu | kUpdateUsesCursor | kInventoryItemMenu | kCustomRendering
+	// context = kItemMenu
 	class MagicMenu : public IMenu
 	{
 	public:

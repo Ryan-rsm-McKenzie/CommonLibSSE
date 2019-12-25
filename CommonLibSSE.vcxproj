@@ -165,11 +165,14 @@
     <ClCompile Include="src\REL\Relocation.cpp" />
     <ClCompile Include="src\RE\ActiveEffect.cpp" />
     <ClCompile Include="src\RE\Actor.cpp" />
+    <ClCompile Include="src\RE\ActorCause.cpp" />
     <ClCompile Include="src\RE\AIProcess.cpp" />
     <ClCompile Include="src\RE\ActorState.cpp" />
     <ClCompile Include="src\RE\ActorValueOwner.cpp" />
     <ClCompile Include="src\RE\AddCallbackVisitor.cpp" />
+    <ClCompile Include="src\RE\BGSFootstepManager.cpp" />
     <ClCompile Include="src\RE\BSXFlags.cpp" />
+    <ClCompile Include="src\RE\ExtraLightData.cpp" />
     <ClCompile Include="src\RE\ExtraPoison.cpp" />
     <ClCompile Include="src\RE\Main.cpp" />
     <ClCompile Include="src\RE\ProcessLists.cpp" />
@@ -334,7 +337,7 @@
     <ClCompile Include="src\RE\MagicTarget.cpp" />
     <ClCompile Include="src\RE\MenuControls.cpp" />
     <ClCompile Include="src\RE\MenuEventHandler.cpp" />
-    <ClCompile Include="src\RE\MenuManager.cpp" />
+    <ClCompile Include="src\RE\UI.cpp" />
     <ClCompile Include="src\RE\NiControllerManager.cpp" />
     <ClCompile Include="src\RE\NiNode.cpp" />
     <ClCompile Include="src\RE\NiObjectNET.cpp" />
@@ -390,6 +393,7 @@
     <ClInclude Include="include\RE\AbsorbEffect.h" />
     <ClInclude Include="include\RE\AbstractHeap.h" />
     <ClInclude Include="include\RE\ActiveEffectReferenceEffectController.h" />
+    <ClInclude Include="include\RE\ActorCause.h" />
     <ClInclude Include="include\RE\ActorKnowledge.h" />
     <ClInclude Include="include\RE\ActorMover.h" />
     <ClInclude Include="include\RE\ActorTargetCheck.h" />
@@ -410,6 +414,8 @@
     <ClInclude Include="include\RE\BeamProjectile.h" />
     <ClInclude Include="include\RE\BGSAbilityPerkEntry.h" />
     <ClInclude Include="include\RE\BGSAddonNode.h" />
+    <ClInclude Include="include\RE\BGSFootstepEvent.h" />
+    <ClInclude Include="include\RE\BGSFootstepManager.h" />
     <ClInclude Include="include\RE\bhkCollisionObject.h" />
     <ClInclude Include="include\RE\bhkNiCollisionObject.h" />
     <ClInclude Include="include\RE\BSAnimNoteListener.h" />
@@ -1249,6 +1255,9 @@
     <ClInclude Include="include\RE\Script.h" />
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
     <ClInclude Include="include\RE\ExtraContainerChanges.h" />
+    <ClInclude Include="include\RE\TESDeathEvent.h" />
+    <ClInclude Include="include\RE\TESResetEvent.h" />
+    <ClInclude Include="include\RE\TESSwitchRaceCompleteEvent.h" />
     <ClInclude Include="include\RE\UserEvents.h" />
     <ClInclude Include="include\RE\InventoryChanges.h" />
     <ClInclude Include="include\RE\InventoryEntryData.h" />
@@ -1258,7 +1267,7 @@
     <ClInclude Include="include\RE\MagicTarget.h" />
     <ClInclude Include="include\RE\MenuControls.h" />
     <ClInclude Include="include\RE\MenuEventHandler.h" />
-    <ClInclude Include="include\RE\MenuManager.h" />
+    <ClInclude Include="include\RE\UI.h" />
     <ClInclude Include="include\RE\MenuOpenCloseEvent.h" />
     <ClInclude Include="include\RE\Misc.h" />
     <ClInclude Include="include\RE\MovementHandler.h" />

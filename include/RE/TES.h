@@ -66,8 +66,8 @@ namespace RE
 		UInt64				unk0B0;	// 0B0
 		UInt64				unk0B8;	// 0B8
 		UInt64				unk0C0;	// 0C0
-		UInt64				unk0C8;	// 0C8
-		UInt64				unk0D0;	// 0D0
+		void*				unk0C8;	// 0C8
+		void*				unk0D0;	// 0D0
 		UInt64				unk0D8;	// 0D8
 		UInt64				unk0E0;	// 0E0
 		UInt64				unk0E8;	// 0E8
@@ -83,11 +83,11 @@ namespace RE
 		UInt64				unk138;	// 138
 		UInt64				unk140;	// 140
 		UInt64				unk148;	// 148
-		UInt64				unk150;	// 150
-		UInt64				unk158;	// 158
-		UInt64				unk160;	// 160
-		UInt64				unk168;	// 168
-		UInt64				unk170;	// 170
+		void*				unk150;	// 150 - smart ptr
+		void*				unk158;	// 158 - smart ptr
+		void*				unk160;	// 160 - smart ptr
+		void*				unk168;	// 168 - smart ptr
+		void*				unk170;	// 170 - smart ptr
 		UInt64				unk178;	// 178
 		UInt64				unk180;	// 180
 		UInt64				unk188;	// 188

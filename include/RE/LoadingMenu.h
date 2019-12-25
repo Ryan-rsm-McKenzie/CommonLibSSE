@@ -9,6 +9,9 @@
 
 namespace RE
 {
+	// menuDepth = 9
+	// flags = kPausesGame | kAlwaysOpen | kAllowSaving | kApplicationMenu
+	// context = kInvalid
 	class LoadingMenu : public IMenu
 	{
 	public:

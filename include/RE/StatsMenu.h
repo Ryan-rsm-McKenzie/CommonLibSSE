@@ -23,6 +23,10 @@ namespace RE
 	class StatsNode;
 
 
+	// menuDepth = 3
+	// flags = kPausesGame | kUsesMenuContext | kDisablePauseMenu | kRequiresUpdate | kCustomRendering
+	// kUsesCursor if gamepad disabled
+	// context = kStats
 	class StatsMenu :
 		public IMenu,			// 000
 		public MenuEventHandler	// 030

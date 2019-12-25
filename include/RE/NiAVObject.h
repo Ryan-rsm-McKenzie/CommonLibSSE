@@ -98,6 +98,7 @@ namespace RE
 		virtual void			Unk_33(void);																						// 33
 		virtual void			Unk_34(void);																						// 34 - { return; }
 
+		bool	SetMotionType(UInt32 a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
 		void	UpdateModelHair(NiColorA** a_color);
 		void	UpdateModelSkin(NiColorA** a_color);
 		void	UpdateNode(ControllerUpdateContext* a_ctx);

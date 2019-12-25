@@ -14,6 +14,9 @@ namespace RE
 	class TESForm;
 
 
+	// menuDepth = 3
+	// flags = kPausesGame | kUpdateUsesCursor | kInventoryItemMenu | kCustomRendering
+	// context = kFavorites
 	class FavoritesMenu :
 		public IMenu,			// 00
 		public MenuEventHandler	// 30

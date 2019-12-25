@@ -14,6 +14,9 @@ namespace RE
 	class MenuOpenCloseEvent;
 
 
+	// menuDepth = 0
+	// flags = kUsesMenuContext | kDisablePauseMenu | kUpdateUsesCursor | kInventoryItemMenu | kDontHideCursorWhenTopmost
+	// context = kItemMenu
 	class CreationClubMenu :
 		public IMenu,							// 00
 		public MenuEventHandler,				// 30
@@ -28,7 +31,7 @@ namespace RE
 		virtual ~CreationClubMenu();																								// 00
 
 		// override (IMenu)
-		virtual void		NextFrame(float a_arg1, UInt32 a_currentTime) override;													// 05
+		virtual void		Advance(float a_arg1, UInt32 a_currentTime) override;													// 05
 
 		// override (MenuEventHandler)
 		virtual bool		CanProcess(InputEvent* a_event) override;																// 01

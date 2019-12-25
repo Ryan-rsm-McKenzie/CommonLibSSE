@@ -1,0 +1,102 @@
+#include "RE/UI.h"
+
+#include "RE/IMenu.h"
+#include "RE/Offsets.h"
+#include "REL/Relocation.h"
+
+
+namespace RE
+{
+	UI* UI::GetSingleton()
+	{
+		REL::Offset<UI**> singleton(Offset::UI::Singleton);
+		return *singleton;
+	}
+
+
+	bool UI::GameIsPaused()
+	{
+		return numPausesGame > 0;
+	}
+
+
+	GPtr<IMenu> UI::GetMenu(const std::string_view& a_menuName)
+	{
+		auto it = menuTable.find(a_menuName);
+		return it != menuTable.end() ? it->second.menuInstance : nullptr;
+	}
+
+
+	GPtr<GFxMovieView> UI::GetMovieView(const std::string_view& a_menuName)
+	{
+		auto menu = GetMenu(a_menuName);
+		return menu ? menu->view : nullptr;
+	}
+
+
+	bool UI::IsApplicationMenuOpen() const
+	{
+		return numApplicationMenus > 0;
+	}
+
+
+	bool UI::IsCursorHiddenWhenTopmost() const
+	{
+		return numDontHideCursorWhenTopmost == 0;
+	}
+
+
+	bool UI::IsItemMenuOpen() const
+	{
+		return numItemMenus > 0;
+	}
+
+
+	bool UI::IsMenuOpen(const std::string_view& a_menuName)
+	{
+		auto menu = GetMenu(a_menuName);
+		return menu ? menu->OnStack() : false;
+	}
+
+
+	bool UI::IsModalMenuOpen() const
+	{
+		return numModal > 0;
+	}
+
+
+	bool UI::IsPauseMenuDisabled() const
+	{
+		return numDisablePauseMenu > 0;
+	}
+
+
+	bool UI::IsSavingAllowed() const
+	{
+		return numAllowSaving > 0;
+	}
+
+
+	bool UI::IsShowingMenus() const
+	{
+		return showMenus;
+	}
+
+
+	bool UI::IsUsingCustomRendering() const
+	{
+		return numCustomRendering > 0;
+	}
+
+
+	void UI::Register(const std::string_view& a_menuName, CreatorFunc* a_creator)
+	{
+		menuTable.insert({ a_menuName, { nullptr, a_creator } });
+	}
+
+
+	void UI::ShowMenus(bool a_show)
+	{
+		showMenus = a_show;
+	}
+}

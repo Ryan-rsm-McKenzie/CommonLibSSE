@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	class BSLightingShaderMaterial;
+	class BSLightingShaderMaterialBase;
 
 
 	class BSShaderProperty : public NiShadeProperty
@@ -126,19 +126,19 @@ namespace RE
 
 
 		// members
-		UInt32						unk30;			// 30
-		UInt32						unk34;			// 34
-		ShaderFlag1					shaderFlags1;	// 38
-		ShaderFlag2					shaderFlags2;	// 3C
-		void*						unk40;			// 40
-		UInt64						unk48;			// 48
-		void*						unk50;			// 50
-		UInt64						unk58;			// 58
-		UInt64						unk60;			// 60
-		void*						unk68;			// 68 - smart ptr
-		UInt64						unk70;			// 70
-		BSLightingShaderMaterial*	material;		// 78
-		UInt64						unk80;			// 80
+		UInt32							unk30;			// 30
+		UInt32							unk34;			// 34
+		ShaderFlag1						shaderFlags1;	// 38
+		ShaderFlag2						shaderFlags2;	// 3C
+		void*							unk40;			// 40
+		UInt64							unk48;			// 48
+		void*							unk50;			// 50
+		UInt64							unk58;			// 58
+		UInt64							unk60;			// 60
+		void*							unk68;			// 68 - smart ptr
+		UInt64							unk70;			// 70
+		BSLightingShaderMaterialBase*	material;		// 78
+		UInt64							unk80;			// 80
 	};
 	STATIC_ASSERT(sizeof(BSShaderProperty) == 0x88);
 }

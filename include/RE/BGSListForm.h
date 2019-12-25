@@ -36,6 +36,7 @@ namespace RE
 		virtual void	Revert(void* a_arg1) override;					// 12
 		virtual void	InitItemImpl() override;						// 13
 
+		void	AddForm(TESForm* a_form);
 		bool	HasForm(const TESForm* a_form) const;
 		bool	HasForm(FormID a_formID) const;
 

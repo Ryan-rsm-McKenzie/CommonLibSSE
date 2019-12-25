@@ -10,6 +10,7 @@ namespace RE
 
 	struct TESEquipEvent
 	{
+		// members
 		NiPointer<TESObjectREFR>	source;			// 00
 		FormID						itemID;			// 08
 		FormID						equippedBy;		// 0C

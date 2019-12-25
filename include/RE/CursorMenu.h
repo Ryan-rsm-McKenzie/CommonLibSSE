@@ -8,6 +8,9 @@
 
 namespace RE
 {
+	// menuDepth = 13
+	// flags = kAllowSaving | kCustomRendering
+	// context = kInvalid
 	class CursorMenu :
 		public IMenu,			// 00
 		public MenuEventHandler	// 30

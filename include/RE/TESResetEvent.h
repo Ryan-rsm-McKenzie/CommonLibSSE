@@ -8,10 +8,10 @@ namespace RE
 	class TESObjectREFR;
 
 
-	struct TESInitScriptEvent
+	struct TESResetEvent
 	{
 		// members
 		NiPointer<TESObjectREFR> ref;	// 0
 	};
-	STATIC_ASSERT(sizeof(TESInitScriptEvent) == 0x8);
+	STATIC_ASSERT(sizeof(TESResetEvent) == 0x8);
 }

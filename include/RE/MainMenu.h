@@ -14,6 +14,9 @@ namespace RE
 	class BSSystemEvent;
 
 
+	// menuDepth = 0
+	// flags = kPausesGame | kDisablePauseMenu | kRequiresUpdate | kUpdateUsesCursor | kApplicationMenu
+	// context = kMenuMode
 	class MainMenu :
 		public IMenu,							// 00
 		public BSTEventSink<BSSystemEvent>,		// 30
@@ -30,7 +33,7 @@ namespace RE
 		// override (IMenu)
 		virtual void	Accept(CallbackProcessor* a_processor) override;														// 01
 		virtual Result	ProcessMessage(UIMessage* a_message) override;															// 04
-		virtual void	NextFrame(float a_arg1, UInt32 a_currentTime) override;													// 05
+		virtual void	Advance(float a_arg1, UInt32 a_currentTime) override;													// 05
 
 		// override (BSTEventSink<BSSystemEvent>)
 		virtual	EventResult	ReceiveEvent(BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;		// 01

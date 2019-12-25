@@ -11,6 +11,9 @@ namespace RE
 	class TESObjectREFR;
 
 
+	// menuDepth = 12
+	// flags = kPausesGame | kAlwaysOpen | kUsesCursor | kAllowSaving
+	// context = kConsole
 	class Console : public IMenu
 	{
 	public:

@@ -8,6 +8,7 @@ namespace RE
 {
 	struct BSAnimationGraphEvent
 	{
+		// members
 		BSFixedString	animName;
 		TESObjectREFR*	akTarget;
 		BSFixedString	optionalStr;

@@ -45,7 +45,7 @@ namespace RE
 
 	Actor* ActiveEffect::GetTargetActor()
 	{
-		if (magicTarget && magicTarget->IsActorMagicTarget()) {
+		if (magicTarget && magicTarget->MagicTargetIsActor()) {
 			return static_cast<Actor*>(magicTarget);
 		} else {
 			return 0;
@@ -55,7 +55,7 @@ namespace RE
 
 	const Actor* ActiveEffect::GetTargetActor() const
 	{
-		if (magicTarget && magicTarget->IsActorMagicTarget()) {
+		if (magicTarget && magicTarget->MagicTargetIsActor()) {
 			return static_cast<const Actor*>(magicTarget);
 		} else {
 			return 0;

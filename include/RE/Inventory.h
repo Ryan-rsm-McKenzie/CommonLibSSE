@@ -11,10 +11,9 @@ namespace RE
 
 	struct Inventory
 	{
-	public:
 		struct Event
 		{
-		public:
+			// members
 			TESObjectREFR*		objRefr;	// 00
 			InventoryEntryData* entryData;	// 08
 			SInt32				newCount;	// 10

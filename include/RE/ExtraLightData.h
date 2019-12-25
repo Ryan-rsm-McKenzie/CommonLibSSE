@@ -15,7 +15,8 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kLightData };
 
 
-		virtual ~ExtraLightData();														// 00
+		ExtraLightData();
+		virtual ~ExtraLightData() = default;											// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kLightData; }
@@ -23,10 +24,14 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
-		UInt32	unk20;	// 20
-		UInt32	pad24;	// 24
+		float	modFOV;		// 10
+		UInt32	modFade;	// 14
+		UInt32	unk18;		// 18
+		float	depthBias;	// 1C
+		UInt8	unk20;		// 20
+		UInt8	pad21;		// 21
+		UInt16	pad22;		// 22
+		UInt32	pad24;		// 24
 	};
 	STATIC_ASSERT(sizeof(ExtraLightData) == 0x28);
 }

@@ -8,6 +8,9 @@
 
 namespace RE
 {
+	// menuDepth = 10
+	// flags = kPausesGame
+	// context = kMenuMode
 	class CreditsMenu :
 		public IMenu,				// 00
 		public GFxFunctionHandler	// 30

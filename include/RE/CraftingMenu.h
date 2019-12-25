@@ -13,6 +13,9 @@ namespace RE
 	}
 
 
+	// menuDepth = 0
+	// flags = kUsesMenuContext | kDisablePauseMenu | kUpdateUsesCursor | kInventoryItemMenu | kDontHideCursorWhenTopmost
+	// context = kItemMenu
 	class CraftingMenu : public IMenu
 	{
 	public:
@@ -24,7 +27,7 @@ namespace RE
 
 		// override (IMenu)
 		virtual Result	ProcessMessage(UIMessage* a_message) override;			// 04
-		virtual void	NextFrame(float a_arg1, UInt32 a_currentTime) override;	// 05
+		virtual void	Advance(float a_arg1, UInt32 a_currentTime) override;	// 05
 		virtual void	Render() override;										// 06
 
 

@@ -25,23 +25,34 @@ namespace RE
 		enum class Flag : UInt32
 		{
 			kNone = 0,
-			kPauseGame = 1 << 0,
-			kDoNotDeleteOnClose = 1 << 1,
-			kShowCursor = 1 << 2,
-			kUnk0008 = 1 << 3,
+			kPausesGame = 1 << 0,
+			kAlwaysOpen = 1 << 1,
+			kUsesCursor = 1 << 2,
+			kUsesMenuContext = 1 << 3,
 			kModal = 1 << 4,	// prevents lower movies with this flag from advancing
-			kStopDrawingWorld = 1 << 5,
-			kOpen = 1 << 6,
-			kPreventGameLoad = 1 << 7,
-			kUnk0100 = 1 << 8,
-			kHideOther = 1 << 9,
-			kTryShowCursor = 1 << 10,
-			kDoNotPreventGameSave = 1 << 11,
-			kUnk1000 = 1 << 12,
-			kItemMenu = 1 << 13,
-			kStopCrosshairUpdate = 1 << 14,
-			kUnk8000 = 1 << 15,
-			kUnk10000 = 1 << 16  // ignore mouse cursor?
+			kFreezeFrameBackground = 1 << 5,
+			kOnStack = 1 << 6,
+			kDisablePauseMenu = 1 << 7,
+			kRequiresUpdate = 1 << 8,
+			kTopmostRenderedMenu = 1 << 9,
+			kUpdateUsesCursor = 1 << 10,
+			kAllowSaving = 1 << 11,
+			kRendersOffscreenTargets = 1 << 12,
+			kInventoryItemMenu = 1 << 13,
+			kDontHideCursorWhenTopmost = 1 << 14,
+			kCustomRendering = 1 << 15,
+			kAssignCursorToRenderer = 1 << 16,
+			kApplicationMenu = 1 << 17,
+			kHasButtonBar = 1 << 18,
+			kIsTopButtonBar = 1 << 19,
+			kAdvancesUnderPauseMenu = 1 << 20,
+			kRendersUnderPauseMenu = 1 << 21,
+			kUsesBlurredBackground = 1 << 22,
+			kCompanionAppAllowed = 1 << 23,
+			kFreezeFramePause = 1 << 24,
+			kSkipRenderDuringFreezeFrameScreenshot = 1 << 25,
+			kLargeScaleformRenderCacheMode = 1 << 26,
+			kUsesMovementToDirection = 1 << 27
 		};
 
 
@@ -63,28 +74,39 @@ namespace RE
 		virtual void	OnOpen();											// 02 - { return; }
 		virtual void	Unk_03(void);										// 03 - { return; }
 		virtual Result	ProcessMessage(UIMessage* a_message);				// 04
-		virtual void	NextFrame(float a_arg1, UInt32 a_currentTime);		// 05
+		virtual void	Advance(float a_arg1, UInt32 a_currentTime);		// 05
 		virtual void	Render();											// 06
 		virtual void	Unk_07(void);										// 07 - { return; }
 		virtual void	InitMovie();										// 08
 
-		bool	DeletesOnClose() const;
-		bool	HasFlag0008() const;
-		bool	HasFlag0100() const;
-		bool	HasFlag1000() const;
-		bool	HasFlag8000() const;
-		bool	HasFlag10000() const;
-		bool	HidesOtherMenus() const;
-		bool	IsItemMenu() const;
-		bool	IsModal() const;
-		bool	IsOpen() const;
+		bool	AdvancesUnderPauseMenu() const;
+		bool	AllowSaving() const;
+		bool	AlwaysOpen() const;
+		bool	ApplicationMenu() const;
+		bool	AssignCursorToRenderer() const;
+		bool	CustomRendering() const;
+		bool	CompanionAppAllowed() const;
+		bool	DisablePauseMenu() const;
+		bool	DontHideCursorWhenTopmost() const;
+		bool	FreezeFrameBackground() const;
+		bool	FreezeFramePause() const;
+		bool	HasButtonBar() const;
+		bool	InventoryItemMenu() const;
+		bool	IsTopButtonBar() const;
+		bool	LargeScaleformRenderCacheMode() const;
+		bool	Modal() const;
+		bool	OnStack() const;
 		bool	PausesGame() const;
-		bool	PreventsGameLoad() const;
-		bool	PreventsGameSave() const;
-		bool	ShowsCursor() const;
-		bool	StopsCrosshairUpdates() const;
-		bool	StopsDrawingWorld() const;
-		bool	TriesToShowCursor() const;
+		bool	RendersOffscreenTargets() const;
+		bool	RendersUnderPauseMenu() const;
+		bool	RequiresUpdate() const;
+		bool	SkipRenderDuringFreezeFrameScreenshot() const;
+		bool	TopmostRenderedMenu() const;
+		bool	UpdateUsesCursor() const;
+		bool	UsesBlurredBackground() const;
+		bool	UsesCursor() const;
+		bool	UsesMenuContext() const;
+		bool	UsesMovementToDirection() const;
 
 
 		// members
@@ -97,6 +119,5 @@ namespace RE
 		UInt32				pad24;		// 24
 		GPtr<FxDelegate>	fxDelegate;	// 28
 	};
-	STATIC_ASSERT(offsetof(IMenu, view) == 0x10);
 	STATIC_ASSERT(sizeof(IMenu) == 0x30);
 }

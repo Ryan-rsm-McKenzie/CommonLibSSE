@@ -1068,9 +1068,6 @@
     <ClCompile Include="src\RE\TESActorBaseData.cpp">
       <Filter>src\RE\FormComponents</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\MenuManager.cpp">
-      <Filter>src\RE\Menus</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSTArray.cpp">
       <Filter>src\RE\BSCore</Filter>
     </ClCompile>
@@ -1713,6 +1710,18 @@
     <ClCompile Include="src\RE\Main.cpp">
       <Filter>src\RE\BSMain</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BGSFootstepManager.cpp">
+      <Filter>src\RE\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ActorCause.cpp">
+      <Filter>src\RE\FormComponents\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\ExtraLightData.cpp">
+      <Filter>src\RE\BSExtraData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\UI.cpp">
+      <Filter>src\RE\Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -1723,9 +1732,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\BGSBipedObjectForm.h">
       <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MenuManager.h">
-      <Filter>include\RE\Menus</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\MenuControls.h">
       <Filter>include\RE\BSDevices</Filter>
@@ -4948,6 +4954,27 @@
     </ClInclude>
     <ClInclude Include="include\RE\hkAabb.h">
       <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorCause.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSFootstepManager.h">
+      <Filter>include\RE\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSFootstepEvent.h">
+      <Filter>include\RE\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESDeathEvent.h">
+      <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESResetEvent.h">
+      <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESSwitchRaceCompleteEvent.h">
+      <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\UI.h">
+      <Filter>include\RE\Menus</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

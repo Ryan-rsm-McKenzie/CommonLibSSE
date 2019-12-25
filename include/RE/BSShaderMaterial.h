@@ -1,5 +1,7 @@
 #pragma once
 
+#include <type_traits>
+
 #include "RE/BSIntrusiveRefCounted.h"
 
 
@@ -13,6 +15,7 @@ namespace RE
 
 		enum class Type : UInt32
 		{
+			kNone = static_cast<std::underlying_type_t<Type>>(-1),
 			kDefault = 0,
 			kEnvironmentMap = 1,
 			kGlowMap = 2,

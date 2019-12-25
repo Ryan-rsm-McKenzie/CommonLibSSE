@@ -123,13 +123,15 @@ namespace RE
 
 	TESNPC* Actor::GetActorBase()
 	{
-		return baseForm->As<TESNPC*>();
+		auto obj = GetBaseObject();
+		return obj ? obj->As<TESNPC*>() : 0;
 	}
 
 
 	const TESNPC* Actor::GetActorBase() const
 	{
-		return baseForm->As<TESNPC*>();
+		auto obj = GetBaseObject();
+		return obj ? obj->As<TESNPC*>() : 0;
 	}
 
 

@@ -29,6 +29,7 @@ namespace RE
 		virtual const BSFixedString&	GetControlID() const;	// 02 - { static BSFixedString str(""); return str; }
 
 
+		// members
 		DeviceType	deviceType;	// 08
 		EventType	eventType;	// 0C
 		InputEvent*	next;		// 10

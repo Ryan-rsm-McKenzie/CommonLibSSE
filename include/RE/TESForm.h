@@ -13,6 +13,18 @@ namespace RE
 	class TESFile;
 
 
+	namespace Impl
+	{
+		namespace
+		{
+			template <class T> struct _make_const { using type = const T; };
+			template <class T> struct _make_const<T*> { using type = const T*; };
+		}
+		template <class T> struct make_const : _make_const<T> {};
+		template <class T> using make_const_t = typename make_const<T>::type;
+	}
+
+
 	class TESForm : public BaseFormComponent
 	{
 	public:
@@ -130,8 +142,8 @@ namespace RE
 		bool										IsNot(FormType a_type) const;
 		template <class First, class... Rest> bool	IsNot(First a_first, Rest... a_rest) const;
 
-		template <class T> constexpr T		As();
-		template <class T> constexpr auto	As() const;
+		template <class T> constexpr T						As();
+		template <class T> constexpr Impl::make_const_t<T>	As() const;
 
 		FormID		GetFormID() const;
 		SInt32		GetGoldValue() const;

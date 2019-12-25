@@ -5,7 +5,7 @@ namespace RE
 {
 	struct TESContainerChangedEvent
 	{
-	public:
+		// members
 		FormID		from;		// 00
 		FormID		to;			// 04
 		FormID		item;		// 08

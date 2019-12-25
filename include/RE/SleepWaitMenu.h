@@ -8,6 +8,10 @@
 
 namespace RE
 {
+	// menuDepth = 4
+	// flags = kPausesGame | kRequiresUpdate | kAllowSaving | kApplicationMenu
+	// kUsesCursor if gamepad disabled
+	// context = kMenuMode
 	class SleepWaitMenu : public IMenu
 	{
 	public:

@@ -15,6 +15,10 @@ namespace RE
 	class BSSystemEvent;
 
 
+	// menuDepth = 5
+	// flags = kPausesGame | kUsesMenuContext | kFreezeFrameBackground | kRequiresUpdate | kTopmostRenderedMenu | kUpdateUsesCursor | kAllowSaving
+	// kDisablePauseMenu if game load prevented
+	// context = kJournal
 	class JournalMenu :
 		public IMenu,						// 00
 		public MenuEventHandler,			// 30
@@ -30,7 +34,7 @@ namespace RE
 		// override (IMenu)
 		virtual void	Accept(CallbackProcessor* a_processor) override;													// 01
 		virtual Result	ProcessMessage(UIMessage* a_message) override;														// 04
-		virtual void	NextFrame(float a_arg1, UInt32 a_currentTime) override;												// 05
+		virtual void	Advance(float a_arg1, UInt32 a_currentTime) override;												// 05
 		virtual void	Render() override;																					// 06
 
 		// override (MenuEventHandler)

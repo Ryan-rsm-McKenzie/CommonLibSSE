@@ -13,6 +13,9 @@ namespace RE
 	class MenuOpenCloseEvent;
 
 
+	// menuDepth = 3
+	// flags = kPausesGame | kDisablePauseMenu | kRequiresUpdate
+	// context = kLockpicking
 	class LockpickingMenu :
 		public IMenu,							// 00
 		public MenuEventHandler,				// 30

@@ -15,7 +15,7 @@ namespace RE
 	bool TESFaction::CanPayCrimeGold() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
-		auto bounty = player->GetCrimeGold(this);
+		auto bounty = player->GetCrimeGoldValue(this);
 		return player->GetGoldAmount() >= bounty;
 	}
 
@@ -23,7 +23,7 @@ namespace RE
 	SInt32 TESFaction::GetCrimeGold() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
-		return player->GetCrimeGold(this);
+		return player->GetCrimeGoldValue(this);
 	}
 
 
@@ -183,14 +183,14 @@ namespace RE
 	void TESFaction::ModCrimeGold(SInt32 a_amount, bool a_violent)
 	{
 		auto player = PlayerCharacter::GetSingleton();
-		return player->ModCrimeGold(this, a_violent, a_amount);
+		return player->ModCrimeGoldValue(this, a_violent, a_amount);
 	}
 
 
 	void TESFaction::PlayerPayCrimeGold(bool a_removeStolenItems, bool a_goToJail)
 	{
 		auto player = PlayerCharacter::GetSingleton();
-		player->PayCrimeGold(this, a_goToJail, a_removeStolenItems);
+		player->PayFine(this, a_goToJail, a_removeStolenItems);
 	}
 
 
@@ -203,21 +203,21 @@ namespace RE
 	void TESFaction::SendPlayerToJail(bool a_removeInventory, bool a_realJail)
 	{
 		auto player = PlayerCharacter::GetSingleton();
-		player->SendToJail(this, a_removeInventory, a_realJail);
+		player->GoToPrison(this, a_removeInventory, a_realJail);
 	}
 
 
 	void TESFaction::SetCrimeGold(SInt32 a_gold)
 	{
 		auto player = PlayerCharacter::GetSingleton();
-		player->SetCrimeGold(this, false, a_gold);
+		player->SetCrimeGoldValue(this, false, a_gold);
 	}
 
 
 	void TESFaction::SetCrimeGoldViolent(SInt32 a_gold)
 	{
 		auto player = PlayerCharacter::GetSingleton();
-		player->SetCrimeGold(this, true, a_gold);
+		player->SetCrimeGoldValue(this, true, a_gold);
 	}
 
 

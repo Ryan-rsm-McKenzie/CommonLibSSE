@@ -17,7 +17,7 @@ namespace RE
 		};
 
 
-		SInt32	GetLockLevel(const TESObjectREFR* a_containerRef);
+		SInt32	GetLockLevel(const TESObjectREFR* a_containerRef) const;
 		void	SetLocked(bool a_locked);
 
 

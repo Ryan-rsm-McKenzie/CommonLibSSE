@@ -37,20 +37,20 @@ namespace RE
 
 		// add
 		virtual void							Unk_01(void);					// 01
-		virtual Actor*							GetMagicTargetActor() const;	// 02 - { return 0; }
-		virtual bool							IsActorMagicTarget() const;		// 03 - { return false; }
+		virtual Actor*							GetTargetStatsObject();			// 02 - { return 0; }
+		virtual bool							MagicTargetIsActor() const;		// 03 - { return false; }
 		virtual void							Unk_04(void);					// 04 - { return 0; }
 		virtual void							Unk_05(void);					// 05 - { return; }
 		virtual void							Unk_06(void) = 0;				// 06
-		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffects() = 0;			// 07
+		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffectList() = 0;		// 07
 		virtual void							Unk_08(void);					// 08 - { return; }
 		virtual void							Unk_09(void);					// 09 - { return; }
 		virtual void							Unk_0A(void);					// 0A - { return 1.0; }
 		virtual void							Unk_0B(void);					// 0B - { return 0; }
 
-		bool									HasMagicEffect(EffectSetting* a_effect);
-		bool									HasEffectWithArchetype(Archetype a_type);
-		void									DispellEffectsWithArchetype(Archetype a_type, bool a_force);
+		void	DispellEffectsWithArchetype(Archetype a_type, bool a_force);
+		bool	HasEffectWithArchetype(Archetype a_type);
+		bool	HasMagicEffect(EffectSetting* a_effect);
 
 
 		// members

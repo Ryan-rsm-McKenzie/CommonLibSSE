@@ -67,6 +67,7 @@ namespace RE
 		{
 			kNone = 0,
 			kAIEnabled = 1 << 1,
+			kNotSpeaking = 1 << 5,
 			kIsPlayerTeammate = 1 << 26,
 			kIsGuard = 1 << 30
 		};
@@ -214,7 +215,7 @@ namespace RE
 		virtual void							Unk_68(void) override;																																													// 068
 		virtual void							Unk_69(void) override;																																													// 069
 		virtual void							Load3D(bool a_arg1) override;																																											// 06A
-		virtual void							Set3D(NiNode* a_root, UInt32 a_arg2 = 1) override;																																						// 06C
+		virtual void							Set3D(NiAVObject* a_root, UInt32 a_arg2 = 1) override;																																					// 06C
 		virtual void							PopulateGraphProjectsToLoad(void) override;																																								// 072
 		virtual NiPoint3*						GetBoundMin(NiPoint3& a_min) const override;																																							// 073
 		virtual NiPoint3*						GetBoundMax(NiPoint3& a_max) const override;																																							// 074
@@ -234,93 +235,93 @@ namespace RE
 		virtual void							ResetInventory(bool a_regenerate) override;																																								// 08A
 		virtual void							Unk_8B(void) override;																																													// 08B
 		virtual void							Unk_8C(void) override;																																													// 08C
-		virtual void							Unk_90(void) override;																																													// 090
-		virtual void							Unk_91(void) override;																																													// 091
-		virtual void							Unk_92(void) override;																																													// 092
-		virtual void							Unk_93(void) override;																																													// 093
+		virtual bool							OnAddCellPerformQueueReference(TESObjectCELL* a_cell) const override;																																	// 090
+		virtual void							DoMoveToHigh() override;																																												// 091
+		virtual void							TryMoveToMiddleLow() override;																																											// 092
+		virtual bool							TryChangeSkyCellActorsProcessLevel() override;																																							// 093
 		virtual void							Unk_95(void) override;																																													// 095
 		virtual void							Unk_96(void) override;																																													// 096
 		virtual void							Unk_98(void) override;																																													// 098
-		virtual bool							IsDead(bool a_bleedout = true) override;																																								// 099
+		virtual bool							IsDead(bool a_noDying = true) override;																																									// 099
 		virtual void							Unk_9C(void) override;																																													// 09C
 		virtual void							Unk_9D(void) override;																																													// 09D
 		virtual void							Unk_9E(void) override;																																													// 09E
 		virtual void							UnequipItem(UInt64 a_arg1, TESBoundObject* a_item) override;																																			// 0A1
 
 		// override (MagicTarget)
-		virtual Actor*							GetMagicTargetActor() const override;																																									// 002 - { return this; }
-		virtual bool							IsActorMagicTarget() const override;																																									// 003 - { return true; }
-		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffects() override;																																											// 007
+		virtual Actor*							GetTargetStatsObject() override;																																										// 002 - { return this; }
+		virtual bool							MagicTargetIsActor() const override;																																									// 003 - { return true; }
+		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffectList() override;																																											// 007
 
 		// add
 		virtual void							Unk_A2(void);																																															// 0A2
-		virtual void							PlaySounds(TESBoundObject* a_item, bool a_pickup, bool a_consume);																																		// 0A3
-		virtual void							Unk_A4(void);																																															// 0A4
-		virtual void							Unk_A5(void);																																															// 0A5 - { return; }
-		virtual void							DrawSheatheWeapon(bool a_draw);																																											// 0A6
+		virtual void							PlayPickUpSound(TESBoundObject* a_item, bool a_pickup, bool a_consume);																																	// 0A3
+		virtual float							GetHeading(bool a_ignoreRaceSettings);																																									// 0A4
+		virtual void							SetAvoidanceDisabled(void);																																												// 0A5 - { return; }
+		virtual void							DrawWeaponMagicHands(bool a_draw);																																										// 0A6
 		virtual void							Unk_A7(void);																																															// 0A7
 		virtual void							Unk_A8(void);																																															// 0A8
-		virtual void							Unk_A9(void);																																															// 0A9
-		virtual void							Unk_AA(void);																																															// 0AA
-		virtual void							Unk_AB(void);																																															// 0AB
-		virtual void							Unk_AC(void);																																															// 0AC
-		virtual void							Unk_AD(void);																																															// 0AD
-		virtual void							Unk_AE(void);																																															// 0AE - { return unk11F(); }
-		virtual void							Unk_AF(void);																																															// 0AF
-		virtual void							Unk_B0(void);																																															// 0B0
-		virtual void							Unk_B1(void);																																															// 0B1
+		virtual void							SetPosition(NiPoint3& a_pos);																																											// 0A9
+		virtual void							KillDying();																																															// 0AA
+		virtual void							Resurrect(bool a_arg1);																																													// 0AB
+		virtual void							PutActorOnMountQuick();																																													// 0AC
+		virtual void							Update(void);																																															// 0AD
+		virtual void							UpdateNoAI(void);																																														// 0AE - { return UpdateActor3DPosition(); }
+		virtual void							UpdateCharacterControllerSimulationSettings(void);																																						// 0AF
+		virtual void							PotentiallyFixRagdollState();																																											// 0B0
+		virtual void							UpdateNonRenderSafe(float a_arg1);																																										// 0B1
 		virtual void							OnItemEquipped(bool a_playAnim);																																										// 0B2
 		virtual void							Unk_B3(void);																																															// 0B3 - { return 1; }
 		virtual void							Unk_B4(void);																																															// 0B4
-		virtual void							SetCrimeGold(TESFaction* a_faction, bool a_violent, SInt32 a_gold);																																		// 0B5
-		virtual void							ModCrimeGold(TESFaction* a_faction, bool a_violent, SInt32 a_amount);																																	// 0B6
-		virtual void							AddCrimeGold(SInt32 a_amount, bool a_violent, TESFaction* a_faction);																																	// 0B7
-		virtual SInt32							GetCrimeGold(const TESFaction* a_faction) const;																																						// 0B8
-		virtual void							SendToJail(TESFaction* a_faction, bool a_removeInventory, bool a_realJail);																																// 0B9 - { return; }
-		virtual void							Unk_BA(void);																																															// 0BA - { return; }
-		virtual void							PayCrimeGold(TESFaction* a_faction, bool a_goToJail, bool a_removeStolenItems);																															// 0BB - { return; }
-		virtual UInt32							IsCannibalizing();																																														// 0BC - { return 0; }
-		virtual void							Unk_BD(void);																																															// 0BD - { return; }
-		virtual UInt32							IsVampireFeeding();																																														// 0BE - { return 0; }
-		virtual void							Unk_BF(void);																																															// 0BF - { return; }
-		virtual void							Unk_C0(void);																																															// 0C0 - { return; }
-		virtual void							Unk_C1(void);																																															// 0C1 - { return; }
-		virtual void							Unk_C2(void);																																															// 0C2
-		virtual void							Unk_C3(void);																																															// 0C3
+		virtual void							SetCrimeGoldValue(TESFaction* a_faction, bool a_violent, SInt32 a_amount);																																// 0B5
+		virtual void							ModCrimeGoldValue(TESFaction* a_faction, bool a_violent, SInt32 a_amount);																																// 0B6
+		virtual void							RemoveCrimeGoldValue(TESFaction* a_faction, SInt32 a_amount, bool a_violent);																															// 0B7
+		virtual SInt32							GetCrimeGoldValue(const TESFaction* a_faction) const;																																					// 0B8
+		virtual void							GoToPrison(TESFaction* a_faction, bool a_removeInventory, bool a_realJail);																																// 0B9 - { return; }
+		virtual void							ServePrisonTime(void);																																													// 0BA - { return; }
+		virtual void							PayFine(TESFaction* a_faction, bool a_goToJail, bool a_removeStolenItems);																																// 0BB - { return; }
+		virtual bool							GetCannibal();																																															// 0BC - { return false; }
+		virtual void							SetCannibal(void);																																														// 0BD - { return; }
+		virtual bool							GetVampireFeed();																																														// 0BE - { return false; }
+		virtual void							SetVampireFeed(void);																																													// 0BF - { return; }
+		virtual void							InitiateVampireFeedPackage(void);																																										// 0C0 - { return; }
+		virtual void							InitiateCannibalPackage(void);																																											// 0C1 - { return; }
+		virtual void							GetEyeVector(NiPoint3& a_vector);																																										// 0C2
+		virtual void							SetRefraction(bool a_arg1, float a_refraction);																																							// 0C3
 		virtual void							Unk_C4(void);																																															// 0C4 - { return; }
 		virtual void							Unk_C5(void);																																															// 0C5 - { return 1; }
 		virtual void							Unk_C6(void) = 0;																																														// 0C6
-		virtual void							Unk_C7(void);																																															// 0C7 - { return 1.0; }
+		virtual float							GetAcrobatics();																																														// 0C7 - { return 1.0; }
 		virtual void							Unk_C8(void);																																															// 0C8
 		virtual void							Unk_C9(void);																																															// 0C9
 		virtual void							OnArmorActorValueChanged();																																												// 0CA - { return; }
-		virtual void							DropItem(RefHandle& a_droppedItemHandle, TESForm* a_item, ExtraDataList* a_extraList, UInt32 a_count, void* a_arg5 = 0, void* a_arg6 = 0);																// 0CB
-		virtual void							PickUpItem(TESObjectREFR* a_item, UInt32 a_count, bool a_arg3 = false, bool a_playSound = true);																										// 0CC
-		virtual void							Unk_CD(void);																																															// 0CD
-		virtual void							Unk_CE(void);																																															// 0CE
+		virtual void							DropObject(RefHandle& a_droppedItemHandle, TESBoundObject* a_object, ExtraDataList* a_extraList, UInt32 a_count, void* a_arg5 = 0, void* a_arg6 = 0);													// 0CB
+		virtual void							PickUpObject(TESObjectREFR* a_object, UInt32 a_count, bool a_arg3 = false, bool a_playSound = true);																									// 0CC
+		virtual void							AttachArrow(void);																																														// 0CD
+		virtual void							DetachArrow(void);																																														// 0CE
 		virtual bool							AddShout(TESShout* a_shout);																																											// 0CF
 		virtual void							Unk_D0(void);																																															// 0D0 - { return; }
 		virtual void							Unk_D1(void);																																															// 0D1
 		virtual void							Unk_D2(void);																																															// 0D2
-		virtual void							Unk_D3(void);																																															// 0D3
-		virtual void							Unk_D4(void);																																															// 0D4
-		virtual void							Unk_D5(void);																																															// 0D5
-		virtual void							Unk_D6(void);																																															// 0D6
+		virtual bool							CalculateCachedOwnerIsInCombatantFaction();																																								// 0D3
+		virtual void							GetCombatGroup(void);																																													// 0D4
+		virtual void							SetCombatGroup(void);																																													// 0D5
+		virtual void							CheckValidTarget(void);																																													// 0D6
 		virtual void							Unk_D7(void);																																															// 0D7 - { return 0; }
-		virtual void							Unk_D8(void);																																															// 0D8
+		virtual void							InitiateDialogue(void);																																													// 0D8
 		virtual void							Unk_D9(void);																																															// 0D9
-		virtual void							Unk_DA(void);																																															// 0DA
-		virtual void							Unk_DB(void);																																															// 0DB
+		virtual void							EndDialogue(void);																																														// 0DA
+		virtual void							SetUpTalkingActivatorActor(void);																																										// 0DB
 		virtual void							Unk_DC(void);																																															// 0DC - { return; }
-		virtual void							Unk_DD(void);																																															// 0DD
-		virtual void							Unk_DE(void);																																															// 0DE
-		virtual void							Unk_DF(void);																																															// 0DF
-		virtual void							Unk_E0(void);																																															// 0E0
-		virtual void							Unk_E1(void);																																															// 0E1
-		virtual void							Unk_E2(void);																																															// 0E2
-		virtual bool							IsInCombat();																																															// 0E3
-		virtual void							Unk_E4(void);																																															// 0E4
-		virtual void							Unk_E5(void);																																															// 0E5
+		virtual void							InitiateFlee(void);																																														// 0DD
+		virtual void							InitiateGetUpPackage(void);																																												// 0DE
+		virtual void							PutCreatedPackage(void);																																												// 0DF
+		virtual void							UpdateAlpha();																																															// 0E0
+		virtual void							SetAlpha(float a_alpha = 1.0);																																											// 0E1
+		virtual float							GetAlpha() const;																																														// 0E2
+		virtual bool							IsInCombat() const;																																														// 0E3
+		virtual void							UpdateCombat();																																															// 0E4
+		virtual void							StopCombat();																																															// 0E5
 		virtual void							Unk_E6(void);																																															// 0E6 - { return 0.0; }
 		virtual void							Unk_E7(void);																																															// 0E7 - { return 0.0; }
 		virtual void							Unk_E8(void);																																															// 0E8 - { return 0; }
@@ -330,63 +331,63 @@ namespace RE
 		virtual void							Unk_EC(void);																																															// 0EC
 		virtual void							Unk_ED(void);																																															// 0ED
 		virtual void							Unk_EE(void);																																															// 0EE
-		virtual void							OnWeaponSwing();																																														// 0EF
-		virtual void							Unk_F0(void);																																															// 0F0
+		virtual void							WeaponSwingCallBack();																																													// 0EF
+		virtual void							SetActorStartingPosition(void);																																											// 0F0
 		virtual void							Unk_F1(void);																																															// 0F1
 		virtual void							Unk_F2(void);																																															// 0F2
 		virtual void							Unk_F3(void);																																															// 0F3
 		virtual void							Unk_F4(void);																																															// 0F4
-		virtual void							Unk_F5(void);																																															// 0F5
-		virtual void							Unk_F6(void);																																															// 0F6
-		virtual void							AdvanceSkill(ActorValue a_skillID, float a_points, UInt32 a_arg3, UInt32 a_arg4);																														// 0F7 - { return; }
-		virtual void							Unk_F8(void);																																															// 0F8
+		virtual bool							HasBeenAttacked() const;																																												// 0F5
+		virtual void							SetBeenAttacked(bool a_attacked);																																										// 0F6
+		virtual void							UseSkill(ActorValue a_skillID, float a_points, UInt32 a_arg3, UInt32 a_arg4);																															// 0F7 - { return; }
+		virtual void							IsAtPoint(void);																																														// 0F8
 		virtual bool							IsInFaction(TESFaction* faction);																																										// 0F9
-		virtual void							VisitPerks(PerkEntryVisitor& a_visitor);																																								// 0FA
+		virtual void							ForEachPerk(PerkEntryVisitor& a_visitor);																																								// 0FA
 		virtual void							AddPerk(BGSPerk* a_perk, UInt32 a_rank = 0);																																							// 0FB - { return; }
 		virtual void							RemovePerk(BGSPerk* a_perk);																																											// 0FC - { return; }
 		virtual void							Unk_FD(void);																																															// 0FD - { return; }
 		virtual void							Unk_FE(void);																																															// 0FE - { return; }
-		virtual bool							CanProcessEntryPointPerkEntry(EntryPoint a_entryType);																																					// 0FF
-		virtual void							VisitEntryPointPerkEntries(EntryPoint a_entryType, PerkEntryVisitor& a_visitor);																														// 100
-		virtual void							Unk_101(void);																																															// 101 - related to ApplyPerksVisitor
-		virtual void							Unk_102(void);																																															// 102 - { return; }
-		virtual void							Unk_103(void);																																															// 103 - { return 0; }
-		virtual void							KillIfNoHealth(UInt32 a_unk1, float a_currentHealth);																																					// 104
+		virtual bool							HasPerkEntries(EntryPoint a_entryType);																																									// 0FF
+		virtual void							ForEachPerkEntry(EntryPoint a_entryType, PerkEntryVisitor& a_visitor);																																	// 100
+		virtual void							ApplyPerksFromBase();																																													// 101
+		virtual void							StartPowerAttackCoolDown(void);																																											// 102 - { return; }
+		virtual bool							IsPowerAttackCoolingDown() const;																																										// 103 - { return false; }
+		virtual void							HandleHealthDamage(UInt32 a_unk1, float a_currentHealth);																																				// 104
 		virtual void							Unk_105(void);																																															// 105
 		virtual void							Unk_106(void);																																															// 106 - { return; }
-		virtual void							Unk_107(void);																																															// 107 - { return ~(unk0E0 >> 5) & 1; }
-		virtual void							Unk_108(void);																																															// 108
-		virtual void							Unk_109(void);																																															// 109
+		virtual bool							QSpeakingDone() const;																																													// 107 - { return ~(unk0E0 >> 5) & 1; }
+		virtual void							SetSpeakingDone(bool a_done);																																											// 108
+		virtual void							CreateMovementController(void);																																											// 109
 		virtual void							Unk_10A(void);																																															// 10A - { return unk16C; }
 		virtual void							Unk_10B(void);																																															// 10B - { unk16C = a_arg1; }
 		virtual void							Unk_10C(void);																																															// 10C - { return unk170; }
 		virtual void							Unk_10D(void);																																															// 10D - { unk170 = a_arg1; }
-		virtual void							Unk_10E(void);																																															// 10E - related to attacking
+		virtual void							KillImpl(void);																																															// 10E
 		virtual void							Unk_10F(void);																																															// 10F
-		virtual void							Unk_110(void);																																															// 110
-		virtual void							Unk_111(void);																																															// 111 - { return; }
+		virtual void							CheckCast(void);																																														// 110
+		virtual void							CheckTempModifiers(void);																																												// 111 - { return; }
 		virtual SInt32							GetCurrentShoutLevel();																																													// 112 - return -1 on error
-		virtual void							SetLastRiddenHorseHandle(RefHandle a_horseRefHandle);																																					// 113 - { return; }
-		virtual RefHandle&						GetLastRiddenHorseHandle(RefHandle& a_outHandle);																																						// 114 - { a_outHandle = *g_invalidHandle; }
-		virtual void							Unk_115(void);																																															// 115
-		virtual bool							IsNPCType();																																															// 116 - used for soulgems
+		virtual void							SetLastRiddenMount(RefHandle a_horseRefHandle);																																							// 113 - { return; }
+		virtual RefHandle&						QLastRiddenMount(RefHandle& a_outHandle);																																								// 114 - { a_outHandle = *g_invalidHandle; }
+		virtual void							CalculateCachedOwnerIsUndead(void);																																										// 115
+		virtual bool							CalculateCachedOwnerIsNPC();																																											// 116
 		virtual void							Unk_117(void);																																															// 117 - { return; }
-		virtual const BSFixedString&			GetResponseType();																																														// 118 - { return "ActorResponse"; } - retrieved from a global table of anim variables
-		virtual void							Unk_119(void);																																															// 119
+		virtual void							Unk_118(void);																																															// 118
+		virtual const BSFixedString&			GetResponseType();																																														// 119 - { return "ActorResponse"; } - retrieved from a global table of anim variables
 		virtual void							Unk_11A(void);																																															// 11A
-		virtual void							Unk_11B(void);																																															// 11B
-		virtual void							Unk_11C(void);																																															// 11C
-		virtual void							Unk_11D(void);																																															// 11D
-		virtual void							Unk_11E(void);																																															// 11E
-		virtual void							Unk_11F(void);																																															// 11F
-		virtual void							Unk_120(void);																																															// 120
-		virtual void							Unk_121(void);																																															// 121
-		virtual void							Unk_122(void);																																															// 122
+		virtual void							UpdateCombatControllerSettings(void);																																									// 11B
+		virtual void							UpdateFadeSettings(void);																																												// 11C
+		virtual void							ComputeMotionFeedbackSpeedAndDirection(void);																																							// 11D
+		virtual void							UpdateFeedbackGraphSpeedAndDirection(void);																																								// 11E
+		virtual void							UpdateActor3DPosition(void);																																											// 11F
+		virtual void							PrecacheData(void);																																														// 120
+		virtual void							WornArmorChanged(void);																																													// 121
+		virtual void							ProcessTracking(void);																																													// 122
 		virtual void							Unk_123(void);																																															// 123
-		virtual void							Unk_124(void);																																															// 124
-		virtual void							Unk_125(void);																																															// 125
-		virtual void							Unk_126(void);																																															// 126
-		virtual float							IncerceptActorValueChange(UInt32 a_avIndex, float a_avChangeBy);																																		// 127
+		virtual void							CreateActorMover(void);																																													// 124
+		virtual void							DestroyActorMover(void);																																												// 125
+		virtual bool							ShouldRespondToActorCollision(void* a_arg1, Actor* a_target);																																			// 126
+		virtual float							CheckClampDamageModifier(ActorValue a_avIndex, float a_avChangeBy);																																		// 127
 
 		static NiPointer<Actor>	LookupByHandle(RefHandle a_refHandle);
 		static bool				LookupByHandle(RefHandle a_refHandle, NiPointer<Actor>& a_refrOut);
@@ -462,7 +463,7 @@ namespace RE
 		TESObjectCELL*							editorCell;									// 130
 		BGSLocation*							editorLocation;								// 138
 		ActorMover*								mover;										// 140
-		BSTSmartPointer<MovementControllerNPC>	unk148;										// 148
+		BSTSmartPointer<MovementControllerNPC>	movementController;							// 148
 		void*									unk150;										// 150
 		void*									unk158;										// 158
 		UInt64									unk160;										// 160

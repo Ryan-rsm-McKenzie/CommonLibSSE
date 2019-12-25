@@ -105,7 +105,7 @@ namespace RE
 		BSTArray<void*>								unk1B8;					// 1B8
 		BSTArray<void*>								unk1D0;					// 1D0
 		mutable BSUniqueLock						unk1E8;					// 1E8
-		void*										unk1F0;					// 1F0 - BSTSmartPointer
+		void*										unk1F0;					// 1F0 - smart ptr
 		UInt16										unk1F8;					// 1F8
 		UInt16										unk1FA;					// 1FA
 		UInt32										unk1FC;					// 1FC
@@ -118,7 +118,7 @@ namespace RE
 		UInt32										pad21C;					// 21C
 		InventoryEntryData*							leftHand;				// 220
 		TESIdleForm* 								currentIdle;			// 228
-		void*										unk230;					// 230 - BSTSmartPointer
+		void*										unk230;					// 230 - smart ptr
 		UInt64										unk238;					// 238
 		UInt64										unk240;					// 240
 		UInt64										unk248;					// 248
@@ -132,7 +132,7 @@ namespace RE
 		BSTArray<BGSPerkEntry*>*					perkEntries;			// 288 - size == BGSPerkEntry::EntryPoint::kTotal
 		UInt32										unk290;					// 290
 		UInt32										unk294;					// 294
-		float										unk298;					// 298 - init'd to -1
+		float										unk298;					// 298
 		UInt32										unk29C;					// 29C
 		UInt32										unk2A0;					// 2A0
 		UInt32										unk2A4;					// 2A4
@@ -141,11 +141,11 @@ namespace RE
 		UInt32										unk2B0;					// 2B0
 		UInt32										unk2B4;					// 2B4
 		UInt32										unk2B8;					// 2B8
-		float										unk2BC;					// 2BC - init'd to -1
+		float										unk2BC;					// 2BC
 		UInt32										unk2C0;					// 2C0
 		UInt32										unk2C4;					// 2C4
-		float										actorAlpha;				// 2C8 - init'd to 1
-		UInt32										unk2CC;					// 2CC
+		float										actorAlpha;				// 2C8
+		float										actorRefraction;		// 2CC
 		UInt64										unk2D0;					// 2D0
 		UInt64										unk2D8;					// 2D8
 		UInt64										unk2E0;					// 2E0
@@ -158,7 +158,10 @@ namespace RE
 		UInt64										unk308;					// 308
 		UInt64										unk310;					// 310
 		UInt64										unk318;					// 318
-		UInt64										unk320;					// 320
+		UInt16										unk320;					// 320
+		bool										beenAttacked;			// 322
+		UInt8										unk323;					// 323
+		UInt32										unk324;					// 324
 		UInt32										unk328;					// 328
 		UInt16										unk32C;					// 32C
 		UInt8										unk32E;					// 32E

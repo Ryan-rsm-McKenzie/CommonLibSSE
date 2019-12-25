@@ -7,6 +7,9 @@
 
 namespace RE
 {
+	// menuDepth = 11
+	// flags = kNone
+	// context = kInvalid
 	class SafeZoneMenu : public IMenu
 	{
 	public:

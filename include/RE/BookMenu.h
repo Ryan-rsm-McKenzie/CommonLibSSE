@@ -14,6 +14,9 @@ namespace RE
 	struct BSAnimationGraphEvent;
 
 
+	// menuDepth = 1
+	// flags = kPausesGame | kUsesMenuContext | kDisablePauseMenu | kRequiresUpdate | kTopmostRenderedMenu | kRendersOffscreenTargets
+	// context = kBook
 	class BookMenu :
 		public IMenu,								// 00
 		public SimpleAnimationGraphManagerHolder,	// 30
@@ -28,7 +31,7 @@ namespace RE
 
 		// override (IMenu)
 		virtual Result	ProcessMessage(UIMessage* a_message) override;																		// 04
-		virtual void	NextFrame(float a_arg1, UInt32 a_currentTime) override;																// 05
+		virtual void	Advance(float a_arg1, UInt32 a_currentTime) override;																// 05
 		virtual void	Render() override;																									// 06
 		virtual void	Unk_07(void) override;																								// 07
 

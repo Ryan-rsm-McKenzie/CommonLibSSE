@@ -6,7 +6,6 @@ namespace RE
 	// related to cell transitions
 	struct PositionPlayerEvent
 	{
-	public:
 		enum class Type : UInt32
 		{
 			kStarted = 0,
@@ -17,6 +16,7 @@ namespace RE
 		};
 
 
+		// members
 		Type type;	// 0
 	};
 	STATIC_ASSERT(sizeof(PositionPlayerEvent) == 0x4);

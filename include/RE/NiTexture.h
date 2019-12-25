@@ -2,10 +2,14 @@
 
 #include "RE/BSFixedString.h"
 #include "RE/NiObject.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE
 {
+	NiSmartPointer(NiTexture);
+
+
 	class NiTexture : public NiObject
 	{
 	public:

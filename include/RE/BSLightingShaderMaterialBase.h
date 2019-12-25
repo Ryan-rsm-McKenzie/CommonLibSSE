@@ -44,11 +44,11 @@ namespace RE
 		// members
 		UInt64					unk38;				// 38
 		UInt64					unk40;				// 40
-		NiPointer<NiTexture>	unk48;				// 48
+		NiPointer<NiTexture>	diffuseMap;			// 48
 		UInt64					unk50;				// 50
-		NiPointer<NiTexture>	unk58;				// 58
-		NiPointer<NiTexture>	unk60;				// 60
-		NiPointer<NiTexture>	unk68;				// 68
+		NiPointer<NiTexture>	normalMap;			// 58
+		NiPointer<NiTexture>	heightMap;			// 60
+		NiPointer<NiTexture>	specularMap;		// 68
 		UInt64					unk70;				// 70
 		NiPointer<BSTextureSet>	textureSet;			// 78
 		float					alpha;				// 80

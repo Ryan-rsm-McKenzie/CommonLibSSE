@@ -7,6 +7,9 @@
 
 namespace RE
 {
+	// menuDepth = 10
+	// flags = kPausesGame | kAlwaysOpen | kUsesCursor | kModal
+	// context = kMenuMode
 	class MessageBoxMenu : public IMenu
 	{
 	public:

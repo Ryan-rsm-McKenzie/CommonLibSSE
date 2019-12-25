@@ -8,6 +8,7 @@ namespace RE
 
 	struct TESCellFullyLoadedEvent
 	{
+		// members
 		TESObjectCELL* cell;
 	};
 	STATIC_ASSERT(sizeof(TESCellFullyLoadedEvent) == 0x8);

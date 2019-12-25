@@ -9,6 +9,9 @@
 
 namespace RE
 {
+	// menuDepth = 3
+	// flags = kPausesGame | kUsesMenuContext | kRequiresUpdate | kTopmostRenderedMenu | kUpdateUsesCursor
+	// context = kItemMenu
 	class RaceSexMenu :
 		public IMenu,			// 00
 		public MenuEventHandler	// 30
@@ -32,7 +35,7 @@ namespace RE
 		virtual void	Accept(CallbackProcessor* a_processor) override;		// 01
 		virtual void	OnOpen() override;										// 02
 		virtual Result	ProcessMessage(UIMessage* a_message) override;			// 04
-		virtual void	NextFrame(float a_arg1, UInt32 a_currentTime) override;	// 05
+		virtual void	Advance(float a_arg1, UInt32 a_currentTime) override;	// 05
 
 		// override (MenuEventHandler)
 		virtual bool	CanProcess(InputEvent* a_event) = 0;					// 01
