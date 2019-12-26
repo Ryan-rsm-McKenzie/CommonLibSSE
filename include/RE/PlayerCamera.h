@@ -91,9 +91,5 @@ namespace RE
 		UInt8												unk165;								// 165
 		UInt16												pad166;								// 166
 	};
-	STATIC_ASSERT(offsetof(PlayerCamera, cameraStates) == 0x0B8);
-	STATIC_ASSERT(offsetof(PlayerCamera, worldFOV) == 0x13C);
-	STATIC_ASSERT(offsetof(PlayerCamera, firstPersonFOV) == 0x140);
-	STATIC_ASSERT(offsetof(PlayerCamera, pos) == 0x144);
 	STATIC_ASSERT(sizeof(PlayerCamera) == 0x168);
 }

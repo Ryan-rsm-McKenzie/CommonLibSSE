@@ -418,6 +418,7 @@
     <ClInclude Include="include\RE\BGSFootstepManager.h" />
     <ClInclude Include="include\RE\bhkCollisionObject.h" />
     <ClInclude Include="include\RE\bhkNiCollisionObject.h" />
+    <ClInclude Include="include\RE\BleedoutCameraState.h" />
     <ClInclude Include="include\RE\BSAnimNoteListener.h" />
     <ClInclude Include="include\RE\BSXFlags.h" />
     <ClInclude Include="include\RE\hkAabb.h" />

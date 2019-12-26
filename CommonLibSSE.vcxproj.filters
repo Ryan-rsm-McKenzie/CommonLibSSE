@@ -1060,6 +1060,9 @@
     <Filter Include="include\RE\NetImmerse\NiTListBase\NiTPointerListBase">
       <UniqueIdentifier>{ce049434-079b-4499-861b-376a21cb3169}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Camera\TESCameraState\ThirdPersonState">
+      <UniqueIdentifier>{23054d63-1b30-4f8c-8367-840fb0bd001c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -2880,9 +2883,6 @@
       <Filter>include\RE\Camera\TESCamera</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESCameraState.h">
-      <Filter>include\RE\Camera\TESCameraState</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ThirdPersonState.h">
       <Filter>include\RE\Camera\TESCameraState</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\FirstPersonState.h">
@@ -4996,6 +4996,12 @@
     </ClInclude>
     <ClInclude Include="include\RE\NiTListBase.h">
       <Filter>include\RE\NetImmerse\NiTListBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ThirdPersonState.h">
+      <Filter>include\RE\Camera\TESCameraState\ThirdPersonState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BleedoutCameraState.h">
+      <Filter>include\RE\Camera\TESCameraState\ThirdPersonState</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

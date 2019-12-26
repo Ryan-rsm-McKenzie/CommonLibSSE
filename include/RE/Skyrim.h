@@ -180,6 +180,7 @@
 #include "RE/bhkThreadMemorySource.h"
 #include "RE/bhkWorldObject.h"
 #include "RE/Biped.h"
+#include "RE/BleedoutCameraState.h"
 #include "RE/BookMenu.h"
 #include "RE/BottomBar.h"
 #include "RE/BSAnimationGraphChannel.h"
