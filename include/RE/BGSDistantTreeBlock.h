@@ -10,7 +10,7 @@ namespace RE
 	public:
 		struct LODGroupInstance
 		{
-			UInt32	formId;	// 00 - Only the lower 24 bits used
+			FormID	formID;	// 00 - Only the lower 24 bits used
 			UInt32	unk04;	// 04
 			UInt32	unk08;	// 08
 			UInt16	unk0C;	// 0C
@@ -21,7 +21,7 @@ namespace RE
 			// Pretty sure LODGroupInstance is just 0x14 because having this extra UInt32 here breaks the array, but haven't had time to check this further.
 			// UInt32	unk14;	// 14
 		};
-		STATIC_ASSERT(offsetof(LODGroupInstance, formId) == 0x00);
+		STATIC_ASSERT(offsetof(LODGroupInstance, formID) == 0x00);
 		STATIC_ASSERT(offsetof(LODGroupInstance, alpha) == 0x0E);
 		STATIC_ASSERT(offsetof(LODGroupInstance, hidden) == 0x10);
 

@@ -15,6 +15,9 @@ namespace RE
 		public PlayerInputHandler	// 20
 	{
 	public:
+		inline static const void* RTTI = RTTI_FirstPersonState;
+
+
 		virtual ~FirstPersonState();																// 00
 
 		// override (TESCameraState)
