@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+#include <string_view>
 #include <unordered_map>
 #include <utility>
 
@@ -56,6 +58,7 @@ namespace RE
 
 		using Count = SInt32;
 		using InventoryMap = std::unordered_map<TESBoundObject*, std::pair<Count, InventoryEntryData*>>;
+		using DroppedInventoryMap = std::unordered_map<TESBoundObject*, std::pair<Count, std::unique_ptr<InventoryEntryData>>>;
 
 
 		enum { kTypeID = FormType::Reference };
@@ -330,7 +333,10 @@ namespace RE
 		const TESBoundObject*	GetBaseObject() const;
 		float					GetBaseScale() const;
 		TESContainer*			GetContainer();
+		DroppedInventoryMap		GetDroppedInventory();
+		DroppedInventoryMap		GetDroppedInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);
 		TESFaction*				GetFactionOwner();
+		InventoryMap			GetInventory();
 		InventoryMap			GetInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);
 		InventoryChanges*		GetInventoryChanges();	// Creates inventory changes if none found
 		TESObjectREFR*			GetLinkedRef(BGSKeyword* a_keyword);
@@ -360,7 +366,8 @@ namespace RE
 		bool					IsOffLimits() const;
 		bool					MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool					MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
-		void					PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4 = false);
+		void					PlayAnimation(std::string_view a_from, std::string_view a_to);
+		void					PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq);
 		void					SetActivationBlocked(bool a_blocked);
 		void					SetCollision(bool a_enable);
 		bool					SetDisplayName(const BSFixedString& a_name, bool a_force);
@@ -383,6 +390,7 @@ namespace RE
 	private:
 		const LockState*	GetLockState_Impl() const;
 		void				MoveTo_Impl(RefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, NiPoint3& a_position, NiPoint3& a_rotation);
+		void				PlayAnimation_Impl(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4 = false);
 	};
 	STATIC_ASSERT(sizeof(TESObjectREFR) == 0x98);
 };

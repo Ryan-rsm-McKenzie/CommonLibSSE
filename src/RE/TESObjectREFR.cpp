@@ -7,6 +7,7 @@
 
 #include "RE/BSFixedString.h"
 #include "RE/ExtraContainerChanges.h"
+#include "RE/ExtraDroppedItemList.h"
 #include "RE/ExtraFlags.h"
 #include "RE/ExtraLock.h"
 #include "RE/ExtraOwnership.h"
@@ -16,7 +17,10 @@
 #include "RE/InventoryChanges.h"
 #include "RE/InventoryEntryData.h"
 #include "RE/Misc.h"
-#include "RE/NiNode.h"
+#include "RE/NiAVObject.h"
+#include "RE/NiControllerManager.h"
+#include "RE/NiControllerSequence.h"
+#include "RE/NiTimeController.h"
 #include "RE/Offsets.h"
 #include "RE/TESContainer.h"
 #include "RE/TESFaction.h"
@@ -120,6 +124,50 @@ namespace RE
 	}
 
 
+	auto TESObjectREFR::GetDroppedInventory()
+		-> DroppedInventoryMap
+	{
+		return GetDroppedInventory([]([[maybe_unused]] TESBoundObject*) -> bool
+		{
+			return true;
+		});
+	}
+
+
+	auto TESObjectREFR::GetDroppedInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter)
+		-> DroppedInventoryMap
+	{
+		using mapped_type = typename DroppedInventoryMap::mapped_type;
+
+		DroppedInventoryMap results;
+
+		auto droppedList = extraData.GetByType<ExtraDroppedItemList>();
+		if (!droppedList) {
+			return results;
+		}
+
+		for (auto& handle : droppedList->handles) {
+			auto ref = LookupByHandle(handle);
+			if (!ref) {
+				continue;
+			}
+
+			auto object = ref->GetBaseObject();
+			if (!object || !a_filter(object)) {
+				continue;
+			}
+
+			auto count = ref->extraData.GetCount();
+			auto entry = std::make_unique<InventoryEntryData>(object, count);
+			entry->AddExtraList(&ref->extraData);
+			auto it = results.insert(std::make_pair(object, mapped_type(count, std::move(entry))));
+			assert(it.second);
+		}
+
+		return results;
+	}
+
+
 	TESFaction* TESObjectREFR::GetFactionOwner()
 	{
 		auto xOwnership = extraData.GetByType<ExtraOwnership>();
@@ -128,6 +176,16 @@ namespace RE
 		} else {
 			return 0;
 		}
+	}
+
+
+	auto TESObjectREFR::GetInventory()
+		-> InventoryMap
+	{
+		return GetInventory([]([[maybe_unused]] TESBoundObject*) -> bool
+		{
+			return true;
+		});
 	}
 
 
@@ -395,11 +453,36 @@ namespace RE
 	}
 
 
-	void TESObjectREFR::PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4)
+	void TESObjectREFR::PlayAnimation(std::string_view a_from, std::string_view a_to)
 	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::PlayAnimation)>;
-		REL::Offset<func_t*> func(Offset::TESObjectREFR::PlayAnimation);
-		return func(this, a_manager, a_toSeq, a_fromSeq, a_arg4);
+		auto node = Get3D();
+		if (!node) {
+			return;
+		}
+
+		auto controller = node->GetControllers();
+		if (!controller) {
+			return;
+		}
+
+		auto manager = controller->GetAsNiControllerManager();
+		if (!manager) {
+			return;
+		}
+
+		auto fromSeq = manager->GetSequenceByName(a_from);
+		auto toSeq = manager->GetSequenceByName(a_to);
+		if (!fromSeq || !toSeq) {
+			return;
+		}
+
+		PlayAnimation(manager, toSeq, fromSeq);
+	}
+
+
+	void TESObjectREFR::PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq)
+	{
+		PlayAnimation_Impl(a_manager, a_toSeq, a_fromSeq);
 	}
 
 
@@ -479,5 +562,13 @@ namespace RE
 		using func_t = function_type_t<decltype(&TESObjectREFR::MoveTo_Impl)>;
 		REL::Offset<func_t*> func(Offset::TESObjectREFR::MoveTo);
 		return func(this, a_targetHandle, a_targetCell, a_selfWorldSpace, a_position, a_rotation);
+	}
+
+
+	void TESObjectREFR::PlayAnimation_Impl(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4)
+	{
+		using func_t = function_type_t<decltype(&TESObjectREFR::PlayAnimation_Impl)>;
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::PlayAnimation);
+		return func(this, a_manager, a_toSeq, a_fromSeq, a_arg4);
 	}
 }

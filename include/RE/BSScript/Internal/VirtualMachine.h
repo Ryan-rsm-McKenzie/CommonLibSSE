@@ -18,6 +18,9 @@
 
 namespace RE
 {
+	class TESForm;
+
+
 	namespace BSScript
 	{
 		class Array;
@@ -116,6 +119,7 @@ namespace RE
 				static VirtualMachine* GetSingleton();
 
 				bool					AllocateArray(const VMTypeID& a_typeID, std::size_t a_size, BSTSmartPointer<Array>& a_array);
+				void					TraceStack(TESForm* a_form, const char* a_str, StackID a_stackID, Severity a_severity);
 				template <class F> void	RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, FunctionFlag a_flags = FunctionFlag::kNone);
 
 

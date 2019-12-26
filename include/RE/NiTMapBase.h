@@ -22,11 +22,7 @@ namespace RE
 		key_type	key;	// 08
 		mapped_type	mapped;	// ??
 	};
-	namespace { using TestNiTMapItem = NiTMapItem<std::uint32_t, std::uint64_t>; }
-	STATIC_ASSERT(offsetof(TestNiTMapItem, next) == 0x00);
-	STATIC_ASSERT(offsetof(TestNiTMapItem, key) == 0x08);
-	STATIC_ASSERT(offsetof(TestNiTMapItem, mapped) == 0x10);
-	STATIC_ASSERT(sizeof(TestNiTMapItem) == 0x18);
+	STATIC_ASSERT(sizeof(NiTMapItem<UInt32, UInt64>) == 0x18);
 
 
 	// hash table with separate chaining

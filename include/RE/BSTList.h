@@ -279,12 +279,14 @@ namespace RE
 
 		reference front()
 		{
+			assert(!empty());
 			return *begin();
 		}
 
 
 		const_reference front() const
 		{
+			assert(!empty());
 			return *cbegin();
 		}
 

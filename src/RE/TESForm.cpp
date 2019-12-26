@@ -92,7 +92,12 @@ namespace RE
 	const char* TESForm::GetName() const
 	{
 		auto fullName = As<TESFullName*>();
-		return fullName ? fullName->GetFullName() : "";
+		if (fullName) {
+			auto str = fullName->GetFullName();
+			return str ? str : "";
+		} else {
+			return "";
+		}
 	}
 
 

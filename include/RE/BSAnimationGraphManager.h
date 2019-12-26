@@ -51,21 +51,17 @@ namespace RE
 
 
 		// members
-		UInt32																	unk0C;				// 0C
-		BSTArray<BSTAnimationGraphDataChannel<Actor, float, ActorSpeedChannel>>	unk10;				// 10
-		UInt64																	unk28;				// 28
-		void*																	unk30;				// 30
-		UInt64																	unk38;				// 38
-		BSTSmallArray<BShkbAnimationGraph*>										animationGraphs;	// 40
-		UInt64																	unk58;				// 58
-		void*																	unk60;				// 60
-		UInt64																	unk68;				// 68
-		BSTArray<AnimationVariable>												animationVariables;	// 70
-		void*																	unk88;				// 88
-		BShkbAnimationGraph*													unk90;				// 90 - The active animation graph?
-		UInt64																	unk98;				// 98
-		mutable BSUniqueLock													unkA0;				// A0
-		UInt64																	unkA8;				// A8
+		UInt32																						unk0C;				// 0C
+		BSTArray<BSTSmartPointer<BSTAnimationGraphDataChannel<Actor, float, ActorSpeedChannel>>>	unk10;				// 10
+		BSTArray<void*>																				unk28;				// 28 - array of smart ptrs
+		BSTSmallArray<BSTSmartPointer<BShkbAnimationGraph>>											animationGraphs;	// 40
+		BSTArray<void*>																				unk58;				// 58 - array of smart ptrs
+		BSTArray<AnimationVariable>																	animationVariables;	// 70
+		void*																						unk88;				// 88
+		BShkbAnimationGraph*																		unk90;				// 90 - The active animation graph?
+		UInt64																						unk98;				// 98
+		mutable BSUniqueLock																		unkA0;				// A0
+		UInt64																						unkA8;				// A8
 	};
 	STATIC_ASSERT(offsetof(BSAnimationGraphManager, animationGraphs) == 0x40);
 	STATIC_ASSERT(sizeof(BSAnimationGraphManager) == 0xB0);

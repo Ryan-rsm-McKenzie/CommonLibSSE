@@ -29,13 +29,13 @@ namespace RE
 		virtual ~LockpickingMenu();	// 00
 
 		// override (IMenu)
-		virtual Result	ProcessMessage(UIMessage* a_message) override;																// 04
+		virtual Result		ProcessMessage(UIMessage* a_message) override;															// 04
 
 		// override (MenuEventHandler)
-		virtual bool	CanProcess(InputEvent* a_event) override;																	// 01
-		virtual bool	ProcessThumbstick(ThumbstickEvent* a_event) override;														// 03
-		virtual bool	ProcessMouseMove(MouseMoveEvent* a_event) override;															// 04
-		virtual bool	ProcessButton(ButtonEvent* a_event) override;																// 05
+		virtual bool		CanProcess(InputEvent* a_event) override;																// 01
+		virtual bool		ProcessThumbstick(ThumbstickEvent* a_event) override;													// 03
+		virtual bool		ProcessMouseMove(MouseMoveEvent* a_event) override;														// 04
+		virtual bool		ProcessButton(ButtonEvent* a_event) override;															// 05
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
 		virtual	EventResult	ReceiveEvent(MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;	// 01

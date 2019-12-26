@@ -3,12 +3,13 @@
 
 namespace RE
 {
-	template <class Ty, class TVal>
+	template <class T, class Val>
 	class ActorSpeedChannel
 	{
 	public:
 		UInt32	unk00;	// 00
-		TVal	val;	// 04
-		Ty*		type;	// 08
+		Val		val;	// 04
+		T*		type;	// ??
 	};
+	STATIC_ASSERT(sizeof(ActorSpeedChannel<void, float>) == 0x10);
 }

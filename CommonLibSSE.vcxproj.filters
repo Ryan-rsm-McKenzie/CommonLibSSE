@@ -1054,6 +1054,12 @@
     <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiTimeController\NiInterpController">
       <UniqueIdentifier>{24f4637e-5fbf-4d0a-a186-8ab710de57a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\NetImmerse\NiTListBase">
+      <UniqueIdentifier>{754bf9ec-d4c4-4bc9-b2ab-f8c0b4550b6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiTListBase\NiTPointerListBase">
+      <UniqueIdentifier>{ce049434-079b-4499-861b-376a21cb3169}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -4981,6 +4987,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\LoadWaitSpinner.h">
       <Filter>include\RE\Menus\IMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTList.h">
+      <Filter>include\RE\NetImmerse\NiTListBase\NiTPointerListBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTPointerListBase.h">
+      <Filter>include\RE\NetImmerse\NiTListBase\NiTPointerListBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTListBase.h">
+      <Filter>include\RE\NetImmerse\NiTListBase</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

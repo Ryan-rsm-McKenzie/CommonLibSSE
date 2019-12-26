@@ -58,13 +58,12 @@ namespace RE
 		BSTArray<void*>					unk160;			// 160
 		BSTArray<BShkFloatController*>	unk178;			// 178
 		BSTArray<void*>					unk190;			// 190
-		UInt64							unk1A8;			// 1A8
-		UInt64							unk1B0;			// 1B0
-		UInt64							unk1B8;			// 1B8
+		BSTSmallArray<void*>			unk1A8;			// 1A8
 		BSTSmallArray<UInt8>			unk1C0;			// 1C0
 		UInt64							unk1D8;			// 1D8
 		UInt64							unk1E0;			// 1E0
-		UInt64							unk1E8;			// 1E8
+		float							unk1E8;			// 1E8
+		float							unk1EC;			// 1EC
 		BSFixedString					unk1F0;			// 1F0
 		FileHash*						unk1F8;			// 1F8
 		void*							unk200;			// 200 - BShkbHkxDB::ProjectDBData*
@@ -75,8 +74,13 @@ namespace RE
 		UInt64							unk228;			// 228
 		UInt64							unk230;			// 230
 		bhkWorld*						world;			// 238
-		UInt64							unk240;			// 240
-		UInt64							unk248;			// 248
+		UInt32							unk240;			// 240
+		UInt16							unk244;			// 244
+		UInt8							unk246;			// 246
+		UInt8							unk247;			// 247
+		UInt16							unk248;			// 248
+		UInt16							unk24A;			// 24A
+		UInt32							unk24C;			// 24C
 	};
 	STATIC_ASSERT(sizeof(BShkbAnimationGraph) == 0x250);
 

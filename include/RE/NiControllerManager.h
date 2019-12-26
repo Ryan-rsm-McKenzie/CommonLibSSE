@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 #include "RE/BSAnimNoteListener.h"
 #include "RE/BSFixedString.h"
 #include "BSTHashMap.h"
@@ -44,7 +46,7 @@ namespace RE
 		// add
 		virtual void					Start();											// 2F - { return; }
 
-		NiControllerSequence* GetSequenceByName(const BSFixedString& a_name);
+		NiControllerSequence* GetSequenceByName(std::string_view a_name);
 
 
 		// members

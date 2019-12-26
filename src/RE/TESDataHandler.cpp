@@ -40,9 +40,9 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupModByName(std::string_view a_modName)
 	{
-		for (auto& mod : modList.loadOrder) {
-			if (_stricmp(mod->name, a_modName.data()) == 0) {
-				return mod;
+		for (auto& file : files) {
+			if (_stricmp(file->name, a_modName.data()) == 0) {
+				return file;
 			}
 		}
 		return 0;
@@ -58,9 +58,9 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedModByName(std::string_view a_modName)
 	{
-		for (auto& mod : modList.loadedMods) {
-			if (_stricmp(mod->name, a_modName.data()) == 0) {
-				return mod;
+		for (auto& file : compiledFileCollection.files) {
+			if (_stricmp(file->name, a_modName.data()) == 0) {
+				return file;
 			}
 		}
 		return 0;
@@ -69,9 +69,9 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedModByIndex(UInt8 a_index)
 	{
-		for (auto& mod : modList.loadedMods) {
-			if (mod->modIndex == a_index) {
-				return mod;
+		for (auto& file : compiledFileCollection.files) {
+			if (file->modIndex == a_index) {
+				return file;
 			}
 		}
 		return 0;
@@ -87,9 +87,9 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedLightModByName(std::string_view a_modName)
 	{
-		for (auto& mod : modList.loadedCCMods) {
-			if (_stricmp(mod->name, a_modName.data()) == 0) {
-				return mod;
+		for (auto& smallFile : compiledFileCollection.smallFiles) {
+			if (_stricmp(smallFile->name, a_modName.data()) == 0) {
+				return smallFile;
 			}
 		}
 		return 0;
@@ -98,9 +98,9 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedLightModByIndex(UInt16 a_index)
 	{
-		for (auto& lightMod : modList.loadedCCMods) {
-			if (lightMod->lightIndex == a_index) {
-				return lightMod;
+		for (auto& smallFile : compiledFileCollection.smallFiles) {
+			if (smallFile->lightIndex == a_index) {
+				return smallFile;
 			}
 		}
 		return 0;
@@ -114,7 +114,7 @@ namespace RE
 	}
 
 
-	bool TESDataHandler::IsGeneratedID(UInt32 a_formID)
+	bool TESDataHandler::IsGeneratedID(FormID a_formID)
 	{
 		return a_formID >= 0xFF000000;
 	}

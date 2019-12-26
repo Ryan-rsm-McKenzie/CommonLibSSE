@@ -429,6 +429,9 @@
     <ClInclude Include="include\RE\NiIntegerExtraData.h" />
     <ClInclude Include="include\RE\NiInterpController.h" />
     <ClInclude Include="include\RE\NiMultiTargetTransformController.h" />
+    <ClInclude Include="include\RE\NiTList.h" />
+    <ClInclude Include="include\RE\NiTListBase.h" />
+    <ClInclude Include="include\RE\NiTPointerListBase.h" />
     <ClInclude Include="include\RE\NiTSet.h" />
     <ClInclude Include="include\RE\ProcessLists.h" />
     <ClInclude Include="include\RE\BGSApparatus.h" />
