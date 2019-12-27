@@ -106,11 +106,11 @@ namespace RE
 					}
 				} else {
 					if constexpr (IS_LONG) {
-						auto result = Impl::CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
-						a_resultValue->Pack<result_type>(result);
+						auto result = std::move(Impl::CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base)));
+						a_resultValue->Pack<result_type>(std::move(result));
 					} else {
-						auto result = Impl::CallBack(_callback, std::move(args), std::move(base));
-						a_resultValue->Pack<result_type>(result);
+						auto result = std::move(Impl::CallBack(_callback, std::move(args), std::move(base)));
+						a_resultValue->Pack<result_type>(std::move(result));
 					}
 				}
 

@@ -67,25 +67,26 @@ namespace RE
 			Object*			GetObject();
 			BSFixedString	GetString() const;
 
-			void			SetNone();
-			void			SetSInt(SInt32 a_val);
-			void			SetUInt(UInt32 a_val);
-			void			SetFloat(float a_val);
-			void			SetBool(bool a_val);
-			void			SetArray(Array* a_val);
-			void			SetObject(Object* a_val);
-			void			SetObject(Object* a_val, VMTypeID a_typeID);
-			void			SetString(BSFixedString a_val);
+			void	SetNone();
+			void	SetSInt(SInt32 a_val);
+			void	SetUInt(UInt32 a_val);
+			void	SetFloat(float a_val);
+			void	SetBool(bool a_val);
+			void	SetArray(Array* a_val);
+			void	SetObject(Object* a_val);
+			void	SetObject(Object* a_val, VMTypeID a_typeID);
+			void	SetString(const BSFixedString& a_val);
+			void	SetString(BSFixedString&& a_val);
 
-			template <class T, typename std::enable_if_t<is_sint32_compat<T>::value, int> = 0>					inline void SetData(T a_val) { SetSInt(a_val); }
-			template <class T, typename std::enable_if_t<is_uint32_compat<T>::value, int> = 0>					inline void SetData(T a_val) { SetUInt(a_val); }
-			template <class T, typename std::enable_if_t<is_float_compat<T>::value, int> = 0>					inline void SetData(T a_val) { SetFloat(a_val); }
-			template <class T, typename std::enable_if_t<is_bool_no_cvr<T>::value, int> = 0>					inline void SetData(T a_val) { SetBool(a_val); }
-			template <class T, typename std::enable_if_t<is_script_array_pointer_no_cvr<T>::value, int> = 0>	inline void SetData(T a_val) { SetArray(a_val); }
-			template <class T, typename std::enable_if_t<is_script_object_pointer_no_cvr<T>::value, int> = 0>	inline void SetData(T a_val) { SetObject(a_val); }
-			template <class T, typename std::enable_if_t<is_string_compat<T>::value, int> = 0>					inline void SetData(T a_val) { SetString(a_val); }
+			template <class T, typename std::enable_if_t<is_sint32_compat<T>::value, int> = 0>					inline void SetData(T&& a_val) { SetSInt(std::forward<T>(a_val)); }
+			template <class T, typename std::enable_if_t<is_uint32_compat<T>::value, int> = 0>					inline void SetData(T&& a_val) { SetUInt(std::forward<T>(a_val)); }
+			template <class T, typename std::enable_if_t<is_float_compat<T>::value, int> = 0>					inline void SetData(T&& a_val) { SetFloat(std::forward<T>(a_val)); }
+			template <class T, typename std::enable_if_t<is_bool_no_cvr<T>::value, int> = 0>					inline void SetData(T&& a_val) { SetBool(std::forward<T>(a_val)); }
+			template <class T, typename std::enable_if_t<is_script_array_pointer_no_cvr<T>::value, int> = 0>	inline void SetData(T&& a_val) { SetArray(std::forward<T>(a_val)); }
+			template <class T, typename std::enable_if_t<is_script_object_pointer_no_cvr<T>::value, int> = 0>	inline void SetData(T&& a_val) { SetObject(std::forward<T>(a_val)); }
+			template <class T, typename std::enable_if_t<is_string_compat<T>::value, int> = 0>					inline void SetData(T&& a_val) { SetString(std::forward<T>(a_val)); }
 
-			template <class T> void	Pack(T& a_src);
+			template <class T> void	Pack(T&& a_src);
 			template <class T> T	Unpack();
 
 		protected:

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <type_traits>
+
 #include "RE/BaseFormComponent.h"
 #include "RE/BSTArray.h"
 #include "RE/FormTypes.h"
@@ -15,13 +17,7 @@ namespace RE
 
 	namespace Impl
 	{
-		namespace
-		{
-			template <class T> struct _make_const { using type = const T; };
-			template <class T> struct _make_const<T*> { using type = const T*; };
-		}
-		template <class T> struct make_const : _make_const<T> {};
-		template <class T> using make_const_t = typename make_const<T>::type;
+		template <class T> struct is_valid_as_expr : std::conjunction<std::negation<std::is_pointer<T>>, std::negation<std::is_reference<T>>, std::negation<std::is_const<T>>> {};
 	}
 
 
@@ -142,8 +138,11 @@ namespace RE
 		bool										IsNot(FormType a_type) const;
 		template <class First, class... Rest> bool	IsNot(First a_first, Rest... a_rest) const;
 
-		template <class T> constexpr T						As();
-		template <class T> constexpr Impl::make_const_t<T>	As() const;
+		template <class T, typename std::enable_if_t<Impl::is_valid_as_expr<T>::value, int> = 0>
+		constexpr T* As();
+
+		template <class T, typename std::enable_if_t<Impl::is_valid_as_expr<T>::value, int> = 0>
+		constexpr const T* As() const;
 
 		FormID		GetFormID() const;
 		SInt32		GetGoldValue() const;

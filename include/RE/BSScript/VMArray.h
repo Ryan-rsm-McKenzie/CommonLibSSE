@@ -115,7 +115,7 @@ namespace RE
 				[[nodiscard]] constexpr bool operator>=(const iterator_base& a_rhs) const;
 
 			protected:
-				Array::iterator_base<U> _iter;
+				typename Array::iterator_base<U> _iter;
 			};
 
 
@@ -291,7 +291,7 @@ namespace RE
 		auto VMArray<T>::reference::operator=(value_type&& a_val)
 			-> reference &
 		{
-			_val.Pack(a_val);
+			_val.Pack(std::move(a_val));
 			return *this;
 		}
 
@@ -302,7 +302,7 @@ namespace RE
 			-> reference &
 		{
 			value_type val(std::forward<Args>(a_args)...);
-			_val.Pack(val);
+			_val.Pack(std::move(val));
 			return *this;
 		}
 

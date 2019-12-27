@@ -47,28 +47,28 @@ namespace RE
 
 
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
-		inline void PackValue(Variable* a_dst, T& a_src)
+		inline void PackValue(Variable* a_dst, T&& a_src)
 		{
-			PackHandle(a_dst, a_src, static_cast<FormType32>(remove_cvpr_t<T>::kTypeID));
+			PackHandle(a_dst, std::forward<T>(a_src), static_cast<FormType32>(remove_cvpr_t<T>::kTypeID));
 		}
 
 
 		template <class T, typename std::enable_if_t<is_vm_form_array_no_cvr<T>::value, int> = 0>
-		inline void PackValue(Variable* a_dst, T& a_src)
+		inline void PackValue(Variable* a_dst, T&& a_src)
 		{
 			a_dst->SetData(a_src.data());
 		}
 
 
 		template <class T, typename std::enable_if_t<is_builtin_type_no_cvr<T>::value, int> = 0>
-		inline void PackValue(Variable* a_dst, T& a_src)
+		inline void PackValue(Variable* a_dst, T&& a_src)
 		{
-			a_dst->SetData(a_src);
+			a_dst->SetData(std::forward<T>(a_src));
 		}
 
 
 		template <class T, typename std::enable_if_t<is_vm_builtin_array_no_cvr<T>::value, int> = 0>
-		inline void PackValue(Variable* a_dst, T& a_src)
+		inline void PackValue(Variable* a_dst, T&& a_src)
 		{
 			a_dst->SetData(a_src.data());
 		}
@@ -138,9 +138,9 @@ namespace RE
 
 
 		template <class T>
-		inline void Variable::Pack(T& a_src)
+		inline void Variable::Pack(T&& a_src)
 		{
-			PackValue<T>(this, a_src);
+			PackValue<T>(this, std::forward<T>(a_src));
 		}
 
 

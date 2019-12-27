@@ -120,7 +120,7 @@ namespace RE
 	TESContainer* TESObjectREFR::GetContainer()
 	{
 		auto obj = GetBaseObject();
-		return obj ? obj->As<TESContainer*>() : 0;
+		return obj ? obj->As<TESContainer>() : 0;
 	}
 
 

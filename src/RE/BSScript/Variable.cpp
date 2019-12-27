@@ -279,7 +279,14 @@ namespace RE
 		}
 
 
-		void Variable::SetString(BSFixedString a_val)
+		void Variable::SetString(const BSFixedString& a_val)
+		{
+			ChangeType(VMTypeID::kString);
+			data.str = a_val;
+		}
+
+
+		void Variable::SetString(BSFixedString&& a_val)
 		{
 			ChangeType(VMTypeID::kString);
 			data.str = std::move(a_val);

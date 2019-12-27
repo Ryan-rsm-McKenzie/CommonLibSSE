@@ -18,7 +18,7 @@ namespace RE
 			template <class... Args, std::size_t... I>
 			void CopyArgsImpl(std::tuple<Args...>& a_tuple, BSScrapArray<Variable>& a_dst, std::index_sequence<I...>)
 			{
-				((a_dst[I].Pack<Args>(std::get<I>(a_tuple))), ...);
+				((a_dst[I].Pack<Args>(std::forward<Args>(std::get<I>(a_tuple)))), ...);
 			}
 
 

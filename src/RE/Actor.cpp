@@ -10,6 +10,7 @@
 #include "RE/BSFaceGenAnimationData.h"
 #include "RE/ExtraCanTalkToPlayer.h"
 #include "RE/ExtraFactionChanges.h"
+#include "RE/FormTraits.h"
 #include "RE/HighProcess.h"
 #include "RE/InventoryEntryData.h"
 #include "RE/MiddleProcess.h"
@@ -124,14 +125,14 @@ namespace RE
 	TESNPC* Actor::GetActorBase()
 	{
 		auto obj = GetBaseObject();
-		return obj ? obj->As<TESNPC*>() : 0;
+		return obj ? obj->As<TESNPC>() : 0;
 	}
 
 
 	const TESNPC* Actor::GetActorBase() const
 	{
 		auto obj = GetBaseObject();
-		return obj ? obj->As<TESNPC*>() : 0;
+		return obj ? obj->As<TESNPC>() : 0;
 	}
 
 
