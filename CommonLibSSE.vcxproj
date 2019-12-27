@@ -420,6 +420,15 @@
     <ClInclude Include="include\RE\bhkNiCollisionObject.h" />
     <ClInclude Include="include\RE\BleedoutCameraState.h" />
     <ClInclude Include="include\RE\BSAnimNoteListener.h" />
+    <ClInclude Include="include\RE\BSLightingShaderMaterialEnvmap.h" />
+    <ClInclude Include="include\RE\BSLightingShaderMaterialEye.h" />
+    <ClInclude Include="include\RE\BSLightingShaderMaterialFacegen.h" />
+    <ClInclude Include="include\RE\BSLightingShaderMaterialFacegenTint.h" />
+    <ClInclude Include="include\RE\BSLightingShaderMaterialGlowmap.h" />
+    <ClInclude Include="include\RE\BSLightingShaderMaterialLandscape.h" />
+    <ClInclude Include="include\RE\BSLightingShaderMaterialMultiLayerParallax.h" />
+    <ClInclude Include="include\RE\BSLightingShaderMaterialParallax.h" />
+    <ClInclude Include="include\RE\BSLightingShaderMaterialParallaxOcc.h" />
     <ClInclude Include="include\RE\BSXFlags.h" />
     <ClInclude Include="include\RE\hkAabb.h" />
     <ClInclude Include="include\RE\hkpSolverInfo.h" />

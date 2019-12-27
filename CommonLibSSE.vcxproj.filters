@@ -5003,5 +5003,32 @@
     <ClInclude Include="include\RE\BleedoutCameraState.h">
       <Filter>include\RE\Camera\TESCameraState\ThirdPersonState</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialEnvmap.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialEye.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialFacegen.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialFacegenTint.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialGlowmap.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialLandscape.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialMultiLayerParallax.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialParallax.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialParallaxOcc.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

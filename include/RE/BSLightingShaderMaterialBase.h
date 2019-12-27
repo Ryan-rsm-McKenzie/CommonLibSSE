@@ -19,26 +19,26 @@ namespace RE
 		virtual ~BSLightingShaderMaterialBase();	// 00
 
 		// override (BSShaderMaterial)
-		virtual BSShaderMaterial*	Create() override = 0;					// 01
-		virtual void				Copy(BSShaderMaterial* a_src) override;	// 02
-		virtual void				Unk_03(void) override;					// 03
-		virtual void				Unk_04(void) override;					// 04
-		virtual void				Unk_05(void) override;					// 05
-		virtual Type				GetType() const override;				// 06 - { return Type::kDefault; }
-		virtual void				Unk_07(void) override;					// 07 - { return 2; }
+		virtual BSShaderMaterial*	Create() override = 0;						// 01
+		virtual void				Copy(BSShaderMaterial* a_src) override;		// 02
+		virtual bool				DoIsCopy(const BSShaderMaterial* a_src);	// 03
+		virtual void				Unk_04(void) override;						// 04
+		virtual BSShaderMaterial*	GetDefault() override;						// 05
+		virtual Type				GetType() const override;					// 06 - { return Type::kDefault; }
+		virtual void				Unk_07(void) override;						// 07 - { return 2; }
 
 		// add
-		virtual void				Unk_08(void);							// 08
-		virtual void				Unk_09(void);							// 09
-		virtual void				Unk_0A(void);							// 0A
-		virtual void				Unk_0B(void);							// 0B
-		virtual void				Unk_0C(void);							// 0C
-		virtual void				Unk_0D(void);							// 0D
+		virtual void				SetTexture(UInt32 index, BSTextureSet* texture, SInt32 unk1);									// 08
+		virtual void				ReleaseTextures(void); 																			// 09 - ReleaseRefs
+		virtual void				Unk_0A(UInt8 unk1, UInt8 unk2, UInt8 unk3, UInt8 unk4, UInt8 unk5, UInt32 unk6, UInt32 unk7);	// 0A
+		virtual void				Unk_0B(void* unk1, UInt32 unk2);																// 0B
+		virtual void				Unk_0C(void);																					// 0C
+		virtual void				Unk_0D(void);																					// 0D
 
 		static BSLightingShaderMaterialBase* CreateMaterial(Type a_type);
 
 		NiPointer<BSTextureSet>	GetTextureSet() const;
-		void					SetTextureSet(NiPointer<BSTextureSet> a_textureSet);
+		void					SetTextureSet(BSTextureSet * a_textureSet);
 
 
 		// members

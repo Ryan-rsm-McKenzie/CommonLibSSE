@@ -37,16 +37,16 @@ namespace RE
 		};
 
 
-		virtual ~BSShaderMaterial();								// 00
+		virtual ~BSShaderMaterial();											// 00
 
 		// add
-		virtual BSShaderMaterial*	Create();						// 01
-		virtual void				Copy(BSShaderMaterial* a_src);	// 02
-		virtual void				Unk_03(void);					// 03
-		virtual void				Unk_04(void);					// 04
-		virtual void				Unk_05(void);					// 05
-		virtual Type				GetType() const;				// 06 - { return Type::kDefault; }
-		virtual void				Unk_07(void);					// 07 - { return 0; }
+		virtual BSShaderMaterial*	Create();									// 01
+		virtual void				Copy(BSShaderMaterial* a_src);				// 02
+		virtual bool				DoIsCopy(const BSShaderMaterial* a_src);	// 03
+		virtual void				Unk_04(void);								// 04
+		virtual BSShaderMaterial*	GetDefault();								// 05
+		virtual Type				GetType() const;							// 06 - { return Type::kDefault; }
+		virtual void				Unk_07(void);								// 07 - { return 0; }
 
 
 		// members
