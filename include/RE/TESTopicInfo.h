@@ -28,6 +28,15 @@ namespace RE
 		};
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kSaidOnce = (UInt32)1 << 31
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

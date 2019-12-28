@@ -50,6 +50,21 @@ namespace RE
 		};
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kFlags = 1 << 1,
+				kFullName = 1 << 2,
+				kOwnership = 1 << 3,
+				kExteriorShort = 1 << 28,
+				kExteriorChar = 1 << 29,
+				kDetachTime = 1 << 30,
+				kSeendData = (UInt32)1 << 31
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

@@ -10,38 +10,38 @@ namespace RE
 	NiPointer<TESObjectREFR> Console::GetSelectedRef()
 	{
 		auto handle = GetSelectedRefHandle();
-		return TESObjectREFR::LookupByHandle(handle);
+		return handle.get();
 	}
 
 
-	RefHandle Console::GetSelectedRefHandle()
+	ObjectRefHandle Console::GetSelectedRefHandle()
 	{
-		REL::Offset<RefHandle*> selectedRef(Offset::Console::SelectedRef);
+		REL::Offset<ObjectRefHandle*> selectedRef(Offset::Console::SelectedRef);
 		return *selectedRef;
 	}
 
 
 	void Console::SetSelectedRef(NiPointer<TESObjectREFR> a_refPtr)
 	{
-		auto handle = a_refPtr->CreateRefHandle();
+		ObjectRefHandle handle(a_refPtr.get());
 		SetSelectedRef_Impl(handle);
 	}
 
 
 	void Console::SetSelectedRef(TESObjectREFR* a_ref)
 	{
-		auto handle = a_ref->CreateRefHandle();
+		ObjectRefHandle handle(a_ref);
 		SetSelectedRef_Impl(handle);
 	}
 
 
-	void Console::SetSelectedRef(RefHandle a_handle)
+	void Console::SetSelectedRef(ObjectRefHandle a_handle)
 	{
 		SetSelectedRef_Impl(a_handle);
 	}
 
 
-	void Console::SetSelectedRef_Impl(RefHandle& a_handle)
+	void Console::SetSelectedRef_Impl(ObjectRefHandle& a_handle)
 	{
 		using func_t = function_type_t<decltype(&Console::SetSelectedRef_Impl)>;
 		REL::Offset<func_t*> func(RE::Offset::Console::SetSelectedRef);

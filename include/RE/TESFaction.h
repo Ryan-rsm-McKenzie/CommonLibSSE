@@ -49,6 +49,17 @@ namespace RE
 		};
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kFactionFlags = 1 << 1,
+				kFactionReactions = 1 << 2,
+				kFactionCrimeCounts = (UInt32)1 << 31
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

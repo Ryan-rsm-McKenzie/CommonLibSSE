@@ -5,10 +5,12 @@
 #include "RE/ActorValueOwner.h"
 #include "RE/ActorValues.h"
 #include "RE/BGSEntryPointPerkEntry.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTEvent.h"
 #include "RE/BSTList.h"
 #include "RE/BSTSmartPointer.h"
+#include "RE/BSTTuple.h"
 #include "RE/FormTypes.h"
 #include "RE/IPostAnimationChannelUpdateFunctor.h"
 #include "RE/MagicTarget.h"
@@ -58,7 +60,7 @@ namespace RE
 				kUnknown,
 				kPowerOrShout,
 
-				kNumSlots
+				kTotal
 			};
 		};
 
@@ -70,6 +72,18 @@ namespace RE
 			kNotSpeaking = 1 << 5,
 			kIsPlayerTeammate = 1 << 26,
 			kIsGuard = 1 << 30
+		};
+
+
+		enum class CriticalStage : UInt32
+		{
+			kNone = 0,
+			kGooStart = 1,
+			kGooEnd = 2,
+			kDisintegrateStart = 3,
+			kDisintegrateEnd = 4,
+
+			kTotal
 		};
 
 
@@ -90,6 +104,24 @@ namespace RE
 		};
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kLifeState = 1 << 10,
+				kPackageExtraData = 1 << 11,
+				kMerchantContainer = 1 << 12,
+				kDismemberedLimbs = 1 << 17,
+				kLeveledActor = 1 << 18,
+				kDispModifiers = 1 << 19,
+				kTempModifiers = 1 << 20,
+				kDamageModifiers = 1 << 21,
+				kOverrideModifiers = 1 << 22,
+				kPermanentModifiers = 1 << 23,
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32
@@ -105,11 +137,18 @@ namespace RE
 		};
 
 
-		struct ActorValueModifiers
+		struct AITimeStamp
 		{
-			struct Modifiers
+			float timeStamp;	// 0
+		};
+		STATIC_ASSERT(sizeof(AITimeStamp) == 0x4);
+
+
+		struct Modifiers
+		{
+			struct Mods
 			{
-				enum Modifier
+				enum Mod
 				{
 					kPermanent = 0,
 					kTemporary,
@@ -118,16 +157,16 @@ namespace RE
 					kTotal
 				};
 			};
-			using Modifier = Modifiers::Modifier;
+			using Mod = Mods::Mod;
 
 
 			// members
-			float modifiers[Modifiers::kTotal];	// 0
+			float modifiers[Mod::kTotal];	// 0
 		};
-		STATIC_ASSERT(sizeof(ActorValueModifiers) == 0xC);
+		STATIC_ASSERT(sizeof(Modifiers) == 0xC);
 
 
-		struct ActorValueMap
+		struct ActorValueStorage
 		{
 			template <class T>
 			struct LocalMap
@@ -165,10 +204,10 @@ namespace RE
 
 
 			// members
-			LocalMap<float>					baseValues;	// 00
-			LocalMap<ActorValueModifiers>	modifiers;	// 10
+			LocalMap<float>		baseValues;	// 00
+			LocalMap<Modifiers>	modifiers;	// 10
 		};
-		STATIC_ASSERT(sizeof(ActorValueMap) == 0x20);
+		STATIC_ASSERT(sizeof(ActorValueStorage) == 0x20);
 
 
 		virtual	~Actor();																																																								// 000
@@ -199,7 +238,7 @@ namespace RE
 		virtual void							PauseCurrentDialogue(void) override;																																									// 04F
 		virtual NiPoint3*						GetStartingAngle(NiPoint3& a_angle) const override;																																						// 052
 		virtual NiPoint3*						GetStartingLocation(NiPoint3& a_location) const override;																																				// 053
-		virtual RefHandle&						RemoveItem(RefHandle& a_dropHandle, TESBoundObject* a_item, SInt32 a_count, RemoveType a_mode, ExtraDataList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0) override;	// 056
+		virtual ObjectRefHandle&				RemoveItem(ObjectRefHandle& a_dropHandle, TESBoundObject* a_item, SInt32 a_count, RemoveType a_mode, ExtraDataList* a_extraList, TESObjectREFR* a_moveToRef, void* a_arg7 = 0, void* a_arg8 = 0) override;	// 056
 		virtual bool							AddWornItem(TESBoundObject* a_item, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5) override;																								// 057
 		virtual void							DoTrap(void* a_arg1) override;																																											// 058
 		virtual void							DoTrap(void* a_arg1, void* a_arg2) override;																																							// 059
@@ -295,7 +334,7 @@ namespace RE
 		virtual void							Unk_C8(void);																																															// 0C8
 		virtual void							Unk_C9(void);																																															// 0C9
 		virtual void							OnArmorActorValueChanged();																																												// 0CA - { return; }
-		virtual void							DropObject(RefHandle& a_droppedItemHandle, TESBoundObject* a_object, ExtraDataList* a_extraList, UInt32 a_count, void* a_arg5 = 0, void* a_arg6 = 0);													// 0CB
+		virtual void							DropObject(ObjectRefHandle& a_droppedItemHandle, TESBoundObject* a_object, ExtraDataList* a_extraList, UInt32 a_count, void* a_arg5 = 0, void* a_arg6 = 0);												// 0CB
 		virtual void							PickUpObject(TESObjectREFR* a_object, UInt32 a_count, bool a_arg3 = false, bool a_playSound = true);																									// 0CC
 		virtual void							AttachArrow(void);																																														// 0CD
 		virtual void							DetachArrow(void);																																														// 0CE
@@ -400,6 +439,7 @@ namespace RE
 		void						ClearArrested();
 		void						ClearExpressionOverride();
 		void						ClearExtraArrows();
+		ActorHandle					CreateRefHandle();
 		void						DispelWornItemEnchantments();
 		TESNPC*						GetActorBase();
 		const TESNPC*				GetActorBase() const;
@@ -443,65 +483,65 @@ namespace RE
 
 
 		// members
-		Flag1									flags1;										// 0E0
-		float									unk0E4;										// 0E4
-		UInt32									unk0E8;										// 0E8
-		UInt32									pad0EC;										// 0EC
-		AIProcess*								aiProcess;									// 0F0
-		RefHandle								dialogueTarget;								// 0F8
-		RefHandle								combatTarget;								// 0FC
-		RefHandle								killer;										// 100
-		UInt32									unk104;										// 104
-		float									unk108;										// 108
-		UInt32									unk10C;										// 10C
-		UInt32									unk110;										// 110
-		UInt32									unk114;										// 114
-		UInt32									unk118;										// 118
-		UInt32									unk11C;										// 11C
-		NiPoint3								startingLocation;							// 120
-		float									startingAngle;								// 12C
-		TESObjectCELL*							editorCell;									// 130
-		BGSLocation*							editorLocation;								// 138
-		ActorMover*								mover;										// 140
-		BSTSmartPointer<MovementControllerNPC>	movementController;							// 148
-		void*									unk150;										// 150
-		void*									unk158;										// 158
-		UInt64									unk160;										// 160
-		float									unk168;										// 168
-		UInt32									unk16C;										// 16C
-		UInt32									unk170;										// 170
-		UInt32									unk174;										// 174
-		UInt32									unk178;										// 178
-		UInt32									unk17C;										// 17C
-		UInt64									unk180;										// 180
-		BSTSmallArray<SpellItem*>				addedSpells;								// 188
-		MagicCaster*							magicCaster[SlotTypes::kNumSlots];			// 1A0
-		SpellItem*								equippingMagicItems[SlotTypes::kNumSlots];	// 1C0
-		TESForm*								equippedShout;								// 1E0
-		UInt32									unk1E8;										// 1E8
-		UInt32									pad1EC;										// 1EC
-		TESRace*								race;										// 1F0
-		float									unk1F8;										// 1F8
-		Flag2									flags2;										// 1FC
-		ActorValueMap							avMap;										// 200
-		void*									exclusiveBranch;							// 220
-		ActorValueModifiers						avHealth;									// 228
-		ActorValueModifiers						avMagicka;									// 234
-		ActorValueModifiers						avStamina;									// 240
-		ActorValueModifiers						avVoicePoints;								// 24C
-		float									unk258;										// 258
-		UInt32									unk25C;										// 25C
-		BSTSmartPointer<Biped>					smallBiped;									// 260
-		float									unk268;										// 268 - related to armor rating
-		float									unk26C;										// 26C - related to armor rating
-		UInt16									unk270;										// 270
-		UInt8									unk272;										// 272
-		UInt8									unk273;										// 273
-		UInt32									unk274;										// 274
-		UInt64									unk278;										// 278
-		UInt64									unk280;										// 280
-		CRITICAL_SECTION						unk288;										// 288
+		Flag1									flags1;								// 0E0
+		float									updateTargetTimer;					// 0E4
+		CriticalStage							criticalStage;						// 0E8
+		UInt32									pad0EC;								// 0EC
+		AIProcess*								currentProcess;						// 0F0
+		RefHandle								dialogueItemTarget;					// 0F8
+		RefHandle								currentCombatTarget;				// 0FC
+		RefHandle								myKiller;							// 100
+		float									checkMyDeadBodyTimer;				// 104
+		float									voiceTimer;							// 108
+		float									underWaterTimer;					// 10C
+		SInt32									thiefCrimeStamp;					// 110
+		SInt32									actionValue;						// 114
+		float									timerOnAction;						// 118
+		UInt32									unk11C;								// 11C
+		NiPoint3								editorLocCoord;						// 120
+		float									editorLocRot;						// 12C
+		TESForm*								editorLocForm;						// 130
+		BGSLocation*							editorLocation;						// 138
+		ActorMover*								actorMover;							// 140
+		BSTSmartPointer<MovementControllerNPC>	movementController;					// 148
+		void*									unk150;								// 150
+		void*									unk158;								// 158
+		TESFaction*								vendorFaction;						// 160
+		AITimeStamp								calculateVendorFactionTimer;		// 168
+		UInt32									unk16C;								// 16C
+		UInt32									unk170;								// 170
+		UInt32									unk174;								// 174
+		UInt32									unk178;								// 178
+		UInt32									intimidateBribeDayStamp;			// 17C
+		UInt64									unk180;								// 180
+		BSTSmallArray<SpellItem*>				addedSpells;						// 188
+		MagicCaster*							magicCasters[SlotTypes::kTotal];	// 1A0
+		SpellItem*								selectedSpells[SlotTypes::kTotal];	// 1C0
+		TESForm*								selectedPower;						// 1E0
+		UInt32									unk1E8;								// 1E8
+		UInt32									pad1EC;								// 1EC
+		TESRace*								race;								// 1F0
+		float									equippedWeight;						// 1F8
+		Flag2									flags2;								// 1FC
+		ActorValueStorage						avStorage;							// 200
+		BGSDialogueBranch*						exclusiveBranch;					// 220
+		Modifiers								healthModifiers;					// 228
+		Modifiers								magickaModifiers;					// 234
+		Modifiers								staminaModifiers;					// 240
+		Modifiers								voicePointsModifiers;				// 24C
+		float									lastUpdate;							// 258
+		UInt32									lastSeenTime;						// 25C
+		BSTSmartPointer<Biped>					biped;								// 260
+		float									armorRating;						// 268
+		float									armorBaseFactorSum;					// 26C
+		UInt8									soundCallBackSet;					// 271
+		UInt8									unk271;								// 270
+		UInt8									unk272;								// 272
+		UInt8									unk273;								// 273
+		UInt32									unk274;								// 274
+		UInt64									unk278;								// 278
+		UInt64									unk280;								// 280
+		CRITICAL_SECTION						unk288;								// 288 - havok related
 	};
-	STATIC_ASSERT(offsetof(Actor, addedSpells) == 0x188);
 	STATIC_ASSERT(sizeof(Actor) == 0x2B0);
 }

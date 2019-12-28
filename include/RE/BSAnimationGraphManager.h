@@ -44,10 +44,10 @@ namespace RE
 		STATIC_ASSERT(sizeof(AnimationVariable) == 0x10);
 
 
-		virtual ~BSAnimationGraphManager();																									// 00
+		virtual ~BSAnimationGraphManager();																											// 00
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)
-		virtual	EventResult	ReceiveEvent(BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;	// 01
+		virtual	BSEventNotifyControl ReceiveEvent(BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;	// 01
 
 
 		// members

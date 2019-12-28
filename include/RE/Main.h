@@ -21,62 +21,75 @@ namespace RE
 		inline static const void* RTTI = RTTI_Main;
 
 
-		struct Semaphore
+		class BSPackedTaskQueue
 		{
-			HANDLE	handle;		// 00
-			UInt32	size;		// 08
-			UInt32	capacity;	// 0C
+		public:
+			using UnpackFunc_t = void(const BSPackedTask*);
+
+
+			struct Semaphore
+			{
+				HANDLE	handle;		// 00
+				UInt32	size;		// 08
+				UInt32	capacity;	// 0C
+			};
+			STATIC_ASSERT(sizeof(Semaphore) == 0x10);
+
+
+			// members
+			BSTCommonScrapHeapMessageQueue<BSPackedTask>	queue;		// 00
+			mutable Semaphore								semaphore;	// 28
+			UnpackFunc_t*									unpackFunc;	// 38
 		};
-		STATIC_ASSERT(sizeof(Semaphore) == 0x10);
+		STATIC_ASSERT(sizeof(BSPackedTaskQueue) == 0x40);
 
 
-		struct Data
+		struct BSSaveDataSystemUtilityImage
 		{
-			UInt64	unk00;	// 00
-			UInt32	unk08;	// 08
+			UInt32	size;	// 00
+			UInt32	width;	// 04
+			UInt32	height;	// 08
 			UInt32	pad0C;	// 0C
-			UInt64	unk10;	// 10
+			char*	buffer;	// 10
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x18);
+		STATIC_ASSERT(sizeof(BSSaveDataSystemUtilityImage) == 0x18);
 
 
-		virtual ~Main();																												// 00
+		virtual ~Main();																															// 00
 
 		// override (BSTEventSink<PositionPlayerEvent>)
-		virtual	EventResult	ReceiveEvent(PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;	// 01 - { return EventResult::kContinue; }
+		virtual	BSEventNotifyControl	ReceiveEvent(PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;	// 01 - { return BSEventNotifyControl::kContinue; }
 
 		// override (BSTEventSink<BSGamerProfileEvent>)
-		virtual	EventResult	ReceiveEvent(BSGamerProfileEvent* a_event, BSTEventSource<BSGamerProfileEvent>* a_eventSource) override;	// 01
+		virtual	BSEventNotifyControl	ReceiveEvent(BSGamerProfileEvent* a_event, BSTEventSource<BSGamerProfileEvent>* a_eventSource) override;	// 01
 
 		static Main* GetSingleton();
 
 
 		// members
-		bool											quitGame;			// 010
-		UInt8											unk011;				// 011
-		UInt16											unk012;				// 012
-		UInt16											unk014;				// 014
-		bool											advanceSimulation;	// 016
-		UInt8											unk017;				// 017
-		UInt64											unk018;				// 018
-		UInt64											unk020;				// 020
-		UInt32											threadID;			// 028
-		UInt32											unk02C;				// 02C
-		UInt64											unk030;				// 030
-		ScrapHeap										unk038;				// 038
-		BSTCommonScrapHeapMessageQueue<BSPackedTask>	unk0C8;				// 0C8
-		mutable Semaphore								unk0F0;				// 0F0
-		void*											unk100;				// 100 - functor
-		ScrapHeap										unk108;				// 108
-		BSTCommonScrapHeapMessageQueue<BSPackedTask>	unk198;				// 198
-		mutable Semaphore								unk1C0;				// 1C0
-		void*											unk1D0;				// 1D0 - functor
-		UInt8											unk1D8;				// 1D8
-		UInt8											unk1D9;				// 1D9
-		UInt16											unk1DA;				// 1DA
-		UInt32											unk1DC;				// 1DC
-		Data											unk1E0[3];			// 1E0
-		Data											unk228[3];			// 228
+		bool							quitGame;						// 010
+		bool							resetGame;						// 011
+		bool							fullReset;						// 012
+		bool							gameActive;						// 013
+		bool							onIdle;							// 014
+		bool							reloadContent;					// 015
+		bool							freezeTime;						// 016
+		bool							freezeNextFrame;				// 017
+		HWND							wnd;							// 018
+		HINSTANCE						instance;						// 020
+		UInt32							threadID;						// 028
+		UInt32							unk02C;							// 02C
+		UInt64							unk030;							// 030
+		ScrapHeap						packedTaskHeap;					// 038
+		BSPackedTaskQueue				taskQueue;						// 0C8
+		ScrapHeap						secondaryPackedTaskHeap;		// 108
+		BSPackedTaskQueue				secondaryTaskQueue;				// 198
+		UInt8							unk1D8;							// 1D8
+		UInt8							unk1D9;							// 1D9
+		UInt16							unk1DA;							// 1DA
+		UInt32							unk1DC;							// 1DC
+		BSSaveDataSystemUtilityImage	saveDataBackgroundImages[3];	// 1E0
+		BSSaveDataSystemUtilityImage	saveDataIconImages[3];			// 228
 	};
 	STATIC_ASSERT(sizeof(Main) == 0x270);
 }

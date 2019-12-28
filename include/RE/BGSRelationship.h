@@ -15,6 +15,15 @@ namespace RE
 		enum { kTypeID = FormType::Relationship };
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kRelationshipData = 1 << 1
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

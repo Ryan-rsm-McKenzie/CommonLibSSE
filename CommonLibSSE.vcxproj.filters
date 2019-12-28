@@ -1119,9 +1119,6 @@
     <ClCompile Include="src\RE\ExtraMapMarker.cpp">
       <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\SoundData.cpp">
-      <Filter>src\RE\BSAudio</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSAudioManager.cpp">
       <Filter>src\RE\BSAudio</Filter>
     </ClCompile>
@@ -1731,6 +1728,9 @@
     <ClCompile Include="src\RE\UI.cpp">
       <Filter>src\RE\Menus</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BSSoundHandle.cpp">
+      <Filter>src\RE\BSAudio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -1875,9 +1875,6 @@
       <Filter>include\RE\Animation</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSAudioManager.h">
-      <Filter>include\RE\BSAudio</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\SoundData.h">
       <Filter>include\RE\BSAudio</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSHandleRefObject.h">
@@ -2051,19 +2048,7 @@
     <ClInclude Include="include\RE\DeviceTypes.h">
       <Filter>include\RE\BSDevices\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSActorCellEvent.h">
-      <Filter>include\RE\Events\ActorEvent</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSActorDeathEvent.h">
-      <Filter>include\RE\Events\ActorEvent</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h">
-      <Filter>include\RE\Events\ActorEvent</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSAnimationGraphEvent.h">
-      <Filter>include\RE\Events\ActorEvent</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSTransformDeltaEvent.h">
       <Filter>include\RE\Events\ActorEvent</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ButtonEvent.h">
@@ -2110,9 +2095,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESTrackedStatsEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\UserEventEnabledEvent.h">
-      <Filter>include\RE\Events\MenuEvent</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\MenuOpenCloseEvent.h">
       <Filter>include\RE\Events\MenuEvent</Filter>
@@ -5002,6 +4984,18 @@
     </ClInclude>
     <ClInclude Include="include\RE\BleedoutCameraState.h">
       <Filter>include\RE\Camera\TESCameraState\ThirdPersonState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSUntypedPointerHandle.h">
+      <Filter>include\RE\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSPointerHandle.h">
+      <Filter>include\RE\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTTuple.h">
+      <Filter>include\RE\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSSoundHandle.h">
+      <Filter>include\RE\BSAudio</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

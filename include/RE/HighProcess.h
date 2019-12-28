@@ -2,11 +2,11 @@
 
 #include "RE/BSFixedString.h"
 #include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSSoundHandle.h"
 #include "RE/BSTHashMap.h"
 #include "RE/BSTList.h"
 #include "RE/BSTSmartPointer.h"
 #include "RE/NiSmartPointer.h"
-#include "RE/SoundData.h"
 
 
 namespace RE
@@ -213,7 +213,7 @@ namespace RE
 		UInt32												unk2F0;				// 2F0
 		RefHandle											unk2F4;				// 2F4
 		UInt32												unk2F8;				// 2F8
-		SoundData											unk2FC[2];			// 2FC
+		BSSoundHandle										unk2FC[2];			// 2FC
 		UInt32												unk314;				// 314
 		UInt32												unk318;				// 318
 		float												unk31C;				// 31C

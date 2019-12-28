@@ -25,6 +25,15 @@ namespace RE
 		enum { kTypeID = FormType::Note };
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kNoteRead = (UInt32)1 << 31
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

@@ -44,6 +44,27 @@ namespace RE
 		};
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kBaseData = 1 << 1,
+				kAttributes = 1 << 2,
+				kAIData = 1 << 3,
+				kSpellList = 1 << 4,
+				kFullName = 1 << 5,
+				kFactions = 1 << 6,
+				kNPCSkills = 1 << 9,
+				kClass = 1 << 10,
+				kFace = 1 << 11,
+				kDefaultOutfit = 1 << 12,
+				kSleepOutfit = 1 << 13,
+				kGender = 1 << 24,
+				kRace = 1 << 25
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

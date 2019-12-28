@@ -305,7 +305,7 @@
     <ClCompile Include="src\RE\Setting.cpp" />
     <ClCompile Include="src\RE\Sky.cpp" />
     <ClCompile Include="src\RE\SkyrimVM.cpp" />
-    <ClCompile Include="src\RE\SoundData.cpp" />
+    <ClCompile Include="src\RE\BSSoundHandle.cpp" />
     <ClCompile Include="src\RE\BSExtraData.cpp" />
     <ClCompile Include="src\RE\BSFixedString.cpp" />
     <ClCompile Include="src\RE\BSInputDevice.cpp" />
@@ -420,6 +420,9 @@
     <ClInclude Include="include\RE\bhkNiCollisionObject.h" />
     <ClInclude Include="include\RE\BleedoutCameraState.h" />
     <ClInclude Include="include\RE\BSAnimNoteListener.h" />
+    <ClInclude Include="include\RE\BSPointerHandle.h" />
+    <ClInclude Include="include\RE\BSTTuple.h" />
+    <ClInclude Include="include\RE\BSUntypedPointerHandle.h" />
     <ClInclude Include="include\RE\BSXFlags.h" />
     <ClInclude Include="include\RE\hkAabb.h" />
     <ClInclude Include="include\RE\hkpSolverInfo.h" />
@@ -514,8 +517,6 @@
     <ClInclude Include="include\RE\AutoMoveHandler.h" />
     <ClInclude Include="include\RE\BGSAcousticSpace.h" />
     <ClInclude Include="include\RE\BGSAction.h" />
-    <ClInclude Include="include\RE\BGSActorCellEvent.h" />
-    <ClInclude Include="include\RE\BGSActorDeathEvent.h" />
     <ClInclude Include="include\RE\BGSAttackData.h" />
     <ClInclude Include="include\RE\BGSAttackDataForm.h" />
     <ClInclude Include="include\RE\BGSAttackDataMap.h" />
@@ -557,7 +558,6 @@
     <ClInclude Include="include\RE\bgs\saveload\Request.h" />
     <ClInclude Include="include\RE\bhkCachingShapePhantom.h" />
     <ClInclude Include="include\RE\bhkCharacterController.h" />
-    <ClInclude Include="include\RE\bhkCharacterMoveFinishEvent.h" />
     <ClInclude Include="include\RE\bhkCharacterPointCollector.h" />
     <ClInclude Include="include\RE\bhkCharacterProxy.h" />
     <ClInclude Include="include\RE\bhkCharacterState.h" />
@@ -710,7 +710,6 @@
     <ClInclude Include="include\RE\BSTArray.h" />
     <ClInclude Include="include\RE\BSTEvent.h" />
     <ClInclude Include="include\RE\BSTList.h" />
-    <ClInclude Include="include\RE\BSTransformDeltaEvent.h" />
     <ClInclude Include="include\RE\BSTSingleton.h" />
     <ClInclude Include="include\RE\BSUIMessageData.h" />
     <ClInclude Include="include\RE\BSUIScaleformData.h" />
@@ -1325,7 +1324,7 @@
     <ClInclude Include="include\RE\SmithingMenu.h" />
     <ClInclude Include="include\RE\SneakHandler.h" />
     <ClInclude Include="include\RE\SoulLevels.h" />
-    <ClInclude Include="include\RE\SoundData.h" />
+    <ClInclude Include="include\RE\BSSoundHandle.h" />
     <ClInclude Include="include\RE\SoundLevels.h" />
     <ClInclude Include="include\RE\SpellItem.h" />
     <ClInclude Include="include\RE\SprintHandler.h" />
@@ -1461,7 +1460,6 @@
     <ClInclude Include="include\RE\BSTCreateFactoryManager.h" />
     <ClInclude Include="include\RE\UISaveLoadManager.h" />
     <ClInclude Include="include\RE\InterfaceStrings.h" />
-    <ClInclude Include="include\RE\UserEventEnabledEvent.h" />
     <ClInclude Include="include\RE\TESFile.h" />
     <ClInclude Include="include\RE\ValueModifierEffect.h" />
     <ClInclude Include="include\RE\WeaponStrikeData.h" />

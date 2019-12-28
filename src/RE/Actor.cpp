@@ -90,8 +90,8 @@ namespace RE
 
 	void Actor::ClearArrested()
 	{
-		if (aiProcess && aiProcess->IsArrested()) {
-			aiProcess->SetArrested(false);
+		if (currentProcess && currentProcess->IsArrested()) {
+			currentProcess->SetArrested(false);
 			ResetAI(0, 0);
 			auto procManager = ProcessLists::GetSingleton();
 			procManager->SetCombatAlarmState(this, true);
@@ -111,6 +111,12 @@ namespace RE
 	void Actor::ClearExtraArrows()
 	{
 		extraData.RemoveByType(ExtraDataType::kAttachedArrows3D);
+	}
+
+
+	ActorHandle Actor::CreateRefHandle()
+	{
+		return ActorHandle(this);
 	}
 
 
@@ -138,12 +144,12 @@ namespace RE
 
 	InventoryEntryData* Actor::GetAttackingWeapon()
 	{
-		if (!aiProcess || !aiProcess->highProcess || !aiProcess->highProcess->attackData || !aiProcess->middleProcess) {
+		if (!currentProcess || !currentProcess->highProcess || !currentProcess->highProcess->attackData || !currentProcess->middleProcess) {
 			return 0;
 		}
 
-		auto attackData = aiProcess->highProcess->attackData;
-		auto middleProcess = aiProcess->middleProcess;
+		auto attackData = currentProcess->highProcess->attackData;
+		auto middleProcess = currentProcess->middleProcess;
 
 		return attackData->IsLeftAttack() ? middleProcess->leftHand : middleProcess->rightHand;
 	}
@@ -151,12 +157,12 @@ namespace RE
 
 	const InventoryEntryData* Actor::GetAttackingWeapon() const
 	{
-		if (!aiProcess || !aiProcess->highProcess || !aiProcess->highProcess->attackData || !aiProcess->middleProcess) {
+		if (!currentProcess || !currentProcess->highProcess || !currentProcess->highProcess->attackData || !currentProcess->middleProcess) {
 			return 0;
 		}
 
-		auto attackData = aiProcess->highProcess->attackData;
-		auto middleProcess = aiProcess->middleProcess;
+		auto attackData = currentProcess->highProcess->attackData;
+		auto middleProcess = currentProcess->middleProcess;
 
 		return attackData->IsLeftAttack() ? middleProcess->leftHand : middleProcess->rightHand;
 	}
@@ -188,22 +194,22 @@ namespace RE
 
 	InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand)
 	{
-		if (!aiProcess || !aiProcess->middleProcess) {
+		if (!currentProcess || !currentProcess->middleProcess) {
 			return 0;
 		}
 
-		auto middleProcess = aiProcess->middleProcess;
+		auto middleProcess = currentProcess->middleProcess;
 		return a_leftHand ? middleProcess->leftHand : middleProcess->rightHand;
 	}
 
 
 	const InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand) const
 	{
-		if (!aiProcess || !aiProcess->middleProcess) {
+		if (!currentProcess || !currentProcess->middleProcess) {
 			return 0;
 		}
 
-		auto middleProcess = aiProcess->middleProcess;
+		auto middleProcess = currentProcess->middleProcess;
 		return a_leftHand ? middleProcess->leftHand : middleProcess->rightHand;
 	}
 
@@ -218,11 +224,11 @@ namespace RE
 
 	TESForm* Actor::GetEquippedObject(bool a_leftHand) const
 	{
-		if (aiProcess) {
+		if (currentProcess) {
 			if (a_leftHand) {
-				return aiProcess->GetEquippedLeftHand();
+				return currentProcess->GetEquippedLeftHand();
 			} else {
-				return aiProcess->GetEquippedRightHand();
+				return currentProcess->GetEquippedRightHand();
 			}
 		} else {
 			return 0;

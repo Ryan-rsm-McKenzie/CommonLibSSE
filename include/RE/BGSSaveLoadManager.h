@@ -69,16 +69,16 @@ namespace RE
 		STATIC_ASSERT(sizeof(UnkData) == 0x78);
 
 
-		virtual ~BGSSaveLoadManager();																																// 00
+		virtual ~BGSSaveLoadManager();																																			// 00
 
 		// override (BSTEventSink<BSSaveDataEvent>)
-		virtual	EventResult	ReceiveEvent(BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;										// 01
+		virtual	BSEventNotifyControl	ReceiveEvent(BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;										// 01
 
 		// override (BSTEventSink<RaceSexMenuEvent::NameChangedEvent>)
-		virtual	EventResult	ReceiveEvent(RaceSexMenuEvent::NameChangedEvent* a_event, BSTEventSource<RaceSexMenuEvent::NameChangedEvent>* a_eventSource) override;	// 01
+		virtual	BSEventNotifyControl	ReceiveEvent(RaceSexMenuEvent::NameChangedEvent* a_event, BSTEventSource<RaceSexMenuEvent::NameChangedEvent>* a_eventSource) override;	// 01
 
 		// override (BSTEventSink<BSSystemEvent>)
-		virtual	EventResult	ReceiveEvent(BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;											// 01
+		virtual	BSEventNotifyControl	ReceiveEvent(BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;											// 01
 
 
 		static BGSSaveLoadManager* GetSingleton();

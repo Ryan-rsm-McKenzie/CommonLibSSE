@@ -20,6 +20,15 @@ namespace RE
 		enum { kTypeID = FormType::LeveledNPC };
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kAddedObject = (UInt32)1 << 31
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

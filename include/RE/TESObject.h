@@ -11,6 +11,16 @@ namespace RE
 		inline static const void* RTTI = RTTI_TESObject;
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kObjectValue = 1 << 1,
+				kObjectFullName = 1 << 1
+			};
+		};
+
+
 		virtual ~TESObject();									// 00
 
 		// override (TESForm)

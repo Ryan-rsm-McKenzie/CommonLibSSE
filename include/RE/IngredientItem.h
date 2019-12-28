@@ -30,6 +30,15 @@ namespace RE
 		enum { kTypeID = FormType::Ingredient };
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kIngredientUse = (UInt32)1 << 31
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

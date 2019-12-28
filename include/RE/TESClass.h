@@ -22,6 +22,15 @@ namespace RE
 		enum { kTypeID = FormType::Class };
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kTagSkills = 1 << 1
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

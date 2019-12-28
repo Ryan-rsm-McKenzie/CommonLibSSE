@@ -20,13 +20,13 @@ namespace RE
 	public:
 		inline static const void* RTTI = RTTI_UISaveLoadManager;
 
-		virtual ~UISaveLoadManager();																											// 00
+		virtual ~UISaveLoadManager();																														// 00
 
 		// override (BSTEventSink<BSSaveDataEvent>)
-		virtual	EventResult	ReceiveEvent(BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;					// 01
+		virtual	BSEventNotifyControl	ReceiveEvent(BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;					// 01
 
 		// override (BSTEventSink<BGSSaveLoadManagerEvent>)
-		virtual	EventResult	ReceiveEvent(BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;	// 01
+		virtual	BSEventNotifyControl	ReceiveEvent(BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;	// 01
 
 
 		// members

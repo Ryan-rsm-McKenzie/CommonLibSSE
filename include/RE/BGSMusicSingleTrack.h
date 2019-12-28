@@ -1,9 +1,9 @@
 #pragma once
 
 #include "RE/BGSMusicTrack.h"
+#include "RE/BSSoundHandle.h"
 #include "RE/BSTArray.h"
 #include "RE/FileHash.h"
-#include "RE/SoundData.h"
 
 
 namespace RE
@@ -38,15 +38,15 @@ namespace RE
 
 
 		// members
-		FileHash		track;		// 20 - ANAM
-		FileHash		finale;		// 2C - BNAM
-		BSTArray<float>	cuePoints;	// 38 - FNAM
-		UInt32			unk50;		// 50
-		UInt32			unk54;		// 54
-		UInt64			unk58;		// 58
-		LoopData*		loopData;	// 60 - LNAM
-		SoundData		soundData;	// 68
-		UInt64			unk78;		// 78
+		FileHash		track;			// 20 - ANAM
+		FileHash		finale;			// 2C - BNAM
+		BSTArray<float>	cuePoints;		// 38 - FNAM
+		UInt32			unk50;			// 50
+		UInt32			unk54;			// 54
+		UInt64			unk58;			// 58
+		LoopData*		loopData;		// 60 - LNAM
+		BSSoundHandle	soundHandle;	// 68
+		UInt64			unk78;			// 78
 	};
 	STATIC_ASSERT(sizeof(BGSMusicSingleTrack) == 0x80);
 }

@@ -20,14 +20,14 @@ namespace RE
 		inline static const void* RTTI = RTTI_StatsNode;
 
 
-		virtual ~StatsNode();																												// 00
+		virtual ~StatsNode();																															// 00
 
 		// override (SimpleAnimationGraphManagerHolder)
-		virtual bool		SetupAnimEventSinks(BSTSmartPointer<BShkbAnimationGraph>& a_animGraph) override;								// 08
-		virtual void		Unk_0C(void) override;																							// 0C
+		virtual bool					SetupAnimEventSinks(BSTSmartPointer<BShkbAnimationGraph>& a_animGraph) override;								// 08
+		virtual void					Unk_0C(void) override;																							// 0C
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)
-		virtual	EventResult	ReceiveEvent(BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;	// 01 - runs PlaySound on BSAnimationGraphEvent::optionalStr
+		virtual	BSEventNotifyControl	ReceiveEvent(BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;	// 01 - runs PlaySound on BSAnimationGraphEvent::optionalStr
 
 
 		// members

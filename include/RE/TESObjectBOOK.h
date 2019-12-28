@@ -39,6 +39,16 @@ namespace RE
 		enum { kTypeID = FormType::Book };
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kTeachesSkill = 1 << 5,
+				kRead = 1 << 6
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

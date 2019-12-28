@@ -44,8 +44,8 @@ namespace RE
 	SInt32 TESFaction::GetInfamy() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
-		auto it = player->crimeMap.find(const_cast<TESFaction*>(this));
-		if (it != player->crimeMap.end()) {
+		auto it = player->crimeGoldMap.find(const_cast<TESFaction*>(this));
+		if (it != player->crimeGoldMap.end()) {
 			return it->second.nonViolentInfamy + it->second.violentInfamy;
 		} else {
 			return 0;
@@ -56,8 +56,8 @@ namespace RE
 	SInt32 TESFaction::GetInfamyNonViolent() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
-		auto it = player->crimeMap.find(const_cast<TESFaction*>(this));
-		if (it != player->crimeMap.end()) {
+		auto it = player->crimeGoldMap.find(const_cast<TESFaction*>(this));
+		if (it != player->crimeGoldMap.end()) {
 			return it->second.nonViolentInfamy;
 		} else {
 			return 0;
@@ -68,8 +68,8 @@ namespace RE
 	SInt32 TESFaction::GetInfamyViolent() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
-		auto it = player->crimeMap.find(const_cast<TESFaction*>(this));
-		if (it != player->crimeMap.end()) {
+		auto it = player->crimeGoldMap.find(const_cast<TESFaction*>(this));
+		if (it != player->crimeGoldMap.end()) {
 			return it->second.violentInfamy;
 		} else {
 			return 0;
@@ -80,8 +80,8 @@ namespace RE
 	SInt32 TESFaction::GetStolenItemValueCrime() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
-		auto it = player->stealCrimeMap.find(const_cast<TESFaction*>(this));
-		if (it != player->stealCrimeMap.end()) {
+		auto it = player->stolenItemValueMap.find(const_cast<TESFaction*>(this));
+		if (it != player->stolenItemValueMap.end()) {
 			return it->second.witnessed;
 		} else {
 			return 0;
@@ -92,8 +92,8 @@ namespace RE
 	SInt32 TESFaction::GetStolenItemValueNoCrime() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
-		auto it = player->stealCrimeMap.find(const_cast<TESFaction*>(this));
-		if (it != player->stealCrimeMap.end()) {
+		auto it = player->stolenItemValueMap.find(const_cast<TESFaction*>(this));
+		if (it != player->stolenItemValueMap.end()) {
 			return it->second.unwitnessed;
 		} else {
 			return 0;

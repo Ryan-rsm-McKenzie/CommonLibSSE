@@ -8,9 +8,9 @@ namespace RE
 	class NiNode;
 
 
-	struct SoundData
+	struct BSSoundHandle
 	{
-		SoundData();
+		BSSoundHandle();
 
 		bool	SetPosition(NiPoint3 a_pos);
 		void	SetNode(NiNode* a_node);
@@ -24,5 +24,5 @@ namespace RE
 		UInt16	pad06;	// 06
 		UInt32	unk08;	// 08
 	};
-	STATIC_ASSERT(sizeof(SoundData) == 0xC);
+	STATIC_ASSERT(sizeof(BSSoundHandle) == 0xC);
 }

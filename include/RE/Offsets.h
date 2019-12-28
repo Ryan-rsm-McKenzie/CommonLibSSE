@@ -279,6 +279,17 @@ namespace RE
 		}
 
 
+		namespace BSSoundHandle
+		{
+			// IndirectSig: E8 ? ? ? ? EB 0E 84 C0
+			constexpr std::uintptr_t Play = 0x00BED530;			// 1_5_97
+			// IndirectSig: E8 ? ? ? ? F3 0F 10 5D 9F
+			constexpr std::uintptr_t SetNode = 0x00BEDB10;		// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 4C 8D 7E 20
+			constexpr std::uintptr_t SetPosition = 0x00BED920;	// 1_5_97
+		}
+
+
 		namespace BSString
 		{
 			// DirectSig: 40 57 41 54 41 55 41 56 41 57 48 83 EC 30 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 41 8B F8
@@ -290,6 +301,13 @@ namespace RE
 		{
 			// IndirectSig: E8 ? ? ? ? 41 8B FE 41 8B CE
 			constexpr std::uintptr_t GetSingleton = 0x00C2A4D0;	// 1_5_97
+		}
+
+
+		namespace BSUntypedPointerHandle
+		{
+			// 8B 05 ? ? ? ? 89 44 24 78 48 8D 44 24 ? 8B 00
+			constexpr std::uintptr_t InvalidHandle = 0x01EBEABC;	// 1_5_97
 		}
 
 
@@ -993,17 +1011,6 @@ namespace RE
 		{
 			// VTable: .?AUSneakHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F3B8;	// 1_5_97
-		}
-
-
-		namespace SoundData
-		{
-			// IndirectSig: E8 ? ? ? ? EB 0E 84 C0
-			constexpr std::uintptr_t Play = 0x00BED530;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? F3 0F 10 5D 9F
-			constexpr std::uintptr_t SetNode = 0x00BEDB10;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 4C 8D 7E 20
-			constexpr std::uintptr_t SetPosition = 0x00BED920;	// 1_5_97
 		}
 
 

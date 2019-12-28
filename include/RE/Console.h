@@ -2,6 +2,7 @@
 
 #include <string_view>
 
+#include "RE/BSPointerHandle.h"
 #include "RE/IMenu.h"
 #include "RE/NiSmartPointer.h"
 
@@ -28,11 +29,11 @@ namespace RE
 		virtual Result	ProcessMessage(UIMessage* a_message) override;		// 04
 
 		static NiPointer<TESObjectREFR>	GetSelectedRef();
-		static RefHandle				GetSelectedRefHandle();
+		static ObjectRefHandle			GetSelectedRefHandle();
 
 		void	SetSelectedRef(NiPointer<TESObjectREFR> a_refPtr);
 		void	SetSelectedRef(TESObjectREFR* a_ref);
-		void	SetSelectedRef(RefHandle a_handle);
+		void	SetSelectedRef(ObjectRefHandle a_handle);
 
 
 		// members
@@ -43,7 +44,7 @@ namespace RE
 		UInt64	unk50;	// 50
 
 	protected:
-		void SetSelectedRef_Impl(RefHandle& a_handle);
+		void SetSelectedRef_Impl(ObjectRefHandle& a_handle);
 	};
 	STATIC_ASSERT(sizeof(Console) == 0x58);
 }

@@ -20,6 +20,16 @@ namespace RE
 		enum { kTypeID = FormType::Package };
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kWaitingFlag = 1 << 26,
+				kNeverRunFlag = (UInt32)1 << 31
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

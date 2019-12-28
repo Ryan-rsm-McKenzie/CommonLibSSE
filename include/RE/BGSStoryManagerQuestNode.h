@@ -17,6 +17,15 @@ namespace RE
 		enum { kTypeID = FormType::StoryManagerQuestNode };
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kTimeLastRun = (UInt32)1 << 31
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

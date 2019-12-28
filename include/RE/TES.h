@@ -31,10 +31,10 @@ namespace RE
 			inline static const void* RTTI = RTTI_TES;
 
 
-			virtual ~SystemEventAdapter();																						// 00
+			virtual ~SystemEventAdapter();																									// 00
 
 			// override (BSTEventSink<BSSystemEvent>)
-			virtual	EventResult	ReceiveEvent(BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;	// 01
+			virtual	BSEventNotifyControl ReceiveEvent(BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;	// 01
 
 
 			// members
@@ -43,13 +43,13 @@ namespace RE
 		STATIC_ASSERT(sizeof(SystemEventAdapter) == 0x10);
 
 
-		virtual ~TES();																																					// 00
+		virtual ~TES();																																								// 00
 
 		// override (BSTEventSink<BSResource::ArchiveStreamOpenedEvent>)
-		virtual	EventResult	ReceiveEvent(BSResource::ArchiveStreamOpenedEvent* a_event, BSTEventSource<BSResource::ArchiveStreamOpenedEvent>* a_eventSource) override;	// 01 - { return kContinue; }
+		virtual	BSEventNotifyControl	ReceiveEvent(BSResource::ArchiveStreamOpenedEvent* a_event, BSTEventSource<BSResource::ArchiveStreamOpenedEvent>* a_eventSource) override;	// 01 - { return BSEventNotifyControl::kContinue; }
 
 		// override (BSTEventSink<PositionPlayerEvent>)
-		virtual	EventResult	ReceiveEvent(PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;									// 01
+		virtual	BSEventNotifyControl	ReceiveEvent(PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;									// 01
 
 		static TES* GetSingleton();
 

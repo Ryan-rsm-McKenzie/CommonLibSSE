@@ -35,6 +35,15 @@ namespace RE
 		};
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kTeleportExtra = 1 << 17
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

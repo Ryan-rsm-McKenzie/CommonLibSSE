@@ -30,6 +30,15 @@ namespace RE
 		enum { kTypeID = FormType::None };
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kFlags = 1 << 0
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

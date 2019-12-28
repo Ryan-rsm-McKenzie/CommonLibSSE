@@ -22,13 +22,23 @@ namespace RE
 		enum { kTypeID = FormType::Location };
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kKeywordData = 1 << 30,
+				kCleared = (UInt32)1 << 31
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12,
-				kCleared = static_cast<RecordFlag>(1 << 31)
+				kCleared = (UInt32)1 << 31
 			};
 		};
 

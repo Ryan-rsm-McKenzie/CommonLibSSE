@@ -17,6 +17,16 @@ namespace RE
 		enum { kTypeID = FormType::EncounterZone };
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kZoneFlags = 1 << 1,
+				kGameData = (UInt32)1 << 31
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

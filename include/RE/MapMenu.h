@@ -2,6 +2,7 @@
 
 #include <string_view>
 
+#include "RE/BSSoundHandle.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTEvent.h"
 #include "RE/BSTSmartPointer.h"
@@ -10,7 +11,6 @@
 #include "RE/IMenu.h"
 #include "RE/LocalMapMenu.h"
 #include "RE/MapCamera.h"
-#include "RE/SoundData.h"
 
 
 namespace RE
@@ -36,16 +36,16 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "MapMenu";
 
 
-		virtual ~MapMenu();																											// 00
+		virtual ~MapMenu();																														// 00
 
 		// override (IMenu)
-		virtual void	Accept(CallbackProcessor* a_processor) override;															// 01
-		virtual Result	ProcessMessage(UIMessage* a_message) override;																// 04
-		virtual void	AdvanceMovie(float a_interval, UInt32 a_currentTime) override;												// 05
-		virtual void	RefreshPlatform() override;																					// 08
+		virtual void					Accept(CallbackProcessor* a_processor) override;														// 01
+		virtual Result					ProcessMessage(UIMessage* a_message) override;															// 04
+		virtual void					AdvanceMovie(float a_interval, UInt32 a_currentTime) override;											// 05
+		virtual void					RefreshPlatform() override;																				// 08
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
-		virtual	EventResult	ReceiveEvent(MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;	// 01
+		virtual	BSEventNotifyControl	ReceiveEvent(MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;	// 01
 
 
 		// members
@@ -68,7 +68,7 @@ namespace RE
 		UInt64							unk30560;		// 30560
 		UInt64							unk30568;		// 30568
 		UInt32							unk30570;		// 30570
-		SoundData						unk30574;		// 30574
+		BSSoundHandle					unk30574;		// 30574
 		UInt64							unk30580;		// 30580
 		UInt64							unk30588;		// 30588
 		UInt64							unk30590;		// 30590

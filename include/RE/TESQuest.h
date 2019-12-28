@@ -29,6 +29,22 @@ namespace RE
 		enum { kTypeID = FormType::Quest };
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kQuestFlags = 1 << 1,
+				kQuestScriptDelay = 1 << 2,
+				kQuestAlreadyRun = 1 << 26,
+				kQuestInstanceData = 1 << 27,
+				kQuestRuntimeData = 1 << 28,
+				kQuestObjectives = 1 << 29,
+				kQuestScript = 1 << 30,
+				kQuestStages = (UInt32)1 << 31
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

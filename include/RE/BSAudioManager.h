@@ -9,7 +9,7 @@ namespace RE
 {
 	class BSISoundDescriptor;
 	class BSXAudio2GameSound;
-	struct SoundData;
+	struct BSSoundHandle;
 
 
 	class BSAudioManager
@@ -19,7 +19,7 @@ namespace RE
 
 		bool	Play(FormID a_soundFormID);
 		bool	Play(BSISoundDescriptor* a_descriptor);
-		bool	BuildSoundDataFromDescriptor(SoundData& a_soundData, BSISoundDescriptor* a_descriptor, UInt32 a_flags = 0x1A);
+		bool	BuildSoundDataFromDescriptor(BSSoundHandle& a_soundHandle, BSISoundDescriptor* a_descriptor, UInt32 a_flags = 0x1A);
 
 
 		// members

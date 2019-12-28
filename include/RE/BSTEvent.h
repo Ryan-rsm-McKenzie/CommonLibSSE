@@ -9,10 +9,10 @@ namespace RE
 	template <class T> class BSTEventSink;
 
 
-	enum class EventResult
+	enum class BSEventNotifyControl : UInt32
 	{
 		kContinue = 0,
-		kAbort
+		kStop  = 1
 	};
 
 
@@ -103,7 +103,7 @@ namespace RE
 
 			for (auto& sink : eventSinks) {
 				if (std::find(removeBuffer.begin(), removeBuffer.end(), sink) == removeBuffer.end()) {
-					if (sink->ReceiveEvent(a_event, this) == EventResult::kAbort) {
+					if (sink->ReceiveEvent(a_event, this) == BSEventNotifyControl::kStop) {
 						break;
 					}
 				}
@@ -145,8 +145,8 @@ namespace RE
 	class BSTEventSink
 	{
 	public:
-		virtual ~BSTEventSink() = default;															// 00
-		virtual	EventResult	ReceiveEvent(Event* a_event, BSTEventSource<Event>* a_eventSource) = 0;	// 01
+		virtual ~BSTEventSink() = default;																		// 00
+		virtual	BSEventNotifyControl ReceiveEvent(Event* a_event, BSTEventSource<Event>* a_eventSource) = 0;	// 01
 	};
-	STATIC_ASSERT(sizeof(BSTEventSink<void*>) == 0x8);
+	STATIC_ASSERT(sizeof(BSTEventSink<void>) == 0x8);
 }

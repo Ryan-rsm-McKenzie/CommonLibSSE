@@ -40,13 +40,13 @@ namespace RE
 		STATIC_ASSERT(sizeof(QueuedReg) == 0x10);
 
 
-		virtual ~MenuControls();																										// 00
+		virtual ~MenuControls();																													// 00
 
 		// override (BSTEventSink<InputEvent*>)
-		virtual	EventResult	ReceiveEvent(InputEvent** a_event, BSTEventSource<InputEvent*>* a_eventSource) override;					// 01
+		virtual	BSEventNotifyControl	ReceiveEvent(InputEvent** a_event, BSTEventSource<InputEvent*>* a_eventSource) override;					// 01
 
 		// override (BSTEventSink<MenuModeChangeEvent>)
-		virtual	EventResult	ReceiveEvent(MenuModeChangeEvent* a_event, BSTEventSource<MenuModeChangeEvent>* a_eventSource) override;	// 01
+		virtual	BSEventNotifyControl	ReceiveEvent(MenuModeChangeEvent* a_event, BSTEventSource<MenuModeChangeEvent>* a_eventSource) override;	// 01
 
 
 		static MenuControls* GetSingleton();

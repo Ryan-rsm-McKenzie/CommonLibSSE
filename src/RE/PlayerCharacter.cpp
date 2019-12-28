@@ -55,7 +55,7 @@ namespace RE
 
 	NiPointer<TESObjectREFR> PlayerCharacter::GetGrabbedRef()
 	{
-		return TESObjectREFR::LookupByHandle(grabbedHandle);
+		return grabbedObject.get();
 	}
 
 

@@ -16,6 +16,15 @@ namespace RE
 		enum { kTypeID = FormType::FormList };
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kAddedForm = (UInt32)1 << 31
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32

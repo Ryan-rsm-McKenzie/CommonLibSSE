@@ -15,6 +15,15 @@ namespace RE
 		enum { kTypeID = FormType::TalkingActivator };
 
 
+		struct ChangeFlags
+		{
+			enum ChangeFlag : UInt32
+			{
+				kSpeaker = 1 << 23
+			};
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32
