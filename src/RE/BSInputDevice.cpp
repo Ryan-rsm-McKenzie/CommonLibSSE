@@ -23,7 +23,7 @@ namespace RE
 
 	bool BSInputDevice::IsPressed(UInt32 a_keyCode) const
 	{
-		auto it = keyToMapping.find(a_keyCode);
-		return (it != keyToMapping.end()) && (it->second->timer > 0.0);
+		auto it = deviceButtons.find(a_keyCode);
+		return (it != deviceButtons.end()) && (it->second->heldDownSecs > 0.0);
 	}
 }

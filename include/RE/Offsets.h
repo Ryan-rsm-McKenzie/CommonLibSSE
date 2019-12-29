@@ -175,6 +175,13 @@ namespace RE
 		}
 
 
+		namespace BSInputDeviceManager
+		{
+			// 74 0D 48 83 C0 A8
+			constexpr std::uintptr_t Singleton = 0x02F257A8;	// 1_5_97
+		}
+
+
 		namespace BSLightingShaderMaterialBase
 		{
 			// IndirectSig: E8 ? ? ? ? 45 33 C0 33 D2 48 8B CF 4C 8B F0
@@ -669,13 +676,6 @@ namespace RE
 		{
 			// 48 05 ? ? ? ? 74 4B
 			constexpr std::uintptr_t Singleton = 0x0301D758;	// 1_5_97
-		}
-
-
-		namespace InputManager
-		{
-			// 74 0D 48 83 C0 A8
-			constexpr std::uintptr_t Singleton = 0x02F257A8;	// 1_5_97
 		}
 
 

@@ -22,7 +22,7 @@ namespace RE
 
 
 		// members
-		UInt64 unkD0;	// D0
+		BSPCGamepadDeviceHandler* gamepadDeviceHandler;	// D0
 	};
 	STATIC_ASSERT(sizeof(BSPCGamepadDeviceDelegate) == 0xD8);
 }

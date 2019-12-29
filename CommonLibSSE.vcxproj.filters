@@ -1092,9 +1092,6 @@
     <ClCompile Include="src\RE\CommandTable.cpp">
       <Filter>src\RE\Obscript</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\InputManager.cpp">
-      <Filter>src\RE\BSDevices</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\TESForm.cpp">
       <Filter>src\RE\FormComponents</Filter>
     </ClCompile>
@@ -1731,6 +1728,9 @@
     <ClCompile Include="src\RE\BSSoundHandle.cpp">
       <Filter>src\RE\BSAudio</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BSInputDeviceManager.cpp">
+      <Filter>src\RE\BSDevices</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -1798,9 +1798,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\CommandTable.h">
       <Filter>include\RE\Obscript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\InputManager.h">
-      <Filter>include\RE\BSDevices</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSKeywordForm.h">
       <Filter>include\RE\FormComponents</Filter>
@@ -5005,6 +5002,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\UserEventEnabled.h">
       <Filter>include\RE\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSInputDeviceManager.h">
+      <Filter>include\RE\BSDevices</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

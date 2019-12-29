@@ -14,13 +14,13 @@ namespace RE
 		inline static const void* RTTI = RTTI_BSInputDevice;
 
 
-		struct Mapping
+		struct InputButton
 		{
-			BSFixedString	name;	// 00
-			float			timer;	// 08
-			UInt32			unk0C;	// 0C
+			BSFixedString	name;			// 00
+			float			heldDownSecs;	// 08
+			UInt32			keycode;		// 0C
 		};
-		STATIC_ASSERT(sizeof(Mapping) == 0x10);
+		STATIC_ASSERT(sizeof(InputButton) == 0x10);
 
 
 		virtual ~BSInputDevice();														// 00
@@ -31,17 +31,17 @@ namespace RE
 		virtual void	Unk_06(void) override;											// 06
 		virtual bool	IsEnabled() const override;										// 07 - { return true; }
 
-		bool			IsKeyboard() const;
-		bool			IsMouse() const;
-		bool			IsGamepad() const;
-		bool			IsPressed(UInt32 a_keyCode) const;
+		bool	IsKeyboard() const;
+		bool	IsMouse() const;
+		bool	IsGamepad() const;
+		bool	IsPressed(UInt32 a_keyCode) const;
 
 
 		// members
-		InputDevice							device;			// 08
-		UInt32								pad0C;			// 0C
-		BSTHashMap<UInt32, Mapping*>		keyToMapping;	// 10
-		BSTHashMap<BSFixedString, UInt32>	mappingToKey;	// 40
+		InputDevice							device;				// 08
+		UInt32								pad0C;				// 0C
+		BSTHashMap<UInt32, InputButton*>	deviceButtons;		// 10
+		BSTHashMap<BSFixedString, UInt32>	buttonNameIDMap;	// 40
 	};
 	STATIC_ASSERT(sizeof(BSInputDevice) == 0x70);
 }

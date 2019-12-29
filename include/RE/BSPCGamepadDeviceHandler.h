@@ -23,12 +23,12 @@ namespace RE
 		virtual	bool	GetKeyMapping(UInt32 a_key, BSFixedString& a_mapping) override;	// 04
 		virtual UInt32	GetMappingKey(BSFixedString a_mapping) override;				// 05
 		virtual void	Unk_06() override;												// 06
-		virtual bool	IsEnabled() const override;										// 07 - { return gamepad != 0; }
+		virtual bool	IsEnabled() const override;										// 07 - { return currentPCGamePadDelegate != 0; }
 		virtual void	Reset() override;												// 08
 
 
 		// members
-		BSPCGamepadDeviceDelegate* gamepad;	// 08
+		BSPCGamepadDeviceDelegate* currentPCGamePadDelegate;	// 08
 	};
 	STATIC_ASSERT(sizeof(BSPCGamepadDeviceHandler) == 0x10);
 }

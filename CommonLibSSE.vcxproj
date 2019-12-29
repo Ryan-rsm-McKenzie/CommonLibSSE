@@ -329,7 +329,7 @@
     <ClCompile Include="src\RE\UserEvents.cpp" />
     <ClCompile Include="src\RE\Misc.cpp" />
     <ClCompile Include="src\RE\IMenu.cpp" />
-    <ClCompile Include="src\RE\InputManager.cpp" />
+    <ClCompile Include="src\RE\BSInputDeviceManager.cpp" />
     <ClCompile Include="src\RE\ControlMap.cpp" />
     <ClCompile Include="src\RE\InventoryChanges.cpp" />
     <ClCompile Include="src\RE\InventoryEntryData.cpp" />
@@ -1125,7 +1125,7 @@
     <ClInclude Include="include\RE\INIPrefSettingCollection.h" />
     <ClInclude Include="include\RE\INISettingCollection.h" />
     <ClInclude Include="include\RE\InputEvent.h" />
-    <ClInclude Include="include\RE\InputManager.h" />
+    <ClInclude Include="include\RE\BSInputDeviceManager.h" />
     <ClInclude Include="include\RE\ControlMap.h" />
     <ClInclude Include="include\RE\ExtraDataList.h" />
     <ClInclude Include="include\RE\BGSBipedObjectForm.h" />

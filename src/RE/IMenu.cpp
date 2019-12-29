@@ -2,9 +2,9 @@
 
 #include <type_traits>
 
+#include "RE/BSInputDeviceManager.h"
 #include "RE/BSUIScaleformData.h"
 #include "RE/GFxValue.h"
-#include "RE/InputManager.h"
 #include "RE/InterfaceStrings.h"
 #include "RE/UI.h"
 #include "RE/UIMessage.h"
@@ -84,7 +84,7 @@ namespace RE
 	{
 		using Message = UIMessage::Message;
 
-		auto inputManager = InputManager::GetSingleton();
+		auto inputManager = BSInputDeviceManager::GetSingleton();
 		auto gamepad = inputManager->IsGamepadEnabled();
 		if (view && view->IsAvailable("_root.SetPlatform")) {
 			GFxValue args[2];

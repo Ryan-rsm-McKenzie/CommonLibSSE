@@ -32,10 +32,10 @@ namespace RE
 
 
 		// members
-		SInt32	userIndex;		// C8
-		bool	isConnected;	// CC
-		bool	unkCD;			// CD
-		UInt16	padCE;			// CE
+		SInt32	userIndex;			// C8
+		bool	isConnected;		// CC
+		bool	listeningForInput;	// CD
+		UInt16	padCE;				// CE
 	};
 	STATIC_ASSERT(sizeof(BSGamepadDevice) == 0xD0);
 }
