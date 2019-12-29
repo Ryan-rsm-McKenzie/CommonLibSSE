@@ -18,7 +18,12 @@ namespace RE
 		enum class Flag : UInt32
 		{
 			kNone = 0,
-			kActivationBlocked = 1 << 0
+			kBlockActivate = 1 << 0,
+			kBlockPlayerActivate = 1 << 1,
+			kBlockLoadEvents = 1 << 2,
+			kBlockActivateText = 1 << 3,
+			kPlayerHasTaken = 1 << 5,
+			kPowerConnectorFixed = 1 << 6,
 		};
 
 
@@ -27,7 +32,7 @@ namespace RE
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;	// 01 - { return kFlags; }
 
-		bool					IsActivationBlocked() const;
+		bool IsActivationBlocked() const;
 
 
 		// members

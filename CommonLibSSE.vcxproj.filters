@@ -2045,9 +2045,6 @@
     <ClInclude Include="include\RE\IMapCameraCallbacks.h">
       <Filter>include\RE\Menus\IMenu\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\DeviceTypes.h">
-      <Filter>include\RE\BSDevices\Enums</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSAnimationGraphEvent.h">
       <Filter>include\RE\Events\ActorEvent</Filter>
     </ClInclude>
@@ -2788,9 +2785,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\SkyrimVM.h">
       <Filter>include\RE\SkyrimScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MovementData.h">
-      <Filter>include\RE\BSDevices</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\GHash.h">
       <Filter>include\RE\Scaleform\GHash</Filter>
@@ -4996,6 +4990,21 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSSoundHandle.h">
       <Filter>include\RE\BSAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\InputDevice.h">
+      <Filter>include\RE\BSDevices\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PCGamepadType.h">
+      <Filter>include\RE\BSDevices\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESGrabReleaseEvent.h">
+      <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\PlayerControlsData.h">
+      <Filter>include\RE\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\UserEventEnabled.h">
+      <Filter>include\RE\Events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

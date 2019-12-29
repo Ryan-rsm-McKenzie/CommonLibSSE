@@ -15,8 +15,8 @@ namespace RE
 
 		// override (PlayerInputHandler)
 		virtual	bool	CanProcess(InputEvent* a_event) override;											// 01
-		virtual	void	ProcessThumbstick(ThumbstickEvent* a_event, MovementData* a_movementData) override;	// 02
-		virtual	void	ProcessMouseMove(MouseMoveEvent* a_event, MovementData* a_movementData) override;	// 03
+		virtual	void	ProcessThumbstick(ThumbstickEvent* a_event, PlayerControlsData* a_data) override;	// 02
+		virtual	void	ProcessMouseMove(MouseMoveEvent* a_event, PlayerControlsData* a_data) override;		// 03
 	};
 	STATIC_ASSERT(sizeof(LookHandler) == 0x10);
 }

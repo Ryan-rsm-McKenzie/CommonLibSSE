@@ -8,121 +8,91 @@
 #include "RE/BSInputDevice.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTSingleton.h"
-#include "RE/DeviceTypes.h"
+#include "RE/InputDevice.h"
+#include "RE/PCGamepadType.h"
+#include "RE/UserEvents.h"
 
 
 namespace RE
 {
-	class InputEvent;
+	class UserEventEnabled;
 
 
 	class ControlMap :
-		public BSTSingletonSDM<ControlMap>,	// 00
-		public BSTEventSource<InputEvent*>	// 08
+		public BSTSingletonSDM<ControlMap>,		// 00
+		public BSTEventSource<UserEventEnabled>	// 08
 	{
 	public:
-		struct Contexts
-		{
-			enum Context : UInt32
-			{
-				kGameplay = 0,
-				kMenuMode,
-				kConsole,
-				kItemMenu,
-				kInventory,
-				kDebugText,
-				kFavorites,
-				kMap,
-				kStats,
-				kCursor,
-				kBook,
-				kDebugOverlay,
-				kJournal,
-				kTFCMode,
-				kMapDebug,
-				kLockpicking,
-				kFavor,
-
-				kTotal = 17,
-
-				kInvalid = 18
-			};
-		};
-		using Context = Contexts::Context;
-
-
-		enum class ControlState : UInt32
-		{
-			kInvalid = static_cast<std::underlying_type_t<ControlState>>(-1),
-			kNone = 0,
-			kLooking = 1 << 1,
-			kFlying = 1 << 6,
-			kSneaking = 1 << 7,
-			kMenu = 1 << 8,
-			kMovement = 1 << 10 | 1 << 0
-		};
+		using InputContextID = UserEvents::InputContextID;
+		using UEFlag = UserEvents::Flag;
 
 
 		enum : UInt32 { kInvalid = static_cast<UInt8>(-1) };
 
 
+		struct UserEventMapping
+		{
+			BSFixedString	eventID;			// 00
+			UInt16			inputKey;			// 08
+			UInt16			modifier;			// 08
+			SInt8			indexInContext;		// 0C
+			bool			remappable;			// 0D
+			bool			linked;				// 0E
+			UEFlag			userEventGroupFlag;	// 10
+			UInt32			pad14;				// 14
+		};
+		STATIC_ASSERT(sizeof(UserEventMapping) == 0x18);
+
+
 		struct InputContext
 		{
-			struct Mapping
-			{
-				BSFixedString	name;		// 00 - User Event Name
-				UInt16			buttonID;	// 08
-				UInt16			modifier;	// 0A
-				UInt32			sortIndex;	// 0C
-				UInt32			flags;		// 10 - User Event Binary Flag
-				UInt32			pad14;		// 14
-			};
-			STATIC_ASSERT(sizeof(Mapping) == 0x18);
-
-
-			BSTArray<Mapping>	keyboardMap;	// 00
-			BSTArray<Mapping>	mouseMap;		// 18
-			BSTArray<Mapping>	gamepadMap;		// 30
-			BSTArray<Mapping>	unk48;			// 48 - kinect?
+			BSTArray<UserEventMapping> deviceMappings[to_underlying(InputDevice::kTotal)];	// 00
 		};
 		STATIC_ASSERT(sizeof(InputContext) == 0x60);
 
 
-		struct ActionMapping
+		struct LinkedMapping
 		{
-			BSFixedString	buttonName;	// 00
-			UInt32			unk08;		// 08
-			UInt32			unk0C;		// 0C
-			UInt32			unk10;		// 10
-			UInt32			unk14;		// 14
-			BSFixedString	actionName;	// 18
+			BSFixedString	linkedMappingName;		// 00
+			InputContextID	linkedMappingContext;	// 08
+			InputDevice		device;					// 0C
+			InputContextID	linkFromContext;		// 10
+			UInt32			pad14;					// 14
+			BSFixedString	linkFromName;			// 18
 		};
-		STATIC_ASSERT(sizeof(ActionMapping) == 0x20);
+		STATIC_ASSERT(sizeof(LinkedMapping) == 0x20);
 
 
 		static ControlMap*	GetSingleton();
 
-		UInt8					AllowTextInput(bool a_allow);
-		UInt32					GetMappedKey(const std::string_view& a_name, DeviceType a_deviceType, Context a_contextIdx = Context::kGameplay) const;
-		const BSFixedString&	GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Context a_contextIdx = Context::kGameplay) const;
-		bool					IsLookingControlsEnabled() const;
-		bool					IsFlyingControlsEnabled() const;
-		bool					IsSneakingControlsEnabled() const;
-		bool					IsMenuControlsEnabled() const;
-		bool					IsMovementControlsEnabled() const;
+		SInt8				AllowTextInput(bool a_allow);
+		UInt32				GetMappedKey(const std::string_view& a_eventID, InputDevice a_device, InputContextID a_context = InputContextID::kGameplay) const;
+		std::string_view	GetUserEventName(UInt32 a_buttonID, InputDevice a_device, InputContextID a_context = InputContextID::kGameplay) const;
+		bool				IsActivateControlsEnabled() const;
+		bool				IsConsoleControlsEnabled() const;
+		bool				IsFightingControlsEnabled() const;
+		bool				IsLookingControlsEnabled() const;
+		bool				IsMenuControlsEnabled() const;
+		bool				IsMainFourControlsEnabled() const;
+		bool				IsMovementControlsEnabled() const;
+		bool				IsPOVSwitchControlsEnabled() const;
+		bool				IsSneakingControlsEnabled() const;
+		bool				IsVATSControlsEnabled() const;
+		bool				IsWheelZoomControlsEnabled() const;
+		void				ToggleControls(UEFlag a_flags, bool a_enable);
 
 
 		// members
-		InputContext*			context[Context::kTotal];	// 060
-		BSTArray<ActionMapping>	actionMap;					// 0E8
-		BSTArray<Context>		unk100;						// 100
-		ControlState			controlState;				// 118
-		UInt32					unk11C;						// 11C
-		UInt8					allowTextInput;				// 120
-		UInt8					unk121;						// 121
-		UInt8					unk122;						// 122
-		UInt8					unk123;						// 123
-		UInt32					unk124;						// 124
+		InputContext*				controlMap[to_underlying(InputContextID::kTotal)];	// 060
+		BSTArray<LinkedMapping>		linkedMappings;										// 0E8
+		BSTArray<InputContextID>	contextPriorityStack;								// 100
+		UEFlag						enabledControls;									// 118
+		UEFlag						unk11C;												// 11C
+		SInt8						textEntryCount;										// 120
+		bool						ignoreKeyboardMouse;								// 121
+		bool						ignoreActivateDisabledEvents;						// 122
+		UInt8						pad123;												// 123
+		PCGamepadType				gamePadMapType;										// 124
 	};
 	STATIC_ASSERT(sizeof(ControlMap) == 0x128);
 }

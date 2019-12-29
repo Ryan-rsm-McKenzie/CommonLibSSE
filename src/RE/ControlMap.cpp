@@ -3,6 +3,7 @@
 #include "RE/BSFixedString.h"
 #include "RE/BSTArray.h"
 #include "RE/Offsets.h"
+#include "RE/UserEventEnabled.h"
 #include "REL/Relocation.h"
 
 
@@ -15,41 +16,33 @@ namespace RE
 	}
 
 
-	UInt8 ControlMap::AllowTextInput(bool a_allow)
+	SInt8 ControlMap::AllowTextInput(bool a_allow)
 	{
 		if (a_allow) {
-			if (allowTextInput != static_cast<UInt8>(-1)) {
-				allowTextInput++;
+			if (textEntryCount != -1) {
+				++textEntryCount;
 			}
 		} else {
-			if (allowTextInput != 0) {
-				allowTextInput--;
+			if (textEntryCount != 0) {
+				--textEntryCount;
 			}
 		}
 
-		return allowTextInput;
+		return textEntryCount;
 	}
 
 
-	UInt32 ControlMap::GetMappedKey(const std::string_view& a_name, DeviceType a_deviceType, Context a_contextIdx) const
+	UInt32 ControlMap::GetMappedKey(const std::string_view& a_eventID, InputDevice a_device, InputContextID a_context) const
 	{
-		BSTArray<InputContext::Mapping>* maps = 0;
-		switch (a_deviceType) {
-		case DeviceType::kMouse:
-			maps = &context[a_contextIdx]->mouseMap;
-			break;
-		case DeviceType::kGamepad:
-			maps = &context[a_contextIdx]->gamepadMap;
-			break;
-		case DeviceType::kKeyboard:
-			maps = &context[a_contextIdx]->keyboardMap;
-			break;
-		}
+		assert(a_device < InputDevice::kTotal);
+		assert(a_context < InputContextID::kTotal);
 
-		if (maps) {
-			for (auto& mapping : *maps) {
-				if (mapping.name == a_name) {
-					return mapping.buttonID;
+		auto mappings = controlMap ? &controlMap[to_underlying(a_context)]->deviceMappings[to_underlying(a_device)] : 0;
+
+		if (mappings) {
+			for (auto& mapping : *mappings) {
+				if (mapping.eventID == a_eventID) {
+					return mapping.inputKey;
 				}
 			}
 		}
@@ -58,60 +51,108 @@ namespace RE
 	}
 
 
-	const BSFixedString& ControlMap::GetUserEventName(UInt32 a_buttonID, DeviceType a_deviceType, Context a_contextIdx) const
+	std::string_view ControlMap::GetUserEventName(UInt32 a_buttonID, InputDevice a_device, InputContextID a_context) const
 	{
-		BSTArray<InputContext::Mapping>* maps = 0;
-		switch (a_deviceType) {
-		case DeviceType::kMouse:
-			maps = &context[a_contextIdx]->mouseMap;
-			break;
-		case DeviceType::kGamepad:
-			maps = &context[a_contextIdx]->gamepadMap;
-			break;
-		case DeviceType::kKeyboard:
-			maps = &context[a_contextIdx]->keyboardMap;
-			break;
-		}
+		assert(a_device < InputDevice::kTotal);
+		assert(a_context < InputContextID::kTotal);
 
-		if (maps) {
-			for (auto& mapping : *maps) {
-				if (mapping.buttonID == a_buttonID) {
-					return mapping.name;
+		auto mappings = controlMap ? &controlMap[to_underlying(a_context)]->deviceMappings[to_underlying(a_device)] : 0;
+
+		if (mappings) {
+			for (auto& mapping : *mappings) {
+				if (mapping.inputKey == a_buttonID) {
+					return mapping.eventID;
 				}
 			}
 		}
 
-		static BSFixedString empty = "";
-		return empty;
+		return "";
+	}
+
+
+	bool ControlMap::IsActivateControlsEnabled() const
+	{
+		return (enabledControls & UEFlag::kLooking) != UEFlag::kNone;
+	}
+
+
+	bool ControlMap::IsConsoleControlsEnabled() const
+	{
+		return (enabledControls & UEFlag::kConsole) != UEFlag::kNone;
+	}
+
+
+	bool ControlMap::IsFightingControlsEnabled() const
+	{
+		return (enabledControls & UEFlag::kFighting) != UEFlag::kNone;
 	}
 
 
 	bool ControlMap::IsLookingControlsEnabled() const
 	{
-		return (controlState & ControlState::kLooking) != ControlState::kNone;
-	}
-
-
-	bool ControlMap::IsFlyingControlsEnabled() const
-	{
-		return (controlState & ControlState::kFlying) != ControlState::kNone;
-	}
-
-
-	bool ControlMap::IsSneakingControlsEnabled() const
-	{
-		return (controlState & ControlState::kSneaking) != ControlState::kNone;
+		return (enabledControls & UEFlag::kLooking) != UEFlag::kNone;
 	}
 
 
 	bool ControlMap::IsMenuControlsEnabled() const
 	{
-		return (controlState & ControlState::kMenu) != ControlState::kNone;
+		return (enabledControls & UEFlag::kMenu) != UEFlag::kNone;
+	}
+
+
+	bool ControlMap::IsMainFourControlsEnabled() const
+	{
+		return (enabledControls & UEFlag::kMainFour) != UEFlag::kNone;
 	}
 
 
 	bool ControlMap::IsMovementControlsEnabled() const
 	{
-		return (controlState & ControlState::kMovement) != ControlState::kNone;
+		return (enabledControls & UEFlag::kMovement) != UEFlag::kNone;
+	}
+
+
+	bool ControlMap::IsPOVSwitchControlsEnabled() const
+	{
+		return (enabledControls & UEFlag::kPOVSwitch) != UEFlag::kNone;
+	}
+
+
+	bool ControlMap::IsSneakingControlsEnabled() const
+	{
+		return (enabledControls & UEFlag::kSneaking) != UEFlag::kNone;
+	}
+
+
+	bool ControlMap::IsVATSControlsEnabled() const
+	{
+		return (enabledControls & UEFlag::kVATS) != UEFlag::kNone;
+	}
+
+
+	bool ControlMap::IsWheelZoomControlsEnabled() const
+	{
+		return (enabledControls & UEFlag::kWheelZoom) != UEFlag::kNone;
+	}
+
+
+	void ControlMap::ToggleControls(UEFlag a_flags, bool a_enable)
+	{
+		auto oldState = enabledControls;
+
+		if (a_enable) {
+			enabledControls |= a_flags;
+			if (unk11C != UEFlag::kInvalid) {
+				unk11C |= a_flags;
+			}
+		} else {
+			enabledControls &= ~a_flags;
+			if (unk11C != UEFlag::kInvalid) {
+				unk11C &= ~a_flags;
+			}
+		}
+
+		UserEventEnabled event(oldState, enabledControls);
+		SendEvent(&event);
 	}
 }

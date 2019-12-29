@@ -12,7 +12,7 @@ namespace RE
 {
 	// menuDepth = 8
 	// flags = kDisablePauseMenu | kAllowSaving | kDontHideCursorWhenTopmost
-	// context = kInvalid
+	// context = kNone
 	class MistMenu :
 		public IMenu,								// 00
 		public SimpleAnimationGraphManagerHolder,	// 30

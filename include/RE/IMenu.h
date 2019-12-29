@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/ControlMap.h"
 #include "RE/FxDelegate.h"
 #include "RE/FxDelegateHandler.h"
 #include "RE/GFxMovieView.h"
 #include "RE/GPtr.h"
+#include "RE/UserEvents.h"
 
 
 namespace RE
@@ -16,7 +16,7 @@ namespace RE
 	class IMenu : public FxDelegateHandler
 	{
 	private:
-		using Context = ControlMap::Contexts::Context;
+		using Context = UserEvents::InputContextID;
 
 	public:
 		inline static const void* RTTI = RTTI_IMenu;

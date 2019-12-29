@@ -3,10 +3,13 @@
 
 namespace RE
 {
-	enum class DeviceType : UInt32
+	enum class InputDevice : UInt32
 	{
 		kKeyboard = 0,
 		kMouse,
-		kGamepad
+		kGamepad,
+		kKinect,
+
+		kTotal
 	};
 }

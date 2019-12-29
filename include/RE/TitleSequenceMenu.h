@@ -9,7 +9,7 @@ namespace RE
 {
 	// menuDepth = 4
 	// flags = kNone
-	// context = kInvalid
+	// context = kNone
 	class TitleSequenceMenu : public IMenu
 	{
 	public:

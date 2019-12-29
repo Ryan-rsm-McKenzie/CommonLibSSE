@@ -9,7 +9,7 @@ namespace RE
 {
 	// menuDepth = 3
 	// flags = kAlwaysOpen | kAllowSaving | kCustomRendering
-	// context = kInvalid
+	// context = kNone
 	class FaderMenu : public IMenu
 	{
 	public:

@@ -14,7 +14,7 @@ namespace RE
 
 	// menuDepth = 6
 	// flags = kAllowSaving | kCustomRendering | kAssignCursorToRenderer
-	// context = kInvalid
+	// context = kNone
 	class KinectMenu :
 		public IMenu,							// 00
 		public BSTEventSink<MenuOpenCloseEvent>	// 30

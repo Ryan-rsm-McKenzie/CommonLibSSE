@@ -5,8 +5,9 @@
 
 namespace RE
 {
-	struct MovementData
+	class PlayerControlsData
 	{
+	public:
 		NiPoint2	movement;		// 00
 		NiPoint2	unk08;			// 08
 		float		unk10;			// 10
@@ -26,5 +27,5 @@ namespace RE
 		UInt8		unk2D;			// 2D
 		UInt16		unk2E;			// 2E
 	};
-	STATIC_ASSERT(sizeof(MovementData) == 0x30);
+	STATIC_ASSERT(sizeof(PlayerControlsData) == 0x30);
 }

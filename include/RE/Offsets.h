@@ -914,27 +914,29 @@ namespace RE
 
 
 			// 0F 94 C3 88 1D ? ? ? ?
-			constexpr std::uintptr_t CollisionDisabled = 0x01EBEB50;	// 1_5_97
+			constexpr std::uintptr_t CollisionDisabled = 0x01EBEB50;		// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 0F 28 F0 48 85 FF 0F 84 ? ? ? ?
-			constexpr std::uintptr_t GetArmorValue = 0x00692CD0;		// 1_5_97
+			constexpr std::uintptr_t GetArmorValue = 0x00692CD0;			// 1_5_97
 			// IndirectSig: E8 ? ? ? ? F3 0F 2C C8 8B C7
-			constexpr std::uintptr_t GetDamage = 0x00693050;			// 1_5_97
+			constexpr std::uintptr_t GetDamage = 0x00693050;				// 1_5_97
 			// DirectSig: 44 8B 81 ? ? ? ? 33 C0 45 85 C0 74 27
-			constexpr std::uintptr_t GetNumTints = 0x006B5450;			// 1_5_97
+			constexpr std::uintptr_t GetNumTints = 0x006B5450;				// 1_5_97
 			// DirectSig: 48 83 EC 38 80 7C 24 70 00
-			constexpr std::uintptr_t GetPickpocketChance = 0x003BCF40;	// 1_5_97
+			constexpr std::uintptr_t GetPickpocketChance = 0x003BCF40;		// 1_5_97
 			// DirectSig: 48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 44 8B 99 ? ? ? ? 45 33 C9
-			constexpr std::uintptr_t GetTintMask = 0x006B52A0;			// 1_5_97
+			constexpr std::uintptr_t GetTintMask = 0x006B52A0;				// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 44 89 65 67
-			constexpr std::uintptr_t PlayPickupEvent = 0x0069FE60;		// 1_5_97
+			constexpr std::uintptr_t PlayPickupEvent = 0x0069FE60;			// 1_5_97
 			// E8 ? ? ? ? 48 89 35 ? ? ? ? 48 8B C6
-			constexpr std::uintptr_t Singleton = 0x02F26EF8;			// 1_5_97
+			constexpr std::uintptr_t Singleton = 0x02F26EF8;				// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 66 C7 43 18 00 00
-			constexpr std::uintptr_t StartActivation = 0x006A9F90;		// 1_5_97
+			constexpr std::uintptr_t StartActivation = 0x006A9F90;			// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 48 8B 05 ? ? ? ? 83 B8 ? ? ? ? ? 0F 95 C0
+			constexpr std::uintptr_t TryToGrabCrosshairRef = 0x006AA260;	// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 84 C0 75 08 40 32 F6
-			constexpr std::uintptr_t TryToPickPocket = 0x006B2530;		// 1_5_97
+			constexpr std::uintptr_t TryToPickPocket = 0x006B2530;			// 1_5_97
 			// VTable: .?AVPlayerCharacter@@
-			constexpr std::uintptr_t Vtbl = 0x016635E0;					// 1_5_97
+			constexpr std::uintptr_t Vtbl = 0x016635E0;						// 1_5_97
 		}
 
 

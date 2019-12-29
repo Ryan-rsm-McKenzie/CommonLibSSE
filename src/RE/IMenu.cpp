@@ -19,7 +19,7 @@ namespace RE
 		pad19(0),
 		pad20(0),
 		flags(Flag::kNone),
-		context(Context::kInvalid),
+		context(Context::kNone),
 		pad24(0),
 		fxDelegate(0)
 	{}

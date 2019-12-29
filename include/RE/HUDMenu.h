@@ -19,7 +19,7 @@ namespace RE
 
 	// menuDepth = 2
 	// flags = kAlwaysOpen | kRequiresUpdate | kAllowSaving | kCustomRendering | kAssignCursorToRenderer
-	// context = kInvalid
+	// context = kNone
 	class HUDMenu :
 		public IMenu,								// 00
 		public BSTEventSink<UserEventEnabledEvent>,	// 30

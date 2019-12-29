@@ -16,7 +16,7 @@ namespace RE
 
 	// menuDepth = 10
 	// flags = kAlwaysOpen | kAllowSaving
-	// context = kInvalid
+	// context = kNone
 	class LoadWaitSpinner :
 		public IMenu,									// 00
 		public BSTEventSink<BSSystemEvent>,				// 30

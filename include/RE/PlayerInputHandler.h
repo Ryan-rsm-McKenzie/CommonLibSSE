@@ -1,13 +1,12 @@
 #pragma once
 
-#include "RE/MovementData.h"
-
 
 namespace RE
 {
 	class ButtonEvent;
 	class InputEvent;
 	class MouseMoveEvent;
+	class PlayerControlsData;
 	class ThumbstickEvent;
 
 
@@ -20,12 +19,13 @@ namespace RE
 		virtual ~PlayerInputHandler();																// 00
 
 		virtual	bool	CanProcess(InputEvent* a_event) = 0;										// 01
-		virtual	void	ProcessThumbstick(ThumbstickEvent* a_event, MovementData* a_movementData);	// 02 - { return; }
-		virtual	void	ProcessMouseMove(MouseMoveEvent* a_event, MovementData* a_movementData);	// 03 - { return; }
-		virtual	void	ProcessButton(ButtonEvent* a_event, MovementData* a_movementData);			// 04 - { return; }
+		virtual	void	ProcessThumbstick(ThumbstickEvent* a_event, PlayerControlsData* a_data);	// 02 - { return; }
+		virtual	void	ProcessMouseMove(MouseMoveEvent* a_event, PlayerControlsData* a_data);		// 03 - { return; }
+		virtual	void	ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data);			// 04 - { return; }
 
 		bool	IsEnabled() const;
-		void	Enable(bool a_enable = true);
+		void	SetEnabled(bool a_enable = true);
+
 
 		// members
 		UInt32	enabled;	// 08

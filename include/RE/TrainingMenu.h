@@ -16,7 +16,7 @@ namespace RE
 	// menuDepth = 3
 	// flags = kPausesGame | kUsesMenuContext | kUpdateUsesCursor
 	// kUsesCursor if gamepad disabled
-	// context = kInvalid
+	// context = kNone
 	class TrainingMenu :
 		public IMenu,							// 00
 		public BSTEventSink<MenuOpenCloseEvent>	// 30

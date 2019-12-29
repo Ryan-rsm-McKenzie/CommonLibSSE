@@ -18,21 +18,21 @@ namespace RE
 		inline static const void* RTTI = RTTI_FirstPersonState;
 
 
-		virtual ~FirstPersonState();																// 00
+		virtual ~FirstPersonState();																		// 00
 
 		// override (TESCameraState)
-		virtual void	OnStateStart() override;													// 01
-		virtual void	OnStateEnd() override;														// 02
-		virtual void	OnUpdate(BSTSmartPointer<TESCameraState>& a_newState) override;				// 03
-		virtual void	GetRotation(NiQuaternion* a_rot) override;									// 04
-		virtual void	GetPosition(NiPoint3* a_pos) override;										// 05
-		virtual void	Unk_06(void) override;														// 06
-		virtual void	LoadCameraState(BGSLoadGameBuffer* a_buf) override;							// 07
-		virtual void	Unk_08(void) override;														// 08
+		virtual void	OnStateStart() override;															// 01
+		virtual void	OnStateEnd() override;																// 02
+		virtual void	OnUpdate(BSTSmartPointer<TESCameraState>& a_newState) override;						// 03
+		virtual void	GetRotation(NiQuaternion* a_rot) override;											// 04
+		virtual void	GetPosition(NiPoint3* a_pos) override;												// 05
+		virtual void	Unk_06(void) override;																// 06
+		virtual void	LoadCameraState(BGSLoadGameBuffer* a_buf) override;									// 07
+		virtual void	Unk_08(void) override;																// 08
 
 		// override (PlayerInputHandler)
-		virtual	bool	CanProcess(InputEvent* a_event) override;									// 01
-		virtual	void	ProcessButton(ButtonEvent* a_event, MovementData* a_movementData) override;	// 04
+		virtual	bool	CanProcess(InputEvent* a_event) override;											// 01
+		virtual	void	ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_movementData) override;	// 04
 
 
 		// members

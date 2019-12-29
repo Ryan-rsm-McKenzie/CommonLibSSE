@@ -9,8 +9,8 @@ namespace RE
 	}
 
 
-	void PlayerInputHandler::Enable(bool a_enable)
+	void PlayerInputHandler::SetEnabled(bool a_enable)
 	{
-		enabled = (a_enable) ? 1 : 0;
+		enabled = a_enable ? 1 : 0;
 	}
 }

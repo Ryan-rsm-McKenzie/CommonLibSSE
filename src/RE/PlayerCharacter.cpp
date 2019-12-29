@@ -30,10 +30,9 @@ namespace RE
 	}
 
 
-	Actor* PlayerCharacter::GetActorInFavorState() const
+	NiPointer<Actor> PlayerCharacter::GetActorInFavorState() const
 	{
-		auto ref = TESObjectREFR::LookupByHandle(actorInFavorState);
-		return static_cast<Actor*>(ref.get());
+		return actorDoingPlayerCommand.get();
 	}
 
 
@@ -120,6 +119,14 @@ namespace RE
 	{
 		using func_t = function_type_t<decltype(&PlayerCharacter::StartActivation)>;
 		REL::Offset<func_t*> func(Offset::PlayerCharacter::StartActivation);
+		return func(this);
+	}
+
+	
+	void PlayerCharacter::TryToGrabCrosshairRef()
+	{
+		using func_t = function_type_t<decltype(&PlayerCharacter::TryToGrabCrosshairRef)>;
+		REL::Offset<func_t*> func(Offset::PlayerCharacter::TryToGrabCrosshairRef);
 		return func(this);
 	}
 

@@ -9,6 +9,53 @@ namespace RE
 	class UserEvents : public BSTSingletonSDM<UserEvents>
 	{
 	public:
+		enum class InputContextID: UInt32
+		{
+			kGameplay = 0,
+			kMenuMode,
+			kConsole,
+			kItemMenu,
+			kInventory,
+			kDebugText,
+			kFavorites,
+			kMap,
+			kStats,
+			kCursor,
+			kBook,
+			kDebugOverlay,
+			kJournal,
+			kTFCMode,
+			kMapDebug,
+			kLockpicking,
+			kFavor,
+
+			kTotal = 17,
+
+			kNone = 18
+		};
+
+
+		enum class Flag : UInt32
+		{
+			kNone = 0,
+			kMovement = 1 << 0,
+			kLooking = 1 << 1,
+			kActivate = 1 << 2,
+			kMenu = 1 << 3,
+			kConsole = 1 << 4,
+			kPOVSwitch = 1 << 5,
+			kFighting = 1 << 6,
+			kSneaking = 1 << 7,
+			kMainFour = 1 << 8,
+			kWheelZoom = 1 << 9,
+			kJumping = 1 << 10,
+			kVATS = 1 << 11,
+			kInvalid = (UInt32)1 << 31,
+
+			kAll = static_cast<std::underlying_type_t<Flag>>(-1)
+		};
+
+
 		static UserEvents* GetSingleton();
 
 

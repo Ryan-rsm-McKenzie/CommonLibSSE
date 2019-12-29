@@ -52,6 +52,6 @@ namespace RE
 
 
 	template <class T, template <class> class Singleton = BSTSingletonSDMOpStaticBuffer>
-	struct BSTSingletonSDM : BSTSingletonSDMBase<BSTSDMTraits<T, Singleton<T>>>
+	struct BSTSingletonSDM : public BSTSingletonSDMBase<BSTSDMTraits<T, Singleton<T>>>
 	{};
 }

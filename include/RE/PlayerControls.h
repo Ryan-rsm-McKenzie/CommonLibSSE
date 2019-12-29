@@ -3,7 +3,7 @@
 #include "RE/BSTArray.h"
 #include "RE/BSTEvent.h"
 #include "RE/BSTSingleton.h"
-#include "RE/MovementData.h"
+#include "RE/PlayerControlsData.h"
 
 
 namespace RE
@@ -41,11 +41,14 @@ namespace RE
 
 		static PlayerControls* GetSingleton();
 
+		bool	IsActivateControlsEnabled() const;
+		void	ToggleActivateControls(bool a_enable) const;
+
 
 		// members
 		UInt8							pad021;				// 021
 		UInt16							pad022;				// 022
-		MovementData					movementData;		// 024
+		PlayerControlsData				controlsData;		// 024
 		UInt32							unk054;				// 054
 		BSTArray<PlayerInputHandler*>	handlers;			// 058
 		BSTArray<void*>					unk070;				// 070

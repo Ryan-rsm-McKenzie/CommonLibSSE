@@ -18,7 +18,7 @@ namespace RE
 
 	// menuDepth = 0
 	// flags = kPausesGame | kDisablePauseMenu | kUpdateUsesCursor | kInventoryItemMenu | kCustomRendering
-	// context = kInvalid
+	// context = kNone
 	class InventoryMenu : public IMenu
 	{
 	public:

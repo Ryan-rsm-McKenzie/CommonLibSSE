@@ -482,7 +482,7 @@ namespace RE
 
 	void TESObjectREFR::SetActivationBlocked(bool a_blocked)
 	{
-		extraData.SetExtraFlags(ExtraFlags::Flag::kActivationBlocked, a_blocked);
+		extraData.SetExtraFlags(ExtraFlags::Flag::kBlockActivate, a_blocked);
 	}
 
 

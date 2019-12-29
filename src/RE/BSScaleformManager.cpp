@@ -31,7 +31,7 @@ namespace RE
 
 	bool BSScaleformManager::LoadMovieStd(IMenu* a_menu, const char* a_fileName, llvm::function_ref<void(GFxMovieDef*)> a_callback, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
-		using LoadConstants = RE::GFxLoader::LoadConstants;
+		using LoadConstants = GFxLoader::LoadConstants;
 
 		if (!gfxLoader) {
 			return false;
@@ -60,21 +60,17 @@ namespace RE
 		view->SetViewScaleMode(a_mode);
 		view->SetBackgroundAlpha(a_backGroundAlpha);
 
-		float safeZoneX;
-		float safeZoneY;
-		SInt32 sizeW;
-		SInt32 sizeH;
-		std::tie(safeZoneX, safeZoneY, sizeW, sizeH) = CollectDisplayInfo();
+		auto [safeZoneX, safeZoneY, sizeW, sizeH] = CollectDisplayInfo();
 
 		auto visibleRect = view->GetVisibleFrameRect();
-		RE::GRectF safeRect;
+		GRectF safeRect;
 		safeRect.left = safeZoneX;
 		safeRect.top = safeZoneY;
 		safeRect.right = (visibleRect.right - visibleRect.left) - safeZoneX;
 		safeRect.bottom = (visibleRect.bottom - visibleRect.top) - safeZoneY;
 		view->SetSafeRect(safeRect);
 
-		RE::GViewport viewPort;
+		GViewport viewPort;
 		viewPort.bufferWidth = sizeW;
 		viewPort.bufferHeight = sizeH;
 		viewPort.width = sizeW;
@@ -94,8 +90,8 @@ namespace RE
 
 	bool BSScaleformManager::LoadMovie_Impl(RE::IMenu* a_menu, RE::GPtr<RE::GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
-		using LoadConstants = RE::GFxLoader::LoadConstants;
-		using StateType = RE::GFxState::StateType;
+		using LoadConstants = GFxLoader::LoadConstants;
+		using StateType = GFxState::StateType;
 
 		if (!gfxLoader) {
 			return false;
@@ -121,28 +117,24 @@ namespace RE
 		a_viewOut->SetViewScaleMode(a_mode);
 		a_viewOut->SetBackgroundAlpha(a_backGroundAlpha);
 
-		float safeZoneX;
-		float safeZoneY;
-		SInt32 sizeW;
-		SInt32 sizeH;
-		std::tie(safeZoneX, safeZoneY, sizeW, sizeH) = CollectDisplayInfo();
+		auto [safeZoneX, safeZoneY, sizeW, sizeH] = CollectDisplayInfo();
 
 		auto visibleRect = a_viewOut->GetVisibleFrameRect();
-		RE::GRectF safeRect;
+		GRectF safeRect;
 		safeRect.left = safeZoneX;
 		safeRect.top = safeZoneY;
 		safeRect.right = (visibleRect.right - visibleRect.left) - safeZoneX;
 		safeRect.bottom = (visibleRect.bottom - visibleRect.top) - safeZoneY;
 		a_viewOut->SetSafeRect(safeRect);
 
-		RE::GViewport viewPort;
+		GViewport viewPort;
 		viewPort.bufferWidth = sizeW;
 		viewPort.bufferHeight = sizeH;
 		viewPort.width = sizeW;
 		viewPort.height = sizeH;
 		a_viewOut->SetViewport(viewPort);
 
-		a_menu->fxDelegate.reset(new RE::FxDelegate());
+		a_menu->fxDelegate.reset(new FxDelegate());
 		a_menu->fxDelegate->Release();
 		a_menu->fxDelegate->RegisterHandler(a_menu);
 		a_viewOut->SetState(StateType::kExternalInterface, a_menu->fxDelegate.get());
@@ -178,10 +170,11 @@ namespace RE
 
 	std::tuple<float, float, SInt32, SInt32> BSScaleformManager::CollectDisplayInfo()
 	{
-		auto fSafeZoneX = GetINISetting("fSafeZoneX:Interface");
-		auto fSafeZoneY = GetINISetting("fSafeZoneY:Interface");
-		auto iSizeW = GetINISetting("iSize W:Display");
-		auto iSizeH = GetINISetting("iSize H:Display");
+		static auto fSafeZoneX = GetINISetting("fSafeZoneX:Interface");
+		static auto fSafeZoneY = GetINISetting("fSafeZoneY:Interface");
+		static auto iSizeW = GetINISetting("iSize W:Display");
+		static auto iSizeH = GetINISetting("iSize H:Display");
+
 		return std::make_tuple(fSafeZoneX->GetFloat(), fSafeZoneY->GetFloat(), iSizeW->GetSInt(), iSizeH->GetSInt());
 	}
 

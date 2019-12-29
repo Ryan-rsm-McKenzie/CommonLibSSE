@@ -1,5 +1,6 @@
 #include "RE/PlayerControls.h"
 
+#include "RE/ActivateHandler.h"
 #include "RE/Offsets.h"
 #include "RE/PlayerInputHandler.h"
 #include "REL/Relocation.h"
@@ -17,6 +18,20 @@ namespace RE
 	{
 		REL::Offset<PlayerControls**> singleton(Offset::PlayerControls::Singleton);
 		return *singleton;
+	}
+
+
+	bool PlayerControls::IsActivateControlsEnabled() const
+	{
+		return activateHandler ? !activateHandler->disabled : true;
+	}
+
+
+	void PlayerControls::ToggleActivateControls(bool a_enable) const
+	{
+		if (activateHandler) {
+			activateHandler->disabled = !a_enable;
+		}
 	}
 
 

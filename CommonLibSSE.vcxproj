@@ -437,6 +437,7 @@
     <ClInclude Include="include\RE\NiTListBase.h" />
     <ClInclude Include="include\RE\NiTPointerListBase.h" />
     <ClInclude Include="include\RE\NiTSet.h" />
+    <ClInclude Include="include\RE\PCGamepadType.h" />
     <ClInclude Include="include\RE\ProcessLists.h" />
     <ClInclude Include="include\RE\BGSApparatus.h" />
     <ClInclude Include="include\RE\BGSArtObject.h" />
@@ -739,7 +740,7 @@
     <ClInclude Include="include\RE\CursorMenu.h" />
     <ClInclude Include="include\RE\DetectionListener.h" />
     <ClInclude Include="include\RE\DetectionState.h" />
-    <ClInclude Include="include\RE\DeviceTypes.h" />
+    <ClInclude Include="include\RE\InputDevice.h" />
     <ClInclude Include="include\RE\DialogueData.h" />
     <ClInclude Include="include\RE\DialogueMenu.h" />
     <ClInclude Include="include\RE\DirectionalAmbientLightingColor.h" />
@@ -1176,7 +1177,7 @@
     <ClInclude Include="include\RE\MovementControllerAI.h" />
     <ClInclude Include="include\RE\MovementControllerNPC.h" />
     <ClInclude Include="include\RE\GFxMovieRoot.h" />
-    <ClInclude Include="include\RE\MovementData.h" />
+    <ClInclude Include="include\RE\PlayerControlsData.h" />
     <ClInclude Include="include\RE\MoviePlayer.h" />
     <ClInclude Include="include\RE\GNewOverrideBase.h" />
     <ClInclude Include="include\RE\MultiBoundMarkerData.h" />
@@ -1261,8 +1262,10 @@
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h" />
     <ClInclude Include="include\RE\ExtraContainerChanges.h" />
     <ClInclude Include="include\RE\TESDeathEvent.h" />
+    <ClInclude Include="include\RE\TESGrabReleaseEvent.h" />
     <ClInclude Include="include\RE\TESResetEvent.h" />
     <ClInclude Include="include\RE\TESSwitchRaceCompleteEvent.h" />
+    <ClInclude Include="include\RE\UserEventEnabled.h" />
     <ClInclude Include="include\RE\UserEvents.h" />
     <ClInclude Include="include\RE\InventoryChanges.h" />
     <ClInclude Include="include\RE\InventoryEntryData.h" />
