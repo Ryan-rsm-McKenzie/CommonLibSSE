@@ -1,9 +1,9 @@
 #pragma once
 
 #include "RE/BSTArray.h"
-#include "RE/Condition.h"
 #include "RE/FormTypes.h"
 #include "RE/PerkRankVisitor.h"
+#include "RE/TESCondition.h"
 #include "RE/TESDescription.h"
 #include "RE/TESForm.h"
 #include "RE/TESFullName.h"
@@ -93,7 +93,7 @@ namespace RE
 
 		// members
 		Data					data;			// 50 - DATA
-		Condition				conditions;		// 58
+		TESCondition			conditions;		// 58
 		BSTArray<BGSPerkEntry*>	perkEntries;	// 60
 		BGSPerk*				nextPerk;		// 78 - NNAM
 	};

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSFixedString.h"
-#include "RE/Condition.h"
 #include "RE/FormTypes.h"
+#include "RE/TESCondition.h"
 #include "RE/TESForm.h"
 #include "RE/TESModel.h"
 
@@ -79,7 +79,7 @@ namespace RE
 
 
 		// members
-		Condition		conditions;		// 20
+		TESCondition	conditions;		// 20
 		Data*			data;			// 28
 		BSFixedString	description;	// 30
 	};

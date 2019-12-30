@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Condition.h"
 #include "RE/FormTypes.h"
+#include "RE/TESCondition.h"
 #include "RE/TESForm.h"
 
 
@@ -265,7 +265,7 @@ namespace RE
 		UnkData*			unk40;						// 40
 		BGSIdleCollection*	idleAnimations;				// 48
 		Schedule			schedule;					// 50 - PSDT
-		Condition			conditions;					// 60
+		TESCondition		conditions;					// 60
 		TESCombatStyle*		combatStyle;				// 68 - CNAM
 		TESQuest*			ownerQuest;					// 70 - QNAM
 		OnEvent				onEvents[OnEvent::kTotal];	// 78

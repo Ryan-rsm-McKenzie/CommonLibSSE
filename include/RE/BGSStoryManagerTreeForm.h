@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	class Condition;
+	class TESCondition;
 
 
 	class BGSStoryManagerTreeForm : public TESForm
@@ -20,7 +20,7 @@ namespace RE
 		// add
 		virtual UInt32						GetNumChildren() const;		// 3B - { return 0; }
 		virtual BGSStoryManagerEventNode*	GetNthChild(UInt32 a_idx);	// 3C - { return 0; }
-		virtual Condition*					GetConditions() = 0;		// 3D
+		virtual TESCondition*				GetConditions() = 0;		// 3D
 		virtual void						Unk_3E(void) = 0;			// 3E
 
 

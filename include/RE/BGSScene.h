@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSTArray.h"
-#include "RE/Condition.h"
 #include "RE/FormTypes.h"
+#include "RE/TESCondition.h"
 #include "RE/TESForm.h"
 
 
@@ -51,8 +51,8 @@ namespace RE
 
 		struct Phase
 		{
-			Condition					startConditions;		// 00
-			Condition					completionConditions;	// 08
+			TESCondition				startConditions;		// 00
+			TESCondition				completionConditions;	// 08
 			BGSStoryManagerQuestNode*	questNode;				// 10
 		};
 		STATIC_ASSERT(sizeof(Phase) == 0x18);
@@ -108,7 +108,7 @@ namespace RE
 		TESQuest*					quest;		// 98 - PNAM
 		Flag						flags;		// A0 - FNAM
 		UInt32						padA4;		// A4
-		Condition					conditions;	// A8 - CTDA
+		TESCondition				conditions;	// A8 - CTDA
 		UInt64						unkB0;		// B0
 		UInt64						unkB8;		// B8
 		UInt32						unkC0;		// C0

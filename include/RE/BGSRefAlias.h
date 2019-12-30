@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	class Condition;
+	class TESCondition;
 
 
 	class BGSRefAlias : public BGSBaseAlias
@@ -114,9 +114,9 @@ namespace RE
 
 
 		// members
-		FillData	fillData;	// 28
-		UInt64		unk38;		// 38
-		Condition*	conditions;	// 40
+		FillData		fillData;	// 28
+		UInt64			unk38;		// 38
+		TESCondition*	conditions;	// 40
 	};
 	STATIC_ASSERT(sizeof(BGSRefAlias) == 0x48);
 }

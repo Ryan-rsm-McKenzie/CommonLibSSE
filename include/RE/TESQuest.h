@@ -7,9 +7,9 @@
 #include "RE/BSTArray.h"
 #include "RE/BSTHashMap.h"
 #include "RE/BSTList.h"
-#include "RE/Condition.h"
 #include "RE/FormTypes.h"
 #include "RE/QuestEvents.h"
+#include "RE/TESCondition.h"
 #include "RE/TESFullName.h"
 
 
@@ -133,12 +133,12 @@ namespace RE
 				};
 
 
-				UInt64		unk00;		// 00
-				Condition	conditions;	// 08
-				UInt8		alias;		// 10
-				UInt8		unk11;		// 11
-				UInt16		unk12;		// 12
-				UInt32		unk14;		// 14
+				UInt64			unk00;		// 00
+				TESCondition	conditions;	// 08
+				UInt8			alias;		// 10
+				UInt8			unk11;		// 11
+				UInt16			unk12;		// 12
+				UInt32			unk14;		// 14
 			};
 			STATIC_ASSERT(sizeof(Target) == 0x18);
 
@@ -158,18 +158,18 @@ namespace RE
 		virtual ~TESQuest();												// 00
 
 		// override (BGSStoryManagerTreeForm)
-		virtual void		InitializeData() override;						// 04
-		virtual void		ClearData() override;							// 05
-		virtual bool		Load(TESFile* a_mod) override;					// 06
-		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void		FinishLoadGame(void* a_arg1) override;			// 11
-		virtual void		Revert(void* a_arg1) override;					// 12
-		virtual void		InitItemImpl() override;						// 13
-		virtual const char*	GetFormEditorID() override;						// 32 - { return editorID.c_str() ? editorID.c_str() : ""; }
-		virtual bool		SetFormEditorID(const char* a_str) override;	// 33
-		virtual Condition*	GetConditions() override;						// 3D - { return &dialogueConditions; }
-		virtual void		Unk_3E(void) override;							// 3E
+		virtual void			InitializeData() override;						// 04
+		virtual void			ClearData() override;							// 05
+		virtual bool			Load(TESFile* a_mod) override;					// 06
+		virtual void			SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void			LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void			FinishLoadGame(void* a_arg1) override;			// 11
+		virtual void			Revert(void* a_arg1) override;					// 12
+		virtual void			InitItemImpl() override;						// 13
+		virtual const char*		GetFormEditorID() override;						// 32 - { return editorID.c_str() ? editorID.c_str() : ""; }
+		virtual bool			SetFormEditorID(const char* a_str) override;	// 33
+		virtual TESCondition*	GetConditions() override;						// 3D - { return &dialogueConditions; }
+		virtual void			Unk_3E(void) override;							// 3E
 
 
 		// members
@@ -186,8 +186,8 @@ namespace RE
 		BSSimpleList<Stage>*									executedStages;			// 0E8 - I think its actually templated on a pointer, and they store the stage info in the pointer itself
 		BSSimpleList<Stage*>*									waitingStages;			// 0F0
 		BSSimpleList<Objective*>								objectives;				// 0F8
-		Condition												dialogueConditions;		// 108
-		Condition												conditions;				// 110
+		TESCondition											dialogueConditions;		// 108
+		TESCondition											conditions;				// 110
 		BSTHashMap<BGSDialogueBranch*, BSTArray<TESTopic*>*>	topicTopics;			// 118 - Category::kTopic
 		BSTHashMap<BGSDialogueBranch*, BSTArray<TESTopic*>*>	favorTopics;			// 148 - Category::kFavor
 		BSTArray<TESTopic*>										sceneTopics;			// 178 - Category::kScene

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/BGSStoryManagerTreeForm.h"
-#include "RE/Condition.h"
+#include "RE/TESCondition.h"
 
 
 namespace RE
@@ -40,11 +40,11 @@ namespace RE
 		virtual ~BGSStoryManagerNodeBase();						// 00
 
 		// override (BGSStoryManagerTreeForm)
-		virtual void		InitializeData() override;			// 04
-		virtual void		ClearData() override;				// 05
-		virtual bool		Load(TESFile* a_mod) override;		// 06
-		virtual void		InitItemImpl() override;			// 13
-		virtual Condition*	GetConditions() override;			// 3D - { return &conditions; }
+		virtual void			InitializeData() override;			// 04
+		virtual void			ClearData() override;				// 05
+		virtual bool			Load(TESFile* a_mod) override;		// 06
+		virtual void			InitItemImpl() override;			// 13
+		virtual TESCondition*	GetConditions() override;			// 3D - { return &conditions; }
 
 
 		// members
@@ -52,7 +52,7 @@ namespace RE
 		BGSStoryManagerNodeBase*	previousSibling;		// 30 - SNAM
 		UInt32						maxConcurrentQuests;	// 38 - XNAM
 		Flags						flags;					// 3C - DNAM
-		Condition					conditions;				// 40 - CITC
+		TESCondition				conditions;				// 40 - CITC
 	};
 	STATIC_ASSERT(sizeof(BGSStoryManagerNodeBase) == 0x48);
 }

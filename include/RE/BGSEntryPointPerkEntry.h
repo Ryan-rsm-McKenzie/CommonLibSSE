@@ -7,7 +7,7 @@
 namespace RE
 {
 	class BGSEntryPointFunctionData;
-	class Condition;
+	class TESCondition;
 
 
 	class BGSEntryPointPerkEntry : public BGSPerkEntry
@@ -70,7 +70,7 @@ namespace RE
 		// members
 		EntryData					entryData;			// 10 - DATA
 		BGSEntryPointFunctionData*	functionData;		// 18
-		Condition*					conditions;			// 20
+		TESCondition*				conditions;			// 20
 		BGSPerk*					perk;				// 28
 	};
 	STATIC_ASSERT(sizeof(BGSEntryPointPerkEntry) == 0x30);

@@ -2,8 +2,8 @@
 
 #include "RE/BSFixedString.h"
 #include "RE/BSString.h"
-#include "RE/Condition.h"
 #include "RE/FormTypes.h"
+#include "RE/TESCondition.h"
 #include "RE/TESForm.h"
 
 
@@ -77,7 +77,7 @@ namespace RE
 
 
 		// members
-		Condition				conditions;				// 20
+		TESCondition			conditions;				// 20
 		Data					data;					// 28 - DATA
 		UInt64					unk30;					// 30
 		RelatedIdleAnimations	relatedIdleAnimations;	// 38 - ANAM

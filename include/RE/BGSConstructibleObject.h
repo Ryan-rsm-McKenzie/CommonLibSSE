@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Condition.h"
 #include "RE/FormTypes.h"
+#include "RE/TESCondition.h"
 #include "RE/TESContainer.h"
 #include "RE/TESForm.h"
 
@@ -62,7 +62,7 @@ namespace RE
 
 		// members
 		TESContainer	container;			// 20
-		Condition		conditions;			// 38
+		TESCondition	conditions;			// 38
 		TESForm*		createdObject;		// 40 - CNAM
 		BGSKeyword*		workbenchKeyword;	// 48 - BNAM
 		UInt32			createdObjectCount;	// 50 - NAM1

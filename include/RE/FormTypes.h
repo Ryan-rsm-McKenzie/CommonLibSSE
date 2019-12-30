@@ -80,6 +80,7 @@ namespace RE
 	class TESQuest;
 	class TESIdleForm;
 	class TESPackage;
+	class DialoguePackage;
 	class TESCombatStyle;
 	class TESLoadScreen;
 	class TESLevSpell;
@@ -217,7 +218,7 @@ namespace RE
 		Info,						//	4C INFO	TESTopicInfo
 		Quest,						//	4D QUST	TESQuest
 		Idle,						//	4E IDLE	TESIdleForm
-		Package,					//	4F PACK	TESPackage
+		Package,					//	4F PACK	TESPackage / DialoguePackage
 		CombatStyle,				//	50 CSTY	TESCombatStyle
 		LoadScreen,					//	51 LSCR	TESLoadScreen
 		LeveledSpell,				//	52 LVSP	TESLevSpell

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Condition.h"
 #include "RE/IProcedureTreeItem.h"
+#include "RE/TESCondition.h"
 
 
 namespace RE
@@ -22,7 +22,7 @@ namespace RE
 
 
 		// members
-		Condition conditions;	// 08
+		TESCondition conditions;	// 08
 	};
 	STATIC_ASSERT(sizeof(BGSProcedureTreeConditionalItem) == 0x10);
 }

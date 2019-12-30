@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/BSIMusicTrack.h"
-#include "RE/Condition.h"
+#include "RE/TESCondition.h"
 
 
 namespace RE
@@ -26,8 +26,8 @@ namespace RE
 
 
 		// members
-		Condition	conditions;	// 10
-		UInt64		unk18;		// 18
+		TESCondition	conditions;	// 10
+		UInt64			unk18;		// 18
 	};
 	STATIC_ASSERT(sizeof(BGSMusicTrack) == 0x20);
 }

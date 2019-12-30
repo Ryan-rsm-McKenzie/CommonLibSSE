@@ -3,6 +3,7 @@
 #include <type_traits>
 
 #include "RE/BSIntrusiveRefCounted.h"
+#include "RE/NiPoint2.h"
 
 
 namespace RE
@@ -37,28 +38,23 @@ namespace RE
 		};
 
 
-		virtual ~BSShaderMaterial();								// 00
+		virtual ~BSShaderMaterial();										// 00
 
 		// add
-		virtual BSShaderMaterial*	Create();						// 01
-		virtual void				Copy(BSShaderMaterial* a_src);	// 02
-		virtual void				Unk_03(void);					// 03
-		virtual void				Unk_04(void);					// 04
-		virtual void				Unk_05(void);					// 05
-		virtual Type				GetType() const;				// 06 - { return Type::kDefault; }
-		virtual void				Unk_07(void);					// 07 - { return 0; }
+		virtual BSShaderMaterial*	CreateNew();							// 01
+		virtual void				CopyMembers(BSShaderMaterial* a_other);	// 02
+		virtual bool				DoIsCopy(BSShaderMaterial* a_other);	// 03
+		virtual UInt32				ComputeCRC32(void);						// 04
+		virtual BSShaderMaterial*	GetDefault();							// 05
+		virtual Type				GetType() const;						// 06 - { return Type::kDefault; }
+		virtual void				Unk_07(void);							// 07 - { return 0; }
 
 
 		// members
-		UInt32	unk0C;	// 0C
-		UInt64	unk10;	// 10
-		UInt32	unk18;	// 18
-		float	unk1C;	// 1C
-		float	unk20;	// 20
-		float	unk24;	// 24
-		float	unk28;	// 28
-		SInt32	unk2C;	// 2C
-		UInt64	unk30;	// 30
+		NiPoint2	texCoordOffset[2];	// 0C
+		NiPoint2	texCoordScale[2];	// 1C
+		SInt32		unk2C;				// 2C
+		UInt64		unk30;				// 30
 	};
 	STATIC_ASSERT(sizeof(BSShaderMaterial) == 0x38);
 }

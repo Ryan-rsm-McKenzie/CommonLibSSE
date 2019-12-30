@@ -1,4 +1,4 @@
-#include "RE/Condition.h"
+#include "RE/TESCondition.h"
 
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	Condition::ComparisonFlags::ComparisonFlags() :
+	TESCondition::ComparisonFlags::ComparisonFlags() :
 		isOR(false),
 		usesAliases(false),
 		global(false),
@@ -16,7 +16,7 @@ namespace RE
 	{}
 
 
-	Condition::Node::Node() :
+	TESCondition::Node::Node() :
 		next(0),
 		comparisonValue(0.0),
 		unk0C(0),
@@ -35,12 +35,12 @@ namespace RE
 	{}
 
 
-	Condition::Condition() :
+	TESCondition::TESCondition() :
 		head(0)
 	{}
 
 
-	Condition::~Condition()
+	TESCondition::~TESCondition()
 	{
 		auto cur = head;
 		while (cur) {
@@ -52,24 +52,24 @@ namespace RE
 	}
 
 
-	bool Condition::Node::Run(Solution& a_solution)
+	bool TESCondition::Node::Run(Solution& a_solution)
 	{
-		using func_t = function_type_t<decltype(&Condition::Node::Run)>;
-		REL::Offset<func_t*> func(Offset::Condition::Node::Run);
+		using func_t = function_type_t<decltype(&TESCondition::Node::Run)>;
+		REL::Offset<func_t*> func(Offset::TESCondition::Node::Run);
 		return func(this, a_solution);
 	}
 
 
-	Condition::operator bool() const
+	TESCondition::operator bool() const
 	{
 		return head != 0;
 	}
 
 
-	bool Condition::Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target)
+	bool TESCondition::Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target)
 	{
-		using func_t = function_type_t<decltype(&Condition::Run)>;
-		REL::Offset<func_t*> func(Offset::Condition::Run);
+		using func_t = function_type_t<decltype(&TESCondition::Run)>;
+		REL::Offset<func_t*> func(Offset::TESCondition::Run);
 		return func(this, a_perkOwner, a_target);
 	}
 }

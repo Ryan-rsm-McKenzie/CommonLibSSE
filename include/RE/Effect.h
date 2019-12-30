@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Condition.h"
 #include "RE/MemoryManager.h"
+#include "RE/TESCondition.h"
 
 
 namespace RE
@@ -35,7 +35,7 @@ namespace RE
 		EffectSetting*	baseEffect;	// 10 - EFID
 		float			cost;		// 18
 		UInt32			pad1C;		// 1C
-		Condition		conditions;	// 20 - CTDA
+		TESCondition	conditions;	// 20 - CTDA
 	};
 	STATIC_ASSERT(sizeof(Effect) == 0x28);
 }

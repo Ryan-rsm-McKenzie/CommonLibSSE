@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSTList.h"
-#include "RE/Condition.h"
 #include "RE/FormTypes.h"
+#include "RE/TESCondition.h"
 #include "RE/TESForm.h"
 
 
@@ -68,7 +68,7 @@ namespace RE
 
 
 		// members
-		Condition						conditions;						// 20
+		TESCondition					conditions;						// 20
 		BSSimpleList<BGSCameraShot*>	cameraShots;					// 28 - SNAM
 		Data							data;							// 38 - DATA
 		UInt32							unk3C;							// 3C

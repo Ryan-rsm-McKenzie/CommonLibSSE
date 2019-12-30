@@ -2,8 +2,8 @@
 
 #include "RE/BSFixedString.h"
 #include "RE/BSTList.h"
-#include "RE/Condition.h"
 #include "RE/FormTypes.h"
+#include "RE/TESCondition.h"
 #include "RE/TESDescription.h"
 #include "RE/TESForm.h"
 #include "RE/TESFullName.h"
@@ -44,7 +44,7 @@ namespace RE
 		struct MenuButton
 		{
 			BSFixedString	buttonText;	// 00 - ITXT
-			Condition		conditions;	// 08
+			TESCondition	conditions;	// 08
 		};
 		STATIC_ASSERT(sizeof(MenuButton) == 0x10);
 

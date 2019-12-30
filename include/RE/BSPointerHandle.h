@@ -146,4 +146,9 @@ namespace RE
 	class Actor;
 	using ActorHandle = BSPointerHandle<Actor>;
 	STATIC_ASSERT(sizeof(ActorHandle) == 0x4);
+
+
+	class Projectile;
+	using ProjectileHandle = BSPointerHandle<Projectile>;
+	STATIC_ASSERT(sizeof(ProjectileHandle) == 0x4);
 }

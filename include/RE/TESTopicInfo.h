@@ -1,10 +1,10 @@
 #pragma once
 
 #include "RE/BSFixedString.h"
-#include "RE/Condition.h"
 #include "RE/DialogueData.h"
 #include "RE/FormTypes.h"
 #include "RE/MemoryManager.h"
+#include "RE/TESCondition.h"
 #include "RE/TESForm.h"
 
 
@@ -145,7 +145,7 @@ namespace RE
 		// members
 		TESTopic*		topic;			// 20
 		TESTopicInfo*	previousInfo;	// 28 - PNAM
-		Condition		conditions;		// 30 - CTDA
+		TESCondition	conditions;		// 30 - CTDA
 		SInt16			index;			// 38 - index in infoTopics array of parent topic
 		bool			unk3A;			// 3A
 		FavorLevel		favorLevel;		// 3B - CNAM

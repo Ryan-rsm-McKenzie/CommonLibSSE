@@ -1063,6 +1063,15 @@
     <Filter Include="include\RE\Camera\TESCameraState\ThirdPersonState">
       <UniqueIdentifier>{23054d63-1b30-4f8c-8367-840fb0bd001c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\FormComponents\TESForm\TESPackage">
+      <UniqueIdentifier>{5a88bc56-a14f-4e1b-8078-4ef002a659fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiTexture">
+      <UniqueIdentifier>{66798a6b-97b3-4599-86af-9623b3c79cf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\NetImmerse\NiRefObject\NiObject\NiTexture">
+      <UniqueIdentifier>{fab91fe2-498f-425e-8199-5990b35a6760}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1157,9 +1166,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp">
       <Filter>src\RE\Events\ScriptEvent</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\Condition.cpp">
-      <Filter>src\RE\FormComponents\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ActorValueOwner.cpp">
       <Filter>src\RE\FormComponents\Components</Filter>
@@ -1584,9 +1590,6 @@
     <ClCompile Include="src\RE\NiTCollection.cpp">
       <Filter>src\RE\NetImmerse</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\NiTexture.cpp">
-      <Filter>src\RE\NetImmerse\NiRefObject\NiObject</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\NiColorData.cpp">
       <Filter>src\RE\NetImmerse\NiRefObject\NiObject</Filter>
     </ClCompile>
@@ -1730,6 +1733,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\BSInputDeviceManager.cpp">
       <Filter>src\RE\BSDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESCondition.cpp">
+      <Filter>src\RE\FormComponents\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiTexture.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiTexture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2924,9 +2933,6 @@
     <ClInclude Include="include\RE\Color.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\Condition.h">
-      <Filter>include\RE\FormComponents\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\DirectionalAmbientLightingColor.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
@@ -3012,9 +3018,6 @@
       <Filter>include\RE\FormComponents\TESForm</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESIdleForm.h">
-      <Filter>include\RE\FormComponents\TESForm</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\TESPackage.h">
       <Filter>include\RE\FormComponents\TESForm</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESRace.h">
@@ -4205,9 +4208,6 @@
     <ClInclude Include="include\RE\NiCamera.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\NiTexture.h">
-      <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\NiColorData.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
     </ClInclude>
@@ -5005,6 +5005,63 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSInputDeviceManager.h">
       <Filter>include\RE\BSDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSInstancedQuestObjective.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\QuestObjectiveStates.h">
+      <Filter>include\RE\FormComponents\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESQuestStageItem.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESCondition.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSLocalizedStringDL.h">
+      <Filter>include\RE\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESPackage.h">
+      <Filter>include\RE\FormComponents\TESForm\TESPackage</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DialoguePackage.h">
+      <Filter>include\RE\FormComponents\TESForm\TESPackage</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialEnvmap.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialEye.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialFacegen.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialFacegenTint.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialGlowmap.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialLandscape.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialMultiLayerParallax.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialParallax.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialParallaxOcc.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSLightingShaderMaterialSnow.h">
+      <Filter>include\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiTexture.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiSourceTexture.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiTexture</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

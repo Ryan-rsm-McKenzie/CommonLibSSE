@@ -348,20 +348,6 @@ namespace RE
 		}
 
 
-		namespace Condition
-		{
-			namespace Node
-			{
-				// IndirectSig: E8 ? ? ? ? 44 0F B6 C0 45 84 F6
-				constexpr std::uintptr_t Run = 0x004454C0;	// 1_5_97
-			}
-
-
-			// IndirectSig: E8 ? ? ? ? 0F B6 D8 EB 08
-			constexpr std::uintptr_t Run = 0x004447A0;	// 1_5_97
-		}
-
-
 		namespace Console
 		{
 			// 48 8D 0D ? ? ? ? E8 ? ? ? ? 83 3D ? ? ? ? ? 74 13 48 8D 15 ? ? ? ? 48 8D 0D ? ? ? ? E8 ? ? ? ? 45 33 C9 45 33 C0 BA ? ? ? ? 48 8D 0D ? ? ? ? E8 ? ? ? ? 48 89 44 24 ?
@@ -1034,6 +1020,20 @@ namespace RE
 		{
 			// DirectSig: 48 89 5C 24 ? 57 48 83 EC 20 48 8B F9 48 8B DA 48 8B 49 28 48 85 C9 74 06
 			constexpr std::uintptr_t SetCameraState = 0x004F5C80;	// 1_5_97
+		}
+
+
+		namespace TESCondition
+		{
+			namespace Node
+			{
+				// IndirectSig: E8 ? ? ? ? 44 0F B6 C0 45 84 F6
+				constexpr std::uintptr_t Run = 0x004454C0;	// 1_5_97
+			}
+
+
+			// IndirectSig: E8 ? ? ? ? 0F B6 D8 EB 08
+			constexpr std::uintptr_t Run = 0x004447A0;	// 1_5_97
 		}
 
 

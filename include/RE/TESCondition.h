@@ -8,7 +8,7 @@ namespace RE
 	class TESObjectREFR;
 
 
-	class Condition
+	class TESCondition
 	{
 	public:
 		enum class OpCode : UInt8
@@ -961,8 +961,8 @@ namespace RE
 		STATIC_ASSERT(sizeof(Node) == 0x38);
 
 
-		Condition();
-		~Condition();
+		TESCondition();
+		~TESCondition();
 
 		TES_HEAP_REDEFINE_NEW();
 
@@ -973,5 +973,5 @@ namespace RE
 		// members
 		Node* head;	// 0
 	};
-	STATIC_ASSERT(sizeof(Condition) == 0x8);
+	STATIC_ASSERT(sizeof(TESCondition) == 0x8);
 }

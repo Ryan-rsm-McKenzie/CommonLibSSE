@@ -8,7 +8,7 @@
 
 namespace RE
 {
-	class Condition;
+	class TESCondition;
 
 
 	class BGSStandardSoundDef : public BGSSoundDescriptor
@@ -75,7 +75,7 @@ namespace RE
 		// members
 		BSTArray<FileHash>				soundFiles;				// 18 - ANAM
 		SoundPlaybackCharacteristics	soundCharacteristics;	// 30 - BNAM
-		Condition*						conditions;				// 40 - CTDA
+		TESCondition*					conditions;				// 40 - CTDA
 		BGSSoundOutput*					outputModel;			// 48 - ONAM
 		LengthCharacteristics			lengthCharacteristics;	// 50 - LNAM
 		SInt32							unk54;					// 54
