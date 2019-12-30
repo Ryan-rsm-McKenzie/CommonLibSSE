@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSPointerHandle.h"
 #include "RE/MemoryManager.h"
 
 
@@ -37,7 +38,7 @@ namespace RE
 
 
 		// Betheseda keeps these in a giant lookup table
-		// using func_t = bool(TESObjectREFR* a_perkOwnerOrTarget, void* a_param1, void* a_param2, double& a_result);
+		// using func_t = bool(TESObjectREFR* a_thisObj, void* a_param1, void* a_param2, double& a_result);
 		enum class FunctionID : UInt16
 		{
 			kGetWantBlocking = 0,
@@ -945,7 +946,7 @@ namespace RE
 			Node*			next;				// 00
 			float			comparisonValue;	// 08
 			UInt32			unk0C;				// 0C
-			RefHandle		handle;				// 10 - kReference
+			ObjectRefHandle	handle;				// 10 - kReference
 			SInt32			unk14;				// 14
 			FunctionID		functionID;			// 18
 			UInt8			unk1A;				// 1A

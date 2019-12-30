@@ -16,7 +16,9 @@ namespace RE
 
 		virtual ~BSHandleRefObject();	// 00
 
+		void	DecHandleRefCount();
 		void	DecRefCount();
+		UInt32	GetHandleRefCount() const;
 		UInt32	GetRefCount() const;
 	};
 	STATIC_ASSERT(sizeof(BSHandleRefObject) == 0x10);

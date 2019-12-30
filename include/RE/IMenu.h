@@ -16,7 +16,7 @@ namespace RE
 	class IMenu : public FxDelegateHandler
 	{
 	private:
-		using Context = UserEvents::InputContextID;
+		using Context = UserEvents::INPUT_CONTEXT_ID;
 
 	public:
 		inline static const void* RTTI = RTTI_IMenu;

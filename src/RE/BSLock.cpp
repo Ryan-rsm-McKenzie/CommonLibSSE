@@ -6,18 +6,18 @@
 
 namespace RE
 {
-	BSUniqueLock::BSUniqueLock() :
-		_threadID(0),
+	BSSpinLock::BSSpinLock() :
+		_owningThread(0),
 		_lockCount(0)
 	{}
 
 
-	void BSUniqueLock::Lock(UInt32 a_pauseAttempts)
+	void BSSpinLock::Lock(UInt32 a_pauseAttempts)
 	{
 		UInt32 myThreadID = GetCurrentThreadId();
 
 		_mm_lfence();
-		if (_threadID == myThreadID) {
+		if (_owningThread == myThreadID) {
 			InterlockedIncrement(&_lockCount);
 		} else {
 			UInt32 attempts = 0;
@@ -36,20 +36,20 @@ namespace RE
 				_mm_lfence();
 			}
 
-			_threadID = myThreadID;
+			_owningThread = myThreadID;
 			_mm_sfence();
 		}
 	}
 
 
-	void BSUniqueLock::Unlock()
+	void BSSpinLock::Unlock()
 	{
 		UInt32 myThreadID = GetCurrentThreadId();
 
 		_mm_lfence();
-		if (_threadID == myThreadID) {
+		if (_owningThread == myThreadID) {
 			if (_lockCount == 1) {
-				_threadID = 0;
+				_owningThread = 0;
 				_mm_mfence();
 				InterlockedCompareExchange(&_lockCount, 0, 1);
 			} else {
@@ -60,8 +60,8 @@ namespace RE
 
 
 	BSReadWriteLock::BSReadWriteLock() :
-		_threadID(0),
-		_lockCount(0)
+		_writerThread(0),
+		_lock(0)
 	{}
 
 
@@ -97,14 +97,14 @@ namespace RE
 	}
 
 
-	BSUniqueLockGuard::BSUniqueLockGuard(BSUniqueLock& a_lock) :
+	BSSpinLockGuard::BSSpinLockGuard(BSSpinLock& a_lock) :
 		_lock(a_lock)
 	{
 		_lock.Lock();
 	}
 
 
-	BSUniqueLockGuard::~BSUniqueLockGuard()
+	BSSpinLockGuard::~BSSpinLockGuard()
 	{
 		_lock.Unlock();
 	}

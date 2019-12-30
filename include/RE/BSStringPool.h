@@ -73,12 +73,12 @@ namespace RE
 
 
 		// members
-		Entry*					table[0x10000];	// 00000 - index using hash & kEntryIndexMask
-		mutable BSUniqueLock	locks[0x20];	// 80000 - index using hash & kLockIndexMask
-		Flag					flags;			// 80100
-		UInt8					pad80801;		// 80101
-		UInt16					pad80802;		// 80102
-		UInt32					pad80804;		// 80104
+		Entry*				table[0x10000];	// 00000 - index using hash & kEntryIndexMask
+		mutable BSSpinLock	locks[0x20];	// 80000 - index using hash & kLockIndexMask
+		Flag				flags;			// 80100
+		UInt8				pad80801;		// 80101
+		UInt16				pad80802;		// 80102
+		UInt32				pad80804;		// 80104
 	};
 	STATIC_ASSERT(sizeof(BSStringPool) == 0x80108);
 }

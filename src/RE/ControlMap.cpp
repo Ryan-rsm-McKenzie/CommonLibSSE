@@ -1,7 +1,5 @@
 #include "RE/ControlMap.h"
 
-#include "RE/BSFixedString.h"
-#include "RE/BSTArray.h"
 #include "RE/Offsets.h"
 #include "RE/UserEventEnabled.h"
 #include "REL/Relocation.h"
@@ -32,9 +30,9 @@ namespace RE
 	}
 
 
-	UInt32 ControlMap::GetMappedKey(const std::string_view& a_eventID, InputDevice a_device, InputContextID a_context) const
+	UInt32 ControlMap::GetMappedKey(const std::string_view& a_eventID, INPUT_DEVICE a_device, InputContextID a_context) const
 	{
-		assert(a_device < InputDevice::kTotal);
+		assert(a_device < INPUT_DEVICE::kTotal);
 		assert(a_context < InputContextID::kTotal);
 
 		auto mappings = controlMap ? &controlMap[to_underlying(a_context)]->deviceMappings[to_underlying(a_device)] : 0;
@@ -51,9 +49,9 @@ namespace RE
 	}
 
 
-	std::string_view ControlMap::GetUserEventName(UInt32 a_buttonID, InputDevice a_device, InputContextID a_context) const
+	std::string_view ControlMap::GetUserEventName(UInt32 a_buttonID, INPUT_DEVICE a_device, InputContextID a_context) const
 	{
-		assert(a_device < InputDevice::kTotal);
+		assert(a_device < INPUT_DEVICE::kTotal);
 		assert(a_context < InputContextID::kTotal);
 
 		auto mappings = controlMap ? &controlMap[to_underlying(a_context)]->deviceMappings[to_underlying(a_device)] : 0;

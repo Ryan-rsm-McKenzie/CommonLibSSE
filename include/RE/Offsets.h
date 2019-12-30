@@ -343,15 +343,6 @@ namespace RE
 		}
 
 
-		namespace CommandInfo
-		{
-			// E8 ? ? ? ? 48 8D 1D ? ? ? ? BF ? ? ? ? 0F 1F 44 00 ?
-			constexpr std::uintptr_t FirstConsoleCommand = 0x01DC6F60;	// 1_5_97
-			// 48 8D 1D ? ? ? ? BF ? ? ? ? 0F 1F 00
-			constexpr std::uintptr_t FirstScriptCommand = 0x01DB8910;	// 1_5_97
-		}
-
-
 		namespace Console
 		{
 			// 48 8D 0D ? ? ? ? E8 ? ? ? ? 83 3D ? ? ? ? ? 74 13 48 8D 15 ? ? ? ? 48 8D 0D ? ? ? ? E8 ? ? ? ? 45 33 C9 45 33 C0 BA ? ? ? ? 48 8D 0D ? ? ? ? E8 ? ? ? ? 48 89 44 24 ?
@@ -975,6 +966,15 @@ namespace RE
 			constexpr std::uintptr_t GetSingleton = 0x00186790;			// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 90 48 8B 45 D7 48 85 C0 74 1C
 			constexpr std::uintptr_t SendActivateEvent = 0x002A2070;	// 1_5_97
+		}
+
+
+		namespace SCRIPT_FUNCTION
+		{
+			// E8 ? ? ? ? 48 8D 1D ? ? ? ? BF ? ? ? ? 0F 1F 44 00 ?
+			constexpr std::uintptr_t FirstConsoleCommand = 0x01DC6F60;	// 1_5_97
+			// 48 8D 1D ? ? ? ? BF ? ? ? ? 0F 1F 00
+			constexpr std::uintptr_t FirstScriptCommand = 0x01DB8910;	// 1_5_97
 		}
 
 

@@ -4985,9 +4985,6 @@
     <ClInclude Include="include\RE\BSSoundHandle.h">
       <Filter>include\RE\BSAudio</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\InputDevice.h">
-      <Filter>include\RE\BSDevices\Enums</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\PCGamepadType.h">
       <Filter>include\RE\BSDevices\Enums</Filter>
     </ClInclude>
@@ -5062,6 +5059,12 @@
     </ClInclude>
     <ClInclude Include="include\RE\BGSDirectionalAmbientLightingColors.h">
       <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\InputDevices.h">
+      <Filter>include\RE\BSDevices\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTimer.h">
+      <Filter>include\RE\BSSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

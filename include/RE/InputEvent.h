@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/BSFixedString.h"
-#include "RE/InputDevice.h"
+#include "RE/InputDevices.h"
 
 
 namespace RE
@@ -30,9 +30,9 @@ namespace RE
 
 
 		// members
-		InputDevice	device;		// 08
-		EventType	eventType;	// 0C
-		InputEvent*	next;		// 10
+		INPUT_DEVICE	device;		// 08
+		EventType		eventType;	// 0C
+		InputEvent*		next;		// 10
 	};
 	STATIC_ASSERT(sizeof(InputEvent) == 0x18);
 }

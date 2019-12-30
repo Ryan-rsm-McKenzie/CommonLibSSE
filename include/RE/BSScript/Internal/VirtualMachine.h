@@ -132,13 +132,13 @@ namespace RE
 				IStackCallbackSaveInterface*						stackCallbackSaveInterface;	// 00A8
 				UInt64												unk00B0;					// 00B0
 				ISavePatcherInterface*								savePatcher;				// 00B8
-				mutable BSUniqueLock								classLock;					// 00C0
+				mutable BSSpinLock									classLock;					// 00C0
 				LinkerProcessor										linkerProcessor;			// 00C8
 				BSTHashMap<BSFixedString, BSTSmartPointer<Class>>	linkedClassMap;				// 0158
 				BSTHashMap<FormType32, BSFixedString>				typeToClassNameMap;			// 0188
 				BSTHashMap<BSFixedString, FormType32>				classNameToTypeMap;			// 01B8
 				BSTArray<void*>										unk01E8;					// 01E8
-				mutable BSUniqueLock								unk0200;					// 0200
+				mutable BSSpinLock									unk0200;					// 0200
 				BSTStaticFreeList<FunctionMessage, 1024>			unk0208;					// 0208
 				BSTCommonLLMessageQueue<FunctionMessage>			unk8220;					// 8220
 				BSTArray<void*>										unk8248;					// 8248
@@ -154,7 +154,7 @@ namespace RE
 				BSTArray<void*>*									unk9300;					// 9300 - ref to unk92D8
 				BSTCommonStaticMessageQueue<SuspendedStack, 128>*	unk9308;					// 9308 - ref to unk8280
 				BSTArray<void*>*									unk9310;					// 9310 - ref to unk92C0
-				mutable BSUniqueLock								stackLock;					// 9318
+				mutable BSSpinLock									stackLock;					// 9318
 				BSTHashMap<StackID, BSTSmartPointer<Stack>>			allStacks;					// 9320
 				BSTHashMap<UInt32, UnkValue>						waitingStacks;				// 9350
 				StackID												nextFreeStackID;			// 9380
@@ -166,7 +166,7 @@ namespace RE
 				BSTHashMap<UnkKey, UnkValue>						unk93A8;					// 93A8
 				UInt64												unk93D8;					// 93D8
 				BSTArray<void*>										unk93E0;					// 93E0
-				mutable BSUniqueLock								unk93F8;					// 93F8
+				mutable BSSpinLock									unk93F8;					// 93F8
 				UInt64												unk9400;					// 9400
 				BSTArray<void*>										unk9408;					// 9408
 				UInt64												unk9420;					// 9420

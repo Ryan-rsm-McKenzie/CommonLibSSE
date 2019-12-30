@@ -2,7 +2,7 @@
 
 #include "RE/BSTEvent.h"
 #include "RE/BSTSingleton.h"
-#include "RE/InputDevice.h"
+#include "RE/InputDevices.h"
 
 
 namespace RE
@@ -37,7 +37,7 @@ namespace RE
 		UInt8									pad59;											// 59
 		UInt16									pad5A;											// 5A
 		UInt32									pad5C;											// 5C
-		BSIInputDevice*							devices[to_underlying(InputDevice::kTotal)];	// 60
+		BSIInputDevice*							devices[to_underlying(INPUT_DEVICE::kTotal)];	// 60
 		bool									queuedGamepadEnableValue;						// 80
 		bool									valueQueued;									// 81
 		bool									pollingEnabled;									// 82

@@ -22,8 +22,8 @@ namespace RE
 
 	GPtr<IMenu> UI::GetMenu(const std::string_view& a_menuName)
 	{
-		auto it = menuTable.find(a_menuName);
-		return it != menuTable.end() ? it->second.menuInstance : nullptr;
+		auto it = menuMap.find(a_menuName);
+		return it != menuMap.end() ? it->second.menu : nullptr;
 	}
 
 
@@ -79,7 +79,7 @@ namespace RE
 
 	bool UI::IsShowingMenus() const
 	{
-		return showMenus;
+		return menuSystemVisible;
 	}
 
 
@@ -89,14 +89,14 @@ namespace RE
 	}
 
 
-	void UI::Register(const std::string_view& a_menuName, CreatorFunc* a_creator)
+	void UI::Register(const std::string_view& a_menuName, Create_t* a_creator)
 	{
-		menuTable.insert({ a_menuName, { nullptr, a_creator } });
+		menuMap.insert({ a_menuName, { nullptr, a_creator } });
 	}
 
 
 	void UI::ShowMenus(bool a_show)
 	{
-		showMenus = a_show;
+		menuSystemVisible = a_show;
 	}
 }

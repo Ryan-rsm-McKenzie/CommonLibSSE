@@ -433,6 +433,7 @@
     <ClInclude Include="include\RE\BSLightingShaderMaterialParallaxOcc.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialSnow.h" />
     <ClInclude Include="include\RE\BSPointerHandle.h" />
+    <ClInclude Include="include\RE\BSTimer.h" />
     <ClInclude Include="include\RE\BSTTuple.h" />
     <ClInclude Include="include\RE\BSUntypedPointerHandle.h" />
     <ClInclude Include="include\RE\BSXFlags.h" />
@@ -754,7 +755,7 @@
     <ClInclude Include="include\RE\CursorMenu.h" />
     <ClInclude Include="include\RE\DetectionListener.h" />
     <ClInclude Include="include\RE\DetectionState.h" />
-    <ClInclude Include="include\RE\InputDevice.h" />
+    <ClInclude Include="include\RE\InputDevices.h" />
     <ClInclude Include="include\RE\DialogueData.h" />
     <ClInclude Include="include\RE\DialogueMenu.h" />
     <ClInclude Include="include\RE\BGSDirectionalAmbientLightingColors.h" />

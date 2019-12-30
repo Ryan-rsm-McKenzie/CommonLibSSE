@@ -61,7 +61,7 @@ namespace RE
 		UInt8							unk0F8[8];				// 0F8
 		float							unk100[20];				// 100
 		BSTArray<ActorHandle>			actionInterestedActor;	// 150
-		mutable BSUniqueLock			actorArrayLock;			// 168
+		mutable BSSpinLock				actorArrayLock;			// 168
 		MovementHandler*				movementHandler;		// 170
 		LookHandler*					lookHandler;			// 178
 		SprintHandler*					sprintHandler;			// 180

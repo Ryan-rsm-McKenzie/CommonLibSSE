@@ -328,12 +328,6 @@ namespace RE
 	}
 
 
-	UInt32 TESObjectREFR::GetRefCount() const
-	{
-		return BSHandleRefObject::GetRefCount();
-	}
-
-
 	const char* TESObjectREFR::GetReferenceName() const
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::GetReferenceName)>;

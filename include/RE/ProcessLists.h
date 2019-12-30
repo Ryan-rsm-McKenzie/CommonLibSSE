@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSLock.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTSingleton.h"
 
@@ -68,9 +69,9 @@ namespace RE
 		UInt64						unk0D8;							// 0D8
 		UInt64						unk0E0;							// 0E0
 		BSTArray<BSTempEffect*>		tempEffects;					// 0E8
-		mutable BSUniqueLock		tempEffectsLock;				// 100
+		mutable BSSpinLock			tempEffectsLock;				// 100
 		BSTArray<ReferenceEffect*>	referenceEffects;				// 108
-		mutable BSUniqueLock		referenceEffectsLock;			// 120
+		mutable BSSpinLock			referenceEffectsLock;			// 120
 		BSTArray<void*>				unk128;							// 128
 		UInt64						unk140;							// 140
 		UInt64						unk148;							// 148
@@ -80,7 +81,7 @@ namespace RE
 		UInt32						pad174;							// 174
 		UInt64						unk178;							// 178
 		BSTArray<void*>				unk180;							// 180
-		mutable BSUniqueLock		unk198;							// 198
+		mutable BSSpinLock			unk198;							// 198
 		BSTArray<RefHandle>			unk1A0;							// 1A0
 		BSTArray<void*>				unk1B8;							// 1B8
 		float						unk1D0;							// 1D0

@@ -60,7 +60,7 @@ namespace RE
 		void*																						unk88;				// 88
 		BShkbAnimationGraph*																		unk90;				// 90 - The active animation graph?
 		UInt64																						unk98;				// 98
-		mutable BSUniqueLock																		unkA0;				// A0
+		mutable BSSpinLock																			unkA0;				// A0
 		UInt64																						unkA8;				// A8
 	};
 	STATIC_ASSERT(offsetof(BSAnimationGraphManager, animationGraphs) == 0x40);

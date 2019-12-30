@@ -3,7 +3,7 @@
 #include "RE/BSFixedString.h"
 #include "RE/BSIInputDevice.h"
 #include "RE/BSTHashMap.h"
-#include "RE/InputDevice.h"
+#include "RE/InputDevices.h"
 
 
 namespace RE
@@ -38,7 +38,7 @@ namespace RE
 
 
 		// members
-		InputDevice							device;				// 08
+		INPUT_DEVICE						device;				// 08
 		UInt32								pad0C;				// 0C
 		BSTHashMap<UInt32, InputButton*>	deviceButtons;		// 10
 		BSTHashMap<BSFixedString, UInt32>	buttonNameIDMap;	// 40

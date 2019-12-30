@@ -8,15 +8,18 @@ namespace RE
 	class UserEventEnabled
 	{
 	public:
-		constexpr UserEventEnabled(UserEvents::Flag a_curFlags, UserEvents::Flag a_prevFlags) :
+		using UEFlag = UserEvents::USER_EVENT_FLAG;
+
+
+		constexpr UserEventEnabled(UEFlag a_curFlags, UEFlag a_prevFlags) :
 			curFlags(a_curFlags),
 			prevFlags(a_prevFlags)
 		{}
 
 
 		// members
-		UserEvents::Flag	curFlags;	// 0
-		UserEvents::Flag	prevFlags;	// 4
+		UEFlag	curFlags;	// 0
+		UEFlag	prevFlags;	// 4
 	};
 	STATIC_ASSERT(sizeof(UserEventEnabled) == 0x8);
 }

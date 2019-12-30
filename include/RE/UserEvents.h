@@ -9,7 +9,7 @@ namespace RE
 	class UserEvents : public BSTSingletonSDM<UserEvents>
 	{
 	public:
-		enum class InputContextID: UInt32
+		enum class INPUT_CONTEXT_ID : UInt32
 		{
 			kGameplay = 0,
 			kMenuMode,
@@ -35,7 +35,7 @@ namespace RE
 		};
 
 
-		enum class Flag : UInt32
+		enum class USER_EVENT_FLAG : UInt32
 		{
 			kNone = 0,
 			kMovement = 1 << 0,
@@ -52,7 +52,7 @@ namespace RE
 			kVATS = 1 << 11,
 			kInvalid = (UInt32)1 << 31,
 
-			kAll = static_cast<std::underlying_type_t<Flag>>(-1)
+			kAll = static_cast<std::underlying_type_t<USER_EVENT_FLAG>>(-1)
 		};
 
 

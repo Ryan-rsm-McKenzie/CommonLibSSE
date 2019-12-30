@@ -13,46 +13,45 @@ namespace RE
 	struct PositionPlayerEvent;
 
 
+	struct BSPackedTaskQueue
+	{
+		using UnpackFunc_t = void(const BSPackedTask*);
+
+
+		struct Semaphore
+		{
+			HANDLE	handle;		// 00
+			UInt32	size;		// 08
+			UInt32	capacity;	// 0C
+		};
+		STATIC_ASSERT(sizeof(Semaphore) == 0x10);
+
+
+		// members
+		BSTCommonScrapHeapMessageQueue<BSPackedTask>	queue;		// 00
+		mutable Semaphore								semaphore;	// 28
+		UnpackFunc_t*									unpackFunc;	// 38
+	};
+	STATIC_ASSERT(sizeof(BSPackedTaskQueue) == 0x40);
+
+
+	struct BSSaveDataSystemUtilityImage
+	{
+		UInt32	size;	// 00
+		UInt32	width;	// 04
+		UInt32	height;	// 08
+		UInt32	pad0C;	// 0C
+		char*	buffer;	// 10
+	};
+	STATIC_ASSERT(sizeof(BSSaveDataSystemUtilityImage) == 0x18);
+
+
 	class Main :
 		public BSTEventSink<PositionPlayerEvent>,	// 00
 		public BSTEventSink<BSGamerProfileEvent>	// 08
 	{
 	public:
 		inline static const void* RTTI = RTTI_Main;
-
-
-		class BSPackedTaskQueue
-		{
-		public:
-			using UnpackFunc_t = void(const BSPackedTask*);
-
-
-			struct Semaphore
-			{
-				HANDLE	handle;		// 00
-				UInt32	size;		// 08
-				UInt32	capacity;	// 0C
-			};
-			STATIC_ASSERT(sizeof(Semaphore) == 0x10);
-
-
-			// members
-			BSTCommonScrapHeapMessageQueue<BSPackedTask>	queue;		// 00
-			mutable Semaphore								semaphore;	// 28
-			UnpackFunc_t*									unpackFunc;	// 38
-		};
-		STATIC_ASSERT(sizeof(BSPackedTaskQueue) == 0x40);
-
-
-		struct BSSaveDataSystemUtilityImage
-		{
-			UInt32	size;	// 00
-			UInt32	width;	// 04
-			UInt32	height;	// 08
-			UInt32	pad0C;	// 0C
-			char*	buffer;	// 10
-		};
-		STATIC_ASSERT(sizeof(BSSaveDataSystemUtilityImage) == 0x18);
 
 
 		virtual ~Main();																															// 00

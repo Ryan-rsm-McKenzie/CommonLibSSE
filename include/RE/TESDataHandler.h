@@ -18,26 +18,24 @@ namespace RE
 	class TESRegionList;
 
 
+	struct TESObjectList
+	{
+		UInt8 pad0;	// 0
+	};
+	STATIC_ASSERT(sizeof(TESObjectList) == 0x1);
+
+
+	struct TESFileCollection
+	{
+		BSTArray<TESFile*>	files;		// 00
+		BSTArray<TESFile*>	smallFiles;	// 18
+	};
+	STATIC_ASSERT(sizeof(TESFileCollection) == 0x30);
+
+
 	class TESDataHandler : public BSTSingletonSDM<TESDataHandler>
 	{
 	public:
-		class TESObjectList
-		{
-		public:
-			UInt8 pad0;	// 0
-		};
-		STATIC_ASSERT(sizeof(TESObjectList) == 0x1);
-
-
-		class TESFileCollection
-		{
-		public:
-			BSTArray<TESFile*>	files;		// 00
-			BSTArray<TESFile*>	smallFiles;	// 18
-		};
-		STATIC_ASSERT(sizeof(TESFileCollection) == 0x30);
-
-
 		static TESDataHandler*	GetSingleton();
 
 		UInt32					LoadScripts();

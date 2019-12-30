@@ -8,7 +8,7 @@
 #include "RE/BSInputDevice.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTSingleton.h"
-#include "RE/InputDevice.h"
+#include "RE/InputDevices.h"
 #include "RE/PCGamepadType.h"
 #include "RE/UserEvents.h"
 
@@ -23,8 +23,8 @@ namespace RE
 		public BSTEventSource<UserEventEnabled>	// 08
 	{
 	public:
-		using InputContextID = UserEvents::InputContextID;
-		using UEFlag = UserEvents::Flag;
+		using InputContextID = UserEvents::INPUT_CONTEXT_ID;
+		using UEFlag = UserEvents::USER_EVENT_FLAG;
 
 
 		enum : UInt32 { kInvalid = static_cast<UInt8>(-1) };
@@ -46,7 +46,7 @@ namespace RE
 
 		struct InputContext
 		{
-			BSTArray<UserEventMapping> deviceMappings[to_underlying(InputDevice::kTotal)];	// 00
+			BSTArray<UserEventMapping> deviceMappings[to_underlying(INPUT_DEVICE::kTotal)];	// 00
 		};
 		STATIC_ASSERT(sizeof(InputContext) == 0x60);
 
@@ -55,7 +55,7 @@ namespace RE
 		{
 			BSFixedString	linkedMappingName;		// 00
 			InputContextID	linkedMappingContext;	// 08
-			InputDevice		device;					// 0C
+			INPUT_DEVICE		device;					// 0C
 			InputContextID	linkFromContext;		// 10
 			UInt32			pad14;					// 14
 			BSFixedString	linkFromName;			// 18
@@ -66,8 +66,8 @@ namespace RE
 		static ControlMap*	GetSingleton();
 
 		SInt8				AllowTextInput(bool a_allow);
-		UInt32				GetMappedKey(const std::string_view& a_eventID, InputDevice a_device, InputContextID a_context = InputContextID::kGameplay) const;
-		std::string_view	GetUserEventName(UInt32 a_buttonID, InputDevice a_device, InputContextID a_context = InputContextID::kGameplay) const;
+		UInt32				GetMappedKey(const std::string_view& a_eventID, INPUT_DEVICE a_device, InputContextID a_context = InputContextID::kGameplay) const;
+		std::string_view	GetUserEventName(UInt32 a_buttonID, INPUT_DEVICE a_device, InputContextID a_context = InputContextID::kGameplay) const;
 		bool				IsActivateControlsEnabled() const;
 		bool				IsConsoleControlsEnabled() const;
 		bool				IsFightingControlsEnabled() const;
@@ -92,7 +92,7 @@ namespace RE
 		bool						ignoreKeyboardMouse;								// 121
 		bool						ignoreActivateDisabledEvents;						// 122
 		UInt8						pad123;												// 123
-		PCGamepadType				gamePadMapType;										// 124
+		PC_GAMEPAD_TYPE				gamePadMapType;										// 124
 	};
 	STATIC_ASSERT(sizeof(ControlMap) == 0x128);
 }

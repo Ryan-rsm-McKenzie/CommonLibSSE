@@ -24,7 +24,7 @@ namespace RE
 
 	UInt32 TESFile::GetCurrentSubRecordSize() const
 	{
-		return subRecord.size;
+		return actualChunkSize;
 	}
 
 

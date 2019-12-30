@@ -3,8 +3,6 @@
 #include <string>
 #include <string_view>
 
-
-#include "RE/BSTList.h"
 #include "RE/CommandTable.h"
 #include "RE/FormTypes.h"
 #include "RE/TESForm.h"
@@ -36,16 +34,6 @@ namespace RE
 		};
 
 
-		struct ParamData
-		{
-			const char*	param;	// 00
-			UInt64		unk00;	// 08
-			TESForm*	form;	// 10
-			UInt64		unk18;	// 18
-		};
-		STATIC_ASSERT(sizeof(ParamData) == 0x20);
-
-
 		virtual ~Script();								// 00
 
 		// override (TESForm)
@@ -61,17 +49,17 @@ namespace RE
 
 
 		// members
-		UInt64						unk20;		// 20
-		UInt64						unk28;		// 28
-		UInt64						unk30;		// 30
-		char*						command;	// 38
-		CommandInfo::ScriptData*	scriptData;	// 40
-		UInt64						unk48;		// 48
-		UInt32						unk50;		// 50
-		UInt32						pad54;		// 54
-		UInt64						unk58;		// 58
-		BSSimpleList<ParamData*>	paramData;	// 60
-		BSSimpleList<void*>			unk70;		// 70
+		SCRIPT_HEADER 							header;							// 20
+		UInt32									pad34;							// 34
+		char*									text;							// 38
+		SCRIPT_FUNCTION::ScriptData*			data;							// 40
+		float									profilerTimer;					// 48
+		float									questScriptDelay;				// 4C
+		float									questScriptGetSecondsBuffer;	// 50
+		UInt32									pad54;							// 54
+		TESQuest*								parentQuest;					// 58
+		BSSimpleList<SCRIPT_REFERENCED_OBJECT*>	refObjects;						// 60
+		BSSimpleList<ScriptVariable*>			variables;						// 70
 
 	private:
 		void Invoke_Impl(void* a_arg1, InvokeType a_type, TESObjectREFR* a_targetRef);

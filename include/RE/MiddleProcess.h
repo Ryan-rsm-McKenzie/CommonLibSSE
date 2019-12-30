@@ -104,7 +104,7 @@ namespace RE
 		BSTArray<AnimationVariableData>*			animVariables;			// 1B0
 		BSTArray<void*>								unk1B8;					// 1B8
 		BSTArray<void*>								unk1D0;					// 1D0
-		mutable BSUniqueLock						unk1E8;					// 1E8
+		mutable BSSpinLock							unk1E8;					// 1E8
 		void*										unk1F0;					// 1F0 - smart ptr
 		UInt16										unk1F8;					// 1F8
 		UInt16										unk1FA;					// 1FA

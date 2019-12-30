@@ -3,9 +3,9 @@
 
 namespace RE
 {
-	enum class InputDevice : UInt32
+	enum class INPUT_DEVICE : UInt32
 	{
-		kNone = static_cast<std::underlying_type_t<InputDevice>>(-1),
+		kNone = static_cast<std::underlying_type_t<INPUT_DEVICE>>(-1),
 		kKeyboard = 0,
 		kMouse,
 		kGamepad,

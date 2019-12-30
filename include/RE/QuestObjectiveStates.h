@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	enum QuestObjectiveState
+	enum class QUEST_OBJECTIVE_STATE : UInt32
 	{
 		kDormant = 0,
 		kDisplayed = 1,

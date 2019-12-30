@@ -512,7 +512,7 @@ namespace RE
 
 	// scatter table with chaining
 	template <class Key, class Hash = CRC32Hash<Key>, class KeyEqual = std::equal_to<Key>>
-	class BSTHashSet
+	class BSTSet
 	{
 	public:
 		using key_type = Key;
@@ -692,7 +692,7 @@ namespace RE
 		using const_iterator = iterator_base<const value_type>;
 
 
-		BSTHashSet() :
+		BSTSet() :
 			_pad00(0),
 			_pad08(0),
 			_capacity(0),
@@ -1005,7 +1005,7 @@ namespace RE
 		UInt64			_pad20;		// 20
 		Entry*			_entries;	// 28
 	};
-	STATIC_ASSERT(sizeof(BSTHashSet<UInt32, void*>) == 0x30);
+	STATIC_ASSERT(sizeof(BSTSet<UInt32, void*>) == 0x30);
 
 
 	using UnkKey = UInt64;

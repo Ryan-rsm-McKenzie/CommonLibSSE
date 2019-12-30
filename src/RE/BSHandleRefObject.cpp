@@ -10,11 +10,25 @@ namespace RE
 	}
 
 
+	void BSHandleRefObject::DecHandleRefCount()
+	{
+		if ((InterlockedDecrement(&_refCount) & kMask_RefCount) == 0) {
+			DeleteThis();
+		}
+	}
+
+
 	void BSHandleRefObject::DecRefCount()
 	{
 		if ((InterlockedDecrement(&_refCount) & kMask_RefCount) == 0) {
 			DeleteThis();
 		}
+	}
+
+
+	UInt32 BSHandleRefObject::GetHandleRefCount() const
+	{
+		return _refCount & kMask_RefCount;
 	}
 
 

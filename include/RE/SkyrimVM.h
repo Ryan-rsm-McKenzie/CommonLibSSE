@@ -197,10 +197,10 @@ namespace RE
 		UInt64																	unk88C8;						// 88C8
 		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	unk88D0;						// 88D0
 		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	unk88D8;						// 88D8
-		mutable BSUniqueLock													unk88E0;						// 88E0
+		mutable BSSpinLock														unk88E0;						// 88E0
 		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	unk88E8;						// 88E8
 		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	unk88F0;						// 88F0
-		mutable BSUniqueLock													unk88F8;						// 88F8
+		mutable BSSpinLock														unk88F8;						// 88F8
 		BSTHashMap<UnkKey, UnkValue>											unk8900;						// 8900
 		UInt64																	unk8930;						// 8930
 		UInt64																	unk8938;						// 8938

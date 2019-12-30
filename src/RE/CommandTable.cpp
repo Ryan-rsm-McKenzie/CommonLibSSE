@@ -8,79 +8,79 @@
 
 namespace RE
 {
-	auto CommandInfo::Chunk::AsString()
+	auto SCRIPT_FUNCTION::Chunk::AsString()
 		-> StringChunk*
 	{
 		return static_cast<StringChunk*>(this);
 	}
 
 
-	auto CommandInfo::Chunk::AsInteger()
+	auto SCRIPT_FUNCTION::Chunk::AsInteger()
 		-> IntegerChunk*
 	{
 		return static_cast<IntegerChunk*>(this);
 	}
 
 
-	std::string CommandInfo::StringChunk::GetString() const
+	std::string SCRIPT_FUNCTION::StringChunk::GetString() const
 	{
 		return length ? std::string(str, length) : "";
 	}
 
 
-	auto CommandInfo::StringChunk::GetNext()
+	auto SCRIPT_FUNCTION::StringChunk::GetNext()
 		-> Chunk*
 	{
 		return reinterpret_cast<Chunk*>(str + length);
 	}
 
 
-	int CommandInfo::IntegerChunk::GetInteger() const
+	int SCRIPT_FUNCTION::IntegerChunk::GetInteger() const
 	{
 		return *(int*)((std::uintptr_t)this + 1);
 	}
 
 
-	auto CommandInfo::IntegerChunk::GetNext()
+	auto SCRIPT_FUNCTION::IntegerChunk::GetNext()
 		-> Chunk*
 	{
 		return reinterpret_cast<Chunk*>(this + 1);
 	}
 
 
-	auto CommandInfo::ScriptData::GetChunk()
+	auto SCRIPT_FUNCTION::ScriptData::GetChunk()
 		-> Chunk*
 	{
 		return reinterpret_cast<Chunk*>(this + 1);
 	}
 
 
-	auto CommandInfo::ScriptData::GetStringChunk()
+	auto SCRIPT_FUNCTION::ScriptData::GetStringChunk()
 		-> StringChunk*
 	{
 		return static_cast<StringChunk*>(GetChunk());
 	}
 
 
-	auto CommandInfo::ScriptData::GetIntegerChunk()
+	auto SCRIPT_FUNCTION::ScriptData::GetIntegerChunk()
 		-> IntegerChunk*
 	{
 		return static_cast<IntegerChunk*>(GetChunk());
 	}
 
 
-	CommandInfo* CommandInfo::GetFirstScriptCommand()
+	SCRIPT_FUNCTION* SCRIPT_FUNCTION::GetFirstScriptCommand()
 	{
-		REL::Offset<CommandInfo*> ptr(Offset::CommandInfo::FirstScriptCommand);
+		REL::Offset<SCRIPT_FUNCTION*> ptr(Offset::SCRIPT_FUNCTION::FirstScriptCommand);
 		return ptr.GetType();
 	}
 
 
-	CommandInfo* CommandInfo::LocateScriptCommand(const char* a_longName)
+	SCRIPT_FUNCTION* SCRIPT_FUNCTION::LocateScriptCommand(const char* a_longName)
 	{
 		auto scriptCommands = GetFirstScriptCommand();
 		for (UInt16 i = 0; i < Commands::kScriptCommandsEnd; ++i) {
-			if (_stricmp(scriptCommands[i].longName, a_longName) == 0) {
+			if (_stricmp(scriptCommands[i].functionName, a_longName) == 0) {
 				return &scriptCommands[i];
 			}
 		}
@@ -88,18 +88,18 @@ namespace RE
 	}
 
 
-	CommandInfo* CommandInfo::GetFirstConsoleCommand()
+	SCRIPT_FUNCTION* SCRIPT_FUNCTION::GetFirstConsoleCommand()
 	{
-		REL::Offset<CommandInfo*> ptr(Offset::CommandInfo::FirstConsoleCommand);
+		REL::Offset<SCRIPT_FUNCTION*> ptr(Offset::SCRIPT_FUNCTION::FirstConsoleCommand);
 		return ptr.GetType();
 	}
 
 
-	CommandInfo* CommandInfo::LocateConsoleCommand(const char* a_longName)
+	SCRIPT_FUNCTION* SCRIPT_FUNCTION::LocateConsoleCommand(const char* a_longName)
 	{
 		auto consoleCommands = GetFirstConsoleCommand();
 		for (UInt16 i = 0; i < Commands::kConsoleCommandsEnd; ++i) {
-			if (_stricmp(consoleCommands[i].longName, a_longName) == 0) {
+			if (_stricmp(consoleCommands[i].functionName, a_longName) == 0) {
 				return &consoleCommands[i];
 			}
 		}
@@ -107,7 +107,7 @@ namespace RE
 	}
 
 
-	void CommandInfo::SetParameters()
+	void SCRIPT_FUNCTION::SetParameters()
 	{
 		numParams = 0;
 		params = 0;

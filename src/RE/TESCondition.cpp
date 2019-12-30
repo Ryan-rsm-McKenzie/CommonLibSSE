@@ -20,7 +20,7 @@ namespace RE
 		next(0),
 		comparisonValue(0.0),
 		unk0C(0),
-		handle(0),
+		handle(),
 		unk14(0),
 		functionID(static_cast<FunctionID>(-1)),
 		unk1A(0),

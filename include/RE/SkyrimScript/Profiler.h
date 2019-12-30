@@ -25,7 +25,7 @@ namespace RE
 
 
 			// members
-			mutable BSUniqueLock			unk08;	// 08
+			mutable BSSpinLock				unk08;	// 08
 			BSTHashMap<UnkKey, UnkValue>	unk10;	// 10
 			BSTHashMap<UnkKey, UnkValue>	unk40;	// 40
 			BSTHashMap<UnkKey, UnkValue>	unk70;	// 70

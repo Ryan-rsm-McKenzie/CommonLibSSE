@@ -41,7 +41,7 @@ namespace RE
 				return;
 			}
 
-			RE::BSUniqueLockGuard locker(lock);
+			BSSpinLockGuard locker(lock);
 
 			if (notifying) {
 				if (std::find(pendingRegisters.begin(), pendingRegisters.end(), a_eventSink) == pendingRegisters.end()) {
@@ -66,7 +66,7 @@ namespace RE
 				return;
 			}
 
-			RE::BSUniqueLockGuard locker(lock);
+			BSSpinLockGuard locker(lock);
 
 			if (notifying) {
 				if (std::find(pendingUnregisters.begin(), pendingUnregisters.end(), a_eventSink) == pendingUnregisters.end()) {
@@ -88,7 +88,7 @@ namespace RE
 
 		void SendEvent(Event* a_event)
 		{
-			RE::BSUniqueLockGuard locker(lock);
+			BSSpinLockGuard locker(lock);
 
 			auto wasNotifying = notifying;
 			notifying = true;
@@ -129,14 +129,14 @@ namespace RE
 
 
 		// members
-		BSTArray<Sink*>			sinks;				// 00
-		BSTArray<Sink*>			pendingRegisters;	// 18
-		BSTArray<Sink*>			pendingUnregisters;	// 30
-		mutable BSUniqueLock	lock;				// 48
-		bool					notifying;			// 50
-		UInt8					pad51;				// 51
-		UInt16					pad52;				// 52
-		UInt32					pad54;				// 54
+		BSTArray<Sink*>		sinks;				// 00
+		BSTArray<Sink*>		pendingRegisters;	// 18
+		BSTArray<Sink*>		pendingUnregisters;	// 30
+		mutable BSSpinLock	lock;				// 48
+		bool				notifying;			// 50
+		UInt8				pad51;				// 51
+		UInt16				pad52;				// 52
+		UInt32				pad54;				// 54
 	};
 	STATIC_ASSERT(sizeof(BSTEventSource<void*>) == 0x58);
 

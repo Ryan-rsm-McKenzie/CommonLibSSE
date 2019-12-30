@@ -36,7 +36,7 @@ namespace RE
 		explicit BSPointerHandle(const Y* a_rhs) :
 			_handle()
 		{
-			if (a_rhs && a_rhs->GetRefCount() > 0) {
+			if (a_rhs && a_rhs->GetHandleRefCount() > 0) {
 				create(a_rhs);
 			}
 		}

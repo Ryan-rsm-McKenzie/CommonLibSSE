@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	class BSUniqueLock
+	class BSSpinLock
 	{
 	public:
 		enum
@@ -12,17 +12,17 @@ namespace RE
 		};
 
 
-		BSUniqueLock();
+		BSSpinLock();
 
 		void	Lock(UInt32 a_pauseAttempts = 0);
 		void	Unlock();
 
 	private:
 		// members
-		volatile UInt32	_threadID;	// 0
-		volatile UInt32	_lockCount;	// 4
+		volatile UInt32	_owningThread;	// 0
+		volatile UInt32	_lockCount;		// 4
 	};
-	STATIC_ASSERT(sizeof(BSUniqueLock) == 0x8);
+	STATIC_ASSERT(sizeof(BSSpinLock) == 0x8);
 
 
 	class BSReadWriteLock
@@ -44,28 +44,28 @@ namespace RE
 
 	private:
 		// members
-		volatile UInt32	_threadID;	// 0
-		volatile UInt32	_lockCount;	// 4
+		volatile UInt32	_writerThread;	// 0
+		volatile UInt32	_lock;			// 4
 	};
 	STATIC_ASSERT(sizeof(BSReadWriteLock) == 0x8);
 
 
-	class BSUniqueLockGuard
+	class BSSpinLockGuard
 	{
 	public:
-		BSUniqueLockGuard() = delete;
-		BSUniqueLockGuard(const BSUniqueLockGuard&) = delete;
-		BSUniqueLockGuard(BSUniqueLockGuard&&) = delete;
-		explicit BSUniqueLockGuard(BSUniqueLock& a_lock);
-		~BSUniqueLockGuard();
+		BSSpinLockGuard() = delete;
+		BSSpinLockGuard(const BSSpinLockGuard&) = delete;
+		BSSpinLockGuard(BSSpinLockGuard&&) = delete;
+		explicit BSSpinLockGuard(BSSpinLock& a_lock);
+		~BSSpinLockGuard();
 
-		BSUniqueLockGuard& operator=(const BSUniqueLockGuard&) = delete;
-		BSUniqueLockGuard& operator=(BSUniqueLockGuard&&) = delete;
+		BSSpinLockGuard& operator=(const BSSpinLockGuard&) = delete;
+		BSSpinLockGuard& operator=(BSSpinLockGuard&&) = delete;
 
 	private:
-		BSUniqueLock& _lock;	// 0
+		BSSpinLock& _lock;	// 0
 	};
-	STATIC_ASSERT(sizeof(BSUniqueLockGuard) == 0x8);
+	STATIC_ASSERT(sizeof(BSSpinLockGuard) == 0x8);
 
 
 	class BSReadLockGuard

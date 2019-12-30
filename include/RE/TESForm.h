@@ -21,6 +21,21 @@ namespace RE
 	}
 
 
+	class TESFileArray : public BSStaticArray<TESFile*>
+	{
+	public:
+	};
+	STATIC_ASSERT(sizeof(TESFileArray) == 0x10);
+
+
+	class TESFileContainer
+	{
+	public:
+		TESFileArray* array;	// 0
+	};
+	STATIC_ASSERT(sizeof(TESFileContainer) == 0x8);
+
+
 	class TESForm : public BaseFormComponent
 	{
 	public:
@@ -56,21 +71,6 @@ namespace RE
 				kObstacle = 1 << 25
 			};
 		};
-
-
-		class TESFileArray : public BSStaticArray<TESFile*>
-		{
-		public:
-		};
-		STATIC_ASSERT(sizeof(TESFileArray) == 0x10);
-
-
-		class TESFileContainer
-		{
-		public:
-			TESFileArray* array;	// 0
-		};
-		STATIC_ASSERT(sizeof(TESFileContainer) == 0x8);
 
 
 		virtual ~TESForm();																																		// 00

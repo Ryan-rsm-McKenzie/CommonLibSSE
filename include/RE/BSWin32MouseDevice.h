@@ -42,15 +42,15 @@ namespace RE
 
 
 		// members
-		UInt64			unk78;	// 78
-		UInt64			unk80;	// 80
-		UInt64			unk88;	// 88
-		UInt64			unk90;	// 90
-		UInt64			unk98;	// 98
-		UInt64			unkA0;	// A0
-		UInt32			unkA8;	// A8
-		BSUniqueLock	unkAC;	// AC
-		UInt32			unkB4;	// B4
+		UInt64				unk78;	// 78
+		UInt64				unk80;	// 80
+		UInt64				unk88;	// 88
+		UInt64				unk90;	// 90
+		UInt64				unk98;	// 98
+		UInt64				unkA0;	// A0
+		UInt32				unkA8;	// A8
+		mutable BSSpinLock	unkAC;	// AC
+		UInt32				unkB4;	// B4
 	};
 	STATIC_ASSERT(sizeof(BSWin32MouseDevice) == 0xB8);
 }

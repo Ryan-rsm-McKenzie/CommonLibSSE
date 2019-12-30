@@ -44,6 +44,37 @@ namespace RE
 	struct LockState;
 
 
+	struct OBJ_REFR
+	{
+		TESBoundObject*	objectReference;	// 00
+		NiPoint3		angle;				// 08
+		NiPoint3		location;			// 14
+	};
+	STATIC_ASSERT(sizeof(OBJ_REFR) == 0x20);
+
+
+	struct LOADED_REF_DATA
+	{
+		BSTSmallArray<void*>	unk00;					// 00 - handleList?
+		UInt64					unk18;					// 18 - TESWaterForm* currentWaterType?
+		float					relevantWaterHeight;	// 20
+		float					cachedRadius;			// 24
+		UInt16					flags;					// 28
+		SInt16					underwaterCount;		// 2A
+		UInt32					pad2C;					// 2C
+		UInt64					unk30;					// 30 - AIProcess::Data0B8
+		UInt64					unk38;					// 38
+		UInt64					unk40;					// 40
+		UInt64					unk48;					// 48
+		UInt64					unk50;					// 50
+		UInt64					unk58;					// 58
+		UInt64					unk60;					// 60
+		NiPointer<NiAVObject>	data3D;					// 68
+		void*					unk70;					// 70 - smart ptr
+	};
+	STATIC_ASSERT(sizeof(LOADED_REF_DATA) == 0x78);
+
+
 	NiSmartPointer(TESObjectREFR);
 
 
@@ -164,37 +195,6 @@ namespace RE
 				kMultibound = (UInt32)1 << 31
 			};
 		};
-
-
-		struct ObjRef
-		{
-			TESBoundObject*	objectReference;	// 00
-			NiPoint3		angle;				// 08
-			NiPoint3		location;			// 14
-		};
-		STATIC_ASSERT(sizeof(ObjRef) == 0x20);
-
-
-		struct LoadedRefData
-		{
-			BSTSmallArray<void*>	unk00;					// 00 - BSModelDB::HandleListHead handleList?
-			UInt64					unk18;					// 18 - TESWaterForm* currentWaterType?
-			float					relevantWaterHeight;	// 20
-			float					cachedRadius;			// 24
-			UInt16					flags;					// 28
-			SInt16					underwaterCount;		// 2A
-			UInt32					pad2C;					// 2C
-			UInt64					unk30;					// 30 - AIProcess::Data0B8
-			UInt64					unk38;					// 38
-			UInt64					unk40;					// 40
-			UInt64					unk48;					// 48
-			UInt64					unk50;					// 50
-			UInt64					unk58;					// 58
-			UInt64					unk60;					// 60
-			NiPointer<NiAVObject>	data3D;					// 68
-			void*					unk70;					// 70 - smart ptr
-		};
-		STATIC_ASSERT(sizeof(LoadedRefData) == 0x78);
 
 
 		virtual ~TESObjectREFR();																																																			// 00
@@ -380,7 +380,6 @@ namespace RE
 		float					GetPositionX() const;
 		float					GetPositionY() const;
 		float					GetPositionZ() const;
-		UInt32					GetRefCount() const;
 		const char*				GetReferenceName() const;
 		float					GetWeight() const;
 		TESWorldSpace*			GetWorldspace() const;
@@ -405,15 +404,15 @@ namespace RE
 
 
 		// members
-		ObjRef			data;			// 40
-		TESObjectCELL*	parentCell;		// 60
-		LoadedRefData*	loadedData;		// 68
-		ExtraDataList	extraData;		// 70
-		UInt64			unk88;			// 88
-		UInt16			refScale;		// 90
-		UInt8			modelState;		// 92
-		bool			preDestroyed;	// 93
-		UInt32			pad94;			// 94
+		OBJ_REFR			data;			// 40
+		TESObjectCELL*		parentCell;		// 60
+		LOADED_REF_DATA*	loadedData;		// 68
+		ExtraDataList		extraData;		// 70
+		UInt64				unk88;			// 88
+		UInt16				refScale;		// 90
+		UInt8				modelState;		// 92
+		bool				preDestroyed;	// 93
+		UInt32				pad94;			// 94
 
 	private:
 		const LockState*	GetLockState_Impl() const;

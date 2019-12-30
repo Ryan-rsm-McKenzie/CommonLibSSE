@@ -56,8 +56,8 @@ namespace RE
 		}
 
 		BGSEncounterZone* zone = 0;
-		if (data) {
-			zone = data->encounterZone;
+		if (loadedData) {
+			zone = loadedData->encounterZone;
 		} else {
 			zone = extraList.GetEncounterZone();
 			if (!zone && IsExteriorCell()) {
@@ -71,7 +71,7 @@ namespace RE
 
 	bool TESObjectCELL::IsAttached() const
 	{
-		return attachedState == AttachedState::kAttached;
+		return cellState == CellState::kAttached;
 	}
 
 
@@ -83,7 +83,7 @@ namespace RE
 
 	bool TESObjectCELL::IsInteriorCell() const
 	{
-		return (flags & Flag::kIsInteriorCell) != Flag::kNone;
+		return (cellFlags & Flag::kIsInteriorCell) != Flag::kNone;
 	}
 
 
@@ -137,34 +137,34 @@ namespace RE
 	void TESObjectCELL::SetHandChanged(bool a_changed)
 	{
 		if (a_changed) {
-			flags |= Flag::kHandChanged;
+			cellFlags |= Flag::kHandChanged;
 		} else {
-			flags &= ~Flag::kHandChanged;
+			cellFlags &= ~Flag::kHandChanged;
 		}
-		AddChange(1 << 1);
+		AddChange(ChangeFlags::kFlags);
 	}
 
 
 	void TESObjectCELL::SetOwner(TESForm* a_owner)
 	{
 		extraList.SetOwner(a_owner);
-		AddChange(1 << 3);
+		AddChange(ChangeFlags::kOwnership);
 	}
 
 
 	void TESObjectCELL::SetPublic(bool a_public)
 	{
 		if (a_public) {
-			flags |= Flag::kPublicArea;
+			cellFlags |= Flag::kPublicArea;
 		} else {
-			flags &= ~Flag::kPublicArea;
+			cellFlags &= ~Flag::kPublicArea;
 		}
-		AddChange(1 << 1);
+		AddChange(ChangeFlags::kFlags);
 	}
 
 
 	bool TESObjectCELL::UsesSkyLighting() const
 	{
-		return (flags & Flag::kUseSkyLighting) != Flag::kNone;
+		return (cellFlags & Flag::kUseSkyLighting) != Flag::kNone;
 	}
 }

@@ -5,9 +5,10 @@
 
 #include "RE/BSFixedString.h"
 #include "RE/BSLock.h"
-#include "RE/BSTEvent.h"
 #include "RE/BSTArray.h"
+#include "RE/BSTEvent.h"
 #include "RE/BSTHashMap.h"
+#include "RE/BSTimer.h"
 #include "RE/BSTSingleton.h"
 #include "RE/GPtr.h"
 
@@ -34,45 +35,16 @@ namespace RE
 		template <class T> struct _is_menu_ptr : std::is_convertible<T, IMenu*> {};
 		template <class T> struct is_menu_ptr : _is_menu_ptr<std::remove_cv_t<T>> {};
 
-		using CreatorFunc = IMenu*();
+
+		using Create_t = IMenu*();
 
 
-		struct MenuTableItem
+		struct UIMenuEntry
 		{
-			GPtr<IMenu>		menuInstance;		// 00
-			CreatorFunc*	menuConstructor;	// 08
+			GPtr<IMenu>	menu;	// 00
+			Create_t*	create;	// 08
 		};
-		STATIC_ASSERT(sizeof(MenuTableItem) == 0x10);
-
-
-		using MenuTable = BSTHashMap<BSFixedString, MenuTableItem>;
-
-
-		struct Unknown3
-		{
-			UInt64	unk00;		// 00
-
-			UInt32	freqLow;	// 08 (= Frequency.LowPart)
-			UInt32	freqHigh;	// 0C (= Frequency.HighPart)
-
-			UInt64	unk10;		// 10
-			float	unk18;		// 18
-			float	unk1C;		// 1C
-			UInt32	unk20;		// 20
-			UInt32	unk24;		// 24
-			float	unk28;		// 28
-
-			UInt32	unk2C;		// 2C
-			UInt32	unk30;		// 30
-
-			UInt32	unk34;		// 34
-			UInt8	unk38;		// 38
-			UInt8	unk39;		// 39
-			UInt8	unk3A;		// 3A
-			UInt8	pad3B;		// 3B
-			UInt32	pad3C;		// 3C
-		};
-		STATIC_ASSERT(sizeof(Unknown3) == 0x40);
+		STATIC_ASSERT(sizeof(UIMenuEntry) == 0x10);
 
 
 		static UI* GetSingleton();
@@ -91,7 +63,7 @@ namespace RE
 		bool									IsSavingAllowed() const;
 		bool									IsShowingMenus() const;
 		bool									IsUsingCustomRendering() const;
-		void									Register(const std::string_view& a_menuName, CreatorFunc* a_creator);
+		void									Register(const std::string_view& a_menuName, Create_t* a_creator);
 		template <class T> void					RemoveEventSink(BSTEventSink<T>* a_sink);
 		void									ShowMenus(bool a_show);
 
@@ -109,24 +81,24 @@ namespace RE
 
 
 		// members
-		BSTArray<GPtr<IMenu>>	menuStack;						// 110
-		MenuTable				menuTable;						// 128
-		BSUniqueLock			unk158;							// 158
-		UInt32					numPausesGame;					// 160 (= 0) += 1 if (imenu->flags & 0x00001)
-		UInt32					numItemMenus;					// 164 (= 0) += 1 if (imenu->flags & 0x02000)
-		UInt32					numDisablePauseMenu;			// 168 (= 0) += 1 if (imenu->flags & 0x00080)
-		UInt32					numAllowSaving;					// 16C (= 0) += 1 if (imenu->flags & 0x00800)
-		UInt32					numDontHideCursorWhenTopmost;	// 170 (= 0) += 1 if (imenu->flags & 0x04000)
-		UInt32					numCustomRendering;				// 174 (= 0) += 1 if (imenu->flags & 0x08000)
-		UInt32					numApplicationMenus;			// 178 (= 0) += 1 if (imenu->flags & 0x20000)
-		bool					modal;							// 17C (= 0)  = 1 if (imenu->flags & 0x00010)
-		UInt8					pad17D;							// 17D
-		UInt16					pad17E;							// 17E
-		Unknown3				unk180;							// 180
-		bool					showMenus;						// 1C0 (= 0)
-		bool					unk1C1;							// 1C1 (= 0)
-		UInt16					pad1C2;							// 1C2
-		UInt32					pad1C4;							// 1C4
+		BSTArray<GPtr<IMenu>>					menuStack;						// 110
+		BSTHashMap<BSFixedString, UIMenuEntry>	menuMap;						// 128
+		mutable BSSpinLock						processMessagesLock;			// 158
+		UInt32									numPausesGame;					// 160 (= 0) += 1 if (imenu->flags & 0x00001)
+		UInt32									numItemMenus;					// 164 (= 0) += 1 if (imenu->flags & 0x02000)
+		UInt32									numDisablePauseMenu;			// 168 (= 0) += 1 if (imenu->flags & 0x00080)
+		UInt32									numAllowSaving;					// 16C (= 0) += 1 if (imenu->flags & 0x00800)
+		UInt32									numDontHideCursorWhenTopmost;	// 170 (= 0) += 1 if (imenu->flags & 0x04000)
+		UInt32									numCustomRendering;				// 174 (= 0) += 1 if (imenu->flags & 0x08000)
+		UInt32									numApplicationMenus;			// 178 (= 0) += 1 if (imenu->flags & 0x20000)
+		bool									modal;							// 17C (= 0)  = 1 if (imenu->flags & 0x00010)
+		UInt8									pad17D;							// 17D
+		UInt16									pad17E;							// 17E
+		BSTimer									uiTimer;						// 180
+		bool									menuSystemVisible;				// 1C0
+		bool									closingAllMenus;				// 1C1
+		UInt16									pad1C2;							// 1C2
+		UInt32									pad1C4;							// 1C4
 	};
 	STATIC_ASSERT(sizeof(UI) == 0x1C8);
 

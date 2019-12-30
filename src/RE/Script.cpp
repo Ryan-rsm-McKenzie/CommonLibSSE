@@ -11,16 +11,16 @@ namespace RE
 {
 	void Script::ClearCommand()
 	{
-		if (command) {
-			free(command);
-			command = 0;
+		if (text) {
+			free(text);
+			text = 0;
 		}
 	}
 
 
 	std::string Script::GetCommand() const
 	{
-		return command ? command : "";
+		return text ? text : "";
 	}
 
 
@@ -32,13 +32,13 @@ namespace RE
 
 	void Script::SetCommand(std::string_view a_command)
 	{
-		if (command) {
-			free(command);
+		if (text) {
+			free(text);
 		}
 
-		command = malloc<char>(a_command.length() + 1);
-		std::memcpy(command, a_command.data(), a_command.length());
-		command[a_command.length()] = '\0';
+		text = malloc<char>(a_command.length() + 1);
+		std::memcpy(text, a_command.data(), a_command.length());
+		text[a_command.length()] = '\0';
 	}
 
 

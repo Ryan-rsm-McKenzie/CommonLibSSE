@@ -75,7 +75,7 @@ namespace RE
 		Unk120*												unk120;								// 120
 		NiPointer<bhkRigidBody>								rigidBody;							// 128
 		RefHandle											objectFadeHandle;					// 130
-		mutable BSUniqueLock								lock;								// 134
+		mutable BSSpinLock									lock;								// 134
 		float												worldFOV;							// 13C
 		float												firstPersonFOV;						// 140
 		NiPoint3											pos;								// 144
