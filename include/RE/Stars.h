@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/NiSmartPointer.h"
 #include "RE/SkyObject.h"
 
 
@@ -14,15 +15,17 @@ namespace RE
 		inline static const void* RTTI = RTTI_Stars;
 
 
-		virtual ~Stars();					// 00
+		virtual ~Stars();											// 00
 
 		// override (SkyObject)
-		virtual void Unk_03(void) override;	// 03
+		virtual void	Unk_02(void) override;						// 02
+		virtual void	Update(Sky* a_sky, float a_arg2) override;	// 03
 
 
 		// members
-		NiNode*	unk10;	// 10
-		UInt64	unk18;	// 18
+		NiPointer<NiNode>	stars;	// 10
+		float				alpha;	// 18
+		UInt32				pad1C;	// 1C
 	};
 	STATIC_ASSERT(sizeof(Stars) == 0x20);
 }

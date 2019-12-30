@@ -1,9 +1,14 @@
 #pragma once
 
+#include <DirectXMath.h>
+
+#include "RE/NiSmartPointer.h"
+
 
 namespace RE
 {
-	class BSGeometryListCullingProcess;
+	class BSCullingProcess;
+	class BSGeometry;
 	class BSShaderAccumulator;
 	class NiCamera;
 
@@ -14,29 +19,29 @@ namespace RE
 		inline static const void* RTTI = RTTI_Precipitation;
 
 
+		class OcclusionMapData
+		{
+			DirectX::XMFLOAT4X4A			projection;		// 00
+			NiPointer<NiCamera>				camera;			// 40
+			NiPointer<BSShaderAccumulator>	accumulator;	// 48
+			BSCullingProcess*				cullingProcess;	// 50
+			UInt64							pad58;			// 58
+		};
+		STATIC_ASSERT(sizeof(OcclusionMapData) == 0x60);
+
+
 		virtual ~Precipitation();	// 00
 
 
 		// members
-		UInt64							unk08;	// 08
-		UInt64							unk10;	// 10
-		UInt64							unk18;	// 18
-		UInt64							unk20;	// 20
-		UInt64							unk28;	// 28
-		UInt64							unk30;	// 30
-		UInt64							unk38;	// 38
-		UInt64							unk40;	// 40
-		UInt64							unk48;	// 48
-		NiCamera*						unk50;	// 50
-		BSShaderAccumulator*			unk58;	// 58
-		BSGeometryListCullingProcess*	unk60;	// 60
-		UInt64							unk68;	// 68
-		UInt64							unk70;	// 70
-		UInt64							unk78;	// 78
-		float							unk80;	// 80
-		float							unk84;	// 84
-		float							unk88;	// 88
-		UInt32							unk8C;	// 8C
+		//UInt64						pad08;					// 08
+		OcclusionMapData				occlusionData;			// 10
+		NiPointer<BSGeometry>			currentPrecip;			// 70
+		NiPointer<BSGeometry>			lastPrecip;				// 78
+		float							lastCubeSize;			// 80
+		float							currentParticleDensity;	// 84
+		float							lastParticleDensity;	// 88
+		UInt32							pad8C;					// 8C
 	};
 	STATIC_ASSERT(sizeof(Precipitation) == 0x90);
 }

@@ -1,7 +1,7 @@
 #pragma once
 
+#include "RE/BGSDirectionalAmbientLightingColors.h"
 #include "RE/Color.h"
-#include "RE/DirectionalAmbientLightingColor.h"
 #include "RE/FormTypes.h"
 #include "RE/TESForm.h"
 
@@ -37,20 +37,20 @@ namespace RE
 			STATIC_ASSERT(sizeof(LightFadeDistances) == 0x8);
 
 
-			Color							ambientColor;			// 00
-			Color							dierectionalColor;		// 04
-			Color							fogColorNear;			// 08
-			float							fogNear;				// 0C
-			float							fogFar;					// 10
-			UInt32							directionalRotationXY;	// 14
-			UInt32							directionalRotationZ;	// 18
-			float							directionalFade;		// 1C
-			float							fogClipDistance;		// 20
-			float							fogPower;				// 24
-			DirectionalAmbientLightingColor	ambientColors;			// 28
-			Color							fogColorFar;			// 48
-			float							fogMax;					// 4C
-			LightFadeDistances				lightFadeDistances;		// 50
+			Color								ambientColor;			// 00
+			Color								dierectionalColor;		// 04
+			Color								fogColorNear;			// 08
+			float								fogNear;				// 0C
+			float								fogFar;					// 10
+			UInt32								directionalRotationXY;	// 14
+			UInt32								directionalRotationZ;	// 18
+			float								directionalFade;		// 1C
+			float								fogClipDistance;		// 20
+			float								fogPower;				// 24
+			BGSDirectionalAmbientLightingColors	ambientColors;			// 28
+			Color								fogColorFar;			// 48
+			float								fogMax;					// 4C
+			LightFadeDistances					lightFadeDistances;		// 50
 		};
 		STATIC_ASSERT(sizeof(Lighting) == 0x58);
 
@@ -64,9 +64,9 @@ namespace RE
 
 
 		// members
-		Lighting						lighting;							// 20 - DATA
-		UInt64							unk78;								// 78
-		DirectionalAmbientLightingColor	directionalAmbientLightingColors;	// 80 - DALC
+		Lighting							lighting;							// 20 - DATA
+		UInt64								unk78;								// 78
+		BGSDirectionalAmbientLightingColors	directionalAmbientLightingColors;	// 80 - DALC
 	};
 	STATIC_ASSERT(sizeof(BGSLightingTemplate) == 0xA0);
 }

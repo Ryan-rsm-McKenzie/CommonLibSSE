@@ -21,6 +21,19 @@ namespace RE
 		enum { kTypeID = FormType::Climate };
 
 
+		struct SkyObjects
+		{
+			enum SkyObject
+			{
+				kSun,
+				kSunGlare,
+
+				kTotal
+			};
+		};
+		using SkyObject = SkyObjects::SkyObject;
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32
@@ -79,11 +92,10 @@ namespace RE
 
 
 		// members
-		TESModel					model;				// 20
-		BSSimpleList<WeatherType*>	weatherTypes;		// 48 - WLST
-		TESTexture					sunTexture;			// 58 - FNAM
-		TESTexture					sunGlareTexture;	// 68 - GNAM
-		Timing						timing;				// 78 - TNAM
+		TESModel					nightSky;						// 20
+		BSSimpleList<WeatherType*>	weatherList;					// 48 - WLST
+		TESTexture					skyObjects[SkyObjects::kTotal];	// 58 - FNAM - GNAM
+		Timing						timing;							// 78 - TNAM
 	};
 	STATIC_ASSERT(sizeof(TESClimate) == 0x80);
 }

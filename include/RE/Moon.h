@@ -6,8 +6,8 @@
 
 namespace RE
 {
-	class NiNode;
 	class BSTriShape;
+	class NiNode;
 
 
 	class Moon : public SkyObject
@@ -16,9 +16,17 @@ namespace RE
 		inline static const void* RTTI = RTTI_Moon;
 
 
-		struct States
+		enum class UpdateStatus : UInt32
 		{
-			enum
+			kNotRequired = 0,
+			kWhenCulled,
+			kInitialize
+		};
+
+
+		struct Phases
+		{
+			enum Phase
 			{
 				kFull = 0,
 				kWaningGibbous,
@@ -32,31 +40,32 @@ namespace RE
 				kTotal
 			};
 		};
+		using Phase = Phases::Phase;
 
 
-		virtual ~Moon();						// 00
-
+		virtual ~Moon();											// 00
+		
 		// override (SkyObject)
-		virtual void	Unk_02(void) override;	// 02
-		virtual void	Unk_03(void) override;	// 03
+		virtual void	Unk_02(void) override;						// 02
+		virtual void	Update(Sky* a_sky, float a_arg2) override;	// 03
 
 
 		// members
-		NiNode*		unk10;							// 10
-		NiNode*		unk18;							// 18
-		BSTriShape*	unk20;							// 20
-		BSTriShape*	unk28;							// 28
-		BSString	stateTextures[States::kTotal];	// 30
-		float		unkB0;							// B0 - lunar cycle related
-		float		unkB4;							// B4
-		float		unkB8;							// B8
-		float		unkBC;							// BC
-		float		unkC0;							// C0
-		float		unkC4;							// C4
-		float		unkC8;							// C8
-		float		unkCC;							// CC
-		float		unkD0;							// D0
-		UInt32		padD4;							// D4
+		NiPointer<NiNode>		moonNode;						// 10
+		NiPointer<NiNode>		shadowNode;						// 18
+		NiPointer<BSTriShape>	moonMesh;						// 20
+		NiPointer<BSTriShape>	shadowMesh;						// 28
+		BSString				stateTextures[Phase::kTotal];	// 30
+		float					angleFadeStart;					// B0
+		float					angleFadeEnd;					// B4
+		float					angleShadowEarlyFade;			// B8
+		float					speed;							// BC
+		float					zOffset;						// C0
+		UInt32					size;							// C4
+		UpdateStatus			updateMoonTexture;				// C8
+		float					unkCC;							// CC
+		float					unkD0;							// D0
+		UInt32					padD4;							// D4
 	};
 	STATIC_ASSERT(sizeof(Moon) == 0xD8);
 }

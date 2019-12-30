@@ -2933,9 +2933,6 @@
     <ClInclude Include="include\RE\Color.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\DirectionalAmbientLightingColor.h">
-      <Filter>include\RE\FormComponents\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\FileHash.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
@@ -5062,6 +5059,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\NiSourceTexture.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSDirectionalAmbientLightingColors.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

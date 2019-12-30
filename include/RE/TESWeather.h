@@ -1,9 +1,9 @@
 #pragma once
 
+#include "RE/BGSDirectionalAmbientLightingColors.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTList.h"
 #include "RE/Color.h"
-#include "RE/DirectionalAmbientLightingColor.h"
 #include "RE/FormTypes.h"
 #include "RE/TESForm.h"
 #include "RE/TESModel.h"
@@ -186,25 +186,25 @@ namespace RE
 
 
 		// members
-		TESTexture1024					cloudTextureLayers[kTotalLayers];						// 020 - 00TX - L0TX
-		CloudSpeed						cloudSpeed;												// 220
-		ColorLayer						cloudColors[kTotalLayers];								// 260 - PNAM
-		AlphaLayer						cloudAlphas[kTotalLayers];								// 460 - JNAM
-		UInt32							disabledCloudLayers;									// 660 - NAM1 - bitfield
-		Data							data;													// 664 - DATA
-		FogDistance						fogDistance;											// 678 - FNAM
-		ColorLayer						weatherColors[ColorTypes::kTotal];						// 698 - NAM0
-		BSSimpleList<Sound*>			sounds;													// 7A8
-		BSTArray<TESObjectSTAT*>		skyStatics;												// 7B8
-		UInt32							unk7D0;													// 7D0 - LNAM
-		UInt32							unk7D4;													// 7D4
-		TESImageSpace*					imageSpaces[TimePeriods::kTotal];						// 7D8 - IMSP
-		DirectionalAmbientLightingColor	directionalAmbientLightingColors[TimePeriods::kTotal];	// 7F8
-		TESModel						aurora;													// 878
-		UInt64							unk8A0;													// 8A0
-		BGSVolumetricLighting*			volumetricLighting[TimePeriods::kTotal];				// 8A8 - HNAM
-		BGSShaderParticleGeometryData*	precipitationType;										// 8C8 - MNAM
-		BGSReferenceEffect*				visualEffect;											// 8D0 - NNAM
+		TESTexture1024						cloudTextureLayers[kTotalLayers];						// 020 - 00TX - L0TX
+		CloudSpeed							cloudSpeed;												// 220
+		ColorLayer							cloudColors[kTotalLayers];								// 260 - PNAM
+		AlphaLayer							cloudAlphas[kTotalLayers];								// 460 - JNAM
+		UInt32								disabledCloudLayers;									// 660 - NAM1 - bitfield
+		Data								data;													// 664 - DATA
+		FogDistance							fogDistance;											// 678 - FNAM
+		ColorLayer							weatherColors[ColorTypes::kTotal];						// 698 - NAM0
+		BSSimpleList<Sound*>				sounds;													// 7A8
+		BSTArray<TESObjectSTAT*>			skyStatics;												// 7B8
+		UInt32								numCloudLayers;											// 7D0 - LNAM
+		UInt32								pad7D4;													// 7D4
+		TESImageSpace*						imageSpaces[TimePeriods::kTotal];						// 7D8 - IMSP
+		BGSDirectionalAmbientLightingColors	directionalAmbientLightingColors[TimePeriods::kTotal];	// 7F8
+		TESModel							aurora;													// 878
+		BGSLensFlare*						sunGlareLensFlare;										// 8A0
+		BGSVolumetricLighting*				volumetricLighting[TimePeriods::kTotal];				// 8A8 - HNAM
+		BGSShaderParticleGeometryData*		precipitationType;										// 8C8 - MNAM
+		BGSReferenceEffect*					visualEffect;											// 8D0 - NNAM
 	};
 	STATIC_ASSERT(sizeof(TESWeather) == 0x8D8);
 }

@@ -1,11 +1,11 @@
 #pragma once
 
+#include "RE/BGSDirectionalAmbientLightingColors.h"
 #include "RE/BSLock.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTHashMap.h"
 #include "RE/BSTList.h"
 #include "RE/Color.h"
-#include "RE/DirectionalAmbientLightingColor.h"
 #include "RE/ExtraDataList.h"
 #include "RE/FormTypes.h"
 #include "RE/NiSmartPointer.h"
@@ -105,23 +105,23 @@ namespace RE
 			};
 
 
-			Color							ambientColor;			// 00
-			Color							directionalColor;		// 04
-			Color							fogColorNear;			// 08
-			float							fogNear;				// 0C
-			float							fogFar;					// 10
-			UInt32							directionalRotationXY;	// 14
-			UInt32							directionalRotationZ;	// 18
-			float							directionalFade;		// 1C
-			float							fogClipDistance;		// 20
-			float							fogPower;				// 24
-			DirectionalAmbientLightingColor	ambientColors;			// 28
-			Color							fogColorFar;			// 48
-			float							fogMax;					// 4C
-			float							lightFadeBegin;			// 50
-			float							lightFadeEnd;			// 54
-			Inherit							inherits;				// 58
-			UInt32							unk5C;					// 5C
+			Color								ambientColor;			// 00
+			Color								directionalColor;		// 04
+			Color								fogColorNear;			// 08
+			float								fogNear;				// 0C
+			float								fogFar;					// 10
+			UInt32								directionalRotationXY;	// 14
+			UInt32								directionalRotationZ;	// 18
+			float								directionalFade;		// 1C
+			float								fogClipDistance;		// 20
+			float								fogPower;				// 24
+			BGSDirectionalAmbientLightingColors	ambientColors;			// 28
+			Color								fogColorFar;			// 48
+			float								fogMax;					// 4C
+			float								lightFadeBegin;			// 50
+			float								lightFadeEnd;			// 54
+			Inherit								inherits;				// 58
+			UInt32								unk5C;					// 5C
 		};
 		STATIC_ASSERT(sizeof(Lighting) == 0x60);
 

@@ -20,21 +20,21 @@ namespace RE
 		virtual ~BSLightingShaderMaterialBase();										// 00
 
 		// override (BSShaderMaterial)
-		virtual BSShaderMaterial*	CreateNew() override = 0;							// 01
+		virtual BSShaderMaterial*	Create() override = 0;								// 01
 		virtual void				CopyMembers(BSShaderMaterial* a_other) override;	// 02
 		virtual bool				DoIsCopy(BSShaderMaterial* a_other) override;		// 03
 		virtual UInt32				ComputeCRC32(void) override;						// 04
 		virtual BSShaderMaterial*	GetDefault() override;								// 05
-		virtual Type				GetType() const override;							// 06 - { return Type::kDefault; }
-		virtual void				Unk_07(void) override;								// 07 - { return 2; }
+		virtual Feature				GetFeature() const override;						// 06 - { return Feature::kDefault; }
+		virtual Type				GetType() const override;							// 07 - { return Feature::kLighting; }
 
 		// add
-		virtual void				Unk_08(void);										// 08
-		virtual void				Unk_09(void);										// 09
-		virtual void				Unk_0A(void);										// 0A
-		virtual void				Unk_0B(void);										// 0B
-		virtual void				Unk_0C(void);										// 0C
-		virtual void				Unk_0D(void);										// 0D
+		virtual void				OnLoadTextureSet(void);								// 08
+		virtual void				ClearTextures(void);								// 09
+		virtual void				ReceiveValuesFromRootMaterial(void);				// 0A
+		virtual void				GetTextures(void);									// 0B
+		virtual void				SaveBinary(void);									// 0C
+		virtual void				LoadBinary(void);									// 0D
 
 		static BSLightingShaderMaterialBase* CreateMaterial(Type a_type);
 

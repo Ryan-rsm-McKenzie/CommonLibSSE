@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/NiSmartPointer.h"
 #include "RE/SkyObject.h"
 
 
@@ -7,6 +8,7 @@ namespace RE
 {
 	class BSFogProperty;
 	class BSTriShape;
+	class NiNode;
 
 
 	class Atmosphere : public SkyObject
@@ -15,22 +17,24 @@ namespace RE
 		inline static const void* RTTI = RTTI_Atmosphere;
 
 
-		virtual ~Atmosphere();					// 00
+		virtual ~Atmosphere();										// 00
 
 		// override (SkyObject)
-		virtual void	Unk_03(void) override;	// 03
+		virtual void	Update(Sky* a_sky, float a_arg2) override;	// 03
 
 		// add
-		virtual void	Unk_04(void);			// 04
+		virtual void	Unk_04(void);								// 04
 
 
 		// members
-		BSTriShape*		unk10;	// 10
-		BSFogProperty*	unk18;	// 18
-		UInt64			unk20;	// 20
-		UInt64			unk28;	// 28
-		UInt32			unk30;	// 30
-		UInt32			unk34;	// 34
+		NiPointer<BSTriShape>		atmosphere;			// 10
+		NiPointer<BSFogProperty>	fog;				// 18
+		NiPointer<NiNode>			skyQuadNode;		// 20
+		NiPointer<BSTriShape>		skyQuad;			// 28
+		bool						updateFogDistance;	// 30
+		UInt8						pad31;				// 31
+		UInt16						pad32;				// 31
+		UInt32						pad34;				// 34
 	};
 	STATIC_ASSERT(sizeof(Atmosphere) == 0x38);
 }

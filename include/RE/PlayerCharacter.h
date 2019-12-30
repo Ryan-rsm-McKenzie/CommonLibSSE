@@ -1,7 +1,5 @@
 #pragma once
 
-#include <ctime>
-
 #include "RE/BGSPerkRankArray.h"
 #include "RE/BSPointerHandle.h"
 #include "RE/BSSoundHandle.h"
@@ -259,14 +257,14 @@ namespace RE
 		STATIC_ASSERT(sizeof(PlayerSkills) == 0x8);
 
 
-		virtual ~PlayerCharacter();													// 000
+		virtual ~PlayerCharacter();														// 000
 
 		// add
-		virtual void	Unk_12A(void);												// 12A
-		virtual SInt32	GetCrimeGoldViolent(const TESFaction* a_faction) const;		// 12B
-		virtual SInt32	GetCrimeGoldNonViolent(const TESFaction* a_faction) const;	// 12C
-		virtual void	Unk_12D(void);												// 12D
-		virtual void	Unk_12E(void);												// 12E - { return 0; }
+		virtual void	Unk_12A(void);													// 12A
+		virtual SInt32	GetViolentCrimeGoldValue(const TESFaction* a_faction) const;	// 12B
+		virtual SInt32	GetNonViolentCrimeGoldValue(const TESFaction* a_faction) const;	// 12C
+		virtual void	ClearAllCrimeGold(const TESFaction* a_faction);					// 12D
+		virtual void	Unk_12E(void);													// 12E - { return 0; }
 
 		static PlayerCharacter*	GetSingleton();
 		static UInt32			GetPickpocketChance(float a_playerSkill, float a_targetSkill, UInt32 a_totalValue, float a_itemWeight, Actor* a_player, Actor* a_target, bool a_isDetected, TESForm* a_item);

@@ -24,11 +24,11 @@ namespace RE
 
 
 		BSTEventSource() :
-			eventSinks(),
-			addBuffer(),
-			removeBuffer(),
+			sinks(),
+			pendingRegisters(),
+			pendingUnregisters(),
 			lock(),
-			stateFlag(false),
+			notifying(false),
 			pad51(0),
 			pad52(0),
 			pad54(0)
@@ -43,19 +43,19 @@ namespace RE
 
 			RE::BSUniqueLockGuard locker(lock);
 
-			if (sinksLocked) {
-				if (std::find(addBuffer.begin(), addBuffer.end(), a_eventSink) == addBuffer.end()) {
-					addBuffer.push_back(a_eventSink);
+			if (notifying) {
+				if (std::find(pendingRegisters.begin(), pendingRegisters.end(), a_eventSink) == pendingRegisters.end()) {
+					pendingRegisters.push_back(a_eventSink);
 				}
 			} else {
-				if (std::find(eventSinks.begin(), eventSinks.end(), a_eventSink) == eventSinks.end()) {
-					eventSinks.push_back(a_eventSink);
+				if (std::find(sinks.begin(), sinks.end(), a_eventSink) == sinks.end()) {
+					sinks.push_back(a_eventSink);
 				}
 			}
 
-			auto it = std::find(removeBuffer.begin(), removeBuffer.end(), a_eventSink);
-			if (it != removeBuffer.end()) {
-				removeBuffer.erase(it);
+			auto it = std::find(pendingUnregisters.begin(), pendingUnregisters.end(), a_eventSink);
+			if (it != pendingUnregisters.end()) {
+				pendingUnregisters.erase(it);
 			}
 		}
 
@@ -68,20 +68,20 @@ namespace RE
 
 			RE::BSUniqueLockGuard locker(lock);
 
-			if (sinksLocked) {
-				if (std::find(removeBuffer.begin(), removeBuffer.end(), a_eventSink) == removeBuffer.end()) {
-					removeBuffer.push_back(a_eventSink);
+			if (notifying) {
+				if (std::find(pendingUnregisters.begin(), pendingUnregisters.end(), a_eventSink) == pendingUnregisters.end()) {
+					pendingUnregisters.push_back(a_eventSink);
 				}
 			} else {
-				auto it = std::find(eventSinks.begin(), eventSinks.end(), a_eventSink);
-				if (it != eventSinks.end()) {
-					eventSinks.erase(it);
+				auto it = std::find(sinks.begin(), sinks.end(), a_eventSink);
+				if (it != sinks.end()) {
+					sinks.erase(it);
 				}
 			}
 
-			auto it = std::find(addBuffer.begin(), addBuffer.end(), a_eventSink);
-			if (it != addBuffer.end()) {
-				addBuffer.erase(it);
+			auto it = std::find(pendingRegisters.begin(), pendingRegisters.end(), a_eventSink);
+			if (it != pendingRegisters.end()) {
+				pendingRegisters.erase(it);
 			}
 		}
 
@@ -90,34 +90,34 @@ namespace RE
 		{
 			RE::BSUniqueLockGuard locker(lock);
 
-			auto wasLocked = sinksLocked;
-			sinksLocked = true;
-			if (!wasLocked && !addBuffer.empty()) {
-				for (auto& toAdd : addBuffer) {
-					if (std::find(eventSinks.begin(), eventSinks.end(), toAdd) == eventSinks.end()) {
-						eventSinks.push_back(toAdd);
+			auto wasNotifying = notifying;
+			notifying = true;
+			if (!wasNotifying && !pendingRegisters.empty()) {
+				for (auto& toAdd : pendingRegisters) {
+					if (std::find(sinks.begin(), sinks.end(), toAdd) == sinks.end()) {
+						sinks.push_back(toAdd);
 					}
 				}
-				addBuffer.clear();
+				pendingRegisters.clear();
 			}
 
-			for (auto& sink : eventSinks) {
-				if (std::find(removeBuffer.begin(), removeBuffer.end(), sink) == removeBuffer.end()) {
+			for (auto& sink : sinks) {
+				if (std::find(pendingUnregisters.begin(), pendingUnregisters.end(), sink) == pendingUnregisters.end()) {
 					if (sink->ReceiveEvent(a_event, this) == BSEventNotifyControl::kStop) {
 						break;
 					}
 				}
 			}
 
-			sinksLocked = wasLocked;
-			if (!wasLocked && !removeBuffer.empty()) {
-				for (auto& toRemove : removeBuffer) {
-					auto it = std::find(eventSinks.begin(), eventSinks.end(), toRemove);
-					if (it != eventSinks.end()) {
-						eventSinks.erase(it);
+			notifying = wasNotifying;
+			if (!wasNotifying && !pendingUnregisters.empty()) {
+				for (auto& toRemove : pendingUnregisters) {
+					auto it = std::find(sinks.begin(), sinks.end(), toRemove);
+					if (it != sinks.end()) {
+						sinks.erase(it);
 					}
 				}
-				removeBuffer.clear();
+				pendingUnregisters.clear();
 			}
 		}
 
@@ -129,14 +129,14 @@ namespace RE
 
 
 		// members
-		BSTArray<Sink*>			eventSinks;		// 00
-		BSTArray<Sink*>			addBuffer;		// 18
-		BSTArray<Sink*>			removeBuffer;	// 30
-		mutable BSUniqueLock	lock;			// 48
-		bool					sinksLocked;	// 50
-		UInt8					pad51;			// 51
-		UInt16					pad52;			// 52
-		UInt32					pad54;			// 54
+		BSTArray<Sink*>			sinks;				// 00
+		BSTArray<Sink*>			pendingRegisters;	// 18
+		BSTArray<Sink*>			pendingUnregisters;	// 30
+		mutable BSUniqueLock	lock;				// 48
+		bool					notifying;			// 50
+		UInt8					pad51;				// 51
+		UInt16					pad52;				// 52
+		UInt32					pad54;				// 54
 	};
 	STATIC_ASSERT(sizeof(BSTEventSource<void*>) == 0x58);
 

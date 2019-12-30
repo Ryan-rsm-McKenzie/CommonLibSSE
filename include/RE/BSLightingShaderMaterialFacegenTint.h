@@ -15,12 +15,12 @@ namespace RE
 		virtual ~BSLightingShaderMaterialFacegenTint();									// 00
 
 		// override (BSLightingShaderMaterialBase)
-		virtual BSShaderMaterial*	CreateNew() override = 0;							// 01
+		virtual BSShaderMaterial*	Create() override;									// 01
 		virtual void				CopyMembers(BSShaderMaterial* a_other) override;	// 02
 		virtual UInt32				ComputeCRC32(void) override;						// 04
-		virtual Type				GetType() const override;							// 06 - { return Type::kFaceGenRGBTint; }
-		virtual void				Unk_0C(void) override;								// 0C
-		virtual void				Unk_0D(void) override;								// 0D
+		virtual Feature				GetFeature() const override;						// 06 - { return Feature::kFaceGenRGBTint; }
+		virtual void				SaveBinary(void) override;							// 0C
+		virtual void				LoadBinary(void) override;							// 0D
 
 
 		// members

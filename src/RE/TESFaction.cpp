@@ -30,14 +30,14 @@ namespace RE
 	SInt32 TESFaction::GetCrimeGoldNonViolent() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
-		return player->GetCrimeGoldNonViolent(this);
+		return player->GetNonViolentCrimeGoldValue(this);
 	}
 
 
 	SInt32 TESFaction::GetCrimeGoldViolent() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
-		return player->GetCrimeGoldViolent(this);
+		return player->GetViolentCrimeGoldValue(this);
 	}
 
 

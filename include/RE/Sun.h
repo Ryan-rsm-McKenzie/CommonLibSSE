@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/NiSmartPointer.h"
 #include "RE/SkyObject.h"
 
 
@@ -17,23 +18,26 @@ namespace RE
 		inline static const void* RTTI = RTTI_Sun;
 
 
-		virtual ~Sun();							// 00
+		virtual ~Sun();												// 00
 
 		// override (SkyObject)
-		virtual void	Unk_02(void) override;	// 02
-		virtual void	Unk_03(void) override;	// 03
+		virtual void	Unk_02(void) override;						// 02
+		virtual void	Update(Sky* a_sky, float a_arg2) override;	// 03
 
 
 		// members
-		NiBillboardNode*		unk10;	// 10
-		NiBillboardNode*		unk18;	// 18
-		BSTriShape*				unk20;	// 20
-		BSTriShape*				unk28;	// 28
-		BSTriShape*				unk30;	// 30
-		NiDirectionalLight*		unk38;	// 38
-		NiDirectionalLight*		unk40;	// 40
-		UInt64					unk48;	// 48
-		BSShaderAccumulator*	unk50;	// 50
+		NiPointer<NiBillboardNode>		sunBaseNode;		// 10
+		NiPointer<NiBillboardNode>		sunGlareNode;		// 18
+		NiPointer<BSTriShape>			sunBase;			// 20
+		NiPointer<BSTriShape>			sunQuery;			// 28
+		NiPointer<BSTriShape>			sunGlare;			// 30
+		NiPointer<NiDirectionalLight>	light;				// 38
+		NiPointer<NiDirectionalLight>	cloudLight;			// 40
+		float							glareScale;			// 48
+		bool							doOcclusionTests;	// 4C
+		UInt8							pad4D;				// 4D
+		UInt16							pad4E;				// 4E
+		NiPointer<BSShaderAccumulator>	sunAccumulator;		// 50
 	};
 	STATIC_ASSERT(sizeof(Sun) == 0x58);
 }

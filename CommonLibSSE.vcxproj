@@ -757,7 +757,7 @@
     <ClInclude Include="include\RE\InputDevice.h" />
     <ClInclude Include="include\RE\DialogueData.h" />
     <ClInclude Include="include\RE\DialogueMenu.h" />
-    <ClInclude Include="include\RE\DirectionalAmbientLightingColor.h" />
+    <ClInclude Include="include\RE\BGSDirectionalAmbientLightingColors.h" />
     <ClInclude Include="include\RE\Effect.h" />
     <ClInclude Include="include\RE\EffectSetting.h" />
     <ClInclude Include="include\RE\EnchantConstructMenu.h" />

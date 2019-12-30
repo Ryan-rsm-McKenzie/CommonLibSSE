@@ -19,12 +19,12 @@ namespace RE
 		virtual ~BSLightingShaderMaterialLandscape();								// 00
 
 		// override (BSLightingShaderMaterialBase)
-		virtual BSShaderMaterial*	CreateNew() override = 0;						// 01
+		virtual BSShaderMaterial*	Create() override;								// 01
 		virtual void				CopyMembers(BSShaderMaterial* a_src) override;	// 02
-		virtual Type				GetType() const override;						// 06 - { return Type::kMultiTexLandLODBlend; }
-		virtual void				Unk_09(void) override;							// 09
-		virtual void				Unk_0A(void) override;							// 0A
-		virtual void				Unk_0B(void) override;							// 0B
+		virtual Feature				GetFeature() const override;					// 06 - { return Feature::kMultiTexLandLODBlend; }
+		virtual void				ClearTextures(void) override;					// 09
+		virtual void				ReceiveValuesFromRootMaterial(void) override;	// 0A
+		virtual void				GetTextures(void) override;						// 0B
 
 
 		// members
