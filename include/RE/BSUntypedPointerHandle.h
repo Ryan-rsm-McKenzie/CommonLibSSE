@@ -10,6 +10,9 @@ namespace RE
 	class BSUntypedPointerHandle
 	{
 	public:
+		using value_type = UInt32;
+
+
 		BSUntypedPointerHandle() :
 			_handle(0)
 		{
@@ -29,7 +32,7 @@ namespace RE
 		}
 
 
-		BSUntypedPointerHandle(UInt32 a_handle) :
+		BSUntypedPointerHandle(value_type a_handle) :
 			_handle(a_handle)
 		{}
 
@@ -49,7 +52,7 @@ namespace RE
 		}
 
 
-		BSUntypedPointerHandle& operator=(UInt32 a_rhs)
+		BSUntypedPointerHandle& operator=(value_type a_rhs)
 		{
 			_handle = a_rhs;
 			return *this;
@@ -68,7 +71,7 @@ namespace RE
 		}
 
 
-		[[nodiscard]] UInt32 value() const
+		[[nodiscard]] value_type value() const
 		{
 			return _handle;
 		}

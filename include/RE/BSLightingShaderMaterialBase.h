@@ -36,7 +36,7 @@ namespace RE
 		virtual void				SaveBinary(void);									// 0C
 		virtual void				LoadBinary(void);									// 0D
 
-		static BSLightingShaderMaterialBase* CreateMaterial(Type a_type);
+		static BSLightingShaderMaterialBase* CreateMaterial(Feature a_feature);
 
 		NiPointer<BSTextureSet>	GetTextureSet() const;
 		void					SetTextureSet(NiPointer<BSTextureSet> a_textureSet);

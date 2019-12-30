@@ -14,6 +14,9 @@ namespace RE
 	class BSPointerHandle
 	{
 	public:
+		using native_handle_type = typename Handle::value_type;
+
+
 		BSPointerHandle() :
 			_handle()
 		{}
@@ -96,6 +99,12 @@ namespace RE
 			NiPointer<T> ptr;
 			lookup(ptr);
 			return ptr;
+		}
+
+
+		[[nodiscard]] native_handle_type native_handle()
+		{
+			return _handle.value();
 		}
 
 
