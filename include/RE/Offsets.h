@@ -288,12 +288,16 @@ namespace RE
 
 		namespace BSSoundHandle
 		{
+			// IndirectSig: E8 ? ? ? ? 84 C0 75 5C 49 8B 85 ? ? ? ?
+			constexpr std::uintptr_t IsValid = 0x00BED690;				// 1_5_97
 			// IndirectSig: E8 ? ? ? ? EB 0E 84 C0
-			constexpr std::uintptr_t Play = 0x00BED530;			// 1_5_97
+			constexpr std::uintptr_t Play = 0x00BED530;					// 1_5_97
 			// IndirectSig: E8 ? ? ? ? F3 0F 10 5D 9F
-			constexpr std::uintptr_t SetNode = 0x00BEDB10;		// 1_5_97
+			constexpr std::uintptr_t SetObjectToFollow = 0x00BEDB10;	// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 4C 8D 7E 20
-			constexpr std::uintptr_t SetPosition = 0x00BED920;	// 1_5_97
+			constexpr std::uintptr_t SetPosition = 0x00BED920;			// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 48 8B CE E8 ? ? ? ? E9 ? ? ? ? B9 ? ? ? ?
+			constexpr std::uintptr_t Stop = 0x00BED600;					// 1_5_97
 		}
 
 
@@ -899,6 +903,8 @@ namespace RE
 			}
 
 
+			// IndirectSig: E8 ? ? ? ? 66 C7 43 18 00 00
+			constexpr std::uintptr_t ActivatePickRef = 0x006A9F90;			// 1_5_97
 			// 0F 94 C3 88 1D ? ? ? ?
 			constexpr std::uintptr_t CollisionDisabled = 0x01EBEB50;		// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 0F 28 F0 48 85 FF 0F 84 ? ? ? ?
@@ -915,10 +921,8 @@ namespace RE
 			constexpr std::uintptr_t PlayPickupEvent = 0x0069FE60;			// 1_5_97
 			// E8 ? ? ? ? 48 89 35 ? ? ? ? 48 8B C6
 			constexpr std::uintptr_t Singleton = 0x02F26EF8;				// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 66 C7 43 18 00 00
-			constexpr std::uintptr_t StartActivation = 0x006A9F90;			// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 48 8B 05 ? ? ? ? 83 B8 ? ? ? ? ? 0F 95 C0
-			constexpr std::uintptr_t TryToGrabCrosshairRef = 0x006AA260;	// 1_5_97
+			constexpr std::uintptr_t StartGrabObject = 0x006AA260;			// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 84 C0 75 08 40 32 F6
 			constexpr std::uintptr_t TryToPickPocket = 0x006B2530;			// 1_5_97
 			// VTable: .?AVPlayerCharacter@@
@@ -937,10 +941,10 @@ namespace RE
 
 		namespace ProcessLists
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B 13 48 8B CB FF 92 ? ? ? ? 33 D2
-			constexpr std::uintptr_t SetCombatAlarmState = 0x006D9490;	// 1_5_97
 			// 4C 8B F9 48 89 0D ? ? ? ?
-			constexpr std::uintptr_t Singleton = 0x01EBEAD0;			// 1_5_97
+			constexpr std::uintptr_t Singleton = 0x01EBEAD0;					// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 48 8B 13 48 8B CB FF 92 ? ? ? ? 33 D2
+			constexpr std::uintptr_t StopCombatAndAlarmOnActor = 0x006D9490;	// 1_5_97
 		}
 
 

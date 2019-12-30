@@ -30,7 +30,7 @@ namespace RE
 
 		static ProcessLists* GetSingleton();
 
-		void SetCombatAlarmState(Actor* a_actor, bool a_enabled);
+		void StopCombatAndAlarmOnActor(Actor* a_actor, bool a_dontEndAlarm);
 
 
 		// members

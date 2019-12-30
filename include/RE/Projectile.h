@@ -71,7 +71,7 @@ namespace RE
 		virtual void			Unk_BD(void);															// BD
 		virtual void			Unk_BE(void);															// BE
 		virtual void			Unk_BF(void);															// BF - { return; }
-		virtual void			Unk_C0(void);															// C0 - { return; }
+		virtual void			Handle3DLoaded();														// C0 - { return; }
 		virtual void			Unk_C1(void);															// C1 - { return 0; }
 
 

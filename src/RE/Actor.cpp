@@ -94,7 +94,7 @@ namespace RE
 			currentProcess->SetArrested(false);
 			ResetAI(0, 0);
 			auto procManager = ProcessLists::GetSingleton();
-			procManager->SetCombatAlarmState(this, true);
+			procManager->StopCombatAndAlarmOnActor(this, true);
 		}
 	}
 

@@ -43,7 +43,7 @@ namespace RE
 		virtual void	Unk_BB(void) override;							// BB
 		virtual void	Unk_BD(void) override;							// BD
 		virtual void	Unk_BF(void) override;							// BF - { unk1CC |= 1 << 30; }
-		virtual void	Unk_C0(void) override;							// C0
+		virtual void	Handle3DLoaded() override;						// C0
 
 
 		// members

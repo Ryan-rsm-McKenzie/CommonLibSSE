@@ -37,7 +37,7 @@ namespace RE
 		virtual void	Unk_B5(void) override;							// B5
 		virtual void	Unk_B9(void) override;							// B9 - { return (unk1CC >> 22) & 1; }
 		virtual void	Unk_BD(void) override;							// BD
-		virtual void	Unk_C0(void) override;							// C0
+		virtual void	Handle3DLoaded() override;						// C0
 		virtual void	Unk_C2(void) override;							// C2 - { return 1; }
 		virtual void	Unk_C3(void) override;							// C3 - { return 1; }
 

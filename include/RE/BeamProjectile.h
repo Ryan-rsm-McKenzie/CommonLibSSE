@@ -43,7 +43,7 @@ namespace RE
 		virtual void					Unk_AB(void) override;																							// AB
 		virtual void					Unk_B8(void) override;																							// B8
 		virtual void					Unk_BD(void) override;																							// BD
-		virtual void					Unk_C0(void) override;																							// C0
+		virtual void					Handle3DLoaded() override;																						// C0
 		virtual void					Unk_C1(void) override;																							// C1
 
 		// override (BSTEventSink<BSProceduralGeomEvent>)

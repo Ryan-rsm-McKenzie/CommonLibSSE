@@ -30,7 +30,15 @@ namespace RE
 	}
 
 
-	NiPointer<Actor> PlayerCharacter::GetActorInFavorState() const
+	void PlayerCharacter::ActivatePickRef()
+	{
+		using func_t = function_type_t<decltype(&PlayerCharacter::ActivatePickRef)>;
+		REL::Offset<func_t*> func(Offset::PlayerCharacter::ActivatePickRef);
+		return func(this);
+	}
+
+
+	NiPointer<Actor> PlayerCharacter::GetActorDoingPlayerCommand() const
 	{
 		return actorDoingPlayerCommand.get();
 	}
@@ -115,18 +123,10 @@ namespace RE
 	}
 
 	
-	void PlayerCharacter::StartActivation()
+	void PlayerCharacter::StartGrabObject()
 	{
-		using func_t = function_type_t<decltype(&PlayerCharacter::StartActivation)>;
-		REL::Offset<func_t*> func(Offset::PlayerCharacter::StartActivation);
-		return func(this);
-	}
-
-	
-	void PlayerCharacter::TryToGrabCrosshairRef()
-	{
-		using func_t = function_type_t<decltype(&PlayerCharacter::TryToGrabCrosshairRef)>;
-		REL::Offset<func_t*> func(Offset::PlayerCharacter::TryToGrabCrosshairRef);
+		using func_t = function_type_t<decltype(&PlayerCharacter::StartGrabObject)>;
+		REL::Offset<func_t*> func(Offset::PlayerCharacter::StartGrabObject);
 		return func(this);
 	}
 

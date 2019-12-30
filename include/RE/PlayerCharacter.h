@@ -35,6 +35,7 @@ namespace RE
 	class MenuModeChangeEvent;
 	class MenuOpenCloseEvent;
 	class NiAVObject;
+	class NiNode;
 	class ObjectListItem;
 	class TESObjectREFR;
 	class TESQuestStageItem;
@@ -106,6 +107,14 @@ namespace RE
 		{
 			kNone = 0,
 			kHandsBound = 1 << 2
+		};
+
+
+		enum class FlagBD9 : UInt8
+		{
+			kNone = 0,
+			kIsSleeping = 1 << 2,
+			kGreetingPlayer = 1 << 6
 		};
 
 
@@ -262,7 +271,8 @@ namespace RE
 		static PlayerCharacter*	GetSingleton();
 		static UInt32			GetPickpocketChance(float a_playerSkill, float a_targetSkill, UInt32 a_totalValue, float a_itemWeight, Actor* a_player, Actor* a_target, bool a_isDetected, TESForm* a_item);
 
-		NiPointer<Actor>			GetActorInFavorState() const;
+		void						ActivatePickRef();
+		NiPointer<Actor>			GetActorDoingPlayerCommand() const;
 		float						GetArmorValue(InventoryEntryData* a_form);
 		float						GetDamage(InventoryEntryData* a_form);
 		NiPointer<TESObjectREFR>	GetGrabbedRef();
@@ -272,8 +282,7 @@ namespace RE
 		TintMask*					GetTintMask(UInt32 a_tintType, UInt32 a_index);
 		void						PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void						SetCollision(bool a_enable);
-		void						StartActivation();
-		void						TryToGrabCrosshairRef();
+		void						StartGrabObject();
 		bool						TryToPickPocket(Actor* a_target, InventoryEntryData* a_entry, UInt32 a_numItems, bool a_arg4 = true);
 
 
@@ -439,7 +448,7 @@ namespace RE
 		BSTSmallArray<void*, 4>								unkBA0;							// BA0
 		UInt64												unkBD0;							// BD0
 		UInt8												unkBD8;							// BD8
-		UInt8												unkBD9;							// BD9
+		FlagBD9												unkBD9;							// BD9
 		UInt8												unkBDA;							// BDA
 		FlagBDB												unkBDB;							// BDB
 		FlagBDC												unkBDC;							// BDC

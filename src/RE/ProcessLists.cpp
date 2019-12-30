@@ -13,10 +13,10 @@ namespace RE
 	}
 
 
-	void ProcessLists::SetCombatAlarmState(Actor* a_actor, bool a_enabled)
+	void ProcessLists::StopCombatAndAlarmOnActor(Actor* a_actor, bool a_dontEndAlarm)
 	{
-		using func_t = function_type_t<decltype(&ProcessLists::SetCombatAlarmState)>;
-		REL::Offset<func_t*> func(Offset::ProcessLists::SetCombatAlarmState);
-		return func(this, a_actor, a_enabled);
+		using func_t = function_type_t<decltype(&ProcessLists::StopCombatAndAlarmOnActor)>;
+		REL::Offset<func_t*> func(Offset::ProcessLists::StopCombatAndAlarmOnActor);
+		return func(this, a_actor, a_dontEndAlarm);
 	}
 }
