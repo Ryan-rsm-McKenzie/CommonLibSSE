@@ -155,7 +155,7 @@ namespace RE
 
 	bool TESForm::IsDeleted() const
 	{
-		return (flags & RecordFlags::kDeleted) != 0;
+		return (formFlags & RecordFlags::kDeleted) != 0;
 	}
 
 
@@ -173,7 +173,7 @@ namespace RE
 
 	bool TESForm::IsIgnored() const
 	{
-		return (flags & RecordFlags::kIgnored) != 0;
+		return (formFlags & RecordFlags::kIgnored) != 0;
 	}
 
 

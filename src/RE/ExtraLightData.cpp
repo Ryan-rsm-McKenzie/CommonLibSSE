@@ -6,15 +6,20 @@
 
 namespace RE
 {
+	ExtraLightDataStruct::ExtraLightDataStruct() :
+		fov(0.0),
+		fade(0.0),
+		endDistanceCap(0.0),
+		shadowDepthBias(0.0),
+		unk10(0),
+		pad11(0),
+		pad12(0)
+	{}
+
+
 	ExtraLightData::ExtraLightData() :
 		BSExtraData(),
-		modFOV(0.0),
-		modFade(0),
-		unk18(0),
-		depthBias(1.0),
-		unk20(0),
-		pad21(0),
-		pad22(0),
+		data(),
 		pad24(0)
 	{
 		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraLightData::Vtbl);
@@ -31,6 +36,10 @@ namespace RE
 	bool ExtraLightData::IsNotEqual(const BSExtraData* a_rhs) const
 	{
 		auto rhs = static_cast<const ExtraLightData*>(a_rhs);
-		return modFOV != rhs->modFOV || modFade != rhs->modFade || unk18 != rhs->unk18 || unk20 != rhs->unk20;
+		return data.fov != rhs->data.fov ||
+			data.fade != rhs->data.fade ||
+			data.endDistanceCap != rhs->data.endDistanceCap ||
+			data.shadowDepthBias != rhs->data.shadowDepthBias ||
+			data.unk10 != rhs->data.unk10;
 	}
 }

@@ -1506,9 +1506,6 @@
     <ClCompile Include="src\RE\TESHitEvent.cpp">
       <Filter>src\RE\Events\ScriptEvent</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\DialogueData.cpp">
-      <Filter>src\RE\FormComponents\Components</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSScript\IObjectHandlePolicy.cpp">
       <Filter>src\RE\BSScript</Filter>
     </ClCompile>
@@ -1647,9 +1644,6 @@
     <ClCompile Include="src\RE\GStd.cpp">
       <Filter>src\RE\Scaleform\GStd</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\Biped.cpp">
-      <Filter>src\RE\FormComponents\Components</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\ExtraDataList.cpp">
       <Filter>src\RE\Inventory</Filter>
     </ClCompile>
@@ -1739,6 +1733,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\NiTexture.cpp">
       <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BipedAnim.cpp">
+      <Filter>src\RE\FormComponents\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\DialogueItem.cpp">
+      <Filter>src\RE\FormComponents\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1894,9 +1894,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSString.h">
       <Filter>include\RE\BSCore</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\AnimationVariableData.h">
-      <Filter>include\RE\Animation</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESSpellList.h">
       <Filter>include\RE\FormComponents</Filter>
@@ -3083,9 +3080,6 @@
     <ClInclude Include="include\RE\BGSTypedItem.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\DialogueData.h">
-      <Filter>include\RE\FormComponents\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\SetEventData.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
@@ -4052,9 +4046,6 @@
     <ClInclude Include="include\RE\MagicCaster.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\Biped.h">
-      <Filter>include\RE\FormComponents\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSUIScaleformData.h">
       <Filter>include\RE\Menus\IUIMessageData</Filter>
     </ClInclude>
@@ -4156,12 +4147,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\Misc.h">
       <Filter>include\RE\Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\WeaponStrikeData.h">
-      <Filter>include\RE\FormComponents\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\PackageData.h">
-      <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\Main.h">
       <Filter>include\RE\BSMain</Filter>
@@ -4596,12 +4581,6 @@
       <Filter>include\RE\SkyrimScript\DelayFunctor</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\AIProcess.h">
-      <Filter>include\RE\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\HighProcess.h">
-      <Filter>include\RE\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\MiddleProcess.h">
       <Filter>include\RE\AI</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BGSAttackData.h">
@@ -5065,6 +5044,42 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSTimer.h">
       <Filter>include\RE\BSSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BipedAnim.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorPackage.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MiddleHighProcessData.h">
+      <Filter>include\RE\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MagicSystem.h">
+      <Filter>include\RE\FormComponents\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSEntryPoint.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\AITimeStamp.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DoNothingUnhandledPolicy.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResponse.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IHandlerFunctor.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\HighProcessData.h">
+      <Filter>include\RE\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSAnimationSequencer.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DialogueItem.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

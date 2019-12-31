@@ -49,6 +49,7 @@ namespace RE
 		{
 			enum ChangeFlag : UInt32
 			{
+				kCreated = 0,
 				kFlags = 1 << 0
 			};
 		};
@@ -175,7 +176,7 @@ namespace RE
 
 		// members
 		TESFileContainer	sourceFiles;		// 08
-		UInt32				flags;				// 10
+		UInt32				formFlags;			// 10
 		FormID				formID;				// 14
 		UInt16				inGameFormFlags;	// 18
 		FormType			formType;			// 1A

@@ -22,8 +22,8 @@ namespace RE
 
 
 		// members
-		BSTHashMap<BSFixedString, BGSAttackData>	attacks;	// 10
-		TESRace*									attackRace;	// 40 - ATKR
+		BSTHashMap<BSFixedString, NiPointer<BGSAttackData>>	attackDataMap;		// 10
+		TESRace*											defaultDataRace;	// 40 - ATKR
 	};
 	STATIC_ASSERT(sizeof(BGSAttackDataMap) == 0x48);
 }

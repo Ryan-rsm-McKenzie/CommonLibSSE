@@ -1,6 +1,7 @@
 #include "RE/TESNPC.h"
 
 #include "RE/Offsets.h"
+#include "RE/TESRace.h"
 #include "REL/Relocation.h"
 
 
@@ -28,7 +29,7 @@ namespace RE
 	}
 
 
-	TESNPC::Sex TESNPC::GetSex()
+	TESNPC::Sex TESNPC::GetSex() const
 	{
 		return IsFemale() ? Sex::kFemale : Sex::kMale;
 	}
@@ -65,6 +66,23 @@ namespace RE
 			}
 		}
 		return 0;
+	}
+
+
+	float TESNPC::GetHeight() const
+	{
+		if (!race) {
+			return height;
+		}
+
+		switch (GetSex()) {
+		case Sex::kMale:
+			return race->data.maleHeight * height;
+		case Sex::kFemale:
+			return race->data.femaleHeight * height;
+		default:
+			return 0.0;
+		}
 	}
 
 

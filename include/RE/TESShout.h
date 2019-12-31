@@ -1,5 +1,7 @@
 #pragma once
 
+#include <type_traits>
+
 #include "RE/BGSEquipType.h"
 #include "RE/BGSMenuDisplayObject.h"
 #include "RE/FormTypes.h"
@@ -35,26 +37,24 @@ namespace RE
 		};
 
 
-		struct WordOfPower	// SNAM
+		struct Variation	// SNAM
 		{
 			TESWordOfPower*	word;			// 00
 			SpellItem*		spell;			// 08
 			float			recoveryTime;	// 10
 			UInt32			pad14;			// 14
 		};
-		STATIC_ASSERT(sizeof(WordOfPower) == 0x18);
+		STATIC_ASSERT(sizeof(Variation) == 0x18);
 
 
-		struct Levels
+		enum class VariationID : UInt32
 		{
-			enum
-			{
-				kLevel1,
-				kLevel2,
-				kLevel3,
+			kNone = static_cast<std::underlying_type_t<VariationID>>(-1),
+			kOne = 0,
+			kTwo,
+			kThree,
 
-				kTotal
-			};
+			kTotal
 		};
 
 
@@ -67,7 +67,7 @@ namespace RE
 
 
 		// members
-		WordOfPower wordsOfPower[Levels::kTotal];	// 60 - SNAM
+		Variation variations[to_underlying(VariationID::kTotal)];	// 60 - SNAM
 	};
 	STATIC_ASSERT(sizeof(TESShout) == 0xA8);
 }

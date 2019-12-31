@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	class DialogueData;
+	class DialogueItem;
 	class TESTopic;
 
 
@@ -38,7 +38,7 @@ namespace RE
 		UInt16			pad2E;					// 2E
 		UInt32			unk30;					// 30
 		UInt32			pad34;					// 34
-		DialogueData*	dialogueData;			// 38
+		DialogueItem*	dialogueData;			// 38
 	};
 	STATIC_ASSERT(sizeof(ExtraSayToTopicInfo) == 0x40);
 }

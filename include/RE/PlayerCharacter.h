@@ -41,6 +41,7 @@ namespace RE
 	class UserEventEnabledEvent;
 	struct BGSActorCellEvent;
 	struct BGSActorDeathEvent;
+	struct BipedAnim;
 	struct PositionPlayerEvent;
 	struct TESTrackedStatsEvent;
 
@@ -358,7 +359,7 @@ namespace RE
 		UInt64													unk8D8;							// 8D8
 		UInt32													unk8E0;							// 8E0
 		UInt32													sleepSeconds;					// 8E4
-		BSTSmartPointer<Biped>									largeBiped;						// 8E8
+		BSTSmartPointer<BipedAnim>								largeBiped;						// 8E8
 		NiPointer<NiNode>										firstPerson3D;					// 8F0
 		float													eyeHeight;						// 8F8
 		float													greetTimer;						// 8FC

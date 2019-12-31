@@ -190,7 +190,7 @@
     <ClCompile Include="src\RE\BGSLocation.cpp" />
     <ClCompile Include="src\RE\BGSPerkEntry.cpp" />
     <ClCompile Include="src\RE\BGSSaveLoadManager.cpp" />
-    <ClCompile Include="src\RE\Biped.cpp" />
+    <ClCompile Include="src\RE\BipedAnim.cpp" />
     <ClCompile Include="src\RE\BSAudioManager.cpp" />
     <ClCompile Include="src\RE\BSFaceGenAnimationData.cpp" />
     <ClCompile Include="src\RE\BSStringPool.cpp" />
@@ -223,7 +223,7 @@
     <ClCompile Include="src\RE\ChestsLooted.cpp" />
     <ClCompile Include="src\RE\Console.cpp" />
     <ClCompile Include="src\RE\CRC.cpp" />
-    <ClCompile Include="src\RE\DialogueData.cpp" />
+    <ClCompile Include="src\RE\DialogueItem.cpp" />
     <ClCompile Include="src\RE\Effect.cpp" />
     <ClCompile Include="src\RE\ExtraAliasInstanceArray.cpp" />
     <ClCompile Include="src\RE\ExtraAshPileRef.cpp" />
@@ -400,6 +400,7 @@
     <ClInclude Include="include\RE\ActorValueInfo.h" />
     <ClInclude Include="include\RE\ActorValueMeter.h" />
     <ClInclude Include="include\RE\AddCallbackVisitor.h" />
+    <ClInclude Include="include\RE\AITimeStamp.h" />
     <ClInclude Include="include\RE\AlchemyItem.h" />
     <ClInclude Include="include\RE\AlchemyMenu.h" />
     <ClInclude Include="include\RE\ArmorRatingVisitor.h" />
@@ -414,6 +415,8 @@
     <ClInclude Include="include\RE\BeamProjectile.h" />
     <ClInclude Include="include\RE\BGSAbilityPerkEntry.h" />
     <ClInclude Include="include\RE\BGSAddonNode.h" />
+    <ClInclude Include="include\RE\BGSAnimationSequencer.h" />
+    <ClInclude Include="include\RE\BGSEntryPoint.h" />
     <ClInclude Include="include\RE\BGSFootstepEvent.h" />
     <ClInclude Include="include\RE\BGSFootstepManager.h" />
     <ClInclude Include="include\RE\BGSInstancedQuestObjective.h" />
@@ -433,15 +436,19 @@
     <ClInclude Include="include\RE\BSLightingShaderMaterialParallaxOcc.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialSnow.h" />
     <ClInclude Include="include\RE\BSPointerHandle.h" />
+    <ClInclude Include="include\RE\BSResponse.h" />
     <ClInclude Include="include\RE\BSTimer.h" />
     <ClInclude Include="include\RE\BSTTuple.h" />
     <ClInclude Include="include\RE\BSUntypedPointerHandle.h" />
     <ClInclude Include="include\RE\BSXFlags.h" />
     <ClInclude Include="include\RE\DialoguePackage.h" />
+    <ClInclude Include="include\RE\DoNothingUnhandledPolicy.h" />
     <ClInclude Include="include\RE\hkAabb.h" />
     <ClInclude Include="include\RE\hkpSolverInfo.h" />
     <ClInclude Include="include\RE\hkpWorldCinfo.h" />
+    <ClInclude Include="include\RE\IHandlerFunctor.h" />
     <ClInclude Include="include\RE\LoadWaitSpinner.h" />
+    <ClInclude Include="include\RE\MagicSystem.h" />
     <ClInclude Include="include\RE\ModManagerMenu.h" />
     <ClInclude Include="include\RE\NiCollisionObject.h" />
     <ClInclude Include="include\RE\NiIntegerExtraData.h" />
@@ -527,7 +534,6 @@
     <ClInclude Include="include\RE\ActorValues.h" />
     <ClInclude Include="include\RE\ahkpCharacterProxy.h" />
     <ClInclude Include="include\RE\ahkpWorld.h" />
-    <ClInclude Include="include\RE\AnimationVariableData.h" />
     <ClInclude Include="include\RE\AttackAnimationArrayMap.h" />
     <ClInclude Include="include\RE\AttackBlockHandler.h" />
     <ClInclude Include="include\RE\AutoMoveHandler.h" />
@@ -593,7 +599,7 @@
     <ClInclude Include="include\RE\bhkShapePhantom.h" />
     <ClInclude Include="include\RE\bhkThreadMemorySource.h" />
     <ClInclude Include="include\RE\bhkWorldObject.h" />
-    <ClInclude Include="include\RE\Biped.h" />
+    <ClInclude Include="include\RE\BipedAnim.h" />
     <ClInclude Include="include\RE\BookMenu.h" />
     <ClInclude Include="include\RE\BottomBar.h" />
     <ClInclude Include="include\RE\BSAnimationGraphChannel.h" />
@@ -756,7 +762,7 @@
     <ClInclude Include="include\RE\DetectionListener.h" />
     <ClInclude Include="include\RE\DetectionState.h" />
     <ClInclude Include="include\RE\InputDevices.h" />
-    <ClInclude Include="include\RE\DialogueData.h" />
+    <ClInclude Include="include\RE\DialogueItem.h" />
     <ClInclude Include="include\RE\DialogueMenu.h" />
     <ClInclude Include="include\RE\BGSDirectionalAmbientLightingColors.h" />
     <ClInclude Include="include\RE\Effect.h" />
@@ -1034,7 +1040,7 @@
     <ClInclude Include="include\RE\GViewport.h" />
     <ClInclude Include="include\RE\Hazard.h" />
     <ClInclude Include="include\RE\HeldStateHandler.h" />
-    <ClInclude Include="include\RE\HighProcess.h" />
+    <ClInclude Include="include\RE\HighProcessData.h" />
     <ClInclude Include="include\RE\hkArray.h" />
     <ClInclude Include="include\RE\hkBaseObject.h" />
     <ClInclude Include="include\RE\hkBaseTypes.h" />
@@ -1184,7 +1190,7 @@
     <ClInclude Include="include\RE\MenuOpenHandler.h" />
     <ClInclude Include="include\RE\MessageBoxData.h" />
     <ClInclude Include="include\RE\MessageBoxMenu.h" />
-    <ClInclude Include="include\RE\MiddleProcess.h" />
+    <ClInclude Include="include\RE\MiddleHighProcessData.h" />
     <ClInclude Include="include\RE\MissileProjectile.h" />
     <ClInclude Include="include\RE\MistMenu.h" />
     <ClInclude Include="include\RE\ModelReferenceEffect.h" />
@@ -1251,7 +1257,7 @@
     <ClInclude Include="include\RE\NiTStringMap.h" />
     <ClInclude Include="include\RE\NonActorMagicTarget.h" />
     <ClInclude Include="include\RE\OldMessageBoxCallback.h" />
-    <ClInclude Include="include\RE\PackageData.h" />
+    <ClInclude Include="include\RE\ActorPackage.h" />
     <ClInclude Include="include\RE\PackageLocation.h" />
     <ClInclude Include="include\RE\PathingCell.h" />
     <ClInclude Include="include\RE\PerkRankVisitor.h" />
@@ -1482,7 +1488,6 @@
     <ClInclude Include="include\RE\InterfaceStrings.h" />
     <ClInclude Include="include\RE\TESFile.h" />
     <ClInclude Include="include\RE\ValueModifierEffect.h" />
-    <ClInclude Include="include\RE\WeaponStrikeData.h" />
     <ClInclude Include="include\RE\WeatherType.h" />
     <ClInclude Include="include\RE\ZeroOverheadHeap.h" />
     <ClInclude Include="include\SKSE\Events.h" />

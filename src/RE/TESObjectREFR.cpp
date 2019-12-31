@@ -91,6 +91,18 @@ namespace RE
 	}
 
 
+	float TESObjectREFR::GetBaseHeight() const
+	{
+		float height = refScale / 100;
+		auto obj = GetBaseObject();
+		auto npc = obj ? obj->As<TESNPC>() : 0;
+		if (npc) {
+			height *= npc->GetHeight();
+		}
+		return height;
+	}
+
+
 	TESBoundObject* TESObjectREFR::GetBaseObject()
 	{
 		return data.objectReference;
@@ -100,14 +112,6 @@ namespace RE
 	const TESBoundObject* TESObjectREFR::GetBaseObject() const
 	{
 		return data.objectReference;
-	}
-
-
-	float TESObjectREFR::GetBaseScale() const
-	{
-		using func_t = function_type_t<decltype(&TESObjectREFR::GetBaseScale)>;
-		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetBaseScale);
-		return func(this);
 	}
 
 
@@ -360,7 +364,7 @@ namespace RE
 
 	bool TESObjectREFR::HasCollision() const
 	{
-		return (flags & RecordFlags::kCollisionsDisabled) == 0;
+		return (formFlags & RecordFlags::kCollisionsDisabled) == 0;
 	}
 
 
@@ -387,7 +391,7 @@ namespace RE
 
 	bool TESObjectREFR::IsDisabled() const
 	{
-		return (flags & RecordFlags::kInitiallyDisabled) != 0;
+		return (formFlags & RecordFlags::kInitiallyDisabled) != 0;
 	}
 
 
@@ -400,7 +404,7 @@ namespace RE
 
 	bool TESObjectREFR::IsMarkedForDeletion() const
 	{
-		return (flags & RecordFlags::kDeleted) != 0;
+		return (formFlags & RecordFlags::kDeleted) != 0;
 	}
 
 
@@ -483,9 +487,9 @@ namespace RE
 	void TESObjectREFR::SetCollision(bool a_enable)
 	{
 		if (a_enable) {
-			flags &= ~RecordFlags::kCollisionsDisabled;
+			formFlags &= ~RecordFlags::kCollisionsDisabled;
 		} else {
-			flags |= RecordFlags::kCollisionsDisabled;
+			formFlags |= RecordFlags::kCollisionsDisabled;
 		}
 	}
 

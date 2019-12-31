@@ -231,10 +231,11 @@ namespace RE
 		BGSHeadPart*	GetCurrentHeadPartByType(BGSHeadPart::Type a_type);
 		BGSHeadPart*	GetHeadPartByType(BGSHeadPart::Type a_type);
 		BGSHeadPart*	GetHeadPartOverlayByType(BGSHeadPart::Type a_type);
+		float			GetHeight() const;
 		UInt32			GetNumBaseOverlays() const;
 		TESRace*		GetRace();
 		TESNPC*			GetRootTemplate();
-		Sex				GetSex();
+		Sex				GetSex() const;
 		bool			HasOverlays();
 		void			SetFaceTexture(BGSTextureSet* a_textureSet);
 		void			SetHairColor(BGSColorForm* a_hairColor);

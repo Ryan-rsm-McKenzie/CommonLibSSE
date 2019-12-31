@@ -19,6 +19,46 @@
 
 namespace RE
 {
+	struct OBJ_BOOK	// DATA
+	{
+		enum class Flag : UInt8
+		{
+			kNone = 0,
+			kAdvancesActorValue = 1 << 0,
+			kCantTake = 1 << 1,
+			kTeachesSpell = 1 << 2,	// takes priority over skill
+			kHasBeenRead = 1 << 3
+		};
+
+
+		enum class Type : UInt8
+		{
+			kBookTome = 0x00,
+			kNoteScroll = static_cast<std::underlying_type_t<Type>>(-1),
+		};
+
+
+		union Teaches
+		{
+			ActorValue	actorValueToAdvance;
+			SpellItem*	spell;
+		};
+		STATIC_ASSERT(sizeof(Teaches) == 0x8);
+
+
+		Flag GetSanitizedType() const;
+
+
+		// members
+		Flag	flags;		// 00
+		Type	type;		// 01
+		UInt16	pad02;		// 02
+		UInt32	pad04;		// 04
+		Teaches	teaches;	// 08
+	};
+	STATIC_ASSERT(sizeof(OBJ_BOOK) == 0x10);
+
+
 	class TESObjectBOOK :
 		public TESBoundObject,				// 00
 		public TESFullName,					// 30
@@ -58,46 +98,6 @@ namespace RE
 			};
 		};
 
-
-		struct Data	// DATA
-		{
-			enum class Flag : UInt8
-			{
-				kNone = 0,
-				kTeachesSkill = 1 << 0,
-				kCantBeTaken = 1 << 1,
-				kTeachesSpell = 1 << 2,	// takes priority over skill
-				kRead = 1 << 3,			// set once the book is equipped by the player, along with the CHANGE_BOOK_READ (0x40) change flag
-			};
-
-
-			enum class Type : UInt8
-			{
-				kBookTome = 0x00,
-				kNoteScroll = static_cast<std::underlying_type_t<Type>>(-1),
-			};
-
-
-			union Teaches
-			{
-				ActorValue	skill;
-				SpellItem*	spell;
-			};
-			STATIC_ASSERT(sizeof(Teaches) == 0x8);
-
-
-			Flag GetSanitizedType() const;
-
-
-			// members
-			Flag	flags;		// 00
-			Type	type;		// 01
-			UInt16	pad02;		// 02
-			UInt32	pad04;		// 04
-			Teaches	teaches;	// 08
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x10);
-
 		virtual ~TESObjectBOOK();																															// 00
 
 		// override (TESBoundObject)
@@ -121,9 +121,9 @@ namespace RE
 
 
 		// members
-		Data			data;			// 110 - DATA
-		TESObjectSTAT*	inventoryArt;	// 120 - INAM
-		TESDescription	description;	// 128 - CNAM
+		OBJ_BOOK		data;					// 110 - DATA
+		TESObjectSTAT*	inventoryModel;			// 120 - INAM
+		TESDescription	itemCardDescription;	// 128 - CNAM
 	};
 	STATIC_ASSERT(sizeof(TESObjectBOOK) == 0x138);
 }

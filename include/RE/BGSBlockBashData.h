@@ -21,8 +21,8 @@ namespace RE
 
 
 		// members
-		BGSImpactDataSet*	bashImpactDataSet;		// 08 - BIDS
-		BGSMaterialType*	alternateBlockMaterial;	// 10 - BAMT
+		BGSImpactDataSet*	blockBashImpactDataSet;	// 08 - BIDS
+		BGSMaterialType*	altBlockMaterialType;	// 10 - BAMT
 	};
 	STATIC_ASSERT(sizeof(BGSBlockBashData) == 0x18);
 }

@@ -3,12 +3,13 @@
 
 namespace RE
 {
-	TESObjectBOOK::Data::Flag TESObjectBOOK::Data::GetSanitizedType() const
+	auto OBJ_BOOK::GetSanitizedType() const
+		-> Flag
 	{
 		if ((flags & Flag::kTeachesSpell) != Flag::kNone) {
 			return Flag::kTeachesSpell;
-		} else if ((flags & Flag::kTeachesSkill) != Flag::kNone) {
-			return Flag::kTeachesSkill;
+		} else if ((flags & Flag::kAdvancesActorValue) != Flag::kNone) {
+			return Flag::kAdvancesActorValue;
 		} else {
 			return Flag::kNone;
 		}
@@ -17,43 +18,43 @@ namespace RE
 
 	bool TESObjectBOOK::TeachesSkill() const
 	{
-		return (data.flags & Data::Flag::kTeachesSkill) != Data::Flag::kNone;
+		return (data.flags & OBJ_BOOK::Flag::kAdvancesActorValue) != OBJ_BOOK::Flag::kNone;
 	}
 
 
 	bool TESObjectBOOK::TeachesSpell() const
 	{
-		return (data.flags & Data::Flag::kTeachesSpell) != Data::Flag::kNone;
+		return (data.flags & OBJ_BOOK::Flag::kTeachesSpell) != OBJ_BOOK::Flag::kNone;
 	}
 
 
 	bool TESObjectBOOK::IsRead() const
 	{
-		return (data.flags & Data::Flag::kRead) != Data::Flag::kNone;
+		return (data.flags & OBJ_BOOK::Flag::kHasBeenRead) != OBJ_BOOK::Flag::kNone;
 	}
 
 
 	bool TESObjectBOOK::CanBeTaken() const
 	{
-		return (data.flags & Data::Flag::kCantBeTaken) == Data::Flag::kNone;
+		return (data.flags & OBJ_BOOK::Flag::kCantTake) == OBJ_BOOK::Flag::kNone;
 	}
 
 
 	bool TESObjectBOOK::IsBookTome() const
 	{
-		return data.type == Data::Type::kBookTome;
+		return data.type == OBJ_BOOK::Type::kBookTome;
 	}
 
 
 	bool TESObjectBOOK::IsNoteScroll() const
 	{
-		return data.type == Data::Type::kNoteScroll;
+		return data.type == OBJ_BOOK::Type::kNoteScroll;
 	}
 
 
 	ActorValue TESObjectBOOK::GetSkill() const
 	{
-		return TeachesSkill() ? data.teaches.skill : ActorValue::kNone;
+		return TeachesSkill() ? data.teaches.actorValueToAdvance : ActorValue::kNone;
 	}
 
 

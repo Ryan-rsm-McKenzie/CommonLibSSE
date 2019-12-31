@@ -17,7 +17,7 @@ namespace RE
 	}
 
 
-	DialogueData TESTopicInfo::GetDialogueData(Actor* a_speaker)
+	DialogueItem TESTopicInfo::GetDialogueData(Actor* a_speaker)
 	{
 		return { topic->quest, topic, this, a_speaker };
 	}

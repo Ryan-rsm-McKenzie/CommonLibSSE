@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/BSFixedString.h"
-#include "RE/DialogueData.h"
+#include "RE/DialogueItem.h"
 #include "RE/FormTypes.h"
 #include "RE/MemoryManager.h"
 #include "RE/TESCondition.h"
@@ -139,7 +139,7 @@ namespace RE
 		virtual bool	BelongsInGroup(void) override;									// 30
 		virtual void	CreateGroupData(void) override;									// 31
 
-		DialogueData GetDialogueData(Actor* a_speaker);
+		DialogueItem GetDialogueData(Actor* a_speaker);
 
 
 		// members

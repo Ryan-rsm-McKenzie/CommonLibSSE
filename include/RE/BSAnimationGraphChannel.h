@@ -12,17 +12,18 @@ namespace RE
 		inline static const void* RTTI = RTTI_BSAnimationGraphChannel;
 
 
-		virtual ~BSAnimationGraphChannel();	// 00
+		virtual ~BSAnimationGraphChannel();						// 00
 
 		// add
-		virtual	void	Unk_01(void) = 0;	// 01
-		virtual	void	Unk_02(void) = 0;	// 02
+		virtual	void	PollChannelUpdateImpl(bool a_arg1) = 0;	// 01
+		virtual	void	ResetImpl() = 0;						// 02
 
 
 		// members
-		UInt32			unk0C;	// 0C
-		BSFixedString	unk10;	// 10
-		UInt64			unk18;	// 18
+		UInt32				pad0C;			// 0C
+		const BSFixedString	channelName;	// 10
+		UInt32				value;			// 18
+		UInt32				pad1C;			// 1C
 	};
 	STATIC_ASSERT(sizeof(BSAnimationGraphChannel) == 0x20);
 }

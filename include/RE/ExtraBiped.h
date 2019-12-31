@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	struct Biped;
+	struct BipedAnim;
 
 
 	class ExtraBiped : public BSExtraData
@@ -26,7 +26,7 @@ namespace RE
 
 
 		// members
-		BSTSmartPointer<Biped> biped;	// 10
+		BSTSmartPointer<BipedAnim> biped;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraBiped) == 0x18);
 }

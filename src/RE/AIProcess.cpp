@@ -1,6 +1,6 @@
 #include "RE/AIProcess.h"
 
-#include "RE/HighProcess.h"
+#include "RE/HighProcessData.h"
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 #include "SKSE/API.h"
@@ -8,6 +8,12 @@
 
 namespace RE
 {
+	float AIProcess::GetCachedHeight() const
+	{
+		return high ? high->cachedActorHeight : -1.0;
+	}
+
+
 	TESForm* AIProcess::GetEquippedLeftHand()
 	{
 		return equippedObjects[Hands::kLeft];
@@ -22,29 +28,29 @@ namespace RE
 
 	bool AIProcess::IsArrested() const
 	{
-		return highProcess && highProcess->arrested;
+		return high && high->arrested;
 	}
 
 
 	bool AIProcess::IsGhost() const
 	{
-		return unk050 && (unk050->flags2 & Data050::Flag2::kGhost) != Data050::Flag2::kNone;
+		return cachedValues && (cachedValues->flags & CachedValues::Flags::kActorIsGhost) != CachedValues::Flags::kNone;
 	}
 
 
 	void AIProcess::SetArrested(bool a_arrested)
 	{
-		if (highProcess) {
-			highProcess->arrested = a_arrested;
+		if (high) {
+			high->arrested = a_arrested;
 		}
 	}
 
 
-	void AIProcess::SetBaseScale(float a_scale)
+	void AIProcess::SetCachedHeight(float a_scale)
 	{
-		using func_t = function_type_t<decltype(&AIProcess::SetBaseScale)>;
-		REL::Offset<func_t*> func(Offset::AIProcess::SetBaseScale);
-		return func(this, a_scale);
+		if (high) {
+			high->cachedActorHeight = a_scale;
+		}
 	}
 
 

@@ -22,8 +22,7 @@ namespace RE
 			kBlockPlayerActivate = 1 << 1,
 			kBlockLoadEvents = 1 << 2,
 			kBlockActivateText = 1 << 3,
-			kPlayerHasTaken = 1 << 5,
-			kPowerConnectorFixed = 1 << 6,
+			kPlayerHasTaken = 1 << 5
 		};
 
 

@@ -3,7 +3,8 @@
 
 namespace RE
 {
-	BGSBipedObjectForm::FirstPersonFlag BGSBipedObjectForm::GetSlotMask() const
+	auto BGSBipedObjectForm::GetSlotMask() const
+		-> FirstPersonFlag
 	{
 		return bipedBodyTemplate.firstPersonFlag;
 	}
@@ -21,7 +22,8 @@ namespace RE
 	}
 
 
-	BGSBipedObjectForm::ArmorType BGSBipedObjectForm::GetArmorType() const
+	auto BGSBipedObjectForm::GetArmorType() const
+		-> ArmorType
 	{
 		return bipedBodyTemplate.armorType;
 	}
@@ -51,14 +53,16 @@ namespace RE
 	}
 
 
-	BGSBipedObjectForm::FirstPersonFlag BGSBipedObjectForm::AddSlotToMask(FirstPersonFlag a_slot)
+	auto BGSBipedObjectForm::AddSlotToMask(FirstPersonFlag a_slot)
+		-> FirstPersonFlag
 	{
 		bipedBodyTemplate.firstPersonFlag |= a_slot;
 		return bipedBodyTemplate.firstPersonFlag;
 	}
 
 
-	BGSBipedObjectForm::FirstPersonFlag BGSBipedObjectForm::RemoveSlotFromMask(FirstPersonFlag a_slot)
+	auto BGSBipedObjectForm::RemoveSlotFromMask(FirstPersonFlag a_slot)
+		-> FirstPersonFlag
 	{
 		if (a_slot != FirstPersonFlag::kNone) {
 			bipedBodyTemplate.firstPersonFlag &= ~a_slot;

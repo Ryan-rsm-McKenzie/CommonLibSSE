@@ -11,12 +11,13 @@
 #include "RE/ExtraCanTalkToPlayer.h"
 #include "RE/ExtraFactionChanges.h"
 #include "RE/FormTraits.h"
-#include "RE/HighProcess.h"
+#include "RE/HighProcessData.h"
 #include "RE/InventoryEntryData.h"
-#include "RE/MiddleProcess.h"
+#include "RE/MiddleHighProcessData.h"
 #include "RE/Misc.h"
 #include "RE/NiColor.h"
 #include "RE/NiNode.h"
+#include "RE/NiPoint3.h"
 #include "RE/Offsets.h"
 #include "RE/ProcessLists.h"
 #include "RE/TESFaction.h"
@@ -54,9 +55,9 @@ namespace RE
 	void Actor::AllowBleedoutDialogue(bool a_canTalk)
 	{
 		if (a_canTalk) {
-			flags2 |= Flag2::kAllowBleedoutDialogue;
+			boolFlags |= BOOL_FLAGS::kCanSpeakToEssentialDown;
 		} else {
-			flags2 &= ~Flag2::kAllowBleedoutDialogue;
+			boolFlags &= ~BOOL_FLAGS::kCanSpeakToEssentialDown;
 		}
 	}
 
@@ -144,27 +145,27 @@ namespace RE
 
 	InventoryEntryData* Actor::GetAttackingWeapon()
 	{
-		if (!currentProcess || !currentProcess->highProcess || !currentProcess->highProcess->attackData || !currentProcess->middleProcess) {
+		if (!currentProcess || !currentProcess->high || !currentProcess->high->attackData || !currentProcess->middleHigh) {
 			return 0;
 		}
 
-		auto attackData = currentProcess->highProcess->attackData;
-		auto middleProcess = currentProcess->middleProcess;
+		auto attackData = currentProcess->high->attackData;
+		auto proc = currentProcess->middleHigh;
 
-		return attackData->IsLeftAttack() ? middleProcess->leftHand : middleProcess->rightHand;
+		return attackData->IsLeftAttack() ? proc->leftHand : proc->rightHand;
 	}
 
 
 	const InventoryEntryData* Actor::GetAttackingWeapon() const
 	{
-		if (!currentProcess || !currentProcess->highProcess || !currentProcess->highProcess->attackData || !currentProcess->middleProcess) {
+		if (!currentProcess || !currentProcess->high || !currentProcess->high->attackData || !currentProcess->middleHigh) {
 			return 0;
 		}
 
-		auto attackData = currentProcess->highProcess->attackData;
-		auto middleProcess = currentProcess->middleProcess;
+		auto attackData = currentProcess->high->attackData;
+		auto proc = currentProcess->middleHigh;
 
-		return attackData->IsLeftAttack() ? middleProcess->leftHand : middleProcess->rightHand;
+		return attackData->IsLeftAttack() ? proc->leftHand : proc->rightHand;
 	}
 
 
@@ -194,23 +195,23 @@ namespace RE
 
 	InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand)
 	{
-		if (!currentProcess || !currentProcess->middleProcess) {
+		if (!currentProcess || !currentProcess->middleHigh) {
 			return 0;
 		}
 
-		auto middleProcess = currentProcess->middleProcess;
-		return a_leftHand ? middleProcess->leftHand : middleProcess->rightHand;
+		auto proc = currentProcess->middleHigh;
+		return a_leftHand ? proc->leftHand : proc->rightHand;
 	}
 
 
 	const InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand) const
 	{
-		if (!currentProcess || !currentProcess->middleProcess) {
+		if (!currentProcess || !currentProcess->middleHigh) {
 			return 0;
 		}
 
-		auto middleProcess = currentProcess->middleProcess;
-		return a_leftHand ? middleProcess->leftHand : middleProcess->rightHand;
+		auto proc = currentProcess->middleHigh;
+		return a_leftHand ? proc->leftHand : proc->rightHand;
 	}
 
 
@@ -251,9 +252,24 @@ namespace RE
 
 	float Actor::GetHeight()
 	{
-		using func_t = function_type_t<decltype(&Actor::GetHeight)>;
-		REL::Offset<func_t*> func(Offset::Actor::GetHeight);
-		return func(this);
+		NiPoint3 min;
+		NiPoint3 max;
+		GetBoundMin(min);
+		GetBoundMax(max);
+		auto diff = max.z - min.z;
+		auto height = GetBaseHeight() * diff;
+
+		if (!currentProcess || currentProcess->processLevel) {
+			return height;
+		}
+
+		auto cachedHeight = currentProcess->GetCachedHeight();
+		if (cachedHeight == 0.0) {
+			currentProcess->SetCachedHeight(height);
+			return height;
+		} else {
+			return cachedHeight;
+		}
 	}
 
 
@@ -282,25 +298,31 @@ namespace RE
 
 	bool Actor::IsAIEnabled() const
 	{
-		return (flags1 & Flag1::kAIEnabled) != Flag1::kNone;
+		return (boolBits & BOOL_BITS::kProcessMe) != BOOL_BITS::kNone;
+	}
+
+
+	bool Actor::IsAMount() const
+	{
+		return (boolFlags & BOOL_FLAGS::kIsAMount) != BOOL_FLAGS::kNone;
 	}
 
 
 	bool Actor::IsBeingRidden() const
 	{
-		return ((flags2 & Flag2::kHasInteraction) != Flag2::kNone) && extraData.HasType(ExtraDataType::kInteraction);
+		return IsAMount() && extraData.HasType(ExtraDataType::kInteraction);
 	}
 
 
 	bool Actor::IsCommandedActor() const
 	{
-		return (flags2 & Flag2::kIsCommandedActor) != Flag2::kNone;
+		return (boolFlags & BOOL_FLAGS::kIsCommandedActor) != BOOL_FLAGS::kNone;
 	}
 
 
 	bool Actor::IsEssential() const
 	{
-		return (flags2 & Flag2::kIsEssential) != Flag2::kNone;
+		return (boolFlags & BOOL_FLAGS::kEssential) != BOOL_FLAGS::kNone;
 	}
 
 
@@ -329,7 +351,7 @@ namespace RE
 
 	bool Actor::IsGuard() const
 	{
-		return (flags1 & Flag1::kIsGuard) != Flag1::kNone;
+		return (boolBits & BOOL_BITS::kGuard) != BOOL_BITS::kNone;
 	}
 
 
@@ -343,19 +365,19 @@ namespace RE
 
 	bool Actor::IsInKillMove() const
 	{
-		return (flags2 & Flag2::kIsInKillMove) != Flag2::kNone;
+		return (boolFlags & BOOL_FLAGS::kIsInKillMove) != BOOL_FLAGS::kNone;
 	}
 
 
 	bool Actor::IsOnMount() const
 	{
-		return ((flags2 & Flag2::kHasInteraction) != Flag2::kNone) && extraData.HasType(ExtraDataType::kInteraction);
+		return !IsAMount() && extraData.HasType(ExtraDataType::kInteraction);
 	}
 
 
 	bool Actor::IsPlayerTeammate() const
 	{
-		return (flags1 & Flag1::kIsPlayerTeammate) != Flag1::kNone;
+		return (boolBits & BOOL_BITS::kPlayerTeammate) != BOOL_BITS::kNone;
 	}
 
 
@@ -394,7 +416,7 @@ namespace RE
 
 	bool Actor::IsTrespassing() const
 	{
-		return (flags2 & Flag2::kIsTrespassing) != Flag2::kNone;
+		return (boolFlags & BOOL_FLAGS::kIsTrespassing) != BOOL_FLAGS::kNone;
 	}
 
 

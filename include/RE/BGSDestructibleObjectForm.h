@@ -19,10 +19,17 @@ namespace RE
 		{
 			struct Header	// DEST
 			{
-				UInt32	health;			// 00
-				UInt8	count;			// 04
-				bool	vatsTargetable;	// 05
-				UInt16	unk06;			// 06
+				enum class Flag : UInt8
+				{
+					kNone = 0,
+					kVatsTargetable = 1 << 0
+				};
+
+
+				UInt32	health;		// 00
+				SInt8	numStages;	// 04
+				Flag	flags;		// 05
+				UInt16	pad06;		// 06
 			};
 			STATIC_ASSERT(sizeof(Header) == 0x8);
 
@@ -35,16 +42,17 @@ namespace RE
 					{
 						kNone = 0,
 						kCapDamage = 1 << 0,
-						kDisable = 1 << 1,
-						kDestroy = 1 << 2,
-						kIgnoreExternalDamage = 1 << 3
+						kDisableObject = 1 << 1,
+						kDestroyObject = 1 << 2,
+						kIgnoreExternalDamage = 1 << 3,
+						kBecomesDynamic = 1 << 4
 					};
 
 
-					UInt8			modelDamageStage;		// 00
-					UInt8			healthPct;				// 01
+					SInt8			modelDamageStage;		// 00
+					SInt8			healthPercentage;		// 01
 					Flag			flags;					// 02
-					UInt8			unk03;					// 03
+					UInt8			pad03;					// 03
 					UInt32			selfDamagePerSecond;	// 04
 					BGSExplosion*	explosion;				// 08
 					BGSDebris*		debris;					// 10
@@ -55,7 +63,7 @@ namespace RE
 
 
 				DestructionStageData	destructionStageData;	// 00 - DSTD
-				TESModelTextureSwap*	model;					// 20 - DMD*
+				TESModelTextureSwap*	replacementModel;		// 20 - DMD*
 			};
 			STATIC_ASSERT(sizeof(Stage) == 0x28);
 

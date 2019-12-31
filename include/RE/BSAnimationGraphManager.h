@@ -1,10 +1,8 @@
 #pragma once
 
-#include "RE/ActorSpeedChannel.h"
 #include "RE/BSFixedString.h"
 #include "RE/BSIntrusiveRefCounted.h"
 #include "RE/BSLock.h"
-#include "RE/BSTAnimationGraphDataChannel.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTEvent.h"
 #include "RE/BSTSmartPointer.h"
@@ -14,6 +12,32 @@ namespace RE
 {
 	struct BSAnimationGraphEvent;
 	class BShkbAnimationGraph;
+
+
+	union hkbVariableValue
+	{
+		bool	b;
+		SInt32	i;
+		float	f;
+	};
+	STATIC_ASSERT(sizeof(hkbVariableValue) == 0x4);
+
+
+	struct AnimVariableCacheInfo
+	{
+		BSFixedString		variableName;	// 00
+		hkbVariableValue*	variable;		// 08
+	};
+	STATIC_ASSERT(sizeof(AnimVariableCacheInfo) == 0x10);
+
+
+	struct BSAnimationGraphVariableCache
+	{
+		BSTArray<AnimVariableCacheInfo>	variableCache;	// 00
+		void*							unk18;			// 18
+		void*							unk20;			// 20 - smart ptr
+	};
+	STATIC_ASSERT(sizeof(BSAnimationGraphVariableCache) == 0x28);
 
 
 	BSSmartPointer(BSAnimationGraphManager);
@@ -51,18 +75,16 @@ namespace RE
 
 
 		// members
-		UInt32																						unk0C;				// 0C
-		BSTArray<BSTSmartPointer<BSTAnimationGraphDataChannel<Actor, float, ActorSpeedChannel>>>	unk10;				// 10
-		BSTArray<void*>																				unk28;				// 28 - array of smart ptrs
-		BSTSmallArray<BSTSmartPointer<BShkbAnimationGraph>>											animationGraphs;	// 40
-		BSTArray<void*>																				unk58;				// 58 - array of smart ptrs
-		BSTArray<AnimationVariable>																	animationVariables;	// 70
-		void*																						unk88;				// 88
-		BShkbAnimationGraph*																		unk90;				// 90 - The active animation graph?
-		UInt64																						unk98;				// 98
-		mutable BSSpinLock																			unkA0;				// A0
-		UInt64																						unkA8;				// A8
+		UInt32												pad0C;					// 0C
+		BSTArray<BSTSmartPointer<BSAnimationGraphChannel>>	boundChannels;			// 10
+		BSTArray<BSTSmartPointer<BSAnimationGraphChannel>>	bumpedChannels;			// 28
+		BSTSmallArray<BSTSmartPointer<BShkbAnimationGraph>>	graphs;					// 40
+		BSTArray<BSAnimationGraphManagerPtr>				subManagers;			// 58
+		BSAnimationGraphVariableCache						variableCache;			// 70
+		mutable BSSpinLock									updateLock;				// 98
+		mutable BSSpinLock									dependentManagerLock;	// A0
+		UInt32												activeGraph;			// A8
+		UInt32												generateDepth;			// A8
 	};
-	STATIC_ASSERT(offsetof(BSAnimationGraphManager, animationGraphs) == 0x40);
 	STATIC_ASSERT(sizeof(BSAnimationGraphManager) == 0xB0);
 }

@@ -29,8 +29,6 @@ namespace RE
 			constexpr std::uintptr_t DispelWornItemEnchantments = 0x00556F20;	// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 85 C0 7E 2D
 			constexpr std::uintptr_t GetDetectionLevel = 0x005FC9A0;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? F3 0F 58 43 5C
-			constexpr std::uintptr_t GetHeight = 0x005E1300;					// 1_5_97
 			// DirectSig: 48 8B 49 40 48 83 C1 30 E9 ? ? ? ?
 			constexpr std::uintptr_t GetLevel = 0x005D62E0;						// 1_5_97
 			// DirectSig: 48 83 EC 28 48 8B 81 ? ? ? ? 48 85 C0 74 16
@@ -133,7 +131,7 @@ namespace RE
 		}
 
 
-		namespace Biped
+		namespace BipedAnim
 		{
 			// IndirectSig: E8 ? ? ? ? BA ? ? ? ? 48 8B CF E8 ? ? ? ? 48 8B 5C 24 ? EB 76
 			constexpr std::uintptr_t Dtor = 0x001C60A0;				// 1_5_97
@@ -379,7 +377,7 @@ namespace RE
 		}
 
 
-		namespace DialogueData
+		namespace DialogueItem
 		{
 			// IndirectSig: E8 ? ? ? ? 48 8B F8 41 89 1E 48 8B C7 48 8B 5C 24 70
 			constexpr std::uintptr_t Ctor = 0x0056C9D0;	// 1_5_97
@@ -1111,8 +1109,6 @@ namespace RE
 		{
 			// IndirectSig: E8 ? ? ? ? 48 8B 4E 40 48 8B 01 8B 55 77
 			constexpr std::uintptr_t ActivateRefChildren = 0x002A8CC0;	// 1_5_97
-			// DirectSig: 48 83 EC 38 0F B7 81 ? ? ? ? 48 8B 49 40
-			constexpr std::uintptr_t GetBaseScale = 0x0028CC60;			// 1_5_97
 			// IndirectSig: E8 ? ? ? ? FF 40 18
 			constexpr std::uintptr_t GetLockState = 0x002A74C0;			// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 85 C0 48 8B CB

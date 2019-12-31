@@ -6,6 +6,23 @@
 
 namespace RE
 {
+	struct ExtraLightDataStruct
+	{
+		ExtraLightDataStruct();
+		~ExtraLightDataStruct() = default;
+
+
+		float	fov;				// 00
+		float	fade;				// 04
+		float	endDistanceCap;		// 08
+		float	shadowDepthBias;	// 0C
+		UInt8	unk10;				// 10
+		UInt8	pad11;				// 11
+		UInt16	pad12;				// 12
+	};
+	STATIC_ASSERT(sizeof(ExtraLightDataStruct) == 0x14);
+
+
 	class ExtraLightData : public BSExtraData
 	{
 	public:
@@ -24,14 +41,8 @@ namespace RE
 
 
 		// members
-		float	modFOV;		// 10
-		UInt32	modFade;	// 14
-		UInt32	unk18;		// 18
-		float	depthBias;	// 1C
-		UInt8	unk20;		// 20
-		UInt8	pad21;		// 21
-		UInt16	pad22;		// 22
-		UInt32	pad24;		// 24
+		ExtraLightDataStruct	data;	// 10
+		UInt32					pad24;	// 24
 	};
 	STATIC_ASSERT(sizeof(ExtraLightData) == 0x28);
 }

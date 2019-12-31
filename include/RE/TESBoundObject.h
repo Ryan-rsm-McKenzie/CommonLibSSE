@@ -9,22 +9,27 @@ namespace RE
 	class BSString;
 
 
+	struct NiNPShortPoint3
+	{
+		SInt16	x;	// 0
+		SInt16	y;	// 2
+		SInt16	z;	// 4
+	};
+	STATIC_ASSERT(sizeof(NiNPShortPoint3) == 0x6);
+
+
 	class TESBoundObject : public TESObject
 	{
 	public:
 		inline static const void* RTTI = RTTI_TESBoundObject;
 
 
-		struct ObjectBounds	// OBND
+		struct BOUND_DATA	// OBND
 		{
-			SInt16	x1;	// 0
-			SInt16	y1;	// 2
-			SInt16	z1;	// 4
-			SInt16	x2;	// 6
-			SInt16	y2;	// 8
-			SInt16	z2;	// A
+			NiNPShortPoint3	boundMin;	// 0
+			NiNPShortPoint3	boundMax;	// 6
 		};
-		STATIC_ASSERT(sizeof(ObjectBounds) == 0xC);
+		STATIC_ASSERT(sizeof(BOUND_DATA) == 0xC);
 
 
 		virtual ~TESBoundObject();																																	// 00
@@ -51,8 +56,8 @@ namespace RE
 
 
 		// members
-		ObjectBounds	objectBounds;	// 20 - OBND
-		UInt32			pad2C;			// 2C
+		BOUND_DATA	boundData;	// 20 - OBND
+		UInt32		pad2C;		// 2C
 	};
 	STATIC_ASSERT(sizeof(TESBoundObject) == 0x30);
 }
