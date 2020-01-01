@@ -248,7 +248,7 @@ namespace RE
 		TESObjectSTAT*			firstPersonModelObject;	// 200 - WNAM
 		TESObjectWEAP*			templateForm;			// 208 - CNAM
 		BSFixedString			embeddedNode;			// 210
-		SoundLevel				detectionSoundLevel;	// 218 - VNAM
+		SOUND_LEVEL				detectionSoundLevel;	// 218 - VNAM
 		UInt32					pad21C;					// 21C
 	};
 	STATIC_ASSERT(sizeof(TESObjectWEAP) == 0x220);

@@ -4,7 +4,6 @@
 
 #include "RE/ActorValues.h"
 #include "RE/BSTArray.h"
-#include "RE/FileHash.h"
 #include "RE/GFxValue.h"
 #include "RE/IMenu.h"
 #include "RE/MenuEventHandler.h"
@@ -21,6 +20,12 @@ namespace RE
 	class NiControllerSequence;
 	class NiNode;
 	class StatsNode;
+
+
+	namespace BSResource
+	{
+		struct ID;
+	}
 
 
 	// menuDepth = 3
@@ -75,9 +80,9 @@ namespace RE
 		float						horizontalVelocity;		// 048
 		UInt32						unk04C;					// 04C
 		BSTArray<ActorValue>		skillTrees;				// 050
-		FileHash*					skydomeHash;			// 068
-		FileHash*					starsHash;				// 070
-		FileHash*					linesHash;				// 078
+		BSResource::ID*				skydomeHash;			// 068
+		BSResource::ID*				starsHash;				// 070
+		BSResource::ID*				linesHash;				// 078
 		BSFadeNode*					skydomeNode;			// 080
 		BSFadeNode*					starsNode;				// 088
 		BSFadeNode*					linesNode;				// 090

@@ -23,11 +23,11 @@ namespace RE
 		enum { kTypeID = FormType::Message };
 
 
-		enum class Flag : UInt32
+		enum class MessageFlag : UInt32
 		{
 			kNone = 0,
 			kMessageBox = 1 << 0,
-			kAutoDisplay = 1 << 1
+			kInitialDelay = 1 << 1
 		};
 
 
@@ -41,12 +41,12 @@ namespace RE
 		};
 
 
-		struct MenuButton
+		struct MESSAGEBOX_BUTTON
 		{
-			BSFixedString	buttonText;	// 00 - ITXT
+			BSFixedString	text;		// 00 - ITXT
 			TESCondition	conditions;	// 08
 		};
-		STATIC_ASSERT(sizeof(MenuButton) == 0x10);
+		STATIC_ASSERT(sizeof(MESSAGEBOX_BUTTON) == 0x10);
 
 
 		virtual ~BGSMessage();							// 00
@@ -59,11 +59,11 @@ namespace RE
 
 
 		// members
-		BGSMenuIcon*				icon;			// 40 - INAM
-		TESQuest*					ownerQuest;		// 48 - QNAM
-		BSSimpleList<MenuButton*>	menuButtons;	// 50
-		Flag						flags;			// 60 - DNAM
-		UInt32						displayTime;	// 64 - TNAM
+		BGSMenuIcon*						icon;			// 40 - INAM
+		TESQuest*							ownerQuest;		// 48 - QNAM
+		BSSimpleList<MESSAGEBOX_BUTTON*>	menuButtons;	// 50
+		MessageFlag							flags;			// 60 - DNAM
+		UInt32								displayTime;	// 64 - TNAM
 	};
 	STATIC_ASSERT(sizeof(BGSMessage) == 0x68);
 }

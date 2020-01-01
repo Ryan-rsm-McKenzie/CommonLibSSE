@@ -1072,6 +1072,9 @@
     <Filter Include="src\RE\NetImmerse\NiRefObject\NiObject\NiTexture">
       <UniqueIdentifier>{fab91fe2-498f-425e-8199-5990b35a6760}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\BSResource\FileID">
+      <UniqueIdentifier>{eafffdc2-9764-4b0b-8e01-95d003876e51}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1649,9 +1652,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\ExtraContainerChanges.cpp">
       <Filter>src\RE\BSExtraData</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\TESObjectMISC.cpp">
-      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ProcessLists.cpp">
       <Filter>src\RE\AI</Filter>
@@ -2928,9 +2928,6 @@
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\Color.h">
-      <Filter>include\RE\FormComponents\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\FileHash.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\PerkEntryVisitor.h">
@@ -5083,6 +5080,18 @@
     </ClInclude>
     <ClInclude Include="include\RE\ContainerItemExtra.h">
       <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResource\FileID.h">
+      <Filter>include\RE\BSResource\FileID</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResource\ID.h">
+      <Filter>include\RE\BSResource\FileID</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSBodyPartDefs.h">
+      <Filter>include\RE\FormComponents\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DialogueTypes.h">
+      <Filter>include\RE\FormComponents\Enums</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

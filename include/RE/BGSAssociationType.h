@@ -16,7 +16,7 @@ namespace RE
 		enum { kTypeID = FormType::AssociationType };
 
 
-		enum class Flag : UInt32	// DATA
+		enum class FLAGS : UInt32	// DATA
 		{
 			kNone = 0,
 			kFamily = 1 << 0
@@ -65,9 +65,9 @@ namespace RE
 
 
 		// members
-		BSFixedString	titles[Members::kTotal][Sexes::kTotal];	// 20 - MPRT - FCHT
-		Flag			flags;									// 40 - DATA
-		UInt32			pad44;									// 44
+		BSFixedString	associationLabels[Members::kTotal][Sexes::kTotal];	// 20 - MPRT - FCHT
+		FLAGS			flags;												// 40 - DATA
+		UInt32			pad44;												// 44
 	};
 	STATIC_ASSERT(sizeof(BGSAssociationType) == 0x48);
 }

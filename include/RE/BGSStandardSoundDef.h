@@ -1,8 +1,8 @@
 #pragma once
 
+#include "RE/BSResource/ID.h"
 #include "RE/BGSSoundDescriptor.h"
 #include "RE/BSTArray.h"
-#include "RE/FileHash.h"
 #include "RE/FormTypes.h"
 
 
@@ -73,7 +73,7 @@ namespace RE
 
 
 		// members
-		BSTArray<FileHash>				soundFiles;				// 18 - ANAM
+		BSTArray<BSResource::ID>		soundFiles;				// 18 - ANAM
 		SoundPlaybackCharacteristics	soundCharacteristics;	// 30 - BNAM
 		TESCondition*					conditions;				// 40 - CTDA
 		BGSSoundOutput*					outputModel;			// 48 - ONAM

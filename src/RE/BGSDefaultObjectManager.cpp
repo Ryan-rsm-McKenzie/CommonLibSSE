@@ -14,9 +14,15 @@ namespace RE
 	}
 
 
+	TESForm* BGSDefaultObjectManager::GetObject(DefaultObject a_object)
+	{
+		return GetObject(to_underlying(a_object));
+	}
+
+
 	TESForm* BGSDefaultObjectManager::GetObject(std::size_t a_idx)
 	{
-		assert(a_idx < DefaultObjects::kTotal);
-		return loadedStates[a_idx] ? objects[a_idx] : 0;
+		assert(a_idx < to_underlying(DefaultObject::kTotal));
+		return objectInit[a_idx] ? objects[a_idx] : 0;
 	}
 }

@@ -9,6 +9,40 @@
 
 namespace RE
 {
+	struct DECAL_DATA_DATA
+	{
+		enum class Flag : UInt8
+		{
+			kNone = 0,
+			kParallax = 1 << 0,
+			kAlpha_Blending = 1 << 1,
+			kAlpha_Testing = 1 << 2,
+			kNoSubtextures = 1 << 3
+		};
+
+
+		float	decalMinWidth;	// 00
+		float	decalMaxWidth;	// 04
+		float	decalMinHeight;	// 08
+		float	decalMaxHeight;	// 0C
+		float	depth;			// 10
+		float	shininess;		// 14
+		float	parallaxScale;	// 18
+		SInt8	parallaxPasses;	// 1C
+		Flag	flags;			// 1D
+		UInt16	pad1E;			// 1E
+		Color	color;			// 20
+	};
+	STATIC_ASSERT(sizeof(DECAL_DATA_DATA) == 0x24);
+
+
+	struct DecalData	// DODT
+	{
+		DECAL_DATA_DATA data;	// 00
+	};
+	STATIC_ASSERT(sizeof(DecalData) == 0x24);
+
+
 	class BGSImpactData :
 		public TESForm,	// 00
 		public TESModel	// 20
@@ -18,6 +52,14 @@ namespace RE
 
 
 		enum { kTypeID = FormType::Impact };
+
+
+		enum class ORIENTATION : UInt32
+		{
+			kSurfaceNormal = 0,
+			kProjVector = 1,
+			kProjReflect = 2
+		};
 
 
 		struct RecordFlags
@@ -30,7 +72,7 @@ namespace RE
 		};
 
 
-		struct Data	// DATA
+		struct IMPACT_DATA_DATA	// DATA
 		{
 			enum class Flag : UInt8
 			{
@@ -49,50 +91,16 @@ namespace RE
 			};
 
 
-			struct Effect
-			{
-				float	duration;		// 0
-				float	orientation;	// 4
-			};
-			STATIC_ASSERT(sizeof(Effect) == 0x8);
-
-
-			Effect			effect;				// 00
+			float			effectDuration;		// 00
+			ORIENTATION		orient;				// 04
 			float			angleThreshold;		// 08
 			float			placementRadius;	// 0C
-			SoundLevel		soundLevel;			// 10
+			SOUND_LEVEL		soundLevel;			// 10
 			Flag			flags;				// 14
-			ImpactResult	impactResult;		// 18
-			UInt16			unk16;				// 1c
+			ImpactResult	resultOverride;		// 18
+			UInt16			unk16;				// 1C
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x18);
-
-
-		struct DecalData	// DODT
-		{
-			enum class Flag : UInt8
-			{
-				kNone = 0,
-				kParallax = 1 << 0,
-				kAlpha_Blending = 1 << 1,
-				kAlpha_Testing = 1 << 2,
-				kNoSubtextures = 1 << 3
-			};
-
-
-			float		minWidth;		// 00
-			float		maxWidth;		// 04
-			float		minHeight;		// 08
-			float		maxHeight;		// 0C
-			float		depth;			// 10
-			float		shininess;		// 14
-			float		parallaxScale;	// 18
-			UInt8		parallaxPasses;	// 1C
-			Flag		flags;			// 1D
-			UInt16		unk1E;			// 1E
-			Color		color;			// 20
-		};
-		STATIC_ASSERT(sizeof(DecalData) == 0x24);
+		STATIC_ASSERT(sizeof(IMPACT_DATA_DATA) == 0x18);
 
 
 		virtual ~BGSImpactData();						// 00
@@ -104,14 +112,14 @@ namespace RE
 
 
 		// members
-		Data					data;					// 48 - DATA
-		BGSTextureSet*			primaryTextureSet;		// 60 - DNAM
-		BGSTextureSet*			secondaryTextureSet;	// 68 - ENAM
-		BGSSoundDescriptorForm*	sound1;					// 70 - SNAM
-		BGSSoundDescriptorForm*	sound2;					// 78 - NAM1
-		BGSHazard*				hazard;					// 80 - NAM2
-		DecalData				decalData;				// 88 - DODT
-		UInt32					padAC;					// AC
+		IMPACT_DATA_DATA		data;				// 48 - DATA
+		BGSTextureSet*			decalTextureSet;	// 60 - DNAM
+		BGSTextureSet*			decalTextureSet2;	// 68 - ENAM
+		BGSSoundDescriptorForm*	sound1;				// 70 - SNAM
+		BGSSoundDescriptorForm*	sound2;				// 78 - NAM1
+		BGSHazard*				hazard;				// 80 - NAM2
+		DecalData				dData;				// 88 - DODT
+		UInt32					padAC;				// AC
 	};
 	STATIC_ASSERT(sizeof(BGSImpactData) == 0xB0);
 }

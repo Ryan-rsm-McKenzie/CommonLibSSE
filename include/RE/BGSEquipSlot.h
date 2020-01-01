@@ -19,7 +19,9 @@ namespace RE
 		enum class Flag : UInt32	// DATA
 		{
 			kNone = 0,
-			kUseAllParents = 1 << 0
+			kUseAllParents = 1 << 0,
+			kParentsOptional = 1 << 1,
+			kItemSlot = 1 << 2
 		};
 
 
@@ -43,7 +45,7 @@ namespace RE
 
 
 		// members
-		BSTArray<BGSEquipSlot*>	slotParents;	// 20 - PNAM
+		BSTArray<BGSEquipSlot*>	parentSlots;	// 20 - PNAM
 		Flag					flags;			// 38 - DATA
 		UInt32					pad3C;			// 3C
 	};

@@ -3,20 +3,22 @@
 
 namespace RE
 {
-	enum class SoundLevel : UInt32
+	enum class SOUND_LEVEL : UInt32
 	{
 		kLoud = 0,
 		kNormal = 1,
 		kSilent = 2,
-		kVeryLoud = 3
+		kVeryLoud = 3,
+		kQuiet = 4
 	};
 
 
-	enum class SoundLevel8 : UInt8
+	enum class SOUND_LEVEL_8 : UInt8
 	{
 		kLoud = 0,
 		kNormal = 1,
 		kSilent = 2,
-		kVeryLoud = 3
+		kVeryLoud = 3,
+		kQuiet = 4
 	};
 }

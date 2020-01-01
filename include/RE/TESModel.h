@@ -2,22 +2,20 @@
 
 #include "RE/BaseFormComponent.h"
 #include "RE/BSFixedString.h"
-#include "RE/FileHash.h"
 
 
 namespace RE
 {
+	namespace BSResource
+	{
+		struct ID;
+	}
+
+
 	class TESModel : public BaseFormComponent
 	{
 	public:
 		inline static const void* RTTI = RTTI_TESModel;
-
-
-		struct ExtraHash
-		{
-			UInt32 hash;
-		};
-		STATIC_ASSERT(sizeof(ExtraHash) == 0x4);
 
 
 		virtual ~TESModel();													// 00
@@ -34,12 +32,12 @@ namespace RE
 
 
 		// members
-		BSFixedString	modelName;		// 08 - MODL
-		FileHash**		fileHashes;		// 10 - MODT
-		ExtraHash*		extraHashes;	// 18
-		UInt16			numFileHashes;	// 20
-		UInt16			numExtraHashes;	// 22
-		UInt32			unk24;			// 24
+		BSFixedString	model;			// 08 - MODL
+		BSResource::ID*	textures;		// 10 - MODT
+		UInt32*			addons;			// 18
+		UInt16			numTextures;	// 20
+		UInt16			numAddons;		// 22
+		UInt32			pad24;			// 24
 	};
 	STATIC_ASSERT(sizeof(TESModel) == 0x28);
 }

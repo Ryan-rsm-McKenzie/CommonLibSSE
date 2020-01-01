@@ -33,6 +33,9 @@ namespace RE
 		inline static const void* RTTI = RTTI_TESNPC;
 
 
+		using HeadPartType = BGSHeadPart::HeadPartType;
+
+
 		enum { kTypeID = FormType::NPC };
 
 
@@ -228,9 +231,9 @@ namespace RE
 
 		void			ChangeHeadPart(BGSHeadPart* a_target);
 		BGSHeadPart**	GetBaseOverlays() const;
-		BGSHeadPart*	GetCurrentHeadPartByType(BGSHeadPart::Type a_type);
-		BGSHeadPart*	GetHeadPartByType(BGSHeadPart::Type a_type);
-		BGSHeadPart*	GetHeadPartOverlayByType(BGSHeadPart::Type a_type);
+		BGSHeadPart*	GetCurrentHeadPartByType(HeadPartType a_type);
+		BGSHeadPart*	GetHeadPartByType(HeadPartType a_type);
+		BGSHeadPart*	GetHeadPartOverlayByType(HeadPartType a_type);
 		float			GetHeight() const;
 		UInt32			GetNumBaseOverlays() const;
 		TESRace*		GetRace();
@@ -268,7 +271,7 @@ namespace RE
 		UInt8						unk242;				// 242
 		UInt8						unk243;				// 243
 		UInt8						unk244;				// 244
-		SoundLevel8					soundLevel;			// 245 - NAM8
+		SOUND_LEVEL_8				soundLevel;			// 245 - NAM8
 		Color						textureLighting;	// 246 - QNAM
 		UInt16						pad24A;				// 24A
 		UInt32						pad24C;				// 24C

@@ -27,28 +27,11 @@ namespace RE
 		};
 
 
-		struct Item
+		struct ConstructibleObjectData
 		{
-			struct Object	// CNTO
-			{
-				UInt32		count;	// 00
-				UInt32		unk04;	// 04
-				TESForm*	item;	// 08
-			};
-			STATIC_ASSERT(sizeof(Object) == 0x10);
-
-
-			struct ExtraData
-			{
-				UInt64	unk00;	// 00
-			};
-			STATIC_ASSERT(sizeof(ExtraData) == 0x8);
-
-
-			Object		object;		// 00
-			ExtraData*	extraData;	// 10
+			UInt16 numConstructed;	// 0 - NAM1
 		};
-		STATIC_ASSERT(sizeof(Item) == 0x18);
+		STATIC_ASSERT(sizeof(ConstructibleObjectData) == 0x2);
 
 
 		virtual ~BGSConstructibleObject();				// 00
@@ -61,12 +44,13 @@ namespace RE
 
 
 		// members
-		TESContainer	container;			// 20
-		TESCondition	conditions;			// 38
-		TESForm*		createdObject;		// 40 - CNAM
-		BGSKeyword*		workbenchKeyword;	// 48 - BNAM
-		UInt32			createdObjectCount;	// 50 - NAM1
-		UInt32			unk54;				// 54
+		TESContainer			requiredItems;		// 20
+		TESCondition			conditions;			// 38
+		TESForm*				createdItem;		// 40 - CNAM
+		BGSKeyword*				benchKeyword;		// 48 - BNAM
+		ConstructibleObjectData	data;				// 50
+		UInt16					pad52;				// 52
+		UInt32					unk54;				// 54
 	};
 	STATIC_ASSERT(sizeof(BGSConstructibleObject) == 0x58);
 }

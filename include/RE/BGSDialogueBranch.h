@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/DialogueTypes.h"
 #include "RE/FormTypes.h"
 #include "RE/TESForm.h"
 
@@ -44,12 +45,12 @@ namespace RE
 
 
 		// members
-		Flag		flags;			// 20 - DNAM
-		UInt32		pad24;			// 24
-		TESQuest*	quest;			// 28 - QNAM
-		TESTopic*	startingTopic;	// 30 - SNAM
-		UInt32		unk38;			// 38 - TNAM
-		UInt32		pad3C;			// 3C
+		Flag			flags;			// 20 - DNAM
+		UInt32			pad24;			// 24
+		TESQuest*		quest;			// 28 - QNAM
+		TESTopic*		startingTopic;	// 30 - SNAM
+		DIALOGUE_TYPE	type;			// 38 - TNAM
+		UInt32			pad3C;			// 3C
 	};
 	STATIC_ASSERT(sizeof(BGSDialogueBranch) == 0x40);
 }

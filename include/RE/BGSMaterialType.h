@@ -17,10 +17,10 @@ namespace RE
 		enum { kTypeID = FormType::MaterialType };
 
 
-		enum class Flag : UInt32
+		enum class FLAG : UInt32
 		{
 			kNone = 0,
-			kStairMaterial = 1 << 0,
+			kStairs = 1 << 0,
 			kArrowsStick = 1 << 1
 		};
 
@@ -44,12 +44,12 @@ namespace RE
 
 
 		// members
-		BGSMaterialType*	materialParent;		// 20 - PNAM
+		BGSMaterialType*	parentType;			// 20 - PNAM
 		BSFixedString		materialName;		// 28 - MNAM
-		UInt32				unk30;				// 30
-		NiColor				havokDisplayColor;	// 34 - CNAM
+		UInt32				materialID;			// 30
+		NiColor				materialColor;		// 34 - CNAM
 		float				buoyancy;			// 40 - BNAM
-		Flag				flags;				// 44 - FNAM
+		FLAG				flags;				// 44 - FNAM
 		BGSImpactDataSet*	havokImpactDataSet;	// 48 - HNAM
 	};
 	STATIC_ASSERT(sizeof(BGSMaterialType) == 0x50);

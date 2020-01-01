@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/ActorValues.h"
+#include "RE/BGSBodyPartDefs.h"
 #include "RE/BGSPreloadable.h"
 #include "RE/BSFixedString.h"
 #include "RE/FormTypes.h"
@@ -12,6 +13,72 @@
 
 namespace RE
 {
+	struct PART_DATA	// BPND
+	{
+		using Type = BGSBodyPartDefs::LIMB_ENUM_8;
+
+
+		enum class Flag : UInt8
+		{
+			kNone = 0,
+			kSeverable = 1 << 0,
+			kIKData = 1 << 1,
+			kIKData_BipedData = 1 << 2,
+			kExplodable = 1 << 3,
+			kIKData_IsHead = 1 << 4,
+			kIKData_HeadTracking = 1 << 5,
+			kToHitChance_Absolute = 1 << 6
+		};
+
+
+		float				damageMult;						// 00
+		Flag				flags;							// 04
+		Type				type;							// 05
+		SInt8				healthPercent;					// 06
+		ActorValue8			actorValue;						// 07
+		SInt8				toHitChance;					// 08
+		SInt8				explosionChance;				// 09
+		SInt8				explosionGenericDebrisCount;	// 0A
+		UInt8				pad0B;							// 0B
+		UInt32				pad0C;							// 0C
+		BGSDebris*			explosionGenericDebris;			// 10
+		BGSExplosion*		explosion;						// 18
+		float				trackingMaxAngle;				// 20
+		float				explosionGenericDebrisScale;	// 24
+		SInt8				dismemberGenericDebrisCount;	// 28
+		SInt8				unk29;							// 29
+		UInt16				unk2A;							// 2A
+		UInt32				unk2C;							// 2C
+		BGSDebris*			dismemberGenericDebris;			// 30
+		BGSExplosion*		dismemberExplosion;				// 38
+		float				dismemberGenericDebrisScale;	// 40
+		NiPoint3			goreTranslate;					// 44
+		NiPoint3			goreRotate;						// 50
+		UInt32				pad5C;							// 5C
+		BGSImpactDataSet*	dismemberImpactDataSet;			// 60
+		BGSImpactDataSet*	explosionImpactDataSet;			// 68
+		SInt8				dismemberDecalCount;			// 70
+		SInt8				explosionDecalCount;			// 71
+		UInt16				pad72;							// 72
+		float				explosionSpecialDebrisScale;	// 74
+	};
+	STATIC_ASSERT(sizeof(PART_DATA) == 0x78);
+
+
+	struct BGSBodyPart
+	{
+		BSFixedString	nodeName;					// 00 - BPNN
+		BSFixedString	taregtName;					// 08 - BPNT
+		BSFixedString	hitReactionVariablePrefix;	// 10 - BPNI
+		BSFixedString	partName;					// 18 - BPTN
+		BSFixedString	goreObjectName;				// 20 - NAM4
+		TESModel		explosionSpecialDebris;		// 28 - NAM1
+		TESModelPSA		poseMatching;				// 50 - PNAM
+		PART_DATA		data;						// 78 - BPND
+	};
+	STATIC_ASSERT(sizeof(BGSBodyPart) == 0xF0);
+
+
 	class BGSBodyPartData :
 		public TESForm,			// 00
 		public TESModel,		// 20
@@ -34,101 +101,6 @@ namespace RE
 		};
 
 
-		struct PartTypes
-		{
-			enum PartType : UInt8
-			{
-				kTorso = 0,
-				kHead,
-				kEye,
-				kLookAt,
-				kFlyGrab,
-				kSaddle,
-
-				kTotal
-			};
-		};
-
-
-		struct BodyPart
-		{
-			struct NumericData	// BPND
-			{
-				enum class Flag : UInt8
-				{
-					kNone = 0,
-					kSeverable = 1 << 0,
-					kIKData = 1 << 1,
-					kIKData_BipedData = 1 << 2,
-					kExplodable = 1 << 3,
-					kIKData_IsHead = 1 << 4,
-					kIKData_HeadTracking = 1 << 5,
-					kToHitChance_Absolute = 1 << 6
-				};
-
-
-#pragma pack(push, 1)
-				struct Explodable
-				{
-					UInt8			explosionChance;	// 00
-					UInt8			debrisCount;		// 01
-					UInt8			pad02;				// 02
-					UInt32			pad03;				// 03
-					BGSDebris*		debris;				// 07
-					BGSExplosion*	explosion;			// 0F
-				};
-				STATIC_ASSERT(sizeof(Explodable) == 0x17);
-#pragma pack(pop)
-
-
-				struct GoreEffectsPositioning
-				{
-					NiPoint3	translate;	// 00
-					NiPoint3	rotation;	// 0C
-				};
-				STATIC_ASSERT(sizeof(GoreEffectsPositioning) == 0x18);
-
-
-				float					damageMult;					// 00
-				Flag					flags;						// 04
-				PartTypes::PartType		partType;					// 05
-				UInt8					healthPct;					// 06
-				ActorValue8				actorValue;					// 07
-				UInt8					toHitChance;				// 08
-				Explodable				explodable;					// 09
-				float					trackingMaxAngle;			// 20
-				float					explodableDebrisScale;		// 24
-				UInt8					severableDebrisCount;		// 28
-				UInt8					unk29;						// 29
-				UInt16					unk2A;						// 2A
-				UInt32					unk2C;						// 2C
-				BGSDebris*				severableDebris;			// 30
-				BGSExplosion*			severableExplosion;			// 38
-				float					severableDebrisScale;		// 40
-				GoreEffectsPositioning	goreEffectsPositioning;		// 44
-				UInt32					pad5C;						// 5C
-				BGSImpactDataSet*		severableImpactDataSet;		// 60
-				BGSImpactDataSet*		explodableImpactDataSet;	// 68
-				UInt8					severableDecalCount;		// 70
-				UInt8					explodableDecalCount;		// 71
-				UInt16					pad72;						// 72
-				float					limbReplacementScale;		// 74
-			};
-			STATIC_ASSERT(sizeof(NumericData) == 0x78);
-
-
-			BSFixedString	partNode;				// 00 - BPNN
-			BSFixedString	vatsTarget;				// 08 - BPNT
-			BSFixedString	ikDataStartNode;		// 10 - BPNI
-			BSFixedString	partName;				// 18 - BPTN
-			BSFixedString	goreEffectsTargetBone;	// 20 - NAM4
-			TESModel		limbReplacementModel;	// 28 - NAM1
-			TESModelPSA		poseMatching;			// 50 - PNAM
-			NumericData		numericData;			// 78 - BPND
-		};
-		STATIC_ASSERT(sizeof(BodyPart) == 0xF0);
-
-
 		virtual ~BGSBodyPartData();							// 00
 
 		// override (TESForm)
@@ -139,8 +111,8 @@ namespace RE
 
 
 		// members
-		BodyPart*	bodyParts[PartTypes::kTotal];	// 50
-		BGSRagdoll*	ragdoll;						// 80
+		BGSBodyPart*	parts[to_underlying(BGSBodyPartDefs::LIMB_ENUM::kTotal)];	// 50
+		BGSRagdoll*		ragdoll;													// 80
 	};
 	STATIC_ASSERT(sizeof(BGSBodyPartData) == 0x88);
 }

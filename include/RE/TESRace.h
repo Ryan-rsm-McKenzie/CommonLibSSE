@@ -9,7 +9,6 @@
 #include "RE/BGSTextureModel.h"
 #include "RE/BSFixedString.h"
 #include "RE/BSTArray.h"
-#include "RE/FileHash.h"
 #include "RE/FormTypes.h"
 #include "RE/TESDescription.h"
 #include "RE/TESForm.h"
@@ -22,6 +21,12 @@
 namespace RE
 {
 	class AttackAnimationArrayMap;
+
+
+	namespace BSResource
+	{
+		struct ID;
+	}
 
 
 	class TESRace :
@@ -338,11 +343,11 @@ namespace RE
 
 		struct UnkData
 		{
-			FileHash**	unkHashes;		// 00
-			UInt32		numUnkHashes1;	// 08
-			UInt32		pad0C;			// 0C
-			UInt32		numUnkHashes2;	// 10
-			UInt32		pad14;			// 14
+			BSResource::ID**	unkHashes;		// 00
+			UInt32				numUnkHashes1;	// 08
+			UInt32				pad0C;			// 0C
+			UInt32				numUnkHashes2;	// 10
+			UInt32				pad14;			// 14
 		};
 		STATIC_ASSERT(sizeof(UnkData) == 0x18);
 

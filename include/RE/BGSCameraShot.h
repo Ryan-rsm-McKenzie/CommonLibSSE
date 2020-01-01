@@ -20,6 +20,24 @@ namespace RE
 		enum { kTypeID = FormType::CameraShot };
 
 
+		enum class CAM_ACTION : UInt32
+		{
+			kShoot = 0,
+			kFly = 1,
+			kHit = 2,
+			kZoom = 3
+		};
+
+
+		enum class CAM_OBJECT : UInt32
+		{
+			kAttacker = 0,
+			kProjectile = 1,
+			kTarget = 2,
+			kLeadActor = 3
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32
@@ -30,26 +48,8 @@ namespace RE
 		};
 
 
-		struct Data	// DATA
+		struct CAMERA_SHOT_DATA	// DATA
 		{
-			enum class Action : UInt32
-			{
-				kShoot = 0,
-				kFly = 1,
-				kHit = 2,
-				kZoom = 4
-			};
-
-
-			enum class Target : UInt32
-			{
-				kAttacker = 0,
-				kProjectile = 1,
-				kTarget = 2,
-				kLeadActor = 3
-			};
-
-
 			enum class Flag : UInt32
 			{
 				kNone = 0,
@@ -62,27 +62,19 @@ namespace RE
 			};
 
 
-			struct TimeMultipliers
-			{
-				float	player;	// 0
-				float	target;	// 4
-				float	global;	// 8
-			};
-			STATIC_ASSERT(sizeof(TimeMultipliers) == 0xC);
-
-
-			Action			action;					// 00
-			Target			location;				// 04
-			Target			target;					// 08
-			Flag			flags;					// 0C
-			TimeMultipliers	timeMultipliers;		// 10
-			float			maxTime;				// 1C
-			float			minTime;				// 20
-			float			targetPctBetweenActors;	// 24
-			float			nearTargetDistance;		// 28
-			UInt32			unk2C;					// 2C
+			CAM_ACTION	cameraAction;				// 00
+			CAM_OBJECT	location;					// 04
+			CAM_OBJECT	target;						// 08
+			Flag		flags;						// 0C
+			float		playerTimeMult;				// 10
+			float		targetTimeMult;				// 14
+			float		globalTimeMult;				// 18
+			float		maxTime;					// 1C
+			float		minTime;					// 20
+			float		targetPercentBetweenActors;	// 24
+			float		nearTargetDistance;			// 28
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x30);
+		STATIC_ASSERT(sizeof(CAMERA_SHOT_DATA) == 0x2C);
 
 
 		virtual ~BGSCameraShot();						// 00
@@ -94,15 +86,16 @@ namespace RE
 
 
 		// members
-		Data		data;	// 58 - DATA
-		void*		unk88;	// 88
-		void*		unk90;	// 90
-		RefHandle	unk98;	// 98
-		UInt32		unk9C;	// 9C
-		void*		unkA0;	// A0
-		void*		unkA8;	// A8
-		UInt64		unkB0;	// B0
-		void*		unkB8;	// B8
+		CAMERA_SHOT_DATA	data;	// 58 - DATA
+		UInt32				pad84;	// 84
+		void*				unk88;	// 88 - smart ptr
+		void*				unk90;	// 90 - smart ptr
+		RefHandle			unk98;	// 98
+		UInt32				unk9C;	// 9C
+		void*				unkA0;	// A0 - smart ptr
+		void*				unkA8;	// A8 - smart ptr
+		UInt64				unkB0;	// B0
+		void*				unkB8;	// B8
 	};
 	STATIC_ASSERT(sizeof(BGSCameraShot) == 0xC0);
 }

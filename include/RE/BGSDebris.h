@@ -3,13 +3,38 @@
 #include "RE/BGSPreloadable.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTList.h"
-#include "RE/FileHash.h"
 #include "RE/FormTypes.h"
 #include "RE/TESForm.h"
 
 
 namespace RE
 {
+	namespace BSResource
+	{
+		struct ID;
+	}
+
+
+	struct BGSDebrisData
+	{
+		enum class BGSDebrisDataFlags : UInt8
+		{
+			kNone = 0,
+			kCollisionData = 1 << 0
+		};
+
+
+		SInt8						percentage;	// 00 - DATA~
+		BGSDebrisDataFlags			flags;		// 01 - ~DATA
+		UInt16						pad02;		// 02
+		UInt32						pad04;		// 04
+		const char*					fileName;	// 08
+		BSTArray<BSResource::ID>	textureIDs;	// 10 - MODT
+		BSTArray<UInt32>			addons;		// 28
+	};
+	STATIC_ASSERT(sizeof(BGSDebrisData) == 0x40);
+
+
 	class BGSDebris :
 		public TESForm,			// 00
 		public BGSPreloadable	// 20
@@ -31,32 +56,6 @@ namespace RE
 		};
 
 
-		struct Model
-		{
-			struct Data	// DATA
-			{
-				enum class Flag : UInt8
-				{
-					kNone = 0,
-					kHasCollisionData = 1 << 0
-				};
-
-
-				UInt8	percentage;	// 0
-				Flag	flags;		// 1
-				UInt16	pad2;		// 2
-				UInt32	pad4;		// 4
-			};
-			STATIC_ASSERT(sizeof(Data) == 0x8);
-
-
-			Data				data;				// 00 - DATA
-			const char*			modelFileName;		// 10
-			BSTArray<FileHash*>	textureFileHashes;	// 18 - MODT
-		};
-		STATIC_ASSERT(sizeof(Model) == 0x28);
-
-
 		virtual ~BGSDebris();							// 00
 
 		// override (TESForm)
@@ -66,7 +65,7 @@ namespace RE
 
 
 		// members
-		BSSimpleList<Model*> models;	// 28
+		BSSimpleList<BGSDebrisData*> data;	// 28
 	};
 	STATIC_ASSERT(sizeof(BGSDebris) == 0x38);
 }

@@ -55,7 +55,7 @@ namespace RE
 
 
 		// members
-		const char*				unk050;			// 050
+		const char*				enumName;		// 050
 		BSFixedString			abbreviation;	// 058 - ANAM
 		UInt32					unk060;			// 060
 		UInt32					unk064;			// 064

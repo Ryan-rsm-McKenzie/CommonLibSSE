@@ -65,7 +65,7 @@ namespace RE
 			}
 		}
 
-		return zone ? zone->data.owner : 0;
+		return zone ? zone->data.zoneOwner : 0;
 	}
 
 

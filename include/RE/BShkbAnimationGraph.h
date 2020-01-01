@@ -6,7 +6,6 @@
 #include "RE/BSTArray.h"
 #include "RE/BSTEvent.h"
 #include "RE/BSTSmartPointer.h"
-#include "RE/FileHash.h"
 #include "RE/hkbCharacter.h"
 
 
@@ -18,6 +17,12 @@ namespace RE
 	class BSTransformDeltaEvent;
 	class hkbBehaviorGraph;
 	struct BSAnimationGraphEvent;
+
+
+	namespace BSResource
+	{
+		struct ID;
+	}
 
 
 	BSSmartPointer(BShkbAnimationGraph);
@@ -65,7 +70,7 @@ namespace RE
 		float							unk1E8;			// 1E8
 		float							unk1EC;			// 1EC
 		BSFixedString					unk1F0;			// 1F0
-		FileHash*						unk1F8;			// 1F8
+		BSResource::ID*					unk1F8;			// 1F8
 		void*							unk200;			// 200 - BShkbHkxDB::ProjectDBData*
 		hkbBehaviorGraph*				behaviourGraph;	// 208
 		UInt64							unk210;			// 210

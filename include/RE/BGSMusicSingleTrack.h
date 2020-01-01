@@ -1,9 +1,9 @@
 #pragma once
 
+#include "RE/BSResource/ID.h"
 #include "RE/BGSMusicTrack.h"
 #include "RE/BSSoundHandle.h"
 #include "RE/BSTArray.h"
-#include "RE/FileHash.h"
 
 
 namespace RE
@@ -38,8 +38,8 @@ namespace RE
 
 
 		// members
-		FileHash		track;			// 20 - ANAM
-		FileHash		finale;			// 2C - BNAM
+		BSResource::ID	track;			// 20 - ANAM
+		BSResource::ID	finale;			// 2C - BNAM
 		BSTArray<float>	cuePoints;		// 38 - FNAM
 		UInt32			unk50;			// 50
 		UInt32			unk54;			// 54

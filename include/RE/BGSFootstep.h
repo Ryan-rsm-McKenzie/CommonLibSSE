@@ -35,8 +35,8 @@ namespace RE
 
 
 		// members
-		BSFixedString		tag;			// 20 - ANAM
-		BGSImpactDataSet*	impactDataSet;	// 28 - DATA
+		BSFixedString		tag;		// 20 - ANAM
+		BGSImpactDataSet*	impactSet;	// 28 - DATA
 	};
 	STATIC_ASSERT(sizeof(BGSFootstep) == 0x30);
 }

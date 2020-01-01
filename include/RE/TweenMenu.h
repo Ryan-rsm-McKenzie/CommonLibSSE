@@ -8,7 +8,10 @@
 
 namespace RE
 {
-	struct FileHash;
+	namespace BSResource
+	{
+		struct ID;
+	}
 
 
 	// menuDepth = 0
@@ -23,8 +26,8 @@ namespace RE
 
 		struct PerkData
 		{
-			FileHash*	fileHash;	// 00
-			const char*	fileName;	// 08
+			BSResource::ID*	fileHash;	// 00
+			const char*		fileName;	// 08
 		};
 		STATIC_ASSERT(sizeof(PerkData) == 0x10);
 

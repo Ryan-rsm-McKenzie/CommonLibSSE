@@ -8,6 +8,39 @@
 
 namespace RE
 {
+	struct ENCOUNTER_ZONE_DATA	// DATA
+	{
+		enum class Flag : UInt8
+		{
+			kNone = 0,
+			kNeverResets = 1 << 0,
+			kMatchPCBelowMinimumLevel = 1 << 1,
+			kDisableCombatBoundary = 1 << 2
+		};
+
+
+		TESFaction*		zoneOwner;	// 00
+		BGSLocation*	location;	// 08
+		SInt8			ownerRank;	// 10
+		SInt8			minLevel;	// 11
+		Flag			flags;		// 12
+		SInt8			maxLevel;	// 13
+		UInt32			pad14;		// 14
+	};
+	STATIC_ASSERT(sizeof(ENCOUNTER_ZONE_DATA) == 0x18);
+
+
+	struct ENCOUNTER_ZONE_GAME_DATA
+	{
+		UInt32	detachTime;	// 00
+		UInt32	attachTime;	// 04
+		UInt32	resetTime;	// 08
+		UInt16	zoneLevel;	// 0C
+		UInt16	pad0D;		// 0D
+	};
+	STATIC_ASSERT(sizeof(ENCOUNTER_ZONE_GAME_DATA) == 0x10);
+
+
 	class BGSEncounterZone : public TESForm
 	{
 	public:
@@ -37,28 +70,6 @@ namespace RE
 		};
 
 
-		struct Data	// DATA
-		{
-			enum class Flag : UInt8
-			{
-				kNone = 0,
-				kNeverResets = 1 << 0,
-				kMatchPCBelowMinimumLevel = 1 << 1,
-				kDisableCombatBoundary = 1 << 2
-			};
-
-
-			TESFaction*		owner;		// 00
-			BGSLocation*	location;	// 08
-			UInt8			rank;		// 10
-			UInt8			minLevel;	// 11
-			Flag			flags;		// 12
-			UInt8			maxLevel;	// 13
-			UInt32			unk14;		// 14
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x18);
-
-
 		virtual ~BGSEncounterZone();									// 00
 
 		// override (TESForm)
@@ -71,9 +82,8 @@ namespace RE
 
 
 		// members
-		Data	data;	// 20 - DATA
-		UInt64	unk38;	// 38
-		UInt64	unk40;	// 40
+		ENCOUNTER_ZONE_DATA			data;		// 20 - DATA
+		ENCOUNTER_ZONE_GAME_DATA	gameData;	// 38
 	};
 	STATIC_ASSERT(sizeof(BGSEncounterZone) == 0x48);
 }

@@ -7,6 +7,18 @@
 
 namespace RE
 {
+	enum class ACTOR_MOVEMENT_TYPE : UInt32
+	{
+		kWalk = 0,
+		kRun = 1,
+		kSneak = 2,
+		kBleedout = 3,
+		kSwim = 4,
+
+		kTotal = 5
+	};
+
+
 	class BGSFootstepSet : public TESForm
 	{
 	public:
@@ -35,11 +47,7 @@ namespace RE
 
 
 		// members
-		BSTArray<BGSFootstep*>	walkForwardSets;			// 20
-		BSTArray<BGSFootstep*>	runForwardSets;				// 38
-		BSTArray<BGSFootstep*>	walkForwardAlternateSets;	// 50
-		BSTArray<BGSFootstep*>	runForwardAlternateSets;	// 68
-		BSTArray<BGSFootstep*>	walkForwardAlternate2Sets;	// 80
+		BSTArray<BGSFootstep*> entries[to_underlying(ACTOR_MOVEMENT_TYPE::kTotal)];	// 20
 	};
 	STATIC_ASSERT(sizeof(BGSFootstepSet) == 0x98);
 }

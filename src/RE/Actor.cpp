@@ -7,6 +7,7 @@
 #include "RE/AIProcess.h"
 #include "RE/BGSAttackData.h"
 #include "RE/BGSColorForm.h"
+#include "RE/BGSDefaultObjectManager.h"
 #include "RE/BSFaceGenAnimationData.h"
 #include "RE/ExtraCanTalkToPlayer.h"
 #include "RE/ExtraFactionChanges.h"
@@ -239,12 +240,15 @@ namespace RE
 
 	SInt32 Actor::GetGoldAmount()
 	{
+		using DObject = DEFAULT_OBJECT;
+
 		auto inv = GetInventory([](TESBoundObject* a_object) -> bool
 		{
 			return a_object->IsGold();
 		});
 
-		auto gold = TESObjectMISC::GetGoldForm();
+		auto dobj = BGSDefaultObjectManager::GetSingleton();
+		auto gold = dobj->GetObject<TESObjectMISC>(DObject::kGold);
 		auto it = inv.find(gold);
 		return it != inv.end() ? it->second.first : 0;
 	}

@@ -32,6 +32,15 @@ namespace RE
 		};
 
 
+		struct FILE_DATA
+		{
+			char*	buffer;		// 00
+			UInt32	bufferSize;	// 08
+			UInt32	pad0C;		// 0C
+		};
+		STATIC_ASSERT(sizeof(FILE_DATA) == 0x10);
+
+
 		virtual ~BGSMaterialObject();					// 00
 
 		// override (TESForm)
@@ -40,7 +49,7 @@ namespace RE
 
 
 		// members
-		BSTArray<BSString> propertyData;	// A0 - DNAM
+		BSTArray<FILE_DATA> fileData;	// A0 - DNAM
 	};
 	STATIC_ASSERT(sizeof(BGSMaterialObject) == 0xB8);
 }

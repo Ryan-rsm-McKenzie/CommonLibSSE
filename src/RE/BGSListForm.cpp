@@ -27,12 +27,12 @@ namespace RE
 			return true;
 		}
 
-		if (!formIDs) {
+		if (!scriptAddedTempForms) {
 			return false;
 		}
 
-		auto idIt = std::find(formIDs->begin(), formIDs->end(), a_form->formID);
-		if (idIt != formIDs->end()) {
+		auto idIt = std::find(scriptAddedTempForms->begin(), scriptAddedTempForms->end(), a_form->formID);
+		if (idIt != scriptAddedTempForms->end()) {
 			return true;
 		}
 

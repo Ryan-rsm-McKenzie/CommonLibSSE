@@ -38,7 +38,7 @@ namespace RE
 
 
 		// members
-		BSTHashMap<BGSMaterialType*, BGSImpactData*> data;	// 28 - PNAM
+		BSTHashMap<const BGSMaterialType*, BGSImpactData*> impactMap;	// 28 - PNAM
 	};
 	STATIC_ASSERT(sizeof(BGSImpactDataSet) == 0x58);
 }

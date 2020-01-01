@@ -1,9 +1,9 @@
 #pragma once
 
+#include "RE/BSResource/ID.h"
 #include "RE/BSTextureSet.h"
 #include "RE/Color.h"
 #include "RE/FormTypes.h"
-#include "RE/FileHash.h"
 #include "RE/TESBoundObject.h"
 #include "RE/TESTexture.h"
 
@@ -79,12 +79,12 @@ namespace RE
 
 
 		// members
-		TESTexture	textures[Textures::kTotal];				// 040 - TX00 - TX07
-		DecalData*	decalData;								// 0C0 - DODT
-		Flag		flags;									// 0C8 - DNAM
-		UInt16		pad0CA;									// 0CA
-		FileHash	textureFileHashes[Textures::kTotal];	// 0CC
-		UInt32		pad12C;									// 12C
+		TESTexture		textures[Textures::kTotal];				// 040 - TX00 - TX07
+		DecalData*		decalData;								// 0C0 - DODT
+		Flag			flags;									// 0C8 - DNAM
+		UInt16			pad0CA;									// 0CA
+		BSResource::ID	textureFileHashes[Textures::kTotal];	// 0CC
+		UInt32			pad12C;									// 12C
 	};
 	STATIC_ASSERT(sizeof(BGSTextureSet) == 0x130);
 }

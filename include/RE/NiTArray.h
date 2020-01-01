@@ -318,4 +318,12 @@ namespace RE
 		{}
 	};
 	STATIC_ASSERT(sizeof(NiTLargePrimitiveArray<void*>) == 0x20);
+
+
+	class TESForm;
+	class NiFormArray : public NiTLargePrimitiveArray<TESForm*>
+	{
+	public:
+	};
+	STATIC_ASSERT(sizeof(NiFormArray) == 0x20);
 }

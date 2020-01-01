@@ -366,7 +366,6 @@
     <ClCompile Include="src\RE\TESObjectBOOK.cpp" />
     <ClCompile Include="src\RE\TESObjectCELL.cpp" />
     <ClCompile Include="src\RE\TESObjectLIGH.cpp" />
-    <ClCompile Include="src\RE\TESObjectMISC.cpp" />
     <ClCompile Include="src\RE\TESObjectREFR.cpp" />
     <ClCompile Include="src\RE\TESObjectWEAP.cpp" />
     <ClCompile Include="src\RE\TESQuest.cpp" />
@@ -416,6 +415,7 @@
     <ClInclude Include="include\RE\BGSAbilityPerkEntry.h" />
     <ClInclude Include="include\RE\BGSAddonNode.h" />
     <ClInclude Include="include\RE\BGSAnimationSequencer.h" />
+    <ClInclude Include="include\RE\BGSBodyPartDefs.h" />
     <ClInclude Include="include\RE\BGSEntryPoint.h" />
     <ClInclude Include="include\RE\BGSFootstepEvent.h" />
     <ClInclude Include="include\RE\BGSFootstepManager.h" />
@@ -436,6 +436,8 @@
     <ClInclude Include="include\RE\BSLightingShaderMaterialParallaxOcc.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialSnow.h" />
     <ClInclude Include="include\RE\BSPointerHandle.h" />
+    <ClInclude Include="include\RE\BSResource\FileID.h" />
+    <ClInclude Include="include\RE\BSResource\ID.h" />
     <ClInclude Include="include\RE\BSResponse.h" />
     <ClInclude Include="include\RE\BSTimer.h" />
     <ClInclude Include="include\RE\BSTTuple.h" />
@@ -443,6 +445,7 @@
     <ClInclude Include="include\RE\BSXFlags.h" />
     <ClInclude Include="include\RE\ContainerItemExtra.h" />
     <ClInclude Include="include\RE\DialoguePackage.h" />
+    <ClInclude Include="include\RE\DialogueTypes.h" />
     <ClInclude Include="include\RE\DoNothingUnhandledPolicy.h" />
     <ClInclude Include="include\RE\hkAabb.h" />
     <ClInclude Include="include\RE\hkpSolverInfo.h" />
@@ -937,7 +940,6 @@
     <ClInclude Include="include\RE\FaderMenu.h" />
     <ClInclude Include="include\RE\FavoritesHandler.h" />
     <ClInclude Include="include\RE\FavoritesMenu.h" />
-    <ClInclude Include="include\RE\FileHash.h" />
     <ClInclude Include="include\RE\FirstPersonState.h" />
     <ClInclude Include="include\RE\FlameProjectile.h" />
     <ClInclude Include="include\RE\FormTraits.h" />

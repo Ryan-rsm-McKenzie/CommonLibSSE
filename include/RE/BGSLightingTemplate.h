@@ -8,6 +8,29 @@
 
 namespace RE
 {
+	struct INTERIOR_DATA	// DATA
+	{
+		Color								ambientColor;						// 00
+		Color								dierectionalColor;					// 04
+		Color								fogColorNear;						// 08
+		float								fogNear;							// 0C
+		float								fogFar;								// 10
+		UInt32								directionalXY;						// 14
+		UInt32								directionalZ;						// 18
+		float								directionalFade;					// 1C
+		float								clipDistance;						// 20
+		float								fogPower;							// 24
+		BGSDirectionalAmbientLightingColors	directionalAmbientLightingColors;	// 28
+		Color								fogColorFar;						// 48
+		float								fogClamp;							// 4C
+		float								lightFadeStart;						// 50
+		float								lightFadeEnd;						// 54
+		UInt32								unk58;								// 58
+		UInt32								unk5C;								// 5C
+	};
+	STATIC_ASSERT(sizeof(INTERIOR_DATA) == 0x60);
+
+
 	class BGSLightingTemplate : public TESForm
 	{
 	public:
@@ -27,34 +50,6 @@ namespace RE
 		};
 
 
-		struct Lighting	// DATA
-		{
-			struct LightFadeDistances
-			{
-				float	start;	// 0
-				float	end;	// 4
-			};
-			STATIC_ASSERT(sizeof(LightFadeDistances) == 0x8);
-
-
-			Color								ambientColor;			// 00
-			Color								dierectionalColor;		// 04
-			Color								fogColorNear;			// 08
-			float								fogNear;				// 0C
-			float								fogFar;					// 10
-			UInt32								directionalRotationXY;	// 14
-			UInt32								directionalRotationZ;	// 18
-			float								directionalFade;		// 1C
-			float								fogClipDistance;		// 20
-			float								fogPower;				// 24
-			BGSDirectionalAmbientLightingColors	ambientColors;			// 28
-			Color								fogColorFar;			// 48
-			float								fogMax;					// 4C
-			LightFadeDistances					lightFadeDistances;		// 50
-		};
-		STATIC_ASSERT(sizeof(Lighting) == 0x58);
-
-
 		virtual ~BGSLightingTemplate();					// 00
 
 		// override (TESForm)
@@ -64,8 +59,7 @@ namespace RE
 
 
 		// members
-		Lighting							lighting;							// 20 - DATA
-		UInt64								unk78;								// 78
+		INTERIOR_DATA						data;								// 20 - DATA
 		BGSDirectionalAmbientLightingColors	directionalAmbientLightingColors;	// 80 - DALC
 	};
 	STATIC_ASSERT(sizeof(BGSLightingTemplate) == 0xA0);

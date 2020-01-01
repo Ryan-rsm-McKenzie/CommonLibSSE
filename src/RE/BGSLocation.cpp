@@ -5,14 +5,14 @@ namespace RE
 {
 	bool BGSLocation::IsCleared() const
 	{
-		return isCleared;
+		return cleared;
 	}
 
 
 	bool BGSLocation::IsChild(const BGSLocation* a_possibleChild) const
 	{
 		if (a_possibleChild) {
-			for (auto it = a_possibleChild->parentLocation; it; it = it->parentLocation) {
+			for (auto it = a_possibleChild->parentLoc; it; it = it->parentLoc) {
 				if (this == it) {
 					return true;
 				}
@@ -25,7 +25,7 @@ namespace RE
 	bool BGSLocation::IsParent(const BGSLocation* a_possibleParent) const
 	{
 		if (a_possibleParent) {
-			for (auto it = parentLocation; it; it = it->parentLocation) {
+			for (auto it = parentLoc; it; it = it->parentLoc) {
 				if (a_possibleParent == it) {
 					return true;
 				}
@@ -37,6 +37,6 @@ namespace RE
 
 	bool BGSLocation::IsLoaded() const
 	{
-		return loadedState > 0;
+		return loadedCount > 0;
 	}
 }

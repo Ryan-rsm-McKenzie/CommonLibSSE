@@ -65,7 +65,7 @@ namespace RE
 			float					isRadius;			// 3C
 			float					verticalOffsetMult;	// 40
 			Flag					flags;				// 44
-			SoundLevel				soundLevels;		// 48
+			SOUND_LEVEL				soundLevels;		// 48
 			UInt32					pad4C;				// 4C
 		};
 		STATIC_ASSERT(sizeof(Data) == 0x50);

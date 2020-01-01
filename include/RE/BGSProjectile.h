@@ -112,7 +112,7 @@ namespace RE
 		// members
 		Data		data;				// 080 - DATA
 		TESModel	muzzleFlashModel;	// 108
-		SoundLevel	soundLevel;			// 130 - VNAM
+		SOUND_LEVEL	soundLevel;			// 130 - VNAM
 		UInt32		unk134;				// 134
 	};
 	STATIC_ASSERT(sizeof(BGSProjectile) == 0x138);

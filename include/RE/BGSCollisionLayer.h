@@ -21,7 +21,7 @@ namespace RE
 		enum { kTypeID = FormType::CollisionLayer };
 
 
-		enum class Flag : UInt32	// GNAM
+		enum class FLAG : UInt32	// GNAM
 		{
 			kNone = 0,
 			kTriggerVolume = 1 << 0,
@@ -50,10 +50,10 @@ namespace RE
 
 
 		// members
-		UInt32							index;			// 30 - BNAM
+		UInt32							collisionIdx;	// 30 - BNAM
 		Color							debugColor;		// 34 - FNAM
-		Flag							flags;			// 38
-		UInt32							unk3C;			// 3C
+		FLAG							flags;			// 38 - GNAM
+		UInt32							pad3C;			// 3C
 		BSFixedString					name;			// 40 - MNAM
 		BSTArray<BGSCollisionLayer*>	collidesWith;	// 48 - CNAM
 	};
