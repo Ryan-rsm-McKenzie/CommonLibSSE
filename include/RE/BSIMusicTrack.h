@@ -17,23 +17,34 @@ namespace RE
 		};
 
 
-		virtual ~BSIMusicTrack();						// 00
+		enum class MUSIC_STATUS : UInt32
+		{
+			kInactive = 0,
+			kPlaying = 1,
+			kPaused = 2,
+			kFinishing = 3,
+			kFinished = 4
+		};
+
+
+		virtual ~BSIMusicTrack();											// 00
 
 		// add
-		virtual void		Unk_01(void) = 0;			// 01
-		virtual UInt32		Play() = 0;					// 02
-		virtual void		Unk_03(void) = 0;			// 03
-		virtual void		Unk_04(void) = 0;			// 04
-		virtual float		GetDuration() const = 0;	// 05
-		virtual TrackType	GetTrackType() const = 0;	// 06 - CRC32 hash of class name
-		virtual bool		CanPlay();					// 07 - { return true; }
-		virtual void		Unk_08(void);				// 08 - { return unk08; }
-		virtual void		Unk_09(void);				// 09 - { return; }
-		virtual void		Unk_0A(void);				// 0A - { return; }
+		virtual void			Unk_01(void) = 0;							// 01
+		virtual void			DoPlay() = 0;								// 02
+		virtual void			DoPause() = 0;								// 03
+		virtual void			DoFinish(bool a_arg1, float a_arg2) = 0;	// 04
+		virtual float			GetDurationImpl() const = 0;				// 05
+		virtual TrackType		GetType() const = 0;						// 06 - CRC32 hash of class name
+		virtual bool			TestCanPlay();								// 07 - { return true; }
+		virtual MUSIC_STATUS	GetMusicStatus();							// 08 - { return trackStatus; }
+		virtual void			DoSetDuckingAttenuation(UInt16 a_val);		// 09 - { return; }
+		virtual void			DoClearDucking();							// 0A - { return; }
 
 
 		// members
-		UInt64 unk08;	// 08
+		MUSIC_STATUS	trackStatus;	// 08
+		UInt32			pad0C;			// 0C
 	};
 	STATIC_ASSERT(sizeof(BSIMusicTrack) == 0x10);
 }

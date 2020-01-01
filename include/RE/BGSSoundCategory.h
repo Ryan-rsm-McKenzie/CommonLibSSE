@@ -45,8 +45,8 @@ namespace RE
 		virtual bool	Load(TESFile* a_mod) override;	// 06
 		virtual void	InitItemImpl() override;		// 13
 
-		constexpr float	GetStaticVolumeMultiplier() const { return staticVolumeMultiplier / USHRT_MAX; }
-		constexpr void	SetStaticVolumeMultiplier(float a_val) { staticVolumeMultiplier = static_cast<UInt16>(a_val * USHRT_MAX); }
+		constexpr float	GetStaticVolumeMultiplier() const { return staticMult / USHRT_MAX; }
+		constexpr void	SetStaticVolumeMultiplier(float a_val) { staticMult = static_cast<UInt16>(a_val * USHRT_MAX); }
 		constexpr float	GetDefaultMenuValue() const { return defaultMenuValue / USHRT_MAX; }
 		constexpr void	SetDefaultMenuValue(float a_val) { defaultMenuValue = static_cast<UInt16>(a_val * USHRT_MAX); }
 
@@ -54,10 +54,10 @@ namespace RE
 		// members
 		Flag				flags;					// 38 - FNAM
 		UInt32				unk3C;					// 3C
-		BGSSoundCategory*	parent;					// 40 - SNCT
+		BGSSoundCategory*	parentCategory;			// 40 - SNCT
 		UInt16				unk48;					// 48 - flag?
 		UInt16				unk4A;					// 4A
-		UInt16				staticVolumeMultiplier;	// 4C - VNAM
+		UInt16				staticMult;				// 4C - VNAM
 		UInt16				defaultMenuValue;		// 4E - UNAM
 		float				ingameVolume;			// 50
 		float				unk54;					// 54

@@ -2,6 +2,8 @@
 
 #include "RE/BSLock.h"
 #include "RE/BSNavmeshInfoMap.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTHashMap.h"
 #include "RE/FormTypes.h"
 #include "RE/PrecomputedNavmeshInfoPathMap.h"
 #include "RE/TESForm.h"
@@ -9,6 +11,9 @@
 
 namespace RE
 {
+	struct NavMeshInfo;
+
+
 	class NavMeshInfoMap :
 		public TESForm,							// 00
 		public BSNavmeshInfoMap,				// 20
@@ -37,21 +42,17 @@ namespace RE
 
 
 		// members
-		UInt64			unk78;	// 78
-		UInt64			unk80;	// 80
-		UInt64			unk88;	// 88
-		UInt64			unk90;	// 90
-		UInt64			unk98;	// 98
-		UInt64			unkA0;	// A0
-		UInt64			unkA8;	// A8
-		UInt64			unkB0;	// B0
-		UInt64			unkB8;	// B8
-		UInt64			unkC0;	// C0
-		UInt64			unkC8;	// C8
-		UInt64			unkD0;	// D0
-		UInt64			unkD8;	// D8
-		BSReadWriteLock	unkE0;	// E0
-		UInt64			unkE8;	// E8
+		bool											updateAll;			// 78
+		UInt8											pad79;				// 79
+		UInt16											pad7A;				// 7A
+		UInt32											pad7C;				// 7C
+		BSTHashMap<UInt32, NavMeshInfo*>				infoMap;			// 80
+		BSTHashMap<UInt64, BSTArray<BSNavmeshInfo*>*>	ckNavMeshInfoMap;	// B0
+		mutable BSReadWriteLock							mapLock;			// E0
+		bool											init;				// E8
+		UInt8											padE9;				// E9
+		UInt16											padEA;				// EA
+		UInt32											padEC;				// EC
 	};
 	STATIC_ASSERT(sizeof(NavMeshInfoMap) == 0xF0);
 }

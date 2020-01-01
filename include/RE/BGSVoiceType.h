@@ -7,6 +7,21 @@
 
 namespace RE
 {
+	struct VOICE_TYPE_DATA	// DNAM
+	{
+		enum class Flag : UInt8
+		{
+			kNone = 0,
+			kAllowDefaultDialogue = 1 << 0,
+			kFemale = 1 << 1
+		};
+
+
+		Flag flags;	// 0
+	};
+	STATIC_ASSERT(sizeof(VOICE_TYPE_DATA) == 0x1);
+
+
 	class BGSVoiceType : public TESForm
 	{
 	public:
@@ -14,14 +29,6 @@ namespace RE
 
 
 		enum { kTypeID = FormType::VoiceType };
-
-
-		enum class Flag : UInt8
-		{
-			kNone = 0,
-			kAllowDefaultDialogue = 1 << 0,
-			kFemale = 1 << 1
-		};
 
 
 		struct RecordFlags
@@ -38,16 +45,16 @@ namespace RE
 
 		// override (TESForm)
 		virtual bool		Load(TESFile* a_mod) override;					// 06
-		virtual const char*	GetFormEditorID() override;						// 32 - { return editorID.c_str(); }
-		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { editorID = a_str; return true; }
+		virtual const char*	GetFormEditorID() override;						// 32 - { return formEditorID.c_str(); }
+		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { formEditorID = a_str; return true; }
 
 
 		// members
-		Flag		flags;		// 20 - DNAM
-		UInt8		pad21;		// 21
-		UInt16		pad22;		// 22
-		UInt16		pad24;		// 24
-		BSString	editorID;	// 28 - EDID
+		VOICE_TYPE_DATA	data;			// 20 - DNAM
+		UInt8			pad21;			// 21
+		UInt16			pad22;			// 22
+		UInt16			pad24;			// 24
+		BSString		formEditorID;	// 28 - EDID
 	};
 	STATIC_ASSERT(sizeof(BGSVoiceType) == 0x38);
 }

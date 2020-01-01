@@ -8,6 +8,14 @@
 
 namespace RE
 {
+	union SETTING_VALUE
+	{
+		float	f;
+		UInt32	i;
+	};
+	STATIC_ASSERT(sizeof(SETTING_VALUE) == 0x4);
+
+
 	class BGSShaderParticleGeometryData : public TESForm
 	{
 	public:
@@ -17,35 +25,29 @@ namespace RE
 		enum { kTypeID = FormType::ShaderParticleGeometryData };
 
 
-		struct Entries
+		enum class DataID : UInt32
 		{
-			enum Entry : UInt32
-			{
-				kGravityVelocity = 0,
-				kRotationVelocity,
-				kParticleSizeX,
-				kParticleSizeY,
-				kCenterOffsetMin,
-				kCenterOffsetMax,
-				kInitialRotationRange,
-				kNumSubtexturesX,
-				kNumSubtexturesY,
-				kType,
-				kBoxSize,
-				kParticleDensity,
+			kGravityVelocity = 0,
+			kRotationVelocity,
+			kParticleSizeX,
+			kParticleSizeY,
+			kCenterOffsetMin,
+			kCenterOffsetMax,
+			kStartRotationRange,
+			kNumSubtexturesX,
+			kNumSubtexturesY,
+			kParticleType,
+			kBoxSize,
+			kParticleDensity,
 
-				kTotal
-			};
+			kTotal
 		};
 
 
-		struct Types
+		enum class ParticleType : UInt32
 		{
-			enum Type : UInt32
-			{
-				kRain = 0,
-				kSnow = 1
-			};
+			kRain = 0,
+			kSnow = 1
 		};
 
 
@@ -59,14 +61,6 @@ namespace RE
 		};
 
 
-		union Entry
-		{
-			float	f;
-			UInt32	i;
-		};
-		STATIC_ASSERT(sizeof(Entry) == 0x4);
-
-
 		virtual ~BGSShaderParticleGeometryData();		// 00
 
 		// override (TESForm)
@@ -76,8 +70,8 @@ namespace RE
 		virtual void	InitItemImpl() override;		// 13
 
 
-		BSTArray<Entry>	data;				// 20 - DATA - size == Entries::kTotal
-		TESTexture		particleTexture;	// 38 - ICON
+		BSTArray<SETTING_VALUE>	data;				// 20 - DATA - size == DataID::kTotal
+		TESTexture				particleTexture;	// 38 - ICON
 	};
 	STATIC_ASSERT(sizeof(BGSShaderParticleGeometryData) == 0x48);
 }

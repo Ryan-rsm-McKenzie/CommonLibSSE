@@ -18,7 +18,7 @@ namespace RE
 		virtual ~BGSMusicTrack();						// 00
 
 		// override (BSIMusicTrack)
-		virtual bool	CanPlay(void) override;			// 07 - { return conditions ? conditions->Run(g_thePlayer, g_thePlayer) : true; }
+		virtual bool	TestCanPlay() override;			// 07 - { return conditions ? conditions->Run(g_thePlayer, g_thePlayer) : true; }
 
 		// add
 		virtual bool	InitTrack(TESFile* a_mod);		// 0B

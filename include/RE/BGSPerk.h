@@ -15,6 +15,17 @@ namespace RE
 	class BGSPerkEntry;
 
 
+	struct PerkData	// DATA
+	{
+		bool	trait;		// 0
+		SInt8	level;		// 1
+		SInt8	numRanks;	// 2
+		bool	playable;	// 3
+		bool	hidden;		// 4
+	};
+	STATIC_ASSERT(sizeof(PerkData) == 0x5);
+
+
 	class BGSPerk :
 		public TESForm,			// 00
 		public TESFullName,		// 20
@@ -44,9 +55,10 @@ namespace RE
 		public:
 			inline static const void* RTTI = RTTI_BGSPerk__FindPerkInRanksVisitor;
 
-
+			// override (PerkRankVisitor)
 			virtual bool operator()(const PerkRankData* a_entry) override;	// 00
 		};
+		STATIC_ASSERT(sizeof(FindPerkInRanksVisitor) == 0x8);
 
 
 		class ApplyPerksVisitor : public PerkRankVisitor
@@ -54,9 +66,10 @@ namespace RE
 		public:
 			inline static const void* RTTI = RTTI_BGSPerk__ApplyPerksVisitor;
 
-
+			// override (PerkRankVisitor)
 			virtual bool operator()(const PerkRankData* a_entry) override;	// 00
 		};
+		STATIC_ASSERT(sizeof(ApplyPerksVisitor) == 0x8);
 
 
 		class AddPerkVisitor : public PerkRankVisitor
@@ -64,22 +77,10 @@ namespace RE
 		public:
 			inline static const void* RTTI = RTTI_BGSPerk__AddPerkVisitor;
 
-
+			// override (PerkRankVisitor)
 			virtual bool operator()(const PerkRankData* a_entry) override;	// 00
 		};
-
-
-		struct Data	// DATA
-		{
-			bool	trait;		// 0
-			UInt8	level;		// 1
-			UInt8	numRanks;	// 2
-			bool	playable;	// 3
-			bool	hidden;		// 4
-			UInt8	pad5;		// 5
-			UInt16	pad6;		// 6
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x8);
+		STATIC_ASSERT(sizeof(AddPerkVisitor) == 0x8);
 
 
 		virtual ~BGSPerk();								// 00
@@ -92,8 +93,10 @@ namespace RE
 
 
 		// members
-		Data					data;			// 50 - DATA
-		TESCondition			conditions;		// 58
+		PerkData				data;			// 50 - DATA
+		UInt8					pad55;			// 55
+		UInt16					pad56;			// 56
+		TESCondition			perkConditions;	// 58
 		BSTArray<BGSPerkEntry*>	perkEntries;	// 60
 		BGSPerk*				nextPerk;		// 78 - NNAM
 	};

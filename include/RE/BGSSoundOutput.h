@@ -55,6 +55,17 @@ namespace RE
 
 		struct DynamicAttenuationCharacteristics : public BSIAttenuationCharacteristics
 		{
+			struct DataType
+			{
+				float	minDistance;	// 00
+				float	maxDistance;	// 04
+				UInt8	curve[5];		// 08
+				UInt8	pad15;			// 0D
+				UInt16	pad16;			// 0E
+			};
+			STATIC_ASSERT(sizeof(DataType) == 0x10);
+
+
 			virtual ~DynamicAttenuationCharacteristics();				// 00
 
 			// override (BSIAttenuationCharacteristics)
@@ -63,16 +74,13 @@ namespace RE
 			virtual UInt8	GetCurveValue(UInt32 a_idx) const override;	// 03 - { return a_idx >= 5 ? 0 : curve[a_idx]; }
 
 
-			float	minDistance;	// 08
-			float	maxDistance;	// 0C
-			UInt8	curve[5];		// 10
-			UInt8	pad15;			// 15
-			UInt16	pad16;			// 16
+			// members
+			DataType data;	// 00
 		};
 		STATIC_ASSERT(sizeof(DynamicAttenuationCharacteristics) == 0x18);
 
 
-		struct OutputValues	// ONAM
+		struct SpeakerArrays	// ONAM
 		{
 			struct Channel
 			{
@@ -90,7 +98,7 @@ namespace RE
 
 			Channel channels[3];
 		};
-		STATIC_ASSERT(sizeof(OutputValues) == 0x18);
+		STATIC_ASSERT(sizeof(SpeakerArrays) == 0x18);
 
 
 		virtual ~BGSSoundOutput();																// 00
@@ -110,10 +118,10 @@ namespace RE
 
 
 		// members
-		Data								data;				// 28 - NAM1
-		Type								type;				// 2C - MNAM
-		DynamicAttenuationCharacteristics*	attenuationValues;	// 30 - ANAM
-		OutputValues*						outputValues;		// 38 - ONAM
+		Data								data;			// 28 - NAM1
+		Type								type;			// 2C - MNAM
+		DynamicAttenuationCharacteristics*	attenuation;	// 30 - ANAM
+		SpeakerArrays*						speakerOutputs;	// 38 - ONAM
 	};
 	STATIC_ASSERT(sizeof(BGSSoundOutput) == 0x40);
 }

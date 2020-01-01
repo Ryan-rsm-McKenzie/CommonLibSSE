@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/EffectSetting.h"
+#include "RE/EffectArchetypes.h"
 #include "RE/BSTList.h"
 
 
@@ -8,6 +8,7 @@ namespace RE
 {
 	class Actor;
 	class ActiveEffect;
+	class EffectSetting;
 
 
 	class MagicTarget
@@ -16,7 +17,7 @@ namespace RE
 		inline static const void* RTTI = RTTI_MagicTarget;
 
 
-		using Archetype = EffectSetting::Data::Archetype;
+		using Archetype = EffectArchetypes::ArchetypeID;
 
 
 		class ForEachActiveEffectVisitor

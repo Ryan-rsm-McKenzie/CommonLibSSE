@@ -1,5 +1,7 @@
 #pragma once
 
+#include <type_traits>
+
 #include "RE/ActorPackage.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTList.h"
@@ -12,6 +14,16 @@ namespace RE
 	class MiddleHighProcessData;
 	class HighProcess;
 	class TESForm;
+
+
+	enum class PROCESS_TYPE : UInt8
+	{
+		kNone = static_cast<std::underlying_type_t<PROCESS_TYPE>>(-1),
+		kHigh = 0,
+		kMiddleHigh = 1,
+		kMiddleLow = 2,
+		kLow = 3
+	};
 
 
 	class MiddleLowProcessData
@@ -139,6 +151,10 @@ namespace RE
 		float		GetCachedHeight() const;
 		TESForm*	GetEquippedLeftHand();
 		TESForm*	GetEquippedRightHand();
+		bool		InHighProcess() const;
+		bool		InMiddleHighProcess() const;
+		bool		InMiddleLowProcess() const;
+		bool		InLowProcess() const;
 		bool		IsArrested() const;
 		bool		IsGhost() const;
 		void		SetArrested(bool a_arrested);
@@ -178,7 +194,7 @@ namespace RE
 		UInt32							unk130;							// 130
 		UInt16							unk134;							// 134
 		UInt8							lowProcessFlags;				// 136
-		SInt8							processLevel;					// 137
+		PROCESS_TYPE					processLevel;					// 137
 		bool							skippedTimeStampForPathing;		// 138
 		bool							ignoringCombat;					// 139
 		bool							endAlarmOnActor;				// 13A

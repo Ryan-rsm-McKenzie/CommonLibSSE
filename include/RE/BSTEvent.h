@@ -16,6 +16,12 @@ namespace RE
 	};
 
 
+	struct BSContainer
+	{
+		using ForEachResult = BSEventNotifyControl;
+	};
+
+
 	template <class Event>
 	class BSTEventSource
 	{

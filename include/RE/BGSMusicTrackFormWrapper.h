@@ -40,7 +40,7 @@ namespace RE
 
 
 		// members
-		BGSMusicTrack* musicTrack;	// 30
+		BGSMusicTrack* track;	// 30
 	};
 	STATIC_ASSERT(sizeof(BGSMusicTrackFormWrapper) == 0x38);
 }

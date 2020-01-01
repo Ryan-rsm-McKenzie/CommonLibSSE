@@ -15,6 +15,15 @@ namespace RE
 		enum { kTypeID = FormType::ReferenceEffect };
 
 
+		enum class Flag : UInt32
+		{
+			kNone = 0,
+			kFaceTarget = 1 << 0,
+			kAttachToCamera = 1 << 1,
+			kInheritRotation = 1 << 2
+		};
+
+
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32
@@ -27,19 +36,10 @@ namespace RE
 
 		struct Data	// DATA
 		{
-			enum class Flag : UInt32
-			{
-				kNone = 0,
-				kRotateToFaceTarget = 1 << 0,
-				kAttachToCamera = 1 << 1,
-				kInheritRotation = 1 << 2
-			};
-
-
-			BGSArtObject*		effectArt;	// 00
-			TESEffectShader*	shader;		// 08
-			Flag				flags;		// 10
-			UInt32				unk14;		// 14
+			BGSArtObject*		artObject;		// 00
+			TESEffectShader*	effectShader;	// 08
+			Flag				flags;			// 10
+			UInt32				pad14;			// 14
 		};
 		STATIC_ASSERT(sizeof(Data) == 0x18);
 

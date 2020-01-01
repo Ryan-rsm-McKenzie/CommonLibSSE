@@ -15,6 +15,27 @@ namespace RE
 		enum { kTypeID = FormType::Relationship };
 
 
+		enum class RELATIONSHIP_LEVEL : UInt8
+		{
+			kLover = 0,
+			kAlly = 1,
+			kConfidant = 2,
+			kFriend = 3,
+			kAcquaintance = 4,
+			kRival = 5,
+			kFoe = 6,
+			kEnemy = 7,
+			kArchnemesis = 8
+		};
+
+
+		enum class Flag : UInt8
+		{
+			kNone = 0,
+			kSecret = 1 << 7
+		};
+
+
 		struct ChangeFlags
 		{
 			enum ChangeFlag : UInt32
@@ -35,41 +56,6 @@ namespace RE
 		};
 
 
-		struct Data	// DATA
-		{
-			enum class Rank : UInt8
-			{
-				kLover = 0,
-				kAlly = 1,
-				kConfidant = 2,
-				kFriend = 3,
-				kAcquaintance = 4,
-				kRival = 5,
-				kFoe = 6,
-				kEnemy = 7,
-				kArchnemesis = 8
-			};
-
-
-			enum class Flag : UInt8
-			{
-				kNone = 0,
-				kSecret = 1 << 7
-			};
-
-
-			TESNPC*				parent;				// 00
-			TESNPC*				child;				// 08
-			BGSAssociationType*	associationType;	// 10
-			Rank				rank;				// 18
-			UInt8				unk19;				// 19
-			UInt8				unk1A;				// 1A
-			Flag				flags;				// 1B
-			UInt32				pad1C;				// 1C
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x20);
-
-
 		virtual ~BGSRelationship();										// 00
 
 		// override (TESForm)
@@ -82,7 +68,14 @@ namespace RE
 
 
 		// members
-		Data data;	// 20 - DATA
+		TESNPC*				npc1;		// 20 - DATA~
+		TESNPC*				npc2;		// 28
+		BGSAssociationType*	assocType;	// 30
+		RELATIONSHIP_LEVEL	level;		// 38
+		UInt8				unk39;		// 39
+		UInt8				unk3A;		// 3A
+		Flag				flags;		// 3B
+		UInt32				pad3C;		// 3C - ~DATA
 	};
 	STATIC_ASSERT(sizeof(BGSRelationship) == 0x40);
 }

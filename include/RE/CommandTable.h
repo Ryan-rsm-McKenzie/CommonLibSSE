@@ -109,6 +109,7 @@ namespace RE
 	};
 
 
+	// basically the unique id for the function, there's ~5000 of these
 	enum class SCRIPT_OUTPUT : UInt32
 	{};
 

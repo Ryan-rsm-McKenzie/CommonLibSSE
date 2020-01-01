@@ -40,7 +40,7 @@ namespace RE
 
 
 		// members
-		BSFixedString editorID;	// 70 - EDID
+		BSFixedString formEditorID;	// 70 - EDID
 	};
 	STATIC_ASSERT(sizeof(BGSMusicType) == 0x78);
 }

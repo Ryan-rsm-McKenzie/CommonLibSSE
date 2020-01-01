@@ -6,7 +6,10 @@
 #include "RE/BGSMenuDisplayObject.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTList.h"
+#include "RE/EffectArchetypes.h"
 #include "RE/FormTypes.h"
+#include "RE/MagicSystem.h"
+#include "RE/SoundLevels.h"
 #include "RE/TESCondition.h"
 #include "RE/TESForm.h"
 #include "RE/TESFullName.h"
@@ -24,6 +27,10 @@ namespace RE
 		inline static const void* RTTI = RTTI_EffectSetting;
 
 
+		using Archetype = EffectArchetypes::ArchetypeID;
+		using FilterValidation_t = bool(EffectSetting*, void*);
+
+
 		enum { kTypeID = FormType::MagicEffect };
 
 
@@ -37,7 +44,7 @@ namespace RE
 		};
 
 
-		struct Data	// DATA
+		struct EffectSettingData	// DATA
 		{
 			enum class Flag : UInt32
 			{
@@ -63,174 +70,61 @@ namespace RE
 			};
 
 
-			enum class Archetype : UInt32
-			{
-				kValueModifier = 0,
-				kScript = 1,
-				kDispel = 2,
-				kCureDisease = 3,
-				kAbsorb = 4,
-				kDualValueModifier = 5,
-				kCalm = 6,
-				kDemoralize = 7,
-				kFrenzy = 8,
-				kDisarm = 9,
-				kCommandSummoned = 10,
-				kInvisibility = 11,
-				kLight = 12,
-				kUnknown13 = 13,
-				kUnknown14 = 14,
-				kLock = 15,
-				kOpen = 16,
-				kBoundWeapon = 17,
-				kSummonCreature = 18,
-				kDetectLife = 19,
-				kTelekinesis = 20,
-				kParalysis = 21,
-				kReanimate = 22,
-				kSoulTrap = 23,
-				kTurnUndead = 24,
-				kGuide = 25,
-				kWerewolfFeed = 26,
-				kCureParalysis = 27,
-				kCureAddiction = 28,
-				kCurePoison = 29,
-				kConcussion = 30,
-				kValueAndParts = 31,
-				kAccumulateMagnitude = 32,
-				kStagger = 33,
-				kPeakValueModifier = 34,
-				kCloak = 35,
-				kWerewolf = 36,
-				kSlowTime = 37,
-				kRally = 38,
-				kEnhanceWeapon = 39,
-				kSpawnHazard = 40,
-				kEtherealize = 41,
-				kBanish = 42,
-				kSpawnScriptedRef = 43,
-				kDisguise = 44,
-				kGrabActor = 45,
-				kVampireLord = 46
-			};
-
-
-			enum class CastingType : UInt32
-			{
-				kConstantEffect = 0,
-				kFireAndForget = 1,
-				kConcentration = 2,
-				kScroll = 3
-			};
-
-
-			enum class DeliveryType : UInt32
-			{
-				kSelf = 0,
-				kTouch = 1,
-				kAimed = 2,
-				kTargetActor = 3,
-				kTargetLocation = 4
-			};
-
-
-			enum class Volume : UInt32
-			{
-				kLoud = 0,
-				kNormal = 1,
-				kSilent = 2,
-				kVeryLoud = 3
-			};
-
-
-
-			struct SpellMaking
-			{
-				UInt32	area;			// 0
-				float	castingTime;	// 4
-			};
-			STATIC_ASSERT(sizeof(SpellMaking) == 0x8);
-
-
-			struct DualCasting
-			{
-				BGSDualCastData*	art;	// 00
-				float				scale;	// 08
-				UInt32				pad0C;	// 0C
-			};
-			STATIC_ASSERT(sizeof(DualCasting) == 0x10);
-
-
-			struct ScriptEffectAI
-			{
-				float	score;		// 0
-				float	delayTime;	// 4
-			};
-			STATIC_ASSERT(sizeof(ScriptEffectAI) == 0x8);
-
-
-			Flag					flags;					// 00
-			float					baseCost;				// 04
-			TESForm*				associatedItem;			// 08
-			ActorValue				magicSkill;				// 10
-			ActorValue				resistValue;			// 14
-			UInt16					counterEffectCount;		// 18
-			UInt16					pad1A;					// 1A
-			UInt32					pad1C;					// 1C
-			TESObjectLIGH*			castingLight;			// 20
-			float					taperWeight;			// 28
-			UInt32					pad2C;					// 2C
-			TESEffectShader*		hitShader;				// 30
-			TESEffectShader*		enchantShader;			// 38
-			UInt32					minimumSkillLevel;		// 40
-			SpellMaking				spellMaking;			// 44
-			float					taperCurve;				// 4C
-			float					taperDuration;			// 50
-			float					secondAVWeight;			// 54
-			Archetype				archetype;				// 58
-			ActorValue				primaryActorValue;		// 5C
-			BGSProjectile*			projectile;				// 60
-			BGSExplosion*			explosion;				// 68
-			CastingType				castingType;			// 70
-			DeliveryType			deliveryType;			// 74
-			ActorValue				secondaryActorValue;	// 78
-			BGSArtObject*			castingArt;				// 80
-			BGSArtObject*			hitEffectArt;			// 88
-			BGSImpactDataSet*		impactData;				// 90
-			float					skillUsageMult;			// 98
-			UInt32					pad9C;					// 9C
-			DualCasting				dualCasting;			// A0
-			BGSArtObject*			enchantArt;				// B0
-			TESForm*				unkB8;					// B8
-			TESForm*				unkC0;					// C0
-			SpellItem*				equipAbility;			// C8
-			TESImageSpaceModifier*	imageSpaceModifier;		// D0
-			BGSPerk*				perkToApply;			// D8
-			Volume					castingSoundLevel;		// E0
-			ScriptEffectAI			scriptEffectAI;			// E4
-			UInt32					padEC;					// EC
+			Flag						flags;					// 00
+			float						baseCost;				// 04
+			TESForm*					associatedForm;			// 08
+			ActorValue					associatedSkill;		// 10
+			ActorValue					resistVariable;			// 14
+			SInt16						numCounterEffects;		// 18
+			UInt16						pad1A;					// 1A
+			UInt32						pad1C;					// 1C
+			TESObjectLIGH*				light;					// 20
+			float						taperWeight;			// 28
+			UInt32						pad2C;					// 2C
+			TESEffectShader*			effectShader;			// 30
+			TESEffectShader*			enchantShader;			// 38
+			SInt32						minimumSkill;			// 40
+			SInt32						spellmakingArea;		// 44
+			float						spellmakingChargeTime;	// 48
+			float						taperCurve;				// 4C
+			float						taperDuration;			// 50
+			float						secondAVWeight;			// 54
+			Archetype					archetype;				// 58
+			ActorValue					primaryAV;				// 5C
+			BGSProjectile*				projectileBase;			// 60
+			BGSExplosion*				explosion;				// 68
+			MagicSystem::CastingType	castingType;			// 70
+			MagicSystem::Delivery		delivery;				// 74
+			ActorValue					secondaryAV;			// 78
+			BGSArtObject*				castingArt;				// 80
+			BGSArtObject*				hitEffectArt;			// 88
+			BGSImpactDataSet*			impactDataSet;			// 90
+			float						skillUsageMult;			// 98
+			UInt32						pad9C;					// 9C
+			BGSDualCastData*			dualCastData;			// A0
+			float						dualCastScale;			// A8
+			UInt32						padAC;					// AC
+			BGSArtObject*				enchantEffectArt;		// B0
+			BGSReferenceEffect*			hitVisuals;				// B8
+			BGSReferenceEffect*			enchantVisuals;			// C0
+			SpellItem*					equipAbility;			// C8
+			TESImageSpaceModifier*		imageSpaceMod;			// D0
+			BGSPerk*					perk;					// D8
+			SOUND_LEVEL					castingSoundLevel;		// E0
+			float						aiScore;				// E4
+			float						aiDelayTimer;			// E8
+			UInt32						padEC;					// EC
 		};
-		STATIC_ASSERT(sizeof(Data) == 0xF0);
+		STATIC_ASSERT(sizeof(EffectSettingData) == 0xF0);
 
 
-		struct SoundInfo	// SNDD
+		struct SoundPair	// SNDD
 		{
-			enum class Type : UInt32
-			{
-				kSheatheDraw = 0,
-				kCharge = 1,
-				kReady = 2,
-				kRelease = 3,
-				kConcentrationCastLoop = 4,
-				kOnHit = 5
-			};
-
-
-			Type					type;	// 00
+			MagicSystem::SoundID	id;		// 00
 			UInt32					pad04;	// 04
 			BGSSoundDescriptorForm*	sound;	// 08
 		};
-		STATIC_ASSERT(sizeof(SoundInfo) == 0x10);
+		STATIC_ASSERT(sizeof(SoundPair) == 0x10);
 
 
 		virtual ~EffectSetting();												// 00
@@ -245,21 +139,21 @@ namespace RE
 		// override (BGSKeywordForm)
 		virtual bool		HasKeyword(BGSKeyword* a_keyword) const override;	// 04
 
-		ActorValue			GetMagickSkill();
-		UInt32				GetMinimumSkillLevel();
-		bool				HasArchetype(Data::Archetype a_type);
+		ActorValue	GetMagickSkill() const;
+		UInt32		GetMinimumSkillLevel() const;
+		bool		HasArchetype(Archetype a_type) const;
 
 
 		// members
-		void*							unk058;					// 058
-		void*							unk060;					// 060
-		Data							data;					// 068 - DATA
-		BSSimpleList<EffectSetting*>	counterEffects;			// 158 - ESCE
-		BSTArray<SoundInfo>				sounds;					// 168 - SNDD
-		BSFixedString					magicItemDescription;	// 180 - DNAM
-		UInt32							unk188;					// 188
-		UInt32							unk18C;					// 18C
-		TESCondition					conditions;				// 190
+		FilterValidation_t*				filterValidationFunction;	// 058
+		void*							filterValidationItem;		// 060
+		EffectSettingData				data;						// 068 - DATA
+		BSSimpleList<EffectSetting*>	counterEffects;				// 158 - ESCE
+		BSTArray<SoundPair>				effectSounds;				// 168 - SNDD
+		BSFixedString					magicItemDescription;		// 180 - DNAM
+		SInt32							effectLoadedCount;			// 188
+		SInt32							associatedItemLoadedCount;	// 18C
+		TESCondition					conditions;					// 190
 	};
 	STATIC_ASSERT(sizeof(EffectSetting) == 0x198);
 }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/AITimeStamp.h"
 #include "RE/BSFixedString.h"
 #include "RE/BSTHashMap.h"
 #include "RE/BSTList.h"
@@ -15,19 +16,8 @@ namespace RE
 	class TESCondition;
 	class PackageLocation;
 
-
-	class TESFaction :
-		public TESForm,			// 000
-		public TESFullName,		// 020
-		public TESReactionForm	// 030
+	struct FACTION_DATA
 	{
-	public:
-		inline static const void* RTTI = RTTI_TESFaction;
-
-
-		enum { kTypeID = FormType::Faction };
-
-
 		enum Flag : UInt32
 		{
 			kNone = 0,
@@ -49,6 +39,89 @@ namespace RE
 		};
 
 
+		Flag flags;	// 0
+	};
+	STATIC_ASSERT(sizeof(FACTION_DATA) == 0x4);
+
+
+	struct FACTION_CRIME_DATA_VALUES	// CRVA
+	{
+		bool	arrest;					// 00
+		bool	attackOnSight;			// 01
+		UInt16	murderCrimeGold;		// 02
+		UInt16	assaultCrimeGold;		// 04
+		UInt16	trespassCrimeGold;		// 06
+		UInt16	pickpocketCrimeGold;	// 08
+		UInt16	pad0A;					// 0A
+		float	stealCrimeGoldMult;		// 0C
+		UInt16	escapeCrimeGold;		// 10
+		UInt16	werewolfCrimeGold;		// 12
+	};
+	STATIC_ASSERT(sizeof(FACTION_CRIME_DATA_VALUES) == 0x14);
+
+
+	struct FACTION_CRIME_DATA
+	{
+		TESObjectREFR*				factionJailMarker;					// 00 - JAIL
+		TESObjectREFR*				factionWaitMarker;					// 08 - WAIT
+		TESObjectREFR*				factionStolenContainer;				// 10 - STOL
+		TESObjectREFR*				factionPlayerInventoryContainer;	// 18 - PLCN
+		BGSListForm*				crimeGroup;							// 20 - CRGR
+		BGSOutfit*					jailOutfit;							// 28 - JOUT
+		FACTION_CRIME_DATA_VALUES	crimevalues;						// 30 - CRVA
+		UInt32						pad44;								// 44
+	};
+	STATIC_ASSERT(sizeof(FACTION_CRIME_DATA) == 0x48);
+
+
+	struct FACTION_VENDOR_DATA_VALUES	// VENV
+	{
+		UInt16	startHour;		// 0
+		UInt16	endHour;		// 2
+		UInt32	locationRadius;	// 4
+		bool	buysStolen;		// 8
+		bool	notBuySell;		// 9
+		bool	buysNonStolen;	// A
+		UInt8	padB;			// B
+	};
+	STATIC_ASSERT(sizeof(FACTION_VENDOR_DATA_VALUES) == 0xC);
+
+
+	struct FACTION_VENDOR_DATA	// VENV
+	{
+		FACTION_VENDOR_DATA_VALUES	vendorValues;		// 00
+		UInt32						pad0C;				// 0C
+		PackageLocation*			vendorLocation;		// 10 - PLVD
+		TESCondition*				vendorConditions;	// 18
+		BGSListForm*				vendorSellBuyList;	// 20 - VEND
+		TESObjectREFR*				merchantContainer;	// 28 - VENC
+		UInt32						lastDayReset;		// 30
+		UInt32						pad34;				// 34
+	};
+	STATIC_ASSERT(sizeof(FACTION_VENDOR_DATA) == 0x38);
+
+
+	struct RANK_DATA
+	{
+		BSFixedString	maleRankTitle;		// 00 - MNAM
+		BSFixedString	femaleRankTitle;	// 08 - FNAM
+		TESTexture		textureInsignia;	// 10 - INAM - unused
+	};
+	STATIC_ASSERT(sizeof(RANK_DATA) == 0x20);
+
+
+	class TESFaction :
+		public TESForm,			// 000
+		public TESFullName,		// 020
+		public TESReactionForm	// 030
+	{
+	public:
+		inline static const void* RTTI = RTTI_TESFaction;
+
+
+		enum { kTypeID = FormType::Faction };
+
+
 		struct ChangeFlags
 		{
 			enum ChangeFlag : UInt32
@@ -68,44 +141,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
-
-		struct CrimeValues	// CRVA
-		{
-			bool	arrest;				// 00
-			bool	attackOnSight;		// 01
-			SInt16	murder;				// 02
-			SInt16	assault;			// 04
-			SInt16	trespass;			// 06
-			SInt16	pickpocket;			// 08
-			UInt16	unk0A;				// 0A
-			float	stealMultiplier;	// 0C
-			SInt16	escape;				// 10
-			SInt16	werewolf;			// 12
-		};
-		STATIC_ASSERT(sizeof(CrimeValues) == 0x14);
-
-
-		struct VendorValues	// VENV
-		{
-			UInt16	startHour;				// 00
-			UInt16	endHour;				// 02
-			UInt16	radius;					// 04
-			UInt16	unk06;					// 06
-			bool	onlyBuysStolenItems;	// 08
-			bool	notSellBuy;				// 09
-			UInt16	unk0A;					// 0A
-		};
-		STATIC_ASSERT(sizeof(VendorValues) == 0xC);
-
-
-		struct Rank
-		{
-			BSFixedString	maleTitle;		// 00 - MNAM
-			BSFixedString	femaleTitle;	// 08 - FNAM
-			TESTexture		insignia;		// 10 - INAM - unused
-		};
-		STATIC_ASSERT(sizeof(Rank) == 0x20);
 
 
 		virtual ~TESFaction();											// 00
@@ -153,30 +188,16 @@ namespace RE
 
 
 		// members
-		BSTHashMap<TESForm*, SInt32>*	crimeMap;					// 050
-		Flag							flags;						// 058 - DATA
-		UInt32							pad05C;						// 05C
-		TESObjectREFR*					exteriorJailMarker;			// 060 - JAIL
-		TESObjectREFR*					followerWaitMarker;			// 068 - WAIT
-		TESObjectREFR*					stolenGoodsContainer;		// 070 - STOL
-		TESObjectREFR*					playerInventoryContainer;	// 078 - PLCN
-		BGSListForm*					sharedCrimeFactionList;		// 080 - CRGR
-		BGSOutfit*						jailOutfit;					// 088 - JOUT
-		CrimeValues						crimeValues;				// 090 - CRVA
-		UInt32							pad0A4;						// 0A4
-		VendorValues					vendorValues;				// 0A8 - VENV
-		UInt32							pad0B4;						// 0B4
-		PackageLocation*				location;					// 0B8 - PLVD
-		TESCondition*					conditions;					// 0C0
-		BGSListForm*					vendorBuySellList;			// 0C8 - VEND
-		TESObjectREFR*					merchantContainer;			// 0D0 - VENC
-		UInt32							unk0D8;						// 0D8
-		UInt32							pad0DC;						// 0DC
-		BSSimpleList<Rank*>				ranks;						// 0E0
-		UInt32							unk0F0;						// 0F0
-		UInt32							unk0F4;						// 0F4
-		UInt32							unk0F8;						// 0F8
-		float							playerIsEnemyTimeStamp;		// 0FC - current game time in hours
+		BSTHashMap<const TESNPC*, UInt32>*	crimeGoldMap;			// 050
+		FACTION_DATA						data;					// 058 - DATA
+		UInt32								pad05C;					// 05C
+		FACTION_CRIME_DATA					crimeData;				// 060
+		FACTION_VENDOR_DATA					vendorData;				// 0A8
+		BSSimpleList<RANK_DATA*>			rankData;				// 0E0
+		SInt32								majorCrime;				// 0F0
+		SInt32								minorCrime;				// 0F4
+		AITimeStamp							resistArrestTimeStamp;	// 0F8
+		float								pcEnemyFlagTimeStamp;	// 0FC - current game time in hours
 	};
 	STATIC_ASSERT(sizeof(TESFaction) == 0x100);
 }

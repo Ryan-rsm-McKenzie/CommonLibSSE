@@ -23,30 +23,31 @@ namespace RE
 		STATIC_ASSERT(sizeof(LoopData) == 0xC);
 
 
-		virtual ~BGSMusicSingleTrack();							// 00
+		virtual ~BGSMusicSingleTrack();											// 00
 
 		// override (BGSMusicTrack)
-		virtual void		Unk_01(void) override;				// 01
-		virtual UInt32		Play() override;					// 02
-		virtual void		Unk_03(void) override;				// 03
-		virtual void		Unk_04(void) override;				// 04
-		virtual float		GetDuration() const override;		// 05
-		virtual TrackType	GetTrackType() const override;		// 06 - "BGSMusicSingleTrack"
-		virtual void		Unk_08(void) override;				// 08
-		virtual void		Unk_09(void) override;				// 09
-		virtual bool		LoadTrack(TESFile* a_mod) override;	// 0C
+		virtual void			Unk_01(void) override;							// 01
+		virtual void			DoPlay() override;								// 02
+		virtual void			DoPause() override;								// 03
+		virtual void			DoFinish(bool a_arg1, float a_arg2) override;	// 04
+		virtual float			GetDurationImpl() const override;				// 05
+		virtual TrackType		GetType() const override;						// 06 - "BGSMusicSingleTrack"
+		virtual void			DoSetDuckingAttenuation(UInt16 a_val) override;	// 09
+		virtual void			DoClearDucking() override;						// 0A
+		virtual bool			LoadTrack(TESFile* a_mod) override;				// 0C
 
 
 		// members
-		BSResource::ID	track;			// 20 - ANAM
-		BSResource::ID	finale;			// 2C - BNAM
-		BSTArray<float>	cuePoints;		// 38 - FNAM
-		UInt32			unk50;			// 50
-		UInt32			unk54;			// 54
-		UInt64			unk58;			// 58
-		LoopData*		loopData;		// 60 - LNAM
-		BSSoundHandle	soundHandle;	// 68
-		UInt64			unk78;			// 78
+		BSResource::ID	trackID;					// 20 - ANAM
+		BSResource::ID	finaleID;					// 2C - BNAM
+		BSTArray<float>	cuePoints;					// 38 - FNAM
+		UInt32			nextCuePoint;				// 50
+		UInt32			loopsRemaining;				// 54
+		UInt32			lastKnownPlaybackPosition;	// 58
+		UInt32			pad5C;						// 5C
+		LoopData*		loopData;					// 60 - LNAM
+		BSSoundHandle	trackHandle;				// 68
+		BSSoundHandle	finaleHandle;				// 78
 	};
 	STATIC_ASSERT(sizeof(BGSMusicSingleTrack) == 0x80);
 }

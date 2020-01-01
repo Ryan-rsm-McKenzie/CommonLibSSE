@@ -11,23 +11,23 @@ namespace RE
 		inline static const void* RTTI = RTTI_BGSMusicSilenceTrack;
 
 
-		virtual ~BGSMusicSilenceTrack();						// 00
+		virtual ~BGSMusicSilenceTrack();									// 00
 
 		// override (BGSMusicTrack)
-		virtual void		Unk_01(void) override;				// 01
-		virtual UInt32		Play() override;					// 02
-		virtual void		Unk_03(void) override;				// 03
-		virtual void		Unk_04(void) override;				// 04
-		virtual float		GetDuration() const override;		// 05 - { return duration; }
-		virtual TrackType	GetTrackType() const override;		// 06 - "BGSMusicSilenceTrack"
-		virtual bool		LoadTrack(TESFile* a_mod) override;	// 0C
+		virtual void		Unk_01(void) override;							// 01
+		virtual void		DoPlay() override;								// 02
+		virtual void		DoPause() override;								// 03
+		virtual void		DoFinish(bool a_arg1, float a_arg2) override;	// 04
+		virtual float		GetDurationImpl() const override;				// 05 - { return duration; }
+		virtual TrackType	GetType() const override;						// 06 - "BGSMusicSilenceTrack"
+		virtual bool		LoadTrack(TESFile* a_mod) override;				// 0C
 
 
 		// members
 		float	duration;	// 20 - FLTV
-		UInt32	unk24;		// 24
-		UInt64	unk28;		// 28
-		UInt64	unk30;		// 30
+		UInt32	pad24;		// 24
+		UInt64	playTime;	// 28
+		UInt64	pauseTime;	// 30
 	};
 	STATIC_ASSERT(sizeof(BGSMusicSilenceTrack) == 0x38);
 }

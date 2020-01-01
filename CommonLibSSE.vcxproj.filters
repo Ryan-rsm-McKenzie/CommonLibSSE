@@ -1075,6 +1075,9 @@
     <Filter Include="include\RE\BSResource\FileID">
       <UniqueIdentifier>{eafffdc2-9764-4b0b-8e01-95d003876e51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\BSAudio\BSIMusicTrack\BGSMusicTrack">
+      <UniqueIdentifier>{d4365b09-2bab-48e0-9e6b-19171af4f54b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -2415,18 +2418,6 @@
       <Filter>include\RE\BSAudio</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSIMusicTrack.h">
-      <Filter>include\RE\BSAudio\BSIMusicTrack</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSMusicTrack.h">
-      <Filter>include\RE\BSAudio\BSIMusicTrack</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSMusicPaletteTrack.h">
-      <Filter>include\RE\BSAudio\BSIMusicTrack</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSMusicSilenceTrack.h">
-      <Filter>include\RE\BSAudio\BSIMusicTrack</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BGSMusicSingleTrack.h">
       <Filter>include\RE\BSAudio\BSIMusicTrack</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\IXAudio2VoiceCallback.h">
@@ -5092,6 +5083,24 @@
     </ClInclude>
     <ClInclude Include="include\RE\DialogueTypes.h">
       <Filter>include\RE\FormComponents\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Movement.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMusicTrack.h">
+      <Filter>include\RE\BSAudio\BSIMusicTrack\BGSMusicTrack</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMusicPaletteTrack.h">
+      <Filter>include\RE\BSAudio\BSIMusicTrack\BGSMusicTrack</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMusicSilenceTrack.h">
+      <Filter>include\RE\BSAudio\BSIMusicTrack\BGSMusicTrack</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSMusicSingleTrack.h">
+      <Filter>include\RE\BSAudio\BSIMusicTrack\BGSMusicTrack</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\EffectArchetypes.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -263,7 +263,7 @@ namespace RE
 		auto diff = max.z - min.z;
 		auto height = GetBaseHeight() * diff;
 
-		if (!currentProcess || currentProcess->processLevel) {
+		if (!currentProcess || !currentProcess->InHighProcess()) {
 			return height;
 		}
 

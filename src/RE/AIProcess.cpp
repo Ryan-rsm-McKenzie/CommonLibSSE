@@ -26,6 +26,56 @@ namespace RE
 	}
 
 
+	bool AIProcess::InHighProcess() const
+	{
+		switch (processLevel) {
+		case PROCESS_TYPE::kHigh:
+			return true;
+		default:
+			return false;
+		}
+	}
+
+
+	bool AIProcess::InMiddleHighProcess() const
+	{
+		switch (processLevel) {
+		case PROCESS_TYPE::kHigh:
+		case PROCESS_TYPE::kMiddleHigh:
+			return true;
+		default:
+			return false;
+		}
+	}
+
+
+	bool AIProcess::InMiddleLowProcess() const
+	{
+		switch (processLevel) {
+		case PROCESS_TYPE::kHigh:
+		case PROCESS_TYPE::kMiddleHigh:
+		case PROCESS_TYPE::kMiddleLow:
+			return true;
+		default:
+			return false;
+		}
+	}
+
+
+	bool AIProcess::InLowProcess() const
+	{
+		switch (processLevel) {
+		case PROCESS_TYPE::kHigh:
+		case PROCESS_TYPE::kMiddleHigh:
+		case PROCESS_TYPE::kMiddleLow:
+		case PROCESS_TYPE::kLow:
+			return true;
+		default:
+			return false;
+		}
+	}
+
+
 	bool AIProcess::IsArrested() const
 	{
 		return high && high->arrested;

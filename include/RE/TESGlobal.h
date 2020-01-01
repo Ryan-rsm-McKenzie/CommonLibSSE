@@ -39,16 +39,16 @@ namespace RE
 
 		// override (TESform)
 		virtual bool		Load(TESFile* a_mod) override;					// 06
-		virtual const char*	GetFormEditorID(void) override;					// 32 - { return editorID.c_str(); }
-		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { editorID = a_str; return true; }
+		virtual const char*	GetFormEditorID(void) override;					// 32 - { return formEditorID.c_str(); }
+		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { formEditorID = a_str; return true; }
 
 
 		// members
-		BSString	editorID;	// 20 - EDID
-		Type		type;		// 30 - ENAM
-		UInt8		pad31;		// 31
-		UInt16		pad32;		// 32
-		float		value;		// 34 - FLTV
+		BSString	formEditorID;	// 20 - EDID
+		Type		type;			// 30 - ENAM
+		UInt8		pad31;			// 31
+		UInt16		pad32;			// 32
+		float		value;			// 34 - FLTV
 	};
 	STATIC_ASSERT(sizeof(TESGlobal) == 0x38);
 }

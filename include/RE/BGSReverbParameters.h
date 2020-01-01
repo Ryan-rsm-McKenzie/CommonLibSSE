@@ -28,23 +28,22 @@ namespace RE
 		};
 
 
-		struct Data	// DATA
+		struct ReverbParams	// DATA
 		{
-			UInt16	decayTime;		// 00 - in ms
-			UInt16	hfReference;	// 02 - in Hz
-			SInt8	roomFilter;		// 04
-			SInt8	roomHFFilter;	// 05
-			SInt8	reflections;	// 06
-			SInt8	reverbAmp;		// 07
-			UInt8	decayHFRatio;	// 08
-			UInt8	reflectDelay;	// 09 - in ms
-			UInt8	reverbDelay;	// 0A - in ms
-			UInt8	diffusionPct;	// 0B
-			UInt8	densityPct;		// 0C
-			UInt8	unk0D;			// 0D
-			UInt16	unk0E;			// 0E
+			UInt16	decayTime;			// 00 - in ms
+			UInt16	hfReference;		// 02 - in Hz
+			SInt8	roomFilter;			// 04
+			SInt8	roomHFFilter;		// 05
+			SInt8	reflections;		// 06
+			SInt8	reverb;				// 07
+			UInt8	decayHFRatio;		// 08
+			UInt8	reflectionDelay;	// 09 - in ms
+			UInt8	reverbDelay;		// 0A - in ms
+			UInt8	diffusionPct;		// 0B
+			UInt8	densityPct;			// 0C
+			UInt8	pad0D;				// 0D
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x10);
+		STATIC_ASSERT(sizeof(ReverbParams) == 0xE);
 
 
 		virtual ~BGSReverbParameters();					// 00
@@ -60,7 +59,7 @@ namespace RE
 		virtual float	GetDecayHFRatio() const override;	// 03 - { return data.decayHFRatio * 0.0099999998; }
 		virtual UInt32	GetReflections() const override;	// 04 - { return data.reflections * 100; }
 		virtual float	GetReflectDelay() const override;	// 05 - { return data.reflectDelay * 0.0012000001; }
-		virtual UInt32	GetReverbAmp() const override;		// 06 - { return data.reverbAmp * 100; }
+		virtual UInt32	GetReverbAmp() const override;		// 06 - { return data.reverb * 100; }
 		virtual float	GetReverbDelay() const override;	// 07 - { return data.reverbDelay * 0.001; }
 		virtual UInt32	GetDiffusionPct() const override;	// 08 - { return data.diffusionPct; }
 		virtual UInt32	GetDensityPct() const override;		// 09 - { return data.densityPct; }
@@ -68,7 +67,8 @@ namespace RE
 
 
 		// members
-		Data data;	// 28 - DATA
+		ReverbParams	data;	// 28 - DATA
+		UInt16			pad36;	// 36
 	};
 	STATIC_ASSERT(sizeof(BGSReverbParameters) == 0x38);
 }

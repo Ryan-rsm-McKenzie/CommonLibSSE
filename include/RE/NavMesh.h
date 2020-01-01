@@ -37,6 +37,7 @@ namespace RE
 
 		// override (TESForm)
 		virtual bool	Load(TESFile* a_mod) override;									// 06
+		virtual void	FinishLoadGame(void* a_arg1) override;							// 11
 		virtual void	InitItemImpl() override;										// 13
 		virtual void	GetFormDetailedString(char* a_buf, UInt32 a_bufLen) override;	// 16
 		virtual void	SetDelete(bool a_set) override;									// 23

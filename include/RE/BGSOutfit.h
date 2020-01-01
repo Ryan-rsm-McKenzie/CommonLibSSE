@@ -35,7 +35,7 @@ namespace RE
 
 
 		// members
-		BSTArray<TESObjectARMO*> items;	// 20 - INAM
+		BSTArray<TESForm*> outfitItems;	// 20 - INAM
 	};
 	STATIC_ASSERT(sizeof(BGSOutfit) == 0x38);
 }

@@ -3,19 +3,19 @@
 
 namespace RE
 {
-	ActorValue EffectSetting::GetMagickSkill()
+	ActorValue EffectSetting::GetMagickSkill() const
 	{
-		return data.magicSkill;
+		return data.associatedSkill;
 	}
 
 
-	UInt32 EffectSetting::GetMinimumSkillLevel()
+	UInt32 EffectSetting::GetMinimumSkillLevel() const
 	{
-		return data.minimumSkillLevel;
+		return data.minimumSkill;
 	}
 
 
-	bool EffectSetting::HasArchetype(Data::Archetype a_type)
+	bool EffectSetting::HasArchetype(Archetype a_type) const
 	{
 		return data.archetype == a_type;
 	}

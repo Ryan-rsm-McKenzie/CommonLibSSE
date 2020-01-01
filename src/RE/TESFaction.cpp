@@ -8,7 +8,7 @@ namespace RE
 {
 	bool TESFaction::CanBeOwner() const
 	{
-		return (flags & Flag::kCanBeOwner) != Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kCanBeOwner) != FACTION_DATA::Flag::kNone;
 	}
 
 
@@ -103,80 +103,80 @@ namespace RE
 
 	bool TESFaction::HasSpecialCombatState() const
 	{
-		return (flags & Flag::kSpecialCombat) != Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kSpecialCombat) != FACTION_DATA::Flag::kNone;
 	}
 
 
 	bool TESFaction::HasStealMultiplier() const
 	{
-		return crimeValues.stealMultiplier > 0.0;
+		return crimeData.crimevalues.stealCrimeGoldMult > 0.0;
 	}
 
 
 	bool TESFaction::HiddenFromNPC() const
 	{
-		return (flags & Flag::kHiddenFromNPC) != Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kHiddenFromNPC) != FACTION_DATA::Flag::kNone;
 	}
 
 
 	bool TESFaction::IgnoresAssault() const
 	{
-		return (flags & Flag::kIgnoresCrimes_Assult) != Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kIgnoresCrimes_Assult) != FACTION_DATA::Flag::kNone;
 	}
 
 
 	bool TESFaction::IgnoresMurder() const
 	{
-		return (flags & Flag::kIgnoresCrimes_Murder) != Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kIgnoresCrimes_Murder) != FACTION_DATA::Flag::kNone;
 	}
 
 
 	bool TESFaction::IgnoresPickpocket() const
 	{
-		return (flags & Flag::kIgnoresCrimes_Pickpocket) != Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kIgnoresCrimes_Pickpocket) != FACTION_DATA::Flag::kNone;
 	}
 
 
 	bool TESFaction::IgnoresStealing() const
 	{
-		return (flags & Flag::kIgnoresCrimes_Stealing) != Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kIgnoresCrimes_Stealing) != FACTION_DATA::Flag::kNone;
 	}
 
 
 	bool TESFaction::IgnoresTrespass() const
 	{
-		return (flags & Flag::kIngoresCrimes_Trespass) != Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kIngoresCrimes_Trespass) != FACTION_DATA::Flag::kNone;
 	}
 
 
 	bool TESFaction::IgnoresWerewolf() const
 	{
-		return (flags & Flag::kIgnoresCrimes_Werewolf) != Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kIgnoresCrimes_Werewolf) != FACTION_DATA::Flag::kNone;
 	}
 
 
 	bool TESFaction::IsFactionInCrimeGroup(const TESFaction* a_other) const
 	{
-		auto list = sharedCrimeFactionList;
+		auto list = crimeData.crimeGroup;
 		return list && list->HasForm(a_other);
 	}
 
 
 	bool TESFaction::IsPlayerEnemy() const
 	{
-		return (flags & Flag::kPlayerIsEnemy) != Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kPlayerIsEnemy) != FACTION_DATA::Flag::kNone;
 	}
 
 
 	bool TESFaction::IsPlayerExpelled() const
 	{
-		return (flags & Flag::kPlayerIsExpelled) != Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kPlayerIsExpelled) != FACTION_DATA::Flag::kNone;
 	}
 
 
 	bool TESFaction::IsVendor() const
 	{
-		return (flags & Flag::kVendor) != Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kVendor) != FACTION_DATA::Flag::kNone;
 	}
 
 
@@ -196,7 +196,7 @@ namespace RE
 
 	bool TESFaction::ReportsCrimesAgainstMembers() const
 	{
-		return (flags & Flag::kDoNotReportCrimesAgainstMembers) == Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kDoNotReportCrimesAgainstMembers) == FACTION_DATA::Flag::kNone;
 	}
 
 
@@ -223,12 +223,12 @@ namespace RE
 
 	bool TESFaction::TracksCrimes() const
 	{
-		return (flags & Flag::kTrackCrime) != Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kTrackCrime) != FACTION_DATA::Flag::kNone;
 	}
 
 
 	bool TESFaction::UsesCrimeGoldDefaults() const
 	{
-		return (flags & Flag::kCrimeGold_UseDefaults) != Flag::kNone;
+		return (data.flags & FACTION_DATA::Flag::kCrimeGold_UseDefaults) != FACTION_DATA::Flag::kNone;
 	}
 }
