@@ -16,8 +16,9 @@ namespace RE
 			kIgnoreWeapon = 1 << 0,
 			kBashAttack = 1 << 1,
 			kPowerAttack = 1 << 2,
-			kLeftAttack = 1 << 3,
+			kChargeAttack = 1 << 3,
 			kRotatingAttack = 1 << 4,
+			kContinuousAttack = 1 << 5,
 			kOverrideData = (UInt32)1 << 31
 		};
 
@@ -25,7 +26,7 @@ namespace RE
 		float		damageMult;		// 00
 		float		attackChance;	// 04
 		SpellItem*	attackSpell;	// 08
-		AttackFlag	attackFlags;	// 10
+		AttackFlag	flags;			// 10
 		float		attackAngle;	// 14
 		float		strikeAngle;	// 18
 		float		staggerOffset;	// 1C
@@ -53,8 +54,8 @@ namespace RE
 
 
 		// members
-		BSFixedString	event;		// 10 - ATKE
-		AttackData		attackData;	// 18 - ATKD
+		BSFixedString	event;	// 10 - ATKE
+		AttackData		data;	// 18 - ATKD
 	};
 	STATIC_ASSERT(sizeof(BGSAttackData) == 0x50);
 }

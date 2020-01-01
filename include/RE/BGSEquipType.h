@@ -12,6 +12,16 @@ namespace RE
 		inline static const void* RTTI = RTTI_BGSEquipType;
 
 
+		enum class EQUIPPED_ITEM_TYPE
+		{
+			kSpell = 24,
+			kShield = 25,
+			kTorch = 26,
+
+			kTotal
+		};
+
+
 		virtual ~BGSEquipType();													// 00
 
 		// override (BaseFormComponent)
@@ -25,7 +35,7 @@ namespace RE
 
 
 		// members
-		BGSEquipSlot* equipmentType;	// 08 - ETYP
+		BGSEquipSlot* equipSlot;	// 08 - ETYP
 	};
 	STATIC_ASSERT(sizeof(BGSEquipType) == 0x10);
 }

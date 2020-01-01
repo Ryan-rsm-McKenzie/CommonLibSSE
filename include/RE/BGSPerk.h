@@ -45,7 +45,7 @@ namespace RE
 			inline static const void* RTTI = RTTI_BGSPerk__FindPerkInRanksVisitor;
 
 
-			virtual bool operator()(const BGSPerkRankArray::Entry* a_entry) override;	// 00
+			virtual bool operator()(const PerkRankData* a_entry) override;	// 00
 		};
 
 
@@ -55,7 +55,7 @@ namespace RE
 			inline static const void* RTTI = RTTI_BGSPerk__ApplyPerksVisitor;
 
 
-			virtual bool operator()(const BGSPerkRankArray::Entry* a_entry) override;	// 00
+			virtual bool operator()(const PerkRankData* a_entry) override;	// 00
 		};
 
 
@@ -65,7 +65,7 @@ namespace RE
 			inline static const void* RTTI = RTTI_BGSPerk__AddPerkVisitor;
 
 
-			virtual bool operator()(const BGSPerkRankArray::Entry* a_entry) override;	// 00
+			virtual bool operator()(const PerkRankData* a_entry) override;	// 00
 		};
 
 

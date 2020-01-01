@@ -5,90 +5,90 @@ namespace RE
 {
 	bool TESActorBaseData::IsFemale() const
 	{
-		return (flags & Flag::kFemale) != Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kFemale) != ACTOR_BASE_DATA::Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::IsPreset() const
 	{
-		return (flags & Flag::kIsChargenFacePreset) != Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kIsChargenFacePreset) != ACTOR_BASE_DATA::Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::IsEssential() const
 	{
-		return (flags & Flag::kEssential) != Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kEssential) != ACTOR_BASE_DATA::Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::Respawns() const
 	{
-		return (flags & Flag::kRespawn) != Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kRespawn) != ACTOR_BASE_DATA::Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::HasAutoCalcStats() const
 	{
-		return (flags & Flag::kAutoCalcStats) != Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kAutoCalcStats) != ACTOR_BASE_DATA::Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::IsUnique() const
 	{
-		return (flags & Flag::kUnique) != Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kUnique) != ACTOR_BASE_DATA::Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::AffectsStealthMeter() const
 	{
-		return (flags & Flag::kDoesntAffectStealthMeter) == Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kDoesntAffectStealthMeter) == ACTOR_BASE_DATA::Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::HasPCLevelMult() const
 	{
-		return (flags & Flag::kPCLevelMult) != Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kPCLevelMult) != ACTOR_BASE_DATA::Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::UsesTemplate() const
 	{
-		return (flags & Flag::kUsesTemplate) != Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kUsesTemplate) != ACTOR_BASE_DATA::Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::Protected() const
 	{
-		return (flags & Flag::kProtected) != Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kProtected) != ACTOR_BASE_DATA::Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::IsSummonable() const
 	{
-		return (flags & Flag::kSummonable) != Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kSummonable) != ACTOR_BASE_DATA::Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::Bleeds() const
 	{
-		return (flags & Flag::kDoesntBleed) == Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kDoesntBleed) == ACTOR_BASE_DATA::Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::HasBleedoutOverride() const
 	{
-		return (flags & Flag::kBleedoutOverride) != Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kBleedoutOverride) != ACTOR_BASE_DATA::Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::UsesOppositeGenderAnims() const
 	{
-		return (flags & Flag::kOppositeGenderanims) != Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kOppositeGenderanims) != ACTOR_BASE_DATA::Flag::kNone;
 	}
 
 
 	bool TESActorBaseData::IsSimpleActor() const
 	{
-		return (flags & Flag::kSimpleActor) != Flag::kNone;
+		return (actorData.actorBaseFlags & ACTOR_BASE_DATA::Flag::kSimpleActor) != ACTOR_BASE_DATA::Flag::kNone;
 	}
 }

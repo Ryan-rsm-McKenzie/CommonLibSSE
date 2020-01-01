@@ -26,7 +26,7 @@ namespace RE
 		virtual UInt32				ComputeCRC32(void) override;						// 04
 		virtual BSShaderMaterial*	GetDefault() override;								// 05
 		virtual Feature				GetFeature() const override;						// 06 - { return Feature::kDefault; }
-		virtual Type				GetType() const override;							// 07 - { return Feature::kLighting; }
+		virtual Type				GetType() const override;							// 07 - { return Type::kLighting; }
 
 		// add
 		virtual void				OnLoadTextureSet(void);								// 08

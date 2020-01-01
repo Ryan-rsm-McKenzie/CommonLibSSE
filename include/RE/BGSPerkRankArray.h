@@ -8,21 +8,21 @@ namespace RE
 	class BGSPerk;
 
 
+	struct PerkRankData	// PRKR
+	{
+		BGSPerk*	perk;			// 00
+		SInt8		currentRank;	// 08
+		UInt8		pad09;			// 09
+		UInt16		pad0A;			// 0A
+		UInt32		pad0C;			// 0C
+	};
+	STATIC_ASSERT(sizeof(PerkRankData) == 0x10);
+
+
 	class BGSPerkRankArray : public BaseFormComponent
 	{
 	public:
 		inline static const void* RTTI = RTTI_BGSPerkRankArray;
-
-
-		struct Entry
-		{
-			BGSPerk*	perk;	// 00
-			UInt8		rank;	// 08
-			UInt8		pad09;	// 09
-			UInt16		pad0A;	// 0A
-			UInt32		pad0C;	// 0C
-		};
-		STATIC_ASSERT(sizeof(Entry) == 0x10);
 
 
 		virtual ~BGSPerkRankArray();									// 00
@@ -34,9 +34,9 @@ namespace RE
 
 
 		// members
-		Entry*	perkRanks;		// 08
-		UInt32	numPerkRanks;	// 10
-		UInt32	pad14;			// 14
+		PerkRankData*	perks;		// 08 - PRKR
+		UInt32			perkCount;	// 10 - PRKZ
+		UInt32			pad14;		// 14
 	};
 	STATIC_ASSERT(sizeof(BGSPerkRankArray) == 0x18);
 }

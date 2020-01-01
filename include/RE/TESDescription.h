@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BaseFormComponent.h"
+#include "RE/BGSLocalizedStringDL.h"
 
 
 namespace RE
@@ -26,8 +27,8 @@ namespace RE
 
 
 		// members
-		UInt32	fileOffset;	// 08
-		UInt32	tableIdx;	// 0C
+		UInt32					fileOffset;			// 08
+		BGSLocalizedStringDL	descriptionText;	// 0C
 	};
 	STATIC_ASSERT(sizeof(TESDescription) == 0x10);
 }

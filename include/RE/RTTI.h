@@ -95,8 +95,8 @@ namespace RE
 		struct TypeDescriptor
 		{
 			type_info*	typeInfo;	// 00
-			std::size_t	spare;		// 08
-			const char	name[6];	// 10
+			void*		spare;		// 08
+			const char	name[1];	// 10
 		};
 		STATIC_ASSERT(sizeof(TypeDescriptor) == 0x18);	// can be larger
 
@@ -130,9 +130,10 @@ namespace RE
 		{
 			enum class Attribute : UInt32
 			{
-				kNone = 0,
+				kNoInheritance = 0,
 				kMultipleInheritance = 1 << 0,
-				kVirtualInheritance = 1 << 1
+				kVirtualInheritance = 1 << 1,
+				kAmbiguousInheritance = 1 << 2
 			};
 
 
@@ -146,7 +147,14 @@ namespace RE
 
 		struct CompleteObjectLocator
 		{
-			UInt32							signature;			// 00
+			enum class Signature : UInt32
+			{
+				kX86 = 0,
+				kX64 = 1
+			};
+
+
+			Signature						signature;			// 00
 			UInt32							offset;				// 04
 			UInt32							ctorDispOffset;		// 08
 			RVA<TypeDescriptor>				typeDescriptor;		// 0C
@@ -159,7 +167,14 @@ namespace RE
 		{
 			enum class Attribute : UInt32
 			{
-				kNone = 0
+				kNone = 0,
+				kNotVisible = 1 << 0,
+				kAmbiguous = 1 << 1,
+				kPrivate = 1 << 2,
+				kPrivateOrProtectedBase = 1 << 3,
+				kVirtual = 1 << 4,
+				kNonPolymorphic = 1 << 5,
+				kHasHierarchyDescriptor = 1 << 6
 			};
 
 

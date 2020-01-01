@@ -30,19 +30,19 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "HUD Menu";
 
 
-		virtual ~HUDMenu();																																// 00
+		virtual ~HUDMenu();																																	// 00
 
 		// override (IMenu)
-		virtual void					Accept(CallbackProcessor* a_processor) override;																// 01
-		virtual Result					ProcessMessage(UIMessage* a_message) override;																	// 04
-		virtual void					AdvanceMovie(float a_interval, UInt32 a_currentTime) override;													// 05
-		virtual void					RefreshPlatform() override;																						// 08
+		virtual void					Accept(CallbackProcessor* a_processor) override;																	// 01
+		virtual Result					ProcessMessage(UIMessage* a_message) override;																		// 04
+		virtual void					AdvanceMovie(float a_interval, UInt32 a_currentTime) override;														// 05
+		virtual void					RefreshPlatform() override;																							// 08
 
 		// override (BSTEventSink<UserEventEnabledEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(UserEventEnabledEvent* a_event, BSTEventSource<UserEventEnabledEvent>* a_eventSource) override;	// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const UserEventEnabledEvent* a_event, BSTEventSource<UserEventEnabledEvent>* a_eventSource) override;	// 01
 
 		// override (BSTEventSink<BSRemoteGamepadEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(BSRemoteGamepadEvent* a_event, BSTEventSource<BSRemoteGamepadEvent>* a_eventSource) override;		// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const BSRemoteGamepadEvent* a_event, BSTEventSource<BSRemoteGamepadEvent>* a_eventSource) override;	// 01
 
 
 		// members

@@ -310,6 +310,7 @@
 #include "RE/ConsoleLog.h"
 #include "RE/ConsoleNativeUIMenu.h"
 #include "RE/ConstructibleObjectMenu.h"
+#include "RE/ContainerItemExtra.h"
 #include "RE/ContainerMenu.h"
 #include "RE/ControlMap.h"
 #include "RE/CraftingMenu.h"

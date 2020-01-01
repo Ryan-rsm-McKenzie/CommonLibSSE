@@ -28,20 +28,20 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "LoadWaitSpinner";
 
 
-		virtual ~LoadWaitSpinner();																															// 00
+		virtual ~LoadWaitSpinner();																																// 00
 
 		// override (IMenu)
-		virtual void					Accept(CallbackProcessor* a_processor) override;																	// 01 - { return; }
-		virtual Result					ProcessMessage(UIMessage* a_message) override;																		// 04
+		virtual void					Accept(CallbackProcessor* a_processor) override;																		// 01 - { return; }
+		virtual Result					ProcessMessage(UIMessage* a_message) override;																			// 04
 		
 		// override (BSTEventSink<BSSystemEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;						// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;						// 01
 
 		// override (BSTEventSink<BSGamerProfileEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(BSGamerProfileEvent* a_event, BSTEventSource<BSGamerProfileEvent>* a_eventSource) override;			// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const BSGamerProfileEvent* a_event, BSTEventSource<BSGamerProfileEvent>* a_eventSource) override;			// 01
 
 		// override (BSTEventSink<BGSSaveLoadManagerEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;	// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;	// 01
 
 
 		// members

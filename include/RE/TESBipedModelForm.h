@@ -36,9 +36,9 @@ namespace RE
 
 		// members
 		TESModelTextureSwap	worldModels[Sexes::kTotal];		// 08
-		TESIcon				icons[Sexes::kTotal];			// 78
+		TESIcon				inventoryIcons[Sexes::kTotal];	// 78
 		BGSMessageIcon		messageIcons[Sexes::kTotal];	// 98
-		TESModelRDT			modelRDT;						// C8
+		TESModelRDT			constraintTemplate;				// C8
 	};
 	STATIC_ASSERT(sizeof(TESBipedModelForm) == 0xF0);
 }

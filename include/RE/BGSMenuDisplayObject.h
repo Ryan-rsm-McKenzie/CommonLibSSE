@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	class TESObjectSTAT;
+	class TESBoundObject;
 
 
 	class BGSMenuDisplayObject : public BaseFormComponent
@@ -22,11 +22,11 @@ namespace RE
 		virtual void			CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 		// add
-		virtual TESObjectSTAT*	GetMenuDisplayObject();								// 04 - { return menuDisplayObject; }
+		virtual TESBoundObject*	GetMenuDisplayObject();								// 04 - { return menuDispObject; }
 
 
 		// members
-		TESObjectSTAT* menuDisplayObject;	// 08 - MDOB
+		TESBoundObject* menuDispObject;	// 08 - MDOB
 	};
 	STATIC_ASSERT(sizeof(BGSMenuDisplayObject) == 0x10);
 }

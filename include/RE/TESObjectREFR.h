@@ -231,7 +231,7 @@ namespace RE
 		virtual const char*				GetFormEditorID() override;																																													// 32
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)
-		virtual BSEventNotifyControl	ReceiveEvent(BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_dispatcher) override;																									// 01
+		virtual BSEventNotifyControl	ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_dispatcher) override;																							// 01
 
 		// override (IAnimationGraphManagerHolder)
 		virtual bool					GetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_out) override;																															// 02

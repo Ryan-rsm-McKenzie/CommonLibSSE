@@ -142,7 +142,7 @@ namespace RE
 		bool		IsArrested() const;
 		bool		IsGhost() const;
 		void		SetArrested(bool a_arrested);
-		void		SetCachedHeight(float a_scale);
+		void		SetCachedHeight(float a_height);
 		void		SetEquipFlag(Flag a_flag);
 		void		UpdateEquipment(Actor* a_actor);
 

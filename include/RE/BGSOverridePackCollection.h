@@ -5,6 +5,9 @@
 
 namespace RE
 {
+	class BGSListForm;
+
+
 	class BGSOverridePackCollection : public BaseFormComponent
 	{
 	public:
@@ -20,10 +23,10 @@ namespace RE
 
 
 		// members
-		UInt64	unk08;	// 08
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
-		UInt64	unk20;	// 20
+		BGSListForm*	spectatorOverRidePackList;		// 08 - SPOR
+		BGSListForm*	observeCorpseOverRidePackList;	// 10 - OCOR
+		BGSListForm*	guardWarnOverRidePackList;		// 18 - GWOR
+		BGSListForm*	enterCombatOverRidePackList;	// 20 - ECOR
 	};
 	STATIC_ASSERT(sizeof(BGSOverridePackCollection) == 0x28);
 }

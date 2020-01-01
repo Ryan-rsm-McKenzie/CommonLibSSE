@@ -29,12 +29,12 @@ namespace RE
 
 		bool						HasKeyword(FormID a_formID) const;
 		std::optional<BGSKeyword*>	GetKeywordAt(UInt32 a_idx);
-		UInt32						GetSize() const;
+		UInt32						GetNumKeywords() const;
 
 
 		// members
 		BGSKeyword**	keywords;		// 08 - KWDA
-		UInt32			keywordCount;	// 10 - KSIZ
+		UInt32			numKeywords;	// 10 - KSIZ
 		UInt32			pad14;			// 14
 	};
 	STATIC_ASSERT(sizeof(BGSKeywordForm) == 0x18);

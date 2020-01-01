@@ -206,14 +206,14 @@ namespace RE
 
 		auto container = GetContainer();
 		if (container) {
-			container->ForEach([&](TESContainer::Entry* a_entry) -> bool
+			container->ForEachContainerObject([&](ContainerObject* a_entry) -> bool
 			{
-				if (a_entry->object && a_filter(a_entry->object)) {
-					auto it = results.find(a_entry->object);
+				if (a_entry->obj && a_filter(a_entry->obj)) {
+					auto it = results.find(a_entry->obj);
 					if (it == results.end()) {
-						auto entryData = new InventoryEntryData(a_entry->object, 0);
+						auto entryData = new InventoryEntryData(a_entry->obj, 0);
 						invChanges->AddEntryData(entryData);
-						auto insIt = results.insert(std::make_pair(a_entry->object, mapped_type(a_entry->count, entryData)));
+						auto insIt = results.insert(std::make_pair(a_entry->obj, mapped_type(a_entry->count, entryData)));
 						assert(insIt.second);
 					} else {
 						it->second.first += a_entry->count;

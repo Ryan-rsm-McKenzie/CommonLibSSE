@@ -28,21 +28,21 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "Main Menu";
 
 
-		virtual ~MainMenu();																												// 00
+		virtual ~MainMenu();																													// 00
 
 		// override (IMenu)
-		virtual void					Accept(CallbackProcessor* a_processor) override;													// 01
-		virtual Result					ProcessMessage(UIMessage* a_message) override;														// 04
-		virtual void					AdvanceMovie(float a_interval, UInt32 a_currentTime) override;										// 05
+		virtual void					Accept(CallbackProcessor* a_processor) override;														// 01
+		virtual Result					ProcessMessage(UIMessage* a_message) override;															// 04
+		virtual void					AdvanceMovie(float a_interval, UInt32 a_currentTime) override;											// 05
 
 		// override (BSTEventSink<BSSystemEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;		// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;		// 01
 
 		// override (BSTEventSink<BSSaveDataEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;	// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;	// 01
 
 		// override (GFxFunctionHandler)
-		virtual void					Call(Params& a_params) override;																	// 01
+		virtual void					Call(Params& a_params) override;																		// 01
 
 
 		// members

@@ -46,10 +46,10 @@ namespace RE
 	}
 
 
-	void AIProcess::SetCachedHeight(float a_scale)
+	void AIProcess::SetCachedHeight(float a_height)
 	{
 		if (high) {
-			high->cachedActorHeight = a_scale;
+			high->cachedActorHeight = a_height;
 		}
 	}
 

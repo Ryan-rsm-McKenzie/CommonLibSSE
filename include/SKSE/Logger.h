@@ -69,7 +69,7 @@ namespace SKSE
 		public:
 			static LogEventHandler* GetSingleton();
 
-			virtual	RE::BSEventNotifyControl ReceiveEvent(RE::BSScript::LogEvent* a_event, RE::BSTEventSource<RE::BSScript::LogEvent>* a_eventSource) override;
+			virtual	RE::BSEventNotifyControl ProcessEvent(const RE::BSScript::LogEvent* a_event, RE::BSTEventSource<RE::BSScript::LogEvent>* a_eventSource) override;
 
 		private:
 			LogEventHandler() = default;

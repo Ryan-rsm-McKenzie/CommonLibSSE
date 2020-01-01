@@ -195,7 +195,7 @@ namespace SKSE
 	}
 
 
-	RE::BSEventNotifyControl Logger::LogEventHandler::ReceiveEvent(RE::BSScript::LogEvent* a_event, RE::BSTEventSource<RE::BSScript::LogEvent>* a_eventSource)
+	RE::BSEventNotifyControl Logger::LogEventHandler::ProcessEvent(const RE::BSScript::LogEvent* a_event, RE::BSTEventSource<RE::BSScript::LogEvent>* a_eventSource)
 	{
 		if (!std::regex_search(a_event->text, Logger::_papyrusLogFilter)) {
 			return RE::BSEventNotifyControl::kContinue;

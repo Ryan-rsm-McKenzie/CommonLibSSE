@@ -28,20 +28,20 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "Creation Club Menu";
 
 
-		virtual ~CreationClubMenu();																											// 00
+		virtual ~CreationClubMenu();																													// 00
 
 		// override (IMenu)
-		virtual void					AdvanceMovie(float a_interval, UInt32 a_currentTime) override;											// 05
+		virtual void					AdvanceMovie(float a_interval, UInt32 a_currentTime) override;													// 05
 
 		// override (MenuEventHandler)
-		virtual bool					CanProcess(InputEvent* a_event) override;																// 01
-		virtual bool					ProcessThumbstick(ThumbstickEvent* a_event) override;													// 03
+		virtual bool					CanProcess(InputEvent* a_event) override;																		// 01
+		virtual bool					ProcessThumbstick(ThumbstickEvent* a_event) override;															// 03
 
 		// override (GFxFunctionHandler)
-		virtual void					Call(Params& a_params) override;																		// 01
+		virtual void					Call(Params& a_params) override;																				// 01
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;	// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;	// 01
 
 
 		// members

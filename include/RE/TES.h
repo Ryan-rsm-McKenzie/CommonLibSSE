@@ -34,7 +34,7 @@ namespace RE
 			virtual ~SystemEventAdapter();																									// 00
 
 			// override (BSTEventSink<BSSystemEvent>)
-			virtual	BSEventNotifyControl ReceiveEvent(BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;	// 01
+			virtual	BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;	// 01
 
 
 			// members
@@ -43,13 +43,13 @@ namespace RE
 		STATIC_ASSERT(sizeof(SystemEventAdapter) == 0x10);
 
 
-		virtual ~TES();																																								// 00
+		virtual ~TES();																																										// 00
 
 		// override (BSTEventSink<BSResource::ArchiveStreamOpenedEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(BSResource::ArchiveStreamOpenedEvent* a_event, BSTEventSource<BSResource::ArchiveStreamOpenedEvent>* a_eventSource) override;	// 01 - { return BSEventNotifyControl::kContinue; }
+		virtual	BSEventNotifyControl	ProcessEvent(const BSResource::ArchiveStreamOpenedEvent* a_event, BSTEventSource<BSResource::ArchiveStreamOpenedEvent>* a_eventSource) override;	// 01 - { return BSEventNotifyControl::kContinue; }
 
 		// override (BSTEventSink<PositionPlayerEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;									// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;										// 01
 
 		static TES* GetSingleton();
 

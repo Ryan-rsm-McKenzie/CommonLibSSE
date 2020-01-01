@@ -24,13 +24,13 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "Kinect Menu";
 
 
-		virtual ~KinectMenu();																													// 00
+		virtual ~KinectMenu();																															// 00
 
 		// override (IMenu)
-		virtual Result					ProcessMessage(UIMessage* a_message) override;															// 04
+		virtual Result					ProcessMessage(UIMessage* a_message) override;																	// 04
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;	// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;	// 01
 
 
 		// members

@@ -26,14 +26,14 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "Training Menu";
 
 
-		virtual ~TrainingMenu();																												// 00
+		virtual ~TrainingMenu();																														// 00
 
 		// override (IMenu)
-		virtual void					Accept(CallbackProcessor* a_cbReg) override;															// 01
-		virtual Result					ProcessMessage(UIMessage* a_message) override;															// 04
+		virtual void					Accept(CallbackProcessor* a_cbReg) override;																	// 01
+		virtual Result					ProcessMessage(UIMessage* a_message) override;																	// 04
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;	// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;	// 01
 
 
 		// members

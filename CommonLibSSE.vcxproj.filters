@@ -5081,5 +5081,8 @@
     <ClInclude Include="include\RE\DialogueItem.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\ContainerItemExtra.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

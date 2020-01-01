@@ -16,17 +16,17 @@ namespace RE
 		inline static const void* RTTI = RTTI_TESSpellList;
 
 
-		struct ActorEffect	// SPLO
+		struct SpellData	// SPLO
 		{
-			SpellItem**		spells;				// 00
-			TESLevSpell**	leveledSpells;		// 08
-			TESShout**		shouts;				// 10
-			UInt32			numSpells;			// 18
-			UInt32			numleveledSpells;	// 1C
-			UInt32			numShouts;			// 20
-			UInt32			pad24;				// 24
+			SpellItem**		spells;			// 00
+			TESLevSpell**	levSpells;		// 08
+			TESShout**		shouts;			// 10
+			UInt32			numSpells;		// 18
+			UInt32			numlevSpells;	// 1C
+			UInt32			numShouts;		// 20
+			UInt32			pad24;			// 24
 		};
-		STATIC_ASSERT(sizeof(ActorEffect) == 0x28);
+		STATIC_ASSERT(sizeof(SpellData) == 0x28);
 
 
 		virtual ~TESSpellList();											// 00
@@ -38,7 +38,7 @@ namespace RE
 
 
 		// members
-		ActorEffect* actorEffects;	// 08 - SPLO
+		SpellData* actorEffects;	// 08 - SPLO
 	};
 	STATIC_ASSERT(sizeof(TESSpellList) == 0x10);
 }

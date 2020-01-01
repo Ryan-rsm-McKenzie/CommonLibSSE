@@ -3,44 +3,50 @@
 
 namespace RE
 {
-	TESAIForm::Aggression TESAIForm::GetAggression() const
+	bool TESAIForm::AggroRadiusBehaviourIsEnabled() const
 	{
-		return static_cast<Aggression>(pun_bits(data.aggression1, data.aggression2));
+		return aiData.aggroRadiusBehaviour;
 	}
 
 
-	TESAIForm::Confidence TESAIForm::GetConfidence() const
+	ACTOR_AGGRESSION TESAIForm::GetAggressionLevel() const
 	{
-		return static_cast<Confidence>(pun_bits(data.confidence1, data.confidence2, data.confidence3));
+		return static_cast<ACTOR_AGGRESSION>(pun_bits(aiData.aggression1, aiData.aggression2));
+	}
+
+
+	ACTOR_ASSISTANCE TESAIForm::GetAssistanceLevel() const
+	{
+		return static_cast<ACTOR_ASSISTANCE>(pun_bits(aiData.assistance1, aiData.assistance2));
+	}
+
+
+	ACTOR_CONFIDENCE TESAIForm::GetConfidenceLevel() const
+	{
+		return static_cast<ACTOR_CONFIDENCE>(pun_bits(aiData.confidence1, aiData.confidence2, aiData.confidence3));
 	}
 
 
 	UInt8 TESAIForm::GetEnergyLevel() const
 	{
-		return pun_bits(data.energyLevel1, data.energyLevel2, data.energyLevel3, data.energyLevel4, data.energyLevel5, data.energyLevel6, data.energyLevel7, data.energyLevel8);
+		return pun_bits(aiData.energyLevel1, aiData.energyLevel2, aiData.energyLevel3, aiData.energyLevel4, aiData.energyLevel5, aiData.energyLevel6, aiData.energyLevel7, aiData.energyLevel8);
 	}
 
 
-	TESAIForm::Responsibility TESAIForm::GetResponsibility() const
+	ACTOR_MOOD TESAIForm::GetMoodLevel() const
 	{
-		return static_cast<Responsibility>(pun_bits(data.responsibility1, data.responsibility2));
+		return static_cast<ACTOR_MOOD>(pun_bits(aiData.mood1, aiData.mood2, aiData.mood3));
 	}
 
 
-	TESAIForm::Mood TESAIForm::GetMood() const
+	ACTOR_MORALITY TESAIForm::GetMoralityLevel() const
 	{
-		return static_cast<Mood>(pun_bits(data.mood1, data.mood2, data.mood3));
+		return static_cast<ACTOR_MORALITY>(pun_bits(aiData.morality1, aiData.morality1));
 	}
 
 
-	TESAIForm::Assistance TESAIForm::GetAssistance() const
+	bool TESAIForm::NoSlowApproach() const
 	{
-		return static_cast<Assistance>(pun_bits(data.assistance1, data.assistance2));
-	}
-
-
-	bool TESAIForm::AggroRadiusBehaviourIsEnabled() const
-	{
-		return data.aggroRadiusBehaviour;
+		return aiData.noSlowApproach;
 	}
 }

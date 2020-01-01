@@ -14,12 +14,14 @@ namespace RE
 		inline static const void* RTTI = RTTI_BGSIdleCollection;
 
 
-		enum class Flag : UInt8
+		enum class IdleFlags : SInt8
 		{
 			kNone = 0,
-			kRunInSequence = 1 << 0,
+			kPickSequence = 1 << 0,
+			kOldPickConditions = 1 << 1,
 			kDoOnce = 1 << 2,
-			kIgnoredBySandbox = 1 << 4
+			kLooseOnly = 1 << 3,
+			kNoSandbox = 1 << 4
 		};
 
 
@@ -32,13 +34,13 @@ namespace RE
 
 
 		// members
-		Flag			flags;				// 08 - IDLF
-		UInt8			animationCount;		// 09 - IDLC
-		UInt16			unk0A;				// 0A
-		UInt32			unk0C;				// 0C
-		TESIdleForm**	animations;			// 10 - IDLA
-		float			idleTimerSetting;	// 18 - IDLT
-		UInt32			unk1C;				// 1C
+		IdleFlags		idleFlags;			// 08 - IDLF
+		SInt8			idleCount;			// 09 - IDLC
+		UInt16			pad0A;				// 0A
+		UInt32			pad0C;				// 0C
+		TESIdleForm**	idles;				// 10 - IDLA
+		float			timerCheckForIdle;	// 18 - IDLT
+		UInt32			pad1C;				// 1C
 	};
 	STATIC_ASSERT(sizeof(BGSIdleCollection) == 0x20);
 }

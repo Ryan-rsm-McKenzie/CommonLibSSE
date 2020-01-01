@@ -23,22 +23,22 @@ namespace RE
 		inline static const void* RTTI = RTTI_Journal_SystemTab;
 
 
-		virtual ~Journal_SystemTab();																														// 00
-
+		virtual ~Journal_SystemTab();																															// 00
+		
 		// override (JournalTab)
-		virtual void					Accept(CallbackProcessor* a_cbReg) override;																		// 01
+		virtual void					Accept(CallbackProcessor* a_cbReg) override;																			// 01
 
 		// override (BSTEventSink<BSSaveDataEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;					// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;					// 01
 
 		// override (BSTEventSink<BSGamerProfileEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(BSGamerProfileEvent* a_event, BSTEventSource<BSGamerProfileEvent>* a_eventSource) override;			// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const BSGamerProfileEvent* a_event, BSTEventSource<BSGamerProfileEvent>* a_eventSource) override;			// 01
 
 		// override (BSTEventSink<BGSSaveLoadManagerEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;	// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;	// 01
 
 		// override (BSTEventSink<BSRemoteGamepadEvent>)
-		virtual	BSEventNotifyControl	ReceiveEvent(BSRemoteGamepadEvent* a_event, BSTEventSource<BSRemoteGamepadEvent>* a_eventSource) override;			// 01
+		virtual	BSEventNotifyControl	ProcessEvent(const BSRemoteGamepadEvent* a_event, BSTEventSource<BSRemoteGamepadEvent>* a_eventSource) override;		// 01
 	};
 	STATIC_ASSERT(sizeof(Journal_SystemTab) == 0x38);
 }

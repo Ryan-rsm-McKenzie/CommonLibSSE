@@ -86,7 +86,7 @@ namespace RE
 		}
 
 
-		void SendEvent(Event* a_event)
+		void SendEvent(const Event* a_event)
 		{
 			BSSpinLockGuard locker(lock);
 
@@ -103,7 +103,7 @@ namespace RE
 
 			for (auto& sink : sinks) {
 				if (std::find(pendingUnregisters.begin(), pendingUnregisters.end(), sink) == pendingUnregisters.end()) {
-					if (sink->ReceiveEvent(a_event, this) == BSEventNotifyControl::kStop) {
+					if (sink->ProcessEvent(a_event, this) == BSEventNotifyControl::kStop) {
 						break;
 					}
 				}
@@ -122,7 +122,7 @@ namespace RE
 		}
 
 
-		void operator()(Event* a_event)
+		void operator()(const Event* a_event)
 		{
 			return SendEvent(a_event);
 		}
@@ -145,8 +145,8 @@ namespace RE
 	class BSTEventSink
 	{
 	public:
-		virtual ~BSTEventSink() = default;																		// 00
-		virtual	BSEventNotifyControl ReceiveEvent(Event* a_event, BSTEventSource<Event>* a_eventSource) = 0;	// 01
+		virtual ~BSTEventSink() = default;																			// 00
+		virtual	BSEventNotifyControl ProcessEvent(const Event* a_event, BSTEventSource<Event>* a_eventSource) = 0;	// 01
 	};
 	STATIC_ASSERT(sizeof(BSTEventSink<void>) == 0x8);
 }

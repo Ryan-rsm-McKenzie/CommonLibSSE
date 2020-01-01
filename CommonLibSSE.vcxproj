@@ -441,6 +441,7 @@
     <ClInclude Include="include\RE\BSTTuple.h" />
     <ClInclude Include="include\RE\BSUntypedPointerHandle.h" />
     <ClInclude Include="include\RE\BSXFlags.h" />
+    <ClInclude Include="include\RE\ContainerItemExtra.h" />
     <ClInclude Include="include\RE\DialoguePackage.h" />
     <ClInclude Include="include\RE\DoNothingUnhandledPolicy.h" />
     <ClInclude Include="include\RE\hkAabb.h" />

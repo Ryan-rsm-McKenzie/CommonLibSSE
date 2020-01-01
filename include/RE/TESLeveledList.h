@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BaseFormComponent.h"
+#include "RE/ContainerItemExtra.h"
 #include "RE/MemoryManager.h"
 
 
@@ -11,39 +12,21 @@ namespace RE
 	class TESGlobal;
 
 
+	struct LEVELED_OBJECT
+	{
+		TESForm*			form;		// 00 - LVLO~
+		UInt16				count;		// 08
+		UInt16				level;		// 0A - ~LVLO
+		UInt32				pad0C;		// 0C
+		ContainerItemExtra*	itemExtra;	// 10 - COED
+	};
+	STATIC_ASSERT(sizeof(LEVELED_OBJECT) == 0x18);
+
+
 	class TESLeveledList : public BaseFormComponent
 	{
 	public:
 		inline static const void* RTTI = RTTI_TESLeveledList;
-
-
-		struct Entry
-		{
-			struct BaseData	// LVLO
-			{
-				TESForm*	reference;	// 00
-				UInt16		count;		// 08
-				UInt16		level;		// 0A
-				UInt32		pad0C;		// 0C
-			};
-			STATIC_ASSERT(sizeof(BaseData) == 0x10);
-
-
-			struct ExtraData	// COED
-			{
-				TESFaction*	owner;			// 00
-				SInt32		requiredRank;	// 08
-				UInt32		unk0C;			// 0C
-				float		itemCondition;	// 10
-				UInt32		unk14;			// 14
-			};
-			STATIC_ASSERT(sizeof(ExtraData) == 0x18);
-
-
-			BaseData	baseData;	// 00
-			ExtraData*	extraData;	// 10
-		};
-		STATIC_ASSERT(sizeof(Entry) == 0x18);
 
 
 		enum Flag : UInt8	// LVLF
@@ -70,14 +53,14 @@ namespace RE
 
 
 		// members
-		SimpleArray<Entry>	entries;	// 08
-		UInt8				chanceNone;	// 10 - LVLD
-		Flag				flags;		// 11 - LVLF
-		UInt8				numEntries;	// 12 - LLCT
-		UInt8				unk13;		// 13
-		UInt32				pad14;		// 14
-		void*				unk18;		// 18
-		TESGlobal*			global;		// 20 - LVLG
+		SimpleArray<LEVELED_OBJECT>	entries;		// 08
+		SInt8						chanceNone;		// 10 - LVLD
+		Flag						llFlags;		// 11 - LVLF
+		UInt8						numEntries;		// 12 - LLCT
+		UInt8						unk13;			// 13
+		UInt32						pad14;			// 14
+		void*						unk18;			// 18
+		TESGlobal*					chanceGlobal;	// 20 - LVLG
 	};
 	STATIC_ASSERT(sizeof(TESLeveledList) == 0x28);
 }

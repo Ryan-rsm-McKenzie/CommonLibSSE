@@ -1,6 +1,5 @@
 #pragma once
 
-#include "RE/BGSPerkRankArray.h"
 #include "RE/BSPointerHandle.h"
 #include "RE/BSSoundHandle.h"
 #include "RE/BSTArray.h"
@@ -42,6 +41,7 @@ namespace RE
 	struct BGSActorCellEvent;
 	struct BGSActorDeathEvent;
 	struct BipedAnim;
+	struct PerkRankData;
 	struct PositionPlayerEvent;
 	struct TESTrackedStatsEvent;
 
@@ -299,7 +299,7 @@ namespace RE
 		float													unk49C;							// 49C
 		UInt64													unk4A0;							// 4A0
 		UInt64													unk4A8;							// 4A8
-		BSTArray<BGSPerkRankArray::Entry*>						addedPerks;						// 4B0
+		BSTArray<PerkRankData*>									addedPerks;						// 4B0
 		BSTArray<BGSPerk*>										perks;							// 4C8
 		BSTArray<BGSPerk*>										standingStonePerks;				// 4E0
 		BSTArray<ObjectRefHandle>								currentMapMarkers;				// 4F8

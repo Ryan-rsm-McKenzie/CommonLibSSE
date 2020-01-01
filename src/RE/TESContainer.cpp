@@ -6,24 +6,24 @@
 
 namespace RE
 {
-	auto TESContainer::GetContainerItemAt(UInt32 a_idx) const
-		-> std::optional<Entry*>
+	auto TESContainer::GetContainerObjectAt(UInt32 a_idx) const
+		-> std::optional<ContainerObject*>
 	{
-		if (a_idx < numEntries) {
-			return std::make_optional(entries[a_idx]);
+		if (a_idx < numContainerObjects) {
+			return std::make_optional(containerObjects[a_idx]);
 		} else {
 			return std::nullopt;
 		}
 	}
 
 
-	SInt32 TESContainer::CountItem(TESBoundObject* a_item) const
+	SInt32 TESContainer::CountObjectsInContainer(TESBoundObject* a_object) const
 	{
 		SInt32 count = 0;
-		ForEach([&](Entry* a_entry)
+		ForEachContainerObject([&](ContainerObject* a_contObj)
 		{
-			if (a_entry->object == a_item) {
-				count += a_entry->count;
+			if (a_contObj->obj == a_object) {
+				count += a_contObj->count;
 			}
 			return true;
 		});
