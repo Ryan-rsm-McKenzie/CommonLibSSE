@@ -436,9 +436,9 @@ namespace RE
 
 	bool TESObjectREFR::MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node)
 	{
-		auto& position = a_node->worldTransform.translate;
+		auto& position = a_node->world.translate;
 		NiPoint3 rotation;
-		a_node->worldTransform.rotate.ToEulerAnglesXYZ(rotation);
+		a_node->world.rotate.ToEulerAnglesXYZ(rotation);
 		auto handle = a_target->CreateRefHandle();
 		MoveTo_Impl(handle, a_target->GetParentCell(), GetWorldspace(), position, rotation);
 		return true;
