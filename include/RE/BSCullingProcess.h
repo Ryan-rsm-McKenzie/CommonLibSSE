@@ -22,6 +22,16 @@ namespace RE
 		inline static const void* Ni_RTTI = NiRTTI_BSCullingProcess;
 
 
+		enum class BSCPCullingType : UInt32
+		{
+			kNormal = 0,
+			kAllPass = 1,
+			kAllFail = 2,
+			kIgnoreMultiBounds = 3,
+			kForceMultiBoundsNoUpdate = 4
+		};
+
+
 		struct Data
 		{
 			UInt8 unk00[0x10];	// 00

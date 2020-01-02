@@ -16,12 +16,12 @@ namespace RE
 		}
 
 		// Check if this race inherits the source race
-		TESRace* armorRace = a_sourceRace->armorRace;
+		TESRace* armorRace = a_sourceRace->armorParentRace;
 		while (armorRace) {
 			if (armorRace == a_targetRace) {
 				return true;
 			}
-			armorRace = armorRace->armorRace;
+			armorRace = armorRace->armorParentRace;
 		}
 
 		return false;

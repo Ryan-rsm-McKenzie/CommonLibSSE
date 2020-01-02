@@ -217,12 +217,5 @@ namespace RE
 		UInt32													unk34C;						// 34C
 		UInt8*													maxHeightData;				// 350 - MHDT (it's an array, but idk how big it is)
 	};
-	STATIC_ASSERT(offsetof(TESWorldSpace, cell) == 0x088);
-	STATIC_ASSERT(offsetof(TESWorldSpace, unk100) == 0x100);
-	STATIC_ASSERT(offsetof(TESWorldSpace, unk180) == 0x180);
-	STATIC_ASSERT(offsetof(TESWorldSpace, editorID) == 0x200);
-	STATIC_ASSERT(offsetof(TESWorldSpace, largeReferenceData) == 0x250);
-	STATIC_ASSERT(offsetof(TESWorldSpace, unk318) == 0x318);
-	STATIC_ASSERT(offsetof(TESWorldSpace, maxHeightData) == 0x350);
 	STATIC_ASSERT(sizeof(TESWorldSpace) == 0x358);
 }

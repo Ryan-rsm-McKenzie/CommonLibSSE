@@ -7,16 +7,20 @@ namespace RE
 {
 	namespace Movement
 	{
-		enum class SPEED_DIRECTION : UInt32
+		struct SPEED_DIRECTIONS
 		{
-			kLeft,
-			kRight,
-			kForward,
-			kBack,
-			kRotations,
+			enum SPEED_DIRECTION : UInt32
+			{
+				kLeft,
+				kRight,
+				kForward,
+				kBack,
+				kRotations,
 
-			kTotal
+				kTotal
+			};
 		};
+		using SPEED_DIRECTION = SPEED_DIRECTIONS::SPEED_DIRECTION;
 
 
 		struct MaxSpeeds
@@ -30,8 +34,8 @@ namespace RE
 			};
 
 
-			float	speeds[to_underlying(SPEED_DIRECTION::kTotal)][kTotal];		// 00
-			float	rotateWhileMovingRun;										// 28
+			float	speeds[SPEED_DIRECTIONS::kTotal][kTotal];	// 00
+			float	rotateWhileMovingRun;						// 28
 		};
 		STATIC_ASSERT(sizeof(MaxSpeeds) == 0x2C);
 

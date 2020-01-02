@@ -11,14 +11,14 @@ namespace RE
 	}
 
 
-	float TESTopicInfo::ResponseFlags::GetResetHours() const
+	float TOPIC_INFO_DATA::GetResetHours() const
 	{
-		return static_cast<float>(resetHours);
+		return static_cast<float>(timeUntilReset);
 	}
 
 
 	DialogueItem TESTopicInfo::GetDialogueData(Actor* a_speaker)
 	{
-		return { topic->quest, topic, this, a_speaker };
+		return { parentTopic->ownerQuest, parentTopic, this, a_speaker };
 	}
 }

@@ -26,7 +26,7 @@ namespace RE
 			kEars = 1 << 13,
 			kDecapitateHead = 1 << 20,
 			kDecapitate = 1 << 21,
-			kFX01 = (UInt32)(1 << 31)
+			kFX01 = (UInt32)1 << 31
 		};
 
 
@@ -53,29 +53,6 @@ namespace RE
 		using ArmorType = BIPED_MODEL::ArmorType;
 		using BipedObjectSlot = BIPED_MODEL::BipedObjectSlot;
 		using FirstPersonFlag = BIPED_MODEL::BipedObjectSlot;
-
-
-		enum class BipedObject : UInt32
-		{
-			kNone = static_cast<std::underlying_type_t<BipedObject>>(-1),
-			kHead = 0,
-			kHair = 1,
-			kBody = 2,
-			kHands = 3,
-			kForearms = 4,
-			kAmulet = 5,
-			kRing = 6,
-			kFeet = 7,
-			kCalves = 8,
-			kShield = 9,
-			kTail = 10,
-			kLongHair = 11,
-			kCirclet = 12,
-			kEars = 13,
-			kDecapitateHead = 20,
-			kDecapitate = 21,
-			kFX01 = 31
-		};
 
 
 		virtual ~BGSBipedObjectForm();										// 00

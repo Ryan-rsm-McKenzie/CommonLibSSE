@@ -25,7 +25,7 @@ namespace RE
 
 		// add
 		virtual bool		HasKeyword(BGSKeyword* a_keyword) const;			// 04
-		virtual BGSKeyword*	GetDefaultKeyword();								// 05 - { return 0; }
+		virtual BGSKeyword*	GetKeywordType();									// 05 - { return 0; }
 
 		bool						HasKeyword(FormID a_formID) const;
 		std::optional<BGSKeyword*>	GetKeywordAt(UInt32 a_idx);

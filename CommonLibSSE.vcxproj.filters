@@ -1078,6 +1078,15 @@
     <Filter Include="include\RE\BSAudio\BSIMusicTrack\BGSMusicTrack">
       <UniqueIdentifier>{d4365b09-2bab-48e0-9e6b-19171af4f54b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\ImageSpaceModifierInstance">
+      <UniqueIdentifier>{b4b65515-3a14-475b-8021-979b5c93279f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\ImageSpaceModifierInstance\ImageSpaceModifierInstanceTemp">
+      <UniqueIdentifier>{f51db33e-46be-4d40-9cc8-c0f8cb1a1ec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode\BSNiNode">
+      <UniqueIdentifier>{6988af4c-5ddc-4b9e-8b3e-b8c35f28b854}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -5101,6 +5110,36 @@
     </ClInclude>
     <ClInclude Include="include\RE\EffectArchetypes.h">
       <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ImageSpaceModifierInstance.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\ImageSpaceModifierInstance</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ImageSpaceModifierInstanceTemp.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\ImageSpaceModifierInstance\ImageSpaceModifierInstanceTemp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ImageSpaceModifierInstanceDOF.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\ImageSpaceModifierInstance\ImageSpaceModifierInstanceTemp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSBitField.h">
+      <Filter>include\RE\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\InteriorData.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSNiNode.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode\BSNiNode</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSMultiBoundNode.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode\BSNiNode</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpMoppCode.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BipedObjects.h">
+      <Filter>include\RE\FormComponents\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Sexes.h">
+      <Filter>include\RE\FormComponents\Enums</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,6 +5,6 @@ namespace RE
 {
 	bool TESRace::AllowsPickpocket() const
 	{
-		return (data.flags & Data::Flag::kAllowPickpocket) != Data::Flag::kNone;
+		return (data.flags & RACE_DATA::Flag::kAllowPickpocket) != RACE_DATA::Flag::kNone;
 	}
 }

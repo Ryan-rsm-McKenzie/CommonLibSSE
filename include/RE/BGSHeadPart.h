@@ -48,14 +48,18 @@ namespace RE
 		};
 
 
-		enum class MorphIndex : UInt32
+		struct MorphIndices
 		{
-			kRaceMorph = 0,
-			kDefaultMorph,
-			kChargenMorph,
+			enum MorphIndex : UInt32
+			{
+				kRaceMorph = 0,
+				kDefaultMorph,
+				kChargenMorph,
 
-			kTotal
+				kTotal
+			};
 		};
+		using MorphIndex = MorphIndices::MorphIndex;
 
 
 		struct RecordFlags
@@ -83,16 +87,16 @@ namespace RE
 
 
 		// members
-		Flag					flags;										// 068 - DATA
-		UInt8					pad069;										// 069
-		UInt16					pad06A;										// 06A
-		HeadPartType			type;										// 06C - PNAM
-		BSTArray<BGSHeadPart*>	extraParts;									// 070
-		BGSTextureSet*			textureSet;									// 088 - TNAM
-		TESModelTri				morphs[to_underlying(MorphIndex::kTotal)];	// 090
-		BGSColorForm*			color;										// 108 - CNAM
-		BGSListForm*			validRaces;									// 110 - RNAM
-		BSFixedString			formEditorID;								// 118 - EDID
+		Flag					flags;							// 068 - DATA
+		UInt8					pad069;							// 069
+		UInt16					pad06A;							// 06A
+		HeadPartType			type;							// 06C - PNAM
+		BSTArray<BGSHeadPart*>	extraParts;						// 070
+		BGSTextureSet*			textureSet;						// 088 - TNAM
+		TESModelTri				morphs[MorphIndices::kTotal];	// 090
+		BGSColorForm*			color;							// 108 - CNAM
+		BGSListForm*			validRaces;						// 110 - RNAM
+		BSFixedString			formEditorID;					// 118 - EDID
 	};
 	STATIC_ASSERT(sizeof(BGSHeadPart) == 0x120);
 }

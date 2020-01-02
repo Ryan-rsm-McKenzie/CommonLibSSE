@@ -6,25 +6,8 @@
 
 namespace RE
 {
-	class TESImageSpace : public TESForm
+	struct ImageSpaceBaseData
 	{
-	public:
-		inline static const void* RTTI = RTTI_TESImageSpace;
-
-
-		enum { kTypeID = FormType::ImageSpace };
-
-
-		struct RecordFlags
-		{
-			enum RecordFlag : UInt32
-			{
-				kDeleted = 1 << 5,
-				kIgnored = 1 << 12
-			};
-		};
-
-
 		struct HDR	// HNAM
 		{
 			float	eyeAdaptSpeed;			// 00
@@ -98,6 +81,33 @@ namespace RE
 		STATIC_ASSERT(sizeof(DepthOfField) == 0x10);
 
 
+		HDR				hdr;			// 00 - HNAM
+		Cinematic		cinematic;		// 24 - CNAM
+		Tint			tint;			// 30 - TNAM
+		DepthOfField	depthOfField;	// 40 - DNAM
+	};
+	STATIC_ASSERT(sizeof(ImageSpaceBaseData) == 0x50);
+
+
+	class TESImageSpace : public TESForm
+	{
+	public:
+		inline static const void* RTTI = RTTI_TESImageSpace;
+
+
+		enum { kTypeID = FormType::ImageSpace };
+
+
+		struct RecordFlags
+		{
+			enum RecordFlag : UInt32
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+
+
 		virtual ~TESImageSpace();						// 00
 
 		// override (TESForm)
@@ -106,10 +116,7 @@ namespace RE
 
 
 		// members
-		HDR				hdr;			// 20 - HNAM
-		Cinematic		cinematic;		// 44 - CNAM
-		Tint			tint;			// 50 - TNAM
-		DepthOfField	depthOfField;	// 60 - DNAM
+		ImageSpaceBaseData data;	// 20
 	};
 	STATIC_ASSERT(sizeof(TESImageSpace) == 0x70);
 }

@@ -34,13 +34,13 @@ namespace RE
 		// override (TESForm)
 		virtual bool		Load(TESFile* a_mod) override;					// 06
 		virtual void		InitItemImpl() override;						// 13
-		virtual const char*	GetFormEditorID() override;						// 32 - { return editorID.c_str(); }
-		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { editorID = a_str; }
+		virtual const char*	GetFormEditorID() override;						// 32 - { return formEditorID.c_str(); }
+		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { if (formEditorID == a_str) return false; formEditorID = a_str; return true; }
 
 
 		// members
-		BSFixedString	editorID;		// 58 - EDID
-		BSFixedString	unloadEvent;	// 60 - BNAM
+		BSFixedString	formEditorID;		// 58 - EDID
+		BSFixedString	unloadEventName;	// 60 - BNAM
 	};
 	STATIC_ASSERT(sizeof(TESObjectANIO) == 0x68);
 }

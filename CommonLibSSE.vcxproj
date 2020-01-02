@@ -423,8 +423,10 @@
     <ClInclude Include="include\RE\BGSLocalizedStringDL.h" />
     <ClInclude Include="include\RE\bhkCollisionObject.h" />
     <ClInclude Include="include\RE\bhkNiCollisionObject.h" />
+    <ClInclude Include="include\RE\BipedObjects.h" />
     <ClInclude Include="include\RE\BleedoutCameraState.h" />
     <ClInclude Include="include\RE\BSAnimNoteListener.h" />
+    <ClInclude Include="include\RE\BSBitField.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialEnvmap.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialEye.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialFacegen.h" />
@@ -435,6 +437,8 @@
     <ClInclude Include="include\RE\BSLightingShaderMaterialParallax.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialParallaxOcc.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialSnow.h" />
+    <ClInclude Include="include\RE\BSMultiBoundNode.h" />
+    <ClInclude Include="include\RE\BSNiNode.h" />
     <ClInclude Include="include\RE\BSPointerHandle.h" />
     <ClInclude Include="include\RE\BSResource\FileID.h" />
     <ClInclude Include="include\RE\BSResource\ID.h" />
@@ -449,9 +453,14 @@
     <ClInclude Include="include\RE\DoNothingUnhandledPolicy.h" />
     <ClInclude Include="include\RE\EffectArchetypes.h" />
     <ClInclude Include="include\RE\hkAabb.h" />
+    <ClInclude Include="include\RE\hkpMoppCode.h" />
     <ClInclude Include="include\RE\hkpSolverInfo.h" />
     <ClInclude Include="include\RE\hkpWorldCinfo.h" />
     <ClInclude Include="include\RE\IHandlerFunctor.h" />
+    <ClInclude Include="include\RE\ImageSpaceModifierInstance.h" />
+    <ClInclude Include="include\RE\ImageSpaceModifierInstanceDOF.h" />
+    <ClInclude Include="include\RE\ImageSpaceModifierInstanceTemp.h" />
+    <ClInclude Include="include\RE\InteriorData.h" />
     <ClInclude Include="include\RE\LoadWaitSpinner.h" />
     <ClInclude Include="include\RE\MagicSystem.h" />
     <ClInclude Include="include\RE\ModManagerMenu.h" />
@@ -752,6 +761,7 @@
     <ClInclude Include="include\RE\CommandTable.h" />
     <ClInclude Include="include\RE\ConcreteFormFactory.h" />
     <ClInclude Include="include\RE\ConcreteObjectFormFactory.h" />
+    <ClInclude Include="include\RE\Sexes.h" />
     <ClInclude Include="include\RE\TESCondition.h" />
     <ClInclude Include="include\RE\ConeProjectile.h" />
     <ClInclude Include="include\RE\Console.h" />

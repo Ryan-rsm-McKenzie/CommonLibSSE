@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	template <UInt32 ARG1, UInt32 ARG2>
+	template <UInt32 INDEX_BITS, UInt32 FLAG_BITS>
 	class BSUntypedPointerHandle
 	{
 	public:

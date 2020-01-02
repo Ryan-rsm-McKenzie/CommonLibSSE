@@ -54,7 +54,7 @@ namespace RE
 		virtual void		InitItemImpl() override;								// 13
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword*	GetDefaultKeyword() override;							// 05 - { return BGSDefaultObjectManager::GetSingleton()->objects[193]; } - this index is a nullptr
+		virtual BGSKeyword*	GetKeywordType() override;								// 05
 
 		// add
 		virtual void		Unk_53(void);											// 53 - { return; }

@@ -7,18 +7,22 @@ namespace RE
 {
 	namespace BGSBodyPartDefs
 	{
-		enum class LIMB_ENUM : UInt32
+		struct LIMB_ENUMS
 		{
-			kNone = static_cast<std::underlying_type_t<LIMB_ENUM>>(-1),
-			kTorso = 0,
-			kHead,
-			kEye,
-			kLookAt,
-			kFlyGrab,
-			kSaddle,
+			enum LIMB_ENUM : UInt32
+			{
+				kNone = static_cast<std::underlying_type_t<LIMB_ENUM>>(-1),
+				kTorso = 0,
+				kHead,
+				kEye,
+				kLookAt,
+				kFlyGrab,
+				kSaddle,
 
-			kTotal
+				kTotal
+			};
 		};
+		using LIMB_ENUM = LIMB_ENUMS::LIMB_ENUM;
 
 
 		enum class LIMB_ENUM_8 : UInt8

@@ -2,12 +2,45 @@
 
 #include "RE/BSTList.h"
 #include "RE/FormTypes.h"
+#include "RE/NiColor.h"
+#include "RE/NiPoint2.h"
 #include "RE/TESForm.h"
 
 
 namespace RE
 {
-	class TESRegionData;
+	struct TESRegionDataList;
+
+
+	struct TESRegionPoint
+	{
+		NiPoint2 point;	// 00
+	};
+	STATIC_ASSERT(sizeof(TESRegionPoint) == 0x8);
+
+
+	struct TESRegionPointList : public BSSimpleList<TESRegionPoint*>	// RPLD
+	{
+		struct ScaleResult
+		{
+			TESRegionPoint	point;	// 00
+			float			dist;	// 08
+			float			scale;	// 0C
+		};
+		STATIC_ASSERT(sizeof(ScaleResult) == 0x10);
+
+
+		ScaleResult*	lastScaleResult;		// 10
+		bool			ownsPointMemory;		// 18
+		UInt8			pad19;					// 19
+		UInt16			pad1A;					// 1A
+		NiPoint2		minimums;				// 1C
+		NiPoint2		maximums;				// 24
+		UInt32			distanceInsideAtMax;	// 2C - RPLI
+		UInt32			count;					// 30
+		UInt32			pad34;					// 34
+	};
+	STATIC_ASSERT(sizeof(TESRegionPointList) == 0x38);
 
 
 	class TESRegion : public TESForm
@@ -30,38 +63,6 @@ namespace RE
 		};
 
 
-		struct RegionArea
-		{
-			struct Point
-			{
-				float	x;	// 00
-				float	y;	// 04
-			};
-			STATIC_ASSERT(sizeof(Point) == 0x8);
-
-
-			struct Unk10
-			{
-				UInt64	unk00;	// 00
-				UInt64	unk08;	// 08
-			};
-			STATIC_ASSERT(sizeof(Unk10) == 0x10);
-
-
-			BSSimpleList<Point*>	regionPointListData;	// 00 - RPLD
-			Unk10*					unk10;					// 10
-			UInt32					unk18;					// 18
-			float					xMin;					// 1C
-			float					yMin;					// 20
-			float					xMax;					// 24
-			float					yMax;					// 28
-			UInt32					edgeFallOff;			// 2C - RPLI
-			UInt32					numPoints;				// 30
-			UInt32					unk34;					// 34
-		};
-		STATIC_ASSERT(sizeof(RegionArea) == 0x38);
-
-
 		virtual ~TESRegion();								// 00
 
 		// override (TESForm)
@@ -74,13 +75,12 @@ namespace RE
 
 
 		// members
-		BSSimpleList<TESRegionData*>*	regionDataEntries;	// 20
-		BSSimpleList<RegionArea*>*		regionAreas;		// 28
-		TESWorldSpace*					worldspace;			// 30 - WNAM
-		UInt64							unk38;				// 38
-		UInt64							unk40;				// 40
-		UInt32							unk48;				// 48
-		UInt32							unk4C;				// 4C
+		TESRegionDataList*					dataList;		// 20
+		BSSimpleList<TESRegionPointList*>*	pointLists;		// 28
+		TESWorldSpace*						worldSpace;		// 30 - WNAM
+		TESWeather*							currentWeather;	// 38
+		NiColor								emittanceColor;	// 40
+		UInt32								pad4C;			// 4C
 	};
 	STATIC_ASSERT(sizeof(TESRegion) == 0x50);
 }

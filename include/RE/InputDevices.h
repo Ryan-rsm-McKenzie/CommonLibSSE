@@ -3,14 +3,18 @@
 
 namespace RE
 {
-	enum class INPUT_DEVICE : UInt32
+	struct INPUT_DEVICES
 	{
-		kNone = static_cast<std::underlying_type_t<INPUT_DEVICE>>(-1),
-		kKeyboard = 0,
-		kMouse,
-		kGamepad,
-		kVirtualKeyboard,
+		enum INPUT_DEVICE : UInt32
+		{
+			kNone = static_cast<std::underlying_type_t<INPUT_DEVICE>>(-1),
+			kKeyboard = 0,
+			kMouse,
+			kGamepad,
+			kVirtualKeyboard,
 
-		kTotal
+			kTotal
+		};
 	};
+	using INPUT_DEVICE = INPUT_DEVICES::INPUT_DEVICE;
 }

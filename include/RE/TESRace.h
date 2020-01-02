@@ -7,9 +7,12 @@
 #include "RE/BGSKeywordForm.h"
 #include "RE/BGSSkinForm.h"
 #include "RE/BGSTextureModel.h"
+#include "RE/BipedObjects.h"
 #include "RE/BSFixedString.h"
 #include "RE/BSTArray.h"
 #include "RE/FormTypes.h"
+#include "RE/NiPoint3.h"
+#include "RE/Sexes.h"
 #include "RE/TESDescription.h"
 #include "RE/TESForm.h"
 #include "RE/TESFullName.h"
@@ -29,6 +32,113 @@ namespace RE
 	}
 
 
+	enum class RACE_SIZE : UInt32
+	{
+		kSmall = 0,
+		kMedium = 1,
+		kLarge = 2,
+		kExtraLarge = 3
+	};
+
+
+	struct RACE_DATA
+	{
+		enum
+		{
+			kNumSkillBoosts = 7
+		};
+
+
+		enum class Flag : UInt32
+		{
+			kNone = 0,
+			kPlayable = 1 << 0,
+			kFaceGenHead = 1 << 1,
+			kChild = 1 << 2,
+			kTiltFrontBack = 1 << 3,
+			kTiltLeftRight = 1 << 4,
+			kNoShadow = 1 << 5,
+			kSwims = 1 << 6,
+			kFlies = 1 << 7,
+			kWalks = 1 << 8,
+			kImmobile = 1 << 9,
+			kNotPushable = 1 << 10,
+			kNoCombatInWater = 1 << 11,
+			kNoRotatingToHeadTrack = 1 << 12,
+			kDontShowBloodSpray = 1 << 13,
+			kDontShowBloodDecal = 1 << 14,
+			kUseHeadTrackAnims = 1 << 15,
+			kSpellsAlignWithMagicNode = 1 << 16,
+			kUseWorldRaycastsForFootIK = 1 << 17,
+			kAllowRagdollCollision = 1 << 18,
+			kRegenHPInCombat = 1 << 19,
+			kCantOpenDoors = 1 << 20,
+			kAllowPCDialogue = 1 << 21,
+			kNoKnockdowns = 1 << 22,
+			kAllowPickpocket = 1 << 23,
+			kAlwaysUseProxyController = 1 << 24,
+			kDontShowWeaponBlood = 1 << 25,
+			kOverlayHeadPartList = 1 << 26,
+			kOverrideHeadPartList = 1 << 27,
+			kCanPickupItems = 1 << 28,
+			kAllowMultipleMembraneShaders = 1 << 29,
+			kCanDualWield = 1 << 30,
+			kAvoidsRoads = (UInt32)1 << 31,
+		};
+
+
+		enum class Flag2 : UInt32
+		{
+			kNone = 0,
+			kUseAdvancedAvoidance = 1 << 0,
+			kNonHostile = 1 << 1,
+			kAllowMountedCombat = 1 << 4
+		};
+
+
+		struct SkillBoost
+		{
+			ActorValue8	skill;	// 0
+			UInt8		bonus;	// 1
+		};
+		STATIC_ASSERT(sizeof(SkillBoost) == 0x2);
+
+
+		SkillBoost		skillBoosts[kNumSkillBoosts];	// 00
+		UInt16			pad0E;							// 0E
+		float			height[SEXES::kTotal];			// 10
+		float			weight[SEXES::kTotal];			// 18
+		Flag			flags;							// 20
+		float			startingHealth;					// 24
+		float			startingMagicka;				// 28
+		float			startingStamina;				// 2C
+		float			baseCarryWeight;				// 30
+		float			baseMass;						// 34
+		float			accelerate;						// 38
+		float			decelerate;						// 3C
+		RACE_SIZE		raceSize;						// 40
+		BIPED_OBJECT	headObject;						// 44
+		BIPED_OBJECT	hairObject;						// 48
+		float			injuredHealthPercent;			// 4C
+		BIPED_OBJECT	shieldObject;					// 50
+		float			healthRegen;					// 54
+		float			magickaRegen;					// 58
+		float			staminaRegen;					// 5C
+		float			unarmedDamage;					// 60
+		float			unarmedReach;					// 64
+		BIPED_OBJECT	bodyObject;						// 68
+		float			aimAngleTolerance;				// 6C
+		float			flightRadius;					// 70
+		float			angleAccelerate;				// 74
+		float			angleTolerance;					// 78
+		Flag2			flags2;							// 7C
+		NiPoint3		mountOffset;					// 80
+		NiPoint3		dismountOffset;					// 8C
+		NiPoint3		mountCameraOffset;				// 98
+	};
+	STATIC_ASSERT(sizeof(RACE_DATA) == 0xA4);
+
+
 	class TESRace :
 		public TESForm,				// 000
 		public TESFullName,			// 020
@@ -44,12 +154,6 @@ namespace RE
 
 
 		enum { kTypeID = FormType::Race };
-
-
-		enum
-		{
-			kNumBipedObjectNames = 32
-		};
 
 
 		enum class EquipmentFlag : UInt32
@@ -97,148 +201,7 @@ namespace RE
 		};
 
 
-		struct Sexes
-		{
-			enum
-			{
-				kMale = 0,
-				kFemale,
-				kTotal
-			};
-		};
-
-
-		struct Data
-		{
-			enum
-			{
-				kNumSkillBoosts = 7
-			};
-
-
-			enum class Flag : UInt32
-			{
-				kNone = 0,
-				kPlayable = 1 << 0,
-				kFaceGenHead = 1 << 1,
-				kChild = 1 << 2,
-				kTiltFrontBack = 1 << 3,
-				kTiltLeftRight = 1 << 4,
-				kNoShadow = 1 << 5,
-				kSwims = 1 << 6,
-				kFlies = 1 << 7,
-				kWalks = 1 << 8,
-				kImmobile = 1 << 9,
-				kNotPushable = 1 << 10,
-				kNoCombatInWater = 1 << 11,
-				kNoRotatingToHeadTrack = 1 << 12,
-				kDontShowBloodSpray = 1 << 13,
-				kDontShowBloodDecal = 1 << 14,
-				kUseHeadTrackAnims = 1 << 15,
-				kSpellsAlignWithMagicNode = 1 << 16,
-				kUseWorldRaycastsForFootIK = 1 << 17,
-				kAllowRagdollCollision = 1 << 18,
-				kRegenHPInCombat = 1 << 19,
-				kCantOpenDoors = 1 << 20,
-				kAllowPCDialogue = 1 << 21,
-				kNoKnockdowns = 1 << 22,
-				kAllowPickpocket = 1 << 23,
-				kAlwaysUseProxyController = 1 << 24,
-				kDontShowWeaponBlood = 1 << 25,
-				kOverlayHeadPartList = 1 << 26,
-				kOverrideHeadPartList = 1 << 27,
-				kCanPickupItems = 1 << 28,
-				kAllowMultipleMembraneShaders = 1 << 29,
-				kCanDualWield = 1 << 30,
-				kAvoidsRoads = (UInt32)1 << 31,
-			};
-
-
-			enum class Size : UInt32
-			{
-				kSmall = 0,
-				kMedium = 1,
-				kLarge = 2,
-				kExtraLarge = 3
-			};
-
-
-			enum class Flag2 : UInt32
-			{
-				kNone = 0,
-				kUseAdvancedAvoidance = 1 << 0,
-				kNonHostile = 1 << 1,
-				kAllowMountedCombat = 1 << 4
-			};
-
-
-			struct SkillBoost
-			{
-				ActorValue8	skill;	// 0
-				UInt8		bonus;	// 1
-			};
-			STATIC_ASSERT(sizeof(SkillBoost) == 0x2);
-
-
-			struct MountData
-			{
-				float	offsetX;	// 00
-				float	offsetY;	// 04
-				float	unk08;		// 08
-				float	unk0C;		// 0C
-				float	unk19;		// 10
-				float	unk14;		// 14
-				float	unk18;		// 18
-				float	unk1C;		// 1C
-				float	unk20;		// 20
-			};
-			STATIC_ASSERT(sizeof(MountData) == 0x24);
-
-
-			SkillBoost	skillBoosts[kNumSkillBoosts];	// 00
-			UInt16		unk0E;							// 0E
-			float		maleHeight;						// 10
-			float		femaleHeight;					// 14
-			float		maleWeight;						// 18
-			float		femaleWeight;					// 1C
-			Flag		flags;							// 20
-			float		startingHealth;					// 24
-			float		startingMagicka;				// 28
-			float		startingStamina;				// 2C
-			float		baseCarryWeight;				// 30
-			float		baseMass;						// 34
-			float		accelerationRate;				// 38
-			float		decelerationRate;				// 3C
-			Size		size;							// 40
-			BipedObject	headBipedObject;				// 44
-			BipedObject	hairBipedObject;				// 48
-			float		injuredHealthPct;				// 4C
-			BipedObject	shieldBipedObject;				// 50
-			float		healthRegen;					// 54
-			float		magickaRegen;					// 58
-			float		staminaRegen;					// 5C
-			float		unarmedDamage;					// 60
-			float		unarmedReach;					// 64
-			BipedObject	bodyBipedObject;				// 68
-			float		aimAngleTolerance;				// 6C
-			float		flightRadius;					// 70
-			float		angularAccelerationRate;		// 74
-			float		anuglarTolerance;				// 78
-			Flag2		flags2;							// 7C
-			MountData	mountData;						// 88
-		};
-		STATIC_ASSERT(sizeof(Data) == 0xA4);
-
-
-		struct FaceGen
-		{
-			float	mainClamp;	// 0 - PNAM
-			float	faceClamp;	// 4 - UNAM
-		};
-		STATIC_ASSERT(sizeof(FaceGen) == 0x8);
-
-
-		struct HeadData
+		struct FaceRelatedData
 		{
 			enum
 			{
@@ -317,28 +280,14 @@ namespace RE
 			Morph						availableMorphs[kNumVariants];	// 00
 			UInt32						numFlagsSet[kNumVariants];		// 80
 			BSTArray<TintAsset*>*		tintMasks;						// 90
-			BSTArray<BGSTextureSet*>*	faceDetailsTextureSetList;		// 98 - FTSM / FTSF
-			BGSTextureSet*				defaultFaceTexture;				// A0 - DFTM / DFTF
-			BSTArray<TESNPC*>*			racePresets;					// A8 - RPRM / RPRF
+			BSTArray<BGSTextureSet*>*	faceDetailsTextureSets;			// 98 - FTSM / FTSF
+			BGSTextureSet*				defaultFaceDetailsTextureSet;	// A0 - DFTM / DFTF
+			BSTArray<TESNPC*>*			presetNPCs;						// A8 - RPRM / RPRF
 			BSTArray<BGSColorForm*>*	availableHairColors;			// B0 - AHCM / AHCF
 			BGSColorForm*				defaultHairColor;				// B8
 			BSTArray<BGSHeadPart*>*		headParts;						// C0 - HEAD
 		};
-		STATIC_ASSERT(sizeof(HeadData) == 0xC8);
-
-
-		struct BodyData
-		{
-			enum
-			{
-				kBodyTexture,
-				kNumParts
-			};
-
-
-			BGSTextureModel	parts[Sexes::kTotal][kNumParts];	// 00
-		};
-		STATIC_ASSERT(sizeof(BodyData) == 0x50);
+		STATIC_ASSERT(sizeof(FaceRelatedData) == 0xC8);
 
 
 		struct UnkData
@@ -360,48 +309,49 @@ namespace RE
 		virtual bool		Load(TESFile* a_mod) override;					// 06
 		virtual void		InitItemImpl() override;						// 13
 		virtual bool		GetPlayable() const override;					// 19
-		virtual const char*	GetFormEditorID() override;						// 32 - { return editorID.c_str(); }
-		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { editorID = a_str; }
+		virtual const char*	GetFormEditorID() override;						// 32 - { return formEditorID.c_str(); }
+		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { formEditorID = a_str; }
 
 		bool AllowsPickpocket() const;
 
 
 		// members
-		TESModel					skeletalModels[Sexes::kTotal];					// 098 - ANAM
-		Data						data;											// 0E8
-		FaceGen						faceGen;										// 18C
-		UInt32						unk194;											// 194 - TESModel::unk24
-		BodyData					bodyData;										// 198
-		BGSBehaviorGraphModel		behaviourGraphs[Sexes::kTotal];					// 1E8
-		BSFixedString				behaviorPaths[Sexes::kTotal];					// 238
-		BSFixedString				behaviorNames[Sexes::kTotal];					// 248
-		BGSVoiceType*				voiceTypes[Sexes::kTotal];						// 258 - VTCK
+		TESModel					skeletonModels[SEXES::kTotal];					// 098 - ANAM
+		RACE_DATA					data;											// 0E8
+		float						clampFaceGeoValue;								// 18C - PNAM
+		float						clampFaceGeoValue2;								// 18C - UNAM
+		UInt32						pad194;											// 194
+		BGSTextureModel				bodyTextureModels[SEXES::kTotal];				// 198
+		BGSBehaviorGraphModel		behaviorGraphs[SEXES::kTotal];					// 1E8
+		BSFixedString				rootBehaviorGraphNames[SEXES::kTotal];			// 238
+		BSFixedString				behaviorGraphProjectNames[SEXES::kTotal];		// 248
+		BGSVoiceType*				defaultVoiceTypes[SEXES::kTotal];				// 258 - VTCK
 		BGSBodyPartData*			bodyPartData;									// 268 - GNAM
-		TESObjectARMO*				decapitateArmors[Sexes::kTotal];				// 270 - DNAM
+		TESObjectARMO*				decapitateArmors[SEXES::kTotal];				// 270 - DNAM
 		UnkData						unk280;											// 280
 		UnkData						unk298;											// 298
 		UInt64						unk2B0;											// 2B0
 		UInt64						unk2B8;											// 2B8
 		UInt64						unk2C0;											// 2C0
 		UInt64						unk2C8;											// 2C8
-		AttackAnimationArrayMap*	attackAnimationArrayMap[Sexes::kTotal];			// 2D0
-		BSFixedString				editorID;										// 2E0 - EDID
-		BGSMaterialType*			materialType;									// 2E8 - NAM4
+		AttackAnimationArrayMap*	attackAnimationArrayMap[SEXES::kTotal];			// 2D0
+		BSFixedString				formEditorID;									// 2E0 - EDID
+		BGSMaterialType*			bloodImpactMaterial;							// 2E8 - NAM4
 		BGSImpactDataSet*			impactDataSet;									// 2F0 - NAM5
-		BGSArtObject*				decapitationFX;									// 2F8 - NAM7
-		BGSSoundDescriptorForm*		openLootSound;									// 300 - ONAM
-		BGSSoundDescriptorForm*		closeLootSound;									// 308 - LNAM
-		BSFixedString				bipedObjectNames[kNumBipedObjectNames];			// 310 - NAME
+		BGSArtObject*				dismemberBlood;									// 2F8 - NAM7
+		BGSSoundDescriptorForm*		corpseOpenSound;								// 300 - ONAM
+		BGSSoundDescriptorForm*		corpseCloseSound;								// 308 - LNAM
+		BSFixedString				bipedObjectNameA[BIPED_OBJECTS::kEditorTotal];	// 310 - NAME
 		BSTArray<BGSEquipSlot*>		equipSlots;										// 410 - QNAM
-		EquipmentFlag				equipmentFlags;									// 428 - VNAM - bits 13+ are always set
+		EquipmentFlag				validEquipTypes;								// 428 - VNAM - bits 13+ are always set
 		UInt32						unk42C;											// 42C - TESModel::unk24
 		BGSEquipSlot*				unarmedEquipSlot;								// 430 - UNES
 		TESRace*					morphRace;										// 438 - NAM8
-		TESRace*					armorRace;										// 440 - RNAM
+		TESRace*					armorParentRace;								// 440 - RNAM
 		UnkData						unk448;											// 448
-		BSTArray<BSFixedString>		phenomeTargetNames;								// 460 - PHTN
-		BGSMovementType*			baseMovementDefaults[MovementTypes::kTotal];	// 478 - WKMV / RNMV / WMMV / FLMV / SNMV / SPMV
-		HeadData*					headData[Sexes::kTotal];						// 4A8
+		BSTArray<BSFixedString>		phonemeTargets;									// 460 - PHTN
+		BGSMovementType*			baseMoveTypes[MovementTypes::kTotal];			// 478 - WKMV / RNMV / WMMV / FLMV / SNMV / SPMV
+		FaceRelatedData*			faceRelatedData[SEXES::kTotal];					// 4A8
 	};
 	STATIC_ASSERT(sizeof(TESRace) == 0x4B8);
 }

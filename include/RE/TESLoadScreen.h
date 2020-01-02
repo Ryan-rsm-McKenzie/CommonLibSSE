@@ -29,44 +29,18 @@ namespace RE
 		};
 
 
-		struct Data
+		struct LoadNIFData
 		{
-			struct InitialRotation	// RNAM
-			{
-				SInt16	x;	// 0
-				SInt16	y;	// 2
-				SInt16	z;	// 4
-			};
-			STATIC_ASSERT(sizeof(InitialRotation) == 0x6);
-
-
-			struct RotationOffsetConstraints	// ONAM
-			{
-				SInt16	min;	// 0
-				SInt16	max;	// 2
-			};
-			STATIC_ASSERT(sizeof(RotationOffsetConstraints) == 0x4);
-
-
-			struct InitialTranslationOffset
-			{
-				float	x;		// 00
-				float	y;		// 04
-				float	z;		// 08
-				UInt32	pad0C;	// 0C
-			};
-			STATIC_ASSERT(sizeof(InitialTranslationOffset) == 0x10);
-
-
-			TESObjectSTAT*				loadingScreenNIF;			// 00 - NNAM
-			float						initialScale;				// 08 - SNAM
-			InitialRotation				initialRotation;			// 0C - RNAM
-			RotationOffsetConstraints	rotationOffsetConstraints;	// 12 - ONAM
-			UInt16						pad16;						// 16
-			InitialTranslationOffset	initialTranslationOffset;	// 18 - XNAM
-			TESModel					cameraPath;					// 28 - MOD2
+			TESBoundObject*	loadNIF;						// 00 - NNAM
+			float			initialScale;					// 08 - SNAM
+			SInt16			rotationConstraints[3];			// 0C - RNAM
+			SInt16			rotationOffsetConstraints[2];	// 12 - ONAM
+			UInt16			pad16;							// 16
+			float			initialTranslationOffset[3];	// 18 - XNAM
+			UInt32			pad24;							// 24
+			TESModel		cameraPath;						// 28 - MOD2
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x50);
+		STATIC_ASSERT(sizeof(LoadNIFData) == 0x50);
 
 
 		virtual ~TESLoadScreen();						// 00
@@ -80,8 +54,8 @@ namespace RE
 
 		// members
 		TESCondition	conditions;		// 20
-		Data*			data;			// 28
-		BSFixedString	description;	// 30
+		LoadNIFData*	loadNIFData;	// 28
+		BSFixedString	loadingText;	// 30
 	};
 	STATIC_ASSERT(sizeof(TESLoadScreen) == 0x38);
 }

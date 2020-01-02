@@ -7,16 +7,20 @@
 
 namespace RE
 {
-	enum class ACTOR_MOVEMENT_TYPE : UInt32
+	struct ACTOR_MOVEMENT_TYPES
 	{
-		kWalk = 0,
-		kRun = 1,
-		kSneak = 2,
-		kBleedout = 3,
-		kSwim = 4,
+		enum ACTOR_MOVEMENT_TYPE : UInt32
+		{
+			kWalk = 0,
+			kRun = 1,
+			kSneak = 2,
+			kBleedout = 3,
+			kSwim = 4,
 
-		kTotal = 5
+			kTotal = 5
+		};
 	};
+	using ACTOR_MOVEMENT_TYPE = ACTOR_MOVEMENT_TYPES::ACTOR_MOVEMENT_TYPE;
 
 
 	class BGSFootstepSet : public TESForm
@@ -47,7 +51,7 @@ namespace RE
 
 
 		// members
-		BSTArray<BGSFootstep*> entries[to_underlying(ACTOR_MOVEMENT_TYPE::kTotal)];	// 20
+		BSTArray<BGSFootstep*> entries[ACTOR_MOVEMENT_TYPES::kTotal];	// 20
 	};
 	STATIC_ASSERT(sizeof(BGSFootstepSet) == 0x98);
 }

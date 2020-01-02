@@ -9,30 +9,34 @@ namespace RE
 	class UserEvents : public BSTSingletonSDM<UserEvents>
 	{
 	public:
-		enum class INPUT_CONTEXT_ID : UInt32
+		struct INPUT_CONTEXT_IDS
 		{
-			kGameplay = 0,
-			kMenuMode,
-			kConsole,
-			kItemMenu,
-			kInventory,
-			kDebugText,
-			kFavorites,
-			kMap,
-			kStats,
-			kCursor,
-			kBook,
-			kDebugOverlay,
-			kJournal,
-			kTFCMode,
-			kMapDebug,
-			kLockpicking,
-			kFavor,
+			enum INPUT_CONTEXT_ID : UInt32
+			{
+				kGameplay = 0,
+				kMenuMode,
+				kConsole,
+				kItemMenu,
+				kInventory,
+				kDebugText,
+				kFavorites,
+				kMap,
+				kStats,
+				kCursor,
+				kBook,
+				kDebugOverlay,
+				kJournal,
+				kTFCMode,
+				kMapDebug,
+				kLockpicking,
+				kFavor,
 
-			kTotal = 17,
+				kTotal = 17,
 
-			kNone = 18
+				kNone = 18
+			};
 		};
+		using INPUT_CONTEXT_ID = INPUT_CONTEXT_IDS::INPUT_CONTEXT_ID;
 
 
 		enum class USER_EVENT_FLAG : UInt32

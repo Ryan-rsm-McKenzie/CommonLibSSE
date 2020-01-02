@@ -29,9 +29,9 @@ namespace RE
 	}
 
 
-	TESNPC::Sex TESNPC::GetSex() const
+	SEX TESNPC::GetSex() const
 	{
-		return IsFemale() ? Sex::kFemale : Sex::kMale;
+		return IsFemale() ? SEX::kFemale : SEX::kMale;
 	}
 
 
@@ -75,11 +75,11 @@ namespace RE
 			return height;
 		}
 
-		switch (GetSex()) {
-		case Sex::kMale:
-			return race->data.maleHeight * height;
-		case Sex::kFemale:
-			return race->data.femaleHeight * height;
+		auto sex = GetSex();
+		switch (sex) {
+		case SEX::kMale:
+		case SEX::kFemale:
+			return race->data.height[sex] * height;
 		default:
 			return 0.0;
 		}

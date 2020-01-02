@@ -67,7 +67,7 @@ namespace RE
 	struct LOADED_REF_DATA
 	{
 		BSTSmallArray<void*>	unk00;					// 00 - handleList?
-		UInt64					unk18;					// 18 - TESWaterForm* currentWaterType?
+		TESWaterForm*			currentWaterType;		// 18
 		float					relevantWaterHeight;	// 20
 		float					cachedRadius;			// 24
 		UInt16					flags;					// 28

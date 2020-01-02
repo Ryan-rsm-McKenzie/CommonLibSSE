@@ -18,7 +18,10 @@ namespace RE
 
 
 		// members
-		UInt64 unk18;	// 18
+		bool	ownsRegionMemory;	// 18
+		UInt8	pad19;				// 19
+		UInt16	pad1A;				// 1A
+		UInt32	pad1C;				// 1C
 	};
 	STATIC_ASSERT(sizeof(TESRegionList) == 0x20);
 }

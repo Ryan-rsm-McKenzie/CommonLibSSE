@@ -46,7 +46,7 @@ namespace RE
 
 		struct InputContext
 		{
-			BSTArray<UserEventMapping> deviceMappings[to_underlying(INPUT_DEVICE::kTotal)];	// 00
+			BSTArray<UserEventMapping> deviceMappings[INPUT_DEVICES::kTotal];	// 00
 		};
 		STATIC_ASSERT(sizeof(InputContext) == 0x60);
 
@@ -83,16 +83,16 @@ namespace RE
 
 
 		// members
-		InputContext*				controlMap[to_underlying(InputContextID::kTotal)];	// 060
-		BSTArray<LinkedMapping>		linkedMappings;										// 0E8
-		BSTArray<InputContextID>	contextPriorityStack;								// 100
-		UEFlag						enabledControls;									// 118
-		UEFlag						unk11C;												// 11C
-		SInt8						textEntryCount;										// 120
-		bool						ignoreKeyboardMouse;								// 121
-		bool						ignoreActivateDisabledEvents;						// 122
-		UInt8						pad123;												// 123
-		PC_GAMEPAD_TYPE				gamePadMapType;										// 124
+		InputContext*				controlMap[InputContextID::kTotal];	// 060
+		BSTArray<LinkedMapping>		linkedMappings;						// 0E8
+		BSTArray<InputContextID>	contextPriorityStack;				// 100
+		UEFlag						enabledControls;					// 118
+		UEFlag						unk11C;								// 11C
+		SInt8						textEntryCount;						// 120
+		bool						ignoreKeyboardMouse;				// 121
+		bool						ignoreActivateDisabledEvents;		// 122
+		UInt8						pad123;								// 123
+		PC_GAMEPAD_TYPE				gamePadMapType;						// 124
 	};
 	STATIC_ASSERT(sizeof(ControlMap) == 0x128);
 }

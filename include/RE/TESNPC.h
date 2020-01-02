@@ -10,6 +10,7 @@
 #include "RE/Color.h"
 #include "RE/FormTypes.h"
 #include "RE/MemoryManager.h"
+#include "RE/Sexes.h"
 #include "RE/SoundLevels.h"
 #include "RE/TESActorBase.h"
 #include "RE/TESRaceForm.h"
@@ -37,14 +38,6 @@ namespace RE
 
 
 		enum { kTypeID = FormType::NPC };
-
-
-		enum class Sex : UInt8
-		{
-			kError = static_cast<std::underlying_type_t<Sex>>(-1),
-			kMale = 0,
-			kFemale = 1
-		};
 
 
 		struct ChangeFlags
@@ -238,7 +231,7 @@ namespace RE
 		UInt32			GetNumBaseOverlays() const;
 		TESRace*		GetRace();
 		TESNPC*			GetRootTemplate();
-		Sex				GetSex() const;
+		SEX				GetSex() const;
 		bool			HasOverlays();
 		void			SetFaceTexture(BGSTextureSet* a_textureSet);
 		void			SetHairColor(BGSColorForm* a_hairColor);

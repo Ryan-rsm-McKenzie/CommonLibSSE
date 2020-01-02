@@ -579,7 +579,7 @@ namespace RE
 		BSTSmartPointer<BipedAnim>				biped;								// 260
 		float									armorRating;						// 268
 		float									armorBaseFactorSum;					// 26C
-		UInt8									soundCallBackSet;					// 271
+		SInt8									soundCallBackSet;					// 271
 		UInt8									unk271;								// 270
 		UInt8									unk272;								// 272
 		UInt8									unk273;								// 273

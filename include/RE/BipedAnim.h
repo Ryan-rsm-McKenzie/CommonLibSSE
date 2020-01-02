@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BipedObjects.h"
 #include "RE/BSIntrusiveRefCounted.h"
 #include "RE/BSPointerHandle.h"
 #include "RE/NiSmartPointer.h"
@@ -44,12 +45,12 @@ namespace RE
 		void UpdateWeightData();
 
 
-		UInt32			pad0004;				// 0000
-		NiNode*			root;					// 0008
-		BIPOBJECT		objects[42];			// 0010
-		BIPOBJECT		bufferedObjects[42];	// 13C0
-		ObjectRefHandle	actorRef;				// 2770
-		UInt32			pad2774;				// 2774
+		UInt32			pad0004;								// 0004
+		NiNode*			root;									// 0008
+		BIPOBJECT		objects[BIPED_OBJECTS::kTotal];			// 0010
+		BIPOBJECT		bufferedObjects[BIPED_OBJECTS::kTotal];	// 13C0
+		ObjectRefHandle	actorRef;								// 2770
+		UInt32			pad2774;								// 2774
 
 	private:
 		void Dtor();

@@ -47,15 +47,19 @@ namespace RE
 		STATIC_ASSERT(sizeof(Variation) == 0x18);
 
 
-		enum class VariationID : UInt32
+		struct VariationIDs
 		{
-			kNone = static_cast<std::underlying_type_t<VariationID>>(-1),
-			kOne = 0,
-			kTwo,
-			kThree,
+			enum VariationID : UInt32
+			{
+				kNone = static_cast<std::underlying_type_t<VariationID>>(-1),
+				kOne = 0,
+				kTwo,
+				kThree,
 
-			kTotal
+				kTotal
+			};
 		};
+		using VariationID = VariationIDs::VariationID;
 
 
 		virtual ~TESShout();							// 00
@@ -67,7 +71,7 @@ namespace RE
 
 
 		// members
-		Variation variations[to_underlying(VariationID::kTotal)];	// 60 - SNAM
+		Variation variations[VariationIDs::kTotal];	// 60 - SNAM
 	};
 	STATIC_ASSERT(sizeof(TESShout) == 0xA8);
 }

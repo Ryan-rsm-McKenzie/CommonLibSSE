@@ -16,10 +16,9 @@ namespace RE
 	}
 
 
-	auto TESObjectCELL::GetCoordinates()
-		-> Coordinates*
+	EXTERIOR_DATA* TESObjectCELL::GetCoordinates()
 	{
-		return IsExteriorCell() ? lightingCoordinates.coordinates : 0;
+		return IsExteriorCell() ? cellData.exterior : 0;
 	}
 
 
@@ -30,10 +29,9 @@ namespace RE
 	}
 
 
-	auto TESObjectCELL::GetLighting()
-		-> Lighting*
+	INTERIOR_DATA* TESObjectCELL::GetLighting()
 	{
-		return IsInteriorCell() ? lightingCoordinates.lighting : 0;
+		return IsInteriorCell() ? cellData.interior : 0;
 	}
 
 

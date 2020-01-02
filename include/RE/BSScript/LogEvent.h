@@ -13,7 +13,7 @@ namespace RE
 				kInfo,
 				kWarning,
 				kError,
-				kUnk3
+				kFatal
 			};
 
 

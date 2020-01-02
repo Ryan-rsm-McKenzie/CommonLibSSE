@@ -2,6 +2,9 @@
 
 #include "RE/Color.h"
 #include "RE/FormTypes.h"
+#include "RE/NiColor.h"
+#include "RE/NiPoint3.h"
+#include "RE/NiSmartPointer.h"
 #include "RE/TESAttackDamageForm.h"
 #include "RE/TESForm.h"
 #include "RE/TESFullName.h"
@@ -10,6 +13,73 @@
 
 namespace RE
 {
+	class BSWaterShaderMaterial;
+	class NiTexture;
+
+
+	struct WaterShaderData	// DNAM
+	{
+		struct DepthProperties
+		{
+			float	reflections;		// D0
+			float	refraction;			// D4
+			float	normals;			// D8
+			float	specularLighting;	// DC
+		};
+		STATIC_ASSERT(sizeof(DepthProperties) == 0x10);
+
+
+		float			unk00;					// 00
+		float			unk04;					// 04
+		float			unk08;					// 08
+		float			unk0C;					// 0C
+		float			sunSpecularPower;		// 10
+		float			reflectionAmount;		// 14
+		float			fresnelAmount;			// 18
+		UInt32			unk1C;					// 1C
+		float			aboveWaterFogDistNear;	// 20
+		float			aboveWaterFogDistFar;	// 24
+		Color			shallowWaterColor;		// 28
+		Color			deepWaterColor;			// 2C
+		Color			reflectionWaterColor;	// 30
+		UInt32			unk34;					// 34
+		float			unk38;					// 38
+		float			unk3C;					// 3C
+		float			unk40;					// 40
+		float			unk44;					// 44
+		float			displacementSize;		// 48
+		float			displacementForce;		// 4C
+		float			displacementVelocity;	// 50
+		float			displacementFalloff;	// 54
+		float			displacementDampener;	// 58
+		float			unk5C;					// 5C
+		float			noiseFalloff;			// 60
+		float			noiseWindDirectionA[3];	// 64
+		float			noiseWindSpeedA[3];		// 70
+		float			unk7C;					// 7C
+		float			unk80;					// 80
+		float			aboveWaterFogAmount;	// 84
+		float			unk88;					// 88
+		float			underwaterFogAmount;	// 8C
+		float			underwaterFogDistNear;	// 90
+		float			underwaterFogDistFar;	// 94
+		float			refractionMagnitude;	// 98
+		float			specularPower;			// 9C
+		float			unkA0;					// A0
+		float			specularRadius;			// A4
+		float			specularBrightness;		// A8
+		float			uvScaleA[3];			// AC
+		float			amplitudeA[3];			// B8
+		float			reflectionMagnitude;	// C4
+		float			sunSparkleMagnitude;	// C8
+		float			sunSpecularMagnitude;	// CC
+		DepthProperties	depthProperties;		// D0
+		float			sunSparklePower;		// E0
+		float			flowmapScale;			// E4
+	};
+	STATIC_ASSERT(sizeof(WaterShaderData) == 0xE8);
+
+
 	class TESWaterForm :
 		public TESForm,				// 000
 		public TESFullName,			// 020
@@ -41,126 +111,6 @@ namespace RE
 		};
 
 
-		struct Layers
-		{
-			enum
-			{
-				kLayerOne = 0,
-				kLayerTwo,
-				kLayerThree,
-
-				kTotal
-			};
-		};
-
-
-		struct FlowNormals
-		{
-			TESTexture noiseTexture;	// 00
-		};
-		STATIC_ASSERT(sizeof(FlowNormals) == 0x10);
-
-
-		struct VisualData	// DNAM
-		{
-			struct DisplacementSimulator
-			{
-				float	startingSize;	// 00
-				float	force;			// 04
-				float	velocity;		// 08
-				float	falloff;		// 0C
-				float	dampener;		// 10
-			};
-			STATIC_ASSERT(sizeof(DisplacementSimulator) == 0x14);
-
-
-			struct DepthProperties
-			{
-				float	reflections;		// D0
-				float	refraction;			// D4
-				float	normals;			// D8
-				float	specularLighting;	// DC
-			};
-			STATIC_ASSERT(sizeof(DepthProperties) == 0x10);
-
-
-			float					unk00;											// 00
-			float					unk04;											// 04
-			float					unk08;											// 08
-			float					unk0C;											// 0C
-
-			float					specularPropertiesSunSpecularPower;				// 10
-
-			float					waterPropertiesReflectivityAmount;				// 14
-			float					waterPropertiesFresnelAmount;					// 18
-
-			UInt32					unk1C;											// 1C
-
-			float					fogPropertiesAboveWaterFogDistanceNearPlane;	// 20
-			float					fogPropertiesAboveWaterFogDistanceFarPlane;		// 24
-
-			Color					shallowColor;									// 28
-			Color					deepColor;										// 2C
-			Color					reflectionColor;								// 30
-
-			UInt32					unk34;											// 34
-			float					unk38;											// 38
-			float					unk3C;											// 3C
-			float					unk40;											// 40
-			float					unk44;											// 44
-
-			DisplacementSimulator	displacementSimulator;							// 48
-
-			float					unk5C;											// 5C
-
-			float					noisePropertiesNoiseFalloff;					// 60
-			float					noisePropertiesWindDirection[Layers::kTotal];	// 64
-			float					noisePropertiesWindSpeed[Layers::kTotal];		// 70
-
-			float					unk7C;											// 7C
-			float					unk80;											// 80
-
-			float					fogPropertiesAboveWaterFogAmount;				// 84
-			float					unk88;											// 88
-			float					fogPropertiesUnderWaterFogAmount;				// 8C
-			float					fogPropertiesUnderWaterFogDistanceNearPlane;	// 90
-			float					fogPropertiesUnderWaterFogDistanceFarPlane;		// 94
-
-			float					waterPropertiesRefractionMagnitude;				// 98
-
-			float					specularPropertiesSpecularPower;				// 9C
-
-			float					unkA0;											// A0
-
-			float					specularPropertiesSpecularRadius;				// A4
-			float					specularPropertiesSpecularBrightness;			// A8
-
-			float					noisePropertiesUVScale[Layers::kTotal];			// AC
-			float					noisePropertiesAmplitudeScale[Layers::kTotal];	// B8
-
-			float					waterPropertiesReflectionMagnitude;				// C4
-
-			float					specularPropertiesSunSparkleMagnitude;			// C8
-			float					specularPropertiesSunSpecularMagnitude;			// CC
-
-			DepthProperties			depthProperties;								// D0
-
-			float					specularPropertiesSunSparklePower;				// E0
-
-			float					noisePropertiesFlowmapScale;					// E4
-		};
-		STATIC_ASSERT(sizeof(VisualData) == 0xE8);
-
-
-		struct Velocity
-		{
-			float	x;	// 0
-			float	y;	// 4
-			float	z;	// 8
-		};
-		STATIC_ASSERT(sizeof(Velocity) == 0xC);
-
-
 		virtual ~TESWaterForm();																															// 00
 
 		// override (TESForm)
@@ -172,49 +122,41 @@ namespace RE
 
 
 		// members
-		UInt32					unk040;							// 040
-		UInt32					unk044;							// 044
-		UInt64					unk048;							// 048
-		UInt64					unk050;							// 050
-		UInt64					unk058;							// 058
-		UInt64					unk060;							// 060
-		UInt64					unk068;							// 068
-		UInt32					unk070;							// 070
-		UInt32					pad074;							// 074
-		TESTexture				noiseLayers[Layers::kTotal];	// 078 - NAM2 - NAM4
-		FlowNormals				flowNormals;					// 0A8 - NAM5
-		UInt8					opacity;						// 0B8 - ANAM
-		Flag					flags;							// 0B9 - FNAM
-		UInt16					pad0BA;							// 0BA
-		UInt32					pad0BC;							// 0BC
-		BGSMaterialType*		material;						// 0C0 - TNAM
-		BGSSoundDescriptorForm*	openSound;						// 0C8 - SNAM
-		VisualData				visualData;						// 0D0 - DNAM
-		UInt64					unk1B8;							// 1B8
-		UInt64					unk1C0;							// 1C0
-		UInt64					unk1C8;							// 1C8
-		UInt64					unk1D0;							// 1D0
-		UInt32					unk1D8;							// 1D8
-		UInt32					unk1DC;							// 1DC
-		UInt32					unk1E0;							// 1E0
-		float					unk1E4;							// 1E4
-		float					unk1E8;							// 1E8
-		float					unk1EC;							// 1EC
-		float					unk1F0;							// 1F0
-		UInt32					unk1F4;							// 1F4
-		SpellItem*				spell;							// 1F8 - XNAM
-		UInt64					unk200;							// 200
-		UInt64					unk208;							// 208
-		UInt64					unk210;							// 210
-		UInt64					unk218;							// 218
-		UInt64					unk220;							// 220
-		UInt64					unk228;							// 228
-		UInt64					unk230;							// 230
-		UInt32					unk238;							// 238
-		UInt32					unk23C;							// 23C
-		TESImageSpace*			imageSpace;						// 240 - INAM
-		Velocity				linearVelocity;					// 248 - NAM0
-		Velocity				angularVelocity;				// 248 - NAM1
+		bool					needUpdate;					// 040
+		UInt8					pad41;						// 041
+		UInt16					pad42;						// 042
+		NiColorA				texScroll[3];				// 044
+		UInt32					pad074;						// 074
+		TESTexture				noiseTextures[4];			// 078 - NAM2 - NAM5
+		SInt8					alpha;						// 0B8 - ANAM
+		Flag					flags;						// 0B9 - FNAM
+		UInt16					pad0BA;						// 0BA
+		UInt32					pad0BC;						// 0BC
+		BGSMaterialType*		materialType;				// 0C0 - TNAM
+		BGSSoundDescriptorForm*	waterSound;					// 0C8 - SNAM
+		WaterShaderData			data;						// 0D0 - DNAM
+		TESWaterForm*			waterWeatherControl[3];		// 1B8
+		SInt32					currentTextureSelect[2];	// 1D0
+		UInt32					frequencyX;					// 1D8
+		UInt32					frequencyY;					// 1DC
+		SInt32					octaves;					// 1E0
+		float					amplitude;					// 1E4
+		float					lacunarity;					// 1E8
+		float					bias;						// 1EC
+		float					gain;						// 1F0
+		UInt32					pad1F4;						// 1F4
+		SpellItem*				contactSpell;				// 1F8 - XNAM
+		NiPointer<NiTexture>	noiseTextureData[4];		// 200
+		TESObjectACTI*			placeableAutoWater;			// 220
+		TESObjectACTI*			placeableLODWater;			// 228
+		BSWaterShaderMaterial*	waterShaderMaterial;		// 230
+		bool					resetNoiseTextures;			// 238
+		UInt8					pad239;						// 239
+		UInt16					pad23A;						// 23A
+		UInt32					pad23C;						// 23C
+		TESImageSpace*			imageSpace;					// 240 - INAM
+		NiPoint3				linearVelocity;				// 248 - NAM0
+		NiPoint3				angularVelocity;			// 254 - NAM1
 	};
 	STATIC_ASSERT(sizeof(TESWaterForm) == 0x260);
 }

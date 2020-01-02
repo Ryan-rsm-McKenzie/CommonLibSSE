@@ -10,6 +10,38 @@
 
 namespace RE
 {
+	struct TOPIC_INFO_DATA	// ENAM
+	{
+		enum class TOPIC_INFO_FLAGS : UInt16
+		{
+			kNone = 0,
+			kStartSceneOnEnd = 1 << 0,
+			kRandom = 1 << 1,
+			kSayOnce = 1 << 2,
+			kRequiresPlayerActivation = 1 << 3,
+			kInfoRefusal = 1 << 4,
+			kRandomEnd = 1 << 5,
+			kEndRunningScene = 1 << 6,
+			kIsForceGreet = 1 << 7,
+			kPlayerAddress = 1 << 8,
+			kForceSubtitle = 1 << 9,
+			kCanMoveWhileGreeting = 1 << 10,
+			kNoLIPFile = 1 << 11,
+			kPostProcess = 1 << 12,
+			kCustomSoundOutput = 1 << 13,
+			kSpendsFavorPoints = 1 << 14
+		};
+
+
+		float GetResetHours() const;
+
+
+		TOPIC_INFO_FLAGS	flags;			// 0
+		UInt16				timeUntilReset;	// 2 - reset hours as a UInt16
+	};
+	STATIC_ASSERT(sizeof(TOPIC_INFO_DATA) == 0x4);
+
+
 	class TESTopicInfo : public TESForm
 	{
 	public:
@@ -45,36 +77,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
-
-		struct ResponseFlags	// ENAM
-		{
-			enum class Flag : UInt16
-			{
-				kNone = 0,
-				kGoodbye = 1 << 0,
-				kRandom = 1 << 1,
-				kSayOnce = 1 << 2,
-				kRandomEnd = 1 << 5,
-				kInvisibleContinue = 1 << 6,
-				kWalkAway = 1 << 7,
-				kWalkAwayInvisibleInMenu = 1 << 8,
-				kForceSubtitle = 1 << 9,
-				kCanMoveWhileGreeting = 1 << 10,
-				kNoLIPFile = 1 << 11,
-				kRequiresPostProcessing = 1 << 12,
-				kAudioOutputOverride = 1 << 13,
-				kSpendsFavorPoints = 1 << 14,
-			};
-
-
-			float GetResetHours() const;
-
-
-			Flag	flags;		// 0
-			SInt16	resetHours;	// 2 - reset hours as a SInt16
-		};
-		STATIC_ASSERT(sizeof(ResponseFlags) == 0x4);
 
 
 		struct ResponseData	// TRDT
@@ -143,14 +145,14 @@ namespace RE
 
 
 		// members
-		TESTopic*		topic;			// 20
-		TESTopicInfo*	previousInfo;	// 28 - PNAM
-		TESCondition	conditions;		// 30 - CTDA
-		SInt16			index;			// 38 - index in infoTopics array of parent topic
-		bool			unk3A;			// 3A
+		TESTopic*		parentTopic;	// 20
+		TESTopicInfo*	dataInfo;		// 28 - PNAM
+		TESCondition	objConditions;	// 30 - CTDA
+		UInt16			infoIndex;		// 38 - index in infoTopics array of parent topic
+		bool			saidOnce;		// 3A
 		FavorLevel		favorLevel;		// 3B - CNAM
-		ResponseFlags	responseFlags;	// 3C - ENAM
-		UInt32			fileOffset;		// 40 - TESFile offset
+		TOPIC_INFO_DATA	data;			// 3C - ENAM
+		UInt32			fileOffset;		// 40
 		UInt32			pad44;			// 44
 	};
 	STATIC_ASSERT(sizeof(TESTopicInfo) == 0x48);

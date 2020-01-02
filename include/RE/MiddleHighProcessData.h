@@ -171,7 +171,7 @@ namespace RE
 
 
 		// members
-		BSTArray<BGSPerkEntry*> perkEntryArrays[to_underlying(BGSEntryPoint::ENTRY_POINT::kTotal)];	// 000
+		BSTArray<BGSPerkEntry*> perkEntryArrays[BGSEntryPoint::ENTRY_POINTS::kTotal];	// 000
 	};
 	STATIC_ASSERT(sizeof(AIPerkData) == 0x8A0);
 

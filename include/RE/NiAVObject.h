@@ -8,8 +8,8 @@
 
 namespace RE
 {
-	class bhkCollisionObject;
 	class BSFixedString;
+	class NiCollisionObject;
 	class NiColorA;
 	class NiNode;
 	class NiPoint3;
@@ -107,17 +107,18 @@ namespace RE
 		// members
 		NiNode*							parent;				// 030
 		UInt64							unk038;				// 038
-		NiPointer<bhkCollisionObject>	collisionObject;	// 040
-		NiTransform						localTransform;		// 048
-		NiTransform						worldTransform;		// 07C
-		NiTransform						oldWorldTransform;	// 0B0
+		NiPointer<NiCollisionObject>	collisionObject;	// 040
+		NiTransform						local;				// 048
+		NiTransform						world;				// 07C
+		NiTransform						previousWorld;		// 0B0
 		NiBound 						worldBound;			// 0E4
 		Flag							flags;				// 0F4
 		TESObjectREFR*					userData;			// 0F8
-		float							unk100;				// 100 - scale?
-		UInt32							unk104;				// 104
+		float							fadeAmount;			// 100
+		UInt8							unk104;				// 104
+		UInt8							unk105;				// 105
 		UInt8							unk108;				// 108
-		UInt8							unk109;				// 109 - bitfield
+		UInt8							unk109;				// 109
 		UInt16							pad10A;				// 10A
 		UInt32							pad10C;				// 10C
 	};

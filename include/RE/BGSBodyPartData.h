@@ -111,8 +111,8 @@ namespace RE
 
 
 		// members
-		BGSBodyPart*	parts[to_underlying(BGSBodyPartDefs::LIMB_ENUM::kTotal)];	// 50
-		BGSRagdoll*		ragdoll;													// 80
+		BGSBodyPart*	parts[BGSBodyPartDefs::LIMB_ENUM::kTotal];	// 50
+		BGSRagdoll*		ragdoll;									// 80
 	};
 	STATIC_ASSERT(sizeof(BGSBodyPartData) == 0x88);
 }
