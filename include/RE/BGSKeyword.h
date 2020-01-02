@@ -30,12 +30,12 @@ namespace RE
 
 		// override (TESForm)
 		virtual bool		Load(TESFile* a_mod) override;					// 06
-		virtual const char*	GetFormEditorID() override;						// 32 - { return keyword.c_str(); }
-		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { keyword = a_str; }
+		virtual const char*	GetFormEditorID() override;						// 32 - { return formEditorID.c_str(); }
+		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { formEditorID = a_str; }
 
 
 		// members
-		BSFixedString keyword;	// 20
+		BSFixedString formEditorID;	// 20
 	};
 	STATIC_ASSERT(sizeof(BGSKeyword) == 0x28);
 }

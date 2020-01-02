@@ -5,6 +5,8 @@
 #include "RE/BSTHashMap.h"
 #include "RE/BSTList.h"
 #include "RE/FormTypes.h"
+#include "RE/NiPoint2.h"
+#include "RE/NiSmartPointer.h"
 #include "RE/NiTPointerMap.h"
 #include "RE/TESForm.h"
 #include "RE/TESFullName.h"
@@ -14,6 +16,55 @@
 
 namespace RE
 {
+	struct BGSTerrainManager;
+
+
+	struct WORLD_MAP_DATA	// MNAM
+	{
+		struct CameraData
+		{
+			float	minHeight;		// 0
+			float	maxHeight;		// 4
+			float	initialPitch;	// 8
+		};
+		STATIC_ASSERT(sizeof(CameraData) == 0xC);
+
+
+		UInt32		usableWidth;	// 00
+		UInt32		usableHeight;	// 04
+		SInt16		nwCellX;		// 08
+		SInt16		nwCellY;		// 0A
+		SInt16		seCellX;		// 0C
+		SInt16		seCellY;		// 0E
+		CameraData	cameraData;		// 10
+	};
+	STATIC_ASSERT(sizeof(WORLD_MAP_DATA) == 0x1C);
+
+
+	struct WORLD_MAP_OFFSET_DATA	// ONAM
+	{
+		float	fMapScale;		// 00
+		float	fMapOffsetX;	// 04
+		float	fMapOffsetY;	// 08
+		float	fMapOffsetZ;	// 0C
+	};
+	STATIC_ASSERT(sizeof(WORLD_MAP_OFFSET_DATA) == 0x10);
+
+
+	struct BGSLargeRefData   // RNAM
+	{
+		// RNAM format in plugins is cell x,y -> formID + cell that contains refr x,y
+		// a lot of RNAM data is for refrs that are actually in adjacent cells, it is currently unknown what behavior this has in game
+		BSTHashMap<UInt32, FormID*>	cellFormIDMap;			// 00 - full data merged at runtime, value is an array of FormIDs with array size as the first entry
+		BSTHashMap<FormID, UInt32>	formIDCellMap;			// 30 - maps FormID to cell so opposite of above map
+
+		// this filtered version of the full data removes all duplicate RNAM entries and also all entries where cell x,y doesn't match cell that contains refr x,y
+		// this is the one actually used for loading large references on cell attach
+		BSTHashMap<UInt32, FormID*>	cellFormIDMapFiltered;	// 60
+	};
+	STATIC_ASSERT(sizeof(BGSLargeRefData) == 0x90);
+
+
 	class TESWorldSpace :
 		public TESForm,		// 000
 		public TESFullName,	// 020
@@ -26,7 +77,7 @@ namespace RE
 		enum { kTypeID = FormType::WorldSpace };
 
 
-		enum class DataFlag : UInt8
+		enum class Flag : UInt8
 		{
 			kNone = 0,
 			kSmallWorld = 1 << 0,
@@ -39,7 +90,7 @@ namespace RE
 		};
 
 
-		enum class ParentFlag : UInt8
+		enum class ParentUseFlag : UInt16
 		{
 			kNone = 0,
 			kUseLandData = 1 << 0,
@@ -63,92 +114,12 @@ namespace RE
 		};
 
 
-		struct XYPlane
+		struct ShortPoint
 		{
 			SInt16	x;
 			SInt16	y;
 		};
-		STATIC_ASSERT(sizeof(XYPlane) == 0x4);
-
-
-		struct MapData	// MNAM
-		{
-			struct CellCoordinates
-			{
-				XYPlane	nwCell;	// 0
-				XYPlane	seCell;	// 4
-			};
-			STATIC_ASSERT(sizeof(CellCoordinates) == 0x8);
-
-
-			struct CameraData
-			{
-				float	minHeight;		// 0
-				float	maxHeight;		// 4
-				float	initialPitch;	// 8
-			};
-			STATIC_ASSERT(sizeof(CameraData) == 0xC);
-
-
-			XYPlane			usableDimensions;	// 00
-			UInt32			pad04;				// 04
-			CellCoordinates	cellCoordinates;	// 08
-			CameraData		cameraData;			// 10
-		};
-		STATIC_ASSERT(sizeof(MapData) == 0x1C);
-
-
-		struct WorldMapOffsetData	// ONAM
-		{
-			float	worldMapScale;	// 00
-			float	cellXOffset;	// 04
-			float	cellYOffset;	// 08
-			float	cellZOffset;	// 0C
-		};
-		STATIC_ASSERT(sizeof(WorldMapOffsetData) == 0x10);
-
-
-		struct LargeReferenceData   // RNAM
-		{
-			// RNAM format in plugins is cell x,y -> formID + cell that contains refr x,y
-			// a lot of RNAM data is for refrs that are actually in adjacent cells, it is currently unknown what behavior this has in game
-			BSTHashMap<XYPlane, UInt32*>	cellFormIDMap;				// 00 - full data merged at runtime, value is an array of FormIDs with array size as the first entry
-			BSTHashMap<UInt32, XYPlane>		formIDCellMap;				// 30 - maps FormID to cell so opposite of above map
-
-			// this filtered version of the full data removes all duplicate RNAM entries and also all entries where cell x,y doesn't match cell that contains refr x,y
-			// this is the one actually used for loading large references on cell attach
-			BSTHashMap<XYPlane, UInt32*>	cellFormIDMapFiltered;		// 60
-		};
-		STATIC_ASSERT(sizeof(LargeReferenceData) == 0x90);
-
-
-		struct ObjectBounds
-		{
-			// The bounds are the CK value * 4096
-			struct Bounds
-			{
-				float	GetX() const;
-				float	GetY() const;
-
-
-				float	x;	// 0
-				float	y;	// 4
-			};
-			STATIC_ASSERT(sizeof(Bounds) == 0x8);
-
-
-			Bounds	min;	// 00 - NAM0
-			Bounds	max;	// 08 - NAM9
-		};
-		STATIC_ASSERT(sizeof(ObjectBounds) == 0x10);
-
-
-		struct LandData	// DNAM
-		{
-			float	defaultLandHeight;	// 0
-			float	defaultWaterHeight;	// 4
-		};
-		STATIC_ASSERT(sizeof(LandData) == 0x8);
+		STATIC_ASSERT(sizeof(ShortPoint) == 0x4);
 
 
 		virtual ~TESWorldSpace();														// 00
@@ -169,53 +140,55 @@ namespace RE
 		bool HasMaxHeightData() const;
 
 
-		BSTHashMap<UnkKey, UnkValue>							unk058;						// 058
-		TESObjectCELL*											cell;						// 088
-		void*													unk90;						// 090
+		// members
+		BSTHashMap<SInt32, TESObjectCELL*>						cellMap;					// 058
+		TESObjectCELL*											persistentCell;				// 088
+		BGSTerrainManager*										terrainManager;				// 090
 		TESClimate*												climate;					// 098 - CNAM
-		DataFlag												dataFlags;					// 0A0 - DATA
+		Flag													flags;						// 0A0 - DATA
 		UInt8													unk0A1;						// 0A1 - more flags
-		ParentFlag												parentFlags;				// 0A2 - PNAM
-		UInt8													pad0A3;						// 0A2
-		XYPlane													fixedDimensionsCenterCell;	// 0A4 - WCTR
-		BSTHashMap<UnkKey, UnkValue>							unk0A8;						// 0A8
-		BSTArray<TESObjectREFR*>								objects;					// 0D8
-		NiTPointerMap<UInt32, BSSimpleList<TESObjectREFR*>*>*	refrListPtrMap;				// 0F0
-		TESObjectCELL*											unk0F8;						// 0F8 - uses a generated formID
-		BSTHashMap<UnkKey, UnkValue>							unk100;						// 100
-		UInt64													unk130;						// 130
-		UInt64													unk138;						// 138
-		UInt64													unk140;						// 140
-		UInt64													unk148;						// 148
-		UInt64													unk150;						// 150
-		TESWorldSpace*											parentWorldSpace;			// 158 - WNAM
-		BGSLightingTemplate*									interiorLighting;			// 160 - LTMP
-		TESWaterForm*											water;						// 168 - NAM2
-		TESWaterForm*											lodWaterType;				// 170 - NAM3
+		ParentUseFlag											parentUseFlags;				// 0A2 - PNAM
+		ShortPoint												fixedCenter;				// 0A4 - WCTR
+		BSTHashMap<UInt32, BSTArray<NiPointer<TESObjectREFR>>>	fixedPersistentRefMap;		// 0A8
+		BSTArray<NiPointer<TESObjectREFR>>						mobilePersistentRefs;		// 0D8
+		NiTPointerMap<UInt32, BSSimpleList<TESObjectREFR*>*>*	overlappedMultiboundMap;	// 0F0
+		TESObjectCELL*											skyCell;					// 0F8
+		BSTHashMap<FormID, BGSLocation*>						locationMap;				// 100
+		void*													unk130;						// 130 - smart ptr
+		void*													unk138;						// 138
+		void*													unk140;						// 140
+		void*													unk148;						// 148 - smart ptr
+		void*													unk150;						// 150 - smart ptr
+		TESWorldSpace*											parentWorld;				// 158 - WNAM
+		BGSLightingTemplate*									lightingTemplate;			// 160 - LTMP
+		TESWaterForm*											worldWater;					// 168 - NAM2
+		TESWaterForm*											lodWater;					// 170 - NAM3
 		float													lodWaterHeight;				// 178 - NAM4
 		UInt32													pad17C;						// 17C
 		UInt64													unk180;						// 180
-		MapData													mapData;					// 188 - MNAM
-		WorldMapOffsetData										worldMapOffsetData;			// 1A4 - ONAM
+		WORLD_MAP_DATA											worldMapData;				// 188 - MNAM
+		WORLD_MAP_OFFSET_DATA									worldMapOffsetData;			// 1A4 - ONAM
 		UInt32													pad1B4;						// 1B4
-		BGSMusicType*											music;						// 1B8 - ZNAM
-		ObjectBounds											objectBounds;				// 1C0
-		BSTHashMap<UnkKey, UnkValue>							unk1D0;						// 1D0
+		BGSMusicType*											musicType;					// 1B8 - ZNAM
+		NiPoint2												minimumCoords;				// 1C0
+		NiPoint2												maximumCoords;				// 1C8
+		BSTHashMap<UnkKey, UnkValue>							unk1D0;						// 1D0 - BSTHashMap<TESFile*, OFFSET_DATA*> offsetDataMap?
 		BSString												editorID;					// 200 - EDID
-		LandData												landData;					// 210 - DNAM
-		float													distantLODMultiplier;		// 218 - NAMA
+		float													defaultLandHeight;			// 210 - DNAM~
+		float													defaultWaterHeight;			// 214 - ~DNAM
+		float													distantLODMult;				// 218 - NAMA
 		UInt32													pad21C;						// 21C
 		BGSEncounterZone*										encounterZone;				// 220 - XEZN
 		BGSLocation*											location;					// 228 - XLCN
-		TESTexture												hdLODDiffuseTexture;		// 230 - TNAM
-		TESTexture												hdLODNormalTexture;			// 240 - UNAM
-		LargeReferenceData                                      largeReferenceData;			// 250 - RNAM
+		TESTexture												canopyShadowTexture;		// 230 - TNAM
+		TESTexture												waterEnvMap;				// 240 - UNAM
+		BGSLargeRefData											largeRefData;				// 250 - RNAM
 		UInt64													unk2E0;						// 2E0
 		BSTHashMap<UnkKey, UnkValue>							unk2E8;						// 2E8
 		BSTHashMap<UnkKey, UnkValue>							unk318;						// 318
 		float													northRotation;				// 348
-		UInt32													unk34C;						// 34C
-		UInt8*													maxHeightData;				// 350 - MHDT (it's an array, but idk how big it is)
+		UInt32													pad34C;						// 34C
+		SInt8*													maxHeightData;				// 350 - MHDT
 	};
 	STATIC_ASSERT(sizeof(TESWorldSpace) == 0x358);
 }

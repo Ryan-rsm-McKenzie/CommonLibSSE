@@ -51,12 +51,12 @@ namespace RE
 
 
 		// members
-		BSTArray<TESQuest*>				quests;			// 48 - NNAM
-		BSTHashMap<TESQuest*, UInt32>	questFNAMMap;	// 60 - maps NNAM to FNAM
-		BSTHashMap<TESQuest*, float>	questResetMap;	// 90 - maps NNAM to RNAM
-		UInt32							numQuestsToRun;	// C0 - MNAM
-		UInt32							padC4;			// C4
-		BSTArray<UInt32>				unkC8;			// C8
+		BSTArray<TESQuest*>				quests;						// 48 - NNAM
+		BSTHashMap<TESQuest*, UInt32>	perQuestFlags;				// 60 - maps NNAM to FNAM
+		BSTHashMap<TESQuest*, float>	perQuestHoursUntilReset;	// 90 - maps NNAM to RNAM
+		UInt32							numQuestsToStart;			// C0 - MNAM
+		UInt32							padC4;						// C4
+		BSTArray<float>					childrenLastRun;			// C8
 	};
 	STATIC_ASSERT(sizeof(BGSStoryManagerQuestNode) == 0xE0);
 }

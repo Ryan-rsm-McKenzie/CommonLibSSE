@@ -8,6 +8,33 @@
 
 namespace RE
 {
+	struct BGSStoryEventMember
+	{
+		enum class DATA_TYPE : UInt32
+		{};
+
+
+		DATA_TYPE	type;		// 00
+		UInt32		uniqueID;	// 04
+		BSString	Name;		// 08
+	};
+	STATIC_ASSERT(sizeof(BGSStoryEventMember) == 0x18);
+
+
+	struct BGSRegisteredStoryEvent	// ENAM
+	{
+		char							uniqueID[4];	// 00
+		UInt32							pad04;			// 04
+		BSTArray<BGSStoryEventMember>*	members;		// 08
+		BSString						name;			// 10
+		bool							immediate;		// 20
+		UInt8							pad21;			// 21
+		UInt16							pad22;			// 22
+		UInt32							pad24;			// 24
+	};
+	STATIC_ASSERT(sizeof(BGSRegisteredStoryEvent) == 0x28);
+
+
 	class BGSStoryManagerEventNode : public BGSStoryManagerBranchNode
 	{
 	public:
@@ -27,27 +54,6 @@ namespace RE
 		};
 
 
-		struct Type	// ENAM
-		{
-			struct UnkData
-			{
-				UInt32		unk00;		// 00
-				char		unk04[2];	// 04
-				UInt16		unk06;		// 06
-				BSString	unk08;		// 08
-			};
-			STATIC_ASSERT(sizeof(UnkData) == 0x18);
-
-
-			char				code[4];	// 00
-			UInt32				unk04;		// 04
-			BSTArray<UnkData>*	unk08;		// 08
-			BSString			fullName;	// 10
-			UInt64				unk28;		// 20
-		};
-		STATIC_ASSERT(sizeof(Type) == 0x28);
-
-
 		virtual ~BGSStoryManagerEventNode();				// 00
 
 		// override (BGSStoryManagerBranchNode)
@@ -55,11 +61,11 @@ namespace RE
 		virtual void		ClearData() override;			// 05 - { BGSStoryManagerNodeBase::ClearData(); }
 		virtual bool		Load(TESFile* a_mod) override;	// 06
 		virtual void		InitItemImpl() override;		// 13
-		virtual const char*	GetFormEditorID() override;		// 32 - { if (!((flags >> 3) & 1)) return "(Uninitialized event node)"; return type ? type->fullName.c_str() : "(No event)"; }
+		virtual const char*	GetFormEditorID() override;		// 32 - { if (!((flags >> 3) & 1)) return "(Uninitialized event node)"; return event ? event->name.c_str() : "(No event)"; }
 
 
 		// members
-		Type* type;	// 60 - ENAM - a reference to an entry in a global hash map
+		const BGSRegisteredStoryEvent* event;	// 60 - ENAM
 	};
 	STATIC_ASSERT(sizeof(BGSStoryManagerEventNode) == 0x68);
 }

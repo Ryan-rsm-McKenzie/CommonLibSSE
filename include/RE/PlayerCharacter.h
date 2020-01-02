@@ -20,7 +20,6 @@
 namespace RE
 {
 	class Actor;
-	class BGSInstancedQuestObjective;
 	class BGSLocation;
 	class bhkMouseSpringAction;
 	class BSFadeNode;
@@ -35,14 +34,15 @@ namespace RE
 	class NiNode;
 	class ObjectListItem;
 	class TESObjectREFR;
-	class TESQuestStageItem;
 	class TintMask;
 	class UserEventEnabledEvent;
 	struct BGSActorCellEvent;
 	struct BGSActorDeathEvent;
+	struct BGSInstancedQuestObjective;
 	struct BipedAnim;
 	struct PerkRankData;
 	struct PositionPlayerEvent;
+	struct TESQuestStageItem;
 	struct TESTrackedStatsEvent;
 
 

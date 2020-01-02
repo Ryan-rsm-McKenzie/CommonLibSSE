@@ -27,9 +27,30 @@ namespace RE
 		enum { kTotalLayers = 32 };
 
 
-		struct TimePeriods
+		enum class SoundType : UInt32
 		{
-			enum
+			kDefault = 0,
+			kPrecip = 1,
+			kWind = 2,
+			kThunder = 3
+		};
+
+
+		enum class WeatherDataFlag : UInt8
+		{
+			kNone = 0,
+			kPleasant = 1 << 0,
+			kCloudy = 1 << 1,
+			kRainy = 1 << 2,
+			kSnow = 1 << 3,
+			kPermAurora = 1 << 4,
+			kAuroraFollowsSun = 1 << 5
+		};
+
+
+		struct ColorTimes
+		{
+			enum ColorTime : UInt32
 			{
 				kSunrise = 0,
 				kDay,
@@ -39,6 +60,7 @@ namespace RE
 				kTotal
 			};
 		};
+		using ColorTime = ColorTimes::ColorTime;
 
 
 		struct ColorTypes
@@ -78,74 +100,40 @@ namespace RE
 		};
 
 
-		struct CloudSpeed
+		struct WeatherData	// DATA
 		{
-			UInt8	ySpeed[kTotalLayers];	// 00 - RNAM
-			UInt8	xSpeed[kTotalLayers];	// 20 - QNAM
-		};
-		STATIC_ASSERT(sizeof(CloudSpeed) == 0x40);
-
-
-		struct ColorLayer
-		{
-			Color time[TimePeriods::kTotal];	// 00
-		};
-		STATIC_ASSERT(sizeof(ColorLayer) == 0x10);
-
-
-		struct AlphaLayer
-		{
-			float time[TimePeriods::kTotal];	// 00
-		};
-		STATIC_ASSERT(sizeof(AlphaLayer) == 0x10);
-
-
-		struct Data	// DATA
-		{
-			enum class Flag : UInt8
-			{
-				kNone = 0,
-				kWeather_Pleasant = 1 << 0,
-				kWeather_Cloudy = 1 << 1,
-				kWeather_Rainy = 1 << 2,
-				kWeather_Snowy = 1 << 3,
-				kSkyStatic_AlwaysVisible = 1 << 4,
-				kSkyStatic_FollowsSunPosition = 1 << 5
-			};
-
-
 			struct Color3
 			{
-				UInt8	red;	// 0
-				UInt8	green;	// 1
-				UInt8	blue;	// 2
+				SInt8	red;	// 0
+				SInt8	green;	// 1
+				SInt8	blue;	// 2
 			};
 			STATIC_ASSERT(sizeof(Color3) == 0x3);
 
 
-			UInt8	windSpeed;						// 00
-			UInt8	unk01;							// 01
-			UInt8	unk02;							// 02
-			UInt8	transDelta;						// 03
-			UInt8	sunGlare;						// 04
-			UInt8	sunDamage;						// 05
-			UInt8	precipitationBeginFadeIn;		// 06
-			UInt8	precipitationEndFadeOut;		// 07
-			UInt8	thunderLightningBeginFadeIn;	// 08
-			UInt8	thunderLightningEndFadeOut;		// 09
-			UInt8	thunderLightningFrequency;		// 0A
-			Flag	flags;							// 0B
-			Color3	lightningColor;					// 0C
-			UInt8	visualEffectBegin;				// 0F
-			UInt8	visualEffectEnd;				// 10
-			UInt8	windDirection;					// 11
-			UInt8	windDirectionRange;				// 12
-			UInt8	unk13;							// 13
+			SInt8			windSpeed;						// 00
+			SInt8			unk01;							// 01
+			SInt8			unk02;							// 02
+			SInt8			transDelta;						// 03
+			SInt8			sunGlare;						// 04
+			SInt8			sunDamage;						// 05
+			SInt8			precipitationBeginFadeIn;		// 06
+			SInt8			precipitationEndFadeOut;		// 07
+			SInt8			thunderLightningBeginFadeIn;	// 08
+			SInt8			thunderLightningEndFadeOut;		// 09
+			SInt8			thunderLightningFrequency;		// 0A
+			WeatherDataFlag	flags;							// 0B
+			Color3			lightningColor;					// 0C
+			SInt8			visualEffectBegin;				// 0F
+			SInt8			visualEffectEnd;				// 10
+			SInt8			windDirection;					// 11
+			SInt8			windDirectionRange;				// 12
+			SInt8			unk13;							// 13
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x14);
+		STATIC_ASSERT(sizeof(WeatherData) == 0x14);
 
 
-		struct FogDistance	// FNAM
+		struct FogData	// FNAM
 		{
 			float	dayNear;	// 00
 			float	dayFar;		// 04
@@ -156,24 +144,19 @@ namespace RE
 			float	dayMax;		// 18
 			float	nightMax;	// 1C
 		};
-		STATIC_ASSERT(sizeof(FogDistance) == 0x20);
+		STATIC_ASSERT(sizeof(FogData) == 0x20);
 
 
-		struct Sound	// SNAM
+		struct WeatherSound	// SNAM
 		{
-			enum class Type : UInt32
-			{
-				kDefault = 0,
-				kPrecipitation = 1,
-				kWind = 2,
-				kThunder = 3
-			};
-
-
-			UInt32	soundFormID;	// 00
-			Type	type;			// 04
+			FormID		soundFormID;	// 00
+			SoundType	type;			// 04
 		};
-		STATIC_ASSERT(sizeof(Sound) == 0x8);
+		STATIC_ASSERT(sizeof(WeatherSound) == 0x8);
+
+
+		struct WeatherSoundList : public BSSimpleList<WeatherSound*>
+		{};
 
 
 		virtual ~TESWeather();							// 00
@@ -186,25 +169,26 @@ namespace RE
 
 
 		// members
-		TESTexture1024						cloudTextureLayers[kTotalLayers];						// 020 - 00TX - L0TX
-		CloudSpeed							cloudSpeed;												// 220
-		ColorLayer							cloudColors[kTotalLayers];								// 260 - PNAM
-		AlphaLayer							cloudAlphas[kTotalLayers];								// 460 - JNAM
-		UInt32								disabledCloudLayers;									// 660 - NAM1 - bitfield
-		Data								data;													// 664 - DATA
-		FogDistance							fogDistance;											// 678 - FNAM
-		ColorLayer							weatherColors[ColorTypes::kTotal];						// 698 - NAM0
-		BSSimpleList<Sound*>				sounds;													// 7A8
+		TESTexture1024						cloudTextures[kTotalLayers];							// 020 - 00TX - L0TX
+		SInt8								cloudLayerSpeedY[kTotalLayers];							// 220 - RNAM
+		SInt8								cloudLayerSpeedX[kTotalLayers];							// 240 - QNAM
+		Color								cloudColorData[kTotalLayers][ColorTime::kTotal];		// 260 - PNAM
+		float								cloudAlpha[kTotalLayers][ColorTime::kTotal];			// 460 - JNAM
+		UInt32								cloudLayerDisabledBits;									// 660 - NAM1 - bitfield
+		WeatherData							weatherData;											// 664 - DATA
+		FogData								fogData;												// 678 - FNAM
+		Color								colorData[ColorTypes::kTotal][ColorTime::kTotal];		// 698 - NAM0
+		WeatherSoundList					sounds;													// 7A8
 		BSTArray<TESObjectSTAT*>			skyStatics;												// 7B8
 		UInt32								numCloudLayers;											// 7D0 - LNAM
 		UInt32								pad7D4;													// 7D4
-		TESImageSpace*						imageSpaces[TimePeriods::kTotal];						// 7D8 - IMSP
-		BGSDirectionalAmbientLightingColors	directionalAmbientLightingColors[TimePeriods::kTotal];	// 7F8
+		TESImageSpace*						imageSpaces[ColorTime::kTotal];							// 7D8 - IMSP
+		BGSDirectionalAmbientLightingColors	directionalAmbientLightingColors[ColorTime::kTotal];	// 7F8
 		TESModel							aurora;													// 878
 		BGSLensFlare*						sunGlareLensFlare;										// 8A0
-		BGSVolumetricLighting*				volumetricLighting[TimePeriods::kTotal];				// 8A8 - HNAM
-		BGSShaderParticleGeometryData*		precipitationType;										// 8C8 - MNAM
-		BGSReferenceEffect*					visualEffect;											// 8D0 - NNAM
+		BGSVolumetricLighting*				volumetricLighting[ColorTime::kTotal];					// 8A8 - HNAM
+		BGSShaderParticleGeometryData*		precipitationData;										// 8C8 - MNAM
+		BGSReferenceEffect*					referenceEffect;										// 8D0 - NNAM
 	};
 	STATIC_ASSERT(sizeof(TESWeather) == 0x8D8);
 }

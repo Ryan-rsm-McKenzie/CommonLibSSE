@@ -7,8 +7,10 @@
 #include "RE/BSTArray.h"
 #include "RE/BSTHashMap.h"
 #include "RE/BSTList.h"
+#include "RE/DialogueTypes.h"
 #include "RE/FormTypes.h"
 #include "RE/QuestEvents.h"
+#include "RE/QuestObjectiveStates.h"
 #include "RE/TESCondition.h"
 #include "RE/TESFullName.h"
 
@@ -16,6 +18,157 @@
 namespace RE
 {
 	class BGSBaseAlias;
+	class QueuedPromoteQuestTask;
+
+
+	enum class QUEST_OBJECTIVE_FLAGS : UInt32
+	{
+		kNone = 0,
+		kORWithPrevious = 1 << 0,
+		kNoStatsTracking = 1 << 1
+	};
+
+
+	struct BGSQuestInstanceText
+	{
+		struct StringData
+		{
+			UInt32	aliasID;		// 0
+			UInt32	fullNameFormID;	// 4
+		};
+		STATIC_ASSERT(sizeof(StringData) == 0x8);
+
+
+		struct GlobalValueData
+		{
+			const TESGlobal*	global;	// 00
+			float				value;	// 08
+			UInt32				pad0C;	// 0C
+		};
+		STATIC_ASSERT(sizeof(GlobalValueData) == 0x10);
+
+
+		UInt32						id;					// 00
+		UInt32						pad04;				// 04
+		BSTArray<StringData>		stringData;			// 08
+		BSTArray<GlobalValueData>	valueData;			// 20
+		UInt16						journalStage;		// 38
+		SInt8						journalStageItem;	// 3A
+		UInt8						pad3B;				// 3B
+		UInt32						pad3C;				// 3C
+	};
+	STATIC_ASSERT(sizeof(BGSQuestInstanceText) == 0x40);
+
+
+	struct QUEST_DATA	// DNAM
+	{
+		enum class Flag : UInt16
+		{
+			kNone = 0,
+			kStartGameEnabled = 1 << 0,
+			kAllowRepeatedStages = 1 << 3,
+			kRunOnce = 1 << 8,
+			kExcludesFromDialogueExport = 1 << 9,
+			kWarnOnAliasFillFailure = 1 << 10
+		};
+
+
+		enum class Type : UInt8
+		{
+			kNone = 0,
+			kMainQuest = 1,
+			kMagesGuild = 2,
+			kThievesGuild = 3,
+			kDarkBrotherhood = 4,
+			kCompanionsQuest = 5,
+			kMiscellaneous = 6,
+			kDaedric = 7,
+			kSideQuest = 8,
+			kCivilWar = 9,
+			kDLC01_Vampire = 10,
+			kDLC02_Dragonborn = 11
+		};
+
+
+		float	questDelayTime;	// 0
+		Flag	flags;			// 4
+		SInt8	priority;		// 6
+		Type	questType;		// 7
+	};
+	STATIC_ASSERT(sizeof(QUEST_DATA) == 0x8);
+
+
+	struct QUEST_STAGE_DATA
+	{
+		enum class Flag : UInt8
+		{
+			kNone = 0,
+			kStartUpStage = 1 << 1,
+			kShutDownStage = 1 << 2,
+			kKeepInstanceDataFromHereOn = 1 << 3
+		};
+
+
+		UInt16	index;	// 0
+		Flag	flags;	// 2
+		UInt8	pad3;	// 3
+		UInt32	pad4;	// 4
+	};
+	STATIC_ASSERT(sizeof(QUEST_STAGE_DATA) == 0x8);
+
+
+	struct TESQuestStage
+	{
+		explicit operator bool() const;
+
+
+		// members
+		QUEST_STAGE_DATA data;	// 0
+	};
+	STATIC_ASSERT(sizeof(TESQuestStage) == 0x8);
+
+
+	struct TESQuestTarget	// QSTA
+	{
+		enum class Flag
+		{
+			kNone = 0,
+			kCompassMarkerIgnoresLocks = 1 << 0
+		};
+
+
+		UInt64			unk00;		// 00
+		TESCondition	conditions;	// 08
+		UInt8			alias;		// 10
+		UInt8			unk11;		// 11
+		UInt16			unk12;		// 12
+		UInt32			unk14;		// 14
+	};
+	STATIC_ASSERT(sizeof(TESQuestTarget) == 0x18);
+
+
+	struct BGSQuestObjective
+	{
+		BSFixedString			displayText;	// 00 - NNAM
+		TESQuest*				ownerQuest;		// 08
+		TESQuestTarget**		targets;		// 10 - QSTA
+		UInt32					numTargets;		// 18
+		UInt16					index;			// 1C - QOBJ
+		bool					initialized;	// 1E
+		QUEST_OBJECTIVE_STATE_8	state;			// 1E
+		QUEST_OBJECTIVE_FLAGS	flags;			// 20 - FNAM
+		UInt32					pad24;			// 24
+	};
+	STATIC_ASSERT(sizeof(BGSQuestObjective) == 0x28);
+
+
+	struct BGSStoryEvent
+	{
+		UInt32	id;			// 00
+		UInt32	index;		// 04
+		UInt64	members[6];	// 08
+	};
+	STATIC_ASSERT(sizeof(BGSStoryEvent) == 0x38);
 
 
 	class TESQuest :
@@ -24,6 +177,9 @@ namespace RE
 	{
 	public:
 		inline static const void* RTTI = RTTI_TESQuest;
+
+
+		using DT = DIALOGUE_TYPE;
 
 
 		enum { kTypeID = FormType::Quest };
@@ -55,106 +211,6 @@ namespace RE
 		};
 
 
-		struct General	// DNAM
-		{
-			enum class Flag : UInt16
-			{
-				kNone = 0,
-				kStartGameEnabled = 1 << 0,
-				kAllowRepeatedStages = 1 << 3,
-				kRunOnce = 1 << 8,
-				kExcludesFromDialogueExport = 1 << 9,
-				kWarnOnAliasFillFailure = 1 << 10
-			};
-
-
-			enum class Type : UInt8
-			{
-				kNone = 0,
-				kMainQuest = 1,
-				kMagesGuild = 2,
-				kThievesGuild = 3,
-				kDarkBrotherhood = 4,
-				kCompanionsQuest = 5,
-				kMiscellaneous = 6,
-				kDaedric = 7,
-				kSideQuest = 8,
-				kCivilWar = 9,
-				kDLC01_Vampire = 10,
-				kDLC02_Dragonborn = 11
-			};
-
-
-			UInt32	unk0;		// 0
-			Flag	flags;		// 4
-			UInt8	priority;	// 6
-			Type	type;		// 7
-		};
-		STATIC_ASSERT(sizeof(General) == 0x8);
-
-
-		struct Stage
-		{
-			enum class Flag : UInt8
-			{
-				kNone = 0,
-				kStartUpStage = 1 << 1,
-				kShutDownStage = 1 << 2,
-				kKeepInstanceDataFromHereOn = 1 << 3
-			};
-
-
-			explicit operator bool() const;
-
-
-			UInt16	index;	// 0
-			Flag	flags;	// 2
-			UInt8	unk3;	// 3
-			UInt32	pad4;	// 4
-		};
-		STATIC_ASSERT(sizeof(Stage) == 0x8);
-
-
-		struct Objective
-		{
-			enum class Flag : UInt32
-			{
-				kNone = 0,
-				kORWithPrevious = 1 << 0
-			};
-
-
-			struct Target	// QSTA
-			{
-				enum class Flag
-				{
-					kNone = 0,
-					kCompassMarkerIgnoresLocks = 1 << 0
-				};
-
-
-				UInt64			unk00;		// 00
-				TESCondition	conditions;	// 08
-				UInt8			alias;		// 10
-				UInt8			unk11;		// 11
-				UInt16			unk12;		// 12
-				UInt32			unk14;		// 14
-			};
-			STATIC_ASSERT(sizeof(Target) == 0x18);
-
-
-			BSFixedString	displayText;	// 00 - NNAM
-			TESQuest*		quest;			// 08
-			Target**		targets;		// 10
-			UInt32			numTargets;		// 18
-			UInt16			index;			// 1C - QOBJ
-			UInt16			unk1E;			// 1E
-			Flag			flags;			// 20 - FNAM
-			UInt32			unk24;			// 24
-		};
-		STATIC_ASSERT(sizeof(Objective) == 0x28);
-
-
 		virtual ~TESQuest();												// 00
 
 		// override (BGSStoryManagerTreeForm)
@@ -166,44 +222,40 @@ namespace RE
 		virtual void			FinishLoadGame(void* a_arg1) override;			// 11
 		virtual void			Revert(void* a_arg1) override;					// 12
 		virtual void			InitItemImpl() override;						// 13
-		virtual const char*		GetFormEditorID() override;						// 32 - { return editorID.c_str() ? editorID.c_str() : ""; }
+		virtual const char*		GetFormEditorID() override;						// 32 - { return formEditorID.c_str() ? formEditorID.c_str() : ""; }
 		virtual bool			SetFormEditorID(const char* a_str) override;	// 33
-		virtual TESCondition*	GetConditions() override;						// 3D - { return &dialogueConditions; }
+		virtual TESCondition*	GetConditions() override;						// 3D - { return &objConditions; }
 		virtual void			Unk_3E(void) override;							// 3E
 
 
 		// members
-		BSTArray<void*>											unk038;					// 038
-		UInt32													unk050;					// 050
-		UInt32													pad054;					// 054
-		BSTArray<BGSBaseAlias*>									aliases;				// 058
-		BSTHashMap<UnkKey, UnkValue>							unk070;					// 070 - alias related
-		BSTHashMap<UnkKey, UnkValue>							unk0A0;					// 0A0 - alias related
-		mutable BSReadWriteLock									unk0D0;					// 0D0
-		General													general;				// 0D8 - DNAM
-		QuestEvent												event;					// 0E0 - ENAM
-		UInt32													pad0E4;					// 0E4
-		BSSimpleList<Stage>*									executedStages;			// 0E8 - I think its actually templated on a pointer, and they store the stage info in the pointer itself
-		BSSimpleList<Stage*>*									waitingStages;			// 0F0
-		BSSimpleList<Objective*>								objectives;				// 0F8
-		TESCondition											dialogueConditions;		// 108
-		TESCondition											conditions;				// 110
-		BSTHashMap<BGSDialogueBranch*, BSTArray<TESTopic*>*>	topicTopics;			// 118 - Category::kTopic
-		BSTHashMap<BGSDialogueBranch*, BSTArray<TESTopic*>*>	favorTopics;			// 148 - Category::kFavor
-		BSTArray<TESTopic*>										sceneTopics;			// 178 - Category::kScene
-		BSTArray<TESTopic*>										combatTopics;			// 190 - Category::kCombat
-		BSTArray<TESTopic*>										favorsTopics;			// 1A8 - Category::kFavors
-		BSTArray<TESTopic*>										detectionTopics;		// 1C0 - Category::kDetection
-		BSTArray<TESTopic*>										serviceTopics;			// 1D8 - Category::kService
-		BSTArray<TESTopic*>										miscellaneousTopics;	// 1F0 - Category::kMiscellaneous
-		BSTArray<BGSScene*>										scenes;					// 208
-		BSTArray<TESGlobal*>*									textDisplayGlobals;		// 220 - QTGL
-		UInt32													unk228;					// 228
-		UInt32													pad22C;					// 22C
-		BSString												editorID;				// 230
-		UInt64													unk240;					// 240
-		UInt64													unk248;					// 248
-		BSTArray<RefHandle>										unk250;					// 250 - dynamically assigned ref handles?
+		BSTArray<BGSQuestInstanceText*>							instanceData;								// 038
+		UInt32													currentInstanceID;							// 050
+		UInt32													pad054;										// 054
+		BSTArray<BGSBaseAlias*>									aliases;									// 058
+		BSTHashMap<UnkKey, UnkValue>							unk070;										// 070 - alias related
+		BSTHashMap<UnkKey, UnkValue>							unk0A0;										// 0A0 - alias related
+		mutable BSReadWriteLock									aliasAccessLock;							// 0D0
+		QUEST_DATA												data;										// 0D8 - DNAM
+		QuestEvent												eventID;									// 0E0 - ENAM
+		UInt32													pad0E4;										// 0E4
+		BSSimpleList<TESQuestStage>*							executedStages;								// 0E8
+		BSSimpleList<TESQuestStage*>*							waitingStages;								// 0F0
+		BSSimpleList<BGSQuestObjective*>						objectives;									// 0F8
+		TESCondition											objConditions;								// 108
+		TESCondition											storyManagerConditions;						// 110
+		BSTHashMap<BGSDialogueBranch*, BSTArray<TESTopic*>*>	branchedDialogue[DT::kBranchedTotal];		// 118
+		BSTArray<TESTopic*>										topics[DT::kTotal - DT::kBranchedTotal];	// 178
+		BSTArray<BGSScene*>										scenes;										// 208
+		BSTArray<TESGlobal*>*									textGlobals;								// 220 - QTGL
+		UInt32													totalRefsAliased;							// 228
+		UInt16													currentStage;								// 22C
+		bool													alreadyRun;									// 22C
+		UInt8													pad22F;										// 22C
+		BSString												formEditorID;								// 230
+		const BGSStoryEvent*									startEventData;								// 240
+		NiPointer<QueuedPromoteQuestTask>						promoteTask;								// 248
+		BSTArray<ObjectRefHandle>								promotedRefs;								// 250
 	};
 	STATIC_ASSERT(sizeof(TESQuest) == 0x268);
 }

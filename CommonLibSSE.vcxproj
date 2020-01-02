@@ -413,6 +413,7 @@
     <ClInclude Include="include\RE\BaseFormComponent.h" />
     <ClInclude Include="include\RE\BeamProjectile.h" />
     <ClInclude Include="include\RE\BGSAbilityPerkEntry.h" />
+    <ClInclude Include="include\RE\BGSActorEvent.h" />
     <ClInclude Include="include\RE\BGSAddonNode.h" />
     <ClInclude Include="include\RE\BGSAnimationSequencer.h" />
     <ClInclude Include="include\RE\BGSBodyPartDefs.h" />

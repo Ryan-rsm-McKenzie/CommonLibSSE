@@ -48,11 +48,11 @@ namespace RE
 
 
 		// members
-		BGSStoryManagerBranchNode*	parent;					// 28 - PNAM
-		BGSStoryManagerNodeBase*	previousSibling;		// 30 - SNAM
-		UInt32						maxConcurrentQuests;	// 38 - XNAM
-		Flags						flags;					// 3C - DNAM
-		TESCondition				conditions;				// 40 - CITC
+		BGSStoryManagerBranchNode*	parent;				// 28 - PNAM
+		BGSStoryManagerNodeBase*	previousSibling;	// 30 - SNAM
+		UInt32						maxQuests;			// 38 - XNAM
+		Flags						flags;				// 3C - DNAM
+		TESCondition				conditions;			// 40 - CITC
 	};
 	STATIC_ASSERT(sizeof(BGSStoryManagerNodeBase) == 0x48);
 }

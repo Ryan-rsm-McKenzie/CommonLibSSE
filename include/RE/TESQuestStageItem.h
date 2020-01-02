@@ -7,12 +7,11 @@
 namespace RE
 {
 	class TESQuest;
-	class TESQuestStage;
+	struct TESQuestStage;
 
 
-	class TESQuestStageItem
+	struct TESQuestStageItem
 	{
-	public:
 		TESCondition			objConditions;	// 00
 		TESQuest*				nextQuest;		// 08
 		BGSLocalizedStringDL	logEntry;		// 10

@@ -277,9 +277,6 @@
     <Filter Include="include\RE\Events">
       <UniqueIdentifier>{7cc250ab-e557-449b-a10f-864e3914dcb3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\Events\ActorEvent">
-      <UniqueIdentifier>{f14eb727-0f67-47cd-8996-4dd2b5fe6a02}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Events\InputEvent">
       <UniqueIdentifier>{03bc1a3e-37be-4ca9-8073-c72b1fa2ec8b}</UniqueIdentifier>
     </Filter>
@@ -1086,6 +1083,9 @@
     </Filter>
     <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode\BSNiNode">
       <UniqueIdentifier>{6988af4c-5ddc-4b9e-8b3e-b8c35f28b854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\Events\BGSActorEvent">
+      <UniqueIdentifier>{f14eb727-0f67-47cd-8996-4dd2b5fe6a02}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2059,9 +2059,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\IMapCameraCallbacks.h">
       <Filter>include\RE\Menus\IMenu\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSAnimationGraphEvent.h">
-      <Filter>include\RE\Events\ActorEvent</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ButtonEvent.h">
       <Filter>include\RE\Events\InputEvent</Filter>
@@ -4913,9 +4910,6 @@
     <ClInclude Include="include\RE\BGSFootstepManager.h">
       <Filter>include\RE\Events</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BGSFootstepEvent.h">
-      <Filter>include\RE\Events</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESDeathEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
@@ -5140,6 +5134,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\Sexes.h">
       <Filter>include\RE\FormComponents\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSActorEvent.h">
+      <Filter>include\RE\Events\BGSActorEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSFootstepEvent.h">
+      <Filter>include\RE\Events\BGSActorEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSAnimationGraphEvent.h">
+      <Filter>include\RE\Events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

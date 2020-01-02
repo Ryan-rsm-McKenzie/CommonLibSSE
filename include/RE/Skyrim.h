@@ -41,6 +41,7 @@
 #include "RE/BGSAbilityPerkEntry.h"
 #include "RE/BGSAcousticSpace.h"
 #include "RE/BGSAction.h"
+#include "RE/BGSActorEvent.h"
 #include "RE/BGSAddonNode.h"
 #include "RE/BGSAnimationSequencer.h"
 #include "RE/BGSApparatus.h"

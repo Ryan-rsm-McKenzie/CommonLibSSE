@@ -31,13 +31,13 @@ namespace RE
 		// override (BGSStoryManagerNodeBase)
 		virtual void						ClearData() override;				// 05 - { BGSStoryManagerNodeBase::ClearData(); }
 		virtual void						InitItemImpl() override;			// 13
-		virtual UInt32						GetNumChildren() const override;	// 3B - { return children.size(); }
-		virtual BGSStoryManagerEventNode*	GetNthChild(UInt32 a_idx) override;	// 3C - { return children[a_idx]; }
+		virtual UInt32						GetNumChildren() const override;	// 3B - { return nodeChildren.size(); }
+		virtual BGSStoryManagerEventNode*	GetNthChild(UInt32 a_idx) override;	// 3C - { return nodeChildren[a_idx]; }
 		virtual void						Unk_3E(void) override;				// 3E - { return a_arg1->Unk_01(this); }
 
 
 		// members
-		BSTArray<BGSStoryManagerEventNode*> children;	// 48
+		BSTArray<BGSStoryManagerNodeBase*> children;	// 48
 	};
 	STATIC_ASSERT(sizeof(BGSStoryManagerBranchNode) == 0x60);
 }
