@@ -8,6 +8,20 @@
 
 namespace RE
 {
+	struct MOVABLE_STATIC_DATA
+	{
+		enum class Flag : UInt8
+		{
+			kNone = 0,
+			kOnLocalMap = 1 << 0
+		};
+
+
+		Flag flags;	// 0
+	};
+	STATIC_ASSERT(sizeof(MOVABLE_STATIC_DATA) == 0x1);
+
+
 	class BGSMovableStatic :
 		public TESFullName,					// 00
 		public BGSDestructibleObjectForm,	// 10
@@ -18,13 +32,6 @@ namespace RE
 
 
 		enum { kTypeID = FormType::MovableStatic };
-
-
-		enum class Flag : UInt32
-		{
-			kNone = 0,
-			kOnLocalMap = 1 << 0
-		};
 
 
 		struct RecordFlags
@@ -55,9 +62,11 @@ namespace RE
 
 
 		// members
-		BGSSoundDescriptorForm*	loopingSound;	// A0 - SNAM
-		Flag					flags;			// A8
-		UInt32					padAC;			// AC
+		BGSSoundDescriptorForm*	soundLoop;	// A0 - SNAM
+		MOVABLE_STATIC_DATA		data;		// A8
+		UInt8					padA9;		// A9
+		UInt16					padAA;		// AA
+		UInt32					padAC;		// AC
 	};
 	STATIC_ASSERT(sizeof(BGSMovableStatic) == 0xB0);
 }

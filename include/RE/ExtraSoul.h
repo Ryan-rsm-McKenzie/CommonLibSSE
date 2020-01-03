@@ -17,7 +17,7 @@ namespace RE
 
 
 		ExtraSoul();
-		explicit ExtraSoul(SoulLevel a_level);
+		explicit ExtraSoul(SOUL_LEVEL a_level);
 		virtual ~ExtraSoul() = default;													// 00
 
 		// override (BSExtraData)
@@ -26,7 +26,7 @@ namespace RE
 
 
 		// members
-		SoulLevel	containedSoul;	// 10
+		SOUL_LEVEL	containedSoul;	// 10
 		UInt8		pad11;			// 11
 		UInt16		pad12;			// 12
 		UInt32		pad14;			// 14

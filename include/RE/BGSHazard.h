@@ -10,6 +10,34 @@
 
 namespace RE
 {
+	struct BGSHazardData	// DATA
+	{
+	public:
+		enum class BGSHazardFlags : UInt32
+		{
+			kNone = 0,
+			kPCOnly = 1 << 0,
+			kInheritDuration = 1 << 1,
+			kAlignToNormal = 1 << 2,
+			kInheritRadius = 1 << 3,
+			kDropToGround = 1 << 4
+		};
+
+
+		UInt32					limit;				// 00
+		float					radius;				// 04
+		float					lifetime;			// 08
+		float					imageSpaceRadius;	// 0C
+		float					targetInterval;		// 10
+		BGSHazardFlags			flags;				// 14
+		SpellItem*				spell;				// 18
+		TESObjectLIGH*			light;				// 20
+		BGSImpactDataSet*		impactDataSet;		// 28
+		BGSSoundDescriptorForm*	sound;				// 30
+	};
+	STATIC_ASSERT(sizeof(BGSHazardData) == 0x38);
+
+
 	class BGSHazard :
 		public TESBoundObject,				// 00
 		public TESFullName,					// 30
@@ -34,34 +62,6 @@ namespace RE
 		};
 
 
-		struct Data	// DATA
-		{
-		public:
-			enum class Flag : UInt32
-			{
-				kNone = 0,
-				kAffectsPlayerOnly = 1 << 0,
-				kInheritDurationFromSpawnCell = 1 << 1,
-				kAlignToImpactNormal = 1 << 2,
-				kInheritRadiusFromSpawnCell = 1 << 3,
-				kDropToGround = 1 << 4
-			};
-
-
-			UInt32					limit;				// 00
-			float					radius;				// 04
-			float					lifetime;			// 08
-			float					imageSpaceRadius;	// 0C
-			float					targetInterval;		// 10
-			Flag					flags;				// 14
-			SpellItem*				spell;				// 18
-			TESObjectLIGH*			light;				// 20
-			BGSImpactDataSet*		impactDataSet;		// 28
-			BGSSoundDescriptorForm*	sound;				// 30
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x38);
-
-
 		virtual ~BGSHazard();							// 00
 
 		// override (TESBoundObject)
@@ -71,7 +71,7 @@ namespace RE
 
 
 		// members
-		Data data;	// 80 - DATA
+		BGSHazardData data;	// 80 - DATA
 	};
 	STATIC_ASSERT(sizeof(BGSHazard) == 0xB8);
 }

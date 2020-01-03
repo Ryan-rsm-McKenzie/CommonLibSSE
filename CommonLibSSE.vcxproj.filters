@@ -1347,9 +1347,6 @@
     <ClCompile Include="src\RE\MagicItem.cpp">
       <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\SpellItem.cpp">
-      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BGSHeadPart.cpp">
       <Filter>src\RE\FormComponents\TESForm</Filter>
     </ClCompile>
@@ -5143,6 +5140,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSAnimationGraphEvent.h">
       <Filter>include\RE\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DecalData.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -12,6 +12,22 @@
 
 namespace RE
 {
+	struct CONT_DATA
+	{
+		enum class Flag : UInt8
+		{
+			kNone = 0,
+			kAllowsSoundsWhenAnimation = 1 << 0,
+			kRespawn = 1 << 1,
+			kShowOwner = 1 << 2
+		};
+
+
+		Flag flags;	// 0
+	};
+	STATIC_ASSERT(sizeof(CONT_DATA) == 0x1);
+
+
 	class TESObjectCONT :
 		public TESBoundAnimObject,			// 00
 		public TESContainer,				// 30
@@ -26,15 +42,6 @@ namespace RE
 
 
 		enum { kTypeID = FormType::Container };
-
-
-		enum class Flag : UInt8
-		{
-			kNone = 0,
-			kAllowsSoundsWhenAnimation = 1 << 0,
-			kRespawns = 1 << 1,
-			kShowOwner = 1 << 2
-		};
 
 
 		struct RecordFlags
@@ -66,9 +73,9 @@ namespace RE
 
 		// members
 		UInt8					unkB8;		// B8
-		Flag					flags;		// B9 - DATA
-		UInt16					unkBA;		// BA
-		UInt32					unkBC;		// BC
+		CONT_DATA				data;		// B9 - DATA
+		UInt16					padBA;		// BA
+		UInt32					padBC;		// BC
 		BGSSoundDescriptorForm*	openSound;	// C0 - SNAM
 		BGSSoundDescriptorForm*	closeSound;	// C8 - QNAM
 	};

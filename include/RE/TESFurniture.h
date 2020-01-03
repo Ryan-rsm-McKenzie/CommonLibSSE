@@ -68,7 +68,6 @@ namespace RE
 
 		struct WorkBenchData	// WBDT
 		{
-		public:
 			enum class BenchType : UInt8
 			{
 				kNone = 0,
@@ -84,15 +83,12 @@ namespace RE
 
 			BenchType	benchType;	// 0
 			ActorValue8	usesSkill;	// 1
-			UInt8		unk2;		// 2
-			UInt8		unk3;		// 3
 		};
-		STATIC_ASSERT(sizeof(WorkBenchData) == 0x4);
+		STATIC_ASSERT(sizeof(WorkBenchData) == 0x2);
 
 
-		struct Marker
+		struct EntryPointData
 		{
-		public:
 			struct DisabledEntryPoint	// NAM0
 			{
 				enum class DisabledPoint : UInt16
@@ -112,11 +108,11 @@ namespace RE
 			STATIC_ASSERT(sizeof(DisabledEntryPoint) == 0x4);
 
 
-			UInt32				markerIndex;			// 00 - ENAM
+			UInt32				entryPoint;				// 00 - ENAM
 			DisabledEntryPoint	disabledEntryPoints;	// 04 - NAM0
-			BGSKeyword*			markerKeyword;			// 08 - FNMK
+			BGSKeyword*			keyword;				// 08 - FNMK
 		};
-		STATIC_ASSERT(sizeof(Marker) == 0x10);
+		STATIC_ASSERT(sizeof(EntryPointData) == 0x10);
 
 
 		virtual ~TESFurniture();																															// 00
@@ -133,10 +129,11 @@ namespace RE
 
 
 		// members
-		BSTArray<Marker>	markers;		// C8
-		WorkBenchData		workBenchData;	// E0 - WBDT
-		ActiveMarker		activeMarkers;	// E4
-		UInt64				unkE8;			// E8
+		BSTArray<EntryPointData>	entryPointDataArray;	// C8
+		WorkBenchData				workBenchData;			// E0 - WBDT
+		UInt16						padE2;					// E2
+		ActiveMarker				furnFlags;				// E4
+		SpellItem*					associatedForm;			// E8
 	};
 	STATIC_ASSERT(sizeof(TESFurniture) == 0xF0);
 }

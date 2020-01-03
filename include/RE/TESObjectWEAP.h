@@ -16,6 +16,7 @@
 #include "RE/TESEnchantableForm.h"
 #include "RE/TESFullName.h"
 #include "RE/TESIcon.h"
+#include "RE/TESModel.h"
 #include "RE/TESModelTextureSwap.h"
 #include "RE/TESValueForm.h"
 #include "RE/TESWeightForm.h"
@@ -23,6 +24,39 @@
 
 namespace RE
 {
+	enum class WEAPONHITBEHAVIOR : UInt32
+	{
+		kNormal = 0,
+		kDismemberOnly = 1,
+		kExplodeOnly = 2,
+		kNoDismemberOrExplode = 3
+	};
+
+
+	enum class WEAPON_RUMBLE_PATTERN : UInt32
+	{
+		kConstant = 0,
+		kPeriodicSquare = 1,
+		kPeriodicTriangle = 2,
+		kPeriodicSawtooth = 3
+	};
+
+
+	enum class WEAPON_TYPE : UInt8
+	{
+		kHandToHandMelee = 0,
+		kOneHandSword = 1,
+		kOneHandDagger = 2,
+		kOneHandAxe = 3,
+		kOneHandMace = 4,
+		kTwoHandSword = 5,
+		kTwoHandAxe = 6,
+		kBow = 7,
+		kStaff = 8,
+		kCrossbow = 9
+	};
+
+
 	class TESObjectWEAP :
 		public TESBoundObject,				// 000
 		public TESFullName,					// 030
@@ -59,17 +93,23 @@ namespace RE
 		};
 
 
-		struct Data	// DATA
+		struct RangedData
 		{
-			enum class OnHit : UInt32
-			{
-				kNoFormulaBehavior,
-				kDismemberOnly,
-				kExplodeOnly,
-				kNoDismemberExplode
-			};
+			float					sightFOV;						// 00
+			float					unk04;							// 04
+			float					firingRumbleLeftMotorStrength;	// 08
+			float					firingRumbleRightMotorStrength;	// 0C
+			float					firingRumbleDuration;			// 10
+			WEAPON_RUMBLE_PATTERN	rumblePattern;					// 14
+			SInt8					numProjectiles;					// 18
+			UInt8					pad19;							// 19
+			UInt16					pad1A;							// 1A
+		};
+		STATIC_ASSERT(sizeof(RangedData) == 0x1C);
 
 
+		struct Data	// DNAM
+		{
 			enum class Flag2 : UInt16
 			{
 				kNone = 0,
@@ -111,21 +151,6 @@ namespace RE
 			};
 
 
-			enum class AnimationType : UInt8
-			{
-				kHandToHandMelee = 0,
-				kOneHandSword = 1,
-				kOneHandDagger = 2,
-				kOneHandAxe = 3,
-				kOneHandMace = 4,
-				kTwoHandSword = 5,
-				kTwoHandAxe = 6,
-				kBow = 7,
-				kStaff = 8,
-				kCrossbow = 9
-			};
-
-
 			enum class Flag : UInt8
 			{
 				kNone = 0,
@@ -140,39 +165,24 @@ namespace RE
 			};
 
 
-			struct ExtraData
-			{
-				float	sightFOV;					// 00
-				float	unk04;						// 04
-				float	rumbleLeftMotorStrength;	// 08
-				float	rumbleRightMotorStrength;	// 0C
-				float	rumbleDuration;				// 10
-				UInt32	unk14;						// 14
-				UInt8	numProjectiles;				// 18
-				UInt8	pad19;						// 19
-				UInt16	pad1A;						// 1A
-			};
-			STATIC_ASSERT(sizeof(ExtraData) == 0x1C);
-
-
-			ExtraData*		extraData;				// 00
-			float			speed;					// 08
-			float			reach;					// 0C
-			float			rangeMin;				// 10
-			float			rangeMax;				// 14
-			float			animationAttackMult;	// 18
-			float			unk1C;					// 1C
-			float			stagger;				// 20
-			OnHit			onHit;					// 24
-			ActorValue		skill;					// 28
-			ActorValue		resist;					// 2C
-			Flag2			flags2;					// 30
-			UInt8			baseVATSToHitChance;	// 32
-			AttackAnimation	attackAnimation;		// 33
-			ActorValue8		embeddedWeaponAV;		// 34 - unused
-			AnimationType	animationType;			// 35
-			Flag			flags;					// 36
-			UInt8			unk37;					// 37
+			RangedData*			rangedData;				// 00
+			float				speed;					// 08
+			float				reach;					// 0C
+			float				minRange;				// 10
+			float				maxRange;				// 14
+			float				animationAttackMult;	// 18
+			float				unk1C;					// 1C
+			float				staggerValue;			// 20
+			WEAPONHITBEHAVIOR	hitBehavior;			// 24
+			ActorValue			skill;					// 28
+			ActorValue			resistance;				// 2C
+			Flag2				flags2;					// 30
+			UInt8				baseVATSToHitChance;	// 32
+			AttackAnimation		attackAnimation;		// 33
+			ActorValue8			embeddedWeaponAV;		// 34 - unused
+			WEAPON_TYPE			animationType;			// 35
+			Flag				flags;					// 36
+			UInt8				unk37;					// 37
 		};
 		STATIC_ASSERT(sizeof(Data) == 0x38);
 
@@ -197,6 +207,14 @@ namespace RE
 		STATIC_ASSERT(sizeof(CriticalData) == 0x18);
 
 
+		struct Unk1B8
+		{
+			TESModel			unk00;	// 00
+			TESEffectShader*	unk28;	// 28
+		};
+		STATIC_ASSERT(sizeof(Unk1B8) == 0x30);
+
+
 		virtual ~TESObjectWEAP();											// 00
 
 		// override (TESBoundObject)
@@ -210,33 +228,33 @@ namespace RE
 		virtual bool		GetPlayable() const override;					// 19 - { return ~((data.flags >> 7) & 1); }
 		virtual const char*	GetObjectTypeName() const override;				// 39 - { return g_animationStrings[data.animationType]; }
 
-		float				GetSpeed();
-		float				GetReach();
-		float				GetStagger();
-		float				GetMinRange();
-		float				GetMaxRange();
-		Data::AnimationType	GetAnimationType();
-		UInt16				GetCritDamage();
-		void				GetNodeName(char* a_dstBuff);
-		bool				IsBound() const;
-		bool				IsMelee() const;
-		bool				IsRanged() const;
-		bool				IsHandToHandMelee() const;
-		bool				IsOneHandedSword() const;
-		bool				IsOneHandedDagger() const;
-		bool				IsOneHandedAxe() const;
-		bool				IsOneHandedMace() const;
-		bool				IsTwoHandedSword() const;
-		bool				IsTwoHandedAxe() const;
-		bool				IsBow() const;
-		bool				IsStaff() const;
-		bool				IsCrossbow() const;
+		float		GetSpeed() const;
+		float		GetReach() const;
+		float		GetStagger() const;
+		float		GetMinRange() const;
+		float		GetMaxRange() const;
+		UInt16		GetCritDamage() const;
+		void		GetNodeName(char* a_dstBuff) const;
+		WEAPON_TYPE	GetWeaponType() const;
+		bool		IsBound() const;
+		bool		IsMelee() const;
+		bool		IsRanged() const;
+		bool		IsHandToHandMelee() const;
+		bool		IsOneHandedSword() const;
+		bool		IsOneHandedDagger() const;
+		bool		IsOneHandedAxe() const;
+		bool		IsOneHandedMace() const;
+		bool		IsTwoHandedSword() const;
+		bool		IsTwoHandedAxe() const;
+		bool		IsBow() const;
+		bool		IsStaff() const;
+		bool		IsCrossbow() const;
 
 
 		// members
-		Data					data;					// 168 - DNAM
+		Data					weaponData;				// 168 - DNAM
 		CriticalData			criticalData;			// 1A0 - CRDT
-		TESForm*				scopeEffect;			// 1B8
+		Unk1B8*					unk1B8;					// 1B8
 		BGSSoundDescriptorForm*	attackSound;			// 1C0 - SNAM
 		BGSSoundDescriptorForm*	attackSound2D;			// 1C8 - XNAM
 		BGSSoundDescriptorForm*	attackLoopSound;		// 1D0 - NAM7
@@ -246,9 +264,9 @@ namespace RE
 		BGSSoundDescriptorForm*	unequipSound;			// 1F0 - NAM8
 		BGSImpactDataSet*		impactDataSet;			// 1F8
 		TESObjectSTAT*			firstPersonModelObject;	// 200 - WNAM
-		TESObjectWEAP*			templateForm;			// 208 - CNAM
+		TESObjectWEAP*			templateWeapon;			// 208 - CNAM
 		BSFixedString			embeddedNode;			// 210
-		SOUND_LEVEL				detectionSoundLevel;	// 218 - VNAM
+		SOUND_LEVEL				soundLevel;				// 218 - VNAM
 		UInt32					pad21C;					// 21C
 	};
 	STATIC_ASSERT(sizeof(TESObjectWEAP) == 0x220);

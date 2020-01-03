@@ -3,14 +3,14 @@
 
 namespace RE
 {
-	SoulLevel TESSoulGem::GetContainedSoul() const
+	SOUL_LEVEL TESSoulGem::GetContainedSoul() const
 	{
-		return containedSoul;
+		return currentSoul;
 	}
 
 
-	SoulLevel TESSoulGem::GetMaximumCapacity() const
+	SOUL_LEVEL TESSoulGem::GetMaximumCapacity() const
 	{
-		return maximumCapacity;
+		return soulCapacity;
 	}
 }

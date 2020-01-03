@@ -260,7 +260,7 @@ namespace RE
 
 		// members
 		PackData			packData;					// 20 - PKDT
-		TESPackageData*		data;						// 30 - only ever TESCustomPackageData
+		TESPackageData*		data;						// 30
 		void*				unk38;						// 38
 		UnkData*			unk40;						// 40
 		BGSIdleCollection*	idleAnimations;				// 48

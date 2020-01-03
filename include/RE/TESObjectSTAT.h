@@ -7,6 +7,23 @@
 
 namespace RE
 {
+	struct TESObjectSTATData	// DNAM
+	{
+		enum class Flag : UInt32
+		{
+			kNone = 0
+		};
+
+
+		float				materialThresholdAngle;	// 00 - (30 - 120)
+		UInt32				pad04;					// 04
+		BGSMaterialObject*	materialObj;			// 08
+		Flag				flags;					// 10
+		UInt32				pad14;					// 14
+	};
+	STATIC_ASSERT(sizeof(TESObjectSTATData) == 0x18);
+
+
 	class TESObjectSTAT :
 		public TESBoundObject,		// 00
 		public TESModelTextureSwap	// 30
@@ -40,23 +57,6 @@ namespace RE
 		};
 
 
-		struct DirectionalMaterial	// DNAM
-		{
-			enum class Flag : UInt32
-			{
-				kNone = 0
-			};
-
-
-			float				maxAngle;	// 00 - (30 - 120)
-			UInt32				pad04;		// 04
-			BGSMaterialObject*	material;	// 08
-			Flag				flags;		// 10
-			UInt32				pad14;		// 14
-		};
-		STATIC_ASSERT(sizeof(DirectionalMaterial) == 0x18);
-
-
 		virtual ~TESObjectSTAT();							// 00
 
 		// override (TESBoundObject)
@@ -68,7 +68,7 @@ namespace RE
 
 
 		// members
-		DirectionalMaterial directionalMaterial;	// 68 - DNAM
+		TESObjectSTATData data;	// 68 - DNAM
 	};
 	STATIC_ASSERT(sizeof(TESObjectSTAT) == 0x80);
 }

@@ -7,11 +7,11 @@
 namespace RE
 {
 	ExtraSoul::ExtraSoul() :
-		ExtraSoul(SoulLevel::kNone)
+		ExtraSoul(SOUL_LEVEL::kNone)
 	{}
 
 
-	ExtraSoul::ExtraSoul(SoulLevel a_level) :
+	ExtraSoul::ExtraSoul(SOUL_LEVEL a_level) :
 		BSExtraData(),
 		containedSoul(a_level),
 		pad11(0),

@@ -63,11 +63,11 @@ namespace RE
 	}
 
 
-	SoulLevel InventoryEntryData::GetSoulLevel() const
+	SOUL_LEVEL InventoryEntryData::GetSoulLevel() const
 	{
 		if (extraLists && !extraLists->empty()) {
 			auto lvl = extraLists->front()->GetSoulLevel();
-			if (lvl > SoulLevel::kNone) {
+			if (lvl > SOUL_LEVEL::kNone) {
 				return lvl;
 			}
 		}
@@ -77,7 +77,7 @@ namespace RE
 			return soulGem->GetContainedSoul();
 		}
 
-		return SoulLevel::kNone;
+		return SOUL_LEVEL::kNone;
 	}
 
 

@@ -467,8 +467,8 @@ namespace RE
 	void Actor::UpdateHairColor()
 	{
 		auto npc = GetActorBase();
-		if (npc && npc->headData) {
-			auto hairColor = npc->headData->hairColor;
+		if (npc && npc->headRelatedData) {
+			auto hairColor = npc->headRelatedData->hairColor;
 			if (hairColor) {
 				NiColorA val;
 				val.red = hairColor->color.red / 128.0;
@@ -490,9 +490,9 @@ namespace RE
 		auto npc = GetActorBase();
 		if (npc) {
 			NiColorA val;
-			val.red = npc->textureLighting.red / 255.0;
-			val.green = npc->textureLighting.green / 255.0;
-			val.blue = npc->textureLighting.blue / 255.0;
+			val.red = npc->bodyTintColor.red / 255.0;
+			val.green = npc->bodyTintColor.green / 255.0;
+			val.blue = npc->bodyTintColor.blue / 255.0;
 			auto color = &val;
 
 			auto thirdPerson = Get3D(0);

@@ -3,70 +3,70 @@
 
 namespace RE
 {
-	float TESObjectWEAP::GetSpeed()
+	float TESObjectWEAP::GetSpeed() const
 	{
-		return data.speed;
+		return weaponData.speed;
 	}
 
 
-	float TESObjectWEAP::GetReach()
+	float TESObjectWEAP::GetReach() const
 	{
-		return data.reach;
+		return weaponData.reach;
 	}
 
 
-	float TESObjectWEAP::GetStagger()
+	float TESObjectWEAP::GetStagger() const
 	{
-		return data.stagger;
+		return weaponData.staggerValue;
 	}
 
 
-	float TESObjectWEAP::GetMinRange()
+	float TESObjectWEAP::GetMinRange() const
 	{
-		return data.rangeMin;
+		return weaponData.minRange;
 	}
 
 
-	float TESObjectWEAP::GetMaxRange()
+	float TESObjectWEAP::GetMaxRange() const
 	{
-		return data.rangeMax;
+		return weaponData.maxRange;
 	}
 
 
-	TESObjectWEAP::Data::AnimationType TESObjectWEAP::GetAnimationType()
-	{
-		return data.animationType;
-	}
-
-
-	UInt16 TESObjectWEAP::GetCritDamage()
+	UInt16 TESObjectWEAP::GetCritDamage() const
 	{
 		return criticalData.damage;
 	}
 
 
-	void TESObjectWEAP::GetNodeName(char* a_dstBuff)
+	void TESObjectWEAP::GetNodeName(char* a_dstBuff) const
 	{
 		sprintf_s(a_dstBuff, MAX_PATH, "%s  (%08X)", "Weapon", this->formID);
 	}
 
 
+	WEAPON_TYPE TESObjectWEAP::GetWeaponType() const
+	{
+		return weaponData.animationType;
+	}
+
+
 	bool TESObjectWEAP::IsBound() const
 	{
-		return (data.flags2 & Data::Flag2::kBoundWeapon) != Data::Flag2::kNone;
+		return (weaponData.flags2 & Data::Flag2::kBoundWeapon) != Data::Flag2::kNone;
 	}
 
 
 	bool TESObjectWEAP::IsMelee() const
 	{
-		switch (data.animationType) {
-		case Data::AnimationType::kHandToHandMelee:
-		case Data::AnimationType::kOneHandSword:
-		case Data::AnimationType::kOneHandDagger:
-		case Data::AnimationType::kOneHandAxe:
-		case Data::AnimationType::kOneHandMace:
-		case Data::AnimationType::kTwoHandSword:
-		case Data::AnimationType::kTwoHandAxe:
+		switch (weaponData.animationType) {
+		case WEAPON_TYPE::kHandToHandMelee:
+		case WEAPON_TYPE::kOneHandSword:
+		case WEAPON_TYPE::kOneHandDagger:
+		case WEAPON_TYPE::kOneHandAxe:
+		case WEAPON_TYPE::kOneHandMace:
+		case WEAPON_TYPE::kTwoHandSword:
+		case WEAPON_TYPE::kTwoHandAxe:
 			return true;
 		default:
 			return false;
@@ -76,10 +76,10 @@ namespace RE
 
 	bool TESObjectWEAP::IsRanged() const
 	{
-		switch (data.animationType) {
-		case Data::AnimationType::kBow:
-		case Data::AnimationType::kStaff:
-		case Data::AnimationType::kCrossbow:
+		switch (weaponData.animationType) {
+		case WEAPON_TYPE::kBow:
+		case WEAPON_TYPE::kStaff:
+		case WEAPON_TYPE::kCrossbow:
 			return true;
 		default:
 			return false;
@@ -89,60 +89,60 @@ namespace RE
 
 	bool TESObjectWEAP::IsHandToHandMelee() const
 	{
-		return data.animationType == Data::AnimationType::kHandToHandMelee;
+		return weaponData.animationType == WEAPON_TYPE::kHandToHandMelee;
 	}
 
 
 	bool TESObjectWEAP::IsOneHandedSword() const
 	{
-		return data.animationType == Data::AnimationType::kOneHandSword;
+		return weaponData.animationType == WEAPON_TYPE::kOneHandSword;
 	}
 
 
 	bool TESObjectWEAP::IsOneHandedDagger() const
 	{
-		return data.animationType == Data::AnimationType::kOneHandDagger;
+		return weaponData.animationType == WEAPON_TYPE::kOneHandDagger;
 	}
 
 
 	bool TESObjectWEAP::IsOneHandedAxe() const
 	{
-		return data.animationType == Data::AnimationType::kOneHandAxe;
+		return weaponData.animationType == WEAPON_TYPE::kOneHandAxe;
 	}
 
 
 	bool TESObjectWEAP::IsOneHandedMace() const
 	{
-		return data.animationType == Data::AnimationType::kOneHandMace;
+		return weaponData.animationType == WEAPON_TYPE::kOneHandMace;
 	}
 
 
 	bool TESObjectWEAP::IsTwoHandedSword() const
 	{
-		return data.animationType == Data::AnimationType::kTwoHandSword;
+		return weaponData.animationType == WEAPON_TYPE::kTwoHandSword;
 	}
 
 
 	bool TESObjectWEAP::IsTwoHandedAxe() const
 	{
-		return data.animationType == Data::AnimationType::kTwoHandAxe;
+		return weaponData.animationType == WEAPON_TYPE::kTwoHandAxe;
 	}
 
 
 	bool TESObjectWEAP::IsBow() const
 	{
-		return data.animationType == Data::AnimationType::kBow;
+		return weaponData.animationType == WEAPON_TYPE::kBow;
 	}
 
 
 	bool TESObjectWEAP::IsStaff() const
 	{
-		return data.animationType == Data::AnimationType::kStaff;
+		return weaponData.animationType == WEAPON_TYPE::kStaff;
 	}
 
 
 	bool TESObjectWEAP::IsCrossbow() const
 	{
-		return data.animationType == Data::AnimationType::kCrossbow;
+		return weaponData.animationType == WEAPON_TYPE::kCrossbow;
 	}
 }

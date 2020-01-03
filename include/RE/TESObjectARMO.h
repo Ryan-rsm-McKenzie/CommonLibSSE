@@ -70,7 +70,7 @@ namespace RE
 		// members
 		UInt32						armorRating;	// 200 - DNAM - CK value * 100 as a UInt32
 		UInt32						pad204;			// 204
-		BSTArray<TESObjectARMA*>	armature;		// 208
+		BSTArray<TESObjectARMA*>	armorAddons;	// 208
 		TESObjectARMO*				templateArmor;	// 220 - TNAM
 	};
 	STATIC_ASSERT(sizeof(TESObjectARMO) == 0x228);

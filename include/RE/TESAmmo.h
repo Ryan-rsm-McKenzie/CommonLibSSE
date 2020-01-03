@@ -16,6 +16,26 @@
 
 namespace RE
 {
+	struct AMMO_DATA	// DATA
+	{
+		enum class Flag : UInt8
+		{
+			kNone = 0,
+			kIgnoresNormalWeaponResistance = 1 << 0,
+			kNonPlayable = 1 << 1,
+			kNonBolt = 1 << 2
+		};
+
+
+		BGSProjectile*	projectile;	// 00
+		Flag			flags;		// 08
+		UInt8			pa09;		// 09
+		UInt16			pa0A;		// 0A
+		float			damage;		// 0C
+	};
+	STATIC_ASSERT(sizeof(AMMO_DATA) == 0x10);
+
+
 	class TESAmmo :
 		public TESBoundObject,				// 000
 		public TESFullName,					// 030
@@ -47,24 +67,6 @@ namespace RE
 		};
 
 
-		struct Data	// DATA
-		{
-			enum class Flag : UInt32
-			{
-				kNone = 0,
-				kIgnoresNormalWeaponResistance = 1 << 0,
-				kNonPlayable = 1 << 1,
-				kNonBolt = 1 << 2
-			};
-
-
-			BGSProjectile*	projectile;	// 00
-			Flag			flags;		// 08
-			float			damage;		// 0C
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x10);
-
-
 		virtual ~TESAmmo();												// 00
 
 		// override (TESBoundObject)
@@ -77,13 +79,13 @@ namespace RE
 		virtual void	Unk_40(void) override;							// 40
 		virtual void	OnRemovedFrom(TESObjectREFR* a_ref) override;	// 4E
 
-		bool			IgnoresNormalWeaponResistance();
-		bool			IsBolt();
+		bool	IgnoresNormalWeaponResistance();
+		bool	IsBolt();
 
 
 		// members
-		Data			data;		// 110 - DATA
-		BSFixedString	shortName;	// 120 - ONAM
+		AMMO_DATA		data;		// 110 - DATA
+		BSFixedString	shortDesc;	// 120 - ONAM
 	};
 	STATIC_ASSERT(sizeof(TESAmmo) == 0x128);
 }

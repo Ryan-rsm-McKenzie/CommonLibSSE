@@ -36,9 +36,9 @@ namespace RE
 
 
 		// members
-		BGSSoundDescriptorForm*	ambientSound;		// 30 - SNAM
-		TESRegion*				useSoundFromRegion;	// 38 - RDAT - interiors only
-		BGSReverbParameters*	environmentType;	// 40 - BNAM
+		BGSSoundDescriptorForm*	loopingSound;	// 30 - SNAM
+		TESRegion*				soundRegion;	// 38 - RDAT - interiors only
+		BGSReverbParameters*	reverbType;		// 40 - BNAM
 	};
 	STATIC_ASSERT(sizeof(BGSAcousticSpace) == 0x48);
 }

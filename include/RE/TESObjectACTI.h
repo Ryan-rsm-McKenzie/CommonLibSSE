@@ -28,11 +28,13 @@ namespace RE
 		enum { kTypeID = FormType::Activator };
 
 
-		enum class Flag : UInt16
+		enum class ActiFlags : UInt16
 		{
 			kNone = 0,
 			kNoDisplacement = 1 << 0,
-			kIgnoredBySandbox = 1 << 1
+			kIgnoredBySandbox = 1 << 1,
+			kIsProceduralWater = 1 << 2,
+			kIsLODWater = 1 << 3
 		};
 
 
@@ -77,12 +79,12 @@ namespace RE
 
 
 		// members
-		BGSSoundDescriptorForm*	soundLooping;		// A8 - SNAM
-		BGSSoundDescriptorForm*	soundActivation;	// B0 - VNAM
-		TESWaterForm*			waterType;			// B8 - WNAM
-		Flag					flags;				// C0 - FNAM
-		UInt16					padC2;				// C2
-		UInt32					padC4;				// C4
+		BGSSoundDescriptorForm*	soundLoop;		// A8 - SNAM
+		BGSSoundDescriptorForm*	soundActivate;	// B0 - VNAM
+		TESWaterForm*			waterForm;		// B8 - WNAM
+		ActiFlags				flags;			// C0 - FNAM
+		UInt16					padC2;			// C2
+		UInt32					padC4;			// C4
 	};
 	STATIC_ASSERT(sizeof(TESObjectACTI) == 0xC8);
 }

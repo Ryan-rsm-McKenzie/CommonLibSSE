@@ -3,6 +3,7 @@
 #include "RE/BSResource/ID.h"
 #include "RE/BSTextureSet.h"
 #include "RE/Color.h"
+#include "RE/DecalData.h"
 #include "RE/FormTypes.h"
 #include "RE/TESBoundObject.h"
 #include "RE/TESTexture.h"
@@ -40,34 +41,6 @@ namespace RE
 		};
 
 
-		struct DecalData
-		{
-			enum Flag : UInt8
-			{
-				kNone = 0,
-				kParallax = 1 << 0,
-				kAlphaBlending = 1 << 1,
-				kAlphaTesting = 1 << 2,
-				kNoSubtextures = 1 << 3
-			};
-
-
-			float	minWidth;		// 00
-			float	maxWidth;		// 04
-			float	minHeight;		// 08
-			float	maxHeight;		// 0C
-			float	depth;			// 10
-			float	shininess;		// 14
-			float	parallaxScale;	// 18
-			UInt8	parralaxPasses;	// 1C
-			Flag	flags;			// 1D
-			UInt16	unk1E;			// 1E
-			Color	color;			// 20
-			UInt32	pad24;			// 24
-		};
-		STATIC_ASSERT(sizeof(DecalData) == 0x28);
-
-
 		virtual ~BGSTextureSet();						// 00
 
 		// override (TESBoundObject)
@@ -79,12 +52,12 @@ namespace RE
 
 
 		// members
-		TESTexture		textures[Textures::kTotal];				// 040 - TX00 - TX07
-		DecalData*		decalData;								// 0C0 - DODT
-		Flag			flags;									// 0C8 - DNAM
-		UInt16			pad0CA;									// 0CA
-		BSResource::ID	textureFileHashes[Textures::kTotal];	// 0CC
-		UInt32			pad12C;									// 12C
+		TESTexture		textures[Textures::kTotal];			// 040 - TX00 - TX07
+		DecalData*		decalData;							// 0C0 - DODT
+		Flag			flags;								// 0C8 - DNAM
+		UInt16			pad0CA;								// 0CA
+		BSResource::ID	textureFileIDs[Textures::kTotal];	// 0CC
+		UInt32			pad12C;								// 12C
 	};
 	STATIC_ASSERT(sizeof(BGSTextureSet) == 0x130);
 }

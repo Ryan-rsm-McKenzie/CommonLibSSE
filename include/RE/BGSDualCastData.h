@@ -6,6 +6,28 @@
 
 namespace RE
 {
+	struct BGSDualCastDataDEF	// DATA
+	{
+		enum class Flags : UInt32
+		{
+			kNone = 0,
+			kHitEffectInheritScale = 1 << 0,
+			kProjectileInheritScale = 1 << 1,
+			kExplosionInheritScale = 1 << 2
+		};
+
+
+		BGSProjectile*		pProjectile;	// 00
+		BGSExplosion*		pExplosion;		// 08
+		TESEffectShader*	pEffectShader;	// 10
+		BGSArtObject*		pHitEffectArt;	// 18
+		BGSImpactDataSet*	pImpactDataSet;	// 20
+		Flags				flags;			// 28
+		UInt32				pad30;			// 30
+	};
+	STATIC_ASSERT(sizeof(BGSDualCastDataDEF) == 0x30);
+
+
 	class BGSDualCastData : public TESBoundObject
 	{
 	public:
@@ -25,28 +47,6 @@ namespace RE
 		};
 
 
-		struct Data	// DATA
-		{
-			enum class InheritScale : UInt32
-			{
-				kNone = 0,
-				kHitEffectArt = 1 << 0,
-				kProjectile = 1 << 1,
-				kExplosion = 1 << 2
-			};
-
-
-			BGSProjectile*		projectile;		// 00
-			BGSExplosion*		explosion;		// 08
-			TESEffectShader*	effectShader;	// 10
-			BGSArtObject*		hitEffectArt;	// 18
-			BGSImpactDataSet*	impactDataSet;	// 20
-			InheritScale		inheritScale;	// 28
-			UInt32				pad30;			// 30
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x30);
-
-
 		virtual ~BGSDualCastData();						// 00
 
 		// override (TESBoundObject)
@@ -55,7 +55,7 @@ namespace RE
 
 
 		// members
-		Data data;	// 30 - DATA
+		BGSDualCastDataDEF data;	// 30 - DATA
 	};
 	STATIC_ASSERT(sizeof(BGSDualCastData) == 0x60);
 }

@@ -296,10 +296,10 @@ namespace RE
 	}
 
 
-	SoulLevel ExtraDataList::GetSoulLevel() const
+	SOUL_LEVEL ExtraDataList::GetSoulLevel() const
 	{
 		auto xSoul = GetByType<ExtraSoul>();
-		return xSoul ? xSoul->containedSoul : SoulLevel::kNone;
+		return xSoul ? xSoul->containedSoul : SOUL_LEVEL::kNone;
 	}
 
 

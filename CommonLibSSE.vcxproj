@@ -345,7 +345,6 @@
     <ClCompile Include="src\RE\PlayerCharacter.cpp" />
     <ClCompile Include="src\RE\PlayerControls.cpp" />
     <ClCompile Include="src\RE\PlayerInputHandler.cpp" />
-    <ClCompile Include="src\RE\SpellItem.cpp" />
     <ClCompile Include="src\RE\TES.cpp" />
     <ClCompile Include="src\RE\TESActorBaseData.cpp" />
     <ClCompile Include="src\RE\TESAIForm.cpp" />
@@ -449,6 +448,7 @@
     <ClInclude Include="include\RE\BSUntypedPointerHandle.h" />
     <ClInclude Include="include\RE\BSXFlags.h" />
     <ClInclude Include="include\RE\ContainerItemExtra.h" />
+    <ClInclude Include="include\RE\DecalData.h" />
     <ClInclude Include="include\RE\DialoguePackage.h" />
     <ClInclude Include="include\RE\DialogueTypes.h" />
     <ClInclude Include="include\RE\DoNothingUnhandledPolicy.h" />

@@ -21,7 +21,7 @@ namespace RE
 		void		AddExtraList(ExtraDataList* a_extra);
 		const char*	GenerateName();
 		TESForm*	GetOwner();
-		SoulLevel	GetSoulLevel() const;
+		SOUL_LEVEL	GetSoulLevel() const;
 		SInt32		GetValue();
 		float		GetWeight();
 		bool		IsOwnedBy(Actor* a_actor, bool a_defaultTo = true);

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/Color.h"
+#include "RE/DecalData.h"
 #include "RE/FormTypes.h"
 #include "RE/SoundLevels.h"
 #include "RE/TESForm.h"
@@ -9,40 +10,6 @@
 
 namespace RE
 {
-	struct DECAL_DATA_DATA
-	{
-		enum class Flag : UInt8
-		{
-			kNone = 0,
-			kParallax = 1 << 0,
-			kAlpha_Blending = 1 << 1,
-			kAlpha_Testing = 1 << 2,
-			kNoSubtextures = 1 << 3
-		};
-
-
-		float	decalMinWidth;	// 00
-		float	decalMaxWidth;	// 04
-		float	decalMinHeight;	// 08
-		float	decalMaxHeight;	// 0C
-		float	depth;			// 10
-		float	shininess;		// 14
-		float	parallaxScale;	// 18
-		SInt8	parallaxPasses;	// 1C
-		Flag	flags;			// 1D
-		UInt16	pad1E;			// 1E
-		Color	color;			// 20
-	};
-	STATIC_ASSERT(sizeof(DECAL_DATA_DATA) == 0x24);
-
-
-	struct DecalData	// DODT
-	{
-		DECAL_DATA_DATA data;	// 00
-	};
-	STATIC_ASSERT(sizeof(DecalData) == 0x24);
-
-
 	class BGSImpactData :
 		public TESForm,	// 00
 		public TESModel	// 20

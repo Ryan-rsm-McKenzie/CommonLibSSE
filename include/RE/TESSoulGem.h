@@ -34,16 +34,16 @@ namespace RE
 		virtual void	LoadRecordByType(TESFile* a_mod, UInt32 a_recordType) override;	// 54
 		virtual void	Unk_55(void) override;											// 55
 
-		SoulLevel	GetContainedSoul() const;
-		SoulLevel	GetMaximumCapacity() const;
+		SOUL_LEVEL	GetContainedSoul() const;
+		SOUL_LEVEL	GetMaximumCapacity() const;
 
 
 		// members
-		TESSoulGem*	linkedTo;			// 100 - NAM0
-		SoulLevel	containedSoul;		// 108 - SOUL
-		SoulLevel	maximumCapacity;	// 109 - SLCP
-		UInt16		unk10A;				// 10A
-		UInt32		unk10C;				// 10C
+		TESSoulGem*	linkedSoulGem;	// 100 - NAM0
+		SOUL_LEVEL	currentSoul;	// 108 - SOUL
+		SOUL_LEVEL	soulCapacity;	// 109 - SLCP
+		UInt16		unk10A;			// 10A
+		UInt32		unk10C;			// 10C
 	};
 	STATIC_ASSERT(sizeof(TESSoulGem) == 0x110);
 }

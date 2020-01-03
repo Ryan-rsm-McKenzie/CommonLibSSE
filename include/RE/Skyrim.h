@@ -325,6 +325,7 @@
 #include "RE/CreationClubMenu.h"
 #include "RE/CreditsMenu.h"
 #include "RE/CursorMenu.h"
+#include "RE/DecalData.h"
 #include "RE/DetectionListener.h"
 #include "RE/DetectionState.h"
 #include "RE/DialogueItem.h"

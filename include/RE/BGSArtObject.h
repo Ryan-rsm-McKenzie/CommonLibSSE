@@ -18,11 +18,11 @@ namespace RE
 		enum { kTypeID = FormType::ArtObject };
 
 
-		enum class ArtType : UInt32	// DNAM
+		enum class ArtType : UInt32
 		{
-			kMagicCasting = 0,
+			kMagicCastingArt = 0,
 			kMagicHitEffect = 1,
-			kEnchantmentEffect = 2
+			kMagicEnchantEffect = 2
 		};
 
 
@@ -36,6 +36,13 @@ namespace RE
 		};
 
 
+		struct Data	// DNAM
+		{
+			ArtType artType;	// 0
+		};
+		STATIC_ASSERT(sizeof(Data) == 0x4);
+
+
 		virtual ~BGSArtObject();						// 00
 
 		// override (TESBoundObject)
@@ -44,8 +51,8 @@ namespace RE
 
 
 		// members
-		ArtType	artType;	// 68 - DNAM
-		UInt32	pad6C;		// 6C
+		Data	data;	// 68 - DNAM
+		UInt32	pad6C;	// 6C
 	};
 	STATIC_ASSERT(sizeof(BGSArtObject) == 0x70);
 }

@@ -44,6 +44,30 @@ namespace RE
         };
 
 
+        enum class SpellType : UInt32
+        {
+            kSpell = 0,
+            kDisease = 1,
+            kPower = 2,
+            kLesserPower = 3,
+            kAbility = 4,
+            kPoison = 5,
+            kEnchantment = 6,
+
+            kPotion = 7,
+            kAlchemy = kPotion,
+
+            kWortCraft = 8,
+            kIngredient = kWortCraft,
+
+            kLeveledSpell = 9,
+            kAddiction = 10,
+            kVoicePower = 11,
+            kStaffEnchantment = 12,
+            kScroll = 13
+        };
+
+
         enum class WardState : UInt32
         {
             kNone = 0,

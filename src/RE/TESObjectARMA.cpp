@@ -51,11 +51,9 @@ namespace RE
 		float weight = 100.0;
 		auto baseObj = a_refr->GetBaseObject();
 		auto npc = baseObj ? baseObj->As<TESNPC>() : 0;
-		if (npc && npc->nextTemplate) {
-			auto templ = npc->GetRootTemplate();
-			if (templ) {
-				weight = templ->weight;
-			}
+		if (npc) {
+			npc = npc->GetRootTemplate();
+			weight = npc->weight;
 		} else {
 			weight = a_refr->GetWeight();
 		}

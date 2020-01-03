@@ -7,6 +7,22 @@
 
 namespace RE
 {
+	struct ADDON_DATA
+	{
+		enum class Flag : UInt8
+		{
+			kNone = 0,
+			kAlwaysLoaded = 3
+		};
+
+
+		UInt16	masterParticleCap;	// 0
+		Flag	flags;				// 2
+		UInt8	pad3;				// 3
+	};
+	STATIC_ASSERT(sizeof(ADDON_DATA) == 0x4);
+
+
 	class BGSAddonNode :
 		public TESBoundObject,		// 00
 		public TESModelTextureSwap  // 30
@@ -28,23 +44,6 @@ namespace RE
 		};
 
 
-		struct Data	// DNAM
-		{
-			enum class Flag : UInt8
-			{
-				kNone = 0,
-				kAlwaysLoaded = 3
-			};
-
-
-			UInt16	masterParticleSystemCap;	// 0
-			Flag	flags;						// 2
-			UInt8	unk3;						// 3
-			UInt32	unk4;						// 4
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x8);
-
-
 		virtual ~BGSAddonNode();						// 00
 
 		// override (TESBoundObject)
@@ -54,10 +53,11 @@ namespace RE
 
 
 		// members
-		UInt32					nodeIndex;	// 68 - DATA
-		UInt32					pad6C;		// 6C
-		BGSSoundDescriptorForm*	sound;		// 70 - SNAM
-		Data					data;		// 78 - DNAM
+		UInt32					index;	// 68 - DATA
+		UInt32					pad6C;	// 6C
+		BGSSoundDescriptorForm*	sound;	// 70 - SNAM
+		ADDON_DATA				data;	// 78 - DNAM
+		UInt32					pad7C;	// 7C
 	};
 	STATIC_ASSERT(sizeof(BGSAddonNode) == 0x80);
 }

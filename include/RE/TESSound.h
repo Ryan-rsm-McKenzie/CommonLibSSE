@@ -37,7 +37,7 @@ namespace RE
 
 
 		// members
-		BGSSoundDescriptorForm* soundDescriptor;	// 30 - SDSC
+		BGSSoundDescriptorForm* descriptor;	// 30 - SDSC
 	};
 	STATIC_ASSERT(sizeof(TESSound) == 0x38);
 }

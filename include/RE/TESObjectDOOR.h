@@ -2,6 +2,7 @@
 
 #include "RE/BGSDestructibleObjectForm.h"
 #include "RE/BGSOpenCloseForm.h"
+#include "RE/BSTArray.h"
 #include "RE/FormTypes.h"
 #include "RE/TESBoundAnimObject.h"
 #include "RE/TESFullName.h"
@@ -71,17 +72,15 @@ namespace RE
 
 
 		// members
-		UInt64					unk90;		// 90
-		BGSSoundDescriptorForm*	openSound;	// 98 - SNAM
-		BGSSoundDescriptorForm*	closeSound;	// A0 - ANAM
-		BGSSoundDescriptorForm*	loopSound;	// A8 - BNAM
-		Flag					flags;		// B0 - FNAM
-		UInt8					unkB1;		// B1
-		UInt16					unkB2;		// B2
-		UInt32					unkB4;		// B4
-		UInt64					unkB8;		// B8
-		UInt64					unkC0;		// C0
-		UInt64					unkC8;		// C8
+		UInt64					unk90;				// 90
+		BGSSoundDescriptorForm*	openSound;			// 98 - SNAM
+		BGSSoundDescriptorForm*	closeSound;			// A0 - ANAM
+		BGSSoundDescriptorForm*	loopSound;			// A8 - BNAM
+		Flag					flags;				// B0 - FNAM
+		UInt8					padB1;				// B1
+		UInt16					padB2;				// B2
+		UInt32					padB4;				// B4
+		BSTArray<TESForm*>		randomTeleports;	// B8
 	};
 	STATIC_ASSERT(sizeof(TESObjectDOOR) == 0xD0);
 }
