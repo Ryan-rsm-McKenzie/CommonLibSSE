@@ -8,21 +8,21 @@ namespace RE
 	class TESObjectREFR;
 
 
+	enum class ACTOR_COMBAT_STATE : UInt32
+	{
+		kNone = 0,
+		kCombat = 1,
+		kSearching = 2
+	};
+
+
 	struct TESCombatEvent
 	{
-		enum class State : UInt32
-		{
-			kNotInCombat = 0,
-			kInCombat = 1,
-			kSearching = 2
-		};
-
-
 		// members
-		NiPointer<TESObjectREFR>	source;	// 00
-		NiPointer<TESObjectREFR>	target;	// 08
-		State						state;	// 10
-		UInt32						pad14;	// 14
+		NiPointer<TESObjectREFR>	actor;			// 00
+		NiPointer<TESObjectREFR>	targetActor;	// 08
+		ACTOR_COMBAT_STATE			state;			// 10
+		UInt32						pad14;			// 14
 	};
 	STATIC_ASSERT(sizeof(TESCombatEvent) == 0x18);
 }

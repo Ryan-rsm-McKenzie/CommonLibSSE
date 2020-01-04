@@ -2,18 +2,22 @@
 
 #include <type_traits>
 
+#include "RE/BSPointerHandle.h"
 #include "RE/IAIWorldLocationHandle.h"
 
 
 namespace RE
 {
+	class TESForm;
+
+
 	class PackageLocation : public IAIWorldLocationHandle
 	{
 	public:
 		inline static const void* RTTI = RTTI_PackageLocation;
 
 
-		enum class Type : UInt32
+		enum class Type : UInt8
 		{
 			kNone = static_cast<std::underlying_type_t<Type>>(-1),
 			kNearReference = 0,
@@ -30,19 +34,28 @@ namespace RE
 		};
 
 
-		virtual ~PackageLocation();				// 00
+		union Data
+		{
+			TESForm*		object;	
+			ObjectRefHandle	refHandle;
+		};
+		STATIC_ASSERT(sizeof(Data) == 0x8);
+
+
+		virtual ~PackageLocation();																							// 00
 
 		// override (IAIWorldLocationHandle)
-		virtual void	Unk_01(void) override;	// 01
-		virtual void	Unk_02(void) override;	// 02 - { return this; }
-		virtual void	Unk_03(void) override;	// 03
+		virtual const IAIWorldLocation*	AllocateLocation(AIWorldLocationContext* a_context) override;						// 01
+		virtual PackageLocation*		GetAsPackageLocation() override;													// 02 - { return this; }
+		virtual bool					IsRefAtLocation(AIWorldLocationContext* a_context, TESObjectREFR* a_ref) override;	// 03
 
 
 		// members
-		Type		type;	// 08
-		UInt32		radius;	// 0C
-		RefHandle	handle;	// 10
-		UInt32		unk14;	// 14
+		Type	locType;	// 08
+		UInt8	pad09;		// 09
+		UInt16	pad0A;		// 0A
+		UInt32	rad;		// 0C
+		Data	data;		// 10
 	};
 	STATIC_ASSERT(sizeof(PackageLocation) == 0x18);
 }

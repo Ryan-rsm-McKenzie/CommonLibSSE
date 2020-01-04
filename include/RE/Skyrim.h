@@ -62,6 +62,7 @@
 #include "RE/BGSColorForm.h"
 #include "RE/BGSConstructibleObject.h"
 #include "RE/BGSDebris.h"
+#include "RE/BGSDecalGroup.h"
 #include "RE/BGSDefaultObjectManager.h"
 #include "RE/BGSDestructibleObjectForm.h"
 #include "RE/BGSDialogueBranch.h"

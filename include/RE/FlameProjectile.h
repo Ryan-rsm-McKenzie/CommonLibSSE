@@ -35,12 +35,13 @@ namespace RE
 		virtual void	Unk_AB(void) override;							// AB
 		virtual void	Unk_B7(void) override;							// B7
 		virtual void	Unk_BD(void) override;							// BD
-		virtual void	Handle3DLoaded() override;						// C0 - { unk1CC = unk1CC & 0xFFFFFFCC | 8; }
+		virtual void	Handle3DLoaded() override;						// C0 - { flags = flags & 0xFFFFFFCC | 8; }
 		virtual void	Unk_C1(void) override;							// C1
 
 
 		// members
-		UInt64 unk1D8;	// 1D8
+		float	expirationTimer;	// 1D8
+		float	coneAngle;			// 1DC
 	};
 	STATIC_ASSERT(sizeof(FlameProjectile) == 0x1E0);
 }

@@ -39,6 +39,7 @@ namespace RE
 	class Projectile;
 	class TESBoundObject;
 	class TESContainer;
+	struct BGSDecalGroup;
 	struct BipedAnim;
 	struct BSAnimationGraphEvent;
 	struct LockState;
@@ -342,7 +343,7 @@ namespace RE
 		virtual void					Unk_9C(void);																																																// 9C
 		virtual void					Unk_9D(void);																																																// 9D - { return 0; }
 		virtual void					Unk_9E(void);																																																// 9E - { return 0; }
-		virtual void*					GetDecalGroup();																																															// 9F
+		virtual BGSDecalGroup*			GetDecalGroup();																																															// 9F
 		virtual void					Unk_A0(void);																																																// A0
 		virtual void					UnequipItem(UInt64 a_arg1, TESBoundObject* a_item);																																							// A1 - { return; }
 
@@ -407,10 +408,10 @@ namespace RE
 		OBJ_REFR			data;			// 40
 		TESObjectCELL*		parentCell;		// 60
 		LOADED_REF_DATA*	loadedData;		// 68
-		ExtraDataList		extraData;		// 70
+		ExtraDataList		extraList;		// 70
 		UInt64				unk88;			// 88
 		UInt16				refScale;		// 90
-		UInt8				modelState;		// 92
+		SInt8				modelState;		// 92
 		bool				preDestroyed;	// 93
 		UInt32				pad94;			// 94
 

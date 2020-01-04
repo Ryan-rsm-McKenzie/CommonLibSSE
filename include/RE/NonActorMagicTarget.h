@@ -31,7 +31,7 @@ namespace RE
 		// override (MagicTarget)
 		virtual void							Unk_01(void) override;				// 01
 		virtual Actor*							GetTargetStatsObject() override;	// 02 - { return target; }
-		virtual void							Unk_06(void) override;				// 06 - { return 1; }
+		virtual bool							CanAddActiveEffect() override;		// 06 - { return true; }
 		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffectList() override;		// 07 - { return &activeEffects; }
 
 

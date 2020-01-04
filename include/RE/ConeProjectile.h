@@ -2,11 +2,26 @@
 
 #include "RE/BSTArray.h"
 #include "RE/FormTypes.h"
+#include "RE/hkRefPtr.h"
+#include "RE/NiPoint3.h"
 #include "RE/Projectile.h"
 
 
 namespace RE
 {
+	class hkpSphereShape;
+
+
+	enum class ImpactResult : UInt32
+	{
+		kNone = 0,
+		kDestroy = 1,
+		kBounce = 2,
+		kImpale = 3,
+		kStick = 4
+	};
+
+
 	class ConeProjectile : public Projectile
 	{
 	public:
@@ -45,12 +60,14 @@ namespace RE
 
 
 		// members
-		UInt64			unk1D8;	// 1D8
-		UInt64			unk1E0;	// 1E0
-		UInt64			unk1E8;	// 1E8
-		UInt64			unk1F0;	// 1F0
-		void*			unk1F8;	// 1F8 - smart ptr
-		BSTArray<void*>	unk200;	// 200
+		ImpactResult				impactResult;					// 1D8
+		float						environmentTimer;				// 1DC
+		float						coneAngleTangent;				// 1E0
+		float						initialCollisionSphereRadius;	// 1E4
+		NiPoint3					origin;							// 1E8
+		UInt32						pad1F4;							// 1F4
+		hkRefPtr<hkpSphereShape>	collisionShape;					// 1F8
+		BSTArray<void*>				collisions;						// 200
 	};
 	STATIC_ASSERT(sizeof(ConeProjectile) == 0x218);
 }

@@ -65,10 +65,10 @@ namespace RE
 
 	void Actor::AllowPCDialogue(bool a_talk)
 	{
-		auto xTalk = extraData.GetByType<ExtraCanTalkToPlayer>();
+		auto xTalk = extraList.GetByType<ExtraCanTalkToPlayer>();
 		if (xTalk) {
 			xTalk = new ExtraCanTalkToPlayer();
-			extraData.Add(xTalk);
+			extraList.Add(xTalk);
 		}
 
 		xTalk->canTalkToPlayer = a_talk;
@@ -112,7 +112,7 @@ namespace RE
 
 	void Actor::ClearExtraArrows()
 	{
-		extraData.RemoveByType(ExtraDataType::kAttachedArrows3D);
+		extraList.RemoveByType(ExtraDataType::kAttachedArrows3D);
 	}
 
 
@@ -184,7 +184,7 @@ namespace RE
 			return 0;
 		}
 
-		auto xFac = extraData.GetByType<ExtraFactionChanges>();
+		auto xFac = extraList.GetByType<ExtraFactionChanges>();
 		if (xFac && (xFac->crimeFaction || xFac->noTrackCrime)) {
 			return xFac->crimeFaction;
 		}
@@ -314,7 +314,7 @@ namespace RE
 
 	bool Actor::IsBeingRidden() const
 	{
-		return IsAMount() && extraData.HasType(ExtraDataType::kInteraction);
+		return IsAMount() && extraList.HasType(ExtraDataType::kInteraction);
 	}
 
 
@@ -375,7 +375,7 @@ namespace RE
 
 	bool Actor::IsOnMount() const
 	{
-		return !IsAMount() && extraData.HasType(ExtraDataType::kInteraction);
+		return !IsAMount() && extraList.HasType(ExtraDataType::kInteraction);
 	}
 
 
@@ -526,7 +526,7 @@ namespace RE
 				}
 			}
 
-			auto factionChanges = extraData.GetByType<ExtraFactionChanges>();
+			auto factionChanges = extraList.GetByType<ExtraFactionChanges>();
 			if (factionChanges) {
 				for (auto& info : factionChanges->factions) {
 					if (a_visitor(info.faction, info.rank)) {

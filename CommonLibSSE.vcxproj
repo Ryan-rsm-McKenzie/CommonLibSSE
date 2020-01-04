@@ -416,6 +416,7 @@
     <ClInclude Include="include\RE\BGSAddonNode.h" />
     <ClInclude Include="include\RE\BGSAnimationSequencer.h" />
     <ClInclude Include="include\RE\BGSBodyPartDefs.h" />
+    <ClInclude Include="include\RE\BGSDecalGroup.h" />
     <ClInclude Include="include\RE\BGSEntryPoint.h" />
     <ClInclude Include="include\RE\BGSFootstepEvent.h" />
     <ClInclude Include="include\RE\BGSFootstepManager.h" />

@@ -15,13 +15,13 @@ namespace RE
 		virtual	~IDEvent();												// 00
 
 		// override
-		virtual bool					IsIDEvent() const override;		// 01 - { return true; }
-		virtual const BSFixedString&	GetControlID() const override;	// 02 - { return controlID; }
+		virtual bool					HasIDCode() const override;		// 01 - { return true; }
+		virtual const BSFixedString&	QUserEvent() const override;	// 02 - { return userEvent; }
 
 
 		// members
-		BSFixedString	controlID;	// 18
-		UInt32			keyMask;	// 20
+		BSFixedString	userEvent;	// 18
+		UInt32			idCode;		// 20
 		UInt32			pad24;		// 24
 	};
 	STATIC_ASSERT(sizeof(IDEvent) == 0x28);

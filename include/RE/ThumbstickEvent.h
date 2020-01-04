@@ -27,8 +27,8 @@ namespace RE
 
 
 		// members
-		float	x;	// 28
-		float	y;	// 2C
+		float	xValue;	// 28
+		float	yValue;	// 2C
 	};
 	STATIC_ASSERT(sizeof(ThumbstickEvent) == 0x30);
 }

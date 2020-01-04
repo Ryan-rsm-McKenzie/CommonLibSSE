@@ -5,6 +5,9 @@
 
 namespace RE
 {
+	class BSPCGamepadDeviceHandler;
+
+
 	class BSPCGamepadDeviceDelegate : public BSGamepadDevice
 	{
 	public:

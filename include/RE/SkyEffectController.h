@@ -11,17 +11,17 @@ namespace RE
 		inline static const void* RTTI = RTTI_SkyEffectController;
 
 
-		virtual ~SkyEffectController();			// 00
+		virtual ~SkyEffectController();												// 00
 
 		// override (ReferenceEffectController)
-		virtual void	Unk_0A(void) override;	// 0A
-		virtual void	Unk_0B(void) override;	// 0B - { return g_thePlayer; }
-		virtual void	Unk_0C(void) override;	// 0C - { return GetSkyReferenceEffectArt(); }
-		virtual void	Unk_0D(void) override;	// 0D - { return 0; }
-		virtual void	Unk_0E(void) override;	// 0E - { return 0; }
-		virtual void	Unk_0F(void) override;	// 0F
-		virtual void	Unk_1A(void) override;	// 1A - { return 1; }
-		virtual void	Unk_1B(void) override;	// 1B
+		virtual void				RemoveHitEffect(ReferenceEffect* a_refEffect);	// 0A - { return; }
+		virtual TESObjectREFR*		GetTargetReference() override;					// 0B - { return g_thePlayer; }
+		virtual BGSArtObject*		GetHitEffectArt() override;						// 0C - { return GetSkyReferenceEffectArt(); }
+		virtual TESEffectShader*	GetHitEffectShader() override;					// 0D - { return 0; }
+		virtual bool				GetManagerHandlesSaveLoad() override;			// 0E - { return 0; }
+		virtual NiAVObject*			GetAttachRoot() override;						// 0F
+		virtual bool				EffectAttachesToCamera() override;				// 1A - { return true; }
+		virtual bool				EffectRotatesWithCamera() override;				// 1B
 	};
 	STATIC_ASSERT(sizeof(SkyEffectController) == 0x8);
 }

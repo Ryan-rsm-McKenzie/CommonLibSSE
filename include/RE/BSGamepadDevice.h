@@ -20,7 +20,7 @@ namespace RE
 		virtual ~BSGamepadDevice();					// 00
 
 		// override (BSInputDevice)
-		virtual bool	IsEnabled() const override;	// 07 - { return isConnected && userIndex != -1; }
+		virtual bool	IsEnabled() const override;	// 07 - { return connected && userIndex != -1; }
 
 		// add
 		virtual void	Unk_09(void) = 0;			// 09
@@ -33,7 +33,7 @@ namespace RE
 
 		// members
 		SInt32	userIndex;			// C8
-		bool	isConnected;		// CC
+		bool	connected;			// CC
 		bool	listeningForInput;	// CD
 		UInt16	padCE;				// CE
 	};

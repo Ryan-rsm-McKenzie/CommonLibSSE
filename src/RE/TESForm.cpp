@@ -67,7 +67,7 @@ namespace RE
 		auto objRef = As<TESObjectREFR>();
 		if (objRef) {
 			form = objRef->GetBaseObject();
-			auto xEnch = objRef->extraData.GetByType<ExtraEnchantment>();
+			auto xEnch = objRef->extraList.GetByType<ExtraEnchantment>();
 			if (xEnch && xEnch->objectEffect) {
 				value += xEnch->objectEffect->CalculateTotalGoldValue();
 			}

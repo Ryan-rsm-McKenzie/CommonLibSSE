@@ -6,6 +6,9 @@
 
 namespace RE
 {
+	class AlchemyItem;
+
+
 	class ArrowProjectile : public MissileProjectile
 	{
 	public:
@@ -43,8 +46,8 @@ namespace RE
 
 
 		// members
-		UInt64	unk1E0;	// 1E0
-		UInt64	unk1E8;	// 1E8
+		UInt64			unk1E0;	// 1E0
+		AlchemyItem*	poison;	// 1E8
 	};
 	STATIC_ASSERT(sizeof(ArrowProjectile) == 0x1F0);
 }

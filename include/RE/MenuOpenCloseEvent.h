@@ -10,7 +10,7 @@ namespace RE
 	public:
 		// members
 		BSFixedString	menuName;	// 00
-		bool			isOpening;	// 08
+		bool			opening;	// 08
 		UInt8			pad09;		// 09
 		UInt16			pad0A;		// 0A
 		UInt32			pad0C;		// 0C

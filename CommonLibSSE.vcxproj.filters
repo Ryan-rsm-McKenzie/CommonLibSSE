@@ -5144,5 +5144,8 @@
     <ClInclude Include="include\RE\DecalData.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\BGSDecalGroup.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

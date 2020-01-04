@@ -27,8 +27,8 @@ namespace RE
 
 		// members
 		NiPointer<TESObjectREFR>	target;		// 00
-		NiPointer<TESObjectREFR>	aggressor;	// 08
-		FormID						weapon;		// 10
+		NiPointer<TESObjectREFR>	cause;		// 08
+		FormID						source;		// 10
 		FormID						projectile;	// 14
 		Flag						flags;		// 18
 		UInt8						pad19;		// 19

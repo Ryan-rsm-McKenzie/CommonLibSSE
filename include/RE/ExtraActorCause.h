@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
-#include "RE/BSTSmartPointer.h"
 #include "RE/ExtraDataTypes.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE
@@ -26,7 +26,7 @@ namespace RE
 
 
 		// members
-		BSTSmartPointer<ActorCause> actorCause;	// 10
+		NiPointer<ActorCause> actorCause;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraActorCause) == 0x18);
 }

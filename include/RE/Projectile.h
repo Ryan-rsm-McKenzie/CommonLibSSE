@@ -1,6 +1,9 @@
 #pragma once
 
 #include "RE/BSLock.h"
+#include "RE/BSPointerHandle.h"
+#include "RE/BSSoundHandle.h"
+#include "RE/NiSmartPointer.h"
 #include "RE/TESObjectREFR.h"
 
 
@@ -76,55 +79,55 @@ namespace RE
 
 
 		// members
-		UInt64						unk098;			// 098
-		UInt64						unk0A0;			// 0A0
-		float						unk0A8;			// 0A8
-		float						unk0AC;			// 0AC
-		UInt64						unk0B0;			// 0B0
-		float						unk0B8;			// 0B8
-		float						unk0BC;			// 0BC
-		UInt64						unk0C0;			// 0C0
-		float						unk0C8;			// 0C8
-		float						unk0CC;			// 0CC
-		UInt64						unk0D0;			// 0D0
-		float						unk0D8;			// 0D8
-		float						unk0DC;			// 0DC
-		bhkSimpleShapePhantom*		unk0E0;			// 0E0
-		mutable BSSpinLock			unk0E8;			// 0E8
-		NiPoint3					unk0F0;			// 0F0
-		float						unk0FC;			// 0FC
-		float						unk100;			// 100
-		float						unk104;			// 104
-		UInt64						unk108;			// 108
-		UInt64						unk110;			// 110
-		BSTSmartPointer<ActorCause>	actorCause;		// 118
-		RefHandle					shooterHandle;	// 120
-		UInt32						unk124;			// 124
-		UInt64						unk128;			// 128
-		UInt64						unk130;			// 130
-		UInt64						unk138;			// 138
-		UInt64						unk140;			// 140
-		UInt64						unk148;			// 148
-		UInt64						unk150;			// 150
-		UInt64						unk158;			// 158
-		UInt64						unk160;			// 160
-		UInt64						unk168;			// 168
-		QueuedFile*					unk170;			// 170
-		UInt64						unk178;			// 178
-		UInt64						unk180;			// 180
-		float						unk188;			// 188
-		float						unk18C;			// 18C
-		float						unk190;			// 190
-		UInt32						unk194;			// 194
-		float						unk198;			// 198
-		float						unk19C;			// 19C
-		UInt64						unk1A0;			// 1A0
-		UInt64						unk1A8;			// 1A8
-		TESObjectWEAP*				sourceWeapon;	// 1B0
-		TESAmmo*					ammo;			// 1B8
-		UInt64						unk1C0;			// 1C0
-		UInt64						unk1C8;			// 1C8
-		UInt64						unk1D0;			// 1D0
+		UInt64					unk098;				// 098
+		UInt64					unk0A0;				// 0A0
+		float					unk0A8;				// 0A8
+		float					unk0AC;				// 0AC
+		UInt64					unk0B0;				// 0B0
+		float					unk0B8;				// 0B8
+		float					unk0BC;				// 0BC
+		UInt64					unk0C0;				// 0C0
+		float					unk0C8;				// 0C8
+		float					unk0CC;				// 0CC
+		UInt64					unk0D0;				// 0D0
+		float					unk0D8;				// 0D8
+		float					unk0DC;				// 0DC
+		bhkSimpleShapePhantom*	unk0E0;				// 0E0 - smart ptr
+		mutable BSSpinLock		unk0E8;				// 0E8
+		NiPoint3				unk0F0;				// 0F0
+		float					unk0FC;				// 0FC
+		float					unk100;				// 100
+		float					unk104;				// 104
+		void*					unk108;				// 108 - smart ptr
+		void*					unk110;				// 110 - smart ptr
+		NiPointer<ActorCause>	actorCause;			// 118
+		ObjectRefHandle			shooter;			// 120
+		ObjectRefHandle			desiredTarget;		// 124
+		BSSoundHandle			sndHandle;			// 128
+		BSSoundHandle			sndCountdown;		// 134
+		UInt32*					unk140;				// 140
+		InventoryEntryData*		unk148;				// 148
+		UInt64					unk150;				// 150
+		UInt64					unk158;				// 158
+		UInt64					unk160;				// 160
+		UInt64					unk168;				// 168
+		NiPointer<QueuedFile>	projectileDBFiles;	// 170
+		UInt64					unk178;				// 178
+		UInt64					unk180;				// 180
+		float					unk188;				// 188
+		float					unk18C;				// 18C
+		float					unk190;				// 190
+		UInt32					unk194;				// 194
+		float					unk198;				// 198
+		float					unk19C;				// 19C
+		UInt64					unk1A0;				// 1A0
+		UInt64					unk1A8;				// 1A8
+		TESObjectWEAP*			weaponSource;		// 1B0
+		TESAmmo*				ammoSource;			// 1B8
+		UInt64					unk1C0;				// 1C0
+		UInt32					unk1C8;				// 1C8
+		UInt32					flags;				// 1CC
+		UInt64					unk1D0;				// 1D0
 	};
 	STATIC_ASSERT(sizeof(Projectile) == 0x1D8);
 }

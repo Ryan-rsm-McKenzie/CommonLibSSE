@@ -11,15 +11,15 @@ namespace RE
 		using UEFlag = UserEvents::USER_EVENT_FLAG;
 
 
-		constexpr UserEventEnabled(UEFlag a_curFlags, UEFlag a_prevFlags) :
-			curFlags(a_curFlags),
-			prevFlags(a_prevFlags)
+		constexpr UserEventEnabled(UEFlag a_new, UEFlag a_old) :
+			newUserEventFlag(a_new),
+			oldUserEventFlag(a_old)
 		{}
 
 
 		// members
-		UEFlag	curFlags;	// 0
-		UEFlag	prevFlags;	// 4
+		UEFlag	newUserEventFlag;	// 0
+		UEFlag	oldUserEventFlag;	// 4
 	};
 	STATIC_ASSERT(sizeof(UserEventEnabled) == 0x8);
 }

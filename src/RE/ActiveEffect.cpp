@@ -3,7 +3,6 @@
 #include "RE/Actor.h"
 #include "RE/Effect.h"
 #include "RE/Offsets.h"
-#include "RE/TESObjectREFR.h"
 #include "REL/Relocation.h"
 
 
@@ -29,24 +28,16 @@ namespace RE
 	}
 
 
-	Actor* ActiveEffect::GetCasterActor()
+	NiPointer<Actor> ActiveEffect::GetCasterActor() const
 	{
-		auto ref = TESObjectREFR::LookupByHandle(casterActor);
-		return static_cast<Actor*>(ref.get());
-	}
-
-
-	const Actor* ActiveEffect::GetCasterActor() const
-	{
-		auto ref = TESObjectREFR::LookupByHandle(casterActor);
-		return static_cast<const Actor*>(ref.get());
+		return caster.get();
 	}
 
 
 	Actor* ActiveEffect::GetTargetActor()
 	{
-		if (magicTarget && magicTarget->MagicTargetIsActor()) {
-			return static_cast<Actor*>(magicTarget);
+		if (target && target->MagicTargetIsActor()) {
+			return static_cast<Actor*>(target);
 		} else {
 			return 0;
 		}
@@ -55,8 +46,8 @@ namespace RE
 
 	const Actor* ActiveEffect::GetTargetActor() const
 	{
-		if (magicTarget && magicTarget->MagicTargetIsActor()) {
-			return static_cast<const Actor*>(magicTarget);
+		if (target && target->MagicTargetIsActor()) {
+			return static_cast<const Actor*>(target);
 		} else {
 			return 0;
 		}

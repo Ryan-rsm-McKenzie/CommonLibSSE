@@ -11,7 +11,7 @@ namespace RE
 	struct TESSwitchRaceCompleteEvent
 	{
 		// members
-		NiPointer<TESObjectREFR> ref;	// 0
+		NiPointer<TESObjectREFR> subject;	// 0
 	};
 	STATIC_ASSERT(sizeof(TESSwitchRaceCompleteEvent) == 0x8);
 }

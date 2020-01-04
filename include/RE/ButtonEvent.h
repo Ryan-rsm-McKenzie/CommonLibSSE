@@ -23,8 +23,8 @@ namespace RE
 
 
 		// members
-		float	pressure;	// 28
-		float	timer;		// 2C
+		float	value;			// 28
+		float	heldDownSecs;	// 2C
 	};
 	STATIC_ASSERT(sizeof(ButtonEvent) == 0x30);
 }

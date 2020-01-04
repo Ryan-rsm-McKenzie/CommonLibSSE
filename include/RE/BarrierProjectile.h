@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSPointerHandle.h"
 #include "RE/FormTypes.h"
 #include "RE/Projectile.h"
 
@@ -22,6 +23,14 @@ namespace RE
 		};
 
 
+		struct CollisionData
+		{
+			ObjectRefHandle	ref;	// 0
+			UInt32			count;	// 4
+		};
+		STATIC_ASSERT(sizeof(CollisionData) == 0x8);
+
+
 		virtual ~BarrierProjectile();									// 00
 
 		// override (Projectile)
@@ -39,8 +48,9 @@ namespace RE
 
 
 		// members
-		UInt64			unk1D8;	// 1D8
-		BSTArray<void*>	unk1E0;	// 1E0
+		float					width;			// 1D8
+		UInt32					pad1DC;			// 1DC
+		BSTArray<CollisionData>	collisionData;	// 1E0
 	};
 	STATIC_ASSERT(sizeof(BarrierProjectile) == 0x1F8);
 }

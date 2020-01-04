@@ -6,18 +6,18 @@ namespace RE
 	// related to cell transitions
 	struct PositionPlayerEvent
 	{
-		enum class Type : UInt32
+		enum class EVENT_TYPE : UInt32
 		{
-			kStarted = 0,
-			kFastTravelUnk1 = 1,
-			kFastTravelUnk2 = 2,
-			kArrived = 3,
-			kFinished = 4
+			kPre = 0,
+			kPreUpdatePackages = 1,
+			kPostUpdatePackages = 2,
+			kPost = 3,
+			kFinish = 4
 		};
 
 
 		// members
-		Type type;	// 0
+		EVENT_TYPE type;	// 0
 	};
 	STATIC_ASSERT(sizeof(PositionPlayerEvent) == 0x4);
 }

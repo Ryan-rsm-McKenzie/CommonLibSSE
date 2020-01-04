@@ -1,11 +1,18 @@
 #pragma once
 
+#include "RE/BSPointerHandle.h"
+#include "RE/BSSoundHandle.h"
 #include "RE/FormTypes.h"
+#include "RE/NiSmartPointer.h"
 #include "RE/TESObjectREFR.h"
 
 
 namespace RE
 {
+	class BGSHazard;
+	class NiLight;
+
+
 	class Hazard : public TESObjectREFR
 	{
 	public:
@@ -13,6 +20,10 @@ namespace RE
 
 
 		enum { kTypeID = FormType::PlacedHazard };
+
+
+		enum class Flags : UInt32
+		{};
 
 
 		struct RecordFlags
@@ -41,15 +52,17 @@ namespace RE
 
 
 		// members
-		UInt64		unk98;	// 98
-		RefHandle	unkA0;	// A0
-		UInt32		unkA4;	// A4
-		UInt64		unkA8;	// A8
-		UInt64		unkB0;	// B0
-		UInt64		unkB8;	// B8
-		void*		unkC0;	// C0 - smart ptr
-		UInt64		unkC8;	// C8
-		UInt64		unkD0;	// D0
+		void*				hazardDBHandle;	// 98
+		ActorHandle			ownerActor;		// A0
+		float				age;			// A4
+		float				lifetime;		// A8
+		float				targetTimer;	// AC
+		float				radius;			// B0
+		float				magnitude;		// B4
+		BGSHazard*			hazard;			// B8
+		NiPointer<NiLight>	light;			// C0
+		BSSoundHandle		sound;			// C8
+		Flags				flags;			// D4
 	};
 	STATIC_ASSERT(sizeof(Hazard) == 0xD8);
 }

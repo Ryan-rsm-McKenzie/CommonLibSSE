@@ -68,15 +68,5 @@ namespace RE
 		float	prevRX;		// 120
 		float	prevRY;		// 124
 	};
-	STATIC_ASSERT(offsetof(BSWin32GamepadDevice, curState) == 0x0DD);
-	STATIC_ASSERT(offsetof(BSWin32GamepadDevice, curLX) == 0x0F0);
-	STATIC_ASSERT(offsetof(BSWin32GamepadDevice, curLY) == 0x0F4);
-	STATIC_ASSERT(offsetof(BSWin32GamepadDevice, curRX) == 0x0F8);
-	STATIC_ASSERT(offsetof(BSWin32GamepadDevice, curRY) == 0x0FC);
-	STATIC_ASSERT(offsetof(BSWin32GamepadDevice, prevState) == 0x105);
-	STATIC_ASSERT(offsetof(BSWin32GamepadDevice, prevLX) == 0x118);
-	STATIC_ASSERT(offsetof(BSWin32GamepadDevice, prevLY) == 0x11C);
-	STATIC_ASSERT(offsetof(BSWin32GamepadDevice, prevRX) == 0x120);
-	STATIC_ASSERT(offsetof(BSWin32GamepadDevice, prevRY) == 0x124);
 	STATIC_ASSERT(sizeof(BSWin32GamepadDevice) == 0x128);
 }

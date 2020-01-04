@@ -5,12 +5,12 @@ namespace RE
 {
 	bool ThumbstickEvent::IsLeft(void) const
 	{
-		return keyMask == InputType::kLeftThumbstick;
+		return idCode == InputType::kLeftThumbstick;
 	}
 
 
 	bool ThumbstickEvent::IsRight(void) const
 	{
-		return keyMask == InputType::kRightThumbstick;
+		return idCode == InputType::kRightThumbstick;
 	}
 }

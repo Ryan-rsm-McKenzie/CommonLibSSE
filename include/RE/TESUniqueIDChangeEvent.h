@@ -6,9 +6,9 @@ namespace RE
 	struct TESUniqueIDChangeEvent
 	{
 		// members
-		FormID	oldOwnerID;		// 00
-		FormID	newOwnerID;		// 04
-		FormID	itemID;			// 08
+		FormID	oldBaseID;		// 00
+		FormID	newBaseID;		// 04
+		FormID	objectID;		// 08
 		UInt16	oldUniqueID;	// 0C
 		UInt16	newUniqueID;	// 0E
 	};

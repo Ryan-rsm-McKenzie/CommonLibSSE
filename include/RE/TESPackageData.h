@@ -3,7 +3,9 @@
 
 namespace RE
 {
-	class TESPackage;
+	class BGSLoadFormBuffer;
+	class BGSSaveFormBuffer;
+	class TESForm;
 
 
 	class TESPackageData
@@ -12,14 +14,14 @@ namespace RE
 		inline static const void* RTTI = RTTI_TESPackageData;
 
 
-		virtual ~TESPackageData();							// 00
+		virtual ~TESPackageData();											// 00
 
 		// add
-		virtual void	Unk_01(void);						// 01 - { return; }
-		virtual void	Unk_02(void);						// 02 - { return 1; }
-		virtual void	InitPackage(TESPackage* a_package);	// 03 - { return; }
-		virtual void	Unk_04(void);						// 04 - { return; }
-		virtual void	Unk_05(void);						// 05 - { return; }
+		virtual void	Copy(TESPackageData* a_package, TESForm* a_form);	// 01 - { return; }
+		virtual bool	Compare(TESPackageData* a_package);					// 02 - { return true; }
+		virtual void	InitItem(TESForm* a_form);							// 03 - { return; }
+		virtual void	SaveGame(BGSSaveFormBuffer* a_buf);					// 04 - { return; }
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf);					// 05 - { return; }
 	};
 	STATIC_ASSERT(sizeof(TESPackageData) == 0x8);
 }

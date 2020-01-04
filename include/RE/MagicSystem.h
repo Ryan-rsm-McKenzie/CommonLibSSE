@@ -5,6 +5,15 @@ namespace RE
 {
     namespace MagicSystem
     {
+        enum class CastingSource : UInt32
+        {
+            kLeftHand = 0,
+            kRightHand = 1,
+            kOther = 2,
+            kInstant = 3
+        };
+
+
         enum class CastingType : UInt32
         {
             kConstantEffect = 1,

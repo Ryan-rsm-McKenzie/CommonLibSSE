@@ -1,21 +1,24 @@
 #pragma once
 
+#include "RE/BSPointerHandle.h"
+#include "RE/NiPoint3.h"
+
 
 namespace RE
 {
 	class ActorCause
 	{
 	public:
-		SInt32 IncRefCount();
-		SInt32 DecRefCount();
+		SInt32	DecRefCount();
+		SInt32	IncRefCount();
+		SInt32	GetRefCount() const;
 
 
 		// members
-		RefHandle		handle;		// 00
-		UInt32			unk04;		// 04
-		UInt64			unk08;		// 08
-		UInt32			unk10;		// 10
-		volatile SInt32	refCount;	// 14
+		ActorHandle				actor;			// 00
+		NiPoint3				origin;			// 04
+		UInt32					actorCauseID;	// 10
+		volatile mutable SInt32	refCount;		// 14
 	};
 	STATIC_ASSERT(sizeof(ActorCause) == 0x18);
 }

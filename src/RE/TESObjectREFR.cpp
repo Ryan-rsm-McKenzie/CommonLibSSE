@@ -58,7 +58,7 @@ namespace RE
 
 	TESNPC* TESObjectREFR::GetActorOwner()
 	{
-		auto xOwnership = extraData.GetByType<ExtraOwnership>();
+		auto xOwnership = extraList.GetByType<ExtraOwnership>();
 		if (xOwnership && xOwnership->owner && xOwnership->owner->Is(FormType::ActorCharacter)) {
 			return static_cast<TESNPC*>(xOwnership->owner);
 		} else {
@@ -139,7 +139,7 @@ namespace RE
 
 		DroppedInventoryMap results;
 
-		auto droppedList = extraData.GetByType<ExtraDroppedItemList>();
+		auto droppedList = extraList.GetByType<ExtraDroppedItemList>();
 		if (!droppedList) {
 			return results;
 		}
@@ -155,9 +155,9 @@ namespace RE
 				continue;
 			}
 
-			auto count = ref->extraData.GetCount();
+			auto count = ref->extraList.GetCount();
 			auto entry = std::make_unique<InventoryEntryData>(object, count);
-			entry->AddExtraList(&ref->extraData);
+			entry->AddExtraList(&ref->extraList);
 			auto it = results.insert(std::make_pair(object, mapped_type(count, std::move(entry))));
 			assert(it.second);
 		}
@@ -168,7 +168,7 @@ namespace RE
 
 	TESFaction* TESObjectREFR::GetFactionOwner()
 	{
-		auto xOwnership = extraData.GetByType<ExtraOwnership>();
+		auto xOwnership = extraList.GetByType<ExtraOwnership>();
 		if (xOwnership && xOwnership->owner && xOwnership->owner->Is(FormType::Faction)) {
 			return static_cast<TESFaction*>(xOwnership->owner);
 		} else {
@@ -229,10 +229,10 @@ namespace RE
 
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
-		auto xContChanges = extraData.GetByType<ExtraContainerChanges>();
+		auto xContChanges = extraList.GetByType<ExtraContainerChanges>();
 		if (!xContChanges) {
 			xContChanges = new ExtraContainerChanges();
-			extraData.Add(xContChanges);
+			extraList.Add(xContChanges);
 		}
 
 		auto invChanges = xContChanges->changes;
@@ -249,7 +249,7 @@ namespace RE
 
 	TESObjectREFR* TESObjectREFR::GetLinkedRef(BGSKeyword* a_keyword)
 	{
-		return extraData.GetLinkedRef(a_keyword);
+		return extraList.GetLinkedRef(a_keyword);
 	}
 
 
@@ -370,7 +370,7 @@ namespace RE
 
 	bool TESObjectREFR::HasInventoryChanges() const
 	{
-		auto xContainerChanges = extraData.GetByType<ExtraContainerChanges>();
+		auto xContainerChanges = extraList.GetByType<ExtraContainerChanges>();
 		auto changes = xContainerChanges ? xContainerChanges->changes : 0;
 		return changes != 0;
 	}
@@ -384,7 +384,7 @@ namespace RE
 
 	bool TESObjectREFR::IsActivationBlocked() const
 	{
-		auto xFlags = extraData.GetByType<ExtraFlags>();
+		auto xFlags = extraList.GetByType<ExtraFlags>();
 		return xFlags && xFlags->IsActivationBlocked();
 	}
 
@@ -480,7 +480,7 @@ namespace RE
 
 	void TESObjectREFR::SetActivationBlocked(bool a_blocked)
 	{
-		extraData.SetExtraFlags(ExtraFlags::Flag::kBlockActivate, a_blocked);
+		extraList.SetExtraFlags(ExtraFlags::Flag::kBlockActivate, a_blocked);
 	}
 
 
@@ -498,7 +498,7 @@ namespace RE
 	{
 		bool renamed = false;
 
-		auto xTextData = extraData.GetByType<ExtraTextDisplayData>();
+		auto xTextData = extraList.GetByType<ExtraTextDisplayData>();
 		if (xTextData) {
 			bool inUse = xTextData->message || xTextData->owner;
 			if (inUse && a_force) {
@@ -509,7 +509,7 @@ namespace RE
 			xTextData->SetName(a_name.c_str());
 		} else {
 			xTextData = new ExtraTextDisplayData(a_name.c_str());
-			extraData.Add(xTextData);
+			extraList.Add(xTextData);
 			renamed = true;
 		}
 

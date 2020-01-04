@@ -14,7 +14,7 @@ namespace RE
 	}
 
 
-	void ItemsPickpocketed::SendEvent(UInt32 a_numItems)
+	void ItemsPickpocketed::SendEvent(SInt32 a_numItems)
 	{
 		Event e = { a_numItems, 0 };
 		auto source = GetEventSource();
