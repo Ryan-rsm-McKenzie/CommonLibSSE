@@ -103,8 +103,8 @@ namespace RE
 	TESNPC* TESNPC::GetRootTemplate()
 	{
 		auto node = this;
-		while (!node->UsesTemplate() && node->sounds->soundCreature) {
-			node = node->sounds->soundCreature;
+		while (!node->UsesTemplate() && node->sounds.soundCreature) {
+			node = node->sounds.soundCreature;
 		}
 		return node;
 	}

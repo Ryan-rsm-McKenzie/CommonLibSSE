@@ -1,10 +1,15 @@
 #pragma once
 
+#include "RE/NiMatrix3.h"
 #include "RE/NiNode.h"
 
 
 namespace RE
 {
+	class BSFaceGenAnimationData;
+	class NiNode;
+
+
 	class BSFaceGenNiNode : public NiNode
 	{
 	public:
@@ -20,22 +25,18 @@ namespace RE
 		virtual void			UpdateDownwardPass(ControllerUpdateContext* a_ctx, void* a_arg2) override;	// 2C
 
 		// add
-		virtual void			Unk_3E(void);																// 3E
+		virtual void			FixSkinInstances(NiNode* a_skeleton, UInt8 a_arg2);							// 3E
 
 
 		// members
-		float		unk128;	// 128
-		UInt32		unk12C;	// 12C
-		UInt64		unk130;	// 130
-		float		unk138;	// 138
-		UInt32		unk13C;	// 13C
-		UInt64		unk140;	// 140
-		float		unk148;	// 148
-		UInt32		unk14C;	// 14C
-		void*		unk150;	// 150 - smart ptr
-		float		unk158;	// 158
-		RefHandle	unk15C;	// 15C
-		UInt64		unk160;	// 160
+		NiMatrix3							baseRotation;	// 128
+		UInt32								pad14C;			// 14C
+		NiPointer<BSFaceGenAnimationData>	animationData;	// 150
+		float								lastTime;		// 158
+		RefHandle							unk15C;			// 15C
+		UInt16								flags;			// 160
+		UInt16								pad162;			// 162
+		UInt32								pad164;			// 164
 	};
 	STATIC_ASSERT(sizeof(BSFaceGenNiNode) == 0x168);
 }

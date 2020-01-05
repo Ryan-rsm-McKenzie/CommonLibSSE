@@ -266,7 +266,7 @@ namespace RE
 		TESNPC*						faceNPC;			// 1F0
 		float						height;				// 1F8 - NAM6
 		float						weight;				// 1FC - NAM7
-		Sounds*						sounds;				// 200 - CSCR
+		Sounds						sounds;				// 200 - CSCR
 		BSFixedString				shortName;			// 208 - SHRT
 		TESObjectARMO*				farSkin;			// 210 - ANAM
 		BGSOutfit*					defaultOutfit;		// 218 - DOFT
