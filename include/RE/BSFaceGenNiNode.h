@@ -2,6 +2,7 @@
 
 #include "RE/NiMatrix3.h"
 #include "RE/NiNode.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE
