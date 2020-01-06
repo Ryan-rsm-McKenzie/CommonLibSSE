@@ -538,7 +538,7 @@ namespace RE
 	void TESObjectREFR::SetPosition(NiPoint3 a_pos)
 	{
 		static ObjectRefHandle invalid;
-		MoveTo_Impl(invalid, GetParentCell(), GetWorldspace(), a_pos, data.location);
+		MoveTo_Impl(invalid, GetParentCell(), GetWorldspace(), a_pos, data.angle);
 	}
 
 
