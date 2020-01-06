@@ -12,6 +12,7 @@
 #include "RE/BSPointerHandle.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTEvent.h"
+#include "RE/BSTList.h"
 #include "RE/BSTSmartPointer.h"
 #include "RE/ExtraDataList.h"
 #include "RE/FormTypes.h"
@@ -101,8 +102,8 @@ namespace RE
 
 
 		using Count = SInt32;
-		using InventoryMap = std::unordered_map<TESBoundObject*, std::pair<Count, InventoryEntryData*>>;
-		using DroppedInventoryMap = std::unordered_map<TESBoundObject*, std::pair<Count, std::unique_ptr<InventoryEntryData>>>;
+		using InventoryMap = std::unordered_map<TESBoundObject*, std::pair<Count, BSSimpleList<ExtraDataList*>*>>;
+		using DroppedInventoryMap = std::unordered_map<TESBoundObject*, std::pair<Count, NiPointer<TESObjectREFR>>>;
 
 
 		enum { kTypeID = FormType::Reference };

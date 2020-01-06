@@ -139,13 +139,13 @@ namespace RE
 
 		DroppedInventoryMap results;
 
-		auto droppedList = extraList.GetByType<ExtraDroppedItemList>();
-		if (!droppedList) {
+		auto xDrop = extraList.GetByType<ExtraDroppedItemList>();
+		if (!xDrop) {
 			return results;
 		}
 
-		for (auto& handle : droppedList->handles) {
-			auto ref = LookupByHandle(handle);
+		for (auto& handle : xDrop->droppedItemList) {
+			auto ref = handle.get();
 			if (!ref) {
 				continue;
 			}
@@ -156,9 +156,7 @@ namespace RE
 			}
 
 			auto count = ref->extraList.GetCount();
-			auto entry = std::make_unique<InventoryEntryData>(object, count);
-			entry->AddExtraList(&ref->extraList);
-			auto it = results.insert(std::make_pair(object, mapped_type(count, std::move(entry))));
+			auto it = results.insert(std::make_pair(object, mapped_type(count, std::move(ref))));
 			assert(it.second);
 		}
 
@@ -198,7 +196,7 @@ namespace RE
 		if (invChanges->entryList) {
 			for (auto& entry : *invChanges->entryList) {
 				if (entry && entry->object && a_filter(entry->object)) {
-					auto it = results.insert(std::make_pair(entry->object, mapped_type(entry->countDelta, entry)));
+					auto it = results.insert(std::make_pair(entry->object, mapped_type(entry->countDelta, entry->extraLists)));
 					assert(it.second);
 				}
 			}
@@ -211,9 +209,7 @@ namespace RE
 				if (a_entry->obj && a_filter(a_entry->obj)) {
 					auto it = results.find(a_entry->obj);
 					if (it == results.end()) {
-						auto entryData = new InventoryEntryData(a_entry->obj, 0);
-						invChanges->AddEntryData(entryData);
-						auto insIt = results.insert(std::make_pair(a_entry->obj, mapped_type(a_entry->count, entryData)));
+						auto insIt = results.insert(std::make_pair(a_entry->obj, mapped_type(a_entry->count, 0)));
 						assert(insIt.second);
 					} else {
 						it->second.first += a_entry->count;
