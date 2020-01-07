@@ -11,11 +11,11 @@ namespace RE
 	{}
 
 
-	ExtraEnchantment::ExtraEnchantment(EnchantmentItem* a_objectEffect, UInt16 a_enchantmentAmount) :
+	ExtraEnchantment::ExtraEnchantment(EnchantmentItem* a_enchantment, UInt16 a_charge, bool a_removeOnUnequip) :
 		BSExtraData(),
-		objectEffect(a_objectEffect),
-		enchantmentAmount(a_enchantmentAmount),
-		unk0E(0),
+		enchantment(a_enchantment),
+		charge(a_charge),
+		removeOnUnequip(a_removeOnUnequip),
 		pad1B(0),
 		pad1C(0)
 	{
@@ -33,6 +33,6 @@ namespace RE
 	bool ExtraEnchantment::IsNotEqual(const BSExtraData* a_rhs) const
 	{
 		auto rhs = static_cast<const ExtraEnchantment*>(a_rhs);
-		return objectEffect != rhs->objectEffect || enchantmentAmount != rhs->enchantmentAmount || unk0E != rhs->unk0E;
+		return enchantment != rhs->enchantment || charge != rhs->charge || removeOnUnequip != rhs->removeOnUnequip;
 	}
 }

@@ -7,6 +7,9 @@
 
 namespace RE
 {
+	class TESForm;
+
+
 	class ExtraLargeRefOwnerCells : public BSExtraData
 	{
 	public:
@@ -23,8 +26,8 @@ namespace RE
 
 
 		// members
-		BSTArray<void*>	unk10;	// 10
-		UInt64			unk28;	// 28
+		BSTArray<TESForm*>	ownerCells;	// 10
+		UInt64				unk28;		// 28
 	};
 	STATIC_ASSERT(sizeof(ExtraLargeRefOwnerCells) == 0x30);
 }

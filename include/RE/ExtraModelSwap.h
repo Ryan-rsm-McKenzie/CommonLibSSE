@@ -6,6 +6,10 @@
 
 namespace RE
 {
+	class TESForm;
+	class TESModel;
+
+
 	class ExtraModelSwap : public BSExtraData
 	{
 	public:
@@ -22,8 +26,8 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
+		TESModel*	modelSwap;		// 10
+		TESForm*	modelSwapForm;	// 18
 	};
 	STATIC_ASSERT(sizeof(ExtraModelSwap) == 0x20);
 }

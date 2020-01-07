@@ -19,11 +19,11 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { reutrn kPatrolRefInUseData; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return unk10 != a_rhs->unk10; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return user != a_rhs->user; }
 
 
 		// members
-		UInt32	unk10;	// 10
+		UInt32	user;	// 10
 		UInt32	pad14;	// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraPatrolRefInUseData) == 0x18);

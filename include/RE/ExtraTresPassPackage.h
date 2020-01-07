@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	class TESForm;
+	class TrespassPackage;
 
 
 	class ExtraTresPassPackage : public BSExtraData
@@ -25,8 +25,8 @@ namespace RE
 
 
 		// members
-		TESForm*	unk10;	// 10
-		UInt64		unk18;	// 18
+		TrespassPackage*	pack;	// 10
+		UInt64				unk18;	// 18
 	};
 	STATIC_ASSERT(sizeof(ExtraTresPassPackage) == 0x20);
 }

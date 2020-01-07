@@ -22,8 +22,8 @@ namespace RE
 
 
 		// members
-		float	refraction;	// 10
-		UInt32	unk14;		// 14
+		float	refractionPower;	// 10
+		UInt32	unk14;				// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraRefractionProperty) == 0x18);
 }

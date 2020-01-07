@@ -43,7 +43,7 @@ namespace RE
 	struct BGSDecalGroup;
 	struct BipedAnim;
 	struct BSAnimationGraphEvent;
-	struct LockState;
+	struct REFR_LOCK;
 
 
 	enum class ITEM_REMOVE_REASON : UInt32
@@ -371,8 +371,8 @@ namespace RE
 		InventoryChanges*		GetInventoryChanges();	// Creates inventory changes if none found
 		TESObjectREFR*			GetLinkedRef(BGSKeyword* a_keyword);
 		SInt32					GetLockLevel() const;
-		LockState*				GetLockState();
-		const LockState*		GetLockState() const;
+		REFR_LOCK*				GetLockState();
+		const REFR_LOCK*		GetLockState() const;
 		const char*				GetName() const;
 		NiAVObject*				GetNodeByName(const BSFixedString& a_nodeName);
 		UInt32					GetNumItems(bool a_useDataHandlerChanges = false, bool a_arg2 = false);
@@ -417,7 +417,7 @@ namespace RE
 		UInt32				pad94;			// 94
 
 	private:
-		const LockState*	GetLockState_Impl() const;
+		const REFR_LOCK*	GetLockState_Impl() const;
 		void				MoveTo_Impl(ObjectRefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, NiPoint3& a_position, NiPoint3& a_rotation);
 		void				PlayAnimation_Impl(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4 = false);
 	};

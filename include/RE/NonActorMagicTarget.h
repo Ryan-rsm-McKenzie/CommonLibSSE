@@ -9,7 +9,7 @@
 namespace RE
 {
 	class ActiveEffect;
-	class Actor;
+	class TESObjectREFR;
 
 
 	class NonActorMagicTarget :
@@ -30,13 +30,13 @@ namespace RE
 
 		// override (MagicTarget)
 		virtual void							Unk_01(void) override;				// 01
-		virtual Actor*							GetTargetStatsObject() override;	// 02 - { return target; }
+		virtual TESObjectREFR*					GetTargetStatsObject() override;	// 02 - { return targetObject; }
 		virtual bool							CanAddActiveEffect() override;		// 06 - { return true; }
 		virtual BSSimpleList<ActiveEffect*>*	GetActiveEffectList() override;		// 07 - { return &activeEffects; }
 
 
 		// members
-		Actor*						target;			// 28
+		TESObjectREFR*				targetObject;	// 28
 		BSSimpleList<ActiveEffect*>	activeEffects;	// 30
 	};
 	STATIC_ASSERT(sizeof(NonActorMagicTarget) == 0x40);

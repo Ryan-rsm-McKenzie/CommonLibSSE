@@ -6,6 +6,9 @@
 
 namespace RE
 {
+	class BGSMessage;
+
+
 	class ExtraTeleportName : public BSExtraData
 	{
 	public:
@@ -19,11 +22,11 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kTeleportName; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return unk10 != a_rhs->unk10; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return message != a_rhs->message; }
 
 
 		// members
-		UInt64 unk10;	// 10
+		BGSMessage* message;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraTeleportName) == 0x18);
 }

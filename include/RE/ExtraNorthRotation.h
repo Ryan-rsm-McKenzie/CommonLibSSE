@@ -22,8 +22,8 @@ namespace RE
 
 
 		// members
-		float	rotation;	// 10
-		UInt32	pad14;	// 14
+		float	northRot;	// 10
+		UInt32	pad14;		// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraNorthRotation) == 0x18);
 }

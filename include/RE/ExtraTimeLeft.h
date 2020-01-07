@@ -19,11 +19,11 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kTimeLeft; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return unk10 != a_rhs->unk10; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return time != a_rhs->time; }
 
 
 		// members
-		float	unk10;	// 10
+		float	time;	// 10
 		UInt32	pad14;	// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraTimeLeft) == 0x18);

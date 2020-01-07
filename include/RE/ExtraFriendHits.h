@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/AITimeStamp.h"
 #include "RE/BSExtraData.h"
 #include "RE/BSTArray.h"
 #include "RE/ExtraDataTypes.h"
@@ -23,7 +24,7 @@ namespace RE
 
 
 		// members
-		BSTArray<void*> unk10;	// 10
+		BSTArray<AITimeStamp> hits;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraFriendHits) == 0x28);
 }

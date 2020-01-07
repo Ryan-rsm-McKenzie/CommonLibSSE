@@ -1,11 +1,31 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
+#include "RE/BSTList.h"
 #include "RE/ExtraDataTypes.h"
 
 
 namespace RE
 {
+	class BGSLightingTemplate;
+	class TESImageSpace;
+
+
+	struct RoomRefData
+	{
+		BSSimpleList<ObjectRefHandle>	portalList;			// 00
+		BSSimpleList<ObjectRefHandle>	roomList;			// 10
+		SInt8							master;				// 20
+		UInt8							pad21;				// 21
+		UInt16							pad22;				// 22
+		UInt32							pad24;				// 24
+		BGSLightingTemplate*			lightingTemplate;	// 28
+		TESImageSpace*					imageSpace;			// 30
+	};
+	STATIC_ASSERT(sizeof(RoomRefData) == 0x38);
+
+
 	class ExtraRoomRefData : public BSExtraData
 	{
 	public:
@@ -13,19 +33,6 @@ namespace RE
 
 
 		enum { kExtraTypeID = ExtraDataType::kRoomRefData };
-
-
-		struct Data
-		{
-			UInt64	unk00;	// 00
-			UInt64	unk08;	// 08
-			UInt64	unk10;	// 10
-			UInt64	unk18;	// 18
-			UInt64	unk20;	// 20
-			UInt64	unk28;	// 28
-			UInt64	unk30;	// 30
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x38);
 
 
 		virtual ~ExtraRoomRefData();													// 00
@@ -36,7 +43,7 @@ namespace RE
 
 
 		// members
-		Data* unk10;	// 10
+		RoomRefData* data;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraRoomRefData) == 0x18);
 }

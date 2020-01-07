@@ -41,7 +41,7 @@ namespace RE
 			return worldSpace->northRotation;
 		} else {
 			auto xNorth = extraList.GetByType<ExtraNorthRotation>();
-			return xNorth ? xNorth->rotation : 0.0;
+			return xNorth ? xNorth->northRot : 0.0;
 		}
 	}
 

@@ -1087,6 +1087,9 @@
     <Filter Include="src\RE\BSScript\ByteCode">
       <UniqueIdentifier>{392c9df7-12aa-48d0-b2e1-0237e38b7e6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\BSExtraData\Components">
+      <UniqueIdentifier>{5407efc2-061b-41c9-895b-c9eff922e097}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -5167,6 +5170,18 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSScript\Internal\CodeTasklet.h">
       <Filter>include\RE\BSScript\Internal\IFuncCallQuery</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\RefActivateData.h">
+      <Filter>include\RE\BSExtraData\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FactionRank.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MarkerUsedData.h">
+      <Filter>include\RE\BSExtraData\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSLoadGameSubBuffer.h">
+      <Filter>include\RE\BSExtraData\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

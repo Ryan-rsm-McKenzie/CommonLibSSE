@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/ExtraDataTypes.h"
 #include "RE/NiSmartPointer.h"
 
@@ -20,19 +21,19 @@ namespace RE
 
 
 		ExtraReferenceHandle();
-		explicit ExtraReferenceHandle(RefHandle a_refHandle);
+		explicit ExtraReferenceHandle(ObjectRefHandle a_originalRef);
 		virtual ~ExtraReferenceHandle() = default;											// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType		GetType() const override;								// 01 - { return kReferenceHandle; }
-		virtual bool				IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return handle != a_rhs->handle; }
+		virtual bool				IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return originalRef != a_rhs->originalRef; }
 
-		NiPointer<TESObjectREFR> GetReference();
+		NiPointer<TESObjectREFR> GetOriginalReference();
 
 
 		// members
-		RefHandle	handle;		// 10
-		UInt32		pad14;		// 14
+		ObjectRefHandle	originalRef;	// 10
+		UInt32			pad14;			// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraReferenceHandle) == 0x18);
 }

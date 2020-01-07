@@ -2,10 +2,14 @@
 
 #include "RE/BSExtraData.h"
 #include "RE/ExtraDataTypes.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE
 {
+	class QueuedFile;
+
+
 	class ExtraRaceData : public BSExtraData
 	{
 	public:
@@ -22,7 +26,7 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;	// 10
+		NiPointer<QueuedFile> preloadedRaceData;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraRaceData) == 0x18);
 }

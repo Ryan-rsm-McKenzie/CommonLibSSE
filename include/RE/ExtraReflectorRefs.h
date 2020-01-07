@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/BSTArray.h"
 #include "RE/ExtraDataTypes.h"
 
@@ -24,7 +25,7 @@ namespace RE
 
 
 		// members
-		BSTArray<UInt32> unk10;	// 10
+		BSTArray<ObjectRefHandle> refs;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraReflectorRefs) == 0x28);
 }

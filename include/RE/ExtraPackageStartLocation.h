@@ -2,10 +2,23 @@
 
 #include "RE/BSExtraData.h"
 #include "RE/ExtraDataTypes.h"
+#include "RE/NiPoint3.h"
 
 
 namespace RE
 {
+	class TESForm;
+
+
+	struct WORLD_LOCATION
+	{
+		TESForm*	locationForm;	// 00
+		NiPoint3	locPt;			// 08
+		float		zRot;			// 14
+	};
+	STATIC_ASSERT(sizeof(WORLD_LOCATION) == 0x18);
+
+
 	class ExtraPackageStartLocation : public BSExtraData
 	{
 	public:
@@ -23,9 +36,7 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
-		UInt64	unk20;	// 20
+		WORLD_LOCATION worldLoc;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraPackageStartLocation) == 0x28);
 }

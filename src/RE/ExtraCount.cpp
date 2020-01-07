@@ -14,6 +14,7 @@ namespace RE
 	ExtraCount::ExtraCount(SInt32 a_count) :
 		BSExtraData(),
 		count(a_count),
+		pad12(0),
 		pad14(0)
 	{
 		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraCount::Vtbl);

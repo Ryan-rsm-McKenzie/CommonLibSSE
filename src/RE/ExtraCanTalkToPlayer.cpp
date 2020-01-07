@@ -13,7 +13,7 @@ namespace RE
 
 	ExtraCanTalkToPlayer::ExtraCanTalkToPlayer(bool a_canTalk) :
 		BSExtraData(),
-		canTalkToPlayer(a_canTalk),
+		talk(a_canTalk),
 		pad11(0),
 		pad12(0),
 		pad14(0)

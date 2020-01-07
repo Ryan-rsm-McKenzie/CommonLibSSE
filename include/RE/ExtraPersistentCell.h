@@ -6,6 +6,9 @@
 
 namespace RE
 {
+	class TESObjectCELL;
+
+
 	class ExtraPersistentCell : public BSExtraData
 	{
 	public:
@@ -22,7 +25,7 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;	// 10
+		TESObjectCELL* persistentCell;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraPersistentCell) == 0x18);
 }

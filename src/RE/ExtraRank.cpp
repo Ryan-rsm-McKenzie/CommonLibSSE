@@ -11,7 +11,7 @@ namespace RE
 	{}
 
 
-	ExtraRank::ExtraRank(UInt32 a_rank) :
+	ExtraRank::ExtraRank(SInt32 a_rank) :
 		BSExtraData(),
 		rank(a_rank),
 		pad14(0)

@@ -2,11 +2,13 @@
 
 #include "RE/BSExtraData.h"
 #include "RE/ExtraDataTypes.h"
-#include "RE/FormTypes.h"
 
 
 namespace RE
 {
+	class BGSLocationRefType;
+
+
 	class ExtraLocationRefType : public BSExtraData
 	{
 	public:
@@ -20,11 +22,11 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kLocationRefType; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return locRefType != a_rhs->locRefType; }
 
 
 		// members
-		BGSLocationRefType* refType;	// 10
+		BGSLocationRefType* locRefType;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraLocationRefType) == 0x18);
 }

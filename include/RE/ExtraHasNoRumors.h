@@ -22,7 +22,10 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;	// 10
+		bool	noRumors;	// 10
+		UInt8	pad11;		// 11
+		UInt16	pad12;		// 12
+		UInt32	pad14;		// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraHasNoRumors) == 0x18);
 }

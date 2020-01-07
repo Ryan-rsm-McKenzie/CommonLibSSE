@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/ExtraDataTypes.h"
 
 
@@ -16,7 +17,7 @@ namespace RE
 
 
 		ExtraAshPileRef();
-		explicit ExtraAshPileRef(RefHandle a_refHandle);
+		explicit ExtraAshPileRef(ObjectRefHandle a_ashPileRef);
 		virtual ~ExtraAshPileRef() = default;			// 00
 
 		// override (BSExtraData)
@@ -24,8 +25,8 @@ namespace RE
 
 
 		// members
-		RefHandle	refHandle;	// 10
-		UInt32		pad14;		// 14
+		ObjectRefHandle	ashPileRef;	// 10
+		UInt32			pad14;		// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraAshPileRef) == 0x18);
 }

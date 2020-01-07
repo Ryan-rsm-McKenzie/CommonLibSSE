@@ -8,12 +8,12 @@ namespace RE
 {
 	ExtraTextDisplayData::ExtraTextDisplayData() :
 		BSExtraData(),
-		name(""),
-		message(0),
-		owner(0),
-		type(Type::kDefault),
+		displayName(""),
+		displayNameText(0),
+		ownerQuest(0),
+		ownerInstance(OwnerInstance::kDefault),
 		temperFactor(1.0),
-		rawNameLen(0),
+		customNameLength(0),
 		pad32(0),
 		pad34(0)
 	{
@@ -24,12 +24,12 @@ namespace RE
 
 	ExtraTextDisplayData::ExtraTextDisplayData(const char* a_name) :
 		BSExtraData(),
-		name(""),
-		message(0),
-		owner(0),
-		type(Type::kDefault),
+		displayName(""),
+		displayNameText(0),
+		ownerQuest(0),
+		ownerInstance(OwnerInstance::kDefault),
 		temperFactor(1.0),
-		rawNameLen(0),
+		customNameLength(0),
 		pad32(0),
 		pad34(0)
 	{
@@ -41,12 +41,12 @@ namespace RE
 
 	ExtraTextDisplayData::ExtraTextDisplayData(TESForm* a_form, float a_temperFactor) :
 		BSExtraData(),
-		name(""),
-		message(0),
-		owner(0),
-		type(Type::kDefault),
+		displayName(""),
+		displayNameText(0),
+		ownerQuest(0),
+		ownerInstance(OwnerInstance::kDefault),
 		temperFactor(1.0),
-		rawNameLen(0),
+		customNameLength(0),
 		pad32(0),
 		pad34(0)
 	{
@@ -72,19 +72,19 @@ namespace RE
 
 	bool ExtraTextDisplayData::IsPlayerSet() const
 	{
-		return type == Type::kPlayerSet;
+		return ownerInstance == OwnerInstance::kPlayerSet;
 	}
 
 
 	void ExtraTextDisplayData::SetName(const char* a_name)
 	{
-		if (message) {
+		if (displayNameText) {
 			return;
 		}
 
-		name = a_name;
-		rawNameLen = name.length();
-		type = Type::kPlayerSet;
+		displayName = a_name;
+		customNameLength = displayName.length();
+		ownerInstance = OwnerInstance::kPlayerSet;
 		temperFactor = 1.0;
 	}
 }

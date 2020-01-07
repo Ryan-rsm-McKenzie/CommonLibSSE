@@ -22,7 +22,7 @@ namespace RE
 		struct Entry
 		{
 			BGSKeyword*	keyword;		// 00
-			RE::FormID	linkedRefID;	// 08
+			FormID		linkedRefID;	// 08
 			UInt32		pad0C;			// 0C
 		};
 		STATIC_ASSERT(sizeof(Entry) == 0x10);

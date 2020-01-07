@@ -23,10 +23,10 @@ namespace RE
 
 
 		// members
-		UInt8	unk10;	// 10
-		UInt8	unk11;	// 11
-		UInt16	pad12;	// 12
-		UInt32	pad14;	// 14
+		SInt8	cutoff;			// 10
+		SInt8	originalCutoff;	// 11
+		UInt16	pad12;			// 12
+		UInt32	pad14;			// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraAlphaCutoff) == 0x18);
 }

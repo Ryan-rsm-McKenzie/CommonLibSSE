@@ -23,8 +23,8 @@ namespace RE
 
 
 		// members
-		TESNPC*	unk10;	// 10
-		TESNPC*	unk18;	// 18
+		TESActorBase*	originalBase;	// 10
+		TESActorBase*	templateBase;	// 18
 	};
 	STATIC_ASSERT(sizeof(ExtraLeveledCreature) == 0x20);
 }

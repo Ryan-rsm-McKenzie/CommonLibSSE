@@ -16,16 +16,16 @@ namespace RE
 
 
 		ExtraUniqueID();
-		ExtraUniqueID(FormID a_owner, UInt16 a_uniqueID);
+		ExtraUniqueID(FormID a_baseID, UInt16 a_uniqueID);
 		virtual ~ExtraUniqueID() = default;												// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kUniqueID; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return uniqueID != a_rhs->uniqueID || owner != a_rhs->owner; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return uniqueID != a_rhs->uniqueID || baseID != a_rhs->baseID; }
 
 
 		// members
-		FormID	owner;		// 10
+		FormID	baseID;		// 10
 		UInt16	uniqueID;	// 14
 		UInt16	pad16;		// 16
 	};

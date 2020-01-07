@@ -7,6 +7,9 @@
 
 namespace RE
 {
+	class TESObjectREFR;
+
+
 	class ExtraWaterLightRefs : public BSExtraData
 	{
 	public:
@@ -20,11 +23,11 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kWaterLightRefs; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return unk10 != a_rhs->unk10; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return refs != a_rhs->refs; }
 
 
 		// members
-		BSSimpleList<UInt64> unk10;	// 10
+		BSSimpleList<TESObjectREFR*> refs;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraWaterLightRefs) == 0x20);
 }

@@ -20,11 +20,11 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kLastFinishedSequence; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return sequence != a_rhs->sequence; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return lastSequenceName != a_rhs->lastSequenceName; }
 
 
 		// members
-		BSFixedString sequence;	// 10
+		BSFixedString lastSequenceName;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraLastFinishedSequence) == 0x18);
 }

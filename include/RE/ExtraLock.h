@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	struct LockState
+	struct REFR_LOCK
 	{
 		enum class Flag : UInt8
 		{
@@ -22,7 +22,7 @@ namespace RE
 
 
 		// members
-		UInt8	lockLevel;	// 00
+		SInt8	baseLevel;	// 00
 		UInt8	pad01;		// 01
 		UInt16	pad02;		// 02
 		UInt32	pad04;		// 04
@@ -30,11 +30,11 @@ namespace RE
 		Flag	flags;		// 10
 		UInt8	pad11;		// 11
 		UInt16	pad12;		// 12
-		UInt32	unk14;		// 14
+		UInt32	numTries;	// 14
 		UInt32	unk18;		// 18
 		UInt32	pad1C;		// 1C
 	};
-	STATIC_ASSERT(sizeof(LockState) == 0x20);
+	STATIC_ASSERT(sizeof(REFR_LOCK) == 0x20);
 
 
 	class ExtraLock : public BSExtraData
@@ -54,7 +54,7 @@ namespace RE
 
 
 		// members
-		LockState* state;  // 10
+		REFR_LOCK* lock;  // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraLock) == 0x18);
 }

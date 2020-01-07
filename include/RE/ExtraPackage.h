@@ -1,11 +1,15 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/ExtraDataTypes.h"
 
 
 namespace RE
 {
+	class TESPackage;
+
+
 	class ExtraPackage : public BSExtraData
 	{
 	public:
@@ -22,9 +26,14 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
-		UInt64	unk20;	// 20
+		TESPackage*		unk10;			// 10
+		SInt32			index;			// 18
+		ObjectRefHandle	target;			// 1C
+		bool			actionComplete;	// 20
+		bool			activated;		// 21
+		bool			doneOnce;		// 22
+		UInt8			unk23;			// 23
+		UInt32			unk24;			// 24
 	};
 	STATIC_ASSERT(sizeof(ExtraPackage) == 0x28);
 }

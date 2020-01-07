@@ -6,6 +6,17 @@
 
 namespace RE
 {
+	struct PatrolRefData
+	{
+		UInt64	unk00;	// 00
+		UInt64	unk08;	// 08
+		UInt64	unk10;	// 10
+		UInt64	unk18;	// 18
+		UInt64	unk20;	// 20
+	};
+	STATIC_ASSERT(sizeof(PatrolRefData) == 0x28);
+
+
 	class ExtraPatrolRefData : public BSExtraData
 	{
 	public:
@@ -13,17 +24,6 @@ namespace RE
 
 
 		enum { kExtraTypeID = ExtraDataType::kPatrolRefData };
-
-
-		struct Data
-		{
-			UInt64	unk00;	// 00
-			UInt64	unk08;	// 08
-			UInt64	unk10;	// 10
-			UInt64	unk18;	// 18
-			UInt64	unk20;	// 20
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x28);
 
 
 		virtual ~ExtraPatrolRefData();													// 00
@@ -34,7 +34,7 @@ namespace RE
 
 
 		// members
-		Data* unk10;	// 10
+		PatrolRefData* patrolData;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraPatrolRefData) == 0x18);
 }

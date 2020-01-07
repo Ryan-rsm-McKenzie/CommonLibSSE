@@ -22,7 +22,8 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;	// 10
+		float	scale3D;	// 10
+		float	refScale;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraCachedScale) == 0x18);
 }

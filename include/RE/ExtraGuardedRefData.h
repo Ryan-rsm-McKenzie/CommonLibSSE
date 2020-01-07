@@ -16,13 +16,13 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kGuardedRefData };
 
 
-		struct Data
+		struct GuardInfo
 		{
-			UInt32	unk0;	// 0
+			FormID	guard;	// 0
 			UInt32	unk4;	// 4
 			UInt32	unk8;	// 8
 		};
-		STATIC_ASSERT(sizeof(Data) == 0xC);
+		STATIC_ASSERT(sizeof(GuardInfo) == 0xC);
 
 
 		virtual ~ExtraGuardedRefData();													// 00
@@ -33,7 +33,7 @@ namespace RE
 
 
 		// members
-		BSTArray<Data> unk10;	// 10
+		BSTArray<GuardInfo> guards;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraGuardedRefData) == 0x28);
 }

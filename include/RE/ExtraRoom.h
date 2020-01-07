@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	class NiRefObject;
+	class BSMultiBoundRoom;
 
 
 	class ExtraRoom : public BSExtraData
@@ -26,7 +26,7 @@ namespace RE
 
 
 		// members
-		NiPointer<NiRefObject> unk10;	// 10
+		NiPointer<BSMultiBoundRoom> room;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraRoom) == 0x18);
 }

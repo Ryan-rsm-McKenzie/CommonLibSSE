@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSPointerHandle.h"
 #include "RE/SyncQueueObj.h"
 
 
@@ -31,12 +32,12 @@ namespace RE
 
 
 		// members
-		RefHandle	unk10;	// 10
-		UInt32		unk14;	// 14
-		UInt8		unk18;	// 18
-		UInt8		unk19;	// 19
-		UInt16		unk1A;	// 1A
-		UInt32		unk1C;	// 1C
+		ActorHandle		actor;		// 10
+		ObjectRefHandle	targetRefr;	// 14
+		bool			synced;		// 18
+		UInt8			pad19;		// 19
+		UInt16			pad1A;		// 1A
+		UInt32			pad1C;		// 1C
 	};
 	STATIC_ASSERT(sizeof(RefrInteraction) == 0x20);
 }

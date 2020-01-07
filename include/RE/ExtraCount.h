@@ -25,7 +25,8 @@ namespace RE
 
 
 		// members
-		SInt32	count;	// 10
+		SInt16	count;	// 10
+		UInt16	pad12;	// 12
 		SInt32	pad14;	// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraCount) == 0x18);

@@ -22,7 +22,7 @@ namespace RE
 
 
 		// members
-		UInt8* unk10;	// 10
+		SInt8* buffer;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraGIDBuffer) == 0x18);
 }

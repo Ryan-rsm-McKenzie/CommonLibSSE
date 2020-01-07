@@ -6,6 +6,9 @@
 
 namespace RE
 {
+	class TESRegionList;
+
+
 	class ExtraRegionList : public BSExtraData
 	{
 	public:
@@ -22,7 +25,7 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;	// 10
+		TESRegionList* list;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraRegionList) == 0x18);
 }

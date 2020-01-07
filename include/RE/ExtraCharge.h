@@ -25,7 +25,7 @@ namespace RE
 
 		// members
 		float	charge;	// 10
-		UInt32	unk14;	// 14
+		UInt32	pad14;	// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraCharge) == 0x18);
 }

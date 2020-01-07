@@ -6,6 +6,14 @@
 
 namespace RE
 {
+	struct ActivateParentID
+	{
+		UInt32	refID;			// 0
+		float	activateDelay;	// 4
+	};
+	STATIC_ASSERT(sizeof(ActivateParentID) == 0x8);
+
+
 	class ExtraMissingRefIDs : public BSExtraData
 	{
 	public:
@@ -15,13 +23,6 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kMissingRefIDs };
 
 
-		struct Data
-		{
-			UInt64 unk0;	// 0
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x8);
-
-
 		virtual ~ExtraMissingRefIDs();					// 00
 
 		// override (BSExtraData)
@@ -29,10 +30,10 @@ namespace RE
 
 
 		// members
-		Data*	unk10;	// 10
-		UInt32	unk18;	// 18
-		UInt32	unk1C;	// 1C
-		UInt64	unk20;	// 20
+		ActivateParentID*	unk10;	// 10
+		UInt32				unk18;	// 18
+		UInt32				unk1C;	// 1C
+		UInt64				unk20;	// 20
 	};
 	STATIC_ASSERT(sizeof(ExtraMissingRefIDs) == 0x28);
 }

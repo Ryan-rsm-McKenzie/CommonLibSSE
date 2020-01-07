@@ -6,21 +6,21 @@
 
 namespace RE
 {
-	SInt32 LockState::GetLockLevel(const TESObjectREFR* a_containerRef) const
+	SInt32 REFR_LOCK::GetLockLevel(const TESObjectREFR* a_containerRef) const
 	{
-		using func_t = function_type_t<decltype(&LockState::GetLockLevel)>;
-		REL::Offset<func_t*> func(Offset::LockState::GetLockLevel);
+		using func_t = function_type_t<decltype(&REFR_LOCK::GetLockLevel)>;
+		REL::Offset<func_t*> func(Offset::REFR_LOCK::GetLockLevel);
 		return func(this, a_containerRef);
 	}
 
 
-	void LockState::SetLocked(bool a_locked)
+	void REFR_LOCK::SetLocked(bool a_locked)
 	{
 		if (a_locked) {
 			flags |= Flag::kLocked;
 		} else {
 			flags &= ~Flag::kLocked;
-			unk14 = 0;
+			numTries = 0;
 		}
 	}
 }

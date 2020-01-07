@@ -2,11 +2,22 @@
 
 #include "RE/BSExtraData.h"
 #include "RE/ExtraDataTypes.h"
-#include "RE/FormTypes.h"
+#include "RE/NiPoint3.h"
 
 
 namespace RE
 {
+	class BGSLocation;
+
+
+	struct FILE_POS_ROT
+	{
+		NiPoint3	pos;	// 00
+		NiPoint3	rot;	// 0C
+	};
+	STATIC_ASSERT(sizeof(FILE_POS_ROT) == 0x18);
+
+
 	class ExtraStartingPosition : public BSExtraData
 	{
 	public:
@@ -20,16 +31,12 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kStartingPosition; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return unk28 != a_rhs->unk28 || unk10 != a_rhs->unk10 || unk20 != a_rhs->unk20; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return location != a_rhs->location || startPosition.pos != a_rhs->startPosition.pos || startPosition.rot != a_rhs->startPosition.rot; }
 
 
 		// members
-		float			unk10;	// 10
-		float			unk14;	// 14
-		float			unk18;	// 18
-		UInt32			unk1C;	// 1C
-		UInt64			unk20;	// 20
-		BGSLocation*	unk28;	// 28
+		FILE_POS_ROT	startPosition;	// 10
+		BGSLocation*	location;		// 28
 	};
 	STATIC_ASSERT(sizeof(ExtraStartingPosition) == 0x30);
 }

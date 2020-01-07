@@ -11,9 +11,9 @@ namespace RE
 	{}
 
 
-	ExtraUniqueID::ExtraUniqueID(FormID a_owner, UInt16 a_uniqueID) :
+	ExtraUniqueID::ExtraUniqueID(FormID a_baseID, UInt16 a_uniqueID) :
 		BSExtraData(),
-		owner(a_owner),
+		baseID(a_baseID),
 		uniqueID(a_uniqueID),
 		pad16(0)
 	{
@@ -31,6 +31,6 @@ namespace RE
 	bool ExtraUniqueID::IsNotEqual(const BSExtraData* a_rhs) const
 	{
 		auto rhs = static_cast<const ExtraUniqueID*>(a_rhs);
-		return rhs->uniqueID != rhs->uniqueID || owner != rhs->owner;
+		return rhs->uniqueID != rhs->uniqueID || baseID != rhs->baseID;
 	}
 }

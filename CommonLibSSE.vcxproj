@@ -423,6 +423,7 @@
     <ClInclude Include="include\RE\BGSFootstepEvent.h" />
     <ClInclude Include="include\RE\BGSFootstepManager.h" />
     <ClInclude Include="include\RE\BGSInstancedQuestObjective.h" />
+    <ClInclude Include="include\RE\BGSLoadGameSubBuffer.h" />
     <ClInclude Include="include\RE\BGSLocalizedStringDL.h" />
     <ClInclude Include="include\RE\bhkCollisionObject.h" />
     <ClInclude Include="include\RE\bhkNiCollisionObject.h" />
@@ -461,6 +462,7 @@
     <ClInclude Include="include\RE\DialogueTypes.h" />
     <ClInclude Include="include\RE\DoNothingUnhandledPolicy.h" />
     <ClInclude Include="include\RE\EffectArchetypes.h" />
+    <ClInclude Include="include\RE\FactionRank.h" />
     <ClInclude Include="include\RE\FightReactions.h" />
     <ClInclude Include="include\RE\hkAabb.h" />
     <ClInclude Include="include\RE\hkpMoppCode.h" />
@@ -473,6 +475,7 @@
     <ClInclude Include="include\RE\InteriorData.h" />
     <ClInclude Include="include\RE\LoadWaitSpinner.h" />
     <ClInclude Include="include\RE\MagicSystem.h" />
+    <ClInclude Include="include\RE\MarkerUsedData.h" />
     <ClInclude Include="include\RE\ModManagerMenu.h" />
     <ClInclude Include="include\RE\Movement.h" />
     <ClInclude Include="include\RE\NiCollisionObject.h" />
@@ -770,6 +773,7 @@
     <ClInclude Include="include\RE\CommandTable.h" />
     <ClInclude Include="include\RE\ConcreteFormFactory.h" />
     <ClInclude Include="include\RE\ConcreteObjectFormFactory.h" />
+    <ClInclude Include="include\RE\RefActivateData.h" />
     <ClInclude Include="include\RE\Sexes.h" />
     <ClInclude Include="include\RE\TESCondition.h" />
     <ClInclude Include="include\RE\ConeProjectile.h" />

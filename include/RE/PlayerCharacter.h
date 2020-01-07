@@ -25,7 +25,6 @@ namespace RE
 	class BSFadeNode;
 	class BSLight;
 	class CombatGroup;
-	class Crime;
 	class ImageSpaceModifierInstanceDOF;
 	class InventoryEntryData;
 	class MenuModeChangeEvent;
@@ -40,6 +39,7 @@ namespace RE
 	struct BGSActorDeathEvent;
 	struct BGSInstancedQuestObjective;
 	struct BipedAnim;
+	struct Crime;
 	struct PerkRankData;
 	struct PositionPlayerEvent;
 	struct TESQuestStageItem;

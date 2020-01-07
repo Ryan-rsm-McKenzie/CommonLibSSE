@@ -6,6 +6,9 @@
 
 namespace RE
 {
+	class TESForm;
+
+
 	class ExtraEmittanceSource : public BSExtraData
 	{
 	public:
@@ -19,11 +22,11 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kEmittanceSource; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return unk10 != a_rhs->unk10; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return source != a_rhs->source; }
 
 
 		// members
-		UInt64 unk10;	// 10
+		TESForm* source;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraEmittanceSource) == 0x18);
 }

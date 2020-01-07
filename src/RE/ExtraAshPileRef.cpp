@@ -1,7 +1,5 @@
 #include "RE/ExtraAshPileRef.h"
 
-#include "skse64/GameReferences.h"
-
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
@@ -9,13 +7,13 @@
 namespace RE
 {
 	ExtraAshPileRef::ExtraAshPileRef() :
-		ExtraAshPileRef(*g_invalidRefHandle)
+		ExtraAshPileRef(ObjectRefHandle())
 	{}
 
 
-	ExtraAshPileRef::ExtraAshPileRef(RefHandle a_refHandle) :
+	ExtraAshPileRef::ExtraAshPileRef(ObjectRefHandle ashPileRef) :
 		BSExtraData(),
-		refHandle(a_refHandle),
+		ashPileRef(ashPileRef),
 		pad14(0)
 	{
 		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraAshPileRef::Vtbl);

@@ -7,7 +7,8 @@
 
 namespace RE
 {
-	class NiRefObject;
+	class BSLines;
+	class NiAVObject;
 
 
 	class ExtraEditorRef3DData : public BSExtraData
@@ -26,8 +27,8 @@ namespace RE
 
 
 		// members
-		NiPointer<NiRefObject>	unk10;	// 10
-		NiPointer<NiRefObject>	unk18;	// 18
+		NiPointer<NiAVObject>	data3D;		// 10
+		NiPointer<BSLines>		dataBound;	// 18
 	};
 	STATIC_ASSERT(sizeof(ExtraEditorRef3DData) == 0x20);
 }

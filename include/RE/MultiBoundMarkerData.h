@@ -2,6 +2,7 @@
 
 #include "RE/BSExtraData.h"
 #include "RE/ExtraDataTypes.h"
+#include "RE/NiPoint3.h"
 
 
 namespace RE
@@ -23,10 +24,8 @@ namespace RE
 
 
 		// members
-		float	unk10;	// 10
-		float	unk14;	// 14
-		float	unk18;	// 18
-		UInt32	pad1C;	// 1C
+		NiPoint3	halfExtents;	// 10
+		UInt32		pad1C;			// 1C
 	};
 	STATIC_ASSERT(sizeof(MultiBoundMarkerData) == 0x20);
 }

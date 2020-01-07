@@ -9,9 +9,8 @@ namespace RE
 {
 	ExtraAliasInstanceArray::ExtraAliasInstanceArray() :
 		BSExtraData(),
-		aliasInfoArr(),
-		unk28(0),
-		unk2C(0)
+		aliases(),
+		lock()
 	{
 		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraAliasInstanceArray::Vtbl);
 		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
@@ -20,8 +19,8 @@ namespace RE
 
 	ExtraAliasInstanceArray::~ExtraAliasInstanceArray()
 	{
-		for (auto& aliasInfo : aliasInfoArr) {
-			free(aliasInfo);
+		for (auto& alias : aliases) {
+			free(alias);
 		}
 	}
 

@@ -6,6 +6,9 @@
 
 namespace RE
 {
+	class TESForm;
+
+
 	class ExtraStartingWorldOrCell : public BSExtraData
 	{
 	public:
@@ -22,7 +25,7 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;	// 10
+		TESForm* startingWorldOrCell;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraStartingWorldOrCell) == 0x18);
 }

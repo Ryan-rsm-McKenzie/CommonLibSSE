@@ -6,6 +6,9 @@
 
 namespace RE
 {
+	class BGSLocation;
+
+
 	class ExtraLocation : public BSExtraData
 	{
 	public:
@@ -19,11 +22,11 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kLocation; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return unk10 != a_rhs->unk10; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return location != a_rhs->location; }
 
 
 		// members
-		UInt64 unk10;	// 10
+		BGSLocation* location;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraLocation) == 0x18);
 }

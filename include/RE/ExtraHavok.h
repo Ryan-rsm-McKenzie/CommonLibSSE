@@ -7,6 +7,7 @@
 
 namespace RE
 {
+	class bhkWorld;
 	class NiRefObject;
 
 
@@ -26,7 +27,7 @@ namespace RE
 
 
 		// members
-		NiPointer<NiRefObject>	unk10;	// 10
+		NiPointer<bhkWorld>		world;	// 10
 		NiPointer<NiRefObject>	unk18;	// 18
 	};
 	STATIC_ASSERT(sizeof(ExtraHavok) == 0x20);

@@ -2,6 +2,7 @@
 
 #include "RE/BSExtraData.h"
 #include "RE/ExtraDataTypes.h"
+#include "RE/NiPoint3.h"
 
 
 namespace RE
@@ -22,8 +23,8 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
+		NiPoint3	landNormal;	// 10
+		UInt32		pad1C;		// 1C
 	};
 	STATIC_ASSERT(sizeof(ExtraDistantData) == 0x20);
 }

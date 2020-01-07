@@ -3,10 +3,32 @@
 #include "RE/BSExtraData.h"
 #include "RE/BSTList.h"
 #include "RE/ExtraDataTypes.h"
+#include "RE/NiPoint3.h"
 
 
 namespace RE
 {
+	enum class BREADCRUMB_STATE : UInt32
+	{
+		kInvalid = 0,
+		kOnGround = 1,
+		kInWater = 2
+	};
+
+
+	struct ExtraFollowerSwimBreadcrumb
+	{
+		NiPoint3	startLocation;	// 00
+		UInt32		startNavMeshID;	// 0C
+		NiPoint3	endLocation;	// 10
+		UInt32		endNavMeshID;	// 1C
+		bool		enteringWater;	// 20
+		UInt8		pad21;			// 21
+		UInt16		pad22;			// 22
+	};
+	STATIC_ASSERT(sizeof(ExtraFollowerSwimBreadcrumb) == 0x24);
+
+
 	class ExtraFollowerSwimBreadcrumbs : public BSExtraData
 	{
 	public:
@@ -38,12 +60,11 @@ namespace RE
 
 
 		// members
-		UInt32					unk10;	// 10
-		float					unk14;	// 14
-		float					unk18;	// 18
-		float					unk1C;	// 1C
-		UInt64					unk20;	// 20
-		BSSimpleList<UnkData*>	unk28;	// 28
+		BREADCRUMB_STATE							leaderState;		// 10
+		NiPoint3									leaderLocation;		// 14
+		UInt32										leaderNavMeshID;	// 20
+		UInt32										pad24;				// 24
+		BSSimpleList<ExtraFollowerSwimBreadcrumb*>	crumbs;				// 28
 	};
 	STATIC_ASSERT(sizeof(ExtraFollowerSwimBreadcrumbs) == 0x38);
 }

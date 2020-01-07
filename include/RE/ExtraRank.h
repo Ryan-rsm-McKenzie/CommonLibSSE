@@ -16,7 +16,7 @@ namespace RE
 
 
 		ExtraRank();
-		explicit ExtraRank(UInt32 a_rank);
+		explicit ExtraRank(SInt32 a_rank);
 		virtual ~ExtraRank() = default;													// 00
 
 		// override (BSExtraData)
@@ -25,7 +25,7 @@ namespace RE
 
 
 		// members
-		UInt32	rank;	// 10
+		SInt32	rank;	// 10
 		UInt32	pad14;	// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraRank) == 0x18);

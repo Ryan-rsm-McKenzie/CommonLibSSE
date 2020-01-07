@@ -1,7 +1,5 @@
 #include "RE/ExtraForcedTarget.h"
 
-#include "skse64/GameReferences.h"
-
 #include "RE/Offsets.h"
 #include "RE/TESObjectREFR.h"
 #include "REL/Relocation.h"
@@ -10,13 +8,13 @@
 namespace RE
 {
 	ExtraForcedTarget::ExtraForcedTarget() :
-		ExtraForcedTarget(*g_invalidRefHandle)
+		ExtraForcedTarget(ObjectRefHandle())
 	{}
 
 
-	ExtraForcedTarget::ExtraForcedTarget(RefHandle a_handle) :
+	ExtraForcedTarget::ExtraForcedTarget(ObjectRefHandle a_target) :
 		BSExtraData(),
-		handle(a_handle),
+		target(a_target),
 		pad14(0)
 	{
 		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraForcedTarget::Vtbl);
@@ -33,12 +31,12 @@ namespace RE
 	bool ExtraForcedTarget::IsNotEqual(const BSExtraData* a_rhs) const
 	{
 		auto rhs = static_cast<const ExtraForcedTarget*>(a_rhs);
-		return handle != rhs->handle;
+		return target != rhs->target;
 	}
 
 
 	NiPointer<TESObjectREFR> ExtraForcedTarget::GetTarget()
 	{
-		return TESObjectREFR::LookupByHandle(handle);
+		return target.get();
 	}
 }

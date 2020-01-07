@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/ExtraDataTypes.h"
 
 
@@ -22,8 +23,8 @@ namespace RE
 
 
 		// members
-		RefHandle	refHandle;	// 10
-		UInt32		pad14;		// 14
+		ObjectRefHandle	dropper;	// 10
+		UInt32			pad14;		// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraItemDropper) == 0x18);
 }

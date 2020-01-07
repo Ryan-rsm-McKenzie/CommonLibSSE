@@ -1,7 +1,9 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/BSTArray.h"
+#include "RE/BSTTuple.h"
 #include "RE/ExtraDataTypes.h"
 
 
@@ -23,7 +25,7 @@ namespace RE
 
 
 		// members
-		BSTArray<void*> unk10;	// 10
+		BSTArray<BSTTuple<ObjectRefHandle, UInt32>> dependentManagers;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraScriptedAnimDependence) == 0x28);
 }

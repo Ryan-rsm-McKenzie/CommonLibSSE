@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BGSLoadGameSubBuffer.h"
 #include "RE/BSExtraData.h"
 #include "RE/ExtraDataTypes.h"
 
@@ -22,7 +23,7 @@ namespace RE
 
 
 		// members
-		void* unk10;	// 10
+		BGSLoadGameSubBuffer animationBuffer;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraSavedAnimation) == 0x18);
 }

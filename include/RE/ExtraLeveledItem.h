@@ -22,7 +22,8 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;	// 10
+		FormID	levItem;	// 10
+		UInt32	pad14;		// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraLeveledItem) == 0x18);
 }

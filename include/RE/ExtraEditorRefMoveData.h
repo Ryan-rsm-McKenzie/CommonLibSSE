@@ -2,6 +2,7 @@
 
 #include "RE/BSExtraData.h"
 #include "RE/ExtraDataTypes.h"
+#include "RE/NiPoint3.h"
 
 
 namespace RE
@@ -22,11 +23,10 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
-		UInt64	unk20;	// 20
-		UInt64	unk28;	// 28
-		UInt64	unk30;	// 30
+		NiPoint3	realAngle;		// 10
+		NiPoint3	realLocation;	// 1C
+		NiPoint3	oldLocation;	// 28
+		UInt32		pad34;			// 34
 	};
 	STATIC_ASSERT(sizeof(ExtraEditorRefMoveData) == 0x38);
 }

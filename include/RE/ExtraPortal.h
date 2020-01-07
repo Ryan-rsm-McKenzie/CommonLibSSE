@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	class NiRefObject;
+	class BSPortal;
 
 
 	class ExtraPortal : public BSExtraData
@@ -26,7 +26,7 @@ namespace RE
 
 
 		// members
-		NiPointer<NiRefObject> unk10;	// 10
+		NiPointer<BSPortal> portal;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraPortal) == 0x18);
 }

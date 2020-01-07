@@ -1,11 +1,19 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/ExtraDataTypes.h"
 
 
 namespace RE
 {
+	struct PortalLinkedRefData
+	{
+		ObjectRefHandle linkedRefs[2];	// 0
+	};
+	STATIC_ASSERT(sizeof(PortalLinkedRefData) == 0x8);
+
+
 	class ExtraPortalRefData : public BSExtraData
 	{
 	public:
@@ -13,13 +21,6 @@ namespace RE
 
 
 		enum { kExtraTypeID = ExtraDataType::kPortalRefData };
-
-
-		struct Data
-		{
-			UInt64 unk0;	// 0
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x8);
 
 
 		virtual ~ExtraPortalRefData();													// 00
@@ -30,7 +31,7 @@ namespace RE
 
 
 		// members
-		Data* unk10;	// 10
+		PortalLinkedRefData* data;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraPortalRefData) == 0x18);
 }

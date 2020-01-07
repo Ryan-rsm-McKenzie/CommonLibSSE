@@ -1,11 +1,15 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSTList.h"
 #include "RE/ExtraDataTypes.h"
 
 
 namespace RE
 {
+	struct REF_ACTIVATE_DATA;
+
+
 	class ExtraActivateRef : public BSExtraData
 	{
 	public:
@@ -23,9 +27,11 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
-		UInt64	unk20;	// 20
+		BSSimpleList<REF_ACTIVATE_DATA*>	parents;		// 10
+		UInt8								activateFlags;	// 20
+		UInt8								pad21;			// 21
+		UInt16								pad22;			// 22
+		UInt32								pad24;			// 24
 	};
 	STATIC_ASSERT(sizeof(ExtraActivateRef) == 0x28);
 }

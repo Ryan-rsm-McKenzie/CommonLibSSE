@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSSoundHandle.h"
 #include "RE/ExtraDataTypes.h"
 
 
@@ -22,8 +23,8 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
+		BSSoundHandle	phandle;	// 10
+		UInt32			pad1C;		// 1C
 	};
 	STATIC_ASSERT(sizeof(ExtraSound) == 0x20);
 }

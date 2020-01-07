@@ -3,6 +3,7 @@
 #include "RE/BSExtraData.h"
 #include "RE/BSTArray.h"
 #include "RE/ExtraDataTypes.h"
+#include "RE/MarkerUsedData.h"
 
 
 namespace RE
@@ -23,8 +24,8 @@ namespace RE
 
 
 		// members
-		BSTArray<void*> unk10;	// 10
-		UInt64			unk28;	// 28
+		BSTArray<MarkerUsedData>	reservedMarkerArray;	// 10
+		UInt64						unk28;					// 28
 	};
 	STATIC_ASSERT(sizeof(ExtraReservedMarkers) == 0x30);
 }

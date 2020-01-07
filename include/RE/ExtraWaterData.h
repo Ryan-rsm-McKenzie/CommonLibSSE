@@ -7,6 +7,20 @@
 
 namespace RE
 {
+	namespace BSCurrent
+	{
+		struct ActionArray
+		{
+			__m128*	buffer;			// 00
+			UInt32	bufferSize;		// 08
+			UInt32	effectiveSize;	// 0C
+			UInt32	count;			// 10
+			UInt32	pad14;			// 14
+		};
+		STATIC_ASSERT(sizeof(ActionArray) == 0x18);
+	}
+
+
 	class hkReferencedObject;
 
 
@@ -19,15 +33,6 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kWaterData };
 
 
-		struct Data
-		{
-			void*	unk00;	// 00
-			UInt64	unk08;	// 08
-			UInt64	unk10;	// 10
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x18);
-
-
 		virtual ~ExtraWaterData();														// 00
 
 		// override (BSExtraData)
@@ -36,9 +41,9 @@ namespace RE
 
 
 		// members
-		UInt64							unk10;	// 10
-		hkRefPtr<hkReferencedObject>	unk18;	// 18
-		Data*							unk20;	// 20
+		UInt64							unk10;			// 10
+		hkRefPtr<hkReferencedObject>	unk18;			// 18
+		BSCurrent::ActionArray*			currentArray;	// 20
 	};
 	STATIC_ASSERT(sizeof(ExtraWaterData) == 0x28);
 }

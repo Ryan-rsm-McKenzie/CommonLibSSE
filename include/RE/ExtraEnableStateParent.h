@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/ExtraDataTypes.h"
 
 
@@ -23,10 +24,10 @@ namespace RE
 
 
 		// members
-		UInt8	unk10;	// 10
-		UInt8	pad11;	// 11
-		UInt16	pad12;	// 12
-		UInt32	unk14;	// 14
+		SInt8			flags;	// 10
+		UInt8			pad11;	// 11
+		UInt16			pad12;	// 12
+		ObjectRefHandle	parent;	// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraEnableStateParent) == 0x18);
 }

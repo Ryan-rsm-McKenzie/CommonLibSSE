@@ -22,7 +22,8 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;	// 10
+		UInt32	time;	// 10
+		UInt32	pad14;	// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraDetachTime) == 0x18);
 }

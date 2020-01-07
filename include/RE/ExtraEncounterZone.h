@@ -2,11 +2,13 @@
 
 #include "RE/BSExtraData.h"
 #include "RE/ExtraDataTypes.h"
-#include "RE/FormTypes.h"
 
 
 namespace RE
 {
+	class BGSEncounterZone;
+
+
 	class ExtraEncounterZone : public BSExtraData
 	{
 	public:
@@ -20,11 +22,11 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kEncounterZone; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return encounterZone != a_rhs->encounterZone; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return zone != a_rhs->zone; }
 
 
 		// members
-		BGSEncounterZone* encounterZone;	// 10
+		BGSEncounterZone* zone;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraEncounterZone) == 0x18);
 }

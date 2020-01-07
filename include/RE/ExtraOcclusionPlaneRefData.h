@@ -1,11 +1,19 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/ExtraDataTypes.h"
 
 
 namespace RE
 {
+	struct OcclusionPlaneLinkedRefData
+	{
+		ObjectRefHandle linkedRefs[4];	// 00
+	};
+	STATIC_ASSERT(sizeof(OcclusionPlaneLinkedRefData) == 0x10);
+
+
 	class ExtraOcclusionPlaneRefData : public BSExtraData
 	{
 	public:
@@ -13,14 +21,6 @@ namespace RE
 
 
 		enum { kExtraTypeID = ExtraDataType::kOcclusionPlaneRefData };
-
-
-		struct Data
-		{
-			UInt64	unk00;	// 00
-			UInt64	unk08;	// 08
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x10);
 
 
 		virtual ~ExtraOcclusionPlaneRefData();											// 00
@@ -31,7 +31,7 @@ namespace RE
 
 
 		// members
-		Data* unk10;	// 10
+		OcclusionPlaneLinkedRefData* data;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraOcclusionPlaneRefData) == 0x18);
 }

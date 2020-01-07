@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	class NiRefObject;
+	class BSOcclusionShape;
 
 
 	class ExtraOcclusionShape : public BSExtraData
@@ -26,7 +26,7 @@ namespace RE
 
 
 		// members
-		NiPointer<NiRefObject> unk10;	// 10
+		NiPointer<BSOcclusionShape> shape;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraOcclusionShape) == 0x18);
 }

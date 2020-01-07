@@ -6,6 +6,9 @@
 
 namespace RE
 {
+	class ActorPackageData;
+
+
 	class ExtraPackageData : public BSExtraData
 	{
 	public:
@@ -22,7 +25,7 @@ namespace RE
 
 
 		// members
-		void* unk10;	// 10
+		ActorPackageData* actorPackageData;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraPackageData) == 0x18);
 }

@@ -6,6 +6,9 @@
 
 namespace RE
 {
+	class BGSPrimitive;
+
+
 	class ExtraPrimitive : public BSExtraData
 	{
 	public:
@@ -19,11 +22,11 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kPrimitive; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return unk10 != a_rhs->unk10; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return primitive != a_rhs->primitive; }
 
 
 		// members
-		void* unk10;	// 10
+		BGSPrimitive* primitive;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraPrimitive) == 0x18);
 }

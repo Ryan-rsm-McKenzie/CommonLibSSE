@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	class NiRefObject;
+	class NiNode;
 
 
 	class ExtraCell3D : public BSExtraData
@@ -26,7 +26,7 @@ namespace RE
 
 
 		// members
-		NiPointer<NiRefObject> unk10;	// 10
+		NiPointer<NiNode> cellNode;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraCell3D) == 0x18);
 }

@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	void ExtraMapMarker::MapMarker::Enable(bool a_enabled)
+	void MapMarkerData::Enable(bool a_enabled)
 	{
 		if (a_enabled) {
 			flags |= Flag::kVisible;

@@ -19,11 +19,11 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kScale; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return unk10 != a_rhs->unk10; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return scale != a_rhs->scale; }
 
 
 		// members
-		float	unk10;	// 10
+		float	scale;	// 10
 		UInt32	pad14;	// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraScale) == 0x18);

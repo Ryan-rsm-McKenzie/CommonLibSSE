@@ -24,10 +24,10 @@ namespace RE
 
 
 		// members
-		bool	canTalkToPlayer;	// 10
-		UInt8	pad11;				// 11
-		UInt16	pad12;				// 12
-		UInt32	pad14;				// 14
+		bool	talk;	// 10
+		UInt8	pad11;	// 11
+		UInt16	pad12;	// 12
+		UInt32	pad14;	// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraCanTalkToPlayer) == 0x18);
 }

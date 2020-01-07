@@ -2,6 +2,7 @@
 
 #include "RE/BSExtraData.h"
 #include "RE/ExtraDataTypes.h"
+#include "RE/NiPoint3.h"
 
 
 namespace RE
@@ -15,6 +16,10 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kRefrPath };
 
 
+		enum class PATH_TYPE : UInt32
+		{};
+
+
 		virtual ~ExtraRefrPath();						// 00
 
 		// override (BSExtraData)
@@ -22,17 +27,16 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
-		UInt64	unk20;	// 20
-		UInt64	unk28;	// 28
-		UInt64	unk30;	// 30
-		UInt64	unk38;	// 38
-		UInt64	unk40;	// 40
-		UInt64	unk48;	// 48
-		UInt64	unk50;	// 50
-		UInt64	unk58;	// 58
-		UInt64	unk60;	// 60
+		NiPoint3	startPos;			// 10
+		NiPoint3	startTangent;		// 1C
+		NiPoint3	startEuler;			// 28
+		NiPoint3	goalPos;			// 34
+		NiPoint3	goalTangent;		// 40
+		NiPoint3	goalEuler;			// 4C
+		float		speed;				// 58
+		float		maxRotSpeed;		// 5C
+		float		currentParameter;	// 60
+		PATH_TYPE	type;				// 64
 	};
 	STATIC_ASSERT(sizeof(ExtraRefrPath) == 0x68);
 }

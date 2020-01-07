@@ -2,6 +2,7 @@
 
 #include "RE/BSExtraData.h"
 #include "RE/BSLock.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/ExtraFlags.h"
 #include "RE/ExtraDataTypes.h"
 #include "RE/FormTypes.h"
@@ -155,7 +156,7 @@ namespace RE
 
 		BSExtraData*			Add(BSExtraData* a_toAdd);
 		const char*				GenerateName(TESForm* a_form);
-		bool					GetAshPileRefHandle(RefHandle& a_refHandle);
+		ObjectRefHandle			GetAshPileRefHandle();
 		SInt32					GetCount() const;
 		BGSEncounterZone*		GetEncounterZone();
 		ExtraTextDisplayData*	GetExtraTextDisplayData();

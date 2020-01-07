@@ -1,12 +1,16 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/BSTArray.h"
 #include "RE/ExtraDataTypes.h"
 
 
 namespace RE
 {
+	class BGSKeyword;
+
+
 	class ExtraLinkedRefChildren : public BSExtraData
 	{
 	public:
@@ -16,12 +20,13 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kLinkedRefChildren };
 
 
-		struct Data
+		struct LinkedRefChild
 		{
-			UInt64	unk00;	// 00
-			UInt64	unk08;	// 08
+			BGSKeyword*		keyword;	// 00
+			ObjectRefHandle	refr;		// 08
+			UInt32			pad0C;		// 0C
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x10);
+		STATIC_ASSERT(sizeof(LinkedRefChild) == 0x10);
 
 
 		virtual ~ExtraLinkedRefChildren();				// 00
@@ -31,7 +36,7 @@ namespace RE
 
 
 		// members
-		BSTSmallArray<Data>	unk10;	// 10
+		BSTSmallArray<LinkedRefChild> linkedChildren;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraLinkedRefChildren) == 0x30);
 }

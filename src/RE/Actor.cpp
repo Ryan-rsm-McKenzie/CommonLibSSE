@@ -71,7 +71,7 @@ namespace RE
 			extraList.Add(xTalk);
 		}
 
-		xTalk->canTalkToPlayer = a_talk;
+		xTalk->talk = a_talk;
 	}
 
 
@@ -185,7 +185,7 @@ namespace RE
 		}
 
 		auto xFac = extraList.GetByType<ExtraFactionChanges>();
-		if (xFac && (xFac->crimeFaction || xFac->noTrackCrime)) {
+		if (xFac && (xFac->crimeFaction || xFac->removeCrimeFaction)) {
 			return xFac->crimeFaction;
 		}
 
@@ -528,8 +528,8 @@ namespace RE
 
 			auto factionChanges = extraList.GetByType<ExtraFactionChanges>();
 			if (factionChanges) {
-				for (auto& info : factionChanges->factions) {
-					if (a_visitor(info.faction, info.rank)) {
+				for (auto& change : factionChanges->factionChanges) {
+					if (a_visitor(change.faction, change.rank)) {
 						return true;
 					}
 				}

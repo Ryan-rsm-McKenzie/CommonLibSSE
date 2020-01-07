@@ -7,6 +7,9 @@
 
 namespace RE
 {
+	struct Crime;
+
+
 	class ExtraPlayerCrimeList : public BSExtraData
 	{
 	public:
@@ -23,7 +26,7 @@ namespace RE
 
 
 		// members
-		BSSimpleList<UInt64>* unk10;	// 10
+		BSSimpleList<Crime*>* crimes;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraPlayerCrimeList) == 0x18);
 }

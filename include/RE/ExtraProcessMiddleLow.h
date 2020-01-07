@@ -22,7 +22,8 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;	// 10
+		UInt32	refCount;	// 10
+		UInt32	pad14;		// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraProcessMiddleLow) == 0x18);
 }

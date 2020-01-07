@@ -6,6 +6,9 @@
 
 namespace RE
 {
+	class BGSScene;
+
+
 	class ExtraSceneData : public BSExtraData
 	{
 	public:
@@ -23,7 +26,7 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;	// 10
+		BGSScene* scene;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraSceneData) == 0x18);
 }

@@ -6,6 +6,9 @@
 
 namespace RE
 {
+	class BGSAcousticSpace;
+
+
 	class ExtraCellAcousticSpace : public BSExtraData
 	{
 	public:
@@ -19,11 +22,11 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kCellAcousticSpace; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return unk10 != a_rhs->unk10; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return space != a_rhs->space; }
 
 
 		// members
-		UInt64 unk10;	// 10
+		BGSAcousticSpace* space;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraCellAcousticSpace) == 0x18);
 }

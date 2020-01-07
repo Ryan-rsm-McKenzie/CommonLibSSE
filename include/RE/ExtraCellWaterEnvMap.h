@@ -2,7 +2,7 @@
 
 #include "RE/BSExtraData.h"
 #include "RE/ExtraDataTypes.h"
-#include "RE/TESIcon.h"
+#include "RE/TESTexture.h"
 
 
 namespace RE
@@ -24,7 +24,7 @@ namespace RE
 
 
 		// members
-		TESIcon	unk10;	// 10
+		TESTexture waterEnvMap;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraCellWaterEnvMap) == 0x20);
 }

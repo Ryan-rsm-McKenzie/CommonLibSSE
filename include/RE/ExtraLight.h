@@ -7,7 +7,16 @@
 
 namespace RE
 {
-	class NiRefObject;
+	class NiLight;
+
+
+	struct REFR_LIGHT
+	{
+		NiPointer<NiLight>	light;		// 00
+		float				wantDimmer;	// 08
+		UInt32				pad0C;		// 0C
+	};
+	STATIC_ASSERT(sizeof(REFR_LIGHT) == 0x10);
 
 
 	class ExtraLight : public BSExtraData
@@ -19,14 +28,6 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kLight };
 
 
-		struct Data
-		{
-			NiPointer<NiRefObject>	unk00;	// 00
-			UInt64					unk08;	// 08
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x10);
-
-
 		virtual ~ExtraLight();							// 00
 
 		// override (BSExtraData)
@@ -34,7 +35,7 @@ namespace RE
 
 
 		// members
-		Data* unk10;	// 10
+		REFR_LIGHT* lightData;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraLight) == 0x18);
 }

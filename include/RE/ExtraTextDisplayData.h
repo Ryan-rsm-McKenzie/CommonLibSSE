@@ -21,7 +21,7 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kTextDisplayData };
 
 
-		enum class Type : SInt32
+		enum class OwnerInstance : SInt32
 		{
 			kDefault = -1,
 			kPlayerSet = -2
@@ -42,14 +42,14 @@ namespace RE
 
 
 		// members
-		BSFixedString	name;			// 10
-		BGSMessage*		message;		// 18
-		TESQuest*		owner;			// 20
-		Type			type;			// 28
-		float			temperFactor;	// 2C
-		UInt16			rawNameLen;		// 30 - length w/o temper string, only valid if type is kPlayerSet
-		UInt16			pad32;			// 32
-		UInt32			pad34;			// 34
+		BSFixedString	displayName;		// 10
+		BGSMessage*		displayNameText;	// 18
+		TESQuest*		ownerQuest;			// 20
+		OwnerInstance	ownerInstance;		// 28
+		float			temperFactor;		// 2C
+		UInt16			customNameLength;	// 30 - length w/o temper string, only valid if type is kPlayerSet
+		UInt16			pad32;				// 32
+		UInt32			pad34;				// 34
 	};
 	STATIC_ASSERT(sizeof(ExtraTextDisplayData) == 0x38);
 }

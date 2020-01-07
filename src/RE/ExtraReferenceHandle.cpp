@@ -1,7 +1,5 @@
 #include "RE/ExtraReferenceHandle.h"
 
-#include "skse64/GameReferences.h"
-
 #include "RE/Offsets.h"
 #include "RE/TESObjectREFR.h"
 #include "REL/Relocation.h"
@@ -10,13 +8,13 @@
 namespace RE
 {
 	ExtraReferenceHandle::ExtraReferenceHandle() :
-		ExtraReferenceHandle(*g_invalidRefHandle)
+		ExtraReferenceHandle(ObjectRefHandle())
 	{}
 
 
-	ExtraReferenceHandle::ExtraReferenceHandle(RefHandle a_refHandle) :
+	ExtraReferenceHandle::ExtraReferenceHandle(ObjectRefHandle a_originalRef) :
 		BSExtraData(),
-		handle(a_refHandle),
+		originalRef(a_originalRef),
 		pad14(0)
 	{
 		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraReferenceHandle::Vtbl);
@@ -33,12 +31,12 @@ namespace RE
 	bool ExtraReferenceHandle::IsNotEqual(const BSExtraData* a_rhs) const
 	{
 		auto rhs = static_cast<const ExtraReferenceHandle*>(a_rhs);
-		return handle != rhs->handle;
+		return originalRef != rhs->originalRef;
 	}
 
 
-	NiPointer<TESObjectREFR> ExtraReferenceHandle::GetReference()
+	NiPointer<TESObjectREFR> ExtraReferenceHandle::GetOriginalReference()
 	{
-		return TESObjectREFR::LookupByHandle(handle);
+		return originalRef.get();
 	}
 }

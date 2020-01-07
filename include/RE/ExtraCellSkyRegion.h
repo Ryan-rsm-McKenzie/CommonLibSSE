@@ -6,6 +6,9 @@
 
 namespace RE
 {
+	class TESRegion;
+
+
 	class ExtraCellSkyRegion : public BSExtraData
 	{
 	public:
@@ -19,11 +22,11 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kCellSkyRegion; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return unk10 != a_rhs->unk10; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return skyRegion != a_rhs->skyRegion; }
 
 
 		// members
-		UInt64 unk10;	// 10
+		TESRegion* skyRegion;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraCellSkyRegion) == 0x18);
 }

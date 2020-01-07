@@ -20,10 +20,10 @@ namespace RE
 
 		// override (BSExtraData)
 		virtual ExtraDataType	GetType() const override;								// 01 - { return kMultiBoundRef; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return ref != a_rhs->ref; }
+		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return boundRef != a_rhs->boundRef; }
 
 		// members
-		TESObjectREFR* ref;	// 10
+		TESObjectREFR* boundRef;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraMultiBoundRef) == 0x18);
 }

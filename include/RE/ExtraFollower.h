@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/BSTArray.h"
 #include "RE/ExtraDataTypes.h"
 
@@ -16,6 +17,14 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kFollower };
 
 
+		struct FollowerInfo
+		{
+			ActorHandle	actor;					// 0
+			float		intendedFollowDistance;	// 4
+		};
+		STATIC_ASSERT(sizeof(FollowerInfo) == 0x8);
+
+
 		virtual ~ExtraFollower();						// 00
 
 		// override (BSExtraData)
@@ -23,7 +32,7 @@ namespace RE
 
 
 		// members
-		BSTArray<void*> unk10;	// 10
+		BSTArray<FollowerInfo> actorFollowers;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraFollower) == 0x28);
 }

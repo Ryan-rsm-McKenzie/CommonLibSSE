@@ -218,15 +218,10 @@ namespace RE
 	}
 
 
-	bool ExtraDataList::GetAshPileRefHandle(RefHandle& a_refHandle)
+	ObjectRefHandle ExtraDataList::GetAshPileRefHandle()
 	{
 		auto xAshRef = GetByType<ExtraAshPileRef>();
-		if (xAshRef) {
-			a_refHandle = xAshRef->refHandle;
-		} else {
-			a_refHandle = *g_invalidRefHandle;
-		}
-		return a_refHandle != *g_invalidRefHandle;
+		return xAshRef ? xAshRef->ashPileRef : ObjectRefHandle();
 	}
 
 
@@ -240,7 +235,7 @@ namespace RE
 	BGSEncounterZone* ExtraDataList::GetEncounterZone()
 	{
 		auto xZone = GetByType<ExtraEncounterZone>();
-		return xZone ? xZone->encounterZone : 0;
+		return xZone ? xZone->zone : 0;
 	}
 
 
@@ -252,7 +247,7 @@ namespace RE
 			return 0;
 		}
 
-		auto ref = xRef->GetReference();
+		auto ref = xRef->GetOriginalReference();
 		if (!ref || !ref->IsDeleted()) {
 			return GetByType<ExtraTextDisplayData>();
 		} else {
@@ -271,9 +266,9 @@ namespace RE
 		}
 
 		TESObjectREFR* linkedRef = 0;
-		for (auto& entry : xLinkedRef->entries) {
+		for (auto& entry : xLinkedRef->linkedRefs) {
 			if (entry.keyword == a_keyword) {
-				linkedRef = entry.linkedRef;
+				linkedRef = entry.refr;
 				if (!linkedRef && HasType(ExtraDataType::kEditorID)) {
 					auto xMissingLinkedRefIDs = GetByType<ExtraMissingLinkedRefIDs>();
 					linkedRef = xMissingLinkedRefIDs->GetLinkedRef(a_keyword);
@@ -299,7 +294,7 @@ namespace RE
 	SOUL_LEVEL ExtraDataList::GetSoulLevel() const
 	{
 		auto xSoul = GetByType<ExtraSoul>();
-		return xSoul ? xSoul->containedSoul : SOUL_LEVEL::kNone;
+		return xSoul ? xSoul->soul : SOUL_LEVEL::kNone;
 	}
 
 

@@ -6,6 +6,9 @@
 
 namespace RE
 {
+	class SeenData;
+
+
 	class ExtraSeenData : public BSExtraData
 	{
 	public:
@@ -22,7 +25,7 @@ namespace RE
 
 
 		// members
-		void* unk10;	// 10
+		SeenData* seenData;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraSeenData) == 0x18);
 }

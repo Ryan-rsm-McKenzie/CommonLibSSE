@@ -1,11 +1,25 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/ExtraDataTypes.h"
+#include "RE/NiPoint3.h"
 
 
 namespace RE
 {
+	struct DoorTeleportData
+	{
+		ObjectRefHandle	linkedDoor;	// 00
+		NiPoint3		position;	// 04
+		NiPoint3		rotation;	// 10
+		SInt8			flags;		// 1C
+		UInt8			pad1D;		// 1D
+		UInt16			pad1E;		// 1E
+	};
+	STATIC_ASSERT(sizeof(DoorTeleportData) == 0x20);
+
+
 	class ExtraTeleport : public BSExtraData
 	{
 	public:
@@ -13,22 +27,6 @@ namespace RE
 
 
 		enum { kExtraTypeID = ExtraDataType::kTeleport };
-
-
-		struct Data
-		{
-			RefHandle	dest;	// 00
-			float		unk04;	// 04
-			float		unk08;	// 08
-			float		unk0C;	// 0C
-			float		unk10;	// 10
-			float		unk14;	// 14
-			float		unk18;	// 18
-			UInt8		unk1C;	// 1C
-			UInt8		pad1D;	// 1D
-			UInt16		pad1E;	// 1E
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x20);
 
 
 		virtual ~ExtraTeleport();														// 00
@@ -39,7 +37,7 @@ namespace RE
 
 
 		// members
-		Data* data;	// 10
+		DoorTeleportData* teleportData;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraTeleport) == 0x18);
 }

@@ -13,7 +13,7 @@ namespace RE
 
 	ExtraSoul::ExtraSoul(SOUL_LEVEL a_level) :
 		BSExtraData(),
-		containedSoul(a_level),
+		soul(a_level),
 		pad11(0),
 		pad12(0),
 		pad14(0)
@@ -32,6 +32,6 @@ namespace RE
 	bool ExtraSoul::IsNotEqual(const BSExtraData* a_rhs) const
 	{
 		auto rhs = static_cast<const ExtraSoul*>(a_rhs);
-		return containedSoul != rhs->containedSoul;
+		return soul != rhs->soul;
 	}
 }

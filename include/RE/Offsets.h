@@ -746,13 +746,6 @@ namespace RE
 		}
 
 
-		namespace LockState
-		{
-			// IndirectSig: E8 ? ? ? ? 66 0F 6E C0 0F 5B C0 0F 5A C8 F2 0F 11 0F
-			constexpr std::uintptr_t GetLockLevel = 0x00134A90;	// 1_5_97
-		}
-
-
 		namespace LookHandler
 		{
 			// VTable: .?AULookHandler@@
@@ -941,6 +934,13 @@ namespace RE
 		{
 			// VTable: .?AUReadyWeaponHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F258;	// 1_5_97
+		}
+
+
+		namespace REFR_LOCK
+		{
+			// IndirectSig: E8 ? ? ? ? 66 0F 6E C0 0F 5B C0 0F 5A C8 F2 0F 11 0F
+			constexpr std::uintptr_t GetLockLevel = 0x00134A90;	// 1_5_97
 		}
 
 

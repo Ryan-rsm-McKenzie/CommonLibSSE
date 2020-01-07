@@ -1,11 +1,16 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSFixedString.h"
+#include "RE/BSTHashMap.h"
 #include "RE/ExtraDataTypes.h"
 
 
 namespace RE
 {
+	struct BGSAnimationSequencer;
+
+
 	class ExtraAnimationSequencer : public BSExtraData
 	{
 	public:
@@ -15,19 +20,6 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kAnimationSequencer };
 
 
-		struct Data
-		{
-			UInt64	unk00;	// 00
-			UInt64	unk08;	// 08
-			UInt64	unk10;	// 10
-			UInt64	unk18;	// 18
-			UInt64	unk20;	// 20
-			UInt64	unk28;	// 28
-			UInt64	unk30;	// 30
-		};
-		STATIC_ASSERT(sizeof(Data) == 0x38);
-
-
 		virtual ~ExtraAnimationSequencer();				// 00
 
 		// override (BSExtraData)
@@ -35,7 +27,7 @@ namespace RE
 
 
 		// members
-		Data* unk10;	// 10
+		BGSAnimationSequencer* sequencer;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraAnimationSequencer) == 0x18);
 }

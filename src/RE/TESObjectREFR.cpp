@@ -258,13 +258,13 @@ namespace RE
 	}
 
 
-	LockState* TESObjectREFR::GetLockState()
+	REFR_LOCK* TESObjectREFR::GetLockState()
 	{
-		return const_cast<LockState*>(GetLockState_Impl());
+		return const_cast<REFR_LOCK*>(GetLockState_Impl());
 	}
 
 
-	const LockState* TESObjectREFR::GetLockState() const
+	const REFR_LOCK* TESObjectREFR::GetLockState() const
 	{
 		return GetLockState_Impl();
 	}
@@ -396,7 +396,7 @@ namespace RE
 	bool TESObjectREFR::IsLocked() const
 	{
 		auto state = GetLockState();
-		return state && state->lockLevel > 0;
+		return state && state->baseLevel > 0;
 	}
 
 
@@ -498,10 +498,10 @@ namespace RE
 
 		auto xTextData = extraList.GetByType<ExtraTextDisplayData>();
 		if (xTextData) {
-			bool inUse = xTextData->message || xTextData->owner;
+			bool inUse = xTextData->displayNameText || xTextData->ownerQuest;
 			if (inUse && a_force) {
-				xTextData->message = 0;
-				xTextData->owner = 0;
+				xTextData->displayNameText = 0;
+				xTextData->ownerQuest = 0;
 			}
 			renamed = !inUse || a_force;
 			xTextData->SetName(a_name.c_str());
@@ -540,7 +540,7 @@ namespace RE
 	}
 
 
-	const LockState* TESObjectREFR::GetLockState_Impl() const
+	const REFR_LOCK* TESObjectREFR::GetLockState_Impl() const
 	{
 		using func_t = function_type_t<decltype(&TESObjectREFR::GetLockState_Impl)>;
 		REL::Offset<func_t*> func(Offset::TESObjectREFR::GetLockState);

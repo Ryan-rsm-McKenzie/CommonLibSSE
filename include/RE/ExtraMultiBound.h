@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	class NiRefObject;
+	class BSMultiBound;
 
 
 	class ExtraMultiBound : public BSExtraData
@@ -26,7 +26,7 @@ namespace RE
 
 
 		// members
-		NiPointer<NiRefObject> unk10;	// 10
+		NiPointer<BSMultiBound> bound;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraMultiBound) == 0x18);
 }

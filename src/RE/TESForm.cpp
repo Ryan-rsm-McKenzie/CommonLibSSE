@@ -74,8 +74,8 @@ namespace RE
 		if (objRef) {
 			form = objRef->GetBaseObject();
 			auto xEnch = objRef->extraList.GetByType<ExtraEnchantment>();
-			if (xEnch && xEnch->objectEffect) {
-				value += xEnch->objectEffect->CalculateTotalGoldValue();
+			if (xEnch && xEnch->enchantment) {
+				value += xEnch->enchantment->CalculateTotalGoldValue();
 			}
 		}
 

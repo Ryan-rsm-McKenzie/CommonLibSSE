@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/ExtraDataTypes.h"
 
 
@@ -22,7 +23,8 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;	// 10
+		ObjectRefHandle	activateRef;	// 10
+		UInt32			pad14;			// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraOpenCloseActivateRef) == 0x18);
 }

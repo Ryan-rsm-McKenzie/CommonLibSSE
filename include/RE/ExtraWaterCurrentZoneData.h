@@ -1,11 +1,23 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
+#include "RE/BSTHashMap.h"
 #include "RE/ExtraDataTypes.h"
+#include "RE/NiPoint3.h"
 
 
 namespace RE
 {
+	namespace BSCurrent
+	{
+		struct Action;
+	}
+
+	
+	class TESObjectCELL;
+
+
 	class ExtraWaterCurrentZoneData : public BSExtraData
 	{
 	public:
@@ -23,20 +35,11 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
-		UInt64	unk20;	// 20
-		UInt64	unk28;	// 28
-		UInt64	unk30;	// 30
-		UInt64	unk38;	// 38
-		UInt64	unk40;	// 40
-		UInt64	unk48;	// 48
-		float	unk50;	// 50
-		float	unk54;	// 54
-		float	unk58;	// 58
-		float	unk5C;	// 5C
-		float	unk60;	// 60
-		float	unk64;	// 64
+		BSTHashMap<ObjectRefHandle, BSCurrent::Action*>	referenceToActionMap;	// 10
+		BSCurrent::Action*								cellAction;				// 40
+		TESObjectCELL*									affectedCell;			// 48
+		NiPoint3										angularVelocity;		// 50
+		NiPoint3										linearVelocity;			// 5C
 	};
 	STATIC_ASSERT(sizeof(ExtraWaterCurrentZoneData) == 0x68);
 }

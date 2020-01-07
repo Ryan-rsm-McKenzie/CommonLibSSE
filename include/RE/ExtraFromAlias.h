@@ -22,8 +22,9 @@ namespace RE
 
 
 		// members
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
+		TESQuest*	quest;		// 10
+		UInt32		aliasID;	// 18
+		UInt32		pad1C;		// 1C
 	};
 	STATIC_ASSERT(sizeof(ExtraFromAlias) == 0x20);
 }
