@@ -2,6 +2,7 @@
 
 #include "RE/BSFaceGenKeyframeMultiple.h"
 #include "RE/NiExtraData.h"
+#include "RE/NiPoint3.h"
 
 
 namespace RE
@@ -35,9 +36,7 @@ namespace RE
 		BSFaceGenKeyframeMultiple	unk140;				// 140
 		BSFaceGenKeyframeMultiple	unk160;				// 160
 		BSFaceGenKeyframeMultiple	unk180;				// 180
-		float						unk1A0;				// 1A0
-		UInt32						unk1A4;				// 1A4
-		float						unk1A8;				// 1A8
+		NiPoint3					unk1A0;				// 1A0
 		UInt32						unk1AC;				// 1AC
 		UInt64						unk1B0;				// 1B0
 		UInt64						unk1B8;				// 1B8

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSScript/IMemoryPagePolicy.h"
+#include "RE/BSLock.h"
 
 
 namespace RE
@@ -16,17 +17,20 @@ namespace RE
 			virtual ~SimpleAllocMemoryPagePolicy();	// 00
 
 			// override (IMemoryPagePolicy)
-			virtual void	Unk_01(void) override;	// 01
+			virtual void	Unk_01(void) override;	// 01 - { return maxPageSize; }
 			virtual void	Unk_02(void) override;	// 02
 			virtual void	Unk_03(void) override;	// 03
 			virtual void	Unk_04(void) override;	// 04
 
 
 			// members
-			UInt64	unk08;	// 08
-			UInt64	unk10;	// 10
-			UInt64	unk18;	// 18
-			UInt64	unk20;	// 20
+			const UInt32	minPageSize;				// 08
+			const UInt32	maxPageSize;				// 0C
+			const UInt32	maxAllocatedMemory;			// 10
+			const UInt32	maxStackDepth;				// 14
+			BSSpinLock		dataLock;					// 18
+			UInt32			currentMemorySize;			// 20
+			UInt32			maxAdditionalAllocations;	// 20
 		};
 		STATIC_ASSERT(sizeof(SimpleAllocMemoryPagePolicy) == 0x28);
 	}

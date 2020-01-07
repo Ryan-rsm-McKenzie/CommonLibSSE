@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSLock.h"
 #include "RE/BSTHashMap.h"
 #include "RE/BSTSmartPointer.h"
 
@@ -8,7 +9,9 @@ namespace RE
 {
 	namespace BSScript
 	{
+		class IVirtualMachine;
 		class Object;
+		struct IVMObjectBindInterface;
 
 
 		class ObjectBindPolicy
@@ -34,10 +37,10 @@ namespace RE
 
 
 			// members
-			UInt64							unk08;	// 08
-			UInt64							unk10;	// 10
-			UInt64							unk18;	// 18
-			BSTHashMap<UnkKey, UnkValue>	unk20;	// 20
+			IVirtualMachine*				vm;						// 08
+			IVMObjectBindInterface*			bindInterface;			// 10
+			mutable BSSpinLock				attachedScriptsLock;	// 18
+			BSTHashMap<VMHandle, UnkValue>	attachedScripts;		// 20
 		};
 		STATIC_ASSERT(sizeof(ObjectBindPolicy) == 0x50);
 	}

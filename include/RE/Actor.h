@@ -478,7 +478,7 @@ namespace RE
 		bool						AddSpell(SpellItem* a_spell);
 		void						AllowBleedoutDialogue(bool a_canTalk);
 		void						AllowPCDialogue(bool a_talk);
-		SInt32						CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const;
+		SInt32						CalcEntryValue(const InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const;
 		bool						CanFlyHere() const;
 		void						ClearArrested();
 		void						ClearExpressionOverride();

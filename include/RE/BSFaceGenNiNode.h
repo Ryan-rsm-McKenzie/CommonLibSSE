@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSPointerHandle.h"
 #include "RE/NiMatrix3.h"
 #include "RE/NiNode.h"
 #include "RE/NiSmartPointer.h"
@@ -34,7 +35,7 @@ namespace RE
 		UInt32								pad14C;			// 14C
 		NiPointer<BSFaceGenAnimationData>	animationData;	// 150
 		float								lastTime;		// 158
-		RefHandle							unk15C;			// 15C
+		ActorHandle							unk15C;			// 15C
 		UInt16								flags;			// 160
 		UInt16								pad162;			// 162
 		UInt32								pad164;			// 164

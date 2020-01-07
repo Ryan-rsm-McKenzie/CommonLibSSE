@@ -155,6 +155,7 @@ namespace RE
 		constexpr const T* As() const;
 
 		FormID		GetFormID() const;
+		FormType	GetFormType() const;
 		SInt32		GetGoldValue() const;
 		const char*	GetName() const;
 		float		GetWeight() const;

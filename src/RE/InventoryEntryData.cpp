@@ -53,6 +53,12 @@ namespace RE
 	}
 
 
+	TESBoundObject*	InventoryEntryData::GetObject()
+	{
+		return object;
+	}
+
+
 	TESForm* InventoryEntryData::GetOwner()
 	{
 		if (extraLists && !extraLists->empty()) {
@@ -65,10 +71,16 @@ namespace RE
 
 	SOUL_LEVEL InventoryEntryData::GetSoulLevel() const
 	{
-		if (extraLists && !extraLists->empty()) {
-			auto lvl = extraLists->front()->GetSoulLevel();
-			if (lvl > SOUL_LEVEL::kNone) {
-				return lvl;
+		if (extraLists) {
+			for (auto& xList : *extraLists) {
+				if (!xList) {
+					continue;
+				}
+
+				auto lvl = xList->GetSoulLevel();
+				if (lvl > SOUL_LEVEL::kNone) {
+					return lvl;
+				}
 			}
 		}
 
@@ -89,7 +101,7 @@ namespace RE
 	}
 
 
-	float InventoryEntryData::GetWeight()
+	float InventoryEntryData::GetWeight() const
 	{
 		return object ? object->GetWeight() : -1.0;
 	}

@@ -8,7 +8,7 @@ namespace RE
 	struct BSIntrusiveRefCounted
 	{
 	public:
-		template <class T> friend struct BSTSmartPointerIntrusiveRefCount;
+		friend struct BSTSmartPointerIntrusiveRefCount;
 
 
 		BSIntrusiveRefCounted();
@@ -18,7 +18,7 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 
-
+	protected:
 		// members
 		volatile SInt32 _refCount;	// 0
 	};

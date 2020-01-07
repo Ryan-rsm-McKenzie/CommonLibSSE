@@ -171,6 +171,9 @@
     <ClCompile Include="src\RE\ActorValueOwner.cpp" />
     <ClCompile Include="src\RE\AddCallbackVisitor.cpp" />
     <ClCompile Include="src\RE\BGSFootstepManager.cpp" />
+    <ClCompile Include="src\RE\BSScript\ByteCode\PackedInstructionStream.cpp" />
+    <ClCompile Include="src\RE\BSScript\Internal\VDescTable.cpp" />
+    <ClCompile Include="src\RE\BSScript\MemoryPage.cpp" />
     <ClCompile Include="src\RE\BSXFlags.cpp" />
     <ClCompile Include="src\RE\ExtraLightData.cpp" />
     <ClCompile Include="src\RE\ExtraPoison.cpp" />
@@ -200,19 +203,18 @@
     <ClCompile Include="src\RE\BSResourceNiBinaryStream.cpp" />
     <ClCompile Include="src\RE\BSScaleformManager.cpp" />
     <ClCompile Include="src\RE\BSScript\Array.cpp" />
-    <ClCompile Include="src\RE\BSScript\Class.cpp" />
+    <ClCompile Include="src\RE\BSScript\ObjectTypeInfo.cpp" />
     <ClCompile Include="src\RE\BSScript\IFunction.cpp" />
     <ClCompile Include="src\RE\BSScript\IObjectHandlePolicy.cpp" />
     <ClCompile Include="src\RE\BSScript\IStackCallbackFunctor.cpp" />
     <ClCompile Include="src\RE\BSScript\Object.cpp" />
     <ClCompile Include="src\RE\BSScript\Stack.cpp" />
-    <ClCompile Include="src\RE\BSScript\Type.cpp" />
+    <ClCompile Include="src\RE\BSScript\TypeInfo.cpp" />
     <ClCompile Include="src\RE\BSScript\Variable.cpp" />
     <ClCompile Include="src\RE\BSScript\Internal\VirtualMachine.cpp" />
     <ClCompile Include="src\RE\BSScript\NF_util\NativeFunctionBase.cpp" />
     <ClCompile Include="src\RE\BSScript\ObjectBindPolicy.cpp" />
     <ClCompile Include="src\RE\BSScript\PackUnpack.cpp" />
-    <ClCompile Include="src\RE\BSScript\VariableInfo.cpp" />
     <ClCompile Include="src\RE\BSScript\ZeroFunctionArguments.cpp" />
     <ClCompile Include="src\RE\BSLock.cpp" />
     <ClCompile Include="src\RE\BSString.cpp" />
@@ -427,6 +429,7 @@
     <ClInclude Include="include\RE\BipedObjects.h" />
     <ClInclude Include="include\RE\BleedoutCameraState.h" />
     <ClInclude Include="include\RE\BSAnimNoteListener.h" />
+    <ClInclude Include="include\RE\BSBatchRenderer.h" />
     <ClInclude Include="include\RE\BSBitField.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialEnvmap.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialEye.h" />
@@ -444,6 +447,10 @@
     <ClInclude Include="include\RE\BSResource\FileID.h" />
     <ClInclude Include="include\RE\BSResource\ID.h" />
     <ClInclude Include="include\RE\BSResponse.h" />
+    <ClInclude Include="include\RE\BSScript\ByteCode\PackedInstructionStream.h" />
+    <ClInclude Include="include\RE\BSScript\Internal\VDescTable.h" />
+    <ClInclude Include="include\RE\BSScript\MemoryPage.h" />
+    <ClInclude Include="include\RE\BSScript\PropertyTypeInfo.h" />
     <ClInclude Include="include\RE\BSTimer.h" />
     <ClInclude Include="include\RE\BSTTuple.h" />
     <ClInclude Include="include\RE\BSUntypedPointerHandle.h" />
@@ -454,6 +461,7 @@
     <ClInclude Include="include\RE\DialogueTypes.h" />
     <ClInclude Include="include\RE\DoNothingUnhandledPolicy.h" />
     <ClInclude Include="include\RE\EffectArchetypes.h" />
+    <ClInclude Include="include\RE\FightReactions.h" />
     <ClInclude Include="include\RE\hkAabb.h" />
     <ClInclude Include="include\RE\hkpMoppCode.h" />
     <ClInclude Include="include\RE\hkpSolverInfo.h" />
@@ -680,7 +688,7 @@
     <ClInclude Include="include\RE\BSScaleformTranslator.h" />
     <ClInclude Include="include\RE\BSScript\Array.h" />
     <ClInclude Include="include\RE\BSScript\ArrayTypeTraits.h" />
-    <ClInclude Include="include\RE\BSScript\Class.h" />
+    <ClInclude Include="include\RE\BSScript\ObjectTypeInfo.h" />
     <ClInclude Include="include\RE\BSScript\Internal\CodeTasklet.h" />
     <ClInclude Include="include\RE\BSScript\Internal\IFuncCallQuery.h" />
     <ClInclude Include="include\RE\BSScript\Internal\RawFuncCallQuery.h" />
@@ -689,7 +697,7 @@
     <ClInclude Include="include\RE\BSScript\ObjectBindPolicy.h" />
     <ClInclude Include="include\RE\BSScript\PackUnpack.h" />
     <ClInclude Include="include\RE\BSScript\Stack.h" />
-    <ClInclude Include="include\RE\BSScript\Type.h" />
+    <ClInclude Include="include\RE\BSScript\TypeInfo.h" />
     <ClInclude Include="include\RE\BSScript\Variable.h" />
     <ClInclude Include="include\RE\BSScript\CommonTypeTraits.h" />
     <ClInclude Include="include\RE\BSScript\ObjectTypeTraits.h" />
@@ -723,7 +731,6 @@
     <ClInclude Include="include\RE\BSScript\NativeFunction.h" />
     <ClInclude Include="include\RE\BSScript\NF_util\NativeFunctionBase.h" />
     <ClInclude Include="include\RE\BSScript\SimpleAllocMemoryPagePolicy.h" />
-    <ClInclude Include="include\RE\BSScript\VariableInfo.h" />
     <ClInclude Include="include\RE\BSScript\VMArray.h" />
     <ClInclude Include="include\RE\BSScript\ZeroFunctionArguments.h" />
     <ClInclude Include="include\RE\BSShader.h" />

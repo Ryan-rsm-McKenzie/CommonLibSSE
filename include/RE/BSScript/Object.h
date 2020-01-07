@@ -8,15 +8,9 @@
 
 namespace RE
 {
-	namespace SkyrimScript
-	{
-		class HandlePolicy;
-	}
-
-
 	namespace BSScript
 	{
-		class Class;
+		class ObjectTypeInfo;
 
 
 		// first 2 bits on this ptr used as flags
@@ -25,12 +19,14 @@ namespace RE
 		public:
 			~Object();
 
-			Class*			GetClass();
-			const Class*	GetClass() const;
-			UInt32			GetFlags() const;
-			UInt32			GetNumProperties() const;
+			ObjectTypeInfo*			GetTypeInfo();
+			const ObjectTypeInfo*	GetTypeInfo() const;
+			UInt32					GetNumProperties() const;
+			bool					IsConstructed() const;
+			bool					IsInitialized() const;
+			bool					IsValid() const;
 
-			void* Resolve(FormType32 a_typeID) const;
+			void* Resolve(VMTypeID a_typeID) const;
 
 			void	IncRefCount();
 			SInt32	DecRefCount();
@@ -42,9 +38,9 @@ namespace RE
 
 
 			// members
-			bool					variablesSet : 1;		// 00 - 0
-			bool					flags2 : 1;				// 00 - 1
-			bool					initialized : 1;		// 00 - 2
+			bool					constructed : 1;		// 00 - 0
+			bool					initialized : 1;		// 00 - 1
+			bool					valid : 1;				// 00 - 2
 			bool					numProperties01 : 1;	// 00 - 3
 			bool					numProperties02 : 1;	// 00 - 4
 			bool					numProperties03 : 1;	// 00 - 5
@@ -69,15 +65,15 @@ namespace RE
 			bool					unk02_6 : 1;			// 02 - 6
 			bool					unk02_7 : 1;			// 02 - 7
 
-			UInt8					pad03;					// 03
-			UInt32					pad04;					// 04
-			BSTSmartPointer<Class>	classPtr;				// 08
-			BSFixedString			currentState;			// 10
-			UInt32*					unk18;					// 18 - some ref count, first bit used as flag
-			volatile VMHandle		handle;					// 20
-			volatile SInt32			refCount;				// 28
-			UInt32					pad2C;					// 2C
-			Variable				variables[0];			// 30 - size == classPtr->GetTotalNumVariables() + 3
+			UInt8							pad03;					// 03
+			UInt32							pad04;					// 04
+			BSTSmartPointer<ObjectTypeInfo>	type;					// 08
+			BSFixedString					currentState;			// 10
+			void*							lockStructure;			// 18 - first bit used as flag
+			volatile VMHandle				handle;					// 20
+			volatile SInt32					refCountAndHandleLock;	// 28
+			UInt32							pad2C;					// 2C
+			Variable						variables[0];			// 30 - size == classPtr->GetTotalNumVariables() + 3
 
 		private:
 			void Dtor();

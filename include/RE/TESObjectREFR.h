@@ -102,7 +102,7 @@ namespace RE
 
 
 		using Count = SInt32;
-		using InventoryMap = std::unordered_map<TESBoundObject*, std::pair<Count, BSSimpleList<ExtraDataList*>*>>;
+		using InventoryMap = std::unordered_map<TESBoundObject*, std::pair<Count, InventoryEntryData*>>;
 		using DroppedInventoryMap = std::unordered_map<TESBoundObject*, std::pair<Count, NiPointer<TESObjectREFR>>>;
 
 

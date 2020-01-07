@@ -12,20 +12,6 @@ namespace RE
 	class BSStringPool
 	{
 	public:
-		enum HashMask
-		{
-			kEntryIndexMask = 0xFFFF,
-			kLockIndexMask = 0x7F
-		};
-
-
-		enum class Flag : UInt8
-		{
-			kNone = 0,
-			kInit = 1 << 0
-		};
-
-
 		struct Entry
 		{
 		public:
@@ -67,18 +53,28 @@ namespace RE
 			CharT			_data[0];			// 18
 		};
 		STATIC_ASSERT(sizeof(Entry) == 0x18);
+	};
 
 
-		static BSStringPool* GetSingleton();
+	struct BucketTable
+	{
+		enum HashMask
+		{
+			kEntryIndexMask = 0xFFFF,
+			kLockIndexMask = 0x7F
+		};
+
+
+		static BucketTable* GetSingleton();
 
 
 		// members
-		Entry*				table[0x10000];	// 00000 - index using hash & kEntryIndexMask
-		mutable BSSpinLock	locks[0x20];	// 80000 - index using hash & kLockIndexMask
-		Flag				flags;			// 80100
-		UInt8				pad80801;		// 80101
-		UInt16				pad80802;		// 80102
-		UInt32				pad80804;		// 80104
+		BSStringPool::Entry*	buckets[0x10000];	// 00000 - index using hash & kEntryIndexMask
+		mutable BSSpinLock		locks[0x20];		// 80000 - index using hash & kLockIndexMask
+		bool					initialized;		// 80100
+		UInt8					pad80801;			// 80101
+		UInt16					pad80802;			// 80102
+		UInt32					pad80804;			// 80104
 	};
-	STATIC_ASSERT(sizeof(BSStringPool) == 0x80108);
+	STATIC_ASSERT(sizeof(BucketTable) == 0x80108);
 }

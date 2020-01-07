@@ -12,14 +12,14 @@ namespace RE
 
 		namespace Internal
 		{
-			class RawFuncCallQuery;
+			class IFuncCallQuery;
 
 
 			struct SuspendedStack
 			{
 			public:
-				BSTSmartPointer<Stack>				stack;	// 00
-				BSTSmartPointer<RawFuncCallQuery>	unk08;	// 08
+				BSTSmartPointer<Stack>			stack;			// 00
+				BSTSmartPointer<IFuncCallQuery>	funcCallQuery;	// 08
 			};
 			STATIC_ASSERT(sizeof(SuspendedStack) == 0x10);
 		}

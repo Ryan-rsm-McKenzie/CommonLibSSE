@@ -1,8 +1,10 @@
 #pragma once
 
+#include "RE/BSScript/MemoryPage.h"
 #include "RE/BSScript/Variable.h"
 #include "RE/BSIntrusiveRefCounted.h"
 #include "RE/BSTArray.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE
@@ -15,37 +17,48 @@ namespace RE
 		}
 
 
+		class IProfilePolicy;
 		class IStackCallbackFunctor;
-		class SimpleAllocMemoryPagePolicy;
 		class StackFrame;
+		struct IMemoryPagePolicy;
 
 
 		class Stack : public BSIntrusiveRefCounted
 		{
 		public:
-			// All stack frame pointers are offset by 4
-			// The actual stack frame is kept here
-			struct Chunk
+			enum class State : UInt32
 			{
-				void*		GetHead();
-				StackFrame*	GetStackFrame();
-				void*		GetTail();
-				bool		IsInRange(void* a_ptr);
-
-
-				UInt32	stackFrameSize;	// 00 - minimum size of 0x80, but can be larger
-				char	buf[0x80];		// 04
+				kRunning = 0,
+				kFinished = 1,
+				kWaitingOnMemory = 2,
+				kWaitingOnLatentFunction = 3,
+				kWaitingOnOtherStackForCall = 4,
+				kWaitingOnOtherStackForReturn = 5,
+				kWaitingOnOtherStackForReturnNoPop = 6,
+				kRetryReturnNoPop = 7,
+				kRetryCall = 8
 			};
-			STATIC_ASSERT(sizeof(Chunk) == 0x84);	// chunks can be larger
 
 
-			struct Pair
+			enum class FreezeState : UInt32
 			{
-				Chunk*	chunk;			// 00
-				UInt32	unusedArgSize;	// 08 - e.g. a function with 1 arg will have 3 unused args, so this will be 0x30, a function with 6 args will have 0 unused args, so this will be 0x0
-				UInt32	pad0C;			// 0C
+				kUnfrozen = 0,
+				kFreezing = 1,
+				kFrozen = 2
 			};
-			STATIC_ASSERT(sizeof(Pair) == 0x10);
+
+
+			enum class StackType : UInt32
+			{};
+
+
+			struct MemoryPageData
+			{
+				BSTAutoPointer<MemoryPage>	page;					// 00
+				UInt32						availableMemoryInBytes;	// 08 - e.g. a function with 1 arg will have 3 unused args, so this will be 0x30, a function with 6 args will have 0 unused args, so this will be 0x0
+				UInt32						pad0C;					// 0C
+			};
+			STATIC_ASSERT(sizeof(MemoryPageData) == 0x10);
 
 
 			~Stack();
@@ -54,20 +67,21 @@ namespace RE
 
 
 			// members
-			UInt32									unk04;				// 04
-			SimpleAllocMemoryPagePolicy*			memoryPagePolicy;	// 08
-			void*									unk10;				// 10
-			BSTSmallArray<Pair, 3>					chunks;				// 18
-			UInt32									numChunks;			// 58
-			UInt32									unk5C;				// 5C
-			StackFrame*								current;			// 60
-			UInt64									unk68;				// 68
-			Variable								resultValue;		// 70
-			UInt32									stackID;			// 80
-			UInt32									unk84;				// 84
-			BSTSmartPointer<Internal::CodeTasklet>	codeTasklet;		// 88
-			BSTSmartPointer<IStackCallbackFunctor>	callbackFunctor;	// 90
-			BSTSmartPointer<Stack>					unk98;				// 98
+			UInt32									pad04;				// 04
+			IMemoryPagePolicy*						policy;				// 08
+			IProfilePolicy*							profilePolicy;		// 10
+			BSTSmallArray<MemoryPageData, 3>		pages;				// 18
+			UInt32									frames;				// 58
+			UInt32									pad5C;				// 5C
+			StackFrame*								top;				// 60
+			State									state;				// 68
+			FreezeState								freezeState;		// 6C
+			Variable								returnValue;		// 70
+			VMStackID								stackID;			// 80
+			StackType								stackType;			// 84
+			BSTSmartPointer<Internal::CodeTasklet>	owningTasklet;		// 88
+			BSTSmartPointer<IStackCallbackFunctor>	callback;			// 90
+			BSTSmartPointer<Stack>					nextStack;			// 98
 
 		private:
 			void Dtor();

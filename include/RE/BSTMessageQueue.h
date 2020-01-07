@@ -4,6 +4,7 @@
 namespace RE
 {
 	template <class T> class BSTFreeList;
+	template <class T> struct BSTFreeListElem;
 	class ScrapHeap;
 
 
@@ -70,9 +71,9 @@ namespace RE
 		virtual bool	PopInternal(T* a_obj) override;		// 06
 
 	public:
-		BSTFreeList<T>*	unk10;	// 10
-		void*			begin;	// 18
-		void*			end;	// 20
+		BSTFreeList<T>*			freeList;	// 10
+		BSTFreeListElem<T>*		head;		// 18
+		BSTFreeListElem<T>**	tail;		// 20
 	};
 	STATIC_ASSERT(sizeof(BSTCommonLLMessageQueue<void*>) == 0x28);
 
@@ -89,9 +90,9 @@ namespace RE
 		virtual bool	PopInternal(T* a_obj) override;		// 06
 
 	public:
-		T		entries[SIZE];	// 10
-		UInt32	numEntries;		// ??
-		UInt32	pushIdx;		// ??
-		UInt32	popIdx;			// ??
+		char	queueBuffer[sizeof(T) * SIZE];	// 10
+		UInt32	numEntries;						// ??
+		UInt32	pushIdx;						// ??
+		UInt32	popIdx;							// ??
 	};
 }

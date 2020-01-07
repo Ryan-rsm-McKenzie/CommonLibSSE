@@ -6,7 +6,7 @@ namespace RE
 	namespace BSScript
 	{
 		IFunction::IFunction() :
-			unk0C(0)
+			pad0C(0)
 		{}
 	}
 }

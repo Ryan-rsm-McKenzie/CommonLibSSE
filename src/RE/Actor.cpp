@@ -75,7 +75,7 @@ namespace RE
 	}
 
 
-	SInt32 Actor::CalcEntryValue(InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const
+	SInt32 Actor::CalcEntryValue(const InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const
 	{
 		using func_t = function_type_t<decltype(&Actor::CalcEntryValue)>;
 		REL::Offset<func_t*> func(Offset::Actor::CalcEntryValue);

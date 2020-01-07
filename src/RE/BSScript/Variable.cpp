@@ -3,8 +3,8 @@
 #include <cassert>
 
 #include "RE/BSScript/Array.h"
-#include "RE/BSScript/Class.h"
 #include "RE/BSScript/Object.h"
+#include "RE/BSScript/ObjectTypeInfo.h"
 #include "RE/BSScript/PackUnpack.h"
 
 
@@ -12,41 +12,40 @@ namespace RE
 {
 	namespace BSScript
 	{
-		Variable::Data::Data(void* a_val) :
+		Variable::Value::Value(void* a_val) :
 			p(a_val)
 		{}
 
 
-		Variable::Data::~Data()
+		Variable::Value::~Value()
 		{}
 
 
 		Variable::Variable() :
-			Type(VMTypeID::kNone),
-			data()
+			varType(TypeInfo::RawType::kNone),
+			value()
 		{}
 
 
-		Variable::Variable(const Type& a_type) :
-			Type(a_type),
-			data()
+		Variable::Variable(const TypeInfo& a_type) :
+			varType(a_type),
+			value()
 		{}
 
 
 		Variable::Variable(const Variable& a_rhs) :
-			Type(),
-			data()
+			varType(),
+			value()
 		{
 			Assign(a_rhs);
 		}
 
 
 		Variable::Variable(Variable&& a_rhs) :
-			Type(std::move(a_rhs.type)),
-			data(std::move(a_rhs.data.p))
+			varType(std::move(a_rhs.varType)),
+			value(std::move(a_rhs.value.p))
 		{
-			a_rhs.type = VMTypeID::kNone;
-			a_rhs.data.p = 0;
+			a_rhs.value.p = 0;
 		}
 
 
@@ -77,11 +76,10 @@ namespace RE
 
 			Destroy();
 
-			type = std::move(a_rhs.type);
-			a_rhs.type = VMTypeID::kNone;
+			varType = std::move(a_rhs.varType);
 
-			data.p = std::move(a_rhs.data.p);
-			a_rhs.data.p = 0;
+			value.p = std::move(a_rhs.value.p);
+			a_rhs.value.p = 0;
 
 			return *this;
 		}
@@ -89,32 +87,34 @@ namespace RE
 
 		bool Variable::operator==(const Variable& a_rhs) const
 		{
-			if (type != a_rhs.type) {
+			using Type = TypeInfo::RawType;
+
+			if (varType != a_rhs.varType) {
 				return false;
 			}
 
-			switch (type) {
-			case VMTypeID::kNone:
-			case VMTypeID::kNoneArray:
+			switch (varType.GetType()) {
+			case Type::kNone:
+			case Type::kNoneArray:
 				return true;
-			case VMTypeID::kObject:
-				return data.obj.get() == a_rhs.data.obj.get();
-			case VMTypeID::kString:
-				return data.str == a_rhs.data.str;
-			case VMTypeID::kInt:
-				return data.u == a_rhs.data.u;
-			case VMTypeID::kFloat:
-				return data.f == a_rhs.data.f;
-			case VMTypeID::kBool:
-				return data.b == a_rhs.data.b;
-			case VMTypeID::kObjectArray:
-			case VMTypeID::kStringArray:
-			case VMTypeID::kIntArray:
-			case VMTypeID::kFloatArray:
-			case VMTypeID::kBoolArray:
-				return data.arr.get() == a_rhs.data.arr.get();
+			case Type::kObject:
+				return value.obj.get() == a_rhs.value.obj.get();
+			case Type::kString:
+				return value.str == a_rhs.value.str;
+			case Type::kInt:
+				return value.u == a_rhs.value.u;
+			case Type::kFloat:
+				return value.f == a_rhs.value.f;
+			case Type::kBool:
+				return value.b == a_rhs.value.b;
+			case Type::kObjectArray:
+			case Type::kStringArray:
+			case Type::kIntArray:
+			case Type::kFloatArray:
+			case Type::kBoolArray:
+				return value.arr.get() == a_rhs.value.arr.get();
 			default:
-				return data.p == a_rhs.data.p;
+				return value.p == a_rhs.value.p;
 			}
 		}
 
@@ -127,32 +127,34 @@ namespace RE
 
 		bool Variable::operator<(const Variable& a_rhs) const
 		{
-			if (type != a_rhs.type) {
-				return type < a_rhs.type;
+			using Type = TypeInfo::RawType;
+
+			if (varType != a_rhs.varType) {
+				return varType < a_rhs.varType;
 			}
 
-			switch (type) {
-			case VMTypeID::kNone:
-			case VMTypeID::kNoneArray:
+			switch (varType.GetType()) {
+			case Type::kNone:
+			case Type::kNoneArray:
 				return false;
-			case VMTypeID::kObject:
-				return data.obj.get() < a_rhs.data.obj.get();
-			case VMTypeID::kString:
-				return _stricmp(data.str.c_str(), a_rhs.data.str.c_str()) < 0;
-			case VMTypeID::kInt:
-				return data.u < a_rhs.data.u;
-			case VMTypeID::kFloat:
-				return data.f < a_rhs.data.f;
-			case VMTypeID::kBool:
-				return data.b < a_rhs.data.b;
-			case VMTypeID::kObjectArray:
-			case VMTypeID::kStringArray:
-			case VMTypeID::kIntArray:
-			case VMTypeID::kFloatArray:
-			case VMTypeID::kBoolArray:
-				return data.arr.get() < a_rhs.data.arr.get();
+			case Type::kObject:
+				return value.obj.get() < a_rhs.value.obj.get();
+			case Type::kString:
+				return _stricmp(value.str.c_str(), a_rhs.value.str.c_str()) < 0;
+			case Type::kInt:
+				return value.u < a_rhs.value.u;
+			case Type::kFloat:
+				return value.f < a_rhs.value.f;
+			case Type::kBool:
+				return value.b < a_rhs.value.b;
+			case Type::kObjectArray:
+			case Type::kStringArray:
+			case Type::kIntArray:
+			case Type::kFloatArray:
+			case Type::kBoolArray:
+				return value.arr.get() < a_rhs.value.arr.get();
 			default:
-				return data.p < a_rhs.data.p;
+				return value.p < a_rhs.value.p;
 			}
 		}
 
@@ -177,149 +179,151 @@ namespace RE
 
 		SInt32 Variable::GetSInt() const
 		{
-			assert(IsInt());
-			return data.i;
+			assert(varType.IsInt());
+			return value.i;
 		}
 
 
 		UInt32 Variable::GetUInt() const
 		{
-			assert(IsInt());
-			return data.u;
+			assert(varType.IsInt());
+			return value.u;
 		}
 
 
 		float Variable::GetFloat() const
 		{
-			assert(IsFloat());
-			return data.f;
+			assert(varType.IsFloat());
+			return value.f;
 		}
 
 
 		bool Variable::GetBool() const
 		{
-			assert(IsBool());
-			return data.b;
+			assert(varType.IsBool());
+			return value.b;
 		}
 
 
 		Array* Variable::GetArray()
 		{
-			assert(IsArray() || IsNoneArray());
-			return data.arr.get();
+			assert(varType.IsArray() || varType.IsNoneArray());
+			return value.arr.get();
 		}
 
 
 		Object* Variable::GetObject()
 		{
-			assert(IsObject() || IsNoneObject());
-			return data.obj.get();
+			assert(varType.IsObject() || varType.IsNoneObject());
+			return value.obj.get();
 		}
 
 
 		BSFixedString Variable::GetString() const
 		{
-			assert(IsString());
-			return data.str;
+			assert(varType.IsString());
+			return value.str;
 		}
 
 
 		void Variable::SetNone()
 		{
-			ChangeType(VMTypeID::kNone);
+			ChangeType(TypeInfo::RawType::kNone);
 		}
 
 
 		void Variable::SetSInt(SInt32 a_val)
 		{
-			ChangeType(VMTypeID::kInt);
-			data.i = a_val;
+			ChangeType(TypeInfo::RawType::kInt);
+			value.i = a_val;
 		}
 
 
 		void Variable::SetUInt(UInt32 a_val)
 		{
-			ChangeType(VMTypeID::kInt);
-			data.u = a_val;
+			ChangeType(TypeInfo::RawType::kInt);
+			value.u = a_val;
 		}
 
 
 		void Variable::SetFloat(float a_val)
 		{
-			ChangeType(VMTypeID::kFloat);
-			data.f = a_val;
+			ChangeType(TypeInfo::RawType::kFloat);
+			value.f = a_val;
 		}
 
 
 		void Variable::SetBool(bool a_val)
 		{
-			ChangeType(VMTypeID::kBool);
-			data.b = a_val;
+			ChangeType(TypeInfo::RawType::kBool);
+			value.b = a_val;
 		}
 
 
 		void Variable::SetArray(Array* a_val)
 		{
-			ChangeType(a_val->type_id());
-			data.arr.reset(a_val);
+			ChangeType(a_val->type());
+			value.arr.reset(a_val);
 		}
 
 
 		void Variable::SetObject(Object* a_val)
 		{
-			ChangeType(a_val->GetClass()->GetTypeID());
-			data.obj.reset(a_val);
+			ChangeType(a_val->GetTypeInfo()->GetType());
+			value.obj.reset(a_val);
 		}
 
 
-		void Variable::SetObject(Object* a_val, VMTypeID a_typeID)
+		void Variable::SetObject(Object* a_val, TypeInfo::RawType a_type)
 		{
-			ChangeType(a_typeID);
-			data.obj.reset(a_val);
+			ChangeType(a_type);
+			value.obj.reset(a_val);
 		}
 
 
 		void Variable::SetString(const BSFixedString& a_val)
 		{
-			ChangeType(VMTypeID::kString);
-			data.str = a_val;
+			ChangeType(TypeInfo::RawType::kString);
+			value.str = a_val;
 		}
 
 
 		void Variable::SetString(BSFixedString&& a_val)
 		{
-			ChangeType(VMTypeID::kString);
-			data.str = std::move(a_val);
+			ChangeType(TypeInfo::RawType::kString);
+			value.str = std::move(a_val);
 		}
 
 
-		void Variable::ChangeType(VMTypeID a_type)
+		void Variable::ChangeType(TypeInfo::RawType a_type)
 		{
 			Destroy();
-			type = a_type;
-			data.p = 0;
+			varType = a_type;
+			value.p = 0;
 		}
 
 
 		void Variable::Assign(const Variable& a_rhs)
 		{
-			switch (a_rhs.type) {
-			case VMTypeID::kNone:
-			case VMTypeID::kInt:
-			case VMTypeID::kFloat:
-			case VMTypeID::kBool:
-				type = a_rhs.type;
-				data.p = a_rhs.data.p;
+			using Type = TypeInfo::RawType;
+
+			switch (a_rhs.varType.GetType()) {
+			case Type::kNone:
+			case Type::kInt:
+			case Type::kFloat:
+			case Type::kBool:
+				varType = a_rhs.varType;
+				value.p = a_rhs.value.p;
 				break;
-			case VMTypeID::kString:
-				type = VMTypeID::kString;
-				data.str = a_rhs.data.str;
+			case Type::kString:
+				varType = Type::kString;
+				value.str = a_rhs.value.str;
 				break;
-			case VMTypeID::kObject:
-				data.obj = a_rhs.data.obj;
+			case Type::kObject:
+				value.obj = a_rhs.value.obj;
 				break;
 			default:
-				data.arr = a_rhs.data.arr;
+				value.arr = a_rhs.value.arr;
 				break;
 			}
 		}
@@ -327,20 +331,22 @@ namespace RE
 
 		void Variable::Destroy()
 		{
-			switch (type) {
-			case VMTypeID::kNone:
-			case VMTypeID::kInt:
-			case VMTypeID::kFloat:
-			case VMTypeID::kBool:
+			using Type = TypeInfo::RawType;
+
+			switch (varType.GetType()) {
+			case Type::kNone:
+			case Type::kInt:
+			case Type::kFloat:
+			case Type::kBool:
 				break;
-			case VMTypeID::kString:
-				data.str.~BSFixedString();
+			case Type::kString:
+				value.str.~BSFixedString();
 				break;
-			case VMTypeID::kObject:
-				data.obj.~BSTSmartPointer();
+			case Type::kObject:
+				value.obj.~BSTSmartPointer();
 				break;
 			default:
-				data.arr.~BSTSmartPointer();
+				value.arr.~BSTSmartPointer();
 				break;
 			}
 		}

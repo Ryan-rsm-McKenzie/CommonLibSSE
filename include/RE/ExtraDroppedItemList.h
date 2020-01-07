@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSExtraData.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/BSTList.h"
 #include "RE/ExtraDataTypes.h"
 
@@ -23,7 +24,7 @@ namespace RE
 
 
 		// members
-		BSSimpleList<RefHandle> handles;	// 10
+		BSSimpleList<ObjectRefHandle> droppedItemList;	// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraDroppedItemList) == 0x20);
 }

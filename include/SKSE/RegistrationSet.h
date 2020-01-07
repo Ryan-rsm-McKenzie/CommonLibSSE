@@ -80,7 +80,7 @@ namespace SKSE
 				RE::BSFixedString eventName(_eventName.c_str());
 				for (auto& handle : _handles) {
 					auto args = RE::MakeFunctionArguments(a_args...);
-					vm->QueueEvent(handle, eventName, args);
+					vm->SendEvent(handle, eventName, args);
 				}
 			}
 
@@ -128,7 +128,7 @@ namespace SKSE
 				RE::BSFixedString eventName(_eventName.c_str());
 				for (auto& handle : _handles) {
 					auto args = RE::MakeFunctionArguments();
-					vm->QueueEvent(handle, eventName, args);
+					vm->SendEvent(handle, eventName, args);
 				}
 			}
 

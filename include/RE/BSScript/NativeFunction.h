@@ -71,8 +71,8 @@ namespace RE
 				_callback(a_callback)
 			{
 				std::size_t i = 0;
-				((_vars.variables[i++].type.SetTypeID(GetTypeID<Args>())), ...);
-				_returnType = GetTypeID<result_type>();
+				((_descTable.entries[i++].second.SetType(GetType<Args>())), ...);
+				_returnType = GetType<result_type>();
 			}
 
 
@@ -165,6 +165,25 @@ namespace RE
 	};
 
 
+	template <class Int, class R, class Cls, class... Args>
+	class NativeFunction<R(BSScript::IVirtualMachine*, Int, Cls, Args...), std::enable_if_t<BSScript::is_valid_long_sig<Int, R, Cls, Args...>::value>> :
+		public BSScript::NativeFunction<true, R(BSScript::IVirtualMachine*, Int, Cls, Args...), R, Cls, Args...>
+	{
+	private:
+		using base = BSScript::NativeFunction<true, R(BSScript::IVirtualMachine*, Int, Cls, Args...), R, Cls, Args...>;
+
+	public:
+		using result_type = typename base::result_type;
+		using base_type = typename base::base_type;
+		using function_type = typename base::function_type;
+
+
+		NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback) :
+			base(a_fnName, a_className, a_callback)
+		{}
+	};
+
+
 	template <class F>
 	NativeFunction<F>* MakeNativeFunction(const char* a_fnName, const char* a_className, F* a_callback)
 	{
@@ -177,11 +196,11 @@ namespace RE
 		namespace Internal
 		{
 			template <class F>
-			void VirtualMachine::RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, FunctionFlag a_flags)
+			void VirtualMachine::RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, bool a_callableFromTasklets)
 			{
-				RegisterFunction(MakeNativeFunction(a_fnName, a_className, a_callback));
-				if (a_flags != FunctionFlag::kNone) {
-					Internal::VirtualMachine::GetSingleton()->SetFunctionFlags(a_className, a_fnName, a_flags);
+				BindNativeMethod(MakeNativeFunction(a_fnName, a_className, a_callback));
+				if (a_callableFromTasklets) {
+					Internal::VirtualMachine::GetSingleton()->SetCallableFromTasklets(a_className, a_fnName, a_callableFromTasklets);
 				}
 			}
 		}

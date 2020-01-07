@@ -196,7 +196,7 @@ namespace RE
 		if (invChanges->entryList) {
 			for (auto& entry : *invChanges->entryList) {
 				if (entry && entry->object && a_filter(entry->object)) {
-					auto it = results.insert(std::make_pair(entry->object, mapped_type(entry->countDelta, entry->extraLists)));
+					auto it = results.insert(std::make_pair(entry->object, mapped_type(entry->countDelta, entry)));
 					assert(it.second);
 				}
 			}
@@ -209,7 +209,9 @@ namespace RE
 				if (a_entry->obj && a_filter(a_entry->obj)) {
 					auto it = results.find(a_entry->obj);
 					if (it == results.end()) {
-						auto insIt = results.insert(std::make_pair(a_entry->obj, mapped_type(a_entry->count, 0)));
+						auto entryData = new InventoryEntryData(a_entry->obj, 0);
+						invChanges->AddEntryData(entryData);
+						auto insIt = results.insert(std::make_pair(a_entry->obj, mapped_type(a_entry->count, entryData)));
 						assert(insIt.second);
 					} else {
 						it->second.first += a_entry->count;

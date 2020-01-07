@@ -6,31 +6,43 @@
 
 namespace RE
 {
-	template <class T>
 	struct BSTSmartPointerIntrusiveRefCount
 	{
-		static void Attach(T* a_ptr);
-		static void Detach(T* a_ptr);
+		template <class T>
+		static void Attach(T* a_ptr)
+		{
+			a_ptr->IncRefCount();
+		}
+
+
+		template <class T>
+		static void Detach(T* a_ptr)
+		{
+			if (a_ptr->DecRefCount() == 0) {
+				delete a_ptr;
+			}
+		}
 	};
 
 
-	template <class T>
-	void BSTSmartPointerIntrusiveRefCount<T>::Attach(T* a_ptr)
+	struct BSTSmartPointerAutoPtr
 	{
-		a_ptr->IncRefCount();
-	}
+		template <class T>
+		static void Attach(T* a_ptr)
+		{
+			return;
+		}
 
 
-	template <class T>
-	void BSTSmartPointerIntrusiveRefCount<T>::Detach(T* a_ptr)
-	{
-		if (a_ptr->DecRefCount() == 0) {
+		template <class T>
+		static void Detach(T* a_ptr)
+		{
 			delete a_ptr;
 		}
-	}
+	};
 
 
-	template <class T, class RefManager = BSTSmartPointerIntrusiveRefCount<T>>
+	template <class T, class RefManager = BSTSmartPointerIntrusiveRefCount>
 	class BSTSmartPointer
 	{
 	public:
@@ -74,6 +86,10 @@ namespace RE
 		T* _ptr;	// 0
 	};
 	STATIC_ASSERT(sizeof(BSTSmartPointer<void*>) == 0x8);
+
+
+	template <class T> using BSTAutoPointer = BSTSmartPointer<T, BSTSmartPointerAutoPtr>;
+	STATIC_ASSERT(sizeof(BSTAutoPointer<void*>) == 0x8);
 
 
 	template <class T, class RefManager>

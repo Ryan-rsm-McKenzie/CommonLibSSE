@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <string>
 
-#include "RE/BSScript/Type.h"
+#include "RE/BSScript/TypeInfo.h"
 #include "RE/BSScript/Variable.h"
 #include "RE/BSIntrusiveRefCounted.h"
 #include "RE/BSLock.h"
@@ -131,10 +131,10 @@ namespace RE
 
 			[[nodiscard]] size_type max_size() const noexcept;
 
-			[[nodiscard]] Type& type();
-			[[nodiscard]] const Type& type() const;
+			[[nodiscard]] TypeInfo& type_info();
+			[[nodiscard]] const TypeInfo& type_info() const;
 
-			[[nodiscard]] VMTypeID type_id() const;
+			[[nodiscard]] TypeInfo::RawType type() const;
 
 		protected:
 			template <class T> friend class iterator_base;
@@ -142,12 +142,12 @@ namespace RE
 			enum { kMaxSize = 128 };
 
 			// members
-			UInt32				_pad04;		// 04
-			Type				_type;		// 08
-			UInt32				_len;		// 10
-			UInt32				_pad14;		// 14
-			mutable BSSpinLock	_lock;		// 18
-			Variable			_data[0];	// 20
+			UInt32				_pad04;			// 04
+			TypeInfo			_elementType;	// 08
+			UInt32				_len;			// 10
+			UInt32				_pad14;			// 14
+			mutable BSSpinLock	_lock;			// 18
+			Variable			_data[0];		// 20
 
 		private:
 			void dtor();

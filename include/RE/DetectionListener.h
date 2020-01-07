@@ -11,7 +11,7 @@ namespace RE
 		inline static const void* RTTI = RTTI_DetectionListener;
 
 
-		virtual ~DetectionListener();	// 00
+		virtual ~DetectionListener();		// 00
 
 		// add
 		virtual void	Unk_02(void) = 0;	// 02

@@ -700,12 +700,6 @@
     <Filter Include="src\RE\Menus\IMenu\Components">
       <UniqueIdentifier>{d642ce94-720d-41a7-bbc8-70c2cb95ef08}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\BSScript\IFunction\Components">
-      <UniqueIdentifier>{68256469-3641-4299-b1f0-0f649a424e79}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\BSScript\IFunction\Components">
-      <UniqueIdentifier>{be93d64a-37e7-4ce3-8506-0c32f451b625}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\Pathfinding\BSPathingCell">
       <UniqueIdentifier>{77c774a0-e687-4cbf-b899-cfa3961f9220}</UniqueIdentifier>
     </Filter>
@@ -1087,6 +1081,12 @@
     <Filter Include="include\RE\Events\BGSActorEvent">
       <UniqueIdentifier>{f14eb727-0f67-47cd-8996-4dd2b5fe6a02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\BSScript\ByteCode">
+      <UniqueIdentifier>{b83fe3e6-d78f-4852-81e0-4f8e6c8abe9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSScript\ByteCode">
+      <UniqueIdentifier>{392c9df7-12aa-48d0-b2e1-0237e38b7e6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1464,13 +1464,7 @@
     <ClCompile Include="src\RE\BSScript\Array.cpp">
       <Filter>src\RE\BSScript</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSScript\Class.cpp">
-      <Filter>src\RE\BSScript</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSScript\Object.cpp">
-      <Filter>src\RE\BSScript</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSScript\Type.cpp">
       <Filter>src\RE\BSScript</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSScript\Variable.cpp">
@@ -1511,9 +1505,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\BSScript\IFunction.cpp">
       <Filter>src\RE\BSScript\IFunction</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSScript\VariableInfo.cpp">
-      <Filter>src\RE\BSScript\IFunction\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\TESHitEvent.cpp">
       <Filter>src\RE\Events\ScriptEvent</Filter>
@@ -1748,6 +1739,21 @@
     </ClCompile>
     <ClCompile Include="src\RE\DialogueItem.cpp">
       <Filter>src\RE\FormComponents\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\TypeInfo.cpp">
+      <Filter>src\RE\BSScript</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\Internal\VDescTable.cpp">
+      <Filter>src\RE\BSScript\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\ByteCode\PackedInstructionStream.cpp">
+      <Filter>src\RE\BSScript\ByteCode</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\ObjectTypeInfo.cpp">
+      <Filter>src\RE\BSScript</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\MemoryPage.cpp">
+      <Filter>src\RE\BSScript</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -3581,13 +3587,7 @@
     <ClInclude Include="include\RE\BSScript\Array.h">
       <Filter>include\RE\BSScript</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSScript\Class.h">
-      <Filter>include\RE\BSScript</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSScript\Object.h">
-      <Filter>include\RE\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScript\Type.h">
       <Filter>include\RE\BSScript</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSScript\Variable.h">
@@ -3598,9 +3598,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSScript\ObjectTypeTraits.h">
       <Filter>include\RE\BSScript\Traits</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScript\Internal\CodeTasklet.h">
-      <Filter>include\RE\BSScript\Internal</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSScript\Internal\ScriptFunction.h">
       <Filter>include\RE\BSScript\IFunction</Filter>
@@ -4048,9 +4045,6 @@
     </ClInclude>
     <ClInclude Include="include\SKSE\RegistrationTraits.h">
       <Filter>include\SKSE</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScript\VariableInfo.h">
-      <Filter>include\RE\BSScript\IFunction\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSPathingCell.h">
       <Filter>include\RE\Pathfinding\BSPathingCell</Filter>
@@ -5146,6 +5140,33 @@
     </ClInclude>
     <ClInclude Include="include\RE\BGSDecalGroup.h">
       <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\FightReactions.h">
+      <Filter>include\RE\FormComponents\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSBatchRenderer.h">
+      <Filter>include\RE\BSShader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\TypeInfo.h">
+      <Filter>include\RE\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\Internal\VDescTable.h">
+      <Filter>include\RE\BSScript\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\ByteCode\PackedInstructionStream.h">
+      <Filter>include\RE\BSScript\ByteCode</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\ObjectTypeInfo.h">
+      <Filter>include\RE\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\PropertyTypeInfo.h">
+      <Filter>include\RE\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\MemoryPage.h">
+      <Filter>include\RE\BSScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\Internal\CodeTasklet.h">
+      <Filter>include\RE\BSScript\Internal\IFuncCallQuery</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

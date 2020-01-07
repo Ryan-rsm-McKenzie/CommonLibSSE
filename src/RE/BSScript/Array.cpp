@@ -199,31 +199,31 @@ namespace RE
 		}
 
 
-		[[nodiscard]] Type& Array::type()
+		[[nodiscard]] TypeInfo& Array::type_info()
 		{
-			return _type;
+			return _elementType;
 		}
 
 
-		[[nodiscard]] const Type& Array::type() const
+		[[nodiscard]] const TypeInfo& Array::type_info() const
 		{
-			return _type;
+			return _elementType;
 		}
 
 
-		[[nodiscard]] VMTypeID Array::type_id() const
+		[[nodiscard]] TypeInfo::RawType Array::type() const
 		{
-			auto typeID = _type.GetTypeID();
+			auto typeID = _elementType.GetType();
 			switch (typeID) {
-			case VMTypeID::kNone:
-			case VMTypeID::kObject:
-			case VMTypeID::kString:
-			case VMTypeID::kInt:
-			case VMTypeID::kFloat:
-			case VMTypeID::kBool:
-				return typeID + VMTypeID::kNoneArray;
+			case TypeInfo::RawType::kNone:
+			case TypeInfo::RawType::kObject:
+			case TypeInfo::RawType::kString:
+			case TypeInfo::RawType::kInt:
+			case TypeInfo::RawType::kFloat:
+			case TypeInfo::RawType::kBool:
+				return typeID + TypeInfo::RawType::kNoneArray;
 			default:
-				return typeID + VMTypeID::kObject;
+				return typeID + TypeInfo::RawType::kObject;
 			}
 		}
 

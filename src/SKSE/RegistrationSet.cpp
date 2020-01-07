@@ -22,9 +22,9 @@ namespace SKSE
 			a_rhs._lock.unlock();
 
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm->GetHandlePolicy();
+			auto policy = vm->GetObjectHandlePolicy();
 			for (auto& handle : _handles) {
-				policy->AddRef(handle);
+				policy->PersistHandle(handle);
 			}
 		}
 
@@ -45,9 +45,9 @@ namespace SKSE
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			if (vm) {
-				auto policy = vm->GetHandlePolicy();
+				auto policy = vm->GetObjectHandlePolicy();
 				for (auto& handle : _handles) {
-					policy->Release(handle);
+					policy->ReleaseHandle(handle);
 				}
 			}
 		}
@@ -68,9 +68,9 @@ namespace SKSE
 			a_rhs._lock.unlock();
 
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm->GetHandlePolicy();
+			auto policy = vm->GetObjectHandlePolicy();
 			for (auto& handle : _handles) {
-				policy->AddRef(handle);
+				policy->PersistHandle(handle);
 			}
 
 			return *this;
@@ -99,15 +99,15 @@ namespace SKSE
 		bool RegistrationSetBase::Register(RE::TESForm* a_form)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm->GetHandlePolicy();
-			auto invalidHandle = policy->GetInvalidHandle();
-			auto handle = policy->GetHandle(static_cast<RE::FormType32>(a_form->formType), a_form);
+			auto policy = vm->GetObjectHandlePolicy();
+			auto invalidHandle = policy->EmptyHandle();
+			auto handle = policy->GetHandleForObject(static_cast<RE::VMTypeID>(a_form->formType), a_form);
 			if (handle == invalidHandle) {
 				_ERROR("Failed to create handle!\n");
 				return false;
 			}
 
-			policy->AddRef(handle);
+			policy->PersistHandle(handle);
 
 			_lock.lock();
 			auto result = _handles.insert(handle);
@@ -123,9 +123,9 @@ namespace SKSE
 		bool RegistrationSetBase::Unregister(RE::TESForm* a_form)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm->GetHandlePolicy();
-			auto invalidHandle = policy->GetInvalidHandle();
-			auto handle = policy->GetHandle(static_cast<RE::FormType32>(a_form->formType), a_form);
+			auto policy = vm->GetObjectHandlePolicy();
+			auto invalidHandle = policy->EmptyHandle();
+			auto handle = policy->GetHandleForObject(static_cast<RE::VMTypeID>(a_form->formType), a_form);
 			if (handle == invalidHandle) {
 				_ERROR("Failed to create handle!\n");
 				return false;
@@ -137,7 +137,7 @@ namespace SKSE
 				_WARNING("Could not find registration");
 				return false;
 			} else {
-				policy->Release(*it);
+				policy->ReleaseHandle(*it);
 				return true;
 			}
 		}
@@ -146,10 +146,10 @@ namespace SKSE
 		void RegistrationSetBase::Clear()
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm->GetHandlePolicy();
+			auto policy = vm->GetObjectHandlePolicy();
 			Locker locker(_lock);
 			for (auto& handle : _handles) {
-				policy->Release(handle);
+				policy->ReleaseHandle(handle);
 			}
 			_handles.clear();
 		}

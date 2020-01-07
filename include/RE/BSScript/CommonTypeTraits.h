@@ -149,21 +149,5 @@ namespace RE
 		template <class T> struct is_form_type : std::is_base_of<TESForm, typename remove_cvpr_t<T>> {};
 		template <class T> struct is_form_pointer : std::conjunction<is_form_type<T>, std::is_pointer<T>> {};
 		template <class T> struct is_form_pointer_no_cvr : is_form_pointer<typename remove_cvr_t<T>> {};
-
-		namespace
-		{
-			template <VMTypeID ID> struct vm_type_constant : std::integral_constant<VMTypeID, ID> {};
-
-			template <class T> struct _vm_type;
-			template <> struct _vm_type<void> : vm_type_constant<VMTypeID::kNone> {};
-			template <> struct _vm_type<BSFixedString> : vm_type_constant<VMTypeID::kString> {};
-			template <> struct _vm_type<signed int> : vm_type_constant<VMTypeID::kInt> {};
-			template <> struct _vm_type<signed long> : vm_type_constant<VMTypeID::kInt> {};
-			template <> struct _vm_type<unsigned int> : vm_type_constant<VMTypeID::kInt> {};
-			template <> struct _vm_type<unsigned long> : vm_type_constant<VMTypeID::kInt> {};
-			template <> struct _vm_type<float> : vm_type_constant<VMTypeID::kFloat> {};
-			template <> struct _vm_type<bool> : vm_type_constant<VMTypeID::kBool> {};
-		}
-		template <class T> struct vm_type : _vm_type<typename remove_cvpr_t<T>> {};
 	}
 }

@@ -77,7 +77,7 @@ namespace SKSE
 				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 				for (auto& reg : _regs) {
 					auto args = RE::MakeFunctionArguments(a_args...);
-					vm->QueueEvent(reg.first, reg.second.c_str(), args);
+					vm->SendEvent(reg.first, reg.second.c_str(), args);
 				}
 			}
 
@@ -123,7 +123,7 @@ namespace SKSE
 				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 				for (auto& reg : _regs) {
 					auto args = RE::MakeFunctionArguments();
-					vm->QueueEvent(reg.first, reg.second.c_str(), args);
+					vm->SendEvent(reg.first, reg.second.c_str(), args);
 				}
 			}
 

@@ -22,17 +22,17 @@ namespace RE
 	class IMenu;
 
 
+	struct BSScaleformRenderer
+	{
+		GPtr<GFxRenderConfig> config;	// 0
+	};
+	STATIC_ASSERT(sizeof(BSScaleformRenderer) == 0x8);
+
+
 	class BSScaleformManager : public BSTSingletonSDM<BSScaleformManager>
 	{
 	public:
 		using ScaleModeType = GFxMovieView::ScaleModeType;
-
-
-		struct Config
-		{
-			GPtr<GFxRenderConfig> renderConfig;	// 0
-		};
-		STATIC_ASSERT(sizeof(Config) == 0x8);
 
 
 		static BSScaleformManager* GetSingleton();
@@ -43,15 +43,15 @@ namespace RE
 
 
 		// members
-		UInt8							pad01;				// 01
-		UInt16							pad02;				// 02
-		UInt32							pad04;				// 04
-		GFxLoader*						gfxLoader;			// 08
-		Config*							config;				// 10
-		GPtr<GFxDrawTextManager>		drawTextManager;	// 18
-		GPtr<BSScaleformImageLoader>	imageLoader;		// 20
-		BSString						validNameChars;		// 28
-		UInt64							unk38;				// 38
+		UInt8							pad01;			// 01
+		UInt16							pad02;			// 02
+		UInt32							pad04;			// 04
+		GFxLoader*						loader;			// 08
+		BSScaleformRenderer*			renderer;		// 10
+		GPtr<GFxDrawTextManager>		textManager;	// 18
+		GPtr<BSScaleformImageLoader>	imageLoader;	// 20
+		BSString						validNameChars;	// 28
+		UInt64							unk38;			// 38
 
 	private:
 		std::optional<std::string>					BuildFilePath(const char* a_fileName);

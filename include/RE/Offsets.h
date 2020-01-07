@@ -231,13 +231,6 @@ namespace RE
 
 		namespace BSScript
 		{
-			namespace Class
-			{
-				// IndirectSig: E8 ? ? ? ? 90 48 8D 4B 18 E8 ? ? ? ? 90 48 8B 4B 10
-				constexpr std::uintptr_t ReleaseData = 0x012386D0;	// 1_5_97
-			}
-
-
 			namespace Object
 			{
 				// IndirectSig: E8 ? ? ? ? 49 8B CE E8 ? ? ? ? 48 85 DB 74 08
@@ -246,6 +239,13 @@ namespace RE
 				constexpr std::uintptr_t IncRefCount = 0x01234360;	// 1_5_97
 				// IndirectSig: E8 ? ? ? ? 85 C0 75 10 49 8B CE
 				constexpr std::uintptr_t DecRefCount = 0x01234410;	// 1_5_97
+			}
+
+
+			namespace ObjectTypeInfo
+			{
+				// IndirectSig: E8 ? ? ? ? 90 48 8D 4B 18 E8 ? ? ? ? 90 48 8B 4B 10
+				constexpr std::uintptr_t ReleaseData = 0x012386D0;	// 1_5_97
 			}
 
 
@@ -271,7 +271,7 @@ namespace RE
 				namespace NativeFunctionBase
 				{
 					// DirectSig: 48 8B C4 4C 89 48 20 4C 89 40 18 55 56 57 41 54 41 55 41 56 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 48 C7 44 24 ? ? ? ? ? 48 89 58 08
-					constexpr std::uintptr_t Invoke = 0x012507F0;	// 1_5_97
+					constexpr std::uintptr_t Call = 0x012507F0;	// 1_5_97
 				}
 			}
 
@@ -306,17 +306,17 @@ namespace RE
 		}
 
 
-		namespace BSStringPool
-		{
-			// IndirectSig: E8 ? ? ? ? 41 8B FE 41 8B CE
-			constexpr std::uintptr_t GetSingleton = 0x00C2A4D0;	// 1_5_97
-		}
-
-
 		namespace BSUntypedPointerHandle
 		{
 			// 8B 05 ? ? ? ? 89 44 24 78 48 8D 44 24 ? 8B 00
 			constexpr std::uintptr_t InvalidHandle = 0x01EBEABC;	// 1_5_97
+		}
+
+
+		namespace BucketTable
+		{
+			// IndirectSig: E8 ? ? ? ? 41 8B FE 41 8B CE
+			constexpr std::uintptr_t GetSingleton = 0x00C2A4D0;	// 1_5_97
 		}
 
 

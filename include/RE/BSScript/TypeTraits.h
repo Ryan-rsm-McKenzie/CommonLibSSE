@@ -5,6 +5,7 @@
 #include "RE/BSScript/ArrayTypeTraits.h"
 #include "RE/BSScript/CommonTypeTraits.h"
 #include "RE/BSScript/ObjectTypeTraits.h"
+#include "RE/BSScript/TypeTraits.h"
 #include "RE/BSScript/VMArray.h"
 
 
@@ -15,6 +16,22 @@ namespace RE
 
 	namespace BSScript
 	{
+		namespace
+		{
+			template <TypeInfo::RawType TYPE> struct vm_type_constant : std::integral_constant<TypeInfo::RawType, TYPE> {};
+
+			template <class T> struct _vm_type;
+			template <> struct _vm_type<void> : vm_type_constant<TypeInfo::RawType::kNone> {};
+			template <> struct _vm_type<BSFixedString> : vm_type_constant<TypeInfo::RawType::kString> {};
+			template <> struct _vm_type<signed int> : vm_type_constant<TypeInfo::RawType::kInt> {};
+			template <> struct _vm_type<signed long> : vm_type_constant<TypeInfo::RawType::kInt> {};
+			template <> struct _vm_type<unsigned int> : vm_type_constant<TypeInfo::RawType::kInt> {};
+			template <> struct _vm_type<unsigned long> : vm_type_constant<TypeInfo::RawType::kInt> {};
+			template <> struct _vm_type<float> : vm_type_constant<TypeInfo::RawType::kFloat> {};
+			template <> struct _vm_type<bool> : vm_type_constant<TypeInfo::RawType::kBool> {};
+		}
+		template <class T> struct vm_type : _vm_type<typename remove_cvpr_t<T>> {};
+
 		namespace
 		{
 			template <class T> struct _is_vm_array : std::false_type {};

@@ -1,8 +1,8 @@
 #include "RE/BSScript/Object.h"
 
 #include "RE/BSScript/Internal/VirtualMachine.h"
-#include "RE/BSScript/Class.h"
 #include "RE/BSScript/IObjectHandlePolicy.h"
+#include "RE/BSScript/ObjectTypeInfo.h"
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
@@ -18,21 +18,15 @@ namespace RE
 		}
 
 
-		Class* Object::GetClass()
+		ObjectTypeInfo* Object::GetTypeInfo()
 		{
-			return classPtr.get();
+			return type.get();
 		}
 
 
-		const Class* Object::GetClass() const
+		const ObjectTypeInfo* Object::GetTypeInfo() const
 		{
-			return classPtr.get();
-		}
-
-
-		UInt32 Object::GetFlags() const
-		{
-			return pun_bits(variablesSet, flags2, initialized);
+			return type.get();
 		}
 
 
@@ -42,12 +36,30 @@ namespace RE
 		}
 
 
-		void* Object::Resolve(FormType32 a_typeID) const
+		bool Object::IsConstructed() const
+		{
+			return constructed;
+		}
+
+
+		bool Object::IsInitialized() const
+		{
+			return initialized;
+		}
+
+
+		bool Object::IsValid() const
+		{
+			return valid;
+		}
+
+
+		void* Object::Resolve(VMTypeID a_typeID) const
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
-			auto policy = vm->GetHandlePolicy();
-			if (policy->IsType(a_typeID, handle) && policy->IsValidHandle(handle)) {
-				return policy->Resolve(a_typeID, handle);
+			auto policy = vm->GetObjectHandlePolicy();
+			if (policy->GetHandleIsType(a_typeID, handle) && policy->IsHandleObjectAvailable(handle)) {
+				return policy->GetObjectForHandle(a_typeID, handle);
 			} else {
 				return 0;
 			}
@@ -75,7 +87,7 @@ namespace RE
 			constexpr auto INVALID = static_cast<UInt32>(-1);
 
 			auto idx = INVALID;
-			for (auto cls = classPtr.get(); cls && idx == INVALID; cls = cls->parent.get()) {
+			for (auto cls = type.get(); cls && idx == INVALID; cls = cls->GetParent()) {
 				idx = cls->GetPropertyIndex(a_name);
 			}
 
@@ -88,7 +100,7 @@ namespace RE
 			constexpr auto INVALID = static_cast<UInt32>(-1);
 
 			auto idx = INVALID;
-			for (auto cls = classPtr.get(); cls && idx == INVALID; cls = cls->parent.get()) {
+			for (auto cls = type.get(); cls && idx == INVALID; cls = cls->GetParent()) {
 				idx = cls->GetPropertyIndex(a_name);
 			}
 

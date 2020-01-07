@@ -145,67 +145,67 @@ namespace RE
 
 
 		// members
-		BSTSmartPointer<BSScript::IVirtualMachine>								virtualMachine;					// 0200
-		BSScript::IVMSaveLoadInterface*											saveLoadInterface;				// 0208
-		BSScript::IVMDebugInterface*											debugInterface;					// 0210
-		BSScript::SimpleAllocMemoryPagePolicy									simpleAllocMemoryPagePolicy;	// 0218
-		BSScript::CompiledScriptLoader											compiledScriptLoader;			// 0240
-		SkyrimScript::Logger													logger;							// 0278
-		SkyrimScript::HandlePolicy												handlePolicy;					// 0328
-		SkyrimScript::ObjectBindPolicy											objectBindPolicy;				// 0398
-		BSTSmartPointer<SkyrimScript::Store>									store;							// 0470
-		BSTHashMap<UnkKey, UnkValue>											unk0478;						// 0478
-		UInt64																	unk04A8;						// 04A8
-		BSTHashMap<UnkKey, UnkValue>											unk04B0;						// 04B0
-		UInt64																	unk04E0;						// 04E0
-		BSTHashMap<UnkKey, UnkValue>											unk04E8;						// 04E8
-		UInt64																	unk0518;						// 0518
-		BSTHashMap<UnkKey, UnkValue>											unk0520;						// 0520
-		UInt64																	unk0550;						// 0550
-		BSTHashMap<UnkKey, UnkValue>											unk0558;						// 0558
-		UInt64																	unk0588;						// 0588
-		SkyrimScript::Profiler													profiler;						// 0590
-		SkyrimScript::SavePatcher												savePatcher;					// 0670
-		UInt64																	unk0678;						// 0678
-		UInt64																	unk0680;						// 0680
-		UInt64																	unk0688;						// 0688
-		UInt64																	unk0690;						// 0690
-		UInt64																	unk0698;						// 0698
-		UInt64																	unk06A0;						// 06A0
-		BSTArray<void*>															unk06A8;						// 06A8
-		BSTArray<void*>															unk06C0;						// 06C0
-		BSTArray<void*>															unk06D8;						// 06D8
-		UInt64																	unk06F0;						// 06F0
-		BSTArray<void*>															unk06F8;						// 06F8
-		UInt64																	unk0710;						// 0710
-		UInt64																	unk0718;						// 0718
-		BSTArray<void*>															unk0720;						// 0720
-		BSTArray<void*>															unk0738;						// 0738
-		UInt64																	unk0750;						// 0750
-		UInt64																	unk0758;						// 0758
-		BSTHashMap<UnkKey, UnkValue>											unk0760;						// 0760
-		UInt64																	unk0790;						// 0790
-		BSTHashMap<UnkKey, UnkValue>											unk0798;						// 0798
-		BSTStaticFreeList<BSTSmartPointer<SkyrimScript::DelayFunctor>, 512>		unk07C8;						// 07C8
-		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>	unk27E0;						// 27E0
-		BSTStaticFreeList<BSTSmartPointer<SkyrimScript::DelayFunctor>, 512>		unk2808;						// 2808
-		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>	unk4820;						// 4820
-		BSTStaticFreeList<BSTSmartPointer<SkyrimScript::DelayFunctor>, 512>		unk4848;						// 4848
-		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>	unk6860;						// 6860
-		BSTStaticFreeList<BSTSmartPointer<SkyrimScript::DelayFunctor>, 512>		unk6888;						// 6888
-		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>	unk88A0;						// 88A0
-		UInt64																	unk88C8;						// 88C8
-		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	unk88D0;						// 88D0
-		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	unk88D8;						// 88D8
-		mutable BSSpinLock														unk88E0;						// 88E0
-		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	unk88E8;						// 88E8
-		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	unk88F0;						// 88F0
-		mutable BSSpinLock														unk88F8;						// 88F8
-		BSTHashMap<UnkKey, UnkValue>											unk8900;						// 8900
-		UInt64																	unk8930;						// 8930
-		UInt64																	unk8938;						// 8938
-		UInt64																	unk8940;						// 8940
-		BSTHashMap<UnkKey, UnkValue>											unk8948;						// 8948
+		BSTSmartPointer<BSScript::IVirtualMachine>								impl;						// 0200
+		BSScript::IVMSaveLoadInterface*											saveLoadInterface;			// 0208
+		BSScript::IVMDebugInterface*											debugInterface;				// 0210
+		BSScript::SimpleAllocMemoryPagePolicy									memoryPagePolicy;			// 0218
+		BSScript::CompiledScriptLoader											scriptLoader;				// 0240
+		SkyrimScript::Logger													logger;						// 0278
+		SkyrimScript::HandlePolicy												handlePolicy;				// 0328
+		SkyrimScript::ObjectBindPolicy											objectBindPolicy;			// 0398
+		BSTSmartPointer<SkyrimScript::Store>									scriptStore;				// 0470
+		BSTHashMap<UnkKey, UnkValue>											unk0478;					// 0478
+		UInt64																	unk04A8;					// 04A8
+		BSTHashMap<UnkKey, UnkValue>											unk04B0;					// 04B0
+		UInt64																	unk04E0;					// 04E0
+		BSTHashMap<UnkKey, UnkValue>											unk04E8;					// 04E8
+		UInt64																	unk0518;					// 0518
+		BSTHashMap<UnkKey, UnkValue>											unk0520;					// 0520
+		UInt64																	unk0550;					// 0550
+		BSTHashMap<UnkKey, UnkValue>											unk0558;					// 0558
+		UInt64																	unk0588;					// 0588
+		SkyrimScript::Profiler													profiler;					// 0590
+		SkyrimScript::SavePatcher												savePatcher;				// 0670
+		UInt64																	unk0678;					// 0678
+		UInt64																	unk0680;					// 0680
+		UInt64																	unk0688;					// 0688
+		UInt64																	unk0690;					// 0690
+		UInt64																	unk0698;					// 0698
+		UInt64																	unk06A0;					// 06A0
+		BSTArray<void*>															unk06A8;					// 06A8
+		BSTArray<void*>															unk06C0;					// 06C0
+		BSTArray<void*>															unk06D8;					// 06D8
+		UInt64																	unk06F0;					// 06F0
+		BSTArray<void*>															unk06F8;					// 06F8
+		UInt64																	unk0710;					// 0710
+		UInt64																	unk0718;					// 0718
+		BSTArray<void*>															unk0720;					// 0720
+		BSTArray<void*>															unk0738;					// 0738
+		UInt64																	unk0750;					// 0750
+		UInt64																	unk0758;					// 0758
+		BSTHashMap<UnkKey, UnkValue>											unk0760;					// 0760
+		UInt64																	unk0790;					// 0790
+		BSTHashMap<UnkKey, UnkValue>											unk0798;					// 0798
+		BSTStaticFreeList<BSTSmartPointer<SkyrimScript::DelayFunctor>, 512>		renderSafeFunctorPool1;		// 07C8
+		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>	renderSafeFunctorQueue1;	// 27E0
+		BSTStaticFreeList<BSTSmartPointer<SkyrimScript::DelayFunctor>, 512>		renderSafeFunctorPool2;		// 2808
+		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>	renderSafeFunctorQueue2;	// 4820
+		BSTStaticFreeList<BSTSmartPointer<SkyrimScript::DelayFunctor>, 512>		postRenderFunctorPool1;		// 4848
+		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>	postRenderFunctorQueue1;	// 6860
+		BSTStaticFreeList<BSTSmartPointer<SkyrimScript::DelayFunctor>, 512>		postRenderFunctorPool2;		// 6888
+		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>	postRenderFunctorQueue2;	// 88A0
+		mutable BSSpinLock														renderSafeQueueLock;		// 88C8
+		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	renderSafeQueueToReadFrom;	// 88D0
+		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	renderSafeQueueToWriteTo;	// 88D8
+		mutable BSSpinLock														postRenderQueueLock;		// 88E0
+		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	postRenderQueueToReadFrom;	// 88E8
+		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>*	postRenderQueueToWriteTo;	// 88F0
+		mutable BSSpinLock														unk88F8;					// 88F8
+		BSTHashMap<UnkKey, UnkValue>											unk8900;					// 8900
+		UInt64																	unk8930;					// 8930
+		UInt64																	unk8938;					// 8938
+		UInt64																	unk8940;					// 8940
+		BSTHashMap<UnkKey, UnkValue>											unk8948;					// 8948
 	};
 	STATIC_ASSERT(sizeof(SkyrimVM) == 0x8978);
 }

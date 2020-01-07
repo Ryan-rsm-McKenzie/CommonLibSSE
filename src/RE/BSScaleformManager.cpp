@@ -33,7 +33,7 @@ namespace RE
 	{
 		using LoadConstants = GFxLoader::LoadConstants;
 
-		if (!gfxLoader) {
+		if (!loader) {
 			return false;
 		}
 
@@ -42,7 +42,7 @@ namespace RE
 			return false;
 		}
 
-		auto def = gfxLoader->CreateMovie(filePath->c_str(), LoadConstants::kLoadKeepBindData | LoadConstants::kLoadWaitFrame1);
+		auto def = loader->CreateMovie(filePath->c_str(), LoadConstants::kLoadKeepBindData | LoadConstants::kLoadWaitFrame1);
 		if (!def) {
 			return false;
 		}
@@ -93,7 +93,7 @@ namespace RE
 		using LoadConstants = GFxLoader::LoadConstants;
 		using StateType = GFxState::StateType;
 
-		if (!gfxLoader) {
+		if (!loader) {
 			return false;
 		}
 
@@ -102,7 +102,7 @@ namespace RE
 			return false;
 		}
 
-		auto def = gfxLoader->CreateMovie(filePath->c_str(), LoadConstants::kLoadKeepBindData | LoadConstants::kLoadWaitFrame1);
+		auto def = loader->CreateMovie(filePath->c_str(), LoadConstants::kLoadKeepBindData | LoadConstants::kLoadWaitFrame1);
 		if (!def) {
 			return false;
 		}

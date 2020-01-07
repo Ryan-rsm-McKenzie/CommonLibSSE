@@ -11,7 +11,7 @@ namespace RE
 {
 	namespace BSScript
 	{
-		class Class;
+		class ObjectTypeInfo;
 
 
 		namespace Internal
@@ -22,18 +22,19 @@ namespace RE
 				inline static const void* RTTI = RTTI_BSScript__Internal__RawFuncCallQuery;
 
 
-				virtual ~RawFuncCallQuery();		// 00
+				virtual ~RawFuncCallQuery();																																						// 00
 
 				// override (IFuncCallQuery)
-				virtual void Unk_01(void) override;	// 01
+				virtual bool GetFunctionCallInfo(CallType& a_callType, BSTSmartPointer<ObjectTypeInfo>& a_arg2, BSFixedString& a_arg3, Variable& a_arg4, BSScrapArray<Variable>& a_arg5) override;	// 01
 
 
 				// members
-				UInt64					unk10;			// 10
-				BSTSmartPointer<Class>	scriptClass;	// 18
-				BSFixedString			unk20;			// 20
-				Variable				unk28;			// 28
-				BSTArray<Variable>		unk38;			// 38
+				CallType						callType;	// 10
+				UInt32							pad14;		// 14
+				BSTSmartPointer<ObjectTypeInfo>	objType;	// 18
+				BSFixedString					name;		// 20
+				Variable						self;		// 28
+				BSTArray<Variable>				args;		// 38
 			};
 			STATIC_ASSERT(sizeof(RawFuncCallQuery) == 0x50);
 		}

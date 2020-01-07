@@ -2,20 +2,12 @@
 
 #include "RE/BaseFormComponent.h"
 #include "RE/BSTList.h"
+#include "RE/FightReactions.h"
 #include "RE/FormTypes.h"
 
 
 namespace RE
 {
-	enum FIGHT_REACTION : UInt32
-	{
-		kNeutral = 0,
-		kEnemy = 1,
-		kAlly = 2,
-		kFriend = 3
-	};
-
-
 	struct GROUP_REACTION	// XNAM
 	{
 		TESForm*		form;			// 00

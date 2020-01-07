@@ -7,13 +7,17 @@
 
 namespace RE
 {
+	struct BSTranslator
+	{
+		BSTHashMap<BSFixedStringW, BSFixedStringW> translationMap;	// 00
+	};
+	STATIC_ASSERT(sizeof(BSTranslator) == 0x30);
+
+
 	class BSScaleformTranslator : public GFxTranslator
 	{
 	public:
 		inline static const void* RTTI = RTTI_BSScaleformTranslator;
-
-
-		using TranslationTable = BSTHashMap<BSFixedStringW, BSFixedStringW>;
 
 
 		virtual ~BSScaleformTranslator();									// 00
@@ -23,7 +27,7 @@ namespace RE
 
 
 		// members
-		TranslationTable translationTable;	// 20
+		BSTranslator translator;	// 20
 	};
 	STATIC_ASSERT(sizeof(BSScaleformTranslator) == 0x50);
 }

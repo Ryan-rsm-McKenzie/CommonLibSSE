@@ -20,11 +20,11 @@ namespace RE
 			VirtualMachine* VirtualMachine::GetSingleton()
 			{
 				auto vm = SkyrimVM::GetSingleton();
-				return vm ? static_cast<VirtualMachine*>(vm->virtualMachine.get()) : 0;
+				return vm ? static_cast<VirtualMachine*>(vm->impl.get()) : 0;
 			}
 
 
-			bool VirtualMachine::AllocateArray(const VMTypeID& a_typeID, std::size_t a_size, BSTSmartPointer<Array>& a_array)
+			bool VirtualMachine::AllocateArray(const TypeInfo::RawType& a_typeID, std::size_t a_size, BSTSmartPointer<Array>& a_array)
 			{
 				using func_t = function_type_t<decltype(&VirtualMachine::AllocateArray)>;
 				REL::Offset<func_t*> func(Offset::BSScript::Internal::VirtualMachine::AllocateArray);
@@ -32,16 +32,16 @@ namespace RE
 			}
 
 
-			void VirtualMachine::TraceStack(TESForm* a_form, const char* a_str, StackID a_stackID, Severity a_severity)
+			void VirtualMachine::TraceStack(TESForm* a_form, const char* a_str, VMStackID a_stackID, Severity a_severity)
 			{
 				assert(a_str);
 
 				BSFixedString name;
 				if (a_form) {
-					auto handlePolicy = GetHandlePolicy();
-					if (handlePolicy) {
-						auto handle = handlePolicy->GetHandle(a_form->formType, a_form);
-						handlePolicy->ToString(handle, name);
+					auto policy = GetObjectHandlePolicy();
+					if (policy) {
+						auto handle = policy->GetHandleForObject(a_form->formType, a_form);
+						policy->ConvertHandleToString(handle, name);
 					}
 				}
 

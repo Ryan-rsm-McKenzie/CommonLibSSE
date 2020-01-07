@@ -1,22 +1,33 @@
 #pragma once
 
+#include "RE/BSTSmartPointer.h"
+
 
 namespace RE
 {
 	namespace BSScript
 	{
+		namespace UnlinkedTypes
+		{
+			class Object;
+		}
+
+
+		class IStore;
+
+
 		struct ILoader
 		{
 		public:
 			inline static const void* RTTI = RTTI_BSScript__ILoader;
 
 
-			virtual ~ILoader();					// 00
+			virtual ~ILoader();																		// 00
 
 			// add
-			virtual void	Unk_01(void) = 0;	// 01
-			virtual void	Unk_02(void) = 0;	// 02
-			virtual void	Unk_03(void) = 0;	// 03
+			virtual ILoader*	Clone() = 0;														// 01
+			virtual void		SetScriptStore(const BSTSmartPointer<IStore>& a_store) = 0;			// 02
+			virtual bool		GetClass(const char* a_name, UnlinkedTypes::Object& a_object) = 0;	// 03
 		};
 		STATIC_ASSERT(sizeof(ILoader) == 0x8);
 	}

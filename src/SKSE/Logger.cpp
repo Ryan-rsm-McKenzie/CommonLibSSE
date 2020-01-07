@@ -114,7 +114,7 @@ namespace SKSE
 					auto papyrus = SKSE::GetPapyrusInterface();
 					papyrus->Register([](RE::BSScript::Internal::VirtualMachine* a_vm)
 					{
-						a_vm->AddLogEventSink(LogEventHandler::GetSingleton());
+						a_vm->RegisterForLogEvent(LogEventHandler::GetSingleton());
 						return true;
 					});
 				});
@@ -126,7 +126,7 @@ namespace SKSE
 					auto papyrus = SKSE::GetPapyrusInterface();
 					papyrus->Register([](RE::BSScript::Internal::VirtualMachine* a_vm)
 					{
-						a_vm->RemoveLogEventSink(LogEventHandler::GetSingleton());
+						a_vm->UnregisterForLogEvent(LogEventHandler::GetSingleton());
 						return true;
 					});
 				});
@@ -197,7 +197,7 @@ namespace SKSE
 
 	RE::BSEventNotifyControl Logger::LogEventHandler::ProcessEvent(const RE::BSScript::LogEvent* a_event, RE::BSTEventSource<RE::BSScript::LogEvent>* a_eventSource)
 	{
-		if (!std::regex_search(a_event->text, Logger::_papyrusLogFilter)) {
+		if (!a_event->errorMsg || !std::regex_search(a_event->errorMsg, Logger::_papyrusLogFilter)) {
 			return RE::BSEventNotifyControl::kContinue;
 		}
 
@@ -211,7 +211,7 @@ namespace SKSE
 			msg += Logger::GetTimeStamp();
 		}
 
-		msg += a_event->text;
+		msg += a_event->errorMsg;
 		msg += '\n';
 		Logger::Print(msg.c_str());
 

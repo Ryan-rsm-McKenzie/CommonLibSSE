@@ -17,36 +17,11 @@ namespace RE
 		}
 
 
-		void* Stack::Chunk::GetHead()
-		{
-			return GetStackFrame();
-		}
-
-
-		StackFrame* Stack::Chunk::GetStackFrame()
-		{
-			return reinterpret_cast<StackFrame*>(buf);
-		}
-
-
-		void* Stack::Chunk::GetTail()
-		{
-			auto head = reinterpret_cast<std::uintptr_t>(GetHead());
-			return reinterpret_cast<void*>(head + stackFrameSize);
-		}
-
-
-		bool Stack::Chunk::IsInRange(void* a_ptr)
-		{
-			return a_ptr <= GetHead() && a_ptr < GetTail();
-		}
-
-
 		UInt32 Stack::GetChunkIdx(StackFrame* a_frame)
 		{
-			for (UInt32 i = 0; i < chunks.size(); ++i) {
-				auto& pair = chunks[i];
-				if (pair.chunk->IsInRange(a_frame)) {
+			for (UInt32 i = 0; i < pages.size(); ++i) {
+				auto& pair = pages[i];
+				if (pair.page->IsInRange(a_frame)) {
 					return i;
 				}
 			}

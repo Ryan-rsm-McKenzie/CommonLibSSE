@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSScript/ILoader.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE
@@ -17,21 +18,21 @@ namespace RE
 			inline static const void* RTTI = RTTI_BSScript__CompiledScriptLoader;
 
 
-			virtual ~CompiledScriptLoader();		// 00
+			virtual ~CompiledScriptLoader();																		// 00
 
 			// override (ILoader)
-			virtual void	Unk_01(void) override;	// 01
-			virtual void	Unk_02(void) override;	// 02
-			virtual void	Unk_03(void) override;	// 03
+			virtual ILoader*	Clone() override;																	// 01
+			virtual void		SetScriptStore(const BSTSmartPointer<IStore>& a_store) override;					// 02
+			virtual bool		GetClass(const char* a_name, BSScript::UnlinkedTypes::Object& a_object) override;	// 03
 
 
 			// members
-			ErrorLogger*	errorLogger;	// 08
-			IStore*			store;			// 10
-			UInt64			unk18;			// 18
-			UInt64			unk20;			// 20
-			UInt64			unk28;			// 28
-			UInt64			unk30;			// 30
+			ErrorLogger*			errorHandler;	// 08
+			BSTSmartPointer<IStore>	scriptStore;	// 10
+			UInt64					unk18;			// 18
+			UInt64					unk20;			// 20
+			UInt64					unk28;			// 28
+			UInt64					unk30;			// 30
 		};
 		STATIC_ASSERT(sizeof(CompiledScriptLoader) == 0x38);
 	}

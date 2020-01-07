@@ -1,12 +1,21 @@
 #pragma once
 
 #include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSTArray.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE
 {
+	class BSFixedString;
+
+
 	namespace BSScript
 	{
+		class ObjectTypeInfo;
+		class Variable;
+
+
 		namespace Internal
 		{
 			class IFuncCallQuery : public BSIntrusiveRefCounted
@@ -15,10 +24,14 @@ namespace RE
 				inline static const void* RTTI = RTTI_BSScript__Internal__IFuncCallQuery;
 
 
-				virtual ~IFuncCallQuery();		// 00
+				enum class CallType : UInt32
+				{};
+
+
+				virtual ~IFuncCallQuery();																																						// 00
 
 				// add
-				virtual void Unk_01(void) = 0;	// 01
+				virtual bool GetFunctionCallInfo(CallType& a_callType, BSTSmartPointer<ObjectTypeInfo>& a_arg2, BSFixedString& a_arg3, Variable& a_arg4, BSScrapArray<Variable>& a_arg5) = 0;	// 01
 
 
 				// members

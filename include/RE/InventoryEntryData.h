@@ -18,14 +18,15 @@ namespace RE
 		InventoryEntryData(TESBoundObject* a_object, SInt32 a_countDelta);
 		~InventoryEntryData();
 
-		void		AddExtraList(ExtraDataList* a_extra);
-		const char*	GenerateName();
-		TESForm*	GetOwner();
-		SOUL_LEVEL	GetSoulLevel() const;
-		SInt32		GetValue();
-		float		GetWeight();
-		bool		IsOwnedBy(Actor* a_actor, bool a_defaultTo = true);
-		bool		IsOwnedBy(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo = true);
+		void			AddExtraList(ExtraDataList* a_extra);
+		const char*		GenerateName();
+		TESBoundObject*	GetObject();
+		TESForm*		GetOwner();
+		SOUL_LEVEL		GetSoulLevel() const;
+		SInt32			GetValue();
+		float			GetWeight() const;
+		bool			IsOwnedBy(Actor* a_actor, bool a_defaultTo = true);
+		bool			IsOwnedBy(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo = true);
 
 		TES_HEAP_REDEFINE_NEW();
 

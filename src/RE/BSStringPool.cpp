@@ -36,10 +36,10 @@ namespace RE
 	}
 
 
-	BSStringPool* BSStringPool::GetSingleton()
+	BucketTable* BucketTable::GetSingleton()
 	{
-		using func_t = function_type_t<decltype(&BSStringPool::GetSingleton)>;
-		REL::Offset<func_t*> func(Offset::BSStringPool::GetSingleton);
+		using func_t = function_type_t<decltype(&BucketTable::GetSingleton)>;
+		REL::Offset<func_t*> func(Offset::BucketTable::GetSingleton);
 		return func();
 	}
 }

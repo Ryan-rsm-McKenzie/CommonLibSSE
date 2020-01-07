@@ -15,13 +15,13 @@ namespace RE
 			inline static const void* RTTI = RTTI_SkyrimScript__Profiler;
 
 
-			virtual ~Profiler();					// 00
+			virtual ~Profiler();																																													// 00
 
 			// override (BSScript::IProfilePolicy)
-			virtual void	Unk_01(void) override;	// 01
-			virtual void	Unk_02(void) override;	// 02
-			virtual void	Unk_03(void) override;	// 03
-			virtual void	Unk_04(void) override;	// 04
+			virtual void	StackFramePushQueued(UInt32 a_arg1, UInt32 a_arg2, const BSTSmartPointer<BSScript::Internal::IFuncCallQuery>& a_arg3) override;															// 01
+			virtual void	StackFramePushed(UInt32 a_arg1, UInt32 a_arg2, const BSScript::Variable& a_arg3, const BSFixedString& a_arg4, const BSFixedString& a_arg5, const BSFixedString& a_arg6) override;		// 02
+			virtual void	StackFramePopQueued(UInt32 a_arg1, UInt32 a_arg2, const BSScript::Variable& a_arg3, const BSFixedString& a_arg4, const BSFixedString& a_arg5, const BSFixedString& a_arg6) override;	// 03
+			virtual void	StackFramePopped(UInt32 a_arg1, UInt32 a_arg2, const BSScript::Variable& a_arg3, const BSFixedString& a_arg4, const BSFixedString& a_arg5, const BSFixedString& a_arg6) override;		// 04
 
 
 			// members

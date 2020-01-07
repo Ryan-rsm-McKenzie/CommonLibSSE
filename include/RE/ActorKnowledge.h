@@ -1,5 +1,8 @@
 #pragma once
 
+#include "RE/AITimeStamp.h"
+#include "RE/BSPointerHandle.h"
+#include "RE/FightReactions.h"
 #include "RE/NiRefObject.h"
 #include "RE/NiSmartPointer.h"
 
@@ -16,18 +19,24 @@ namespace RE
 		inline static const void* RTTI = RTTI_ActorKnowledge;
 
 
+		enum class FLAGS : UInt32
+		{
+			kNone = 0
+		};
+
+
 		virtual ~ActorKnowledge();	// 00
 
 
 		// members
-		RefHandle								fromHandle;		// 10
-		RefHandle								toHandle;		// 14
-		UInt32									unk18;			// 18
-		float									unk1C;			// 1C
-		NiPointer<DetectionState>				detectionState;	// 20
-		BSTArray<NiPointer<DetectionListener>>	listeners;		// 28
-		UInt32									unk40;			// 40
-		float									unk44;			// 44
+		ActorHandle								owner;							// 10
+		ActorHandle								target;							// 14
+		FIGHT_REACTION							factionFightReaction;			// 18
+		AITimeStamp								shouldAttackTargetTimeStamp;	// 1C
+		NiPointer<DetectionState>				detectionState;					// 20
+		BSTArray<NiPointer<DetectionListener>>	listeners;						// 28
+		FLAGS									flags;							// 40
+		AITimeStamp								detectionQueuedTimeStamp;		// 44
 	};
 	STATIC_ASSERT(sizeof(ActorKnowledge) == 0x48);
 }

@@ -1,14 +1,11 @@
 #pragma once
 
-#undef GetObject
-#undef SetForm
-
 #include <type_traits>
 
 #include "RE/BSScript/ArrayTypeTraits.h"
 #include "RE/BSScript/CommonTypeTraits.h"
 #include "RE/BSScript/ObjectTypeTraits.h"
-#include "RE/BSScript/Type.h"
+#include "RE/BSScript/TypeInfo.h"
 #include "RE/BSFixedString.h"
 #include "RE/BSTSmartPointer.h"
 
@@ -21,13 +18,13 @@ namespace RE
 		class Object;
 
 
-		class Variable : public Type
+		class Variable
 		{
 		public:
-			union Data
+			union Value
 			{
-				Data(void* a_val = 0);
-				~Data();
+				Value(void* a_val = 0);
+				~Value();
 
 
 				// members
@@ -40,11 +37,11 @@ namespace RE
 				BSTSmartPointer<Object>	obj;
 				BSFixedString			str;
 			};
-			STATIC_ASSERT(sizeof(Data) == 0x8);
+			STATIC_ASSERT(sizeof(Value) == 0x8);
 
 
 			Variable();
-			Variable(const Type& a_type);
+			Variable(const TypeInfo& a_type);
 			Variable(const Variable& a_rhs);
 			Variable(Variable&& a_rhs);
 			~Variable();
@@ -74,7 +71,7 @@ namespace RE
 			void	SetBool(bool a_val);
 			void	SetArray(Array* a_val);
 			void	SetObject(Object* a_val);
-			void	SetObject(Object* a_val, VMTypeID a_typeID);
+			void	SetObject(Object* a_val, TypeInfo::RawType a_type);
 			void	SetString(const BSFixedString& a_val);
 			void	SetString(BSFixedString&& a_val);
 
@@ -93,10 +90,11 @@ namespace RE
 			template <class T> friend class VMArray;
 
 			// members
-			Data data;	// 08
+			TypeInfo	varType;	// 00
+			Value		value;		// 08
 
 		private:
-			void	ChangeType(VMTypeID a_type);
+			void	ChangeType(TypeInfo::RawType a_type);
 			void	Assign(const Variable& a_rhs);
 			void	Destroy();
 		};
