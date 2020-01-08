@@ -3,6 +3,28 @@
 
 namespace RE
 {
+	class BSSemaphoreBase
+	{
+	public:
+		BSSemaphoreBase();
+		~BSSemaphoreBase();
+
+
+		// members
+		HANDLE semaphore;	// 0
+	};
+	STATIC_ASSERT(sizeof(BSSemaphoreBase) == 0x8);
+
+
+	class BSSemaphore : public BSSemaphoreBase
+	{
+	public:
+		BSSemaphore() = default;
+		~BSSemaphore() = default;
+	};
+	STATIC_ASSERT(sizeof(BSSemaphore) == 0x8);
+
+
 	class BSSpinLock
 	{
 	public:

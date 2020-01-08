@@ -81,7 +81,7 @@ namespace RE
 			// DirectSig: 48 8B 41 08 48 85 C0 74 06 08 90 ? ? ? ?
 			constexpr std::uintptr_t SetEquipFlag = 0x0067E3B0;		// 1_5_97
 			// IndirectSig: E8 ? ? ? ? E9 ? ? ? ? 8B 4F 08
-			constexpr std::uintptr_t UpdateEquipment = 0x00650DF0;	// 1_5_97
+			constexpr std::uintptr_t Update3DModel = 0x00650DF0;	// 1_5_97
 		}
 
 

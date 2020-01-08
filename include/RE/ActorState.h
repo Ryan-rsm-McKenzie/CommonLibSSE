@@ -5,134 +5,177 @@
 
 namespace RE
 {
+	enum class ACTOR_LIFE_STATE : UInt32
+	{
+		kAlive = 0,
+		kDying = 1,
+		kDead = 2,
+		kUnconcious = 3,
+		kReanimate = 4,
+		kRecycle = 5,
+		kRestrained = 6,
+		kEssentialDown = 7,
+		kBleedout = 8
+	};
+
+
+	enum class ATTACK_STATE_ENUM : UInt32
+	{
+		kNone = 0,
+		kDraw = 1,
+		kSwing = 2,
+		kHit = 3,
+		kNextAttack = 4,
+		kFollowThrough = 5,
+		kBash = 6,
+		kBowDraw = 8,
+		kBowAttached = 9,
+		kBowDrawn = 10,
+		kBowReleasing = 11,
+		kBowReleased = 12,
+		kBowNextAttack = 13,
+		kBowFollowThrough = 14,
+		kFire = 15,
+		kFiring = 16,
+		kFired = 17
+	};
+
+
+	enum class FLY_STATE : UInt32
+	{
+		kNone = 0,
+		kTakeOff = 1,
+		kCruising = 2,
+		kHovering = 3,
+		kLanding = 4,
+		kPerching = 5,
+		kAction = 6
+	};
+
+
+	enum class KNOCK_STATE_ENUM : UInt32
+	{
+		kNormal = 0,
+		kExplode = 1,
+		kExplodeLeadIn = 2,
+		kOut = 3,
+		kOutLeadIn = 4,
+		kQueued = 5,
+		kGetUp = 6,
+		kDown = 7,
+		kWaitForTaskQueue = 8
+	};
+
+
+	enum class SIT_SLEEP_STATE : UInt32
+	{
+		kNormal = 0,
+		kWantToSit = 1,
+		kWaitingForSitAnim = 2,
+
+		kIsSitting = 3,
+		kRidingMount = kIsSitting,
+
+		kWantToStand = 4,
+
+		kWantToSleep = 5,
+		kWaitingForSleepAnim = 6,
+		kIsSleeping = 7,
+		kWantToWake = 8
+	};
+
+
+	enum class WEAPON_STATE : UInt32
+	{
+		kSheathed = 0,
+		kWantToDraw = 1,
+		kDrawing = 2,
+		kDrawn = 3,
+		kWantToSheathe = 4,
+		kSheathing = 5
+	};
+
+
 	class ActorState : public IMovementState
 	{
 	public:
 		inline static const void* RTTI = RTTI_ActorState;
 
 
-		enum class PrimaryAnimState : UInt8
+		struct ActorState1
 		{
-			kSit1 = 1,
-			kSit2 = 2,
-			kSit3 = 3,
-			kSit4 = 4,
-
-			kSleep5 = 5,
-			kSleep6 = 6,
-			kSleep7 = 7,
-			kSleep8 = 8
+			bool	movingBack : 1;			// 0 - 0
+			bool	movingForward : 1;		// 0 - 1
+			bool	movingRight : 1;		// 0 - 2
+			bool	movingLeft : 1;			// 0 - 3
+			bool	unk0_4 : 1;				// 0 - 4
+			bool	unk0_5 : 1;				// 0 - 5
+			bool	walking : 1;			// 0 - 6
+			bool	running : 1;			// 0 - 7
+			bool	sprinting : 1;			// 1 - 0
+			bool	sneaking : 1;			// 1 - 1
+			bool	swimming : 1;			// 1 - 2
+			bool	unk1_3 : 1;				// 1 - 3
+			bool	unk1_4 : 1;				// 1 - 4
+			bool	unk1_5 : 1;				// 1 - 5
+			bool	sitSleepState1 : 1;		// 1 - 6
+			bool	sitSleepState2 : 1;		// 1 - 7
+			bool	sitSleepState3 : 1;		// 2 - 0
+			bool	sitSleepState4 : 1;		// 2 - 1
+			bool	flyState1 : 1;			// 2 - 2
+			bool	flyState2 : 1;			// 2 - 3
+			bool	flyState3 : 1;			// 2 - 4
+			bool	lifeState1 : 1;			// 2 - 5
+			bool	lifeState2 : 1;			// 2 - 6
+			bool	lifeState3 : 1;			// 2 - 7
+			bool	lifeState4 : 1;			// 3 - 0
+			bool	knockState1 : 1;		// 3 - 1
+			bool	knockState2 : 1;		// 3 - 2
+			bool	knockState3 : 1;		// 3 - 3
+			bool	meleeAttackState1 : 1;	// 3 - 4
+			bool	meleeAttackState2 : 1;	// 3 - 5
+			bool	meleeAttackState3 : 1;	// 3 - 6
+			bool	meleeAttackState4 : 1;	// 3 - 7
 		};
+		STATIC_ASSERT(sizeof(ActorState1) == 0x4);
 
 
-		enum class SitState : UInt8
+		struct ActorState2
 		{
-			kNotSitting = 0,
-			kWantsToSit = 2,
-			kSitting = 3,
-			kWantsToStand = 4
+			bool	talkingToPlayer : 1;	// 0 - 0
+			bool	forceRun : 1;			// 0 - 1
+			bool	forceSneak : 1;			// 0 - 2
+			bool	headTracking : 1;		// 0 - 3
+			bool	reanimating : 1;		// 0 - 4
+			bool	weaponState1 : 1;		// 0 - 5
+			bool	weaponState2 : 1;		// 0 - 6
+			bool	weaponState3 : 1;		// 0 - 7
+			bool	wantBlocking : 1;		// 1 - 0
+			bool	flightBlocked : 1;		// 1 - 1
+			bool	recoil1 : 1;			// 1 - 2
+			bool	recoil2 : 1;			// 1 - 3
+			bool	allowFlying : 1;		// 1 - 4
+			bool	staggered : 1;			// 1 - 5
+			bool	unk1_6 : 1;				// 1 - 6
+			bool	unk1_7 : 1;				// 1 - 7
+			bool	unk2_0 : 1;				// 2 - 0
+			bool	unk2_1 : 1;				// 2 - 1
+			bool	unk2_2 : 1;				// 2 - 2
+			bool	unk2_3 : 1;				// 2 - 3
+			bool	unk2_4 : 1;				// 2 - 4
+			bool	unk2_5 : 1;				// 2 - 5
+			bool	unk2_6 : 1;				// 2 - 6
+			bool	unk2_7 : 1;				// 2 - 7
+			bool	pad3_0 : 1;				// 3 - 0
+			bool	pad3_1 : 1;				// 3 - 1
+			bool	pad3_2 : 1;				// 3 - 2
+			bool	pad3_3 : 1;				// 3 - 3
+			bool	pad3_4 : 1;				// 3 - 4
+			bool	pad3_5 : 1;				// 3 - 5
+			bool	pad3_6 : 1;				// 3 - 6
+			bool	pad3_7 : 1;				// 3 - 7
 		};
-
-
-		enum class SleepState : UInt8
-		{
-			kNotSleeping = 0,
-			kWantsToSleep = 2,
-			kSleeping = 3,
-			kWantsToWake = 4
-		};
-
-
-		enum class FlyingState : UInt8
-		{
-			kNotFlying = 0,
-			kTakingOff = 1,
-			kCruising = 2,
-			kHovering = 3,
-			kLanding = 4,
-			kUnkState = 5
-		};
-
-
-		enum class SecondaryAnimState : UInt8
-		{
-			kUnconscious3 = 3,
-
-			kBleedOut7 = 7,
-			kBleedOut8 = 8
-		};
-
-
-		enum class AttackState : UInt8
-		{
-			kNone = 0,
-			kDraw = 1,
-			kSwing = 2,
-			kHit = 3,
-			kNextAttack = 4,
-			kFollowThrough = 5,
-			kBash = 6,
-		};
-
-
-		struct Flags08
-		{
-			bool	movingBack : 1;				// 0 - 0
-			bool	movingForward : 1;			// 0 - 1
-			bool	movingRight : 1;			// 0 - 2
-			bool	movingLeft : 1;				// 0 - 3
-			bool	unk0_4 : 1;					// 0 - 4
-			bool	unk0_5 : 1;					// 0 - 5
-			bool	walking : 1;				// 0 - 6
-			bool	running : 1;				// 0 - 7
-			bool	sprinting : 1;				// 1 - 0
-			bool	sneaking : 1;				// 1 - 1
-			bool	swimming : 1;				// 1 - 2
-			bool	unk1_3 : 1;					// 1 - 3
-			bool	unk1_4 : 1;					// 1 - 4
-			bool	unk1_5 : 1;					// 1 - 5
-			bool	primaryAnimState1 : 1;		// 1 - 6
-			bool	primaryAnimState2 : 1;		// 1 - 7
-			bool	primaryAnimState3 : 1;		// 2 - 0
-			bool	primaryAnimState4 : 1;		// 2 - 1
-			bool	flyingState1 : 1;			// 2 - 2
-			bool	flyingState2 : 1;			// 2 - 3
-			bool	flyingState3 : 1;			// 2 - 4
-			bool	secondaryAnimState1 : 1;	// 2 - 5
-			bool	secondaryAnimState2 : 1;	// 2 - 6
-			bool	secondaryAnimState3 : 1;	// 2 - 7
-			bool	secondaryAnimState4 : 1;	// 3 - 0
-			bool	unk3_1 : 1;					// 3 - 1
-			bool	unk3_2 : 1;					// 3 - 2
-			bool	unk3_3 : 1;					// 3 - 3
-			bool	attackState1 : 1;			// 3 - 4
-			bool	attackState2 : 1;			// 3 - 5
-			bool	attackState3 : 1;			// 3 - 6
-			bool	attackState4 : 1;			// 3 - 7
-		};
-		STATIC_ASSERT(sizeof(Flags08) == 0x4);
-
-
-		enum class Flag0C : UInt32
-		{
-			kNone = 0,
-
-			kForceRun = 1 << 1,
-			kForceSneak = 1 << 2,
-			kHeadtracking = 1 << 3,
-
-			kLeftHandReadied = 1 << 5,
-			kRightHandReadied = 1 << 6,
-
-			kBlocking = 1 << 8,
-
-			kUnk10 = 1 << 10,
-			kUnk11 = 1 << 11,
-			kRecoiling = kUnk10 | kUnk11,
-
-			kAllowFlying = 1 << 12,
-			kStaggering = 1 << 13
-		};
+		STATIC_ASSERT(sizeof(ActorState2) == 0x4);
 
 
 		virtual ~ActorState();					// 00
@@ -151,22 +194,24 @@ namespace RE
 		virtual void	Unk_14(void);			// 14
 		virtual void	Unk_15(void);			// 15
 
-		SitState	GetSitState() const;
-		SleepState	GetSleepState() const;
-		FlyingState	GetFlyingState() const;
-		AttackState	GetAttackState() const;
-		bool		IsBleedingOut() const;
-		bool		IsWeaponDrawn() const;
-		bool		IsSneaking() const;
-		bool		IsSwimming() const;
-		bool		IsSprinting() const;
-		bool		IsFlying() const;
-		bool		IsUnconscious() const;
+		ATTACK_STATE_ENUM	GetAttackState() const;
+		FLY_STATE			GetFlyState() const;
+		KNOCK_STATE_ENUM	GetKnockState() const;
+		ACTOR_LIFE_STATE	GetLifeState() const;
+		SIT_SLEEP_STATE		GetSitSleepState() const;
+		WEAPON_STATE		GetWeaponState() const;
+		bool				IsBleedingOut() const;
+		bool				IsFlying() const;
+		bool				IsSneaking() const;
+		bool				IsSprinting() const;
+		bool				IsSwimming() const;
+		bool				IsUnconscious() const;
+		bool				IsWeaponDrawn() const;
 
 
 		// members
-		Flags08	flags08;	// 08
-		UInt32	flags0C;	// 0C
+		ActorState1	actorState1;	// 08
+		ActorState2	actorState2;	// 0C
 	};
 	STATIC_ASSERT(sizeof(ActorState) == 0x10);
 }

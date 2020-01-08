@@ -14,7 +14,7 @@ namespace RE
 		virtual ~ActorTargetCheck();		// 00
 
 		// override (GetActorsFilter)
-		virtual void Unk_01(void) override;	// 01
+		virtual bool IsValid(Actor* a_actor) override;	// 01
 
 
 		// members

@@ -1,11 +1,12 @@
 #pragma once
 
 #include "RE/IAnimationGraphManagerHolder.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE
 {
-	struct BSIntrusiveRefCounted;
+	class SimpleAnimationGraphManagerLoadingTask;
 
 
 	class SimpleAnimationGraphManagerHolder : public IAnimationGraphManagerHolder
@@ -15,8 +16,8 @@ namespace RE
 
 
 		// override (IAnimationGraphManagerHolder)
-		virtual bool	GetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_out) override;		// 02 - { a_out = graphManager; return a_out; }
-		virtual bool	SetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_in) override;		// 03 - { graphManager = a_in; return true; }
+		virtual bool	GetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_out) override;	// 02 - { a_out = animationGraphManager; return a_out; }
+		virtual bool	SetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_in) override;	// 03 - { animationGraphManager = a_in; return true; }
 		virtual bool	ConstructAnimationGraph(BSTSmartPointer<BShkbAnimationGraph>& a_out) override;			// 05
 
 		// add
@@ -24,8 +25,8 @@ namespace RE
 
 
 		// members
-		BSTSmartPointer<BSAnimationGraphManager>	graphManager;	// 08
-		BSTSmartPointer<BSIntrusiveRefCounted>		unk10;			// 10
+		BSTSmartPointer<BSAnimationGraphManager>			animationGraphManager;	// 08
+		NiPointer<SimpleAnimationGraphManagerLoadingTask>	loadingTask;			// 10
 	};
 	STATIC_ASSERT(sizeof(SimpleAnimationGraphManagerHolder) == 0x18);
 }

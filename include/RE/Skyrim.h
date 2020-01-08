@@ -327,6 +327,7 @@
 #include "RE/CRC.h"
 #include "RE/CreationClubMenu.h"
 #include "RE/CreditsMenu.h"
+#include "RE/Crime.h"
 #include "RE/CursorMenu.h"
 #include "RE/DecalData.h"
 #include "RE/DetectionListener.h"

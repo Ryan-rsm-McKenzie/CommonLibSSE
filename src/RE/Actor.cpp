@@ -90,6 +90,27 @@ namespace RE
 	}
 
 
+	bool Actor::CanPickpocket() const
+	{
+		if (!race) {
+			return false;
+		}
+
+		return race->AllowsPickpocket() && !IsPlayerTeammate();
+	}
+
+
+	bool Actor::CanTalkToPlayer() const
+	{
+		auto xTalk = extraList.GetByType<ExtraCanTalkToPlayer>();
+		if (xTalk) {
+			return xTalk->talk;
+		} else {
+			return race ? race->AllowsPCDialogue() : false;
+		}
+	}
+
+
 	void Actor::ClearArrested()
 	{
 		if (currentProcess && currentProcess->IsArrested()) {
@@ -461,6 +482,14 @@ namespace RE
 		using func_t = function_type_t<decltype(&Actor::UpdateArmorAbility)>;
 		REL::Offset<func_t*> func(Offset::Actor::UpdateArmorAbility);
 		return func(this, a_armor, a_extraData);
+	}
+
+
+	void Actor::Update3DModel()
+	{
+		if (currentProcess) {
+			currentProcess->Update3DModel(this);
+		}
 	}
 
 

@@ -23,7 +23,7 @@ namespace RE
 		virtual ~StatsNode();																																// 00
 
 		// override (SimpleAnimationGraphManagerHolder)
-		virtual bool					SetupAnimEventSinks(BSTSmartPointer<BShkbAnimationGraph>& a_animGraph) override;									// 08
+		virtual bool					SetupAnimEventSinks(const BSTSmartPointer<BShkbAnimationGraph>& a_animGraph) override;								// 08
 		virtual void					Unk_0C(void) override;																								// 0C
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)

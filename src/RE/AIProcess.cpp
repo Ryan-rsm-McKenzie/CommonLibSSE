@@ -112,19 +112,20 @@ namespace RE
 	}
 
 
-	void AIProcess::UpdateEquipment(Actor* a_actor)
+	void AIProcess::Update3DModel(Actor* a_actor)
 	{
-		UpdateEquipment_Internal(a_actor);
+		Update3DModel_Impl(a_actor);
 		SKSE::NiNodeUpdateEvent event(a_actor);
 		auto source = SKSE::GetNiNodeUpdateEventSource();
+		assert(source);	// api failed to init
 		source->SendEvent(&event);
 	}
 
 
-	void AIProcess::UpdateEquipment_Internal(Actor* a_actor)
+	void AIProcess::Update3DModel_Impl(Actor* a_actor)
 	{
-		using func_t = function_type_t<decltype(&AIProcess::UpdateEquipment_Internal)>;
-		REL::Offset<func_t*> func(Offset::AIProcess::UpdateEquipment);
+		using func_t = function_type_t<decltype(&AIProcess::Update3DModel_Impl)>;
+		REL::Offset<func_t*> func(Offset::AIProcess::Update3DModel);
 		return func(this, a_actor);
 	}
 }

@@ -160,7 +160,7 @@ namespace RE
 		void		SetArrested(bool a_arrested);
 		void		SetCachedHeight(float a_height);
 		void		SetEquipFlag(Flag a_flag);
-		void		UpdateEquipment(Actor* a_actor);
+		void		Update3DModel(Actor* a_actor);
 
 
 		// members
@@ -202,7 +202,7 @@ namespace RE
 		UInt32							pad13C;							// 13C
 
 	protected:
-		void UpdateEquipment_Internal(Actor* a_actor);
+		void Update3DModel_Impl(Actor* a_actor);
 	};
 	STATIC_ASSERT(sizeof(AIProcess) == 0x140);
 }

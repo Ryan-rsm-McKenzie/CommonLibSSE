@@ -347,4 +347,18 @@ namespace RE
 
 		kTotal
 	};
+
+
+	struct ACTOR_VALUE_MODIFIERS
+	{
+		enum ACTOR_VALUE_MODIFIER : UInt32
+		{
+			kPermanent = 0,
+			kTemporary = 1,
+			kDamage = 2,
+
+			kTotal = 3
+		};
+	};
+	using ACTOR_VALUE_MODIFIER = ACTOR_VALUE_MODIFIERS::ACTOR_VALUE_MODIFIER;
 }

@@ -24,6 +24,7 @@ namespace RE
 	class NiBillboardNode;
 	class NiRefObject;
 	class StandardDetectionListener;
+	struct Crime;
 	struct QueuedDialogueType;
 
 
@@ -270,7 +271,7 @@ namespace RE
 		NiPoint3												animationAngleMod;				// 424
 		BSTSmartPointer<IAnimationSetCallbackFunctor>			unk430;							// 430
 		UInt64													unk438;							// 438
-		UInt64													unk440;							// 440
+		Crime*													crimeToReactTo;					// 440
 		UInt64													unk448;							// 448
 		UInt64													unk450;							// 450
 		UInt64													unk458;							// 458

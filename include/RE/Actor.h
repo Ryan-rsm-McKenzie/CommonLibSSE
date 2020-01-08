@@ -48,22 +48,8 @@ namespace RE
 
 	struct Modifiers
 	{
-		struct Mods
-		{
-			enum Mod
-			{
-				kPermanent = 0,
-				kTemporary,
-				kDamage,
-
-				kTotal
-			};
-		};
-		using Mod = Mods::Mod;
-
-
 		// members
-		float modifiers[Mod::kTotal];	// 0
+		float modifiers[ACTOR_VALUE_MODIFIERS::kTotal];	// 0
 	};
 	STATIC_ASSERT(sizeof(Modifiers) == 0xC);
 
@@ -272,7 +258,7 @@ namespace RE
 		virtual void							UpdateSoundCallBack() override;																																															// 040
 		virtual void							SetDialoguewithPlayer(void) override;																																													// 041
 		virtual void							GetSequencer(void) override;																																															// 045 - { return aiProcess->highProcess->unk50; }
-		virtual bool							HasKeywordHelper(BGSKeyword* a_keyword) override;																																										// 048
+		virtual bool							HasKeywordHelper(BGSKeyword* a_keyword) const override;																																									// 048
 		virtual void							CheckForCurrentAliasPackage(void) override;																																												// 049 - { return 0; }
 		virtual BGSScene*						GetCurrentScene() const override;																																														// 04A
 		virtual void							SetCurrentScene(BGSScene* a_scene) override;																																											// 04B
@@ -325,7 +311,7 @@ namespace RE
 		virtual void							Unk_95(void) override;																																																	// 095
 		virtual void							Unk_96(void) override;																																																	// 096
 		virtual void							Unk_98(void) override;																																																	// 098
-		virtual bool							IsDead(bool a_noDying = true) override;																																													// 099
+		virtual bool							IsDead(bool a_acceptBleedout = true) override;																																											// 099
 		virtual void							Unk_9C(void) override;																																																	// 09C
 		virtual void							Unk_9D(void) override;																																																	// 09D
 		virtual void							Unk_9E(void) override;																																																	// 09E
@@ -480,6 +466,8 @@ namespace RE
 		void						AllowPCDialogue(bool a_talk);
 		SInt32						CalcEntryValue(const InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const;
 		bool						CanFlyHere() const;
+		bool						CanPickpocket() const;
+		bool						CanTalkToPlayer() const;
 		void						ClearArrested();
 		void						ClearExpressionOverride();
 		void						ClearExtraArrows();
@@ -521,6 +509,7 @@ namespace RE
 		void						SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, SInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);
 		void						SetRace(TESRace* a_race, bool a_isPlayer);
 		void						UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData);
+		void						Update3DModel();
 		void						UpdateHairColor();
 		void						UpdateSkinColor();
 		void						UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand);

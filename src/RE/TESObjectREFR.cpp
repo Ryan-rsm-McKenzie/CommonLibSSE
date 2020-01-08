@@ -3,6 +3,8 @@
 #include <cassert>
 #include <limits>
 
+#include "RE/BGSDefaultObjectManager.h"
+#include "RE/BGSKeyword.h"
 #include "RE/BSFixedString.h"
 #include "RE/ExtraContainerChanges.h"
 #include "RE/ExtraDroppedItemList.h"
@@ -366,6 +368,12 @@ namespace RE
 	}
 
 
+	bool TESObjectREFR::HasKeyword(BGSKeyword* a_keyword) const
+	{
+		return HasKeywordHelper(a_keyword);
+	}
+
+
 	bool TESObjectREFR::HasInventoryChanges() const
 	{
 		auto xContainerChanges = extraList.GetByType<ExtraContainerChanges>();
@@ -390,6 +398,14 @@ namespace RE
 	bool TESObjectREFR::IsDisabled() const
 	{
 		return (formFlags & RecordFlags::kInitiallyDisabled) != 0;
+	}
+
+
+	bool TESObjectREFR::IsHorse() const
+	{
+		auto dobj = BGSDefaultObjectManager::GetSingleton();
+		auto keyword = dobj->GetObject<BGSKeyword>(DEFAULT_OBJECT::kKeywordHorse);
+		return keyword ? HasKeyword(keyword) : false;
 	}
 
 

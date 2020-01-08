@@ -29,7 +29,7 @@ namespace RE
 		virtual void			FinishLoadGame(void* a_arg1) override;									// 11
 		virtual void			Revert(void* a_arg1) override;											// 12
 		virtual bool			GetAllowPromoteToPersistent(void) override;								// 47 - { return false; }
-		virtual bool			HasKeywordHelper(BGSKeyword* a_keyword) override;						// 48
+		virtual bool			HasKeywordHelper(BGSKeyword* a_keyword) const override;					// 48
 		virtual void			SetActorCause(ActorCause* a_cause) override;							// 50 - { actorCause = a_cause; }
 		virtual ActorCause*		GetActorCause() override;												// 51 - { return actorCause; }
 		virtual MagicCaster*	GetMagicCaster(UInt32 a_slot) override;									// 5C

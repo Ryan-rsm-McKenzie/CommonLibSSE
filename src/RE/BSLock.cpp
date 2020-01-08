@@ -6,6 +6,21 @@
 
 namespace RE
 {
+	BSSemaphoreBase::BSSemaphoreBase() :
+		semaphore()
+	{
+		memzero(&semaphore);
+		semaphore = CreateSemaphoreA(0, 0, 40, 0);
+	}
+
+
+	BSSemaphoreBase::~BSSemaphoreBase()
+	{
+		CloseHandle(semaphore);
+		memzero(&semaphore);
+	}
+
+
 	BSSpinLock::BSSpinLock() :
 		_owningThread(0),
 		_lockCount(0)
