@@ -21,6 +21,28 @@ namespace RE
 	class QueuedPromoteQuestTask;
 
 
+	enum class QuestFlag : UInt16
+	{
+		kNone = 0,
+		kEnabled = 1 << 0,
+		kCompleted = 1 << 1,
+		kAddIdleToHello = 1 << 2,
+		kAllowRepeatStages = 1 << 3,
+		kStartsEnabled = 1 << 4,
+		kDisplayedInHUD = 1 << 5,
+		kFailed = 1 << 6,
+		kStageWait = 1 << 7,
+		kRunOnce = 1 << 8,
+		kExcludeFromExport = 1 << 9,
+		kWarnOnAliasFillFailure = 1 << 10,
+		kActive = 1 << 11,
+		kRepeatsConditions = 1 << 12,
+		kKeepInstance = 1 << 13,
+		kWantDormant = 1 << 14,
+		kHasDialogueData = 1 << 15
+	};
+
+
 	enum class QUEST_OBJECTIVE_FLAGS : UInt32
 	{
 		kNone = 0,
@@ -62,17 +84,6 @@ namespace RE
 
 	struct QUEST_DATA	// DNAM
 	{
-		enum class Flag : UInt16
-		{
-			kNone = 0,
-			kStartGameEnabled = 1 << 0,
-			kAllowRepeatedStages = 1 << 3,
-			kRunOnce = 1 << 8,
-			kExcludesFromDialogueExport = 1 << 9,
-			kWarnOnAliasFillFailure = 1 << 10
-		};
-
-
 		enum class Type : UInt8
 		{
 			kNone = 0,
@@ -90,10 +101,10 @@ namespace RE
 		};
 
 
-		float	questDelayTime;	// 0
-		Flag	flags;			// 4
-		SInt8	priority;		// 6
-		Type	questType;		// 7
+		float		questDelayTime;	// 0
+		QuestFlag	flags;			// 4
+		SInt8		priority;		// 6
+		Type		questType;		// 7
 	};
 	STATIC_ASSERT(sizeof(QUEST_DATA) == 0x8);
 
@@ -226,6 +237,11 @@ namespace RE
 		virtual bool			SetFormEditorID(const char* a_str) override;	// 33
 		virtual TESCondition*	GetConditions() override;						// 3D - { return &objConditions; }
 		virtual void			Unk_3E(void) override;							// 3E
+
+		bool	IsEnabled() const;
+		void	Reset();
+		void	ResetAndUpdate();
+		bool	StartsEnabled() const;
 
 
 		// members

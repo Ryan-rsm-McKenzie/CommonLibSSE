@@ -1093,6 +1093,12 @@
     <Filter Include="src\RE\Animation">
       <UniqueIdentifier>{884f8cc0-3a29-4a73-8897-4ff848f6b1d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\RadiantStory">
+      <UniqueIdentifier>{76d8f62e-4daa-4eaf-a96d-498ca51306ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\RadiantStory">
+      <UniqueIdentifier>{30a1fbfa-6881-4697-8b5e-7e91d11088bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1763,6 +1769,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\IAnimationGraphManagerHolder.cpp">
       <Filter>src\RE\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSStoryTeller.cpp">
+      <Filter>src\RE\RadiantStory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5191,6 +5200,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\Crime.h">
       <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BGSStoryTeller.h">
+      <Filter>include\RE\RadiantStory</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

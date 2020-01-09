@@ -131,6 +131,17 @@ namespace RE
 		}
 
 
+		namespace BGSStoryTeller
+		{
+			// DirectSig: 40 56 57 41 56 48 83 EC 40 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 8B FA 48 8B E9 44 8B 05 ? ? ? ? 65 48 8B 04 25 ? ? ? ? B9 ? ? ? ? 4A 8B 34 C0 48 03 F1 8B 1E 89 5C 24 68
+			constexpr std::uintptr_t BeginShutDownQuest = 0x004D80A0;	// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 4C 8D 35 ? ? ? ? 40 84 F6
+			constexpr std::uintptr_t BeginStartUpQuest = 0x004D7F80;	// 1_5_97
+			// 48 8B 0D ? ? ? ? 48 8B D3 45 84 C0
+			constexpr std::uintptr_t Singleton = 0x01EC3B80;			// 1_5_97
+		}
+
+
 		namespace BipedAnim
 		{
 			// IndirectSig: E8 ? ? ? ? BA ? ? ? ? 48 8B CF E8 ? ? ? ? 48 8B 5C 24 ? EB 76
@@ -1123,6 +1134,13 @@ namespace RE
 			constexpr std::uintptr_t MoveTo = 0x009AE5C0;				// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 41 B4 01 EB 1B
 			constexpr std::uintptr_t PlayAnimation = 0x00189E30;		// 1_5_97
+		}
+
+
+		namespace TESQuest
+		{
+			// IndirectSig: E8 ? ? ? ? 48 8B 54 24 ? 0F B6 8A ? ? ? ?
+			constexpr std::uintptr_t Reset = 0x00370E90;	// 1_5_97
 		}
 
 

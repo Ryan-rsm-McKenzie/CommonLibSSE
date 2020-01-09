@@ -171,6 +171,7 @@
     <ClCompile Include="src\RE\ActorValueOwner.cpp" />
     <ClCompile Include="src\RE\AddCallbackVisitor.cpp" />
     <ClCompile Include="src\RE\BGSFootstepManager.cpp" />
+    <ClCompile Include="src\RE\BGSStoryTeller.cpp" />
     <ClCompile Include="src\RE\BSScript\ByteCode\PackedInstructionStream.cpp" />
     <ClCompile Include="src\RE\BSScript\Internal\VDescTable.cpp" />
     <ClCompile Include="src\RE\BSScript\MemoryPage.cpp" />
@@ -426,6 +427,7 @@
     <ClInclude Include="include\RE\BGSInstancedQuestObjective.h" />
     <ClInclude Include="include\RE\BGSLoadGameSubBuffer.h" />
     <ClInclude Include="include\RE\BGSLocalizedStringDL.h" />
+    <ClInclude Include="include\RE\BGSStoryTeller.h" />
     <ClInclude Include="include\RE\bhkCollisionObject.h" />
     <ClInclude Include="include\RE\bhkNiCollisionObject.h" />
     <ClInclude Include="include\RE\BipedObjects.h" />

@@ -157,6 +157,7 @@
 #include "RE/BGSStoryManagerNodeBase.h"
 #include "RE/BGSStoryManagerQuestNode.h"
 #include "RE/BGSStoryManagerTreeForm.h"
+#include "RE/BGSStoryTeller.h"
 #include "RE/BGSTalkingActivator.h"
 #include "RE/BGSTextureModel.h"
 #include "RE/BGSTextureSet.h"
