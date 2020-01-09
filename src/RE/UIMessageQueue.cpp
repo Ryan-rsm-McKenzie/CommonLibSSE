@@ -15,11 +15,11 @@ namespace RE
 	}
 
 
-	void UIMessageQueue::AddMessage(const BSFixedString& a_menuName, UIMessage::Message a_msgID, IUIMessageData* a_data)
+	void UIMessageQueue::AddMessage(const BSFixedString& a_menuName, UI_MESSAGE_TYPE a_type, IUIMessageData* a_data)
 	{
 		using func_t = function_type_t<decltype(&UIMessageQueue::AddMessage)>;
 		REL::Offset<func_t*> func(Offset::UIMessageQueue::AddMessage);
-		return func(this, a_menuName, a_msgID, a_data);
+		return func(this, a_menuName, a_type, a_data);
 	}
 
 

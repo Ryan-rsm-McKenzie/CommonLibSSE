@@ -21,10 +21,10 @@ namespace RE
 		enum { kExtraTypeID = ExtraDataType::kTextDisplayData };
 
 
-		enum class OwnerInstance : SInt32
+		enum class DisplayDataType : SInt32
 		{
-			kDefault = -1,
-			kPlayerSet = -2
+			kUninitialized = -1,
+			kCustomName = -2
 		};
 
 
@@ -45,7 +45,7 @@ namespace RE
 		BSFixedString	displayName;		// 10
 		BGSMessage*		displayNameText;	// 18
 		TESQuest*		ownerQuest;			// 20
-		OwnerInstance	ownerInstance;		// 28
+		DisplayDataType	ownerInstance;		// 28
 		float			temperFactor;		// 2C
 		UInt16			customNameLength;	// 30 - length w/o temper string, only valid if type is kPlayerSet
 		UInt16			pad32;				// 32

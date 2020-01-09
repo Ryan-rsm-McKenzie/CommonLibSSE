@@ -40,7 +40,7 @@ namespace RE
 	auto IMenu::ProcessMessage(UIMessage* a_message)
 		-> Result
 	{
-		if (a_message->message != UIMessage::Message::kScaleform) {
+		if (a_message->type != UI_MESSAGE_TYPE::kScaleformEvent) {
 			return Result::kNotProcessed;
 		}
 
@@ -48,12 +48,12 @@ namespace RE
 			return Result::kNotProcessed;
 		}
 
-		auto data = static_cast<BSUIScaleformData*>(a_message->objData);
+		auto data = static_cast<BSUIScaleformData*>(a_message->data);
 		if (!data) {
 			return Result::kNotProcessed;
 		}
 
-		view->HandleEvent(*data->event);
+		view->HandleEvent(*data->scaleformEvent);
 		return Result::kProcessed;
 	}
 
@@ -82,7 +82,7 @@ namespace RE
 
 	void IMenu::RefreshPlatform()
 	{
-		using Message = UIMessage::Message;
+		using Message = UI_MESSAGE_TYPE;
 
 		auto inputManager = BSInputDeviceManager::GetSingleton();
 		auto gamepad = inputManager->IsGamepadEnabled();
@@ -100,11 +100,11 @@ namespace RE
 			auto uiStr = InterfaceStrings::GetSingleton();
 			if (gamepad) {
 				flags &= ~Flag::kUsesCursor;
-				messageID = Message::kClose;
+				messageID = Message::kHide;
 			} else {
 				flags |= Flag::kUsesCursor;
 				auto ui = UI::GetSingleton();
-				messageID = ui->IsMenuOpen(uiStr->cursorMenu) ? Message::kRefresh : Message::kOpen;
+				messageID = ui->IsMenuOpen(uiStr->cursorMenu) ? Message::kReshow : Message::kShow;
 			}
 			auto messageQueue = UIMessageQueue::GetSingleton();
 			messageQueue->AddMessage(uiStr->cursorMenu, messageID, 0);

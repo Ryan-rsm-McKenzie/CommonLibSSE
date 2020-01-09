@@ -11,7 +11,7 @@ namespace RE
 		displayName(""),
 		displayNameText(0),
 		ownerQuest(0),
-		ownerInstance(OwnerInstance::kDefault),
+		ownerInstance(DisplayDataType::kUninitialized),
 		temperFactor(1.0),
 		customNameLength(0),
 		pad32(0),
@@ -27,7 +27,7 @@ namespace RE
 		displayName(""),
 		displayNameText(0),
 		ownerQuest(0),
-		ownerInstance(OwnerInstance::kDefault),
+		ownerInstance(DisplayDataType::kUninitialized),
 		temperFactor(1.0),
 		customNameLength(0),
 		pad32(0),
@@ -44,7 +44,7 @@ namespace RE
 		displayName(""),
 		displayNameText(0),
 		ownerQuest(0),
-		ownerInstance(OwnerInstance::kDefault),
+		ownerInstance(DisplayDataType::kUninitialized),
 		temperFactor(1.0),
 		customNameLength(0),
 		pad32(0),
@@ -72,7 +72,7 @@ namespace RE
 
 	bool ExtraTextDisplayData::IsPlayerSet() const
 	{
-		return ownerInstance == OwnerInstance::kPlayerSet;
+		return ownerInstance == DisplayDataType::kCustomName;
 	}
 
 
@@ -84,7 +84,7 @@ namespace RE
 
 		displayName = a_name;
 		customNameLength = displayName.length();
-		ownerInstance = OwnerInstance::kPlayerSet;
+		ownerInstance = DisplayDataType::kCustomName;
 		temperFactor = 1.0;
 	}
 }

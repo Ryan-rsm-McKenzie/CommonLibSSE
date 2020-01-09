@@ -21,8 +21,8 @@ namespace RE
 
 
 		// members
-		BSString								message;	// 10
-		BSTArray<BSString>						options;	// 20
+		BSString								bodyText;	// 10
+		BSTArray<BSString>						buttonText;	// 20
 		UInt32									unk38;		// 38
 		SInt32									unk3C;		// 3C
 		BSTSmartPointer<IMessageBoxCallback>	callback;	// 40

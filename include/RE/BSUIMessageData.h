@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSFixedString.h"
+#include "RE/BSString.h"
 #include "RE/IUIMessageData.h"
 
 
@@ -12,24 +13,23 @@ namespace RE
 		inline static const void* RTTI = RTTI_BSUIMessageData;
 
 
-		struct Data
+		union Data
 		{
-			UInt64	unk00;	// 00
-			UInt64	unk08;	// 08
+			bool	b;
+			UInt32	u;
+			float	f;
+			void*	p;
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x10);
+		STATIC_ASSERT(sizeof(Data) == 0x8);
 
 
 		virtual ~BSUIMessageData();	// 00
 
 
 		// members
-		Data*			unk10;	// 10
-		BSFixedString	unk18;	// 18
-		UInt8			unk20;	// 20
-		UInt8			pad21;	// 21
-		UInt16			pad22;	// 22
-		UInt32			pad24;	// 24
+		BSString*		str;		// 10
+		BSFixedString	fixedStr;	// 18
+		Data			data;		// 20
 	};
 	STATIC_ASSERT(sizeof(BSUIMessageData) == 0x28);
 }

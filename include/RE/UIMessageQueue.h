@@ -10,17 +10,18 @@
 namespace RE
 {
 	class IUIMessageData;
+	class UIMessage;
 
 
 	class UIMessageQueue : public BSTSingletonSDM<UIMessageQueue>
 	{
 	public:
-		enum { kPoolSize = 0x40 };
+		enum { kPoolSize = 64 };
 
 
 		static UIMessageQueue* GetSingleton();
 
-		void			AddMessage(const BSFixedString& a_menuName, UIMessage::Message a_msgID, IUIMessageData* a_data);
+		void			AddMessage(const BSFixedString& a_menuName, UI_MESSAGE_TYPE a_type, IUIMessageData* a_data);
 		IUIMessageData*	CreateUIMessageData(const BSFixedString& a_name);	// uses unk348, but doesn't seem to work like the skse thinks it does
 		void			ProcessCommands();
 

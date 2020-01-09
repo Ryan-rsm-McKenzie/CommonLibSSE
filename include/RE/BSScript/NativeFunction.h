@@ -72,7 +72,7 @@ namespace RE
 			{
 				std::size_t i = 0;
 				((_descTable.entries[i++].second.SetType(GetType<Args>())), ...);
-				_returnType = GetType<result_type>();
+				_retType = GetType<result_type>();
 			}
 
 

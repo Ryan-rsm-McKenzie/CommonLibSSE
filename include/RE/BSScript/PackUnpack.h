@@ -21,14 +21,14 @@ namespace RE
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
 		inline TypeInfo::RawType GetType()
 		{
-			return GetTypeIDFromFormType(static_cast<VMTypeID>(remove_cvpr_t<T>::kTypeID));
+			return GetTypeFromFormType(static_cast<VMTypeID>(remove_cvpr_t<T>::kTypeID));
 		}
 
 
 		template <class T, typename std::enable_if_t<is_vm_form_array_no_cvr<T>::value, int> = 0>
 		inline TypeInfo::RawType GetType()
 		{
-			return GetTypeIDFromFormType(remove_cvpr_t<remove_vm_array_t<T>>::kTypeID) + VMTypeID::kObject;
+			return GetTypeFromFormType(static_cast<VMTypeID>(remove_cvpr_t<remove_vm_array_t<T>>::kTypeID)) + TypeInfo::RawType::kObject;
 		}
 
 
@@ -42,7 +42,7 @@ namespace RE
 		template <class T, typename std::enable_if_t<is_vm_builtin_array_no_cvr<T>::value, int> = 0>
 		inline TypeInfo::RawType GetType()
 		{
-			return vm_type<remove_cvpr_t<remove_vm_array_t<T>>>::value + VMTypeID::kNoneArray;
+			return vm_type<remove_cvpr_t<remove_vm_array_t<T>>>::value + TypeInfo::RawType::kNoneArray;
 		}
 
 
