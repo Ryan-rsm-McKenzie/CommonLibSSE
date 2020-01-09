@@ -104,7 +104,7 @@ namespace RE
 			} else {
 				flags |= Flag::kUsesCursor;
 				auto ui = UI::GetSingleton();
-				messageID = ui->IsMenuOpen(uiStr->cursorMenu) ? Message::kReshow : Message::kShow;
+				messageID = ui->IsMenuOpen(uiStr->cursorMenu) ? Message::kUpdate : Message::kShow;
 			}
 			auto messageQueue = UIMessageQueue::GetSingleton();
 			messageQueue->AddMessage(uiStr->cursorMenu, messageID, 0);
