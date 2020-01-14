@@ -12,6 +12,114 @@ namespace RE
 {
 	namespace BSScript
 	{
+		bool IVirtualMachine::CreateArray(const TypeInfo& a_typeInfo, UInt32 a_size, BSTSmartPointer<Array>& a_arrayPtr)
+		{
+			return CreateArray1(a_typeInfo, a_size, a_arrayPtr);
+		}
+
+
+		bool IVirtualMachine::CreateArray(TypeInfo::RawType a_typeID, const BSFixedString& a_className, UInt32 a_size, BSTSmartPointer<Array>& a_arrayPtr)
+		{
+			return CreateArray2(a_typeID, a_className, a_size, a_arrayPtr);
+		}
+
+
+		bool IVirtualMachine::CreateObject(const BSFixedString& a_className, void* a_property, BSTSmartPointer<Object>& a_objPtr)
+		{
+			return CreateObject1(a_className, a_property, a_objPtr);
+		}
+
+
+		bool IVirtualMachine::CreateObject(const BSFixedString& a_className, BSTSmartPointer<Object>& a_result)
+		{
+			return CreateObject2(a_className, a_result);
+		}
+
+
+		bool IVirtualMachine::DispatchMethodCall(BSTSmartPointer<Object>& a_obj, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result)
+		{
+			return DispatchMethodCall1(a_obj, a_fnName, a_args, a_result);
+		}
+
+
+		bool IVirtualMachine::DispatchMethodCall(VMHandle a_handle, const BSFixedString& a_className, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result)
+		{
+			return DispatchMethodCall2(a_handle, a_className, a_fnName, a_args, a_result);
+		}
+
+
+		ObjectBindPolicy* IVirtualMachine::GetObjectBindPolicy()
+		{
+			return GetObjectBindPolicy1();
+		}
+
+
+		const ObjectBindPolicy* IVirtualMachine::GetObjectBindPolicy() const
+		{
+			return GetObjectBindPolicy2();
+		}
+
+
+		IObjectHandlePolicy* IVirtualMachine::GetObjectHandlePolicy()
+		{
+			return GetObjectHandlePolicy1();
+		}
+
+
+		const IObjectHandlePolicy* IVirtualMachine::GetObjectHandlePolicy() const
+		{
+			return GetObjectHandlePolicy2();
+		}
+
+
+		bool IVirtualMachine::GetScriptObjectType(const BSFixedString& a_className, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr)
+		{
+			return GetScriptObjectType1(a_className, a_outTypeInfoPtr);
+		}
+
+
+		bool IVirtualMachine::GetScriptObjectType(VMTypeID a_typeID, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr)
+		{
+			return GetScriptObjectType2(a_typeID, a_outTypeInfoPtr);
+		}
+
+
+		bool IVirtualMachine::GetScriptObjectTypeNoLoad(const BSFixedString& a_className, BSTSmartPointer<ObjectTypeInfo>& a_typeInfoPtr) const
+		{
+			return GetScriptObjectTypeNoLoad1(a_className, a_typeInfoPtr);
+		}
+
+
+		bool IVirtualMachine::GetScriptObjectTypeNoLoad(VMTypeID a_typeID, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr) const
+		{
+			return GetScriptObjectTypeNoLoad2(a_typeID, a_outTypeInfoPtr);
+		}
+
+
+		bool IVirtualMachine::GetVariableValue(const BSTSmartPointer<Object>& a_objPtr, UInt32 a_index, Variable& a_out) const
+		{
+			return GetVariableValue1(a_objPtr, a_index, a_out);
+		}
+
+
+		bool IVirtualMachine::GetVariableValue(VMHandle a_handle, const BSFixedString& a_className, SInt32 a_variableIndex, Variable& a_out) const
+		{
+			return GetVariableValue2(a_handle, a_className, a_variableIndex, a_out);
+		}
+
+
+		void IVirtualMachine::SetCallableFromTasklets(const char* a_className, const char* a_stateName, const char* a_fnName, bool a_callable)
+		{
+			return SetCallableFromTasklets1(a_className, a_stateName, a_fnName, a_callable);
+		}
+
+
+		void IVirtualMachine::SetCallableFromTasklets(const char* a_className, const char* a_fnName, bool a_callable)
+		{
+			return SetCallableFromTasklets2(a_className, a_fnName, a_callable);
+		}
+
+
 		void IVirtualMachine::TraceStack(TESForm* a_form, const char* a_str, VMStackID a_stackID, Severity a_severity)
 		{
 			assert(a_str);

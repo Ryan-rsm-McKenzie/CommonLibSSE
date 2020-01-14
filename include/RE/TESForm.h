@@ -145,8 +145,8 @@ namespace RE
 		virtual bool					IsObject() const;																													// 28 - { return false; }
 		virtual bool					IsMagicItem() const;																												// 29 - { return false; }
 		virtual bool					IsWater() const;																													// 2A - { return false; }
-		virtual TESObjectREFR*			AsReference();																														// 2B - { return 0; }
-		virtual const TESObjectREFR*	AsReference() const;																												// 2C - { return 0; }
+		virtual TESObjectREFR*			AsReference1();																														// 2B - { return 0; }
+		virtual const TESObjectREFR*	AsReference2() const;																												// 2C - { return 0; }
 		virtual UInt32					GetRefCount() const;																												// 2D - { return 0; }
 		virtual const char*				GetTextForParsedSubTag(const BSFixedString& a_alias) const;																			// 2E
 		virtual void					Copy(TESForm* a_srcForm);																											// 2F - { return; }
@@ -178,25 +178,27 @@ namespace RE
 		template <class T, typename std::enable_if_t<Impl::is_valid_as_expr<T>::value, int> = 0>
 		constexpr const T* As() const;
 
-		FormID		GetFormID() const;
-		FormType	GetFormType() const;
-		SInt32		GetGoldValue() const;
-		const char*	GetName() const;
-		float		GetWeight() const;
-		bool		HasVMAD() const;
-		bool		HasWorldModel() const;
-		bool		IsAmmo() const;
-		bool		IsArmor() const;
-		bool		IsDeleted() const;
-		bool		IsDynamicForm() const;
-		bool		IsGold() const;
-		bool		IsIgnored() const;
-		bool		IsKey() const;
-		bool		IsLockpick() const;
-		bool		IsPlayer() const;
-		bool		IsPlayerRef() const;
-		bool		IsSoulGem() const;
-		bool		IsWeapon() const;
+		TESObjectREFR*			AsReference();
+		const TESObjectREFR*	AsReference() const;
+		FormID					GetFormID() const;
+		FormType				GetFormType() const;
+		SInt32					GetGoldValue() const;
+		const char*				GetName() const;
+		float					GetWeight() const;
+		bool					HasVMAD() const;
+		bool					HasWorldModel() const;
+		bool					IsAmmo() const;
+		bool					IsArmor() const;
+		bool					IsDeleted() const;
+		bool					IsDynamicForm() const;
+		bool					IsGold() const;
+		bool					IsIgnored() const;
+		bool					IsKey() const;
+		bool					IsLockpick() const;
+		bool					IsPlayer() const;
+		bool					IsPlayerRef() const;
+		bool					IsSoulGem() const;
+		bool					IsWeapon() const;
 
 
 		// members

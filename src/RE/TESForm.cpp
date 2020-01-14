@@ -54,6 +54,18 @@ namespace RE
 	}
 
 
+	TESObjectREFR* TESForm::AsReference()
+	{
+		return AsReference1();
+	}
+
+
+	const TESObjectREFR* TESForm::AsReference() const
+	{
+		return AsReference2();
+	}
+
+
 	FormID TESForm::GetFormID() const
 	{
 		return formID;

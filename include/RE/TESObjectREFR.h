@@ -237,8 +237,8 @@ namespace RE
 		virtual void								SetDelete(bool a_set) override;																																											// 23
 		virtual void								SetAltered(bool a_set) override;																																										// 24
 		virtual bool								IsWater() const override;																																												// 2A - { return data.objectReference ? data.objectReference->IsWater() : false; }
-		virtual TESObjectREFR*						AsReference() override;																																													// 2B - { return this; }
-		virtual const TESObjectREFR*				AsReference() const override;																																											// 2C - { return this; }
+		virtual TESObjectREFR*						AsReference1() override;																																												// 2B - { return this; }
+		virtual const TESObjectREFR*				AsReference2() const override;																																											// 2C - { return this; }
 		virtual bool								BelongsInGroup(FORM* a_form, bool a_arg2, bool a_arg3) override;																																		// 30
 		virtual void								CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;																																			// 31
 		virtual const char*							GetFormEditorID() const override;																																										// 32
@@ -307,8 +307,8 @@ namespace RE
 		virtual void								Set3D(NiAVObject* a_root, bool a_arg2 = true);																																							// 6C
 		virtual bool								ShouldBackgroundClone() const;																																											// 6D
 		virtual void								Unk_6E(void);																																															// 6E - { return; }
-		virtual NiAVObject*							Get3D(bool a_firstPerson) const;																																										// 6F - { return Get3D(); }
-		virtual NiAVObject*							Get3D() const;																																															// 70
+		virtual NiAVObject*							Get3D1(bool a_firstPerson) const;																																										// 6F - { return Get3D2(); }
+		virtual NiAVObject*							Get3D2() const;																																															// 70
 		virtual bool								Is3rdPersonVisible() const;																																												// 71 - { return true; }
 		virtual bool								PopulateGraphProjectsToLoad(void) const;																																								// 72
 		virtual NiPoint3							GetBoundMin() const;																																													// 73
@@ -322,9 +322,9 @@ namespace RE
 		virtual bool								ShouldSaveAnimationOnSaving() const;																																									// 7B
 		virtual bool								ShouldPerformRevert() const;																																											// 7C - { return true; }
 		virtual void								UpdateAnimation(float a_arg1);																																											// 7D
-		virtual const BSTSmartPointer<BipedAnim>&	GetBiped(bool a_firstPerson) const;																																										// 7E - { return GetBiped(); }
-		virtual const BSTSmartPointer<BipedAnim>&	GetBiped() const;																																														// 7F
-		virtual const BSTSmartPointer<BipedAnim>&	GetCurrentBiped() const;																																												// 80 - { return GetBiped(); }
+		virtual const BSTSmartPointer<BipedAnim>&	GetBiped1(bool a_firstPerson) const;																																									// 7E - { return GetBiped2(); }
+		virtual const BSTSmartPointer<BipedAnim>&	GetBiped2() const;																																														// 7F
+		virtual const BSTSmartPointer<BipedAnim>&	GetCurrentBiped() const;																																												// 80 - { return GetBiped2(); }
 		virtual void								SetBiped(const BSTSmartPointer<BipedAnim>& a_biped);																																					// 81 - { return; }
 		virtual void								Unk_82(void);																																															// 82 - { return; }
 		virtual void								Unk_83(void);																																															// 83 - { return; }
@@ -337,7 +337,7 @@ namespace RE
 		virtual void								ResetInventory(bool a_removeDefaultLevItems);																																							// 8A
 		virtual void								Unk_8B(void);																																															// 8B - { return 0; }
 		virtual void								Unk_8C(void);																																															// 8C - { return; }
-		virtual NiAVObject*							GetCurrent3D() const;																																													// 8D - { return Get3D(); }
+		virtual NiAVObject*							GetCurrent3D() const;																																													// 8D - { return Get3D2(); }
 		virtual Explosion*							AsExplosion();																																															// 8E - { return 0; }
 		virtual Projectile*							AsProjectile();																																															// 8F - { return 0; }
 		virtual bool								OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const;																																			// 90 - { return true; }
@@ -363,60 +363,64 @@ namespace RE
 		static NiPointer<TESObjectREFR>	LookupByHandle(RefHandle a_refHandle);
 		static bool						LookupByHandle(RefHandle a_refHandle, NiPointer<TESObjectREFR>& a_refrOut);
 
-		void					ActivateRefChildren(TESObjectREFR* a_activator);
-		ObjectRefHandle			CreateRefHandle();
-		TESNPC*					GetActorOwner();
-		NiPoint3				GetAngle() const;
-		float					GetAngleX() const;
-		float					GetAngleY() const;
-		float					GetAngleZ() const;
-		float					GetBaseHeight() const;
-		TESBoundObject*			GetBaseObject();
-		const TESBoundObject*	GetBaseObject() const;
-		TESContainer*			GetContainer();
-		DroppedInventoryMap		GetDroppedInventory();
-		DroppedInventoryMap		GetDroppedInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);
-		TESFaction*				GetFactionOwner();
-		InventoryMap			GetInventory();
-		InventoryMap			GetInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);
-		InventoryChanges*		GetInventoryChanges();	// Creates inventory changes if none found
-		TESObjectREFR*			GetLinkedRef(BGSKeyword* a_keyword);
-		SInt32					GetLockLevel() const;
-		REFR_LOCK*				GetLockState();
-		const REFR_LOCK*		GetLockState() const;
-		const char*				GetName() const;
-		NiAVObject*				GetNodeByName(const BSFixedString& a_nodeName);
-		UInt32					GetNumItems(bool a_useDataHandlerChanges = false, bool a_arg2 = false);
-		TESForm*				GetOwner();
-		TESObjectCELL*			GetParentCell();
-		NiPoint3				GetPosition() const;
-		float					GetPositionX() const;
-		float					GetPositionY() const;
-		float					GetPositionZ() const;
-		const char*				GetReferenceName() const;
-		float					GetWeight() const;
-		TESWorldSpace*			GetWorldspace() const;
-		bool					HasCollision() const;
-		bool					HasKeyword(const BGSKeyword* a_keyword) const;
-		bool					HasInventoryChanges() const;
-		bool					Is3DLoaded() const;
-		bool					IsActivationBlocked() const;
-		bool					IsDead() const;
-		bool					IsDisabled() const;
-		bool					IsHorse() const;
-		bool					IsLocked() const;
-		bool					IsMarkedForDeletion() const;
-		bool					IsOffLimits() const;
-		bool					MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
-		bool					MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
-		void					PlayAnimation(std::string_view a_from, std::string_view a_to);
-		void					PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq);
-		void					SetActivationBlocked(bool a_blocked);
-		void					SetCollision(bool a_enable);
-		bool					SetDisplayName(const BSFixedString& a_name, bool a_force);
-		bool					SetMotionType(MotionType a_motionType, bool a_allowActivate = true);
-		void					SetPosition(float a_x, float a_y, float a_z);
-		void					SetPosition(NiPoint3 a_pos);
+		void								ActivateRefChildren(TESObjectREFR* a_activator);
+		ObjectRefHandle						CreateRefHandle();
+		NiAVObject*							Get3D() const;
+		NiAVObject*							Get3D(bool a_firstPerson) const;
+		TESNPC*								GetActorOwner();
+		NiPoint3							GetAngle() const;
+		float								GetAngleX() const;
+		float								GetAngleY() const;
+		float								GetAngleZ() const;
+		float								GetBaseHeight() const;
+		TESBoundObject*						GetBaseObject();
+		const TESBoundObject*				GetBaseObject() const;
+		const BSTSmartPointer<BipedAnim>&	GetBiped() const;
+		const BSTSmartPointer<BipedAnim>&	GetBiped(bool a_firstPerson) const;
+		TESContainer*						GetContainer();
+		DroppedInventoryMap					GetDroppedInventory();
+		DroppedInventoryMap					GetDroppedInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);
+		TESFaction*							GetFactionOwner();
+		InventoryMap						GetInventory();
+		InventoryMap						GetInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);
+		InventoryChanges*					GetInventoryChanges();	// Creates inventory changes if none found
+		TESObjectREFR*						GetLinkedRef(BGSKeyword* a_keyword);
+		SInt32								GetLockLevel() const;
+		REFR_LOCK*							GetLockState();
+		const REFR_LOCK*					GetLockState() const;
+		const char*							GetName() const;
+		NiAVObject*							GetNodeByName(const BSFixedString& a_nodeName);
+		UInt32								GetNumItems(bool a_useDataHandlerChanges = false, bool a_arg2 = false);
+		TESForm*							GetOwner();
+		TESObjectCELL*						GetParentCell();
+		NiPoint3							GetPosition() const;
+		float								GetPositionX() const;
+		float								GetPositionY() const;
+		float								GetPositionZ() const;
+		const char*							GetReferenceName() const;
+		float								GetWeight() const;
+		TESWorldSpace*						GetWorldspace() const;
+		bool								HasCollision() const;
+		bool								HasKeyword(const BGSKeyword* a_keyword) const;
+		bool								HasInventoryChanges() const;
+		bool								Is3DLoaded() const;
+		bool								IsActivationBlocked() const;
+		bool								IsDead() const;
+		bool								IsDisabled() const;
+		bool								IsHorse() const;
+		bool								IsLocked() const;
+		bool								IsMarkedForDeletion() const;
+		bool								IsOffLimits() const;
+		bool								MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
+		bool								MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
+		void								PlayAnimation(std::string_view a_from, std::string_view a_to);
+		void								PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq);
+		void								SetActivationBlocked(bool a_blocked);
+		void								SetCollision(bool a_enable);
+		bool								SetDisplayName(const BSFixedString& a_name, bool a_force);
+		bool								SetMotionType(MotionType a_motionType, bool a_allowActivate = true);
+		void								SetPosition(float a_x, float a_y, float a_z);
+		void								SetPosition(NiPoint3 a_pos);
 
 
 		// members
