@@ -33,23 +33,23 @@ namespace RE
 		};
 
 
-		virtual ~NavMesh();																// 00
+		virtual ~NavMesh();																	// 00
 
 		// override (TESForm)
-		virtual bool	Load(TESFile* a_mod) override;									// 06
-		virtual void	FinishLoadGame(void* a_arg1) override;							// 11
-		virtual void	InitItemImpl() override;										// 13
-		virtual void	GetFormDetailedString(char* a_buf, UInt32 a_bufLen) override;	// 16
-		virtual void	SetDelete(bool a_set) override;									// 23
-		virtual void	SetAltered(bool a_set) override;								// 24
-		virtual bool	BelongsInGroup(void) override;									// 30
-		virtual void	CreateGroupData(void) override;									// 31
+		virtual bool	Load(TESFile* a_mod) override;										// 06
+		virtual void	FinishLoadGame(BGSLoadFormBuffer* a_buf) override;					// 11
+		virtual void	InitItemImpl() override;											// 13
+		virtual void	GetFormDetailedString(char* a_buf, UInt32 a_bufLen) override;		// 16
+		virtual void	SetDelete(bool a_set) override;										// 23
+		virtual void	SetAltered(bool a_set) override;									// 24
+		virtual bool	BelongsInGroup(FORM* a_form, bool a_arg2, bool a_arg3) override;	// 30
+		virtual void	CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;		// 31
 
 		// add
-		virtual void	Unk_3B(void);													// 3B - { return; }
-		virtual void	Unk_3C(void);													// 3C - { return 0; }
-		virtual void	Unk_3D(void);													// 3D - { return 0; }
-		virtual void	Unk_3E(void);													// 3E - { return 0; }
+		virtual void	Save();																// 3B - { return; }
+		virtual bool	SavesBefore(FORM* a_form);											// 3C - { return fa;se; }
+		virtual bool	SavesBefore(TESForm* a_form);										// 3D - { return false; }
+		virtual bool	ProcessBeforeSave();												// 3E - { return false; }
 	};
 	STATIC_ASSERT(sizeof(NavMesh) == 0x140);
 }

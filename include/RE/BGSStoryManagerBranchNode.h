@@ -26,14 +26,14 @@ namespace RE
 		};
 
 
-		virtual ~BGSStoryManagerBranchNode();									// 00
+		virtual ~BGSStoryManagerBranchNode();																				// 00
 
 		// override (BGSStoryManagerNodeBase)
-		virtual void						ClearData() override;				// 05 - { BGSStoryManagerNodeBase::ClearData(); }
-		virtual void						InitItemImpl() override;			// 13
-		virtual UInt32						GetNumChildren() const override;	// 3B - { return nodeChildren.size(); }
-		virtual BGSStoryManagerEventNode*	GetNthChild(UInt32 a_idx) override;	// 3C - { return nodeChildren[a_idx]; }
-		virtual void						Unk_3E(void) override;				// 3E - { return a_arg1->Unk_01(this); }
+		virtual void										ClearData() override;											// 05 - { BGSStoryManagerNodeBase::ClearData(); }
+		virtual void										InitItemImpl() override;										// 13
+		virtual UInt32										QChildCount() const override;									// 3B - { return nodeChildren.size(); }
+		virtual BGSStoryManagerTreeForm*					GetChild(UInt32 a_idx) const override;							// 3C - { return children[a_idx]; }
+		virtual BGSStoryManagerTreeVisitor::VisitControl	AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;	// 3E - { return a_visitor->VisitBranchNode(this); }
 
 
 		// members

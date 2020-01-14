@@ -217,10 +217,15 @@ namespace RE
 	STATIC_ASSERT(sizeof(PACKAGE_DATA) == 0xC);
 
 
-	struct PackageTarget
+	class PackageTarget
 	{
+	public:
 		union Target
 		{
+			Target() : object(0) {}
+			~Target() {}
+
+
 			ObjectRefHandle			handle;
 			TESForm*				object;
 			TESForm*				refOrObj;
@@ -273,15 +278,17 @@ namespace RE
 	STATIC_ASSERT(sizeof(PACK_SCHED_DATA) == 0xC);
 
 
-	struct PackageSchedule	// PSDT
+	class PackageSchedule	// PSDT
 	{
+	public:
 		PACK_SCHED_DATA psData;	// 0
 	};
 	STATIC_ASSERT(sizeof(PackageSchedule) == 0xC);
 
 
-	struct PackageEventAction
+	class PackageEventAction
 	{
+	public:
 		struct TopicData	// PDTO
 		{
 			enum class Type : UInt32
@@ -335,25 +342,25 @@ namespace RE
 		};
 
 
-		virtual ~TESPackage();												// 00
+		virtual ~TESPackage();																								// 00
 
 		// override (TESForm)
-		virtual void		InitializeData() override;						// 04
-		virtual void		ClearData() override;							// 05
-		virtual bool		Load(TESFile* a_mod) override;					// 06
-		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void		Revert(void* a_arg1) override;					// 12
-		virtual void		InitItemImpl() override;						// 13
-		virtual UInt32		GetRefCount() const override;					// 2D - { return refCount; }
-		virtual const char*	GetObjectTypeName() const override;				// 39 - { return g_packageTypeStrings[packData.packType]; }
+		virtual void		InitializeData() override;																		// 04
+		virtual void		ClearData() override;																			// 05
+		virtual bool		Load(TESFile* a_mod) override;																	// 06
+		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;													// 0E
+		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;													// 0F
+		virtual void		Revert(BGSLoadFormBuffer* a_buf) override;														// 12
+		virtual void		InitItemImpl() override;																		// 13
+		virtual UInt32		GetRefCount() const override;																	// 2D - { return refCount; }
+		virtual const char*	GetObjectTypeName() const override;																// 39 - { return g_packageTypeStrings[packData.packType]; }
 
 		// add
-		virtual void		Unk_3B(void);									// 3B
-		virtual void		Unk_3C(void);									// 3C
-		virtual void		Unk_3D(void);									// 3D
-		virtual void		Unk_3E(void);									// 3E
-		virtual void		Unk_3F(void);									// 3F - { return 1; }
+		virtual bool		IsActorAtLocation(Actor* a_actor, bool a_arg2, float a_arg3, bool a_arg4);						// 3B
+		virtual bool		IsActorAtSecondLocation(Actor* a_arg1, Actor* a_arg2, bool a_arg3, float a_arg4, bool a_arg5);	// 3C
+		virtual bool		IsActorAtRefTarget(Actor* a_actor, SInt32 a_arg2);												// 3D
+		virtual bool		IsTargetAtLocation(Actor* a_actor, SInt32 a_arg2);												// 3E
+		virtual bool		IsPackageOwner(Actor* a_actor);																	// 3F - { return true; }
 
 
 		// members

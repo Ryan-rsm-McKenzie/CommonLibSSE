@@ -5,21 +5,21 @@ namespace RE
 {
 	namespace BSScript
 	{
-		bool IObjectHandlePolicy::GetHandleIsType(FormType a_typeID, VMHandle a_handle)
+		bool IObjectHandlePolicy::HandleIsType(FormType a_typeID, VMHandle a_handle)
 		{
-			return GetHandleIsType(static_cast<UInt32>(a_typeID), a_handle);
+			return HandleIsType(static_cast<VMTypeID>(a_typeID), a_handle);
 		}
 
 
 		VMHandle IObjectHandlePolicy::GetHandleForObject(FormType a_typeID, const TESForm* a_srcData)
 		{
-			return GetHandleForObject(static_cast<UInt32>(a_typeID), a_srcData);
+			return GetHandleForObject(static_cast<VMTypeID>(a_typeID), a_srcData);
 		}
 
 
-		void* IObjectHandlePolicy::GetObjectForHandle(FormType a_typeID, VMHandle a_handle)
+		TESForm* IObjectHandlePolicy::GetObjectForHandle(FormType a_typeID, VMHandle a_handle)
 		{
-			return GetObjectForHandle(static_cast<UInt32>(a_typeID), a_handle);
+			return static_cast<TESForm*>(GetObjectForHandle(static_cast<VMTypeID>(a_typeID), a_handle));
 		}
 	}
 }

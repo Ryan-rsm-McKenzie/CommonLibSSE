@@ -22,11 +22,11 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "Console";
 
 
-		virtual ~Console();													// 00
+		virtual ~Console();																// 00
 
 		// override (IMenu)
-		virtual void	Accept(CallbackProcessor* a_processor) override;	// 01
-		virtual Result	ProcessMessage(UIMessage* a_message) override;		// 04
+		virtual void				Accept(CallbackProcessor* a_processor) override;	// 01
+		virtual UI_MESSAGE_RESULTS	ProcessMessage(UIMessage& a_message) override;		// 04
 
 		static NiPointer<TESObjectREFR>	GetSelectedRef();
 		static ObjectRefHandle			GetSelectedRefHandle();

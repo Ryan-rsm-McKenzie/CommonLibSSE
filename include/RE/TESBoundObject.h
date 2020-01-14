@@ -1,16 +1,20 @@
 #pragma once
 
 #include "RE/FormTypes.h"
+#include "RE/NiSmartPointer.h"
 #include "RE/TESObject.h"
 
 
 namespace RE
 {
 	class BSString;
+	class NiAVObject;
+	class TESObjectREFR;
 
 
-	struct NiNPShortPoint3
+	class NiNPShortPoint3
 	{
+	public:
 		SInt16	x;	// 0
 		SInt16	y;	// 2
 		SInt16	z;	// 4
@@ -32,27 +36,27 @@ namespace RE
 		STATIC_ASSERT(sizeof(BOUND_DATA) == 0xC);
 
 
-		virtual ~TESBoundObject();																																	// 00
+		virtual ~TESBoundObject();																																			// 00
 
 		// override (TESObject)
-		virtual void			LoadObjectBound(TESFile* a_mod) override;																							// 26
-		virtual bool			IsBoundObject() const override;																										// 27 - { return true; }
-		virtual bool			Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount) override;	// 37
-		virtual void			Unk_40(void) override;																												// 40
-		virtual void			Unk_44(void) override;																												// 44
+		virtual void			LoadObjectBound(TESFile* a_mod) override;																									// 26
+		virtual bool			IsBoundObject() const override;																												// 27 - { return true; }
+		virtual bool			Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;	// 37
+		virtual NiAVObject*		Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;																						// 40
+		virtual bool			ReplaceModel() override;																													// 44
 
 		// add
-		virtual void			SetVoiceType(BGSVoiceType* a_voiceType);																							// 48 - { return; }
-		virtual BGSVoiceType*	GetVoiceType() const;																												// 49 - { return 0; }
-		virtual void			Unk_4A(void);																														// 4A
-		virtual void			Unk_4B(void);																														// 4B
-		virtual bool			GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst);																			// 4C
-		virtual void			Unk_4D(void);																														// 4D - "bool CanActivate(Actor* a_activator, bool, TESObjectREFR* a_toActivate, float)"?
-		virtual void			OnRemovedFrom(TESObjectREFR* a_ref);																								// 4E - { return; }
-		virtual void			Unk_4F(void);																														// 4F - { return; }
-		virtual void			Unk_50(void);																														// 50 - { return; }
-		virtual void			Unk_51(void);																														// 51 - { return; }
-		virtual void			Unk_52(void);																														// 52 - { return; }
+		virtual void			SetObjectVoiceType(BGSVoiceType* a_voiceType);																								// 48 - { return; }
+		virtual BGSVoiceType*	GetObjectVoiceType() const;																													// 49 - { return 0; }
+		virtual NiAVObject*		Clone3D(TESObjectREFR* a_ref);																												// 4A - { Clone3D(a_ref, false); }
+		virtual bool			ReplaceModel(const char* a_str);																											// 4B
+		virtual bool			GetActivateText(TESObjectREFR* a_activator, BSString& a_dst);																				// 4C
+		virtual bool			CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3);												// 4D
+		virtual void			HandleRemoveItemFromContainer(TESObjectREFR* a_container);																					// 4E - { return; }
+		virtual void			OnRemove3D(NiAVObject* a_obj3D);																											// 4F - { return; }
+		virtual void			OnCheckModels();																															// 50 - { return; }
+		virtual void			OnCopyReference();																															// 51 - { return; }
+		virtual void			OnFinishScale();																															// 52 - { return; }
 
 
 		// members

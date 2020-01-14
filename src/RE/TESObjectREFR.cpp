@@ -351,7 +351,7 @@ namespace RE
 	{
 		auto cell = parentCell;
 		if (!cell) {
-			cell = GetParentOrPersistentCell();
+			cell = GetSaveParentCell();
 		}
 
 		if (cell && cell->IsExteriorCell()) {
@@ -368,7 +368,7 @@ namespace RE
 	}
 
 
-	bool TESObjectREFR::HasKeyword(BGSKeyword* a_keyword) const
+	bool TESObjectREFR::HasKeyword(const BGSKeyword* a_keyword) const
 	{
 		return HasKeywordHelper(a_keyword);
 	}
@@ -392,6 +392,12 @@ namespace RE
 	{
 		auto xFlags = extraList.GetByType<ExtraFlags>();
 		return xFlags && xFlags->IsActivationBlocked();
+	}
+
+
+	bool TESObjectREFR::IsDead() const
+	{
+		return IsDead(true);
 	}
 
 

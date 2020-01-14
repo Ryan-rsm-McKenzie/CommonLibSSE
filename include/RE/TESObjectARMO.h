@@ -61,8 +61,11 @@ namespace RE
 		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
 		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
 		virtual void		InitItemImpl() override;						// 13
-		virtual TESFile*	GetDescriptionOwnerFile() override;				// 14 - { return templateArmor ? templateArmor->GetFile(-1) : GetFile(-1); }
+		virtual TESFile*	GetDescriptionOwnerFile() const override;		// 14 - { return templateArmor ? templateArmor->GetFile(-1) : GetFile(-1); }
 		virtual void		Copy(TESForm* a_srcForm) override;				// 2F
+
+		// override (BGSKeywordForm)
+		virtual BGSKeyword*	GetDefaultKeyword() const override;				// 05
 
 		float GetArmorRating();
 

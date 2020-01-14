@@ -93,7 +93,7 @@ namespace RE
 				return false;
 			}
 
-			switch (varType.GetType()) {
+			switch (varType.GetRawType()) {
 			case Type::kNone:
 			case Type::kNoneArray:
 				return true;
@@ -133,7 +133,7 @@ namespace RE
 				return varType < a_rhs.varType;
 			}
 
-			switch (varType.GetType()) {
+			switch (varType.GetRawType()) {
 			case Type::kNone:
 			case Type::kNoneArray:
 				return false;
@@ -205,14 +205,14 @@ namespace RE
 		}
 
 
-		Array* Variable::GetArray()
+		Array* Variable::GetArray() const
 		{
 			assert(varType.IsArray() || varType.IsNoneArray());
 			return value.arr.get();
 		}
 
 
-		Object* Variable::GetObject()
+		Object* Variable::GetObject() const
 		{
 			assert(varType.IsObject() || varType.IsNoneObject());
 			return value.obj.get();
@@ -269,7 +269,7 @@ namespace RE
 
 		void Variable::SetObject(Object* a_val)
 		{
-			ChangeType(a_val->GetTypeInfo()->GetType());
+			ChangeType(a_val->GetTypeInfo()->GetRawType());
 			value.obj.reset(a_val);
 		}
 
@@ -307,7 +307,7 @@ namespace RE
 		{
 			using Type = TypeInfo::RawType;
 
-			switch (a_rhs.varType.GetType()) {
+			switch (a_rhs.varType.GetRawType()) {
 			case Type::kNone:
 			case Type::kInt:
 			case Type::kFloat:
@@ -333,7 +333,7 @@ namespace RE
 		{
 			using Type = TypeInfo::RawType;
 
-			switch (varType.GetType()) {
+			switch (varType.GetRawType()) {
 			case Type::kNone:
 			case Type::kInt:
 			case Type::kFloat:

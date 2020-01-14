@@ -21,8 +21,10 @@
 namespace RE
 {
 	class Actor;
+	class BGSInstancedQuestObjective;
 	class BGSLocation;
 	class bhkMouseSpringAction;
+	class BipedAnim;
 	class BSFadeNode;
 	class BSLight;
 	class CombatGroup;
@@ -38,8 +40,6 @@ namespace RE
 	class UserEventEnabledEvent;
 	struct BGSActorCellEvent;
 	struct BGSActorDeathEvent;
-	struct BGSInstancedQuestObjective;
-	struct BipedAnim;
 	struct PerkRankData;
 	struct PositionPlayerEvent;
 	struct TESQuestStageItem;
@@ -262,9 +262,9 @@ namespace RE
 
 		// add
 		virtual void	Unk_12A(void);													// 12A
-		virtual SInt32	GetViolentCrimeGoldValue(const TESFaction* a_faction) const;	// 12B
-		virtual SInt32	GetNonViolentCrimeGoldValue(const TESFaction* a_faction) const;	// 12C
-		virtual void	ClearAllCrimeGold(const TESFaction* a_faction);					// 12D
+		virtual UInt32	GetViolentCrimeGoldValue(const TESFaction* a_faction) const;	// 12B
+		virtual UInt32	GetNonViolentCrimeGoldValue(const TESFaction* a_faction) const;	// 12C
+		virtual void	ClearAllCrimeGold(TESFaction* a_faction);						// 12D
 		virtual void	Unk_12E(void);													// 12E - { return 0; }
 
 		static PlayerCharacter*	GetSingleton();

@@ -1099,6 +1099,9 @@
     <Filter Include="src\RE\RadiantStory">
       <UniqueIdentifier>{30a1fbfa-6881-4697-8b5e-7e91d11088bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\BSCore\BSPointerHandleManager">
+      <UniqueIdentifier>{68e1f63c-ef98-4afa-8b63-77e0b6e072bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1265,9 +1268,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\GFxLog.cpp">
       <Filter>src\RE\Scaleform\GFxLog</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSIMusicType.cpp">
-      <Filter>src\RE\BSAudio</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\ExtraHealth.cpp">
       <Filter>src\RE\BSExtraData</Filter>
@@ -1772,6 +1772,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\BGSStoryTeller.cpp">
       <Filter>src\RE\RadiantStory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSColorForm.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSScript\IVirtualMachine.cpp">
+      <Filter>src\RE\BSScript</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5203,6 +5209,18 @@
     </ClInclude>
     <ClInclude Include="include\RE\BGSStoryTeller.h">
       <Filter>include\RE\RadiantStory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSPointerHandleManagerInterface.h">
+      <Filter>include\RE\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\HandleManager.h">
+      <Filter>include\RE\BSCore\BSPointerHandleManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSPointerHandleManager.h">
+      <Filter>include\RE\BSCore\BSPointerHandleManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSPointerHandleSmartPointer.h">
+      <Filter>include\RE\BSCore</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

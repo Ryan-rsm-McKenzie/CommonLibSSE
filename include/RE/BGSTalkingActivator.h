@@ -37,22 +37,22 @@ namespace RE
 		};
 
 
-		virtual ~BGSTalkingActivator();																																// 00
+		virtual ~BGSTalkingActivator();																																		// 00
 
 		// override (TESObjectACTI)
-		virtual void			InitializeData() override;																											// 04
-		virtual bool			Load(TESFile* a_mod) override;																										// 06
-		virtual void			SaveGame(BGSSaveFormBuffer* a_buf) override;																						// 0E
-		virtual void			LoadGame(BGSLoadFormBuffer* a_buf) override;																						// 0F
-		virtual void			Revert(void* a_arg1) override;																										// 12
-		virtual void			InitItemImpl() override;																											// 13
-		virtual bool			GetDangerous() const override;																										// 1B - { return 0; }
-		virtual bool			Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount) override;	// 37
-		virtual void			SetVoiceType(BGSVoiceType* a_voiceType);																							// 48 - { voiceType = a_voiceType; }
-		virtual BGSVoiceType*	GetVoiceType() const override;																										// 49 - { return voiceType; }
+		virtual void			InitializeData() override;																													// 04
+		virtual bool			Load(TESFile* a_mod) override;																												// 06
+		virtual void			SaveGame(BGSSaveFormBuffer* a_buf) override;																								// 0E
+		virtual void			LoadGame(BGSLoadFormBuffer* a_buf) override;																								// 0F
+		virtual void			Revert(BGSLoadFormBuffer* a_buf) override;																									// 12
+		virtual void			InitItemImpl() override;																													// 13
+		virtual bool			GetDangerous() const override;																												// 1B - { return 0; }
+		virtual bool			Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_arg4, SInt32 a_targetCount) override;	// 37
+		virtual void			SetObjectVoiceType(BGSVoiceType* a_voiceType) override;																						// 48 - { voiceType = a_voiceType; }
+		virtual BGSVoiceType*	GetObjectVoiceType() const override;																										// 49 - { return voiceType; }
 
 		// add
-		virtual void			Unk_53(void);																														// 53 - { return 0; }
+		virtual bool			GetReflectedByAutoWater();																													// 53 - { return false; }
 
 
 		// members

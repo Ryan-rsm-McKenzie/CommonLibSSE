@@ -15,14 +15,14 @@ namespace RE
 		virtual ~BGSMusicPaletteTrack();									// 00
 
 		// override (BGSMusicTrack)
-		virtual void		Unk_01(void) override;							// 01
+		virtual void		DoUpdate() override;							// 01
 		virtual void		DoPlay() override;								// 02
 		virtual void		DoPause() override;								// 03
 		virtual void		DoFinish(bool a_arg1, float a_arg2) override;	// 04
 		virtual float		GetDurationImpl() const override;				// 05 - { return duration; }
 		virtual TrackType	GetType() const override;						// 06 - "BGSMusicPaletteTrack"
-		virtual bool		InitTrack(TESFile* a_mod) override;				// 0B
-		virtual bool		LoadTrack(TESFile* a_mod) override;				// 0C
+		virtual void		InitItem(TESForm* a_form) override;				// 0B
+		virtual void		Load(TESFile* a_mod) override;					// 0C
 
 
 		// members

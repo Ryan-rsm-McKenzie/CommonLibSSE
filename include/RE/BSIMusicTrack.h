@@ -30,14 +30,14 @@ namespace RE
 		virtual ~BSIMusicTrack();											// 00
 
 		// add
-		virtual void			Unk_01(void) = 0;							// 01
+		virtual void			DoUpdate() = 0;								// 01
 		virtual void			DoPlay() = 0;								// 02
 		virtual void			DoPause() = 0;								// 03
 		virtual void			DoFinish(bool a_arg1, float a_arg2) = 0;	// 04
 		virtual float			GetDurationImpl() const = 0;				// 05
 		virtual TrackType		GetType() const = 0;						// 06 - CRC32 hash of class name
-		virtual bool			TestCanPlay();								// 07 - { return true; }
-		virtual MUSIC_STATUS	GetMusicStatus();							// 08 - { return trackStatus; }
+		virtual bool			TestCanPlay() const;						// 07 - { return true; }
+		virtual MUSIC_STATUS	GetMusicStatus() const;						// 08 - { return trackStatus; }
 		virtual void			DoSetDuckingAttenuation(UInt16 a_val);		// 09 - { return; }
 		virtual void			DoClearDucking();							// 0A - { return; }
 

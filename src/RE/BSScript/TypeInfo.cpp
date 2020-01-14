@@ -85,7 +85,7 @@ namespace RE
 		}
 
 
-		auto TypeInfo::GetType() const
+		auto TypeInfo::GetRawType() const
 			-> RawType
 		{
 			return _rawType;

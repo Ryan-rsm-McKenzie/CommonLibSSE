@@ -17,10 +17,10 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "TitleSequence Menu";
 
 
-		virtual ~TitleSequenceMenu();									// 00
+		virtual ~TitleSequenceMenu();												// 00
 
 		// override (IMenu)
-		virtual Result ProcessMessage(UIMessage* a_message) override;	// 04
+		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;	// 04
 	};
 	STATIC_ASSERT(sizeof(TitleSequenceMenu) == 0x30);
 }

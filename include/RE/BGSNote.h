@@ -41,16 +41,16 @@ namespace RE
 		};
 
 
-		virtual ~BGSNote();																																	// 00
+		virtual ~BGSNote();																																			// 00
 
 		// override (TESBoundObject)
-		virtual void	InitializeData() override;																											// 04
-		virtual void	ClearData() override;																												// 05
-		virtual bool	Load(TESFile* a_mod) override;																										// 06
-		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;																						// 0F
-		virtual void	Revert(void* a_arg1) override;																										// 12
-		virtual void	InitItemImpl() override;																											// 13
-		virtual bool	Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount) override;	// 37
+		virtual void	InitializeData() override;																													// 04
+		virtual void	ClearData() override;																														// 05
+		virtual bool	Load(TESFile* a_mod) override;																												// 06
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;																								// 0F
+		virtual void	Revert(BGSLoadFormBuffer* a_buf) override;																									// 12
+		virtual void	InitItemImpl() override;																													// 13
+		virtual bool	Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;	// 37
 
 
 		// members

@@ -128,8 +128,9 @@ namespace RE
 	STATIC_ASSERT(sizeof(QUEST_STAGE_DATA) == 0x8);
 
 
-	struct TESQuestStage
+	class TESQuestStage
 	{
+	public:
 		explicit operator bool() const;
 
 
@@ -139,8 +140,9 @@ namespace RE
 	STATIC_ASSERT(sizeof(TESQuestStage) == 0x8);
 
 
-	struct TESQuestTarget	// QSTA
+	class TESQuestTarget	// QSTA
 	{
+	public:
 		enum class Flag
 		{
 			kNone = 0,
@@ -158,8 +160,9 @@ namespace RE
 	STATIC_ASSERT(sizeof(TESQuestTarget) == 0x18);
 
 
-	struct BGSQuestObjective
+	class BGSQuestObjective
 	{
+	public:
 		BSFixedString			displayText;	// 00 - NNAM
 		TESQuest*				ownerQuest;		// 08
 		TESQuestTarget**		targets;		// 10 - QSTA
@@ -173,8 +176,9 @@ namespace RE
 	STATIC_ASSERT(sizeof(BGSQuestObjective) == 0x28);
 
 
-	struct BGSStoryEvent
+	class BGSStoryEvent
 	{
+	public:
 		UInt32	id;			// 00
 		UInt32	index;		// 04
 		UInt64	members[6];	// 08
@@ -222,21 +226,21 @@ namespace RE
 		};
 
 
-		virtual ~TESQuest();												// 00
+		virtual ~TESQuest();																								// 00
 
 		// override (BGSStoryManagerTreeForm)
-		virtual void			InitializeData() override;						// 04
-		virtual void			ClearData() override;							// 05
-		virtual bool			Load(TESFile* a_mod) override;					// 06
-		virtual void			SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void			LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void			FinishLoadGame(void* a_arg1) override;			// 11
-		virtual void			Revert(void* a_arg1) override;					// 12
-		virtual void			InitItemImpl() override;						// 13
-		virtual const char*		GetFormEditorID() override;						// 32 - { return formEditorID.c_str() ? formEditorID.c_str() : ""; }
-		virtual bool			SetFormEditorID(const char* a_str) override;	// 33
-		virtual TESCondition*	GetConditions() override;						// 3D - { return &objConditions; }
-		virtual void			Unk_3E(void) override;							// 3E
+		virtual void										InitializeData() override;										// 04
+		virtual void										ClearData() override;											// 05
+		virtual bool										Load(TESFile* a_mod) override;									// 06
+		virtual void										SaveGame(BGSSaveFormBuffer* a_buf) override;					// 0E
+		virtual void										LoadGame(BGSLoadFormBuffer* a_buf) override;					// 0F
+		virtual void										FinishLoadGame(BGSLoadFormBuffer* a_buf) override;				// 11
+		virtual void										Revert(BGSLoadFormBuffer* a_buf) override;						// 12
+		virtual void										InitItemImpl() override;										// 13
+		virtual const char*									GetFormEditorID() const override;								// 32 - { return formEditorID.c_str(); }
+		virtual bool										SetFormEditorID(const char* a_str) override;					// 33
+		virtual TESCondition*								QConditions() override;											// 3D - { return &objConditions; }
+		virtual BGSStoryManagerTreeVisitor::VisitControl	AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;	// 3E
 
 		bool	IsEnabled() const;
 		void	Reset();

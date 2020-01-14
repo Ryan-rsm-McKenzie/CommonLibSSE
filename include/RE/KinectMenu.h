@@ -27,7 +27,7 @@ namespace RE
 		virtual ~KinectMenu();																															// 00
 
 		// override (IMenu)
-		virtual Result					ProcessMessage(UIMessage* a_message) override;																	// 04
+		virtual UI_MESSAGE_RESULTS		ProcessMessage(UIMessage& a_message) override;																	// 04
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
 		virtual	BSEventNotifyControl	ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;	// 01

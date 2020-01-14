@@ -58,10 +58,10 @@ namespace RE
 			virtual ~IFunction() = default;																															// 00
 
 			// add
-			virtual const BSFixedString&	GetFunctionName() const = 0;																							// 01
-			virtual const BSFixedString&	GetScriptName() const = 0;																								// 02
+			virtual const BSFixedString&	GetName() const = 0;																									// 01
+			virtual const BSFixedString&	GetObjectTypeName() const = 0;																							// 02
 			virtual const BSFixedString&	GetStateName() const = 0;																								// 03
-			virtual TypeInfo&				GetReturnType(TypeInfo& a_dst) const = 0;																				// 04
+			virtual TypeInfo				GetReturnType() const = 0;																								// 04
 			virtual UInt32					GetParamCount() const = 0;																								// 05
 			virtual void					GetParam(UInt32 a_idx, BSFixedString& a_nameOut, TypeInfo& a_typeOut) const = 0;										// 06
 			virtual UInt32					GetStackFrameSize() const = 0;																							// 07

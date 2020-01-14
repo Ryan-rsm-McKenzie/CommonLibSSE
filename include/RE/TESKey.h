@@ -26,10 +26,10 @@ namespace RE
 		};
 
 
-		virtual ~TESKey();								// 00
+		virtual ~TESKey();										// 00
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword* GetKeywordType() override;	// 05
+		virtual BGSKeyword* GetDefaultKeyword() const override;	// 05
 	};
 	STATIC_ASSERT(sizeof(TESKey) == 0x100);
 }

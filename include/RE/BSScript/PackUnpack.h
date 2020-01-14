@@ -12,35 +12,35 @@ namespace RE
 		class Object;
 
 
-		TypeInfo::RawType	GetTypeFromFormType(VMTypeID a_formType);
-		void				BindID(BSTSmartPointer<Object>& a_object, const TESForm* a_srcData, VMTypeID a_formType);
-		void				PackHandle(Variable* a_dst, const TESForm* a_src, VMTypeID a_formType);
-		void*				UnpackHandle(Variable* a_src, VMTypeID a_formType);
+		TypeInfo::RawType	GetRawTypeFromVMType(VMTypeID a_typeID);
+		void				BindID(BSTSmartPointer<Object>& a_object, const TESForm* a_srcData, VMTypeID a_typeID);
+		void				PackHandle(Variable* a_dst, const TESForm* a_src, VMTypeID a_typeID);
+		void*				UnpackHandle(const Variable* a_src, VMTypeID a_typeID);
 
 
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
-		inline TypeInfo::RawType GetType()
+		inline TypeInfo::RawType GetRawType()
 		{
-			return GetTypeFromFormType(static_cast<VMTypeID>(remove_cvpr_t<T>::kTypeID));
+			return GetRawTypeFromVMType(static_cast<VMTypeID>(remove_cvpr_t<T>::kTypeID));
 		}
 
 
 		template <class T, typename std::enable_if_t<is_vm_form_array_no_cvr<T>::value, int> = 0>
-		inline TypeInfo::RawType GetType()
+		inline TypeInfo::RawType GetRawType()
 		{
-			return GetTypeFromFormType(static_cast<VMTypeID>(remove_cvpr_t<remove_vm_array_t<T>>::kTypeID)) + TypeInfo::RawType::kObject;
+			return GetRawTypeFromVMType(static_cast<VMTypeID>(remove_cvpr_t<remove_vm_array_t<T>>::kTypeID)) + TypeInfo::RawType::kObject;
 		}
 
 
 		template <class T, typename std::enable_if_t<is_builtin_type_no_cvr<T>::value, int> = 0>
-		inline TypeInfo::RawType GetType()
+		inline TypeInfo::RawType GetRawType()
 		{
 			return vm_type<remove_cvpr_t<T>>::value;
 		}
 
 
 		template <class T, typename std::enable_if_t<is_vm_builtin_array_no_cvr<T>::value, int> = 0>
-		inline TypeInfo::RawType GetType()
+		inline TypeInfo::RawType GetRawType()
 		{
 			return vm_type<remove_cvpr_t<remove_vm_array_t<T>>>::value + TypeInfo::RawType::kNoneArray;
 		}
@@ -75,63 +75,63 @@ namespace RE
 
 
 		template <class T, typename std::enable_if_t<is_static_base_pointer<T>::value, int> = 0>
-		inline T UnpackValue(Variable* a_src)
+		inline T UnpackValue(const Variable* a_src)
 		{
 			return static_cast<T>(0);
 		}
 
 
 		template <class T, typename std::enable_if_t<is_sint32_compat<T>::value, int> = 0>
-		inline T UnpackValue(Variable* a_src)
+		inline T UnpackValue(const Variable* a_src)
 		{
 			return a_src->GetSInt();
 		}
 
 
 		template <class T, typename std::enable_if_t<is_uint32_compat<T>::value, int> = 0>
-		inline T UnpackValue(Variable* a_src)
+		inline T UnpackValue(const Variable* a_src)
 		{
 			return a_src->GetUInt();
 		}
 
 
 		template <class T, typename std::enable_if_t<is_float_compat<T>::value, int> = 0>
-		inline T UnpackValue(Variable* a_src)
+		inline T UnpackValue(const Variable* a_src)
 		{
 			return a_src->GetFloat();
 		}
 
 
 		template <class T, typename std::enable_if_t<is_bool_no_cvr<T>::value, int> = 0>
-		inline T UnpackValue(Variable* a_src)
+		inline T UnpackValue(const Variable* a_src)
 		{
 			return a_src->GetBool();
 		}
 
 
 		template <class T, typename std::enable_if_t<is_string_compat<T>::value, int> = 0>
-		inline T UnpackValue(Variable* a_src)
+		inline T UnpackValue(const Variable* a_src)
 		{
 			return a_src->GetString();
 		}
 
 
 		template <class T, typename std::enable_if_t<is_vm_builtin_array_no_cvr<T>::value, int> = 0>
-		inline T UnpackValue(Variable* a_src)
+		inline T UnpackValue(const Variable* a_src)
 		{
 			return a_src->GetArray();
 		}
 
 
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
-		inline T UnpackValue(Variable* a_src)
+		inline T UnpackValue(const Variable* a_src)
 		{
 			return static_cast<T>(UnpackHandle(a_src, static_cast<VMTypeID>(remove_cvpr_t<T>::kTypeID)));
 		}
 
 
 		template <class T, typename std::enable_if_t<is_vm_form_array_no_cvr<T>::value, int> = 0>
-		inline T UnpackValue(Variable* a_src)
+		inline T UnpackValue(const Variable* a_src)
 		{
 			return a_src->GetArray();
 		}
@@ -145,7 +145,7 @@ namespace RE
 
 
 		template <class T>
-		inline T Variable::Unpack()
+		inline T Variable::Unpack() const
 		{
 			return UnpackValue<T>(this);
 		}

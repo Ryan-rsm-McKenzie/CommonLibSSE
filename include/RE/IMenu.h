@@ -13,6 +13,14 @@ namespace RE
 	class UIMessage;
 
 
+	enum class UI_MESSAGE_RESULTS : UInt32
+	{
+		kHandled = 0,
+		kIgnore = 1,
+		kPassOn = 2
+	};
+
+
 	class IMenu : public FxDelegateHandler
 	{
 	private:
@@ -56,28 +64,20 @@ namespace RE
 		};
 
 
-		enum class Result : UInt32
-		{
-			kProcessed = 0,
-			kAbort,
-			kNotProcessed
-		};
-
-
 		IMenu();
-		virtual ~IMenu() = default;												// 00
+		virtual ~IMenu() = default;															// 00
 
 		// override (FxDelegateHandler)
-		virtual void	Accept(CallbackProcessor* a_processor) override;		// 01 - { return; }
+		virtual void				Accept(CallbackProcessor* a_processor) override;		// 01 - { return; }
 
 		// add
-		virtual void	PostCreate();											// 02 - { return; }
-		virtual void	Unk_03(void);											// 03 - { return; }
-		virtual Result	ProcessMessage(UIMessage* a_message);					// 04
-		virtual void	AdvanceMovie(float a_interval, UInt32 a_currentTime);	// 05
-		virtual void	PostDisplay();											// 06
-		virtual void	PreDisplay();											// 07 - { return; } - only available if kRendersOffscreenTargets is set
-		virtual void	RefreshPlatform();										// 08
+		virtual void				PostCreate();											// 02 - { return; }
+		virtual void				Unk_03(void);											// 03 - { return; }
+		virtual UI_MESSAGE_RESULTS	ProcessMessage(UIMessage& a_message);					// 04
+		virtual void				AdvanceMovie(float a_interval, UInt32 a_currentTime);	// 05
+		virtual void				PostDisplay();											// 06
+		virtual void				PreDisplay();											// 07 - { return; } - only available if kRendersOffscreenTargets is set
+		virtual void				RefreshPlatform();										// 08
 
 		bool	AdvancesUnderPauseMenu() const;
 		bool	AllowSaving() const;

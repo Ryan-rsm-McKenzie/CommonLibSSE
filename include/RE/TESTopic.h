@@ -154,15 +154,19 @@ namespace RE
 		};
 
 
-		virtual ~TESTopic();														// 00
+		virtual ~TESTopic();													// 00
 
 		// override (TESForm)
-		virtual bool			Load(TESFile* a_mod) override;						// 06
-		virtual void			InitItemImpl() override;							// 13
-		virtual const char*		GetFormEditorID() override;							// 32 - { return formEditorID.c_str(); }
-		virtual bool			SetFormEditorID(const char* a_str) override;		// 33 - { bool result = formEditorID == a_str; formEditorID = a_str; return result; }
-		virtual bool			IsParentForm() const override;						// 34 - { return true; }
-		virtual bool			IsFormTypeChild(FormType a_type) const override;	// 36 - { return a_type == FormType::Info }
+		virtual bool			Load(TESFile* a_mod) override;					// 06
+		virtual void			InitItemImpl() override;						// 13
+		virtual const char*		GetFormEditorID() const override;				// 32 - { return formEditorID.c_str(); }
+		virtual bool			SetFormEditorID(const char* a_str) override;	// 33 - { bool result = formEditorID == a_str; formEditorID = a_str; return result; }
+		virtual bool			IsParentForm() override;						// 34 - { return true; }
+		virtual bool			IsFormTypeChild(FormType a_type) override;		// 36 - { return a_type == FormType::Info }
+
+		// override (TESFullName)
+		virtual UInt32		GetFullNameLength() const override;					// 04
+		virtual const char*	GetFullName() const override;						// 05
 
 		float GetPriority() const;
 

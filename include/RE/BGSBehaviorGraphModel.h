@@ -14,7 +14,7 @@ namespace RE
 		virtual ~BGSBehaviorGraphModel();						// 00
 
 		// override (TESModel)
-		virtual void	SetModelName(const char* a_modelName);	// 05
+		virtual void SetModel(const char* a_model) override;	// 05
 	};
 	STATIC_ASSERT(sizeof(BGSBehaviorGraphModel) == 0x28);
 }

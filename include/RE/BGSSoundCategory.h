@@ -38,12 +38,21 @@ namespace RE
 		};
 
 
-		virtual ~BGSSoundCategory();					// 00
+		virtual ~BGSSoundCategory();												// 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;		// 04
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void	InitializeData() override;									// 04
+		virtual bool	Load(TESFile* a_mod) override;								// 06
+		virtual void	InitItemImpl() override;									// 13
+
+		// override (BGSSoundCategory)
+		virtual bool	Matches(const BSISoundCategory* a_category) const override;	// 01
+		virtual float	GetCategoryVolume() const override;							// 02
+		virtual void	SetCategoryVolume(float a_value) override;					// 03
+		virtual float	GetCategoryFrequency() const override;						// 04
+		virtual void	SetCategoryFrequency(float a_value) override;				// 05
+		virtual UInt16	GetCategoryAttenuation() const override;					// 06
+		virtual void	SetCategoryAttenuation(UInt16 a_value) override;			// 07
 
 		constexpr float	GetStaticVolumeMultiplier() const { return staticMult / USHRT_MAX; }
 		constexpr void	SetStaticVolumeMultiplier(float a_val) { staticMult = static_cast<UInt16>(a_val * USHRT_MAX); }
@@ -52,15 +61,15 @@ namespace RE
 
 
 		// members
-		Flag				flags;					// 38 - FNAM
-		UInt32				unk3C;					// 3C
-		BGSSoundCategory*	parentCategory;			// 40 - SNCT
-		UInt16				unk48;					// 48 - flag?
-		UInt16				unk4A;					// 4A
-		UInt16				staticMult;				// 4C - VNAM
-		UInt16				defaultMenuValue;		// 4E - UNAM
-		float				ingameVolume;			// 50
-		float				unk54;					// 54
+		Flag				flags;				// 38 - FNAM
+		UInt32				unk3C;				// 3C
+		BGSSoundCategory*	parentCategory;		// 40 - SNCT
+		UInt16				unk48;				// 48
+		UInt16				attenuation;		// 4A
+		UInt16				staticMult;			// 4C - VNAM
+		UInt16				defaultMenuValue;	// 4E - UNAM
+		float				volumeMult;			// 50
+		float				frequencyMult;		// 54
 	};
 	STATIC_ASSERT(sizeof(BGSSoundCategory) == 0x58);
 }

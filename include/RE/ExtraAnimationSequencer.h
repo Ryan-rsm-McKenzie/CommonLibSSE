@@ -8,7 +8,7 @@
 
 namespace RE
 {
-	struct BGSAnimationSequencer;
+	class BGSAnimationSequencer;
 
 
 	class ExtraAnimationSequencer : public BSExtraData

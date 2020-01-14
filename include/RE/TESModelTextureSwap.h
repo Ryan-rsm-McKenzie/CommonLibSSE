@@ -23,12 +23,13 @@ namespace RE
 		STATIC_ASSERT(sizeof(AlternateTexture) == 0x18);
 
 
-		virtual ~TESModelTextureSwap();										// 00
+		virtual ~TESModelTextureSwap();														// 00
 
 		// override (TESModel)
-		virtual void	InitializeDataComponent() override;					// 01
-		virtual void	ClearDataComponent() override;						// 02
-		virtual void	CopyComponent(BaseFormComponent* a_rhs) override;	// 03
+		virtual void					InitializeDataComponent() override;					// 01
+		virtual void					ClearDataComponent() override;						// 02
+		virtual void					CopyComponent(BaseFormComponent* a_rhs) override;	// 03
+		virtual TESModelTextureSwap*	GetAsModelTextureSwap() override;					// 06 - { return this; }
 
 
 		// members

@@ -31,14 +31,14 @@ namespace RE
 		};
 
 
-		virtual ~BGSIdleMarker();								// 00
+		virtual ~BGSIdleMarker();										// 00
 
 		// override (TESBoundObject)
-		virtual bool	Load(TESFile* a_mod) override;			// 06
-		virtual void	InitItemImpl() override;				// 13
-		virtual bool	GetIgnoredBySandbox() const override;	// 22 - { return (BGSIdleCollection::flags >> 4) & 1; }
-		virtual void	Unk_41(void) override;					// 41
-		virtual void	Unk_4A(void) override;					// 4A - returns BSFadeNode*
+		virtual bool		Load(TESFile* a_mod) override;				// 06
+		virtual void		InitItemImpl() override;					// 13
+		virtual bool		GetIgnoredBySandbox() const override;		// 22 - { return (BGSIdleCollection::flags >> 4) & 1; }
+		virtual void		UnClone3D(TESObjectREFR* a_ref) override;	// 41
+		virtual NiAVObject*	Clone3D(TESObjectREFR* a_ref) override;		// 4A
 	};
 	STATIC_ASSERT(sizeof(BGSIdleMarker) == 0x78);
 }

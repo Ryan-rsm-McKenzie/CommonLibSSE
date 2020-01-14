@@ -74,7 +74,7 @@ namespace RE
 		virtual void					Unk_02(void) = 0;			// 02
 		virtual const BSFixedString&	GetTypeString() const = 0;	// 03
 
-		bool							IsQuestObject() const;
+		bool IsQuestObject() const;
 
 
 		// members

@@ -27,12 +27,15 @@ namespace RE
 		};
 
 
-		virtual ~TESSoulGem();															// 00
+		virtual ~TESSoulGem();														// 00
 
 		// override (TESObjectMISC)
-		virtual void	InitializeData() override;										// 04
-		virtual void	LoadRecordByType(TESFile* a_mod, UInt32 a_recordType) override;	// 54
-		virtual void	Unk_55(void) override;											// 55
+		virtual void		InitializeData() override;								// 04
+		virtual void		LoadImpl(TESFile* a_mod, UInt32 a_chunkID) override;	// 54
+		virtual void		InitImpl() override;									// 55
+
+		// override (BGSKeywordForm)
+		virtual BGSKeyword*	GetDefaultKeyword() const override;						// 05
 
 		SOUL_LEVEL	GetContainedSoul() const;
 		SOUL_LEVEL	GetMaximumCapacity() const;

@@ -17,10 +17,10 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "Console Native UI Menu";
 
 
-		virtual ~ConsoleNativeUIMenu();									// 00
+		virtual ~ConsoleNativeUIMenu();												// 00
 
 		// override (IMenu)
-		virtual Result ProcessMessage(UIMessage* a_message) override;	// 04
+		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;	// 04
 
 
 		// members

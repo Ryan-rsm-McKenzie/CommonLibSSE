@@ -98,17 +98,20 @@ namespace RE
 			};
 		};
 
-		virtual ~TESObjectBOOK();																															// 00
+		virtual ~TESObjectBOOK();																																	// 00
 
 		// override (TESBoundObject)
-		virtual void	InitializeData() override;																											// 04
-		virtual void	ClearData() override;																												// 05 - { return TESForm::ClearData(); }
-		virtual bool	Load(TESFile* a_mod) override;																										// 06
-		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;																						// 0E
-		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;																						// 0F
-		virtual void	InitItemImpl() override;																											// 13
-		virtual bool	Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount) override;	// 37
-		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4D
+		virtual void	InitializeData() override;																													// 04
+		virtual void	ClearData() override;																														// 05 - { return TESForm::ClearData(); }
+		virtual bool	Load(TESFile* a_mod) override;																												// 06
+		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;																								// 0E
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;																								// 0F
+		virtual void	InitItemImpl() override;																													// 13
+		virtual bool	Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;	// 37
+		virtual bool	GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																		// 4D
+
+		// override (BGSKeywordForm)
+		virtual BGSKeyword*	GetDefaultKeyword() const override;																										// 05
 
 		bool		TeachesSkill() const;
 		bool		TeachesSpell() const;

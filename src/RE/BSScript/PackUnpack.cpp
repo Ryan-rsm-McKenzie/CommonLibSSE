@@ -12,12 +12,12 @@ namespace RE
 {
 	namespace BSScript
 	{
-		TypeInfo::RawType GetTypeFromFormType(VMTypeID a_formType)
+		TypeInfo::RawType GetRawTypeFromVMType(VMTypeID a_typeID)
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			BSTSmartPointer<ObjectTypeInfo> classPtr;
-			if (vm->GetScriptClassByTypeID(a_formType, classPtr)) {
-				return classPtr->GetType();
+			if (vm->GetScriptObjectType(a_typeID, classPtr)) {
+				return classPtr->GetRawType();
 			} else {
 				_ERROR("Failed to get vm type id for class!\n");
 				return TypeInfo::RawType::kNone;
@@ -25,24 +25,24 @@ namespace RE
 		}
 
 
-		void BindID(BSTSmartPointer<Object>& a_objectPtr, const TESForm* a_srcData, VMTypeID a_formType)
+		void BindID(BSTSmartPointer<Object>& a_objectPtr, const TESForm* a_srcData, VMTypeID a_typeID)
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			VMTypeID id = 0;
 			BSTSmartPointer<ObjectTypeInfo> typeInfo(a_objectPtr->GetTypeInfo());
-			if (vm->GetFormTypeID(typeInfo->GetName(), id)) {
+			if (vm->GetTypeIDForScriptObject(typeInfo->GetName(), id)) {
 				auto policy = vm->GetObjectHandlePolicy();
-				auto handle = policy->GetHandleForObject(a_formType, a_srcData);
+				auto handle = policy->GetHandleForObject(a_typeID, a_srcData);
 
 				// if handle is of expected type and not invalid
-				if (policy->GetHandleIsType(id, handle) && handle != policy->EmptyHandle()) {
+				if (policy->HandleIsType(id, handle) && handle != policy->EmptyHandle()) {
 					vm->GetObjectBindPolicy()->BindObject(a_objectPtr, handle);
 				}
 			}
 		}
 
 
-		void PackHandle(Variable* a_dst, const TESForm* a_src, VMTypeID a_formType)
+		void PackHandle(Variable* a_dst, const TESForm* a_src, VMTypeID a_typeID)
 		{
 			a_dst->SetNone();
 
@@ -52,33 +52,33 @@ namespace RE
 
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			BSTSmartPointer<ObjectTypeInfo> classPtr;
-			vm->GetScriptClassByTypeID(a_formType, classPtr);
+			vm->GetScriptObjectType(a_typeID, classPtr);
 			if (!classPtr) {
 				return;
 			}
 
 			auto policy = vm->GetObjectHandlePolicy();
-			auto handle = policy->GetHandleForObject(a_formType, a_src);
+			auto handle = policy->GetHandleForObject(a_typeID, a_src);
 
 			BSTSmartPointer<Object> objectPtr;
 			if (!vm->FindBoundObject(handle, classPtr->GetName(), objectPtr)) {
 				// when cannot be resolved, then create new objectPtr
 				if (vm->CreateObject(classPtr->GetName(), objectPtr) && objectPtr) {
 					// create handle and bind it to the new objectPtr
-					BindID(objectPtr, a_src, a_formType);
+					BindID(objectPtr, a_src, a_typeID);
 				}
 			}
 
 			if (objectPtr) {
-				a_dst->SetObject(objectPtr.get(), classPtr->GetType());
+				a_dst->SetObject(objectPtr.get(), classPtr->GetRawType());
 			}
 		}
 
 
-		void* UnpackHandle(Variable* a_src, VMTypeID a_formType)
+		void* UnpackHandle(const Variable* a_src, VMTypeID a_typeID)
 		{
 			auto object = a_src->GetObject();
-			return object ? object->Resolve(a_formType) : 0;
+			return object ? object->Resolve(a_typeID) : 0;
 		}
 	}
 }

@@ -25,23 +25,23 @@ namespace RE
 		virtual bool			Load(TESFile* a_mod) override;											// 06 - { return TESObjectREFR::Load(a_mod); }
 		virtual void			SaveGame(BGSSaveFormBuffer* a_buf) override;							// 0E
 		virtual void			LoadGame(BGSLoadFormBuffer* a_buf) override;							// 0F
-		virtual void			InitLoadGame(void* a_arg1) override;									// 10
-		virtual void			FinishLoadGame(void* a_arg1) override;									// 11
-		virtual void			Revert(void* a_arg1) override;											// 12
-		virtual bool			GetAllowPromoteToPersistent(void) override;								// 47 - { return false; }
-		virtual bool			HasKeywordHelper(BGSKeyword* a_keyword) const override;					// 48
+		virtual void			InitLoadGame(BGSLoadFormBuffer* a_buf) override;						// 10
+		virtual void			FinishLoadGame(BGSLoadFormBuffer* a_buf) override;						// 11
+		virtual void			Revert(BGSLoadFormBuffer* a_buf) override;								// 12
+		virtual bool			GetAllowPromoteToPersistent() const override;							// 47 - { return false; }
+		virtual bool			HasKeywordHelper(const BGSKeyword* a_keyword) const override;			// 48
 		virtual void			SetActorCause(ActorCause* a_cause) override;							// 50 - { actorCause = a_cause; }
-		virtual ActorCause*		GetActorCause() override;												// 51 - { return actorCause; }
-		virtual MagicCaster*	GetMagicCaster(UInt32 a_slot) override;									// 5C
-		virtual bool			DetachHavok() override;													// 65
+		virtual ActorCause*		GetActorCause() const override;											// 51 - { return actorCause; }
+		virtual MagicCaster*	GetMagicCaster(MagicSystem::CastingSource a_source) override;			// 5C
+		virtual bool			DetachHavok(NiAVObject* a_arg1) override;								// 65
 		virtual void			InitHavok() override;													// 66
-		virtual void			Load3D(bool a_arg1) override;											// 6A
-		virtual void			Set3D(NiAVObject* a_root, UInt32 a_arg2 = 1) override;					// 6C
+		virtual NiAVObject*		Load3D(bool a_arg1) override;											// 6A
+		virtual void			Set3D(NiAVObject* a_root, bool a_arg2 = true) override;					// 6C
 		virtual void			MoveHavok(bool a_arg1) override;										// 85 - { return; }
-		virtual NiPoint3*		GetLinearVelocity(NiPoint3& a_velocity) const override;					// 86
+		virtual void			GetLinearVelocity(NiPoint3& a_velocity) const override;					// 86
 		virtual void			Unk_8B(void) override;													// 8B
 		virtual Projectile*		AsProjectile() override;												// 8F - { return this; }
-		virtual bool			OnAddCellPerformQueueReference(TESObjectCELL* a_cell) const override;	// 90 - { return false; }
+		virtual bool			OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;	// 90 - { return false; }
 
 		// add
 		virtual void			Unk_A2(void);															// A2 - { return 0; }

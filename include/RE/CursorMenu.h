@@ -20,15 +20,15 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "Cursor Menu";
 
 
-		virtual ~CursorMenu();													// 00
+		virtual ~CursorMenu();																// 00
 
 		// override (IMenu)
-		virtual Result	ProcessMessage(UIMessage* a_message) override;			// 04
+		virtual UI_MESSAGE_RESULTS	ProcessMessage(UIMessage& a_message) override;			// 04
 
 		// override (MenuEventHandler)
-		virtual bool	CanProcess(InputEvent* a_event) override;				// 01
-		virtual bool	ProcessThumbstick(ThumbstickEvent* a_event) override;	// 03
-		virtual bool	ProcessMouseMove(MouseMoveEvent* a_event) override;		// 04
+		virtual bool				CanProcess(InputEvent* a_event) override;				// 01
+		virtual bool				ProcessThumbstick(ThumbstickEvent* a_event) override;	// 03
+		virtual bool				ProcessMouseMove(MouseMoveEvent* a_event) override;		// 04
 	};
 	STATIC_ASSERT(sizeof(CursorMenu) == 0x40);
 }

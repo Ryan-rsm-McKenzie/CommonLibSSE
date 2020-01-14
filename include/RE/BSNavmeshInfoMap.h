@@ -19,6 +19,7 @@ namespace RE
 		{
 			inline static const void* RTTI = RTTI_BSNavmeshInfoMap__IVisitor;
 
+
 			virtual ~IVisitor();	// 00
 
 			// add
@@ -34,7 +35,7 @@ namespace RE
 		virtual BSNavmeshInfo*	GetNavmeshInfo(UInt32 a_id) = 0;																	// 02
 		virtual void			GetAllNavMeshInfo(BSTArray<BSNavmeshInfo*>& a_results) = 0;											// 03
 		virtual void			BuildListOfConnectedInfos(const BSNavmeshInfo* a_info, BSTArray<BSNavmeshInfo*>& a_results) = 0;	// 04
-		virtual void			ForEach(IVisitor* a_visitor) const = 0;																// 05
+		virtual void			ForEach(IVisitor* a_visitor) = 0;																	// 05
 	};
 	STATIC_ASSERT(sizeof(BSNavmeshInfoMap) == 0x8);
 }

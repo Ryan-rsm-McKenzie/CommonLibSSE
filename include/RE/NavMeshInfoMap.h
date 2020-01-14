@@ -33,12 +33,20 @@ namespace RE
 		};
 
 
-		virtual ~NavMeshInfoMap();							// 00
+		virtual ~NavMeshInfoMap();																										// 00
 
 		// override (TESForm)
-		virtual bool	Load(TESFile* a_mod) override;		// 06
-		virtual void	InitItemImpl() override;			// 13
-		virtual void	SetAltered(bool a_set) override;	// 24
+		virtual bool	Load(TESFile* a_mod) override;																					// 06
+		virtual void	InitItemImpl() override;																						// 13
+		virtual void	SetAltered(bool a_set) override;																				// 24
+
+		// override (BSNavmeshInfoMap)
+
+		virtual BSNavmeshInfo*	GetNavMeshInfoFixID(UInt32 a_id) override;																// 01
+		virtual BSNavmeshInfo*	GetNavmeshInfo(UInt32 a_id) override;																	// 02
+		virtual void			GetAllNavMeshInfo(BSTArray<BSNavmeshInfo*>& a_results) override;										// 03
+		virtual void			BuildListOfConnectedInfos(const BSNavmeshInfo* a_info, BSTArray<BSNavmeshInfo*>& a_results) override;	// 04
+		virtual void			ForEach(IVisitor* a_visitor) override;																	// 05
 
 
 		// members

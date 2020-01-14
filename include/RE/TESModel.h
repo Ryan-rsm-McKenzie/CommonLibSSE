@@ -11,6 +11,9 @@ namespace RE
 		struct ID;
 	}
 
+	
+	class TESModelTextureSwap;
+
 
 	class TESModel : public BaseFormComponent
 	{
@@ -18,17 +21,17 @@ namespace RE
 		inline static const void* RTTI = RTTI_TESModel;
 
 
-		virtual ~TESModel();													// 00
+		virtual ~TESModel();																// 00
 
 		// override (BaseFormComponent)
-		virtual void		InitializeDataComponent() override;					// 01
-		virtual void		ClearDataComponent() override;						// 02
-		virtual void		CopyComponent(BaseFormComponent* a_rhs) override;	// 03
+		virtual void					InitializeDataComponent() override;					// 01
+		virtual void					ClearDataComponent() override;						// 02
+		virtual void					CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 		// add
-		virtual const char*	GetModelName() const;								// 04 - { return modelName.c_str(); }
-		virtual void		SetModelName(const char* a_modelName);				// 05 - { modelName = name; }
-		virtual void		Unk_06(void);										// 06 - { return 0; } - set file name?
+		virtual const char*				GetModel() const;									// 04 - { return model.c_str(); }
+		virtual void					SetModel(const char* a_model);						// 05 - { model = a_model; }
+		virtual TESModelTextureSwap*	GetAsModelTextureSwap();							// 06 - { return 0; }
 
 
 		// members

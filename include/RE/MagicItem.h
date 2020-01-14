@@ -12,7 +12,9 @@
 namespace RE
 {
 	class Actor;
+	class ActorValueInfo;
 	class Character;
+	class EffectItem;
 	class EffectSetting;
 	class QueuedFile;
 	class TESModel;
@@ -39,47 +41,72 @@ namespace RE
 		STATIC_ASSERT(sizeof(PreloadableVisitor) == 0x8);
 
 
-		virtual ~MagicItem();																	// 00
+		struct SkillUsageData
+		{
+			EffectItem*	effect;		// 00
+			ActorValue	skill;		// 08
+			float		magnitude;	// 0C
+			bool		custom;		// 10
+			UInt8		pad11;		// 11
+			UInt16		pad12;		// 12
+			UInt32		pad14;		// 14
+		};
+		STATIC_ASSERT(sizeof(SkillUsageData) == 0x18);
+
+
+		class Data
+		{
+		public:
+			SInt32	costOverride;	// 0
+			UInt32	flags;			// 4
+		};
+		STATIC_ASSERT(sizeof(Data) == 0x8);
+
+
+		virtual ~MagicItem();																		// 00
 
 		// override (TESBoundObject)
-		virtual void						InitializeData() override;							// 04 - { TESForm::InitDefaults(); }
-		virtual bool						Load(TESFile* a_mod) override;						// 06
-		virtual void						InitItemImpl() override;							// 13
-		virtual bool						IsMagicItem() const override;						// 29 - { return true; }
-		virtual void						Copy(TESForm* a_srcForm) override;					// 2F
-		virtual bool						IsAutoCalc() const override;						// 3E - { return (GetData().flags & 1) == 0; }
+		virtual void						InitializeData() override;								// 04 - { TESForm::InitDefaults(); }
+		virtual bool						Load(TESFile* a_mod) override;							// 06
+		virtual void						InitItemImpl() override;								// 13
+		virtual bool						IsMagicItem() const override;							// 29 - { return true; }
+		virtual void						Copy(TESForm* a_srcForm) override;						// 2F
+		virtual bool						IsAutoCalc() const override;							// 3E - { return (GetData().flags & 1) == 0; }
+
+		// override (BGSKeywordForm)
+		virtual bool						HasKeyword(const BGSKeyword* a_keyword) const override;	// 04
 
 		// add
-		virtual MagicSystem::SpellType		GetSpellType() const = 0;							// 53
-		virtual void						SetCastingType(MagicSystem::CastingType a_type);	// 54 - { return; }
-		virtual MagicSystem::CastingType	GetCastingType() const = 0;							// 55
-		virtual void						SetDeliveryType(MagicSystem::Delivery a_type);		// 56 - { return; }
-		virtual MagicSystem::Delivery		GetDeliveryType() const = 0;						// 57
-		virtual void						Unk_58(void);										// 58 - { return 1; }
-		virtual float						GetCastDuration() const;							// 59 - { return 0.0; }
-		virtual float						GetRange() const;									// 5A - { return 0.0; }
-		virtual bool						IgnoresResistance();								// 5B - { return false; }
-		virtual bool						AreaAffectIgnoresLOS();								// 5C - { return false; }
-		virtual bool						IsFoodItem() const;									// 5D - { return false; }
-		virtual bool						DisallowsAbsorbReflection();						// 5E - { return false; }
-		virtual bool						AllowsDualCastModification();						// 5F - { return false; }
-		virtual void						Unk_60(void);										// 60 - { return 0; }
-		virtual bool						IsPoison() const;									// 61 - { return GetSpellType() == MagicSystem::SpellType::kPoison; }
-		virtual bool						IsHealingItem() const;								// 62 - { return false; }
-		virtual void						GetSkillCost(float& a_cost, Actor* a_actor) const;	// 63 - { return; }
-		virtual float						GetChargeTime() const;								// 64 - { return 0.0; }
-		virtual void						Unk_65(void);										// 65 - { return 0; }
-		virtual ActorValue					GetActorValueType() const;							// 66 - { return ActorValue::kNone; } used for Actor::AdvanceSkill()
-		virtual void						Unk_67(void);										// 67 - { return 0; } - UsesAllEquipSlotParents()?
-		virtual UInt32						GetDataSigniture() const = 0;						// 68
-		virtual void						CopyData(MagicItem* a_src) = 0;						// 69
-		virtual void						LoadData(TESFile* a_mod, UInt32 a_signature);		// 6A - { return; }
-		virtual void						Unk_6B(void);										// 6B - { return; }
-		virtual void*						GetData() = 0;										// 6C - actually returns a base data struct that all derived data structs inherit from
-		virtual const void*					GetData() const = 0;								// 6D
-		virtual UInt32						GetDataSize() const = 0;							// 6E
-		virtual void						LoadData(TESFile* a_mod) = 0;						// 6F
-		virtual void						ByteSwapData() = 0;									// 70
+		virtual MagicSystem::SpellType		GetSpellType() const = 0;								// 53
+		virtual void						SetCastingType(MagicSystem::CastingType a_type);		// 54 - { return; }
+		virtual MagicSystem::CastingType	GetCastingType() const = 0;								// 55
+		virtual void						SetDelivery(MagicSystem::Delivery a_delivery);			// 56 - { return; }
+		virtual MagicSystem::Delivery		GetDelivery() const = 0;								// 57
+		virtual bool						IsValidDelivery(MagicSystem::Delivery a_delivery);		// 58 - { return true; }
+		virtual float						GetFixedCastDuration() const;							// 59 - { return 0.0; }
+		virtual float						GetRange() const;										// 5A - { return 0.0; }
+		virtual bool						IgnoresResistance() const;								// 5B - { return false; }
+		virtual bool						IgnoreLOS() const;										// 5C - { return false; }
+		virtual bool						IsFood() const;											// 5D - { return false; }
+		virtual bool						GetNoAbsorb() const;									// 5E - { return false; }
+		virtual bool						GetNoDualCastModifications() const;						// 5F - { return false; }
+		virtual bool						GetSkillUsageData(SkillUsageData& a_data) const;		// 60 - { return false; }
+		virtual bool						IsPoison() const;										// 61 - { return GetSpellType() == MagicSystem::SpellType::kPoison; }
+		virtual bool						IsMedicine() const;										// 62 - { return false; }
+		virtual void						AdjustCost(float& a_cost, Actor* a_actor) const;		// 63 - { return; }
+		virtual float						GetChargeTime() const;									// 64 - { return 0.0; }
+		virtual UInt32						GetMaxEffectCount() const;								// 65 - { return 0; }
+		virtual ActorValue					GetAssociatedSkill() const;								// 66 - { return ActorValue::kNone; }
+		virtual bool						IsTwoHanded() const;									// 67 - { return false; }
+		virtual UInt32						GetChunkID() = 0;										// 68
+		virtual void						CopyMagicItemData(MagicItem* a_src) = 0;				// 69
+		virtual void						LoadMagicItemChunk(TESFile* a_mod, UInt32 a_chunkID);	// 6A - { return; }
+		virtual void						LoadChunkDataPostProcess(TESFile* a_mod);				// 6B - { return; }
+		virtual const Data*					GetData() const = 0;									// 6C
+		virtual Data*						GetData() = 0;											// 6D
+		virtual UInt32						GetDataSize() const = 0;								// 6E
+		virtual void						InitFromChunk(TESFile* a_mod) = 0;						// 6F
+		virtual void						InitChunk() = 0;										// 70
 
 		float	CalculateMagickaCost(Actor* a_caster) const;
 		float	CalculateTotalGoldValue(Actor* a_caster = 0) const;

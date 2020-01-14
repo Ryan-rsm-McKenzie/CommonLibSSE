@@ -37,7 +37,7 @@ namespace RE
 	STATIC_ASSERT(sizeof(BIPOBJECT) == 0x78);
 
 
-	struct BipedAnim : public BSIntrusiveRefCounted
+	class BipedAnim : public BSIntrusiveRefCounted
 	{
 	public:
 		~BipedAnim();

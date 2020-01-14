@@ -38,18 +38,18 @@ namespace RE
 		};
 
 
-		virtual ~TESLeveledList();											// 00
+		virtual ~TESLeveledList();												// 00
 
 		// override (BaseFormComponent)
-		virtual void	InitializeDataComponent() override;					// 01
-		virtual void	ClearDataComponent() override;						// 02
-		virtual void	CopyComponent(BaseFormComponent* a_rhs) override;	// 03
+		virtual void	InitializeDataComponent() override;						// 01
+		virtual void	ClearDataComponent() override;							// 02
+		virtual void	CopyComponent(BaseFormComponent* a_rhs) override;		// 03
 
 		// add
-		virtual UInt8	GetLevChanceValue();								// 04 - { if (global) return global->value; else return chanceNone; }
-		virtual bool	CalculateForEachItemInCount();						// 05 - { return (flags >> 1) & 1; }
-		virtual SInt32	GetLevDifferenceMax();								// 06 - { return 0; }
-		virtual bool	IsValidLevItem(FormType a_formType) = 0;			// 07
+		virtual UInt8	GetChanceNone();										// 04 - { if (global) return global->value; else return chanceNone; }
+		virtual bool	GetMultCalc();											// 05 - { return (flags >> 1) & 1; }
+		virtual SInt32	GetLevDifferenceMax();									// 06 - { return 0; }
+		virtual bool	GetCanContainFormsOfType(FormType a_type) const = 0;	// 07
 
 
 		// members

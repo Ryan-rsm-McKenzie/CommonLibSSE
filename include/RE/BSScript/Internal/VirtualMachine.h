@@ -18,9 +18,6 @@
 
 namespace RE
 {
-	class TESForm;
-
-
 	namespace BSScript
 	{
 		class Array;
@@ -65,25 +62,25 @@ namespace RE
 				virtual ~VirtualMachine();																																																				// 00
 
 				// override (IVirtualMachine)
-				virtual void							Unk_01(void) override;																																											// 01
+				virtual void							SetLinkedCallback(ITypeLinkedCallback* a_callback) override;																																	// 01
 				virtual void							TraceStack(const char* a_str, VMStackID a_stackID, Severity a_severity = Severity::kInfo) override;																								// 02
 				virtual void							Unk_03(void) override;																																											// 03
-				virtual void							OnUpdate(float a_arg1) override;																																								// 04
-				virtual void							OnUpdateGameTime(float a_arg1) override;																																						// 05
-				virtual void							Unk_06(void) override;																																											// 06
-				virtual bool							OnChangeVMState() override;																																										// 07
-				virtual void							RegisterForm(VMTypeID a_typeID, const char* a_papyrusClassName) override;																														// 08
-				virtual bool							GetScriptClassByName(const BSFixedString& a_className, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr) override;																				// 09
-				virtual bool							GetScriptClassByTypeID(VMTypeID a_typeID, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr) override;																							// 0A
-				virtual bool							RegisterScriptClass(const BSFixedString& a_className, BSTSmartPointer<ObjectTypeInfo>& a_typeInfoPtr) override;																					// 0B
-				virtual void							Unk_0C(void) override;																																											// 0C
-				virtual bool							GetFormTypeID(const BSFixedString& a_className, VMTypeID& a_typeID) override;																													// 0D
-				virtual void							Unk_0E(void) override;																																											// 0E
-				virtual void							Unk_0F(void) override;																																											// 0F
-				virtual void							Unk_10(void) override;																																											// 10
-				virtual void							Unk_11(void) override;																																											// 11
-				virtual void							Unk_12(void) override;																																											// 12
-				virtual void							Unk_13(void) override;																																											// 13
+				virtual void							Update(float a_arg1) override;																																									// 04
+				virtual void							UpdateTasklets(float a_arg1) override;																																							// 05
+				virtual void							SetOverstressed(bool a_set) override;																																							// 06 - { overstressed = a_set; }
+				virtual bool							IsCompletelyFrozen() const override;																																							// 07
+				virtual bool							RegisterObjectType(VMTypeID a_typeID, const char* a_className) override;																														// 08
+				virtual bool							GetScriptObjectType(const BSFixedString& a_className, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr) override;																				// 09
+				virtual bool							GetScriptObjectType(VMTypeID a_typeID, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr) override;																								// 0A
+				virtual bool							GetScriptObjectTypeNoLoad(const BSFixedString& a_className, BSTSmartPointer<ObjectTypeInfo>& a_typeInfoPtr) const override;																		// 0B
+				virtual bool							GetScriptObjectTypeNoLoad(VMTypeID a_typeID, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr) const override;																					// 0C
+				virtual bool							GetTypeIDForScriptObject(const BSFixedString& a_className, VMTypeID& a_typeID) const override;																									// 0D
+				virtual void							GetScriptObjectsWithATypeID(BSScrapArray<BSFixedString>& a_results) const override;																												// 0E
+				virtual bool							GetParentNativeType(const BSFixedString& a_className, BSTSmartPointer<ObjectTypeInfo>& a_typeInfoPtr) override;																					// 0F
+				virtual bool							TypeIsValid(const BSFixedString& a_className) override;																																			// 10
+				virtual bool							ReloadType(const char* a_className) override;																																					// 11
+				virtual void							TasksToJobs(BSJobs::JobList& a_jobList) override;																																				// 12
+				virtual void							CalculateFullReloadList(void) const override;																																					// 13
 				virtual bool							CreateObject(const BSFixedString& a_className, void* a_property, BSTSmartPointer<Object>& a_objPtr) override;																					// 14
 				virtual bool							CreateObject(const BSFixedString& a_className, BSTSmartPointer<Object>& a_result) override;																										// 15
 				virtual bool							CreateArray(const TypeInfo& a_typeInfo, UInt32 a_size, BSTSmartPointer<Array>& a_arrayPtr) override;																							// 16
@@ -92,21 +89,21 @@ namespace RE
 				virtual void							SetCallableFromTasklets(const char* a_className, const char* a_stateName, const char* a_fnName, bool a_callable) override;																		// 19
 				virtual void							SetCallableFromTasklets(const char* a_className, const char* a_fnName, bool a_callable) override;																								// 1A - { SetCallableFromTasklets(a_className, 0, a_fnName, a_callable); }
 				virtual void							ForEachBoundObject(VMHandle a_handle, IForEachScriptObjectFunctor* a_functor) override;																											// 1B
-				virtual bool							FindBoundObject(VMHandle a_handle, const char* a_className, BSTSmartPointer<Object>& a_result) override;																						// 1C
+				virtual bool							FindBoundObject(VMHandle a_handle, const char* a_className, BSTSmartPointer<Object>& a_result) const override;																					// 1C
 				virtual void							MoveBoundObjects(VMHandle a_from, VMHandle a_to) override;																																		// 1D
 				virtual void							ResetAllBoundObjects(VMHandle a_handle) override;																																				// 1E
 				virtual bool							CastObject(const BSTSmartPointer<Object>& a_fromObjPtr, const BSTSmartPointer<ObjectTypeInfo>& a_toTypeInfoPtr, BSTSmartPointer<Object>& a_toObjPtr) override;									// 1F
 				virtual bool							SetPropertyValue(BSTSmartPointer<Object>& a_obj, const char* a_propertyName, Variable& a_setVal) override;																						// 20
 				virtual bool							GetPropertyValue(BSTSmartPointer<Object>& a_obj, const char* a_propertyName, Variable& a_getVal) override;																						// 21
-				virtual bool							GetVariableValue(const BSTSmartPointer<Object>& a_objPtr, UInt32 a_index, Variable& a_out) override;																							// 22
-				virtual bool							GetVariableValue(VMHandle a_handle, const BSFixedString& a_className, SInt32 a_variableIndex, Variable& a_out) override;																		// 23
+				virtual bool							GetVariableValue(const BSTSmartPointer<Object>& a_objPtr, UInt32 a_index, Variable& a_out) const override;																						// 22
+				virtual bool							GetVariableValue(VMHandle a_handle, const BSFixedString& a_className, SInt32 a_variableIndex, Variable& a_out) const override;																	// 23
 				virtual void							SendEvent(VMHandle a_handle, const BSFixedString& a_eventName, IFunctionArguments* a_args) override;																							// 24
 				virtual void							SendEventAll(const BSFixedString& a_eventName, IFunctionArguments* a_args) override;																											// 25
 				virtual bool							DispatchStaticCall(const BSFixedString& a_className, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) override;						// 26
 				virtual bool							DispatchMethodCall(BSTSmartPointer<Object>& a_obj, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) override;						// 27
 				virtual bool							DispatchMethodCall(VMHandle a_handle, const BSFixedString& a_className, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) override;	// 28
-				virtual void							Unk_29(void) override;																																											// 29
-				virtual bool							IsWaitingOnLatent(VMStackID a_stackID) override;																																				// 2A
+				virtual bool							DispatchUnboundMethodCall(void) override;																																						// 29
+				virtual bool							IsWaitingOnLatent(VMStackID a_stackID) const override;																																			// 2A
 				virtual void							ReturnFromLatent(VMStackID a_stackID, const Variable& a_val) override;																															// 2B
 				virtual ErrorLogger*					GetErrorLogger() override;																																										// 2C - { return errorLogger; }
 				virtual IObjectHandlePolicy*			GetObjectHandlePolicy() override;																																								// 2D - { return handlePolicy; }
@@ -120,17 +117,18 @@ namespace RE
 				virtual void							UnregisterForStatsEvent(BSTEventSink<StatsEvent>* a_sink) override;																																// 35
 
 				// override (IVMObjectBindInterface)
-				virtual VMHandle						GetHandle(const BSTSmartPointer<Object>& a_objPtr) override;																																	// 01
+				virtual VMHandle						GetBoundHandle(const BSTSmartPointer<Object>& a_objPtr) const override;																															// 01
+				virtual bool							TypeCanBeBound(const BSFixedString& a_className, VMHandle a_handle) override;																													// 02
 				virtual void							BindObject(BSTSmartPointer<Object>& a_objPtr, VMHandle a_handle, bool a_conditional) override;																									// 03
 				virtual void							HandleLoadedBinding(BSTSmartPointer<Object>& a_objPtr, VMHandle a_handle, bool a_conditional) override;																							// 04
+				virtual void							RemoveAllBoundObjects(VMHandle a_handle) override;																																				// 05
+				virtual void							RemoveAllDiskLoadedBoundObjects(VMHandle a_handle) override;																																	// 06
+				virtual void							HandleCObjectDeletion(VMHandle a_handle) override;																																				// 07
+				virtual void							UnbindObject(const BSTSmartPointer<Object>& a_objPtr) override;																																	// 08
 				virtual bool							CreateObject(const BSFixedString& a_className, UInt32 a_numProperties, BSTSmartPointer<Object>& a_objPtr) override;																				// 09
 				virtual bool							InitObjectProperties(BSTSmartPointer<Object>& a_objPtr, void* a_property, bool a_arg3) override;																								// 0A
 
 				static VirtualMachine* GetSingleton();
-
-				bool					AllocateArray(const TypeInfo::RawType& a_typeID, std::size_t a_size, BSTSmartPointer<Array>& a_array);
-				void					TraceStack(TESForm* a_form, const char* a_str, VMStackID a_stackID, Severity a_severity);
-				template <class F> void	RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, bool a_callableFromTasklets = false);
 
 
 				// members
@@ -170,8 +168,8 @@ namespace RE
 				BSTHashMap<VMStackID, BSTSmartPointer<Stack>>				allRunningStacks;			// 9320
 				BSTHashMap<VMStackID, BSTSmartPointer<Stack>>				waitingLatentReturns;		// 9350
 				VMStackID													nextStackID;				// 9380
-				UInt32														unk9384;					// 9384
-				UInt64														unk9388;					// 9388
+				mutable BSSpinLock											frozenStacksLock;			// 9384
+				UInt32														unk938C;					// 938C
 				UInt64														unk9390;					// 9390
 				UInt64														unk9398;					// 9398
 				UInt64														unk93A0;					// 93A0

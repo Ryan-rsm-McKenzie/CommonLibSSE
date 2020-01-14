@@ -24,18 +24,18 @@ namespace RE
 		STATIC_ASSERT(sizeof(BSIAttenuationCharacteristics) == 0x8);
 
 
-		virtual ~BSISoundOutputModel();														// 00
+		virtual ~BSISoundOutputModel();																									// 00
 
 		// add
-		virtual bool							UsesHRTF() const = 0;						// 01
-		virtual bool							DefinesSpeakerOutput() const = 0;			// 02
-		virtual void							Unk_03(void) = 0;							// 03
-		virtual bool							AttenuatesWithDistance(void) const = 0;		// 04
-		virtual bool							IsOutOfRange(float a_distance) const = 0;	// 05
-		virtual void							Unk_06(void) = 0;							// 06
-		virtual BSIAttenuationCharacteristics*	GetAttenuationValues() = 0;					// 07
-		virtual float							GetReverbSend() const = 0;					// 08
-		virtual void							Unk_09(void) = 0;							// 09
+		virtual bool									DoGetUsesHRTF() const = 0;														// 01
+		virtual bool									DoGetHasSpeakerBias() const = 0;												// 02
+		virtual bool									DoGetSpeakerBias(UInt32 a_arg1, UInt32 a_arg2, float(&a_arg3)[8]) const = 0;	// 03
+		virtual bool									DoGetAttenuatesWithDistance() const = 0;										// 04
+		virtual bool									DoGetAudibility(float a_distance) const = 0;									// 05
+		virtual UInt32									DoGetSupportedInputChannels() const = 0;										// 06
+		virtual const BSIAttenuationCharacteristics*	DoGetAttenuation() const = 0;													// 07
+		virtual float									DoGetReverbSendLevel() const = 0;												// 08
+		virtual bool									DoGetSupportsMonitor(UInt32 a_arg1) const = 0;									// 09
 	};
 	STATIC_ASSERT(sizeof(BSISoundOutputModel) == 0x8);
 }

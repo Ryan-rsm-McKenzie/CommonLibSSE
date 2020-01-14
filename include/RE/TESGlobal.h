@@ -39,7 +39,7 @@ namespace RE
 
 		// override (TESform)
 		virtual bool		Load(TESFile* a_mod) override;					// 06
-		virtual const char*	GetFormEditorID(void) override;					// 32 - { return formEditorID.c_str(); }
+		virtual const char*	GetFormEditorID() const override;				// 32 - { return formEditorID.c_str(); }
 		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { formEditorID = a_str; return true; }
 
 

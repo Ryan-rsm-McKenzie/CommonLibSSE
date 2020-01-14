@@ -59,7 +59,7 @@ namespace RE
 		}
 
 
-		TypeInfo::RawType ObjectTypeInfo::GetType() const
+		TypeInfo::RawType ObjectTypeInfo::GetRawType() const
 		{
 			return unrestricted_cast<TypeInfo::RawType>(this);
 		}

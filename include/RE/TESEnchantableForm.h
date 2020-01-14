@@ -23,7 +23,7 @@ namespace RE
 		virtual void						CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 		// add
-		virtual MagicSystem::CastingType	GetCastingType();									// 04 - { return castingType; }
+		virtual MagicSystem::CastingType	GetCastingType() const;								// 04 - { return castingType; }
 
 
 		// members

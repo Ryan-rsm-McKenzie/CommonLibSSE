@@ -39,20 +39,20 @@ namespace RE
 		};
 
 
-		virtual ~TESLevCharacter();										// 00
+		virtual ~TESLevCharacter();														// 00
 
 		// override (TESBoundAnimObject)
-		virtual bool	Load(TESFile* a_mod) override;					// 06
-		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void	Revert(void* a_arg1) override;					// 12
-		virtual void	InitItemImpl() override;						// 13
-		virtual void	Unk_41(void) override;							// 4A - { return; }
-		virtual void	Unk_4A(void) override;							// 4A - { return 0; }
+		virtual bool		Load(TESFile* a_mod) override;								// 06
+		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;				// 0E
+		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;				// 0F
+		virtual void		Revert(BGSLoadFormBuffer* a_buf) override;					// 12
+		virtual void		InitItemImpl() override;									// 13
+		virtual void		UnClone3D(TESObjectREFR* a_ref) override;					// 4A - { return; }
+		virtual NiAVObject*	Clone3D(TESObjectREFR* a_ref) override;						// 4A - { return 0; }
 
 		// override (TESLeveledList)
-		virtual SInt32	GetLevDifferenceMax() override;					// 06 - { return iLevCharLevelDifferenceMax; }
-		virtual bool	IsValidLevItem(FormType a_formType) override;	// 07 - { return a_formType <= FormType::LeveledCharacter; }
+		virtual SInt32		GetLevDifferenceMax() override;								// 06 - { return iLevCharLevelDifferenceMax; }
+		virtual bool		GetCanContainFormsOfType(FormType a_type) const override;	// 07 - { return a_type <= FormType::LeveledCharacter; }
 	};
 	STATIC_ASSERT(sizeof(TESLevCharacter) == 0x90);
 }

@@ -5,8 +5,9 @@
 
 namespace RE
 {
-	struct BGSDirectionalAmbientLightingColors
+	class BGSDirectionalAmbientLightingColors
 	{
+	public:
 		struct Directional
 		{
 			template <class T>

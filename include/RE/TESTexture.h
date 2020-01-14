@@ -23,9 +23,9 @@ namespace RE
 		virtual void		CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 		// add
-		virtual UInt32		GetSize();											// 04 - { return 0; }
-		virtual void		GetNormalMapName(BSString* a_out);					// 05
-		virtual const char*	GetSearchDir();										// 06
+		virtual UInt32		GetMaxAllowedSize();								// 04 - { return 0; }
+		virtual const char*	GetAsNormalFile(BSString& a_out) const;				// 05
+		virtual const char*	GetDefaultPath() const;								// 06 - { return "Textures\\"; }
 
 
 		// members

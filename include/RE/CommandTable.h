@@ -9,11 +9,11 @@
 
 namespace RE
 {
+	class ScriptLocals;
 	struct ACTION_OBJECT;
 	struct ConditionCheckParams;
 	struct ScriptCompileData;
 	struct ScriptLineBuffer;
-	struct ScriptLocals;
 	struct ScriptVariable;
 	struct SCRIPT_EFFECT_DATA;
 	struct SCRIPT_HEADER;
@@ -183,8 +183,9 @@ namespace RE
 	STATIC_ASSERT(sizeof(SCRIPT_EFFECT_DATA) == 0x8);
 
 
-	struct ScriptLocals
+	class ScriptLocals
 	{
+	public:
 		Script*							masterScript;		// 00
 		char							flags;				// 08
 		UInt8							pad09;				// 09

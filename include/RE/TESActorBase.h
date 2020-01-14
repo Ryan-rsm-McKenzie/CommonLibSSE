@@ -35,22 +35,31 @@ namespace RE
 		inline static const void* RTTI = RTTI_TESActorBase;
 
 
-		virtual ~TESActorBase();												// 00
+		virtual ~TESActorBase();																									// 00
 
 		// override (TESBoundAnimObject)
-		virtual bool			AddChange(UInt32 a_changeFlags) override;		// 0A
-		virtual void			RemoveChange(UInt32 a_changeFlags) override;	// 0B
-		virtual void			SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void			LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual bool			IsAutoCalc() const override;					// 3E - { return formType == FormType::NPC && (TESActorBaseData::flags >> 4) & 1; }
-		virtual void			Unk_3F(void) override;							// 3F
+		virtual bool			AddChange(UInt32 a_changeFlags) override;															// 0A
+		virtual void			RemoveChange(UInt32 a_changeFlags) override;														// 0B
+		virtual void			SaveGame(BGSSaveFormBuffer* a_buf) override;														// 0E
+		virtual void			LoadGame(BGSLoadFormBuffer* a_buf) override;														// 0F
+		virtual bool			IsAutoCalc() const override;																		// 3E - { return formType == FormType::NPC && (TESActorBaseData::flags >> 4) & 1; }
+		virtual void			SetAutoCalc(bool a_autoCalc) override;																// 3F
 
+		// override (TESAIForm)
+		virtual float			GetActorValue(ActorValue a_akValue) override;														// 01
+		virtual float			GetPermanentActorValue(ActorValue a_akValue) override;												// 02
+		virtual float			GetBaseActorValue(ActorValue a_akValue) override;													// 03
+		virtual void			SetBaseActorValue(ActorValue a_akValue, float a_value) override;									// 04
+		virtual void			ModActorValue(ActorValue a_akValue, float a_value) override;										// 05
+		virtual void			RestoreActorValue(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_akValue, float a_value) override;	// 06
+		virtual void			SetActorValue(ActorValue a_akValue, float a_value) override;										// 07
+		virtual bool			GetIsPlayerOwner() const override;																	// 08
 
 		// add
-		virtual void			Unk_53(void);									// 53 - { return 0; }
-		virtual TESCombatStyle*	GetCombatStyle();								// 54 - { return 0; }
-		virtual void			SetCombatStyle(TESCombatStyle* a_combatStyle);	// 55 - { return; }
-		virtual void			Unk_56(void);									// 56 - { return this; }
+		virtual bool			GetHasPLSpecTex() const;																			// 53 - { return false; }
+		virtual TESCombatStyle*	GetCombatStyle();																					// 54 - { return 0; }
+		virtual void			SetCombatStyle(TESCombatStyle* a_combatStyle);														// 55 - { return; }
+		virtual TESForm*		GetAsForm();																						// 56 - { return this; }
 	};
 	STATIC_ASSERT(sizeof(TESActorBase) == 0x150);
 }

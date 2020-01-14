@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	template <UInt32 INDEX_BITS, UInt32 FLAG_BITS>
+	template <UInt32 INDEX_BITS = 20, UInt32 FLAG_BITS = 6>
 	class BSUntypedPointerHandle
 	{
 	public:
@@ -16,7 +16,7 @@ namespace RE
 		BSUntypedPointerHandle() :
 			_handle(0)
 		{
-			_handle = get_invalid_handle();
+			_handle = get_null_handle();
 		}
 
 
@@ -35,6 +35,12 @@ namespace RE
 		BSUntypedPointerHandle(value_type a_handle) :
 			_handle(a_handle)
 		{}
+
+
+		~BSUntypedPointerHandle()
+		{
+			reset();
+		}
 
 
 		BSUntypedPointerHandle& operator=(const BSUntypedPointerHandle& a_rhs)
@@ -67,7 +73,7 @@ namespace RE
 
 		[[nodiscard]] bool has_value() const
 		{
-			return _handle != get_invalid_handle();
+			return _handle != get_null_handle();
 		}
 
 
@@ -79,7 +85,7 @@ namespace RE
 
 		void reset()
 		{
-			_handle = get_invalid_handle();
+			_handle = get_null_handle();
 		}
 
 
@@ -95,9 +101,9 @@ namespace RE
 		}
 
 	private:
-		static UInt32 get_invalid_handle()
+		static UInt32 get_null_handle()
 		{
-			REL::Offset<UInt32*> invalidHandle(Offset::BSUntypedPointerHandle::InvalidHandle);
+			REL::Offset<UInt32*> invalidHandle(Offset::BSUntypedPointerHandle::NullHandle);
 			return *invalidHandle;
 		}
 
@@ -105,5 +111,5 @@ namespace RE
 		// members
 		UInt32 _handle;	// 0
 	};
-	STATIC_ASSERT(sizeof(BSUntypedPointerHandle<21, 5>) == 0x4);
+	STATIC_ASSERT(sizeof(BSUntypedPointerHandle<>) == 0x4);
 }

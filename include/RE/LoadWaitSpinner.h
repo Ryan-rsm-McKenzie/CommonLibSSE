@@ -32,7 +32,7 @@ namespace RE
 
 		// override (IMenu)
 		virtual void					Accept(CallbackProcessor* a_processor) override;																		// 01 - { return; }
-		virtual Result					ProcessMessage(UIMessage* a_message) override;																			// 04
+		virtual UI_MESSAGE_RESULTS		ProcessMessage(UIMessage& a_message) override;																			// 04
 		
 		// override (BSTEventSink<BSSystemEvent>)
 		virtual	BSEventNotifyControl	ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;						// 01

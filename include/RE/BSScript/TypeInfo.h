@@ -50,7 +50,7 @@ namespace RE
 			friend bool operator> (const TypeInfo& a_lhs, const TypeInfo& a_rhs);
 			friend bool operator>=(const TypeInfo& a_lhs, const TypeInfo& a_rhs);
 
-			RawType			GetType() const;
+			RawType			GetRawType() const;
 			ObjectTypeInfo*	GetTypeInfo() const;
 			RawType			GetUnmangledType() const;
 			bool 			IsArray() const;

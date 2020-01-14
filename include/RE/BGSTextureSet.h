@@ -41,14 +41,14 @@ namespace RE
 		};
 
 
-		virtual ~BGSTextureSet();						// 00
+		virtual ~BGSTextureSet();													// 00
 
 		// override (TESBoundObject)
-		virtual void	InitializeData() override;		// 04
-		virtual void	ClearData() override;			// 05
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	Unk_40(void) override;			// 40 - returns BSFadeNode*
-		virtual void	Unk_41(void) override;			// 41
+		virtual void		InitializeData() override;								// 04
+		virtual void		ClearData() override;									// 05
+		virtual bool		Load(TESFile* a_mod) override;							// 06
+		virtual NiAVObject*	Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;	// 40
+		virtual void		UnClone3D(TESObjectREFR* a_ref) override;				// 41
 
 
 		// members

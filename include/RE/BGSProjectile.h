@@ -96,17 +96,17 @@ namespace RE
 		};
 
 
-		virtual ~BGSProjectile();																															// 00
+		virtual ~BGSProjectile();																																		// 00
 
 		// override (TESBoundObject)
-		virtual void	InitializeData() override;																											// 04
-		virtual void	ClearData() override;																												// 05
-		virtual bool	Load(TESFile* a_mod) override;																										// 06
-		virtual void	InitItemImpl() override;																											// 13
-		virtual bool	Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount) override;	// 37
-		virtual void	Unk_40(void) override;																												// 40
-		virtual void	Unk_41(void) override;																												// 41
-		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4C
+		virtual void		InitializeData() override;																													// 04
+		virtual void		ClearData() override;																														// 05
+		virtual bool		Load(TESFile* a_mod) override;																												// 06
+		virtual void		InitItemImpl() override;																													// 13
+		virtual bool		Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;	// 37
+		virtual NiAVObject*	Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;																						// 40
+		virtual void		UnClone3D(TESObjectREFR* a_ref) override;																									// 41
+		virtual bool		GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																		// 4C
 
 
 		// members

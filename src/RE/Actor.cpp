@@ -277,10 +277,8 @@ namespace RE
 
 	float Actor::GetHeight()
 	{
-		NiPoint3 min;
-		NiPoint3 max;
-		GetBoundMin(min);
-		GetBoundMax(max);
+		auto min = GetBoundMin();
+		auto max = GetBoundMax();
 		auto diff = max.z - min.z;
 		auto height = GetBaseHeight() * diff;
 

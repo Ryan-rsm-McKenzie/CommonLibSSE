@@ -47,6 +47,9 @@ namespace RE
 		virtual void	ClearData() override;			// 05
 		virtual bool	Load(TESFile* a_mod) override;	// 06
 
+		// override (BSMaterialObject)
+		virtual void	EnsureLoaded() override;		// 01
+
 
 		// members
 		BSTArray<FILE_DATA> fileData;	// A0 - DNAM

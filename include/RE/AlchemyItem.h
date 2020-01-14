@@ -52,8 +52,9 @@ namespace RE
 		};
 
 
-		struct Data	// ENIT
+		class Data	// ENIT
 		{
+		public:
 			SInt32					costOverride;		// 00
 			AlchemyFlag				flags;				// 04
 			SpellItem*				addictionItem;		// 08
@@ -64,27 +65,30 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data) == 0x20);
 
 
-		virtual ~AlchemyItem();																		// 00
+		virtual ~AlchemyItem();																				// 00
 
 		// override (MagicItem)
-		virtual void						InitializeData() override;								// 04
-		virtual void						ClearData() override;									// 05
-		virtual void						InitItemImpl() override;								// 13
-		virtual MagicSystem::SpellType		GetSpellType() const override;							// 53 - { return MagicType::kAlchemy; }
-		virtual MagicSystem::CastingType	GetCastingType() const override;						// 55 - { return CastType::kFireAndForget; }
-		virtual MagicSystem::Delivery		GetDeliveryType() const override;						// 57 - { return TargetType::kSelf; }
-		virtual bool						IsFoodItem() const override;							// 5D - { return ((GetData()->flags) & 2) && !IsPoison(); }
-		virtual bool						IsPoison() const override;								// 61 - { return ((GetData()->flags) >> 17) & 1; }
-		virtual bool						IsHealingItem() const override;							// 62 - { return ((GetData()->flags) >> 8) >> 8; }
-		virtual ActorValue					GetActorValueType() const override;						// 66 - { return ActorValue::kConfidence; }
-		virtual UInt32						GetDataSigniture() const override;						// 68 - { return 'ENIT'; }
-		virtual void						CopyData(MagicItem* a_src) override;					// 69
-		virtual void						LoadData(TESFile* a_mod, UInt32 a_signature) override;	// 6A
-		virtual void*						GetData() override;										// 6C - { return &effectData; }
-		virtual const void*					GetData() const override;								// 6D - { return &effectData; }
-		virtual UInt32						GetDataSize() const override;							// 6E - { return 0x20; }
-		virtual void						LoadData(TESFile* a_mod) override;						// 6F
-		virtual void						ByteSwapData() override;								// 70
+		virtual void						InitializeData() override;										// 04
+		virtual void						ClearData() override;											// 05
+		virtual void						InitItemImpl() override;										// 13
+		virtual MagicSystem::SpellType		GetSpellType() const override;									// 53 - { return MagicType::kAlchemy; }
+		virtual MagicSystem::CastingType	GetCastingType() const override;								// 55 - { return CastType::kFireAndForget; }
+		virtual MagicSystem::Delivery		GetDelivery() const override;									// 57 - { return TargetType::kSelf; }
+		virtual bool						IsFood() const override;										// 5D - { return ((GetData()->flags) & 2) && !IsPoison(); }
+		virtual bool						IsPoison() const override;										// 61 - { return ((GetData()->flags) >> 17) & 1; }
+		virtual bool						IsMedicine() const override;									// 62 - { return ((GetData()->flags) >> 8) >> 8; }
+		virtual ActorValue					GetAssociatedSkill() const override;							// 66 - { return ActorValue::kConfidence; }
+		virtual UInt32						GetChunkID() override;											// 68 - { return 'ENIT'; }
+		virtual void						CopyMagicItemData(MagicItem* a_src) override;					// 69
+		virtual void						LoadMagicItemChunk(TESFile* a_mod, UInt32 a_chunkID) override;	// 6A
+		virtual const MagicItem::Data*		GetData() const override;										// 6C - { return &effectData; }
+		virtual MagicItem::Data*			GetData() override;												// 6D - { return &effectData; }
+		virtual UInt32						GetDataSize() const override;									// 6E - { return 0x20; }
+		virtual void						InitFromChunk(TESFile* a_mod) override;							// 6F
+		virtual void						InitChunk() override;											// 70
+
+		// override (BGSKeywordForm)
+		virtual BGSKeyword*					GetDefaultKeyword() const override;								// 05
 
 
 		// members

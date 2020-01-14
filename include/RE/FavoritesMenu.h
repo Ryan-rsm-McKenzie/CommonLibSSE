@@ -34,16 +34,16 @@ namespace RE
 		STATIC_ASSERT(sizeof(Entry) == 0x10);
 
 
-		virtual ~FavoritesMenu();											// 00
+		virtual ~FavoritesMenu();														// 00
 
 		// override (IMenu)
-		virtual void	Accept(CallbackProcessor* a_processor) override;	// 01
-		virtual Result	ProcessMessage(UIMessage* a_message) override;		// 04
+		virtual void				Accept(CallbackProcessor* a_processor) override;	// 01
+		virtual UI_MESSAGE_RESULTS	ProcessMessage(UIMessage& a_message) override;		// 04
 
 		// override (MenuEventHandler)
-		virtual bool	CanProcess(InputEvent* a_event) override;			// 01
-		virtual bool	ProcessKinect(KinectEvent* a_event) override;		// 02
-		virtual bool	ProcessButton(ButtonEvent* a_event) override;		// 05
+		virtual bool				CanProcess(InputEvent* a_event) override;			// 01
+		virtual bool				ProcessKinect(KinectEvent* a_event) override;		// 02
+		virtual bool				ProcessButton(ButtonEvent* a_event) override;		// 05
 
 
 		// members

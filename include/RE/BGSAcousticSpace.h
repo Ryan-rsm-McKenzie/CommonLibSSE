@@ -25,14 +25,14 @@ namespace RE
 		};
 
 
-		virtual ~BGSAcousticSpace();					// 00
+		virtual ~BGSAcousticSpace();									// 00
 
 		// override (TESBoundObject)
-		virtual void	InitializeData() override;		// 04
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
-		virtual void	Unk_41(void) override;			// 41
-		virtual void	Unk_4A(void) override;			// 4A - { return 0; }
+		virtual void		InitializeData() override;					// 04
+		virtual bool		Load(TESFile* a_mod) override;				// 06
+		virtual void		InitItemImpl() override;					// 13
+		virtual void		UnClone3D(TESObjectREFR* a_ref) override;	// 41
+		virtual NiAVObject*	Clone3D(TESObjectREFR* a_ref) override;		// 4A - { return 0; }
 
 
 		// members

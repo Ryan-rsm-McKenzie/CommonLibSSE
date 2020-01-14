@@ -11,11 +11,11 @@ namespace RE
 		inline static const void* RTTI = RTTI_TESBoundAnimObject;
 
 
-		virtual ~TESBoundAnimObject();					// 00
+		virtual ~TESBoundAnimObject();								// 00
 
 		// override (TESBoundObject)
-		virtual bool	CanAnimate() const override;	// 3C - { return true; }
-		virtual void	Unk_4B(void) override;			// 4B
+		virtual bool	IsBoundAnimObject() override;				// 3C - { return true; }
+		virtual bool	ReplaceModel(const char* a_str) override;	// 4B
 	};
 	STATIC_ASSERT(sizeof(TESBoundAnimObject) == 0x30);
 }

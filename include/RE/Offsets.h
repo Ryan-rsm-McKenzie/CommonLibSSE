@@ -267,16 +267,6 @@ namespace RE
 			}
 
 
-			namespace Internal
-			{
-				namespace VirtualMachine
-				{
-					// IndirectSig: E8 ? ? ? ? 84 C0 0F 84 ? ? ? ? 48 83 7C 24 48 00
-					constexpr std::uintptr_t AllocateArray = 0x01264EB0;	// 1_5_97
-				}
-			}
-
-
 			namespace NF_util
 			{
 				namespace NativeFunctionBase
@@ -320,7 +310,7 @@ namespace RE
 		namespace BSUntypedPointerHandle
 		{
 			// 8B 05 ? ? ? ? 89 44 24 78 48 8D 44 24 ? 8B 00
-			constexpr std::uintptr_t InvalidHandle = 0x01EBEABC;	// 1_5_97
+			constexpr std::uintptr_t NullHandle = 0x01EBEABC;	// 1_5_97
 		}
 
 

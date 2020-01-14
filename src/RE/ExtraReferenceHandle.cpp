@@ -12,9 +12,9 @@ namespace RE
 	{}
 
 
-	ExtraReferenceHandle::ExtraReferenceHandle(ObjectRefHandle a_originalRef) :
+	ExtraReferenceHandle::ExtraReferenceHandle(ObjectRefHandle a_containerRef) :
 		BSExtraData(),
-		originalRef(a_originalRef),
+		containerRef(a_containerRef),
 		pad14(0)
 	{
 		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraReferenceHandle::Vtbl);
@@ -31,12 +31,12 @@ namespace RE
 	bool ExtraReferenceHandle::IsNotEqual(const BSExtraData* a_rhs) const
 	{
 		auto rhs = static_cast<const ExtraReferenceHandle*>(a_rhs);
-		return originalRef != rhs->originalRef;
+		return containerRef != rhs->containerRef;
 	}
 
 
 	NiPointer<TESObjectREFR> ExtraReferenceHandle::GetOriginalReference()
 	{
-		return originalRef.get();
+		return containerRef.get();
 	}
 }

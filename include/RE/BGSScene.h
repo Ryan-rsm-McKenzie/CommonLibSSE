@@ -21,8 +21,9 @@ namespace RE
 	};
 
 
-	struct BGSScenePhase
+	class BGSScenePhase
 	{
+	public:
 		TESCondition				startConditions;		// 00
 		TESCondition				completionConditions;	// 08
 		BGSStoryManagerQuestNode*	questNode;				// 10
@@ -82,16 +83,16 @@ namespace RE
 		};
 
 
-		virtual ~BGSScene();											// 00
+		virtual ~BGSScene();												// 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;						// 05
-		virtual bool	Load(TESFile* a_mod) override;					// 06
-		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void	InitLoadGame(void* a_arg1) override;			// 10
-		virtual void	Revert(void* a_arg1) override;					// 12
-		virtual void	InitItemImpl() override;						// 13
+		virtual void	InitializeData() override;							// 05
+		virtual bool	Load(TESFile* a_mod) override;						// 06
+		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;		// 0E
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;		// 0F
+		virtual void	InitLoadGame(BGSLoadFormBuffer* a_buf) override;	// 10
+		virtual void	Revert(BGSLoadFormBuffer* a_buf) override;			// 12
+		virtual void	InitItemImpl() override;							// 13
 
 
 		// members

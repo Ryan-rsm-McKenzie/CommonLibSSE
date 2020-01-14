@@ -22,10 +22,10 @@ namespace RE
 				virtual ~ScriptFunction();																																	// 00
 
 				// override (IFunction)
-				virtual const BSFixedString&	GetFunctionName() const override;																							// 01 - { return functionName; }
-				virtual const BSFixedString&	GetScriptName() const override;																								// 02 - { return scriptName; }
+				virtual const BSFixedString&	GetName() const override;																									// 01 - { return functionName; }
+				virtual const BSFixedString&	GetObjectTypeName() const override;																							// 02 - { return scriptName; }
 				virtual const BSFixedString&	GetStateName() const override;																								// 03 - { return stateName; }
-				virtual TypeInfo&				GetReturnType(TypeInfo& a_dst) const override;																				// 04 - { a_dst = returnType; return a_dst; }
+				virtual TypeInfo				GetReturnType() const override;																								// 04 - { return returnType; }
 				virtual UInt32					GetParamCount() const override;																								// 05 - { return varInfo.numParams; }
 				virtual void					GetParam(UInt32 a_idx, BSFixedString& a_nameOut, TypeInfo& a_typeOut) const override;										// 06
 				virtual UInt32					GetStackFrameSize() const override;																							// 07 - { return (descTable.totalEntries - descTable.paramCount) + GetNumParams(); }

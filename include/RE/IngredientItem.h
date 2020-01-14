@@ -59,8 +59,9 @@ namespace RE
 		};
 
 
-		struct Data	// ENIT
+		class Data	// ENIT
 		{
+		public:
 			SInt32			costOverride;	// 00
 			IngredientFlag	flags;			// 04
 		};
@@ -75,30 +76,33 @@ namespace RE
 		STATIC_ASSERT(sizeof(GameData) == 0x4);
 
 
-		virtual ~IngredientItem();																	// 00
+		virtual ~IngredientItem();																			// 00
 
 		// override (MagicItem)
-		virtual void						InitializeData() override;								// 04
-		virtual void						ClearData() override;									// 05
-		virtual void						SaveGame(BGSSaveFormBuffer* a_buf) override;			// 0E
-		virtual void						LoadGame(BGSLoadFormBuffer* a_buf) override;			// 0F
-		virtual void						Revert(void* a_arg1) override;							// 12
-		virtual void						InitItemImpl() override;								// 13
-		virtual MagicSystem::SpellType		GetSpellType() const override;							// 53 - { return MagicSystem::SpellType::kIngredient; }
-		virtual MagicSystem::CastingType	GetCastingType() const override;						// 55 - { return  MagicSystem::CastingType::kFireAndForget; }
-		virtual MagicSystem::Delivery		GetDeliveryType() const override;						// 57 - { return MagicSystem::Delivery::kSelf; }
-		virtual bool						IsFoodItem() const override;							// 5D - { return (GetData()->flags >> 1) & 1; }
-		virtual void						Unk_60(void) override;									// 60 - something about ingredient skill use
-		virtual void						Unk_65(void) override;									// 65 - { return 4; } - GetNumIngredientSlots()?
-		virtual ActorValue					GetActorValueType() const override;						// 66 - { return ActorValue::kConfidence; }
-		virtual UInt32						GetDataSigniture() const override;						// 68 - { return 'ENIT'; }
-		virtual void						CopyData(MagicItem* a_src) override;					// 69
-		virtual void						LoadData(TESFile* a_mod, UInt32 a_signature) override;	// 6A
-		virtual void*						GetData() override;										// 6C - { return &effectData; }
-		virtual const void*					GetData() const override;								// 6D - { return &effectData; }
-		virtual UInt32						GetDataSize() const override;							// 6E - { return 0x8; }
-		virtual void						LoadData(TESFile* a_mod) override;						// 6F
-		virtual void						ByteSwapData() override;								// 70
+		virtual void						InitializeData() override;										// 04
+		virtual void						ClearData() override;											// 05
+		virtual void						SaveGame(BGSSaveFormBuffer* a_buf) override;					// 0E
+		virtual void						LoadGame(BGSLoadFormBuffer* a_buf) override;					// 0F
+		virtual void						Revert(BGSLoadFormBuffer* a_buf) override;						// 12
+		virtual void						InitItemImpl() override;										// 13
+		virtual MagicSystem::SpellType		GetSpellType() const override;									// 53 - { return MagicSystem::SpellType::kIngredient; }
+		virtual MagicSystem::CastingType	GetCastingType() const override;								// 55 - { return  MagicSystem::CastingType::kFireAndForget; }
+		virtual MagicSystem::Delivery		GetDelivery() const override;									// 57 - { return MagicSystem::Delivery::kSelf; }
+		virtual bool						IsFood() const override;										// 5D - { return (GetData()->flags >> 1) & 1; }
+		virtual bool						GetSkillUsageData(SkillUsageData& a_data) const override;		// 60
+		virtual UInt32						GetMaxEffectCount() const override;								// 65 - { return 4; }
+		virtual ActorValue					GetAssociatedSkill() const override;							// 66 - { return ActorValue::kConfidence; }
+		virtual UInt32						GetChunkID() override;											// 68 - { return 'ENIT'; }
+		virtual void						CopyMagicItemData(MagicItem* a_src) override;					// 69
+		virtual void						LoadMagicItemChunk(TESFile* a_mod, UInt32 a_chunkID) override;	// 6A
+		virtual const MagicItem::Data*		GetData() const override;										// 6C - { return &effectData; }
+		virtual MagicItem::Data*			GetData() override;												// 6D - { return &effectData; }
+		virtual UInt32						GetDataSize() const override;									// 6E - { return 0x8; }
+		virtual void						InitFromChunk(TESFile* a_mod) override;							// 6F
+		virtual void						InitChunk() override;											// 70
+
+		// override (BGSKeywordForm)
+		virtual BGSKeyword*					GetDefaultKeyword() const override;								// 05
 
 
 		// members

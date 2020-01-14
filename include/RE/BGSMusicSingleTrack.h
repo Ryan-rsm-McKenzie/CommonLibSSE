@@ -26,7 +26,7 @@ namespace RE
 		virtual ~BGSMusicSingleTrack();											// 00
 
 		// override (BGSMusicTrack)
-		virtual void			Unk_01(void) override;							// 01
+		virtual void			DoUpdate() override;							// 01
 		virtual void			DoPlay() override;								// 02
 		virtual void			DoPause() override;								// 03
 		virtual void			DoFinish(bool a_arg1, float a_arg2) override;	// 04
@@ -34,7 +34,7 @@ namespace RE
 		virtual TrackType		GetType() const override;						// 06 - "BGSMusicSingleTrack"
 		virtual void			DoSetDuckingAttenuation(UInt16 a_val) override;	// 09
 		virtual void			DoClearDucking() override;						// 0A
-		virtual bool			LoadTrack(TESFile* a_mod) override;				// 0C
+		virtual void			Load(TESFile* a_mod) override;					// 0C
 
 
 		// members

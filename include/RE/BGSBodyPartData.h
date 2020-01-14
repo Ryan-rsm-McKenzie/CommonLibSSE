@@ -65,8 +65,9 @@ namespace RE
 	STATIC_ASSERT(sizeof(PART_DATA) == 0x78);
 
 
-	struct BGSBodyPart
+	class BGSBodyPart
 	{
+	public:
 		BSFixedString	nodeName;					// 00 - BPNN
 		BSFixedString	taregtName;					// 08 - BPNT
 		BSFixedString	hitReactionVariablePrefix;	// 10 - BPNI

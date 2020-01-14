@@ -18,8 +18,9 @@ namespace RE
 	class TESTopicInfo;
 
 
-	struct DialogueResponse
+	class DialogueResponse
 	{
+	public:
 		enum class EmotionType : UInt32
 		{
 			kNeutral = 0,

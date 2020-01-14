@@ -46,7 +46,7 @@ namespace RE
 		UInt32						frameID;						// 38
 		UInt32						numMatrices;					// 3C
 		UInt32						numRegisters;					// 40
-		UInt32						aloocatedSize;					// 44
+		UInt32						allocatedSize;					// 44
 		void*						boneMatrices;					// 48
 		void*						skinToWorldWorldToSkinMatrix;	// 50
 		UInt64						unk58;							// 58

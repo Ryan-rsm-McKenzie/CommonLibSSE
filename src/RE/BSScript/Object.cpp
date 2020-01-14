@@ -58,7 +58,7 @@ namespace RE
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			auto policy = vm->GetObjectHandlePolicy();
-			if (policy->GetHandleIsType(a_typeID, handle) && policy->IsHandleObjectAvailable(handle)) {
+			if (policy->HandleIsType(a_typeID, handle) && policy->IsHandleObjectAvailable(handle)) {
 				return policy->GetObjectForHandle(a_typeID, handle);
 			} else {
 				return 0;

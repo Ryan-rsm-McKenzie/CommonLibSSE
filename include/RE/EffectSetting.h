@@ -127,17 +127,17 @@ namespace RE
 		STATIC_ASSERT(sizeof(SoundPair) == 0x10);
 
 
-		virtual ~EffectSetting();												// 00
+		virtual ~EffectSetting();													// 00
 
 		// override (TESForm)
-		virtual void		ClearData() override;								// 05
-		virtual bool		Load(TESFile* a_mod) override;						// 06
-		virtual void		InitItemImpl() override;							// 13
-		virtual void		Copy(TESForm* a_srcForm) override;					// 2F
-		virtual const char*	GetObjectTypeName() const override;					// 39
+		virtual void		ClearData() override;									// 05
+		virtual bool		Load(TESFile* a_mod) override;							// 06
+		virtual void		InitItemImpl() override;								// 13
+		virtual void		Copy(TESForm* a_srcForm) override;						// 2F
+		virtual const char*	GetObjectTypeName() const override;						// 39
 
 		// override (BGSKeywordForm)
-		virtual bool		HasKeyword(BGSKeyword* a_keyword) const override;	// 04
+		virtual bool		HasKeyword(const BGSKeyword* a_keyword) const override;	// 04
 
 		ActorValue	GetMagickSkill() const;
 		UInt32		GetMinimumSkillLevel() const;

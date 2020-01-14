@@ -61,18 +61,18 @@ namespace RE
 		STATIC_ASSERT(sizeof(UnkData) == 0x10);
 
 
-		virtual ~StatsMenu();													// 00
+		virtual ~StatsMenu();																// 00
 
 		// override (IMenu)
-		virtual void	Accept(CallbackProcessor* a_processor) override;		// 01
-		virtual void	Unk_03(void) override;									// 03 - { unk321 = 1; }
-		virtual Result	ProcessMessage(UIMessage* a_message) override;			// 04
-		virtual void	PostDisplay() override;									// 06
+		virtual void				Accept(CallbackProcessor* a_processor) override;		// 01
+		virtual void				Unk_03(void) override;									// 03 - { unk321 = 1; }
+		virtual UI_MESSAGE_RESULTS	ProcessMessage(UIMessage& a_message) override;			// 04
+		virtual void				PostDisplay() override;									// 06
 
 		// override (MenuEventHandler)
-		virtual bool	CanProcess(InputEvent* a_event) override;				// 01
-		virtual bool	ProcessThumbstick(ThumbstickEvent* a_event) override;	// 03
-		virtual bool	ProcessButton(ButtonEvent* a_event) override;			// 05
+		virtual bool				CanProcess(InputEvent* a_event) override;				// 01
+		virtual bool				ProcessThumbstick(ThumbstickEvent* a_event) override;	// 03
+		virtual bool				ProcessButton(ButtonEvent* a_event) override;			// 05
 
 
 		// members

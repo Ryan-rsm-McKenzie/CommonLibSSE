@@ -16,14 +16,14 @@ namespace RE
 		enum { kTypeID = FormType::Package };
 
 
-		virtual ~DialoguePackage();										// 00
+		virtual ~DialoguePackage();											// 00
 
 		// override (TESPackage)
-		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void	InitLoadGame(void* a_arg1) override;			// 10 - { TESForm::InitLoadGame(a_arg1); }
-		virtual void	Copy(TESForm* a_srcForm) override;				// 2F - { TESForm::Copy(a_srcForm); }
-		virtual void	Unk_3F(void) override;							// 3F
+		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;		// 0E
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;		// 0F
+		virtual void	InitLoadGame(BGSLoadFormBuffer* a_buf) override;	// 10 - { TESForm::InitLoadGame(a_buf); }
+		virtual void	Copy(TESForm* a_srcForm) override;					// 2F - { TESForm::Copy(a_srcForm); }
+		virtual bool	IsPackageOwner(Actor* a_actor) override;			// 3F
 
 
 		// members

@@ -23,12 +23,12 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "Crafting Menu";
 
 
-		virtual ~CraftingMenu();														// 00
+		virtual ~CraftingMenu();																	// 00
 
 		// override (IMenu)
-		virtual Result	ProcessMessage(UIMessage* a_message) override;					// 04
-		virtual void	AdvanceMovie(float a_interval, UInt32 a_currentTime) override;	// 05
-		virtual void	PostDisplay() override;											// 06
+		virtual UI_MESSAGE_RESULTS	ProcessMessage(UIMessage& a_message) override;					// 04
+		virtual void				AdvanceMovie(float a_interval, UInt32 a_currentTime) override;	// 05
+		virtual void				PostDisplay() override;											// 06
 
 
 		// members

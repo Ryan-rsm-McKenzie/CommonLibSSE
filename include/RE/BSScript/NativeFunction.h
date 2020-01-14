@@ -37,15 +37,15 @@ namespace RE
 
 
 			template <class... Args, std::size_t... I>
-			std::tuple<Args...> MakeTupleImpl(StackFrame* a_frame, std::index_sequence<I...>)
+			std::tuple<Args...> MakeTupleImpl(const StackFrame& a_frame, std::index_sequence<I...>)
 			{
-				return std::forward_as_tuple(Args{ a_frame->args[I].Unpack<Args>() }...);
+				return std::forward_as_tuple(Args{ a_frame.args[I].Unpack<Args>() }...);
 			}
 
 
 			// tuple element construction order isn't guaranteed, so we need to wrap it
 			template <class... Args>
-			std::tuple<Args...> MakeTuple(StackFrame* a_frame)
+			std::tuple<Args...> MakeTuple(const StackFrame& a_frame)
 			{
 				return MakeTupleImpl<Args...>(a_frame, std::make_index_sequence<sizeof...(Args)>{});
 			}
@@ -68,28 +68,28 @@ namespace RE
 
 			NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback) :
 				NativeFunctionBase(a_fnName, a_className, is_static_base<base_type>::value, sizeof...(Args)),
-				_callback(a_callback)
+				_stub(a_callback)
 			{
 				std::size_t i = 0;
-				((_descTable.entries[i++].second.SetType(GetType<Args>())), ...);
-				_retType = GetType<result_type>();
+				((_descTable.entries[i++].second.SetType(GetRawType<Args>())), ...);
+				_retType = GetRawType<result_type>();
 			}
 
 
-			virtual ~NativeFunction() = default;																																// 00
+			virtual ~NativeFunction() = default;	// 00
 
 
-			virtual bool HasCallback() const override																															// 15
+			virtual bool HasStub() const override	// 15
 			{
-				return _callback != 0;
+				return _stub != 0;
 			}
 
 
-			virtual bool Run(Variable* a_baseValue, [[maybe_unused]] Internal::VirtualMachine* a_vm, [[maybe_unused]] UInt32 a_stackID, Variable* a_resultValue, StackFrame* a_frame) override	// 16
+			virtual bool MarshallAndDispatch(Variable& a_baseValue, [[maybe_unused]] Internal::VirtualMachine& a_vm, [[maybe_unused]] VMStackID a_stackID, Variable& a_resultValue, const StackFrame& a_frame) const override	// 16
 			{
 				base_type base{};
 				if constexpr (std::negation<is_static_base<base_type>>::value) {
-					base = a_baseValue->Unpack<base_type>();
+					base = a_baseValue.Unpack<base_type>();
 					if (!base) {
 						return false;
 					}
@@ -98,19 +98,19 @@ namespace RE
 				auto args = Impl::MakeTuple<Args...>(a_frame);
 				if constexpr (std::is_void<result_type>::value) {
 					if constexpr (IS_LONG) {
-						Impl::CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base));
-						a_resultValue->SetNone();
+						Impl::CallBack(_stub, std::move(args), std::addressof(a_vm), a_stackID, std::move(base));
+						a_resultValue.SetNone();
 					} else {
-						Impl::CallBack(_callback, std::move(args), std::move(base));
-						a_resultValue->SetNone();
+						Impl::CallBack(_stub, std::move(args), std::move(base));
+						a_resultValue.SetNone();
 					}
 				} else {
 					if constexpr (IS_LONG) {
-						auto result = std::move(Impl::CallBack(_callback, std::move(args), a_vm, a_stackID, std::move(base)));
-						a_resultValue->Pack<result_type>(std::move(result));
+						auto result = std::move(Impl::CallBack(_stub, std::move(args), std::addressof(a_vm), a_stackID, std::move(base)));
+						a_resultValue.Pack<result_type>(std::move(result));
 					} else {
-						auto result = std::move(Impl::CallBack(_callback, std::move(args), std::move(base)));
-						a_resultValue->Pack<result_type>(std::move(result));
+						auto result = std::move(Impl::CallBack(_stub, std::move(args), std::move(base)));
+						a_resultValue.Pack<result_type>(std::move(result));
 					}
 				}
 
@@ -119,7 +119,7 @@ namespace RE
 
 		protected:
 			// members
-			function_type* _callback;	// 50
+			function_type* _stub;	// 50
 		};
 	}
 
@@ -193,15 +193,12 @@ namespace RE
 
 	namespace BSScript
 	{
-		namespace Internal
+		template <class F>
+		void IVirtualMachine::RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, bool a_callableFromTasklets)
 		{
-			template <class F>
-			void VirtualMachine::RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, bool a_callableFromTasklets)
-			{
-				BindNativeMethod(MakeNativeFunction(a_fnName, a_className, a_callback));
-				if (a_callableFromTasklets) {
-					Internal::VirtualMachine::GetSingleton()->SetCallableFromTasklets(a_className, a_fnName, a_callableFromTasklets);
-				}
+			BindNativeMethod(MakeNativeFunction(a_fnName, a_className, a_callback));
+			if (a_callableFromTasklets) {
+				SetCallableFromTasklets(a_className, a_fnName, a_callableFromTasklets);
 			}
 		}
 	}

@@ -19,7 +19,7 @@ namespace RE
 	}
 
 
-	std::optional<BGSKeyword*> BGSKeywordForm::GetKeywordAt(UInt32 a_idx)
+	std::optional<BGSKeyword*> BGSKeywordForm::GetKeywordAt(UInt32 a_idx) const
 	{
 		if (a_idx < numKeywords) {
 			return std::make_optional(keywords[a_idx]);

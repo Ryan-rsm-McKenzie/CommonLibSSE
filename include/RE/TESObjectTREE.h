@@ -82,19 +82,19 @@ namespace RE
 		};
 
 
-		virtual ~TESObjectTREE();																															// 00
+		virtual ~TESObjectTREE();																																	// 00
 
 		// override (TESBoundObject)
-		virtual void	InitializeData() override;																											// 04
-		virtual bool	Load(TESFile* a_mod) override;																										// 06
-		virtual void	InitItemImpl() override;																											// 13
-		virtual bool	Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount) override;	// 37
-		virtual void	Unk_44(void) override;																												// 44
-		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4C
-		virtual void	Unk_4F(void) override;																												// 4F
-		virtual void	Unk_50(void) override;																												// 50 - { return; }
-		virtual void	Unk_51(void) override;																												// 51 - { return; }
-		virtual void	Unk_52(void) override;																												// 52 - { return; }
+		virtual void	InitializeData() override;																													// 04
+		virtual bool	Load(TESFile* a_mod) override;																												// 06
+		virtual void	InitItemImpl() override;																													// 13
+		virtual bool	Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;	// 37
+		virtual bool	ReplaceModel() override;																													// 44
+		virtual bool	GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																		// 4C
+		virtual void	OnRemove3D(NiAVObject* a_obj3D) override;																									// 4F
+		virtual void	OnCheckModels() override;																													// 50 - { return; }
+		virtual void	OnCopyReference() override;																													// 51 - { return; }
+		virtual void	OnFinishScale() override;																													// 52 - { return; }
 
 
 		// members

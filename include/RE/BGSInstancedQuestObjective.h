@@ -5,11 +5,12 @@
 
 namespace RE
 {
-	struct BGSQuestObjective;
+	class BGSQuestObjective;
 
 
-	struct BGSInstancedQuestObjective
+	class BGSInstancedQuestObjective
 	{
+	public:
 		// members
 		BGSQuestObjective*		Objective;		// 00
 		UInt32					instanceID;		// 08

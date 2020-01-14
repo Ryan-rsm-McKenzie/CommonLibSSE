@@ -22,12 +22,12 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "MagicMenu";
 
 
-		virtual ~MagicMenu();												// 00
+		virtual ~MagicMenu();															// 00
 
 		// override (IMenu)
-		virtual void	Accept(CallbackProcessor* a_processor) override;	// 01
-		virtual Result	ProcessMessage(UIMessage* a_message) override;		// 04
-		virtual void	PostDisplay() override;								// 06
+		virtual void				Accept(CallbackProcessor* a_processor) override;	// 01
+		virtual UI_MESSAGE_RESULTS	ProcessMessage(UIMessage& a_message) override;		// 04
+		virtual void				PostDisplay() override;								// 06
 
 
 		// members

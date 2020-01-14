@@ -30,7 +30,7 @@ namespace RE
 		virtual ~BookMenu();																																// 00
 
 		// override (IMenu)
-		virtual Result					ProcessMessage(UIMessage* a_message) override;																		// 04
+		virtual UI_MESSAGE_RESULTS		ProcessMessage(UIMessage& a_message) override;																		// 04
 		virtual void					AdvanceMovie(float a_interval, UInt32 a_currentTime) override;														// 05
 		virtual void					PostDisplay() override;																								// 06
 		virtual void					PreDisplay() override;																								// 07

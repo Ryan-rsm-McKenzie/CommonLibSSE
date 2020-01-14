@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	struct BipedAnim;
+	class BipedAnim;
 
 
 	class ExtraBiped : public BSExtraData

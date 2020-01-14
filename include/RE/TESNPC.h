@@ -24,8 +24,9 @@ namespace RE
 	class TintMask;
 
 
-	struct CreatureSounds
+	class CreatureSounds
 	{
+	public:
 		BSTArray<void*>* unk00[8];	// 00
 	};
 	STATIC_ASSERT(sizeof(CreatureSounds) == 0x40);
@@ -214,28 +215,38 @@ namespace RE
 		STATIC_ASSERT(sizeof(Layer) == 0x10);
 
 
-		virtual ~TESNPC();																																			// 00
+		virtual ~TESNPC();																																							// 00
 
 		// override (TESActorBase)
-		virtual void			InitializeData() override;																											// 04
-		virtual void			ClearData() override;																												// 05
-		virtual bool			Load(TESFile* a_mod) override;																										// 06
-		virtual bool			FindInFileFast(TESFile* a_mod)  override;																							// 0C
-		virtual void			SaveGame(BGSSaveFormBuffer* a_buf) override;																						// 0E
-		virtual void			LoadGame(BGSLoadFormBuffer* a_buf) override;																						// 0F
-		virtual void			Revert(void* a_arg1) override;																										// 12
-		virtual void			InitItemImpl() override;																											// 13
-		virtual const char*		GetTextForParsedSubTag(const BSFixedString& a_alias) override;																		// 2E
-		virtual void			Copy(TESForm* a_srcForm) override;																									// 2F
-		virtual bool			Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount) override;	// 37
-		virtual void			Unk_41(void) override;																												// 41
-		virtual void			SetVoiceType(BGSVoiceType* a_voiceType) override;																					// 48 - { TESActorBaseData::voice = a_voiceType; }
-		virtual BGSVoiceType*	GetVoiceType() const override;																										// 49
-		virtual void			Unk_4A(void) override;																												// 4A
-		virtual bool			GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4C
-		virtual void			Unk_4D(void) override;																												// 4D
-		virtual TESCombatStyle*	GetCombatStyle() override;																											// 54 - { return combatStyle; }
-		virtual void			SetCombatStyle(TESCombatStyle* a_combatStyle) override;																				// 55 - { combatStyle = a_combatStyle; }
+		virtual void					InitializeData() override;																													// 04
+		virtual void					ClearData() override;																														// 05
+		virtual bool					Load(TESFile* a_mod) override;																												// 06
+		virtual bool					FindInFileFast(TESFile* a_mod)  override;																									// 0C
+		virtual void					SaveGame(BGSSaveFormBuffer* a_buf) override;																								// 0E
+		virtual void					LoadGame(BGSLoadFormBuffer* a_buf) override;																								// 0F
+		virtual void					Revert(BGSLoadFormBuffer* a_buf) override;																									// 12
+		virtual void					InitItemImpl() override;																													// 13
+		virtual const char*				GetTextForParsedSubTag(const BSFixedString& a_alias) const override;																		// 2E
+		virtual void					Copy(TESForm* a_srcForm) override;																											// 2F
+		virtual bool					Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;	// 37
+		virtual void					UnClone3D(TESObjectREFR* a_ref) override;																									// 41
+		virtual void					SetObjectVoiceType(BGSVoiceType* a_voiceType) override;																						// 48 - { TESActorBaseData::voice = a_voiceType; }
+		virtual BGSVoiceType*			GetObjectVoiceType() const override;																										// 49
+		virtual NiAVObject*				Clone3D(TESObjectREFR* a_ref) override;																										// 4A
+		virtual bool					GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																		// 4C
+		virtual bool					CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;										// 4D
+		virtual TESCombatStyle*			GetCombatStyle() override;																													// 54 - { return combatStyle; }
+		virtual void					SetCombatStyle(TESCombatStyle* a_combatStyle) override;																						// 55 - { combatStyle = a_combatStyle; }
+
+		// override (TESActorBaseData)
+		virtual void					CopyFromTemplateForms(TESActorBase** a_templateForms) override;																				// 04
+
+		// override (ActorValueOwner)
+		virtual float					GetActorValue(ActorValue a_akValue) override;																								// 01
+		virtual void					SetActorValue(ActorValue a_akValue, float a_value) override;																				// 07
+
+		// override (BSTEventSink<MenuOpenCloseEvent>)
+		virtual	BSEventNotifyControl	ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;								// 01
 
 		void			ChangeHeadPart(BGSHeadPart* a_target);
 		BGSHeadPart**	GetBaseOverlays() const;

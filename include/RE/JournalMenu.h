@@ -33,7 +33,7 @@ namespace RE
 
 		// override (IMenu)
 		virtual void					Accept(CallbackProcessor* a_processor) override;													// 01
-		virtual Result					ProcessMessage(UIMessage* a_message) override;														// 04
+		virtual UI_MESSAGE_RESULTS		ProcessMessage(UIMessage& a_message) override;														// 04
 		virtual void					AdvanceMovie(float a_interval, UInt32 a_currentTime) override;										// 05
 		virtual void					PostDisplay() override;																				// 06
 

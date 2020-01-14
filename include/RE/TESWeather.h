@@ -100,7 +100,7 @@ namespace RE
 		};
 
 
-		struct WeatherData	// DATA
+		struct Data	// DATA
 		{
 			struct Color3
 			{
@@ -130,7 +130,7 @@ namespace RE
 			SInt8			windDirectionRange;				// 12
 			SInt8			unk13;							// 13
 		};
-		STATIC_ASSERT(sizeof(WeatherData) == 0x14);
+		STATIC_ASSERT(sizeof(Data) == 0x14);
 
 
 		struct FogData	// FNAM
@@ -175,7 +175,7 @@ namespace RE
 		Color								cloudColorData[kTotalLayers][ColorTime::kTotal];		// 260 - PNAM
 		float								cloudAlpha[kTotalLayers][ColorTime::kTotal];			// 460 - JNAM
 		UInt32								cloudLayerDisabledBits;									// 660 - NAM1 - bitfield
-		WeatherData							weatherData;											// 664 - DATA
+		Data								data;													// 664 - DATA
 		FogData								fogData;												// 678 - FNAM
 		Color								colorData[ColorTypes::kTotal][ColorTime::kTotal];		// 698 - NAM0
 		WeatherSoundList					sounds;													// 7A8

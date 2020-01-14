@@ -7,6 +7,7 @@
 namespace RE
 {
 	class TESFile;
+	class TESForm;
 
 
 	class BGSMusicTrack : public BSIMusicTrack
@@ -18,11 +19,11 @@ namespace RE
 		virtual ~BGSMusicTrack();						// 00
 
 		// override (BSIMusicTrack)
-		virtual bool	TestCanPlay() override;			// 07 - { return conditions ? conditions->Run(g_thePlayer, g_thePlayer) : true; }
+		virtual bool	TestCanPlay() const override;	// 07 - { return conditions ? conditions->Run(g_thePlayer, g_thePlayer) : true; }
 
 		// add
-		virtual bool	InitTrack(TESFile* a_mod);		// 0B
-		virtual bool	LoadTrack(TESFile* a_mod) = 0;	// 0C
+		virtual void	InitItem(TESForm* a_form);	// 0B
+		virtual void	Load(TESFile* a_mod) = 0;	// 0C
 
 
 		// members

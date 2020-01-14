@@ -67,17 +67,20 @@ namespace RE
 		};
 
 
-		virtual ~TESAmmo();												// 00
+		virtual ~TESAmmo();																		// 00
 
 		// override (TESBoundObject)
-		virtual void	InitializeData() override;						// 04
-		virtual bool	Load(TESFile* a_mod) override;					// 06
-		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void	InitItemImpl() override;						// 13
-		virtual bool	GetPlayable() const override;					// 19 - { return ~((data.flags >> 1) & 1); }
-		virtual void	Unk_40(void) override;							// 40
-		virtual void	OnRemovedFrom(TESObjectREFR* a_ref) override;	// 4E
+		virtual void		InitializeData() override;											// 04
+		virtual bool		Load(TESFile* a_mod) override;										// 06
+		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;						// 0E
+		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;						// 0F
+		virtual void		InitItemImpl() override;											// 13
+		virtual bool		GetPlayable() const override;										// 19 - { return ~((data.flags >> 1) & 1); }
+		virtual NiAVObject*	Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;				// 40
+		virtual void		HandleRemoveItemFromContainer(TESObjectREFR* a_container) override;	// 4E
+
+		// override (BGSKeywordForm)
+		virtual BGSKeyword*	GetDefaultKeyword() const override;			// 05
 
 		bool	IgnoresNormalWeaponResistance();
 		bool	IsBolt();

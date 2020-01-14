@@ -9,8 +9,9 @@ namespace RE
 	class BGSActionData;
 
 
-	struct BGSAnimationSequencer
+	class BGSAnimationSequencer
 	{
+	public:
 		// members
 		UInt32										numSequences;	// 00
 		UInt32										pad04;			// 04

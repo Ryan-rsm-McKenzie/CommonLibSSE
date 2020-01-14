@@ -37,24 +37,23 @@ namespace RE
 	{}
 
 
-	auto IMenu::ProcessMessage(UIMessage* a_message)
-		-> Result
+	UI_MESSAGE_RESULTS IMenu::ProcessMessage(UIMessage& a_message)
 	{
-		if (a_message->type != UI_MESSAGE_TYPE::kScaleformEvent) {
-			return Result::kNotProcessed;
+		if (a_message.type != UI_MESSAGE_TYPE::kScaleformEvent) {
+			return UI_MESSAGE_RESULTS::kPassOn;
 		}
 
 		if (!view) {
-			return Result::kNotProcessed;
+			return UI_MESSAGE_RESULTS::kPassOn;
 		}
 
-		auto data = static_cast<BSUIScaleformData*>(a_message->data);
+		auto data = static_cast<BSUIScaleformData*>(a_message.data);
 		if (!data) {
-			return Result::kNotProcessed;
+			return UI_MESSAGE_RESULTS::kPassOn;
 		}
 
 		view->HandleEvent(*data->scaleformEvent);
-		return Result::kProcessed;
+		return UI_MESSAGE_RESULTS::kHandled;
 	}
 
 

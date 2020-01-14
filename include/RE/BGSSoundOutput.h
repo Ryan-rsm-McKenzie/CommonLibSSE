@@ -69,9 +69,9 @@ namespace RE
 			virtual ~DynamicAttenuationCharacteristics();				// 00
 
 			// override (BSIAttenuationCharacteristics)
-			virtual float	GetMaxDistance() const override;			// 01 - { return maxDistance; }
-			virtual float	GetMinDistance() const override;			// 02 - { return minDistance; }
-			virtual UInt8	GetCurveValue(UInt32 a_idx) const override;	// 03 - { return a_idx >= 5 ? 0 : curve[a_idx]; }
+			virtual float	GetMaxDistance() const override;			// 01 - { return data.maxDistance; }
+			virtual float	GetMinDistance() const override;			// 02 - { return data.minDistance; }
+			virtual UInt8	GetCurveValue(UInt32 a_idx) const override;	// 03 - { return a_idx >= 5 ? 0 : data.curve[a_idx]; }
 
 
 			// members
@@ -101,20 +101,23 @@ namespace RE
 		STATIC_ASSERT(sizeof(SpeakerArrays) == 0x18);
 
 
-		virtual ~BGSSoundOutput();																// 00
+		virtual ~BGSSoundOutput();																											// 00
 
 		// override (TESForm)
-		virtual void							ClearData() override;							// 05
-		virtual bool							Load(TESFile* a_mod) override;					// 06
-		virtual void							InitItemImpl() override;						// 13
+		virtual void									ClearData() override;																// 05
+		virtual bool									Load(TESFile* a_mod) override;														// 06
+		virtual void									InitItemImpl() override;															// 13
 
 		// override (BSISoundOutputModel)
-		virtual bool							UsesHRTF() const override;						// 01 - { return type == kUsesHRTF; }
-		virtual bool							DefinesSpeakerOutput() const override;			// 02 - { return type == kDefinedSpeakerOutput; }
-		virtual bool							AttenuatesWithDistance(void) const override;	// 04 - { return data.flags & 1; }
-		virtual bool							IsOutOfRange(float a_distance) const override;	// 05 - { float maxDistance = attenuationValues ? attenuationValues->GetMaxDistance() : 3.4028235e38; return a_distance > maxDistance; }
-		virtual BSIAttenuationCharacteristics*	GetAttenuationValues() override;				// 07 - { return attenuationValues; }
-		virtual float							GetReverbSend() const override;					// 08 - { return data.reverbSendPct * 0.0099999998; }
+		virtual bool									DoGetUsesHRTF() const override;														// 01 - { return type == kUsesHRTF; }
+		virtual bool									DoGetHasSpeakerBias() const override;												// 02 - { return type == kDefinedSpeakerOutput; }
+		virtual bool									DoGetSpeakerBias(UInt32 a_arg1, UInt32 a_arg2, float(&a_arg3)[8]) const override;	// 03
+		virtual bool									DoGetAttenuatesWithDistance() const override;										// 04 - { return data.flags & 1; }
+		virtual bool									DoGetAudibility(float a_distance) const override;									// 05 - { float maxDistance = attenuationValues ? attenuationValues->GetMaxDistance() : 3.4028235e38; return a_distance > maxDistance; }
+		virtual UInt32									DoGetSupportedInputChannels() const override;										// 06 - { return 2; }
+		virtual const BSIAttenuationCharacteristics*	DoGetAttenuation() const override;													// 07 - { return attenuationValues; }
+		virtual float									DoGetReverbSendLevel() const override;												// 08 - { return data.reverbSendPct * 0.0099999998; }
+		virtual bool									DoGetSupportsMonitor(UInt32 a_arg1) const override;									// 09
 
 
 		// members

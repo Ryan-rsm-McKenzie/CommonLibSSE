@@ -12,15 +12,17 @@ namespace RE
 	struct TESRegionDataList;
 
 
-	struct TESRegionPoint
+	class TESRegionPoint
 	{
+	public:
 		NiPoint2 point;	// 00
 	};
 	STATIC_ASSERT(sizeof(TESRegionPoint) == 0x8);
 
 
-	struct TESRegionPointList : public BSSimpleList<TESRegionPoint*>	// RPLD
+	class TESRegionPointList : public BSSimpleList<TESRegionPoint*>	// RPLD
 	{
+	public:
 		struct ScaleResult
 		{
 			TESRegionPoint	point;	// 00
@@ -71,7 +73,7 @@ namespace RE
 		virtual void	InitItemImpl() override;			// 13
 
 		// add
-		virtual bool	IsLoaded() const;					// 3B
+		virtual bool	Validate();							// 3B
 
 
 		// members

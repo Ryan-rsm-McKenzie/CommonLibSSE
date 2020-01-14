@@ -5,6 +5,20 @@ namespace RE
 {
     namespace MagicSystem
     {
+        enum class CannotCastReason : UInt32
+        {
+            kOK = 0,
+            kMagicka = 1,
+            kPowerUsed = 2,
+            kRangedUnderWater = 3,
+            kMultipleCast = 4,
+            kItemCharge = 5,
+            kCastWhileShouting = 6,
+            kShoutWhileCasting = 7,
+            kShoutWhileRecovering = 8
+        };
+
+
         enum class CastingSource : UInt32
         {
             kLeftHand = 0,

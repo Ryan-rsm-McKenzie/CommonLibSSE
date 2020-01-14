@@ -8,6 +8,7 @@
 namespace RE
 {
 	class BGSVoiceType;
+	class TESActorBase;
 	class TESFaction;
 	class TESForm;
 	class TESLevItem;
@@ -85,32 +86,34 @@ namespace RE
 		virtual ~TESActorBaseData();
 
 		// override (BaseFormComponent)
-		virtual void			InitializeDataComponent() override;					// 01
-		virtual void			ClearDataComponent() override;						// 02
-		virtual void			CopyComponent(BaseFormComponent* a_rhs) override;	// 03
+		virtual void			InitializeDataComponent() override;						// 01
+		virtual void			ClearDataComponent() override;							// 02
+		virtual void			CopyComponent(BaseFormComponent* a_rhs) override;		// 03
 
 		// add
-		virtual void			Unk_04(void);										// 04 - { return; }
-		virtual bool			IsGhost();											// 05 - { return (flags >> 29) & 1; }
-		virtual bool			IsInvulnerable();									// 06 - { test flags, 80000000h; }
-		virtual void			Unk_07(void);										// 07 - { return 1; }
-		virtual BGSVoiceType*	GetVoiceType(void);									// 08 - { return voice; }
+		virtual void			CopyFromTemplateForms(TESActorBase** a_templateForms);	// 04 - { return; }
+		virtual bool			GetIsGhost() const;										// 05 - { return (flags >> 29) & 1; }
+		virtual bool			GetInvulnerable() const;								// 06 - { test flags, 80000000h; }
+		virtual void			Unk_07(void);											// 07 - { return 1; }
+		virtual BGSVoiceType*	GetVoiceType(void);										// 08 - { return voice; }
 
-		bool	IsFemale() const;
-		bool	IsPreset() const;
-		bool	IsEssential() const;
-		bool	Respawns() const;
-		bool	HasAutoCalcStats() const;
-		bool	IsUnique() const;
 		bool	AffectsStealthMeter() const;
-		bool	HasPCLevelMult() const;
-		bool	UsesTemplate() const;
-		bool	Protected() const;
-		bool	IsSummonable() const;
 		bool	Bleeds() const;
-		bool	HasBleedoutOverride() const;
-		bool	UsesOppositeGenderAnims() const;
+		bool	IsEssential() const;
+		bool	IsFemale() const;
+		bool	IsGhost() const;
+		bool	IsPreset() const;
+		bool	IsProtected() const;
 		bool	IsSimpleActor() const;
+		bool	IsSummonable() const;
+		bool	IsUnique() const;
+		bool	IsInvulnerable() const;
+		bool	HasAutoCalcStats() const;
+		bool	HasBleedoutOverride() const;
+		bool	HasPCLevelMult() const;
+		bool	Respawns() const;
+		bool	UsesOppositeGenderAnims() const;
+		bool	UsesTemplate() const;
 
 
 		// members

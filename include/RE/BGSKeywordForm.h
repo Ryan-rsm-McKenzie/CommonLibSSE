@@ -24,11 +24,11 @@ namespace RE
 		virtual void		CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 		// add
-		virtual bool		HasKeyword(BGSKeyword* a_keyword) const;			// 04
-		virtual BGSKeyword*	GetKeywordType();									// 05 - { return 0; }
+		virtual bool		HasKeyword(const BGSKeyword* a_keyword) const;		// 04
+		virtual BGSKeyword*	GetDefaultKeyword() const;							// 05 - { return 0; }
 
 		bool						HasKeyword(FormID a_formID) const;
-		std::optional<BGSKeyword*>	GetKeywordAt(UInt32 a_idx);
+		std::optional<BGSKeyword*>	GetKeywordAt(UInt32 a_idx) const;
 		UInt32						GetNumKeywords() const;
 
 

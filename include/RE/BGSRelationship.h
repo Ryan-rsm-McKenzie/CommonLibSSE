@@ -56,15 +56,15 @@ namespace RE
 		};
 
 
-		virtual ~BGSRelationship();										// 00
+		virtual ~BGSRelationship();											// 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;						// 04
-		virtual bool	Load(TESFile* a_mod) override;					// 06
-		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void	InitLoadGame(void* a_arg1) override;			// 10
-		virtual void	InitItemImpl() override;						// 13
+		virtual void	InitializeData() override;							// 04
+		virtual bool	Load(TESFile* a_mod) override;						// 06
+		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;		// 0E
+		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;		// 0F
+		virtual void	InitLoadGame(BGSLoadFormBuffer* a_buf) override;	// 10
+		virtual void	InitItemImpl() override;							// 13
 
 
 		// members

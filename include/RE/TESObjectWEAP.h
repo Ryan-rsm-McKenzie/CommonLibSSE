@@ -224,9 +224,12 @@ namespace RE
 		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
 		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
 		virtual void		InitItemImpl() override;						// 13
-		virtual TESFile*	GetDescriptionOwnerFile() override;				// 14
+		virtual TESFile*	GetDescriptionOwnerFile() const override;		// 14
 		virtual bool		GetPlayable() const override;					// 19 - { return ~((data.flags >> 7) & 1); }
 		virtual const char*	GetObjectTypeName() const override;				// 39 - { return g_animationStrings[data.animationType]; }
+
+		// override (BGSKeywordForm)
+		virtual BGSKeyword*	GetDefaultKeyword() const override;				// 05
 
 		float		GetSpeed() const;
 		float		GetReach() const;

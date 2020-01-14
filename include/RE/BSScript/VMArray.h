@@ -6,6 +6,7 @@
 
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/Array.h"
+#include "RE/BSScript/TypeInfo.h"
 #include "RE/BSScript/Variable.h"
 #include "RE/BSTSmartPointer.h"
 
@@ -912,8 +913,8 @@ namespace RE
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			BSTSmartPointer<Array> arrPtr;
-			auto typeID = GetTypeID<value_type>();
-			bool allocSuccess = vm->AllocateArray(typeID, a_count, arrPtr);
+			TypeInfo typeInfo(GetRawType<value_type>());
+			bool allocSuccess = vm->CreateArray(typeInfo, a_count, arrPtr);
 			assert(allocSuccess);	// alloc failed
 			return arrPtr;
 		}

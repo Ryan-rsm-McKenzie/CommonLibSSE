@@ -34,13 +34,13 @@ namespace RE
 			}
 
 
-			const BSFixedString& NativeFunctionBase::GetFunctionName() const
+			const BSFixedString& NativeFunctionBase::GetName() const
 			{
 				return _name;
 			}
 
 
-			const BSFixedString& NativeFunctionBase::GetScriptName() const
+			const BSFixedString& NativeFunctionBase::GetObjectTypeName() const
 			{
 				return _objName;
 			}
@@ -52,16 +52,15 @@ namespace RE
 			}
 
 
-			TypeInfo& NativeFunctionBase::GetReturnType(TypeInfo& a_dst) const
+			TypeInfo NativeFunctionBase::GetReturnType() const
 			{
-				a_dst = _retType;
-				return a_dst;
+				return _retType;
 			}
 
 
 			UInt32 NativeFunctionBase::GetParamCount() const
 			{
-				return _descTable.paramCount;
+				return _descTable.totalEntries;
 			}
 
 
@@ -73,7 +72,7 @@ namespace RE
 					a_typeOut = elem.second;
 				} else {
 					a_nameOut = "";
-					a_typeOut = {};
+					a_typeOut.SetType(TypeInfo::RawType::kNone);
 				}
 			}
 

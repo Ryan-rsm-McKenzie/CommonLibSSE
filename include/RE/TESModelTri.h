@@ -11,10 +11,10 @@ namespace RE
 		inline static const void* RTTI = RTTI_TESModelTri;
 
 
-		virtual ~TESModelTri();											// 00
+		virtual ~TESModelTri();									// 00
 
 		// override (TESModel)
-		virtual void SetModelName(const char* a_modelName) override;	// 05
+		virtual void SetModel(const char* a_model) override;	// 05
 	};
 	STATIC_ASSERT(sizeof(TESModelTri) == 0x28);
 }

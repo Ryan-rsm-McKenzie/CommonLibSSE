@@ -45,21 +45,21 @@ namespace RE
 		};
 
 
-		virtual ~TESObjectMISC();													// 00
+		virtual ~TESObjectMISC();											// 00
 
 		// override (TESBoundObject)
-		virtual bool		Load(TESFile* a_mod) override;							// 06
-		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;			// 0E
-		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;			// 0F
-		virtual void		InitItemImpl() override;								// 13
+		virtual bool		Load(TESFile* a_mod) override;					// 06
+		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
+		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
+		virtual void		InitItemImpl() override;						// 13
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword*	GetKeywordType() override;								// 05
+		virtual BGSKeyword*	GetDefaultKeyword() const override;				// 05
 
 		// add
-		virtual void		Unk_53(void);											// 53 - { return; }
-		virtual void		LoadRecordByType(TESFile* a_mod, UInt32 a_recordType);	// 54 - { return; }
-		virtual void		Unk_55(void);											// 55 - { return; }
+		virtual void		SaveImpl();										// 53 - { return; }
+		virtual void		LoadImpl(TESFile* a_mod, UInt32 a_chunkID);		// 54 - { return; }
+		virtual void		InitImpl();										// 55 - { return; }
 	};
 	STATIC_ASSERT(sizeof(TESObjectMISC) == 0x100);
 }

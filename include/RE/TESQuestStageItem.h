@@ -7,7 +7,7 @@
 namespace RE
 {
 	class TESQuest;
-	struct TESQuestStage;
+	class TESQuestStage;
 
 
 	struct TESQuestStageItem

@@ -6,6 +6,9 @@
 
 namespace RE
 {
+	class BSIMusicTrack;
+
+
 	class BSIMusicType
 	{
 	public:
@@ -24,37 +27,39 @@ namespace RE
 		};
 
 
-		struct Data	// PNAM
+		enum class MUSIC_STATUS : UInt32
 		{
-			float GetDucking() const;
-
-
-			UInt16	priority;	// 0
-			UInt16	ducking;	// 2 - ck value * 100 as a UInt16
+			kInactive = 0,
+			kPlaying = 1,
+			kPaused = 2,
+			kFinishing = 3,
+			kFinished = 4
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x4);
 
 
 		// add
-		virtual void	Unk_00(void) = 0;	// 00
-		virtual void	Unk_01(void) = 0;	// 01
-		virtual void	Unk_02(void) = 0;	// 02
-		virtual void	Unk_03(void) = 0;	// 03
-		virtual void	Unk_04(void);		// 04 - { return; }
-		virtual void	Unk_05(void);		// 05 - { return; }
-		virtual void	Unk_06(void);		// 06 - { return; }
+		virtual void	DoUpdate() = 0;								// 00
+		virtual void	DoPlay() = 0;								// 01
+		virtual void	DoPause() = 0;								// 02
+		virtual void	DoFinish(bool a_arg1) = 0;					// 03
+		virtual void	DoApplyDuckingAttenuation(UInt16 a_arg1);	// 04 - { return; }
+		virtual void	DoClearDucking();							// 05 - { return; }
+		virtual void	DoPrepare();								// 06 - { return; }
 
-		virtual ~BSIMusicType();			// 07
+		virtual ~BSIMusicType();									// 07
 
 
 		// members
-		Flag								flags;			// 08 - FNAM
-		Data								data;			// 0C - PNAM
-		float								fadeDuration;	// 10 - WNAM
-		UInt32								unk14;			// 14
-		BSTArray<void*>						unk18;			// 18
-		BSTArray<BGSMusicTrackFormWrapper*>	musicTracks;	// 30 - TNAM
-		UInt64								unk48;			// 48
+		Flag						flags;				// 08 - FNAM
+		SInt8						priority;			// 0C
+		SInt8						padding;			// 0D
+		UInt16						ducksOtherMusicBy;	// 0E - ck value * 100 as a UInt16
+		float						fadeTime;			// 10 - WNAM
+		UInt32						currentTrackIndex;	// 14
+		BSTArray<UInt32>			trackHistory;		// 18
+		BSTArray<BSIMusicTrack*>	tracks;				// 30 - TNAM
+		MUSIC_STATUS				typeStatus;			// 48
+		UInt32						pad4C;				// 4C
 	};
 	STATIC_ASSERT(sizeof(BSIMusicType) == 0x50);
 }

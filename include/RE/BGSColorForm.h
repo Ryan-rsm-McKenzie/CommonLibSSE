@@ -43,7 +43,7 @@ namespace RE
 		virtual void	ClearData() override;			// 05
 		virtual bool	Load(TESFile* a_mod) override;	// 06
 
-		constexpr bool IsPlayable() const { return (flags & Flag::kPlayable) != Flag::kNone; }
+		bool IsPlayable() const;
 
 
 		// memebrs

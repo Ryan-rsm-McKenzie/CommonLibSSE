@@ -78,18 +78,18 @@ namespace RE
 		virtual void				InitItemImpl() override;							// 13
 
 		// add
-		virtual SInt8				GetDensity() const;									// 53 - { return data.density; }
-		virtual bool				SetDensity(SInt8 a_density);						// 54 - { if (a_density > 100) return false; data.density = a_density; return true; }
-		virtual SInt8				GetMinSlope() const;								// 55 - { return data.minSlope; }
-		virtual bool				SetMinSlope(SInt8 a_minSlope);						// 56 - { if (a_minSlope > 90 || a_minSlope > data.maxSlopeDegrees) return false; data.minSlopeDegrees = a_minSlope; return true; }
-		virtual SInt8				GetMaxSlope() const;								// 57 - { return data.maxSlope; }
-		virtual bool				SetMaxSlope(SInt8 a_maxSlope);						// 58 - { if (a_maxSlope > 90 || a_maxSlope < data.minSlopeDegrees) return false; data.maxSlopeDegrees = a_maxSlope; return true; }
-		virtual float				GetMinSlopeAngle() const;							// 59 - { return data.minSlopeDegrees * 1deg; }
-		virtual float				GetMaxSlopeAngle() const;							// 5A - { return data.maxSlopeDegrees * 1deg; }
+		virtual UInt8				GetDensity() const;									// 53 - { return data.density; }
+		virtual bool				SetDensity(UInt8 a_density);						// 54 - { if (a_density > 100) return false; data.density = a_density; return true; }
+		virtual UInt8				GetMinSlopeDegrees() const;							// 55 - { return data.minSlope; }
+		virtual bool				SetMinSlopeDegrees(UInt8 a_minSlope);				// 56 - { if (a_minSlope > 90 || a_minSlope > data.maxSlopeDegrees) return false; data.minSlopeDegrees = a_minSlope; return true; }
+		virtual UInt8				GetMaxSlopeDegrees() const;							// 57 - { return data.maxSlope; }
+		virtual bool				SetMaxSlopeDegrees(UInt8 a_maxSlope);				// 58 - { if (a_maxSlope > 90 || a_maxSlope < data.minSlopeDegrees) return false; data.maxSlopeDegrees = a_maxSlope; return true; }
+		virtual float				GetMinSlope() const;								// 59 - { return data.minSlopeDegrees * 1deg; }
+		virtual float				GetMaxSlope() const;								// 5A - { return data.maxSlopeDegrees * 1deg; }
 		virtual UInt16				GetDistanceFromWaterLevel() const;					// 5B - { return data.distanceFromWaterLevel; }
 		virtual void				SetDistanceFromWaterLevel(UInt16 a_unitsFromWater);	// 5C - { data.distanceFromWaterLevel = a_unitsFromWater; }
-		virtual GRASS_WATER_STATE	GetWaterState() const;								// 5D - { return data.underwater; }
-		virtual void				SetWaterState(GRASS_WATER_STATE a_waterState);		// 5E - { data.underwater = a_waterState; }
+		virtual GRASS_WATER_STATE	GetUnderwaterState() const;							// 5D - { return data.underwater; }
+		virtual void				SetUnderwaterState(GRASS_WATER_STATE a_waterState);	// 5E - { data.underwater = a_waterState; }
 		virtual float				GetPositionRange() const;							// 5F - { return data.positionRange; }
 		virtual bool				SetPositionRange(float a_positionRange);			// 60 - { if (a_positionRange < 0.0 || a_positionRange > 512.0) return false; data.positionRange = a_positionRange; return true; }
 		virtual float				GetHeightRange() const;								// 61 - { return data.heightRange; }
@@ -98,12 +98,12 @@ namespace RE
 		virtual bool				SetColorRange(float a_colorRange);					// 64 - { if (a_colorRange < 0.0 || a_colorRange > 1.0) return false; data.colorRange = a_colorRange; return true; }
 		virtual float				GetWavePeriod() const;								// 65 - { return data.wavePeriod; }
 		virtual bool				SetWavePeriod(float a_wavePeriod);					// 66 - { if (a_wavePeriod <= 0.0) return false; data.wavePeriod = a_wavePeriod; return true; }
-		virtual bool				HasVertexLighting() const;							// 67 - { return data.flags & 1; }
-		virtual void				SetOrInvertVertexLighting(bool a_set);				// 68 - { if (a_set) data.flags |= 0x1; else data.flags &= 0xFE; }
-		virtual bool				HasUniformScaling() const;							// 69 - { return (data.flags >> 1) & 1; }
-		virtual void				SetOrInvertUniformScaling(bool a_set);				// 6A - { if (a_set) data.flags |= 0x2; else data.flags &= 0xFD; }
-		virtual bool				FitsToSlope() const;								// 6B - { return (data.flags >> 2) & 1; }
-		virtual void				SetOrInvertFitsToSlope(bool a_set);					// 6C - { if (a_set) data.flags |= 0x4; else data.flags &= 0xFB; }
+		virtual bool				GetVertexLighting() const;							// 67 - { return data.flags & 1; }
+		virtual void				SetVertexLighting(bool a_set);						// 68 - { if (a_set) data.flags |= 0x1; else data.flags &= 0xFE; }
+		virtual bool				GetUniformScaling() const;							// 69 - { return (data.flags >> 1) & 1; }
+		virtual void				SetUniformScaling(bool a_set);						// 6A - { if (a_set) data.flags |= 0x2; else data.flags &= 0xFD; }
+		virtual bool				GetFitToSlope() const;								// 6B - { return (data.flags >> 2) & 1; }
+		virtual void				SetFitToSlope(bool a_set);							// 6C - { if (a_set) data.flags |= 0x4; else data.flags &= 0xFB; }
 
 
 		// members

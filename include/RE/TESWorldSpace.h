@@ -51,8 +51,9 @@ namespace RE
 	STATIC_ASSERT(sizeof(WORLD_MAP_OFFSET_DATA) == 0x10);
 
 
-	struct BGSLargeRefData   // RNAM
+	class BGSLargeRefData   // RNAM
 	{
+	public:
 		// RNAM format in plugins is cell x,y -> formID + cell that contains refr x,y
 		// a lot of RNAM data is for refrs that are actually in adjacent cells, it is currently unknown what behavior this has in game
 		BSTHashMap<UInt32, FormID*>	cellFormIDMap;			// 00 - full data merged at runtime, value is an array of FormIDs with array size as the first entry
@@ -132,10 +133,10 @@ namespace RE
 		virtual TESForm*	CreateDuplicateForm(void* a_arg1, void* a_arg2) override;	// 09
 		virtual bool		FindInFileFast(TESFile* a_mod) override;					// 0C
 		virtual void		InitItemImpl() override;									// 13
-		virtual const char*	GetFormEditorID() override;									// 32 - { return editorID.c_str(); }
+		virtual const char*	GetFormEditorID() const override;							// 32 - { return editorID.c_str(); }
 		virtual bool		SetFormEditorID(const char* a_str) override;				// 33 - { editorID = a_str; }
-		virtual bool		IsParentForm() const override;								// 34 - { return true; }
-		virtual bool		IsFormTypeChild(FormType a_type) const override;			// 36
+		virtual bool		IsParentForm() override;									// 34 - { return true; }
+		virtual bool		IsFormTypeChild(FormType a_type) override;					// 36
 
 		bool HasMaxHeightData() const;
 

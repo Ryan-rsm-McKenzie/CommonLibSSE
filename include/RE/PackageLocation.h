@@ -36,6 +36,9 @@ namespace RE
 
 		union Data
 		{
+			~Data() {}
+
+
 			TESForm*		object;	
 			ObjectRefHandle	refHandle;
 		};

@@ -77,7 +77,7 @@ namespace RE
 		virtual bool	Load(TESFile* a_mod) override;					// 06
 		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
 		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void	Revert(void* a_arg1) override;					// 12
+		virtual void	Revert(BGSLoadFormBuffer* a_buf) override;		// 12
 		virtual void	InitItemImpl() override;						// 13
 
 

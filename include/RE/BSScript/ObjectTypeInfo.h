@@ -119,7 +119,7 @@ namespace RE
 			const char*				GetName() const;
 			ObjectTypeInfo*			GetParent();
 			const ObjectTypeInfo*	GetParent() const;
-			TypeInfo::RawType		GetType() const;
+			TypeInfo::RawType		GetRawType() const;
 			bool					IsInherited() const;
 			bool					IsRemoved() const;
 

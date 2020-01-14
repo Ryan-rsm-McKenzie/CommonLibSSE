@@ -60,15 +60,19 @@ namespace RE
 		};
 
 
-		virtual ~TESObjectCONT();																															// 00
+		virtual ~TESObjectCONT();																																	// 00
 		
 		// override (TESBoundAnimObject)
-		virtual void	InitializeData() override;																											// 04
-		virtual bool	Load(TESFile* a_mod) override;																										// 06
-		virtual void	InitItemImpl() override;																											// 13
-		virtual bool	Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, UInt64 a_arg4, SInt32 a_targetCount) override;	// 37
-		virtual bool	GetCrosshairText(TESObjectREFR* a_ref, BSString* a_dst) override;																	// 4C
-		virtual void	Unk_4D(void) override;																												// 4D
+		virtual void	InitializeData() override;																													// 04
+		virtual bool	Load(TESFile* a_mod) override;																												// 06
+		virtual void	InitItemImpl() override;																													// 13
+		virtual bool	Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;	// 37
+		virtual bool	GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																		// 4C
+		virtual bool	CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;										// 4D
+
+		// override (BGSOpenCloseForm)
+		virtual void	HandleOpen(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;																	// 01
+		virtual void	HandleClose(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;																	// 02
 
 
 		// members

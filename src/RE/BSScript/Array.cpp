@@ -213,7 +213,7 @@ namespace RE
 
 		[[nodiscard]] TypeInfo::RawType Array::type() const
 		{
-			auto typeID = _elementType.GetType();
+			auto typeID = _elementType.GetRawType();
 			switch (typeID) {
 			case TypeInfo::RawType::kNone:
 			case TypeInfo::RawType::kObject:

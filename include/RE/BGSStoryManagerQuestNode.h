@@ -36,18 +36,18 @@ namespace RE
 		};
 
 
-		virtual ~BGSStoryManagerQuestNode();												// 00
+		virtual ~BGSStoryManagerQuestNode();																				// 00
 
 		// override (BGSStoryManagerNodeBase)
-		virtual void						ClearData() override;							// 05
-		virtual bool						Load(TESFile* a_mod) override;					// 06
-		virtual void						SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
-		virtual void						LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
-		virtual void						Revert(void* a_arg1) override;					// 12
-		virtual void						InitItemImpl() override;						// 13
-		virtual UInt32						GetNumChildren() const override;				// 3B - { return quests.size(); }
-		virtual BGSStoryManagerEventNode*	GetNthChild(UInt32 a_idx) override;				// 3C - { return quests[a_idx]; }
-		virtual void						Unk_3E(void) override;							// 3E - { return a_arg1->Unk_02(this); }
+		virtual void										ClearData() override;											// 05
+		virtual bool										Load(TESFile* a_mod) override;									// 06
+		virtual void										SaveGame(BGSSaveFormBuffer* a_buf) override;					// 0E
+		virtual void										LoadGame(BGSLoadFormBuffer* a_buf) override;					// 0F
+		virtual void										Revert(BGSLoadFormBuffer* a_buf) override;						// 12
+		virtual void										InitItemImpl() override;										// 13
+		virtual UInt32										QChildCount() const override;									// 3B - { return quests.size(); }
+		virtual BGSStoryManagerTreeForm*					GetChild(UInt32 a_idx) const override;							// 3C - { return quests[a_idx]; }
+		virtual BGSStoryManagerTreeVisitor::VisitControl	AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;	// 3E - { return a_visitor->VisitQuestNode(this); }
 
 
 		// members

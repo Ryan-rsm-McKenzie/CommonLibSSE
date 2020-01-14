@@ -71,14 +71,14 @@ namespace RE
 		};
 
 
-		virtual ~BGSExplosion();						// 00
+		virtual ~BGSExplosion();													// 00
 
 		// override (TESBoundObject)
-		virtual void	InitializeData() override;		// 04
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
-		virtual void	Unk_40(void) override;			// 40
-		virtual void	Unk_41(void) override;			// 41
+		virtual void		InitializeData() override;								// 04
+		virtual bool		Load(TESFile* a_mod) override;							// 06
+		virtual void		InitItemImpl() override;								// 13
+		virtual NiAVObject*	Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;	// 40
+		virtual void		UnClone3D(TESObjectREFR* a_ref) override;				// 41
 
 
 		// members
