@@ -10,6 +10,7 @@
 #include <string>
 
 #include "RE/BSScript/Internal/VirtualMachine.h"
+#include "RE/BSScript/IVirtualMachine.h"
 #include "RE/GFxMovieView.h"
 #include "RE/GFxValue.h"
 #include "RE/InventoryEntryData.h"
@@ -186,7 +187,8 @@ namespace SKSE
 	class PapyrusInterface
 	{
 	public:
-		using RegFunction = bool(RE::BSScript::Internal::VirtualMachine* a_vm);
+		using RegFunction1 = bool(RE::BSScript::Internal::VirtualMachine* a_vm);
+		using RegFunction2 = bool(RE::BSScript::IVirtualMachine* a_vm);
 
 		enum { kVersion = 1 };
 
@@ -208,7 +210,8 @@ namespace SKSE
 		const SKSEPapyrusInterface* GetProxy() const;
 
 	private:
-		bool Register_Impl(RegFunction* a_fn) const;
+		bool Register_Impl(RegFunction1* a_fn) const;
+		bool Register_Impl(RegFunction2* a_fn) const;
 	};
 	STATIC_ASSERT(PapyrusInterface::kVersion == SKSEPapyrusInterface::kInterfaceVersion);
 
