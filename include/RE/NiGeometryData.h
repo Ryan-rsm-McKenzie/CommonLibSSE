@@ -10,6 +10,8 @@ namespace RE
 	class NiColorA;
 	class NiPoint2;
 	class NiPoint3;
+	class NiTriShapeData;
+	class NiTriStripsData;
 
 
 	class NiGeometryData : public NiObject
@@ -69,19 +71,19 @@ namespace RE
 		virtual ~NiGeometryData();	// 00
 
 		// override (NiObject)
-		virtual const NiRTTI*	GetRTTI() const override;							// 02
-		virtual void			LoadBinary(NiStream& a_stream) override;			// 18
-		virtual void			LinkObject(NiStream& a_stream) override;			// 19
-		virtual bool			RegisterStreamables(NiStream& a_stream) override;	// 1A
-		virtual void			SaveBinary(NiStream& a_stream) override;			// 1B
-		virtual bool			IsEqual(NiObject* a_object) override;				// 1C
+		virtual const NiRTTI*		GetRTTI() const override;							// 02
+		virtual void				LoadBinary(NiStream& a_stream) override;			// 18
+		virtual void				LinkObject(NiStream& a_stream) override;			// 19
+		virtual bool				RegisterStreamables(NiStream& a_stream) override;	// 1A
+		virtual void				SaveBinary(NiStream& a_stream) override;			// 1B
+		virtual bool				IsEqual(NiObject* a_object) override;				// 1C
 
 		// add
-		virtual void			Unk_25(void);										// 25 - { return; }
-		virtual UInt16			GetNumVertices();									// 26 - { return vertices; }
-		virtual void			Unk_27(void);										// 27 - { return 0; }
-		virtual void			Unk_28(void);										// 28 - { return 0; }
-		virtual void			Unk_29(void) = 0;									// 29
+		virtual void				SetActiveVertexCount(UInt16 a_count);				// 25 - { return; }
+		virtual UInt16				GetActiveVertexCount() const;						// 26 - { return vertices; }
+		virtual NiTriStripsData*	AsTriStripsData();									// 27 - { return 0; }
+		virtual NiTriShapeData*		AsTriShapeData();									// 28 - { return 0; }
+		virtual void				Unk_29(void) = 0;									// 29
 
 
 		// members

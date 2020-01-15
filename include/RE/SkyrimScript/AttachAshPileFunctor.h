@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/SkyrimScript/DelayFunctor.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/BSTSmartPointer.h"
 
 
@@ -12,7 +13,7 @@ namespace RE
 	}
 
 
-	class TESForm;
+	class TESBoundObject;
 
 
 	namespace SkyrimScript
@@ -20,21 +21,21 @@ namespace RE
 		class AttachAshPileFunctor : public DelayFunctor
 		{
 		public:
-			virtual ~AttachAshPileFunctor();											// 00
+			virtual ~AttachAshPileFunctor();																			// 00
 
 			// override (DelayFunctor)
-			virtual RE::BSScript::Variable&	Run(BSScript::Variable& a_result) override;	// 01
-			virtual void					Unk_02(void) override;						// 02 - { return 0; }
-			virtual void					Unk_04(void) override;						// 04
-			virtual UInt32					GetFactoryType() const override;			// 05 - { return 14; }
-			virtual void					Unk_06(void) override;						// 06
+			virtual RE::BSScript::Variable	operator()() override;														// 01
+			virtual bool					IsLatent() const override;													// 02 - { return false; }
+			virtual bool					SaveImpl(BSStorage& a_storage) const override;								// 04
+			virtual FunctorType				GetType() const override;													// 05 - { return 14; }
+			virtual bool					LoadImpl(const BSStorage& a_storage, UInt32 a_arg2, bool& a_arg3) override;	// 06
 
 
 			// members
-			RefHandle									actor;			// 10
+			ActorHandle									targetActor;	// 10
 			UInt32										pad14;			// 14
-			TESForm*									ashPileBase;	// 18
-			BSTSmartPointer<BSScript::IVirtualMachine>	virtualMachine;	// 20
+			TESBoundObject*								ashObject;		// 18
+			BSTSmartPointer<BSScript::IVirtualMachine>	vm;				// 20
 		};
 		STATIC_ASSERT(sizeof(AttachAshPileFunctor) == 0x28);
 	}

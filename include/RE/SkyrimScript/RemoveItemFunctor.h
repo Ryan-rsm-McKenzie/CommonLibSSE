@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/SkyrimScript/DelayFunctor.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/BSTSmartPointer.h"
 
 
@@ -17,26 +18,26 @@ namespace RE
 		class RemoveItemFunctor : public DelayFunctor
 		{
 		public:
-			virtual ~RemoveItemFunctor();												// 00
+			virtual ~RemoveItemFunctor();																				// 00
 
 			// override (DelayFunctor)
-			virtual RE::BSScript::Variable&	Run(BSScript::Variable& a_result) override;	// 01
-			virtual void					Unk_02(void) override;						// 02 - { return 1; }
-			virtual void					Unk_04(void) override;						// 04
-			virtual UInt32					GetFactoryType() const override;			// 05 - { return 24; }
-			virtual void					Unk_06(void) override;						// 06
+			virtual RE::BSScript::Variable	operator()() override;														// 01
+			virtual bool					IsLatent() const override;													// 02 - { return true; }
+			virtual bool					SaveImpl(BSStorage& a_storage) const override;								// 04
+			virtual FunctorType				GetType() const override;													// 05 - { return 24; }
+			virtual bool					LoadImpl(const BSStorage& a_storage, UInt32 a_arg2, bool& a_arg3) override;	// 06
 
 
 			// members
-			RefHandle									removeFrom;		// 10
-			RefHandle									moveTo;			// 14
-			FormID										toRemove;		// 18
-			SInt32										count;			// 1C
+			ObjectRefHandle								container;		// 10
+			ObjectRefHandle								destContainer;	// 14
+			FormID										item;			// 18
+			UInt32										count;			// 1C
 			bool										silent;			// 20
 			UInt8										pad21;			// 21
 			UInt16										pad22;			// 22
 			UInt32										pad24;			// 24
-			BSTSmartPointer<BSScript::IVirtualMachine>	virtualMachine;	// 28
+			BSTSmartPointer<BSScript::IVirtualMachine>	vm;				// 28
 		};
 		STATIC_ASSERT(sizeof(RemoveItemFunctor) == 0x30);
 	}

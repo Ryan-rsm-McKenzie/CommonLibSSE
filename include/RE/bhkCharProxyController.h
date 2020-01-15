@@ -25,8 +25,8 @@ namespace RE
 		virtual void	ObjectInteractionCallback(hkpCharacterProxy* a_proxy, const hkpCharacterObjectInteractionEvent& a_input, hkpCharacterObjectInteractionResult& a_output) override;	// 05
 
 		// override (bhkCharacterController)
-		virtual void	GetLinearVelocity(hkVector4& a_velOut) const override;																												// 06
-		virtual void	SetLinearVelocity(const hkVector4& a_vel) override;																													// 07
+		virtual hkVector4	GetLinearVelocity() const override;																																// 06
+		virtual void		SetLinearVelocity(const hkVector4& a_vel) override;																												// 07
 
 
 		// members

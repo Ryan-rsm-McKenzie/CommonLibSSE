@@ -32,4 +32,18 @@ namespace RE
 		REL::Offset<func_t*> func(Offset::MagicItem::CalculateCost);
 		return func(this, a_caster);
 	}
+
+
+	auto MagicItem::GetData()
+		-> Data*
+	{
+		return GetData2();
+	}
+
+
+	auto MagicItem::GetData() const
+		-> const Data*
+	{
+		return GetData1();
+	}
 }

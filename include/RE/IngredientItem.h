@@ -95,8 +95,8 @@ namespace RE
 		virtual UInt32						GetChunkID() override;											// 68 - { return 'ENIT'; }
 		virtual void						CopyMagicItemData(MagicItem* a_src) override;					// 69
 		virtual void						LoadMagicItemChunk(TESFile* a_mod, UInt32 a_chunkID) override;	// 6A
-		virtual const MagicItem::Data*		GetData() const override;										// 6C - { return &effectData; }
-		virtual MagicItem::Data*			GetData() override;												// 6D - { return &effectData; }
+		virtual const MagicItem::Data*		GetData1() const override;										// 6C - { return &effectData; }
+		virtual MagicItem::Data*			GetData2() override;												// 6D - { return &effectData; }
 		virtual UInt32						GetDataSize() const override;									// 6E - { return 0x8; }
 		virtual void						InitFromChunk(TESFile* a_mod) override;							// 6F
 		virtual void						InitChunk() override;											// 70

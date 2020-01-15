@@ -16,23 +16,23 @@ namespace RE
 		inline static const void* Ni_RTTI = NiRTTI_BSFadeNode;
 
 
-		virtual ~BSFadeNode();																						// 00
+		virtual ~BSFadeNode();																				// 00
 
 		// override (NiNode)
-		virtual const NiRTTI*	GetRTTI() const override;															// 02
-		virtual BSFadeNode*		GetAsBSFadeNode() override;															// 05 - { return this; }
-		virtual NiObject*		CreateClone(NiCloningProcess& a_cloning) override;									// 17
-		virtual void			LoadBinary(NiStream& a_stream) override;											// 18
-		virtual void			LinkObject(NiStream& a_stream) override;											// 19
-		virtual bool			RegisterStreamables(NiStream& a_stream) override;									// 1A
-		virtual void			SaveBinary(NiStream& a_stream) override;											// 1B
-		virtual bool			IsEqual(NiObject* a_object) override;												// 1C
-		virtual void			UpdateSelectedDownwardPass(ControllerUpdateContext* a_ctx, void* a_arg2) override;	// 2D
-		virtual void			Unk_34(void) override;																// 34
+		virtual const NiRTTI*	GetRTTI() const override;													// 02
+		virtual BSFadeNode*		AsFadeNode() override;														// 05 - { return this; }
+		virtual NiObject*		CreateClone(NiCloningProcess& a_cloning) override;							// 17
+		virtual void			LoadBinary(NiStream& a_stream) override;									// 18
+		virtual void			LinkObject(NiStream& a_stream) override;									// 19
+		virtual bool			RegisterStreamables(NiStream& a_stream) override;							// 1A
+		virtual void			SaveBinary(NiStream& a_stream) override;									// 1B
+		virtual bool			IsEqual(NiObject* a_object) override;										// 1C
+		virtual void			UpdateSelectedDownwardPass(NiUpdateData& a_data, UInt32 a_arg2) override;	// 2D
+		virtual void			OnVisible(NiCullingProcess& a_process) override;							// 34
 
 		// add
-		virtual BSTreeNode*		GetAsBSTreeNode();																	// 3E - { return 0; }
-		virtual BSLeafAnimNode*	GetAsBSLeafAnimNode();																// 3F - { return 0; }
+		virtual BSTreeNode*		AsTreeNode();																// 3E - { return 0; }
+		virtual BSLeafAnimNode*	AsLeafAnimNode();															// 3F - { return 0; }
 
 
 		// members

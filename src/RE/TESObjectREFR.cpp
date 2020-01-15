@@ -501,7 +501,7 @@ namespace RE
 			return;
 		}
 
-		auto manager = controller->GetAsNiControllerManager();
+		auto manager = controller->AsNiControllerManager();
 		if (!manager) {
 			return;
 		}
@@ -569,7 +569,9 @@ namespace RE
 			return false;
 		}
 
-		return node->SetMotionType(static_cast<UInt32>(a_motionType), true, false, a_allowActivate);
+		auto result = node->SetMotionType(static_cast<UInt32>(a_motionType), true, false, a_allowActivate);
+		AddChange(ChangeFlags::kHavokMoved);
+		return result;
 	}
 
 

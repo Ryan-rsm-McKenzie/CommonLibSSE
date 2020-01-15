@@ -30,7 +30,7 @@ namespace RE
 		virtual UInt16					GetInterpolatorCount() const = 0;																																					// 2F
 		virtual const char*				GetInterpolatorID(UInt16 a_index = 0) = 0;																																			// 30
 		virtual UInt16					GetInterpolatorIndex(const char* a_id) const = 0;																																	// 31
-		virtual void					Unk_32(void) = 0;																																									// 32 - UInt16 GetInterpolatorIndex(const BSFixedString& a_id) const ?
+		virtual UInt16					GetInterpolatorIndexFx(const BSFixedString& a_id) const = 0;																														// 32
 		virtual NiInterpolator*			GetInterpolator(UInt16 a_index = 0) const = 0;																																		// 33
 		virtual void					SetInterpolator(NiInterpolator* a_interpolator, UInt16 a_index = 0) = 0;																											// 34
 		virtual void					ResetTimeExtrema();																																									// 35

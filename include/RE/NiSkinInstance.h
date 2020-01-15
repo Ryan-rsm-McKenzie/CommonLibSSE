@@ -42,14 +42,14 @@ namespace RE
 		NiPointer<NiSkinPartition>	skinPartition;					// 18
 		NiAVObject*					rootParent;						// 20
 		NiAVObject**				bones;							// 28
-		NiTransform**				worldTransforms;				// 30
+		const NiTransform**			boneWorldTransforms;			// 30
 		UInt32						frameID;						// 38
 		UInt32						numMatrices;					// 3C
 		UInt32						numRegisters;					// 40
 		UInt32						allocatedSize;					// 44
 		void*						boneMatrices;					// 48
-		void*						skinToWorldWorldToSkinMatrix;	// 50
-		UInt64						unk58;							// 58
+		void*						prevBoneMatrices;				// 50
+		void*						skinToWorldWorldToSkinMatrix;	// 58
 		CRITICAL_SECTION			lock;							// 60
 	};
 	STATIC_ASSERT(sizeof(NiSkinInstance) == 0x88);

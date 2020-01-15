@@ -1102,6 +1102,9 @@
     <Filter Include="include\RE\BSCore\BSPointerHandleManager">
       <UniqueIdentifier>{68e1f63c-ef98-4afa-8b63-77e0b6e072bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\NetImmerse\NiRefObject\NiObject\NiInterpolator">
+      <UniqueIdentifier>{4e0a76c3-a0d2-4f73-b60b-b0c3808570d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1778,6 +1781,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\BSScript\IVirtualMachine.cpp">
       <Filter>src\RE\BSScript</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\UIBlurManager.cpp">
+      <Filter>src\RE\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiInterpolator.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiInterpolator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5221,6 +5230,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSPointerHandleSmartPointer.h">
       <Filter>include\RE\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\SkyrimScript\FragmentSystem.h">
+      <Filter>include\RE\SkyrimScript</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\UIBlurManager.h">
+      <Filter>include\RE\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DefaultObjectsReadyEvent.h">
+      <Filter>include\RE\Events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

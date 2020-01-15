@@ -99,7 +99,7 @@ namespace RE
 		}
 
 
-		auto TypeInfo::GetUnmangledType() const
+		auto TypeInfo::GetUnmangledRawType() const
 			-> RawType
 		{
 			if (_rawType < RawType::kArraysEnd) {
@@ -162,7 +162,7 @@ namespace RE
 
 		bool TypeInfo::IsObject() const
 		{
-			return GetUnmangledType() == RawType::kObject;
+			return GetUnmangledRawType() == RawType::kObject;
 		}
 
 

@@ -30,10 +30,10 @@ namespace RE
 	}
 
 
-	void NiAVObject::UpdateNode(ControllerUpdateContext* a_ctx)
+	void NiAVObject::Update(NiUpdateData& a_data)
 	{
-		using func_t = function_type_t<decltype(&NiAVObject::UpdateNode)>;
-		REL::Offset<func_t*> func(Offset::NiAVObject::UpdateNode);
-		return func(this, a_ctx);
+		using func_t = function_type_t<decltype(&NiAVObject::Update)>;
+		REL::Offset<func_t*> func(Offset::NiAVObject::Update);
+		return func(this, a_data);
 	}
 }

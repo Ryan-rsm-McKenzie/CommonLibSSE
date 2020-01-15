@@ -35,7 +35,7 @@ namespace RE
 		
 		// override (NiCollisionObject)
 		virtual const NiRTTI*			GetRTTI() const override;							// 02
-		virtual bhkNiCollisionObject*	GetAsBhkNiCollisionObject() override;				// 12 - { return this; }
+		virtual bhkNiCollisionObject*	AsBhkNiCollisionObject() override;					// 12 - { return this; }
 		virtual void					LoadBinary(NiStream& a_stream) override;			// 18
 		virtual void					LinkObject(NiStream& a_stream) override;			// 19
 		virtual bool					RegisterStreamables(NiStream& a_stream) override;	// 1A

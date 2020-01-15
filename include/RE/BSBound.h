@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/NiExtraData.h"
+#include "RE/NiPoint3.h"
 
 
 namespace RE
@@ -25,11 +26,8 @@ namespace RE
 
 
 		// members
-		UInt64	unk18;	// 18
-		float	unk20;	// 20
-		float	unk24;	// 24
-		float	unk28;	// 28
-		float	unk2C;	// 2C
+		NiPoint3	center;		// 18
+		NiPoint3	extents;	// 24
 	};
 	STATIC_ASSERT(sizeof(BSBound) == 0x30);
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <type_traits>
+
 #include "RE/BGSStoryManagerTreeForm.h"
 #include "RE/BSFixedString.h"
 #include "RE/BSLock.h"
@@ -23,6 +25,7 @@ namespace RE
 
 	enum class QuestFlag : UInt16
 	{
+		kStopStart = static_cast<std::underlying_type_t<QuestFlag>>(-1),
 		kNone = 0,
 		kEnabled = 1 << 0,
 		kCompleted = 1 << 1,
@@ -242,10 +245,21 @@ namespace RE
 		virtual TESCondition*								QConditions() override;											// 3D - { return &objConditions; }
 		virtual BGSStoryManagerTreeVisitor::VisitControl	AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;	// 3E
 
+		bool	EnsureQuestStarted(bool& a_result, bool a_startNow);
+		UInt16	GetCurrentStageID() const;
+		bool	IsActive() const;
+		bool	IsCompleted() const;
 		bool	IsEnabled() const;
+		bool	IsRunning() const;
+		bool	IsStarting() const;
+		bool	IsStopped() const;
+		bool	IsStopping() const;
 		void	Reset();
 		void	ResetAndUpdate();
+		void	SetEnabled(bool a_set);
+		bool	Start();
 		bool	StartsEnabled() const;
+		void	Stop();
 
 
 		// members
@@ -268,10 +282,10 @@ namespace RE
 		BSTArray<TESTopic*>										topics[DT::kTotal - DT::kBranchedTotal];	// 178
 		BSTArray<BGSScene*>										scenes;										// 208
 		BSTArray<TESGlobal*>*									textGlobals;								// 220 - QTGL
-		UInt32													totalRefsAliased;							// 228
-		UInt16													currentStage;								// 22C
-		bool													alreadyRun;									// 22C
-		UInt8													pad22F;										// 22C
+		UInt16													currentStage;								// 228
+		bool													alreadyRun;									// 22A
+		UInt8													pad22B;										// 22B
+		UInt32													pad22C;										// 22C
 		BSString												formEditorID;								// 230
 		const BGSStoryEvent*									startEventData;								// 240
 		NiPointer<QueuedPromoteQuestTask>						promoteTask;								// 248

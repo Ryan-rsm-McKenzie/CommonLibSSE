@@ -67,8 +67,8 @@ namespace RE
 		virtual ActorValue					GetAssociatedSkill() const override;						// 66 - { return ActorValue::kEnchanting; }
 		virtual UInt32						GetChunkID() override;										// 68 - { return 'ENIT'; }
 		virtual void						CopyMagicItemData(MagicItem* a_src) override;				// 69
-		virtual const MagicItem::Data*		GetData() const override;									// 6C - { return &data; }
-		virtual MagicItem::Data*			GetData() override;											// 6D - { return &data; }
+		virtual const MagicItem::Data*		GetData1() const override;									// 6C - { return &data; }
+		virtual MagicItem::Data*			GetData2() override;										// 6D - { return &data; }
 		virtual UInt32						GetDataSize() const override;								// 6E - { return 0x30; }
 		virtual void						InitFromChunk(TESFile* a_mod) override;						// 6F
 		virtual void						InitChunk() override;										// 70

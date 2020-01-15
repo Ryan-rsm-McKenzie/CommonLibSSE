@@ -52,7 +52,7 @@ namespace RE
 
 			RawType			GetRawType() const;
 			ObjectTypeInfo*	GetTypeInfo() const;
-			RawType			GetUnmangledType() const;
+			RawType			GetUnmangledRawType() const;
 			bool 			IsArray() const;
 			bool 			IsBool() const;
 			bool 			IsFloat() const;

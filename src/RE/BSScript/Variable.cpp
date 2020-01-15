@@ -51,7 +51,7 @@ namespace RE
 
 		Variable::~Variable()
 		{
-			Destroy();
+			Cleanup();
 			memzero(this);
 		}
 
@@ -62,7 +62,7 @@ namespace RE
 				return *this;
 			}
 
-			Destroy();
+			Cleanup();
 			Assign(a_rhs);
 			return *this;
 		}
@@ -74,7 +74,7 @@ namespace RE
 				return *this;
 			}
 
-			Destroy();
+			Cleanup();
 
 			varType = std::move(a_rhs.varType);
 
@@ -93,7 +93,7 @@ namespace RE
 				return false;
 			}
 
-			switch (varType.GetRawType()) {
+			switch (varType.GetUnmangledRawType()) {
 			case Type::kNone:
 			case Type::kNoneArray:
 				return true;
@@ -114,7 +114,8 @@ namespace RE
 			case Type::kBoolArray:
 				return value.arr.get() == a_rhs.value.arr.get();
 			default:
-				return value.p == a_rhs.value.p;
+				assert(false);	// unhandled type
+				return false;
 			}
 		}
 
@@ -133,7 +134,7 @@ namespace RE
 				return varType < a_rhs.varType;
 			}
 
-			switch (varType.GetRawType()) {
+			switch (varType.GetUnmangledRawType()) {
 			case Type::kNone:
 			case Type::kNoneArray:
 				return false;
@@ -154,7 +155,8 @@ namespace RE
 			case Type::kBoolArray:
 				return value.arr.get() < a_rhs.value.arr.get();
 			default:
-				return value.p < a_rhs.value.p;
+				assert(false);	// unhandled type
+				return false;
 			}
 		}
 
@@ -297,9 +299,39 @@ namespace RE
 
 		void Variable::ChangeType(TypeInfo::RawType a_type)
 		{
-			Destroy();
+			Cleanup();
 			varType = a_type;
 			value.p = 0;
+		}
+
+
+		void Variable::Cleanup()
+		{
+			using Type = TypeInfo::RawType;
+
+			switch (varType.GetUnmangledRawType()) {
+			case Type::kObject:
+				value.obj.~BSTSmartPointer();
+				break;
+			case Type::kString:
+				value.str.~BSFixedString();
+				break;
+			case Type::kNone:
+			case Type::kInt:
+			case Type::kFloat:
+			case Type::kBool:
+				break;
+			case Type::kObjectArray:
+			case Type::kStringArray:
+			case Type::kIntArray:
+			case Type::kFloatArray:
+			case Type::kBoolArray:
+				value.arr.~BSTSmartPointer();
+				break;
+			default:
+				assert(false);	// unhandled type
+				break;
+			}
 		}
 
 
@@ -307,46 +339,29 @@ namespace RE
 		{
 			using Type = TypeInfo::RawType;
 
-			switch (a_rhs.varType.GetRawType()) {
-			case Type::kNone:
-			case Type::kInt:
-			case Type::kFloat:
-			case Type::kBool:
-				varType = a_rhs.varType;
-				value.p = a_rhs.value.p;
-				break;
-			case Type::kString:
-				varType = Type::kString;
-				value.str = a_rhs.value.str;
-				break;
+			varType = a_rhs.varType;
+			switch (a_rhs.varType.GetUnmangledRawType()) {
 			case Type::kObject:
 				value.obj = a_rhs.value.obj;
 				break;
-			default:
-				value.arr = a_rhs.value.arr;
+			case Type::kString:
+				value.str = a_rhs.value.str;
 				break;
-			}
-		}
-
-
-		void Variable::Destroy()
-		{
-			using Type = TypeInfo::RawType;
-
-			switch (varType.GetRawType()) {
 			case Type::kNone:
 			case Type::kInt:
 			case Type::kFloat:
 			case Type::kBool:
+				value.p = a_rhs.value.p;
 				break;
-			case Type::kString:
-				value.str.~BSFixedString();
-				break;
-			case Type::kObject:
-				value.obj.~BSTSmartPointer();
+			case Type::kObjectArray:
+			case Type::kStringArray:
+			case Type::kIntArray:
+			case Type::kFloatArray:
+			case Type::kBoolArray:
+				value.arr = a_rhs.value.arr;
 				break;
 			default:
-				value.arr.~BSTSmartPointer();
+				assert(false);	// unhandled type
 				break;
 			}
 		}

@@ -824,12 +824,12 @@ namespace RE
 		{
 			// IndirectSig: E8 ? ? ? ? 44 88 65 6F
 			constexpr std::uintptr_t SetMotionType = 0x00DA81E0;	// 1_5_97
+			// IndirectSig: E8 ? ? ? ? EB 09 48 8B CB E8 ? ? ? ? 90 48 8B 8C 24 ? ? ? ?
+			constexpr std::uintptr_t Update = 0x00C56B50;			// 1_5_97
 			//
 			constexpr std::uintptr_t UpdateModelHair = 0x003DC7E0;	// 1_5_97
 			//
 			constexpr std::uintptr_t UpdateModelSkin = 0x003DC720;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? EB 09 48 8B CB E8 ? ? ? ? 90 48 8B 8C 24 ? ? ? ?
-			constexpr std::uintptr_t UpdateNode = 0x00C56B50;		// 1_5_97
 		}
 
 
@@ -993,8 +993,10 @@ namespace RE
 
 		namespace SkyrimVM
 		{
+			// IndirectSig: E8 ? ? ? ? 84 C0 0F 94 C3 48 8B 4C 24 ? 48 85 C9 74 15
+			constexpr std::uintptr_t QueuePostRenderCall = 0x009252C0;	// 1_5_97
 			// E8 ? ? ? ? 90 48 89 05 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? 48 8B 0D ? ? ? ? E8 ? ? ? ?
-			constexpr std::uintptr_t Singleton = 0x01EC3B78;	// 1_5_97
+			constexpr std::uintptr_t Singleton = 0x01EC3B78;			// 1_5_97
 		}
 
 
@@ -1129,8 +1131,10 @@ namespace RE
 
 		namespace TESQuest
 		{
+			// DirectSig: 48 89 5C 24 ? 56 48 83 EC 20 C6 02 00
+			constexpr std::uintptr_t EnsureQuestStarted = 0x00370910;	// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 48 8B 54 24 ? 0F B6 8A ? ? ? ?
-			constexpr std::uintptr_t Reset = 0x00370E90;	// 1_5_97
+			constexpr std::uintptr_t ResetQuest = 0x00370E90;			// 1_5_97
 		}
 
 
@@ -1159,6 +1163,17 @@ namespace RE
 		{
 			// 48 89 0D ? ? ? ? 48 83 C1 08 E8 ? ? ? ? 90 48 8D 4F 60
 			constexpr std::uintptr_t Singleton = 0x01EBEB20;	// 1_5_97
+		}
+
+
+		namespace UIBlurManager
+		{
+			// IndirectSig: 0F B7 41 18 66 85 C0
+			constexpr std::uintptr_t DecrementBlurCount = 0x008D5130;	// 1_5_97
+			// IndirectSig: 40 53 48 83 EC 20 66 83 79 ? ? 48 8B D9 75 1E
+			constexpr std::uintptr_t IncrementBlurCount = 0x008D50F0;	// 1_5_97
+			// 48 89 0D ? ? ? ? 48 8D 05 ? ? ? ? 48 89 03 66 89 4B 18
+			constexpr std::uintptr_t Singleton = 0x02F26780;			// 1_5_97
 		}
 
 

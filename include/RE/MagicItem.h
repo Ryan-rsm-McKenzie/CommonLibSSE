@@ -102,15 +102,17 @@ namespace RE
 		virtual void						CopyMagicItemData(MagicItem* a_src) = 0;				// 69
 		virtual void						LoadMagicItemChunk(TESFile* a_mod, UInt32 a_chunkID);	// 6A - { return; }
 		virtual void						LoadChunkDataPostProcess(TESFile* a_mod);				// 6B - { return; }
-		virtual const Data*					GetData() const = 0;									// 6C
-		virtual Data*						GetData() = 0;											// 6D
+		virtual const Data*					GetData1() const = 0;									// 6C
+		virtual Data*						GetData2() = 0;											// 6D
 		virtual UInt32						GetDataSize() const = 0;								// 6E
 		virtual void						InitFromChunk(TESFile* a_mod) = 0;						// 6F
 		virtual void						InitChunk() = 0;										// 70
 
-		float	CalculateMagickaCost(Actor* a_caster) const;
-		float	CalculateTotalGoldValue(Actor* a_caster = 0) const;
-		Effect*	GetCostliestEffectItem(UInt32 a_arg1 = 5, bool a_arg2 = false);
+		float		CalculateMagickaCost(Actor* a_caster) const;
+		float		CalculateTotalGoldValue(Actor* a_caster = 0) const;
+		Effect*		GetCostliestEffectItem(UInt32 a_arg1 = 5, bool a_arg2 = false);
+		Data*		GetData();
+		const Data*	GetData() const;
 
 
 		// members

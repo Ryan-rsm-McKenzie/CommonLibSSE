@@ -47,26 +47,26 @@ namespace RE
 
 		// add
 		virtual const NiRTTI*					GetRTTI() const;							// 02
-		virtual NiNode*							GetAsNiNode();								// 03 - { return 0; }
-		virtual NiSwitchNode*					GetAsNiSwitchNode();						// 04 - { return 0; }
-		virtual BSFadeNode*						GetAsBSFadeNode();							// 05 - { return 0; }
-		virtual BSMultiBoundNode*				GetAsBSMultiBoundNode();					// 06 - { return 0; }
-		virtual BSGeometry*						GetAsBSGeometry();							// 07 - { return 0; }
-		virtual NiTriStrips*					GetAsNiTriStrips();							// 08 - { return 0; }
-		virtual BSTriShape*						GetAsBSTriShape();							// 09 - { return 0; }
-		virtual BSSegmentedTriShape*			GetAsBSSegmentedTriShape();					// 0A - { return 0; }
-		virtual BSSubIndexTriShape*				GetAsBSSubIndexTriShape();					// 0B - { return 0; }
-		virtual BSDynamicTriShape*				GetAsBSDynamicTriShape();					// 0C - { return 0; }
-		virtual NiGeometry*						GetAsNiGeometry();							// 0D - { return 0; }
-		virtual NiTriBasedGeom*					GetAsNiTriBasedGeom();						// 0E - { return 0; }
-		virtual NiTriShape*						GetAsNiTriShape();							// 0F - { return 0; }
-		virtual NiParticles*					GetAsNiParticles();							// 10 - { return 0; }
-		virtual BSLines*						GetAsBSLines();								// 11 - { return 0; }
-		virtual bhkNiCollisionObject*			GetAsBhkNiCollisionObject();				// 12 - { return 0; }
-		virtual	bhkBlendCollisionObject*		GetAsBhkBlendCollisionObject();				// 13 - { return 0; }
-		virtual bhkAttachmentCollisionObject*	GetAsBhkAttachmentCollisionObject();		// 14 - { return 0; }
-		virtual bhkRigidBody*					GetAsBhkRigidBody();						// 15 - { return 0; }
-		virtual bhkLimitedHingeConstraint*		GetAsBhkLimitedHingeConstraint();			// 16 - { return 0; }
+		virtual NiNode*							AsNode();									// 03 - { return 0; }
+		virtual NiSwitchNode*					AsSwitchNode();								// 04 - { return 0; }
+		virtual BSFadeNode*						AsFadeNode();								// 05 - { return 0; }
+		virtual BSMultiBoundNode*				AsMultiBoundNode();							// 06 - { return 0; }
+		virtual BSGeometry*						AsGeometry();								// 07 - { return 0; }
+		virtual NiTriStrips*					AsTriStrips();								// 08 - { return 0; }
+		virtual BSTriShape*						AsTriShape();								// 09 - { return 0; }
+		virtual BSSegmentedTriShape*			AsSegmentedTriShape();						// 0A - { return 0; }
+		virtual BSSubIndexTriShape*				AsSubIndexTriShape();						// 0B - { return 0; }
+		virtual BSDynamicTriShape*				AsDynamicTriShape();						// 0C - { return 0; }
+		virtual NiGeometry*						AsNiGeometry();								// 0D - { return 0; }
+		virtual NiTriBasedGeom*					AsNiTriBasedGeom();							// 0E - { return 0; }
+		virtual NiTriShape*						AsNiTriShape();								// 0F - { return 0; }
+		virtual NiParticles*					AsParticlesGeom();							// 10 - { return 0; }
+		virtual BSLines*						AsLinesGeom();								// 11 - { return 0; }
+		virtual bhkNiCollisionObject*			AsBhkNiCollisionObject();					// 12 - { return 0; }
+		virtual	bhkBlendCollisionObject*		AsBhkBlendCollisionObject();				// 13 - { return 0; }
+		virtual bhkAttachmentCollisionObject*	AsBhkAttachmentCollisionObject();			// 14 - { return 0; }
+		virtual bhkRigidBody*					AsBhkRigidBody();							// 15 - { return 0; }
+		virtual bhkLimitedHingeConstraint*		AsBhkLimitedHingeConstraint();				// 16 - { return 0; }
 		virtual NiObject*						CreateClone(NiCloningProcess& a_cloning);	// 17 - { return this; }
 		virtual void							LoadBinary(NiStream& a_stream);				// 18 - { return; }
 		virtual void							LinkObject(NiStream& a_stream);				// 19 - { return; }
@@ -80,7 +80,7 @@ namespace RE
 		virtual UInt32							GetBlockAllocationSize() const;				// 21 - { return 0; }
 		virtual NiObjectGroup*					GetGroup() const;							// 22 - { return 0; }
 		virtual void							SetGroup(NiObjectGroup* a_group);			// 23 - { return; }
-		virtual NiControllerManager*			GetAsNiControllerManager();					// 24 - { return 0; }
+		virtual NiControllerManager*			AsNiControllerManager();					// 24 - { return 0; }
 
 		void CreateDeepCopy(NiPointer<NiObject>& a_result);
 	};

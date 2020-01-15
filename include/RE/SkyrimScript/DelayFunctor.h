@@ -11,6 +11,9 @@ namespace RE
 	}
 
 
+	class BSStorage;
+
+
 	namespace SkyrimScript
 	{
 		class DelayFunctor : public BSIntrusiveRefCounted
@@ -19,19 +22,31 @@ namespace RE
 			inline static const void* RTTI = RTTI_SkyrimScript__DelayFunctor;
 
 
-			virtual ~DelayFunctor();												// 00
+			enum class FunctorType : UInt32
+			{
+				kMoveTo = 0,
+				kSetPosition = 6,
+				kSetMotionType = 8,
+				kDropObject = 12,
+				kAttachAshPile = 14,
+				kSendPlayerToJail = 19,
+				kRemoveItem = 24
+			};
+
+
+			virtual ~DelayFunctor();																			// 00
 
 			// add
-			virtual RE::BSScript::Variable&	Run(BSScript::Variable& a_result) = 0;	// 01 - probably return by value
-			virtual void					Unk_02(void) = 0;						// 02
-			virtual void					Unk_03(void);							// 03 - { return 0; }
-			virtual void					Unk_04(void);							// 04
-			virtual UInt32					GetFactoryType() const = 0;				// 05
-			virtual void					Unk_06(void);							// 06
+			virtual RE::BSScript::Variable	operator()() = 0;													// 01
+			virtual bool					IsLatent() const = 0;												// 02
+			virtual bool					WantsRequeue() const;												// 03 - { return false; }
+			virtual bool					SaveImpl(BSStorage& a_storage) const;								// 04
+			virtual FunctorType				GetType() const = 0;												// 05
+			virtual bool					LoadImpl(const BSStorage& a_storage, UInt32 a_arg2, bool& a_arg3);	// 06
 
 
 			// members
-			UInt32 stackID;	// 0C
+			VMStackID stackID;	// 0C
 		};
 		STATIC_ASSERT(sizeof(DelayFunctor) == 0x10);
 	}

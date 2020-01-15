@@ -9,11 +9,40 @@
 namespace RE
 {
 	class BSFixedString;
+	class NiAlphaProperty;
+	class NiAVObject;
 	class NiCollisionObject;
 	class NiColorA;
+	class NiCullingProcess;
 	class NiNode;
 	class NiPoint3;
 	class TESObjectREFR;
+
+
+	class NiUpdateData
+	{
+	public:
+		enum class Flag : UInt32
+		{
+			kDirty = 1 << 0,
+		};
+
+
+		float	time;	// 0
+		Flag	flags;	// 4
+	};
+	STATIC_ASSERT(sizeof(NiUpdateData) == 0x8);
+
+
+	class PerformOpFunc
+	{
+	public:
+		virtual ~PerformOpFunc();						// 00
+
+		// add
+		virtual bool operator()(NiAVObject* a_object);	// 01
+	};
+	STATIC_ASSERT(sizeof(PerformOpFunc) == 0x8);
 
 
 	class NiAVObject : public NiObjectNET
@@ -55,20 +84,6 @@ namespace RE
 		};
 
 
-		struct ControllerUpdateContext
-		{
-			enum class Flag : UInt32
-			{
-				kDirty = 1 << 0,
-			};
-
-
-			float	delta;	// 0
-			Flag	flags;	// 4
-		};
-		STATIC_ASSERT(sizeof(ControllerUpdateContext) == 0x8);
-
-
 		virtual ~NiAVObject();																										// 00
 
 		// override (NiObjectNET)
@@ -81,27 +96,27 @@ namespace RE
 		virtual void			ProcessClone(NiCloningProcess& a_cloning) override;													// 1D
 
 		// add
-		virtual void			UpdateControllers(ControllerUpdateContext* a_ctx);													// 25
-		virtual void			UpdateNodeBound(ControllerUpdateContext* a_ctx);													// 26
-		virtual void			ApplyTransform(const NiMatrix3& a_mtx, const NiPoint3& a_translate, bool a_onLeft);					// 27 - { return; }
+		virtual void			UpdateControllers(NiUpdateData& a_data);															// 25
+		virtual void			PerformOp(PerformOpFunc& a_func);																	// 26
+		virtual void			AttachProperty(NiAlphaProperty* a_property);														// 27 - { return; }
 		virtual void			SetMaterialNeedsUpdate(bool a_needsUpdate);															// 28 - { return; }
 		virtual void			SetDefaultMaterialNeedsUpdateFlag(bool a_flag);														// 29 - { return; }
 		virtual NiAVObject*		GetObjectByName(const BSFixedString& a_name);														// 2A
 		virtual void			SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid);	// 2B
-		virtual void			UpdateDownwardPass(ControllerUpdateContext* a_ctx, void* a_arg2);									// 2C
-		virtual void			UpdateSelectedDownwardPass(ControllerUpdateContext* a_ctx, void* a_arg2);							// 2D
-		virtual void			UpdateRigidDownwardPass(ControllerUpdateContext* a_ctx, void* a_arg2);								// 2E
+		virtual void			UpdateDownwardPass(NiUpdateData& a_data, UInt32 a_arg2);											// 2C
+		virtual void			UpdateSelectedDownwardPass(NiUpdateData& a_data, UInt32 a_arg2);									// 2D
+		virtual void			UpdateRigidDownwardPass(NiUpdateData& a_data, UInt32 a_arg2);										// 2E
 		virtual void			UpdateWorldBound();																					// 2F - { return; }
-		virtual void			UpdateWorldData(ControllerUpdateContext* a_ctx);													// 30
-		virtual void			UpdateNoControllers(ControllerUpdateContext* a_ctx);												// 31
-		virtual void			UpdateDownwardPassTempParent(NiNode* a_parent, ControllerUpdateContext* a_ctx);						// 32
-		virtual void			Unk_33(void);																						// 33
-		virtual void			Unk_34(void);																						// 34 - { return; }
+		virtual void			UpdateWorldData(NiUpdateData* a_data);																// 30
+		virtual void			UpdateTransformAndBounds(NiUpdateData& a_data);														// 31
+		virtual void			PreAttachUpdate(NiNode* a_parent, NiUpdateData& a_data);											// 32
+		virtual void			PostAttachUpdate();																					// 33
+		virtual void			OnVisible(NiCullingProcess& a_process);																// 34 - { return; }
 
 		bool	SetMotionType(UInt32 a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
+		void	Update(NiUpdateData& a_data);
 		void	UpdateModelHair(NiColorA** a_color);
 		void	UpdateModelSkin(NiColorA** a_color);
-		void	UpdateNode(ControllerUpdateContext* a_ctx);
 
 
 		// members

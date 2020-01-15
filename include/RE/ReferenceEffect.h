@@ -16,29 +16,29 @@ namespace RE
 		inline static const void* Ni_RTTI = NiRTTI_ReferenceEffect;
 
 
-		virtual ~ReferenceEffect();												// 00
+		virtual ~ReferenceEffect();														// 00
 
 		// override (BSTempEffect)
-		virtual const NiRTTI*	GetRTTI() const override;						// 02
-		virtual void			Unk_27(void) override;							// 27
-		virtual void			Unk_28(void) override;							// 28
-		virtual void			Unk_2A(void) override;							// 2A
-		virtual void			Unk_2B(void) override;							// 2B
-		virtual void			Unk_2C(void) override;							// 2C - { return 8; }
-		virtual void			Unk_2D(void) override;							// 2D
-		virtual void			LoadEffect(BGSLoadGameBuffer* a_buf) override;	// 2E
-		virtual void			Unk_2F(void) override;							// 2F
+		virtual const NiRTTI*		GetRTTI() const override;							// 02
+		virtual void				Detach() override;									// 27
+		virtual bool				Update(float a_arg1) override;						// 28
+		virtual bool				GetManagerHandlesSaveLoad() const override;			// 2A
+		virtual bool				GetClearWhenCellIsUnloaded() const override;		// 2B
+		virtual TEMP_EFFECT_TYPE	GetType() const override;							// 2C - { return 8; }
+		virtual void				SaveGame(BGSSaveGameBuffer* a_buf) override;		// 2D
+		virtual void				LoadGame(BGSLoadGameBuffer* a_buf) override;		// 2E
+		virtual void				FinishLoadGame(BGSLoadGameBuffer* a_buf) override;	// 2F
 
 		// add
-		virtual void			Unk_36(void);									// 36 - { return 0; }
-		virtual void			Unk_37(void);									// 37 - { return; }
-		virtual void			Unk_38(void);									// 38 - { return; }
-		virtual void			Unk_39(void);									// 39
-		virtual void			Unk_3A(void);									// 3A
-		virtual void			Unk_3B(void);									// 3B - { return; }
-		virtual void			Unk_3C(void);									// 3C
-		virtual void			Unk_3D(void);									// 3D - { return 1; }
-		virtual void			Unk_3E(void);									// 3E - { return; }
+		virtual void				Unk_36(void);										// 36 - { return 0; }
+		virtual void				Unk_37(void);										// 37 - { return; }
+		virtual void				Unk_38(void);										// 38 - { return; }
+		virtual void				Unk_39(void);										// 39
+		virtual void				Unk_3A(void);										// 3A
+		virtual void				Unk_3B(void);										// 3B - { return; }
+		virtual void				Unk_3C(void);										// 3C
+		virtual void				Unk_3D(void);										// 3D - { return 1; }
+		virtual void				Unk_3E(void);										// 3E - { return; }
 
 
 		// members

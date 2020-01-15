@@ -17,7 +17,7 @@ namespace RE
 		class SendPlayerToJailFunctor : public DelayFunctor
 		{
 		public:
-			enum class Flag : UInt32
+			enum class Flag : UInt8
 			{
 				kNone = 0,
 				kRemoveInventory = 1 << 0,
@@ -25,20 +25,22 @@ namespace RE
 			};
 
 
-			virtual ~SendPlayerToJailFunctor();											// 00
+			virtual ~SendPlayerToJailFunctor();																			// 00
 
 			// override (DelayFunctor)
-			virtual RE::BSScript::Variable&	Run(BSScript::Variable& a_result) override;	// 01
-			virtual void					Unk_02(void) override;						// 02 - { return 1; }
-			virtual void					Unk_04(void) override;						// 04
-			virtual UInt32					GetFactoryType() const override;			// 05 - { return 19; }
-			virtual void					Unk_06(void) override;						// 06
+			virtual RE::BSScript::Variable	operator()() override;														// 01
+			virtual bool					IsLatent() const override;													// 02 - { return true; }
+			virtual bool					SaveImpl(BSStorage& a_storage) const override;								// 04
+			virtual FunctorType				GetType() const override;													// 05 - { return 19; }
+			virtual bool					LoadImpl(const BSStorage& a_storage, UInt32 a_arg2, bool& a_arg3) override;	// 06
 
 
 			// members
-			FormID										faction;		// 10
-			Flag										flags;			// 14
-			BSTSmartPointer<BSScript::IVirtualMachine>	virtualMachine;	// 18
+			FormID										faction;	// 10
+			Flag										flags;		// 14
+			UInt8										pad15;		// 15
+			UInt16										pad16;		// 16
+			BSTSmartPointer<BSScript::IVirtualMachine>	vm;			// 18
 		};
 		STATIC_ASSERT(sizeof(SendPlayerToJailFunctor) == 0x20);
 	}

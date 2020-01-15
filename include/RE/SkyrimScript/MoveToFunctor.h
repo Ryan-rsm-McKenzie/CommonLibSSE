@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/SkyrimScript/DelayFunctor.h"
+#include "RE/BSPointerHandle.h"
 #include "RE/BSTSmartPointer.h"
 #include "RE/NiPoint3.h"
 
@@ -18,26 +19,26 @@ namespace RE
 		class MoveToFunctor : public DelayFunctor
 		{
 		public:
-			virtual ~MoveToFunctor();													// 00
+			virtual ~MoveToFunctor();																					// 00
 
 			// override (DelayFunctor)
-			virtual RE::BSScript::Variable&	Run(BSScript::Variable& a_result) override;	// 01
-			virtual void					Unk_02(void) override;						// 02 - { return 1; }
-			virtual void					Unk_04(void) override;						// 04
-			virtual UInt32					GetFactoryType() const override;			// 05 - { return 0; }
-			virtual void					Unk_06(void) override;						// 06
+			virtual RE::BSScript::Variable	operator()() override;														// 01
+			virtual bool					IsLatent() const override;													// 02 - { return true; }
+			virtual bool					SaveImpl(BSStorage& a_storage) const override;								// 04
+			virtual FunctorType				GetType() const override;													// 05 - { return 0; }
+			virtual bool					LoadImpl(const BSStorage& a_storage, UInt32 a_arg2, bool& a_arg3) override;	// 06
 
 
 			// members
-			RefHandle									selfHandle;			// 10
-			RefHandle									targetHandle;		// 14
-			NiPoint3									targetPosition;		// 18
-			NiPoint3									targetRotation;		// 24
-			bool										unk30;				// 30
-			bool										useOwnValues;		// 31 - true == use values from this object, false == calculate from target
-			UInt16										pad32;				// 32
-			UInt32										pad34;				// 34
-			BSTSmartPointer<BSScript::IVirtualMachine>	virtualMachine;		// 38
+			ObjectRefHandle								source;			// 10
+			ObjectRefHandle								destination;	// 14
+			NiPoint3									offset;			// 18
+			NiPoint3									rotationOffset;	// 24
+			bool										matchRotation;	// 30
+			bool										exactTranslate;	// 31
+			UInt16										pad32;			// 32
+			UInt32										pad34;			// 34
+			BSTSmartPointer<BSScript::IVirtualMachine>	vm;				// 38
 		};
 		STATIC_ASSERT(sizeof(MoveToFunctor) == 0x40);
 	}

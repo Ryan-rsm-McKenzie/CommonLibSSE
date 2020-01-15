@@ -5,6 +5,7 @@
 #include "RE/BSScript/IStackCallbackSaveInterface.h"
 #include "RE/BSScript/SimpleAllocMemoryPagePolicy.h"
 #include "RE/SkyrimScript/DelayFunctor.h"
+#include "RE/SkyrimScript/FragmentSystem.h"
 #include "RE/SkyrimScript/HandlePolicy.h"
 #include "RE/SkyrimScript/Logger.h"
 #include "RE/SkyrimScript/Profiler.h"
@@ -143,6 +144,8 @@ namespace RE
 
 		static SkyrimVM* GetSingleton();
 
+		bool QueuePostRenderCall(const BSTSmartPointer<SkyrimScript::DelayFunctor>& a_functor);
+
 
 		// members
 		BSTSmartPointer<BSScript::IVirtualMachine>								impl;						// 0200
@@ -154,16 +157,7 @@ namespace RE
 		SkyrimScript::HandlePolicy												handlePolicy;				// 0328
 		SkyrimScript::ObjectBindPolicy											objectBindPolicy;			// 0398
 		BSTSmartPointer<SkyrimScript::Store>									scriptStore;				// 0470
-		BSTHashMap<UnkKey, UnkValue>											unk0478;					// 0478
-		UInt64																	unk04A8;					// 04A8
-		BSTHashMap<UnkKey, UnkValue>											unk04B0;					// 04B0
-		UInt64																	unk04E0;					// 04E0
-		BSTHashMap<UnkKey, UnkValue>											unk04E8;					// 04E8
-		UInt64																	unk0518;					// 0518
-		BSTHashMap<UnkKey, UnkValue>											unk0520;					// 0520
-		UInt64																	unk0550;					// 0550
-		BSTHashMap<UnkKey, UnkValue>											unk0558;					// 0558
-		UInt64																	unk0588;					// 0588
+		SkyrimScript::FragmentSystem											fragmentSystem;				// 0478
 		SkyrimScript::Profiler													profiler;					// 0590
 		SkyrimScript::SavePatcher												savePatcher;				// 0670
 		UInt64																	unk0678;					// 0678

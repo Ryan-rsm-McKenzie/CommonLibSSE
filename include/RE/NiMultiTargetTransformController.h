@@ -32,7 +32,7 @@ namespace RE
 		virtual UInt16					GetInterpolatorCount() const override;																																						// 2F - { return numInterps; }
 		virtual const char*				GetInterpolatorID(UInt16 a_index = 0) override;																																				// 30 - { return targets[a_index]->name.c_str(); }
 		virtual UInt16					GetInterpolatorIndex(const char* a_id) const override;																																		// 31
-		virtual void					Unk_32(void) override;																																										// 32
+		virtual UInt16					GetInterpolatorIndexFx(const BSFixedString& a_id) const override;																															// 32
 		virtual NiInterpolator*			GetInterpolator(UInt16 a_index = 0) const override;																																			// 33
 		virtual void					SetInterpolator(NiInterpolator* a_interpolator, UInt16 a_index = 0) override;																												// 34 - { return; }
 		virtual void					ResetTimeExtrema() override;																																								// 35

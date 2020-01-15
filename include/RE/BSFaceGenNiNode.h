@@ -19,15 +19,15 @@ namespace RE
 		inline static const void* Ni_RTTI = NiRTTI_BSFaceGenNiNode;
 
 
-		virtual ~BSFaceGenNiNode();																			// 00
+		virtual ~BSFaceGenNiNode();																	// 00
 
 		// override (NiNode)
-		virtual const NiRTTI*	GetRTTI() const override;													// 02
-		virtual NiObject*		CreateClone(NiCloningProcess& a_cloning) override;							// 17
-		virtual void			UpdateDownwardPass(ControllerUpdateContext* a_ctx, void* a_arg2) override;	// 2C
+		virtual const NiRTTI*	GetRTTI() const override;											// 02
+		virtual NiObject*		CreateClone(NiCloningProcess& a_cloning) override;					// 17
+		virtual void			UpdateDownwardPass(NiUpdateData& a_data, UInt32 a_arg2) override;	// 2C
 
 		// add
-		virtual void			FixSkinInstances(NiNode* a_skeleton, UInt8 a_arg2);							// 3E
+		virtual void			FixSkinInstances(NiNode* a_skeleton, bool a_arg2);					// 3E
 
 
 		// members

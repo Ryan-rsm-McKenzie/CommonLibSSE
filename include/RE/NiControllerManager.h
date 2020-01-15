@@ -36,7 +36,7 @@ namespace RE
 		virtual bool					IsEqual(NiObject* a_object) override;				// 1C
 		virtual void					ProcessClone(NiCloningProcess& a_cloning) override;	// 1D
 		virtual void					PostLinkObject(NiStream& a_stream) override;		// 1E
-		virtual NiControllerManager*	GetAsNiControllerManager() override;				// 24 - { return this; }
+		virtual NiControllerManager*	AsNiControllerManager() override;					// 24 - { return this; }
 		virtual void					Start(float a_time) override;						// 25
 		virtual void					Stop() override;									// 26
 		virtual void					Update(float a_time) override;						// 27

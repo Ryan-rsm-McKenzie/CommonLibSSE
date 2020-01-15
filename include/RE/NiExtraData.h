@@ -24,8 +24,8 @@ namespace RE
 		virtual bool			IsEqual(NiObject* a_object) override;				// 1C
 
 		// add
-		virtual void			Unk_25(void);										// 25 - { return 1; }
-		virtual void			Unk_26(void);										// 26 - { return 1; }
+		virtual bool			IsStreamable() const;								// 25 - { return true; }
+		virtual bool			IsCloneable() const;								// 26 - { return true; }
 
 		static NiExtraData* Create(std::size_t a_size, std::uintptr_t a_vtbl);
 

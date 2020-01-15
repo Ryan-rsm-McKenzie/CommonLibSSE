@@ -95,8 +95,8 @@ namespace RE
 
 		private:
 			void	ChangeType(TypeInfo::RawType a_type);
+			void	Cleanup();
 			void	Assign(const Variable& a_rhs);
-			void	Destroy();
 		};
 		STATIC_ASSERT(sizeof(Variable) == 0x10);
 	}
