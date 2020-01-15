@@ -1530,9 +1530,6 @@
     <ClCompile Include="src\RE\Script.cpp">
       <Filter>src\RE\FormComponents\TESForm</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\GlobalLookupInfo.cpp">
-      <Filter>src\RE\FileIO</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\HUDObject.cpp">
       <Filter>src\RE\Menus\HUDObject</Filter>
     </ClCompile>
@@ -1787,6 +1784,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\NiInterpolator.cpp">
       <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiInterpolator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\GlobalLookupInfo.cpp">
+      <Filter>src\RE\Misc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4097,9 +4097,6 @@
     <ClInclude Include="include\RE\TESActiveEffectApplyRemoveEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\GlobalLookupInfo.h">
-      <Filter>include\RE\FileIO</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ActorValueMeter.h">
       <Filter>include\RE\Menus\HUDObject\HUDMeter</Filter>
     </ClInclude>
@@ -5239,6 +5236,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\DefaultObjectsReadyEvent.h">
       <Filter>include\RE\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\GlobalLookupInfo.h">
+      <Filter>include\RE\Misc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

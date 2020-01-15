@@ -11,6 +11,7 @@ namespace RE
 	class IFormFactory;
 
 
+	// This is really just a bunch of grouped static data
 	class GlobalLookupInfo
 	{
 	public:
@@ -21,24 +22,26 @@ namespace RE
 
 
 		// members
-		bool									unk000;							// 000
-		bool									unk001;							// 001
+		bool									formIDsBashed;					// 000
+		bool									optimizingESM;					// 001
 		bool									unk002;							// 002
-		bool									formFactoriesInit;				// 003
-		UInt32									lookupTablesSize;				// 004
-		BSTHashMap<FormID, TESForm*>*			formIDs;						// 008
-		BSTHashMap<BSFixedString, TESForm*>*	editorIDs;						// 010
-		void*									unk10;							// 018
-		UInt32									unk18;							// 020
-		UInt32									unk1C;							// 024
-		UInt64									unk20;							// 028
+		bool									formFactoriesInitialized;		// 003
+		UInt32									totalFormCount;					// 004
+		BSTHashMap<FormID, TESForm*>*			allForms;						// 008
+		BSTHashMap<BSFixedString, TESForm*>*	allFormsByEditorID;				// 010
+		void*									formBuffer;						// 018
+		UInt32									bufferSize;						// 020
+		bool									enumStringsChecked;				// 024
+		UInt8									unk25;							// 025
+		UInt16									unk26;							// 026
+		UInt64									unk28;							// 028
 		IFormFactory*							formFactories[kNumFactories];	// 030
-		BSFixedString							empty;							// 480
-		BSFixedString							state;							// 488
-		BSFixedString							self;							// 490
+		BSFixedString							emptyIdentifier;				// 480
+		BSFixedString							emptyStateName;					// 488
+		BSFixedString							SelfVarName;					// 490
 		BSFixedString							frameDuration;					// 498
-		BSReadWriteLock							formIDsLock;					// 4A0
-		BSReadWriteLock							editorIDsLock;					// 4A8
+		BSReadWriteLock							allFormsMapLock;				// 4A0
+		BSReadWriteLock							allFormsEditorIDMapLock;		// 4A8
 	};
 	STATIC_ASSERT(sizeof(GlobalLookupInfo) == 0x4B0);
 }

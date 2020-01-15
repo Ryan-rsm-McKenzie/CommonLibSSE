@@ -17,12 +17,12 @@ namespace RE
 	TESForm* TESForm::LookupByID(FormID a_formID)
 	{
 		auto lookup = GlobalLookupInfo::GetSingleton();
-		RE::BSReadLockGuard locker(lookup->formIDsLock);
-		if (!lookup->formIDs) {
+		RE::BSReadLockGuard locker(lookup->allFormsMapLock);
+		if (!lookup->allForms) {
 			return 0;
 		}
 
-		auto& formIDs = *lookup->formIDs;
+		auto& formIDs = *lookup->allForms;
 		auto it = formIDs.find(a_formID);
 		return it != formIDs.end() ? it->second : 0;
 	}
@@ -31,12 +31,12 @@ namespace RE
 	TESForm* TESForm::LookupByEditorID(const std::string_view& a_editorID)
 	{
 		auto lookup = GlobalLookupInfo::GetSingleton();
-		RE::BSReadLockGuard locker(lookup->editorIDsLock);
-		if (!lookup->editorIDs) {
+		RE::BSReadLockGuard locker(lookup->allFormsEditorIDMapLock);
+		if (!lookup->allFormsByEditorID) {
 			return 0;
 		}
 
-		auto& editorIDs = *lookup->editorIDs;
+		auto& editorIDs = *lookup->allFormsByEditorID;
 		auto it = editorIDs.find(a_editorID);
 		return it != editorIDs.end() ? it->second : 0;
 	}
