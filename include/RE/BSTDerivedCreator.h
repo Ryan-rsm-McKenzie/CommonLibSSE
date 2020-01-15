@@ -10,14 +10,14 @@ namespace RE
 	struct BSTDerivedCreator : public IBSTCreator<Parent>
 	{
 	public:
-		virtual ~BSTDerivedCreator();					// 00
+		virtual ~BSTDerivedCreator();						// 00
 
 	protected:
 		// override (IBSTCreator<Parent>)
-		virtual Parent*	CreateImpl() override;			// 01
+		virtual Parent*	CreateImpl() override;				// 01
 
 	public:
-		virtual void	Return(Parent* a_val) override;	// 02
+		virtual void	Destroy(Parent* a_val) override;	// 02
 
 		Derived*		Create();
 	};

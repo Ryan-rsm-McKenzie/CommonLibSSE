@@ -12,13 +12,7 @@ namespace RE
 	}
 
 
-	FormType IFormFactory::GetFormType() const
-	{
-		return static_cast<FormType>(GetFormTypeImpl());
-	}
-
-
-	TESForm* IFormFactory::Create() const
+	TESForm* IFormFactory::Create()
 	{
 		return CreateImpl();
 	}

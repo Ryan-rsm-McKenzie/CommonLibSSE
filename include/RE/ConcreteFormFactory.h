@@ -10,20 +10,17 @@ namespace RE
 	class ConcreteFormFactory : public IFormFactory
 	{
 	public:
-		virtual ~ConcreteFormFactory();							// 00
+		virtual ~ConcreteFormFactory();						// 00
 
 	protected:
 		// override (IFormFactory)
-		virtual TESForm*	CreateImpl() const override;		// 01
+		virtual TESForm*	CreateImpl() override;			// 01
 
 	public:
-		virtual const char*	GetName() const override;			// 02 - { return _name; }
+		virtual const char*	GetFormName() const override;	// 02 - { return _name; }
+		virtual FormType	GetFormType() const override;	// 03 - { return FORM_TYPE; }
 
-	protected:
-		virtual UInt32		GetFormTypeImpl() const override;	// 03 - { return FORM_TYPE; }
-
-	public:
-		T*					Create() const;
+		T* Create() const;
 
 	protected:
 		// members
