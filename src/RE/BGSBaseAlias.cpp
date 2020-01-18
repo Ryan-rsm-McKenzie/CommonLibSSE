@@ -3,8 +3,14 @@
 
 namespace RE
 {
+	const BSFixedString& BGSBaseAlias::GetTypeString() const
+	{
+		return QType();
+	}
+
+
 	bool BGSBaseAlias::IsQuestObject() const
 	{
-		return (aliasFlags.flags & AliasFlags::Flag::kQuestObject) != AliasFlags::Flag::kNone;
+		return (flags & FLAGS::kQuestObject) != FLAGS::kNone;
 	}
 }

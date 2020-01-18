@@ -1,7 +1,5 @@
 #pragma once
 
-#include "skse64/GameRTTI.h"
-
 #include "RE/FormTypes.h"
 #include "RE/TESForm.h"
 

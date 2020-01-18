@@ -1,7 +1,5 @@
 #include "RE/ExtraDataList.h"
 
-#include "skse64/GameReferences.h"
-
 #include "RE/BGSKeyword.h"
 #include "RE/BSExtraData.h"
 #include "RE/ExtraAshPileRef.h"

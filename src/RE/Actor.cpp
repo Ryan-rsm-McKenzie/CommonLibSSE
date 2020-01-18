@@ -1,7 +1,5 @@
 #include "RE/Actor.h"
 
-#include "skse64/GameReferences.h"
-
 #include <type_traits>
 
 #include "RE/AIProcess.h"
