@@ -469,6 +469,7 @@
     <ClInclude Include="include\RE\Crime.h" />
     <ClInclude Include="include\RE\DecalData.h" />
     <ClInclude Include="include\RE\DefaultObjectsReadyEvent.h" />
+    <ClInclude Include="include\RE\DetectionPriorities.h" />
     <ClInclude Include="include\RE\DialoguePackage.h" />
     <ClInclude Include="include\RE\DialogueTypes.h" />
     <ClInclude Include="include\RE\DoNothingUnhandledPolicy.h" />

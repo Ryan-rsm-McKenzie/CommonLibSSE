@@ -14,10 +14,10 @@ namespace RE
 	}
 
 
-	void BipedAnim::UpdateWeightData()
+	void BipedAnim::RemoveAllParts()
 	{
-		using func_t = function_type_t<decltype(&BipedAnim::UpdateWeightData)>;
-		REL::Offset<func_t*> func(Offset::BipedAnim::UpdateWeightData);
+		using func_t = function_type_t<decltype(&BipedAnim::RemoveAllParts)>;
+		REL::Offset<func_t*> func(Offset::BipedAnim::RemoveAllParts);
 		return func(this);
 	}
 

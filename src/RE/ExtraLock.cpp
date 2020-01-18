@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	SInt32 REFR_LOCK::GetLockLevel(const TESObjectREFR* a_containerRef) const
+	LOCK_LEVEL REFR_LOCK::GetLockLevel(const TESObjectREFR* a_containerRef) const
 	{
 		using func_t = function_type_t<decltype(&REFR_LOCK::GetLockLevel)>;
 		REL::Offset<func_t*> func(Offset::REFR_LOCK::GetLockLevel);

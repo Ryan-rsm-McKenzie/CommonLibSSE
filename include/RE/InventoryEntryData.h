@@ -15,8 +15,14 @@ namespace RE
 	class InventoryEntryData
 	{
 	public:
+		InventoryEntryData();
+		InventoryEntryData(const InventoryEntryData& a_rhs);
+		InventoryEntryData(InventoryEntryData&& a_rhs);
 		InventoryEntryData(TESBoundObject* a_object, SInt32 a_countDelta);
 		~InventoryEntryData();
+
+		InventoryEntryData& operator=(const InventoryEntryData& a_rhs);
+		InventoryEntryData& operator=(InventoryEntryData&& a_rhs);
 
 		void			AddExtraList(ExtraDataList* a_extra);
 		const char*		GenerateName();

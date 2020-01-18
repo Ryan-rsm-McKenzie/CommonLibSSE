@@ -100,13 +100,23 @@ namespace RE
 	}
 
 
-	TESNPC* TESNPC::GetRootTemplate()
+	TESNPC* TESNPC::GetRootFaceNPC()
 	{
-		auto node = this;
-		while (!node->UsesTemplate() && node->sounds.soundCreature) {
-			node = node->sounds.soundCreature;
+		auto iter = this;
+		while (iter->faceNPC) {
+			iter = iter->faceNPC;
 		}
-		return node;
+		return iter;
+	}
+
+
+	const TESNPC* TESNPC::GetRootFaceNPC() const
+	{
+		auto iter = this;
+		while (iter->faceNPC) {
+			iter = iter->faceNPC;
+		}
+		return iter;
 	}
 
 

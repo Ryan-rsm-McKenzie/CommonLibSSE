@@ -61,14 +61,6 @@ namespace RE
 	}
 
 
-	void InventoryChanges::InitContainer()
-	{
-		using func_t = function_type_t<decltype(&InventoryChanges::InitContainer)>;
-		REL::Offset<func_t*> func(Offset::InventoryChanges::InitContainer);
-		return func(this);
-	}
-
-
 	void InventoryChanges::SendContainerChangedEvent(ExtraDataList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, SInt32 a_count)
 	{
 		using func_t = function_type_t<decltype(&InventoryChanges::SendContainerChangedEvent)>;

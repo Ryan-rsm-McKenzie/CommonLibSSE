@@ -268,9 +268,60 @@ namespace RE
 		{}
 
 
+		BSSimpleList(const BSSimpleList& a_rhs) :
+			_listHead()
+		{
+			auto lhs = head_node();
+			auto rhs = a_rhs.head_node();
+			lhs->item = rhs->item;
+			while (rhs->next) {
+				rhs = rhs->next;
+				lhs->next = new Node(rhs->item);
+				lhs = lhs->next;
+			}
+		}
+
+
+		BSSimpleList(BSSimpleList&& a_rhs) :
+			_listHead(std::move(a_rhs._listHead))
+		{}
+
+
 		~BSSimpleList()
 		{
 			clear();
+		}
+
+
+		BSSimpleList& operator=(const BSSimpleList& a_rhs)
+		{
+			if (this == &a_rhs) {
+				return *this;
+			}
+
+			clear();
+			auto lhs = head_node();
+			auto rhs = a_rhs.head_node();
+			lhs->item = rhs->item;
+			while (rhs->next) {
+				rhs = rhs->next;
+				lhs->next = new Node(rhs->item);
+				lhs = lhs->next;
+			}
+
+			return *this;
+		}
+
+
+		BSSimpleList& operator=(BSSimpleList&& a_rhs)
+		{
+			if (this == &a_rhs) {
+				return *this;
+			}
+
+			_listHead = std::move(a_rhs._listHead);
+
+			return *this;
 		}
 
 

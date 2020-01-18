@@ -9,6 +9,7 @@
 
 namespace RE
 {
+	enum class RESET_3D_FLAGS : UInt8;
 	class Actor;
 	class HighProcessData;
 	class MiddleHighProcessData;
@@ -122,18 +123,6 @@ namespace RE
 		using Hand = Hands::Hand;
 
 
-		enum class Flag : UInt8
-		{
-			kNone = 0,
-			kUnk01 = 1 << 0,
-			kUnk02 = 1 << 1,
-			kUnk03 = 1 << 2,
-			kDrawHead = 1 << 3,
-			kMobile = 1 << 4,
-			kReset = 1 << 5
-		};
-
-
 		struct Data0B8
 		{
 			void*		unk00;	// 00
@@ -159,7 +148,7 @@ namespace RE
 		bool		IsGhost() const;
 		void		SetArrested(bool a_arrested);
 		void		SetCachedHeight(float a_height);
-		void		SetEquipFlag(Flag a_flag);
+		void		Set3DUpdateFlag(RESET_3D_FLAGS a_flags);
 		void		Update3DModel(Actor* a_actor);
 
 

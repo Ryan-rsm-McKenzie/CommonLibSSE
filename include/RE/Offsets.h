@@ -23,30 +23,28 @@ namespace RE
 		{
 			// IndirectSig: E8 ? ? ? ? 0F B6 F0 49 8D 4E 30
 			constexpr std::uintptr_t AddSpell = 0x0062F560;						// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 41 8B CE 3B C1
-			constexpr std::uintptr_t CalcEntryValue = 0x001D9080;				// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 49 8B D5 49 8B 8D ? ? ? ?
 			constexpr std::uintptr_t DispelWornItemEnchantments = 0x00556F20;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 85 C0 7E 2D
-			constexpr std::uintptr_t GetDetectionLevel = 0x005FC9A0;			// 1_5_97
+			// DirectSig: 40 55 56 57 48 83 EC 30 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 0F B6 DA 48 8B F1
+			constexpr std::uintptr_t DoReset3D = 0x00693110;					// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 48 8B CD E8 ? ? ? ? 85 C0 74 0B
+			constexpr std::uintptr_t EvaluatePackage = 0x005DB310;				// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 84 C0 49 0F 45 F4
+			constexpr std::uintptr_t GetGhost = 0x005D2520;						// 1_5_97
+			// DirectSig: 48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC 20 48 8B F2 48 8B D9 40 32 FF
+			constexpr std::uintptr_t GetHostileToActor = 0x005E7E40;			// 1_5_97
 			// DirectSig: 48 8B 49 40 48 83 C1 30 E9 ? ? ? ?
 			constexpr std::uintptr_t GetLevel = 0x005D62E0;						// 1_5_97
 			// DirectSig: 48 83 EC 28 48 8B 81 ? ? ? ? 48 85 C0 74 16
 			constexpr std::uintptr_t HasPerk = 0x005F9E30;						// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 84 C0 49 0F 45 F4
-			constexpr std::uintptr_t IsGhost = 0x005D2520;						// 1_5_97
-			// DirectSig: 48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC 20 48 8B F2 48 8B D9 40 32 FF
-			constexpr std::uintptr_t IsHostileToActor = 0x005E7E40;				// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 48 8B CF 0F B6 E8
 			constexpr std::uintptr_t IsRunning = 0x005D1190;					// 1_5_97
-			// DirectSig: 40 55 56 57 48 83 EC 30 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 0F B6 DA 48 8B F1
-			constexpr std::uintptr_t QueueNiNodeUpdate = 0x00693110;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 8B CD E8 ? ? ? ? 85 C0 74 0B
-			constexpr std::uintptr_t ResetAI = 0x005DB310;						// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 85 C0 7E 2D
+			constexpr std::uintptr_t RequestDetectionLevel = 0x005FC9A0;		// 1_5_97
 			// IndirectSig: E8 ? ? ? ? EB 1D 8B 4D 7F
-			constexpr std::uintptr_t SendStealAlarm = 0x005DD770;				// 1_5_97
+			constexpr std::uintptr_t StealAlarm = 0x005DD770;					// 1_5_97
 			// DirectSig: 48 85 D2 0F 84 ? ? ? ? 41 56 48 83 EC 40
-			constexpr std::uintptr_t SetRace = 0x00607680;						// 1_5_97
+			constexpr std::uintptr_t SwitchRace = 0x00607680;					// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 48 89 7D D8 48 8D 55 D8
 			constexpr std::uintptr_t UpdateArmorAbility = 0x00631360;			// 1_5_97
 			// DirectSig: 48 85 D2 0F 84 ? ? ? ? 48 89 6C 24 ? 56 57
@@ -70,7 +68,7 @@ namespace RE
 		namespace ActorValueOwner
 		{
 			// IndirectSig: E8 ? ? ? ? F3 44 0F 2C C0
-			constexpr std::uintptr_t GetPlayerActorValueCurrent = 0x003E5250;	// 1_5_97
+			constexpr std::uintptr_t GetClampedActorValue = 0x003E5250;	// 1_5_97
 		}
 
 
@@ -78,8 +76,6 @@ namespace RE
 		{
 			// IndirectSig: E8 ? ? ? ? 0F 28 C7 0F 28 7C 24 ?
 			constexpr std::uintptr_t SetBaseScale = 0x0065C880;		// 1_5_97
-			// DirectSig: 48 8B 41 08 48 85 C0 74 06 08 90 ? ? ? ?
-			constexpr std::uintptr_t SetEquipFlag = 0x0067E3B0;		// 1_5_97
 			// IndirectSig: E8 ? ? ? ? E9 ? ? ? ? 8B 4F 08
 			constexpr std::uintptr_t Update3DModel = 0x00650DF0;	// 1_5_97
 		}
@@ -147,7 +143,7 @@ namespace RE
 			// IndirectSig: E8 ? ? ? ? BA ? ? ? ? 48 8B CF E8 ? ? ? ? 48 8B 5C 24 ? EB 76
 			constexpr std::uintptr_t Dtor = 0x001C60A0;				// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 90 48 8D 8B ? ? ? ? 4C 8D 0D ? ? ? ? BA ? ? ? ? 44 8D 42 B2
-			constexpr std::uintptr_t UpdateWeightData = 0x001C61A0;	// 1_5_97
+			constexpr std::uintptr_t RemoveAllParts = 0x001C61A0;	// 1_5_97
 		}
 
 
@@ -683,8 +679,6 @@ namespace RE
 			constexpr std::uintptr_t GenerateLeveledListChanges = 0x001E08B0;	// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 44 0F B7 F8
 			constexpr std::uintptr_t GetNextUniqueID = 0x001ECD33;				// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 40 84 F6 75 08
-			constexpr std::uintptr_t InitContainer = 0x001E9D90;				// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 48 85 ED 74 3F
 			constexpr std::uintptr_t SendContainerChangedEvent = 0x001ECE20;	// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 80 BC 24 ? ? ? ? ? 74 0D
@@ -888,6 +882,8 @@ namespace RE
 
 			// IndirectSig: E8 ? ? ? ? 66 C7 43 18 00 00
 			constexpr std::uintptr_t ActivatePickRef = 0x006A9F90;			// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 84 C0 75 08 40 32 F6
+			constexpr std::uintptr_t AttemptPickpocket = 0x006B2530;		// 1_5_97
 			// 0F 94 C3 88 1D ? ? ? ?
 			constexpr std::uintptr_t CollisionDisabled = 0x01EBEB50;		// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 0F 28 F0 48 85 FF 0F 84 ? ? ? ?
@@ -906,8 +902,6 @@ namespace RE
 			constexpr std::uintptr_t Singleton = 0x02F26EF8;				// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 48 8B 05 ? ? ? ? 83 B8 ? ? ? ? ? 0F 95 C0
 			constexpr std::uintptr_t StartGrabObject = 0x006AA260;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 84 C0 75 08 40 32 F6
-			constexpr std::uintptr_t TryToPickPocket = 0x006B2530;			// 1_5_97
 			// VTable: .?AVPlayerCharacter@@
 			constexpr std::uintptr_t Vtbl = 0x016635E0;						// 1_5_97
 		}
@@ -940,8 +934,8 @@ namespace RE
 
 		namespace REFR_LOCK
 		{
-			// IndirectSig: E8 ? ? ? ? 66 0F 6E C0 0F 5B C0 0F 5A C8 F2 0F 11 0F
-			constexpr std::uintptr_t GetLockLevel = 0x00134A90;	// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 83 F8 05 74 35
+			constexpr std::uintptr_t GetLockLevel = 0x001349D0;	// 1_5_97
 		}
 
 
@@ -1111,21 +1105,23 @@ namespace RE
 		namespace TESObjectREFR
 		{
 			// IndirectSig: E8 ? ? ? ? 48 8B 4E 40 48 8B 01 8B 55 77
-			constexpr std::uintptr_t ActivateRefChildren = 0x002A8CC0;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? FF 40 18
-			constexpr std::uintptr_t GetLockState = 0x002A74C0;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 85 C0 48 8B CB
-			constexpr std::uintptr_t GetNumItems = 0x0028E250;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 3B D8 75 08
-			constexpr std::uintptr_t GetOwner = 0x002A6670;				// 1_5_97
+			constexpr std::uintptr_t InitChildActivates = 0x002A8CC0;		// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 4C 8B C8 89 74 24 20 4C 8B C3 48 8D 15 ? ? ? ? 48 8B CD E8 ? ? ? ? B0 01
-			constexpr std::uintptr_t GetReferenceName = 0x002961F0;		// 1_5_97
+			constexpr std::uintptr_t GetDisplayFullName = 0x002961F0;		// 1_5_97
+			// IndirectSig: E8 ? ? ? ? FF 40 18
+			constexpr std::uintptr_t GetLock = 0x002A74C0;					// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 48 3B D8 75 08
+			constexpr std::uintptr_t GetOwner = 0x002A6670;					// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 41 8B CE 3B C1
+			constexpr std::uintptr_t GetStealValue = 0x001D9080;			// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 4D 85 FF 75 26
+			constexpr std::uintptr_t InitInventoryIfRequired = 0x001D8D10;	// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 48 8B 1D ? ? ? ? 48 8B CF 83 FE 01
-			constexpr std::uintptr_t IsOffLimits = 0x0029A330;			// 1_5_97
+			constexpr std::uintptr_t IsCrimeToActivate = 0x0029A330;		// 1_5_97
 			// IndirectSig: E8 ? ? ? ? E8 ? ? ? ? 4D 89 26
-			constexpr std::uintptr_t MoveTo = 0x009AE5C0;				// 1_5_97
+			constexpr std::uintptr_t MoveTo = 0x009AE5C0;					// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 41 B4 01 EB 1B
-			constexpr std::uintptr_t PlayAnimation = 0x00189E30;		// 1_5_97
+			constexpr std::uintptr_t PlayAnimation = 0x00189E30;			// 1_5_97
 		}
 
 

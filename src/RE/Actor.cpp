@@ -75,14 +75,6 @@ namespace RE
 	}
 
 
-	SInt32 Actor::CalcEntryValue(const InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const
-	{
-		using func_t = function_type_t<decltype(&Actor::CalcEntryValue)>;
-		REL::Offset<func_t*> func(Offset::Actor::CalcEntryValue);
-		return func(this, a_entryData, a_numItems, a_multiplyValueByRemainingItems);
-	}
-
-
 	bool Actor::CanFlyHere() const
 	{
 		auto worldSpace = GetWorldspace();
@@ -115,7 +107,7 @@ namespace RE
 	{
 		if (currentProcess && currentProcess->IsArrested()) {
 			currentProcess->SetArrested(false);
-			ResetAI(0, 0);
+			EvaluatePackage(false, false);
 			auto procManager = ProcessLists::GetSingleton();
 			procManager->StopCombatAndAlarmOnActor(this, true);
 		}
@@ -148,6 +140,22 @@ namespace RE
 		using func_t = function_type_t<decltype(&Actor::DispelWornItemEnchantments)>;
 		REL::Offset<func_t*> func(Offset::Actor::DispelWornItemEnchantments);
 		return func(this);
+	}
+
+
+	void Actor::DoReset3D(bool a_updateWeight)
+	{
+		using func_t = function_type_t<decltype(&Actor::DoReset3D)>;
+		REL::Offset<func_t*> func(Offset::Actor::DoReset3D);
+		return func(this, a_updateWeight);
+	}
+
+
+	void Actor::EvaluatePackage(bool a_arg1, bool a_arg2)
+	{
+		using func_t = function_type_t<decltype(&Actor::EvaluatePackage)>;
+		REL::Offset<func_t*> func(Offset::Actor::EvaluatePackage);
+		return func(this, a_arg1, a_arg2);
 	}
 
 
@@ -234,14 +242,6 @@ namespace RE
 
 		auto proc = currentProcess->middleHigh;
 		return a_leftHand ? proc->leftHand : proc->rightHand;
-	}
-
-
-	SInt32 Actor::GetDetectionLevel(Actor* a_target, UInt32 a_idx)
-	{
-		using func_t = function_type_t<decltype(&Actor::GetDetectionLevel)>;
-		REL::Offset<func_t*> func(Offset::Actor::GetDetectionLevel);
-		return func(this, a_target, a_idx);
 	}
 
 
@@ -367,7 +367,7 @@ namespace RE
 	bool Actor::IsGhost() const
 	{
 		using func_t = function_type_t<decltype(&Actor::IsGhost)>;
-		REL::Offset<func_t*> func(Offset::Actor::IsGhost);
+		REL::Offset<func_t*> func(Offset::Actor::GetGhost);
 		return func(this);
 	}
 
@@ -378,10 +378,10 @@ namespace RE
 	}
 
 
-	bool Actor::IsHostileToActor(Actor* a_actor) const
+	bool Actor::IsHostileToActor(Actor* a_actor)
 	{
 		using func_t = function_type_t<decltype(&Actor::IsHostileToActor)>;
-		REL::Offset<func_t*> func(Offset::Actor::IsHostileToActor);
+		REL::Offset<func_t*> func(Offset::Actor::GetHostileToActor);
 		return func(this, a_actor);
 	}
 
@@ -443,35 +443,27 @@ namespace RE
 	}
 
 
-	void Actor::QueueNiNodeUpdate(bool a_updateWeight)
+	SInt32 Actor::RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority)
 	{
-		using func_t = function_type_t<decltype(&Actor::QueueNiNodeUpdate)>;
-		REL::Offset<func_t*> func(Offset::Actor::QueueNiNodeUpdate);
-		return func(this, a_updateWeight);
+		using func_t = function_type_t<decltype(&Actor::RequestDetectionLevel)>;
+		REL::Offset<func_t*> func(Offset::Actor::RequestDetectionLevel);
+		return func(this, a_target, a_priority);
 	}
 
 
-	void Actor::ResetAI(UInt32 a_arg1, UInt32 a_arg2)
+	void Actor::StealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, SInt32 a_numItems, SInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage)
 	{
-		using func_t = function_type_t<decltype(&Actor::ResetAI)>;
-		REL::Offset<func_t*> func(Offset::Actor::ResetAI);
-		return func(this, a_arg1, a_arg2);
-	}
-
-
-	void Actor::SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, SInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage)
-	{
-		using func_t = function_type_t<decltype(&Actor::SendStealAlarm)>;
-		REL::Offset<func_t*> func(Offset::Actor::SendStealAlarm);
+		using func_t = function_type_t<decltype(&Actor::StealAlarm)>;
+		REL::Offset<func_t*> func(Offset::Actor::StealAlarm);
 		return func(this, a_refItemOrContainer, a_stolenItem, a_numItems, a_value, a_owner, a_allowGetBackStolenItemPackage);
 	}
 
 
-	void Actor::SetRace(TESRace* a_race, bool a_isPlayer)
+	void Actor::SwitchRace(TESRace* a_race, bool a_player)
 	{
-		using func_t = function_type_t<decltype(&Actor::SetRace)>;
-		REL::Offset<func_t*> func(Offset::Actor::SetRace);
-		return func(this, a_race, a_isPlayer);
+		using func_t = function_type_t<decltype(&Actor::SwitchRace)>;
+		REL::Offset<func_t*> func(Offset::Actor::SwitchRace);
+		return func(this, a_race, a_player);
 	}
 
 

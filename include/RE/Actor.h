@@ -13,6 +13,7 @@
 #include "RE/BSTList.h"
 #include "RE/BSTSmartPointer.h"
 #include "RE/BSTTuple.h"
+#include "RE/DetectionPriorities.h"
 #include "RE/FormTypes.h"
 #include "RE/IPostAnimationChannelUpdateFunctor.h"
 #include "RE/MagicSystem.h"
@@ -279,9 +280,9 @@ namespace RE
 		virtual NiPoint3						GetStartingLocation() const override;																																												// 053
 		virtual ObjectRefHandle					RemoveItem(TESBoundObject* a_object, SInt32 a_count, ITEM_REMOVE_REASON a_reason, ExtraDataList* a_extraList, TESObjectREFR* a_moveToRef, const NiPoint3* a_dropLoc = 0, const NiPoint3* a_rotate = 0) override;	// 056
 		virtual bool							AddWornItem(TESBoundObject* a_item, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5) override;																											// 057
-		virtual void							DoTrap(TrapData& a_data) override;																																													// 058
-		virtual void							DoTrap(TrapEntry* a_trap, TargetEntry* a_target) override;																																							// 059
-		virtual void							AddItem(TESBoundObject* a_item, ExtraDataList* a_extraList, SInt32 a_count, TESObjectREFR* a_fromRefr) override;																									// 05A
+		virtual void							DoTrap1(TrapData& a_data) override;																																													// 058
+		virtual void							DoTrap2(TrapEntry* a_trap, TargetEntry* a_target) override;																																							// 059
+		virtual void							AddObjectToContainer(TESBoundObject* a_object, ExtraDataList* a_extraList, SInt32 a_count, TESObjectREFR* a_fromRefr) override;																						// 05A
 		virtual NiPoint3						GetLookingAtLocation() const override;																																												// 05B
 		virtual MagicCaster*					GetMagicCaster(MagicSystem::CastingSource a_source) override;																																						// 05C
 		virtual MagicTarget*					GetMagicTarget() override;																																															// 05D - { return static_cast<MagicTarget*>(this); }
@@ -473,7 +474,6 @@ namespace RE
 		bool						AddSpell(SpellItem* a_spell);
 		void						AllowBleedoutDialogue(bool a_canTalk);
 		void						AllowPCDialogue(bool a_talk);
-		SInt32						CalcEntryValue(const InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_multiplyValueByRemainingItems) const;
 		bool						CanFlyHere() const;
 		bool						CanPickpocket() const;
 		bool						CanTalkToPlayer() const;
@@ -482,13 +482,14 @@ namespace RE
 		void						ClearExtraArrows();
 		ActorHandle					CreateRefHandle();
 		void						DispelWornItemEnchantments();
+		void						DoReset3D(bool a_updateWeight);
+		void						EvaluatePackage(bool a_arg1 = false, bool a_arg2 = false);
 		TESNPC*						GetActorBase();
 		const TESNPC*				GetActorBase() const;
 		InventoryEntryData*			GetAttackingWeapon();
 		const InventoryEntryData*	GetAttackingWeapon() const;
 		TESFaction*					GetCrimeFaction();
 		const TESFaction*			GetCrimeFaction() const;
-		SInt32						GetDetectionLevel(Actor* a_target, UInt32 a_idx = 3);
 		InventoryEntryData*			GetEquippedEntryData(bool a_leftHand);
 		const InventoryEntryData*	GetEquippedEntryData(bool a_leftHand) const;
 		TESForm*					GetEquippedObject(bool a_leftHand) const;
@@ -505,7 +506,7 @@ namespace RE
 		bool						IsFactionInCrimeGroup(const TESFaction* a_faction) const;
 		bool						IsGhost() const;
 		bool						IsGuard() const;
-		bool						IsHostileToActor(Actor* a_actor) const;
+		bool						IsHostileToActor(Actor* a_actor);
 		bool						IsInKillMove() const;
 		bool						IsOnMount() const;
 		bool						IsPlayerTeammate() const;
@@ -513,10 +514,9 @@ namespace RE
 		bool						IsSneaking() const;
 		bool						IsSummoned() const;
 		bool						IsTrespassing() const;
-		void						QueueNiNodeUpdate(bool a_updateWeight);
-		void						ResetAI(UInt32 a_arg1 = 0, UInt32 a_arg2 = 0);
-		void						SendStealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, SInt32 a_numItems, UInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);
-		void						SetRace(TESRace* a_race, bool a_isPlayer);
+		SInt32						RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);
+		void						StealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, SInt32 a_numItems, SInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage);
+		void						SwitchRace(TESRace* a_race, bool a_player);
 		void						UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData);
 		void						Update3DModel();
 		void						UpdateHairColor();

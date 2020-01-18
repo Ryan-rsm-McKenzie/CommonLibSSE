@@ -4,6 +4,7 @@
 #include <string_view>
 #include <unordered_map>
 #include <utility>
+#include <vector>
 
 #include "function_ref.h"
 
@@ -25,6 +26,7 @@
 
 namespace RE
 {
+	enum class LOCK_LEVEL : UInt32;
 	class ActorCause;
 	class BGSAnimationSequencer;
 	class BGSDialogueBranch;
@@ -113,8 +115,9 @@ namespace RE
 
 
 		using Count = SInt32;
-		using InventoryMap = std::unordered_map<TESBoundObject*, std::pair<Count, InventoryEntryData*>>;
-		using DroppedInventoryMap = std::unordered_map<TESBoundObject*, std::pair<Count, NiPointer<TESObjectREFR>>>;
+		using InventoryCountMap = std::unordered_map<TESBoundObject*, Count>;
+		using InventoryItemMap = std::unordered_map<TESBoundObject*, std::pair<Count, std::unique_ptr<InventoryEntryData>>>;
+		using InventoryDropMap = std::unordered_map<TESBoundObject*, std::pair<Count, std::vector<NiPointer<TESObjectREFR>>>>;
 
 
 		enum { kTypeID = FormType::Reference };
@@ -284,9 +287,9 @@ namespace RE
 		virtual void								UpdateRefLight();																																														// 55
 		virtual ObjectRefHandle						RemoveItem(TESBoundObject* a_object, SInt32 a_count, ITEM_REMOVE_REASON a_reason, ExtraDataList* a_extraList, TESObjectREFR* a_moveToRef, const NiPoint3* a_dropLoc = 0, const NiPoint3* a_rotate = 0);	// 56
 		virtual bool								AddWornItem(TESBoundObject* a_item, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5);																											// 57
-		virtual void								DoTrap(TrapData& a_data);																																												// 58 - { return; }
-		virtual void								DoTrap(TrapEntry* a_trap, TargetEntry* a_target);																																						// 59 - { return; }
-		virtual void								AddItem(TESBoundObject* a_item, ExtraDataList* a_extraList, SInt32 a_count, TESObjectREFR* a_fromRefr);																									// 5A
+		virtual void								DoTrap1(TrapData& a_data);																																												// 58 - { return; }
+		virtual void								DoTrap2(TrapEntry* a_trap, TargetEntry* a_target);																																						// 59 - { return; }
+		virtual void								AddObjectToContainer(TESBoundObject* a_object, ExtraDataList* a_extraList, SInt32 a_count, TESObjectREFR* a_fromRefr);																					// 5A
 		virtual NiPoint3							GetLookingAtLocation() const;																																											// 5B
 		virtual MagicCaster*						GetMagicCaster(MagicSystem::CastingSource a_source);																																					// 5C
 		virtual MagicTarget*						GetMagicTarget();																																														// 5D
@@ -363,8 +366,9 @@ namespace RE
 		static NiPointer<TESObjectREFR>	LookupByHandle(RefHandle a_refHandle);
 		static bool						LookupByHandle(RefHandle a_refHandle, NiPointer<TESObjectREFR>& a_refrOut);
 
-		void								ActivateRefChildren(TESObjectREFR* a_activator);
 		ObjectRefHandle						CreateRefHandle();
+		void								DoTrap(TrapData& a_data);
+		void								DoTrap(TrapEntry* a_trap, TargetEntry* a_target);
 		NiAVObject*							Get3D() const;
 		NiAVObject*							Get3D(bool a_firstPerson) const;
 		TESNPC*								GetActorOwner();
@@ -378,39 +382,43 @@ namespace RE
 		const BSTSmartPointer<BipedAnim>&	GetBiped() const;
 		const BSTSmartPointer<BipedAnim>&	GetBiped(bool a_firstPerson) const;
 		TESContainer*						GetContainer();
-		DroppedInventoryMap					GetDroppedInventory();
-		DroppedInventoryMap					GetDroppedInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);
+		const char*							GetDisplayFullName();
+		InventoryDropMap					GetDroppedInventory();
+		InventoryDropMap					GetDroppedInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);
 		TESFaction*							GetFactionOwner();
-		InventoryMap						GetInventory();
-		InventoryMap						GetInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);
-		InventoryChanges*					GetInventoryChanges();	// Creates inventory changes if none found
+		InventoryItemMap					GetInventory();
+		InventoryItemMap					GetInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);
+		SInt32								GetInventoryCount();
+		InventoryCountMap					GetInventoryCounts();
+		InventoryCountMap					GetInventoryCounts(llvm::function_ref<bool(TESBoundObject*)> a_filter);
+		InventoryChanges*					GetInventoryChanges();
 		TESObjectREFR*						GetLinkedRef(BGSKeyword* a_keyword);
-		SInt32								GetLockLevel() const;
-		REFR_LOCK*							GetLockState();
-		const REFR_LOCK*					GetLockState() const;
+		REFR_LOCK*							GetLock() const;
+		LOCK_LEVEL							GetLockLevel() const;
 		const char*							GetName() const;
 		NiAVObject*							GetNodeByName(const BSFixedString& a_nodeName);
-		UInt32								GetNumItems(bool a_useDataHandlerChanges = false, bool a_arg2 = false);
-		TESForm*							GetOwner();
+		TESForm*							GetOwner() const;
 		TESObjectCELL*						GetParentCell();
 		NiPoint3							GetPosition() const;
 		float								GetPositionX() const;
 		float								GetPositionY() const;
 		float								GetPositionZ() const;
-		const char*							GetReferenceName() const;
+		UInt32								GetStealValue(const InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_useMult) const;
 		float								GetWeight() const;
 		TESWorldSpace*						GetWorldspace() const;
 		bool								HasCollision() const;
 		bool								HasKeyword(const BGSKeyword* a_keyword) const;
-		bool								HasInventoryChanges() const;
+		void								InitChildActivates(TESObjectREFR* a_activator);
+		bool								InitInventoryIfRequired(bool a_skipExtra = false);
 		bool								Is3DLoaded() const;
 		bool								IsActivationBlocked() const;
+		bool								IsCrimeToActivate();
 		bool								IsDead() const;
 		bool								IsDisabled() const;
 		bool								IsHorse() const;
 		bool								IsLocked() const;
 		bool								IsMarkedForDeletion() const;
-		bool								IsOffLimits() const;
+		bool								IsOffLimits();
 		bool								MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool								MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
 		void								PlayAnimation(std::string_view a_from, std::string_view a_to);
@@ -435,9 +443,8 @@ namespace RE
 		UInt32				pad94;			// 94
 
 	private:
-		const REFR_LOCK*	GetLockState_Impl() const;
-		void				MoveTo_Impl(ObjectRefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, NiPoint3& a_position, NiPoint3& a_rotation);
-		void				PlayAnimation_Impl(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4 = false);
+		void	MoveTo_Impl(const ObjectRefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, const NiPoint3& a_position, const NiPoint3& a_rotation);
+		void	PlayAnimation_Impl(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4 = false);
 	};
 	STATIC_ASSERT(sizeof(TESObjectREFR) == 0x98);
 };

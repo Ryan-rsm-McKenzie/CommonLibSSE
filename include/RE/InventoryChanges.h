@@ -37,7 +37,6 @@ namespace RE
 		void	AddEntryData(InventoryEntryData* a_entry);
 		void	GenerateLeveledListChanges();
 		UInt16	GetNextUniqueID();
-		void	InitContainer();
 		void	SendContainerChangedEvent(ExtraDataList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, SInt32 a_count);
 		void	SetUniqueID(ExtraDataList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm);
 

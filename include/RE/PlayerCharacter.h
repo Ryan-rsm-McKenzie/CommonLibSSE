@@ -271,6 +271,7 @@ namespace RE
 		static UInt32			GetPickpocketChance(float a_playerSkill, float a_targetSkill, UInt32 a_totalValue, float a_itemWeight, Actor* a_player, Actor* a_target, bool a_isDetected, TESForm* a_item);
 
 		void						ActivatePickRef();
+		bool						AttemptPickpocket(TESObjectREFR* a_target, InventoryEntryData* a_entry, SInt32 a_numItems, bool a_useMult = true);
 		NiPointer<Actor>			GetActorDoingPlayerCommand() const;
 		float						GetArmorValue(InventoryEntryData* a_form);
 		float						GetDamage(InventoryEntryData* a_form);
@@ -282,7 +283,6 @@ namespace RE
 		void						PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void						SetCollision(bool a_enable);
 		void						StartGrabObject();
-		bool						TryToPickPocket(Actor* a_target, InventoryEntryData* a_entry, UInt32 a_numItems, bool a_arg4 = true);
 
 
 		// members

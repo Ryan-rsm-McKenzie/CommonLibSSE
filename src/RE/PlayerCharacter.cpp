@@ -38,6 +38,14 @@ namespace RE
 	}
 
 
+	bool PlayerCharacter::AttemptPickpocket(TESObjectREFR* a_target, InventoryEntryData* a_entry, SInt32 a_numItems, bool a_useMult)
+	{
+		using func_t = function_type_t<decltype(&PlayerCharacter::AttemptPickpocket)>;
+		REL::Offset<func_t*> func(Offset::PlayerCharacter::AttemptPickpocket);
+		return func(this, a_target, a_entry, a_numItems, a_useMult);
+	}
+
+
 	NiPointer<Actor> PlayerCharacter::GetActorDoingPlayerCommand() const
 	{
 		return actorDoingPlayerCommand.get();
@@ -128,13 +136,5 @@ namespace RE
 		using func_t = function_type_t<decltype(&PlayerCharacter::StartGrabObject)>;
 		REL::Offset<func_t*> func(Offset::PlayerCharacter::StartGrabObject);
 		return func(this);
-	}
-
-
-	bool PlayerCharacter::TryToPickPocket(Actor* a_target, InventoryEntryData* a_entry, UInt32 a_numItems, bool a_arg4)
-	{
-		using func_t = function_type_t<decltype(&PlayerCharacter::TryToPickPocket)>;
-		REL::Offset<func_t*> func(Offset::PlayerCharacter::TryToPickPocket);
-		return func(this, a_target, a_entry, a_numItems, a_arg4);
 	}
 }

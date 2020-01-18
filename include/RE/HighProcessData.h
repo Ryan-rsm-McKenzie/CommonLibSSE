@@ -295,7 +295,7 @@ namespace RE
 		bool													unk465;							// 465
 		bool													unk466;							// 466
 		bool													unk467;							// 467
-		bool													unk468;							// 468
+		bool													farGeometry;					// 468
 		bool													unk469;							// 469
 		bool													unk46A;							// 46A
 		bool													unk46B;							// 46B

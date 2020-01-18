@@ -23,7 +23,7 @@ namespace RE
 		virtual void	SetActorValue(ActorValue a_akValue, float a_value);											// 07 - { SetBaseActorValue(a_akValue, a_value); }
 		virtual bool	GetIsPlayerOwner() const;																	// 08 - { return false; }
 
-		float GetPlayerActorValueCurrent(ActorValue a_akValue);
+		float GetClampedActorValue(ActorValue a_akValue) const;
 	};
 	STATIC_ASSERT(sizeof(ActorValueOwner) == 0x8);
 }

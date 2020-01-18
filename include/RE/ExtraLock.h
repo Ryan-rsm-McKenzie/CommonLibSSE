@@ -1,5 +1,7 @@
 #pragma once
 
+#include <type_traits>
+
 #include "RE/BSExtraData.h"
 #include "RE/ExtraDataTypes.h"
 #include "RE/FormTypes.h"
@@ -7,18 +9,30 @@
 
 namespace RE
 {
+	enum class LOCK_LEVEL : UInt32
+	{
+		kUnlocked = static_cast<std::underlying_type_t<LOCK_LEVEL>>(-1),
+		kVeryEasy = 0,
+		kEasy = 1,
+		kAverage = 2,
+		kHard = 3,
+		kVeryHard = 4,
+		kRequiresKey = 5
+	};
+
+
 	struct REFR_LOCK
 	{
 		enum class Flag : UInt8
 		{
 			kNone = 0,
 			kLocked = 1 << 0,
-			kLevelScaling = 1 << 4
+			kLeveled = 1 << 2
 		};
 
 
-		SInt32	GetLockLevel(const TESObjectREFR* a_containerRef) const;
-		void	SetLocked(bool a_locked);
+		LOCK_LEVEL	GetLockLevel(const TESObjectREFR* a_containerRef) const;
+		void		SetLocked(bool a_locked);
 
 
 		// members

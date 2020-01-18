@@ -1,6 +1,7 @@
 #include "RE/AIProcess.h"
 
 #include "RE/HighProcessData.h"
+#include "RE/MiddleHighProcessData.h"
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 #include "SKSE/API.h"
@@ -104,11 +105,11 @@ namespace RE
 	}
 
 
-	void AIProcess::SetEquipFlag(Flag a_flag)
+	void AIProcess::Set3DUpdateFlag(RESET_3D_FLAGS a_flags)
 	{
-		using func_t = function_type_t<decltype(&AIProcess::SetEquipFlag)>;
-		REL::Offset<func_t*> func(Offset::AIProcess::SetEquipFlag);
-		return func(this, a_flag);
+		if (middleHigh) {
+			middleHigh->update3DModel |= a_flags;
+		}
 	}
 
 

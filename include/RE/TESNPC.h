@@ -256,7 +256,8 @@ namespace RE
 		float			GetHeight() const;
 		UInt32			GetNumBaseOverlays() const;
 		TESRace*		GetRace();
-		TESNPC*			GetRootTemplate();
+		TESNPC*			GetRootFaceNPC();
+		const TESNPC*	GetRootFaceNPC() const;
 		SEX				GetSex() const;
 		bool			HasOverlays();
 		void			SetFaceTexture(BGSTextureSet* a_textureSet);

@@ -42,7 +42,7 @@ namespace RE
 	public:
 		~BipedAnim();
 
-		void UpdateWeightData();
+		void RemoveAllParts();
 
 
 		UInt32			pad0004;								// 0004

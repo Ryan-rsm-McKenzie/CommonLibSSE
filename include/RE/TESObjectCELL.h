@@ -82,8 +82,8 @@ namespace RE
 		NiTMap<ObjectRefHandle, NiNode*>						emittanceLightRefMap;	// 090
 		NiTMap<ObjectRefHandle, NiPointer<BSMultiBoundNode>>	multiboundRefMap;		// 0B0
 		NiTMap<BSMultiBoundNode*, ObjectRefHandle>				refMultiboundMap;		// 0D0
-		BSSimpleList<void*>										unk0F0;					// 0F0
-		BSSimpleList<ObjectRefHandle>							activatingRefs;			// 100
+		BSSimpleList<ObjectRefHandle>							activatingRefs;			// 0F0
+		BSSimpleList<ObjectRefHandle>							unk100;					// 100
 		UInt64													unk110;					// 110
 		BSTArray<void*>											unk118;					// 118
 		BSTArray<void*>											unk130;					// 130

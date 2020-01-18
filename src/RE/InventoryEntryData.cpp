@@ -1,7 +1,5 @@
 #include "RE/InventoryEntryData.h"
 
-#include <type_traits>
-
 #include "RE/ExtraDataList.h"
 #include "RE/GameSettingCollection.h"
 #include "RE/Offsets.h"
@@ -12,18 +10,91 @@
 
 namespace RE
 {
+	InventoryEntryData::InventoryEntryData() :
+		object(0),
+		extraLists(0),
+		countDelta(0),
+		pad14(0)
+	{}
+
+
+	InventoryEntryData::InventoryEntryData(const InventoryEntryData& a_rhs) :
+		object(a_rhs.object),
+		extraLists(0),
+		countDelta(a_rhs.countDelta),
+		pad14(0)
+	{
+		if (a_rhs.extraLists) {
+			extraLists = new BSSimpleList<ExtraDataList*>(*a_rhs.extraLists);
+		}
+	}
+
+
+	InventoryEntryData::InventoryEntryData(InventoryEntryData&& a_rhs) :
+		object(std::move(a_rhs.object)),
+		extraLists(std::move(a_rhs.extraLists)),
+		countDelta(std::move(a_rhs.countDelta)),
+		pad14(0)
+	{
+		a_rhs.object = 0;
+		a_rhs.extraLists = 0;
+		a_rhs.countDelta = 0;
+	}
+
+
 	InventoryEntryData::InventoryEntryData(TESBoundObject* a_object, SInt32 a_countDelta) :
 		object(a_object),
 		extraLists(0),
 		countDelta(a_countDelta)
 	{
-		extraLists = new std::remove_pointer_t<decltype(extraLists)>;
+		extraLists = new BSSimpleList<ExtraDataList*>;
 	}
 
 
 	InventoryEntryData::~InventoryEntryData()
 	{
 		delete extraLists;
+	}
+
+
+	InventoryEntryData& InventoryEntryData::operator=(const InventoryEntryData& a_rhs)
+	{
+		if (this == &a_rhs) {
+			return *this;
+		}
+
+		object = a_rhs.object;
+
+		delete extraLists;
+		if (a_rhs.extraLists) {
+			extraLists = new BSSimpleList<ExtraDataList*>(*a_rhs.extraLists);
+		} else {
+			extraLists = 0;
+		}
+
+		countDelta = a_rhs.countDelta;
+
+		return *this;
+	}
+
+
+	InventoryEntryData& InventoryEntryData::operator=(InventoryEntryData&& a_rhs)
+	{
+		if (this == &a_rhs) {
+			return *this;
+		}
+
+		object = std::move(a_rhs.object);
+		a_rhs.object = 0;
+
+		delete extraLists;
+		extraLists = std::move(a_rhs.extraLists);
+		a_rhs.extraLists = 0;
+
+		countDelta = std::move(a_rhs.countDelta);
+		a_rhs.countDelta = 0;
+
+		return *this;
 	}
 
 

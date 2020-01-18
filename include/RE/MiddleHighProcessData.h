@@ -38,6 +38,20 @@ namespace RE
 	struct QueuedItem;
 
 
+	enum class RESET_3D_FLAGS : UInt8
+	{
+		kNone = 0,
+		kModel = 1 << 0,
+		kSkin = 1 << 1,
+		kHead = 1 << 2,
+		kFace = 1 << 3,
+		kScale = 1 << 4,
+		kSkeleton = 1 << 5,
+		kInitDefault = 1 << 6,
+		kSkyCellSkin = (UInt8)1 << 7
+	};
+
+
 	struct CommandedActorData
 	{
 		ActorHandle		commandedActor;	// 00
@@ -268,7 +282,7 @@ namespace RE
 		UInt16										unk306;					// 306
 		UInt64										unk308;					// 308
 		UInt8										unk310;					// 310
-		UInt8										unk311;					// 311
+		RESET_3D_FLAGS								update3DModel;			// 311
 		UInt16										unk312;					// 312
 		UInt16										unk314;					// 314
 		bool										unk316;					// 316
@@ -276,7 +290,7 @@ namespace RE
 		bool										unk318;					// 318
 		bool										unk319;					// 319
 		bool										unk31A;					// 31A
-		bool										unk31B;					// 31B
+		bool										pickPocketed;			// 31B
 		bool										unk31C;					// 31C
 		bool										unk31D;					// 31D
 		bool										unk31E;					// 31E

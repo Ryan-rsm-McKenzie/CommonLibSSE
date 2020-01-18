@@ -5240,5 +5240,8 @@
     <ClInclude Include="include\RE\GlobalLookupInfo.h">
       <Filter>include\RE\Misc</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\DetectionPriorities.h">
+      <Filter>include\RE\FormComponents\Enums</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
