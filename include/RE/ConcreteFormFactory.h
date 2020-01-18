@@ -20,7 +20,7 @@ namespace RE
 		virtual const char*	GetFormName() const override;	// 02 - { return _name; }
 		virtual FormType	GetFormType() const override;	// 03 - { return FORM_TYPE; }
 
-		T* Create() const;
+		T* Create();
 
 	protected:
 		// members
@@ -30,7 +30,7 @@ namespace RE
 
 
 	template <class T, FormType FORM_TYPE>
-	inline T* ConcreteFormFactory<T, FORM_TYPE>::Create() const
+	inline T* ConcreteFormFactory<T, FORM_TYPE>::Create()
 	{
 		return static_cast<T*>(CreateImpl());
 	}

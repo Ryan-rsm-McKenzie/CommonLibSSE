@@ -10,6 +10,21 @@
 
 namespace RE
 {
+	enum class COMPILER_NAME : UInt32
+	{
+		kDefaultCompiler,
+		kSystemWindowCompiler,
+		kDialogueCompiler
+	};
+
+
+	class ScriptCompiler
+	{
+	public:
+	};
+	STATIC_ASSERT(sizeof(ScriptCompiler) == 0x1);
+
+
 	class Script : public TESForm
 	{
 	public:
@@ -17,14 +32,6 @@ namespace RE
 
 
 		enum { kTypeID = FormType::Script };
-
-
-		enum class InvokeType : std::size_t
-		{
-			kDefaultCompiler,
-			kSysWindowCompileAndRun,
-			kDialogueCompileAndRun
-		};
 
 
 		struct RecordFlags
@@ -43,8 +50,9 @@ namespace RE
 		virtual void	InitItemImpl() override;		// 13
 
 		void		ClearCommand();
+		void		CompileAndRun(TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
+		void		CompileAndRun(ScriptCompiler* a_compiler, TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
 		std::string	GetCommand() const;
-		void		Invoke(TESObjectREFR* a_targetRef, InvokeType a_type = InvokeType::kSysWindowCompileAndRun);
 		void		SetCommand(std::string_view a_command);
 
 
@@ -62,7 +70,7 @@ namespace RE
 		BSSimpleList<ScriptVariable*>			variables;						// 70
 
 	private:
-		void Invoke_Impl(void* a_arg1, InvokeType a_type, TESObjectREFR* a_targetRef);
+		void CompileAndRun_Impl(ScriptCompiler* a_compiler, COMPILER_NAME a_type, TESObjectREFR* a_targetRef);
 	};
 	STATIC_ASSERT(sizeof(Script) == 0x80);
 }

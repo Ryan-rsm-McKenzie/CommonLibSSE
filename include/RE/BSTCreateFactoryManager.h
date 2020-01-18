@@ -3,6 +3,7 @@
 #include <utility>
 
 #include "RE/BSFixedString.h"
+#include "RE/BSTTuple.h"
 #include "RE/CRC.h"
 
 
@@ -16,65 +17,9 @@ namespace RE
 	class BSTCreateFactoryManager
 	{
 	public:
-		template <class T1, class T2>
-		struct pair
-		{
-		public:
-			using first_type = T1;
-			using second_type = T2;
-
-
-			pair() :
-				first{},
-				second{}
-			{}
-
-
-			pair(const pair&) = default;
-			pair(pair&&) = default;
-
-
-			pair(const T1& a_first, const T2& a_second) :
-				first(a_first),
-				second(a_second)
-			{}
-
-
-			template <class... Args1, class... Args2, std::size_t... I1, std::size_t... I2>
-			pair(std::piecewise_construct_t, std::tuple<Args1...> a_firstArgs, std::tuple<Args2...> a_secondArgs, std::index_sequence<I1...>, std::index_sequence<I2...>) :
-				first(std::get<I1>(std::move(a_firstArgs))...),
-				second(std::get<I2>(std::move(a_secondArgs))...)
-			{}
-
-
-			template <class... Args1, class... Args2>
-			pair(std::piecewise_construct_t, std::tuple<Args1...> a_firstArgs, std::tuple<Args2...> a_secondArgs) :
-				pair(a_firstArgs, a_secondArgs, std::index_sequence_for<Args1...>(), std::index_sequence_for<Args2...>())
-			{}
-
-
-			pair& operator=(const pair& a_rhs)
-			{
-				first = a_rhs.first;
-				second = a_rhs.second;
-			}
-
-
-			pair& operator=(pair&& a_rhs)
-			{
-				first = std::move(a_rhs.first);
-				second = std::move(a_rhs.second);
-			}
-
-
-			T1 first;	// 00
-			T2 second;	// ??
-		};
-
-
 		using key_type = Key;
 		using mapped_type = T;
-		using value_type = pair<const Key, IBSTCreator<T>*>;
+		using value_type = BSTTuple<const Key, IBSTCreator<T>*>;
 		using size_type = UInt32;
 		using hasher = CRC32Hash<Key>;
 		using key_equal = std::equal_to<Key>;

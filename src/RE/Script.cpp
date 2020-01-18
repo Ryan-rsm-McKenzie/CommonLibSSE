@@ -18,15 +18,22 @@ namespace RE
 	}
 
 
-	std::string Script::GetCommand() const
+	void Script::CompileAndRun(TESObjectREFR* a_targetRef, COMPILER_NAME a_name)
 	{
-		return text ? text : "";
+		ScriptCompiler compiler;
+		CompileAndRun_Impl(&compiler, a_name, a_targetRef);
 	}
 
 
-	void Script::Invoke(TESObjectREFR* a_targetRef, InvokeType a_type)
+	void Script::CompileAndRun(ScriptCompiler* a_compiler, TESObjectREFR* a_targetRef, COMPILER_NAME a_name)
 	{
-		Invoke_Impl(0, a_type, a_targetRef);
+		CompileAndRun_Impl(a_compiler, a_name, a_targetRef);
+	}
+
+
+	std::string Script::GetCommand() const
+	{
+		return text ? text : "";
 	}
 
 
@@ -42,10 +49,10 @@ namespace RE
 	}
 
 
-	void Script::Invoke_Impl(void* a_arg1, InvokeType a_type, TESObjectREFR* a_targetRef)
+	void Script::CompileAndRun_Impl(ScriptCompiler* a_compiler, COMPILER_NAME a_name, TESObjectREFR* a_targetRef)
 	{
-		using func_t = function_type_t<decltype(&Script::Invoke_Impl)>;
-		REL::Offset<func_t*> func(Offset::Script::Invoke);
-		return func(this, a_arg1, a_type, a_targetRef);
+		using func_t = function_type_t<decltype(&Script::CompileAndRun_Impl)>;
+		REL::Offset<func_t*> func(Offset::Script::CompileAndRun);
+		return func(this, a_compiler, a_name, a_targetRef);
 	}
 }
