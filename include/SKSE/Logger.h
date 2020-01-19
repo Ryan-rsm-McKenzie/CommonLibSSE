@@ -20,7 +20,11 @@ namespace SKSE
 	namespace Impl
 	{
 		class ConsoleLogger;
+		class TrampolineLogger;
 	}
+
+
+	class Trampoline;
 
 
 	class Logger
@@ -53,6 +57,7 @@ namespace SKSE
 		static bool HookPapyrusLog(bool a_enable);
 		static std::regex SetPapyrusLogFilter(std::string a_filter, std::regex::flag_type a_flags = DF_REGEXFLAGS);
 		static std::regex SetPapyrusLogFilter(std::regex a_filter);
+		static bool TrackTrampolineStats(bool a_enable);
 
 		static void Print(const char* a_string);
 		static void Print(Level a_level, const char* a_string);
@@ -61,15 +66,33 @@ namespace SKSE
 
 	private:
 		friend class Impl::ConsoleLogger;
+		friend class Impl::TrampolineLogger;
 		friend class LogEventHandler;
+
+
+		enum class StampType
+		{
+			kDebugMessage,
+			kVerboseMessage,
+			kMessage,
+			kWarning,
+			kError,
+			kFatalError,
+
+			kPapyrus,
+			kTrampoline
+		};
 
 
 		class LogEventHandler : public RE::BSTEventSink<RE::BSScript::LogEvent>
 		{
 		public:
+			using EventResult = RE::BSEventNotifyControl;
+
+
 			static LogEventHandler* GetSingleton();
 
-			virtual	RE::BSEventNotifyControl ProcessEvent(const RE::BSScript::LogEvent* a_event, RE::BSTEventSource<RE::BSScript::LogEvent>* a_eventSource) override;
+			virtual	EventResult ProcessEvent(const RE::BSScript::LogEvent* a_event, RE::BSTEventSource<RE::BSScript::LogEvent>* a_eventSource) override;
 
 		private:
 			LogEventHandler() = default;
@@ -90,10 +113,10 @@ namespace SKSE
 		Logger& operator=(const Logger&) = delete;
 		Logger& operator=(Logger&&) = delete;
 
-		static const char* GetLogStamp(Level a_level);
+		static const char* GetLogStamp(StampType a_type);
 		static std::string GetTimeStamp();
-		static void Print_Impl(Level a_level, const char* a_string);
-		static void VPrint_Impl(Level a_level, const char* a_format, std::va_list a_args);
+		static void Print_Impl(Level a_level, const char* a_string, StampType a_type);
+		static void VPrint_Impl(Level a_level, const char* a_format, std::va_list a_args, StampType a_type);
 
 
 		static std::ofstream _file;
@@ -104,11 +127,29 @@ namespace SKSE
 		static bool _timeStamp;
 		static bool _fmt24Hour;
 		static bool _hookPapyrusLog;
+		static bool _trackTrampolineStats;
 	};
 
 
 	namespace Impl
 	{
+		class VArgFormatter
+		{
+		public:
+			VArgFormatter(const char* a_format, ...);
+			VArgFormatter(const char* a_format, std::va_list a_args);
+
+			std::string str() const;
+			const char* c_str() const;
+
+		private:
+			void DoFormat(const char* a_format, std::va_list a_args);
+
+
+			std::string _msg;
+		};
+
+
 		class ConsoleLogger
 		{
 		public:
@@ -122,6 +163,13 @@ namespace SKSE
 
 			ConsoleLogger& operator=(const ConsoleLogger&) = delete;
 			ConsoleLogger& operator=(ConsoleLogger&&) = delete;
+		};
+
+
+		class TrampolineLogger
+		{
+		public:
+			static void LogStats(const Trampoline& a_trampoline);
 		};
 	}
 }

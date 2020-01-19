@@ -5,7 +5,7 @@ namespace RE
 {
 	namespace BSScript
 	{
-		bool ZeroFunctionArguments::Copy(BSScrapArray<Variable>& a_dst)
+		bool ZeroFunctionArguments::operator()(BSScrapArray<Variable>& a_dst) const
 		{
 			a_dst.resize(0);
 			return true;

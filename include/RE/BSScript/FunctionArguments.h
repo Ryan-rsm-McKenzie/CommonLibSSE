@@ -16,14 +16,14 @@ namespace RE
 		namespace Impl
 		{
 			template <class... Args, std::size_t... I>
-			void CopyArgsImpl(std::tuple<Args...>& a_tuple, BSScrapArray<Variable>& a_dst, std::index_sequence<I...>)
+			void CopyArgsImpl(const std::tuple<Args...>& a_tuple, BSScrapArray<Variable>& a_dst, std::index_sequence<I...>)
 			{
-				((a_dst[I].Pack<Args>(std::forward<Args>(std::get<I>(a_tuple)))), ...);
+				((a_dst[I].Pack<Args>(std::forward<Args>(std::get<I>(std::move(a_tuple))))), ...);
 			}
 
 
 			template <class... Args>
-			void CopyArgs(std::tuple<Args...>& a_tuple, BSScrapArray<Variable>& a_dst)
+			void CopyArgs(const std::tuple<Args...>& a_tuple, BSScrapArray<Variable>& a_dst)
 			{
 				CopyArgsImpl(a_tuple, a_dst, std::index_sequence_for<Args...>{});
 			}
@@ -38,8 +38,8 @@ namespace RE
 			public IFunctionArguments
 		{
 		public:
-			FunctionArguments(Args... a_args) :
-				_args(a_args...)
+			FunctionArguments(Args&&... a_args) :
+				_args(std::forward<Args>(a_args)...)
 			{}
 
 
@@ -57,10 +57,10 @@ namespace RE
 			{}
 
 
-			virtual ~FunctionArguments() = default;						// 00
+			virtual ~FunctionArguments() = default;	// 00
 
 
-			virtual bool Copy(BSScrapArray<Variable>& a_dst) override	// 01
+			virtual bool operator()(BSScrapArray<Variable>& a_dst) const override	// 01
 			{
 				a_dst.resize(sizeof...(Args));
 				Impl::CopyArgs(_args, a_dst);
@@ -78,9 +78,9 @@ namespace RE
 
 
 	template <class... Args>
-	inline BSScript::IFunctionArguments* MakeFunctionArguments(Args... a_args)
+	inline BSScript::IFunctionArguments* MakeFunctionArguments(Args&&... a_args)
 	{
-		return new FunctionArguments<Args...>(a_args...);
+		return new FunctionArguments<std::remove_reference_t<Args>...>(std::forward<Args>(a_args)...);
 	}
 
 

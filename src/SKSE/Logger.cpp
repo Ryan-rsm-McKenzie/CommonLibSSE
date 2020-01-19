@@ -13,6 +13,7 @@
 
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "SKSE/API.h"
+#include "SKSE/Trampoline.h"
 
 
 namespace SKSE
@@ -153,16 +154,24 @@ namespace SKSE
 	}
 
 
+	bool Logger::TrackTrampolineStats(bool a_enable)
+	{
+		auto prev = std::move(_trackTrampolineStats);
+		_trackTrampolineStats = std::move(a_enable);
+		return prev;
+	}
+
+
 	void Logger::Print(const char* a_string)
 	{
-		Print_Impl(Level::kMessage, a_string);
+		Print_Impl(Level::kMessage, a_string, StampType::kMessage);
 	}
 
 
 	void Logger::Print(Level a_level, const char* a_string)
 	{
 		if (a_level >= _printLevel) {
-			Print_Impl(a_level, a_string);
+			Print_Impl(a_level, a_string, static_cast<StampType>(a_level));
 		}
 	}
 
@@ -171,7 +180,7 @@ namespace SKSE
 	{
 		std::va_list args;
 		va_start(args, a_format);
-		VPrint_Impl(Level::kMessage, a_format, args);
+		VPrint_Impl(Level::kMessage, a_format, args, StampType::kMessage);
 		va_end(args);
 	}
 
@@ -181,7 +190,7 @@ namespace SKSE
 		if (a_level >= _printLevel) {
 			std::va_list args;
 			va_start(args, a_format);
-			VPrint_Impl(a_level, a_format, args);
+			VPrint_Impl(a_level, a_format, args, static_cast<StampType>(a_level));
 			va_end(args);
 		}
 	}
@@ -195,50 +204,39 @@ namespace SKSE
 	}
 
 
-	RE::BSEventNotifyControl Logger::LogEventHandler::ProcessEvent(const RE::BSScript::LogEvent* a_event, RE::BSTEventSource<RE::BSScript::LogEvent>* a_eventSource)
+	auto Logger::LogEventHandler::ProcessEvent(const RE::BSScript::LogEvent* a_event, RE::BSTEventSource<RE::BSScript::LogEvent>* a_eventSource)
+		-> EventResult
 	{
-		if (!a_event->errorMsg || !std::regex_search(a_event->errorMsg, Logger::_papyrusLogFilter)) {
-			return RE::BSEventNotifyControl::kContinue;
+		if (a_event->errorMsg && std::regex_search(a_event->errorMsg, Logger::_papyrusLogFilter)) {
+			Logger::Print_Impl(Logger::Level::kMessage, a_event->errorMsg, Logger::StampType::kPapyrus);
 		}
 
-		std::string msg;
-
-		if (Logger::_logStamp) {
-			msg += "[PAPYRUS] ";
-		}
-
-		if (Logger::_timeStamp) {
-			msg += Logger::GetTimeStamp();
-		}
-
-		msg += a_event->errorMsg;
-		msg += '\n';
-		Logger::Print(msg.c_str());
-
-#if _DEBUG
-		OutputDebugStringA(msg.c_str());
-#endif
-
-		return RE::BSEventNotifyControl::kContinue;
+		return EventResult::kContinue;
 	}
 
 
-	const char* Logger::GetLogStamp(Level a_level)
+	const char* Logger::GetLogStamp(StampType a_type)
 	{
 		if (_logStamp) {
-			switch (a_level) {
-			case Level::kDebugMessage:
+			switch (a_type) {
+			case StampType::kDebugMessage:
 				return "[DEBUG] ";
-			case Level::kVerboseMessage:
+			case StampType::kVerboseMessage:
 				return "[VERBOSE] ";
-			case Level::kMessage:
+			case StampType::kMessage:
 				return "[MESSAGE] ";
-			case Level::kWarning:
+			case StampType::kWarning:
 				return "[WARNING] ";
-			case Level::kError:
+			case StampType::kError:
 				return "[ERROR] ";
-			case Level::kFatalError:
+			case StampType::kFatalError:
 				return "[FATAL ERROR] ";
+			case StampType::kPapyrus:
+				return "[PAPYRUS] ";
+			case StampType::kTrampoline:
+				return "[TRAMPOLINE] ";
+			default:
+				return "";
 			}
 		}
 
@@ -269,9 +267,16 @@ namespace SKSE
 	}
 
 
-	void Logger::Print_Impl(Level a_level, const char* a_string)
+	void Logger::Print_Impl(Level a_level, const char* a_string, StampType a_type)
 	{
-		_file << GetLogStamp(a_level) << GetTimeStamp() << a_string << '\n';
+		std::ostringstream oss;
+
+		oss << GetLogStamp(a_type) << GetTimeStamp() << a_string << '\n';
+		_file << oss.str().c_str();
+
+#if _DEBUG
+		OutputDebugStringA(oss.str().c_str());
+#endif
 
 		if (a_level >= _flushLevel) {
 			_file.flush();
@@ -279,17 +284,10 @@ namespace SKSE
 	}
 
 
-	void Logger::VPrint_Impl(Level a_level, const char* a_format, std::va_list a_args)
+	void Logger::VPrint_Impl(Level a_level, const char* a_format, std::va_list a_args, StampType a_type)
 	{
-		std::va_list argsCopy;
-		va_copy(argsCopy, a_args);
-
-		std::vector<char> buf(std::vsnprintf(0, 0, a_format, a_args) + 1);
-		std::vsnprintf(buf.data(), buf.size(), a_format, argsCopy);
-
-		va_end(argsCopy);
-
-		Print_Impl(a_level, buf.data());
+		Impl::VArgFormatter fmt(a_format, a_args);
+		Print_Impl(a_level, fmt.c_str(), a_type);
 	}
 
 
@@ -301,28 +299,65 @@ namespace SKSE
 	decltype(Logger::_timeStamp) Logger::_timeStamp = false;
 	decltype(Logger::_fmt24Hour) Logger::_fmt24Hour = true;
 	decltype(Logger::_hookPapyrusLog) Logger::_hookPapyrusLog = false;
+	decltype(Logger::_trackTrampolineStats) Logger::_trackTrampolineStats = false;
 
 
 	namespace Impl
 	{
+		VArgFormatter::VArgFormatter(const char* a_format, ...) :
+			_msg("")
+		{
+			std::va_list args;
+			va_start(args, a_format);
+			DoFormat(a_format, args);
+			va_end(args);
+		}
+
+
+		VArgFormatter::VArgFormatter(const char* a_format, std::va_list a_args) :
+			_msg("")
+		{
+			DoFormat(a_format, a_args);
+		}
+
+
+		std::string VArgFormatter::str() const
+		{
+			return _msg;
+		}
+
+
+		const char* VArgFormatter::c_str() const
+		{
+			return _msg.c_str();
+		}
+
+
+		void VArgFormatter::DoFormat(const char* a_format, std::va_list a_args)
+		{
+			std::va_list argsCopy;
+			va_copy(argsCopy, a_args);
+
+			_msg.resize(std::vsnprintf(0, 0, a_format, a_args));
+			std::vsnprintf(_msg.data(), _msg.size() + 1, a_format, argsCopy);
+
+			va_end(argsCopy);
+		}
+
+
 		void ConsoleLogger::VPrint(const char* a_file, const std::size_t a_line, Logger::Level a_level, const char* a_format, ...)
 		{
 			if (a_level < Logger::_printLevel) {
 				return;
 			}
 
-			std::va_list args1;
-			va_start(args1, a_format);
-			std::va_list args2;
-			va_copy(args2, args1);
-
-			std::vector<char> buf(std::vsnprintf(0, 0, a_format, args1) + 1);
-			va_end(args1);
-			std::vsnprintf(buf.data(), buf.size(), a_format, args2);
-			va_end(args2);
+			std::va_list args;
+			va_start(args, a_format);
+			VArgFormatter fmt(a_format, args);
+			va_end(args);
 
 			std::ostringstream oss;
-			oss << a_file << '(' << a_line << "): " << Logger::GetLogStamp(a_level) << Logger::GetTimeStamp() << buf.data() << '\n';
+			oss << a_file << '(' << a_line << "): " << Logger::GetLogStamp(static_cast<Logger::StampType>(a_level)) << Logger::GetTimeStamp() << fmt.c_str() << '\n';
 			Logger::_file << oss.str().c_str();
 
 			if (a_level >= Logger::_flushLevel) {
@@ -332,6 +367,22 @@ namespace SKSE
 #if _DEBUG
 			OutputDebugStringA(oss.str().c_str());
 #endif
+		}
+
+
+		void TrampolineLogger::LogStats(const Trampoline& a_trampoline)
+		{
+			if (!Logger::_trackTrampolineStats) {
+				return;
+			}
+
+			auto size = a_trampoline._size;
+			auto capacity = a_trampoline._capacity;
+			auto& name = a_trampoline._name;
+
+			auto pct = (static_cast<double>(size) / static_cast<double>(capacity)) * 100.0;
+			VArgFormatter fmt("%s => %zuB / %zuB (%05.2f%%)", name.c_str(), size, capacity, pct);
+			Logger::Print_Impl(Logger::Level::kMessage, fmt.c_str(), Logger::StampType::kTrampoline);
 		}
 	}
 }

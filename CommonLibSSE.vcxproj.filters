@@ -1788,6 +1788,9 @@
     <ClCompile Include="src\RE\GlobalLookupInfo.cpp">
       <Filter>src\RE\Misc</Filter>
     </ClCompile>
+    <ClCompile Include="src\SKSE\Trampoline.cpp">
+      <Filter>src\SKSE</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -5242,6 +5245,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\DetectionPriorities.h">
       <Filter>include\RE\FormComponents\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\Trampoline.h">
+      <Filter>include\SKSE</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

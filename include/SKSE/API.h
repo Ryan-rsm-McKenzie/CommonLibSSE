@@ -1,5 +1,6 @@
 #pragma once
 
+#include "skse64_common/skse_version.h"
 #include "skse64/PapyrusDelayFunctors.h"
 #include "skse64/PapyrusObjects.h"
 #include "skse64/PluginAPI.h"
@@ -9,6 +10,7 @@
 #include "RE/BSTEvent.h"
 #include "SKSE/Events.h"
 #include "SKSE/Interfaces.h"
+#include "SKSE/Trampoline.h"
 
 
 namespace SKSE
@@ -36,6 +38,6 @@ namespace SKSE
 	const SKSEObjectRegistry*			GetObjectRegistry();
 	const SKSEPersistentObjectStorage*	GetPersistentObjectStorage();
 
-	bool	AllocLocalTrampoline(std::size_t a_size);
-	bool	AllocBranchTrampoline(std::size_t a_size);
+	Trampoline* GetTrampoline();
+	bool		AllocTrampoline(std::size_t a_size);
 }

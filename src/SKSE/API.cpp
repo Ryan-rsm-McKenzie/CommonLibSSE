@@ -1,7 +1,5 @@
 #include "SKSE/API.h"
 
-#include "skse64_common/BranchTrampoline.h"
-
 #include <mutex>
 #include <vector>
 
@@ -38,6 +36,8 @@ namespace SKSE
 		SKSEDelayFunctorManager*		g_delayFunctorManager = 0;
 		SKSEObjectRegistry*				g_objectRegistry = 0;
 		SKSEPersistentObjectStorage*	g_persistentObjectStorage = 0;
+
+		Trampoline g_trampoline;
 
 		std::mutex g_apiLock;
 		std::vector<std::function<void()>> g_apiInitRegs;
@@ -280,21 +280,16 @@ namespace SKSE
 	}
 
 
-	bool AllocLocalTrampoline(std::size_t a_size)
+	Trampoline* GetTrampoline()
 	{
-		if (!g_localTrampoline.Create(a_size)) {
-			_ERROR("Local trmapoline creation failed!\n");
-			return false;
-		}
-
-		return true;
+		return &g_trampoline;
 	}
 
 
-	bool AllocBranchTrampoline(std::size_t a_size)
+	bool AllocTrampoline(std::size_t a_size)
 	{
-		if (!g_branchTrampoline.Create(a_size)) {
-			_ERROR("Branch trmapoline creation failed!\n");
+		if (!g_trampoline.Create(a_size)) {
+			_ERROR("Trmapoline creation failed!\n");
 			return false;
 		}
 

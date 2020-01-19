@@ -389,6 +389,7 @@
     <ClCompile Include="src\SKSE\Logger.cpp" />
     <ClCompile Include="src\SKSE\RegistrationMap.cpp" />
     <ClCompile Include="src\SKSE\RegistrationSet.cpp" />
+    <ClCompile Include="src\SKSE\Trampoline.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ForceInclude.h" />
@@ -1540,6 +1541,7 @@
     <ClInclude Include="include\SKSE\RegistrationSet.h" />
     <ClInclude Include="include\SKSE\API.h" />
     <ClInclude Include="include\SKSE\RegistrationTraits.h" />
+    <ClInclude Include="include\SKSE\Trampoline.h" />
     <ClInclude Include="include\Util.h" />
     <ClInclude Include="src\RE\GFxResourceKey.cpp" />
   </ItemGroup>
