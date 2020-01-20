@@ -11,33 +11,35 @@
 namespace RE
 {
 	// scatter table with chaining
-	template <class Key, class T, class Hash = CRC32Hash<Key>, class KeyEqual = std::equal_to<Key>>
-	class BSTHashMap
+	template <class Traits, UInt32 N, template <class, UInt32> class Allocator, class Hash, class KeyEqual>
+	struct BSTScatterTable
 	{
 	public:
-		using key_type = Key;
-		using mapped_type = T;
-		using value_type = BSTTuple<const Key, T>;
+		using traits_type = Traits;
+		using key_type = typename traits_type::key_type;
+		using mapped_type = typename traits_type::mapped_type;
+		using value_type = typename traits_type::value_type;
 		using size_type = UInt32;
 		using hasher = Hash;
 		using key_equal = KeyEqual;
 
 
-		struct Entry
+		struct BSTScatterTableEntry
 		{
-			Entry() :
+		public:
+			BSTScatterTableEntry() :
 				value(),
 				next(0)
 			{}
 
 
-			Entry(const Entry& a_rhs) :
+			BSTScatterTableEntry(const BSTScatterTableEntry& a_rhs) :
 				value(a_rhs.value),
 				next(a_rhs.next)
 			{}
 
 
-			Entry(Entry&& a_rhs) :
+			BSTScatterTableEntry(BSTScatterTableEntry&& a_rhs) :
 				value(std::move(a_rhs.value)),
 				next(std::move(a_rhs.next))
 			{
@@ -45,7 +47,7 @@ namespace RE
 			}
 
 
-			Entry& operator=(const Entry& a_rhs)
+			BSTScatterTableEntry& operator=(const BSTScatterTableEntry& a_rhs)
 			{
 				value = a_rhs.value;
 				next = a_rhs.next;
@@ -53,7 +55,7 @@ namespace RE
 			}
 
 
-			Entry& operator=(Entry&& a_rhs)
+			BSTScatterTableEntry& operator=(BSTScatterTableEntry&& a_rhs)
 			{
 				value = std::move(a_rhs.value);
 
@@ -64,9 +66,13 @@ namespace RE
 			}
 
 
-			value_type value;	// 00
-			Entry* next;		// ??
+			value_type value;			// 00
+			BSTScatterTableEntry* next;	// ??
 		};
+
+
+		using entry_type = BSTScatterTableEntry;
+		using allocator_type = Allocator<entry_type, N>;
 
 
 		template <class U>
@@ -100,7 +106,7 @@ namespace RE
 			}
 
 
-			iterator_base(Entry* a_entry, Entry* a_end) :
+			iterator_base(entry_type* a_entry, entry_type* a_end) :
 				_entry(a_entry),
 				_end(a_end)
 			{
@@ -184,8 +190,8 @@ namespace RE
 			}
 
 		private:
-			Entry* _entry;
-			Entry* _end;
+			entry_type* _entry;
+			entry_type* _end;
 		};
 
 
@@ -193,15 +199,14 @@ namespace RE
 		using const_iterator = iterator_base<const value_type>;
 
 
-		BSTHashMap() :
+		BSTScatterTable() :
 			_pad00(0),
 			_pad08(0),
 			_capacity(0),
 			_freeCount(0),
 			_freeIdx(0),
-			_sentinel((const Entry*)SENTINEL),
-			_pad20(0),
-			_entries(0)
+			_sentinel((const entry_type*)SENTINEL),
+			_allocator()
 		{}
 
 
@@ -210,13 +215,13 @@ namespace RE
 
 		iterator begin()
 		{
-			return _entries ? make_iterator(_entries) : iterator();
+			return get_entries() ? make_iterator(get_entries()) : iterator();
 		}
 
 
 		const_iterator begin() const
 		{
-			return _entries ? make_iterator(_entries) : const_iterator();
+			return get_entries() ? make_iterator(get_entries()) : const_iterator();
 		}
 
 
@@ -228,13 +233,13 @@ namespace RE
 
 		iterator end()
 		{
-			return _entries ? make_iterator(_entries + _capacity) : iterator();
+			return get_entries() ? make_iterator(get_entries() + _capacity) : iterator();
 		}
 
 
 		const_iterator end() const
 		{
-			return _entries ? make_iterator(_entries + _capacity) : const_iterator();
+			return get_entries() ? make_iterator(get_entries() + _capacity) : const_iterator();
 		}
 
 
@@ -246,13 +251,19 @@ namespace RE
 
 		[[nodiscard]] bool empty() const
 		{
-			return !_entries || _freeCount == 0;
+			return !get_entries() || _freeCount == 0;
 		}
 
 
 		size_type size() const
 		{
 			return _capacity - _freeCount;
+		}
+
+		
+		size_type max_size() const
+		{
+			return _allocator.max_size();
 		}
 
 
@@ -270,7 +281,7 @@ namespace RE
 
 		size_type erase(const key_type& a_key)
 		{
-			if (!_entries) {	// no entries
+			if (!get_entries()) {	// no entries
 				return 0;
 			}
 
@@ -279,8 +290,8 @@ namespace RE
 				return 0;
 			}
 
-			Entry* tail = 0;
-			while (!comp_key(entry->value.first, a_key)) {	// find key in table
+			entry_type* tail = 0;
+			while (!comp_key(get_key(entry->value), a_key)) {	// find key in table
 				tail = entry;
 				entry = entry->next;
 				if (entry == _sentinel) {
@@ -296,7 +307,7 @@ namespace RE
 				}
 				entry->next = 0;
 			} else {	// else move next entry into current
-				new(entry) Entry(std::move(*entry->next));
+				new(entry) entry_type(std::move(*entry->next));
 			}
 
 			++_freeCount;
@@ -304,14 +315,14 @@ namespace RE
 		}
 
 
-		iterator find(const Key& a_key)
+		iterator find(const key_type& a_key)
 		{
 			auto entry = find_impl(a_key);
 			return entry ? make_iterator(entry) : end();
 		}
 
 
-		const_iterator find(const Key& a_key) const
+		const_iterator find(const key_type& a_key) const
 		{
 			auto entry = find_impl(a_key);
 			return entry ? make_iterator(entry) : end();
@@ -336,9 +347,9 @@ namespace RE
 		}
 
 	private:
-		Entry* find_impl(const Key& a_key) const
+		entry_type* find_impl(const key_type& a_key) const
 		{
-			if (!_entries) {
+			if (!get_entries()) {
 				return 0;
 			}
 
@@ -348,7 +359,7 @@ namespace RE
 			}
 
 			do {
-				if (comp_key(probe->value.first, a_key)) {
+				if (comp_key(get_key(probe->value), a_key)) {
 					return probe;
 				} else {
 					probe = probe->next;
@@ -362,28 +373,28 @@ namespace RE
 		template <class Arg>
 		std::pair<iterator, bool> insert_impl(Arg&& a_value)
 		{
-			if (!_entries || !_freeCount) {
+			if (!get_entries() || !_freeCount) {
 				if (!grow()) {
 					return std::make_pair(end(), false);
 				}
 			}
 
-			auto idealEntry = calc_pos(a_value.first);
+			auto idealEntry = calc_pos(get_key(a_value));
 			if (!idealEntry->next) {	// if slot empty
 				new(std::addressof(idealEntry->value)) value_type(std::forward<Arg>(a_value));
-				idealEntry->next = const_cast<Entry*>(_sentinel);
+				idealEntry->next = const_cast<entry_type*>(_sentinel);
 				return std::make_pair(make_iterator(idealEntry), true);
 			}
 
 			for (auto iter = idealEntry; iter != _sentinel; iter = iter->next) {
-				if (comp_key(iter->value.first, a_value.first)) {	// if entry already in table
+				if (comp_key(get_key(iter->value), get_key(a_value))) {	// if entry already in table
 					return std::make_pair(make_iterator(iter), false);
 				}
 			}
 
 			auto freeEntry = get_free_entry();
 
-			auto takenIdealEntry = calc_pos(idealEntry->value.first);
+			auto takenIdealEntry = calc_pos(get_key(idealEntry->value));
 			if (takenIdealEntry == idealEntry) {	// if entry occupying our slot would've hashed here anyway
 				freeEntry->next = idealEntry->next;
 				idealEntry->next = freeEntry;
@@ -400,49 +411,49 @@ namespace RE
 			freeEntry->next = idealEntry->next;
 			takenIdealEntry->next = freeEntry;
 			new(std::addressof(idealEntry->value)) value_type(std::forward<Arg>(a_value));
-			idealEntry->next = const_cast<Entry*>(_sentinel);
+			idealEntry->next = const_cast<entry_type*>(_sentinel);
 			return std::make_pair(make_iterator(idealEntry), true);
 		}
 
 
-		iterator make_iterator(Entry* a_entry)
+		iterator make_iterator(entry_type* a_entry)
 		{
-			return iterator(a_entry, _entries + _capacity);
+			return iterator(a_entry, get_entries() + _capacity);
 		}
 
 
-		const_iterator make_iterator(Entry* a_entry) const
+		const_iterator make_iterator(entry_type* a_entry) const
 		{
-			return const_iterator(a_entry, _entries + _capacity);
+			return const_iterator(a_entry, get_entries() + _capacity);
 		}
 
 
-		UInt32 calc_hash(const Key& a_key) const
+		UInt32 calc_hash(const key_type& a_key) const
 		{
 			hasher h;
 			return h(a_key);
 		}
 
 
-		UInt32 calc_idx(const Key& a_key) const
+		UInt32 calc_idx(const key_type& a_key) const
 		{
 			return calc_hash(a_key) & (_capacity - 1);	// capacity is always a factor of 2, so this is a faster modulo
 		}
 
 
-		Entry* calc_pos(const Key& a_key) const
+		entry_type* calc_pos(const key_type& a_key) const
 		{
-			return const_cast<Entry*>(_entries + calc_idx(a_key));
+			return const_cast<entry_type*>(get_entries() + calc_idx(a_key));
 		}
 
 
 		// assumes not empty
-		Entry* get_free_entry()
+		entry_type* get_free_entry()
 		{
-			Entry* entry = 0;
+			entry_type* entry = 0;
 			do {
 				_freeIdx = (_capacity - 1) & (_freeIdx - 1);
-				entry = _entries + _freeIdx;
+				entry = get_entries() + _freeIdx;
 			} while (entry->next);
 
 			--_freeCount;
@@ -450,7 +461,7 @@ namespace RE
 		}
 
 
-		bool comp_key(const Key& a_lhs, const Key& a_rhs) const
+		bool comp_key(const key_type& a_lhs, const key_type& a_rhs) const
 		{
 			key_equal eq;
 			return eq(a_lhs, a_rhs);
@@ -459,553 +470,259 @@ namespace RE
 
 		bool grow()
 		{
-			if (_capacity == 1 << 31) {
+			if (_capacity == (UInt32)1 << 31) {
 				return false;
 			}
 
-			UInt32 newCapacity = _capacity ? _capacity << 1 : MIN_CAP;
-			grow(newCapacity);
-			return true;
+			UInt32 newCapacity = _capacity ? _capacity << 1 : min_size();
+			return grow(newCapacity);
 		}
 
 
-		void grow(UInt32 a_newCapacity)
+		bool grow(UInt32 a_newCapacity)
 		{
-			auto oldEntries = _entries;
-			iterator begIter = begin();
-			iterator endIter = end();
+			auto oldEntries = get_entries();
+			auto begIter = begin();
+			auto endIter = end();
 
-			auto newEntriesSize = sizeof(Entry) * a_newCapacity;
-			auto newEntries = malloc<Entry>(newEntriesSize);
-			std::memset(newEntries, 0, newEntriesSize);
+			auto newEntries = allocate(a_newCapacity);
+			if (!newEntries) {
+				return false;
+			} else if (newEntries == oldEntries) {
+				_capacity = a_newCapacity;
+				return true;
+			} else {
+				_capacity = a_newCapacity;
+				_freeCount = a_newCapacity;
+				_freeIdx = a_newCapacity;
+				set_entries(newEntries);
 
-			_capacity = a_newCapacity;
-			_freeCount = a_newCapacity;
-			_freeIdx = a_newCapacity;
-			_entries = newEntries;
+				while (begIter != endIter) {
+					insert(std::move(*begIter));
+					++begIter;
+				}
 
-			while (begIter != endIter) {
-				insert(std::move(*begIter));
-				++begIter;
+				deallocate(oldEntries);
+				return true;
 			}
+		}
 
-			free(oldEntries);
+
+		const key_type& get_key(const value_type& a_value) const
+		{
+			traits_type traits;
+			return traits(a_value);
+		}
+
+
+		entry_type* allocate(std::size_t a_num)
+		{
+			return _allocator.allocate(a_num);
+		}
+
+
+		void deallocate(entry_type* a_ptr)
+		{
+			_allocator.deallocate(a_ptr);
+		}
+
+
+		entry_type* get_entries() const
+		{
+			return _allocator.get_entries();
+		}
+
+
+		void set_entries(entry_type* a_entries)
+		{
+			_allocator.set_entries(a_entries);
+		}
+
+
+		size_type min_size() const
+		{
+			return _allocator.min_size();
 		}
 
 
 		static constexpr UInt8 SENTINEL[] = { (UInt8)0xDE, (UInt8)0xAD, (UInt8)0xBE, (UInt8)0xEF };
-		static constexpr UInt32 MIN_CAP = 1 << 3;
 
 
 		// members
-		UInt64			_pad00;		// 00
-		UInt32			_pad08;		// 08
-		UInt32			_capacity;	// 0C - this must be 2^n, or else terrible things will happen
-		UInt32			_freeCount;	// 10
-		UInt32			_freeIdx;	// 14
-		const Entry*	_sentinel;	// 18
-		UInt64			_pad20;		// 20
-		Entry*			_entries;	// 28
+		UInt64				_pad00;		// 00
+		UInt32				_pad08;		// 08
+		UInt32				_capacity;	// 0C - this must be 2^n, or else terrible things will happen
+		UInt32				_freeCount;	// 10
+		UInt32				_freeIdx;	// 14
+		const entry_type*	_sentinel;	// 18
+		allocator_type		_allocator;	// 20
 	};
-	STATIC_ASSERT(sizeof(BSTHashMap<UInt32, void*>) == 0x30);
 
 
-	// scatter table with chaining
-	template <class Key, class Hash = CRC32Hash<Key>, class KeyEqual = std::equal_to<Key>>
-	class BSTSet
+	template <class Key, class T>
+	struct BSTScatterTableTraits
 	{
 	public:
 		using key_type = Key;
-		using value_type = Key;
+		using mapped_type = T;
+		using value_type = BSTTuple<const Key, T>;
+
+
+		const key_type& operator()(const value_type& a_value) const
+		{
+			return a_value.first;
+		}
+	};
+
+
+	template <class T, UInt32 N = 8>
+	struct BSTScatterTableHeapAllocator
+	{
+	public:
+		using entry_type = T;
 		using size_type = UInt32;
-		using hasher = Hash;
-		using key_equal = KeyEqual;
 
 
-		struct Entry
-		{
-			Entry() :
-				value(),
-				next(0)
-			{}
-
-
-			Entry(const Entry& a_rhs) :
-				value(a_rhs.value),
-				next(a_rhs.next)
-			{}
-
-
-			Entry(Entry&& a_rhs) :
-				value(std::move(a_rhs.value)),
-				next(std::move(a_rhs.next))
-			{
-				a_rhs.next = 0;
-			}
-
-
-			Entry& operator=(const Entry& a_rhs)
-			{
-				value = a_rhs.value;
-				next = a_rhs.next;
-				return *this;
-			}
-
-
-			Entry& operator=(Entry&& a_rhs)
-			{
-				value = std::move(a_rhs.value);
-
-				next = std::move(a_rhs.next);
-				a_rhs.next = 0;
-
-				return *this;
-			}
-
-
-			value_type value;	// 00
-			Entry* next;		// ??
-		};
-
-
-		template <class U>
-		struct iterator_base
-		{
-		public:
-			using difference_type = std::ptrdiff_t;
-			using value_type = U;
-			using pointer = U *;
-			using reference = U &;
-			using iterator_category = std::forward_iterator_tag;
-
-
-			iterator_base() :
-				_entry(0),
-				_end(0)
-			{}
-
-
-			iterator_base(const iterator_base& a_rhs) :
-				_entry(a_rhs._entry),
-				_end(a_rhs._end)
-			{}
-
-
-			iterator_base(iterator_base&& a_rhs) :
-				_entry(std::move(a_rhs._entry)),
-				_end(a_rhs._end)
-			{
-				a_rhs._entry = a_rhs._end;
-			}
-
-
-			iterator_base(Entry* a_entry, Entry* a_end) :
-				_entry(a_entry),
-				_end(a_end)
-			{
-				while (_entry != _end && !_entry->next) {
-					++_entry;
-				}
-			}
-
-
-			~iterator_base()
-			{}
-
-
-			iterator_base& operator=(const iterator_base& a_rhs)
-			{
-				assert(_end == a_rhs._end);
-				_entry = a_rhs._entry;
-			}
-
-
-			iterator_base& operator=(iterator_base&& a_rhs)
-			{
-				assert(_end == a_rhs._end);
-				_entry = std::move(a_rhs._entry);
-				a_rhs._entry = a_rhs._end;
-			}
-
-
-			void swap(iterator_base& a_rhs)
-			{
-				assert(_end == a_rhs._end);
-				std::swap(_entry, a_rhs._entry);
-			}
-
-
-			[[nodiscard]] reference operator*() const
-			{
-				assert(_entry != _end);
-				return _entry->value;
-			}
-
-
-			[[nodiscard]] pointer operator->() const
-			{
-				assert(_entry != _end);
-				return std::addressof(_entry->value);
-			}
-
-
-			[[nodiscard]] bool operator==(const iterator_base& a_rhs) const
-			{
-				assert(_end == a_rhs._end);
-				return _entry == a_rhs._entry;
-			}
-
-
-			[[nodiscard]] bool operator!=(const iterator_base& a_rhs) const
-			{
-				assert(_end == a_rhs._end);
-				return !operator==(a_rhs);
-			}
-
-
-			// prefix
-			iterator_base& operator++()
-			{
-				assert(_entry != _end);
-				do {
-					++_entry;
-				} while (_entry != _end && !_entry->next);
-				return *this;
-			}
-
-
-			// postfix
-			iterator_base operator++(int)
-			{
-				iterator_base tmp{ *this };
-				operator++();
-				return tmp;
-			}
-
-		private:
-			Entry* _entry;
-			Entry* _end;
-		};
-
-
-		using iterator = iterator_base<value_type>;
-		using const_iterator = iterator_base<const value_type>;
-
-
-		BSTSet() :
+		BSTScatterTableHeapAllocator() :
 			_pad00(0),
-			_pad08(0),
-			_capacity(0),
-			_freeCount(0),
-			_freeIdx(0),
-			_sentinel((const Entry*)SENTINEL),
-			_pad20(0),
 			_entries(0)
 		{}
 
 
-		TES_HEAP_REDEFINE_NEW();
-
-
-		iterator begin()
+		entry_type* allocate(std::size_t a_num)
 		{
-			return _entries ? make_iterator(_entries) : iterator();
+			auto size = a_num * sizeof(entry_type);
+			auto mem = malloc<entry_type>(size);
+			std::memset(mem, 0, size);
+			return mem;
 		}
 
 
-		const_iterator begin() const
+		void deallocate(entry_type* a_ptr)
 		{
-			return _entries ? make_iterator(_entries) : const_iterator();
+			free(a_ptr);
 		}
 
 
-		const_iterator cbegin() const
+		entry_type* get_entries() const
 		{
-			return begin();
+			return _entries;
 		}
 
 
-		iterator end()
+		void set_entries(entry_type* a_entries)
 		{
-			return _entries ? make_iterator(_entries + _capacity) : iterator();
+			_entries = a_entries;
 		}
 
 
-		const_iterator end() const
+		size_type min_size() const
 		{
-			return _entries ? make_iterator(_entries + _capacity) : const_iterator();
+			return static_cast<size_type>(1) << 3;
 		}
 
 
-		const_iterator cend() const
+		size_type max_size() const
 		{
-			return end();
-		}
-
-
-		[[nodiscard]] bool empty() const
-		{
-			return !_entries || _freeCount == 0;
-		}
-
-
-		size_type size() const
-		{
-			return _capacity - _freeCount;
-		}
-
-
-		std::pair<iterator, bool> insert(const value_type& a_value)
-		{
-			return insert_impl(a_value);
-		}
-
-
-		std::pair<iterator, bool> insert(value_type&& a_value)
-		{
-			return insert_impl(std::move(a_value));
-		}
-
-
-		size_type erase(const key_type& a_key)
-		{
-			if (!_entries) {	// no entries
-				return 0;
-			}
-
-			auto entry = calc_pos(a_key);
-			if (!entry->next) {	// key not in table
-				return 0;
-			}
-
-			Entry* tail = 0;
-			while (!comp_key(entry->value, a_key)) {	// find key in table
-				tail = entry;
-				entry = entry->next;
-				if (entry == _sentinel) {
-					return 0;
-				}
-			}
-
-			entry->value.~value_type();
-
-			if (entry->next == _sentinel) {	// if no chain
-				if (tail) {
-					tail->next = _sentinel;
-				}
-				entry->next = 0;
-			} else {	// else move next entry into current
-				new(entry) Entry(std::move(*entry->next));
-			}
-
-			++_freeCount;
-			return 1;
-		}
-
-
-		iterator find(const Key& a_key)
-		{
-			auto entry = find_impl(a_key);
-			return entry ? make_iterator(entry) : end();
-		}
-
-
-		const_iterator find(const Key& a_key) const
-		{
-			auto entry = find_impl(a_key);
-			return entry ? make_iterator(entry) : end();
-		}
-
-
-		void reserve(size_type a_count)
-		{
-			if (a_count <= _capacity) {
-				return;
-			}
-
-			constexpr auto TOP = static_cast<UInt32>(1 << 31);
-			UInt32 leftShifts = 0;
-			while ((a_count & TOP) == 0) {
-				a_count <<= 1;
-				++leftShifts;
-			}
-			auto bitPos = 31 - leftShifts;
-			auto newCount = static_cast<UInt32>(1 << bitPos);
-			grow(newCount);
+			return static_cast<size_type>(1) << 31;
 		}
 
 	private:
-		Entry* find_impl(const Key& a_key) const
-		{
-			if (!_entries) {
-				return 0;
-			}
-
-			auto probe = calc_pos(a_key);	// try ideal pos
-			if (!probe->next) {
-				return 0;	// nothing there
-			}
-
-			do {
-				if (comp_key(probe->value, a_key)) {
-					return probe;
-				} else {
-					probe = probe->next;
-				}
-			} while (probe != _sentinel);	// follow chain
-
-			return 0;
-		}
-
-
-		template <class Arg>
-		std::pair<iterator, bool> insert_impl(Arg&& a_value)
-		{
-			if (!_entries || !_freeCount) {
-				if (!grow()) {
-					return std::make_pair(end(), false);
-				}
-			}
-
-			auto idealEntry = calc_pos(a_value);
-			if (!idealEntry->next) {	// if slot empty
-				new(std::addressof(idealEntry->value)) value_type(std::forward<Arg>(a_value));
-				idealEntry->next = const_cast<Entry*>(_sentinel);
-				return std::make_pair(make_iterator(idealEntry), true);
-			}
-
-			for (auto iter = idealEntry; iter != _sentinel; iter = iter->next) {
-				if (comp_key(iter->value, a_value)) {	// if entry already in table
-					return std::make_pair(make_iterator(iter), false);
-				}
-			}
-
-			auto freeEntry = get_free_entry();
-
-			auto takenIdealEntry = calc_pos(idealEntry->value);
-			if (takenIdealEntry == idealEntry) {	// if entry occupying our slot would've hashed here anyway
-				freeEntry->next = idealEntry->next;
-				idealEntry->next = freeEntry;
-				new(std::addressof(freeEntry->value)) value_type(std::forward<Arg>(a_value));
-				return std::make_pair(make_iterator(freeEntry), true);
-			}
-
-			while (takenIdealEntry->next != idealEntry) {	// find entry that links here
-				takenIdealEntry = takenIdealEntry->next;
-			}
-
-			// move taken slot out, so we can move in
-			new(std::addressof(freeEntry->value)) value_type(std::move(idealEntry->value));
-			freeEntry->next = idealEntry->next;
-			takenIdealEntry->next = freeEntry;
-			new(std::addressof(idealEntry->value)) value_type(std::forward<Arg>(a_value));
-			idealEntry->next = const_cast<Entry*>(_sentinel);
-			return std::make_pair(make_iterator(idealEntry), true);
-		}
-
-
-		iterator make_iterator(Entry* a_entry)
-		{
-			return iterator(a_entry, _entries + _capacity);
-		}
-
-
-		const_iterator make_iterator(Entry* a_entry) const
-		{
-			return const_iterator(a_entry, _entries + _capacity);
-		}
-
-
-		UInt32 calc_hash(const Key& a_key) const
-		{
-			hasher h;
-			return h(a_key);
-		}
-
-
-		UInt32 calc_idx(const Key& a_key) const
-		{
-			return calc_hash(a_key) & (_capacity - 1);	// capacity is always a factor of 2, so this is a faster modulo
-		}
-
-
-		Entry* calc_pos(const Key& a_key) const
-		{
-			return const_cast<Entry*>(_entries + calc_idx(a_key));
-		}
-
-
-		Entry* get_free_entry()
-		{
-			Entry* entry = 0;
-			do {
-				_freeIdx = (_capacity - 1) & (_freeIdx - 1);
-				entry = _entries + _freeIdx;
-			} while (entry->next);
-
-			--_freeCount;
-			return entry;
-		}
-
-
-		bool comp_key(const Key& a_lhs, const Key& a_rhs) const
-		{
-			key_equal eq;
-			return eq(a_lhs, a_rhs);
-		}
-
-
-		bool grow()
-		{
-			if (_capacity == 1 << 31) {
-				return false;
-			}
-
-			UInt32 newCapacity = _capacity ? _capacity << 1 : MIN_CAP;
-			grow(newCapacity);
-			return true;
-		}
-
-
-		void grow(UInt32 a_newCapacity)
-		{
-			auto oldEntries = _entries;
-			iterator begIter = begin();
-			iterator endIter = end();
-
-			auto newEntriesSize = sizeof(Entry) * a_newCapacity;
-			auto newEntries = malloc<Entry>(newEntriesSize);
-			std::memset(newEntries, 0, newEntriesSize);
-
-			_capacity = a_newCapacity;
-			_freeCount = a_newCapacity;
-			_freeIdx = a_newCapacity;
-			_entries = newEntries;
-
-			while (begIter != endIter) {
-				insert(std::move(*begIter));
-				++begIter;
-			}
-
-			free(oldEntries);
-		}
-
-
-		static constexpr UInt8 SENTINEL[] = { (UInt8)0xDE, (UInt8)0xAD, (UInt8)0xBE, (UInt8)0xEF };
-		static constexpr UInt32 MIN_CAP = 1 << 3;
-
-
 		// members
-		UInt64			_pad00;		// 00
-		UInt32			_pad08;		// 08
-		UInt32			_capacity;	// 0C - this must be 2^n, or else terrible things will happen
-		UInt32			_freeCount;	// 10
-		UInt32			_freeIdx;	// 14
-		const Entry*	_sentinel;	// 18
-		UInt64			_pad20;		// 20
-		Entry*			_entries;	// 28
+		UInt64		_pad00;		// 00 (20)
+		entry_type*	_entries;	// 08 (28)
 	};
+	STATIC_ASSERT(sizeof(BSTScatterTableHeapAllocator<void*, 8>) == 0x10);
+
+
+	template <class Key, class T, class Hash = CRC32Hash<Key>, class KeyEqual = std::equal_to<Key>>
+	using BSTHashMap = BSTScatterTable<BSTScatterTableTraits<Key, T>, 8, BSTScatterTableHeapAllocator, Hash, KeyEqual>;
+	STATIC_ASSERT(sizeof(BSTHashMap<UInt32, void*>) == 0x30);
+
+
+	template <class Key>
+	struct BSTSetTraits
+	{
+	public:
+		using key_type = Key;
+		using mapped_type = void;
+		using value_type = Key;
+
+
+		const key_type& operator()(const value_type& a_value) const
+		{
+			return a_value;
+		}
+	};
+
+
+	template <class Key, class Hash = CRC32Hash<Key>, class KeyEqual = std::equal_to<Key>>
+	using BSTSet = BSTScatterTable<BSTSetTraits<Key>, 8, BSTScatterTableHeapAllocator, Hash, KeyEqual>;
 	STATIC_ASSERT(sizeof(BSTSet<UInt32, void*>) == 0x30);
+
+
+	struct BSTStaticHashMapBase
+	{
+	public:
+		template <class T, UInt32 N>
+		struct Allocator
+		{
+		public:
+			using entry_type = T;
+			using size_type = UInt32;
+
+
+			Allocator() :
+				_data{ 0 },
+				_entries(_data)
+			{}
+
+
+			entry_type* allocate(std::size_t a_num)
+			{
+				return a_num <= N ? _data : 0;
+			}
+
+
+			void deallocate(entry_type* a_ptr)
+			{
+				return;
+			}
+
+
+			entry_type* get_entries() const
+			{
+				return _entries;
+			}
+
+
+			void set_entries(entry_type* a_entries)
+			{
+				_entries = a_entries;
+			}
+
+
+			size_type min_size() const
+			{
+				return 1;
+			}
+
+
+			size_type max_size() const
+			{
+				return N;
+			}
+
+		private:
+			// members
+			entry_type	_data[N];	// 00 (20)
+			entry_type*	_entries;	// ?? (??)
+		};
+	};
+
+
+	template <class Key, class T, UInt32 N, class Hash = CRC32Hash<Key>, class KeyEqual = std::equal_to<Key>>
+	using BSTStaticHashMap = BSTScatterTable<BSTScatterTableTraits<Key, T>, N, BSTStaticHashMapBase::Allocator, Hash, KeyEqual>;
 
 
 	using UnkKey = UInt64;
@@ -1040,4 +757,155 @@ namespace RE
 	//	| | +-- -
 	// | +-- -
 	//	+-- -
+
+
+#if 0
+	namespace TODO
+	{
+		template <class Traits>
+		struct BSTScatterTableKernel :
+			public Traits,
+			public Traits::hasher
+		{
+		public:
+			using traits_type = Traits;
+			using hasher = typename traits_type::hasher;
+			using allocator_type = typename traits_type::allocator_type;
+			using entry_type = typename allocator_type::value_type;
+
+
+			// members
+			UInt32				_capacity;	// ?? (0C) - this must be 2^n, or else terrible things will happen
+			UInt32				_freeCount;	// ?? (10)
+			UInt32				_freeIdx;	// ?? (14)
+			const entry_type*	_sentinel;	// ?? (18)
+		};
+
+
+		template <class Key, class T>
+		struct BSTScatterTableDefaultKVStorage
+		{
+		public:
+			// members
+			Key first;	// 00
+			T second;	// ??
+		};
+
+
+		template <class Key, class T, template <class, class> class Storage>
+		struct BSTScatterTableEntry : public Storage<Key, T>
+		{
+		public:
+			using base = Storage<Key, T>;
+			using value_type = Storage<const Key, T>;
+
+
+			// members
+			BSTScatterTableEntry* next;	// ??
+		};
+
+
+		template <class Key>
+		struct BSTScatterTableDefaultHashPolicy
+		{
+		public:
+			UInt32 operator()(const Key& a_key) const
+			{
+				return CRC32Hash<Key>()(a_key);
+			}
+		};
+
+
+		template <class T>
+		struct BSTScatterTableHeapAllocator
+		{
+		public:
+			using entry_type = T;
+		};
+
+
+		template <class Key, class T, class Storage, class Hash, class Allocator, UInt32 N>
+		struct BSTScatterTableTraits
+		{
+		public:
+			using key_type = Key;
+			using mapped_type = T;
+			using hasher = Hash;
+			using allocator_type = Allocator;
+			using entry_type = typename allocator_type::entry_type;
+			using value_type = typename entry_type::value_type;
+		};
+
+
+		template <class Traits>
+		struct BSTScatterTableBase :
+			public BSTScatterTableKernel<Traits>,
+			public Traits::allocator_type
+		{
+		public:
+			using kernel_type = BSTScatterTableKernel<Traits>;
+			using traits_type = Traits;
+
+			using key_type = typename traits_type::key_type;
+			using mapped_type = typename traits_type::mapped_type;
+			using value_type = typename traits_type::value_type;
+			using size_type = UInt32;
+			using hasher = Hash;
+			using key_equal = KeyEqual;
+			using allocator_type = typename traits_type::allocator_type;
+
+			using entry_type = typename traits_type::entry_type;
+
+
+			// members
+			entry_type* _entries;	// ?? (28)
+		};
+
+
+		template <class Key, class T, class Storage, class Hash, class Allocator, UInt32 N>
+		struct BSTScatterTable :
+			public BSTScatterTableBase<BSTScatterTableTraits<Key, T, Storage, Hash, Allocator, N>>
+		{
+		public:
+			using base = BSTScatterTableBase<BSTScatterTableTraits<Key, T, Storage, Hash, Allocator, N>>;
+			using traits_type = typename base::traits_type;
+		};
+
+
+		template <class Key, class T>
+		struct BSTDefaultScatterTable :
+			public BSTScatterTable<Key, T, BSTScatterTableDefaultKVStorage, BSTScatterTableDefaultHashPolicy, BSTScatterTableHeapAllocator, 8>
+		{
+		public:
+			using base = BSTScatterTable<Key, T, BSTScatterTableDefaultKVStorage, BSTScatterTableDefaultHashPolicy, BSTScatterTableHeapAllocator, 8>;
+			using traits_type = typename base::traits_type;
+		};
+
+
+		template <class Key, class T, class Table>
+		struct BSTHashMapTraits
+		{
+		public:
+			using table_type = Table;
+		};
+
+
+		template <class Traits>
+		struct BSTHashMapBase :
+			public Traits,
+			public Traits::table_type
+		{
+		public:
+		};
+
+
+		template <class Key, class T, template <class, class> class Table = BSTDefaultScatterTable>
+		class BSTHashMap :
+			public BSTHashMapBase<BSTHashMapTraits<Key, T, Table<Key, T>>>
+		{
+		public:
+		};
+		STATIC_ASSERT(sizeof(BSTHashMap<UInt32, void*>) == 0x30);
+	}
+#endif
 }

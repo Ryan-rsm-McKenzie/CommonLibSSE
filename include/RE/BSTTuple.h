@@ -4,7 +4,7 @@
 namespace RE
 {
 	template <class T1, class T2>
-	class BSTTuple
+	struct BSTTuple
 	{
 	public:
 		using first_type = T1;
