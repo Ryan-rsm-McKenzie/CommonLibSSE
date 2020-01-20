@@ -1,6 +1,5 @@
 #pragma once
 
-#include <atomic>
 #include <mutex>
 #include <string>
 
@@ -27,7 +26,7 @@ namespace SKSE
 		bool Create(std::size_t a_size);
 		bool Create(std::size_t a_size, void* a_module);
 
-		void SetTrampoline(void* a_trampoline, std::size_t a_size);
+		void SetTrampoline(void* a_trampoline, std::size_t a_size, bool a_takeOwnership = false);
 
 		[[nodiscard]] void* Allocate(std::size_t a_size);
 		template <class T> [[nodiscard]] T* Allocate() { return static_cast<T*>(Allocate(sizeof(T))); }
@@ -61,19 +60,26 @@ namespace SKSE
 		[[nodiscard]] void* StartAlloc_Impl();
 		void EndAlloc_Impl(std::size_t a_size);
 
-		bool Write5Branch_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_modrm);
+		[[nodiscard]] std::size_t Capacity_Impl() const;
+		[[nodiscard]] std::size_t AllocatedSize_Impl() const;
+		[[nodiscard]] std::size_t FreeSize_Impl() const;
+
+		bool Write5Branch_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_opcode);
 		bool Write6Branch_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_modrm);
 
 		void LogStats() const;
+		void TryRelease();
+		bool IsDisplacementInRange(std::ptrdiff_t a_disp) const;
 
 
-		static constexpr auto ALLOC_END_TAG = static_cast<std::size_t>(0);
+		static constexpr auto END_ALLOC_TAG = static_cast<std::size_t>(0);
 
 		mutable Lock _lock;
 		std::string _name;
-		std::atomic_bool _allocating;
 		std::uint8_t* _data;
 		std::size_t _capacity;
 		std::size_t _size;
+		bool _allocating;
+		bool _freeAlloc;
 	};
 }

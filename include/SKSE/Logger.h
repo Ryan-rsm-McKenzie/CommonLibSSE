@@ -10,6 +10,7 @@
 #include <regex>
 #include <string>
 #include <utility>
+#include <vector>
 
 #include "RE/BSScript/LogEvent.h"
 #include "RE/BSTEvent.h"
@@ -139,6 +140,9 @@ namespace SKSE
 			VArgFormatter(const char* a_format, ...);
 			VArgFormatter(const char* a_format, std::va_list a_args);
 
+			void operator()(const char* a_format, ...);
+			void operator()(const char* a_format, std::va_list a_args);
+
 			std::string str() const;
 			const char* c_str() const;
 
@@ -146,7 +150,7 @@ namespace SKSE
 			void DoFormat(const char* a_format, std::va_list a_args);
 
 
-			std::string _msg;
+			std::vector<char> _buf;
 		};
 
 

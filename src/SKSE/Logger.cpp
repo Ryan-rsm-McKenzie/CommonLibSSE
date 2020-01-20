@@ -305,7 +305,7 @@ namespace SKSE
 	namespace Impl
 	{
 		VArgFormatter::VArgFormatter(const char* a_format, ...) :
-			_msg("")
+			_buf()
 		{
 			std::va_list args;
 			va_start(args, a_format);
@@ -315,7 +315,22 @@ namespace SKSE
 
 
 		VArgFormatter::VArgFormatter(const char* a_format, std::va_list a_args) :
-			_msg("")
+			_buf()
+		{
+			DoFormat(a_format, a_args);
+		}
+
+
+		void VArgFormatter::operator()(const char* a_format, ...)
+		{
+			std::va_list args;
+			va_start(args, a_format);
+			DoFormat(a_format, args);
+			va_end(args);
+		}
+
+
+		void VArgFormatter::operator()(const char* a_format, std::va_list a_args)
 		{
 			DoFormat(a_format, a_args);
 		}
@@ -323,13 +338,13 @@ namespace SKSE
 
 		std::string VArgFormatter::str() const
 		{
-			return _msg;
+			return c_str();
 		}
 
 
 		const char* VArgFormatter::c_str() const
 		{
-			return _msg.c_str();
+			return _buf.data();
 		}
 
 
@@ -338,8 +353,8 @@ namespace SKSE
 			std::va_list argsCopy;
 			va_copy(argsCopy, a_args);
 
-			_msg.resize(std::vsnprintf(0, 0, a_format, a_args));
-			std::vsnprintf(_msg.data(), _msg.size() + 1, a_format, argsCopy);
+			_buf.resize(std::vsnprintf(0, 0, a_format, a_args) + 1);
+			std::vsnprintf(_buf.data(), _buf.size(), a_format, argsCopy);
 
 			va_end(argsCopy);
 		}

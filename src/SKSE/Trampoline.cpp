@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <cstdlib>
+#include <cstring>
 #include <limits>
 
 #include "skse64_common/SafeWrite.h"
@@ -57,16 +58,20 @@ namespace SKSE
 
 		_size = std::move(a_rhs._size);
 		a_rhs._size = 0;
+
+		_freeAlloc = std::move(a_rhs._freeAlloc);
+		a_rhs._freeAlloc = false;
 	}
 
 
 	Trampoline::Trampoline(std::string_view a_name) :
 		_lock(),
 		_name(a_name),
-		_allocating(false),
 		_data(0),
 		_capacity(0),
-		_size(0)
+		_size(0),
+		_allocating(false),
+		_freeAlloc(false)
 	{}
 
 
@@ -89,6 +94,9 @@ namespace SKSE
 
 		_size = std::move(a_rhs._size);
 		a_rhs._size = 0;
+
+		_freeAlloc = std::move(a_rhs._freeAlloc);
+		a_rhs._freeAlloc = false;
 
 		return *this;
 	}
@@ -120,26 +128,28 @@ namespace SKSE
 			return false;
 		}
 
-		SetTrampoline(mem, a_size);
+		SetTrampoline(mem, a_size, true);
 		return true;
 	}
 
 
-	void Trampoline::SetTrampoline(void* a_trampoline, std::size_t a_size)
+	void Trampoline::SetTrampoline(void* a_trampoline, std::size_t a_size, bool a_takeOwnership)
 	{
 		constexpr auto INT3 = static_cast<std::uint8_t>(0xCC);
 
 		auto trampoline = static_cast<std::uint8_t*>(a_trampoline);
 		if (trampoline) {
-			for (std::size_t i = 0; i < a_size; ++i) {
-				trampoline[i] = INT3;
-			}
+			std::memset(trampoline, INT3, a_size);
 		}
 
 		Locker locker(_lock);
+
+		TryRelease();
+
 		_data = trampoline;
 		_capacity = a_size;
 		_size = 0;
+		_freeAlloc = a_takeOwnership;
 
 		LogStats();
 	}
@@ -180,37 +190,37 @@ namespace SKSE
 	std::size_t Trampoline::Capacity() const
 	{
 		Locker locker(_lock);
-		return _capacity;
+		return Capacity_Impl();
 	}
 
 
 	std::size_t Trampoline::AllocatedSize() const
 	{
 		Locker locker(_lock);
-		return _size;
+		return AllocatedSize_Impl();
 	}
 
 
 	std::size_t Trampoline::FreeSize() const
 	{
 		Locker locker(_lock);
-		return _capacity - _size;
+		return FreeSize_Impl();
 	}
 
 
 	bool Trampoline::Write5Branch(std::uintptr_t a_src, std::uintptr_t a_dst)
 	{
-		// FF /4
-		// JMP r/m64
-		return Write5Branch_Impl(a_src, a_dst, static_cast<std::uint8_t>(0x25));
+		// E9 cd
+		// JMP rel32
+		return Write5Branch_Impl(a_src, a_dst, static_cast<std::uint8_t>(0xE9));
 	}
 
 
 	bool Trampoline::Write5Call(std::uintptr_t a_src, std::uintptr_t a_dst)
 	{
-		// FF /2
-		// CALL r/m64
-		return Write5Branch_Impl(a_src, a_dst, static_cast<std::uint8_t>(0x15));
+		// E8 cd
+		// CALL rel32
+		return Write5Branch_Impl(a_src, a_dst, static_cast<std::uint8_t>(0xE8));
 	}
 
 
@@ -242,7 +252,7 @@ namespace SKSE
 		GetSystemInfo(&si);
 		granularity = si.dwAllocationGranularity;
 
-		std::uintptr_t min = a_address >= MIN_RANGE ? roundup(a_address - MIN_RANGE + (granularity - 1), granularity) : 0;
+		std::uintptr_t min = a_address >= MIN_RANGE ? roundup(a_address - MIN_RANGE, granularity) : 0;
 		std::uintptr_t max = a_address < (MAX_ADDR - MIN_RANGE) ? rounddown(a_address + MIN_RANGE, granularity) : MAX_ADDR;
 		std::uintptr_t addr;
 
@@ -319,30 +329,48 @@ namespace SKSE
 	}
 
 
-	bool Trampoline::Write5Branch_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_modrm)
+	std::size_t Trampoline::Capacity_Impl() const
+	{
+		return _capacity;
+	}
+
+
+	std::size_t Trampoline::AllocatedSize_Impl() const
+	{
+		return _size;
+	}
+
+
+	std::size_t Trampoline::FreeSize_Impl() const
+	{
+		return _capacity - _size;
+	}
+
+
+	bool Trampoline::Write5Branch_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_opcode)
 	{
 #pragma pack (push, 1)
-		// E9 cd
-		// JMP rel32
 		struct SrcAssembly
 		{
-			// jmp [rip + imm32]
-			std::uint8_t jmp;	// 0 - 0xE9
-			std::int32_t disp;	// 1
+			// jmp/call [rip + imm32]
+			std::uint8_t opcode;	// 0 - 0xE9/0xE8
+			std::int32_t disp;		// 1
 		};
-		STATIC_ASSERT(offsetof(SrcAssembly, jmp) == 0x0);
+		STATIC_ASSERT(offsetof(SrcAssembly, opcode) == 0x0);
 		STATIC_ASSERT(offsetof(SrcAssembly, disp) == 0x1);
 		STATIC_ASSERT(sizeof(SrcAssembly) == 0x5);
 
+		// FF /4
+		// JMP r/m64
 		struct TrampolineAssembly
 		{
-			// jmp/call [rip]
-			std::uint8_t opcode;	// 0 - 0xFF
-			std::uint8_t modrm;		// 1 - 0x25/0x15
-			std::int32_t disp;		// 2 - 0x00000000
-			std::uint64_t addr;		// 6 - [rip]
+			// jmp [rip]
+			std::uint8_t jmp;	// 0 - 0xFF
+			std::uint8_t modrm;	// 1 - 0x25
+			std::int32_t disp;	// 2 - 0x00000000
+			std::uint64_t addr;	// 6 - [rip]
 		};
-		STATIC_ASSERT(offsetof(TrampolineAssembly, opcode) == 0x0);
+		STATIC_ASSERT(offsetof(TrampolineAssembly, jmp) == 0x0);
 		STATIC_ASSERT(offsetof(TrampolineAssembly, modrm) == 0x1);
 		STATIC_ASSERT(offsetof(TrampolineAssembly, disp) == 0x2);
 		STATIC_ASSERT(offsetof(TrampolineAssembly, addr) == 0x6);
@@ -350,26 +378,26 @@ namespace SKSE
 #pragma pack (pop)
 
 		auto mem = StartAlloc<TrampolineAssembly>();
-		if (!mem || FreeSize() < sizeof(TrampolineAssembly)) {
-			EndAlloc(ALLOC_END_TAG);
+		if (!mem || FreeSize_Impl() < sizeof(TrampolineAssembly)) {
+			EndAlloc(END_ALLOC_TAG);
 			assert(false);
 			return false;
 		}
 
 		std::ptrdiff_t disp = reinterpret_cast<std::uintptr_t>(mem) - (a_src + sizeof(SrcAssembly));
-		if (disp < std::numeric_limits<std::int32_t>::min() || disp > std::numeric_limits<std::int32_t>::max()) {
-			EndAlloc(ALLOC_END_TAG);
+		if (!IsDisplacementInRange(disp)) {
+			EndAlloc(END_ALLOC_TAG);
 			assert(false);
 			return false;
 		}
 
 		SrcAssembly assembly;
-		assembly.jmp = static_cast<std::uint8_t>(0xE9);
+		assembly.opcode = a_opcode;
 		assembly.disp = static_cast<std::int32_t>(disp);
 		SafeWriteBuf(a_src, &assembly, sizeof(assembly));
 
-		mem->opcode = static_cast<std::uint8_t>(0xFF);
-		mem->modrm = a_modrm;
+		mem->jmp = static_cast<std::uint8_t>(0xFF);
+		mem->modrm = static_cast<std::uint8_t>(0x25);
 		mem->disp = static_cast<std::int32_t>(0);
 		mem->addr = static_cast<std::uint64_t>(a_dst);
 		EndAlloc(sizeof(TrampolineAssembly));
@@ -394,15 +422,15 @@ namespace SKSE
 #pragma pack (pop)
 
 		auto mem = StartAlloc<std::uintptr_t>();
-		if (!mem || FreeSize() < sizeof(std::uintptr_t)) {
-			EndAlloc(ALLOC_END_TAG);
+		if (!mem || FreeSize_Impl() < sizeof(std::uintptr_t)) {
+			EndAlloc(END_ALLOC_TAG);
 			assert(false);
 			return false;
 		}
 
 		std::ptrdiff_t disp = reinterpret_cast<std::uintptr_t>(mem) - (a_src + sizeof(Assembly));
-		if (disp < std::numeric_limits<std::int32_t>::min() || disp > std::numeric_limits<std::int32_t>::max()) {
-			EndAlloc(ALLOC_END_TAG);
+		if (!IsDisplacementInRange(disp)) {
+			EndAlloc(END_ALLOC_TAG);
 			assert(false);
 			return false;
 		}
@@ -422,5 +450,28 @@ namespace SKSE
 	void Trampoline::LogStats() const
 	{
 		Impl::TrampolineLogger::LogStats(*this);
+	}
+
+
+	void Trampoline::TryRelease()
+	{
+		if (_freeAlloc) {
+			if (_data) {
+				VirtualFree(_data, 0, MEM_RELEASE);
+			}
+			_data = 0;
+			_capacity = 0;
+			_size = 0;
+			_freeAlloc = false;
+		}
+	}
+
+
+	bool Trampoline::IsDisplacementInRange(std::ptrdiff_t a_disp) const
+	{
+		constexpr auto MIN_DISP = std::numeric_limits<std::int32_t>::min();
+		constexpr auto MAX_DISP = std::numeric_limits<std::int32_t>::max();
+
+		return a_disp >= MIN_DISP && a_disp <= MAX_DISP;
 	}
 }
