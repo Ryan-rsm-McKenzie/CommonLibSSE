@@ -119,18 +119,6 @@ namespace RE
 	}
 
 	
-	void PlayerCharacter::SetCollision(bool a_enable)
-	{
-		REL::Offset<bool*> g_collisionDisabled(Offset::PlayerCharacter::CollisionDisabled);
-		if (a_enable) {
-			*g_collisionDisabled = false;
-		} else {
-			*g_collisionDisabled = true;
-		}
-		Character::SetCollision(a_enable);
-	}
-
-	
 	void PlayerCharacter::StartGrabObject()
 	{
 		using func_t = function_type_t<decltype(&PlayerCharacter::StartGrabObject)>;

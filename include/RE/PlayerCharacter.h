@@ -281,7 +281,6 @@ namespace RE
 		BSTArray<TintMask*>&		GetTintList();
 		TintMask*					GetTintMask(UInt32 a_tintType, UInt32 a_index);
 		void						PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
-		void						SetCollision(bool a_enable);
 		void						StartGrabObject();
 
 

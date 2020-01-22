@@ -36,10 +36,10 @@ namespace RE
 		virtual const hkClass*	GetClassType() const;																		// 01 - { return 0; }
 		virtual void			CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const;	// 02
 
-		SInt32					GetAllocatedSize() const;
-		SInt32					GetReferenceCount() const;
-		void					AddReference() const;
-		void					RemoveReference() const;
+		void	AddReference() const;
+		SInt32	GetAllocatedSize() const;
+		SInt32	GetReferenceCount() const;
+		void	RemoveReference() const;
 
 
 		// members

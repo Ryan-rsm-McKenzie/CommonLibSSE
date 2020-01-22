@@ -5,6 +5,9 @@
 
 namespace RE
 {
+	class hkpWorld;
+
+
 	class bhkSerializable : public bhkRefObject
 	{
 	public:

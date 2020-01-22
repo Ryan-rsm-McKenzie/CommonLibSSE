@@ -39,6 +39,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(BoundingVolumeData) == 0x38);
 
 
+		// members
 		SInt8						ownerOffset;				// 20
 		UInt8						forceCollideOntoPpu;		// 21
 		UInt16						shapeSizeOnSpu;				// 22

@@ -641,6 +641,15 @@ namespace RE
 		}
 
 
+		namespace hkReferencedObject
+		{
+			// DirectSig: 40 57 48 83 EC 20 66 83 79 ? ?
+			constexpr std::uintptr_t AddReference = 0x009C6730;		// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 48 89 6E 18 EB 19
+			constexpr std::uintptr_t RemoveReference = 0x009C67F0;	// 1_5_97
+		}
+
+
 		namespace INIPrefSettingCollection
 		{
 			// 48 8D 4B 08 4C 3B C1 74 11 BA ? ? ? ? FF 15 ? ? ? ? EB 04 C6 43 08 00 48 8B 03 B2 01 48 8B CB FF 50 28 84 C0 74 18
@@ -884,8 +893,6 @@ namespace RE
 			constexpr std::uintptr_t ActivatePickRef = 0x006A9F90;			// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 84 C0 75 08 40 32 F6
 			constexpr std::uintptr_t AttemptPickpocket = 0x006B2530;		// 1_5_97
-			// 0F 94 C3 88 1D ? ? ? ?
-			constexpr std::uintptr_t CollisionDisabled = 0x01EBEB50;		// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 0F 28 F0 48 85 FF 0F 84 ? ? ? ?
 			constexpr std::uintptr_t GetArmorValue = 0x00692CD0;			// 1_5_97
 			// IndirectSig: E8 ? ? ? ? F3 0F 2C C8 8B C7

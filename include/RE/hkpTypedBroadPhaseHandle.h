@@ -7,6 +7,7 @@ namespace RE
 {
 	class hkpTypedBroadPhaseHandle : public hkpBroadPhaseHandle
 	{
+	public:
 		enum { kInvalidOffset = 127 };
 
 

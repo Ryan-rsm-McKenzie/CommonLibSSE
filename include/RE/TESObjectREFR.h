@@ -123,7 +123,7 @@ namespace RE
 		enum { kTypeID = FormType::Reference };
 
 
-		enum class MotionType : UInt32
+		enum class MotionType : UInt32	// hkpMotion::MotionType
 		{
 			kDynamic = 1,
 			kSphereInertia = 2,

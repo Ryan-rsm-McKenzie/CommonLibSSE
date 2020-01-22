@@ -35,7 +35,6 @@ namespace RE
 	class TESBoundObject;
 	struct AnimationVariableData;
 	struct BSAnimationGraphVariableCache;
-	struct QueuedItem;
 
 
 	enum class RESET_3D_FLAGS : UInt8
@@ -79,8 +78,9 @@ namespace RE
 	STATIC_ASSERT(sizeof(ObjectEquipParams) == 0x28);
 
 
-	struct QueuedItem
+	class QueuedItem
 	{
+	public:
 		QueuedItem*				next;			// 00
 		TESBoundObject*			object;			// 08
 		ObjectEquipParams		equipParams;	// 10
@@ -93,8 +93,9 @@ namespace RE
 	STATIC_ASSERT(sizeof(QueuedItem) == 0x48);
 
 
-	struct HitData
+	class HitData
 	{
+	public:
 		enum class Flag
 		{
 			kBlocked = 1 << 0,
@@ -190,7 +191,7 @@ namespace RE
 	STATIC_ASSERT(sizeof(AIPerkData) == 0x8A0);
 
 
-	class MiddleHighProcessData
+	struct MiddleHighProcessData
 	{
 	public:
 		BSTEventSource<void*>						unk000;					// 000

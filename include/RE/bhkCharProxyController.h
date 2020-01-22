@@ -7,6 +7,9 @@
 
 namespace RE
 {
+	class hkpCharacterProxy;
+
+
 	class bhkCharProxyController :
 		public hkpCharacterProxyListener,		// 000
 		public bhkCharacterController			// 010
@@ -25,14 +28,16 @@ namespace RE
 		virtual void	ObjectInteractionCallback(hkpCharacterProxy* a_proxy, const hkpCharacterObjectInteractionEvent& a_input, hkpCharacterObjectInteractionResult& a_output) override;	// 05
 
 		// override (bhkCharacterController)
-		virtual hkVector4	GetLinearVelocity() const override;																																// 06
-		virtual void		SetLinearVelocity(const hkVector4& a_vel) override;																												// 07
+		virtual void	GetLinearVelocityImpl(hkVector4& a_velocity) const override;																										// 06
+		virtual void	SetLinearVelocityImpl(const hkVector4& a_velocity) override;																										// 07
+
+		hkpCharacterProxy* GetCharacterProxy() const;
 
 
 		// members
-		bhkCharacterProxy	characterProxy;	// 340
-		void*				unk5A0;			// 5A0 - smart ptr
-		UInt64				unk5A8;			// 5A8
+		bhkCharacterProxy	proxy;	// 340
+		void*				unk5A0;	// 5A0 - smart ptr
+		UInt64				unk5A8;	// 5A8
 	};
 	STATIC_ASSERT(sizeof(bhkCharProxyController) == 0x5B0);
 }

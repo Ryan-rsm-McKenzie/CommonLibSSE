@@ -11,10 +11,11 @@ namespace RE
 {
 	enum class RESET_3D_FLAGS : UInt8;
 	class Actor;
-	class HighProcessData;
-	class MiddleHighProcessData;
+	class bhkCharacterController;
 	class HighProcess;
 	class TESForm;
+	struct HighProcessData;
+	struct MiddleHighProcessData;
 
 
 	enum class PROCESS_TYPE : UInt8
@@ -137,19 +138,20 @@ namespace RE
 		STATIC_ASSERT(sizeof(Data0B8) == 0x38);
 
 
-		float		GetCachedHeight() const;
-		TESForm*	GetEquippedLeftHand();
-		TESForm*	GetEquippedRightHand();
-		bool		InHighProcess() const;
-		bool		InMiddleHighProcess() const;
-		bool		InMiddleLowProcess() const;
-		bool		InLowProcess() const;
-		bool		IsArrested() const;
-		bool		IsGhost() const;
-		void		SetArrested(bool a_arrested);
-		void		SetCachedHeight(float a_height);
-		void		Set3DUpdateFlag(RESET_3D_FLAGS a_flags);
-		void		Update3DModel(Actor* a_actor);
+		float						GetCachedHeight() const;
+		bhkCharacterController*		GetCharController();
+		TESForm*					GetEquippedLeftHand();
+		TESForm*					GetEquippedRightHand();
+		bool						InHighProcess() const;
+		bool						InMiddleHighProcess() const;
+		bool						InMiddleLowProcess() const;
+		bool						InLowProcess() const;
+		bool						IsArrested() const;
+		bool						IsGhost() const;
+		void						SetArrested(bool a_arrested);
+		void						SetCachedHeight(float a_height);
+		void						Set3DUpdateFlag(RESET_3D_FLAGS a_flags);
+		void						Update3DModel(Actor* a_actor);
 
 
 		// members

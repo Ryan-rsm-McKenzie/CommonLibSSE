@@ -50,7 +50,7 @@ namespace RE
 	STATIC_ASSERT(sizeof(DetectionEvent) == 0x18);
 
 
-	class HighProcessData
+	struct HighProcessData
 	{
 	public:
 		enum class FADE_STATE : UInt32

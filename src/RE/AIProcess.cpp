@@ -15,6 +15,12 @@ namespace RE
 	}
 
 
+	bhkCharacterController* AIProcess::GetCharController()
+	{
+		return middleHigh ? middleHigh->charController.get() : 0;
+	}
+
+
 	TESForm* AIProcess::GetEquippedLeftHand()
 	{
 		return equippedObjects[Hands::kLeft];

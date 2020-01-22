@@ -19,6 +19,11 @@ namespace RE
 		};
 
 
+		ResponseType	GetResponseType() const;
+		void			SetResponseType(ResponseType a_type);
+
+
+		// members
 		ResponseType	responseType;				// 00
 		UInt8			pad01;						// 01
 		hkHalf			rollingFrictionMultiplier;	// 02

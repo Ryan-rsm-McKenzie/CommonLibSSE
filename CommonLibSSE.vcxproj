@@ -180,6 +180,8 @@
     <ClCompile Include="src\RE\BSXFlags.cpp" />
     <ClCompile Include="src\RE\ExtraLightData.cpp" />
     <ClCompile Include="src\RE\ExtraPoison.cpp" />
+    <ClCompile Include="src\RE\bhkCharProxyController.cpp" />
+    <ClCompile Include="src\RE\hkpMaterial.cpp" />
     <ClCompile Include="src\RE\IAnimationGraphManagerHolder.cpp" />
     <ClCompile Include="src\RE\Main.cpp" />
     <ClCompile Include="src\RE\NiInterpolator.cpp" />
@@ -466,6 +468,8 @@
     <ClInclude Include="include\RE\BSTTuple.h" />
     <ClInclude Include="include\RE\BSUntypedPointerHandle.h" />
     <ClInclude Include="include\RE\BSXFlags.h" />
+    <ClInclude Include="include\RE\CFilter.h" />
+    <ClInclude Include="include\RE\CollisionLayers.h" />
     <ClInclude Include="include\RE\ContainerItemExtra.h" />
     <ClInclude Include="include\RE\Crime.h" />
     <ClInclude Include="include\RE\DecalData.h" />

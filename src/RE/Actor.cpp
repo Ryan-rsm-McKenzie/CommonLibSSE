@@ -197,6 +197,12 @@ namespace RE
 	}
 
 
+	bhkCharacterController* Actor::GetCharController() const
+	{
+		return currentProcess ? currentProcess->GetCharController() : 0;
+	}
+
+
 	TESFaction* Actor::GetCrimeFaction()
 	{
 		auto thisPtr = const_cast<const Actor*>(this);

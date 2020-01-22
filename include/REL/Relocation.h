@@ -393,15 +393,4 @@ namespace REL
 
 		std::uintptr_t _address;
 	};
-
-
-	template <class F = void*>
-	F Write5Call(std::uintptr_t a_dst, std::uintptr_t a_src)
-	{
-		auto offset = reinterpret_cast<std::int32_t*>(a_dst + 1);
-		auto nextOp = a_dst + 5;
-		auto func = unrestricted_cast<F>(nextOp + *offset);
-		g_branchTrampoline.Write5Call(a_dst, a_src);
-		return func;
-	}
 }
