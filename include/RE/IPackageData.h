@@ -1,11 +1,12 @@
 #pragma once
 
+#include "RE/BSString.h"
+
 
 namespace RE
 {
 	class BGSLoadFormBuffer;
 	class BSFixedString;
-	class BSString;
 	class TESFile;
 
 

@@ -37,10 +37,15 @@ namespace RE
 		enum class RecordFlag : UInt32
 		{
 			kNone = 0,
-			kESM = 1 << 0,
+			kMaster = 1 << 0,
+			kAltered = 1 << 1,
+			kChecked = 1 << 2,
 			kActive = 1 << 3,
-			kLocalized = 1 << 7,
-			kESL = 1 << 9
+			kOptimizedFile = 1 << 4,
+			kTempIDOwner = 1 << 5,
+			kDelocalized = 1 << 7,
+			kPrecalcDataOnly = 1 << 8,
+			kSmallFile = 1 << 9
 		};
 
 
@@ -116,7 +121,7 @@ namespace RE
 		RecordFlag						recordFlags;						// 438
 		UInt32							pad43C;								// 43C
 		BSSimpleList<const char*>		masters;							// 440
-		BSSimpleList<LARGE_INTEGER*>	mastersData;						// 450
+		BSSimpleList<ULARGE_INTEGER*>	mastersData;						// 450
 		UInt32							masterCount;						// 460
 		UInt32							pad464;								// 464
 		TESFile**						masterPtrs;							// 468

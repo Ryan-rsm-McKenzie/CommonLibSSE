@@ -1105,6 +1105,12 @@
     <Filter Include="src\RE\NetImmerse\NiRefObject\NiObject\NiInterpolator">
       <UniqueIdentifier>{4e0a76c3-a0d2-4f73-b60b-b0c3808570d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\BSResource">
+      <UniqueIdentifier>{6b0b1cca-64c4-4597-9f9b-92e6f746a6d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSResource\Location">
+      <UniqueIdentifier>{a84139b8-035c-4170-88f3-00d03b3d25fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1166,9 +1172,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\TESDescription.cpp">
       <Filter>src\RE\FormComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSString.cpp">
-      <Filter>src\RE\BSCore</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\TESAIForm.cpp">
       <Filter>src\RE\FormComponents</Filter>
@@ -1796,6 +1799,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\bhkCharProxyController.cpp">
       <Filter>src\RE\BSHavok\hkpCharacterProxyListener</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSResource\Location.cpp">
+      <Filter>src\RE\BSResource\Location</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\RTTI.cpp">
+      <Filter>src\RE</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5260,6 +5269,12 @@
     </ClInclude>
     <ClInclude Include="include\RE\CollisionLayers.h">
       <Filter>include\RE\FormComponents\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResource\ErrorCodes.h">
+      <Filter>include\RE\BSResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResource\Info.h">
+      <Filter>include\RE\BSResource</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

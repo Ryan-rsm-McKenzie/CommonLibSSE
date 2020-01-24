@@ -44,7 +44,7 @@ namespace RE
 
 	bool TESFile::IsLocalized() const
 	{
-		return (recordFlags & RecordFlag::kLocalized) != RecordFlag::kNone;
+		return (recordFlags & RecordFlag::kDelocalized) != RecordFlag::kNone;
 	}
 
 

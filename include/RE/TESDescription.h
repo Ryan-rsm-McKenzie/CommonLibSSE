@@ -2,11 +2,11 @@
 
 #include "RE/BaseFormComponent.h"
 #include "RE/BGSLocalizedStringDL.h"
+#include "RE/BSString.h"
 
 
 namespace RE
 {
-	class BSString;
 	class TESForm;
 
 

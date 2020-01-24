@@ -3,6 +3,7 @@
 #include "RE/BSResource/Location.h"
 #include "RE/BSResource/Stream.h"
 #include "RE/BSTSingleton.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE
@@ -17,34 +18,34 @@ namespace RE
 			struct NullStream : public Stream
 			{
 			public:
-				virtual ~NullStream();					// 00
+				virtual ~NullStream();																					// 00
 
 				// override (Stream)
-				virtual void	Unk_01(void) override;	// 01 - { return 0; }
-				virtual void	Unk_02(void) override;	// 02 - { return; }
-				virtual void	Unk_05(void) override;	// 05
-				virtual void	Unk_06(void) override;	// 06
-				virtual void	Unk_07(void) override;	// 07
-				virtual void	Unk_08(void) override;	// 08
+				virtual ErrorCode	DoOpen() override;																	// 01 - { return ErrorCode::kNone; }
+				virtual void		DoClose() override;																	// 02 - { return; }
+				virtual void		DoClone(BSTSmartPointer<Stream>& a_out) const override;								// 05
+				virtual ErrorCode	DoRead(void* a_buffer, UInt64 a_toRead, UInt64& a_read) const override;				// 06
+				virtual ErrorCode	DoWrite(const void* a_buffer, UInt64 a_toWrite, UInt64& a_written) const override;	// 07
+				virtual ErrorCode	DoSeek(UInt64 a_toSeek, SeekMode a_mode, UInt64& a_sought) const override;			// 08
 			};
 			STATIC_ASSERT(sizeof(NullStream) == 0x10);
 
 
-			virtual ~DevNull();																									// 00
+			virtual ~DevNull();																																								// 00
 
 			// override (Location)
-			virtual void	Unk_01(void) override;																				// 01 - { return 0; }
-			virtual void	Unk_02(void) override;																				// 02 - { return; }
-			virtual Result	LocateFile(const char* a_relPath, Stream*& a_stream, Location*& a_location, char a_delim) override;	// 03
-			virtual Result	TraverseFiles(const char* a_relPath, LocationTraverser* a_traverser) override;						// 05 - { return 1; }
+			virtual ErrorCode	DoMount() override;																																			// 01 - { return ErrorCode::kNone; }
+			virtual void		DoUnmount() override;																																		// 02 - { return; }
+			virtual ErrorCode	DoCreateStream(const char* a_path, BSTSmartPointer<Stream>& a_stream, Location*& a_location, bool a_createFile, LocationTraverser* a_traverser) override;	// 03
+			virtual ErrorCode	DoTraversePrefix(const char* a_path, LocationTraverser& a_traverser) override;																				// 05 - { return ErrorCode::kNotExist; }
 
 
 			// members
-			UInt8		pad11;	// 11
-			UInt16		pad12;	// 12
-			UInt32		pad14;	// 14
-			NullStream*	unk18;	// 18
-			NullStream*	unk20;	// 20
+			UInt8					pad11;		// 11
+			UInt16					pad12;		// 12
+			UInt32					pad14;		// 14
+			BSTSmartPointer<Stream>	nullReader;	// 18
+			BSTSmartPointer<Stream>	nullWriter;	// 20
 		};
 		STATIC_ASSERT(sizeof(DevNull) == 0x28);
 	}

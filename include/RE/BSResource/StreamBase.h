@@ -1,28 +1,33 @@
 #pragma once
 
+#include "RE/BSResource/ErrorCodes.h"
+
 
 namespace RE
 {
 	namespace BSResource
 	{
+		struct Info;
+
+
 		class StreamBase
 		{
 		public:
 			inline static const void* RTTI = RTTI_BSResource__StreamBase;
 
 
-			virtual ~StreamBase();				// 00
+			virtual ~StreamBase();							// 00
 
 			// add
-			virtual void	Unk_01(void) = 0;	// 01
-			virtual void	Unk_02(void) = 0;	// 02
-			virtual void	Unk_03(void);		// 03 - { return 0; }
-			virtual void	Unk_04(void);		// 04 - { return 8; }
+			virtual ErrorCode	DoOpen() = 0;				// 01
+			virtual void		DoClose() = 0;				// 02
+			virtual UInt64		DoGetKey() const;			// 03 - { return 0; }
+			virtual ErrorCode	DoGetInfo(Info& a_info);	// 04 - { return ErrorCode::kUnsupported; }
 
 
 			// members
-			UInt32	unk08;	// 08
-			UInt32	unk0C;	// 0C - related to ref counting
+			UInt32	totalSize;	// 08
+			UInt32	flags;		// 0C
 		};
 		STATIC_ASSERT(sizeof(StreamBase) == 0x10);
 	}

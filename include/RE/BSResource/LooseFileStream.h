@@ -16,25 +16,25 @@ namespace RE
 			public Stream				// 00
 		{
 		public:
-			virtual ~LooseFileStream();									// 00
+			virtual ~LooseFileStream();																					// 00
 
 			// override (Stream)
-			virtual void	Unk_01(void) override;						// 01
-			virtual void	Unk_02(void) override;						// 02
-			virtual void	Unk_04(void) override;						// 04
-			virtual void	Unk_05(void) override;						// 05
-			virtual void	Unk_06(void) override;						// 06
-			virtual void	Unk_07(void) override;						// 07
-			virtual void	Unk_08(void) override;						// 08
-			virtual void	Unk_09(void) override;						// 09
-			virtual bool	GetRelPath(BSFixedString& a_dst) override;	// 0A
-			virtual void	Unk_0B(void) override;						// 0B
+			virtual ErrorCode	DoOpen() override;																		// 01
+			virtual void		DoClose() override;																		// 02
+			virtual ErrorCode	DoGetInfo(Info& a_info) override;														// 04
+			virtual void		DoClone(BSTSmartPointer<Stream>& a_out) const override;									// 05
+			virtual ErrorCode	DoRead(void* a_buffer, UInt64 a_toRead, UInt64& a_read) const override;					// 06
+			virtual ErrorCode	DoWrite(const void* a_buffer, UInt64 a_toWrite, UInt64& a_written) const override;		// 07
+			virtual ErrorCode	DoSeek(UInt64 a_toSeek, SeekMode a_mode, UInt64& a_sought) const override;				// 08
+			virtual ErrorCode	DoSetEndOfStream() override;															// 09
+			virtual bool		DoGetName(BSFixedString& a_dst) const override;											// 0A
+			virtual ErrorCode	DoCreateAsync(BSTSmartPointer<BSResource::AsyncStream>& a_streamOut) const override;	// 0B
 
 
 			// members
 			LooseFileLocation*	location;	// 38
-			UInt64				unk40;		// 40
-			void*				unk48;		// 48
+			UInt64				filePos;	// 40
+			void*				buffer;		// 48
 		};
 		STATIC_ASSERT(sizeof(LooseFileStream) == 0x50);
 	}

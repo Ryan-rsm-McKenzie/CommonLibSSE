@@ -15,7 +15,7 @@ namespace RE
 		inline static const void* RTTI = RTTI_GFxExternalInterface;
 
 
-		constexpr GFxExternalInterface() :
+		GFxExternalInterface() :
 			GFxState(StateType::kExternalInterface)
 		{}
 

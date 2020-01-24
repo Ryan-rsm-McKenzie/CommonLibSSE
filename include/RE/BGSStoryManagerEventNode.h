@@ -16,7 +16,7 @@ namespace RE
 
 		DATA_TYPE	type;		// 00
 		UInt32		uniqueID;	// 04
-		BSString	Name;		// 08
+		BSString	name;		// 08
 	};
 	STATIC_ASSERT(sizeof(BGSStoryEventMember) == 0x18);
 

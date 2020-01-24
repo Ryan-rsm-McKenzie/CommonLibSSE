@@ -1,11 +1,11 @@
 #pragma once
 
+#include "RE/BSString.h"
 #include "RE/TESRegionData.h"
 
 
 namespace RE
 {
-	class BSString;
 	class TESFile;
 	class TESTexture;
 

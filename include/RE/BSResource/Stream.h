@@ -1,28 +1,40 @@
 #pragma once
 
 #include "RE/BSResource/StreamBase.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE
 {
 	namespace BSResource
 	{
+		class AsyncStream;
+
+
+		enum class SeekMode : UInt32
+		{
+			kSet = 0,
+			kCur = 1,
+			kEnd = 2
+		};
+
+
 		class Stream : public StreamBase
 		{
 		public:
 			inline static const void* RTTI = RTTI_BSResource__Stream;
 
 
-			virtual ~Stream();									// 00
+			virtual ~Stream();																					// 00
 
 			// add
-			virtual void	Unk_05(void) = 0;					// 05
-			virtual void	Unk_06(void) = 0;					// 06
-			virtual void	Unk_07(void) = 0;					// 07
-			virtual void	Unk_08(void) = 0;					// 08
-			virtual void	Unk_09(void);						// 09 - { return 8; }
-			virtual bool	GetRelPath(BSFixedString& a_dst);	// 0A - { a_dst = ""; }
-			virtual void	Unk_0B(void);						// 0B - { return 8; }
+			virtual void		DoClone(BSTSmartPointer<Stream>& a_out) const = 0;								// 05
+			virtual ErrorCode	DoRead(void* a_buffer, UInt64 a_toRead, UInt64& a_read) const = 0;				// 06
+			virtual ErrorCode	DoWrite(const void* a_buffer, UInt64 a_toWrite, UInt64& a_written) const = 0;	// 07
+			virtual ErrorCode	DoSeek(UInt64 a_toSeek, SeekMode a_mode, UInt64& a_sought) const = 0;			// 08
+			virtual ErrorCode	DoSetEndOfStream();																// 09 - { return ErrorCode::kUnsupported; }
+			virtual bool		DoGetName(BSFixedString& a_dst) const;											// 0A - { a_dst = ""; }
+			virtual ErrorCode	DoCreateAsync(BSTSmartPointer<BSResource::AsyncStream>& a_streamOut) const;		// 0B - { return ErrorCode::kUnsupported; }
 		};
 		STATIC_ASSERT(sizeof(Stream) == 0x10);
 	}

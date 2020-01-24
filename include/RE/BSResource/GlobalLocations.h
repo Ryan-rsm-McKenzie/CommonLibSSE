@@ -14,37 +14,39 @@ namespace RE
 			public BSTSingletonSDM<GlobalLocations>	// 10
 		{
 		public:
-			template <class T>
-			struct List
+			struct Entry
 			{
-				List*	next;		// 00
-				T		current;	// 08
-				UInt64	unk10;		// ??
+			public:
+				// members
+				Entry*		next;		// 00
+				Location*	location;	// 08
+				UInt32		priority;	// 10
+				UInt32		pad14;		// 14
 			};
-			STATIC_ASSERT(sizeof(List<void*>) == 0x18);
+			STATIC_ASSERT(sizeof(Entry) == 0x18);
 
 
-			virtual ~GlobalLocations();																							// 00
+			virtual ~GlobalLocations();																																								// 00
 
 			// override (Location)
-			virtual void	Unk_01(void) override;																				// 01
-			virtual void	Unk_02(void) override;																				// 02
-			virtual Result	LocateFile(const char* a_relPath, Stream*& a_stream, Location*& a_location, char a_delim) override;	// 03
-			virtual void	Unk_04(void) override;																				// 04
-			virtual	Result	TraverseFiles(const char* a_relPath, LocationTraverser* a_traverser) override;						// 05
-			virtual Result	LocateFileData(const char* a_relPath, FileData* a_fileData, Location*& a_location) override;		// 06
-			virtual Result	GetFileData(const char* a_relPath, FileData* a_fileData) override;									// 07
-			virtual void	Unk_08(void) override;																				// 08
+			virtual ErrorCode	DoMount() override;																																					// 01
+			virtual void		DoUnmount() override;																																				// 02
+			virtual ErrorCode	DoCreateStream(const char* a_path, BSTSmartPointer<Stream>& a_stream, Location*& a_location, bool a_createFile, LocationTraverser* a_traverser) override;			// 03
+			virtual ErrorCode	DoCreateAsyncStream(const char* a_path, BSTSmartPointer<AsyncStream>& a_out, Location*& a_location, bool a_createFile, LocationTraverser* a_traverser) override;	// 04
+			virtual ErrorCode	DoTraversePrefix(const char* a_path, LocationTraverser& a_traverser) override;																						// 05
+			virtual ErrorCode	DoGetInfo1(const char* a_path, Info& a_info, Location*& a_location) override;																						// 06
+			virtual ErrorCode	DoGetInfo2(const char* a_path, Info& a_info, LocationTraverser* a_traverser) override;																				// 07
+			virtual ErrorCode	DoDelete(const char* a_path) override;																																// 08
 
 
 			// members
-			UInt8				pad11;		// 11
-			UInt16				pad12;		// 12
-			mutable BSSpinLock	lock;		// 14
-			UInt32				unk1C;		// 1C
-			List<Location*>*	locations;	// 20
-			List<void*>*		unk28;		// 28
-			List<void*>*		unk30;		// 30
+			UInt8				pad11;			// 11
+			UInt16				pad12;			// 12
+			mutable BSSpinLock	lock;			// 14
+			UInt32				pad1C;			// 1C
+			Entry*				head;			// 20
+			Entry*				pendingMount;	// 28
+			Entry*				free;			// 30
 		};
 		STATIC_ASSERT(sizeof(GlobalLocations) == 0x38);
 	}

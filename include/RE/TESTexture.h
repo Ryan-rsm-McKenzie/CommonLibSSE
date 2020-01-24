@@ -2,13 +2,11 @@
 
 #include "RE/BaseFormComponent.h"
 #include "RE/BSFixedString.h"
+#include "RE/BSString.h"
 
 
 namespace RE
 {
-	class BSString;
-
-
 	class TESTexture : public BaseFormComponent
 	{
 	public:

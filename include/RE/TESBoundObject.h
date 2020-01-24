@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSString.h"
 #include "RE/FormTypes.h"
 #include "RE/NiSmartPointer.h"
 #include "RE/TESObject.h"
@@ -7,7 +8,6 @@
 
 namespace RE
 {
-	class BSString;
 	class NiAVObject;
 	class TESObjectREFR;
 

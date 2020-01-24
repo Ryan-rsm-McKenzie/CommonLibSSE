@@ -184,6 +184,9 @@ namespace RE
 			Attribute			attributes;			// 14
 		};
 		STATIC_ASSERT(sizeof(BaseClassDescriptor) == 0x18);
+
+
+		void DumpTypeName(void* a_obj);
 	}
 
 

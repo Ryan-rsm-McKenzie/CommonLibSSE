@@ -173,6 +173,7 @@
     <ClCompile Include="src\RE\BGSColorForm.cpp" />
     <ClCompile Include="src\RE\BGSFootstepManager.cpp" />
     <ClCompile Include="src\RE\BGSStoryTeller.cpp" />
+    <ClCompile Include="src\RE\BSResource\Location.cpp" />
     <ClCompile Include="src\RE\BSScript\ByteCode\PackedInstructionStream.cpp" />
     <ClCompile Include="src\RE\BSScript\Internal\VDescTable.cpp" />
     <ClCompile Include="src\RE\BSScript\IVirtualMachine.cpp" />
@@ -223,7 +224,6 @@
     <ClCompile Include="src\RE\BSScript\PackUnpack.cpp" />
     <ClCompile Include="src\RE\BSScript\ZeroFunctionArguments.cpp" />
     <ClCompile Include="src\RE\BSLock.cpp" />
-    <ClCompile Include="src\RE\BSString.cpp" />
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp" />
     <ClCompile Include="src\RE\BSTCreateFactoryManager.cpp" />
     <ClCompile Include="src\RE\Calendar.cpp" />
@@ -309,6 +309,7 @@
     <ClCompile Include="src\RE\NiSystem.cpp" />
     <ClCompile Include="src\RE\NiTexture.cpp" />
     <ClCompile Include="src\RE\RemoveCallbackVisitor.cpp" />
+    <ClCompile Include="src\RE\RTTI.cpp" />
     <ClCompile Include="src\RE\Script.cpp" />
     <ClCompile Include="src\RE\Setting.cpp" />
     <ClCompile Include="src\RE\Sky.cpp" />
@@ -457,8 +458,10 @@
     <ClInclude Include="include\RE\BSPointerHandleManager.h" />
     <ClInclude Include="include\RE\BSPointerHandleManagerInterface.h" />
     <ClInclude Include="include\RE\BSPointerHandleSmartPointer.h" />
+    <ClInclude Include="include\RE\BSResource\ErrorCodes.h" />
     <ClInclude Include="include\RE\BSResource\FileID.h" />
     <ClInclude Include="include\RE\BSResource\ID.h" />
+    <ClInclude Include="include\RE\BSResource\Info.h" />
     <ClInclude Include="include\RE\BSResponse.h" />
     <ClInclude Include="include\RE\BSScript\ByteCode\PackedInstructionStream.h" />
     <ClInclude Include="include\RE\BSScript\Internal\VDescTable.h" />
