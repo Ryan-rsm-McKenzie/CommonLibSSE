@@ -243,9 +243,9 @@ namespace RE
 				// IndirectSig: E8 ? ? ? ? 49 8B CE E8 ? ? ? ? 48 85 DB 74 08
 				constexpr std::uintptr_t Dtor = 0x01233670;			// 1_5_97
 				// IndirectSig: E8 ? ? ? ? 49 89 3F
-				constexpr std::uintptr_t IncRefCount = 0x01234360;	// 1_5_97
+				constexpr std::uintptr_t IncRef = 0x01234360;	// 1_5_97
 				// IndirectSig: E8 ? ? ? ? 85 C0 75 10 49 8B CE
-				constexpr std::uintptr_t DecRefCount = 0x01234410;	// 1_5_97
+				constexpr std::uintptr_t DecRef = 0x01234410;	// 1_5_97
 			}
 
 
@@ -754,6 +754,13 @@ namespace RE
 		{
 			// VTable: .?AULookHandler@@
 			constexpr std::uintptr_t Vtbl = 0x0166F140;	// 1_5_97
+		}
+
+
+		namespace LooseFileStream
+		{
+			// IndirectSig: E8 ? ? ? ? 48 8B F8 EB 02 33 FF 40 F6 C6 02 74 11
+			constexpr std::uintptr_t Ctor = 0x00C4B990;	// 1_5_97
 		}
 
 

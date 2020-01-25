@@ -12,14 +12,14 @@ namespace RE
 
 
 		NiRefObject();
-		virtual ~NiRefObject();					// 00
+		virtual ~NiRefObject();		// 00
 
 		// add
-		virtual void			DeleteThis();	// 01
+		virtual void DeleteThis();	// 01
 
-		void					IncRefCount();
-		void					DecRefCount();
-		UInt32					GetRefCount() const;
+		void	IncRefCount();
+		void	DecRefCount();
+		UInt32	GetRefCount() const;
 
 		static volatile UInt32&	GetTotalObjectCount();
 
@@ -27,7 +27,7 @@ namespace RE
 
 
 		// members
-		volatile mutable SInt32	_refCount;	// 08
+		volatile mutable UInt32	_refCount;	// 08
 		UInt32					_pad0C;		// 0C
 	};
 	STATIC_ASSERT(sizeof(NiRefObject) == 0x10);

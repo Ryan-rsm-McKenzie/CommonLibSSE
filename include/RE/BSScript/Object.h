@@ -28,8 +28,8 @@ namespace RE
 
 			void* Resolve(VMTypeID a_typeID) const;
 
-			void	IncRefCount();
-			SInt32	DecRefCount();
+			void	IncRef();
+			UInt32	DecRef();
 
 			Variable*		GetProperty(const BSFixedString& a_name);
 			const Variable*	GetProperty(const BSFixedString& a_name) const;

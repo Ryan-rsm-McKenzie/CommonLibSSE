@@ -16,7 +16,7 @@ namespace RE
 		{
 		public:
 			// override (LocationTraverser)
-			virtual void ProcessName(const char* a_relPath, Location& a_location) override;	// 00
+			virtual void ProcessName(const char* a_name, Location& a_location) override;	// 00
 
 			// add
 			virtual ~Traverser();															// 01

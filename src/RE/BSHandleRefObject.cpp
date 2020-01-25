@@ -5,35 +5,33 @@ namespace RE
 {
 	BSHandleRefObject::~BSHandleRefObject()
 	{
-		_refCount &= kMask_RefCount;
+		_refCount &= kRefCountMask;
 		InterlockedDecrement(&GetTotalObjectCount());
-	}
-
-
-	void BSHandleRefObject::DecHandleRefCount()
-	{
-		if ((InterlockedDecrement(&_refCount) & kMask_RefCount) == 0) {
-			DeleteThis();
-		}
 	}
 
 
 	void BSHandleRefObject::DecRefCount()
 	{
-		if ((InterlockedDecrement(&_refCount) & kMask_RefCount) == 0) {
+		if ((InterlockedDecrement(&_refCount) & kRefCountMask) == 0) {
 			DeleteThis();
 		}
 	}
 
 
-	UInt32 BSHandleRefObject::GetHandleRefCount() const
+	void BSHandleRefObject::IncRefCount()
 	{
-		return _refCount & kMask_RefCount;
+		InterlockedIncrement(&_refCount);
 	}
 
 
-	UInt32 BSHandleRefObject::GetRefCount() const
+	bool BSHandleRefObject::IsHandleValid() const
 	{
-		return _refCount & kMask_RefCount;
+		return _refCount & kHandleValid;
+	}
+
+
+	UInt32 BSHandleRefObject::QRefCount() const
+	{
+		return _refCount & kRefCountMask;
 	}
 }

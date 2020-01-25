@@ -1111,6 +1111,12 @@
     <Filter Include="src\RE\BSResource\Location">
       <UniqueIdentifier>{a84139b8-035c-4170-88f3-00d03b3d25fd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\BSResource\StreamBase">
+      <UniqueIdentifier>{34996911-17ed-4022-9368-e489e2a297fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSResource\StreamBase\Stream">
+      <UniqueIdentifier>{2677b5e6-c3d8-44ac-8e0c-3172a10f5d8f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1805,6 +1811,18 @@
     </ClCompile>
     <ClCompile Include="src\RE\RTTI.cpp">
       <Filter>src\RE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSResource\BSSystemFile.cpp">
+      <Filter>src\RE\BSResource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSResource\LooseFileStream.cpp">
+      <Filter>src\RE\BSResource\StreamBase\Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSResource\StreamBase.cpp">
+      <Filter>src\RE\BSResource\StreamBase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSResource\Stream.cpp">
+      <Filter>src\RE\BSResource\StreamBase\Stream</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5275,6 +5293,12 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSResource\Info.h">
       <Filter>include\RE\BSResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResource\BSSystemFile.h">
+      <Filter>include\RE\BSResource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSResource\AsyncStream.h">
+      <Filter>include\RE\BSResource\StreamBase</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,14 +11,13 @@ namespace RE
 	{
 		void DumpTypeName(void* a_obj)
 		{
-			static char buf[0x1000];
-
 			assert(a_obj);
 			auto vtbl = *reinterpret_cast<std::uintptr_t**>(a_obj) - 1;
 			auto col = *reinterpret_cast<CompleteObjectLocator**>(vtbl);
 			assert(col);
 
 #ifdef DBHLPAPI
+			char buf[0x1000];
 			UnDecorateSymbolName(col->typeDescriptor->name + 1, buf, sizeof(buf), UNDNAME_COMPLETE);
 			auto name = buf;
 #else

@@ -36,7 +36,7 @@ namespace RE
 		explicit BSPointerHandle(const Y* a_rhs) :
 			Handle()
 		{
-			if (a_rhs && a_rhs->GetHandleRefCount() > 0) {
+			if (a_rhs && a_rhs->BSHandleRefObject::QRefCount() > 0) {
 				create(a_rhs);
 			}
 		}
@@ -71,7 +71,7 @@ namespace RE
 		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
 		BSPointerHandle& operator=(const Y* a_rhs)
 		{
-			if (a_rhs && a_rhs->GetRefCount() > 0) {
+			if (a_rhs && a_rhs->BSHandleRefObject::QRefCount() > 0) {
 				create(a_ptr);
 			} else {
 				reset();

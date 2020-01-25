@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSResource/StreamBase.h"
+#include "RE/BSFixedString.h"
 #include "RE/BSTSmartPointer.h"
 
 
@@ -25,7 +26,11 @@ namespace RE
 			inline static const void* RTTI = RTTI_BSResource__Stream;
 
 
-			virtual ~Stream();																					// 00
+			Stream();
+			Stream(const Stream& a_rhs);
+			Stream(Stream&& a_rhs);
+			Stream(UInt32 a_totalSize);
+			virtual ~Stream() = default;																		// 00
 
 			// add
 			virtual void		DoClone(BSTSmartPointer<Stream>& a_out) const = 0;								// 05
@@ -33,8 +38,8 @@ namespace RE
 			virtual ErrorCode	DoWrite(const void* a_buffer, UInt64 a_toWrite, UInt64& a_written) const = 0;	// 07
 			virtual ErrorCode	DoSeek(UInt64 a_toSeek, SeekMode a_mode, UInt64& a_sought) const = 0;			// 08
 			virtual ErrorCode	DoSetEndOfStream();																// 09 - { return ErrorCode::kUnsupported; }
-			virtual bool		DoGetName(BSFixedString& a_dst) const;											// 0A - { a_dst = ""; }
-			virtual ErrorCode	DoCreateAsync(BSTSmartPointer<BSResource::AsyncStream>& a_streamOut) const;		// 0B - { return ErrorCode::kUnsupported; }
+			virtual bool		DoGetName(BSFixedString& a_dst) const;											// 0A - { a_dst = ""; return false; }
+			virtual ErrorCode	DoCreateAsync(BSTSmartPointer<AsyncStream>& a_streamOut) const;					// 0B - { return ErrorCode::kUnsupported; }
 		};
 		STATIC_ASSERT(sizeof(Stream) == 0x10);
 	}

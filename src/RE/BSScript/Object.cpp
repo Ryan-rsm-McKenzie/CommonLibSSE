@@ -66,18 +66,18 @@ namespace RE
 		}
 
 
-		void Object::IncRefCount()
+		void Object::IncRef()
 		{
-			using func_t = function_type_t<decltype(&Object::IncRefCount)>;
-			REL::Offset<func_t*> func(Offset::BSScript::Object::IncRefCount);
+			using func_t = function_type_t<decltype(&Object::IncRef)>;
+			REL::Offset<func_t*> func(Offset::BSScript::Object::IncRef);
 			return func(this);
 		}
 
 
-		SInt32 Object::DecRefCount()
+		UInt32 Object::DecRef()
 		{
-			using func_t = function_type_t<decltype(&Object::DecRefCount)>;
-			REL::Offset<func_t*> func(Offset::BSScript::Object::DecRefCount);
+			using func_t = function_type_t<decltype(&Object::DecRef)>;
+			REL::Offset<func_t*> func(Offset::BSScript::Object::DecRef);
 			return func(this);
 		}
 

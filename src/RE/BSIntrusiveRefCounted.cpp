@@ -8,13 +8,13 @@ namespace RE
 	{}
 
 
-	SInt32 BSIntrusiveRefCounted::IncRefCount()
+	UInt32 BSIntrusiveRefCounted::IncRef()
 	{
 		return InterlockedIncrement(&_refCount);
 	}
 
 
-	SInt32 BSIntrusiveRefCounted::DecRefCount()
+	UInt32 BSIntrusiveRefCounted::DecRef()
 	{
 		return InterlockedDecrement(&_refCount);
 	}

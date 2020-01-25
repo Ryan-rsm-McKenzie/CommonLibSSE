@@ -1059,6 +1059,8 @@
 #include "RE/ZeroOverheadHeap.h"
 #include "RE/bgs/saveload/Request.h"
 #include "RE/BSAttachTechniques/AttachTechniqueInput.h"
+#include "RE/BSResource/AsyncStream.h"
+#include "RE/BSResource/BSSystemFile.h"
 #include "RE/BSResource/DevNull.h"
 #include "RE/BSResource/ErrorCodes.h"
 #include "RE/BSResource/FileID.h"

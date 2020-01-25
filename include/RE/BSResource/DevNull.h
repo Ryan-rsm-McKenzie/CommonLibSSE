@@ -31,13 +31,13 @@ namespace RE
 			STATIC_ASSERT(sizeof(NullStream) == 0x10);
 
 
-			virtual ~DevNull();																																								// 00
+			virtual ~DevNull();																															// 00
 
 			// override (Location)
-			virtual ErrorCode	DoMount() override;																																			// 01 - { return ErrorCode::kNone; }
-			virtual void		DoUnmount() override;																																		// 02 - { return; }
-			virtual ErrorCode	DoCreateStream(const char* a_path, BSTSmartPointer<Stream>& a_stream, Location*& a_location, bool a_createFile, LocationTraverser* a_traverser) override;	// 03
-			virtual ErrorCode	DoTraversePrefix(const char* a_path, LocationTraverser& a_traverser) override;																				// 05 - { return ErrorCode::kNotExist; }
+			virtual ErrorCode	DoMount() override;																										// 01 - { return ErrorCode::kNone; }
+			virtual void		DoUnmount() override;																									// 02 - { return; }
+			virtual ErrorCode	DoCreateStream(const char* a_path, BSTSmartPointer<Stream>& a_stream, Location*& a_location, bool a_readOnly) override;	// 03
+			virtual ErrorCode	DoTraversePrefix(const char* a_path, LocationTraverser& a_traverser) override;											// 05 - { return ErrorCode::kNotExist; }
 
 
 			// members

@@ -173,7 +173,11 @@
     <ClCompile Include="src\RE\BGSColorForm.cpp" />
     <ClCompile Include="src\RE\BGSFootstepManager.cpp" />
     <ClCompile Include="src\RE\BGSStoryTeller.cpp" />
+    <ClCompile Include="src\RE\BSResource\BSSystemFile.cpp" />
     <ClCompile Include="src\RE\BSResource\Location.cpp" />
+    <ClCompile Include="src\RE\BSResource\LooseFileStream.cpp" />
+    <ClCompile Include="src\RE\BSResource\Stream.cpp" />
+    <ClCompile Include="src\RE\BSResource\StreamBase.cpp" />
     <ClCompile Include="src\RE\BSScript\ByteCode\PackedInstructionStream.cpp" />
     <ClCompile Include="src\RE\BSScript\Internal\VDescTable.cpp" />
     <ClCompile Include="src\RE\BSScript\IVirtualMachine.cpp" />
@@ -458,6 +462,8 @@
     <ClInclude Include="include\RE\BSPointerHandleManager.h" />
     <ClInclude Include="include\RE\BSPointerHandleManagerInterface.h" />
     <ClInclude Include="include\RE\BSPointerHandleSmartPointer.h" />
+    <ClInclude Include="include\RE\BSResource\AsyncStream.h" />
+    <ClInclude Include="include\RE\BSResource\BSSystemFile.h" />
     <ClInclude Include="include\RE\BSResource\ErrorCodes.h" />
     <ClInclude Include="include\RE\BSResource\FileID.h" />
     <ClInclude Include="include\RE\BSResource\ID.h" />
