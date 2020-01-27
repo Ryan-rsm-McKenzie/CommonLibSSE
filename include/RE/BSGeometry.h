@@ -19,6 +19,26 @@ namespace RE
 		inline static const void* Ni_RTTI = NiRTTI_BSGeometry;
 
 
+		enum class Type : UInt8
+		{
+			kGeometry = 0,
+			kParticles = 1,
+			kStripParticles = 2,
+			kTriShape = 3,
+			kDynamicTriShape = 4,
+			kMeshLODTriShape = 5,
+			kLODMultiIndexTriShape = 6,
+			kMultiIndexTriShape = 7,
+			kSubIndexTriShape = 8,
+			kSubIndexLandTriShape = 9,
+			kMultiStreamInstanceTriShape = 10,
+			kParticleShaderDynamicTriShape = 11,
+			kLines = 12,
+			kDynamicLines = 13,
+			kInstanceGroup = 14
+		};
+
+
 		struct States
 		{
 			enum State
@@ -60,10 +80,13 @@ namespace RE
 		NiBound						modelBound;					// 110
 		NiPointer<NiProperty>		properties[States::kTotal];	// 120
 		NiPointer<NiSkinInstance>	skinInstance;				// 130
-		UInt64						unk138;						// 138
+		void*						rendererData;				// 138
 		void*						unk140;						// 140 - smart ptr
-		UInt64						unk148;						// 148
-		UInt64						unk150;						// 150
+		UInt64						vertexDesc;					// 148
+		Type						type;						// 150
+		UInt8						pad151;						// 151
+		UInt16						pad152;						// 152
+		UInt32						pad154;						// 154
 	};
 	STATIC_ASSERT(sizeof(BSGeometry) == 0x158);
 }
