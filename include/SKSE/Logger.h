@@ -7,6 +7,7 @@
 #include <filesystem>
 #include <fstream>
 #include <ios>
+#include <mutex>
 #include <regex>
 #include <string>
 #include <utility>
@@ -20,7 +21,7 @@ namespace SKSE
 {
 	namespace Impl
 	{
-		class ConsoleLogger;
+		class MacroLogger;
 		class TrampolineLogger;
 	}
 
@@ -66,7 +67,11 @@ namespace SKSE
 		static void VPrint(Level a_level, const char* a_format, ...);
 
 	private:
-		friend class Impl::ConsoleLogger;
+		using Lock = std::mutex;
+		using Locker = std::lock_guard<Lock>;
+
+
+		friend class Impl::MacroLogger;
 		friend class Impl::TrampolineLogger;
 		friend class LogEventHandler;
 
@@ -114,12 +119,14 @@ namespace SKSE
 		Logger& operator=(const Logger&) = delete;
 		Logger& operator=(Logger&&) = delete;
 
+		static StampType LevelToStamp(Level a_level);
 		static const char* GetLogStamp(StampType a_type);
 		static std::string GetTimeStamp();
-		static void Print_Impl(Level a_level, const char* a_string, StampType a_type);
-		static void VPrint_Impl(Level a_level, const char* a_format, std::va_list a_args, StampType a_type);
+		static void Print_Impl(const char* a_prefix, Level a_level, const char* a_string, StampType a_type);
+		static void VPrint_Impl(const char* a_prefix, Level a_level, const char* a_format, std::va_list a_args, StampType a_type);
 
 
+		static Lock _lock;
 		static std::ofstream _file;
 		static std::regex _papyrusLogFilter;
 		static Level _printLevel;
@@ -154,34 +161,43 @@ namespace SKSE
 		};
 
 
-		class ConsoleLogger
+		class MacroLogger
 		{
 		public:
-			static void VPrint(const char* a_file, const std::size_t a_line, Logger::Level a_level, const char* a_format, ...);
+			static void VPrint(const char* a_file, std::size_t a_line, Logger::Level a_level, const char* a_format, ...);
 
 		private:
-			ConsoleLogger() = delete;
-			ConsoleLogger(const ConsoleLogger&) = delete;
-			ConsoleLogger(ConsoleLogger&&) = delete;
-			~ConsoleLogger() = delete;
+			MacroLogger() = delete;
+			MacroLogger(const MacroLogger&) = delete;
+			MacroLogger(MacroLogger&&) = delete;
+			~MacroLogger() = delete;
 
-			ConsoleLogger& operator=(const ConsoleLogger&) = delete;
-			ConsoleLogger& operator=(ConsoleLogger&&) = delete;
+			MacroLogger& operator=(const MacroLogger&) = delete;
+			MacroLogger& operator=(MacroLogger&&) = delete;
 		};
 
 
 		class TrampolineLogger
 		{
 		public:
-			static void LogStats(const Trampoline& a_trampoline);
+			static void LogStats(const char* a_file, std::size_t a_line, const Trampoline& a_trampoline);
+
+		private:
+			TrampolineLogger() = delete;
+			TrampolineLogger(const TrampolineLogger&) = delete;
+			TrampolineLogger(TrampolineLogger&&) = delete;
+			~TrampolineLogger() = delete;
+
+			TrampolineLogger& operator=(const TrampolineLogger&) = delete;
+			TrampolineLogger& operator=(TrampolineLogger&&) = delete;
 		};
 	}
 }
 
 
-#define _DMESSAGE(a_fmt, ...)	SKSE::Impl::ConsoleLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kDebugMessage, a_fmt, __VA_ARGS__)
-#define _VMESSAGE(a_fmt, ...)	SKSE::Impl::ConsoleLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kVerboseMessage, a_fmt, __VA_ARGS__)
-#define _MESSAGE(a_fmt, ...)	SKSE::Impl::ConsoleLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kMessage, a_fmt, __VA_ARGS__)
-#define _WARNING(a_fmt, ...)	SKSE::Impl::ConsoleLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kWarning, a_fmt, __VA_ARGS__)
-#define _ERROR(a_fmt, ...)		SKSE::Impl::ConsoleLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kError, a_fmt, __VA_ARGS__)
-#define _FATALERROR(a_fmt, ...)	SKSE::Impl::ConsoleLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kFatalError, a_fmt, __VA_ARGS__)
+#define _DMESSAGE(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kDebugMessage, a_fmt, __VA_ARGS__)
+#define _VMESSAGE(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kVerboseMessage, a_fmt, __VA_ARGS__)
+#define _MESSAGE(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kMessage, a_fmt, __VA_ARGS__)
+#define _WARNING(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kWarning, a_fmt, __VA_ARGS__)
+#define _ERROR(a_fmt, ...)		SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kError, a_fmt, __VA_ARGS__)
+#define _FATALERROR(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kFatalError, a_fmt, __VA_ARGS__)

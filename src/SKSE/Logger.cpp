@@ -164,14 +164,14 @@ namespace SKSE
 
 	void Logger::Print(const char* a_string)
 	{
-		Print_Impl(Level::kMessage, a_string, StampType::kMessage);
+		Print_Impl("", Level::kMessage, a_string, StampType::kMessage);
 	}
 
 
 	void Logger::Print(Level a_level, const char* a_string)
 	{
 		if (a_level >= _printLevel) {
-			Print_Impl(a_level, a_string, static_cast<StampType>(a_level));
+			Print_Impl("", a_level, a_string, LevelToStamp(a_level));
 		}
 	}
 
@@ -180,7 +180,7 @@ namespace SKSE
 	{
 		std::va_list args;
 		va_start(args, a_format);
-		VPrint_Impl(Level::kMessage, a_format, args, StampType::kMessage);
+		VPrint_Impl("", Level::kMessage, a_format, args, StampType::kMessage);
 		va_end(args);
 	}
 
@@ -190,7 +190,7 @@ namespace SKSE
 		if (a_level >= _printLevel) {
 			std::va_list args;
 			va_start(args, a_format);
-			VPrint_Impl(a_level, a_format, args, static_cast<StampType>(a_level));
+			VPrint_Impl("", a_level, a_format, args, LevelToStamp(a_level));
 			va_end(args);
 		}
 	}
@@ -208,10 +208,17 @@ namespace SKSE
 		-> EventResult
 	{
 		if (a_event->errorMsg && std::regex_search(a_event->errorMsg, Logger::_papyrusLogFilter)) {
-			Logger::Print_Impl(Logger::Level::kMessage, a_event->errorMsg, Logger::StampType::kPapyrus);
+			Logger::Print_Impl("", Logger::Level::kMessage, a_event->errorMsg, Logger::StampType::kPapyrus);
 		}
 
 		return EventResult::kContinue;
+	}
+
+
+	auto Logger::LevelToStamp(Level a_level)
+		-> StampType
+	{
+		return static_cast<StampType>(a_level);
 	}
 
 
@@ -267,11 +274,13 @@ namespace SKSE
 	}
 
 
-	void Logger::Print_Impl(Level a_level, const char* a_string, StampType a_type)
+	void Logger::Print_Impl(const char* a_prefix, Level a_level, const char* a_string, StampType a_type)
 	{
 		std::ostringstream oss;
+		oss << a_prefix << GetLogStamp(a_type) << GetTimeStamp() << a_string << '\n';
 
-		oss << GetLogStamp(a_type) << GetTimeStamp() << a_string << '\n';
+		Locker locker(_lock);
+
 		_file << oss.str().c_str();
 
 #if _DEBUG
@@ -284,13 +293,14 @@ namespace SKSE
 	}
 
 
-	void Logger::VPrint_Impl(Level a_level, const char* a_format, std::va_list a_args, StampType a_type)
+	void Logger::VPrint_Impl(const char* a_prefix, Level a_level, const char* a_format, std::va_list a_args, StampType a_type)
 	{
 		Impl::VArgFormatter fmt(a_format, a_args);
-		Print_Impl(a_level, fmt.c_str(), a_type);
+		Print_Impl(a_prefix, a_level, fmt.c_str(), a_type);
 	}
 
 
+	decltype(Logger::_lock) Logger::_lock;
 	decltype(Logger::_file) Logger::_file;
 	decltype(Logger::_papyrusLogFilter) Logger::_papyrusLogFilter(".", Logger::DF_REGEXFLAGS);
 	decltype(Logger::_printLevel) Logger::_printLevel = Logger::Level::kMessage;
@@ -360,44 +370,39 @@ namespace SKSE
 		}
 
 
-		void ConsoleLogger::VPrint(const char* a_file, const std::size_t a_line, Logger::Level a_level, const char* a_format, ...)
+		void MacroLogger::VPrint(const char* a_file, std::size_t a_line, Logger::Level a_level, const char* a_format, ...)
 		{
 			if (a_level < Logger::_printLevel) {
 				return;
 			}
 
+			std::ostringstream oss;
+			oss << a_file << '(' << a_line << "): ";
+
 			std::va_list args;
 			va_start(args, a_format);
-			VArgFormatter fmt(a_format, args);
+			Logger::VPrint_Impl(oss.str().c_str(), a_level, a_format, args, Logger::LevelToStamp(a_level));
 			va_end(args);
-
-			std::ostringstream oss;
-			oss << a_file << '(' << a_line << "): " << Logger::GetLogStamp(static_cast<Logger::StampType>(a_level)) << Logger::GetTimeStamp() << fmt.c_str() << '\n';
-			Logger::_file << oss.str().c_str();
-
-			if (a_level >= Logger::_flushLevel) {
-				Logger::_file.flush();
-			}
-
-#if _DEBUG
-			OutputDebugStringA(oss.str().c_str());
-#endif
 		}
 
 
-		void TrampolineLogger::LogStats(const Trampoline& a_trampoline)
+		void TrampolineLogger::LogStats(const char* a_file, std::size_t a_line, const Trampoline& a_trampoline)
 		{
 			if (!Logger::_trackTrampolineStats) {
 				return;
 			}
+
+			std::ostringstream prefix;
+			prefix << a_file << '(' << a_line << "): ";
 
 			auto size = a_trampoline._size;
 			auto capacity = a_trampoline._capacity;
 			auto& name = a_trampoline._name;
 
 			auto pct = (static_cast<double>(size) / static_cast<double>(capacity)) * 100.0;
-			VArgFormatter fmt("%s => %zuB / %zuB (%05.2f%%)", name.c_str(), size, capacity, pct);
-			Logger::Print_Impl(Logger::Level::kMessage, fmt.c_str(), Logger::StampType::kTrampoline);
+			VArgFormatter postfix("%s => %zuB / %zuB (%05.2f%%)", name.c_str(), size, capacity, pct);
+
+			Logger::Print_Impl(prefix.str().c_str(), Logger::Level::kMessage, postfix.c_str(), Logger::StampType::kTrampoline);
 		}
 	}
 }

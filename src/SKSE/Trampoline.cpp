@@ -449,7 +449,7 @@ namespace SKSE
 
 	void Trampoline::LogStats() const
 	{
-		Impl::TrampolineLogger::LogStats(*this);
+		Impl::TrampolineLogger::LogStats(__FILE__, __LINE__, *this);
 	}
 
 

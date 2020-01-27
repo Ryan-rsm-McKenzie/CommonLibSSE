@@ -118,9 +118,12 @@ namespace RE
 	};
 
 
-	template <class CharT, UInt16 N, template <class, UInt32> class Allocator>
-	class BSStringT : public Allocator<CharT, static_cast<UInt32>(N)>
+	template <class CharT, UInt32 N, template <class, UInt32> class Allocator>
+	class BSStringT : public Allocator<CharT, N>
 	{
+	private:
+		static constexpr auto MAX = static_cast<UInt16>(N);
+
 	public:
 		using traits_type = std::char_traits<CharT>;
 		using value_type = CharT;
@@ -312,7 +315,7 @@ namespace RE
 
 		size_type size() const noexcept
 		{
-			return _size != N ? _size : traits_type::length(_data);
+			return _size != MAX ? _size : traits_type::length(_data);
 		}
 
 
@@ -378,9 +381,9 @@ namespace RE
 				a_len = traits_type::length(a_str);
 			}
 
-			size_type newSize = a_len > N ? N : a_len;
+			size_type newSize = a_len > MAX ? MAX : a_len;
 			++a_len;
-			size_type newCap = a_len > N ? N : a_len;
+			size_type newCap = a_len > MAX ? MAX : a_len;
 
 			if (a_len <= _capacity) {
 				traits_type::copy(_data, a_str, a_len);
@@ -400,6 +403,7 @@ namespace RE
 			_data = newData;
 			_size = newSize;
 			_capacity = newCap;
+			return true;
 		}
 
 
@@ -411,11 +415,11 @@ namespace RE
 	};
 
 
-	using BSString = BSStringT<char, -1, DynamicMemoryManagementPol>;
+	using BSString = BSStringT<char, static_cast<UInt32>(-1), DynamicMemoryManagementPol>;
 	STATIC_ASSERT(sizeof(BSString) == 0x10);
 
 
-	template <UInt16 N>
+	template <UInt32 N>
 	class BSStaticStringT : public BSStringT<char, N, FixedLengthMemoryManagementPol>
 	{
 	public:
