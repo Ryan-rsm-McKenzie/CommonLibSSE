@@ -1824,6 +1824,9 @@
     <ClCompile Include="src\RE\BSResource\Stream.cpp">
       <Filter>src\RE\BSResource\StreamBase\Stream</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BSVisit.cpp">
+      <Filter>src\RE\NetImmerse</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -5299,6 +5302,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSResource\AsyncStream.h">
       <Filter>include\RE\BSResource\StreamBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSVisit.h">
+      <Filter>include\RE\NetImmerse</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -269,13 +269,25 @@ namespace RE
 
 		std::pair<iterator, bool> insert(const value_type& a_value)
 		{
-			return insert_impl(a_value);
+			return insert_impl(false, a_value);
 		}
 
 
 		std::pair<iterator, bool> insert(value_type&& a_value)
 		{
-			return insert_impl(std::move(a_value));
+			return insert_impl(false, std::move(a_value));
+		}
+
+
+		std::pair<iterator, bool> insert_or_assign(const value_type& a_value)
+		{
+			return insert_impl(true, a_value);
+		}
+
+
+		std::pair<iterator, bool> insert_or_assign(value_type&& a_value)
+		{
+			return insert_impl(true, std::move(a_value));
 		}
 
 
@@ -303,7 +315,7 @@ namespace RE
 
 			if (entry->next == _sentinel) {	// if no chain
 				if (tail) {
-					tail->next = _sentinel;
+					tail->next = const_cast<entry_type*>(_sentinel);
 				}
 				entry->next = 0;
 			} else {	// else move next entry into current
@@ -346,6 +358,18 @@ namespace RE
 			grow(newCount);
 		}
 
+
+		hasher hash_function() const
+		{
+			return hasher();
+		}
+
+
+		key_equal key_eq() const
+		{
+			return key_equal();
+		}
+
 	private:
 		entry_type* find_impl(const key_type& a_key) const
 		{
@@ -371,11 +395,11 @@ namespace RE
 
 
 		template <class Arg>
-		std::pair<iterator, bool> insert_impl(Arg&& a_value)
+		std::pair<iterator, bool> insert_impl(bool a_overwrite, Arg&& a_value)
 		{
 			if (!get_entries() || !_freeCount) {
 				if (!grow()) {
-					return std::make_pair(end(), false);
+					return std::make_pair(end(), false);	// maybe throw?
 				}
 			}
 
@@ -388,6 +412,10 @@ namespace RE
 
 			for (auto iter = idealEntry; iter != _sentinel; iter = iter->next) {
 				if (comp_key(get_key(iter->value), get_key(a_value))) {	// if entry already in table
+					if (a_overwrite) {
+						iter->value.~value_type();
+						new (std::addressof(iter->value)) value_type(std::forward<Arg>(a_value));
+					}
 					return std::make_pair(make_iterator(iter), false);
 				}
 			}
@@ -430,8 +458,7 @@ namespace RE
 
 		UInt32 calc_hash(const key_type& a_key) const
 		{
-			hasher h;
-			return h(a_key);
+			return hash_function()(a_key);
 		}
 
 
@@ -463,8 +490,7 @@ namespace RE
 
 		bool comp_key(const key_type& a_lhs, const key_type& a_rhs) const
 		{
-			key_equal eq;
-			return eq(a_lhs, a_rhs);
+			return key_eq()(a_lhs, a_rhs);
 		}
 
 

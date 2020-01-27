@@ -182,6 +182,7 @@
     <ClCompile Include="src\RE\BSScript\Internal\VDescTable.cpp" />
     <ClCompile Include="src\RE\BSScript\IVirtualMachine.cpp" />
     <ClCompile Include="src\RE\BSScript\MemoryPage.cpp" />
+    <ClCompile Include="src\RE\BSVisit.cpp" />
     <ClCompile Include="src\RE\BSXFlags.cpp" />
     <ClCompile Include="src\RE\ExtraLightData.cpp" />
     <ClCompile Include="src\RE\ExtraPoison.cpp" />
@@ -476,6 +477,7 @@
     <ClInclude Include="include\RE\BSTimer.h" />
     <ClInclude Include="include\RE\BSTTuple.h" />
     <ClInclude Include="include\RE\BSUntypedPointerHandle.h" />
+    <ClInclude Include="include\RE\BSVisit.h" />
     <ClInclude Include="include\RE\BSXFlags.h" />
     <ClInclude Include="include\RE\CFilter.h" />
     <ClInclude Include="include\RE\CollisionLayers.h" />

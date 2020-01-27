@@ -836,10 +836,6 @@ namespace RE
 			constexpr std::uintptr_t SetMotionType = 0x00DA81E0;	// 1_5_97
 			// IndirectSig: E8 ? ? ? ? EB 09 48 8B CB E8 ? ? ? ? 90 48 8B 8C 24 ? ? ? ?
 			constexpr std::uintptr_t Update = 0x00C56B50;			// 1_5_97
-			//
-			constexpr std::uintptr_t UpdateModelHair = 0x003DC7E0;	// 1_5_97
-			//
-			constexpr std::uintptr_t UpdateModelSkin = 0x003DC720;	// 1_5_97
 		}
 
 

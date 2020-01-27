@@ -493,15 +493,14 @@ namespace RE
 		if (npc && npc->headRelatedData) {
 			auto hairColor = npc->headRelatedData->hairColor;
 			if (hairColor) {
-				NiColorA val;
-				val.red = hairColor->color.red / 128.0;
-				val.green = hairColor->color.green / 128.0;
-				val.blue = hairColor->color.blue / 128.0;
-				auto color = &val;
+				NiColor color;
+				color.red = hairColor->color.red / 128.0;
+				color.green = hairColor->color.green / 128.0;
+				color.blue = hairColor->color.blue / 128.0;
 
-				auto model = Get3D(0);
+				auto model = Get3D(false);
 				if (model) {
-					model->UpdateModelHair(&color);
+					model->UpdateHairColor(color);
 				}
 			}
 		}
@@ -512,20 +511,19 @@ namespace RE
 	{
 		auto npc = GetActorBase();
 		if (npc) {
-			NiColorA val;
-			val.red = npc->bodyTintColor.red / 255.0;
-			val.green = npc->bodyTintColor.green / 255.0;
-			val.blue = npc->bodyTintColor.blue / 255.0;
-			auto color = &val;
+			NiColor color;
+			color.red = npc->bodyTintColor.red / 255.0;
+			color.green = npc->bodyTintColor.green / 255.0;
+			color.blue = npc->bodyTintColor.blue / 255.0;
 
-			auto thirdPerson = Get3D(0);
+			auto thirdPerson = Get3D(false);
 			if (thirdPerson) {
-				thirdPerson->UpdateModelSkin(&color);
+				thirdPerson->UpdateBodyTint(color);
 			}
 
-			auto firstPerson = Get3D(1);
+			auto firstPerson = Get3D(true);
 			if (firstPerson) {
-				firstPerson->UpdateModelSkin(&color);
+				firstPerson->UpdateBodyTint(color);
 			}
 		}
 	}

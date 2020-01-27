@@ -299,6 +299,7 @@
 #include "RE/BSUIScaleformData.h"
 #include "RE/BSUntypedPointerHandle.h"
 #include "RE/BSVirtualKeyboardDevice.h"
+#include "RE/BSVisit.h"
 #include "RE/BSVolumetricLightingRenderData.h"
 #include "RE/BSWin32GamepadDevice.h"
 #include "RE/BSWin32KeyboardDevice.h"

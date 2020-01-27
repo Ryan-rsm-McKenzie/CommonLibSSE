@@ -3,11 +3,22 @@
 
 namespace RE
 {
+	class NiColor;
+	class NiColorA;
+
+
 	class NiColor
 	{
 	public:
 		NiColor();
+		NiColor(const NiColor& a_rhs);
+		NiColor(NiColor&& a_rhs);
 		NiColor(float a_red, float a_green, float a_blue);
+		~NiColor() = default;
+
+		NiColor& operator=(const NiColor& a_rhs);
+		NiColor& operator=(NiColor&& a_rhs);
+		NiColor& operator=(const NiColorA& a_rhs);
 
 
 		// members
@@ -22,7 +33,14 @@ namespace RE
 	{
 	public:
 		NiColorA();
+		NiColorA(const NiColorA& a_rhs);
+		NiColorA(NiColorA&& a_rhs);
 		NiColorA(float a_red, float a_green, float a_blue, float a_alpha);
+		~NiColorA() = default;
+
+		NiColorA& operator=(const NiColorA& a_rhs);
+		NiColorA& operator=(NiColorA&& a_rhs);
+		NiColorA& operator=(const NiColor& a_rhs);
 
 
 		// members

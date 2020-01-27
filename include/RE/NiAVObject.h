@@ -12,7 +12,7 @@ namespace RE
 	class NiAlphaProperty;
 	class NiAVObject;
 	class NiCollisionObject;
-	class NiColorA;
+	class NiColor;
 	class NiCullingProcess;
 	class NiNode;
 	class NiPoint3;
@@ -115,8 +115,8 @@ namespace RE
 
 		bool	SetMotionType(UInt32 a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
 		void	Update(NiUpdateData& a_data);
-		void	UpdateModelHair(NiColorA** a_color);
-		void	UpdateModelSkin(NiColorA** a_color);
+		void	UpdateBodyTint(const NiColor& a_color);
+		void	UpdateHairColor(const NiColor& a_color);
 
 
 		// members
