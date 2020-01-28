@@ -365,6 +365,7 @@ namespace RE
 
 		static NiPointer<TESObjectREFR>	LookupByHandle(RefHandle a_refHandle);
 		static bool						LookupByHandle(RefHandle a_refHandle, NiPointer<TESObjectREFR>& a_refrOut);
+		static TESObjectREFR*			FindReferenceFor3D(NiAVObject* a_object3D);
 
 		ObjectRefHandle						CreateRefHandle();
 		void								DoTrap(TrapData& a_data);

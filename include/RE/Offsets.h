@@ -1079,6 +1079,13 @@ namespace RE
 		}
 
 
+		namespace TESHavokUtilities
+		{
+			// IndirectSig: E8 ? ? ? ? 48 3B 05 ? ? ? ? 75 0C
+			constexpr std::uintptr_t FindCollidableRef = 0x003A4DD0;	// 1_5_97
+		}
+
+
 		namespace TESNPC
 		{
 			// IndirectSig: E8 ? ? ? ? EB 07 8B D5
@@ -1124,6 +1131,8 @@ namespace RE
 			constexpr std::uintptr_t GetOwner = 0x002A6670;					// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 41 8B CE 3B C1
 			constexpr std::uintptr_t GetStealValue = 0x001D9080;			// 1_5_97
+			// IndirectSig: E8 ? ? ? ? 48 8B F8 48 89 85 ? ? ? ? 48 85 C0 74 04 F0 FF 40 28 84 DB
+			constexpr std::uintptr_t FindReferenceFor3D = 0x002945E0;		// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 4D 85 FF 75 26
 			constexpr std::uintptr_t InitInventoryIfRequired = 0x001D8D10;	// 1_5_97
 			// IndirectSig: E8 ? ? ? ? 48 8B 1D ? ? ? ? 48 8B CF 83 FE 01

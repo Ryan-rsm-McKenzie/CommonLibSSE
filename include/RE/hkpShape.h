@@ -18,6 +18,7 @@ namespace RE
 	class hkpShapeContainer;
 	class hkpShapeRayBundleCastInput;
 	class hkpShapeRayBundleCastOutput;
+	class hkVector4;
 	struct hkpShapeRayCastInput;
 	struct hkpShapeRayCastOutput;
 

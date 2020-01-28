@@ -44,6 +44,14 @@ namespace RE
 	}
 
 
+	TESObjectREFR* TESObjectREFR::FindReferenceFor3D(NiAVObject* a_object3D)
+	{
+		using func_t = function_type_t<decltype(&TESObjectREFR::FindReferenceFor3D)>;
+		REL::Offset<func_t*> func(Offset::TESObjectREFR::FindReferenceFor3D);
+		return func(a_object3D);
+	}
+
+
 	ObjectRefHandle TESObjectREFR::CreateRefHandle()
 	{
 		return ObjectRefHandle(this);

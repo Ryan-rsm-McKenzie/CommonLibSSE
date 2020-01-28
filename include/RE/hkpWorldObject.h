@@ -60,7 +60,7 @@ namespace RE
 
 		// members
 		hkpWorld*				world;				// 10
-		UInt64					userData;			// 18
+		UInt64					userData;			// 18 - bhkWorldObject*?
 		hkpLinkedCollidable		collidable;			// 20
 		hkMultiThreadCheck		multiThreadCheck;	// A0
 		UInt32					padAC;				// AC

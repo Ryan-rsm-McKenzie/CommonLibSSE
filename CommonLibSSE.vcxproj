@@ -340,6 +340,7 @@
     <ClCompile Include="src\RE\ScriptEventSourceHolder.cpp" />
     <ClCompile Include="src\RE\ExtraLock.cpp" />
     <ClCompile Include="src\RE\GFxLoader.cpp" />
+    <ClCompile Include="src\RE\TESHavokUtilities.cpp" />
     <ClCompile Include="src\RE\UIBlurManager.cpp" />
     <ClCompile Include="src\RE\UserEvents.cpp" />
     <ClCompile Include="src\RE\Misc.cpp" />
@@ -441,7 +442,9 @@
     <ClInclude Include="include\RE\BGSLocalizedStringDL.h" />
     <ClInclude Include="include\RE\BGSStoryTeller.h" />
     <ClInclude Include="include\RE\bhkCollisionObject.h" />
+    <ClInclude Include="include\RE\bhkEntity.h" />
     <ClInclude Include="include\RE\bhkNiCollisionObject.h" />
+    <ClInclude Include="include\RE\bhkRigidBody.h" />
     <ClInclude Include="include\RE\BipedObjects.h" />
     <ClInclude Include="include\RE\BleedoutCameraState.h" />
     <ClInclude Include="include\RE\BSAnimNoteListener.h" />
@@ -1343,6 +1346,7 @@
     <ClInclude Include="include\RE\ExtraContainerChanges.h" />
     <ClInclude Include="include\RE\TESDeathEvent.h" />
     <ClInclude Include="include\RE\TESGrabReleaseEvent.h" />
+    <ClInclude Include="include\RE\TESHavokUtilities.h" />
     <ClInclude Include="include\RE\TESQuestStageItem.h" />
     <ClInclude Include="include\RE\TESResetEvent.h" />
     <ClInclude Include="include\RE\TESSwitchRaceCompleteEvent.h" />
