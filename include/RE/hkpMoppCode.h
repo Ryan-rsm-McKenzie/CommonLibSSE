@@ -23,6 +23,8 @@ namespace RE
 
 		struct CodeInfo
 		{
+		public:
+			// members
 			hkVector4 offset;	// 00
 		};
 		STATIC_ASSERT(sizeof(CodeInfo) == 0x10);

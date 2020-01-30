@@ -39,6 +39,10 @@ namespace RE
 		STATIC_ASSERT(sizeof(BoundingVolumeData) == 0x38);
 
 
+		void* GetOwner() const;
+		template <class T> T* GetOwner() const { return static_cast<T*>(GetOwner()); }
+
+
 		// members
 		SInt8						ownerOffset;				// 20
 		UInt8						forceCollideOntoPpu;		// 21

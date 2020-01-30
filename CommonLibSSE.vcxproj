@@ -187,6 +187,8 @@
     <ClCompile Include="src\RE\ExtraLightData.cpp" />
     <ClCompile Include="src\RE\ExtraPoison.cpp" />
     <ClCompile Include="src\RE\bhkCharProxyController.cpp" />
+    <ClCompile Include="src\RE\hkpBroadPhase.cpp" />
+    <ClCompile Include="src\RE\hkpCollidable.cpp" />
     <ClCompile Include="src\RE\hkpMaterial.cpp" />
     <ClCompile Include="src\RE\IAnimationGraphManagerHolder.cpp" />
     <ClCompile Include="src\RE\Main.cpp" />
@@ -497,9 +499,16 @@
     <ClInclude Include="include\RE\FightReactions.h" />
     <ClInclude Include="include\RE\HandleManager.h" />
     <ClInclude Include="include\RE\hkAabb.h" />
+    <ClInclude Include="include\RE\hkp3AxisSweep.h" />
+    <ClInclude Include="include\RE\hkpBroadPhase.h" />
+    <ClInclude Include="include\RE\hkpBroadPhaseCastCollector.h" />
+    <ClInclude Include="include\RE\hkpCollisionInput.h" />
+    <ClInclude Include="include\RE\hkpLinearCastCollisionInput.h" />
+    <ClInclude Include="include\RE\hkpLinearCastInput.h" />
     <ClInclude Include="include\RE\hkpMoppCode.h" />
     <ClInclude Include="include\RE\hkpSolverInfo.h" />
     <ClInclude Include="include\RE\hkpWorldCinfo.h" />
+    <ClInclude Include="include\RE\hkpWorldLinearCaster.h" />
     <ClInclude Include="include\RE\IHandlerFunctor.h" />
     <ClInclude Include="include\RE\ImageSpaceModifierInstance.h" />
     <ClInclude Include="include\RE\ImageSpaceModifierInstanceDOF.h" />

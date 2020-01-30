@@ -1120,6 +1120,24 @@
     <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkEntity">
       <UniqueIdentifier>{4323f1bd-f63d-409f-923c-d1f35a815143}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpBroadPhase">
+      <UniqueIdentifier>{5165411f-34e8-4ba1-842e-9a633cd69b60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpBroadPhase">
+      <UniqueIdentifier>{961746e0-663b-4067-a3c4-f3143a11c3b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkpBroadPhaseCastCollector">
+      <UniqueIdentifier>{9fcbe471-d63a-4dae-b5ba-a6ceb4b34d42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkpCollisionInput">
+      <UniqueIdentifier>{215d8b99-f2a9-4958-9fc5-958c2bb64c36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSHavok\hkpCdBody">
+      <UniqueIdentifier>{fbd96269-f173-4295-801f-5be90c2c0e87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSHavok\hkpCdBody\hkpCollidable">
+      <UniqueIdentifier>{647e75a8-35a9-42c5-8210-a1e7c573bda8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1832,6 +1850,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\TESHavokUtilities.cpp">
       <Filter>src\RE\BSHavok</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\hkpBroadPhase.cpp">
+      <Filter>src\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpBroadPhase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\hkpCollidable.cpp">
+      <Filter>src\RE\BSHavok\hkpCdBody\hkpCollidable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5319,6 +5343,27 @@
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkEntity</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\TESHavokUtilities.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpBroadPhase.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpBroadPhase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkp3AxisSweep.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpBroadPhase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpBroadPhaseCastCollector.h">
+      <Filter>include\RE\BSHavok\hkpBroadPhaseCastCollector</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpWorldLinearCaster.h">
+      <Filter>include\RE\BSHavok\hkpBroadPhaseCastCollector</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpLinearCastCollisionInput.h">
+      <Filter>include\RE\BSHavok\hkpCollisionInput</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpCollisionInput.h">
+      <Filter>include\RE\BSHavok\hkpCollisionInput</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpLinearCastInput.h">
       <Filter>include\RE\BSHavok</Filter>
     </ClInclude>
   </ItemGroup>

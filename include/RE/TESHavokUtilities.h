@@ -3,12 +3,12 @@
 
 namespace RE
 {
-	class hkpLinkedCollidable;
+	class hkpCollidable;
 	class TESObjectREFR;
 
 
 	namespace TESHavokUtilities
 	{
-		TESObjectREFR* FindCollidableRef(const hkpLinkedCollidable& a_linkedCollidable);
+		TESObjectREFR* FindCollidableRef(const hkpCollidable& a_linkedCollidable);
 	}
 }
