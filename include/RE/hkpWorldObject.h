@@ -1,14 +1,17 @@
 #pragma once
 
+#include "RE/hkArray.h"
 #include "RE/hkMultiThreadCheck.h"
-#include "RE/hkReferencedObject.h"
 #include "RE/hkpLinkedCollidable.h"
 #include "RE/hkpProperty.h"
+#include "RE/hkReferencedObject.h"
+#include "RE/hkStringPtr.h"
 
 
 namespace RE
 {
 	class hkMotionState;
+	class hkpCollidable;
 	class hkpShapeModifier;
 	class hkpWorld;
 
@@ -56,6 +59,9 @@ namespace RE
 		virtual hkWorldOperation::Result	SetShape(const hkpShape* a_shape);																	// 03 - { return hkWorldOperation::Result::kDone; }
 		virtual hkWorldOperation::Result	UpdateShape(hkpShapeModifier* a_shapeModifier);														// 04 - { return hkWorldOperation::Result::kDone; }
 		virtual hkMotionState*				GetMotionState() = 0;																				// 05
+
+		const hkpCollidable*	GetCollidable() const;
+		hkpCollidable*			GetCollidableRW();
 
 
 		// members

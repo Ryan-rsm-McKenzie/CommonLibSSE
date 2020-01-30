@@ -24,6 +24,8 @@ namespace RE
 
 		struct BoundingVolumeData
 		{
+		public:
+			// members
 			UInt32			min[3];						// 00
 			UInt8			expansionMin[3];			// 0C
 			UInt8			expansionShift;				// 0F

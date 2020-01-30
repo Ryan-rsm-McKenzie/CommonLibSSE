@@ -1138,6 +1138,18 @@
     <Filter Include="src\RE\BSHavok\hkpCdBody\hkpCollidable">
       <UniqueIdentifier>{647e75a8-35a9-42c5-8210-a1e7c573bda8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpShape\hkpBvTreeShape">
+      <UniqueIdentifier>{4dd82473-7c99-4ab5-a911-a761684cb4a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpShape\hkpBvTreeShape\hkMoppBvTreeShapeBase">
+      <UniqueIdentifier>{af35425d-df1c-4e9e-ae10-ca01ffdae17a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkpShapeContainer">
+      <UniqueIdentifier>{0cddf73d-17f8-4052-83cc-4282fadb40ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject">
+      <UniqueIdentifier>{52afe667-262c-4986-8e38-70ebba6a42f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1856,6 +1868,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\hkpCollidable.cpp">
       <Filter>src\RE\BSHavok\hkpCdBody\hkpCollidable</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\hkpCdBody.cpp">
+      <Filter>src\RE\BSHavok\hkpCdBody</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\hkpWorldObject.cpp">
+      <Filter>src\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4925,9 +4943,6 @@
     <ClInclude Include="include\RE\hkpShapeBuffer.h">
       <Filter>include\RE\BSHavok</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\hkpShapeContainer.h">
-      <Filter>include\RE\BSHavok</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\hkpSimplexSolver.h">
       <Filter>include\RE\BSHavok</Filter>
     </ClInclude>
@@ -5364,6 +5379,24 @@
       <Filter>include\RE\BSHavok\hkpCollisionInput</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\hkpLinearCastInput.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpBvTreeShape.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpShape\hkpBvTreeShape</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkMoppBvTreeShapeBase.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpShape\hkpBvTreeShape\hkMoppBvTreeShapeBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpMoppBvTreeShape.h">
+      <Filter>include\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpShape\hkpBvTreeShape\hkMoppBvTreeShapeBase</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpShapeContainer.h">
+      <Filter>include\RE\BSHavok\hkpShapeContainer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpSingleShapeContainer.h">
+      <Filter>include\RE\BSHavok\hkpShapeContainer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\hkpMoppAabbCastVirtualMachine.h">
       <Filter>include\RE\BSHavok</Filter>
     </ClInclude>
   </ItemGroup>

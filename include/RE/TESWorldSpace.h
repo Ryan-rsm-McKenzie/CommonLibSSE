@@ -16,11 +16,12 @@
 
 namespace RE
 {
-	struct BGSTerrainManager;
+	class BGSTerrainManager;
 
 
 	struct WORLD_MAP_DATA	// MNAM
 	{
+	public:
 		struct CameraData
 		{
 			float	minHeight;		// 0
@@ -30,6 +31,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(CameraData) == 0xC);
 
 
+		// members
 		UInt32		usableWidth;	// 00
 		UInt32		usableHeight;	// 04
 		SInt16		nwCellX;		// 08
@@ -43,6 +45,8 @@ namespace RE
 
 	struct WORLD_MAP_OFFSET_DATA	// ONAM
 	{
+	public:
+		// members
 		float	fMapScale;		// 00
 		float	fMapOffsetX;	// 04
 		float	fMapOffsetY;	// 08

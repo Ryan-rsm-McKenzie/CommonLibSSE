@@ -7,6 +7,11 @@ namespace RE
 {
 	class hkpCdBody
 	{
+	public:
+		const hkpShape* GetShape() const;
+
+
+		// members
 		const hkpShape*		shape;		// 00
 		hkpShapeKey			shapeKey;	// 08
 		UInt32				pad0C;		// 0C
