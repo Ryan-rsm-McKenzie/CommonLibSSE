@@ -96,7 +96,7 @@ namespace SKSE
 		}
 
 
-		bool RegistrationSetBase::Register(RE::TESForm* a_form)
+		bool RegistrationSetBase::Register(const RE::TESForm* a_form)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm->GetObjectHandlePolicy();
@@ -120,7 +120,7 @@ namespace SKSE
 		}
 
 
-		bool RegistrationSetBase::Unregister(RE::TESForm* a_form)
+		bool RegistrationSetBase::Unregister(const RE::TESForm* a_form)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm->GetObjectHandlePolicy();

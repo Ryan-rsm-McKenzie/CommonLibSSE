@@ -1,7 +1,10 @@
 #include "RE/BSScript/IVirtualMachine.h"
 
+#include <cstdarg>
+#include <cstdio>
 #include <string>
 #include <string_view>
+#include <vector>
 
 #include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSFixedString.h"
@@ -120,7 +123,7 @@ namespace RE
 		}
 
 
-		void IVirtualMachine::TraceStack(TESForm* a_form, const char* a_str, VMStackID a_stackID, Severity a_severity)
+		void IVirtualMachine::TraceForm(TESForm* a_form, const char* a_str, VMStackID a_stackID, Severity a_severity)
 		{
 			assert(a_str);
 
@@ -145,6 +148,25 @@ namespace RE
 			message += str;
 
 			TraceStack(message.c_str(), a_stackID, a_severity);
+		}
+
+
+		void IVirtualMachine::VTraceStack(const char* a_fmt, VMStackID a_stackID, Severity a_severity, ...)
+		{
+			assert(a_fmt);
+
+			std::va_list args1;
+			va_start(args1, a_fmt);
+			std::va_list args2;
+			va_copy(args2, args1);
+
+			std::vector<char> buf(std::vsnprintf(0, 0, a_fmt, args1) + 1);
+			va_end(args1);
+
+			std::vsnprintf(buf.data(), buf.size(), a_fmt, args2);
+			va_end(args2);
+
+			TraceStack(buf.data(), a_stackID, a_severity);
 		}
 	}
 }

@@ -34,8 +34,8 @@ namespace SKSE
 			RegistrationSetBase& operator=(const RegistrationSetBase& a_rhs);
 			RegistrationSetBase& operator=(RegistrationSetBase&& a_rhs);
 
-			bool Register(RE::TESForm* a_form);
-			bool Unregister(RE::TESForm* a_form);
+			bool Register(const RE::TESForm* a_form);
+			bool Unregister(const RE::TESForm* a_form);
 			void Clear();
 			bool Save(SerializationInterface* a_intfc, UInt32 a_type, UInt32 a_version);
 			bool Save(SerializationInterface* a_intfc);
@@ -74,12 +74,12 @@ namespace SKSE
 			inline RegistrationSet& operator=(RegistrationSet&& a_rhs) { Base::operator=(std::move(a_rhs)); return *this; }
 
 
-			void SendEvent(Args... a_args)
+			void SendEvent(Args&&... a_args)
 			{
 				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 				RE::BSFixedString eventName(_eventName.c_str());
 				for (auto& handle : _handles) {
-					auto args = RE::MakeFunctionArguments(a_args...);
+					auto args = RE::MakeFunctionArguments(std::forward<Args>(a_args)...);
 					vm->SendEvent(handle, eventName, args);
 				}
 			}
@@ -87,7 +87,7 @@ namespace SKSE
 
 			void QueueEvent(Args... a_args)
 			{
-				auto args = PackArgs(a_args...);
+				auto args = PackArgs(std::move(a_args)...);
 				auto task = GetTaskInterface();
 				task->AddTask([args, this]()
 				{

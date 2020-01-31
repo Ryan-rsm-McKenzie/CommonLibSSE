@@ -47,7 +47,7 @@ namespace RE
 		TESQuest*		ownerQuest;			// 20
 		DisplayDataType	ownerInstance;		// 28
 		float			temperFactor;		// 2C
-		UInt16			customNameLength;	// 30 - length w/o temper string, only valid if type is kPlayerSet
+		UInt16			customNameLength;	// 30 - length w/o temper string, only valid if ownerInstance is kCustomName
 		UInt16			pad32;				// 32
 		UInt32			pad34;				// 34
 	};

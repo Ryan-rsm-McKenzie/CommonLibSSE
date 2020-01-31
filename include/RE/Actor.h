@@ -69,34 +69,42 @@ namespace RE
 		template <class T>
 		struct LocalMap
 		{
-			T* operator[](ActorValue8 a_actorValue)
+		public:
+			T* operator[](ActorValue a_actorValue)
 			{
-				auto akVals = reinterpret_cast<const ActorValue8*>(actorValues.data());
-				if (akVals && entries) {
-					UInt32 idx = 0;
-					while (akVals[idx] != static_cast<ActorValue8>(0)) {
-						if (akVals[idx] == a_actorValue) {
-							break;
-						}
-						++idx;
-					}
-					if (akVals[idx] != static_cast<ActorValue8>(0)) {
-						return &entries[idx];
-					}
-				}
-				return 0;
+				return GetAt(static_cast<char>(a_actorValue));
 			}
 
 
-			T* operator[](ActorValue a_actorValue)
+			const T* operator[](ActorValue a_actorValue) const
 			{
-				return operator[](static_cast<ActorValue8>(a_actorValue));
+				return GetAt(static_cast<char>(a_actorValue));
 			}
 
 
 			// members
 			BSFixedString	actorValues;	// 00
 			T*				entries;		// 08
+
+		private:
+			T* GetAt(char a_actorValue) const
+			{
+				auto akVals = actorValues.data();
+				if (akVals && entries) {
+					UInt32 idx = 0;
+					while (akVals[idx] != '\0') {
+						if (akVals[idx] == a_actorValue) {
+							break;
+						}
+						++idx;
+					}
+
+					if (akVals[idx] != '\0') {
+						return std::addressof(entries[idx]);
+					}
+				}
+				return 0;
+			}
 		};
 		STATIC_ASSERT(sizeof(LocalMap<float>) == 0x10);
 

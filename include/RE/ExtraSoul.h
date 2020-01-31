@@ -24,6 +24,8 @@ namespace RE
 		virtual ExtraDataType	GetType() const override;								// 01 - { reutrn kSoul; }
 		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return soul != a_rhs->soul; }
 
+		SOUL_LEVEL GetContainedSoul() const;
+
 
 		// members
 		SOUL_LEVEL	soul;	// 10

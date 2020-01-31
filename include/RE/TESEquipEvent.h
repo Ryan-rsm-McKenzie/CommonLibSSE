@@ -11,7 +11,7 @@ namespace RE
 	struct TESEquipEvent
 	{
 		// members
-		NiPointer<TESObjectREFR>	hActor;			// 00
+		NiPointer<TESObjectREFR>	actor;			// 00
 		FormID						baseObject;		// 08
 		FormID						originalRefr;	// 0C
 		UInt16						uniqueID;		// 10

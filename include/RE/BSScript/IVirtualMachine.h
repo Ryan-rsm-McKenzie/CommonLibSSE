@@ -123,7 +123,8 @@ namespace RE
 			template <class F> void		RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, bool a_callableFromTasklets = false);
 			void						SetCallableFromTasklets(const char* a_className, const char* a_stateName, const char* a_fnName, bool a_callable);
 			void						SetCallableFromTasklets(const char* a_className, const char* a_fnName, bool a_callable);
-			void						TraceStack(TESForm* a_form, const char* a_str, VMStackID a_stackID, Severity a_severity);
+			void						TraceForm(TESForm* a_form, const char* a_str, VMStackID a_stackID, Severity a_severity);
+			void						VTraceStack(const char* a_fmt, VMStackID a_stackID, Severity a_severity = Severity::kInfo, ...);
 
 
 			// members

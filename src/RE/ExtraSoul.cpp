@@ -34,4 +34,10 @@ namespace RE
 		auto rhs = static_cast<const ExtraSoul*>(a_rhs);
 		return soul != rhs->soul;
 	}
+
+
+	SOUL_LEVEL ExtraSoul::GetContainedSoul() const
+	{
+		return soul;
+	}
 }

@@ -33,8 +33,8 @@ namespace SKSE
 			RegistrationMapBase& operator=(const RegistrationMapBase& a_rhs);
 			RegistrationMapBase& operator=(RegistrationMapBase&& a_rhs);
 
-			bool Register(RE::TESForm* a_form, RE::BSFixedString a_callback);
-			bool Unregister(RE::TESForm* a_form);
+			bool Register(const RE::TESForm* a_form, RE::BSFixedString a_callback);
+			bool Unregister(const RE::TESForm* a_form);
 			void Clear();
 			bool Save(SerializationInterface* a_intfc, UInt32 a_type, UInt32 a_version);
 			bool Save(SerializationInterface* a_intfc);
@@ -72,11 +72,11 @@ namespace SKSE
 			inline RegistrationMap& operator=(RegistrationMap&& a_rhs) { Base::operator=(std::move(a_rhs)); return *this; }
 
 
-			void SendEvent(Args... a_args)
+			void SendEvent(Args&&... a_args)
 			{
 				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 				for (auto& reg : _regs) {
-					auto args = RE::MakeFunctionArguments(a_args...);
+					auto args = RE::MakeFunctionArguments(std::forward<Args>(a_args)...);
 					vm->SendEvent(reg.first, reg.second.c_str(), args);
 				}
 			}
@@ -84,7 +84,7 @@ namespace SKSE
 
 			void QueueEvent(Args... a_args)
 			{
-				auto args = PackArgs(a_args...);
+				auto args = PackArgs(std::move(a_args)...);
 				auto task = GetTaskInterface();
 				task->AddTask([args, this]()
 				{

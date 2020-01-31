@@ -90,7 +90,7 @@ namespace SKSE
 		}
 
 
-		bool RegistrationMapBase::Register(RE::TESForm* a_form, RE::BSFixedString a_callback)
+		bool RegistrationMapBase::Register(const RE::TESForm* a_form, RE::BSFixedString a_callback)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm->GetObjectHandlePolicy();
@@ -114,7 +114,7 @@ namespace SKSE
 		}
 
 
-		bool RegistrationMapBase::Unregister(RE::TESForm* a_form)
+		bool RegistrationMapBase::Unregister(const RE::TESForm* a_form)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm->GetObjectHandlePolicy();

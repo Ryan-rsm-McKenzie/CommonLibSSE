@@ -32,41 +32,40 @@ namespace SKSE
 
 
 		// default
-		template <class T, typename std::enable_if_t<std::conjunction<is_not_form_pointer<T>, is_not_object_pointer<T>>::value, int> = 0>
-		inline T PackArg(T a_val)
+		template <class T, class U = std::decay_t<T>, typename std::enable_if_t<std::conjunction<is_not_form_pointer<U>, is_not_object_pointer<U>>::value, int> = 0>
+		inline T PackArg(T&& a_val)
 		{
 			return a_val;
 		}
 
 
 		// forms
-		template <class T, typename std::enable_if_t<std::conjunction<is_form_pointer<T>, is_not_object_pointer<T>>::value, int> = 0>
-		inline FormWrapper<T> PackArg(T a_form)
+		template <class T, class U = std::decay_t<T>, typename std::enable_if_t<std::conjunction<is_form_pointer<U>, is_not_object_pointer<U>>::value, int> = 0>
+		inline FormWrapper<U> PackArg(T&& a_form)
 		{
-			auto form = static_cast<RE::TESForm*>(a_form);
-			auto formID = form ? form->formID : static_cast<RE::FormID>(-1);
+			auto formID = a_form ? a_form->formID : static_cast<RE::FormID>(-1);
 			return { formID };
 		}
 
 
 		// obj references
-		template <class T, typename std::enable_if_t<is_object_pointer<T>::value, int> = 0>
-		inline RE::NiPointer<typename std::remove_pointer_t<T>> PackArg(T a_objRef)
+		template <class T, class U = std::decay_t<T>, typename std::enable_if_t<is_object_pointer<U>::value, int> = 0>
+		inline RE::NiPointer<std::remove_pointer_t<U>> PackArg(T&& a_objRef)
 		{
 			return { a_objRef };
 		}
 
 
 		template <class... Args>
-		inline decltype(auto) PackArgs(Args... a_args)
+		inline decltype(auto) PackArgs(Args&&... a_args)
 		{
-			return std::make_tuple(PackArg(a_args)...);
+			return std::make_tuple(PackArg(std::forward<Args>(a_args))...);
 		}
 
 
 		// default
 		template <class T>
-		inline T UnpackArg(T a_val)
+		inline T UnpackArg(T&& a_val)
 		{
 			return a_val;
 		}
@@ -74,7 +73,14 @@ namespace SKSE
 
 		// forms
 		template <class T>
-		inline T UnpackArg(FormWrapper<T> a_wrapper)
+		inline T UnpackArg(const FormWrapper<T>& a_wrapper)
+		{
+			return static_cast<T>(RE::TESForm::LookupByID(a_wrapper.formID));
+		}
+
+
+		template <class T>
+		inline T UnpackArg(FormWrapper<T>&& a_wrapper)
 		{
 			return static_cast<T>(RE::TESForm::LookupByID(a_wrapper.formID));
 		}
@@ -82,7 +88,14 @@ namespace SKSE
 
 		// obj references
 		template <class T>
-		inline T* UnpackArg(RE::NiPointer<T> a_objRef)
+		inline T* UnpackArg(const RE::NiPointer<T>& a_objRef)
+		{
+			return a_objRef.get();
+		}
+
+
+		template <class T>
+		inline T* UnpackArg(RE::NiPointer<T>&& a_objRef)
 		{
 			return a_objRef.get();
 		}
