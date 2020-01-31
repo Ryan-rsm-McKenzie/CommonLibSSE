@@ -150,8 +150,8 @@ namespace SKSE
 			void operator()(const char* a_format, ...);
 			void operator()(const char* a_format, std::va_list a_args);
 
-			std::string str() const;
-			const char* c_str() const;
+			[[nodiscard]] std::string str() const;
+			[[nodiscard]] const char* c_str() const;
 
 		private:
 			void DoFormat(const char* a_format, std::va_list a_args);
