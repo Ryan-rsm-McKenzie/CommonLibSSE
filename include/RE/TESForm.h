@@ -24,6 +24,7 @@ namespace RE
 
 	struct FORM
 	{
+	public:
 		// members
 		char	form[4];		// 00
 		UInt32	length;			// 04
@@ -38,6 +39,8 @@ namespace RE
 
 	struct FORM_GROUP
 	{
+	public:
+		// members
 		FORM	groupData;		// 00
 		UInt64	groupOffset;	// 18
 	};
