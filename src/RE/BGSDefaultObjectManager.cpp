@@ -8,8 +8,8 @@ namespace RE
 {
 	BGSDefaultObjectManager* BGSDefaultObjectManager::GetSingleton()
 	{
-		using func_t = function_type_t<decltype(&BGSDefaultObjectManager::GetSingleton)>;
-		REL::Offset<func_t*> func(Offset::BGSDefaultObjectManager::GetSingleton);
+		using func_t = decltype(&BGSDefaultObjectManager::GetSingleton);
+		REL::Offset<func_t> func(Offset::BGSDefaultObjectManager::GetSingleton);
 		return func();
 	}
 

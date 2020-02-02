@@ -8,8 +8,8 @@ namespace RE
 {
 	NiSkinInstance* NiSkinInstance::Create()
 	{
-		using func_t = function_type_t<decltype(&NiSkinInstance::Create)>;
-		REL::Offset<func_t*> func(Offset::NiSkinInstance::Ctor);
+		using func_t = decltype(&NiSkinInstance::Create);
+		REL::Offset<func_t> func(Offset::NiSkinInstance::Ctor);
 		return func();
 	}
 }

@@ -15,8 +15,8 @@ namespace RE
 
 	void PlayerCamera::UpdateThirdPerson(bool a_weaponDrawn)
 	{
-		using func_t = function_type_t<decltype(&PlayerCamera::UpdateThirdPerson)>;
-		REL::Offset<func_t*> func(Offset::PlayerCamera::UpdateThirdPerson);
+		using func_t = decltype(&PlayerCamera::UpdateThirdPerson);
+		REL::Offset<func_t> func(Offset::PlayerCamera::UpdateThirdPerson);
 		return func(this, a_weaponDrawn);
 	}
 }

@@ -400,144 +400,144 @@ namespace RE
 
 	void GFxValue::ObjectInterface::ObjectAddRef(GFxValue* a_val, void* a_obj)
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::ObjectAddRef)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::ObjectAddRef);
+		using func_t = decltype(&GFxValue::ObjectInterface::ObjectAddRef);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::ObjectAddRef);
 		return func(this, a_val, a_obj);
 	}
 
 
 	void GFxValue::ObjectInterface::ObjectRelease(GFxValue* a_val, void* a_obj)
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::ObjectRelease)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::ObjectRelease);
+		using func_t = decltype(&GFxValue::ObjectInterface::ObjectRelease);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::ObjectRelease);
 		return func(this, a_val, a_obj);
 	}
 
 
 	bool GFxValue::ObjectInterface::HasMember(void* a_data, const char* a_name, bool a_isDObj) const
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::HasMember)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::HasMember);
+		using func_t = decltype(&GFxValue::ObjectInterface::HasMember);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::HasMember);
 		return func(this, a_data, a_name, a_isDObj);
 	}
 
 
 	bool GFxValue::ObjectInterface::GetMember(void* a_data, const char* a_name, GFxValue* a_val, bool a_isDObj) const
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::GetMember)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::GetMember);
+		using func_t = decltype(&GFxValue::ObjectInterface::GetMember);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::GetMember);
 		return func(this, a_data, a_name, a_val, a_isDObj);
 	}
 
 
 	bool GFxValue::ObjectInterface::SetMember(void* a_data, const char* a_name, const GFxValue& a_value, bool a_isDObj)
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::SetMember)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::SetMember);
+		using func_t = decltype(&GFxValue::ObjectInterface::SetMember);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::SetMember);
 		return func(this, a_data, a_name, a_value, a_isDObj);
 	}
 
 
 	bool GFxValue::ObjectInterface::Invoke(void* a_data, GFxValue* a_result, const char* a_name, const GFxValue* a_args, UPInt a_numArgs, bool isDObj)
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::Invoke)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::Invoke);
+		using func_t = decltype(&GFxValue::ObjectInterface::Invoke);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::Invoke);
 		return func(this, a_data, a_result, a_name, a_args, a_numArgs, isDObj);
 	}
 
 
 	bool GFxValue::ObjectInterface::DeleteMember(void* a_data, const char* a_name, bool a_isDObj)
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::DeleteMember)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::DeleteMember);
+		using func_t = decltype(&GFxValue::ObjectInterface::DeleteMember);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::DeleteMember);
 		return func(this, a_data, a_name, a_isDObj);
 	}
 
 
 	UInt32 GFxValue::ObjectInterface::GetArraySize(void* a_data) const
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::GetArraySize)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::GetArraySize);
+		using func_t = decltype(&GFxValue::ObjectInterface::GetArraySize);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::GetArraySize);
 		return func(this, a_data);
 	}
 
 
 	bool GFxValue::ObjectInterface::SetArraySize(void* a_data, UInt32 a_size)
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::SetArraySize)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::SetArraySize);
+		using func_t = decltype(&GFxValue::ObjectInterface::SetArraySize);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::SetArraySize);
 		return func(this, a_data, a_size);
 	}
 
 
 	bool GFxValue::ObjectInterface::GetElement(void* a_data, UInt32 a_idx, GFxValue* a_val) const
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::GetElement)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::GetElement);
+		using func_t = decltype(&GFxValue::ObjectInterface::GetElement);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::GetElement);
 		return func(this, a_data, a_idx, a_val);
 	}
 
 
 	bool GFxValue::ObjectInterface::SetElement(void* a_data, UInt32 a_idx, const GFxValue& a_val)
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::SetElement)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::SetElement);
+		using func_t = decltype(&GFxValue::ObjectInterface::SetElement);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::SetElement);
 		return func(this, a_data, a_idx, a_val);
 	}
 
 
 	bool GFxValue::ObjectInterface::PushBack(void* a_data, const GFxValue& a_value)
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::PushBack)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::PushBack);
+		using func_t = decltype(&GFxValue::ObjectInterface::PushBack);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::PushBack);
 		return func(this, a_data, a_value);
 	}
 
 
 	bool GFxValue::ObjectInterface::RemoveElements(void* a_data, UInt32 a_idx, SInt32 a_count)
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::RemoveElements)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::RemoveElements);
+		using func_t = decltype(&GFxValue::ObjectInterface::RemoveElements);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::RemoveElements);
 		return func(this, a_data, a_idx, a_count);
 	}
 
 
 	bool GFxValue::ObjectInterface::GetDisplayInfo(void* a_data, DisplayInfo* a_info) const
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::GetDisplayInfo)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::GetDisplayInfo);
+		using func_t = decltype(&GFxValue::ObjectInterface::GetDisplayInfo);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::GetDisplayInfo);
 		return func(this, a_data, a_info);
 	}
 
 
 	bool GFxValue::ObjectInterface::SetDisplayInfo(void* a_data, const DisplayInfo& a_info)
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::SetDisplayInfo)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::SetDisplayInfo);
+		using func_t = decltype(&GFxValue::ObjectInterface::SetDisplayInfo);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::SetDisplayInfo);
 		return func(this, a_data, a_info);
 	}
 
 
 	bool GFxValue::ObjectInterface::SetText(void* a_data, const char* a_text, bool a_isHTML)
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::SetText)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::SetText);
+		using func_t = decltype(&GFxValue::ObjectInterface::SetText);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::SetText);
 		return func(this, a_data, a_text, a_isHTML);
 	}
 
 
 	bool GFxValue::ObjectInterface::AttachMovie(void* a_data, GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, SInt32 a_depth, const GFxValue* a_initObj)
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::AttachMovie)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::AttachMovie);
+		using func_t = decltype(&GFxValue::ObjectInterface::AttachMovie);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::AttachMovie);
 		return func(this, a_data, a_movieClip, a_symbolName, a_instanceName, a_depth, a_initObj);
 	}
 
 
 	bool GFxValue::ObjectInterface::GotoAndPlay(void* a_data, const char* a_frame, bool a_stop)
 	{
-		using func_t = function_type_t<decltype(&GFxValue::ObjectInterface::GotoAndPlay)>;
-		REL::Offset<func_t*> func(Offset::GFxValue::ObjectInterface::GotoAndPlay);
+		using func_t = decltype(&GFxValue::ObjectInterface::GotoAndPlay);
+		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::GotoAndPlay);
 		return func(this, a_data, a_frame, a_stop);
 	}
 

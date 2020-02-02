@@ -17,8 +17,8 @@ namespace RE
 
 	UInt32 TESDataHandler::LoadScripts()
 	{
-		using func_t = function_type_t<decltype(&TESDataHandler::LoadScripts)>;
-		REL::Offset<func_t*> func(Offset::TESDataHandler::LoadScripts);
+		using func_t = decltype(&TESDataHandler::LoadScripts);
+		REL::Offset<func_t> func(Offset::TESDataHandler::LoadScripts);
 		return func(this);
 	}
 

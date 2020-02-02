@@ -68,16 +68,16 @@ namespace RE
 
 		void Object::IncRef()
 		{
-			using func_t = function_type_t<decltype(&Object::IncRef)>;
-			REL::Offset<func_t*> func(Offset::BSScript::Object::IncRef);
+			using func_t = decltype(&Object::IncRef);
+			REL::Offset<func_t> func(Offset::BSScript::Object::IncRef);
 			return func(this);
 		}
 
 
 		UInt32 Object::DecRef()
 		{
-			using func_t = function_type_t<decltype(&Object::DecRef)>;
-			REL::Offset<func_t*> func(Offset::BSScript::Object::DecRef);
+			using func_t = decltype(&Object::DecRef);
+			REL::Offset<func_t> func(Offset::BSScript::Object::DecRef);
 			return func(this);
 		}
 
@@ -110,8 +110,8 @@ namespace RE
 
 		void Object::Dtor()
 		{
-			using func_t = function_type_t<decltype(&Object::Dtor)>;
-			REL::Offset<func_t*> func(Offset::BSScript::Object::Dtor);
+			using func_t = decltype(&Object::Dtor);
+			REL::Offset<func_t> func(Offset::BSScript::Object::Dtor);
 			return func(this);
 		}
 	}

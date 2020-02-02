@@ -52,16 +52,16 @@ namespace RE
 
 	void LocalMapCamera::SetNorthRotation(float a_northRotation)
 	{
-		using func_t = function_type_t<decltype(&LocalMapCamera::SetNorthRotation)>;
-		REL::Offset<func_t*> func(Offset::LocalMapCamera::SetNorthRotation);
+		using func_t = decltype(&LocalMapCamera::SetNorthRotation);
+		REL::Offset<func_t> func(Offset::LocalMapCamera::SetNorthRotation);
 		return func(this, a_northRotation);
 	}
 
 
 	LocalMapCamera* LocalMapCamera::Ctor(float a_northRotation)
 	{
-		using func_t = function_type_t<decltype(&LocalMapCamera::Ctor)>;
-		REL::Offset<func_t*> func(Offset::LocalMapCamera::Ctor);
+		using func_t = decltype(&LocalMapCamera::Ctor);
+		REL::Offset<func_t> func(Offset::LocalMapCamera::Ctor);
 		return func(this, a_northRotation);
 	}
 }

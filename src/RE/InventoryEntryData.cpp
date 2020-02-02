@@ -166,8 +166,8 @@ namespace RE
 
 	SInt32 InventoryEntryData::GetValue()
 	{
-		using func_t = function_type_t<decltype(&InventoryEntryData::GetValue)>;
-		REL::Offset<func_t*> func(Offset::InventoryEntryData::GetValue);
+		using func_t = decltype(&InventoryEntryData::GetValue);
+		REL::Offset<func_t> func(Offset::InventoryEntryData::GetValue);
 		return func(this);
 	}
 
@@ -192,8 +192,8 @@ namespace RE
 
 	bool InventoryEntryData::IsOwnedBy_Impl(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo)
 	{
-		using func_t = function_type_t<decltype(&InventoryEntryData::IsOwnedBy_Impl)>;
-		REL::Offset<func_t*> func(Offset::InventoryEntryData::IsOwnedBy);
+		using func_t = decltype(&InventoryEntryData::IsOwnedBy_Impl);
+		REL::Offset<func_t> func(Offset::InventoryEntryData::IsOwnedBy);
 		return func(this, a_actor, a_itemOwner, a_defaultTo);
 	}
 }

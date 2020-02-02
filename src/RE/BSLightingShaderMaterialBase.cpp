@@ -9,8 +9,8 @@ namespace RE
 {
 	BSLightingShaderMaterialBase* BSLightingShaderMaterialBase::CreateMaterial(Feature a_feature)
 	{
-		using func_t = function_type_t<decltype(&BSLightingShaderMaterialBase::CreateMaterial)>;
-		REL::Offset<func_t*> func(Offset::BSLightingShaderMaterialBase::CreateMaterial);
+		using func_t = decltype(&BSLightingShaderMaterialBase::CreateMaterial);
+		REL::Offset<func_t> func(Offset::BSLightingShaderMaterialBase::CreateMaterial);
 		return func(a_feature);
 	}
 

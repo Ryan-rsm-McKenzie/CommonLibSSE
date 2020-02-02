@@ -174,60 +174,6 @@ To unrestricted_cast(From a_from)
 }
 
 
-template <class F> struct function_type;
-
-
-// member function
-template <class R, class Cls, class... Args>
-struct function_type<R(Cls::*)(Args...)>
-{
-	using type = R(Cls*, Args...);
-};
-
-
-// variadic member function
-template <class R, class Cls, class... Args>
-struct function_type<R(Cls::*)(Args..., ...)>
-{
-	using type = R(Cls*, Args..., ...);
-};
-
-
-// const member function
-template <class R, class Cls, class... Args>
-struct function_type<R(Cls::*)(Args...) const>
-{
-	using type = R(const Cls*, Args...);
-};
-
-
-// variadic const member function
-template <class R, class Cls, class... Args>
-struct function_type<R(Cls::*)(Args..., ...) const>
-{
-	using type = R(const Cls*, Args..., ...);
-};
-
-
-// regular function
-template <class R, class... Args>
-struct function_type<R(*)(Args...)>
-{
-	using type = R(Args...);
-};
-
-
-// variadic regular function
-template <class R, class... Args>
-struct function_type<R(*)(Args..., ...)>
-{
-	using type = R(Args..., ...);
-};
-
-
-template <class F> using function_type_t = typename function_type<F>::type;
-
-
 namespace SKSE
 {
 	namespace Impl

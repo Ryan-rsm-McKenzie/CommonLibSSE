@@ -344,7 +344,7 @@ namespace REL
 		}
 
 
-		template <class... Args, class F = std::decay_t<T>, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
+		template <class... Args, class F = T, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
 		decltype(auto) operator()(Args&&... a_args) const
 		{
 			return Invoke(GetType(), std::forward<Args>(a_args)...);

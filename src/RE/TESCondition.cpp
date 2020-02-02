@@ -54,8 +54,8 @@ namespace RE
 
 	bool TESCondition::Node::Run(Solution& a_solution)
 	{
-		using func_t = function_type_t<decltype(&TESCondition::Node::Run)>;
-		REL::Offset<func_t*> func(Offset::TESCondition::Node::Run);
+		using func_t = decltype(&TESCondition::Node::Run);
+		REL::Offset<func_t> func(Offset::TESCondition::Node::Run);
 		return func(this, a_solution);
 	}
 
@@ -68,8 +68,8 @@ namespace RE
 
 	bool TESCondition::Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target)
 	{
-		using func_t = function_type_t<decltype(&TESCondition::Run)>;
-		REL::Offset<func_t*> func(Offset::TESCondition::Run);
+		using func_t = decltype(&TESCondition::Run);
+		REL::Offset<func_t> func(Offset::TESCondition::Run);
 		return func(this, a_perkOwner, a_target);
 	}
 }

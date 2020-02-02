@@ -20,16 +20,16 @@ namespace RE
 {
 	bool NiAVObject::SetMotionType(UInt32 a_motionType, bool a_arg2, bool a_arg3, bool a_allowActivate)
 	{
-		using func_t = function_type_t<decltype(&NiAVObject::SetMotionType)>;
-		REL::Offset<func_t*> func(Offset::NiAVObject::SetMotionType);
+		using func_t = decltype(&NiAVObject::SetMotionType);
+		REL::Offset<func_t> func(Offset::NiAVObject::SetMotionType);
 		return func(this, a_motionType, a_arg2, a_arg3, a_allowActivate);
 	}
 
 
 	void NiAVObject::Update(NiUpdateData& a_data)
 	{
-		using func_t = function_type_t<decltype(&NiAVObject::Update)>;
-		REL::Offset<func_t*> func(Offset::NiAVObject::Update);
+		using func_t = decltype(&NiAVObject::Update);
+		REL::Offset<func_t> func(Offset::NiAVObject::Update);
 		return func(this, a_data);
 	}
 

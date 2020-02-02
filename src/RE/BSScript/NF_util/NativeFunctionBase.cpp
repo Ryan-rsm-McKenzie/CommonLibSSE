@@ -129,8 +129,8 @@ namespace RE
 			auto NativeFunctionBase::Call(const BSTSmartPointer<Stack>& a_stack, ErrorLogger* a_logger, Internal::VirtualMachine* a_vm, bool a_arg4)
 				-> CallResult
 			{
-				using func_t = function_type_t<decltype(&NativeFunctionBase::Call)>;
-				REL::Offset<func_t*> func(Offset::BSScript::NF_util::NativeFunctionBase::Call);
+				using func_t = decltype(&NativeFunctionBase::Call);
+				REL::Offset<func_t> func(Offset::BSScript::NF_util::NativeFunctionBase::Call);
 				return func(this, a_stack, a_logger, a_vm, a_arg4);
 			}
 

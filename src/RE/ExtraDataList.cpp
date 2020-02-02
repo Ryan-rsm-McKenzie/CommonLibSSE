@@ -177,8 +177,8 @@ namespace RE
 
 	BSExtraData* ExtraDataList::Add(BSExtraData* a_toAdd)
 	{
-		using func_t = function_type_t<decltype(&ExtraDataList::Add)>;
-		REL::Offset<func_t*> func(Offset::ExtraDataList::Add);
+		using func_t = decltype(&ExtraDataList::Add);
+		REL::Offset<func_t> func(Offset::ExtraDataList::Add);
 		return func(this, a_toAdd);
 	}
 
@@ -298,16 +298,16 @@ namespace RE
 
 	void ExtraDataList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
 	{
-		using func_t = function_type_t<decltype(&ExtraDataList::SetExtraFlags)>;
-		REL::Offset<func_t*> func(Offset::ExtraDataList::SetExtraFlags);
+		using func_t = decltype(&ExtraDataList::SetExtraFlags);
+		REL::Offset<func_t> func(Offset::ExtraDataList::SetExtraFlags);
 		return func(this, a_flags, a_enable);
 	}
 
 
 	void ExtraDataList::SetInventoryChanges(InventoryChanges* a_changes)
 	{
-		using func_t = function_type_t<decltype(&ExtraDataList::SetInventoryChanges)>;
-		REL::Offset<func_t*> func(Offset::ExtraDataList::SetInventoryChanges);
+		using func_t = decltype(&ExtraDataList::SetInventoryChanges);
+		REL::Offset<func_t> func(Offset::ExtraDataList::SetInventoryChanges);
 		return func(this, a_changes);
 	}
 

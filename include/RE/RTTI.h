@@ -207,8 +207,8 @@ namespace RE
 	template <class T = PVOID>
 	inline T RTDynamicCast(PVOID a_inptr, LONG a_vfDelta, PVOID a_srcType, PVOID a_targetType, BOOL a_isReference)
 	{
-		using func_t = function_type_t<decltype(&RTDynamicCast<T>)>;
-		REL::Offset<func_t*> func(::RE::Offset::RTDynamicCast);
+		using func_t = decltype(&RTDynamicCast<T>);
+		REL::Offset<func_t> func(::RE::Offset::RTDynamicCast);
 		return func(a_inptr, a_vfDelta, a_srcType, a_targetType, a_isReference);
 	}
 }

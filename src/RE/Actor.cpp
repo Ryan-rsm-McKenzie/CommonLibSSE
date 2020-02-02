@@ -45,8 +45,8 @@ namespace RE
 
 	bool Actor::AddSpell(SpellItem* a_spell)
 	{
-		using func_t = function_type_t<decltype(&Actor::AddSpell)>;
-		REL::Offset<func_t*> func(Offset::Actor::AddSpell);
+		using func_t = decltype(&Actor::AddSpell);
+		REL::Offset<func_t> func(Offset::Actor::AddSpell);
 		return func(this, a_spell);
 	}
 
@@ -135,24 +135,24 @@ namespace RE
 
 	void Actor::DispelWornItemEnchantments()
 	{
-		using func_t = function_type_t<decltype(&Actor::DispelWornItemEnchantments)>;
-		REL::Offset<func_t*> func(Offset::Actor::DispelWornItemEnchantments);
+		using func_t = decltype(&Actor::DispelWornItemEnchantments);
+		REL::Offset<func_t> func(Offset::Actor::DispelWornItemEnchantments);
 		return func(this);
 	}
 
 
 	void Actor::DoReset3D(bool a_updateWeight)
 	{
-		using func_t = function_type_t<decltype(&Actor::DoReset3D)>;
-		REL::Offset<func_t*> func(Offset::Actor::DoReset3D);
+		using func_t = decltype(&Actor::DoReset3D);
+		REL::Offset<func_t> func(Offset::Actor::DoReset3D);
 		return func(this, a_updateWeight);
 	}
 
 
 	void Actor::EvaluatePackage(bool a_arg1, bool a_arg2)
 	{
-		using func_t = function_type_t<decltype(&Actor::EvaluatePackage)>;
-		REL::Offset<func_t*> func(Offset::Actor::EvaluatePackage);
+		using func_t = decltype(&Actor::EvaluatePackage);
+		REL::Offset<func_t> func(Offset::Actor::EvaluatePackage);
 		return func(this, a_arg1, a_arg2);
 	}
 
@@ -302,8 +302,8 @@ namespace RE
 
 	UInt16 Actor::GetLevel() const
 	{
-		using func_t = function_type_t<decltype(&Actor::GetLevel)>;
-		REL::Offset<func_t*> func(Offset::Actor::GetLevel);
+		using func_t = decltype(&Actor::GetLevel);
+		REL::Offset<func_t> func(Offset::Actor::GetLevel);
 		return func(this);
 	}
 
@@ -317,8 +317,8 @@ namespace RE
 
 	bool Actor::HasPerk(BGSPerk* a_perk) const
 	{
-		using func_t = function_type_t<decltype(&Actor::HasPerk)>;
-		REL::Offset<func_t*> func(Offset::Actor::HasPerk);
+		using func_t = decltype(&Actor::HasPerk);
+		REL::Offset<func_t> func(Offset::Actor::HasPerk);
 		return func(this, a_perk);
 	}
 
@@ -370,8 +370,8 @@ namespace RE
 
 	bool Actor::IsGhost() const
 	{
-		using func_t = function_type_t<decltype(&Actor::IsGhost)>;
-		REL::Offset<func_t*> func(Offset::Actor::GetGhost);
+		using func_t = decltype(&Actor::IsGhost);
+		REL::Offset<func_t> func(Offset::Actor::GetGhost);
 		return func(this);
 	}
 
@@ -384,8 +384,8 @@ namespace RE
 
 	bool Actor::IsHostileToActor(Actor* a_actor)
 	{
-		using func_t = function_type_t<decltype(&Actor::IsHostileToActor)>;
-		REL::Offset<func_t*> func(Offset::Actor::GetHostileToActor);
+		using func_t = decltype(&Actor::IsHostileToActor);
+		REL::Offset<func_t> func(Offset::Actor::GetHostileToActor);
 		return func(this, a_actor);
 	}
 
@@ -410,8 +410,8 @@ namespace RE
 
 	bool Actor::IsRunning() const
 	{
-		using func_t = function_type_t<decltype(&Actor::IsRunning)>;
-		REL::Offset<func_t*> func(Offset::Actor::IsRunning);
+		using func_t = decltype(&Actor::IsRunning);
+		REL::Offset<func_t> func(Offset::Actor::IsRunning);
 		return func(this);
 	}
 
@@ -449,32 +449,32 @@ namespace RE
 
 	SInt32 Actor::RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority)
 	{
-		using func_t = function_type_t<decltype(&Actor::RequestDetectionLevel)>;
-		REL::Offset<func_t*> func(Offset::Actor::RequestDetectionLevel);
+		using func_t = decltype(&Actor::RequestDetectionLevel);
+		REL::Offset<func_t> func(Offset::Actor::RequestDetectionLevel);
 		return func(this, a_target, a_priority);
 	}
 
 
 	void Actor::StealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, SInt32 a_numItems, SInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage)
 	{
-		using func_t = function_type_t<decltype(&Actor::StealAlarm)>;
-		REL::Offset<func_t*> func(Offset::Actor::StealAlarm);
+		using func_t = decltype(&Actor::StealAlarm);
+		REL::Offset<func_t> func(Offset::Actor::StealAlarm);
 		return func(this, a_refItemOrContainer, a_stolenItem, a_numItems, a_value, a_owner, a_allowGetBackStolenItemPackage);
 	}
 
 
 	void Actor::SwitchRace(TESRace* a_race, bool a_player)
 	{
-		using func_t = function_type_t<decltype(&Actor::SwitchRace)>;
-		REL::Offset<func_t*> func(Offset::Actor::SwitchRace);
+		using func_t = decltype(&Actor::SwitchRace);
+		REL::Offset<func_t> func(Offset::Actor::SwitchRace);
 		return func(this, a_race, a_player);
 	}
 
 
 	void Actor::UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData)
 	{
-		using func_t = function_type_t<decltype(&Actor::UpdateArmorAbility)>;
-		REL::Offset<func_t*> func(Offset::Actor::UpdateArmorAbility);
+		using func_t = decltype(&Actor::UpdateArmorAbility);
+		REL::Offset<func_t> func(Offset::Actor::UpdateArmorAbility);
 		return func(this, a_armor, a_extraData);
 	}
 
@@ -531,8 +531,8 @@ namespace RE
 
 	void Actor::UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand)
 	{
-		using func_t = function_type_t<decltype(&Actor::UpdateWeaponAbility)>;
-		REL::Offset<func_t*> func(Offset::Actor::UpdateWeaponAbility);
+		using func_t = decltype(&Actor::UpdateWeaponAbility);
+		REL::Offset<func_t> func(Offset::Actor::UpdateWeaponAbility);
 		return func(this, a_weapon, a_extraData, a_leftHand);
 	}
 

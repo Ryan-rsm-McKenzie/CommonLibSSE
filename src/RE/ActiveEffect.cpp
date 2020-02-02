@@ -10,8 +10,8 @@ namespace RE
 {
 	void ActiveEffect::Dispell(bool a_force)
 	{
-		using func_t = function_type_t<decltype(&ActiveEffect::Dispell)>;
-		REL::Offset<func_t*> func(Offset::ActiveEffect::Dispell);
+		using func_t = decltype(&ActiveEffect::Dispell);
+		REL::Offset<func_t> func(Offset::ActiveEffect::Dispell);
 		return func(this, a_force);
 	}
 

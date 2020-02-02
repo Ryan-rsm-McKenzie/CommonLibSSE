@@ -16,16 +16,16 @@ namespace RE
 
 	void BipedAnim::RemoveAllParts()
 	{
-		using func_t = function_type_t<decltype(&BipedAnim::RemoveAllParts)>;
-		REL::Offset<func_t*> func(Offset::BipedAnim::RemoveAllParts);
+		using func_t = decltype(&BipedAnim::RemoveAllParts);
+		REL::Offset<func_t> func(Offset::BipedAnim::RemoveAllParts);
 		return func(this);
 	}
 
 
 	void BipedAnim::Dtor()
 	{
-		using func_t = function_type_t<decltype(&BipedAnim::Dtor)>;
-		REL::Offset<func_t*> func(Offset::BipedAnim::Dtor);
+		using func_t = decltype(&BipedAnim::Dtor);
+		REL::Offset<func_t> func(Offset::BipedAnim::Dtor);
 		return func(this);
 	}
 }

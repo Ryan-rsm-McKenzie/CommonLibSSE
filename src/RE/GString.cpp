@@ -279,8 +279,8 @@ namespace RE
 
 	GString* GString::ctor(const char* a_s)
 	{
-		using func_t = function_type_t<decltype(&GString::ctor)>;
-		REL::Offset<func_t*> func(Offset::GString::Ctor);
+		using func_t = decltype(&GString::ctor);
+		REL::Offset<func_t> func(Offset::GString::Ctor);
 		return func(this, a_s);
 	}
 

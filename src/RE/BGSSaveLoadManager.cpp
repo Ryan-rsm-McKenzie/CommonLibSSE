@@ -27,16 +27,16 @@ namespace RE
 
 	bool BGSSaveLoadManager::Save_Internal(SInt32 a_arg1, UInt32 a_arg2, const char* a_name)
 	{
-		using func_t = function_type_t<decltype(&BGSSaveLoadManager::Save_Internal)>;
-		REL::Offset<func_t*> func(Offset::BGSSaveLoadManager::Save);
+		using func_t = decltype(&BGSSaveLoadManager::Save_Internal);
+		REL::Offset<func_t> func(Offset::BGSSaveLoadManager::Save);
 		return func(this, a_arg1, a_arg2, a_name);
 	}
 
 
 	bool BGSSaveLoadManager::Load_Internal(const char* a_name, SInt32 a_arg2, UInt32 a_arg3, UInt32 a_arg4)
 	{
-		using func_t = function_type_t<decltype(&BGSSaveLoadManager::Load_Internal)>;
-		REL::Offset<func_t*> func(Offset::BGSSaveLoadManager::Load);
+		using func_t = decltype(&BGSSaveLoadManager::Load_Internal);
+		REL::Offset<func_t> func(Offset::BGSSaveLoadManager::Load);
 		return func(this, a_name, a_arg2, a_arg3, a_arg4);
 	}
 }

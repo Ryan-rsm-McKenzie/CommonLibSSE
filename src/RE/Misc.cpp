@@ -15,32 +15,32 @@ namespace RE
 {
 	bool LookupReferenceByHandle_ActorImpl(const RefHandle& a_handle, NiPointer<Actor>& a_refrOut)
 	{
-		using func_t = function_type_t<decltype(&LookupReferenceByHandle_ActorImpl)>;
-		REL::Offset<func_t*> func(Offset::LookupReferenceByHandle);
+		using func_t = decltype(&LookupReferenceByHandle_ActorImpl);
+		REL::Offset<func_t> func(Offset::LookupReferenceByHandle);
 		return func(a_handle, a_refrOut);
 	}
 
 
 	bool LookupReferenceByHandle_RefrImpl(const RefHandle& a_handle, NiPointer<TESObjectREFR>& a_refrOut)
 	{
-		using func_t = function_type_t<decltype(&LookupReferenceByHandle_RefrImpl)>;
-		REL::Offset<func_t*> func(Offset::LookupReferenceByHandle);
+		using func_t = decltype(&LookupReferenceByHandle_RefrImpl);
+		REL::Offset<func_t> func(Offset::LookupReferenceByHandle);
 		return func(a_handle, a_refrOut);
 	}
 
 
 	void CreateRefHandle(RefHandle& a_handleOut, TESObjectREFR* a_refTo)
 	{
-		using func_t = function_type_t<decltype(&CreateRefHandle)>;
-		REL::Offset<func_t*> func(Offset::CreateRefHandle);
+		using func_t = decltype(&CreateRefHandle);
+		REL::Offset<func_t> func(Offset::CreateRefHandle);
 		return func(a_handleOut, a_refTo);
 	}
 
 
 	void DebugNotification(const char* a_notification, const char* a_soundToPlay, bool a_cancelIfAlreadyQueued)
 	{
-		using func_t = function_type_t<decltype(&DebugNotification)>;
-		REL::Offset<func_t*> func(Offset::DebugNotification);
+		using func_t = decltype(&DebugNotification);
+		REL::Offset<func_t> func(Offset::DebugNotification);
 		return func(a_notification, a_soundToPlay, a_cancelIfAlreadyQueued);
 	}
 
@@ -73,16 +73,16 @@ namespace RE
 
 	void PlaySound(const char* a_editorID)
 	{
-		using func_t = function_type_t<decltype(&PlaySound)>;
-		REL::Offset<func_t*> func(Offset::PlaySound);
+		using func_t = decltype(&PlaySound);
+		REL::Offset<func_t> func(Offset::PlaySound);
 		return func(a_editorID);
 	}
 
 
 	bool WorldPtToScreenPt3(float a_worldToCamMatrix[4][4], NiRect<float>& a_port, const NiPoint3& a_in, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance)
 	{
-		using func_t = function_type_t<decltype(&WorldPtToScreenPt3)>;
-		REL::Offset<func_t*> func(Offset::WorldPtToScreenPt3);
+		using func_t = decltype(&WorldPtToScreenPt3);
+		REL::Offset<func_t> func(Offset::WorldPtToScreenPt3);
 		return func(a_worldToCamMatrix, a_port, a_in, a_xOut, a_yOut, a_zOut, a_zeroTolerance);
 	}
 }

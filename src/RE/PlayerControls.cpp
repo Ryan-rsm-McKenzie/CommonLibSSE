@@ -37,8 +37,8 @@ namespace RE
 
 	PlayerControls* PlayerControls::Ctor()
 	{
-		using func_t = function_type_t<decltype(&PlayerControls::Ctor)>;
-		REL::Offset<func_t*> func(Offset::PlayerControls::Ctor);
+		using func_t = decltype(&PlayerControls::Ctor);
+		REL::Offset<func_t> func(Offset::PlayerControls::Ctor);
 		return func(this);
 	}
 }

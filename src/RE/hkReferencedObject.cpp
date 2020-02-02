@@ -25,8 +25,8 @@ namespace RE
 
 	void hkReferencedObject::AddReference() const
 	{
-		using func_t = function_type_t<decltype(&hkReferencedObject::AddReference)>;
-		REL::Offset<func_t*> func(Offset::hkReferencedObject::AddReference);
+		using func_t = decltype(&hkReferencedObject::AddReference);
+		REL::Offset<func_t> func(Offset::hkReferencedObject::AddReference);
 		return func(this);
 	}
 
@@ -45,8 +45,8 @@ namespace RE
 
 	void hkReferencedObject::RemoveReference() const
 	{
-		using func_t = function_type_t<decltype(&hkReferencedObject::RemoveReference)>;
-		REL::Offset<func_t*> func(Offset::hkReferencedObject::RemoveReference);
+		using func_t = decltype(&hkReferencedObject::RemoveReference);
+		REL::Offset<func_t> func(Offset::hkReferencedObject::RemoveReference);
 		return func(this);
 	}
 }

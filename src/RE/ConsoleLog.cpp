@@ -38,8 +38,8 @@ namespace RE
 
 	void ConsoleLog::VPrint(const char* a_fmt, std::va_list a_args)
 	{
-		using func_t = function_type_t<decltype(&ConsoleLog::Print)>;
-		REL::Offset<func_t*> func(Offset::ConsoleLog::VPrint);
+		using func_t = decltype(&ConsoleLog::Print);
+		REL::Offset<func_t> func(Offset::ConsoleLog::VPrint);
 		func(this, a_fmt, a_args);
 	}
 }

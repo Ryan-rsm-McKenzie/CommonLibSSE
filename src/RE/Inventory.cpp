@@ -8,8 +8,8 @@ namespace RE
 {
 	BSTEventSource<Inventory::Event>* Inventory::GetEventSource()
 	{
-		using func_t = function_type_t<decltype(&Inventory::GetEventSource)>;
-		REL::Offset<func_t*> func(Offset::Inventory::GetEventSource);
+		using func_t = decltype(&Inventory::GetEventSource);
+		REL::Offset<func_t> func(Offset::Inventory::GetEventSource);
 		return func();
 	}
 }

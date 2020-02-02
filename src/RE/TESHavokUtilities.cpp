@@ -10,8 +10,8 @@ namespace RE
 	{
 		TESObjectREFR* FindCollidableRef(const hkpCollidable& a_collidable)
 		{
-			using func_t = function_type_t<decltype(&FindCollidableRef)>;
-			REL::Offset<func_t*> func(Offset::TESHavokUtilities::FindCollidableRef);
+			using func_t = decltype(&FindCollidableRef);
+			REL::Offset<func_t> func(Offset::TESHavokUtilities::FindCollidableRef);
 			return func(a_collidable);
 		}
 	}

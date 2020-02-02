@@ -64,8 +64,8 @@ namespace RE
 
 	const char* ExtraTextDisplayData::GenerateName(TESForm* a_form, float a_temperFactor)
 	{
-		using func_t = function_type_t<decltype(&ExtraTextDisplayData::GenerateName)>;
-		REL::Offset<func_t*> func(Offset::ExtraTextDisplayData::GenerateName);
+		using func_t = decltype(&ExtraTextDisplayData::GenerateName);
+		REL::Offset<func_t> func(Offset::ExtraTextDisplayData::GenerateName);
 		return func(this, a_form, a_temperFactor);
 	}
 

@@ -38,8 +38,8 @@ namespace RE
 
 	BucketTable* BucketTable::GetSingleton()
 	{
-		using func_t = function_type_t<decltype(&BucketTable::GetSingleton)>;
-		REL::Offset<func_t*> func(Offset::BucketTable::GetSingleton);
+		using func_t = decltype(&BucketTable::GetSingleton);
+		REL::Offset<func_t> func(Offset::BucketTable::GetSingleton);
 		return func();
 	}
 }

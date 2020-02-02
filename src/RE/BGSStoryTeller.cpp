@@ -15,16 +15,16 @@ namespace RE
 
 	void BGSStoryTeller::BeginShutDownQuest(TESQuest* a_quest)
 	{
-		using func_t = function_type_t<decltype(&BGSStoryTeller::BeginShutDownQuest)>;
-		REL::Offset<func_t*> func(Offset::BGSStoryTeller::BeginShutDownQuest);
+		using func_t = decltype(&BGSStoryTeller::BeginShutDownQuest);
+		REL::Offset<func_t> func(Offset::BGSStoryTeller::BeginShutDownQuest);
 		return func(this, a_quest);
 	}
 
 
 	void BGSStoryTeller::BeginStartUpQuest(TESQuest* a_quest)
 	{
-		using func_t = function_type_t<decltype(&BGSStoryTeller::BeginStartUpQuest)>;
-		REL::Offset<func_t*> func(Offset::BGSStoryTeller::BeginStartUpQuest);
+		using func_t = decltype(&BGSStoryTeller::BeginStartUpQuest);
+		REL::Offset<func_t> func(Offset::BGSStoryTeller::BeginStartUpQuest);
 		return func(this, a_quest);
 	}
 }

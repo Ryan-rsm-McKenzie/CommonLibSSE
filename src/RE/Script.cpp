@@ -51,8 +51,8 @@ namespace RE
 
 	void Script::CompileAndRun_Impl(ScriptCompiler* a_compiler, COMPILER_NAME a_name, TESObjectREFR* a_targetRef)
 	{
-		using func_t = function_type_t<decltype(&Script::CompileAndRun_Impl)>;
-		REL::Offset<func_t*> func(Offset::Script::CompileAndRun);
+		using func_t = decltype(&Script::CompileAndRun_Impl);
+		REL::Offset<func_t> func(Offset::Script::CompileAndRun);
 		return func(this, a_compiler, a_name, a_targetRef);
 	}
 }

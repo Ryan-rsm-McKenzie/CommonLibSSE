@@ -8,8 +8,8 @@ namespace RE
 {
 	UInt32 TESCamera::SetCameraState(TESCameraState* a_cameraState)
 	{
-		using func_t = function_type_t<decltype(&TESCamera::SetCameraState)>;
-		REL::Offset<func_t*> func(Offset::TESCamera::SetCameraState);
+		using func_t = decltype(&TESCamera::SetCameraState);
+		REL::Offset<func_t> func(Offset::TESCamera::SetCameraState);
 		return func(this, a_cameraState);
 	}
 }

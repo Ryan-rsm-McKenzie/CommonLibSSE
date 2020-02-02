@@ -15,8 +15,8 @@ namespace RE
 
 	bool TESQuest::EnsureQuestStarted(bool& a_result, bool a_startNow)
 	{
-		using func_t = function_type_t<decltype(&TESQuest::EnsureQuestStarted)>;
-		REL::Offset<func_t*> func(Offset::TESQuest::EnsureQuestStarted);
+		using func_t = decltype(&TESQuest::EnsureQuestStarted);
+		REL::Offset<func_t> func(Offset::TESQuest::EnsureQuestStarted);
 		return func(this, a_result, a_startNow);
 	}
 
@@ -71,8 +71,8 @@ namespace RE
 
 	void TESQuest::Reset()
 	{
-		using func_t = function_type_t<decltype(&TESQuest::Reset)>;
-		REL::Offset<func_t*> func(Offset::TESQuest::ResetQuest);
+		using func_t = decltype(&TESQuest::Reset);
+		REL::Offset<func_t> func(Offset::TESQuest::ResetQuest);
 		return func(this);
 	}
 

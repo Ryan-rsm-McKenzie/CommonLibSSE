@@ -8,8 +8,8 @@ namespace RE
 {
 	BSTEventSource<ChestsLooted::Event>* ChestsLooted::GetEventSource()
 	{
-		using func_t = function_type_t<decltype(&ChestsLooted::GetEventSource)>;
-		REL::Offset<func_t*> func(Offset::ChestsLooted::GetEventSource);
+		using func_t = decltype(&ChestsLooted::GetEventSource);
+		REL::Offset<func_t> func(Offset::ChestsLooted::GetEventSource);
 		return func();
 	}
 

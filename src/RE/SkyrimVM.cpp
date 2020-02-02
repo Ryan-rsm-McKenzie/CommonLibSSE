@@ -15,8 +15,8 @@ namespace RE
 
 	bool SkyrimVM::QueuePostRenderCall(const BSTSmartPointer<SkyrimScript::DelayFunctor>& a_functor)
 	{
-		using func_t = function_type_t<decltype(&SkyrimVM::QueuePostRenderCall)>;
-		REL::Offset<func_t*> func(Offset::SkyrimVM::QueuePostRenderCall);
+		using func_t = decltype(&SkyrimVM::QueuePostRenderCall);
+		REL::Offset<func_t> func(Offset::SkyrimVM::QueuePostRenderCall);
 		return func(this, a_functor);
 	}
 }

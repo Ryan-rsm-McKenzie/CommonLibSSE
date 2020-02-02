@@ -8,8 +8,8 @@ namespace RE
 {
 	BSTEventSource<ItemCrafted::Event>* ItemCrafted::GetEventSource()
 	{
-		using func_t = function_type_t<decltype(&ItemCrafted::GetEventSource)>;
-		REL::Offset<func_t*> func(Offset::ItemCrafted::GetEventSource);
+		using func_t = decltype(&ItemCrafted::GetEventSource);
+		REL::Offset<func_t> func(Offset::ItemCrafted::GetEventSource);
 		return func();
 	}
 }

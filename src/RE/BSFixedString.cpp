@@ -175,40 +175,40 @@ namespace RE
 
 	BSFixedString* BSFixedString::ctor_cstr(const char* a_rhs)
 	{
-		using func_t = function_type_t<decltype(&BSFixedString::ctor_cstr)>;
-		REL::Offset<func_t*> func(Offset::BSFixedString::Ctor_CStr);
+		using func_t = decltype(&BSFixedString::ctor_cstr);
+		REL::Offset<func_t> func(Offset::BSFixedString::Ctor_CStr);
 		return func(this, a_rhs);
 	}
 
 
 	BSFixedString* BSFixedString::ctor_copy(const BSFixedString& a_rhs)
 	{
-		using func_t = function_type_t<decltype(&BSFixedString::ctor_copy)>;
-		REL::Offset<func_t*> func(Offset::BSFixedString::Ctor_Copy);
+		using func_t = decltype(&BSFixedString::ctor_copy);
+		REL::Offset<func_t> func(Offset::BSFixedString::Ctor_Copy);
 		return func(this, a_rhs);
 	}
 
 
 	void BSFixedString::dtor()
 	{
-		using func_t = function_type_t<decltype(&BSFixedString::dtor)>;
-		REL::Offset<func_t*> func(Offset::BSFixedString::Dtor);
+		using func_t = decltype(&BSFixedString::dtor);
+		REL::Offset<func_t> func(Offset::BSFixedString::Dtor);
 		return func(this);
 	}
 
 
 	BSFixedString* BSFixedString::set_cstr(const char* a_rhs)
 	{
-		using func_t = function_type_t<decltype(&BSFixedString::set_cstr)>;
-		REL::Offset<func_t*> func(Offset::BSFixedString::Set_CStr);
+		using func_t = decltype(&BSFixedString::set_cstr);
+		REL::Offset<func_t> func(Offset::BSFixedString::Set_CStr);
 		return func(this, a_rhs);
 	}
 
 
 	BSFixedString* BSFixedString::set_copy(const BSFixedString& a_rhs)
 	{
-		using func_t = function_type_t<decltype(&BSFixedString::set_copy)>;
-		REL::Offset<func_t*> func(Offset::BSFixedString::Set_Copy);
+		using func_t = decltype(&BSFixedString::set_copy);
+		REL::Offset<func_t> func(Offset::BSFixedString::Set_Copy);
 		return func(this, a_rhs);
 	}
 
@@ -382,16 +382,16 @@ namespace RE
 
 	void BSFixedStringW::ctor(const wchar_t* a_string)
 	{
-		using func_t = function_type_t<decltype(&BSFixedStringW::ctor)>;
-		REL::Offset<func_t*> func(Offset::BSFixedStringW::Ctor);
+		using func_t = decltype(&BSFixedStringW::ctor);
+		REL::Offset<func_t> func(Offset::BSFixedStringW::Ctor);
 		return func(this, a_string);
 	}
 
 
 	void BSFixedStringW::dtor()
 	{
-		using func_t = function_type_t<decltype(&BSFixedStringW::dtor)>;
-		REL::Offset<func_t*> func(Offset::BSFixedStringW::Dtor);
+		using func_t = decltype(&BSFixedStringW::dtor);
+		REL::Offset<func_t> func(Offset::BSFixedStringW::Dtor);
 		return func(this);
 	}
 

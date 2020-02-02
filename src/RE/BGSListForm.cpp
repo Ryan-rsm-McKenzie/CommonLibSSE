@@ -10,8 +10,8 @@ namespace RE
 {
 	void BGSListForm::AddForm(TESForm* a_form)
 	{
-		using func_t = function_type_t<decltype(&BGSListForm::AddForm)>;
-		REL::Offset<func_t*> func(Offset::BGSListForm::AddForm);
+		using func_t = decltype(&BGSListForm::AddForm);
+		REL::Offset<func_t> func(Offset::BGSListForm::AddForm);
 		return func(this, a_form);
 	}
 

@@ -15,16 +15,16 @@ namespace RE
 
 	void UIBlurManager::DecrementBlurCount()
 	{
-		using func_t = function_type_t<decltype(&UIBlurManager::DecrementBlurCount)>;
-		REL::Offset<func_t*> func(Offset::UIBlurManager::DecrementBlurCount);
+		using func_t = decltype(&UIBlurManager::DecrementBlurCount);
+		REL::Offset<func_t> func(Offset::UIBlurManager::DecrementBlurCount);
 		return func(this);
 	}
 
 
 	void UIBlurManager::IncrementBlurCount()
 	{
-		using func_t = function_type_t<decltype(&UIBlurManager::IncrementBlurCount)>;
-		REL::Offset<func_t*> func(Offset::UIBlurManager::IncrementBlurCount);
+		using func_t = decltype(&UIBlurManager::IncrementBlurCount);
+		REL::Offset<func_t> func(Offset::UIBlurManager::IncrementBlurCount);
 		return func(this);
 	}
 }
