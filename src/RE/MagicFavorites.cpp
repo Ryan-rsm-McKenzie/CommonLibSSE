@@ -8,8 +8,7 @@ namespace RE
 {
 	MagicFavorites* MagicFavorites::GetSingleton()
 	{
-		using func_t = decltype(&MagicFavorites::GetSingleton);
-		REL::Offset<func_t> func(Offset::MagicFavorites::Singleton);
-		return func();
+		REL::Offset<MagicFavorites**> singleton(Offset::MagicFavorites::Singleton);
+		return *singleton;
 	}
 }
