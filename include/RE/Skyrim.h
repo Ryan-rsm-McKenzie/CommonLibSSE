@@ -768,6 +768,7 @@
 #include "RE/LoggingDisabler.h"
 #include "RE/LookHandler.h"
 #include "RE/MagicCaster.h"
+#include "RE/MagicFavorites.h"
 #include "RE/MagicItem.h"
 #include "RE/MagicMenu.h"
 #include "RE/MagicSystem.h"

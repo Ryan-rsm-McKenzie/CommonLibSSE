@@ -209,7 +209,7 @@ struct function_type<R(Cls::*)(Args..., ...) const>
 };
 
 
-// static function
+// regular function
 template <class R, class... Args>
 struct function_type<R(*)(Args...)>
 {
@@ -217,7 +217,7 @@ struct function_type<R(*)(Args...)>
 };
 
 
-// variadic static function
+// variadic regular function
 template <class R, class... Args>
 struct function_type<R(*)(Args..., ...)>
 {

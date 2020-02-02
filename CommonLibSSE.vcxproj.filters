@@ -1875,6 +1875,9 @@
     <ClCompile Include="src\RE\hkpWorldObject.cpp">
       <Filter>src\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\MagicFavorites.cpp">
+      <Filter>src\RE\Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -5398,6 +5401,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\hkpMoppAabbCastVirtualMachine.h">
       <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MagicFavorites.h">
+      <Filter>include\RE\Menus</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

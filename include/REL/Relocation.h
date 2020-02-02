@@ -1,11 +1,11 @@
 #pragma once
 
-#include "skse64_common/BranchTrampoline.h"
-
 #include <array>
 #include <cassert>
+#include <functional>
 #include <string>
 #include <string_view>
+#include <type_traits>
 #include <vector>
 
 
@@ -108,6 +108,107 @@ namespace REL
 
 		std::size_t kmp_search(const Array<std::uint8_t>& S, const Array<std::uint8_t>& W);
 		std::size_t kmp_search(const Array<std::uint8_t>& S, const Array<std::uint8_t>& W, const Array<bool>& M);
+
+
+		// https://docs.microsoft.com/en-us/cpp/build/x64-calling-convention
+
+		template <class T, class Enable = void> struct meets_length_req : std::false_type {};
+		template <class T> struct meets_length_req<T, std::enable_if_t<sizeof(T) == 1>> : std::true_type {};
+		template <class T> struct meets_length_req<T, std::enable_if_t<sizeof(T) == 2>> : std::true_type {};
+		template <class T> struct meets_length_req<T, std::enable_if_t<sizeof(T) == 4>> : std::true_type {};
+		template <class T> struct meets_length_req<T, std::enable_if_t<sizeof(T) == 8>> : std::true_type {};
+		template <class T> struct meets_length_req<T, std::enable_if_t<sizeof(T) == 16>> : std::true_type {};
+		template <class T> struct meets_length_req<T, std::enable_if_t<sizeof(T) == 32>> : std::true_type {};
+		template <class T> struct meets_length_req<T, std::enable_if_t<sizeof(T) == 64>> : std::true_type {};
+
+		template <class T> struct meets_function_req : std::conjunction<
+			std::is_trivially_constructible<T>,
+			std::is_trivially_destructible<T>,
+			std::is_trivially_copy_assignable<T>,
+			std::negation<std::is_polymorphic<T>>>
+		{};
+
+		template <class T> struct meets_member_req : std::is_standard_layout<T> {};
+
+		template <class T, class Enable = void> struct is_msvc_pod : std::true_type {};
+		template <class T> struct is_msvc_pod<T, std::enable_if_t<std::is_union<T>::value>> : std::false_type {};
+		template <class T> struct is_msvc_pod<T, std::enable_if_t<std::is_class<T>::value>> : std::conjunction<
+			meets_length_req<T>,
+			meets_function_req<T>,
+			meets_member_req<T>>
+		{};
+
+
+		template <class F> struct member_function;
+
+
+		// normal
+		template <class R, class Cls, class... Args>
+		struct member_function<R(Cls::*)(Args...)>
+		{
+			using type = R*(Cls*, void*, Args...);
+		};
+
+
+		// const
+		template <class R, class Cls, class... Args>
+		struct member_function<R(Cls::*)(Args...) const>
+		{
+			using type = R*(const Cls*, void*, Args...);
+		};
+
+
+		// variadic
+		template <class R, class Cls, class... Args>
+		struct member_function<R(Cls::*)(Args..., ...)>
+		{
+			using type = R*(Cls*, void*, Args..., ...);
+		};
+
+
+		// variadic const
+		template <class R, class Cls, class... Args>
+		struct member_function<R(Cls::*)(Args..., ...) const>
+		{
+			using type = R*(const Cls*, void*, Args..., ...);
+		};
+
+
+		template <class F> using member_function_t = typename member_function<F>::type;
+
+
+		// return by value on a non-pod type means caller allocates space for the object
+		// and passes it in rcx, unless its a member function, in which case it passes in rdx
+		// all other arguments shift over to compensate
+		template <class R, class F, class T1, class... Args>
+		R InvokeMemberFunction(F&& a_fn, T1&& a_object, Args&&... a_args)
+		{
+			using NF = member_function_t<std::remove_reference_t<F>>;
+
+			auto func = unrestricted_cast<NF*>(a_fn);
+			std::aligned_storage_t<sizeof(R), alignof(R)> result;
+			return *func(std::forward<T1>(a_object), &result, std::forward<Args>(a_args)...);
+		}
+
+
+		template <class R, class F, class... Args>
+		R Invoke(F&& a_fn, Args&&... a_args)
+		{
+			if constexpr (!std::is_member_function_pointer<std::decay_t<F>>::value ||	// compiler will properly handle normal functions
+						  Impl::is_msvc_pod<std::invoke_result_t<F, Args...>>::value) {	// no need to shift if it's a pod type
+				return std::invoke(std::forward<F>(a_fn), std::forward<Args>(a_args)...);
+			} else {
+				return InvokeMemberFunction<R>(std::forward<F>(a_fn), std::forward<Args>(a_args)...);
+			}
+		}
+	}
+
+
+	// generic solution for calling relocated functions
+	template <class F, class... Args, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
+	decltype(auto) Invoke(F&& a_fn, Args&&... a_args)
+	{
+		return Impl::Invoke<std::invoke_result_t<F, Args...>>(std::forward<F>(a_fn), std::forward<Args>(a_args)...);
 	}
 
 
@@ -243,10 +344,10 @@ namespace REL
 		}
 
 
-		template <class... Args, class U = std::decay_t<T>, typename std::enable_if_t<std::is_invocable<U, Args...>::value, int> = 0>
-		std::invoke_result_t<U, Args...> operator()(Args&&... a_args) const
+		template <class... Args, class F = std::decay_t<T>, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
+		decltype(auto) operator()(Args&&... a_args) const
 		{
-			return GetType()(std::forward<Args>(a_args)...);
+			return Invoke(GetType(), std::forward<Args>(a_args)...);
 		}
 
 

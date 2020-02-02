@@ -193,6 +193,7 @@
     <ClCompile Include="src\RE\hkpMaterial.cpp" />
     <ClCompile Include="src\RE\hkpWorldObject.cpp" />
     <ClCompile Include="src\RE\IAnimationGraphManagerHolder.cpp" />
+    <ClCompile Include="src\RE\MagicFavorites.cpp" />
     <ClCompile Include="src\RE\Main.cpp" />
     <ClCompile Include="src\RE\NiInterpolator.cpp" />
     <ClCompile Include="src\RE\ProcessLists.cpp" />
@@ -522,6 +523,7 @@
     <ClInclude Include="include\RE\ImageSpaceModifierInstanceTemp.h" />
     <ClInclude Include="include\RE\InteriorData.h" />
     <ClInclude Include="include\RE\LoadWaitSpinner.h" />
+    <ClInclude Include="include\RE\MagicFavorites.h" />
     <ClInclude Include="include\RE\MagicSystem.h" />
     <ClInclude Include="include\RE\MarkerUsedData.h" />
     <ClInclude Include="include\RE\ModManagerMenu.h" />

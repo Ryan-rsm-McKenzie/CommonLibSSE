@@ -764,6 +764,13 @@ namespace RE
 		}
 
 
+		namespace MagicFavorites
+		{
+			// 48 C7 05 ? ? ? ? ? ? ? ? 48 8B 5C 24 ? 48 83 C4 30 5F C3 CC 48 89 5C 24 ?
+			constexpr std::uintptr_t Singleton = 0x02F26730;	// 1_5_97
+		}
+
+
 		namespace MagicItem
 		{
 			// IndirectSig: E8 ? ? ? ? E8 ? ? ? ? F3 0F 2C C0

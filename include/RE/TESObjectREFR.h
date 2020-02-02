@@ -285,7 +285,7 @@ namespace RE
 		virtual NiPoint3							GetStartingLocation() const;																																											// 53
 		virtual void								SetStartingPosition(const NiPoint3& a_pos);																																								// 54
 		virtual void								UpdateRefLight();																																														// 55
-		virtual ObjectRefHandle						RemoveItem(TESBoundObject* a_object, SInt32 a_count, ITEM_REMOVE_REASON a_reason, ExtraDataList* a_extraList, TESObjectREFR* a_moveToRef, const NiPoint3* a_dropLoc = 0, const NiPoint3* a_rotate = 0);	// 56
+		virtual ObjectRefHandle						RemoveItem(TESBoundObject* a_item, SInt32 a_count, ITEM_REMOVE_REASON a_reason, ExtraDataList* a_extraList, TESObjectREFR* a_moveToRef, const NiPoint3* a_dropLoc = 0, const NiPoint3* a_rotate = 0);	// 56
 		virtual bool								AddWornItem(TESBoundObject* a_item, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5);																											// 57
 		virtual void								DoTrap1(TrapData& a_data);																																												// 58 - { return; }
 		virtual void								DoTrap2(TrapEntry* a_trap, TargetEntry* a_target);																																						// 59 - { return; }
