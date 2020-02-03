@@ -240,6 +240,38 @@ namespace SKSE
 	}
 
 
+	std::uintptr_t Trampoline::Write5BranchEx(std::uintptr_t a_src, std::uintptr_t a_dst)
+	{
+		// E9 cd
+		// JMP rel32
+		return Write5BranchEx_Impl(a_src, a_dst, static_cast<std::uint8_t>(0xE9));
+	}
+
+
+	std::uintptr_t Trampoline::Write5CallEx(std::uintptr_t a_src, std::uintptr_t a_dst)
+	{
+		// E8 cd
+		// CALL rel32
+		return Write5BranchEx_Impl(a_src, a_dst, static_cast<std::uint8_t>(0xE8));
+	}
+
+
+	std::uintptr_t Trampoline::Write6BranchEx(std::uintptr_t a_src, std::uintptr_t a_dst)
+	{
+		// FF /4
+		// JMP r/m64
+		return Write6BranchEx_Impl(a_src, a_dst, static_cast<std::uint8_t>(0x25));
+	}
+
+
+	std::uintptr_t Trampoline::Write6CallEx(std::uintptr_t a_src, std::uintptr_t a_dst)
+	{
+		// FF /2
+		// CALL r/m64
+		return Write6BranchEx_Impl(a_src, a_dst, static_cast<std::uint8_t>(0x15));
+	}
+
+
 	// https://stackoverflow.com/a/54732489
 	void* Trampoline::Create_Impl(std::size_t a_size, std::uintptr_t a_address)
 	{
@@ -444,6 +476,23 @@ namespace SKSE
 		*mem = a_dst;
 		EndAlloc(sizeof(std::uintptr_t));
 		return true;
+	}
+
+
+	std::uintptr_t Trampoline::Write5BranchEx_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_opcode)
+	{
+		auto disp = reinterpret_cast<std::int32_t*>(a_src + 1);
+		auto nextOp = a_src + 5;
+		auto func = nextOp + *disp;
+		return Write5Branch_Impl(a_src, a_dst, a_opcode) ? func : 0;
+	}
+
+	std::uintptr_t Trampoline::Write6BranchEx_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_modrm)
+	{
+		auto disp = reinterpret_cast<std::int32_t*>(a_src + 2);
+		auto nextOp = a_src + 6;
+		auto func = nextOp + *disp;
+		return Write6Branch_Impl(a_src, a_dst, a_modrm) ? func : 0;
 	}
 
 

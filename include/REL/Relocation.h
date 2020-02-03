@@ -110,7 +110,11 @@ namespace REL
 		std::size_t kmp_search(const Array<std::uint8_t>& S, const Array<std::uint8_t>& W, const Array<bool>& M);
 
 
-		template <class T> struct is_any_function : std::disjunction<std::is_function<T>, std::is_member_function_pointer<T>> {};
+		template <class T> struct is_any_function : std::disjunction<
+			std::is_function<T>,
+			std::is_function<std::remove_pointer_t<T>>,	// is_function_pointer
+			std::is_member_function_pointer<T>>
+		{};
 
 
 		// https://docs.microsoft.com/en-us/cpp/build/x64-calling-convention
@@ -576,10 +580,10 @@ namespace REL
 
 
 	template <class T>
-	class Function<T, std::enable_if_t<Impl::is_any_function<T>::value>>
+	class Function<T, std::enable_if_t<Impl::is_any_function<std::decay_t<T>>::value>>
 	{
 	public:
-		using function_type = T;
+		using function_type = std::decay_t<T>;
 
 
 		constexpr Function() :
@@ -685,7 +689,7 @@ namespace REL
 		}
 
 
-		template <class... Args, class F = T, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
+		template <class... Args, class F = function_type, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
 		std::invoke_result_t<F, Args...> operator()(Args&&... a_args) const
 		{
 			if (empty()) {

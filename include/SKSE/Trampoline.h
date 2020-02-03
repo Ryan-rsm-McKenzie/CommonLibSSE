@@ -45,41 +45,20 @@ namespace SKSE
 		bool Write6Branch(std::uintptr_t a_src, std::uintptr_t a_dst);
 		bool Write6Call(std::uintptr_t a_src, std::uintptr_t a_dst);
 
-		template <class F>
-		bool Write5Branch(std::uintptr_t a_src, F a_dst) { return Write5Branch(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
+		template <class F> bool Write5Branch(std::uintptr_t a_src, F a_dst) { return Write5Branch(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
+		template <class F> bool Write5Call(std::uintptr_t a_src, F a_dst) { return Write5Call(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
+		template <class F> bool Write6Branch(std::uintptr_t a_src, F a_dst) { return Write6Branch(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
+		template <class F> bool Write6Call(std::uintptr_t a_src, F a_dst) { return Write6Call(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
 
-		template <class F>
-		bool Write5Call(std::uintptr_t a_src, F a_dst) { return Write5Call(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
+		std::uintptr_t Write5BranchEx(std::uintptr_t a_src, std::uintptr_t a_dst);
+		std::uintptr_t Write5CallEx(std::uintptr_t a_src, std::uintptr_t a_dst);
+		std::uintptr_t Write6BranchEx(std::uintptr_t a_src, std::uintptr_t a_dst);
+		std::uintptr_t Write6CallEx(std::uintptr_t a_src, std::uintptr_t a_dst);
 
-		template <class F>
-		bool Write6Branch(std::uintptr_t a_src, F a_dst) { return Write6Branch(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
-
-		template <class F>
-		bool Write6Call(std::uintptr_t a_src, F a_dst) { return Write6Call(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
-
-		template <class F>
-		F Write5BranchEx(std::uintptr_t a_src, std::uintptr_t a_dst) { return Write5BranchEx_Impl<F>(a_src, a_dst, static_cast<std::uint8_t>(0xE9)); }
-
-		template <class F, class G>
-		F Write5BranchEx(std::uintptr_t a_src, G a_dst) { return Write5BranchEx<F>(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
-
-		template <class F>
-		F Write5CallEx(std::uintptr_t a_src, std::uintptr_t a_dst) { return Write5BranchEx_Impl<F>(a_src, a_dst, static_cast<std::uint8_t>(0xE8)); }
-
-		template <class F, class G>
-		F Write5CallEx(std::uintptr_t a_src, G a_dst) { return Write5CallEx<F>(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
-
-		template <class F>
-		F Write6BranchEx(std::uintptr_t a_src, std::uintptr_t a_dst) { return Write6BranchEx_Impl<F>(a_src, a_dst, static_cast<std::uint8_t>(0x25)); }
-
-		template <class F, class G>
-		F Write6BranchEx(std::uintptr_t a_src, G a_dst) { return Write6BranchEx<F>(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
-
-		template <class F>
-		F Write6CallEx(std::uintptr_t a_src, std::uintptr_t a_dst) { return Write6BranchEx_Impl<F>(a_src, a_dst, static_cast<std::uint8_t>(0x15)); }
-
-		template <class F, class G>
-		F Write6CallEx(std::uintptr_t a_src, G a_dst) { return Write6CallEx<F>(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
+		template <class F> std::uintptr_t Write5BranchEx(std::uintptr_t a_src, F a_dst) { return Write5BranchEx(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
+		template <class F> std::uintptr_t Write5CallEx(std::uintptr_t a_src, F a_dst) { return Write5CallEx(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
+		template <class F> std::uintptr_t Write6BranchEx(std::uintptr_t a_src, F a_dst) { return Write6BranchEx(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
+		template <class F> std::uintptr_t Write6CallEx(std::uintptr_t a_src, F a_dst) { return Write6CallEx(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
 
 	private:
 		friend class Impl::TrampolineLogger;
@@ -102,28 +81,12 @@ namespace SKSE
 
 		bool Write5Branch_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_opcode);
 		bool Write6Branch_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_modrm);
+		std::uintptr_t Write5BranchEx_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_opcode);
+		std::uintptr_t Write6BranchEx_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_modrm);
 
 		void LogStats() const;
 		void TryRelease();
 		bool IsDisplacementInRange(std::ptrdiff_t a_disp) const;
-
-		template <class F>
-		F Write5BranchEx_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_opcode)
-		{
-			auto disp = reinterpret_cast<std::int32_t*>(a_src + 1);
-			auto nextOp = a_src + 5;
-			auto func = unrestricted_cast<F>(nextOp + *disp);
-			return Write5Branch_Impl(a_src, a_dst, a_opcode) ? func : 0;
-		}
-
-		template <class F>
-		F Write6BranchEx_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_modrm)
-		{
-			auto disp = reinterpret_cast<std::int32_t*>(a_src + 2);
-			auto nextOp = a_src + 6;
-			auto func = unrestricted_cast<F>(nextOp + *disp);
-			return Write6Branch_Impl(a_src, a_dst, a_modrm) ? func : 0;
-		}
 
 
 		static constexpr auto END_ALLOC_TAG = static_cast<std::size_t>(0);
