@@ -110,6 +110,9 @@ namespace REL
 		std::size_t kmp_search(const Array<std::uint8_t>& S, const Array<std::uint8_t>& W, const Array<bool>& M);
 
 
+		template <class T> struct is_any_function : std::disjunction<std::is_function<T>, std::is_member_function_pointer<T>> {};
+
+
 		// https://docs.microsoft.com/en-us/cpp/build/x64-calling-convention
 
 		template <class T, class Enable = void> struct meets_length_req : std::false_type {};
@@ -139,66 +142,117 @@ namespace REL
 		{};
 
 
-		template <class F> struct member_function;
+		template <class F> struct member_function_pod;
 
 
 		// normal
 		template <class R, class Cls, class... Args>
-		struct member_function<R(Cls::*)(Args...)>
+		struct member_function_pod<R(Cls::*)(Args...)>
 		{
-			using type = R*(Cls*, void*, Args...);
+			using type = R(Cls*, Args...);
 		};
 
 
 		// const
 		template <class R, class Cls, class... Args>
-		struct member_function<R(Cls::*)(Args...) const>
+		struct member_function_pod<R(Cls::*)(Args...) const>
 		{
-			using type = R*(const Cls*, void*, Args...);
+			using type = R(const Cls*, Args...);
 		};
 
 
 		// variadic
 		template <class R, class Cls, class... Args>
-		struct member_function<R(Cls::*)(Args..., ...)>
+		struct member_function_pod<R(Cls::*)(Args..., ...)>
 		{
-			using type = R*(Cls*, void*, Args..., ...);
+			using type = R(Cls*, Args..., ...);
 		};
 
 
 		// variadic const
 		template <class R, class Cls, class... Args>
-		struct member_function<R(Cls::*)(Args..., ...) const>
+		struct member_function_pod<R(Cls::*)(Args..., ...) const>
 		{
-			using type = R*(const Cls*, void*, Args..., ...);
+			using type = R(const Cls*, Args..., ...);
 		};
 
 
-		template <class F> using member_function_t = typename member_function<F>::type;
+		template <class F> using member_function_pod_t = typename member_function_pod<F>::type;
+
+
+		template <class F> struct member_function_non_pod;
+
+
+		// normal
+		template <class R, class Cls, class... Args>
+		struct member_function_non_pod<R(Cls::*)(Args...)>
+		{
+			using type = R&(Cls*, void*, Args...);
+		};
+
+
+		// normal const
+		template <class R, class Cls, class... Args>
+		struct member_function_non_pod<R(Cls::*)(Args...) const>
+		{
+			using type = R&(const Cls*, void*, Args...);
+		};
+
+
+		// variadic
+		template <class R, class Cls, class... Args>
+		struct member_function_non_pod<R(Cls::*)(Args..., ...)>
+		{
+			using type = R&(Cls*, void*, Args..., ...);
+		};
+
+
+		// variadic const
+		template <class R, class Cls, class... Args>
+		struct member_function_non_pod<R(Cls::*)(Args..., ...) const>
+		{
+			using type = R&(const Cls*, void*, Args..., ...);
+		};
+
+
+		template <class F> using member_function_non_pod_t = typename member_function_non_pod<F>::type;
+
+
+		template <class R, class F, class... Args>
+		R InvokeMemberFunctionPOD(F&& a_fn, Args&&... a_args)
+		{
+			using NF = member_function_pod_t<std::decay_t<F>>;
+
+			auto func = unrestricted_cast<NF*>(a_fn);
+			return func(std::forward<Args>(a_args)...);
+		}
 
 
 		// return by value on a non-pod type means caller allocates space for the object
 		// and passes it in rcx, unless its a member function, in which case it passes in rdx
 		// all other arguments shift over to compensate
 		template <class R, class F, class T1, class... Args>
-		R InvokeMemberFunction(F&& a_fn, T1&& a_object, Args&&... a_args)
+		R InvokeMemberFunctionNonPOD(F&& a_fn, T1&& a_object, Args&&... a_args)
 		{
-			using NF = member_function_t<std::remove_reference_t<F>>;
+			using NF = member_function_non_pod_t<std::decay_t<F>>;
 
 			auto func = unrestricted_cast<NF*>(a_fn);
 			std::aligned_storage_t<sizeof(R), alignof(R)> result;
-			return *func(std::forward<T1>(a_object), &result, std::forward<Args>(a_args)...);
+			return func(std::forward<T1>(a_object), &result, std::forward<Args>(a_args)...);
 		}
 
 
 		template <class R, class F, class... Args>
 		R Invoke(F&& a_fn, Args&&... a_args)
 		{
-			if constexpr (!std::is_member_function_pointer<std::decay_t<F>>::value ||	// compiler will properly handle normal functions
-						  Impl::is_msvc_pod<std::invoke_result_t<F, Args...>>::value) {	// no need to shift if it's a pod type
-				return std::invoke(std::forward<F>(a_fn), std::forward<Args>(a_args)...);
+			if constexpr (std::is_member_function_pointer<std::decay_t<F>>::value) {	// the compiler chokes on member functions
+				if constexpr (Impl::is_msvc_pod<R>::value) {	// no need to shift if it's a pod type
+					return InvokeMemberFunctionPOD<R>(std::forward<F>(a_fn), std::forward<Args>(a_args)...);
+				} else {
+					return InvokeMemberFunctionNonPOD<R>(std::forward<F>(a_fn), std::forward<Args>(a_args)...);
+				}
 			} else {
-				return InvokeMemberFunction<R>(std::forward<F>(a_fn), std::forward<Args>(a_args)...);
+				return a_fn(std::forward<Args>(a_args)...);
 			}
 		}
 	}
@@ -292,7 +346,7 @@ namespace REL
 
 					std::string_view name;
 					Section	section;
-					UInt32 flags;
+					DWORD flags;
 				};
 
 
@@ -318,10 +372,14 @@ namespace REL
 	};
 
 
+	// relocates the given offset in the exe and reinterprets it as the given type
 	template <class T>
 	class Offset
 	{
 	public:
+		using value_type = T;
+
+
 		Offset() = delete;
 
 
@@ -351,9 +409,9 @@ namespace REL
 		}
 
 
-		T GetType() const
+		value_type GetType() const
 		{
-			return unrestricted_cast<T>(GetAddress());
+			return unrestricted_cast<value_type>(GetAddress());
 		}
 
 
@@ -379,6 +437,9 @@ namespace REL
 	class DirectSig
 	{
 	public:
+		using value_type = T;
+
+
 		DirectSig() = delete;
 
 
@@ -425,15 +486,30 @@ namespace REL
 		}
 
 
-		operator T() const
+		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
+		std::add_lvalue_reference_t<std::remove_pointer_t<U>> operator*() const
 		{
-			return unrestricted_cast<T>(GetAddress());
+			return *GetType();
 		}
 
 
-		T GetType() const
+		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
+		U operator->() const
 		{
-			return unrestricted_cast<T>(GetAddress());
+			return GetType();
+		}
+
+
+		template <class... Args, class F = T, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
+		decltype(auto) operator()(Args&&... a_args) const
+		{
+			return Invoke(GetType(), std::forward<Args>(a_args)...);
+		}
+
+
+		value_type GetType() const
+		{
+			return unrestricted_cast<value_type>(GetAddress());
 		}
 
 
@@ -493,5 +569,225 @@ namespace REL
 
 
 		std::uintptr_t _address;
+	};
+
+
+	template <class, class = void> class Function;
+
+
+	template <class T>
+	class Function<T, std::enable_if_t<Impl::is_any_function<T>::value>>
+	{
+	public:
+		using function_type = T;
+
+
+		constexpr Function() :
+			_storage()
+		{}
+
+
+		Function(const Function& a_rhs) :
+			_storage(a_rhs._storage)
+		{}
+
+
+		Function(Function&& a_rhs) :
+			_storage(std::move(a_rhs._storage))
+		{}
+
+
+		explicit Function(const function_type& a_rhs) :
+			_storage(a_rhs)
+		{}
+
+
+		explicit Function(function_type&& a_rhs) :
+			_storage(std::move(a_rhs))
+		{}
+
+
+		explicit Function(std::uintptr_t a_rhs) :
+			_storage(a_rhs)
+		{}
+
+
+		explicit Function(const Offset<function_type>& a_rhs) :
+			_storage(a_rhs.GetType())
+		{}
+
+
+		explicit Function(const Offset<std::uintptr_t>& a_rhs) :
+			_storage(a_rhs.GetAddress())
+		{}
+
+
+		Function& operator=(const Function& a_rhs)
+		{
+			if (this == &a_rhs) {
+				return *this;
+			}
+
+			_storage = a_rhs._storage;
+			return *this;
+		}
+
+
+		Function& operator=(Function&& a_rhs)
+		{
+			if (this == &a_rhs) {
+				return *this;
+			}
+
+			_storage = std::move(a_rhs._storage);
+			return *this;
+		}
+
+
+		Function& operator=(const function_type& a_rhs)
+		{
+			_storage = a_rhs;
+			return *this;
+		}
+
+
+		Function& operator=(function_type&& a_rhs)
+		{
+			_storage = std::move(a_rhs);
+			return *this;
+		}
+
+
+		Function& operator=(std::uintptr_t a_rhs)
+		{
+			_storage = a_rhs;
+			return *this;
+		}
+
+
+		Function& operator=(const Offset<function_type>& a_rhs)
+		{
+			_storage = a_rhs.GetAddress();
+			return *this;
+		}
+
+
+		Function& operator=(const Offset<std::uintptr_t>& a_rhs)
+		{
+			_storage = a_rhs.GetAddress();
+			return *this;
+		}
+
+
+		[[nodiscard]] explicit operator bool() const noexcept
+		{
+			return !empty();
+		}
+
+
+		template <class... Args, class F = T, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
+		std::invoke_result_t<F, Args...> operator()(Args&&... a_args) const
+		{
+			if (empty()) {
+				throw std::bad_function_call();
+			}
+
+			return Invoke(_storage.func, std::forward<Args>(a_args)...);
+		}
+
+	private:
+		enum { kEmpty = 0xDEADBEEF };
+
+
+		[[nodiscard]] bool empty() const noexcept
+		{
+			return _storage.address == kEmpty;
+		}
+
+
+		union Storage
+		{
+			constexpr Storage() :
+				address(kEmpty)
+			{}
+
+
+			Storage(const Storage& a_rhs) :
+				func(a_rhs.func)
+			{}
+
+
+			Storage(Storage&& a_rhs) :
+				func(std::move(a_rhs.func))
+			{
+				a_rhs.address = kEmpty;
+			}
+
+
+			explicit Storage(const function_type& a_rhs) :
+				func(a_rhs)
+			{}
+
+
+			explicit Storage(function_type&& a_rhs) :
+				func(std::move(a_rhs))
+			{}
+
+
+			explicit Storage(std::uintptr_t a_rhs) :
+				address(a_rhs)
+			{}
+				
+
+			Storage& operator=(const Storage& a_rhs)
+			{
+				if (this == &a_rhs) {
+					return *this;
+				}
+
+				func = a_rhs.func;
+				return *this;
+			}
+
+
+			Storage& operator=(Storage&& a_rhs)
+			{
+				if (this == &a_rhs) {
+					return *this;
+				}
+
+				func = std::move(a_rhs.func);
+				a_rhs.address = kEmpty;
+				return *this;
+			}
+
+
+			Storage& operator=(const function_type& a_rhs)
+			{
+				func = a_rhs;
+				return *this;
+			}
+
+
+			Storage& operator=(function_type&& a_rhs)
+			{
+				func = std::move(a_rhs);
+				return *this;
+			}
+
+
+			Storage& operator=(std::uintptr_t a_rhs)
+			{
+				address = a_rhs;
+				return *this;
+			}
+
+
+			function_type func;
+			std::uintptr_t address;
+		};
+
+
+		Storage _storage;
 	};
 }
