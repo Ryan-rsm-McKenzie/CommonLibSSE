@@ -12,8 +12,8 @@ namespace RE
 
 
 	class BGSFootstepManager :
-		BSTEventSource<BGSFootstepEvent>,	// 00
-		BSTSingletonSDM<BGSFootstepManager>	// 58
+		public BSTEventSource<BGSFootstepEvent>,	// 00
+		public BSTSingletonSDM<BGSFootstepManager>	// 58
 	{
 	public:
 		static BGSFootstepManager* GetSingleton();
