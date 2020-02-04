@@ -13,7 +13,6 @@ namespace RE
 		class ObjectTypeInfo;
 
 
-		// first 2 bits on this ptr used as flags
 		class Object
 		{
 		public:

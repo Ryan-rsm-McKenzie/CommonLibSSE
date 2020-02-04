@@ -22,30 +22,31 @@ namespace SKSE
 			a_rhs._lock.unlock();
 
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm->GetObjectHandlePolicy();
-			for (auto& handle : _handles) {
-				policy->PersistHandle(handle);
+			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			if (policy) {
+				for (auto& handle : _handles) {
+					policy->PersistHandle(handle);
+				}
 			}
 		}
 
 
 		RegistrationSetBase::RegistrationSetBase(RegistrationSetBase&& a_rhs) :
-			_handles(std::move(a_rhs._handles)),
+			_handles(),
 			_eventName(a_rhs._eventName),
 			_lock()
 		{
-			a_rhs._lock.lock();
+			Locker locker(a_rhs._lock);
 			_handles = std::move(a_rhs._handles);
 			a_rhs._handles.clear();
-			a_rhs._lock.unlock();
 		}
 
 
 		RegistrationSetBase::~RegistrationSetBase()
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			if (vm) {
-				auto policy = vm->GetObjectHandlePolicy();
+			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			if (policy) {
 				for (auto& handle : _handles) {
 					policy->ReleaseHandle(handle);
 				}
@@ -62,15 +63,18 @@ namespace SKSE
 			Locker lhsLocker(_lock);
 			Clear();
 
-			a_rhs._lock.lock();
-			_handles = a_rhs._handles;
-			_eventName = a_rhs._eventName;
-			a_rhs._lock.unlock();
+			{
+				Locker rhsLocker(a_rhs._lock);
+				_handles = a_rhs._handles;
+				_eventName = a_rhs._eventName;
+			}
 
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm->GetObjectHandlePolicy();
-			for (auto& handle : _handles) {
-				policy->PersistHandle(handle);
+			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			if (policy) {
+				for (auto& handle : _handles) {
+					policy->PersistHandle(handle);
+				}
 			}
 
 			return *this;
@@ -85,6 +89,7 @@ namespace SKSE
 
 			Locker lhsLocker(_lock);
 			Locker rhsLocker(a_rhs._lock);
+
 			Clear();
 
 			_eventName = a_rhs._eventName;
@@ -99,15 +104,18 @@ namespace SKSE
 		bool RegistrationSetBase::Register(const RE::TESForm* a_form)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm->GetObjectHandlePolicy();
-			auto invalidHandle = policy->EmptyHandle();
-			auto handle = policy->GetHandleForObject(static_cast<RE::VMTypeID>(a_form->formType), a_form);
-			if (handle == invalidHandle) {
-				_ERROR("Failed to create handle!\n");
+			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			if (!policy) {
+				_ERROR("Failed to get handle policy!");
 				return false;
 			}
 
-			policy->PersistHandle(handle);
+			auto invalidHandle = policy->EmptyHandle();
+			auto handle = policy->GetHandleForObject(a_form->GetFormType(), a_form);
+			if (handle == invalidHandle) {
+				_ERROR("Failed to create handle!");
+				return false;
+			}
 
 			_lock.lock();
 			auto result = _handles.insert(handle);
@@ -115,6 +123,8 @@ namespace SKSE
 
 			if (!result.second) {
 				_WARNING("Handle already registered (%u)", handle);
+			} else {
+				policy->PersistHandle(handle);
 			}
 			return result.second;
 		}
@@ -123,11 +133,16 @@ namespace SKSE
 		bool RegistrationSetBase::Unregister(const RE::TESForm* a_form)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm->GetObjectHandlePolicy();
+			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			if (!policy) {
+				_ERROR("Failed to get handle policy!");
+				return false;
+			}
+
 			auto invalidHandle = policy->EmptyHandle();
-			auto handle = policy->GetHandleForObject(static_cast<RE::VMTypeID>(a_form->formType), a_form);
+			auto handle = policy->GetHandleForObject(a_form->GetFormType(), a_form);
 			if (handle == invalidHandle) {
-				_ERROR("Failed to create handle!\n");
+				_ERROR("Failed to create handle!");
 				return false;
 			}
 
@@ -138,6 +153,7 @@ namespace SKSE
 				return false;
 			} else {
 				policy->ReleaseHandle(*it);
+				_handles.erase(it);
 				return true;
 			}
 		}
@@ -146,10 +162,12 @@ namespace SKSE
 		void RegistrationSetBase::Clear()
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm->GetObjectHandlePolicy();
+			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
 			Locker locker(_lock);
-			for (auto& handle : _handles) {
-				policy->ReleaseHandle(handle);
+			if (policy) {
+				for (auto& handle : _handles) {
+					policy->ReleaseHandle(handle);
+				}
 			}
 			_handles.clear();
 		}
@@ -158,7 +176,7 @@ namespace SKSE
 		bool RegistrationSetBase::Save(SerializationInterface* a_intfc, UInt32 a_type, UInt32 a_version)
 		{
 			if (!a_intfc->OpenRecord(a_type, a_version)) {
-				_ERROR("Failed to open record!\n");
+				_ERROR("Failed to open record!");
 				return false;
 			}
 
@@ -171,13 +189,13 @@ namespace SKSE
 			Locker locker(_lock);
 			std::size_t numRegs = _handles.size();
 			if (!a_intfc->WriteRecordData(numRegs)) {
-				_ERROR("Failed to save number of regs (%zu)!\n", numRegs);
+				_ERROR("Failed to save number of regs (%zu)!", numRegs);
 				return false;
 			}
 
 			for (auto& handle : _handles) {
 				if (!a_intfc->WriteRecordData(handle)) {
-					_ERROR("Failed to save reg (%u)!\n", handle);
+					_ERROR("Failed to save reg (%u)!", handle);
 					return false;
 				}
 			}

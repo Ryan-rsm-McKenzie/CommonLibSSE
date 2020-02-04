@@ -917,4 +917,115 @@ namespace RE
 		UInt32	_pad0C;	// 0C
 	};
 	STATIC_ASSERT(sizeof(BSStaticArray<void*>) == 0x10);
+
+
+	template<class T>
+	class BSTSmallSharedArray
+	{
+	public:
+		using value_type = T;
+		using size_type = UInt32;
+		using reference = value_type&;
+		using const_reference = const value_type&;
+		using iterator = T*;
+		using const_iterator = const T*;
+
+
+		reference operator[](size_type a_pos)
+		{
+			assert(a_pos < _size);
+			return data()[a_pos];
+		}
+
+
+		const_reference operator[](size_type a_pos) const
+		{
+			assert(a_pos < _size);
+			return data()[a_pos];
+		}
+
+
+		value_type* data()
+		{
+			return size() > 1 ? _data.heap : reinterpret_cast<value_type*>(_data.local);
+		}
+
+
+		const value_type* data() const
+		{
+			return size() > 1 ? _data.heap : reinterpret_cast<value_type*>(_data.local);
+		}
+
+
+		iterator begin()
+		{
+			return data();
+		}
+
+
+		const_iterator begin() const
+		{
+			return data();
+		}
+
+
+		const_iterator cbegin() const
+		{
+			return begin();
+		}
+
+
+		iterator end()
+		{
+			return data() + size();
+		}
+
+
+		const_iterator end() const
+		{
+			return data() + size();
+		}
+
+
+		const_iterator cend() const
+		{
+			return end();
+		}
+
+
+		[[nodiscard]] bool empty() const
+		{
+			return size() != 0;
+		}
+
+
+		size_type size() const
+		{
+			return _size;
+		}
+
+
+		size_type capacity() const
+		{
+			return size();
+		}
+
+	private:
+		union Data
+		{
+			Data() : local{ 0 } {}
+			~Data() {}
+
+
+			value_type*	heap;
+			char		local[sizeof(value_type)];
+		};
+
+
+		// members
+		UInt32	_size;	// 00
+		UInt32	_pad04;	// 04
+		Data	_data;	// 08
+	};
+	STATIC_ASSERT(sizeof(BSTSmallSharedArray<void*>) == 0x10);
 }

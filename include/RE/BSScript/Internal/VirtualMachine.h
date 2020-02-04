@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSScript/Internal/AttachedScript.h"
 #include "RE/BSScript/Internal/FunctionMessage.h"
 #include "RE/BSScript/Internal/SuspendedStack.h"
 #include "RE/BSScript/IVirtualMachine.h"
@@ -52,6 +53,8 @@ namespace RE
 
 				struct QueuedUnbindRefs
 				{
+				public:
+					// members
 					BSTSmartPointer<Object>	obj;		// 00
 					UInt32					refCount;	// 08
 					UInt32					pad0C;		// 0C
@@ -172,8 +175,8 @@ namespace RE
 				UInt32														unk938C;					// 938C
 				UInt64														unk9390;					// 9390
 				UInt64														unk9398;					// 9398
-				UInt64														unk93A0;					// 93A0
-				BSTHashMap<UnkKey, UnkValue>								unk93A8;					// 93A8
+				mutable BSSpinLock											attachedScriptsLock;		// 93A0
+				BSTHashMap<VMHandle, BSTSmallSharedArray<AttachedScript>>	attachedScripts;			// 93A8
 				UInt64														unk93D8;					// 93D8
 				BSTArray<void*>												unk93E0;					// 93E0
 				mutable BSSpinLock											arraysLock;					// 93F8

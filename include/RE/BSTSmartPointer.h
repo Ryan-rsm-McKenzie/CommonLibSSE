@@ -61,40 +61,40 @@ namespace RE
 
 
 		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
-		explicit BSTSmartPointer(Y* a_ptr) :
-			_ptr(a_ptr)
+		explicit BSTSmartPointer(Y* a_rhs) :
+			_ptr(a_rhs)
 		{
 			Acquire();
 		}
 
 
-		BSTSmartPointer(const BSTSmartPointer& a_r) noexcept :
-			_ptr(a_r._ptr)
+		BSTSmartPointer(const BSTSmartPointer& a_rhs) noexcept :
+			_ptr(a_rhs._ptr)
 		{
 			Acquire();
 		}
 
 
 		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
-		BSTSmartPointer(const BSTSmartPointer<Y>& a_r) noexcept :
-			_ptr(a_r._ptr)
+		BSTSmartPointer(const BSTSmartPointer<Y>& a_rhs) noexcept :
+			_ptr(a_rhs._ptr)
 		{
 			Acquire();
 		}
 
 
-		BSTSmartPointer(BSTSmartPointer&& a_r) noexcept :
-			_ptr(std::move(a_r._ptr))
+		BSTSmartPointer(BSTSmartPointer&& a_rhs) noexcept :
+			_ptr(std::move(a_rhs._ptr))
 		{
-			a_r._ptr = 0;
+			a_rhs._ptr = 0;
 		}
 
 
 		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
-		BSTSmartPointer(BSTSmartPointer<Y>&& a_r) noexcept :
-			_ptr(std::move(a_r._ptr))
+		BSTSmartPointer(BSTSmartPointer<Y>&& a_rhs) noexcept :
+			_ptr(std::move(a_rhs._ptr))
 		{
-			a_r._ptr = 0;
+			a_rhs._ptr = 0;
 		}
 
 
@@ -105,44 +105,44 @@ namespace RE
 		}
 
 
-		BSTSmartPointer& operator=(const BSTSmartPointer& a_r) noexcept
+		BSTSmartPointer& operator=(const BSTSmartPointer& a_rhs) noexcept
 		{
-			if (this == &a_r) {
+			if (this == &a_rhs) {
 				return *this;
 			}
 
-			reset(a_r._ptr);
+			reset(a_rhs._ptr);
 			return *this;
 		}
 
 
 		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
-		BSTSmartPointer& operator=(const BSTSmartPointer<Y>& a_r) noexcept
+		BSTSmartPointer& operator=(const BSTSmartPointer<Y>& a_rhs) noexcept
 		{
-			reset(a_r._ptr);
+			reset(a_rhs._ptr);
 			return *this;
 		}
 
 
-		BSTSmartPointer& operator=(BSTSmartPointer&& a_r) noexcept
+		BSTSmartPointer& operator=(BSTSmartPointer&& a_rhs) noexcept
 		{
-			if (this == &a_r) {
+			if (this == &a_rhs) {
 				return *this;
 			}
 
 			Release();
-			_ptr = std::move(a_r._ptr);
-			a_r._ptr = 0;
+			_ptr = std::move(a_rhs._ptr);
+			a_rhs._ptr = 0;
 			return *this;
 		}
 
 
 		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
-		BSTSmartPointer& operator=(BSTSmartPointer<Y>&& a_r) noexcept
+		BSTSmartPointer& operator=(BSTSmartPointer<Y>&& a_rhs) noexcept
 		{
 			Release();
-			_ptr = std::move(a_r._ptr);
-			a_r._ptr = 0;
+			_ptr = std::move(a_rhs._ptr);
+			a_rhs._ptr = 0;
 			return *this;
 		}
 

@@ -21,6 +21,8 @@ namespace RE
 
 		struct Entry
 		{
+		public:
+			// members
 			BGSKeyword*	keyword;		// 00
 			FormID		linkedRefID;	// 08
 			UInt32		pad0C;			// 0C
@@ -31,6 +33,7 @@ namespace RE
 		// a variation of a small array
 		struct Array
 		{
+		public:
 			using value_type = Entry;
 			using size_type = UInt32;
 			using reference = value_type&;
@@ -51,6 +54,7 @@ namespace RE
 			size_type size() const noexcept;
 
 
+			// members
 			Data	_data;	// 00
 			UInt32	_size;	// 10
 			UInt32	_pad14;	// 14

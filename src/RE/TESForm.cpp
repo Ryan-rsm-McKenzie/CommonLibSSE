@@ -148,8 +148,10 @@ namespace RE
 			return false;
 		}
 
-		auto handle = policy->GetHandleForObject(formType, this);
-		return handle != policy->EmptyHandle();
+		auto handle = policy->GetHandleForObject(GetFormType(), this);
+		if (handle == policy->EmptyHandle()) {
+			return false;
+		}
 	}
 
 

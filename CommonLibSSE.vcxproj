@@ -479,10 +479,12 @@
     <ClInclude Include="include\RE\BSResource\Info.h" />
     <ClInclude Include="include\RE\BSResponse.h" />
     <ClInclude Include="include\RE\BSScript\ByteCode\PackedInstructionStream.h" />
+    <ClInclude Include="include\RE\BSScript\Internal\AttachedScript.h" />
     <ClInclude Include="include\RE\BSScript\Internal\VDescTable.h" />
     <ClInclude Include="include\RE\BSScript\MemoryPage.h" />
     <ClInclude Include="include\RE\BSScript\PropertyTypeInfo.h" />
     <ClInclude Include="include\RE\BSTimer.h" />
+    <ClInclude Include="include\RE\BSTPointerAndFlags.h" />
     <ClInclude Include="include\RE\BSTTuple.h" />
     <ClInclude Include="include\RE\BSUntypedPointerHandle.h" />
     <ClInclude Include="include\RE\BSVisit.h" />

@@ -2000,9 +2000,6 @@
     <ClInclude Include="include\RE\ExtraReferenceHandle.h">
       <Filter>include\RE\BSExtraData</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSTSmartPointer.h">
-      <Filter>include\RE\BSSystem</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSIntrusiveRefCounted.h">
       <Filter>include\RE\BSSystem</Filter>
     </ClInclude>
@@ -5404,6 +5401,15 @@
     </ClInclude>
     <ClInclude Include="include\RE\MagicFavorites.h">
       <Filter>include\RE\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTPointerAndFlags.h">
+      <Filter>include\RE\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTSmartPointer.h">
+      <Filter>include\RE\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\Internal\AttachedScript.h">
+      <Filter>include\RE\BSScript\Internal</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
