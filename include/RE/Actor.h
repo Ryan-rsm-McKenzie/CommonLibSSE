@@ -116,6 +116,9 @@ namespace RE
 	STATIC_ASSERT(sizeof(ActorValueStorage) == 0x20);
 
 
+	NiSmartPointer(Actor);
+
+
 	class Actor :
 		public TESObjectREFR,								// 000
 		public MagicTarget,									// 098

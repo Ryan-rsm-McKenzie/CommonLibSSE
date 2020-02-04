@@ -8,6 +8,8 @@
 #include <type_traits>
 #include <vector>
 
+#include "skse64_common/SafeWrite.h"
+
 
 namespace RE
 {
@@ -430,6 +432,24 @@ namespace REL
 			return GetAddress() - Module::BaseAddr();
 		}
 
+
+		template <class U = T, typename std::enable_if_t<std::is_same<U, std::uintptr_t>::value, int> = 0>
+		std::uintptr_t WriteVFunc(std::size_t a_idx, std::uintptr_t a_newFunc)
+		{
+			constexpr auto PSIZE = sizeof(void*);
+			auto addr = GetAddress() + (PSIZE * a_idx);
+			auto result = *reinterpret_cast<std::uintptr_t*>(addr);
+			SafeWrite64(addr, a_newFunc);
+			return result;
+		}
+
+
+		template <class F, class U = T, typename std::enable_if_t<std::is_same<U, std::uintptr_t>::value, int> = 0>
+		std::uintptr_t WriteVFunc(std::size_t a_idx, F a_newFunc)
+		{
+			return WriteVFunc(a_idx, unrestricted_cast<std::uintptr_t>(a_newFunc));
+		}
+
 	private:
 		std::uintptr_t _address;
 	};
@@ -700,7 +720,7 @@ namespace REL
 		}
 
 	private:
-		enum { kEmpty = 0xDEADBEEF };
+		enum : std::uintptr_t { kEmpty = 0 };
 
 
 		[[nodiscard]] bool empty() const noexcept
