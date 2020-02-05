@@ -29,7 +29,7 @@ namespace RE
 	}
 
 
-	const GFxValue& FxDelegateArgs::at(UPInt a_pos) const
+	const GFxValue& FxDelegateArgs::At(UPInt a_pos) const
 	{
 		if (a_pos >= _numArgs) {
 			std::string err = __FUNCTION__;

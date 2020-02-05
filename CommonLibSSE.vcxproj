@@ -187,12 +187,14 @@
     <ClCompile Include="src\RE\ExtraLightData.cpp" />
     <ClCompile Include="src\RE\ExtraPoison.cpp" />
     <ClCompile Include="src\RE\bhkCharProxyController.cpp" />
+    <ClCompile Include="src\RE\HeapBlock.cpp" />
     <ClCompile Include="src\RE\hkpBroadPhase.cpp" />
     <ClCompile Include="src\RE\hkpCdBody.cpp" />
     <ClCompile Include="src\RE\hkpCollidable.cpp" />
     <ClCompile Include="src\RE\hkpMaterial.cpp" />
     <ClCompile Include="src\RE\hkpWorldObject.cpp" />
     <ClCompile Include="src\RE\IAnimationGraphManagerHolder.cpp" />
+    <ClCompile Include="src\RE\IMemoryStore.cpp" />
     <ClCompile Include="src\RE\MagicFavorites.cpp" />
     <ClCompile Include="src\RE\Main.cpp" />
     <ClCompile Include="src\RE\NiInterpolator.cpp" />
@@ -491,6 +493,7 @@
     <ClInclude Include="include\RE\BSXFlags.h" />
     <ClInclude Include="include\RE\CFilter.h" />
     <ClInclude Include="include\RE\CollisionLayers.h" />
+    <ClInclude Include="include\RE\CompactingStore\Store.h" />
     <ClInclude Include="include\RE\ContainerItemExtra.h" />
     <ClInclude Include="include\RE\Crime.h" />
     <ClInclude Include="include\RE\DecalData.h" />
@@ -503,6 +506,8 @@
     <ClInclude Include="include\RE\FactionRank.h" />
     <ClInclude Include="include\RE\FightReactions.h" />
     <ClInclude Include="include\RE\HandleManager.h" />
+    <ClInclude Include="include\RE\HeapBlock.h" />
+    <ClInclude Include="include\RE\HeapBlockFreeHead.h" />
     <ClInclude Include="include\RE\hkAabb.h" />
     <ClInclude Include="include\RE\hkMoppBvTreeShapeBase.h" />
     <ClInclude Include="include\RE\hkp3AxisSweep.h" />

@@ -219,7 +219,7 @@ namespace RE
 		virtual void								InitializeData() override;																																												// 04
 		virtual void								ClearData() override;																																													// 05
 		virtual bool								Load(TESFile* a_mod) override;																																											// 06
-		virtual TESForm*							CreateDuplicateForm(void* a_arg1, void* a_arg2) override;																																				// 09
+		virtual TESForm*							CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;																																		// 09
 		virtual bool								CheckSaveGame(BGSSaveFormBuffer* a_buf) override;																																						// 0D
 		virtual void								SaveGame(BGSSaveFormBuffer* a_buf) override;																																							// 0E
 		virtual void								LoadGame(BGSLoadFormBuffer* a_buf) override;																																							// 0F
@@ -242,7 +242,7 @@ namespace RE
 		virtual bool								IsWater() const override;																																												// 2A - { return data.objectReference ? data.objectReference->IsWater() : false; }
 		virtual TESObjectREFR*						AsReference1() override;																																												// 2B - { return this; }
 		virtual const TESObjectREFR*				AsReference2() const override;																																											// 2C - { return this; }
-		virtual bool								BelongsInGroup(FORM* a_form, bool a_arg2, bool a_arg3) override;																																		// 30
+		virtual bool								BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly) override;																													// 30
 		virtual void								CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;																																			// 31
 		virtual const char*							GetFormEditorID() const override;																																										// 32
 
@@ -259,12 +259,12 @@ namespace RE
 
 		// add
 		virtual void								Predestroy();																																															// 3B
-		virtual BGSLocation*						GetEditorLocation() const;																																												// 3C
-		virtual bool								GetEditorLocation(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_fallback);																						// 3D
+		virtual BGSLocation*						GetEditorLocation1() const;																																												// 3C
+		virtual bool								GetEditorLocation2(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_fallback);																						// 3D
 		virtual void								ForceEditorLocation(BGSLocation* a_location);																																							// 3E
-		virtual void								Update3DPosition(bool a_arg1);																																											// 3F
-		virtual void								UpdateSoundCallBack(bool a_arg1);																																										// 40
-		virtual bool								SetDialogueWithPlayer(bool a_arg1, bool a_arg2, TESTopicInfo* a_topic);																																	// 41
+		virtual void								Update3DPosition(bool a_warp);																																											// 3F
+		virtual void								UpdateSoundCallBack(bool a_endSceneAction);																																								// 40
+		virtual bool								SetDialogueWithPlayer(bool a_flag, bool a_forceGreet, TESTopicInfo* a_topic);																															// 41
 		virtual void								Unk_42(void);																																															// 42
 		virtual bool								GetFullLODRef() const;																																													// 43
 		virtual void								SetFullLODRef(bool a_set);																																												// 44
@@ -275,7 +275,7 @@ namespace RE
 		virtual TESPackage*							CheckForCurrentAliasPackage();																																											// 49 - { return 0; }
 		virtual BGSScene*							GetCurrentScene() const;																																												// 4A
 		virtual void								SetCurrentScene(BGSScene* a_scene);																																										// 4B
-		virtual bool								UpdateInDialogue(DialogueResponse* a_response, bool a_arg2);																																			// 4C
+		virtual bool								UpdateInDialogue(DialogueResponse* a_response, bool a_unused);																																			// 4C
 		virtual BGSDialogueBranch*					GetExclusiveBranch() const;																																												// 4D
 		virtual void								SetExclusiveBranch(BGSDialogueBranch* a_branch);																																						// 4E
 		virtual void								PauseCurrentDialogue();																																													// 4F
@@ -286,7 +286,7 @@ namespace RE
 		virtual void								SetStartingPosition(const NiPoint3& a_pos);																																								// 54
 		virtual void								UpdateRefLight();																																														// 55
 		virtual ObjectRefHandle						RemoveItem(TESBoundObject* a_item, SInt32 a_count, ITEM_REMOVE_REASON a_reason, ExtraDataList* a_extraList, TESObjectREFR* a_moveToRef, const NiPoint3* a_dropLoc = 0, const NiPoint3* a_rotate = 0);	// 56
-		virtual bool								AddWornItem(TESBoundObject* a_item, SInt32 a_count, bool a_arg3, UInt32 a_arg4, UInt32 a_arg5);																											// 57
+		virtual bool								AddWornItem(TESBoundObject* a_item, SInt32 a_count, bool a_forceEquip, UInt32 a_arg4, UInt32 a_arg5);																									// 57
 		virtual void								DoTrap1(TrapData& a_data);																																												// 58 - { return; }
 		virtual void								DoTrap2(TrapEntry* a_trap, TargetEntry* a_target);																																						// 59 - { return; }
 		virtual void								AddObjectToContainer(TESBoundObject* a_object, ExtraDataList* a_extraList, SInt32 a_count, TESObjectREFR* a_fromRefr);																					// 5A
@@ -300,14 +300,14 @@ namespace RE
 		virtual BSFaceGenNiNode*					GetFaceNode();																																															// 62 - { return GetFaceNodeSkinned(); }
 		virtual BSFaceGenAnimationData*				GetFaceGenAnimationData();																																												// 63 - { return 0; }
 		virtual bool								ClampToGround();																																														// 64
-		virtual bool								DetachHavok(NiAVObject* a_arg1);																																										// 65
+		virtual bool								DetachHavok(NiAVObject* a_obj3D);																																										// 65
 		virtual void								InitHavok();																																															// 66
 		virtual void								Unk_67(void);																																															// 67 - { return; }
 		virtual void								Unk_68(void);																																															// 68 - { return; }
 		virtual void								Unk_69(void);																																															// 69 - { return; }
-		virtual NiAVObject*							Load3D(bool a_arg1);																																													// 6A
+		virtual NiAVObject*							Load3D(bool a_backgroundLoading);																																										// 6A
 		virtual void								Release3DRelatedData();																																													// 6B
-		virtual void								Set3D(NiAVObject* a_root, bool a_arg2 = true);																																							// 6C
+		virtual void								Set3D(NiAVObject* a_object, bool a_queue3DTasks = true);																																				// 6C
 		virtual bool								ShouldBackgroundClone() const;																																											// 6D
 		virtual void								Unk_6E(void);																																															// 6E - { return; }
 		virtual NiAVObject*							Get3D1(bool a_firstPerson) const;																																										// 6F - { return Get3D2(); }
@@ -317,14 +317,14 @@ namespace RE
 		virtual NiPoint3							GetBoundMin() const;																																													// 73
 		virtual NiPoint3							GetBoundMax() const;																																													// 74
 		virtual void								Unk_75(void);																																															// 75 - { return 0; }
-		virtual bool								InitNonNPCAnimation(NiNode& a_arg1);																																									// 76
-		virtual bool								CheckAndFixSkinAndBoneOrder(NiNode& a_arg1);																																							// 77
+		virtual bool								InitNonNPCAnimation(NiNode& a_nodeForAnim);																																								// 76
+		virtual bool								CheckAndFixSkinAndBoneOrder(NiNode& a_nodeToTest);																																						// 77
 		virtual void								Unk_78(void);																																															// 78
-		virtual void								ModifyAnimationUpdateData(BSAnimationUpdateData& a_arg1);																																				// 79 - { return; }
+		virtual void								ModifyAnimationUpdateData(BSAnimationUpdateData& a_data);																																				// 79 - { return; }
 		virtual bool								ShouldSaveAnimationOnUnloading() const;																																									// 7A
 		virtual bool								ShouldSaveAnimationOnSaving() const;																																									// 7B
 		virtual bool								ShouldPerformRevert() const;																																											// 7C - { return true; }
-		virtual void								UpdateAnimation(float a_arg1);																																											// 7D
+		virtual void								UpdateAnimation(float a_delta);																																											// 7D
 		virtual const BSTSmartPointer<BipedAnim>&	GetBiped1(bool a_firstPerson) const;																																									// 7E - { return GetBiped2(); }
 		virtual const BSTSmartPointer<BipedAnim>&	GetBiped2() const;																																														// 7F
 		virtual const BSTSmartPointer<BipedAnim>&	GetCurrentBiped() const;																																												// 80 - { return GetBiped2(); }
@@ -332,12 +332,12 @@ namespace RE
 		virtual void								Unk_82(void);																																															// 82 - { return; }
 		virtual void								Unk_83(void);																																															// 83 - { return; }
 		virtual void								SetObjectReference(TESBoundObject* a_object);																																							// 84 - sets flag 24 if the object has destructibles
-		virtual void								MoveHavok(bool a_arg1);																																													// 85
+		virtual void								MoveHavok(bool a_forceRec);																																												// 85
 		virtual void								GetLinearVelocity(NiPoint3& a_velocity) const;																																							// 86
-		virtual void								SetActionComplete(bool a_arg1);																																											// 87 - { return; }
-		virtual void								SetMovementComplete(bool a_arg1);																																										// 88 - { return; }
+		virtual void								SetActionComplete(bool a_set);																																											// 87 - { return; }
+		virtual void								SetMovementComplete(bool a_set);																																										// 88 - { return; }
 		virtual void								Disable();																																																// 89
-		virtual void								ResetInventory(bool a_removeDefaultLevItems);																																							// 8A
+		virtual void								ResetInventory(bool a_leveledOnly);																																										// 8A
 		virtual void								Unk_8B(void);																																															// 8B - { return 0; }
 		virtual void								Unk_8C(void);																																															// 8C - { return; }
 		virtual NiAVObject*							GetCurrent3D() const;																																													// 8D - { return Get3D2(); }
@@ -352,15 +352,15 @@ namespace RE
 		virtual void								Unk_96(void);																																															// 96 - related to lockpicking
 		virtual TESObjectCELL*						GetSaveParentCell() const;																																												// 97
 		virtual void								SetParentCell(TESObjectCELL* a_cell);																																									// 98
-		virtual bool								IsDead(bool a_acceptBleedout) const;																																									// 99
+		virtual bool								IsDead(bool a_notEssential) const;																																										// 99
 		virtual BSAnimNoteReceiver*					CreateAnimNoteReceiver();																																												// 9A
 		virtual BSAnimNoteReceiver*					GetAnimNoteReceiver();																																													// 9B
 		virtual void								Unk_9C(void);																																															// 9C
 		virtual void								Unk_9D(void);																																															// 9D - { return 0; }
-		virtual void								Unk_9E(void);																																															// 9E - { return 0; }
+		virtual TESAmmo*							GetCurrentAmmo() const;																																													// 9E - { return 0; }
 		virtual BGSDecalGroup*						GetDecalGroup() const;																																													// 9F
 		virtual void								Unk_A0(void);																																															// A0
-		virtual void								UnequipItem(UInt64 a_arg1, TESBoundObject* a_item);																																						// A1 - { return; }
+		virtual void								UnequipItem(UInt64 a_arg1, TESBoundObject* a_object);																																					// A1 - { return; }
 
 
 		static NiPointer<TESObjectREFR>	LookupByHandle(RefHandle a_refHandle);
@@ -386,6 +386,8 @@ namespace RE
 		const char*							GetDisplayFullName();
 		InventoryDropMap					GetDroppedInventory();
 		InventoryDropMap					GetDroppedInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);
+		BGSLocation*						GetEditorLocation() const;
+		bool								GetEditorLocation(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_fallback);
 		TESFaction*							GetFactionOwner();
 		InventoryItemMap					GetInventory();
 		InventoryItemMap					GetInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter);

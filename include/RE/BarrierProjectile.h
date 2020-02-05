@@ -36,11 +36,11 @@ namespace RE
 		// override (Projectile)
 		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;		// 0E
 		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;		// 0F
-		virtual void		InitLoadGame(BGSLoadFormBuffer* a_arg1) override;	// 10
-		virtual void		FinishLoadGame(BGSLoadFormBuffer* a_arg1) override;	// 11
-		virtual void		Revert(BGSLoadFormBuffer* a_arg1) override;			// 12
+		virtual void		InitLoadGame(BGSLoadFormBuffer* a_buf) override;	// 10
+		virtual void		FinishLoadGame(BGSLoadFormBuffer* a_buf) override;	// 11
+		virtual void		Revert(BGSLoadFormBuffer* a_buf) override;			// 12
 		virtual void		InitHavok() override;								// 66
-		virtual NiAVObject*	Load3D(bool a_arg1) override;						// 6A
+		virtual NiAVObject*	Load3D(bool a_backgroundLoading) override;			// 6A
 		virtual void		Unk_A7(void) override;								// A7 - { return 1; }
 		virtual void		Unk_AB(void) override;								// AB
 		virtual void		Unk_AC(void) override;								// AC

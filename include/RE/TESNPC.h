@@ -226,7 +226,7 @@ namespace RE
 		virtual void					LoadGame(BGSLoadFormBuffer* a_buf) override;																								// 0F
 		virtual void					Revert(BGSLoadFormBuffer* a_buf) override;																									// 12
 		virtual void					InitItemImpl() override;																													// 13
-		virtual const char*				GetTextForParsedSubTag(const BSFixedString& a_alias) const override;																		// 2E
+		virtual const char*				GetTextForParsedSubTag(const BSFixedString& a_tag) const override;																			// 2E
 		virtual void					Copy(TESForm* a_srcForm) override;																											// 2F
 		virtual bool					Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;	// 37
 		virtual void					UnClone3D(TESObjectREFR* a_ref) override;																									// 41

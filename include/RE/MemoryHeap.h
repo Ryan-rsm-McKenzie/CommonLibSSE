@@ -11,26 +11,26 @@ namespace RE
 		inline static const void* RTTI = RTTI_MemoryHeap;
 
 
-		virtual ~MemoryHeap();					// 00
+		virtual ~MemoryHeap();																									// 00
 
 		// override (AbstractHeap)
-		virtual void	Unk_01(void) override;	// 01
-		virtual void	Unk_08(void) override;	// 08
-		virtual void	Unk_09(void) override;	// 09
-		virtual void	Unk_0B(void) override;	// 0B
-		virtual void	Unk_0C(void) override;	// 0C
-		virtual void	Unk_0F(void) override;	// 0F
-		virtual void	Unk_10(void) override;	// 10
-		virtual void	Unk_11(void) override;	// 11
-		virtual void	Unk_12(void) override;	// 12
-		virtual void	Unk_13(void) override;	// 13
+		virtual std::size_t	Size(const void* a_block) const override;															// 01
+		virtual void*		Allocate(std::size_t a_size, UInt32 a_alignment) override;											// 08
+		virtual void		Deallocate(void* a_pointer, UInt32) override;														// 09
+		virtual std::size_t	TotalSize(const void* a_pointer) const override;													// 0B
+		virtual void		GetHeapStats(HeapStats* a_stats, bool a_fullBlockInfo) override;									// 0C
+		virtual void*		DoHeapAllocation(std::size_t a_size, std::size_t a_initialSize) override;							// 0F
+		virtual void		DoHeapFree(void* a_ptr) override;																	// 10
+		virtual std::size_t	CreateMorePages(void* a_memory, std::size_t a_currentSize, std::size_t a_requestedBytes) override;	// 11
+		virtual std::size_t	CleanExtraPages(void* a_memory, std::size_t a_currentSize, std::size_t a_freeBytes) override;		// 12
+		virtual void		DecommitPages(HeapBlock* a_block) override;															// 13
 
 
 		// members
-		bool	unk2A8;	// 2A8
-		UInt8	unk2A9;	// 2A9
-		UInt16	unk2AA;	// 2AA
-		UInt32	unk2AC;	// 2AC
+		bool	deletingHeap;	// 2A8
+		UInt8	pad2A9;			// 2A9
+		UInt16	pad2AA;			// 2AA
+		UInt32	pad2AC;			// 2AC
 	};
 	STATIC_ASSERT(sizeof(MemoryHeap) == 0x2B0);
 }

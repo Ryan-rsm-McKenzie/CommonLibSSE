@@ -12,21 +12,21 @@ namespace RE
 		inline static const void* RTTI = RTTI_ZeroOverheadHeap;
 
 
-		virtual ~ZeroOverheadHeap();													// 00
+		virtual ~ZeroOverheadHeap();																		// 00
 
 		// override (IMemoryHeap)
-		virtual void		Unk_01(void) override;										// 01
-		virtual void		Unk_02(void) override;										// 02
-		virtual void		Unk_03(void) override;										// 03
-		virtual void*		Allocate(std::size_t a_size, UInt32 a_alignment) override;	// 04
-		virtual const char*	GetName() override;											// 07 - { return name; }
-		virtual void		Unk_08(void) override;										// 08
-		virtual void		Unk_09(void) override;										// 09 - { return; }
-		virtual bool		IsCommittedInHeap(void* a_mem) override;					// 0A
-		virtual void		Unk_0B(void) override;										// 0B
-		virtual void		Unk_0C(void) override;										// 0C
-		virtual void		Unk_0D(void) override;										// 0D - { return 0; }
-		virtual void		Unk_0E(void) override;										// 0E - { return 0; }
+		virtual std::size_t	Size(const void* a_block) const override;										// 01
+		virtual void		GetMemoryStats(MemoryStats* a_stats) override;									// 02
+		virtual bool		ContainsBlockImpl(const void* a_block) const override;							// 03
+		virtual void*		AllocateAlignImpl(std::size_t a_size, UInt32 a_alignment) override;				// 04
+		virtual const char*	GetName() const override;														// 07 - { return name; }
+		virtual void*		Allocate(std::size_t a_size, UInt32 a_alignment) override;						// 08
+		virtual void		Deallocate(void* a_pointer, UInt32) override;									// 09 - { return; }
+		virtual bool		PointerInHeap(const void* a_pointer) const override;							// 0A
+		virtual std::size_t	TotalSize(const void* a_pointer) const override;								// 0B
+		virtual void		GetHeapStats(HeapStats* a_stats, bool a_fullBlockInfo) override;				// 0C
+		virtual bool		ShouldTrySmallBlockPools(std::size_t a_size, MEM_CONTEXT a_context) override;	// 0D - { return 0; }
+		virtual UInt32		GetPageSize() const override;													// 0E - { return 0; }
 
 
 		// members

@@ -164,25 +164,25 @@ namespace RE
 		STATIC_ASSERT(sizeof(CellData) == 0x8);
 
 
-		virtual ~TESObjectCELL();																// 00
+		virtual ~TESObjectCELL();																					// 00
 
 		// override (TESForm)
-		virtual void		ClearData() override;												// 05
-		virtual bool		Load(TESFile* a_mod) override;										// 06
-		virtual TESForm*	CreateDuplicateForm(void* a_arg1, void* a_arg2) override;			// 09 - { return 0; }
-		virtual bool		FindInFileFast(TESFile* a_mod) override;							// 0C
-		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;						// 0E
-		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;						// 0F
-		virtual void		Revert(BGSLoadFormBuffer* a_buf) override;							// 12
-		virtual void		InitItemImpl() override;											// 13
-		virtual void		GetFormDetailedString(char* a_buf, UInt32 a_bufLen) override;		// 16
-		virtual void		SetAltered(bool a_set) override;									// 24
-		virtual bool		BelongsInGroup(FORM* a_form, bool a_arg2, bool a_arg3) override;	// 30
-		virtual void		CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;		// 31
-		virtual const char*	GetFormEditorID() const override;									// 32
-		virtual bool		SetFormEditorID(const char* a_str) override;						// 33
-		virtual bool		IsParentForm() override;											// 34 - { return true; }
-		virtual bool		IsFormTypeChild(FormType a_type) override;							// 36
+		virtual void		ClearData() override;																	// 05
+		virtual bool		Load(TESFile* a_mod) override;															// 06
+		virtual TESForm*	CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;						// 09 - { return 0; }
+		virtual bool		FindInFileFast(TESFile* a_mod) override;												// 0C
+		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;											// 0E
+		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;											// 0F
+		virtual void		Revert(BGSLoadFormBuffer* a_buf) override;												// 12
+		virtual void		InitItemImpl() override;																// 13
+		virtual void		GetFormDetailedString(char* a_buf, UInt32 a_bufLen) override;							// 16
+		virtual void		SetAltered(bool a_set) override;														// 24
+		virtual bool		BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly) override;	// 30
+		virtual void		CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;							// 31
+		virtual const char*	GetFormEditorID() const override;														// 32
+		virtual bool		SetFormEditorID(const char* a_str) override;											// 33
+		virtual bool		IsParentForm() override;																// 34 - { return true; }
+		virtual bool		IsFormTypeChild(FormType a_type) override;												// 36
 
 		TESNPC*			GetActorOwner();
 		EXTERIOR_DATA*	GetCoordinates();

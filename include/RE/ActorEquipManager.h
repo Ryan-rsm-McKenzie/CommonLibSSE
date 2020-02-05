@@ -8,24 +8,16 @@ namespace RE
 	class Actor;
 	class BGSEquipSlot;
 	class ExtraDataList;
-	class TESForm;
+	class TESBoundObject;
 
 
 	class ActorEquipManager : public BSTSingletonSDM<ActorEquipManager>
 	{
 	public:
 		static ActorEquipManager* GetSingleton();
-		/*
-		 * @param a_arg9 = 0
-		 */
-		void EquipItem(Actor* a_actor, TESForm* a_item, ExtraDataList* a_extraData, SInt32 a_count, BGSEquipSlot* a_equipSlot, bool a_withEquipSound, bool a_preventUnequip, bool a_showMsg, bool a_arg9 = false);
-		/*
-		 * @param a_arg6 = true
-		 * @param a_arg8 = true
-		 * @param a_arg9 = false
-		 * @param a_arg10 = 0
-		 */
-		bool UnequipItem(Actor* a_actor, TESForm* a_item, ExtraDataList* a_extraData, SInt32 a_count, BGSEquipSlot* a_equipSlot, bool a_arg6, bool a_preventEquip, bool a_arg8 = true, bool a_arg9 = false, void* a_arg10 = 0);
+
+		void EquipObject(Actor* a_actor, TESBoundObject* a_object, ExtraDataList* a_extraData = 0, UInt32 a_count = 1, const BGSEquipSlot* a_slot = 0, bool a_queueEquip = true, bool a_forceEquip = false, bool a_playSounds = true, bool a_applyNow = false);
+		bool UnequipObject(Actor* a_actor, TESBoundObject* a_object, ExtraDataList* a_extraData = 0, UInt32 a_count = 1, const BGSEquipSlot* a_slot = 0, bool a_queueEquip = true, bool a_forceEquip = false, bool a_playSounds = true, bool a_applyNow = false, const BGSEquipSlot* a_slotToReplace = 0);
 
 
 		// members

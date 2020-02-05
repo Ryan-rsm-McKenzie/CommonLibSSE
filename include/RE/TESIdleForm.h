@@ -52,16 +52,16 @@ namespace RE
 		};
 
 
-		virtual ~TESIdleForm();															// 00
+		virtual ~TESIdleForm();																	// 00
 
 		// override (TESForm)
-		virtual void		InitializeData() override;									// 04
-		virtual void		ClearData() override;										// 05
-		virtual bool		Load(TESFile* a_mod) override;								// 06
-		virtual TESForm*	CreateDuplicateForm(void* a_arg1, void* a_arg2) override;	// 09
-		virtual void		InitItemImpl() override;									// 13
-		virtual const char*	GetFormEditorID() const override;							// 32 - { return formEditorID.c_str(); }
-		virtual bool		SetFormEditorID(const char* a_str) override;				// 33
+		virtual void		InitializeData() override;											// 04
+		virtual void		ClearData() override;												// 05
+		virtual bool		Load(TESFile* a_mod) override;										// 06
+		virtual TESForm*	CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;	// 09
+		virtual void		InitItemImpl() override;											// 13
+		virtual const char*	GetFormEditorID() const override;									// 32 - { return formEditorID.c_str(); }
+		virtual bool		SetFormEditorID(const char* a_str) override;						// 33
 
 
 		// members

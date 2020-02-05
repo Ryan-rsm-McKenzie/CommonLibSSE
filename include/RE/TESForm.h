@@ -114,7 +114,7 @@ namespace RE
 		virtual bool					Load(TESFile* a_mod);																												// 06 - { return true; }
 		virtual bool					LoadPartial(TESFile* a_mod);																										// 07 - { return true; }
 		virtual bool					LoadEdit(TESFile* a_mod);																											// 08 - { return Load(a_mod); }
-		virtual TESForm*				CreateDuplicateForm(void* a_arg1, void* a_arg2);																					// 09
+		virtual TESForm*				CreateDuplicateForm(bool a_createEditorID, void* a_arg2);																			// 09
 		virtual bool					AddChange(UInt32 a_changeFlags);																									// 0A
 		virtual void					RemoveChange(UInt32 a_changeFlags);																									// 0B
 		virtual bool					FindInFileFast(TESFile* a_mod);																										// 0C - { return false; }
@@ -151,9 +151,9 @@ namespace RE
 		virtual TESObjectREFR*			AsReference1();																														// 2B - { return 0; }
 		virtual const TESObjectREFR*	AsReference2() const;																												// 2C - { return 0; }
 		virtual UInt32					GetRefCount() const;																												// 2D - { return 0; }
-		virtual const char*				GetTextForParsedSubTag(const BSFixedString& a_alias) const;																			// 2E
+		virtual const char*				GetTextForParsedSubTag(const BSFixedString& a_tag) const;																			// 2E
 		virtual void					Copy(TESForm* a_srcForm);																											// 2F - { return; }
-		virtual bool					BelongsInGroup(FORM* a_form, bool a_arg2, bool a_arg3);																				// 30
+		virtual bool					BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly);															// 30
 		virtual void					CreateGroupData(FORM* a_form, FORM_GROUP* a_group);																					// 31
 		virtual const char*				GetFormEditorID() const;																											// 32 - { return ""; }
 		virtual bool					SetFormEditorID(const char* a_str);																									// 33 - { return true; }
@@ -161,7 +161,7 @@ namespace RE
 		virtual bool					IsParentFormTree();																													// 35 - { return false; }
 		virtual bool					IsFormTypeChild(FormType a_type);																									// 36 - { return false; }
 		virtual bool					Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount);	// 37 - { return false; }
-		virtual void					SetFormID(FormID a_id, bool a_removeOldID);																							// 38
+		virtual void					SetFormID(FormID a_id, bool a_updateFile);																							// 38
 		virtual const char*				GetObjectTypeName() const;																											// 39 - { return ""; }
 		virtual bool					QAvailableInGame() const;																											// 3A - { return true; }
 

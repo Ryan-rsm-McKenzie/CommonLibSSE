@@ -1,5 +1,8 @@
 #include "RE/BSTArray.h"
 
+#include <cassert>
+
+#include "RE/MemoryManager.h"
 #include "RE/ScrapHeap.h"
 
 
@@ -152,7 +155,13 @@ namespace RE
 
 	void* BSScrapArrayAllocator::allocate(std::size_t a_size)
 	{
-		auto mem = _allocator->Allocate(a_size, 8);
+		if (!_allocator) {
+			auto heap = MemoryManager::GetSingleton();
+			_allocator = heap->GetThreadScrapHeap();
+		}
+		assert(_allocator != 0);
+
+		auto mem = _allocator->AllocateAlign(a_size, 8);
 		assert(mem != 0);
 		std::memset(mem, 0, a_size);
 		return mem;
@@ -161,7 +170,11 @@ namespace RE
 
 	void BSScrapArrayAllocator::deallocate(void* a_ptr)
 	{
-		_allocator->Free(a_ptr);
+		if (_allocator) {
+			_allocator->DeallocateAlign(a_ptr);
+		} else {
+			assert(false);
+		}
 	}
 
 

@@ -68,8 +68,8 @@ namespace RE
 				virtual void						SetLinkedCallback(ITypeLinkedCallback* a_callback) override;																																	// 01
 				virtual void						TraceStack(const char* a_str, VMStackID a_stackID, Severity a_severity = Severity::kInfo) override;																								// 02
 				virtual void						Unk_03(void) override;																																											// 03
-				virtual void						Update(float a_arg1) override;																																									// 04
-				virtual void						UpdateTasklets(float a_arg1) override;																																							// 05
+				virtual void						Update(float a_budget) override;																																								// 04
+				virtual void						UpdateTasklets(float a_budget) override;																																						// 05
 				virtual void						SetOverstressed(bool a_set) override;																																							// 06 - { overstressed = a_set; }
 				virtual bool						IsCompletelyFrozen() const override;																																							// 07
 				virtual bool						RegisterObjectType(VMTypeID a_typeID, const char* a_className) override;																														// 08

@@ -6,12 +6,71 @@
 
 namespace RE
 {
+	class HeapBlock;
+	class HeapBlockFreeHead;
+
+
 	class bhkThreadMemorySource :
 		public hkMemoryAllocator,	// 00
 		public IMemoryHeap			// 08
 	{
 	public:
 		inline static const void* RTTI = RTTI_bhkThreadMemorySource;
+
+
+		struct FreeBlock
+		{
+		public:
+			// members
+			FreeBlock* next;	// 0
+		};
+		STATIC_ASSERT(sizeof(FreeBlock) == 0x8);
+
+
+		struct BlockPage
+		{
+		public:
+			// members
+			BlockPage*	left;		// 00
+			BlockPage*	right;		// 08
+			FreeBlock*	blocks;		// 10
+			UInt16		totalElem;	// 18
+			UInt16		freeElem;	// 1A
+			UInt32		pad1C;		// 1C
+		};
+		STATIC_ASSERT(sizeof(BlockPage) == 0x20);
+
+
+		struct Row
+		{
+		public:
+			// members
+			BlockPage*	pageList;				// 00
+			BlockPage*	currAlloc;				// 08
+			SInt32		totalFreeBlocks;		// 10
+			SInt32		totalAllocatedBlocks;	// 14
+			SInt32		totalBytes;				// 18
+			SInt32		elemSize;				// 1C
+		};
+		STATIC_ASSERT(sizeof(Row) == 0x20);
+
+
+		struct MegaBlockPage
+		{
+		public:
+			// members
+			char			mem[sizeof(BlockPage[255]) * 256];	// 000000
+			BlockPage		blockPages[255];					// 1FE000
+			MegaBlockPage*	left;								// 1FFFE0
+			MegaBlockPage*	right;								// 1FFFE8
+			BlockPage*		freeBlockPages;						// 1FFFF0
+			UInt16			numFreeBlockPages;					// 1FFFF8
+			UInt16			nextBlockPageAlloc;					// 1FFFFA
+			bool			decommitted;						// 1FFFFC
+			UInt8			pad1FFFFD;							// 1FFFFD
+			UInt16			pad1FFFFE;							// 1FFFFE
+		};
+		STATIC_ASSERT(sizeof(MegaBlockPage) == 0x200000);
 
 
 		virtual ~bhkThreadMemorySource();																			// 00
@@ -28,46 +87,46 @@ namespace RE
 		virtual SInt32		GetAllocatedSize(const void* a_obj, SInt32 a_numBytes) override;						// 09
 
 		// override (IMemoryHeap)
-		virtual void		Unk_01(void) override;																	// 01
-		virtual void		Unk_02(void) override;																	// 02
-		virtual const char*	GetName() override;																		// 07 - { return bhkThreadMemorySource; }
-		virtual void		Unk_08(void) override;																	// 08
-		virtual void		Unk_09(void) override;																	// 09
-		virtual bool		IsCommittedInHeap(void* a_memory) override;												// 0A
-		virtual void		Unk_0B(void) override;																	// 0B
-		virtual void		Unk_0C(void) override;																	// 0C
-		virtual void		Unk_0D(void) override;																	// 0D
-		virtual void		Unk_0E(void) override;																	// 0E
+		virtual std::size_t	Size(const void* a_block) const override;												// 01
+		virtual void		GetMemoryStats(MemoryStats* a_stats) override;											// 02
+		virtual const char*	GetName() const override;																// 07 - { return "bhkThreadMemorySource"; }
+		virtual void*		Allocate(std::size_t a_size, UInt32 a_alignment) override;								// 08
+		virtual void		Deallocate(void* a_pointer, UInt32) override;											// 09
+		virtual bool		PointerInHeap(const void* a_pointer) const override;									// 0A
+		virtual std::size_t	TotalSize(const void* a_pointer) const override;										// 0B
+		virtual void		GetHeapStats(HeapStats* a_stats, bool a_fullBlockInfo) override;						// 0C
+		virtual bool		ShouldTrySmallBlockPools(std::size_t a_size, MEM_CONTEXT a_context) override;			// 0D
+		virtual UInt32		GetPageSize() const override;															// 0E
 
 
 		// members
-		CRITICAL_SECTION	unk10;				// 10
-		UInt64				unk38;				// 38
-		UInt64				unk40;				// 40
-		UInt64				unk48;				// 48
-		UInt64				unk50;				// 50
-		UInt64				unk58;				// 58
-		UInt64				unk60;				// 60
-		UInt64				unk68;				// 68
-		void*				reservedMem;		// 70
-		void*				committedMem;		// 78
-		UInt64				unk80;				// 80
-		UInt64				unk88;				// 88
-		UInt64				unk90;				// 90
-		UInt64				unk98;				// 98
-		UInt64				unkA0;				// A0
-		UInt64				unkA8;				// A8
-		UInt64				unkB0;				// B0
-		UInt32				reservedMemSize;	// B8
-		UInt32				unkBC;				// BC
-		UInt32				unkC0;				// C0
-		UInt32				unkC4;				// C4
-		UInt32				unkC8;				// C8
-		UInt32				unkCC;				// CC
-		UInt8				unkD0;				// D0
-		UInt8				unkD1;				// D1
-		UInt16				unkD2;				// D2
-		UInt32				unkD4;				// D4
+		BSCriticalSection	lock;					// 10
+		Row*				rows;					// 38
+		UInt16*				smallRowIndexes;		// 40
+		UInt16*				largeRowIndexes;		// 48
+		HeapBlock**			lists;					// 50
+		HeapBlockFreeHead*	largeFreeTrees;			// 58
+		HeapBlock*			firstBlock;				// 60
+		HeapBlock*			lastBlock;				// 68
+		void*				memoryRoot;				// 70
+		char*				allocBase;				// 78
+		char*				blockStart;				// 80
+		char*				allocEnd;				// 88
+		char*				commitEnd;				// 90
+		char*				blockPageCommit;		// 98
+		char*				addressSpaceEnd;		// A0
+		MegaBlockPage*		megaBlockPageList;		// A8
+		MegaBlockPage*		currMegaBlockPageAlloc;	// B0
+		SInt32				addressSpaceSize;		// B8
+		SInt32				totalFreeBlockPages;	// BC
+		UInt32				usedRows;				// C0
+		SInt32				totalAllocated;			// C4
+		SInt32				totalFreeBlocks;		// C8
+		SInt32				totalBlocks;			// CC
+		bool				allowDecommits;			// D0
+		UInt8				padD1;					// D1
+		UInt16				padD2;					// D2
+		UInt32				padD4;					// D4
 	};
 	STATIC_ASSERT(sizeof(bhkThreadMemorySource) == 0xD8);
 }

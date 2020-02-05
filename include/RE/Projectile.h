@@ -33,11 +33,11 @@ namespace RE
 		virtual void			SetActorCause(ActorCause* a_cause) override;							// 50 - { actorCause = a_cause; }
 		virtual ActorCause*		GetActorCause() const override;											// 51 - { return actorCause; }
 		virtual MagicCaster*	GetMagicCaster(MagicSystem::CastingSource a_source) override;			// 5C
-		virtual bool			DetachHavok(NiAVObject* a_arg1) override;								// 65
+		virtual bool			DetachHavok(NiAVObject* a_obj3D) override;								// 65
 		virtual void			InitHavok() override;													// 66
-		virtual NiAVObject*		Load3D(bool a_arg1) override;											// 6A
-		virtual void			Set3D(NiAVObject* a_root, bool a_arg2 = true) override;					// 6C
-		virtual void			MoveHavok(bool a_arg1) override;										// 85 - { return; }
+		virtual NiAVObject*		Load3D(bool a_backgroundLoading) override;								// 6A
+		virtual void			Set3D(NiAVObject* a_object, bool a_queue3DTasks = true) override;		// 6C
+		virtual void			MoveHavok(bool a_forceRec) override;									// 85 - { return; }
 		virtual void			GetLinearVelocity(NiPoint3& a_velocity) const override;					// 86
 		virtual void			Unk_8B(void) override;													// 8B
 		virtual Projectile*		AsProjectile() override;												// 8F - { return this; }

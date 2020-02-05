@@ -218,6 +218,18 @@ namespace RE
 	}
 
 
+	BGSLocation* TESObjectREFR::GetEditorLocation() const
+	{
+		return GetEditorLocation1();
+	}
+
+
+	bool TESObjectREFR::GetEditorLocation(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_fallback)
+	{
+		return GetEditorLocation2(a_outPos, a_outRot, a_outWorldOrCell, a_fallback);
+	}
+
+
 	TESFaction* TESObjectREFR::GetFactionOwner()
 	{
 		auto xOwnership = extraList.GetByType<ExtraOwnership>();
