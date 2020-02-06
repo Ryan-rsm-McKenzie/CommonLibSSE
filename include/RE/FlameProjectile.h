@@ -32,7 +32,7 @@ namespace RE
 		virtual void	Revert(BGSLoadFormBuffer* a_buf) override;			// 12
 		virtual void	Unk_A4(void) override;								// A4 - { return 1; }
 		virtual void	Unk_A9(void) override;								// A9
-		virtual void	Unk_AB(void) override;								// AB
+		virtual void	UpdateImpl(float a_delta) override;					// AB
 		virtual void	Unk_B7(void) override;								// B7
 		virtual void	Unk_BD(void) override;								// BD
 		virtual void	Handle3DLoaded() override;							// C0 - { flags = flags & 0xFFFFFFCC | 8; }

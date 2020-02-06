@@ -529,6 +529,12 @@ namespace RE
 	}
 
 
+	bool TESObjectREFR::IsInitiallyDisabled() const
+	{
+		return (formFlags & RecordFlags::kInitiallyDisabled) != 0;
+	}
+
+
 	bool TESObjectREFR::IsLocked() const
 	{
 		return GetLockLevel() != LOCK_LEVEL::kUnlocked;

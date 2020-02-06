@@ -18,6 +18,12 @@
 
 namespace RE
 {
+	bool NiAVObject::GetAppCulled() const
+	{
+		return (flags & Flag::kHidden) != Flag::kNone;
+	}
+
+
 	bool NiAVObject::SetMotionType(UInt32 a_motionType, bool a_arg2, bool a_arg3, bool a_allowActivate)
 	{
 		using func_t = decltype(&NiAVObject::SetMotionType);

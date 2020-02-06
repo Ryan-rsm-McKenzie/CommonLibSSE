@@ -113,6 +113,7 @@ namespace RE
 		virtual void			PostAttachUpdate();																					// 33
 		virtual void			OnVisible(NiCullingProcess& a_process);																// 34 - { return; }
 
+		bool	GetAppCulled() const;
 		bool	SetMotionType(UInt32 a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
 		void	Update(NiUpdateData& a_data);
 		void	UpdateBodyTint(const NiColor& a_color);

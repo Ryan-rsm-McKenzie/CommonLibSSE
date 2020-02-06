@@ -66,6 +66,8 @@ namespace RE
 		virtual bool	GetPlayable() const override;		// 19 - { return true; }
 		virtual bool	IsHeadingMarker() const override;	// 1A - { return (flags >> 2) & 1; }
 
+		bool HasTreeLOD() const;
+
 
 		// members
 		TESObjectSTATData data;	// 68 - DNAM

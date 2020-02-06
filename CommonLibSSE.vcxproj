@@ -172,6 +172,7 @@
     <ClCompile Include="src\RE\AddCallbackVisitor.cpp" />
     <ClCompile Include="src\RE\BGSColorForm.cpp" />
     <ClCompile Include="src\RE\BGSFootstepManager.cpp" />
+    <ClCompile Include="src\RE\BGSSoundCategory.cpp" />
     <ClCompile Include="src\RE\BGSStoryTeller.cpp" />
     <ClCompile Include="src\RE\BSResource\BSSystemFile.cpp" />
     <ClCompile Include="src\RE\BSResource\Location.cpp" />
@@ -348,6 +349,7 @@
     <ClCompile Include="src\RE\ExtraLock.cpp" />
     <ClCompile Include="src\RE\GFxLoader.cpp" />
     <ClCompile Include="src\RE\TESHavokUtilities.cpp" />
+    <ClCompile Include="src\RE\TESObjectSTAT.cpp" />
     <ClCompile Include="src\RE\UIBlurManager.cpp" />
     <ClCompile Include="src\RE\UserEvents.cpp" />
     <ClCompile Include="src\RE\Misc.cpp" />
@@ -528,6 +530,7 @@
     <ClInclude Include="include\RE\ImageSpaceModifierInstance.h" />
     <ClInclude Include="include\RE\ImageSpaceModifierInstanceDOF.h" />
     <ClInclude Include="include\RE\ImageSpaceModifierInstanceTemp.h" />
+    <ClInclude Include="include\RE\ImpactResults.h" />
     <ClInclude Include="include\RE\InteriorData.h" />
     <ClInclude Include="include\RE\LoadWaitSpinner.h" />
     <ClInclude Include="include\RE\MagicFavorites.h" />

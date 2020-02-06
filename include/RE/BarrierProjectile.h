@@ -42,7 +42,7 @@ namespace RE
 		virtual void		InitHavok() override;								// 66
 		virtual NiAVObject*	Load3D(bool a_backgroundLoading) override;			// 6A
 		virtual void		Unk_A7(void) override;								// A7 - { return 1; }
-		virtual void		Unk_AB(void) override;								// AB
+		virtual void		UpdateImpl(float a_delta) override;					// AB
 		virtual void		Unk_AC(void) override;								// AC
 		virtual void		Unk_B8(void) override;								// B8 - { return 0; }
 

@@ -1162,6 +1162,9 @@
     <Filter Include="src\RE\Memory\IMemoryStoreBase\IMemoryStore">
       <UniqueIdentifier>{55dd25e6-cf7f-4d03-83bb-834cbce371e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT">
+      <UniqueIdentifier>{3d1aee06-b163-423c-abf8-e72dec1e9942}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1895,6 +1898,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\IMemoryStore.cpp">
       <Filter>src\RE\Memory\IMemoryStoreBase\IMemoryStore</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\TESObjectSTAT.cpp">
+      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BGSSoundCategory.cpp">
+      <Filter>src\RE\FormComponents\TESForm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5437,6 +5446,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\HeapBlockFreeHead.h">
       <Filter>include\RE\Memory\HeapBlock</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ImpactResults.h">
+      <Filter>include\RE\FormComponents\Enums</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

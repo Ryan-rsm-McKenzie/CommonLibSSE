@@ -31,7 +31,7 @@ namespace RE
 		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;	// 0E
 		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;	// 0F
 		virtual void	Unk_AA(void) override;							// AA
-		virtual void	Unk_AB(void) override;							// AB
+		virtual void	UpdateImpl(float a_delta) override;				// AB
 		virtual void	Unk_AC(void) override;							// AC
 		virtual void	Unk_AD(void) override;							// AD
 		virtual void	Unk_AF(void) override;							// AF

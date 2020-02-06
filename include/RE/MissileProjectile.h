@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/FormTypes.h"
+#include "RE/ImpactResults.h"
 #include "RE/Projectile.h"
 
 
@@ -32,7 +33,7 @@ namespace RE
 		virtual void	Revert(BGSLoadFormBuffer* a_buf) override;			// 12
 		virtual void	Unk_A2(void) override;								// A2 - { return 1; }
 		virtual void	Unk_A9(void) override;								// A9
-		virtual void	Unk_AB(void) override;								// AB
+		virtual void	UpdateImpl(float a_delta) override;					// AB
 		virtual void	Unk_AC(void) override;								// AC
 		virtual void	Unk_B8(void) override;								// B8 - { return unk1D8 == 1; }
 		virtual void	Unk_BD(void) override;								// BD
@@ -44,7 +45,10 @@ namespace RE
 
 
 		// members
-		UInt64 unk1D8;	// 1D8
+		ImpactResult	impactResult;			// 1D8
+		bool			waitingToInitialize3D;	// 1DC
+		UInt8			unk1DD;					// 1DD
+		UInt16			unk1DE;					// 1DE
 	};
 	STATIC_ASSERT(sizeof(MissileProjectile) == 0x1E0);
 }

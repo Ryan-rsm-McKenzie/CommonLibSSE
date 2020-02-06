@@ -54,10 +54,11 @@ namespace RE
 		virtual UInt16	GetCategoryAttenuation() const override;					// 06
 		virtual void	SetCategoryAttenuation(UInt16 a_value) override;			// 07
 
-		constexpr float	GetStaticVolumeMultiplier() const { return staticMult / USHRT_MAX; }
-		constexpr void	SetStaticVolumeMultiplier(float a_val) { staticMult = static_cast<UInt16>(a_val * USHRT_MAX); }
-		constexpr float	GetDefaultMenuValue() const { return defaultMenuValue / USHRT_MAX; }
-		constexpr void	SetDefaultMenuValue(float a_val) { defaultMenuValue = static_cast<UInt16>(a_val * USHRT_MAX); }
+		float	GetDefaultMenuValue() const;
+		float	GetStaticVolumeMultiplier() const;
+		bool	IsMenuCategory() const;
+		void	SetDefaultMenuValue(float a_val);
+		void	SetStaticVolumeMultiplier(float a_val);
 
 
 		// members

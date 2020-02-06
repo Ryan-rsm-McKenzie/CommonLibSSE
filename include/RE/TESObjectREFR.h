@@ -419,6 +419,7 @@ namespace RE
 		bool								IsDead() const;
 		bool								IsDisabled() const;
 		bool								IsHorse() const;
+		bool								IsInitiallyDisabled() const;
 		bool								IsLocked() const;
 		bool								IsMarkedForDeletion() const;
 		bool								IsOffLimits();

@@ -3,6 +3,7 @@
 #include "RE/Color.h"
 #include "RE/DecalData.h"
 #include "RE/FormTypes.h"
+#include "RE/ImpactResults.h"
 #include "RE/SoundLevels.h"
 #include "RE/TESForm.h"
 #include "RE/TESModel.h"
@@ -48,23 +49,13 @@ namespace RE
 			};
 
 
-			enum class ImpactResult : UInt8
-			{
-				kDefault = 0,
-				kDestroy = 1,
-				kBounce = 2,
-				kImpale = 3,
-				kStick = 4
-			};
-
-
 			float			effectDuration;		// 00
 			ORIENTATION		orient;				// 04
 			float			angleThreshold;		// 08
 			float			placementRadius;	// 0C
 			SOUND_LEVEL		soundLevel;			// 10
 			Flag			flags;				// 14
-			ImpactResult	resultOverride;		// 18
+			ImpactResult8	resultOverride;		// 18
 			UInt16			unk16;				// 1C
 		};
 		STATIC_ASSERT(sizeof(IMPACT_DATA_DATA) == 0x18);

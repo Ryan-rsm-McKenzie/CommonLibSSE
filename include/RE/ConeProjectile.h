@@ -3,6 +3,7 @@
 #include "RE/BSTArray.h"
 #include "RE/FormTypes.h"
 #include "RE/hkRefPtr.h"
+#include "RE/ImpactResults.h"
 #include "RE/NiPoint3.h"
 #include "RE/Projectile.h"
 
@@ -10,16 +11,6 @@
 namespace RE
 {
 	class hkpSphereShape;
-
-
-	enum class ImpactResult : UInt32
-	{
-		kNone = 0,
-		kDestroy = 1,
-		kBounce = 2,
-		kImpale = 3,
-		kStick = 4
-	};
 
 
 	class ConeProjectile : public Projectile
@@ -47,7 +38,7 @@ namespace RE
 		virtual void	FinishLoadGame(BGSLoadFormBuffer* a_buf) override;	// 11
 		virtual void	Revert(BGSLoadFormBuffer* a_buf) override;			// 12
 		virtual void	Unk_A9(void) override;								// A9
-		virtual void	Unk_AB(void) override;								// AB
+		virtual void	UpdateImpl(float a_delta) override;					// AB
 		virtual void	Unk_AC(void) override;								// AC
 		virtual void	Unk_B8(void) override;								// B8 - { return 0; }
 		virtual void	Unk_BC(void) override;								// BC

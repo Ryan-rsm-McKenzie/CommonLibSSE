@@ -712,6 +712,8 @@ namespace REL
 		template <class... Args, class F = function_type, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
 		std::invoke_result_t<F, Args...> operator()(Args&&... a_args) const
 		{
+			assert(in_range());
+
 			if (empty()) {
 				throw std::bad_function_call();
 			}
@@ -726,6 +728,12 @@ namespace REL
 		[[nodiscard]] bool empty() const noexcept
 		{
 			return _storage.address == kEmpty;
+		}
+
+
+		[[nodiscard]] bool in_range() const noexcept
+		{
+			return Module::BaseAddr() <= _storage.address && _storage.address <= Module::BaseAddr() + Module::Size();
 		}
 
 

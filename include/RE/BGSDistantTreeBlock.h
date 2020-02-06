@@ -2,6 +2,7 @@
 
 #include "RE/BSTArray.h"
 #include "RE/BSTHashMap.h"
+#include "RE/NiSmartPointer.h"
 
 
 namespace RE
@@ -15,6 +16,8 @@ namespace RE
 	public:
 		struct InstanceData
 		{
+		public:
+			// members
 			FormID	id;		// 00 - Only the lower 24 bits used
 			UInt16	x;		// 04
 			UInt16	y;		// 06
@@ -31,6 +34,8 @@ namespace RE
 
 		struct TreeGroup
 		{
+		public:
+			// members
 			NiPointer<BSMultiStreamInstanceTriShape>	geometry;				// 00
 			BSTArray<InstanceData>						instances;				// 08
 			UInt32										num;					// 20
