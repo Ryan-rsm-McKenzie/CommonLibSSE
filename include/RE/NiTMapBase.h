@@ -399,7 +399,7 @@ namespace RE
 				}
 			}
 
-			return std::make_optional(std::make_pair<value_type*, UInt32>(0, 0));
+			return std::nullopt;
 		}
 
 	protected:
