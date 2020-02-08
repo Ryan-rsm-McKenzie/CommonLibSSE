@@ -733,7 +733,8 @@ namespace REL
 
 		[[nodiscard]] bool in_range() const noexcept
 		{
-			return Module::BaseAddr() <= _storage.address && _storage.address <= Module::BaseAddr() + Module::Size();
+			auto xText = Module::GetSection(Module::ID::kTextX);
+			return xText.BaseAddr() <= _storage.address && _storage.address < xText.BaseAddr() + xText.Size();
 		}
 
 

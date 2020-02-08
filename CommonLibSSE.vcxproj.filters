@@ -1905,6 +1905,9 @@
     <ClCompile Include="src\RE\BGSSoundCategory.cpp">
       <Filter>src\RE\FormComponents\TESForm</Filter>
     </ClCompile>
+    <ClCompile Include="src\SKSE\CodeGenerator.cpp">
+      <Filter>src\SKSE</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -5449,6 +5452,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\ImpactResults.h">
       <Filter>include\RE\FormComponents\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\CodeGenerator.h">
+      <Filter>include\SKSE</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

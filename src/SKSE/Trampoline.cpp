@@ -181,6 +181,7 @@ namespace SKSE
 	void Trampoline::EndAlloc(const void* a_end)
 	{
 		Locker locker(_lock);
+		assert(_data <= a_end && a_end < _data + _capacity);
 		auto size = reinterpret_cast<std::uintptr_t>(a_end) - reinterpret_cast<std::uintptr_t>(_data + _size);
 		EndAlloc_Impl(size);
 		LogStats();
@@ -320,8 +321,14 @@ namespace SKSE
 
 	void* Trampoline::Allocate_Impl(std::size_t a_size)
 	{
-		if (a_size > FreeSize()) {
+		if (a_size > FreeSize_Impl()) {
 			_ERROR("Failed to handle allocation request");
+			assert(false);
+			return 0;
+		}
+
+		if (_allocating) {
+			_ERROR("A call was made to %s while already allocating", __func__);
 			assert(false);
 			return 0;
 		}
@@ -335,6 +342,12 @@ namespace SKSE
 
 	void* Trampoline::StartAlloc_Impl()
 	{
+		if (_allocating) {
+			_ERROR("A call was made to %s while already allocating", __func__);
+			assert(false);
+			return 0;
+		}
+
 		_lock.lock();
 		_allocating = true;
 		return _data + _size;
@@ -412,6 +425,7 @@ namespace SKSE
 		auto mem = StartAlloc<TrampolineAssembly>();
 		if (!mem || FreeSize_Impl() < sizeof(TrampolineAssembly)) {
 			EndAlloc(END_ALLOC_TAG);
+			_ERROR("Trampoline ran out of space");
 			assert(false);
 			return false;
 		}
@@ -419,6 +433,7 @@ namespace SKSE
 		std::ptrdiff_t disp = reinterpret_cast<std::uintptr_t>(mem) - (a_src + sizeof(SrcAssembly));
 		if (!IsDisplacementInRange(disp)) {
 			EndAlloc(END_ALLOC_TAG);
+			_ERROR("Trampoline ran out of space");
 			assert(false);
 			return false;
 		}
@@ -456,6 +471,7 @@ namespace SKSE
 		auto mem = StartAlloc<std::uintptr_t>();
 		if (!mem || FreeSize_Impl() < sizeof(std::uintptr_t)) {
 			EndAlloc(END_ALLOC_TAG);
+			_ERROR("Trampoline ran out of space");
 			assert(false);
 			return false;
 		}
@@ -463,6 +479,7 @@ namespace SKSE
 		std::ptrdiff_t disp = reinterpret_cast<std::uintptr_t>(mem) - (a_src + sizeof(Assembly));
 		if (!IsDisplacementInRange(disp)) {
 			EndAlloc(END_ALLOC_TAG);
+			_ERROR("Trampoline ran out of space");
 			assert(false);
 			return false;
 		}
@@ -521,6 +538,6 @@ namespace SKSE
 		constexpr auto MIN_DISP = std::numeric_limits<std::int32_t>::min();
 		constexpr auto MAX_DISP = std::numeric_limits<std::int32_t>::max();
 
-		return a_disp >= MIN_DISP && a_disp <= MAX_DISP;
+		return MIN_DISP <= a_disp && a_disp <= MAX_DISP;
 	}
 }

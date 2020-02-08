@@ -403,6 +403,7 @@
     <ClCompile Include="src\RE\UIMessageQueue.cpp" />
     <ClCompile Include="src\RE\InterfaceStrings.cpp" />
     <ClCompile Include="src\SKSE\API.cpp" />
+    <ClCompile Include="src\SKSE\CodeGenerator.cpp" />
     <ClCompile Include="src\SKSE\Interfaces.cpp" />
     <ClCompile Include="src\SKSE\Logger.cpp" />
     <ClCompile Include="src\SKSE\RegistrationMap.cpp" />
@@ -1581,6 +1582,7 @@
     <ClInclude Include="include\RE\ValueModifierEffect.h" />
     <ClInclude Include="include\RE\WeatherType.h" />
     <ClInclude Include="include\RE\ZeroOverheadHeap.h" />
+    <ClInclude Include="include\SKSE\CodeGenerator.h" />
     <ClInclude Include="include\SKSE\Events.h" />
     <ClInclude Include="include\SKSE\Interfaces.h" />
     <ClInclude Include="include\SKSE\Logger.h" />
