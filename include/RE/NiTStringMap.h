@@ -35,7 +35,7 @@ namespace RE
 		virtual void	assign_value(value_type* a_value, key_type a_key, mapped_type a_mapped) override;	// 03
 		virtual void	clear_value(value_type* a_value) override;											// 04
 
-	public:
+
 		// members
 		bool	_copy;	// 20
 		UInt8	_pad21;	// 21

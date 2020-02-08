@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <cstring>
+#include <optional>
 #include <utility>
 
 #include "RE/MemoryManager.h"
@@ -19,8 +20,8 @@ namespace RE
 
 		// members
 		NiTMapItem*	next;	// 00
-		key_type	key;	// 08
-		mapped_type	mapped;	// ??
+		key_type	first;	// 08
+		mapped_type	second;	// ??
 	};
 	STATIC_ASSERT(sizeof(NiTMapItem<UInt32, UInt64>) == 0x18);
 
@@ -85,6 +86,16 @@ namespace RE
 					++_idx;
 					_iter = _proxy->_data[_idx];
 				}
+			}
+
+
+			iterator_base(NiTMapBase* a_proxy, value_type* a_iter, UInt32 a_idx) :
+				_proxy(a_proxy),
+				_iter(a_iter),
+				_idx(a_idx)
+			{
+				assert(_proxy);
+				assert(_iter);
 			}
 
 
@@ -188,7 +199,7 @@ namespace RE
 
 		private:
 			NiTMapBase* _proxy;
-			U* _iter;
+			value_type* _iter;
 			UInt32 _idx;
 		};
 
@@ -222,7 +233,7 @@ namespace RE
 		}
 
 
-		virtual ~NiTMapBase()
+		virtual ~NiTMapBase()	// 00
 		{
 			clear();
 			if (_data) {
@@ -357,19 +368,20 @@ namespace RE
 		}
 
 
-		std::pair<mapped_type, bool> find(const Key& a_key) const
+		iterator find(const Key& a_key)
 		{
-			size_type idx = hash_function(a_key);
-			for (auto iter = _data[idx]; iter; iter = iter->next) {
-				if (key_eq(a_key, iter->key)) {
-					return std::make_pair(iter->mapped, true);
-				}
-			}
-
-			return std::make_pair(mapped_type{}, false);
+			auto result = do_find(a_key);
+			return result ? iterator(this, result->first, result->second) : end();
 		}
 
-	protected:
+
+		const_iterator find(const Key& a_key) const
+		{
+			auto result = do_find(a_key);
+			return result ? const_iterator(this, result->first, result->second) : end();
+		}
+
+	private:
 		inline void remove_value(value_type* a_value)
 		{
 			clear_value(a_value);
@@ -377,7 +389,20 @@ namespace RE
 			--_allocator.size;
 		}
 
-	public:
+
+		std::optional<std::pair<value_type*, UInt32>> do_find(const Key& a_key) const
+		{
+			size_type idx = hash_function(a_key);
+			for (auto iter = _data[idx]; iter; iter = iter->next) {
+				if (key_eq(a_key, iter->first)) {
+					return std::make_optional(std::make_pair(iter, idx));
+				}
+			}
+
+			return std::make_optional(std::make_pair<value_type*, UInt32>(0, 0));
+		}
+
+	protected:
 		// members
 		UInt32				_capacity;	// 08
 		UInt32				_pad0C;		// 0C

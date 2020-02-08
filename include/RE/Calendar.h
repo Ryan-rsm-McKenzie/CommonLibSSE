@@ -86,17 +86,17 @@ namespace RE
 
 
 		// members
-		UInt8		pad01;			// 01
-		UInt16		pad02;			// 02
-		UInt32		pad04;			// 04
-		TESGlobal*	year;			// 08
-		TESGlobal*	month;			// 10
-		TESGlobal*	day;			// 18
-		TESGlobal*	hour;			// 20
-		TESGlobal*	daysPassed;		// 28
-		TESGlobal*	timeScale;		// 30
-		UInt32		uDaysPassed;	// 38
-		float		fDaysPassed;	// 3C
+		UInt8		pad01;				// 01
+		UInt16		pad02;				// 02
+		UInt32		pad04;				// 04
+		TESGlobal*	gameYear;			// 08
+		TESGlobal*	gameMonth;			// 10
+		TESGlobal*	gameDay;			// 18
+		TESGlobal*	gameHour;			// 20
+		TESGlobal*	gameDaysPassed;		// 28
+		TESGlobal*	timeScale;			// 30
+		UInt32		midnightsPassed;	// 38
+		float		rawDaysPassed;		// 3C
 	};
 	STATIC_ASSERT(sizeof(Calendar) == 0x40);
 }

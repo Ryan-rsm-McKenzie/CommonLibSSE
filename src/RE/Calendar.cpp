@@ -18,13 +18,13 @@ namespace RE
 
 	float Calendar::GetCurrentGameTime() const
 	{
-		return daysPassed ? daysPassed->value : 1.0;
+		return gameDaysPassed ? gameDaysPassed->value : 1.0;
 	}
 
 
 	float Calendar::GetDay() const
 	{
-		return day ? day->value : 17.0;
+		return gameDay ? gameDay->value : 17.0;
 	}
 
 
@@ -72,13 +72,13 @@ namespace RE
 
 	float Calendar::GetDaysPassed() const
 	{
-		return daysPassed ? daysPassed->value : 1.0;
+		return gameDaysPassed ? gameDaysPassed->value : 1.0;
 	}
 
 
 	float Calendar::GetHour() const
 	{
-		return hour ? hour->value : 12.0;
+		return gameHour ? gameHour->value : 12.0;
 	}
 
 
@@ -90,7 +90,7 @@ namespace RE
 
 	UInt32 Calendar::GetMonth() const
 	{
-		return month ? month->value : 7;
+		return gameMonth ? gameMonth->value : 7;
 	}
 
 
@@ -176,6 +176,6 @@ namespace RE
 
 	UInt32 Calendar::GetYear() const
 	{
-		return year ? year->value : 77;
+		return gameYear ? gameYear->value : 77;
 	}
 }

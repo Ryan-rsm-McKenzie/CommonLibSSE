@@ -15,6 +15,7 @@ namespace RE
 
 	Setting* GameSettingCollection::GetSetting(const char* a_name)
 	{
-		return settings.find(a_name).first;
+		auto it = settings.find(a_name);
+		return it != settings.end() ? it->second : 0;
 	}
 }

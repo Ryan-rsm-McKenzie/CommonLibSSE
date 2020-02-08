@@ -17,8 +17,6 @@ namespace RE
 		using mapped_type = typename Base::mapped_type;
 		using value_type = typename Base::value_type;
 		using size_type = typename Base::size_type;
-		using Base::clear;
-		using Base::_allocator;
 
 
 		NiTMap(UInt32 a_hashSize = 37) :
@@ -26,18 +24,21 @@ namespace RE
 		{}
 
 
-		virtual ~NiTMap()
+		virtual ~NiTMap()	// 00
 		{}
 
 	protected:
+		using Base::_allocator;
+
+
 		// override (NiTMapBase)
-		virtual value_type* malloc_value() override
+		virtual value_type* malloc_value() override	// 05
 		{
 			return static_cast<value_type*>(_allocator.Allocate());
 		}
 
 
-		virtual void free_value(value_type* a_value) override
+		virtual void free_value(value_type* a_value) override	// 06
 		{
 			a_value->~value_type();
 			_allocator.Deallocate(a_value);
