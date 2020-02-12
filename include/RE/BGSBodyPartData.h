@@ -15,6 +15,7 @@ namespace RE
 {
 	struct PART_DATA	// BPND
 	{
+	public:
 		using Type = BGSBodyPartDefs::LIMB_ENUM_8;
 
 
@@ -31,6 +32,7 @@ namespace RE
 		};
 
 
+		// members
 		float				damageMult;						// 00
 		Flag				flags;							// 04
 		Type				type;							// 05
@@ -68,8 +70,9 @@ namespace RE
 	class BGSBodyPart
 	{
 	public:
+		// members
 		BSFixedString	nodeName;					// 00 - BPNN
-		BSFixedString	taregtName;					// 08 - BPNT
+		BSFixedString	targetName;					// 08 - BPNT
 		BSFixedString	hitReactionVariablePrefix;	// 10 - BPNI
 		BSFixedString	partName;					// 18 - BPTN
 		BSFixedString	goreObjectName;				// 20 - NAM4

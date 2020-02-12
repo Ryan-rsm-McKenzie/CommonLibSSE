@@ -185,7 +185,8 @@ namespace RE
 			kNone = 0,
 			kHealthTutorialShown = 1 << 3,
 			kMagickaTutorialShown = 1 << 4,
-			kStaminaTutorialShown = 1 << 5
+			kStaminaTutorialShown = 1 << 5,
+			kGoToJailQueued = 1 << 6
 		};
 
 
