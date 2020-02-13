@@ -40,8 +40,8 @@ namespace RE
 			BSTArray<InstanceData>						instances;				// 08
 			UInt32										num;					// 20
 			bool										shaderPropertyUpToDate;	// 24
-			SInt8										treeType;				// 26
-			UInt8										pad27;					// 27
+			SInt8										treeType;				// 25
+			UInt16										pad26;					// 26
 		};
 		STATIC_ASSERT(sizeof(TreeGroup) == 0x28);
 
@@ -52,7 +52,7 @@ namespace RE
 		BSTHashMap<UInt32, TreeGroup*>		nextGroup;		// 48
 		BGSTerrainNode*						node;			// 78
 		bool								doneLoading;	// 80
-		bool								attached;		// 80
+		bool								attached;		// 81
 		bool								allVisible;		// 82
 		UInt8								pad83;			// 83
 		UInt32								pad84;			// 84
