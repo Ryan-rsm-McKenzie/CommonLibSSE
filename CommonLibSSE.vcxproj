@@ -198,6 +198,7 @@
     <ClCompile Include="src\RE\IMemoryStore.cpp" />
     <ClCompile Include="src\RE\MagicFavorites.cpp" />
     <ClCompile Include="src\RE\Main.cpp" />
+    <ClCompile Include="src\RE\NiCamera.cpp" />
     <ClCompile Include="src\RE\NiInterpolator.cpp" />
     <ClCompile Include="src\RE\ProcessLists.cpp" />
     <ClCompile Include="src\RE\ExtraContainerChanges.cpp" />
@@ -471,6 +472,7 @@
     <ClInclude Include="include\RE\BSLightingShaderMaterialParallaxOcc.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialSnow.h" />
     <ClInclude Include="include\RE\BSMultiBoundNode.h" />
+    <ClInclude Include="include\RE\BSMultiIndexTriShape.h" />
     <ClInclude Include="include\RE\BSNiNode.h" />
     <ClInclude Include="include\RE\BSPointerHandle.h" />
     <ClInclude Include="include\RE\BSPointerHandleManager.h" />

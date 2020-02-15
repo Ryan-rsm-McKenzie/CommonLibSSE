@@ -179,7 +179,7 @@ namespace RE
 		UInt64													unk148;							// 148
 		UInt64													unk150;							// 150
 		UInt64													unk158;							// 158
-		float													unk160;							// 160
+		float													headTrackTargetTimer;			// 160
 		NiPoint3												headTrackTargetOffset;			// 164
 		float													headTrackHoldOffsetHoldTimer;	// 170
 		float													headTrackTargetOffsetTimer;		// 174

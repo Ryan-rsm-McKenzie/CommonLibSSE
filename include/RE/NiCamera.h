@@ -2,6 +2,7 @@
 
 #include "RE/NiAVObject.h"
 #include "RE/NiFrustum.h"
+#include "RE/NiPoint3.h"
 #include "RE/NiRect.h"
 
 
@@ -26,6 +27,8 @@ namespace RE
 		virtual bool			IsEqual(NiObject* a_object) override;				// 1C
 		virtual void			UpdateWorldBound() override;						// 2F - { return; }
 		virtual void			UpdateWorldData(NiUpdateData* a_data) override;		// 30
+
+		static bool WorldPtToScreenPt3(const float a_matrix[4][4], const NiRect<float>& a_port, const NiPoint3& a_point, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance);
 
 
 		// members

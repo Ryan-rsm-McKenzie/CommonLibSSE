@@ -45,9 +45,9 @@ namespace RE
 	struct UniqueNPCData	// LCUN
 	{
 		Actor*			actor;		// 00
-		FormID			refID;		// 18
-		UInt32			pad1C;		// 1C
-		BGSLocation*	editorLoc;	// 1C
+		FormID			refID;		// 08
+		UInt32			pad0C;		// 0C
+		BGSLocation*	editorLoc;	// 10
 	};
 	STATIC_ASSERT(sizeof(UniqueNPCData) == 0x18);
 

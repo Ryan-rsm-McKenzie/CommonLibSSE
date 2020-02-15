@@ -1165,6 +1165,9 @@
     <Filter Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT">
       <UniqueIdentifier>{3d1aee06-b163-423c-abf8-e72dec1e9942}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\BSGeometry\BSTriShape">
+      <UniqueIdentifier>{af76002c-43a3-4718-a1f3-da720533032d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1907,6 +1910,9 @@
     </ClCompile>
     <ClCompile Include="src\SKSE\CodeGenerator.cpp">
       <Filter>src\SKSE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\NiCamera.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4757,12 +4763,6 @@
     <ClInclude Include="include\RE\ExtraDataList.h">
       <Filter>include\RE\Inventory</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSGeometry.h">
-      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\BSGeometry</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSTriShape.h">
-      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\BSGeometry</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\TESMoveAttachDetachEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
@@ -5455,6 +5455,15 @@
     </ClInclude>
     <ClInclude Include="include\SKSE\CodeGenerator.h">
       <Filter>include\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSTriShape.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\BSGeometry\BSTriShape</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSMultiIndexTriShape.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\BSGeometry\BSTriShape</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSGeometry.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\BSGeometry</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

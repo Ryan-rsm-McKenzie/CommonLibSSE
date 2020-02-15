@@ -2,8 +2,6 @@
 
 #include "RE/INIPrefSettingCollection.h"
 #include "RE/INISettingCollection.h"
-#include "RE/NiPoint3.h"
-#include "RE/NiRect.h"
 #include "RE/NiSmartPointer.h"
 #include "RE/Offsets.h"
 #include "RE/Setting.h"
@@ -76,13 +74,5 @@ namespace RE
 		using func_t = decltype(&PlaySound);
 		REL::Offset<func_t> func(Offset::PlaySound);
 		return func(a_editorID);
-	}
-
-
-	bool WorldPtToScreenPt3(float a_worldToCamMatrix[4][4], NiRect<float>& a_port, const NiPoint3& a_in, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance)
-	{
-		using func_t = decltype(&WorldPtToScreenPt3);
-		REL::Offset<func_t> func(Offset::WorldPtToScreenPt3);
-		return func(a_worldToCamMatrix, a_port, a_in, a_xOut, a_yOut, a_zOut, a_zeroTolerance);
 	}
 }

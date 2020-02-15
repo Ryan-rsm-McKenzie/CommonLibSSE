@@ -26,10 +26,9 @@ namespace RE
 
 
 		// members
-		UInt16	unk158;			// 158
-		UInt16	numVertices;	// 15A
-		UInt16	unk15C;			// 15C
-		UInt16	unk15D;			// 15D
+		UInt16	triangleCount;	// 158
+		UInt16	vertexCount;	// 15A
+		UInt32	pad15C;			// 15C
 	};
 	STATIC_ASSERT(sizeof(BSTriShape) == 0x160);
 }

@@ -55,8 +55,8 @@ namespace RE
 			float			placementRadius;	// 0C
 			SOUND_LEVEL		soundLevel;			// 10
 			Flag			flags;				// 14
-			ImpactResult8	resultOverride;		// 18
-			UInt16			unk16;				// 1C
+			ImpactResult8	resultOverride;		// 15
+			UInt16			unk16;				// 16
 		};
 		STATIC_ASSERT(sizeof(IMPACT_DATA_DATA) == 0x18);
 
