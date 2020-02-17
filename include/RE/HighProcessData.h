@@ -263,7 +263,7 @@ namespace RE
 		float													unk388;							// 388
 		UInt32													unk38C;							// 38C
 		UInt32													numberGuardsPursuing;			// 390
-		UInt32													unk394;							// 394
+		float													reEquipArmorTimer;				// 394
 		BSSimpleList<SpellItem*>*								leveledSpellList;				// 398
 		float													detectionModifier;				// 3A0
 		float													detectionModifierTimer;			// 3A4
