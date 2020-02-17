@@ -178,7 +178,7 @@ namespace RE
 		UInt64							unk100;							// 100
 		UInt64							unk108;							// 108
 		UInt32							unk110;							// 110
-		RefHandle						unk114;							// 114
+		RefHandle						target;							// 114
 		UInt64							unk118;							// 118
 		UInt64							unk120;							// 120
 		UInt64							unk128;							// 128

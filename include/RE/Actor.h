@@ -32,6 +32,7 @@ namespace RE
 	class bhkCharacterMoveFinishEvent;
 	class BipedAnim;
 	class BSTransformDeltaEvent;
+	class CombatController;
 	class CombatGroup;
 	class ExtraDataList;
 	class InventoryEntryData;
@@ -560,7 +561,7 @@ namespace RE
 		ActorMover*								actorMover;							// 140
 		BSTSmartPointer<MovementControllerNPC>	movementController;					// 148
 		void*									unk150;								// 150
-		void*									unk158;								// 158
+		CombatController*						combatController;					// 158
 		TESFaction*								vendorFaction;						// 160
 		AITimeStamp								calculateVendorFactionTimer;		// 168
 		UInt32									unk16C;								// 16C

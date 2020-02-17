@@ -262,7 +262,9 @@ namespace RE
 		NiPointer<NiBillboardNode>								healthBarNode;					// 380
 		float													unk388;							// 388
 		UInt32													unk38C;							// 38C
-		BSSimpleList<SpellItem*>								leveledSpellList;				// 390
+		UInt32													numberGuardsPursuing;			// 390
+		UInt32													unk394;							// 394
+		BSSimpleList<SpellItem*>*								leveledSpellList;				// 398
 		float													detectionModifier;				// 3A0
 		float													detectionModifierTimer;			// 3A4
 		float													lightLevel;						// 3A8
