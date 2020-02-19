@@ -1042,7 +1042,7 @@ namespace RE
 		namespace TESCamera
 		{
 			// DirectSig: 48 89 5C 24 ? 57 48 83 EC 20 48 8B F9 48 8B DA 48 8B 49 28 48 85 C9 74 06
-			constexpr std::uintptr_t SetCameraState = 0x004F5C80;	// 1_5_97
+			constexpr std::uintptr_t SetState = 0x004F5C80;	// 1_5_97
 		}
 
 

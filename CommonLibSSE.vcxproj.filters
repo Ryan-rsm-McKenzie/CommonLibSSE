@@ -5465,5 +5465,8 @@
     <ClInclude Include="include\RE\BSGeometry.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\BSGeometry</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\BSTPoint.h">
+      <Filter>include\RE\BSCore</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

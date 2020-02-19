@@ -11,11 +11,11 @@ namespace RE
 		inline static const void* RTTI = RTTI_RaceSexCamera;
 
 
-		virtual ~RaceSexCamera();									// 00
+		virtual ~RaceSexCamera();											// 00
 
 		// override (TESCamera)
-		virtual void	SetNode(NiPointer<NiNode> a_node) override;	// 01
-		virtual void	Update() override;							// 02
+		virtual void	SetCameraRoot(NiPointer<NiNode> a_root) override;	// 01
+		virtual void	Update() override;									// 02
 
 
 		// members

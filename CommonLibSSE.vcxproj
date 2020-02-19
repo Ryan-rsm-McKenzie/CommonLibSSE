@@ -491,6 +491,7 @@
     <ClInclude Include="include\RE\BSScript\MemoryPage.h" />
     <ClInclude Include="include\RE\BSScript\PropertyTypeInfo.h" />
     <ClInclude Include="include\RE\BSTimer.h" />
+    <ClInclude Include="include\RE\BSTPoint.h" />
     <ClInclude Include="include\RE\BSTPointerAndFlags.h" />
     <ClInclude Include="include\RE\BSTTuple.h" />
     <ClInclude Include="include\RE\BSUntypedPointerHandle.h" />

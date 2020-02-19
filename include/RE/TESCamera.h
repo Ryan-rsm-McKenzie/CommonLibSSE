@@ -1,8 +1,8 @@
 #pragma once
 
+#include "RE/BSTPoint.h"
 #include "RE/BSTSmartPointer.h"
 #include "RE/NiNode.h"
-#include "RE/NiPoint3.h"
 #include "RE/NiSmartPointer.h"
 
 
@@ -17,25 +17,24 @@ namespace RE
 		inline static const void* RTTI = RTTI_TESCamera;
 
 
-		virtual ~TESCamera();								// 00
+		virtual ~TESCamera();										// 00
 
-		virtual void	SetNode(NiPointer<NiNode> a_node);	// 01 - { if (cameraNode != a_node) cameraNode = a_node; }
-		virtual void	Update();							// 02
+		virtual void	SetCameraRoot(NiPointer<NiNode> a_root);	// 01 - { if (cameraRoot != a_root) cameraRoot = a_root; }
+		virtual void	Update();									// 02
 
-		UInt32 SetCameraState(TESCameraState* a_cameraState);
+		void SetState(TESCameraState* a_state);
 
 
 		// members
-		float							rotZ;			// 08
-		float							rotX;			// 0C
-		NiPoint3						pos;			// 10
-		float							zoom;			// 1C
-		NiPointer<NiNode>				cameraNode;		// 20
-		BSTSmartPointer<TESCameraState>	cameraState;	// 28
-		UInt8							unk30;			// 30
-		UInt8							pad31;			// 31
-		UInt16							pad32;			// 32
-		UInt32							pad34;			// 34
+		BSTPoint2<float>				rotationInput;		// 08
+		BSTPoint3<float>				translationInput;	// 10
+		float							zoomInput;			// 1C
+		NiPointer<NiNode>				cameraRoot;			// 20
+		BSTSmartPointer<TESCameraState>	curentState;		// 28
+		bool							enabled;			// 30
+		UInt8							pad31;				// 31
+		UInt16							pad32;				// 32
+		UInt32							pad34;				// 34
 	};
 	STATIC_ASSERT(sizeof(TESCamera) == 0x38);
 }
