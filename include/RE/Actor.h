@@ -519,6 +519,7 @@ namespace RE
 		bool						IsFactionInCrimeGroup(const TESFaction* a_faction) const;
 		bool						IsGhost() const;
 		bool						IsGuard() const;
+		bool						IsHorse() const;
 		bool						IsHostileToActor(Actor* a_actor);
 		bool						IsInKillMove() const;
 		bool						IsOnMount() const;

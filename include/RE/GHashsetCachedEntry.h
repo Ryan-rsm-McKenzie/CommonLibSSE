@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		GHashsetCachedEntry() :
-			NextInChain(-2),
+			nextInChain(-2),
 			hashValue(0),
 			value{}
 		{}

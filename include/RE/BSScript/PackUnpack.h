@@ -149,5 +149,17 @@ namespace RE
 		{
 			return UnpackValue<T>(this);
 		}
+
+
+		template <class T>
+		[[nodiscard]] BSTSmartPointer<Array> VMArray<T>::alloc(size_type a_count)
+		{
+			auto vm = Internal::VirtualMachine::GetSingleton();
+			BSTSmartPointer<Array> arrPtr;
+			TypeInfo typeInfo(GetRawType<value_type>());
+			bool allocSuccess = vm->CreateArray(typeInfo, a_count, arrPtr);
+			assert(allocSuccess);	// alloc failed
+			return arrPtr;
+		}
 	}
 }

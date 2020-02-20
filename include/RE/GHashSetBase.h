@@ -142,20 +142,20 @@ namespace RE
 					if (index == -1) {
 						return;
 					}
-					entry = &phash->E(index);
+					entry = &hash->E(index);
 				}
 
 				if (index == (SPInt)const_iterator::index) {
 					if (naturalIndex == index) {
 						if (!entry->IsEndOfChain()) {
-							Entry* nextEntry = &phash->E(entry->nextInChain);
+							Entry* nextEntry = &hash->E(entry->nextInChain);
 							entry->Clear();
 							new (entry) Entry(*nextEntry);
 							entry = nextEntry;
 							--const_iterator::index;
 						}
 					} else {
-						phash->E(prevIndex).NextInChain = entry->NextInChain;
+						hash->E(prevIndex).nextInChain = entry->nextInChain;
 					}
 
 					entry->Clear();
@@ -167,6 +167,12 @@ namespace RE
 
 		private:
 			friend class GHashSetBase<C, HashF, AltHashF, Allocator, Entry>;
+
+
+			using base = const_iterator;
+			using base::hash;
+			using base::index;
+
 
 			iterator(SelfType* a_hash, SPInt a_idx) :
 				const_iterator(a_hash, a_idx)

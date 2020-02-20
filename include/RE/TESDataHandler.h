@@ -9,6 +9,7 @@
 #include "RE/FormTypes.h"
 #include "RE/NiTArray.h"
 #include "RE/NiTList.h"
+#include "RE/TESForm.h"
 
 
 namespace RE

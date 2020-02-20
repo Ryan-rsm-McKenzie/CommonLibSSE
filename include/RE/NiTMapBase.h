@@ -52,8 +52,9 @@ namespace RE
 
 
 			iterator_base() :
-				_entry(0),
-				_end(0)
+				_proxy(0),
+				_iter(0),
+				_idx(0)
 			{}
 
 

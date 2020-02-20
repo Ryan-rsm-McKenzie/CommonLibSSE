@@ -9,7 +9,13 @@ namespace RE
 	template <class T>
 	class BSTCaseInsensitiveStringMap : public NiTStringMap<T>
 	{
+	private:
+		using base = NiTStringMap<T>;
+
 	public:
+		using key_type = base::key_type;
+
+
 		virtual ~BSTCaseInsensitiveStringMap();									// 00
 
 		// override (NiTStringMap<T>)

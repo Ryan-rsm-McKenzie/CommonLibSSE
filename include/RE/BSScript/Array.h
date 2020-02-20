@@ -212,7 +212,7 @@ namespace RE
 		{
 			_ptr = std::move(a_rhs._ptr);
 #if _DEBUG
-			_idx = std::mvoe(a_rhs._idx);
+			_idx = std::move(a_rhs._idx);
 #endif
 			return *this;
 		}

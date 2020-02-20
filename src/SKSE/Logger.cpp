@@ -204,7 +204,7 @@ namespace SKSE
 	}
 
 
-	auto Logger::LogEventHandler::ProcessEvent(const RE::BSScript::LogEvent* a_event, RE::BSTEventSource<RE::BSScript::LogEvent>* a_eventSource)
+	auto Logger::LogEventHandler::ProcessEvent(const RE::BSScript::LogEvent* a_event, [[maybe_unused]] RE::BSTEventSource<RE::BSScript::LogEvent>* a_eventSource)
 		-> EventResult
 	{
 		if (a_event->errorMsg && std::regex_search(a_event->errorMsg, Logger::_papyrusLogFilter)) {

@@ -64,7 +64,7 @@ namespace RE
 		}
 
 
-		FixedLengthMemoryManagementPol(FixedLengthMemoryManagementPol&&) :
+		FixedLengthMemoryManagementPol(FixedLengthMemoryManagementPol&& a_rhs) :
 			FixedLengthMemoryManagementPol()
 		{
 			copy_from(a_rhs);
@@ -98,7 +98,7 @@ namespace RE
 
 		[[nodiscard]] value_type* allocate(UInt32 a_num)
 		{
-			return a_num > N ? 0 : buffer;
+			return a_num > N ? 0 : _buffer;
 		}
 
 

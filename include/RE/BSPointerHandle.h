@@ -72,7 +72,7 @@ namespace RE
 		BSPointerHandle& operator=(const Y* a_rhs)
 		{
 			if (a_rhs && a_rhs->BSHandleRefObject::QRefCount() > 0) {
-				create(a_ptr);
+				create(a_rhs);
 			} else {
 				reset();
 			}

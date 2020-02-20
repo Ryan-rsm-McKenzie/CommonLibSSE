@@ -225,7 +225,7 @@ namespace RE
 
 	wchar_t* GFxWStringBuffer::data() noexcept
 	{
-		return empty() ? L"" : _text;
+		return empty() ? const_cast<wchar_t*>(L"") : _text;
 	}
 
 

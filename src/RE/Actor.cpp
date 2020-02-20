@@ -265,15 +265,13 @@ namespace RE
 
 	SInt32 Actor::GetGoldAmount()
 	{
-		using DObject = DEFAULT_OBJECT;
-
 		auto inv = GetInventory([](TESBoundObject* a_object) -> bool
 		{
 			return a_object->IsGold();
 		});
 
 		auto dobj = BGSDefaultObjectManager::GetSingleton();
-		auto gold = dobj->GetObject<TESObjectMISC>(DObject::kGold);
+		auto gold = dobj->GetObject<TESObjectMISC>(DEFAULT_OBJECT::kGold);
 		auto it = inv.find(gold);
 		return it != inv.end() ? it->second.first : 0;
 	}
@@ -379,6 +377,14 @@ namespace RE
 	bool Actor::IsGuard() const
 	{
 		return (boolBits & BOOL_BITS::kGuard) != BOOL_BITS::kNone;
+	}
+
+
+	bool Actor::IsHorse() const
+	{
+		auto dobj = BGSDefaultObjectManager::GetSingleton();
+		auto horseKeyword = dobj->GetObject<BGSKeyword>(DEFAULT_OBJECT::kKeywordHorse);
+		return horseKeyword && HasKeyword(horseKeyword);
 	}
 
 

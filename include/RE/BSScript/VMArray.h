@@ -67,6 +67,9 @@ namespace RE
 			protected:
 				friend class VMArray<T>;
 
+				using base = const_reference;
+				using base::_val;
+
 				constexpr reference(Variable& a_val);
 			};
 
@@ -780,7 +783,7 @@ namespace RE
 		[[nodiscard]] constexpr auto VMArray<T>::begin() const noexcept
 			-> const_iterator
 		{
-			return _data ? const_iterator(_data->begin()) : const_iterator()
+			return _data ? const_iterator(_data->begin()) : const_iterator();
 		}
 
 
@@ -905,18 +908,6 @@ namespace RE
 					_proxy->SetData(_data.get());
 				}
 			}
-		}
-
-
-		template <class T>
-		[[nodiscard]] BSTSmartPointer<Array> VMArray<T>::alloc(size_type a_count)
-		{
-			auto vm = Internal::VirtualMachine::GetSingleton();
-			BSTSmartPointer<Array> arrPtr;
-			TypeInfo typeInfo(GetRawType<value_type>());
-			bool allocSuccess = vm->CreateArray(typeInfo, a_count, arrPtr);
-			assert(allocSuccess);	// alloc failed
-			return arrPtr;
 		}
 	}
 }

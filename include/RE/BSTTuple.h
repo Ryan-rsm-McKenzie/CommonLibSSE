@@ -36,7 +36,7 @@ namespace RE
 
 		template <class... Args1, class... Args2>
 		BSTTuple(std::piecewise_construct_t, std::tuple<Args1...> a_firstArgs, std::tuple<Args2...> a_secondArgs) :
-			pair(a_firstArgs, a_secondArgs, std::index_sequence_for<Args1...>(), std::index_sequence_for<Args2...>())
+			BSTTuple(a_firstArgs, a_secondArgs, std::index_sequence_for<Args1...>(), std::index_sequence_for<Args2...>())
 		{}
 
 

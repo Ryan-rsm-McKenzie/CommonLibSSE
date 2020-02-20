@@ -3,6 +3,10 @@
 #include <variant>
 #include <vector>
 
+#ifndef XBYAK_NO_OP_NAMES
+#define XBYAK_NO_OP_NAMES
+#endif
+
 #include "xbyak/xbyak.h"
 
 

@@ -343,8 +343,13 @@ namespace REL
 			{
 				struct Elem
 				{
-					constexpr Elem(std::string_view a_view, UInt32 a_flags = 0) :
-						name(a_view),
+					constexpr Elem(const char* a_name) :
+						Elem(a_name, 0)
+					{}
+
+
+					constexpr Elem(const char* a_name, DWORD a_flags) :
+						name(std::move(a_name)),
 						section(),
 						flags(a_flags)
 					{}
@@ -357,7 +362,15 @@ namespace REL
 
 
 				constexpr Sections() :
-					arr{ Elem(".text", IMAGE_SCN_MEM_EXECUTE), ".idata", ".rdata", ".data", ".pdata", ".tls", Elem(".text", IMAGE_SCN_MEM_WRITE), ".gfids" }
+					arr{
+					Elem(".text", static_cast<DWORD>(IMAGE_SCN_MEM_EXECUTE)),
+					".idata",
+					".rdata",
+					".data",
+					".pdata",
+					".tls",
+					Elem(".text", static_cast<DWORD>(IMAGE_SCN_MEM_WRITE)),
+					".gfids" }
 				{}
 
 
@@ -569,6 +582,10 @@ namespace REL
 			auto nextOp = _address + 5;
 			_address = nextOp + *offset;
 		}
+
+	protected:
+		using Base = DirectSig<T>;
+		using Base::_address;
 	};
 
 

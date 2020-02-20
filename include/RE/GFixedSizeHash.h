@@ -13,7 +13,7 @@ namespace RE
 			const UInt8* data = static_cast<const UInt8*>(a_dataIn);
 			UPInt hash = a_seed;
 			while (a_size > 0) {
-				hash = (hash << 16) + (hash << 6) - hash + reinterpret_cast<const UPInt>(data[a_size--]);
+				hash = (hash << 16) + (hash << 6) - hash + static_cast<const UPInt>(data[a_size--]);
 			}
 			return hash;
 		}

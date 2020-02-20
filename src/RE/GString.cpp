@@ -215,7 +215,7 @@ namespace RE
 	char* GString::data() noexcept
 	{
 		auto desc = get_desc();
-		return desc ? desc->data : "";
+		return desc ? desc->data : const_cast<char*>("");
 	}
 
 

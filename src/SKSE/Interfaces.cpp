@@ -38,7 +38,7 @@ namespace SKSE
 		std::string verString;
 		auto version = RuntimeVersion();
 
-		verString = std::move(std::to_string(GET_EXE_VERSION_MAJOR(version)));
+		verString = std::to_string(GET_EXE_VERSION_MAJOR(version));
 		verString.push_back('.');
 
 		verString += std::to_string(GET_EXE_VERSION_MINOR(version));
