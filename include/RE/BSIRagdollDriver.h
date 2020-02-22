@@ -1,7 +1,5 @@
 #pragma once
 
-#include "RE/BSIntrusiveRefCounted.h"
-
 
 namespace RE
 {
@@ -13,6 +11,8 @@ namespace RE
 	public:
 		inline static const void* RTTI = RTTI_BSIRagdollDriver;
 
+
+		virtual ~BSIRagdollDriver();						// 00
 
 		virtual void	Unk_01(void) = 0;					// 01
 		virtual void	Unk_02(void) = 0;					// 02
