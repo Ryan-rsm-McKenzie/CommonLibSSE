@@ -41,6 +41,8 @@ namespace RE
 
 		struct UIMenuEntry
 		{
+		public:
+			// members
 			GPtr<IMenu>	menu;	// 00
 			Create_t*	create;	// 08
 		};

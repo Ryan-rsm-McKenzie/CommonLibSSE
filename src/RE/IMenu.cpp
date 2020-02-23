@@ -25,7 +25,7 @@ namespace RE
 	{}
 
 
-	void IMenu::Accept(CallbackProcessor* a_processor)
+	void IMenu::Accept([[maybe_unused]] CallbackProcessor* a_processor)
 	{}
 
 
@@ -57,7 +57,7 @@ namespace RE
 	}
 
 
-	void IMenu::AdvanceMovie(float a_arg1, UInt32 a_currentTime)
+	void IMenu::AdvanceMovie([[maybe_unused]] float a_interval, UInt32 a_currentTime)
 	{
 		if (view) {
 			GFxValue currentTime(static_cast<double>(a_currentTime));
