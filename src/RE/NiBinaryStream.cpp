@@ -23,7 +23,7 @@ namespace RE
 	}
 
 
-	void NiBinaryStream::copy_from(void* a_rhs)
+	void NiBinaryStream::get_info([[maybe_unused]] BufferInfo& a_buf)
 	{}
 
 

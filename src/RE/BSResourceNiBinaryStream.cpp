@@ -8,33 +8,27 @@ namespace RE
 {
 	BSResourceNiBinaryStream::BSResourceNiBinaryStream() :
 		NiBinaryStream(),
-		unk20(0),
-		unk28(0),
-		unk30(0),
-		unk34(0)
+		stream(nullptr),
+		buffer(0),
+		streamPos(0),
+		lastError(BSResource::ErrorCode::kNone)
 	{}
 
 
 	BSResourceNiBinaryStream::BSResourceNiBinaryStream(const char* a_fileName) :
 		NiBinaryStream(),
-		unk20(0),
-		unk28(0),
-		unk30(0),
-		unk34(0)
+		stream(0),
+		buffer(0),
+		streamPos(0),
+		lastError(BSResource::ErrorCode::kNone)
 	{
 		ctor(a_fileName);
 	}
 
 
 	BSResourceNiBinaryStream::BSResourceNiBinaryStream(const std::string& a_fileName) :
-		NiBinaryStream(),
-		unk20(0),
-		unk28(0),
-		unk30(0),
-		unk34(0)
-	{
-		ctor(a_fileName.c_str());
-	}
+		BSResourceNiBinaryStream(a_fileName.c_str())
+	{}
 
 
 	BSResourceNiBinaryStream::~BSResourceNiBinaryStream()
@@ -43,9 +37,9 @@ namespace RE
 	}
 
 
-	bool BSResourceNiBinaryStream::is_open() const
+	bool BSResourceNiBinaryStream::good() const
 	{
-		return unk20 != 0;
+		return static_cast<bool>(stream);
 	}
 
 
@@ -59,11 +53,11 @@ namespace RE
 
 	UInt32 BSResourceNiBinaryStream::tell() const
 	{
-		return unk30;
+		return streamPos;
 	}
 
 
-	void BSResourceNiBinaryStream::copy_from(void* a_rhs)
+	void BSResourceNiBinaryStream::get_info([[maybe_unused]] BufferInfo& a_buf)
 	{}
 
 
@@ -75,11 +69,11 @@ namespace RE
 	}
 
 
-	BSResourceNiBinaryStream* BSResourceNiBinaryStream::ctor(const char* a_fileName, UInt32 a_arg2, UInt32 a_arg3)
+	BSResourceNiBinaryStream* BSResourceNiBinaryStream::ctor(const char* a_name, bool a_writeable, BSResource::Location* a_optionalStart)
 	{
 		using func_t = decltype(&BSResourceNiBinaryStream::ctor);
 		REL::Offset<func_t> func(Offset::BSResourceNiBinaryStream::Ctor);
-		return func(this, a_fileName, a_arg2, a_arg3);
+		return func(this, a_name, a_writeable, a_optionalStart);
 	}
 
 

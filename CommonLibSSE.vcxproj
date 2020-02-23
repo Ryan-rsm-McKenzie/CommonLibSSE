@@ -431,6 +431,7 @@
     <ClInclude Include="include\RE\AITimeStamp.h" />
     <ClInclude Include="include\RE\AlchemyItem.h" />
     <ClInclude Include="include\RE\AlchemyMenu.h" />
+    <ClInclude Include="include\RE\Archive.h" />
     <ClInclude Include="include\RE\ArmorRatingVisitor.h" />
     <ClInclude Include="include\RE\ArmorRatingVisitorBase.h" />
     <ClInclude Include="include\RE\ArrowProjectile.h" />
@@ -461,8 +462,11 @@
     <ClInclude Include="include\RE\BipedObjects.h" />
     <ClInclude Include="include\RE\BleedoutCameraState.h" />
     <ClInclude Include="include\RE\BSAnimNoteListener.h" />
+    <ClInclude Include="include\RE\BSArchive.h" />
+    <ClInclude Include="include\RE\BSArchiveHeader.h" />
     <ClInclude Include="include\RE\BSBatchRenderer.h" />
     <ClInclude Include="include\RE\BSBitField.h" />
+    <ClInclude Include="include\RE\BSFile.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialEnvmap.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialEye.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialFacegen.h" />
@@ -545,6 +549,7 @@
     <ClInclude Include="include\RE\ModManagerMenu.h" />
     <ClInclude Include="include\RE\Movement.h" />
     <ClInclude Include="include\RE\NiCollisionObject.h" />
+    <ClInclude Include="include\RE\NiFile.h" />
     <ClInclude Include="include\RE\NiIntegerExtraData.h" />
     <ClInclude Include="include\RE\NiInterpController.h" />
     <ClInclude Include="include\RE\NiMultiTargetTransformController.h" />

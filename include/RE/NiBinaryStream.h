@@ -17,14 +17,29 @@ namespace RE
 		using off_type = SInt32;
 
 
+		struct BufferInfo
+		{
+		public:
+			// members
+			void*	buffer;				// 00
+			UInt32	totalSize;			// 08
+			UInt32	bufferAllocSize;	// 0C
+			UInt32	bufferReadSize;		// 10
+			UInt32	bufferPos;			// 14
+			UInt32	streamPos;			// 18
+			UInt32	pad1C;				// 1C
+		};
+		STATIC_ASSERT(sizeof(BufferInfo) == 0x20);
+
+
 		NiBinaryStream();
 		virtual ~NiBinaryStream();							// 00
 
 		// add
-		virtual	bool	is_open() const = 0;				// 01
+		virtual	bool	good() const = 0;					// 01
 		virtual void	seek(SInt32 a_numBytes) = 0;		// 02
 		virtual UInt32	tell() const;						// 03 - { return _absoluteCurrentPos; }
-		virtual void	copy_from(void* a_rhs);				// 04
+		virtual void	get_info(BufferInfo& a_buf);		// 04
 		virtual void	set_endian_swap(bool a_doSwap) = 0;	// 05
 
 		template <class CharT> bool get(CharT& a_ch);

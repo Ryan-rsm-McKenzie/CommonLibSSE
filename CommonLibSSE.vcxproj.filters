@@ -1168,6 +1168,15 @@
     <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\BSGeometry\BSTriShape">
       <UniqueIdentifier>{af76002c-43a3-4718-a1f3-da720533032d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\BSSystem\BSArchiveHeader">
+      <UniqueIdentifier>{8a3798ba-efd1-4e5b-bc20-684d209f97b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSSystem\BSArchiveHeader\BSArchive">
+      <UniqueIdentifier>{1941cf97-4b29-4d35-8509-035274dbcefd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\NetImmerse\NiBinaryStream\NiFile">
+      <UniqueIdentifier>{96906735-e34e-4c79-bb32-98b0f0d308fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -5467,6 +5476,21 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSTPoint.h">
       <Filter>include\RE\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSArchiveHeader.h">
+      <Filter>include\RE\BSSystem\BSArchiveHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSArchive.h">
+      <Filter>include\RE\BSSystem\BSArchiveHeader\BSArchive</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiFile.h">
+      <Filter>include\RE\NetImmerse\NiBinaryStream\NiFile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Archive.h">
+      <Filter>include\RE\BSSystem\BSArchiveHeader\BSArchive</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSFile.h">
+      <Filter>include\RE\NetImmerse\NiBinaryStream\NiFile</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
