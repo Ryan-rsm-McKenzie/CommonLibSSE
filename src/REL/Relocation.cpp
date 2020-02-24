@@ -1,5 +1,8 @@
 #include "REL/Relocation.h"
 
+#include <cassert>
+#include <sstream>
+
 #include "RE/RTTI.h"
 
 
@@ -153,12 +156,21 @@ namespace REL
 	}
 
 
+	auto Module::GetVersion() noexcept
+		-> Version
+	{
+		return _info.version;
+	}
+
+
 	Module::ModuleInfo::ModuleInfo() :
+		handle(GetModuleHandle(0)),
 		base(0),
 		sections(),
-		size(0)
+		size(0),
+		version()
 	{
-		base = reinterpret_cast<std::uintptr_t>(GetModuleHandle(0));
+		base = reinterpret_cast<std::uintptr_t>(handle);
 
 		auto dosHeader = reinterpret_cast<const IMAGE_DOS_HEADER*>(base);
 		auto ntHeader = reinterpret_cast<const IMAGE_NT_HEADERS64*>(reinterpret_cast<const std::uint8_t*>(dosHeader) + dosHeader->e_lfanew);
@@ -176,6 +188,43 @@ namespace REL
 					break;
 				}
 			}
+		}
+
+		BuildVersionInfo();
+	}
+
+
+	void Module::ModuleInfo::BuildVersionInfo()
+	{
+		char fileName[MAX_PATH];
+		if (!GetModuleFileNameA(handle, fileName, MAX_PATH)) {
+			assert(false);
+			return;
+		}
+
+		DWORD dummy;
+		std::vector<char> buf(GetFileVersionInfoSizeA(fileName, &dummy));
+		if (buf.size() == 0) {
+			assert(false);
+			return;
+		}
+
+		if (!GetFileVersionInfoA(fileName, 0, buf.size(), buf.data())) {
+			assert(false);
+			return;
+		}
+
+		LPVOID verBuf;
+		UINT verLen;
+		if (!VerQueryValueA(buf.data(), "\\StringFileInfo\\040904B0\\ProductVersion", &verBuf, &verLen)) {
+			assert(false);
+			return;
+		}
+
+		std::istringstream ss(static_cast<const char*>(verBuf));
+		std::string token;
+		for (std::size_t i = 0; i < 4 && std::getline(ss, token, '.'); ++i) {
+			version[i] = static_cast<std::uint16_t>(std::stoi(token));
 		}
 	}
 

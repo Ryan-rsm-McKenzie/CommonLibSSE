@@ -2,6 +2,10 @@
 
 #include <cassert>
 
+#ifdef _DEBUG
+#include <DbgHelp.h>
+#endif
+
 #include "SKSE/Logger.h"
 
 
@@ -16,7 +20,7 @@ namespace RE
 			auto col = *reinterpret_cast<CompleteObjectLocator**>(vtbl);
 			assert(col);
 
-#ifdef DBHLPAPI
+#ifdef _DEBUG
 			char buf[0x1000];
 			UnDecorateSymbolName(col->typeDescriptor->name + 1, buf, sizeof(buf), UNDNAME_NO_ARGUMENTS);
 			auto name = buf;

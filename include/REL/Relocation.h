@@ -325,9 +325,66 @@ namespace REL
 		};
 
 
+		class Version
+		{
+		public:
+			constexpr Version() noexcept :
+				Version(0, 0, 0, 0)
+			{}
+
+			constexpr Version(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build) noexcept :
+				buf{ a_major, a_minor, a_revision, a_build }
+			{}
+
+			template <class T, typename std::enable_if_t<std::is_arithmetic_v<T>, int> = 0>
+			constexpr Version(const T a_versions[4]) noexcept :
+				Version(static_cast<std::uint16_t>(a_versions[0]),
+						static_cast<std::uint16_t>(a_versions[1]),
+						static_cast<std::uint16_t>(a_versions[2]),
+						static_cast<std::uint16_t>(a_versions[3]))
+			{}
+
+			[[nodiscard]] friend constexpr bool operator==(const Version& a_lhs, const Version& a_rhs) noexcept
+			{
+				return a_lhs.GetMajor() == a_rhs.GetMajor() &&
+					a_lhs.GetMinor() == a_rhs.GetMinor() &&
+					a_lhs.GetRevision() == a_rhs.GetRevision() &&
+					a_lhs.GetBuild() == a_rhs.GetBuild();
+			}
+
+			[[nodiscard]] friend constexpr bool operator!=(const Version& a_lhs, const Version& a_rhs) noexcept { return !(a_lhs == a_rhs); }
+
+			[[nodiscard]] constexpr std::uint16_t& operator[](std::size_t a_idx) noexcept { return buf[a_idx]; }
+			[[nodiscard]] constexpr const std::uint16_t& operator[](std::size_t a_idx) const noexcept { return buf[a_idx]; }
+
+			[[nodiscard]] constexpr std::uint16_t GetMajor() const noexcept { return buf[kMajor]; }
+			[[nodiscard]] constexpr std::uint16_t GetMinor() const noexcept { return buf[kMinor]; }
+			[[nodiscard]] constexpr std::uint16_t GetRevision() const noexcept { return buf[kRevision]; }
+			[[nodiscard]] constexpr std::uint16_t GetBuild() const noexcept { return buf[kBuild]; }
+
+			constexpr void SetMajor(std::uint16_t a_major) noexcept { buf[kMajor] = a_major; }
+			constexpr void SetMinor(std::uint16_t a_minor) noexcept { buf[kMinor] = a_minor; }
+			constexpr void SetRevision(std::uint16_t a_revision) noexcept { buf[kRevision] = a_revision; }
+			constexpr void SetBuild(std::uint16_t a_build) noexcept { buf[kBuild] = a_build; }
+
+		private:
+			enum : std::size_t
+			{
+				kMajor,
+				kMinor,
+				kRevision,
+				kBuild
+			};
+
+
+			std::array<std::uint16_t, 4> buf;
+		};
+
+
 		static std::uintptr_t BaseAddr();
 		static std::size_t Size();
 		static Section GetSection(ID a_id);
+		static Version GetVersion() noexcept;
 
 
 		template <class T = void>
@@ -339,6 +396,7 @@ namespace REL
 	private:
 		struct ModuleInfo
 		{
+		public:
 			struct Sections
 			{
 				struct Elem
@@ -381,9 +439,14 @@ namespace REL
 			ModuleInfo();
 
 
+			HMODULE handle;
 			std::uintptr_t base;
 			std::size_t size;
 			Sections sections;
+			Version version;
+
+		private:
+			void BuildVersionInfo();
 		};
 
 
@@ -402,7 +465,7 @@ namespace REL
 		Offset() = delete;
 
 
-		Offset(std::uintptr_t a_offset) :
+		constexpr Offset(std::uintptr_t a_offset) :
 			_address(a_offset)
 		{}
 
