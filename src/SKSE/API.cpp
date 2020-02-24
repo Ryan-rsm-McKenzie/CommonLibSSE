@@ -4,6 +4,8 @@
 #include <mutex>
 #include <vector>
 
+#include "REL/Relocation.h"
+
 
 namespace SKSE
 {
@@ -141,6 +143,11 @@ namespace SKSE
 					_ERROR("Failed to get persistent object storage!");
 					return false;
 				}
+			}
+
+			if (!REL::IDDatabase::Init()) {
+				_ERROR("Failed to initialize ID database!");
+				return false;
 			}
 
 			g_apiInit = true;

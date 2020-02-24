@@ -1,5 +1,7 @@
 #pragma once
 
+#include "REL/Relocation.h"
+
 
 namespace RE
 {
@@ -7,232 +9,174 @@ namespace RE
 	{
 		namespace ActivateHandler
 		{
-			// VTable: .?AUActivateHandler@@
-			constexpr std::uintptr_t Vtbl = 0x0166F288;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263060));
 		}
 
 
 		namespace ActiveEffect
 		{
-			// IndirectSig: E8 ? ? ? ? 48 85 DB 75 C9
-			constexpr std::uintptr_t Dispell = 0x0053E380;	// 1_5_97
+			static constexpr REL::ID Dispell(static_cast<std::uint64_t>(33286));
 		}
 
 
 		namespace Actor
 		{
-			// IndirectSig: E8 ? ? ? ? 0F B6 F0 49 8D 4E 30
-			constexpr std::uintptr_t AddSpell = 0x0062F560;						// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 49 8B D5 49 8B 8D ? ? ? ?
-			constexpr std::uintptr_t DispelWornItemEnchantments = 0x00556F20;	// 1_5_97
-			// DirectSig: 40 55 56 57 48 83 EC 30 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 0F B6 DA 48 8B F1
-			constexpr std::uintptr_t DoReset3D = 0x00693110;					// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 8B CD E8 ? ? ? ? 85 C0 74 0B
-			constexpr std::uintptr_t EvaluatePackage = 0x005DB310;				// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 84 C0 49 0F 45 F4
-			constexpr std::uintptr_t GetGhost = 0x005D2520;						// 1_5_97
-			// DirectSig: 48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC 20 48 8B F2 48 8B D9 40 32 FF
-			constexpr std::uintptr_t GetHostileToActor = 0x005E7E40;			// 1_5_97
-			// DirectSig: 48 8B 49 40 48 83 C1 30 E9 ? ? ? ?
-			constexpr std::uintptr_t GetLevel = 0x005D62E0;						// 1_5_97
-			// DirectSig: 48 83 EC 28 48 8B 81 ? ? ? ? 48 85 C0 74 16
-			constexpr std::uintptr_t HasPerk = 0x005F9E30;						// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 8B CF 0F B6 E8
-			constexpr std::uintptr_t IsRunning = 0x005D1190;					// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 85 C0 7E 2D
-			constexpr std::uintptr_t RequestDetectionLevel = 0x005FC9A0;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? EB 1D 8B 4D 7F
-			constexpr std::uintptr_t StealAlarm = 0x005DD770;					// 1_5_97
-			// DirectSig: 48 85 D2 0F 84 ? ? ? ? 41 56 48 83 EC 40
-			constexpr std::uintptr_t SwitchRace = 0x00607680;					// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 89 7D D8 48 8D 55 D8
-			constexpr std::uintptr_t UpdateArmorAbility = 0x00631360;			// 1_5_97
-			// DirectSig: 48 85 D2 0F 84 ? ? ? ? 48 89 6C 24 ? 56 57
-			constexpr std::uintptr_t UpdateWeaponAbility = 0x006313D0;			// 1_5_97
-			// VTable: .?AVActor@@
-			constexpr std::uintptr_t Vtbl = 0x01655640;							// 1_5_97
+			static constexpr REL::ID AddSpell(static_cast<std::uint64_t>(37771));
+			static constexpr REL::ID DispelWornItemEnchantments(static_cast<std::uint64_t>(33828));
+			static constexpr REL::ID DoReset3D(static_cast<std::uint64_t>(39181));
+			static constexpr REL::ID EvaluatePackage(static_cast<std::uint64_t>(36407));
+			static constexpr REL::ID GetGhost(static_cast<std::uint64_t>(36286));
+			static constexpr REL::ID GetHostileToActor(static_cast<std::uint64_t>(36537));
+			static constexpr REL::ID GetLevel(static_cast<std::uint64_t>(36344));
+			static constexpr REL::ID HasPerk(static_cast<std::uint64_t>(36690));
+			static constexpr REL::ID IsRunning(static_cast<std::uint64_t>(36252));
+			static constexpr REL::ID RequestDetectionLevel(static_cast<std::uint64_t>(36748));
+			static constexpr REL::ID StealAlarm(static_cast<std::uint64_t>(36427));
+			static constexpr REL::ID SwitchRace(static_cast<std::uint64_t>(36901));
+			static constexpr REL::ID UpdateArmorAbility(static_cast<std::uint64_t>(37802));
+			static constexpr REL::ID UpdateWeaponAbility(static_cast<std::uint64_t>(37803));
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(260538));
 		}
 
 
 		namespace ActorEquipManager
 		{
-			// DirectSig: 48 85 D2 0F 84 ? ? ? ? 57 48 83 EC 50 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 49 8B D9
-			constexpr std::uintptr_t EquipObject = 0x00637A80;		// 1_5_97
-			// 88 4C 24 30 48 8B 0D ? ? ? ? 48 C7 44 24 ? ? ? ? ?
-			constexpr std::uintptr_t Singleton = 0x02EC4838;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 84 C0 0F 94 C0 33 F6
-			constexpr std::uintptr_t UnequipObject = 0x00638190;	// 1_5_97
+			static constexpr REL::ID EquipObject(static_cast<std::uint64_t>(37938));
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514494));
+			static constexpr REL::ID UnequipObject(static_cast<std::uint64_t>(37945));
 		}
 
 
 		namespace ActorValueOwner
 		{
-			// IndirectSig: E8 ? ? ? ? F3 44 0F 2C C0
-			constexpr std::uintptr_t GetClampedActorValue = 0x003E5250;	// 1_5_97
+			static constexpr REL::ID GetClampedActorValue(static_cast<std::uint64_t>(26616));
 		}
 
 
 		namespace AIProcess
 		{
-			// IndirectSig: E8 ? ? ? ? 0F 28 C7 0F 28 7C 24 ?
-			constexpr std::uintptr_t SetBaseScale = 0x0065C880;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? E9 ? ? ? ? 8B 4F 08
-			constexpr std::uintptr_t Update3DModel = 0x00650DF0;	// 1_5_97
+			static constexpr REL::ID SetBaseScale(static_cast<std::uint64_t>(38568));
+			static constexpr REL::ID Update3DModel(static_cast<std::uint64_t>(38404));
 		}
 
 
 		namespace AttackBlockHandler
 		{
-			// VTable: .?AUAttackBlockHandler@@
-			constexpr std::uintptr_t Vtbl = 0x0166F218;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263058));
 		}
 
 
 		namespace AutoMoveHandler
 		{
-			// VTable: .?AUAutoMoveHandler@@
-			constexpr std::uintptr_t Vtbl = 0x0166F2C8;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263061));
 		}
 
 
 		namespace BGSDefaultObjectManager
 		{
-			// IndirectSig: E8 ? ? ? ? 4C 63 C3
-			constexpr std::uintptr_t GetSingleton = 0x000F7210;	// 1_5_97
+			static constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(10878));
 		}
 
 
 		namespace BGSFootstepManager
 		{
-			// E8 ? ? ? ? 90 48 89 1D ? ? ? ? 48 8D 0D ? ? ? ?
-			constexpr std::uintptr_t Singleton = 0x02F27150;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(517045));
 		}
 
 
 		namespace BGSListForm
 		{
-			// IndirectSig: E8 ? ? ? ? E9 ? ? ? ? 48 83 7B ? ? 75 5E
-			constexpr std::uintptr_t AddForm = 0x002C53D0;	// 1_5_97
+			static constexpr REL::ID AddForm(static_cast<std::uint64_t>(20470));
 		}
 
 
 		namespace BGSSaveLoadManager
 		{
-			// DirectSig: 44 89 44 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ?
-			constexpr std::uintptr_t Save = 0x00586DE0;			// 1_5_97
-			// 48 89 05 ? ? ? ? 48 8B 0D ? ? ? ? 48 81 C1 ? ? ? ?
-			constexpr std::uintptr_t Singleton = 0x02F26740;	// 1_5_97
-			// DirectSig: 48 8B C4 48 89 58 10 57 48 81 EC ? ? ? ? 48 8B DA 66 C7 40 ? ? ?
-			constexpr std::uintptr_t Load = 0x00587350;			// 1_5_97
+			static constexpr REL::ID Save(static_cast<std::uint64_t>(34818));
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(516860));
+			static constexpr REL::ID Load(static_cast<std::uint64_t>(34819));
 		}
 
 
 		namespace BGSStoryTeller
 		{
-			// DirectSig: 40 56 57 41 56 48 83 EC 40 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 8B FA 48 8B E9 44 8B 05 ? ? ? ? 65 48 8B 04 25 ? ? ? ? B9 ? ? ? ? 4A 8B 34 C0 48 03 F1 8B 1E 89 5C 24 68
-			constexpr std::uintptr_t BeginShutDownQuest = 0x004D80A0;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 4C 8D 35 ? ? ? ? 40 84 F6
-			constexpr std::uintptr_t BeginStartUpQuest = 0x004D7F80;	// 1_5_97
-			// 48 8B 0D ? ? ? ? 48 8B D3 45 84 C0
-			constexpr std::uintptr_t Singleton = 0x01EC3B80;			// 1_5_97
+			static constexpr REL::ID BeginShutDownQuest(static_cast<std::uint64_t>(31718));
+			static constexpr REL::ID BeginStartUpQuest(static_cast<std::uint64_t>(31717));
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514316));
 		}
 
 
 		namespace BipedAnim
 		{
-			// IndirectSig: E8 ? ? ? ? BA ? ? ? ? 48 8B CF E8 ? ? ? ? 48 8B 5C 24 ? EB 76
-			constexpr std::uintptr_t Dtor = 0x001C60A0;				// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 90 48 8D 8B ? ? ? ? 4C 8D 0D ? ? ? ? BA ? ? ? ? 44 8D 42 B2
-			constexpr std::uintptr_t RemoveAllParts = 0x001C61A0;	// 1_5_97
+			static constexpr REL::ID Dtor(static_cast<std::uint64_t>(15491));
+			static constexpr REL::ID RemoveAllParts(static_cast<std::uint64_t>(15494));
 		}
 
 
 		namespace BSAudioManager
 		{
-			// IndirectSig: E8 ? ? ? ? BA 33 00 00 00
-			constexpr std::uintptr_t GetSingleton = 0x00BEE580;					// 1_5_97
-			// IndirectSig: E8 ? ? ? ? C6 46 04 01
-			constexpr std::uintptr_t BuildSoundDataFromDescriptor = 0x00BEF0B0;	// 1_5_97
+			static constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(66391));
+			static constexpr REL::ID BuildSoundDataFromDescriptor(static_cast<std::uint64_t>(66404));
 		}
 
 
 		namespace BSFixedString
 		{
-			// IndirectSig: E8 ? ? ? ? 83 CD 01
-			constexpr std::uintptr_t Ctor_CStr = 0x00C28BF0;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 89 7D 98
-			constexpr std::uintptr_t Ctor_Copy = 0x00C28C80;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 01 5F 1C
-			constexpr std::uintptr_t Set_CStr = 0x00C28D60;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? F7 DF
-			constexpr std::uintptr_t Set_Copy = 0x00C28E20;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? EB 94
-			constexpr std::uintptr_t Dtor = 0x00C28D40;			// 1_5_97
+			static constexpr REL::ID Ctor_CStr(static_cast<std::uint64_t>(67819));
+			static constexpr REL::ID Ctor_Copy(static_cast<std::uint64_t>(67820));
+			static constexpr REL::ID Set_CStr(static_cast<std::uint64_t>(67823));
+			static constexpr REL::ID Set_Copy(static_cast<std::uint64_t>(67824));
+			static constexpr REL::ID Dtor(static_cast<std::uint64_t>(67822));
 		}
 
 
 		namespace BSFixedStringW
 		{
-			// DirectSig: 40 53 48 83 EC 20 48 C7 01 00 00 00 00 4C 8B DA
-			constexpr std::uintptr_t Ctor = 0x00C29510;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 4C 8D 45 C8 48 8D 55 D8
-			constexpr std::uintptr_t Dtor = 0x00C29620;	// 1_5_97
+			static constexpr REL::ID Ctor(static_cast<std::uint64_t>(67834));
+			static constexpr REL::ID Dtor(static_cast<std::uint64_t>(67836));
 		}
 
 
 		namespace BSInputDeviceManager
 		{
-			// 74 0D 48 83 C0 A8
-			constexpr std::uintptr_t Singleton = 0x02F257A8;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(516574));
 		}
 
 
 		namespace BSLightingShaderMaterialBase
 		{
-			// IndirectSig: E8 ? ? ? ? 45 33 C0 33 D2 48 8B CF 4C 8B F0
-			constexpr std::uintptr_t CreateMaterial = 0x012CFBC0;	// 1_5_97
+			static constexpr REL::ID CreateMaterial(static_cast<std::uint64_t>(100016));
 		}
 
 
 		namespace BSReadWriteLock
 		{
-			// IndirectSig: E8 ? ? ? ? 4D 8B 27
-			constexpr std::uintptr_t LockForRead = 0x00C072D0;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 40 88 77 2C
-			constexpr std::uintptr_t LockForWrite = 0x00C07350;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 90 EB 2E
-			constexpr std::uintptr_t UnlockForRead = 0x00C07590;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 90 8B 56 14
-			constexpr std::uintptr_t UnlockForWrite = 0x00C075A0;	// 1_5_97
+			static constexpr REL::ID LockForRead(static_cast<std::uint64_t>(66976));
+			static constexpr REL::ID LockForWrite(static_cast<std::uint64_t>(66977));
+			static constexpr REL::ID UnlockForRead(static_cast<std::uint64_t>(66982));
+			static constexpr REL::ID UnlockForWrite(static_cast<std::uint64_t>(66983));
 		}
 
 
 		namespace BSResourceNiBinaryStream
 		{
-			// DirectSig: 48 89 4C 24 ? 57 41 56 41 57 48 83 EC 30 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 49 8B D9
-			constexpr std::uintptr_t Ctor = 0x00C76060;					// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 90 8B 84 24 ? ? ? ? 89 07
-			constexpr std::uintptr_t Dtor = 0x00C76340;					// 1_5_97
-			// DirectSig: 48 83 79 ? ? 4C 8B C9
-			constexpr std::uintptr_t Seek = 0x00C76490;					// 1_5_97
-			// ??_7BSResourceNiBinaryStream@@6B@ + 0x5
-			constexpr std::uintptr_t SetEndianSwap = 0x00C76580;		// 1_5_97
+			static constexpr REL::ID Ctor(static_cast<std::uint64_t>(69636));
+			static constexpr REL::ID Dtor(static_cast<std::uint64_t>(69638));
+			static constexpr REL::ID Seek(static_cast<std::uint64_t>(69640));
+			static constexpr REL::ID SetEndianSwap(static_cast<std::uint64_t>(69643));
 		}
 
 
 		namespace BSScaleformManager
 		{
-			// IndirectSig: E8 ? ? ? ? 84 C0 74 50 48 8B 4F 10
-			constexpr std::uintptr_t LoadMovie = 0x00ECE790;	// 1_5_97
-			// 48 89 0D ? ? ? ? 4C 89 79 18
-			constexpr std::uintptr_t Singleton = 0x02F257A0;	// 1_5_97
+			static constexpr REL::ID LoadMovie(static_cast<std::uint64_t>(80302));
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(516573));
 		}
 
 
 		namespace BSScaleformTranslator
 		{
-			// VTable: .?AVBSScaleformTranslator@@
-			constexpr std::uintptr_t Vtbl = 0x017B6B50;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(291278));
 		}
 
 
@@ -240,26 +184,21 @@ namespace RE
 		{
 			namespace Object
 			{
-				// IndirectSig: E8 ? ? ? ? 49 8B CE E8 ? ? ? ? 48 85 DB 74 08
-				constexpr std::uintptr_t Dtor = 0x01233670;			// 1_5_97
-				// IndirectSig: E8 ? ? ? ? 49 89 3F
-				constexpr std::uintptr_t IncRef = 0x01234360;	// 1_5_97
-				// IndirectSig: E8 ? ? ? ? 85 C0 75 10 49 8B CE
-				constexpr std::uintptr_t DecRef = 0x01234410;	// 1_5_97
+				static constexpr REL::ID Dtor(static_cast<std::uint64_t>(97462));
+				static constexpr REL::ID IncRef(static_cast<std::uint64_t>(97468));
+				static constexpr REL::ID DecRef(static_cast<std::uint64_t>(97469));
 			}
 
 
 			namespace ObjectTypeInfo
 			{
-				// IndirectSig: E8 ? ? ? ? 90 48 8D 4B 18 E8 ? ? ? ? 90 48 8B 4B 10
-				constexpr std::uintptr_t ReleaseData = 0x012386D0;	// 1_5_97
+				static constexpr REL::ID ReleaseData(static_cast<std::uint64_t>(97538));
 			}
 
 
 			namespace ObjectBindPolicy
 			{
-				// IndirectSig: E8 ? ? ? ? 80 BD ? ? ? ? ? 0F 84 ? ? ? ? 48 C7 44 24 ? ? ? ? ?
-				constexpr std::uintptr_t BindObject = 0x0122DAD0;	// 1_5_97
+				static constexpr REL::ID BindObject(static_cast<std::uint64_t>(97379));
 			}
 
 
@@ -267,305 +206,254 @@ namespace RE
 			{
 				namespace NativeFunctionBase
 				{
-					// DirectSig: 48 8B C4 4C 89 48 20 4C 89 40 18 55 56 57 41 54 41 55 41 56 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 48 C7 44 24 ? ? ? ? ? 48 89 58 08
-					constexpr std::uintptr_t Call = 0x012507F0;	// 1_5_97
+					static constexpr REL::ID Call(static_cast<std::uint64_t>(97923));
 				}
 			}
 
 
 			namespace Stack
 			{
-				// IndirectSig: E8 ? ? ? ? BA A0 00 00 00 49 8B CF
-				constexpr std::uintptr_t Dtor = 0x012444C0;	// 1_5_97
+				static constexpr REL::ID Dtor(static_cast<std::uint64_t>(97742));
 			}
 		}
 
 
 		namespace BSSoundHandle
 		{
-			// IndirectSig: E8 ? ? ? ? 84 C0 75 5C 49 8B 85 ? ? ? ?
-			constexpr std::uintptr_t IsValid = 0x00BED690;				// 1_5_97
-			// IndirectSig: E8 ? ? ? ? EB 0E 84 C0
-			constexpr std::uintptr_t Play = 0x00BED530;					// 1_5_97
-			// IndirectSig: E8 ? ? ? ? F3 0F 10 5D 9F
-			constexpr std::uintptr_t SetObjectToFollow = 0x00BEDB10;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 4C 8D 7E 20
-			constexpr std::uintptr_t SetPosition = 0x00BED920;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 8B CE E8 ? ? ? ? E9 ? ? ? ? B9 ? ? ? ?
-			constexpr std::uintptr_t Stop = 0x00BED600;					// 1_5_97
+			static constexpr REL::ID IsValid(static_cast<std::uint64_t>(66360));
+			static constexpr REL::ID Play(static_cast<std::uint64_t>(66355));
+			static constexpr REL::ID SetObjectToFollow(static_cast<std::uint64_t>(66375));
+			static constexpr REL::ID SetPosition(static_cast<std::uint64_t>(66370));
+			static constexpr REL::ID Stop(static_cast<std::uint64_t>(66358));
 		}
 
 
 		namespace BSString
 		{
-			// DirectSig: 40 57 41 54 41 55 41 56 41 57 48 83 EC 30 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 41 8B F8
-			constexpr std::uintptr_t Set_CStr = 0x000F9E90;	// 1_5_97
+			static constexpr REL::ID Set_CStr(static_cast<std::uint64_t>(10979));
 		}
 
 
 		namespace BSUntypedPointerHandle
 		{
-			// 8B 05 ? ? ? ? 89 44 24 78 48 8D 44 24 ? 8B 00
-			constexpr std::uintptr_t NullHandle = 0x01EBEABC;	// 1_5_97
+			static constexpr REL::ID NullHandle(static_cast<std::uint64_t>(514164));
 		}
 
 
 		namespace BucketTable
 		{
-			// IndirectSig: E8 ? ? ? ? 41 8B FE 41 8B CE
-			constexpr std::uintptr_t GetSingleton = 0x00C2A4D0;	// 1_5_97
+			static constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(67855));
 		}
 
 
 		namespace BSWin32SaveDataSystemUtility
 		{
-			// IndirectSig: E8 ? ? ? ? 4C 8B 18
-			constexpr std::uintptr_t GetSingleton = 0x0133F0C0;	// 1_5_97
+			static constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(101884));
 		}
 
 
 		namespace Calendar
 		{
-			//
-			constexpr std::uintptr_t Singleton = 0x01EC0A80;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514287));
 		}
 
 
 		namespace ChestsLooted
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B C8 48 8D 54 24 51
-			constexpr std::uintptr_t GetEventSource = 0x00862160;	// 1_5_97
+			static constexpr REL::ID GetEventSource(static_cast<std::uint64_t>(50257));
 		}
 
 
 		namespace Console
 		{
-			// 48 8D 0D ? ? ? ? E8 ? ? ? ? 83 3D ? ? ? ? ? 74 13 48 8D 15 ? ? ? ? 48 8D 0D ? ? ? ? E8 ? ? ? ? 45 33 C9 45 33 C0 BA ? ? ? ? 48 8D 0D ? ? ? ? E8 ? ? ? ? 48 89 44 24 ?
-			constexpr std::uintptr_t SelectedRef = 0x02F4C31C;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? BE 02 00 00 00 8B C6
-			constexpr std::uintptr_t SetSelectedRef = 0x0085BB30;	// 1_5_97
+			static constexpr REL::ID SelectedRef(static_cast<std::uint64_t>(519394));
+			static constexpr REL::ID SetSelectedRef(static_cast<std::uint64_t>(50164));
 		}
 
 
 		namespace ConsoleLog
 		{
-			// E8 ? ? ? ? 48 89 2D ? ? ? ? 48 8B 0D ? ? ? ? 48 85 C9 74 0C E8 ? ? ? ? 48 89 2D ? ? ? ? 48 8B 0D ? ? ? ? 48 85 C9 74 0C E8 ? ? ? ? 48 89 2D ? ? ? ? 48 8B 0D ? ? ? ?
-			constexpr std::uintptr_t Singleton = 0x02F000F0;	// 1_5_97
-			// DirectSig: 48 8B C4 57 41 54 41 55 41 56 41 57 48 83 EC 40 48 C7 40 ? ? ? ? ? 48 89 58 10 48 89 68 18 48 89 70 20 4D 8B F8 4C 8B E2
-			constexpr std::uintptr_t VPrint = 0x0085C2C0;		// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(515064));
+			static constexpr REL::ID VPrint(static_cast<std::uint64_t>(50180));
 		}
 
 
 		namespace ControlMap
 		{
-			// E8 ? ? ? ? 90 48 89 05 ? ? ? ? 8B 05 ? ? ? ?
-			constexpr std::uintptr_t Singleton = 0x02EC5BD0;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514705));
 		}
 
 
 		namespace CRC32Calculator
 		{
-			// IndirectSig: E8 ? ? ? ? 8B 75 AB
-			constexpr std::uintptr_t SizeOf32 = 0x00C064F0;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 8B 5D C0
-			constexpr std::uintptr_t SizeOf64 = 0x00C06570;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 8B 9D B8 00 00 00
-			constexpr std::uintptr_t SizeOfSize = 0x00C06490;	// 1_5_97
+			static constexpr REL::ID SizeOf32(static_cast<std::uint64_t>(66963));
+			static constexpr REL::ID SizeOf64(static_cast<std::uint64_t>(66964));
+			static constexpr REL::ID SizeOfSize(static_cast<std::uint64_t>(66962));
 		}
 
 
 		namespace DialogueItem
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B F8 41 89 1E 48 8B C7 48 8B 5C 24 70
-			constexpr std::uintptr_t Ctor = 0x0056C9D0;	// 1_5_97
+			static constexpr REL::ID Ctor(static_cast<std::uint64_t>(34413));
 		}
 
 
 		namespace ExtraAliasInstanceArray
 		{
-			// VTable: .?AVExtraAliasInstanceArray@@
-			constexpr std::uintptr_t Vtbl = 0x0152C9A0;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229615));
 		}
 
 
 		namespace ExtraAshPileRef
 		{
-			// VTable: .?AVExtraAshPileRef@@
-			constexpr std::uintptr_t Vtbl = 0x0152C2E0;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229561));
 		}
 
 
 		namespace ExtraCannotWear
 		{
-			// VTable: .?AVExtraCannotWear@@
-			constexpr std::uintptr_t Vtbl = 0x0152C040;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229540));
 		}
 
 
 		namespace ExtraCanTalkToPlayer
 		{
-			// VTable: .?AVExtraCanTalkToPlayer@@
-			constexpr std::uintptr_t Vtbl = 0x0152C740;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229596));
 		}
 
 
 		namespace ExtraCharge
 		{
-			// VTable: .?AVExtraCharge@@
-			constexpr std::uintptr_t Vtbl = 0x0152C0C0;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229544));
 		}
 
 
 		namespace ExtraContainerChanges
 		{
-			// VTable: .?AVExtraContainerChanges@@
-			constexpr std::uintptr_t Vtbl = 0x0152F260;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229886));
 		}
 
 
 		namespace ExtraCount
 		{
-			// VTable: .?AVExtraCount@@
-			constexpr std::uintptr_t Vtbl = 0x0152BFE0;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229537));
 		}
 
 
 		namespace ExtraDataList
 		{
-			// IndirectSig: E8 ? ? ? ? 4C 8D 75 10
-			constexpr std::uintptr_t Add = 0x00131990;					// 1_5_97
-			// IndirectSig: E8 ? ? ? ? F7 43 28 FF 03 00 00 75 0C
-			constexpr std::uintptr_t SetExtraFlags = 0x00125D80;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 90 41 89 1E 48 8B C7 48 8B 5C 24 60 48 8B 6C 24 68 48 83 C4 30 41 5E
-			constexpr std::uintptr_t SetInventoryChanges = 0x0010F5C0;	// 1_5_97
+			static constexpr REL::ID Add(static_cast<std::uint64_t>(12176));
+			static constexpr REL::ID SetExtraFlags(static_cast<std::uint64_t>(11903));
+			static constexpr REL::ID SetInventoryChanges(static_cast<std::uint64_t>(11483));
 		}
 
 
 		namespace ExtraEnchantment
 		{
-			// VTable: .?AVExtraEnchantment@@
-			constexpr std::uintptr_t Vtbl = 0x0152C480;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229574));
 		}
 
 
 		namespace ExtraForcedTarget
 		{
-			// VTable: .?AVExtraForcedTarget@@
-			constexpr std::uintptr_t Vtbl = 0x0152CB60;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229629));
 		}
 
 
 		namespace ExtraHealth
 		{
-			// VTable: .?AVExtraHealth@@
-			constexpr std::uintptr_t Vtbl = 0x0152C060;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229541));
 		}
 
 
 		namespace ExtraHotkey
 		{
-			// VTable: .?AVExtraHotkey@@
-			constexpr std::uintptr_t Vtbl = 0x0152C120;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229547));
 		}
 
 
 		namespace ExtraLightData
 		{
-			// VTable: .?AVExtraLightData@@
-			constexpr std::uintptr_t Vtbl = 0x0152CA00;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229618));
 		}
 
 
 		namespace ExtraOwnership
 		{
-			// VTable: .?AVExtraOwnership@@
-			constexpr std::uintptr_t Vtbl = 0x0152BF80;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229534));
 		}
 
 
 		namespace ExtraPoison
 		{
-			// VTable: .?AVExtraPoison@@
-			constexpr std::uintptr_t Vtbl = 0x0152C460;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229573));
 		}
 
 
 		namespace ExtraRank
 		{
-			// VTable: .?AVExtraRank@@
-			constexpr std::uintptr_t Vtbl = 0x0152BFC0;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229536));
 		}
 
 
 		namespace ExtraReferenceHandle
 		{
-			// VTable: .?AVExtraReferenceHandle@@
-			constexpr std::uintptr_t Vtbl = 0x0152C160;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229549));
 		}
 
 
 		namespace ExtraSoul
 		{
-			// VTable: .?AVExtraSoul@@
-			constexpr std::uintptr_t Vtbl = 0x0152F2E0;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229890));
 		}
 
 
 		namespace ExtraTextDisplayData
 		{
-			// IndirectSig: E8 ? ? ? ? EB 08 48 8B 0F
-			constexpr std::uintptr_t GenerateName = 0x0013C740;	// 1_5_97
-			// VTable: .?AVExtraTextDisplayData@@
-			constexpr std::uintptr_t Vtbl = 0x0152CAE0;			// 1_5_97
+			static constexpr REL::ID GenerateName(static_cast<std::uint64_t>(12626));
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229625));
 		}
 
 
 		namespace ExtraUniqueID
 		{
-			// VTable: .?AVExtraUniqueID@@
-			constexpr std::uintptr_t Vtbl = 0x0152CBA0;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229631));
 		}
 
 
 		namespace FavoritesHandler
 		{
-			// VTable: .?AUFavoritesHandler@@
-			constexpr std::uintptr_t Vtbl = 0x016B84B8;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(269539));
 		}
 
 
 		namespace FavoritesMenu
 		{
-			// VTable: .?AVFavoritesMenu@@
-			constexpr std::uintptr_t Vtbl = 0x016B1068;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(268638));
 		}
 
 
 		namespace FirstPersonState
 		{
-			// VTable: .?AVFirstPersonState@@
-			constexpr std::uintptr_t Vtbl = 0x016A9E60;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(267810));
 		}
 
 
 		namespace GameSettingCollection
 		{
-			// 48 83 3D ? ? ? ? ? 75 63
-			constexpr std::uintptr_t Singleton = 0x02EC58B0;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514622));
 		}
 
 
 		namespace GFxLoader
 		{
-			// DirectSig: 45 8B D0 48 8B C1
-			constexpr std::uintptr_t CreateMovie = 0x00EDBFA0;	// 1_5_97
+			static constexpr REL::ID CreateMovie(static_cast<std::uint64_t>(80620));
 		}
 
 
 		namespace GFxMovieView
 		{
-			// IndirectSig: E8 ? ? ? ? C6 44 24 20 01 41 B9 03 00 00 00 44 8D 47 69
-			constexpr std::uintptr_t InvokeNoReturn = 0x00ED80B0;	// 1_5_97
+			static constexpr REL::ID InvokeNoReturn(static_cast<std::uint64_t>(80547));
 		}
 
 
@@ -573,327 +461,257 @@ namespace RE
 		{
 			namespace ObjectInterface
 			{
-				// IndirectSig: E8 ? ? ? ? 4C 8D 45 F0 48 8B 54 24 ?
-				constexpr std::uintptr_t AttachMovie = 0x00EC83A0;		// 1_5_97
-				// DirectSig: 48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC 20 49 8B D8 48 8B FA 48 8B F1 45 84 C9
-				constexpr std::uintptr_t DeleteMember = 0x00EC9490;		// 1_5_97
-				// DirectSig: 48 85 D2 74 04 8B 42 58
-				constexpr std::uintptr_t GetArraySize = 0x00EC9BD0;		// 1_5_97
-				// IndirectSig: E8 ? ? ? ? 66 83 8D ? ? ? ? ? F3 0F 10 05 ? ? ? ?
-				constexpr std::uintptr_t GetDisplayInfo = 0x00EC9C20;	// 1_5_97
-				// DirectSig: 48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 41 56 48 83 EC 20 49 63 F0
-				constexpr std::uintptr_t GetElement = 0x00EC9F30;		// 1_5_97
-				// IndirectSig: E8 ? ? ? ? 48 8B 4B 20 40 38 7D E8
-				constexpr std::uintptr_t GetMember = 0x00ECA150;		// 1_5_97
-				// IndirectSig: E8 ? ? ? ? 4C 8D 0D ? ? ? ? E9 ? ? ? ? 4C 89 75 E8
-				constexpr std::uintptr_t GotoAndPlay = 0x00ECA570;		// 1_5_97
-				// DirectSig: 48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC 60 49 8B D8
-				constexpr std::uintptr_t HasMember = 0x00ECA620;		// 1_5_97
-				// DirectSig: 40 53 41 54 41 56 41 57 48 81 EC ? ? ? ?
-				constexpr std::uintptr_t Invoke = 0x00ECA860;			// 1_5_97
-				// DirectSig: 48 83 EC 28 8B 42 08 25 ? ? ? ?
-				constexpr std::uintptr_t ObjectAddRef = 0x00ECB080;		// 1_5_97
-				// DirectSig: 40 53 48 83 EC 20 8B 42 08
-				constexpr std::uintptr_t ObjectRelease = 0x00ECB0E0;	// 1_5_97
-				// DirectSig: 40 53 48 83 EC 40 49 8B C0
-				constexpr std::uintptr_t PushBack = 0x00ECB300;			// 1_5_97
-				// DirectSig: 48 83 EC 28 45 8B D0
-				constexpr std::uintptr_t RemoveElements = 0x00ECB6C0;	// 1_5_97
-				// IndirectSig: E8 ? ? ? ? 80 BE FE 03 03 00 00
-				constexpr std::uintptr_t SetArraySize = 0x00ECBD20;		// 1_5_97
-				// IndirectSig: E8 ? ? ? ? E9 ? ? ? ? 4C 89 B5 ? ? ? ? 4C 89 74 24 ?
-				constexpr std::uintptr_t SetDisplayInfo = 0x00ECBDB0;	// 1_5_97
-				// IndirectSig: E8 ? ? ? ? FF C3 48 83 C6 18
-				constexpr std::uintptr_t SetElement = 0x00ECC960;		// 1_5_97
-				// DirectSig: 48 89 6C 24 ? 56 57 41 56 48 83 EC 50 80 BC 24 ? ? ? ? ?
-				constexpr std::uintptr_t SetMember = 0x00ECCBA0;		// 1_5_97
-				// IndirectSig: E8 ? ? ? ? 8B 44 24 48 C1 E8 06 A8 01 74 19 4C 8B 44 24 ? 48 8D 54 24 ? 48 8B 4C 24 ? E8 ? ? ? ? 4C 89 6C 24 ?
-				constexpr std::uintptr_t SetText = 0x00ECCCF0;			// 1_5_97
+				static constexpr REL::ID AttachMovie(static_cast<std::uint64_t>(80197));
+				static constexpr REL::ID DeleteMember(static_cast<std::uint64_t>(80207));
+				static constexpr REL::ID GetArraySize(static_cast<std::uint64_t>(80214));
+				static constexpr REL::ID GetDisplayInfo(static_cast<std::uint64_t>(80216));
+				static constexpr REL::ID GetElement(static_cast<std::uint64_t>(80218));
+				static constexpr REL::ID GetMember(static_cast<std::uint64_t>(80222));
+				static constexpr REL::ID GotoAndPlay(static_cast<std::uint64_t>(80230));
+				static constexpr REL::ID HasMember(static_cast<std::uint64_t>(80231));
+				static constexpr REL::ID Invoke(static_cast<std::uint64_t>(80233));
+				static constexpr REL::ID ObjectAddRef(static_cast<std::uint64_t>(80244));
+				static constexpr REL::ID ObjectRelease(static_cast<std::uint64_t>(80245));
+				static constexpr REL::ID PushBack(static_cast<std::uint64_t>(80248));
+				static constexpr REL::ID RemoveElements(static_cast<std::uint64_t>(80252));
+				static constexpr REL::ID SetArraySize(static_cast<std::uint64_t>(80261));
+				static constexpr REL::ID SetDisplayInfo(static_cast<std::uint64_t>(80263));
+				static constexpr REL::ID SetElement(static_cast<std::uint64_t>(80265));
+				static constexpr REL::ID SetMember(static_cast<std::uint64_t>(80268));
+				static constexpr REL::ID SetText(static_cast<std::uint64_t>(80270));
 			}
 		}
 
 
 		namespace GlobalLookupInfo
 		{
-			//
-			constexpr std::uintptr_t Singleton = 0x01EC3CB0;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514347));
 		}
 
 
 		namespace GMemory
 		{
-			// GFxFunctionHandler::virt_dtor + 35
-			constexpr std::uintptr_t GlobalHeap = 0x03032C50;	// 1_5_97
+			static constexpr REL::ID GlobalHeap(static_cast<std::uint64_t>(525584));
 		}
 
 
 		namespace GString
 		{
-			// DirectSig: 48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 41 56 48 83 EC 20 48 8B FA 4C 8B F1 48 85 D2 74 3B
-			constexpr std::uintptr_t Ctor = 0x00ED3A50;	// 1_5_97
+			static constexpr REL::ID Ctor(static_cast<std::uint64_t>(80446));
 		}
 
 
 		namespace hkContainerHeapAllocator
 		{
-			// 48 8D 0D ? ? ? ? 48 8B 93 C8 00 00 00
-			constexpr std::uintptr_t Singleton = 0x01DF5E70;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(510713));
 		}
 
 
 		namespace hkReferencedObject
 		{
-			// DirectSig: 40 57 48 83 EC 20 66 83 79 ? ?
-			constexpr std::uintptr_t AddReference = 0x009C6730;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 89 6E 18 EB 19
-			constexpr std::uintptr_t RemoveReference = 0x009C67F0;	// 1_5_97
+			static constexpr REL::ID AddReference(static_cast<std::uint64_t>(56606));
+			static constexpr REL::ID RemoveReference(static_cast<std::uint64_t>(56607));
 		}
 
 
 		namespace INIPrefSettingCollection
 		{
-			// 48 8D 4B 08 4C 3B C1 74 11 BA ? ? ? ? FF 15 ? ? ? ? EB 04 C6 43 08 00 48 8B 03 B2 01 48 8B CB FF 50 28 84 C0 74 18
-			constexpr std::uintptr_t Singleton = 0x02F6BA48;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(523673));
 		}
 
 
 		namespace INISettingCollection
 		{
-			// 48 05 ? ? ? ? 74 4B
-			constexpr std::uintptr_t Singleton = 0x0301D758;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(524557));
 		}
 
 
 		namespace InterfaceStrings
 		{
-			// E8 ? ? ? ? 90 48 89 05 ? ? ? ? 48 8B 0D ? ? ? ? E8 ? ? ? ? 48 83 3D ? ? ? ? ? 75 20
-			constexpr std::uintptr_t Singleton = 0x01EC0A78;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514286));
 		}
 
 
 		namespace Inventory
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B C8 48 8D 54 24 58 E8 ? ? ? ? 49 8B 0F
-			constexpr std::uintptr_t GetEventSource = 0x001EF330;	// 1_5_97
+			static constexpr REL::ID GetEventSource(static_cast<std::uint64_t>(15980));
 		}
 
 
 		namespace InventoryChanges
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B F8 48 8B D7 48 8B CD
-			constexpr std::uintptr_t Ctor = 0x001D9200;							// 1_5_97
-			// DirectSig: 40 57 41 56 41 57 48 83 EC 30 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 4C 8B F9 4C 8B 31
-			constexpr std::uintptr_t Dtor = 0x001D92F0;							// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 90 8B 44 24 68 41 89 06 48 83 C4 38
-			constexpr std::uintptr_t GenerateLeveledListChanges = 0x001E08B0;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 44 0F B7 F8
-			constexpr std::uintptr_t GetNextUniqueID = 0x001ECD33;				// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 85 ED 74 3F
-			constexpr std::uintptr_t SendContainerChangedEvent = 0x001ECE20;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 80 BC 24 ? ? ? ? ? 74 0D
-			constexpr std::uintptr_t SetUniqueID = 0x001ECC60;					// 1_5_97
-			// IndirectSig:
-			constexpr std::uintptr_t TransferItemUID = 0x001ECE20;				// 1_5_97
+			static constexpr REL::ID Ctor(static_cast<std::uint64_t>(15812));
+			static constexpr REL::ID Dtor(static_cast<std::uint64_t>(15813));
+			static constexpr REL::ID GenerateLeveledListChanges(static_cast<std::uint64_t>(15829));
+			constexpr std::uintptr_t GetNextUniqueID = 0x001ECD33;
+			static constexpr REL::ID SendContainerChangedEvent(static_cast<std::uint64_t>(15909));
+			static constexpr REL::ID SetUniqueID(static_cast<std::uint64_t>(15907));
+			static constexpr REL::ID TransferItemUID(static_cast<std::uint64_t>(15909));
 		}
 
 
 		namespace InventoryEntryData
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B 5B 08 44 8B F8
-			constexpr std::uintptr_t GetValue = 0x001D66E0;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 84 C0 0F 85 ? ? ? ? 48 8B 3F
-			constexpr std::uintptr_t IsOwnedBy = 0x001D7590;	// 1_5_97
+			static constexpr REL::ID GetValue(static_cast<std::uint64_t>(15757));
+			static constexpr REL::ID IsOwnedBy(static_cast<std::uint64_t>(15782));
 		}
 
 
 		namespace ItemCrafted
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B C8 48 8D 55 B8 E8 ? ? ? ? 45 85 E4
-			constexpr std::uintptr_t GetEventSource = 0x008708A0;	// 1_5_97
+			static constexpr REL::ID GetEventSource(static_cast<std::uint64_t>(50515));
 		}
 
 
 		namespace ItemList
 		{
-			// IndirectSig: E8 ? ? ? ? EB 4A 80 7D 1A 1B
-			constexpr std::uintptr_t Update = 0x00856A50;	// 1_5_97
+			static constexpr REL::ID Update(static_cast<std::uint64_t>(50099));
 		}
 
 
 		namespace ItemsPickpocketed
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B C8 48 8D 54 24 58 E8 ? ? ? ? EB 7B
-			constexpr std::uintptr_t GetEventSource = 0x00862250;	// 1_5_97
+			static constexpr REL::ID GetEventSource(static_cast<std::uint64_t>(50258));
 		}
 
 
 		namespace JournalMenu
 		{
-			// VTable: .?AVJournalMenu@@
-			constexpr std::uintptr_t Vtbl = 0x016C5D28;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(271141));
 		}
 
 
 		namespace JumpHandler
 		{
-			// VTable: .?AUJumpHandler@@
-			constexpr std::uintptr_t Vtbl = 0x0166F388;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263065));
 		}
 
 
 		namespace LocalMapCamera
 		{
-			// IndirectSig: E8 ? ? ? ? 90 33 F6 48 89 B3 ? ? ? ? 48 8D 8B ? ? ? ?
-			constexpr std::uintptr_t Ctor = 0x001F5390;				// 1_5_97
-			// DirectSig: 48 8B C4 53 48 81 EC ? ? ? ? 0F 28 05 ? ? ? ? 48 8B D9
-			constexpr std::uintptr_t SetNorthRotation = 0x001F5750;	// 1_5_97
+			static constexpr REL::ID Ctor(static_cast<std::uint64_t>(16084));
+			static constexpr REL::ID SetNorthRotation(static_cast<std::uint64_t>(16089));
 		}
 
 
 		namespace LookHandler
 		{
-			// VTable: .?AULookHandler@@
-			constexpr std::uintptr_t Vtbl = 0x0166F140;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263052));
 		}
 
 
 		namespace LooseFileStream
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B F8 EB 02 33 FF 40 F6 C6 02 74 11
-			constexpr std::uintptr_t Ctor = 0x00C4B990;	// 1_5_97
+			static constexpr REL::ID Ctor(static_cast<std::uint64_t>(68663));
 		}
 
 
 		namespace MagicFavorites
 		{
-			// 48 C7 05 ? ? ? ? ? ? ? ? 48 8B 5C 24 ? 48 83 C4 30 5F C3 CC 48 89 5C 24 ?
-			constexpr std::uintptr_t Singleton = 0x02F26730;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(516858));
 		}
 
 
 		namespace MagicItem
 		{
-			// IndirectSig: E8 ? ? ? ? E8 ? ? ? ? F3 0F 2C C0
-			constexpr std::uintptr_t CalculateCost = 0x00101A30;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 85 C0 74 0C 48 8B 40 10
-			constexpr std::uintptr_t GetCostliestEffectItem = 0x00101CC0;	// 1_5_97
+			static constexpr REL::ID CalculateCost(static_cast<std::uint64_t>(11213));
+			static constexpr REL::ID GetCostliestEffectItem(static_cast<std::uint64_t>(11216));
 		}
 
 
 		namespace MagicTarget
 		{
-			// DirectSig: 48 89 5C 24 18 56 48 83 EC 20 48 8B 01 48 8B F2 FF 50 38
-			constexpr std::uintptr_t HasMagicEffect = 0x005530D0;	// 1_5_97
+			static constexpr REL::ID HasMagicEffect(static_cast<std::uint64_t>(33733));
 		}
 
 
 		namespace Main
 		{
-			// 74 04 8B 40 28
-			constexpr std::uintptr_t Singleton = 0x02F26BF8;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(516943));
 		}
 
 
 		namespace MemoryManager
 		{
-			// DirectSig: 48 89 5C 24 ? 55 57 41 54 41 55 41 57 48 83 EC 30 65 48 8B 04 25 ? ? ? ?
-			constexpr std::uintptr_t Allocate = 0x00C02260;				// 1_5_97
-			// DirectSig: 48 85 D2 0F 84 ? ? ? ? 48 89 5C 24 ? 48 89 54 24 ? 57 48 83 EC 20 80 39 00
-			constexpr std::uintptr_t Deallocate = 0x00C02560;			// 1_5_97
-			// DirectSig: 40 53 48 83 EC 20 83 3D ? ? ? ? ? 74 1F
-			constexpr std::uintptr_t GetSingleton = 0x000FCFE0;			// 1_5_97
-			// DirectSig: 40 56 57 41 54 41 56 41 57 48 83 EC 30 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 8B F1 33 ED
-			constexpr std::uintptr_t GetThreadScrapHeap = 0x00C01800;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 3B 77 48
-			constexpr std::uintptr_t Reallocate = 0x00C024B0;			// 1_5_97
+			static constexpr REL::ID Allocate(static_cast<std::uint64_t>(66859));
+			static constexpr REL::ID Deallocate(static_cast<std::uint64_t>(66861));
+			static constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(11045));
+			static constexpr REL::ID GetThreadScrapHeap(static_cast<std::uint64_t>(66841));
+			static constexpr REL::ID Reallocate(static_cast<std::uint64_t>(66860));
 		}
 
 
 		namespace MenuControls
 		{
-			// 48 89 2D ? ? ? ? 48 8D 05 ? ? ? ? 48 89 01 48 8D 05 ? ? ? ? 48 89 41 08 48 8D 59 18
-			constexpr std::uintptr_t Singleton = 0x02F003F8;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(515124));
 		}
 
 
 		namespace MenuOpenHandler
 		{
-			// VTable: .?AUMenuOpenHandler@@
-			constexpr std::uintptr_t Vtbl = 0x016B8480;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(269538));
 		}
 
 
 		namespace MessageDataFactoryManager
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B C8 48 8D 57 08
-			constexpr std::uintptr_t GetSingleton = 0x00326460;	// 1_5_97
+			static constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(22843));
 		}
 
 
 		namespace MovementHandler
 		{
-			// VTable: .?AUMovementHandler@@
-			constexpr std::uintptr_t Vtbl = 0x0166F1A8;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263056));
 		}
 
 
 		namespace NiAVObject
 		{
-			// IndirectSig: E8 ? ? ? ? 44 88 65 6F
-			constexpr std::uintptr_t SetMotionType = 0x00DA81E0;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? EB 09 48 8B CB E8 ? ? ? ? 90 48 8B 8C 24 ? ? ? ?
-			constexpr std::uintptr_t Update = 0x00C56B50;			// 1_5_97
+			static constexpr REL::ID SetMotionType(static_cast<std::uint64_t>(76033));
+			static constexpr REL::ID Update(static_cast<std::uint64_t>(68900));
 		}
 
 
 		namespace NiCamera
 		{
-			// DirectSig: 48 83 EC 18 F3 41 0F 10 60 04
-			constexpr std::uintptr_t WorldPtToScreenPt3 = 0x00C66580;		// 1_5_97
+			static constexpr REL::ID WorldPtToScreenPt3(static_cast<std::uint64_t>(69270));
 		}
 
 
 		namespace NiMemManager
 		{
-			// 48 89 44 24 30 48 89 05 ? ? ? ?
-			constexpr std::uintptr_t Singleton = 0x02F77208;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(523759));
 		}
 
 
 		namespace NiNode
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B F8 48 8B 0E 48 3B CF
-			constexpr std::uintptr_t Ctor = 0x00C57A60;	// 1_5_97
+			static constexpr REL::ID Ctor(static_cast<std::uint64_t>(68936));
 		}
 
 
 		namespace NiObject
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B 44 24 ? 48 89 44 24 ? 48 85 C0
-			constexpr std::uintptr_t CreateDeepCopy = 0x00C529A0;	// 1_5_97
+			static constexpr REL::ID CreateDeepCopy(static_cast<std::uint64_t>(68839));
 		}
 
 
 		namespace NiRefObject
 		{
-			// NiRefObject::virt_dtor + 13
-			constexpr std::uintptr_t TotalObjectCount = 0x03012520;	// 1_5_97
+			static constexpr REL::ID TotalObjectCount(static_cast<std::uint64_t>(523912));
 		}
 
 
 		namespace NiSkinInstance
 		{
-			// DirectSig: 40 53 48 83 EC 20 48 8B D9 E8 ? ? ? ? 48 8D 05 ? ? ? ? 48 89 03 48 8D 4B 60
-			constexpr std::uintptr_t Ctor = 0x00C7EB60;	// 1_5_97
+			static constexpr REL::ID Ctor(static_cast<std::uint64_t>(69804));
 		}
 
 
 		namespace PlayerCamera
 		{
-			// 74 0D 48 83 C0 C7
-			constexpr std::uintptr_t Singleton = 0x02EC59B8;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 3B 1D ? ? ? ? 75 1C 48 8B 0D ? ? ? ?
-			constexpr std::uintptr_t UpdateThirdPerson = 0x0084D630;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514642));
+			static constexpr REL::ID UpdateThirdPerson(static_cast<std::uint64_t>(49908));
 		}
 
 
@@ -901,148 +719,116 @@ namespace RE
 		{
 			namespace PlayerSkills
 			{
-				// IndirectSig: E8 ? ? ? ? 48 8B 15 ? ? ? ? 48 81 C2 40 01 00 00
-				constexpr std::uintptr_t AdvanceLevel = 0x006E6740;	// 1_5_97
+				static constexpr REL::ID AdvanceLevel(static_cast<std::uint64_t>(40560));
 			}
 
 
-			// IndirectSig: E8 ? ? ? ? 66 C7 43 18 00 00
-			constexpr std::uintptr_t ActivatePickRef = 0x006A9F90;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 84 C0 75 08 40 32 F6
-			constexpr std::uintptr_t AttemptPickpocket = 0x006B2530;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 0F 28 F0 48 85 FF 0F 84 ? ? ? ?
-			constexpr std::uintptr_t GetArmorValue = 0x00692CD0;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? F3 0F 2C C8 8B C7
-			constexpr std::uintptr_t GetDamage = 0x00693050;				// 1_5_97
-			// DirectSig: 44 8B 81 ? ? ? ? 33 C0 45 85 C0 74 27
-			constexpr std::uintptr_t GetNumTints = 0x006B5450;				// 1_5_97
-			// DirectSig: 48 83 EC 38 80 7C 24 70 00
-			constexpr std::uintptr_t GetPickpocketChance = 0x003BCF40;		// 1_5_97
-			// DirectSig: 48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 44 8B 99 ? ? ? ? 45 33 C9
-			constexpr std::uintptr_t GetTintMask = 0x006B52A0;				// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 44 89 65 67
-			constexpr std::uintptr_t PlayPickupEvent = 0x0069FE60;			// 1_5_97
-			// E8 ? ? ? ? 48 89 35 ? ? ? ? 48 8B C6
-			constexpr std::uintptr_t Singleton = 0x02F26EF8;				// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 8B 05 ? ? ? ? 83 B8 ? ? ? ? ? 0F 95 C0
-			constexpr std::uintptr_t StartGrabObject = 0x006AA260;			// 1_5_97
-			// VTable: .?AVPlayerCharacter@@
-			constexpr std::uintptr_t Vtbl = 0x016635E0;						// 1_5_97
+			static constexpr REL::ID ActivatePickRef(static_cast<std::uint64_t>(39471));
+			static constexpr REL::ID AttemptPickpocket(static_cast<std::uint64_t>(39568));
+			static constexpr REL::ID GetArmorValue(static_cast<std::uint64_t>(39175));
+			static constexpr REL::ID GetDamage(static_cast<std::uint64_t>(39179));
+			static constexpr REL::ID GetNumTints(static_cast<std::uint64_t>(39614));
+			static constexpr REL::ID GetPickpocketChance(static_cast<std::uint64_t>(25822));
+			static constexpr REL::ID GetTintMask(static_cast<std::uint64_t>(39612));
+			static constexpr REL::ID PlayPickupEvent(static_cast<std::uint64_t>(39384));
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(517014));
+			static constexpr REL::ID StartGrabObject(static_cast<std::uint64_t>(39475));
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(261916));
 		}
 
 
 		namespace PlayerControls
 		{
-			// IndirectSig: E8 ? ? ? ? 90 48 89 05 ? ? ? ? 43 89 1C 34
-			constexpr std::uintptr_t Ctor = 0x00704970;			// 1_5_97
-			// 74 0D 48 83 C0 E0 48 89 05 ? ? ? ?
-			constexpr std::uintptr_t Singleton = 0x02EC5BD8;	// 1_5_97
+			static constexpr REL::ID Ctor(static_cast<std::uint64_t>(41257));
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514706));
 		}
 
 
 		namespace ProcessLists
 		{
-			// 4C 8B F9 48 89 0D ? ? ? ?
-			constexpr std::uintptr_t Singleton = 0x01EBEAD0;					// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 8B 13 48 8B CB FF 92 ? ? ? ? 33 D2
-			constexpr std::uintptr_t StopCombatAndAlarmOnActor = 0x006D9490;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514167));
+			static constexpr REL::ID StopCombatAndAlarmOnActor(static_cast<std::uint64_t>(40330));
 		}
 
 
 		namespace ReadyWeaponHandler
 		{
-			// VTable: .?AUReadyWeaponHandler@@
-			constexpr std::uintptr_t Vtbl = 0x0166F258;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263059));
 		}
 
 
 		namespace REFR_LOCK
 		{
-			// IndirectSig: E8 ? ? ? ? 83 F8 05 74 35
-			constexpr std::uintptr_t GetLockLevel = 0x001349D0;	// 1_5_97
+			static constexpr REL::ID GetLockLevel(static_cast<std::uint64_t>(12272));
 		}
 
 
 		namespace RunHandler
 		{
-			// VTable: .?AURunHandler@@
-			constexpr std::uintptr_t Vtbl = 0x0166F328;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263063));
 		}
 
 
 		namespace Script
 		{
-			// DirectSig: 41 54 41 56 41 57 48 83 EC 40 48 C7 44 24 38 FE FF FF FF 48 89 5C 24 60 48 89 6C 24 68 48 89 74 24 70 48 89 7C 24 78 4D 8B F1
-			constexpr std::uintptr_t CompileAndRun = 0x002E75F0;	// 1_5_97
+			static constexpr REL::ID CompileAndRun(static_cast<std::uint64_t>(21416));
 		}
 
 
 		namespace ScriptEventSourceHolder
 		{
-			// IndirectSig: E8 ? ? ? ? 8B 15 ? ? ? ? 65 48 8B 0C 25 ? ? ? ? 41 B8 ? ? ? ? 48 8B 3C D1
-			constexpr std::uintptr_t GetSingleton = 0x00186790;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 90 48 8B 45 D7 48 85 C0 74 1C
-			constexpr std::uintptr_t SendActivateEvent = 0x002A2070;	// 1_5_97
+			static constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(14108));
+			static constexpr REL::ID SendActivateEvent(static_cast<std::uint64_t>(19666));
 		}
 
 
 		namespace SCRIPT_FUNCTION
 		{
-			// E8 ? ? ? ? 48 8D 1D ? ? ? ? BF ? ? ? ? 0F 1F 44 00 ?
-			constexpr std::uintptr_t FirstConsoleCommand = 0x01DC6F60;	// 1_5_97
-			// 48 8D 1D ? ? ? ? BF ? ? ? ? 0F 1F 00
-			constexpr std::uintptr_t FirstScriptCommand = 0x01DB8910;	// 1_5_97
+			static constexpr REL::ID FirstConsoleCommand(static_cast<std::uint64_t>(501797));
+			static constexpr REL::ID FirstScriptCommand(static_cast<std::uint64_t>(501789));
 		}
 
 
 		namespace ShoutHandler
 		{
-			// VTable: .?AUShoutHandler@@
-			constexpr std::uintptr_t Vtbl = 0x0166F3E8;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263067));
 		}
 
 
 		namespace Sky
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B 40 48
-			constexpr std::uintptr_t GetSingleton = 0x00177790;	// 1_5_97
+			static constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(13789));
 		}
 
 
 		namespace SkyrimVM
 		{
-			// IndirectSig: E8 ? ? ? ? 84 C0 0F 94 C3 48 8B 4C 24 ? 48 85 C9 74 15
-			constexpr std::uintptr_t QueuePostRenderCall = 0x009252C0;	// 1_5_97
-			// E8 ? ? ? ? 90 48 89 05 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? 48 8B 0D ? ? ? ? E8 ? ? ? ?
-			constexpr std::uintptr_t Singleton = 0x01EC3B78;			// 1_5_97
+			static constexpr REL::ID QueuePostRenderCall(static_cast<std::uint64_t>(53144));
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514315));
 		}
 
 
 		namespace SneakHandler
 		{
-			// VTable: .?AUSneakHandler@@
-			constexpr std::uintptr_t Vtbl = 0x0166F3B8;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263066));
 		}
 
 
 		namespace SprintHandler
 		{
-			// VTable: .?AUSprintHandler@@
-			constexpr std::uintptr_t Vtbl = 0x0166F1D8;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263057));
 		}
 
 
 		namespace TES
 		{
-			// 45 33 C9 48 8B 0D ? ? ? ? 48 C7 44 24 28 00 00 00 00
-			constexpr std::uintptr_t Singleton = 0x02F26B20;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(516923));
 		}
 
 
 		namespace TESCamera
 		{
-			// DirectSig: 48 89 5C 24 ? 57 48 83 EC 20 48 8B F9 48 8B DA 48 8B 49 28 48 85 C9 74 06
-			constexpr std::uintptr_t SetState = 0x004F5C80;	// 1_5_97
+			static constexpr REL::ID SetState(static_cast<std::uint64_t>(32290));
 		}
 
 
@@ -1050,193 +836,142 @@ namespace RE
 		{
 			namespace Node
 			{
-				// IndirectSig: E8 ? ? ? ? 44 0F B6 C0 45 84 F6
-				constexpr std::uintptr_t Run = 0x004454C0;	// 1_5_97
+				static constexpr REL::ID Run(static_cast<std::uint64_t>(29090));
 			}
 
 
-			// IndirectSig: E8 ? ? ? ? 0F B6 D8 EB 08
-			constexpr std::uintptr_t Run = 0x004447A0;	// 1_5_97
+			static constexpr REL::ID Run(static_cast<std::uint64_t>(29074));
 		}
 
 
 		namespace TESDataHandler
 		{
-			// IndirectSig: E8 ? ? ? ? 83 3D ? ? ? ? ? 74 13 48 8D 15 ? ? ? ? 48 8D 0D ? ? ? ? E8 ? ? ? ? 33 D2 48 8D 0D ? ? ? ? E8 ? ? ? ? 8B 0D ? ? ? ?
-			constexpr std::uintptr_t LoadScripts = 0x001713D0;	// 1_5_97
-			// 48 89 05 ? ? ? ? 49 8B D6
-			constexpr std::uintptr_t Singleton = 0x01EBE428;	// 1_5_97
+			static constexpr REL::ID LoadScripts(static_cast<std::uint64_t>(13657));
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514141));
 		}
 
 
 		namespace TESDescription
 		{
-			// IndirectSig: E8 ? ? ? ? 44 0F 11 4C 24 ?
-			constexpr std::uintptr_t GetDescription = 0x00190480;	// 1_5_97
+			static constexpr REL::ID GetDescription(static_cast<std::uint64_t>(14399));
 		}
 
 
 		namespace TESFile
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B 07 EB CA
-			constexpr std::uintptr_t Duplicate = 0x0017E4B0;				// 1_5_97
-			// IndirectSig: E8 ? ? ? ? EB E0
-			constexpr std::uintptr_t GetCurrentSubRecordType = 0x0017D910;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 3C 5E
-			constexpr std::uintptr_t GetFormType = 0x0017D4C0;				// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 44 8B DB
-			constexpr std::uintptr_t ReadData = 0x0017DA10;					// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 33 FF 8B B3 88 02 00 00
-			constexpr std::uintptr_t Seek = 0x0017D550;						// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 49 83 C6 28
-			constexpr std::uintptr_t SeekNextSubrecord = 0x0017D960;		// 1_5_97
+			static constexpr REL::ID Duplicate(static_cast<std::uint64_t>(13923));
+			static constexpr REL::ID GetCurrentSubRecordType(static_cast<std::uint64_t>(13902));
+			static constexpr REL::ID GetFormType(static_cast<std::uint64_t>(13897));
+			static constexpr REL::ID ReadData(static_cast<std::uint64_t>(13904));
+			static constexpr REL::ID Seek(static_cast<std::uint64_t>(13898));
+			static constexpr REL::ID SeekNextSubrecord(static_cast<std::uint64_t>(13903));
 		}
 
 
 		namespace TESHavokUtilities
 		{
-			// IndirectSig: E8 ? ? ? ? 48 3B 05 ? ? ? ? 75 0C
-			constexpr std::uintptr_t FindCollidableRef = 0x003A4DD0;	// 1_5_97
+			static constexpr REL::ID FindCollidableRef(static_cast<std::uint64_t>(25466));
 		}
 
 
 		namespace TESNPC
 		{
-			// IndirectSig: E8 ? ? ? ? EB 07 8B D5
-			constexpr std::uintptr_t ChangeHeadPart = 0x00365BF0;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 8B CD 48 8B D8 E8 ? ? ? ? 8B F0
-			constexpr std::uintptr_t GetBaseOverlays = 0x00368B30;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 8B F0 B8 ? ? ? ? 85 F6
-			constexpr std::uintptr_t GetNumBaseOverlays = 0x00368BC0;	// 1_5_97
-			// DirectSig: 48 89 5C 24 ? 57 48 83 EC 20 83 79 14 07
-			constexpr std::uintptr_t HasOverlays = 0x00368A20;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 63 03 48 6B C8 78 48 8B 43 08 4C 8B 7C 01 ?
-			constexpr std::uintptr_t SetSkinFromTint = 0x00360480;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 0F B6 05 ? ? ? ? 84 C0
-			constexpr std::uintptr_t UpdateNeck = 0x003606D0;			// 1_5_97
-			// VTable: .?AVTESNPC@@
-			constexpr std::uintptr_t Vtbl = 0x0159FCD0;					// 1_5_97
+			static constexpr REL::ID ChangeHeadPart(static_cast<std::uint64_t>(24246));
+			static constexpr REL::ID GetBaseOverlays(static_cast<std::uint64_t>(24275));
+			static constexpr REL::ID GetNumBaseOverlays(static_cast<std::uint64_t>(24276));
+			static constexpr REL::ID HasOverlays(static_cast<std::uint64_t>(24274));
+			static constexpr REL::ID SetSkinFromTint(static_cast<std::uint64_t>(24206));
+			static constexpr REL::ID UpdateNeck(static_cast<std::uint64_t>(24207));
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(241857));
 		}
 
 
 		namespace TESObjectACTI
 		{
-			// VTable: .?AVTESObjectACTI@@
-			constexpr std::uintptr_t Vtbl = 0x015576F0;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(234000));
 		}
 
 
 		namespace TESObjectCONT
 		{
-			// VTable: .?AVTESObjectCONT@@
-			constexpr std::uintptr_t Vtbl = 0x01559930;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(234148));
 		}
 
 
 		namespace TESObjectREFR
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B 4E 40 48 8B 01 8B 55 77
-			constexpr std::uintptr_t InitChildActivates = 0x002A8CC0;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 4C 8B C8 89 74 24 20 4C 8B C3 48 8D 15 ? ? ? ? 48 8B CD E8 ? ? ? ? B0 01
-			constexpr std::uintptr_t GetDisplayFullName = 0x002961F0;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? FF 40 18
-			constexpr std::uintptr_t GetLock = 0x002A74C0;					// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 3B D8 75 08
-			constexpr std::uintptr_t GetOwner = 0x002A6670;					// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 41 8B CE 3B C1
-			constexpr std::uintptr_t GetStealValue = 0x001D9080;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 8B F8 48 89 85 ? ? ? ? 48 85 C0 74 04 F0 FF 40 28 84 DB
-			constexpr std::uintptr_t FindReferenceFor3D = 0x002945E0;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 4D 85 FF 75 26
-			constexpr std::uintptr_t InitInventoryIfRequired = 0x001D8D10;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 8B 1D ? ? ? ? 48 8B CF 83 FE 01
-			constexpr std::uintptr_t IsCrimeToActivate = 0x0029A330;		// 1_5_97
-			// IndirectSig: E8 ? ? ? ? E8 ? ? ? ? 4D 89 26
-			constexpr std::uintptr_t MoveTo = 0x009AE5C0;					// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 41 B4 01 EB 1B
-			constexpr std::uintptr_t PlayAnimation = 0x00189E30;			// 1_5_97
+			static constexpr REL::ID InitChildActivates(static_cast<std::uint64_t>(19857));
+			static constexpr REL::ID GetDisplayFullName(static_cast<std::uint64_t>(19354));
+			static constexpr REL::ID GetLock(static_cast<std::uint64_t>(19818));
+			static constexpr REL::ID GetOwner(static_cast<std::uint64_t>(19789));
+			static constexpr REL::ID GetStealValue(static_cast<std::uint64_t>(15807));
+			static constexpr REL::ID FindReferenceFor3D(static_cast<std::uint64_t>(19323));
+			static constexpr REL::ID InitInventoryIfRequired(static_cast<std::uint64_t>(15800));
+			static constexpr REL::ID IsCrimeToActivate(static_cast<std::uint64_t>(19400));
+			static constexpr REL::ID MoveTo(static_cast<std::uint64_t>(56227));
+			static constexpr REL::ID PlayAnimation(static_cast<std::uint64_t>(14189));
 		}
 
 
 		namespace TESQuest
 		{
-			// DirectSig: 48 89 5C 24 ? 56 48 83 EC 20 C6 02 00
-			constexpr std::uintptr_t EnsureQuestStarted = 0x00370910;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 8B 54 24 ? 0F B6 8A ? ? ? ?
-			constexpr std::uintptr_t ResetQuest = 0x00370E90;			// 1_5_97
+			static constexpr REL::ID EnsureQuestStarted(static_cast<std::uint64_t>(24481));
+			static constexpr REL::ID ResetQuest(static_cast<std::uint64_t>(24486));
 		}
 
 
 		namespace ThirdPersonState
 		{
-			// VTable: .?AVThirdPersonState@@
-			constexpr std::uintptr_t Vtbl = 0x0162F2A0;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(256647));
 		}
 
 
 		namespace TogglePOVHandler
 		{
-			// VTable: .?AUTogglePOVHandler@@
-			constexpr std::uintptr_t Vtbl = 0x0166F418;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263068));
 		}
 
 
 		namespace ToggleRunHandler
 		{
-			// VTable: .?AUToggleRunHandler@@
-			constexpr std::uintptr_t Vtbl = 0x0166F2F8;	// 1_5_97
+			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263062));
 		}
 
 
 		namespace UI
 		{
-			// 48 89 0D ? ? ? ? 48 83 C1 08 E8 ? ? ? ? 90 48 8D 4F 60
-			constexpr std::uintptr_t Singleton = 0x01EBEB20;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514178));
 		}
 
 
 		namespace UIBlurManager
 		{
-			// IndirectSig: 0F B7 41 18 66 85 C0
-			constexpr std::uintptr_t DecrementBlurCount = 0x008D5130;	// 1_5_97
-			// IndirectSig: 40 53 48 83 EC 20 66 83 79 ? ? 48 8B D9 75 1E
-			constexpr std::uintptr_t IncrementBlurCount = 0x008D50F0;	// 1_5_97
-			// 48 89 0D ? ? ? ? 48 8D 05 ? ? ? ? 48 89 03 66 89 4B 18
-			constexpr std::uintptr_t Singleton = 0x02F26780;			// 1_5_97
+			static constexpr REL::ID DecrementBlurCount(static_cast<std::uint64_t>(51900));
+			static constexpr REL::ID IncrementBlurCount(static_cast<std::uint64_t>(51899));
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(516871));
 		}
 
 
 		namespace UIMessageQueue
 		{
-			// IndirectSig: E8 ? ? ? ? 48 8B 05 ? ? ? ? 48 85 C0 0F 84 ? ? ? ? 80 B8 ? ? ? ? ? 0F 85 ? ? ? ? 80 B8 ? ? ? ? ?
-			constexpr std::uintptr_t AddMessage = 0x001652D0;			// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 4C 8B F0 48 85 C0 0F 84 ? ? ? ? 48 89 75 D8
-			constexpr std::uintptr_t CreateUIMessageData = 0x00EC31D0;	// 1_5_97
-			// IndirectSig: E8 ? ? ? ? 48 8B 0D ? ? ? ? E8 ? ? ? ? 41 C6 86 ? ? ? ? ?
-			constexpr std::uintptr_t ProcessCommands = 0x00EC30F0;		// 1_5_97
-			// 48 89 0D ? ? ? ? 33 C9 89 4B 10
-			constexpr std::uintptr_t Singleton = 0x01EC0A70;			// 1_5_97
+			static constexpr REL::ID AddMessage(static_cast<std::uint64_t>(13530));
+			static constexpr REL::ID CreateUIMessageData(static_cast<std::uint64_t>(80061));
+			static constexpr REL::ID ProcessCommands(static_cast<std::uint64_t>(80059));
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514285));
 		}
 
 
 		namespace UserEvents
 		{
-			// E8 ? ? ? ? 90 48 89 05 ? ? ? ? 48 8D 4F 60
-			constexpr std::uintptr_t Singleton = 0x02F25250;	// 1_5_97
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(516458));
 		}
 
 
-		// IndirectSig: E8 ? ? ? ? 8B 45 80 41 89 44 24 ?
-		constexpr std::uintptr_t CreateRefHandle = 0x001320F0;			// 1_5_97
-		// IndirectSig: E8 ? ? ? ? 83 FE 0C
-		constexpr std::uintptr_t DebugNotification = 0x008DA3D0;		// 1_5_97
-		// IndirectSig: E8 ? ? ? ? 90 48 8B BC 24 ? ? ? ? 48 85 FF 74 20 8B 47 10
-		constexpr std::uintptr_t LookupReferenceByHandle = 0x001329D0;	// 1_5_97
-		// IndirectSig: E8 ? ? ? ? 44 38 7E 50
-		constexpr std::uintptr_t PlaySound = 0x008DA860;				// 1_5_97
-		// IndirectSig: E8 ? ? ? ? 48 8B F5
-		constexpr std::uintptr_t RTDynamicCast = 0x0134BDB0;			// 1_5_97
-		//
-		constexpr std::uintptr_t TlsIndex = 0x03497408;					// 1_5_97
+		static constexpr REL::ID CreateRefHandle(static_cast<std::uint64_t>(12193));
+		static constexpr REL::ID DebugNotification(static_cast<std::uint64_t>(52050));
+		static constexpr REL::ID LookupReferenceByHandle(static_cast<std::uint64_t>(12204));
+		static constexpr REL::ID PlaySound(static_cast<std::uint64_t>(52054));
+		static constexpr REL::ID RTDynamicCast(static_cast<std::uint64_t>(102238));
+		static constexpr REL::ID TlsIndex(static_cast<std::uint64_t>(528600));
 	}
 }

@@ -2,10 +2,14 @@
 
 #include <array>
 #include <cassert>
+#include <cstdint>
+#include <exception>
 #include <functional>
+#include <istream>
 #include <string>
 #include <string_view>
 #include <type_traits>
+#include <unordered_map>
 #include <vector>
 
 #include "SKSE/SafeWrite.h"
@@ -333,7 +337,7 @@ namespace REL
 			{}
 
 			constexpr Version(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build) noexcept :
-				buf{ a_major, a_minor, a_revision, a_build }
+				_buf{ a_major, a_minor, a_revision, a_build }
 			{}
 
 			template <class T, typename std::enable_if_t<std::is_arithmetic_v<T>, int> = 0>
@@ -354,18 +358,18 @@ namespace REL
 
 			[[nodiscard]] friend constexpr bool operator!=(const Version& a_lhs, const Version& a_rhs) noexcept { return !(a_lhs == a_rhs); }
 
-			[[nodiscard]] constexpr std::uint16_t& operator[](std::size_t a_idx) noexcept { return buf[a_idx]; }
-			[[nodiscard]] constexpr const std::uint16_t& operator[](std::size_t a_idx) const noexcept { return buf[a_idx]; }
+			[[nodiscard]] constexpr std::uint16_t& operator[](std::size_t a_idx) noexcept { return _buf[a_idx]; }
+			[[nodiscard]] constexpr const std::uint16_t& operator[](std::size_t a_idx) const noexcept { return _buf[a_idx]; }
 
-			[[nodiscard]] constexpr std::uint16_t GetMajor() const noexcept { return buf[kMajor]; }
-			[[nodiscard]] constexpr std::uint16_t GetMinor() const noexcept { return buf[kMinor]; }
-			[[nodiscard]] constexpr std::uint16_t GetRevision() const noexcept { return buf[kRevision]; }
-			[[nodiscard]] constexpr std::uint16_t GetBuild() const noexcept { return buf[kBuild]; }
+			[[nodiscard]] constexpr std::uint16_t GetMajor() const noexcept { return _buf[kMajor]; }
+			[[nodiscard]] constexpr std::uint16_t GetMinor() const noexcept { return _buf[kMinor]; }
+			[[nodiscard]] constexpr std::uint16_t GetRevision() const noexcept { return _buf[kRevision]; }
+			[[nodiscard]] constexpr std::uint16_t GetBuild() const noexcept { return _buf[kBuild]; }
 
-			constexpr void SetMajor(std::uint16_t a_major) noexcept { buf[kMajor] = a_major; }
-			constexpr void SetMinor(std::uint16_t a_minor) noexcept { buf[kMinor] = a_minor; }
-			constexpr void SetRevision(std::uint16_t a_revision) noexcept { buf[kRevision] = a_revision; }
-			constexpr void SetBuild(std::uint16_t a_build) noexcept { buf[kBuild] = a_build; }
+			constexpr void SetMajor(std::uint16_t a_major) noexcept { _buf[kMajor] = a_major; }
+			constexpr void SetMinor(std::uint16_t a_minor) noexcept { _buf[kMinor] = a_minor; }
+			constexpr void SetRevision(std::uint16_t a_revision) noexcept { _buf[kRevision] = a_revision; }
+			constexpr void SetBuild(std::uint16_t a_build) noexcept { _buf[kBuild] = a_build; }
 
 		private:
 			enum : std::size_t
@@ -377,7 +381,7 @@ namespace REL
 			};
 
 
-			std::array<std::uint16_t, 4> buf;
+			std::array<std::uint16_t, 4> _buf;
 		};
 
 
@@ -454,6 +458,163 @@ namespace REL
 	};
 
 
+	class IDDatabase
+	{
+	public:
+		[[nodiscard]] static bool Init();
+
+#ifdef _DEBUG
+		[[nodiscard]] static std::uint64_t OffsetToID(std::uint64_t a_address);
+#endif
+		[[nodiscard]] static std::uint64_t IDToOffset(std::uint64_t a_id);
+
+	private:
+		IDDatabase() = delete;
+		IDDatabase(const IDDatabase&) = delete;
+		IDDatabase(IDDatabase&&) = delete;
+
+		IDDatabase& operator=(const IDDatabase&) = delete;
+		IDDatabase& operator=(IDDatabase&&) = delete;
+
+
+		class IDDatabaseImpl
+		{
+		public:
+			[[nodiscard]] bool Load();
+			[[nodiscard]] bool Load(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build);
+			[[nodiscard]] bool Load(REL::Module::Version a_version);
+
+#ifdef _DEBUG
+			[[nodiscard]] std::uint64_t OffsetToID(std::uint64_t a_address);
+#endif
+			[[nodiscard]] std::uint64_t IDToOffset(std::uint64_t a_id);
+
+		private:
+			class IStream
+			{
+			public:
+				using stream_type = std::istream;
+				using pointer = stream_type*;
+				using const_pointer = const stream_type*;
+				using reference = stream_type&;
+				using const_reference = const stream_type&;
+
+				constexpr IStream(stream_type& a_stream) :
+					_stream(a_stream)
+				{}
+
+				[[nodiscard]] constexpr reference operator*() noexcept { return _stream; }
+				[[nodiscard]] constexpr const_reference operator*() const noexcept { return _stream; }
+
+				[[nodiscard]] constexpr pointer operator->() noexcept { return std::addressof(_stream); }
+				[[nodiscard]] constexpr const_pointer operator->() const noexcept { return std::addressof(_stream); }
+
+				template <class T>
+				inline void readin(T& a_val)
+				{
+					_stream.read(reinterpret_cast<char*>(std::addressof(a_val)), sizeof(T));
+				}
+
+				template <class T, typename std::enable_if_t<std::is_arithmetic_v<T>, int> = 0>
+				inline T readout()
+				{
+					T val;
+					readin(val);
+					return val;
+				}
+
+			private:
+				stream_type& _stream;
+			};
+
+
+			class Header
+			{
+			public:
+				inline Header() noexcept :
+					_exeName(),
+					_part1(),
+					_part2()
+				{}
+
+				void Read(IStream& a_input);
+
+				[[nodiscard]] constexpr decltype(auto) AddrCount() const noexcept { return static_cast<std::size_t>(_part2.addressCount); }
+				[[nodiscard]] constexpr decltype(auto) PSize() const noexcept { return static_cast<std::uint64_t>(_part2.pointerSize); }
+				[[nodiscard]] inline decltype(auto) Version() const { return REL::Module::Version(_part1.version); }
+
+			private:
+				struct Part1
+				{
+					constexpr Part1() :
+						format(0),
+						version{ 0 },
+						nameLen(0)
+					{}
+
+					void Read(IStream& a_input);
+
+					std::int32_t format;
+					std::int32_t version[4];
+					std::int32_t nameLen;
+				};
+
+				struct Part2
+				{
+					constexpr Part2() :
+						pointerSize(0),
+						addressCount(0)
+					{}
+
+					void Read(IStream& a_input);
+
+					std::int32_t pointerSize;
+					std::int32_t addressCount;
+				};
+
+				std::string _exeName;
+				Part1 _part1;
+				Part2 _part2;
+			};
+
+
+			[[nodiscard]] bool DoLoad(IStream& a_input);
+			void DoLoadImpl(IStream& a_input, Header& a_header);
+
+
+			std::vector<std::uint64_t> _offsets;
+#ifdef _DEBUG
+			std::unordered_map<std::uint64_t, std::uint64_t> _ids;
+#endif
+		};
+
+
+		static IDDatabaseImpl _db;
+	};
+
+
+	// converts an id within the database to its equivalent offset
+	class ID
+	{
+	public:
+		constexpr ID() noexcept :
+			ID(static_cast<std::uint64_t>(0))
+		{}
+
+		explicit constexpr ID(std::uint64_t a_id) noexcept :
+			_id(a_id)
+		{}
+
+		constexpr ID& operator=(std::uint64_t a_id) noexcept { _id = a_id; return *this; }
+
+		[[nodiscard]] std::uint64_t operator*() const;
+		[[nodiscard]] std::uint64_t GetOffset() const;
+
+	private:
+		std::uint64_t _id;
+	};
+
+
 	// relocates the given offset in the exe and reinterprets it as the given type
 	template <class T>
 	class Offset
@@ -467,6 +628,11 @@ namespace REL
 
 		constexpr Offset(std::uintptr_t a_offset) :
 			_address(a_offset)
+		{}
+
+
+		explicit Offset(ID a_id) :
+			Offset(*a_id)
 		{}
 
 
@@ -785,16 +951,16 @@ namespace REL
 
 		[[nodiscard]] explicit operator bool() const noexcept
 		{
-			return !empty();
+			return !Empty();
 		}
 
 
 		template <class... Args, class F = function_type, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
 		std::invoke_result_t<F, Args...> operator()(Args&&... a_args) const
 		{
-			assert(in_range());
+			assert(InRange());
 
-			if (empty()) {
+			if (Empty()) {
 				throw std::bad_function_call();
 			}
 
@@ -805,13 +971,13 @@ namespace REL
 		enum : std::uintptr_t { kEmpty = 0 };
 
 
-		[[nodiscard]] bool empty() const noexcept
+		[[nodiscard]] bool Empty() const noexcept
 		{
 			return _storage.address == kEmpty;
 		}
 
 
-		[[nodiscard]] bool in_range() const noexcept
+		[[nodiscard]] bool InRange() const noexcept
 		{
 			auto xText = Module::GetSection(Module::ID::kTextX);
 			return xText.BaseAddr() <= _storage.address && _storage.address < xText.BaseAddr() + xText.Size();
