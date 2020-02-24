@@ -8,7 +8,7 @@
 #include <type_traits>
 #include <vector>
 
-#include "skse64_common/SafeWrite.h"
+#include "SKSE/SafeWrite.h"
 
 
 namespace RE
@@ -452,7 +452,7 @@ namespace REL
 			constexpr auto PSIZE = sizeof(void*);
 			auto addr = GetAddress() + (PSIZE * a_idx);
 			auto result = *reinterpret_cast<std::uintptr_t*>(addr);
-			SafeWrite64(addr, a_newFunc);
+			SKSE::SafeWrite64(addr, a_newFunc);
 			return result;
 		}
 
@@ -787,7 +787,7 @@ namespace REL
 			explicit Storage(std::uintptr_t a_rhs) :
 				address(a_rhs)
 			{}
-				
+
 
 			Storage& operator=(const Storage& a_rhs)
 			{

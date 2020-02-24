@@ -6,16 +6,16 @@
 #include <string_view>
 #include <tuple>
 
-#include "SKSE/API.h"
-#include "SKSE/Interfaces.h"
-#include "SKSE/RegistrationTraits.h"
-
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/FunctionArguments.h"
 #include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSScript/TypeTraits.h"
 #include "RE/BSFixedString.h"
 #include "RE/TESForm.h"
+
+#include "SKSE/API.h"
+#include "SKSE/Interfaces.h"
+#include "SKSE/RegistrationTraits.h"
 
 
 namespace SKSE

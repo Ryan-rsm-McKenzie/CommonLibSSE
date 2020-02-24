@@ -18,7 +18,7 @@ namespace RE
 
 #ifdef DBHLPAPI
 			char buf[0x1000];
-			UnDecorateSymbolName(col->typeDescriptor->name + 1, buf, sizeof(buf), UNDNAME_COMPLETE);
+			UnDecorateSymbolName(col->typeDescriptor->name + 1, buf, sizeof(buf), UNDNAME_NO_ARGUMENTS);
 			auto name = buf;
 #else
 			auto name = col->typeDescriptor->name;

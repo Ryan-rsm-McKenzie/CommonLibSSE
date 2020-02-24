@@ -1,15 +1,14 @@
 #pragma once
 
 #include "skse64_common/skse_version.h"
-#include "skse64/PapyrusDelayFunctors.h"
-#include "skse64/PapyrusObjects.h"
-#include "skse64/PluginAPI.h"
 
 #include <functional>
 
 #include "RE/BSTEvent.h"
+
 #include "SKSE/Events.h"
 #include "SKSE/Interfaces.h"
+#include "SKSE/Stubs.h"
 #include "SKSE/Trampoline.h"
 
 

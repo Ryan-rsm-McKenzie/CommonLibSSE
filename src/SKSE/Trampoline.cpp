@@ -5,10 +5,10 @@
 #include <cstring>
 #include <limits>
 
-#include "skse64_common/SafeWrite.h"
-
 #include "REL/Relocation.h"
+
 #include "SKSE/Logger.h"
+#include "SKSE/SafeWrite.h"
 
 
 namespace SKSE

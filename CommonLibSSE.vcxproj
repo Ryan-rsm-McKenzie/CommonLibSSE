@@ -159,11 +159,6 @@
     <None Include="exports.def" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\skse64\skse64.vcxproj">
-      <Project>{7028b79c-06e3-4d9a-b38c-1dc3680b1bdb}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="src\REL\Relocation.cpp" />
     <ClCompile Include="src\RE\ActiveEffect.cpp" />
     <ClCompile Include="src\RE\Actor.cpp" />
@@ -411,6 +406,7 @@
     <ClCompile Include="src\SKSE\Logger.cpp" />
     <ClCompile Include="src\SKSE\RegistrationMap.cpp" />
     <ClCompile Include="src\SKSE\RegistrationSet.cpp" />
+    <ClCompile Include="src\SKSE\SafeWrite.cpp" />
     <ClCompile Include="src\SKSE\Trampoline.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -1600,6 +1596,8 @@
     <ClInclude Include="include\SKSE\RegistrationSet.h" />
     <ClInclude Include="include\SKSE\API.h" />
     <ClInclude Include="include\SKSE\RegistrationTraits.h" />
+    <ClInclude Include="include\SKSE\SafeWrite.h" />
+    <ClInclude Include="include\SKSE\Stubs.h" />
     <ClInclude Include="include\SKSE\Trampoline.h" />
     <ClInclude Include="include\Util.h" />
     <ClInclude Include="src\RE\GFxResourceKey.cpp" />

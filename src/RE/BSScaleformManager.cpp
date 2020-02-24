@@ -182,6 +182,6 @@ namespace RE
 	bool BSScaleformManager::FileExists(const char* a_fileName)
 	{
 		BSResourceNiBinaryStream file(a_fileName);
-		return file.is_open();
+		return file.good();
 	}
 }

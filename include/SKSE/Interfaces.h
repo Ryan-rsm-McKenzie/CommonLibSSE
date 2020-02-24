@@ -1,11 +1,5 @@
 #pragma once
 
-#include "skse64/gamethreads.h"
-#include "skse64/Hooks_UI.h"
-#include "skse64/PapyrusDelayFunctors.h"
-#include "skse64/PapyrusObjects.h"
-#include "skse64/PluginAPI.h"
-
 #include <functional>
 #include <string>
 
@@ -14,6 +8,8 @@
 #include "RE/GFxMovieView.h"
 #include "RE/GFxValue.h"
 #include "RE/InventoryEntryData.h"
+
+#include "SKSE/Stubs.h"
 
 
 namespace SKSE
@@ -42,7 +38,7 @@ namespace SKSE
 		std::string UnmangledRuntimeVersion() const;
 
 	protected:
-		const SKSEInterface* GetProxy() const;
+		const Impl::SKSEInterface* GetProxy() const;
 	};
 
 
@@ -69,9 +65,8 @@ namespace SKSE
 		void Register(RegInvCallback* a_callback) const;
 
 	protected:
-		const SKSEScaleformInterface* GetProxy() const;
+		const Impl::SKSEScaleformInterface* GetProxy() const;
 	};
-	STATIC_ASSERT(ScaleformInterface::kVersion == SKSEScaleformInterface::kInterfaceVersion);
 
 
 	class SerializationInterface
@@ -135,9 +130,8 @@ namespace SKSE
 		bool ResolveHandle(RE::VMHandle a_oldHandle, RE::VMHandle& a_newHandle) const;
 
 	protected:
-		const SKSESerializationInterface* GetProxy() const;
+		const Impl::SKSESerializationInterface* GetProxy() const;
 	};
-	STATIC_ASSERT(SerializationInterface::kVersion == SKSESerializationInterface::kVersion);
 
 
 	class TaskInterface
@@ -155,7 +149,7 @@ namespace SKSE
 		void AddUITask(UIDelegate_v1* a_task) const;
 
 	protected:
-		class Task : public TaskDelegate
+		class Task : public Impl::TaskDelegate
 		{
 		public:
 			Task(TaskFn&& a_fn);
@@ -167,7 +161,7 @@ namespace SKSE
 			TaskFn _fn;
 		};
 
-		class UITask : public UIDelegate_v1
+		class UITask : public Impl::UIDelegate_v1
 		{
 		public:
 			UITask(TaskFn&& a_fn);
@@ -179,9 +173,8 @@ namespace SKSE
 			TaskFn _fn;
 		};
 
-		const SKSETaskInterface* GetProxy() const;
+		const Impl::SKSETaskInterface* GetProxy() const;
 	};
-	STATIC_ASSERT(TaskInterface::kVersion == SKSETaskInterface::kInterfaceVersion);
 
 
 	class PapyrusInterface
@@ -207,13 +200,12 @@ namespace SKSE
 		}
 
 	protected:
-		const SKSEPapyrusInterface* GetProxy() const;
+		const Impl::SKSEPapyrusInterface* GetProxy() const;
 
 	private:
 		bool Register_Impl(RegFunction1* a_fn) const;
 		bool Register_Impl(RegFunction2* a_fn) const;
 	};
-	STATIC_ASSERT(PapyrusInterface::kVersion == SKSEPapyrusInterface::kInterfaceVersion);
 
 
 	class MessagingInterface
@@ -264,9 +256,8 @@ namespace SKSE
 		bool RegisterListener(const char* a_sender, EventCallback* a_callback) const;
 
 	protected:
-		const SKSEMessagingInterface* GetProxy() const;
+		const Impl::SKSEMessagingInterface* GetProxy() const;
 	};
-	STATIC_ASSERT(MessagingInterface::kVersion == SKSEMessagingInterface::kInterfaceVersion);
 
 
 	class ObjectInterface
@@ -281,9 +272,8 @@ namespace SKSE
 		SKSEPersistentObjectStorage& GetPersistentObjectStorage() const;
 
 	private:
-		const SKSEObjectInterface* GetProxy() const;
+		const Impl::SKSEObjectInterface* GetProxy() const;
 	};
-	STATIC_ASSERT(ObjectInterface::kVersion == SKSEObjectInterface::kInterfaceVersion);
 
 
 	struct PluginInfo
@@ -294,9 +284,4 @@ namespace SKSE
 		const char*	name;
 		UInt32		version;
 	};
-	STATIC_ASSERT(PluginInfo::kVersion == ::PluginInfo::kInfoVersion);
-	STATIC_ASSERT(offsetof(PluginInfo, infoVersion) == offsetof(::PluginInfo, infoVersion));
-	STATIC_ASSERT(offsetof(PluginInfo, name) == offsetof(::PluginInfo, name));
-	STATIC_ASSERT(offsetof(PluginInfo, version) == offsetof(::PluginInfo, version));
-	STATIC_ASSERT(sizeof(PluginInfo) == sizeof(::PluginInfo));
 }

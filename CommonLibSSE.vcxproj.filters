@@ -1923,6 +1923,9 @@
     <ClCompile Include="src\RE\NiCamera.cpp">
       <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject</Filter>
     </ClCompile>
+    <ClCompile Include="src\SKSE\SafeWrite.cpp">
+      <Filter>src\SKSE</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -5491,6 +5494,12 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSFile.h">
       <Filter>include\RE\NetImmerse\NiBinaryStream\NiFile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\Stubs.h">
+      <Filter>include\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\SafeWrite.h">
+      <Filter>include\SKSE</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
