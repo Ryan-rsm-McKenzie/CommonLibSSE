@@ -1,8 +1,7 @@
 #include "SKSE/Interfaces.h"
 
-#include "skse64_common/skse_version.h"
-
 #include "RE/BSScript/Internal/VirtualMachine.h"
+
 #include "SKSE/API.h"
 
 
@@ -20,35 +19,20 @@ namespace SKSE
 	}
 
 
-	UInt32 QueryInterface::RuntimeVersion() const
+	Version QueryInterface::RuntimeVersion() const
 	{
-		return GetProxy()->runtimeVersion;
+		auto packed = GetProxy()->runtimeVersion;
+		auto major = static_cast<std::uint16_t>((packed & 0xFF000000) >> 24);
+		auto minor = static_cast<std::uint16_t>((packed & 0x00FF0000) >> 16);
+		auto revision = static_cast<std::uint16_t>((packed & 0x0000FFF0) >> 4);
+		auto build = static_cast<std::uint16_t>((packed & 0x0000000F) >> 0);
+		return Version(major, minor, revision, build);
 	}
 
 
 	UInt32 QueryInterface::SKSEVersion() const
 	{
 		return GetProxy()->skseVersion;
-	}
-
-
-	std::string QueryInterface::UnmangledRuntimeVersion() const
-	{
-		std::string verString;
-		auto version = RuntimeVersion();
-
-		verString = std::to_string(GET_EXE_VERSION_MAJOR(version));
-		verString.push_back('.');
-
-		verString += std::to_string(GET_EXE_VERSION_MINOR(version));
-		verString.push_back('.');
-
-		verString += std::to_string(GET_EXE_VERSION_BUILD(version));
-		verString.push_back('.');
-
-		verString += std::to_string(GET_EXE_VERSION_SUB(version));
-
-		return verString;
 	}
 
 

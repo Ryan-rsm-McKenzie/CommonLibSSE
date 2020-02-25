@@ -164,7 +164,7 @@ namespace REL
 
 
 	auto Module::GetVersion() noexcept
-		-> Version
+		-> SKSE::Version
 	{
 		return _info.version;
 	}
@@ -268,12 +268,12 @@ namespace REL
 
 	bool IDDatabase::IDDatabaseImpl::Load(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build)
 	{
-		Version version(a_major, a_minor, a_revision, a_build);
+		SKSE::Version version(a_major, a_minor, a_revision, a_build);
 		return Load(std::move(version));
 	}
 
 
-	bool IDDatabase::IDDatabaseImpl::Load(Version a_version)
+	bool IDDatabase::IDDatabaseImpl::Load(SKSE::Version a_version)
 	{
 		std::string fileName = "Data/SKSE/Plugins/version-";
 		fileName += std::to_string(a_version[0]);

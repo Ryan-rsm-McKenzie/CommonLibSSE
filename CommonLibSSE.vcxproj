@@ -1607,6 +1607,7 @@
     <ClInclude Include="include\SKSE\SafeWrite.h" />
     <ClInclude Include="include\SKSE\Stubs.h" />
     <ClInclude Include="include\SKSE\Trampoline.h" />
+    <ClInclude Include="include\SKSE\Version.h" />
     <ClInclude Include="include\Util.h" />
     <ClInclude Include="src\RE\GFxResourceKey.cpp" />
   </ItemGroup>

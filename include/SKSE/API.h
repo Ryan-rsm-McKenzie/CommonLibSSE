@@ -1,7 +1,5 @@
 #pragma once
 
-#include "skse64_common/skse_version.h"
-
 #include <functional>
 
 #include "RE/BSTEvent.h"
@@ -10,6 +8,7 @@
 #include "SKSE/Interfaces.h"
 #include "SKSE/Stubs.h"
 #include "SKSE/Trampoline.h"
+#include "SKSE/Version.h"
 
 
 namespace SKSE

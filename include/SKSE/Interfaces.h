@@ -10,6 +10,7 @@
 #include "RE/InventoryEntryData.h"
 
 #include "SKSE/Stubs.h"
+#include "SKSE/Version.h"
 
 
 namespace SKSE
@@ -33,9 +34,8 @@ namespace SKSE
 	public:
 		UInt32 EditorVersion() const;
 		bool IsEditor() const;
-		UInt32 RuntimeVersion() const;
+		Version RuntimeVersion() const;
 		UInt32 SKSEVersion() const;
-		std::string UnmangledRuntimeVersion() const;
 
 	protected:
 		const Impl::SKSEInterface* GetProxy() const;
