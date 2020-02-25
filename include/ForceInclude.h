@@ -57,6 +57,6 @@ using SInt64 = signed long long;
 #include "Util.h"
 
 #include "RE/BSCoreTypes.h"
-#include "RE/Offsets_NiRTTI.h
-#include "RE/Offsets_RTTI.h
+#include "RE/Offsets_NiRTTI.h"
+#include "RE/Offsets_RTTI.h"
 #include "RE/SFTypes.h"

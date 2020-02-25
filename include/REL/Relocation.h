@@ -276,6 +276,75 @@ namespace REL
 	}
 
 
+	// represents the exe product version
+	class Version
+	{
+	public:
+		constexpr Version() noexcept :
+			Version(0, 0, 0, 0)
+		{}
+
+		constexpr Version(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build) noexcept :
+			_buf{ a_major, a_minor, a_revision, a_build }
+		{}
+
+		template <class T, typename std::enable_if_t<std::is_arithmetic_v<T>, int> = 0>
+		constexpr Version(const T a_versions[4]) noexcept :
+			Version(static_cast<std::uint16_t>(a_versions[0]),
+					static_cast<std::uint16_t>(a_versions[1]),
+					static_cast<std::uint16_t>(a_versions[2]),
+					static_cast<std::uint16_t>(a_versions[3]))
+		{}
+
+		[[nodiscard]] friend constexpr bool operator==(const Version& a_lhs, const Version& a_rhs) noexcept
+		{
+			return a_lhs.GetMajor() == a_rhs.GetMajor() &&
+				a_lhs.GetMinor() == a_rhs.GetMinor() &&
+				a_lhs.GetRevision() == a_rhs.GetRevision() &&
+				a_lhs.GetBuild() == a_rhs.GetBuild();
+		}
+
+		[[nodiscard]] friend constexpr bool operator!=(const Version& a_lhs, const Version& a_rhs) noexcept { return !(a_lhs == a_rhs); }
+
+		[[nodiscard]] friend constexpr bool operator<(const Version& a_lhs, const Version& a_rhs) noexcept
+		{
+			return a_lhs.GetMajor() < a_rhs.GetMajor() &&
+				a_lhs.GetMinor() < a_rhs.GetMinor() &&
+				a_lhs.GetRevision() < a_rhs.GetRevision() &&
+				a_lhs.GetBuild() < a_rhs.GetBuild();
+		}
+
+		[[nodiscard]] friend constexpr bool operator>(const Version& a_lhs, const Version& a_rhs) noexcept { return a_rhs < a_lhs; }
+		[[nodiscard]] friend constexpr bool operator<=(const Version& a_lhs, const Version& a_rhs) noexcept { return !(a_lhs > a_rhs); }
+		[[nodiscard]] friend constexpr bool operator>=(const Version& a_lhs, const Version& a_rhs) noexcept { return !(a_rhs < a_lhs); }
+
+		[[nodiscard]] constexpr std::uint16_t& operator[](std::size_t a_idx) noexcept { return _buf[a_idx]; }
+		[[nodiscard]] constexpr const std::uint16_t& operator[](std::size_t a_idx) const noexcept { return _buf[a_idx]; }
+
+		[[nodiscard]] constexpr std::uint16_t GetMajor() const noexcept { return _buf[kMajor]; }
+		[[nodiscard]] constexpr std::uint16_t GetMinor() const noexcept { return _buf[kMinor]; }
+		[[nodiscard]] constexpr std::uint16_t GetRevision() const noexcept { return _buf[kRevision]; }
+		[[nodiscard]] constexpr std::uint16_t GetBuild() const noexcept { return _buf[kBuild]; }
+
+		constexpr void SetMajor(std::uint16_t a_major) noexcept { _buf[kMajor] = a_major; }
+		constexpr void SetMinor(std::uint16_t a_minor) noexcept { _buf[kMinor] = a_minor; }
+		constexpr void SetRevision(std::uint16_t a_revision) noexcept { _buf[kRevision] = a_revision; }
+		constexpr void SetBuild(std::uint16_t a_build) noexcept { _buf[kBuild] = a_build; }
+
+	private:
+		enum : std::size_t
+		{
+			kMajor,
+			kMinor,
+			kRevision,
+			kBuild
+		};
+
+
+		std::array<std::uint16_t, 4> _buf;
+	};
+
+
 	class Module
 	{
 	public:
@@ -326,62 +395,6 @@ namespace REL
 			std::uintptr_t addr;
 			std::size_t size;
 			std::uint32_t rva;
-		};
-
-
-		class Version
-		{
-		public:
-			constexpr Version() noexcept :
-				Version(0, 0, 0, 0)
-			{}
-
-			constexpr Version(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build) noexcept :
-				_buf{ a_major, a_minor, a_revision, a_build }
-			{}
-
-			template <class T, typename std::enable_if_t<std::is_arithmetic_v<T>, int> = 0>
-			constexpr Version(const T a_versions[4]) noexcept :
-				Version(static_cast<std::uint16_t>(a_versions[0]),
-						static_cast<std::uint16_t>(a_versions[1]),
-						static_cast<std::uint16_t>(a_versions[2]),
-						static_cast<std::uint16_t>(a_versions[3]))
-			{}
-
-			[[nodiscard]] friend constexpr bool operator==(const Version& a_lhs, const Version& a_rhs) noexcept
-			{
-				return a_lhs.GetMajor() == a_rhs.GetMajor() &&
-					a_lhs.GetMinor() == a_rhs.GetMinor() &&
-					a_lhs.GetRevision() == a_rhs.GetRevision() &&
-					a_lhs.GetBuild() == a_rhs.GetBuild();
-			}
-
-			[[nodiscard]] friend constexpr bool operator!=(const Version& a_lhs, const Version& a_rhs) noexcept { return !(a_lhs == a_rhs); }
-
-			[[nodiscard]] constexpr std::uint16_t& operator[](std::size_t a_idx) noexcept { return _buf[a_idx]; }
-			[[nodiscard]] constexpr const std::uint16_t& operator[](std::size_t a_idx) const noexcept { return _buf[a_idx]; }
-
-			[[nodiscard]] constexpr std::uint16_t GetMajor() const noexcept { return _buf[kMajor]; }
-			[[nodiscard]] constexpr std::uint16_t GetMinor() const noexcept { return _buf[kMinor]; }
-			[[nodiscard]] constexpr std::uint16_t GetRevision() const noexcept { return _buf[kRevision]; }
-			[[nodiscard]] constexpr std::uint16_t GetBuild() const noexcept { return _buf[kBuild]; }
-
-			constexpr void SetMajor(std::uint16_t a_major) noexcept { _buf[kMajor] = a_major; }
-			constexpr void SetMinor(std::uint16_t a_minor) noexcept { _buf[kMinor] = a_minor; }
-			constexpr void SetRevision(std::uint16_t a_revision) noexcept { _buf[kRevision] = a_revision; }
-			constexpr void SetBuild(std::uint16_t a_build) noexcept { _buf[kBuild] = a_build; }
-
-		private:
-			enum : std::size_t
-			{
-				kMajor,
-				kMinor,
-				kRevision,
-				kBuild
-			};
-
-
-			std::array<std::uint16_t, 4> _buf;
 		};
 
 
@@ -482,7 +495,7 @@ namespace REL
 		public:
 			[[nodiscard]] bool Load();
 			[[nodiscard]] bool Load(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build);
-			[[nodiscard]] bool Load(REL::Module::Version a_version);
+			[[nodiscard]] bool Load(Version a_version);
 
 #ifdef _DEBUG
 			[[nodiscard]] std::uint64_t OffsetToID(std::uint64_t a_address);
@@ -541,7 +554,7 @@ namespace REL
 
 				[[nodiscard]] constexpr decltype(auto) AddrCount() const noexcept { return static_cast<std::size_t>(_part2.addressCount); }
 				[[nodiscard]] constexpr decltype(auto) PSize() const noexcept { return static_cast<std::uint64_t>(_part2.pointerSize); }
-				[[nodiscard]] inline decltype(auto) Version() const { return REL::Module::Version(_part1.version); }
+				[[nodiscard]] inline decltype(auto) GetVersion() const { return Version(_part1.version); }
 
 			private:
 				struct Part1
@@ -744,8 +757,7 @@ namespace REL
 			_address = Impl::kmp_search(haystack, needle, needleMask);
 
 			if (_address == 0xDEADBEEF) {
-				_FATALERROR("Sig scan failed for pattern (%s)!\n", a_sig);
-				assert(false);
+				assert(false);	// sig scan failed
 			} else {
 				_address += text.BaseAddr();
 			}

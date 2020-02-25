@@ -10,6 +10,8 @@
 
 #include "RE/RTTI.h"
 
+#include "SKSE/Logger.h"
+
 
 namespace REL
 {
@@ -259,19 +261,19 @@ namespace REL
 
 	bool IDDatabase::IDDatabaseImpl::Load()
 	{
-		auto version = REL::Module::GetVersion();
+		auto version = Module::GetVersion();
 		return Load(std::move(version));
 	}
 
 
 	bool IDDatabase::IDDatabaseImpl::Load(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build)
 	{
-		REL::Module::Version version(a_major, a_minor, a_revision, a_build);
+		Version version(a_major, a_minor, a_revision, a_build);
 		return Load(std::move(version));
 	}
 
 
-	bool IDDatabase::IDDatabaseImpl::Load(REL::Module::Version a_version)
+	bool IDDatabase::IDDatabaseImpl::Load(Version a_version)
 	{
 		std::string fileName = "Data/SKSE/Plugins/version-";
 		fileName += std::to_string(a_version[0]);
@@ -285,19 +287,26 @@ namespace REL
 
 		std::error_code ec;
 		std::filesystem::path path(fileName);
-		if (!std::filesystem::exists(path.parent_path(), ec) || ec) {
+		if (!std::filesystem::exists(path, ec) || ec) {
 			assert(false);
 			return false;
 		}
 
 		std::ifstream file(path, std::ios_base::in | std::ios_base::binary);
+		file.exceptions(std::ios_base::badbit | std::ios_base::failbit | std::ios_base::eofbit);
 		if (!file.is_open()) {
 			assert(false);
 			return false;
 		}
 
-		IStream input(file);
-		return DoLoad(input);
+		try {
+			IStream input(file);
+			return DoLoad(input);
+		} catch (std::exception& e) {
+			_ERROR("%s", e.what());
+			assert(false);
+			return false;
+		}
 	}
 
 
@@ -349,7 +358,7 @@ namespace REL
 		Header header;
 		header.Read(a_input);
 
-		if (Module::GetVersion() != header.Version()) {
+		if (Module::GetVersion() != header.GetVersion()) {
 			assert(false);
 			return false;
 		}

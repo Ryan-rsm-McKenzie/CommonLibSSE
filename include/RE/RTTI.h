@@ -217,8 +217,8 @@ namespace RE
 template <class To, class From, typename std::enable_if_t<RE::SK_Impl::cast_is_valid<To, const From*>::value, int> = 0>
 inline To skyrim_cast(const From* a_from)
 {
-	REL::Offset<PVOID> from(reinterpret_cast<std::uintptr_t>(RE::SK_Impl::remove_cvpr_t<From>::RTTI));
-	REL::Offset<PVOID> to(reinterpret_cast<std::uintptr_t>(RE::SK_Impl::remove_cvpr_t<To>::RTTI));
+	REL::Offset<PVOID> from(RE::SK_Impl::remove_cvpr_t<From>::RTTI);
+	REL::Offset<PVOID> to(RE::SK_Impl::remove_cvpr_t<To>::RTTI);
 	return RE::RTDynamicCast<To>((PVOID)a_from, 0, from.GetType(), to.GetType(), false);
 }
 
@@ -226,7 +226,7 @@ inline To skyrim_cast(const From* a_from)
 template <class To, class From, typename std::enable_if_t<RE::SK_Impl::cast_is_valid<To, const From&>::value, int> = 0>
 inline To skyrim_cast(const From& a_from)	// throw(std::bad_cast)
 {
-	REL::Offset<PVOID> from(reinterpret_cast<std::uintptr_t>(RE::SK_Impl::remove_cvpr_t<From>::RTTI));
-	REL::Offset<PVOID> to(reinterpret_cast<std::uintptr_t>(RE::SK_Impl::remove_cvpr_t<To>::RTTI));
+	REL::Offset<PVOID> from(RE::SK_Impl::remove_cvpr_t<From>::RTTI);
+	REL::Offset<PVOID> to(RE::SK_Impl::remove_cvpr_t<To>::RTTI);
 	return RE::RTDynamicCast<To>((PVOID)&a_from, 0, from.GetType(), to.GetType(), true);
 }

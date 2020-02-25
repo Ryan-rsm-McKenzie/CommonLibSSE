@@ -51,7 +51,7 @@ To netimmerse_cast(const From* a_from)
 		return nullptr;
 	}
 
-	REL::Offset<const RE::NiRTTI*> to(reinterpret_cast<std::uintptr_t>(RE::Ni_Impl::remove_cvpr_t<To>::Ni_RTTI));
+	REL::Offset<const RE::NiRTTI*> to(RE::Ni_Impl::remove_cvpr_t<To>::Ni_RTTI);
 
 	const RE::NiRTTI* toRTTI = to.GetType();
 	const RE::NiRTTI* fromRTTI = a_from->GetRTTI();
