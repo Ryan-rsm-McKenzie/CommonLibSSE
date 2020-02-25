@@ -10,6 +10,7 @@
 #include <string_view>
 #include <type_traits>
 #include <unordered_map>
+#include <variant>
 #include <vector>
 
 #include "SKSE/SafeWrite.h"
@@ -572,49 +573,60 @@ namespace REL
 
 
 		constexpr Offset(std::uintptr_t a_offset) :
-			_address(a_offset)
+			_impl(a_offset)
 		{}
 
 
-		explicit Offset(ID a_id) :
-			Offset(*a_id)
+		explicit constexpr Offset(ID a_id) :
+			Offset(std::move(a_id), 0)
+		{}
+
+
+		constexpr Offset(ID a_id, std::size_t a_mod) :
+			_impl(std::make_pair(a_id, a_mod))
 		{}
 
 
 		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
-		std::add_lvalue_reference_t<std::remove_pointer_t<U>> operator*() const
+		std::add_lvalue_reference_t<std::remove_pointer_t<U>> operator*()
 		{
 			return *GetType();
 		}
 
 
 		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
-		U operator->() const
+		U operator->()
 		{
 			return GetType();
 		}
 
 
 		template <class... Args, class F = T, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
-		decltype(auto) operator()(Args&&... a_args) const
+		decltype(auto) operator()(Args&&... a_args)
 		{
 			return Invoke(GetType(), std::forward<Args>(a_args)...);
 		}
 
 
-		value_type GetType() const
+		value_type GetType()
 		{
 			return unrestricted_cast<value_type>(GetAddress());
 		}
 
 
-		std::uintptr_t GetAddress() const
+		std::uintptr_t GetAddress()
 		{
-			return Module::BaseAddr() + _address;
+			switch (_impl.index()) {
+			case kID:
+				_impl = *std::get<kID>(_impl).first + std::get<kID>(_impl).second;
+				break;
+			}
+
+			return Module::BaseAddr() + std::get<kRaw>(_impl);
 		}
 
 
-		std::uintptr_t GetOffset() const
+		std::uintptr_t GetOffset()
 		{
 			return GetAddress() - Module::BaseAddr();
 		}
@@ -638,7 +650,9 @@ namespace REL
 		}
 
 	private:
-		std::uintptr_t _address;
+		enum : std::size_t { kRaw, kID };
+
+		std::variant<std::uintptr_t, std::pair<ID, std::size_t>> _impl;
 	};
 
 

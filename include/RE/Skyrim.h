@@ -952,6 +952,7 @@
 #include "RE/SummonCreatureEffect.h"
 #include "RE/Sun.h"
 #include "RE/SyncQueueObj.h"
+#include "RE/TaskQueueInterface.h"
 #include "RE/TES.h"
 #include "RE/TESActiveEffectApplyRemoveEvent.h"
 #include "RE/TESActorBase.h"

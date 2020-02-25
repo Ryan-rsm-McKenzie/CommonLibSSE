@@ -340,6 +340,7 @@
     <ClCompile Include="src\RE\BSIntrusiveRefCounted.cpp" />
     <ClCompile Include="src\RE\ButtonEvent.cpp" />
     <ClCompile Include="src\RE\CommandTable.cpp" />
+    <ClCompile Include="src\RE\TaskQueueInterface.cpp" />
     <ClCompile Include="src\RE\TESCondition.cpp" />
     <ClCompile Include="src\RE\ConsoleLog.cpp" />
     <ClCompile Include="src\RE\EffectSetting.cpp" />
@@ -851,6 +852,7 @@
     <ClInclude Include="include\RE\RefActivateData.h" />
     <ClInclude Include="include\RE\Sexes.h" />
     <ClInclude Include="include\RE\SkyrimScript\FragmentSystem.h" />
+    <ClInclude Include="include\RE\TaskQueueInterface.h" />
     <ClInclude Include="include\RE\TESCondition.h" />
     <ClInclude Include="include\RE\ConeProjectile.h" />
     <ClInclude Include="include\RE\Console.h" />
