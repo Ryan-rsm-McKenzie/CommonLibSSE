@@ -14,7 +14,7 @@ namespace RE
 	class PackageLocation : public IAIWorldLocationHandle
 	{
 	public:
-		inline static const void* RTTI = RTTI_PackageLocation;
+		inline static constexpr auto RTTI = RTTI_PackageLocation;
 
 
 		enum class Type : UInt8

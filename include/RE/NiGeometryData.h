@@ -17,8 +17,8 @@ namespace RE
 	class NiGeometryData : public NiObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiGeometryData;
-		inline static const void* Ni_RTTI = NiRTTI_NiGeometryData;
+		inline static constexpr auto RTTI = RTTI_NiGeometryData;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiGeometryData;
 
 
 		enum class DataFlag: UInt16

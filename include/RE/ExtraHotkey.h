@@ -9,7 +9,7 @@ namespace RE
 	class ExtraHotkey : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraHotkey;
+		inline static constexpr auto RTTI = RTTI_ExtraHotkey;
 
 
 		enum { kExtraTypeID = ExtraDataType::kHotkey };

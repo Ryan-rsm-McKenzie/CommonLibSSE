@@ -10,7 +10,7 @@ namespace RE
 	class DialoguePackage : public TESPackage
 	{
 	public:
-		inline static const void* RTTI = RTTI_DialoguePackage;
+		inline static constexpr auto RTTI = RTTI_DialoguePackage;
 
 
 		enum { kTypeID = FormType::Package };

@@ -22,7 +22,7 @@ namespace RE
 	class InventoryMenu : public IMenu
 	{
 	public:
-		inline static const void* RTTI = RTTI_InventoryMenu;
+		inline static constexpr auto RTTI = RTTI_InventoryMenu;
 		constexpr static std::string_view MENU_NAME = "InventoryMenu";
 
 

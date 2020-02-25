@@ -6,7 +6,7 @@ namespace RE
 	class GRefCountImplCore
 	{
 	public:
-		inline static const void* RTTI = RTTI_GRefCountImplCore;
+		inline static constexpr auto RTTI = RTTI_GRefCountImplCore;
 
 
 		GRefCountImplCore();

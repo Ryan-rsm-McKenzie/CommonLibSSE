@@ -12,8 +12,8 @@ namespace RE
 	class ReferenceEffect : public BSTempEffect
 	{
 	public:
-		inline static const void* RTTI = RTTI_ReferenceEffect;
-		inline static const void* Ni_RTTI = NiRTTI_ReferenceEffect;
+		inline static constexpr auto RTTI = RTTI_ReferenceEffect;
+		inline static constexpr auto Ni_RTTI = NiRTTI_ReferenceEffect;
 
 
 		virtual ~ReferenceEffect();														// 00

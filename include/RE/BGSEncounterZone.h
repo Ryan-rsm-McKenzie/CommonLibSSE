@@ -42,7 +42,7 @@ namespace RE
 	class BGSEncounterZone : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSEncounterZone;
+		inline static constexpr auto RTTI = RTTI_BGSEncounterZone;
 
 
 		enum { kTypeID = FormType::EncounterZone };

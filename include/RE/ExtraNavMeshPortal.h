@@ -30,7 +30,7 @@ namespace RE
 	class ExtraNavMeshPortal : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraNavMeshPortal;
+		inline static constexpr auto RTTI = RTTI_ExtraNavMeshPortal;
 
 
 		enum { kExtraTypeID = ExtraDataType::kNavMeshPortal };

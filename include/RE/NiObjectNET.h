@@ -14,8 +14,8 @@ namespace RE
 	class NiObjectNET : public NiObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiObjectNET;
-		inline static const void* Ni_RTTI = NiRTTI_NiObjectNET;
+		inline static constexpr auto RTTI = RTTI_NiObjectNET;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiObjectNET;
 
 
 		virtual ~NiObjectNET();														// 00

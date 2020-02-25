@@ -138,7 +138,7 @@ namespace RE
 		public TESFullName	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESTopic;
+		inline static constexpr auto RTTI = RTTI_TESTopic;
 
 
 		enum { kTypeID = FormType::Dialogue };

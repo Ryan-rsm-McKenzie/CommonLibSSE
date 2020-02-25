@@ -8,8 +8,8 @@ namespace RE
 	class NiProperty : public NiObjectNET
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiProperty;
-		inline static const void* Ni_RTTI = NiRTTI_NiProperty;
+		inline static constexpr auto RTTI = RTTI_NiProperty;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiProperty;
 
 
 		enum class Type : SInt32

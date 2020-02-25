@@ -13,7 +13,7 @@ namespace RE
 	class FaderMenu : public IMenu
 	{
 	public:
-		inline static const void* RTTI = RTTI_FaderMenu;
+		inline static constexpr auto RTTI = RTTI_FaderMenu;
 		constexpr static std::string_view MENU_NAME = "Fader Menu";
 
 

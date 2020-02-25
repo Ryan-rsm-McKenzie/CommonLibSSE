@@ -47,7 +47,7 @@ namespace RE
 	class BGSBipedObjectForm : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSBipedObjectForm;
+		inline static constexpr auto RTTI = RTTI_BGSBipedObjectForm;
 
 
 		using ArmorType = BIPED_MODEL::ArmorType;

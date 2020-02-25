@@ -16,7 +16,7 @@ namespace RE
 	class hkpWorldLinearCaster : public hkpBroadPhaseCastCollector
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpWorldLinearCaster;
+		inline static constexpr auto RTTI = RTTI_hkpWorldLinearCaster;
 
 
 		virtual ~hkpWorldLinearCaster() = default;																		// 00

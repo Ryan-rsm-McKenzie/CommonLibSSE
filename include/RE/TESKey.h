@@ -9,7 +9,7 @@ namespace RE
 	class TESKey : public TESObjectMISC
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESKey;
+		inline static constexpr auto RTTI = RTTI_TESKey;
 
 
 		enum { kTypeID = FormType::KeyMaster };

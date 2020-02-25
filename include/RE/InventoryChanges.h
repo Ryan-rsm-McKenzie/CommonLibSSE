@@ -17,7 +17,7 @@ namespace RE
 		class IItemChangeVisitor
 		{
 		public:
-			inline static const void* RTTI = RTTI_InventoryChanges__IItemChangeVisitor;
+			inline static constexpr auto RTTI = RTTI_InventoryChanges__IItemChangeVisitor;
 
 
 			virtual ~IItemChangeVisitor();								// 00

@@ -9,7 +9,7 @@ namespace RE
 	class ExtraFavorCost : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraFavorCost;
+		inline static constexpr auto RTTI = RTTI_ExtraFavorCost;
 
 
 		enum { kExtraTypeID = ExtraDataType::kFavorCost };

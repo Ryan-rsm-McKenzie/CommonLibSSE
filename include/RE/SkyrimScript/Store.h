@@ -16,7 +16,7 @@ namespace RE
 		class Store : public BSScript::IStore
 		{
 		public:
-			inline static const void* RTTI = RTTI_SkyrimScript__Store;
+			inline static constexpr auto RTTI = RTTI_SkyrimScript__Store;
 
 
 			virtual ~Store();																						// 00

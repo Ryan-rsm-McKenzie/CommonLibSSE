@@ -23,7 +23,7 @@ namespace RE
 		public BSTEventSink<BSAnimationGraphEvent>	// 48
 	{
 	public:
-		inline static const void* RTTI = RTTI_BookMenu;
+		inline static constexpr auto RTTI = RTTI_BookMenu;
 		constexpr static std::string_view MENU_NAME = "Book Menu";
 
 

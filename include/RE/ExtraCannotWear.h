@@ -8,7 +8,7 @@ namespace RE
 	class ExtraCannotWear : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraCannotWear;
+		inline static constexpr auto RTTI = RTTI_ExtraCannotWear;
 
 
 		enum { kExtraTypeID = ExtraDataType::kCannotWear };

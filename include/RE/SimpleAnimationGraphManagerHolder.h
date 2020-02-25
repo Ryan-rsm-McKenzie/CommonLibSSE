@@ -12,7 +12,7 @@ namespace RE
 	class SimpleAnimationGraphManagerHolder : public IAnimationGraphManagerHolder
 	{
 	public:
-		inline static const void* RTTI = RTTI_SimpleAnimationGraphManagerHolder;
+		inline static constexpr auto RTTI = RTTI_SimpleAnimationGraphManagerHolder;
 
 
 		// override (IAnimationGraphManagerHolder)

@@ -10,7 +10,7 @@ namespace RE
 	class ExtraForcedLandingMarker : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraForcedLandingMarker;
+		inline static constexpr auto RTTI = RTTI_ExtraForcedLandingMarker;
 
 
 		enum { kExtraTypeID = ExtraDataType::kForcedLandingMarker };

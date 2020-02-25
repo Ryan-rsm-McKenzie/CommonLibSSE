@@ -8,8 +8,8 @@ namespace RE
 	class BSNiNode : public NiNode
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSNiNode;
-		inline static const void* Ni_RTTI = NiRTTI_BSNiNode;
+		inline static constexpr auto RTTI = RTTI_BSNiNode;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSNiNode;
 
 
 		virtual ~BSNiNode();														// 00

@@ -13,7 +13,7 @@ namespace RE
 	class ExtraMissingLinkedRefIDs : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraMissingLinkedRefIDs;
+		inline static constexpr auto RTTI = RTTI_ExtraMissingLinkedRefIDs;
 
 
 		enum { kExtraTypeID = ExtraDataType::kMissingLinkedRefIDs };

@@ -11,8 +11,8 @@ namespace RE
 	class NiCollisionObject : public NiObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiCollisionObject;
-		inline static const void* Ni_RTTI = NiRTTI_NiCollisionObject;
+		inline static constexpr auto RTTI = RTTI_NiCollisionObject;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiCollisionObject;
 
 
 		virtual ~NiCollisionObject() = 0;											// 00

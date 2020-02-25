@@ -12,7 +12,7 @@ namespace RE
 	class Stars : public SkyObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_Stars;
+		inline static constexpr auto RTTI = RTTI_Stars;
 
 
 		virtual ~Stars();											// 00

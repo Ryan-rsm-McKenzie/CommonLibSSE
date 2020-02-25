@@ -9,7 +9,7 @@ namespace RE
 	class BGSAcousticSpace : public TESBoundObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSAcousticSpace;
+		inline static constexpr auto RTTI = RTTI_BGSAcousticSpace;
 
 
 		enum { kTypeID = FormType::AcousticSpace };

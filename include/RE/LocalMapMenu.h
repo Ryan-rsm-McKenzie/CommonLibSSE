@@ -56,7 +56,7 @@ namespace RE
 		class InputHandler : public MenuEventHandler
 		{
 		public:
-			inline static const void* RTTI = RTTI_LocalMapMenu__InputHandler;
+			inline static constexpr auto RTTI = RTTI_LocalMapMenu__InputHandler;
 
 
 			virtual ~InputHandler();												// 00

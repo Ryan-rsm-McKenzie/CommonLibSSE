@@ -11,7 +11,7 @@ namespace RE
 	class BGSMusicSingleTrack : public BGSMusicTrack
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSMusicSingleTrack;
+		inline static constexpr auto RTTI = RTTI_BGSMusicSingleTrack;
 
 
 		struct LoopData	// LNAM

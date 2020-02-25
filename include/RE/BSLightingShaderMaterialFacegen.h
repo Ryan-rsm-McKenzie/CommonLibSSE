@@ -12,7 +12,7 @@ namespace RE
 	class BSLightingShaderMaterialFacegen : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSLightingShaderMaterialFacegen;
+		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialFacegen;
 
 
 		virtual ~BSLightingShaderMaterialFacegen();										// 00

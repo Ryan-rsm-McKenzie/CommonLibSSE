@@ -17,7 +17,7 @@ namespace RE
 	class hkpSimulationIsland : public hkpConstraintOwner
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpSimulationIsland;
+		inline static constexpr auto RTTI = RTTI_hkpSimulationIsland;
 
 
 		virtual ~hkpSimulationIsland();																								// 00

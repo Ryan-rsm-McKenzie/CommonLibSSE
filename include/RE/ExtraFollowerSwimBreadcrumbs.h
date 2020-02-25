@@ -32,7 +32,7 @@ namespace RE
 	class ExtraFollowerSwimBreadcrumbs : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraFollowerSwimBreadcrumbs;
+		inline static constexpr auto RTTI = RTTI_ExtraFollowerSwimBreadcrumbs;
 
 
 		enum { kExtraTypeID = ExtraDataType::kFollowerSwimBreadcrumbs };

@@ -13,7 +13,7 @@ namespace RE
 	class ExtraPlayerCrimeList : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraPlayerCrimeList;
+		inline static constexpr auto RTTI = RTTI_ExtraPlayerCrimeList;
 
 
 		enum { kExtraTypeID = ExtraDataType::kPlayerCrimeList };

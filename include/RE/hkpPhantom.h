@@ -16,7 +16,7 @@ namespace RE
 	class hkpPhantom : public hkpWorldObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpPhantom;
+		inline static constexpr auto RTTI = RTTI_hkpPhantom;
 
 
 		virtual ~hkpPhantom();																										// 00

@@ -8,8 +8,8 @@ namespace RE
 	class BSXFlags : public NiIntegerExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSXFlags;
-		inline static const void* Ni_RTTI = NiRTTI_BSXFlags;
+		inline static constexpr auto RTTI = RTTI_BSXFlags;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSXFlags;
 
 
 		enum class Flag : SInt32

@@ -9,8 +9,8 @@ namespace RE
 	class NiColorData : public NiObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiColorData;
-		inline static const void* Ni_RTTI = NiRTTI_NiColorData;
+		inline static constexpr auto RTTI = RTTI_NiColorData;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiColorData;
 
 
 		using KeyType = NiColorKey::KeyType;

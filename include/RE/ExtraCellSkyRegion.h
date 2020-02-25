@@ -12,7 +12,7 @@ namespace RE
 	class ExtraCellSkyRegion : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraCellSkyRegion;
+		inline static constexpr auto RTTI = RTTI_ExtraCellSkyRegion;
 
 
 		enum { kExtraTypeID = ExtraDataType::kCellSkyRegion };

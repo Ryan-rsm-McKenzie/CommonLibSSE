@@ -18,7 +18,7 @@ namespace RE
 		public BSTEventSink<BGSSaveLoadManagerEvent>	// 08
 	{
 	public:
-		inline static const void* RTTI = RTTI_UISaveLoadManager;
+		inline static constexpr auto RTTI = RTTI_UISaveLoadManager;
 
 		virtual ~UISaveLoadManager();																															// 00
 

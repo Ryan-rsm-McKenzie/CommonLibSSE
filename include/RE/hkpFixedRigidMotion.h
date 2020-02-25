@@ -8,7 +8,7 @@ namespace RE
 	class hkpFixedRigidMotion : public hkpKeyframedRigidMotion
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpFixedRigidMotion;
+		inline static constexpr auto RTTI = RTTI_hkpFixedRigidMotion;
 
 
 		virtual ~hkpFixedRigidMotion();													// 00

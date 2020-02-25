@@ -8,7 +8,7 @@ namespace RE
 	class SkyEffectController : public ReferenceEffectController
 	{
 	public:
-		inline static const void* RTTI = RTTI_SkyEffectController;
+		inline static constexpr auto RTTI = RTTI_SkyEffectController;
 
 
 		virtual ~SkyEffectController();												// 00

@@ -10,7 +10,7 @@ namespace RE
 		class SavePatcher : public BSScript::ISavePatcherInterface
 		{
 		public:
-			inline static const void* RTTI = RTTI_SkyrimScript__SavePatcher;
+			inline static constexpr auto RTTI = RTTI_SkyrimScript__SavePatcher;
 
 
 			virtual ~SavePatcher();																						// 00

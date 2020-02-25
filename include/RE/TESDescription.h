@@ -13,7 +13,7 @@ namespace RE
 	class TESDescription : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESDescription;
+		inline static constexpr auto RTTI = RTTI_TESDescription;
 
 
 		virtual ~TESDescription();											// 00

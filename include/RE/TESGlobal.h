@@ -10,7 +10,7 @@ namespace RE
 	class TESGlobal : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESGlobal;
+		inline static constexpr auto RTTI = RTTI_TESGlobal;
 
 
 		enum { kTypeID = FormType::Global };

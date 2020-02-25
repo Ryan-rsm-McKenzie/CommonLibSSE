@@ -20,8 +20,8 @@ namespace RE
 	class NiControllerManager : public NiTimeController
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiControllerManager;
-		inline static const void* Ni_RTTI = NiRTTI_NiControllerManager;
+		inline static constexpr auto RTTI = RTTI_NiControllerManager;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiControllerManager;
 
 
 		virtual ~NiControllerManager();														// 00

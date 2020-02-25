@@ -8,7 +8,7 @@ namespace RE
 	struct FavoritesHandler : public MenuEventHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_FavoritesHandler;
+		inline static constexpr auto RTTI = RTTI_FavoritesHandler;
 
 
 		virtual ~FavoritesHandler();									// 00

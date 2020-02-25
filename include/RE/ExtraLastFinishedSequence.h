@@ -10,7 +10,7 @@ namespace RE
 	class ExtraLastFinishedSequence : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraLastFinishedSequence;
+		inline static constexpr auto RTTI = RTTI_ExtraLastFinishedSequence;
 
 
 		enum { kExtraTypeID = ExtraDataType::kLastFinishedSequence };

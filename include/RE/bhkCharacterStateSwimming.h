@@ -8,7 +8,7 @@ namespace RE
 	class bhkCharacterStateSwimming : public bhkCharacterState
 	{
 	public:
-		inline static const void* RTTI = RTTI_bhkCharacterStateSwimming;
+		inline static constexpr auto RTTI = RTTI_bhkCharacterStateSwimming;
 
 
 		virtual ~bhkCharacterStateSwimming();						// 00

@@ -12,7 +12,7 @@ namespace RE
 	class ExtraPrimitive : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraPrimitive;
+		inline static constexpr auto RTTI = RTTI_ExtraPrimitive;
 
 
 		enum { kExtraTypeID = ExtraDataType::kPrimitive };

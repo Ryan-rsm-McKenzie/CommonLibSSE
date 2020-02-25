@@ -14,7 +14,7 @@ namespace RE
 		class ErrorLogger : public BSTEventSource<LogEvent>
 		{
 		public:
-			inline static const void* RTTI = RTTI_BSScript__ErrorLogger;
+			inline static constexpr auto RTTI = RTTI_BSScript__ErrorLogger;
 
 
 			enum class Severity : UInt32

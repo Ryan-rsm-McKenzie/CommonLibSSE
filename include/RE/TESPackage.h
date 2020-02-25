@@ -316,7 +316,7 @@ namespace RE
 	class TESPackage : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESPackage;
+		inline static constexpr auto RTTI = RTTI_TESPackage;
 
 
 		enum { kTypeID = FormType::Package };

@@ -17,8 +17,8 @@ namespace RE
 	class ShaderReferenceEffect : public ReferenceEffect
 	{
 	public:
-		inline static const void* RTTI = RTTI_ShaderReferenceEffect;
-		inline static const void* Ni_RTTI = NiRTTI_ShaderReferenceEffect;
+		inline static constexpr auto RTTI = RTTI_ShaderReferenceEffect;
+		inline static constexpr auto Ni_RTTI = NiRTTI_ShaderReferenceEffect;
 
 
 		struct Data048

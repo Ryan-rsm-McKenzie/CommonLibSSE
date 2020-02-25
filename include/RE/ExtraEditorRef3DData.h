@@ -14,7 +14,7 @@ namespace RE
 	class ExtraEditorRef3DData : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraEditorRef3DData;
+		inline static constexpr auto RTTI = RTTI_ExtraEditorRef3DData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kEditorRef3DData };

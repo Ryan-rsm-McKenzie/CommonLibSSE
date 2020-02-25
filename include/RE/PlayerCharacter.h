@@ -136,7 +136,7 @@ namespace RE
 		public BSTEventSink<TESTrackedStatsEvent>	// 2C8
 	{
 	public:
-		inline static const void* RTTI = RTTI_PlayerCharacter;
+		inline static constexpr auto RTTI = RTTI_PlayerCharacter;
 
 
 		enum { kTypeID = FormType::ActorCharacter };

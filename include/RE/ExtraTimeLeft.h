@@ -9,7 +9,7 @@ namespace RE
 	class ExtraTimeLeft : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraTimeLeft;
+		inline static constexpr auto RTTI = RTTI_ExtraTimeLeft;
 
 
 		enum { kExtraTypeID = ExtraDataType::kTimeLeft };

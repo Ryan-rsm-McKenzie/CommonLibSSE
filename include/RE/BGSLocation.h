@@ -66,7 +66,7 @@ namespace RE
 		public BGSKeywordForm	// 30
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSLocation;
+		inline static constexpr auto RTTI = RTTI_BGSLocation;
 
 
 		enum { kTypeID = FormType::Location };

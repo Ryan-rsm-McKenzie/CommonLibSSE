@@ -12,7 +12,7 @@ namespace RE
 		public TESModelTextureSwap	// 30
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSStaticCollection;
+		inline static constexpr auto RTTI = RTTI_BGSStaticCollection;
 
 
 		enum { kTypeID = FormType::StaticCollection };

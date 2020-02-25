@@ -11,7 +11,7 @@ namespace RE
 	class hkpSingleShapeContainer : public hkpShapeContainer
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpSingleShapeContainer;
+		inline static constexpr auto RTTI = RTTI_hkpSingleShapeContainer;
 
 
 		virtual ~hkpSingleShapeContainer();																	// 00

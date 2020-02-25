@@ -9,7 +9,7 @@ namespace RE
 	class BGSReferenceEffect : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSReferenceEffect;
+		inline static constexpr auto RTTI = RTTI_BGSReferenceEffect;
 
 
 		enum { kTypeID = FormType::ReferenceEffect };

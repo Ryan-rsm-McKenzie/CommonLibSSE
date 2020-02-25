@@ -65,7 +65,7 @@ namespace RE
 		public BGSEquipType					// 0D0
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESObjectLIGH;
+		inline static constexpr auto RTTI = RTTI_TESObjectLIGH;
 
 
 		enum { kTypeID = FormType::Light };

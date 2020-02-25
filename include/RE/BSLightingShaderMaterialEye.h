@@ -13,7 +13,7 @@ namespace RE
 	class BSLightingShaderMaterialEye : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSLightingShaderMaterialEye;
+		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialEye;
 
 
 		virtual ~BSLightingShaderMaterialEye();											// 00

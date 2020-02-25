@@ -17,7 +17,7 @@ namespace RE
 	class BGSStoryManagerTreeVisitor
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSStoryManagerTreeVisitor;
+		inline static constexpr auto RTTI = RTTI_BGSStoryManagerTreeVisitor;
 
 
 		enum class VisitControl : UInt32
@@ -48,7 +48,7 @@ namespace RE
 	class BGSStoryManagerTreeForm : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSStoryManagerTreeForm;
+		inline static constexpr auto RTTI = RTTI_BGSStoryManagerTreeForm;
 
 
 		virtual ~BGSStoryManagerTreeForm();																				// 00

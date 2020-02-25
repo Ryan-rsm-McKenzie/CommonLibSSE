@@ -12,7 +12,7 @@ namespace RE
 	class GFxExternalInterface : public GFxState
 	{
 	public:
-		inline static const void* RTTI = RTTI_GFxExternalInterface;
+		inline static constexpr auto RTTI = RTTI_GFxExternalInterface;
 
 
 		GFxExternalInterface() :

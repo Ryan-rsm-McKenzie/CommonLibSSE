@@ -12,7 +12,7 @@ namespace RE
 	class BSLightingShaderMaterialGlowmap : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSLightingShaderMaterialGlowmap;
+		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialGlowmap;
 
 
 		virtual ~BSLightingShaderMaterialGlowmap();										// 00

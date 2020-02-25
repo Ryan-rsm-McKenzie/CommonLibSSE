@@ -11,7 +11,7 @@ namespace RE
 	class BSUIScaleformData : public IUIMessageData
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSUIScaleformData;
+		inline static constexpr auto RTTI = RTTI_BSUIScaleformData;
 
 
 		virtual ~BSUIScaleformData();	// 00

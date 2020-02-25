@@ -86,7 +86,7 @@ namespace RE
 		public TESAttackDamageForm	// 030
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESWaterForm;
+		inline static constexpr auto RTTI = RTTI_TESWaterForm;
 
 
 		enum { kTypeID = FormType::Water };

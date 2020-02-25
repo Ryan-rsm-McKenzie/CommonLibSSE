@@ -9,7 +9,7 @@ namespace RE
 	class ExtraRefractionProperty : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraRefractionProperty;
+		inline static constexpr auto RTTI = RTTI_ExtraRefractionProperty;
 
 
 		enum { kExtraTypeID = ExtraDataType::kRefractionProperty };

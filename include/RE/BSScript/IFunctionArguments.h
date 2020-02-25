@@ -12,7 +12,7 @@ namespace RE
 		class IFunctionArguments
 		{
 		public:
-			inline static const void* RTTI = RTTI_BSScript__IFunctionArguments;
+			inline static constexpr auto RTTI = RTTI_BSScript__IFunctionArguments;
 
 
 			IFunctionArguments() = default;

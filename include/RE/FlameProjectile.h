@@ -9,7 +9,7 @@ namespace RE
 	class FlameProjectile : public Projectile
 	{
 	public:
-		inline static const void* RTTI = RTTI_FlameProjectile;
+		inline static constexpr auto RTTI = RTTI_FlameProjectile;
 
 
 		enum { kTypeID = FormType::ProjectileFlame };

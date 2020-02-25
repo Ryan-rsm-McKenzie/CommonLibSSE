@@ -11,7 +11,7 @@ namespace RE
 		public ImageSpaceEffect	// 090
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSImagespaceShader;
+		inline static constexpr auto RTTI = RTTI_BSImagespaceShader;
 
 
 		virtual ~BSImagespaceShader();			// 00

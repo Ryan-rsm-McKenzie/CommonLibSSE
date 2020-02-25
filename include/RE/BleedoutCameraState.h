@@ -14,7 +14,7 @@ namespace RE
 	class BleedoutCameraState : public ThirdPersonState
 	{
 	public:
-		inline static const void* RTTI = RTTI_BleedoutCameraState;
+		inline static constexpr auto RTTI = RTTI_BleedoutCameraState;
 
 
 		virtual ~BleedoutCameraState();													// 00

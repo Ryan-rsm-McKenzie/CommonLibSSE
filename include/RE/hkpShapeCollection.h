@@ -12,7 +12,7 @@ namespace RE
 		public hkpShapeContainer	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpShapeCollection;
+		inline static constexpr auto RTTI = RTTI_hkpShapeCollection;
 
 
 		enum class CollectionType : UInt8

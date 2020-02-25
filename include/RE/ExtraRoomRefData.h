@@ -29,7 +29,7 @@ namespace RE
 	class ExtraRoomRefData : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraRoomRefData;
+		inline static constexpr auto RTTI = RTTI_ExtraRoomRefData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kRoomRefData };

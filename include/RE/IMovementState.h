@@ -8,7 +8,7 @@ namespace RE
 	class IMovementState : public IMovementInterface
 	{
 	public:
-		inline static const void* RTTI = RTTI_IMovementState;
+		inline static constexpr auto RTTI = RTTI_IMovementState;
 
 
 		virtual ~IMovementState();			// 00

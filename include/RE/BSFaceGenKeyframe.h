@@ -6,7 +6,7 @@ namespace RE
 	class BSFaceGenKeyframe
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSFaceGenKeyframe;
+		inline static constexpr auto RTTI = RTTI_BSFaceGenKeyframe;
 
 
 		virtual ~BSFaceGenKeyframe();	// 00

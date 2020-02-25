@@ -12,7 +12,7 @@ namespace RE
 	class TESLoadScreen : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESLoadScreen;
+		inline static constexpr auto RTTI = RTTI_TESLoadScreen;
 
 
 		enum { kTypeID = FormType::LoadScreen };

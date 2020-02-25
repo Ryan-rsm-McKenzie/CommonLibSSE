@@ -10,7 +10,7 @@ namespace RE
 	class ExtraRefrPath : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraRefrPath;
+		inline static constexpr auto RTTI = RTTI_ExtraRefrPath;
 
 
 		enum { kExtraTypeID = ExtraDataType::kRefrPath };

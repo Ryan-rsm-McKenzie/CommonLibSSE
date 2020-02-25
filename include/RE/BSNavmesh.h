@@ -147,7 +147,7 @@ namespace RE
 	class BSNavmesh : public BSIntrusiveRefCounted	// NVNM
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSNavmesh;
+		inline static constexpr auto RTTI = RTTI_BSNavmesh;
 
 
 		virtual ~BSNavmesh();				// 00

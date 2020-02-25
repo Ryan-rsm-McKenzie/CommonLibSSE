@@ -15,7 +15,7 @@ namespace RE
 	class BGSAttackDataMap : public NiRefObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSAttackDataMap;
+		inline static constexpr auto RTTI = RTTI_BGSAttackDataMap;
 
 
 		virtual ~BGSAttackDataMap();	// 00

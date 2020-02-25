@@ -17,7 +17,7 @@ namespace RE
 		public TESModelTextureSwap	// 030
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSHeadPart;
+		inline static constexpr auto RTTI = RTTI_BGSHeadPart;
 
 
 		enum { kTypeID = FormType::HeadPart };

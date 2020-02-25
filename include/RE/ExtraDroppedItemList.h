@@ -11,7 +11,7 @@ namespace RE
 	class ExtraDroppedItemList : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraDroppedItemList;
+		inline static constexpr auto RTTI = RTTI_ExtraDroppedItemList;
 
 
 		enum { kExtraTypeID = ExtraDataType::kDroppedItemList };

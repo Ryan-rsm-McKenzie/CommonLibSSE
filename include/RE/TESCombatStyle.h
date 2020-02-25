@@ -70,7 +70,7 @@ namespace RE
 	class TESCombatStyle : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESCombatStyle;
+		inline static constexpr auto RTTI = RTTI_TESCombatStyle;
 
 
 		enum { kTypeID = FormType::CombatStyle };

@@ -13,8 +13,8 @@ namespace RE
 	class NiColorInterpolator : public NiKeyBasedInterpolator
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiColorInterpolator;
-		inline static const void* Ni_RTTI = NiRTTI_NiColorInterpolator;
+		inline static constexpr auto RTTI = RTTI_NiColorInterpolator;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiColorInterpolator;
 
 
 		virtual ~NiColorInterpolator();																					// 00

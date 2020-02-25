@@ -17,7 +17,7 @@ namespace RE
 		public TESDescription	// 30
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSMessage;
+		inline static constexpr auto RTTI = RTTI_BGSMessage;
 
 
 		enum { kTypeID = FormType::Message };

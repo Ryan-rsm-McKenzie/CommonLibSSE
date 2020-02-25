@@ -38,7 +38,7 @@ namespace RE
 	class BGSStoryManagerEventNode : public BGSStoryManagerBranchNode
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSStoryManagerEventNode;
+		inline static constexpr auto RTTI = RTTI_BGSStoryManagerEventNode;
 
 
 		enum { kTypeID = FormType::StoryManagerEventNode };

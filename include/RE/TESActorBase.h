@@ -32,7 +32,7 @@ namespace RE
 		public BGSPerkRankArray				// 138
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESActorBase;
+		inline static constexpr auto RTTI = RTTI_TESActorBase;
 
 
 		virtual ~TESActorBase();																									// 00

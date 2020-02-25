@@ -19,7 +19,7 @@ namespace RE
 		public TESValueForm					// 158
 	{
 	public:
-		inline static const void* RTTI = RTTI_ScrollItem;
+		inline static constexpr auto RTTI = RTTI_ScrollItem;
 
 
 		enum { kTypeID = FormType::Scroll };

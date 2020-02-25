@@ -13,7 +13,7 @@ namespace RE
 	class ExtraModelSwap : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraModelSwap;
+		inline static constexpr auto RTTI = RTTI_ExtraModelSwap;
 
 
 		enum { kExtraTypeID = ExtraDataType::kModelSwap };

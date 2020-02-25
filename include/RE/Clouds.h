@@ -14,7 +14,7 @@ namespace RE
 	class Clouds : public SkyObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_Clouds;
+		inline static constexpr auto RTTI = RTTI_Clouds;
 
 
 		enum

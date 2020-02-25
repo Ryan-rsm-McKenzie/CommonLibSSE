@@ -9,8 +9,8 @@ namespace RE
 	class bhkRigidBody : public bhkEntity
 	{
 	public:
-		inline static const void* RTTI = RTTI_bhkRigidBody;
-		inline static const void* Ni_RTTI = NiRTTI_bhkRigidBody;
+		inline static constexpr auto RTTI = RTTI_bhkRigidBody;
+		inline static constexpr auto Ni_RTTI = NiRTTI_bhkRigidBody;
 
 
 		virtual ~bhkRigidBody();													// 00

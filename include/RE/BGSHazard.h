@@ -46,7 +46,7 @@ namespace RE
 		public TESImageSpaceModifiableForm	// 70
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSHazard;
+		inline static constexpr auto RTTI = RTTI_BGSHazard;
 
 
 		enum { kTypeID = FormType::Hazard };

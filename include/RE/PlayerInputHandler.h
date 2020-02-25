@@ -13,7 +13,7 @@ namespace RE
 	class PlayerInputHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_PlayerInputHandler;
+		inline static constexpr auto RTTI = RTTI_PlayerInputHandler;
 
 
 		virtual ~PlayerInputHandler();																// 00

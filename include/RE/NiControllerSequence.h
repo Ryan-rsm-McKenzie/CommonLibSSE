@@ -20,8 +20,8 @@ namespace RE
 	class NiControllerSequence : public NiObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiControllerSequence;
-		inline static const void* Ni_RTTI = NiRTTI_NiControllerSequence;
+		inline static constexpr auto RTTI = RTTI_NiControllerSequence;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiControllerSequence;
 
 
 		enum class AnimState : UInt32

@@ -38,7 +38,7 @@ namespace RE
 	class hkpCharacterState : public hkReferencedObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpCharacterState;
+		inline static constexpr auto RTTI = RTTI_hkpCharacterState;
 
 
 		virtual ~hkpCharacterState();																																					// 00

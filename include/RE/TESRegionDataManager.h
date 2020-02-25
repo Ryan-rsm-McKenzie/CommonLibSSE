@@ -19,7 +19,7 @@ namespace RE
 	class TESRegionDataManager
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESRegionDataManager;
+		inline static constexpr auto RTTI = RTTI_TESRegionDataManager;
 
 
 		virtual ~TESRegionDataManager();														// 00

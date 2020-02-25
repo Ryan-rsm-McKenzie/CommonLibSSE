@@ -20,7 +20,7 @@ namespace RE
 		public TESIcon			// 040
 	{
 	public:
-		inline static const void* RTTI = RTTI_ActorValueInfo;
+		inline static constexpr auto RTTI = RTTI_ActorValueInfo;
 
 
 		enum { kTypeID = FormType::ActorValueInfo };

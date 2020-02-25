@@ -8,7 +8,7 @@ namespace RE
 	class hkbGenerator : public hkbNode
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkbGenerator;
+		inline static constexpr auto RTTI = RTTI_hkbGenerator;
 
 
 		virtual ~hkbGenerator();				// 00

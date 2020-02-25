@@ -8,7 +8,7 @@ namespace RE
 	class IMovementDirectControl : public IMovementInterface
 	{
 	public:
-		inline static const void* RTTI = RTTI_IMovementDirectControl;
+		inline static constexpr auto RTTI = RTTI_IMovementDirectControl;
 
 
 		virtual ~IMovementDirectControl();	// 00

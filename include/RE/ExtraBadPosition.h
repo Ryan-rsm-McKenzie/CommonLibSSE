@@ -9,7 +9,7 @@ namespace RE
 	class ExtraBadPosition : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraBadPosition;
+		inline static constexpr auto RTTI = RTTI_ExtraBadPosition;
 
 
 		enum { kExtraTypeID = ExtraDataType::kBadPosition };

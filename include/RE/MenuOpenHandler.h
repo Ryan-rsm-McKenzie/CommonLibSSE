@@ -8,7 +8,7 @@ namespace RE
 	struct MenuOpenHandler : public MenuEventHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_MenuOpenHandler;
+		inline static constexpr auto RTTI = RTTI_MenuOpenHandler;
 
 
 		virtual ~MenuOpenHandler();										// 00

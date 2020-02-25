@@ -8,7 +8,7 @@ namespace RE
 	class BGSTextureModel : public TESModel
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSTextureModel;
+		inline static constexpr auto RTTI = RTTI_BGSTextureModel;
 
 
 		virtual ~BGSTextureModel();								// 00

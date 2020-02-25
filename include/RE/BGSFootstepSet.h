@@ -26,7 +26,7 @@ namespace RE
 	class BGSFootstepSet : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSFootstepSet;
+		inline static constexpr auto RTTI = RTTI_BGSFootstepSet;
 
 
 		enum { kTypeID = FormType::FootstepSet };

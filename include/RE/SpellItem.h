@@ -16,7 +16,7 @@ namespace RE
 		public TESDescription			// B0
 	{
 	public:
-		inline static const void* RTTI = RTTI_SpellItem;
+		inline static constexpr auto RTTI = RTTI_SpellItem;
 
 
 		enum { kTypeID = FormType::Spell };

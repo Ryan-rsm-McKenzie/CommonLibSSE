@@ -34,7 +34,7 @@ namespace RE
 	class BGSScene : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSScene;
+		inline static constexpr auto RTTI = RTTI_BGSScene;
 
 
 		enum { kTypeID = FormType::Scene };

@@ -8,7 +8,7 @@ namespace RE
 	class Setting
 	{
 	public:
-		inline static const void* RTTI = RTTI_Setting;
+		inline static constexpr auto RTTI = RTTI_Setting;
 
 
 		enum class Type

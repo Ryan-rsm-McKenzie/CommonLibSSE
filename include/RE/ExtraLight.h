@@ -22,7 +22,7 @@ namespace RE
 	class ExtraLight : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraLight;
+		inline static constexpr auto RTTI = RTTI_ExtraLight;
 
 
 		enum { kExtraTypeID = ExtraDataType::kLight };

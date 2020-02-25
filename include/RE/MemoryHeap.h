@@ -8,7 +8,7 @@ namespace RE
 	class MemoryHeap : public AbstractHeap
 	{
 	public:
-		inline static const void* RTTI = RTTI_MemoryHeap;
+		inline static constexpr auto RTTI = RTTI_MemoryHeap;
 
 
 		virtual ~MemoryHeap();																									// 00

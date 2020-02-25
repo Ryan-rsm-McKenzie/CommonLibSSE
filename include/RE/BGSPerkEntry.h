@@ -13,7 +13,7 @@ namespace RE
 	class BGSPerkEntry
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSPerkEntry;
+		inline static constexpr auto RTTI = RTTI_BGSPerkEntry;
 
 
 		using EntryPoint = BGSEntryPoint::ENTRY_POINT;

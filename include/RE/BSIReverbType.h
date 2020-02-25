@@ -6,7 +6,7 @@ namespace RE
 	class BSIReverbType
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSIReverbType;
+		inline static constexpr auto RTTI = RTTI_BSIReverbType;
 
 
 		// add

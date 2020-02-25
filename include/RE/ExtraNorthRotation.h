@@ -9,7 +9,7 @@ namespace RE
 	class ExtraNorthRotation : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraNorthRotation;
+		inline static constexpr auto RTTI = RTTI_ExtraNorthRotation;
 
 
 		enum { kExtraTypeID = ExtraDataType::kNorthRotation };

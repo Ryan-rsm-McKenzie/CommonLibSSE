@@ -12,8 +12,8 @@ namespace RE
 	class BSFadeNode : public NiNode
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSFadeNode;
-		inline static const void* Ni_RTTI = NiRTTI_BSFadeNode;
+		inline static constexpr auto RTTI = RTTI_BSFadeNode;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSFadeNode;
 
 
 		virtual ~BSFadeNode();																				// 00

@@ -9,7 +9,7 @@ namespace RE
 	class TESRegionDataMap : public TESRegionData
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESRegionDataMap;
+		inline static constexpr auto RTTI = RTTI_TESRegionDataMap;
 
 
 		enum { kTypeID = Type::kMap };

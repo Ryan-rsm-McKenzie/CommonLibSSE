@@ -6,7 +6,7 @@ namespace RE
 	class hkBaseObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkBaseObject;
+		inline static constexpr auto RTTI = RTTI_hkBaseObject;
 
 
 		virtual ~hkBaseObject() = default;	// 00

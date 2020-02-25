@@ -24,7 +24,7 @@ namespace RE
 	class ExtraAliasInstanceArray : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraAliasInstanceArray;
+		inline static constexpr auto RTTI = RTTI_ExtraAliasInstanceArray;
 
 
 		enum { kExtraTypeID = ExtraDataType::kAliasInstanceArray };

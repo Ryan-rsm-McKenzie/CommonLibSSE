@@ -19,7 +19,7 @@ namespace RE
 			class RawFuncCallQuery : public IFuncCallQuery
 			{
 			public:
-				inline static const void* RTTI = RTTI_BSScript__Internal__RawFuncCallQuery;
+				inline static constexpr auto RTTI = RTTI_BSScript__Internal__RawFuncCallQuery;
 
 
 				virtual ~RawFuncCallQuery();																																						// 00

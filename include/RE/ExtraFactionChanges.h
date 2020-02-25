@@ -14,7 +14,7 @@ namespace RE
 	class ExtraFactionChanges : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraFactionChanges;
+		inline static constexpr auto RTTI = RTTI_ExtraFactionChanges;
 
 
 		enum { kExtraTypeID = ExtraDataType::kFactionChanges };

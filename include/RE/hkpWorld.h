@@ -60,7 +60,7 @@ namespace RE
 	class hkpWorld : public hkReferencedObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpWorld;
+		inline static constexpr auto RTTI = RTTI_hkpWorld;
 
 
 		virtual ~hkpWorld();																							// 00

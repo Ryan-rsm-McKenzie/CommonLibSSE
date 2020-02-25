@@ -36,7 +36,7 @@ namespace RE
 	class TESIdleForm : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESIdleForm;
+		inline static constexpr auto RTTI = RTTI_TESIdleForm;
 
 
 		enum { kTypeID = FormType::Idle };

@@ -20,7 +20,7 @@ namespace RE
 		public BSTEventSink<MenuOpenCloseEvent>	// 30
 	{
 	public:
-		inline static const void* RTTI = RTTI_DialogueMenu;
+		inline static constexpr auto RTTI = RTTI_DialogueMenu;
 		constexpr static std::string_view MENU_NAME = "Dialogue Menu";
 
 

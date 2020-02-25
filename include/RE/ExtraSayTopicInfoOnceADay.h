@@ -22,7 +22,7 @@ namespace RE
 	class ExtraSayTopicInfoOnceADay : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraSayTopicInfoOnceADay;
+		inline static constexpr auto RTTI = RTTI_ExtraSayTopicInfoOnceADay;
 
 
 		enum { kExtraTypeID = ExtraDataType::kSayTopicInfoOnceADay };

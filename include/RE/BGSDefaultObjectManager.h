@@ -414,7 +414,7 @@ namespace RE
 		public BSTSingletonImplicit<BGSDefaultObjectManager>	// 020
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSDefaultObjectManager;
+		inline static constexpr auto RTTI = RTTI_BGSDefaultObjectManager;
 
 
 		using DefaultObject = DEFAULT_OBJECT;

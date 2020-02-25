@@ -8,7 +8,7 @@ namespace RE
 	class MapZoomHandler : public MapInputHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_MapZoomHandler;
+		inline static constexpr auto RTTI = RTTI_MapZoomHandler;
 
 
 		virtual ~MapZoomHandler();										// 00

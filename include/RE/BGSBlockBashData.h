@@ -9,7 +9,7 @@ namespace RE
 	class BGSBlockBashData : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSBlockBashData;
+		inline static constexpr auto RTTI = RTTI_BGSBlockBashData;
 
 
 		virtual ~BGSBlockBashData();										// 00

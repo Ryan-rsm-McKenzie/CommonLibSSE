@@ -8,7 +8,7 @@ namespace RE
 	class IMessageBoxCallback : public BSIntrusiveRefCounted
 	{
 	public:
-		inline static const void* RTTI = RTTI_IMessageBoxCallback;
+		inline static constexpr auto RTTI = RTTI_IMessageBoxCallback;
 
 
 		enum class Message : UInt8

@@ -8,7 +8,7 @@ namespace RE
 	class ahkpWorld : public hkpWorld
 	{
 	public:
-		inline static const void* RTTI = RTTI_ahkpWorld;
+		inline static constexpr auto RTTI = RTTI_ahkpWorld;
 
 
 		virtual ~ahkpWorld();	// 00

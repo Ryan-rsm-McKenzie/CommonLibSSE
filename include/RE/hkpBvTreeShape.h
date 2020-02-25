@@ -13,7 +13,7 @@ namespace RE
 	class hkpBvTreeShape : public hkpShape
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpBvTreeShape;
+		inline static constexpr auto RTTI = RTTI_hkpBvTreeShape;
 
 
 		enum class BvTreeType : UInt8

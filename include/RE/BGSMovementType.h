@@ -11,7 +11,7 @@ namespace RE
 	class BGSMovementType : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSMovementType;
+		inline static constexpr auto RTTI = RTTI_BGSMovementType;
 
 
 		enum { kTypeID = FormType::MovementType };

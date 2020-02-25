@@ -13,7 +13,7 @@ namespace RE
 		public NiRefObject	// 180
 	{
 	public:
-		inline static const void* RTTI = RTTI_Archive;
+		inline static constexpr auto RTTI = RTTI_Archive;
 
 
 		virtual ~Archive();	// 00

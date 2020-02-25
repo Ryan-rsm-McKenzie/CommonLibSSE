@@ -8,7 +8,7 @@ namespace RE
 	class hkpRigidBody : public hkpEntity
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpRigidBody;
+		inline static constexpr auto RTTI = RTTI_hkpRigidBody;
 
 
 		virtual ~hkpRigidBody();																		// 00

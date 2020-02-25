@@ -10,7 +10,7 @@ namespace RE
 	class ExtraEnableStateParent : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraEnableStateParent;
+		inline static constexpr auto RTTI = RTTI_ExtraEnableStateParent;
 
 
 		enum { kExtraTypeID = ExtraDataType::kEnableStateParent };

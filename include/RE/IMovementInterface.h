@@ -6,7 +6,7 @@ namespace RE
 	class IMovementInterface
 	{
 	public:
-		inline static const void* RTTI = RTTI_IMovementInterface;
+		inline static constexpr auto RTTI = RTTI_IMovementInterface;
 
 
 		virtual ~IMovementInterface();

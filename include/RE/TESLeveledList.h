@@ -26,7 +26,7 @@ namespace RE
 	class TESLeveledList : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESLeveledList;
+		inline static constexpr auto RTTI = RTTI_TESLeveledList;
 
 
 		enum Flag : UInt8	// LVLF

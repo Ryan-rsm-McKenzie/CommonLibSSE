@@ -106,7 +106,7 @@ namespace RE
 	class TESImageSpaceModifier : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESImageSpaceModifier;
+		inline static constexpr auto RTTI = RTTI_TESImageSpaceModifier;
 
 
 		enum { kTypeID = FormType::ImageAdapter };

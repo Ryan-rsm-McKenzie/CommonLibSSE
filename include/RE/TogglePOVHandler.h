@@ -8,7 +8,7 @@ namespace RE
 	struct TogglePOVHandler : public HeldStateHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_TogglePOVHandler;
+		inline static constexpr auto RTTI = RTTI_TogglePOVHandler;
 
 
 		virtual ~TogglePOVHandler();																// 00

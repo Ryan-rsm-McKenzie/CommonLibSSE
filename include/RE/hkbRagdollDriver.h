@@ -8,7 +8,7 @@ namespace RE
 	class hkbRagdollDriver : public hkReferencedObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkbRagdollDriver;
+		inline static constexpr auto RTTI = RTTI_hkbRagdollDriver;
 
 
 		virtual ~hkbRagdollDriver();	// 00

@@ -14,7 +14,7 @@ namespace RE
 	class ExtraHavok : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraHavok;
+		inline static constexpr auto RTTI = RTTI_ExtraHavok;
 
 
 		enum { kExtraTypeID = ExtraDataType::kHavok };

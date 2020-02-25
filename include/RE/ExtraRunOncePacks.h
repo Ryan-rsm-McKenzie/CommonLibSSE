@@ -21,7 +21,7 @@ namespace RE
 	class ExtraRunOncePacks : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraRunOncePacks;
+		inline static constexpr auto RTTI = RTTI_ExtraRunOncePacks;
 
 
 		enum { kExtraTypeID = ExtraDataType::kRunOncePacks };

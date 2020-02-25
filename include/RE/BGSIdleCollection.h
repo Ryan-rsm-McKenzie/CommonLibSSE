@@ -11,7 +11,7 @@ namespace RE
 	class BGSIdleCollection : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSIdleCollection;
+		inline static constexpr auto RTTI = RTTI_BGSIdleCollection;
 
 
 		enum class IdleFlags : SInt8

@@ -28,7 +28,7 @@ namespace RE
 		public BGSKeywordForm	// 40
 	{
 	public:
-		inline static const void* RTTI = RTTI_MagicItem;
+		inline static constexpr auto RTTI = RTTI_MagicItem;
 
 
 		class PreloadableVisitor

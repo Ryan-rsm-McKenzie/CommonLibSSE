@@ -10,7 +10,7 @@ namespace RE
 	class ExtraSoul : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraSoul;
+		inline static constexpr auto RTTI = RTTI_ExtraSoul;
 
 
 		enum { kExtraTypeID = ExtraDataType::kSoul };

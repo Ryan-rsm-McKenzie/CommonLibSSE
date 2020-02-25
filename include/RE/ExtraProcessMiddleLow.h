@@ -9,7 +9,7 @@ namespace RE
 	class ExtraProcessMiddleLow : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraProcessMiddleLow;
+		inline static constexpr auto RTTI = RTTI_ExtraProcessMiddleLow;
 
 
 		enum { kExtraTypeID = ExtraDataType::kProcessMiddleLow };

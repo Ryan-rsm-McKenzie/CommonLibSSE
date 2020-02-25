@@ -12,7 +12,7 @@ namespace RE
 	class BSLightingShaderMaterialParallax : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSLightingShaderMaterialParallax;
+		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialParallax;
 
 
 		virtual ~BSLightingShaderMaterialParallax();								// 00

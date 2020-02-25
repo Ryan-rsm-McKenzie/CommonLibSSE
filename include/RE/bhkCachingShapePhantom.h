@@ -8,8 +8,8 @@ namespace RE
 	class bhkCachingShapePhantom : public bhkShapePhantom
 	{
 	public:
-		inline static const void* RTTI = RTTI_bhkCachingShapePhantom;
-		inline static const void* Ni_RTTI = NiRTTI_bhkCachingShapePhantom;
+		inline static constexpr auto RTTI = RTTI_bhkCachingShapePhantom;
+		inline static constexpr auto Ni_RTTI = NiRTTI_bhkCachingShapePhantom;
 
 
 		virtual ~bhkCachingShapePhantom();											// 00

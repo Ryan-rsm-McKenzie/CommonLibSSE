@@ -12,7 +12,7 @@ namespace RE
 	class BGSSkillPerkTreeNode
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSSkillPerkTreeNode;
+		inline static constexpr auto RTTI = RTTI_BGSSkillPerkTreeNode;
 
 
 		virtual ~BGSSkillPerkTreeNode();	// 00

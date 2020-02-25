@@ -48,8 +48,8 @@ namespace RE
 	class NiAVObject : public NiObjectNET
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiAVObject;
-		inline static const void* Ni_RTTI = NiRTTI_NiAVObject;
+		inline static constexpr auto RTTI = RTTI_NiAVObject;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiAVObject;
 
 
 		enum class Flag : UInt32

@@ -11,7 +11,7 @@ namespace RE
 	class TESRegionList : public BSSimpleList<TESRegion*>
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESRegionList;
+		inline static constexpr auto RTTI = RTTI_TESRegionList;
 
 
 		virtual ~TESRegionList();	// 00

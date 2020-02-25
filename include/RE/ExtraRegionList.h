@@ -12,7 +12,7 @@ namespace RE
 	class ExtraRegionList : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraRegionList;
+		inline static constexpr auto RTTI = RTTI_ExtraRegionList;
 
 
 		enum { kExtraTypeID = ExtraDataType::kRegionList };

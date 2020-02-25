@@ -8,7 +8,7 @@ namespace RE
 	struct ShoutHandler : public PlayerInputHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_ShoutHandler;
+		inline static constexpr auto RTTI = RTTI_ShoutHandler;
 
 
 		virtual ~ShoutHandler();																	// 00

@@ -13,7 +13,7 @@ namespace RE
 	class BGSEntryPointPerkEntry : public BGSPerkEntry
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSEntryPointPerkEntry;
+		inline static constexpr auto RTTI = RTTI_BGSEntryPointPerkEntry;
 
 
 		struct EntryData	// DATA

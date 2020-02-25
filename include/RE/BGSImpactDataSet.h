@@ -13,7 +13,7 @@ namespace RE
 		public BGSPreloadable	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSImpactDataSet;
+		inline static constexpr auto RTTI = RTTI_BGSImpactDataSet;
 
 
 		enum { kTypeID = FormType::ImpactDataSet };

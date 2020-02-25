@@ -12,7 +12,7 @@ namespace RE
 	class ExtraContainerChanges : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraContainerChanges;
+		inline static constexpr auto RTTI = RTTI_ExtraContainerChanges;
 
 
 		enum { kExtraTypeID = ExtraDataType::kContainerChanges };

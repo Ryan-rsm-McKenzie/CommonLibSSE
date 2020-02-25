@@ -20,7 +20,7 @@ namespace RE
 		public PrecomputedNavmeshInfoPathMap	// 30
 	{
 	public:
-		inline static const void* RTTI = RTTI_NavMeshInfoMap;
+		inline static constexpr auto RTTI = RTTI_NavMeshInfoMap;
 
 
 		enum { kTypeID = FormType::Navigation };

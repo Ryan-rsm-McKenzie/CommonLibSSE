@@ -8,7 +8,7 @@ namespace RE
 	class BSFile : public NiFile
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSFile;
+		inline static constexpr auto RTTI = RTTI_BSFile;
 
 
 		virtual ~BSFile();												// 00

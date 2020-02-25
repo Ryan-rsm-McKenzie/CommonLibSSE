@@ -12,7 +12,7 @@ namespace RE
 	class ExtraCellMusicType : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraCellMusicType;
+		inline static constexpr auto RTTI = RTTI_ExtraCellMusicType;
 
 
 		enum { kExtraTypeID = ExtraDataType::kCellMusicType };

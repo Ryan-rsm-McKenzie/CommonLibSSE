@@ -86,7 +86,7 @@ namespace RE
 		public TESTexture		// 40
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESClass;
+		inline static constexpr auto RTTI = RTTI_TESClass;
 
 
 		enum { kTypeID = FormType::Class };

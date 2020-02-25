@@ -39,8 +39,8 @@ namespace RE
 	class NiObject : public NiRefObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiObject;
-		inline static const void* Ni_RTTI = NiRTTI_NiObject;
+		inline static constexpr auto RTTI = RTTI_NiObject;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiObject;
 
 
 		virtual ~NiObject();																// 00

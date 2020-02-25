@@ -14,7 +14,7 @@ namespace RE
 		public BSTEventSource<BSGamepadEvent>	// 70
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSGamepadDevice;
+		inline static constexpr auto RTTI = RTTI_BSGamepadDevice;
 
 
 		virtual ~BSGamepadDevice();					// 00

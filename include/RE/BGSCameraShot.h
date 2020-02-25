@@ -14,7 +14,7 @@ namespace RE
 		public TESImageSpaceModifiableForm	// 48
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSCameraShot;
+		inline static constexpr auto RTTI = RTTI_BGSCameraShot;
 
 
 		enum { kTypeID = FormType::CameraShot };

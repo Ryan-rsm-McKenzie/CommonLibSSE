@@ -29,7 +29,7 @@ namespace RE
 	class hkpWorldObject : public hkReferencedObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpWorldObject;
+		inline static constexpr auto RTTI = RTTI_hkpWorldObject;
 
 
 		enum class MultiThreadingChecks : UInt32

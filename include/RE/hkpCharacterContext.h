@@ -44,7 +44,7 @@ namespace RE
 	class hkpCharacterContext : public hkReferencedObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpCharacterContext;
+		inline static constexpr auto RTTI = RTTI_hkpCharacterContext;
 
 
 		enum class CharacterType : UInt32

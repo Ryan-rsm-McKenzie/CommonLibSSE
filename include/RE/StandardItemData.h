@@ -9,7 +9,7 @@ namespace RE
 	class StandardItemData
 	{
 	public:
-		inline static const void* RTTI = RTTI_StandardItemData;
+		inline static constexpr auto RTTI = RTTI_StandardItemData;
 
 
 		virtual ~StandardItemData();			// 00

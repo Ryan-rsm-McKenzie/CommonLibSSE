@@ -12,7 +12,7 @@ namespace RE
 	class BSIMusicType
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSIMusicType;
+		inline static constexpr auto RTTI = RTTI_BSIMusicType;
 
 
 		enum class Flag : UInt32	// FNAM

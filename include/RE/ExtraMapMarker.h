@@ -104,7 +104,7 @@ namespace RE
 	class ExtraMapMarker : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraMapMarker;
+		inline static constexpr auto RTTI = RTTI_ExtraMapMarker;
 
 
 		enum { kExtraTypeID = ExtraDataType::kMapMarker };

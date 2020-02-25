@@ -13,7 +13,7 @@ namespace RE
 		public GFxLogBase<GFxLog>	// 18
 	{
 	public:
-		inline static const void* RTTI = RTTI_GFxLog;
+		inline static constexpr auto RTTI = RTTI_GFxLog;
 
 
 		GFxLog();

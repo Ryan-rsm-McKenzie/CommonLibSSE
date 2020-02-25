@@ -13,7 +13,7 @@ namespace RE
 	class BGSSoundDescriptor : public BSISoundDescriptor
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSSoundDescriptor;
+		inline static constexpr auto RTTI = RTTI_BGSSoundDescriptor;
 
 
 		virtual ~BGSSoundDescriptor();				// 00

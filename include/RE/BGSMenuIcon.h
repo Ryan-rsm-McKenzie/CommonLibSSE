@@ -12,7 +12,7 @@ namespace RE
 		public TESIcon	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSMenuIcon;
+		inline static constexpr auto RTTI = RTTI_BGSMenuIcon;
 
 
 		enum { kTypeID = FormType::MenuIcon };

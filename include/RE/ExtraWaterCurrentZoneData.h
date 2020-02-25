@@ -21,7 +21,7 @@ namespace RE
 	class ExtraWaterCurrentZoneData : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraWaterCurrentZoneData;
+		inline static constexpr auto RTTI = RTTI_ExtraWaterCurrentZoneData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kWaterCurrentZoneData };

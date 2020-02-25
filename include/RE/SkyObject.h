@@ -12,7 +12,7 @@ namespace RE
 	class SkyObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_SkyObject;
+		inline static constexpr auto RTTI = RTTI_SkyObject;
 
 
 		virtual ~SkyObject();								// 00

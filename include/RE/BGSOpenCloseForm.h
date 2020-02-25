@@ -10,7 +10,7 @@ namespace RE
 	class BGSOpenCloseForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSOpenCloseForm;
+		inline static constexpr auto RTTI = RTTI_BGSOpenCloseForm;
 
 
 		virtual ~BGSOpenCloseForm();														// 00

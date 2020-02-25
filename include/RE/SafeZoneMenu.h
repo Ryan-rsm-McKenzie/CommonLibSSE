@@ -13,7 +13,7 @@ namespace RE
 	class SafeZoneMenu : public IMenu
 	{
 	public:
-		inline static const void* RTTI = RTTI_SafeZoneMenu;
+		inline static constexpr auto RTTI = RTTI_SafeZoneMenu;
 		constexpr static std::string_view MENU_NAME = "SafeZoneMenu";
 
 

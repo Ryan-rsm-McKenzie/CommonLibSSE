@@ -12,7 +12,7 @@ namespace RE
 	class ExtraEncounterZone : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraEncounterZone;
+		inline static constexpr auto RTTI = RTTI_ExtraEncounterZone;
 
 
 		enum { kExtraTypeID = ExtraDataType::kEncounterZone };

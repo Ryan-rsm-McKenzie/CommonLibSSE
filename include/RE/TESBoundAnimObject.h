@@ -8,7 +8,7 @@ namespace RE
 	class TESBoundAnimObject : public TESBoundObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESBoundAnimObject;
+		inline static constexpr auto RTTI = RTTI_TESBoundAnimObject;
 
 
 		virtual ~TESBoundAnimObject();								// 00

@@ -51,7 +51,7 @@ namespace RE
 		public BSTEventSink<BSGamerProfileEvent>	// 08
 	{
 	public:
-		inline static const void* RTTI = RTTI_Main;
+		inline static constexpr auto RTTI = RTTI_Main;
 
 
 		virtual ~Main();																																// 00

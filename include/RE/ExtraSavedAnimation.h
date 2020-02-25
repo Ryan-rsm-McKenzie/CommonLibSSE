@@ -10,7 +10,7 @@ namespace RE
 	class ExtraSavedAnimation : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraSavedAnimation;
+		inline static constexpr auto RTTI = RTTI_ExtraSavedAnimation;
 
 
 		enum { kExtraTypeID = ExtraDataType::kSavedAnimation };

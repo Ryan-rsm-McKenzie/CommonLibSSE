@@ -16,7 +16,7 @@ namespace RE
 	class Hazard : public TESObjectREFR
 	{
 	public:
-		inline static const void* RTTI = RTTI_Hazard;
+		inline static constexpr auto RTTI = RTTI_Hazard;
 
 
 		enum { kTypeID = FormType::PlacedHazard };

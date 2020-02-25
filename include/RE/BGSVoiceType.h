@@ -25,7 +25,7 @@ namespace RE
 	class BGSVoiceType : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSVoiceType;
+		inline static constexpr auto RTTI = RTTI_BGSVoiceType;
 
 
 		enum { kTypeID = FormType::VoiceType };

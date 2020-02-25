@@ -10,7 +10,7 @@ namespace RE
 	class BSUIMessageData : public IUIMessageData
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSUIMessageData;
+		inline static constexpr auto RTTI = RTTI_BSUIMessageData;
 
 
 		union Data

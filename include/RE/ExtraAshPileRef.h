@@ -10,7 +10,7 @@ namespace RE
 	class ExtraAshPileRef : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraAshPileRef;
+		inline static constexpr auto RTTI = RTTI_ExtraAshPileRef;
 
 
 		enum { kExtraTypeID = ExtraDataType::kAshPileRef };

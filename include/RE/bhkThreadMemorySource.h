@@ -15,7 +15,7 @@ namespace RE
 		public IMemoryHeap			// 08
 	{
 	public:
-		inline static const void* RTTI = RTTI_bhkThreadMemorySource;
+		inline static constexpr auto RTTI = RTTI_bhkThreadMemorySource;
 
 
 		struct FreeBlock

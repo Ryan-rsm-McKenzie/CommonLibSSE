@@ -15,7 +15,7 @@ namespace RE
 		public BSISoundDescriptor	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSSoundDescriptorForm;
+		inline static constexpr auto RTTI = RTTI_BGSSoundDescriptorForm;
 
 
 		enum { kTypeID = FormType::SoundRecord };

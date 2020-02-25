@@ -9,7 +9,7 @@ namespace RE
 	class StealthMeter : public HUDObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_StealthMeter;
+		inline static constexpr auto RTTI = RTTI_StealthMeter;
 
 
 		virtual ~StealthMeter();													// 00

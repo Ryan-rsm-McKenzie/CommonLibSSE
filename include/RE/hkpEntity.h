@@ -24,7 +24,7 @@ namespace RE
 	class hkpEntity : public hkpWorldObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpEntity;
+		inline static constexpr auto RTTI = RTTI_hkpEntity;
 
 
 		enum class SpuCollisionCallbackEventFilter : UInt8

@@ -10,7 +10,7 @@ namespace RE
 	class BGSStoryManagerBranchNode : public BGSStoryManagerNodeBase
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSStoryManagerBranchNode;
+		inline static constexpr auto RTTI = RTTI_BGSStoryManagerBranchNode;
 
 
 		enum { kTypeID = FormType::StoryManagerBranchNode };

@@ -14,7 +14,7 @@ namespace RE
 	class MessageBoxData : public IUIMessageData
 	{
 	public:
-		inline static const void* RTTI = RTTI_MessageBoxData;
+		inline static constexpr auto RTTI = RTTI_MessageBoxData;
 
 
 		virtual ~MessageBoxData();	// 00

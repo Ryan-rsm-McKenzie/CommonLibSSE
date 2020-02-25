@@ -13,7 +13,7 @@ namespace RE
 	class ExtraCell3D : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraCell3D;
+		inline static constexpr auto RTTI = RTTI_ExtraCell3D;
 
 
 		enum { kExtraTypeID = ExtraDataType::kCell3D };

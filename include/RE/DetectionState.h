@@ -9,7 +9,7 @@ namespace RE
 	class DetectionState : public NiRefObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_DetectionState;
+		inline static constexpr auto RTTI = RTTI_DetectionState;
 
 
 		virtual ~DetectionState();	// 00

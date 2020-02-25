@@ -9,7 +9,7 @@ namespace RE
 	class BGSRelationship : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSRelationship;
+		inline static constexpr auto RTTI = RTTI_BGSRelationship;
 
 
 		enum { kTypeID = FormType::Relationship };

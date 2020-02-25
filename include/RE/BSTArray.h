@@ -19,7 +19,7 @@ namespace RE
 		class IAllocatorFunctor
 		{
 		public:
-			inline static const void* RTTI = RTTI_BSTArrayBase__IAllocatorFunctor;
+			inline static constexpr auto RTTI = RTTI_BSTArrayBase__IAllocatorFunctor;
 
 
 			// add

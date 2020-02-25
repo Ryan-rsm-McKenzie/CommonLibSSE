@@ -8,7 +8,7 @@ namespace RE
 	class MapLookHandler : public MapInputHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_MapLookHandler;
+		inline static constexpr auto RTTI = RTTI_MapLookHandler;
 
 
 		virtual ~MapLookHandler();												// 00

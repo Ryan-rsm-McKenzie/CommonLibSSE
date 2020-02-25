@@ -10,7 +10,7 @@ namespace RE
 	class TESSoulGem : public TESObjectMISC
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESSoulGem;
+		inline static constexpr auto RTTI = RTTI_TESSoulGem;
 
 
 		enum { kTypeID = FormType::SoulGem };

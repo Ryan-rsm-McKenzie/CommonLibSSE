@@ -15,13 +15,13 @@ namespace RE
 	class LocalMapCamera : public TESCamera
 	{
 	public:
-		inline static const void* RTTI = RTTI_LocalMapCamera;
+		inline static constexpr auto RTTI = RTTI_LocalMapCamera;
 
 
 		class DefaultState : public TESCameraState
 		{
 		public:
-			inline static const void* RTTI = RTTI_LocalMapCamera__DefaultState;
+			inline static constexpr auto RTTI = RTTI_LocalMapCamera__DefaultState;
 
 			
 			virtual ~DefaultState();														// 00

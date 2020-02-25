@@ -9,7 +9,7 @@ namespace RE
 	class ExtraOutfitItem : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraOutfitItem;
+		inline static constexpr auto RTTI = RTTI_ExtraOutfitItem;
 
 
 		enum { kExtraTypeID = ExtraDataType::kOutfitItem };

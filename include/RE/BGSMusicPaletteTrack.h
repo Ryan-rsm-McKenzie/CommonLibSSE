@@ -9,7 +9,7 @@ namespace RE
 	class BGSMusicPaletteTrack : public BGSMusicTrack
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSMusicPaletteTrack;
+		inline static constexpr auto RTTI = RTTI_BGSMusicPaletteTrack;
 
 
 		virtual ~BGSMusicPaletteTrack();									// 00

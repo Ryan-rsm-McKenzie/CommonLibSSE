@@ -16,7 +16,7 @@ namespace RE
 	class BGSRefAlias : public BGSBaseAlias
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSRefAlias;
+		inline static constexpr auto RTTI = RTTI_BGSRefAlias;
 
 
 		struct ForcedFillData	// kForced

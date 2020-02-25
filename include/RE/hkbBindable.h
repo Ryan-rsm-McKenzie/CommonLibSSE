@@ -14,7 +14,7 @@ namespace RE
 	class hkbBindable : public hkReferencedObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkbBindable;
+		inline static constexpr auto RTTI = RTTI_hkbBindable;
 
 
 		virtual ~hkbBindable();			// 00

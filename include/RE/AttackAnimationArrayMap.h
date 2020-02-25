@@ -13,7 +13,7 @@ namespace RE
 		public BSTHashMap<UInt32, BSTArray<SetEventData> const*>	// 10
 	{
 	public:
-		inline static const void* RTTI = RTTI_AttackAnimationArrayMap;
+		inline static constexpr auto RTTI = RTTI_AttackAnimationArrayMap;
 
 
 		// hash key (hiword = right hand | loward = left hand)

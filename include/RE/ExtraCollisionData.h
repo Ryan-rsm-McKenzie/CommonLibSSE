@@ -17,7 +17,7 @@ namespace RE
 	class ExtraCollisionData : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraCollisionData;
+		inline static constexpr auto RTTI = RTTI_ExtraCollisionData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kCollisionData };

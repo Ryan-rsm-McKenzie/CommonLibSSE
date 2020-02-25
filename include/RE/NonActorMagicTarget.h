@@ -17,7 +17,7 @@ namespace RE
 		public MagicTarget	// 10
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSExtraData;
+		inline static constexpr auto RTTI = RTTI_BSExtraData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kNonActorMagicTarget };

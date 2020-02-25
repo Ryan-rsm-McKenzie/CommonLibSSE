@@ -10,7 +10,7 @@ namespace RE
 	class ExtraEnchantment : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraEnchantment;
+		inline static constexpr auto RTTI = RTTI_ExtraEnchantment;
 
 
 		enum { kExtraTypeID = ExtraDataType::kEnchantment };

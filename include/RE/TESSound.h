@@ -9,7 +9,7 @@ namespace RE
 	class TESSound : public TESBoundAnimObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESSound;
+		inline static constexpr auto RTTI = RTTI_TESSound;
 
 
 		enum { kTypeID = FormType::Sound };

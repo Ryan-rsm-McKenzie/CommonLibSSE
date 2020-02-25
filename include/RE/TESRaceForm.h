@@ -11,7 +11,7 @@ namespace RE
 	class TESRaceForm : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESRaceForm;
+		inline static constexpr auto RTTI = RTTI_TESRaceForm;
 
 
 		virtual ~TESRaceForm();												// 00

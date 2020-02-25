@@ -65,7 +65,7 @@ namespace RE
 	class BGSDestructibleObjectForm : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSDestructibleObjectForm;
+		inline static constexpr auto RTTI = RTTI_BGSDestructibleObjectForm;
 
 
 		virtual ~BGSDestructibleObjectForm();								// 00

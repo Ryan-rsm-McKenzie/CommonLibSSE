@@ -25,7 +25,7 @@ namespace RE
 		public hkpPhantomListener	// 18
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpCharacterProxy;
+		inline static constexpr auto RTTI = RTTI_hkpCharacterProxy;
 
 
 		virtual ~hkpCharacterProxy();																																																													// 00

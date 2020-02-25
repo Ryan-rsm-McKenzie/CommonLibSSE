@@ -11,7 +11,7 @@ namespace RE
 	class BGSAbilityPerkEntry : public BGSPerkEntry
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSAbilityPerkEntry;
+		inline static constexpr auto RTTI = RTTI_BGSAbilityPerkEntry;
 
 
 		virtual ~BGSAbilityPerkEntry();						// 00

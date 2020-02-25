@@ -9,7 +9,7 @@ namespace RE
 	class ExtraHeadTrackingWeight : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraHeadTrackingWeight;
+		inline static constexpr auto RTTI = RTTI_ExtraHeadTrackingWeight;
 
 
 		enum { kExtraTypeID = ExtraDataType::kHeadTrackingWeight };

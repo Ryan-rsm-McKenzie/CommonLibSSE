@@ -8,7 +8,7 @@ namespace RE
 	struct SneakHandler : public PlayerInputHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_SneakHandler;
+		inline static constexpr auto RTTI = RTTI_SneakHandler;
 
 
 		virtual ~SneakHandler();																	// 00

@@ -16,7 +16,7 @@ namespace RE
 	class ConeProjectile : public Projectile
 	{
 	public:
-		inline static const void* RTTI = RTTI_ConeProjectile;
+		inline static constexpr auto RTTI = RTTI_ConeProjectile;
 
 
 		enum { kTypeID = FormType::ProjectileCone };

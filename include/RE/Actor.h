@@ -133,7 +133,7 @@ namespace RE
 		using EntryPoint = BGSEntryPointPerkEntry::EntryPoint;
 
 	public:
-		inline static const void* RTTI = RTTI_Actor;
+		inline static constexpr auto RTTI = RTTI_Actor;
 
 
 		enum { kTypeID = FormType::ActorCharacter };

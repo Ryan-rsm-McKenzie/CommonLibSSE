@@ -21,7 +21,7 @@ namespace RE
 		public IAnimationSetCallbackFunctor		// 148
 	{
 	public:
-		inline static const void* RTTI = RTTI_MovementControllerNPC;
+		inline static constexpr auto RTTI = RTTI_MovementControllerNPC;
 
 
 		virtual ~MovementControllerNPC();	// 00

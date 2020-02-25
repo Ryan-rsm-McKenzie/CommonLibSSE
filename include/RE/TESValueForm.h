@@ -8,7 +8,7 @@ namespace RE
 	class TESValueForm : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESValueForm;
+		inline static constexpr auto RTTI = RTTI_TESValueForm;
 
 
 		virtual ~TESValueForm();											// 00

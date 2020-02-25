@@ -14,13 +14,13 @@ namespace RE
 	class BGSStandardSoundDef : public BGSSoundDescriptor
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSStandardSoundDef;
+		inline static constexpr auto RTTI = RTTI_BGSStandardSoundDef;
 
 
 		struct SoundPlaybackCharacteristics : public BSISoundDescriptor::BSIPlaybackCharacteristics	// BNAM
 		{
 		public:
-			inline static const void* RTTI = RTTI_BGSStandardSoundDef__SoundPlaybackCharacteristics;
+			inline static constexpr auto RTTI = RTTI_BGSStandardSoundDef__SoundPlaybackCharacteristics;
 
 
 			// override (BSIPlaybackCharacteristics)

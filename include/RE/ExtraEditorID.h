@@ -10,7 +10,7 @@ namespace RE
 	class ExtraEditorID : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraEditorID;
+		inline static constexpr auto RTTI = RTTI_ExtraEditorID;
 
 
 		enum { kExtraTypeID = ExtraDataType::kEditorID };

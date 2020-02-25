@@ -10,7 +10,7 @@ namespace RE
 	class ExtraSavedHavokData : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraSavedHavokData;
+		inline static constexpr auto RTTI = RTTI_ExtraSavedHavokData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kSavedHavokData };

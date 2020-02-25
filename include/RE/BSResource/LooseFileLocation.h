@@ -24,7 +24,7 @@ namespace RE
 		class LooseFileLocation : public Location
 		{
 		public:
-			inline static const void* RTTI = RTTI_BSResource__LooseFileLocation;
+			inline static constexpr auto RTTI = RTTI_BSResource__LooseFileLocation;
 
 
 			virtual ~LooseFileLocation();																														// 00

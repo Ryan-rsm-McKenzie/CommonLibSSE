@@ -14,7 +14,7 @@ namespace RE
 		public TESModelTextureSwap	// 58
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESLevCharacter;
+		inline static constexpr auto RTTI = RTTI_TESLevCharacter;
 
 
 		enum { kTypeID = FormType::LeveledNPC };

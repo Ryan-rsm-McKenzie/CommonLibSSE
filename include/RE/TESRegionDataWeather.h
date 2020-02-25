@@ -12,7 +12,7 @@ namespace RE
 	class TESRegionDataWeather : public TESRegionData
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESRegionDataWeather;
+		inline static constexpr auto RTTI = RTTI_TESRegionDataWeather;
 
 
 		enum { kTypeID = Type::kWeather };

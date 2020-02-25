@@ -10,7 +10,7 @@ namespace RE
 	class BGSSceneAction
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSSceneAction;
+		inline static constexpr auto RTTI = RTTI_BGSSceneAction;
 
 
 		enum class Type : UInt32

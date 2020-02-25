@@ -19,7 +19,7 @@ namespace RE
 	class ExtraLevCreaModifier : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraLevCreaModifier;
+		inline static constexpr auto RTTI = RTTI_ExtraLevCreaModifier;
 
 
 		enum { kExtraTypeID = ExtraDataType::kLevCreaModifier };

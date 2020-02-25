@@ -9,7 +9,7 @@ namespace RE
 	class ExtraAlphaCutoff : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraAlphaCutoff;
+		inline static constexpr auto RTTI = RTTI_ExtraAlphaCutoff;
 
 
 		enum { kExtraTypeID = ExtraDataType::kAlphaCutoff };

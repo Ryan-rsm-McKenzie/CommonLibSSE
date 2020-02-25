@@ -15,7 +15,7 @@ namespace RE
 	class MenuEventHandler : public BSIntrusiveRefCounted
 	{
 	public:
-		inline static const void* RTTI = RTTI_MenuEventHandler;
+		inline static constexpr auto RTTI = RTTI_MenuEventHandler;
 
 
 		MenuEventHandler() = default;

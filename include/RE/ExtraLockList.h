@@ -12,7 +12,7 @@ namespace RE
 	class ExtraLockList : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraLockList;
+		inline static constexpr auto RTTI = RTTI_ExtraLockList;
 
 
 		enum { kExtraTypeID = ExtraDataType::kLockList };

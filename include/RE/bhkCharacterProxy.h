@@ -9,8 +9,8 @@ namespace RE
 	class bhkCharacterProxy : public bhkSerializable
 	{
 	public:
-		inline static const void* RTTI = RTTI_bhkCharacterProxy;
-		inline static const void* Ni_RTTI = NiRTTI_bhkCharacterProxy;
+		inline static constexpr auto RTTI = RTTI_bhkCharacterProxy;
+		inline static constexpr auto Ni_RTTI = NiRTTI_bhkCharacterProxy;
 
 
 		virtual ~bhkCharacterProxy();												// 00

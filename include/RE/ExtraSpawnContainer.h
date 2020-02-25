@@ -10,7 +10,7 @@ namespace RE
 	class ExtraSpawnContainer : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraSpawnContainer;
+		inline static constexpr auto RTTI = RTTI_ExtraSpawnContainer;
 
 
 		enum { kExtraTypeID = ExtraDataType::kSpawnContainer };

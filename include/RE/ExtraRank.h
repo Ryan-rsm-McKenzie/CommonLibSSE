@@ -9,7 +9,7 @@ namespace RE
 	class ExtraRank : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraRank;
+		inline static constexpr auto RTTI = RTTI_ExtraRank;
 
 
 		enum { kExtraTypeID = ExtraDataType::kRank };

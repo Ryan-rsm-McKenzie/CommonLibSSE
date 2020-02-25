@@ -8,7 +8,7 @@ namespace RE
 	class RaceSexCamera : public TESCamera
 	{
 	public:
-		inline static const void* RTTI = RTTI_RaceSexCamera;
+		inline static constexpr auto RTTI = RTTI_RaceSexCamera;
 
 
 		virtual ~RaceSexCamera();											// 00

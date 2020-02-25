@@ -24,7 +24,7 @@ namespace RE
 		public BSTEventSink<MenuOpenCloseEvent>	// 50
 	{
 	public:
-		inline static const void* RTTI = RTTI_CreationClubMenu;
+		inline static constexpr auto RTTI = RTTI_CreationClubMenu;
 		constexpr static std::string_view MENU_NAME = "Creation Club Menu";
 
 

@@ -11,8 +11,8 @@ namespace RE
 	class BSTextureSet : public NiObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSTextureSet;
-		inline static const void* Ni_RTTI = NiRTTI_BSTextureSet;
+		inline static constexpr auto RTTI = RTTI_BSTextureSet;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSTextureSet;
 
 
 		struct Textures

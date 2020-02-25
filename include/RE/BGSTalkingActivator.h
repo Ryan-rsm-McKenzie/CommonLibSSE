@@ -9,7 +9,7 @@ namespace RE
 	class BGSTalkingActivator : public TESObjectACTI
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSTalkingActivator;
+		inline static constexpr auto RTTI = RTTI_BGSTalkingActivator;
 
 
 		enum { kTypeID = FormType::TalkingActivator };

@@ -11,7 +11,7 @@ namespace RE
 	class TESFurniture : public TESObjectACTI
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESFurniture;
+		inline static constexpr auto RTTI = RTTI_TESFurniture;
 
 
 		enum { kTypeID = FormType::Furniture };

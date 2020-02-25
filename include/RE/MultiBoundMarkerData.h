@@ -10,7 +10,7 @@ namespace RE
 	class MultiBoundMarkerData : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_MultiBoundMarkerData;
+		inline static constexpr auto RTTI = RTTI_MultiBoundMarkerData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kMultiBoundMarkerData };

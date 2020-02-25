@@ -17,8 +17,8 @@ namespace RE
 	class NiInterpolator : public NiObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiInterpolator;
-		inline static const void* Ni_RTTI = NiRTTI_NiInterpolator;
+		inline static constexpr auto RTTI = RTTI_NiInterpolator;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiInterpolator;
 
 
 		virtual ~NiInterpolator();																					// 00

@@ -8,7 +8,7 @@ namespace RE
 	class Journal_StatsTab : public JournalTab
 	{
 	public:
-		inline static const void* RTTI = RTTI_Journal_StatsTab;
+		inline static constexpr auto RTTI = RTTI_Journal_StatsTab;
 
 
 		virtual ~Journal_StatsTab();								// 00

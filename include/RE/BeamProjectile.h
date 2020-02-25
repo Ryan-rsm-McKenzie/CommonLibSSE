@@ -17,7 +17,7 @@ namespace RE
 		public BSTEventSink<BSProceduralGeomEvent>			// 1D8
 	{
 	public:
-		inline static const void* RTTI = RTTI_BeamProjectile;
+		inline static constexpr auto RTTI = RTTI_BeamProjectile;
 
 
 		enum { kTypeID = FormType::ProjectileBeam };

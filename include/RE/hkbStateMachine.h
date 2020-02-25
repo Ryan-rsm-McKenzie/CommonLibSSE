@@ -16,7 +16,7 @@ namespace RE
 	class hkbStateMachine : public hkbGenerator
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkbStateMachine;
+		inline static constexpr auto RTTI = RTTI_hkbStateMachine;
 
 
 		enum class StartStateMode : UInt8
@@ -39,7 +39,7 @@ namespace RE
 		class StateInfo : public hkbBindable
 		{
 		public:
-			inline static const void* RTTI = RTTI_hkbStateMachine__StateInfo;
+			inline static constexpr auto RTTI = RTTI_hkbStateMachine__StateInfo;
 
 
 			virtual ~StateInfo();	// 00
@@ -62,7 +62,7 @@ namespace RE
 		class TransitionInfoArray : public hkReferencedObject
 		{
 		public:
-			inline static const void* RTTI = RTTI_hkbStateMachine__TransitionInfoArray;
+			inline static constexpr auto RTTI = RTTI_hkbStateMachine__TransitionInfoArray;
 
 
 			virtual ~TransitionInfoArray();	// 00

@@ -10,7 +10,7 @@ namespace RE
 	class TESTexture : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESTexture;
+		inline static constexpr auto RTTI = RTTI_TESTexture;
 
 
 		virtual ~TESTexture();													// 00

@@ -15,8 +15,8 @@ namespace RE
 	class NiTimeController : public NiObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiTimeController;
-		inline static const void* Ni_RTTI = NiRTTI_NiTimeController;
+		inline static constexpr auto RTTI = RTTI_NiTimeController;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiTimeController;
 
 
 		enum class CycleType : UInt32

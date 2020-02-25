@@ -10,7 +10,7 @@ namespace RE
 	class EnchantmentItem : public MagicItem
 	{
 	public:
-		inline static const void* RTTI = RTTI_EnchantmentItem;
+		inline static constexpr auto RTTI = RTTI_EnchantmentItem;
 
 
 		enum { kTypeID = FormType::Enchantment };

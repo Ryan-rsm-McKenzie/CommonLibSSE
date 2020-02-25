@@ -10,7 +10,7 @@ namespace RE
 	class ExtraHeadingTarget : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraHeadingTarget;
+		inline static constexpr auto RTTI = RTTI_ExtraHeadingTarget;
 
 
 		enum { kExtraTypeID = ExtraDataType::kHeadingTarget };

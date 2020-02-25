@@ -66,7 +66,7 @@ namespace RE
 	class TESForm : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESForm;
+		inline static constexpr auto RTTI = RTTI_TESForm;
 
 
 		enum { kTypeID = FormType::None };

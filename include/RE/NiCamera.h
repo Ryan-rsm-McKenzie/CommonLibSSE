@@ -11,8 +11,8 @@ namespace RE
 	class NiCamera : public NiAVObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiCamera;
-		inline static const void* Ni_RTTI = NiRTTI_NiCamera;
+		inline static constexpr auto RTTI = RTTI_NiCamera;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiCamera;
 
 
 		virtual ~NiCamera();														// 00

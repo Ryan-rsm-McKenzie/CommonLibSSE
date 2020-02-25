@@ -5,7 +5,7 @@ namespace RE
 {
 	struct IMapCameraCallbacks
 	{
-		inline static const void* RTTI = RTTI_IMapCameraCallbacks;
+		inline static constexpr auto RTTI = RTTI_IMapCameraCallbacks;
 
 
 		// add

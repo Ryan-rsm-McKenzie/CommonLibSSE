@@ -9,7 +9,7 @@ namespace RE
 	class BGSProcedureTreeBranch : public BGSProcedureTreeConditionalItem
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSProcedureTreeBranch;
+		inline static constexpr auto RTTI = RTTI_BGSProcedureTreeBranch;
 
 
 		virtual ~BGSProcedureTreeBranch();				// 00

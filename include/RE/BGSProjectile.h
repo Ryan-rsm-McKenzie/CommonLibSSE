@@ -80,7 +80,7 @@ namespace RE
 		public BGSDestructibleObjectForm	// 070
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSProjectile;
+		inline static constexpr auto RTTI = RTTI_BGSProjectile;
 
 
 		enum { kTypeID = FormType::Projectile };

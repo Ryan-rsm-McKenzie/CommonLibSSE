@@ -8,7 +8,7 @@ namespace RE
 	class BSAudioManagerThread : public BSThread
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSAudioManagerThread;
+		inline static constexpr auto RTTI = RTTI_BSAudioManagerThread;
 
 
 		virtual ~BSAudioManagerThread();	// 00

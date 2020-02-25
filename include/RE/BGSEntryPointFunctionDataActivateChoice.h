@@ -10,7 +10,7 @@ namespace RE
 	class BGSEntryPointFunctionDataActivateChoice : public BGSEntryPointFunctionData
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSEntryPointFunctionDataActivateChoice;
+		inline static constexpr auto RTTI = RTTI_BGSEntryPointFunctionDataActivateChoice;
 
 
 		enum class Flag1 : UInt16

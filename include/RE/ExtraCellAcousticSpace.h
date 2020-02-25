@@ -12,7 +12,7 @@ namespace RE
 	class ExtraCellAcousticSpace : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraCellAcousticSpace;
+		inline static constexpr auto RTTI = RTTI_ExtraCellAcousticSpace;
 
 
 		enum { kExtraTypeID = ExtraDataType::kCellAcousticSpace };

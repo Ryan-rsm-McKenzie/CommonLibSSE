@@ -8,7 +8,7 @@ namespace RE
 	class bhkCharacterStateClimbing : public bhkCharacterState
 	{
 	public:
-		inline static const void* RTTI = RTTI_bhkCharacterStateClimbing;
+		inline static constexpr auto RTTI = RTTI_bhkCharacterStateClimbing;
 
 
 		virtual ~bhkCharacterStateClimbing();						// 00

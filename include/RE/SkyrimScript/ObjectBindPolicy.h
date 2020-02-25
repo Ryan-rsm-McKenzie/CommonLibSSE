@@ -11,7 +11,7 @@ namespace RE
 		class ObjectBindPolicy : public BSScript::ObjectBindPolicy
 		{
 		public:
-			inline static const void* RTTI = RTTI_SkyrimScript__ObjectBindPolicy;
+			inline static constexpr auto RTTI = RTTI_SkyrimScript__ObjectBindPolicy;
 
 
 			virtual ~ObjectBindPolicy();			// 00

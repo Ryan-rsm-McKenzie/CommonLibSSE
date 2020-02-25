@@ -11,7 +11,7 @@ namespace RE
 	class BGSSceneActionDialogue : public BGSSceneAction
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSSceneActionDialogue;
+		inline static constexpr auto RTTI = RTTI_BGSSceneActionDialogue;
 
 
 		enum { kTypeID = Type::kDialogue };

@@ -9,7 +9,7 @@ namespace RE
 	class RefrInteraction : public SyncQueueObj
 	{
 	public:
-		inline static const void* RTTI = RTTI_RefrInteraction;
+		inline static constexpr auto RTTI = RTTI_RefrInteraction;
 
 
 		virtual ~RefrInteraction();			// 00

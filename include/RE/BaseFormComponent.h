@@ -8,7 +8,7 @@ namespace RE
 	class BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_BaseFormComponent;
+		inline static constexpr auto RTTI = RTTI_BaseFormComponent;
 
 
 		virtual ~BaseFormComponent();								// 00

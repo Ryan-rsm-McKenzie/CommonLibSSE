@@ -10,7 +10,7 @@ namespace RE
 	class BGSEquipSlot : TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSEquipSlot;
+		inline static constexpr auto RTTI = RTTI_BGSEquipSlot;
 
 
 		enum { kTypeID = FormType::EquipSlot };

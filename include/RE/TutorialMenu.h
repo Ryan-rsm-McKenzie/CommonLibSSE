@@ -14,7 +14,7 @@ namespace RE
 	class TutorialMenu : public IMenu
 	{
 	public:
-		inline static const void* RTTI = RTTI_TutorialMenu;
+		inline static constexpr auto RTTI = RTTI_TutorialMenu;
 		constexpr static std::string_view MENU_NAME = "Tutorial Menu";
 
 

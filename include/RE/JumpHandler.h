@@ -8,7 +8,7 @@ namespace RE
 	struct JumpHandler : public PlayerInputHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_JumpHandler;
+		inline static constexpr auto RTTI = RTTI_JumpHandler;
 
 
 		virtual ~JumpHandler();																		// 00

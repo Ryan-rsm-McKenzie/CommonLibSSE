@@ -8,7 +8,7 @@ namespace RE
 	class ScrapHeap : public IMemoryStore
 	{
 	public:
-		inline static const void* RTTI = RTTI_ScrapHeap;
+		inline static constexpr auto RTTI = RTTI_ScrapHeap;
 
 
 		struct Block

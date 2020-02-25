@@ -9,7 +9,7 @@ namespace RE
 	class ExtraResourcesPreload : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraResourcesPreload;
+		inline static constexpr auto RTTI = RTTI_ExtraResourcesPreload;
 
 
 		enum { kExtraTypeID = ExtraDataType::kResourcesPreload };

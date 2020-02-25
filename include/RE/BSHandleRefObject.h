@@ -8,7 +8,7 @@ namespace RE
 	class BSHandleRefObject : public NiRefObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSHandleRefObject;
+		inline static constexpr auto RTTI = RTTI_BSHandleRefObject;
 
 
 		enum

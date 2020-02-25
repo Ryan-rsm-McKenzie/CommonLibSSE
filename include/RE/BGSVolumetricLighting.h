@@ -12,7 +12,7 @@ namespace RE
 		public BSVolumetricLightingRenderData	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSVolumetricLighting;
+		inline static constexpr auto RTTI = RTTI_BGSVolumetricLighting;
 
 
 		enum { kTypeID = FormType::VolumetricLighting };

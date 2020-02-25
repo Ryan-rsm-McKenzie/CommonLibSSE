@@ -8,7 +8,7 @@ namespace RE
 	class BSMouseDevice : public BSInputDevice
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSMouseDevice;
+		inline static constexpr auto RTTI = RTTI_BSMouseDevice;
 
 
 		virtual ~BSMouseDevice();	// 00

@@ -13,7 +13,7 @@ namespace RE
 	class ConsoleData : public IUIMessageData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ConsoleData;
+		inline static constexpr auto RTTI = RTTI_ConsoleData;
 
 
 		enum class DataType : UInt32

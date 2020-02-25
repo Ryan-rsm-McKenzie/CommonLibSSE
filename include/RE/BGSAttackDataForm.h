@@ -12,7 +12,7 @@ namespace RE
 	class BGSAttackDataForm : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSAttackDataForm;
+		inline static constexpr auto RTTI = RTTI_BGSAttackDataForm;
 
 
 		virtual ~BGSAttackDataForm();										// 00

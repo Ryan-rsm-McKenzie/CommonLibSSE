@@ -13,7 +13,7 @@ namespace RE
 	class TitleSequenceMenu : public IMenu
 	{
 	public:
-		inline static const void* RTTI = RTTI_TitleSequenceMenu;
+		inline static constexpr auto RTTI = RTTI_TitleSequenceMenu;
 		constexpr static std::string_view MENU_NAME = "TitleSequence Menu";
 
 

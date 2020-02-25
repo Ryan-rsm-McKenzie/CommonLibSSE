@@ -15,7 +15,7 @@ namespace RE
 	class ExtraAttachedArrows3D : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraAttachedArrows3D;
+		inline static constexpr auto RTTI = RTTI_ExtraAttachedArrows3D;
 
 
 		enum { kExtraTypeID = ExtraDataType::kAttachedArrows3D };

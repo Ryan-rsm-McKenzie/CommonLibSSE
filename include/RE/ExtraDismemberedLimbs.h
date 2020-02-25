@@ -27,7 +27,7 @@ namespace RE
 	class ExtraDismemberedLimbs : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraDismemberedLimbs;
+		inline static constexpr auto RTTI = RTTI_ExtraDismemberedLimbs;
 
 
 		enum { kExtraTypeID = ExtraDataType::kDismemberedLimbs };

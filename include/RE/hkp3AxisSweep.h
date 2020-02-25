@@ -14,7 +14,7 @@ namespace RE
 	class hkp3AxisSweep : public hkpBroadPhase
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkp3AxisSweep;
+		inline static constexpr auto RTTI = RTTI_hkp3AxisSweep;
 
 
 		using BpInt = UInt16;

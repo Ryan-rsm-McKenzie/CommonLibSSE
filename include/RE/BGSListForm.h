@@ -10,7 +10,7 @@ namespace RE
 	class BGSListForm : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSListForm;
+		inline static constexpr auto RTTI = RTTI_BGSListForm;
 
 
 		enum { kTypeID = FormType::FormList };

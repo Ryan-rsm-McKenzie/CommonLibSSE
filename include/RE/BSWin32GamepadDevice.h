@@ -8,7 +8,7 @@ namespace RE
 	class BSWin32GamepadDevice : public BSPCGamepadDeviceDelegate
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSWin32GamepadDevice;
+		inline static constexpr auto RTTI = RTTI_BSWin32GamepadDevice;
 
 
 		struct Keys

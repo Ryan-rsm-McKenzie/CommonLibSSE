@@ -45,7 +45,7 @@ namespace RE
 	class TESTopicInfo : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESTopicInfo;
+		inline static constexpr auto RTTI = RTTI_TESTopicInfo;
 
 
 		enum { kTypeID = FormType::Info };

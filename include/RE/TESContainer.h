@@ -26,7 +26,7 @@ namespace RE
 	class TESContainer : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESContainer;
+		inline static constexpr auto RTTI = RTTI_TESContainer;
 
 
 		virtual ~TESContainer();											// 00

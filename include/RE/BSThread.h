@@ -6,7 +6,7 @@ namespace RE
 	class BSThread
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSThread;
+		inline static constexpr auto RTTI = RTTI_BSThread;
 
 
 		virtual ~BSThread();			// 00

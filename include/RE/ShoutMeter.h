@@ -8,7 +8,7 @@ namespace RE
 	class ShoutMeter : public HUDMeter
 	{
 	public:
-		inline static const void* RTTI = RTTI_ShoutMeter;
+		inline static constexpr auto RTTI = RTTI_ShoutMeter;
 
 
 		virtual ~ShoutMeter();											// 00

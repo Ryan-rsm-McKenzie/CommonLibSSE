@@ -8,7 +8,7 @@ namespace RE
 	class BSNiAllocator : public NiAllocator
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSNiAllocator;
+		inline static constexpr auto RTTI = RTTI_BSNiAllocator;
 
 
 		virtual ~BSNiAllocator();																																																										// 00

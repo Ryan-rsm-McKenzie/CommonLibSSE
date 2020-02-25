@@ -21,7 +21,7 @@ namespace RE
 	class ExtraStartingPosition : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraStartingPosition;
+		inline static constexpr auto RTTI = RTTI_ExtraStartingPosition;
 
 
 		enum { kExtraTypeID = ExtraDataType::kStartingPosition };

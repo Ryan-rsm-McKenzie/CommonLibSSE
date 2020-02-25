@@ -9,8 +9,8 @@ namespace RE
 	class NiFloatData : public NiObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiFloatData;
-		inline static const void* Ni_RTTI = NiRTTI_NiFloatData;
+		inline static constexpr auto RTTI = RTTI_NiFloatData;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiFloatData;
 
 
 		using KeyType = NiFloatKey::KeyType;

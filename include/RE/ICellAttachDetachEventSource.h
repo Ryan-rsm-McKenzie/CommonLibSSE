@@ -14,7 +14,7 @@ namespace RE
 		BSTEventSource<CellAttachDetachEvent>				// 08
 	{
 	public:
-		inline static const void* RTTI = RTTI_ICellAttachDetachEventSource;
+		inline static constexpr auto RTTI = RTTI_ICellAttachDetachEventSource;
 
 
 		virtual ~ICellAttachDetachEventSource();	// 00

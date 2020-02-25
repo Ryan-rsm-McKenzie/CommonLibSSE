@@ -28,7 +28,7 @@ namespace RE
 		public TESObjectSTAT				// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSMovableStatic;
+		inline static constexpr auto RTTI = RTTI_BGSMovableStatic;
 
 
 		enum { kTypeID = FormType::MovableStatic };

@@ -11,7 +11,7 @@ namespace RE
 	class TESImageSpaceModifiableForm : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESImageSpaceModifiableForm;
+		inline static constexpr auto RTTI = RTTI_TESImageSpaceModifiableForm;
 
 
 		virtual ~TESImageSpaceModifiableForm();								// 00

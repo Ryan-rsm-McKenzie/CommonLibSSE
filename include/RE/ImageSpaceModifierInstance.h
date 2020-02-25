@@ -12,7 +12,7 @@ namespace RE
 	class ImageSpaceModifierInstance : NiObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_ImageSpaceModifierInstance;
+		inline static constexpr auto RTTI = RTTI_ImageSpaceModifierInstance;
 
 
 		virtual ~ImageSpaceModifierInstance();	// 00

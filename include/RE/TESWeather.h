@@ -18,7 +18,7 @@ namespace RE
 	class TESWeather : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESWeather;
+		inline static constexpr auto RTTI = RTTI_TESWeather;
 
 
 		enum { kTypeID = FormType::Weather };

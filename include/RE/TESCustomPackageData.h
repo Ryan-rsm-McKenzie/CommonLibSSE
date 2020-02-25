@@ -57,7 +57,7 @@ namespace RE
 	class TESCustomPackageData : public TESPackageData
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESCustomPackageData;
+		inline static constexpr auto RTTI = RTTI_TESCustomPackageData;
 
 
 		virtual ~TESCustomPackageData();											// 00

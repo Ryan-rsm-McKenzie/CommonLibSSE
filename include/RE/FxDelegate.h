@@ -16,7 +16,7 @@ namespace RE
 	class FxDelegate : public GFxExternalInterface
 	{
 	public:
-		inline static const void* RTTI = RTTI_FxDelegate;
+		inline static constexpr auto RTTI = RTTI_FxDelegate;
 
 
 		struct CallbackDefn

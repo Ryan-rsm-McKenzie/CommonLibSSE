@@ -10,7 +10,7 @@ namespace RE
 	class BGSKeyword : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSKeyword;
+		inline static constexpr auto RTTI = RTTI_BGSKeyword;
 
 
 		enum { kTypeID = FormType::Keyword };

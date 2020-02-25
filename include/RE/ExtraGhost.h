@@ -9,7 +9,7 @@ namespace RE
 	class ExtraGhost : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraGhost;
+		inline static constexpr auto RTTI = RTTI_ExtraGhost;
 
 
 		enum { kExtraTypeID = ExtraDataType::kGhost };

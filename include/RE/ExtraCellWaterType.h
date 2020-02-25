@@ -12,7 +12,7 @@ namespace RE
 	class ExtraCellWaterType : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraCellWaterType;
+		inline static constexpr auto RTTI = RTTI_ExtraCellWaterType;
 
 
 		enum { kExtraTypeID = ExtraDataType::kCellWaterType };

@@ -15,7 +15,7 @@ namespace RE
 	class IAnimationGraphManagerHolder
 	{
 	public:
-		inline static const void* RTTI = RTTI_IAnimationGraphManagerHolder;
+		inline static constexpr auto RTTI = RTTI_IAnimationGraphManagerHolder;
 
 
 		virtual ~IAnimationGraphManagerHolder();																											// 00

@@ -8,7 +8,7 @@ namespace RE
 	struct ToggleRunHandler : public PlayerInputHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_ToggleRunHandler;
+		inline static constexpr auto RTTI = RTTI_ToggleRunHandler;
 
 
 		virtual ~ToggleRunHandler();																// 00

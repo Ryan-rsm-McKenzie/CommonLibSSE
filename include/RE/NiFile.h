@@ -10,7 +10,7 @@ namespace RE
 	class NiFile : public NiBinaryStream
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiFile;
+		inline static constexpr auto RTTI = RTTI_NiFile;
 
 
 		enum class OpenMode : UInt32

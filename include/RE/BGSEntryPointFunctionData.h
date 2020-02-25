@@ -11,7 +11,7 @@ namespace RE
 	class BGSEntryPointFunctionData
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSEntryPointFunctionData;
+		inline static constexpr auto RTTI = RTTI_BGSEntryPointFunctionData;
 
 
 		enum class FunctionType : UInt32

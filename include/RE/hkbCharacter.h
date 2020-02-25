@@ -17,7 +17,7 @@ namespace RE
 	class hkbCharacter : public hkReferencedObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkbCharacter;
+		inline static constexpr auto RTTI = RTTI_hkbCharacter;
 
 
 		virtual ~hkbCharacter();		// 00

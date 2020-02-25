@@ -9,7 +9,7 @@ namespace RE
 	class BSLightingShaderMaterialSnow : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSLightingShaderMaterialSnow;
+		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialSnow;
 
 
 		virtual ~BSLightingShaderMaterialSnow();									// 00

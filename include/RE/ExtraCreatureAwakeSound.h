@@ -10,7 +10,7 @@ namespace RE
 	class ExtraCreatureAwakeSound : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraCreatureAwakeSound;
+		inline static constexpr auto RTTI = RTTI_ExtraCreatureAwakeSound;
 
 
 		enum { kExtraTypeID = ExtraDataType::kCreatureAwakeSound };

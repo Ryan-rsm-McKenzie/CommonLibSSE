@@ -11,7 +11,7 @@ namespace RE
 	class BGSStoryManagerQuestNode : public BGSStoryManagerNodeBase
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSStoryManagerQuestNode;
+		inline static constexpr auto RTTI = RTTI_BGSStoryManagerQuestNode;
 
 
 		enum { kTypeID = FormType::StoryManagerQuestNode };

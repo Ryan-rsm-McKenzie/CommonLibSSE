@@ -9,7 +9,7 @@ namespace RE
 	class INISettingCollection : public SettingCollectionList<Setting>
 	{
 	public:
-		inline static const void* RTTI = RTTI_INISettingCollection;
+		inline static constexpr auto RTTI = RTTI_INISettingCollection;
 
 
 		virtual ~INISettingCollection();							// 00

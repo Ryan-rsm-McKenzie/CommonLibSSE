@@ -12,8 +12,8 @@ namespace RE
 	class NiKeyBasedInterpolator : public NiInterpolator
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiKeyBasedInterpolator;
-		inline static const void* Ni_RTTI = NiRTTI_NiKeyBasedInterpolator;
+		inline static constexpr auto RTTI = RTTI_NiKeyBasedInterpolator;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiKeyBasedInterpolator;
 
 
 		using KeyType = NiAnimationKey::KeyType;

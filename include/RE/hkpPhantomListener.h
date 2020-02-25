@@ -9,7 +9,7 @@ namespace RE
 	class hkpPhantomListener
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpPhantomListener;
+		inline static constexpr auto RTTI = RTTI_hkpPhantomListener;
 
 
 		virtual ~hkpPhantomListener();									// 00

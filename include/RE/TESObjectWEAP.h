@@ -76,7 +76,7 @@ namespace RE
 		public TESDescription				// 158
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESObjectWEAP;
+		inline static constexpr auto RTTI = RTTI_TESObjectWEAP;
 
 
 		enum { kTypeID = FormType::Weapon };

@@ -169,7 +169,7 @@ namespace RE
 	class TESEffectShader : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESEffectShader;
+		inline static constexpr auto RTTI = RTTI_TESEffectShader;
 
 
 		enum { kTypeID = FormType::EffectShader };

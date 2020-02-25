@@ -123,7 +123,7 @@ namespace RE
 	class TESAIForm : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESAIForm;
+		inline static constexpr auto RTTI = RTTI_TESAIForm;
 
 
 		virtual ~TESAIForm();												// 00

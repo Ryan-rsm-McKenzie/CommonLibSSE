@@ -8,7 +8,7 @@ namespace RE
 	class IMovementSelectIdle : public IMovementInterface
 	{
 	public:
-		inline static const void* RTTI = RTTI_IMovementSelectIdle;
+		inline static constexpr auto RTTI = RTTI_IMovementSelectIdle;
 
 
 		virtual ~IMovementSelectIdle();		// 00

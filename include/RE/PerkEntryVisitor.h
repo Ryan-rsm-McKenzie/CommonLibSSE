@@ -9,7 +9,7 @@ namespace RE
 	class PerkEntryVisitor
 	{
 	public:
-		inline static const void* RTTI = RTTI_PerkEntryVisitor;
+		inline static constexpr auto RTTI = RTTI_PerkEntryVisitor;
 
 
 		enum class ReturnType : UInt32

@@ -16,7 +16,7 @@ namespace RE
 		public BSTEventSource<BSMusicEvent>	// 60
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSMoviePlayer;
+		inline static constexpr auto RTTI = RTTI_BGSMoviePlayer;
 
 
 		virtual ~BGSMoviePlayer();				// 00

@@ -33,7 +33,7 @@ namespace RE
 	class hkpShape : public hkReferencedObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpShape;
+		inline static constexpr auto RTTI = RTTI_hkpShape;
 
 
 		using GetSupportingVertexFunc = void(const void* a_this, const hkVector4& a_direction, hkpCdVertex& a_supportVertex);

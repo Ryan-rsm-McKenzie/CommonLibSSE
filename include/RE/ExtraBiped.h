@@ -13,7 +13,7 @@ namespace RE
 	class ExtraBiped : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraBiped;
+		inline static constexpr auto RTTI = RTTI_ExtraBiped;
 
 
 		enum { kExtraTypeID = ExtraDataType::kBiped };

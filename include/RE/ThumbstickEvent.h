@@ -8,7 +8,7 @@ namespace RE
 	class ThumbstickEvent : public IDEvent
 	{
 	public:
-		inline static const void* RTTI = RTTI_ThumbstickEvent;
+		inline static constexpr auto RTTI = RTTI_ThumbstickEvent;
 
 
 		struct InputTypes

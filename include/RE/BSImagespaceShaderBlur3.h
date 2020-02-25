@@ -8,7 +8,7 @@ namespace RE
 	class BSImagespaceShaderBlur3 : public BSImagespaceShader
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSImagespaceShaderBlur3;
+		inline static constexpr auto RTTI = RTTI_BSImagespaceShaderBlur3;
 
 
 		virtual ~BSImagespaceShaderBlur3();	// 00

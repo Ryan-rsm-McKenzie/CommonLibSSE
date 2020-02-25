@@ -10,7 +10,7 @@ namespace RE
 	class ExtraAttachRef : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraAttachRef;
+		inline static constexpr auto RTTI = RTTI_ExtraAttachRef;
 
 
 		enum { kExtraTypeID = ExtraDataType::kAttachRef };

@@ -10,7 +10,7 @@ namespace RE
 	class BGSOutfit : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSOutfit;
+		inline static constexpr auto RTTI = RTTI_BGSOutfit;
 
 
 		enum { kTypeID = FormType::Outfit };

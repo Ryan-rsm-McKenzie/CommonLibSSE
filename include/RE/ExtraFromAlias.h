@@ -9,7 +9,7 @@ namespace RE
 	class ExtraFromAlias : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraFromAlias;
+		inline static constexpr auto RTTI = RTTI_ExtraFromAlias;
 
 
 		enum { kExtraTypeID = ExtraDataType::kFromAlias };

@@ -13,8 +13,8 @@ namespace RE
 	class NiNode : public NiAVObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiNode;
-		inline static const void* Ni_RTTI = NiRTTI_NiNode;
+		inline static constexpr auto RTTI = RTTI_NiNode;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiNode;
 
 
 		virtual ~NiNode();																													// 00

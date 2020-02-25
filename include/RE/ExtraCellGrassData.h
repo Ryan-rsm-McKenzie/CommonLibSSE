@@ -27,7 +27,7 @@ namespace RE
 	class ExtraCellGrassData : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraCellGrassData;
+		inline static constexpr auto RTTI = RTTI_ExtraCellGrassData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kCellGrassData };

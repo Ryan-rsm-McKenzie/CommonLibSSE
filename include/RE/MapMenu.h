@@ -32,7 +32,7 @@ namespace RE
 		public IMapCameraCallbacks					// 00038
 	{
 	public:
-		inline static const void* RTTI = RTTI_MapMenu;
+		inline static constexpr auto RTTI = RTTI_MapMenu;
 		constexpr static std::string_view MENU_NAME = "MapMenu";
 
 

@@ -11,7 +11,7 @@ namespace RE
 	class ExtraUsedMarkers : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraUsedMarkers;
+		inline static constexpr auto RTTI = RTTI_ExtraUsedMarkers;
 
 
 		enum { kExtraTypeID = ExtraDataType::kUsedMarkers };

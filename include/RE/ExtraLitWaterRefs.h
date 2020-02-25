@@ -13,7 +13,7 @@ namespace RE
 	class ExtraLitWaterRefs : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraLitWaterRefs;
+		inline static constexpr auto RTTI = RTTI_ExtraLitWaterRefs;
 
 
 		enum { kExtraTypeID = ExtraDataType::kLitWaterRefs };

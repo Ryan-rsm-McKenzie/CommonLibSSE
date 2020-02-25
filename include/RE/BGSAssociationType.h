@@ -10,7 +10,7 @@ namespace RE
 	class BGSAssociationType : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSAssociationType;
+		inline static constexpr auto RTTI = RTTI_BGSAssociationType;
 
 
 		enum { kTypeID = FormType::AssociationType };

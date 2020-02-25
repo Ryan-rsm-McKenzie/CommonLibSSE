@@ -34,7 +34,7 @@ namespace RE
 	class IMemoryHeap : public IMemoryStore
 	{
 	public:
-		inline static const void* RTTI = RTTI_IMemoryHeap;
+		inline static constexpr auto RTTI = RTTI_IMemoryHeap;
 
 
 		virtual ~IMemoryHeap();																			// 00

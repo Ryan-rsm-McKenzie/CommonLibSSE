@@ -68,7 +68,7 @@ namespace RE
 		public BSTEventSource<bhkCharacterMoveFinishEvent>	// 010
 	{
 	public:
-		inline static const void* RTTI = RTTI_bhkCharacterController;
+		inline static constexpr auto RTTI = RTTI_bhkCharacterController;
 
 
 		virtual ~bhkCharacterController();														// 00

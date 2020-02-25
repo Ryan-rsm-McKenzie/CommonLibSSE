@@ -13,7 +13,7 @@ namespace RE
 		public BSIMusicType	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSMusicType;
+		inline static constexpr auto RTTI = RTTI_BGSMusicType;
 
 
 		enum { kTypeID = FormType::MusicType };

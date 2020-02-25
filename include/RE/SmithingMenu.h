@@ -11,13 +11,13 @@ namespace RE
 		class SmithingMenu : public CraftingSubMenu
 		{
 		public:
-			inline static const void* RTTI = RTTI_CraftingSubMenus__SmithingMenu;
+			inline static constexpr auto RTTI = RTTI_CraftingSubMenus__SmithingMenu;
 
 
 			class SmithingConfirmCallback : public IMessageBoxCallback
 			{
 			public:
-				inline static const void* RTTI = RTTI_CraftingSubMenus__SmithingMenu__SmithingConfirmCallback;
+				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__SmithingMenu__SmithingConfirmCallback;
 
 
 				virtual ~SmithingConfirmCallback();			// 00

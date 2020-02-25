@@ -35,7 +35,7 @@ namespace RE
 		public BSTEventSource<BSAnimationGraphEvent>	// 068
 	{
 	public:
-		inline static const void* RTTI = RTTI_BShkbAnimationGraph;
+		inline static constexpr auto RTTI = RTTI_BShkbAnimationGraph;
 
 
 		virtual ~BShkbAnimationGraph();							// 00

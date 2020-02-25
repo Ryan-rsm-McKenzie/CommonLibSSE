@@ -9,7 +9,7 @@ namespace RE
 	class TESRegionData
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESRegionData;
+		inline static constexpr auto RTTI = RTTI_TESRegionData;
 
 
 		enum class Type : UInt16

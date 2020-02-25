@@ -23,7 +23,7 @@ namespace RE
 		class Stream : public StreamBase
 		{
 		public:
-			inline static const void* RTTI = RTTI_BSResource__Stream;
+			inline static constexpr auto RTTI = RTTI_BSResource__Stream;
 
 
 			Stream();

@@ -17,7 +17,7 @@ namespace RE
 	class ExtraPortalRefData : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraPortalRefData;
+		inline static constexpr auto RTTI = RTTI_ExtraPortalRefData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kPortalRefData };

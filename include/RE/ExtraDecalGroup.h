@@ -12,7 +12,7 @@ namespace RE
 	class ExtraDecalGroup : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraDecalGroup;
+		inline static constexpr auto RTTI = RTTI_ExtraDecalGroup;
 
 
 		enum { kExtraTypeID = ExtraDataType::kDecalGroup };

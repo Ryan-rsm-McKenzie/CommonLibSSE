@@ -12,8 +12,8 @@ namespace RE
 	class BSLightingShaderProperty : public BSShaderProperty
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSLightingShaderProperty;
-		inline static const void* Ni_RTTI = NiRTTI_BSLightingShaderProperty;
+		inline static constexpr auto RTTI = RTTI_BSLightingShaderProperty;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSLightingShaderProperty;
 
 
 		struct Data

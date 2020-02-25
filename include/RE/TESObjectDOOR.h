@@ -19,7 +19,7 @@ namespace RE
 		public BGSOpenCloseForm				// 88
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESObjectDOOR;
+		inline static constexpr auto RTTI = RTTI_TESObjectDOOR;
 
 
 		enum { kTypeID = FormType::Door };

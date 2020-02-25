@@ -8,8 +8,8 @@ namespace RE
 	class NiStringsExtraData : public NiExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiStringsExtraData;
-		inline static const void* Ni_RTTI = NiRTTI_NiStringsExtraData;
+		inline static constexpr auto RTTI = RTTI_NiStringsExtraData;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiStringsExtraData;
 
 
 		virtual ~NiStringsExtraData();												// 00

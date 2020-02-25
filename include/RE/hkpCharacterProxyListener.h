@@ -43,7 +43,7 @@ namespace RE
 	class hkpCharacterProxyListener
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpCharacterProxyListener;
+		inline static constexpr auto RTTI = RTTI_hkpCharacterProxyListener;
 
 
 		virtual ~hkpCharacterProxyListener();																																		// 00

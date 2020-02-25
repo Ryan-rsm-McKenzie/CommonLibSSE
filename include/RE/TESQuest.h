@@ -194,7 +194,7 @@ namespace RE
 		public TESFullName				// 028
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESQuest;
+		inline static constexpr auto RTTI = RTTI_TESQuest;
 
 
 		using DT = DIALOGUE_TYPE;

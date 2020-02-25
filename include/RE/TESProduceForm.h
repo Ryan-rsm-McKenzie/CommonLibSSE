@@ -27,7 +27,7 @@ namespace RE
 	class TESProduceForm : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESProduceForm;
+		inline static constexpr auto RTTI = RTTI_TESProduceForm;
 
 
 		virtual ~TESProduceForm();										// 00

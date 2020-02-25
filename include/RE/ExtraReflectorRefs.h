@@ -11,7 +11,7 @@ namespace RE
 	class ExtraReflectorRefs : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraReflectorRefs;
+		inline static constexpr auto RTTI = RTTI_ExtraReflectorRefs;
 
 
 		enum { kExtraTypeID = ExtraDataType::kReflectorRefs };

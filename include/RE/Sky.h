@@ -34,7 +34,7 @@ namespace RE
 	class Sky
 	{
 	public:
-		inline static const void* RTTI = RTTI_Sky;
+		inline static constexpr auto RTTI = RTTI_Sky;
 
 
 		enum class Mode : UInt32

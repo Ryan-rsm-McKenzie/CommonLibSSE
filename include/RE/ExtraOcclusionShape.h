@@ -13,7 +13,7 @@ namespace RE
 	class ExtraOcclusionShape : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraOcclusionShape;
+		inline static constexpr auto RTTI = RTTI_ExtraOcclusionShape;
 
 
 		enum { kExtraTypeID = ExtraDataType::kOcclusionShape };

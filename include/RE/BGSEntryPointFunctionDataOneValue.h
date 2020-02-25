@@ -8,7 +8,7 @@ namespace RE
 	class BGSEntryPointFunctionDataOneValue : public BGSEntryPointFunctionData
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSEntryPointFunctionDataOneValue;
+		inline static constexpr auto RTTI = RTTI_BGSEntryPointFunctionDataOneValue;
 
 
 		virtual ~BGSEntryPointFunctionDataOneValue();						// 00

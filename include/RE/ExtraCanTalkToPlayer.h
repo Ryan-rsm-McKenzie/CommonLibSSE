@@ -9,7 +9,7 @@ namespace RE
 	class ExtraCanTalkToPlayer : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraCanTalkToPlayer;
+		inline static constexpr auto RTTI = RTTI_ExtraCanTalkToPlayer;
 
 
 		enum { kExtraTypeID = ExtraDataType::kCanTalkToPlayer };

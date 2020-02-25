@@ -8,7 +8,7 @@ namespace RE
 	class BSKeyboardDevice : public BSInputDevice
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSKeyboardDevice;
+		inline static constexpr auto RTTI = RTTI_BSKeyboardDevice;
 
 
 		struct Keys

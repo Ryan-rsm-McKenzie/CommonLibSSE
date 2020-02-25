@@ -15,7 +15,7 @@ namespace RE
 	class HUDObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_HUDObject;
+		inline static constexpr auto RTTI = RTTI_HUDObject;
 
 
 		struct HudComponents

@@ -76,7 +76,7 @@ namespace RE
 		public TESModel		// 030
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESWorldSpace;
+		inline static constexpr auto RTTI = RTTI_TESWorldSpace;
 
 
 		enum { kTypeID = FormType::WorldSpace };

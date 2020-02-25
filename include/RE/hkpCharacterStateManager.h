@@ -9,7 +9,7 @@ namespace RE
 	class hkpCharacterStateManager : public hkReferencedObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpCharacterStateManager;
+		inline static constexpr auto RTTI = RTTI_hkpCharacterStateManager;
 
 
 		virtual ~hkpCharacterStateManager();	// 00

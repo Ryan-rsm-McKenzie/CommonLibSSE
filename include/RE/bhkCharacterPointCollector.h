@@ -8,7 +8,7 @@ namespace RE
 	class bhkCharacterPointCollector : public hkpAllCdPointCollector
 	{
 	public:
-		inline static const void* RTTI = RTTI_bhkCharacterPointCollector;
+		inline static constexpr auto RTTI = RTTI_bhkCharacterPointCollector;
 
 
 		virtual ~bhkCharacterPointCollector();							// 00

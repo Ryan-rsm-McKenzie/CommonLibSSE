@@ -48,7 +48,7 @@ namespace RE
 	class TESRegion : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESRegion;
+		inline static constexpr auto RTTI = RTTI_TESRegion;
 
 
 		enum { kTypeID = FormType::Region };

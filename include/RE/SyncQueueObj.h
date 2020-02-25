@@ -8,7 +8,7 @@ namespace RE
 	class SyncQueueObj : public BSIntrusiveRefCounted
 	{
 	public:
-		inline static const void* RTTI = RTTI_SyncQueueObj;
+		inline static constexpr auto RTTI = RTTI_SyncQueueObj;
 
 
 		virtual ~SyncQueueObj();		// 00

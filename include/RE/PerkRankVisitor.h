@@ -11,7 +11,7 @@ namespace RE
 	class PerkRankVisitor
 	{
 	public:
-		inline static const void* RTTI = RTTI_PerkRankVisitor;
+		inline static constexpr auto RTTI = RTTI_PerkRankVisitor;
 
 
 		virtual bool operator()(const PerkRankData* a_entry) = 0;	// 00

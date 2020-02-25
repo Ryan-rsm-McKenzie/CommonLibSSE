@@ -24,13 +24,13 @@ namespace RE
 		public BSTEventSink<BSSystemEvent>							// 010
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSSaveLoadManager;
+		inline static constexpr auto RTTI = RTTI_BGSSaveLoadManager;
 
 
 		class Thread : public BSThread
 		{
 		public:
-			inline static const void* RTTI = RTTI_BGSSaveLoadManager__Thread;
+			inline static constexpr auto RTTI = RTTI_BGSSaveLoadManager__Thread;
 
 
 			virtual ~Thread();						// 00

@@ -10,7 +10,7 @@ namespace RE
 	class ExtraItemDropper : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraItemDropper;
+		inline static constexpr auto RTTI = RTTI_ExtraItemDropper;
 
 
 		enum { kExtraTypeID = ExtraDataType::kItemDropper };

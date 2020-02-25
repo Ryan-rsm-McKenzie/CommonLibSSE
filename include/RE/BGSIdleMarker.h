@@ -14,7 +14,7 @@ namespace RE
 		public BGSIdleCollection	// 58
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSIdleMarker;
+		inline static constexpr auto RTTI = RTTI_BGSIdleMarker;
 
 
 		enum { kTypeID = FormType::IdleMarker };

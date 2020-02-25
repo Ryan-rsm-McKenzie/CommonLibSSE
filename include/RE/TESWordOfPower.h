@@ -13,7 +13,7 @@ namespace RE
 		public TESFullName	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESWordOfPower;
+		inline static constexpr auto RTTI = RTTI_TESWordOfPower;
 
 
 		enum { kTypeID = FormType::WordOfPower };

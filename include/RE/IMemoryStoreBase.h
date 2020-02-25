@@ -21,7 +21,7 @@ namespace RE
 	class IMemoryStoreBase
 	{
 	public:
-		inline static const void* RTTI = RTTI_IMemoryStoreBase;
+		inline static constexpr auto RTTI = RTTI_IMemoryStoreBase;
 
 
 		virtual ~IMemoryStoreBase();											// 00

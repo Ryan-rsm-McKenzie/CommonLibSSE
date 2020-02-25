@@ -17,7 +17,7 @@ namespace RE
 	class ExtraOcclusionPlaneRefData : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraOcclusionPlaneRefData;
+		inline static constexpr auto RTTI = RTTI_ExtraOcclusionPlaneRefData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kOcclusionPlaneRefData };

@@ -13,7 +13,7 @@ namespace RE
 	class FxDelegateHandler : public GRefCountBase<FxDelegateHandler, GStatGroups::kGStat_Default_Mem>
 	{
 	public:
-		inline static const void* RTTI = RTTI_FxDelegateHandler;
+		inline static constexpr auto RTTI = RTTI_FxDelegateHandler;
 
 
 		using CallbackFn = void(const FxDelegateArgs& a_params);
@@ -22,7 +22,7 @@ namespace RE
 		class CallbackProcessor
 		{
 		public:
-			inline static const void* RTTI = RTTI_FxDelegateHandler__CallbackProcessor;
+			inline static constexpr auto RTTI = RTTI_FxDelegateHandler__CallbackProcessor;
 
 
 			virtual ~CallbackProcessor() = default;											// 00

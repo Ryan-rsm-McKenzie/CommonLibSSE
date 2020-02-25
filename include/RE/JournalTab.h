@@ -12,7 +12,7 @@ namespace RE
 	class JournalTab : public FxDelegateHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_JournalTab;
+		inline static constexpr auto RTTI = RTTI_JournalTab;
 
 
 		virtual ~JournalTab();			// 00

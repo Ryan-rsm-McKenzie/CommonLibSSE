@@ -46,7 +46,7 @@ namespace RE
 		public BSTSingletonSDM<PlayerCamera>	// 038
 	{
 	public:
-		inline static const void* RTTI = RTTI_PlayerCamera;
+		inline static constexpr auto RTTI = RTTI_PlayerCamera;
 
 
 		struct Unk120

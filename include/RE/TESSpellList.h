@@ -13,7 +13,7 @@ namespace RE
 	class TESSpellList : BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESSpellList;
+		inline static constexpr auto RTTI = RTTI_TESSpellList;
 
 
 		struct SpellData	// SPLO

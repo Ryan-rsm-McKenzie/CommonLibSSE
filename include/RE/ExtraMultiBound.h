@@ -13,7 +13,7 @@ namespace RE
 	class ExtraMultiBound : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraMultiBound;
+		inline static constexpr auto RTTI = RTTI_ExtraMultiBound;
 
 
 		enum { kExtraTypeID = ExtraDataType::kMultiBound };

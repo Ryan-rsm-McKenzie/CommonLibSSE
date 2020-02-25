@@ -11,7 +11,7 @@ namespace RE
 	class hkpCachingShapePhantom : public hkpShapePhantom
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpCachingShapePhantom;
+		inline static constexpr auto RTTI = RTTI_hkpCachingShapePhantom;
 
 
 		class OrderByUid

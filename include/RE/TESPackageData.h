@@ -11,7 +11,7 @@ namespace RE
 	class TESPackageData
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESPackageData;
+		inline static constexpr auto RTTI = RTTI_TESPackageData;
 
 
 		virtual ~TESPackageData();											// 00

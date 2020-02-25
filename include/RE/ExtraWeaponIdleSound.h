@@ -10,7 +10,7 @@ namespace RE
 	class ExtraWeaponIdleSound : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraWeaponIdleSound;
+		inline static constexpr auto RTTI = RTTI_ExtraWeaponIdleSound;
 
 
 		enum { kExtraTypeID = ExtraDataType::kWeaponIdleSound };

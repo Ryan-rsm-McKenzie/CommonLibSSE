@@ -23,7 +23,7 @@ namespace RE
 	class ExtraTeleport : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraTeleport;
+		inline static constexpr auto RTTI = RTTI_ExtraTeleport;
 
 
 		enum { kExtraTypeID = ExtraDataType::kTeleport };

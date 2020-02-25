@@ -12,7 +12,7 @@ namespace RE
 	class ExtraCombatStyle : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraCombatStyle;
+		inline static constexpr auto RTTI = RTTI_ExtraCombatStyle;
 
 
 		enum { kExtraTypeID = ExtraDataType::kCombatStyle };

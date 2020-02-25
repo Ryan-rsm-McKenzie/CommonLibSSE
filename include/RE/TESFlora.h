@@ -12,7 +12,7 @@ namespace RE
 		public TESProduceForm	// C8
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESFlora;
+		inline static constexpr auto RTTI = RTTI_TESFlora;
 
 
 		enum { kTypeID = FormType::Flora };

@@ -8,7 +8,7 @@ namespace RE
 	class GRefCountImpl : GRefCountImplCore
 	{
 	public:
-		inline static const void* RTTI = RTTI_GRefCountImpl;
+		inline static constexpr auto RTTI = RTTI_GRefCountImpl;
 
 
 		GRefCountImpl() = default;

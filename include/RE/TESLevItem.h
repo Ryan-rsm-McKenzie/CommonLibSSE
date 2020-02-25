@@ -12,7 +12,7 @@ namespace RE
 		public TESLeveledList	// 30
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESLevItem;
+		inline static constexpr auto RTTI = RTTI_TESLevItem;
 
 
 		enum { kTypeID = FormType::LeveledItem };

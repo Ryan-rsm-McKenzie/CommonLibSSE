@@ -25,7 +25,7 @@ namespace RE
 	class ActiveEffect
 	{
 	public:
-		inline static const void* RTTI = RTTI_ActiveEffect;
+		inline static constexpr auto RTTI = RTTI_ActiveEffect;
 
 
 		enum class Flag : UInt32

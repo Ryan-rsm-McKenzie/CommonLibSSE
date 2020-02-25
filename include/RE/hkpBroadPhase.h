@@ -23,7 +23,7 @@ namespace RE
 	class hkpBroadPhase : public hkReferencedObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpBroadPhase;
+		inline static constexpr auto RTTI = RTTI_hkpBroadPhase;
 
 
 		enum class BroadPhaseType : UInt16

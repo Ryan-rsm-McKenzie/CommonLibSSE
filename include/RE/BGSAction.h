@@ -9,7 +9,7 @@ namespace RE
 	class BGSAction : public BGSKeyword
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSAction;
+		inline static constexpr auto RTTI = RTTI_BGSAction;
 
 
 		enum { kTypeID = FormType::Action };

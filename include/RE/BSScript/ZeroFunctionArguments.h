@@ -10,7 +10,7 @@ namespace RE
 		class ZeroFunctionArguments : public IFunctionArguments
 		{
 		public:
-			inline static const void* RTTI = RTTI_BSScript__ZeroFunctionArguments;
+			inline static constexpr auto RTTI = RTTI_BSScript__ZeroFunctionArguments;
 
 
 			// override (IFunctionArguments)

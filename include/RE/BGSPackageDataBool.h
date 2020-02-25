@@ -9,7 +9,7 @@ namespace RE
 	class BGSPackageDataBool : public BGSNamedPackageData<IPackageData>
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSPackageDataBool;
+		inline static constexpr auto RTTI = RTTI_BGSPackageDataBool;
 
 
 		virtual ~BGSPackageDataBool();														// 00

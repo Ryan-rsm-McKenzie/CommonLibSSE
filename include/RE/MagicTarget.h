@@ -20,7 +20,7 @@ namespace RE
 	class MagicTarget
 	{
 	public:
-		inline static const void* RTTI = RTTI_MagicTarget;
+		inline static constexpr auto RTTI = RTTI_MagicTarget;
 
 
 		using Archetype = EffectArchetypes::ArchetypeID;
@@ -29,7 +29,7 @@ namespace RE
 		class ForEachActiveEffectVisitor
 		{
 		public:
-			inline static const void* RTTI = RTTI_MagicTarget__ForEachActiveEffectVisitor;
+			inline static constexpr auto RTTI = RTTI_MagicTarget__ForEachActiveEffectVisitor;
 
 
 			virtual ~ForEachActiveEffectVisitor();				// 00

@@ -16,7 +16,7 @@ namespace RE
 			class ScriptFunction : public IFunction
 			{
 			public:
-				inline static const void* RTTI = RTTI_BSScript__Internal__ScriptFunction;
+				inline static constexpr auto RTTI = RTTI_BSScript__Internal__ScriptFunction;
 
 
 				virtual ~ScriptFunction();																																	// 00

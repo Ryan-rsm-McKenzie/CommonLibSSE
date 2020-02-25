@@ -9,7 +9,7 @@ namespace RE
 	class MagicCaster
 	{
 	public:
-		inline static const void* RTTI = RTTI_MagicCaster;
+		inline static constexpr auto RTTI = RTTI_MagicCaster;
 
 
 		struct Data

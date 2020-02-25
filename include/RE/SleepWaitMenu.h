@@ -15,7 +15,7 @@ namespace RE
 	class SleepWaitMenu : public IMenu
 	{
 	public:
-		inline static const void* RTTI = RTTI_SleepWaitMenu;
+		inline static constexpr auto RTTI = RTTI_SleepWaitMenu;
 		constexpr static std::string_view MENU_NAME = "Sleep/Wait Menu";
 
 

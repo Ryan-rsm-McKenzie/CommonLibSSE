@@ -9,7 +9,7 @@ namespace RE
 	class BGSProcedureTreeSequence : public BGSTypedItem<BGSProcedureTreeSequence, BGSProcedureTreeBranch>
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSProcedureTreeSequence;
+		inline static constexpr auto RTTI = RTTI_BGSProcedureTreeSequence;
 
 
 		virtual ~BGSProcedureTreeSequence();	// 00

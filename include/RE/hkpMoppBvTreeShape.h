@@ -9,7 +9,7 @@ namespace RE
 	class hkpMoppBvTreeShape : public hkMoppBvTreeShapeBase
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpMoppBvTreeShape;
+		inline static constexpr auto RTTI = RTTI_hkpMoppBvTreeShape;
 
 
 		virtual ~hkpMoppBvTreeShape();																																								// 00

@@ -5,7 +5,7 @@ namespace RE
 {
 	class MoviePlayer
 	{
-		inline static const void* RTTI = RTTI_MoviePlayer;
+		inline static constexpr auto RTTI = RTTI_MoviePlayer;
 
 
 		virtual ~MoviePlayer();				// 00

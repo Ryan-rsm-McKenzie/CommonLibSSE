@@ -12,7 +12,7 @@ namespace RE
 		public BSIReverbType	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSReverbParameters;
+		inline static constexpr auto RTTI = RTTI_BGSReverbParameters;
 
 
 		enum { kTypeID = FormType::ReverbParam };

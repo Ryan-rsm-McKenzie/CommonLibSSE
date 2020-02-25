@@ -101,7 +101,7 @@ namespace RE
 		public TESFullName	// 020
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESObjectCELL;
+		inline static constexpr auto RTTI = RTTI_TESObjectCELL;
 
 
 		enum { kTypeID = FormType::Cell };

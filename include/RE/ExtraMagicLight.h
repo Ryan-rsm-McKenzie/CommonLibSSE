@@ -13,7 +13,7 @@ namespace RE
 	class ExtraMagicLight : public ExtraLight
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraMagicLight;
+		inline static constexpr auto RTTI = RTTI_ExtraMagicLight;
 
 
 		enum { kExtraTypeID = ExtraDataType::kMagicLight };

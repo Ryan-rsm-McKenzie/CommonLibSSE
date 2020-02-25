@@ -17,7 +17,7 @@ namespace RE
 	class hkpMotion : public hkReferencedObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpMotion;
+		inline static constexpr auto RTTI = RTTI_hkpMotion;
 
 
 		enum { kNumInactiveFramesToDeactivate = 5 };

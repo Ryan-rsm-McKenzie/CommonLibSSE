@@ -99,7 +99,7 @@ namespace RE
 	class ActorState : public IMovementState
 	{
 	public:
-		inline static const void* RTTI = RTTI_ActorState;
+		inline static constexpr auto RTTI = RTTI_ActorState;
 
 
 		struct ActorState1

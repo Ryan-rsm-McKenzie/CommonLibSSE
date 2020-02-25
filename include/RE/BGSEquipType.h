@@ -9,7 +9,7 @@ namespace RE
 	class BGSEquipType : public BaseFormComponent	// EQUP
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSEquipType;
+		inline static constexpr auto RTTI = RTTI_BGSEquipType;
 
 
 		enum class EQUIPPED_ITEM_TYPE

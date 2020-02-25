@@ -14,8 +14,8 @@ namespace RE
 		static constexpr auto BIT64 = static_cast<UInt64>(1);
 
 	public:
-		inline static const void* RTTI = RTTI_BSShaderProperty;
-		inline static const void* Ni_RTTI = NiRTTI_BSShaderProperty;
+		inline static constexpr auto RTTI = RTTI_BSShaderProperty;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSShaderProperty;
 
 
 		enum class EShaderPropertyFlag : UInt64

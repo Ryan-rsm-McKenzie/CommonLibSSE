@@ -19,7 +19,7 @@ namespace RE
 	class BGSShaderParticleGeometryData : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSShaderParticleGeometryData;
+		inline static constexpr auto RTTI = RTTI_BGSShaderParticleGeometryData;
 
 
 		enum { kTypeID = FormType::ShaderParticleGeometryData };

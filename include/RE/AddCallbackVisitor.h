@@ -9,7 +9,7 @@ namespace RE
 	class AddCallbackVisitor : public FxDelegateHandler::CallbackProcessor
 	{
 	public:
-		inline static const void* RTTI = RTTI_AddCallbackVisitor;
+		inline static constexpr auto RTTI = RTTI_AddCallbackVisitor;
 
 
 		AddCallbackVisitor(FxDelegateHandler* a_handler, FxDelegate::CallbackHash* a_hash);

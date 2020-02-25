@@ -16,7 +16,7 @@ namespace RE
 		public BSTextureSet		// 30
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSTextureSet;
+		inline static constexpr auto RTTI = RTTI_BGSTextureSet;
 
 
 		enum { kTypeID = FormType::TextureSet };

@@ -8,7 +8,7 @@ namespace RE
 	class ActorTargetCheck : public ProcessLists::GetActorsFilter
 	{
 	public:
-		inline static const void* RTTI = RTTI_ActorTargetCheck;
+		inline static constexpr auto RTTI = RTTI_ActorTargetCheck;
 
 
 		virtual ~ActorTargetCheck();		// 00

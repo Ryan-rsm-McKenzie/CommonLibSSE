@@ -12,7 +12,7 @@ namespace RE
 			class Request : public BSIntrusiveRefCounted
 			{
 			public:
-				inline static const void* RTTI = RTTI_bgs__saveload__Request;
+				inline static constexpr auto RTTI = RTTI_bgs__saveload__Request;
 
 
 				virtual ~Request();	// 00

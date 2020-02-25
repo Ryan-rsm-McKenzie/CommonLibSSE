@@ -8,8 +8,8 @@ namespace RE
 	class bhkWorldObject : public bhkSerializable
 	{
 	public:
-		inline static const void* RTTI = RTTI_bhkWorldObject;
-		inline static const void* Ni_RTTI = NiRTTI_bhkWorldObject;
+		inline static constexpr auto RTTI = RTTI_bhkWorldObject;
+		inline static constexpr auto Ni_RTTI = NiRTTI_bhkWorldObject;
 
 
 		virtual ~bhkWorldObject();													// 00

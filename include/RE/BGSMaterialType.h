@@ -11,7 +11,7 @@ namespace RE
 	class BGSMaterialType : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSMaterialType;
+		inline static constexpr auto RTTI = RTTI_BGSMaterialType;
 
 
 		enum { kTypeID = FormType::MaterialType };

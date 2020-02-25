@@ -9,7 +9,7 @@ namespace RE
 	class ExtraTerminalState : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraTerminalState;
+		inline static constexpr auto RTTI = RTTI_ExtraTerminalState;
 
 
 		enum { kExtraTypeID = ExtraDataType::kTerminalState };

@@ -25,7 +25,7 @@ namespace RE
 			class NativeFunctionBase : public IFunction
 			{
 			public:
-				inline static const void* RTTI = RTTI_BSScript__NF_util__NativeFunctionBase;
+				inline static constexpr auto RTTI = RTTI_BSScript__NF_util__NativeFunctionBase;
 
 
 				NativeFunctionBase() = delete;

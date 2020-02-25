@@ -18,7 +18,7 @@ namespace RE
 	class TESLandTexture : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESLandTexture;
+		inline static constexpr auto RTTI = RTTI_TESLandTexture;
 
 
 		enum { kTypeID = FormType::LandTexture };

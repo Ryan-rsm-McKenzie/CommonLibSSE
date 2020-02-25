@@ -11,7 +11,7 @@ namespace RE
 	class ExtraFriendHits : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraFriendHits;
+		inline static constexpr auto RTTI = RTTI_ExtraFriendHits;
 
 
 		enum { kExtraTypeID = ExtraDataType::kFriendHits };

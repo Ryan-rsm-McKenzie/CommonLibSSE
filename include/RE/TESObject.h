@@ -12,7 +12,7 @@ namespace RE
 	class TESObject : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESObject;
+		inline static constexpr auto RTTI = RTTI_TESObject;
 
 
 		struct ChangeFlags

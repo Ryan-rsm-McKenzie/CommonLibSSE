@@ -15,7 +15,7 @@ namespace RE
 	class ExtraTextDisplayData : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraTextDisplayData;
+		inline static constexpr auto RTTI = RTTI_ExtraTextDisplayData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kTextDisplayData };

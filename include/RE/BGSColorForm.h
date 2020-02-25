@@ -13,7 +13,7 @@ namespace RE
 		public TESFullName	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSColorForm;
+		inline static constexpr auto RTTI = RTTI_BGSColorForm;
 
 
 		enum { kTypeID = FormType::ColorForm };

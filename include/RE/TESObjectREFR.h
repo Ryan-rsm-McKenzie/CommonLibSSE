@@ -111,7 +111,7 @@ namespace RE
 		public IAnimationGraphManagerHolder			// 38
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESObjectREFR;
+		inline static constexpr auto RTTI = RTTI_TESObjectREFR;
 
 
 		using Count = SInt32;

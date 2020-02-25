@@ -18,7 +18,7 @@ namespace RE
 	class Console : public IMenu
 	{
 	public:
-		inline static const void* RTTI = RTTI_Console;
+		inline static constexpr auto RTTI = RTTI_Console;
 		constexpr static std::string_view MENU_NAME = "Console";
 
 

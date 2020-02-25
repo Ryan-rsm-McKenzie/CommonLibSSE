@@ -9,7 +9,7 @@ namespace RE
 	class IDEvent : public InputEvent
 	{
 	public:
-		inline static const void* RTTI = RTTI_IDEvent;
+		inline static constexpr auto RTTI = RTTI_IDEvent;
 
 
 		virtual	~IDEvent();												// 00

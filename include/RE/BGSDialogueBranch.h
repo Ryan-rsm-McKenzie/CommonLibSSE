@@ -10,7 +10,7 @@ namespace RE
 	class BGSDialogueBranch : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSDialogueBranch;
+		inline static constexpr auto RTTI = RTTI_BGSDialogueBranch;
 
 
 		enum { kTypeID = FormType::DialogueBranch };

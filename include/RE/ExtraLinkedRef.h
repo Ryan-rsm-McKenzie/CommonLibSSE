@@ -14,7 +14,7 @@ namespace RE
 	class ExtraLinkedRef : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraLinkedRef;
+		inline static constexpr auto RTTI = RTTI_ExtraLinkedRef;
 
 
 		enum { kExtraTypeID = ExtraDataType::kLinkedRef };

@@ -9,7 +9,7 @@ namespace RE
 	class BGSLocationRefType : public BGSKeyword
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSLocationRefType;
+		inline static constexpr auto RTTI = RTTI_BGSLocationRefType;
 
 
 		enum { kTypeID = FormType::LocationRefType };

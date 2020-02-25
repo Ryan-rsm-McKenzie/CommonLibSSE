@@ -21,7 +21,7 @@ namespace RE
 			class IFuncCallQuery : public BSIntrusiveRefCounted
 			{
 			public:
-				inline static const void* RTTI = RTTI_BSScript__Internal__IFuncCallQuery;
+				inline static constexpr auto RTTI = RTTI_BSScript__Internal__IFuncCallQuery;
 
 
 				enum class CallType : UInt32

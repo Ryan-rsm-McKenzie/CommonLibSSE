@@ -9,7 +9,7 @@ namespace RE
 	class ExtraInfoGeneralTopic : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraInfoGeneralTopic;
+		inline static constexpr auto RTTI = RTTI_ExtraInfoGeneralTopic;
 
 
 		enum { kExtraTypeID = ExtraDataType::kInfoGeneralTopic };

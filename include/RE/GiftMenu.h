@@ -19,7 +19,7 @@ namespace RE
 	class GiftMenu : public IMenu
 	{
 	public:
-		inline static const void* RTTI = RTTI_GiftMenu;
+		inline static constexpr auto RTTI = RTTI_GiftMenu;
 		constexpr static std::string_view MENU_NAME = "GiftMenu";
 
 

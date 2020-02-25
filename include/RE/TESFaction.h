@@ -116,7 +116,7 @@ namespace RE
 		public TESReactionForm	// 030
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESFaction;
+		inline static constexpr auto RTTI = RTTI_TESFaction;
 
 
 		enum { kTypeID = FormType::Faction };

@@ -21,8 +21,8 @@ namespace RE
 		public BSTEventSink<BSAnimationGraphEvent>	// 60
 	{
 	public:
-		inline static const void* RTTI = RTTI_ModelReferenceEffect;
-		inline static const void* Ni_RTTI = NiRTTI_ModelReferenceEffect;
+		inline static constexpr auto RTTI = RTTI_ModelReferenceEffect;
+		inline static constexpr auto Ni_RTTI = NiRTTI_ModelReferenceEffect;
 
 
 		virtual ~ModelReferenceEffect();											// 00

@@ -13,7 +13,7 @@ namespace RE
 	class ExtraAnimGraphManager : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraAnimGraphManager;
+		inline static constexpr auto RTTI = RTTI_ExtraAnimGraphManager;
 
 
 		enum { kExtraTypeID = ExtraDataType::kAnimGraphManager };

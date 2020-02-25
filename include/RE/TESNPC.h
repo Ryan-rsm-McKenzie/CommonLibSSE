@@ -39,7 +39,7 @@ namespace RE
 		public BSTEventSink<MenuOpenCloseEvent>	// 188
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESNPC;
+		inline static constexpr auto RTTI = RTTI_TESNPC;
 
 
 		using HeadPartType = BGSHeadPart::HeadPartType;

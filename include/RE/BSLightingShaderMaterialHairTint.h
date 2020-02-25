@@ -9,7 +9,7 @@ namespace RE
 	class BSLightingShaderMaterialHairTint : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSLightingShaderMaterialHairTint;
+		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialHairTint;
 
 
 		virtual ~BSLightingShaderMaterialHairTint();									// 00

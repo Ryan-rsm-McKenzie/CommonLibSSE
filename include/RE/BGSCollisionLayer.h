@@ -15,7 +15,7 @@ namespace RE
 		public TESDescription	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSCollisionLayer;
+		inline static constexpr auto RTTI = RTTI_BGSCollisionLayer;
 
 
 		enum { kTypeID = FormType::CollisionLayer };

@@ -12,7 +12,7 @@ namespace RE
 	class ExtraGlobal : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraGlobal;
+		inline static constexpr auto RTTI = RTTI_ExtraGlobal;
 
 
 		enum { kExtraTypeID = ExtraDataType::kGlobal };

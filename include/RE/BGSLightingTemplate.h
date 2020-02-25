@@ -11,7 +11,7 @@ namespace RE
 	class BGSLightingTemplate : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSLightingTemplate;
+		inline static constexpr auto RTTI = RTTI_BGSLightingTemplate;
 
 
 		enum { kTypeID = FormType::LightingMaster };

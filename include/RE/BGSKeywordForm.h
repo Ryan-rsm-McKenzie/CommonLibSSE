@@ -13,7 +13,7 @@ namespace RE
 	class BGSKeywordForm : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSKeywordForm;
+		inline static constexpr auto RTTI = RTTI_BGSKeywordForm;
 
 
 		virtual ~BGSKeywordForm();												// 00

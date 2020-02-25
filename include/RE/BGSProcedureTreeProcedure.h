@@ -12,7 +12,7 @@ namespace RE
 	class BGSProcedureTreeProcedure : public BGSTypedItem<BGSProcedureTreeProcedure, BGSProcedureTreeConditionalItem>
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSProcedureTreeProcedure;
+		inline static constexpr auto RTTI = RTTI_BGSProcedureTreeProcedure;
 
 
 		virtual ~BGSProcedureTreeProcedure();			// 00

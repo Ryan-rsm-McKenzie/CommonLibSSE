@@ -11,7 +11,7 @@ namespace RE
 	class BGSPickupPutdownSounds : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSPickupPutdownSounds;
+		inline static constexpr auto RTTI = RTTI_BGSPickupPutdownSounds;
 
 
 		virtual ~BGSPickupPutdownSounds();									// 00

@@ -20,7 +20,7 @@ namespace RE
 	class ExtraPatrolRefData : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraPatrolRefData;
+		inline static constexpr auto RTTI = RTTI_ExtraPatrolRefData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kPatrolRefData };

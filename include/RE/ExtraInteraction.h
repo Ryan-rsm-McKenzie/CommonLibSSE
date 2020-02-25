@@ -13,7 +13,7 @@ namespace RE
 	class ExtraInteraction : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraInteraction;
+		inline static constexpr auto RTTI = RTTI_ExtraInteraction;
 
 
 		enum { kExtraTypeID = ExtraDataType::kInteraction };

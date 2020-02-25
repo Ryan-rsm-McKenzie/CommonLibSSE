@@ -24,7 +24,7 @@ namespace RE
 		public TESValueForm						// 120
 	{
 	public:
-		inline static const void* RTTI = RTTI_IngredientItem;
+		inline static constexpr auto RTTI = RTTI_IngredientItem;
 
 
 		enum { kTypeID = FormType::Ingredient };

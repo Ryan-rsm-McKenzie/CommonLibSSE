@@ -8,7 +8,7 @@ namespace RE
 	class CombatGroupDetectionListener : public DetectionListener
 	{
 	public:
-		inline static const void* RTTI = RTTI_CombatGroupDetectionListener;
+		inline static constexpr auto RTTI = RTTI_CombatGroupDetectionListener;
 
 
 		virtual ~CombatGroupDetectionListener();	// 00

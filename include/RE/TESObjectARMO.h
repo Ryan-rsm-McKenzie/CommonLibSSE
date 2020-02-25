@@ -37,7 +37,7 @@ namespace RE
 		public TESDescription				// 1F0
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESObjectARMO;
+		inline static constexpr auto RTTI = RTTI_TESObjectARMO;
 
 
 		enum { kTypeID = FormType::Armor };

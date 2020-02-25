@@ -9,7 +9,7 @@ namespace RE
 	class ZeroOverheadHeap : public IMemoryHeap
 	{
 	public:
-		inline static const void* RTTI = RTTI_ZeroOverheadHeap;
+		inline static constexpr auto RTTI = RTTI_ZeroOverheadHeap;
 
 
 		virtual ~ZeroOverheadHeap();																		// 00

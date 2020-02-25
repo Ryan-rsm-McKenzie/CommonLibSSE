@@ -12,7 +12,7 @@ namespace RE
 	class hkpConstraintOwner : public hkReferencedObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpConstraintOwner;
+		inline static constexpr auto RTTI = RTTI_hkpConstraintOwner;
 
 
 		virtual ~hkpConstraintOwner();																	// 00

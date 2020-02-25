@@ -11,7 +11,7 @@ namespace RE
 	class ImageSpaceShaderParam : public ImageSpaceEffectParam
 	{
 	public:
-		inline static const void* RTTI = RTTI_ImageSpaceShaderParam;
+		inline static constexpr auto RTTI = RTTI_ImageSpaceShaderParam;
 
 
 		virtual ~ImageSpaceShaderParam();	// 00

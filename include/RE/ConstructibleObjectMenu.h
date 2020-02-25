@@ -12,13 +12,13 @@ namespace RE
 		class ConstructibleObjectMenu : public CraftingSubMenu
 		{
 		public:
-			inline static const void* RTTI = RTTI_CraftingSubMenus__ConstructibleObjectMenu;
+			inline static constexpr auto RTTI = RTTI_CraftingSubMenus__ConstructibleObjectMenu;
 
 
 			class CreationConfirmCallback : public IMessageBoxCallback
 			{
 			public:
-				inline static const void* RTTI = RTTI_CraftingSubMenus__ConstructibleObjectMenu__CreationConfirmCallback;
+				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__ConstructibleObjectMenu__CreationConfirmCallback;
 
 
 				virtual ~CreationConfirmCallback();			// 00

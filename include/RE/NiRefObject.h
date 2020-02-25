@@ -8,7 +8,7 @@ namespace RE
 	class NiRefObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiRefObject;
+		inline static constexpr auto RTTI = RTTI_NiRefObject;
 
 
 		NiRefObject();

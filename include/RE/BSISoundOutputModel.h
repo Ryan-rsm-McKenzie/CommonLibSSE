@@ -6,12 +6,12 @@ namespace RE
 	class BSISoundOutputModel
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSISoundOutputModel;
+		inline static constexpr auto RTTI = RTTI_BSISoundOutputModel;
 
 
 		struct BSIAttenuationCharacteristics
 		{
-			inline static const void* RTTI = RTTI_BSISoundOutputModel__BSIAttenuationCharacteristics;
+			inline static constexpr auto RTTI = RTTI_BSISoundOutputModel__BSIAttenuationCharacteristics;
 
 
 			virtual ~BSIAttenuationCharacteristics();				// 00

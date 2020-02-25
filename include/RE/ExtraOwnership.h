@@ -12,7 +12,7 @@ namespace RE
 	class ExtraOwnership : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraOwnership;
+		inline static constexpr auto RTTI = RTTI_ExtraOwnership;
 
 
 		enum { kExtraTypeID = ExtraDataType::kOwnership };

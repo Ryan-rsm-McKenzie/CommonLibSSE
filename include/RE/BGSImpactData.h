@@ -16,7 +16,7 @@ namespace RE
 		public TESModel	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSImpactData;
+		inline static constexpr auto RTTI = RTTI_BGSImpactData;
 
 
 		enum { kTypeID = FormType::Impact };

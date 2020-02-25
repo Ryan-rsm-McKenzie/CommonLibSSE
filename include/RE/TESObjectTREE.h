@@ -56,7 +56,7 @@ namespace RE
 		public TESProduceForm	// 68
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESObjectTREE;
+		inline static constexpr auto RTTI = RTTI_TESObjectTREE;
 
 
 		enum { kTypeID = FormType::Tree };

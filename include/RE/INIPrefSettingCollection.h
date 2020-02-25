@@ -8,7 +8,7 @@ namespace RE
 	class INIPrefSettingCollection : public INISettingCollection
 	{
 	public:
-		inline static const void* RTTI = RTTI_INIPrefSettingCollection;
+		inline static constexpr auto RTTI = RTTI_INIPrefSettingCollection;
 
 
 		virtual ~INIPrefSettingCollection();	// 00

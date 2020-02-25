@@ -92,7 +92,7 @@ namespace RE
 	class TESImageSpace : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESImageSpace;
+		inline static constexpr auto RTTI = RTTI_TESImageSpace;
 
 
 		enum { kTypeID = FormType::ImageSpace };

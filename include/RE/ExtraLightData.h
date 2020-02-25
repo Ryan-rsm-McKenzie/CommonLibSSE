@@ -26,7 +26,7 @@ namespace RE
 	class ExtraLightData : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraLightData;
+		inline static constexpr auto RTTI = RTTI_ExtraLightData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kLightData };

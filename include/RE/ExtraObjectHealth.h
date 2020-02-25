@@ -9,7 +9,7 @@ namespace RE
 	class ExtraObjectHealth : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraObjectHealth;
+		inline static constexpr auto RTTI = RTTI_ExtraObjectHealth;
 
 
 		enum { kExtraTypeID = ExtraDataType::kObjectHealth };

@@ -14,7 +14,7 @@ namespace RE
 	class Atmosphere : public SkyObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_Atmosphere;
+		inline static constexpr auto RTTI = RTTI_Atmosphere;
 
 
 		virtual ~Atmosphere();										// 00

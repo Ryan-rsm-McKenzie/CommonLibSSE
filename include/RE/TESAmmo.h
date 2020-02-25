@@ -50,7 +50,7 @@ namespace RE
 		public BGSKeywordForm				// 0F8
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESAmmo;
+		inline static constexpr auto RTTI = RTTI_TESAmmo;
 
 
 		enum { kTypeID = FormType::Ammo };

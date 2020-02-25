@@ -14,7 +14,7 @@ namespace RE
 	class hkMoppBvTreeShapeBase : public hkpBvTreeShape
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkMoppBvTreeShapeBase;
+		inline static constexpr auto RTTI = RTTI_hkMoppBvTreeShapeBase;
 
 
 		virtual ~hkMoppBvTreeShapeBase();																											// 00

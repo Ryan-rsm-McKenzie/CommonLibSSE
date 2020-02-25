@@ -14,7 +14,7 @@ namespace RE
 	class BGSPackageDataLocation : public BGSPackageDataPointerTemplate<IPackageDataAIWorldLocationHandle, PackageLocation /*, kPackageDataLocationTypeName*/>
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSPackageDataLocation;
+		inline static constexpr auto RTTI = RTTI_BGSPackageDataLocation;
 
 
 		virtual ~BGSPackageDataLocation();									// 00

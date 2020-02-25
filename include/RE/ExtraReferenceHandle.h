@@ -14,7 +14,7 @@ namespace RE
 	class ExtraReferenceHandle : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraReferenceHandle;
+		inline static constexpr auto RTTI = RTTI_ExtraReferenceHandle;
 
 
 		enum { kExtraTypeID = ExtraDataType::kReferenceHandle };

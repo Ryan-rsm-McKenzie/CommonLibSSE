@@ -10,7 +10,7 @@ namespace RE
 	class ButtonEvent : public IDEvent
 	{
 	public:
-		inline static const void* RTTI = RTTI_ButtonEvent;
+		inline static constexpr auto RTTI = RTTI_ButtonEvent;
 
 
 		virtual ~ButtonEvent();	// 00

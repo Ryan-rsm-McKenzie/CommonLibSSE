@@ -80,7 +80,7 @@ namespace RE
 	class TESActorBaseData : public BaseFormComponent	// ACBS
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESActorBaseData;
+		inline static constexpr auto RTTI = RTTI_TESActorBaseData;
 
 
 		virtual ~TESActorBaseData();

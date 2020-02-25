@@ -9,7 +9,7 @@ namespace RE
 	class ActorValueMeter : public HUDMeter
 	{
 	public:
-		inline static const void* RTTI = RTTI_ActorValueMeter;
+		inline static constexpr auto RTTI = RTTI_ActorValueMeter;
 
 
 		virtual ~ActorValueMeter();	// 00

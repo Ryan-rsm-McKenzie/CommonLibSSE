@@ -27,7 +27,7 @@ namespace RE
 		using Context = UserEvents::INPUT_CONTEXT_ID;
 
 	public:
-		inline static const void* RTTI = RTTI_IMenu;
+		inline static constexpr auto RTTI = RTTI_IMenu;
 
 
 		enum class Flag : UInt32

@@ -25,7 +25,7 @@ namespace RE
 	class TESBoundObject : public TESObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESBoundObject;
+		inline static constexpr auto RTTI = RTTI_TESBoundObject;
 
 
 		struct BOUND_DATA	// OBND

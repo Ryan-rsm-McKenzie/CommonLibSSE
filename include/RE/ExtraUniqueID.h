@@ -9,7 +9,7 @@ namespace RE
 	class ExtraUniqueID : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraUniqueID;
+		inline static constexpr auto RTTI = RTTI_ExtraUniqueID;
 
 
 		enum { kExtraTypeID = ExtraDataType::kUniqueID };

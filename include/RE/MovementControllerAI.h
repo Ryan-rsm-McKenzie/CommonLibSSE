@@ -11,7 +11,7 @@ namespace RE
 		public IMovementControllerRegisterInterface	// 000
 	{
 	public:
-		inline static const void* RTTI = RTTI_MovementControllerAI;
+		inline static constexpr auto RTTI = RTTI_MovementControllerAI;
 
 
 		virtual ~MovementControllerAI();	// 00

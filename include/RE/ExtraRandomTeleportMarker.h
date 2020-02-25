@@ -12,7 +12,7 @@ namespace RE
 	class ExtraRandomTeleportMarker : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraRandomTeleportMarker;
+		inline static constexpr auto RTTI = RTTI_ExtraRandomTeleportMarker;
 
 
 		enum { kExtraTypeID = ExtraDataType::kRandomTeleportMarker };

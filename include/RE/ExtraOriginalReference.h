@@ -10,7 +10,7 @@ namespace RE
 	class ExtraOriginalReference : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraOriginalReference;
+		inline static constexpr auto RTTI = RTTI_ExtraOriginalReference;
 
 
 		enum { kExtraTypeID = ExtraDataType::kOriginalReference };

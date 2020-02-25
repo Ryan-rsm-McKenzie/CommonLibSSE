@@ -12,7 +12,7 @@ namespace RE
 	class ExtraStartingWorldOrCell : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraStartingWorldOrCell;
+		inline static constexpr auto RTTI = RTTI_ExtraStartingWorldOrCell;
 
 
 		enum { kExtraTypeID = ExtraDataType::kStartingWorldOrCell };

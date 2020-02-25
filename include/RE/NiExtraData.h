@@ -9,8 +9,8 @@ namespace RE
 	class NiExtraData : public NiObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiExtraData;
-		inline static const void* Ni_RTTI = NiRTTI_NiExtraData;
+		inline static constexpr auto RTTI = RTTI_NiExtraData;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiExtraData;
 
 
 		virtual ~NiExtraData();														// 00

@@ -14,7 +14,7 @@ namespace RE
 	class ExtraSayToTopicInfo : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraSayToTopicInfo;
+		inline static constexpr auto RTTI = RTTI_ExtraSayToTopicInfo;
 
 
 		enum { kExtraTypeID = ExtraDataType::kSayTopicInfo };

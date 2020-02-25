@@ -32,7 +32,7 @@ namespace RE
 	class BGSCameraPath : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSCameraPath;
+		inline static constexpr auto RTTI = RTTI_BGSCameraPath;
 
 
 		enum { kTypeID = FormType::CameraPath };

@@ -12,7 +12,7 @@ namespace RE
 	class IAIWorldLocationHandle
 	{
 	public:
-		inline static const void* RTTI = RTTI_IAIWorldLocationHandle;
+		inline static constexpr auto RTTI = RTTI_IAIWorldLocationHandle;
 
 
 		virtual ~IAIWorldLocationHandle();																				// 00

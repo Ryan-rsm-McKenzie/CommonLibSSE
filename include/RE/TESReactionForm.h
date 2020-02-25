@@ -20,7 +20,7 @@ namespace RE
 	class TESReactionForm : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESReactionForm;
+		inline static constexpr auto RTTI = RTTI_TESReactionForm;
 
 
 		virtual ~TESReactionForm();											// 00

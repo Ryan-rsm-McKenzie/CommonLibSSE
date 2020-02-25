@@ -10,7 +10,7 @@ namespace RE
 	class ExtraEditorRefMoveData : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraEditorRefMoveData;
+		inline static constexpr auto RTTI = RTTI_ExtraEditorRefMoveData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kEditorRefMoveData };

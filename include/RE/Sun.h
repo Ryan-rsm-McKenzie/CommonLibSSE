@@ -15,7 +15,7 @@ namespace RE
 	class Sun : public SkyObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_Sun;
+		inline static constexpr auto RTTI = RTTI_Sun;
 
 
 		virtual ~Sun();												// 00

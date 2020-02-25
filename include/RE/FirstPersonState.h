@@ -15,7 +15,7 @@ namespace RE
 		public PlayerInputHandler	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_FirstPersonState;
+		inline static constexpr auto RTTI = RTTI_FirstPersonState;
 
 
 		virtual ~FirstPersonState();																		// 00

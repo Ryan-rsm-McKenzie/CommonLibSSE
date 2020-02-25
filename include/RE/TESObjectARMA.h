@@ -29,7 +29,7 @@ namespace RE
 		public BGSBipedObjectForm	// 30
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESObjectARMA;
+		inline static constexpr auto RTTI = RTTI_TESObjectARMA;
 
 
 		enum { kTypeID = FormType::Armature };

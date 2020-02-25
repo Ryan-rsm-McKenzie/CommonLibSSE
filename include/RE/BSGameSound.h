@@ -6,7 +6,7 @@ namespace RE
 	class BSGameSound
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSGameSound;
+		inline static constexpr auto RTTI = RTTI_BSGameSound;
 
 
 		// add

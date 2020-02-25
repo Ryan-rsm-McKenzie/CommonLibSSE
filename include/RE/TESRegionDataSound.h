@@ -14,7 +14,7 @@ namespace RE
 	class TESRegionDataSound : public TESRegionData
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESRegionDataSound;
+		inline static constexpr auto RTTI = RTTI_TESRegionDataSound;
 
 
 		enum { kTypeID = Type::kSound };

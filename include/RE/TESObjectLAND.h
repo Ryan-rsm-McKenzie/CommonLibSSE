@@ -46,7 +46,7 @@ namespace RE
 		public TESChildCell	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESObjectLAND;
+		inline static constexpr auto RTTI = RTTI_TESObjectLAND;
 
 
 		enum { kTypeID = FormType::Land };

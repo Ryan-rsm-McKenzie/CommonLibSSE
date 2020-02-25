@@ -9,7 +9,7 @@ namespace RE
 	class RemoveCallbackVisitor : public FxDelegateHandler::CallbackProcessor
 	{
 	public:
-		inline static const void* RTTI = RTTI_RemoveCallbackVisitor;
+		inline static constexpr auto RTTI = RTTI_RemoveCallbackVisitor;
 
 
 		RemoveCallbackVisitor(FxDelegate::CallbackHash* a_hash);

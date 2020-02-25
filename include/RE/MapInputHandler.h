@@ -11,7 +11,7 @@ namespace RE
 	class MapInputHandler : public MenuEventHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_MapInputHandler;
+		inline static constexpr auto RTTI = RTTI_MapInputHandler;
 
 
 		virtual ~MapInputHandler();	// 00

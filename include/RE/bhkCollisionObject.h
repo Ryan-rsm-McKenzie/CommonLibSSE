@@ -8,8 +8,8 @@ namespace RE
 	class bhkCollisionObject : public bhkNiCollisionObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_bhkCollisionObject;
-		inline static const void* Ni_RTTI = NiRTTI_bhkCollisionObject;
+		inline static constexpr auto RTTI = RTTI_bhkCollisionObject;
+		inline static constexpr auto Ni_RTTI = NiRTTI_bhkCollisionObject;
 
 
 		virtual ~bhkCollisionObject();												// 00

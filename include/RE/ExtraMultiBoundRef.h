@@ -10,7 +10,7 @@ namespace RE
 	class ExtraMultiBoundRef : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraMultiBoundRef;
+		inline static constexpr auto RTTI = RTTI_ExtraMultiBoundRef;
 
 
 		enum { kExtraTypeID = ExtraDataType::kMultiBoundRef };

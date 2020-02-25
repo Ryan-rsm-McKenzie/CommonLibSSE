@@ -10,7 +10,7 @@ namespace RE
 	class ExtraOpenCloseActivateRef : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraOpenCloseActivateRef;
+		inline static constexpr auto RTTI = RTTI_ExtraOpenCloseActivateRef;
 
 
 		enum { kExtraTypeID = ExtraDataType::kOpenCloseActivateRef };

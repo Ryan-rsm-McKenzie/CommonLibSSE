@@ -8,7 +8,7 @@ namespace RE
 	class TESQualityForm : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESQualityForm;
+		inline static constexpr auto RTTI = RTTI_TESQualityForm;
 
 
 		enum class Quality : UInt32

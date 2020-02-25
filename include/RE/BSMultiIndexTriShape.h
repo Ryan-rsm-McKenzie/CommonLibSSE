@@ -21,8 +21,8 @@ namespace RE
 	class BSMultiIndexTriShape : public BSTriShape
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSMultiIndexTriShape;
-		inline static const void* Ni_RTTI = NiRTTI_BSMultiIndexTriShape;
+		inline static constexpr auto RTTI = RTTI_BSMultiIndexTriShape;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSMultiIndexTriShape;
 
 
 		virtual ~BSMultiIndexTriShape();													// 00

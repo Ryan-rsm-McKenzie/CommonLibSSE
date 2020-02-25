@@ -12,7 +12,7 @@ namespace RE
 	class hkReferencedObject : public hkBaseObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkReferencedObject;
+		inline static constexpr auto RTTI = RTTI_hkReferencedObject;
 
 
 		enum class LockMode : UInt32

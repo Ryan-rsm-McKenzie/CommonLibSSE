@@ -10,7 +10,7 @@ namespace RE
 	class ExtraGuardedRefData : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraGuardedRefData;
+		inline static constexpr auto RTTI = RTTI_ExtraGuardedRefData;
 
 
 		enum { kExtraTypeID = ExtraDataType::kGuardedRefData };

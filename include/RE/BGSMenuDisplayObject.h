@@ -11,7 +11,7 @@ namespace RE
 	class BGSMenuDisplayObject : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSMenuDisplayObject;
+		inline static constexpr auto RTTI = RTTI_BGSMenuDisplayObject;
 
 
 		virtual ~BGSMenuDisplayObject();											// 00

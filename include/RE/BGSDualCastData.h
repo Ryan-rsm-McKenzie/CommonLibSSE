@@ -31,7 +31,7 @@ namespace RE
 	class BGSDualCastData : public TESBoundObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSDualCastData;
+		inline static constexpr auto RTTI = RTTI_BGSDualCastData;
 
 
 		enum { kTypeID = FormType::DualCastData };

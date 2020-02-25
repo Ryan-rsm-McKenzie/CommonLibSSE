@@ -12,8 +12,8 @@ namespace RE
 	class bhkRefObject : public NiObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_bhkRefObject;
-		inline static const void* Ni_RTTI = NiRTTI_bhkRefObject;
+		inline static constexpr auto RTTI = RTTI_bhkRefObject;
+		inline static constexpr auto Ni_RTTI = NiRTTI_bhkRefObject;
 
 
 		virtual ~bhkRefObject();							// 00

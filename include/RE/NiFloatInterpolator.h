@@ -12,8 +12,8 @@ namespace RE
 	class NiFloatInterpolator : public NiKeyBasedInterpolator
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiFloatInterpolator;
-		inline static const void* Ni_RTTI = NiRTTI_NiFloatInterpolator;
+		inline static constexpr auto RTTI = RTTI_NiFloatInterpolator;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiFloatInterpolator;
 
 
 		virtual ~NiFloatInterpolator();																					// 00

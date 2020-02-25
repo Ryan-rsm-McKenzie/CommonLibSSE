@@ -13,7 +13,7 @@ namespace RE
 	class ExtraLargeRefOwnerCells : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraLargeRefOwnerCells;
+		inline static constexpr auto RTTI = RTTI_ExtraLargeRefOwnerCells;
 
 
 		enum { kExtraTypeID = ExtraDataType::kLargeRefOwnerCells };

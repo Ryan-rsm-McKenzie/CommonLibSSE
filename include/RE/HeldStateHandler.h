@@ -8,7 +8,7 @@ namespace RE
 	class HeldStateHandler : public PlayerInputHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_HeldStateHandler;
+		inline static constexpr auto RTTI = RTTI_HeldStateHandler;
 
 
 		virtual ~HeldStateHandler();				// 00

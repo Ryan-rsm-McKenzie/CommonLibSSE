@@ -12,7 +12,7 @@ namespace RE
 	class ExtraEmittanceSource : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraEmittanceSource;
+		inline static constexpr auto RTTI = RTTI_ExtraEmittanceSource;
 
 
 		enum { kExtraTypeID = ExtraDataType::kEmittanceSource };

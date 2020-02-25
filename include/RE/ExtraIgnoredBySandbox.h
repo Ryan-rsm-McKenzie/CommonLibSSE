@@ -9,7 +9,7 @@ namespace RE
 	class ExtraIgnoredBySandbox : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraIgnoredBySandbox;
+		inline static constexpr auto RTTI = RTTI_ExtraIgnoredBySandbox;
 
 
 		enum { kExtraTypeID = ExtraDataType::kIgnoredBySandbox };

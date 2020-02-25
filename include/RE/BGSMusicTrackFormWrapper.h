@@ -15,7 +15,7 @@ namespace RE
 		public BSIMusicTrack	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSMusicTrackFormWrapper;
+		inline static constexpr auto RTTI = RTTI_BGSMusicTrackFormWrapper;
 
 
 		enum { kTypeID = FormType::MusicTrack };

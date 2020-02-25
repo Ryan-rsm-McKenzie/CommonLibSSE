@@ -22,7 +22,7 @@ namespace RE
 		public BGSKeywordForm				// 90
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESObjectACTI;
+		inline static constexpr auto RTTI = RTTI_TESObjectACTI;
 
 
 		enum { kTypeID = FormType::Activator };

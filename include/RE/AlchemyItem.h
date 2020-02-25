@@ -24,7 +24,7 @@ namespace RE
 		public BGSPickupPutdownSounds		// 120
 	{
 	public:
-		inline static const void* RTTI = RTTI_AlchemyItem;
+		inline static constexpr auto RTTI = RTTI_AlchemyItem;
 
 
 		enum { kTypeID = FormType::AlchemyItem };

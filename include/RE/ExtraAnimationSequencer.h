@@ -14,7 +14,7 @@ namespace RE
 	class ExtraAnimationSequencer : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraAnimationSequencer;
+		inline static constexpr auto RTTI = RTTI_ExtraAnimationSequencer;
 
 
 		enum { kExtraTypeID = ExtraDataType::kAnimationSequencer };

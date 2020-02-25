@@ -14,7 +14,7 @@ namespace RE
 		class StreamBase
 		{
 		public:
-			inline static const void* RTTI = RTTI_BSResource__StreamBase;
+			inline static constexpr auto RTTI = RTTI_BSResource__StreamBase;
 
 
 			enum : UInt32

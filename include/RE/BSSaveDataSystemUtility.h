@@ -13,13 +13,13 @@ namespace RE
 		public BSTEventSource<BSSaveDataEvent>	// 008
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSSaveDataSystemUtility;
+		inline static constexpr auto RTTI = RTTI_BSSaveDataSystemUtility;
 
 
 		class Entry
 		{
 		public:
-			inline static const void* RTTI = RTTI_BSSaveDataSystemUtility__Entry;
+			inline static constexpr auto RTTI = RTTI_BSSaveDataSystemUtility__Entry;
 
 
 			virtual void Unk_00(void);	// 00

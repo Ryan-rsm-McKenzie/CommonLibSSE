@@ -16,7 +16,7 @@ namespace RE
 	class ActorKnowledge : public NiRefObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_ActorKnowledge;
+		inline static constexpr auto RTTI = RTTI_ActorKnowledge;
 
 
 		enum class FLAGS : UInt32

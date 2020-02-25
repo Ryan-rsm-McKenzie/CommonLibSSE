@@ -8,7 +8,7 @@ namespace RE
 	class hkMemoryAllocator
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkMemoryAllocator;
+		inline static constexpr auto RTTI = RTTI_hkMemoryAllocator;
 
 
 		using MemoryWalkCallback = void(void* a_start, std::size_t a_size, bool a_allocated, SInt32 a_pool, void* a_param);

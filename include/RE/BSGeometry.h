@@ -15,8 +15,8 @@ namespace RE
 	class BSGeometry : public NiAVObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSGeometry;
-		inline static const void* Ni_RTTI = NiRTTI_BSGeometry;
+		inline static constexpr auto RTTI = RTTI_BSGeometry;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSGeometry;
 
 
 		enum class Type : UInt8

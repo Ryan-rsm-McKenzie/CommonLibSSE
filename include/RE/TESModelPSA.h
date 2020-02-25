@@ -8,7 +8,7 @@ namespace RE
 	class TESModelPSA : public TESModel
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESModelPSA;
+		inline static constexpr auto RTTI = RTTI_TESModelPSA;
 
 
 		virtual ~TESModelPSA();	// 00

@@ -12,7 +12,7 @@ namespace RE
 	class BGSSceneActionPackage : public BGSSceneAction
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSSceneActionPackage;
+		inline static constexpr auto RTTI = RTTI_BGSSceneActionPackage;
 
 
 		enum { kTypeID = Type::kPackage };

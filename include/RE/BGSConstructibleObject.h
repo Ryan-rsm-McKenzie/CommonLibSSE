@@ -11,7 +11,7 @@ namespace RE
 	class BGSConstructibleObject : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSConstructibleObject;
+		inline static constexpr auto RTTI = RTTI_BGSConstructibleObject;
 
 
 		enum { kTypeID = FormType::ConstructibleObject };

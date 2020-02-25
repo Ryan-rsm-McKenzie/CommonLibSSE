@@ -15,8 +15,8 @@ namespace RE
 	class BSMultiBoundNode : public BSNiNode
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSMultiBoundNode;
-		inline static const void* Ni_RTTI = NiRTTI_BSMultiBoundNode;
+		inline static constexpr auto RTTI = RTTI_BSMultiBoundNode;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSMultiBoundNode;
 
 
 		virtual ~BSMultiBoundNode();																	// 00

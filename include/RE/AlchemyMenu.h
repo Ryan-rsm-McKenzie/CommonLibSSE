@@ -13,13 +13,13 @@ namespace RE
 		class AlchemyMenu : public CraftingSubMenu
 		{
 		public:
-			inline static const void* RTTI = RTTI_CraftingSubMenus__AlchemyMenu;
+			inline static constexpr auto RTTI = RTTI_CraftingSubMenus__AlchemyMenu;
 
 
 			class QuitMenuCallback : public IMessageBoxCallback
 			{
 			public:
-				inline static const void* RTTI = RTTI_CraftingSubMenus__AlchemyMenu__QuitMenuCallback;
+				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__AlchemyMenu__QuitMenuCallback;
 
 
 				virtual ~QuitMenuCallback();				// 00

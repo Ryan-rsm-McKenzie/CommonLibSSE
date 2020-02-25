@@ -28,7 +28,7 @@ namespace RE
 	class Script : public TESForm
 	{
 	public:
-		inline static const void* RTTI = RTTI_Script;
+		inline static constexpr auto RTTI = RTTI_Script;
 
 
 		enum { kTypeID = FormType::Script };

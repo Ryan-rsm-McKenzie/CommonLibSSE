@@ -21,7 +21,7 @@ namespace RE
 	class MapCamera : public TESCamera
 	{
 	public:
-		inline static const void* RTTI = RTTI_MapCamera;
+		inline static constexpr auto RTTI = RTTI_MapCamera;
 
 
 		virtual ~MapCamera();		// 00

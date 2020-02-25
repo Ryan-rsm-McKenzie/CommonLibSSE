@@ -12,7 +12,7 @@ namespace RE
 	class ExtraAction : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraAction;
+		inline static constexpr auto RTTI = RTTI_ExtraAction;
 
 
 		enum { kExtraTypeID = ExtraDataType::kAction };

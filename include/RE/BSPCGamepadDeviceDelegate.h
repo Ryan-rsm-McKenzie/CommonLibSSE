@@ -11,7 +11,7 @@ namespace RE
 	class BSPCGamepadDeviceDelegate : public BSGamepadDevice
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSPCGamepadDeviceDelegate;
+		inline static constexpr auto RTTI = RTTI_BSPCGamepadDeviceDelegate;
 
 
 		virtual ~BSPCGamepadDeviceDelegate();			// 00

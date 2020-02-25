@@ -11,7 +11,7 @@ namespace RE
 	class hkpKeyframedRigidMotion : public hkpMotion
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpKeyframedRigidMotion;
+		inline static constexpr auto RTTI = RTTI_hkpKeyframedRigidMotion;
 
 
 		virtual ~hkpKeyframedRigidMotion();																															// 00
@@ -43,7 +43,7 @@ namespace RE
 	class hkpMaxSizeMotion : public hkpKeyframedRigidMotion
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpMaxSizeMotion;
+		inline static constexpr auto RTTI = RTTI_hkpMaxSizeMotion;
 	};
 	STATIC_ASSERT(sizeof(hkpMaxSizeMotion) == 0x140);
 }

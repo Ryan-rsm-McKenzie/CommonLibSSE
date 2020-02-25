@@ -12,7 +12,7 @@ namespace RE
 		public BSISoundOutputModel	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSSoundOutput;
+		inline static constexpr auto RTTI = RTTI_BGSSoundOutput;
 
 
 		enum { kTypeID = FormType::SoundOutputModel };

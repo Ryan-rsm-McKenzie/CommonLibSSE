@@ -14,7 +14,7 @@ namespace RE
 	class ExtraForcedTarget : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraForcedTarget;
+		inline static constexpr auto RTTI = RTTI_ExtraForcedTarget;
 
 
 		enum { kExtraTypeID = ExtraDataType::kForcedTarget };

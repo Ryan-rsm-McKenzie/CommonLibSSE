@@ -9,8 +9,8 @@ namespace RE
 	class BSBound : public NiExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSBound;
-		inline static const void* Ni_RTTI = NiRTTI_BSBound;
+		inline static constexpr auto RTTI = RTTI_BSBound;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSBound;
 
 
 		virtual ~BSBound();															// 00

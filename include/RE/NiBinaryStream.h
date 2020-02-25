@@ -9,7 +9,7 @@ namespace RE
 	class NiBinaryStream
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiBinaryStream;
+		inline static constexpr auto RTTI = RTTI_NiBinaryStream;
 
 
 		using int_type = SInt32;

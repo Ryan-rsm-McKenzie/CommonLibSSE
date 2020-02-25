@@ -13,7 +13,7 @@ namespace RE
 	class ExtraActivateRefChildren : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraActivateRefChildren;
+		inline static constexpr auto RTTI = RTTI_ExtraActivateRefChildren;
 
 
 		enum { kExtraTypeID = ExtraDataType::kActivateRefChildren };

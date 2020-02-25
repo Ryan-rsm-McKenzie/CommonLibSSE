@@ -25,7 +25,7 @@ namespace RE
 		class IFunction : public BSIntrusiveRefCounted
 		{
 		public:
-			inline static const void* RTTI = RTTI_BSScript__IFunction;
+			inline static constexpr auto RTTI = RTTI_BSScript__IFunction;
 
 
 			enum class FunctionType : UInt32

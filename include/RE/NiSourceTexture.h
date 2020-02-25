@@ -24,8 +24,8 @@ namespace RE
 	class NiSourceTexture : public NiTexture
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiSourceTexture;
-		inline static const void* Ni_RTTI = NiRTTI_NiSourceTexture;
+		inline static constexpr auto RTTI = RTTI_NiSourceTexture;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiSourceTexture;
 
 
 		virtual ~NiSourceTexture();							// 00

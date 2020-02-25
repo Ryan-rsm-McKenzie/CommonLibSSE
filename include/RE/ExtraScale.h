@@ -9,7 +9,7 @@ namespace RE
 	class ExtraScale : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraScale;
+		inline static constexpr auto RTTI = RTTI_ExtraScale;
 
 
 		enum { kExtraTypeID = ExtraDataType::kScale };

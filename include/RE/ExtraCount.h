@@ -9,7 +9,7 @@ namespace RE
 	class ExtraCount : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraCount;
+		inline static constexpr auto RTTI = RTTI_ExtraCount;
 
 
 		enum { kExtraTypeID = ExtraDataType::kCount };

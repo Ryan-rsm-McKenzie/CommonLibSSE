@@ -16,7 +16,7 @@ namespace RE
 	class TESCameraState : public BSIntrusiveRefCounted
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESCameraState;
+		inline static constexpr auto RTTI = RTTI_TESCameraState;
 
 
 		virtual ~TESCameraState();												// 00

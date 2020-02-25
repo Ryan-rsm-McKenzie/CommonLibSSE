@@ -24,7 +24,7 @@ namespace RE
 		public BGSKeywordForm			// 040
 	{
 	public:
-		inline static const void* RTTI = RTTI_EffectSetting;
+		inline static constexpr auto RTTI = RTTI_EffectSetting;
 
 
 		using Archetype = EffectArchetypes::ArchetypeID;

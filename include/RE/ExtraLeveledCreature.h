@@ -10,7 +10,7 @@ namespace RE
 	class ExtraLeveledCreature : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraLeveledCreature;
+		inline static constexpr auto RTTI = RTTI_ExtraLeveledCreature;
 
 
 		enum { kExtraTypeID = ExtraDataType::kLeveledCreature };

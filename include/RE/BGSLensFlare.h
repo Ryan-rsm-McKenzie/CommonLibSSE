@@ -12,7 +12,7 @@ namespace RE
 		public BSLensFlareRenderData	// 20
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSLensFlare;
+		inline static constexpr auto RTTI = RTTI_BGSLensFlare;
 
 
 		enum { kTypeID = FormType::LensFlare };

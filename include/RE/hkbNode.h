@@ -9,7 +9,7 @@ namespace RE
 	class hkbNode : public hkbBindable
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkbNode;
+		inline static constexpr auto RTTI = RTTI_hkbNode;
 
 
 		virtual ~hkbNode();				// 00

@@ -10,7 +10,7 @@ namespace RE
 	class TESModelTextureSwap : public TESModel
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESModelTextureSwap;
+		inline static constexpr auto RTTI = RTTI_TESModelTextureSwap;
 
 
 		struct AlternateTexture	// MODS

@@ -14,7 +14,7 @@ namespace RE
 		public BSNavmesh		// 028
 	{
 	public:
-		inline static const void* RTTI = RTTI_NavMesh;
+		inline static constexpr auto RTTI = RTTI_NavMesh;
 
 
 		enum { kTypeID = FormType::NavMesh };

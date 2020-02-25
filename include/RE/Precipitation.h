@@ -16,7 +16,7 @@ namespace RE
 	class Precipitation
 	{
 	public:
-		inline static const void* RTTI = RTTI_Precipitation;
+		inline static constexpr auto RTTI = RTTI_Precipitation;
 
 
 		class OcclusionMapData

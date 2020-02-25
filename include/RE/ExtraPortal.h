@@ -13,7 +13,7 @@ namespace RE
 	class ExtraPortal : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraPortal;
+		inline static constexpr auto RTTI = RTTI_ExtraPortal;
 
 
 		enum { kExtraTypeID = ExtraDataType::kPortal };

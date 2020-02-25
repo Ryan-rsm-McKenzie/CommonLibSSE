@@ -89,7 +89,7 @@ namespace RE
 		public BGSPreloadable	// 48
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSBodyPartData;
+		inline static constexpr auto RTTI = RTTI_BGSBodyPartData;
 
 
 		enum { kTypeID = FormType::BodyPartData };

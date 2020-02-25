@@ -8,7 +8,7 @@ namespace RE
 	struct LookHandler : public PlayerInputHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_LookHandler;
+		inline static constexpr auto RTTI = RTTI_LookHandler;
 
 
 		virtual ~LookHandler();																				// 00

@@ -17,7 +17,7 @@ namespace RE
 		public BSTEventSink<BSAnimationGraphEvent>	// 18
 	{
 	public:
-		inline static const void* RTTI = RTTI_StatsNode;
+		inline static constexpr auto RTTI = RTTI_StatsNode;
 
 
 		virtual ~StatsNode();																																// 00

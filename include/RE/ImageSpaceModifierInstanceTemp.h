@@ -8,7 +8,7 @@ namespace RE
 	class ImageSpaceModifierInstanceTemp : public ImageSpaceModifierInstance
 	{
 	public:
-		inline static const void* RTTI = RTTI_ImageSpaceModifierInstanceTemp;
+		inline static constexpr auto RTTI = RTTI_ImageSpaceModifierInstanceTemp;
 
 
 		virtual ~ImageSpaceModifierInstanceTemp();	// 00

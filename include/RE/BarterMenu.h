@@ -20,7 +20,7 @@ namespace RE
 	class BarterMenu : public IMenu
 	{
 	public:
-		inline static const void* RTTI = RTTI_BarterMenu;
+		inline static constexpr auto RTTI = RTTI_BarterMenu;
 		constexpr static std::string_view MENU_NAME = "BarterMenu";
 
 

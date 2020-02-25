@@ -10,7 +10,7 @@ namespace RE
 	class hkpAllCdPointCollector : public hkpCdPointCollector
 	{
 	public:
-		inline static const void* RTTI = RTTI_hkpAllCdPointCollector;
+		inline static constexpr auto RTTI = RTTI_hkpAllCdPointCollector;
 
 
 		virtual ~hkpAllCdPointCollector();								// 00

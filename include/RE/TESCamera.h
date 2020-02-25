@@ -14,7 +14,7 @@ namespace RE
 	class TESCamera
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESCamera;
+		inline static constexpr auto RTTI = RTTI_TESCamera;
 
 
 		virtual ~TESCamera();										// 00

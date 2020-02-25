@@ -65,7 +65,7 @@ namespace RE
 	class BSSmallBlockAllocator : public IMemoryStore
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSSmallBlockAllocator;
+		inline static constexpr auto RTTI = RTTI_BSSmallBlockAllocator;
 
 
 		struct Pool : public BSSmallBlockAllocatorUtil::Pool

@@ -8,7 +8,7 @@ namespace RE
 	class MapMoveHandler : public MapInputHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_MapMoveHandler;
+		inline static constexpr auto RTTI = RTTI_MapMoveHandler;
 
 
 		virtual ~MapMoveHandler();												// 00

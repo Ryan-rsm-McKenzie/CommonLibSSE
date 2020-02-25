@@ -11,8 +11,8 @@ namespace RE
 	class bhkSerializable : public bhkRefObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_bhkSerializable;
-		inline static const void* Ni_RTTI = NiRTTI_bhkSerializable;
+		inline static constexpr auto RTTI = RTTI_bhkSerializable;
+		inline static constexpr auto Ni_RTTI = NiRTTI_bhkSerializable;
 
 
 		virtual ~bhkSerializable();													// 00

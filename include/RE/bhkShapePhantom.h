@@ -8,8 +8,8 @@ namespace RE
 	class bhkShapePhantom : public bhkPhantom
 	{
 	public:
-		inline static const void* RTTI = RTTI_bhkShapePhantom;
-		inline static const void* Ni_RTTI = NiRTTI_bhkShapePhantom;
+		inline static constexpr auto RTTI = RTTI_bhkShapePhantom;
+		inline static constexpr auto Ni_RTTI = NiRTTI_bhkShapePhantom;
 
 
 		virtual ~bhkShapePhantom();											// 00

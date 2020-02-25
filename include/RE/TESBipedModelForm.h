@@ -12,7 +12,7 @@ namespace RE
 	class TESBipedModelForm : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESBipedModelForm;
+		inline static constexpr auto RTTI = RTTI_TESBipedModelForm;
 
 
 		struct Sexes

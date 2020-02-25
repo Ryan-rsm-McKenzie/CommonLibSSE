@@ -11,7 +11,7 @@ namespace RE
 	class BSShaderMaterial : public BSIntrusiveRefCounted
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSShaderMaterial;
+		inline static constexpr auto RTTI = RTTI_BSShaderMaterial;
 
 
 		enum class Feature : UInt32

@@ -9,7 +9,7 @@ namespace RE
 	{
 		struct Allocator : public hkMemoryAllocator
 		{
-			inline static const void* RTTI = RTTI_hkContainerHeapAllocator__Allocator;
+			inline static constexpr auto RTTI = RTTI_hkContainerHeapAllocator__Allocator;
 
 
 			virtual ~Allocator();																// 00

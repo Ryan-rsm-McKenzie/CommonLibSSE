@@ -8,7 +8,7 @@ namespace RE
 	struct AutoMoveHandler : public PlayerInputHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_AutoMoveHandler;
+		inline static constexpr auto RTTI = RTTI_AutoMoveHandler;
 
 
 		virtual ~AutoMoveHandler();																	// 00

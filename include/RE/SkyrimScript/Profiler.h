@@ -12,7 +12,7 @@ namespace RE
 		class Profiler : public BSScript::IProfilePolicy
 		{
 		public:
-			inline static const void* RTTI = RTTI_SkyrimScript__Profiler;
+			inline static constexpr auto RTTI = RTTI_SkyrimScript__Profiler;
 
 
 			virtual ~Profiler();																																													// 00

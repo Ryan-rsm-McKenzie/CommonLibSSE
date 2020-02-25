@@ -9,7 +9,7 @@ namespace RE
 	class HUDMeter : public HUDObject
 	{
 	public:
-		inline static const void* RTTI = RTTI_HUDMeter;
+		inline static constexpr auto RTTI = RTTI_HUDMeter;
 
 
 		HUDMeter(GFxMovieView* a_view);

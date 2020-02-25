@@ -8,7 +8,7 @@ namespace RE
 	class BGSSceneActionTimer : public BGSSceneAction
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSSceneActionTimer;
+		inline static constexpr auto RTTI = RTTI_BGSSceneActionTimer;
 
 
 		enum { kTypeID = Type::kTimer };

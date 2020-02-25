@@ -11,7 +11,7 @@ namespace RE
 		class LocationTraverser
 		{
 		public:
-			inline static const void* RTTI = RTTI_BSResource__LocationTraverser;
+			inline static constexpr auto RTTI = RTTI_BSResource__LocationTraverser;
 
 
 			// add

@@ -8,7 +8,7 @@ namespace RE
 	struct ReadyWeaponHandler : public PlayerInputHandler
 	{
 	public:
-		inline static const void* RTTI = RTTI_ReadyWeaponHandler;
+		inline static constexpr auto RTTI = RTTI_ReadyWeaponHandler;
 
 
 		virtual ~ReadyWeaponHandler();																// 00

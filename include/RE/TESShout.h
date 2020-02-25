@@ -20,7 +20,7 @@ namespace RE
 		public TESDescription			// 50
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESShout;
+		inline static constexpr auto RTTI = RTTI_TESShout;
 
 
 		enum { kTypeID = FormType::Shout };

@@ -73,7 +73,7 @@ namespace RE
 		public BGSKeywordForm				// F8
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESObjectBOOK;
+		inline static constexpr auto RTTI = RTTI_TESObjectBOOK;
 
 
 		enum { kTypeID = FormType::Book };

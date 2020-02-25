@@ -13,7 +13,7 @@ namespace RE
 	class TESRegionDataLandscape : public TESRegionData
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESRegionDataLandscape;
+		inline static constexpr auto RTTI = RTTI_TESRegionDataLandscape;
 
 
 		enum { kTypeID = Type::kLand };

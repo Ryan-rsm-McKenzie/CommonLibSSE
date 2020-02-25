@@ -16,7 +16,7 @@ namespace RE
 		public TESModel	// 020
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSRagdoll;
+		inline static constexpr auto RTTI = RTTI_BGSRagdoll;
 
 
 		enum { kTypeID = FormType::Ragdoll };

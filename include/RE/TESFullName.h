@@ -9,7 +9,7 @@ namespace RE
 	class TESFullName : public BaseFormComponent
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESFullName;
+		inline static constexpr auto RTTI = RTTI_TESFullName;
 
 
 		virtual ~TESFullName();

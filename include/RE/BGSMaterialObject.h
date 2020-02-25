@@ -16,7 +16,7 @@ namespace RE
 		public BSMaterialObject	// 48
 	{
 	public:
-		inline static const void* RTTI = RTTI_BGSMaterialObject;
+		inline static constexpr auto RTTI = RTTI_BGSMaterialObject;
 
 
 		enum { kTypeID = FormType::MaterialObject };

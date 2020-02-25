@@ -17,7 +17,7 @@ namespace RE
 			public BSTEventSink<TESFurnitureEvent>	// 10
 		{
 		public:
-			inline static const void* RTTI = RTTI_CraftingSubMenus__CraftingSubMenu;
+			inline static constexpr auto RTTI = RTTI_CraftingSubMenus__CraftingSubMenu;
 
 
 			virtual ~CraftingSubMenu();		// 00

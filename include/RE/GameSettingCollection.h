@@ -9,7 +9,7 @@ namespace RE
 	class GameSettingCollection : public SettingCollectionMap<Setting>
 	{
 	public:
-		inline static const void* RTTI = RTTI_GameSettingCollection;
+		inline static constexpr auto RTTI = RTTI_GameSettingCollection;
 
 
 		virtual ~GameSettingCollection();							// 00

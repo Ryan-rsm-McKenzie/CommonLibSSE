@@ -20,7 +20,7 @@ namespace RE
 		public BSTEventSink<BSRemoteGamepadEvent>		// 30
 	{
 	public:
-		inline static const void* RTTI = RTTI_Journal_SystemTab;
+		inline static constexpr auto RTTI = RTTI_Journal_SystemTab;
 
 
 		virtual ~Journal_SystemTab();																															// 00

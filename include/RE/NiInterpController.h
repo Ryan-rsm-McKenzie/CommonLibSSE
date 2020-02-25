@@ -12,8 +12,8 @@ namespace RE
 	class NiInterpController : public NiTimeController
 	{
 	public:
-		inline static const void* RTTI = RTTI_NiInterpController;
-		inline static const void* Ni_RTTI = NiRTTI_NiInterpController;
+		inline static constexpr auto RTTI = RTTI_NiInterpController;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiInterpController;
 
 
 		virtual ~NiInterpController();																																														// 00

@@ -10,7 +10,7 @@ namespace RE
 	class ExtraCellWaterEnvMap : public BSExtraData
 	{
 	public:
-		inline static const void* RTTI = RTTI_ExtraCellWaterEnvMap;
+		inline static constexpr auto RTTI = RTTI_ExtraCellWaterEnvMap;
 
 
 		enum { kExtraTypeID = ExtraDataType::kCellWaterEnvMap };

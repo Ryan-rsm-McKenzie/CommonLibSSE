@@ -11,7 +11,7 @@ namespace RE
 		public IXAudio2VoiceCallback	// 0C8
 	{
 	public:
-		inline static const void* RTTI = RTTI_BSXAudio2GameSound;
+		inline static constexpr auto RTTI = RTTI_BSXAudio2GameSound;
 
 
 		// override (BSGameSound)

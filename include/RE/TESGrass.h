@@ -12,7 +12,7 @@ namespace RE
 		public TESModel			// 30
 	{
 	public:
-		inline static const void* RTTI = RTTI_TESGrass;
+		inline static constexpr auto RTTI = RTTI_TESGrass;
 
 
 		enum { kTypeID = FormType::Grass };

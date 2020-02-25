@@ -13,7 +13,7 @@ namespace RE
 	class GFxFunctionHandler : public GRefCountBase<GFxFunctionHandler, GStatGroups::kGStat_Default_Mem>
 	{
 	public:
-		inline static const void* RTTI = RTTI_GFxFunctionHandler;
+		inline static constexpr auto RTTI = RTTI_GFxFunctionHandler;
 
 
 		struct Params
