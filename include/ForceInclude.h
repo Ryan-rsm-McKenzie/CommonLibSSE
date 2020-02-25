@@ -56,8 +56,7 @@ using SInt64 = signed long long;
 #include "Atomic.h"
 #include "Util.h"
 
-#include "skse64/GameRTTI.h"
-#include "skse64/NiRTTI.h"
-
 #include "RE/BSCoreTypes.h"
+#include "RE/Offsets_NiRTTI.h
+#include "RE/Offsets_RTTI.h
 #include "RE/SFTypes.h"

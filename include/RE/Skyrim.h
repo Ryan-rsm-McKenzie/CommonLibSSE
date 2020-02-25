@@ -882,6 +882,8 @@
 #include "RE/NiTStringMap.h"
 #include "RE/NonActorMagicTarget.h"
 #include "RE/Offsets.h"
+#include "RE/Offsets_NiRTTI.h"
+#include "RE/Offsets_RTTI.h"
 #include "RE/OldMessageBoxCallback.h"
 #include "RE/PackageLocation.h"
 #include "RE/PathingCell.h"

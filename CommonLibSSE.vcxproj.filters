@@ -1177,6 +1177,9 @@
     <Filter Include="include\RE\NetImmerse\NiBinaryStream\NiFile">
       <UniqueIdentifier>{96906735-e34e-4c79-bb32-98b0f0d308fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Offsets">
+      <UniqueIdentifier>{13252c7b-58e1-4b27-8e90-b4b1fff0a2d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1981,9 +1984,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\ExtraDroppedItemList.h">
       <Filter>include\RE\BSExtraData</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\Offsets.h">
-      <Filter>include\RE</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSTEvent.h">
       <Filter>include\RE\BSCore</Filter>
@@ -5500,6 +5500,15 @@
     </ClInclude>
     <ClInclude Include="include\SKSE\SafeWrite.h">
       <Filter>include\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Offsets.h">
+      <Filter>include\RE\Offsets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Offsets_RTTI.h">
+      <Filter>include\RE\Offsets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Offsets_NiRTTI.h">
+      <Filter>include\RE\Offsets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
