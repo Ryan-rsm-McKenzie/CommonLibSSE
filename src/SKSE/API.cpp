@@ -145,10 +145,9 @@ namespace SKSE
 				}
 			}
 
-			if (!REL::IDDatabase::Init()) {
-				_ERROR("Failed to initialize ID database!");
-				return false;
-			}
+			// ensure static data managers are initialized if not already
+			[[maybe_unused]] auto idTest = REL::IDDatabase::IDToOffset(0);
+			[[maybe_unused]] auto moduleTest = REL::Module::BaseAddr();
 
 			g_apiInit = true;
 			for (auto& reg : g_apiInitRegs) {

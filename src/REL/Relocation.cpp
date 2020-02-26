@@ -5,6 +5,7 @@
 #include <fstream>
 #include <exception>
 #include <ios>
+#include <memory>
 #include <sstream>
 #include <system_error>
 
@@ -145,13 +146,15 @@ namespace REL
 
 	std::uintptr_t Module::BaseAddr()
 	{
-		return _info.base;
+		auto singleton = GetSingleton();
+		return singleton->_base;
 	}
 
 
 	std::size_t Module::Size()
 	{
-		return _info.size;
+		auto singleton = GetSingleton();
+		return singleton->_size;
 	}
 
 
@@ -159,38 +162,45 @@ namespace REL
 		-> Section
 	{
 		assert(a_id < ID::kTotal);
-		return _info.sections.arr[a_id].section;
+		auto singleton = GetSingleton();
+		return singleton->_sections.arr[a_id].section;
 	}
 
 
-	auto Module::GetVersion() noexcept
-		-> SKSE::Version
+	SKSE::Version Module::GetVersion()
 	{
-		return _info.version;
+		auto singleton = GetSingleton();
+		return singleton->_version;
 	}
 
 
-	Module::ModuleInfo::ModuleInfo() :
-		handle(GetModuleHandle(0)),
-		base(0),
-		sections(),
-		size(0),
-		version()
+	Module::Module() :
+		_handle(GetModuleHandleA("SkyrimSE.exe")),
+		_base(0),
+		_sections(),
+		_size(0),
+		_version()
 	{
-		base = reinterpret_cast<std::uintptr_t>(handle);
+		if (!_handle) {
+			_FATALERROR("Failed to get handle to module!");
+			assert(false);
+			throw std::exception();
+		}
 
-		auto dosHeader = reinterpret_cast<const IMAGE_DOS_HEADER*>(base);
+		_base = reinterpret_cast<std::uintptr_t>(_handle);
+
+		auto dosHeader = reinterpret_cast<const IMAGE_DOS_HEADER*>(_base);
 		auto ntHeader = reinterpret_cast<const IMAGE_NT_HEADERS64*>(reinterpret_cast<const std::uint8_t*>(dosHeader) + dosHeader->e_lfanew);
-		size = ntHeader->OptionalHeader.SizeOfCode;
+		_size = ntHeader->OptionalHeader.SizeOfCode;
 
 		const auto sectionHeader = IMAGE_FIRST_SECTION(ntHeader);
 		for (std::size_t i = 0; i < ntHeader->FileHeader.NumberOfSections; ++i) {
 			const auto& section = sectionHeader[i];
-			for (auto& elem : sections.arr) {
+			for (auto& elem : _sections.arr) {
 				auto length = std::min<std::size_t>(elem.name.length(), IMAGE_SIZEOF_SHORT_NAME);
 				if (std::memcmp(elem.name.data(), section.Name, length) == 0 && (section.Characteristics & elem.flags) == elem.flags) {
 					elem.section.rva = section.VirtualAddress;
-					elem.section.addr = base + section.VirtualAddress;
+					elem.section.addr = _base + section.VirtualAddress;
 					elem.section.size = section.Misc.VirtualSize;
 					break;
 				}
@@ -201,10 +211,17 @@ namespace REL
 	}
 
 
-	void Module::ModuleInfo::BuildVersionInfo()
+	Module* Module::GetSingleton()
+	{
+		static Module singleton;
+		return std::addressof(singleton);
+	}
+
+
+	void Module::BuildVersionInfo()
 	{
 		char fileName[MAX_PATH];
-		if (!GetModuleFileNameA(handle, fileName, MAX_PATH)) {
+		if (!GetModuleFileNameA(_handle, fileName, MAX_PATH)) {
 			assert(false);
 			return;
 		}
@@ -231,49 +248,88 @@ namespace REL
 		std::istringstream ss(static_cast<const char*>(verBuf));
 		std::string token;
 		for (std::size_t i = 0; i < 4 && std::getline(ss, token, '.'); ++i) {
-			version[i] = static_cast<std::uint16_t>(std::stoi(token));
+			_version[i] = static_cast<std::uint16_t>(std::stoi(token));
 		}
-	}
-
-
-	decltype(Module::_info) Module::_info;
-
-
-	bool IDDatabase::Init()
-	{
-		return _db.Load();
 	}
 
 
 #ifdef _DEBUG
 	std::uint64_t IDDatabase::OffsetToID(std::uint64_t a_address)
 	{
-		return _db.OffsetToID(a_address);
+		auto singleton = GetSingleton();
+		return singleton->OffsetToIDImpl(a_address);
 	}
 #endif
 
 
 	std::uint64_t IDDatabase::IDToOffset(std::uint64_t a_id)
 	{
-		return _db.IDToOffset(a_id);
+		auto singleton = GetSingleton();
+		return singleton->IDToOffsetImpl(a_id);
 	}
 
 
-	bool IDDatabase::IDDatabaseImpl::Load()
+	void IDDatabase::Header::Read(IStream& a_input)
+	{
+		_part1.Read(a_input);
+		_moduleName.resize(_part1.nameLen);
+		a_input->read(_moduleName.data(), _moduleName.size());
+		_part2.Read(a_input);
+	}
+
+
+	void IDDatabase::Header::Part1::Read(IStream& a_input)
+	{
+		a_input->read(reinterpret_cast<char*>(this), sizeof(Part1));
+		if (format != 1) {
+			throw std::runtime_error("Unexpected format");
+		}
+	}
+
+
+	void IDDatabase::Header::Part2::Read(IStream& a_input)
+	{
+		a_input->read(reinterpret_cast<char*>(this), sizeof(Part2));
+	}
+
+
+	IDDatabase::IDDatabase() :
+		_header(),
+		_offsets()
+#ifdef _DEBUG
+		, _ids()
+#endif
+	{
+		if (!Load()) {
+			_FATALERROR("Failed to load ID database!");
+			assert(false);
+			throw std::exception();
+		}
+	}
+
+
+	IDDatabase* IDDatabase::GetSingleton()
+	{
+		static IDDatabase singleton;
+		return std::addressof(singleton);
+	}
+
+
+	bool IDDatabase::Load()
 	{
 		auto version = Module::GetVersion();
 		return Load(std::move(version));
 	}
 
 
-	bool IDDatabase::IDDatabaseImpl::Load(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build)
+	bool IDDatabase::Load(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build)
 	{
 		SKSE::Version version(a_major, a_minor, a_revision, a_build);
 		return Load(std::move(version));
 	}
 
 
-	bool IDDatabase::IDDatabaseImpl::Load(SKSE::Version a_version)
+	bool IDDatabase::Load(SKSE::Version a_version)
 	{
 		std::string fileName = "Data/SKSE/Plugins/version-";
 		fileName += std::to_string(a_version[0]);
@@ -310,67 +366,23 @@ namespace REL
 	}
 
 
-#ifdef _DEBUG
-	std::uint64_t IDDatabase::IDDatabaseImpl::OffsetToID(std::uint64_t a_address)
+	bool IDDatabase::DoLoad(IStream& a_input)
 	{
-		auto it = _ids.find(a_address);
-		if (it != _ids.end()) {
-			return it->second;
-		} else {
-			throw std::runtime_error("Failed to find address in ID database");
-		}
-	}
-#endif
+		_header.Read(a_input);
 
-
-	std::uint64_t IDDatabase::IDDatabaseImpl::IDToOffset(std::uint64_t a_id)
-	{
-		return _offsets[a_id];
-	}
-
-
-	void IDDatabase::IDDatabaseImpl::Header::Read(IStream& a_input)
-	{
-		_part1.Read(a_input);
-		_exeName.resize(_part1.nameLen);
-		a_input->read(_exeName.data(), _exeName.size());
-		_part2.Read(a_input);
-	}
-
-
-	void IDDatabase::IDDatabaseImpl::Header::Part1::Read(IStream& a_input)
-	{
-		a_input->read(reinterpret_cast<char*>(this), sizeof(Part1));
-		if (format != 1) {
-			throw std::runtime_error("Unexpected format");
-		}
-	}
-
-
-	void IDDatabase::IDDatabaseImpl::Header::Part2::Read(IStream& a_input)
-	{
-		a_input->read(reinterpret_cast<char*>(this), sizeof(Part2));
-	}
-
-
-	bool IDDatabase::IDDatabaseImpl::DoLoad(IStream& a_input)
-	{
-		Header header;
-		header.Read(a_input);
-
-		if (Module::GetVersion() != header.GetVersion()) {
+		if (Module::GetVersion() != _header.GetVersion()) {
 			assert(false);
 			return false;
 		}
 
-		_offsets.reserve(header.AddrCount());
+		_offsets.reserve(_header.AddrCount());
 #ifdef _DEBUG
-		_ids.reserve(header.AddrCount());
+		_ids.reserve(_header.AddrCount());
 #endif
 
 		bool success = true;
 		try {
-			DoLoadImpl(a_input, header);
+			DoLoadImpl(a_input);
 		} catch ([[maybe_unused]] std::exception& e) {
 			assert(false);
 			_ERROR("%s in ID database", e.what());
@@ -382,14 +394,14 @@ namespace REL
 	}
 
 
-	void IDDatabase::IDDatabaseImpl::DoLoadImpl(IStream& a_input, Header& a_header)
+	void IDDatabase::DoLoadImpl(IStream& a_input)
 	{
 		std::uint8_t type;
 		std::uint64_t id;
 		std::uint64_t offset;
 		std::uint64_t prevID = 0;
 		std::uint64_t prevOffset = 0;
-		for (std::size_t i = 0; i < a_header.AddrCount(); ++i) {
+		for (std::size_t i = 0; i < _header.AddrCount(); ++i) {
 			a_input.readin(type);
 			std::uint8_t lo = type & 0xF;
 			std::uint8_t hi = type >> 4;
@@ -423,7 +435,7 @@ namespace REL
 				throw std::runtime_error("Unhandled type");
 			}
 
-			std::uint64_t tmp = (hi & 8) != 0 ? (prevOffset / a_header.PSize()) : prevOffset;
+			std::uint64_t tmp = (hi & 8) != 0 ? (prevOffset / _header.PSize()) : prevOffset;
 
 			switch (hi & 7) {
 			case 0:
@@ -455,7 +467,7 @@ namespace REL
 			}
 
 			if ((hi & 8) != 0) {
-				offset *= a_header.PSize();
+				offset *= _header.PSize();
 			}
 
 			if (id >= _offsets.size()) {
@@ -472,7 +484,23 @@ namespace REL
 	}
 
 
-	decltype(IDDatabase::_db) IDDatabase::_db;
+#ifdef _DEBUG
+	std::uint64_t IDDatabase::OffsetToIDImpl(std::uint64_t a_address)
+	{
+		auto it = _ids.find(a_address);
+		if (it != _ids.end()) {
+			return it->second;
+		} else {
+			throw std::runtime_error("Failed to find address in ID database");
+		}
+	}
+#endif
+
+
+	std::uint64_t IDDatabase::IDToOffsetImpl(std::uint64_t a_id)
+	{
+		return _offsets[a_id];
+	}
 
 
 	std::uint64_t ID::operator*() const

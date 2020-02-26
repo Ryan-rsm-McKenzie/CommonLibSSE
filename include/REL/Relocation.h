@@ -334,208 +334,205 @@ namespace REL
 		static std::uintptr_t BaseAddr();
 		static std::size_t Size();
 		static Section GetSection(ID a_id);
-		static SKSE::Version GetVersion() noexcept;
+		static SKSE::Version GetVersion();
 
 
 		template <class T = void>
 		inline static T* BasePtr()
 		{
-			return reinterpret_cast<T*>(_info.base);
+			return reinterpret_cast<T*>(_base);
 		}
 
 	private:
-		struct ModuleInfo
+		struct Sections
 		{
-		public:
-			struct Sections
+			struct Elem
 			{
-				struct Elem
-				{
-					constexpr Elem(const char* a_name) :
-						Elem(a_name, 0)
-					{}
-
-
-					constexpr Elem(const char* a_name, DWORD a_flags) :
-						name(std::move(a_name)),
-						section(),
-						flags(a_flags)
-					{}
-
-
-					std::string_view name;
-					Section	section;
-					DWORD flags;
-				};
-
-
-				constexpr Sections() :
-					arr{
-					Elem(".text", static_cast<DWORD>(IMAGE_SCN_MEM_EXECUTE)),
-					".idata",
-					".rdata",
-					".data",
-					".pdata",
-					".tls",
-					Elem(".text", static_cast<DWORD>(IMAGE_SCN_MEM_WRITE)),
-					".gfids" }
+				constexpr Elem(const char* a_name) :
+					Elem(a_name, 0)
 				{}
 
 
-				std::array<Elem, ID::kTotal> arr;
+				constexpr Elem(const char* a_name, DWORD a_flags) :
+					name(std::move(a_name)),
+					section(),
+					flags(a_flags)
+				{}
+
+
+				std::string_view name;
+				Section	section;
+				DWORD flags;
 			};
 
 
-			ModuleInfo();
+			constexpr Sections() :
+				arr{
+				Elem(".text", static_cast<DWORD>(IMAGE_SCN_MEM_EXECUTE)),
+				".idata",
+				".rdata",
+				".data",
+				".pdata",
+				".tls",
+				Elem(".text", static_cast<DWORD>(IMAGE_SCN_MEM_WRITE)),
+				".gfids" }
+			{}
 
 
-			HMODULE handle;
-			std::uintptr_t base;
-			std::size_t size;
-			Sections sections;
-			SKSE::Version version;
-
-		private:
-			void BuildVersionInfo();
+			std::array<Elem, ID::kTotal> arr;
 		};
 
 
-		static ModuleInfo _info;
+		Module();
+		Module(const Module&) = default;
+		Module(Module&&) = default;
+		~Module() = default;
+
+		Module& operator=(const Module&) = default;
+		Module& operator=(Module&&) = default;
+
+		[[nodiscard]] static Module* GetSingleton();
+
+		void BuildVersionInfo();
+
+
+		HMODULE _handle;
+		std::uintptr_t _base;
+		std::size_t _size;
+		Sections _sections;
+		SKSE::Version _version;
 	};
 
 
 	class IDDatabase
 	{
 	public:
-		[[nodiscard]] static bool Init();
-
 #ifdef _DEBUG
 		[[nodiscard]] static std::uint64_t OffsetToID(std::uint64_t a_address);
 #endif
 		[[nodiscard]] static std::uint64_t IDToOffset(std::uint64_t a_id);
 
 	private:
-		IDDatabase() = delete;
-		IDDatabase(const IDDatabase&) = delete;
-		IDDatabase(IDDatabase&&) = delete;
-
-		IDDatabase& operator=(const IDDatabase&) = delete;
-		IDDatabase& operator=(IDDatabase&&) = delete;
-
-
-		class IDDatabaseImpl
+		class IStream
 		{
 		public:
-			[[nodiscard]] bool Load();
-			[[nodiscard]] bool Load(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build);
-			[[nodiscard]] bool Load(SKSE::Version a_version);
+			using stream_type = std::istream;
+			using pointer = stream_type*;
+			using const_pointer = const stream_type*;
+			using reference = stream_type&;
+			using const_reference = const stream_type&;
 
-#ifdef _DEBUG
-			[[nodiscard]] std::uint64_t OffsetToID(std::uint64_t a_address);
-#endif
-			[[nodiscard]] std::uint64_t IDToOffset(std::uint64_t a_id);
+			constexpr IStream(stream_type& a_stream) :
+				_stream(a_stream)
+			{}
+
+			[[nodiscard]] constexpr reference operator*() noexcept { return _stream; }
+			[[nodiscard]] constexpr const_reference operator*() const noexcept { return _stream; }
+
+			[[nodiscard]] constexpr pointer operator->() noexcept { return std::addressof(_stream); }
+			[[nodiscard]] constexpr const_pointer operator->() const noexcept { return std::addressof(_stream); }
+
+			template <class T>
+			inline void readin(T& a_val)
+			{
+				_stream.read(reinterpret_cast<char*>(std::addressof(a_val)), sizeof(T));
+			}
+
+			template <class T, typename std::enable_if_t<std::is_arithmetic_v<T>, int> = 0>
+			inline T readout()
+			{
+				T val;
+				readin(val);
+				return val;
+			}
 
 		private:
-			class IStream
+			stream_type& _stream;
+		};
+
+
+		class Header
+		{
+		public:
+			inline Header() noexcept :
+				_moduleName(),
+				_part1(),
+				_part2()
+			{}
+
+			void Read(IStream& a_input);
+
+			[[nodiscard]] constexpr decltype(auto) AddrCount() const noexcept { return static_cast<std::size_t>(_part2.addressCount); }
+			[[nodiscard]] constexpr const std::string& ModuleName() const noexcept { return _moduleName; }
+			[[nodiscard]] constexpr decltype(auto) PSize() const noexcept { return static_cast<std::uint64_t>(_part2.pointerSize); }
+			[[nodiscard]] inline decltype(auto) GetVersion() const { return SKSE::Version(_part1.version); }
+
+		private:
+			struct Part1
 			{
-			public:
-				using stream_type = std::istream;
-				using pointer = stream_type*;
-				using const_pointer = const stream_type*;
-				using reference = stream_type&;
-				using const_reference = const stream_type&;
-
-				constexpr IStream(stream_type& a_stream) :
-					_stream(a_stream)
-				{}
-
-				[[nodiscard]] constexpr reference operator*() noexcept { return _stream; }
-				[[nodiscard]] constexpr const_reference operator*() const noexcept { return _stream; }
-
-				[[nodiscard]] constexpr pointer operator->() noexcept { return std::addressof(_stream); }
-				[[nodiscard]] constexpr const_pointer operator->() const noexcept { return std::addressof(_stream); }
-
-				template <class T>
-				inline void readin(T& a_val)
-				{
-					_stream.read(reinterpret_cast<char*>(std::addressof(a_val)), sizeof(T));
-				}
-
-				template <class T, typename std::enable_if_t<std::is_arithmetic_v<T>, int> = 0>
-				inline T readout()
-				{
-					T val;
-					readin(val);
-					return val;
-				}
-
-			private:
-				stream_type& _stream;
-			};
-
-
-			class Header
-			{
-			public:
-				inline Header() noexcept :
-					_exeName(),
-					_part1(),
-					_part2()
+				constexpr Part1() :
+					format(0),
+					version{ 0 },
+					nameLen(0)
 				{}
 
 				void Read(IStream& a_input);
 
-				[[nodiscard]] constexpr decltype(auto) AddrCount() const noexcept { return static_cast<std::size_t>(_part2.addressCount); }
-				[[nodiscard]] constexpr decltype(auto) PSize() const noexcept { return static_cast<std::uint64_t>(_part2.pointerSize); }
-				[[nodiscard]] inline decltype(auto) GetVersion() const { return SKSE::Version(_part1.version); }
-
-			private:
-				struct Part1
-				{
-					constexpr Part1() :
-						format(0),
-						version{ 0 },
-						nameLen(0)
-					{}
-
-					void Read(IStream& a_input);
-
-					std::int32_t format;
-					std::int32_t version[4];
-					std::int32_t nameLen;
-				};
-
-				struct Part2
-				{
-					constexpr Part2() :
-						pointerSize(0),
-						addressCount(0)
-					{}
-
-					void Read(IStream& a_input);
-
-					std::int32_t pointerSize;
-					std::int32_t addressCount;
-				};
-
-				std::string _exeName;
-				Part1 _part1;
-				Part2 _part2;
+				std::int32_t format;
+				std::int32_t version[4];
+				std::int32_t nameLen;
 			};
 
 
-			[[nodiscard]] bool DoLoad(IStream& a_input);
-			void DoLoadImpl(IStream& a_input, Header& a_header);
+			struct Part2
+			{
+				constexpr Part2() :
+					pointerSize(0),
+					addressCount(0)
+				{}
+
+				void Read(IStream& a_input);
+
+				std::int32_t pointerSize;
+				std::int32_t addressCount;
+			};
 
 
-			std::vector<std::uint64_t> _offsets;
-#ifdef _DEBUG
-			std::unordered_map<std::uint64_t, std::uint64_t> _ids;
-#endif
+			std::string _moduleName;
+			Part1 _part1;
+			Part2 _part2;
 		};
 
 
-		static IDDatabaseImpl _db;
+		IDDatabase();
+		IDDatabase(const IDDatabase&) = default;
+		IDDatabase(IDDatabase&&) = default;
+		~IDDatabase() = default;
+
+		IDDatabase& operator=(const IDDatabase&) = default;
+		IDDatabase& operator=(IDDatabase&&) = default;
+
+
+		[[nodiscard]] static IDDatabase* GetSingleton();
+
+		[[nodiscard]] bool Load();
+		[[nodiscard]] bool Load(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build);
+		[[nodiscard]] bool Load(SKSE::Version a_version);
+
+		[[nodiscard]] bool DoLoad(IStream& a_input);
+		void DoLoadImpl(IStream& a_input);
+
+#ifdef _DEBUG
+		[[nodiscard]] std::uint64_t OffsetToIDImpl(std::uint64_t a_address);
+#endif
+		[[nodiscard]] std::uint64_t IDToOffsetImpl(std::uint64_t a_id);
+
+
+		Header _header;
+		std::vector<std::uint64_t> _offsets;
+#ifdef _DEBUG
+		std::unordered_map<std::uint64_t, std::uint64_t> _ids;
+#endif
 	};
 
 
