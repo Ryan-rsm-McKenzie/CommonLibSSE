@@ -544,10 +544,20 @@ namespace REL
 			ID(static_cast<std::uint64_t>(0))
 		{}
 
+		constexpr ID(const ID& a_rhs) noexcept :
+			ID(a_rhs._id)
+		{}
+
+		constexpr ID(ID&& a_rhs) noexcept :
+			ID(std::move(a_rhs._id))
+		{}
+
 		explicit constexpr ID(std::uint64_t a_id) noexcept :
 			_id(a_id)
 		{}
 
+		constexpr ID& operator=(const ID& a_rhs) noexcept { _id = a_rhs._id; return *this; }
+		constexpr ID& operator=(ID&& a_rhs) noexcept { _id = std::move(a_rhs._id); return *this; }
 		constexpr ID& operator=(std::uint64_t a_id) noexcept { _id = a_id; return *this; }
 
 		[[nodiscard]] std::uint64_t operator*() const;
@@ -565,24 +575,29 @@ namespace REL
 	public:
 		using value_type = T;
 
-
 		Offset() = delete;
 
-
-		constexpr Offset(std::uintptr_t a_offset) :
+		constexpr Offset(std::uintptr_t a_offset) noexcept :
 			_impl(a_offset)
 		{}
 
-
-		explicit constexpr Offset(ID a_id) :
+		constexpr Offset(ID a_id) noexcept :
 			Offset(std::move(a_id), 0)
 		{}
 
-
-		constexpr Offset(ID a_id, std::size_t a_mod) :
+		constexpr Offset(ID a_id, std::size_t a_mod) noexcept :
 			_impl(std::make_pair(a_id, a_mod))
 		{}
 
+		constexpr Offset(std::pair<ID, std::size_t> a_idAndMod) noexcept :
+			_impl(std::move(a_idAndMod))
+		{}
+
+		constexpr Offset& operator=(const Offset& a_rhs) noexcept { _impl = a_rhs._impl; return *this; }
+		constexpr Offset& operator=(Offset&& a_rhs) noexcept { _impl = std::move(a_rhs._impl); return *this; }
+		constexpr Offset& operator=(std::uint64_t a_rhs) noexcept { _impl = a_rhs; return *this; }
+		constexpr Offset& operator=(ID a_rhs) noexcept { _impl = std::make_pair(a_rhs, 0); return *this; }
+		constexpr Offset& operator=(std::pair<ID, std::size_t> a_rhs) noexcept { _impl = std::move(a_rhs); return *this; }
 
 		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
 		std::add_lvalue_reference_t<std::remove_pointer_t<U>> operator*()
@@ -590,13 +605,11 @@ namespace REL
 			return *GetType();
 		}
 
-
 		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
 		U operator->()
 		{
 			return GetType();
 		}
-
 
 		template <class... Args, class F = T, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
 		decltype(auto) operator()(Args&&... a_args)
@@ -604,12 +617,10 @@ namespace REL
 			return Invoke(GetType(), std::forward<Args>(a_args)...);
 		}
 
-
 		value_type GetType()
 		{
 			return unrestricted_cast<value_type>(GetAddress());
 		}
-
 
 		std::uintptr_t GetAddress()
 		{
@@ -622,12 +633,10 @@ namespace REL
 			return Module::BaseAddr() + std::get<kRaw>(_impl);
 		}
 
-
 		std::uintptr_t GetOffset()
 		{
 			return GetAddress() - Module::BaseAddr();
 		}
-
 
 		template <class U = T, typename std::enable_if_t<std::is_same<U, std::uintptr_t>::value, int> = 0>
 		std::uintptr_t WriteVFunc(std::size_t a_idx, std::uintptr_t a_newFunc)
@@ -638,7 +647,6 @@ namespace REL
 			SKSE::SafeWrite64(addr, a_newFunc);
 			return result;
 		}
-
 
 		template <class F, class U = T, typename std::enable_if_t<std::is_same<U, std::uintptr_t>::value, int> = 0>
 		std::uintptr_t WriteVFunc(std::size_t a_idx, F a_newFunc)

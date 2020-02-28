@@ -19,13 +19,9 @@ namespace RE
 	public:
 		virtual void	Destroy(const Parent* a_val) const override;	// 02
 
-		Derived*		Create();
+		Derived* Create() const
+		{
+			return static_cast<Derived*>(CreateImpl());
+		}
 	};
-
-
-	template <class Derived, class Parent>
-	inline Derived* BSTDerivedCreator<Derived, Parent>::Create()
-	{
-		return static_cast<Derived*>(CreateImpl());
-	}
 }

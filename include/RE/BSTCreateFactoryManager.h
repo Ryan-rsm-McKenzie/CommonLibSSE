@@ -37,10 +37,10 @@ namespace RE
 
 
 		template <class T = IUIMessageData>
-		inline BSTDerivedCreator<T, IUIMessageData>* GetCreator(const BSFixedString& a_type) const
+		inline const BSTDerivedCreator<T, IUIMessageData>* GetCreator(const BSFixedString& a_type) const
 		{
 			auto it = factories.find(a_type);
-			return it != factories.end() ? static_cast<BSTDerivedCreator<T, IUIMessageData>*>(it->second) : 0;
+			return it != factories.end() ? static_cast<const BSTDerivedCreator<T, IUIMessageData>*>(it->second) : 0;
 		}
 	};
 	STATIC_ASSERT(sizeof(MessageDataFactoryManager) == 0x1A8);
