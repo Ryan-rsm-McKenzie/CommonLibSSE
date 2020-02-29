@@ -1,5 +1,8 @@
 #pragma once
 
+#include "RE/BSPointerHandle.h"
+#include "RE/BSSoundHandle.h"
+
 
 namespace RE
 {
@@ -12,13 +15,8 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_MagicCaster;
 
 
-		struct Data
-		{
-			UInt32	unk0;	// 0
-			UInt32	unk4;	// 4
-			UInt32	unk8;	// 8
-		};
-		STATIC_ASSERT(sizeof(Data) == 0xC);
+		enum class State : UInt32
+		{};
 
 
 		virtual ~MagicCaster();			// 00
@@ -55,12 +53,16 @@ namespace RE
 
 
 		// members
-		BSTArray<Data>	unk08;	// 08
-		UInt64			unk20;	// 20
-		MagicItem*		unk28;	// 28
-		UInt64			unk30;	// 30
-		UInt64			unk38;	// 38
-		UInt64			unk40;	// 40
+		BSTArray<BSSoundHandle>	sounds;				// 08
+		ObjectRefHandle			desiredTarget;		// 20
+		UInt32					pad24;				// 24
+		MagicItem*				currentSpell;		// 28
+		State					state;				// 30
+		float					castingTimer;		// 34
+		float					currentSpellCost;	// 38
+		float					magnitudeOverride;	// 3C
+		float					nextTargetUpdate;	// 40
+		float					projectileTimer;	// 44
 	};
 	STATIC_ASSERT(sizeof(MagicCaster) == 0x48);
 }
