@@ -75,7 +75,7 @@
       <EnableModules>false</EnableModules>
       <DisableSpecificWarnings>4201;4100;4189;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <TreatSpecificWarningsAsErrors>%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalOptions>/experimental:external /external:I "$(SolutionDir)/skse64" /external:W0 %(AdditionalOptions)</AdditionalOptions>
@@ -131,7 +131,7 @@
       <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
       <EnableModules>false</EnableModules>
       <TreatSpecificWarningsAsErrors>%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
       <DisableSpecificWarnings>4201;4100;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ConformanceMode>true</ConformanceMode>
