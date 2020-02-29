@@ -1932,6 +1932,9 @@
     <ClCompile Include="src\RE\TaskQueueInterface.cpp">
       <Filter>src\RE\Misc</Filter>
     </ClCompile>
+    <ClCompile Include="src\SKSE\VArgFormatter.cpp">
+      <Filter>src\SKSE</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -5518,6 +5521,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\TaskQueueInterface.h">
       <Filter>include\RE\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\VArgFormatter.h">
+      <Filter>include\SKSE</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

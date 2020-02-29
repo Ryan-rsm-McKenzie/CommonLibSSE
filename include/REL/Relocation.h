@@ -1,11 +1,14 @@
 #pragma once
 
+#include <algorithm>
 #include <array>
 #include <cassert>
 #include <cstdint>
+#include <cstring>
 #include <exception>
 #include <functional>
 #include <istream>
+#include <memory>
 #include <string>
 #include <string_view>
 #include <type_traits>
@@ -105,6 +108,159 @@ namespace REL
 			pointer _data;
 			size_type _size;
 			bool _owned;
+		};
+
+
+		template <class T>
+		class MemoryMap
+		{
+		public:
+			using value_type = T;
+			using size_type = std::size_t;
+			using reference = value_type&;
+			using const_reference = const value_type&;
+			using pointer = value_type*;
+			using const_pointer = const value_type*;
+
+
+			MemoryMap() noexcept :
+				_handle(nullptr),
+				_size(0),
+				_data(nullptr)
+			{}
+
+
+			MemoryMap(const MemoryMap&) = delete;
+
+
+			MemoryMap(MemoryMap&& a_rhs) noexcept :
+				_handle(std::move(a_rhs._handle)),
+				_size(std::move(a_rhs._size)),
+				_data(std::move(a_rhs._data))
+			{
+				a_rhs._handle = nullptr;
+				a_rhs._size = 0;
+				a_rhs._data = nullptr;
+			}
+
+
+			MemoryMap(const char* a_name, size_type a_size) :
+				_handle(nullptr),
+				_size(0),
+				_data(nullptr)
+			{
+				open(a_name, a_size);
+			}
+
+
+			~MemoryMap()
+			{
+				close();
+			}
+
+
+			MemoryMap& operator=(const MemoryMap&) = delete;
+
+
+			MemoryMap& operator=(MemoryMap&& a_rhs) noexcept
+			{
+				if (this != std::addressof(a_rhs)) {
+					_handle = std::move(a_rhs._handle);
+					a_rhs._handle = nullptr;
+
+					_size = std::move(a_rhs._size);
+					a_rhs._size = 0;
+
+					_data = std::move(a_rhs._data);
+					a_rhs._data = nullptr;
+				}
+				return *this;
+			}
+
+
+			MemoryMap& operator=(const std::vector<value_type>& a_rhs)
+			{
+				auto elemsToCopy = std::min<size_type>(size(), a_rhs.size());
+				if (elemsToCopy > 0) {
+					std::memcpy(data(), a_rhs.data(), elemsToCopy * sizeof(size_type));
+				}
+				return *this;
+			}
+
+
+			reference operator[](size_type a_idx) noexcept
+			{
+				assert(a_idx < _size);
+				return _data[a_idx];
+			}
+
+
+			const_reference operator[](size_type a_idx) const noexcept
+			{
+				assert(a_idx < _size);
+				return _data[a_idx];
+			}
+
+
+			constexpr pointer data() noexcept
+			{
+				return _data;
+			}
+
+
+			constexpr const_pointer data() const noexcept
+			{
+				return _data;
+			}
+
+
+			size_type size() const noexcept
+			{
+				return _size;
+			}
+
+
+			void open(const char* a_name, size_type a_size)
+			{
+				close();
+
+				LARGE_INTEGER bytes;
+				bytes.QuadPart = a_size * sizeof(value_type);
+
+				_handle = OpenFileMappingA(FILE_MAP_ALL_ACCESS, false, a_name);
+				if (!_handle) {
+					_handle = CreateFileMappingA(INVALID_HANDLE_VALUE, nullptr, PAGE_READWRITE, bytes.HighPart, bytes.LowPart, a_name);
+					if (!_handle) {
+						throw std::runtime_error("Could not create file mapping for \"" + std::string(a_name) + "\"");
+					}
+				}
+
+				_data = static_cast<pointer>(MapViewOfFile(_handle, FILE_MAP_ALL_ACCESS, 0, 0, bytes.QuadPart));
+				if (!_data) {
+					throw std::runtime_error("Could not map view of file for \"" + std::string(a_name) + "\"");
+				}
+
+				_size = a_size;
+			}
+
+
+			void close()
+			{
+				if (_data) {
+					UnmapViewOfFile(static_cast<void*>(_data));
+					_data = nullptr;
+				}
+
+				if (_handle) {
+					CloseHandle(_handle);
+					_handle = nullptr;
+				}
+			}
+
+		private:
+			HANDLE _handle;
+			size_type _size;
+			pointer _data;
 		};
 
 
@@ -519,8 +675,8 @@ namespace REL
 		[[nodiscard]] bool Load(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build);
 		[[nodiscard]] bool Load(SKSE::Version a_version);
 
-		[[nodiscard]] bool DoLoad(IStream& a_input);
-		void DoLoadImpl(IStream& a_input);
+		[[nodiscard]] bool DoLoad(IStream& a_input, const SKSE::Version& a_version);
+		void DoLoadImpl(IStream& a_input, std::vector<std::uint64_t>& a_buf);
 
 #ifdef _DEBUG
 		[[nodiscard]] std::uint64_t OffsetToIDImpl(std::uint64_t a_address);
@@ -529,7 +685,7 @@ namespace REL
 
 
 		Header _header;
-		std::vector<std::uint64_t> _offsets;
+		Impl::MemoryMap<std::uint64_t> _offsets;
 #ifdef _DEBUG
 		std::unordered_map<std::uint64_t, std::uint64_t> _ids;
 #endif

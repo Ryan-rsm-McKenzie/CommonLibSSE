@@ -1,6 +1,7 @@
 #include "REL/Relocation.h"
 
 #include <cassert>
+#include <cstring>
 #include <filesystem>
 #include <fstream>
 #include <exception>
@@ -357,7 +358,7 @@ namespace REL
 
 		try {
 			IStream input(file);
-			return DoLoad(input);
+			return DoLoad(input, a_version);
 		} catch (std::exception& e) {
 			_ERROR("%s", e.what());
 			assert(false);
@@ -366,7 +367,7 @@ namespace REL
 	}
 
 
-	bool IDDatabase::DoLoad(IStream& a_input)
+	bool IDDatabase::DoLoad(IStream& a_input, const SKSE::Version& a_version)
 	{
 		_header.Read(a_input);
 
@@ -375,26 +376,31 @@ namespace REL
 			return false;
 		}
 
-		_offsets.reserve(_header.AddrCount());
+		std::vector<std::uint64_t> buffer;
+		buffer.reserve(_header.AddrCount());
 #ifdef _DEBUG
 		_ids.reserve(_header.AddrCount());
 #endif
 
 		bool success = true;
 		try {
-			DoLoadImpl(a_input);
-		} catch ([[maybe_unused]] std::exception& e) {
+			DoLoadImpl(a_input, buffer);
+		} catch (std::exception& e) {
 			assert(false);
 			_ERROR("%s in ID database", e.what());
 			success = false;
 		}
 
-		_offsets.shrink_to_fit();
+		std::string name = "CommonLibSSEOffsets-";
+		name += a_version.GetString();
+		_offsets.open(name.c_str(), buffer.size());
+		_offsets = buffer;
+
 		return success;
 	}
 
 
-	void IDDatabase::DoLoadImpl(IStream& a_input)
+	void IDDatabase::DoLoadImpl(IStream& a_input, std::vector<std::uint64_t>& a_buf)
 	{
 		std::uint8_t type;
 		std::uint64_t id;
@@ -470,10 +476,10 @@ namespace REL
 				offset *= _header.PSize();
 			}
 
-			if (id >= _offsets.size()) {
-				_offsets.resize(id + 1, 0);
+			if (id >= a_buf.size()) {
+				a_buf.resize(id + 1, 0);
 			}
-			_offsets[id] = offset;
+			a_buf[id] = offset;
 #ifdef _DEBUG
 			_ids[offset] = id;
 #endif

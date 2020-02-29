@@ -23,11 +23,13 @@
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
+    <EnableUnitySupport>false</EnableUnitySupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
+    <EnableUnitySupport>false</EnableUnitySupport>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -57,8 +59,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PLUGIN_EXAMPLE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ForcedIncludeFiles>ForceInclude.h;SKSE/Logger.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -114,8 +115,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PLUGIN_EXAMPLE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ForcedIncludeFiles>ForceInclude.h;SKSE/Logger.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -415,6 +415,7 @@
     <ClCompile Include="src\SKSE\RegistrationSet.cpp" />
     <ClCompile Include="src\SKSE\SafeWrite.cpp" />
     <ClCompile Include="src\SKSE\Trampoline.cpp" />
+    <ClCompile Include="src\SKSE\VArgFormatter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ForceInclude.h" />
@@ -1609,6 +1610,7 @@
     <ClInclude Include="include\SKSE\SafeWrite.h" />
     <ClInclude Include="include\SKSE\Stubs.h" />
     <ClInclude Include="include\SKSE\Trampoline.h" />
+    <ClInclude Include="include\SKSE\VArgFormatter.h" />
     <ClInclude Include="include\SKSE\Version.h" />
     <ClInclude Include="include\Util.h" />
     <ClInclude Include="src\RE\GFxResourceKey.cpp" />

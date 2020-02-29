@@ -9,11 +9,11 @@
 #include <memory>
 #include <sstream>
 #include <string>
-#include <vector>
 
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "SKSE/API.h"
 #include "SKSE/Trampoline.h"
+#include "SKSE/VArgFormatter.h"
 
 
 namespace SKSE
@@ -295,7 +295,7 @@ namespace SKSE
 
 	void Logger::VPrint_Impl(const char* a_prefix, Level a_level, const char* a_format, std::va_list a_args, StampType a_type)
 	{
-		Impl::VArgFormatter fmt(a_format, a_args);
+		VArgFormatter fmt(a_format, a_args);
 		Print_Impl(a_prefix, a_level, fmt.c_str(), a_type);
 	}
 
@@ -314,62 +314,6 @@ namespace SKSE
 
 	namespace Impl
 	{
-		VArgFormatter::VArgFormatter(const char* a_format, ...) :
-			_buf()
-		{
-			std::va_list args;
-			va_start(args, a_format);
-			DoFormat(a_format, args);
-			va_end(args);
-		}
-
-
-		VArgFormatter::VArgFormatter(const char* a_format, std::va_list a_args) :
-			_buf()
-		{
-			DoFormat(a_format, a_args);
-		}
-
-
-		void VArgFormatter::operator()(const char* a_format, ...)
-		{
-			std::va_list args;
-			va_start(args, a_format);
-			DoFormat(a_format, args);
-			va_end(args);
-		}
-
-
-		void VArgFormatter::operator()(const char* a_format, std::va_list a_args)
-		{
-			DoFormat(a_format, a_args);
-		}
-
-
-		std::string VArgFormatter::str() const
-		{
-			return c_str();
-		}
-
-
-		const char* VArgFormatter::c_str() const
-		{
-			return _buf.data();
-		}
-
-
-		void VArgFormatter::DoFormat(const char* a_format, std::va_list a_args)
-		{
-			std::va_list argsCopy;
-			va_copy(argsCopy, a_args);
-
-			_buf.resize(std::vsnprintf(0, 0, a_format, a_args) + 1);
-			std::vsnprintf(_buf.data(), _buf.size(), a_format, argsCopy);
-
-			va_end(argsCopy);
-		}
-
-
 		void MacroLogger::VPrint(const char* a_file, std::size_t a_line, Logger::Level a_level, const char* a_format, ...)
 		{
 			if (a_level < Logger::_printLevel) {
