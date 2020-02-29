@@ -157,7 +157,7 @@ namespace RE
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			BSTSmartPointer<Array> arrPtr;
 			TypeInfo typeInfo(GetRawType<value_type>());
-			bool allocSuccess = vm->CreateArray(typeInfo, a_count, arrPtr);
+			[[maybe_unused]] auto allocSuccess = vm->CreateArray(typeInfo, a_count, arrPtr);
 			assert(allocSuccess);	// alloc failed
 			return arrPtr;
 		}
