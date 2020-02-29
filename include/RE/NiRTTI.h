@@ -34,9 +34,9 @@ namespace RE
 		namespace
 		{
 			template <class T, class Enable = void> struct _has_rtti : std::false_type {};
-			template <class T> struct _has_rtti <T, decltype((void)T::Ni_RTTI)> : std::true_type {};
+			template <class T> struct _has_rtti<T, decltype((void)T::Ni_RTTI)> : std::true_type {};
 		}
-		template <class T> struct has_rtti : _has_rtti<typename remove_cvpr_t<T>> {};
+		template <class T> struct has_rtti : _has_rtti<remove_cvpr_t<T>> {};
 
 		template <class To, class From> struct cast_is_valid : std::conjunction<types_are_compat<To, From>, is_base_of_no_cvpr<From, To>, has_rtti<To>, has_rtti<From>> {};
 	}
