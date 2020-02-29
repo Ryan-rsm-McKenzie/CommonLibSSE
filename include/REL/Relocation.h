@@ -921,7 +921,7 @@ namespace REL
 		template <class... Args, class F = function_type, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
 		std::invoke_result_t<F, Args...> operator()(Args&&... a_args) const
 		{
-			assert(InRange());
+			assert(!Empty());
 
 			if (Empty()) {
 				throw std::bad_function_call();
@@ -940,7 +940,7 @@ namespace REL
 		}
 
 
-		[[nodiscard]] bool InRange() const noexcept
+		[[nodiscard]] bool InRange() const
 		{
 			auto xText = Module::GetSection(Module::ID::kTextX);
 			return xText.BaseAddr() <= _storage.address && _storage.address < xText.BaseAddr() + xText.Size();
