@@ -47,7 +47,7 @@ namespace RE
 		}
 
 
-		UPInt GetCachedHash(UPInt a_maskValue) const
+		UPInt GetCachedHash([[maybe_unused]] UPInt a_maskValue) const
 		{
 			return hashValue;
 		}
