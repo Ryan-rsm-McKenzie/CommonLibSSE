@@ -297,7 +297,7 @@ namespace SKSE
 	bool AllocTrampoline(std::size_t a_size)
 	{
 		if (!g_trampoline.Create(a_size)) {
-			_ERROR("Trmapoline creation failed!");
+			_ERROR("Trampoline creation failed!");
 			return false;
 		}
 
