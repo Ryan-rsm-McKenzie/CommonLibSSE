@@ -220,6 +220,30 @@ namespace REL
 			}
 
 
+			bool try_open(const char* a_name, size_type a_size)
+			{
+				close();
+
+				LARGE_INTEGER bytes;
+				bytes.QuadPart = a_size * sizeof(value_type);
+
+				_handle = OpenFileMappingA(FILE_MAP_ALL_ACCESS, false, a_name);
+				if (!_handle) {
+					close();
+					return false;
+				}
+
+				_data = static_cast<pointer>(MapViewOfFile(_handle, FILE_MAP_ALL_ACCESS, 0, 0, bytes.QuadPart));
+				if (!_data) {
+					close();
+					return false;
+				}
+
+				_size = a_size;
+				return true;
+			}
+
+
 			void open(const char* a_name, size_type a_size)
 			{
 				close();

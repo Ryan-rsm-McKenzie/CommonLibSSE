@@ -393,8 +393,10 @@ namespace REL
 
 		std::string name = "CommonLibSSEOffsets-";
 		name += a_version.GetString();
-		_offsets.open(name.c_str(), buffer.size());
-		_offsets = buffer;
+		if (!_offsets.try_open(name.c_str(), buffer.size())) {
+			_offsets.open(name.c_str(), buffer.size());
+			_offsets = buffer;
+		}
 
 		return success;
 	}
