@@ -921,9 +921,8 @@ namespace REL
 		template <class... Args, class F = function_type, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
 		std::invoke_result_t<F, Args...> operator()(Args&&... a_args) const
 		{
-			assert(!Empty());
-
 			if (Empty()) {
+				assert(false);
 				throw std::bad_function_call();
 			}
 
