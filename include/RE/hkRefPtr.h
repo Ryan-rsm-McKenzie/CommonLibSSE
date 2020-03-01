@@ -1,7 +1,10 @@
 #pragma once
 
 #include <cassert>
+#include <cstddef>
+#include <memory>
 #include <type_traits>
+#include <utility>
 
 
 namespace RE
@@ -16,221 +19,178 @@ namespace RE
 		using element_type = T;
 
 
-		constexpr hkRefPtr() noexcept;
-		constexpr hkRefPtr(std::nullptr_t) noexcept;
-		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0> explicit hkRefPtr(Y* a_ptr);
-		hkRefPtr(const hkRefPtr& a_r) noexcept;
-		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0> hkRefPtr(const hkRefPtr<Y>& a_r) noexcept;
-		hkRefPtr(hkRefPtr&& a_r) noexcept;
-		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0> hkRefPtr(hkRefPtr<Y>&& a_r) noexcept;
+		constexpr hkRefPtr() noexcept :
+			_ptr(nullptr)
+		{}
 
-		~hkRefPtr();
 
-		hkRefPtr& operator=(const hkRefPtr& a_r) noexcept;
-		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0> hkRefPtr& operator=(const hkRefPtr<Y>& a_r) noexcept;
-		hkRefPtr& operator=(hkRefPtr&& a_r) noexcept;
-		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0> hkRefPtr& operator=(hkRefPtr<Y>&& a_r) noexcept;
+		constexpr hkRefPtr([[maybe_unused]] std::nullptr_t) noexcept :
+			_ptr(nullptr)
+		{}
 
-		void reset() noexcept;
-		template<class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0> void reset(Y* a_ptr);
 
-		[[nodiscard]] constexpr element_type* get() const noexcept;
+		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
+		explicit hkRefPtr(Y* a_rhs) :
+			_ptr(a_rhs)
+		{
+			TryAttach();
+		}
 
-		[[nodiscard]] constexpr T& operator*() const noexcept;
-		[[nodiscard]] constexpr T* operator->() const noexcept;
 
-		[[nodiscard]] explicit constexpr operator bool() const noexcept;
+		hkRefPtr(const hkRefPtr& a_rhs) :
+			_ptr(a_rhs._ptr)
+		{
+			TryAttach();
+		}
+
+
+		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
+		hkRefPtr(const hkRefPtr<Y>& a_rhs) :
+			_ptr(a_rhs._ptr)
+		{
+			TryAttach();
+		}
+
+
+		hkRefPtr(hkRefPtr&& a_rhs) noexcept :
+			_ptr(std::move(a_rhs._ptr))
+		{
+			a_rhs._ptr = nullptr;
+		}
+
+
+		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
+		hkRefPtr(hkRefPtr<Y>&& a_rhs) noexcept :
+			_ptr(std::move(a_rhs._ptr))
+		{
+			a_rhs._ptr = nullptr;
+		}
+
+
+		~hkRefPtr()
+		{
+			TryDetach();
+		}
+
+
+		hkRefPtr& operator=(const hkRefPtr& a_rhs)
+		{
+			if (this != std::addressof(a_rhs)) {
+				TryDetach();
+				_ptr = a_rhs._ptr;
+				TryAttach();
+			}
+			return *this;
+		}
+
+
+		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
+		hkRefPtr& operator=(const hkRefPtr<Y>& a_rhs)
+		{
+			if (this != std::addressof(a_rhs)) {
+				TryDetach();
+				_ptr = a_rhs._ptr;
+				TryAttach();
+			}
+			return *this;
+		}
+
+
+		hkRefPtr& operator=(hkRefPtr&& a_rhs)
+		{
+			if (this != std::addressof(a_rhs)) {
+				TryDetach();
+				_ptr = std::move(a_rhs._ptr);
+				a_rhs._ptr = nullptr;
+			}
+			return *this;
+		}
+
+
+		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
+		hkRefPtr& operator=(hkRefPtr<Y>&& a_rhs)
+		{
+			if (this != std::addressof(a_rhs)) {
+				TryDetach();
+				_ptr = std::move(a_rhs._ptr);
+				a_rhs._ptr = nullptr;
+			}
+			return *this;
+		}
+
+
+		void reset()
+		{
+			TryDetach();
+		}
+
+
+		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
+		void reset(Y* a_ptr)
+		{
+			if (_ptr != a_ptr) {
+				TryDetach();
+				_ptr = a_ptr;
+				TryAttach();
+			}
+		}
+
+
+		[[nodiscard]] constexpr element_type* get() const noexcept
+		{
+			return _ptr;
+		}
+
+
+		[[nodiscard]] explicit constexpr operator bool() const noexcept
+		{
+			return static_cast<bool>(_ptr);
+		}
+
+
+		[[nodiscard]] constexpr element_type& operator*() const noexcept
+		{
+			assert(static_cast<bool>(*this));
+			return *_ptr;
+		}
+
+
+		[[nodiscard]] constexpr element_type* operator->() const noexcept
+		{
+			assert(static_cast<bool>(*this));
+			return _ptr;
+		}
 
 	protected:
-		template <class Y> friend class hkRefPtr;
+		template <class> friend class hkRefPtr;
 
 
-		void AddReference();
-		void RemoveReference();
+		void TryAttach()
+		{
+			if (_ptr) {
+				_ptr->AddReference();
+			}
+		}
+
+
+		void TryDetach()
+		{
+			if (_ptr) {
+				_ptr->RemoveReference();
+				_ptr = nullptr;
+			}
+		}
 
 
 		// members
-		T* _ptr;	// 00
+		element_type* _ptr;	// 00
 	};
 	STATIC_ASSERT(sizeof(hkRefPtr<void*>) == 0x8);
 
 
-	template <class T>
-	constexpr hkRefPtr<T>::hkRefPtr() noexcept :
-		_ptr(0)
-	{}
-
-
-	template <class T>
-	constexpr hkRefPtr<T>::hkRefPtr(std::nullptr_t) noexcept :
-		_ptr(0)
-	{}
-
-
-	template <class T>
-	template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int>>
-	hkRefPtr<T>::hkRefPtr(Y* a_ptr) :
-		_ptr(a_ptr)
+	template <class T1, class T2>
+	constexpr bool operator==(const hkRefPtr<T1>& a_lhs, const hkRefPtr<T2>& a_rhs)
 	{
-		AddReference();
-	}
-
-
-	template <class T>
-	hkRefPtr<T>::hkRefPtr(const hkRefPtr& a_r) noexcept :
-		_ptr(a_r._ptr)
-	{
-		AddReference();
-	}
-
-
-	template <class T>
-	template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int>>
-	hkRefPtr<T>::hkRefPtr(const hkRefPtr<Y>& a_r) noexcept :
-		_ptr(a_r._ptr)
-	{
-		AddReference();
-	}
-
-
-	template <class T>
-	hkRefPtr<T>::hkRefPtr(hkRefPtr&& a_r) noexcept :
-		_ptr(std::move(a_r._ptr))
-	{
-		a_r._ptr = 0;
-	}
-
-
-	template <class T>
-	template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int>>
-	hkRefPtr<T>::hkRefPtr(hkRefPtr<Y>&& a_r) noexcept :
-		_ptr(std::move(a_r._ptr))
-	{
-		a_r._ptr = 0;
-	}
-
-
-	template <class T>
-	hkRefPtr<T>::~hkRefPtr()
-	{
-		RemoveReference();
-		_ptr = 0;
-	}
-
-
-	template <class T>
-	auto hkRefPtr<T>::operator=(const hkRefPtr& a_r) noexcept
-		-> hkRefPtr&
-	{
-		if (this == &a_r) {
-			return *this;
-		}
-
-		reset(a_r._ptr);
-		return *this;
-	}
-
-
-	template <class T>
-	template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int>>
-	auto hkRefPtr<T>::operator=(const hkRefPtr<Y>& a_r) noexcept
-		-> hkRefPtr&
-	{
-		reset(a_r._ptr);
-		return *this;
-	}
-
-
-	template <class T>
-	auto hkRefPtr<T>::operator=(hkRefPtr&& a_r) noexcept
-		-> hkRefPtr&
-	{
-		if (this == &a_r) {
-			return *this;
-		}
-
-		RemoveReference();
-		_ptr = std::move(a_r._ptr);
-		a_r._ptr = 0;
-		return *this;
-	}
-
-
-	template <class T>
-	template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int>>
-	auto hkRefPtr<T>::operator=(hkRefPtr<Y>&& a_r) noexcept
-		-> hkRefPtr&
-	{
-		RemoveReference();
-		_ptr = std::move(a_r._ptr);
-		a_r._ptr = 0;
-		return *this;
-	}
-
-
-	template <class T>
-	void hkRefPtr<T>::reset() noexcept
-	{
-		if (_ptr) {
-			_ptr->RemoveReference();
-			_ptr = 0;
-		}
-	}
-
-
-	template <class T>
-	template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int>>
-	void hkRefPtr<T>::reset(Y* a_ptr)
-	{
-		_ptr = a_ptr;
-		AddReference();
-	}
-
-
-	template <class T>
-	[[nodiscard]] constexpr auto hkRefPtr<T>::get() const noexcept
-		-> element_type*
-	{
-		return _ptr;
-	}
-
-
-	template <class T>
-	[[nodiscard]] constexpr T& hkRefPtr<T>::operator*() const noexcept
-	{
-		assert(_ptr != 0);
-		return *get();
-	}
-
-
-	template <class T>
-	[[nodiscard]] constexpr T* hkRefPtr<T>::operator->() const noexcept
-	{
-		return get();
-	}
-
-
-	template <class T>
-	[[nodiscard]] constexpr hkRefPtr<T>::operator bool() const noexcept
-	{
-		return _ptr != 0;
-	}
-
-
-	template <class T>
-	void hkRefPtr<T>::AddReference()
-	{
-		if (_ptr) {
-			_ptr->AddReference();
-		}
-	}
-
-
-	template <class T>
-	void hkRefPtr<T>::RemoveReference()
-	{
-		if (_ptr) {
-			_ptr->RemoveReference();
-		}
+		return a_lhs.get() == a_rhs.get();
 	}
 }
