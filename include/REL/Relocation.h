@@ -741,6 +741,7 @@ namespace REL
 		constexpr ID& operator=(std::uint64_t a_id) noexcept { _id = a_id; return *this; }
 
 		[[nodiscard]] std::uint64_t operator*() const;
+		[[nodiscard]] std::uint64_t GetAddress() const;
 		[[nodiscard]] std::uint64_t GetOffset() const;
 
 	private:
@@ -755,29 +756,46 @@ namespace REL
 	public:
 		using value_type = T;
 
+
 		Offset() = delete;
 
+
+		constexpr Offset(const Offset& a_rhs) noexcept :
+			_address(a_rhs._address)
+		{}
+
+
+		constexpr Offset(Offset&& a_rhs) noexcept :
+			_address(std::move(a_rhs._address))
+		{}
+
+
 		constexpr Offset(std::uintptr_t a_offset) noexcept :
-			_impl(a_offset)
+			_address(a_offset)
 		{}
 
-		constexpr Offset(ID a_id) noexcept :
-			Offset(std::move(a_id), 0)
+
+		Offset(ID a_id) noexcept :
+			Offset(a_id.GetAddress())
 		{}
 
-		constexpr Offset(ID a_id, std::size_t a_mod) noexcept :
-			_impl(std::make_pair(a_id, a_mod))
+
+		Offset(ID a_id, std::size_t a_mod) noexcept :
+			_address(a_id.GetAddress() + a_mod)
 		{}
 
-		constexpr Offset(std::pair<ID, std::size_t> a_idAndMod) noexcept :
-			_impl(std::move(a_idAndMod))
+
+		Offset(std::pair<ID, std::size_t> a_idAndMod) noexcept :
+			_address(a_idAndMod.first.GetAddress() + a_idAndMod.second)
 		{}
 
-		constexpr Offset& operator=(const Offset& a_rhs) noexcept { _impl = a_rhs._impl; return *this; }
-		constexpr Offset& operator=(Offset&& a_rhs) noexcept { _impl = std::move(a_rhs._impl); return *this; }
-		constexpr Offset& operator=(std::uint64_t a_rhs) noexcept { _impl = a_rhs; return *this; }
-		constexpr Offset& operator=(ID a_rhs) noexcept { _impl = std::make_pair(a_rhs, 0); return *this; }
-		constexpr Offset& operator=(std::pair<ID, std::size_t> a_rhs) noexcept { _impl = std::move(a_rhs); return *this; }
+
+		constexpr Offset& operator=(const Offset& a_rhs) noexcept { _address = a_rhs._address; return *this; }
+		constexpr Offset& operator=(Offset&& a_rhs) noexcept { _address = std::move(a_rhs._address); return *this; }
+		constexpr Offset& operator=(std::uint64_t a_rhs) noexcept { _address = a_rhs; return *this; }
+		constexpr Offset& operator=(ID a_rhs) noexcept { _address = a_rhs.GetAddress(); return *this; }
+		constexpr Offset& operator=(std::pair<ID, std::size_t> a_rhs) noexcept { _address = a_rhs.first.GetAddress() + a_rhs.second; return *this; }
+
 
 		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
 		std::add_lvalue_reference_t<std::remove_pointer_t<U>> operator*()
@@ -785,11 +803,13 @@ namespace REL
 			return *GetType();
 		}
 
+
 		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
 		U operator->()
 		{
 			return GetType();
 		}
+
 
 		template <class... Args, class F = T, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
 		decltype(auto) operator()(Args&&... a_args)
@@ -797,26 +817,24 @@ namespace REL
 			return Invoke(GetType(), std::forward<Args>(a_args)...);
 		}
 
+
 		value_type GetType()
 		{
 			return unrestricted_cast<value_type>(GetAddress());
 		}
 
-		std::uintptr_t GetAddress()
-		{
-			switch (_impl.index()) {
-			case kID:
-				_impl = *std::get<kID>(_impl).first + std::get<kID>(_impl).second;
-				break;
-			}
 
-			return Module::BaseAddr() + std::get<kRaw>(_impl);
+		[[nodiscard]] std::uintptr_t GetAddress() const noexcept
+		{
+			return _address;
 		}
 
-		std::uintptr_t GetOffset()
+
+		[[nodiscard]] std::uintptr_t GetOffset()
 		{
 			return GetAddress() - Module::BaseAddr();
 		}
+
 
 		template <class U = T, typename std::enable_if_t<std::is_same<U, std::uintptr_t>::value, int> = 0>
 		std::uintptr_t WriteVFunc(std::size_t a_idx, std::uintptr_t a_newFunc)
@@ -828,6 +846,7 @@ namespace REL
 			return result;
 		}
 
+
 		template <class F, class U = T, typename std::enable_if_t<std::is_same<U, std::uintptr_t>::value, int> = 0>
 		std::uintptr_t WriteVFunc(std::size_t a_idx, F a_newFunc)
 		{
@@ -837,7 +856,8 @@ namespace REL
 	private:
 		enum : std::size_t { kRaw, kID };
 
-		std::variant<std::uintptr_t, std::pair<ID, std::size_t>> _impl;
+
+		std::uintptr_t _address;
 	};
 
 
@@ -1000,92 +1020,100 @@ namespace REL
 		{}
 
 
-		Function(const Function& a_rhs) :
+		constexpr Function(const Function& a_rhs) :
 			_storage(a_rhs._storage)
 		{}
 
 
-		Function(Function&& a_rhs) :
+		constexpr Function(Function&& a_rhs) :
 			_storage(std::move(a_rhs._storage))
 		{}
 
 
-		explicit Function(const function_type& a_rhs) :
+		constexpr Function(const function_type& a_rhs) :
 			_storage(a_rhs)
 		{}
 
 
-		explicit Function(function_type&& a_rhs) :
+		constexpr Function(function_type&& a_rhs) :
 			_storage(std::move(a_rhs))
 		{}
 
 
-		explicit Function(std::uintptr_t a_rhs) :
+		constexpr Function(std::uintptr_t a_rhs) :
 			_storage(a_rhs)
 		{}
 
 
-		explicit Function(const Offset<function_type>& a_rhs) :
-			_storage(a_rhs.GetType())
-		{}
-
-
-		explicit Function(const Offset<std::uintptr_t>& a_rhs) :
+		Function(ID a_rhs) :
 			_storage(a_rhs.GetAddress())
 		{}
 
 
-		Function& operator=(const Function& a_rhs)
-		{
-			if (this == &a_rhs) {
-				return *this;
-			}
+		Function(Offset<function_type> a_rhs) :
+			_storage(a_rhs.GetAddress())
+		{}
 
-			_storage = a_rhs._storage;
+
+		Function(Offset<std::uintptr_t> a_rhs) :
+			_storage(a_rhs.GetAddress())
+		{}
+
+
+		constexpr Function& operator=(const Function& a_rhs)
+		{
+			if (this != std::addressof(a_rhs)) {
+				_storage = a_rhs._storage;
+			}
 			return *this;
 		}
 
 
-		Function& operator=(Function&& a_rhs)
+		constexpr Function& operator=(Function&& a_rhs)
 		{
-			if (this == &a_rhs) {
-				return *this;
+			if (this != std::addressof(a_rhs)) {
+				_storage = std::move(a_rhs._storage);
 			}
-
-			_storage = std::move(a_rhs._storage);
 			return *this;
 		}
 
 
-		Function& operator=(const function_type& a_rhs)
+		constexpr Function& operator=(const function_type& a_rhs)
 		{
 			_storage = a_rhs;
 			return *this;
 		}
 
 
-		Function& operator=(function_type&& a_rhs)
+		constexpr Function& operator=(function_type&& a_rhs)
 		{
 			_storage = std::move(a_rhs);
 			return *this;
 		}
 
 
-		Function& operator=(std::uintptr_t a_rhs)
+		constexpr Function& operator=(std::uintptr_t a_rhs)
 		{
 			_storage = a_rhs;
 			return *this;
 		}
 
 
-		Function& operator=(const Offset<function_type>& a_rhs)
+		Function& operator=(ID a_rhs)
 		{
 			_storage = a_rhs.GetAddress();
 			return *this;
 		}
 
 
-		Function& operator=(const Offset<std::uintptr_t>& a_rhs)
+		Function& operator=(Offset<function_type> a_rhs)
+		{
+			_storage = a_rhs.GetAddress();
+			return *this;
+		}
+
+
+		Function& operator=(Offset<std::uintptr_t> a_rhs)
 		{
 			_storage = a_rhs.GetAddress();
 			return *this;
@@ -1106,7 +1134,7 @@ namespace REL
 				throw std::bad_function_call();
 			}
 
-			return Invoke(_storage.func, std::forward<Args>(a_args)...);
+			return Invoke(GetFunction(), std::forward<Args>(a_args)...);
 		}
 
 	private:
@@ -1115,14 +1143,26 @@ namespace REL
 
 		[[nodiscard]] bool Empty() const noexcept
 		{
-			return _storage.address == kEmpty;
+			return GetAddress() == kEmpty;
+		}
+
+
+		[[nodiscard]] std::uintptr_t GetAddress() const noexcept
+		{
+			return _storage.address;
+		}
+
+
+		[[nodiscard]] const function_type& GetFunction() const noexcept
+		{
+			return _storage.function;
 		}
 
 
 		[[nodiscard]] bool InRange() const
 		{
 			auto xText = Module::GetSection(Module::ID::kTextX);
-			return xText.BaseAddr() <= _storage.address && _storage.address < xText.BaseAddr() + xText.Size();
+			return xText.BaseAddr() <= GetAddress() && GetAddress() < xText.BaseAddr() + xText.Size();
 		}
 
 
@@ -1133,78 +1173,71 @@ namespace REL
 			{}
 
 
-			Storage(const Storage& a_rhs) :
-				func(a_rhs.func)
+			constexpr Storage(const Storage& a_rhs) :
+				function(a_rhs.function)
 			{}
 
 
-			Storage(Storage&& a_rhs) :
-				func(std::move(a_rhs.func))
-			{
-				a_rhs.address = kEmpty;
-			}
-
-
-			explicit Storage(const function_type& a_rhs) :
-				func(a_rhs)
+			constexpr Storage(Storage&& a_rhs) :
+				function(std::move(a_rhs.func))
 			{}
 
 
-			explicit Storage(function_type&& a_rhs) :
-				func(std::move(a_rhs))
+			constexpr Storage(const function_type& a_rhs) :
+				function(a_rhs)
 			{}
 
 
-			explicit Storage(std::uintptr_t a_rhs) :
+			constexpr Storage(function_type&& a_rhs) :
+				function(std::move(a_rhs))
+			{}
+
+
+			constexpr Storage(std::uintptr_t a_rhs) :
 				address(a_rhs)
 			{}
 
 
-			Storage& operator=(const Storage& a_rhs)
+			constexpr Storage& operator=(const Storage& a_rhs)
 			{
-				if (this == &a_rhs) {
-					return *this;
+				if (this != std::addressof(a_rhs)) {
+					function = a_rhs.function;
 				}
-
-				func = a_rhs.func;
 				return *this;
 			}
 
 
-			Storage& operator=(Storage&& a_rhs)
+			constexpr Storage& operator=(Storage&& a_rhs)
 			{
-				if (this == &a_rhs) {
-					return *this;
+				if (this != std::addressof(a_rhs)) {
+					function = std::move(a_rhs.function);
 				}
-
-				func = std::move(a_rhs.func);
-				a_rhs.address = kEmpty;
 				return *this;
 			}
 
 
-			Storage& operator=(const function_type& a_rhs)
+			constexpr Storage& operator=(const function_type& a_rhs)
 			{
-				func = a_rhs;
+				function = a_rhs;
 				return *this;
 			}
 
 
-			Storage& operator=(function_type&& a_rhs)
+			constexpr Storage& operator=(function_type&& a_rhs)
 			{
-				func = std::move(a_rhs);
+				function = std::move(a_rhs);
 				return *this;
 			}
 
 
-			Storage& operator=(std::uintptr_t a_rhs)
+			constexpr Storage& operator=(std::uintptr_t a_rhs)
 			{
 				address = a_rhs;
 				return *this;
 			}
 
 
-			function_type func;
+			function_type function;
 			std::uintptr_t address;
 		};
 

@@ -86,18 +86,68 @@ namespace RE
 		{
 			enum RecordFlag : UInt32
 			{
+				kDestructible = 1 << 0,
+				kMaster = 1 << 0,
+				kUnlocked = 1 << 0,
+
+				kAltered = 1 << 1,
 				kPlayable = 1 << 2,
 				kInitialized = 1 << 3,
+				kNonOccluder = 1 << 4,
 				kDeleted = 1 << 5,
+
+				kBorderRegion = 1 << 6,
+				kGlobalConstant = 1 << 6,
+				kHasSpokenFlag = 1 << 6,
 				kKnown = 1 << 6,
+				kInPlaceableWater = 1 << 6,
+
+				kFireOff = 1 << 7,
 				kMustUpdate = 1 << 8,
 				kOnLocalMap = 1 << 9,
+				kPersistent = 1 << 10,
+
+				kDisabled = 1 << 11,
+				kUsedAsMovingPlatform = 1 << 11,
+
 				kIgnored = 1 << 12,
+
+				kEmpty = 1 << 13,
+				kResetDestruction = 1 << 13,
+
+				kTemporary = 1 << 14,
+				kMustBeVisibleDistant = 1 << 15,
 				kRandomAnim = 1 << 16,
 				kDangerous = 1 << 17,
 				kHasCurrents = 1 << 19,
-				kObstacle = 1 << 25
+				kIgnoreFriendlyHits = 1 << 20,
+				kStillLoading = 1 << 21,
+				kFormRetainsID = 1 << 22,
+				kDestroyed = 1 << 23,
+
+				kNoAIAcquire = 1 << 25,
+				kObstacle = 1 << 25,
+
+				kVATSTargetOverride = 1 << 26,
+				kDisableFade = 1 << 27,
+
+				kReflectedByAutoWater = 1 << 28,
+				kShowOnWorldMap = 1 << 28,
+
+				kChildCanUse = 1 << 29
 			};
+		};
+
+
+		enum class InGameFormFlag : UInt16
+		{
+			kNone = 0,
+			kWantsDelete = 1 << 0,
+			kForcedPersistent = 1 << 1,
+			kNoFavorAllowed = 1 << 4,
+			kIsSkyObject = 1 << 5,
+			kRefOriginalPersistent = 1 << 6,
+			kRefPermanentlyDeleted = 1 << 7
 		};
 
 
@@ -208,7 +258,7 @@ namespace RE
 		TESFileContainer	sourceFiles;		// 08
 		UInt32				formFlags;			// 10
 		FormID				formID;				// 14
-		UInt16				inGameFormFlags;	// 18
+		InGameFormFlag		inGameFormFlags;	// 18
 		FormType			formType;			// 1A
 		UInt8				pad1B;				// 1B
 		UInt32				pad1C;				// 1C

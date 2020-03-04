@@ -50,15 +50,15 @@ namespace SKSE
 		template <class F> bool Write6Branch(std::uintptr_t a_src, F a_dst) { return Write6Branch(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
 		template <class F> bool Write6Call(std::uintptr_t a_src, F a_dst) { return Write6Call(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
 
-		std::uintptr_t Write5BranchEx(std::uintptr_t a_src, std::uintptr_t a_dst);
-		std::uintptr_t Write5CallEx(std::uintptr_t a_src, std::uintptr_t a_dst);
-		std::uintptr_t Write6BranchEx(std::uintptr_t a_src, std::uintptr_t a_dst);
-		std::uintptr_t Write6CallEx(std::uintptr_t a_src, std::uintptr_t a_dst);
+		[[nodiscard]] std::uintptr_t Write5BranchEx(std::uintptr_t a_src, std::uintptr_t a_dst);
+		[[nodiscard]] std::uintptr_t Write5CallEx(std::uintptr_t a_src, std::uintptr_t a_dst);
+		[[nodiscard]] std::uintptr_t Write6BranchEx(std::uintptr_t a_src, std::uintptr_t a_dst);
+		[[nodiscard]] std::uintptr_t Write6CallEx(std::uintptr_t a_src, std::uintptr_t a_dst);
 
-		template <class F> std::uintptr_t Write5BranchEx(std::uintptr_t a_src, F a_dst) { return Write5BranchEx(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
-		template <class F> std::uintptr_t Write5CallEx(std::uintptr_t a_src, F a_dst) { return Write5CallEx(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
-		template <class F> std::uintptr_t Write6BranchEx(std::uintptr_t a_src, F a_dst) { return Write6BranchEx(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
-		template <class F> std::uintptr_t Write6CallEx(std::uintptr_t a_src, F a_dst) { return Write6CallEx(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
+		template <class F> [[nodiscard]] std::uintptr_t Write5BranchEx(std::uintptr_t a_src, F a_dst) { return Write5BranchEx(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
+		template <class F> [[nodiscard]] std::uintptr_t Write5CallEx(std::uintptr_t a_src, F a_dst) { return Write5CallEx(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
+		template <class F> [[nodiscard]] std::uintptr_t Write6BranchEx(std::uintptr_t a_src, F a_dst) { return Write6BranchEx(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
+		template <class F> [[nodiscard]] std::uintptr_t Write6CallEx(std::uintptr_t a_src, F a_dst) { return Write6CallEx(a_src, unrestricted_cast<std::uintptr_t>(a_dst)); }
 
 	private:
 		friend class Impl::TrampolineLogger;

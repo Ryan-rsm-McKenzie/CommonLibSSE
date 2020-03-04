@@ -17,6 +17,7 @@
 #undef min
 #undef near
 #undef PlaySound
+#undef ReplaceText
 #undef SetForm
 
 #undef FAR

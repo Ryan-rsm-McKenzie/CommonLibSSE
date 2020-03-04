@@ -12,13 +12,17 @@ namespace RE
 	enum class BSEventNotifyControl : UInt32
 	{
 		kContinue = 0,
-		kStop  = 1
+		kStop = 1
 	};
 
 
 	struct BSContainer
 	{
-		using ForEachResult = BSEventNotifyControl;
+		enum class ForEachResult : UInt32
+		{
+			kContinue = 0,
+			kStop = 1
+		};
 	};
 
 

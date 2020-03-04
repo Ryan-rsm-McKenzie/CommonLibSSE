@@ -516,6 +516,13 @@ namespace REL
 		return GetOffset();
 	}
 
+
+	std::uint64_t ID::GetAddress() const
+	{
+		return Module::BaseAddr() + GetOffset();
+	}
+
+
 	std::uint64_t ID::GetOffset() const
 	{
 		return IDDatabase::IDToOffset(_id);

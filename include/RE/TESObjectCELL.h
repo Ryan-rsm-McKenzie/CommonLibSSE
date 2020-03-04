@@ -218,7 +218,7 @@ namespace RE
 		TESObjectLAND*						cellLand;			// 068
 		float								waterHeight;		// 070 - XCLW
 		NavMeshArray*						navMeshes;			// 078
-		BSTSet<NiPointer<TESObjectREFR>>	objectMap;			// 080
+		BSTSet<NiPointer<TESObjectREFR>>	references;			// 080
 		TESForm*							unk0B0;				// 0B0 - REFR owner of cell?
 		BSTArray<TESObjectREFR*>			objectList;			// 0B8 - persistent
 		BSTArray<void*>						unk0D0;				// 0D0
