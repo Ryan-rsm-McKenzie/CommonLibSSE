@@ -36,9 +36,9 @@ namespace RE
 		virtual void	PostChangeAnimationManager(const BSTSmartPointer<BShkbAnimationGraph>& a_arg1, const BSTSmartPointer<BShkbAnimationGraph>& a_arg2);	// 0D - { return; }
 		virtual void	Unk_0E(void);																														// 0E - { return 1; }
 		virtual UInt32	GetGraphVariableCacheSize();																										// 0F - { return 0; }
-		virtual bool	GetGraphVariableImpl(const BSFixedString& a_variableName, float& a_out);															// 10
-		virtual bool	GetGraphVariableImpl(const BSFixedString& a_variableName, SInt32& a_out);															// 11
-		virtual bool	GetGraphVariableImpl(const BSFixedString& a_variableName, bool& a_out);																// 12
+		virtual bool	GetGraphVariableImpl1(const BSFixedString& a_variableName, float& a_out);															// 10
+		virtual bool	GetGraphVariableImpl2(const BSFixedString& a_variableName, SInt32& a_out);															// 11
+		virtual bool	GetGraphVariableImpl3(const BSFixedString& a_variableName, bool& a_out);															// 12
 
 		bool	GetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_out);
 		bool	GetGraphVariableFloat(const BSFixedString& a_variableName, float& a_out);

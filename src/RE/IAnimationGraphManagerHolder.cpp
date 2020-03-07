@@ -11,19 +11,19 @@ namespace RE
 
 	bool IAnimationGraphManagerHolder::GetGraphVariableFloat(const BSFixedString& a_variableName, float& a_out)
 	{
-		return GetGraphVariableImpl(a_variableName, a_out);
+		return GetGraphVariableImpl1(a_variableName, a_out);
 	}
 
 
 	bool IAnimationGraphManagerHolder::GetGraphVariableInt(const BSFixedString& a_variableName, SInt32& a_out)
 	{
-		return GetGraphVariableImpl(a_variableName, a_out);
+		return GetGraphVariableImpl2(a_variableName, a_out);
 	}
 
 
 	bool IAnimationGraphManagerHolder::GetGraphVariableBool(const BSFixedString& a_variableName, bool& a_out)
 	{
-		return GetGraphVariableImpl(a_variableName, a_out);
+		return GetGraphVariableImpl3(a_variableName, a_out);
 	}
 
 
