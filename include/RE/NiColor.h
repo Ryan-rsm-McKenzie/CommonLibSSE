@@ -1,5 +1,9 @@
 #pragma once
 
+#include <cassert>
+#include <memory>
+#include <utility>
+
 
 namespace RE
 {
@@ -10,15 +14,101 @@ namespace RE
 	class NiColor
 	{
 	public:
-		NiColor();
-		NiColor(const NiColor& a_rhs);
-		NiColor(NiColor&& a_rhs);
-		NiColor(float a_red, float a_green, float a_blue);
-		~NiColor() = default;
+		enum : std::size_t
+		{
+			kRed,
+			kGreen,
+			kBlue,
 
-		NiColor& operator=(const NiColor& a_rhs);
-		NiColor& operator=(NiColor&& a_rhs);
-		NiColor& operator=(const NiColorA& a_rhs);
+			kTotal
+		};
+
+
+		constexpr NiColor() noexcept :
+			red(0.0),
+			green(0.0),
+			blue(0.0)
+		{}
+
+
+		constexpr NiColor(const NiColor& a_rhs) noexcept :
+			red(a_rhs.red),
+			green(a_rhs.green),
+			blue(a_rhs.blue)
+		{}
+
+
+		constexpr NiColor(NiColor&& a_rhs) noexcept :
+			red(std::move(a_rhs.red)),
+			green(std::move(a_rhs.green)),
+			blue(std::move(a_rhs.blue))
+		{}
+
+
+		constexpr NiColor(float a_red, float a_green, float a_blue) noexcept :
+			red(a_red),
+			green(a_green),
+			blue(a_blue)
+		{}
+
+
+		~NiColor() noexcept = default;
+
+
+		constexpr NiColor& operator=(const NiColor& a_rhs) noexcept
+		{
+			if (this != std::addressof(a_rhs)) {
+				red = a_rhs.red;
+				green = a_rhs.green;
+				blue = a_rhs.blue;
+			}
+			return *this;
+		}
+
+
+		constexpr NiColor& operator=(NiColor&& a_rhs) noexcept
+		{
+			if (this != std::addressof(a_rhs)) {
+				red = std::move(a_rhs.red);
+				green = std::move(a_rhs.green);
+				blue = std::move(a_rhs.blue);
+			}
+			return *this;
+		}
+
+
+		constexpr NiColor& operator=(const NiColorA& a_rhs) noexcept;
+
+
+		[[nodiscard]] friend constexpr bool operator==(const NiColor& a_lhs, const NiColor& a_rhs) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				if (a_lhs[i] != a_rhs[i]) {
+					return false;
+				}
+			}
+			return true;
+		}
+
+
+		[[nodiscard]] friend constexpr bool operator!=(const NiColor& a_lhs, const NiColor& a_rhs) noexcept
+		{
+			return !(a_lhs == a_rhs);
+		}
+
+
+		[[nodiscard]] constexpr float& operator[](std::size_t a_idx) noexcept
+		{
+			assert(a_idx < kTotal);
+			return std::addressof(red)[a_idx];
+		}
+
+
+		[[nodiscard]] constexpr const float& operator[](std::size_t a_idx) const noexcept
+		{
+			assert(a_idx < kTotal);
+			return std::addressof(red)[a_idx];
+		}
 
 
 		// members
@@ -32,15 +122,108 @@ namespace RE
 	class NiColorA
 	{
 	public:
-		NiColorA();
-		NiColorA(const NiColorA& a_rhs);
-		NiColorA(NiColorA&& a_rhs);
-		NiColorA(float a_red, float a_green, float a_blue, float a_alpha);
-		~NiColorA() = default;
+		enum : std::size_t
+		{
+			kRed,
+			kGreen,
+			kBlue,
+			kAlpha,
 
-		NiColorA& operator=(const NiColorA& a_rhs);
-		NiColorA& operator=(NiColorA&& a_rhs);
-		NiColorA& operator=(const NiColor& a_rhs);
+			kTotal
+		};
+
+
+		constexpr NiColorA() noexcept :
+			red(0.0),
+			green(0.0),
+			blue(0.0),
+			alpha(0.0)
+		{}
+
+
+		constexpr NiColorA(const NiColorA& a_rhs) noexcept :
+			red(a_rhs.red),
+			green(a_rhs.green),
+			blue(a_rhs.blue),
+			alpha(a_rhs.alpha)
+		{}
+
+
+		constexpr NiColorA(NiColorA&& a_rhs) noexcept :
+			red(std::move(a_rhs.red)),
+			green(std::move(a_rhs.green)),
+			blue(std::move(a_rhs.blue)),
+			alpha(std::move(a_rhs.alpha))
+		{}
+
+
+		constexpr NiColorA(float a_red, float a_green, float a_blue, float a_alpha) noexcept :
+			red(a_red),
+			green(a_green),
+			blue(a_blue),
+			alpha(a_alpha)
+		{}
+
+
+		~NiColorA() noexcept = default;
+
+
+		constexpr NiColorA& operator=(const NiColorA& a_rhs) noexcept
+		{
+			if (this != std::addressof(a_rhs)) {
+				red = a_rhs.red;
+				green = a_rhs.green;
+				blue = a_rhs.blue;
+				alpha = a_rhs.alpha;
+			}
+			return *this;
+		}
+
+
+		constexpr NiColorA& operator=(NiColorA&& a_rhs) noexcept
+		{
+			if (this != std::addressof(a_rhs)) {
+				red = std::move(a_rhs.red);
+				green = std::move(a_rhs.green);
+				blue = std::move(a_rhs.blue);
+				alpha = std::move(a_rhs.alpha);
+			}
+			return *this;
+		}
+
+
+		constexpr NiColorA& operator=(const NiColor& a_rhs) noexcept;
+
+
+		[[nodiscard]] friend constexpr bool operator==(const NiColorA& a_lhs, const NiColorA& a_rhs) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				if (a_lhs[i] != a_rhs[i]) {
+					return false;
+				}
+			}
+			return true;
+		}
+
+
+		[[nodiscard]] friend constexpr bool operator!=(const NiColorA& a_lhs, const NiColorA& a_rhs) noexcept
+		{
+			return !(a_lhs == a_rhs);
+		}
+
+
+		[[nodiscard]] constexpr float& operator[](std::size_t a_idx) noexcept
+		{
+			assert(a_idx < kTotal);
+			return std::addressof(red)[a_idx];
+		}
+
+
+		[[nodiscard]] constexpr const float& operator[](std::size_t a_idx) const noexcept
+		{
+			assert(a_idx < kTotal);
+			return std::addressof(red)[a_idx];
+		}
 
 
 		// members
@@ -50,4 +233,23 @@ namespace RE
 		float	alpha;	// 0C
 	};
 	STATIC_ASSERT(sizeof(NiColorA) == 0x10);
+
+
+	constexpr NiColor& NiColor::operator=(const NiColorA& a_rhs) noexcept
+	{
+		red = a_rhs.red;
+		green = a_rhs.green;
+		blue = a_rhs.blue;
+		return *this;
+	}
+
+
+	constexpr NiColorA& NiColorA::operator=(const NiColor& a_rhs) noexcept
+	{
+		red = a_rhs.red;
+		green = a_rhs.green;
+		blue = a_rhs.blue;
+		alpha = 0.0;
+		return *this;
+	}
 }

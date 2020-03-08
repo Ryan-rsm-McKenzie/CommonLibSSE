@@ -310,7 +310,6 @@
     <ClCompile Include="src\RE\NiAnimationKey.cpp" />
     <ClCompile Include="src\RE\NiAVObject.cpp" />
     <ClCompile Include="src\RE\NiBinaryStream.cpp" />
-    <ClCompile Include="src\RE\NiColor.cpp" />
     <ClCompile Include="src\RE\NiColorData.cpp" />
     <ClCompile Include="src\RE\NiColorKey.cpp" />
     <ClCompile Include="src\RE\NiExtraData.cpp" />

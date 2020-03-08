@@ -4,6 +4,7 @@
 #include "RE/BSTArray.h"
 #include "RE/BSTEvent.h"
 #include "RE/BSFixedString.h"
+#include "RE/BSLock.h"
 #include "RE/BSThread.h"
 #include "RE/BSTMessageQueue.h"
 #include "RE/BSTSmartPointer.h"
@@ -15,6 +16,32 @@ namespace RE
 	class BSSaveDataEvent;
 	class BSSystemEvent;
 	struct BGSSaveLoadManagerEvent;
+
+
+	class BGSSaveLoadFileEntry
+	{
+	public:
+		// members
+		BSFixedString	fileName;		// 00
+		BSFixedString	playerName;		// 08
+		BSFixedString	playerTitle;	// 10
+		BSFixedString	location;		// 18
+		BSFixedString	playTime;		// 20
+		BSFixedString	raceName;		// 28
+		UInt32			unk30;			// 30
+		UInt32			unk34;			// 34
+		UInt32			unk38;			// 38
+		UInt32			unk3C;			// 3C
+		UInt32			unk40;			// 40
+		UInt32			unk44;			// 44
+		UInt64			unk48;			// 48
+		UInt64			unk50;			// 50
+		UInt64			unk58;			// 58
+		UInt64			unk60;			// 60
+		UInt64			unk68;			// 68
+		UInt64			unk70;			// 70
+	};
+	STATIC_ASSERT(sizeof(BGSSaveLoadFileEntry) == 0x78);
 
 
 	class BGSSaveLoadManager :
@@ -40,33 +67,14 @@ namespace RE
 
 
 			// members
-			UInt32																	unk50;	// 50
-			UInt32																	unk54;	// 54
-			HANDLE																	unk58;	// 58
-			BSTCommonStaticMessageQueue<BSTSmartPointer<bgs::saveload::Request>, 8>	unk60;	// 60
+			bool																	isRunnning;						// 50
+			bool																	isBusy;							// 51
+			UInt16																	pad52;							// 52
+			UInt32																	pad54;							// 54
+			BSEventFlag																haveTask;						// 58
+			BSTCommonStaticMessageQueue<BSTSmartPointer<bgs::saveload::Request>, 8>	asyncSaveLoadOperationQueue;	// 60
 		};
 		STATIC_ASSERT(sizeof(Thread) == 0xC0);
-
-
-		struct UnkData
-		{
-			BSFixedString	unk00;	// 00
-			BSFixedString	unk08;	// 08
-			BSFixedString	unk10;	// 10
-			BSFixedString	unk18;	// 18
-			BSFixedString	unk20;	// 20
-			BSFixedString	unk28;	// 28
-			UInt64			unk30;	// 30
-			UInt64			unk38;	// 38
-			UInt64			unk40;	// 40
-			UInt64			unk48;	// 48
-			UInt64			unk50;	// 50
-			UInt64			unk58;	// 58
-			UInt64			unk60;	// 60
-			UInt64			unk68;	// 68
-			UInt64			unk70;	// 70
-		};
-		STATIC_ASSERT(sizeof(UnkData) == 0x78);
 
 
 		virtual ~BGSSaveLoadManager();																																					// 00
@@ -83,8 +91,8 @@ namespace RE
 
 		static BGSSaveLoadManager* GetSingleton();
 
-		void	Save(const char* a_name);
-		void	Load(const char* a_name);
+		void	Save(const char* a_fileName);
+		void	Load(const char* a_fileName);
 
 
 		// members
@@ -111,7 +119,7 @@ namespace RE
 		UInt32																	unk0E4;			// 0E4
 		BSTArray<void*>															unk0E8;			// 0E8
 
-		BSTArray<UnkData*>														unk100;			// 100
+		BSTArray<BGSSaveLoadFileEntry*>											saveGameList;	// 100
 		UInt8																	unk118;			// 118
 		UInt8																	unk119;			// 119
 		UInt16																	unk11A;			// 11A
@@ -184,8 +192,8 @@ namespace RE
 		BSTCommonStaticMessageQueue<BSTSmartPointer<bgs::saveload::Request>, 8>	unk370;			// 370
 
 	protected:
-		bool	Save_Internal(SInt32 a_arg1, UInt32 a_arg2, const char* a_name);
-		bool	Load_Internal(const char* a_name, SInt32 a_arg2, UInt32 a_arg3, UInt32 a_arg4);
+		bool	Save_Impl(SInt32 a_deviceID, UInt32 a_outputStats, const char* a_fileName);
+		bool	Load_Impl(const char* a_fileName, SInt32 a_deviceID, UInt32 a_outputStats, bool a_checkForMods);
 	};
 	STATIC_ASSERT(sizeof(BGSSaveLoadManager) == 0x3D0);
 }

@@ -12,6 +12,15 @@ namespace RE
 	STATIC_ASSERT(sizeof(BSCriticalSection) == 0x28);
 
 
+	class BSEventFlag
+	{
+	public:
+		// members
+		HANDLE event;	// 0
+	};
+	STATIC_ASSERT(sizeof(BSEventFlag) == 0x8);
+
+
 	class BSSemaphoreBase
 	{
 	public:
