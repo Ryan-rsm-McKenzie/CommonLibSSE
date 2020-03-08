@@ -6,7 +6,7 @@ namespace RE
 	struct BSTLocklessQueue
 	{
 		template <class T, UInt32 SIZE, UInt32 UNKNOWN>
-		struct PtrMultiProdCons
+		class PtrMultiProdCons
 		{
 			T*				data[SIZE];	// 00
 			volatile UInt32	start;		// 08
@@ -27,7 +27,7 @@ namespace RE
 
 
 		template <class T, UInt32 SIZE, UInt32 UNKNOWN>
-		struct ObjMultiProdCons : public ObjQueueBase<PtrMultiProdCons<T, SIZE * 2, UNKNOWN>, T, SIZE, UNKNOWN>
+		class ObjMultiProdCons : public ObjQueueBase<PtrMultiProdCons<T, SIZE * 2, UNKNOWN>, T, SIZE, UNKNOWN>
 		{};
 	};
 }

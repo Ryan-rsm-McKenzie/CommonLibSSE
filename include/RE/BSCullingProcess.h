@@ -44,15 +44,15 @@ namespace RE
 
 		virtual ~BSCullingProcess();																							// 15
 
-		virtual void			Process(NiAVObject* a_object, UInt32 a_arg2) override;											// 16
-		virtual void			Process(const NiCamera* a_camera, NiAVObject* a_scene, NiVisibleArray* a_visibleSet) override;	// 17
-		virtual void			AppendVirtual(BSGeometry* a_visible, UInt32 a_arg2) override;									// 18
+		virtual void			Process1(NiAVObject* a_object, UInt32 a_arg2) override;											// 16
+		virtual void			Process2(const NiCamera* a_camera, NiAVObject* a_scene, NiVisibleArray* a_visibleSet) override;	// 17
+		virtual void			AppendVirtual(BSGeometry& a_visible, UInt32 a_arg2) override;									// 18
 
 		// add
-		virtual void			AppendNonAccum(NiAVObject* a_object);															// 19
-		virtual bool			TestBaseVisibility1(class BSMultiBound& a_bound);												// 1A
-		virtual bool			TestBaseVisibility2(class BSOcclusionPlane& a_bound);											// 1B
-		virtual bool			TestBaseVisibility3(NiBound& a_bound);															// 1C
+		virtual void			AppendNonAccum(NiAVObject& a_object);															// 19
+		virtual bool			TestBaseVisibility1(BSMultiBound& a_bound);														// 1A
+		virtual bool			TestBaseVisibility2(BSOcclusionPlane& a_bound);													// 1B
+		virtual bool			TestBaseVisibility3(const NiBound& a_bound) const;												// 1C
 
 
 		BSTArray<NiPointer<NiAVObject>>						unk00128;			// 00128

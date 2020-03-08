@@ -61,12 +61,12 @@ namespace RE
 		virtual bhkAttachmentCollisionObject*	GetAsBhkAttachmentCollisionObject();													// 12 - { return 0; }
 		virtual bhkRigidBody*					GetAsBhkRigidBody();																	// 13 - { return 0; }
 		virtual bhkLimitedHingeConstraint*		GetAsBhkLimitedHingeConstraint();														// 14 - { return 0; }
-		
+
 		virtual ~NiCullingProcess();																									// 15
 
-		virtual void							Process(NiAVObject* a_object, UInt32 a_arg2);											// 16
-		virtual void							Process(const NiCamera* a_camera, NiAVObject* a_scene, NiVisibleArray* a_visibleSet);	// 17 - { return; }
-		virtual void							AppendVirtual(BSGeometry* a_visible, UInt32 a_arg2);									// 18
+		virtual void							Process1(NiAVObject* a_object, UInt32 a_arg2);											// 16
+		virtual void							Process2(const NiCamera* a_camera, NiAVObject* a_scene, NiVisibleArray* a_visibleSet);	// 17 - { return; }
+		virtual void							AppendVirtual(BSGeometry& a_visible, UInt32 a_arg2);									// 18
 
 
 		// members
@@ -75,7 +75,7 @@ namespace RE
 		UInt16			pad00A;					// 00A
 		UInt32			pad00C;					// 00C
 		NiVisibleArray*	visibleSet;				// 010
-		NiCamera*		camera;					// 018
+		const NiCamera*	camera;					// 018
 		NiFrustum		frustum;				// 020
 		NiFrustumPlanes	planes;					// 03C
 		NiFrustumPlanes	customCullPlanes;		// 0AC
