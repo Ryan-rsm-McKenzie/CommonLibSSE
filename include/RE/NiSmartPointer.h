@@ -194,6 +194,13 @@ namespace RE
 	}
 
 
+	template <class T1, class T2>
+	constexpr bool operator!=(const NiPointer<T1>& a_lhs, const NiPointer<T2>& a_rhs)
+	{
+		return !(a_lhs == a_rhs);
+	}
+
+
 	template <class T>
 	struct CRC32Hash<NiPointer<T>>
 	{

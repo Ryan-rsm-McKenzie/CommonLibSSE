@@ -14,6 +14,7 @@ namespace RE
 
 		enum class Type : SInt32
 		{
+			kAlpha = 0,
 			kShade = 1
 		};
 

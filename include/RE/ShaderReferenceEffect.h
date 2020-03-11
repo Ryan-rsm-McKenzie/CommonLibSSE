@@ -57,7 +57,7 @@ namespace RE
 		virtual void				Unk_37(void) override;										// 37
 		virtual void				Unk_38(void) override;										// 38
 		virtual void				Unk_39(void) override;										// 39
-		virtual void				Unk_3B(void) override;										// 3B
+		virtual void				UpdatePosition() override;									// 3B
 		virtual void				Unk_3C(void) override;										// 3C
 		virtual void				Unk_3E(void) override;										// 3E
 

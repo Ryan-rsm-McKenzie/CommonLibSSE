@@ -2,11 +2,15 @@
 
 #include <functional>
 
+#include "RE/BSGraphics/State.h"
+#include "RE/BSEffectShaderData.h"
 #include "RE/BSGeometry.h"
 #include "RE/BSLightingShaderMaterialFacegenTint.h"
 #include "RE/BSLightingShaderMaterialHairTint.h"
 #include "RE/BSLightingShaderProperty.h"
 #include "RE/BSShaderMaterial.h"
+#include "RE/BSShaderProperty.h"
+#include "RE/BSTSmartPointer.h"
 #include "RE/BSVisit.h"
 #include "RE/NiColor.h"
 #include "RE/NiNode.h"
@@ -29,6 +33,29 @@ namespace RE
 		using func_t = decltype(&NiAVObject::SetMotionType);
 		REL::Offset<func_t> func(Offset::NiAVObject::SetMotionType);
 		return func(this, a_motionType, a_arg2, a_arg3, a_allowActivate);
+	}
+
+
+	void NiAVObject::TintScenegraph(const NiColorA& a_color)
+	{
+		auto gState = RE::BSGraphics::State::GetSingleton();
+		BSTSmartPointer<BSEffectShaderData> newShaderData(new RE::BSEffectShaderData());
+		newShaderData->fillColor = a_color;
+		newShaderData->baseTexture = gState->defaultTextureWhite;
+
+		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geometry) -> BSVisit::BSVisitControl
+		{
+			auto effect = a_geometry->properties[BSGeometry::States::kEffect];
+			auto shaderProp = netimmerse_cast<BSShaderProperty*>(effect.get());
+			if (shaderProp && shaderProp->AcceptsEffectData()) {
+				auto shaderData = shaderProp->effectData;
+				if (!shaderData || shaderData->baseTexture == gState->defaultTextureWhite) {
+					shaderProp->SetEffectShaderData(newShaderData);
+				}
+			}
+
+			return BSVisit::BSVisitControl::kContinue;
+		});
 	}
 
 
@@ -59,7 +86,7 @@ namespace RE
 				}
 			}
 
-			return BSVisit::BSVisitControl::kStop;
+			return BSVisit::BSVisitControl::kContinue;
 		});
 	}
 
@@ -83,7 +110,7 @@ namespace RE
 				}
 			}
 
-			return BSVisit::BSVisitControl::kStop;
+			return BSVisit::BSVisitControl::kContinue;
 		});
 	}
 }

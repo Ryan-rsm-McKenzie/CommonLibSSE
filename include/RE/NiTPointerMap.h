@@ -7,10 +7,10 @@
 namespace RE
 {
 	template <class Key, class T>
-	class NiTPointerMap : public NiTMapBase<NiTPointerAllocator<UInt32>, Key, T>
+	class NiTPointerMap : public NiTMapBase<NiTPointerAllocator<std::uintptr_t>, Key, T>
 	{
 	private:
-		using Base = NiTMapBase<NiTPointerAllocator<UInt32>, Key, T>;
+		using Base = NiTMapBase<NiTPointerAllocator<std::uintptr_t>, Key, T>;
 
 	public:
 		using key_type = typename Base::key_type;

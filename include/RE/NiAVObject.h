@@ -13,6 +13,7 @@ namespace RE
 	class NiAVObject;
 	class NiCollisionObject;
 	class NiColor;
+	class NiColorA;
 	class NiCullingProcess;
 	class NiNode;
 	class NiPoint3;
@@ -115,28 +116,26 @@ namespace RE
 
 		bool	GetAppCulled() const;
 		bool	SetMotionType(UInt32 a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
+		void	TintScenegraph(const NiColorA& a_color);
 		void	Update(NiUpdateData& a_data);
 		void	UpdateBodyTint(const NiColor& a_color);
 		void	UpdateHairColor(const NiColor& a_color);
 
 
 		// members
-		NiNode*							parent;				// 030
-		UInt64							unk038;				// 038
-		NiPointer<NiCollisionObject>	collisionObject;	// 040
-		NiTransform						local;				// 048
-		NiTransform						world;				// 07C
-		NiTransform						previousWorld;		// 0B0
-		NiBound 						worldBound;			// 0E4
-		Flag							flags;				// 0F4
-		TESObjectREFR*					userData;			// 0F8
-		float							fadeAmount;			// 100
-		UInt8							unk104;				// 104
-		UInt8							unk105;				// 105
-		UInt8							unk108;				// 108
-		UInt8							unk109;				// 109
-		UInt16							pad10A;				// 10A
-		UInt32							pad10C;				// 10C
+		NiNode*							parent;						// 030
+		UInt32							parentIndex;				// 038
+		UInt32							unk03C;						// 03C
+		NiPointer<NiCollisionObject>	collisionObject;			// 040
+		NiTransform						local;						// 048
+		NiTransform						world;						// 07C
+		NiTransform						previousWorld;				// 0B0
+		NiBound 						worldBound;					// 0E4
+		Flag							flags;						// 0F4
+		TESObjectREFR*					userData;					// 0F8
+		float							fadeAmount;					// 100
+		UInt32							lastUpdatedFrameCounter;	// 104
+		UInt64							unk108;						// 108
 	};
 	STATIC_ASSERT(sizeof(NiAVObject) == 0x110);
 }

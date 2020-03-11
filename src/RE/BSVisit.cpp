@@ -11,7 +11,7 @@ namespace RE
 		BSVisitControl TraverseScenegraphGeometries(NiAVObject* a_object, llvm::function_ref<BSVisitControl(BSGeometry*)> a_func)
 		{
 			if (!a_object) {
-				return BSVisitControl::kStop;
+				return BSVisitControl::kContinue;
 			}
 
 			auto geom = a_object->AsGeometry();
@@ -19,12 +19,12 @@ namespace RE
 				return a_func(geom);
 			}
 
-			auto result = BSVisitControl::kStop;
+			auto result = BSVisitControl::kContinue;
 			auto node = a_object->AsNode();
 			if (node) {
 				for (auto& child : node->children) {
 					result = TraverseScenegraphGeometries(child.get(), a_func);
-					if (result != BSVisitControl::kContinue) {
+					if (result == BSVisitControl::kStop) {
 						break;
 					}
 				}

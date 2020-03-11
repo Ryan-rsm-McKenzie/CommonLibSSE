@@ -35,7 +35,7 @@ namespace RE
 		virtual void				Unk_38(void);										// 38 - { return; }
 		virtual void				Unk_39(void);										// 39
 		virtual void				Unk_3A(void);										// 3A
-		virtual void				Unk_3B(void);										// 3B - { return; }
+		virtual void				UpdatePosition();									// 3B - { return; }
 		virtual void				Unk_3C(void);										// 3C
 		virtual void				Unk_3D(void);										// 3D - { return 1; }
 		virtual void				Unk_3E(void);										// 3E - { return; }

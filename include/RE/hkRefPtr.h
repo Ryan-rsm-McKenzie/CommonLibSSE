@@ -193,4 +193,11 @@ namespace RE
 	{
 		return a_lhs.get() == a_rhs.get();
 	}
+
+
+	template <class T1, class T2>
+	constexpr bool operator!=(const hkRefPtr<T1>& a_lhs, const hkRefPtr<T2>& a_rhs)
+	{
+		return !(a_lhs == a_rhs);
+	}
 }

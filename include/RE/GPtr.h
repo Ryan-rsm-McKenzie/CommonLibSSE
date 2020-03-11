@@ -190,4 +190,11 @@ namespace RE
 	{
 		return a_lhs.get() == a_rhs.get();
 	}
+
+
+	template <class T1, class T2>
+	constexpr bool operator!=(const GPtr<T1>& a_lhs, const GPtr<T2>& a_rhs)
+	{
+		return !(a_lhs == a_rhs);
+	}
 }

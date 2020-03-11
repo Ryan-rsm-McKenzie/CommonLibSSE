@@ -401,7 +401,7 @@ namespace RE
 		BSTArray<ActorHandle>									actorsToDisplayOnTheHUDArray;					// 9D8
 		UInt64													unk9F0;											// 9F0
 		TESBoundObject*											lastOneHandItems[2];							// 9F8
-		float													teammateCount;									// A08
+		UInt32													teammateCount;									// A08
 		float													combatTimer;									// A0C
 		float													yieldTimer;										// A10
 		float													chaseTimer;										// A14

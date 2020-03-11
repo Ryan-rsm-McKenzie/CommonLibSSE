@@ -1180,6 +1180,24 @@
     <Filter Include="include\RE\Offsets">
       <UniqueIdentifier>{13252c7b-58e1-4b27-8e90-b4b1fff0a2d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\BSGraphics">
+      <UniqueIdentifier>{e54f1481-418a-40e1-92bf-9b34bc6610ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSGraphics\Enums">
+      <UniqueIdentifier>{51dccef2-df96-4cc1-a0d3-a9a0925c5a34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\BSGraphics">
+      <UniqueIdentifier>{77736ce7-e433-4989-9b92-5ca8f70c0eb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty">
+      <UniqueIdentifier>{0e4190a5-15a5-4c5e-95cd-f55f7bac2862}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty\NiShadeProperty">
+      <UniqueIdentifier>{96abc484-35ae-4707-b232-467a9ea57c11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty\NiShadeProperty\BSShaderProperty">
+      <UniqueIdentifier>{9cef4f89-c4e3-489b-9525-8d327fbfb443}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1931,6 +1949,15 @@
     </ClCompile>
     <ClCompile Include="src\SKSE\VArgFormatter.cpp">
       <Filter>src\SKSE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSGraphics\State.cpp">
+      <Filter>src\RE\BSGraphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSEffectShaderData.cpp">
+      <Filter>src\RE\BSShader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSShaderProperty.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty\NiShadeProperty\BSShaderProperty</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5521,6 +5548,21 @@
     </ClInclude>
     <ClInclude Include="include\SKSE\VArgFormatter.h">
       <Filter>include\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSEffectShaderData.h">
+      <Filter>include\RE\BSShader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NiAlphaProperty.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSGraphics\DepthStencilDepthModes.h">
+      <Filter>include\RE\BSGraphics\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSGraphics\TextureAddressModes.h">
+      <Filter>include\RE\BSGraphics\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSGraphics\State.h">
+      <Filter>include\RE\BSGraphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

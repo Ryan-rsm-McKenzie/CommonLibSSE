@@ -229,6 +229,13 @@ namespace RE
 	}
 
 
+	template <class T1, class T2>
+	constexpr bool operator!=(const BSTSmartPointer<T1>& a_lhs, const BSTSmartPointer<T2>& a_rhs)
+	{
+		return !(a_lhs == a_rhs);
+	}
+
+
 	template <class T> using BSTAutoPointer = BSTSmartPointer<T, BSTSmartPointerAutoPtr>;
 	STATIC_ASSERT(sizeof(BSTAutoPointer<void*>) == 0x8);
 }

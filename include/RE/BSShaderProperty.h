@@ -1,5 +1,7 @@
 #pragma once
 
+#include "RE/BSEffectShaderData.h"
+#include "RE/BSTSmartPointer.h"
 #include "RE/NiShadeProperty.h"
 
 
@@ -117,27 +119,29 @@ namespace RE
 		virtual void			Unk_36(void);										// 36 - { return 0; }
 		virtual void			Unk_37(void);										// 37 - { return 0; }
 		virtual void			Unk_38(void);										// 38 - { return 0; }
-		virtual void			Unk_39(void);										// 39 - { return 0; }
+		virtual bool			AcceptsEffectData() const;							// 39 - { return false; }
 		virtual void			Unk_3A(void);										// 3A - { return; }
 		virtual void			Unk_3B(void);										// 3B - { return; }
 		virtual void			Unk_3C(void);										// 3C - { return 0; }
 		virtual void			Unk_3D(void);										// 3D - { return 0; }
 		virtual void			Unk_3E(void);										// 3E - { return 0; }
 
+		void SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
+
 
 		// members
-		float				alpha;					// 30
-		SInt32				lastRenderPassState;	// 34
-		EShaderPropertyFlag	flags;					// 38
-		void*				unk40;					// 40
-		UInt64				unk48;					// 48
-		void*				unk50;					// 50
-		UInt64				unk58;					// 58
-		UInt64				unk60;					// 60
-		void*				unk68;					// 68 - smart ptr
-		UInt64				unk70;					// 70
-		BSShaderMaterial*	material;				// 78
-		UInt64				unk80;					// 80
+		float								alpha;					// 30
+		SInt32								lastRenderPassState;	// 34
+		EShaderPropertyFlag					flags;					// 38
+		void*								unk40;					// 40
+		UInt64								unk48;					// 48
+		void*								unk50;					// 50
+		UInt64								unk58;					// 58
+		UInt64								unk60;					// 60
+		BSTSmartPointer<BSEffectShaderData>	effectData;				// 68
+		UInt64								unk70;					// 70
+		BSShaderMaterial*					material;				// 78
+		UInt64								unk80;					// 80
 	};
 	STATIC_ASSERT(sizeof(BSShaderProperty) == 0x88);
 }

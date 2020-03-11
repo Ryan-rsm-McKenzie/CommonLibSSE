@@ -13,8 +13,8 @@ namespace RE
 	{
 		enum class BSVisitControl : UInt32
 		{
-			kStop = 0,
-			kContinue = 1
+			kContinue = 0,
+			kStop = 1
 		};
 
 

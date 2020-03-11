@@ -520,7 +520,8 @@ namespace REL
 		template <class T = void>
 		inline static T* BasePtr()
 		{
-			return reinterpret_cast<T*>(_base);
+			auto singleton = GetSingleton();
+			return reinterpret_cast<T*>(singleton->_base);
 		}
 
 	private:

@@ -177,6 +177,8 @@
     <ClCompile Include="src\RE\BGSFootstepManager.cpp" />
     <ClCompile Include="src\RE\BGSSoundCategory.cpp" />
     <ClCompile Include="src\RE\BGSStoryTeller.cpp" />
+    <ClCompile Include="src\RE\BSEffectShaderData.cpp" />
+    <ClCompile Include="src\RE\BSGraphics\State.cpp" />
     <ClCompile Include="src\RE\BSResource\BSSystemFile.cpp" />
     <ClCompile Include="src\RE\BSResource\Location.cpp" />
     <ClCompile Include="src\RE\BSResource\LooseFileStream.cpp" />
@@ -186,6 +188,7 @@
     <ClCompile Include="src\RE\BSScript\Internal\VDescTable.cpp" />
     <ClCompile Include="src\RE\BSScript\IVirtualMachine.cpp" />
     <ClCompile Include="src\RE\BSScript\MemoryPage.cpp" />
+    <ClCompile Include="src\RE\BSShaderProperty.cpp" />
     <ClCompile Include="src\RE\BSVisit.cpp" />
     <ClCompile Include="src\RE\BSXFlags.cpp" />
     <ClCompile Include="src\RE\ExtraLightData.cpp" />
@@ -469,7 +472,11 @@
     <ClInclude Include="include\RE\BSArchiveHeader.h" />
     <ClInclude Include="include\RE\BSBatchRenderer.h" />
     <ClInclude Include="include\RE\BSBitField.h" />
+    <ClInclude Include="include\RE\BSEffectShaderData.h" />
     <ClInclude Include="include\RE\BSFile.h" />
+    <ClInclude Include="include\RE\BSGraphics\DepthStencilDepthModes.h" />
+    <ClInclude Include="include\RE\BSGraphics\State.h" />
+    <ClInclude Include="include\RE\BSGraphics\TextureAddressModes.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialEnvmap.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialEye.h" />
     <ClInclude Include="include\RE\BSLightingShaderMaterialFacegen.h" />
@@ -551,6 +558,7 @@
     <ClInclude Include="include\RE\MarkerUsedData.h" />
     <ClInclude Include="include\RE\ModManagerMenu.h" />
     <ClInclude Include="include\RE\Movement.h" />
+    <ClInclude Include="include\RE\NiAlphaProperty.h" />
     <ClInclude Include="include\RE\NiCollisionObject.h" />
     <ClInclude Include="include\RE\NiFile.h" />
     <ClInclude Include="include\RE\NiIntegerExtraData.h" />
