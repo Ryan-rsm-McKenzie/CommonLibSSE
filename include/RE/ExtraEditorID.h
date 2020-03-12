@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraEditorID;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kEditorID
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kEditorID;
 
 
 		virtual ~ExtraEditorID();  // 00

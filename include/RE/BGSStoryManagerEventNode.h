@@ -40,12 +40,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSStoryManagerEventNode;
-
-
-		enum
-		{
-			kTypeID = FormType::StoryManagerEventNode
-		};
+		inline static constexpr auto FORMTYPE = FormType::StoryManagerEventNode;
 
 
 		struct RecordFlags

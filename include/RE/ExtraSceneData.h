@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraSceneData;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kSceneData
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSceneData;
 
 
 		virtual ~ExtraSceneData();	// 00

@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSStoryManagerBranchNode;
-
-
-		enum
-		{
-			kTypeID = FormType::StoryManagerBranchNode
-		};
+		inline static constexpr auto FORMTYPE = FormType::StoryManagerBranchNode;
 
 
 		struct RecordFlags

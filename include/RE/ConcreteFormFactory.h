@@ -37,8 +37,8 @@ namespace RE
 
 
 	template <class T>
-	inline ConcreteFormFactory<T, static_cast<FormType>(T::kTypeID)>* IFormFactory::GetConcreteFormFactoryByType()
+	inline ConcreteFormFactory<T, T::FORMTYPE>* IFormFactory::GetConcreteFormFactoryByType()
 	{
-		return static_cast<ConcreteFormFactory<T, static_cast<FormType>(T::kTypeID)>*>(GetFormFactoryByType(static_cast<FormType>(T::kTypeID)));
+		return static_cast<ConcreteFormFactory<T, T::FORMTYPE>*>(GetFormFactoryByType(T::FORMTYPE));
 	}
 }

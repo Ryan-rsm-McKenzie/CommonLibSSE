@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraLeveledCreature;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kLeveledCreature
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLeveledCreature;
 
 
 		virtual ~ExtraLeveledCreature();  // 00

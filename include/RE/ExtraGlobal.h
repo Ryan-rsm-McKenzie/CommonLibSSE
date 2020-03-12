@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraGlobal;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kGlobal
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kGlobal;
 
 
 		virtual ~ExtraGlobal();	 // 00

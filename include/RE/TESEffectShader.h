@@ -170,12 +170,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESEffectShader;
-
-
-		enum
-		{
-			kTypeID = FormType::EffectShader
-		};
+		inline static constexpr auto FORMTYPE = FormType::EffectShader;
 
 
 		struct RecordFlags

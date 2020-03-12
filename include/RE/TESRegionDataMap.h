@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRegionDataMap;
-
-
-		enum
-		{
-			kTypeID = Type::kMap
-		};
+		inline static constexpr auto TYPE = Type::kMap;
 
 
 		virtual ~TESRegionDataMap();  // 00

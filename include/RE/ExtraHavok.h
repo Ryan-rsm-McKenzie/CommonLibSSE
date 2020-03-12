@@ -15,12 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraHavok;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kHavok
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHavok;
 
 
 		virtual ~ExtraHavok();	// 00

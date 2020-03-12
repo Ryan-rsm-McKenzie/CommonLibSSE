@@ -16,12 +16,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESClimate;
-
-
-		enum
-		{
-			kTypeID = FormType::Climate
-		};
+		inline static constexpr auto FORMTYPE = FormType::Climate;
 
 
 		struct SkyObjects

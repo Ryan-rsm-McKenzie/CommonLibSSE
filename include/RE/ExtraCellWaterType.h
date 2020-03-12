@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCellWaterType;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kCellWaterType
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCellWaterType;
 
 
 		virtual ~ExtraCellWaterType();	// 00

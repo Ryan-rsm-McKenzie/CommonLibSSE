@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSReverbParameters;
-
-
-		enum
-		{
-			kTypeID = FormType::ReverbParam
-		};
+		inline static constexpr auto FORMTYPE = FormType::ReverbParam;
 
 
 		struct RecordFlags

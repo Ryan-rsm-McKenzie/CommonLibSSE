@@ -162,7 +162,8 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="exports.def" />
+    <None Include=".clang-format" />
+    <None Include="src\.clang-format" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\REL\Relocation.cpp" />

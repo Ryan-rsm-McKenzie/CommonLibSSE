@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCount;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kCount
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCount;
 
 
 		ExtraCount();

@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCellSkyRegion;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kCellSkyRegion
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCellSkyRegion;
 
 
 		virtual ~ExtraCellSkyRegion();	// 00

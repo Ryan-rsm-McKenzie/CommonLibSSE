@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraEncounterZone;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kEncounterZone
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kEncounterZone;
 
 
 		virtual ~ExtraEncounterZone();	// 00

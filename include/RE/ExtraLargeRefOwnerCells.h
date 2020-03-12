@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraLargeRefOwnerCells;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kLargeRefOwnerCells
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLargeRefOwnerCells;
 
 
 		virtual ~ExtraLargeRefOwnerCells();	 // 00

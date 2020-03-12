@@ -15,12 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESEyes;
-
-
-		enum
-		{
-			kTypeID = FormType::Eyes
-		};
+		inline static constexpr auto FORMTYPE = FormType::Eyes;
 
 
 		enum class Flag : UInt8

@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraBiped;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kBiped
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kBiped;
 
 
 		virtual ~ExtraBiped();	// 00

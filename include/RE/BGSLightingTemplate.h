@@ -12,12 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSLightingTemplate;
-
-
-		enum
-		{
-			kTypeID = FormType::LightingMaster
-		};
+		inline static constexpr auto FORMTYPE = FormType::LightingMaster;
 
 
 		struct RecordFlags

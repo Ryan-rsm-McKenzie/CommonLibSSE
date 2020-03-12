@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSVolumetricLighting;
-
-
-		enum
-		{
-			kTypeID = FormType::VolumetricLighting
-		};
+		inline static constexpr auto FORMTYPE = FormType::VolumetricLighting;
 
 
 		struct RecordFlags

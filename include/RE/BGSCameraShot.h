@@ -15,12 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSCameraShot;
-
-
-		enum
-		{
-			kTypeID = FormType::CameraShot
-		};
+		inline static constexpr auto FORMTYPE = FormType::CameraShot;
 
 
 		enum class CAM_ACTION : UInt32

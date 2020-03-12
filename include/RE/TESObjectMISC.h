@@ -29,12 +29,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectMISC;
-
-
-		enum
-		{
-			kTypeID = FormType::Misc
-		};
+		inline static constexpr auto FORMTYPE = FormType::Misc;
 
 
 		struct RecordFlags

@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraResourcesPreload;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kResourcesPreload
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kResourcesPreload;
 
 
 		virtual ~ExtraResourcesPreload();  // 00

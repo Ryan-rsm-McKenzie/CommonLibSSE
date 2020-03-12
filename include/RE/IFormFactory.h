@@ -38,7 +38,7 @@ namespace RE
 
 		static IFormFactory* GetFormFactoryByType(FormType a_formType);
 		template <class T>
-		static ConcreteFormFactory<T, static_cast<FormType>(T::kTypeID)>* GetConcreteFormFactoryByType();
+		static ConcreteFormFactory<T, T::FORMTYPE>* GetConcreteFormFactoryByType();
 
 		TESForm* Create();
 	};

@@ -15,12 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSIdleMarker;
-
-
-		enum
-		{
-			kTypeID = FormType::IdleMarker
-		};
+		inline static constexpr auto FORMTYPE = FormType::IdleMarker;
 
 
 		struct RecordFlags

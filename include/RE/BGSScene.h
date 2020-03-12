@@ -35,12 +35,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSScene;
-
-
-		enum
-		{
-			kTypeID = FormType::Scene
-		};
+		inline static constexpr auto FORMTYPE = FormType::Scene;
 
 
 		enum class Flag : UInt32

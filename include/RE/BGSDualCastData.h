@@ -32,12 +32,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSDualCastData;
-
-
-		enum
-		{
-			kTypeID = FormType::DualCastData
-		};
+		inline static constexpr auto FORMTYPE = FormType::DualCastData;
 
 
 		struct RecordFlags

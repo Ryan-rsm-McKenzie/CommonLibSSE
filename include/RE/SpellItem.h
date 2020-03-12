@@ -17,12 +17,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_SpellItem;
-
-
-		enum
-		{
-			kTypeID = FormType::Spell
-		};
+		inline static constexpr auto FORMTYPE = FormType::Spell;
 
 
 		enum class SpellFlag : UInt32

@@ -19,12 +19,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESLandTexture;
-
-
-		enum
-		{
-			kTypeID = FormType::LandTexture
-		};
+		inline static constexpr auto FORMTYPE = FormType::LandTexture;
 
 
 		struct RecordFlags

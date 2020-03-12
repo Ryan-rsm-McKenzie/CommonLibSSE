@@ -318,12 +318,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESPackage;
-
-
-		enum
-		{
-			kTypeID = FormType::Package
-		};
+		inline static constexpr auto FORMTYPE = FormType::Package;
 
 
 		struct ChangeFlags

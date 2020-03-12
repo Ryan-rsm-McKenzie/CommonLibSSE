@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraWorn;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kWorn
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kWorn;
 
 
 		virtual ~ExtraWorn();  // 00

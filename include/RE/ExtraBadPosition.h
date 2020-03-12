@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraBadPosition;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kBadPosition
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kBadPosition;
 
 
 		virtual ~ExtraBadPosition();  // 00

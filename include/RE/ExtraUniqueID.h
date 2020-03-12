@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraUniqueID;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kUniqueID
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kUniqueID;
 
 
 		ExtraUniqueID();

@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraMagicCaster;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kMagicCaster
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMagicCaster;
 
 
 		virtual ~ExtraMagicCaster();  // 00

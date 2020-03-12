@@ -38,12 +38,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectARMO;
-
-
-		enum
-		{
-			kTypeID = FormType::Armor
-		};
+		inline static constexpr auto FORMTYPE = FormType::Armor;
 
 
 		struct RecordFlags

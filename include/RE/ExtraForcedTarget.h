@@ -15,12 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraForcedTarget;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kForcedTarget
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kForcedTarget;
 
 
 		ExtraForcedTarget();

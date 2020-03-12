@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRegionDataWeather;
-
-
-		enum
-		{
-			kTypeID = Type::kWeather
-		};
+		inline static constexpr auto TYPE = Type::kWeather;
 
 
 		virtual ~TESRegionDataWeather();  // 00

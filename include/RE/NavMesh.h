@@ -15,12 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NavMesh;
-
-
-		enum
-		{
-			kTypeID = FormType::NavMesh
-		};
+		inline static constexpr auto FORMTYPE = FormType::NavMesh;
 
 
 		struct RecordFlags

@@ -29,12 +29,7 @@ namespace RE
 
 		using Archetype = EffectArchetypes::ArchetypeID;
 		using FilterValidation_t = bool(EffectSetting*, void*);
-
-
-		enum
-		{
-			kTypeID = FormType::MagicEffect
-		};
+		inline static constexpr auto FORMTYPE = FormType::MagicEffect;
 
 
 		struct RecordFlags

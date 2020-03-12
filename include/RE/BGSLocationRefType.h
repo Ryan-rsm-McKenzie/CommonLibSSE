@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSLocationRefType;
-
-
-		enum
-		{
-			kTypeID = FormType::LocationRefType
-		};
+		inline static constexpr auto FORMTYPE = FormType::LocationRefType;
 
 
 		struct RecordFlags

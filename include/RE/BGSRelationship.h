@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSRelationship;
-
-
-		enum
-		{
-			kTypeID = FormType::Relationship
-		};
+		inline static constexpr auto FORMTYPE = FormType::Relationship;
 
 
 		enum class RELATIONSHIP_LEVEL : UInt8

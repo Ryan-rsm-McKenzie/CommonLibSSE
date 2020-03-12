@@ -12,12 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraUsedMarkers;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kUsedMarkers
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kUsedMarkers;
 
 
 		virtual ~ExtraUsedMarkers();  // 00

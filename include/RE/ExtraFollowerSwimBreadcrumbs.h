@@ -33,12 +33,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraFollowerSwimBreadcrumbs;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kFollowerSwimBreadcrumbs
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFollowerSwimBreadcrumbs;
 
 
 		virtual ~ExtraFollowerSwimBreadcrumbs();  // 00

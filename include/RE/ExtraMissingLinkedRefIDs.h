@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraMissingLinkedRefIDs;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kMissingLinkedRefIDs
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMissingLinkedRefIDs;
 
 
 		struct Entry

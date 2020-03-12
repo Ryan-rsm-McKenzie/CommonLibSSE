@@ -46,12 +46,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESTopicInfo;
-
-
-		enum
-		{
-			kTypeID = FormType::Info
-		};
+		inline static constexpr auto FORMTYPE = FormType::Info;
 
 
 		enum class FavorLevel : UInt8  // CNAM

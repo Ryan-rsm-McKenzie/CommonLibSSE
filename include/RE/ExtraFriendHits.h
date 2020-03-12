@@ -12,12 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraFriendHits;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kFriendHits
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFriendHits;
 
 
 		virtual ~ExtraFriendHits();	 // 00

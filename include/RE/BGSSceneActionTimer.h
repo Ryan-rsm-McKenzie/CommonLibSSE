@@ -9,12 +9,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSSceneActionTimer;
-
-
-		enum
-		{
-			kTypeID = Type::kTimer
-		};
+		inline static constexpr auto TYPE = Type::kTimer;
 
 
 		virtual ~BGSSceneActionTimer();	 // 00

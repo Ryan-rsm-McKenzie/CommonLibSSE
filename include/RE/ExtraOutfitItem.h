@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraOutfitItem;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kOutfitItem
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kOutfitItem;
 
 
 		virtual ~ExtraOutfitItem();	 // 00

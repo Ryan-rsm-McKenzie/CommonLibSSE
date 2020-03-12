@@ -15,12 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraFactionChanges;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kFactionChanges
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFactionChanges;
 
 
 		virtual ~ExtraFactionChanges();	 // 00

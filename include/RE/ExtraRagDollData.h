@@ -34,12 +34,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraRagDollData;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kRagDollData
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRagDollData;
 
 
 		virtual ~ExtraRagDollData();  // 00

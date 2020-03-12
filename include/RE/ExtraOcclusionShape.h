@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraOcclusionShape;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kOcclusionShape
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kOcclusionShape;
 
 
 		virtual ~ExtraOcclusionShape();	 // 00

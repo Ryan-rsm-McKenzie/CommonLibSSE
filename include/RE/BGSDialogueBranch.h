@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSDialogueBranch;
-
-
-		enum
-		{
-			kTypeID = FormType::DialogueBranch
-		};
+		inline static constexpr auto FORMTYPE = FormType::DialogueBranch;
 
 
 		enum class Flag : UInt32

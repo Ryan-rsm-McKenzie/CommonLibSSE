@@ -12,12 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSConstructibleObject;
-
-
-		enum
-		{
-			kTypeID = FormType::ConstructibleObject
-		};
+		inline static constexpr auto FORMTYPE = FormType::ConstructibleObject;
 
 
 		struct RecordFlags

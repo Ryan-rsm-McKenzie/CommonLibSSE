@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESSound;
-
-
-		enum
-		{
-			kTypeID = FormType::Sound
-		};
+		inline static constexpr auto FORMTYPE = FormType::Sound;
 
 
 		struct RecordFlags

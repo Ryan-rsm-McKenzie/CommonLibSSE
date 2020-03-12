@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCellAcousticSpace;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kCellAcousticSpace
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCellAcousticSpace;
 
 
 		virtual ~ExtraCellAcousticSpace();	// 00

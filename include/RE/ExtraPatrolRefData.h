@@ -21,12 +21,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraPatrolRefData;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kPatrolRefData
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPatrolRefData;
 
 
 		virtual ~ExtraPatrolRefData();	// 00

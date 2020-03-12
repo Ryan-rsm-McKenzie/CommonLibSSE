@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraFlags;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kFlags
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFlags;
 
 
 		enum class Flag : UInt32

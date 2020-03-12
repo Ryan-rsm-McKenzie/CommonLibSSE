@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSLensFlare;
-
-
-		enum
-		{
-			kTypeID = FormType::LensFlare
-		};
+		inline static constexpr auto FORMTYPE = FormType::LensFlare;
 
 
 		struct RecordFlags

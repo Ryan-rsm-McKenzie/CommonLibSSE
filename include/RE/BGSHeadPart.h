@@ -18,12 +18,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSHeadPart;
-
-
-		enum
-		{
-			kTypeID = FormType::HeadPart
-		};
+		inline static constexpr auto FORMTYPE = FormType::HeadPart;
 
 
 		enum class Flag : UInt8	 // DATA

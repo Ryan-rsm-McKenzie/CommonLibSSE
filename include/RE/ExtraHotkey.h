@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraHotkey;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kHotkey
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHotkey;
 
 
 		enum class Hotkey : UInt8

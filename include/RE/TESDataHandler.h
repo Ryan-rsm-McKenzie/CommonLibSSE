@@ -104,14 +104,13 @@ namespace RE
 			return 0;
 		}
 
-		auto type = static_cast<FormType>(T::kTypeID);
-		return form->Is(type) ? static_cast<T*>(form) : 0;
+		return form->Is(T::FORMTYPE) ? static_cast<T*>(form) : 0;
 	}
 
 
 	template <class T>
 	BSTArray<T*>& TESDataHandler::GetFormArray()
 	{
-		return reinterpret_cast<BSTArray<T*>&>(GetFormArray(static_cast<FormType>(T::kTypeID)));
+		return reinterpret_cast<BSTArray<T*>&>(GetFormArray(T::FORMTYPE));
 	}
 }

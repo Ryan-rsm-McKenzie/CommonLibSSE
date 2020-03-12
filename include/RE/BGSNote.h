@@ -20,12 +20,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSNote;
-
-
-		enum
-		{
-			kTypeID = FormType::Note
-		};
+		inline static constexpr auto FORMTYPE = FormType::Note;
 
 
 		struct ChangeFlags

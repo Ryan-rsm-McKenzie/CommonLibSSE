@@ -12,12 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMovementType;
-
-
-		enum
-		{
-			kTypeID = FormType::MovementType
-		};
+		inline static constexpr auto FORMTYPE = FormType::MovementType;
 
 
 		struct RecordFlags

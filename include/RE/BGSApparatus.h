@@ -15,12 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSApparatus;
-
-
-		enum
-		{
-			kTypeID = FormType::Apparatus
-		};
+		inline static constexpr auto FORMTYPE = FormType::Apparatus;
 
 
 		struct RecordFlags

@@ -12,12 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESFurniture;
-
-
-		enum
-		{
-			kTypeID = FormType::Furniture
-		};
+		inline static constexpr auto FORMTYPE = FormType::Furniture;
 
 
 		enum class ActiveMarker : UInt32

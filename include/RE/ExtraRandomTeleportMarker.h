@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraRandomTeleportMarker;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kRandomTeleportMarker
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRandomTeleportMarker;
 
 
 		virtual ~ExtraRandomTeleportMarker();  // 00

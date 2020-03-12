@@ -25,12 +25,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraAliasInstanceArray;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kAliasInstanceArray
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAliasInstanceArray;
 
 
 		ExtraAliasInstanceArray();

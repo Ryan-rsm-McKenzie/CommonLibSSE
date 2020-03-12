@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraPrimitive;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kPrimitive
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPrimitive;
 
 
 		virtual ~ExtraPrimitive();	// 00

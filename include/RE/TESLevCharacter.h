@@ -15,12 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESLevCharacter;
-
-
-		enum
-		{
-			kTypeID = FormType::LeveledNPC
-		};
+		inline static constexpr auto FORMTYPE = FormType::LeveledNPC;
 
 
 		struct ChangeFlags

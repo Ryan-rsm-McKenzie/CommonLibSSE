@@ -47,12 +47,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSHazard;
-
-
-		enum
-		{
-			kTypeID = FormType::Hazard
-		};
+		inline static constexpr auto FORMTYPE = FormType::Hazard;
 
 
 		struct RecordFlags

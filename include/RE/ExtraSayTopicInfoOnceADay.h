@@ -23,12 +23,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraSayTopicInfoOnceADay;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kSayTopicInfoOnceADay
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSayTopicInfoOnceADay;
 
 
 		virtual ~ExtraSayTopicInfoOnceADay();  // 00

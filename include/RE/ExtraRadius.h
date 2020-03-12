@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraRadius;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kRadius
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRadius;
 
 
 		virtual ~ExtraRadius();	 // 00

@@ -57,12 +57,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectTREE;
-
-
-		enum
-		{
-			kTypeID = FormType::Tree
-		};
+		inline static constexpr auto FORMTYPE = FormType::Tree;
 
 
 		enum class etTreeType : UInt32

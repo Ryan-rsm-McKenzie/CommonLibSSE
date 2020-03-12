@@ -21,12 +21,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESShout;
-
-
-		enum
-		{
-			kTypeID = FormType::Shout
-		};
+		inline static constexpr auto FORMTYPE = FormType::Shout;
 
 
 		struct RecordFlags

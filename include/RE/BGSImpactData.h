@@ -17,12 +17,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSImpactData;
-
-
-		enum
-		{
-			kTypeID = FormType::Impact
-		};
+		inline static constexpr auto FORMTYPE = FormType::Impact;
 
 
 		enum class ORIENTATION : UInt32

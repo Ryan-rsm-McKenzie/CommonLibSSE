@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRegionDataLandscape;
-
-
-		enum
-		{
-			kTypeID = Type::kLand
-		};
+		inline static constexpr auto TYPE = Type::kLand;
 
 
 		virtual ~TESRegionDataLandscape();	// 00

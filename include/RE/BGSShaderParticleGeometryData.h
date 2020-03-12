@@ -20,12 +20,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSShaderParticleGeometryData;
-
-
-		enum
-		{
-			kTypeID = FormType::ShaderParticleGeometryData
-		};
+		inline static constexpr auto FORMTYPE = FormType::ShaderParticleGeometryData;
 
 
 		enum class DataID : UInt32

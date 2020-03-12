@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCellImageSpace;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kCellImageSpace
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCellImageSpace;
 
 
 		virtual ~ExtraCellImageSpace();	 // 00

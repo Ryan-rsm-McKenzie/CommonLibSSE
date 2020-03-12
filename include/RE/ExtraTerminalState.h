@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraTerminalState;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kTerminalState
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kTerminalState;
 
 
 		virtual ~ExtraTerminalState();	// 00

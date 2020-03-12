@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraPortal;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kPortal
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPortal;
 
 
 		virtual ~ExtraPortal();	 // 00

@@ -15,12 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRegionDataSound;
-
-
-		enum
-		{
-			kTypeID = Type::kSound
-		};
+		inline static constexpr auto TYPE = Type::kSound;
 
 
 		struct Sound

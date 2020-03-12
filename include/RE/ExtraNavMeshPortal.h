@@ -31,12 +31,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraNavMeshPortal;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kNavMeshPortal
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kNavMeshPortal;
 
 
 		virtual ~ExtraNavMeshPortal();	// 00

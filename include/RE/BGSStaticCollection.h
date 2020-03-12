@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSStaticCollection;
-
-
-		enum
-		{
-			kTypeID = FormType::StaticCollection
-		};
+		inline static constexpr auto FORMTYPE = FormType::StaticCollection;
 
 
 		struct RecordFlags

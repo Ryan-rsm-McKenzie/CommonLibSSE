@@ -23,12 +23,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraLight;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kLight
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLight;
 
 
 		virtual ~ExtraLight();	// 00

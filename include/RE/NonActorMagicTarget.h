@@ -18,12 +18,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NonActorMagicTarget;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kNonActorMagicTarget
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kNonActorMagicTarget;
 
 
 		virtual ~NonActorMagicTarget();	 // 00

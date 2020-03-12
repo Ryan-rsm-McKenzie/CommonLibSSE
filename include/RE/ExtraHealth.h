@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraHealth;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kHealth
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHealth;
 
 
 		ExtraHealth();

@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraNorthRotation;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kNorthRotation
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kNorthRotation;
 
 
 		virtual ~ExtraNorthRotation();	// 00

@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraMultiBoundRef;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kMultiBoundRef
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMultiBoundRef;
 
 
 		virtual ~ExtraMultiBoundRef();	// 00

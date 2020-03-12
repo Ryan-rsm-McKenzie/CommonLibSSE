@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraForcedLandingMarker;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kForcedLandingMarker
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kForcedLandingMarker;
 
 
 		virtual ~ExtraForcedLandingMarker();  // 00

@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMenuIcon;
-
-
-		enum
-		{
-			kTypeID = FormType::MenuIcon
-		};
+		inline static constexpr auto FORMTYPE = FormType::MenuIcon;
 
 
 		struct RecordFlags

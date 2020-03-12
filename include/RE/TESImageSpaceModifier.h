@@ -107,12 +107,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESImageSpaceModifier;
-
-
-		enum
-		{
-			kTypeID = FormType::ImageAdapter
-		};
+		inline static constexpr auto FORMTYPE = FormType::ImageAdapter;
 
 
 		struct RecordFlags

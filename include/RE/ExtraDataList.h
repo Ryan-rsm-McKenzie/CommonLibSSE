@@ -199,27 +199,27 @@ namespace RE
 	template <class T>
 	inline T* ExtraDataList::GetByType()
 	{
-		return static_cast<T*>(GetByType(static_cast<ExtraDataType>(T::kExtraTypeID)));
+		return static_cast<T*>(GetByType(T::EXTRADATATYPE));
 	}
 
 
 	template <class T>
 	inline const T* ExtraDataList::GetByType() const
 	{
-		return static_cast<const T*>(GetByType(static_cast<ExtraDataType>(T::kExtraTypeID)));
+		return static_cast<const T*>(GetByType(T::EXTRADATATYPE));
 	}
 
 
 	template <class T>
 	inline bool ExtraDataList::HasType() const
 	{
-		return HasType(static_cast<ExtraDataType>(T::kExtraTypeID));
+		return HasType(T::EXTRADATATYPE);
 	}
 
 
 	template <class T>
 	inline bool ExtraDataList::Remove(T* a_toRemove)
 	{
-		return Remove(static_cast<ExtraDataType>(T::kExtraTypeID), a_toRemove);
+		return Remove(T::EXTRADATATYPE, a_toRemove);
 	}
 }

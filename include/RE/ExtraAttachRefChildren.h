@@ -12,12 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraAttachRefChildren;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kAttachRefChildren
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAttachRefChildren;
 
 
 		virtual ~ExtraAttachRefChildren();	// 00

@@ -18,12 +18,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraOcclusionPlaneRefData;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kOcclusionPlaneRefData
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kOcclusionPlaneRefData;
 
 
 		virtual ~ExtraOcclusionPlaneRefData();	// 00

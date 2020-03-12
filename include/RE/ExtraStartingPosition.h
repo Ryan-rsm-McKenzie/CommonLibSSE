@@ -22,12 +22,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraStartingPosition;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kStartingPosition
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kStartingPosition;
 
 
 		virtual ~ExtraStartingPosition();  // 00

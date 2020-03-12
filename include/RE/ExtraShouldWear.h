@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraShouldWear;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kShouldWear
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kShouldWear;
 
 
 		virtual ~ExtraShouldWear();	 // 00

@@ -15,12 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraAnimationSequencer;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kAnimationSequencer
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAnimationSequencer;
 
 
 		virtual ~ExtraAnimationSequencer();	 // 00

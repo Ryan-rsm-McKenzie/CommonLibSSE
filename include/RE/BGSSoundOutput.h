@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSSoundOutput;
-
-
-		enum
-		{
-			kTypeID = FormType::SoundOutputModel
-		};
+		inline static constexpr auto FORMTYPE = FormType::SoundOutputModel;
 
 
 		enum class Type : UInt32  // MNAM

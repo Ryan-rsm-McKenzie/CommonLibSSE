@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraFavorCost;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kFavorCost
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFavorCost;
 
 
 		virtual ~ExtraFavorCost();	// 00

@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraPackage;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kPackage
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPackage;
 
 
 		virtual ~ExtraPackage();  // 00

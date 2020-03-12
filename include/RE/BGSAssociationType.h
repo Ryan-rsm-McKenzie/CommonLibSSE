@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSAssociationType;
-
-
-		enum
-		{
-			kTypeID = FormType::AssociationType
-		};
+		inline static constexpr auto FORMTYPE = FormType::AssociationType;
 
 
 		enum class FLAGS : UInt32  // DATA

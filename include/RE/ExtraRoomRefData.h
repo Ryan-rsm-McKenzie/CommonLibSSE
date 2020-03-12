@@ -30,12 +30,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraRoomRefData;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kRoomRefData
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRoomRefData;
 
 
 		virtual ~ExtraRoomRefData();  // 00

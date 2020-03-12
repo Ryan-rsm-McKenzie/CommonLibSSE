@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraHasNoRumors;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kHasNoRumors
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHasNoRumors;
 
 
 		virtual ~ExtraHasNoRumors();  // 00

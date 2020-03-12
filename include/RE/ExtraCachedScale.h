@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCachedScale;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kCachedScale
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCachedScale;
 
 
 		virtual ~ExtraCachedScale();  // 00

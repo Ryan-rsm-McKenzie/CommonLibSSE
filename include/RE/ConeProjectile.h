@@ -17,12 +17,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ConeProjectile;
-
-
-		enum
-		{
-			kTypeID = FormType::ProjectileCone
-		};
+		inline static constexpr auto FORMTYPE = FormType::ProjectileCone;
 
 
 		struct RecordFlags

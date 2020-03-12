@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraAlphaCutoff;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kAlphaCutoff
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAlphaCutoff;
 
 
 		virtual ~ExtraAlphaCutoff();  // 00

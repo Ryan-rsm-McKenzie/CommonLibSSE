@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSArtObject;
-
-
-		enum
-		{
-			kTypeID = FormType::ArtObject
-		};
+		inline static constexpr auto FORMTYPE = FormType::ArtObject;
 
 
 		enum class ArtType : UInt32

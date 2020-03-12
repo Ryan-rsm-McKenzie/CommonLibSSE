@@ -74,12 +74,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectBOOK;
-
-
-		enum
-		{
-			kTypeID = FormType::Book
-		};
+		inline static constexpr auto FORMTYPE = FormType::Book;
 
 
 		struct ChangeFlags

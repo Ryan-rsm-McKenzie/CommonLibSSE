@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESLoadScreen;
-
-
-		enum
-		{
-			kTypeID = FormType::LoadScreen
-		};
+		inline static constexpr auto FORMTYPE = FormType::LoadScreen;
 
 
 		struct RecordFlags

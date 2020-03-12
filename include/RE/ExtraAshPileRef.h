@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraAshPileRef;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kAshPileRef
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAshPileRef;
 
 
 		ExtraAshPileRef();

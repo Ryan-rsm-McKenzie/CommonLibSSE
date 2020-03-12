@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSOutfit;
-
-
-		enum
-		{
-			kTypeID = FormType::Outfit
-		};
+		inline static constexpr auto FORMTYPE = FormType::Outfit;
 
 
 		struct RecordFlags

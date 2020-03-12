@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraHeadingTarget;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kHeadingTarget
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHeadingTarget;
 
 
 		virtual ~ExtraHeadingTarget();	// 00

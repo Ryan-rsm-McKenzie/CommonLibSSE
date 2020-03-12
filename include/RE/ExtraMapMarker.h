@@ -105,12 +105,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraMapMarker;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kMapMarker
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMapMarker;
 
 
 		virtual ~ExtraMapMarker();	// 00

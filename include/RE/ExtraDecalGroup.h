@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraDecalGroup;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kDecalGroup
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kDecalGroup;
 
 
 		virtual ~ExtraDecalGroup();	 // 00

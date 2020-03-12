@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCellMusicType;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kCellMusicType
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCellMusicType;
 
 
 		virtual ~ExtraCellMusicType();	// 00

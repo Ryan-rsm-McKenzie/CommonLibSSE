@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESSoulGem;
-
-
-		enum
-		{
-			kTypeID = FormType::SoulGem
-		};
+		inline static constexpr auto FORMTYPE = FormType::SoulGem;
 
 
 		struct RecordFlags

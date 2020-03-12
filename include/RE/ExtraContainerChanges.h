@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraContainerChanges;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kContainerChanges
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kContainerChanges;
 
 
 		ExtraContainerChanges();

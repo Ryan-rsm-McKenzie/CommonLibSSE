@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraPlayerCrimeList;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kPlayerCrimeList
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPlayerCrimeList;
 
 
 		virtual ~ExtraPlayerCrimeList();  // 00

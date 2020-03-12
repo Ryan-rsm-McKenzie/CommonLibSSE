@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraWeaponIdleSound;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kWeaponIdleSound
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kWeaponIdleSound;
 
 
 		virtual ~ExtraWeaponIdleSound();  // 00

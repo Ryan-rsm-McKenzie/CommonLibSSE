@@ -29,12 +29,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSAddonNode;
-
-
-		enum
-		{
-			kTypeID = FormType::AddonNode
-		};
+		inline static constexpr auto FORMTYPE = FormType::AddonNode;
 
 
 		struct RecordFlags

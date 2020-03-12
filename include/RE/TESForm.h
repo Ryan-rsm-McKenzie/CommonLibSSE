@@ -69,12 +69,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESForm;
-
-
-		enum
-		{
-			kTypeID = FormType::None
-		};
+		inline static constexpr auto FORMTYPE = FormType::None;
 
 
 		struct ChangeFlags
@@ -279,7 +274,7 @@ namespace RE
 	inline static T* TESForm::LookupByID(FormID a_formID)
 	{
 		auto form = LookupByID(a_formID);
-		return (form && form->formType == static_cast<FormType>(T::kTypeID)) ? static_cast<T*>(form) : 0;
+		return (form && form->Is(T::FORMTYPE)) ? static_cast<T*>(form) : 0;
 	}
 
 
@@ -287,7 +282,7 @@ namespace RE
 	inline static T* TESForm::LookupByEditorID(const std::string_view& a_editorID)
 	{
 		auto form = LookupByEditorID(a_editorID);
-		return (form && form->formType == static_cast<FormType>(T::kTypeID)) ? static_cast<T*>(form) : 0;
+		return (form && form->Is(T::FORMTYPE)) ? static_cast<T*>(form) : 0;
 	}
 
 

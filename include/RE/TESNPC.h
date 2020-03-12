@@ -43,12 +43,7 @@ namespace RE
 
 
 		using HeadPartType = BGSHeadPart::HeadPartType;
-
-
-		enum
-		{
-			kTypeID = FormType::NPC
-		};
+		inline static constexpr auto FORMTYPE = FormType::NPC;
 
 
 		struct ChangeFlags

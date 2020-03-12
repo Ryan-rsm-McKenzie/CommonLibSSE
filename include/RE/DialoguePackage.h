@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_DialoguePackage;
-
-
-		enum
-		{
-			kTypeID = FormType::Package
-		};
+		inline static constexpr auto FORMTYPE = FormType::Package;
 
 
 		virtual ~DialoguePackage();	 // 00

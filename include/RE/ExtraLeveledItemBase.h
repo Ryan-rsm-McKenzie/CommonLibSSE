@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraLeveledItemBase;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kLeveledItemBase
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLeveledItemBase;
 
 
 		virtual ~ExtraLeveledItemBase();  // 00

@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraLastFinishedSequence;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kLastFinishedSequence
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLastFinishedSequence;
 
 
 		virtual ~ExtraLastFinishedSequence();  // 00

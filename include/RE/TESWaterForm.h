@@ -87,12 +87,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESWaterForm;
-
-
-		enum
-		{
-			kTypeID = FormType::Water
-		};
+		inline static constexpr auto FORMTYPE = FormType::Water;
 
 
 		enum class Flag : UInt8	 // FNAM

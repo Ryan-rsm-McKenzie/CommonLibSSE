@@ -17,12 +17,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMaterialObject;
-
-
-		enum
-		{
-			kTypeID = FormType::MaterialObject
-		};
+		inline static constexpr auto FORMTYPE = FormType::MaterialObject;
 
 
 		struct RecordFlags

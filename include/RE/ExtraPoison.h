@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraPoison;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kPoison
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPoison;
 
 
 		ExtraPoison();

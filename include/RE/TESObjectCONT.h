@@ -39,12 +39,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectCONT;
-
-
-		enum
-		{
-			kTypeID = FormType::Container
-		};
+		inline static constexpr auto FORMTYPE = FormType::Container;
 
 
 		struct RecordFlags

@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraSoul;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kSoul
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSoul;
 
 
 		ExtraSoul();

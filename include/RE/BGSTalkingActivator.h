@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSTalkingActivator;
-
-
-		enum
-		{
-			kTypeID = FormType::TalkingActivator
-		};
+		inline static constexpr auto FORMTYPE = FormType::TalkingActivator;
 
 
 		struct ChangeFlags

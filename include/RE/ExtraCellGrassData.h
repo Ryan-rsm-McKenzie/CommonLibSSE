@@ -28,12 +28,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCellGrassData;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kCellGrassData
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCellGrassData;
 
 
 		virtual ~ExtraCellGrassData();	// 00

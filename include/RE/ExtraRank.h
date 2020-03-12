@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraRank;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kRank
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRank;
 
 
 		ExtraRank();

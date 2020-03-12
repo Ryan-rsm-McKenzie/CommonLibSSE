@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMusicType;
-
-
-		enum
-		{
-			kTypeID = FormType::MusicType
-		};
+		inline static constexpr auto FORMTYPE = FormType::MusicType;
 
 
 		struct RecordFlags

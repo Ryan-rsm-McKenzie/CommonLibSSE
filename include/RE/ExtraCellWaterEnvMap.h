@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCellWaterEnvMap;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kCellWaterEnvMap
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCellWaterEnvMap;
 
 
 		virtual ~ExtraCellWaterEnvMap();  // 00

@@ -15,12 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSSoundCategory;
-
-
-		enum
-		{
-			kTypeID = FormType::SoundCategory
-		};
+		inline static constexpr auto FORMTYPE = FormType::SoundCategory;
 
 
 		enum class Flag : UInt32  // FNAM

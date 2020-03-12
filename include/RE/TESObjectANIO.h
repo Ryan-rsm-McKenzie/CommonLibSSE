@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectANIO;
-
-
-		enum
-		{
-			kTypeID = FormType::AnimatedObject
-		};
+		inline static constexpr auto FORMTYPE = FormType::AnimatedObject;
 
 
 		struct RecordFlags

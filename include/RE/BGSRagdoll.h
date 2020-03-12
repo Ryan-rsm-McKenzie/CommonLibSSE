@@ -17,12 +17,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSRagdoll;
-
-
-		enum
-		{
-			kTypeID = FormType::Ragdoll
-		};
+		inline static constexpr auto FORMTYPE = FormType::Ragdoll;
 
 
 		struct RecordFlags

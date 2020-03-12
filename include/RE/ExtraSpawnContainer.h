@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraSpawnContainer;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kSpawnContainer
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSpawnContainer;
 
 
 		virtual ~ExtraSpawnContainer();	 // 00

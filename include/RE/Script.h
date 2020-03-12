@@ -29,12 +29,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Script;
-
-
-		enum
-		{
-			kTypeID = FormType::Script
-		};
+		inline static constexpr auto FORMTYPE = FormType::Script;
 
 
 		struct RecordFlags

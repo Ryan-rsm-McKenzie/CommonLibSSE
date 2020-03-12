@@ -43,12 +43,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSEncounterZone;
-
-
-		enum
-		{
-			kTypeID = FormType::EncounterZone
-		};
+		inline static constexpr auto FORMTYPE = FormType::EncounterZone;
 
 
 		struct ChangeFlags

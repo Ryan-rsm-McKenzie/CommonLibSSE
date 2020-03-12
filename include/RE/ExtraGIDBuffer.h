@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraGIDBuffer;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kGIDBuffer
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kGIDBuffer;
 
 
 		virtual ~ExtraGIDBuffer();	// 00

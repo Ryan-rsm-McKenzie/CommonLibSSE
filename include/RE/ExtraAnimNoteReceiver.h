@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraAnimNoteReceiver;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kAnimNoteReceiver
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAnimNoteReceiver;
 
 
 		virtual ~ExtraAnimNoteReceiver();  // 00

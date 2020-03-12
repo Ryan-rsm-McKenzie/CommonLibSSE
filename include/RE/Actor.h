@@ -134,12 +134,7 @@ namespace RE
 
 	public:
 		inline static constexpr auto RTTI = RTTI_Actor;
-
-
-		enum
-		{
-			kTypeID = FormType::ActorCharacter
-		};
+		inline static constexpr auto FORMTYPE = FormType::ActorCharacter;
 
 
 		struct SlotTypes

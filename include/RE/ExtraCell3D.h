@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCell3D;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kCell3D
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCell3D;
 
 
 		virtual ~ExtraCell3D();	 // 00

@@ -18,12 +18,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMessage;
-
-
-		enum
-		{
-			kTypeID = FormType::Message
-		};
+		inline static constexpr auto FORMTYPE = FormType::Message;
 
 
 		enum class MessageFlag : UInt32

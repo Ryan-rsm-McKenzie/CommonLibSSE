@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSKeyword;
-
-
-		enum
-		{
-			kTypeID = FormType::Keyword
-		};
+		inline static constexpr auto FORMTYPE = FormType::Keyword;
 
 
 		struct RecordFlags

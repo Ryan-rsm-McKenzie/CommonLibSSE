@@ -16,12 +16,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSSoundDescriptorForm;
-
-
-		enum
-		{
-			kTypeID = FormType::SoundRecord
-		};
+		inline static constexpr auto FORMTYPE = FormType::SoundRecord;
 
 
 		struct RecordFlags

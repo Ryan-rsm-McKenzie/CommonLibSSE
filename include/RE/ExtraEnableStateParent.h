@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraEnableStateParent;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kEnableStateParent
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kEnableStateParent;
 
 
 		virtual ~ExtraEnableStateParent();	// 00

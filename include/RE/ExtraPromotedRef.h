@@ -12,12 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraPromotedRef;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kPromotedRef
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPromotedRef;
 
 
 		virtual ~ExtraPromotedRef();  // 00

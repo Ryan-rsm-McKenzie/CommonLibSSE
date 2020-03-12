@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCanTalkToPlayer;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kCanTalkToPlayer
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCanTalkToPlayer;
 
 
 		ExtraCanTalkToPlayer();

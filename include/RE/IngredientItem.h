@@ -25,12 +25,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IngredientItem;
-
-
-		enum
-		{
-			kTypeID = FormType::Ingredient
-		};
+		inline static constexpr auto FORMTYPE = FormType::Ingredient;
 
 
 		enum class IngredientFlag : UInt32

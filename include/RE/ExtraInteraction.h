@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraInteraction;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kInteraction
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kInteraction;
 
 
 		virtual ~ExtraInteraction();  // 00

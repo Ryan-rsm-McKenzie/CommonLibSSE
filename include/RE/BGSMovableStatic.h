@@ -29,12 +29,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMovableStatic;
-
-
-		enum
-		{
-			kTypeID = FormType::MovableStatic
-		};
+		inline static constexpr auto FORMTYPE = FormType::MovableStatic;
 
 
 		struct RecordFlags

@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraOwnership;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kOwnership
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kOwnership;
 
 
 		ExtraOwnership();

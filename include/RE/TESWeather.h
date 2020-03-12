@@ -19,12 +19,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESWeather;
-
-
-		enum
-		{
-			kTypeID = FormType::Weather
-		};
+		inline static constexpr auto FORMTYPE = FormType::Weather;
 
 
 		enum

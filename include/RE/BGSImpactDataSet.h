@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSImpactDataSet;
-
-
-		enum
-		{
-			kTypeID = FormType::ImpactDataSet
-		};
+		inline static constexpr auto FORMTYPE = FormType::ImpactDataSet;
 
 
 		struct RecordFlags

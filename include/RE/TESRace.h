@@ -151,12 +151,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRace;
-
-
-		enum
-		{
-			kTypeID = FormType::Race
-		};
+		inline static constexpr auto FORMTYPE = FormType::Race;
 
 
 		enum class EquipmentFlag : UInt32

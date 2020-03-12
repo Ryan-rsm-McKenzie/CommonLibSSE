@@ -16,12 +16,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraTextDisplayData;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kTextDisplayData
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kTextDisplayData;
 
 
 		enum class DisplayDataType : SInt32

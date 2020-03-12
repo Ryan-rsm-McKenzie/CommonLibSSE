@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraEnchantment;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kEnchantment
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kEnchantment;
 
 
 		ExtraEnchantment();

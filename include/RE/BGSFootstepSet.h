@@ -27,12 +27,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSFootstepSet;
-
-
-		enum
-		{
-			kTypeID = FormType::FootstepSet
-		};
+		inline static constexpr auto FORMTYPE = FormType::FootstepSet;
 
 
 		struct RecordFlags

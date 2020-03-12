@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraStartingWorldOrCell;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kStartingWorldOrCell
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kStartingWorldOrCell;
 
 
 		virtual ~ExtraStartingWorldOrCell();  // 00

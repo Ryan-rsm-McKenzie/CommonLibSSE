@@ -22,12 +22,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraRunOncePacks;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kRunOncePacks
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRunOncePacks;
 
 
 		virtual ~ExtraRunOncePacks();  // 00

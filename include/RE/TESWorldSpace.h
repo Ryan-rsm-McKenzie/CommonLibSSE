@@ -77,12 +77,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESWorldSpace;
-
-
-		enum
-		{
-			kTypeID = FormType::WorldSpace
-		};
+		inline static constexpr auto FORMTYPE = FormType::WorldSpace;
 
 
 		enum class Flag : UInt8

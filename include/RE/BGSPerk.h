@@ -34,12 +34,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSPerk;
-
-
-		enum
-		{
-			kTypeID = FormType::Perk
-		};
+		inline static constexpr auto FORMTYPE = FormType::Perk;
 
 
 		struct RecordFlags

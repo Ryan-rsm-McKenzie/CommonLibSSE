@@ -28,12 +28,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraDismemberedLimbs;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kDismemberedLimbs
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kDismemberedLimbs;
 
 
 		virtual ~ExtraDismemberedLimbs();  // 00

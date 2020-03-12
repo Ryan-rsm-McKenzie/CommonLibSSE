@@ -55,12 +55,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraLock;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kLock
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLock;
 
 
 		virtual ~ExtraLock();  // 00

@@ -15,12 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraLinkedRefChildren;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kLinkedRefChildren
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLinkedRefChildren;
 
 
 		struct LinkedRefChild

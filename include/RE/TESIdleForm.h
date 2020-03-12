@@ -37,12 +37,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESIdleForm;
-
-
-		enum
-		{
-			kTypeID = FormType::Idle
-		};
+		inline static constexpr auto FORMTYPE = FormType::Idle;
 
 
 		struct RecordFlags

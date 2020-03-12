@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSAcousticSpace;
-
-
-		enum
-		{
-			kTypeID = FormType::AcousticSpace
-		};
+		inline static constexpr auto FORMTYPE = FormType::AcousticSpace;
 
 
 		struct RecordFlags

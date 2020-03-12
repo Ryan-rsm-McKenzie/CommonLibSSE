@@ -418,12 +418,7 @@ namespace RE
 
 
 		using DefaultObject = DEFAULT_OBJECT;
-
-
-		enum
-		{
-			kTypeID = FormType::DefaultObject
-		};
+		inline static constexpr auto FORMTYPE = FormType::DefaultObject;
 
 
 		struct RecordFlags
@@ -470,7 +465,7 @@ namespace RE
 	{
 		auto obj = GetObject(a_idx);
 		if (obj) {
-			bool isType = obj->Is(static_cast<FormType>(T::kTypeID));
+			bool isType = obj->Is(static_cast<FormType>(T::FORMTYPE));
 			assert(isType);
 			return isType ? static_cast<T*>(obj) : 0;
 		} else {

@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSSceneActionPackage;
-
-
-		enum
-		{
-			kTypeID = Type::kPackage
-		};
+		inline static constexpr auto TYPE = Type::kPackage;
 
 
 		virtual ~BGSSceneActionPackage();  // 00

@@ -23,12 +23,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraPackageStartLocation;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kPackageStartLocation
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPackageStartLocation;
 
 
 		virtual ~ExtraPackageStartLocation();  // 00

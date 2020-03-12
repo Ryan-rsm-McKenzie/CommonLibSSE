@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSListForm;
-
-
-		enum
-		{
-			kTypeID = FormType::FormList
-		};
+		inline static constexpr auto FORMTYPE = FormType::FormList;
 
 
 		struct ChangeFlags

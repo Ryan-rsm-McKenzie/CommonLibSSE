@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraSeenData;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kSeenData
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSeenData;
 
 
 		virtual ~ExtraSeenData();  // 00

@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraScriptedAnimDependence;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kScriptedAnimDependence
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kScriptedAnimDependence;
 
 
 		virtual ~ExtraScriptedAnimDependence();	 // 00

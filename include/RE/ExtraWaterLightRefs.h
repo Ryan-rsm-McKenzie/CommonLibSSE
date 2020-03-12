@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraWaterLightRefs;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kWaterLightRefs
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kWaterLightRefs;
 
 
 		virtual ~ExtraWaterLightRefs();	 // 00

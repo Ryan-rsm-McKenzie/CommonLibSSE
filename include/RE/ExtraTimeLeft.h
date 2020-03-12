@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraTimeLeft;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kTimeLeft
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kTimeLeft;
 
 
 		virtual ~ExtraTimeLeft();  // 00

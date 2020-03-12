@@ -14,12 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSColorForm;
-
-
-		enum
-		{
-			kTypeID = FormType::ColorForm
-		};
+		inline static constexpr auto FORMTYPE = FormType::ColorForm;
 
 
 		enum class Flag : UInt32  // FNAM

@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraGroupConstraint;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kGroupConstraint
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kGroupConstraint;
 
 
 		virtual ~ExtraGroupConstraint();  // 00

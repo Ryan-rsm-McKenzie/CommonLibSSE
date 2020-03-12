@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCreatureMovementSound;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kCreatureMovementSound
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCreatureMovementSound;
 
 
 		virtual ~ExtraCreatureMovementSound();	// 00

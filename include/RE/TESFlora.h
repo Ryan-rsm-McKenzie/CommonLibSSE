@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESFlora;
-
-
-		enum
-		{
-			kTypeID = FormType::Flora
-		};
+		inline static constexpr auto FORMTYPE = FormType::Flora;
 
 
 		struct RecordFlags

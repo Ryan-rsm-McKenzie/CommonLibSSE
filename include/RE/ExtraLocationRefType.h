@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraLocationRefType;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kLocationRefType
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLocationRefType;
 
 
 		virtual ~ExtraLocationRefType();  // 00

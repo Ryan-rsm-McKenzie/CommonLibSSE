@@ -139,12 +139,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESTopic;
-
-
-		enum
-		{
-			kTypeID = FormType::Dialogue
-		};
+		inline static constexpr auto FORMTYPE = FormType::Dialogue;
 
 
 		struct RecordFlags

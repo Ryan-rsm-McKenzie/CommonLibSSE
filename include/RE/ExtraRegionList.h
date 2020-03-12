@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraRegionList;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kRegionList
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRegionList;
 
 
 		virtual ~ExtraRegionList();	 // 00

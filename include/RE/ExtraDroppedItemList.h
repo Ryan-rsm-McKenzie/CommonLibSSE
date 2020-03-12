@@ -12,12 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraDroppedItemList;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kDroppedItemList
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kDroppedItemList;
 
 
 		virtual ~ExtraDroppedItemList();  // 00

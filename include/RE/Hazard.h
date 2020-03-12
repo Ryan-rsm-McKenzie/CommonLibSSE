@@ -17,12 +17,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Hazard;
-
-
-		enum
-		{
-			kTypeID = FormType::PlacedHazard
-		};
+		inline static constexpr auto FORMTYPE = FormType::PlacedHazard;
 
 
 		enum class Flags : UInt32

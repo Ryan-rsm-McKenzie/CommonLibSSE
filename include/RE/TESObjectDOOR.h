@@ -20,12 +20,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectDOOR;
-
-
-		enum
-		{
-			kTypeID = FormType::Door
-		};
+		inline static constexpr auto FORMTYPE = FormType::Door;
 
 
 		enum class Flag : UInt8

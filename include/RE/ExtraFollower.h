@@ -12,12 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraFollower;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kFollower
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFollower;
 
 
 		struct FollowerInfo

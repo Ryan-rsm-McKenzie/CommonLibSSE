@@ -49,12 +49,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRegion;
-
-
-		enum
-		{
-			kTypeID = FormType::Region
-		};
+		inline static constexpr auto FORMTYPE = FormType::Region;
 
 
 		struct RecordFlags

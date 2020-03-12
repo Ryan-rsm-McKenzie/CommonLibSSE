@@ -198,12 +198,7 @@ namespace RE
 
 
 		using DT = DIALOGUE_TYPE;
-
-
-		enum
-		{
-			kTypeID = FormType::Quest
-		};
+		inline static constexpr auto FORMTYPE = FormType::Quest;
 
 
 		struct ChangeFlags

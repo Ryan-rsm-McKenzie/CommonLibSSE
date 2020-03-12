@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraEmittanceSource;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kEmittanceSource
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kEmittanceSource;
 
 
 		virtual ~ExtraEmittanceSource();  // 00

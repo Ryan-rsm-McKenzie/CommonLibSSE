@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSReferenceEffect;
-
-
-		enum
-		{
-			kTypeID = FormType::ReferenceEffect
-		};
+		inline static constexpr auto FORMTYPE = FormType::ReferenceEffect;
 
 
 		enum class Flag : UInt32

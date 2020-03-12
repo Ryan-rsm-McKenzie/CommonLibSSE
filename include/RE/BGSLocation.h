@@ -67,12 +67,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSLocation;
-
-
-		enum
-		{
-			kTypeID = FormType::Location
-		};
+		inline static constexpr auto FORMTYPE = FormType::Location;
 
 
 		struct ChangeFlags

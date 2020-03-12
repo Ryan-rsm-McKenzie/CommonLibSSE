@@ -117,12 +117,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESFaction;
-
-
-		enum
-		{
-			kTypeID = FormType::Faction
-		};
+		inline static constexpr auto FORMTYPE = FormType::Faction;
 
 
 		struct ChangeFlags

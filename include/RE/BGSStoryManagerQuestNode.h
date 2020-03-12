@@ -12,12 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSStoryManagerQuestNode;
-
-
-		enum
-		{
-			kTypeID = FormType::StoryManagerQuestNode
-		};
+		inline static constexpr auto FORMTYPE = FormType::StoryManagerQuestNode;
 
 
 		struct ChangeFlags

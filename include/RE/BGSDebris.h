@@ -41,12 +41,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSDebris;
-
-
-		enum
-		{
-			kTypeID = FormType::Debris
-		};
+		inline static constexpr auto FORMTYPE = FormType::Debris;
 
 
 		struct RecordFlags

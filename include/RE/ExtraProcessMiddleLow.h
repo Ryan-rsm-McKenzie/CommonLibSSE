@@ -10,12 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraProcessMiddleLow;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kProcessMiddleLow
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kProcessMiddleLow;
 
 
 		virtual ~ExtraProcessMiddleLow();  // 00

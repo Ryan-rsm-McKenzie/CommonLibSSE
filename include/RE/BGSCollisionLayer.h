@@ -16,12 +16,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSCollisionLayer;
-
-
-		enum
-		{
-			kTypeID = FormType::CollisionLayer
-		};
+		inline static constexpr auto FORMTYPE = FormType::CollisionLayer;
 
 
 		enum class FLAG : UInt32  // GNAM

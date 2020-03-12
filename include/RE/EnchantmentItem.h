@@ -11,12 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_EnchantmentItem;
-
-
-		enum
-		{
-			kTypeID = FormType::Enchantment
-		};
+		inline static constexpr auto FORMTYPE = FormType::Enchantment;
 
 
 		enum class EnchantmentFlag : UInt32

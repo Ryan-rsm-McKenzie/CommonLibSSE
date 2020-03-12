@@ -21,14 +21,14 @@ namespace RE
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
 		inline TypeInfo::RawType GetRawType()
 		{
-			return GetRawTypeFromVMType(static_cast<VMTypeID>(remove_cvpr_t<T>::kTypeID));
+			return GetRawTypeFromVMType(static_cast<VMTypeID>(remove_cvpr_t<T>::FORMTYPE));
 		}
 
 
 		template <class T, typename std::enable_if_t<is_vm_form_array_no_cvr<T>::value, int> = 0>
 		inline TypeInfo::RawType GetRawType()
 		{
-			return GetRawTypeFromVMType(static_cast<VMTypeID>(remove_cvpr_t<remove_vm_array_t<T>>::kTypeID)) + TypeInfo::RawType::kObject;
+			return GetRawTypeFromVMType(static_cast<VMTypeID>(remove_cvpr_t<remove_vm_array_t<T>>::FORMTYPE)) + TypeInfo::RawType::kObject;
 		}
 
 
@@ -49,7 +49,7 @@ namespace RE
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
 		inline void PackValue(Variable* a_dst, T&& a_src)
 		{
-			PackHandle(a_dst, std::forward<T>(a_src), static_cast<VMTypeID>(remove_cvpr_t<T>::kTypeID));
+			PackHandle(a_dst, std::forward<T>(a_src), static_cast<VMTypeID>(remove_cvpr_t<T>::FORMTYPE));
 		}
 
 
@@ -126,7 +126,7 @@ namespace RE
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
 		inline T UnpackValue(const Variable* a_src)
 		{
-			return static_cast<T>(UnpackHandle(a_src, static_cast<VMTypeID>(remove_cvpr_t<T>::kTypeID)));
+			return static_cast<T>(UnpackHandle(a_src, static_cast<VMTypeID>(remove_cvpr_t<T>::FORMTYPE)));
 		}
 
 

@@ -12,12 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMaterialType;
-
-
-		enum
-		{
-			kTypeID = FormType::MaterialType
-		};
+		inline static constexpr auto FORMTYPE = FormType::MaterialType;
 
 
 		enum class FLAG : UInt32

@@ -13,12 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCombatStyle;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kCombatStyle
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCombatStyle;
 
 
 		virtual ~ExtraCombatStyle();  // 00

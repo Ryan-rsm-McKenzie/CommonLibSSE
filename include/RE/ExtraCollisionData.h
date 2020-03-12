@@ -18,12 +18,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCollisionData;
-
-
-		enum
-		{
-			kExtraTypeID = ExtraDataType::kCollisionData
-		};
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCollisionData;
 
 
 		virtual ~ExtraCollisionData();	// 00
