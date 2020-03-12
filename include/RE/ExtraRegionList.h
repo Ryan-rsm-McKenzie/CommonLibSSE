@@ -15,17 +15,20 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraRegionList;
 
 
-		enum { kExtraTypeID = ExtraDataType::kRegionList };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kRegionList
+		};
 
 
-		virtual ~ExtraRegionList();						// 00
+		virtual ~ExtraRegionList();	 // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kRegionList; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kRegionList; }
 
 
 		// members
-		TESRegionList* list;	// 10
+		TESRegionList* list;  // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraRegionList) == 0x18);
 }

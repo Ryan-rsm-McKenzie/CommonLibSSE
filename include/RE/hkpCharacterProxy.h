@@ -1,10 +1,10 @@
 #pragma once
 
 #include "RE/hkArray.h"
+#include "RE/hkReferencedObject.h"
 #include "RE/hkVector4.h"
 #include "RE/hkpEntityListener.h"
 #include "RE/hkpPhantomListener.h"
-#include "RE/hkReferencedObject.h"
 
 
 namespace RE
@@ -28,20 +28,20 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_hkpCharacterProxy;
 
 
-		virtual ~hkpCharacterProxy();																																																													// 00
+		virtual ~hkpCharacterProxy();  // 00
 
 		// override (hkReferencedObject)
-		virtual void	CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;																																								// 02
+		virtual void CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;	// 02
 
 		// override (hkpEntityListener)
-		virtual void	EntityRemovedCallback(hkpEntity* a_entity) override;																																																			// 02
+		virtual void EntityRemovedCallback(hkpEntity* a_entity) override;  // 02
 
 		// override (hkpPhantomListener)
-		virtual void	PhantomRemovedCallback(hkpPhantom* a_phantom) override;																																																			// 02
+		virtual void PhantomRemovedCallback(hkpPhantom* a_phantom) override;  // 02
 
 		// add
-		virtual void	UpdateManifold(const hkpAllCdPointCollector& a_startPointCollector, const hkpAllCdPointCollector& a_castCollector, hkArray<hkpRootCdPoint>& a_manifold, hkArray<hkpRigidBody*>& a_bodies, hkArray<hkpPhantom*>& a_phantoms, bool a_isMultithreaded = false);	// 03
-		virtual void	ExtractSurfaceConstraintInfo(const hkpRootCdPoint& a_hit, hkpSurfaceConstraintInfo& a_surfaceOut, float a_timeTravelled) const;																																	// 04
+		virtual void UpdateManifold(const hkpAllCdPointCollector& a_startPointCollector, const hkpAllCdPointCollector& a_castCollector, hkArray<hkpRootCdPoint>& a_manifold, hkArray<hkpRigidBody*>& a_bodies, hkArray<hkpPhantom*>& a_phantoms, bool a_isMultithreaded = false);  // 03
+		virtual void ExtractSurfaceConstraintInfo(const hkpRootCdPoint& a_hit, hkpSurfaceConstraintInfo& a_surfaceOut, float a_timeTravelled) const;																															   // 04
 
 
 		// members
@@ -65,7 +65,7 @@ namespace RE
 		float								characterStrength;				// BC
 		float								characterMass;					// C0
 		UInt32								padC4;							// C4
-		hkArray<hkpCharacterProxyListener*>	listeners;						// C8
+		hkArray<hkpCharacterProxyListener*> listeners;						// C8
 		float								maxSlopeCosine;					// D8
 		float								penetrationRecoverySpeed;		// DC
 		SInt32								maxCastIterations;				// E0

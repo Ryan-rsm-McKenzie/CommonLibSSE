@@ -20,14 +20,17 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraPortalRefData;
 
 
-		enum { kExtraTypeID = ExtraDataType::kPortalRefData };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kPortalRefData
+		};
 
 
-		virtual ~ExtraPortalRefData();													// 00
+		virtual ~ExtraPortalRefData();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kPortalRefData; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
+		virtual ExtraDataType GetType() const override;								// 01 - { return kPortalRefData; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
 
 
 		// members

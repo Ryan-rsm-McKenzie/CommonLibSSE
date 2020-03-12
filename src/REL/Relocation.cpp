@@ -2,9 +2,9 @@
 
 #include <cassert>
 #include <cstring>
+#include <exception>
 #include <filesystem>
 #include <fstream>
-#include <exception>
 #include <ios>
 #include <memory>
 #include <sstream>
@@ -298,7 +298,8 @@ namespace REL
 		_header(),
 		_offsets()
 #ifdef _DEBUG
-		, _ids()
+		,
+		_ids()
 #endif
 	{
 		if (!Load()) {

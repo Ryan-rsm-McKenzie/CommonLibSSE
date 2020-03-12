@@ -155,7 +155,7 @@ namespace RE
 	};
 
 
-	struct PACKAGE_DATA	// PKDT
+	struct PACKAGE_DATA	 // PKDT
 	{
 		using InterruptOverride = PACK_INTERRUPT_TARGET_8;
 		using Type = PACKAGE_PROCEDURE_TYPE_8;
@@ -206,13 +206,13 @@ namespace RE
 		};
 
 
-		GeneralFlag			packFlags;				// 0
-		Type				packType;				// 4
-		InterruptOverride	interruptOverrideType;	// 5
-		PreferredSpeed		maxSpeed;				// 6
-		UInt8				pad7;					// 7
-		InterruptFlag		foBehaviorFlags;		// 8
-		UInt16				packageSpecificFlags;	// A
+		GeneralFlag		  packFlags;			  // 0
+		Type			  packType;				  // 4
+		InterruptOverride interruptOverrideType;  // 5
+		PreferredSpeed	  maxSpeed;				  // 6
+		UInt8			  pad7;					  // 7
+		InterruptFlag	  foBehaviorFlags;		  // 8
+		UInt16			  packageSpecificFlags;	  // A
 	};
 	STATIC_ASSERT(sizeof(PACKAGE_DATA) == 0xC);
 
@@ -222,26 +222,27 @@ namespace RE
 	public:
 		union Target
 		{
-			Target() : object(0) {}
+			Target() :
+				object(0) {}
 			~Target() {}
 
 
-			ObjectRefHandle			handle;
-			TESForm*				object;
-			TESForm*				refOrObj;
-			PACKAGE_OBJECT_TYPE		objType;
-			UInt32					aliasID;
-			PACK_INTERRUPT_TARGET	interruptTarg;
+			ObjectRefHandle		  handle;
+			TESForm*			  object;
+			TESForm*			  refOrObj;
+			PACKAGE_OBJECT_TYPE	  objType;
+			UInt32				  aliasID;
+			PACK_INTERRUPT_TARGET interruptTarg;
 		};
 		STATIC_ASSERT(sizeof(Target) == 0x8);
 
 
-		SInt8	targType;	// 00
-		UInt8	pad01;		// 01
-		UInt16	pad02;		// 02
-		Target	target;		// 08
-		SInt32	value;		// 10
-		UInt32	pad14;		// 14
+		SInt8  targType;  // 00
+		UInt8  pad01;	  // 01
+		UInt16 pad02;	  // 02
+		Target target;	  // 08
+		SInt32 value;	  // 10
+		UInt32 pad14;	  // 14
 	};
 	STATIC_ASSERT(sizeof(PackageTarget) == 0x18);
 
@@ -265,23 +266,23 @@ namespace RE
 		};
 
 
-		SInt8		month;		// 0
-		DayOfWeek	dayOfWeek;	// 1
-		SInt8		date;		// 2
-		SInt8		hour;		// 3
-		SInt8		minute;		// 4
-		UInt8		pad5;		// 5
-		UInt8		pad6;		// 6
-		UInt8		pad7;		// 7
-		SInt32		duration;	// 8 - minutes
+		SInt8	  month;	  // 0
+		DayOfWeek dayOfWeek;  // 1
+		SInt8	  date;		  // 2
+		SInt8	  hour;		  // 3
+		SInt8	  minute;	  // 4
+		UInt8	  pad5;		  // 5
+		UInt8	  pad6;		  // 6
+		UInt8	  pad7;		  // 7
+		SInt32	  duration;	  // 8 - minutes
 	};
 	STATIC_ASSERT(sizeof(PACK_SCHED_DATA) == 0xC);
 
 
-	class PackageSchedule	// PSDT
+	class PackageSchedule  // PSDT
 	{
 	public:
-		PACK_SCHED_DATA psData;	// 0
+		PACK_SCHED_DATA psData;	 // 0
 	};
 	STATIC_ASSERT(sizeof(PackageSchedule) == 0xC);
 
@@ -289,7 +290,7 @@ namespace RE
 	class PackageEventAction
 	{
 	public:
-		struct TopicData	// PDTO
+		struct TopicData  // PDTO
 		{
 			enum class Type : UInt32
 			{
@@ -298,17 +299,17 @@ namespace RE
 			};
 
 
-			Type		type;	// 00
-			UInt32		pad04;	// 04
-			TESTopic*	topic;	// 08
+			Type	  type;	  // 00
+			UInt32	  pad04;  // 04
+			TESTopic* topic;  // 08
 		};
 		STATIC_ASSERT(sizeof(TopicData) == 0x10);
 
 
-		TESIdleForm*			idle;	// 00 - INAM
-		PACK_EVENT_ACTION_TYPE	type;	// 08
-		UInt32					pad0C;	// 0C
-		TopicData				topic;	// 10 - PDTO
+		TESIdleForm*		   idle;   // 00 - INAM
+		PACK_EVENT_ACTION_TYPE type;   // 08
+		UInt32				   pad0C;  // 0C
+		TopicData			   topic;  // 10 - PDTO
 	};
 	STATIC_ASSERT(sizeof(PackageEventAction) == 0x20);
 
@@ -319,7 +320,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESPackage;
 
 
-		enum { kTypeID = FormType::Package };
+		enum
+		{
+			kTypeID = FormType::Package
+		};
 
 
 		struct ChangeFlags
@@ -342,44 +346,44 @@ namespace RE
 		};
 
 
-		virtual ~TESPackage();																								// 00
+		virtual ~TESPackage();	// 00
 
 		// override (TESForm)
-		virtual void		InitializeData() override;																		// 04
-		virtual void		ClearData() override;																			// 05
-		virtual bool		Load(TESFile* a_mod) override;																	// 06
-		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;													// 0E
-		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;													// 0F
-		virtual void		Revert(BGSLoadFormBuffer* a_buf) override;														// 12
-		virtual void		InitItemImpl() override;																		// 13
-		virtual UInt32		GetRefCount() const override;																	// 2D - { return refCount; }
-		virtual const char*	GetObjectTypeName() const override;																// 39 - { return g_packageTypeStrings[packData.packType]; }
+		virtual void		InitializeData() override;					  // 04
+		virtual void		ClearData() override;						  // 05
+		virtual bool		Load(TESFile* a_mod) override;				  // 06
+		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
+		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
+		virtual void		Revert(BGSLoadFormBuffer* a_buf) override;	  // 12
+		virtual void		InitItemImpl() override;					  // 13
+		virtual UInt32		GetRefCount() const override;				  // 2D - { return refCount; }
+		virtual const char* GetObjectTypeName() const override;			  // 39 - { return g_packageTypeStrings[packData.packType]; }
 
 		// add
-		virtual bool		IsActorAtLocation(Actor* a_actor, bool a_arg2, float a_arg3, bool a_arg4);						// 3B
-		virtual bool		IsActorAtSecondLocation(Actor* a_arg1, Actor* a_arg2, bool a_arg3, float a_arg4, bool a_arg5);	// 3C
-		virtual bool		IsActorAtRefTarget(Actor* a_actor, SInt32 a_arg2);												// 3D
-		virtual bool		IsTargetAtLocation(Actor* a_actor, SInt32 a_arg2);												// 3E
-		virtual bool		IsPackageOwner(Actor* a_actor);																	// 3F - { return true; }
+		virtual bool IsActorAtLocation(Actor* a_actor, bool a_arg2, float a_arg3, bool a_arg4);						 // 3B
+		virtual bool IsActorAtSecondLocation(Actor* a_arg1, Actor* a_arg2, bool a_arg3, float a_arg4, bool a_arg5);	 // 3C
+		virtual bool IsActorAtRefTarget(Actor* a_actor, SInt32 a_arg2);												 // 3D
+		virtual bool IsTargetAtLocation(Actor* a_actor, SInt32 a_arg2);												 // 3E
+		virtual bool IsPackageOwner(Actor* a_actor);																 // 3F - { return true; }
 
 
 		// members
-		PACKAGE_DATA			packData;		// 20 - PKDT
-		UInt32					pad2C;			// 2C
-		TESPackageData*			data;			// 30
-		PackageLocation*		packLoc;		// 38
-		PackageTarget*			packTarg;		// 40
-		BGSIdleCollection*		idleCollection;	// 48
-		PackageSchedule			packSched;		// 50 - PSDT
-		UInt32					pad5C;			// 5C
-		TESCondition			packConditions;	// 60
-		TESCombatStyle*			combatStyle;	// 68 - CNAM
-		TESQuest*				ownerQuest;		// 70 - QNAM
-		PackageEventAction		onBegin;		// 78
-		PackageEventAction		onEnd;			// 98
-		PackageEventAction		onChange;		// B8
-		PACKAGE_PROCEDURE_TYPE	procedureType;	// D8
-		volatile UInt32			refCount;		// DC
+		PACKAGE_DATA		   packData;		// 20 - PKDT
+		UInt32				   pad2C;			// 2C
+		TESPackageData*		   data;			// 30
+		PackageLocation*	   packLoc;			// 38
+		PackageTarget*		   packTarg;		// 40
+		BGSIdleCollection*	   idleCollection;	// 48
+		PackageSchedule		   packSched;		// 50 - PSDT
+		UInt32				   pad5C;			// 5C
+		TESCondition		   packConditions;	// 60
+		TESCombatStyle*		   combatStyle;		// 68 - CNAM
+		TESQuest*			   ownerQuest;		// 70 - QNAM
+		PackageEventAction	   onBegin;			// 78
+		PackageEventAction	   onEnd;			// 98
+		PackageEventAction	   onChange;		// B8
+		PACKAGE_PROCEDURE_TYPE procedureType;	// D8
+		volatile UInt32		   refCount;		// DC
 	};
 	STATIC_ASSERT(sizeof(TESPackage) == 0xE0);
 }

@@ -12,13 +12,16 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraWorn;
 
 
-		enum { kExtraTypeID = ExtraDataType::kWorn };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kWorn
+		};
 
 
-		virtual ~ExtraWorn();							// 00
+		virtual ~ExtraWorn();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kWorn; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kWorn; }
 	};
 	STATIC_ASSERT(sizeof(ExtraWorn) == 0x10);
 }

@@ -24,7 +24,7 @@ namespace RE
 		{}
 
 
-		virtual ~NiTMap()	// 00
+		virtual ~NiTMap()  // 00
 		{}
 
 	protected:
@@ -32,13 +32,13 @@ namespace RE
 
 
 		// override (NiTMapBase)
-		virtual value_type* malloc_value() override	// 05
+		virtual value_type* malloc_value() override	 // 05
 		{
 			return static_cast<value_type*>(_allocator.Allocate());
 		}
 
 
-		virtual void free_value(value_type* a_value) override	// 06
+		virtual void free_value(value_type* a_value) override  // 06
 		{
 			a_value->~value_type();
 			_allocator.Deallocate(a_value);

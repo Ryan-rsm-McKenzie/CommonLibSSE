@@ -17,8 +17,8 @@ namespace RE
 	{
 		struct TLSData
 		{
-			UInt8	unk000[0x600];	// 000
-			bool	consoleMode;	// 600
+			UInt8 unk000[0x600];  // 000
+			bool consoleMode;	  // 600
 		};
 
 		REL::Offset<UInt32*> tlsIndex(Offset::TlsIndex);

@@ -10,7 +10,10 @@ namespace RE
 
 	struct BSSoundHandle
 	{
-		enum : UInt32 { kInvalidID = static_cast<UInt32>(-1) };
+		enum : UInt32
+		{
+			kInvalidID = static_cast<UInt32>(-1)
+		};
 
 
 		enum class AssumedState : UInt32
@@ -34,19 +37,19 @@ namespace RE
 		BSSoundHandle();
 		~BSSoundHandle() = default;
 
-		bool	IsValid() const;
-		bool	SetPosition(NiPoint3 a_pos);
-		void	SetObjectToFollow(NiAVObject* a_node);
-		bool	Stop();
-		bool	Play();
+		bool IsValid() const;
+		bool SetPosition(NiPoint3 a_pos);
+		void SetObjectToFollow(NiAVObject* a_node);
+		bool Stop();
+		bool Play();
 
 
 		// members
-		UInt32			soundID;		// 00
-		bool			assumeSuccess;	// 04
-		UInt8			pad05;			// 05
-		UInt16			pad06;			// 06
-		AssumedState	state;			// 08
+		UInt32		 soundID;		 // 00
+		bool		 assumeSuccess;	 // 04
+		UInt8		 pad05;			 // 05
+		UInt16		 pad06;			 // 06
+		AssumedState state;			 // 08
 	};
 	STATIC_ASSERT(sizeof(BSSoundHandle) == 0xC);
 }

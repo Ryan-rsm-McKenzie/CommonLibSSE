@@ -16,11 +16,14 @@ namespace RE
 
 		// capacity
 		[[nodiscard]] bool empty() const noexcept;
-		size_type size() const noexcept;
-		size_type length() const noexcept;
+		size_type		   size() const noexcept;
+		size_type		   length() const noexcept;
 
 	protected:
-		enum { kManaged = 1 << 0 };
+		enum
+		{
+			kManaged = 1 << 0
+		};
 
 
 		const char* _data;	// 0

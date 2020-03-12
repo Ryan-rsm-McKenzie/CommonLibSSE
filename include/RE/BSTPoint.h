@@ -16,16 +16,16 @@ namespace RE
 	{
 	public:
 		// members
-		T	x;	// 00
-		T	y;	// ??
+		T x;  // 00
+		T y;  // ??
 	};
 	STATIC_ASSERT(sizeof(BSTPoint2Base<float>) == 0x8);
 
 
 	template <class T, class Ops = BSTPointDefaultOps<T>>
 	class BSTPoint2 :
-		public BSTPoint2Base<T>,	// 00
-		public Ops					// ??
+		public BSTPoint2Base<T>,  // 00
+		public Ops				  // ??
 	{
 	public:
 	};
@@ -37,17 +37,17 @@ namespace RE
 	{
 	public:
 		// members
-		T	x;	// 00
-		T	y;	// ??
-		T	z;	// ??
+		T x;  // 00
+		T y;  // ??
+		T z;  // ??
 	};
 	STATIC_ASSERT(sizeof(BSTPoint3Base<float>) == 0xC);
 
 
 	template <class T, class Ops = BSTPointDefaultOps<T>>
 	class BSTPoint3 :
-		public BSTPoint3Base<T>,	// 00
-		public Ops					// ??
+		public BSTPoint3Base<T>,  // 00
+		public Ops				  // ??
 	{
 	public:
 	};

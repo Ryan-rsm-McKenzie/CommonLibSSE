@@ -12,7 +12,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSReferenceEffect;
 
 
-		enum { kTypeID = FormType::ReferenceEffect };
+		enum
+		{
+			kTypeID = FormType::ReferenceEffect
+		};
 
 
 		enum class Flag : UInt32
@@ -34,23 +37,23 @@ namespace RE
 		};
 
 
-		struct Data	// DATA
+		struct Data	 // DATA
 		{
-			BGSArtObject*		artObject;		// 00
-			TESEffectShader*	effectShader;	// 08
-			Flag				flags;			// 10
-			UInt32				pad14;			// 14
+			BGSArtObject*	 artObject;		// 00
+			TESEffectShader* effectShader;	// 08
+			Flag			 flags;			// 10
+			UInt32			 pad14;			// 14
 		};
 		STATIC_ASSERT(sizeof(Data) == 0x18);
 
 
-		virtual ~BGSReferenceEffect();					// 00
+		virtual ~BGSReferenceEffect();	// 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;		// 04
-		virtual void	ClearData() override;			// 05
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void InitializeData() override;		 // 04
+		virtual void ClearData() override;			 // 05
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
 		// members

@@ -14,7 +14,7 @@ namespace RE
 		struct Action;
 	}
 
-	
+
 	class TESObjectCELL;
 
 
@@ -24,22 +24,25 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraWaterCurrentZoneData;
 
 
-		enum { kExtraTypeID = ExtraDataType::kWaterCurrentZoneData };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kWaterCurrentZoneData
+		};
 
 
-		virtual ~ExtraWaterCurrentZoneData();											// 00
+		virtual ~ExtraWaterCurrentZoneData();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kWaterCurrentZoneData; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
+		virtual ExtraDataType GetType() const override;								// 01 - { return kWaterCurrentZoneData; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
 
 
 		// members
-		BSTHashMap<ObjectRefHandle, BSCurrent::Action*>	referenceToActionMap;	// 10
-		BSCurrent::Action*								cellAction;				// 40
-		TESObjectCELL*									affectedCell;			// 48
-		NiPoint3										angularVelocity;		// 50
-		NiPoint3										linearVelocity;			// 5C
+		BSTHashMap<ObjectRefHandle, BSCurrent::Action*> referenceToActionMap;  // 10
+		BSCurrent::Action*								cellAction;			   // 40
+		TESObjectCELL*									affectedCell;		   // 48
+		NiPoint3										angularVelocity;	   // 50
+		NiPoint3										linearVelocity;		   // 5C
 	};
 	STATIC_ASSERT(sizeof(ExtraWaterCurrentZoneData) == 0x68);
 }

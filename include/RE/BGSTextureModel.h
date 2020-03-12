@@ -11,10 +11,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSTextureModel;
 
 
-		virtual ~BGSTextureModel();								// 00
+		virtual ~BGSTextureModel();	 // 00
 
 		// override (TESModel)
-		virtual void SetModel(const char* a_model) override;	// 05
+		virtual void SetModel(const char* a_model) override;  // 05
 	};
 	STATIC_ASSERT(sizeof(BGSTextureModel) == 0x28);
 }

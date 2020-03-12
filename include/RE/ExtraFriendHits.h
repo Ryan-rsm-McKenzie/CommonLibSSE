@@ -14,17 +14,20 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraFriendHits;
 
 
-		enum { kExtraTypeID = ExtraDataType::kFriendHits };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kFriendHits
+		};
 
 
-		virtual ~ExtraFriendHits();						// 00
+		virtual ~ExtraFriendHits();	 // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kFriendHits; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kFriendHits; }
 
 
 		// members
-		BSTArray<AITimeStamp> hits;	// 10
+		BSTArray<AITimeStamp> hits;	 // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraFriendHits) == 0x28);
 }

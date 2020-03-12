@@ -13,18 +13,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraAttachRef;
 
 
-		enum { kExtraTypeID = ExtraDataType::kAttachRef };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kAttachRef
+		};
 
 
-		virtual ~ExtraAttachRef();														// 00
+		virtual ~ExtraAttachRef();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kAttachRef; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return attachRef != a_rhs->attachRef; }
+		virtual ExtraDataType GetType() const override;								// 01 - { return kAttachRef; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return attachRef != a_rhs->attachRef; }
 
 
 		// members
-		ObjectRefHandle	attachRef;	// 10
+		ObjectRefHandle attachRef;	// 10
 		UInt32			pad14;		// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraAttachRef) == 0x18);

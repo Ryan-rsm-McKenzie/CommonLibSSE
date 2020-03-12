@@ -22,9 +22,9 @@ namespace SKSE
 		template <class T, typename std::enable_if_t<std::is_arithmetic_v<T>, int> = 0>
 		constexpr Version(const T a_versions[4]) noexcept :
 			Version(static_cast<std::uint16_t>(a_versions[0]),
-					static_cast<std::uint16_t>(a_versions[1]),
-					static_cast<std::uint16_t>(a_versions[2]),
-					static_cast<std::uint16_t>(a_versions[3]))
+				static_cast<std::uint16_t>(a_versions[1]),
+				static_cast<std::uint16_t>(a_versions[2]),
+				static_cast<std::uint16_t>(a_versions[3]))
 		{}
 
 		[[nodiscard]] friend constexpr bool operator==(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.Compare(a_rhs) == 0; }
@@ -35,7 +35,7 @@ namespace SKSE
 		[[nodiscard]] friend constexpr bool operator<=(const Version& a_lhs, const Version& a_rhs) noexcept { return !(a_lhs > a_rhs); }
 		[[nodiscard]] friend constexpr bool operator>=(const Version& a_lhs, const Version& a_rhs) noexcept { return !(a_lhs < a_rhs); }
 
-		[[nodiscard]] constexpr std::uint16_t& operator[](std::size_t a_idx) noexcept { return _buf[a_idx]; }
+		[[nodiscard]] constexpr std::uint16_t&		 operator[](std::size_t a_idx) noexcept { return _buf[a_idx]; }
 		[[nodiscard]] constexpr const std::uint16_t& operator[](std::size_t a_idx) const noexcept { return _buf[a_idx]; }
 
 		[[nodiscard]] constexpr int Compare(const Version& a_rhs) const noexcept

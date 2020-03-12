@@ -22,19 +22,22 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraLevCreaModifier;
 
 
-		enum { kExtraTypeID = ExtraDataType::kLevCreaModifier };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kLevCreaModifier
+		};
 
 
-		virtual ~ExtraLevCreaModifier();												// 00
+		virtual ~ExtraLevCreaModifier();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kLevCreaModifier; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return modifier != a_rhs->modifier; }
+		virtual ExtraDataType GetType() const override;								// 01 - { return kLevCreaModifier; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return modifier != a_rhs->modifier; }
 
 
 		// members
-		LEV_CREA_MODIFIER	modifier;	// 10
-		UInt32				pad14;		// 14
+		LEV_CREA_MODIFIER modifier;	 // 10
+		UInt32			  pad14;	 // 14
 	};
 	STATIC_ASSERT(sizeof(ExtraLevCreaModifier) == 0x18);
 }

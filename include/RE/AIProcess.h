@@ -32,17 +32,17 @@ namespace RE
 	{
 	public:
 		// members
-		SInt32 hourPackageEvaluated;	// 0
+		SInt32 hourPackageEvaluated;  // 0
 	};
 	STATIC_ASSERT(sizeof(MiddleLowProcessData) == 0x4);
 
 
 	struct CachedValueData
 	{
-		bool	dirty;	// 0
-		UInt8	pad1;	// 1
-		UInt16	pad2;	// 2
-		float	value;	// 4
+		bool   dirty;  // 0
+		UInt8  pad1;   // 1
+		UInt16 pad2;   // 2
+		float  value;  // 4
 	};
 	STATIC_ASSERT(sizeof(CachedValueData) == 0x8);
 
@@ -80,31 +80,31 @@ namespace RE
 		};
 
 
-		float						cachedRadius;				// 00
-		float						cachedWidth;				// 04
-		float						cachedLength;				// 08
-		float						cachedForwardLength;		// 0C
-		float						cachedDPS;					// 10
-		float						cachedEyeLevel;				// 14
-		float						cachedWalkSpeed;			// 18
-		float						cachedRunSpeed;				// 1C
-		float						cachedJogSpeed;				// 20
-		float						cachedFastWalkSpeed;		// 24
-		BooleanValue				booleanValues;				// 28
-		Flags						flags;						// 2C
-		BSTArray<CachedValueData>	actorValueCache;			// 30
-		BSTArray<CachedValueData>	permanentActorValueCache;	// 48
+		float					  cachedRadius;				 // 00
+		float					  cachedWidth;				 // 04
+		float					  cachedLength;				 // 08
+		float					  cachedForwardLength;		 // 0C
+		float					  cachedDPS;				 // 10
+		float					  cachedEyeLevel;			 // 14
+		float					  cachedWalkSpeed;			 // 18
+		float					  cachedRunSpeed;			 // 1C
+		float					  cachedJogSpeed;			 // 20
+		float					  cachedFastWalkSpeed;		 // 24
+		BooleanValue			  booleanValues;			 // 28
+		Flags					  flags;					 // 2C
+		BSTArray<CachedValueData> actorValueCache;			 // 30
+		BSTArray<CachedValueData> permanentActorValueCache;	 // 48
 	};
 	STATIC_ASSERT(sizeof(CachedValues) == 0x60);
 
 
 	struct ObjectstoAcquire
 	{
-		UInt64	unk00;	// 00
-		UInt64	unk08;	// 08
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
-		UInt64	unk20;	// 20
+		UInt64 unk00;  // 00
+		UInt64 unk08;  // 08
+		UInt64 unk10;  // 10
+		UInt64 unk18;  // 18
+		UInt64 unk20;  // 20
 	};
 	STATIC_ASSERT(sizeof(ObjectstoAcquire) == 0x28);
 
@@ -126,32 +126,32 @@ namespace RE
 
 		struct Data0B8
 		{
-			void*		unk00;	// 00
-			Data0B8*	unk08;	// 08
-			void*		unk10;	// 10
-			void*		unk18;	// 18
-			UInt64		unk20;	// 20
-			void*		unk28;	// 28
-			UInt32		unk30;	// 30
-			UInt32		pad34;	// 34
+			void*	 unk00;	 // 00
+			Data0B8* unk08;	 // 08
+			void*	 unk10;	 // 10
+			void*	 unk18;	 // 18
+			UInt64	 unk20;	 // 20
+			void*	 unk28;	 // 28
+			UInt32	 unk30;	 // 30
+			UInt32	 pad34;	 // 34
 		};
 		STATIC_ASSERT(sizeof(Data0B8) == 0x38);
 
 
-		float						GetCachedHeight() const;
-		bhkCharacterController*		GetCharController();
-		TESForm*					GetEquippedLeftHand();
-		TESForm*					GetEquippedRightHand();
-		bool						InHighProcess() const;
-		bool						InMiddleHighProcess() const;
-		bool						InMiddleLowProcess() const;
-		bool						InLowProcess() const;
-		bool						IsArrested() const;
-		bool						IsGhost() const;
-		void						SetArrested(bool a_arrested);
-		void						SetCachedHeight(float a_height);
-		void						Set3DUpdateFlag(RESET_3D_FLAGS a_flags);
-		void						Update3DModel(Actor* a_actor);
+		float					GetCachedHeight() const;
+		bhkCharacterController* GetCharController();
+		TESForm*				GetEquippedLeftHand();
+		TESForm*				GetEquippedRightHand();
+		bool					InHighProcess() const;
+		bool					InMiddleHighProcess() const;
+		bool					InMiddleLowProcess() const;
+		bool					InLowProcess() const;
+		bool					IsArrested() const;
+		bool					IsGhost() const;
+		void					SetArrested(bool a_arrested);
+		void					SetCachedHeight(float a_height);
+		void					Set3DUpdateFlag(RESET_3D_FLAGS a_flags);
+		void					Update3DModel(Actor* a_actor);
 
 
 		// members
@@ -164,7 +164,7 @@ namespace RE
 		CachedValues*					cachedValues;					// 050
 		SInt32							numberItemsActivate;			// 058
 		UInt32							pad05C;							// 05C
-		BSSimpleList<ObjectstoAcquire*>	objects;						// 060
+		BSSimpleList<ObjectstoAcquire*> objects;						// 060
 		BSSimpleList<TESObjectREFR*>	genericLocations;				// 070
 		ObjectstoAcquire*				acquireObject;					// 080
 		ObjectstoAcquire*				savedAcquireObject;				// 088

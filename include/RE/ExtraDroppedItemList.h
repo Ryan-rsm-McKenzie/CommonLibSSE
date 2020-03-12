@@ -14,13 +14,16 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraDroppedItemList;
 
 
-		enum { kExtraTypeID = ExtraDataType::kDroppedItemList };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kDroppedItemList
+		};
 
 
-		virtual ~ExtraDroppedItemList();				// 00
+		virtual ~ExtraDroppedItemList();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 { return kDroppedItemList; }
+		virtual ExtraDataType GetType() const override;	 // 01 { return kDroppedItemList; }
 
 
 		// members

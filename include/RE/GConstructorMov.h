@@ -11,20 +11,20 @@ namespace RE
 	public:
 		static void Construct(void* a_ptr)
 		{
-			::new(a_ptr) T{};
+			::new (a_ptr) T{};
 		}
 
 
 		static void Construct(void* a_ptr, const T& a_source)
 		{
-			::new(a_ptr) T{ a_source };
+			::new (a_ptr) T{ a_source };
 		}
 
 
 		template <class S>
 		static void ConstructAlt(void* a_ptr, const S& a_source)
 		{
-			::new(a_ptr) T{ a_source };
+			::new (a_ptr) T{ a_source };
 		}
 
 

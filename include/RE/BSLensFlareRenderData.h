@@ -13,9 +13,9 @@ namespace RE
 	{
 	public:
 		// members
-		float												fadeDistRadiusScale;	// 00
-		float												colorInfluence;			// 04
-		BSTArray<NiPointer<BSLensFlareSpriteRenderData>>	sprites;				// 08
+		float											 fadeDistRadiusScale;  // 00
+		float											 colorInfluence;	   // 04
+		BSTArray<NiPointer<BSLensFlareSpriteRenderData>> sprites;			   // 08
 	};
 	STATIC_ASSERT(sizeof(BSLensFlareRenderData) == 0x20);
 }

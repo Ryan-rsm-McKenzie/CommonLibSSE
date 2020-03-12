@@ -11,7 +11,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESModelPSA;
 
 
-		virtual ~TESModelPSA();	// 00
+		virtual ~TESModelPSA();	 // 00
 	};
 	STATIC_ASSERT(sizeof(TESModelPSA) == 0x28);
 }

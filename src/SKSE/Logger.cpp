@@ -110,11 +110,9 @@ namespace SKSE
 
 		if (_hookPapyrusLog) {
 			if (!prev) {
-				SKSE::RegisterForAPIInitEvent([]()
-				{
+				SKSE::RegisterForAPIInitEvent([]() {
 					auto papyrus = SKSE::GetPapyrusInterface();
-					papyrus->Register([](RE::BSScript::Internal::VirtualMachine* a_vm)
-					{
+					papyrus->Register([](RE::BSScript::Internal::VirtualMachine* a_vm) {
 						a_vm->RegisterForLogEvent(LogEventHandler::GetSingleton());
 						return true;
 					});
@@ -122,11 +120,9 @@ namespace SKSE
 			}
 		} else {
 			if (prev) {
-				SKSE::RegisterForAPIInitEvent([]()
-				{
+				SKSE::RegisterForAPIInitEvent([]() {
 					auto papyrus = SKSE::GetPapyrusInterface();
-					papyrus->Register([](RE::BSScript::Internal::VirtualMachine* a_vm)
-					{
+					papyrus->Register([](RE::BSScript::Internal::VirtualMachine* a_vm) {
 						a_vm->UnregisterForLogEvent(LogEventHandler::GetSingleton());
 						return true;
 					});

@@ -13,18 +13,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraLeveledCreature;
 
 
-		enum { kExtraTypeID = ExtraDataType::kLeveledCreature };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kLeveledCreature
+		};
 
 
-		virtual ~ExtraLeveledCreature();				// 00
+		virtual ~ExtraLeveledCreature();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kLeveledCreature; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kLeveledCreature; }
 
 
 		// members
-		TESActorBase*	originalBase;	// 10
-		TESActorBase*	templateBase;	// 18
+		TESActorBase* originalBase;	 // 10
+		TESActorBase* templateBase;	 // 18
 	};
 	STATIC_ASSERT(sizeof(ExtraLeveledCreature) == 0x20);
 }

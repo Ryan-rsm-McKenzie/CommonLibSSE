@@ -9,10 +9,10 @@ namespace RE
 	class GFxLogBase : public GFxLogConstants
 	{
 	public:
-		virtual ~GFxLogBase() {}									// 00
+		virtual ~GFxLogBase() {}  // 00
 
 		// add
-		virtual bool IsVerboseActionErrors() const { return true; }	// 01
+		virtual bool IsVerboseActionErrors() const { return true; }	 // 01
 	};
 	STATIC_ASSERT(sizeof(GFxLogBase<void*>) == 0x8);
 }

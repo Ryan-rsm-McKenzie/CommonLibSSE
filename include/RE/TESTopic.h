@@ -9,7 +9,7 @@
 
 namespace RE
 {
-	struct DIALOGUE_DATA	// DATA
+	struct DIALOGUE_DATA  // DATA
 	{
 		enum class TopicFlag : UInt8
 		{
@@ -126,9 +126,9 @@ namespace RE
 		};
 
 
-		TopicFlag		topicFlags;	// 0
-		DIALOGUE_TYPE_8	type;		// 1
-		Subtype			subtype;	// 2
+		TopicFlag		topicFlags;	 // 0
+		DIALOGUE_TYPE_8 type;		 // 1
+		Subtype			subtype;	 // 2
 	};
 	STATIC_ASSERT(sizeof(DIALOGUE_DATA) == 0x4);
 
@@ -141,7 +141,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESTopic;
 
 
-		enum { kTypeID = FormType::Dialogue };
+		enum
+		{
+			kTypeID = FormType::Dialogue
+		};
 
 
 		struct RecordFlags
@@ -154,32 +157,32 @@ namespace RE
 		};
 
 
-		virtual ~TESTopic();													// 00
+		virtual ~TESTopic();  // 00
 
 		// override (TESForm)
-		virtual bool			Load(TESFile* a_mod) override;					// 06
-		virtual void			InitItemImpl() override;						// 13
-		virtual const char*		GetFormEditorID() const override;				// 32 - { return formEditorID.c_str(); }
-		virtual bool			SetFormEditorID(const char* a_str) override;	// 33 - { bool result = formEditorID == a_str; formEditorID = a_str; return result; }
-		virtual bool			IsParentForm() override;						// 34 - { return true; }
-		virtual bool			IsFormTypeChild(FormType a_type) override;		// 36 - { return a_type == FormType::Info }
+		virtual bool		Load(TESFile* a_mod) override;				  // 06
+		virtual void		InitItemImpl() override;					  // 13
+		virtual const char* GetFormEditorID() const override;			  // 32 - { return formEditorID.c_str(); }
+		virtual bool		SetFormEditorID(const char* a_str) override;  // 33 - { bool result = formEditorID == a_str; formEditorID = a_str; return result; }
+		virtual bool		IsParentForm() override;					  // 34 - { return true; }
+		virtual bool		IsFormTypeChild(FormType a_type) override;	  // 36 - { return a_type == FormType::Info }
 
 		// override (TESFullName)
-		virtual UInt32		GetFullNameLength() const override;					// 04
-		virtual const char*	GetFullName() const override;						// 05
+		virtual UInt32		GetFullNameLength() const override;	 // 04
+		virtual const char* GetFullName() const override;		 // 05
 
 		float GetPriority() const;
 
 
 		// members
-		DIALOGUE_DATA		data;						// 30 - DATA
-		UInt32				priorityAndJournalIndex;	// 34 - PNAM
-		BGSDialogueBranch*	ownerBranch;				// 38 - BNAM
-		TESQuest*			ownerQuest;					// 40 -	QNAM
-		TESTopicInfo**		topicInfos;					// 48 - infoTopics[infoCount]
-		UInt32				numTopicInfos;				// 50 - TIFC
-		UInt32				firstFileOffset;			// 54
-		BSFixedString		formEditorID;				// 58
+		DIALOGUE_DATA	   data;					 // 30 - DATA
+		UInt32			   priorityAndJournalIndex;	 // 34 - PNAM
+		BGSDialogueBranch* ownerBranch;				 // 38 - BNAM
+		TESQuest*		   ownerQuest;				 // 40 -	QNAM
+		TESTopicInfo**	   topicInfos;				 // 48 - infoTopics[infoCount]
+		UInt32			   numTopicInfos;			 // 50 - TIFC
+		UInt32			   firstFileOffset;			 // 54
+		BSFixedString	   formEditorID;			 // 58
 	};
 	STATIC_ASSERT(sizeof(TESTopic) == 0x60);
 }

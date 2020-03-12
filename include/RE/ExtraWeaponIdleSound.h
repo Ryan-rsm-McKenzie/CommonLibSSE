@@ -13,18 +13,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraWeaponIdleSound;
 
 
-		enum { kExtraTypeID = ExtraDataType::kWeaponIdleSound };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kWeaponIdleSound
+		};
 
 
-		virtual ~ExtraWeaponIdleSound();				// 00
+		virtual ~ExtraWeaponIdleSound();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kWeaponIdleSound; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kWeaponIdleSound; }
 
 
 		// members
-		BSSoundHandle	handle;	// 10
-		UInt32			pad1C;	// 1C
+		BSSoundHandle handle;  // 10
+		UInt32		  pad1C;   // 1C
 	};
 	STATIC_ASSERT(sizeof(ExtraWeaponIdleSound) == 0x20);
 }

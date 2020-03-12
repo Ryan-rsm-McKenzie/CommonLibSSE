@@ -49,6 +49,6 @@ namespace SKSE
 		static constexpr auto INT3 = static_cast<std::uint8_t>(0xCC);
 
 		std::variant<Persistent_t, Temporary_t> _buffer;
-		bool _doFinalize;
+		bool									_doFinalize;
 	};
 }

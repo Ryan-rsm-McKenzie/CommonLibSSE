@@ -15,18 +15,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraTeleportName;
 
 
-		enum { kExtraTypeID = ExtraDataType::kTeleportName };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kTeleportName
+		};
 
 
-		virtual ~ExtraTeleportName();													// 00
+		virtual ~ExtraTeleportName();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kTeleportName; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return message != a_rhs->message; }
+		virtual ExtraDataType GetType() const override;								// 01 - { return kTeleportName; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return message != a_rhs->message; }
 
 
 		// members
-		BGSMessage* message;	// 10
+		BGSMessage* message;  // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraTeleportName) == 0x18);
 }

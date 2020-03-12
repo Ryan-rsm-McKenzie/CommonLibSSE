@@ -4,8 +4,8 @@
 #include <iterator>
 #include <type_traits>
 
-#include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/Array.h"
+#include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/TypeInfo.h"
 #include "RE/BSScript/Variable.h"
 #include "RE/BSTSmartPointer.h"
@@ -60,9 +60,11 @@ namespace RE
 				reference& operator=(reference&& a_rhs);
 				reference& operator=(const value_type& a_val);
 				reference& operator=(value_type&& a_val);
-				template <class... Args> reference& operator=(Args&&... a_args);
+				template <class... Args>
+				reference& operator=(Args&&... a_args);
 
-				template <class U = T, typename std::enable_if_t<std::is_arithmetic<U>::value, int> = 0> reference& operator+=(const value_type& a_val);
+				template <class U = T, typename std::enable_if_t<std::is_arithmetic<U>::value, int> = 0>
+				reference& operator+=(const value_type& a_val);
 
 			protected:
 				friend class VMArray<T>;
@@ -94,19 +96,19 @@ namespace RE
 				constexpr iterator_base& operator=(iterator_base&& a_rhs);
 
 				[[nodiscard]] constexpr reference operator*() const;
-				[[nodiscard]] constexpr pointer operator->() const;
+				[[nodiscard]] constexpr pointer	  operator->() const;
 
 				constexpr iterator_base& operator++();
-				constexpr iterator_base operator++(int);
+				constexpr iterator_base	 operator++(int);
 
 				constexpr iterator_base& operator--();
-				constexpr iterator_base operator--(int);
+				constexpr iterator_base	 operator--(int);
 
-				constexpr iterator_base& operator+=(const difference_type a_offset);
+				constexpr iterator_base&			  operator+=(const difference_type a_offset);
 				[[nodiscard]] constexpr iterator_base operator+(const difference_type a_offset) const;
 
-				constexpr iterator_base& operator-=(const difference_type a_offset);
-				[[nodiscard]] constexpr iterator_base operator-(const difference_type a_offset) const;
+				constexpr iterator_base&				operator-=(const difference_type a_offset);
+				[[nodiscard]] constexpr iterator_base	operator-(const difference_type a_offset) const;
 				[[nodiscard]] constexpr difference_type operator-(const iterator_base& a_rhs) const;
 
 				[[nodiscard]] constexpr reference operator[](const difference_type a_offset) const;
@@ -144,34 +146,34 @@ namespace RE
 			VMArray& operator=(const BSTSmartPointer<Array>& a_var);
 			VMArray& operator=(BSTSmartPointer<Array>&& a_var);
 
-			[[nodiscard]] constexpr reference at(size_type a_pos);
+			[[nodiscard]] constexpr reference		at(size_type a_pos);
 			[[nodiscard]] constexpr const_reference at(size_type a_pos) const;
 
-			[[nodiscard]] constexpr reference operator[](size_type a_pos);
+			[[nodiscard]] constexpr reference		operator[](size_type a_pos);
 			[[nodiscard]] constexpr const_reference operator[](size_type a_pos) const;
 
-			[[nodiscard]] constexpr reference front();
+			[[nodiscard]] constexpr reference		front();
 			[[nodiscard]] constexpr const_reference front() const;
 
-			[[nodiscard]] constexpr reference back();
+			[[nodiscard]] constexpr reference		back();
 			[[nodiscard]] constexpr const_reference back() const;
 
-			[[nodiscard]] constexpr Array* data() noexcept;
+			[[nodiscard]] constexpr Array*		 data() noexcept;
 			[[nodiscard]] constexpr const Array* data() const noexcept;
 
-			[[nodiscard]] constexpr iterator begin() noexcept;
+			[[nodiscard]] constexpr iterator	   begin() noexcept;
 			[[nodiscard]] constexpr const_iterator begin() const noexcept;
 			[[nodiscard]] constexpr const_iterator cbegin() const noexcept;
 
-			[[nodiscard]] constexpr iterator end() noexcept;
+			[[nodiscard]] constexpr iterator	   end() noexcept;
 			[[nodiscard]] constexpr const_iterator end() const noexcept;
 			[[nodiscard]] constexpr const_iterator cend() const noexcept;
 
-			[[nodiscard]] constexpr reverse_iterator rbegin() noexcept;
+			[[nodiscard]] constexpr reverse_iterator	   rbegin() noexcept;
 			[[nodiscard]] constexpr const_reverse_iterator rbegin() const noexcept;
 			[[nodiscard]] constexpr const_reverse_iterator crbegin() const noexcept;
 
-			[[nodiscard]] constexpr reverse_iterator rend() noexcept;
+			[[nodiscard]] constexpr reverse_iterator	   rend() noexcept;
 			[[nodiscard]] constexpr const_reverse_iterator rend() const noexcept;
 			[[nodiscard]] constexpr const_reverse_iterator crend() const noexcept;
 
@@ -188,7 +190,7 @@ namespace RE
 
 			// members
 			BSTSmartPointer<Array> _data;
-			Variable* _proxy;
+			Variable*			   _proxy;
 		};
 
 
@@ -293,7 +295,7 @@ namespace RE
 
 		template <class T>
 		auto VMArray<T>::reference::operator=(value_type&& a_val)
-			-> reference &
+			-> reference&
 		{
 			_val.Pack(std::move(a_val));
 			return *this;
@@ -303,7 +305,7 @@ namespace RE
 		template <class T>
 		template <class... Args>
 		auto VMArray<T>::reference::operator=(Args&&... a_args)
-			-> reference &
+			-> reference&
 		{
 			value_type val(std::forward<Args>(a_args)...);
 			_val.Pack(std::move(val));
@@ -898,7 +900,7 @@ namespace RE
 				if (_data) {
 					auto& oldArr = *_data.get();
 					auto& newArr = *newArrPtr.get();
-					auto size = std::min(oldArr.size(), newArr.size());
+					auto  size = std::min(oldArr.size(), newArr.size());
 					for (std::size_t i = 0; i < size; ++i) {
 						newArr[i] = oldArr[i];
 					}

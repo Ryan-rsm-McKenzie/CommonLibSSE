@@ -28,23 +28,23 @@ namespace RE
 
 			struct PerThreadErrorCounts
 			{
-				UInt32	fatalCount;		// 0
-				UInt32	errorCount;		// 4
-				UInt32	warningCount;	// 8
+				UInt32 fatalCount;	  // 0
+				UInt32 errorCount;	  // 4
+				UInt32 warningCount;  // 8
 			};
 			STATIC_ASSERT(sizeof(PerThreadErrorCounts) == 0xC);
 
 
-			virtual ~ErrorLogger();															// 00
-			
+			virtual ~ErrorLogger();	 // 00
+
 			// add
-			virtual void	PostErrorImpl(const char* a_message, Severity a_severity) = 0;	// 01
-			virtual void	ResetImpl();													// 02 - { return; }
+			virtual void PostErrorImpl(const char* a_message, Severity a_severity) = 0;	 // 01
+			virtual void ResetImpl();													 // 02 - { return; }
 
 
 			// members
-			UInt64										unk60;			// 60
-			BSTHashMap<UInt32, PerThreadErrorCounts>	threadErrors;	// 68
+			UInt64									 unk60;			// 60
+			BSTHashMap<UInt32, PerThreadErrorCounts> threadErrors;	// 68
 		};
 		STATIC_ASSERT(sizeof(ErrorLogger) == 0x98);
 	}

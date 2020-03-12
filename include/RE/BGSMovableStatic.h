@@ -17,21 +17,24 @@ namespace RE
 		};
 
 
-		Flag flags;	// 0
+		Flag flags;	 // 0
 	};
 	STATIC_ASSERT(sizeof(MOVABLE_STATIC_DATA) == 0x1);
 
 
 	class BGSMovableStatic :
-		public TESFullName,					// 00
-		public BGSDestructibleObjectForm,	// 10
-		public TESObjectSTAT				// 20
+		public TESFullName,				   // 00
+		public BGSDestructibleObjectForm,  // 10
+		public TESObjectSTAT			   // 20
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMovableStatic;
 
 
-		enum { kTypeID = FormType::MovableStatic };
+		enum
+		{
+			kTypeID = FormType::MovableStatic
+		};
 
 
 		struct RecordFlags
@@ -53,16 +56,16 @@ namespace RE
 		};
 
 
-		virtual ~BGSMovableStatic();					// 00
+		virtual ~BGSMovableStatic();  // 00
 
 		// override (TESObjectSTAT)
-		virtual void	InitializeData() override;		// 04
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void InitializeData() override;		 // 04
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
 		// members
-		BGSSoundDescriptorForm*	soundLoop;	// A0 - SNAM
+		BGSSoundDescriptorForm* soundLoop;	// A0 - SNAM
 		MOVABLE_STATIC_DATA		data;		// A8
 		UInt8					padA9;		// A9
 		UInt16					padAA;		// AA

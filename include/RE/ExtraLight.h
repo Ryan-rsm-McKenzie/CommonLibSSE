@@ -12,9 +12,9 @@ namespace RE
 
 	struct REFR_LIGHT
 	{
-		NiPointer<NiLight>	light;		// 00
-		float				wantDimmer;	// 08
-		UInt32				pad0C;		// 0C
+		NiPointer<NiLight> light;		// 00
+		float			   wantDimmer;	// 08
+		UInt32			   pad0C;		// 0C
 	};
 	STATIC_ASSERT(sizeof(REFR_LIGHT) == 0x10);
 
@@ -25,13 +25,16 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraLight;
 
 
-		enum { kExtraTypeID = ExtraDataType::kLight };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kLight
+		};
 
 
-		virtual ~ExtraLight();							// 00
+		virtual ~ExtraLight();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kLight; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kLight; }
 
 
 		// members

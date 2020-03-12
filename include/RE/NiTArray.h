@@ -2,8 +2,8 @@
 
 #include <cassert>
 
-#include "RE/NiTCollection.h"
 #include "RE/MemoryManager.h"
+#include "RE/NiTCollection.h"
 
 
 namespace RE
@@ -34,7 +34,7 @@ namespace RE
 		}
 
 
-		virtual ~NiTArray()	// 00
+		virtual ~NiTArray()	 // 00
 		{
 			allocator_type::Deallocate(_data);
 		}
@@ -133,11 +133,11 @@ namespace RE
 
 	private:
 		// members
-		T*		_data;			// 08
-		UInt16	_capacity;		// 10
-		UInt16	_freeIdx;		// 12
-		UInt16	_size;			// 14
-		UInt16	_growthSize;	// 16
+		T*	   _data;		 // 08
+		UInt16 _capacity;	 // 10
+		UInt16 _freeIdx;	 // 12
+		UInt16 _size;		 // 14
+		UInt16 _growthSize;	 // 16
 	};
 	STATIC_ASSERT(sizeof(NiTArray<void*, NiTMallocInterface<void*>>) == 0x18);
 
@@ -190,7 +190,7 @@ namespace RE
 		}
 
 
-		virtual ~NiTLargeArray()	// 00
+		virtual ~NiTLargeArray()  // 00
 		{
 			allocator_type::Deallocate(_data);
 		}
@@ -289,11 +289,11 @@ namespace RE
 
 	private:
 		// members
-		T*		_data;			// 08
-		UInt32	_capacity;		// 10
-		UInt32	_freeIdx;		// 14
-		UInt32	_size;			// 18
-		UInt32	_growthSize;	// 1C
+		T*	   _data;		 // 08
+		UInt32 _capacity;	 // 10
+		UInt32 _freeIdx;	 // 14
+		UInt32 _size;		 // 18
+		UInt32 _growthSize;	 // 1C
 	};
 	STATIC_ASSERT(sizeof(NiTLargeArray<void*, NiTMallocInterface<void*>>) == 0x20);
 

@@ -9,7 +9,7 @@
 
 namespace RE
 {
-	template<class T, UInt32 SID = GStatGroup::kGStat_Default_Mem, class SizePolicy = GArrayDefaultPolicy>
+	template <class T, UInt32 SID = GStatGroup::kGStat_Default_Mem, class SizePolicy = GArrayDefaultPolicy>
 	class GArray : public GArrayBase<GArrayData<T, GAllocatorGH<T, SID>, SizePolicy>>
 	{
 	public:

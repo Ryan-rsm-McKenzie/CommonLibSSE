@@ -2,9 +2,9 @@
 
 #include <functional>
 
-#include "RE/BSGraphics/State.h"
 #include "RE/BSEffectShaderData.h"
 #include "RE/BSGeometry.h"
+#include "RE/BSGraphics/State.h"
 #include "RE/BSLightingShaderMaterialFacegenTint.h"
 #include "RE/BSLightingShaderMaterialHairTint.h"
 #include "RE/BSLightingShaderProperty.h"
@@ -43,8 +43,7 @@ namespace RE
 		newShaderData->fillColor = a_color;
 		newShaderData->baseTexture = gState->defaultTextureWhite;
 
-		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geometry) -> BSVisit::BSVisitControl
-		{
+		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geometry) -> BSVisit::BSVisitControl {
 			auto effect = a_geometry->properties[BSGeometry::States::kEffect];
 			auto shaderProp = netimmerse_cast<BSShaderProperty*>(effect.get());
 			if (shaderProp && shaderProp->AcceptsEffectData()) {
@@ -69,8 +68,7 @@ namespace RE
 
 	void NiAVObject::UpdateBodyTint(const NiColor& a_color)
 	{
-		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geometry) -> BSVisit::BSVisitControl
-		{
+		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geometry) -> BSVisit::BSVisitControl {
 			using State = BSGeometry::States;
 			using Feature = BSShaderMaterial::Feature;
 
@@ -93,8 +91,7 @@ namespace RE
 
 	void NiAVObject::UpdateHairColor(const NiColor& a_color)
 	{
-		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geometry) -> BSVisit::BSVisitControl
-		{
+		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geometry) -> BSVisit::BSVisitControl {
 			using State = BSGeometry::States;
 			using Feature = BSShaderMaterial::Feature;
 

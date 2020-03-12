@@ -39,20 +39,20 @@ namespace RE
 	struct Crime
 	{
 		// members
-		UInt64						unk00;				// 00
-		UInt64						unk08;				// 08
-		UInt64						unk10;				// 10
-		UInt64						unk18;				// 18
-		UInt64						unk20;				// 20
-		BSTArray<ActorHandle>		actorsKnowOfCrime;	// 28
-		UInt64						unk40;				// 40
-		UInt64						unk48;				// 48
-		UInt64						unk50;				// 50
-		UInt64						unk58;				// 58
-		TESFaction*					crimeFaction;		// 60
-		UInt32						unk68;				// 68
-		mutable BSReadWriteLock		lock;				// 68
-		UInt32						unk74;				// 74
+		UInt64					unk00;				// 00
+		UInt64					unk08;				// 08
+		UInt64					unk10;				// 10
+		UInt64					unk18;				// 18
+		UInt64					unk20;				// 20
+		BSTArray<ActorHandle>	actorsKnowOfCrime;	// 28
+		UInt64					unk40;				// 40
+		UInt64					unk48;				// 48
+		UInt64					unk50;				// 50
+		UInt64					unk58;				// 58
+		TESFaction*				crimeFaction;		// 60
+		UInt32					unk68;				// 68
+		mutable BSReadWriteLock lock;				// 68
+		UInt32					unk74;				// 74
 	};
 	STATIC_ASSERT(sizeof(Crime) == 0x78);
 }

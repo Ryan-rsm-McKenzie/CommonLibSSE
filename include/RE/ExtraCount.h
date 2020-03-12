@@ -12,22 +12,25 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraCount;
 
 
-		enum { kExtraTypeID = ExtraDataType::kCount };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kCount
+		};
 
 
 		ExtraCount();
 		explicit ExtraCount(SInt32 a_count);
-		virtual ~ExtraCount() = default;												// 00
+		virtual ~ExtraCount() = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kCount; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return return count != a_rhs->count; }
+		virtual ExtraDataType GetType() const override;								// 01 - { return kCount; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return return count != a_rhs->count; }
 
 
 		// members
-		SInt16	count;	// 10
-		UInt16	pad12;	// 12
-		SInt32	pad14;	// 14
+		SInt16 count;  // 10
+		UInt16 pad12;  // 12
+		SInt32 pad14;  // 14
 	};
 	STATIC_ASSERT(sizeof(ExtraCount) == 0x18);
 }

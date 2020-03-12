@@ -33,12 +33,12 @@ namespace RE
 
 	GMemoryHeap::RootHeapDesc::RootHeapDesc() :
 		HeapDesc(HeapFlags::kNone,
-				 RootHeapParameters::kMinAlign,
-				 RootHeapParameters::kGranularity,
-				 RootHeapParameters::kReserve,
-				 RootHeapParameters::kThreshold,
-				 RootHeapParameters::kLimit,
-				 GHeapID::kGlobal)
+			RootHeapParameters::kMinAlign,
+			RootHeapParameters::kGranularity,
+			RootHeapParameters::kReserve,
+			RootHeapParameters::kThreshold,
+			RootHeapParameters::kLimit,
+			GHeapID::kGlobal)
 	{}
 
 

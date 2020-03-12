@@ -13,7 +13,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESGlobal;
 
 
-		enum { kTypeID = FormType::Global };
+		enum
+		{
+			kTypeID = FormType::Global
+		};
 
 
 		enum class Type : UInt8
@@ -35,20 +38,20 @@ namespace RE
 		};
 
 
-		virtual ~TESGlobal();												// 00
+		virtual ~TESGlobal();  // 00
 
 		// override (TESform)
-		virtual bool		Load(TESFile* a_mod) override;					// 06
-		virtual const char*	GetFormEditorID() const override;				// 32 - { return formEditorID.c_str(); }
-		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { formEditorID = a_str; return true; }
+		virtual bool		Load(TESFile* a_mod) override;				  // 06
+		virtual const char* GetFormEditorID() const override;			  // 32 - { return formEditorID.c_str(); }
+		virtual bool		SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; return true; }
 
 
 		// members
-		BSString	formEditorID;	// 20 - EDID
-		Type		type;			// 30 - ENAM
-		UInt8		pad31;			// 31
-		UInt16		pad32;			// 32
-		float		value;			// 34 - FLTV
+		BSString formEditorID;	// 20 - EDID
+		Type	 type;			// 30 - ENAM
+		UInt8	 pad31;			// 31
+		UInt16	 pad32;			// 32
+		float	 value;			// 34 - FLTV
 	};
 	STATIC_ASSERT(sizeof(TESGlobal) == 0x38);
 }

@@ -12,9 +12,9 @@ namespace RE
 		class AllocNode
 		{
 		public:
-			AllocNode*	next;		// 00
-			void*		data;		// 08
-			T			element;	// 10
+			AllocNode* next;	 // 00
+			void*	   data;	 // 08
+			T		   element;	 // 10
 		};
 
 

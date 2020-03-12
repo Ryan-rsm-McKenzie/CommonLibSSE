@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	struct TESObjectSTATData	// DNAM
+	struct TESObjectSTATData  // DNAM
 	{
 		enum class Flag : UInt32
 		{
@@ -15,11 +15,11 @@ namespace RE
 		};
 
 
-		float				materialThresholdAngle;	// 00 - (30 - 120)
-		UInt32				pad04;					// 04
-		BGSMaterialObject*	materialObj;			// 08
-		Flag				flags;					// 10
-		UInt32				pad14;					// 14
+		float			   materialThresholdAngle;	// 00 - (30 - 120)
+		UInt32			   pad04;					// 04
+		BGSMaterialObject* materialObj;				// 08
+		Flag			   flags;					// 10
+		UInt32			   pad14;					// 14
 	};
 	STATIC_ASSERT(sizeof(TESObjectSTATData) == 0x18);
 
@@ -32,7 +32,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESObjectSTAT;
 
 
-		enum { kTypeID = FormType::Static };
+		enum
+		{
+			kTypeID = FormType::Static
+		};
 
 
 		struct RecordFlags
@@ -57,20 +60,20 @@ namespace RE
 		};
 
 
-		virtual ~TESObjectSTAT();							// 00
+		virtual ~TESObjectSTAT();  // 00
 
 		// override (TESBoundObject)
-		virtual void	ClearData() override;				// 05
-		virtual bool	Load(TESFile* a_mod) override;		// 06
-		virtual void	InitItemImpl() override;			// 13
-		virtual bool	GetPlayable() const override;		// 19 - { return true; }
-		virtual bool	IsHeadingMarker() const override;	// 1A - { return (flags >> 2) & 1; }
+		virtual void ClearData() override;				// 05
+		virtual bool Load(TESFile* a_mod) override;		// 06
+		virtual void InitItemImpl() override;			// 13
+		virtual bool GetPlayable() const override;		// 19 - { return true; }
+		virtual bool IsHeadingMarker() const override;	// 1A - { return (flags >> 2) & 1; }
 
 		bool HasTreeLOD() const;
 
 
 		// members
-		TESObjectSTATData data;	// 68 - DNAM
+		TESObjectSTATData data;	 // 68 - DNAM
 	};
 	STATIC_ASSERT(sizeof(TESObjectSTAT) == 0x80);
 }

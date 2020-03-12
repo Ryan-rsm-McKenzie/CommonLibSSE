@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	struct BGSDualCastDataDEF	// DATA
+	struct BGSDualCastDataDEF  // DATA
 	{
 		enum class Flags : UInt32
 		{
@@ -17,13 +17,13 @@ namespace RE
 		};
 
 
-		BGSProjectile*		pProjectile;	// 00
-		BGSExplosion*		pExplosion;		// 08
-		TESEffectShader*	pEffectShader;	// 10
-		BGSArtObject*		pHitEffectArt;	// 18
-		BGSImpactDataSet*	pImpactDataSet;	// 20
-		Flags				flags;			// 28
-		UInt32				pad30;			// 30
+		BGSProjectile*	  pProjectile;	   // 00
+		BGSExplosion*	  pExplosion;	   // 08
+		TESEffectShader*  pEffectShader;   // 10
+		BGSArtObject*	  pHitEffectArt;   // 18
+		BGSImpactDataSet* pImpactDataSet;  // 20
+		Flags			  flags;		   // 28
+		UInt32			  pad30;		   // 30
 	};
 	STATIC_ASSERT(sizeof(BGSDualCastDataDEF) == 0x30);
 
@@ -34,7 +34,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSDualCastData;
 
 
-		enum { kTypeID = FormType::DualCastData };
+		enum
+		{
+			kTypeID = FormType::DualCastData
+		};
 
 
 		struct RecordFlags
@@ -47,15 +50,15 @@ namespace RE
 		};
 
 
-		virtual ~BGSDualCastData();						// 00
+		virtual ~BGSDualCastData();	 // 00
 
 		// override (TESBoundObject)
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
 		// members
-		BGSDualCastDataDEF data;	// 30 - DATA
+		BGSDualCastDataDEF data;  // 30 - DATA
 	};
 	STATIC_ASSERT(sizeof(BGSDualCastData) == 0x60);
 }

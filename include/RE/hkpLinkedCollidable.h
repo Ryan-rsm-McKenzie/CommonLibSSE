@@ -16,14 +16,14 @@ namespace RE
 		{
 		public:
 			// members
-			hkpAgentNnEntry*		agentEntry;	// 00
-			hkpLinkedCollidable*	partner;	// 08
+			hkpAgentNnEntry*	 agentEntry;  // 00
+			hkpLinkedCollidable* partner;	  // 08
 		};
 		STATIC_ASSERT(sizeof(CollisionEntry) == 0x10);
 
 
 		// members
-		hkArray<CollisionEntry> collisionEntries;	// 70
+		hkArray<CollisionEntry> collisionEntries;  // 70
 	};
 	STATIC_ASSERT(sizeof(hkpLinkedCollidable) == 0x80);
 }

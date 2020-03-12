@@ -37,29 +37,29 @@ namespace RE
 
 		struct LoaderConfig
 		{
-			UInt32						defLoadFlags;
-			GPtr<GFxFileOpenerBase>		fileOpener;
-			GPtr<GFxZlibSupportBase>	zLibSupport;
-			GPtr<GFxJpegSupportBase>	jpegSupport;
+			UInt32					 defLoadFlags;
+			GPtr<GFxFileOpenerBase>	 fileOpener;
+			GPtr<GFxZlibSupportBase> zLibSupport;
+			GPtr<GFxJpegSupportBase> jpegSupport;
 		};
 
 
 		// override (GFxStateBag)
 		virtual GFxStateBag* GetStateBagImpl() const override;	// 00
 
-		virtual ~GFxLoader();									// 01
+		virtual ~GFxLoader();  // 01
 
 		// add
-		virtual bool CheckTagLoader(SInt32 a_tagType) const;	// 05
+		virtual bool CheckTagLoader(SInt32 a_tagType) const;  // 05
 
 
-		GFxMovieDef*	CreateMovie(const char* a_filename, LoadConstants a_loadConstants = LoadConstants::kLoadAll, UPInt a_memoryArena = 0);
-		GFxLoaderImpl*	GetLoaderImpl() const;
+		GFxMovieDef*   CreateMovie(const char* a_filename, LoadConstants a_loadConstants = LoadConstants::kLoadAll, UPInt a_memoryArena = 0);
+		GFxLoaderImpl* GetLoaderImpl() const;
 
 
 		// members
 		GFxLoaderImpl*	impl;				// 08
-		GFxResourceLib*	strongResourceLib;	// 10
+		GFxResourceLib* strongResourceLib;	// 10
 		UInt32			defLoadFlags;		// 18
 		UInt32			pad1C;				// 1C
 	};

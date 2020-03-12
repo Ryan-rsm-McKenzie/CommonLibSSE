@@ -29,10 +29,10 @@ namespace RE
 		};
 
 
-		UInt32	threadId;		// 0
-		SInt32	stackTraceId;	// 4
-		UInt16	markCount;		// 8
-		UInt16	markBitStack;	// A
+		UInt32 threadId;	  // 0
+		SInt32 stackTraceId;  // 4
+		UInt16 markCount;	  // 8
+		UInt16 markBitStack;  // A
 	};
 	STATIC_ASSERT(sizeof(hkMultiThreadCheck) == 0xC);
 }

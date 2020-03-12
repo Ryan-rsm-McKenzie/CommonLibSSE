@@ -12,8 +12,8 @@ namespace RE
 	{
 	public:
 		// members
-		UInt32				pad24;			// 24
-		BSDirectoryEntry*	directories;	// 28
+		UInt32			  pad24;		// 24
+		BSDirectoryEntry* directories;	// 28
 	};
 	STATIC_ASSERT(sizeof(BSArchive) == 0x30);
 }

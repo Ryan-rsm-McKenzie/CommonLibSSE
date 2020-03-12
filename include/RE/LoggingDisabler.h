@@ -9,10 +9,10 @@ namespace RE
 	{
 	public:
 		LoggingDisabler() = default;
-		virtual ~LoggingDisabler() = default;																																	// 00
+		virtual ~LoggingDisabler() = default;  // 00
 
 		// override (GFxLog)
-		virtual void LogMessageVarg([[maybe_unused]] LogMessageType a_messageType, [[maybe_unused]] const char* a_fmt, [[maybe_unused]] std::va_list a_argList) override {};	// 01
+		virtual void LogMessageVarg([[maybe_unused]] LogMessageType a_messageType, [[maybe_unused]] const char* a_fmt, [[maybe_unused]] std::va_list a_argList) override{};	 // 01
 	};
 	STATIC_ASSERT(sizeof(LoggingDisabler) == 0x20);
 }

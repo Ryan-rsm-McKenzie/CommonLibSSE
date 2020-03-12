@@ -171,8 +171,7 @@ namespace RE
 	auto TESObjectREFR::GetDroppedInventory()
 		-> InventoryDropMap
 	{
-		return GetDroppedInventory([]([[maybe_unused]] TESBoundObject*) -> bool
-		{
+		return GetDroppedInventory([]([[maybe_unused]] TESBoundObject*) -> bool {
 			return true;
 		});
 	}
@@ -244,8 +243,7 @@ namespace RE
 	auto TESObjectREFR::GetInventory()
 		-> InventoryItemMap
 	{
-		return GetInventory([]([[maybe_unused]] TESBoundObject*) -> bool
-		{
+		return GetInventory([]([[maybe_unused]] TESBoundObject*) -> bool {
 			return true;
 		});
 	}
@@ -269,8 +267,7 @@ namespace RE
 
 		auto container = GetContainer();
 		if (container) {
-			container->ForEachContainerObject([&](ContainerObject* a_entry) -> bool
-			{
+			container->ForEachContainerObject([&](ContainerObject* a_entry) -> bool {
 				if (a_entry->obj && a_filter(a_entry->obj)) {
 					auto it = results.find(a_entry->obj);
 					if (it == results.end()) {
@@ -303,8 +300,7 @@ namespace RE
 	auto TESObjectREFR::GetInventoryCounts()
 		-> InventoryCountMap
 	{
-		return GetInventoryCounts([]([[maybe_unused]] TESBoundObject*) -> bool
-		{
+		return GetInventoryCounts([]([[maybe_unused]] TESBoundObject*) -> bool {
 			return true;
 		});
 	}
@@ -327,8 +323,7 @@ namespace RE
 
 		auto container = GetContainer();
 		if (container) {
-			container->ForEachContainerObject([&](ContainerObject* a_entry) -> bool
-			{
+			container->ForEachContainerObject([&](ContainerObject* a_entry) -> bool {
 				if (a_entry->obj && a_filter(a_entry->obj)) {
 					auto it = results.find(a_entry->obj);
 					if (it == results.end()) {

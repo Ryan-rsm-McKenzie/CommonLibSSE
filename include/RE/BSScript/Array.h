@@ -5,10 +5,10 @@
 #include <stdexcept>
 #include <string>
 
-#include "RE/BSScript/TypeInfo.h"
-#include "RE/BSScript/Variable.h"
 #include "RE/BSIntrusiveRefCounted.h"
 #include "RE/BSLock.h"
+#include "RE/BSScript/TypeInfo.h"
+#include "RE/BSScript/Variable.h"
 
 
 namespace RE
@@ -49,19 +49,19 @@ namespace RE
 				iterator_base& operator=(iterator_base&& a_rhs);
 
 				[[nodiscard]] reference operator*() const;
-				[[nodiscard]] pointer operator->() const;
+				[[nodiscard]] pointer	operator->() const;
 
 				iterator_base& operator++();
-				iterator_base operator++(int);
+				iterator_base  operator++(int);
 
 				iterator_base& operator--();
-				iterator_base operator--(int);
+				iterator_base  operator--(int);
 
-				iterator_base& operator+=(const difference_type a_offset);
+				iterator_base&				operator+=(const difference_type a_offset);
 				[[nodiscard]] iterator_base operator+(const difference_type a_offset) const;
 
-				iterator_base& operator-=(const difference_type a_offset);
-				[[nodiscard]] iterator_base operator-(const difference_type a_offset) const;
+				iterator_base&				  operator-=(const difference_type a_offset);
+				[[nodiscard]] iterator_base	  operator-(const difference_type a_offset) const;
 				[[nodiscard]] difference_type operator-(const iterator_base& a_rhs) const;
 
 				[[nodiscard]] reference operator[](const difference_type a_offset) const;
@@ -80,8 +80,8 @@ namespace RE
 
 			private:
 				Array* get_proxy() const;
-				void verify_offset(const difference_type a_offset) const noexcept;
-				void verify_compatibilty(const iterator_base& a_rhs) const;
+				void   verify_offset(const difference_type a_offset) const noexcept;
+				void   verify_compatibilty(const iterator_base& a_rhs) const;
 #endif
 			};
 
@@ -94,34 +94,34 @@ namespace RE
 
 			~Array();
 
-			[[nodiscard]] reference at(size_type a_pos);
+			[[nodiscard]] reference		  at(size_type a_pos);
 			[[nodiscard]] const_reference at(size_type a_pos) const;
 
-			[[nodiscard]] reference operator[](size_type a_pos);
+			[[nodiscard]] reference		  operator[](size_type a_pos);
 			[[nodiscard]] const_reference operator[](size_type a_pos) const;
 
-			[[nodiscard]] reference front();
+			[[nodiscard]] reference		  front();
 			[[nodiscard]] const_reference front() const;
 
-			[[nodiscard]] reference back();
+			[[nodiscard]] reference		  back();
 			[[nodiscard]] const_reference back() const;
 
-			[[nodiscard]] Variable* data() noexcept;
+			[[nodiscard]] Variable*		  data() noexcept;
 			[[nodiscard]] const Variable* data() const noexcept;
 
-			[[nodiscard]] iterator begin() noexcept;
+			[[nodiscard]] iterator		 begin() noexcept;
 			[[nodiscard]] const_iterator begin() const noexcept;
 			[[nodiscard]] const_iterator cbegin() const noexcept;
 
-			[[nodiscard]] iterator end() noexcept;
+			[[nodiscard]] iterator		 end() noexcept;
 			[[nodiscard]] const_iterator end() const noexcept;
 			[[nodiscard]] const_iterator cend() const noexcept;
 
-			[[nodiscard]] reverse_iterator rbegin() noexcept;
+			[[nodiscard]] reverse_iterator		 rbegin() noexcept;
 			[[nodiscard]] const_reverse_iterator rbegin() const noexcept;
 			[[nodiscard]] const_reverse_iterator crbegin() const noexcept;
 
-			[[nodiscard]] reverse_iterator rend() noexcept;
+			[[nodiscard]] reverse_iterator		 rend() noexcept;
 			[[nodiscard]] const_reverse_iterator rend() const noexcept;
 			[[nodiscard]] const_reverse_iterator crend() const noexcept;
 
@@ -131,23 +131,27 @@ namespace RE
 
 			[[nodiscard]] size_type max_size() const noexcept;
 
-			[[nodiscard]] TypeInfo& type_info();
+			[[nodiscard]] TypeInfo&		  type_info();
 			[[nodiscard]] const TypeInfo& type_info() const;
 
 			[[nodiscard]] TypeInfo::RawType type() const;
 
 		protected:
-			template <class T> friend class iterator_base;
+			template <class T>
+			friend class iterator_base;
 
-			enum { kMaxSize = 128 };
+			enum
+			{
+				kMaxSize = 128
+			};
 
 			// members
-			UInt32				_pad04;			// 04
-			TypeInfo			_elementType;	// 08
-			UInt32				_len;			// 10
-			UInt32				_pad14;			// 14
-			mutable BSSpinLock	_lock;			// 18
-			Variable			_data[0];		// 20
+			UInt32			   _pad04;		  // 04
+			TypeInfo		   _elementType;  // 08
+			UInt32			   _len;		  // 10
+			UInt32			   _pad14;		  // 14
+			mutable BSSpinLock _lock;		  // 18
+			Variable		   _data[0];	  // 20
 
 		private:
 			void dtor();
@@ -158,9 +162,10 @@ namespace RE
 
 		template <class T>
 		Array::iterator_base<T>::iterator_base() :
-			_ptr{}
+			_ptr
+		{}
 #if _DEBUG
-			, _idx(0)
+		, _idx(0)
 #endif
 		{}
 
@@ -169,7 +174,8 @@ namespace RE
 		Array::iterator_base<T>::iterator_base(const iterator_base& a_rhs) :
 			_ptr(a_rhs._ptr)
 #if _DEBUG
-			, _idx(a_rhs._idx)
+			,
+			_idx(a_rhs._idx)
 #endif
 		{}
 
@@ -178,7 +184,8 @@ namespace RE
 		Array::iterator_base<T>::iterator_base(iterator_base&& a_rhs) :
 			_ptr(std::move(a_rhs._ptr))
 #if _DEBUG
-			, _idx(std::move(a_rhs._idx))
+			,
+			_idx(std::move(a_rhs._idx))
 #endif
 		{}
 
@@ -237,7 +244,7 @@ namespace RE
 #if _DEBUG
 			assert(_ptr != 0);	// cannot dereference value-initialized iterator
 			std::size_t proxySize = get_proxy()->size();
-			assert(_idx < proxySize);	// cannot dereference out of range iterator
+			assert(_idx < proxySize);  // cannot dereference out of range iterator
 			return _ptr + _idx;
 #else
 			return _ptr;
@@ -253,7 +260,7 @@ namespace RE
 #if _DEBUG
 			assert(_ptr != 0);	// cannot dereference value-initialized iterator
 			std::size_t proxySize = get_proxy()->size();
-			assert(_idx < proxySize);	// cannot decrement iterator past end
+			assert(_idx < proxySize);  // cannot decrement iterator past end
 			++_idx;
 #else
 			++_ptr;
@@ -430,7 +437,7 @@ namespace RE
 				if (a_offset < 0) {
 					assert(_idx >= (-1 * static_cast<std::size_t>(a_offset)));	// seek before begin
 				} else {
-					assert(_idx >= static_cast<std::size_t>(a_offset));	// seek after end
+					assert(_idx >= static_cast<std::size_t>(a_offset));	 // seek after end
 				}
 			}
 		}
@@ -439,7 +446,7 @@ namespace RE
 		template <class T>
 		void Array::iterator_base<T>::verify_compatibilty(const iterator_base& a_rhs) const
 		{
-			assert(_ptr == a_rhs._ptr);	// iterators incompatible
+			assert(_ptr == a_rhs._ptr);	 // iterators incompatible
 		}
 #endif
 	}

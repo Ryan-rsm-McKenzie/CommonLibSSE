@@ -20,8 +20,7 @@ namespace RE
 	SInt32 TESContainer::CountObjectsInContainer(TESBoundObject* a_object) const
 	{
 		SInt32 count = 0;
-		ForEachContainerObject([&](ContainerObject* a_contObj)
-		{
+		ForEachContainerObject([&](ContainerObject* a_contObj) {
 			if (a_contObj->obj == a_object) {
 				count += a_contObj->count;
 			}

@@ -19,11 +19,11 @@ namespace RE
 
 
 		// members
-		UInt8				pad09;		// 09
-		UInt16				pad0A;		// 0A
-		UInt32				pad0C;		// 0C
-		BSTArray<TESForm*>	spells;		// 10
-		BSTArray<TESForm*>	hotkeys;	// 28
+		UInt8			   pad09;	 // 09
+		UInt16			   pad0A;	 // 0A
+		UInt32			   pad0C;	 // 0C
+		BSTArray<TESForm*> spells;	 // 10
+		BSTArray<TESForm*> hotkeys;	 // 28
 	};
 	STATIC_ASSERT(sizeof(MagicFavorites) == 0x40);
 }

@@ -127,9 +127,9 @@ namespace RE
 				return;
 			}
 
-			auto allocator = hkContainerHeapAllocator::GetSingleton();
+			auto	  allocator = hkContainerHeapAllocator::GetSingleton();
 			size_type newSize = a_newCap * sizeof(T);
-			T* newMem = static_cast<T*>(allocator->BufAlloc(newSize));
+			T*		  newMem = static_cast<T*>(allocator->BufAlloc(newSize));
 			if (_data) {
 				size_type oldSize = size() * sizeof(T);
 				std::memcpy(newMem, _data, oldSize);
@@ -166,15 +166,15 @@ namespace RE
 				return;
 			}
 
-			if (a_count < size()) {	// if shrink
+			if (a_count < size()) {	 // if shrink
 				for (size_type i = a_count; i < size(); ++i) {
 					_data[i].~T();
 				}
 			}
 
-			auto allocator = hkContainerHeapAllocator::GetSingleton();
+			auto	  allocator = hkContainerHeapAllocator::GetSingleton();
 			size_type newSize = a_count * sizeof(T);
-			T* newMem = static_cast<T*>(allocator->BufAlloc(newSize));
+			T*		  newMem = static_cast<T*>(allocator->BufAlloc(newSize));
 			if (_data) {
 				size_type oldSize = size() * sizeof(T);
 				std::memcpy(newMem, _data, std::min(oldSize, newSize));
@@ -183,9 +183,9 @@ namespace RE
 				}
 			}
 
-			if (a_count > size()) {	// if grow
+			if (a_count > size()) {	 // if grow
 				for (size_type i = size(); i < a_count; ++i) {
-					new(&newMem[i]) T{};
+					new (&newMem[i]) T{};
 				}
 			}
 
@@ -196,9 +196,6 @@ namespace RE
 		}
 
 
-
-
-
 		enum : UInt32
 		{
 			kCapacityMask = 0x3FFFFFFF,
@@ -207,12 +204,12 @@ namespace RE
 		};
 
 
-		static constexpr float GROWTH_FACTOR = 1.5;	// NOT PART OF NATIVE TYPE
+		static constexpr float GROWTH_FACTOR = 1.5;	 // NOT PART OF NATIVE TYPE
 
 
-		T*		_data;				// 00
-		SInt32	_size;				// 08
-		SInt32	_capacityAndFlags;	// 0C
+		T*	   _data;			   // 00
+		SInt32 _size;			   // 08
+		SInt32 _capacityAndFlags;  // 0C
 	};
 	STATIC_ASSERT(sizeof(hkArrayBase<void*>) == 0x10);
 
@@ -229,6 +226,6 @@ namespace RE
 	class hkInplaceArray : public hkArray<T, Allocator>
 	{
 	public:
-		T storage[N];	// 10
+		T storage[N];  // 10
 	};
 }

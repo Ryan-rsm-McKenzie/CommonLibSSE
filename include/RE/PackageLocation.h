@@ -39,26 +39,26 @@ namespace RE
 			~Data() {}
 
 
-			TESForm*		object;	
-			ObjectRefHandle	refHandle;
+			TESForm*		object;
+			ObjectRefHandle refHandle;
 		};
 		STATIC_ASSERT(sizeof(Data) == 0x8);
 
 
-		virtual ~PackageLocation();																							// 00
+		virtual ~PackageLocation();	 // 00
 
 		// override (IAIWorldLocationHandle)
-		virtual const IAIWorldLocation*	AllocateLocation(AIWorldLocationContext* a_context) override;						// 01
+		virtual const IAIWorldLocation* AllocateLocation(AIWorldLocationContext* a_context) override;						// 01
 		virtual PackageLocation*		GetAsPackageLocation() override;													// 02 - { return this; }
 		virtual bool					IsRefAtLocation(AIWorldLocationContext* a_context, TESObjectREFR* a_ref) override;	// 03
 
 
 		// members
-		Type	locType;	// 08
-		UInt8	pad09;		// 09
-		UInt16	pad0A;		// 0A
-		UInt32	rad;		// 0C
-		Data	data;		// 10
+		Type   locType;	 // 08
+		UInt8  pad09;	 // 09
+		UInt16 pad0A;	 // 0A
+		UInt32 rad;		 // 0C
+		Data   data;	 // 10
 	};
 	STATIC_ASSERT(sizeof(PackageLocation) == 0x18);
 }

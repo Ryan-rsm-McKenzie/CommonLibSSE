@@ -14,12 +14,12 @@ namespace RE
 		~NiColorKey();
 
 		void			SetColor(const NiColorA& a_color);
-		const NiColorA&	GetColor() const;
+		const NiColorA& GetColor() const;
 		NiColorKey*		GetKeyAt(UInt32 a_index, UInt8 a_keySize);
 
 	protected:
 		// members
-		NiColorA _color;	// 04
+		NiColorA _color;  // 04
 	};
 	STATIC_ASSERT(sizeof(NiColorKey) == 0x14);
 }

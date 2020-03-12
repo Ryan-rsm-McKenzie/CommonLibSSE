@@ -4,15 +4,15 @@
 #include <type_traits>
 #include <utility>
 
+#include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/NF_util/NativeFunctionBase.h"
 #include "RE/BSScript/PackUnpack.h"
 #include "RE/BSScript/Stack.h"
-#include "RE/BSScript/TypeTraits.h"
-#include "RE/BSScript/Variable.h"
-#include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSScript/StackFrame.h"
+#include "RE/BSScript/TypeTraits.h"
 #include "RE/BSScript/VMArray.h"
+#include "RE/BSScript/Variable.h"
 #include "RE/BSTSmartPointer.h"
 
 
@@ -76,16 +76,16 @@ namespace RE
 			}
 
 
-			virtual ~NativeFunction() = default;	// 00
+			virtual ~NativeFunction() = default;  // 00
 
 
-			virtual bool HasStub() const override	// 15
+			virtual bool HasStub() const override  // 15
 			{
 				return _stub != 0;
 			}
 
 
-			virtual bool MarshallAndDispatch(Variable& a_baseValue, [[maybe_unused]] Internal::VirtualMachine& a_vm, [[maybe_unused]] VMStackID a_stackID, Variable& a_resultValue, const StackFrame& a_frame) const override	// 16
+			virtual bool MarshallAndDispatch(Variable& a_baseValue, [[maybe_unused]] Internal::VirtualMachine& a_vm, [[maybe_unused]] VMStackID a_stackID, Variable& a_resultValue, const StackFrame& a_frame) const override  // 16
 			{
 				base_type base{};
 				if constexpr (std::negation<is_static_base<base_type>>::value) {
@@ -119,12 +119,13 @@ namespace RE
 
 		protected:
 			// members
-			function_type* _stub;	// 50
+			function_type* _stub;  // 50
 		};
 	}
 
 
-	template <class F, class Enable = void> class NativeFunction;
+	template <class F, class Enable = void>
+	class NativeFunction;
 
 
 	template <class R, class Cls, class... Args>

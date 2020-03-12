@@ -14,18 +14,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraReflectedRefs;
 
 
-		enum { kExtraTypeID = ExtraDataType::kReflectedRefs };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kReflectedRefs
+		};
 
 
-		virtual ~ExtraReflectedRefs();													// 00
+		virtual ~ExtraReflectedRefs();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kReflectedRefs; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
+		virtual ExtraDataType GetType() const override;								// 01 - { return kReflectedRefs; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
 
 
 		// members
-		BSTArray<ObjectRefHandle> refs;	// 10
+		BSTArray<ObjectRefHandle> refs;	 // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraReflectedRefs) == 0x28);
 }

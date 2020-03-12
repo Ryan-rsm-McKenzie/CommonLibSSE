@@ -12,20 +12,23 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraHasNoRumors;
 
 
-		enum { kExtraTypeID = ExtraDataType::kHasNoRumors };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kHasNoRumors
+		};
 
 
-		virtual ~ExtraHasNoRumors();					// 00
+		virtual ~ExtraHasNoRumors();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kHasNoRumors; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kHasNoRumors; }
 
 
 		// members
-		bool	noRumors;	// 10
-		UInt8	pad11;		// 11
-		UInt16	pad12;		// 12
-		UInt32	pad14;		// 14
+		bool   noRumors;  // 10
+		UInt8  pad11;	  // 11
+		UInt16 pad12;	  // 12
+		UInt32 pad14;	  // 14
 	};
 	STATIC_ASSERT(sizeof(ExtraHasNoRumors) == 0x18);
 }

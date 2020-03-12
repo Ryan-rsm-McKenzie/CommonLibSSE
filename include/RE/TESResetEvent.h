@@ -11,7 +11,7 @@ namespace RE
 	struct TESResetEvent
 	{
 		// members
-		NiPointer<TESObjectREFR> object;	// 0
+		NiPointer<TESObjectREFR> object;  // 0
 	};
 	STATIC_ASSERT(sizeof(TESResetEvent) == 0x8);
 }

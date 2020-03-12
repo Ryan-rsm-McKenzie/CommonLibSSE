@@ -15,15 +15,18 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraContainerChanges;
 
 
-		enum { kExtraTypeID = ExtraDataType::kContainerChanges };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kContainerChanges
+		};
 
 
 		ExtraContainerChanges();
 		explicit ExtraContainerChanges(InventoryChanges* a_changes);
-		virtual	~ExtraContainerChanges();				// 00
+		virtual ~ExtraContainerChanges();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kContainerChanges; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kContainerChanges; }
 
 
 		// members

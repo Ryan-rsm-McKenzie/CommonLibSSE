@@ -36,13 +36,13 @@ namespace RE
 	};
 
 
-	struct OBJ_LIGH	// DATA
+	struct OBJ_LIGH	 // DATA
 	{
 		// members
 		SInt32			time;						// 00
 		UInt32			radius;						// 04
 		Color			color;						// 08
-		TES_LIGHT_FLAGS	flags;						// 0C
+		TES_LIGHT_FLAGS flags;						// 0C
 		float			fallofExponent;				// 10
 		float			fov;						// 14
 		float			nearDistance;				// 18
@@ -54,21 +54,24 @@ namespace RE
 
 
 	class TESObjectLIGH :
-		public TESBoundAnimObject,			// 000
-		public TESFullName,					// 030
-		public TESModelTextureSwap,			// 040
-		public TESIcon,						// 078
-		public BGSMessageIcon,				// 088
-		public TESWeightForm,				// 0A0
-		public TESValueForm,				// 0B0
-		public BGSDestructibleObjectForm,	// 0C0
-		public BGSEquipType					// 0D0
+		public TESBoundAnimObject,		   // 000
+		public TESFullName,				   // 030
+		public TESModelTextureSwap,		   // 040
+		public TESIcon,					   // 078
+		public BGSMessageIcon,			   // 088
+		public TESWeightForm,			   // 0A0
+		public TESValueForm,			   // 0B0
+		public BGSDestructibleObjectForm,  // 0C0
+		public BGSEquipType				   // 0D0
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectLIGH;
 
 
-		enum { kTypeID = FormType::Light };
+		enum
+		{
+			kTypeID = FormType::Light
+		};
 
 
 		struct RecordFlags
@@ -84,34 +87,34 @@ namespace RE
 		};
 
 
-		virtual ~TESObjectLIGH();																																			// 00
+		virtual ~TESObjectLIGH();  // 00
 
 		// override (TESBoundAnimObject)
-		virtual void			InitializeData() override;																													// 04
-		virtual bool			Load(TESFile* a_mod) override;																												// 06
-		virtual void			SaveGame(BGSSaveFormBuffer* a_buf) override;																								// 0E
-		virtual void			LoadGame(BGSLoadFormBuffer* a_buf) override;																								// 0F
-		virtual void			InitItemImpl() override;																													// 13
-		virtual bool			Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;	// 37
-		virtual void			UnClone3D(TESObjectREFR* a_ref) override;																									// 41
-		virtual NiAVObject*		LoadGraphics(TESObjectREFR* a_ref) override;																								// 47
-		virtual NiAVObject*		Clone3D(TESObjectREFR* a_ref) override;																										// 4A
+		virtual void		InitializeData() override;																													 // 04
+		virtual bool		Load(TESFile* a_mod) override;																												 // 06
+		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;																								 // 0E
+		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;																								 // 0F
+		virtual void		InitItemImpl() override;																													 // 13
+		virtual bool		Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;	 // 37
+		virtual void		UnClone3D(TESObjectREFR* a_ref) override;																									 // 41
+		virtual NiAVObject* LoadGraphics(TESObjectREFR* a_ref) override;																								 // 47
+		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;																										 // 4A
 
 		// override (BGSEquipType)
-		virtual	BGSEquipSlot*	GetEquipSlot() const override;																												// 04
-		virtual void			SetEquipSlot(BGSEquipSlot* a_slot) override;																								// 05 - { return; }
+		virtual BGSEquipSlot* GetEquipSlot() const override;				// 04
+		virtual void		  SetEquipSlot(BGSEquipSlot* a_slot) override;	// 05 - { return; }
 
 		bool CanBeCarried() const;
 
 
 		// members
-		OBJ_LIGH				data;			// 0E0 - DATA
-		float					fade;			// 108 - FNAM
-		UInt32					pad10C;			// 10C
-		BGSSoundDescriptorForm*	sound;			// 110 - SNAM
-		NiColor					emittanceColor;	// 118
-		UInt32					pad124;			// 124
-		BGSLensFlare*			lensFlare;		// 128
+		OBJ_LIGH				data;			 // 0E0 - DATA
+		float					fade;			 // 108 - FNAM
+		UInt32					pad10C;			 // 10C
+		BGSSoundDescriptorForm* sound;			 // 110 - SNAM
+		NiColor					emittanceColor;	 // 118
+		UInt32					pad124;			 // 124
+		BGSLensFlare*			lensFlare;		 // 128
 	};
 	STATIC_ASSERT(sizeof(TESObjectLIGH) == 0x130);
 }

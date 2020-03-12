@@ -22,7 +22,7 @@ namespace RE
 		}
 
 
-		float data[4][4];	// 00
+		float data[4][4];  // 00
 	};
 	STATIC_ASSERT(sizeof(GMatrix3D) == 0x40);
 }

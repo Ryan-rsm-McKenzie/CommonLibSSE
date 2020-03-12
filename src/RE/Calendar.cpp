@@ -28,7 +28,7 @@ namespace RE
 	}
 
 
-	std::string	Calendar::GetDayName() const
+	std::string Calendar::GetDayName() const
 	{
 		auto gmst = RE::GameSettingCollection::GetSingleton();
 		Setting* setting = 0;
@@ -94,7 +94,7 @@ namespace RE
 	}
 
 
-	std::string	Calendar::GetMonthName() const
+	std::string Calendar::GetMonthName() const
 	{
 		auto gmst = RE::GameSettingCollection::GetSingleton();
 		Setting* setting = 0;

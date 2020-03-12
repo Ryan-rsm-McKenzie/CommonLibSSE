@@ -30,16 +30,16 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESProduceForm;
 
 
-		virtual ~TESProduceForm();										// 00
+		virtual ~TESProduceForm();	// 00
 
 		// override (BaseFormComponent)
-		virtual void	InitializeDataComponent() override;				// 01
-		virtual void	ClearDataComponent() override;					// 02 - { return; }
-		virtual void	CopyComponent(BaseFormComponent* rhs) override;	// 03
+		virtual void InitializeDataComponent() override;			  // 01
+		virtual void ClearDataComponent() override;					  // 02 - { return; }
+		virtual void CopyComponent(BaseFormComponent* rhs) override;  // 03
 
 
 		// members
-		BGSSoundDescriptorForm*	harvestSound;					// 08 - SNAM
+		BGSSoundDescriptorForm* harvestSound;					// 08 - SNAM
 		TESBoundObject*			produceItem;					// 10 - PFIG
 		SInt8					produceChance[SEASON::kTotal];	// 18 - PFPC
 		UInt32					pad1C;							// 1C

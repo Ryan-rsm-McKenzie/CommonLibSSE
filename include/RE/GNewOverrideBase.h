@@ -9,7 +9,10 @@ namespace RE
 	class GNewOverrideBase
 	{
 	public:
-		enum { kStatType = Stat };
+		enum
+		{
+			kStatType = Stat
+		};
 
 
 		GFC_MEMORY_REDEFINE_NEW(GNewOverrideBase, Stat);

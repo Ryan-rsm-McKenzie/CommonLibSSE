@@ -10,7 +10,7 @@ namespace RE
 
 
 		GRefCountImplCore();
-		virtual ~GRefCountImplCore() = default;	// 00
+		virtual ~GRefCountImplCore() = default;	 // 00
 
 		static void CheckInvalidDelete(GRefCountImplCore*);
 
@@ -18,7 +18,7 @@ namespace RE
 
 	protected:
 		// members
-		volatile UInt32	_refCount;	// 08
+		volatile UInt32 _refCount;	// 08
 		UInt32			_pad0C;		// 0C
 	};
 	STATIC_ASSERT(sizeof(GRefCountImplCore) == 0x10);

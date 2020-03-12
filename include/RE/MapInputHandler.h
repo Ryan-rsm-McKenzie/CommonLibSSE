@@ -14,11 +14,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_MapInputHandler;
 
 
-		virtual ~MapInputHandler();	// 00
+		virtual ~MapInputHandler();	 // 00
 
 
 		// members
-		MapMenu* mapMenu;	// 10
+		MapMenu* mapMenu;  // 10
 	};
 	STATIC_ASSERT(sizeof(MapInputHandler) == 0x18);
 }

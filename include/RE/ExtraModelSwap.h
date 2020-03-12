@@ -16,18 +16,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraModelSwap;
 
 
-		enum { kExtraTypeID = ExtraDataType::kModelSwap };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kModelSwap
+		};
 
 
-		virtual ~ExtraModelSwap();						// 00
+		virtual ~ExtraModelSwap();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kModelSwap; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kModelSwap; }
 
 
 		// members
-		TESModel*	modelSwap;		// 10
-		TESForm*	modelSwapForm;	// 18
+		TESModel* modelSwap;	  // 10
+		TESForm*  modelSwapForm;  // 18
 	};
 	STATIC_ASSERT(sizeof(ExtraModelSwap) == 0x20);
 }

@@ -14,7 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSMovementType;
 
 
-		enum { kTypeID = FormType::MovementType };
+		enum
+		{
+			kTypeID = FormType::MovementType
+		};
 
 
 		struct RecordFlags
@@ -27,16 +30,16 @@ namespace RE
 		};
 
 
-		virtual ~BGSMovementType();						// 00
+		virtual ~BGSMovementType();	 // 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;		// 04
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void InitializeData() override;		 // 04
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
 		// members
-		Movement::TypeData movementTypeData;	// 20
+		Movement::TypeData movementTypeData;  // 20
 	};
 	STATIC_ASSERT(sizeof(BGSMovementType) == 0x60);
 }

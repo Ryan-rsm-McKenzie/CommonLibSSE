@@ -111,74 +111,76 @@ namespace RE
 
 	// basically the unique id for the function, there's ~5000 of these
 	enum class SCRIPT_OUTPUT : UInt32
-	{};
+	{
+	};
 
 
 	enum class SCRIPT_ERROR : UInt32
-	{};
+	{
+	};
 
 
 	struct SCRIPT_HEADER
 	{
-		UInt32	variableCount;			// 00
-		UInt32	refObjectCount;			// 04
-		UInt32	dataSize;				// 08
-		UInt32	lastID;					// 0C
-		bool	isQuestScript;			// 10
-		bool	isMagicEffectScript;	// 11
-		bool	isCompiled;				// 12
-		UInt8	pad13;					// 13
+		UInt32 variableCount;		 // 00
+		UInt32 refObjectCount;		 // 04
+		UInt32 dataSize;			 // 08
+		UInt32 lastID;				 // 0C
+		bool   isQuestScript;		 // 10
+		bool   isMagicEffectScript;	 // 11
+		bool   isCompiled;			 // 12
+		UInt8  pad13;				 // 13
 	};
 	STATIC_ASSERT(sizeof(SCRIPT_HEADER) == 0x14);
 
 
 	struct SCRIPT_PARAMETER
 	{
-		const char*			paramName;	// 00
-		SCRIPT_PARAM_TYPE	paramType;	// 08
-		bool				optional;	// 0C
-		UInt8				pad0D;		// 0D
-		UInt16				pad0E;		// 0E
+		const char*		  paramName;  // 00
+		SCRIPT_PARAM_TYPE paramType;  // 08
+		bool			  optional;	  // 0C
+		UInt8			  pad0D;	  // 0D
+		UInt16			  pad0E;	  // 0E
 	};
 	STATIC_ASSERT(sizeof(SCRIPT_PARAMETER) == 0x10);
 
 
 	struct SCRIPT_REFERENCED_OBJECT
 	{
-		BSString	editorID;	// 00
-		TESForm*	form;		// 10
-		UInt32		variableID;	// 18
-		UInt32		pad1C;		// 1C
+		BSString editorID;	  // 00
+		TESForm* form;		  // 10
+		UInt32	 variableID;  // 18
+		UInt32	 pad1C;		  // 1C
 	};
 	STATIC_ASSERT(sizeof(SCRIPT_REFERENCED_OBJECT) == 0x20);
 
 
 	struct ACTION_OBJECT
 	{
-		TESForm*	form;	// 00
-		UInt32		flags;	// 08
-		UInt32		pad0C;	// 0C
+		TESForm* form;	 // 00
+		UInt32	 flags;	 // 08
+		UInt32	 pad0C;	 // 0C
 	};
 	STATIC_ASSERT(sizeof(ACTION_OBJECT) == 0x10);
 
 
 	struct SCRIPT_LOCAL
 	{
-		UInt32	id;			// 0
-		float	value;		// 4
-		bool	isInteger;	// 8
-		UInt8	pad9;		// 9
-		UInt16	padA;		// A
+		UInt32 id;		   // 0
+		float  value;	   // 4
+		bool   isInteger;  // 8
+		UInt8  pad9;	   // 9
+		UInt16 padA;	   // A
 	};
 	STATIC_ASSERT(sizeof(SCRIPT_LOCAL) == 0xC);
 
 
 	struct SCRIPT_EFFECT_DATA
 	{
-		bool	scriptEffectStart;	// 00
-		bool	scriptEffectFinish;	// 01
-		UInt16	pad02;				// 02
-		float	secondsElapsed;		// 04
+		bool   scriptEffectStart;	// 00
+		bool   scriptEffectFinish;	// 01
+		UInt16 pad02;				// 02
+		float  secondsElapsed;		// 04
 	};
 	STATIC_ASSERT(sizeof(SCRIPT_EFFECT_DATA) == 0x8);
 
@@ -186,38 +188,38 @@ namespace RE
 	class ScriptLocals
 	{
 	public:
-		Script*							masterScript;		// 00
-		char							flags;				// 08
-		UInt8							pad09;				// 09
-		UInt16							pad0A;				// 0A
-		UInt32							pad0C;				// 0C
-		BSSimpleList<ACTION_OBJECT*>*	actionList;			// 10
-		BSSimpleList<SCRIPT_LOCAL*>*	localList;			// 18
-		SCRIPT_EFFECT_DATA*				scriptEffectData;	// 20
+		Script*						  masterScript;		 // 00
+		char						  flags;			 // 08
+		UInt8						  pad09;			 // 09
+		UInt16						  pad0A;			 // 0A
+		UInt32						  pad0C;			 // 0C
+		BSSimpleList<ACTION_OBJECT*>* actionList;		 // 10
+		BSSimpleList<SCRIPT_LOCAL*>*  localList;		 // 18
+		SCRIPT_EFFECT_DATA*			  scriptEffectData;	 // 20
 	};
 	STATIC_ASSERT(sizeof(ScriptLocals) == 0x28);
 
 
 	struct ScriptVariable
 	{
-		SCRIPT_LOCAL	data;	// 00
-		UInt32			pad0C;	// 0C
-		BSString		name;	// 10
+		SCRIPT_LOCAL data;	 // 00
+		UInt32		 pad0C;	 // 0C
+		BSString	 name;	 // 10
 	};
 	STATIC_ASSERT(sizeof(ScriptVariable) == 0x20);
 
 
 	struct SCRIPT_LINE
 	{
-		UInt32			lineNumber;		// 000
-		char			line[512];		// 004
-		UInt32			size;			// 204
-		UInt32			offset;			// 208
-		char			output[512];	// 20C
-		UInt32			outputSize;		// 40C
-		SCRIPT_OUTPUT	expression;		// 410
-		UInt32			refObjectIndex;	// 414
-		SCRIPT_ERROR	scriptError;	// 418
+		UInt32		  lineNumber;	   // 000
+		char		  line[512];	   // 004
+		UInt32		  size;			   // 204
+		UInt32		  offset;		   // 208
+		char		  output[512];	   // 20C
+		UInt32		  outputSize;	   // 40C
+		SCRIPT_OUTPUT expression;	   // 410
+		UInt32		  refObjectIndex;  // 414
+		SCRIPT_ERROR  scriptError;	   // 418
 	};
 	STATIC_ASSERT(sizeof(SCRIPT_LINE) == 0x41C);
 
@@ -243,20 +245,20 @@ namespace RE
 
 		struct Chunk
 		{
-			StringChunk*	AsString();
-			IntegerChunk*	AsInteger();
+			StringChunk*  AsString();
+			IntegerChunk* AsInteger();
 		};
 
 
 		struct StringChunk : public Chunk
 		{
-			std::string	GetString() const;
+			std::string GetString() const;
 			Chunk*		GetNext();
 
 
 			// members
-			UInt16	length;	// 00
-			char	str[0];	// 02
+			UInt16 length;	// 00
+			char   str[0];	// 02
 		};
 		STATIC_ASSERT(sizeof(StringChunk) == 0x2);
 
@@ -264,13 +266,13 @@ namespace RE
 #pragma pack(push, 1)
 		struct IntegerChunk : public Chunk
 		{
-			int		GetInteger() const;
-			Chunk*	GetNext();
+			int	   GetInteger() const;
+			Chunk* GetNext();
 
 
 			// members
-			char	magic;	// 00
-			SInt32	value;	// 01
+			char   magic;  // 00
+			SInt32 value;  // 01
 		};
 		STATIC_ASSERT(offsetof(IntegerChunk, value) == 0x1);
 		STATIC_ASSERT(sizeof(IntegerChunk) == 0x5);
@@ -279,15 +281,15 @@ namespace RE
 
 		struct ScriptData
 		{
-			Chunk*			GetChunk();
-			StringChunk*	GetStringChunk();
-			IntegerChunk*	GetIntegerChunk();
+			Chunk*		  GetChunk();
+			StringChunk*  GetStringChunk();
+			IntegerChunk* GetIntegerChunk();
 
 
 			// members
-			UInt16	opcode;		// 00
-			UInt16	chunkSize;	// 02
-			UInt16	numParams;	// 04
+			UInt16 opcode;	   // 00
+			UInt16 chunkSize;  // 02
+			UInt16 numParams;  // 04
 		};
 		STATIC_ASSERT(sizeof(ScriptData) == 0x6);
 
@@ -297,40 +299,41 @@ namespace RE
 		using Condition_t = bool(TESObjectREFR* a_thisObj, void* a_param1, void* a_param2, double& a_result);
 
 
-		static SCRIPT_FUNCTION*	GetFirstScriptCommand();
-		static SCRIPT_FUNCTION*	LocateScriptCommand(const char* a_longName);
+		static SCRIPT_FUNCTION* GetFirstScriptCommand();
+		static SCRIPT_FUNCTION* LocateScriptCommand(const char* a_longName);
 
-		static SCRIPT_FUNCTION*	GetFirstConsoleCommand();
-		static SCRIPT_FUNCTION*	LocateConsoleCommand(const char* a_longName);
+		static SCRIPT_FUNCTION* GetFirstConsoleCommand();
+		static SCRIPT_FUNCTION* LocateConsoleCommand(const char* a_longName);
 
-		template <UInt16 SIZE> void	SetParameters(SCRIPT_PARAMETER(&a_params)[SIZE]);
-		void						SetParameters();
+		template <UInt16 SIZE>
+		void SetParameters(SCRIPT_PARAMETER (&a_params)[SIZE]);
+		void SetParameters();
 
 
 		// members
-		const char*			functionName;			// 00
-		const char*			shortName;				// 08
-		SCRIPT_OUTPUT		output;					// 10
-		UInt32				pad14;					// 14
-		const char*			helpString;				// 18
-		bool				referenceFunction;		// 20
-		UInt8				pad21;					// 21
-		UInt16				numParams;				// 22
-		UInt32				pad24;					// 24
-		SCRIPT_PARAMETER*	params;					// 28
-		Execute_t*			executeFunction;		// 30
-		Compile_t*			compileFunction;		// 38
-		Condition_t*		conditionFunction;		// 40
-		bool				editorFilter;			// 48
-		bool				invalidatesCellList;	// 49
-		UInt16				pad4A;					// 4A
-		UInt32				pad4C;					// 4C
+		const char*		  functionName;			// 00
+		const char*		  shortName;			// 08
+		SCRIPT_OUTPUT	  output;				// 10
+		UInt32			  pad14;				// 14
+		const char*		  helpString;			// 18
+		bool			  referenceFunction;	// 20
+		UInt8			  pad21;				// 21
+		UInt16			  numParams;			// 22
+		UInt32			  pad24;				// 24
+		SCRIPT_PARAMETER* params;				// 28
+		Execute_t*		  executeFunction;		// 30
+		Compile_t*		  compileFunction;		// 38
+		Condition_t*	  conditionFunction;	// 40
+		bool			  editorFilter;			// 48
+		bool			  invalidatesCellList;	// 49
+		UInt16			  pad4A;				// 4A
+		UInt32			  pad4C;				// 4C
 	};
 	STATIC_ASSERT(sizeof(SCRIPT_FUNCTION) == 0x50);
 
 
 	template <UInt16 SIZE>
-	void SCRIPT_FUNCTION::SetParameters(SCRIPT_PARAMETER(&a_params)[SIZE])
+	void SCRIPT_FUNCTION::SetParameters(SCRIPT_PARAMETER (&a_params)[SIZE])
 	{
 		numParams = SIZE;
 		params = a_params;

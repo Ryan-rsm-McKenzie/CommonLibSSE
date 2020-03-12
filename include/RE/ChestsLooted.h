@@ -11,12 +11,12 @@ namespace RE
 		struct Event
 		{
 		public:
-			UInt8 pad0;	// 0
+			UInt8 pad0;	 // 0
 		};
 		STATIC_ASSERT(sizeof(Event) == 0x1);
 
 
-		static BSTEventSource<Event>*	GetEventSource();
-		static void						SendEvent();
+		static BSTEventSource<Event>* GetEventSource();
+		static void					  SendEvent();
 	};
 }

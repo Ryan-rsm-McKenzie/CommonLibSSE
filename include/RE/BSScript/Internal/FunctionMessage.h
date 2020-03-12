@@ -29,7 +29,7 @@ namespace RE
 				Type							type;		// 00
 				UInt32							pad04;		// 04
 				BSTSmartPointer<Stack>			stack;		// 08
-				BSTSmartPointer<IFuncCallQuery>	funcQuery;	// 10
+				BSTSmartPointer<IFuncCallQuery> funcQuery;	// 10
 			};
 			STATIC_ASSERT(sizeof(FunctionMessage) == 0x18);
 		}

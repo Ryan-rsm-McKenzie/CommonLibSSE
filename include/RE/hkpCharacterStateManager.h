@@ -12,7 +12,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_hkpCharacterStateManager;
 
 
-		virtual ~hkpCharacterStateManager();	// 00
+		virtual ~hkpCharacterStateManager();  // 00
 
 
 		// members

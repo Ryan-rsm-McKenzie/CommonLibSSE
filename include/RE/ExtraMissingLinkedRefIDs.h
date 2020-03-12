@@ -16,16 +16,19 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraMissingLinkedRefIDs;
 
 
-		enum { kExtraTypeID = ExtraDataType::kMissingLinkedRefIDs };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kMissingLinkedRefIDs
+		};
 
 
 		struct Entry
 		{
 		public:
 			// members
-			BGSKeyword*	keyword;		// 00
-			FormID		linkedRefID;	// 08
-			UInt32		pad0C;			// 0C
+			BGSKeyword* keyword;	  // 00
+			FormID		linkedRefID;  // 08
+			UInt32		pad0C;		  // 0C
 		};
 		STATIC_ASSERT(sizeof(Entry) == 0x10);
 
@@ -42,30 +45,30 @@ namespace RE
 
 			union Data
 			{
-				Entry*	entryPtr;
-				Entry	entry[1];
+				Entry* entryPtr;
+				Entry  entry[1];
 			};
 			STATIC_ASSERT(sizeof(Data) == 0x10);
 
 
 			reference operator[](size_type a_pos);
-			iterator begin() noexcept;
-			iterator end() noexcept;
+			iterator  begin() noexcept;
+			iterator  end() noexcept;
 			size_type size() const noexcept;
 
 
 			// members
-			Data	_data;	// 00
-			UInt32	_size;	// 10
-			UInt32	_pad14;	// 14
+			Data   _data;	// 00
+			UInt32 _size;	// 10
+			UInt32 _pad14;	// 14
 		};
 		STATIC_ASSERT(sizeof(Array) == 0x18);
 
 
-		virtual ~ExtraMissingLinkedRefIDs();			// 00
+		virtual ~ExtraMissingLinkedRefIDs();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kMissingLinkedRefIDs; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kMissingLinkedRefIDs; }
 
 		TESObjectREFR* GetLinkedRef(BGSKeyword* a_keyword);
 

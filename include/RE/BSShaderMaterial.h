@@ -47,23 +47,23 @@ namespace RE
 		};
 
 
-		virtual ~BSShaderMaterial();										// 00
+		virtual ~BSShaderMaterial();  // 00
 
 		// add
-		virtual BSShaderMaterial*	Create();								// 01
-		virtual void				CopyMembers(BSShaderMaterial* a_other);	// 02
-		virtual bool				DoIsCopy(BSShaderMaterial* a_other);	// 03
-		virtual UInt32				ComputeCRC32(void);						// 04
-		virtual BSShaderMaterial*	GetDefault();							// 05
-		virtual Feature				GetFeature() const;						// 06 - { return Feature::kDefault; }
-		virtual Type				GetType() const;						// 07 - { return Type::kBase; }
+		virtual BSShaderMaterial* Create();								   // 01
+		virtual void			  CopyMembers(BSShaderMaterial* a_other);  // 02
+		virtual bool			  DoIsCopy(BSShaderMaterial* a_other);	   // 03
+		virtual UInt32			  ComputeCRC32(void);					   // 04
+		virtual BSShaderMaterial* GetDefault();							   // 05
+		virtual Feature			  GetFeature() const;					   // 06 - { return Feature::kDefault; }
+		virtual Type			  GetType() const;						   // 07 - { return Type::kBase; }
 
 
 		// members
-		NiPoint2	texCoordOffset[2];	// 0C
-		NiPoint2	texCoordScale[2];	// 1C
-		UInt32		hashKey;			// 2C
-		UInt64		unk30;				// 30
+		NiPoint2 texCoordOffset[2];	 // 0C
+		NiPoint2 texCoordScale[2];	 // 1C
+		UInt32	 hashKey;			 // 2C
+		UInt64	 unk30;				 // 30
 	};
 	STATIC_ASSERT(sizeof(BSShaderMaterial) == 0x38);
 }

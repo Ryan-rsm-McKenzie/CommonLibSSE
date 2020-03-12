@@ -15,18 +15,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraEmittanceSource;
 
 
-		enum { kExtraTypeID = ExtraDataType::kEmittanceSource };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kEmittanceSource
+		};
 
 
-		virtual ~ExtraEmittanceSource();												// 00
+		virtual ~ExtraEmittanceSource();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kEmittanceSource; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return source != a_rhs->source; }
+		virtual ExtraDataType GetType() const override;								// 01 - { return kEmittanceSource; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return source != a_rhs->source; }
 
 
 		// members
-		TESForm* source;	// 10
+		TESForm* source;  // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraEmittanceSource) == 0x18);
 }

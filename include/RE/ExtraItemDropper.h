@@ -13,18 +13,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraItemDropper;
 
 
-		enum { kExtraTypeID = ExtraDataType::kItemDropper };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kItemDropper
+		};
 
 
-		virtual ~ExtraItemDropper();					// 00
+		virtual ~ExtraItemDropper();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kItemDropper; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kItemDropper; }
 
 
 		// members
-		ObjectRefHandle	dropper;	// 10
-		UInt32			pad14;		// 14
+		ObjectRefHandle dropper;  // 10
+		UInt32			pad14;	  // 14
 	};
 	STATIC_ASSERT(sizeof(ExtraItemDropper) == 0x18);
 }

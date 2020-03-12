@@ -6,11 +6,11 @@ namespace RE
 	struct TESUniqueIDChangeEvent
 	{
 		// members
-		FormID	oldBaseID;		// 00
-		FormID	newBaseID;		// 04
-		FormID	objectID;		// 08
-		UInt16	oldUniqueID;	// 0C
-		UInt16	newUniqueID;	// 0E
+		FormID oldBaseID;	 // 00
+		FormID newBaseID;	 // 04
+		FormID objectID;	 // 08
+		UInt16 oldUniqueID;	 // 0C
+		UInt16 newUniqueID;	 // 0E
 	};
 	STATIC_ASSERT(sizeof(TESUniqueIDChangeEvent) == 0x10);
 }

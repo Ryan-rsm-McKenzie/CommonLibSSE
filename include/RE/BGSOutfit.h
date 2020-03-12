@@ -13,7 +13,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSOutfit;
 
 
-		enum { kTypeID = FormType::Outfit };
+		enum
+		{
+			kTypeID = FormType::Outfit
+		};
 
 
 		struct RecordFlags
@@ -26,16 +29,16 @@ namespace RE
 		};
 
 
-		virtual ~BGSOutfit();							// 00
+		virtual ~BGSOutfit();  // 00
 
 		// override (TESForm)
-		virtual void	ClearData() override;			// 05
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void ClearData() override;			 // 05
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
 		// members
-		BSTArray<TESForm*> outfitItems;	// 20 - INAM
+		BSTArray<TESForm*> outfitItems;	 // 20 - INAM
 	};
 	STATIC_ASSERT(sizeof(BGSOutfit) == 0x38);
 }

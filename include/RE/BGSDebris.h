@@ -24,26 +24,29 @@ namespace RE
 		};
 
 
-		SInt8						percentage;	// 00 - DATA~
-		BGSDebrisDataFlags			flags;		// 01 - ~DATA
-		UInt16						pad02;		// 02
-		UInt32						pad04;		// 04
-		const char*					fileName;	// 08
-		BSTArray<BSResource::ID>	textureIDs;	// 10 - MODT
-		BSTArray<UInt32>			addons;		// 28
+		SInt8					 percentage;  // 00 - DATA~
+		BGSDebrisDataFlags		 flags;		  // 01 - ~DATA
+		UInt16					 pad02;		  // 02
+		UInt32					 pad04;		  // 04
+		const char*				 fileName;	  // 08
+		BSTArray<BSResource::ID> textureIDs;  // 10 - MODT
+		BSTArray<UInt32>		 addons;	  // 28
 	};
 	STATIC_ASSERT(sizeof(BGSDebrisData) == 0x40);
 
 
 	class BGSDebris :
-		public TESForm,			// 00
-		public BGSPreloadable	// 20
+		public TESForm,		   // 00
+		public BGSPreloadable  // 20
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSDebris;
 
 
-		enum { kTypeID = FormType::Debris };
+		enum
+		{
+			kTypeID = FormType::Debris
+		};
 
 
 		struct RecordFlags
@@ -56,12 +59,12 @@ namespace RE
 		};
 
 
-		virtual ~BGSDebris();							// 00
+		virtual ~BGSDebris();  // 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;		// 04 - { return; }
-		virtual void	ClearData() override;			// 05
-		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void InitializeData() override;		 // 04 - { return; }
+		virtual void ClearData() override;			 // 05
+		virtual bool Load(TESFile* a_mod) override;	 // 06
 
 
 		// members

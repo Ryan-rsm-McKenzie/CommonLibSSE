@@ -19,9 +19,9 @@ namespace RE
 
 
 		// members
-		NiTMapItem*	next;	// 00
-		key_type	first;	// 08
-		mapped_type	second;	// ??
+		NiTMapItem* next;	 // 00
+		key_type	first;	 // 08
+		mapped_type second;	 // ??
 	};
 	STATIC_ASSERT(sizeof(NiTMapItem<UInt32, UInt64>) == 0x18);
 
@@ -31,7 +31,8 @@ namespace RE
 	class NiTMapBase
 	{
 	private:
-		template <class U> friend class iterator_base;
+		template <class U>
+		friend class iterator_base;
 
 	public:
 		using key_type = Key;
@@ -201,7 +202,7 @@ namespace RE
 		private:
 			NiTMapBase* _proxy;
 			value_type* _iter;
-			UInt32 _idx;
+			UInt32		_idx;
 		};
 
 
@@ -218,7 +219,7 @@ namespace RE
 
 
 			// members
-			size_type size;	// ??
+			size_type size;	 // ??
 		};
 
 
@@ -234,7 +235,7 @@ namespace RE
 		}
 
 
-		virtual ~NiTMapBase()	// 00
+		virtual ~NiTMapBase()  // 00
 		{
 			clear();
 			if (_data) {
@@ -245,12 +246,12 @@ namespace RE
 		}
 
 	protected:
-		virtual	UInt32		hash_function(key_type a_key) const;										// 01 - { return a_key % _capacity; }
-		virtual	bool		key_eq(key_type a_lhs, key_type a_rhs) const;								// 02 - { return stricmp(a_lhs == a_rhs); }
-		virtual	void		assign_value(value_type* a_value, key_type a_key, mapped_type a_mapped);	// 03 - { a_value->key = a_key; a_value->mapped = a_mapped; }
-		virtual void		clear_value(value_type* a_value);											// 04 - { return; }
-		virtual	value_type*	malloc_value() = 0;															// 05
-		virtual	void		free_value(value_type* a_value) = 0;										// 06
+		virtual UInt32		hash_function(key_type a_key) const;									  // 01 - { return a_key % _capacity; }
+		virtual bool		key_eq(key_type a_lhs, key_type a_rhs) const;							  // 02 - { return stricmp(a_lhs == a_rhs); }
+		virtual void		assign_value(value_type* a_value, key_type a_key, mapped_type a_mapped);  // 03 - { a_value->key = a_key; a_value->mapped = a_mapped; }
+		virtual void		clear_value(value_type* a_value);										  // 04 - { return; }
+		virtual value_type* malloc_value() = 0;														  // 05
+		virtual void		free_value(value_type* a_value) = 0;									  // 06
 
 	public:
 		iterator begin()
@@ -405,9 +406,9 @@ namespace RE
 
 	protected:
 		// members
-		UInt32				_capacity;	// 08
-		UInt32				_pad0C;		// 0C
-		value_type**		_data;		// 10
-		AntiBloatAllocator	_allocator;	// 18
+		UInt32			   _capacity;	// 08
+		UInt32			   _pad0C;		// 0C
+		value_type**	   _data;		// 10
+		AntiBloatAllocator _allocator;	// 18
 	};
 }

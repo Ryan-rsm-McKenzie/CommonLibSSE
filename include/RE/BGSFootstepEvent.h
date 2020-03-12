@@ -9,8 +9,8 @@ namespace RE
 	struct BGSFootstepEvent : public BGSActorEvent
 	{
 		// members
-		UInt32			pad04;	// 04
-		BSFixedString	tag;	// 08
+		UInt32		  pad04;  // 04
+		BSFixedString tag;	  // 08
 	};
 	STATIC_ASSERT(sizeof(BGSFootstepEvent) == 0x10);
 }

@@ -15,14 +15,17 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraGlobal;
 
 
-		enum { kExtraTypeID = ExtraDataType::kGlobal };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kGlobal
+		};
 
 
-		virtual ~ExtraGlobal();															// 00
+		virtual ~ExtraGlobal();	 // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kGlobal; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return global != a_rhs->global; }
+		virtual ExtraDataType GetType() const override;								// 01 - { return kGlobal; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return global != a_rhs->global; }
 
 
 		// members

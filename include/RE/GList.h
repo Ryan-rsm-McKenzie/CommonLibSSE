@@ -1,7 +1,7 @@
 #pragma once
 
-#include <memory>
 #include <iterator>
+#include <memory>
 #include <type_traits>
 
 
@@ -24,15 +24,15 @@ namespace RE
 		}
 
 
-		GListNode<T>*	prev;	// 00
-		GListNode<T>*	next;	// 08
+		GListNode<T>* prev;	 // 00
+		GListNode<T>* next;	 // 08
 	};
 	STATIC_ASSERT(sizeof(GListNode<void*>) == 0x10);
 
 
 	// circular doubly-linked list
 	// classes must derive from GListNode
-	template<class T>
+	template <class T>
 	class GList
 	{
 	private:
@@ -380,7 +380,7 @@ namespace RE
 
 	protected:
 		// members
-		GListNode<value_type> _root;	// 00
+		GListNode<value_type> _root;  // 00
 	};
 	STATIC_ASSERT(sizeof(GList<void*>) == 0x10);
 }

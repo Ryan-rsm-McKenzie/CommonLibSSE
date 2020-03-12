@@ -9,8 +9,8 @@ namespace RE
 	class NiMatrix3
 	{
 	public:
-		bool	ToEulerAnglesXYZ(NiPoint3& a_angle) const;
-		bool	ToEulerAnglesXYZ(float& a_xAngle, float& a_yAngle, float& a_zAngle) const;
+		bool ToEulerAnglesXYZ(NiPoint3& a_angle) const;
+		bool ToEulerAnglesXYZ(float& a_xAngle, float& a_yAngle, float& a_zAngle) const;
 
 
 		float entry[3][3];	// 00

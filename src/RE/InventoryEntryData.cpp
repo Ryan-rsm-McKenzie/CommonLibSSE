@@ -124,7 +124,7 @@ namespace RE
 	}
 
 
-	TESBoundObject*	InventoryEntryData::GetObject()
+	TESBoundObject* InventoryEntryData::GetObject()
 	{
 		return object;
 	}

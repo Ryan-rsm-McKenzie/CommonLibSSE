@@ -19,20 +19,20 @@ namespace RE
 	class CraftingMenu : public IMenu
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_CraftingMenu;
+		inline static constexpr auto	  RTTI = RTTI_CraftingMenu;
 		constexpr static std::string_view MENU_NAME = "Crafting Menu";
 
 
-		virtual ~CraftingMenu();																	// 00
+		virtual ~CraftingMenu();  // 00
 
 		// override (IMenu)
-		virtual UI_MESSAGE_RESULTS	ProcessMessage(UIMessage& a_message) override;					// 04
-		virtual void				AdvanceMovie(float a_interval, UInt32 a_currentTime) override;	// 05
-		virtual void				PostDisplay() override;											// 06
+		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;				   // 04
+		virtual void			   AdvanceMovie(float a_interval, UInt32 a_currentTime) override;  // 05
+		virtual void			   PostDisplay() override;										   // 06
 
 
 		// members
-		CraftingSubMenus::CraftingSubMenu* subMenu;	// 30
+		CraftingSubMenus::CraftingSubMenu* subMenu;	 // 30
 	};
 	STATIC_ASSERT(sizeof(CraftingMenu) == 0x38);
 }

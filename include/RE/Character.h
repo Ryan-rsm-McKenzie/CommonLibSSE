@@ -11,7 +11,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_Character;
 
 
-		enum { kTypeID = FormType::ActorCharacter };
+		enum
+		{
+			kTypeID = FormType::ActorCharacter
+		};
 
 
 		struct RecordFlags
@@ -29,7 +32,7 @@ namespace RE
 		};
 
 
-		virtual ~Character();																						// 000
+		virtual ~Character();  // 000
 
 		// override (Actor)
 		virtual void					SaveGame(BGSSaveFormBuffer* a_buf) override;								// 00E - { Actor::SaveBuffer(a_buf); }
@@ -40,7 +43,7 @@ namespace RE
 		virtual void					Predestroy(void) override;													// 03B
 		virtual bool					IsChild() const override;													// 05E - { return race ? (race->data.flags & Flag::kChild) != Flag::kNone : false; }
 		virtual BSFaceGenNiNode*		GetFaceNodeSkinned() override;												// 061
-		virtual BSFaceGenAnimationData*	GetFaceGenAnimationData() override;											// 063
+		virtual BSFaceGenAnimationData* GetFaceGenAnimationData() override;											// 063
 		virtual void					SetBiped(const BSTSmartPointer<BipedAnim>& a_biped) override;				// 081
 		virtual void					InitiateVampireFeedPackage(Actor* a_arg1, TESObjectREFR* a_arg2) override;	// 0C0
 		virtual void					Unk_C4(void) override;														// 0C4 - { unk272 = a_arg1; }
@@ -55,8 +58,8 @@ namespace RE
 		virtual void					PrecacheData(void) override;												// 120
 
 		// add
-		virtual void					Unk_128(void);																// 128
-		virtual void					Unk_129(void);																// 129 - { return 1; }
+		virtual void Unk_128(void);	 // 128
+		virtual void Unk_129(void);	 // 129 - { return 1; }
 	};
 	STATIC_ASSERT(sizeof(Character) == 0x2B0);
 }

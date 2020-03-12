@@ -11,7 +11,7 @@ namespace RE
 			inline static constexpr auto RTTI = RTTI_BSScript__IFreezeQuery;
 
 
-			virtual ~IFreezeQuery();		// 00
+			virtual ~IFreezeQuery();  // 00
 
 			// add
 			virtual void Unk_01(void) = 0;	// 00

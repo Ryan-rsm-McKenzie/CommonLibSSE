@@ -25,6 +25,7 @@ namespace RE
 		public GFxStateBag	// 10
 	{
 		friend class GFxCharacter;
+
 	public:
 		// ScaleModeType represents the scaling type used for the SWF file stage, corresponds to Stage.scaleMode property in ActionScript.
 		enum class ScaleModeType : UInt32
@@ -78,7 +79,7 @@ namespace RE
 		virtual ScaleModeType				GetViewScaleMode() const;																							// 1C - pure - Obtains the current scale mode for the movie.
 		virtual void						SetViewAlignment(AlignType a_type);																					// 1D - pure - Sets the current alignment mode for the movie.
 		virtual AlignType					GetViewAlignment() const;																							// 1E - pure - Gets the current alignment mode for the movie.
-		virtual GRectF        				GetVisibleFrameRect() const;																						// 1F - pure - Obtains the currently visible rectangle.
+		virtual GRectF						GetVisibleFrameRect() const;																						// 1F - pure - Obtains the currently visible rectangle.
 		virtual void						SetPerspective3D(const GMatrix3D& a_projMatIn);																		// 20 - pure
 		virtual void						SetView3D(const GMatrix3D& a_viewMatIn);																			// 21 - pure
 		virtual GRectF						GetSafeRect() const;																								// 22 - pure
@@ -100,7 +101,7 @@ namespace RE
 		virtual void						SetExternalInterfaceRetVal(const GFxValue& a_val);																	// 32 - pure
 		virtual void*						GetUserData() const;																								// 33 - pure
 		virtual void						SetUserData(void* a_data);																							// 34 - pure
-		virtual bool						AttachDisplayCallback(const char* a_pathToObject, void(*a_callback)(void* a_user), void* a_user);					// 35 - pure
+		virtual bool						AttachDisplayCallback(const char* a_pathToObject, void (*a_callback)(void* a_user), void* a_user);					// 35 - pure
 		virtual bool						IsMovieFocused() const;																								// 36 - pure
 		virtual bool						GetDirtyFlag(bool a_doReset = true);																				// 37 - pure
 		virtual void						SetMouseCursorCount(UInt32 a_count);																				// 38 - pure
@@ -110,16 +111,16 @@ namespace RE
 		virtual void						GetStats(GStatBag* a_bag, bool a_reset = true);																		// 3C - pure
 		virtual GMemoryHeap*				GetHeap() const;																									// 3D - pure
 		virtual void						ForceCollectGarbage();																								// 3E - pure
-		virtual GPointF 					TranslateToScreen(const GPointF& a_p, void* a_userMatrix);															// 3F - pure
+		virtual GPointF						TranslateToScreen(const GPointF& a_p, void* a_userMatrix);															// 3F - pure
 		virtual GRectF						TranslateToScreen(const GRectF& a_p, void* a_userMatrix);															// 40 - pure
 		virtual bool						TranslateLocalToScreen(const char* a_pathToCharacter, const GPointF& a_pt, GPointF* a_presPt, void* a_userMatrix);	// 41 - pure
 		virtual bool						SetControllerFocusGroup(UInt32 a_controllerIdx, UInt32 a_focusGroupIndex);											// 42 - pure
 		virtual UInt32						GetControllerFocusGroup(UInt32 a_controllerIdx) const;																// 43 - pure
-		virtual GFxMovieDef::MemoryContext*	GetMemoryContext() const;																							// 44 - pure
+		virtual GFxMovieDef::MemoryContext* GetMemoryContext() const;																							// 44 - pure
 		virtual void						Release();																											// 45 - pure
 
-		void	SetViewport(SInt32 a_bufW, SInt32 a_bufH, SInt32 a_left, SInt32 a_top, SInt32 a_width, SInt32 a_height, GViewport::Flag a_flags = GViewport::Flag::kNone);
-		void	InvokeNoReturn(const char* a_methodName, const GFxValue* a_args, UInt32 a_numArgs);
+		void SetViewport(SInt32 a_bufW, SInt32 a_bufH, SInt32 a_left, SInt32 a_top, SInt32 a_width, SInt32 a_height, GViewport::Flag a_flags = GViewport::Flag::kNone);
+		void InvokeNoReturn(const char* a_methodName, const GFxValue* a_args, UInt32 a_numArgs);
 	};
 	STATIC_ASSERT(sizeof(GFxMovieView) == 0x18);
 }

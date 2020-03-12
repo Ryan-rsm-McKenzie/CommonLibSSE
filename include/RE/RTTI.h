@@ -1,7 +1,7 @@
 #pragma once
 
-#include <typeinfo>
 #include <type_traits>
+#include <typeinfo>
 
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
@@ -22,10 +22,10 @@ namespace RE
 			RVA(UInt32 a_rva);
 			~RVA() = default;
 
-			T* get() const;
-			T& operator*() const;
-			T* operator->() const;
-			T* operator[](std::ptrdiff_t a_id) const;
+			T*		 get() const;
+			T&		 operator*() const;
+			T*		 operator->() const;
+			T*		 operator[](std::ptrdiff_t a_id) const;
 			explicit operator bool() const;
 
 		protected:
@@ -33,7 +33,7 @@ namespace RE
 
 
 			// members
-			UInt32 _rva;	// 00
+			UInt32 _rva;  // 00
 		};
 		STATIC_ASSERT(sizeof(RVA<void*>) == 0x4);
 
@@ -94,18 +94,18 @@ namespace RE
 
 		struct TypeDescriptor
 		{
-			type_info*	typeInfo;	// 00
-			void*		spare;		// 08
-			const char	name[1];	// 10
+			type_info* typeInfo;  // 00
+			void*	   spare;	  // 08
+			const char name[1];	  // 10
 		};
 		STATIC_ASSERT(sizeof(TypeDescriptor) == 0x18);	// can be larger
 
 
 		struct PMD
 		{
-			SInt32	mDisp;	// 0
-			SInt32	pDisp;	// 4
-			SInt32	vDisp;	// 8
+			SInt32 mDisp;  // 0
+			SInt32 pDisp;  // 4
+			SInt32 vDisp;  // 8
 		};
 		STATIC_ASSERT(sizeof(PMD) == 0xC);
 
@@ -118,7 +118,7 @@ namespace RE
 			};
 
 
-			RVA<TypeDescriptor>	typeDescriptor;		// 00
+			RVA<TypeDescriptor> typeDescriptor;		// 00
 			UInt32				numContainedBases;	// 04
 			PMD					pmd;				// 08
 			Attribute			attributes;			// 14
@@ -137,10 +137,10 @@ namespace RE
 			};
 
 
-			UInt32				signature;		// 00
-			Attribute			attributes;		// 04
-			UInt32				numBaseClasses;	// 08
-			RVA<BaseClassArray>	baseClassArray;	// 0C
+			UInt32				signature;		 // 00
+			Attribute			attributes;		 // 04
+			UInt32				numBaseClasses;	 // 08
+			RVA<BaseClassArray> baseClassArray;	 // 0C
 		};
 		STATIC_ASSERT(sizeof(ClassHierarchyDescriptor) == 0x10);
 
@@ -154,11 +154,11 @@ namespace RE
 			};
 
 
-			Signature						signature;			// 00
-			UInt32							offset;				// 04
-			UInt32							ctorDispOffset;		// 08
-			RVA<TypeDescriptor>				typeDescriptor;		// 0C
-			RVA<ClassHierarchyDescriptor>	classDescriptor;	// 10
+			Signature					  signature;		// 00
+			UInt32						  offset;			// 04
+			UInt32						  ctorDispOffset;	// 08
+			RVA<TypeDescriptor>			  typeDescriptor;	// 0C
+			RVA<ClassHierarchyDescriptor> classDescriptor;	// 10
 		};
 		STATIC_ASSERT(sizeof(CompleteObjectLocator) == 0x14);
 
@@ -178,7 +178,7 @@ namespace RE
 			};
 
 
-			RVA<TypeDescriptor>	typeDescriptor;		// 00
+			RVA<TypeDescriptor> typeDescriptor;		// 00
 			UInt32				numContainedBases;	// 04
 			PMD					pmd;				// 08
 			Attribute			attributes;			// 14
@@ -192,15 +192,26 @@ namespace RE
 
 	namespace SK_Impl
 	{
-		template <class T> using remove_cvpr_t = std::remove_pointer_t<std::remove_reference_t<std::remove_cv_t<T>>>;
+		template <class T>
+		using remove_cvpr_t = std::remove_pointer_t<std::remove_reference_t<std::remove_cv_t<T>>>;
 
-		template <class T> struct target_is_valid : std::disjunction<std::is_polymorphic<remove_cvpr_t<T>>, std::is_same<void*, std::remove_cv_t<T>>> {};
+		template <class T>
+		struct target_is_valid : std::disjunction<std::is_polymorphic<remove_cvpr_t<T>>, std::is_same<void*, std::remove_cv_t<T>>>
+		{};
 
-		template <class To, class From> struct types_are_compat : std::false_type {};
-		template <class To, class From> struct types_are_compat<To&, From> : std::is_lvalue_reference<std::remove_cv_t<From>> {};
-		template <class To, class From> struct types_are_compat<To*, From> : std::is_pointer<std::remove_cv_t<From>> {};
+		template <class To, class From>
+		struct types_are_compat : std::false_type
+		{};
+		template <class To, class From>
+		struct types_are_compat<To&, From> : std::is_lvalue_reference<std::remove_cv_t<From>>
+		{};
+		template <class To, class From>
+		struct types_are_compat<To*, From> : std::is_pointer<std::remove_cv_t<From>>
+		{};
 
-		template <class To, class From> struct cast_is_valid : std::conjunction<types_are_compat<To, From>, target_is_valid<To>> {};
+		template <class To, class From>
+		struct cast_is_valid : std::conjunction<types_are_compat<To, From>, target_is_valid<To>>
+		{};
 	}
 
 
@@ -224,7 +235,7 @@ inline To skyrim_cast(const From* a_from)
 
 
 template <class To, class From, typename std::enable_if_t<RE::SK_Impl::cast_is_valid<To, const From&>::value, int> = 0>
-inline To skyrim_cast(const From& a_from)	// throw(std::bad_cast)
+inline To skyrim_cast(const From& a_from)  // throw(std::bad_cast)
 {
 	REL::Offset<PVOID> from(RE::SK_Impl::remove_cvpr_t<From>::RTTI);
 	REL::Offset<PVOID> to(RE::SK_Impl::remove_cvpr_t<To>::RTTI);

@@ -38,11 +38,11 @@ namespace RE
 
 		float			GetTime() const;
 		void			SetTime(float a_time);
-		NiAnimationKey*	GetKeyAt(UInt32 a_index, UInt8 a_keySize) const;
+		NiAnimationKey* GetKeyAt(UInt32 a_index, UInt8 a_keySize) const;
 
 	protected:
 		// members
-		float	_time;	// 00
+		float _time;  // 00
 	};
 	STATIC_ASSERT(sizeof(NiAnimationKey) == 0x4);
 }

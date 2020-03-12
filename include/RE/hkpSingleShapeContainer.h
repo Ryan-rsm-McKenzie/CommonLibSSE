@@ -14,7 +14,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_hkpSingleShapeContainer;
 
 
-		virtual ~hkpSingleShapeContainer();																	// 00
+		virtual ~hkpSingleShapeContainer();	 // 00
 
 		// override (hkpShapeContainer)
 		virtual SInt32			GetNumChildShapes() const override;											// 01 - { return 1; }
@@ -24,7 +24,7 @@ namespace RE
 
 
 		// members
-		const hkpShape* childShape;	// 08
+		const hkpShape* childShape;	 // 08
 	};
 	STATIC_ASSERT(sizeof(hkpSingleShapeContainer) == 0x10);
 }

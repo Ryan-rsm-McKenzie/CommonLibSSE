@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	template<class C, class U, class Hash>
+	template <class C, class U, class Hash>
 	struct GHashNode
 	{
 		using SelfType = GHashNode<C, U, Hash>;
@@ -13,8 +13,8 @@ namespace RE
 
 		struct NodeRef
 		{
-			const C* first;		// 00
-			const U* second;	// 08
+			const C* first;	  // 00
+			const U* second;  // 08
 
 
 			NodeRef(const C& a_first, const U& a_second) :
@@ -105,7 +105,7 @@ namespace RE
 
 
 		// members
-		C	first;	// 00
-		U	second;	// ??
+		C first;   // 00
+		U second;  // ??
 	};
 }

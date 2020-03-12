@@ -13,7 +13,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESSoulGem;
 
 
-		enum { kTypeID = FormType::SoulGem };
+		enum
+		{
+			kTypeID = FormType::SoulGem
+		};
 
 
 		struct RecordFlags
@@ -27,22 +30,22 @@ namespace RE
 		};
 
 
-		virtual ~TESSoulGem();														// 00
+		virtual ~TESSoulGem();	// 00
 
 		// override (TESObjectMISC)
-		virtual void		InitializeData() override;								// 04
-		virtual void		LoadImpl(TESFile* a_mod, UInt32 a_chunkID) override;	// 54
-		virtual void		InitImpl() override;									// 55
+		virtual void InitializeData() override;							   // 04
+		virtual void LoadImpl(TESFile* a_mod, UInt32 a_chunkID) override;  // 54
+		virtual void InitImpl() override;								   // 55
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword*	GetDefaultKeyword() const override;						// 05
+		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
 
-		SOUL_LEVEL	GetContainedSoul() const;
-		SOUL_LEVEL	GetMaximumCapacity() const;
+		SOUL_LEVEL GetContainedSoul() const;
+		SOUL_LEVEL GetMaximumCapacity() const;
 
 
 		// members
-		TESSoulGem*	linkedSoulGem;	// 100 - NAM0
+		TESSoulGem* linkedSoulGem;	// 100 - NAM0
 		SOUL_LEVEL	currentSoul;	// 108 - SOUL
 		SOUL_LEVEL	soulCapacity;	// 109 - SLCP
 		UInt16		unk10A;			// 10A

@@ -12,18 +12,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraLeveledItem;
 
 
-		enum { kExtraTypeID = ExtraDataType::kLeveledItem };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kLeveledItem
+		};
 
 
-		virtual ~ExtraLeveledItem();					// 00
+		virtual ~ExtraLeveledItem();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kLeveledItem; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kLeveledItem; }
 
 
 		// members
-		FormID	levItem;	// 10
-		UInt32	pad14;		// 14
+		FormID levItem;	 // 10
+		UInt32 pad14;	 // 14
 	};
 	STATIC_ASSERT(sizeof(ExtraLeveledItem) == 0x18);
 }

@@ -1,8 +1,8 @@
 #include "RE/ScriptEventSourceHolder.h"
 
 #include "RE/Offsets.h"
-#include "REL/Relocation.h"
 #include "RE/TESObjectREFR.h"
+#include "REL/Relocation.h"
 
 
 namespace RE

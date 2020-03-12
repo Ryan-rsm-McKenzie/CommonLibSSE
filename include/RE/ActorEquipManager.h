@@ -21,7 +21,7 @@ namespace RE
 
 
 		// members
-		bool unk01;	// 01
+		bool unk01;	 // 01
 	};
 	STATIC_ASSERT(sizeof(ActorEquipManager) == 0x2);
 }

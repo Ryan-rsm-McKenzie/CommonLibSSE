@@ -5,12 +5,12 @@
 
 namespace RE
 {
-	void* NiMalloc(std::size_t a_sizeInBytes);
-	void* NiAlignedMalloc(std::size_t a_sizeInBytes, std::size_t a_alignment);
-	void* NiRealloc(void* a_mem, std::size_t a_sizeInBytes);
-	void* NiAlignedRealloc(void* a_mem, std::size_t a_sizeInBytes, std::size_t a_alignment);
-	void NiFree(void* a_mem);
-	void NiAlignedFree(void* a_mem);
+	void*		   NiMalloc(std::size_t a_sizeInBytes);
+	void*		   NiAlignedMalloc(std::size_t a_sizeInBytes, std::size_t a_alignment);
+	void*		   NiRealloc(void* a_mem, std::size_t a_sizeInBytes);
+	void*		   NiAlignedRealloc(void* a_mem, std::size_t a_sizeInBytes, std::size_t a_alignment);
+	void		   NiFree(void* a_mem);
+	void		   NiAlignedFree(void* a_mem);
 	constexpr bool NiTrackAlloc([[maybe_unused]] void* a_mem, [[maybe_unused]] std::size_t a_sizeInBytes) { return false; }
 	constexpr bool NiTrackFree([[maybe_unused]] void* a_mem) { return false; }
 

@@ -19,6 +19,6 @@ namespace RE
 		};
 
 
-		virtual ReturnType Visit(BGSPerkEntry* a_perkEntry) = 0;	// 00
+		virtual ReturnType Visit(BGSPerkEntry* a_perkEntry) = 0;  // 00
 	};
 }

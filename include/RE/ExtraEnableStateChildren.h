@@ -14,17 +14,20 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraEnableStateChildren;
 
 
-		enum { kExtraTypeID = ExtraDataType::kEnableStateChildren };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kEnableStateChildren
+		};
 
 
-		virtual ~ExtraEnableStateChildren();			// 00
+		virtual ~ExtraEnableStateChildren();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kEnableStateChildren; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kEnableStateChildren; }
 
 
 		// members
-		BSSimpleList<ObjectRefHandle> children;	// 10
+		BSSimpleList<ObjectRefHandle> children;	 // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraEnableStateChildren) == 0x20);
 }

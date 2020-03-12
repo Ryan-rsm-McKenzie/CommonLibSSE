@@ -12,7 +12,7 @@
 
 namespace RE
 {
-	struct BGSExplosionData	// DATA
+	struct BGSExplosionData	 // DATA
 	{
 		enum class Flag : UInt32
 		{
@@ -28,20 +28,20 @@ namespace RE
 		};
 
 
-		TESObjectLIGH*			light;				// 00
-		BGSSoundDescriptorForm* sound1;				// 08
-		BGSSoundDescriptorForm* sound2;				// 10
-		BGSImpactDataSet*		impactDataSet;		// 18
-		TESObjectREFR*			impactPlacedObject;	// 20
-		BGSProjectile*			spawnProjectile;	// 28
-		float					force;				// 30
-		float					damage;				// 34
-		float					radius;				// 38
-		float					imageSpaceRadius;	// 3C
-		float					verticalOffsetMult;	// 40
-		Flag					flags;				// 44
-		SOUND_LEVEL				eSoundLevel;		// 48
-		UInt32					pad4C;				// 4C
+		TESObjectLIGH*			light;				 // 00
+		BGSSoundDescriptorForm* sound1;				 // 08
+		BGSSoundDescriptorForm* sound2;				 // 10
+		BGSImpactDataSet*		impactDataSet;		 // 18
+		TESObjectREFR*			impactPlacedObject;	 // 20
+		BGSProjectile*			spawnProjectile;	 // 28
+		float					force;				 // 30
+		float					damage;				 // 34
+		float					radius;				 // 38
+		float					imageSpaceRadius;	 // 3C
+		float					verticalOffsetMult;	 // 40
+		Flag					flags;				 // 44
+		SOUND_LEVEL				eSoundLevel;		 // 48
+		UInt32					pad4C;				 // 4C
 	};
 	STATIC_ASSERT(sizeof(BGSExplosionData) == 0x50);
 
@@ -58,7 +58,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSExplosion;
 
 
-		enum { kTypeID = FormType::Explosion };
+		enum
+		{
+			kTypeID = FormType::Explosion
+		};
 
 
 		struct RecordFlags
@@ -71,14 +74,14 @@ namespace RE
 		};
 
 
-		virtual ~BGSExplosion();													// 00
+		virtual ~BGSExplosion();  // 00
 
 		// override (TESBoundObject)
-		virtual void		InitializeData() override;								// 04
-		virtual bool		Load(TESFile* a_mod) override;							// 06
-		virtual void		InitItemImpl() override;								// 13
-		virtual NiAVObject*	Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;	// 40
-		virtual void		UnClone3D(TESObjectREFR* a_ref) override;				// 41
+		virtual void		InitializeData() override;							  // 04
+		virtual bool		Load(TESFile* a_mod) override;						  // 06
+		virtual void		InitItemImpl() override;							  // 13
+		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;  // 40
+		virtual void		UnClone3D(TESObjectREFR* a_ref) override;			  // 41
 
 
 		// members

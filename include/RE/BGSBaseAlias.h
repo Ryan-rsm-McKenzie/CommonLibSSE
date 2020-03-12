@@ -43,11 +43,11 @@ namespace RE
 			kNoPickpocket = 1 << 21,
 			kDataAlias = 1 << 22,
 			kSceneOptional = 1 << 24,
-			kCreateIn = (UInt32)1 << 31	// BGSRefAlias
+			kCreateIn = (UInt32)1 << 31	 // BGSRefAlias
 		};
 
 
-		enum class FILL_TYPE : UInt16	// BGSRefAlias
+		enum class FILL_TYPE : UInt16  // BGSRefAlias
 		{
 			kConditions = 0,
 			kForced = 1,
@@ -60,25 +60,25 @@ namespace RE
 		};
 
 
-		virtual ~BGSBaseAlias();										// 00
+		virtual ~BGSBaseAlias();  // 00
 
 		// add
-		virtual bool					Load(TESFile* a_mod) = 0;		// 01
-		virtual void					InitItem(TESForm* a_form) = 0;	// 02
-		virtual const BSFixedString&	QType() const = 0;				// 03
+		virtual bool				 Load(TESFile* a_mod) = 0;		 // 01
+		virtual void				 InitItem(TESForm* a_form) = 0;	 // 02
+		virtual const BSFixedString& QType() const = 0;				 // 03
 
-		const BSFixedString&	GetTypeString() const;
-		bool					IsQuestObject() const;
+		const BSFixedString& GetTypeString() const;
+		bool				 IsQuestObject() const;
 
 
 		// members
-		BSFixedString	aliasName;		// 08 - ALID
-		TESQuest*		owningQuest;	// 10
-		UInt32			aliasID;		// 18 - ALST/ALLS
-		FLAGS			flags;			// 1C - FNAM
-		FILL_TYPE		fillType;		// 20
-		UInt16			pad22;			// 22
-		UInt32			pad24;			// 24
+		BSFixedString aliasName;	// 08 - ALID
+		TESQuest*	  owningQuest;	// 10
+		UInt32		  aliasID;		// 18 - ALST/ALLS
+		FLAGS		  flags;		// 1C - FNAM
+		FILL_TYPE	  fillType;		// 20
+		UInt16		  pad22;		// 22
+		UInt32		  pad24;		// 24
 	};
 	STATIC_ASSERT(sizeof(BGSBaseAlias) == 0x28);
 }

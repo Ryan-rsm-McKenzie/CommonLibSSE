@@ -19,14 +19,14 @@ namespace RE
 		};
 
 
-		virtual ~IMessageBoxCallback();			// 00
+		virtual ~IMessageBoxCallback();	 // 00
 
 		// add
-		virtual void Run(Message a_msg) = 0;	// 01
+		virtual void Run(Message a_msg) = 0;  // 01
 
 
 		// members
-		UInt32 unk0C;	// 0C
+		UInt32 unk0C;  // 0C
 	};
 	STATIC_ASSERT(sizeof(IMessageBoxCallback) == 0x10);
 }

@@ -20,14 +20,14 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSScaleformTranslator;
 
 
-		virtual ~BSScaleformTranslator();									// 00
+		virtual ~BSScaleformTranslator();  // 00
 
 		// override (GFxTranslator)
-		virtual void Translate(TranslateInfo* a_translateInfo) override;	// 02
+		virtual void Translate(TranslateInfo* a_translateInfo) override;  // 02
 
 
 		// members
-		BSTranslator translator;	// 20
+		BSTranslator translator;  // 20
 	};
 	STATIC_ASSERT(sizeof(BSScaleformTranslator) == 0x50);
 }

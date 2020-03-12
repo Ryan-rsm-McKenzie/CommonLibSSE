@@ -105,9 +105,9 @@ namespace REL
 			}
 
 		private:
-			pointer _data;
+			pointer	  _data;
 			size_type _size;
-			bool _owned;
+			bool	  _owned;
 		};
 
 
@@ -282,9 +282,9 @@ namespace REL
 			}
 
 		private:
-			HANDLE _handle;
+			HANDLE	  _handle;
 			size_type _size;
-			pointer _data;
+			pointer	  _data;
 		};
 
 
@@ -298,48 +298,66 @@ namespace REL
 		std::size_t kmp_search(const Array<std::uint8_t>& S, const Array<std::uint8_t>& W, const Array<bool>& M);
 
 
-		template <class T> struct is_any_function : std::disjunction<
-			std::is_function<T>,
-			std::is_function<std::remove_pointer_t<T>>,	// is_function_pointer
-			std::is_member_function_pointer<T>>
+		template <class T>
+		struct is_any_function : std::disjunction<std::is_function<T>,
+									 std::is_function<std::remove_pointer_t<T>>,  // is_function_pointer
+									 std::is_member_function_pointer<T>>
 		{};
 
 
 		// https://docs.microsoft.com/en-us/cpp/build/x64-calling-convention
 
-		template <class T, class Enable = void> struct meets_length_req : std::false_type {};
-		template <class T> struct meets_length_req<T, std::enable_if_t<sizeof(T) == 1>> : std::true_type {};
-		template <class T> struct meets_length_req<T, std::enable_if_t<sizeof(T) == 2>> : std::true_type {};
-		template <class T> struct meets_length_req<T, std::enable_if_t<sizeof(T) == 4>> : std::true_type {};
-		template <class T> struct meets_length_req<T, std::enable_if_t<sizeof(T) == 8>> : std::true_type {};
-		template <class T> struct meets_length_req<T, std::enable_if_t<sizeof(T) == 16>> : std::true_type {};
-		template <class T> struct meets_length_req<T, std::enable_if_t<sizeof(T) == 32>> : std::true_type {};
-		template <class T> struct meets_length_req<T, std::enable_if_t<sizeof(T) == 64>> : std::true_type {};
-
-		template <class T> struct meets_function_req : std::conjunction<
-			std::is_trivially_constructible<T>,
-			std::is_trivially_destructible<T>,
-			std::is_trivially_copy_assignable<T>,
-			std::negation<std::is_polymorphic<T>>>
+		template <class T, class Enable = void>
+		struct meets_length_req : std::false_type
+		{};
+		template <class T>
+		struct meets_length_req<T, std::enable_if_t<sizeof(T) == 1>> : std::true_type
+		{};
+		template <class T>
+		struct meets_length_req<T, std::enable_if_t<sizeof(T) == 2>> : std::true_type
+		{};
+		template <class T>
+		struct meets_length_req<T, std::enable_if_t<sizeof(T) == 4>> : std::true_type
+		{};
+		template <class T>
+		struct meets_length_req<T, std::enable_if_t<sizeof(T) == 8>> : std::true_type
+		{};
+		template <class T>
+		struct meets_length_req<T, std::enable_if_t<sizeof(T) == 16>> : std::true_type
+		{};
+		template <class T>
+		struct meets_length_req<T, std::enable_if_t<sizeof(T) == 32>> : std::true_type
+		{};
+		template <class T>
+		struct meets_length_req<T, std::enable_if_t<sizeof(T) == 64>> : std::true_type
 		{};
 
-		template <class T> struct meets_member_req : std::is_standard_layout<T> {};
+		template <class T>
+		struct meets_function_req : std::conjunction<std::is_trivially_constructible<T>, std::is_trivially_destructible<T>, std::is_trivially_copy_assignable<T>, std::negation<std::is_polymorphic<T>>>
+		{};
 
-		template <class T, class Enable = void> struct is_msvc_pod : std::true_type {};
-		template <class T> struct is_msvc_pod<T, std::enable_if_t<std::is_union<T>::value>> : std::false_type {};
-		template <class T> struct is_msvc_pod<T, std::enable_if_t<std::is_class<T>::value>> : std::conjunction<
-			meets_length_req<T>,
-			meets_function_req<T>,
-			meets_member_req<T>>
+		template <class T>
+		struct meets_member_req : std::is_standard_layout<T>
+		{};
+
+		template <class T, class Enable = void>
+		struct is_msvc_pod : std::true_type
+		{};
+		template <class T>
+		struct is_msvc_pod<T, std::enable_if_t<std::is_union<T>::value>> : std::false_type
+		{};
+		template <class T>
+		struct is_msvc_pod<T, std::enable_if_t<std::is_class<T>::value>> : std::conjunction<meets_length_req<T>, meets_function_req<T>, meets_member_req<T>>
 		{};
 
 
-		template <class F> struct member_function_pod;
+		template <class F>
+		struct member_function_pod;
 
 
 		// normal
 		template <class R, class Cls, class... Args>
-		struct member_function_pod<R(Cls::*)(Args...)>
+		struct member_function_pod<R (Cls::*)(Args...)>
 		{
 			using type = R(Cls*, Args...);
 		};
@@ -347,7 +365,7 @@ namespace REL
 
 		// const
 		template <class R, class Cls, class... Args>
-		struct member_function_pod<R(Cls::*)(Args...) const>
+		struct member_function_pod<R (Cls::*)(Args...) const>
 		{
 			using type = R(const Cls*, Args...);
 		};
@@ -355,7 +373,7 @@ namespace REL
 
 		// variadic
 		template <class R, class Cls, class... Args>
-		struct member_function_pod<R(Cls::*)(Args..., ...)>
+		struct member_function_pod<R (Cls::*)(Args..., ...)>
 		{
 			using type = R(Cls*, Args..., ...);
 		};
@@ -363,21 +381,23 @@ namespace REL
 
 		// variadic const
 		template <class R, class Cls, class... Args>
-		struct member_function_pod<R(Cls::*)(Args..., ...) const>
+		struct member_function_pod<R (Cls::*)(Args..., ...) const>
 		{
 			using type = R(const Cls*, Args..., ...);
 		};
 
 
-		template <class F> using member_function_pod_t = typename member_function_pod<F>::type;
+		template <class F>
+		using member_function_pod_t = typename member_function_pod<F>::type;
 
 
-		template <class F> struct member_function_non_pod;
+		template <class F>
+		struct member_function_non_pod;
 
 
 		// normal
 		template <class R, class Cls, class... Args>
-		struct member_function_non_pod<R(Cls::*)(Args...)>
+		struct member_function_non_pod<R (Cls::*)(Args...)>
 		{
 			using type = R&(Cls*, void*, Args...);
 		};
@@ -385,7 +405,7 @@ namespace REL
 
 		// normal const
 		template <class R, class Cls, class... Args>
-		struct member_function_non_pod<R(Cls::*)(Args...) const>
+		struct member_function_non_pod<R (Cls::*)(Args...) const>
 		{
 			using type = R&(const Cls*, void*, Args...);
 		};
@@ -393,7 +413,7 @@ namespace REL
 
 		// variadic
 		template <class R, class Cls, class... Args>
-		struct member_function_non_pod<R(Cls::*)(Args..., ...)>
+		struct member_function_non_pod<R (Cls::*)(Args..., ...)>
 		{
 			using type = R&(Cls*, void*, Args..., ...);
 		};
@@ -401,13 +421,14 @@ namespace REL
 
 		// variadic const
 		template <class R, class Cls, class... Args>
-		struct member_function_non_pod<R(Cls::*)(Args..., ...) const>
+		struct member_function_non_pod<R (Cls::*)(Args..., ...) const>
 		{
 			using type = R&(const Cls*, void*, Args..., ...);
 		};
 
 
-		template <class F> using member_function_non_pod_t = typename member_function_non_pod<F>::type;
+		template <class F>
+		using member_function_non_pod_t = typename member_function_non_pod<F>::type;
 
 
 		template <class R, class F, class... Args>
@@ -428,7 +449,7 @@ namespace REL
 		{
 			using NF = member_function_non_pod_t<std::decay_t<F>>;
 
-			auto func = unrestricted_cast<NF*>(a_fn);
+			auto										  func = unrestricted_cast<NF*>(a_fn);
 			std::aligned_storage_t<sizeof(R), alignof(R)> result;
 			return func(std::forward<T1>(a_object), &result, std::forward<Args>(a_args)...);
 		}
@@ -437,8 +458,8 @@ namespace REL
 		template <class R, class F, class... Args>
 		R Invoke(F&& a_fn, Args&&... a_args)
 		{
-			if constexpr (std::is_member_function_pointer<std::decay_t<F>>::value) {	// the compiler chokes on member functions
-				if constexpr (Impl::is_msvc_pod<R>::value) {	// no need to shift if it's a pod type
+			if constexpr (std::is_member_function_pointer<std::decay_t<F>>::value) {  // the compiler chokes on member functions
+				if constexpr (Impl::is_msvc_pod<R>::value) {						  // no need to shift if it's a pod type
 					return InvokeMemberFunctionPOD<R>(std::forward<F>(a_fn), std::forward<Args>(a_args)...);
 				} else {
 					return InvokeMemberFunctionNonPOD<R>(std::forward<F>(a_fn), std::forward<Args>(a_args)...);
@@ -490,9 +511,9 @@ namespace REL
 			{}
 
 
-			std::uint32_t RVA() const;
+			std::uint32_t  RVA() const;
 			std::uintptr_t BaseAddr() const;
-			std::size_t Size() const;
+			std::size_t	   Size() const;
 
 
 			template <class T = void>
@@ -506,15 +527,15 @@ namespace REL
 
 
 			std::uintptr_t addr;
-			std::size_t size;
-			std::uint32_t rva;
+			std::size_t	   size;
+			std::uint32_t  rva;
 		};
 
 
 		static std::uintptr_t BaseAddr();
-		static std::size_t Size();
-		static Section GetSection(ID a_id);
-		static SKSE::Version GetVersion();
+		static std::size_t	  Size();
+		static Section		  GetSection(ID a_id);
+		static SKSE::Version  GetVersion();
 
 
 		template <class T = void>
@@ -542,21 +563,22 @@ namespace REL
 
 
 				std::string_view name;
-				Section	section;
-				DWORD flags;
+				Section			 section;
+				DWORD			 flags;
 			};
 
 
 			constexpr Sections() :
 				arr{
-				Elem(".text", static_cast<DWORD>(IMAGE_SCN_MEM_EXECUTE)),
-				".idata",
-				".rdata",
-				".data",
-				".pdata",
-				".tls",
-				Elem(".text", static_cast<DWORD>(IMAGE_SCN_MEM_WRITE)),
-				".gfids" }
+					Elem(".text", static_cast<DWORD>(IMAGE_SCN_MEM_EXECUTE)),
+					".idata",
+					".rdata",
+					".data",
+					".pdata",
+					".tls",
+					Elem(".text", static_cast<DWORD>(IMAGE_SCN_MEM_WRITE)),
+					".gfids"
+				}
 			{}
 
 
@@ -577,11 +599,11 @@ namespace REL
 		void BuildVersionInfo();
 
 
-		HMODULE _handle;
+		HMODULE		   _handle;
 		std::uintptr_t _base;
-		std::size_t _size;
-		Sections _sections;
-		SKSE::Version _version;
+		std::size_t	   _size;
+		Sections	   _sections;
+		SKSE::Version  _version;
 	};
 
 
@@ -607,10 +629,10 @@ namespace REL
 				_stream(a_stream)
 			{}
 
-			[[nodiscard]] constexpr reference operator*() noexcept { return _stream; }
+			[[nodiscard]] constexpr reference		operator*() noexcept { return _stream; }
 			[[nodiscard]] constexpr const_reference operator*() const noexcept { return _stream; }
 
-			[[nodiscard]] constexpr pointer operator->() noexcept { return std::addressof(_stream); }
+			[[nodiscard]] constexpr pointer		  operator->() noexcept { return std::addressof(_stream); }
 			[[nodiscard]] constexpr const_pointer operator->() const noexcept { return std::addressof(_stream); }
 
 			template <class T>
@@ -643,10 +665,10 @@ namespace REL
 
 			void Read(IStream& a_input);
 
-			[[nodiscard]] constexpr decltype(auto) AddrCount() const noexcept { return static_cast<std::size_t>(_part2.addressCount); }
+			[[nodiscard]] constexpr decltype(auto)	   AddrCount() const noexcept { return static_cast<std::size_t>(_part2.addressCount); }
 			[[nodiscard]] constexpr const std::string& ModuleName() const noexcept { return _moduleName; }
-			[[nodiscard]] constexpr decltype(auto) PSize() const noexcept { return static_cast<std::uint64_t>(_part2.pointerSize); }
-			[[nodiscard]] inline decltype(auto) GetVersion() const { return SKSE::Version(_part1.version); }
+			[[nodiscard]] constexpr decltype(auto)	   PSize() const noexcept { return static_cast<std::uint64_t>(_part2.pointerSize); }
+			[[nodiscard]] inline decltype(auto)		   GetVersion() const { return SKSE::Version(_part1.version); }
 
 		private:
 			struct Part1
@@ -680,8 +702,8 @@ namespace REL
 
 
 			std::string _moduleName;
-			Part1 _part1;
-			Part2 _part2;
+			Part1		_part1;
+			Part2		_part2;
 		};
 
 
@@ -701,7 +723,7 @@ namespace REL
 		[[nodiscard]] bool Load(SKSE::Version a_version);
 
 		[[nodiscard]] bool DoLoad(IStream& a_input, const SKSE::Version& a_version);
-		void DoLoadImpl(IStream& a_input, std::vector<std::uint64_t>& a_buf);
+		void			   DoLoadImpl(IStream& a_input, std::vector<std::uint64_t>& a_buf);
 
 #ifdef _DEBUG
 		[[nodiscard]] std::uint64_t OffsetToIDImpl(std::uint64_t a_address);
@@ -709,7 +731,7 @@ namespace REL
 		[[nodiscard]] std::uint64_t IDToOffsetImpl(std::uint64_t a_id);
 
 
-		Header _header;
+		Header						   _header;
 		Impl::MemoryMap<std::uint64_t> _offsets;
 #ifdef _DEBUG
 		std::unordered_map<std::uint64_t, std::uint64_t> _ids;
@@ -737,9 +759,21 @@ namespace REL
 			_id(a_id)
 		{}
 
-		constexpr ID& operator=(const ID& a_rhs) noexcept { _id = a_rhs._id; return *this; }
-		constexpr ID& operator=(ID&& a_rhs) noexcept { _id = std::move(a_rhs._id); return *this; }
-		constexpr ID& operator=(std::uint64_t a_id) noexcept { _id = a_id; return *this; }
+		constexpr ID& operator=(const ID& a_rhs) noexcept
+		{
+			_id = a_rhs._id;
+			return *this;
+		}
+		constexpr ID& operator=(ID&& a_rhs) noexcept
+		{
+			_id = std::move(a_rhs._id);
+			return *this;
+		}
+		constexpr ID& operator=(std::uint64_t a_id) noexcept
+		{
+			_id = a_id;
+			return *this;
+		}
 
 		[[nodiscard]] std::uint64_t operator*() const;
 		[[nodiscard]] std::uint64_t GetAddress() const;
@@ -791,11 +825,31 @@ namespace REL
 		{}
 
 
-		constexpr Offset& operator=(const Offset& a_rhs) noexcept { _address = a_rhs._address; return *this; }
-		constexpr Offset& operator=(Offset&& a_rhs) noexcept { _address = std::move(a_rhs._address); return *this; }
-		constexpr Offset& operator=(std::uint64_t a_rhs) noexcept { _address = a_rhs; return *this; }
-		constexpr Offset& operator=(ID a_rhs) noexcept { _address = a_rhs.GetAddress(); return *this; }
-		constexpr Offset& operator=(std::pair<ID, std::size_t> a_rhs) noexcept { _address = a_rhs.first.GetAddress() + a_rhs.second; return *this; }
+		constexpr Offset& operator=(const Offset& a_rhs) noexcept
+		{
+			_address = a_rhs._address;
+			return *this;
+		}
+		constexpr Offset& operator=(Offset&& a_rhs) noexcept
+		{
+			_address = std::move(a_rhs._address);
+			return *this;
+		}
+		constexpr Offset& operator=(std::uint64_t a_rhs) noexcept
+		{
+			_address = a_rhs;
+			return *this;
+		}
+		constexpr Offset& operator=(ID a_rhs) noexcept
+		{
+			_address = a_rhs.GetAddress();
+			return *this;
+		}
+		constexpr Offset& operator=(std::pair<ID, std::size_t> a_rhs) noexcept
+		{
+			_address = a_rhs.first.GetAddress() + a_rhs.second;
+			return *this;
+		}
 
 
 		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
@@ -841,8 +895,8 @@ namespace REL
 		std::uintptr_t WriteVFunc(std::size_t a_idx, std::uintptr_t a_newFunc)
 		{
 			constexpr auto PSIZE = sizeof(void*);
-			auto addr = GetAddress() + (PSIZE * a_idx);
-			auto result = *reinterpret_cast<std::uintptr_t*>(addr);
+			auto		   addr = GetAddress() + (PSIZE * a_idx);
+			auto		   result = *reinterpret_cast<std::uintptr_t*>(addr);
 			SKSE::SafeWrite64(addr, a_newFunc);
 			return result;
 		}
@@ -855,7 +909,11 @@ namespace REL
 		}
 
 	private:
-		enum : std::size_t { kRaw, kID };
+		enum : std::size_t
+		{
+			kRaw,
+			kID
+		};
 
 
 		std::uintptr_t _address;
@@ -878,8 +936,8 @@ namespace REL
 			_address(0xDEADBEEF)
 		{
 			std::vector<std::uint8_t> sig;
-			std::vector<bool> mask;
-			std::string buf;
+			std::vector<bool>		  mask;
+			std::string				  buf;
 			buf.resize(2);
 			for (std::size_t i = 0; a_sig[i] != '\0';) {
 				switch (a_sig[i]) {
@@ -902,10 +960,10 @@ namespace REL
 				}
 			}
 
-			auto text = Module::GetSection(Module::ID::kTextX);
+			auto					  text = Module::GetSection(Module::ID::kTextX);
 			Impl::Array<std::uint8_t> haystack(text.BasePtr<std::uint8_t>(), text.Size());
 			Impl::Array<std::uint8_t> needle(sig.data(), sig.size());
-			Impl::Array<bool> needleMask(mask);
+			Impl::Array<bool>		  needleMask(mask);
 			_address = Impl::kmp_search(haystack, needle, needleMask);
 
 			if (_address == 0xDEADBEEF) {
@@ -989,7 +1047,7 @@ namespace REL
 		VTable() = delete;
 		VTable(const char* a_name, std::uint32_t a_offset = 0);
 
-		void* GetPtr() const;
+		void*		   GetPtr() const;
 		std::uintptr_t GetAddress() const;
 		std::uintptr_t GetOffset() const;
 
@@ -997,16 +1055,17 @@ namespace REL
 		using ID = Module::ID;
 
 
-		RE::RTTI::TypeDescriptor* LocateTypeDescriptor(const char* a_name) const;
+		RE::RTTI::TypeDescriptor*		 LocateTypeDescriptor(const char* a_name) const;
 		RE::RTTI::CompleteObjectLocator* LocateCOL(RE::RTTI::TypeDescriptor* a_typeDesc, std::uint32_t a_offset) const;
-		void* LocateVtbl(RE::RTTI::CompleteObjectLocator* a_col) const;
+		void*							 LocateVtbl(RE::RTTI::CompleteObjectLocator* a_col) const;
 
 
 		std::uintptr_t _address;
 	};
 
 
-	template <class, class = void> class Function;
+	template <class, class = void>
+	class Function;
 
 
 	template <class T>
@@ -1139,7 +1198,10 @@ namespace REL
 		}
 
 	private:
-		enum : std::uintptr_t { kEmpty = 0 };
+		enum : std::uintptr_t
+		{
+			kEmpty = 0
+		};
 
 
 		[[nodiscard]] bool Empty() const noexcept
@@ -1238,7 +1300,7 @@ namespace REL
 			}
 
 
-			function_type function;
+			function_type  function;
 			std::uintptr_t address;
 		};
 

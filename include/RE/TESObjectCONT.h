@@ -23,25 +23,28 @@ namespace RE
 		};
 
 
-		Flag flags;	// 0
+		Flag flags;	 // 0
 	};
 	STATIC_ASSERT(sizeof(CONT_DATA) == 0x1);
 
 
 	class TESObjectCONT :
-		public TESBoundAnimObject,			// 00
-		public TESContainer,				// 30
-		public TESFullName,					// 48
-		public TESModelTextureSwap,			// 58
-		public TESWeightForm,				// 90
-		public BGSDestructibleObjectForm,	// A0
-		public BGSOpenCloseForm				// B0
+		public TESBoundAnimObject,		   // 00
+		public TESContainer,			   // 30
+		public TESFullName,				   // 48
+		public TESModelTextureSwap,		   // 58
+		public TESWeightForm,			   // 90
+		public BGSDestructibleObjectForm,  // A0
+		public BGSOpenCloseForm			   // B0
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectCONT;
 
 
-		enum { kTypeID = FormType::Container };
+		enum
+		{
+			kTypeID = FormType::Container
+		};
 
 
 		struct RecordFlags
@@ -60,28 +63,28 @@ namespace RE
 		};
 
 
-		virtual ~TESObjectCONT();																																	// 00
-		
+		virtual ~TESObjectCONT();  // 00
+
 		// override (TESBoundAnimObject)
-		virtual void	InitializeData() override;																													// 04
-		virtual bool	Load(TESFile* a_mod) override;																												// 06
-		virtual void	InitItemImpl() override;																													// 13
-		virtual bool	Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;	// 37
-		virtual bool	GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																		// 4C
-		virtual bool	CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;										// 4D
+		virtual void InitializeData() override;																													  // 04
+		virtual bool Load(TESFile* a_mod) override;																												  // 06
+		virtual void InitItemImpl() override;																													  // 13
+		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;  // 37
+		virtual bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																		  // 4C
+		virtual bool CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;										  // 4D
 
 		// override (BGSOpenCloseForm)
-		virtual void	HandleOpen(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;																	// 01
-		virtual void	HandleClose(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;																	// 02
+		virtual void HandleOpen(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;	 // 01
+		virtual void HandleClose(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;	 // 02
 
 
 		// members
-		UInt8					unkB8;		// B8
-		CONT_DATA				data;		// B9 - DATA
-		UInt16					padBA;		// BA
-		UInt32					padBC;		// BC
-		BGSSoundDescriptorForm*	openSound;	// C0 - SNAM
-		BGSSoundDescriptorForm*	closeSound;	// C8 - QNAM
+		UInt8					unkB8;		 // B8
+		CONT_DATA				data;		 // B9 - DATA
+		UInt16					padBA;		 // BA
+		UInt32					padBC;		 // BC
+		BGSSoundDescriptorForm* openSound;	 // C0 - SNAM
+		BGSSoundDescriptorForm* closeSound;	 // C8 - QNAM
 	};
 	STATIC_ASSERT(sizeof(TESObjectCONT) == 0xD0);
 }

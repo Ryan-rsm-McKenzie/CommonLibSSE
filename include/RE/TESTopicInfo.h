@@ -36,8 +36,8 @@ namespace RE
 		float GetResetHours() const;
 
 
-		TOPIC_INFO_FLAGS	flags;			// 0
-		UInt16				timeUntilReset;	// 2 - reset hours as a UInt16
+		TOPIC_INFO_FLAGS flags;			  // 0
+		UInt16			 timeUntilReset;  // 2 - reset hours as a UInt16
 	};
 	STATIC_ASSERT(sizeof(TOPIC_INFO_DATA) == 0x4);
 
@@ -48,10 +48,13 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESTopicInfo;
 
 
-		enum { kTypeID = FormType::Info };
+		enum
+		{
+			kTypeID = FormType::Info
+		};
 
 
-		enum class FavorLevel : UInt8	// CNAM
+		enum class FavorLevel : UInt8  // CNAM
 		{
 			kNone = 0,
 			kSmall = 1,
@@ -79,7 +82,7 @@ namespace RE
 		};
 
 
-		struct ResponseData	// TRDT
+		struct ResponseData	 // TRDT
 		{
 			enum class EmotionType : UInt32
 			{
@@ -107,39 +110,39 @@ namespace RE
 
 
 			// members
-			EmotionType				emotionType;	// 00
-			UInt32					emotionValue;	// 04
-			TESTopic*				unk08;			// 08
-			UInt8					responseNumber;	// 10
-			UInt8					pad11;			// 11
-			UInt16					pad12;			// 12
-			UInt32					pad14;			// 14
-			BGSSoundDescriptorForm*	sound;			// 18
-			Flag					flags;			// 20
-			UInt8					pad21;			// 21
-			UInt16					pad22;			// 22
-			UInt32					pad24;			// 24
-			BSFixedString			responseText;	// 28 - NAM1
-			TESIdleForm*			speakerIdle;	// 30
-			TESIdleForm*			listenerIdle;	// 38
-			ResponseData*			next;			// 40
+			EmotionType				emotionType;	 // 00
+			UInt32					emotionValue;	 // 04
+			TESTopic*				unk08;			 // 08
+			UInt8					responseNumber;	 // 10
+			UInt8					pad11;			 // 11
+			UInt16					pad12;			 // 12
+			UInt32					pad14;			 // 14
+			BGSSoundDescriptorForm* sound;			 // 18
+			Flag					flags;			 // 20
+			UInt8					pad21;			 // 21
+			UInt16					pad22;			 // 22
+			UInt32					pad24;			 // 24
+			BSFixedString			responseText;	 // 28 - NAM1
+			TESIdleForm*			speakerIdle;	 // 30
+			TESIdleForm*			listenerIdle;	 // 38
+			ResponseData*			next;			 // 40
 		};
 		STATIC_ASSERT(sizeof(ResponseData) == 0x48);
 
-		
-		virtual ~TESTopicInfo();																				// 00
+
+		virtual ~TESTopicInfo();  // 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;																// 04
-		virtual void	ClearData() override;																	// 05
-		virtual bool	Load(TESFile* a_mod) override;															// 06
-		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;											// 0F
-		virtual void	Revert(BGSLoadFormBuffer* a_buf) override;												// 12
-		virtual void	InitItemImpl() override;																// 13
-		virtual void	GetFormDetailedString(char* a_buf, UInt32 a_bufLen) override;							// 16 - { return; }
-		virtual void	SetAltered(bool a_set) override;														// 24
-		virtual bool	BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly) override;	// 30
-		virtual void	CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;							// 31
+		virtual void InitializeData() override;															   // 04
+		virtual void ClearData() override;																   // 05
+		virtual bool Load(TESFile* a_mod) override;														   // 06
+		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;										   // 0F
+		virtual void Revert(BGSLoadFormBuffer* a_buf) override;											   // 12
+		virtual void InitItemImpl() override;															   // 13
+		virtual void GetFormDetailedString(char* a_buf, UInt32 a_bufLen) override;						   // 16 - { return; }
+		virtual void SetAltered(bool a_set) override;													   // 24
+		virtual bool BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly) override;  // 30
+		virtual void CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;						   // 31
 
 		DialogueItem GetDialogueData(Actor* a_speaker);
 
@@ -151,7 +154,7 @@ namespace RE
 		UInt16			infoIndex;		// 38 - index in infoTopics array of parent topic
 		bool			saidOnce;		// 3A
 		FavorLevel		favorLevel;		// 3B - CNAM
-		TOPIC_INFO_DATA	data;			// 3C - ENAM
+		TOPIC_INFO_DATA data;			// 3C - ENAM
 		UInt32			fileOffset;		// 40
 		UInt32			pad44;			// 44
 	};

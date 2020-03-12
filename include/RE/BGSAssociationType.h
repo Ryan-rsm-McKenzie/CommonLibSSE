@@ -13,10 +13,13 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSAssociationType;
 
 
-		enum { kTypeID = FormType::AssociationType };
+		enum
+		{
+			kTypeID = FormType::AssociationType
+		};
 
 
-		enum class FLAGS : UInt32	// DATA
+		enum class FLAGS : UInt32  // DATA
 		{
 			kNone = 0,
 			kFamily = 1 << 0
@@ -57,17 +60,17 @@ namespace RE
 		};
 
 
-		virtual ~BGSAssociationType();					// 00
+		virtual ~BGSAssociationType();	// 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;		// 04
-		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void InitializeData() override;		 // 04
+		virtual bool Load(TESFile* a_mod) override;	 // 06
 
 
 		// members
-		BSFixedString	associationLabels[Members::kTotal][Sexes::kTotal];	// 20 - MPRT - FCHT
-		FLAGS			flags;												// 40 - DATA
-		UInt32			pad44;												// 44
+		BSFixedString associationLabels[Members::kTotal][Sexes::kTotal];  // 20 - MPRT - FCHT
+		FLAGS		  flags;											  // 40 - DATA
+		UInt32		  pad44;											  // 44
 	};
 	STATIC_ASSERT(sizeof(BGSAssociationType) == 0x48);
 }

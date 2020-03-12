@@ -8,6 +8,6 @@ namespace RE
 	{
 	public:
 		// members
-		T data;	// 00
+		T data;	 // 00
 	};
 }

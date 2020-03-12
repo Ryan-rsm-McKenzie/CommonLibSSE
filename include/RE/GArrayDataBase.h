@@ -8,8 +8,8 @@ namespace RE
 	{
 	public:
 		// members
-		T*			data;	// 00
-		UPInt		size;	// 08
-		SizePolicy	policy;	// 10
+		T*		   data;	// 00
+		UPInt	   size;	// 08
+		SizePolicy policy;	// 10
 	};
 }

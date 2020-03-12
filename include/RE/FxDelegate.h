@@ -21,8 +21,8 @@ namespace RE
 
 		struct CallbackDefn
 		{
-			GPtr<FxDelegateHandler>			handler;	// 00
-			FxDelegateHandler::CallbackFn*	callback;	// 08
+			GPtr<FxDelegateHandler>		   handler;	  // 00
+			FxDelegateHandler::CallbackFn* callback;  // 08
 		};
 		STATIC_ASSERT(sizeof(CallbackDefn) == 0x10);
 
@@ -38,20 +38,20 @@ namespace RE
 
 
 		FxDelegate() = default;
-		virtual ~FxDelegate() = default;																								// 00
+		virtual ~FxDelegate() = default;  // 00
 
 		// override (GFxExternalInterface)
-		virtual void Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, UInt32 a_argCount) override;	// 01
+		virtual void Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, UInt32 a_argCount) override;	 // 01
 
-		static void Invoke(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args);	// Call a method registered with the AS2 GameDelegate instance
+		static void Invoke(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args);  // Call a method registered with the AS2 GameDelegate instance
 		static void Invoke2(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args);
 
-		void	RegisterHandler(FxDelegateHandler* a_callback);
-		void	UnregisterHandler(FxDelegateHandler* a_callback);
+		void RegisterHandler(FxDelegateHandler* a_callback);
+		void UnregisterHandler(FxDelegateHandler* a_callback);
 
 
 		// members
-		CallbackHash callbacks;	// 18
+		CallbackHash callbacks;	 // 18
 	};
 	STATIC_ASSERT(sizeof(FxDelegate) == 0x20);
 }

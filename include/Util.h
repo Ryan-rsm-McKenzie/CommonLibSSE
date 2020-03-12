@@ -5,7 +5,7 @@
 
 
 #define MAKE_STR_HELPER(a_str) #a_str
-#define MAKE_STR(a_str) MAKE_STR_HELPER(a_str)
+#define MAKE_STR(a_str)		   MAKE_STR_HELPER(a_str)
 
 
 template <class Enum, typename std::enable_if_t<std::is_enum<Enum>::value, int> = 0>
@@ -159,7 +159,7 @@ To unrestricted_cast(From a_from)
 	union
 	{
 		From from;
-		To to;
+		To	 to;
 	};
 
 	from = a_from;
@@ -180,24 +180,42 @@ namespace SKSE
 	{
 		namespace
 		{
-			template <class Enable, class... Args> struct _ulong_compat : std::false_type {};
-			template <class... Args> struct _ulong_compat<typename std::enable_if_t<(sizeof...(Args) <= 32)>, Args...> : std::true_type {};
+			template <class Enable, class... Args>
+			struct _ulong_compat : std::false_type
+			{};
+			template <class... Args>
+			struct _ulong_compat<typename std::enable_if_t<(sizeof...(Args) <= 32)>, Args...> : std::true_type
+			{};
 		}
-		template <class... Args> struct ulong_compat : _ulong_compat<void, Args...> {};
+		template <class... Args>
+		struct ulong_compat : _ulong_compat<void, Args...>
+		{};
 
 		namespace
 		{
-			template <class Enable, class... Args> struct _ullong_compat : std::false_type {};
-			template <class... Args> struct _ullong_compat<typename std::enable_if_t<(sizeof...(Args) > 32) && (sizeof...(Args) <= 64)>, Args...> : std::true_type {};
+			template <class Enable, class... Args>
+			struct _ullong_compat : std::false_type
+			{};
+			template <class... Args>
+			struct _ullong_compat<typename std::enable_if_t<(sizeof...(Args) > 32) && (sizeof...(Args) <= 64)>, Args...> : std::true_type
+			{};
 		}
-		template <class... Args> struct ullong_compat : _ullong_compat<void, Args...> {};
+		template <class... Args>
+		struct ullong_compat : _ullong_compat<void, Args...>
+		{};
 
 		namespace
 		{
-			template <class T> struct _is_bool : std::false_type {};
-			template <> struct _is_bool<bool> : std::true_type {};
+			template <class T>
+			struct _is_bool : std::false_type
+			{};
+			template <>
+			struct _is_bool<bool> : std::true_type
+			{};
 		}
-		template <class T> struct is_bool : _is_bool<T> {};
+		template <class T>
+		struct is_bool : _is_bool<T>
+		{};
 	}
 }
 
@@ -206,7 +224,7 @@ template <class... Args, typename std::enable_if_t<std::conjunction<SKSE::Impl::
 unsigned long pun_bits(Args... a_args)
 {
 	std::bitset<sizeof...(Args)> bits;
-	std::size_t i = 0;
+	std::size_t					 i = 0;
 	((bits[i++] = a_args), ...);
 	return bits.to_ulong();
 }
@@ -216,7 +234,7 @@ template <class... Args, typename std::enable_if_t<std::conjunction<SKSE::Impl::
 unsigned long long pun_bits(Args... a_args)
 {
 	std::bitset<sizeof...(Args)> bits;
-	std::size_t i = 0;
+	std::size_t					 i = 0;
 	((bits[i++] = a_args), ...);
 	return bits.to_ullong();
 }
@@ -224,8 +242,8 @@ unsigned long long pun_bits(Args... a_args)
 
 inline void memzero(void* a_dst, std::size_t a_size)
 {
-	volatile auto beg = static_cast<char*>(a_dst);
-	volatile auto end = static_cast<char*>(a_dst) + a_size;
+	volatile auto  beg = static_cast<char*>(a_dst);
+	volatile auto  end = static_cast<char*>(a_dst) + a_size;
 	constexpr char val = 0;
 	std::fill(beg, end, val);
 }

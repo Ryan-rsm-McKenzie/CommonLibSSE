@@ -12,8 +12,8 @@ namespace RE
 
 	struct FILE_POS_ROT
 	{
-		NiPoint3	pos;	// 00
-		NiPoint3	rot;	// 0C
+		NiPoint3 pos;  // 00
+		NiPoint3 rot;  // 0C
 	};
 	STATIC_ASSERT(sizeof(FILE_POS_ROT) == 0x18);
 
@@ -24,19 +24,22 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraStartingPosition;
 
 
-		enum { kExtraTypeID = ExtraDataType::kStartingPosition };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kStartingPosition
+		};
 
 
-		virtual ~ExtraStartingPosition();												// 00
+		virtual ~ExtraStartingPosition();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kStartingPosition; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return location != a_rhs->location || startPosition.pos != a_rhs->startPosition.pos || startPosition.rot != a_rhs->startPosition.rot; }
+		virtual ExtraDataType GetType() const override;								// 01 - { return kStartingPosition; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return location != a_rhs->location || startPosition.pos != a_rhs->startPosition.pos || startPosition.rot != a_rhs->startPosition.rot; }
 
 
 		// members
-		FILE_POS_ROT	startPosition;	// 10
-		BGSLocation*	location;		// 28
+		FILE_POS_ROT startPosition;	 // 10
+		BGSLocation* location;		 // 28
 	};
 	STATIC_ASSERT(sizeof(ExtraStartingPosition) == 0x30);
 }

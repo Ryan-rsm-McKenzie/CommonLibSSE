@@ -15,22 +15,25 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraAction;
 
 
-		enum { kExtraTypeID = ExtraDataType::kAction };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kAction
+		};
 
 
-		virtual ~ExtraAction();															// 00
+		virtual ~ExtraAction();	 // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kAction; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return unk10 != a_rhs->unk10; }
+		virtual ExtraDataType GetType() const override;								// 01 - { return kAction; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return unk10 != a_rhs->unk10; }
 
 
 		// members
-		SInt8			action;		// 10
-		UInt8			pad11;		// 11
-		UInt16			pad12;		// 12
-		UInt32			pad14;		// 14
-		TESObjectREFR*	actionRef;	// 18
+		SInt8		   action;	   // 10
+		UInt8		   pad11;	   // 11
+		UInt16		   pad12;	   // 12
+		UInt32		   pad14;	   // 14
+		TESObjectREFR* actionRef;  // 18
 	};
 	STATIC_ASSERT(sizeof(ExtraAction) == 0x20);
 }

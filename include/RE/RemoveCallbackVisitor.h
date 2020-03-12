@@ -13,14 +13,14 @@ namespace RE
 
 
 		RemoveCallbackVisitor(FxDelegate::CallbackHash* a_hash);
-		virtual ~RemoveCallbackVisitor() = default;															// 00
+		virtual ~RemoveCallbackVisitor() = default;	 // 00
 
 		// override (FxDelegateHandler::CallbackProcessor)
-		virtual void Process(const GString& a_methodName, FxDelegateHandler::CallbackFn a_method) override;	// 01
+		virtual void Process(const GString& a_methodName, FxDelegateHandler::CallbackFn a_method) override;	 // 01
 
 
 		// members
-		FxDelegate::CallbackHash* hash;	// 08
+		FxDelegate::CallbackHash* hash;	 // 08
 	};
 	STATIC_ASSERT(sizeof(RemoveCallbackVisitor) == 0x10);
 }

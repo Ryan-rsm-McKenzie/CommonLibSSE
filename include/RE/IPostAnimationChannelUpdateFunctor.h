@@ -12,7 +12,7 @@ namespace RE
 		virtual ~IPostAnimationChannelUpdateFunctor();	// 00
 
 		// add
-		virtual void Unk_01(void);						// 01
+		virtual void Unk_01(void);	// 01
 	};
 	STATIC_ASSERT(sizeof(IPostAnimationChannelUpdateFunctor) == 0x8);
 }

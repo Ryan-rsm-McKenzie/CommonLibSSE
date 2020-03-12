@@ -26,14 +26,14 @@ namespace RE
 
 
 		// members
-		NiPointer<TESObjectREFR>	target;		// 00
-		NiPointer<TESObjectREFR>	cause;		// 08
-		FormID						source;		// 10
-		FormID						projectile;	// 14
-		Flag						flags;		// 18
-		UInt8						pad19;		// 19
-		UInt16						pad1A;		// 1A
-		UInt32						pad1C;		// 1C
+		NiPointer<TESObjectREFR> target;	  // 00
+		NiPointer<TESObjectREFR> cause;		  // 08
+		FormID					 source;	  // 10
+		FormID					 projectile;  // 14
+		Flag					 flags;		  // 18
+		UInt8					 pad19;		  // 19
+		UInt16					 pad1A;		  // 1A
+		UInt32					 pad1C;		  // 1C
 	};
 	STATIC_ASSERT(sizeof(TESHitEvent) == 0x20);
 }

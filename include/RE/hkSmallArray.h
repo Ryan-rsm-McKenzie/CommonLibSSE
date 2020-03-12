@@ -16,10 +16,10 @@ namespace RE
 		};
 
 
-		T*					data;				// 00
-		UInt16				size;				// 08
-		CapacityAndFlags	capacityAndFlags;	// 0A
-		UInt32				pad0C;				// 0C
+		T*				 data;				// 00
+		UInt16			 size;				// 08
+		CapacityAndFlags capacityAndFlags;	// 0A
+		UInt32			 pad0C;				// 0C
 	};
 	STATIC_ASSERT(sizeof(hkSmallArray<void*>) == 0x10);
 }

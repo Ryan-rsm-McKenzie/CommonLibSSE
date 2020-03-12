@@ -127,9 +127,9 @@ namespace RE
 		}
 
 	private:
-		T*		_data;		// 00
-		UInt32	_capacity;	// 08
-		UInt32	_size;		// 0C
+		T*	   _data;	   // 00
+		UInt32 _capacity;  // 08
+		UInt32 _size;	   // 0C
 	};
 	STATIC_ASSERT(sizeof(NiTSet<void*, NiTMallocInterface<void*>>) == 0x10);
 

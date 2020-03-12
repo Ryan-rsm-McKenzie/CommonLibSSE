@@ -13,18 +13,18 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ButtonEvent;
 
 
-		virtual ~ButtonEvent();	// 00
+		virtual ~ButtonEvent();	 // 00
 
-		bool	IsPressed() const;
-		bool	IsRepeating() const;
-		bool	IsDown() const;
-		bool	IsHeld() const;
-		bool	IsUp() const;
+		bool IsPressed() const;
+		bool IsRepeating() const;
+		bool IsDown() const;
+		bool IsHeld() const;
+		bool IsUp() const;
 
 
 		// members
-		float	value;			// 28
-		float	heldDownSecs;	// 2C
+		float value;		 // 28
+		float heldDownSecs;	 // 2C
 	};
 	STATIC_ASSERT(sizeof(ButtonEvent) == 0x30);
 }

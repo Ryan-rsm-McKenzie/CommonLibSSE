@@ -8,8 +8,8 @@ namespace RE
 {
 	struct ActivateParentID
 	{
-		UInt32	refID;			// 0
-		float	activateDelay;	// 4
+		UInt32 refID;		   // 0
+		float  activateDelay;  // 4
 	};
 	STATIC_ASSERT(sizeof(ActivateParentID) == 0x8);
 
@@ -20,20 +20,23 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraMissingRefIDs;
 
 
-		enum { kExtraTypeID = ExtraDataType::kMissingRefIDs };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kMissingRefIDs
+		};
 
 
-		virtual ~ExtraMissingRefIDs();					// 00
+		virtual ~ExtraMissingRefIDs();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kMissingRefIDs; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kMissingRefIDs; }
 
 
 		// members
-		ActivateParentID*	unk10;	// 10
-		UInt32				unk18;	// 18
-		UInt32				unk1C;	// 1C
-		UInt64				unk20;	// 20
+		ActivateParentID* unk10;  // 10
+		UInt32			  unk18;  // 18
+		UInt32			  unk1C;  // 1C
+		UInt64			  unk20;  // 20
 	};
 	STATIC_ASSERT(sizeof(ExtraMissingRefIDs) == 0x28);
 }

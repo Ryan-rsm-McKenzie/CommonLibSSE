@@ -35,7 +35,7 @@ namespace RE
 
 
 		// members
-		EventType type;	// 0
+		EventType type;	 // 0
 	};
 	STATIC_ASSERT(sizeof(GFxEvent) == 0x4);
 }

@@ -23,12 +23,12 @@ namespace RE
 
 
 			// add
-			virtual bool	Allocate(UInt32 a_num, UInt32 a_valueSize) = 0;																			// 00
-			virtual bool	Resize(UInt32 a_needNum, UInt32 a_copyFrontNum, UInt32 a_copySkipNum, UInt32 a_copyTailNum, UInt32 a_valueSize) = 0;	// 01
-			virtual void	Free(void* a_ptr) = 0;																									// 02
+			virtual bool Allocate(UInt32 a_num, UInt32 a_valueSize) = 0;																	   // 00
+			virtual bool Resize(UInt32 a_needNum, UInt32 a_copyFrontNum, UInt32 a_copySkipNum, UInt32 a_copyTailNum, UInt32 a_valueSize) = 0;  // 01
+			virtual void Free(void* a_ptr) = 0;																								   // 02
 
 			IAllocatorFunctor() = default;
-			virtual ~IAllocatorFunctor() = default;																									// 03
+			virtual ~IAllocatorFunctor() = default;	 // 03
 
 			TES_HEAP_REDEFINE_NEW();
 		};
@@ -47,12 +47,13 @@ namespace RE
 
 	private:
 		// members
-		UInt32 _size;	// 0
+		UInt32 _size;  // 0
 	};
 	STATIC_ASSERT(sizeof(BSTArrayBase) == 0x4);
 
 
-	template <class Allocator> class BSTArrayAllocatorFunctor;
+	template <class Allocator>
+	class BSTArrayAllocatorFunctor;
 
 
 	class BSTArrayHeapAllocator
@@ -69,24 +70,24 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 
-		void* data();
+		void*		data();
 		const void* data() const;
 
 		size_type capacity() const;
 
 	protected:
 		void* allocate(std::size_t a_size);
-		void deallocate(void* a_ptr);
-		void set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t a_typeSize);
+		void  deallocate(void* a_ptr);
+		void  set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t a_typeSize);
 
 	private:
 		friend class BSTArrayAllocatorFunctor<BSTArrayHeapAllocator>;
 
 
 		// members
-		void*	_data;		// 00
-		UInt32	_capacity;	// 08
-		UInt32	_pad0C;		// 0C
+		void*  _data;	   // 00
+		UInt32 _capacity;  // 08
+		UInt32 _pad0C;	   // 0C
 	};
 	STATIC_ASSERT(sizeof(BSTArrayHeapAllocator) == 0x10);
 
@@ -99,7 +100,10 @@ namespace RE
 		using functor_type = BSTArrayAllocatorFunctor<BSTSmallArrayHeapAllocator>;
 
 
-		enum : UInt32 { kLocalAlloc = static_cast<UInt32>(1 << 31) };
+		enum : UInt32
+		{
+			kLocalAlloc = static_cast<UInt32>(1 << 31)
+		};
 
 
 		union Data
@@ -108,8 +112,8 @@ namespace RE
 				local{ 0 }
 			{}
 
-			void*	heap;
-			char	local[BUFFER_SIZE];
+			void* heap;
+			char  local[BUFFER_SIZE];
 		};
 
 
@@ -222,9 +226,9 @@ namespace RE
 
 
 		// members
-		UInt32	_capacity;	// 00
-		UInt32	_pad04;		// 04
-		Data	_data;		// 08
+		UInt32 _capacity;  // 00
+		UInt32 _pad04;	   // 04
+		Data   _data;	   // 08
 	};
 	STATIC_ASSERT(sizeof(BSTSmallArrayHeapAllocator<sizeof(void*)>) == 0x10);
 
@@ -243,15 +247,15 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 
-		void* data();
+		void*		data();
 		const void* data() const;
 
 		size_type capacity() const;
 
 	protected:
 		void* allocate(std::size_t a_size);
-		void deallocate(void* a_ptr);
-		void set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t a_typeSize);
+		void  deallocate(void* a_ptr);
+		void  set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t a_typeSize);
 
 	private:
 		friend class BSTArrayAllocatorFunctor<BSScrapArrayAllocator>;
@@ -259,10 +263,10 @@ namespace RE
 
 
 		// members
-		ScrapHeap*	_allocator;	// 00
-		void*		_data;		// 08
-		size_type	_capacity;	// 10
-		size_type	_pad14;		// 14
+		ScrapHeap* _allocator;	// 00
+		void*	   _data;		// 08
+		size_type  _capacity;	// 10
+		size_type  _pad14;		// 14
 	};
 	STATIC_ASSERT(sizeof(BSScrapArrayAllocator) == 0x18);
 
@@ -300,7 +304,7 @@ namespace RE
 			auto newSize = a_count;
 			auto newData = allocate(newCapacity);
 			for (UInt32 i = 0; i < newSize; ++i) {
-				new(std::addressof(newData[i])) value_type();
+				new (std::addressof(newData[i])) value_type();
 			}
 
 			set_allocator_traits(newData, newCapacity);
@@ -320,7 +324,7 @@ namespace RE
 			auto newSize = a_rhs.size();
 			auto newData = allocate(newCapacity);
 			for (UInt32 i = 0; i < newSize; ++i) {
-				new(std::addressof(newData[i])) value_type(a_rhs[i]);
+				new (std::addressof(newData[i])) value_type(a_rhs[i]);
 			}
 
 			set_allocator_traits(newData, newCapacity);
@@ -360,7 +364,7 @@ namespace RE
 
 			auto newData = data();
 			for (UInt32 i = 0; i < newSize; ++i) {
-				new(std::addressof(newData[i])) value_type(a_rhs[i]);
+				new (std::addressof(newData[i])) value_type(a_rhs[i]);
 			}
 
 			return *this;
@@ -526,7 +530,7 @@ namespace RE
 		iterator erase(iterator a_pos)
 		{
 			iterator result = a_pos;
-			bool doBegin;
+			bool	 doBegin;
 			if (a_pos == begin()) {
 				doBegin = true;
 			} else {
@@ -557,7 +561,7 @@ namespace RE
 			}
 
 			set_size(size() + 1);
-			new(std::addressof(back())) value_type(a_value);
+			new (std::addressof(back())) value_type(a_value);
 		}
 
 
@@ -568,7 +572,7 @@ namespace RE
 			}
 
 			set_size(size() + 1);
-			new(std::addressof(back())) value_type(std::move(a_value));
+			new (std::addressof(back())) value_type(std::move(a_value));
 		}
 
 
@@ -581,7 +585,7 @@ namespace RE
 
 			set_size(size() + 1);
 			auto elem = back();
-			new(std::addressof(elem)) value_type(std::forward<Args>(a_args)...);
+			new (std::addressof(elem)) value_type(std::forward<Args>(a_args)...);
 			return elem;
 		}
 
@@ -611,8 +615,8 @@ namespace RE
 
 
 	private:
-		static constexpr size_type DF_CAP = 4;	// beth default
-		static constexpr float GROWTH_FACTOR = 1.5;	// not part of native type
+		static constexpr size_type DF_CAP = 4;			 // beth default
+		static constexpr float	   GROWTH_FACTOR = 1.5;	 // not part of native type
 
 
 		T* allocate(UInt32 a_num)
@@ -665,7 +669,7 @@ namespace RE
 			auto oldSize = size();
 			if (a_newSize > oldSize) {
 				for (size_type i = oldSize; i < a_newSize; ++i) {
-					new(std::addressof(data()[i])) value_type(std::forward<Args>(a_args)...);
+					new (std::addressof(data()[i])) value_type(std::forward<Args>(a_args)...);
 				}
 			} else {
 				for (size_type i = a_newSize; i < oldSize; ++i) {
@@ -912,14 +916,14 @@ namespace RE
 
 
 	private:
-		T*		_data;	// 00
-		UInt32	_size;	// 08
-		UInt32	_pad0C;	// 0C
+		T*	   _data;	// 00
+		UInt32 _size;	// 08
+		UInt32 _pad0C;	// 0C
 	};
 	STATIC_ASSERT(sizeof(BSStaticArray<void*>) == 0x10);
 
 
-	template<class T>
+	template <class T>
 	class BSTSmallSharedArray
 	{
 	public:
@@ -1013,19 +1017,20 @@ namespace RE
 	private:
 		union Data
 		{
-			Data() : local{ 0 } {}
+			Data() :
+				local{ 0 } {}
 			~Data() {}
 
 
-			value_type*	heap;
+			value_type* heap;
 			char		local[sizeof(value_type)];
 		};
 
 
 		// members
-		UInt32	_size;	// 00
-		UInt32	_pad04;	// 04
-		Data	_data;	// 08
+		UInt32 _size;	// 00
+		UInt32 _pad04;	// 04
+		Data   _data;	// 08
 	};
 	STATIC_ASSERT(sizeof(BSTSmallSharedArray<void*>) == 0x10);
 }

@@ -12,13 +12,16 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraGIDBuffer;
 
 
-		enum { kExtraTypeID = ExtraDataType::kGIDBuffer };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kGIDBuffer
+		};
 
 
-		virtual ~ExtraGIDBuffer();						// 00
+		virtual ~ExtraGIDBuffer();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kGIDBuffer; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kGIDBuffer; }
 
 
 		// members

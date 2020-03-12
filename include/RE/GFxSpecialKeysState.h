@@ -20,7 +20,7 @@ namespace RE
 		};
 
 
-		UInt8 states;	// 0
+		UInt8 states;  // 0
 	};
 	STATIC_ASSERT(sizeof(GFxSpecialKeysState) == 0x1);
 }

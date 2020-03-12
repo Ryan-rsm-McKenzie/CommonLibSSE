@@ -13,25 +13,29 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BarrierProjectile;
 
 
-		enum { kTypeID = FormType::ProjectileBarrier };
+		enum
+		{
+			kTypeID = FormType::ProjectileBarrier
+		};
 
 
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32
-			{};
+			{
+			};
 		};
 
 
 		struct CollisionData
 		{
-			ObjectRefHandle	ref;	// 0
+			ObjectRefHandle ref;	// 0
 			UInt32			count;	// 4
 		};
 		STATIC_ASSERT(sizeof(CollisionData) == 0x8);
 
 
-		virtual ~BarrierProjectile();											// 00
+		virtual ~BarrierProjectile();  // 00
 
 		// override (Projectile)
 		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;		// 0E
@@ -40,7 +44,7 @@ namespace RE
 		virtual void		FinishLoadGame(BGSLoadFormBuffer* a_buf) override;	// 11
 		virtual void		Revert(BGSLoadFormBuffer* a_buf) override;			// 12
 		virtual void		InitHavok() override;								// 66
-		virtual NiAVObject*	Load3D(bool a_backgroundLoading) override;			// 6A
+		virtual NiAVObject* Load3D(bool a_backgroundLoading) override;			// 6A
 		virtual void		Unk_A7(void) override;								// A7 - { return 1; }
 		virtual void		UpdateImpl(float a_delta) override;					// AB
 		virtual void		Unk_AC(void) override;								// AC
@@ -50,7 +54,7 @@ namespace RE
 		// members
 		float					width;			// 1D8
 		UInt32					pad1DC;			// 1DC
-		BSTArray<CollisionData>	collisionData;	// 1E0
+		BSTArray<CollisionData> collisionData;	// 1E0
 	};
 	STATIC_ASSERT(sizeof(BarrierProjectile) == 0x1F8);
 }

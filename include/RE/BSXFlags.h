@@ -32,20 +32,20 @@ namespace RE
 		};
 
 
-		virtual ~BSXFlags();														// 00
+		virtual ~BSXFlags();  // 00
 
 		// override (NiIntegerExtraData)
-		virtual const NiRTTI*	GetRTTI() const override;							// 02
-		virtual NiObject*		CreateClone(NiCloningProcess& a_cloning) override;	// 17 - { return this; }
-		virtual void			LoadBinary(NiStream& a_stream) override;			// 18 - { NiIntegerExtraData::LoadBinary(a_stream); }
-		virtual void			LinkObject(NiStream& a_stream) override;			// 19 - { NiIntegerExtraData::LinkObject(a_stream); }
-		virtual bool			RegisterStreamables(NiStream& a_stream) override;	// 1A - { return NiIntegerExtraData::RegisterStreamables(a_stream); }
-		virtual void			SaveBinary(NiStream& a_stream) override;			// 1B - { NiIntegerExtraData::SaveBinary(a_stream); }
-		virtual bool			IsEqual(NiObject* a_object) override;				// 1C - { return NiIntegerExtraData::IsEqual(a_object); }
+		virtual const NiRTTI* GetRTTI() const override;							  // 02
+		virtual NiObject*	  CreateClone(NiCloningProcess& a_cloning) override;  // 17 - { return this; }
+		virtual void		  LoadBinary(NiStream& a_stream) override;			  // 18 - { NiIntegerExtraData::LoadBinary(a_stream); }
+		virtual void		  LinkObject(NiStream& a_stream) override;			  // 19 - { NiIntegerExtraData::LinkObject(a_stream); }
+		virtual bool		  RegisterStreamables(NiStream& a_stream) override;	  // 1A - { return NiIntegerExtraData::RegisterStreamables(a_stream); }
+		virtual void		  SaveBinary(NiStream& a_stream) override;			  // 1B - { NiIntegerExtraData::SaveBinary(a_stream); }
+		virtual bool		  IsEqual(NiObject* a_object) override;				  // 1C - { return NiIntegerExtraData::IsEqual(a_object); }
 
 
-		Flag	GetFlags() const;
-		void	SetFlags(Flag a_flags);
+		Flag GetFlags() const;
+		void SetFlags(Flag a_flags);
 	};
 	STATIC_ASSERT(sizeof(BSXFlags) == 0x20);
 }

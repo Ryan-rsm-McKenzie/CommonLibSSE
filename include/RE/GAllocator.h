@@ -7,5 +7,7 @@
 
 namespace RE
 {
-	template <class T, UInt32 SID = GStatGroup::kGStat_Default_Mem> struct GAllocatorGH : GAllocatorBaseGH<SID>, GConstructorMov<T> {};
+	template <class T, UInt32 SID = GStatGroup::kGStat_Default_Mem>
+	struct GAllocatorGH : GAllocatorBaseGH<SID>, GConstructorMov<T>
+	{};
 }

@@ -36,7 +36,7 @@ namespace RE
 
 
 		// members
-		hkQuadReal mask;	// 00
+		hkQuadReal mask;  // 00
 	};
 	STATIC_ASSERT(sizeof(hkVector4Comparison) == 0x10);
 }

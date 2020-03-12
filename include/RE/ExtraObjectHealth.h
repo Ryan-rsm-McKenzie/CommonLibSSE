@@ -12,18 +12,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraObjectHealth;
 
 
-		enum { kExtraTypeID = ExtraDataType::kObjectHealth };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kObjectHealth
+		};
 
 
-		virtual ~ExtraObjectHealth();					// 00
+		virtual ~ExtraObjectHealth();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kObjectHealth; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kObjectHealth; }
 
 
 		// members
-		float	health;	// 10
-		UInt32	pad14;	// 14
+		float  health;	// 10
+		UInt32 pad14;	// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraObjectHealth) == 0x18);
 }

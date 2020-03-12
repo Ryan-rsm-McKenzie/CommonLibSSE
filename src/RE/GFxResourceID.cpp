@@ -63,7 +63,7 @@ namespace RE
 	}
 
 
-	GFxResourceID::IDTypes::IDType	GFxResourceID::GetIDType() const
+	GFxResourceID::IDTypes::IDType GFxResourceID::GetIDType() const
 	{
 		return static_cast<IDTypes::IDType>(id & IDTypeConstants::kTypeMask);
 	}

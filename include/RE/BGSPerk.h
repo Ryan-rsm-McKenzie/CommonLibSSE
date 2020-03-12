@@ -15,13 +15,13 @@ namespace RE
 	class BGSPerkEntry;
 
 
-	struct PerkData	// DATA
+	struct PerkData	 // DATA
 	{
-		bool	trait;		// 0
-		SInt8	level;		// 1
-		SInt8	numRanks;	// 2
-		bool	playable;	// 3
-		bool	hidden;		// 4
+		bool  trait;	 // 0
+		SInt8 level;	 // 1
+		SInt8 numRanks;	 // 2
+		bool  playable;	 // 3
+		bool  hidden;	 // 4
 	};
 	STATIC_ASSERT(sizeof(PerkData) == 0x5);
 
@@ -36,7 +36,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSPerk;
 
 
-		enum { kTypeID = FormType::Perk };
+		enum
+		{
+			kTypeID = FormType::Perk
+		};
 
 
 		struct RecordFlags
@@ -83,22 +86,22 @@ namespace RE
 		STATIC_ASSERT(sizeof(AddPerkVisitor) == 0x8);
 
 
-		virtual ~BGSPerk();								// 00
+		virtual ~BGSPerk();	 // 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;		// 04
-		virtual void	ClearData() override;			// 05
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void InitializeData() override;		 // 04
+		virtual void ClearData() override;			 // 05
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
 		// members
-		PerkData				data;			// 50 - DATA
-		UInt8					pad55;			// 55
-		UInt16					pad56;			// 56
-		TESCondition			perkConditions;	// 58
-		BSTArray<BGSPerkEntry*>	perkEntries;	// 60
-		BGSPerk*				nextPerk;		// 78 - NNAM
+		PerkData				data;			 // 50 - DATA
+		UInt8					pad55;			 // 55
+		UInt16					pad56;			 // 56
+		TESCondition			perkConditions;	 // 58
+		BSTArray<BGSPerkEntry*> perkEntries;	 // 60
+		BGSPerk*				nextPerk;		 // 78 - NNAM
 	};
 	STATIC_ASSERT(sizeof(BGSPerk) == 0x80);
 }

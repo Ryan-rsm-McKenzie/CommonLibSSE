@@ -13,9 +13,9 @@ namespace RE
 			kNone = 0,
 			kVerbose = 1 << 0,
 			kSuppressErrors = 1 << 1,
-			kLogRootFilenames = 1 << 2,		// Display filename for root movie
-			kLogChildFilenames = 1 << 3,	// Display filename for child movie
-			kLongFilenames = 1 << 4			// Display full path
+			kLogRootFilenames = 1 << 2,	  // Display filename for root movie
+			kLogChildFilenames = 1 << 3,  // Display filename for child movie
+			kLongFilenames = 1 << 4		  // Display full path
 		};
 
 
@@ -27,7 +27,7 @@ namespace RE
 
 
 		constexpr ActionControlFlags GetFlags() const { return actionFlags; }
-		constexpr void SetFlags(ActionControlFlags a_actionFlags) { actionFlags = a_actionFlags; }
+		constexpr void				 SetFlags(ActionControlFlags a_actionFlags) { actionFlags = a_actionFlags; }
 
 		constexpr void SetVerboseLogging() { actionFlags |= ActionControlFlags::kVerbose; }
 		constexpr void UnsetVerboseLogging() { actionFlags &= ~ActionControlFlags::kVerbose; }
@@ -49,8 +49,8 @@ namespace RE
 
 
 		// members
-		ActionControlFlags	actionFlags;	// 18
-		UInt32				pad1C;			// 1C
+		ActionControlFlags actionFlags;	 // 18
+		UInt32			   pad1C;		 // 1C
 	};
 	STATIC_ASSERT(sizeof(GFxActionControl) == 0x20);
 }

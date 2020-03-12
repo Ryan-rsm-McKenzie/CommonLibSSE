@@ -1,7 +1,7 @@
 #include "RE/TESForm.h"
 
-#include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/IObjectHandlePolicy.h"
+#include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/ExtraEnchantment.h"
 #include "RE/FormTraits.h"
 #include "RE/GlobalLookupInfo.h"

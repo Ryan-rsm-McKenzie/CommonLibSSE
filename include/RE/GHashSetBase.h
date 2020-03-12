@@ -2,10 +2,10 @@
 
 #include <cassert>
 
+#include "GMath.h"
 #include "RE/GAllocator.h"
 #include "RE/GFixedSizeHash.h"
 #include "RE/GHashsetCachedEntry.h"
-#include "GMath.h"
 #include "RE/GMemory.h"
 
 
@@ -16,8 +16,8 @@ namespace RE
 		class HashF = GFixedSizeHash<C>,
 		class AltHashF = HashF,
 		class Allocator = GAllocatorGH<C>,
-		class Entry = GHashsetCachedEntry<C, HashF>
-	> class GHashSetBase
+		class Entry = GHashsetCachedEntry<C, HashF>>
+	class GHashSetBase
 	{
 	public:
 		using SelfType = GHashSetBase<C, HashF, AltHashF, Allocator, Entry>;
@@ -88,7 +88,7 @@ namespace RE
 			{}
 
 
-			const SelfType*	hash;	// 00
+			const SelfType* hash;	// 00
 			SPInt			index;	// 08
 		};
 		STATIC_ASSERT(sizeof(const_iterator) == 0x10);
@@ -121,8 +121,8 @@ namespace RE
 			void Remove()
 			{
 				SelfType* theHash = const_cast<SelfType*>(const_iterator::hash);
-				Entry* ee = &theHash->E(const_iterator::index);
-				const C& key = ee->value;
+				Entry*	  ee = &theHash->E(const_iterator::index);
+				const C&  key = ee->value;
 
 				UPInt hashValue = AltHashF()(key);
 				SPInt index = hashValue & hash->table->sizeMask;
@@ -358,7 +358,7 @@ namespace RE
 		}
 
 
-		template<class K>
+		template <class K>
 		const C* Get(const K& key) const
 		{
 			SPInt index = FindIndex(key);
@@ -385,7 +385,7 @@ namespace RE
 		template <class K>
 		C* GetAlt(const K& a_key)
 		{
-			SPInt   index = FindIndexAlt(a_key);
+			SPInt index = FindIndexAlt(a_key);
 			if (index >= 0)
 				return &E(index).value;
 			return 0;
@@ -507,14 +507,17 @@ namespace RE
 		}
 
 	private:
-		enum { HashMinSize = 8 };
+		enum
+		{
+			HashMinSize = 8
+		};
 
 
 		struct TableType
 		{
-			UPInt	entryCount;	// 00
-			UPInt	sizeMask;	// 08
-			//Entry	entries[0];	// 10
+			UPInt entryCount;  // 00
+			UPInt sizeMask;	   // 08
+							   //Entry	entries[0];	// 10
 		};
 		STATIC_ASSERT(sizeof(TableType) == 0x10);
 
@@ -547,7 +550,7 @@ namespace RE
 			assert(table);
 			assert((a_hashValue & ~table->sizeMask) == 0);
 
-			UPInt index = a_hashValue;
+			UPInt		 index = a_hashValue;
 			const Entry* entry = &E(index);
 
 			if (entry->IsEmpty() || (entry->GetCachedHash(table->sizeMask) != index)) {
@@ -581,11 +584,11 @@ namespace RE
 
 			++(table->entryCount);
 
-			SPInt index = a_hashValue;
+			SPInt  index = a_hashValue;
 			Entry* naturalEntry = &(E(index));
 
 			if (naturalEntry->IsEmpty()) {
-				new(naturalEntry) Entry(a_key, -1);
+				new (naturalEntry) Entry(a_key, -1);
 			} else {
 				SPInt blankIndex = index;
 				do {
@@ -595,7 +598,7 @@ namespace RE
 				Entry* blankEntry = &E(blankIndex);
 
 				if (naturalEntry->GetCachedHash(table->sizeMask) == (UPInt)index) {
-					new(blankEntry) Entry(*naturalEntry);
+					new (blankEntry) Entry(*naturalEntry);
 					naturalEntry->value = a_key;
 					naturalEntry->nextInChain = blankIndex;
 				} else {
@@ -604,7 +607,7 @@ namespace RE
 					for (;;) {
 						Entry* entry = &E(collidedIndex);
 						if (entry->nextInChain == index) {
-							new(blankEntry) Entry(*naturalEntry);
+							new (blankEntry) Entry(*naturalEntry);
 							entry->nextInChain = blankIndex;
 							break;
 						}
@@ -680,7 +683,7 @@ namespace RE
 
 
 		// members
-		TableType* table;	// 00
+		TableType* table;  // 00
 	};
 	// size == 0x8
 }

@@ -18,7 +18,7 @@ namespace RE
 		{}
 
 
-		virtual ~FxResponseArgs() = default;					// 00
+		virtual ~FxResponseArgs() = default;  // 00
 
 
 		// override (FxResponseArgsBase)
@@ -39,9 +39,9 @@ namespace RE
 		}
 
 	protected:
-		GFxValue	_values[SIZE + 1];	// 08 - includes response data
-		UInt32		_index;				// ??
-		UInt32		_pad;				// ??
+		GFxValue _values[SIZE + 1];	 // 08 - includes response data
+		UInt32	 _index;			 // ??
+		UInt32	 _pad;				 // ??
 	};
 	STATIC_ASSERT(sizeof(FxResponseArgs<1>) == 0x40);
 }

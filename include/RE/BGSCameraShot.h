@@ -17,7 +17,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSCameraShot;
 
 
-		enum { kTypeID = FormType::CameraShot };
+		enum
+		{
+			kTypeID = FormType::CameraShot
+		};
 
 
 		enum class CAM_ACTION : UInt32
@@ -48,7 +51,7 @@ namespace RE
 		};
 
 
-		struct CAMERA_SHOT_DATA	// DATA
+		struct CAMERA_SHOT_DATA	 // DATA
 		{
 			enum class Flag : UInt32
 			{
@@ -62,40 +65,40 @@ namespace RE
 			};
 
 
-			CAM_ACTION	cameraAction;				// 00
-			CAM_OBJECT	location;					// 04
-			CAM_OBJECT	target;						// 08
-			Flag		flags;						// 0C
-			float		playerTimeMult;				// 10
-			float		targetTimeMult;				// 14
-			float		globalTimeMult;				// 18
-			float		maxTime;					// 1C
-			float		minTime;					// 20
-			float		targetPercentBetweenActors;	// 24
-			float		nearTargetDistance;			// 28
+			CAM_ACTION cameraAction;				// 00
+			CAM_OBJECT location;					// 04
+			CAM_OBJECT target;						// 08
+			Flag	   flags;						// 0C
+			float	   playerTimeMult;				// 10
+			float	   targetTimeMult;				// 14
+			float	   globalTimeMult;				// 18
+			float	   maxTime;						// 1C
+			float	   minTime;						// 20
+			float	   targetPercentBetweenActors;	// 24
+			float	   nearTargetDistance;			// 28
 		};
 		STATIC_ASSERT(sizeof(CAMERA_SHOT_DATA) == 0x2C);
 
 
-		virtual ~BGSCameraShot();						// 00
+		virtual ~BGSCameraShot();  // 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;		// 04
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void InitializeData() override;		 // 04
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
 		// members
-		CAMERA_SHOT_DATA	data;	// 58 - DATA
-		UInt32				pad84;	// 84
-		void*				unk88;	// 88 - smart ptr
-		void*				unk90;	// 90 - smart ptr
-		RefHandle			unk98;	// 98
-		UInt32				unk9C;	// 9C
-		void*				unkA0;	// A0 - smart ptr
-		void*				unkA8;	// A8 - smart ptr
-		UInt64				unkB0;	// B0
-		void*				unkB8;	// B8
+		CAMERA_SHOT_DATA data;	 // 58 - DATA
+		UInt32			 pad84;	 // 84
+		void*			 unk88;	 // 88 - smart ptr
+		void*			 unk90;	 // 90 - smart ptr
+		RefHandle		 unk98;	 // 98
+		UInt32			 unk9C;	 // 9C
+		void*			 unkA0;	 // A0 - smart ptr
+		void*			 unkA8;	 // A8 - smart ptr
+		UInt64			 unkB0;	 // B0
+		void*			 unkB8;	 // B8
 	};
 	STATIC_ASSERT(sizeof(BGSCameraShot) == 0xC0);
 }

@@ -1,9 +1,9 @@
 #pragma once
 
 #include <cassert>
+#include <iterator>
 #include <memory>
 #include <utility>
-#include <iterator>
 
 #include "RE/MemoryManager.h"
 
@@ -96,8 +96,8 @@ namespace RE
 
 
 			// members
-			value_type	item;	// 00
-			Node*		next;	// ??
+			value_type item;  // 00
+			Node*	   next;  // ??
 		};
 
 
@@ -472,7 +472,7 @@ namespace RE
 				++pos;
 				if (old == &_listHead) {
 					old->item.~value_type();
-					new(std::addressof(old->item)) value_type{};
+					new (std::addressof(old->item)) value_type{};
 					old->next = 0;
 				} else {
 					delete old;
@@ -486,10 +486,10 @@ namespace RE
 		void push_front(const T& a_value)
 		{
 			if (empty()) {
-				new(std::addressof(_listHead.item)) value_type(a_value);
+				new (std::addressof(_listHead.item)) value_type(a_value);
 			} else {
 				auto node = new Node(std::move(_listHead));
-				new(std::addressof(_listHead.item)) value_type(a_value);
+				new (std::addressof(_listHead.item)) value_type(a_value);
 				_listHead.next = node;
 			}
 		}
@@ -498,10 +498,10 @@ namespace RE
 		void push_front(T&& a_value)
 		{
 			if (empty()) {
-				new(std::addressof(_listHead.item)) value_type(std::move(a_value));
+				new (std::addressof(_listHead.item)) value_type(std::move(a_value));
 			} else {
 				auto node = new Node(std::move(_listHead));
-				new(std::addressof(_listHead.item)) value_type(std::move(a_value));
+				new (std::addressof(_listHead.item)) value_type(std::move(a_value));
 				_listHead.next = node;
 			}
 		}
@@ -511,10 +511,10 @@ namespace RE
 		reference emplace_front(Args&&... a_args)
 		{
 			if (empty()) {
-				new(std::addressof(_listHead.item)) value_type{ std::forward<Args>(a_args)... };
+				new (std::addressof(_listHead.item)) value_type{ std::forward<Args>(a_args)... };
 			} else {
 				auto node = new Node(std::move(_listHead));
-				new(std::addressof(_listHead.item)) value_type{ std::forward<Args>(a_args)... };
+				new (std::addressof(_listHead.item)) value_type{ std::forward<Args>(a_args)... };
 				_listHead.next = node;
 			}
 			return _listHead.item;
@@ -527,12 +527,12 @@ namespace RE
 			_listHead.item.~value_type();
 
 			if (_listHead.next) {
-				new(std::addressof(_listHead.item)) value_type(std::move(_listHead.next->item));
+				new (std::addressof(_listHead.item)) value_type(std::move(_listHead.next->item));
 				auto old = _listHead.next;
 				_listHead.next = old->next;
 				delete old;
 			} else {
-				new(std::addressof(_listHead.item)) value_type{};
+				new (std::addressof(_listHead.item)) value_type{};
 			}
 		}
 
@@ -574,7 +574,7 @@ namespace RE
 				return;
 			}
 
-			auto cur = begin();
+			auto	  cur = begin();
 			size_type elems = 1;
 			while (cur != end() && elems != a_count) {
 				++cur;
@@ -607,7 +607,7 @@ namespace RE
 
 
 		// members
-		Node _listHead;	// 00
+		Node _listHead;	 // 00
 
 		// T				_item;	// 00
 		// BSSimpleList<T>* _next;	// ??

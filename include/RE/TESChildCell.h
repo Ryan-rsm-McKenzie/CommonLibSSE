@@ -9,10 +9,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESChildCell;
 
 
-		virtual ~TESChildCell();						// 00
+		virtual ~TESChildCell();  // 00
 
 		// add
-		virtual TESObjectCELL* GetSaveParentCell() = 0;	// 01
+		virtual TESObjectCELL* GetSaveParentCell() = 0;	 // 01
 	};
 	STATIC_ASSERT(sizeof(TESChildCell) == 0x8);
 }

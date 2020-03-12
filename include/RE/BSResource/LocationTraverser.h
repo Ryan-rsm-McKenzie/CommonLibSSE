@@ -15,7 +15,7 @@ namespace RE
 
 
 			// add
-			virtual void ProcessName(const char* a_name, Location& a_location) = 0;	// 00
+			virtual void ProcessName(const char* a_name, Location& a_location) = 0;	 // 00
 		};
 		STATIC_ASSERT(sizeof(LocationTraverser) == 0x8);
 	}

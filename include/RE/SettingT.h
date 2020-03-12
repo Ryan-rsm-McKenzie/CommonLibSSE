@@ -10,7 +10,7 @@ namespace RE
 	class SettingT : public Setting
 	{
 	public:
-		virtual ~SettingT();	// 00
+		virtual ~SettingT();  // 00
 	};
 	STATIC_ASSERT(sizeof(SettingT<void*>) == 0x18);
 }

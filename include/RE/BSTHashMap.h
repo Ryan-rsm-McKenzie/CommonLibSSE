@@ -66,8 +66,8 @@ namespace RE
 			}
 
 
-			value_type value;			// 00
-			BSTScatterTableEntry* next;	// ??
+			value_type			  value;  // 00
+			BSTScatterTableEntry* next;	  // ??
 		};
 
 
@@ -260,7 +260,7 @@ namespace RE
 			return _capacity - _freeCount;
 		}
 
-		
+
 		size_type max_size() const
 		{
 			return _allocator.max_size();
@@ -293,17 +293,17 @@ namespace RE
 
 		size_type erase(const key_type& a_key)
 		{
-			if (!get_entries()) {	// no entries
+			if (!get_entries()) {  // no entries
 				return 0;
 			}
 
 			auto entry = calc_pos(a_key);
-			if (!entry->next) {	// key not in table
+			if (!entry->next) {	 // key not in table
 				return 0;
 			}
 
 			entry_type* tail = 0;
-			while (!comp_key(get_key(entry->value), a_key)) {	// find key in table
+			while (!comp_key(get_key(entry->value), a_key)) {  // find key in table
 				tail = entry;
 				entry = entry->next;
 				if (entry == _sentinel) {
@@ -313,13 +313,13 @@ namespace RE
 
 			entry->value.~value_type();
 
-			if (entry->next == _sentinel) {	// if no chain
+			if (entry->next == _sentinel) {	 // if no chain
 				if (tail) {
 					tail->next = const_cast<entry_type*>(_sentinel);
 				}
 				entry->next = 0;
-			} else {	// else move next entry into current
-				new(entry) entry_type(std::move(*entry->next));
+			} else {  // else move next entry into current
+				new (entry) entry_type(std::move(*entry->next));
 			}
 
 			++_freeCount;
@@ -348,7 +348,7 @@ namespace RE
 			}
 
 			constexpr auto TOP = static_cast<UInt32>(1 << 31);
-			UInt32 leftShifts = 0;
+			UInt32		   leftShifts = 0;
 			while ((a_count & TOP) == 0) {
 				a_count <<= 1;
 				++leftShifts;
@@ -377,9 +377,9 @@ namespace RE
 				return 0;
 			}
 
-			auto probe = calc_pos(a_key);	// try ideal pos
+			auto probe = calc_pos(a_key);  // try ideal pos
 			if (!probe->next) {
-				return 0;	// nothing there
+				return 0;  // nothing there
 			}
 
 			do {
@@ -388,7 +388,7 @@ namespace RE
 				} else {
 					probe = probe->next;
 				}
-			} while (probe != _sentinel);	// follow chain
+			} while (probe != _sentinel);  // follow chain
 
 			return 0;
 		}
@@ -399,19 +399,19 @@ namespace RE
 		{
 			if (!get_entries() || !_freeCount) {
 				if (!grow()) {
-					return std::make_pair(end(), false);	// maybe throw?
+					return std::make_pair(end(), false);  // maybe throw?
 				}
 			}
 
 			auto idealEntry = calc_pos(get_key(a_value));
-			if (!idealEntry->next) {	// if slot empty
-				new(std::addressof(idealEntry->value)) value_type(std::forward<Arg>(a_value));
+			if (!idealEntry->next) {  // if slot empty
+				new (std::addressof(idealEntry->value)) value_type(std::forward<Arg>(a_value));
 				idealEntry->next = const_cast<entry_type*>(_sentinel);
 				return std::make_pair(make_iterator(idealEntry), true);
 			}
 
 			for (auto iter = idealEntry; iter != _sentinel; iter = iter->next) {
-				if (comp_key(get_key(iter->value), get_key(a_value))) {	// if entry already in table
+				if (comp_key(get_key(iter->value), get_key(a_value))) {	 // if entry already in table
 					if (a_overwrite) {
 						iter->value.~value_type();
 						new (std::addressof(iter->value)) value_type(std::forward<Arg>(a_value));
@@ -423,22 +423,22 @@ namespace RE
 			auto freeEntry = get_free_entry();
 
 			auto takenIdealEntry = calc_pos(get_key(idealEntry->value));
-			if (takenIdealEntry == idealEntry) {	// if entry occupying our slot would've hashed here anyway
+			if (takenIdealEntry == idealEntry) {  // if entry occupying our slot would've hashed here anyway
 				freeEntry->next = idealEntry->next;
 				idealEntry->next = freeEntry;
-				new(std::addressof(freeEntry->value)) value_type(std::forward<Arg>(a_value));
+				new (std::addressof(freeEntry->value)) value_type(std::forward<Arg>(a_value));
 				return std::make_pair(make_iterator(freeEntry), true);
 			}
 
-			while (takenIdealEntry->next != idealEntry) {	// find entry that links here
+			while (takenIdealEntry->next != idealEntry) {  // find entry that links here
 				takenIdealEntry = takenIdealEntry->next;
 			}
 
 			// move taken slot out, so we can move in
-			new(std::addressof(freeEntry->value)) value_type(std::move(idealEntry->value));
+			new (std::addressof(freeEntry->value)) value_type(std::move(idealEntry->value));
 			freeEntry->next = idealEntry->next;
 			takenIdealEntry->next = freeEntry;
-			new(std::addressof(idealEntry->value)) value_type(std::forward<Arg>(a_value));
+			new (std::addressof(idealEntry->value)) value_type(std::forward<Arg>(a_value));
 			idealEntry->next = const_cast<entry_type*>(_sentinel);
 			return std::make_pair(make_iterator(idealEntry), true);
 		}
@@ -575,13 +575,13 @@ namespace RE
 
 
 		// members
-		UInt64				_pad00;		// 00
-		UInt32				_pad08;		// 08
-		UInt32				_capacity;	// 0C - this must be 2^n, or else terrible things will happen
-		UInt32				_freeCount;	// 10
-		UInt32				_freeIdx;	// 14
-		const entry_type*	_sentinel;	// 18
-		allocator_type		_allocator;	// 20
+		UInt64			  _pad00;	   // 00
+		UInt32			  _pad08;	   // 08
+		UInt32			  _capacity;   // 0C - this must be 2^n, or else terrible things will happen
+		UInt32			  _freeCount;  // 10
+		UInt32			  _freeIdx;	   // 14
+		const entry_type* _sentinel;   // 18
+		allocator_type	  _allocator;  // 20
 	};
 
 
@@ -655,8 +655,8 @@ namespace RE
 
 	private:
 		// members
-		UInt64		_pad00;		// 00 (20)
-		entry_type*	_entries;	// 08 (28)
+		UInt64		_pad00;	   // 00 (20)
+		entry_type* _entries;  // 08 (28)
 	};
 	STATIC_ASSERT(sizeof(BSTScatterTableHeapAllocator<void*, 8>) == 0x10);
 
@@ -741,8 +741,8 @@ namespace RE
 
 		private:
 			// members
-			entry_type	_data[N];	// 00 (20)
-			entry_type*	_entries;	// ?? (??)
+			entry_type	_data[N];  // 00 (20)
+			entry_type* _entries;  // ?? (??)
 		};
 	};
 

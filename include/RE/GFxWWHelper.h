@@ -19,10 +19,10 @@ namespace RE
 		enum class WordWrappingType : UInt32
 		{
 			kNone = 0,
-			kDefault = kNone,					// - Custom word-wrapping is off, OnWordWrapping will not be invoked
-			kAsian = 1 << 0,					// - Turns on Chinese word-wrapping rules
-			kProhibition = 1 << 1,				// - Prohibits certain chars at start/end of line (turns on Japanese prohibition rule)
-			kNoHangulWrap = 1 << 2,				// - Turns on Korean-specific word-wrapping rules
+			kDefault = kNone,		 // - Custom word-wrapping is off, OnWordWrapping will not be invoked
+			kAsian = 1 << 0,		 // - Turns on Chinese word-wrapping rules
+			kProhibition = 1 << 1,	 // - Prohibits certain chars at start/end of line (turns on Japanese prohibition rule)
+			kNoHangulWrap = 1 << 2,	 // - Turns on Korean-specific word-wrapping rules
 			kCustom = 1 << 7,
 			kLast = kNoHangulWrap,
 			kHyphenation = kLast < 1,
@@ -35,25 +35,25 @@ namespace RE
 
 		struct CharBreakInfo
 		{
-			wchar_t			ch;		// 0
-			BreakInfoFlags	flags;	// 2
-			UInt8			pad3;	// 3
+			wchar_t		   ch;	   // 0
+			BreakInfoFlags flags;  // 2
+			UInt8		   pad3;   // 3
 		};
 		STATIC_ASSERT(sizeof(CharBreakInfo) == 0x4);
 
 
-		static bool		FindCharWithFlags(WordWrappingType a_wwMode, wchar_t a_ch, BreakInfoFlags a_charBreakFlags);
-		static bool		IsAsianChar(WordWrappingType a_wwMode, wchar_t a_ch);
-		static bool		IsNonStartingChar(WordWrappingType a_wwMode, wchar_t a_ch);
-		static bool		IsNonTerminatingChar(WordWrappingType a_wwMode, wchar_t a_ch);
-		static bool		IsWhiteSpaceChar(wchar_t a_ch);
-		static bool		IsLineFeedChar(wchar_t a_ch);
-		static bool		IsLineBreakOpportunityAt(WordWrappingType a_wwMode, const wchar_t* a_wstr, UPInt a_index);
-		static bool		IsLineBreakOpportunityAt(WordWrappingType a_wwMode, wchar_t a_prevChar, wchar_t a_curChar);
-		static UPInt	FindNextNonWhiteSpace(const wchar_t* a_wstr, UPInt a_pos, UPInt a_maxPos);
-		static UPInt	FindPrevNonWhiteSpace(const wchar_t* a_wstr, UPInt a_pos);
-		static bool		IsVowel(wchar_t a_ch);
-		static UPInt	FindWordWrapPos(WordWrappingType a_wwMode, UPInt a_wordWrapPos, const wchar_t* a_paraText, UPInt a_paraLen, UPInt a_lineStartPos, UPInt a_lineLen);
+		static bool	 FindCharWithFlags(WordWrappingType a_wwMode, wchar_t a_ch, BreakInfoFlags a_charBreakFlags);
+		static bool	 IsAsianChar(WordWrappingType a_wwMode, wchar_t a_ch);
+		static bool	 IsNonStartingChar(WordWrappingType a_wwMode, wchar_t a_ch);
+		static bool	 IsNonTerminatingChar(WordWrappingType a_wwMode, wchar_t a_ch);
+		static bool	 IsWhiteSpaceChar(wchar_t a_ch);
+		static bool	 IsLineFeedChar(wchar_t a_ch);
+		static bool	 IsLineBreakOpportunityAt(WordWrappingType a_wwMode, const wchar_t* a_wstr, UPInt a_index);
+		static bool	 IsLineBreakOpportunityAt(WordWrappingType a_wwMode, wchar_t a_prevChar, wchar_t a_curChar);
+		static UPInt FindNextNonWhiteSpace(const wchar_t* a_wstr, UPInt a_pos, UPInt a_maxPos);
+		static UPInt FindPrevNonWhiteSpace(const wchar_t* a_wstr, UPInt a_pos);
+		static bool	 IsVowel(wchar_t a_ch);
+		static UPInt FindWordWrapPos(WordWrappingType a_wwMode, UPInt a_wordWrapPos, const wchar_t* a_paraText, UPInt a_paraLen, UPInt a_lineStartPos, UPInt a_lineLen);
 
 
 		static inline CharBreakInfo charBreakInfoArray[] = {

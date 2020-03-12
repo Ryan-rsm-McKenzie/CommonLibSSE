@@ -14,7 +14,7 @@ namespace RE
 		return func(a_feature);
 	}
 
-	
+
 	NiPointer<BSTextureSet> BSLightingShaderMaterialBase::GetTextureSet() const
 	{
 		return textureSet;

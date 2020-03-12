@@ -36,8 +36,7 @@ namespace RE
 		}
 
 		if (isProcessing) {
-			auto pos = std::find_if(regBuffer.begin(), regBuffer.end(), [a_handler](const QueuedReg& a_elem) -> bool
-			{
+			auto pos = std::find_if(regBuffer.begin(), regBuffer.end(), [a_handler](const QueuedReg& a_elem) -> bool {
 				return a_elem.handler == a_handler;
 			});
 
@@ -70,8 +69,7 @@ namespace RE
 
 		if (isProcessing) {
 			a_handler->registered = false;
-			auto pos = std::find_if(regBuffer.begin(), regBuffer.end(), [a_handler](const QueuedReg& a_elem) -> bool
-			{
+			auto pos = std::find_if(regBuffer.begin(), regBuffer.end(), [a_handler](const QueuedReg& a_elem) -> bool {
 				return a_elem.handler == a_handler;
 			});
 

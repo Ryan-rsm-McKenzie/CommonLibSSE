@@ -75,27 +75,27 @@ namespace RE
 				};
 
 
-				virtual ~CodeTasklet();																																								// 00
+				virtual ~CodeTasklet();	 // 00
 
 				// override (IFuncCallQuery)
 				virtual bool GetFunctionCallInfo(CallType& a_callType, BSTSmartPointer<ObjectTypeInfo>& a_arg2, BSFixedString& a_arg3, Variable& a_arg4, BSScrapArray<Variable>& a_arg5) override;	// 01
 
 
 				// members
-				Stack*			stack;						// 10
-				VirtualMachine*	vm;							// 18
-				ErrorLogger*	errorLogger;				// 20
-				ResumeReason	resumeReason;				// 28
-				UInt32			pad2C;						// 2C
-				StackFrame*		topFrame;					// 30
-				UInt32			frameMemoryPage;			// 38
-				SInt8			jumpBitCount;				// 3C
-				SInt8			localVarBitCount;			// 3D
-				SInt8			memberVarBitCount;			// 3E
-				UInt8			pad3F;						// 3F
-				UInt32			instructionDataBitCount;	// 40
-				UInt32			pad44;						// 44
-				const void*		instructionDataStart;		// 48
+				Stack*			stack;					  // 10
+				VirtualMachine* vm;						  // 18
+				ErrorLogger*	errorLogger;			  // 20
+				ResumeReason	resumeReason;			  // 28
+				UInt32			pad2C;					  // 2C
+				StackFrame*		topFrame;				  // 30
+				UInt32			frameMemoryPage;		  // 38
+				SInt8			jumpBitCount;			  // 3C
+				SInt8			localVarBitCount;		  // 3D
+				SInt8			memberVarBitCount;		  // 3E
+				UInt8			pad3F;					  // 3F
+				UInt32			instructionDataBitCount;  // 40
+				UInt32			pad44;					  // 44
+				const void*		instructionDataStart;	  // 48
 			};
 			STATIC_ASSERT(sizeof(CodeTasklet) == 0x50);
 		}

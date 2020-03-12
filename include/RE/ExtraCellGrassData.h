@@ -15,11 +15,11 @@ namespace RE
 
 	struct CellGrassData
 	{
-		UInt64							grassTypeKey;	// 00
-		BSFixedString					grassModelKey;	// 08
-		NiPointer<BSInstanceTriShape>	triShape;		// 10
-		BSTArray<void*>					unk18;			// 18
-		BSTArray<void*>					unk30;			// 30
+		UInt64						  grassTypeKey;	  // 00
+		BSFixedString				  grassModelKey;  // 08
+		NiPointer<BSInstanceTriShape> triShape;		  // 10
+		BSTArray<void*>				  unk18;		  // 18
+		BSTArray<void*>				  unk30;		  // 30
 	};
 	STATIC_ASSERT(sizeof(CellGrassData) == 0x48);
 
@@ -30,18 +30,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraCellGrassData;
 
 
-		enum { kExtraTypeID = ExtraDataType::kCellGrassData };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kCellGrassData
+		};
 
 
-		virtual ~ExtraCellGrassData();					// 00
+		virtual ~ExtraCellGrassData();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kCellGrassData; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kCellGrassData; }
 
 
 		// members
-		BSTArray<CellGrassData*>	grassHandles;	// 10
-		NiPointer<AddCellGrassTask>	addGrassTask;	// 28
+		BSTArray<CellGrassData*>	grassHandles;  // 10
+		NiPointer<AddCellGrassTask> addGrassTask;  // 28
 	};
 	STATIC_ASSERT(sizeof(ExtraCellGrassData) == 0x30);
 }

@@ -109,7 +109,7 @@ namespace RE
 
 
 		// members
-		UInt32 _handle;	// 0
+		UInt32 _handle;	 // 0
 	};
 	STATIC_ASSERT(sizeof(BSUntypedPointerHandle<>) == 0x4);
 }

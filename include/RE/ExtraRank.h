@@ -12,21 +12,24 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraRank;
 
 
-		enum { kExtraTypeID = ExtraDataType::kRank };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kRank
+		};
 
 
 		ExtraRank();
 		explicit ExtraRank(SInt32 a_rank);
-		virtual ~ExtraRank() = default;													// 00
+		virtual ~ExtraRank() = default;	 // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kRank; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return rank != a_rhs->rank; }
+		virtual ExtraDataType GetType() const override;								// 01 - { return kRank; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return rank != a_rhs->rank; }
 
 
 		// members
-		SInt32	rank;	// 10
-		UInt32	pad14;	// 14
+		SInt32 rank;   // 10
+		UInt32 pad14;  // 14
 	};
 	STATIC_ASSERT(sizeof(ExtraRank) == 0x18);
 }

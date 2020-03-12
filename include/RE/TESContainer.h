@@ -18,7 +18,7 @@ namespace RE
 		SInt32				count;		// 00 - CNTO~
 		UInt32				pad04;		// 04
 		TESBoundObject*		obj;		// 08 - ~CNTO
-		ContainerItemExtra*	itemExtra;	// 10 - COED
+		ContainerItemExtra* itemExtra;	// 10 - COED
 	};
 	STATIC_ASSERT(sizeof(ContainerObject) == 0x18);
 
@@ -29,23 +29,23 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESContainer;
 
 
-		virtual ~TESContainer();											// 00
+		virtual ~TESContainer();  // 00
 
 		// override (BaseFormComponent)
-		virtual void	InitializeDataComponent() override;					// 01 - { return; }
-		virtual void	ClearDataComponent() override;						// 02
-		virtual void	CopyComponent(BaseFormComponent* a_rhs) override;	// 03
+		virtual void InitializeDataComponent() override;				// 01 - { return; }
+		virtual void ClearDataComponent() override;						// 02
+		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 
 		inline void						ForEachContainerObject(llvm::function_ref<bool(ContainerObject*)> a_fn) const;
-		std::optional<ContainerObject*>	GetContainerObjectAt(UInt32 a_idx) const;
+		std::optional<ContainerObject*> GetContainerObjectAt(UInt32 a_idx) const;
 		SInt32							CountObjectsInContainer(TESBoundObject* a_object) const;
 
 
 		// members
-		ContainerObject**	containerObjects;		// 08
-		UInt32				numContainerObjects;	// 10
-		UInt32				pad14;					// 14
+		ContainerObject** containerObjects;		// 08
+		UInt32			  numContainerObjects;	// 10
+		UInt32			  pad14;				// 14
 	};
 	STATIC_ASSERT(sizeof(TESContainer) == 0x18);
 

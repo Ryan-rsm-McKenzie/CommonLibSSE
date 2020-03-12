@@ -47,12 +47,12 @@ namespace RE
 			kNone = 0,
 			kNoCollision = 1 << 14,
 
-			kLayerMask = 0x7F	// COL_LAYER
+			kLayerMask = 0x7F  // COL_LAYER
 		};
 
 
 		// members
-		Flag flags;	// 0
+		Flag flags;	 // 0
 	};
 	STATIC_ASSERT(sizeof(CFilter) == 0x4);
 }

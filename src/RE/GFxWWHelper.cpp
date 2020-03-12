@@ -18,8 +18,7 @@ namespace RE
 
 		constexpr auto SIZE = std::extent<decltype(charBreakInfoArray)>::value;
 		auto endIt = charBreakInfoArray + SIZE;
-		auto it = std::lower_bound(charBreakInfoArray, endIt, key, [](const CharBreakInfo& a_lhs, const CharBreakInfo& a_rhs) -> bool
-		{
+		auto it = std::lower_bound(charBreakInfoArray, endIt, key, [](const CharBreakInfo& a_lhs, const CharBreakInfo& a_rhs) -> bool {
 			return a_lhs.ch < a_rhs.ch;
 		});
 

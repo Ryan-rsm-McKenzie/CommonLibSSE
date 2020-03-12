@@ -8,7 +8,7 @@ namespace RE
 {
 	UIBlurManager* UIBlurManager::GetSingleton()
 	{
-		REL::Offset< UIBlurManager**> singleton(Offset::UIBlurManager::Singleton);
+		REL::Offset<UIBlurManager**> singleton(Offset::UIBlurManager::Singleton);
 		return *singleton;
 	}
 

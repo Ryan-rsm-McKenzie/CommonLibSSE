@@ -14,21 +14,24 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraFollower;
 
 
-		enum { kExtraTypeID = ExtraDataType::kFollower };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kFollower
+		};
 
 
 		struct FollowerInfo
 		{
-			ActorHandle	actor;					// 0
-			float		intendedFollowDistance;	// 4
+			ActorHandle actor;					 // 0
+			float		intendedFollowDistance;	 // 4
 		};
 		STATIC_ASSERT(sizeof(FollowerInfo) == 0x8);
 
 
-		virtual ~ExtraFollower();						// 00
+		virtual ~ExtraFollower();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kFollower; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kFollower; }
 
 
 		// members

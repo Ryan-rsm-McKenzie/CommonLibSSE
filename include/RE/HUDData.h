@@ -37,21 +37,21 @@ namespace RE
 		};
 
 
-		virtual ~HUDData();	// 00
+		virtual ~HUDData();	 // 00
 
 
 		// members
-		Type		type;		// 10
-		UInt32		pad14;		// 14
-		BSString	text;		// 18
-		UInt32		unk28;		// 28
-		UInt32		pad2C;		// 2C
-		void*		unk30;		// 30
-		UInt64		unk38;		// 38
-		UInt8		unk40;		// 40
-		UInt8		pad41;		// 41
-		UInt16		pad42;		// 42
-		Discovery	discovery;	// 44
+		Type	  type;		  // 10
+		UInt32	  pad14;	  // 14
+		BSString  text;		  // 18
+		UInt32	  unk28;	  // 28
+		UInt32	  pad2C;	  // 2C
+		void*	  unk30;	  // 30
+		UInt64	  unk38;	  // 38
+		UInt8	  unk40;	  // 40
+		UInt8	  pad41;	  // 41
+		UInt16	  pad42;	  // 42
+		Discovery discovery;  // 44
 	};
 	STATIC_ASSERT(sizeof(HUDData) == 0x48);
 }

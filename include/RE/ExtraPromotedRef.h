@@ -14,17 +14,20 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraPromotedRef;
 
 
-		enum { kExtraTypeID = ExtraDataType::kPromotedRef };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kPromotedRef
+		};
 
 
-		virtual ~ExtraPromotedRef();					// 00
+		virtual ~ExtraPromotedRef();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kPromotedRef };
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kPromotedRef };
 
 
 		// members
-		BSTArray<TESForm*> promotedRefOwners;	// 10
+		BSTArray<TESForm*> promotedRefOwners;  // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraPromotedRef) == 0x28);
 }

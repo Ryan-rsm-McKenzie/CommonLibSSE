@@ -18,12 +18,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSAttackDataMap;
 
 
-		virtual ~BGSAttackDataMap();	// 00
+		virtual ~BGSAttackDataMap();  // 00
 
 
 		// members
-		BSTHashMap<BSFixedString, NiPointer<BGSAttackData>>	attackDataMap;		// 10
-		TESRace*											defaultDataRace;	// 40 - ATKR
+		BSTHashMap<BSFixedString, NiPointer<BGSAttackData>> attackDataMap;	  // 10
+		TESRace*											defaultDataRace;  // 40 - ATKR
 	};
 	STATIC_ASSERT(sizeof(BGSAttackDataMap) == 0x48);
 }

@@ -16,17 +16,20 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraPlayerCrimeList;
 
 
-		enum { kExtraTypeID = ExtraDataType::kPlayerCrimeList };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kPlayerCrimeList
+		};
 
 
-		virtual ~ExtraPlayerCrimeList();				// 00
+		virtual ~ExtraPlayerCrimeList();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kPlayerCrimeList; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kPlayerCrimeList; }
 
 
 		// members
-		BSSimpleList<Crime*>* crimes;	// 10
+		BSSimpleList<Crime*>* crimes;  // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraPlayerCrimeList) == 0x18);
 }

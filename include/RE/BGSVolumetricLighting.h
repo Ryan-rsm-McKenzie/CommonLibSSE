@@ -8,14 +8,17 @@
 namespace RE
 {
 	class BGSVolumetricLighting :
-		public TESForm,							// 00
-		public BSVolumetricLightingRenderData	// 20
+		public TESForm,						   // 00
+		public BSVolumetricLightingRenderData  // 20
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSVolumetricLighting;
 
 
-		enum { kTypeID = FormType::VolumetricLighting };
+		enum
+		{
+			kTypeID = FormType::VolumetricLighting
+		};
 
 
 		struct RecordFlags
@@ -28,12 +31,12 @@ namespace RE
 		};
 
 
-		virtual ~BGSVolumetricLighting();				// 00
+		virtual ~BGSVolumetricLighting();  // 00
 
 		// override (TESForm)
-		virtual void	ClearData() override;			// 05 - { return; }
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void ClearData() override;			 // 05 - { return; }
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 	};
 	STATIC_ASSERT(sizeof(BGSVolumetricLighting) == 0x50);
 }

@@ -3,8 +3,8 @@
 #include "RE/BSExtraData.h"
 #include "RE/BSLock.h"
 #include "RE/BSPointerHandle.h"
-#include "RE/ExtraFlags.h"
 #include "RE/ExtraDataTypes.h"
+#include "RE/ExtraFlags.h"
 #include "RE/FormTypes.h"
 #include "RE/MemoryManager.h"
 #include "RE/SoulLevels.h"
@@ -134,60 +134,64 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 
-		iterator		begin();
-		const_iterator	cbegin() const;
-		const_iterator	begin() const;
-		iterator		end();
-		const_iterator	cend() const;
-		const_iterator	end() const;
+		iterator	   begin();
+		const_iterator cbegin() const;
+		const_iterator begin() const;
+		iterator	   end();
+		const_iterator cend() const;
+		const_iterator end() const;
 
-		BSExtraData*				GetByType(ExtraDataType a_type);
-		const BSExtraData*			GetByType(ExtraDataType a_type) const;
-		template <class T> T*		GetByType();
-		template <class T> const T*	GetByType() const;
+		BSExtraData*	   GetByType(ExtraDataType a_type);
+		const BSExtraData* GetByType(ExtraDataType a_type) const;
+		template <class T>
+		T* GetByType();
+		template <class T>
+		const T* GetByType() const;
 
-		bool					HasType(ExtraDataType a_type) const;
-		template <class T> bool	HasType() const;
+		bool HasType(ExtraDataType a_type) const;
+		template <class T>
+		bool HasType() const;
 
-		bool					Remove(ExtraDataType a_type, BSExtraData* a_toRemove);
-		template <class T> bool	Remove(T* a_toRemove);
+		bool Remove(ExtraDataType a_type, BSExtraData* a_toRemove);
+		template <class T>
+		bool Remove(T* a_toRemove);
 
 		bool RemoveByType(ExtraDataType a_type);
 
-		BSExtraData*			Add(BSExtraData* a_toAdd);
-		const char*				GenerateName(TESForm* a_form);
-		ObjectRefHandle			GetAshPileRefHandle();
-		SInt32					GetCount() const;
-		BGSEncounterZone*		GetEncounterZone();
-		ExtraTextDisplayData*	GetExtraTextDisplayData();
-		TESObjectREFR*			GetLinkedRef(BGSKeyword* a_keyword);
-		TESForm*				GetOwner();
-		SOUL_LEVEL				GetSoulLevel() const;
-		void					SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
-		void					SetInventoryChanges(InventoryChanges* a_changes);
-		void					SetOwner(TESForm* a_owner);
+		BSExtraData*		  Add(BSExtraData* a_toAdd);
+		const char*			  GenerateName(TESForm* a_form);
+		ObjectRefHandle		  GetAshPileRefHandle();
+		SInt32				  GetCount() const;
+		BGSEncounterZone*	  GetEncounterZone();
+		ExtraTextDisplayData* GetExtraTextDisplayData();
+		TESObjectREFR*		  GetLinkedRef(BGSKeyword* a_keyword);
+		TESForm*			  GetOwner();
+		SOUL_LEVEL			  GetSoulLevel() const;
+		void				  SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
+		void				  SetInventoryChanges(InventoryChanges* a_changes);
+		void				  SetOwner(TESForm* a_owner);
 
 	protected:
 		struct PresenceBitfield
 		{
-			bool	HasType(UInt32 a_type) const;
-			void	MarkType(UInt32 a_type, bool a_cleared);
+			bool HasType(UInt32 a_type) const;
+			void MarkType(UInt32 a_type, bool a_cleared);
 
 
 			// members
-			UInt8 bits[0x18];	// 00
+			UInt8 bits[0x18];  // 00
 		};
 		STATIC_ASSERT(sizeof(PresenceBitfield) == 0x18);
 
 
-		void	MarkType(UInt32 a_type, bool a_cleared);
-		void	MarkType(ExtraDataType a_type, bool a_cleared);
+		void MarkType(UInt32 a_type, bool a_cleared);
+		void MarkType(ExtraDataType a_type, bool a_cleared);
 
 
 		// members
 		BSExtraData*			_data;		// 00
 		PresenceBitfield*		_presence;	// 08
-		mutable BSReadWriteLock	_lock;		// 10
+		mutable BSReadWriteLock _lock;		// 10
 	};
 	STATIC_ASSERT(sizeof(ExtraDataList) == 0x18);
 

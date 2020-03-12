@@ -24,7 +24,7 @@ namespace RE
 		};
 
 
-		struct DataHeader	// RDAT
+		struct DataHeader  // RDAT
 		{
 			enum class Flag : UInt8
 			{
@@ -33,25 +33,25 @@ namespace RE
 			};
 
 
-			Flag	flags;		// 0
-			UInt8	unk09;		// 1
-			UInt8	priority;	// 2
-			UInt8	unk0B;		// 3
-			UInt32	unk0C;		// 4
+			Flag   flags;	  // 0
+			UInt8  unk09;	  // 1
+			UInt8  priority;  // 2
+			UInt8  unk0B;	  // 3
+			UInt32 unk0C;	  // 4
 		};
 		STATIC_ASSERT(sizeof(DataHeader) == 0x8);
 
 
-		virtual ~TESRegionData();											// 00
+		virtual ~TESRegionData();  // 00
 
 		// add
-		virtual bool	LoadDataHeader(void* a_arg1);						// 01
-		virtual void	LoadData(TESForm* a_form);							// 02 - { return; }
-		virtual Type	GetType() const = 0;								// 03
-		virtual void	ConstructSelf() = 0;								// 04
-		virtual void	Unk_05(void) = 0;									// 05
-		virtual void	CopyFrom(TESRegionData* a_src, bool a_copy) = 0;	// 06
-		virtual bool	IsLoaded() const = 0;								// 07
+		virtual bool LoadDataHeader(void* a_arg1);					   // 01
+		virtual void LoadData(TESForm* a_form);						   // 02 - { return; }
+		virtual Type GetType() const = 0;							   // 03
+		virtual void ConstructSelf() = 0;							   // 04
+		virtual void Unk_05(void) = 0;								   // 05
+		virtual void CopyFrom(TESRegionData* a_src, bool a_copy) = 0;  // 06
+		virtual bool IsLoaded() const = 0;							   // 07
 
 
 		// members

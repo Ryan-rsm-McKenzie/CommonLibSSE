@@ -13,20 +13,23 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraAshPileRef;
 
 
-		enum { kExtraTypeID = ExtraDataType::kAshPileRef };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kAshPileRef
+		};
 
 
 		ExtraAshPileRef();
 		explicit ExtraAshPileRef(ObjectRefHandle a_ashPileRef);
-		virtual ~ExtraAshPileRef() = default;			// 00
+		virtual ~ExtraAshPileRef() = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kAshPileRef; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kAshPileRef; }
 
 
 		// members
-		ObjectRefHandle	ashPileRef;	// 10
-		UInt32			pad14;		// 14
+		ObjectRefHandle ashPileRef;	 // 10
+		UInt32			pad14;		 // 14
 	};
 	STATIC_ASSERT(sizeof(ExtraAshPileRef) == 0x18);
 }

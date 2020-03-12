@@ -13,27 +13,30 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraGuardedRefData;
 
 
-		enum { kExtraTypeID = ExtraDataType::kGuardedRefData };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kGuardedRefData
+		};
 
 
 		struct GuardInfo
 		{
-			FormID	guard;	// 0
-			UInt32	unk4;	// 4
-			UInt32	unk8;	// 8
+			FormID guard;  // 0
+			UInt32 unk4;   // 4
+			UInt32 unk8;   // 8
 		};
 		STATIC_ASSERT(sizeof(GuardInfo) == 0xC);
 
 
-		virtual ~ExtraGuardedRefData();													// 00
+		virtual ~ExtraGuardedRefData();	 // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kGuardedRefData; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
+		virtual ExtraDataType GetType() const override;								// 01 - { return kGuardedRefData; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
 
 
 		// members
-		BSTArray<GuardInfo> guards;	// 10
+		BSTArray<GuardInfo> guards;	 // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraGuardedRefData) == 0x28);
 }

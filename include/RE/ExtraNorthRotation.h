@@ -12,18 +12,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraNorthRotation;
 
 
-		enum { kExtraTypeID = ExtraDataType::kNorthRotation };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kNorthRotation
+		};
 
 
-		virtual ~ExtraNorthRotation();					// 00
+		virtual ~ExtraNorthRotation();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kNorthRotation; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kNorthRotation; }
 
 
 		// members
-		float	northRot;	// 10
-		UInt32	pad14;		// 14
+		float  northRot;  // 10
+		UInt32 pad14;	  // 14
 	};
 	STATIC_ASSERT(sizeof(ExtraNorthRotation) == 0x18);
 }

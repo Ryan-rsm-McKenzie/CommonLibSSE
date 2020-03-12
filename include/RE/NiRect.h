@@ -27,10 +27,10 @@ namespace RE
 		}
 
 	protected:
-		T	left;	// 00
-		T	right;	// ??
-		T	top;	// ??
-		T	bottom;	// ??
+		T left;	   // 00
+		T right;   // ??
+		T top;	   // ??
+		T bottom;  // ??
 	};
 	STATIC_ASSERT(sizeof(NiRect<float>) == 0x10);
 }

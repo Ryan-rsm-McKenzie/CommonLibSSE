@@ -15,21 +15,21 @@ namespace RE
 
 		union Data
 		{
-			bool	b;
-			UInt32	u;
-			float	f;
-			void*	p;
+			bool   b;
+			UInt32 u;
+			float  f;
+			void*  p;
 		};
 		STATIC_ASSERT(sizeof(Data) == 0x8);
 
 
-		virtual ~BSUIMessageData();	// 00
+		virtual ~BSUIMessageData();	 // 00
 
 
 		// members
-		BSString*		str;		// 10
-		BSFixedString	fixedStr;	// 18
-		Data			data;		// 20
+		BSString*	  str;		 // 10
+		BSFixedString fixedStr;	 // 18
+		Data		  data;		 // 20
 	};
 	STATIC_ASSERT(sizeof(BSUIMessageData) == 0x28);
 }

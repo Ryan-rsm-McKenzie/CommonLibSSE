@@ -1,7 +1,7 @@
 #include "RE/BSScript/Object.h"
 
-#include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/IObjectHandlePolicy.h"
+#include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/ObjectTypeInfo.h"
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
@@ -95,7 +95,7 @@ namespace RE
 		}
 
 
-		const Variable*	Object::GetProperty(const BSFixedString& a_name) const
+		const Variable* Object::GetProperty(const BSFixedString& a_name) const
 		{
 			constexpr auto INVALID = static_cast<UInt32>(-1);
 

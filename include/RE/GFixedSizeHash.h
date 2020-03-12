@@ -11,7 +11,7 @@ namespace RE
 		static inline UPInt SDBM_Hash(const void* a_dataIn, UPInt a_size, UPInt a_seed = 5381)
 		{
 			const UInt8* data = static_cast<const UInt8*>(a_dataIn);
-			UPInt hash = a_seed;
+			UPInt		 hash = a_seed;
 			while (a_size > 0) {
 				hash = (hash << 16) + (hash << 6) - hash + static_cast<const UPInt>(data[a_size--]);
 			}

@@ -19,8 +19,8 @@ namespace RE
 		virtual ~BSResponse();	// 00
 
 
-		BSTHashMap<Event, BSTSmartPointer<IHandlerFunctor<Target, Event>>>	handlerMap;		// ??
-		BSTSmartPointer<BSResponse<Event, Target, T, Parent>>				backupResponse;	// ??
+		BSTHashMap<Event, BSTSmartPointer<IHandlerFunctor<Target, Event>>> handlerMap;		// ??
+		BSTSmartPointer<BSResponse<Event, Target, T, Parent>>			   backupResponse;	// ??
 	};
 
 

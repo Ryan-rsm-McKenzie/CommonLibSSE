@@ -25,7 +25,7 @@ namespace RE
 		operator float() const;
 
 	protected:
-		void SetFloat(const float& a_val);
+		void  SetFloat(const float& a_val);
 		float GetFloat() const;
 
 
@@ -41,7 +41,7 @@ namespace RE
 	{
 	public:
 		// members
-		UInt8 value;	// 0
+		UInt8 value;  // 0
 	};
 	STATIC_ASSERT(sizeof(hkUFloat8) == 0x1);
 }

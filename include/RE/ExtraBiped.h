@@ -16,17 +16,20 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraBiped;
 
 
-		enum { kExtraTypeID = ExtraDataType::kBiped };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kBiped
+		};
 
 
-		virtual ~ExtraBiped();							// 00
+		virtual ~ExtraBiped();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kBiped; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kBiped; }
 
 
 		// members
-		BSTSmartPointer<BipedAnim> biped;	// 10
+		BSTSmartPointer<BipedAnim> biped;  // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraBiped) == 0x18);
 }

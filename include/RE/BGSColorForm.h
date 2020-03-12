@@ -16,10 +16,13 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSColorForm;
 
 
-		enum { kTypeID = FormType::ColorForm };
+		enum
+		{
+			kTypeID = FormType::ColorForm
+		};
 
 
-		enum class Flag : UInt32	// FNAM
+		enum class Flag : UInt32  // FNAM
 		{
 			kNone = 0,
 			kPlayable = 1 << 0
@@ -36,19 +39,19 @@ namespace RE
 		};
 
 
-		virtual ~BGSColorForm();						// 00
+		virtual ~BGSColorForm();  // 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;		// 04
-		virtual void	ClearData() override;			// 05
-		virtual bool	Load(TESFile* a_mod) override;	// 06
+		virtual void InitializeData() override;		 // 04
+		virtual void ClearData() override;			 // 05
+		virtual bool Load(TESFile* a_mod) override;	 // 06
 
 		bool IsPlayable() const;
 
 
 		// memebrs
-		Color	color;	// 30 - CNAM
-		Flag	flags;	// 34 - FNAM
+		Color color;  // 30 - CNAM
+		Flag  flags;  // 34 - FNAM
 	};
 	STATIC_ASSERT(sizeof(BGSColorForm) == 0x38);
 }

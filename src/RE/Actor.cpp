@@ -227,25 +227,18 @@ namespace RE
 	}
 
 
-	InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand)
+	InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand) const
 	{
 		if (!currentProcess || !currentProcess->middleHigh) {
 			return 0;
 		}
 
 		auto proc = currentProcess->middleHigh;
-		return a_leftHand ? proc->leftHand : proc->rightHand;
-	}
-
-
-	const InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand) const
-	{
-		if (!currentProcess || !currentProcess->middleHigh) {
-			return 0;
+		if (proc->bothHands) {
+			return proc->bothHands;
+		} else {
+			return a_leftHand ? proc->leftHand : proc->rightHand;
 		}
-
-		auto proc = currentProcess->middleHigh;
-		return a_leftHand ? proc->leftHand : proc->rightHand;
 	}
 
 
@@ -265,8 +258,7 @@ namespace RE
 
 	SInt32 Actor::GetGoldAmount()
 	{
-		auto inv = GetInventory([](TESBoundObject* a_object) -> bool
-		{
+		auto inv = GetInventory([](TESBoundObject* a_object) -> bool {
 			return a_object->IsGold();
 		});
 

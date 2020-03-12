@@ -16,14 +16,17 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraLitWaterRefs;
 
 
-		enum { kExtraTypeID = ExtraDataType::kLitWaterRefs };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kLitWaterRefs
+		};
 
 
-		virtual ~ExtraLitWaterRefs();													// 00
+		virtual ~ExtraLitWaterRefs();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kLitWaterRefs; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return refs != a_rhs->refs; }
+		virtual ExtraDataType GetType() const override;								// 01 - { return kLitWaterRefs; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return refs != a_rhs->refs; }
 
 
 		// members

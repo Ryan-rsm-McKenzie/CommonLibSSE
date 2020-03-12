@@ -17,19 +17,20 @@ namespace RE
 
 
 		enum class DataType : UInt32
-		{};
+		{
+		};
 
 
-		virtual ~ConsoleData();	// 00
+		virtual ~ConsoleData();	 // 00
 
 
 		// members
-		BSString*		str;		// 10
-		ObjectRefHandle	pickRef;	// 18
-		UInt32			pad1C;		// 1C
-		NiBinaryStream*	file;		// 20
-		DataType		type;		// 28
-		UInt32			pad2C;		// 2C
+		BSString*		str;	  // 10
+		ObjectRefHandle pickRef;  // 18
+		UInt32			pad1C;	  // 1C
+		NiBinaryStream* file;	  // 20
+		DataType		type;	  // 28
+		UInt32			pad2C;	  // 2C
 	};
 	STATIC_ASSERT(sizeof(ConsoleData) == 0x30);
 }

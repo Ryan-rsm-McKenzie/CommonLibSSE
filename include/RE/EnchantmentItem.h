@@ -13,7 +13,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_EnchantmentItem;
 
 
-		enum { kTypeID = FormType::Enchantment };
+		enum
+		{
+			kTypeID = FormType::Enchantment
+		};
 
 
 		enum class EnchantmentFlag : UInt32
@@ -38,40 +41,40 @@ namespace RE
 		class Data	// ENIT
 		{
 		public:
-			SInt32						costOverride;		// 00
-			EnchantmentFlag				flags;				// 04
-			MagicSystem::CastingType	castingType;		// 08
-			SInt32						chargeOverride;		// 0C
-			MagicSystem::Delivery		delivery;			// 10
-			MagicSystem::SpellType		spellType;			// 14
-			float						chargeTime;			// 18
-			UInt32						pad1C;				// 1C
-			EnchantmentItem*			baseEnchantment;	// 20
-			BGSListForm*				wornRestrictions;	// 28
+			SInt32					 costOverride;		// 00
+			EnchantmentFlag			 flags;				// 04
+			MagicSystem::CastingType castingType;		// 08
+			SInt32					 chargeOverride;	// 0C
+			MagicSystem::Delivery	 delivery;			// 10
+			MagicSystem::SpellType	 spellType;			// 14
+			float					 chargeTime;		// 18
+			UInt32					 pad1C;				// 1C
+			EnchantmentItem*		 baseEnchantment;	// 20
+			BGSListForm*			 wornRestrictions;	// 28
 		};
 		STATIC_ASSERT(sizeof(Data) == 0x30);
 
 
-		virtual ~EnchantmentItem();																		// 00
+		virtual ~EnchantmentItem();	 // 00
 
 		// override (MagicItem)
-		virtual void						InitializeData() override;									// 04
-		virtual void						ClearData() override;										// 05
-		virtual void						InitItemImpl() override;									// 13
-		virtual MagicSystem::SpellType		GetSpellType() const override;								// 53 - { return data.spellType; }
-		virtual void						SetCastingType(MagicSystem::CastingType a_type) override;	// 54 - { data.castingType = a_type; }
-		virtual MagicSystem::CastingType	GetCastingType() const override;							// 55 - { return data.castingType; }
-		virtual void						SetDelivery(MagicSystem::Delivery a_type) override;			// 56 - { if (Unk_58()) { data.delivery = a_type; } }
-		virtual MagicSystem::Delivery		GetDelivery() const override;								// 57 - { return data.delivery; }
-		virtual float						GetChargeTime() const override;								// 64
-		virtual ActorValue					GetAssociatedSkill() const override;						// 66 - { return ActorValue::kEnchanting; }
-		virtual UInt32						GetChunkID() override;										// 68 - { return 'ENIT'; }
-		virtual void						CopyMagicItemData(MagicItem* a_src) override;				// 69
-		virtual const MagicItem::Data*		GetData1() const override;									// 6C - { return &data; }
-		virtual MagicItem::Data*			GetData2() override;										// 6D - { return &data; }
-		virtual UInt32						GetDataSize() const override;								// 6E - { return 0x30; }
-		virtual void						InitFromChunk(TESFile* a_mod) override;						// 6F
-		virtual void						InitChunk() override;										// 70
+		virtual void					 InitializeData() override;									// 04
+		virtual void					 ClearData() override;										// 05
+		virtual void					 InitItemImpl() override;									// 13
+		virtual MagicSystem::SpellType	 GetSpellType() const override;								// 53 - { return data.spellType; }
+		virtual void					 SetCastingType(MagicSystem::CastingType a_type) override;	// 54 - { data.castingType = a_type; }
+		virtual MagicSystem::CastingType GetCastingType() const override;							// 55 - { return data.castingType; }
+		virtual void					 SetDelivery(MagicSystem::Delivery a_type) override;		// 56 - { if (Unk_58()) { data.delivery = a_type; } }
+		virtual MagicSystem::Delivery	 GetDelivery() const override;								// 57 - { return data.delivery; }
+		virtual float					 GetChargeTime() const override;							// 64
+		virtual ActorValue				 GetAssociatedSkill() const override;						// 66 - { return ActorValue::kEnchanting; }
+		virtual UInt32					 GetChunkID() override;										// 68 - { return 'ENIT'; }
+		virtual void					 CopyMagicItemData(MagicItem* a_src) override;				// 69
+		virtual const MagicItem::Data*	 GetData1() const override;									// 6C - { return &data; }
+		virtual MagicItem::Data*		 GetData2() override;										// 6D - { return &data; }
+		virtual UInt32					 GetDataSize() const override;								// 6E - { return 0x30; }
+		virtual void					 InitFromChunk(TESFile* a_mod) override;					// 6F
+		virtual void					 InitChunk() override;										// 70
 
 
 		// members

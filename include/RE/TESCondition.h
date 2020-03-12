@@ -906,12 +906,12 @@ namespace RE
 			{}
 
 
-			TESObjectREFR*	perkOwner;	// 00
-			TESObjectREFR*	target;		// 08
-			void*			unk10;		// 10
-			void*			unk18;		// 18
-			void*			unk20;		// 20
-			void*			unk28;		// 28
+			TESObjectREFR* perkOwner;  // 00
+			TESObjectREFR* target;	   // 08
+			void*		   unk10;	   // 10
+			void*		   unk18;	   // 18
+			void*		   unk20;	   // 20
+			void*		   unk28;	   // 28
 		};
 		STATIC_ASSERT(sizeof(Solution) == 0x30);
 
@@ -922,17 +922,17 @@ namespace RE
 			~ComparisonFlags() = default;
 
 
-			bool	isOR : 1;			// 0 - false == AND, true == OR
-			bool	usesAliases : 1;	// 1
-			bool	global : 1;			// 2
-			bool	usePackData : 1;	// 3
-			bool	swapTarget : 1;		// 4
-			OpCode	opCode : 3;			// 5
+			bool   isOR : 1;		 // 0 - false == AND, true == OR
+			bool   usesAliases : 1;	 // 1
+			bool   global : 1;		 // 2
+			bool   usePackData : 1;	 // 3
+			bool   swapTarget : 1;	 // 4
+			OpCode opCode : 3;		 // 5
 		};
 		STATIC_ASSERT(sizeof(ComparisonFlags) == 0x1);
 
 
-		struct Node	// CTDA
+		struct Node	 // CTDA
 		{
 			Node();
 			~Node() = default;
@@ -943,21 +943,21 @@ namespace RE
 
 
 			// members
-			Node*			next;				// 00
-			float			comparisonValue;	// 08
-			UInt32			unk0C;				// 0C
-			ObjectRefHandle	handle;				// 10 - kReference
-			SInt32			unk14;				// 14
-			FunctionID		functionID;			// 18
-			UInt8			unk1A;				// 1A
-			UInt8			unk1B;				// 1B
-			UInt32			pad1C;				// 1C
-			void*			param1;				// 20
-			void*			param2;				// 28
-			ComparisonFlags	comparisonFlags;	// 30
-			ReferenceType	referenceType;		// 31
-			UInt16			pad32;				// 32
-			UInt32			pad34;				// 34
+			Node*			next;			  // 00
+			float			comparisonValue;  // 08
+			UInt32			unk0C;			  // 0C
+			ObjectRefHandle handle;			  // 10 - kReference
+			SInt32			unk14;			  // 14
+			FunctionID		functionID;		  // 18
+			UInt8			unk1A;			  // 1A
+			UInt8			unk1B;			  // 1B
+			UInt32			pad1C;			  // 1C
+			void*			param1;			  // 20
+			void*			param2;			  // 28
+			ComparisonFlags comparisonFlags;  // 30
+			ReferenceType	referenceType;	  // 31
+			UInt16			pad32;			  // 32
+			UInt32			pad34;			  // 34
 		};
 		STATIC_ASSERT(sizeof(Node) == 0x38);
 
@@ -968,11 +968,11 @@ namespace RE
 		TES_HEAP_REDEFINE_NEW();
 
 		explicit operator bool() const;
-		bool Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);	// Perk fragments will short circuit
+		bool	 Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);	// Perk fragments will short circuit
 
 
 		// members
-		Node* head;	// 0
+		Node* head;	 // 0
 	};
 	STATIC_ASSERT(sizeof(TESCondition) == 0x8);
 }

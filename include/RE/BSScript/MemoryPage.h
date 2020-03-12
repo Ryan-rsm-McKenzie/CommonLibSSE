@@ -13,17 +13,18 @@ namespace RE
 		{
 			TES_HEAP_REDEFINE_NEW();
 
-			template <class T> T*	GetData();
-			void*					GetHead();
-			void*					GetTail();
-			bool					IsInRange(void* a_ptr);
+			template <class T>
+			T*	  GetData();
+			void* GetHead();
+			void* GetTail();
+			bool  IsInRange(void* a_ptr);
 
 
 			// members
-			UInt32	pageSize;	// 00
-			char	buf[0];		// 04
+			UInt32 pageSize;  // 00
+			char   buf[0];	  // 04
 		};
-		STATIC_ASSERT(sizeof(MemoryPage) == 0x4);	// pages can be larger
+		STATIC_ASSERT(sizeof(MemoryPage) == 0x4);  // pages can be larger
 
 
 		template <class T>

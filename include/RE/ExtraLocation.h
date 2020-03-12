@@ -15,14 +15,17 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraLocation;
 
 
-		enum { kExtraTypeID = ExtraDataType::kLocation };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kLocation
+		};
 
 
-		virtual ~ExtraLocation();														// 00
+		virtual ~ExtraLocation();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kLocation; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return location != a_rhs->location; }
+		virtual ExtraDataType GetType() const override;								// 01 - { return kLocation; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return location != a_rhs->location; }
 
 
 		// members

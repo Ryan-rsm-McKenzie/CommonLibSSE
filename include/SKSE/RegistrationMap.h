@@ -6,11 +6,11 @@
 #include <string_view>
 #include <tuple>
 
-#include "RE/BSScript/Internal/VirtualMachine.h"
+#include "RE/BSFixedString.h"
 #include "RE/BSScript/FunctionArguments.h"
 #include "RE/BSScript/IObjectHandlePolicy.h"
+#include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/TypeTraits.h"
-#include "RE/BSFixedString.h"
 #include "RE/TESForm.h"
 
 #include "SKSE/API.h"
@@ -47,11 +47,12 @@ namespace SKSE
 
 
 			std::map<RE::VMHandle, EventName> _regs;
-			mutable Lock _lock;
+			mutable Lock					  _lock;
 		};
 
 
-		template <class Enable, class... Args> class RegistrationMap;
+		template <class Enable, class... Args>
+		class RegistrationMap;
 
 
 		template <class... Args>
@@ -62,14 +63,25 @@ namespace SKSE
 			using Base = RegistrationMapBase;
 
 		public:
-			RegistrationMap() : Base() {}
-			RegistrationMap(const RegistrationMap& a_rhs) : Base(a_rhs) {}
-			RegistrationMap(RegistrationMap&& a_rhs) : Base(std::move(a_rhs)) {}
+			RegistrationMap() :
+				Base() {}
+			RegistrationMap(const RegistrationMap& a_rhs) :
+				Base(a_rhs) {}
+			RegistrationMap(RegistrationMap&& a_rhs) :
+				Base(std::move(a_rhs)) {}
 			~RegistrationMap() {}
 
 
-			inline RegistrationMap& operator=(const RegistrationMap& a_rhs) { Base::operator=(a_rhs); return *this; }
-			inline RegistrationMap& operator=(RegistrationMap&& a_rhs) { Base::operator=(std::move(a_rhs)); return *this; }
+			inline RegistrationMap& operator=(const RegistrationMap& a_rhs)
+			{
+				Base::operator=(a_rhs);
+				return *this;
+			}
+			inline RegistrationMap& operator=(RegistrationMap&& a_rhs)
+			{
+				Base::operator=(std::move(a_rhs));
+				return *this;
+			}
 
 
 			void SendEvent(Args&&... a_args)
@@ -86,8 +98,7 @@ namespace SKSE
 			{
 				auto args = PackArgs(std::move(a_args)...);
 				auto task = GetTaskInterface();
-				task->AddTask([args, this]()
-				{
+				task->AddTask([args, this]() {
 					SendEvent_Tuple(std::move(args), make_index_sequence_from_tuple<decltype(args)>{});
 				});
 			}
@@ -108,14 +119,25 @@ namespace SKSE
 			using Base = RegistrationMapBase;
 
 		public:
-			RegistrationMap() : Base() {}
-			RegistrationMap(const RegistrationMap& a_rhs) : Base(a_rhs) {}
-			RegistrationMap(RegistrationMap&& a_rhs) : Base(std::move(a_rhs)) {}
+			RegistrationMap() :
+				Base() {}
+			RegistrationMap(const RegistrationMap& a_rhs) :
+				Base(a_rhs) {}
+			RegistrationMap(RegistrationMap&& a_rhs) :
+				Base(std::move(a_rhs)) {}
 			~RegistrationMap() {}
 
 
-			inline RegistrationMap& operator=(const RegistrationMap& a_rhs) { Base::operator=(a_rhs); return *this; }
-			inline RegistrationMap& operator=(RegistrationMap&& a_rhs) { Base::operator=(std::move(a_rhs)); return *this; }
+			inline RegistrationMap& operator=(const RegistrationMap& a_rhs)
+			{
+				Base::operator=(a_rhs);
+				return *this;
+			}
+			inline RegistrationMap& operator=(RegistrationMap&& a_rhs)
+			{
+				Base::operator=(std::move(a_rhs));
+				return *this;
+			}
 
 
 			void SendEvent()
@@ -131,8 +153,7 @@ namespace SKSE
 			void QueueEvent()
 			{
 				auto task = GetTaskInterface();
-				task->AddTask([this]()
-				{
+				task->AddTask([this]() {
 					SendEvent();
 				});
 			}
@@ -140,5 +161,6 @@ namespace SKSE
 	}
 
 
-	template <class... Args> using RegistrationMap = Impl::RegistrationMap<void, Args...>;
+	template <class... Args>
+	using RegistrationMap = Impl::RegistrationMap<void, Args...>;
 }

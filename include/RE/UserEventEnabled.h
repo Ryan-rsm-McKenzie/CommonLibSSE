@@ -18,8 +18,8 @@ namespace RE
 
 
 		// members
-		UEFlag	newUserEventFlag;	// 0
-		UEFlag	oldUserEventFlag;	// 4
+		UEFlag newUserEventFlag;  // 0
+		UEFlag oldUserEventFlag;  // 4
 	};
 	STATIC_ASSERT(sizeof(UserEventEnabled) == 0x8);
 }

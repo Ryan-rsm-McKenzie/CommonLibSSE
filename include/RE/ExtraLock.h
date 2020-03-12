@@ -31,8 +31,8 @@ namespace RE
 		};
 
 
-		LOCK_LEVEL	GetLockLevel(const TESObjectREFR* a_containerRef) const;
-		void		SetLocked(bool a_locked);
+		LOCK_LEVEL GetLockLevel(const TESObjectREFR* a_containerRef) const;
+		void	   SetLocked(bool a_locked);
 
 
 		// members
@@ -40,7 +40,7 @@ namespace RE
 		UInt8	pad01;		// 01
 		UInt16	pad02;		// 02
 		UInt32	pad04;		// 04
-		TESKey*	key;		// 08
+		TESKey* key;		// 08
 		Flag	flags;		// 10
 		UInt8	pad11;		// 11
 		UInt16	pad12;		// 12
@@ -57,14 +57,17 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraLock;
 
 
-		enum { kExtraTypeID = ExtraDataType::kLock };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kLock
+		};
 
 
-		virtual ~ExtraLock();															// 00
+		virtual ~ExtraLock();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kLock; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
+		virtual ExtraDataType GetType() const override;								// 01 - { return kLock; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
 
 
 		// members

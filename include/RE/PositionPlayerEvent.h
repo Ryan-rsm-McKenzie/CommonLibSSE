@@ -17,7 +17,7 @@ namespace RE
 
 
 		// members
-		EVENT_TYPE type;	// 0
+		EVENT_TYPE type;  // 0
 	};
 	STATIC_ASSERT(sizeof(PositionPlayerEvent) == 0x4);
 }

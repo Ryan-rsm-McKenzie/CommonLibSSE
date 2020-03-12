@@ -124,7 +124,7 @@ namespace RE
 		Update3DModel_Impl(a_actor);
 		SKSE::NiNodeUpdateEvent event(a_actor);
 		auto source = SKSE::GetNiNodeUpdateEventSource();
-		assert(source);	// api failed to init
+		assert(source);	 // api failed to init
 		source->SendEvent(&event);
 	}
 

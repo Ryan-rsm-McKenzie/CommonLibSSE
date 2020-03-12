@@ -13,8 +13,8 @@ namespace RE
 		class HashF = GFixedSizeHash<C>,
 		class AltHashF = HashF,
 		class Allocator = GAllocatorGH<C>,
-		class Entry = GHashsetCachedEntry<C, HashF>
-	> class GHashSet :
+		class Entry = GHashsetCachedEntry<C, HashF>>
+	class GHashSet :
 		public GHashSetBase<C, HashF, AltHashF, Allocator, Entry>
 	{
 	public:

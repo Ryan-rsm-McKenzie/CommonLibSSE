@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	class BGSEquipType : public BaseFormComponent	// EQUP
+	class BGSEquipType : public BaseFormComponent  // EQUP
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSEquipType;
@@ -22,20 +22,20 @@ namespace RE
 		};
 
 
-		virtual ~BGSEquipType();													// 00
+		virtual ~BGSEquipType();  // 00
 
 		// override (BaseFormComponent)
-		virtual void			InitializeDataComponent() override;					// 01 - { equipSlot = 0; }
-		virtual void			ClearDataComponent() override;						// 02 - { return; }
-		virtual void			CopyComponent(BaseFormComponent* a_rhs) override;	// 03
+		virtual void InitializeDataComponent() override;				// 01 - { equipSlot = 0; }
+		virtual void ClearDataComponent() override;						// 02 - { return; }
+		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 		// add
-		virtual	BGSEquipSlot*	GetEquipSlot() const;								// 04 - { return equipSlot; }
-		virtual void			SetEquipSlot(BGSEquipSlot* a_slot);					// 05 - { equipSlot = a_slot; }
+		virtual BGSEquipSlot* GetEquipSlot() const;				   // 04 - { return equipSlot; }
+		virtual void		  SetEquipSlot(BGSEquipSlot* a_slot);  // 05 - { equipSlot = a_slot; }
 
 
 		// members
-		BGSEquipSlot* equipSlot;	// 08 - ETYP
+		BGSEquipSlot* equipSlot;  // 08 - ETYP
 	};
 	STATIC_ASSERT(sizeof(BGSEquipType) == 0x10);
 }

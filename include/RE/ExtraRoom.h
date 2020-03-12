@@ -16,17 +16,20 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraRoom;
 
 
-		enum { kExtraTypeID = ExtraDataType::kRoom };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kRoom
+		};
 
 
-		virtual ~ExtraRoom();							// 00
+		virtual ~ExtraRoom();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kRoom; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kRoom; }
 
 
 		// members
-		NiPointer<BSMultiBoundRoom> room;	// 10
+		NiPointer<BSMultiBoundRoom> room;  // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraRoom) == 0x18);
 }

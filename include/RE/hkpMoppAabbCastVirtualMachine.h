@@ -20,7 +20,7 @@ namespace RE
 			UInt64					unk28;		// 28
 			UInt64					unk30;		// 30
 			UInt64					unk38;		// 38
-			hkMoppBvTreeShapeBase**	treeShape;	// 40
+			hkMoppBvTreeShapeBase** treeShape;	// 40
 		};
 	};
 }

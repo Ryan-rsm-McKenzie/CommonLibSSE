@@ -12,18 +12,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraProcessMiddleLow;
 
 
-		enum { kExtraTypeID = ExtraDataType::kProcessMiddleLow };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kProcessMiddleLow
+		};
 
 
-		virtual ~ExtraProcessMiddleLow();				// 00
+		virtual ~ExtraProcessMiddleLow();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kProcessMiddleLow; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kProcessMiddleLow; }
 
 
 		// members
-		UInt32	refCount;	// 10
-		UInt32	pad14;		// 14
+		UInt32 refCount;  // 10
+		UInt32 pad14;	  // 14
 	};
 	STATIC_ASSERT(sizeof(ExtraProcessMiddleLow) == 0x18);
 }

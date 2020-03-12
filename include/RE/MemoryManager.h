@@ -27,20 +27,20 @@ namespace RE
 		{
 		public:
 			// members
-			ScrapHeap			heap;			// 00
-			ThreadScrapHeap*	next;			// 90
-			UInt32				owningThread;	// 98
-			UInt32				pad;			// 9C
+			ScrapHeap		 heap;			// 00
+			ThreadScrapHeap* next;			// 90
+			UInt32			 owningThread;	// 98
+			UInt32			 pad;			// 9C
 		};
 		STATIC_ASSERT(sizeof(ThreadScrapHeap) == 0xA0);
 
 
 		static MemoryManager* GetSingleton();
 
-		void*		Allocate(std::size_t a_size, SInt32 a_alignment, bool a_aligned);
-		void		Deallocate(void* a_ptr, bool a_aligned);
-		ScrapHeap*	GetThreadScrapHeap();
-		void*		Reallocate(void* a_ptr, std::size_t a_newSize, SInt32 a_alignment, bool a_aligned);
+		void*	   Allocate(std::size_t a_size, SInt32 a_alignment, bool a_aligned);
+		void	   Deallocate(void* a_ptr, bool a_aligned);
+		ScrapHeap* GetThreadScrapHeap();
+		void*	   Reallocate(void* a_ptr, std::size_t a_newSize, SInt32 a_alignment, bool a_aligned);
 
 
 		// members
@@ -57,7 +57,7 @@ namespace RE
 		IMemoryHeap*			bigAllocHeap;						// 420
 		IMemoryHeap*			emergencyHeap;						// 428
 		BSSmallBlockAllocator*	smallBlockAllocator;				// 430
-		CompactingStore::Store*	compactingStore;					// 438
+		CompactingStore::Store* compactingStore;					// 438
 		IMemoryHeap*			externalHavokAllocator;				// 440
 		bool					specialHeaps;						// 448
 		bool					allowPoolUse;						// 449
@@ -191,15 +191,25 @@ namespace RE
 }
 
 
-#define TES_HEAP_REDEFINE_NEW()																												\
-	inline void*	operator new(std::size_t a_count)													{ return RE::malloc(a_count); }		\
-	inline void*	operator new[](std::size_t a_count)													{ return RE::malloc(a_count); }		\
-	inline void*	operator new([[maybe_unused]] std::size_t a_count, void* a_plcmnt)					{ return a_plcmnt; }				\
-	inline void*	operator new[]([[maybe_unused]] std::size_t a_count, void* a_plcmnt)				{ return a_plcmnt; }				\
-	inline void		operator delete(void* a_ptr)														{ if (a_ptr) { RE::free(a_ptr); } }	\
-	inline void		operator delete[](void* a_ptr)														{ if (a_ptr) { RE::free(a_ptr); } }	\
-	inline void		operator delete([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt)		{ return; }							\
-	inline void		operator delete[]([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt)	{ return; }
+#define TES_HEAP_REDEFINE_NEW()                                                                            \
+	inline void* operator new(std::size_t a_count) { return RE::malloc(a_count); }                         \
+	inline void* operator new[](std::size_t a_count) { return RE::malloc(a_count); }                       \
+	inline void* operator new([[maybe_unused]] std::size_t a_count, void* a_plcmnt) { return a_plcmnt; }   \
+	inline void* operator new[]([[maybe_unused]] std::size_t a_count, void* a_plcmnt) { return a_plcmnt; } \
+	inline void	 operator delete(void* a_ptr)                                                              \
+	{                                                                                                      \
+		if (a_ptr) {                                                                                       \
+			RE::free(a_ptr);                                                                               \
+		}                                                                                                  \
+	}                                                                                                      \
+	inline void operator delete[](void* a_ptr)                                                             \
+	{                                                                                                      \
+		if (a_ptr) {                                                                                       \
+			RE::free(a_ptr);                                                                               \
+		}                                                                                                  \
+	}                                                                                                      \
+	inline void operator delete([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt) { return; } \
+	inline void operator delete[]([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt) { return; }
 
 
 namespace RE
@@ -366,7 +376,7 @@ namespace RE
 
 			if (oldSize < a_count) {
 				for (size_type i = oldSize; i < a_count; ++i) {
-					new(std::addressof(_data->entries[i])) value_type{};
+					new (std::addressof(_data->entries[i])) value_type{};
 				}
 			}
 		}
@@ -378,7 +388,7 @@ namespace RE
 
 			if (oldSize < a_count) {
 				for (size_type i = oldSize; i < a_count; ++i) {
-					new(std::addressof(_data->entries[i])) value_type{ a_value };
+					new (std::addressof(_data->entries[i])) value_type{ a_value };
 				}
 			}
 		}
@@ -424,7 +434,7 @@ namespace RE
 
 
 		// members
-		Data* _data;	// 0
+		Data* _data;  // 0
 	};
 	STATIC_ASSERT(sizeof(SimpleArray<void*>) == 0x8);
 }

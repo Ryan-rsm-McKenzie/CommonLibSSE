@@ -13,10 +13,13 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSEquipSlot;
 
 
-		enum { kTypeID = FormType::EquipSlot };
+		enum
+		{
+			kTypeID = FormType::EquipSlot
+		};
 
 
-		enum class Flag : UInt32	// DATA
+		enum class Flag : UInt32  // DATA
 		{
 			kNone = 0,
 			kUseAllParents = 1 << 0,
@@ -35,19 +38,19 @@ namespace RE
 		};
 
 
-		virtual ~BGSEquipSlot();						// 00
+		virtual ~BGSEquipSlot();  // 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;		// 04
-		virtual void	ClearData() override;			// 05
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void InitializeData() override;		 // 04
+		virtual void ClearData() override;			 // 05
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
 		// members
-		BSTArray<BGSEquipSlot*>	parentSlots;	// 20 - PNAM
-		Flag					flags;			// 38 - DATA
-		UInt32					pad3C;			// 3C
+		BSTArray<BGSEquipSlot*> parentSlots;  // 20 - PNAM
+		Flag					flags;		  // 38 - DATA
+		UInt32					pad3C;		  // 3C
 	};
 	STATIC_ASSERT(sizeof(BGSEquipSlot) == 0x40);
 }

@@ -161,7 +161,8 @@ namespace RE
 		}
 
 	protected:
-		template <class> friend class NiPointer;
+		template <class>
+		friend class NiPointer;
 
 
 		void TryAttach()
@@ -182,7 +183,7 @@ namespace RE
 
 
 		// members
-		element_type* _ptr;	// 0
+		element_type* _ptr;	 // 0
 	};
 	STATIC_ASSERT(sizeof(NiPointer<void*>) == 0x8);
 
@@ -213,6 +214,6 @@ namespace RE
 }
 
 
-#define NiSmartPointer(className)					\
-	class className;								\
+#define NiSmartPointer(className) \
+	class className;              \
 	using className##Ptr = RE::NiPointer<className>;

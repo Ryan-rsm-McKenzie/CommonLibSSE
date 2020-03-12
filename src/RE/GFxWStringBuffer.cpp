@@ -276,7 +276,7 @@ namespace RE
 			return;
 		}
 		++a_count;
-		
+
 		if (a_count <= _reserved.size) {
 			if (_text != _reserved.buffer) {
 				if (_text && _reserved.buffer) {

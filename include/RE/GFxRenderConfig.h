@@ -32,30 +32,30 @@ namespace RE
 		};
 
 
-		bool			IsUsingEdgeAA() const;
-		bool			IsEdgeAATextured() const;
-		bool			IsOptimizingTriangles() const;
-		bool			HasCxformAddAlpha() const;
-		bool			HasVertexFormat(VertexFormat a_fmt) const;
-		RenderFlag		GetStrokeRenderFlags() const;
-		RenderCapBits	GetRendererCapBits() const;
-		GRenderer*		GetRenderer() const;
-		void			SetRenderFlags(RenderFlag a_flags);
-		RenderFlag		GetRenderFlags() const;
-		void			SetMaxCurvePixelError(float a_pixelError);
-		float			GetMaxCurvePixelError() const;
-		float			GetStrokerAAWidth() const;
-		void			SetStrokerAAWidth(float a_aawidth);
+		bool		  IsUsingEdgeAA() const;
+		bool		  IsEdgeAATextured() const;
+		bool		  IsOptimizingTriangles() const;
+		bool		  HasCxformAddAlpha() const;
+		bool		  HasVertexFormat(VertexFormat a_fmt) const;
+		RenderFlag	  GetStrokeRenderFlags() const;
+		RenderCapBits GetRendererCapBits() const;
+		GRenderer*	  GetRenderer() const;
+		void		  SetRenderFlags(RenderFlag a_flags);
+		RenderFlag	  GetRenderFlags() const;
+		void		  SetMaxCurvePixelError(float a_pixelError);
+		float		  GetMaxCurvePixelError() const;
+		float		  GetStrokerAAWidth() const;
+		void		  SetStrokerAAWidth(float a_aawidth);
 
 
 		// members
-		GPtr<GRenderer>	renderer;			// 18
-		float			maxCurvePixelError;	// 20
-		RenderFlag		renderFlags;		// 24
-		float			strokerAAWidth;		// 28
-		RenderCapBits	rendererCapBits;	// 2C
-		VertexFormat	rendererVtxFmts;	// 30
-		UInt32			pad34;				// 34
+		GPtr<GRenderer> renderer;			 // 18
+		float			maxCurvePixelError;	 // 20
+		RenderFlag		renderFlags;		 // 24
+		float			strokerAAWidth;		 // 28
+		RenderCapBits	rendererCapBits;	 // 2C
+		VertexFormat	rendererVtxFmts;	 // 30
+		UInt32			pad34;				 // 34
 	};
 	STATIC_ASSERT(sizeof(GFxRenderConfig) == 0x38);
 }

@@ -7,9 +7,9 @@ namespace RE
 	class NiTListItem
 	{
 	public:
-		NiTListItem*	next;		// 00
-		NiTListItem*	prev;		// 08
-		T				element;	// 10
+		NiTListItem* next;	   // 00
+		NiTListItem* prev;	   // 08
+		T			 element;  // 10
 	};
 	STATIC_ASSERT(sizeof(NiTListItem<void*>) == 0x18);
 
@@ -21,13 +21,13 @@ namespace RE
 		struct AntiBloatAllocator : public Allocator
 		{
 			// members
-			UInt32 size;	// ??
+			UInt32 size;  // ??
 		};
 
 
 		// members
-		NiTListItem<T>*		head;		// 00
-		NiTListItem<T>*		tail;		// 08
-		AntiBloatAllocator	allocator;	// 10
+		NiTListItem<T>*	   head;	   // 00
+		NiTListItem<T>*	   tail;	   // 08
+		AntiBloatAllocator allocator;  // 10
 	};
 }

@@ -16,13 +16,16 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraAnimGraphManager;
 
 
-		enum { kExtraTypeID = ExtraDataType::kAnimGraphManager };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kAnimGraphManager
+		};
 
 
-		virtual ~ExtraAnimGraphManager();				// 00
+		virtual ~ExtraAnimGraphManager();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kAnimGraphManager; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kAnimGraphManager; }
 
 
 		// members

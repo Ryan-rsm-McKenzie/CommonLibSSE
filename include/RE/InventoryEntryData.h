@@ -26,7 +26,7 @@ namespace RE
 
 		void			AddExtraList(ExtraDataList* a_extra);
 		const char*		GenerateName();
-		TESBoundObject*	GetObject();
+		TESBoundObject* GetObject();
 		TESForm*		GetOwner();
 		SOUL_LEVEL		GetSoulLevel() const;
 		SInt32			GetValue();
@@ -38,10 +38,10 @@ namespace RE
 
 
 		// members
-		TESBoundObject*					object;		// 00
-		BSSimpleList<ExtraDataList*>*	extraLists;	// 08
-		SInt32							countDelta;	// 10
-		UInt32							pad14;		// 14
+		TESBoundObject*				  object;	   // 00
+		BSSimpleList<ExtraDataList*>* extraLists;  // 08
+		SInt32						  countDelta;  // 10
+		UInt32						  pad14;	   // 14
 
 	private:
 		bool IsOwnedBy_Impl(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo);

@@ -13,7 +13,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSDialogueBranch;
 
 
-		enum { kTypeID = FormType::DialogueBranch };
+		enum
+		{
+			kTypeID = FormType::DialogueBranch
+		};
 
 
 		enum class Flag : UInt32
@@ -35,22 +38,22 @@ namespace RE
 		};
 
 
-		virtual ~BGSDialogueBranch();					// 00
+		virtual ~BGSDialogueBranch();  // 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;		// 04
-		virtual void	ClearData() override;			// 05
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void InitializeData() override;		 // 04
+		virtual void ClearData() override;			 // 05
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
 		// members
-		Flag			flags;			// 20 - DNAM
-		UInt32			pad24;			// 24
-		TESQuest*		quest;			// 28 - QNAM
-		TESTopic*		startingTopic;	// 30 - SNAM
-		DIALOGUE_TYPE	type;			// 38 - TNAM
-		UInt32			pad3C;			// 3C
+		Flag		  flags;		  // 20 - DNAM
+		UInt32		  pad24;		  // 24
+		TESQuest*	  quest;		  // 28 - QNAM
+		TESTopic*	  startingTopic;  // 30 - SNAM
+		DIALOGUE_TYPE type;			  // 38 - TNAM
+		UInt32		  pad3C;		  // 3C
 	};
 	STATIC_ASSERT(sizeof(BGSDialogueBranch) == 0x40);
 }

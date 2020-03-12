@@ -10,7 +10,10 @@ namespace RE
 	class GAllocatorBaseGH
 	{
 	public:
-		enum { kStatID = SID };
+		enum
+		{
+			kStatID = SID
+		};
 
 
 		static void* Alloc(UPInt a_size)

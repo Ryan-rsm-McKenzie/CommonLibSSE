@@ -22,7 +22,7 @@ namespace RE
 				kTotal
 			};
 		};
-		
+
 
 		enum class ActivePlane : UInt32
 		{
@@ -37,7 +37,7 @@ namespace RE
 
 		// members
 		NiPlane		cullingPlanes[Planes::kTotal];	// 00
-		ActivePlane	activePlanes;					// 60
+		ActivePlane activePlanes;					// 60
 		UInt32		basePlaneStates;				// 64
 		UInt32		unk68;							// 68
 		UInt32		unk6C;							// 6C

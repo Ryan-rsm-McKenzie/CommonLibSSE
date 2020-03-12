@@ -9,12 +9,12 @@ namespace RE
 	class ConcreteObjectFormFactory : public ConcreteFormFactory<T, FORM_TYPE>
 	{
 	public:
-		virtual ~ConcreteObjectFormFactory();									// 00
+		virtual ~ConcreteObjectFormFactory();  // 00
 
 		// override (ConcreteFormFactory)
-		virtual const char*				GetObjectName() const override;			// 04 - { return _name; }
-		virtual OBJECT_TYPE				GetObjectType() const override;			// 05 - { return OBJ_TYPE; }
-		virtual OBJECT_CATEGORY_TYPE	GetObjectCategory() const override;		// 06 - { return OBJ_CATEGORY_TYPE; }
+		virtual const char*			 GetObjectName() const override;	  // 04 - { return _name; }
+		virtual OBJECT_TYPE			 GetObjectType() const override;	  // 05 - { return OBJ_TYPE; }
+		virtual OBJECT_CATEGORY_TYPE GetObjectCategory() const override;  // 06 - { return OBJ_CATEGORY_TYPE; }
 	};
 	STATIC_ASSERT(sizeof(ConcreteObjectFormFactory<TESForm, FormType::None, static_cast<OBJECT_TYPE>(0), static_cast<OBJECT_CATEGORY_TYPE>(0)>) == 0x10);
 }

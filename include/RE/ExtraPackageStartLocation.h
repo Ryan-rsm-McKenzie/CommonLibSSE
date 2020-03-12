@@ -12,9 +12,9 @@ namespace RE
 
 	struct WORLD_LOCATION
 	{
-		TESForm*	locationForm;	// 00
-		NiPoint3	locPt;			// 08
-		float		zRot;			// 14
+		TESForm* locationForm;	// 00
+		NiPoint3 locPt;			// 08
+		float	 zRot;			// 14
 	};
 	STATIC_ASSERT(sizeof(WORLD_LOCATION) == 0x18);
 
@@ -25,18 +25,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraPackageStartLocation;
 
 
-		enum { kExtraTypeID = ExtraDataType::kPackageStartLocation };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kPackageStartLocation
+		};
 
 
-		virtual ~ExtraPackageStartLocation();											// 00
+		virtual ~ExtraPackageStartLocation();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kPackageStartLocation; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
+		virtual ExtraDataType GetType() const override;								// 01 - { return kPackageStartLocation; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
 
 
 		// members
-		WORLD_LOCATION worldLoc;	// 10
+		WORLD_LOCATION worldLoc;  // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraPackageStartLocation) == 0x28);
 }

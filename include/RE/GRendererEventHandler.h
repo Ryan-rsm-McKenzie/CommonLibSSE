@@ -21,14 +21,14 @@ namespace RE
 		};
 
 
-		virtual ~GRendererEventHandler() = default;								// 00
+		virtual ~GRendererEventHandler() = default;	 // 00
 
 		// add
-		virtual void OnEvent(GRenderer* a_renderer, EventType a_changeType);	// 01
+		virtual void OnEvent(GRenderer* a_renderer, EventType a_changeType);  // 01
 
 
 		// members
-		GRenderer* renderer;	// 18
+		GRenderer* renderer;  // 18
 	};
 	STATIC_ASSERT(sizeof(GRendererEventHandler) == 0x20);
 }

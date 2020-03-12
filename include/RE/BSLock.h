@@ -7,7 +7,7 @@ namespace RE
 	{
 	public:
 		// members
-		CRITICAL_SECTION criticalSection;	// 00
+		CRITICAL_SECTION criticalSection;  // 00
 	};
 	STATIC_ASSERT(sizeof(BSCriticalSection) == 0x28);
 
@@ -16,7 +16,7 @@ namespace RE
 	{
 	public:
 		// members
-		HANDLE event;	// 0
+		HANDLE event;  // 0
 	};
 	STATIC_ASSERT(sizeof(BSEventFlag) == 0x8);
 
@@ -29,7 +29,7 @@ namespace RE
 
 
 		// members
-		HANDLE semaphore;	// 0
+		HANDLE semaphore;  // 0
 	};
 	STATIC_ASSERT(sizeof(BSSemaphoreBase) == 0x8);
 
@@ -54,13 +54,13 @@ namespace RE
 
 		BSSpinLock();
 
-		void	Lock(UInt32 a_pauseAttempts = 0);
-		void	Unlock();
+		void Lock(UInt32 a_pauseAttempts = 0);
+		void Unlock();
 
 	private:
 		// members
-		volatile UInt32	_owningThread;	// 0
-		volatile UInt32	_lockCount;		// 4
+		volatile UInt32 _owningThread;	// 0
+		volatile UInt32 _lockCount;		// 4
 	};
 	STATIC_ASSERT(sizeof(BSSpinLock) == 0x8);
 
@@ -69,7 +69,7 @@ namespace RE
 	{
 	public:
 		// members
-		volatile UInt32 lock;	// 0
+		volatile UInt32 lock;  // 0
 	};
 	STATIC_ASSERT(sizeof(BSNonReentrantSpinLock) == 0x4);
 
@@ -86,15 +86,15 @@ namespace RE
 
 		BSReadWriteLock();
 
-		void	LockForRead();
-		void	UnlockForRead();
-		void	LockForWrite();
-		void	UnlockForWrite();
+		void LockForRead();
+		void UnlockForRead();
+		void LockForWrite();
+		void UnlockForWrite();
 
 	private:
 		// members
-		volatile UInt32	_writerThread;	// 0
-		volatile UInt32	_lock;			// 4
+		volatile UInt32 _writerThread;	// 0
+		volatile UInt32 _lock;			// 4
 	};
 	STATIC_ASSERT(sizeof(BSReadWriteLock) == 0x8);
 
@@ -130,7 +130,7 @@ namespace RE
 		BSReadLockGuard& operator=(BSReadLockGuard&&) = delete;
 
 	private:
-		BSReadWriteLock& _lock;	// 0
+		BSReadWriteLock& _lock;	 // 0
 	};
 	STATIC_ASSERT(sizeof(BSReadLockGuard) == 0x8);
 
@@ -148,7 +148,7 @@ namespace RE
 		BSWriteLockGuard& operator=(BSWriteLockGuard&&) = delete;
 
 	private:
-		BSReadWriteLock& _lock;	// 0
+		BSReadWriteLock& _lock;	 // 0
 	};
 	STATIC_ASSERT(sizeof(BSWriteLockGuard) == 0x8);
 }

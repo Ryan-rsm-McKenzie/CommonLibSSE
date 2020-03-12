@@ -17,17 +17,20 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraAnimationSequencer;
 
 
-		enum { kExtraTypeID = ExtraDataType::kAnimationSequencer };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kAnimationSequencer
+		};
 
 
-		virtual ~ExtraAnimationSequencer();				// 00
+		virtual ~ExtraAnimationSequencer();	 // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kAnimationSequencer; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kAnimationSequencer; }
 
 
 		// members
-		BGSAnimationSequencer* sequencer;	// 10
+		BGSAnimationSequencer* sequencer;  // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraAnimationSequencer) == 0x18);
 }

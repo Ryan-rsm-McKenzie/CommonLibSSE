@@ -26,21 +26,21 @@ namespace RE
 			_pad24(0)
 		{}
 
-		virtual ~NiTStringTemplateMap();																	// 00
+		virtual ~NiTStringTemplateMap();  // 00
 
 	protected:
 		// override (Parent)
-		virtual	UInt32	hash_function(key_type a_key) const override;										// 01
-		virtual	bool	key_eq(key_type a_lhs, key_type a_rhs) const override;								// 02
-		virtual void	assign_value(value_type* a_value, key_type a_key, mapped_type a_mapped) override;	// 03
-		virtual void	clear_value(value_type* a_value) override;											// 04
+		virtual UInt32 hash_function(key_type a_key) const override;									  // 01
+		virtual bool   key_eq(key_type a_lhs, key_type a_rhs) const override;							  // 02
+		virtual void   assign_value(value_type* a_value, key_type a_key, mapped_type a_mapped) override;  // 03
+		virtual void   clear_value(value_type* a_value) override;										  // 04
 
 
 		// members
-		bool	_copy;	// 20
-		UInt8	_pad21;	// 21
-		UInt16	_pad22;	// 22
-		UInt32	_pad24;	// 24
+		bool   _copy;	// 20
+		UInt8  _pad21;	// 21
+		UInt16 _pad22;	// 22
+		UInt32 _pad24;	// 24
 	};
 
 
@@ -58,6 +58,6 @@ namespace RE
 		using size_type = typename Base::size_type;
 
 
-		virtual ~NiTStringMap();	// 00
+		virtual ~NiTStringMap();  // 00
 	};
 }

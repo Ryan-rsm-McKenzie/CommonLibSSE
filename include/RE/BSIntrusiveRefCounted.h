@@ -8,13 +8,14 @@ namespace RE
 	struct BSIntrusiveRefCounted
 	{
 	public:
-		template <class> friend struct BSTSmartPointerIntrusiveRefCount;
+		template <class>
+		friend struct BSTSmartPointerIntrusiveRefCount;
 
 
 		BSIntrusiveRefCounted();
 
-		UInt32	IncRef();
-		UInt32	DecRef();
+		UInt32 IncRef();
+		UInt32 DecRef();
 
 		TES_HEAP_REDEFINE_NEW();
 

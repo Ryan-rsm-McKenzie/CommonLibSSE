@@ -18,11 +18,11 @@ namespace RE
 
 	struct hkpAgentNnTrack
 	{
-		UInt16									bytesUsedInLastSector;	// 00
-		hkpAgentNnTrackType						nnTrackType;			// 02
-		UInt8									padding;				// 03
-		UInt32									pad04;					// 04
-		hkInplaceArray<hkpAgentNnSector*, 1>	sectors;				// 08
+		UInt16								 bytesUsedInLastSector;	 // 00
+		hkpAgentNnTrackType					 nnTrackType;			 // 02
+		UInt8								 padding;				 // 03
+		UInt32								 pad04;					 // 04
+		hkInplaceArray<hkpAgentNnSector*, 1> sectors;				 // 08
 	};
 	STATIC_ASSERT(sizeof(hkpAgentNnTrack) == 0x20);
 }

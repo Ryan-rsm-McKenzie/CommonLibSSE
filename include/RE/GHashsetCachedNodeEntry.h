@@ -73,9 +73,9 @@ namespace RE
 
 
 		// members
-		SPInt	nextInChain;	// 00
-		UPInt	hashValue;		// 08
-		T		value;			// 10
+		SPInt nextInChain;	// 00
+		UPInt hashValue;	// 08
+		T	  value;		// 10
 	};
 	// size == 0x10 + sizeof(T)
 }

@@ -13,7 +13,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSStoryManagerBranchNode;
 
 
-		enum { kTypeID = FormType::StoryManagerBranchNode };
+		enum
+		{
+			kTypeID = FormType::StoryManagerBranchNode
+		};
 
 
 		struct RecordFlags
@@ -26,18 +29,18 @@ namespace RE
 		};
 
 
-		virtual ~BGSStoryManagerBranchNode();																				// 00
+		virtual ~BGSStoryManagerBranchNode();  // 00
 
 		// override (BGSStoryManagerNodeBase)
-		virtual void										ClearData() override;											// 05 - { BGSStoryManagerNodeBase::ClearData(); }
-		virtual void										InitItemImpl() override;										// 13
-		virtual UInt32										QChildCount() const override;									// 3B - { return nodeChildren.size(); }
-		virtual BGSStoryManagerTreeForm*					GetChild(UInt32 a_idx) const override;							// 3C - { return children[a_idx]; }
-		virtual BGSStoryManagerTreeVisitor::VisitControl	AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;	// 3E - { return a_visitor->VisitBranchNode(this); }
+		virtual void									 ClearData() override;											 // 05 - { BGSStoryManagerNodeBase::ClearData(); }
+		virtual void									 InitItemImpl() override;										 // 13
+		virtual UInt32									 QChildCount() const override;									 // 3B - { return nodeChildren.size(); }
+		virtual BGSStoryManagerTreeForm*				 GetChild(UInt32 a_idx) const override;							 // 3C - { return children[a_idx]; }
+		virtual BGSStoryManagerTreeVisitor::VisitControl AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;	 // 3E - { return a_visitor->VisitBranchNode(this); }
 
 
 		// members
-		BSTArray<BGSStoryManagerNodeBase*> children;	// 48
+		BSTArray<BGSStoryManagerNodeBase*> children;  // 48
 	};
 	STATIC_ASSERT(sizeof(BGSStoryManagerBranchNode) == 0x60);
 }

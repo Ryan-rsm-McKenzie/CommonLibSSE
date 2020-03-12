@@ -36,37 +36,37 @@ namespace RE
 		using Key = Keys::Key;
 
 
-		virtual ~BSWin32GamepadDevice();				// 00
+		virtual ~BSWin32GamepadDevice();  // 00
 
 		// override (BSPCGamepadDeviceDelegate)
-		virtual void	Initialize() override;			// 01
-		virtual	void	Process(float a_arg1) override;	// 02
-		virtual	void	Unk_03(void) override;			// 03 - { return; }
-		virtual void	Reset() override;				// 08 - { std::memset(&unk0D8, 0, 0x50); }
-		virtual void	Unk_09(void) override;			// 09 - { return; }
+		virtual void Initialize() override;			  // 01
+		virtual void Process(float a_arg1) override;  // 02
+		virtual void Unk_03(void) override;			  // 03 - { return; }
+		virtual void Reset() override;				  // 08 - { std::memset(&unk0D8, 0, 0x50); }
+		virtual void Unk_09(void) override;			  // 09 - { return; }
 
 
 		// members
-		UInt32	unk0D8;		// 0D8
-		UInt8	unk0DC;		// 0DC
-		UInt8	curState;	// 0DD
-		UInt16	unk0DE;		// 0DE
-		UInt64	unk0E0;		// 0E0
-		UInt64	unk0E8;		// 0E8
-		float	curLX;		// 0F0
-		float	curLY;		// 0F4
-		float	curRX;		// 0F8
-		float	curRY;		// 0FC
-		UInt32	unk100;		// 100
-		UInt8	unk104;		// 104
-		UInt8	prevState;	// 105
-		UInt16	unk106;		// 106
-		UInt64	unk108;		// 108
-		UInt64	unk110;		// 110
-		float	prevLX;		// 118
-		float	prevLY;		// 11C
-		float	prevRX;		// 120
-		float	prevRY;		// 124
+		UInt32 unk0D8;	   // 0D8
+		UInt8  unk0DC;	   // 0DC
+		UInt8  curState;   // 0DD
+		UInt16 unk0DE;	   // 0DE
+		UInt64 unk0E0;	   // 0E0
+		UInt64 unk0E8;	   // 0E8
+		float  curLX;	   // 0F0
+		float  curLY;	   // 0F4
+		float  curRX;	   // 0F8
+		float  curRY;	   // 0FC
+		UInt32 unk100;	   // 100
+		UInt8  unk104;	   // 104
+		UInt8  prevState;  // 105
+		UInt16 unk106;	   // 106
+		UInt64 unk108;	   // 108
+		UInt64 unk110;	   // 110
+		float  prevLX;	   // 118
+		float  prevLY;	   // 11C
+		float  prevRX;	   // 120
+		float  prevRY;	   // 124
 	};
 	STATIC_ASSERT(sizeof(BSWin32GamepadDevice) == 0x128);
 }

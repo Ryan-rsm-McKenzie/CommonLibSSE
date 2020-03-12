@@ -8,11 +8,11 @@ namespace RE
 {
 	struct PatrolRefData
 	{
-		UInt64	unk00;	// 00
-		UInt64	unk08;	// 08
-		UInt64	unk10;	// 10
-		UInt64	unk18;	// 18
-		UInt64	unk20;	// 20
+		UInt64 unk00;  // 00
+		UInt64 unk08;  // 08
+		UInt64 unk10;  // 10
+		UInt64 unk18;  // 18
+		UInt64 unk20;  // 20
 	};
 	STATIC_ASSERT(sizeof(PatrolRefData) == 0x28);
 
@@ -23,14 +23,17 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraPatrolRefData;
 
 
-		enum { kExtraTypeID = ExtraDataType::kPatrolRefData };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kPatrolRefData
+		};
 
 
-		virtual ~ExtraPatrolRefData();													// 00
+		virtual ~ExtraPatrolRefData();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kPatrolRefData; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
+		virtual ExtraDataType GetType() const override;								// 01 - { return kPatrolRefData; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
 
 
 		// members

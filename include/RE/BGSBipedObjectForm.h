@@ -38,8 +38,8 @@ namespace RE
 		};
 
 
-		BipedObjectSlot	bipedObjectSlots;	// 0
-		ArmorType		armorType;			// 4
+		BipedObjectSlot bipedObjectSlots;  // 0
+		ArmorType		armorType;		   // 4
 	};
 	STATIC_ASSERT(sizeof(BIPED_MODEL) == 0x8);
 
@@ -55,28 +55,28 @@ namespace RE
 		using FirstPersonFlag = BIPED_MODEL::BipedObjectSlot;
 
 
-		virtual ~BGSBipedObjectForm();										// 00
+		virtual ~BGSBipedObjectForm();	// 00
 
 		// override (BaseFormComponent)
-		virtual void	InitializeDataComponent() override;					// 01
-		virtual void	ClearDataComponent() override;						// 02 - { return; }
-		virtual void	CopyComponent(BaseFormComponent* a_rhs) override;	// 03
+		virtual void InitializeDataComponent() override;				// 01
+		virtual void ClearDataComponent() override;						// 02 - { return; }
+		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 
-		BipedObjectSlot	AddSlotToMask(BipedObjectSlot a_slot);
+		BipedObjectSlot AddSlotToMask(BipedObjectSlot a_slot);
 		ArmorType		GetArmorType() const;
-		BipedObjectSlot	GetSlotMask() const;
+		BipedObjectSlot GetSlotMask() const;
 		bool			HasPartOf(BipedObjectSlot a_flag) const;
 		bool			IsClothing() const;
 		bool			IsHeavyArmor() const;
 		bool			IsLightArmor() const;
 		bool			IsShield() const;
-		BipedObjectSlot	RemoveSlotFromMask(BipedObjectSlot a_slot);
+		BipedObjectSlot RemoveSlotFromMask(BipedObjectSlot a_slot);
 		void			SetSlotMask(BipedObjectSlot a_mask);
 
 
 		// members
-		BIPED_MODEL bipedModelData;	// 08 - BOD2
+		BIPED_MODEL bipedModelData;	 // 08 - BOD2
 	};
 	STATIC_ASSERT(sizeof(BGSBipedObjectForm) == 0x10);
 }

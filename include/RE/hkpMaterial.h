@@ -19,16 +19,16 @@ namespace RE
 		};
 
 
-		ResponseType	GetResponseType() const;
-		void			SetResponseType(ResponseType a_type);
+		ResponseType GetResponseType() const;
+		void		 SetResponseType(ResponseType a_type);
 
 
 		// members
-		ResponseType	responseType;				// 00
-		UInt8			pad01;						// 01
-		hkHalf			rollingFrictionMultiplier;	// 02
-		float			friction;					// 04
-		float			restitution;				// 08
+		ResponseType responseType;				 // 00
+		UInt8		 pad01;						 // 01
+		hkHalf		 rollingFrictionMultiplier;	 // 02
+		float		 friction;					 // 04
+		float		 restitution;				 // 08
 	};
 	STATIC_ASSERT(sizeof(hkpMaterial) == 0xC);
 }

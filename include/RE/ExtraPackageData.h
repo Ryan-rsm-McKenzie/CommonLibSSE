@@ -15,17 +15,20 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraPackageData;
 
 
-		enum { kExtraTypeID = ExtraDataType::kPackageData };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kPackageData
+		};
 
 
-		virtual ~ExtraPackageData();					// 00
+		virtual ~ExtraPackageData();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kPackageData; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kPackageData; }
 
 
 		// members
-		ActorPackageData* actorPackageData;	// 10
+		ActorPackageData* actorPackageData;	 // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraPackageData) == 0x18);
 }

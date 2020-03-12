@@ -7,7 +7,7 @@ namespace RE
 	{
 	public:
 		// members
-		UPInt capacity;	// 0
+		UPInt capacity;	 // 0
 	};
 	STATIC_ASSERT(sizeof(GArrayDefaultPolicy) == 0x8);
 }

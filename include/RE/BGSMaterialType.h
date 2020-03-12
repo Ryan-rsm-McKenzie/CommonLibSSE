@@ -14,7 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSMaterialType;
 
 
-		enum { kTypeID = FormType::MaterialType };
+		enum
+		{
+			kTypeID = FormType::MaterialType
+		};
 
 
 		enum class FLAG : UInt32
@@ -35,22 +38,22 @@ namespace RE
 		};
 
 
-		virtual ~BGSMaterialType();						// 00
+		virtual ~BGSMaterialType();	 // 00
 
 		// override (TESForm)
-		virtual void	ClearData() override;			// 04
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void ClearData() override;			 // 04
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
 		// members
-		BGSMaterialType*	parentType;			// 20 - PNAM
-		BSFixedString		materialName;		// 28 - MNAM
-		UInt32				materialID;			// 30
-		NiColor				materialColor;		// 34 - CNAM
-		float				buoyancy;			// 40 - BNAM
-		FLAG				flags;				// 44 - FNAM
-		BGSImpactDataSet*	havokImpactDataSet;	// 48 - HNAM
+		BGSMaterialType*  parentType;		   // 20 - PNAM
+		BSFixedString	  materialName;		   // 28 - MNAM
+		UInt32			  materialID;		   // 30
+		NiColor			  materialColor;	   // 34 - CNAM
+		float			  buoyancy;			   // 40 - BNAM
+		FLAG			  flags;			   // 44 - FNAM
+		BGSImpactDataSet* havokImpactDataSet;  // 48 - HNAM
 	};
 	STATIC_ASSERT(sizeof(BGSMaterialType) == 0x50);
 }

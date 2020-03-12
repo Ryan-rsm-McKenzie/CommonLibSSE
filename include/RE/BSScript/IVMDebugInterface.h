@@ -11,7 +11,7 @@ namespace RE
 			inline static constexpr auto RTTI = RTTI_BSScript__IVMDebugInterface;
 
 
-			virtual ~IVMDebugInterface();	// 00
+			virtual ~IVMDebugInterface();  // 00
 
 			// add
 			virtual void Unk_01(void) = 0;	// 01

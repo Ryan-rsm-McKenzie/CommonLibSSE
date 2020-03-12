@@ -11,7 +11,7 @@ namespace RE
 	class BGSSceneAction;
 
 
-	enum class SCENE_ACTOR_FLAG : UInt32	// LNAM
+	enum class SCENE_ACTOR_FLAG : UInt32  // LNAM
 	{
 		kNone = 0,
 		kNoPlayerActivation = 1 << 0,
@@ -24,9 +24,9 @@ namespace RE
 	class BGSScenePhase
 	{
 	public:
-		TESCondition				startConditions;		// 00
-		TESCondition				completionConditions;	// 08
-		BGSStoryManagerQuestNode*	questNode;				// 10
+		TESCondition			  startConditions;		 // 00
+		TESCondition			  completionConditions;	 // 08
+		BGSStoryManagerQuestNode* questNode;			 // 10
 	};
 	STATIC_ASSERT(sizeof(BGSScenePhase) == 0x18);
 
@@ -37,7 +37,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSScene;
 
 
-		enum { kTypeID = FormType::Scene };
+		enum
+		{
+			kTypeID = FormType::Scene
+		};
 
 
 		enum class Flag : UInt32
@@ -50,10 +53,10 @@ namespace RE
 		};
 
 
-		enum class BehaviourFlag : UInt32	// DNAM
+		enum class BehaviourFlag : UInt32  // DNAM
 		{
 			kNone = 0,
-			kDeathPause = 1 << 0,	// unused
+			kDeathPause = 1 << 0,  // unused
 			kDeathEnd = 1 << 1,
 			kCombatPause = 1 << 2,
 			kCombatEnd = 1 << 3,
@@ -83,34 +86,34 @@ namespace RE
 		};
 
 
-		virtual ~BGSScene();												// 00
+		virtual ~BGSScene();  // 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;							// 05
-		virtual bool	Load(TESFile* a_mod) override;						// 06
-		virtual void	SaveGame(BGSSaveFormBuffer* a_buf) override;		// 0E
-		virtual void	LoadGame(BGSLoadFormBuffer* a_buf) override;		// 0F
-		virtual void	InitLoadGame(BGSLoadFormBuffer* a_buf) override;	// 10
-		virtual void	Revert(BGSLoadFormBuffer* a_buf) override;			// 12
-		virtual void	InitItemImpl() override;							// 13
+		virtual void InitializeData() override;						   // 05
+		virtual bool Load(TESFile* a_mod) override;					   // 06
+		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;	   // 0E
+		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;	   // 0F
+		virtual void InitLoadGame(BGSLoadFormBuffer* a_buf) override;  // 10
+		virtual void Revert(BGSLoadFormBuffer* a_buf) override;		   // 12
+		virtual void InitItemImpl() override;						   // 13
 
 
 		// members
-		BSTArray<BGSScenePhase*>	phases;					// 20
-		BSTArray<FormID>			actors;					// 00 - ALID
-		BSTArray<SCENE_ACTOR_FLAG>	actorFlags;				// 18 - LNAM
-		BSTArray<BehaviourFlag>		actorProgressionFlags;	// 30 - DNAM
-		BSTArray<BGSSceneAction*>	actions;				// 80
-		TESQuest*					parentQuest;			// 98 - PNAM
-		Flag						flags;					// A0 - FNAM
-		UInt32						padA4;					// A4
-		TESCondition				conditions;				// A8 - CTDA
-		UInt32						unkB0;					// B0
-		UInt32						unkB4;					// B4
-		UInt32						unkB8;					// B8
-		UInt32						unkBC;					// BC
-		UInt32						unkC0;					// C0
-		UInt32						padC4;					// C4
+		BSTArray<BGSScenePhase*>   phases;				   // 20
+		BSTArray<FormID>		   actors;				   // 00 - ALID
+		BSTArray<SCENE_ACTOR_FLAG> actorFlags;			   // 18 - LNAM
+		BSTArray<BehaviourFlag>	   actorProgressionFlags;  // 30 - DNAM
+		BSTArray<BGSSceneAction*>  actions;				   // 80
+		TESQuest*				   parentQuest;			   // 98 - PNAM
+		Flag					   flags;				   // A0 - FNAM
+		UInt32					   padA4;				   // A4
+		TESCondition			   conditions;			   // A8 - CTDA
+		UInt32					   unkB0;				   // B0
+		UInt32					   unkB4;				   // B4
+		UInt32					   unkB8;				   // B8
+		UInt32					   unkBC;				   // BC
+		UInt32					   unkC0;				   // C0
+		UInt32					   padC4;				   // C4
 	};
 	STATIC_ASSERT(sizeof(BGSScene) == 0xC8);
 }

@@ -7,11 +7,15 @@ namespace RE
 	class GPoint
 	{
 	public:
-		enum class BoundsType { kMin, kMax };
+		enum class BoundsType
+		{
+			kMin,
+			kMax
+		};
 
 		// members
-		T	x;	// 00
-		T	y;	// ??
+		T x;  // 00
+		T y;  // ??
 	};
 
 

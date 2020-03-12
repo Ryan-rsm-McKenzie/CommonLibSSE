@@ -21,7 +21,7 @@ namespace RE
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiGeometryData;
 
 
-		enum class DataFlag: UInt16
+		enum class DataFlag : UInt16
 		{
 			kNone = 0x0000,
 			kNDL = 1 << 12,
@@ -71,44 +71,44 @@ namespace RE
 		virtual ~NiGeometryData();	// 00
 
 		// override (NiObject)
-		virtual const NiRTTI*		GetRTTI() const override;							// 02
-		virtual void				LoadBinary(NiStream& a_stream) override;			// 18
-		virtual void				LinkObject(NiStream& a_stream) override;			// 19
-		virtual bool				RegisterStreamables(NiStream& a_stream) override;	// 1A
-		virtual void				SaveBinary(NiStream& a_stream) override;			// 1B
-		virtual bool				IsEqual(NiObject* a_object) override;				// 1C
+		virtual const NiRTTI* GetRTTI() const override;							 // 02
+		virtual void		  LoadBinary(NiStream& a_stream) override;			 // 18
+		virtual void		  LinkObject(NiStream& a_stream) override;			 // 19
+		virtual bool		  RegisterStreamables(NiStream& a_stream) override;	 // 1A
+		virtual void		  SaveBinary(NiStream& a_stream) override;			 // 1B
+		virtual bool		  IsEqual(NiObject* a_object) override;				 // 1C
 
 		// add
-		virtual void				SetActiveVertexCount(UInt16 a_count);				// 25 - { return; }
-		virtual UInt16				GetActiveVertexCount() const;						// 26 - { return vertices; }
-		virtual NiTriStripsData*	AsTriStripsData();									// 27 - { return 0; }
-		virtual NiTriShapeData*		AsTriShapeData();									// 28 - { return 0; }
-		virtual void				Unk_29(void) = 0;									// 29
+		virtual void			 SetActiveVertexCount(UInt16 a_count);	// 25 - { return; }
+		virtual UInt16			 GetActiveVertexCount() const;			// 26 - { return vertices; }
+		virtual NiTriStripsData* AsTriStripsData();						// 27 - { return 0; }
+		virtual NiTriShapeData*	 AsTriShapeData();						// 28 - { return 0; }
+		virtual void			 Unk_29(void) = 0;						// 29
 
 
 		// members
-		UInt16								vertices;			// 10
-		UInt16								id;					// 12
-		DirtyFlag							dirtyFlags;			// 14
-		DataFlag							dataFlags;			// 16
-		NiBound								bound;				// 18
-		NiPoint3*							vertex;				// 28
-		NiPoint3*							normal;				// 30
-		NiColorA*							color;				// 38
-		NiPoint2*							texture;			// 40
-		UInt32								unk48;				// 48
-		UInt32								unk4C;				// 4C
-		UInt32								unk50;				// 50
-		UInt32								unk54;				// 54
-		NiPointer<NiAdditionalGeometryData>	additionalGeomData;	// 58
-		KeepFlag							keepFlags;			// 60
-		CompressFlag						compressFlags;		// 61
-		UInt8								unk62;				// 62
-		UInt8								unk63;				// 63
-		UInt8								unk64;				// 64
-		UInt8								unk65;				// 65
-		bool								hasGeoData;			// 66
-		UInt8								unk67;				// 67
+		UInt16								vertices;			 // 10
+		UInt16								id;					 // 12
+		DirtyFlag							dirtyFlags;			 // 14
+		DataFlag							dataFlags;			 // 16
+		NiBound								bound;				 // 18
+		NiPoint3*							vertex;				 // 28
+		NiPoint3*							normal;				 // 30
+		NiColorA*							color;				 // 38
+		NiPoint2*							texture;			 // 40
+		UInt32								unk48;				 // 48
+		UInt32								unk4C;				 // 4C
+		UInt32								unk50;				 // 50
+		UInt32								unk54;				 // 54
+		NiPointer<NiAdditionalGeometryData> additionalGeomData;	 // 58
+		KeepFlag							keepFlags;			 // 60
+		CompressFlag						compressFlags;		 // 61
+		UInt8								unk62;				 // 62
+		UInt8								unk63;				 // 63
+		UInt8								unk64;				 // 64
+		UInt8								unk65;				 // 65
+		bool								hasGeoData;			 // 66
+		UInt8								unk67;				 // 67
 	};
 	STATIC_ASSERT(sizeof(NiGeometryData) == 0x68);
 }

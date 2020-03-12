@@ -23,16 +23,16 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_InputEvent;
 
 
-		virtual ~InputEvent();								// 00
+		virtual ~InputEvent();	// 00
 
-		virtual bool					HasIDCode() const;	// 01 - { return false; }
-		virtual const BSFixedString&	QUserEvent() const;	// 02 - { return ""; }
+		virtual bool				 HasIDCode() const;	  // 01 - { return false; }
+		virtual const BSFixedString& QUserEvent() const;  // 02 - { return ""; }
 
 
 		// members
-		INPUT_DEVICE		device;		// 08
-		INPUT_EVENT_TYPE	eventType;	// 0C
-		InputEvent*			next;		// 10
+		INPUT_DEVICE	 device;	 // 08
+		INPUT_EVENT_TYPE eventType;	 // 0C
+		InputEvent*		 next;		 // 10
 	};
 	STATIC_ASSERT(sizeof(InputEvent) == 0x18);
 }

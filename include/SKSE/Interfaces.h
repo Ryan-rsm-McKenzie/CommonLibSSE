@@ -3,8 +3,8 @@
 #include <functional>
 #include <string>
 
-#include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/IVirtualMachine.h"
+#include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/GFxMovieView.h"
 #include "RE/GFxValue.h"
 #include "RE/InventoryEntryData.h"
@@ -32,10 +32,10 @@ namespace SKSE
 	class QueryInterface
 	{
 	public:
-		UInt32 EditorVersion() const;
-		bool IsEditor() const;
+		UInt32	EditorVersion() const;
+		bool	IsEditor() const;
 		Version RuntimeVersion() const;
-		UInt32 SKSEVersion() const;
+		UInt32	SKSEVersion() const;
 
 	protected:
 		const Impl::SKSEInterface* GetProxy() const;
@@ -46,8 +46,8 @@ namespace SKSE
 	{
 	public:
 		PluginHandle GetPluginHandle() const;
-		UInt32 GetReleaseIndex() const;
-		void* QueryInterface(InterfaceID a_id) const;
+		UInt32		 GetReleaseIndex() const;
+		void*		 QueryInterface(InterfaceID a_id) const;
 	};
 
 
@@ -57,7 +57,10 @@ namespace SKSE
 		using RegCallback = bool(RE::GFxMovieView* a_view, RE::GFxValue* a_root);
 		using RegInvCallback = void(RE::GFxMovieView* a_view, RE::GFxValue* a_object, RE::InventoryEntryData* a_item);
 
-		enum { kVersion = 2 };
+		enum
+		{
+			kVersion = 2
+		};
 
 		UInt32 Version() const;
 
@@ -75,7 +78,10 @@ namespace SKSE
 		using EventCallback = void(SerializationInterface* a_intfc);
 		using FormDeleteCallback = void(RE::VMHandle a_handle);
 
-		enum { kVersion = 4 };
+		enum
+		{
+			kVersion = 4
+		};
 
 		UInt32 Version() const;
 
@@ -93,7 +99,7 @@ namespace SKSE
 			return WriteRecord(a_type, a_version, std::addressof(a_buf), sizeof(T));
 		}
 		template <class T, std::size_t N, typename std::enable_if_t<std::is_array<T>::value, int> = 0>
-		inline UInt32 WriteRecord(UInt32 a_type, UInt32 a_version, const T(&a_buf)[N]) const
+		inline UInt32 WriteRecord(UInt32 a_type, UInt32 a_version, const T (&a_buf)[N]) const
 		{
 			return WriteRecord(a_type, a_version, std::addressof(a_buf), sizeof(T) * N);
 		}
@@ -107,7 +113,7 @@ namespace SKSE
 			return WriteRecordData(std::addressof(a_buf), sizeof(T));
 		}
 		template <class T, std::size_t N, typename std::enable_if_t<std::is_array<T>::value, int> = 0>
-		inline UInt32 WriteRecordData(const T(&a_buf)[N]) const
+		inline UInt32 WriteRecordData(const T (&a_buf)[N]) const
 		{
 			return WriteRecordData(std::addressof(a_buf), sizeof(T) * N);
 		}
@@ -121,7 +127,7 @@ namespace SKSE
 			return ReadRecordData(std::addressof(a_buf), sizeof(T));
 		}
 		template <class T, std::size_t N, typename std::enable_if_t<std::is_array<T>::value, int> = 0>
-		inline UInt32 ReadRecordData(T(&a_buf)[N]) const
+		inline UInt32 ReadRecordData(T (&a_buf)[N]) const
 		{
 			return ReadRecordData(std::addressof(a_buf), sizeof(T) * N);
 		}
@@ -139,7 +145,10 @@ namespace SKSE
 	public:
 		using TaskFn = std::function<void()>;
 
-		enum { kVersion = 2 };
+		enum
+		{
+			kVersion = 2
+		};
 
 		UInt32 Version() const;
 
@@ -183,7 +192,10 @@ namespace SKSE
 		using RegFunction1 = bool(RE::BSScript::Internal::VirtualMachine* a_vm);
 		using RegFunction2 = bool(RE::BSScript::IVirtualMachine* a_vm);
 
-		enum { kVersion = 1 };
+		enum
+		{
+			kVersion = 1
+		};
 
 		UInt32 Version() const;
 
@@ -213,7 +225,7 @@ namespace SKSE
 	public:
 		struct Message
 		{
-			const char*	sender;
+			const char* sender;
 			UInt32		type;
 			UInt32		dataLen;
 			void*		data;
@@ -221,7 +233,10 @@ namespace SKSE
 
 		using EventCallback = void(Message* a_msg);
 
-		enum { kVersion = 2 };
+		enum
+		{
+			kVersion = 2
+		};
 
 		enum : UInt32
 		{
@@ -251,9 +266,9 @@ namespace SKSE
 
 		UInt32 Version() const;
 
-		bool Dispatch(UInt32 a_messageType, void* a_data, UInt32 a_dataLen, const char* a_receiver) const;
+		bool  Dispatch(UInt32 a_messageType, void* a_data, UInt32 a_dataLen, const char* a_receiver) const;
 		void* GetEventDispatcher(Dispatcher a_dispatcherID) const;
-		bool RegisterListener(const char* a_sender, EventCallback* a_callback) const;
+		bool  RegisterListener(const char* a_sender, EventCallback* a_callback) const;
 
 	protected:
 		const Impl::SKSEMessagingInterface* GetProxy() const;
@@ -263,12 +278,15 @@ namespace SKSE
 	class ObjectInterface
 	{
 	public:
-		enum { kVersion = 1 };
+		enum
+		{
+			kVersion = 1
+		};
 
 		UInt32 Version() const;
 
-		SKSEDelayFunctorManager& GetDelayFunctorManager() const;
-		SKSEObjectRegistry& GetObjectRegistry() const;
+		SKSEDelayFunctorManager&	 GetDelayFunctorManager() const;
+		SKSEObjectRegistry&			 GetObjectRegistry() const;
 		SKSEPersistentObjectStorage& GetPersistentObjectStorage() const;
 
 	private:
@@ -278,10 +296,13 @@ namespace SKSE
 
 	struct PluginInfo
 	{
-		enum { kVersion = 1 };
+		enum
+		{
+			kVersion = 1
+		};
 
 		UInt32		infoVersion;
-		const char*	name;
+		const char* name;
 		UInt32		version;
 	};
 }

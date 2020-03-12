@@ -17,8 +17,8 @@ namespace RE
 		class Allocator = GAllocatorGH<C>,
 		class HashNode = GHashNode<C, U, HashF>,
 		class Entry = GHashsetCachedNodeEntry<HashNode, typename HashNode::NodeHashF>,
-		class Container = GHashSet<HashNode, typename HashNode::NodeHashF, typename HashNode::NodeAltHashF, Allocator, Entry>
-	> class GHash
+		class Container = GHashSet<HashNode, typename HashNode::NodeHashF, typename HashNode::NodeAltHashF, Allocator, Entry>>
+	class GHash
 	{
 	public:
 		using SelfType = GHash<C, U, HashF, Allocator, HashNode, Entry, Container>;
@@ -226,6 +226,6 @@ namespace RE
 
 
 		// members
-		Container hash;	// 00
+		Container hash;	 // 00
 	};
 }

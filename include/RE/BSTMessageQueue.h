@@ -3,8 +3,10 @@
 
 namespace RE
 {
-	template <class T> class BSTFreeList;
-	template <class T> struct BSTFreeListElem;
+	template <class T>
+	class BSTFreeList;
+	template <class T>
+	struct BSTFreeListElem;
 	class ScrapHeap;
 
 
@@ -12,13 +14,13 @@ namespace RE
 	class BSTMessageQueue
 	{
 	public:
-		virtual ~BSTMessageQueue();				// 00
+		virtual ~BSTMessageQueue();	 // 00
 
 		// add
-		virtual bool	Push(T* a_obj) = 0;		// 01 - Wait for lock, then push
-		virtual bool	TryPush(T* a_obj) = 0;	// 02 - Try for lock, return false if taken, else push
-		virtual bool	Pop(T* a_obj) = 0;		// 03 - Wait for lock, then remove
-		virtual bool	TryPop(T* a_obj) = 0;	// 04 - Try for lock, return false if taken, else remove
+		virtual bool Push(T* a_obj) = 0;	 // 01 - Wait for lock, then push
+		virtual bool TryPush(T* a_obj) = 0;	 // 02 - Try for lock, return false if taken, else push
+		virtual bool Pop(T* a_obj) = 0;		 // 03 - Wait for lock, then remove
+		virtual bool TryPop(T* a_obj) = 0;	 // 04 - Try for lock, return false if taken, else remove
 	};
 	STATIC_ASSERT(sizeof(BSTMessageQueue<void*>) == 0x8);
 
@@ -27,21 +29,21 @@ namespace RE
 	class BSTCommonMessageQueue : public BSTMessageQueue<T>
 	{
 	public:
-		virtual ~BSTCommonMessageQueue();			// 00
+		virtual ~BSTCommonMessageQueue();  // 00
 
 		// override (BSTMessageQueue<T>)
-		virtual bool	Push(T* a_obj) override;	// 01
-		virtual bool	TryPush(T* a_obj) override;	// 02
-		virtual bool	Pop(T* a_obj) override;		// 03
-		virtual bool	TryPop(T* a_obj) override;	// 04
+		virtual bool Push(T* a_obj) override;	  // 01
+		virtual bool TryPush(T* a_obj) override;  // 02
+		virtual bool Pop(T* a_obj) override;	  // 03
+		virtual bool TryPop(T* a_obj) override;	  // 04
 
 	protected:
 		// add
-		virtual bool	PushInternal(T* a_obj);		// 05 - { return false; }
-		virtual bool	PopInternal(T* a_obj);		// 06 - { return false; }
+		virtual bool PushInternal(T* a_obj);  // 05 - { return false; }
+		virtual bool PopInternal(T* a_obj);	  // 06 - { return false; }
 
 	public:
-		volatile mutable UInt32	lock;	// 08
+		volatile mutable UInt32 lock;	// 08
 		volatile UInt32			pad0C;	// 0C
 	};
 	STATIC_ASSERT(sizeof(BSTCommonMessageQueue<void*>) == 0x10);
@@ -52,9 +54,9 @@ namespace RE
 	{
 	public:
 		// members
-		ScrapHeap*	unk10;	// 10
-		UInt64		unk18;	// 18
-		UInt64		unk20;	// 20
+		ScrapHeap* unk10;  // 10
+		UInt64	   unk18;  // 18
+		UInt64	   unk20;  // 20
 	};
 	STATIC_ASSERT(sizeof(BSTCommonScrapHeapMessageQueue<void*>) == 0x28);
 
@@ -63,17 +65,17 @@ namespace RE
 	class BSTCommonLLMessageQueue : public BSTCommonMessageQueue<T>
 	{
 	public:
-		virtual ~BSTCommonLLMessageQueue();					// 00
+		virtual ~BSTCommonLLMessageQueue();	 // 00
 
 	protected:
 		// override (BSTCommonMessageQueue<T>)
-		virtual bool	PushInternal(T* a_obj) override;	// 05
-		virtual bool	PopInternal(T* a_obj) override;		// 06
+		virtual bool PushInternal(T* a_obj) override;  // 05
+		virtual bool PopInternal(T* a_obj) override;   // 06
 
 	public:
-		BSTFreeList<T>*			freeList;	// 10
-		BSTFreeListElem<T>*		head;		// 18
-		BSTFreeListElem<T>**	tail;		// 20
+		BSTFreeList<T>*		 freeList;	// 10
+		BSTFreeListElem<T>*	 head;		// 18
+		BSTFreeListElem<T>** tail;		// 20
 	};
 	STATIC_ASSERT(sizeof(BSTCommonLLMessageQueue<void*>) == 0x28);
 
@@ -82,17 +84,17 @@ namespace RE
 	class BSTCommonStaticMessageQueue : public BSTCommonMessageQueue<T>
 	{
 	public:
-		virtual ~BSTCommonStaticMessageQueue();				// 00
+		virtual ~BSTCommonStaticMessageQueue();	 // 00
 
 	protected:
 		// override (BSTCommonMessageQueue<T>)
-		virtual bool	PushInternal(T* a_obj) override;	// 05
-		virtual bool	PopInternal(T* a_obj) override;		// 06
+		virtual bool PushInternal(T* a_obj) override;  // 05
+		virtual bool PopInternal(T* a_obj) override;   // 06
 
 	public:
-		char	queueBuffer[sizeof(T) * SIZE];	// 10
-		UInt32	numEntries;						// ??
-		UInt32	pushIdx;						// ??
-		UInt32	popIdx;							// ??
+		char   queueBuffer[sizeof(T) * SIZE];  // 10
+		UInt32 numEntries;					   // ??
+		UInt32 pushIdx;						   // ??
+		UInt32 popIdx;						   // ??
 	};
 }

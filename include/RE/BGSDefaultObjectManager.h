@@ -398,20 +398,20 @@ namespace RE
 
 	struct DEFAULT_OBJECT_DATA
 	{
-		const char*			name;			// 00
-		FormType			type;			// 08
-		UInt8				pad09;			// 09
-		UInt16				pad0A;			// 0A
-		char				uniqueID[4];	// 0C
-		DEFAULT_OBJECT_TYPE	doType;			// 10
-		UInt32				pad14;			// 14
+		const char*			name;		  // 00
+		FormType			type;		  // 08
+		UInt8				pad09;		  // 09
+		UInt16				pad0A;		  // 0A
+		char				uniqueID[4];  // 0C
+		DEFAULT_OBJECT_TYPE doType;		  // 10
+		UInt32				pad14;		  // 14
 	};
 	STATIC_ASSERT(sizeof(DEFAULT_OBJECT_DATA) == 0x18);
 
 
 	class BGSDefaultObjectManager :
-		public TESForm,											// 000
-		public BSTSingletonImplicit<BGSDefaultObjectManager>	// 020
+		public TESForm,										  // 000
+		public BSTSingletonImplicit<BGSDefaultObjectManager>  // 020
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSDefaultObjectManager;
@@ -420,34 +420,40 @@ namespace RE
 		using DefaultObject = DEFAULT_OBJECT;
 
 
-		enum { kTypeID = FormType::DefaultObject };
+		enum
+		{
+			kTypeID = FormType::DefaultObject
+		};
 
 
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32
-			{};
+			{
+			};
 		};
 
 
-		virtual ~BGSDefaultObjectManager();				// 00
+		virtual ~BGSDefaultObjectManager();	 // 00
 
 		// override (TESForm)
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 		static BGSDefaultObjectManager* GetSingleton();
 
-		TESForm*				GetObject(DefaultObject a_object);
-		TESForm*				GetObject(std::size_t a_idx);
-		template <class T> T*	GetObject(DefaultObject a_object);
-		template <class T> T*	GetObject(std::size_t a_idx);
+		TESForm* GetObject(DefaultObject a_object);
+		TESForm* GetObject(std::size_t a_idx);
+		template <class T>
+		T* GetObject(DefaultObject a_object);
+		template <class T>
+		T* GetObject(std::size_t a_idx);
 
 
 		// members
-		TESForm*	objects[DEFAULT_OBJECTS::kTotal];		// 020 - DNAM
-		bool		objectInit[DEFAULT_OBJECTS::kTotal];	// B80
-		UInt32		padCEC;									// CEC
+		TESForm* objects[DEFAULT_OBJECTS::kTotal];	   // 020 - DNAM
+		bool	 objectInit[DEFAULT_OBJECTS::kTotal];  // B80
+		UInt32	 padCEC;							   // CEC
 	};
 	STATIC_ASSERT(sizeof(BGSDefaultObjectManager) == 0xCF0);
 

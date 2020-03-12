@@ -9,7 +9,7 @@ namespace RE
 {
 	struct CollisionData
 	{
-		COL_LAYER layer;	// 0
+		COL_LAYER layer;  // 0
 	};
 	STATIC_ASSERT(sizeof(CollisionData) == 0x4);
 
@@ -20,18 +20,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraCollisionData;
 
 
-		enum { kExtraTypeID = ExtraDataType::kCollisionData };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kCollisionData
+		};
 
 
-		virtual ~ExtraCollisionData();													// 00
+		virtual ~ExtraCollisionData();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kCollisionData; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
+		virtual ExtraDataType GetType() const override;								// 01 - { return kCollisionData; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
 
 
 		// members
-		CollisionData* collisionData;	// 10
+		CollisionData* collisionData;  // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraCollisionData) == 0x18);
 }

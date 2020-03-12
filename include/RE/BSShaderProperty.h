@@ -89,59 +89,59 @@ namespace RE
 		};
 
 
-		virtual ~BSShaderProperty();	// 00
+		virtual ~BSShaderProperty();  // 00
 
 		// override (NiShadeProperty)
-		virtual const NiRTTI*	GetRTTI() const override;							// 02
-		virtual NiObject*		CreateClone(NiCloningProcess& a_cloning) override;	// 17 - { return 0; }
-		virtual void			LoadBinary(NiStream& a_stream) override;			// 18
-		virtual void			LinkObject(NiStream& a_stream) override;			// 19 - { NiShadeProperty::LinkObject(a_stream); }
-		virtual bool			RegisterStreamables(NiStream& a_stream) override;	// 1A - { return NiShadeProperty::RegisterStreamables(a_stream); }
-		virtual void			SaveBinary(NiStream& a_stream) override;			// 1B
-		virtual bool			IsEqual(NiObject* a_object) override;				// 1C - { return false; }
-		virtual void			PostLinkObject(NiStream& a_stream) override;		// 1E - { NiObjectNET::PostLinkObject(a_stream); }
-		virtual void			Unk_27(void) override;								// 27 - { return 1; }
-		virtual void			Unk_29(void) override;								// 29
+		virtual const NiRTTI* GetRTTI() const override;							  // 02
+		virtual NiObject*	  CreateClone(NiCloningProcess& a_cloning) override;  // 17 - { return 0; }
+		virtual void		  LoadBinary(NiStream& a_stream) override;			  // 18
+		virtual void		  LinkObject(NiStream& a_stream) override;			  // 19 - { NiShadeProperty::LinkObject(a_stream); }
+		virtual bool		  RegisterStreamables(NiStream& a_stream) override;	  // 1A - { return NiShadeProperty::RegisterStreamables(a_stream); }
+		virtual void		  SaveBinary(NiStream& a_stream) override;			  // 1B
+		virtual bool		  IsEqual(NiObject* a_object) override;				  // 1C - { return false; }
+		virtual void		  PostLinkObject(NiStream& a_stream) override;		  // 1E - { NiObjectNET::PostLinkObject(a_stream); }
+		virtual void		  Unk_27(void) override;							  // 27 - { return 1; }
+		virtual void		  Unk_29(void) override;							  // 29
 
 		// add
-		virtual void			Unk_2A(void) = 0;									// 2A
-		virtual void			Unk_2B(void);										// 2B - { return 0; }
-		virtual void			Unk_2C(void);										// 2C - { return 0; }
-		virtual void			Unk_2D(void);										// 2D - { return 0; }
-		virtual void			Unk_2E(void);										// 2E - { return 1; }
-		virtual void			Unk_2F(void);										// 2F - { return 0; }
-		virtual void			Unk_30(void);										// 30
-		virtual void			Unk_31(void);										// 31 - { return; }
-		virtual void			Unk_32(void);										// 32 - { return 1.0; }
-		virtual void			Unk_33(void);										// 33 - { return 1; }
-		virtual void			Unk_34(void);										// 34
-		virtual void			Unk_35(void);										// 35 - { return 0; }
-		virtual void			Unk_36(void);										// 36 - { return 0; }
-		virtual void			Unk_37(void);										// 37 - { return 0; }
-		virtual void			Unk_38(void);										// 38 - { return 0; }
-		virtual bool			AcceptsEffectData() const;							// 39 - { return false; }
-		virtual void			Unk_3A(void);										// 3A - { return; }
-		virtual void			Unk_3B(void);										// 3B - { return; }
-		virtual void			Unk_3C(void);										// 3C - { return 0; }
-		virtual void			Unk_3D(void);										// 3D - { return 0; }
-		virtual void			Unk_3E(void);										// 3E - { return 0; }
+		virtual void Unk_2A(void) = 0;			 // 2A
+		virtual void Unk_2B(void);				 // 2B - { return 0; }
+		virtual void Unk_2C(void);				 // 2C - { return 0; }
+		virtual void Unk_2D(void);				 // 2D - { return 0; }
+		virtual void Unk_2E(void);				 // 2E - { return 1; }
+		virtual void Unk_2F(void);				 // 2F - { return 0; }
+		virtual void Unk_30(void);				 // 30
+		virtual void Unk_31(void);				 // 31 - { return; }
+		virtual void Unk_32(void);				 // 32 - { return 1.0; }
+		virtual void Unk_33(void);				 // 33 - { return 1; }
+		virtual void Unk_34(void);				 // 34
+		virtual void Unk_35(void);				 // 35 - { return 0; }
+		virtual void Unk_36(void);				 // 36 - { return 0; }
+		virtual void Unk_37(void);				 // 37 - { return 0; }
+		virtual void Unk_38(void);				 // 38 - { return 0; }
+		virtual bool AcceptsEffectData() const;	 // 39 - { return false; }
+		virtual void Unk_3A(void);				 // 3A - { return; }
+		virtual void Unk_3B(void);				 // 3B - { return; }
+		virtual void Unk_3C(void);				 // 3C - { return 0; }
+		virtual void Unk_3D(void);				 // 3D - { return 0; }
+		virtual void Unk_3E(void);				 // 3E - { return 0; }
 
 		void SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
 
 
 		// members
-		float								alpha;					// 30
-		SInt32								lastRenderPassState;	// 34
-		EShaderPropertyFlag					flags;					// 38
-		void*								unk40;					// 40
-		UInt64								unk48;					// 48
-		void*								unk50;					// 50
-		UInt64								unk58;					// 58
-		UInt64								unk60;					// 60
-		BSTSmartPointer<BSEffectShaderData>	effectData;				// 68
-		UInt64								unk70;					// 70
-		BSShaderMaterial*					material;				// 78
-		UInt64								unk80;					// 80
+		float								alpha;				  // 30
+		SInt32								lastRenderPassState;  // 34
+		EShaderPropertyFlag					flags;				  // 38
+		void*								unk40;				  // 40
+		UInt64								unk48;				  // 48
+		void*								unk50;				  // 50
+		UInt64								unk58;				  // 58
+		UInt64								unk60;				  // 60
+		BSTSmartPointer<BSEffectShaderData> effectData;			  // 68
+		UInt64								unk70;				  // 70
+		BSShaderMaterial*					material;			  // 78
+		UInt64								unk80;				  // 80
 	};
 	STATIC_ASSERT(sizeof(BSShaderProperty) == 0x88);
 }

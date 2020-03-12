@@ -130,8 +130,7 @@ namespace RE
 		return NiPoint3(
 			y * a_pt.z - z * a_pt.y,
 			z * a_pt.x - x * a_pt.z,
-			x * a_pt.y - y * a_pt.x
-		);
+			x * a_pt.y - y * a_pt.x);
 	}
 
 

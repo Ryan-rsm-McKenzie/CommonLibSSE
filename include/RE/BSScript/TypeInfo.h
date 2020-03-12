@@ -39,35 +39,35 @@ namespace RE
 			TypeInfo(const TypeInfo& a_rhs);
 			TypeInfo(TypeInfo&& a_rhs);
 
-			TypeInfo&	operator=(const TypeInfo& a_rhs);
-			TypeInfo&	operator=(TypeInfo&& a_rhs);
-			TypeInfo&	operator=(RawType a_rhs);
+			TypeInfo& operator=(const TypeInfo& a_rhs);
+			TypeInfo& operator=(TypeInfo&& a_rhs);
+			TypeInfo& operator=(RawType a_rhs);
 
 			friend bool operator==(const TypeInfo& a_lhs, const TypeInfo& a_rhs);
 			friend bool operator!=(const TypeInfo& a_lhs, const TypeInfo& a_rhs);
-			friend bool operator< (const TypeInfo& a_lhs, const TypeInfo& a_rhs);
+			friend bool operator<(const TypeInfo& a_lhs, const TypeInfo& a_rhs);
 			friend bool operator<=(const TypeInfo& a_lhs, const TypeInfo& a_rhs);
-			friend bool operator> (const TypeInfo& a_lhs, const TypeInfo& a_rhs);
+			friend bool operator>(const TypeInfo& a_lhs, const TypeInfo& a_rhs);
 			friend bool operator>=(const TypeInfo& a_lhs, const TypeInfo& a_rhs);
 
 			RawType			GetRawType() const;
-			ObjectTypeInfo*	GetTypeInfo() const;
+			ObjectTypeInfo* GetTypeInfo() const;
 			RawType			GetUnmangledRawType() const;
-			bool 			IsArray() const;
-			bool 			IsBool() const;
-			bool 			IsFloat() const;
+			bool			IsArray() const;
+			bool			IsBool() const;
+			bool			IsFloat() const;
 			bool			IsInt() const;
 			bool			IsLiteralArray() const;
 			bool			IsNoneArray() const;
 			bool			IsNoneObject() const;
-			bool			IsObject(void)	const;
+			bool			IsObject(void) const;
 			bool			IsObjectArray() const;
 			bool			IsString() const;
 			void			SetType(RawType a_type);
 
 		protected:
 			// members
-			RawType _rawType;	// 00
+			RawType _rawType;  // 00
 		};
 		STATIC_ASSERT(sizeof(TypeInfo) == 0x8);
 	}

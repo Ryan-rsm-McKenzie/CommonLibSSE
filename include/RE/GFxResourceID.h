@@ -49,21 +49,21 @@ namespace RE
 		explicit GFxResourceID(UInt32 a_resID);
 		GFxResourceID(const GFxResourceID& a_rhs);
 
-		GFxResourceID&	operator=(const GFxResourceID& a_rhs);
-		bool			operator==(const GFxResourceID& a_rhs) const;
-		bool			operator!=(const GFxResourceID& a_rhs) const;
-		bool			operator==(UInt32 a_idVal) const;
-		bool			operator!=(UInt32 a_idVal) const;
+		GFxResourceID& operator=(const GFxResourceID& a_rhs);
+		bool		   operator==(const GFxResourceID& a_rhs) const;
+		bool		   operator!=(const GFxResourceID& a_rhs) const;
+		bool		   operator==(UInt32 a_idVal) const;
+		bool		   operator!=(UInt32 a_idVal) const;
 
 		UInt32			GetIDValue() const;
 		UInt32			GetIDIndex() const;
-		IDTypes::IDType	GetIDType() const;
+		IDTypes::IDType GetIDType() const;
 		GFxResourceID	GenerateNextID();
 
 	protected:
 		// members
-		UInt32	id;		// 0
-		UInt32	pad4;	// 4
+		UInt32 id;	  // 0
+		UInt32 pad4;  // 4
 	};
 	STATIC_ASSERT(sizeof(GFxResourceID) == 0x8);
 }

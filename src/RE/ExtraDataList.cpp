@@ -14,8 +14,8 @@
 #include "RE/ExtraTextDisplayData.h"
 #include "RE/GameSettingCollection.h"
 #include "RE/Offsets.h"
-#include "RE/TESObjectREFR.h"
 #include "RE/TESForm.h"
+#include "RE/TESObjectREFR.h"
 #include "REL/Relocation.h"
 
 
@@ -194,7 +194,7 @@ namespace RE
 		}
 
 		auto xText = GetExtraTextDisplayData();
-		bool dfHealth = health <= 1.0 ? (1.0 - health) < 0.001 : (health - 1.0) < 0.001;	// check for health == 1.0
+		bool dfHealth = health <= 1.0 ? (1.0 - health) < 0.001 : (health - 1.0) < 0.001;  // check for health == 1.0
 		if (!xText && !dfHealth) {
 			xText = new ExtraTextDisplayData();
 			Add(xText);
@@ -235,7 +235,6 @@ namespace RE
 		auto xZone = GetByType<ExtraEncounterZone>();
 		return xZone ? xZone->zone : 0;
 	}
-
 
 
 	ExtraTextDisplayData* ExtraDataList::GetExtraTextDisplayData()

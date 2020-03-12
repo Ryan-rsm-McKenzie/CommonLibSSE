@@ -31,26 +31,26 @@ namespace RE
 		using Key = Keys::Key;
 
 
-		virtual ~BSWin32MouseDevice();					// 00
+		virtual ~BSWin32MouseDevice();	// 00
 
 		// override (BSMouseDevice)
-		virtual void	Initialize() override;			// 01
-		virtual	void	Process(float a_arg1) override;	// 02
-		virtual	void	Unk_03(void) override;			// 03
-		virtual void	Reset() override;				// 08
-		virtual void	Unk_09(void) override;			// 09
+		virtual void Initialize() override;			  // 01
+		virtual void Process(float a_arg1) override;  // 02
+		virtual void Unk_03(void) override;			  // 03
+		virtual void Reset() override;				  // 08
+		virtual void Unk_09(void) override;			  // 09
 
 
 		// members
-		UInt64				unk78;	// 78
-		UInt64				unk80;	// 80
-		UInt64				unk88;	// 88
-		UInt64				unk90;	// 90
-		UInt64				unk98;	// 98
-		UInt64				unkA0;	// A0
-		UInt32				unkA8;	// A8
-		mutable BSSpinLock	unkAC;	// AC
-		UInt32				unkB4;	// B4
+		UInt64			   unk78;  // 78
+		UInt64			   unk80;  // 80
+		UInt64			   unk88;  // 88
+		UInt64			   unk90;  // 90
+		UInt64			   unk98;  // 98
+		UInt64			   unkA0;  // A0
+		UInt32			   unkA8;  // A8
+		mutable BSSpinLock unkAC;  // AC
+		UInt32			   unkB4;  // B4
 	};
 	STATIC_ASSERT(sizeof(BSWin32MouseDevice) == 0xB8);
 }

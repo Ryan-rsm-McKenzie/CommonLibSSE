@@ -7,7 +7,7 @@ namespace RE
 	class DoNothingUnhandledPolicy
 	{
 	public:
-		virtual ~DoNothingUnhandledPolicy();	// 00
+		virtual ~DoNothingUnhandledPolicy();  // 00
 	};
 	STATIC_ASSERT(sizeof(DoNothingUnhandledPolicy<void*>) == 0x8);
 }

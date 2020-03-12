@@ -159,7 +159,8 @@ namespace RE
 		}
 
 	protected:
-		template <class> friend class GPtr;
+		template <class>
+		friend class GPtr;
 
 
 		void TryAttach()
@@ -180,7 +181,7 @@ namespace RE
 
 
 		// members
-		element_type* _ptr;	// 0
+		element_type* _ptr;	 // 0
 	};
 	STATIC_ASSERT(sizeof(GPtr<void*>) == 0x8);
 

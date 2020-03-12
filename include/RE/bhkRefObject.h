@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/hkRefPtr.h"
 #include "RE/NiObject.h"
+#include "RE/hkRefPtr.h"
 
 
 namespace RE
@@ -16,14 +16,14 @@ namespace RE
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkRefObject;
 
 
-		virtual ~bhkRefObject();							// 00
+		virtual ~bhkRefObject();  // 00
 
 		// override(NiObject)
-		virtual const NiRTTI*	GetRTTI() const override;	// 02
+		virtual const NiRTTI* GetRTTI() const override;	 // 02
 
 		// add
-		virtual void			Unk_25(void);				// 25
-		virtual void			Unk_26(void);				// 26
+		virtual void Unk_25(void);	// 25
+		virtual void Unk_26(void);	// 26
 
 
 		// members

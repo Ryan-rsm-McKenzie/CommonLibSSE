@@ -25,7 +25,8 @@ namespace RE
 	// BSTSingletonSDM
 	//=====================================================
 
-	template <class> struct BSTSingletonSDMBase;
+	template <class>
+	struct BSTSingletonSDMBase;
 
 
 	template <class T>

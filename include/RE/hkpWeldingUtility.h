@@ -6,7 +6,10 @@ namespace RE
 	class hkpWeldingUtility
 	{
 	public:
-		enum { kNumAngles = 31 };
+		enum
+		{
+			kNumAngles = 31
+		};
 
 
 		enum class WeldingType : UInt32
@@ -30,12 +33,12 @@ namespace RE
 
 		struct SinCosTableEntry
 		{
-			float	cosAccept0;	// 00
-			float	sinAccept0;	// 04
-			float	cosSnap0;	// 08
-			float	cosSnap1;	// 0C
-			float	cosAccept1;	// 10
-			float	sinAccept1;	// 14
+			float cosAccept0;  // 00
+			float sinAccept0;  // 04
+			float cosSnap0;	   // 08
+			float cosSnap1;	   // 0C
+			float cosAccept1;  // 10
+			float sinAccept1;  // 14
 		};
 		STATIC_ASSERT(sizeof(SinCosTableEntry) == 0x18);
 	};

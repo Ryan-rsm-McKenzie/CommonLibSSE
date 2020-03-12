@@ -9,8 +9,8 @@ namespace RE
 	{
 	public:
 		// members
-		NiPoint3	center;	// 00
-		float		radius;	// 0C
+		NiPoint3 center;  // 00
+		float	 radius;  // 0C
 	};
 	STATIC_ASSERT(sizeof(NiBound) == 0x10);
 }

@@ -6,11 +6,11 @@
 #include <string_view>
 #include <tuple>
 
-#include "RE/BSScript/Internal/VirtualMachine.h"
+#include "RE/BSFixedString.h"
 #include "RE/BSScript/FunctionArguments.h"
 #include "RE/BSScript/IObjectHandlePolicy.h"
+#include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/TypeTraits.h"
-#include "RE/BSFixedString.h"
 #include "RE/TESForm.h"
 
 #include "SKSE/API.h"
@@ -47,12 +47,13 @@ namespace SKSE
 
 
 			std::set<RE::VMHandle> _handles;
-			std::string _eventName;
-			mutable Lock _lock;
+			std::string			   _eventName;
+			mutable Lock		   _lock;
 		};
 
 
-		template <class Enable, class... Args> class RegistrationSet;
+		template <class Enable, class... Args>
+		class RegistrationSet;
 
 
 		template <class... Args>
@@ -64,19 +65,30 @@ namespace SKSE
 
 		public:
 			RegistrationSet() = delete;
-			RegistrationSet(const std::string_view& a_eventName) : Base(a_eventName) {}
-			RegistrationSet(const RegistrationSet& a_rhs) : Base(a_rhs) {}
-			RegistrationSet(RegistrationSet&& a_rhs) : Base(std::move(a_rhs)) {}
+			RegistrationSet(const std::string_view& a_eventName) :
+				Base(a_eventName) {}
+			RegistrationSet(const RegistrationSet& a_rhs) :
+				Base(a_rhs) {}
+			RegistrationSet(RegistrationSet&& a_rhs) :
+				Base(std::move(a_rhs)) {}
 			~RegistrationSet() {}
 
 
-			inline RegistrationSet& operator=(const RegistrationSet& a_rhs) { Base::operator=(a_rhs); return *this; }
-			inline RegistrationSet& operator=(RegistrationSet&& a_rhs) { Base::operator=(std::move(a_rhs)); return *this; }
+			inline RegistrationSet& operator=(const RegistrationSet& a_rhs)
+			{
+				Base::operator=(a_rhs);
+				return *this;
+			}
+			inline RegistrationSet& operator=(RegistrationSet&& a_rhs)
+			{
+				Base::operator=(std::move(a_rhs));
+				return *this;
+			}
 
 
 			void SendEvent(Args&&... a_args)
 			{
-				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+				auto			  vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 				RE::BSFixedString eventName(_eventName.c_str());
 				for (auto& handle : _handles) {
 					auto args = RE::MakeFunctionArguments(std::forward<Args>(a_args)...);
@@ -89,8 +101,7 @@ namespace SKSE
 			{
 				auto args = PackArgs(std::move(a_args)...);
 				auto task = GetTaskInterface();
-				task->AddTask([args, this]()
-				{
+				task->AddTask([args, this]() {
 					SendEvent_Tuple(std::move(args), make_index_sequence_from_tuple<decltype(args)>{});
 				});
 			}
@@ -112,19 +123,30 @@ namespace SKSE
 
 		public:
 			RegistrationSet() = delete;
-			RegistrationSet(const std::string_view& a_eventName) : Base(a_eventName) {}
-			RegistrationSet(const RegistrationSet& a_rhs) : Base(a_rhs) {}
-			RegistrationSet(RegistrationSet&& a_rhs) : Base(std::move(a_rhs)) {}
+			RegistrationSet(const std::string_view& a_eventName) :
+				Base(a_eventName) {}
+			RegistrationSet(const RegistrationSet& a_rhs) :
+				Base(a_rhs) {}
+			RegistrationSet(RegistrationSet&& a_rhs) :
+				Base(std::move(a_rhs)) {}
 			~RegistrationSet() {}
 
 
-			inline RegistrationSet& operator=(const RegistrationSet& a_rhs) { Base::operator=(a_rhs); return *this; }
-			inline RegistrationSet& operator=(RegistrationSet&& a_rhs) { Base::operator=(std::move(a_rhs)); return *this; }
+			inline RegistrationSet& operator=(const RegistrationSet& a_rhs)
+			{
+				Base::operator=(a_rhs);
+				return *this;
+			}
+			inline RegistrationSet& operator=(RegistrationSet&& a_rhs)
+			{
+				Base::operator=(std::move(a_rhs));
+				return *this;
+			}
 
 
 			void SendEvent()
 			{
-				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+				auto			  vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 				RE::BSFixedString eventName(_eventName.c_str());
 				for (auto& handle : _handles) {
 					auto args = RE::MakeFunctionArguments();
@@ -136,8 +158,7 @@ namespace SKSE
 			void QueueEvent()
 			{
 				auto task = GetTaskInterface();
-				task->AddTask([this]()
-				{
+				task->AddTask([this]() {
 					SendEvent();
 				});
 			}
@@ -145,5 +166,6 @@ namespace SKSE
 	}
 
 
-	template <class... Args> using RegistrationSet = Impl::RegistrationSet<void, Args...>;
+	template <class... Args>
+	using RegistrationSet = Impl::RegistrationSet<void, Args...>;
 }

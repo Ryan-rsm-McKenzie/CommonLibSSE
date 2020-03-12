@@ -59,7 +59,7 @@ namespace RE
 	};
 
 
-	template< class T1, class T2 >
+	template <class T1, class T2>
 	BSTTuple<std::decay_t<T1>, std::decay_t<T2>> make_pair(T1&& a_first, T2&& a_second)
 	{
 		return { std::forward<T1>(a_first), std::forward<T2>(a_second) };

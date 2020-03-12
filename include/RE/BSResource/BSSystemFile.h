@@ -12,10 +12,10 @@ namespace RE
 			{
 			public:
 				// members
-				FILETIME		accessTime;	// 00
-				FILETIME		modifyTime;	// 08
-				FILETIME		createTime;	// 10
-				LARGE_INTEGER	fileSize;	// 18
+				FILETIME	  accessTime;  // 00
+				FILETIME	  modifyTime;  // 08
+				FILETIME	  createTime;  // 10
+				LARGE_INTEGER fileSize;	   // 18
 			};
 			STATIC_ASSERT(sizeof(Info) == 0x20);
 
@@ -23,9 +23,9 @@ namespace RE
 			BSSystemFile();
 
 
-			UInt32	flags;	// 00
-			UInt32	pad04;	// 04
-			HANDLE	file;	// 08
+			UInt32 flags;  // 00
+			UInt32 pad04;  // 04
+			HANDLE file;   // 08
 		};
 		STATIC_ASSERT(sizeof(BSSystemFile) == 0x10);
 	}

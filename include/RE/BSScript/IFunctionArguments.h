@@ -16,10 +16,10 @@ namespace RE
 
 
 			IFunctionArguments() = default;
-			virtual ~IFunctionArguments() = default;							// 00
+			virtual ~IFunctionArguments() = default;  // 00
 
 			// add
-			virtual bool operator()(BSScrapArray<Variable>& a_dst) const = 0;	// 01
+			virtual bool operator()(BSScrapArray<Variable>& a_dst) const = 0;  // 01
 
 			TES_HEAP_REDEFINE_NEW();
 		};

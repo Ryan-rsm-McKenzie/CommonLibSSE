@@ -12,7 +12,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraHotkey;
 
 
-		enum { kExtraTypeID = ExtraDataType::kHotkey };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kHotkey
+		};
 
 
 		enum class Hotkey : UInt8
@@ -31,18 +34,18 @@ namespace RE
 
 		ExtraHotkey();
 		explicit ExtraHotkey(Hotkey a_hotkey);
-		virtual ~ExtraHotkey() = default;												// 00
+		virtual ~ExtraHotkey() = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kHotkey }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { hotkey != a_rhs->hotkey; }
+		virtual ExtraDataType GetType() const override;								// 01 - { return kHotkey }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { hotkey != a_rhs->hotkey; }
 
 
 		// members
-		Hotkey	hotkey;	// 10
-		UInt8	unk11;	// 11
-		UInt16	unk12;	// 12
-		UInt32	unk14;	// 14
+		Hotkey hotkey;	// 10
+		UInt8  unk11;	// 11
+		UInt16 unk12;	// 12
+		UInt32 unk14;	// 14
 	};
 	STATIC_ASSERT(sizeof(ExtraHotkey) == 0x18);
 }

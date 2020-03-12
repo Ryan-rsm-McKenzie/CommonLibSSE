@@ -20,10 +20,10 @@ namespace SKSE
 		{}
 
 
-		RE::BSFixedString	eventName;
-		RE::BSFixedString	strArg;
-		float				numArg;
-		RE::TESForm*		sender;
+		RE::BSFixedString eventName;
+		RE::BSFixedString strArg;
+		float			  numArg;
+		RE::TESForm*	  sender;
 	};
 
 
@@ -35,8 +35,8 @@ namespace SKSE
 		{}
 
 
-		RE::TESCameraState*	oldState;
-		RE::TESCameraState*	newState;
+		RE::TESCameraState* oldState;
+		RE::TESCameraState* newState;
 	};
 
 
@@ -85,10 +85,10 @@ namespace SKSE
 		{}
 
 
-		Type			type;
-		RE::Actor*		actor;
-		RE::TESForm*	sourceForm;
-		Slot			slot;
+		Type		 type;
+		RE::Actor*	 actor;
+		RE::TESForm* sourceForm;
+		Slot		 slot;
 	};
 
 

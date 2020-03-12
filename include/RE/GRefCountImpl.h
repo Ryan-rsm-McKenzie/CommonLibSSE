@@ -12,10 +12,10 @@ namespace RE
 
 
 		GRefCountImpl() = default;
-		virtual ~GRefCountImpl() = default;	// 00
+		virtual ~GRefCountImpl() = default;	 // 00
 
-		void	AddRef();
-		void	Release();
+		void AddRef();
+		void Release();
 	};
 	STATIC_ASSERT(sizeof(GRefCountImpl) == 0x10);
 }

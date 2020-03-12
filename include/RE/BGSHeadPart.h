@@ -20,10 +20,13 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSHeadPart;
 
 
-		enum { kTypeID = FormType::HeadPart };
+		enum
+		{
+			kTypeID = FormType::HeadPart
+		};
 
 
-		enum class Flag : UInt8	// DATA
+		enum class Flag : UInt8	 // DATA
 		{
 			kNone = 0,
 			kPlayable = 1 << 0,
@@ -34,7 +37,7 @@ namespace RE
 		};
 
 
-		enum class HeadPartType : UInt32	// PNAM
+		enum class HeadPartType : UInt32  // PNAM
 		{
 			kMisc = 0x0,
 			kFace = 0x1,
@@ -73,30 +76,30 @@ namespace RE
 		};
 
 
-		virtual ~BGSHeadPart();												// 00
+		virtual ~BGSHeadPart();	 // 00
 
 		// override (TESForm)
-		virtual void		InitializeData() override;						// 04
-		virtual void		ClearData() override;							// 05
-		virtual bool		Load(TESFile* a_mod) override;					// 06
-		virtual void		InitItemImpl() override;						// 13
-		virtual const char*	GetFormEditorID() const override;				// 32 - { return formEditorID.c_str(); }
-		virtual bool		SetFormEditorID(const char* a_str) override;	// 33 - { formEditorID = a_str; return true; }
+		virtual void		InitializeData() override;					  // 04
+		virtual void		ClearData() override;						  // 05
+		virtual bool		Load(TESFile* a_mod) override;				  // 06
+		virtual void		InitItemImpl() override;					  // 13
+		virtual const char* GetFormEditorID() const override;			  // 32 - { return formEditorID.c_str(); }
+		virtual bool		SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; return true; }
 
 		bool IsExtraPart();
 
 
 		// members
-		Flag					flags;							// 068 - DATA
-		UInt8					pad069;							// 069
-		UInt16					pad06A;							// 06A
-		HeadPartType			type;							// 06C - PNAM
-		BSTArray<BGSHeadPart*>	extraParts;						// 070
-		BGSTextureSet*			textureSet;						// 088 - TNAM
-		TESModelTri				morphs[MorphIndices::kTotal];	// 090
-		BGSColorForm*			color;							// 108 - CNAM
-		BGSListForm*			validRaces;						// 110 - RNAM
-		BSFixedString			formEditorID;					// 118 - EDID
+		Flag				   flags;						  // 068 - DATA
+		UInt8				   pad069;						  // 069
+		UInt16				   pad06A;						  // 06A
+		HeadPartType		   type;						  // 06C - PNAM
+		BSTArray<BGSHeadPart*> extraParts;					  // 070
+		BGSTextureSet*		   textureSet;					  // 088 - TNAM
+		TESModelTri			   morphs[MorphIndices::kTotal];  // 090
+		BGSColorForm*		   color;						  // 108 - CNAM
+		BGSListForm*		   validRaces;					  // 110 - RNAM
+		BSFixedString		   formEditorID;				  // 118 - EDID
 	};
 	STATIC_ASSERT(sizeof(BGSHeadPart) == 0x120);
 }

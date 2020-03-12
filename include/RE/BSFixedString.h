@@ -22,7 +22,7 @@ namespace RE
 		BSFixedString(const BSFixedString& a_rhs);
 		BSFixedString(BSFixedString&& a_rhs) noexcept;
 		BSFixedString(const char* a_rhs);
-		BSFixedString(const std::string_view& a_rhs);	// must be null terminated
+		BSFixedString(const std::string_view& a_rhs);  // must be null terminated
 
 		// (destructor)
 		~BSFixedString();
@@ -31,7 +31,7 @@ namespace RE
 		BSFixedString& operator=(const BSFixedString& a_rhs);
 		BSFixedString& operator=(BSFixedString&& a_rhs);
 		BSFixedString& operator=(const char* a_rhs);
-		BSFixedString& operator=(const std::string_view& a_rhs);	// must be null terminated
+		BSFixedString& operator=(const std::string_view& a_rhs);  // must be null terminated
 
 		// Element access
 		const_reference at(size_type a_pos) const;
@@ -80,14 +80,14 @@ namespace RE
 
 		BSFixedString* ctor_cstr(const char* a_rhs);
 		BSFixedString* ctor_copy(const BSFixedString& a_rhs);
-		void dtor();
+		void		   dtor();
 		BSFixedString* set_cstr(const char* a_rhs);
 		BSFixedString* set_copy(const BSFixedString& a_rhs);
-		proxy_t* get_proxy() const;
+		proxy_t*	   get_proxy() const;
 
 
 		// members
-		GlobalStringHandle _data;	// 0
+		GlobalStringHandle _data;  // 0
 	};
 	STATIC_ASSERT(sizeof(BSFixedString) == 0x8);
 
@@ -108,14 +108,14 @@ namespace RE
 	public:
 		using value_type = wchar_t;
 		using size_type = UInt32;
-		using const_reference = const value_type &;
+		using const_reference = const value_type&;
 
 		// (constructor)
 		BSFixedStringW();
 		BSFixedStringW(const BSFixedStringW& a_rhs);
 		BSFixedStringW(BSFixedStringW&& a_rhs) noexcept;
 		BSFixedStringW(const wchar_t* a_rhs);
-		BSFixedStringW(const std::wstring_view& a_rhs);	// must be null terminated
+		BSFixedStringW(const std::wstring_view& a_rhs);	 // must be null terminated
 
 		// (destructor)
 		~BSFixedStringW();
@@ -168,8 +168,8 @@ namespace RE
 		using proxy_t = BSStringPool::Entry;
 
 
-		void ctor(const wchar_t* a_string);
-		void dtor();	// post: _data == 0
+		void	 ctor(const wchar_t* a_string);
+		void	 dtor();  // post: _data == 0
 		proxy_t* get_proxy() const;
 
 

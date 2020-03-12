@@ -17,7 +17,7 @@ namespace RE
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiColorInterpolator;
 
 
-		virtual ~NiColorInterpolator();																					// 00
+		virtual ~NiColorInterpolator();	 // 00
 
 		// override (NiKeyBasedInterpolator)
 		virtual const NiRTTI*	GetRTTI() const override;																// 02
@@ -36,7 +36,7 @@ namespace RE
 		virtual bool			IsColorAValueSupported() const override;												// 2F - { return true; }
 		virtual void			Collapse() override;																	// 31
 		virtual void			GuaranteeTimeRange(float a_start, float a_end) override;								// 33
-		virtual NiInterpolator*	GetSequenceInterpolator(float a_start, float a_end) override;							// 34
+		virtual NiInterpolator* GetSequenceInterpolator(float a_start, float a_end) override;							// 34
 		virtual UInt16			GetKeyChannelCount() const override;													// 39 - { return 1; }
 		virtual UInt32			GetKeyCount(UInt16 a_channel) const override;											// 3A - { return colorData ? colorData->numKeys : 0; }
 		virtual KeyContent		GetKeyContent(UInt16 a_channel) const override;											// 3B - { KeyContent::kColor; }
@@ -47,10 +47,10 @@ namespace RE
 
 
 		// members
-		NiColorA				colorValue;	// 18
-		NiPointer<NiColorData>	colorData;	// 28
-		UInt32					lastIndex;	// 30
-		UInt32					pad34;		// 34
+		NiColorA			   colorValue;	// 18
+		NiPointer<NiColorData> colorData;	// 28
+		UInt32				   lastIndex;	// 30
+		UInt32				   pad34;		// 34
 	};
 	STATIC_ASSERT(sizeof(NiColorInterpolator) == 0x38);
 }

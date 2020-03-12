@@ -32,7 +32,7 @@ namespace RE
 		};
 
 
-		float data[kTotal];	// 00
+		float data[kTotal];	 // 00
 	};
 	STATIC_ASSERT(sizeof(ImageSpaceModData) == 0x48);
 
@@ -52,15 +52,15 @@ namespace RE
 		};
 
 
-		virtual ~ImageSpaceModifierInstanceDOF();	// 00
+		virtual ~ImageSpaceModifierInstanceDOF();  // 00
 
 		// override (ImageSpaceModifierInstanceTemp)
-		virtual void	Unk_26(void) override;		// 26
-		virtual void	Unk_28(void) override;		// 28
+		virtual void Unk_26(void) override;	 // 26
+		virtual void Unk_28(void) override;	 // 28
 
 
 		// members
-		ImageSpaceModData data;	// 30
+		ImageSpaceModData data;	 // 30
 	};
 	STATIC_ASSERT(sizeof(ImageSpaceModifierInstanceDOF) == 0x78);
 }

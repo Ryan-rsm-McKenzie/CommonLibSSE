@@ -16,17 +16,20 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraActorCause;
 
 
-		enum { kExtraTypeID = ExtraDataType::kActorCause };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kActorCause
+		};
 
 
-		virtual ~ExtraActorCause();						// 00
+		virtual ~ExtraActorCause();	 // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kActorCause; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kActorCause; }
 
 
 		// members
-		NiPointer<ActorCause> actorCause;	// 10
+		NiPointer<ActorCause> actorCause;  // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraActorCause) == 0x18);
 }

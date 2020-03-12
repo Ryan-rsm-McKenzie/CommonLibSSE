@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSScript/Variable.h"
 #include "RE/BSScript/TypeTraits.h"
+#include "RE/BSScript/Variable.h"
 #include "RE/BSTSmartPointer.h"
 
 
@@ -12,10 +12,10 @@ namespace RE
 		class Object;
 
 
-		TypeInfo::RawType	GetRawTypeFromVMType(VMTypeID a_typeID);
-		void				BindID(BSTSmartPointer<Object>& a_object, const TESForm* a_srcData, VMTypeID a_typeID);
-		void				PackHandle(Variable* a_dst, const TESForm* a_src, VMTypeID a_typeID);
-		void*				UnpackHandle(const Variable* a_src, VMTypeID a_typeID);
+		TypeInfo::RawType GetRawTypeFromVMType(VMTypeID a_typeID);
+		void			  BindID(BSTSmartPointer<Object>& a_object, const TESForm* a_srcData, VMTypeID a_typeID);
+		void			  PackHandle(Variable* a_dst, const TESForm* a_src, VMTypeID a_typeID);
+		void*			  UnpackHandle(const Variable* a_src, VMTypeID a_typeID);
 
 
 		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
@@ -154,11 +154,11 @@ namespace RE
 		template <class T>
 		[[nodiscard]] BSTSmartPointer<Array> VMArray<T>::alloc(size_type a_count)
 		{
-			auto vm = Internal::VirtualMachine::GetSingleton();
+			auto				   vm = Internal::VirtualMachine::GetSingleton();
 			BSTSmartPointer<Array> arrPtr;
-			TypeInfo typeInfo(GetRawType<value_type>());
-			[[maybe_unused]] auto allocSuccess = vm->CreateArray(typeInfo, a_count, arrPtr);
-			assert(allocSuccess);	// alloc failed
+			TypeInfo			   typeInfo(GetRawType<value_type>());
+			[[maybe_unused]] auto  allocSuccess = vm->CreateArray(typeInfo, a_count, arrPtr);
+			assert(allocSuccess);  // alloc failed
 			return arrPtr;
 		}
 	}

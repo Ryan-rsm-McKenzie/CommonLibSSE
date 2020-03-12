@@ -61,7 +61,7 @@ namespace SKSE
 		}
 
 		_buf.resize(static_cast<std::size_t>(size) + 1);
-		
+
 		std::vsnprintf(_buf.data(), _buf.size(), a_format, argsCopy);
 
 		va_end(argsCopy);

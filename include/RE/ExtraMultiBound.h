@@ -16,13 +16,16 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraMultiBound;
 
 
-		enum { kExtraTypeID = ExtraDataType::kMultiBound };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kMultiBound
+		};
 
 
-		virtual ~ExtraMultiBound();						// 00
+		virtual ~ExtraMultiBound();	 // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kMultiBound; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kMultiBound; }
 
 
 		// members

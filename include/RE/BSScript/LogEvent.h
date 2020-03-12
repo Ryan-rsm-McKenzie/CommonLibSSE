@@ -10,9 +10,9 @@ namespace RE
 		struct LogEvent
 		{
 			// members
-			const char* const			errorMsg;	// 00
-			const ErrorLogger::Severity	severity;	// 08
-			UInt32						pad0C;		// 0C
+			const char* const			errorMsg;  // 00
+			const ErrorLogger::Severity severity;  // 08
+			UInt32						pad0C;	   // 0C
 		};
 		STATIC_ASSERT(sizeof(LogEvent) == 0x10);
 	}

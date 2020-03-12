@@ -11,10 +11,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSImagespaceShaderBlur3;
 
 
-		virtual ~BSImagespaceShaderBlur3();	// 00
+		virtual ~BSImagespaceShaderBlur3();	 // 00
 
 		// override (BSImagespaceShader)
-		virtual void Unk_0D(void) override;	// 0D
+		virtual void Unk_0D(void) override;	 // 0D
 	};
 	STATIC_ASSERT(sizeof(BSImagespaceShaderBlur3) == 0x1A8);
 }

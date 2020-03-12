@@ -9,7 +9,7 @@ namespace RE
 	class FxResponseArgsBase
 	{
 	public:
-		virtual ~FxResponseArgsBase() = default;			// 00
+		virtual ~FxResponseArgsBase() = default;  // 00
 
 		// add
 		virtual UInt32 GetValues(GFxValue** a_params) = 0;	// 01

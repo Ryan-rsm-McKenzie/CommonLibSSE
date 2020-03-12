@@ -162,7 +162,8 @@ namespace RE
 		}
 
 	protected:
-		template <class> friend class hkRefPtr;
+		template <class>
+		friend class hkRefPtr;
 
 
 		void TryAttach()
@@ -183,7 +184,7 @@ namespace RE
 
 
 		// members
-		element_type* _ptr;	// 00
+		element_type* _ptr;	 // 00
 	};
 	STATIC_ASSERT(sizeof(hkRefPtr<void*>) == 0x8);
 

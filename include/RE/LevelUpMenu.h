@@ -14,21 +14,21 @@ namespace RE
 	class LevelUpMenu : public IMenu
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_LevelUpMenu;
+		inline static constexpr auto	  RTTI = RTTI_LevelUpMenu;
 		constexpr static std::string_view MENU_NAME = "LevelUp Menu";
 
 
-		virtual ~LevelUpMenu();										// 00
+		virtual ~LevelUpMenu();	 // 00
 
 		// override (IMenu)
-		virtual void Accept(CallbackProcessor* a_cbReg) override;	// 01
+		virtual void Accept(CallbackProcessor* a_cbReg) override;  // 01
 
 
 		// members
-		bool	unk30;	// 30
-		UInt8	pad31;	// 31
-		UInt16	pad32;	// 32
-		UInt32	pad34;	// 34
+		bool   unk30;  // 30
+		UInt8  pad31;  // 31
+		UInt16 pad32;  // 32
+		UInt32 pad34;  // 34
 	};
 	STATIC_ASSERT(sizeof(LevelUpMenu) == 0x38);
 }

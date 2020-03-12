@@ -6,7 +6,8 @@
 
 namespace RE
 {
-	template <class T> class BSTEventSink;
+	template <class T>
+	class BSTEventSink;
 
 
 	enum class BSEventNotifyControl : UInt32
@@ -139,14 +140,14 @@ namespace RE
 
 
 		// members
-		BSTArray<Sink*>		sinks;				// 00
-		BSTArray<Sink*>		pendingRegisters;	// 18
-		BSTArray<Sink*>		pendingUnregisters;	// 30
-		mutable BSSpinLock	lock;				// 48
-		bool				notifying;			// 50
-		UInt8				pad51;				// 51
-		UInt16				pad52;				// 52
-		UInt32				pad54;				// 54
+		BSTArray<Sink*>	   sinks;				// 00
+		BSTArray<Sink*>	   pendingRegisters;	// 18
+		BSTArray<Sink*>	   pendingUnregisters;	// 30
+		mutable BSSpinLock lock;				// 48
+		bool			   notifying;			// 50
+		UInt8			   pad51;				// 51
+		UInt16			   pad52;				// 52
+		UInt32			   pad54;				// 54
 	};
 	STATIC_ASSERT(sizeof(BSTEventSource<void*>) == 0x58);
 
@@ -156,7 +157,7 @@ namespace RE
 	{
 	public:
 		virtual ~BSTEventSink() = default;																			// 00
-		virtual	BSEventNotifyControl ProcessEvent(const Event* a_event, BSTEventSource<Event>* a_eventSource) = 0;	// 01
+		virtual BSEventNotifyControl ProcessEvent(const Event* a_event, BSTEventSource<Event>* a_eventSource) = 0;	// 01
 	};
 	STATIC_ASSERT(sizeof(BSTEventSink<void>) == 0x8);
 }

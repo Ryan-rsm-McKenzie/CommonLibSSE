@@ -15,32 +15,32 @@ namespace RE
 	class TESRegionPoint
 	{
 	public:
-		NiPoint2 point;	// 00
+		NiPoint2 point;	 // 00
 	};
 	STATIC_ASSERT(sizeof(TESRegionPoint) == 0x8);
 
 
-	class TESRegionPointList : public BSSimpleList<TESRegionPoint*>	// RPLD
+	class TESRegionPointList : public BSSimpleList<TESRegionPoint*>	 // RPLD
 	{
 	public:
 		struct ScaleResult
 		{
-			TESRegionPoint	point;	// 00
-			float			dist;	// 08
-			float			scale;	// 0C
+			TESRegionPoint point;  // 00
+			float		   dist;   // 08
+			float		   scale;  // 0C
 		};
 		STATIC_ASSERT(sizeof(ScaleResult) == 0x10);
 
 
-		ScaleResult*	lastScaleResult;		// 10
-		bool			ownsPointMemory;		// 18
-		UInt8			pad19;					// 19
-		UInt16			pad1A;					// 1A
-		NiPoint2		minimums;				// 1C
-		NiPoint2		maximums;				// 24
-		UInt32			distanceInsideAtMax;	// 2C - RPLI
-		UInt32			count;					// 30
-		UInt32			pad34;					// 34
+		ScaleResult* lastScaleResult;	   // 10
+		bool		 ownsPointMemory;	   // 18
+		UInt8		 pad19;				   // 19
+		UInt16		 pad1A;				   // 1A
+		NiPoint2	 minimums;			   // 1C
+		NiPoint2	 maximums;			   // 24
+		UInt32		 distanceInsideAtMax;  // 2C - RPLI
+		UInt32		 count;				   // 30
+		UInt32		 pad34;				   // 34
 	};
 	STATIC_ASSERT(sizeof(TESRegionPointList) == 0x38);
 
@@ -51,7 +51,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESRegion;
 
 
-		enum { kTypeID = FormType::Region };
+		enum
+		{
+			kTypeID = FormType::Region
+		};
 
 
 		struct RecordFlags
@@ -65,24 +68,24 @@ namespace RE
 		};
 
 
-		virtual ~TESRegion();								// 00
+		virtual ~TESRegion();  // 00
 
 		// override (TESForm)
-		virtual void	ClearData(void) override;			// 05
-		virtual bool	Load(TESFile* a_mod) override;		// 06
-		virtual void	InitItemImpl() override;			// 13
+		virtual void ClearData(void) override;		 // 05
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 		// add
-		virtual bool	Validate();							// 3B
+		virtual bool Validate();  // 3B
 
 
 		// members
-		TESRegionDataList*					dataList;		// 20
-		BSSimpleList<TESRegionPointList*>*	pointLists;		// 28
-		TESWorldSpace*						worldSpace;		// 30 - WNAM
-		TESWeather*							currentWeather;	// 38
-		NiColor								emittanceColor;	// 40
-		UInt32								pad4C;			// 4C
+		TESRegionDataList*				   dataList;		// 20
+		BSSimpleList<TESRegionPointList*>* pointLists;		// 28
+		TESWorldSpace*					   worldSpace;		// 30 - WNAM
+		TESWeather*						   currentWeather;	// 38
+		NiColor							   emittanceColor;	// 40
+		UInt32							   pad4C;			// 4C
 	};
 	STATIC_ASSERT(sizeof(TESRegion) == 0x50);
 }

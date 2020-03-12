@@ -104,11 +104,12 @@ namespace RE
 	protected:
 		union Storage
 		{
-			Storage() : address(0) {}
+			Storage() :
+				address(0) {}
 			~Storage() {}
 
 
-			value_type ptr;
+			value_type	   ptr;
 			std::uintptr_t address;
 		};
 
@@ -122,6 +123,6 @@ namespace RE
 		static constexpr std::uintptr_t FLAG_MASK = MASK;
 
 		// members
-		Storage _storage;	// 0
+		Storage _storage;  // 0
 	};
 }

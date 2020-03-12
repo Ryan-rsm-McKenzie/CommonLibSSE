@@ -11,10 +11,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSBehaviorGraphModel;
 
 
-		virtual ~BGSBehaviorGraphModel();						// 00
+		virtual ~BGSBehaviorGraphModel();  // 00
 
 		// override (TESModel)
-		virtual void SetModel(const char* a_model) override;	// 05
+		virtual void SetModel(const char* a_model) override;  // 05
 	};
 	STATIC_ASSERT(sizeof(BGSBehaviorGraphModel) == 0x28);
 }

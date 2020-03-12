@@ -30,7 +30,8 @@ namespace RE
 		}
 
 
-		template <class Enable, class... Args> class FunctionArguments;
+		template <class Enable, class... Args>
+		class FunctionArguments;
 
 
 		template <class... Args>
@@ -57,10 +58,10 @@ namespace RE
 			{}
 
 
-			virtual ~FunctionArguments() = default;	// 00
+			virtual ~FunctionArguments() = default;	 // 00
 
 
-			virtual bool operator()(BSScrapArray<Variable>& a_dst) const override	// 01
+			virtual bool operator()(BSScrapArray<Variable>& a_dst) const override  // 01
 			{
 				a_dst.resize(sizeof...(Args));
 				Impl::CopyArgs(_args, a_dst);

@@ -15,7 +15,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSArtObject;
 
 
-		enum { kTypeID = FormType::ArtObject };
+		enum
+		{
+			kTypeID = FormType::ArtObject
+		};
 
 
 		enum class ArtType : UInt32
@@ -36,23 +39,23 @@ namespace RE
 		};
 
 
-		struct Data	// DNAM
+		struct Data	 // DNAM
 		{
-			ArtType artType;	// 0
+			ArtType artType;  // 0
 		};
 		STATIC_ASSERT(sizeof(Data) == 0x4);
 
 
-		virtual ~BGSArtObject();						// 00
+		virtual ~BGSArtObject();  // 00
 
 		// override (TESBoundObject)
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
 		// members
-		Data	data;	// 68 - DNAM
-		UInt32	pad6C;	// 6C
+		Data   data;   // 68 - DNAM
+		UInt32 pad6C;  // 6C
 	};
 	STATIC_ASSERT(sizeof(BGSArtObject) == 0x70);
 }

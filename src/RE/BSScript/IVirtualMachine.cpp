@@ -6,8 +6,8 @@
 #include <string_view>
 #include <vector>
 
-#include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSFixedString.h"
+#include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/TESForm.h"
 
 

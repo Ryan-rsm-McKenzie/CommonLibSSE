@@ -28,32 +28,32 @@ namespace RE
 			};
 
 
-			Error	lastError;	// 00
-			UInt32	pad24;		// 04
-			HANDLE	handle;		// 08
+			Error  lastError;  // 00
+			UInt32 pad24;	   // 04
+			HANDLE handle;	   // 08
 		};
 		STATIC_ASSERT(sizeof(Attributes) == 0x10);
 
 
-		virtual ~BSSystemFileStorage();																			// 00
+		virtual ~BSSystemFileStorage();	 // 00
 
 		// override (BSStorage)
-		virtual PLARGE_INTEGER 	GetFileSize() override;															// 01
-		virtual PLARGE_INTEGER	GetFilePointer() override;														// 02
-		virtual BOOL			SetFilePointer(LARGE_INTEGER a_distanceToMove, DWORD a_moveMethod) override;	// 03
-		virtual BOOL			ReadFile(DWORD a_numberOfBytesToRead, LPVOID a_buffer) override;				// 04
-		virtual BOOL			WriteFile(DWORD a_numberOfBytesToWrite, LPCVOID a_buffer) override;				// 05
+		virtual PLARGE_INTEGER GetFileSize() override;														 // 01
+		virtual PLARGE_INTEGER GetFilePointer() override;													 // 02
+		virtual BOOL		   SetFilePointer(LARGE_INTEGER a_distanceToMove, DWORD a_moveMethod) override;	 // 03
+		virtual BOOL		   ReadFile(DWORD a_numberOfBytesToRead, LPVOID a_buffer) override;				 // 04
+		virtual BOOL		   WriteFile(DWORD a_numberOfBytesToWrite, LPCVOID a_buffer) override;			 // 05
 
 		bool IsGoodForRead() const;
 
 
 		// members
-		Attributes	attributes;		// 20
-		bool		unk30;			// 30
-		bool		unk31;			// 31
-		bool		goodForRead;	// 32
-		UInt8		pad33;			// 33
-		UInt32		pad34;			// 34
+		Attributes attributes;	 // 20
+		bool	   unk30;		 // 30
+		bool	   unk31;		 // 31
+		bool	   goodForRead;	 // 32
+		UInt8	   pad33;		 // 33
+		UInt32	   pad34;		 // 34
 	};
 	STATIC_ASSERT(sizeof(BSSystemFileStorage) == 0x38);
 }

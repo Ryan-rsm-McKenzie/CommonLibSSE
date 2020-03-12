@@ -27,24 +27,24 @@ namespace RE
 		};
 
 
-		virtual ~BSIMusicTrack();											// 00
+		virtual ~BSIMusicTrack();  // 00
 
 		// add
-		virtual void			DoUpdate() = 0;								// 01
-		virtual void			DoPlay() = 0;								// 02
-		virtual void			DoPause() = 0;								// 03
-		virtual void			DoFinish(bool a_arg1, float a_arg2) = 0;	// 04
-		virtual float			GetDurationImpl() const = 0;				// 05
-		virtual TrackType		GetType() const = 0;						// 06 - CRC32 hash of class name
-		virtual bool			TestCanPlay() const;						// 07 - { return true; }
-		virtual MUSIC_STATUS	GetMusicStatus() const;						// 08 - { return trackStatus; }
-		virtual void			DoSetDuckingAttenuation(UInt16 a_val);		// 09 - { return; }
-		virtual void			DoClearDucking();							// 0A - { return; }
+		virtual void		 DoUpdate() = 0;						   // 01
+		virtual void		 DoPlay() = 0;							   // 02
+		virtual void		 DoPause() = 0;							   // 03
+		virtual void		 DoFinish(bool a_arg1, float a_arg2) = 0;  // 04
+		virtual float		 GetDurationImpl() const = 0;			   // 05
+		virtual TrackType	 GetType() const = 0;					   // 06 - CRC32 hash of class name
+		virtual bool		 TestCanPlay() const;					   // 07 - { return true; }
+		virtual MUSIC_STATUS GetMusicStatus() const;				   // 08 - { return trackStatus; }
+		virtual void		 DoSetDuckingAttenuation(UInt16 a_val);	   // 09 - { return; }
+		virtual void		 DoClearDucking();						   // 0A - { return; }
 
 
 		// members
-		MUSIC_STATUS	trackStatus;	// 08
-		UInt32			pad0C;			// 0C
+		MUSIC_STATUS trackStatus;  // 08
+		UInt32		 pad0C;		   // 0C
 	};
 	STATIC_ASSERT(sizeof(BSIMusicTrack) == 0x10);
 }

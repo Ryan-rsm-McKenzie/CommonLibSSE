@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSResource/ID.h"
 #include "RE/BGSSoundDescriptor.h"
+#include "RE/BSResource/ID.h"
 #include "RE/BSTArray.h"
 #include "RE/FormTypes.h"
 
@@ -17,32 +17,32 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSStandardSoundDef;
 
 
-		struct SoundPlaybackCharacteristics : public BSISoundDescriptor::BSIPlaybackCharacteristics	// BNAM
+		struct SoundPlaybackCharacteristics : public BSISoundDescriptor::BSIPlaybackCharacteristics	 // BNAM
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BGSStandardSoundDef__SoundPlaybackCharacteristics;
 
 
 			// override (BSIPlaybackCharacteristics)
-			virtual UInt8	GetFrequencyShift() override;		// 01 - { return frequencyShift; }
-			virtual UInt8	GetFrequencyVariance() override;	// 02 - { return frequencyVariance; }
-			virtual UInt8	GetPriority() override;				// 03 - { return priority; }
-			virtual UInt16	GetStaticAttenuation() override;	// 04 - { return staticAttenuation; }
-			virtual UInt8	GetDBVariance() override;			// 05 - { return dbVariance; }
+			virtual UInt8  GetFrequencyShift() override;	 // 01 - { return frequencyShift; }
+			virtual UInt8  GetFrequencyVariance() override;	 // 02 - { return frequencyVariance; }
+			virtual UInt8  GetPriority() override;			 // 03 - { return priority; }
+			virtual UInt16 GetStaticAttenuation() override;	 // 04 - { return staticAttenuation; }
+			virtual UInt8  GetDBVariance() override;		 // 05 - { return dbVariance; }
 
 
 			// members
-			UInt8	frequencyShift;		// 08
-			UInt8	frequencyVariance;	// 09
-			UInt8	priority;			// 0A
-			UInt8	dbVariance;			// 0B
-			UInt16	staticAttenuation;	// 0C - CK Value * 100
-			UInt16	pad0E;				// 0E
+			UInt8  frequencyShift;	   // 08
+			UInt8  frequencyVariance;  // 09
+			UInt8  priority;		   // 0A
+			UInt8  dbVariance;		   // 0B
+			UInt16 staticAttenuation;  // 0C - CK Value * 100
+			UInt16 pad0E;			   // 0E
 		};
 		STATIC_ASSERT(sizeof(SoundPlaybackCharacteristics) == 0x10);
 
 
-		struct LengthCharacteristics	// LNAM
+		struct LengthCharacteristics  // LNAM
 		{
 			enum class Looping : UInt8
 			{
@@ -53,32 +53,32 @@ namespace RE
 			};
 
 
-			UInt8	unk0;				// 0
-			Looping	looping;			// 1
-			UInt8	unk2;				// 2
-			UInt8	rumbleSendValue;	// 3
+			UInt8	unk0;			  // 0
+			Looping looping;		  // 1
+			UInt8	unk2;			  // 2
+			UInt8	rumbleSendValue;  // 3
 		};
 		STATIC_ASSERT(sizeof(LengthCharacteristics) == 0x4);
 
 
-		virtual ~BGSStandardSoundDef();						// 00
+		virtual ~BGSStandardSoundDef();	 // 00
 
 		// override (BGSSoundDescriptor)
-		virtual void	Unk_01(void) override;				// 01
-		virtual void	Unk_02(void) override;				// 02
-		virtual void	InitSound(TESForm* a_src) override;	// 03
-		virtual bool	LoadSound(TESFile* a_mod) override;	// 04
-		virtual UInt32	GetType() const override;			// 05 - "BGSStandardSoundDef"
-		virtual void	Unk_06(void) override;				// 06
+		virtual void   Unk_01(void) override;				// 01
+		virtual void   Unk_02(void) override;				// 02
+		virtual void   InitSound(TESForm* a_src) override;	// 03
+		virtual bool   LoadSound(TESFile* a_mod) override;	// 04
+		virtual UInt32 GetType() const override;			// 05 - "BGSStandardSoundDef"
+		virtual void   Unk_06(void) override;				// 06
 
 
 		// members
-		BSTArray<BSResource::ID>		soundFiles;				// 18 - ANAM
-		SoundPlaybackCharacteristics	soundCharacteristics;	// 30 - BNAM
-		TESCondition*					conditions;				// 40 - CTDA
-		BGSSoundOutput*					outputModel;			// 48 - ONAM
-		LengthCharacteristics			lengthCharacteristics;	// 50 - LNAM
-		SInt32							unk54;					// 54
+		BSTArray<BSResource::ID>	 soundFiles;			 // 18 - ANAM
+		SoundPlaybackCharacteristics soundCharacteristics;	 // 30 - BNAM
+		TESCondition*				 conditions;			 // 40 - CTDA
+		BGSSoundOutput*				 outputModel;			 // 48 - ONAM
+		LengthCharacteristics		 lengthCharacteristics;	 // 50 - LNAM
+		SInt32						 unk54;					 // 54
 	};
 	STATIC_ASSERT(sizeof(BGSStandardSoundDef) == 0x58);
 }

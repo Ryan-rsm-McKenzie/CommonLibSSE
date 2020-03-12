@@ -14,7 +14,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_IPackageDataAIWorldLocationHandle;
 
 
-		virtual ~IPackageDataAIWorldLocationHandle();	// 00
+		virtual ~IPackageDataAIWorldLocationHandle();  // 00
 	};
 	STATIC_ASSERT(sizeof(IPackageDataAIWorldLocationHandle) == 0x10);
 }

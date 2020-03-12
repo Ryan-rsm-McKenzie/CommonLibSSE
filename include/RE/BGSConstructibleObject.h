@@ -14,7 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSConstructibleObject;
 
 
-		enum { kTypeID = FormType::ConstructibleObject };
+		enum
+		{
+			kTypeID = FormType::ConstructibleObject
+		};
 
 
 		struct RecordFlags
@@ -34,23 +37,23 @@ namespace RE
 		STATIC_ASSERT(sizeof(ConstructibleObjectData) == 0x2);
 
 
-		virtual ~BGSConstructibleObject();				// 00
+		virtual ~BGSConstructibleObject();	// 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;		// 04
-		virtual void	ClearData() override;			// 05
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void InitializeData() override;		 // 04
+		virtual void ClearData() override;			 // 05
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
 		// members
-		TESContainer			requiredItems;		// 20
-		TESCondition			conditions;			// 38
-		TESForm*				createdItem;		// 40 - CNAM
-		BGSKeyword*				benchKeyword;		// 48 - BNAM
-		ConstructibleObjectData	data;				// 50
-		UInt16					pad52;				// 52
-		UInt32					unk54;				// 54
+		TESContainer			requiredItems;	// 20
+		TESCondition			conditions;		// 38
+		TESForm*				createdItem;	// 40 - CNAM
+		BGSKeyword*				benchKeyword;	// 48 - BNAM
+		ConstructibleObjectData data;			// 50
+		UInt16					pad52;			// 52
+		UInt32					unk54;			// 54
 	};
 	STATIC_ASSERT(sizeof(BGSConstructibleObject) == 0x58);
 }

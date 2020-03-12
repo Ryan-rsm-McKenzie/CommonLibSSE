@@ -18,12 +18,12 @@ namespace RE
 		};
 
 
-		virtual ~BSHandleRefObject();	// 00
+		virtual ~BSHandleRefObject();  // 00
 
-		void	DecRefCount();
-		void	IncRefCount();
-		bool	IsHandleValid() const;
-		UInt32	QRefCount() const;
+		void   DecRefCount();
+		void   IncRefCount();
+		bool   IsHandleValid() const;
+		UInt32 QRefCount() const;
 	};
 	STATIC_ASSERT(sizeof(BSHandleRefObject) == 0x10);
 }

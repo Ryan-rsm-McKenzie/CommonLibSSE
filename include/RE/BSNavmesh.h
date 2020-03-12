@@ -77,69 +77,69 @@ namespace RE
 		};
 
 
-		UInt16			vertices[3];	// 00
-		UInt16			triangles[3];	// 06 - 0xFF == NONE
-		TriangleFlag	triangleFlags;	// 0C
-		TraversalFlag	traversalFlags;	// 0E
+		UInt16		  vertices[3];	   // 00
+		UInt16		  triangles[3];	   // 06 - 0xFF == NONE
+		TriangleFlag  triangleFlags;   // 0C
+		TraversalFlag traversalFlags;  // 0E
 	};
 	STATIC_ASSERT(sizeof(BSNavmeshTriangle) == 0x10);
 
 
 	struct BSNavmeshTriangleEdgePortal
 	{
-		FormID	otherMeshID;	// 0
-		UInt16	triangle;		// 4
-		SInt8	edgeIndex;		// 6
-		UInt8	pad7;			// 7
+		FormID otherMeshID;	 // 0
+		UInt16 triangle;	 // 4
+		SInt8  edgeIndex;	 // 6
+		UInt8  pad7;		 // 7
 	};
 	STATIC_ASSERT(sizeof(BSNavmeshTriangleEdgePortal) == 0x8);
 
 
 	struct BSNavmeshEdgeExtraInfo
 	{
-		EDGE_EXTRA_INFO_TYPE		type;	// 0
-		BSNavmeshTriangleEdgePortal	portal;	// 4
+		EDGE_EXTRA_INFO_TYPE		type;	 // 0
+		BSNavmeshTriangleEdgePortal portal;	 // 4
 	};
 	STATIC_ASSERT(sizeof(BSNavmeshEdgeExtraInfo) == 0xC);
 
 
 	struct BSNavmeshTriangleDoorPortal
 	{
-		BSTSmartPointer<BSPathingDoor>	door;					// 00
-		UInt16							owningTriangleIndex;	// 08
-		UInt16							pad0A;					// 0A
-		UInt32							pad0C;					// 0C
+		BSTSmartPointer<BSPathingDoor> door;				 // 00
+		UInt16						   owningTriangleIndex;	 // 08
+		UInt16						   pad0A;				 // 0A
+		UInt32						   pad0C;				 // 0C
 	};
 	STATIC_ASSERT(sizeof(BSNavmeshTriangleDoorPortal) == 0x10);
 
 
 	struct BSNavmeshClosedDoorInfo
 	{
-		BSTSmartPointer<BSPathingDoor>	door;			// 00
-		UInt16							triangleIndex;	// 08
-		UInt16							pad0A;			// 0A
-		UInt32							pad0C;			// 0C
+		BSTSmartPointer<BSPathingDoor> door;		   // 00
+		UInt16						   triangleIndex;  // 08
+		UInt16						   pad0A;		   // 0A
+		UInt32						   pad0C;		   // 0C
 	};
 	STATIC_ASSERT(sizeof(BSNavmeshClosedDoorInfo) == 0x10);
 
 
 	struct BSNavmeshCoverEdge
 	{
-		UInt16	vertices[2];	// 00
-		UInt32	data;			// 08
+		UInt16 vertices[2];	 // 00
+		UInt32 data;		 // 08
 	};
 	STATIC_ASSERT(sizeof(BSNavmeshCoverEdge) == 0x8);
 
 
 	struct BSNavmeshGrid
 	{
-		UInt32							gridSize;			// 00
-		float							columnSectionLen;	// 04
-		float							rowSectionLen;		// 08
-		NiPoint3						gridBoundsMin;		// 0C
-		NiPoint3						gridBoundsMax;		// 18
-		UInt32							pad24;				// 14
-		SimpleArray<BSTArray<UInt16>>	gridData;			// 28
+		UInt32						  gridSize;			 // 00
+		float						  columnSectionLen;	 // 04
+		float						  rowSectionLen;	 // 08
+		NiPoint3					  gridBoundsMin;	 // 0C
+		NiPoint3					  gridBoundsMax;	 // 18
+		UInt32						  pad24;			 // 14
+		SimpleArray<BSTArray<UInt16>> gridData;			 // 28
 	};
 	STATIC_ASSERT(sizeof(BSNavmeshGrid) == 0x30);
 
@@ -150,26 +150,26 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSNavmesh;
 
 
-		virtual ~BSNavmesh();				// 00
+		virtual ~BSNavmesh();  // 00
 
 		// add
-		virtual UInt32 QNavmeshID() = 0;	// 01
+		virtual UInt32 QNavmeshID() = 0;  // 01
 
 
 		// members
-		UInt32													pad00C;					// 00C
-		BSTArray<BSNavmeshVertex>								vertices;				// 010
-		BSTArray<BSNavmeshTriangle>								triangles;				// 028
-		BSTArray<BSNavmeshEdgeExtraInfo>						extraEdgeInfo;			// 040
-		BSTArray<BSNavmeshTriangleDoorPortal>					doorPortals;			// 058
-		BSTArray<BSNavmeshClosedDoorInfo>						closedDoors;			// 070
-		BSTArray<BSNavmeshCoverEdge>							coverArray;				// 088
-		BSNavmeshGrid											meshGrid;				// 0A0
-		BSTArray<NiPointer<BSNavmeshObstacleUndoData>>			obstacles;				// 0D0
-		BSTHashMap<UInt16, NiPointer<BSNavmeshObstacleData>>*	triangleToObstacleMap;	// 0E8
-		BSTArray<void*>											unk0F0;					// 0F0 - obstaclePOVs/disabledLinks?
-		BSTSmartPointer<BSPathingCell>							parentCell;				// 108
-		void*													unk110;					// 110 - navmeshInfo?
+		UInt32												  pad00C;				  // 00C
+		BSTArray<BSNavmeshVertex>							  vertices;				  // 010
+		BSTArray<BSNavmeshTriangle>							  triangles;			  // 028
+		BSTArray<BSNavmeshEdgeExtraInfo>					  extraEdgeInfo;		  // 040
+		BSTArray<BSNavmeshTriangleDoorPortal>				  doorPortals;			  // 058
+		BSTArray<BSNavmeshClosedDoorInfo>					  closedDoors;			  // 070
+		BSTArray<BSNavmeshCoverEdge>						  coverArray;			  // 088
+		BSNavmeshGrid										  meshGrid;				  // 0A0
+		BSTArray<NiPointer<BSNavmeshObstacleUndoData>>		  obstacles;			  // 0D0
+		BSTHashMap<UInt16, NiPointer<BSNavmeshObstacleData>>* triangleToObstacleMap;  // 0E8
+		BSTArray<void*>										  unk0F0;				  // 0F0 - obstaclePOVs/disabledLinks?
+		BSTSmartPointer<BSPathingCell>						  parentCell;			  // 108
+		void*												  unk110;				  // 110 - navmeshInfo?
 	};
 	STATIC_ASSERT(sizeof(BSNavmesh) == 0x118);
 }

@@ -10,7 +10,7 @@
 
 namespace RE
 {
-	struct BGSHazardData	// DATA
+	struct BGSHazardData  // DATA
 	{
 	public:
 		enum class BGSHazardFlags : UInt32
@@ -24,16 +24,16 @@ namespace RE
 		};
 
 
-		UInt32					limit;				// 00
-		float					radius;				// 04
-		float					lifetime;			// 08
-		float					imageSpaceRadius;	// 0C
-		float					targetInterval;		// 10
-		BGSHazardFlags			flags;				// 14
-		SpellItem*				spell;				// 18
-		TESObjectLIGH*			light;				// 20
-		BGSImpactDataSet*		impactDataSet;		// 28
-		BGSSoundDescriptorForm*	sound;				// 30
+		UInt32					limit;			   // 00
+		float					radius;			   // 04
+		float					lifetime;		   // 08
+		float					imageSpaceRadius;  // 0C
+		float					targetInterval;	   // 10
+		BGSHazardFlags			flags;			   // 14
+		SpellItem*				spell;			   // 18
+		TESObjectLIGH*			light;			   // 20
+		BGSImpactDataSet*		impactDataSet;	   // 28
+		BGSSoundDescriptorForm* sound;			   // 30
 	};
 	STATIC_ASSERT(sizeof(BGSHazardData) == 0x38);
 
@@ -49,7 +49,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSHazard;
 
 
-		enum { kTypeID = FormType::Hazard };
+		enum
+		{
+			kTypeID = FormType::Hazard
+		};
 
 
 		struct RecordFlags
@@ -62,16 +65,16 @@ namespace RE
 		};
 
 
-		virtual ~BGSHazard();							// 00
+		virtual ~BGSHazard();  // 00
 
 		// override (TESBoundObject)
-		virtual void	InitializeData() override;		// 04
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void InitializeData() override;		 // 04
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
 		// members
-		BGSHazardData data;	// 80 - DATA
+		BGSHazardData data;	 // 80 - DATA
 	};
 	STATIC_ASSERT(sizeof(BGSHazard) == 0xB8);
 }

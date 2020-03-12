@@ -92,11 +92,11 @@ namespace RE
 
 
 		// members
-		TESFullName	locationName;	// 00
-		Flag		flags;			// 10
-		MARKER_TYPE	type;			// 11
-		UInt16		pad02;			// 12
-		UInt32		pad04;			// 14
+		TESFullName locationName;  // 00
+		Flag		flags;		   // 10
+		MARKER_TYPE type;		   // 11
+		UInt16		pad02;		   // 12
+		UInt32		pad04;		   // 14
 	};
 	STATIC_ASSERT(sizeof(MapMarkerData) == 0x18);
 
@@ -107,18 +107,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraMapMarker;
 
 
-		enum { kExtraTypeID = ExtraDataType::kMapMarker };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kMapMarker
+		};
 
 
-		virtual ~ExtraMapMarker();														// 00
+		virtual ~ExtraMapMarker();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;								// 01 - { return kMapMarker; }
-		virtual bool			IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
+		virtual ExtraDataType GetType() const override;								// 01 - { return kMapMarker; }
+		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
 
 
 		// members
-		MapMarkerData* mapData;	// 10
+		MapMarkerData* mapData;	 // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraMapMarker) == 0x18);
 }

@@ -14,12 +14,18 @@ namespace SKSE
 	{
 		namespace
 		{
-			template <class T> using is_object_pointer = std::is_convertible<T, RE::TESObjectREFR*>;
-			template <class T> using is_not_object_pointer = std::negation<is_object_pointer<T>>;
-			template <class T> using is_form_pointer = std::is_convertible<T, RE::TESForm*>;
-			template <class T> using is_not_form_pointer = std::negation<is_form_pointer<T>>;
+			template <class T>
+			using is_object_pointer = std::is_convertible<T, RE::TESObjectREFR*>;
+			template <class T>
+			using is_not_object_pointer = std::negation<is_object_pointer<T>>;
+			template <class T>
+			using is_form_pointer = std::is_convertible<T, RE::TESForm*>;
+			template <class T>
+			using is_not_form_pointer = std::negation<is_form_pointer<T>>;
 
-			template <class T> struct make_index_sequence_from_tuple : std::make_index_sequence<std::tuple_size<typename std::remove_reference_t<T>>::value> {};
+			template <class T>
+			struct make_index_sequence_from_tuple : std::make_index_sequence<std::tuple_size<typename std::remove_reference_t<T>>::value>
+			{};
 
 
 			// use a template wrapper so we can preserve type info

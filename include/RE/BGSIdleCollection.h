@@ -25,22 +25,22 @@ namespace RE
 		};
 
 
-		virtual ~BGSIdleCollection();										// 00
+		virtual ~BGSIdleCollection();  // 00
 
 		// override (BaseFormComponent)
-		virtual void	InitializeDataComponent() override;					// 01
-		virtual void	ClearDataComponent() override;						// 02
-		virtual void	CopyComponent(BaseFormComponent* a_rhs) override;	// 03
+		virtual void InitializeDataComponent() override;				// 01
+		virtual void ClearDataComponent() override;						// 02
+		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 
 		// members
-		IdleFlags		idleFlags;			// 08 - IDLF
-		SInt8			idleCount;			// 09 - IDLC
-		UInt16			pad0A;				// 0A
-		UInt32			pad0C;				// 0C
-		TESIdleForm**	idles;				// 10 - IDLA
-		float			timerCheckForIdle;	// 18 - IDLT
-		UInt32			pad1C;				// 1C
+		IdleFlags	  idleFlags;		  // 08 - IDLF
+		SInt8		  idleCount;		  // 09 - IDLC
+		UInt16		  pad0A;			  // 0A
+		UInt32		  pad0C;			  // 0C
+		TESIdleForm** idles;			  // 10 - IDLA
+		float		  timerCheckForIdle;  // 18 - IDLT
+		UInt32		  pad1C;			  // 1C
 	};
 	STATIC_ASSERT(sizeof(BGSIdleCollection) == 0x20);
 }

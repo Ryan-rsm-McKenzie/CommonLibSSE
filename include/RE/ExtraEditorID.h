@@ -13,17 +13,20 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraEditorID;
 
 
-		enum { kExtraTypeID = ExtraDataType::kEditorID };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kEditorID
+		};
 
 
-		virtual ~ExtraEditorID();						// 00
+		virtual ~ExtraEditorID();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kEditorID; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kEditorID; }
 
 
 		// members
-		BSFixedString editorID;	// 10
+		BSFixedString editorID;	 // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraEditorID) == 0x18);
 }

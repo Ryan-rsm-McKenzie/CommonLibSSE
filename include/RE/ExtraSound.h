@@ -13,18 +13,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraSound;
 
 
-		enum { kExtraTypeID = ExtraDataType::kSound };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kSound
+		};
 
 
-		virtual ~ExtraSound();							// 00
+		virtual ~ExtraSound();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kSound; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kSound; }
 
 
 		// members
-		BSSoundHandle	phandle;	// 10
-		UInt32			pad1C;		// 1C
+		BSSoundHandle phandle;	// 10
+		UInt32		  pad1C;	// 1C
 	};
 	STATIC_ASSERT(sizeof(ExtraSound) == 0x20);
 }

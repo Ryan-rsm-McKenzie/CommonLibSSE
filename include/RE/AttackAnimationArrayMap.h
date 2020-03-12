@@ -9,8 +9,8 @@
 namespace RE
 {
 	class AttackAnimationArrayMap :
-		public NiRefObject,											// 00
-		public BSTHashMap<UInt32, BSTArray<SetEventData> const*>	// 10
+		public NiRefObject,										  // 00
+		public BSTHashMap<UInt32, BSTArray<SetEventData> const*>  // 10
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_AttackAnimationArrayMap;
@@ -34,7 +34,7 @@ namespace RE
 		};
 
 
-		virtual ~AttackAnimationArrayMap();	// 00
+		virtual ~AttackAnimationArrayMap();	 // 00
 	};
 	STATIC_ASSERT(sizeof(AttackAnimationArrayMap) == 0x40);
 }

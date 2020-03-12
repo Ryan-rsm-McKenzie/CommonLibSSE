@@ -12,18 +12,21 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraCachedScale;
 
 
-		enum { kExtraTypeID = ExtraDataType::kCachedScale };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kCachedScale
+		};
 
 
-		virtual ~ExtraCachedScale();					// 00
+		virtual ~ExtraCachedScale();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kCachedScale; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kCachedScale; }
 
 
 		// members
-		float	scale3D;	// 10
-		float	refScale;	// 10
+		float scale3D;	 // 10
+		float refScale;	 // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraCachedScale) == 0x18);
 }

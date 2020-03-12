@@ -15,46 +15,50 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_GrenadeProjectile;
 
 
-		enum { kTypeID = FormType::ProjectileGrenade };
+		enum
+		{
+			kTypeID = FormType::ProjectileGrenade
+		};
 
 
 		struct RecordFlags
 		{
 			enum RecordFlag : UInt32
-			{};
+			{
+			};
 		};
 
 
-		virtual ~GrenadeProjectile();												// 00
+		virtual ~GrenadeProjectile();  // 00
 
 		// override (Projectile)
-		virtual void			SaveGame(BGSSaveFormBuffer* a_buf) override;		// 0E
-		virtual void			LoadGame(BGSLoadFormBuffer* a_buf) override;		// 0F
-		virtual void			InitLoadGame(BGSLoadFormBuffer* a_buf) override;	// 10
-		virtual void			FinishLoadGame(BGSLoadFormBuffer* a_buf) override;	// 11
-		virtual void			Revert(BGSLoadFormBuffer* a_buf) override;			// 12
-		virtual BGSDecalGroup*	GetDecalGroup() const override;						// 9F - { return decalGroup; }
-		virtual void			Unk_A3(void) override;								// A3 - { return 1; }
-		virtual void			Unk_A8(void) override;								// A8
-		virtual void			Unk_A9(void) override;								// A9
-		virtual void			UpdateImpl(float a_delta) override;					// AB
-		virtual void			Unk_AE(void) override;								// AE
-		virtual void			Unk_B2(void) override;								// B2
-		virtual void			Unk_B3(void) override;								// B3
-		virtual bool			IsNotGeneratedForm() const override;				// B4
-		virtual void			Unk_BA(void) override;								// BA - { return 1; }
-		virtual void			Unk_BB(void) override;								// BB
-		virtual void			Unk_BD(void) override;								// BD
-		virtual void			Unk_BF(void) override;								// BF - { flags |= 1 << 30; }
-		virtual void			Handle3DLoaded() override;							// C0
+		virtual void		   SaveGame(BGSSaveFormBuffer* a_buf) override;		   // 0E
+		virtual void		   LoadGame(BGSLoadFormBuffer* a_buf) override;		   // 0F
+		virtual void		   InitLoadGame(BGSLoadFormBuffer* a_buf) override;	   // 10
+		virtual void		   FinishLoadGame(BGSLoadFormBuffer* a_buf) override;  // 11
+		virtual void		   Revert(BGSLoadFormBuffer* a_buf) override;		   // 12
+		virtual BGSDecalGroup* GetDecalGroup() const override;					   // 9F - { return decalGroup; }
+		virtual void		   Unk_A3(void) override;							   // A3 - { return 1; }
+		virtual void		   Unk_A8(void) override;							   // A8
+		virtual void		   Unk_A9(void) override;							   // A9
+		virtual void		   UpdateImpl(float a_delta) override;				   // AB
+		virtual void		   Unk_AE(void) override;							   // AE
+		virtual void		   Unk_B2(void) override;							   // B2
+		virtual void		   Unk_B3(void) override;							   // B3
+		virtual bool		   IsNotGeneratedForm() const override;				   // B4
+		virtual void		   Unk_BA(void) override;							   // BA - { return 1; }
+		virtual void		   Unk_BB(void) override;							   // BB
+		virtual void		   Unk_BD(void) override;							   // BD
+		virtual void		   Unk_BF(void) override;							   // BF - { flags |= 1 << 30; }
+		virtual void		   Handle3DLoaded() override;						   // C0
 
 
 		// members
-		BGSDecalGroup*	decalGroup;				// 1D8
-		bool			collisionGroupReset;	// 1E0
-		UInt8			pad1E1;					// 1E1
-		UInt16			pad1E2;					// 1E2
-		UInt32			pad1E4;					// 1E4
+		BGSDecalGroup* decalGroup;			 // 1D8
+		bool		   collisionGroupReset;	 // 1E0
+		UInt8		   pad1E1;				 // 1E1
+		UInt16		   pad1E2;				 // 1E2
+		UInt32		   pad1E4;				 // 1E4
 	};
 	STATIC_ASSERT(sizeof(GrenadeProjectile) == 0x1E8);
 }

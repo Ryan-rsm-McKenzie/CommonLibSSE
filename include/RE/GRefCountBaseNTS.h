@@ -6,11 +6,14 @@
 
 namespace RE
 {
-	template<class C, UInt32 Stat>
+	template <class C, UInt32 Stat>
 	class GRefCountBaseNTS : public GRefCountBaseStatImpl<GRefCountNTSImpl, Stat>
 	{
 	public:
-		enum { kStatType = Stat };
+		enum
+		{
+			kStatType = Stat
+		};
 
 
 		GRefCountBaseNTS() = default;

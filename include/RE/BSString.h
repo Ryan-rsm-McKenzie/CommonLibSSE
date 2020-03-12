@@ -102,7 +102,7 @@ namespace RE
 		}
 
 
-		void deallocate([[maybe_unused]] value_type * a_ptr)
+		void deallocate([[maybe_unused]] value_type* a_ptr)
 		{
 			return;
 		}
@@ -408,7 +408,7 @@ namespace RE
 
 
 		// members
-		value_type*	_data;		// ?? (00)
+		value_type* _data;		// ?? (00)
 		UInt16		_size;		// ?? (08)
 		UInt16		_capacity;	// ?? (0A)
 		UInt32		_pad0C;		// ?? (0C)

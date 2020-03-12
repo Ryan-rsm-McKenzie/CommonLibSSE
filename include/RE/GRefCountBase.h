@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/GRefCountImpl.h"
-#include "RE/GRefCountBaseStatImpl.h"
 #include "RE/GMemory.h"
+#include "RE/GRefCountBaseStatImpl.h"
+#include "RE/GRefCountImpl.h"
 
 
 namespace RE
@@ -12,7 +12,10 @@ namespace RE
 	class GRefCountBase : public GRefCountBaseStatImpl<GRefCountImpl, STAT>
 	{
 	public:
-		enum { kStatType = STAT };
+		enum
+		{
+			kStatType = STAT
+		};
 
 
 		GRefCountBase() = default;

@@ -14,19 +14,19 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSOverridePackCollection;
 
 
-		virtual ~BGSOverridePackCollection();								// 00
+		virtual ~BGSOverridePackCollection();  // 00
 
 		// override (BaseFormComponent)
-		virtual void	InitializeDataComponent() override;					// 01
-		virtual void	ClearDataComponent() override;						// 02 - { return; }
-		virtual void	CopyComponent(BaseFormComponent* a_rhs) override;	// 03
+		virtual void InitializeDataComponent() override;				// 01
+		virtual void ClearDataComponent() override;						// 02 - { return; }
+		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 
 		// members
-		BGSListForm*	spectatorOverRidePackList;		// 08 - SPOR
-		BGSListForm*	observeCorpseOverRidePackList;	// 10 - OCOR
-		BGSListForm*	guardWarnOverRidePackList;		// 18 - GWOR
-		BGSListForm*	enterCombatOverRidePackList;	// 20 - ECOR
+		BGSListForm* spectatorOverRidePackList;		 // 08 - SPOR
+		BGSListForm* observeCorpseOverRidePackList;	 // 10 - OCOR
+		BGSListForm* guardWarnOverRidePackList;		 // 18 - GWOR
+		BGSListForm* enterCombatOverRidePackList;	 // 20 - ECOR
 	};
 	STATIC_ASSERT(sizeof(BGSOverridePackCollection) == 0x28);
 }

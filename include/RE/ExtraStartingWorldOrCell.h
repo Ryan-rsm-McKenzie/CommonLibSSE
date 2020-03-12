@@ -15,17 +15,20 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraStartingWorldOrCell;
 
 
-		enum { kExtraTypeID = ExtraDataType::kStartingWorldOrCell };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kStartingWorldOrCell
+		};
 
 
-		virtual ~ExtraStartingWorldOrCell();			// 00
+		virtual ~ExtraStartingWorldOrCell();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	// 01 - { return kStartingWorldOrCell; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kStartingWorldOrCell; }
 
 
 		// members
-		TESForm* startingWorldOrCell;	// 10
+		TESForm* startingWorldOrCell;  // 10
 	};
 	STATIC_ASSERT(sizeof(ExtraStartingWorldOrCell) == 0x18);
 }

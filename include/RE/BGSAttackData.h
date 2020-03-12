@@ -8,7 +8,7 @@
 
 namespace RE
 {
-	struct AttackData	// ATKD
+	struct AttackData  // ATKD
 	{
 		enum class AttackFlag : UInt32
 		{
@@ -30,7 +30,7 @@ namespace RE
 		float		attackAngle;	// 14
 		float		strikeAngle;	// 18
 		float		staggerOffset;	// 1C
-		BGSKeyword*	attackType;		// 20
+		BGSKeyword* attackType;		// 20
 		float		knockDown;		// 28
 		float		recoveryTime;	// 2C
 		float		staminaMult;	// 30
@@ -48,14 +48,14 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSAttackData;
 
 
-		virtual ~BGSAttackData();	// 00
+		virtual ~BGSAttackData();  // 00
 
 		bool IsLeftAttack() const;
 
 
 		// members
-		BSFixedString	event;	// 10 - ATKE
-		AttackData		data;	// 18 - ATKD
+		BSFixedString event;  // 10 - ATKE
+		AttackData	  data;	  // 18 - ATKD
 	};
 	STATIC_ASSERT(sizeof(BGSAttackData) == 0x50);
 }

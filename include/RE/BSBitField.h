@@ -7,7 +7,7 @@ namespace RE
 	{
 	public:
 		// members
-		UInt32*	data;	// 0
+		UInt32* data;  // 0
 	};
 	STATIC_ASSERT(sizeof(BSBitFieldHeapAllocator) == 0x8);
 
@@ -19,13 +19,13 @@ namespace RE
 		union Buffer
 		{
 			UInt32	local;
-			UInt32*	heap;
+			UInt32* heap;
 		};
 
 
 		// members
-		Buffer	buffer;
-		UInt32	size;
+		Buffer buffer;
+		UInt32 size;
 	};
 	STATIC_ASSERT(sizeof(BSBitField<>) == 0x18);
 }

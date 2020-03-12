@@ -9,15 +9,18 @@
 namespace RE
 {
 	class TESEyes :
-		public TESForm,		// 00
-		public TESFullName,	// 20
-		public TESTexture	// 30
+		public TESForm,		 // 00
+		public TESFullName,	 // 20
+		public TESTexture	 // 30
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESEyes;
 
 
-		enum { kTypeID = FormType::Eyes };
+		enum
+		{
+			kTypeID = FormType::Eyes
+		};
 
 
 		enum class Flag : UInt8
@@ -40,18 +43,18 @@ namespace RE
 		};
 
 
-		virtual ~TESEyes();								// 00
+		virtual ~TESEyes();	 // 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;		// 04 - { flags = 0; }
-		virtual bool	Load(TESFile* a_mod) override;	// 06 - { return true; }
+		virtual void InitializeData() override;		 // 04 - { flags = 0; }
+		virtual bool Load(TESFile* a_mod) override;	 // 06 - { return true; }
 
 
 		// members
-		Flag	flags;	// 40 - DATA
-		UInt8	pad41;	// 41
-		UInt16	pad42;	// 42
-		UInt32	pad44;	// 44
+		Flag   flags;  // 40 - DATA
+		UInt8  pad41;  // 41
+		UInt16 pad42;  // 42
+		UInt32 pad44;  // 44
 	};
 	STATIC_ASSERT(sizeof(TESEyes) == 0x48);
 }

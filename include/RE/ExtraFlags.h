@@ -12,7 +12,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraFlags;
 
 
-		enum { kExtraTypeID = ExtraDataType::kFlags };
+		enum
+		{
+			kExtraTypeID = ExtraDataType::kFlags
+		};
 
 
 		enum class Flag : UInt32
@@ -26,17 +29,17 @@ namespace RE
 		};
 
 
-		virtual ~ExtraFlags();								// 00
+		virtual ~ExtraFlags();	// 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType	GetType() const override;	// 01 - { return kFlags; }
+		virtual ExtraDataType GetType() const override;	 // 01 - { return kFlags; }
 
 		bool IsActivationBlocked() const;
 
 
 		// members
-		Flag	flags;	// 10
-		UInt32	pad14;	// 14
+		Flag   flags;  // 10
+		UInt32 pad14;  // 14
 	};
 	STATIC_ASSERT(sizeof(ExtraFlags) == 0x18);
 }

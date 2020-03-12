@@ -17,30 +17,30 @@ namespace RE
 		class ObjectBindPolicy
 		{
 		public:
-			virtual ~ObjectBindPolicy();		// 00
+			virtual ~ObjectBindPolicy();  // 00
 
 			// add
-			virtual void	Unk_01(void) = 0;	// 01
-			virtual void	Unk_02(void) = 0;	// 02
-			virtual void	Unk_03(void) = 0;	// 03
-			virtual void	Unk_04(void) = 0;	// 04
-			virtual void	Unk_05(void) = 0;	// 05
-			virtual void	Unk_06(void) = 0;	// 06
-			virtual void	Unk_07(void) = 0;	// 07
-			virtual void	Unk_08(void) = 0;	// 08
-			virtual void	Unk_09(void) = 0;	// 09
-			virtual void	Unk_0A(void) = 0;	// 0A
-			virtual void	Unk_0B(void) = 0;	// 0B
-			virtual void	Unk_0C(void) = 0;	// 0C
+			virtual void Unk_01(void) = 0;	// 01
+			virtual void Unk_02(void) = 0;	// 02
+			virtual void Unk_03(void) = 0;	// 03
+			virtual void Unk_04(void) = 0;	// 04
+			virtual void Unk_05(void) = 0;	// 05
+			virtual void Unk_06(void) = 0;	// 06
+			virtual void Unk_07(void) = 0;	// 07
+			virtual void Unk_08(void) = 0;	// 08
+			virtual void Unk_09(void) = 0;	// 09
+			virtual void Unk_0A(void) = 0;	// 0A
+			virtual void Unk_0B(void) = 0;	// 0B
+			virtual void Unk_0C(void) = 0;	// 0C
 
 			void BindObject(BSTSmartPointer<Object>& a_objectPtr, VMHandle a_handle);
 
 
 			// members
-			IVirtualMachine*				vm;						// 08
-			IVMObjectBindInterface*			bindInterface;			// 10
-			mutable BSSpinLock				attachedScriptsLock;	// 18
-			BSTHashMap<VMHandle, UnkValue>	attachedScripts;		// 20
+			IVirtualMachine*			   vm;					 // 08
+			IVMObjectBindInterface*		   bindInterface;		 // 10
+			mutable BSSpinLock			   attachedScriptsLock;	 // 18
+			BSTHashMap<VMHandle, UnkValue> attachedScripts;		 // 20
 		};
 		STATIC_ASSERT(sizeof(ObjectBindPolicy) == 0x50);
 	}

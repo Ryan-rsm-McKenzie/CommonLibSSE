@@ -14,29 +14,29 @@ namespace RE
 
 	struct hkpCharacterInput
 	{
-		float			inputLR;			// 00
-		float			inputUD;			// 04
-		bool			wantJump;			// 08
-		UInt8			pad09;				// 09
-		UInt16			pad0A;				// 0A
-		UInt32			pad0C;				// 0C
-		hkVector4		up;					// 10
-		hkVector4		forward;			// 20
-		bool			atLadder;			// 30
-		hkpSurfaceInfo	surfaceInfo;		// 40
-		hkStepInfo		stepInfo;			// 80
-		hkVector4		position;			// 90
-		hkVector4		velocity;			// A0
-		hkVector4		characterGravity;	// B0
-		UInt64			userData;			// C0
-		UInt64			padC8;				// C8
+		float		   inputLR;			  // 00
+		float		   inputUD;			  // 04
+		bool		   wantJump;		  // 08
+		UInt8		   pad09;			  // 09
+		UInt16		   pad0A;			  // 0A
+		UInt32		   pad0C;			  // 0C
+		hkVector4	   up;				  // 10
+		hkVector4	   forward;			  // 20
+		bool		   atLadder;		  // 30
+		hkpSurfaceInfo surfaceInfo;		  // 40
+		hkStepInfo	   stepInfo;		  // 80
+		hkVector4	   position;		  // 90
+		hkVector4	   velocity;		  // A0
+		hkVector4	   characterGravity;  // B0
+		UInt64		   userData;		  // C0
+		UInt64		   padC8;			  // C8
 	};
 	STATIC_ASSERT(sizeof(hkpCharacterInput) == 0xD0);
 
 
 	struct hkpCharacterOutput
 	{
-		hkVector4 velocity;	// 00
+		hkVector4 velocity;	 // 00
 	};
 	STATIC_ASSERT(sizeof(hkpCharacterOutput) == 0x10);
 
@@ -54,12 +54,12 @@ namespace RE
 		};
 
 
-		virtual ~hkpCharacterContext();	// 00
+		virtual ~hkpCharacterContext();	 // 00
 
 
 		CharacterType					characterType;			// 10
 		UInt32							pad14;					// 14
-		const hkpCharacterStateManager*	stateManager;			// 18
+		const hkpCharacterStateManager* stateManager;			// 18
 		hkpCharacterStateType			currentState;			// 20
 		hkpCharacterStateType			previousState;			// 24
 		bool							filterEnable;			// 28

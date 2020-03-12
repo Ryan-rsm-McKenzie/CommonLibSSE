@@ -196,7 +196,8 @@ namespace RE
 		}
 
 	protected:
-		template <class, template <class> class> friend class BSTSmartPointer;
+		template <class, template <class> class>
+		friend class BSTSmartPointer;
 
 
 		void TryAttach()
@@ -217,7 +218,7 @@ namespace RE
 
 
 		// members
-		element_type* _ptr;	// 0
+		element_type* _ptr;	 // 0
 	};
 	STATIC_ASSERT(sizeof(BSTSmartPointer<void*>) == 0x8);
 
@@ -236,11 +237,12 @@ namespace RE
 	}
 
 
-	template <class T> using BSTAutoPointer = BSTSmartPointer<T, BSTSmartPointerAutoPtr>;
+	template <class T>
+	using BSTAutoPointer = BSTSmartPointer<T, BSTSmartPointerAutoPtr>;
 	STATIC_ASSERT(sizeof(BSTAutoPointer<void*>) == 0x8);
 }
 
 
-#define BSSmartPointer(className)							\
-	class className;										\
+#define BSSmartPointer(className) \
+	class className;              \
 	using className##Ptr = RE::BSTSmartPointer<className>;

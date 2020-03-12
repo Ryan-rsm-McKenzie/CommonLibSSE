@@ -10,8 +10,8 @@ namespace RE
 {
 	union SETTING_VALUE
 	{
-		float	f;
-		UInt32	i;
+		float  f;
+		UInt32 i;
 	};
 	STATIC_ASSERT(sizeof(SETTING_VALUE) == 0x4);
 
@@ -22,7 +22,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSShaderParticleGeometryData;
 
 
-		enum { kTypeID = FormType::ShaderParticleGeometryData };
+		enum
+		{
+			kTypeID = FormType::ShaderParticleGeometryData
+		};
 
 
 		enum class DataID : UInt32
@@ -61,17 +64,17 @@ namespace RE
 		};
 
 
-		virtual ~BGSShaderParticleGeometryData();		// 00
+		virtual ~BGSShaderParticleGeometryData();  // 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;		// 04
-		virtual void	ClearData() override;			// 05
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void InitializeData() override;		 // 04
+		virtual void ClearData() override;			 // 05
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
-		BSTArray<SETTING_VALUE>	data;				// 20 - DATA - size == DataID::kTotal
-		TESTexture				particleTexture;	// 38 - ICON
+		BSTArray<SETTING_VALUE> data;			  // 20 - DATA - size == DataID::kTotal
+		TESTexture				particleTexture;  // 38 - ICON
 	};
 	STATIC_ASSERT(sizeof(BGSShaderParticleGeometryData) == 0x48);
 }

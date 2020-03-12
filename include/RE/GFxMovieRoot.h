@@ -18,7 +18,7 @@ namespace RE
 		};
 
 
-		virtual ~GFxMovieRoot();																																															// 00
+		virtual ~GFxMovieRoot();  // 00
 
 		// override (GFxMovieView)
 		virtual GFxMovieDef*				GetMovieDef() const override;																																					// 01 - Obtains the movie definition that created this instance.
@@ -51,7 +51,7 @@ namespace RE
 		virtual ScaleModeType				GetViewScaleMode() const override;																																				// 1C - Obtains the current scale mode for the movie.
 		virtual void						SetViewAlignment(AlignType a_type) override;																																	// 1D - Sets the current alignment mode for the movie.
 		virtual AlignType					GetViewAlignment() const override;																																				// 1E - Gets the current alignment mode for the movie.
-		virtual GRectF        				GetVisibleFrameRect() const override;																																			// 1F - Obtains the currently visible rectangle.
+		virtual GRectF						GetVisibleFrameRect() const override;																																			// 1F - Obtains the currently visible rectangle.
 		virtual void						SetPerspective3D(const GMatrix3D& a_projMatIn) override;																														// 20
 		virtual void						SetView3D(const GMatrix3D& a_viewMatIn) override;																																// 21
 		virtual GRectF						GetSafeRect() const override;																																					// 22
@@ -73,7 +73,7 @@ namespace RE
 		virtual void						SetExternalInterfaceRetVal(const GFxValue& a_val) override;																														// 32
 		virtual void*						GetUserData() const override;																																					// 33
 		virtual void						SetUserData(void* a_data) override;																																				// 34
-		virtual bool						AttachDisplayCallback(const char* a_pathToObject, void(*a_callback)(void* a_user), void* a_user) override;																		// 35
+		virtual bool						AttachDisplayCallback(const char* a_pathToObject, void (*a_callback)(void* a_user), void* a_user) override;																		// 35
 		virtual bool						IsMovieFocused() const override;																																				// 36
 		virtual bool						GetDirtyFlag(bool a_doReset = true) override;																																	// 37
 		virtual void						SetMouseCursorCount(UInt32 a_count) override;																																	// 38
@@ -83,63 +83,63 @@ namespace RE
 		virtual void						GetStats(GStatBag* a_bag, bool a_reset = true) override;																														// 3C
 		virtual GMemoryHeap*				GetHeap() const override;																																						// 3D
 		virtual void						ForceCollectGarbage() override;																																					// 3E
-		virtual GPointF 					TranslateToScreen(const GPointF& a_p, void* a_userMatrix) override;																												// 3F
+		virtual GPointF						TranslateToScreen(const GPointF& a_p, void* a_userMatrix) override;																												// 3F
 		virtual GRectF						TranslateToScreen(const GRectF& a_p, void* a_userMatrix) override;																												// 40
 		virtual bool						TranslateLocalToScreen(const char* a_pathToCharacter, const GPointF& a_pt, GPointF* a_presPt, void* a_userMatrix) override;														// 41
 		virtual bool						SetControllerFocusGroup(UInt32 a_controllerIdx, UInt32 a_focusGroupIndex) override;																								// 42
 		virtual UInt32						GetControllerFocusGroup(UInt32 a_controllerIdx) const override;																													// 43
-		virtual GFxMovieDef::MemoryContext*	GetMemoryContext() const override;																																				// 44
+		virtual GFxMovieDef::MemoryContext* GetMemoryContext() const override;																																				// 44
 		virtual void						Release() override;																																								// 45
 
 		// add
-		virtual void						Unk_46(void);																																									// 46
-		virtual void						Unk_47(void);																																									// 47
-		virtual void						Unk_48(void);																																									// 48
+		virtual void Unk_46(void);	// 46
+		virtual void Unk_47(void);	// 47
+		virtual void Unk_48(void);	// 48
 
 
 		// members
-		UInt64				unk0018;							// 0018
-		UInt64				unk0020;							// 0020
-		void*				refCountCollector;					// 0028
-		UInt64				unk0030;							// 0030
-		GMemoryHeap*		heap;								// 0038
-		UInt64				unk0040;							// 0040
-		UInt64				unk0048;							// 0048
-		UInt64				unk0050;							// 0050
-		void*				unk0058;							// 0058
-		GFxMovieDef*		movieDef;							// 0060
-		UInt64				unk0068;							// 0068
-		UInt64				unk0070;							// 0070
-		GViewport			unk0078;							// 0078
-		UInt64				unk00B0;							// 00B0
-		UInt64				unk00B8;							// 00B8
-		ScaleModeType		viewScaleMode;						// 00C0
-		AlignType			viewAlignment;						// 00C4
-		GRectF				visibleFrameRect;					// 00C8
-		UInt64				unk00D8;							// 00D8
-		GRectF				safeRect;							// 00E0
-		UInt64				unk00F0;							// 00F0
-		UInt64				unk00F8;							// 00F8
-		GMatrix3D*			perspective3D;						// 0100
-		UInt64				unk0108;							// 0108
-		UInt64				unk0110;							// 0110
-		UInt64				unk0118[(0x09A0 - 0x0118) >> 3];	// 0118
-		GColor				backgroundColor;					// 09A0
-		UInt32				unk09A4;							// 09A4
-		UInt64				unk09A8[(0x0A68 - 0x09A8) >> 3];	// 09A8
-		UInt32				mouseCursorCount;					// 0A68
-		UInt32				controllerCount;					// 0A6C
-		void*				userData;							// 0A70
-		UInt64				unk0A78;							// 0A78
-		GFxKeyboardState	keyboardState;						// 0A80
-		UInt64				unk1108[(0x25E0 - 0x1108) >> 3];	// 1108
-		Flag				flags;								// 25E0
-		UInt32				unk25E4;							// 25E4
-		UInt64				unk25E8[(0x2B48 - 0x25E8) >> 3];	// 25E8
-		UInt32				focusGroup;							// 2B48
-		UInt8				controllerGroups[16];				// 2B4C
-		UInt32				unk2B54;							// 2B54
-		UInt64				unk2B58[(0x2BE8 - 0x2B58) >> 3];	// 2B58
+		UInt64			 unk0018;						   // 0018
+		UInt64			 unk0020;						   // 0020
+		void*			 refCountCollector;				   // 0028
+		UInt64			 unk0030;						   // 0030
+		GMemoryHeap*	 heap;							   // 0038
+		UInt64			 unk0040;						   // 0040
+		UInt64			 unk0048;						   // 0048
+		UInt64			 unk0050;						   // 0050
+		void*			 unk0058;						   // 0058
+		GFxMovieDef*	 movieDef;						   // 0060
+		UInt64			 unk0068;						   // 0068
+		UInt64			 unk0070;						   // 0070
+		GViewport		 unk0078;						   // 0078
+		UInt64			 unk00B0;						   // 00B0
+		UInt64			 unk00B8;						   // 00B8
+		ScaleModeType	 viewScaleMode;					   // 00C0
+		AlignType		 viewAlignment;					   // 00C4
+		GRectF			 visibleFrameRect;				   // 00C8
+		UInt64			 unk00D8;						   // 00D8
+		GRectF			 safeRect;						   // 00E0
+		UInt64			 unk00F0;						   // 00F0
+		UInt64			 unk00F8;						   // 00F8
+		GMatrix3D*		 perspective3D;					   // 0100
+		UInt64			 unk0108;						   // 0108
+		UInt64			 unk0110;						   // 0110
+		UInt64			 unk0118[(0x09A0 - 0x0118) >> 3];  // 0118
+		GColor			 backgroundColor;				   // 09A0
+		UInt32			 unk09A4;						   // 09A4
+		UInt64			 unk09A8[(0x0A68 - 0x09A8) >> 3];  // 09A8
+		UInt32			 mouseCursorCount;				   // 0A68
+		UInt32			 controllerCount;				   // 0A6C
+		void*			 userData;						   // 0A70
+		UInt64			 unk0A78;						   // 0A78
+		GFxKeyboardState keyboardState;					   // 0A80
+		UInt64			 unk1108[(0x25E0 - 0x1108) >> 3];  // 1108
+		Flag			 flags;							   // 25E0
+		UInt32			 unk25E4;						   // 25E4
+		UInt64			 unk25E8[(0x2B48 - 0x25E8) >> 3];  // 25E8
+		UInt32			 focusGroup;					   // 2B48
+		UInt8			 controllerGroups[16];			   // 2B4C
+		UInt32			 unk2B54;						   // 2B54
+		UInt64			 unk2B58[(0x2BE8 - 0x2B58) >> 3];  // 2B58
 	};
 	STATIC_ASSERT(sizeof(GFxMovieRoot) == 0x2BF0);
 }

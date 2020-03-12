@@ -12,15 +12,18 @@
 namespace RE
 {
 	class BGSMessage :
-		public TESForm,			// 00
-		public TESFullName,		// 20
-		public TESDescription	// 30
+		public TESForm,		   // 00
+		public TESFullName,	   // 20
+		public TESDescription  // 30
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMessage;
 
 
-		enum { kTypeID = FormType::Message };
+		enum
+		{
+			kTypeID = FormType::Message
+		};
 
 
 		enum class MessageFlag : UInt32
@@ -43,27 +46,27 @@ namespace RE
 
 		struct MESSAGEBOX_BUTTON
 		{
-			BSFixedString	text;		// 00 - ITXT
-			TESCondition	conditions;	// 08
+			BSFixedString text;		   // 00 - ITXT
+			TESCondition  conditions;  // 08
 		};
 		STATIC_ASSERT(sizeof(MESSAGEBOX_BUTTON) == 0x10);
 
 
-		virtual ~BGSMessage();							// 00
+		virtual ~BGSMessage();	// 00
 
 		// override (TESForm)
-		virtual void	InitializeData() override;		// 04
-		virtual void	ClearData() override;			// 05
-		virtual bool	Load(TESFile* a_mod) override;	// 06
-		virtual void	InitItemImpl() override;		// 13
+		virtual void InitializeData() override;		 // 04
+		virtual void ClearData() override;			 // 05
+		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitItemImpl() override;		 // 13
 
 
 		// members
-		BGSMenuIcon*						icon;			// 40 - INAM
-		TESQuest*							ownerQuest;		// 48 - QNAM
-		BSSimpleList<MESSAGEBOX_BUTTON*>	menuButtons;	// 50
-		MessageFlag							flags;			// 60 - DNAM
-		UInt32								displayTime;	// 64 - TNAM
+		BGSMenuIcon*					 icon;		   // 40 - INAM
+		TESQuest*						 ownerQuest;   // 48 - QNAM
+		BSSimpleList<MESSAGEBOX_BUTTON*> menuButtons;  // 50
+		MessageFlag						 flags;		   // 60 - DNAM
+		UInt32							 displayTime;  // 64 - TNAM
 	};
 	STATIC_ASSERT(sizeof(BGSMessage) == 0x68);
 }

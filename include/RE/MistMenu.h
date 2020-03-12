@@ -14,12 +14,12 @@ namespace RE
 	// flags = kDisablePauseMenu | kAllowSaving | kDontHideCursorWhenTopmost
 	// context = kNone
 	class MistMenu :
-		public IMenu,								// 00
-		public SimpleAnimationGraphManagerHolder,	// 30
-		public MenuEventHandler						// 48
+		public IMenu,							   // 00
+		public SimpleAnimationGraphManagerHolder,  // 30
+		public MenuEventHandler					   // 48
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_MistMenu;
+		inline static constexpr auto	  RTTI = RTTI_MistMenu;
 		constexpr static std::string_view MENU_NAME = "Mist Menu";
 
 
@@ -39,22 +39,22 @@ namespace RE
 		};
 
 
-		virtual ~MistMenu();																		// 00
+		virtual ~MistMenu();  // 00
 
 		// override (IMenu)
-		virtual UI_MESSAGE_RESULTS	ProcessMessage(UIMessage& a_message) override;					// 04
-		virtual void				AdvanceMovie(float a_interval, UInt32 a_currentTime) override;	// 05
-		virtual void				PostDisplay() override;											// 06
+		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;				   // 04
+		virtual void			   AdvanceMovie(float a_interval, UInt32 a_currentTime) override;  // 05
+		virtual void			   PostDisplay() override;										   // 06
 
 		// override (MenuEventHandler)
-		virtual bool				CanProcess(InputEvent* a_event) override;						// 01
-		virtual bool				ProcessThumbstick(ThumbstickEvent* a_event) override;			// 03
-		virtual bool				ProcessMouseMove(MouseMoveEvent* a_event) override;				// 04
-		virtual bool				ProcessButton(ButtonEvent* a_event) override;	 				// 05
+		virtual bool CanProcess(InputEvent* a_event) override;				// 01
+		virtual bool ProcessThumbstick(ThumbstickEvent* a_event) override;	// 03
+		virtual bool ProcessMouseMove(MouseMoveEvent* a_event) override;	// 04
+		virtual bool ProcessButton(ButtonEvent* a_event) override;			// 05
 
 
 		// members
-		NiColor	ambientColors[Colors::kTotal];	// 058
+		NiColor ambientColors[Colors::kTotal];	// 058
 		UInt32	unk0A0;							// 0A0
 		UInt32	unk0A4;							// 0A4
 		UInt64	unk0A8;							// 0A8
