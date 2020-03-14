@@ -45,7 +45,7 @@ namespace RE
 
 	Setting* GetINISetting(const char* a_name)
 	{
-		Setting* setting = 0;
+		Setting* setting = nullptr;
 
 		auto iniPrefs = INIPrefSettingCollection::GetSingleton();
 		setting = iniPrefs->GetSetting(a_name);
