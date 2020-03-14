@@ -795,7 +795,7 @@ namespace RE
 			}
 			break;
 		}
-		return 0;
+		return nullptr;
 	}
 
 

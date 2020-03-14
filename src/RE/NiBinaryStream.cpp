@@ -8,8 +8,8 @@ namespace RE
 	NiBinaryStream::NiBinaryStream() :
 		_absoluteCurrentPos(0),
 		_pad0C(0),
-		_readFn(0),
-		_writeFn(0)
+		_readFn(nullptr),
+		_writeFn(nullptr)
 	{}
 
 
@@ -29,7 +29,7 @@ namespace RE
 
 	UInt32 NiBinaryStream::binary_read(void* a_buffer, UInt32 a_totalBytes, UInt32* a_componentSizes, UInt32 a_numComponents)
 	{
-		assert(_readFn != 0);
+		assert(_readFn != nullptr);
 
 		UInt32 bytesRead = _readFn(this, a_buffer, a_totalBytes, a_componentSizes, a_numComponents);
 		_absoluteCurrentPos += bytesRead;
@@ -39,7 +39,7 @@ namespace RE
 
 	UInt32 NiBinaryStream::binary_write(const void* a_buffer, UInt32 a_totalBytes, UInt32* a_componentSizes, UInt32 a_numComponents)
 	{
-		assert(_writeFn != 0);
+		assert(_writeFn != nullptr);
 
 		UInt32 bytesWritten = _writeFn(this, a_buffer, a_totalBytes, a_componentSizes, a_numComponents);
 		_absoluteCurrentPos += bytesWritten;

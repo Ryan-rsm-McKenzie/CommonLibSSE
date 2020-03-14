@@ -55,7 +55,7 @@ namespace SKSE
 		std::va_list argsCopy;
 		va_copy(argsCopy, a_args);
 
-		auto size = std::vsnprintf(0, 0, a_format, a_args);
+		auto size = std::vsnprintf(nullptr, 0, a_format, a_args);
 		if (size <= 0) {
 			return;
 		}

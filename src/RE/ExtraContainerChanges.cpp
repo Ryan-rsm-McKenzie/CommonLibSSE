@@ -8,7 +8,7 @@
 namespace RE
 {
 	ExtraContainerChanges::ExtraContainerChanges() :
-		ExtraContainerChanges(0)
+		ExtraContainerChanges(nullptr)
 	{}
 
 

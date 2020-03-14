@@ -60,7 +60,7 @@ namespace RE
 
 
 	GString::DataDescUnion::DataDescUnion() :
-		data(0)
+		data(nullptr)
 	{}
 
 
@@ -86,7 +86,7 @@ namespace RE
 	{
 		auto desc = a_rhs.get_desc();
 		set_desc(desc);
-		a_rhs.set_desc(0);
+		a_rhs.set_desc(nullptr);
 	}
 
 
@@ -129,7 +129,7 @@ namespace RE
 		}
 		desc = a_rhs.get_desc();
 		set_desc(desc);
-		a_rhs.set_desc(0);
+		a_rhs.set_desc(nullptr);
 		return *this;
 	}
 
@@ -167,7 +167,7 @@ namespace RE
 		-> reference
 	{
 		auto desc = get_desc();
-		assert(desc != 0);
+		assert(desc != nullptr);
 		return desc->data[a_pos];
 	}
 
@@ -176,7 +176,7 @@ namespace RE
 		-> const_reference
 	{
 		auto desc = get_desc();
-		assert(desc != 0);
+		assert(desc != nullptr);
 		return desc->data[a_pos];
 	}
 
@@ -269,7 +269,7 @@ namespace RE
 	{
 		auto dataIn = static_cast<const UInt8*>(a_dataIn);
 		UPInt hash;
-		UInt8 byte;
+		UInt8 byte = 0;
 		for (hash = a_seed; a_size; hash = byte ^ 33 * hash) {
 			byte = *(dataIn + a_size-- - 1);
 		}

@@ -35,7 +35,7 @@ namespace RE
 		assert(a_device < INPUT_DEVICE::kTotal);
 		assert(a_context < InputContextID::kTotal);
 
-		auto mappings = controlMap ? &controlMap[a_context]->deviceMappings[a_device] : 0;
+		auto mappings = controlMap ? &controlMap[a_context]->deviceMappings[a_device] : nullptr;
 
 		if (mappings) {
 			for (auto& mapping : *mappings) {
@@ -54,7 +54,7 @@ namespace RE
 		assert(a_device < INPUT_DEVICE::kTotal);
 		assert(a_context < InputContextID::kTotal);
 
-		auto mappings = controlMap ? &controlMap[a_context]->deviceMappings[a_device] : 0;
+		auto mappings = controlMap ? &controlMap[a_context]->deviceMappings[a_device] : nullptr;
 
 		if (mappings) {
 			for (auto& mapping : *mappings) {

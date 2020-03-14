@@ -7,7 +7,8 @@
 namespace RE
 {
 	NiRefObject::NiRefObject() :
-		_refCount(0)
+		_refCount(0),
+		_pad0C(0)
 	{
 		InterlockedIncrement(&_refCount);
 	}

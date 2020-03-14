@@ -25,14 +25,14 @@ namespace RE
 
 
 	GRenderer::CachedData::CachedData() :
-		renderer(0),
-		data(0)
+		renderer(nullptr),
+		data(nullptr)
 	{}
 
 
 	GRenderer::CachedData::~CachedData()
 	{
-		assert(renderer == 0);
+		assert(renderer == nullptr);
 	}
 
 
@@ -67,8 +67,8 @@ namespace RE
 
 	void GRenderer::CachedData::ReleaseDataByRenderer()
 	{
-		renderer = 0;
-		data = 0;
+		renderer = nullptr;
+		data = nullptr;
 	}
 
 
@@ -84,7 +84,7 @@ namespace RE
 	auto GRenderer::CacheProvider::GetCachedData(GRenderer* a_renderer)
 		-> CachedData*
 	{
-		return (a_renderer && (a_renderer == data->renderer)) ? data : 0;
+		return (a_renderer && (a_renderer == data->renderer)) ? data : nullptr;
 	}
 
 
@@ -129,19 +129,21 @@ namespace RE
 
 	GRenderer::StereoParams::StereoParams() :
 		displayWidthCm(0),
-		distortion(0.75),
-		displayDiagInches(52.0),
-		displayAspectRatio(9.0 / 16.0),
-		eyeSeparationCm(6.4)
+		distortion(static_cast<float>(0.75)),
+		displayDiagInches(static_cast<float>(52.0)),
+		displayAspectRatio(static_cast<float>(9.0 / 16.0)),
+		eyeSeparationCm(static_cast<float>(6.4))
 	{}
 
 
 	GRenderer::UserData::UserData() :
-		string(0),
-		flt(0),
-		matrix(0),
+		string(nullptr),
+		flt(nullptr),
+		matrix(nullptr),
 		matrixSize(0),
-		propFlags(UserDataPropertyFlag::kNone)
+		propFlags(UserDataPropertyFlag::kNone),
+		pad1D(0),
+		pad1E(0)
 	{}
 
 
@@ -149,11 +151,11 @@ namespace RE
 	{}
 
 
-	void GRenderer::ReleaseTempRenderTargets(UInt32 a_keepArea)
+	void GRenderer::ReleaseTempRenderTargets(UInt32)
 	{}
 
 
-	bool GRenderer::PushUserData(UserData* a_data)
+	bool GRenderer::PushUserData(UserData*)
 	{
 		return false;
 	}
@@ -167,16 +169,16 @@ namespace RE
 	{
 		s3DParams = a_params;
 		if (s3DParams.displayWidthCm == 0) {
-			s3DParams.displayWidthCm = a_params.displayDiagInches / std::sqrt(1.0f + 1.0 / a_params.displayAspectRatio * 1.0 / a_params.displayAspectRatio) * 2.54;
+			s3DParams.displayWidthCm = a_params.displayDiagInches / std::sqrtf(1.0F + 1.0F / a_params.displayAspectRatio * 1.0F / a_params.displayAspectRatio) * static_cast<float>(2.54);
 		}
 	}
 
 
-	void GRenderer::SetStereoDisplay(StereoDisplay a_display, bool a_setstate)
+	void GRenderer::SetStereoDisplay(StereoDisplay, bool)
 	{}
 
 
-	void GRenderer::DrawDistanceFieldBitmaps(BitmapDesc* a_bitmapList, SInt32 a_listSize, SInt32 a_startIndex, SInt32 a_count, const GTexture* a_texture, const Matrix& a_matrix, const DistanceFieldParams& a_params, CacheProvider* a_cache)
+	void GRenderer::DrawDistanceFieldBitmaps(BitmapDesc*, SInt32, SInt32, SInt32, const GTexture*, const Matrix&, const DistanceFieldParams&, CacheProvider*)
 	{}
 
 

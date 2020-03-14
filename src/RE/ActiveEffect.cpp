@@ -18,13 +18,13 @@ namespace RE
 
 	EffectSetting* ActiveEffect::GetBaseObject()
 	{
-		return effect ? effect->baseEffect : 0;
+		return effect ? effect->baseEffect : nullptr;
 	}
 
 
 	const EffectSetting* ActiveEffect::GetBaseObject() const
 	{
-		return effect ? effect->baseEffect : 0;
+		return effect ? effect->baseEffect : nullptr;
 	}
 
 
@@ -39,7 +39,7 @@ namespace RE
 		if (target && target->MagicTargetIsActor()) {
 			return static_cast<Actor*>(target);
 		} else {
-			return 0;
+			return nullptr;
 		}
 	}
 
@@ -49,7 +49,7 @@ namespace RE
 		if (target && target->MagicTargetIsActor()) {
 			return static_cast<const Actor*>(target);
 		} else {
-			return 0;
+			return nullptr;
 		}
 	}
 }

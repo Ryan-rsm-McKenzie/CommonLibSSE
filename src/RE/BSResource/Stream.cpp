@@ -38,7 +38,7 @@ namespace RE
 		}
 
 
-		ErrorCode Stream::DoCreateAsync(BSTSmartPointer<BSResource::AsyncStream>& a_streamOut) const
+		ErrorCode Stream::DoCreateAsync(BSTSmartPointer<BSResource::AsyncStream>&) const
 		{
 			return ErrorCode::kUnsupported;
 		}

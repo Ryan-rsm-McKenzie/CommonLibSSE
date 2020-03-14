@@ -12,7 +12,7 @@ namespace RE
 				jumpTargetBitCount(0),
 				localVariableBitCount(0),
 				memberVariableBitCount(0),
-				instructions(0)
+				instructions(nullptr)
 			{}
 		}
 	}

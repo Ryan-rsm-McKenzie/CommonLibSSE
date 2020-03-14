@@ -222,8 +222,10 @@ namespace RE
 	public:
 		union Target
 		{
-			Target() :
-				object(0) {}
+			inline Target() :
+				object(nullptr)
+			{}
+
 			~Target() {}
 
 

@@ -49,10 +49,10 @@ namespace RE
 				auto substr = std::strstr(rtti, "ExtraData");
 				UInt32 strLength = 0;
 				if (substr > rtti) {
-					strLength = substr - rtti;
+					strLength = static_cast<UInt32>(substr - rtti);
 				}
 
-				UInt32 len = strLength + strlen(suffix) + 1;
+				UInt32 len = strLength + static_cast<UInt32>(std::strlen(suffix)) + 1;
 				auto generatedKey = NiAlloc<char>(len);
 
 				NiStrncpy(generatedKey, len, rtti, strLength);
@@ -85,7 +85,7 @@ namespace RE
 		}
 
 		extraDataSize--;
-		extra[extraDataSize] = 0;
+		extra[extraDataSize] = nullptr;
 	}
 
 
@@ -98,7 +98,7 @@ namespace RE
 	NiExtraData* NiObjectNET::GetExtraData(const BSFixedString& a_key) const
 	{
 		if (a_key.empty()) {
-			return 0;
+			return nullptr;
 		}
 
 		assert(extraDataSize < std::numeric_limits<SInt16>::max());
@@ -121,7 +121,7 @@ namespace RE
 			}
 		}
 
-		return 0;
+		return nullptr;
 	}
 
 
@@ -162,13 +162,13 @@ namespace RE
 			extra = newExtra;
 		}
 
-		UInt16 i;
+		UInt16 i = 0;
 
 		extra[extraDataSize] = a_extra;
 		++extraDataSize;
 
 		for (i = extraDataSize; i < maxSize; ++i) {
-			extra[i] = 0;
+			extra[i] = nullptr;
 		}
 
 		for (i = (extraDataSize - 1); i > 0; --i) {
@@ -197,7 +197,7 @@ namespace RE
 		}
 
 		NiFree(extra);
-		extra = 0;
+		extra = nullptr;
 		extraDataSize = 0;
 		maxSize = 0;
 	}

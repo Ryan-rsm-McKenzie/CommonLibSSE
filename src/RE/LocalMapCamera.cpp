@@ -37,8 +37,8 @@ namespace RE
 
 	void LocalMapCamera::SetDefaultStateMinFrustumDimensions(float a_width, float a_height)
 	{
-		defaultState->minFrustumHalfWidth = a_width / 2.0;
-		defaultState->minFrustumHalfHeight = a_height / 2.0;
+		defaultState->minFrustumHalfWidth = a_width / static_cast<float>(2.0);
+		defaultState->minFrustumHalfHeight = a_height / static_cast<float>(2.0);
 	}
 
 

@@ -6,37 +6,27 @@
 
 namespace RE
 {
+	class TESGlobal;
 	class TESObjectREFR;
 
 
-	class TESCondition
+	enum class CONDITIONITEMOBJECT : UInt8
+	{
+		kSelf = 0,
+		kTarget = 1,
+		kRef = 2,
+		kCombatTarget = 3,
+		kLinkedRef = 4,
+		kQuestAlias = 5,
+		kPackData = 6,
+		kEventData = 7,
+		kCommandTarget = 8
+	};
+
+
+	struct FUNCTION_DATA
 	{
 	public:
-		enum class OpCode : UInt8
-		{
-			kEqualTo,				// ==
-			kNotEqualTo,			// !=
-			kGreaterThan,			// >
-			kGreaterThanOrEqualTo,	// >=
-			kLessThan,				// <
-			kLessThanOrEqualTo,		// <=
-		};
-
-
-		enum class ReferenceType : UInt8
-		{
-			kSubject = 0,
-			kTarget,
-			kReference,
-			kCombatTarget,
-			kLinkedReference,
-			kQuestAlias,
-			kPackageData,
-			kEventData,
-			kPlayer
-		};
-
-
 		// Betheseda keeps these in a giant lookup table
 		// using func_t = bool(TESObjectREFR* a_thisObj, void* a_param1, void* a_param2, double& a_result);
 		enum class FunctionID : UInt16
@@ -894,32 +884,49 @@ namespace RE
 		};
 
 
-		struct Solution
+		FUNCTION_DATA();
+		~FUNCTION_DATA() = default;
+
+
+		// members
+		FunctionID function;   // 00
+		UInt16	   pad02;	   // 02
+		UInt32	   pad04;	   // 04
+		void*	   params[2];  // 08
+	};
+	STATIC_ASSERT(sizeof(FUNCTION_DATA) == 0x18);
+
+
+	struct CONDITION_ITEM_DATA
+	{
+	public:
+		enum class OpCode : UInt8
 		{
-			constexpr Solution(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target) :
-				perkOwner(a_perkOwner),
-				target(a_target),
-				unk10(0),
-				unk18(0),
-				unk20(0),
-				unk28(0)
-			{}
-
-
-			TESObjectREFR* perkOwner;  // 00
-			TESObjectREFR* target;	   // 08
-			void*		   unk10;	   // 10
-			void*		   unk18;	   // 18
-			void*		   unk20;	   // 20
-			void*		   unk28;	   // 28
+			kEqualTo,				// ==
+			kNotEqualTo,			// !=
+			kGreaterThan,			// >
+			kGreaterThanOrEqualTo,	// >=
+			kLessThan,				// <
+			kLessThanOrEqualTo,		// <=
 		};
-		STATIC_ASSERT(sizeof(Solution) == 0x30);
 
 
-		struct ComparisonFlags
+		union GlobalOrFloat
 		{
-			ComparisonFlags();
-			~ComparisonFlags() = default;
+			GlobalOrFloat();
+			~GlobalOrFloat() = default;
+
+
+			TESGlobal* g;
+			float	   f;
+		};
+		STATIC_ASSERT(sizeof(GlobalOrFloat) == 0x8);
+
+
+		struct Flags
+		{
+			Flags();
+			~Flags() = default;
 
 
 			bool   isOR : 1;		 // 0 - false == AND, true == OR
@@ -929,50 +936,84 @@ namespace RE
 			bool   swapTarget : 1;	 // 4
 			OpCode opCode : 3;		 // 5
 		};
-		STATIC_ASSERT(sizeof(ComparisonFlags) == 0x1);
+		STATIC_ASSERT(sizeof(Flags) == 0x1);
 
 
-		struct Node	 // CTDA
-		{
-			Node();
-			~Node() = default;
-
-			TES_HEAP_REDEFINE_NEW();
-
-			bool Run(Solution& a_solution);
+		CONDITION_ITEM_DATA();
+		~CONDITION_ITEM_DATA() = default;
 
 
-			// members
-			Node*			next;			  // 00
-			float			comparisonValue;  // 08
-			UInt32			unk0C;			  // 0C
-			ObjectRefHandle handle;			  // 10 - kReference
-			SInt32			unk14;			  // 14
-			FunctionID		functionID;		  // 18
-			UInt8			unk1A;			  // 1A
-			UInt8			unk1B;			  // 1B
-			UInt32			pad1C;			  // 1C
-			void*			param1;			  // 20
-			void*			param2;			  // 28
-			ComparisonFlags comparisonFlags;  // 30
-			ReferenceType	referenceType;	  // 31
-			UInt16			pad32;			  // 32
-			UInt32			pad34;			  // 34
-		};
-		STATIC_ASSERT(sizeof(Node) == 0x38);
+		// members
+		GlobalOrFloat		comparisonValue;  // 08
+		ObjectRefHandle		runOnRef;		  // 10 - kReference
+		UInt32				dataID;			  // 14
+		FUNCTION_DATA		functionData;	  // 18
+		Flags				flags;			  // 30
+		CONDITIONITEMOBJECT object;			  // 31
+		UInt16				pad32;			  // 32
+		UInt32				pad34;			  // 34
+	};
+	STATIC_ASSERT(sizeof(CONDITION_ITEM_DATA) == 0x30);
 
 
+	struct ConditionCheckParams
+	{
+	public:
+		constexpr ConditionCheckParams(TESObjectREFR* a_actionRef, TESObjectREFR* a_targetRef) :
+			actionRef(a_actionRef),
+			targetRef(a_targetRef),
+			unk10(nullptr),
+			unk18(nullptr),
+			unk20(nullptr),
+			unk28(nullptr)
+		{}
+
+
+		// members
+		TESObjectREFR* actionRef;  // 00
+		TESObjectREFR* targetRef;  // 08
+		void*		   unk10;	   // 10
+		void*		   unk18;	   // 18
+		void*		   unk20;	   // 20
+		void*		   unk28;	   // 28
+	};
+	STATIC_ASSERT(sizeof(ConditionCheckParams) == 0x30);
+
+
+	struct TESConditionItem	 // CTDA
+	{
+		TESConditionItem();
+		~TESConditionItem() = default;
+
+		TES_HEAP_REDEFINE_NEW();
+
+		bool operator()(ConditionCheckParams& a_solution) const;
+		bool IsTrue(ConditionCheckParams& a_solution) const;
+
+
+		// members
+		TESConditionItem*	next;  // 00
+		CONDITION_ITEM_DATA data;  // 08
+	};
+	STATIC_ASSERT(sizeof(TESConditionItem) == 0x38);
+
+
+	class TESCondition
+	{
+	public:
 		TESCondition();
 		~TESCondition();
 
 		TES_HEAP_REDEFINE_NEW();
 
-		explicit operator bool() const;
-		bool	 Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target);	// Perk fragments will short circuit
+		[[nodiscard]] explicit operator bool() const;
+
+		bool operator()(TESObjectREFR* a_actionRef, TESObjectREFR* a_targetRef) const;
+		bool IsTrue(TESObjectREFR* a_actionRef, TESObjectREFR* a_targetRef) const;	// Perk fragments will short circuit
 
 
 		// members
-		Node* head;	 // 0
+		TESConditionItem* head;	 // 0
 	};
 	STATIC_ASSERT(sizeof(TESCondition) == 0x8);
 }

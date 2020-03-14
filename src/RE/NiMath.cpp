@@ -45,22 +45,22 @@ namespace RE
 		} else {
 			z = a_y / a_x;
 			if (z == 0.0) {
-				return (a_x > 0.0) ? 0.0 : NI_PI;
+				return (a_x > 0.0) ? static_cast<float>(0.0) : NI_PI;
 			}
 		}
 
 		float z2 = z * z;
 
 		float result;
-		result = 0.0208351;
+		result = static_cast<float>(0.0208351);
 		result *= z2;
-		result -= 0.0851330;
+		result -= static_cast<float>(0.0851330);
 		result *= z2;
-		result += 0.1801410;
+		result += static_cast<float>(0.1801410);
 		result *= z2;
-		result -= 0.3302995;
+		result -= static_cast<float>(0.3302995);
 		result *= z2;
-		result += 0.9998660;
+		result += static_cast<float>(0.9998660);
 		result *= z;
 
 		if (offset) {

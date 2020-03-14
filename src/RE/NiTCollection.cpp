@@ -9,7 +9,7 @@ namespace RE
 	{
 		auto memManager = NiMemManager::GetSingleton();
 		auto mem = memManager->Allocate(a_sizeInBytes, 0, NiMemEventType::kMalloc, false);
-		assert(mem != 0);
+		assert(mem != nullptr);
 		return mem;
 	}
 
@@ -18,7 +18,7 @@ namespace RE
 	{
 		auto memManager = NiMemManager::GetSingleton();
 		auto mem = memManager->Allocate(a_sizeInBytes, a_alignment, NiMemEventType::kAlignedMalloc, false);
-		assert(mem != 0);
+		assert(mem != nullptr);
 		return mem;
 	}
 
@@ -27,14 +27,14 @@ namespace RE
 	{
 		if (a_sizeInBytes == 0 && a_mem) {
 			NiFree(a_mem);
-			return 0;
+			return nullptr;
 		} else if (!a_mem) {
 			return NiMalloc(a_sizeInBytes);
 		}
 
 		auto memManager = NiMemManager::GetSingleton();
 		auto mem = memManager->Reallocate(a_mem, a_sizeInBytes, 4, NiMemEventType::kRealloc, false, static_cast<std::size_t>(-1));
-		assert(mem != 0);
+		assert(mem != nullptr);
 		return mem;
 	}
 
@@ -43,14 +43,14 @@ namespace RE
 	{
 		if (a_sizeInBytes == 0 && a_mem) {
 			NiAlignedFree(a_mem);
-			return 0;
+			return nullptr;
 		} else if (!a_mem) {
 			return NiAlignedMalloc(a_sizeInBytes, a_alignment);
 		}
 
 		auto memManager = NiMemManager::GetSingleton();
 		auto mem = memManager->Reallocate(a_mem, a_sizeInBytes, a_alignment, NiMemEventType::kAlignedRealloc, false, static_cast<std::size_t>(-1));
-		assert(mem != 0);
+		assert(mem != nullptr);
 		return mem;
 	}
 

@@ -173,6 +173,7 @@
 #include "RE/BSBound.h"
 #include "RE/BSCoreTypes.h"
 #include "RE/BSCullingProcess.h"
+#include "RE/BSDismemberSkinInstance.h"
 #include "RE/BSEffectShaderData.h"
 #include "RE/BSExtraData.h"
 #include "RE/BSFaceGenAnimationData.h"

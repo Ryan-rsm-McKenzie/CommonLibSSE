@@ -5,6 +5,6 @@ namespace RE
 {
 	bool TESWorldSpace::HasMaxHeightData() const
 	{
-		return maxHeightData != 0;
+		return maxHeightData != nullptr;
 	}
 }

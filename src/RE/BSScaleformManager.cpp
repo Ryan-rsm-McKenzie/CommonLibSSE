@@ -80,7 +80,7 @@ namespace RE
 		view->Advance(0.0);
 
 		if (view->IsAvailable("_root.InitExtensions")) {
-			view->Invoke("_root.InitExtensions", 0, 0, 0);
+			view->Invoke("_root.InitExtensions", nullptr, nullptr, 0);
 		}
 		a_menu->RefreshPlatform();
 
@@ -142,7 +142,7 @@ namespace RE
 		a_viewOut->Advance(0.0);
 
 		if (a_viewOut->IsAvailable("_root.InitExtensions")) {
-			a_viewOut->Invoke("_root.InitExtensions", 0, 0, 0);
+			a_viewOut->Invoke("_root.InitExtensions", nullptr, nullptr, 0);
 		}
 		a_menu->RefreshPlatform();
 

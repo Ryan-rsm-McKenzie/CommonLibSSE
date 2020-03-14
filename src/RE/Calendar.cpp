@@ -18,20 +18,20 @@ namespace RE
 
 	float Calendar::GetCurrentGameTime() const
 	{
-		return gameDaysPassed ? gameDaysPassed->value : 1.0;
+		return gameDaysPassed ? gameDaysPassed->value : 1.0F;
 	}
 
 
 	float Calendar::GetDay() const
 	{
-		return gameDay ? gameDay->value : 17.0;
+		return gameDay ? gameDay->value : 17.0F;
 	}
 
 
 	std::string Calendar::GetDayName() const
 	{
 		auto gmst = RE::GameSettingCollection::GetSingleton();
-		Setting* setting = 0;
+		Setting* setting = nullptr;
 
 		switch (GetDayOfWeek()) {
 		case Day::kSundas:
@@ -56,7 +56,7 @@ namespace RE
 			setting = gmst->GetSetting("sDaySaturday");
 			break;
 		default:
-			setting = 0;
+			setting = nullptr;
 			break;
 		}
 
@@ -72,32 +72,32 @@ namespace RE
 
 	float Calendar::GetDaysPassed() const
 	{
-		return gameDaysPassed ? gameDaysPassed->value : 1.0;
+		return gameDaysPassed ? gameDaysPassed->value : 1.0F;
 	}
 
 
 	float Calendar::GetHour() const
 	{
-		return gameHour ? gameHour->value : 12.0;
+		return gameHour ? gameHour->value : 12.0F;
 	}
 
 
 	float Calendar::GetHoursPassed() const
 	{
-		return GetDaysPassed() * 24.0;
+		return GetDaysPassed() * 24.0F;
 	}
 
 
 	UInt32 Calendar::GetMonth() const
 	{
-		return gameMonth ? gameMonth->value : 7;
+		return gameMonth ? static_cast<UInt32>(gameMonth->value) : 7;
 	}
 
 
 	std::string Calendar::GetMonthName() const
 	{
 		auto gmst = RE::GameSettingCollection::GetSingleton();
-		Setting* setting = 0;
+		Setting* setting = nullptr;
 
 		switch (GetMonth()) {
 		case Month::kMorningStar:
@@ -137,7 +137,7 @@ namespace RE
 			setting = gmst->GetSetting("sMonthDecember");
 			break;
 		default:
-			setting = 0;
+			setting = nullptr;
 			break;
 		}
 
@@ -151,8 +151,8 @@ namespace RE
 
 		time.tm_sec = 0;
 		time.tm_min = 0;
-		time.tm_hour = GetHour();
-		time.tm_mday = GetDay();
+		time.tm_hour = static_cast<int>(GetHour());
+		time.tm_mday = static_cast<int>(GetDay());
 		time.tm_mon = GetMonth();
 		time.tm_year = GetYear();
 		time.tm_wday = GetDayOfWeek();
@@ -176,6 +176,6 @@ namespace RE
 
 	UInt32 Calendar::GetYear() const
 	{
-		return gameYear ? gameYear->value : 77;
+		return gameYear ? static_cast<UInt32>(gameYear->value) : 77;
 	}
 }

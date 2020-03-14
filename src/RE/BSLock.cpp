@@ -10,7 +10,7 @@ namespace RE
 		semaphore()
 	{
 		memzero(&semaphore);
-		semaphore = CreateSemaphoreA(0, 0, 40, 0);
+		semaphore = CreateSemaphoreA(nullptr, 0, 40, nullptr);
 	}
 
 

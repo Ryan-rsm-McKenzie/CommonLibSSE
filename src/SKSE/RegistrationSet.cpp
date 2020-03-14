@@ -22,7 +22,7 @@ namespace SKSE
 			a_rhs._lock.unlock();
 
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			if (policy) {
 				for (auto& handle : _handles) {
 					policy->PersistHandle(handle);
@@ -45,7 +45,7 @@ namespace SKSE
 		RegistrationSetBase::~RegistrationSetBase()
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			if (policy) {
 				for (auto& handle : _handles) {
 					policy->ReleaseHandle(handle);
@@ -70,7 +70,7 @@ namespace SKSE
 			}
 
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			if (policy) {
 				for (auto& handle : _handles) {
 					policy->PersistHandle(handle);
@@ -104,7 +104,7 @@ namespace SKSE
 		bool RegistrationSetBase::Register(const RE::TESForm* a_form)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			if (!policy) {
 				_ERROR("Failed to get handle policy!");
 				return false;
@@ -133,7 +133,7 @@ namespace SKSE
 		bool RegistrationSetBase::Unregister(const RE::TESForm* a_form)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			if (!policy) {
 				_ERROR("Failed to get handle policy!");
 				return false;
@@ -162,7 +162,7 @@ namespace SKSE
 		void RegistrationSetBase::Clear()
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			Locker locker(_lock);
 			if (policy) {
 				for (auto& handle : _handles) {

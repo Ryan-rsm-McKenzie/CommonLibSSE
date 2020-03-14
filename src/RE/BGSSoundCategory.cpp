@@ -1,17 +1,19 @@
 #include "RE/BGSSoundCategory.h"
 
+#include <numeric>
+
 
 namespace RE
 {
 	float BGSSoundCategory::GetDefaultMenuValue() const
 	{
-		return defaultMenuValue / USHRT_MAX;
+		return static_cast<float>(defaultMenuValue / std::numeric_limits<UInt16>::max());
 	}
 
 
 	float BGSSoundCategory::GetStaticVolumeMultiplier() const
 	{
-		return staticMult / USHRT_MAX;
+		return static_cast<float>(staticMult / std::numeric_limits<UInt16>::max());
 	}
 
 
@@ -23,12 +25,12 @@ namespace RE
 
 	void BGSSoundCategory::SetDefaultMenuValue(float a_val)
 	{
-		defaultMenuValue = static_cast<UInt16>(a_val * USHRT_MAX);
+		defaultMenuValue = static_cast<UInt16>(a_val * std::numeric_limits<UInt16>::max());
 	}
 
 
 	void BGSSoundCategory::SetStaticVolumeMultiplier(float a_val)
 	{
-		staticMult = static_cast<UInt16>(a_val * USHRT_MAX);
+		staticMult = static_cast<UInt16>(a_val * std::numeric_limits<UInt16>::max());
 	}
 }

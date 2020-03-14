@@ -38,22 +38,22 @@ namespace SKSE
 		PluginHandle g_pluginHandle = kInvalidPluginHandle;
 		UInt32 g_releaseIndex = 0;
 
-		ScaleformInterface* g_scaleformInterface = 0;
-		PapyrusInterface* g_papyrusInterface = 0;
-		SerializationInterface* g_serializationInterface = 0;
-		TaskInterface* g_taskInterface = 0;
+		ScaleformInterface* g_scaleformInterface = nullptr;
+		PapyrusInterface* g_papyrusInterface = nullptr;
+		SerializationInterface* g_serializationInterface = nullptr;
+		TaskInterface* g_taskInterface = nullptr;
 
-		MessagingInterface* g_messagingInterface = 0;
-		RE::BSTEventSource<ModCallbackEvent>* g_modCallbackEventSource = 0;
-		RE::BSTEventSource<CameraEvent>* g_cameraEventSource = 0;
-		RE::BSTEventSource<CrosshairRefEvent>* g_crosshairRefEventSource = 0;
-		RE::BSTEventSource<ActionEvent>* g_actionEventSource = 0;
-		RE::BSTEventSource<NiNodeUpdateEvent>* g_niNodeUpdateEventSource = 0;
+		MessagingInterface* g_messagingInterface = nullptr;
+		RE::BSTEventSource<ModCallbackEvent>* g_modCallbackEventSource = nullptr;
+		RE::BSTEventSource<CameraEvent>* g_cameraEventSource = nullptr;
+		RE::BSTEventSource<CrosshairRefEvent>* g_crosshairRefEventSource = nullptr;
+		RE::BSTEventSource<ActionEvent>* g_actionEventSource = nullptr;
+		RE::BSTEventSource<NiNodeUpdateEvent>* g_niNodeUpdateEventSource = nullptr;
 
-		ObjectInterface* g_objectInterface = 0;
-		SKSEDelayFunctorManager* g_delayFunctorManager = 0;
-		SKSEObjectRegistry* g_objectRegistry = 0;
-		SKSEPersistentObjectStorage* g_persistentObjectStorage = 0;
+		ObjectInterface* g_objectInterface = nullptr;
+		SKSEDelayFunctorManager* g_delayFunctorManager = nullptr;
+		SKSEObjectRegistry* g_objectRegistry = nullptr;
+		SKSEPersistentObjectStorage* g_persistentObjectStorage = nullptr;
 
 		Trampoline g_trampoline;
 

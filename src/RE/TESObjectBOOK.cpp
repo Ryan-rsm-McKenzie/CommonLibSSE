@@ -60,6 +60,6 @@ namespace RE
 
 	SpellItem* TESObjectBOOK::GetSpell()
 	{
-		return TeachesSpell() ? data.teaches.spell : 0;
+		return TeachesSpell() ? data.teaches.spell : nullptr;
 	}
 }

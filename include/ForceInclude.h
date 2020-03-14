@@ -25,12 +25,11 @@
 #define FAR
 #define NEAR
 
-#pragma warning(disable : 4018)	 // signed/unsigned mismatch
 #pragma warning(disable : 4200)	 // nonstandard extension used : zero-sized array in struct/union
-#pragma warning(disable : 4244)	 // conversion from 'type1' to 'type2', possible loss of data
-#pragma warning(disable : 4267)	 // conversion from 'size_t' to 'type', possible loss of data
-#pragma warning(disable : 4305)	 // truncation from 'type1' to 'type2'
-#pragma warning(disable : 4312)	 // conversion from 'type1' to 'type2' of greater size
+#pragma warning(disable : 4514)	 // 'function' : unreferenced inline function has been removed
+#pragma warning(disable : 4710)	 // 'function' : function not inlined
+#pragma warning(disable : 4711)	 // function 'function' selected for inline expansion
+#pragma warning(disable : 5045)	 // Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 
 #undef STATIC_ASSERT
 #define STATIC_ASSERT(bool_constexpr) static_assert(bool_constexpr)

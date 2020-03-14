@@ -14,7 +14,7 @@ namespace RE
 	ExtraHealth::ExtraHealth(float a_health) :
 		BSExtraData(),
 		health(a_health),
-		pad14(0.0)
+		pad14(0)
 	{
 		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraHealth::Vtbl);
 		((std::uintptr_t*)this)[0] = vtbl.GetAddress();

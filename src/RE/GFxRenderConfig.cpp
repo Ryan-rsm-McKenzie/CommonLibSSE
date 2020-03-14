@@ -68,7 +68,7 @@ namespace RE
 
 	void GFxRenderConfig::SetMaxCurvePixelError(float a_pixelError)
 	{
-		maxCurvePixelError = std::clamp<float>(a_pixelError, 1e-6, 1e6);
+		maxCurvePixelError = std::clamp<float>(a_pixelError, static_cast<float>(1e-6), static_cast<float>(1e6));
 	}
 
 

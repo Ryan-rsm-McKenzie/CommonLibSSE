@@ -45,7 +45,7 @@ namespace RE
 			varType(std::move(a_rhs.varType)),
 			value(std::move(a_rhs.value.p))
 		{
-			a_rhs.value.p = 0;
+			a_rhs.value.p = nullptr;
 		}
 
 
@@ -79,7 +79,7 @@ namespace RE
 			varType = std::move(a_rhs.varType);
 
 			value.p = std::move(a_rhs.value.p);
-			a_rhs.value.p = 0;
+			a_rhs.value.p = nullptr;
 
 			return *this;
 		}
@@ -301,7 +301,7 @@ namespace RE
 		{
 			Cleanup();
 			varType = a_type;
-			value.p = 0;
+			value.p = nullptr;
 		}
 
 

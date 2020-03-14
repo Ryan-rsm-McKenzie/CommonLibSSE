@@ -130,14 +130,14 @@ namespace RE
 		inline U* Get(const C& a_key)
 		{
 			HashNode* ptr = hash.GetAlt(a_key);
-			return ptr ? &ptr->second : 0;
+			return ptr ? &ptr->second : nullptr;
 		}
 
 
 		inline const U* Get(const C& a_key) const
 		{
 			const HashNode* ptr = hash.GetAlt(a_key);
-			return ptr ? &ptr->second : 0;
+			return ptr ? &ptr->second : nullptr;
 		}
 
 
@@ -145,7 +145,7 @@ namespace RE
 		inline U* GetAlt(const K& a_key)
 		{
 			HashNode* ptr = hash.GetAlt(a_key);
-			return ptr ? &ptr->second : 0;
+			return ptr ? &ptr->second : nullptr;
 		}
 
 
@@ -153,7 +153,7 @@ namespace RE
 		inline const U* GetAlt(const K& a_key) const
 		{
 			const HashNode* ptr = hash.GetAlt(a_key);
-			return ptr ? &ptr->second : 0;
+			return ptr ? &ptr->second : nullptr;
 		}
 
 

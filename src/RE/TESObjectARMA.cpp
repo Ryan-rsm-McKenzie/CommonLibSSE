@@ -48,9 +48,9 @@ namespace RE
 
 	void TESObjectARMA::GetNodeName(char* a_dstBuff, TESObjectREFR* a_refr, TESObjectARMO* a_armor, float a_weightOverride)
 	{
-		float weight = 100.0;
+		float weight = 100.0F;
 		auto baseObj = a_refr->GetBaseObject();
-		auto npc = baseObj ? baseObj->As<TESNPC>() : 0;
+		auto npc = baseObj ? baseObj->As<TESNPC>() : nullptr;
 		if (npc) {
 			npc = npc->GetRootFaceNPC();
 			weight = npc->weight;
@@ -59,8 +59,8 @@ namespace RE
 		}
 
 		// Determines whether to factor weight into the name, -1 true, 1 false
-		if (a_weightOverride >= 0.0) {
-			weight = a_weightOverride * 100.0;
+		if (a_weightOverride >= 0.0F) {
+			weight = a_weightOverride * 100.0F;
 		}
 
 		UInt32 sex = npc ? static_cast<UInt32>(npc->GetSex()) : 0;

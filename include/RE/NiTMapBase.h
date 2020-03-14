@@ -72,14 +72,14 @@ namespace RE
 				_idx(std::move(a_rhs._idx))
 			{
 				assert(_proxy);
-				a_rhs._iter = 0;
+				a_rhs._iter = nullptr;
 				a_rhs._idx = a_rhs._proxy->_capacity;
 			}
 
 
 			iterator_base(NiTMapBase* a_proxy, UInt32 a_idx) :
 				_proxy(a_proxy),
-				_iter(0),
+				_iter(nullptr),
 				_idx(a_idx)
 			{
 				assert(_proxy);
@@ -240,7 +240,7 @@ namespace RE
 			clear();
 			if (_data) {
 				free(_data);
-				_data = 0;
+				_data = nullptr;
 			}
 			_capacity = 0;
 		}

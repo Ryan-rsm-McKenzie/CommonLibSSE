@@ -33,25 +33,25 @@ namespace RE
 		}
 
 
-		ErrorCode Location::DoCreateAsyncStream(const char* a_path, BSTSmartPointer<AsyncStream>& a_out, Location*& a_location, bool a_createFile)
+		ErrorCode Location::DoCreateAsyncStream(const char*, BSTSmartPointer<AsyncStream>&, Location*&, bool)
 		{
 			return ErrorCode::kUnsupported;
 		}
 
 
-		ErrorCode Location::DoGetInfo1(const char* a_path, Info& a_info, Location*& a_location)
+		ErrorCode Location::DoGetInfo1(const char*, Info&, Location*&)
 		{
 			return ErrorCode::kUnsupported;
 		}
 
 
-		ErrorCode Location::DoGetInfo2(const char* a_path, Info& a_info, LocationTraverser* a_traverser)
+		ErrorCode Location::DoGetInfo2(const char*, Info&, LocationTraverser*)
 		{
 			return ErrorCode::kUnsupported;
 		}
 
 
-		ErrorCode Location::DoDelete(const char* a_path)
+		ErrorCode Location::DoDelete(const char*)
 		{
 			return ErrorCode::kUnsupported;
 		}
@@ -59,7 +59,7 @@ namespace RE
 
 		const char* Location::DoGetName() const
 		{
-			return 0;
+			return nullptr;
 		}
 
 

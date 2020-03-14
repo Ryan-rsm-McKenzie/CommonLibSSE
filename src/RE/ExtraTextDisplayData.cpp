@@ -9,10 +9,10 @@ namespace RE
 	ExtraTextDisplayData::ExtraTextDisplayData() :
 		BSExtraData(),
 		displayName(""),
-		displayNameText(0),
-		ownerQuest(0),
+		displayNameText(nullptr),
+		ownerQuest(nullptr),
 		ownerInstance(DisplayDataType::kUninitialized),
-		temperFactor(1.0),
+		temperFactor(1.0F),
 		customNameLength(0),
 		pad32(0),
 		pad34(0)
@@ -25,10 +25,10 @@ namespace RE
 	ExtraTextDisplayData::ExtraTextDisplayData(const char* a_name) :
 		BSExtraData(),
 		displayName(""),
-		displayNameText(0),
-		ownerQuest(0),
+		displayNameText(nullptr),
+		ownerQuest(nullptr),
 		ownerInstance(DisplayDataType::kUninitialized),
-		temperFactor(1.0),
+		temperFactor(1.0F),
 		customNameLength(0),
 		pad32(0),
 		pad34(0)
@@ -42,10 +42,10 @@ namespace RE
 	ExtraTextDisplayData::ExtraTextDisplayData(TESForm* a_form, float a_temperFactor) :
 		BSExtraData(),
 		displayName(""),
-		displayNameText(0),
-		ownerQuest(0),
+		displayNameText(nullptr),
+		ownerQuest(nullptr),
 		ownerInstance(DisplayDataType::kUninitialized),
-		temperFactor(1.0),
+		temperFactor(1.0F),
 		customNameLength(0),
 		pad32(0),
 		pad34(0)
@@ -83,8 +83,8 @@ namespace RE
 		}
 
 		displayName = a_name;
-		customNameLength = displayName.length();
+		customNameLength = static_cast<UInt16>(displayName.length());
 		ownerInstance = DisplayDataType::kCustomName;
-		temperFactor = 1.0;
+		temperFactor = 1.0F;
 	}
 }

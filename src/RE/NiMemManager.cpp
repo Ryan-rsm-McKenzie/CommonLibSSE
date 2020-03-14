@@ -15,9 +15,9 @@ namespace RE
 
 	void* NiMemManager::Allocate(std::size_t a_sizeInBytes, std::size_t a_alignment, NiMemEventType a_eventType, bool a_provideAccurateSizeOnDeallocate, const char* a_sourceFile, SInt32 a_sourceLine, const char* a_function)
 	{
-		assert(allocator != 0);
+		assert(allocator != nullptr);
 		auto mem = allocator->Allocate(a_sizeInBytes, a_alignment, a_eventType, a_provideAccurateSizeOnDeallocate, a_sourceFile, a_sourceLine, a_function);
-		assert(mem != 0);
+		assert(mem != nullptr);
 		return mem;
 	}
 
@@ -31,9 +31,9 @@ namespace RE
 
 	void* NiMemManager::Reallocate(void* a_mem, std::size_t a_sizeInBytes, std::size_t a_alignment, NiMemEventType a_eventType, bool a_provideAccurateSizeOnDeallocate, std::size_t a_sizeCurrent, const char* a_sourceFile, SInt32 a_sourceLine, const char* a_function)
 	{
-		assert(allocator != 0);
+		assert(allocator != nullptr);
 		auto mem = allocator->Reallocate(a_mem, a_sizeInBytes, a_alignment, a_eventType, a_provideAccurateSizeOnDeallocate, a_sizeCurrent, a_sourceFile, a_sourceLine, a_function);
-		assert(mem != 0);
+		assert(mem != nullptr);
 		return mem;
 	}
 

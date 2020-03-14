@@ -22,7 +22,7 @@ namespace RE
 
 	void FxDelegateArgs::Respond(FxResponseArgsBase& a_params) const
 	{
-		GFxValue* values = 0;
+		GFxValue* values = nullptr;
 		UInt32 numValues = a_params.GetValues(&values);
 		values[0] = _responseID;
 		_movieView->InvokeNoReturn("respond", values, numValues);

@@ -9,7 +9,7 @@ namespace RE
 	BSResourceNiBinaryStream::BSResourceNiBinaryStream() :
 		NiBinaryStream(),
 		stream(nullptr),
-		buffer(0),
+		buffer(nullptr),
 		streamPos(0),
 		lastError(BSResource::ErrorCode::kNone)
 	{}
@@ -18,7 +18,7 @@ namespace RE
 	BSResourceNiBinaryStream::BSResourceNiBinaryStream(const char* a_fileName) :
 		NiBinaryStream(),
 		stream(0),
-		buffer(0),
+		buffer(nullptr),
 		streamPos(0),
 		lastError(BSResource::ErrorCode::kNone)
 	{

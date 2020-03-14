@@ -1,12 +1,24 @@
 #include "RE/TESCondition.h"
 
-#include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
 
 namespace RE
 {
-	TESCondition::ComparisonFlags::ComparisonFlags() :
+	FUNCTION_DATA::FUNCTION_DATA() :
+		function(static_cast<FunctionID>(-1)),
+		pad02(0),
+		pad04(0),
+		params{ nullptr }
+	{}
+
+
+	CONDITION_ITEM_DATA::GlobalOrFloat::GlobalOrFloat() :
+		g(nullptr)
+	{}
+
+
+	CONDITION_ITEM_DATA::Flags::Flags() :
 		isOR(false),
 		usesAliases(false),
 		global(false),
@@ -16,27 +28,40 @@ namespace RE
 	{}
 
 
-	TESCondition::Node::Node() :
-		next(0),
-		comparisonValue(0.0),
-		unk0C(0),
-		handle(),
-		unk14(0),
-		functionID(static_cast<FunctionID>(-1)),
-		unk1A(0),
-		unk1B(0),
-		pad1C(0),
-		param1(0),
-		param2(0),
-		comparisonFlags(),
-		referenceType(ReferenceType::kSubject),
+	CONDITION_ITEM_DATA::CONDITION_ITEM_DATA() :
+		comparisonValue(),
+		runOnRef(),
+		dataID(0),
+		functionData(),
+		flags(),
+		object(CONDITIONITEMOBJECT::kSelf),
 		pad32(0),
 		pad34(0)
 	{}
 
 
+	TESConditionItem::TESConditionItem() :
+		next(nullptr),
+		data()
+	{}
+
+
+	bool TESConditionItem::operator()(ConditionCheckParams& a_solution) const
+	{
+		return IsTrue(a_solution);
+	}
+
+
+	bool TESConditionItem::IsTrue(ConditionCheckParams& a_solution) const
+	{
+		using func_t = decltype(&TESConditionItem::IsTrue);
+		REL::Offset<func_t> func = REL::ID(29090);
+		return func(this, a_solution);
+	}
+
+
 	TESCondition::TESCondition() :
-		head(0)
+		head(nullptr)
 	{}
 
 
@@ -48,28 +73,26 @@ namespace RE
 			delete cur;
 			cur = next;
 		}
-		head = 0;
-	}
-
-
-	bool TESCondition::Node::Run(Solution& a_solution)
-	{
-		using func_t = decltype(&TESCondition::Node::Run);
-		REL::Offset<func_t> func(Offset::TESCondition::Node::Run);
-		return func(this, a_solution);
+		head = nullptr;
 	}
 
 
 	TESCondition::operator bool() const
 	{
-		return head != 0;
+		return head != nullptr;
 	}
 
 
-	bool TESCondition::Run(TESObjectREFR* a_perkOwner, TESObjectREFR* a_target)
+	bool TESCondition::operator()(TESObjectREFR* a_actionRef, TESObjectREFR* a_targetRef) const
 	{
-		using func_t = decltype(&TESCondition::Run);
-		REL::Offset<func_t> func(Offset::TESCondition::Run);
-		return func(this, a_perkOwner, a_target);
+		return IsTrue(a_actionRef, a_targetRef);
+	}
+
+
+	bool TESCondition::IsTrue(TESObjectREFR* a_actionRef, TESObjectREFR* a_targetRef) const
+	{
+		using func_t = decltype(&TESCondition::IsTrue);
+		REL::Offset<func_t> func = REL::ID(29074);
+		return func(this, a_actionRef, a_targetRef);
 	}
 }

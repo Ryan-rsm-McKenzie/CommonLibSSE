@@ -11,13 +11,13 @@ namespace RE
 {
 	float AIProcess::GetCachedHeight() const
 	{
-		return high ? high->cachedActorHeight : -1.0;
+		return high ? high->cachedActorHeight : static_cast<float>(-1.0);
 	}
 
 
 	bhkCharacterController* AIProcess::GetCharController()
 	{
-		return middleHigh ? middleHigh->charController.get() : 0;
+		return middleHigh ? middleHigh->charController.get() : nullptr;
 	}
 
 

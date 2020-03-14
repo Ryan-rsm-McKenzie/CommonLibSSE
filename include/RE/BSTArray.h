@@ -172,7 +172,7 @@ namespace RE
 		{
 			if (a_size > BUFFER_SIZE) {
 				auto mem = malloc(a_size);
-				assert(mem != 0);
+				assert(mem != nullptr);
 				std::memset(mem, 0, a_size);
 				return mem;
 			} else {
@@ -645,7 +645,7 @@ namespace RE
 
 		void change_capacity(size_type a_newCapacity)
 		{
-			auto newData = a_newCapacity > 0 ? allocate(a_newCapacity) : 0;
+			auto newData = a_newCapacity > 0 ? allocate(a_newCapacity) : nullptr;
 			auto oldData = data();
 			if (oldData) {
 				auto oldCapacity = capacity();

@@ -78,7 +78,7 @@ namespace RE
 		void* UnpackHandle(const Variable* a_src, VMTypeID a_typeID)
 		{
 			auto object = a_src->GetObject();
-			return object ? object->Resolve(a_typeID) : 0;
+			return object ? object->Resolve(a_typeID) : nullptr;
 		}
 	}
 }

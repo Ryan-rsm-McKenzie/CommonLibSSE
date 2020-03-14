@@ -7,7 +7,7 @@
 namespace RE
 {
 	ExtraPoison::ExtraPoison() :
-		ExtraPoison(0, 0)
+		ExtraPoison(nullptr, 0)
 	{}
 
 

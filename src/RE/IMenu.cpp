@@ -62,7 +62,7 @@ namespace RE
 		if (view) {
 			GFxValue currentTime(static_cast<double>(a_currentTime));
 			view->SetVariable("CurrentTime", &currentTime, GFxMovie::SetVarType::kNormal);
-			view->Advance(currentTime.GetNumber());
+			view->Advance(static_cast<float>(currentTime.GetNumber()));
 		}
 	}
 
@@ -91,7 +91,7 @@ namespace RE
 			args[0].SetNumber(platform);
 			bool swapPS3 = false;
 			args[1].SetBoolean(swapPS3);
-			view->Invoke("_root.SetPlatform", 0, args, std::extent<decltype(args)>::value);
+			view->Invoke("_root.SetPlatform", nullptr, args, std::extent<decltype(args)>::value);
 		}
 
 		if (UpdateUsesCursor()) {
@@ -106,7 +106,7 @@ namespace RE
 				messageID = ui->IsMenuOpen(uiStr->cursorMenu) ? Message::kUpdate : Message::kShow;
 			}
 			auto messageQueue = UIMessageQueue::GetSingleton();
-			messageQueue->AddMessage(uiStr->cursorMenu, messageID, 0);
+			messageQueue->AddMessage(uiStr->cursorMenu, messageID, nullptr);
 		}
 	}
 

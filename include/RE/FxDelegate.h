@@ -21,6 +21,14 @@ namespace RE
 
 		struct CallbackDefn
 		{
+		public:
+			inline CallbackDefn() :
+				handler(nullptr),
+				callback(nullptr)
+			{}
+
+
+			// members
 			GPtr<FxDelegateHandler>		   handler;	  // 00
 			FxDelegateHandler::CallbackFn* callback;  // 08
 		};

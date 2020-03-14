@@ -7,7 +7,8 @@ namespace RE
 {
 	GFxResource::GFxResource() :
 		_refCount(1),
-		_lib(0)
+		_pad14(0),
+		_lib(nullptr)
 	{}
 
 
@@ -29,7 +30,7 @@ namespace RE
 
 	GFxResourceReport* GFxResource::GetResourceReport()
 	{
-		return 0;
+		return nullptr;
 	}
 
 
@@ -58,7 +59,7 @@ namespace RE
 
 	void GFxResource::SetOwnerResourceLib(GFxResourceLibBase* a_lib)
 	{
-		assert((_lib == 0) || (a_lib == 0));
+		assert((_lib == nullptr) || (a_lib == nullptr));
 		_lib = a_lib;
 	}
 

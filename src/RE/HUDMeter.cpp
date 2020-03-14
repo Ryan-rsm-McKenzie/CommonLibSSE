@@ -19,7 +19,7 @@ namespace RE
 	}
 
 
-	bool HUDMeter::ProcessMessage(UIMessage* a_message)
+	bool HUDMeter::ProcessMessage(UIMessage*)
 	{
 		return false;
 	}
@@ -41,7 +41,7 @@ namespace RE
 				args[0].SetNumber(fill);
 				args[1].SetBoolean(a_forceUpdate);
 				if (root.IsDisplayObject()) {
-					root.Invoke(setPctName.c_str(), 0, args, 2);
+					root.Invoke(setPctName.c_str(), nullptr, args, 2);
 				}
 			}
 		}

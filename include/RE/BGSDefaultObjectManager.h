@@ -465,11 +465,11 @@ namespace RE
 	{
 		auto obj = GetObject(a_idx);
 		if (obj) {
-			bool isType = obj->Is(static_cast<FormType>(T::FORMTYPE));
+			bool isType = obj->Is(T::FORMTYPE);
 			assert(isType);
-			return isType ? static_cast<T*>(obj) : 0;
+			return isType ? static_cast<T*>(obj) : nullptr;
 		} else {
-			return 0;
+			return nullptr;
 		}
 	}
 }

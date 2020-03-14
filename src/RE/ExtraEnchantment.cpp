@@ -7,7 +7,7 @@
 namespace RE
 {
 	ExtraEnchantment::ExtraEnchantment() :
-		ExtraEnchantment(0, 0)
+		ExtraEnchantment(nullptr, 0)
 	{}
 
 

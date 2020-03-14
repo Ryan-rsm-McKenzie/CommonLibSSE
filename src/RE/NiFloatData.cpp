@@ -6,7 +6,7 @@ namespace RE
 	NiFloatData::NiFloatData() :
 		numKeys(0),
 		pad14(0),
-		keys(0),
+		keys(nullptr),
 		type(KeyType::kNoInterp),
 		keySize(0),
 		pad25(0),

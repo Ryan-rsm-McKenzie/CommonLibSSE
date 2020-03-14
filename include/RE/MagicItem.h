@@ -109,7 +109,7 @@ namespace RE
 		virtual void					 InitChunk() = 0;										// 70
 
 		float		CalculateMagickaCost(Actor* a_caster) const;
-		float		CalculateTotalGoldValue(Actor* a_caster = 0) const;
+		float		CalculateTotalGoldValue(Actor* a_caster = nullptr) const;
 		Effect*		GetCostliestEffectItem(UInt32 a_arg1 = 5, bool a_arg2 = false);
 		Data*		GetData();
 		const Data* GetData() const;

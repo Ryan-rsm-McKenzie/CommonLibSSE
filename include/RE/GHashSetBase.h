@@ -27,7 +27,7 @@ namespace RE
 		{
 		public:
 			const_iterator() :
-				hash(0),
+				hash(nullptr),
 				index(0)
 			{}
 
@@ -101,7 +101,7 @@ namespace RE
 		{
 		public:
 			iterator() :
-				const_iterator(0, 0)
+				const_iterator(nullptr, 0)
 			{}
 
 
@@ -184,7 +184,7 @@ namespace RE
 
 
 		GHashSetBase() :
-			table(0)
+			table(nullptr)
 		{}
 
 
@@ -226,7 +226,7 @@ namespace RE
 				}
 
 				Allocator::Free(table);
-				table = 0;
+				table = nullptr;
 			}
 		}
 
@@ -257,7 +257,7 @@ namespace RE
 				}
 
 				Allocator::Free(table);
-				table = 0;
+				table = nullptr;
 			}
 		}
 
@@ -371,24 +371,24 @@ namespace RE
 
 
 		template <class K>
+		C* GetAlt(const K& a_key)
+		{
+			SPInt index = FindIndexAlt(a_key);
+			if (index >= 0)
+				return &E(index).value;
+			return nullptr;
+		}
+
+
+		template <class K>
 		const C* GetAlt(const K& a_key) const
 		{
 			SPInt index = FindIndexAlt(a_key);
 			if (index >= 0) {
 				return &E(index).value;
 			} else {
-				return 0;
+				return nullptr;
 			}
-		}
-
-
-		template <class K>
-		C* GetAlt(const K& a_key)
-		{
-			SPInt index = FindIndexAlt(a_key);
-			if (index >= 0)
-				return &E(index).value;
-			return 0;
 		}
 
 
@@ -678,7 +678,7 @@ namespace RE
 
 			// Steal newHash's data.
 			table = newHash.table;
-			newHash.table = 0;
+			newHash.table = nullptr;
 		}
 
 

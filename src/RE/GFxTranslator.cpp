@@ -8,9 +8,9 @@
 namespace RE
 {
 	GFxTranslator::TranslateInfo::TranslateInfo() :
-		key(0),
-		result(0),
-		instanceName(0),
+		key(nullptr),
+		result(nullptr),
+		instanceName(nullptr),
 		flags(Flag::kNone),
 		pad19(0),
 		pad1A(0),
@@ -80,7 +80,7 @@ namespace RE
 	}
 
 
-	void GFxTranslator::Translate(TranslateInfo* a_translateInfo)
+	void GFxTranslator::Translate(TranslateInfo*)
 	{
 		return;
 	}

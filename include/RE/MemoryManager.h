@@ -80,7 +80,7 @@ namespace RE
 	{
 		auto heap = MemoryManager::GetSingleton();
 		auto mem = heap->Allocate(a_size, 0, false);
-		assert(mem != 0);
+		assert(mem != nullptr);
 		return mem;
 	}
 
@@ -103,7 +103,7 @@ namespace RE
 	{
 		auto heap = MemoryManager::GetSingleton();
 		auto mem = heap->Allocate(a_size, static_cast<SInt32>(a_alignment), true);
-		assert(mem != 0);
+		assert(mem != nullptr);
 		return mem;
 	}
 
@@ -146,7 +146,7 @@ namespace RE
 	{
 		auto heap = MemoryManager::GetSingleton();
 		auto mem = heap->Reallocate(a_ptr, a_newSize, 0, false);
-		assert(mem != 0);
+		assert(mem != nullptr);
 		return mem;
 	}
 
@@ -161,8 +161,8 @@ namespace RE
 	inline void* aligned_realloc(void* a_ptr, std::size_t a_newSize, std::size_t a_alignment)
 	{
 		auto heap = MemoryManager::GetSingleton();
-		auto mem = heap->Reallocate(a_ptr, a_newSize, a_alignment, true);
-		assert(mem != 0);
+		auto mem = heap->Reallocate(a_ptr, a_newSize, static_cast<SInt32>(a_alignment), true);
+		assert(mem != nullptr);
 		return mem;
 	}
 
@@ -176,7 +176,7 @@ namespace RE
 
 	inline void free(void* a_ptr)
 	{
-		assert(a_ptr != 0);
+		assert(a_ptr != nullptr);
 		auto heap = MemoryManager::GetSingleton();
 		heap->Deallocate(a_ptr, false);
 	}
@@ -184,7 +184,7 @@ namespace RE
 
 	inline void aligned_free(void* a_ptr)
 	{
-		assert(a_ptr != 0);
+		assert(a_ptr != nullptr);
 		auto heap = MemoryManager::GetSingleton();
 		heap->Deallocate(a_ptr, true);
 	}
@@ -245,7 +245,7 @@ namespace RE
 
 
 		explicit SimpleArray(size_type a_count) :
-			_data(0)
+			_data(nullptr)
 		{
 			resize(a_count);
 		}
@@ -300,25 +300,25 @@ namespace RE
 
 		T* data()
 		{
-			return _data ? _data->entries : 0;
+			return _data ? _data->entries : nullptr;
 		}
 
 
 		const T* data() const
 		{
-			return _data ? _data->entries : 0;
+			return _data ? _data->entries : nullptr;
 		}
 
 
 		iterator begin()
 		{
-			return _data ? std::addressof(_data->entries[0]) : 0;
+			return _data ? std::addressof(_data->entries[0]) : nullptr;
 		}
 
 
 		const_iterator begin() const
 		{
-			return _data ? std::addressof(_data->entries[0]) : 0;
+			return _data ? std::addressof(_data->entries[0]) : nullptr;
 		}
 
 
@@ -330,13 +330,13 @@ namespace RE
 
 		iterator end()
 		{
-			return _data ? std::addressof(_data->entries[size()]) : 0;
+			return _data ? std::addressof(_data->entries[size()]) : nullptr;
 		}
 
 
 		const_iterator end() const
 		{
-			return _data ? std::addressof(_data->entries[size()]) : 0;
+			return _data ? std::addressof(_data->entries[size()]) : nullptr;
 		}
 
 
@@ -365,7 +365,7 @@ namespace RE
 					elem.~value_type();
 				}
 				free(get_head());
-				_data = 0;
+				_data = nullptr;
 			}
 		}
 
@@ -396,7 +396,7 @@ namespace RE
 	protected:
 		Head* get_head() const
 		{
-			assert(_data != 0);
+			assert(_data != nullptr);
 			return reinterpret_cast<Head*>(_data) - 1;
 		}
 

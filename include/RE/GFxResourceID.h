@@ -62,8 +62,7 @@ namespace RE
 
 	protected:
 		// members
-		UInt32 id;	  // 0
-		UInt32 pad4;  // 4
+		UInt32 id;	// 0
 	};
-	STATIC_ASSERT(sizeof(GFxResourceID) == 0x8);
+	STATIC_ASSERT(sizeof(GFxResourceID) == 0x4);
 }

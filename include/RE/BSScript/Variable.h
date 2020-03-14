@@ -23,7 +23,7 @@ namespace RE
 		public:
 			union Value
 			{
-				Value(void* a_val = 0);
+				Value(void* a_val = nullptr);
 				~Value();
 
 

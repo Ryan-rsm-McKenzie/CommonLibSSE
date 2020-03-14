@@ -7,7 +7,7 @@
 namespace RE
 {
 	ExtraOwnership::ExtraOwnership() :
-		ExtraOwnership(0)
+		ExtraOwnership(nullptr)
 	{}
 
 

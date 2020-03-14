@@ -5,6 +5,6 @@ namespace RE
 {
 	float TESObjectARMO::GetArmorRating()
 	{
-		return armorRating / 100;
+		return static_cast<float>(armorRating) / static_cast<float>(100.0);
 	}
 }

@@ -234,7 +234,7 @@ namespace REL
 			return;
 		}
 
-		if (!GetFileVersionInfoA(fileName, 0, buf.size(), buf.data())) {
+		if (!GetFileVersionInfoA(fileName, 0, static_cast<DWORD>(buf.size()), buf.data())) {
 			assert(false);
 			return;
 		}
@@ -617,7 +617,7 @@ namespace REL
 			}
 		}
 
-		return 0;
+		return nullptr;
 	}
 
 
@@ -636,6 +636,6 @@ namespace REL
 			}
 		}
 
-		return 0;
+		return nullptr;
 	}
 }

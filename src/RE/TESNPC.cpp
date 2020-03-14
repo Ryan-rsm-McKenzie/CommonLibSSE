@@ -8,8 +8,8 @@
 namespace RE
 {
 	TESNPC::HeadRelatedData::HeadRelatedData() :
-		hairColor(0),
-		faceDetails(0)
+		hairColor(nullptr),
+		faceDetails(nullptr)
 	{}
 
 
@@ -65,7 +65,7 @@ namespace RE
 				}
 			}
 		}
-		return 0;
+		return nullptr;
 	}
 
 
@@ -122,7 +122,7 @@ namespace RE
 
 	float TESNPC::Layer::GetInterpolationValue() const
 	{
-		return static_cast<float>(interpolationValue) / 100.0;
+		return static_cast<float>(interpolationValue) / static_cast<float>(100.0);
 	}
 
 

@@ -17,19 +17,21 @@ namespace RE
 	}
 
 
-	[[nodiscard]] bool hkStringPtr::empty() const noexcept
+	bool hkStringPtr::empty() const noexcept
 	{
 		return !_data || _data[0] == '\0';
 	}
 
 
-	hkStringPtr::size_type hkStringPtr::size() const noexcept
+	auto hkStringPtr::size() const
+		-> size_type
 	{
-		return std::strlen(data());
+		return static_cast<size_type>(std::strlen(data()));
 	}
 
 
-	hkStringPtr::size_type hkStringPtr::length() const noexcept
+	auto hkStringPtr::length() const
+		-> size_type
 	{
 		return size();
 	}

@@ -20,6 +20,6 @@ namespace RE
 				return setting;
 			}
 		}
-		return 0;
+		return nullptr;
 	}
 }

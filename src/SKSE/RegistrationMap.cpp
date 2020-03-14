@@ -42,7 +42,7 @@ namespace SKSE
 		RegistrationMapBase::~RegistrationMapBase()
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			if (policy) {
 				for (auto& reg : _regs) {
 					policy->ReleaseHandle(reg.first);
@@ -66,7 +66,7 @@ namespace SKSE
 			}
 
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			if (policy) {
 				for (auto& reg : _regs) {
 					policy->PersistHandle(reg.first);
@@ -98,7 +98,7 @@ namespace SKSE
 		bool RegistrationMapBase::Register(const RE::TESForm* a_form, RE::BSFixedString a_callback)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			if (!policy) {
 				_ERROR("Failed to get handle policy!");
 				return false;
@@ -127,7 +127,7 @@ namespace SKSE
 		bool RegistrationMapBase::Unregister(const RE::TESForm* a_form)
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			if (!policy) {
 				_ERROR("Failed to get handle policy!");
 				return false;
@@ -156,7 +156,7 @@ namespace SKSE
 		void RegistrationMapBase::Clear()
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			Locker locker(_lock);
 			if (policy) {
 				for (auto& reg : _regs) {
@@ -195,8 +195,7 @@ namespace SKSE
 				}
 
 				size = reg.second.size() + 1;
-				if (!a_intfc->WriteRecordData(size) ||
-					!a_intfc->WriteRecordData(reg.second.data(), size)) {
+				if (!a_intfc->WriteRecordData(size) || !a_intfc->WriteRecordData(reg.second.data(), static_cast<UInt32>(size))) {
 					_ERROR("Failed to save reg (%u: %s)!", reg.first, reg.second.c_str());
 					return false;
 				}
@@ -220,7 +219,7 @@ namespace SKSE
 				a_intfc->ReadRecordData(handle);
 				a_intfc->ReadRecordData(size);
 				evnName.reserve(size);
-				a_intfc->ReadRecordData(evnName.data(), size);
+				a_intfc->ReadRecordData(evnName.data(), static_cast<UInt32>(size));
 				if (!a_intfc->ResolveHandle(handle, handle)) {
 					_WARNING("Failed to resolve handle (%u: %s)", handle, evnName.c_str());
 				} else {

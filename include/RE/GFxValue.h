@@ -300,7 +300,8 @@ namespace RE
 		union ValueUnion
 		{
 			constexpr ValueUnion() :
-				obj(0) {}
+				obj(nullptr)
+			{}
 
 			double			number;
 			bool			boolean;

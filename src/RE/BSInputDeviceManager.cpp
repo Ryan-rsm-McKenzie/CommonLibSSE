@@ -21,7 +21,7 @@ namespace RE
 	BSPCGamepadDeviceDelegate* BSInputDeviceManager::GetGamepad()
 	{
 		auto handler = GetGamepadHandler();
-		return handler ? handler->currentPCGamePadDelegate : 0;
+		return handler ? handler->currentPCGamePadDelegate : nullptr;
 	}
 
 

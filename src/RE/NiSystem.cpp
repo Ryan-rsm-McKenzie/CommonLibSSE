@@ -58,7 +58,7 @@ namespace RE
 		auto result = vsnprintf_s(a_dest, a_destSize, a_count, a_format, a_args);
 
 		if (result < -1 && !truncate) {
-			result = a_count;
+			result = static_cast<int>(a_count);
 		}
 
 		return result;

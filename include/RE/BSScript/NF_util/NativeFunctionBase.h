@@ -29,7 +29,7 @@ namespace RE
 
 
 				NativeFunctionBase() = delete;
-				explicit NativeFunctionBase(const char* a_fnName, const char* a_className, bool a_isStatic, UInt32 a_numParams);
+				explicit NativeFunctionBase(const char* a_fnName, const char* a_className, bool a_isStatic, UInt16 a_numParams);
 				virtual ~NativeFunctionBase() = default;  // 00
 
 				// override (IFunction)

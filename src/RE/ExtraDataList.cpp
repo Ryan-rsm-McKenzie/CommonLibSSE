@@ -22,8 +22,8 @@
 namespace RE
 {
 	ExtraDataList::ExtraDataList() :
-		_data(0),
-		_presence(0),
+		_data(nullptr),
+		_presence(nullptr),
 		_lock()
 	{}
 
@@ -35,10 +35,10 @@ namespace RE
 			_data = xData->next;
 			delete xData;
 		}
-		_data = 0;
+		_data = nullptr;
 
 		free(_presence);
-		_presence = 0;
+		_presence = nullptr;
 	}
 
 
@@ -62,13 +62,13 @@ namespace RE
 
 	ExtraDataList::iterator ExtraDataList::end()
 	{
-		return iterator(0);
+		return iterator(nullptr);
 	}
 
 
 	ExtraDataList::const_iterator ExtraDataList::cend() const
 	{
-		return const_iterator(0);
+		return const_iterator(nullptr);
 	}
 
 
@@ -98,7 +98,7 @@ namespace RE
 		BSReadLockGuard locker(_lock);
 
 		if (!HasType(a_type)) {
-			return 0;
+			return nullptr;
 		}
 
 		for (auto iter = _data; iter; iter = iter->next) {
@@ -107,7 +107,7 @@ namespace RE
 			}
 		}
 
-		return 0;
+		return nullptr;
 	}
 
 
@@ -185,7 +185,7 @@ namespace RE
 
 	const char* ExtraDataList::GenerateName(TESForm* a_form)
 	{
-		const char* result = 0;
+		const char* result = nullptr;
 		float health = 1.0;
 
 		auto xHealth = GetByType<ExtraHealth>();
@@ -233,7 +233,7 @@ namespace RE
 	BGSEncounterZone* ExtraDataList::GetEncounterZone()
 	{
 		auto xZone = GetByType<ExtraEncounterZone>();
-		return xZone ? xZone->zone : 0;
+		return xZone ? xZone->zone : nullptr;
 	}
 
 
@@ -241,14 +241,14 @@ namespace RE
 	{
 		auto xRef = GetByType<ExtraReferenceHandle>();
 		if (!xRef) {
-			return 0;
+			return nullptr;
 		}
 
 		auto ref = xRef->GetOriginalReference();
 		if (!ref || !ref->IsDeleted()) {
 			return GetByType<ExtraTextDisplayData>();
 		} else {
-			return 0;
+			return nullptr;
 		}
 	}
 
@@ -259,10 +259,10 @@ namespace RE
 
 		auto xLinkedRef = GetByType<ExtraLinkedRef>();
 		if (!xLinkedRef) {
-			return 0;
+			return nullptr;
 		}
 
-		TESObjectREFR* linkedRef = 0;
+		TESObjectREFR* linkedRef = nullptr;
 		for (auto& entry : xLinkedRef->linkedRefs) {
 			if (entry.keyword == a_keyword) {
 				linkedRef = entry.refr;
@@ -284,7 +284,7 @@ namespace RE
 	TESForm* ExtraDataList::GetOwner()
 	{
 		auto xOwner = GetByType<ExtraOwnership>();
-		return xOwner ? xOwner->owner : 0;
+		return xOwner ? xOwner->owner : nullptr;
 	}
 
 

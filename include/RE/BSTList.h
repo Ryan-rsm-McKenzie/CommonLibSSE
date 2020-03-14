@@ -25,7 +25,7 @@ namespace RE
 		{
 			Node() :
 				item{},
-				next(0)
+				next(nullptr)
 			{}
 
 
@@ -45,19 +45,19 @@ namespace RE
 				item(std::move(a_rhs.item)),
 				next(std::move(a_rhs.next))
 			{
-				a_rhs.next = 0;
+				a_rhs.next = nullptr;
 			}
 
 
 			Node(const value_type& a_value) :
 				item(a_value),
-				next(0)
+				next(nullptr)
 			{}
 
 
 			Node(value_type&& a_value) :
 				item(std::move(a_value)),
-				next(0)
+				next(nullptr)
 			{}
 
 
@@ -120,7 +120,7 @@ namespace RE
 
 			iterator_base(Node* a_node) :
 				_cur(a_node),
-				_managed(0)
+				_managed(nullptr)
 			{}
 
 
@@ -144,8 +144,8 @@ namespace RE
 				_cur(std::move(a_rhs._cur)),
 				_managed(std::move(a_rhs._managed))
 			{
-				a_rhs._cur = 0;
-				a_rhs._managed = 0;
+				a_rhs._cur = nullptr;
+				a_rhs._managed = nullptr;
 			}
 
 
@@ -383,19 +383,19 @@ namespace RE
 
 		iterator end() noexcept
 		{
-			return iterator(0);
+			return iterator(nullptr);
 		}
 
 
 		const_iterator end() const noexcept
 		{
-			return const_iterator(0);
+			return const_iterator(nullptr);
 		}
 
 
 		const_iterator cend() const noexcept
 		{
-			return const_iterator(0);
+			return const_iterator(nullptr);
 		}
 
 

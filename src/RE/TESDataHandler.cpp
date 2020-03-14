@@ -27,7 +27,7 @@ namespace RE
 	{
 		auto file = LookupModByName(a_modName);
 		if (!file || file->compileIndex == 0xFF) {
-			return 0;
+			return nullptr;
 		}
 
 		FormID formID = file->compileIndex << (3 * 8);
@@ -45,7 +45,7 @@ namespace RE
 				return file;
 			}
 		}
-		return 0;
+		return nullptr;
 	}
 
 
@@ -63,7 +63,7 @@ namespace RE
 				return file;
 			}
 		}
-		return 0;
+		return nullptr;
 	}
 
 
@@ -74,7 +74,7 @@ namespace RE
 				return file;
 			}
 		}
-		return 0;
+		return nullptr;
 	}
 
 
@@ -92,7 +92,7 @@ namespace RE
 				return smallFile;
 			}
 		}
-		return 0;
+		return nullptr;
 	}
 
 
@@ -103,7 +103,7 @@ namespace RE
 				return smallFile;
 			}
 		}
-		return 0;
+		return nullptr;
 	}
 
 

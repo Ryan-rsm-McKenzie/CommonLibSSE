@@ -39,7 +39,7 @@ namespace RE
 
 
 	BSTArrayHeapAllocator::BSTArrayHeapAllocator() :
-		_data(0),
+		_data(nullptr),
 		_capacity(0),
 		_pad0C(0)
 	{}
@@ -50,7 +50,7 @@ namespace RE
 		_capacity(std::move(a_rhs._capacity)),
 		_pad0C(0)
 	{
-		a_rhs._data = 0;
+		a_rhs._data = nullptr;
 		a_rhs._capacity = 0;
 	}
 
@@ -86,7 +86,7 @@ namespace RE
 	void* BSTArrayHeapAllocator::allocate(std::size_t a_size)
 	{
 		auto mem = malloc(a_size);
-		assert(mem != 0);
+		assert(mem != nullptr);
 		std::memset(mem, 0, a_size);
 		return mem;
 	}
@@ -98,7 +98,7 @@ namespace RE
 	}
 
 
-	void BSTArrayHeapAllocator::set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t a_typeSize)
+	void BSTArrayHeapAllocator::set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t)
 	{
 		_data = a_data;
 		_capacity = a_capacity;
@@ -106,8 +106,8 @@ namespace RE
 
 
 	BSScrapArrayAllocator::BSScrapArrayAllocator() :
-		_allocator(0),
-		_data(0),
+		_allocator(nullptr),
+		_data(nullptr),
 		_capacity(0),
 		_pad14(0)
 	{}
@@ -119,8 +119,8 @@ namespace RE
 		_capacity(std::move(a_rhs._capacity)),
 		_pad14(0)
 	{
-		a_rhs._allocator = 0;
-		a_rhs._data = 0;
+		a_rhs._allocator = nullptr;
+		a_rhs._data = nullptr;
 		a_rhs._capacity = 0;
 	}
 
@@ -159,10 +159,10 @@ namespace RE
 			auto heap = MemoryManager::GetSingleton();
 			_allocator = heap->GetThreadScrapHeap();
 		}
-		assert(_allocator != 0);
+		assert(_allocator != nullptr);
 
 		auto mem = _allocator->AllocateAlign(a_size, 8);
-		assert(mem != 0);
+		assert(mem != nullptr);
 		std::memset(mem, 0, a_size);
 		return mem;
 	}
@@ -178,7 +178,7 @@ namespace RE
 	}
 
 
-	void BSScrapArrayAllocator::set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t a_typeSize)
+	void BSScrapArrayAllocator::set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t)
 	{
 		_data = a_data;
 		_capacity = a_capacity;

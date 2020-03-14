@@ -11,7 +11,7 @@ namespace RE
 	{}
 
 
-	ExtraCount::ExtraCount(SInt32 a_count) :
+	ExtraCount::ExtraCount(SInt16 a_count) :
 		BSExtraData(),
 		count(a_count),
 		pad12(0),

@@ -16,9 +16,9 @@ namespace RE
 			return;
 		}
 
-		EffectSetting* setting = 0;
+		EffectSetting* setting = nullptr;
 		for (auto& effect : *effects) {
-			setting = effect ? effect->GetBaseObject() : 0;
+			setting = effect ? effect->GetBaseObject() : nullptr;
 			if (setting && setting->HasArchetype(a_type)) {
 				effect->Dispell(a_force);
 			}
@@ -33,9 +33,9 @@ namespace RE
 			return false;
 		}
 
-		EffectSetting* setting = 0;
+		EffectSetting* setting = nullptr;
 		for (auto& effect : *effects) {
-			setting = effect ? effect->GetBaseObject() : 0;
+			setting = effect ? effect->GetBaseObject() : nullptr;
 			if (setting && setting->HasArchetype(a_type)) {
 				return true;
 			}

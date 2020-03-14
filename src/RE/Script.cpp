@@ -13,7 +13,7 @@ namespace RE
 	{
 		if (text) {
 			free(text);
-			text = 0;
+			text = nullptr;
 		}
 	}
 

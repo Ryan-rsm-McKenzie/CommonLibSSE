@@ -55,7 +55,7 @@ namespace RE
 
 	NiPoint3 NiPoint3::operator/(float a_scalar) const
 	{
-		return operator*(1.0 / a_scalar);
+		return operator*(static_cast<float>(1.0) / a_scalar);
 	}
 
 
@@ -94,7 +94,7 @@ namespace RE
 
 	NiPoint3& NiPoint3::operator/=(float a_scalar)
 	{
-		return operator*=(1.0 / a_scalar);
+		return operator*=(static_cast<float>(1.0) / a_scalar);
 	}
 
 

@@ -3,25 +3,25 @@
 
 namespace RE
 {
-	bool MenuEventHandler::ProcessKinect(KinectEvent* a_event)
+	bool MenuEventHandler::ProcessKinect(KinectEvent*)
 	{
 		return false;
 	}
 
 
-	bool MenuEventHandler::ProcessThumbstick(ThumbstickEvent* a_event)
+	bool MenuEventHandler::ProcessThumbstick(ThumbstickEvent*)
 	{
 		return false;
 	}
 
 
-	bool MenuEventHandler::ProcessMouseMove(MouseMoveEvent* a_event)
+	bool MenuEventHandler::ProcessMouseMove(MouseMoveEvent*)
 	{
 		return false;
 	}
 
 
-	bool MenuEventHandler::ProcessButton(RE::ButtonEvent* a_event)
+	bool MenuEventHandler::ProcessButton(RE::ButtonEvent*)
 	{
 		return false;
 	}

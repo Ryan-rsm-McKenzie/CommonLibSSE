@@ -274,7 +274,7 @@ namespace RE
 	inline static T* TESForm::LookupByID(FormID a_formID)
 	{
 		auto form = LookupByID(a_formID);
-		return (form && form->Is(T::FORMTYPE)) ? static_cast<T*>(form) : 0;
+		return (form && form->Is(T::FORMTYPE)) ? static_cast<T*>(form) : nullptr;
 	}
 
 
@@ -282,7 +282,7 @@ namespace RE
 	inline static T* TESForm::LookupByEditorID(const std::string_view& a_editorID)
 	{
 		auto form = LookupByEditorID(a_editorID);
-		return (form && form->Is(T::FORMTYPE)) ? static_cast<T*>(form) : 0;
+		return (form && form->Is(T::FORMTYPE)) ? static_cast<T*>(form) : nullptr;
 	}
 
 

@@ -7,7 +7,7 @@ namespace RE
 {
 	GFxStateBag* GFxStateBag::GetStateBagImpl() const
 	{
-		return 0;
+		return nullptr;
 	}
 
 
@@ -28,7 +28,7 @@ namespace RE
 	GFxState* GFxStateBag::GetStateAddRef(GFxState::StateType a_stateType) const
 	{
 		GFxStateBag* stateBag = GetStateBagImpl();
-		return stateBag ? stateBag->GetStateAddRef(a_stateType) : 0;
+		return stateBag ? stateBag->GetStateAddRef(a_stateType) : nullptr;
 	}
 
 

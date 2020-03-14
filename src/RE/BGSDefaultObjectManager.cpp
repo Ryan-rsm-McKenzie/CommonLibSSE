@@ -23,6 +23,6 @@ namespace RE
 	TESForm* BGSDefaultObjectManager::GetObject(std::size_t a_idx)
 	{
 		assert(a_idx < to_underlying(DefaultObject::kTotal));
-		return objectInit[a_idx] ? objects[a_idx] : 0;
+		return objectInit[a_idx] ? objects[a_idx] : nullptr;
 	}
 }

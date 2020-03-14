@@ -9,13 +9,13 @@
 namespace RE
 {
 	InventoryChanges::InventoryChanges() :
-		InventoryChanges(0)
+		InventoryChanges(nullptr)
 	{}
 
 
 	InventoryChanges::InventoryChanges(TESObjectREFR* a_ref) :
-		entryList(0),
-		owner(0),
+		entryList(nullptr),
+		owner(nullptr),
 		totalWeight(0.0),
 		armorWeight(0.0),
 		unk19(0),

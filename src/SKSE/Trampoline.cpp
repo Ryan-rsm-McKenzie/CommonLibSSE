@@ -51,7 +51,7 @@ namespace SKSE
 		_name = std::move(a_rhs._name);
 
 		_data = std::move(a_rhs._data);
-		a_rhs._data = 0;
+		a_rhs._data = nullptr;
 
 		_capacity = std::move(a_rhs._capacity);
 		a_rhs._capacity = 0;
@@ -67,7 +67,7 @@ namespace SKSE
 	Trampoline::Trampoline(std::string_view a_name) :
 		_lock(),
 		_name(a_name),
-		_data(0),
+		_data(nullptr),
 		_capacity(0),
 		_size(0),
 		_allocating(false),
@@ -87,7 +87,7 @@ namespace SKSE
 		_name = std::move(a_rhs._name);
 
 		_data = std::move(a_rhs._data);
-		a_rhs._data = 0;
+		a_rhs._data = nullptr;
 
 		_capacity = std::move(a_rhs._capacity);
 		a_rhs._capacity = 0;
@@ -104,7 +104,7 @@ namespace SKSE
 
 	bool Trampoline::Create(std::size_t a_size)
 	{
-		return Create(a_size, 0);
+		return Create(a_size, nullptr);
 	}
 
 
@@ -294,7 +294,7 @@ namespace SKSE
 			if (!VirtualQuery(reinterpret_cast<void*>(min), &mbi, sizeof(mbi))) {
 				_ERROR("VirtualQuery failed with code: %08X", GetLastError());
 				assert(false);
-				return 0;
+				return nullptr;
 			}
 
 			auto baseAddr = reinterpret_cast<std::uintptr_t>(mbi.BaseAddress);
@@ -315,7 +315,7 @@ namespace SKSE
 			}
 		} while (min < max);
 
-		return 0;
+		return nullptr;
 	}
 
 
@@ -324,13 +324,13 @@ namespace SKSE
 		if (a_size > FreeSize_Impl()) {
 			_ERROR("Failed to handle allocation request");
 			assert(false);
-			return 0;
+			return nullptr;
 		}
 
 		if (_allocating) {
 			_ERROR("A call was made to %s while already allocating", __func__);
 			assert(false);
-			return 0;
+			return nullptr;
 		}
 
 		auto mem = _data + _size;
@@ -345,7 +345,7 @@ namespace SKSE
 		if (_allocating) {
 			_ERROR("A call was made to %s while already allocating", __func__);
 			assert(false);
-			return 0;
+			return nullptr;
 		}
 
 		_lock.lock();
@@ -525,7 +525,7 @@ namespace SKSE
 			if (_data) {
 				VirtualFree(_data, 0, MEM_RELEASE);
 			}
-			_data = 0;
+			_data = nullptr;
 			_capacity = 0;
 			_size = 0;
 			_freeAlloc = false;

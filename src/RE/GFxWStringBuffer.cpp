@@ -9,7 +9,7 @@
 namespace RE
 {
 	GFxWStringBuffer::ReserveHeader::ReserveHeader() :
-		buffer(0),
+		buffer(nullptr),
 		size(0)
 	{}
 
@@ -24,7 +24,7 @@ namespace RE
 		buffer(std::move(a_rhs.buffer)),
 		size(std::move(a_rhs.size))
 	{
-		a_rhs.buffer = 0;
+		a_rhs.buffer = nullptr;
 		a_rhs.size = 0;
 	}
 
@@ -48,7 +48,7 @@ namespace RE
 		-> ReserveHeader&
 	{
 		buffer = std::move(a_rhs.buffer);
-		a_rhs.buffer = 0;
+		a_rhs.buffer = nullptr;
 
 		size = std::move(a_rhs.size);
 		a_rhs.size = 0;
@@ -58,14 +58,14 @@ namespace RE
 
 
 	GFxWStringBuffer::GFxWStringBuffer() :
-		_text(0),
+		_text(nullptr),
 		_length(0),
-		_reserved(0, 0)
+		_reserved(nullptr, 0)
 	{}
 
 
 	GFxWStringBuffer::GFxWStringBuffer(const GFxWStringBuffer& a_rhs) :
-		_text(0),
+		_text(nullptr),
 		_length(a_rhs._length),
 		_reserved(a_rhs._reserved)
 	{
@@ -81,7 +81,7 @@ namespace RE
 		_length(std::move(a_rhs._length)),
 		_reserved(std::move(a_rhs._reserved))
 	{
-		a_rhs._text = 0;
+		a_rhs._text = nullptr;
 		a_rhs._length = 0;
 	}
 
@@ -135,7 +135,7 @@ namespace RE
 		release();
 
 		_text = std::move(a_rhs._text);
-		a_rhs._text = 0;
+		a_rhs._text = nullptr;
 
 		_length = std::move(a_rhs._length);
 		a_rhs._length = 0;

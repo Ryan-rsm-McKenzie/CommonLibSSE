@@ -51,7 +51,7 @@ namespace REL
 
 
 			Array(size_type a_size) :
-				_data(0),
+				_data(nullptr),
 				_size(a_size),
 				_owned(true)
 			{

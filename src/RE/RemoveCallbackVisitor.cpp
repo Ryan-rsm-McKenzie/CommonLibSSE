@@ -8,7 +8,7 @@ namespace RE
 	{}
 
 
-	void RemoveCallbackVisitor::Process(const GString& a_methodName, FxDelegateHandler::CallbackFn a_method)
+	void RemoveCallbackVisitor::Process(const GString& a_methodName, FxDelegateHandler::CallbackFn)
 	{
 		hash->Remove(a_methodName);
 	}

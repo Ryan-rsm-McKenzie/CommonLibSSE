@@ -12,7 +12,7 @@ namespace RE
 	{
 		namespace NF_util
 		{
-			NativeFunctionBase::NativeFunctionBase(const char* a_fnName, const char* a_className, bool a_isStatic, UInt32 a_numParams) :
+			NativeFunctionBase::NativeFunctionBase(const char* a_fnName, const char* a_className, bool a_isStatic, UInt16 a_numParams) :
 				_name(a_fnName),
 				_objName(a_className),
 				_stateName(""),
@@ -120,7 +120,7 @@ namespace RE
 			}
 
 
-			void NativeFunctionBase::InsertLocals(StackFrame* a_stack)
+			void NativeFunctionBase::InsertLocals(StackFrame*)
 			{
 				return;
 			}
@@ -142,7 +142,7 @@ namespace RE
 			}
 
 
-			bool NativeFunctionBase::TranslateIPToLineNumber(UInt32 a_taskletExecutionOffset, UInt32& a_lineNumberOut) const
+			bool NativeFunctionBase::TranslateIPToLineNumber(UInt32, UInt32& a_lineNumberOut) const
 			{
 				a_lineNumberOut = 0;
 				return false;

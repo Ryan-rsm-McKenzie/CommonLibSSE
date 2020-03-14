@@ -85,7 +85,7 @@ namespace RE
 
 		[[nodiscard]] Variable* Array::data() noexcept
 		{
-			return size() > 0 ? _data : 0;
+			return size() > 0 ? _data : nullptr;
 		}
 
 
@@ -175,7 +175,7 @@ namespace RE
 
 		[[nodiscard]] const Variable* Array::data() const noexcept
 		{
-			return size() > 0 ? _data : 0;
+			return size() > 0 ? _data : nullptr;
 		}
 
 

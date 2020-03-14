@@ -35,7 +35,7 @@ namespace RE
 		}
 
 
-		ErrorCode StreamBase::DoGetInfo(Info& a_info)
+		ErrorCode StreamBase::DoGetInfo(Info&)
 		{
 			return ErrorCode::kUnsupported;
 		}

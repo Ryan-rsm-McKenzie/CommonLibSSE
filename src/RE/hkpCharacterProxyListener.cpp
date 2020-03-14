@@ -7,22 +7,22 @@ namespace RE
 	{}
 
 
-	void hkpCharacterProxyListener::ProcessConstraintsCallback(const hkpCharacterProxy* a_proxy, const hkArray<hkpRootCdPoint>& a_manifold, hkpSimplexSolverInput& a_input)
+	void hkpCharacterProxyListener::ProcessConstraintsCallback(const hkpCharacterProxy*, const hkArray<hkpRootCdPoint>&, hkpSimplexSolverInput&)
 	{}
 
 
-	void hkpCharacterProxyListener::ContactPointAddedCallback(const hkpCharacterProxy* a_proxy, const hkpRootCdPoint& a_point)
+	void hkpCharacterProxyListener::ContactPointAddedCallback(const hkpCharacterProxy*, const hkpRootCdPoint&)
 	{}
 
 
-	void hkpCharacterProxyListener::ContactPointRemovedCallback(const hkpCharacterProxy* a_proxy, const hkpRootCdPoint& a_point)
+	void hkpCharacterProxyListener::ContactPointRemovedCallback(const hkpCharacterProxy*, const hkpRootCdPoint&)
 	{}
 
 
-	void hkpCharacterProxyListener::CharacterInteractionCallback(hkpCharacterProxy* a_proxy, hkpCharacterProxy* a_otherProxy, const hkContactPoint& a_contact)
+	void hkpCharacterProxyListener::CharacterInteractionCallback(hkpCharacterProxy*, hkpCharacterProxy*, const hkContactPoint&)
 	{}
 
 
-	void hkpCharacterProxyListener::ObjectInteractionCallback(hkpCharacterProxy* a_proxy, const hkpCharacterObjectInteractionEvent& a_input, hkpCharacterObjectInteractionResult& a_output)
+	void hkpCharacterProxyListener::ObjectInteractionCallback(hkpCharacterProxy*, const hkpCharacterObjectInteractionEvent&, hkpCharacterObjectInteractionResult&)
 	{}
 }

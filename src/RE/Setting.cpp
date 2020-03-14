@@ -10,7 +10,7 @@ namespace RE
 		if (IsManaged()) {
 			free(name);
 		}
-		name = 0;
+		name = nullptr;
 	}
 
 

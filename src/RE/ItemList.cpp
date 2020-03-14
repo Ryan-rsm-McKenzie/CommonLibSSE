@@ -11,18 +11,18 @@ namespace RE
 		-> Item*
 	{
 		if (unk50) {
-			return 0;
+			return nullptr;
 		}
 
 		GFxValue selectedIndex;
 		auto success = root.GetMember("selectedIndex", &selectedIndex);
 		if (!success || !selectedIndex.IsNumber()) {
-			return 0;
+			return nullptr;
 		}
 
 		auto idx = static_cast<SInt32>(selectedIndex.GetNumber());
-		if (idx < 0 || idx >= items.size()) {
-			return 0;
+		if (idx < 0 || static_cast<std::size_t>(idx) >= items.size()) {
+			return nullptr;
 		}
 
 		return items[idx];

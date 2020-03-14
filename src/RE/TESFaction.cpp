@@ -16,7 +16,7 @@ namespace RE
 	{
 		auto player = PlayerCharacter::GetSingleton();
 		auto bounty = player->GetCrimeGoldValue(this);
-		return player->GetGoldAmount() >= bounty;
+		return player->GetGoldAmount() >= static_cast<SInt32>(bounty);
 	}
 
 
@@ -46,7 +46,7 @@ namespace RE
 		auto player = PlayerCharacter::GetSingleton();
 		auto it = player->crimeGoldMap.find(const_cast<TESFaction*>(this));
 		if (it != player->crimeGoldMap.end()) {
-			return it->second.nonViolentInfamy + it->second.violentInfamy;
+			return static_cast<SInt32>(it->second.nonViolentInfamy + it->second.violentInfamy);
 		} else {
 			return 0;
 		}
@@ -58,7 +58,7 @@ namespace RE
 		auto player = PlayerCharacter::GetSingleton();
 		auto it = player->crimeGoldMap.find(const_cast<TESFaction*>(this));
 		if (it != player->crimeGoldMap.end()) {
-			return it->second.nonViolentInfamy;
+			return static_cast<SInt32>(it->second.nonViolentInfamy);
 		} else {
 			return 0;
 		}
@@ -70,7 +70,7 @@ namespace RE
 		auto player = PlayerCharacter::GetSingleton();
 		auto it = player->crimeGoldMap.find(const_cast<TESFaction*>(this));
 		if (it != player->crimeGoldMap.end()) {
-			return it->second.violentInfamy;
+			return static_cast<SInt32>(it->second.violentInfamy);
 		} else {
 			return 0;
 		}
@@ -82,7 +82,7 @@ namespace RE
 		auto player = PlayerCharacter::GetSingleton();
 		auto it = player->stolenItemValueMap.find(const_cast<TESFaction*>(this));
 		if (it != player->stolenItemValueMap.end()) {
-			return it->second.witnessed;
+			return static_cast<SInt32>(it->second.witnessed);
 		} else {
 			return 0;
 		}
@@ -94,7 +94,7 @@ namespace RE
 		auto player = PlayerCharacter::GetSingleton();
 		auto it = player->stolenItemValueMap.find(const_cast<TESFaction*>(this));
 		if (it != player->stolenItemValueMap.end()) {
-			return it->second.unwitnessed;
+			return static_cast<SInt32>(it->second.unwitnessed);
 		} else {
 			return 0;
 		}

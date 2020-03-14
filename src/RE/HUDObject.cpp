@@ -16,7 +16,7 @@ namespace RE
 	{}
 
 
-	bool HUDObject::ProcessMessage(UIMessage* a_message)
+	bool HUDObject::ProcessMessage(UIMessage*)
 	{
 		return false;
 	}

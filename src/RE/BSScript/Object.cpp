@@ -61,7 +61,7 @@ namespace RE
 			if (policy->HandleIsType(a_typeID, handle) && policy->IsHandleObjectAvailable(handle)) {
 				return policy->GetObjectForHandle(a_typeID, handle);
 			} else {
-				return 0;
+				return nullptr;
 			}
 		}
 
@@ -91,7 +91,7 @@ namespace RE
 				idx = cls->GetPropertyIndex(a_name);
 			}
 
-			return idx != INVALID ? &variables[idx] : 0;
+			return idx != INVALID ? &variables[idx] : nullptr;
 		}
 
 
@@ -104,7 +104,7 @@ namespace RE
 				idx = cls->GetPropertyIndex(a_name);
 			}
 
-			return idx != INVALID ? &variables[idx] : 0;
+			return idx != INVALID ? &variables[idx] : nullptr;
 		}
 
 

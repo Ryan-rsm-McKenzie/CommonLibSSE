@@ -12,26 +12,26 @@ namespace RE
 	TESNPC* TESObjectCELL::GetActorOwner()
 	{
 		auto owner = GetOwner();
-		return owner->Is(FormType::NPC) ? static_cast<TESNPC*>(owner) : 0;
+		return owner->Is(FormType::NPC) ? static_cast<TESNPC*>(owner) : nullptr;
 	}
 
 
 	EXTERIOR_DATA* TESObjectCELL::GetCoordinates()
 	{
-		return IsExteriorCell() ? cellData.exterior : 0;
+		return IsExteriorCell() ? cellData.exterior : nullptr;
 	}
 
 
 	TESFaction* TESObjectCELL::GetFactionOwner()
 	{
 		auto owner = GetOwner();
-		return owner->Is(FormType::Faction) ? static_cast<TESFaction*>(owner) : 0;
+		return owner->Is(FormType::Faction) ? static_cast<TESFaction*>(owner) : nullptr;
 	}
 
 
 	INTERIOR_DATA* TESObjectCELL::GetLighting()
 	{
-		return IsInteriorCell() ? cellData.interior : 0;
+		return IsInteriorCell() ? cellData.interior : nullptr;
 	}
 
 
@@ -41,7 +41,7 @@ namespace RE
 			return worldSpace->northRotation;
 		} else {
 			auto xNorth = extraList.GetByType<ExtraNorthRotation>();
-			return xNorth ? xNorth->northRot : 0.0;
+			return xNorth ? xNorth->northRot : static_cast<float>(0.0);
 		}
 	}
 
@@ -53,17 +53,17 @@ namespace RE
 			return owner;
 		}
 
-		BGSEncounterZone* zone = 0;
+		BGSEncounterZone* zone = nullptr;
 		if (loadedData) {
 			zone = loadedData->encounterZone;
 		} else {
 			zone = extraList.GetEncounterZone();
 			if (!zone && IsExteriorCell()) {
-				zone = worldSpace ? worldSpace->encounterZone : 0;
+				zone = worldSpace ? worldSpace->encounterZone : nullptr;
 			}
 		}
 
-		return zone ? zone->data.zoneOwner : 0;
+		return zone ? zone->data.zoneOwner : nullptr;
 	}
 
 

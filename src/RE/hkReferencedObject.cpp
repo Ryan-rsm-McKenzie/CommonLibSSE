@@ -7,17 +7,19 @@
 namespace RE
 {
 	hkReferencedObject::hkReferencedObject() :
-		referenceCount(1)
+		memSizeAndFlags(0),
+		referenceCount(1),
+		pad0C(0)
 	{}
 
 
 	const hkClass* hkReferencedObject::GetClassType() const
 	{
-		return 0;
+		return nullptr;
 	}
 
 
-	void hkReferencedObject::CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const
+	void hkReferencedObject::CalcContentStatistics(hkStatisticsCollector*, const hkClass*) const
 	{
 		return;
 	}

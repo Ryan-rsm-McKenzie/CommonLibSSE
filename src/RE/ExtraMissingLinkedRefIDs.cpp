@@ -42,9 +42,9 @@ namespace RE
 		for (auto& entry : entries) {
 			if (entry.keyword == a_keyword) {
 				auto objRef = RE::TESForm::LookupByID(entry.linkedRefID);
-				return objRef ? objRef->AsReference() : 0;
+				return objRef ? objRef->AsReference() : nullptr;
 			}
 		}
-		return 0;
+		return nullptr;
 	}
 }

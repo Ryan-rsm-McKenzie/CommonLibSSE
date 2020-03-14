@@ -84,7 +84,7 @@ namespace RE
 				return &scriptCommands[i];
 			}
 		}
-		return 0;
+		return nullptr;
 	}
 
 
@@ -103,13 +103,13 @@ namespace RE
 				return &consoleCommands[i];
 			}
 		}
-		return 0;
+		return nullptr;
 	}
 
 
 	void SCRIPT_FUNCTION::SetParameters()
 	{
 		numParams = 0;
-		params = 0;
+		params = nullptr;
 	}
 }

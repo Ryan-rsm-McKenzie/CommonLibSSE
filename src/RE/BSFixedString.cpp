@@ -9,14 +9,14 @@
 namespace RE
 {
 	BSFixedString::BSFixedString() :
-		_data(0)
+		_data(nullptr)
 	{
 		ctor_cstr("");
 	}
 
 
 	BSFixedString::BSFixedString(const BSFixedString& a_rhs) :
-		_data(0)
+		_data(nullptr)
 	{
 		ctor_copy(a_rhs);
 	}
@@ -25,19 +25,19 @@ namespace RE
 	BSFixedString::BSFixedString(BSFixedString&& a_rhs) noexcept :
 		_data(std::move(a_rhs._data))
 	{
-		a_rhs._data = 0;
+		a_rhs._data = nullptr;
 	}
 
 
 	BSFixedString::BSFixedString(const char* a_rhs) :
-		_data(0)
+		_data(nullptr)
 	{
 		ctor_cstr(a_rhs);
 	}
 
 
 	BSFixedString::BSFixedString(const std::string_view& a_rhs) :
-		_data(0)
+		_data(nullptr)
 	{
 		ctor_cstr(a_rhs.data());
 	}
@@ -70,7 +70,7 @@ namespace RE
 		}
 
 		_data = std::move(a_rhs._data);
-		a_rhs._data = 0;
+		a_rhs._data = nullptr;
 
 		return *this;
 	}
@@ -221,14 +221,14 @@ namespace RE
 
 
 	BSFixedStringW::BSFixedStringW() :
-		_data(0)
+		_data(nullptr)
 	{
 		ctor(L"");
 	}
 
 
 	BSFixedStringW::BSFixedStringW(const BSFixedStringW& a_rhs) :
-		_data(0)
+		_data(nullptr)
 	{
 		ctor(a_rhs.c_str());
 	}
@@ -237,12 +237,12 @@ namespace RE
 	BSFixedStringW::BSFixedStringW(BSFixedStringW&& a_rhs) noexcept :
 		_data(std::move(a_rhs._data))
 	{
-		a_rhs._data = 0;
+		a_rhs._data = nullptr;
 	}
 
 
 	BSFixedStringW::BSFixedStringW(const wchar_t* a_rhs) :
-		_data(0)
+		_data(nullptr)
 	{
 		ctor(a_rhs);
 	}
@@ -280,7 +280,7 @@ namespace RE
 
 		dtor();
 		_data = std::move(a_rhs._data);
-		a_rhs._data = 0;
+		a_rhs._data = nullptr;
 		return *this;
 	}
 

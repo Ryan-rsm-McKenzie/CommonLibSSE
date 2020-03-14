@@ -87,8 +87,8 @@ namespace RE
 
 
 			iterator_base() :
-				_entry(0),
-				_end(0)
+				_entry(nullptr),
+				_end(nullptr)
 			{}
 
 
@@ -374,12 +374,12 @@ namespace RE
 		entry_type* find_impl(const key_type& a_key) const
 		{
 			if (!get_entries()) {
-				return 0;
+				return nullptr;
 			}
 
 			auto probe = calc_pos(a_key);  // try ideal pos
 			if (!probe->next) {
-				return 0;  // nothing there
+				return nullptr;	 // nothing there
 			}
 
 			do {
@@ -390,7 +390,7 @@ namespace RE
 				}
 			} while (probe != _sentinel);  // follow chain
 
-			return 0;
+			return nullptr;
 		}
 
 
@@ -477,7 +477,7 @@ namespace RE
 		// assumes not empty
 		entry_type* get_free_entry()
 		{
-			entry_type* entry = 0;
+			entry_type* entry = nullptr;
 			do {
 				_freeIdx = (_capacity - 1) & (_freeIdx - 1);
 				entry = get_entries() + _freeIdx;

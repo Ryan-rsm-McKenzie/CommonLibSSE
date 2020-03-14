@@ -138,13 +138,13 @@ namespace RE
 
 	const GMatrix3D* GFxValue::DisplayInfo::GetPerspectiveMatrix3D() const
 	{
-		return IsFlagSet(Flag::kPerspMatrix3D) ? &_perspMatrix3D : 0;
+		return IsFlagSet(Flag::kPerspMatrix3D) ? &_perspMatrix3D : nullptr;
 	}
 
 
 	const GMatrix3D* GFxValue::DisplayInfo::GetViewMatrix3D() const
 	{
-		return IsFlagSet(Flag::kViewMatrix3D) ? &_viewMatrix3D : 0;
+		return IsFlagSet(Flag::kViewMatrix3D) ? &_viewMatrix3D : nullptr;
 	}
 
 
@@ -215,6 +215,7 @@ namespace RE
 		_z = a_z;
 		_xRotation = a_xRotation;
 		_yRotation = a_yRotation;
+		_zScale = a_zScale;
 		_fov = a_fov;
 		_viewMatrix3D = *a_viewM;
 		_perspMatrix3D = *a_perspM;
@@ -549,7 +550,7 @@ namespace RE
 
 
 	GFxValue::GFxValue() :
-		_objectInterface(0),
+		_objectInterface(nullptr),
 		_type(ValueType::kUndefined),
 		_pad0C(0),
 		_value()
@@ -557,17 +558,17 @@ namespace RE
 
 
 	GFxValue::GFxValue(ValueType a_type) :
-		_objectInterface(0),
+		_objectInterface(nullptr),
 		_type(a_type),
 		_pad0C(0)
 	{
 		assert(_type != ValueType::kObject && _type != ValueType::kArray && _type != ValueType::kDisplayObject);
-		_value.string = 0;
+		_value.string = nullptr;
 	}
 
 
 	GFxValue::GFxValue(double a_val) :
-		_objectInterface(0),
+		_objectInterface(nullptr),
 		_type(ValueType::kNumber),
 		_pad0C(0),
 		_value()
@@ -577,7 +578,7 @@ namespace RE
 
 
 	GFxValue::GFxValue(bool a_val) :
-		_objectInterface(0),
+		_objectInterface(nullptr),
 		_type(ValueType::kBoolean),
 		_pad0C(0),
 		_value()
@@ -587,7 +588,7 @@ namespace RE
 
 
 	GFxValue::GFxValue(const char* a_str) :
-		_objectInterface(0),
+		_objectInterface(nullptr),
 		_type(ValueType::kString),
 		_pad0C(0),
 		_value()
@@ -597,7 +598,7 @@ namespace RE
 
 
 	GFxValue::GFxValue(std::string_view a_str) :
-		_objectInterface(0),
+		_objectInterface(nullptr),
 		_type(ValueType::kString),
 		_pad0C(0),
 		_value()
@@ -607,7 +608,7 @@ namespace RE
 
 
 	GFxValue::GFxValue(const wchar_t* a_str) :
-		_objectInterface(0),
+		_objectInterface(nullptr),
 		_type(ValueType::kStringW),
 		_pad0C(0),
 		_value()
@@ -617,7 +618,7 @@ namespace RE
 
 
 	GFxValue::GFxValue(std::wstring_view a_str) :
-		_objectInterface(0),
+		_objectInterface(nullptr),
 		_type(ValueType::kStringW),
 		_pad0C(0),
 		_value()
@@ -627,7 +628,7 @@ namespace RE
 
 
 	GFxValue::GFxValue(const GFxValue& a_rhs) :
-		_objectInterface(0),
+		_objectInterface(nullptr),
 		_type(a_rhs._type),
 		_pad0C(0),
 		_value()
@@ -645,11 +646,11 @@ namespace RE
 		_pad0C(0),
 		_value()
 	{
-		a_rhs._objectInterface = 0;
+		a_rhs._objectInterface = nullptr;
 		a_rhs._type = ValueType::kUndefined;
 
 		_value.obj = std::move(a_rhs._value.obj);
-		a_rhs._value.obj = 0;
+		a_rhs._value.obj = nullptr;
 	}
 
 
@@ -765,13 +766,13 @@ namespace RE
 		}
 
 		_objectInterface = std::move(a_rhs._objectInterface);
-		a_rhs._objectInterface = 0;
+		a_rhs._objectInterface = nullptr;
 
 		_type = std::move(a_rhs._type);
 		a_rhs._type = ValueType::kUndefined;
 
 		_value.obj = std::move(a_rhs._value.obj);
-		a_rhs._value.obj = 0;
+		a_rhs._value.obj = nullptr;
 
 		return *this;
 	}
@@ -1005,7 +1006,7 @@ namespace RE
 
 	bool GFxValue::Invoke(const char* a_name, GFxValue* a_result)
 	{
-		return Invoke(a_name, a_result, 0, 0);
+		return Invoke(a_name, a_result, nullptr, 0);
 	}
 
 
@@ -1054,7 +1055,7 @@ namespace RE
 	bool GFxValue::RemoveElements(UInt32 a_idx, SInt32 a_count)
 	{
 		assert(IsArray());
-		return _objectInterface->RemoveElements(_value.obj, a_count, a_count);
+		return _objectInterface->RemoveElements(_value.obj, a_idx, a_count);
 	}
 
 
@@ -1137,7 +1138,7 @@ namespace RE
 	{
 		assert(_value.obj && _objectInterface);
 		_objectInterface->ObjectRelease(this, _value.obj);
-		_objectInterface = 0;
+		_objectInterface = nullptr;
 	}
 
 

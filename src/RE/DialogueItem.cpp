@@ -9,11 +9,11 @@ namespace RE
 	DialogueItem::DialogueItem(TESQuest* a_quest, TESTopic* a_topic, TESTopicInfo* a_topicInfo, Actor* a_speaker) :
 		responses(),
 		currentResponse(),
-		topicInfo(0),
-		topic(0),
-		quest(0),
-		speaker(0),
-		extraData(0)
+		topicInfo(nullptr),
+		topic(nullptr),
+		quest(nullptr),
+		speaker(nullptr),
+		extraData(nullptr)
 	{
 		Ctor(a_quest, a_topic, a_topicInfo, a_speaker);
 	}

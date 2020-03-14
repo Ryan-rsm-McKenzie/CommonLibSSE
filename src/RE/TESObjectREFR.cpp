@@ -88,7 +88,7 @@ namespace RE
 		if (xOwnership && xOwnership->owner && xOwnership->owner->Is(FormType::ActorCharacter)) {
 			return static_cast<TESNPC*>(xOwnership->owner);
 		} else {
-			return 0;
+			return nullptr;
 		}
 	}
 
@@ -119,9 +119,9 @@ namespace RE
 
 	float TESObjectREFR::GetBaseHeight() const
 	{
-		float height = refScale / 100;
+		auto height = static_cast<float>(refScale) / 100.0F;
 		auto obj = GetBaseObject();
-		auto npc = obj ? obj->As<TESNPC>() : 0;
+		auto npc = obj ? obj->As<TESNPC>() : nullptr;
 		if (npc) {
 			height *= npc->GetHeight();
 		}
@@ -156,7 +156,7 @@ namespace RE
 	TESContainer* TESObjectREFR::GetContainer()
 	{
 		auto obj = GetBaseObject();
-		return obj ? obj->As<TESContainer>() : 0;
+		return obj ? obj->As<TESContainer>() : nullptr;
 	}
 
 
@@ -235,7 +235,7 @@ namespace RE
 		if (xOwnership && xOwnership->owner && xOwnership->owner->Is(FormType::Faction)) {
 			return static_cast<TESFaction*>(xOwnership->owner);
 		} else {
-			return 0;
+			return nullptr;
 		}
 	}
 
@@ -348,7 +348,7 @@ namespace RE
 		}
 
 		auto xContChanges = extraList.GetByType<ExtraContainerChanges>();
-		return xContChanges ? xContChanges->changes : 0;
+		return xContChanges ? xContChanges->changes : nullptr;
 	}
 
 
@@ -383,7 +383,7 @@ namespace RE
 	NiAVObject* TESObjectREFR::GetNodeByName(const BSFixedString& a_nodeName)
 	{
 		auto node = Get3D();
-		return node ? node->GetObjectByName(a_nodeName) : 0;
+		return node ? node->GetObjectByName(a_nodeName) : nullptr;
 	}
 
 
@@ -450,7 +450,7 @@ namespace RE
 		if (cell && cell->IsExteriorCell()) {
 			return cell->worldSpace;
 		} else {
-			return 0;
+			return nullptr;
 		}
 	}
 
@@ -485,7 +485,7 @@ namespace RE
 
 	bool TESObjectREFR::Is3DLoaded() const
 	{
-		return Get3D() != 0;
+		return Get3D() != nullptr;
 	}
 
 
@@ -634,8 +634,8 @@ namespace RE
 		if (xTextData) {
 			bool inUse = xTextData->displayNameText || xTextData->ownerQuest;
 			if (inUse && a_force) {
-				xTextData->displayNameText = 0;
-				xTextData->ownerQuest = 0;
+				xTextData->displayNameText = nullptr;
+				xTextData->ownerQuest = nullptr;
 			}
 			renamed = !inUse || a_force;
 			xTextData->SetName(a_name.c_str());

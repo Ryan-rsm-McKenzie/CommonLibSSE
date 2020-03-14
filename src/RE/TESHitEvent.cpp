@@ -6,7 +6,7 @@
 namespace RE
 {
 	TESHitEvent::TESHitEvent() :
-		TESHitEvent(0, 0, static_cast<FormID>(0), static_cast<FormID>(0), Flag::kNone)
+		TESHitEvent(nullptr, nullptr, static_cast<FormID>(0), static_cast<FormID>(0), Flag::kNone)
 	{}
 
 
