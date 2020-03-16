@@ -453,7 +453,7 @@ namespace RE
 		virtual void				 Unk_10D(void);																																									  // 10D - { unk170 = a_arg1; }
 		virtual void				 KillImpl(Actor* a_attacker, float a_damage, bool a_sendEvent, bool a_ragdollInstant);																							  // 10E
 		virtual void				 Unk_10F(void);																																									  // 10F
-		virtual bool				 CheckCast(MagicItem* a_soell, bool a_dualCast, MagicSystem::CannotCastReason* a_reason);																						  // 110
+		virtual bool				 CheckCast(MagicItem* a_spell, bool a_dualCast, MagicSystem::CannotCastReason* a_reason);																						  // 110
 		virtual void				 CheckTempModifiers();																																							  // 111 - { return; }
 		virtual SInt32				 GetCurrentShoutLevel();																																						  // 112 - return -1 on error
 		virtual void				 SetLastRiddenMount(ActorHandle a_mount);																																		  // 113 - { return; }
