@@ -33,6 +33,13 @@ namespace SKSE
 
 	void CodeGenerator::finalize()
 	{
+		ready();
+	}
+
+
+	void CodeGenerator::ready()
+	{
+		Base::ready();
 		if (_doFinalize) {
 			if (std::holds_alternative<Persistent_t>(_buffer)) {
 				std::get<Persistent_t>(_buffer)->EndAlloc(Base::getSize());

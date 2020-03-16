@@ -24,6 +24,7 @@ namespace SKSE
 		~CodeGenerator();
 
 		void finalize();
+		void ready();
 
 	private:
 		using Base = Xbyak::CodeGenerator;

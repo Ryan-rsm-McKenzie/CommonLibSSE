@@ -399,7 +399,7 @@ namespace RE
 		const char*						  GetName() const;
 		NiAVObject*						  GetNodeByName(const BSFixedString& a_nodeName);
 		TESForm*						  GetOwner() const;
-		TESObjectCELL*					  GetParentCell();
+		TESObjectCELL*					  GetParentCell() const;
 		NiPoint3						  GetPosition() const;
 		float							  GetPositionX() const;
 		float							  GetPositionY() const;

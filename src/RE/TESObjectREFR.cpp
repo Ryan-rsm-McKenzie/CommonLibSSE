@@ -395,7 +395,7 @@ namespace RE
 	}
 
 
-	TESObjectCELL* TESObjectREFR::GetParentCell()
+	TESObjectCELL* TESObjectREFR::GetParentCell() const
 	{
 		return parentCell;
 	}
