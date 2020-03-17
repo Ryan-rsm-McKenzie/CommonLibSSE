@@ -2,6 +2,7 @@
 
 #include "RE/BSString.h"
 #include "RE/BSTList.h"
+#include "RE/FORM.h"
 #include "RE/FormTypes.h"
 
 
@@ -47,19 +48,6 @@ namespace RE
 			kPrecalcDataOnly = 1 << 8,
 			kSmallFile = 1 << 9
 		};
-
-
-		struct FORM
-		{
-			UInt32 form;			// 00
-			UInt32 length;			// 04
-			UInt32 flags;			// 08
-			FormID formID;			// 0C
-			UInt32 versionControl;	// 10
-			UInt16 formVersion;		// 14
-			UInt16 vcVersion;		// 16
-		};
-		STATIC_ASSERT(sizeof(FORM) == 0x18);
 
 
 		TESFile* Duplicate(UInt32 a_cacheSize = 0x4000);

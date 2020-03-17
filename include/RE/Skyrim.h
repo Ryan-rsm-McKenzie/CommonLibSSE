@@ -576,6 +576,7 @@
 #include "RE/ExtraWeaponIdleSound.h"
 #include "RE/ExtraWorn.h"
 #include "RE/ExtraWornLeft.h"
+#include "RE/FORM.h"
 #include "RE/FactionRank.h"
 #include "RE/FaderMenu.h"
 #include "RE/FavoritesHandler.h"
