@@ -20,7 +20,7 @@ namespace RE
 			enum ChangeFlag : UInt32
 			{
 				kObjectValue = 1 << 1,
-				kObjectFullName = 1 << 1
+				kObjectFullName = 1 << 2
 			};
 		};
 
