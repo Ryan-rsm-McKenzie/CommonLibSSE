@@ -531,6 +531,7 @@
     <ClInclude Include="include\RE\EffectArchetypes.h" />
     <ClInclude Include="include\RE\FactionRank.h" />
     <ClInclude Include="include\RE\FightReactions.h" />
+    <ClInclude Include="include\RE\FORM.h" />
     <ClInclude Include="include\RE\HandleManager.h" />
     <ClInclude Include="include\RE\HeapBlock.h" />
     <ClInclude Include="include\RE\HeapBlockFreeHead.h" />

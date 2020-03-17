@@ -5573,5 +5573,8 @@
     <ClInclude Include="include\RE\BSDismemberSkinInstance.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiSkinInstance</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\FORM.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
