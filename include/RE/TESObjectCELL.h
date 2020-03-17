@@ -112,6 +112,7 @@ namespace RE
 			kHasWater = 1 << 1,
 			kCanTravelFromHere = 1 << 2,
 			kNoLODWater = 1 << 3,
+			kHasTempData = 1 << 4,
 			kPublicArea = 1 << 5,
 			kHandChanged = 1 << 6,
 			kShowSky = 1 << 7,

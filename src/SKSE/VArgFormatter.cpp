@@ -57,6 +57,8 @@ namespace SKSE
 
 		auto size = std::vsnprintf(nullptr, 0, a_format, a_args);
 		if (size <= 0) {
+			_buf.resize(1);
+			_buf[0] = '\0';
 			return;
 		}
 

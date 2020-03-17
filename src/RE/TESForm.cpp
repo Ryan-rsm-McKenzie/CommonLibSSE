@@ -159,6 +159,12 @@ namespace RE
 	}
 
 
+	void TESForm::InitItem()
+	{
+		InitItemImpl();
+	}
+
+
 	bool TESForm::IsAmmo() const
 	{
 		return Is(FormType::Ammo);

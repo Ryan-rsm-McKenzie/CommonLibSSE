@@ -1,5 +1,8 @@
 #pragma once
 
+#include <cassert>
+#include <memory>
+
 #include "RE/BSString.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTHashMap.h"
@@ -47,12 +50,64 @@ namespace RE
 	{
 	public:
 		// members
-		float fMapScale;	// 00
-		float fMapOffsetX;	// 04
-		float fMapOffsetY;	// 08
-		float fMapOffsetZ;	// 0C
+		float mapScale;	   // 00
+		float mapOffsetX;  // 04
+		float mapOffsetY;  // 08
+		float mapOffsetZ;  // 0C
 	};
 	STATIC_ASSERT(sizeof(WORLD_MAP_OFFSET_DATA) == 0x10);
+
+
+	struct CellID
+	{
+	public:
+		constexpr CellID() noexcept :
+			CellID(0, 0)
+		{}
+
+
+		constexpr CellID(SInt16 a_y, SInt16 a_x) noexcept :
+			y(a_y),
+			x(a_x)
+		{}
+
+
+		[[nodiscard]] friend constexpr bool operator==(const CellID& a_lhs, const CellID& a_rhs) noexcept
+		{
+			return a_lhs[0] == a_rhs[0] && a_lhs[1] == a_rhs[1];
+		}
+
+
+		[[nodiscard]] constexpr SInt16& operator[](std::size_t a_idx) noexcept
+		{
+			assert(a_idx < 2);
+			return std::addressof(y)[a_idx];
+		}
+
+
+		[[nodiscard]] constexpr const SInt16& operator[](std::size_t a_idx) const noexcept
+		{
+			assert(a_idx < 2);
+			return std::addressof(y)[a_idx];
+		}
+
+
+		// members
+		SInt16 y;
+		SInt16 x;
+	};
+	STATIC_ASSERT(sizeof(CellID) == 0x4);
+
+
+	template <>
+	struct CRC32Hash<CellID>
+	{
+	public:
+		UInt32 operator()(const CellID& a_key) const
+		{
+			return CRC32Hash<UInt32>()(reinterpret_cast<const UInt32&>(a_key));
+		}
+	};
 
 
 	class BGSLargeRefData  // RNAM
@@ -60,12 +115,12 @@ namespace RE
 	public:
 		// RNAM format in plugins is cell x,y -> formID + cell that contains refr x,y
 		// a lot of RNAM data is for refrs that are actually in adjacent cells, it is currently unknown what behavior this has in game
-		BSTHashMap<UInt32, FormID*> cellFormIDMap;	// 00 - full data merged at runtime, value is an array of FormIDs with array size as the first entry
-		BSTHashMap<FormID, UInt32>	formIDCellMap;	// 30 - maps FormID to cell so opposite of above map
+		BSTHashMap<CellID, FormID*> cellFormIDMap;	// 00 - full data merged at runtime, value is an array of FormIDs with array size as the first entry
+		BSTHashMap<FormID, CellID>	formIDCellMap;	// 30 - maps FormID to cell so opposite of above map
 
 		// this filtered version of the full data removes all duplicate RNAM entries and also all entries where cell x,y doesn't match cell that contains refr x,y
 		// this is the one actually used for loading large references on cell attach
-		BSTHashMap<UInt32, FormID*> cellFormIDMapFiltered;	// 60
+		BSTHashMap<CellID, FormID*> cellFormIDMapFiltered;	// 60
 	};
 	STATIC_ASSERT(sizeof(BGSLargeRefData) == 0x90);
 
@@ -119,6 +174,8 @@ namespace RE
 
 		struct ShortPoint
 		{
+		public:
+			// members
 			SInt16 x;
 			SInt16 y;
 		};
@@ -144,7 +201,7 @@ namespace RE
 
 
 		// members
-		BSTHashMap<SInt32, TESObjectCELL*>					   cellMap;					 // 058
+		BSTHashMap<CellID, TESObjectCELL*>					   cellMap;					 // 058
 		TESObjectCELL*										   persistentCell;			 // 088
 		BGSTerrainManager*									   terrainManager;			 // 090
 		TESClimate*											   climate;					 // 098 - CNAM

@@ -221,6 +221,7 @@ namespace RE
 		float				 GetWeight() const;
 		bool				 HasVMAD() const;
 		bool				 HasWorldModel() const;
+		void				 InitItem();
 		bool				 IsAmmo() const;
 		bool				 IsArmor() const;
 		bool				 IsDeleted() const;
