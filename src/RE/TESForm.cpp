@@ -4,25 +4,25 @@
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/ExtraEnchantment.h"
 #include "RE/FormTraits.h"
-#include "RE/GlobalLookupInfo.h"
 #include "RE/MagicItem.h"
 #include "RE/TESFullName.h"
 #include "RE/TESModel.h"
 #include "RE/TESObjectREFR.h"
 #include "RE/TESValueForm.h"
+#include "REL/Relocation.h"
 
 
 namespace RE
 {
 	TESForm* TESForm::LookupByID(FormID a_formID)
 	{
-		auto lookup = GlobalLookupInfo::GetSingleton();
-		RE::BSReadLockGuard locker(lookup->allFormsMapLock);
-		if (!lookup->allForms) {
+		auto allForms = GetAllForms();
+		BSReadLockGuard locker(allForms.second);
+		if (!allForms.first) {
 			return nullptr;
 		}
 
-		auto& formIDs = *lookup->allForms;
+		auto& formIDs = *allForms.first;
 		auto it = formIDs.find(a_formID);
 		return it != formIDs.end() ? it->second : nullptr;
 	}
@@ -30,15 +30,31 @@ namespace RE
 
 	TESForm* TESForm::LookupByEditorID(const std::string_view& a_editorID)
 	{
-		auto lookup = GlobalLookupInfo::GetSingleton();
-		RE::BSReadLockGuard locker(lookup->allFormsEditorIDMapLock);
-		if (!lookup->allFormsByEditorID) {
+		auto allFormsByEditorID = GetAllFormsByEditorID();
+		BSReadLockGuard locker(allFormsByEditorID.second);
+		if (!allFormsByEditorID.first) {
 			return nullptr;
 		}
 
-		auto& editorIDs = *lookup->allFormsByEditorID;
+		auto& editorIDs = *allFormsByEditorID.first;
 		auto it = editorIDs.find(a_editorID);
 		return it != editorIDs.end() ? it->second : nullptr;
+	}
+
+
+	std::pair<BSTHashMap<FormID, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> TESForm::GetAllForms()
+	{
+		REL::Offset<BSTHashMap<FormID, TESForm*>**> allForms = REL::ID(514351);
+		REL::Offset<BSReadWriteLock*> allFormsMapLock = REL::ID(514360);
+		return std::make_pair(*allForms, std::ref(*allFormsMapLock));
+	}
+
+
+	std::pair<BSTHashMap<BSFixedString, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> TESForm::GetAllFormsByEditorID()
+	{
+		REL::Offset<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID = REL::ID(514352);
+		REL::Offset<BSReadWriteLock*> allFormsEditorIDMapLock = REL::ID(514361);
+		return std::make_pair(*allFormsByEditorID, std::ref(*allFormsEditorIDMapLock));
 	}
 
 
@@ -198,6 +214,12 @@ namespace RE
 	bool TESForm::IsIgnored() const
 	{
 		return (formFlags & RecordFlags::kIgnored) != 0;
+	}
+
+
+	bool TESForm::IsInitialized() const
+	{
+		return (formFlags & RecordFlags::kInitialized) != 0;
 	}
 
 

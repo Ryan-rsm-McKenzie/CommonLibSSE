@@ -662,7 +662,6 @@
 #include "RE/GViewport.h"
 #include "RE/GameSettingCollection.h"
 #include "RE/GiftMenu.h"
-#include "RE/GlobalLookupInfo.h"
 #include "RE/GrenadeProjectile.h"
 #include "RE/HUDData.h"
 #include "RE/HUDMenu.h"

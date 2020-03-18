@@ -1,5 +1,7 @@
 #pragma once
 
+#include <utility>
+
 #include "RE/FormTypes.h"
 
 
@@ -12,6 +14,8 @@ namespace RE
 	enum class OBJECT_TYPE : UInt32
 	{
 	};
+
+
 	enum class OBJECT_CATEGORY_TYPE : UInt32
 	{
 	};
@@ -36,7 +40,9 @@ namespace RE
 		virtual OBJECT_TYPE			 GetObjectType() const;		 // 05 - { return 106; }
 		virtual OBJECT_CATEGORY_TYPE GetObjectCategory() const;	 // 06 - { return 9; }
 
-		static IFormFactory* GetFormFactoryByType(FormType a_formType);
+		static std::pair<IFormFactory**, bool> GetFormFactories();
+		static IFormFactory*				   GetFormFactoryByType(FormType a_formType);
+
 		template <class T>
 		static ConcreteFormFactory<T, T::FORMTYPE>* GetConcreteFormFactoryByType();
 

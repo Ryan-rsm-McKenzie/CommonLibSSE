@@ -312,7 +312,6 @@
     <ClCompile Include="src\RE\ItemList.cpp" />
     <ClCompile Include="src\RE\ItemsPickpocketed.cpp" />
     <ClCompile Include="src\RE\LocalMapCamera.cpp" />
-    <ClCompile Include="src\RE\GlobalLookupInfo.cpp" />
     <ClCompile Include="src\RE\NiAnimationKey.cpp" />
     <ClCompile Include="src\RE\NiAVObject.cpp" />
     <ClCompile Include="src\RE\NiBinaryStream.cpp" />
@@ -1293,7 +1292,6 @@
     <ClInclude Include="include\RE\LocalMapMenu.h" />
     <ClInclude Include="include\RE\LockpickingMenu.h" />
     <ClInclude Include="include\RE\LoggingDisabler.h" />
-    <ClInclude Include="include\RE\GlobalLookupInfo.h" />
     <ClInclude Include="include\RE\MagicCaster.h" />
     <ClInclude Include="include\RE\MagicMenu.h" />
     <ClInclude Include="include\RE\Main.h" />

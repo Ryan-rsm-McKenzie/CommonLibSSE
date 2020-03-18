@@ -1,8 +1,13 @@
 #pragma once
 
+#include <functional>
 #include <type_traits>
+#include <utility>
 
+#include "RE/BSFixedString.h"
+#include "RE/BSLock.h"
 #include "RE/BSTArray.h"
+#include "RE/BSTHashMap.h"
 #include "RE/BaseFormComponent.h"
 #include "RE/FormTypes.h"
 
@@ -199,6 +204,9 @@ namespace RE
 		template <class T>
 		static T* LookupByEditorID(const std::string_view& a_editorID);
 
+		static std::pair<BSTHashMap<FormID, TESForm*>*, std::reference_wrapper<BSReadWriteLock>>		GetAllForms();
+		static std::pair<BSTHashMap<BSFixedString, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> GetAllFormsByEditorID();
+
 		bool Is(FormType a_type) const;
 		template <class First, class... Rest>
 		bool Is(First a_first, Rest... a_rest) const;
@@ -228,6 +236,7 @@ namespace RE
 		bool				 IsDynamicForm() const;
 		bool				 IsGold() const;
 		bool				 IsIgnored() const;
+		bool				 IsInitialized() const;
 		bool				 IsKey() const;
 		bool				 IsLockpick() const;
 		bool				 IsPlayer() const;

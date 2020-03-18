@@ -483,12 +483,6 @@ namespace RE
 		}
 
 
-		namespace GlobalLookupInfo
-		{
-			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(514347));
-		}
-
-
 		namespace GMemory
 		{
 			static constexpr REL::ID GlobalHeap(static_cast<std::uint64_t>(525584));

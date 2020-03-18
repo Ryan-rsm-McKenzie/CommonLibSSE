@@ -1878,9 +1878,6 @@
     <ClCompile Include="src\RE\NiInterpolator.cpp">
       <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiInterpolator</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\GlobalLookupInfo.cpp">
-      <Filter>src\RE\Misc</Filter>
-    </ClCompile>
     <ClCompile Include="src\SKSE\Trampoline.cpp">
       <Filter>src\SKSE</Filter>
     </ClCompile>
@@ -5395,9 +5392,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\DefaultObjectsReadyEvent.h">
       <Filter>include\RE\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\GlobalLookupInfo.h">
-      <Filter>include\RE\Misc</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\DetectionPriorities.h">
       <Filter>include\RE\FormComponents\Enums</Filter>
