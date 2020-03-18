@@ -12,10 +12,10 @@ namespace RE
 	class BGSLoadFormBuffer;
 	class BGSSaveFormBuffer;
 	class BSFixedString;
-	class FORM;
-	class FORM_GROUP;
 	class TESBoundObject;
 	class TESFile;
+	struct FORM;
+	struct FORM_GROUP;
 
 
 	namespace Impl
