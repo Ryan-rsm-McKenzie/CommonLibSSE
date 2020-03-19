@@ -10,6 +10,9 @@ namespace RE
 		class LocationTree : public Location
 		{
 		public:
+			inline static constexpr auto RTTI = RTTI_BSResource____LocationTree;
+
+
 			virtual ~LocationTree();  // 00
 
 			// override (Location)

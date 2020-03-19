@@ -8,6 +8,8 @@ namespace RE
 {
 	struct SetEventData
 	{
+	public:
+		// members
 		BSFixedString				  eventName;  // 00
 		BSTSmallArray<BSFixedString>* clipNames;  // 08
 		bool						  unk10;	  // 10

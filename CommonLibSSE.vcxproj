@@ -1403,6 +1403,7 @@
     <ClInclude Include="include\RE\TESDeathEvent.h" />
     <ClInclude Include="include\RE\TESGrabReleaseEvent.h" />
     <ClInclude Include="include\RE\TESHavokUtilities.h" />
+    <ClInclude Include="include\RE\TESMagicCasterForm.h" />
     <ClInclude Include="include\RE\TESQuestStageItem.h" />
     <ClInclude Include="include\RE\TESResetEvent.h" />
     <ClInclude Include="include\RE\TESSwitchRaceCompleteEvent.h" />

@@ -10,6 +10,7 @@ namespace RE
 
 	struct TESDeathEvent
 	{
+	public:
 		// members
 		NiPointer<TESObjectREFR> actorDying;   // 00
 		NiPointer<TESObjectREFR> actorKiller;  // 08

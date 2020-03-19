@@ -17,6 +17,7 @@ namespace RE
 
 			struct FunctionMessage
 			{
+			public:
 				enum class Type
 				{
 					kInvalid = 0,

@@ -10,6 +10,7 @@ namespace RE
 
 	struct TESActiveEffectApplyRemoveEvent
 	{
+	public:
 		// members
 		NiPointer<TESObjectREFR> caster;				// 00
 		NiPointer<TESObjectREFR> target;				// 08

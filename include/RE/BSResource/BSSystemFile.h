@@ -23,6 +23,7 @@ namespace RE
 			BSSystemFile();
 
 
+			// members
 			UInt32 flags;  // 00
 			UInt32 pad04;  // 04
 			HANDLE file;   // 08

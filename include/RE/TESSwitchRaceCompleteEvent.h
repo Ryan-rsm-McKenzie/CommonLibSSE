@@ -10,6 +10,7 @@ namespace RE
 
 	struct TESSwitchRaceCompleteEvent
 	{
+	public:
 		// members
 		NiPointer<TESObjectREFR> subject;  // 0
 	};

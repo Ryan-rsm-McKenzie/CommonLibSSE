@@ -35,6 +35,8 @@ namespace RE
 
 		struct UserEventMapping
 		{
+		public:
+			// members
 			BSFixedString eventID;			   // 00
 			UInt16		  inputKey;			   // 08
 			UInt16		  modifier;			   // 08
@@ -49,6 +51,8 @@ namespace RE
 
 		struct InputContext
 		{
+		public:
+			// members
 			BSTArray<UserEventMapping> deviceMappings[INPUT_DEVICES::kTotal];  // 00
 		};
 		STATIC_ASSERT(sizeof(InputContext) == 0x60);
@@ -56,6 +60,8 @@ namespace RE
 
 		struct LinkedMapping
 		{
+		public:
+			// members
 			BSFixedString  linkedMappingName;	  // 00
 			InputContextID linkedMappingContext;  // 08
 			INPUT_DEVICE   device;				  // 0C

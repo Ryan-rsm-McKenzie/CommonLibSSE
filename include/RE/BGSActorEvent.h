@@ -7,6 +7,7 @@ namespace RE
 {
 	struct BGSActorEvent
 	{
+	public:
 		// members
 		ActorHandle actor;	// 0
 	};

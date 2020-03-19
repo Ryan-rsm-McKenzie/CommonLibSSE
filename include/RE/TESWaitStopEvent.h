@@ -5,6 +5,7 @@ namespace RE
 {
 	struct TESWaitStopEvent
 	{
+	public:
 		// members
 		bool interrupted;  // 0
 	};

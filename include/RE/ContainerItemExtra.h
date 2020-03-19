@@ -9,6 +9,7 @@ namespace RE
 
 	struct ContainerItemExtra  // COED
 	{
+	public:
 		union Conditional
 		{
 			TESGlobal* global;
@@ -17,6 +18,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(Conditional) == 0x8);
 
 
+		// members
 		TESForm*	owner;		  // 00
 		Conditional conditional;  // 08
 		float		healthMult;	  // 10

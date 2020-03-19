@@ -11,6 +11,7 @@ namespace RE
 		struct LooseFileStreamBase
 		{
 		public:
+			// members
 			BSFixedString prefix;	 // 00
 			BSFixedString dirName;	 // 08
 			BSFixedString fileName;	 // 10

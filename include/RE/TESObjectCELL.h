@@ -221,7 +221,7 @@ namespace RE
 		TESForm*						 unk0B0;			// 0B0 - REFR owner of cell?
 		BSTArray<TESObjectREFR*>		 objectList;		// 0B8 - persistent
 		BSTArray<void*>					 unk0D0;			// 0D0
-		BSTArray<void*>					 unk0F8;			// 0F8
+		BSTArray<void*>					 unk0E8;			// 0E8
 		BSTArray<void*>					 unk100;			// 100
 		mutable BSSpinLock				 spinLock;			// 118
 		TESWorldSpace*					 worldSpace;		// 120

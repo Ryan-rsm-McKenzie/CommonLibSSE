@@ -38,6 +38,7 @@ namespace RE
 
 	struct Crime
 	{
+	public:
 		// members
 		UInt64					unk00;				// 00
 		UInt64					unk08;				// 08

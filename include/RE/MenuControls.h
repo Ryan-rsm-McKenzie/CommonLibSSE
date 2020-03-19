@@ -28,9 +28,12 @@ namespace RE
 	public:
 		struct QueuedReg
 		{
+		public:
 			QueuedReg(MenuEventHandler* a_handler, bool a_add);
 			~QueuedReg() = default;
 
+
+			// members
 			MenuEventHandler* handler;	// 00
 			bool			  add;		// 08
 			UInt8			  pad08;	// 09

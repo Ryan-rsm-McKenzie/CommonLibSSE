@@ -21,6 +21,8 @@ namespace RE
 
 	struct TESObjectList
 	{
+	public:
+		// members
 		UInt8 pad0;	 // 0
 	};
 	STATIC_ASSERT(sizeof(TESObjectList) == 0x1);
@@ -28,6 +30,8 @@ namespace RE
 
 	struct TESFileCollection
 	{
+	public:
+		// members
 		BSTArray<TESFile*> files;		// 00
 		BSTArray<TESFile*> smallFiles;	// 18
 	};

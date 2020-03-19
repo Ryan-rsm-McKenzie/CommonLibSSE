@@ -15,6 +15,7 @@ namespace RE
 		class StackFrame
 		{
 		public:
+			// members
 			Stack*							parent;				 // 00
 			StackFrame*						previousFrame;		 // 08
 			BSTSmartPointer<IFunction>		owningFunction;		 // 10

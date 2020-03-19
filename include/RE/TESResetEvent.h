@@ -10,6 +10,7 @@ namespace RE
 
 	struct TESResetEvent
 	{
+	public:
 		// members
 		NiPointer<TESObjectREFR> object;  // 0
 	};

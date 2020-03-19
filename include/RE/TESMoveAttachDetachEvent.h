@@ -10,6 +10,7 @@ namespace RE
 
 	struct TESMoveAttachDetachEvent
 	{
+	public:
 		// members
 		NiPointer<TESObjectREFR> movedRef;		  // 00
 		bool					 isCellAttached;  // 08

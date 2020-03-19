@@ -7,6 +7,8 @@ namespace RE
 {
 	struct REF_ACTIVATE_DATA
 	{
+	public:
+		// members
 		ObjectRefHandle activateRef;	// 00
 		float			activateDelay;	// 04
 	};

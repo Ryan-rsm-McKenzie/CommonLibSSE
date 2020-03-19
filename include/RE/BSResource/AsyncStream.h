@@ -10,6 +10,9 @@ namespace RE
 		class AsyncStream : public StreamBase
 		{
 		public:
+			inline static constexpr auto RTTI = RTTI_BSResource__AsyncStream;
+
+
 			virtual ~AsyncStream() = default;  // 00
 
 			// add

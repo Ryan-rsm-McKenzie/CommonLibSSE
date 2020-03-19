@@ -8,6 +8,9 @@ namespace RE
 	class OldMessageBoxCallback : public IMessageBoxCallback
 	{
 	public:
+		inline static constexpr auto RTTI = RTTI___OldMessageBoxCallback;
+
+
 		using Callback = void(Message);
 
 

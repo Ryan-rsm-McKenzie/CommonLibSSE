@@ -5,6 +5,7 @@ namespace RE
 {
 	struct DECAL_DATA_DATA
 	{
+	public:
 		enum Flag : UInt8
 		{
 			kNone = 0,
@@ -15,6 +16,7 @@ namespace RE
 		};
 
 
+		// members
 		float  decalMinWidth;	// 00
 		float  decalMaxWidth;	// 04
 		float  decalMinHeight;	// 08
@@ -32,6 +34,8 @@ namespace RE
 
 	struct DecalData
 	{
+	public:
+		// members
 		DECAL_DATA_DATA data;  // 00
 	};
 	STATIC_ASSERT(sizeof(DecalData) == 0x24);

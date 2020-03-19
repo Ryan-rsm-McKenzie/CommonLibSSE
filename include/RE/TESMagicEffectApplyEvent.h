@@ -10,6 +10,7 @@ namespace RE
 
 	struct TESMagicEffectApplyEvent
 	{
+	public:
 		// members
 		NiPointer<TESObjectREFR> target;	   // 00
 		NiPointer<TESObjectREFR> caster;	   // 08

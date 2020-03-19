@@ -4,5 +4,7 @@
 namespace RE
 {
 	struct BSMusicEvent
-	{};
+	{
+	public:
+	};
 }

@@ -14,6 +14,7 @@ namespace RE
 		{
 			struct VDescTable
 			{
+			public:
 				explicit VDescTable(UInt16 a_numParams, UInt16 a_numLocals);
 
 

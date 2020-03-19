@@ -10,6 +10,7 @@ namespace RE
 
 	struct TESInitScriptEvent
 	{
+	public:
 		// members
 		NiPointer<TESObjectREFR> objectInitialized;	 // 0
 	};

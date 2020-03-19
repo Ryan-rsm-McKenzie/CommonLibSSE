@@ -18,6 +18,9 @@ namespace RE
 		class SetMotionTypeFunctor : public DelayFunctor
 		{
 		public:
+			inline static constexpr auto RTTI = RTTI_SkyrimScript____SetMotionTypeFunctor;
+
+
 			virtual ~SetMotionTypeFunctor();  // 00
 
 			// override (DelayFunctor)

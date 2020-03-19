@@ -12,6 +12,8 @@ namespace RE
 
 	struct TESQuestStageItem
 	{
+	public:
+		// members
 		TESCondition		 objConditions;	 // 00
 		TESQuest*			 nextQuest;		 // 08
 		BGSLocalizedStringDL logEntry;		 // 10

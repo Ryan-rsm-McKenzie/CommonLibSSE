@@ -10,6 +10,7 @@ namespace RE
 
 	struct BSSoundHandle
 	{
+	public:
 		enum : UInt32
 		{
 			kInvalidID = static_cast<UInt32>(-1)

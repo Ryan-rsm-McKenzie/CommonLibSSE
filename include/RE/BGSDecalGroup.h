@@ -16,6 +16,8 @@ namespace RE
 
 	struct DECAL_CREATION_DATA
 	{
+	public:
+		// members
 		NiPoint3			  origin;		  // 00
 		NiPoint3			  direction;	  // 0C
 		NiPoint3			  surfaceNormal;  // 18
@@ -60,6 +62,8 @@ namespace RE
 
 	struct BGSDecalGroup
 	{
+	public:
+		// members
 		bool						   permanentGroup;	// 00
 		bool						   manualSaveLoad;	// 01
 		UInt16						   pad02;			// 02

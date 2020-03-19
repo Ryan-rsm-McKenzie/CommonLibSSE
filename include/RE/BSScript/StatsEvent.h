@@ -8,6 +8,7 @@ namespace RE
 		struct StatsEvent
 		{
 		public:
+			// members
 			UInt32 runningStacksCount;	  // 00
 			UInt32 suspendedStacksCount;  // 04
 			UInt32 functionMsgCount;	  // 08

@@ -8,6 +8,7 @@ namespace RE
 {
 	struct INTERIOR_DATA
 	{
+	public:
 		enum class Inherit : UInt32
 		{
 			kAmbientColor = 1 << 0,
@@ -24,6 +25,7 @@ namespace RE
 		};
 
 
+		// members
 		Color								ambient;						   // 00
 		Color								directional;					   // 04
 		Color								fogColorNear;					   // 08

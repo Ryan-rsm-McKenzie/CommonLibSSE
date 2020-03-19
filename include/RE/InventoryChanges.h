@@ -43,6 +43,7 @@ namespace RE
 		TES_HEAP_REDEFINE_NEW();
 
 
+		// members
 		BSSimpleList<InventoryEntryData*>* entryList;	 // 00
 		TESObjectREFR*					   owner;		 // 08
 		float							   totalWeight;	 // 10

@@ -7,6 +7,7 @@ namespace RE
 	class ActorSpeedChannel
 	{
 	public:
+		// members
 		UInt32 unk00;  // 00
 		Val	   val;	   // 04
 		T*	   type;   // ??

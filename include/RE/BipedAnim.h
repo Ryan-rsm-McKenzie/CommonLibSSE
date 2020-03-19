@@ -18,6 +18,8 @@ namespace RE
 
 	struct BIPOBJECT
 	{
+	public:
+		// members
 		TESForm*			  item;			// 00
 		TESObjectARMA*		  addon;		// 08
 		TESModel*			  part;			// 10

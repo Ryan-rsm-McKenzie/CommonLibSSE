@@ -14,6 +14,9 @@ namespace RE
 			public BSTSingletonSDM<GlobalLocations>	 // 10
 		{
 		public:
+			inline static constexpr auto RTTI = RTTI_BSResource____GlobalLocations;
+
+
 			struct Entry
 			{
 			public:

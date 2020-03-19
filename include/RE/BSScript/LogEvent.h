@@ -9,6 +9,7 @@ namespace RE
 	{
 		struct LogEvent
 		{
+		public:
 			// members
 			const char* const			errorMsg;  // 00
 			const ErrorLogger::Severity severity;  // 08

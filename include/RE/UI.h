@@ -29,20 +29,29 @@ namespace RE
 	{
 	public:
 		template <class T, class Enable = void>
-		struct _has_menu_name : std::false_type
-		{};
-		template <class T>
-		struct _has_menu_name<T, decltype((void)T::MENU_NAME)> : std::true_type
-		{};
-		template <class T>
-		struct has_menu_name : _has_menu_name<std::remove_cv_t<T>>
+		struct _has_menu_name :
+			std::false_type
 		{};
 
 		template <class T>
-		struct _is_menu_ptr : std::is_convertible<T, IMenu*>
+		struct _has_menu_name<T, decltype((void)T::MENU_NAME)> :
+			std::true_type
 		{};
+
 		template <class T>
-		struct is_menu_ptr : _is_menu_ptr<std::remove_cv_t<T>>
+		struct has_menu_name :
+			_has_menu_name<std::remove_cv_t<T>>
+		{};
+
+
+		template <class T>
+		struct _is_menu_ptr :
+			std::is_convertible<T, IMenu*>
+		{};
+
+		template <class T>
+		struct is_menu_ptr :
+			_is_menu_ptr<std::remove_cv_t<T>>
 		{};
 
 
@@ -78,6 +87,7 @@ namespace RE
 		bool			   IsShowingMenus() const;
 		bool			   IsUsingCustomRendering() const;
 		void			   Register(const std::string_view& a_menuName, Create_t* a_creator);
+
 		template <class T>
 		void RemoveEventSink(BSTEventSink<T>* a_sink);
 		void ShowMenus(bool a_show);

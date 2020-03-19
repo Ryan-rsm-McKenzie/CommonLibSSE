@@ -10,6 +10,7 @@ namespace RE
 
 	struct TESLockChangedEvent
 	{
+	public:
 		// members
 		NiPointer<TESObjectREFR> lockedObject;	// 0
 	};

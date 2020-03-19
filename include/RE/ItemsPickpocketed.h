@@ -7,8 +7,10 @@ namespace RE
 {
 	struct ItemsPickpocketed
 	{
+	public:
 		struct Event
 		{
+		public:
 			// members
 			SInt32 numItems;  // 0
 			UInt32 pad4;	  // 4

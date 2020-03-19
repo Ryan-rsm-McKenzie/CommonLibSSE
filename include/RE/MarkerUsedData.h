@@ -8,6 +8,8 @@ namespace RE
 {
 	struct MarkerUsedData
 	{
+	public:
+		// members
 		ActorHandle actorinMarker;	// 0
 		UInt32		markerID;		// 4
 		AITimeStamp expiration;		// 8

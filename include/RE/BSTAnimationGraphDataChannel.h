@@ -9,5 +9,7 @@ namespace RE
 	class BSTAnimationGraphDataChannel :
 		public BSAnimationGraphChannel,	 // 00
 		public Channel<T, Val>			 // 20
-	{};
+	{
+	public:
+	};
 }

@@ -18,6 +18,9 @@ namespace RE
 		public BSTEventSink<TESQuestStageItemDoneEvent>	 // 00
 	{
 	public:
+		inline static constexpr auto RTTI = RTTI_BGSStoryTeller;
+
+
 		virtual ~BGSStoryTeller();	// 00
 
 		// override (BSTEventSink<TESQuestStageItemDoneEvent>)

@@ -8,6 +8,9 @@ namespace RE
 	class LoggingDisabler : public GFxLog
 	{
 	public:
+		inline static constexpr auto RTTI = RTTI___LoggingDisabler;
+
+
 		LoggingDisabler() = default;
 		virtual ~LoggingDisabler() = default;  // 00
 

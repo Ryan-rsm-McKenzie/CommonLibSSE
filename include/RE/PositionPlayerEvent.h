@@ -6,6 +6,7 @@ namespace RE
 	// related to cell transitions
 	struct PositionPlayerEvent
 	{
+	public:
 		enum class EVENT_TYPE : UInt32
 		{
 			kPre = 0,

@@ -20,6 +20,7 @@ namespace RE
 		public:
 			struct UnlinkedNativeFunction
 			{
+			public:
 				// members
 				UnlinkedNativeFunction*	   next;  // 00
 				BSTSmartPointer<IFunction> func;  // 08
@@ -29,6 +30,7 @@ namespace RE
 
 			struct UserFlagInfo
 			{
+			public:
 				enum : std::uintptr_t
 				{
 					kUnkFlag = 1 << 0
@@ -46,6 +48,7 @@ namespace RE
 
 			struct VariableInfo
 			{
+			public:
 				// members
 				BSFixedString name;	 // 00
 				TypeInfo	  type;	 // 08
@@ -55,6 +58,7 @@ namespace RE
 
 			struct InitialValueInfo
 			{
+			public:
 				// members
 				UInt32	 variableIndex;	 // 00
 				UInt32	 pad04;			 // 04
@@ -65,6 +69,7 @@ namespace RE
 
 			struct PropertyInfo
 			{
+			public:
 				// members
 				BSFixedString	 name;	// 00
 				PropertyTypeInfo info;	// 08
@@ -74,6 +79,7 @@ namespace RE
 
 			struct GlobalFuncInfo
 			{
+			public:
 				// members
 				BSTSmartPointer<IFunction> func;  // 00
 			};
@@ -82,6 +88,7 @@ namespace RE
 
 			struct MemberFuncInfo
 			{
+			public:
 				// members
 				BSTSmartPointer<IFunction> func;  // 00
 			};
@@ -90,6 +97,7 @@ namespace RE
 
 			struct NamedStateInfo
 			{
+			public:
 				enum : UInt32
 				{
 					kFuncCountMask = 0x1FF,
@@ -99,6 +107,8 @@ namespace RE
 
 				struct Func
 				{
+				public:
+					// members
 					BSTSmartPointer<IFunction> func;  // 00
 				};
 				STATIC_ASSERT(sizeof(Func) == 0x8);

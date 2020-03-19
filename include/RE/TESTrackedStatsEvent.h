@@ -7,6 +7,7 @@ namespace RE
 {
 	struct TESTrackedStatsEvent
 	{
+	public:
 		// members
 		BSFixedString stat;	  // 00
 		SInt32		  value;  // 08

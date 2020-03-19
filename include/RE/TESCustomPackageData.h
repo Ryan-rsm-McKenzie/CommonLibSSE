@@ -28,8 +28,10 @@ namespace RE
 
 	struct BGSPackageDataNameMap : public BSIntrusiveRefCounted
 	{
+	public:
 		struct NameMapData
 		{
+		public:
 			enum class Flag : UInt8
 			{
 				kNone = 0,
@@ -37,6 +39,7 @@ namespace RE
 			};
 
 
+			// members
 			BSFixedString name;		 // 00 - BNAM
 			SInt8		  uid;		 // 08 - UNAM
 			bool		  isPublic;	 // 09 - PNAM

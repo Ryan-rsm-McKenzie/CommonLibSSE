@@ -986,6 +986,7 @@
 #include "RE/TESLoadGameEvent.h"
 #include "RE/TESLoadScreen.h"
 #include "RE/TESLockChangedEvent.h"
+#include "RE/TESMagicCasterForm.h"
 #include "RE/TESMagicEffectApplyEvent.h"
 #include "RE/TESMagicTargetForm.h"
 #include "RE/TESModel.h"

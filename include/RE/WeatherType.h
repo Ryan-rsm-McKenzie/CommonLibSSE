@@ -9,6 +9,8 @@ namespace RE
 
 	struct WeatherType
 	{
+	public:
+		// members
 		TESWeather* weather;  // 00
 		UInt32		chance;	  // 08
 		UInt32		unk0C;	  // 0C

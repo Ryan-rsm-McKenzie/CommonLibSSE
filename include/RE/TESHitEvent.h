@@ -10,6 +10,7 @@ namespace RE
 
 	struct TESHitEvent
 	{
+	public:
 		enum class Flag : UInt8
 		{
 			kNone = 0,

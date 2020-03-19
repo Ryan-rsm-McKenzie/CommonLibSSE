@@ -8,6 +8,7 @@ namespace RE
 {
 	struct BGSFootstepEvent : public BGSActorEvent
 	{
+	public:
 		// members
 		UInt32		  pad04;  // 04
 		BSFixedString tag;	  // 08

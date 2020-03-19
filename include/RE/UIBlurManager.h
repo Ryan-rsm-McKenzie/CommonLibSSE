@@ -15,6 +15,9 @@ namespace RE
 		public BSTEventSink<DefaultObjectsReadyEvent::Event>  // 00
 	{
 	public:
+		inline static constexpr auto RTTI = RTTI_UIBlurManager;
+
+
 		virtual ~UIBlurManager();  // 00
 
 		static UIBlurManager* GetSingleton();

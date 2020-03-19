@@ -9,6 +9,7 @@ namespace RE
 		{
 			struct PackedInstructionStream
 			{
+			public:
 				PackedInstructionStream();
 
 

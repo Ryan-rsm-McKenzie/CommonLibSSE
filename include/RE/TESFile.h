@@ -12,7 +12,6 @@ namespace RE
 	struct TESBitArrayFile;
 
 
-	// 4C8
 	class TESFile
 	{
 	public:

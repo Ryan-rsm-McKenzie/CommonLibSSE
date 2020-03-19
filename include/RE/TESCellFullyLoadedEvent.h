@@ -8,6 +8,7 @@ namespace RE
 
 	struct TESCellFullyLoadedEvent
 	{
+	public:
 		// members
 		TESObjectCELL* cell;
 	};

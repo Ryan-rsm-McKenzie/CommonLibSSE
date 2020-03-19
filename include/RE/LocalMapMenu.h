@@ -23,8 +23,11 @@ namespace RE
 	public:
 		struct LocalMapCullingProcess
 		{
+		public:
 			struct Data
 			{
+			public:
+				// members
 				NiPointer<BSShaderAccumulator> shaderAccumulator;  // 00
 				void*						   unk08;			   // 08 - smart ptr
 				NiPointer<NiCamera>			   camera;			   // 10
@@ -38,6 +41,7 @@ namespace RE
 			STATIC_ASSERT(sizeof(Data) == 0x48);
 
 
+			// members
 			BSCullingProcess			   cullingProcess;	// 00000
 			Data						   unk301F8;		// 301F8
 			UInt64						   unk30240;		// 30240

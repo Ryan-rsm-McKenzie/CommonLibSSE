@@ -475,9 +475,6 @@
     <Filter Include="include\RE\FormComponents\Components\TESRegionData">
       <UniqueIdentifier>{d069ce3e-0d25-47b6-814e-081eb72f79bb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\RE\FormComponents\Components\GetActorsFilter">
-      <UniqueIdentifier>{9af68fb2-a9de-4079-886e-c6001feec197}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\RE\FormComponents\Components\ActiveEffect">
       <UniqueIdentifier>{25b0e9c2-ad2f-41e9-b092-010559ba4885}</UniqueIdentifier>
     </Filter>
@@ -2602,9 +2599,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\ExtraAction.h">
       <Filter>include\RE\BSExtraData</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ActorTargetCheck.h">
-      <Filter>include\RE\FormComponents\Components\GetActorsFilter</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\GFxActionControl.h">
       <Filter>include\RE\Scaleform\GFxLoader</Filter>
@@ -5568,6 +5562,12 @@
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiSkinInstance</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\FORM.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\TESMagicCasterForm.h">
+      <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ActorTargetCheck.h">
       <Filter>include\RE\FormComponents\Components</Filter>
     </ClInclude>
   </ItemGroup>

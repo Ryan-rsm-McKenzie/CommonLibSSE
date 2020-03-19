@@ -37,6 +37,9 @@ namespace RE
 		public BSTEventSink<TESFurnitureEvent>	   // 018
 	{
 	public:
+		inline static constexpr auto RTTI = RTTI_PlayerControls;
+
+
 		PlayerControls();
 		virtual ~PlayerControls() = default;  // 00
 

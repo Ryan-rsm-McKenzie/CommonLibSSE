@@ -20,6 +20,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_UISaveLoadManager;
 
+
 		virtual ~UISaveLoadManager();  // 00
 
 		// override (BSTEventSink<BSSaveDataEvent>)

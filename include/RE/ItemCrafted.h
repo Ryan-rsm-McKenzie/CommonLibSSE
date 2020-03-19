@@ -10,8 +10,10 @@ namespace RE
 
 	struct ItemCrafted
 	{
+	public:
 		struct Event
 		{
+		public:
 			// members
 			TESForm* item;	 // 00
 			bool	 unk08;	 // 08 - weapon smithing/alchemy = true

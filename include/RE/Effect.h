@@ -11,11 +11,15 @@ namespace RE
 
 	struct Effect
 	{
+	public:
 		struct EffectItem  // EFIT
 		{
+		public:
 			EffectItem();
 			~EffectItem() = default;
 
+
+			// members
 			float  magnitude;  // 0
 			UInt32 area;	   // 4
 			UInt32 duration;   // 8

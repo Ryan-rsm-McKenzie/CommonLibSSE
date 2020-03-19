@@ -7,6 +7,8 @@ namespace RE
 	{
 		struct FileID
 		{
+		public:
+			// members
 			UInt32 file;	// 0
 			char   ext[4];	// 0
 		};

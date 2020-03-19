@@ -6,6 +6,8 @@
 #include "RE/TESBoundAnimObject.h"
 #include "RE/TESContainer.h"
 #include "RE/TESFullName.h"
+#include "RE/TESMagicCasterForm.h"
+#include "RE/TESMagicTargetForm.h"
 #include "RE/TESModelTextureSwap.h"
 #include "RE/TESWeightForm.h"
 
@@ -34,6 +36,8 @@ namespace RE
 		public TESFullName,				   // 48
 		public TESModelTextureSwap,		   // 58
 		public TESWeightForm,			   // 90
+		public TESMagicCasterForm,		   // B8
+		public TESMagicTargetForm,		   // B9
 		public BGSDestructibleObjectForm,  // A0
 		public BGSOpenCloseForm			   // B0
 	{
@@ -74,12 +78,12 @@ namespace RE
 
 
 		// members
-		UInt8					unkB8;		 // B8
 		CONT_DATA				data;		 // B9 - DATA
 		UInt16					padBA;		 // BA
 		UInt32					padBC;		 // BC
 		BGSSoundDescriptorForm* openSound;	 // C0 - SNAM
 		BGSSoundDescriptorForm* closeSound;	 // C8 - QNAM
 	};
+	STATIC_ASSERT(offsetof(TESObjectCONT, data) == 0xB9);
 	STATIC_ASSERT(sizeof(TESObjectCONT) == 0xD0);
 }

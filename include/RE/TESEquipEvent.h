@@ -10,6 +10,7 @@ namespace RE
 
 	struct TESEquipEvent
 	{
+	public:
 		// members
 		NiPointer<TESObjectREFR> actor;			// 00
 		FormID					 baseObject;	// 08

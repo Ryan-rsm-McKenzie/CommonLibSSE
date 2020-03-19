@@ -15,11 +15,14 @@ namespace RE
 
 	struct BSPackedTaskQueue
 	{
+	public:
 		using UnpackFunc_t = void(const BSPackedTask*);
 
 
 		struct Semaphore
 		{
+		public:
+			// members
 			HANDLE handle;	  // 00
 			UInt32 size;	  // 08
 			UInt32 capacity;  // 0C
@@ -37,6 +40,8 @@ namespace RE
 
 	struct BSSaveDataSystemUtilityImage
 	{
+	public:
+		// members
 		UInt32 size;	// 00
 		UInt32 width;	// 04
 		UInt32 height;	// 08

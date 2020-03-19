@@ -25,6 +25,7 @@ namespace RE
 
 		struct MaxSpeeds
 		{
+		public:
 			enum
 			{
 				kWalk,
@@ -34,6 +35,7 @@ namespace RE
 			};
 
 
+			// members
 			float speeds[SPEED_DIRECTIONS::kTotal][kTotal];	 // 00
 			float rotateWhileMovingRun;						 // 28
 		};
@@ -42,6 +44,8 @@ namespace RE
 
 		struct TypeData
 		{
+		public:
+			// members
 			BSFixedString typeName;		  // 00 - MNAM
 			MaxSpeeds	  defaultData;	  // 08 - SPED
 			float		  directional;	  // 34 - INAM~

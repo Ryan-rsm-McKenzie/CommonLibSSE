@@ -25,6 +25,8 @@ namespace RE
 
 	struct AnimVariableCacheInfo
 	{
+	public:
+		// members
 		BSFixedString	  variableName;	 // 00
 		hkbVariableValue* variable;		 // 08
 	};
@@ -33,6 +35,8 @@ namespace RE
 
 	struct BSAnimationGraphVariableCache
 	{
+	public:
+		// members
 		BSTArray<AnimVariableCacheInfo> variableCache;	// 00
 		void*							unk18;			// 18
 		void*							unk20;			// 20 - smart ptr
@@ -53,6 +57,7 @@ namespace RE
 
 		struct AnimationVariable
 		{
+		public:
 			union Value
 			{
 				bool   b;
@@ -62,6 +67,7 @@ namespace RE
 			STATIC_ASSERT(sizeof(Value) == 0x4);
 
 
+			// members
 			BSFixedString name;	  // 00
 			Value*		  value;  // 08
 		};

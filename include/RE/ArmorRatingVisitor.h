@@ -9,6 +9,9 @@ namespace RE
 	class ArmorRatingVisitor : public ArmorRatingVisitorBase
 	{
 	public:
+		inline static constexpr auto RTTI = RTTI___ArmorRatingVisitor;
+
+
 		virtual ~ArmorRatingVisitor();	// 00
 
 		// override (ArmorRatingVisitorBase)

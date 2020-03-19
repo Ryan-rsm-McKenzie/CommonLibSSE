@@ -10,6 +10,7 @@ namespace RE
 
 	struct TESGrabReleaseEvent
 	{
+	public:
 		NiPointer<TESObjectREFR> ref;	   // 00
 		bool					 grabbed;  // 08
 		UInt8					 pad09;	   // 09

@@ -55,6 +55,8 @@ namespace RE
 
 			struct MemoryPageData
 			{
+			public:
+				// members
 				BSTAutoPointer<MemoryPage> page;					// 00
 				UInt32					   availableMemoryInBytes;	// 08 - e.g. a function with 1 arg will have 3 unused args, so this will be 0x30, a function with 6 args will have 0 unused args, so this will be 0x0
 				UInt32					   pad0C;					// 0C

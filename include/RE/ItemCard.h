@@ -12,6 +12,8 @@ namespace RE
 
 	struct ItemCard
 	{
+	public:
+		// members
 		GFxValue		   obj;		  // 00 - kObject
 		BSString		   infoText;  // 18
 		void*			   unk28;	  // 28

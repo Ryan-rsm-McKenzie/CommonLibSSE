@@ -6,6 +6,7 @@ namespace RE
 	class BSTimer
 	{
 	public:
+		// members
 		UInt64 unk00;						   // 00
 		UInt32 lastPerformanceCount;		   // 08
 		float  clamp;						   // 10

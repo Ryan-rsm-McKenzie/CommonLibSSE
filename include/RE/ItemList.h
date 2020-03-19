@@ -13,8 +13,11 @@ namespace RE
 
 	struct ItemList
 	{
+	public:
 		struct Item
 		{
+		public:
+			// members
 			StandardItemData data;	 // 00
 			GFxValue		 obj;	 // 18 - kObject
 			UInt64			 unk30;	 // 30

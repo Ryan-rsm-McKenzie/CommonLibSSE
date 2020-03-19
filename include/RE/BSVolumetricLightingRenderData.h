@@ -8,6 +8,8 @@ namespace RE
 	public:
 		struct CustomColor
 		{
+		public:
+			// members
 			float contribution;	 // DNAM
 		};
 		STATIC_ASSERT(sizeof(CustomColor) == 0x4);
@@ -15,6 +17,8 @@ namespace RE
 
 		struct Density
 		{
+		public:
+			// members
 			float contribution;	 // HNAM
 			float size;			 // INAM
 			float windSpeed;	 // JNAM
@@ -25,6 +29,8 @@ namespace RE
 
 		struct PhaseFunction
 		{
+		public:
+			// members
 			float contribution;	 // LNAM
 			float scattering;	 // MNAM
 		};
@@ -33,6 +39,8 @@ namespace RE
 
 		struct SamplingRepartition
 		{
+		public:
+			// members
 			float rangeFactor;	// NNAM
 		};
 		STATIC_ASSERT(sizeof(SamplingRepartition) == 0x4);

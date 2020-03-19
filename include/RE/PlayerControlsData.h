@@ -8,6 +8,7 @@ namespace RE
 	class PlayerControlsData
 	{
 	public:
+		// members
 		NiPoint2 moveInputVec;	 // 00
 		NiPoint2 lookInputVec;	 // 08
 		NiPoint2 prevMoveVec;	 // 10

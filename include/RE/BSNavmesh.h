@@ -30,6 +30,8 @@ namespace RE
 
 	struct BSNavmeshVertex
 	{
+	public:
+		// members
 		NiPoint3 location;	// 0
 	};
 	STATIC_ASSERT(sizeof(BSNavmeshVertex) == 0xC);
@@ -37,6 +39,7 @@ namespace RE
 
 	struct BSNavmeshTriangle
 	{
+	public:
 		// reference:
 		// edge 0-1 = 0
 		// edge 1-2 = 1
@@ -77,6 +80,7 @@ namespace RE
 		};
 
 
+		// members
 		UInt16		  vertices[3];	   // 00
 		UInt16		  triangles[3];	   // 06 - 0xFF == NONE
 		TriangleFlag  triangleFlags;   // 0C
@@ -87,6 +91,8 @@ namespace RE
 
 	struct BSNavmeshTriangleEdgePortal
 	{
+	public:
+		// members
 		FormID otherMeshID;	 // 0
 		UInt16 triangle;	 // 4
 		SInt8  edgeIndex;	 // 6
@@ -97,6 +103,8 @@ namespace RE
 
 	struct BSNavmeshEdgeExtraInfo
 	{
+	public:
+		// members
 		EDGE_EXTRA_INFO_TYPE		type;	 // 0
 		BSNavmeshTriangleEdgePortal portal;	 // 4
 	};
@@ -105,6 +113,8 @@ namespace RE
 
 	struct BSNavmeshTriangleDoorPortal
 	{
+	public:
+		// members
 		BSTSmartPointer<BSPathingDoor> door;				 // 00
 		UInt16						   owningTriangleIndex;	 // 08
 		UInt16						   pad0A;				 // 0A
@@ -115,6 +125,8 @@ namespace RE
 
 	struct BSNavmeshClosedDoorInfo
 	{
+	public:
+		// members
 		BSTSmartPointer<BSPathingDoor> door;		   // 00
 		UInt16						   triangleIndex;  // 08
 		UInt16						   pad0A;		   // 0A
@@ -125,6 +137,8 @@ namespace RE
 
 	struct BSNavmeshCoverEdge
 	{
+	public:
+		// members
 		UInt16 vertices[2];	 // 00
 		UInt32 data;		 // 08
 	};
@@ -133,6 +147,8 @@ namespace RE
 
 	struct BSNavmeshGrid
 	{
+	public:
+		// members
 		UInt32						  gridSize;			 // 00
 		float						  columnSectionLen;	 // 04
 		float						  rowSectionLen;	 // 08

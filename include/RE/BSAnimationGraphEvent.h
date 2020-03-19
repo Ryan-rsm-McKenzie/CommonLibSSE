@@ -10,6 +10,7 @@ namespace RE
 
 	struct BSAnimationGraphEvent
 	{
+	public:
 		// members
 		const BSFixedString	 tag;	   // 00
 		const TESObjectREFR* holder;   // 08

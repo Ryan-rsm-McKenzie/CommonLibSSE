@@ -18,6 +18,7 @@ namespace RE
 			struct SuspendedStack
 			{
 			public:
+				// members
 				BSTSmartPointer<Stack>			stack;			// 00
 				BSTSmartPointer<IFuncCallQuery> funcCallQuery;	// 08
 			};

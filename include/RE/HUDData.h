@@ -9,6 +9,9 @@ namespace RE
 	class HUDData : public IUIMessageData
 	{
 	public:
+		inline static constexpr auto RTTI = RTTI_HUDData;
+
+
 		enum class Type : UInt32
 		{
 			kUnk0 = 0,
