@@ -33,31 +33,33 @@ namespace RE
 		auto gmst = RE::GameSettingCollection::GetSingleton();
 		Setting* setting = nullptr;
 
-		switch (GetDayOfWeek()) {
-		case Day::kSundas:
-			setting = gmst->GetSetting("sDaySunday");
-			break;
-		case Day::kMorndas:
-			setting = gmst->GetSetting("sDayMonday");
-			break;
-		case Day::kTirdas:
-			setting = gmst->GetSetting("sDayTuesday");
-			break;
-		case Day::kMiddas:
-			setting = gmst->GetSetting("sDayWednesday");
-			break;
-		case Day::kTurdas:
-			setting = gmst->GetSetting("sDayThursday");
-			break;
-		case Day::kFredas:
-			setting = gmst->GetSetting("sDayFriday");
-			break;
-		case Day::kLoredas:
-			setting = gmst->GetSetting("sDaySaturday");
-			break;
-		default:
-			setting = nullptr;
-			break;
+		if (gmst) {
+			switch (GetDayOfWeek()) {
+			case Day::kSundas:
+				setting = gmst->GetSetting("sDaySunday");
+				break;
+			case Day::kMorndas:
+				setting = gmst->GetSetting("sDayMonday");
+				break;
+			case Day::kTirdas:
+				setting = gmst->GetSetting("sDayTuesday");
+				break;
+			case Day::kMiddas:
+				setting = gmst->GetSetting("sDayWednesday");
+				break;
+			case Day::kTurdas:
+				setting = gmst->GetSetting("sDayThursday");
+				break;
+			case Day::kFredas:
+				setting = gmst->GetSetting("sDayFriday");
+				break;
+			case Day::kLoredas:
+				setting = gmst->GetSetting("sDaySaturday");
+				break;
+			default:
+				setting = nullptr;
+				break;
+			}
 		}
 
 		return setting ? setting->GetString() : "Bad Day";

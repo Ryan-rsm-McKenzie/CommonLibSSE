@@ -1,5 +1,7 @@
 #include "SKSE/RegistrationMap.h"
 
+#include <cassert>
+
 
 namespace SKSE
 {
@@ -20,7 +22,7 @@ namespace SKSE
 			a_rhs._lock.unlock();
 
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : 0;
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			if (policy) {
 				for (auto& reg : _regs) {
 					policy->PersistHandle(reg.first);
@@ -97,6 +99,7 @@ namespace SKSE
 
 		bool RegistrationMapBase::Register(const RE::TESForm* a_form, RE::BSFixedString a_callback)
 		{
+			assert(a_form);
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			if (!policy) {
@@ -104,7 +107,7 @@ namespace SKSE
 				return false;
 			}
 
-			auto invalidHandle = policy->EmptyHandle();
+			const auto invalidHandle = policy->EmptyHandle();
 			auto handle = policy->GetHandleForObject(a_form->GetFormType(), a_form);
 			if (handle == invalidHandle) {
 				_ERROR("Failed to create handle!");
@@ -126,6 +129,7 @@ namespace SKSE
 
 		bool RegistrationMapBase::Unregister(const RE::TESForm* a_form)
 		{
+			assert(a_form);
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			if (!policy) {
@@ -133,8 +137,8 @@ namespace SKSE
 				return false;
 			}
 
-			auto invalidHandle = policy->EmptyHandle();
-			auto handle = policy->GetHandleForObject(a_form->GetFormType(), a_form);
+			const auto invalidHandle = policy->EmptyHandle();
+			const auto handle = policy->GetHandleForObject(a_form->GetFormType(), a_form);
 			if (handle == invalidHandle) {
 				_ERROR("Failed to create handle!");
 				return false;
@@ -169,6 +173,7 @@ namespace SKSE
 
 		bool RegistrationMapBase::Save(SerializationInterface* a_intfc, UInt32 a_type, UInt32 a_version)
 		{
+			assert(a_intfc);
 			if (!a_intfc->OpenRecord(a_type, a_version)) {
 				_ERROR("Failed to open record!");
 				return false;
@@ -180,8 +185,9 @@ namespace SKSE
 
 		bool RegistrationMapBase::Save(SerializationInterface* a_intfc)
 		{
+			assert(a_intfc);
 			Locker locker(_lock);
-			std::size_t numRegs = _regs.size();
+			const std::size_t numRegs = _regs.size();
 			if (!a_intfc->WriteRecordData(numRegs)) {
 				_ERROR("Failed to save number of regs (%zu)!", numRegs);
 				return false;
@@ -207,6 +213,7 @@ namespace SKSE
 
 		bool RegistrationMapBase::Load(SerializationInterface* a_intfc)
 		{
+			assert(a_intfc);
 			std::size_t numRegs;
 			a_intfc->ReadRecordData(numRegs);
 

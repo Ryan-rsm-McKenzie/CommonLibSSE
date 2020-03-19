@@ -157,9 +157,9 @@ namespace RE
 	{
 		if (!_allocator) {
 			auto heap = MemoryManager::GetSingleton();
-			_allocator = heap->GetThreadScrapHeap();
+			_allocator = heap ? heap->GetThreadScrapHeap() : nullptr;
 		}
-		assert(_allocator != nullptr);
+		assert(_allocator);
 
 		auto mem = _allocator->AllocateAlign(a_size, 8);
 		assert(mem != nullptr);

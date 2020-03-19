@@ -52,7 +52,7 @@ namespace RE
 		virtual void InitItemImpl() override;		 // 13
 
 		bool IsValidRace(TESRace* a_sourceRace) const;
-		void GetNodeName(char* a_dstBuff, TESObjectREFR* a_refr, TESObjectARMO* a_armor, float a_weightOverride);
+		void GetNodeName(char* a_dstBuff, const TESObjectREFR* a_refr, const TESObjectARMO* a_armor, float a_weightOverride);
 
 
 		// members

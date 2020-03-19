@@ -174,6 +174,7 @@ namespace RE
 	protected:
 		struct PresenceBitfield
 		{
+		public:
 			bool HasType(UInt32 a_type) const;
 			void MarkType(UInt32 a_type, bool a_cleared);
 
@@ -192,6 +193,9 @@ namespace RE
 		BSExtraData*			_data;		// 00
 		PresenceBitfield*		_presence;	// 08
 		mutable BSReadWriteLock _lock;		// 10
+
+	private:
+		BSExtraData* GetByTypeImpl(ExtraDataType a_type) const;
 	};
 	STATIC_ASSERT(sizeof(ExtraDataList) == 0x18);
 

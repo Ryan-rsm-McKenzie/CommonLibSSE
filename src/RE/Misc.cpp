@@ -48,10 +48,10 @@ namespace RE
 		Setting* setting = nullptr;
 
 		auto iniPrefs = INIPrefSettingCollection::GetSingleton();
-		setting = iniPrefs->GetSetting(a_name);
+		setting = iniPrefs ? iniPrefs->GetSetting(a_name) : nullptr;
 		if (!setting) {
 			auto ini = INISettingCollection::GetSingleton();
-			setting = ini->GetSetting(a_name);
+			setting = ini ? ini->GetSetting(a_name) : nullptr;
 		}
 		return setting;
 	}

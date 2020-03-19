@@ -78,6 +78,7 @@ namespace RE
 
 	bool GFxWWHelper::IsLineBreakOpportunityAt(WordWrappingType a_wwMode, const wchar_t* a_wstr, UPInt a_index)
 	{
+		assert(a_wstr);
 		if (a_index == 0) {
 			return false;
 		}
@@ -98,6 +99,7 @@ namespace RE
 
 	UPInt GFxWWHelper::FindNextNonWhiteSpace(const wchar_t* a_wstr, UPInt a_pos, UPInt a_maxPos)
 	{
+		assert(a_wstr);
 		while (IsWhiteSpaceChar(a_wstr[a_pos])) {
 			++a_pos;
 		}
@@ -112,6 +114,7 @@ namespace RE
 
 	UPInt GFxWWHelper::FindPrevNonWhiteSpace(const wchar_t* a_wstr, UPInt a_pos)
 	{
+		assert(a_wstr);
 		auto p = static_cast<SPInt>(a_pos);
 		while (p >= 0 && (IsWhiteSpaceChar(a_wstr[p]) || IsLineFeedChar(a_wstr[p]))) {
 			--p;
@@ -138,18 +141,19 @@ namespace RE
 
 	UPInt GFxWWHelper::FindWordWrapPos(WordWrappingType a_wwMode, [[maybe_unused]] UPInt a_wordWrapPos, const wchar_t* a_paraText, UPInt a_paraLen, UPInt a_lineStartPos, UPInt a_lineLen)
 	{
+		assert(a_paraText);
 		if ((a_wwMode & WordWrappingType::kAll) == WordWrappingType::kNone || a_lineLen == 0) {
 			return UPINT_MAX;
 		}
 
 		auto pos = a_lineLen - 1;
-		auto maxLen = a_paraLen - a_lineStartPos;
+		const auto maxLen = a_paraLen - a_lineStartPos;
 		auto breakNow = a_lineLen == 1;
-		auto lineText = &a_paraText[a_lineStartPos];
+		auto lineText = std::addressof(a_paraText[a_lineStartPos]);
 		if (!breakNow) {
 			do {
 				if (IsWhiteSpaceChar(lineText[pos])) {
-					auto prev = FindPrevNonWhiteSpace(lineText, pos);
+					const auto prev = FindPrevNonWhiteSpace(lineText, pos);
 					if (prev == UPINT_MAX) {
 						pos = FindNextNonWhiteSpace(lineText, pos + 1, maxLen - 1);
 						break;

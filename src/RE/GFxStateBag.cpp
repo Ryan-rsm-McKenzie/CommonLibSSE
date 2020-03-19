@@ -17,6 +17,7 @@ namespace RE
 
 	void GFxStateBag::SetState(GFxState::StateType a_stateType, GFxState* a_state)
 	{
+		assert(a_state);
 		GFxStateBag* stateBag = GetStateBagImpl();
 		if (stateBag) {
 			assert(a_state->GetStateType() == a_stateType);

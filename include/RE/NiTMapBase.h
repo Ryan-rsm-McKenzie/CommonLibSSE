@@ -302,7 +302,7 @@ namespace RE
 		}
 
 
-		void clear() noexcept
+		void clear()
 		{
 			for (UInt32 i = 0; i < _capacity; i++) {
 				while (_data[i]) {

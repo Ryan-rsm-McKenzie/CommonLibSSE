@@ -432,7 +432,7 @@ namespace REL
 
 
 		template <class R, class F, class... Args>
-		R InvokeMemberFunctionPOD(F&& a_fn, Args&&... a_args)
+		R InvokeMemberFunctionPOD(F&& a_fn, Args&&... a_args) noexcept(std::is_nothrow_invocable_v<F, Args...>)
 		{
 			using NF = member_function_pod_t<std::decay_t<F>>;
 
@@ -445,7 +445,7 @@ namespace REL
 		// and passes it in rcx, unless its a member function, in which case it passes in rdx
 		// all other arguments shift over to compensate
 		template <class R, class F, class T1, class... Args>
-		R InvokeMemberFunctionNonPOD(F&& a_fn, T1&& a_object, Args&&... a_args)
+		R InvokeMemberFunctionNonPOD(F&& a_fn, T1&& a_object, Args&&... a_args) noexcept(std::is_nothrow_invocable_v<F, T1, Args...>)
 		{
 			using NF = member_function_non_pod_t<std::decay_t<F>>;
 
@@ -456,7 +456,7 @@ namespace REL
 
 
 		template <class R, class F, class... Args>
-		R Invoke(F&& a_fn, Args&&... a_args)
+		R Invoke(F&& a_fn, Args&&... a_args) noexcept(std::is_nothrow_invocable_v<F, Args...>)
 		{
 			if constexpr (std::is_member_function_pointer<std::decay_t<F>>::value) {  // the compiler chokes on member functions
 				if constexpr (Impl::is_msvc_pod<R>::value) {						  // no need to shift if it's a pod type
@@ -473,7 +473,7 @@ namespace REL
 
 	// generic solution for calling relocated functions
 	template <class F, class... Args, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
-	decltype(auto) Invoke(F&& a_fn, Args&&... a_args)
+	decltype(auto) Invoke(F&& a_fn, Args&&... a_args) noexcept(std::is_nothrow_invocable_v<F, Args...>)
 	{
 		return Impl::Invoke<std::invoke_result_t<F, Args...>>(std::forward<F>(a_fn), std::forward<Args>(a_args)...);
 	}
@@ -504,7 +504,7 @@ namespace REL
 		class Section
 		{
 		public:
-			constexpr Section() :
+			constexpr Section() noexcept :
 				addr(0xDEADBEEF),
 				size(0xDEADBEEF),
 				rva(0xDEADBEEF)
@@ -761,14 +761,20 @@ namespace REL
 
 		constexpr ID& operator=(const ID& a_rhs) noexcept
 		{
-			_id = a_rhs._id;
+			if (this != std::addressof(a_rhs)) {
+				_id = a_rhs._id;
+			}
 			return *this;
 		}
+
 		constexpr ID& operator=(ID&& a_rhs) noexcept
 		{
-			_id = std::move(a_rhs._id);
+			if (this != std::addressof(a_rhs)) {
+				_id = std::move(a_rhs._id);
+			}
 			return *this;
 		}
+
 		constexpr ID& operator=(std::uint64_t a_id) noexcept
 		{
 			_id = a_id;
@@ -810,7 +816,7 @@ namespace REL
 		{}
 
 
-		Offset(ID a_id) noexcept :
+		Offset(ID a_id) :
 			Offset(a_id.GetAddress())
 		{}
 
@@ -830,21 +836,29 @@ namespace REL
 			_address = a_rhs._address;
 			return *this;
 		}
+
+
 		constexpr Offset& operator=(Offset&& a_rhs) noexcept
 		{
 			_address = std::move(a_rhs._address);
 			return *this;
 		}
+
+
 		constexpr Offset& operator=(std::uint64_t a_rhs) noexcept
 		{
 			_address = a_rhs;
 			return *this;
 		}
+
+
 		constexpr Offset& operator=(ID a_rhs) noexcept
 		{
 			_address = a_rhs.GetAddress();
 			return *this;
 		}
+
+
 		constexpr Offset& operator=(std::pair<ID, std::size_t> a_rhs) noexcept
 		{
 			_address = a_rhs.first.GetAddress() + a_rhs.second;
@@ -1056,8 +1070,8 @@ namespace REL
 
 
 		RE::RTTI::TypeDescriptor*		 LocateTypeDescriptor(const char* a_name) const;
-		RE::RTTI::CompleteObjectLocator* LocateCOL(RE::RTTI::TypeDescriptor* a_typeDesc, std::uint32_t a_offset) const;
-		void*							 LocateVtbl(RE::RTTI::CompleteObjectLocator* a_col) const;
+		RE::RTTI::CompleteObjectLocator* LocateCOL(const RE::RTTI::TypeDescriptor* a_typeDesc, std::uint32_t a_offset) const;
+		void*							 LocateVtbl(const RE::RTTI::CompleteObjectLocator* a_col) const;
 
 
 		std::uintptr_t _address;

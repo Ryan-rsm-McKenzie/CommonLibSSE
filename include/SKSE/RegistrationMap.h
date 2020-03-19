@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cassert>
 #include <map>
 #include <mutex>
 #include <string>
@@ -64,11 +65,20 @@ namespace SKSE
 
 		public:
 			RegistrationMap() :
-				Base() {}
+				Base()
+			{}
+
+
 			RegistrationMap(const RegistrationMap& a_rhs) :
-				Base(a_rhs) {}
+				Base(a_rhs)
+			{}
+
+
 			RegistrationMap(RegistrationMap&& a_rhs) :
-				Base(std::move(a_rhs)) {}
+				Base(std::move(a_rhs))
+			{}
+
+
 			~RegistrationMap() {}
 
 
@@ -77,6 +87,8 @@ namespace SKSE
 				Base::operator=(a_rhs);
 				return *this;
 			}
+
+
 			inline RegistrationMap& operator=(RegistrationMap&& a_rhs)
 			{
 				Base::operator=(std::move(a_rhs));
@@ -120,11 +132,20 @@ namespace SKSE
 
 		public:
 			RegistrationMap() :
-				Base() {}
+				Base()
+			{}
+
+
 			RegistrationMap(const RegistrationMap& a_rhs) :
-				Base(a_rhs) {}
+				Base(a_rhs)
+			{}
+
+
 			RegistrationMap(RegistrationMap&& a_rhs) :
-				Base(std::move(a_rhs)) {}
+				Base(std::move(a_rhs))
+			{}
+
+
 			~RegistrationMap() {}
 
 
@@ -133,6 +154,8 @@ namespace SKSE
 				Base::operator=(a_rhs);
 				return *this;
 			}
+
+
 			inline RegistrationMap& operator=(RegistrationMap&& a_rhs)
 			{
 				Base::operator=(std::move(a_rhs));
@@ -143,9 +166,11 @@ namespace SKSE
 			void SendEvent()
 			{
 				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-				for (auto& reg : _regs) {
-					auto args = RE::MakeFunctionArguments();
-					vm->SendEvent(reg.first, reg.second.c_str(), args);
+				if (vm) {
+					for (auto& reg : _regs) {
+						auto args = RE::MakeFunctionArguments();
+						vm->SendEvent(reg.first, reg.second.c_str(), args);
+					}
 				}
 			}
 
@@ -153,6 +178,7 @@ namespace SKSE
 			void QueueEvent()
 			{
 				auto task = GetTaskInterface();
+				assert(task);
 				task->AddTask([this]() {
 					SendEvent();
 				});

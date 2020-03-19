@@ -101,7 +101,7 @@ namespace RE
 		{
 			BSSpinLockGuard locker(lock);
 
-			auto wasNotifying = notifying;
+			const auto wasNotifying = notifying;
 			notifying = true;
 			if (!wasNotifying && !pendingRegisters.empty()) {
 				for (auto& toAdd : pendingRegisters) {

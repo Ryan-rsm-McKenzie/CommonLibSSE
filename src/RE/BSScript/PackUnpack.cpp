@@ -16,7 +16,7 @@ namespace RE
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			BSTSmartPointer<ObjectTypeInfo> classPtr;
-			if (vm->GetScriptObjectType(a_typeID, classPtr)) {
+			if (vm && vm->GetScriptObjectType(a_typeID, classPtr)) {
 				return classPtr->GetRawType();
 			} else {
 				_ERROR("Failed to get vm type id for class!\n");
@@ -30,13 +30,15 @@ namespace RE
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			VMTypeID id = 0;
 			BSTSmartPointer<ObjectTypeInfo> typeInfo(a_objectPtr->GetTypeInfo());
-			if (vm->GetTypeIDForScriptObject(typeInfo->GetName(), id)) {
+			if (vm && vm->GetTypeIDForScriptObject(typeInfo->GetName(), id)) {
 				auto policy = vm->GetObjectHandlePolicy();
-				auto handle = policy->GetHandleForObject(a_typeID, a_srcData);
+				if (policy) {
+					auto handle = policy->GetHandleForObject(a_typeID, a_srcData);
 
-				// if handle is of expected type and not invalid
-				if (policy->HandleIsType(id, handle) && handle != policy->EmptyHandle()) {
-					vm->GetObjectBindPolicy()->BindObject(a_objectPtr, handle);
+					// if handle is of expected type and not invalid
+					if (policy->HandleIsType(id, handle) && handle != policy->EmptyHandle()) {
+						vm->GetObjectBindPolicy()->BindObject(a_objectPtr, handle);
+					}
 				}
 			}
 		}
@@ -51,6 +53,10 @@ namespace RE
 			}
 
 			auto vm = Internal::VirtualMachine::GetSingleton();
+			if (!vm) {
+				return;
+			}
+
 			BSTSmartPointer<ObjectTypeInfo> classPtr;
 			vm->GetScriptObjectType(a_typeID, classPtr);
 			if (!classPtr) {
@@ -58,6 +64,10 @@ namespace RE
 			}
 
 			auto policy = vm->GetObjectHandlePolicy();
+			if (!policy) {
+				return;
+			}
+
 			auto handle = policy->GetHandleForObject(a_typeID, a_src);
 
 			BSTSmartPointer<Object> objectPtr;
@@ -77,7 +87,7 @@ namespace RE
 
 		void* UnpackHandle(const Variable* a_src, VMTypeID a_typeID)
 		{
-			auto object = a_src->GetObject();
+			const auto* object = a_src->GetObject();
 			return object ? object->Resolve(a_typeID) : nullptr;
 		}
 	}

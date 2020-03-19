@@ -1,5 +1,6 @@
 #include "SKSE/API.h"
 
+#include <cassert>
 #include <memory>
 #include <mutex>
 #include <vector>
@@ -65,6 +66,7 @@ namespace SKSE
 
 	bool Init(const LoadInterface* a_skse)
 	{
+		assert(a_skse);
 		std::lock_guard<decltype(g_apiLock)> locker(g_apiLock);
 
 		if (!g_apiInit) {

@@ -87,27 +87,13 @@ namespace RE
 
 	BSExtraData* ExtraDataList::GetByType(ExtraDataType a_type)
 	{
-		const ExtraDataList* thisPtr = this;
-		auto xData = thisPtr->GetByType(a_type);
-		return const_cast<BSExtraData*>(xData);
+		return GetByTypeImpl(a_type);
 	}
 
 
 	const BSExtraData* ExtraDataList::GetByType(ExtraDataType a_type) const
 	{
-		BSReadLockGuard locker(_lock);
-
-		if (!HasType(a_type)) {
-			return nullptr;
-		}
-
-		for (auto iter = _data; iter; iter = iter->next) {
-			if (iter->GetType() == a_type) {
-				return iter;
-			}
-		}
-
-		return nullptr;
+		return GetByTypeImpl(a_type);
 	}
 
 
@@ -194,7 +180,7 @@ namespace RE
 		}
 
 		auto xText = GetExtraTextDisplayData();
-		bool dfHealth = health <= 1.0 ? (1.0 - health) < 0.001 : (health - 1.0) < 0.001;  // check for health == 1.0
+		const bool dfHealth = health <= 1.0 ? (1.0 - health) < 0.001 : (health - 1.0) < 0.001;	// check for health == 1.0
 		if (!xText && !dfHealth) {
 			xText = new ExtraTextDisplayData();
 			Add(xText);
@@ -208,8 +194,8 @@ namespace RE
 
 		if (!result || result[0] == '\0') {
 			auto gmst = GameSettingCollection::GetSingleton();
-			auto sMissingName = gmst->GetSetting("sMissingName");
-			result = sMissingName->GetString();
+			auto sMissingName = gmst ? gmst->GetSetting("sMissingName") : nullptr;
+			result = sMissingName ? sMissingName->GetString() : nullptr;
 		}
 
 		return result;
@@ -268,7 +254,7 @@ namespace RE
 				linkedRef = entry.refr;
 				if (!linkedRef && HasType(ExtraDataType::kEditorID)) {
 					auto xMissingLinkedRefIDs = GetByType<ExtraMissingLinkedRefIDs>();
-					linkedRef = xMissingLinkedRefIDs->GetLinkedRef(a_keyword);
+					linkedRef = xMissingLinkedRefIDs ? xMissingLinkedRefIDs->GetLinkedRef(a_keyword) : nullptr;
 				}
 			}
 
@@ -333,19 +319,19 @@ namespace RE
 
 	bool ExtraDataList::PresenceBitfield::HasType(UInt32 a_type) const
 	{
-		UInt32 index = (a_type >> 3);
+		const UInt32 index = (a_type >> 3);
 		if (index >= 0x18) {
 			return false;
 		}
-		UInt8 bitMask = 1 << (a_type % 8);
+		const UInt8 bitMask = 1 << (a_type % 8);
 		return (bits[index] & bitMask) != 0;
 	}
 
 
 	void ExtraDataList::PresenceBitfield::MarkType(UInt32 a_type, bool a_cleared)
 	{
-		UInt32 index = (a_type >> 3);
-		UInt8 bitMask = 1 << (a_type % 8);
+		const UInt32 index = (a_type >> 3);
+		const UInt8 bitMask = 1 << (a_type % 8);
 		auto& flag = bits[index];
 		if (a_cleared) {
 			flag &= ~bitMask;
@@ -364,5 +350,23 @@ namespace RE
 	void ExtraDataList::MarkType(ExtraDataType a_type, bool a_cleared)
 	{
 		MarkType(static_cast<UInt32>(a_type), a_cleared);
+	}
+
+
+	BSExtraData* ExtraDataList::GetByTypeImpl(ExtraDataType a_type) const
+	{
+		BSReadLockGuard locker(_lock);
+
+		if (!HasType(a_type)) {
+			return nullptr;
+		}
+
+		for (auto iter = _data; iter; iter = iter->next) {
+			if (iter->GetType() == a_type) {
+				return iter;
+			}
+		}
+
+		return nullptr;
 	}
 }

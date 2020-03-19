@@ -1,5 +1,7 @@
 #include "SKSE/Interfaces.h"
 
+#include <cassert>
+
 #include "RE/BSScript/Internal/VirtualMachine.h"
 
 #include "SKSE/API.h"
@@ -21,11 +23,11 @@ namespace SKSE
 
 	Version QueryInterface::RuntimeVersion() const
 	{
-		auto packed = GetProxy()->runtimeVersion;
-		auto major = static_cast<std::uint16_t>((packed & 0xFF000000) >> 24);
-		auto minor = static_cast<std::uint16_t>((packed & 0x00FF0000) >> 16);
-		auto revision = static_cast<std::uint16_t>((packed & 0x0000FFF0) >> 4);
-		auto build = static_cast<std::uint16_t>((packed & 0x0000000F) >> 0);
+		const auto packed = GetProxy()->runtimeVersion;
+		const auto major = static_cast<std::uint16_t>((packed & 0xFF000000) >> 24);
+		const auto minor = static_cast<std::uint16_t>((packed & 0x00FF0000) >> 16);
+		const auto revision = static_cast<std::uint16_t>((packed & 0x0000FFF0) >> 4);
+		const auto build = static_cast<std::uint16_t>((packed & 0x0000000F) >> 0);
 		return Version(major, minor, revision, build);
 	}
 
@@ -250,6 +252,7 @@ namespace SKSE
 
 	bool PapyrusInterface::Register_Impl(RegFunction1* a_fn) const
 	{
+		assert(a_fn);
 		auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 		if (vm) {
 			a_fn(vm);
@@ -266,6 +269,7 @@ namespace SKSE
 
 	bool PapyrusInterface::Register_Impl(RegFunction2* a_fn) const
 	{
+		assert(a_fn);
 		auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 		if (vm) {
 			a_fn(vm);

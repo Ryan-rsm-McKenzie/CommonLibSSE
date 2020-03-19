@@ -57,8 +57,8 @@ namespace RE
 		void* Object::Resolve(VMTypeID a_typeID) const
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
-			auto policy = vm->GetObjectHandlePolicy();
-			if (policy->HandleIsType(a_typeID, handle) && policy->IsHandleObjectAvailable(handle)) {
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
+			if (policy && policy->HandleIsType(a_typeID, handle) && policy->IsHandleObjectAvailable(handle)) {
 				return policy->GetObjectForHandle(a_typeID, handle);
 			} else {
 				return nullptr;

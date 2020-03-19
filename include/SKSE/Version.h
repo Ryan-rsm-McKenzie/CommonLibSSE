@@ -35,19 +35,28 @@ namespace SKSE
 		[[nodiscard]] friend constexpr bool operator<=(const Version& a_lhs, const Version& a_rhs) noexcept { return !(a_lhs > a_rhs); }
 		[[nodiscard]] friend constexpr bool operator>=(const Version& a_lhs, const Version& a_rhs) noexcept { return !(a_lhs < a_rhs); }
 
-		[[nodiscard]] constexpr std::uint16_t&		 operator[](std::size_t a_idx) noexcept { return _buf[a_idx]; }
-		[[nodiscard]] constexpr const std::uint16_t& operator[](std::size_t a_idx) const noexcept { return _buf[a_idx]; }
+		[[nodiscard]] constexpr std::uint16_t& operator[](std::size_t a_idx) noexcept
+		{
+			assert(a_idx < kTotal);
+			return _buf[a_idx];
+		}
+
+		[[nodiscard]] constexpr const std::uint16_t& operator[](std::size_t a_idx) const noexcept
+		{
+			assert(a_idx < kTotal);
+			return _buf[a_idx];
+		}
 
 		[[nodiscard]] constexpr int Compare(const Version& a_rhs) const noexcept
 		{
-			if (GetMajor() != a_rhs.GetMajor()) {
-				return GetMajor() < a_rhs.GetMajor() ? -1 : 1;
-			} else if (GetMinor() != a_rhs.GetMinor()) {
-				return GetMinor() < a_rhs.GetMinor() ? -1 : 1;
-			} else if (GetRevision() != a_rhs.GetRevision()) {
-				return GetRevision() < a_rhs.GetRevision() ? -1 : 1;
-			} else if (GetBuild() != a_rhs.GetBuild()) {
-				return GetBuild() < a_rhs.GetBuild() ? -1 : 1;
+			if ((*this)[kMajor] != a_rhs[kMajor]) {
+				return (*this)[kMajor] < a_rhs[kMajor] ? -1 : 1;
+			} else if ((*this)[kMinor] != a_rhs[kMinor]) {
+				return (*this)[kMinor] < a_rhs[kMinor] ? -1 : 1;
+			} else if ((*this)[kRevision] != a_rhs[kRevision]) {
+				return (*this)[kRevision] < a_rhs[kRevision] ? -1 : 1;
+			} else if ((*this)[kBuild] != a_rhs[kBuild]) {
+				return (*this)[kBuild] < a_rhs[kBuild] ? -1 : 1;
 			} else {
 				return 0;
 			}
@@ -82,7 +91,8 @@ namespace SKSE
 			kMajor,
 			kMinor,
 			kRevision,
-			kBuild
+			kBuild,
+			kTotal
 		};
 
 

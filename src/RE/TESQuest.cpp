@@ -84,10 +84,12 @@ namespace RE
 		auto enabled = IsEnabled();
 		if (enabled != StartsEnabled()) {
 			auto storyTeller = BGSStoryTeller::GetSingleton();
-			if (enabled) {
-				storyTeller->BeginStartUpQuest(this);
-			} else {
-				storyTeller->BeginShutDownQuest(this);
+			if (storyTeller) {
+				if (enabled) {
+					storyTeller->BeginStartUpQuest(this);
+				} else {
+					storyTeller->BeginShutDownQuest(this);
+				}
 			}
 		}
 	}

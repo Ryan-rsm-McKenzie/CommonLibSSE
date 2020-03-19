@@ -1,19 +1,21 @@
 #include "RE/NiPoint3.h"
 
+#include <cassert>
+
 
 namespace RE
 {
 	float& NiPoint3::operator[](std::size_t a_idx)
 	{
-		float* arr = &x;
-		return reinterpret_cast<float&>(arr[a_idx]);
+		assert(a_idx < 3);
+		return std::addressof(x)[a_idx];
 	}
 
 
 	const float& NiPoint3::operator[](std::size_t a_idx) const
 	{
-		const float* arr = &x;
-		return reinterpret_cast<const float&>(arr[a_idx]);
+		assert(a_idx < 3);
+		return std::addressof(x)[a_idx];
 	}
 
 

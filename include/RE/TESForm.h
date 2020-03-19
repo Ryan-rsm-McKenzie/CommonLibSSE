@@ -197,22 +197,7 @@ namespace RE
 		virtual const char*			 GetObjectTypeName() const;																											 // 39 - { return ""; }
 		virtual bool				 QAvailableInGame() const;																											 // 3A - { return true; }
 
-		static TESForm* LookupByID(FormID a_formID);
-		template <class T>
-		static T*		LookupByID(FormID a_formID);
-		static TESForm* LookupByEditorID(const std::string_view& a_editorID);
-		template <class T>
-		static T* LookupByEditorID(const std::string_view& a_editorID);
-
-		static std::pair<BSTHashMap<FormID, TESForm*>*, std::reference_wrapper<BSReadWriteLock>>		GetAllForms();
-		static std::pair<BSTHashMap<BSFixedString, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> GetAllFormsByEditorID();
-
-		bool Is(FormType a_type) const;
-		template <class First, class... Rest>
-		bool Is(First a_first, Rest... a_rest) const;
-		bool IsNot(FormType a_type) const;
-		template <class First, class... Rest>
-		bool IsNot(First a_first, Rest... a_rest) const;
+		static void AddCompileIndex(FormID& a_id, TESFile* a_file);
 
 		template <class T, typename std::enable_if_t<Impl::is_valid_as_expr<T>::value, int> = 0>
 		constexpr T* As();
@@ -220,29 +205,47 @@ namespace RE
 		template <class T, typename std::enable_if_t<Impl::is_valid_as_expr<T>::value, int> = 0>
 		constexpr const T* As() const;
 
+		static std::pair<BSTHashMap<FormID, TESForm*>*, std::reference_wrapper<BSReadWriteLock>>		GetAllForms();
+		static std::pair<BSTHashMap<BSFixedString, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> GetAllFormsByEditorID();
+
+		static TESForm* LookupByID(FormID a_formID);
+		template <class T>
+		static T*		LookupByID(FormID a_formID);
+		static TESForm* LookupByEditorID(const std::string_view& a_editorID);
+		template <class T>
+		static T* LookupByEditorID(const std::string_view& a_editorID);
+
+		bool Is(FormType a_type) const noexcept;
+		template <class First, class... Rest>
+		bool Is(First a_first, Rest... a_rest) const noexcept;
+		bool IsNot(FormType a_type) const noexcept;
+		template <class First, class... Rest>
+		bool IsNot(First a_first, Rest... a_rest) const noexcept;
+
 		TESObjectREFR*		 AsReference();
 		const TESObjectREFR* AsReference() const;
-		FormID				 GetFormID() const;
-		FormType			 GetFormType() const;
+		TESFile*			 GetFile(SInt32 a_idx = -1) const;
+		FormID				 GetFormID() const noexcept;
+		FormType			 GetFormType() const noexcept;
 		SInt32				 GetGoldValue() const;
 		const char*			 GetName() const;
 		float				 GetWeight() const;
 		bool				 HasVMAD() const;
-		bool				 HasWorldModel() const;
+		bool				 HasWorldModel() const noexcept;
 		void				 InitItem();
-		bool				 IsAmmo() const;
-		bool				 IsArmor() const;
-		bool				 IsDeleted() const;
-		bool				 IsDynamicForm() const;
-		bool				 IsGold() const;
-		bool				 IsIgnored() const;
-		bool				 IsInitialized() const;
-		bool				 IsKey() const;
-		bool				 IsLockpick() const;
-		bool				 IsPlayer() const;
-		bool				 IsPlayerRef() const;
-		bool				 IsSoulGem() const;
-		bool				 IsWeapon() const;
+		bool				 IsAmmo() const noexcept;
+		bool				 IsArmor() const noexcept;
+		bool				 IsDeleted() const noexcept;
+		bool				 IsDynamicForm() const noexcept;
+		bool				 IsGold() const noexcept;
+		bool				 IsIgnored() const noexcept;
+		bool				 IsInitialized() const noexcept;
+		bool				 IsKey() const noexcept;
+		bool				 IsLockpick() const noexcept;
+		bool				 IsPlayer() const noexcept;
+		bool				 IsPlayerRef() const noexcept;
+		bool				 IsSoulGem() const noexcept;
+		bool				 IsWeapon() const noexcept;
 
 
 		// members
@@ -274,14 +277,14 @@ namespace RE
 
 
 	template <class First, class... Rest>
-	inline bool TESForm::Is(First a_first, Rest... a_rest) const
+	inline bool TESForm::Is(First a_first, Rest... a_rest) const noexcept
 	{
 		return Is(a_first) || Is(a_rest...);
 	}
 
 
 	template <class First, class... Rest>
-	inline bool TESForm::IsNot(First a_first, Rest... a_rest) const
+	inline bool TESForm::IsNot(First a_first, Rest... a_rest) const noexcept
 	{
 		return IsNot(a_first) && IsNot(a_rest...);
 	}

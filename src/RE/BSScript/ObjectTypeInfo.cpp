@@ -244,10 +244,12 @@ namespace RE
 		UInt32 ObjectTypeInfo::GetPropertyIndex(const BSFixedString& a_name) const
 		{
 			auto props = GetPropertyIter();
-			for (UInt32 i = 0; i < GetNumVariables(); ++i) {
-				auto& prop = props[i];
-				if (prop.name == a_name) {
-					return prop.info.autoVarIndex;
+			if (props) {
+				for (UInt32 i = 0; i < GetNumVariables(); ++i) {
+					auto& prop = props[i];
+					if (prop.name == a_name) {
+						return prop.info.autoVarIndex;
+					}
 				}
 			}
 			return static_cast<UInt32>(-1);

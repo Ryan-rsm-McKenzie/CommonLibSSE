@@ -149,24 +149,23 @@ namespace RE
 			}
 
 
-			[[nodiscard]] pointer operator->() const
+			[[nodiscard]] pointer operator->() const noexcept
 			{
 				assert(_entry != _end);
 				return std::addressof(_entry->value);
 			}
 
 
-			[[nodiscard]] bool operator==(const iterator_base& a_rhs) const
+			[[nodiscard]] friend bool operator==(const iterator_base& a_lhs, const iterator_base& a_rhs) noexcept
 			{
-				assert(_end == a_rhs._end);
-				return _entry == a_rhs._entry;
+				assert(a_lhs._end == a_rhs._end);
+				return a_lhs._entry == a_rhs._entry;
 			}
 
 
-			[[nodiscard]] bool operator!=(const iterator_base& a_rhs) const
+			[[nodiscard]] friend bool operator!=(const iterator_base& a_lhs, const iterator_base& a_rhs) noexcept
 			{
-				assert(_end == a_rhs._end);
-				return !operator==(a_rhs);
+				return !(a_lhs == a_rhs);
 			}
 
 
@@ -630,7 +629,7 @@ namespace RE
 		}
 
 
-		entry_type* get_entries() const
+		entry_type* get_entries() const noexcept
 		{
 			return _entries;
 		}

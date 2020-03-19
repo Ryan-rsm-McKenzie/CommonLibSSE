@@ -267,6 +267,7 @@ namespace RE
 
 	UPInt GString::BernsteinHashFunction(const void* a_dataIn, UPInt a_size, UPInt a_seed)
 	{
+		assert(a_dataIn);
 		auto dataIn = static_cast<const UInt8*>(a_dataIn);
 		UPInt hash;
 		UInt8 byte = 0;

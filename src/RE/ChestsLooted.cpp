@@ -16,8 +16,10 @@ namespace RE
 
 	void ChestsLooted::SendEvent()
 	{
-		Event e = { 0 };
+		const Event e = { 0 };
 		auto source = GetEventSource();
-		source->SendEvent(&e);
+		if (source) {
+			source->SendEvent(&e);
+		}
 	}
 }

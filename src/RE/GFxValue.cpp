@@ -204,6 +204,8 @@ namespace RE
 
 	void GFxValue::DisplayInfo::Initialize(Flag a_varsSet, double a_x, double a_y, double a_rotation, double a_xScale, double a_yScale, double a_alpha, bool a_visible, double a_z, double a_xRotation, double a_yRotation, double a_zScale, double a_fov, const GMatrix3D* a_viewM, const GMatrix3D* a_perspM)
 	{
+		assert(a_viewM);
+		assert(a_perspM);
 		_flags = a_varsSet;
 		_x = a_x;
 		_y = a_y;

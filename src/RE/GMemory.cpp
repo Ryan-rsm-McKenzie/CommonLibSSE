@@ -1,5 +1,7 @@
 #include "RE/GMemory.h"
 
+#include <cassert>
+
 #include "RE/GMemoryHeap.h"
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
@@ -62,12 +64,14 @@ namespace RE
 
 	void* GMemory::AllocInHeap(GMemoryHeap* a_heap, UPInt a_count)
 	{
+		assert(a_heap);
 		return a_heap->Alloc(a_count);
 	}
 
 
 	void* GMemory::AllocInHeap(GMemoryHeap* a_heap, UPInt a_count, UPInt a_al)
 	{
+		assert(a_heap);
 		return a_heap->Alloc(a_count, a_al);
 	}
 
@@ -88,6 +92,7 @@ namespace RE
 
 	void GMemory::FreeInHeap(GMemoryHeap* a_heap, void* a_ptr)
 	{
+		assert(a_heap);
 		if (a_ptr) {
 			a_heap->Free(a_ptr);
 		}

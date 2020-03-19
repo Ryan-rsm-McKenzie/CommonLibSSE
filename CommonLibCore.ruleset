@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="CommonLib Core" Description="These rules enforce a subset of the checks from the C++ Core Guidelines (https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#c-core-guidelines)." ToolsVersion="16.0">
+  <Include Path="cppcorecheckarithmeticrules.ruleset" Action="Default" />
+  <Include Path="cppcorecheckboundsrules.ruleset" Action="Default" />
+  <Include Path="cppcorecheckclassrules.ruleset" Action="Default" />
+  <Include Path="cppcorecheckconcurrencyrules.ruleset" Action="Default" />
+  <Include Path="cppcorecheckconstrules.ruleset" Action="Default" />
+  <Include Path="cppcorecheckdeclrules.ruleset" Action="Default" />
+  <Include Path="cppcorecheckfuncrules.ruleset" Action="Default" />
+  <Include Path="cppcorecheckgslrules.ruleset" Action="Default" />
+  <Include Path="cppcorecheckownerpointerrules.ruleset" Action="Default" />
+  <Include Path="cppcorecheckrawpointerrules.ruleset" Action="Default" />
+  <Include Path="cppcorechecksharedpointerrules.ruleset" Action="Default" />
+  <Include Path="cppcorecheckstlrules.ruleset" Action="Default" />
+  <Include Path="cppcorecheckstylerules.ruleset" Action="Default" />
+  <Include Path="cppcorechecktyperules.ruleset" Action="Default" />
+  <Include Path="cppcorecheckuniquepointerrules.ruleset" Action="Default" />
+  <Rules AnalyzerId="Microsoft.Analyzers.NativeCodeAnalysis" RuleNamespace="Microsoft.Rules.Native">
+    <Rule Id="C26400" Action="None" />
+    <Rule Id="C26409" Action="None" />
+    <Rule Id="C26432" Action="None" />
+    <Rule Id="C26435" Action="None" />
+    <Rule Id="C26439" Action="None" />
+    <Rule Id="C26440" Action="None" />
+    <Rule Id="C26443" Action="None" />
+    <Rule Id="C26446" Action="None" />
+    <Rule Id="C26447" Action="None" />
+    <Rule Id="C26455" Action="None" />
+    <Rule Id="C26465" Action="None" />
+    <Rule Id="C26466" Action="None" />
+    <Rule Id="C26472" Action="None" />
+    <Rule Id="C26473" Action="None" />
+    <Rule Id="C26474" Action="None" />
+    <Rule Id="C26476" Action="None" />
+    <Rule Id="C26481" Action="None" />
+    <Rule Id="C26482" Action="None" />
+    <Rule Id="C26485" Action="None" />
+    <Rule Id="C26490" Action="None" />
+    <Rule Id="C26491" Action="None" />
+    <Rule Id="C26492" Action="None" />
+    <Rule Id="C26493" Action="None" />
+  </Rules>
+</RuleSet>

@@ -516,7 +516,6 @@ namespace RE
 		bool					  IsFactionInCrimeGroup(const TESFaction* a_faction) const;
 		bool					  IsGhost() const;
 		bool					  IsGuard() const;
-		bool					  IsHorse() const;
 		bool					  IsHostileToActor(Actor* a_actor);
 		bool					  IsInKillMove() const;
 		bool					  IsOnMount() const;
@@ -596,6 +595,9 @@ namespace RE
 		UInt64								   unk278;							   // 278
 		UInt64								   unk280;							   // 280
 		CRITICAL_SECTION					   unk288;							   // 288 - havok related
+
+	private:
+		TESFaction* GetCrimeFactionImpl() const;
 	};
 	STATIC_ASSERT(sizeof(Actor) == 0x2B0);
 }

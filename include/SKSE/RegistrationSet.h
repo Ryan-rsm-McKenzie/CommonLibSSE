@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cassert>
 #include <mutex>
 #include <set>
 #include <string>
@@ -148,9 +149,11 @@ namespace SKSE
 			{
 				auto			  vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 				RE::BSFixedString eventName(_eventName.c_str());
-				for (auto& handle : _handles) {
-					auto args = RE::MakeFunctionArguments();
-					vm->SendEvent(handle, eventName, args);
+				if (vm) {
+					for (auto& handle : _handles) {
+						auto args = RE::MakeFunctionArguments();
+						vm->SendEvent(handle, eventName, args);
+					}
 				}
 			}
 
@@ -158,6 +161,7 @@ namespace SKSE
 			void QueueEvent()
 			{
 				auto task = GetTaskInterface();
+				assert(task);
 				task->AddTask([this]() {
 					SendEvent();
 				});

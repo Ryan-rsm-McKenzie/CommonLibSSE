@@ -1,5 +1,7 @@
 #include "RE/ItemsPickpocketed.h"
 
+#include <memory>
+
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
@@ -18,6 +20,8 @@ namespace RE
 	{
 		Event e = { a_numItems, 0 };
 		auto source = GetEventSource();
-		source->SendEvent(&e);
+		if (source) {
+			source->SendEvent(std::addressof(e));
+		}
 	}
 }

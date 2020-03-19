@@ -79,8 +79,15 @@ namespace RE
 	inline void* malloc(std::size_t a_size)
 	{
 		auto heap = MemoryManager::GetSingleton();
+		if (!heap) {
+			throw std::bad_alloc();
+		}
+
 		auto mem = heap->Allocate(a_size, 0, false);
-		assert(mem != nullptr);
+		if (!mem) {
+			throw std::bad_alloc();
+		}
+
 		return mem;
 	}
 
@@ -102,8 +109,15 @@ namespace RE
 	inline void* aligned_alloc(std::size_t a_alignment, std::size_t a_size)
 	{
 		auto heap = MemoryManager::GetSingleton();
+		if (!heap) {
+			throw std::bad_alloc();
+		}
+
 		auto mem = heap->Allocate(a_size, static_cast<SInt32>(a_alignment), true);
-		assert(mem != nullptr);
+		if (!mem) {
+			throw std::bad_alloc();
+		}
+
 		return mem;
 	}
 
@@ -145,8 +159,15 @@ namespace RE
 	inline void* realloc(void* a_ptr, std::size_t a_newSize)
 	{
 		auto heap = MemoryManager::GetSingleton();
+		if (!heap) {
+			throw std::bad_alloc();
+		}
+
 		auto mem = heap->Reallocate(a_ptr, a_newSize, 0, false);
-		assert(mem != nullptr);
+		if (!mem) {
+			throw std::bad_alloc();
+		}
+
 		return mem;
 	}
 
@@ -161,8 +182,15 @@ namespace RE
 	inline void* aligned_realloc(void* a_ptr, std::size_t a_newSize, std::size_t a_alignment)
 	{
 		auto heap = MemoryManager::GetSingleton();
+		if (!heap) {
+			throw std::bad_alloc();
+		}
+
 		auto mem = heap->Reallocate(a_ptr, a_newSize, static_cast<SInt32>(a_alignment), true);
-		assert(mem != nullptr);
+		if (!mem) {
+			throw std::bad_alloc();
+		}
+
 		return mem;
 	}
 
@@ -176,40 +204,48 @@ namespace RE
 
 	inline void free(void* a_ptr)
 	{
-		assert(a_ptr != nullptr);
-		auto heap = MemoryManager::GetSingleton();
-		heap->Deallocate(a_ptr, false);
+		if (a_ptr) {
+			auto heap = MemoryManager::GetSingleton();
+			if (heap) {
+				heap->Deallocate(a_ptr, false);
+			}
+		}
 	}
 
 
 	inline void aligned_free(void* a_ptr)
 	{
-		assert(a_ptr != nullptr);
-		auto heap = MemoryManager::GetSingleton();
-		heap->Deallocate(a_ptr, true);
+		if (a_ptr) {
+			auto heap = MemoryManager::GetSingleton();
+			if (heap) {
+				heap->Deallocate(a_ptr, true);
+			}
+		}
 	}
 }
 
 
-#define TES_HEAP_REDEFINE_NEW()                                                                            \
-	inline void* operator new(std::size_t a_count) { return RE::malloc(a_count); }                         \
-	inline void* operator new[](std::size_t a_count) { return RE::malloc(a_count); }                       \
-	inline void* operator new([[maybe_unused]] std::size_t a_count, void* a_plcmnt) { return a_plcmnt; }   \
-	inline void* operator new[]([[maybe_unused]] std::size_t a_count, void* a_plcmnt) { return a_plcmnt; } \
-	inline void	 operator delete(void* a_ptr)                                                              \
-	{                                                                                                      \
-		if (a_ptr) {                                                                                       \
-			RE::free(a_ptr);                                                                               \
-		}                                                                                                  \
-	}                                                                                                      \
-	inline void operator delete[](void* a_ptr)                                                             \
-	{                                                                                                      \
-		if (a_ptr) {                                                                                       \
-			RE::free(a_ptr);                                                                               \
-		}                                                                                                  \
-	}                                                                                                      \
-	inline void operator delete([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt) { return; } \
-	inline void operator delete[]([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt) { return; }
+#define TES_HEAP_REDEFINE_NEW()                                                                                     \
+	inline void* operator new(std::size_t a_count) { return RE::malloc(a_count); }                                  \
+	inline void* operator new[](std::size_t a_count) { return RE::malloc(a_count); }                                \
+	inline void* operator new([[maybe_unused]] std::size_t a_count, void* a_plcmnt) noexcept { return a_plcmnt; }   \
+	inline void* operator new[]([[maybe_unused]] std::size_t a_count, void* a_plcmnt) noexcept { return a_plcmnt; } \
+	inline void	 operator delete(void* a_ptr) noexcept                                                              \
+	{                                                                                                               \
+		try {                                                                                                       \
+			RE::free(a_ptr);                                                                                        \
+		} catch (...) {                                                                                             \
+		}                                                                                                           \
+	}                                                                                                               \
+	inline void operator delete[](void* a_ptr) noexcept                                                             \
+	{                                                                                                               \
+		try {                                                                                                       \
+			RE::free(a_ptr);                                                                                        \
+		} catch (...) {                                                                                             \
+		}                                                                                                           \
+	}                                                                                                               \
+	inline void operator delete([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt) noexcept { return; } \
+	inline void operator delete[]([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt) noexcept { return; }
 
 
 namespace RE

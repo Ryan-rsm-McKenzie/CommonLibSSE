@@ -465,7 +465,7 @@ namespace RE
 	{
 		auto obj = GetObject(a_idx);
 		if (obj) {
-			bool isType = obj->Is(T::FORMTYPE);
+			const bool isType = obj->Is(T::FORMTYPE);
 			assert(isType);
 			return isType ? static_cast<T*>(obj) : nullptr;
 		} else {

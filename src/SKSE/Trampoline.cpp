@@ -21,7 +21,7 @@ namespace SKSE
 				return 0;
 			}
 
-			auto remainder = a_number % a_multiple;
+			const auto remainder = a_number % a_multiple;
 			return remainder == 0 ? a_number : a_number + a_multiple - remainder;
 		}
 
@@ -32,7 +32,7 @@ namespace SKSE
 				return 0;
 			}
 
-			auto remainder = a_number % a_multiple;
+			const auto remainder = a_number % a_multiple;
 			return remainder == 0 ? a_number : a_number - remainder;
 		}
 	}
@@ -117,7 +117,7 @@ namespace SKSE
 		}
 
 		if (!a_module) {
-			auto text = REL::Module::GetSection(REL::Module::ID::kTextX);
+			const auto text = REL::Module::GetSection(REL::Module::ID::kTextX);
 			a_module = text.BasePtr<std::uint8_t>() + text.Size();
 		}
 
@@ -182,7 +182,7 @@ namespace SKSE
 	{
 		Locker locker(_lock);
 		assert(_data <= a_end && a_end < _data + _capacity);
-		auto size = reinterpret_cast<std::uintptr_t>(a_end) - reinterpret_cast<std::uintptr_t>(_data + _size);
+		const auto size = reinterpret_cast<std::uintptr_t>(a_end) - reinterpret_cast<std::uintptr_t>(_data + _size);
 		EndAlloc_Impl(size);
 		LogStats();
 	}
@@ -286,7 +286,7 @@ namespace SKSE
 		granularity = si.dwAllocationGranularity;
 
 		std::uintptr_t min = a_address >= MIN_RANGE ? roundup(a_address - MIN_RANGE, granularity) : 0;
-		std::uintptr_t max = a_address < (MAX_ADDR - MIN_RANGE) ? rounddown(a_address + MIN_RANGE, granularity) : MAX_ADDR;
+		const std::uintptr_t max = a_address < (MAX_ADDR - MIN_RANGE) ? rounddown(a_address + MIN_RANGE, granularity) : MAX_ADDR;
 		std::uintptr_t addr;
 
 		MEMORY_BASIC_INFORMATION mbi;
@@ -430,7 +430,7 @@ namespace SKSE
 			return false;
 		}
 
-		std::ptrdiff_t disp = reinterpret_cast<std::uintptr_t>(mem) - (a_src + sizeof(SrcAssembly));
+		const std::ptrdiff_t disp = reinterpret_cast<std::uintptr_t>(mem) - (a_src + sizeof(SrcAssembly));
 		if (!IsDisplacementInRange(disp)) {
 			EndAlloc(END_ALLOC_TAG);
 			_ERROR("Trampoline ran out of space");
@@ -476,7 +476,7 @@ namespace SKSE
 			return false;
 		}
 
-		std::ptrdiff_t disp = reinterpret_cast<std::uintptr_t>(mem) - (a_src + sizeof(Assembly));
+		const std::ptrdiff_t disp = reinterpret_cast<std::uintptr_t>(mem) - (a_src + sizeof(Assembly));
 		if (!IsDisplacementInRange(disp)) {
 			EndAlloc(END_ALLOC_TAG);
 			_ERROR("Trampoline ran out of space");
@@ -498,17 +498,17 @@ namespace SKSE
 
 	std::uintptr_t Trampoline::Write5BranchEx_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_opcode)
 	{
-		auto disp = reinterpret_cast<std::int32_t*>(a_src + 1);
-		auto nextOp = a_src + 5;
-		auto func = nextOp + *disp;
+		const auto disp = reinterpret_cast<std::int32_t*>(a_src + 1);
+		const auto nextOp = a_src + 5;
+		const auto func = nextOp + *disp;
 		return Write5Branch_Impl(a_src, a_dst, a_opcode) ? func : 0;
 	}
 
 	std::uintptr_t Trampoline::Write6BranchEx_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_modrm)
 	{
-		auto disp = reinterpret_cast<std::int32_t*>(a_src + 2);
-		auto nextOp = a_src + 6;
-		auto func = nextOp + *disp;
+		const auto disp = reinterpret_cast<std::int32_t*>(a_src + 2);
+		const auto nextOp = a_src + 6;
+		const auto func = nextOp + *disp;
 		return Write6Branch_Impl(a_src, a_dst, a_modrm) ? func : 0;
 	}
 

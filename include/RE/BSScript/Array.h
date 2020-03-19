@@ -40,13 +40,13 @@ namespace RE
 				using iterator_category = std::random_access_iterator_tag;
 
 
-				iterator_base();
-				iterator_base(const iterator_base& a_rhs);
-				iterator_base(iterator_base&& a_rhs);
-				explicit iterator_base(pointer a_ptr, std::size_t a_idx = 0);
+				iterator_base() noexcept;
+				iterator_base(const iterator_base& a_rhs) noexcept;
+				iterator_base(iterator_base&& a_rhs) noexcept;
+				explicit iterator_base(pointer a_ptr, std::size_t a_idx = 0) noexcept;
 
-				iterator_base& operator=(const iterator_base& a_rhs);
-				iterator_base& operator=(iterator_base&& a_rhs);
+				iterator_base& operator=(const iterator_base& a_rhs) noexcept;
+				iterator_base& operator=(iterator_base&& a_rhs) noexcept;
 
 				[[nodiscard]] reference operator*() const;
 				[[nodiscard]] pointer	operator->() const;
@@ -161,17 +161,17 @@ namespace RE
 
 
 		template <class T>
-		Array::iterator_base<T>::iterator_base() :
-			_ptr
-		{}
+		Array::iterator_base<T>::iterator_base() noexcept :
+			_ptr(nullptr)
 #if _DEBUG
-		, _idx(0)
+			,
+			_idx(0)
 #endif
 		{}
 
 
 		template <class T>
-		Array::iterator_base<T>::iterator_base(const iterator_base& a_rhs) :
+		Array::iterator_base<T>::iterator_base(const iterator_base& a_rhs) noexcept :
 			_ptr(a_rhs._ptr)
 #if _DEBUG
 			,
@@ -181,7 +181,7 @@ namespace RE
 
 
 		template <class T>
-		Array::iterator_base<T>::iterator_base(iterator_base&& a_rhs) :
+		Array::iterator_base<T>::iterator_base(iterator_base&& a_rhs) noexcept :
 			_ptr(std::move(a_rhs._ptr))
 #if _DEBUG
 			,
@@ -191,7 +191,7 @@ namespace RE
 
 
 		template <class T>
-		Array::iterator_base<T>::iterator_base(pointer a_ptr, std::size_t a_idx) :
+		Array::iterator_base<T>::iterator_base(pointer a_ptr, std::size_t a_idx) noexcept :
 #if _DEBUG
 			_ptr(a_ptr),
 			_idx(a_idx)
@@ -202,25 +202,29 @@ namespace RE
 
 
 		template <class T>
-		auto Array::iterator_base<T>::operator=(const iterator_base& a_rhs)
+		auto Array::iterator_base<T>::operator=(const iterator_base& a_rhs) noexcept
 			-> iterator_base&
 		{
-			_ptr = a_rhs._ptr;
+			if (this != std::addressof(a_rhs)) {
+				_ptr = a_rhs._ptr;
 #if _DEBUG
-			_idx = a_rhs._idx;
+				_idx = a_rhs._idx;
 #endif
+			}
 			return *this;
 		}
 
 
 		template <class T>
-		auto Array::iterator_base<T>::operator=(iterator_base&& a_rhs)
+		auto Array::iterator_base<T>::operator=(iterator_base&& a_rhs) noexcept
 			-> iterator_base&
 		{
-			_ptr = std::move(a_rhs._ptr);
+			if (this != std::addressof(a_rhs)) {
+				_ptr = std::move(a_rhs._ptr);
 #if _DEBUG
-			_idx = std::move(a_rhs._idx);
+				_idx = std::move(a_rhs._idx);
 #endif
+			}
 			return *this;
 		}
 

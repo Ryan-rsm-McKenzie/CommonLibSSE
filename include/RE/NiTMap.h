@@ -40,8 +40,10 @@ namespace RE
 
 		virtual void free_value(value_type* a_value) override  // 06
 		{
-			a_value->~value_type();
-			_allocator.Deallocate(a_value);
+			if (a_value) {
+				a_value->~value_type();
+				_allocator.Deallocate(a_value);
+			}
 		}
 	};
 	STATIC_ASSERT(sizeof(NiTMap<void*, void*>) == 0x20);

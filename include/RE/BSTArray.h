@@ -530,7 +530,7 @@ namespace RE
 		iterator erase(iterator a_pos)
 		{
 			iterator result = a_pos;
-			bool	 doBegin;
+			bool	 doBegin = false;
 			if (a_pos == begin()) {
 				doBegin = true;
 			} else {
@@ -648,9 +648,9 @@ namespace RE
 			auto newData = a_newCapacity > 0 ? allocate(a_newCapacity) : nullptr;
 			auto oldData = data();
 			if (oldData) {
-				auto oldCapacity = capacity();
+				const auto oldCapacity = capacity();
 				if (newData) {
-					auto bytesToCopy = std::min(oldCapacity, a_newCapacity) * sizeof(T);
+					const auto bytesToCopy = std::min(oldCapacity, a_newCapacity) * sizeof(T);
 					std::memcpy(newData, oldData, bytesToCopy);
 				}
 				deallocate(oldData);
@@ -666,7 +666,7 @@ namespace RE
 				grow_capacity(a_newSize);
 			}
 
-			auto oldSize = size();
+			const auto oldSize = size();
 			if (a_newSize > oldSize) {
 				for (size_type i = oldSize; i < a_newSize; ++i) {
 					new (std::addressof(data()[i])) value_type(std::forward<Args>(a_args)...);
@@ -817,51 +817,51 @@ namespace RE
 		using iterator = T*;
 		using const_iterator = const T*;
 
-		reference operator[](size_type a_pos)
+		reference operator[](size_type a_pos) noexcept
 		{
 			assert(a_pos < _size);
 			return _data[a_pos];
 		}
 
 
-		const_reference operator[](size_type a_pos) const
+		const_reference operator[](size_type a_pos) const noexcept
 		{
 			assert(a_pos < _size);
 			return _data[a_pos];
 		}
 
 
-		reference front()
+		reference front() noexcept
 		{
 			return operator[](0);
 		}
 
 
-		const_reference front() const
+		const_reference front() const noexcept
 		{
 			return operator[](0);
 		}
 
 
-		reference back()
+		reference back() noexcept
 		{
 			return operator[](size() - 1);
 		}
 
 
-		const_reference back() const
+		const_reference back() const noexcept
 		{
 			return operator[](size() - 1);
 		}
 
 
-		T* data()
+		T* data() noexcept
 		{
 			return _data;
 		}
 
 
-		const T* data() const
+		const T* data() const noexcept
 		{
 			return _data;
 		}
@@ -903,13 +903,13 @@ namespace RE
 		}
 
 
-		[[nodiscard]] bool empty() const
+		[[nodiscard]] bool empty() const noexcept
 		{
 			return size() == 0;
 		}
 
 
-		size_type size() const
+		size_type size() const noexcept
 		{
 			return _size;
 		}

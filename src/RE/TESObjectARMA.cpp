@@ -1,5 +1,7 @@
 #include "RE/TESObjectARMA.h"
 
+#include <cassert>
+
 #include "RE/FormTraits.h"
 #include "RE/TESNPC.h"
 #include "RE/TESObjectARMO.h"
@@ -9,7 +11,7 @@
 
 namespace RE
 {
-	bool HasArmorRace(TESRace* a_sourceRace, TESRace* a_targetRace)
+	bool HasArmorRace(const TESRace* a_sourceRace, const TESRace* a_targetRace)
 	{
 		if (a_sourceRace == a_targetRace) {
 			return true;
@@ -46,8 +48,10 @@ namespace RE
 	}
 
 
-	void TESObjectARMA::GetNodeName(char* a_dstBuff, TESObjectREFR* a_refr, TESObjectARMO* a_armor, float a_weightOverride)
+	void TESObjectARMA::GetNodeName(char* a_dstBuff, const TESObjectREFR* a_refr, const TESObjectARMO* a_armor, float a_weightOverride)
 	{
+		assert(a_refr);
+
 		float weight = 100.0F;
 		auto baseObj = a_refr->GetBaseObject();
 		auto npc = baseObj ? baseObj->As<TESNPC>() : nullptr;
@@ -64,6 +68,6 @@ namespace RE
 		}
 
 		UInt32 sex = npc ? static_cast<UInt32>(npc->GetSex()) : 0;
-		sprintf_s(a_dstBuff, MAX_PATH, " (%08X)[%d]/ (%08X) [%2.0f%%]", formID, sex, a_armor->formID, weight);
+		sprintf_s(a_dstBuff, MAX_PATH, " (%08X)[%d]/ (%08X) [%2.0f%%]", GetFormID(), sex, a_armor->GetFormID(), weight);
 	}
 }

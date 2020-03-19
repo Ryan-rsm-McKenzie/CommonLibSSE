@@ -147,14 +147,14 @@ namespace REL
 
 	std::uintptr_t Module::BaseAddr()
 	{
-		auto singleton = GetSingleton();
+		const auto* singleton = GetSingleton();
 		return singleton->_base;
 	}
 
 
 	std::size_t Module::Size()
 	{
-		auto singleton = GetSingleton();
+		const auto* singleton = GetSingleton();
 		return singleton->_size;
 	}
 
@@ -163,14 +163,14 @@ namespace REL
 		-> Section
 	{
 		assert(a_id < ID::kTotal);
-		auto singleton = GetSingleton();
+		const auto* singleton = GetSingleton();
 		return singleton->_sections.arr[a_id].section;
 	}
 
 
 	SKSE::Version Module::GetVersion()
 	{
-		auto singleton = GetSingleton();
+		const auto* singleton = GetSingleton();
 		return singleton->_version;
 	}
 
@@ -405,15 +405,15 @@ namespace REL
 
 	void IDDatabase::DoLoadImpl(IStream& a_input, std::vector<std::uint64_t>& a_buf)
 	{
-		std::uint8_t type;
-		std::uint64_t id;
-		std::uint64_t offset;
+		std::uint8_t type = 0;
+		std::uint64_t id = 0;
+		std::uint64_t offset = 0;
 		std::uint64_t prevID = 0;
 		std::uint64_t prevOffset = 0;
 		for (std::size_t i = 0; i < _header.AddrCount(); ++i) {
 			a_input.readin(type);
-			std::uint8_t lo = type & 0xF;
-			std::uint8_t hi = type >> 4;
+			const std::uint8_t lo = type & 0xF;
+			const std::uint8_t hi = type >> 4;
 
 			switch (lo) {
 			case 0:
@@ -444,7 +444,7 @@ namespace REL
 				throw std::runtime_error("Unhandled type");
 			}
 
-			std::uint64_t tmp = (hi & 8) != 0 ? (prevOffset / _header.PSize()) : prevOffset;
+			const std::uint64_t tmp = (hi & 8) != 0 ? (prevOffset / _header.PSize()) : prevOffset;
 
 			switch (hi & 7) {
 			case 0:
@@ -577,7 +577,7 @@ namespace REL
 	RE::RTTI::TypeDescriptor* VTable::LocateTypeDescriptor(const char* a_name) const
 	{
 		auto name = const_cast<std::uint8_t*>(reinterpret_cast<const std::uint8_t*>(a_name));
-		auto section = Module::GetSection(ID::kData);
+		const auto section = Module::GetSection(ID::kData);
 		auto start = section.BasePtr<std::uint8_t>();
 
 		Impl::Array<std::uint8_t> haystack(start, section.Size());
@@ -589,15 +589,15 @@ namespace REL
 	}
 
 
-	RE::RTTI::CompleteObjectLocator* VTable::LocateCOL(RE::RTTI::TypeDescriptor* a_typeDesc, std::uint32_t a_offset) const
+	RE::RTTI::CompleteObjectLocator* VTable::LocateCOL(const RE::RTTI::TypeDescriptor* a_typeDesc, std::uint32_t a_offset) const
 	{
-		auto typeDesc = reinterpret_cast<std::uintptr_t>(a_typeDesc);
-		auto rva = static_cast<std::uint32_t>(typeDesc - Module::BaseAddr());
+		const auto typeDesc = reinterpret_cast<std::uintptr_t>(a_typeDesc);
+		const auto rva = static_cast<std::uint32_t>(typeDesc - Module::BaseAddr());
 
-		auto section = Module::GetSection(ID::kRData);
+		const auto section = Module::GetSection(ID::kRData);
 		auto base = section.BasePtr<std::uint8_t>();
 		auto start = reinterpret_cast<std::uint32_t*>(base);
-		auto end = reinterpret_cast<std::uint32_t*>(base + section.Size());
+		const auto end = reinterpret_cast<std::uint32_t*>(base + section.Size());
 
 		for (auto iter = start; iter < end; ++iter) {
 			if (*iter == rva) {
@@ -621,14 +621,14 @@ namespace REL
 	}
 
 
-	void* VTable::LocateVtbl(RE::RTTI::CompleteObjectLocator* a_col) const
+	void* VTable::LocateVtbl(const RE::RTTI::CompleteObjectLocator* a_col) const
 	{
-		auto col = reinterpret_cast<std::uintptr_t>(a_col);
+		const auto col = reinterpret_cast<std::uintptr_t>(a_col);
 
-		auto section = Module::GetSection(ID::kRData);
+		const auto section = Module::GetSection(ID::kRData);
 		auto base = section.BasePtr<std::uint8_t>();
 		auto start = reinterpret_cast<std::uintptr_t*>(base);
-		auto end = reinterpret_cast<std::uintptr_t*>(base + section.Size());
+		const auto end = reinterpret_cast<std::uintptr_t*>(base + section.Size());
 
 		for (auto iter = start; iter < end; ++iter) {
 			if (*iter == col) {

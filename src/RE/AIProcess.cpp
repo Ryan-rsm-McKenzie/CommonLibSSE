@@ -122,7 +122,7 @@ namespace RE
 	void AIProcess::Update3DModel(Actor* a_actor)
 	{
 		Update3DModel_Impl(a_actor);
-		SKSE::NiNodeUpdateEvent event(a_actor);
+		const SKSE::NiNodeUpdateEvent event(a_actor);
 		auto source = SKSE::GetNiNodeUpdateEventSource();
 		assert(source);	 // api failed to init
 		source->SendEvent(&event);

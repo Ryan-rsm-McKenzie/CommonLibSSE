@@ -12,7 +12,7 @@ namespace RE
 	TESNPC* TESObjectCELL::GetActorOwner()
 	{
 		auto owner = GetOwner();
-		return owner->Is(FormType::NPC) ? static_cast<TESNPC*>(owner) : nullptr;
+		return owner && owner->Is(FormType::NPC) ? static_cast<TESNPC*>(owner) : nullptr;
 	}
 
 
@@ -25,7 +25,7 @@ namespace RE
 	TESFaction* TESObjectCELL::GetFactionOwner()
 	{
 		auto owner = GetOwner();
-		return owner->Is(FormType::Faction) ? static_cast<TESFaction*>(owner) : nullptr;
+		return owner && owner->Is(FormType::Faction) ? static_cast<TESFaction*>(owner) : nullptr;
 	}
 
 

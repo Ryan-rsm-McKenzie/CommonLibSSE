@@ -62,7 +62,7 @@ namespace RE
 
 		auto [safeZoneX, safeZoneY, sizeW, sizeH] = CollectDisplayInfo();
 
-		auto visibleRect = view->GetVisibleFrameRect();
+		const auto visibleRect = view->GetVisibleFrameRect();
 		GRectF safeRect;
 		safeRect.left = safeZoneX;
 		safeRect.top = safeZoneY;
@@ -88,7 +88,7 @@ namespace RE
 	}
 
 
-	bool BSScaleformManager::LoadMovie_Impl(RE::IMenu* a_menu, RE::GPtr<RE::GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
+	bool BSScaleformManager::LoadMovie_Impl(IMenu* a_menu, GPtr<RE::GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		using LoadConstants = GFxLoader::LoadConstants;
 		using StateType = GFxState::StateType;
@@ -119,7 +119,7 @@ namespace RE
 
 		auto [safeZoneX, safeZoneY, sizeW, sizeH] = CollectDisplayInfo();
 
-		auto visibleRect = a_viewOut->GetVisibleFrameRect();
+		const auto visibleRect = a_viewOut->GetVisibleFrameRect();
 		GRectF safeRect;
 		safeRect.left = safeZoneX;
 		safeRect.top = safeZoneY;
@@ -170,12 +170,31 @@ namespace RE
 
 	std::tuple<float, float, SInt32, SInt32> BSScaleformManager::CollectDisplayInfo()
 	{
-		static auto fSafeZoneX = GetINISetting("fSafeZoneX:Interface");
-		static auto fSafeZoneY = GetINISetting("fSafeZoneY:Interface");
-		static auto iSizeW = GetINISetting("iSize W:Display");
-		static auto iSizeH = GetINISetting("iSize H:Display");
+		static Setting* fSafeZoneX = nullptr;
+		if (!fSafeZoneX) {
+			fSafeZoneX = GetINISetting("fSafeZoneX:Interface");
+		}
+		float safeZoneX = fSafeZoneX ? fSafeZoneX->GetFloat() : 0.0;
 
-		return std::make_tuple(fSafeZoneX->GetFloat(), fSafeZoneY->GetFloat(), iSizeW->GetSInt(), iSizeH->GetSInt());
+		static Setting* fSafeZoneY = nullptr;
+		if (!fSafeZoneY) {
+			fSafeZoneY = GetINISetting("fSafeZoneY:Interface");
+		}
+		float safeZoneY = fSafeZoneY ? fSafeZoneY->GetFloat() : 0.0;
+
+		static Setting* iSizeW = nullptr;
+		if (!iSizeW) {
+			iSizeW = GetINISetting("iSize W:Display");
+		}
+		SInt32 sizeW = iSizeW ? iSizeW->GetSInt() : 0;
+
+		static Setting* iSizeH = nullptr;
+		if (!iSizeH) {
+			iSizeH = GetINISetting("iSize H:Display");
+		}
+		SInt32 sizeH = iSizeH ? iSizeH->GetSInt() : 0;
+
+		return std::make_tuple(safeZoneX, safeZoneY, sizeW, sizeH);
 	}
 
 

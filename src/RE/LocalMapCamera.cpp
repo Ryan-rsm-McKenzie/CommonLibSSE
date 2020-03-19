@@ -17,28 +17,28 @@ namespace RE
 	void LocalMapCamera::SetAreaBounds(NiPoint3& a_maxExtent, NiPoint3& a_minExtent)
 	{
 		auto ini = INISettingCollection::GetSingleton();
-		auto fMapLocalHeight = ini->GetSetting("fMapLocalHeight:MapMenu");
+		auto fMapLocalHeight = ini ? ini->GetSetting("fMapLocalHeight:MapMenu") : nullptr;
 
 		minExtent = a_minExtent;
 		maxExtent = a_maxExtent;
-		maxExtent.z += fMapLocalHeight->GetFloat();
+		maxExtent.z += fMapLocalHeight ? fMapLocalHeight->GetFloat() : 0.0;
 	}
 
 
 	void LocalMapCamera::SetDefaultStateInitialPosition(NiPoint3& a_position)
 	{
 		auto ini = INISettingCollection::GetSingleton();
-		auto fMapLocalHeight = ini->GetSetting("fMapLocalHeight:MapMenu");
+		auto fMapLocalHeight = ini ? ini->GetSetting("fMapLocalHeight:MapMenu") : nullptr;
 
 		defaultState->initialPosition = a_position;
-		defaultState->initialPosition.z += fMapLocalHeight->GetFloat();
+		defaultState->initialPosition.z += fMapLocalHeight ? fMapLocalHeight->GetFloat() : 0.0;
 	}
 
 
 	void LocalMapCamera::SetDefaultStateMinFrustumDimensions(float a_width, float a_height)
 	{
-		defaultState->minFrustumHalfWidth = a_width / static_cast<float>(2.0);
-		defaultState->minFrustumHalfHeight = a_height / static_cast<float>(2.0);
+		defaultState->minFrustumHalfWidth = a_width / 2.0F;
+		defaultState->minFrustumHalfHeight = a_height / 2.0F;
 	}
 
 

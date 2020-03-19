@@ -47,7 +47,7 @@ namespace RE
 			return UI_MESSAGE_RESULTS::kPassOn;
 		}
 
-		auto data = static_cast<BSUIScaleformData*>(a_message.data);
+		const auto data = static_cast<BSUIScaleformData*>(a_message.data);
 		if (!data) {
 			return UI_MESSAGE_RESULTS::kPassOn;
 		}
@@ -60,8 +60,8 @@ namespace RE
 	void IMenu::AdvanceMovie([[maybe_unused]] float a_interval, UInt32 a_currentTime)
 	{
 		if (view) {
-			GFxValue currentTime(static_cast<double>(a_currentTime));
-			view->SetVariable("CurrentTime", &currentTime, GFxMovie::SetVarType::kNormal);
+			const GFxValue currentTime(static_cast<double>(a_currentTime));
+			view->SetVariable("CurrentTime", currentTime, GFxMovie::SetVarType::kNormal);
 			view->Advance(static_cast<float>(currentTime.GetNumber()));
 		}
 	}
@@ -84,12 +84,12 @@ namespace RE
 		using Message = UI_MESSAGE_TYPE;
 
 		auto inputManager = BSInputDeviceManager::GetSingleton();
-		auto gamepad = inputManager->IsGamepadEnabled();
+		auto gamepad = inputManager ? inputManager->IsGamepadEnabled() : nullptr;
 		if (view && view->IsAvailable("_root.SetPlatform")) {
 			GFxValue args[2];
-			double platform = gamepad ? 1.0 : 0.0;
+			const double platform = gamepad ? 1.0 : 0.0;
 			args[0].SetNumber(platform);
-			bool swapPS3 = false;
+			const bool swapPS3 = false;
 			args[1].SetBoolean(swapPS3);
 			view->Invoke("_root.SetPlatform", nullptr, args, std::extent<decltype(args)>::value);
 		}
@@ -103,10 +103,13 @@ namespace RE
 			} else {
 				flags |= Flag::kUsesCursor;
 				auto ui = UI::GetSingleton();
-				messageID = ui->IsMenuOpen(uiStr->cursorMenu) ? Message::kUpdate : Message::kShow;
+				messageID = ui && ui->IsMenuOpen(uiStr->cursorMenu) ? Message::kUpdate : Message::kShow;
 			}
+
 			auto messageQueue = UIMessageQueue::GetSingleton();
-			messageQueue->AddMessage(uiStr->cursorMenu, messageID, nullptr);
+			if (messageQueue) {
+				messageQueue->AddMessage(uiStr->cursorMenu, messageID, nullptr);
+			}
 		}
 	}
 

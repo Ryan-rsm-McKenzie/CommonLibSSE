@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cassert>
+#include <memory>
 
 #include "GMath.h"
 #include "RE/GAllocator.h"
@@ -219,7 +220,7 @@ namespace RE
 			if (table) {
 				// Delete the entries.
 				for (UPInt i = 0, n = table->sizeMask; i <= n; i++) {
-					Entry* entry = &E(i);
+					Entry* entry = std::addressof(E(i));
 					if (!entry->IsEmpty()) {
 						entry->Free();
 					}
@@ -250,7 +251,7 @@ namespace RE
 		{
 			if (table) {
 				for (UPInt i = 0, n = table->sizeMask; i <= n; i++) {
-					Entry* entry = &E(i);
+					Entry* entry = std::addressof(E(i));
 					if (!entry->IsEmpty()) {
 						entry->Clear();
 					}
@@ -289,7 +290,7 @@ namespace RE
 		template <class CRef>
 		inline void Add(void* a_memAddr, const CRef& a_key)
 		{
-			UPInt hashValue = HashF()(a_key);
+			const UPInt hashValue = HashF()(a_key);
 			Add(a_memAddr, a_key, hashValue);
 		}
 
@@ -301,18 +302,18 @@ namespace RE
 				return;
 			}
 
-			UPInt hashValue = AltHashF()(a_key);
-			SPInt index = hashValue & table->sizeMask;
+			const UPInt hashValue = AltHashF()(a_key);
+			SPInt		index = hashValue & table->sizeMask;
 
-			Entry* entry = &E(index);
+			Entry* entry = std::addressof(E(index));
 
 			if (entry->IsEmpty() || (entry->GetCachedHash(table->sizeMask) != (UPInt)index)) {
 				return;
 			}
 
 			// Save index
-			SPInt naturalIndex = index;
-			SPInt prevIndex = -1;
+			const SPInt naturalIndex = index;
+			SPInt		prevIndex = -1;
 
 			while ((entry->GetCachedHash(table->sizeMask) != (UPInt)naturalIndex) || !(entry->value == a_key)) {
 				prevIndex = index;
@@ -320,12 +321,12 @@ namespace RE
 				if (index == -1) {
 					return;
 				}
-				entry = &E(index);
+				entry = std::addressof(E(index));
 			}
 
 			if (naturalIndex == index) {
 				if (!entry->IsEndOfChain()) {
-					Entry* nextEntry = &E(entry->nextInChain);
+					Entry* nextEntry = std::addressof(E(entry->nextInChain));
 					entry->Clear();
 					new (entry) Entry(*nextEntry);
 					entry = nextEntry;
@@ -349,9 +350,9 @@ namespace RE
 		template <class K>
 		C* Get(const K& a_key)
 		{
-			SPInt index = FindIndex(a_key);
+			const SPInt index = FindIndex(a_key);
 			if (index >= 0) {
-				return &E(index).value;
+				return std::addressof(E(index).value);
 			} else {
 				return 0;
 			}
@@ -361,9 +362,9 @@ namespace RE
 		template <class K>
 		const C* Get(const K& key) const
 		{
-			SPInt index = FindIndex(key);
+			const SPInt index = FindIndex(key);
 			if (index >= 0) {
-				return &E(index).value;
+				return std::addressof(E(index).value);
 			} else {
 				return 0;
 			}
@@ -373,9 +374,9 @@ namespace RE
 		template <class K>
 		C* GetAlt(const K& a_key)
 		{
-			SPInt index = FindIndexAlt(a_key);
+			const SPInt index = FindIndexAlt(a_key);
 			if (index >= 0)
-				return &E(index).value;
+				return std::addressof(E(index).value);
 			return nullptr;
 		}
 
@@ -383,9 +384,9 @@ namespace RE
 		template <class K>
 		const C* GetAlt(const K& a_key) const
 		{
-			SPInt index = FindIndexAlt(a_key);
+			const SPInt index = FindIndexAlt(a_key);
 			if (index >= 0) {
-				return &E(index).value;
+				return std::addressof(E(index).value);
 			} else {
 				return nullptr;
 			}
@@ -395,7 +396,7 @@ namespace RE
 		template <class K>
 		bool GetAlt(const K& a_key, C* a_val) const
 		{
-			SPInt index = FindIndexAlt(a_key);
+			const SPInt index = FindIndexAlt(a_key);
 			if (index >= 0) {
 				if (a_val) {
 					*a_val = E(index).value;
@@ -539,7 +540,7 @@ namespace RE
 			if (!table) {
 				return -1;
 			}
-			UPInt hashValue = AltHashF()(a_key) & table->sizeMask;
+			const UPInt hashValue = AltHashF()(a_key) & table->sizeMask;
 			return FindIndexCore(a_key, hashValue);
 		}
 
@@ -551,7 +552,7 @@ namespace RE
 			assert((a_hashValue & ~table->sizeMask) == 0);
 
 			UPInt		 index = a_hashValue;
-			const Entry* entry = &E(index);
+			const Entry* entry = std::addressof(E(index));
 
 			if (entry->IsEmpty() || (entry->GetCachedHash(table->sizeMask) != index)) {
 				return -1;
@@ -569,7 +570,7 @@ namespace RE
 					break;
 				}
 
-				entry = &E(index);
+				entry = std::addressof(E(index));
 				assert(!entry->IsEmpty());
 			}
 			return -1;
@@ -584,8 +585,8 @@ namespace RE
 
 			++(table->entryCount);
 
-			SPInt  index = a_hashValue;
-			Entry* naturalEntry = &(E(index));
+			const SPInt index = a_hashValue;
+			Entry*		naturalEntry = &(E(index));
 
 			if (naturalEntry->IsEmpty()) {
 				new (naturalEntry) Entry(a_key, -1);
@@ -595,7 +596,7 @@ namespace RE
 					blankIndex = (blankIndex + 1) & table->sizeMask;
 				} while (!E(blankIndex).IsEmpty());
 
-				Entry* blankEntry = &E(blankIndex);
+				Entry* blankEntry = std::addressof(E(blankIndex));
 
 				if (naturalEntry->GetCachedHash(table->sizeMask) == (UPInt)index) {
 					new (blankEntry) Entry(*naturalEntry);
@@ -605,7 +606,7 @@ namespace RE
 					SPInt collidedIndex = naturalEntry->GetCachedHash(table->sizeMask);
 					assert(collidedIndex >= 0 && collidedIndex <= (SPInt)table->sizeMask);
 					for (;;) {
-						Entry* entry = &E(collidedIndex);
+						Entry* entry = std::addressof(E(collidedIndex));
 						if (entry->nextInChain == index) {
 							new (blankEntry) Entry(*naturalEntry);
 							entry->nextInChain = blankIndex;
@@ -648,7 +649,7 @@ namespace RE
 			if (a_newSize < HashMinSize) {
 				a_newSize = HashMinSize;
 			} else {
-				int bits = gfchop(glog2f((float)(a_newSize - 1)) + 1);
+				const auto bits = gfchop(glog2f((float)(a_newSize - 1)) + 1);
 				a_newSize = UPInt(1) << bits;
 			}
 
@@ -667,7 +668,7 @@ namespace RE
 
 			if (table) {
 				for (i = 0, n = table->sizeMask; i <= n; ++i) {
-					Entry* entry = &E(i);
+					Entry* entry = std::addressof(E(i));
 					if (entry->IsEmpty() == false) {
 						newHash.Add(a_heapAddr, entry->value);
 						entry->Clear();

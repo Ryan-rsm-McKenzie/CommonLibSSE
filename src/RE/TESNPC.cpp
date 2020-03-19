@@ -44,22 +44,22 @@ namespace RE
 	BGSHeadPart* TESNPC::GetHeadPartByType(HeadPartType a_type)
 	{
 		if (headParts) {
-			for (UInt8 i = 0; i < numHeadParts; ++i) {
+			for (SInt8 i = 0; i < numHeadParts; ++i) {
 				if (headParts[i] && headParts[i]->type == a_type) {
 					return headParts[i];
 				}
 			}
 		}
-		return 0;
+		return nullptr;
 	}
 
 
 	BGSHeadPart* TESNPC::GetHeadPartOverlayByType(HeadPartType a_type)
 	{
-		auto numOverlays = GetNumBaseOverlays();
+		const auto numOverlays = GetNumBaseOverlays();
 		auto overlays = GetBaseOverlays();
 		if (overlays) {
-			for (UInt8 i = 0; i < numOverlays; ++i) {
+			for (UInt32 i = 0; i < numOverlays; ++i) {
 				if (overlays[i]->type == a_type) {
 					return overlays[i];
 				}
@@ -75,7 +75,7 @@ namespace RE
 			return height;
 		}
 
-		auto sex = GetSex();
+		const auto sex = GetSex();
 		switch (sex) {
 		case SEX::kMale:
 		case SEX::kFemale:

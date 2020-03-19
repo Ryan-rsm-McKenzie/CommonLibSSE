@@ -112,20 +112,24 @@ namespace SKSE
 			if (!prev) {
 				SKSE::RegisterForAPIInitEvent([]() {
 					auto papyrus = SKSE::GetPapyrusInterface();
-					papyrus->Register([](RE::BSScript::Internal::VirtualMachine* a_vm) {
-						a_vm->RegisterForLogEvent(LogEventHandler::GetSingleton());
-						return true;
-					});
+					if (papyrus) {
+						papyrus->Register([](RE::BSScript::Internal::VirtualMachine* a_vm) {
+							a_vm->RegisterForLogEvent(LogEventHandler::GetSingleton());
+							return true;
+						});
+					}
 				});
 			}
 		} else {
 			if (prev) {
 				SKSE::RegisterForAPIInitEvent([]() {
 					auto papyrus = SKSE::GetPapyrusInterface();
-					papyrus->Register([](RE::BSScript::Internal::VirtualMachine* a_vm) {
-						a_vm->UnregisterForLogEvent(LogEventHandler::GetSingleton());
-						return true;
-					});
+					if (papyrus) {
+						papyrus->Register([](RE::BSScript::Internal::VirtualMachine* a_vm) {
+							a_vm->UnregisterForLogEvent(LogEventHandler::GetSingleton());
+							return true;
+						});
+					}
 				});
 			}
 		}
@@ -152,7 +156,7 @@ namespace SKSE
 
 	bool Logger::TrackTrampolineStats(bool a_enable)
 	{
-		auto prev = std::move(_trackTrampolineStats);
+		const auto prev = std::move(_trackTrampolineStats);
 		_trackTrampolineStats = std::move(a_enable);
 		return prev;
 	}

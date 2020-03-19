@@ -1,6 +1,7 @@
 #include "RE/FxDelegateArgs.h"
 
 #include <cassert>
+#include <memory>
 #include <stdexcept>
 #include <string>
 
@@ -23,9 +24,11 @@ namespace RE
 	void FxDelegateArgs::Respond(FxResponseArgsBase& a_params) const
 	{
 		GFxValue* values = nullptr;
-		UInt32 numValues = a_params.GetValues(&values);
-		values[0] = _responseID;
-		_movieView->InvokeNoReturn("respond", values, numValues);
+		const UInt32 numValues = a_params.GetValues(std::addressof(values));
+		if (values) {
+			values[0] = _responseID;
+			_movieView->InvokeNoReturn("respond", values, numValues);
+		}
 	}
 
 

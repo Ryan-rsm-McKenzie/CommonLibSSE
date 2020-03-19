@@ -75,7 +75,7 @@ namespace RE
 
 	bool Actor::CanFlyHere() const
 	{
-		auto worldSpace = GetWorldspace();
+		const auto* worldSpace = GetWorldspace();
 		return worldSpace && worldSpace->HasMaxHeightData();
 	}
 
@@ -107,7 +107,9 @@ namespace RE
 			currentProcess->SetArrested(false);
 			EvaluatePackage(false, false);
 			auto procManager = ProcessLists::GetSingleton();
-			procManager->StopCombatAndAlarmOnActor(this, true);
+			if (procManager) {
+				procManager->StopCombatAndAlarmOnActor(this, true);
+			}
 		}
 	}
 
@@ -205,25 +207,13 @@ namespace RE
 
 	TESFaction* Actor::GetCrimeFaction()
 	{
-		auto thisPtr = const_cast<const Actor*>(this);
-		auto fac = thisPtr->GetCrimeFaction();
-		return const_cast<TESFaction*>(fac);
+		return GetCrimeFactionImpl();
 	}
 
 
 	const TESFaction* Actor::GetCrimeFaction() const
 	{
-		if (IsCommandedActor()) {
-			return nullptr;
-		}
-
-		auto xFac = extraList.GetByType<ExtraFactionChanges>();
-		if (xFac && (xFac->crimeFaction || xFac->removeCrimeFaction)) {
-			return xFac->crimeFaction;
-		}
-
-		auto base = GetActorBase();
-		return base ? base->crimeFaction : nullptr;
+		return GetCrimeFactionImpl();
 	}
 
 
@@ -263,6 +253,10 @@ namespace RE
 		});
 
 		auto dobj = BGSDefaultObjectManager::GetSingleton();
+		if (!dobj) {
+			return 0;
+		}
+
 		auto gold = dobj->GetObject<TESObjectMISC>(DEFAULT_OBJECT::kGold);
 		auto it = inv.find(gold);
 		return it != inv.end() ? it->second.first : 0;
@@ -271,16 +265,16 @@ namespace RE
 
 	float Actor::GetHeight()
 	{
-		auto min = GetBoundMin();
-		auto max = GetBoundMax();
-		auto diff = max.z - min.z;
-		auto height = GetBaseHeight() * diff;
+		const auto min = GetBoundMin();
+		const auto max = GetBoundMax();
+		const auto diff = max.z - min.z;
+		const auto height = GetBaseHeight() * diff;
 
 		if (!currentProcess || !currentProcess->InHighProcess()) {
 			return height;
 		}
 
-		auto cachedHeight = currentProcess->GetCachedHeight();
+		const auto cachedHeight = currentProcess->GetCachedHeight();
 		if (cachedHeight == 0.0) {
 			currentProcess->SetCachedHeight(height);
 			return height;
@@ -369,14 +363,6 @@ namespace RE
 	bool Actor::IsGuard() const
 	{
 		return (boolBits & BOOL_BITS::kGuard) != BOOL_BITS::kNone;
-	}
-
-
-	bool Actor::IsHorse() const
-	{
-		auto dobj = BGSDefaultObjectManager::GetSingleton();
-		auto horseKeyword = dobj->GetObject<BGSKeyword>(DEFAULT_OBJECT::kKeywordHorse);
-		return horseKeyword && HasKeyword(horseKeyword);
 	}
 
 
@@ -489,7 +475,7 @@ namespace RE
 	{
 		auto npc = GetActorBase();
 		if (npc && npc->headRelatedData) {
-			auto hairColor = npc->headRelatedData->hairColor;
+			const auto hairColor = npc->headRelatedData->hairColor;
 			if (hairColor) {
 				NiColor color;
 				color.red = hairColor->color.red / static_cast<float>(128.0);
@@ -507,7 +493,7 @@ namespace RE
 
 	void Actor::UpdateSkinColor()
 	{
-		auto npc = GetActorBase();
+		const auto* npc = GetActorBase();
 		if (npc) {
 			NiColor color;
 			color.red = npc->bodyTintColor.red / static_cast<float>(255.0);
@@ -556,5 +542,21 @@ namespace RE
 		}
 
 		return false;
+	}
+
+
+	TESFaction* Actor::GetCrimeFactionImpl() const
+	{
+		if (IsCommandedActor()) {
+			return nullptr;
+		}
+
+		auto xFac = extraList.GetByType<ExtraFactionChanges>();
+		if (xFac && (xFac->crimeFaction || xFac->removeCrimeFaction)) {
+			return xFac->crimeFaction;
+		}
+
+		auto base = GetActorBase();
+		return base ? base->crimeFaction : nullptr;
 	}
 }

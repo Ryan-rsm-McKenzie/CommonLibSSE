@@ -119,8 +119,8 @@ namespace RE
 			return extraLists->front()->GenerateName(object);
 		} else {
 			auto gmst = GameSettingCollection::GetSingleton();
-			auto sMissingName = gmst->GetSetting("sMissingName");
-			return sMissingName->GetString();
+			auto sMissingName = gmst ? gmst->GetSetting("sMissingName") : nullptr;
+			return sMissingName ? sMissingName->GetString() : "";
 		}
 	}
 
