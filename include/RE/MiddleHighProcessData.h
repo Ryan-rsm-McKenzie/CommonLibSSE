@@ -268,8 +268,8 @@ namespace RE
 		float									   alphaMult;				// 2C8
 		float									   scriptRefractPower;		// 2CC
 		float									   unk2D0;					// 2D0
-		float									   unk2D4;					// 2D4
-		float									   unk2D8;					// 2D8
+		float									   deferredKillTimer;		// 2D4
+		float									   killMoveTimer;			// 2D8
 		float									   unk2DC;					// 2DC
 		UInt32									   unk2E0;					// 2E0
 		UInt32									   unk2E4;					// 2E4
