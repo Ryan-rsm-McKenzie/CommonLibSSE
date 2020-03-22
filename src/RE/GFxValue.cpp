@@ -3,6 +3,7 @@
 #include <cassert>
 #include <cstring>
 #include <cwchar>
+#include <memory>
 
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"
@@ -569,63 +570,73 @@ namespace RE
 	}
 
 
-	GFxValue::GFxValue(double a_val) :
+	GFxValue::GFxValue([[maybe_unused]] std::nullptr_t) :
+		_objectInterface(nullptr),
+		_type(ValueType::kNull),
+		_pad0C(0),
+		_value()
+	{
+		SetNull();
+	}
+
+
+	GFxValue::GFxValue(double a_rhs) :
 		_objectInterface(nullptr),
 		_type(ValueType::kNumber),
 		_pad0C(0),
 		_value()
 	{
-		_value.number = a_val;
+		_value.number = a_rhs;
 	}
 
 
-	GFxValue::GFxValue(bool a_val) :
+	GFxValue::GFxValue(bool a_rhs) :
 		_objectInterface(nullptr),
 		_type(ValueType::kBoolean),
 		_pad0C(0),
 		_value()
 	{
-		_value.boolean = a_val;
+		_value.boolean = a_rhs;
 	}
 
 
-	GFxValue::GFxValue(const char* a_str) :
+	GFxValue::GFxValue(const char* a_rhs) :
 		_objectInterface(nullptr),
 		_type(ValueType::kString),
 		_pad0C(0),
 		_value()
 	{
-		_value.string = a_str;
+		_value.string = a_rhs;
 	}
 
 
-	GFxValue::GFxValue(std::string_view a_str) :
+	GFxValue::GFxValue(std::string_view a_rhs) :
 		_objectInterface(nullptr),
 		_type(ValueType::kString),
 		_pad0C(0),
 		_value()
 	{
-		_value.string = a_str.data();
+		_value.string = a_rhs.data();
 	}
 
 
-	GFxValue::GFxValue(const wchar_t* a_str) :
+	GFxValue::GFxValue(const wchar_t* a_rhs) :
 		_objectInterface(nullptr),
 		_type(ValueType::kStringW),
 		_pad0C(0),
 		_value()
 	{
-		_value.wideString = a_str;
+		_value.wideString = a_rhs;
 	}
 
 
-	GFxValue::GFxValue(std::wstring_view a_str) :
+	GFxValue::GFxValue(std::wstring_view a_rhs) :
 		_objectInterface(nullptr),
 		_type(ValueType::kStringW),
 		_pad0C(0),
 		_value()
 	{
-		_value.wideString = a_str.data();
+		_value.wideString = a_rhs.data();
 	}
 
 
@@ -664,118 +675,85 @@ namespace RE
 	}
 
 
+	GFxValue& GFxValue::operator=([[maybe_unused]] std::nullptr_t)
+	{
+		SetNull();
+		return *this;
+	}
+
+
 	GFxValue& GFxValue::operator=(double a_rhs)
 	{
-		if (IsManagedValue()) {
-			ReleaseManagedValue();
-		}
-
-		_type = ValueType::kNumber;
-		_value.number = a_rhs;
-
+		SetNumber(a_rhs);
 		return *this;
 	}
 
 
 	GFxValue& GFxValue::operator=(bool a_rhs)
 	{
-		if (IsManagedValue()) {
-			ReleaseManagedValue();
-		}
-
-		_type = ValueType::kBoolean;
-		_value.boolean = a_rhs;
-
+		SetBoolean(a_rhs);
 		return *this;
 	}
 
 
 	GFxValue& GFxValue::operator=(const char* a_rhs)
 	{
-		if (IsManagedValue()) {
-			ReleaseManagedValue();
-		}
-
-		_type = ValueType::kString;
-		_value.string = a_rhs;
-
+		SetString(a_rhs);
 		return *this;
 	}
 
 
 	GFxValue& GFxValue::operator=(std::string_view a_rhs)
 	{
-		if (IsManagedValue()) {
-			ReleaseManagedValue();
-		}
-
-		_type = ValueType::kString;
-		_value.string = a_rhs.data();
-
+		SetString(a_rhs);
 		return *this;
 	}
 
 
 	GFxValue& GFxValue::operator=(const wchar_t* a_rhs)
 	{
-		if (IsManagedValue()) {
-			ReleaseManagedValue();
-		}
-
-		_type = ValueType::kStringW;
-		_value.wideString = a_rhs;
-
+		SetStringW(a_rhs);
 		return *this;
 	}
 
 
 	GFxValue& GFxValue::operator=(std::wstring_view a_rhs)
 	{
-		if (IsManagedValue()) {
-			ReleaseManagedValue();
-		}
-
-		_type = ValueType::kStringW;
-		_value.wideString = a_rhs.data();
-
+		SetStringW(a_rhs);
 		return *this;
 	}
 
 
 	GFxValue& GFxValue::operator=(const GFxValue& a_rhs)
 	{
-		if (this == &a_rhs) {
-			return *this;
-		}
+		if (this != std::addressof(a_rhs)) {
+			if (IsManagedValue()) {
+				ReleaseManagedValue();
+			}
 
-		if (IsManagedValue()) {
-			ReleaseManagedValue();
-		}
-		_type = a_rhs._type;
-		_value = a_rhs._value;
-		if (a_rhs.IsManagedValue()) {
-			AcquireManagedValue(a_rhs);
-		}
+			_type = a_rhs._type;
+			_value = a_rhs._value;
 
+			if (a_rhs.IsManagedValue()) {
+				AcquireManagedValue(a_rhs);
+			}
+		}
 		return *this;
 	}
 
 
 	GFxValue& GFxValue::operator=(GFxValue&& a_rhs)
 	{
-		if (this == &a_rhs) {
-			return *this;
+		if (this != std::addressof(a_rhs)) {
+			_objectInterface = std::move(a_rhs._objectInterface);
+			a_rhs._objectInterface = nullptr;
+
+			_type = std::move(a_rhs._type);
+			a_rhs._type = ValueType::kUndefined;
+
+			_value.obj = std::move(a_rhs._value.obj);
+			a_rhs._value.obj = nullptr;
 		}
-
-		_objectInterface = std::move(a_rhs._objectInterface);
-		a_rhs._objectInterface = nullptr;
-
-		_type = std::move(a_rhs._type);
-		a_rhs._type = ValueType::kUndefined;
-
-		_value.obj = std::move(a_rhs._value.obj);
-		a_rhs._value.obj = nullptr;
-
 		return *this;
 	}
 
@@ -947,10 +925,22 @@ namespace RE
 	}
 
 
+	void GFxValue::SetString(std::string_view a_str)
+	{
+		SetString(a_str.data());
+	}
+
+
 	void GFxValue::SetStringW(const wchar_t* a_str)
 	{
 		ChangeType(ValueType::kStringW);
 		_value.wideString = a_str;
+	}
+
+
+	void GFxValue::SetStringW(std::wstring_view a_str)
+	{
+		SetStringW(a_str.data());
 	}
 
 

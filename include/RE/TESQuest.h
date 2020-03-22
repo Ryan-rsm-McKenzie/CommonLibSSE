@@ -3,8 +3,8 @@
 #include <type_traits>
 
 #include "RE/BGSStoryManagerTreeForm.h"
+#include "RE/BSAtomic.h"
 #include "RE/BSFixedString.h"
-#include "RE/BSLock.h"
 #include "RE/BSString.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTHashMap.h"

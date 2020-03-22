@@ -1,4 +1,4 @@
-#include "RE/BSLock.h"
+#include "RE/BSAtomic.h"
 
 #include "RE/Offsets.h"
 #include "REL/Relocation.h"

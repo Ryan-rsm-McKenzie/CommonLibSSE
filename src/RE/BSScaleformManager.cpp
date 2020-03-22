@@ -7,7 +7,6 @@
 #include "RE/GFxLoader.h"
 #include "RE/IMenu.h"
 #include "RE/Misc.h"
-#include "RE/Offsets.h"
 #include "RE/Setting.h"
 #include "REL/Relocation.h"
 
@@ -16,7 +15,7 @@ namespace RE
 {
 	BSScaleformManager* BSScaleformManager::GetSingleton()
 	{
-		REL::Offset<BSScaleformManager**> singleton(Offset::BSScaleformManager::Singleton);
+		REL::Offset<BSScaleformManager**> singleton = REL::ID(516573);
 		return *singleton;
 	}
 
@@ -24,12 +23,24 @@ namespace RE
 	bool BSScaleformManager::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		using func_t = decltype(&BSScaleformManager::LoadMovie);
-		REL::Offset<func_t> func(Offset::BSScaleformManager::LoadMovie);
+		REL::Offset<func_t> func = REL::ID(80302);
 		return func(this, a_menu, a_viewOut, a_fileName, a_mode, a_backGroundAlpha);
 	}
 
 
-	bool BSScaleformManager::LoadMovieStd(IMenu* a_menu, const char* a_fileName, llvm::function_ref<void(GFxMovieDef*)> a_callback, ScaleModeType a_mode, float a_backGroundAlpha)
+	bool BSScaleformManager::LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, llvm::function_ref<void(GFxMovieDef*)> a_callback)
+	{
+		return LoadMovieEx(a_menu, a_fileName, ScaleModeType::kShowAll, 0.0, a_callback);
+	}
+
+
+	bool BSScaleformManager::LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, ScaleModeType a_mode, llvm::function_ref<void(GFxMovieDef*)> a_callback)
+	{
+		return LoadMovieEx(a_menu, a_fileName, a_mode, 0.0, a_callback);
+	}
+
+
+	bool BSScaleformManager::LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, ScaleModeType a_mode, float a_backGroundAlpha, llvm::function_ref<void(GFxMovieDef*)> a_callback)
 	{
 		using LoadConstants = GFxLoader::LoadConstants;
 
@@ -85,6 +96,12 @@ namespace RE
 		a_menu->RefreshPlatform();
 
 		return true;
+	}
+
+
+	bool BSScaleformManager::LoadMovieStd(IMenu* a_menu, const char* a_fileName, llvm::function_ref<void(GFxMovieDef*)> a_callback, ScaleModeType a_mode, float a_backGroundAlpha)
+	{
+		return LoadMovieEx(a_menu, a_fileName, a_mode, a_backGroundAlpha, a_callback);
 	}
 
 
@@ -150,7 +167,7 @@ namespace RE
 	}
 
 
-	std::optional<std::string> BSScaleformManager::BuildFilePath(const char* a_fileName)
+	std::optional<std::string> BSScaleformManager::BuildFilePath(std::string_view a_fileName)
 	{
 		std::string filePath;
 		filePath = "Interface/";
@@ -198,9 +215,9 @@ namespace RE
 	}
 
 
-	bool BSScaleformManager::FileExists(const char* a_fileName)
+	bool BSScaleformManager::FileExists(std::string_view a_fileName)
 	{
-		BSResourceNiBinaryStream file(a_fileName);
+		BSResourceNiBinaryStream file(a_fileName.data());
 		return file.good();
 	}
 }

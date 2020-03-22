@@ -1,7 +1,7 @@
 #pragma once
 
+#include "RE/BSAtomic.h"
 #include "RE/BSBitField.h"
-#include "RE/BSLock.h"
 #include "RE/BSMultiBoundNode.h"
 #include "RE/BSPointerHandle.h"
 #include "RE/BSTArray.h"

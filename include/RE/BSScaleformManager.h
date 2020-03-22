@@ -2,6 +2,7 @@
 
 #include <optional>
 #include <string>
+#include <string_view>
 #include <tuple>
 
 #include "function_ref.h"
@@ -24,6 +25,8 @@ namespace RE
 
 	struct BSScaleformRenderer
 	{
+	public:
+		// members
 		GPtr<GFxRenderConfig> config;  // 0
 	};
 	STATIC_ASSERT(sizeof(BSScaleformRenderer) == 0x8);
@@ -38,7 +41,13 @@ namespace RE
 		static BSScaleformManager* GetSingleton();
 
 		bool LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode = ScaleModeType::kShowAll, float a_backGroundAlpha = 0.0);
-		bool LoadMovieStd(IMenu* a_menu, const char* a_fileName, llvm::function_ref<void(GFxMovieDef*)> a_callback, ScaleModeType a_mode = ScaleModeType::kShowAll, float a_backGroundAlpha = 0.0);
+
+		bool LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, llvm::function_ref<void(GFxMovieDef*)> a_callback);
+		bool LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, ScaleModeType a_mode, llvm::function_ref<void(GFxMovieDef*)> a_callback);
+		bool LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, ScaleModeType a_mode, float a_backGroundAlpha, llvm::function_ref<void(GFxMovieDef*)> a_callback);
+
+		[[deprecated("Use LoadMovieEx")]] bool LoadMovieStd(IMenu* a_menu, const char* a_fileName, llvm::function_ref<void(GFxMovieDef*)> a_callback, ScaleModeType a_mode = ScaleModeType::kShowAll, float a_backGroundAlpha = 0.0);
+
 		bool LoadMovie_Impl(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode = ScaleModeType::kShowAll, float a_backGroundAlpha = 0.0);
 
 
@@ -54,9 +63,9 @@ namespace RE
 		UInt64						 unk38;			  // 38
 
 	private:
-		std::optional<std::string>				 BuildFilePath(const char* a_fileName);
+		std::optional<std::string>				 BuildFilePath(std::string_view a_fileName);
 		std::tuple<float, float, SInt32, SInt32> CollectDisplayInfo();
-		bool									 FileExists(const char* a_fileName);
+		bool									 FileExists(std::string_view a_fileName);
 	};
 	STATIC_ASSERT(sizeof(BSScaleformManager) == 0x40);
 }

@@ -268,6 +268,7 @@ namespace SKSE
 
 		bool  Dispatch(UInt32 a_messageType, void* a_data, UInt32 a_dataLen, const char* a_receiver) const;
 		void* GetEventDispatcher(Dispatcher a_dispatcherID) const;
+		bool  RegisterListener(EventCallback* a_callback) const;
 		bool  RegisterListener(const char* a_sender, EventCallback* a_callback) const;
 
 	protected:

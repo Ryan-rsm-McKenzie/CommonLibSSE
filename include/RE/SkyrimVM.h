@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSLock.h"
+#include "RE/BSAtomic.h"
 #include "RE/BSScript/CompiledScriptLoader.h"
 #include "RE/BSScript/IFreezeQuery.h"
 #include "RE/BSScript/IStackCallbackSaveInterface.h"

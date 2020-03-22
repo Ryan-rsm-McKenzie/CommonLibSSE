@@ -2,7 +2,7 @@
 
 #include <type_traits>
 
-#include "RE/BSLock.h"
+#include "RE/BSAtomic.h"
 #include "RE/BSPointerHandle.h"
 #include "RE/BSTArray.h"
 

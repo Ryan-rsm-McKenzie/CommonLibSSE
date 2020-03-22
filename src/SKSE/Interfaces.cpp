@@ -312,6 +312,12 @@ namespace SKSE
 	}
 
 
+	bool MessagingInterface::RegisterListener(EventCallback* a_callback) const
+	{
+		return RegisterListener("SKSE", a_callback);
+	}
+
+
 	bool MessagingInterface::RegisterListener(const char* a_sender, EventCallback* a_callback) const
 	{
 		auto result = GetProxy()->RegisterListener(GetPluginHandle(), a_sender, a_callback);

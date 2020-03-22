@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSLock.h"
+#include "RE/BSAtomic.h"
 #include "RE/BSNavmeshInfoMap.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTHashMap.h"

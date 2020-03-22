@@ -167,13 +167,6 @@ namespace RE
 		}
 
 
-		namespace BSScaleformManager
-		{
-			static constexpr REL::ID LoadMovie(static_cast<std::uint64_t>(80302));
-			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(516573));
-		}
-
-
 		namespace BSScaleformTranslator
 		{
 			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(291278));

@@ -13,6 +13,40 @@ namespace RE
 	class UIMessage;
 
 
+	enum class UI_MENU_FLAGS : UInt32
+	{
+		kNone = 0,
+		kPausesGame = 1 << 0,
+		kAlwaysOpen = 1 << 1,
+		kUsesCursor = 1 << 2,
+		kUsesMenuContext = 1 << 3,
+		kModal = 1 << 4,  // prevents lower movies with this flag from advancing
+		kFreezeFrameBackground = 1 << 5,
+		kOnStack = 1 << 6,
+		kDisablePauseMenu = 1 << 7,
+		kRequiresUpdate = 1 << 8,
+		kTopmostRenderedMenu = 1 << 9,
+		kUpdateUsesCursor = 1 << 10,
+		kAllowSaving = 1 << 11,
+		kRendersOffscreenTargets = 1 << 12,
+		kInventoryItemMenu = 1 << 13,
+		kDontHideCursorWhenTopmost = 1 << 14,
+		kCustomRendering = 1 << 15,
+		kAssignCursorToRenderer = 1 << 16,
+		kApplicationMenu = 1 << 17,
+		kHasButtonBar = 1 << 18,
+		kIsTopButtonBar = 1 << 19,
+		kAdvancesUnderPauseMenu = 1 << 20,
+		kRendersUnderPauseMenu = 1 << 21,
+		kUsesBlurredBackground = 1 << 22,
+		kCompanionAppAllowed = 1 << 23,
+		kFreezeFramePause = 1 << 24,
+		kSkipRenderDuringFreezeFrameScreenshot = 1 << 25,
+		kLargeScaleformRenderCacheMode = 1 << 26,
+		kUsesMovementToDirection = 1 << 27
+	};
+
+
 	enum class UI_MESSAGE_RESULTS : UInt32
 	{
 		kHandled = 0,
@@ -23,45 +57,12 @@ namespace RE
 
 	class IMenu : public FxDelegateHandler
 	{
-	private:
-		using Context = UserEvents::INPUT_CONTEXT_ID;
-
 	public:
 		inline static constexpr auto RTTI = RTTI_IMenu;
 
 
-		enum class Flag : UInt32
-		{
-			kNone = 0,
-			kPausesGame = 1 << 0,
-			kAlwaysOpen = 1 << 1,
-			kUsesCursor = 1 << 2,
-			kUsesMenuContext = 1 << 3,
-			kModal = 1 << 4,  // prevents lower movies with this flag from advancing
-			kFreezeFrameBackground = 1 << 5,
-			kOnStack = 1 << 6,
-			kDisablePauseMenu = 1 << 7,
-			kRequiresUpdate = 1 << 8,
-			kTopmostRenderedMenu = 1 << 9,
-			kUpdateUsesCursor = 1 << 10,
-			kAllowSaving = 1 << 11,
-			kRendersOffscreenTargets = 1 << 12,
-			kInventoryItemMenu = 1 << 13,
-			kDontHideCursorWhenTopmost = 1 << 14,
-			kCustomRendering = 1 << 15,
-			kAssignCursorToRenderer = 1 << 16,
-			kApplicationMenu = 1 << 17,
-			kHasButtonBar = 1 << 18,
-			kIsTopButtonBar = 1 << 19,
-			kAdvancesUnderPauseMenu = 1 << 20,
-			kRendersUnderPauseMenu = 1 << 21,
-			kUsesBlurredBackground = 1 << 22,
-			kCompanionAppAllowed = 1 << 23,
-			kFreezeFramePause = 1 << 24,
-			kSkipRenderDuringFreezeFrameScreenshot = 1 << 25,
-			kLargeScaleformRenderCacheMode = 1 << 26,
-			kUsesMovementToDirection = 1 << 27
-		};
+		using Context = UserEvents::INPUT_CONTEXT_ID;
+		using Flag = UI_MENU_FLAGS;
 
 
 		IMenu();
@@ -114,7 +115,7 @@ namespace RE
 		UInt8			   menuDepth;	// 18
 		UInt8			   pad19;		// 19
 		UInt16			   pad20;		// 1A
-		Flag			   flags;		// 1C
+		UI_MENU_FLAGS	   flags;		// 1C
 		Context			   context;		// 20
 		UInt32			   pad24;		// 24
 		GPtr<FxDelegate>   fxDelegate;	// 28

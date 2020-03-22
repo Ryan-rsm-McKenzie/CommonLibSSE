@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSLock.h"
+#include "RE/BSAtomic.h"
 #include "RE/BSResource/Location.h"
 #include "RE/BSTSingleton.h"
 

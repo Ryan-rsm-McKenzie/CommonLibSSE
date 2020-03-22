@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSLock.h"
+#include "RE/BSAtomic.h"
 #include "RE/IMemoryStoreBase.h"
 
 

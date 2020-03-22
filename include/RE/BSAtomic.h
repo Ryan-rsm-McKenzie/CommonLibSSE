@@ -21,6 +21,15 @@ namespace RE
 	STATIC_ASSERT(sizeof(BSEventFlag) == 0x8);
 
 
+	class BSNonReentrantSpinLock
+	{
+	public:
+		// members
+		volatile UInt32 lock;  // 0
+	};
+	STATIC_ASSERT(sizeof(BSNonReentrantSpinLock) == 0x4);
+
+
 	class BSSemaphoreBase
 	{
 	public:
@@ -63,15 +72,6 @@ namespace RE
 		volatile UInt32 _lockCount;		// 4
 	};
 	STATIC_ASSERT(sizeof(BSSpinLock) == 0x8);
-
-
-	class BSNonReentrantSpinLock
-	{
-	public:
-		// members
-		volatile UInt32 lock;  // 0
-	};
-	STATIC_ASSERT(sizeof(BSNonReentrantSpinLock) == 0x4);
 
 
 	class BSReadWriteLock

@@ -4,8 +4,8 @@
 #include <type_traits>
 #include <utility>
 
+#include "RE/BSAtomic.h"
 #include "RE/BSFixedString.h"
-#include "RE/BSLock.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTHashMap.h"
 #include "RE/BaseFormComponent.h"

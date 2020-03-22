@@ -246,7 +246,7 @@
     <ClCompile Include="src\RE\BSScript\ObjectBindPolicy.cpp" />
     <ClCompile Include="src\RE\BSScript\PackUnpack.cpp" />
     <ClCompile Include="src\RE\BSScript\ZeroFunctionArguments.cpp" />
-    <ClCompile Include="src\RE\BSLock.cpp" />
+    <ClCompile Include="src\RE\BSAtomic.cpp" />
     <ClCompile Include="src\RE\BSSystemFileStorage.cpp" />
     <ClCompile Include="src\RE\BSTCreateFactoryManager.cpp" />
     <ClCompile Include="src\RE\Calendar.cpp" />
@@ -828,7 +828,7 @@
     <ClInclude Include="include\RE\BSShaderMaterial.h" />
     <ClInclude Include="include\RE\BSShaderProperty.h" />
     <ClInclude Include="include\RE\BSSmallBlockAllocator.h" />
-    <ClInclude Include="include\RE\BSLock.h" />
+    <ClInclude Include="include\RE\BSAtomic.h" />
     <ClInclude Include="include\RE\BSStorage.h" />
     <ClInclude Include="include\RE\BSString.h" />
     <ClInclude Include="include\RE\BSSystemFileStorage.h" />

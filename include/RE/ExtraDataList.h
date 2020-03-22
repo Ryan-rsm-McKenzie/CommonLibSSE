@@ -1,7 +1,7 @@
 #pragma once
 
+#include "RE/BSAtomic.h"
 #include "RE/BSExtraData.h"
-#include "RE/BSLock.h"
 #include "RE/BSPointerHandle.h"
 #include "RE/ExtraDataTypes.h"
 #include "RE/ExtraFlags.h"

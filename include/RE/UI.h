@@ -3,8 +3,8 @@
 #include <string_view>
 #include <type_traits>
 
+#include "RE/BSAtomic.h"
 #include "RE/BSFixedString.h"
-#include "RE/BSLock.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTEvent.h"
 #include "RE/BSTHashMap.h"

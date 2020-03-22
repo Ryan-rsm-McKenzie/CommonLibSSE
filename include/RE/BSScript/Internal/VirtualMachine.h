@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSLock.h"
+#include "RE/BSAtomic.h"
 #include "RE/BSScript/IVMDebugInterface.h"
 #include "RE/BSScript/IVMObjectBindInterface.h"
 #include "RE/BSScript/IVMSaveLoadInterface.h"

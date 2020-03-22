@@ -1584,9 +1584,6 @@
     <ClCompile Include="src\RE\BGSSaveLoadManager.cpp">
       <Filter>src\RE\FileIO</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSLock.cpp">
-      <Filter>src\RE\BSCore</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\TESDataHandler.cpp">
       <Filter>src\RE\FileIO</Filter>
     </ClCompile>
@@ -1958,6 +1955,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\BSShaderProperty.cpp">
       <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty\NiShadeProperty\BSShaderProperty</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSAtomic.cpp">
+      <Filter>src\RE\BSCore</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -3821,9 +3821,6 @@
     <ClInclude Include="include\RE\RaceSexMenuEvent.h">
       <Filter>include\RE\Events</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSLock.h">
-      <Filter>include\RE\BSCore</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\HUDData.h">
       <Filter>include\RE\Menus\IUIMessageData</Filter>
     </ClInclude>
@@ -5569,6 +5566,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\ActorTargetCheck.h">
       <Filter>include\RE\FormComponents\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSAtomic.h">
+      <Filter>include\RE\BSCore</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

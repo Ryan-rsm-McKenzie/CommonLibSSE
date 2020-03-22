@@ -5,8 +5,8 @@
 #include <stdexcept>
 #include <string>
 
+#include "RE/BSAtomic.h"
 #include "RE/BSIntrusiveRefCounted.h"
-#include "RE/BSLock.h"
 #include "RE/BSScript/TypeInfo.h"
 #include "RE/BSScript/Variable.h"
 

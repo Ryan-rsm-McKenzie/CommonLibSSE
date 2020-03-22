@@ -2,7 +2,7 @@
 
 #include "RE/ActorPackage.h"
 #include "RE/BGSPerkEntry.h"
-#include "RE/BSLock.h"
+#include "RE/BSAtomic.h"
 #include "RE/BSPointerHandle.h"
 #include "RE/BSResponse.h"
 #include "RE/BSTArray.h"

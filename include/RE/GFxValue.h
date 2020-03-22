@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <string_view>
 
 #include "RE/GFxPlayerStats.h"
@@ -204,17 +205,19 @@ namespace RE
 
 
 		GFxValue();
-		GFxValue(ValueType a_type);
-		GFxValue(double a_val);
-		GFxValue(bool a_val);
-		GFxValue(const char* a_str);
-		GFxValue(std::string_view a_str);
-		GFxValue(const wchar_t* a_str);
-		GFxValue(std::wstring_view a_str);
+		GFxValue(ValueType a_rhs);
+		GFxValue(std::nullptr_t);
+		GFxValue(double a_rhs);
+		GFxValue(bool a_rhs);
+		GFxValue(const char* a_rhs);
+		GFxValue(std::string_view a_rhs);
+		GFxValue(const wchar_t* a_rhs);
+		GFxValue(std::wstring_view a_rhs);
 		GFxValue(const GFxValue& a_rhs);
 		GFxValue(GFxValue&& a_rhs);
 		~GFxValue();
 
+		GFxValue& operator=(std::nullptr_t);
 		GFxValue& operator=(double a_rhs);
 		GFxValue& operator=(bool a_rhs);
 		GFxValue& operator=(const char* a_rhs);
@@ -250,7 +253,9 @@ namespace RE
 		void SetBoolean(bool a_val);
 		void SetNumber(double a_val);
 		void SetString(const char* a_str);
+		void SetString(std::string_view a_str);
 		void SetStringW(const wchar_t* a_str);
+		void SetStringW(std::wstring_view a_str);
 
 		void SetConvertBoolean();
 		void SetConvertNumber();
@@ -262,7 +267,7 @@ namespace RE
 		bool GetMember(const char* a_name, GFxValue* a_val) const;
 		bool SetMember(const char* a_name, const GFxValue& a_val);
 		bool Invoke(const char* a_name, GFxValue* a_result, const GFxValue* a_args, UPInt a_numArgs);
-		bool Invoke(const char* a_name, GFxValue* a_result = 0);
+		bool Invoke(const char* a_name, GFxValue* a_result = nullptr);
 		bool DeleteMember(const char* a_name);
 
 		// AS Array support. Valid for Array type
@@ -284,7 +289,7 @@ namespace RE
 		bool SetTextHTML(const char* a_html);
 
 		// AS MovieClip support. Valid for MovieClips.
-		bool AttachMovie(GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, SInt32 a_depth = -1, const GFxValue* a_initObj = 0);
+		bool AttachMovie(GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, SInt32 a_depth = -1, const GFxValue* a_initObj = nullptr);
 		bool GotoAndPlay(const char* a_frame);
 		bool GotoAndStop(const char* a_frame);
 
