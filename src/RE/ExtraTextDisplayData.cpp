@@ -1,6 +1,5 @@
 #include "RE/ExtraTextDisplayData.h"
 
-#include "RE/Offsets.h"
 #include "REL/Relocation.h"
 
 
@@ -17,7 +16,7 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraTextDisplayData::Vtbl);
+		REL::Offset<std::uintptr_t> vtbl = REL::ID(229625);
 		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
 	}
 
@@ -33,13 +32,13 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraTextDisplayData::Vtbl);
+		REL::Offset<std::uintptr_t> vtbl = REL::ID(229625);
 		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
 		SetName(a_name);
 	}
 
 
-	ExtraTextDisplayData::ExtraTextDisplayData(TESForm* a_form, float a_temperFactor) :
+	ExtraTextDisplayData::ExtraTextDisplayData(TESBoundObject* a_baseObject, float a_temperFactor) :
 		BSExtraData(),
 		displayName(""),
 		displayNameText(nullptr),
@@ -50,9 +49,9 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraTextDisplayData::Vtbl);
+		REL::Offset<std::uintptr_t> vtbl = REL::ID(229625);
 		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
-		GenerateName(a_form, a_temperFactor);
+		GetDisplayName(a_baseObject, a_temperFactor);
 	}
 
 
@@ -62,11 +61,11 @@ namespace RE
 	}
 
 
-	const char* ExtraTextDisplayData::GenerateName(TESForm* a_form, float a_temperFactor)
+	const char* ExtraTextDisplayData::GetDisplayName(TESBoundObject* a_baseObject, float a_temperFactor)
 	{
-		using func_t = decltype(&ExtraTextDisplayData::GenerateName);
-		REL::Offset<func_t> func(Offset::ExtraTextDisplayData::GenerateName);
-		return func(this, a_form, a_temperFactor);
+		using func_t = decltype(&ExtraTextDisplayData::GetDisplayName);
+		REL::Offset<func_t> func = REL::ID(12626);
+		return func(this, a_baseObject, a_temperFactor);
 	}
 
 

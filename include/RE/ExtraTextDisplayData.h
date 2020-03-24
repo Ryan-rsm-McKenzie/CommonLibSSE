@@ -8,7 +8,7 @@
 namespace RE
 {
 	class BGSMessage;
-	class TESForm;
+	class TESBoundObject;
 	class TESQuest;
 
 
@@ -28,13 +28,13 @@ namespace RE
 
 		ExtraTextDisplayData();
 		explicit ExtraTextDisplayData(const char* a_name);
-		ExtraTextDisplayData(TESForm* a_form, float a_temperFactor);
+		ExtraTextDisplayData(TESBoundObject* a_form, float a_temperFactor);
 		virtual ~ExtraTextDisplayData() = default;	// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kTextDisplayData; }
 
-		const char* GenerateName(TESForm* a_form, float a_temperFactor);
+		const char* GetDisplayName(TESBoundObject* a_form, float a_temperFactor);
 		bool		IsPlayerSet() const;
 		void		SetName(const char* a_name);
 

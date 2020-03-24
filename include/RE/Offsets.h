@@ -401,13 +401,6 @@ namespace RE
 		}
 
 
-		namespace ExtraTextDisplayData
-		{
-			static constexpr REL::ID GenerateName(static_cast<std::uint64_t>(12626));
-			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229625));
-		}
-
-
 		namespace ExtraUniqueID
 		{
 			static constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229631));

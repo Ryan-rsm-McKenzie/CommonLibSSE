@@ -289,7 +289,11 @@ namespace RE
 		Crime*												  crimeToReactTo;				  // 440
 		UInt64												  unk448;						  // 448
 		UInt64												  unk450;						  // 450
-		UInt64												  unk458;						  // 458
+		UInt8												  unk458;						  // 458
+		bool												  inCommandState;				  // 459
+		UInt8												  unk45A;						  // 45A
+		UInt8												  unk45B;						  // 45B
+		UInt32												  unk45C;						  // 45C
 		UInt16												  unk460;						  // 460
 		bool												  arrested;						  // 462
 		bool												  unk463;						  // 463

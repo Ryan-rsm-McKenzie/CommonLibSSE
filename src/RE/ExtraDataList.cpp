@@ -14,6 +14,7 @@
 #include "RE/ExtraTextDisplayData.h"
 #include "RE/GameSettingCollection.h"
 #include "RE/Offsets.h"
+#include "RE/TESBoundObject.h"
 #include "RE/TESForm.h"
 #include "RE/TESObjectREFR.h"
 #include "REL/Relocation.h"
@@ -169,7 +170,21 @@ namespace RE
 	}
 
 
-	const char* ExtraDataList::GenerateName(TESForm* a_form)
+	ObjectRefHandle ExtraDataList::GetAshPileRefHandle()
+	{
+		auto xAshRef = GetByType<ExtraAshPileRef>();
+		return xAshRef ? xAshRef->ashPileRef : ObjectRefHandle();
+	}
+
+
+	SInt32 ExtraDataList::GetCount() const
+	{
+		auto xCount = GetByType<ExtraCount>();
+		return xCount ? xCount->count : 1;
+	}
+
+
+	const char* ExtraDataList::GetDisplayName(TESBoundObject* a_baseObject)
 	{
 		const char* result = nullptr;
 		float health = 1.0;
@@ -187,9 +202,9 @@ namespace RE
 		}
 
 		if (xText) {
-			result = xText->GenerateName(a_form, health);
+			result = xText->GetDisplayName(a_baseObject, health);
 		} else {
-			result = a_form->GetName();
+			result = a_baseObject->GetName();
 		}
 
 		if (!result || result[0] == '\0') {
@@ -199,20 +214,6 @@ namespace RE
 		}
 
 		return result;
-	}
-
-
-	ObjectRefHandle ExtraDataList::GetAshPileRefHandle()
-	{
-		auto xAshRef = GetByType<ExtraAshPileRef>();
-		return xAshRef ? xAshRef->ashPileRef : ObjectRefHandle();
-	}
-
-
-	SInt32 ExtraDataList::GetCount() const
-	{
-		auto xCount = GetByType<ExtraCount>();
-		return xCount ? xCount->count : 1;
 	}
 
 

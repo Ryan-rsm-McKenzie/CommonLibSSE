@@ -13,6 +13,7 @@
 namespace RE
 {
 	class InventoryChanges;
+	class TESBoundObject;
 
 
 	class ExtraDataList
@@ -159,9 +160,9 @@ namespace RE
 		bool RemoveByType(ExtraDataType a_type);
 
 		BSExtraData*		  Add(BSExtraData* a_toAdd);
-		const char*			  GenerateName(TESForm* a_form);
 		ObjectRefHandle		  GetAshPileRefHandle();
 		SInt32				  GetCount() const;
+		const char*			  GetDisplayName(TESBoundObject* a_baseObject);
 		BGSEncounterZone*	  GetEncounterZone();
 		ExtraTextDisplayData* GetExtraTextDisplayData();
 		TESObjectREFR*		  GetLinkedRef(BGSKeyword* a_keyword);

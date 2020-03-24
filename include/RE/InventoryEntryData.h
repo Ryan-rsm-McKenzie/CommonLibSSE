@@ -25,7 +25,7 @@ namespace RE
 		InventoryEntryData& operator=(InventoryEntryData&& a_rhs);
 
 		void			AddExtraList(ExtraDataList* a_extra);
-		const char*		GenerateName();
+		const char*		GetDisplayName();
 		TESBoundObject* GetObject();
 		TESForm*		GetOwner();
 		SOUL_LEVEL		GetSoulLevel() const;
