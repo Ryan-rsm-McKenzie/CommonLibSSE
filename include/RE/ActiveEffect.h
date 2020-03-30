@@ -96,7 +96,7 @@ namespace RE
 		float								  duration;				// 74
 		float								  magnitude;			// 78
 		Flag								  flags;				// 7C
-		ConditionStatus						  eConditionStatus;		// 80
+		ConditionStatus						  conditionStatus;		// 80
 		UInt16								  usUniqueID;			// 84
 		UInt16								  pad86;				// 86
 		MagicSystem::CastingSource			  castingSource;		// 88

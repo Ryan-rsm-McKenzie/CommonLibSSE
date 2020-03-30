@@ -3,6 +3,13 @@
 
 namespace RE
 {
+	auto EffectSetting::GetArchetype() const
+		-> Archetype
+	{
+		return data.archetype;
+	}
+
+
 	ActorValue EffectSetting::GetMagickSkill() const
 	{
 		return data.associatedSkill;
