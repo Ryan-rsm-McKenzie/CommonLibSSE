@@ -18,6 +18,8 @@ namespace RE
 		virtual bool				 HasIDCode() const override;   // 01 - { return true; }
 		virtual const BSFixedString& QUserEvent() const override;  // 02 - { return userEvent; }
 
+		[[nodiscard]] constexpr UInt32 GetIDCode() const noexcept { return idCode; }
+
 
 		// members
 		BSFixedString userEvent;  // 18

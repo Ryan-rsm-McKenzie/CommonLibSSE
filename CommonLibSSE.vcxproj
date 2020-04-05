@@ -524,6 +524,7 @@
     <ClInclude Include="include\RE\DecalData.h" />
     <ClInclude Include="include\RE\DefaultObjectsReadyEvent.h" />
     <ClInclude Include="include\RE\DetectionPriorities.h" />
+    <ClInclude Include="include\RE\DeviceConnectEvent.h" />
     <ClInclude Include="include\RE\DialoguePackage.h" />
     <ClInclude Include="include\RE\DialogueTypes.h" />
     <ClInclude Include="include\RE\DoNothingUnhandledPolicy.h" />
@@ -556,11 +557,13 @@
     <ClInclude Include="include\RE\ImageSpaceModifierInstanceTemp.h" />
     <ClInclude Include="include\RE\ImpactResults.h" />
     <ClInclude Include="include\RE\InteriorData.h" />
+    <ClInclude Include="include\RE\KinectEvent.h" />
     <ClInclude Include="include\RE\LoadWaitSpinner.h" />
     <ClInclude Include="include\RE\MagicFavorites.h" />
     <ClInclude Include="include\RE\MagicSystem.h" />
     <ClInclude Include="include\RE\MarkerUsedData.h" />
     <ClInclude Include="include\RE\ModManagerMenu.h" />
+    <ClInclude Include="include\RE\MouseMoveEvent.h" />
     <ClInclude Include="include\RE\Movement.h" />
     <ClInclude Include="include\RE\NiAlphaProperty.h" />
     <ClInclude Include="include\RE\NiCollisionObject.h" />

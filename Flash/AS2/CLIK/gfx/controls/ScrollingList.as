@@ -75,7 +75,7 @@ import gfx.ui.NavigationCode;
 [InspectableList("disabled", "visible", "itemRenderer", "inspectableScrollBar", "rowHeight", "inspectableRendererInstanceName", "margin", "paddingTop", "paddingBottom", "paddingLeft", "paddingRight", "thumbOffsetBottom", "thumbOffsetTop", "thumbSizeFactor", "enableInitCallback", "soundMap")]
 class gfx.controls.ScrollingList extends CoreList
 {
-	/* PUBLIC FUNCTIONS */
+	/* PUBLIC VARIABLES */
 
 	/**
 	 * Determines how focus "wraps" when the end or beginning of the component is reached.

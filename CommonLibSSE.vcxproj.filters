@@ -1201,6 +1201,9 @@
     <Filter Include="include\RE\NetImmerse\NiRefObject\NiObject\NiSkinInstance">
       <UniqueIdentifier>{f3bc2909-8642-4a3f-9c32-a341b585fec0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\RE\Events\InputEvent\IDEvent">
+      <UniqueIdentifier>{57350110-7c18-4677-bd8f-76e1171fc1a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -2261,14 +2264,8 @@
     <ClInclude Include="include\RE\IMapCameraCallbacks.h">
       <Filter>include\RE\Menus\IMenu\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\ButtonEvent.h">
-      <Filter>include\RE\Events\InputEvent</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\ChestsLooted.h">
       <Filter>include\RE\Events\BGSStoryEvent</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\IDEvent.h">
-      <Filter>include\RE\Events\InputEvent</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\InputEvent.h">
       <Filter>include\RE\Events\InputEvent</Filter>
@@ -2281,9 +2278,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\ItemsPickpocketed.h">
       <Filter>include\RE\Events\BGSStoryEvent</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\ThumbstickEvent.h">
-      <Filter>include\RE\Events\InputEvent</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\ScriptEventSourceHolder.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
@@ -5569,6 +5563,24 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSAtomic.h">
       <Filter>include\RE\BSCore</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\IDEvent.h">
+      <Filter>include\RE\Events\InputEvent\IDEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ButtonEvent.h">
+      <Filter>include\RE\Events\InputEvent\IDEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\ThumbstickEvent.h">
+      <Filter>include\RE\Events\InputEvent\IDEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\DeviceConnectEvent.h">
+      <Filter>include\RE\Events\InputEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\KinectEvent.h">
+      <Filter>include\RE\Events\InputEvent\IDEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\MouseMoveEvent.h">
+      <Filter>include\RE\Events\InputEvent\IDEvent</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
