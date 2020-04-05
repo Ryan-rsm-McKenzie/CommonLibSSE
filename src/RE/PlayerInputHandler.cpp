@@ -3,14 +3,14 @@
 
 namespace RE
 {
-	bool PlayerInputHandler::IsEnabled() const
+	bool PlayerInputHandler::IsInputEventHandlingEnabled() const
 	{
-		return enabled != 0;
+		return inputEventHandlingEnabled;
 	}
 
 
-	void PlayerInputHandler::SetEnabled(bool a_enable)
+	void PlayerInputHandler::SetInputEventHandlingEnabled(bool a_enabled)
 	{
-		enabled = a_enable ? 1 : 0;
+		inputEventHandlingEnabled = a_enabled;
 	}
 }

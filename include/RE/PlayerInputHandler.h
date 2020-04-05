@@ -23,13 +23,15 @@ namespace RE
 		virtual void ProcessMouseMove(MouseMoveEvent* a_event, PlayerControlsData* a_data);	   // 03 - { return; }
 		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data);		   // 04 - { return; }
 
-		bool IsEnabled() const;
-		void SetEnabled(bool a_enable = true);
+		bool IsInputEventHandlingEnabled() const;
+		void SetInputEventHandlingEnabled(bool a_enabled);
 
 
 		// members
-		UInt32 enabled;	 // 08
-		UInt32 pad0C;	 // 08
+		bool   inputEventHandlingEnabled;  // 08
+		UInt8  pad09;					   // 09
+		UInt16 pad0A;					   // 0A
+		UInt32 pad0C;					   // 0C
 	};
 	STATIC_ASSERT(sizeof(PlayerInputHandler) == 0x10);
 }
