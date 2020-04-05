@@ -75,6 +75,7 @@ namespace RE
 		static ControlMap* GetSingleton();
 
 		SInt8			 AllowTextInput(bool a_allow);
+		bool			 AreControlsEnabled(UEFlag a_flags) const;
 		UInt32			 GetMappedKey(const std::string_view& a_eventID, INPUT_DEVICE a_device, InputContextID a_context = InputContextID::kGameplay) const;
 		std::string_view GetUserEventName(UInt32 a_buttonID, INPUT_DEVICE a_device, InputContextID a_context = InputContextID::kGameplay) const;
 		bool			 IsActivateControlsEnabled() const;

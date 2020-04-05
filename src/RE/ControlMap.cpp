@@ -30,6 +30,12 @@ namespace RE
 	}
 
 
+	bool ControlMap::AreControlsEnabled(UEFlag a_flags) const
+	{
+		return (enabledControls & a_flags) == a_flags;
+	}
+
+
 	UInt32 ControlMap::GetMappedKey(const std::string_view& a_eventID, INPUT_DEVICE a_device, InputContextID a_context) const
 	{
 		assert(a_device < INPUT_DEVICE::kTotal);
