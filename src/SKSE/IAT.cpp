@@ -59,6 +59,7 @@ namespace SKSE
 			}
 		}
 
+		_WARNING("Failed to find %s (%s)", a_dll.data(), a_function.data());
 		return nullptr;
 	}
 
@@ -71,6 +72,8 @@ namespace SKSE
 		if (oldFunc) {
 			origAddr = *reinterpret_cast<std::uintptr_t*>(oldFunc);
 			SafeWrite64(oldFunc, a_newFunc);
+		} else {
+			_WARNING("Failed to patch %s (%s)", a_dll.data(), a_function.data());
 		}
 
 		return origAddr;
