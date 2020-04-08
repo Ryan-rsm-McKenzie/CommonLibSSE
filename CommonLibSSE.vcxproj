@@ -418,6 +418,7 @@
     <ClCompile Include="src\SKSE\RegistrationMap.cpp" />
     <ClCompile Include="src\SKSE\RegistrationSet.cpp" />
     <ClCompile Include="src\SKSE\SafeWrite.cpp" />
+    <ClCompile Include="src\SKSE\IAT.cpp" />
     <ClCompile Include="src\SKSE\Trampoline.cpp" />
     <ClCompile Include="src\SKSE\VArgFormatter.cpp" />
   </ItemGroup>
@@ -1624,6 +1625,7 @@
     <ClInclude Include="include\SKSE\SafeWrite.h" />
     <ClInclude Include="include\SKSE\Stubs.h" />
     <ClInclude Include="include\SKSE\Trampoline.h" />
+    <ClInclude Include="include\SKSE\IAT.h" />
     <ClInclude Include="include\SKSE\VArgFormatter.h" />
     <ClInclude Include="include\SKSE\Version.h" />
     <ClInclude Include="include\Util.h" />

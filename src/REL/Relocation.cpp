@@ -191,7 +191,7 @@ namespace REL
 		_base = reinterpret_cast<std::uintptr_t>(_handle);
 
 		auto dosHeader = reinterpret_cast<const IMAGE_DOS_HEADER*>(_base);
-		auto ntHeader = reinterpret_cast<const IMAGE_NT_HEADERS64*>(reinterpret_cast<const std::uint8_t*>(dosHeader) + dosHeader->e_lfanew);
+		auto ntHeader = adjust_pointer<IMAGE_NT_HEADERS64>(dosHeader, dosHeader->e_lfanew);
 		_size = ntHeader->OptionalHeader.SizeOfCode;
 
 		const auto sectionHeader = IMAGE_FIRST_SECTION(ntHeader);

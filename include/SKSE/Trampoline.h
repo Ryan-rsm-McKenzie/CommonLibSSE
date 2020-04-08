@@ -44,6 +44,7 @@ namespace SKSE
 		void EndAlloc(std::size_t a_size);
 		void EndAlloc(const void* a_end);
 
+		[[nodiscard]] std::size_t Empty() const;
 		[[nodiscard]] std::size_t Capacity() const;
 		[[nodiscard]] std::size_t AllocatedSize() const;
 		[[nodiscard]] std::size_t FreeSize() const;
@@ -115,6 +116,7 @@ namespace SKSE
 		[[nodiscard]] void* StartAlloc_Impl();
 		void				EndAlloc_Impl(std::size_t a_size);
 
+		[[nodiscard]] std::size_t Empty_Impl() const;
 		[[nodiscard]] std::size_t Capacity_Impl() const;
 		[[nodiscard]] std::size_t AllocatedSize_Impl() const;
 		[[nodiscard]] std::size_t FreeSize_Impl() const;

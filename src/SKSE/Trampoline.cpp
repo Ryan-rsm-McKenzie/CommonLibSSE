@@ -188,6 +188,13 @@ namespace SKSE
 	}
 
 
+	std::size_t Trampoline::Empty() const
+	{
+		Locker locker(_lock);
+		return Empty_Impl();
+	}
+
+
 	std::size_t Trampoline::Capacity() const
 	{
 		Locker locker(_lock);
@@ -371,6 +378,12 @@ namespace SKSE
 
 		_allocating = false;
 		_lock.unlock();
+	}
+
+
+	std::size_t Trampoline::Empty_Impl() const
+	{
+		return _capacity == 0;
 	}
 
 

@@ -1962,6 +1962,9 @@
     <ClCompile Include="src\RE\BSAtomic.cpp">
       <Filter>src\RE\BSCore</Filter>
     </ClCompile>
+    <ClCompile Include="src\SKSE\IAT.cpp">
+      <Filter>src\SKSE</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
@@ -5581,6 +5584,9 @@
     </ClInclude>
     <ClInclude Include="include\RE\MouseMoveEvent.h">
       <Filter>include\RE\Events\InputEvent\IDEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\IAT.h">
+      <Filter>include\SKSE</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
