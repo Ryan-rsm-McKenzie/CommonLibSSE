@@ -30,7 +30,7 @@ namespace RE
 		BSTPoint3<float>				translationInput;  // 10
 		float							zoomInput;		   // 1C
 		NiPointer<NiNode>				cameraRoot;		   // 20
-		BSTSmartPointer<TESCameraState> curentState;	   // 28
+		BSTSmartPointer<TESCameraState> currentState;	   // 28
 		bool							enabled;		   // 30
 		UInt8							pad31;			   // 31
 		UInt16							pad32;			   // 32
