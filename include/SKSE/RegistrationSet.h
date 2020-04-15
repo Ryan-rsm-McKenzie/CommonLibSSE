@@ -46,7 +46,6 @@ namespace SKSE
 			using Lock = std::recursive_mutex;
 			using Locker = std::lock_guard<Lock>;
 
-
 			std::set<RE::VMHandle> _handles;
 			std::string			   _eventName;
 			mutable Lock		   _lock;
@@ -62,43 +61,34 @@ namespace SKSE
 			public RegistrationSetBase
 		{
 		private:
-			using Base = RegistrationSetBase;
+			using super = RegistrationSetBase;
 
 		public:
 			RegistrationSet() = delete;
-			RegistrationSet(const std::string_view& a_eventName) :
-				Base(a_eventName) {}
-			RegistrationSet(const RegistrationSet& a_rhs) :
-				Base(a_rhs) {}
-			RegistrationSet(RegistrationSet&& a_rhs) :
-				Base(std::move(a_rhs)) {}
-			~RegistrationSet() {}
+			RegistrationSet(const RegistrationSet&) = default;
+			RegistrationSet(RegistrationSet&&) = default;
 
+			inline RegistrationSet(const std::string_view& a_eventName) :
+				super(a_eventName)
+			{}
 
-			inline RegistrationSet& operator=(const RegistrationSet& a_rhs)
+			~RegistrationSet() = default;
+
+			RegistrationSet& operator=(const RegistrationSet&) = default;
+			RegistrationSet& operator=(RegistrationSet&&) = default;
+
+			inline void SendEvent(Args&&... a_args)
 			{
-				Base::operator=(a_rhs);
-				return *this;
-			}
-			inline RegistrationSet& operator=(RegistrationSet&& a_rhs)
-			{
-				Base::operator=(std::move(a_rhs));
-				return *this;
-			}
+				RE::BSFixedString eventName(_eventName);
 
-
-			void SendEvent(Args&&... a_args)
-			{
-				auto			  vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-				RE::BSFixedString eventName(_eventName.c_str());
+				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 				for (auto& handle : _handles) {
 					auto args = RE::MakeFunctionArguments(std::forward<Args>(a_args)...);
 					vm->SendEvent(handle, eventName, args);
 				}
 			}
 
-
-			void QueueEvent(Args... a_args)
+			inline void QueueEvent(Args... a_args)
 			{
 				auto args = PackArgs(std::move(a_args)...);
 				auto task = GetTaskInterface();
@@ -109,7 +99,7 @@ namespace SKSE
 
 		private:
 			template <class Tuple, std::size_t... I>
-			void SendEvent_Tuple(Tuple&& a_tuple, std::index_sequence<I...>)
+			inline void SendEvent_Tuple(Tuple&& a_tuple, std::index_sequence<I...>)
 			{
 				SendEvent(std::move(UnpackArg(std::get<I>(std::forward<Tuple>(a_tuple))))...);
 			}
@@ -120,35 +110,27 @@ namespace SKSE
 		class RegistrationSet<void> : public RegistrationSetBase
 		{
 		private:
-			using Base = RegistrationSetBase;
+			using super = RegistrationSetBase;
 
 		public:
 			RegistrationSet() = delete;
-			RegistrationSet(const std::string_view& a_eventName) :
-				Base(a_eventName) {}
-			RegistrationSet(const RegistrationSet& a_rhs) :
-				Base(a_rhs) {}
-			RegistrationSet(RegistrationSet&& a_rhs) :
-				Base(std::move(a_rhs)) {}
-			~RegistrationSet() {}
+			RegistrationSet(const RegistrationSet&) = default;
+			RegistrationSet(RegistrationSet&&) = default;
 
+			inline RegistrationSet(const std::string_view& a_eventName) :
+				super(a_eventName)
+			{}
 
-			inline RegistrationSet& operator=(const RegistrationSet& a_rhs)
+			~RegistrationSet() = default;
+
+			RegistrationSet& operator=(const RegistrationSet&) = default;
+			RegistrationSet& operator=(RegistrationSet&&) = default;
+
+			inline void SendEvent()
 			{
-				Base::operator=(a_rhs);
-				return *this;
-			}
-			inline RegistrationSet& operator=(RegistrationSet&& a_rhs)
-			{
-				Base::operator=(std::move(a_rhs));
-				return *this;
-			}
+				RE::BSFixedString eventName(_eventName);
 
-
-			void SendEvent()
-			{
-				auto			  vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-				RE::BSFixedString eventName(_eventName.c_str());
+				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 				if (vm) {
 					for (auto& handle : _handles) {
 						auto args = RE::MakeFunctionArguments();
@@ -157,8 +139,7 @@ namespace SKSE
 				}
 			}
 
-
-			void QueueEvent()
+			inline void QueueEvent()
 			{
 				auto task = GetTaskInterface();
 				assert(task);
