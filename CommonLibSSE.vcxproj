@@ -168,6 +168,7 @@
     <None Include="src\.clang-format" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\RE\Inventory3DManager.cpp" />
     <ClCompile Include="src\REL\Relocation.cpp" />
     <ClCompile Include="src\RE\ActiveEffect.cpp" />
     <ClCompile Include="src\RE\Actor.cpp" />
@@ -1629,6 +1630,7 @@
     <ClInclude Include="include\SKSE\VArgFormatter.h" />
     <ClInclude Include="include\SKSE\Version.h" />
     <ClInclude Include="include\Util.h" />
+    <ClInclude Include="include\RE\Inventory3DManager.h" />
     <ClInclude Include="src\RE\GFxResourceKey.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
