@@ -15,6 +15,8 @@ namespace RE
 	class Inventory3DManager : public BSTSingletonSDM<Inventory3DManager>
 	{
 	public:
+		inline static constexpr auto RTTI = RTTI_Inventory3DManager;
+
 		static Inventory3DManager* GetSingleton();
 		virtual ~Inventory3DManager();
 

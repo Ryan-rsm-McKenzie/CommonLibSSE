@@ -537,6 +537,16 @@ namespace RE
 		}
 
 
+		namespace Inventory3DManager
+		{
+			static constexpr REL::ID Clear3D(static_cast<std::uint64_t>(50886));
+			static constexpr REL::ID Render(static_cast<std::uint64_t>(50882));
+			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(517051));
+			static constexpr REL::ID UpdateItem3D(static_cast<std::uint64_t>(50884));
+			static constexpr REL::ID UpdateMagic3D(static_cast<std::uint64_t>(50885));
+		}
+
+		
 		namespace ItemCrafted
 		{
 			static constexpr REL::ID GetEventSource(static_cast<std::uint64_t>(50515));
