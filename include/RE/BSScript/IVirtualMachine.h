@@ -120,8 +120,10 @@ namespace RE
 			bool					   GetScriptObjectTypeNoLoad(VMTypeID a_typeID, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr) const;
 			bool					   GetVariableValue(const BSTSmartPointer<Object>& a_objPtr, UInt32 a_index, Variable& a_out) const;
 			bool					   GetVariableValue(VMHandle a_handle, const BSFixedString& a_className, SInt32 a_variableIndex, Variable& a_out) const;
+
 			template <class F>
-			void RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, bool a_callableFromTasklets = false);
+			void RegisterFunction(std::string_view a_fnName, std::string_view a_className, F* a_callback, bool a_callableFromTasklets = false);
+
 			void SetCallableFromTasklets(const char* a_className, const char* a_stateName, const char* a_fnName, bool a_callable);
 			void SetCallableFromTasklets(const char* a_className, const char* a_fnName, bool a_callable);
 			void TraceForm(TESForm* a_form, const char* a_str, VMStackID a_stackID, Severity a_severity);

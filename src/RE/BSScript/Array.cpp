@@ -1,5 +1,8 @@
 #include "RE/BSScript/Array.h"
 
+#include <stdexcept>
+#include <string>
+
 
 namespace RE
 {
@@ -54,36 +57,40 @@ namespace RE
 		[[nodiscard]] auto Array::front()
 			-> reference
 		{
-			assert(size() > 0);
-			return _data[0];
+			return operator[](0);
 		}
 
 
 		[[nodiscard]] auto Array::front() const
 			-> const_reference
 		{
-			assert(size() > 0);
-			return _data[0];
+			return operator[](0);
 		}
 
 
 		[[nodiscard]] auto Array::back()
 			-> reference
 		{
-			assert(size() > 0);
-			return _data[size() - 1];
+			return operator[](size() - 1);
 		}
 
 
 		[[nodiscard]] auto Array::back() const
 			-> const_reference
 		{
-			assert(size() > 0);
-			return _data[size() - 1];
+			return operator[](size() - 1);
 		}
 
 
-		[[nodiscard]] Variable* Array::data() noexcept
+		[[nodiscard]] auto Array::data() noexcept
+			-> pointer
+		{
+			return size() > 0 ? _data : nullptr;
+		}
+
+
+		[[nodiscard]] auto Array::data() const noexcept
+			-> const_pointer
 		{
 			return size() > 0 ? _data : nullptr;
 		}
@@ -92,14 +99,14 @@ namespace RE
 		[[nodiscard]] auto Array::begin() noexcept
 			-> iterator
 		{
-			return iterator(_data);
+			return data();
 		}
 
 
 		[[nodiscard]] auto Array::begin() const noexcept
 			-> const_iterator
 		{
-			return const_iterator(_data);
+			return data();
 		}
 
 
@@ -113,14 +120,14 @@ namespace RE
 		[[nodiscard]] auto Array::end() noexcept
 			-> iterator
 		{
-			return iterator(_data, _len);
+			return size() > 0 ? _data + size() : nullptr;
 		}
 
 
 		[[nodiscard]] auto Array::end() const noexcept
 			-> const_iterator
 		{
-			return const_iterator(_data, _len);
+			return size() > 0 ? _data + size() : nullptr;
 		}
 
 
@@ -173,12 +180,6 @@ namespace RE
 		}
 
 
-		[[nodiscard]] const Variable* Array::data() const noexcept
-		{
-			return size() > 0 ? _data : nullptr;
-		}
-
-
 		[[nodiscard]] bool Array::empty() const noexcept
 		{
 			return size() > 0;
@@ -188,14 +189,14 @@ namespace RE
 		[[nodiscard]] auto Array::size() const noexcept
 			-> size_type
 		{
-			return _len;
+			return _size;
 		}
 
 
 		[[nodiscard]] auto Array::max_size() const noexcept
 			-> size_type
 		{
-			return kMaxSize;
+			return MAX_SIZE;
 		}
 
 
@@ -234,7 +235,7 @@ namespace RE
 			err += ": a_pos (which is ";
 			err += std::to_string(a_pos);
 			err += ") >= _len (which is ";
-			err += std::to_string(_len);
+			err += std::to_string(size());
 			err += ")";
 			throw std::out_of_range(err);
 		}

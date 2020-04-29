@@ -1,11 +1,8 @@
 #pragma once
 
-#include <type_traits>
+#include <string_view>
 
 #include "RE/BSFixedString.h"
-#include "RE/BSScript/ArrayTypeTraits.h"
-#include "RE/BSScript/CommonTypeTraits.h"
-#include "RE/BSScript/ObjectTypeTraits.h"
 #include "RE/BSScript/TypeInfo.h"
 #include "RE/BSTSmartPointer.h"
 
@@ -56,13 +53,13 @@ namespace RE
 			bool operator<=(const Variable& a_rhs) const;
 			bool operator>=(const Variable& a_rhs) const;
 
-			SInt32		  GetSInt() const;
-			UInt32		  GetUInt() const;
-			float		  GetFloat() const;
-			bool		  GetBool() const;
-			Array*		  GetArray() const;
-			Object*		  GetObject() const;
-			BSFixedString GetString() const;
+			SInt32			 GetSInt() const;
+			UInt32			 GetUInt() const;
+			float			 GetFloat() const;
+			bool			 GetBool() const;
+			Array*			 GetArray() const;
+			Object*			 GetObject() const;
+			std::string_view GetString() const;
 
 			void SetNone();
 			void SetSInt(SInt32 a_val);
@@ -72,62 +69,23 @@ namespace RE
 			void SetArray(Array* a_val);
 			void SetObject(Object* a_val);
 			void SetObject(Object* a_val, TypeInfo::RawType a_type);
-			void SetString(const BSFixedString& a_val);
-			void SetString(BSFixedString&& a_val);
-
-			template <class T, typename std::enable_if_t<is_sint32_compat<T>::value, int> = 0>
-			inline void SetData(T&& a_val)
-			{
-				SetSInt(std::forward<T>(a_val));
-			}
-			template <class T, typename std::enable_if_t<is_uint32_compat<T>::value, int> = 0>
-			inline void SetData(T&& a_val)
-			{
-				SetUInt(std::forward<T>(a_val));
-			}
-			template <class T, typename std::enable_if_t<is_float_compat<T>::value, int> = 0>
-			inline void SetData(T&& a_val)
-			{
-				SetFloat(std::forward<T>(a_val));
-			}
-			template <class T, typename std::enable_if_t<is_bool_no_cvr<T>::value, int> = 0>
-			inline void SetData(T&& a_val)
-			{
-				SetBool(std::forward<T>(a_val));
-			}
-			template <class T, typename std::enable_if_t<is_script_array_pointer_no_cvr<T>::value, int> = 0>
-			inline void SetData(T&& a_val)
-			{
-				SetArray(std::forward<T>(a_val));
-			}
-			template <class T, typename std::enable_if_t<is_script_object_pointer_no_cvr<T>::value, int> = 0>
-			inline void SetData(T&& a_val)
-			{
-				SetObject(std::forward<T>(a_val));
-			}
-			template <class T, typename std::enable_if_t<is_string_compat<T>::value, int> = 0>
-			inline void SetData(T&& a_val)
-			{
-				SetString(std::forward<T>(a_val));
-			}
+			void SetString(std::string_view a_val);
 
 			template <class T>
 			void Pack(T&& a_src);
+
 			template <class T>
 			T Unpack() const;
-
-		protected:
-			template <class T>
-			friend class VMArray;
-
-			// members
-			TypeInfo varType;  // 00
-			Value	 value;	   // 08
 
 		private:
 			void ChangeType(TypeInfo::RawType a_type);
 			void Cleanup();
 			void Assign(const Variable& a_rhs);
+
+
+			// members
+			TypeInfo varType;  // 00
+			Value	 value;	   // 08
 		};
 		STATIC_ASSERT(sizeof(Variable) == 0x10);
 	}

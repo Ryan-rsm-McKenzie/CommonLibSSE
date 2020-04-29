@@ -63,7 +63,7 @@ namespace RE
 		{}
 
 
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
+		template <class Y, std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
 		explicit BSTSmartPointer(Y* a_rhs) :
 			_ptr(a_rhs)
 		{
@@ -78,7 +78,7 @@ namespace RE
 		}
 
 
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
+		template <class Y, std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
 		BSTSmartPointer(const BSTSmartPointer<Y>& a_rhs) :
 			_ptr(a_rhs._ptr)
 		{
@@ -93,7 +93,7 @@ namespace RE
 		}
 
 
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
+		template <class Y, std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
 		BSTSmartPointer(BSTSmartPointer<Y>&& a_rhs) noexcept :
 			_ptr(std::move(a_rhs._ptr))
 		{
@@ -118,7 +118,7 @@ namespace RE
 		}
 
 
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
+		template <class Y, std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
 		BSTSmartPointer& operator=(const BSTSmartPointer<Y>& a_rhs)
 		{
 			if (this != std::addressof(a_rhs)) {
@@ -141,7 +141,7 @@ namespace RE
 		}
 
 
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
+		template <class Y, std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
 		BSTSmartPointer& operator=(BSTSmartPointer<Y>&& a_rhs)
 		{
 			if (this != std::addressof(a_rhs)) {
@@ -159,7 +159,7 @@ namespace RE
 		}
 
 
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
+		template <class Y, std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
 		void reset(Y* a_ptr)
 		{
 			if (_ptr != a_ptr) {

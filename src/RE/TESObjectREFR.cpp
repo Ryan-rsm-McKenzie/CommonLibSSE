@@ -573,7 +573,7 @@ namespace RE
 
 	bool TESObjectREFR::MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node)
 	{
-		assert(a_target);
+		assert(a_target && a_node);
 		auto& position = a_node->world.translate;
 		NiPoint3 rotation;
 		a_node->world.rotate.ToEulerAnglesXYZ(rotation);

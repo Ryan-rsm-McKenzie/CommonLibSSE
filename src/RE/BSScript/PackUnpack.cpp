@@ -1,5 +1,7 @@
 #include "RE/BSScript/PackUnpack.h"
 
+#include <cassert>
+
 #include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/Object.h"
@@ -16,28 +18,31 @@ namespace RE
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			BSTSmartPointer<ObjectTypeInfo> classPtr;
-			if (vm && vm->GetScriptObjectType(a_typeID, classPtr)) {
+			if (vm && vm->GetScriptObjectType(a_typeID, classPtr) && classPtr) {
 				return classPtr->GetRawType();
 			} else {
-				_ERROR("Failed to get vm type id for class!\n");
+				_ERROR("Failed to get vm type id for class!");
 				return TypeInfo::RawType::kNone;
 			}
 		}
 
 
-		void BindID(BSTSmartPointer<Object>& a_objectPtr, const TESForm* a_srcData, VMTypeID a_typeID)
+		void BindID(BSTSmartPointer<Object>& a_objectPtr, const TESForm* a_src, VMTypeID a_typeID)
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
-			VMTypeID id = 0;
+			auto id = static_cast<VMTypeID>(0);
 			BSTSmartPointer<ObjectTypeInfo> typeInfo(a_objectPtr->GetTypeInfo());
-			if (vm && vm->GetTypeIDForScriptObject(typeInfo->GetName(), id)) {
-				auto policy = vm->GetObjectHandlePolicy();
-				if (policy) {
-					auto handle = policy->GetHandleForObject(a_typeID, a_srcData);
+			if (vm && typeInfo && vm->GetTypeIDForScriptObject(typeInfo->GetName(), id)) {
+				auto handlePolicy = vm->GetObjectHandlePolicy();
+				if (handlePolicy) {
+					auto handle = handlePolicy->GetHandleForObject(a_typeID, a_src);
 
 					// if handle is of expected type and not invalid
-					if (policy->HandleIsType(id, handle) && handle != policy->EmptyHandle()) {
-						vm->GetObjectBindPolicy()->BindObject(a_objectPtr, handle);
+					if (handlePolicy->HandleIsType(id, handle) && handlePolicy->IsHandleObjectAvailable(handle)) {
+						auto bindPolicy = vm->GetObjectBindPolicy();
+						if (bindPolicy) {
+							bindPolicy->BindObject(a_objectPtr, handle);
+						}
 					}
 				}
 			}
@@ -46,6 +51,7 @@ namespace RE
 
 		void PackHandle(Variable* a_dst, const TESForm* a_src, VMTypeID a_typeID)
 		{
+			assert(a_dst);
 			a_dst->SetNone();
 
 			if (!a_src) {
@@ -53,13 +59,8 @@ namespace RE
 			}
 
 			auto vm = Internal::VirtualMachine::GetSingleton();
-			if (!vm) {
-				return;
-			}
-
 			BSTSmartPointer<ObjectTypeInfo> classPtr;
-			vm->GetScriptObjectType(a_typeID, classPtr);
-			if (!classPtr) {
+			if (!vm || !vm->GetScriptObjectType(a_typeID, classPtr) || !classPtr) {
 				return;
 			}
 
@@ -69,7 +70,6 @@ namespace RE
 			}
 
 			auto handle = policy->GetHandleForObject(a_typeID, a_src);
-
 			BSTSmartPointer<Object> objectPtr;
 			if (!vm->FindBoundObject(handle, classPtr->GetName(), objectPtr)) {
 				// when cannot be resolved, then create new objectPtr
@@ -87,6 +87,7 @@ namespace RE
 
 		void* UnpackHandle(const Variable* a_src, VMTypeID a_typeID)
 		{
+			assert(a_src);
 			const auto* object = a_src->GetObject();
 			return object ? object->Resolve(a_typeID) : nullptr;
 		}

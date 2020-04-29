@@ -12,7 +12,7 @@ namespace RE
 	{
 		namespace NF_util
 		{
-			NativeFunctionBase::NativeFunctionBase(const char* a_fnName, const char* a_className, bool a_isStatic, UInt16 a_numParams) :
+			NativeFunctionBase::NativeFunctionBase(std::string_view a_fnName, std::string_view a_className, bool a_isStatic, UInt16 a_numParams) :
 				_name(a_fnName),
 				_objName(a_className),
 				_stateName(""),

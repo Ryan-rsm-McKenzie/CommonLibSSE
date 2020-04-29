@@ -2948,9 +2948,6 @@
     <ClInclude Include="include\RE\BSScript\StatsEvent.h">
       <Filter>include\RE\BSScript</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSScript\VMArray.h">
-      <Filter>include\RE\BSScript</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSScript\ObjectBindPolicy.h">
       <Filter>include\RE\BSScript</Filter>
     </ClInclude>
@@ -3784,12 +3781,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\BSScript\Variable.h">
       <Filter>include\RE\BSScript</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScript\ArrayTypeTraits.h">
-      <Filter>include\RE\BSScript\Traits</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSScript\ObjectTypeTraits.h">
-      <Filter>include\RE\BSScript\Traits</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSScript\Internal\ScriptFunction.h">
       <Filter>include\RE\BSScript\IFunction</Filter>
@@ -5587,6 +5578,9 @@
     </ClInclude>
     <ClInclude Include="include\SKSE\IAT.h">
       <Filter>include\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSScript\PackUnpackImpl.h">
+      <Filter>include\RE\BSScript</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

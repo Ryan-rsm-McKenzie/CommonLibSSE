@@ -12,102 +12,155 @@ namespace SKSE
 {
 	namespace Impl
 	{
-		namespace
+		template <class T>
+		using is_object_pointer = std::is_convertible<std::decay_t<T>, RE::TESObjectREFR*>;
+
+		template <class T>
+		inline constexpr bool is_object_pointer_v = is_object_pointer<T>::value;
+
+		template <class T>
+		using is_not_object_pointer = std::negation<is_object_pointer<T>>;
+
+		template <class T>
+		inline constexpr bool is_not_object_pointer_v = is_not_object_pointer<T>::value;
+
+		template <class T>
+		using is_form_pointer = std::is_convertible<std::decay_t<T>, RE::TESForm*>;
+
+		template <class T>
+		inline constexpr bool is_form_pointer_v = is_form_pointer<T>::value;
+
+		template <class T>
+		using is_not_form_pointer = std::negation<is_form_pointer<T>>;
+
+		template <class T>
+		inline constexpr bool is_not_form_pointer_v = is_not_form_pointer<T>::value;
+
+		template <class T>
+		struct index_sequence_for_tuple :
+			std::make_index_sequence<
+				std::tuple_size_v<
+					std::decay_t<T>>>
+		{};
+
+
+		// default
+		template <class T, class = void>
+		class VMArg
 		{
-			template <class T>
-			using is_object_pointer = std::is_convertible<T, RE::TESObjectREFR*>;
+		public:
+			using value_type = std::decay_t<T>;
 
-			template <class T>
-			using is_not_object_pointer = std::negation<is_object_pointer<T>>;
+			VMArg() :
+				_arg{}
+			{}
 
-			template <class T>
-			using is_form_pointer = std::is_convertible<T, RE::TESForm*>;
+			template <class U, std::enable_if_t<std::is_same_v<std::decay_t<U>, value_type>, int> = 0>
+			VMArg(U&& a_arg) :
+				_arg{ std::forward<U>(a_arg) }
+			{}
 
-			template <class T>
-			using is_not_form_pointer = std::negation<is_form_pointer<T>>;
+			~VMArg() = default;
 
-			template <class T>
-			struct make_index_sequence_from_tuple :
-				std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<T>>>
-			{};
-
-
-			// use a template wrapper so we can preserve type info
-			template <class T>
-			struct FormWrapper
+			template <class U, std::enable_if_t<std::is_same_v<std::decay_t<U>, value_type>, int> = 0>
+			void Pack(U&& a_arg)
 			{
-				RE::FormID formID;
-			};
-		}
+				_arg = std::forward<U>(a_arg);
+			}
 
+			value_type Unpack()
+			{
+				return value_type{ std::move(_arg) };
+			}
 
-		// default
-		template <class T, class U = std::decay_t<T>, typename std::enable_if_t<std::conjunction<is_not_form_pointer<U>, is_not_object_pointer<U>>::value, int> = 0>
-		inline U PackArg(T&& a_val)
-		{
-			return a_val;
-		}
-
-
-		// forms
-		template <class T, class U = std::decay_t<T>, typename std::enable_if_t<std::conjunction<is_form_pointer<U>, is_not_object_pointer<U>>::value, int> = 0>
-		inline FormWrapper<U> PackArg(T&& a_form)
-		{
-			auto formID = a_form ? a_form->formID : static_cast<RE::FormID>(-1);
-			return { formID };
-		}
-
-
-		// obj references
-		template <class T, class U = std::decay_t<T>, typename std::enable_if_t<is_object_pointer<U>::value, int> = 0>
-		inline RE::NiPointer<std::remove_pointer_t<U>> PackArg(T&& a_objRef)
-		{
-			return { a_objRef };
-		}
-
-
-		template <class... Args>
-		inline decltype(auto) PackArgs(Args&&... a_args)
-		{
-			return std::make_tuple(PackArg(std::forward<Args>(a_args))...);
-		}
-
-
-		// default
-		template <class T>
-		inline std::decay_t<T> UnpackArg(T&& a_val)
-		{
-			return a_val;
-		}
+		private:
+			T _arg;
+		};
 
 
 		// forms
 		template <class T>
-		inline T UnpackArg(const FormWrapper<T>& a_wrapper)
+		class VMArg<
+			T,
+			std::enable_if_t<
+				std::conjunction_v<
+					is_form_pointer<T>,
+					is_not_object_pointer<T>>>>
 		{
-			return static_cast<T>(RE::TESForm::LookupByID(a_wrapper.formID));
-		}
+		public:
+			using value_type = std::decay_t<T>;
+
+			VMArg() :
+				_formID(static_cast<RE::FormID>(0))
+			{}
+
+			template <class U, std::enable_if_t<std::is_same_v<std::decay_t<U>, value_type>, int> = 0>
+			VMArg(U&& a_arg) :
+				VMArg()
+			{
+				Pack(std::forward<U>(a_arg));
+			}
+
+			~VMArg() = default;
+
+			template <class U, std::enable_if_t<std::is_same_v<std::decay_t<U>, value_type>, int> = 0>
+			void Pack(U&& a_arg)
+			{
+				if (a_arg) {
+					_formID = a_arg->GetFormID();
+				}
+			}
+
+			value_type Unpack()
+			{
+				return static_cast<value_type>(RE::TESForm::LookupByID(_formID));
+			}
+
+		private:
+			RE::FormID _formID;
+		};
+
+
+		// objects
+		template <class T>
+		class VMArg<
+			T,
+			std::enable_if_t<
+				is_object_pointer_v<T>>>
+		{
+		public:
+			using value_type = std::decay_t<T>;
+
+			VMArg() :
+				_object(nullptr)
+			{}
+
+			template <class U, std::enable_if_t<std::is_same_v<std::decay_t<U>, value_type>, int> = 0>
+			VMArg(U&& a_arg) :
+				VMArg()
+			{
+				Pack(std::forward<U>(a_arg));
+			}
+
+			~VMArg() = default;
+
+			template <class U, std::enable_if_t<std::is_same_v<std::decay_t<U>, value_type>, int> = 0>
+			void Pack(U&& a_arg)
+			{
+				_object.reset(a_arg);
+			}
+
+			value_type Unpack()
+			{
+				return _object.get();
+			}
+
+		private:
+			RE::NiPointer<value_type> _object;
+		};
 
 
 		template <class T>
-		inline T UnpackArg(FormWrapper<T>&& a_wrapper)
-		{
-			return static_cast<T>(RE::TESForm::LookupByID(a_wrapper.formID));
-		}
-
-
-		// obj references
-		template <class T>
-		inline T* UnpackArg(const RE::NiPointer<T>& a_objRef)
-		{
-			return a_objRef.get();
-		}
-
-
-		template <class T>
-		inline T* UnpackArg(RE::NiPointer<T>&& a_objRef)
-		{
-			return a_objRef.get();
-		}
+		VMArg(T&&) -> VMArg<T>;
 	}
 }

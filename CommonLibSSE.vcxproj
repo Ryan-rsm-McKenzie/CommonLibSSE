@@ -510,6 +510,7 @@
     <ClInclude Include="include\RE\BSScript\Internal\VDescTable.h" />
     <ClInclude Include="include\RE\BSScript\MemoryPage.h" />
     <ClInclude Include="include\RE\BSScript\PropertyTypeInfo.h" />
+    <ClInclude Include="include\RE\BSScript\PackUnpackImpl.h" />
     <ClInclude Include="include\RE\BSTimer.h" />
     <ClInclude Include="include\RE\BSTPoint.h" />
     <ClInclude Include="include\RE\BSTPointerAndFlags.h" />
@@ -782,7 +783,6 @@
     <ClInclude Include="include\RE\BSScaleformManager.h" />
     <ClInclude Include="include\RE\BSScaleformTranslator.h" />
     <ClInclude Include="include\RE\BSScript\Array.h" />
-    <ClInclude Include="include\RE\BSScript\ArrayTypeTraits.h" />
     <ClInclude Include="include\RE\BSScript\ObjectTypeInfo.h" />
     <ClInclude Include="include\RE\BSScript\Internal\CodeTasklet.h" />
     <ClInclude Include="include\RE\BSScript\Internal\IFuncCallQuery.h" />
@@ -795,7 +795,6 @@
     <ClInclude Include="include\RE\BSScript\TypeInfo.h" />
     <ClInclude Include="include\RE\BSScript\Variable.h" />
     <ClInclude Include="include\RE\BSScript\CommonTypeTraits.h" />
-    <ClInclude Include="include\RE\BSScript\ObjectTypeTraits.h" />
     <ClInclude Include="include\RE\BSScript\ErrorLogger.h" />
     <ClInclude Include="include\RE\BSScript\IFreezeQuery.h" />
     <ClInclude Include="include\RE\BSScript\IObjectHandlePolicy.h" />
@@ -826,7 +825,6 @@
     <ClInclude Include="include\RE\BSScript\NativeFunction.h" />
     <ClInclude Include="include\RE\BSScript\NF_util\NativeFunctionBase.h" />
     <ClInclude Include="include\RE\BSScript\SimpleAllocMemoryPagePolicy.h" />
-    <ClInclude Include="include\RE\BSScript\VMArray.h" />
     <ClInclude Include="include\RE\BSScript\ZeroFunctionArguments.h" />
     <ClInclude Include="include\RE\BSShader.h" />
     <ClInclude Include="include\RE\BSShaderMaterial.h" />

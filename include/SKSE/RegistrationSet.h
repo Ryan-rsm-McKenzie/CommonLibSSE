@@ -57,7 +57,11 @@ namespace SKSE
 
 
 		template <class... Args>
-		class RegistrationSet<typename std::enable_if_t<std::conjunction<RE::BSScript::is_param_compat<Args>...>::value>, Args...> :
+		class RegistrationSet<
+			std::enable_if_t<
+				std::conjunction_v<
+					RE::BSScript::is_parameter_convertible<Args>...>>,
+			Args...> :
 			public RegistrationSetBase
 		{
 		private:
@@ -77,7 +81,7 @@ namespace SKSE
 			RegistrationSet& operator=(const RegistrationSet&) = default;
 			RegistrationSet& operator=(RegistrationSet&&) = default;
 
-			inline void SendEvent(Args&&... a_args)
+			inline void SendEvent(Args... a_args)
 			{
 				RE::BSFixedString eventName(_eventName);
 
@@ -90,18 +94,21 @@ namespace SKSE
 
 			inline void QueueEvent(Args... a_args)
 			{
-				auto args = PackArgs(std::move(a_args)...);
-				auto task = GetTaskInterface();
-				task->AddTask([args, this]() {
-					SendEvent_Tuple(std::move(args), make_index_sequence_from_tuple<decltype(args)>{});
-				});
+				std::tuple args(VMArg(std::forward<Args>(a_args))...);
+				auto	   task = GetTaskInterface();
+				assert(task);
+				if (task) {
+					task->AddTask([args, this]() mutable {
+						SendEvent_Tuple(std::move(args), index_sequence_for_tuple<decltype(args)>{});
+					});
+				}
 			}
 
 		private:
 			template <class Tuple, std::size_t... I>
 			inline void SendEvent_Tuple(Tuple&& a_tuple, std::index_sequence<I...>)
 			{
-				SendEvent(std::move(UnpackArg(std::get<I>(std::forward<Tuple>(a_tuple))))...);
+				SendEvent(std::get<I>(std::forward<Tuple>(a_tuple)).Unpack()...);
 			}
 		};
 

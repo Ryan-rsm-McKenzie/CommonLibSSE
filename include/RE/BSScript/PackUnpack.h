@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cassert>
+
 #include "RE/BSScript/TypeTraits.h"
 #include "RE/BSScript/Variable.h"
 #include "RE/BSTSmartPointer.h"
@@ -13,128 +15,146 @@ namespace RE
 
 
 		TypeInfo::RawType GetRawTypeFromVMType(VMTypeID a_typeID);
-		void			  BindID(BSTSmartPointer<Object>& a_object, const TESForm* a_srcData, VMTypeID a_typeID);
+		void			  BindID(BSTSmartPointer<Object>& a_object, const TESForm* a_src, VMTypeID a_typeID);
 		void			  PackHandle(Variable* a_dst, const TESForm* a_src, VMTypeID a_typeID);
 		void*			  UnpackHandle(const Variable* a_src, VMTypeID a_typeID);
 
 
-		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
+		template <class T, std::enable_if_t<is_form_pointer_v<T>, int> = 0>
 		inline TypeInfo::RawType GetRawType()
 		{
-			return GetRawTypeFromVMType(static_cast<VMTypeID>(remove_cvpr_t<T>::FORMTYPE));
+			return GetRawTypeFromVMType(static_cast<VMTypeID>(decay_pointer_t<T>::FORMTYPE));
 		}
 
 
-		template <class T, typename std::enable_if_t<is_vm_form_array_no_cvr<T>::value, int> = 0>
+		template <class T, std::enable_if_t<is_form_array_v<T>, int> = 0>
 		inline TypeInfo::RawType GetRawType()
 		{
-			return GetRawTypeFromVMType(static_cast<VMTypeID>(remove_cvpr_t<remove_vm_array_t<T>>::FORMTYPE)) + TypeInfo::RawType::kObject;
+			return GetRawTypeFromVMType(static_cast<VMTypeID>(unwrapped_type_t<T>::FORMTYPE)) + TypeInfo::RawType::kObject;
 		}
 
 
-		template <class T, typename std::enable_if_t<is_builtin_type_no_cvr<T>::value, int> = 0>
+		template <class T, std::enable_if_t<is_builtin_convertible_v<T>, int> = 0>
 		inline TypeInfo::RawType GetRawType()
 		{
-			return vm_type<remove_cvpr_t<T>>::value;
+			return vm_type_v<T>;
 		}
 
 
-		template <class T, typename std::enable_if_t<is_vm_builtin_array_no_cvr<T>::value, int> = 0>
+		template <class T, std::enable_if_t<is_builtin_array_v<T>, int> = 0>
 		inline TypeInfo::RawType GetRawType()
 		{
-			return vm_type<remove_cvpr_t<remove_vm_array_t<T>>>::value + TypeInfo::RawType::kNoneArray;
+			return vm_type_v<T> + TypeInfo::RawType::kNoneArray;
 		}
 
 
-		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
+		template <class T, class U = std::decay_t<T>, std::enable_if_t<is_string_convertible_v<U>, int> = 0>
 		inline void PackValue(Variable* a_dst, T&& a_src)
 		{
-			PackHandle(a_dst, std::forward<T>(a_src), static_cast<VMTypeID>(remove_cvpr_t<T>::FORMTYPE));
+			assert(a_dst);
+			a_dst->SetString(std::forward<T>(a_src));
 		}
 
 
-		template <class T, typename std::enable_if_t<is_vm_form_array_no_cvr<T>::value, int> = 0>
+		template <class T, class U = std::decay_t<T>, std::enable_if_t<is_signed_integral_convertible_v<U>, int> = 0>
 		inline void PackValue(Variable* a_dst, T&& a_src)
 		{
-			a_dst->SetData(a_src.data());
+			assert(a_dst);
+			a_dst->SetSInt(static_cast<SInt32>(std::forward<T>(a_src)));
 		}
 
 
-		template <class T, typename std::enable_if_t<is_builtin_type_no_cvr<T>::value, int> = 0>
+		template <class T, class U = std::decay_t<T>, std::enable_if_t<is_unsigned_integral_convertible_v<U>, int> = 0>
 		inline void PackValue(Variable* a_dst, T&& a_src)
 		{
-			a_dst->SetData(std::forward<T>(a_src));
+			assert(a_dst);
+			a_dst->SetUInt(static_cast<UInt32>(std::forward<T>(a_src)));
 		}
 
 
-		template <class T, typename std::enable_if_t<is_vm_builtin_array_no_cvr<T>::value, int> = 0>
+		template <class T, class U = std::decay_t<T>, std::enable_if_t<is_floating_point_convertible_v<U>, int> = 0>
 		inline void PackValue(Variable* a_dst, T&& a_src)
 		{
-			a_dst->SetData(a_src.data());
+			assert(a_dst);
+			a_dst->SetFloat(static_cast<float>(std::forward<T>(a_src)));
 		}
 
 
-		template <class T, typename std::enable_if_t<is_static_base_pointer<T>::value, int> = 0>
+		template <class T, class U = std::decay_t<T>, std::enable_if_t<is_boolean_v<U>, int> = 0>
+		inline void PackValue(Variable* a_dst, T&& a_src)
+		{
+			assert(a_dst);
+			a_dst->SetBool(static_cast<bool>(std::forward<T>(a_src)));
+		}
+
+
+		template <class T, class U = std::decay_t<T>, std::enable_if_t<is_form_pointer_v<U>, int> = 0>
+		inline void PackValue(Variable* a_dst, T&& a_src)
+		{
+			PackHandle(a_dst, std::forward<T>(a_src), static_cast<VMTypeID>(decay_pointer_t<U>::FORMTYPE));
+		}
+
+
+		template <class T, class U = std::decay_t<T>, std::enable_if_t<is_array_v<U>, int> = 0>
+		void PackValue(Variable* a_dst, T&& a_src);
+
+
+		template <class T, std::enable_if_t<is_static_base_pointer_v<T>, int> = 0>
+		inline T UnpackValue([[maybe_unused]] const Variable* a_src)
+		{
+			return static_cast<T>(nullptr);
+		}
+
+
+		template <class T, std::enable_if_t<is_string_convertible_v<T>, int> = 0>
 		inline T UnpackValue(const Variable* a_src)
 		{
-			return static_cast<T>(0);
+			assert(a_src);
+			return T{ a_src->GetString() };
 		}
 
 
-		template <class T, typename std::enable_if_t<is_sint32_compat<T>::value, int> = 0>
+		template <class T, std::enable_if_t<is_signed_integral_convertible_v<T>, int> = 0>
 		inline T UnpackValue(const Variable* a_src)
 		{
-			return a_src->GetSInt();
+			assert(a_src);
+			return static_cast<T>(a_src->GetSInt());
 		}
 
 
-		template <class T, typename std::enable_if_t<is_uint32_compat<T>::value, int> = 0>
+		template <class T, std::enable_if_t<is_unsigned_integral_convertible_v<T>, int> = 0>
 		inline T UnpackValue(const Variable* a_src)
 		{
-			return a_src->GetUInt();
+			assert(a_src);
+			return static_cast<T>(a_src->GetUInt());
 		}
 
 
-		template <class T, typename std::enable_if_t<is_float_compat<T>::value, int> = 0>
+		template <class T, std::enable_if_t<is_floating_point_convertible_v<T>, int> = 0>
 		inline T UnpackValue(const Variable* a_src)
 		{
-			return a_src->GetFloat();
+			assert(a_src);
+			return static_cast<T>(a_src->GetFloat());
 		}
 
 
-		template <class T, typename std::enable_if_t<is_bool_no_cvr<T>::value, int> = 0>
+		template <class T, std::enable_if_t<is_boolean_v<T>, int> = 0>
 		inline T UnpackValue(const Variable* a_src)
 		{
-			return a_src->GetBool();
+			assert(a_src);
+			return static_cast<T>(a_src->GetBool());
 		}
 
 
-		template <class T, typename std::enable_if_t<is_string_compat<T>::value, int> = 0>
+		template <class T, std::enable_if_t<is_form_pointer_v<T>, int> = 0>
 		inline T UnpackValue(const Variable* a_src)
 		{
-			return a_src->GetString();
+			return static_cast<T>(UnpackHandle(a_src, static_cast<VMTypeID>(decay_pointer_t<T>::FORMTYPE)));
 		}
 
 
-		template <class T, typename std::enable_if_t<is_vm_builtin_array_no_cvr<T>::value, int> = 0>
-		inline T UnpackValue(const Variable* a_src)
-		{
-			return a_src->GetArray();
-		}
-
-
-		template <class T, typename std::enable_if_t<is_form_pointer_no_cvr<T>::value, int> = 0>
-		inline T UnpackValue(const Variable* a_src)
-		{
-			return static_cast<T>(UnpackHandle(a_src, static_cast<VMTypeID>(remove_cvpr_t<T>::FORMTYPE)));
-		}
-
-
-		template <class T, typename std::enable_if_t<is_vm_form_array_no_cvr<T>::value, int> = 0>
-		inline T UnpackValue(const Variable* a_src)
-		{
-			return a_src->GetArray();
-		}
+		template <class T, std::enable_if_t<is_array_v<T>, int> = 0>
+		T UnpackValue(const Variable* a_src);
 
 
 		template <class T>
@@ -148,18 +168,6 @@ namespace RE
 		inline T Variable::Unpack() const
 		{
 			return UnpackValue<T>(this);
-		}
-
-
-		template <class T>
-		[[nodiscard]] BSTSmartPointer<Array> VMArray<T>::alloc(size_type a_count)
-		{
-			auto				   vm = Internal::VirtualMachine::GetSingleton();
-			BSTSmartPointer<Array> arrPtr;
-			TypeInfo			   typeInfo(GetRawType<value_type>());
-			[[maybe_unused]] auto  allocSuccess = vm->CreateArray(typeInfo, a_count, arrPtr);
-			assert(allocSuccess);  // alloc failed
-			return arrPtr;
 		}
 	}
 }

@@ -16,7 +16,7 @@ namespace RE
 		void DumpTypeName(void* a_obj)
 		{
 			assert(a_obj);
-			auto vtbl = *reinterpret_cast<std::uintptr_t**>(a_obj) - 1;
+			auto vtbl = *static_cast<std::uintptr_t**>(a_obj) - 1;
 			auto col = *reinterpret_cast<CompleteObjectLocator**>(vtbl);
 			assert(col);
 

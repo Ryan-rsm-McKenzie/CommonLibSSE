@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 #include "RE/BSFixedString.h"
 #include "RE/BSScript/IFunction.h"
 #include "RE/BSScript/Internal/VDescTable.h"
@@ -29,7 +31,7 @@ namespace RE
 
 
 				NativeFunctionBase() = delete;
-				explicit NativeFunctionBase(const char* a_fnName, const char* a_className, bool a_isStatic, UInt16 a_numParams);
+				explicit NativeFunctionBase(std::string_view a_fnName, std::string_view a_className, bool a_isStatic, UInt16 a_numParams);
 				virtual ~NativeFunctionBase() = default;  // 00
 
 				// override (IFunction)

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <functional>
+#include <string_view>
 #include <tuple>
 #include <type_traits>
 #include <utility>
@@ -11,7 +13,6 @@
 #include "RE/BSScript/Stack.h"
 #include "RE/BSScript/StackFrame.h"
 #include "RE/BSScript/TypeTraits.h"
-#include "RE/BSScript/VMArray.h"
 #include "RE/BSScript/Variable.h"
 #include "RE/BSTSmartPointer.h"
 
@@ -32,7 +33,7 @@ namespace RE
 			template <class F, class Tuple, class... Args>
 			inline constexpr decltype(auto) CallBack(F&& a_func, Tuple&& a_tuple, Args&&... a_args)
 			{
-				return CallbackImpl(std::forward<F>(a_func), std::forward<Tuple>(a_tuple), make_index_sequence_from_tuple<Tuple>{}, std::forward<Args>(a_args)...);
+				return CallbackImpl(std::forward<F>(a_func), std::forward<Tuple>(a_tuple), index_sequence_for_tuple<Tuple>{}, std::forward<Args>(a_args)...);
 			}
 
 
@@ -47,7 +48,7 @@ namespace RE
 			template <class... Args>
 			std::tuple<Args...> MakeTuple(const StackFrame& a_frame)
 			{
-				return MakeTupleImpl<Args...>(a_frame, std::make_index_sequence<sizeof...(Args)>{});
+				return MakeTupleImpl<Args...>(a_frame, std::index_sequence_for<Args...>{});
 			}
 		}
 
@@ -66,8 +67,8 @@ namespace RE
 			NativeFunction(NativeFunction&&) = delete;
 
 
-			NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback) :
-				NativeFunctionBase(a_fnName, a_className, is_static_base<base_type>::value, sizeof...(Args)),
+			NativeFunction(std::string_view a_fnName, std::string_view a_className, function_type* a_callback) :
+				NativeFunctionBase(a_fnName, a_className, is_static_base_v<base_type>, sizeof...(Args)),
 				_stub(a_callback)
 			{
 				std::size_t i = 0;
@@ -81,14 +82,14 @@ namespace RE
 
 			virtual bool HasStub() const override  // 15
 			{
-				return _stub != 0;
+				return static_cast<bool>(_stub);
 			}
 
 
 			virtual bool MarshallAndDispatch(Variable& a_baseValue, [[maybe_unused]] Internal::VirtualMachine& a_vm, [[maybe_unused]] VMStackID a_stackID, Variable& a_resultValue, const StackFrame& a_frame) const override  // 16
 			{
 				base_type base{};
-				if constexpr (std::negation<is_static_base<base_type>>::value) {
+				if constexpr (std::negation_v<is_static_base<base_type>>) {
 					base = a_baseValue.Unpack<base_type>();
 					if (!base) {
 						return false;
@@ -96,7 +97,7 @@ namespace RE
 				}
 
 				auto args = Impl::MakeTuple<Args...>(a_frame);
-				if constexpr (std::is_void<result_type>::value) {
+				if constexpr (std::is_void_v<result_type>) {
 					if constexpr (IS_LONG) {
 						Impl::CallBack(_stub, std::move(args), std::addressof(a_vm), a_stackID, std::move(base));
 						a_resultValue.SetNone();
@@ -106,10 +107,10 @@ namespace RE
 					}
 				} else {
 					if constexpr (IS_LONG) {
-						auto result = std::move(Impl::CallBack(_stub, std::move(args), std::addressof(a_vm), a_stackID, std::move(base)));
+						auto result = Impl::CallBack(_stub, std::move(args), std::addressof(a_vm), a_stackID, std::move(base));
 						a_resultValue.Pack<result_type>(std::move(result));
 					} else {
-						auto result = std::move(Impl::CallBack(_stub, std::move(args), std::move(base)));
+						auto result = Impl::CallBack(_stub, std::move(args), std::move(base));
 						a_resultValue.Pack<result_type>(std::move(result));
 					}
 				}
@@ -119,87 +120,78 @@ namespace RE
 
 		protected:
 			// members
-			function_type* _stub;  // 50
+			std::function<function_type> _stub;	 // 50
 		};
 	}
 
 
-	template <class F, class Enable = void>
+	template <class F, class = void>
 	class NativeFunction;
 
 
 	template <class R, class Cls, class... Args>
-	class NativeFunction<R(Cls, Args...), std::enable_if_t<BSScript::is_valid_short_sig<R, Cls, Args...>::value>> :
+	class NativeFunction<R(Cls, Args...), std::enable_if_t<BSScript::is_valid_short_sig_v<R, Cls, Args...>>> :
 		public BSScript::NativeFunction<false, R(Cls, Args...), R, Cls, Args...>
 	{
 	private:
-		using base = BSScript::NativeFunction<false, R(Cls, Args...), R, Cls, Args...>;
+		using super = BSScript::NativeFunction<false, R(Cls, Args...), R, Cls, Args...>;
+
 
 	public:
-		using result_type = typename base::result_type;
-		using base_type = typename base::base_type;
-		using function_type = typename base::function_type;
+		using result_type = typename super::result_type;
+		using base_type = typename super::base_type;
+		using function_type = typename super::function_type;
 
-
-		NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback) :
-			base(a_fnName, a_className, a_callback)
-		{}
+		using super::super;
 	};
 
 
 	template <class Int, class R, class Cls, class... Args>
-	class NativeFunction<R(BSScript::Internal::VirtualMachine*, Int, Cls, Args...), std::enable_if_t<BSScript::is_valid_long_sig<Int, R, Cls, Args...>::value>> :
+	class NativeFunction<R(BSScript::Internal::VirtualMachine*, Int, Cls, Args...), std::enable_if_t<BSScript::is_valid_long_sig_v<Int, R, Cls, Args...>>> :
 		public BSScript::NativeFunction<true, R(BSScript::Internal::VirtualMachine*, Int, Cls, Args...), R, Cls, Args...>
 	{
 	private:
-		using base = BSScript::NativeFunction<true, R(BSScript::Internal::VirtualMachine*, Int, Cls, Args...), R, Cls, Args...>;
+		using super = BSScript::NativeFunction<true, R(BSScript::Internal::VirtualMachine*, Int, Cls, Args...), R, Cls, Args...>;
+
 
 	public:
-		using result_type = typename base::result_type;
-		using base_type = typename base::base_type;
-		using function_type = typename base::function_type;
+		using result_type = typename super::result_type;
+		using base_type = typename super::base_type;
+		using function_type = typename super::function_type;
 
-
-		NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback) :
-			base(a_fnName, a_className, a_callback)
-		{}
+		using super::super;
 	};
 
 
 	template <class Int, class R, class Cls, class... Args>
-	class NativeFunction<R(BSScript::IVirtualMachine*, Int, Cls, Args...), std::enable_if_t<BSScript::is_valid_long_sig<Int, R, Cls, Args...>::value>> :
+	class NativeFunction<R(BSScript::IVirtualMachine*, Int, Cls, Args...), std::enable_if_t<BSScript::is_valid_long_sig_v<Int, R, Cls, Args...>>> :
 		public BSScript::NativeFunction<true, R(BSScript::IVirtualMachine*, Int, Cls, Args...), R, Cls, Args...>
 	{
 	private:
-		using base = BSScript::NativeFunction<true, R(BSScript::IVirtualMachine*, Int, Cls, Args...), R, Cls, Args...>;
+		using super = BSScript::NativeFunction<true, R(BSScript::IVirtualMachine*, Int, Cls, Args...), R, Cls, Args...>;
+
 
 	public:
-		using result_type = typename base::result_type;
-		using base_type = typename base::base_type;
-		using function_type = typename base::function_type;
+		using result_type = typename super::result_type;
+		using base_type = typename super::base_type;
+		using function_type = typename super::function_type;
 
-
-		NativeFunction(const char* a_fnName, const char* a_className, function_type* a_callback) :
-			base(a_fnName, a_className, a_callback)
-		{}
+		using super::super;
 	};
 
 
 	template <class F>
-	NativeFunction<F>* MakeNativeFunction(const char* a_fnName, const char* a_className, F* a_callback)
-	{
-		return new NativeFunction<F>(a_fnName, a_className, a_callback);
-	}
+	NativeFunction(std::string_view, std::string_view, F*) -> NativeFunction<F>;
 
 
 	namespace BSScript
 	{
 		template <class F>
-		void IVirtualMachine::RegisterFunction(const char* a_fnName, const char* a_className, F* a_callback, bool a_callableFromTasklets)
+		void IVirtualMachine::RegisterFunction(std::string_view a_fnName, std::string_view a_className, F* a_callback, bool a_callableFromTasklets)
 		{
-			BindNativeMethod(MakeNativeFunction(a_fnName, a_className, a_callback));
+			BindNativeMethod(new RE::NativeFunction(a_fnName, a_className, a_callback));
 			if (a_callableFromTasklets) {
-				SetCallableFromTasklets(a_className, a_fnName, a_callableFromTasklets);
+				SetCallableFromTasklets(a_className.data(), a_fnName.data(), a_callableFromTasklets);
 			}
 		}
 	}

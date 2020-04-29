@@ -221,7 +221,7 @@ namespace RE
 		}
 
 
-		BSFixedString Variable::GetString() const
+		std::string_view Variable::GetString() const
 		{
 			assert(varType.IsString());
 			return value.str;
@@ -283,17 +283,10 @@ namespace RE
 		}
 
 
-		void Variable::SetString(const BSFixedString& a_val)
+		void Variable::SetString(std::string_view a_val)
 		{
 			ChangeType(TypeInfo::RawType::kString);
 			value.str = a_val;
-		}
-
-
-		void Variable::SetString(BSFixedString&& a_val)
-		{
-			ChangeType(TypeInfo::RawType::kString);
-			value.str = std::move(a_val);
 		}
 
 
