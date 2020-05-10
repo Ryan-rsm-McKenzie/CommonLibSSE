@@ -23,8 +23,8 @@ namespace SKSE
 		explicit CodeGenerator(std::size_t a_size);
 		~CodeGenerator();
 
-		void finalize();
-		void ready();
+		[[deprecated("use ready")]] void finalize();
+		void							 ready();
 
 	private:
 		using Base = Xbyak::CodeGenerator;

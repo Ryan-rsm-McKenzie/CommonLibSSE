@@ -46,7 +46,6 @@ namespace SKSE
 			using Locker = std::lock_guard<Lock>;
 			using EventName = std::string;
 
-
 			std::map<RE::VMHandle, EventName> _regs;
 			mutable Lock					  _lock;
 		};
@@ -60,43 +59,17 @@ namespace SKSE
 		class RegistrationMap<typename std::enable_if_t<std::conjunction<RE::BSScript::is_param_compat<Args>...>::value>, Args...> :
 			public RegistrationMapBase
 		{
-		private:
-			using Base = RegistrationMapBase;
-
 		public:
-			RegistrationMap() :
-				Base()
-			{}
+			RegistrationMap() = default;
+			RegistrationMap(const RegistrationMap&) = default;
+			RegistrationMap(RegistrationMap&&) = default;
 
+			~RegistrationMap() = default;
 
-			RegistrationMap(const RegistrationMap& a_rhs) :
-				Base(a_rhs)
-			{}
+			RegistrationMap& operator=(const RegistrationMap& a_rhs) = default;
+			RegistrationMap& operator=(RegistrationMap&& a_rhs) = default;
 
-
-			RegistrationMap(RegistrationMap&& a_rhs) :
-				Base(std::move(a_rhs))
-			{}
-
-
-			~RegistrationMap() {}
-
-
-			inline RegistrationMap& operator=(const RegistrationMap& a_rhs)
-			{
-				Base::operator=(a_rhs);
-				return *this;
-			}
-
-
-			inline RegistrationMap& operator=(RegistrationMap&& a_rhs)
-			{
-				Base::operator=(std::move(a_rhs));
-				return *this;
-			}
-
-
-			void SendEvent(Args&&... a_args)
+			inline void SendEvent(Args&&... a_args)
 			{
 				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 				for (auto& reg : _regs) {
@@ -105,8 +78,7 @@ namespace SKSE
 				}
 			}
 
-
-			void QueueEvent(Args... a_args)
+			inline void QueueEvent(Args... a_args)
 			{
 				auto args = PackArgs(std::move(a_args)...);
 				auto task = GetTaskInterface();
@@ -117,7 +89,7 @@ namespace SKSE
 
 		private:
 			template <class Tuple, std::size_t... I>
-			void SendEvent_Tuple(Tuple&& a_tuple, std::index_sequence<I...>)
+			inline void SendEvent_Tuple(Tuple&& a_tuple, std::index_sequence<I...>)
 			{
 				SendEvent(std::move(UnpackArg(std::get<I>(std::forward<Tuple>(a_tuple))))...);
 			}
@@ -127,43 +99,17 @@ namespace SKSE
 		template <>
 		class RegistrationMap<void> : public RegistrationMapBase
 		{
-		private:
-			using Base = RegistrationMapBase;
-
 		public:
-			RegistrationMap() :
-				Base()
-			{}
+			RegistrationMap() = default;
+			RegistrationMap(const RegistrationMap&) = default;
+			RegistrationMap(RegistrationMap&&) = default;
 
+			~RegistrationMap() = default;
 
-			RegistrationMap(const RegistrationMap& a_rhs) :
-				Base(a_rhs)
-			{}
+			RegistrationMap& operator=(const RegistrationMap&) = default;
+			RegistrationMap& operator=(RegistrationMap&&) = default;
 
-
-			RegistrationMap(RegistrationMap&& a_rhs) :
-				Base(std::move(a_rhs))
-			{}
-
-
-			~RegistrationMap() {}
-
-
-			inline RegistrationMap& operator=(const RegistrationMap& a_rhs)
-			{
-				Base::operator=(a_rhs);
-				return *this;
-			}
-
-
-			inline RegistrationMap& operator=(RegistrationMap&& a_rhs)
-			{
-				Base::operator=(std::move(a_rhs));
-				return *this;
-			}
-
-
-			void SendEvent()
+			inline void SendEvent()
 			{
 				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 				if (vm) {
@@ -174,8 +120,7 @@ namespace SKSE
 				}
 			}
 
-
-			void QueueEvent()
+			inline void QueueEvent()
 			{
 				auto task = GetTaskInterface();
 				assert(task);

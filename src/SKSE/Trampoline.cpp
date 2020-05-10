@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <limits>
+#include <memory>
 
 #include "REL/Relocation.h"
 
@@ -46,58 +47,27 @@ namespace SKSE
 	Trampoline::Trampoline(Trampoline&& a_rhs) :
 		Trampoline("")
 	{
-		Locker rhsLocker(a_rhs._lock);
-
-		_name = std::move(a_rhs._name);
-
-		_data = std::move(a_rhs._data);
-		a_rhs._data = nullptr;
-
-		_capacity = std::move(a_rhs._capacity);
-		a_rhs._capacity = 0;
-
-		_size = std::move(a_rhs._size);
-		a_rhs._size = 0;
-
-		_freeAlloc = std::move(a_rhs._freeAlloc);
-		a_rhs._freeAlloc = false;
+		Move(std::move(a_rhs));
 	}
 
 
 	Trampoline::Trampoline(std::string_view a_name) :
 		_lock(),
 		_name(a_name),
+		_deleter(),
 		_data(nullptr),
 		_capacity(0),
 		_size(0),
-		_allocating(false),
-		_freeAlloc(false)
+		_allocating(false)
 	{}
 
 
 	Trampoline& Trampoline::operator=(Trampoline&& a_rhs)
 	{
-		if (this == &a_rhs) {
-			return *this;
+		if (this != std::addressof(a_rhs)) {
+			Locker locker(_lock);
+			Move(std::move(a_rhs));
 		}
-
-		Locker lhsLocker(_lock);
-		Locker rhsLocker(a_rhs._lock);
-
-		_name = std::move(a_rhs._name);
-
-		_data = std::move(a_rhs._data);
-		a_rhs._data = nullptr;
-
-		_capacity = std::move(a_rhs._capacity);
-		a_rhs._capacity = 0;
-
-		_size = std::move(a_rhs._size);
-		a_rhs._size = 0;
-
-		_freeAlloc = std::move(a_rhs._freeAlloc);
-		a_rhs._freeAlloc = false;
-
 		return *this;
 	}
 
@@ -128,12 +98,21 @@ namespace SKSE
 			return false;
 		}
 
-		SetTrampoline(mem, a_size, true);
+		SetTrampoline(mem, a_size, [](void* a_mem, [[maybe_unused]] std::size_t a_size) {
+			VirtualFree(a_mem, 0, MEM_RELEASE);
+		});
+
 		return true;
 	}
 
 
-	void Trampoline::SetTrampoline(void* a_trampoline, std::size_t a_size, bool a_takeOwnership)
+	void Trampoline::SetTrampoline(void* a_trampoline, std::size_t a_size)
+	{
+		SetTrampoline(a_trampoline, a_size, Deleter());
+	}
+
+
+	void Trampoline::SetTrampoline(void* a_trampoline, std::size_t a_size, Deleter a_deleter)
 	{
 		constexpr auto INT3 = static_cast<std::uint8_t>(0xCC);
 
@@ -144,12 +123,12 @@ namespace SKSE
 
 		Locker locker(_lock);
 
-		TryRelease();
+		Release();
 
+		_deleter = std::move(a_deleter);
 		_data = trampoline;
 		_capacity = a_size;
 		_size = 0;
-		_freeAlloc = a_takeOwnership;
 
 		LogStats();
 	}
@@ -446,7 +425,7 @@ namespace SKSE
 		const std::ptrdiff_t disp = reinterpret_cast<std::uintptr_t>(mem) - (a_src + sizeof(SrcAssembly));
 		if (!IsDisplacementInRange(disp)) {
 			EndAlloc(END_ALLOC_TAG);
-			_ERROR("Trampoline ran out of space");
+			_ERROR("Displacement is out of range");
 			assert(false);
 			return false;
 		}
@@ -492,7 +471,7 @@ namespace SKSE
 		const std::ptrdiff_t disp = reinterpret_cast<std::uintptr_t>(mem) - (a_src + sizeof(Assembly));
 		if (!IsDisplacementInRange(disp)) {
 			EndAlloc(END_ALLOC_TAG);
-			_ERROR("Trampoline ran out of space");
+			_ERROR("Displacement is out of range");
 			assert(false);
 			return false;
 		}
@@ -517,6 +496,7 @@ namespace SKSE
 		return Write5Branch_Impl(a_src, a_dst, a_opcode) ? func : 0;
 	}
 
+
 	std::uintptr_t Trampoline::Write6BranchEx_Impl(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_modrm)
 	{
 		const auto disp = reinterpret_cast<std::int32_t*>(a_src + 2);
@@ -526,23 +506,28 @@ namespace SKSE
 	}
 
 
-	void Trampoline::LogStats() const
+	void Trampoline::Move(Trampoline&& a_rhs)
 	{
-		Impl::TrampolineLogger::LogStats(__FILE__, __LINE__, *this);
+		Locker rhsLocker(a_rhs._lock);
+
+		_name = std::move(a_rhs._name);
+
+		_deleter = std::move(a_rhs._deleter);
+
+		_data = std::move(a_rhs._data);
+		a_rhs._data = nullptr;
+
+		_capacity = std::move(a_rhs._capacity);
+		a_rhs._capacity = 0;
+
+		_size = std::move(a_rhs._size);
+		a_rhs._size = 0;
 	}
 
 
-	void Trampoline::TryRelease()
+	void Trampoline::LogStats() const
 	{
-		if (_freeAlloc) {
-			if (_data) {
-				VirtualFree(_data, 0, MEM_RELEASE);
-			}
-			_data = nullptr;
-			_capacity = 0;
-			_size = 0;
-			_freeAlloc = false;
-		}
+		Impl::TrampolineLogger::LogStats(__FILE__, __LINE__, *this);
 	}
 
 
@@ -552,5 +537,17 @@ namespace SKSE
 		constexpr auto MAX_DISP = std::numeric_limits<std::int32_t>::max();
 
 		return MIN_DISP <= a_disp && a_disp <= MAX_DISP;
+	}
+
+
+	void Trampoline::Release()
+	{
+		if (_data && _deleter) {
+			_deleter(_data, _capacity);
+		}
+
+		_data = nullptr;
+		_capacity = 0;
+		_size = 0;
 	}
 }

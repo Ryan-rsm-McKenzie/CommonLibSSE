@@ -16,15 +16,19 @@ namespace SKSE
 		{
 			template <class T>
 			using is_object_pointer = std::is_convertible<T, RE::TESObjectREFR*>;
+
 			template <class T>
 			using is_not_object_pointer = std::negation<is_object_pointer<T>>;
+
 			template <class T>
 			using is_form_pointer = std::is_convertible<T, RE::TESForm*>;
+
 			template <class T>
 			using is_not_form_pointer = std::negation<is_form_pointer<T>>;
 
 			template <class T>
-			struct make_index_sequence_from_tuple : std::make_index_sequence<std::tuple_size<typename std::remove_reference_t<T>>::value>
+			struct make_index_sequence_from_tuple :
+				std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<T>>>
 			{};
 
 
@@ -39,7 +43,7 @@ namespace SKSE
 
 		// default
 		template <class T, class U = std::decay_t<T>, typename std::enable_if_t<std::conjunction<is_not_form_pointer<U>, is_not_object_pointer<U>>::value, int> = 0>
-		inline T PackArg(T&& a_val)
+		inline U PackArg(T&& a_val)
 		{
 			return a_val;
 		}
@@ -71,7 +75,7 @@ namespace SKSE
 
 		// default
 		template <class T>
-		inline T UnpackArg(T&& a_val)
+		inline std::decay_t<T> UnpackArg(T&& a_val)
 		{
 			return a_val;
 		}

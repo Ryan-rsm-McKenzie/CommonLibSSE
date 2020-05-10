@@ -16,14 +16,14 @@ namespace RE
 		namespace Impl
 		{
 			template <class... Args, std::size_t... I>
-			void CopyArgsImpl(const std::tuple<Args...>& a_tuple, BSScrapArray<Variable>& a_dst, std::index_sequence<I...>)
+			void CopyArgsImpl(std::tuple<Args...>& a_tuple, BSScrapArray<Variable>& a_dst, std::index_sequence<I...>)
 			{
 				(a_dst[I].Pack(std::get<I>(a_tuple)), ...);
 			}
 
 
 			template <class... Args>
-			void CopyArgs(const std::tuple<Args...>& a_tuple, BSScrapArray<Variable>& a_dst)
+			void CopyArgs(std::tuple<Args...>& a_tuple, BSScrapArray<Variable>& a_dst)
 			{
 				CopyArgsImpl(a_tuple, a_dst, std::index_sequence_for<Args...>{});
 			}
@@ -64,7 +64,8 @@ namespace RE
 			virtual bool operator()(BSScrapArray<Variable>& a_dst) const override  // 01
 			{
 				a_dst.resize(sizeof...(Args));
-				Impl::CopyArgs(_args, a_dst);
+				auto& args = const_cast<std::add_lvalue_reference_t<std::decay_t<decltype(_args)>>>(_args);
+				Impl::CopyArgs(args, a_dst);
 				return true;
 			}
 
@@ -81,7 +82,7 @@ namespace RE
 	template <class... Args>
 	inline BSScript::IFunctionArguments* MakeFunctionArguments(Args&&... a_args)
 	{
-		return new FunctionArguments<std::remove_reference_t<Args>...>(std::forward<Args>(a_args)...);
+		return new FunctionArguments<std::decay_t<Args>...>(std::forward<Args>(a_args)...);
 	}
 
 
