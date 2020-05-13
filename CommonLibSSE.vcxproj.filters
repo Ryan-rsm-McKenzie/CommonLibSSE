@@ -5582,5 +5582,8 @@
     <ClInclude Include="include\RE\BSScript\PackUnpackImpl.h">
       <Filter>include\RE\BSScript</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\BSScript\ReferenceArray.h">
+      <Filter>include\RE\BSScript</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

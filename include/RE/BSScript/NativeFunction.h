@@ -67,7 +67,7 @@ namespace RE
 			NativeFunction(NativeFunction&&) = delete;
 
 
-			NativeFunction(std::string_view a_fnName, std::string_view a_className, function_type* a_callback) :
+			NativeFunction(std::string_view a_fnName, std::string_view a_className, function_type a_callback) :
 				NativeFunctionBase(a_fnName, a_className, is_static_base_v<base_type>, sizeof...(Args)),
 				_stub(a_callback)
 			{
@@ -181,13 +181,13 @@ namespace RE
 
 
 	template <class F>
-	NativeFunction(std::string_view, std::string_view, F*) -> NativeFunction<F>;
+	NativeFunction(std::string_view, std::string_view, F) -> NativeFunction<std::remove_pointer_t<F>>;
 
 
 	namespace BSScript
 	{
 		template <class F>
-		void IVirtualMachine::RegisterFunction(std::string_view a_fnName, std::string_view a_className, F* a_callback, bool a_callableFromTasklets)
+		void IVirtualMachine::RegisterFunction(std::string_view a_fnName, std::string_view a_className, F a_callback, bool a_callableFromTasklets)
 		{
 			BindNativeMethod(new RE::NativeFunction(a_fnName, a_className, a_callback));
 			if (a_callableFromTasklets) {

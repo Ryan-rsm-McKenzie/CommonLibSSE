@@ -122,7 +122,7 @@ namespace RE
 			bool					   GetVariableValue(VMHandle a_handle, const BSFixedString& a_className, SInt32 a_variableIndex, Variable& a_out) const;
 
 			template <class F>
-			void RegisterFunction(std::string_view a_fnName, std::string_view a_className, F* a_callback, bool a_callableFromTasklets = false);
+			void RegisterFunction(std::string_view a_fnName, std::string_view a_className, F a_callback, bool a_callableFromTasklets = false);
 
 			void SetCallableFromTasklets(const char* a_className, const char* a_stateName, const char* a_fnName, bool a_callable);
 			void SetCallableFromTasklets(const char* a_className, const char* a_fnName, bool a_callable);

@@ -6,6 +6,7 @@
 #include "RE/BSScript/Array.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/PackUnpack.h"
+#include "RE/BSScript/ReferenceArray.h"
 #include "RE/BSScript/TypeInfo.h"
 #include "RE/BSScript/Variable.h"
 #include "RE/BSTSmartPointer.h"
@@ -25,7 +26,12 @@ namespace RE
 		//	* input iterator:
 		//		* weakly incrementable
 		//		* indirectly readable
-		template <class T, class U, std::enable_if_t<is_array_v<U>, int>>
+		template <
+			class T,
+			class U,
+			std::enable_if_t<
+				is_array_v<U>,
+				int>>
 		void PackValue(Variable* a_dst, T&& a_src)
 		{
 			assert(a_dst);
@@ -61,8 +67,12 @@ namespace RE
 		//	* destructible
 		//	* value_type
 		//	* push_back(value_type)
-		template <class T, std::enable_if_t<is_array_v<T>, int>>
-		T UnpackValue(const Variable* a_src)
+		template <
+			class T,
+			std::enable_if_t<
+				is_array_v<T>,
+				int>>
+		[[nodiscard]] T UnpackValue(const Variable* a_src)
 		{
 			assert(a_src);
 
@@ -78,6 +88,30 @@ namespace RE
 			}
 
 			return container;
+		}
+
+
+		template <class T>
+		void reference_array<T>::do_wrap()
+		{
+			if (_wrapped) {
+				BSTSmartPointer<Array> array(_wrapped->GetArray());
+				UInt32				   i = 0;
+				for (auto& elem : _unwrapped) {
+					(*array)[i++].Pack(elem);
+				}
+			}
+		}
+
+
+		template <class T>
+		void reference_array<T>::do_unwrap(Variable* a_wrapped)
+		{
+			assert(a_wrapped && a_wrapped->IsArray());
+			if (_wrapped != a_wrapped) {
+				_wrapped = a_wrapped;
+				_unwrapped = UnpackValue<container_type>(_wrapped);
+			}
 		}
 	}
 }

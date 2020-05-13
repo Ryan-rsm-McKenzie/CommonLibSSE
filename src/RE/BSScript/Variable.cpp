@@ -1,6 +1,7 @@
 #include "RE/BSScript/Variable.h"
 
 #include <cassert>
+#include <memory>
 
 #include "RE/BSScript/Array.h"
 #include "RE/BSScript/Object.h"
@@ -58,29 +59,24 @@ namespace RE
 
 		Variable& Variable::operator=(const Variable& a_rhs)
 		{
-			if (this == &a_rhs) {
-				return *this;
+			if (this != std::addressof(a_rhs)) {
+				Cleanup();
+				Assign(a_rhs);
 			}
-
-			Cleanup();
-			Assign(a_rhs);
 			return *this;
 		}
 
 
 		Variable& Variable::operator=(Variable&& a_rhs)
 		{
-			if (this == &a_rhs) {
-				return *this;
+			if (this != std::addressof(a_rhs)) {
+				Cleanup();
+
+				varType = std::move(a_rhs.varType);
+
+				value.p = std::move(a_rhs.value.p);
+				a_rhs.value.p = nullptr;
 			}
-
-			Cleanup();
-
-			varType = std::move(a_rhs.varType);
-
-			value.p = std::move(a_rhs.value.p);
-			a_rhs.value.p = nullptr;
-
 			return *this;
 		}
 
@@ -179,51 +175,111 @@ namespace RE
 		}
 
 
+		bool Variable::IsArray() const
+		{
+			return varType.IsArray();
+		}
+
+
+		bool Variable::IsBool() const
+		{
+			return varType.IsBool();
+		}
+
+
+		bool Variable::IsFloat() const
+		{
+			return varType.IsFloat();
+		}
+
+
+		bool Variable::IsInt() const
+		{
+			return varType.IsInt();
+		}
+
+
+		bool Variable::IsLiteralArray() const
+		{
+			return varType.IsLiteralArray();
+		}
+
+
+		bool Variable::IsNoneArray() const
+		{
+			return varType.IsNoneArray();
+		}
+
+
+		bool Variable::IsNoneObject() const
+		{
+			return varType.IsNoneObject();
+		}
+
+
+		bool Variable::IsObject() const
+		{
+			return varType.IsObject();
+		}
+
+
+		bool Variable::IsObjectArray() const
+		{
+			return varType.IsObjectArray();
+		}
+
+
+		bool Variable::IsString() const
+		{
+			return varType.IsString();
+		}
+
+
 		SInt32 Variable::GetSInt() const
 		{
-			assert(varType.IsInt());
+			assert(IsInt());
 			return value.i;
 		}
 
 
 		UInt32 Variable::GetUInt() const
 		{
-			assert(varType.IsInt());
+			assert(IsInt());
 			return value.u;
 		}
 
 
 		float Variable::GetFloat() const
 		{
-			assert(varType.IsFloat());
+			assert(IsFloat());
 			return value.f;
 		}
 
 
 		bool Variable::GetBool() const
 		{
-			assert(varType.IsBool());
+			assert(IsBool());
 			return value.b;
 		}
 
 
 		Array* Variable::GetArray() const
 		{
-			assert(varType.IsArray() || varType.IsNoneArray());
+			assert(IsArray() || IsNoneArray());
 			return value.arr.get();
 		}
 
 
 		Object* Variable::GetObject() const
 		{
-			assert(varType.IsObject() || varType.IsNoneObject());
+			assert(IsObject() || IsNoneObject());
 			return value.obj.get();
 		}
 
 
 		std::string_view Variable::GetString() const
 		{
-			assert(varType.IsString());
+			assert(IsString());
 			return value.str;
 		}
 

@@ -38,7 +38,7 @@ namespace RE
 		class FunctionArguments<
 			std::enable_if_t<
 				std::conjunction_v<
-					is_parameter_convertible<Args>...>>,
+					is_return_convertible<Args>...>>,
 			Args...> :
 			public IFunctionArguments
 		{

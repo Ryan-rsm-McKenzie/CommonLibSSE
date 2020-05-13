@@ -59,7 +59,7 @@ namespace SKSE
 		class RegistrationMap<
 			std::enable_if_t<
 				std::conjunction_v<
-					RE::BSScript::is_parameter_convertible<Args>...>>,
+					RE::BSScript::is_return_convertible<Args>...>>,
 			Args...> :
 			public RegistrationMapBase
 		{

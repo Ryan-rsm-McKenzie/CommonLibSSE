@@ -3,6 +3,7 @@
 #include <type_traits>
 
 #include "RE/BSScript/CommonTypeTraits.h"
+#include "RE/BSScript/ReferenceArray.h"
 #include "RE/BSScript/TypeInfo.h"
 
 
@@ -14,6 +15,37 @@ namespace RE
 
 	namespace BSScript
 	{
+		template <class>
+		struct _is_reference_wrapper :
+			std::false_type
+		{};
+
+		template <class T>
+		struct _is_reference_wrapper<
+			reference_array<T>> :
+			std::true_type
+		{};
+
+		template <class T>
+		struct is_reference_wrapper :
+			_is_reference_wrapper<
+				std::remove_cv_t<T>>
+		{};
+
+		template <class T>
+		inline constexpr bool is_reference_wrapper_v = is_reference_wrapper<T>::value;
+
+
+		template <class T>
+		struct is_not_reference_wrapper :
+			std::negation<
+				is_reference_wrapper<T>>
+		{};
+
+		template <class T>
+		inline constexpr bool is_not_reference_wrapper_v = is_not_reference_wrapper<T>::value;
+
+
 		template <class T, class = void>
 		struct _unwrapped_type
 		{
@@ -21,7 +53,12 @@ namespace RE
 		};
 
 		template <class T>
-		struct _unwrapped_type<T, std::enable_if_t<is_array_v<T>>>
+		struct _unwrapped_type<
+			T,
+			std::enable_if_t<
+				std::disjunction_v<
+					is_array<T>,
+					is_reference_wrapper<T>>>>
 		{
 			using type = decay_pointer_t<typename T::value_type>;
 		};
@@ -121,7 +158,8 @@ namespace RE
 				std::disjunction<
 					is_builtin<T>,
 					is_form_pointer<T>,
-					is_array<T>>>
+					is_array<T>,
+					is_reference_wrapper<T>>>
 		{};
 
 		template <class T>
@@ -136,7 +174,8 @@ namespace RE
 				std::disjunction<
 					is_builtin_convertible<T>,
 					is_form_pointer<T>,
-					is_array<T>>>
+					is_array<T>,
+					is_reference_wrapper<T>>>
 		{};
 
 		template <class T>
@@ -147,6 +186,7 @@ namespace RE
 		struct is_valid_return :
 			std::conjunction<
 				is_not_const<T>,
+				is_not_reference_wrapper<T>,
 				is_valid_parameter<T>>
 		{};
 
@@ -158,6 +198,7 @@ namespace RE
 		struct is_return_convertible :
 			std::conjunction<
 				is_not_const<T>,
+				is_not_reference_wrapper<T>,
 				is_parameter_convertible<T>>
 		{};
 

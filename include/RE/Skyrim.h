@@ -303,6 +303,7 @@
 #include "RE/BSScript/PackUnpack.h"
 #include "RE/BSScript/PackUnpackImpl.h"
 #include "RE/BSScript/PropertyTypeInfo.h"
+#include "RE/BSScript/ReferenceArray.h"
 #include "RE/BSScript/SimpleAllocMemoryPagePolicy.h"
 #include "RE/BSScript/Stack.h"
 #include "RE/BSScript/StackFrame.h"

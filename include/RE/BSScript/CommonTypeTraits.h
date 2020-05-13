@@ -431,45 +431,5 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_array_v = is_array<T>::value;
-
-
-		template <class, class = void>
-		struct is_form_array :
-			std::false_type
-		{};
-
-		template <class T>
-		struct is_form_array<
-			T,
-			std::enable_if_t<
-				defines_value_type_v<T>>> :
-			std::conjunction<
-				is_array<T>,
-				is_form_pointer<
-					typename T::value_type>>
-		{};
-
-		template <class T>
-		inline constexpr bool is_form_array_v = is_form_array<T>::value;
-
-
-		template <class, class = void>
-		struct is_builtin_array :
-			std::false_type
-		{};
-
-		template <class T>
-		struct is_builtin_array<
-			T,
-			std::enable_if_t<
-				defines_value_type_v<T>>> :
-			std::conjunction<
-				is_array<T>,
-				is_builtin<
-					typename T::value_type>>
-		{};
-
-		template <class T>
-		inline constexpr bool is_builtin_array_v = is_builtin_array<T>::value;
 	}
 }

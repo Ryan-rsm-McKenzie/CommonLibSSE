@@ -53,6 +53,17 @@ namespace RE
 			bool operator<=(const Variable& a_rhs) const;
 			bool operator>=(const Variable& a_rhs) const;
 
+			bool IsArray() const;
+			bool IsBool() const;
+			bool IsFloat() const;
+			bool IsInt() const;
+			bool IsLiteralArray() const;
+			bool IsNoneArray() const;
+			bool IsNoneObject() const;
+			bool IsObject(void) const;
+			bool IsObjectArray() const;
+			bool IsString() const;
+
 			SInt32			 GetSInt() const;
 			UInt32			 GetUInt() const;
 			float			 GetFloat() const;
@@ -75,7 +86,7 @@ namespace RE
 			void Pack(T&& a_src);
 
 			template <class T>
-			T Unpack() const;
+			[[nodiscard]] T Unpack() const;
 
 		private:
 			void ChangeType(TypeInfo::RawType a_type);

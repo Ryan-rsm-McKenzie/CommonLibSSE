@@ -60,7 +60,7 @@ namespace RE
 			bool			IsLiteralArray() const;
 			bool			IsNoneArray() const;
 			bool			IsNoneObject() const;
-			bool			IsObject(void) const;
+			bool			IsObject() const;
 			bool			IsObjectArray() const;
 			bool			IsString() const;
 			void			SetType(RawType a_type);
