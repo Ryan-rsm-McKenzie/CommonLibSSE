@@ -6,6 +6,8 @@
 #include <utility>
 #include <vector>
 
+#include "RE/BSScript/CommonTypeTraits.h"
+
 
 namespace RE
 {
@@ -14,8 +16,31 @@ namespace RE
 		class Variable;
 
 
+		template <class, class = void>
+		class reference_array;
+
+
+		namespace Impl
+		{
+			// a helper class to delay implementation so as to avoid circular dependencies
+			struct reference_array_helper
+			{
+				template <class T>
+				static void wrap(reference_array<T>& a_arr);
+
+				template <class T>
+				static void unwrap(reference_array<T>& a_arr, Variable* a_wrapped);
+			};
+		}
+
+
 		template <class T>
-		class reference_array
+		class reference_array<
+			T,
+			std::enable_if_t<
+				std::disjunction_v<
+					is_builtin_convertible<T>,
+					is_form_pointer<T>>>>
 		{
 		public:
 			using container_type = std::vector<T>;
@@ -117,12 +142,22 @@ namespace RE
 				swap(_wrapped, a_rhs._wrapped);
 			}
 
-		private:
-			void do_wrap();
-			void do_unwrap(Variable* a_wrapped);
+		protected:
+			friend struct Impl::reference_array_helper;
 
 			container_type _unwrapped;
 			Variable*	   _wrapped;
+
+		private:
+			void do_wrap()
+			{
+				Impl::reference_array_helper::wrap(*this);
+			}
+
+			void do_unwrap(Variable* a_wrapped)
+			{
+				Impl::reference_array_helper::unwrap(*this, a_wrapped);
+			}
 		};
 
 
