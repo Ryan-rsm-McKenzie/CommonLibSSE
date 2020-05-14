@@ -245,7 +245,7 @@ namespace RE
 				int> = 0>
 		inline T UnpackValue(const Variable* a_src)
 		{
-			return T{ const_cast<Variable*>(a_src) };
+			return T{ a_src };
 		}
 
 

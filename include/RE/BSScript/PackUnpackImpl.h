@@ -1,13 +1,11 @@
 #pragma once
 
 #include <cassert>
-#include <memory>
 #include <type_traits>
 
 #include "RE/BSScript/Array.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/PackUnpack.h"
-#include "RE/BSScript/ReferenceArray.h"
 #include "RE/BSScript/TypeInfo.h"
 #include "RE/BSScript/Variable.h"
 #include "RE/BSTSmartPointer.h"
@@ -19,34 +17,6 @@ namespace RE
 {
 	namespace BSScript
 	{
-		namespace Impl
-		{
-			template <class T>
-			void reference_array_helper::wrap(reference_array<T>& a_arr)
-			{
-				if (a_arr._wrapped) {
-					BSTSmartPointer<Array> array(a_arr._wrapped->GetArray());
-					UInt32				   i = 0;
-					for (auto& elem : a_arr._unwrapped) {
-						(*array)[i++].Pack(elem);
-					}
-				}
-			}
-
-
-			template <class T>
-			void reference_array_helper::unwrap(reference_array<T>& a_arr, Variable* a_wrapped)
-			{
-				using container_type = typename reference_array<T>::container_type;
-				assert(a_wrapped && a_wrapped->IsArray());
-				if (a_arr._wrapped != a_wrapped) {
-					a_arr._wrapped = a_wrapped;
-					a_arr._unwrapped = UnpackValue<container_type>(a_arr._wrapped);
-				}
-			}
-		}
-
-
 		// T requires:
 		//	* begin()
 		//	* end()
@@ -87,7 +57,7 @@ namespace RE
 				++it;
 			}
 
-			a_dst->SetArray(array.get());
+			a_dst->SetArray(std::move(array));
 		}
 
 

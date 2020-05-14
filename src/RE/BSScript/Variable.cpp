@@ -263,17 +263,17 @@ namespace RE
 		}
 
 
-		Array* Variable::GetArray() const
+		BSTSmartPointer<Array> Variable::GetArray() const
 		{
 			assert(IsArray() || IsNoneArray());
-			return value.arr.get();
+			return value.arr;
 		}
 
 
-		Object* Variable::GetObject() const
+		BSTSmartPointer<Object> Variable::GetObject() const
 		{
 			assert(IsObject() || IsNoneObject());
-			return value.obj.get();
+			return value.obj;
 		}
 
 
@@ -318,24 +318,27 @@ namespace RE
 		}
 
 
-		void Variable::SetArray(Array* a_val)
+		void Variable::SetArray(BSTSmartPointer<Array> a_val)
 		{
+			assert(a_val);
 			ChangeType(a_val->type());
-			value.arr.reset(a_val);
+			value.arr = std::move(a_val);
 		}
 
 
-		void Variable::SetObject(Object* a_val)
+		void Variable::SetObject(BSTSmartPointer<Object> a_val)
 		{
+			assert(a_val);
 			ChangeType(a_val->GetTypeInfo()->GetRawType());
-			value.obj.reset(a_val);
+			value.obj = std::move(a_val);
 		}
 
 
-		void Variable::SetObject(Object* a_val, TypeInfo::RawType a_type)
+		void Variable::SetObject(BSTSmartPointer<Object> a_val, TypeInfo::RawType a_type)
 		{
+			assert(a_val);
 			ChangeType(a_type);
-			value.obj.reset(a_val);
+			value.obj = std::move(a_val);
 		}
 
 

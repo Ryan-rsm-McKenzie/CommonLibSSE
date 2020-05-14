@@ -6,32 +6,18 @@
 #include <utility>
 #include <vector>
 
+#include "RE/BSScript/Array.h"
 #include "RE/BSScript/CommonTypeTraits.h"
+#include "RE/BSScript/Variable.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE
 {
 	namespace BSScript
 	{
-		class Variable;
-
-
 		template <class, class = void>
 		class reference_array;
-
-
-		namespace Impl
-		{
-			// a helper class to delay implementation so as to avoid circular dependencies
-			struct reference_array_helper
-			{
-				template <class T>
-				static void wrap(reference_array<T>& a_arr);
-
-				template <class T>
-				static void unwrap(reference_array<T>& a_arr, Variable* a_wrapped);
-			};
-		}
 
 
 		template <class T>
@@ -61,7 +47,7 @@ namespace RE
 				_wrapped(nullptr)
 			{}
 
-			reference_array(Variable* a_wrapped) :
+			reference_array(const Variable* a_wrapped) :
 				_unwrapped(),
 				_wrapped(nullptr)
 			{
@@ -73,13 +59,11 @@ namespace RE
 			reference_array(reference_array&& a_rhs) :
 				_unwrapped(std::move(a_rhs._unwrapped)),
 				_wrapped(std::move(a_rhs._wrapped))
-			{
-				a_rhs._wrapped = nullptr;
-			}
+			{}
 
 			~reference_array() { do_wrap(); }
 
-			reference_array& operator=(Variable* a_wrapped)
+			reference_array& operator=(const Variable* a_wrapped)
 			{
 				do_unwrap(a_wrapped);
 				return *this;
@@ -93,7 +77,6 @@ namespace RE
 					do_wrap();
 					_unwrapped = std::move(a_rhs._unwrapped);
 					_wrapped = std::move(a_rhs._wrapped);
-					a_rhs._wrapped = nullptr;
 				}
 				return *this;
 			}
@@ -142,22 +125,32 @@ namespace RE
 				swap(_wrapped, a_rhs._wrapped);
 			}
 
-		protected:
-			friend struct Impl::reference_array_helper;
-
-			container_type _unwrapped;
-			Variable*	   _wrapped;
-
 		private:
 			void do_wrap()
 			{
-				Impl::reference_array_helper::wrap(*this);
+				if (_wrapped) {
+					const auto SIZE = static_cast<UInt32>(_unwrapped.size());
+					for (UInt32 i = 0; i < SIZE; ++i) {
+						(*_wrapped)[i].Pack(_unwrapped[i]);
+					}
+				}
 			}
 
-			void do_unwrap(Variable* a_wrapped)
+			void do_unwrap(const Variable* a_wrapped)
 			{
-				Impl::reference_array_helper::unwrap(*this, a_wrapped);
+				assert(a_wrapped && a_wrapped->IsArray());
+				auto arr = a_wrapped->GetArray();
+				if (_wrapped != arr) {
+					_wrapped = std::move(arr);
+					_unwrapped.reserve(_wrapped->size());
+					for (auto& elem : *_wrapped) {
+						_unwrapped.push_back(elem.Unpack<value_type>());
+					}
+				}
 			}
+
+			container_type		   _unwrapped;
+			BSTSmartPointer<Array> _wrapped;
 		};
 
 

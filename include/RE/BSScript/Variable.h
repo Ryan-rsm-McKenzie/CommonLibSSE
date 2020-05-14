@@ -64,22 +64,22 @@ namespace RE
 			bool IsObjectArray() const;
 			bool IsString() const;
 
-			SInt32			 GetSInt() const;
-			UInt32			 GetUInt() const;
-			float			 GetFloat() const;
-			bool			 GetBool() const;
-			Array*			 GetArray() const;
-			Object*			 GetObject() const;
-			std::string_view GetString() const;
+			SInt32					GetSInt() const;
+			UInt32					GetUInt() const;
+			float					GetFloat() const;
+			bool					GetBool() const;
+			BSTSmartPointer<Array>	GetArray() const;
+			BSTSmartPointer<Object> GetObject() const;
+			std::string_view		GetString() const;
 
 			void SetNone();
 			void SetSInt(SInt32 a_val);
 			void SetUInt(UInt32 a_val);
 			void SetFloat(float a_val);
 			void SetBool(bool a_val);
-			void SetArray(Array* a_val);
-			void SetObject(Object* a_val);
-			void SetObject(Object* a_val, TypeInfo::RawType a_type);
+			void SetArray(BSTSmartPointer<Array> a_val);
+			void SetObject(BSTSmartPointer<Object> a_val);
+			void SetObject(BSTSmartPointer<Object> a_val, TypeInfo::RawType a_type);
 			void SetString(std::string_view a_val);
 
 			template <class T>

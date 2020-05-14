@@ -80,7 +80,7 @@ namespace RE
 			}
 
 			if (objectPtr) {
-				a_dst->SetObject(objectPtr.get(), classPtr->GetRawType());
+				a_dst->SetObject(objectPtr, classPtr->GetRawType());
 			}
 		}
 
@@ -88,7 +88,7 @@ namespace RE
 		void* UnpackHandle(const Variable* a_src, VMTypeID a_typeID)
 		{
 			assert(a_src);
-			const auto* object = a_src->GetObject();
+			const auto object = a_src->GetObject();
 			return object ? object->Resolve(a_typeID) : nullptr;
 		}
 	}
