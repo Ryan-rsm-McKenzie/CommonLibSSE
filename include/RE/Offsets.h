@@ -523,7 +523,7 @@ namespace RE
 			static constexpr REL::ID Ctor(static_cast<std::uint64_t>(15812));
 			static constexpr REL::ID Dtor(static_cast<std::uint64_t>(15813));
 			static constexpr REL::ID GenerateLeveledListChanges(static_cast<std::uint64_t>(15829));
-			constexpr std::uintptr_t GetNextUniqueID = 0x001ECD33;
+			static constexpr REL::ID GetNextUniqueID(static_cast<std::uint64_t>(15908));
 			static constexpr REL::ID SendContainerChangedEvent(static_cast<std::uint64_t>(15909));
 			static constexpr REL::ID SetUniqueID(static_cast<std::uint64_t>(15907));
 			static constexpr REL::ID TransferItemUID(static_cast<std::uint64_t>(15909));
