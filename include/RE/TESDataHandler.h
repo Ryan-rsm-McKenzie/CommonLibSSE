@@ -80,7 +80,7 @@ namespace RE
 		UInt32							  padD54;									 // D54
 		TESFile*						  activeFile;								 // D58
 		BSSimpleList<TESFile*>			  files;									 // D60
-		TESFileCollection				  compiledFileCollection;					 // D60
+		TESFileCollection				  compiledFileCollection;					 // D70
 		bool							  masterSave;								 // DA0
 		bool							  blockSave;								 // DA1
 		bool							  saveLoadGame;								 // DA2

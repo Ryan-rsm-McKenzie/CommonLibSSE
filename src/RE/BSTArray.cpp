@@ -128,7 +128,7 @@ namespace RE
 	BSScrapArrayAllocator::~BSScrapArrayAllocator()
 	{
 		if (_data) {
-			free(_data);
+			deallocate(_data);
 		}
 		memzero(this);
 	}
@@ -161,7 +161,7 @@ namespace RE
 		}
 		assert(_allocator);
 
-		auto mem = _allocator->AllocateAlign(a_size, 8);
+		auto mem = _allocator->Allocate(a_size, alignof(void*));
 		assert(mem != nullptr);
 		std::memset(mem, 0, a_size);
 		return mem;
@@ -171,7 +171,7 @@ namespace RE
 	void BSScrapArrayAllocator::deallocate(void* a_ptr)
 	{
 		if (_allocator) {
-			_allocator->DeallocateAlign(a_ptr);
+			_allocator->Deallocate(a_ptr);
 		} else {
 			assert(false);
 		}

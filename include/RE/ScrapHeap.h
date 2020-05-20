@@ -52,6 +52,9 @@ namespace RE
 		virtual void*		AllocateAlignImpl(std::size_t a_size, UInt32 a_alignment) override;	 // 04
 		virtual void		DeallocateAlignImpl(void* a_freeBlock) override;					 // 05
 
+		void* Allocate(std::size_t a_size, std::size_t a_alignment);
+		void  Deallocate(void* a_mem);
+
 
 		// members
 		FreeBlock*	  smallBlocks[6];		 // 08

@@ -205,6 +205,7 @@
     <ClCompile Include="src\RE\hkpWorldObject.cpp" />
     <ClCompile Include="src\RE\IAnimationGraphManagerHolder.cpp" />
     <ClCompile Include="src\RE\IMemoryStore.cpp" />
+    <ClCompile Include="src\RE\Inventory3DManager.cpp" />
     <ClCompile Include="src\RE\MagicFavorites.cpp" />
     <ClCompile Include="src\RE\Main.cpp" />
     <ClCompile Include="src\RE\NiCamera.cpp" />
@@ -331,6 +332,7 @@
     <ClCompile Include="src\RE\NiTexture.cpp" />
     <ClCompile Include="src\RE\RemoveCallbackVisitor.cpp" />
     <ClCompile Include="src\RE\RTTI.cpp" />
+    <ClCompile Include="src\RE\ScrapHeap.cpp" />
     <ClCompile Include="src\RE\Script.cpp" />
     <ClCompile Include="src\RE\Setting.cpp" />
     <ClCompile Include="src\RE\Sky.cpp" />
@@ -560,6 +562,7 @@
     <ClInclude Include="include\RE\ImageSpaceModifierInstanceTemp.h" />
     <ClInclude Include="include\RE\ImpactResults.h" />
     <ClInclude Include="include\RE\InteriorData.h" />
+    <ClInclude Include="include\RE\Inventory3DManager.h" />
     <ClInclude Include="include\RE\KinectEvent.h" />
     <ClInclude Include="include\RE\LoadWaitSpinner.h" />
     <ClInclude Include="include\RE\MagicFavorites.h" />
