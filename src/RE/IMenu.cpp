@@ -84,7 +84,7 @@ namespace RE
 		using Message = UI_MESSAGE_TYPE;
 
 		auto inputManager = BSInputDeviceManager::GetSingleton();
-		auto gamepad = inputManager ? inputManager->IsGamepadEnabled() : nullptr;
+		auto gamepad = inputManager ? inputManager->IsGamepadEnabled() : false;
 		if (view && view->IsAvailable("_root.SetPlatform")) {
 			GFxValue args[2];
 			const double platform = gamepad ? 1.0 : 0.0;

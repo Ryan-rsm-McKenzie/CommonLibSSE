@@ -7,7 +7,7 @@ namespace RE
 {
 	Inventory3DManager* Inventory3DManager::GetSingleton()
 	{
-		REL::Offset<Inventory3DManager**> singleton = 517051;
+		REL::Offset<Inventory3DManager**> singleton = REL::ID(517051);
 		return *singleton;
 	}
 }
