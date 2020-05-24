@@ -2,8 +2,6 @@
 
 #include "RE/BSUntypedPointerHandle.h"
 #include "RE/NiSmartPointer.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

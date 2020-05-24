@@ -1,7 +1,5 @@
 #pragma once
 
-#include <type_traits>
-
 #include "RE/BSExtraData.h"
 #include "RE/ExtraDataTypes.h"
 #include "RE/FormTypes.h"
