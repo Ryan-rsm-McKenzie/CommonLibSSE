@@ -15,7 +15,7 @@ namespace RE
 		}
 
 
-		UInt32 Stack::GetChunkIdx(StackFrame* a_frame)
+		UInt32 Stack::GetPageForFrame(const StackFrame* a_frame) const
 		{
 			for (UInt32 i = 0; i < pages.size(); ++i) {
 				auto& pair = pages[i];
@@ -28,10 +28,18 @@ namespace RE
 		}
 
 
+		Variable& Stack::GetStackFrameVariable(const StackFrame* a_frame, UInt32 a_index, UInt32 a_pageHint)
+		{
+			using func_t = decltype(&Stack::GetStackFrameVariable);
+			REL::Offset<func_t> func = REL::ID(97746);
+			return func(this, a_frame, a_index, a_pageHint);
+		}
+
+
 		void Stack::Dtor()
 		{
 			using func_t = decltype(&Stack::Dtor);
-			REL::Offset<func_t> func(Offset::BSScript::Stack::Dtor);
+			REL::Offset<func_t> func = REL::ID(97742);
 			return func(this);
 		}
 	}

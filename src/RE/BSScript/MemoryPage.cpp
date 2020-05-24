@@ -13,14 +13,13 @@ namespace RE
 
 		void* MemoryPage::GetTail()
 		{
-			auto head = reinterpret_cast<std::uintptr_t>(GetHead());
-			return reinterpret_cast<void*>(head + pageSize);
+			return adjust_pointer<void>(GetHead(), pageSize);
 		}
 
 
-		bool MemoryPage::IsInRange(void* a_ptr)
+		bool MemoryPage::IsInRange(const void* a_ptr)
 		{
-			return a_ptr <= GetHead() && a_ptr < GetTail();
+			return GetHead() <= a_ptr && a_ptr < GetTail();
 		}
 	}
 }

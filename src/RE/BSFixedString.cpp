@@ -46,27 +46,20 @@ namespace RE
 
 	BSFixedString& BSFixedString::operator=(const BSFixedString& a_rhs)
 	{
-		if (this == &a_rhs) {
-			return *this;
+		if (this != std::addressof(a_rhs)) {
+			return *set_copy(a_rhs);
 		}
-
-		return *set_copy(a_rhs);
+		return *this;
 	}
 
 
 	BSFixedString& BSFixedString::operator=(BSFixedString&& a_rhs)
 	{
-		if (this == &a_rhs) {
-			return *this;
-		}
-
-		if (_data) {
+		if (this != std::addressof(a_rhs)) {
 			dtor();
+			_data = std::move(a_rhs._data);
+			a_rhs._data = nullptr;
 		}
-
-		_data = std::move(a_rhs._data);
-		a_rhs._data = nullptr;
-
 		return *this;
 	}
 
@@ -211,7 +204,7 @@ namespace RE
 	auto BSFixedString::get_proxy() const
 		-> proxy_t*
 	{
-		return reinterpret_cast<proxy_t*>((std::uintptr_t)_data - sizeof(proxy_t));
+		return adjust_pointer<proxy_t>(_data, -ssizeof_v<proxy_t>);
 	}
 
 
@@ -257,25 +250,22 @@ namespace RE
 
 	BSFixedStringW& BSFixedStringW::operator=(const BSFixedStringW& a_rhs)
 	{
-		if (this == &a_rhs) {
-			return *this;
+		if (this != std::addressof(a_rhs)) {
+			dtor();
+			_data = nullptr;
+			ctor(a_rhs.c_str());
 		}
-
-		dtor();
-		ctor(a_rhs.c_str());
 		return *this;
 	}
 
 
 	BSFixedStringW& BSFixedStringW::operator=(BSFixedStringW&& a_rhs)
 	{
-		if (this == &a_rhs) {
-			return *this;
+		if (this != std::addressof(a_rhs)) {
+			dtor();
+			_data = std::move(a_rhs._data);
+			a_rhs._data = nullptr;
 		}
-
-		dtor();
-		_data = std::move(a_rhs._data);
-		a_rhs._data = nullptr;
 		return *this;
 	}
 
@@ -283,6 +273,7 @@ namespace RE
 	BSFixedStringW& BSFixedStringW::operator=(const wchar_t* a_rhs)
 	{
 		dtor();
+		_data = nullptr;
 		ctor(a_rhs);
 		return *this;
 	}
@@ -291,6 +282,7 @@ namespace RE
 	BSFixedStringW& BSFixedStringW::operator=(const std::wstring_view& a_rhs)
 	{
 		dtor();
+		_data = nullptr;
 		ctor(a_rhs.data());
 		return *this;
 	}
@@ -371,6 +363,7 @@ namespace RE
 	void BSFixedStringW::clear()
 	{
 		dtor();
+		_data = nullptr;
 		ctor(L"");
 	}
 
@@ -394,6 +387,6 @@ namespace RE
 	auto BSFixedStringW::get_proxy() const
 		-> proxy_t*
 	{
-		return reinterpret_cast<proxy_t*>((std::uintptr_t)_data - sizeof(proxy_t));
+		return adjust_pointer<proxy_t>(_data, -ssizeof_v<proxy_t>);
 	}
 }

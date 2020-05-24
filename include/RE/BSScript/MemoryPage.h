@@ -21,7 +21,7 @@ namespace RE
 
 			void* GetHead();
 			void* GetTail();
-			bool  IsInRange(void* a_ptr);
+			bool  IsInRange(const void* a_ptr);
 
 
 			// members

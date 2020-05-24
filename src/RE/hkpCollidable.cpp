@@ -5,6 +5,6 @@ namespace RE
 {
 	void* hkpCollidable::GetOwner() const
 	{
-		return const_cast<char*>(adjust_pointer<char>(this, ownerOffset));
+		return const_cast<void*>(adjust_pointer<const void>(this, ownerOffset));
 	}
 }

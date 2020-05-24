@@ -20,6 +20,7 @@ namespace RE
 		class IProfilePolicy;
 		class IStackCallbackFunctor;
 		class StackFrame;
+		class Variable;
 		struct IMemoryPagePolicy;
 
 
@@ -66,7 +67,8 @@ namespace RE
 
 			~Stack();
 
-			UInt32 GetChunkIdx(StackFrame* a_frame);
+			UInt32	  GetPageForFrame(const StackFrame* a_frame) const;
+			Variable& GetStackFrameVariable(const StackFrame* a_frame, UInt32 a_index, UInt32 a_pageHint);
 
 
 			// members

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSScript/Variable.h"
+#include "RE/BSTSmartPointer.h"
 
 
 namespace RE
@@ -15,6 +16,10 @@ namespace RE
 		class StackFrame
 		{
 		public:
+			UInt32	  GetPageForFrame() const;
+			Variable& GetStackFrameVariable(UInt32 a_index, UInt32 a_pageHint) const;
+
+
 			// members
 			Stack*							parent;				 // 00
 			StackFrame*						previousFrame;		 // 08
@@ -27,7 +32,8 @@ namespace RE
 			bool							instructionsValid;	 // 3C
 			UInt8							pad3D;				 // 3D
 			UInt16							pad3E;				 // 3E
-			Variable						args[0];			 // 40 - minimum space for 4 args is allocated
+
+			//Variable args[4];	40 - minimum space for 4 args is allocated
 		};
 		STATIC_ASSERT(sizeof(StackFrame) == 0x40);	// frames can be larger
 	}

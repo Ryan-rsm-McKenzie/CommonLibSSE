@@ -194,6 +194,7 @@
     <ClCompile Include="src\RE\BSScript\Internal\VDescTable.cpp" />
     <ClCompile Include="src\RE\BSScript\IVirtualMachine.cpp" />
     <ClCompile Include="src\RE\BSScript\MemoryPage.cpp" />
+    <ClCompile Include="src\RE\BSScript\StackFrame.cpp" />
     <ClCompile Include="src\RE\BSShaderProperty.cpp" />
     <ClCompile Include="src\RE\BSVisit.cpp" />
     <ClCompile Include="src\RE\BSXFlags.cpp" />

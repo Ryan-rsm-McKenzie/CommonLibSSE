@@ -20,29 +20,37 @@ namespace RE
 			template <class F, class Tuple, std::size_t... I, class... Args>
 			inline constexpr decltype(auto) CallbackImpl(F&& a_func, Tuple&& a_tuple, std::index_sequence<I...>, Args&&... a_args)
 			{
-				return std::invoke(std::forward<F>(a_func), std::forward<Args>(a_args)..., std::get<I>(std::forward<Tuple>(a_tuple))...);
+				return std::invoke(
+					std::forward<F>(a_func),
+					std::forward<Args>(a_args)...,
+					std::get<I>(std::forward<Tuple>(a_tuple))...);
 			}
 
 
 			template <class F, class Tuple, class... Args>
 			inline constexpr decltype(auto) CallBack(F&& a_func, Tuple&& a_tuple, Args&&... a_args)
 			{
-				return CallbackImpl(std::forward<F>(a_func), std::forward<Tuple>(a_tuple), index_sequence_for_tuple<Tuple>{}, std::forward<Args>(a_args)...);
+				return CallbackImpl(
+					std::forward<F>(a_func),
+					std::forward<Tuple>(a_tuple),
+					index_sequence_for_tuple<Tuple>{},
+					std::forward<Args>(a_args)...);
 			}
 
 
 			template <class... Args, std::size_t... I>
-			std::tuple<Args...> MakeTupleImpl(const StackFrame& a_frame, std::index_sequence<I...>)
+			std::tuple<Args...> MakeTupleImpl(const StackFrame& a_frame, UInt32 a_page, std::index_sequence<I...>)
 			{
-				return std::forward_as_tuple(Args{ a_frame.args[I].Unpack<Args>() }...);
+				return std::forward_as_tuple(
+					a_frame.GetStackFrameVariable(I, a_page).Unpack<Args>()...);
 			}
 
 
 			// tuple element construction order isn't guaranteed, so we need to wrap it
 			template <class... Args>
-			std::tuple<Args...> MakeTuple(const StackFrame& a_frame)
+			std::tuple<Args...> MakeTuple(const StackFrame& a_frame, UInt32 a_page)
 			{
-				return MakeTupleImpl<Args...>(a_frame, std::index_sequence_for<Args...>{});
+				return MakeTupleImpl<Args...>(a_frame, a_page, std::index_sequence_for<Args...>{});
 			}
 		}
 
@@ -90,7 +98,8 @@ namespace RE
 					}
 				}
 
-				auto args = Impl::MakeTuple<Args...>(a_frame);
+				auto page = a_frame.GetPageForFrame();
+				auto args = Impl::MakeTuple<Args...>(a_frame, page);
 				if constexpr (std::is_void_v<result_type>) {
 					if constexpr (IS_LONG) {
 						Impl::CallBack(_stub, std::move(args), std::addressof(a_vm), a_stackID, std::move(base));

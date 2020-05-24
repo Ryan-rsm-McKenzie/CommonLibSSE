@@ -1980,6 +1980,9 @@
     <ClCompile Include="src\SKSE\Impl\PCH.cpp">
       <Filter>src\SKSE\Impl</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BSScript\StackFrame.cpp">
+      <Filter>src\RE\BSScript</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\RE\PlayerControls.h">
