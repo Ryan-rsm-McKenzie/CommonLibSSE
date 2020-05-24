@@ -1,8 +1,6 @@
 #include "RE/TESDescription.h"
 
 #include "RE/BSString.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

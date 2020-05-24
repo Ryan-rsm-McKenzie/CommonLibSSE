@@ -1,15 +1,5 @@
 #include "REL/Relocation.h"
 
-#include <cassert>
-#include <cstring>
-#include <exception>
-#include <filesystem>
-#include <fstream>
-#include <ios>
-#include <memory>
-#include <sstream>
-#include <system_error>
-
 #include "RE/RTTI.h"
 
 #include "SKSE/Logger.h"
@@ -19,7 +9,7 @@ namespace REL
 {
 	namespace Impl
 	{
-		void kmp_table(const Array<std::uint8_t>& W, Array<std::size_t>& T)
+		void kmp_table(const span<std::uint8_t> W, span<std::size_t> T)
 		{
 			std::size_t pos = 1;
 			std::size_t cnd = 0;
@@ -44,7 +34,7 @@ namespace REL
 		}
 
 
-		void kmp_table(const Array<std::uint8_t>& W, const Array<bool>& M, Array<std::size_t>& T)
+		void kmp_table(const span<std::uint8_t> W, const span<bool> M, span<std::size_t> T)
 		{
 			std::size_t pos = 1;
 			std::size_t cnd = 0;
@@ -69,12 +59,12 @@ namespace REL
 		}
 
 
-		std::size_t kmp_search(const Array<std::uint8_t>& S, const Array<std::uint8_t>& W)
+		std::size_t kmp_search(const span<std::uint8_t> S, const span<std::uint8_t> W)
 		{
 			std::size_t j = 0;
 			std::size_t k = 0;
-			Array<std::size_t> T(W.size() + 1);
-			kmp_table(W, T);
+			std::vector<std::size_t> T(W.size() + 1);
+			kmp_table(W, span(T.data(), T.size()));
 
 			while (j < S.size()) {
 				if (W[k] == S[j]) {
@@ -96,12 +86,12 @@ namespace REL
 		}
 
 
-		std::size_t kmp_search(const Array<std::uint8_t>& S, const Array<std::uint8_t>& W, const Array<bool>& M)
+		std::size_t kmp_search(const span<std::uint8_t> S, const span<std::uint8_t> W, const span<bool> M)
 		{
 			std::size_t j = 0;
 			std::size_t k = 0;
-			Array<std::size_t> T(W.size() + 1);
-			kmp_table(W, M, T);
+			std::vector<std::size_t> T(W.size() + 1);
+			kmp_table(W, M, span(T.data(), T.size()));
 
 			while (j < S.size()) {
 				if (!M[k] || W[k] == S[j]) {
@@ -168,7 +158,7 @@ namespace REL
 	}
 
 
-	SKSE::Version Module::GetVersion()
+	Version Module::GetVersion()
 	{
 		const auto* singleton = GetSingleton();
 		return singleton->_version;
@@ -326,12 +316,12 @@ namespace REL
 
 	bool IDDatabase::Load(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build)
 	{
-		SKSE::Version version(a_major, a_minor, a_revision, a_build);
+		Version version(a_major, a_minor, a_revision, a_build);
 		return Load(std::move(version));
 	}
 
 
-	bool IDDatabase::Load(SKSE::Version a_version)
+	bool IDDatabase::Load(Version a_version)
 	{
 		std::string fileName = "Data/SKSE/Plugins/version-";
 		fileName += std::to_string(a_version[0]);
@@ -368,7 +358,7 @@ namespace REL
 	}
 
 
-	bool IDDatabase::DoLoad(IStream& a_input, const SKSE::Version& a_version)
+	bool IDDatabase::DoLoad(IStream& a_input, const Version& a_version)
 	{
 		_header.Read(a_input);
 
@@ -580,8 +570,8 @@ namespace REL
 		const auto section = Module::GetSection(ID::kData);
 		auto start = section.BasePtr<std::uint8_t>();
 
-		Impl::Array<std::uint8_t> haystack(start, section.Size());
-		Impl::Array<std::uint8_t> needle(name, std::strlen(a_name));
+		Impl::span<std::uint8_t> haystack(start, section.Size());
+		Impl::span<std::uint8_t> needle(name, std::strlen(a_name));
 		auto addr = start + Impl::kmp_search(haystack, needle);
 		addr -= offsetof(RE::RTTI::TypeDescriptor, name);
 

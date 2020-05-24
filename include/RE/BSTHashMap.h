@@ -1,8 +1,5 @@
 #pragma once
 
-#include <cassert>
-#include <utility>
-
 #include "RE/BSTTuple.h"
 #include "RE/CRC.h"
 #include "RE/MemoryManager.h"

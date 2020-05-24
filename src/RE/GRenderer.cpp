@@ -1,7 +1,5 @@
 #include "RE/GRenderer.h"
 
-#include <cassert>
-
 
 namespace RE
 {

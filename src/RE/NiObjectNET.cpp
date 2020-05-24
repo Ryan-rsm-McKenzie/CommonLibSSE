@@ -1,13 +1,9 @@
 #include "RE/NiObjectNET.h"
 
-#include <cassert>
-
 #include "RE/NiExtraData.h"
 #include "RE/NiRTTI.h"
 #include "RE/NiSystem.h"
 #include "RE/NiTCollection.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

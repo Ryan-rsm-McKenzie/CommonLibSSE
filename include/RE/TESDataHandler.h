@@ -1,8 +1,5 @@
 #pragma once
 
-#include <optional>
-#include <string_view>
-
 #include "RE/BSTArray.h"
 #include "RE/BSTList.h"
 #include "RE/BSTSingleton.h"

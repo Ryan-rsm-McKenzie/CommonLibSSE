@@ -1,9 +1,5 @@
 #pragma once
 
-#include <cassert>
-#include <memory>
-#include <utility>
-
 
 namespace RE
 {

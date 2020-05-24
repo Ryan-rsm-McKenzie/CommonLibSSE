@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string_view>
-
 #include "RE/ActorValues.h"
 #include "RE/BSTArray.h"
 #include "RE/GFxValue.h"

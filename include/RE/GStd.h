@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cwctype>
-
 
 namespace RE
 {

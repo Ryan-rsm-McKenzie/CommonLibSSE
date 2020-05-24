@@ -1,7 +1,5 @@
 #include "RE/GStd.h"
 
-#include <cwctype>
-
 
 namespace RE
 {

@@ -1,8 +1,5 @@
 #include "RE/TESHavokUtilities.h"
 
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
-
 
 namespace RE
 {

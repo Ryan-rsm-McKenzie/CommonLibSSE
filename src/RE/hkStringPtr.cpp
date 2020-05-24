@@ -1,7 +1,5 @@
 #include "RE/hkStringPtr.h"
 
-#include <cstring>
-
 
 namespace RE
 {

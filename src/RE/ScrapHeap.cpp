@@ -1,7 +1,5 @@
 #include "RE/ScrapHeap.h"
 
-#include "REL/Relocation.h"
-
 
 namespace RE
 {

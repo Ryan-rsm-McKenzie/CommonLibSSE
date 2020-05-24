@@ -1,15 +1,5 @@
 #include "SKSE/Logger.h"
 
-#include <cassert>
-#include <cstdarg>
-#include <cstdio>
-#include <ctime>
-#include <cwchar>
-#include <iomanip>
-#include <memory>
-#include <sstream>
-#include <string>
-
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "SKSE/API.h"
 #include "SKSE/Trampoline.h"

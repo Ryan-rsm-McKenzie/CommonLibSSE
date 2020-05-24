@@ -1,7 +1,5 @@
 #pragma once
 
-#include <type_traits>
-
 #include "RE/BSScript/CommonTypeTraits.h"
 #include "RE/BSScript/ReferenceArray.h"
 #include "RE/BSScript/TypeInfo.h"

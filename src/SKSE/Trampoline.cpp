@@ -1,13 +1,5 @@
 #include "SKSE/Trampoline.h"
 
-#include <cassert>
-#include <cstdlib>
-#include <cstring>
-#include <limits>
-#include <memory>
-
-#include "REL/Relocation.h"
-
 #include "SKSE/Logger.h"
 #include "SKSE/SafeWrite.h"
 

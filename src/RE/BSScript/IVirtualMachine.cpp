@@ -1,11 +1,5 @@
 #include "RE/BSScript/IVirtualMachine.h"
 
-#include <cstdarg>
-#include <cstdio>
-#include <string>
-#include <string_view>
-#include <vector>
-
 #include "RE/BSFixedString.h"
 #include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/TESForm.h"

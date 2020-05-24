@@ -1,12 +1,5 @@
 #pragma once
 
-#include <memory>
-#include <type_traits>
-#include <typeinfo>
-
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
-
 
 namespace RE
 {
@@ -194,12 +187,20 @@ namespace RE
 	namespace SK_Impl
 	{
 		template <class T>
-		using remove_cvpr_t = std::remove_pointer_t<std::remove_reference_t<std::remove_cv_t<T>>>;
+		using remove_cvpr_t =
+			std::remove_pointer_t<
+				std::remove_reference_t<
+					std::remove_cv_t<T>>>;
 
 
 		template <class T>
 		struct target_is_valid :
-			std::disjunction<std::is_polymorphic<remove_cvpr_t<T>>, std::is_same<void*, std::remove_cv_t<T>>>
+			std::disjunction<
+				std::is_polymorphic<
+					remove_cvpr_t<T>>,
+				std::is_same<
+					void*,
+					std::remove_cv_t<T>>>
 		{};
 
 
@@ -210,19 +211,31 @@ namespace RE
 
 		template <class To, class From>
 		struct types_are_compat<To&, From> :
-			std::is_lvalue_reference<std::remove_cv_t<From>>
+			std::is_lvalue_reference<
+				std::remove_cv_t<
+					From>>
 		{};
 
 		template <class To, class From>
 		struct types_are_compat<To*, From> :
-			std::is_pointer<std::remove_cv_t<From>>
+			std::is_pointer<
+				std::remove_cv_t<
+					From>>
 		{};
 
 
 		template <class To, class From>
 		struct cast_is_valid :
-			std::conjunction<types_are_compat<To, From>, target_is_valid<To>>
+			std::conjunction<
+				types_are_compat<
+					To,
+					From>,
+				target_is_valid<
+					To>>
 		{};
+
+		template <class To, class From>
+		inline constexpr bool cast_is_valid_v = cast_is_valid<To, From>::value;
 	}
 
 
@@ -236,7 +249,14 @@ namespace RE
 }
 
 
-template <class To, class From, std::enable_if_t<RE::SK_Impl::cast_is_valid<To, const From*>::value, int> = 0>
+template <
+	class To,
+	class From,
+	std::enable_if_t<
+		RE::SK_Impl::cast_is_valid_v<
+			To,
+			const From*>,
+		int> = 0>
 inline To skyrim_cast(const From* a_from)
 {
 	REL::Offset<PVOID> from(RE::SK_Impl::remove_cvpr_t<From>::RTTI);
@@ -245,7 +265,14 @@ inline To skyrim_cast(const From* a_from)
 }
 
 
-template <class To, class From, std::enable_if_t<RE::SK_Impl::cast_is_valid<To, const From&>::value, int> = 0>
+template <
+	class To,
+	class From,
+	std::enable_if_t<
+		RE::SK_Impl::cast_is_valid_v<
+			To,
+			const From&>,
+		int> = 0>
 inline To skyrim_cast(const From& a_from)  // throw(std::bad_cast)
 {
 	try {

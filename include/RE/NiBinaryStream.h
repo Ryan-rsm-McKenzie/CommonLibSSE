@@ -1,8 +1,5 @@
 #pragma once
 
-#include <locale>
-#include <string>
-
 
 namespace RE
 {

@@ -1,8 +1,7 @@
 #include "RE/TESQuest.h"
 
 #include "RE/BGSStoryTeller.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
+#include "SKSE/Logger.h"
 
 
 namespace RE

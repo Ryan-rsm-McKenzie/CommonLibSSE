@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cstdint>
-
 #include "REL/Relocation.h"
 
 

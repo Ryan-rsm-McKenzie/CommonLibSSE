@@ -1,8 +1,5 @@
 #pragma once
 
-#include <cassert>
-#include <memory>
-
 #include "RE/BSString.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTHashMap.h"

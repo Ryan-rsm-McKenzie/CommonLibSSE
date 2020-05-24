@@ -1,7 +1,5 @@
 #include "SKSE/CodeGenerator.h"
 
-#include <cassert>
-
 #include "SKSE/API.h"
 #include "SKSE/Trampoline.h"
 

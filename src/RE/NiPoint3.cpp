@@ -1,7 +1,5 @@
 #include "RE/NiPoint3.h"
 
-#include <cassert>
-
 
 namespace RE
 {

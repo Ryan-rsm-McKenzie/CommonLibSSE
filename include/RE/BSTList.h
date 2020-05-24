@@ -1,10 +1,5 @@
 #pragma once
 
-#include <cassert>
-#include <iterator>
-#include <memory>
-#include <utility>
-
 #include "RE/MemoryManager.h"
 
 

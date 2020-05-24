@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSTArray.h"
 #include "RE/BSTSingleton.h"
 #include "RE/BSTSmartPointer.h"
 #include "RE/ExtraDataList.h"

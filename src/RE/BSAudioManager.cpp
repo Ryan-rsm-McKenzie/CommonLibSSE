@@ -2,9 +2,7 @@
 
 #include "RE/BGSSoundDescriptorForm.h"
 #include "RE/BSSoundHandle.h"
-#include "RE/Offsets.h"
 #include "RE/TESForm.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

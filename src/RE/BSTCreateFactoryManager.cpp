@@ -1,10 +1,6 @@
 #include "RE/BSTCreateFactoryManager.h"
 
 
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
-
-
 namespace RE
 {
 	MessageDataFactoryManager* MessageDataFactoryManager::GetSingleton()

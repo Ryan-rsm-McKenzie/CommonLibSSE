@@ -1,8 +1,5 @@
 #pragma once
 
-#include <string>
-#include <string_view>
-
 #include "RE/CommandTable.h"
 #include "RE/FormTypes.h"
 #include "RE/TESForm.h"

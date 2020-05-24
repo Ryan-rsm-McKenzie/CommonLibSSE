@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string_view>
-
 #include "BSTHashMap.h"
 #include "RE/BSAnimNoteListener.h"
 #include "RE/BSFixedString.h"

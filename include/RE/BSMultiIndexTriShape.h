@@ -1,7 +1,5 @@
 #pragma once
 
-#include <DirectXMath.h>
-
 #include "RE/BSTriShape.h"
 #include "RE/NiColor.h"
 #include "RE/NiSmartPointer.h"

@@ -1,9 +1,5 @@
 #include "RE/GFxLog.h"
 
-#include <cstdarg>
-#include <cstdio>
-#include <vector>
-
 
 namespace RE
 {

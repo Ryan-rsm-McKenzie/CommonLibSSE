@@ -1,7 +1,5 @@
 #pragma once
 
-#include <ctime>
-
 #include "RE/BSTList.h"
 #include "RE/FormTypes.h"
 #include "RE/TESForm.h"

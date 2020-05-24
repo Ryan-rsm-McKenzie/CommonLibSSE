@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string_view>
-
 #include "RE/IMenu.h"
 #include "RE/MenuEventHandler.h"
 #include "RE/RaceSexCamera.h"

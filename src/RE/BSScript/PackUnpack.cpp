@@ -1,13 +1,12 @@
 #include "RE/BSScript/PackUnpack.h"
 
-#include <cassert>
-
 #include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/Object.h"
 #include "RE/BSScript/ObjectBindPolicy.h"
 #include "RE/BSScript/ObjectTypeInfo.h"
 #include "RE/BSScript/Variable.h"
+#include "SKSE/Logger.h"
 
 
 namespace RE

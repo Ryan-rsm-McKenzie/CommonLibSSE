@@ -6,6 +6,7 @@ namespace RE
 	class NiQuaternion
 	{
 	public:
+		// members
 		float w;  // 00
 		float x;  // 04
 		float y;  // 08

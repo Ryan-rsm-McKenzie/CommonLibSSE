@@ -1204,6 +1204,12 @@
     <Filter Include="include\RE\Events\InputEvent\IDEvent">
       <UniqueIdentifier>{57350110-7c18-4677-bd8f-76e1171fc1a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\SKSE\Impl">
+      <UniqueIdentifier>{9aeec360-490f-491d-b83d-176aed5f5cd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SKSE\Impl">
+      <UniqueIdentifier>{cb5a4a15-a956-42c4-b50e-f39e0bfc8b18}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RE\MenuControls.cpp">
@@ -1941,9 +1947,6 @@
     <ClCompile Include="src\RE\NiCamera.cpp">
       <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject</Filter>
     </ClCompile>
-    <ClCompile Include="src\SKSE\SafeWrite.cpp">
-      <Filter>src\SKSE</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\TaskQueueInterface.cpp">
       <Filter>src\RE\Misc</Filter>
     </ClCompile>
@@ -1970,6 +1973,12 @@
     </ClCompile>
     <ClCompile Include="src\RE\Inventory3DManager.cpp">
       <Filter>src\RE\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\REL\SafeWrite.cpp">
+      <Filter>src\REL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SKSE\Impl\PCH.cpp">
+      <Filter>src\SKSE\Impl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2056,9 +2065,6 @@
     </ClInclude>
     <ClInclude Include="include\RE\TESAIForm.h">
       <Filter>include\RE\FormComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Util.h">
-      <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSExtraData.h">
       <Filter>include\RE\BSExtraData</Filter>
@@ -2809,9 +2815,6 @@
     </ClInclude>
     <ClInclude Include="include\SKSE\Logger.h">
       <Filter>include\SKSE</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Atomic.h">
-      <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\HUDObject.h">
       <Filter>include\RE\Menus\HUDObject</Filter>
@@ -5593,6 +5596,21 @@
     </ClInclude>
     <ClInclude Include="include\RE\Inventory3DManager.h">
       <Filter>include\RE\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\Impl\Atomic.h">
+      <Filter>include\SKSE\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\Impl\Util.h">
+      <Filter>include\SKSE\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\Impl\PCH.h">
+      <Filter>include\SKSE\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\REL\SafeWrite.h">
+      <Filter>include\REL</Filter>
+    </ClInclude>
+    <ClInclude Include="include\REL\Version.h">
+      <Filter>include\REL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

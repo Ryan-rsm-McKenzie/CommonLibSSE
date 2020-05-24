@@ -1,14 +1,11 @@
 #include "RE/BSScaleformManager.h"
 
-#include <string>
-
 #include "RE/BSResourceNiBinaryStream.h"
 #include "RE/FxDelegate.h"
 #include "RE/GFxLoader.h"
 #include "RE/IMenu.h"
 #include "RE/Misc.h"
 #include "RE/Setting.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

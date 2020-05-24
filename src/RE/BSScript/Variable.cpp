@@ -1,8 +1,5 @@
 #include "RE/BSScript/Variable.h"
 
-#include <cassert>
-#include <memory>
-
 #include "RE/BSScript/Array.h"
 #include "RE/BSScript/Object.h"
 #include "RE/BSScript/ObjectTypeInfo.h"

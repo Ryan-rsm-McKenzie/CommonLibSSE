@@ -1,8 +1,6 @@
 #include "RE/TESNPC.h"
 
-#include "RE/Offsets.h"
 #include "RE/TESRace.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

@@ -1,10 +1,8 @@
 #include "RE/Calendar.h"
 
 #include "RE/GameSettingCollection.h"
-#include "RE/Offsets.h"
 #include "RE/Setting.h"
 #include "RE/TESGlobal.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

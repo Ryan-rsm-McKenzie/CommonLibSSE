@@ -1,7 +1,5 @@
 #include "RE/TESCondition.h"
 
-#include "REL/Relocation.h"
-
 
 namespace RE
 {

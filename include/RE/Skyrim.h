@@ -718,6 +718,7 @@
 #include "RE/InterfaceStrings.h"
 #include "RE/InteriorData.h"
 #include "RE/Inventory.h"
+#include "RE/Inventory3DManager.h"
 #include "RE/InventoryChanges.h"
 #include "RE/InventoryEntryData.h"
 #include "RE/InventoryMenu.h"

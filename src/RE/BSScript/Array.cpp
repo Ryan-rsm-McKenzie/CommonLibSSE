@@ -1,8 +1,5 @@
 #include "RE/BSScript/Array.h"
 
-#include <stdexcept>
-#include <string>
-
 
 namespace RE
 {

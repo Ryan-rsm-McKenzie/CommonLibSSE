@@ -1,7 +1,5 @@
 #pragma once
 
-#include <type_traits>
-
 #include "RE/BGSStoryManagerTreeForm.h"
 #include "RE/BSAtomic.h"
 #include "RE/BSFixedString.h"

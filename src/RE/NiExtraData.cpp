@@ -1,7 +1,5 @@
 #include "RE/NiExtraData.h"
 
-#include <cstring>
-
 #include "RE/MemoryManager.h"
 
 

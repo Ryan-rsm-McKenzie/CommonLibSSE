@@ -1,9 +1,7 @@
 #include "RE/TESDataHandler.h"
 
-#include "RE/Offsets.h"
 #include "RE/TESFile.h"
 #include "RE/TESForm.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

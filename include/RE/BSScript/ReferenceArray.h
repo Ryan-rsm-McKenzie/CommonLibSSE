@@ -1,11 +1,5 @@
 #pragma once
 
-#include <cassert>
-#include <memory>
-#include <type_traits>
-#include <utility>
-#include <vector>
-
 #include "RE/BSScript/Array.h"
 #include "RE/BSScript/CommonTypeTraits.h"
 #include "RE/BSScript/Variable.h"

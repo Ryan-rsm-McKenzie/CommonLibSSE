@@ -1,8 +1,5 @@
 #pragma once
 
-#include <cassert>
-#include <type_traits>
-
 #include "RE/BSScript/Array.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/PackUnpack.h"

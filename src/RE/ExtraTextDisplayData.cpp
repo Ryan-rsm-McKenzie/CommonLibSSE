@@ -1,7 +1,5 @@
 #include "RE/ExtraTextDisplayData.h"
 
-#include "REL/Relocation.h"
-
 
 namespace RE
 {

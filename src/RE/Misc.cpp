@@ -3,10 +3,8 @@
 #include "RE/INIPrefSettingCollection.h"
 #include "RE/INISettingCollection.h"
 #include "RE/NiSmartPointer.h"
-#include "RE/Offsets.h"
 #include "RE/Setting.h"
 #include "RE/TESObjectREFR.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

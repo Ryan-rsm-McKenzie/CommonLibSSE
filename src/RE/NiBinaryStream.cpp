@@ -1,7 +1,5 @@
 #include "RE/NiBinaryStream.h"
 
-#include <cassert>
-
 
 namespace RE
 {

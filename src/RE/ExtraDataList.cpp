@@ -13,11 +13,9 @@
 #include "RE/ExtraSoul.h"
 #include "RE/ExtraTextDisplayData.h"
 #include "RE/GameSettingCollection.h"
-#include "RE/Offsets.h"
 #include "RE/TESBoundObject.h"
 #include "RE/TESForm.h"
 #include "RE/TESObjectREFR.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

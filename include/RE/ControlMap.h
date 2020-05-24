@@ -1,8 +1,5 @@
 #pragma once
 
-#include <string_view>
-#include <type_traits>
-
 #include "RE/BSFixedString.h"
 #include "RE/BSInputDevice.h"
 #include "RE/BSTArray.h"

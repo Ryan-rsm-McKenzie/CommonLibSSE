@@ -1,10 +1,5 @@
 #pragma once
 
-#include <optional>
-#include <string>
-#include <string_view>
-#include <tuple>
-
 #include "function_ref.h"
 
 #include "RE/BSString.h"

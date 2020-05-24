@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cassert>
-
 #include "RE/MemoryManager.h"
 #include "RE/NiTCollection.h"
 

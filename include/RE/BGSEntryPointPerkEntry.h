@@ -2,6 +2,7 @@
 
 #include "RE/BGSPerkEntry.h"
 #include "RE/FormTypes.h"
+#include "RE/MemoryManager.h"
 
 
 namespace RE
@@ -63,14 +64,13 @@ namespace RE
 		virtual void Unk_0A(void) override;					 // 0A
 		virtual void Unk_0B(void) override;					 // 0B
 
-		bool   IsEntryPoint(EntryPoint a_entryPoint) const;
-		UInt32 GetNumConditions() const;
+		bool IsEntryPoint(EntryPoint a_entryPoint) const;
 
 
 		// members
 		EntryData				   entryData;	  // 10 - DATA
 		BGSEntryPointFunctionData* functionData;  // 18
-		TESCondition*			   conditions;	  // 20
+		SimpleArray<TESCondition>  conditions;	  // 20
 		BGSPerk*				   perk;		  // 28
 	};
 	STATIC_ASSERT(sizeof(BGSEntryPointPerkEntry) == 0x30);

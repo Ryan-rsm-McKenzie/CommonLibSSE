@@ -1,10 +1,5 @@
 #include "RE/InventoryChanges.h"
 
-#include <type_traits>
-
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
-
 
 namespace RE
 {

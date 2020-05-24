@@ -1,8 +1,5 @@
 #include "SKSE/VArgFormatter.h"
 
-#include <cstdarg>
-#include <cstdio>
-
 
 namespace SKSE
 {

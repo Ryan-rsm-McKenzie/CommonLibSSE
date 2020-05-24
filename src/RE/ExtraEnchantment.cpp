@@ -1,8 +1,5 @@
 #include "RE/ExtraEnchantment.h"
 
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
-
 
 namespace RE
 {

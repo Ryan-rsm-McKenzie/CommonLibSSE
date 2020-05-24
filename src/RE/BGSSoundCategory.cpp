@@ -1,7 +1,5 @@
 #include "RE/BGSSoundCategory.h"
 
-#include <numeric>
-
 
 namespace RE
 {

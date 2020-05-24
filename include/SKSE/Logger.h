@@ -1,17 +1,5 @@
 #pragma once
 
-#include <KnownFolders.h>
-#include <ShlObj.h>
-
-#include <cstdarg>
-#include <filesystem>
-#include <fstream>
-#include <ios>
-#include <mutex>
-#include <regex>
-#include <string>
-#include <utility>
-
 #include "RE/BSScript/LogEvent.h"
 #include "RE/BSTEvent.h"
 

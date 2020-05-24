@@ -1,7 +1,5 @@
 #pragma once
 
-#include <type_traits>
-
 #include "RE/ActorValues.h"
 #include "RE/BGSDestructibleObjectForm.h"
 #include "RE/BGSKeywordForm.h"

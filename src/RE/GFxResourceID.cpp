@@ -1,7 +1,5 @@
 #include "RE/GFxResourceID.h"
 
-#include <cassert>
-
 
 namespace RE
 {

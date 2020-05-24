@@ -27,6 +27,7 @@ namespace RE
 		}
 
 	protected:
+		// members
 		T left;	   // 00
 		T right;   // ??
 		T top;	   // ??

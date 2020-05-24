@@ -1,10 +1,6 @@
 #include "RE/GMemory.h"
 
-#include <cassert>
-
 #include "RE/GMemoryHeap.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

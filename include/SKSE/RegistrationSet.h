@@ -1,12 +1,5 @@
 #pragma once
 
-#include <cassert>
-#include <mutex>
-#include <set>
-#include <string>
-#include <string_view>
-#include <tuple>
-
 #include "RE/BSFixedString.h"
 #include "RE/BSScript/FunctionArguments.h"
 #include "RE/BSScript/IObjectHandlePolicy.h"

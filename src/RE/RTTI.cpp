@@ -1,7 +1,5 @@
 #include "RE/RTTI.h"
 
-#include <cassert>
-
 #ifdef _DEBUG
 #include <DbgHelp.h>
 #endif

@@ -1,8 +1,5 @@
 #include "RE/GFxWStringBuffer.h"
 
-#include <cstring>
-#include <cwchar>
-
 #include "RE/GMemory.h"
 
 

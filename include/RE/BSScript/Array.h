@@ -1,10 +1,5 @@
 #pragma once
 
-#include <cassert>
-#include <iterator>
-#include <stdexcept>
-#include <string>
-
 #include "RE/BSAtomic.h"
 #include "RE/BSIntrusiveRefCounted.h"
 #include "RE/BSScript/TypeInfo.h"

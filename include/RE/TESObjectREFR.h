@@ -1,11 +1,5 @@
 #pragma once
 
-#include <memory>
-#include <string_view>
-#include <unordered_map>
-#include <utility>
-#include <vector>
-
 #include "function_ref.h"
 
 #include "RE/BSFixedString.h"

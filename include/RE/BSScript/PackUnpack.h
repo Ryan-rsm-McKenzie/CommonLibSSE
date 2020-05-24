@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cassert>
-
 #include "RE/BSScript/ReferenceArray.h"
 #include "RE/BSScript/TypeTraits.h"
 #include "RE/BSScript/Variable.h"

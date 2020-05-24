@@ -1,8 +1,5 @@
 #pragma once
 
-#include <cstddef>
-#include <string_view>
-
 #include "RE/GFxPlayerStats.h"
 #include "RE/GMatrix3D.h"
 #include "RE/GMemory.h"

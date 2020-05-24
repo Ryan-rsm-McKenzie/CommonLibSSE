@@ -2,8 +2,6 @@
 
 #include "RE/HighProcessData.h"
 #include "RE/MiddleHighProcessData.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 #include "SKSE/API.h"
 
 

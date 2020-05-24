@@ -1,9 +1,5 @@
 #pragma once
 
-#include <functional>
-#include <type_traits>
-#include <utility>
-
 #include "RE/BSAtomic.h"
 #include "RE/BSFixedString.h"
 #include "RE/BSTArray.h"

@@ -1,9 +1,7 @@
 #include "RE/UIMessageQueue.h"
 
 #include "RE/BSFixedString.h"
-#include "RE/Offsets.h"
 #include "RE/UIMessage.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

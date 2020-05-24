@@ -1,8 +1,6 @@
 #include "RE/ExtraAliasInstanceArray.h"
 
 #include "RE/MemoryManager.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

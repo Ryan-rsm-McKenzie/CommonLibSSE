@@ -1,8 +1,6 @@
 #include "RE/MenuControls.h"
 
 #include "RE/MenuEventHandler.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

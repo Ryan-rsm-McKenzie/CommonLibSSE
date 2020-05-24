@@ -1,13 +1,5 @@
 #include "RE/GFxValue.h"
 
-#include <cassert>
-#include <cstring>
-#include <cwchar>
-#include <memory>
-
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
-
 
 namespace RE
 {

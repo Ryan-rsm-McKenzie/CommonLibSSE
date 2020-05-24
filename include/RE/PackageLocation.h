@@ -1,7 +1,5 @@
 #pragma once
 
-#include <type_traits>
-
 #include "RE/BSPointerHandle.h"
 #include "RE/IAIWorldLocationHandle.h"
 

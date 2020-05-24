@@ -1,8 +1,6 @@
 #include "RE/ItemList.h"
 
-#include "RE/Offsets.h"
 #include "RE/PlayerCharacter.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

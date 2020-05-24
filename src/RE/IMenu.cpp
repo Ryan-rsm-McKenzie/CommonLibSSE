@@ -1,7 +1,5 @@
 #include "RE/IMenu.h"
 
-#include <type_traits>
-
 #include "RE/BSInputDeviceManager.h"
 #include "RE/BSUIScaleformData.h"
 #include "RE/GFxValue.h"

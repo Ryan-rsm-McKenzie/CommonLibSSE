@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cassert>
-
 #include "RE/BSTSingleton.h"
 #include "RE/FormTypes.h"
 #include "RE/TESForm.h"

@@ -1,11 +1,6 @@
 #include "RE/GString.h"
 
-#include <cassert>
-#include <cstring>
-
 #include "RE/GMemory.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

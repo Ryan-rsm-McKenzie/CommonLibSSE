@@ -1,11 +1,7 @@
-#include "SKSE/SafeWrite.h"
-
-#include <cassert>
-#include <cstring>
-#include <memory>
+#include "REL/SafeWrite.h"
 
 
-namespace SKSE
+namespace REL
 {
 	bool SafeWriteBuf(std::uintptr_t a_dst, const void* a_src, std::size_t a_count)
 	{

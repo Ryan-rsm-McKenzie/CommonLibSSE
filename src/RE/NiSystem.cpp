@@ -1,8 +1,5 @@
 #include "RE/NiSystem.h"
 
-#include <cassert>
-#include <cstdarg>
-
 
 namespace RE
 {

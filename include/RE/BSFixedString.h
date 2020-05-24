@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string_view>
-
 #include "RE/BSStringPool.h"
 #include "RE/CRC.h"
 #include "RE/MemoryManager.h"

@@ -6,6 +6,7 @@ namespace RE
 	class NiFrustum
 	{
 	public:
+		// members
 		float fLeft;	// 00
 		float fRight;	// 04
 		float fTop;		// 08

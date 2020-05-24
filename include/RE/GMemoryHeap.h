@@ -1,8 +1,8 @@
 #pragma once
 
-#include "GAtomic.h"
-#include "GList.h"
-#include "GStats.h"
+#include "RE/GAtomic.h"
+#include "RE/GList.h"
+#include "RE/GStats.h"
 
 
 namespace RE

@@ -1,11 +1,5 @@
 #pragma once
 
-#include <functional>
-#include <string_view>
-#include <tuple>
-#include <type_traits>
-#include <utility>
-
 #include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/NF_util/NativeFunctionBase.h"

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string_view>
-
 #include "RE/BSPointerHandle.h"
 #include "RE/IMenu.h"
 #include "RE/NiSmartPointer.h"

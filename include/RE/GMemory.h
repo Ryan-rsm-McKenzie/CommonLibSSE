@@ -1,7 +1,5 @@
 #pragma once
 
-#include <new>
-
 #include "RE/GMemoryHeap.h"
 
 

@@ -1,7 +1,5 @@
 #include "RE/ButtonEvent.h"
 
-#include "RE/Offsets.h"
-
 
 namespace RE
 {

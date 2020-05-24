@@ -1,10 +1,5 @@
 #include "RE/FxDelegateArgs.h"
 
-#include <cassert>
-#include <memory>
-#include <stdexcept>
-#include <string>
-
 #include "RE/FxResponseArgsBase.h"
 #include "RE/GFxMovieView.h"
 

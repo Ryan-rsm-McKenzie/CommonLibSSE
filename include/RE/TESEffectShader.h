@@ -1,7 +1,5 @@
 #pragma once
 
-#include <d3d9types.h>
-
 #include "RE/Color.h"
 #include "RE/FormTypes.h"
 #include "RE/TESForm.h"

@@ -1,7 +1,5 @@
 #include "RE/GFxStateBag.h"
 
-#include <cassert>
-
 
 namespace RE
 {

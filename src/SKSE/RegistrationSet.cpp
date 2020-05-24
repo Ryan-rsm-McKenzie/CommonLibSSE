@@ -1,6 +1,6 @@
 #include "SKSE/RegistrationSet.h"
 
-#include <cassert>
+#include "SKSE/Logger.h"
 
 
 namespace SKSE

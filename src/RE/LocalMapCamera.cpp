@@ -2,8 +2,6 @@
 
 #include "RE/INISettingCollection.h"
 #include "RE/NiCamera.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

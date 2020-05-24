@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string_view>
-
 #include "RE/BSTEvent.h"
 #include "RE/GFxValue.h"
 #include "RE/IMenu.h"

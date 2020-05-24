@@ -1,10 +1,5 @@
 #include "RE/BGSListForm.h"
 
-#include <algorithm>
-
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
-
 
 namespace RE
 {

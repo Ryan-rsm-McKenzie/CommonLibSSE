@@ -1,23 +1,7 @@
 #pragma once
 
-#include <algorithm>
-#include <array>
-#include <cassert>
-#include <cstdint>
-#include <cstring>
-#include <exception>
-#include <functional>
-#include <istream>
-#include <memory>
-#include <string>
-#include <string_view>
-#include <type_traits>
-#include <unordered_map>
-#include <variant>
-#include <vector>
-
-#include "SKSE/SafeWrite.h"
-#include "SKSE/Version.h"
+#include "REL/SafeWrite.h"
+#include "REL/Version.h"
 
 
 namespace RE
@@ -34,81 +18,59 @@ namespace REL
 {
 	namespace Impl
 	{
-		// msvc's safety checks increase debug builds' execution time by several orders of magnitude
-		// so i've introduced this class to speed up debug builds which leverage exe scanning
 		template <class T>
-		class Array
+		class span
 		{
 		public:
-			using value_type = T;
+			using element_type = T;
+			using value_type = std::remove_cv_t<T>;
 			using size_type = std::size_t;
-			using reference = value_type&;
-			using const_reference = const value_type&;
-			using pointer = value_type*;
+			using difference_type = std::ptrdiff_t;
+			using pointer = element_type*;
+			using const_pointer = const element_type*;
+			using reference = element_type&;
+			using const_reference = const element_type&;
 
-
-			Array() = delete;
-
-
-			Array(size_type a_size) :
+			constexpr span() noexcept :
 				_data(nullptr),
-				_size(a_size),
-				_owned(true)
-			{
-				_data = new value_type[_size];
-			}
-
-
-			Array(pointer a_data, size_type a_size) :
-				_data(a_data),
-				_size(a_size),
-				_owned(false)
+				_size(0)
 			{}
 
+			constexpr span(pointer a_data, size_type a_count) :
+				_data(a_data),
+				_size(a_count)
+			{}
 
-			Array(const std::vector<value_type>& a_vec) :
-				_data(0),
-				_size(0),
-				_owned(true)
+			constexpr span(const span& a_rhs) noexcept :
+				_data(a_rhs._data),
+				_size(a_rhs._size)
+			{}
+
+			~span() noexcept = default;
+
+			[[nodiscard]] constexpr reference front() const { return operator[](0); }
+
+			[[nodiscard]] constexpr reference back() const { return operator[](size() - 1); }
+
+			[[nodiscard]] constexpr reference operator[](size_type a_pos) const
 			{
-				_size = a_vec.size();
-				_data = new value_type[_size];
-				for (size_type i = 0; i < _size; ++i) {
-					_data[i] = a_vec[i];
-				}
+				assert(a_pos < size());
+				return data()[a_pos];
 			}
 
+			[[nodiscard]] constexpr pointer data() const noexcept { return _data; }
 
-			~Array()
-			{
-				if (_owned) {
-					delete[] _data;
-				}
-			}
+			[[nodiscard]] size_type size() const noexcept { return _size; }
 
-
-			reference operator[](size_type a_pos)
-			{
-				return _data[a_pos];
-			}
-
-
-			const_reference operator[](size_type a_pos) const
-			{
-				return _data[a_pos];
-			}
-
-
-			size_type size() const
-			{
-				return _size;
-			}
+			[[nodiscard]] constexpr bool empty() const noexcept { return size() == 0; }
 
 		private:
 			pointer	  _data;
 			size_type _size;
-			bool	  _owned;
 		};
+
+		template <class T>
+		span(T* a_data, std::size_t a_count) -> span<T>;
 
 
 		template <class T>
@@ -291,63 +253,124 @@ namespace REL
 		// https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm
 		constexpr auto NPOS = static_cast<std::size_t>(-1);
 
-		void kmp_table(const Array<std::uint8_t>& W, Array<std::size_t>& T);
-		void kmp_table(const Array<std::uint8_t>& W, const Array<bool>& M, Array<std::size_t>& T);
+		void kmp_table(const span<std::uint8_t> W, span<std::size_t> T);
+		void kmp_table(const span<std::uint8_t> W, const span<bool> M, span<std::size_t> T);
 
-		std::size_t kmp_search(const Array<std::uint8_t>& S, const Array<std::uint8_t>& W);
-		std::size_t kmp_search(const Array<std::uint8_t>& S, const Array<std::uint8_t>& W, const Array<bool>& M);
+		std::size_t kmp_search(const span<std::uint8_t> S, const span<std::uint8_t> W);
+		std::size_t kmp_search(const span<std::uint8_t> S, const span<std::uint8_t> W, const span<bool> M);
 
 
 		template <class T>
-		struct is_any_function : std::disjunction<std::is_function<T>,
-									 std::is_function<std::remove_pointer_t<T>>,  // is_function_pointer
-									 std::is_member_function_pointer<T>>
+		struct is_any_function :
+			std::disjunction<
+				std::is_function<T>,
+				std::is_function<
+					std::remove_pointer_t<T>>,	// is_function_pointer
+				std::is_member_function_pointer<T>>
 		{};
+
+		template <class T>
+		inline constexpr bool is_any_function_v = is_any_function<T>::value;
 
 
 		// https://docs.microsoft.com/en-us/cpp/build/x64-calling-convention
 
-		template <class T, class Enable = void>
-		struct meets_length_req : std::false_type
-		{};
-		template <class T>
-		struct meets_length_req<T, std::enable_if_t<sizeof(T) == 1>> : std::true_type
-		{};
-		template <class T>
-		struct meets_length_req<T, std::enable_if_t<sizeof(T) == 2>> : std::true_type
-		{};
-		template <class T>
-		struct meets_length_req<T, std::enable_if_t<sizeof(T) == 4>> : std::true_type
-		{};
-		template <class T>
-		struct meets_length_req<T, std::enable_if_t<sizeof(T) == 8>> : std::true_type
-		{};
-		template <class T>
-		struct meets_length_req<T, std::enable_if_t<sizeof(T) == 16>> : std::true_type
-		{};
-		template <class T>
-		struct meets_length_req<T, std::enable_if_t<sizeof(T) == 32>> : std::true_type
-		{};
-		template <class T>
-		struct meets_length_req<T, std::enable_if_t<sizeof(T) == 64>> : std::true_type
+		template <class T, class = void>
+		struct meets_length_req :
+			std::false_type
 		{};
 
 		template <class T>
-		struct meets_function_req : std::conjunction<std::is_trivially_constructible<T>, std::is_trivially_destructible<T>, std::is_trivially_copy_assignable<T>, std::negation<std::is_polymorphic<T>>>
+		struct meets_length_req<
+			T,
+			std::enable_if_t<
+				sizeof(T) == 1>> :
+			std::true_type
 		{};
 
 		template <class T>
-		struct meets_member_req : std::is_standard_layout<T>
+		struct meets_length_req<
+			T,
+			std::enable_if_t<
+				sizeof(T) == 2>> :
+			std::true_type
 		{};
 
-		template <class T, class Enable = void>
-		struct is_msvc_pod : std::true_type
+		template <class T>
+		struct meets_length_req<
+			T,
+			std::enable_if_t<
+				sizeof(T) == 4>> :
+			std::true_type
+		{};
+
+		template <class T>
+		struct meets_length_req<
+			T,
+			std::enable_if_t<
+				sizeof(T) == 8>> :
+			std::true_type
+		{};
+
+		template <class T>
+		struct meets_length_req<
+			T,
+			std::enable_if_t<
+				sizeof(T) == 16>> :
+			std::true_type
+		{};
+
+		template <class T>
+		struct meets_length_req<
+			T,
+			std::enable_if_t<
+				sizeof(T) == 32>> :
+			std::true_type
+		{};
+
+		template <class T>
+		struct meets_length_req<
+			T,
+			std::enable_if_t<
+				sizeof(T) == 64>> :
+			std::true_type
+		{};
+
+		template <class T>
+		struct meets_function_req :
+			std::conjunction<
+				std::is_trivially_constructible<T>,
+				std::is_trivially_destructible<T>,
+				std::is_trivially_copy_assignable<T>,
+				std::negation<
+					std::is_polymorphic<T>>>
+		{};
+
+		template <class T>
+		struct meets_member_req :
+			std::is_standard_layout<T>
+		{};
+
+		template <class T, class = void>
+		struct is_msvc_pod :
+			std::true_type
 		{};
 		template <class T>
-		struct is_msvc_pod<T, std::enable_if_t<std::is_union<T>::value>> : std::false_type
+		struct is_msvc_pod<
+			T,
+			std::enable_if_t<
+				std::is_union_v<T>>> :
+			std::false_type
 		{};
 		template <class T>
-		struct is_msvc_pod<T, std::enable_if_t<std::is_class<T>::value>> : std::conjunction<meets_length_req<T>, meets_function_req<T>, meets_member_req<T>>
+		struct is_msvc_pod<
+			T,
+			std::enable_if_t<
+				std::is_class_v<T>>> :
+			std::conjunction<
+				meets_length_req<T>,
+				meets_function_req<T>,
+				meets_member_req<T>>
 		{};
 
 
@@ -472,7 +495,14 @@ namespace REL
 
 
 	// generic solution for calling relocated functions
-	template <class F, class... Args, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
+	template <
+		class F,
+		class... Args,
+		std::enable_if_t<
+			std::is_invocable_v<
+				F,
+				Args...>,
+			int> = 0>
 	decltype(auto) Invoke(F&& a_fn, Args&&... a_args) noexcept(std::is_nothrow_invocable_v<F, Args...>)
 	{
 		return Impl::Invoke<std::invoke_result_t<F, Args...>>(std::forward<F>(a_fn), std::forward<Args>(a_args)...);
@@ -535,7 +565,7 @@ namespace REL
 		static std::uintptr_t BaseAddr();
 		static std::size_t	  Size();
 		static Section		  GetSection(ID a_id);
-		static SKSE::Version  GetVersion();
+		static Version		  GetVersion();
 
 
 		template <class T = void>
@@ -603,7 +633,7 @@ namespace REL
 		std::uintptr_t _base;
 		std::size_t	   _size;
 		Sections	   _sections;
-		SKSE::Version  _version;
+		Version		   _version;
 	};
 
 
@@ -668,7 +698,7 @@ namespace REL
 			[[nodiscard]] constexpr decltype(auto)	   AddrCount() const noexcept { return static_cast<std::size_t>(_part2.addressCount); }
 			[[nodiscard]] constexpr const std::string& ModuleName() const noexcept { return _moduleName; }
 			[[nodiscard]] constexpr decltype(auto)	   PSize() const noexcept { return static_cast<std::uint64_t>(_part2.pointerSize); }
-			[[nodiscard]] inline decltype(auto)		   GetVersion() const { return SKSE::Version(_part1.version); }
+			[[nodiscard]] inline decltype(auto)		   GetVersion() const { return Version(_part1.version); }
 
 		private:
 			struct Part1
@@ -720,9 +750,9 @@ namespace REL
 
 		[[nodiscard]] bool Load();
 		[[nodiscard]] bool Load(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build);
-		[[nodiscard]] bool Load(SKSE::Version a_version);
+		[[nodiscard]] bool Load(Version a_version);
 
-		[[nodiscard]] bool DoLoad(IStream& a_input, const SKSE::Version& a_version);
+		[[nodiscard]] bool DoLoad(IStream& a_input, const Version& a_version);
 		void			   DoLoadImpl(IStream& a_input, std::vector<std::uint64_t>& a_buf);
 
 #ifdef _DEBUG
@@ -866,21 +896,36 @@ namespace REL
 		}
 
 
-		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
+		template <
+			class U = T,
+			std::enable_if_t<
+				std::is_pointer_v<U>,
+				int> = 0>
 		std::add_lvalue_reference_t<std::remove_pointer_t<U>> operator*()
 		{
 			return *GetType();
 		}
 
 
-		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
+		template <
+			class U = T,
+			std::enable_if_t<
+				std::is_pointer_v<U>,
+				int> = 0>
 		U operator->()
 		{
 			return GetType();
 		}
 
 
-		template <class... Args, class F = T, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
+		template <
+			class... Args,
+			class F = T,
+			std::enable_if_t<
+				std::is_invocable_v<
+					F,
+					Args...>,
+				int> = 0>
 		decltype(auto) operator()(Args&&... a_args)
 		{
 			return Invoke(GetType(), std::forward<Args>(a_args)...);
@@ -905,13 +950,19 @@ namespace REL
 		}
 
 
-		template <class U = T, typename std::enable_if_t<std::is_same<U, std::uintptr_t>::value, int> = 0>
+		template <
+			class U = T,
+			std::enable_if_t<
+				std::is_same_v<
+					U,
+					std::uintptr_t>,
+				int> = 0>
 		std::uintptr_t WriteVFunc(std::size_t a_idx, std::uintptr_t a_newFunc)
 		{
 			constexpr auto PSIZE = sizeof(void*);
 			auto		   addr = GetAddress() + (PSIZE * a_idx);
 			auto		   result = *reinterpret_cast<std::uintptr_t*>(addr);
-			SKSE::SafeWrite64(addr, a_newFunc);
+			SafeWrite64(addr, a_newFunc);
 			return result;
 		}
 
@@ -949,35 +1000,42 @@ namespace REL
 		DirectSig(const char* a_sig) :
 			_address(0xDEADBEEF)
 		{
+			const auto LEN = std::strlen(a_sig);
+
 			std::vector<std::uint8_t> sig;
-			std::vector<bool>		  mask;
-			std::string				  buf;
+			sig.reserve(LEN);
+
+			auto mask = std::make_unique<bool[]>(LEN);
+
+			std::string buf;
 			buf.resize(2);
+
 			for (std::size_t i = 0; a_sig[i] != '\0';) {
 				switch (a_sig[i]) {
 				case ' ':
 					++i;
 					break;
 				case '?':
-					mask.push_back(false);
 					sig.push_back(0x00);
+					mask[sig.size() - 1] = false;
 					do {
 						++i;
 					} while (a_sig[i] == '?');
 					break;
 				default:
-					mask.push_back(true);
 					buf[0] = a_sig[i++];
 					buf[1] = a_sig[i++];
 					sig.push_back(static_cast<std::uint8_t>(std::stoi(buf, 0, 16)));
+					mask[sig.size() - 1] = true;
 					break;
 				}
 			}
 
-			auto					  text = Module::GetSection(Module::ID::kTextX);
-			Impl::Array<std::uint8_t> haystack(text.BasePtr<std::uint8_t>(), text.Size());
-			Impl::Array<std::uint8_t> needle(sig.data(), sig.size());
-			Impl::Array<bool>		  needleMask(mask);
+			auto					 text = Module::GetSection(Module::ID::kTextX);
+			Impl::span<std::uint8_t> haystack(text.BasePtr<std::uint8_t>(), text.Size());
+			Impl::span<std::uint8_t> needle(sig.data(), LEN);
+			Impl::span				 needleMask(mask.get(), LEN);
+
 			_address = Impl::kmp_search(haystack, needle, needleMask);
 
 			if (_address == 0xDEADBEEF) {
@@ -988,21 +1046,36 @@ namespace REL
 		}
 
 
-		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
+		template <
+			class U = T,
+			std::enable_if_t<
+				std::is_pointer_v<U>,
+				int> = 0>
 		std::add_lvalue_reference_t<std::remove_pointer_t<U>> operator*() const
 		{
 			return *GetType();
 		}
 
 
-		template <class U = T, typename std::enable_if_t<std::is_pointer<U>::value, int> = 0>
+		template <
+			class U = T,
+			std::enable_if_t<
+				std::is_pointer_v<U>,
+				int> = 0>
 		U operator->() const
 		{
 			return GetType();
 		}
 
 
-		template <class... Args, class F = T, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
+		template <
+			class... Args,
+			class F = T,
+			std::enable_if_t<
+				std::is_invocable_v<
+					F,
+					Args...>,
+				int> = 0>
 		decltype(auto) operator()(Args&&... a_args) const
 		{
 			return Invoke(GetType(), std::forward<Args>(a_args)...);
@@ -1083,7 +1156,10 @@ namespace REL
 
 
 	template <class T>
-	class Function<T, std::enable_if_t<Impl::is_any_function<std::decay_t<T>>::value>>
+	class Function<
+		T,
+		std::enable_if_t<
+			Impl::is_any_function<std::decay_t<T>>::value>>
 	{
 	public:
 		using function_type = std::decay_t<T>;

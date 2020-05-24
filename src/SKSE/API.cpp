@@ -1,11 +1,6 @@
 #include "SKSE/API.h"
 
-#include <cassert>
-#include <memory>
-#include <mutex>
-#include <vector>
-
-#include "REL/Relocation.h"
+#include "SKSE/Logger.h"
 
 
 namespace SKSE

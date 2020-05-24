@@ -5,8 +5,6 @@
 #include "RE/BSWin32KeyboardDevice.h"
 #include "RE/BSWin32MouseDevice.h"
 #include "RE/BSWin32VirtualKeyboardDevice.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

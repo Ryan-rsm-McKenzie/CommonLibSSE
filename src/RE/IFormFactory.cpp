@@ -1,7 +1,5 @@
 #include "RE/IFormFactory.h"
 
-#include "REL/Relocation.h"
-
 
 namespace RE
 {

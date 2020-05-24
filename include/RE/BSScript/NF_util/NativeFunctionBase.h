@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string>
-
 #include "RE/BSFixedString.h"
 #include "RE/BSScript/IFunction.h"
 #include "RE/BSScript/Internal/VDescTable.h"

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cstdarg>
-
 #include "RE/GFxLogBase.h"
 #include "RE/GFxState.h"
 
@@ -20,7 +18,7 @@ namespace RE
 		virtual ~GFxLog() = default;  // 00
 
 		// add
-		virtual void LogMessageVarg(LogMessageType a_messageType, const char* a_fmt, va_list a_argList);  // 01
+		virtual void LogMessageVarg(LogMessageType a_messageType, const char* a_fmt, std::va_list a_argList);  // 01
 
 		void LogMessageByType(LogMessageType a_messageType, const char* a_fmt, ...);
 	};

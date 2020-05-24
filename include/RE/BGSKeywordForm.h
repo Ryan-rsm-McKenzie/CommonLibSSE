@@ -1,7 +1,5 @@
 #pragma once
 
-#include <optional>
-
 #include "RE/BaseFormComponent.h"
 
 

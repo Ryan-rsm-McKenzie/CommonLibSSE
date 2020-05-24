@@ -1,8 +1,5 @@
 #pragma once
 
-#include <cassert>
-#include <memory>
-
 #include "GMath.h"
 #include "RE/GAllocator.h"
 #include "RE/GFixedSizeHash.h"

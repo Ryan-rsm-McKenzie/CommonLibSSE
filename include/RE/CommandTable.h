@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string>
-
 #include "RE/BSString.h"
 #include "RE/BSTList.h"
 #include "RE/FormTypes.h"

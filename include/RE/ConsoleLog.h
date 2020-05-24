@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cstdarg>
-
 #include "RE/BSString.h"
 #include "RE/BSTSingleton.h"
 

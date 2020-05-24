@@ -1,7 +1,5 @@
 #pragma once
 
-#include <type_traits>
-
 #include "RE/BSIntrusiveRefCounted.h"
 #include "RE/BSTHashMap.h"
 #include "RE/BSTSmartPointer.h"

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <type_traits>
-
 #include "RE/BSAtomic.h"
 #include "RE/BSPointerHandle.h"
 #include "RE/BSTArray.h"

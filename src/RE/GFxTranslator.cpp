@@ -1,7 +1,5 @@
 #include "RE/GFxTranslator.h"
 
-#include <string_view>
-
 #include "RE/GFxWStringBuffer.h"
 
 

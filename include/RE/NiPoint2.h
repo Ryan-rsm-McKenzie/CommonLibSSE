@@ -6,6 +6,7 @@ namespace RE
 	class NiPoint2
 	{
 	public:
+		// members
 		float x;  // 0
 		float y;  // 4
 	};

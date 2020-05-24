@@ -1,7 +1,5 @@
 #include "RE/BSGraphics/State.h"
 
-#include "REL/Relocation.h"
-
 
 namespace RE
 {

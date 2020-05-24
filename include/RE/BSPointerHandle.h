@@ -1,7 +1,5 @@
 #pragma once
 
-#include <type_traits>
-
 #include "RE/BSUntypedPointerHandle.h"
 #include "RE/NiSmartPointer.h"
 #include "RE/Offsets.h"

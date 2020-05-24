@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cstdarg>
-
 #include "RE/GFxPlayerStats.h"
 #include "RE/GRefCountBase.h"
 

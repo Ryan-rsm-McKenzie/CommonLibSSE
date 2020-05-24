@@ -1,7 +1,5 @@
 #include "RE/BSExtraData.h"
 
-#include <cstring>
-
 #include "RE/MemoryManager.h"
 
 

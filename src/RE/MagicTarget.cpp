@@ -3,8 +3,6 @@
 #include "RE/ActiveEffect.h"
 #include "RE/BSTList.h"
 #include "RE/EffectSetting.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

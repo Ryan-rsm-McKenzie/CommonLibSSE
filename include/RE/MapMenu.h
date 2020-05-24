@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string_view>
-
 #include "RE/BSSoundHandle.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTEvent.h"

@@ -1,8 +1,5 @@
 #pragma once
 
-#include <functional>
-#include <string>
-
 #include "RE/BSScript/IVirtualMachine.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/GFxMovieView.h"

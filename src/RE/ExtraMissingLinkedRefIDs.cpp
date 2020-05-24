@@ -1,7 +1,5 @@
 #include "RE/ExtraMissingLinkedRefIDs.h"
 
-#include <cassert>
-
 #include "RE/BGSKeyword.h"
 #include "RE/TESObjectREFR.h"
 

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string>
-
 #include "RE/BSResource/ErrorCodes.h"
 #include "RE/BSResource/Stream.h"
 #include "RE/BSTSmartPointer.h"

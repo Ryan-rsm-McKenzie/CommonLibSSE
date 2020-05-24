@@ -2,8 +2,6 @@
 
 #include "RE/BSScript/IStackCallbackFunctor.h"
 #include "RE/BSScript/Internal/CodeTasklet.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

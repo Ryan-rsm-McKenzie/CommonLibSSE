@@ -1,7 +1,5 @@
 #include "RE/NiAVObject.h"
 
-#include <functional>
-
 #include "RE/BSEffectShaderData.h"
 #include "RE/BSGeometry.h"
 #include "RE/BSGraphics/State.h"
@@ -16,8 +14,6 @@
 #include "RE/NiNode.h"
 #include "RE/NiProperty.h"
 #include "RE/NiRTTI.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

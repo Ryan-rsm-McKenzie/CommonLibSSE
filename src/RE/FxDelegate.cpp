@@ -1,7 +1,5 @@
 #include "RE/FxDelegate.h"
 
-#include <cassert>
-
 #include "RE/AddCallbackVisitor.h"
 #include "RE/FxDelegateArgs.h"
 #include "RE/FxResponseArgsBase.h"

@@ -1,7 +1,5 @@
 #include "RE/GMemoryHeap.h"
 
-#include <cassert>
-
 
 namespace RE
 {

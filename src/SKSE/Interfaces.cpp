@@ -1,10 +1,9 @@
 #include "SKSE/Interfaces.h"
 
-#include <cassert>
-
 #include "RE/BSScript/Internal/VirtualMachine.h"
 
 #include "SKSE/API.h"
+#include "SKSE/Logger.h"
 
 
 namespace SKSE

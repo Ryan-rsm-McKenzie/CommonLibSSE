@@ -1,10 +1,5 @@
 #pragma once
 
-#include <cstring>
-#include <memory>
-#include <new>
-#include <type_traits>
-
 #include "RE/ScrapHeap.h"
 
 

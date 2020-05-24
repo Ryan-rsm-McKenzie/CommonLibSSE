@@ -1,7 +1,5 @@
 #pragma once
 
-#include <type_traits>
-
 #include "RE/BGSEquipType.h"
 #include "RE/BGSMenuDisplayObject.h"
 #include "RE/FormTypes.h"

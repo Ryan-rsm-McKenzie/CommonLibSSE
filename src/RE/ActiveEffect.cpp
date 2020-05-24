@@ -2,8 +2,6 @@
 
 #include "RE/Actor.h"
 #include "RE/Effect.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

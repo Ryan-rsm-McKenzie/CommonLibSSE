@@ -1,7 +1,5 @@
 #include "RE/GFxWWHelper.h"
 
-#include <type_traits>
-
 #include "RE/GStd.h"
 
 

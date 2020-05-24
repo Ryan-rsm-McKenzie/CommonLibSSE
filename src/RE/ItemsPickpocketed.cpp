@@ -1,10 +1,5 @@
 #include "RE/ItemsPickpocketed.h"
 
-#include <memory>
-
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
-
 
 namespace RE
 {

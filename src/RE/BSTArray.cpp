@@ -1,7 +1,5 @@
 #include "RE/BSTArray.h"
 
-#include <cassert>
-
 #include "RE/MemoryManager.h"
 #include "RE/ScrapHeap.h"
 

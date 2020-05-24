@@ -1,7 +1,5 @@
 #pragma once
 
-#include <type_traits>
-
 #include "RE/ActorPackage.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTList.h"

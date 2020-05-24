@@ -1,8 +1,5 @@
 #include "SKSE/IAT.h"
 
-#include <cassert>
-
-#include "REL/Relocation.h"
 #include "SKSE/Logger.h"
 
 
@@ -71,7 +68,7 @@ namespace SKSE
 		auto oldFunc = GetIATAddr(a_dll, a_function);
 		if (oldFunc) {
 			origAddr = *reinterpret_cast<std::uintptr_t*>(oldFunc);
-			SafeWrite64(oldFunc, a_newFunc);
+			REL::SafeWrite64(oldFunc, a_newFunc);
 		} else {
 			_WARNING("Failed to patch %s (%s)", a_dll.data(), a_function.data());
 		}

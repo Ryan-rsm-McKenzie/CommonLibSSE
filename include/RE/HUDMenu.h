@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string_view>
-
 #include "RE/BSTArray.h"
 #include "RE/BSTEvent.h"
 #include "RE/GFxValue.h"

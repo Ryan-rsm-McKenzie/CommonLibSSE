@@ -1,7 +1,5 @@
 #include "RE/BSShaderProperty.h"
 
-#include <numeric>
-
 
 namespace RE
 {

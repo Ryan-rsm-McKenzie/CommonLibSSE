@@ -1,8 +1,6 @@
 #include "RE/ControlMap.h"
 
-#include "RE/Offsets.h"
 #include "RE/UserEventEnabled.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

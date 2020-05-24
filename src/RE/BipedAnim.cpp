@@ -1,8 +1,6 @@
 #include "RE/BipedAnim.h"
 
 #include "RE/NiAVObject.h"
-#include "RE/Offsets.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

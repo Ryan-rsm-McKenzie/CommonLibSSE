@@ -1,7 +1,5 @@
 #pragma once
 
-#include <functional>
-
 #include "RE/BSTEvent.h"
 
 #include "SKSE/Events.h"

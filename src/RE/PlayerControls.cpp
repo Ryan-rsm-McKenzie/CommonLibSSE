@@ -1,9 +1,7 @@
 #include "RE/PlayerControls.h"
 
 #include "RE/ActivateHandler.h"
-#include "RE/Offsets.h"
 #include "RE/PlayerInputHandler.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

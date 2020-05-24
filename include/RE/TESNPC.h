@@ -1,7 +1,5 @@
 #pragma once
 
-#include <type_traits>
-
 #include "RE/BGSHeadPart.h"
 #include "RE/BGSOverridePackCollection.h"
 #include "RE/BSFixedString.h"

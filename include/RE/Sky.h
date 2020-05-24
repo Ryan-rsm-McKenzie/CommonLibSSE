@@ -1,7 +1,5 @@
 #pragma once
 
-#include <ctime>
-
 #include "RE/BSPointerHandle.h"
 #include "RE/BSTArray.h"
 #include "RE/BSTList.h"

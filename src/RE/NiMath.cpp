@@ -1,7 +1,5 @@
 #include "RE/NiMath.h"
 
-#include <cmath>
-
 
 namespace RE
 {

@@ -1,7 +1,5 @@
 #include "RE/TESObjectARMA.h"
 
-#include <cassert>
-
 #include "RE/FormTraits.h"
 #include "RE/TESNPC.h"
 #include "RE/TESObjectARMO.h"

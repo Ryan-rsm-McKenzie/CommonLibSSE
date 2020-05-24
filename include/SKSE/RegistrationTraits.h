@@ -1,8 +1,5 @@
 #pragma once
 
-#include <tuple>
-#include <type_traits>
-
 #include "RE/NiSmartPointer.h"
 #include "RE/TESForm.h"
 #include "RE/TESObjectREFR.h"

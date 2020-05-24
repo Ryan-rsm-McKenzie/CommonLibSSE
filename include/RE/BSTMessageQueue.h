@@ -5,8 +5,10 @@ namespace RE
 {
 	template <class T>
 	class BSTFreeList;
+
 	template <class T>
 	struct BSTFreeListElem;
+
 	class ScrapHeap;
 
 

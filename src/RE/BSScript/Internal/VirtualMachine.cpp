@@ -1,8 +1,6 @@
 #include "RE/BSScript/Internal/VirtualMachine.h"
 
-#include "RE/Offsets.h"
 #include "RE/SkyrimVM.h"
-#include "REL/Relocation.h"
 
 
 namespace RE

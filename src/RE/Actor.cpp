@@ -1,7 +1,5 @@
 #include "RE/Actor.h"
 
-#include <type_traits>
-
 #include "RE/AIProcess.h"
 #include "RE/BGSAttackData.h"
 #include "RE/BGSColorForm.h"
@@ -17,14 +15,12 @@
 #include "RE/NiColor.h"
 #include "RE/NiNode.h"
 #include "RE/NiPoint3.h"
-#include "RE/Offsets.h"
 #include "RE/ProcessLists.h"
 #include "RE/TESFaction.h"
 #include "RE/TESNPC.h"
 #include "RE/TESObjectMISC.h"
 #include "RE/TESRace.h"
 #include "RE/TESWorldSpace.h"
-#include "REL/Relocation.h"
 
 
 namespace RE
