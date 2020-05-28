@@ -504,19 +504,31 @@ namespace REL
 
 	std::uint64_t ID::operator*() const
 	{
-		return GetOffset();
+		return offset();
+	}
+
+
+	std::uint64_t ID::address() const
+	{
+		return Module::BaseAddr() + offset();
+	}
+
+
+	std::uint64_t ID::offset() const
+	{
+		return IDDatabase::IDToOffset(_id);
 	}
 
 
 	std::uint64_t ID::GetAddress() const
 	{
-		return Module::BaseAddr() + GetOffset();
+		return address();
 	}
 
 
 	std::uint64_t ID::GetOffset() const
 	{
-		return IDDatabase::IDToOffset(_id);
+		return offset();
 	}
 
 
