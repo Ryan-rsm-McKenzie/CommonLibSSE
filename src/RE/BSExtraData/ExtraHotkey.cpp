@@ -1,4 +1,4 @@
-#include "RE/ExtraHotkey.h"
+#include "RE/BSExtraData/ExtraHotkey.h"
 
 
 namespace RE

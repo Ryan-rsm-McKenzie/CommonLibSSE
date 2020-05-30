@@ -1,4 +1,4 @@
-#include "RE/GFxMovieDef.h"
+#include "RE/Scaleform/GFxPlayer/GFxMovieDef.h"
 
 
 namespace RE

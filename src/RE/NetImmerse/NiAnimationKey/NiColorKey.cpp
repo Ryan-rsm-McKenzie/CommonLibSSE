@@ -1,4 +1,4 @@
-#include "RE/NiColorKey.h"
+#include "RE/NetImmerse/NiAnimationKey/NiColorKey.h"
 
 
 namespace RE

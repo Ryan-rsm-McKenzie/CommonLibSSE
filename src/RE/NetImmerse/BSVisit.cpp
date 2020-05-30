@@ -1,7 +1,7 @@
-#include "RE/BSVisit.h"
+#include "RE/NetImmerse/BSVisit.h"
 
-#include "RE/NiAVObject.h"
-#include "RE/NiNode.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/NiAVObject.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/NiNode/NiNode.h"
 
 
 namespace RE

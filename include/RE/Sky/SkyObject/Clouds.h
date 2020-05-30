@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/NiColor.h"
-#include "RE/NiSmartPointer.h"
-#include "RE/SkyObject.h"
+#include "RE/NetImmerse/NiColor.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/Sky/SkyObject/SkyObject.h"
 
 
 namespace RE

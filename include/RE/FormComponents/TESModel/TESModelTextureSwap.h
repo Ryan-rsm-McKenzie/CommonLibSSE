@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/FormTypes.h"
-#include "RE/TESModel.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESModel/TESModel.h"
 
 
 namespace RE

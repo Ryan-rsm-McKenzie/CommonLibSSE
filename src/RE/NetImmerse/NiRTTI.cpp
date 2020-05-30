@@ -1,4 +1,4 @@
-#include "RE/NiRTTI.h"
+#include "RE/NetImmerse/NiRTTI.h"
 
 
 namespace RE

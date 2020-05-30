@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/GStats.h"
+#include "RE/Scaleform/GStats/GStats.h"
 
 
 namespace RE

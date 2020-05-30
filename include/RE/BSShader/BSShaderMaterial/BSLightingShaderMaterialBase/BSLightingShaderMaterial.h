@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSLightingShaderMaterialBase.h"
+#include "RE/BSShader/BSShaderMaterial/BSLightingShaderMaterialBase/BSLightingShaderMaterialBase.h"
 
 
 namespace RE

@@ -1,7 +1,7 @@
-#include "RE/PlayerControls.h"
+#include "RE/BSDevices/PlayerControls.h"
 
-#include "RE/ActivateHandler.h"
-#include "RE/PlayerInputHandler.h"
+#include "RE/BSDevices/PlayerInputHandler/HeldStateHandler/ActivateHandler.h"
+#include "RE/BSDevices/PlayerInputHandler/PlayerInputHandler.h"
 
 
 namespace RE

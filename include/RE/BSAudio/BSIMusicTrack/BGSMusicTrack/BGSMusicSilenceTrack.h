@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BGSMusicTrack.h"
+#include "RE/BSAudio/BSIMusicTrack/BGSMusicTrack/BGSMusicTrack.h"
 
 
 namespace RE

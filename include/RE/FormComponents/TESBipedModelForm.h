@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BGSMessageIcon.h"
-#include "RE/BaseFormComponent.h"
-#include "RE/TESIcon.h"
-#include "RE/TESModelRDT.h"
-#include "RE/TESModelTextureSwap.h"
+#include "RE/FormComponents/BGSMessageIcon.h"
+#include "RE/FormComponents/BaseFormComponent.h"
+#include "RE/FormComponents/TESTexture/TESIcon.h"
+#include "RE/FormComponents/TESModel/TESModelRDT.h"
+#include "RE/FormComponents/TESModel/TESModelTextureSwap.h"
 
 
 namespace RE

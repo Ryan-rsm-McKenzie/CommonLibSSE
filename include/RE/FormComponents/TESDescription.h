@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BGSLocalizedStringDL.h"
-#include "RE/BSString.h"
-#include "RE/BaseFormComponent.h"
+#include "RE/BSCore/BGSLocalizedStringDL.h"
+#include "RE/BSCore/BSString.h"
+#include "RE/FormComponents/BaseFormComponent.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/bhkRefObject.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/bhkRefObject/bhkRefObject.h"
 
 
 namespace RE

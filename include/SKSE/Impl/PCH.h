@@ -109,8 +109,8 @@ using SInt64 = signed long long;
 
 #include "REL/Relocation.h"
 
-#include "RE/BSCoreTypes.h"
-#include "RE/Offsets.h"
-#include "RE/Offsets_NiRTTI.h"
-#include "RE/Offsets_RTTI.h"
-#include "RE/SFTypes.h"
+#include "RE/BSCore/BSCoreTypes.h"
+#include "RE/Offsets/Offsets.h"
+#include "RE/Offsets/Offsets_NiRTTI.h"
+#include "RE/Offsets/Offsets_RTTI.h"
+#include "RE/Scaleform/GTypes/SFTypes.h"

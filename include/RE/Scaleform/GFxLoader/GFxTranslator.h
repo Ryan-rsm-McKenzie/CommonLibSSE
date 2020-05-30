@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/GFxState.h"
-#include "RE/GFxWWHelper.h"
+#include "RE/Scaleform/GFxLoader/GFxState.h"
+#include "RE/Scaleform/GFxWWHelper/GFxWWHelper.h"
 
 
 namespace RE

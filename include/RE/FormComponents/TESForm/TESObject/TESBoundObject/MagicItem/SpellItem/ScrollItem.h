@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/BGSDestructibleObjectForm.h"
-#include "RE/BGSPickupPutdownSounds.h"
-#include "RE/SpellItem.h"
-#include "RE/TESModelTextureSwap.h"
-#include "RE/TESValueForm.h"
-#include "RE/TESWeightForm.h"
+#include "RE/FormComponents/BGSDestructibleObjectForm.h"
+#include "RE/FormComponents/BGSPickupPutdownSounds.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/MagicItem/SpellItem/SpellItem.h"
+#include "RE/FormComponents/TESModel/TESModelTextureSwap.h"
+#include "RE/FormComponents/TESValueForm.h"
+#include "RE/FormComponents/TESWeightForm.h"
 
 
 namespace RE

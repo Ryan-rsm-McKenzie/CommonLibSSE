@@ -1,18 +1,18 @@
 #pragma once
 
-#include "RE/ActorPackage.h"
-#include "RE/BGSPerkEntry.h"
-#include "RE/BSAtomic.h"
-#include "RE/BSPointerHandle.h"
-#include "RE/BSResponse.h"
-#include "RE/BSTArray.h"
-#include "RE/BSTEvent.h"
-#include "RE/BSTList.h"
-#include "RE/BSTSmartPointer.h"
-#include "RE/FormTypes.h"
-#include "RE/MagicSystem.h"
-#include "RE/NiPoint3.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/FormComponents/Components/ActorPackage.h"
+#include "RE/FormComponents/Components/BGSPerkEntry/BGSPerkEntry.h"
+#include "RE/BSCore/BSAtomic.h"
+#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/FormComponents/Components/BSResponse.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTEvent.h"
+#include "RE/BSCore/BSTList.h"
+#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/Enums/MagicSystem.h"
+#include "RE/NetImmerse/NiPoint3.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/ExtraFlags.h"
+#include "RE/BSExtraData/ExtraFlags.h"
 
 
 namespace RE

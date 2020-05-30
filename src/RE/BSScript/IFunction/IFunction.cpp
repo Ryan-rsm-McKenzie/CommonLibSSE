@@ -1,4 +1,4 @@
-#include "RE/BSScript/IFunction.h"
+#include "RE/BSScript/IFunction/IFunction.h"
 
 
 namespace RE

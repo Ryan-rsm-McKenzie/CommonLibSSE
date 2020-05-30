@@ -1,4 +1,4 @@
-#include "RE/ActorCause.h"
+#include "RE/FormComponents/Components/ActorCause.h"
 
 
 namespace RE

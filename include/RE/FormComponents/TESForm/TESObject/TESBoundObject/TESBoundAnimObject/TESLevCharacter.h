@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/FormTypes.h"
-#include "RE/TESBoundAnimObject.h"
-#include "RE/TESLeveledList.h"
-#include "RE/TESModelTextureSwap.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESBoundAnimObject.h"
+#include "RE/FormComponents/TESLeveledList.h"
+#include "RE/FormComponents/TESModel/TESModelTextureSwap.h"
 
 
 namespace RE

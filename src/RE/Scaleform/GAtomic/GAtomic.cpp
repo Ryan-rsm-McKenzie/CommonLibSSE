@@ -1,4 +1,4 @@
-#include "RE/GAtomic.h"
+#include "RE/Scaleform/GAtomic/GAtomic.h"
 
 
 namespace RE

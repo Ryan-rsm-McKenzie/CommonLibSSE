@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/hkpCdBody.h"
-#include "RE/hkpShape.h"
-#include "RE/hkpTypedBroadPhaseHandle.h"
+#include "RE/BSHavok/hkpCdBody/hkpCdBody.h"
+#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpShape/hkpShape.h"
+#include "RE/BSHavok/hkpBroadPhaseHandle/hkpTypedBroadPhaseHandle.h"
 
 
 namespace RE

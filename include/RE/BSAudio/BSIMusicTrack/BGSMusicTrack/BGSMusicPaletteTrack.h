@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BGSMusicTrack.h"
-#include "RE/BSTArray.h"
+#include "RE/BSAudio/BSIMusicTrack/BGSMusicTrack/BGSMusicTrack.h"
+#include "RE/BSCore/BSTArray.h"
 
 
 namespace RE

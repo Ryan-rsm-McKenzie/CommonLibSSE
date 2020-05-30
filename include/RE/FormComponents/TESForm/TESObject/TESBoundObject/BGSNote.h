@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/BGSPickupPutdownSounds.h"
-#include "RE/BSTList.h"
-#include "RE/FormTypes.h"
-#include "RE/TESBoundObject.h"
-#include "RE/TESFullName.h"
-#include "RE/TESIcon.h"
-#include "RE/TESModel.h"
+#include "RE/FormComponents/BGSPickupPutdownSounds.h"
+#include "RE/BSCore/BSTList.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
+#include "RE/FormComponents/TESFullName.h"
+#include "RE/FormComponents/TESTexture/TESIcon.h"
+#include "RE/FormComponents/TESModel/TESModel.h"
 
 
 namespace RE

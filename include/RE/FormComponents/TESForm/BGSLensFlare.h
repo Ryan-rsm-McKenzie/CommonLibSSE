@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSLensFlareRenderData.h"
-#include "RE/FormTypes.h"
-#include "RE/TESForm.h"
+#include "RE/FormComponents/Components/BSLensFlareRenderData.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
 
 
 namespace RE

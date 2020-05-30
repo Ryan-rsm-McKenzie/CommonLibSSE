@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/GFxLogBase.h"
-#include "RE/GFxState.h"
+#include "RE/Scaleform/GFxLog/GFxLogBase.h"
+#include "RE/Scaleform/GFxLoader/GFxState.h"
 
 
 namespace RE

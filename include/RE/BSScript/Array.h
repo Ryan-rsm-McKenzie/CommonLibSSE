@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSAtomic.h"
-#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSCore/BSAtomic.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/BSScript/TypeInfo.h"
 #include "RE/BSScript/Variable.h"
 

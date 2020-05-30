@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSSoundHandle.h"
-#include "RE/NiMatrix3.h"
-#include "RE/NiSmartPointer.h"
-#include "RE/ThirdPersonState.h"
+#include "RE/BSAudio/BSSoundHandle.h"
+#include "RE/NetImmerse/NiMatrix3.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/Camera/TESCameraState/ThirdPersonState/ThirdPersonState.h"
 
 
 namespace RE

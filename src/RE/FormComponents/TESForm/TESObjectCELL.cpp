@@ -1,10 +1,10 @@
-#include "RE/TESObjectCELL.h"
+#include "RE/FormComponents/TESForm/TESObjectCELL.h"
 
-#include "RE/BGSEncounterZone.h"
-#include "RE/ExtraNorthRotation.h"
-#include "RE/TESFaction.h"
-#include "RE/TESNPC.h"
-#include "RE/TESWorldSpace.h"
+#include "RE/FormComponents/TESForm/BGSEncounterZone.h"
+#include "RE/BSExtraData/ExtraNorthRotation.h"
+#include "RE/FormComponents/TESForm/TESFaction.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESActorBase/TESNPC.h"
+#include "RE/FormComponents/TESForm/TESWorldSpace.h"
 
 
 namespace RE

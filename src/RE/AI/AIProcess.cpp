@@ -1,7 +1,7 @@
-#include "RE/AIProcess.h"
+#include "RE/AI/AIProcess.h"
 
-#include "RE/HighProcessData.h"
-#include "RE/MiddleHighProcessData.h"
+#include "RE/AI/HighProcessData.h"
+#include "RE/AI/MiddleHighProcessData.h"
 #include "SKSE/API.h"
 
 

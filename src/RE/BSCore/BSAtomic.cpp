@@ -1,4 +1,4 @@
-#include "RE/BSAtomic.h"
+#include "RE/BSCore/BSAtomic.h"
 
 
 namespace RE

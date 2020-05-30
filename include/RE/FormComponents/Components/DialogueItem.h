@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/BSIntrusiveRefCounted.h"
-#include "RE/BSString.h"
-#include "RE/BSTList.h"
-#include "RE/MemoryManager.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
+#include "RE/BSCore/BSString.h"
+#include "RE/BSCore/BSTList.h"
+#include "RE/Memory/MemoryManager.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSString.h"
+#include "RE/BSCore/BSString.h"
 
 
 namespace RE

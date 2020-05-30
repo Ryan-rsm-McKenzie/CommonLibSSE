@@ -1,4 +1,4 @@
-#include "RE/ActorValueOwner.h"
+#include "RE/FormComponents/Components/ActorValueOwner.h"
 
 
 namespace RE

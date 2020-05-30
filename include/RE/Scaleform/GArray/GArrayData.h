@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/GArrayDataBase.h"
+#include "RE/Scaleform/GArray/GArrayDataBase.h"
 
 
 namespace RE

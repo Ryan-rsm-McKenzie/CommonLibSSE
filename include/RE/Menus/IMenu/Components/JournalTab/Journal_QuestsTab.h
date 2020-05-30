@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/GFxValue.h"
-#include "RE/JournalTab.h"
+#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/Menus/IMenu/Components/JournalTab/JournalTab.h"
 
 
 namespace RE

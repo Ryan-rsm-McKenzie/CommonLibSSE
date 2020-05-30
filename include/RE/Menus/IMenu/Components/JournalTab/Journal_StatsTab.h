@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/JournalTab.h"
+#include "RE/Menus/IMenu/Components/JournalTab/JournalTab.h"
 
 
 namespace RE

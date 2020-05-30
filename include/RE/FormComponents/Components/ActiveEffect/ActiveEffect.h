@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/ActiveEffectReferenceEffectController.h"
-#include "RE/BSPointerHandle.h"
-#include "RE/BSSoundHandle.h"
-#include "RE/BSTList.h"
-#include "RE/MagicSystem.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/FormComponents/Components/ReferenceEffectController/ActiveEffectReferenceEffectController.h"
+#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/BSAudio/BSSoundHandle.h"
+#include "RE/BSCore/BSTList.h"
+#include "RE/FormComponents/Enums/MagicSystem.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

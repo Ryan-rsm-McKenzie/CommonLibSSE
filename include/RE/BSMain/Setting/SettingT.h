@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/Setting.h"
+#include "RE/BSMain/Setting/Setting.h"
 
 
 namespace RE

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/GRefCountBaseStatImpl.h"
-#include "RE/GRefCountNTSImpl.h"
+#include "RE/Scaleform/GRefCount/GRefCountBaseStatImpl.h"
+#include "RE/Scaleform/GRefCount/GRefCountNTSImpl.h"
 
 
 namespace RE

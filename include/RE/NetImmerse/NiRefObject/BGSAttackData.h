@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/FormTypes.h"
-#include "RE/NiRefObject.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/NetImmerse/NiRefObject/NiRefObject.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

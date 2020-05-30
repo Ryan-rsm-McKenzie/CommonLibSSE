@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSPointerHandle.h"
-#include "RE/BSTList.h"
-#include "RE/BSTSmartPointer.h"
-#include "RE/EffectArchetypes.h"
+#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/BSCore/BSTList.h"
+#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/FormComponents/Components/EffectArchetypes.h"
 
 
 namespace RE

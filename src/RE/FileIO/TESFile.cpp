@@ -1,4 +1,4 @@
-#include "RE/TESFile.h"
+#include "RE/FileIO/TESFile.h"
 
 
 namespace RE

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSString.h"
-#include "RE/FormTypes.h"
-#include "RE/NiSmartPointer.h"
-#include "RE/TESObject.h"
+#include "RE/BSCore/BSString.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/FormComponents/TESForm/TESObject/TESObject.h"
 
 
 namespace RE

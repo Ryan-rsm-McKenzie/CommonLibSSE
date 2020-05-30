@@ -1,4 +1,4 @@
-#include "RE/TESSoulGem.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESObjectMISC/TESSoulGem.h"
 
 
 namespace RE

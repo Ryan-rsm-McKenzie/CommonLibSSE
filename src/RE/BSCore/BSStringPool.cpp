@@ -1,4 +1,4 @@
-#include "RE/BSStringPool.h"
+#include "RE/BSCore/BSStringPool.h"
 
 
 namespace RE

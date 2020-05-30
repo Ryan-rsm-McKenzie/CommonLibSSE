@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSPointerHandle.h"
-#include "RE/BSString.h"
-#include "RE/IUIMessageData.h"
+#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/BSCore/BSString.h"
+#include "RE/Menus/IUIMessageData/IUIMessageData.h"
 
 
 namespace RE

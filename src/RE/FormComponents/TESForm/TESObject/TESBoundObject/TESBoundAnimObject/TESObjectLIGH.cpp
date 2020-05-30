@@ -1,4 +1,4 @@
-#include "RE/TESObjectLIGH.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESObjectLIGH.h"
 
 
 namespace RE

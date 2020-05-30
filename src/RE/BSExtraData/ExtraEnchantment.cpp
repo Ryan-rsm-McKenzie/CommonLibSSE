@@ -1,4 +1,4 @@
-#include "RE/ExtraEnchantment.h"
+#include "RE/BSExtraData/ExtraEnchantment.h"
 
 
 namespace RE

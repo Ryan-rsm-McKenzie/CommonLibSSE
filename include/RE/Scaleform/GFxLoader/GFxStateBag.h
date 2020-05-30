@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/GFxFileConstants.h"
-#include "RE/GFxState.h"
-#include "RE/GPtr.h"
+#include "RE/Scaleform/GFxResource/GFxFileConstants.h"
+#include "RE/Scaleform/GFxLoader/GFxState.h"
+#include "RE/Scaleform/GRefCount/GPtr.h"
 
 
 namespace RE

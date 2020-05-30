@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSExtraData.h"
-#include "RE/BSTList.h"
-#include "RE/ExtraDataTypes.h"
-#include "RE/MagicTarget.h"
+#include "RE/BSExtraData/BSExtraData.h"
+#include "RE/BSCore/BSTList.h"
+#include "RE/BSExtraData/Enums/ExtraDataTypes.h"
+#include "RE/FormComponents/Components/MagicTarget.h"
 
 
 namespace RE

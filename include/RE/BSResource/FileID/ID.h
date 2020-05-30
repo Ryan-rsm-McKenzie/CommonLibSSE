@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSResource/FileID.h"
+#include "RE/BSResource/FileID/FileID.h"
 
 
 namespace RE

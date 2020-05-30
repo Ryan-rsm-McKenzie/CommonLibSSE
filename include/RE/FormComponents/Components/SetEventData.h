@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/BSTArray.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSCore/BSTArray.h"
 
 
 namespace RE

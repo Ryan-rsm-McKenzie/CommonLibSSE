@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSPointerHandle.h"
-#include "RE/BSTArray.h"
-#include "RE/BSTEvent.h"
-#include "RE/BSTSingleton.h"
-#include "RE/PlayerControlsData.h"
+#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTEvent.h"
+#include "RE/BSCore/BSTSingleton.h"
+#include "RE/BSDevices/PlayerControlsData.h"
 
 
 namespace RE

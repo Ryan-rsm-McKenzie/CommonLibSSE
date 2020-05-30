@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSFaceGenKeyframe.h"
+#include "RE/NetImmerse/Components/BSFaceGenKeyframe/BSFaceGenKeyframe.h"
 
 
 namespace RE

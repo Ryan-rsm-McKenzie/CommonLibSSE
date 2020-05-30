@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/BSScript/ErrorLogger.h"
 #include "RE/BSScript/TypeInfo.h"
-#include "RE/BSTEvent.h"
-#include "RE/BSTSmartPointer.h"
+#include "RE/BSCore/BSTEvent.h"
+#include "RE/BSCore/BSTSmartPointer.h"
 
 
 namespace RE

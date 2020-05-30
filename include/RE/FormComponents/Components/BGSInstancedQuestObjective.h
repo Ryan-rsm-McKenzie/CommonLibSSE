@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/QuestObjectiveStates.h"
+#include "RE/FormComponents/Enums/QuestObjectiveStates.h"
 
 
 namespace RE

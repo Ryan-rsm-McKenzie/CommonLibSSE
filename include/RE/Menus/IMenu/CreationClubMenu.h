@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSTEvent.h"
-#include "RE/GFxFunctionHandler.h"
-#include "RE/IMenu.h"
-#include "RE/ImageData.h"
-#include "RE/MenuEventHandler.h"
+#include "RE/BSCore/BSTEvent.h"
+#include "RE/Scaleform/GFxPlayer/GFxFunctionHandler.h"
+#include "RE/Menus/IMenu/IMenu.h"
+#include "RE/Misc/ImageData.h"
+#include "RE/BSDevices/MenuEventHandler/MenuEventHandler.h"
 
 
 namespace RE

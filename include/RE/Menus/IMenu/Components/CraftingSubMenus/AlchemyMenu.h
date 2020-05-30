@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/BSTArray.h"
-#include "RE/CraftingSubMenu.h"
-#include "RE/IMessageBoxCallback.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/Menus/IMenu/Components/CraftingSubMenus/CraftingSubMenu.h"
+#include "RE/Menus/IMessageBoxCallback/IMessageBoxCallback.h"
 
 
 namespace RE

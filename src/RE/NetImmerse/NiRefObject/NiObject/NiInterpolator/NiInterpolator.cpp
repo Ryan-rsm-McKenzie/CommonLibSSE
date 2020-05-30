@@ -1,4 +1,4 @@
-#include "RE/NiInterpolator.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiInterpolator/NiInterpolator.h"
 
 
 namespace RE

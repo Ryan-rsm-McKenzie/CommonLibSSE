@@ -1,6 +1,6 @@
-#include "RE/BSEffectShaderData.h"
+#include "RE/BSShader/BSEffectShaderData.h"
 
-#include "RE/NiTexture.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiTexture/NiTexture.h"
 
 
 namespace RE

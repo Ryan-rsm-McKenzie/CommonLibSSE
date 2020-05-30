@@ -1,6 +1,6 @@
-#include "RE/NiControllerManager.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiTimeController/NiControllerManager.h"
 
-#include "RE/NiControllerSequence.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiControllerSequence.h"
 
 
 namespace RE

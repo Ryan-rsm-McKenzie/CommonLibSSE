@@ -1,7 +1,7 @@
-#include "RE/BSTArray.h"
+#include "RE/BSCore/BSTArray.h"
 
-#include "RE/MemoryManager.h"
-#include "RE/ScrapHeap.h"
+#include "RE/Memory/MemoryManager.h"
+#include "RE/Memory/IMemoryStoreBase/IMemoryStore/ScrapHeap.h"
 
 
 namespace RE

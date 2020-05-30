@@ -1,13 +1,13 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/BSInputDevice.h"
-#include "RE/BSTArray.h"
-#include "RE/BSTEvent.h"
-#include "RE/BSTSingleton.h"
-#include "RE/InputDevices.h"
-#include "RE/PCGamepadType.h"
-#include "RE/UserEvents.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSDevices/BSIInputDevice/BSInputDevice/BSInputDevice.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTEvent.h"
+#include "RE/BSCore/BSTSingleton.h"
+#include "RE/BSDevices/Enums/InputDevices.h"
+#include "RE/BSDevices/Enums/PCGamepadType.h"
+#include "RE/BSDevices/UserEvents.h"
 
 
 namespace RE

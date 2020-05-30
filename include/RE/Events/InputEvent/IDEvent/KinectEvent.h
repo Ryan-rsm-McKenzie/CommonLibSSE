@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/IDEvent.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/Events/InputEvent/IDEvent/IDEvent.h"
 
 
 namespace RE

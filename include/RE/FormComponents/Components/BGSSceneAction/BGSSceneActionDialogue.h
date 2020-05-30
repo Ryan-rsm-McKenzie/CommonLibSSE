@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BGSSceneAction.h"
+#include "RE/FormComponents/Components/BGSSceneAction/BGSSceneAction.h"
 
 
 namespace RE

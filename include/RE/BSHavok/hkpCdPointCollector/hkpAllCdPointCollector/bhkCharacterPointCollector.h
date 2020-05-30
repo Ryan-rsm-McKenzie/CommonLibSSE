@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/hkpAllCdPointCollector.h"
+#include "RE/BSHavok/hkpCdPointCollector/hkpAllCdPointCollector/hkpAllCdPointCollector.h"
 
 
 namespace RE

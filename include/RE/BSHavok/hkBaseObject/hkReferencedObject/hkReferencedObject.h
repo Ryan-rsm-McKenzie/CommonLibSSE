@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/hkBaseObject.h"
+#include "RE/BSHavok/hkBaseObject/hkBaseObject.h"
 
 
 namespace RE

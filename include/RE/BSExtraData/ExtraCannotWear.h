@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSExtraData.h"
+#include "RE/BSExtraData/BSExtraData.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/BGSEntryPointFunctionDataActivateChoice.h"
+#include "RE/FormComponents/Components/BGSEntryPointFunctionData/BGSEntryPointFunctionDataActivateChoice.h"
 
 
 namespace RE

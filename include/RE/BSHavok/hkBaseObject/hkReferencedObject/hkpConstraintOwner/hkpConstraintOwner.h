@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/hkReferencedObject.h"
-#include "RE/hkpConstraintInfo.h"
+#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkReferencedObject.h"
+#include "RE/BSHavok/hkpConstraintInfo.h"
 
 
 namespace RE

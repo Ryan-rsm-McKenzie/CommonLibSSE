@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BGSEntryPoint.h"
-#include "RE/FormTypes.h"
+#include "RE/FormComponents/Components/BGSEntryPoint.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
 
 
 namespace RE

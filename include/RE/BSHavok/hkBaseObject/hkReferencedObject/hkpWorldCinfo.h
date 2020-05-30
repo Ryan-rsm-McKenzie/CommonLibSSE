@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/hkAabb.h"
-#include "RE/hkRefPtr.h"
-#include "RE/hkReferencedObject.h"
-#include "RE/hkVector4.h"
+#include "RE/BSHavok/hkAabb.h"
+#include "RE/BSHavok/hkRefPtr/hkRefPtr.h"
+#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkReferencedObject.h"
+#include "RE/BSHavok/hkVector4.h"
 
 
 namespace RE

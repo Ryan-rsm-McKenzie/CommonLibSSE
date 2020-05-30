@@ -1,14 +1,14 @@
 #pragma once
 
-#include "RE/BSSoundHandle.h"
-#include "RE/BSTArray.h"
-#include "RE/BSTEvent.h"
-#include "RE/BSTSmartPointer.h"
-#include "RE/GFxValue.h"
-#include "RE/IMapCameraCallbacks.h"
-#include "RE/IMenu.h"
-#include "RE/LocalMapMenu.h"
-#include "RE/MapCamera.h"
+#include "RE/BSAudio/BSSoundHandle.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTEvent.h"
+#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/Menus/IMenu/Components/IMapCameraCallbacks.h"
+#include "RE/Menus/IMenu/IMenu.h"
+#include "RE/Menus/IMenu/Components/LocalMapMenu.h"
+#include "RE/Camera/TESCamera/MapCamera.h"
 
 
 namespace RE

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/NiBound.h"
-#include "RE/NiObject.h"
-#include "RE/NiSmartPointer.h"
-#include "RE/NiTransform.h"
+#include "RE/NetImmerse/NiBound.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObject.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/NetImmerse/NiTransform.h"
 
 
 namespace RE

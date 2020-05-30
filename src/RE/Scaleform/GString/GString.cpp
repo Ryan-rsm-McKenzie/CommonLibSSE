@@ -1,6 +1,6 @@
-#include "RE/GString.h"
+#include "RE/Scaleform/GString/GString.h"
 
-#include "RE/GMemory.h"
+#include "RE/Scaleform/GMemory/GMemory.h"
 
 
 namespace RE

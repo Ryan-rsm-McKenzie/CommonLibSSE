@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/NiSmartPointer.h"
-#include "RE/TESForm.h"
-#include "RE/TESObjectREFR.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
 
 
 namespace SKSE

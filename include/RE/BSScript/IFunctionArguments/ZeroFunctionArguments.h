@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSScript/IFunctionArguments.h"
+#include "RE/BSScript/IFunctionArguments/IFunctionArguments.h"
 
 
 namespace RE

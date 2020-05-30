@@ -1,4 +1,4 @@
-#include "RE/ActorEquipManager.h"
+#include "RE/Inventory/ActorEquipManager.h"
 
 
 namespace RE

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/NiKeyBasedInterpolator.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiInterpolator/NiKeyBasedInterpolator/NiKeyBasedInterpolator.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

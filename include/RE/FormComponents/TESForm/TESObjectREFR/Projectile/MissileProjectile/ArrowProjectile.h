@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FormTypes.h"
-#include "RE/MissileProjectile.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESObjectREFR/Projectile/MissileProjectile/MissileProjectile.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
-#include "RE/BSResource/LooseFileStream.h"
+#include "RE/BSResource/StreamBase/Stream/LooseFileStream.h"
 
-#include "RE/MemoryManager.h"
+#include "RE/Memory/MemoryManager.h"
 
 
 namespace RE

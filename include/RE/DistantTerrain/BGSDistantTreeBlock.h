@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSTArray.h"
-#include "RE/BSTHashMap.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTHashMap.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

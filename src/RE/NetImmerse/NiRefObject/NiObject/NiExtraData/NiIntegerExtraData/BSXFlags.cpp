@@ -1,4 +1,4 @@
-#include "RE/BSXFlags.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiExtraData/NiIntegerExtraData/BSXFlags.h"
 
 
 namespace RE

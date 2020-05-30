@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSTEvent.h"
-#include "RE/FxDelegateHandler.h"
-#include "RE/GFxValue.h"
+#include "RE/BSCore/BSTEvent.h"
+#include "RE/Scaleform/FxGameDelegate/FxDelegateHandler.h"
+#include "RE/Scaleform/GFxPlayer/GFxValue.h"
 
 
 namespace RE

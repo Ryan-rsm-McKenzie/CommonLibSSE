@@ -1,13 +1,13 @@
 #pragma once
 
-#include "RE/BSTArray.h"
-#include "RE/FormTypes.h"
-#include "RE/PerkRankVisitor.h"
-#include "RE/TESCondition.h"
-#include "RE/TESDescription.h"
-#include "RE/TESForm.h"
-#include "RE/TESFullName.h"
-#include "RE/TESIcon.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/Components/PerkRankVisitor.h"
+#include "RE/FormComponents/Components/TESCondition.h"
+#include "RE/FormComponents/TESDescription.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/FormComponents/TESFullName.h"
+#include "RE/FormComponents/TESTexture/TESIcon.h"
 
 
 namespace RE

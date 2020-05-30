@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/NiAVObject.h"
-#include "RE/NiFrustum.h"
-#include "RE/NiPoint3.h"
-#include "RE/NiRect.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/NiAVObject.h"
+#include "RE/NetImmerse/NiFrustum.h"
+#include "RE/NetImmerse/NiPoint3.h"
+#include "RE/NetImmerse/NiRect.h"
 
 
 namespace RE

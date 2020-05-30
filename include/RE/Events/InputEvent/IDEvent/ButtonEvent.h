@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/IDEvent.h"
-#include "RE/InputEvent.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/Events/InputEvent/IDEvent/IDEvent.h"
+#include "RE/Events/InputEvent/InputEvent.h"
 
 
 namespace RE

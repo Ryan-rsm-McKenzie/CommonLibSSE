@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/IMessageBoxCallback.h"
+#include "RE/Menus/IMessageBoxCallback/IMessageBoxCallback.h"
 
 
 namespace RE

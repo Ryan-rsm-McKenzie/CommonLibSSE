@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/BSIntrusiveRefCounted.h"
-#include "RE/BSTHashMap.h"
-#include "RE/BSTSmartPointer.h"
-#include "RE/DoNothingUnhandledPolicy.h"
-#include "RE/IHandlerFunctor.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
+#include "RE/BSCore/BSTHashMap.h"
+#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/FormComponents/Components/DoNothingUnhandledPolicy.h"
+#include "RE/FormComponents/Components/IHandlerFunctor.h"
 
 
 namespace RE

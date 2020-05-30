@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/ActorValues.h"
-#include "RE/BGSKeywordForm.h"
-#include "RE/BSTArray.h"
-#include "RE/BSTSmartPointer.h"
-#include "RE/MagicSystem.h"
-#include "RE/TESBoundObject.h"
-#include "RE/TESFullName.h"
+#include "RE/FormComponents/Enums/ActorValues.h"
+#include "RE/FormComponents/BGSKeywordForm.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/FormComponents/Enums/MagicSystem.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
+#include "RE/FormComponents/TESFullName.h"
 
 
 namespace RE

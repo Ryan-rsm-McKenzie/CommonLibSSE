@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSPointerHandle.h"
-#include "RE/IMenu.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/Menus/IMenu/IMenu.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

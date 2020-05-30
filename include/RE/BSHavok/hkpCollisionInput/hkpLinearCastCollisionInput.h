@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/hkVector4.h"
-#include "RE/hkpCollisionInput.h"
+#include "RE/BSHavok/hkVector4.h"
+#include "RE/BSHavok/hkpCollisionInput/hkpCollisionInput.h"
 
 
 namespace RE

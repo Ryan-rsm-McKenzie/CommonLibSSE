@@ -1,4 +1,4 @@
-#include "RE/hkStringPtr.h"
+#include "RE/BSHavok/hkStringPtr.h"
 
 
 namespace RE

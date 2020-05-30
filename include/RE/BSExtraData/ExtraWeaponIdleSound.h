@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSExtraData.h"
-#include "RE/BSSoundHandle.h"
-#include "RE/ExtraDataTypes.h"
+#include "RE/BSExtraData/BSExtraData.h"
+#include "RE/BSAudio/BSSoundHandle.h"
+#include "RE/BSExtraData/Enums/ExtraDataTypes.h"
 
 
 namespace RE

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/hkArray.h"
-#include "RE/hkMultiThreadCheck.h"
-#include "RE/hkReferencedObject.h"
-#include "RE/hkStepInfo.h"
-#include "RE/hkpSolverInfo.h"
-#include "RE/hkpWorldCinfo.h"
+#include "RE/BSHavok/hkArray.h"
+#include "RE/BSHavok/hkMultiThreadCheck.h"
+#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkReferencedObject.h"
+#include "RE/BSHavok/hkStepInfo.h"
+#include "RE/BSHavok/hkpSolverInfo.h"
+#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpWorldCinfo.h"
 
 
 namespace RE

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSAttachTechniques/AttachTechniqueInput.h"
-#include "RE/BSFixedString.h"
+#include "RE/NetImmerse/Components/AttachTechniqueInput/AttachTechniqueInput.h"
+#include "RE/BSCore/BSFixedString.h"
 
 
 namespace RE

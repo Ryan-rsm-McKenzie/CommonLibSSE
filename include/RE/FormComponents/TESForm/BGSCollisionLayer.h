@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/BSTArray.h"
-#include "RE/Color.h"
-#include "RE/FormTypes.h"
-#include "RE/TESDescription.h"
-#include "RE/TESForm.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/FormComponents/Components/Color.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESDescription.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
 
 
 namespace RE

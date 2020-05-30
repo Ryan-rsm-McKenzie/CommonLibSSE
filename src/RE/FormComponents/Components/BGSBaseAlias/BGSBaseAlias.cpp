@@ -1,4 +1,4 @@
-#include "RE/BGSBaseAlias.h"
+#include "RE/FormComponents/Components/BGSBaseAlias/BGSBaseAlias.h"
 
 
 namespace RE

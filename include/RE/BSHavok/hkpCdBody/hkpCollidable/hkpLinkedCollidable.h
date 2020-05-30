@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/hkArray.h"
-#include "RE/hkpCollidable.h"
+#include "RE/BSHavok/hkArray.h"
+#include "RE/BSHavok/hkpCdBody/hkpCollidable/hkpCollidable.h"
 
 
 namespace RE

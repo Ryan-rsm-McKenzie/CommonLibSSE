@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
+#include "RE/BSCore/BSFixedString.h"
 #include "RE/BSResource/BSSystemFile.h"
 
 

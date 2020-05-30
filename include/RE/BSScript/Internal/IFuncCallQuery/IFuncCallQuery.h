@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSIntrusiveRefCounted.h"
-#include "RE/BSTArray.h"
-#include "RE/BSTSmartPointer.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTSmartPointer.h"
 
 
 namespace RE

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/BSPointerHandle.h"
-#include "RE/BSTArray.h"
-#include "RE/BSTList.h"
-#include "RE/BSTextureSet.h"
-#include "RE/NiColor.h"
-#include "RE/NiSmartPointer.h"
-#include "RE/SkyEffectController.h"
+#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTList.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/BSTextureSet.h"
+#include "RE/NetImmerse/NiColor.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/Sky/SkyEffectController.h"
 
 
 namespace RE

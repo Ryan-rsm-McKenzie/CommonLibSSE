@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/hkRefVariant.h"
-#include "RE/hkbEventBase.h"
+#include "RE/BSHavok/hkRefPtr/hkRefVariant.h"
+#include "RE/BSHavok/hkbEventBase/hkbEventBase.h"
 
 
 namespace RE

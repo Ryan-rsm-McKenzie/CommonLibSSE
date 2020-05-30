@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSTArray.h"
-#include "RE/BaseFormComponent.h"
-#include "RE/FactionRank.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/FormComponents/BaseFormComponent.h"
+#include "RE/FormComponents/Components/FactionRank.h"
 
 
 namespace RE

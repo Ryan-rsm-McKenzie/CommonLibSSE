@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/BSScript/Variable.h"
-#include "RE/BSTSmartPointer.h"
+#include "RE/BSCore/BSTSmartPointer.h"
 
 
 namespace RE

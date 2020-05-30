@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/BSTArray.h"
-#include "RE/BSTSingleton.h"
-#include "RE/BSTSmartPointer.h"
-#include "RE/ExtraDataList.h"
-#include "RE/MenuEventHandler.h"
-#include "RE/NiPoint3.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTSingleton.h"
+#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/Inventory/ExtraDataList.h"
+#include "RE/BSDevices/MenuEventHandler/MenuEventHandler.h"
+#include "RE/NetImmerse/NiPoint3.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

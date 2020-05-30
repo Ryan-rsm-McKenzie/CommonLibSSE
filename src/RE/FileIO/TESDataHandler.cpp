@@ -1,7 +1,7 @@
-#include "RE/TESDataHandler.h"
+#include "RE/FileIO/TESDataHandler.h"
 
-#include "RE/TESFile.h"
-#include "RE/TESForm.h"
+#include "RE/FileIO/TESFile.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
 
 
 namespace RE

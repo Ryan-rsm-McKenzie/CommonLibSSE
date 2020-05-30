@@ -1,14 +1,14 @@
 #pragma once
 
-#include "RE/BGSDestructibleObjectForm.h"
-#include "RE/BGSEquipType.h"
-#include "RE/BGSMessageIcon.h"
-#include "RE/BGSPickupPutdownSounds.h"
-#include "RE/FormTypes.h"
-#include "RE/MagicItem.h"
-#include "RE/TESIcon.h"
-#include "RE/TESModelTextureSwap.h"
-#include "RE/TESWeightForm.h"
+#include "RE/FormComponents/BGSDestructibleObjectForm.h"
+#include "RE/FormComponents/BGSEquipType.h"
+#include "RE/FormComponents/BGSMessageIcon.h"
+#include "RE/FormComponents/BGSPickupPutdownSounds.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/MagicItem/MagicItem.h"
+#include "RE/FormComponents/TESTexture/TESIcon.h"
+#include "RE/FormComponents/TESModel/TESModelTextureSwap.h"
+#include "RE/FormComponents/TESWeightForm.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSScript/Variable.h"
-#include "RE/BSTArray.h"
-#include "RE/MemoryManager.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/Memory/MemoryManager.h"
 
 
 namespace RE

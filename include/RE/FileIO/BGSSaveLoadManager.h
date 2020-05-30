@@ -1,13 +1,13 @@
 #pragma once
 
-#include "RE/BSAtomic.h"
-#include "RE/BSFixedString.h"
-#include "RE/BSTArray.h"
-#include "RE/BSTEvent.h"
-#include "RE/BSTMessageQueue.h"
-#include "RE/BSTSmartPointer.h"
-#include "RE/BSThread.h"
-#include "RE/RaceSexMenuEvent.h"
+#include "RE/BSCore/BSAtomic.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTEvent.h"
+#include "RE/BSCore/BSTMessageQueue.h"
+#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/BSMain/BSThread/BSThread.h"
+#include "RE/Events/RaceSexMenuEvent.h"
 #include "RE/bgs/saveload/Request.h"
 
 

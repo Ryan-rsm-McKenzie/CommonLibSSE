@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSTEvent.h"
-#include "RE/GPtr.h"
-#include "RE/IMenu.h"
-#include "RE/ImageData.h"
-#include "RE/SimpleAnimationGraphManagerHolder.h"
+#include "RE/BSCore/BSTEvent.h"
+#include "RE/Scaleform/GRefCount/GPtr.h"
+#include "RE/Menus/IMenu/IMenu.h"
+#include "RE/Misc/ImageData.h"
+#include "RE/Animation/IAnimationGraphManagerHolder/SimpleAnimationGraphManagerHolder/SimpleAnimationGraphManagerHolder.h"
 
 
 namespace RE

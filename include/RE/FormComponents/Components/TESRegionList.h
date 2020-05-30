@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSTList.h"
+#include "RE/BSCore/BSTList.h"
 
 
 namespace RE

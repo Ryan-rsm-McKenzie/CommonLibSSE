@@ -1,12 +1,12 @@
 #pragma once
 
 #include "BSTHashMap.h"
-#include "RE/BSAnimNoteListener.h"
-#include "RE/BSFixedString.h"
-#include "RE/NiSmartPointer.h"
-#include "RE/NiTArray.h"
-#include "RE/NiTSet.h"
-#include "RE/NiTimeController.h"
+#include "RE/Animation/BSAnimNoteListener.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/NetImmerse/NiTArray.h"
+#include "RE/NetImmerse/NiTSet.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiTimeController/NiTimeController.h"
 
 
 namespace RE

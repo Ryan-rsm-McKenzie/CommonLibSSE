@@ -2,13 +2,13 @@
 
 #include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
-#include "RE/BSScript/NF_util/NativeFunctionBase.h"
+#include "RE/BSScript/IFunction/NF_util/NativeFunctionBase.h"
 #include "RE/BSScript/PackUnpack.h"
 #include "RE/BSScript/Stack.h"
 #include "RE/BSScript/StackFrame.h"
-#include "RE/BSScript/TypeTraits.h"
+#include "RE/BSScript/Traits/TypeTraits.h"
 #include "RE/BSScript/Variable.h"
-#include "RE/BSTSmartPointer.h"
+#include "RE/BSCore/BSTSmartPointer.h"
 
 
 namespace RE

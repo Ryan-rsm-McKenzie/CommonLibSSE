@@ -1,10 +1,10 @@
-#include "RE/TESObjectARMA.h"
+#include "RE/FormComponents/TESForm/TESObject/TESObjectARMA.h"
 
-#include "RE/FormTraits.h"
-#include "RE/TESNPC.h"
-#include "RE/TESObjectARMO.h"
-#include "RE/TESObjectREFR.h"
-#include "RE/TESRace.h"
+#include "RE/FormComponents/Components/FormTraits.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESActorBase/TESNPC.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESObjectARMO.h"
+#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
+#include "RE/FormComponents/TESForm/TESRace.h"
 
 
 namespace RE

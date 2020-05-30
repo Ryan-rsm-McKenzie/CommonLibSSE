@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/IAnimationGraphManagerHolder.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/Animation/IAnimationGraphManagerHolder/IAnimationGraphManagerHolder.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

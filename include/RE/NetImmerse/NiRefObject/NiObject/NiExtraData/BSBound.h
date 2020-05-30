@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/NiExtraData.h"
-#include "RE/NiPoint3.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiExtraData/NiExtraData.h"
+#include "RE/NetImmerse/NiPoint3.h"
 
 
 namespace RE

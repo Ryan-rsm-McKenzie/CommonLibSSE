@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/GFxState.h"
+#include "RE/Scaleform/GFxLoader/GFxState.h"
 
 
 namespace RE

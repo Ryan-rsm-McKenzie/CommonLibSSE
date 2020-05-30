@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/hkReferencedObject.h"
-#include "RE/hkSseMathTypes.h"
-#include "RE/hkpShapeBuffer.h"
-#include "RE/hkpShapeType.h"
+#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkReferencedObject.h"
+#include "RE/BSHavok/hkSseMathTypes.h"
+#include "RE/BSHavok/hkpShapeBuffer.h"
+#include "RE/BSHavok/Enums/hkpShapeType.h"
 
 
 namespace RE

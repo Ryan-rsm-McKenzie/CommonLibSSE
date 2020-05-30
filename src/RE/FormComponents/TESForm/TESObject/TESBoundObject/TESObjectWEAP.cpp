@@ -1,4 +1,4 @@
-#include "RE/TESObjectWEAP.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESObjectWEAP.h"
 
 
 namespace RE

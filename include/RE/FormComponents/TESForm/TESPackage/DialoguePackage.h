@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSPointerHandle.h"
-#include "RE/FormTypes.h"
-#include "RE/TESPackage.h"
+#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESPackage/TESPackage.h"
 
 
 namespace RE

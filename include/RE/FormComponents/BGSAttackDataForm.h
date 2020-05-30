@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BaseFormComponent.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/FormComponents/BaseFormComponent.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSTEvent.h"
-#include "RE/FormTypes.h"
-#include "RE/Projectile.h"
+#include "RE/BSCore/BSTEvent.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESObjectREFR/Projectile/Projectile.h"
 
 
 namespace RE

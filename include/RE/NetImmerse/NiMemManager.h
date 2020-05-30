@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NiAllocator.h"
+#include "RE/NetImmerse/NiAllocator/NiAllocator.h"
 
 
 namespace RE

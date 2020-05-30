@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSString.h"
-#include "RE/GFxValue.h"
-#include "RE/GPtr.h"
+#include "RE/BSCore/BSString.h"
+#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/Scaleform/GRefCount/GPtr.h"
 
 
 namespace RE

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSShaderProperty.h"
-#include "RE/BSTArray.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiProperty/NiShadeProperty/BSShaderProperty/BSShaderProperty.h"
+#include "RE/BSCore/BSTArray.h"
 
 
 namespace RE

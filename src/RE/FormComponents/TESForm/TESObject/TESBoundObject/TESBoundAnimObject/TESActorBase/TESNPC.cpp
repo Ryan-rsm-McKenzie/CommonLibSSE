@@ -1,6 +1,6 @@
-#include "RE/TESNPC.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESActorBase/TESNPC.h"
 
-#include "RE/TESRace.h"
+#include "RE/FormComponents/TESForm/TESRace.h"
 
 
 namespace RE

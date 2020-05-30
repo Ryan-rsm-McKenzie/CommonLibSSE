@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BGSPackageDataPointerTemplate.h"
-#include "RE/IPackageDataAIWorldLocationHandle.h"
+#include "RE/FormComponents/Components/IPackageData/BGSNamedPackageData/BGSPackageDataPointerTemplate/BGSPackageDataPointerTemplate.h"
+#include "RE/FormComponents/Components/IPackageData/IPackageDataAIWorldLocationHandle.h"
 
 
 namespace RE

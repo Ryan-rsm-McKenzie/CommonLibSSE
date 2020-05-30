@@ -1,4 +1,4 @@
-#include "RE/ThumbstickEvent.h"
+#include "RE/Events/InputEvent/IDEvent/ThumbstickEvent.h"
 
 
 namespace RE

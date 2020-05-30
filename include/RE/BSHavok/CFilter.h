@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/CollisionLayers.h"
+#include "RE/FormComponents/Enums/CollisionLayers.h"
 
 
 namespace RE

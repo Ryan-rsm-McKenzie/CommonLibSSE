@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSIntrusiveRefCounted.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 
 
 namespace RE

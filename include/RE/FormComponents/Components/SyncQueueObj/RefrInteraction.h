@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSPointerHandle.h"
-#include "RE/SyncQueueObj.h"
+#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/FormComponents/Components/SyncQueueObj/SyncQueueObj.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/MagicFavorites.h"
+#include "RE/Menus/MagicFavorites.h"
 
 
 namespace RE

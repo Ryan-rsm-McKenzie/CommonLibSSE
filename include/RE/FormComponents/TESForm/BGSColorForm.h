@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/Color.h"
-#include "RE/FormTypes.h"
-#include "RE/TESForm.h"
-#include "RE/TESFullName.h"
+#include "RE/FormComponents/Components/Color.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/FormComponents/TESFullName.h"
 
 
 namespace RE

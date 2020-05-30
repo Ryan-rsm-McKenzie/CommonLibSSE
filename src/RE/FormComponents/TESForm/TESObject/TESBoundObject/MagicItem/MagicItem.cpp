@@ -1,4 +1,4 @@
-#include "RE/MagicItem.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/MagicItem/MagicItem.h"
 
 
 namespace RE

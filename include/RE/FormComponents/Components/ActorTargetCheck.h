@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/ProcessLists.h"
+#include "RE/AI/ProcessLists.h"
 
 
 namespace RE

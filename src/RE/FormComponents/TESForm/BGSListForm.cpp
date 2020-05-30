@@ -1,4 +1,4 @@
-#include "RE/BGSListForm.h"
+#include "RE/FormComponents/TESForm/BGSListForm.h"
 
 
 namespace RE

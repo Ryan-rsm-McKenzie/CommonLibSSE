@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSTArray.h"
-#include "RE/GFxValue.h"
-#include "RE/GPtr.h"
-#include "RE/StandardItemData.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/Scaleform/GRefCount/GPtr.h"
+#include "RE/Menus/StandardItemData.h"
 
 
 namespace RE

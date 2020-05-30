@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/hkpShape.h"
-#include "RE/hkpShapeContainer.h"
-#include "RE/hkpWeldingUtility.h"
+#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpShape/hkpShape.h"
+#include "RE/BSHavok/hkpShapeContainer/hkpShapeContainer.h"
+#include "RE/BSHavok/hkpWeldingUtility.h"
 
 
 namespace RE

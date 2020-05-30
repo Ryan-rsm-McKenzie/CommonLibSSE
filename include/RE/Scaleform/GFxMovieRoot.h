@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/GColor.h"
-#include "RE/GFxKeyboardState.h"
-#include "RE/GFxMovieView.h"
+#include "RE/Scaleform/GColor/GColor.h"
+#include "RE/Scaleform/GFxEvent/GFxKeyboardState.h"
+#include "RE/Scaleform/GFxPlayer/GFxMovieView.h"
 
 
 namespace RE

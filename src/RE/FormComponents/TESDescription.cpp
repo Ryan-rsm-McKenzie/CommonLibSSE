@@ -1,6 +1,6 @@
-#include "RE/TESDescription.h"
+#include "RE/FormComponents/TESDescription.h"
 
-#include "RE/BSString.h"
+#include "RE/BSCore/BSString.h"
 
 
 namespace RE

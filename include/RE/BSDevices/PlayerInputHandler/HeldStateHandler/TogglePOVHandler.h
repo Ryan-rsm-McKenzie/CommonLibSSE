@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/HeldStateHandler.h"
+#include "RE/BSDevices/PlayerInputHandler/HeldStateHandler/HeldStateHandler.h"
 
 
 namespace RE

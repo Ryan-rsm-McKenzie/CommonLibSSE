@@ -1,4 +1,4 @@
-#include "RE/BSFaceGenAnimationData.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiExtraData/BSFaceGenAnimationData.h"
 
 
 namespace RE

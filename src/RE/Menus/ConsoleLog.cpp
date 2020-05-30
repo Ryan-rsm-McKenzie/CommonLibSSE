@@ -1,4 +1,4 @@
-#include "RE/ConsoleLog.h"
+#include "RE/Menus/ConsoleLog.h"
 
 
 namespace RE

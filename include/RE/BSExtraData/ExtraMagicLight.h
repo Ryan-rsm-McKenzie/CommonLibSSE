@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/ExtraDataTypes.h"
-#include "RE/ExtraLight.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/BSExtraData/Enums/ExtraDataTypes.h"
+#include "RE/BSExtraData/ExtraLight.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/TESClimate.h"
+#include "RE/FormComponents/TESForm/TESClimate.h"
 
 
 namespace RE

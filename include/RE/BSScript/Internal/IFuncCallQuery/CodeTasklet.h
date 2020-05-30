@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSScript/Internal/IFuncCallQuery.h"
+#include "RE/BSScript/Internal/IFuncCallQuery/IFuncCallQuery.h"
 
 
 namespace RE

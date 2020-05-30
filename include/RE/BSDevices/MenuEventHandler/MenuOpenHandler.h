@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/MenuEventHandler.h"
+#include "RE/BSDevices/MenuEventHandler/MenuEventHandler.h"
 
 
 namespace RE

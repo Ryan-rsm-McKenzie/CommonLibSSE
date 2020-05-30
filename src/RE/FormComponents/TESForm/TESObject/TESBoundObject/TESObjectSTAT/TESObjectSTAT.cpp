@@ -1,4 +1,4 @@
-#include "RE/TESObjectSTAT.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESObjectSTAT/TESObjectSTAT.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSResource/ErrorCodes.h"
-#include "RE/BSTSmartPointer.h"
-#include "RE/MemoryManager.h"
+#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/Memory/MemoryManager.h"
 
 
 namespace RE

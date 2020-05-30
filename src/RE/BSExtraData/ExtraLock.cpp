@@ -1,4 +1,4 @@
-#include "RE/ExtraLock.h"
+#include "RE/BSExtraData/ExtraLock.h"
 
 
 namespace RE

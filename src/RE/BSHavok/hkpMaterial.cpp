@@ -1,4 +1,4 @@
-#include "RE/hkpMaterial.h"
+#include "RE/BSHavok/hkpMaterial.h"
 
 
 namespace RE

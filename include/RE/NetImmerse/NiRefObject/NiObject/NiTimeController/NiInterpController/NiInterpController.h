@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NiTimeController.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiTimeController/NiTimeController.h"
 
 
 namespace RE

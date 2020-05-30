@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/BGSDestructibleObjectForm.h"
-#include "RE/BGSPreloadable.h"
-#include "RE/FormTypes.h"
-#include "RE/SoundLevels.h"
-#include "RE/TESBoundObject.h"
-#include "RE/TESFullName.h"
-#include "RE/TESModel.h"
+#include "RE/FormComponents/BGSDestructibleObjectForm.h"
+#include "RE/FormComponents/BGSPreloadable.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/Enums/SoundLevels.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
+#include "RE/FormComponents/TESFullName.h"
+#include "RE/FormComponents/TESModel/TESModel.h"
 
 
 namespace RE

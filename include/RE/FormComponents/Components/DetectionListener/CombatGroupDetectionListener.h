@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/DetectionListener.h"
+#include "RE/FormComponents/Components/DetectionListener/DetectionListener.h"
 
 
 namespace RE

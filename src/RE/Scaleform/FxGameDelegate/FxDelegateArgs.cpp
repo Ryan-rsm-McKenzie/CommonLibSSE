@@ -1,7 +1,7 @@
-#include "RE/FxDelegateArgs.h"
+#include "RE/Scaleform/FxGameDelegate/FxDelegateArgs.h"
 
-#include "RE/FxResponseArgsBase.h"
-#include "RE/GFxMovieView.h"
+#include "RE/Scaleform/FxGameDelegate/FxResponseArgsBase.h"
+#include "RE/Scaleform/GFxPlayer/GFxMovieView.h"
 
 
 namespace RE

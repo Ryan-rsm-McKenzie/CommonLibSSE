@@ -1,4 +1,4 @@
-#include "RE/ChestsLooted.h"
+#include "RE/Events/BGSStoryEvent/ChestsLooted.h"
 
 
 namespace RE

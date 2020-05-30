@@ -1,6 +1,6 @@
-#include "RE/PlayerCharacter.h"
+#include "RE/FormComponents/TESForm/TESObjectREFR/Actor/Character/PlayerCharacter.h"
 
-#include "RE/TESObjectREFR.h"
+#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
 
 
 namespace RE

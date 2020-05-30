@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSAtomic.h"
-#include "RE/BSExtraData.h"
-#include "RE/BSTArray.h"
-#include "RE/ExtraDataTypes.h"
-#include "RE/FormTypes.h"
+#include "RE/BSCore/BSAtomic.h"
+#include "RE/BSExtraData/BSExtraData.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSExtraData/Enums/ExtraDataTypes.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
 
 
 namespace RE

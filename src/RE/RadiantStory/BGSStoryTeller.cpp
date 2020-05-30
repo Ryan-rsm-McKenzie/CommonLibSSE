@@ -1,4 +1,4 @@
-#include "RE/BGSStoryTeller.h"
+#include "RE/RadiantStory/BGSStoryTeller.h"
 
 
 namespace RE

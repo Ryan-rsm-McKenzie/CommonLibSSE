@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSExtraData.h"
-#include "RE/ExtraDataTypes.h"
+#include "RE/BSExtraData/BSExtraData.h"
+#include "RE/BSExtraData/Enums/ExtraDataTypes.h"
 
 
 namespace RE

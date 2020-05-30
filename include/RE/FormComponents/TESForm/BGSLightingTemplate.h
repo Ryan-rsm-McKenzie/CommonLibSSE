@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BGSDirectionalAmbientLightingColors.h"
-#include "RE/FormTypes.h"
-#include "RE/InteriorData.h"
-#include "RE/TESForm.h"
+#include "RE/FormComponents/Components/BGSDirectionalAmbientLightingColors.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/Components/InteriorData.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
 
 
 namespace RE

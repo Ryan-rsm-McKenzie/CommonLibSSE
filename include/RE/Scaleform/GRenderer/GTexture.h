@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/GAtomic.h"
-#include "RE/GImage.h"
-#include "RE/GNewOverrideBase.h"
-#include "RE/GPoint.h"
-#include "RE/GRect.h"
+#include "RE/Scaleform/GAtomic/GAtomic.h"
+#include "RE/Scaleform/GImage/GImage.h"
+#include "RE/Scaleform/GMemory/GNewOverrideBase.h"
+#include "RE/Scaleform/GTypes2DF/GPoint.h"
+#include "RE/Scaleform/GTypes2DF/GRect.h"
 
 
 namespace RE

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSShader.h"
-#include "RE/ImageSpaceEffect.h"
+#include "RE/BSShader/BSShader/BSShader.h"
+#include "RE/BSShader/ImageSpaceEffect.h"
 
 
 namespace RE

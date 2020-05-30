@@ -1,6 +1,6 @@
-#include "RE/MenuControls.h"
+#include "RE/BSDevices/MenuControls.h"
 
-#include "RE/MenuEventHandler.h"
+#include "RE/BSDevices/MenuEventHandler/MenuEventHandler.h"
 
 
 namespace RE

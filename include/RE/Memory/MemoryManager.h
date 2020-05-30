@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/ScrapHeap.h"
+#include "RE/Memory/IMemoryStoreBase/IMemoryStore/ScrapHeap.h"
 
 
 namespace RE

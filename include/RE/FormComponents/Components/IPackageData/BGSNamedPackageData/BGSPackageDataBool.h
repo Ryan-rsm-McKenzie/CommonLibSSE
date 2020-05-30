@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BGSNamedPackageData.h"
-#include "RE/IPackageData.h"
+#include "RE/FormComponents/Components/IPackageData/BGSNamedPackageData/BGSNamedPackageData.h"
+#include "RE/FormComponents/Components/IPackageData/IPackageData.h"
 
 
 namespace RE

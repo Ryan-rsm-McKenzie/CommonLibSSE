@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSISoundDescriptor.h"
+#include "RE/BSAudio/BSISoundDescriptor/BSISoundDescriptor.h"
 
 
 namespace RE

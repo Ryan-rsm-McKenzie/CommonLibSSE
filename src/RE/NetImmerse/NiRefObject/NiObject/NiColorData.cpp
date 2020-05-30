@@ -1,4 +1,4 @@
-#include "RE/NiColorData.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiColorData.h"
 
 
 namespace RE

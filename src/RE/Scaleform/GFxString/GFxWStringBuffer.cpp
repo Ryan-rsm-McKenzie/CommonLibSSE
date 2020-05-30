@@ -1,6 +1,6 @@
-#include "RE/GFxWStringBuffer.h"
+#include "RE/Scaleform/GFxString/GFxWStringBuffer.h"
 
-#include "RE/GMemory.h"
+#include "RE/Scaleform/GMemory/GMemory.h"
 
 
 namespace RE

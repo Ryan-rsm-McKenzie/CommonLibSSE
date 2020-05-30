@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSTriShape.h"
-#include "RE/NiColor.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/BSGeometry/BSTriShape/BSTriShape.h"
+#include "RE/NetImmerse/NiColor.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

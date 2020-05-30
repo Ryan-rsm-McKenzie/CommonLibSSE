@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/IUIMessageData.h"
+#include "RE/Menus/IUIMessageData/IUIMessageData.h"
 
 
 namespace RE

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/hkBaseTypes.h"
-#include "RE/hkSweptTransform.h"
-#include "RE/hkTransform.h"
-#include "RE/hkVector4.h"
+#include "RE/BSHavok/hkBaseTypes.h"
+#include "RE/BSHavok/hkSweptTransform.h"
+#include "RE/BSHavok/hkTransform.h"
+#include "RE/BSHavok/hkVector4.h"
 
 
 namespace RE

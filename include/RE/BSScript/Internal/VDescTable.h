@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
+#include "RE/BSCore/BSFixedString.h"
 #include "RE/BSScript/TypeInfo.h"
-#include "RE/BSTTuple.h"
-#include "RE/MemoryManager.h"
+#include "RE/BSCore/BSTTuple.h"
+#include "RE/Memory/MemoryManager.h"
 
 
 namespace RE

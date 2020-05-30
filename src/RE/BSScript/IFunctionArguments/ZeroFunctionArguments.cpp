@@ -1,4 +1,4 @@
-#include "RE/BSScript/ZeroFunctionArguments.h"
+#include "RE/BSScript/IFunctionArguments/ZeroFunctionArguments.h"
 
 
 namespace RE

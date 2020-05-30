@@ -1,6 +1,6 @@
-#include "RE/BGSKeywordForm.h"
+#include "RE/FormComponents/BGSKeywordForm.h"
 
-#include "RE/BGSKeyword.h"
+#include "RE/FormComponents/TESForm/BGSKeyword/BGSKeyword.h"
 
 
 namespace RE

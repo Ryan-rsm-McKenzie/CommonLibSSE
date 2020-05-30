@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSCullingProcess.h"
-#include "RE/BSNiNode.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/NetImmerse/NiCullingProcess/BSCullingProcess.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/NiNode/BSNiNode/BSNiNode.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

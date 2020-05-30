@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSExtraData.h"
-#include "RE/BSFixedString.h"
-#include "RE/BSTArray.h"
-#include "RE/ExtraDataTypes.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/BSExtraData/BSExtraData.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSExtraData/Enums/ExtraDataTypes.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

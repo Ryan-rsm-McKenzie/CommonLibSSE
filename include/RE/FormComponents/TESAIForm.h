@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSTList.h"
-#include "RE/BaseFormComponent.h"
+#include "RE/BSCore/BSTList.h"
+#include "RE/FormComponents/BaseFormComponent.h"
 
 
 namespace RE

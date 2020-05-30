@@ -1,4 +1,4 @@
-#include "RE/NiPoint3.h"
+#include "RE/NetImmerse/NiPoint3.h"
 
 
 namespace RE

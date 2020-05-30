@@ -1,4 +1,4 @@
-#include "RE/BSTCreateFactoryManager.h"
+#include "RE/BSCore/BSTCreateFactoryManager.h"
 
 
 namespace RE

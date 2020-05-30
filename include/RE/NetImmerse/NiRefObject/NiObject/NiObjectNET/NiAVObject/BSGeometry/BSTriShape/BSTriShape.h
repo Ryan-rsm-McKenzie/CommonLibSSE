@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSGeometry.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/BSGeometry/BSGeometry.h"
 
 
 namespace RE

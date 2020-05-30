@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/AITimeStamp.h"
-#include "RE/BSPointerHandle.h"
-#include "RE/FightReactions.h"
-#include "RE/NiRefObject.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/FormComponents/Components/AITimeStamp.h"
+#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/FormComponents/Enums/FightReactions.h"
+#include "RE/NetImmerse/NiRefObject/NiRefObject.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

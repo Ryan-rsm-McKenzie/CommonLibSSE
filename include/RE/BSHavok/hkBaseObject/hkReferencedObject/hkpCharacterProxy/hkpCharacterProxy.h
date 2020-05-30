@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/hkArray.h"
-#include "RE/hkReferencedObject.h"
-#include "RE/hkVector4.h"
-#include "RE/hkpEntityListener.h"
-#include "RE/hkpPhantomListener.h"
+#include "RE/BSHavok/hkArray.h"
+#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkReferencedObject.h"
+#include "RE/BSHavok/hkVector4.h"
+#include "RE/BSHavok/hkpEntityListener.h"
+#include "RE/BSHavok/hkpPhantomListener.h"
 
 
 namespace RE

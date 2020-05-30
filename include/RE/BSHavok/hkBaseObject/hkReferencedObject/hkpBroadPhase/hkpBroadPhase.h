@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/hkArray.h"
-#include "RE/hkMultiThreadCheck.h"
-#include "RE/hkReferencedObject.h"
-#include "RE/hkVector4.h"
+#include "RE/BSHavok/hkArray.h"
+#include "RE/BSHavok/hkMultiThreadCheck.h"
+#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkReferencedObject.h"
+#include "RE/BSHavok/hkVector4.h"
 
 
 namespace RE

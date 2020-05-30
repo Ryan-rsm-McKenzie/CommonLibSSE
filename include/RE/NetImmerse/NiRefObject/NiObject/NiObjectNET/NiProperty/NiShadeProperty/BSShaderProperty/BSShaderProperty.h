@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSEffectShaderData.h"
-#include "RE/BSTSmartPointer.h"
-#include "RE/NiShadeProperty.h"
+#include "RE/BSShader/BSEffectShaderData.h"
+#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiProperty/NiShadeProperty/NiShadeProperty.h"
 
 
 namespace RE

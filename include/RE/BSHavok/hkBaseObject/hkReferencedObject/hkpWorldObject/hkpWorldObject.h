@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/hkArray.h"
-#include "RE/hkMultiThreadCheck.h"
-#include "RE/hkReferencedObject.h"
-#include "RE/hkStringPtr.h"
-#include "RE/hkpLinkedCollidable.h"
-#include "RE/hkpProperty.h"
+#include "RE/BSHavok/hkArray.h"
+#include "RE/BSHavok/hkMultiThreadCheck.h"
+#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkReferencedObject.h"
+#include "RE/BSHavok/hkStringPtr.h"
+#include "RE/BSHavok/hkpCdBody/hkpCollidable/hkpLinkedCollidable.h"
+#include "RE/BSHavok/hkpProperty.h"
 
 
 namespace RE

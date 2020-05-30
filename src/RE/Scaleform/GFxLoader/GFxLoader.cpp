@@ -1,4 +1,4 @@
-#include "RE/GFxLoader.h"
+#include "RE/Scaleform/GFxLoader/GFxLoader.h"
 
 
 namespace RE

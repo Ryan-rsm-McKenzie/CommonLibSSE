@@ -1,7 +1,7 @@
-#include "RE/NiMatrix3.h"
+#include "RE/NetImmerse/NiMatrix3.h"
 
-#include "RE/NiMath.h"
-#include "RE/NiPoint3.h"
+#include "RE/NetImmerse/NiMath.h"
+#include "RE/NetImmerse/NiPoint3.h"
 
 
 namespace RE

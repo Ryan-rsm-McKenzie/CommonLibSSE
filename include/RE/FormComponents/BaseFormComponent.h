@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/MemoryManager.h"
+#include "RE/Memory/MemoryManager.h"
 
 
 namespace RE

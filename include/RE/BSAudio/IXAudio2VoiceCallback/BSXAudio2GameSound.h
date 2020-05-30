@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSGameSound.h"
-#include "RE/IXAudio2VoiceCallback.h"
+#include "RE/BSAudio/BSGameSound.h"
+#include "RE/BSAudio/IXAudio2VoiceCallback/IXAudio2VoiceCallback.h"
 
 
 namespace RE

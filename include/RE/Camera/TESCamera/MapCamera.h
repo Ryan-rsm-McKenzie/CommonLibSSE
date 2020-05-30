@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSTSmartPointer.h"
-#include "RE/TESCamera.h"
+#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/Camera/TESCamera/TESCamera.h"
 
 
 namespace RE

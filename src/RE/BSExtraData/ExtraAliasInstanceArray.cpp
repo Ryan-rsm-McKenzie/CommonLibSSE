@@ -1,6 +1,6 @@
-#include "RE/ExtraAliasInstanceArray.h"
+#include "RE/BSExtraData/ExtraAliasInstanceArray.h"
 
-#include "RE/MemoryManager.h"
+#include "RE/Memory/MemoryManager.h"
 
 
 namespace RE

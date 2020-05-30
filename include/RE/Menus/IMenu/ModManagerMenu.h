@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/GFxFunctionHandler.h"
-#include "RE/IMenu.h"
-#include "RE/MenuEventHandler.h"
+#include "RE/Scaleform/GFxPlayer/GFxFunctionHandler.h"
+#include "RE/Menus/IMenu/IMenu.h"
+#include "RE/BSDevices/MenuEventHandler/MenuEventHandler.h"
 
 
 namespace RE

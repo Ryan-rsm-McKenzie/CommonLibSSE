@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/HUDMeter.h"
+#include "RE/Menus/HUDObject/HUDMeter/HUDMeter.h"
 
 
 namespace RE

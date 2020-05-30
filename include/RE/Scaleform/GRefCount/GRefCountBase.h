@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/GMemory.h"
-#include "RE/GRefCountBaseStatImpl.h"
-#include "RE/GRefCountImpl.h"
+#include "RE/Scaleform/GMemory/GMemory.h"
+#include "RE/Scaleform/GRefCount/GRefCountBaseStatImpl.h"
+#include "RE/Scaleform/GRefCount/GRefCountImpl.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
-#include "RE/ExtraForcedTarget.h"
+#include "RE/BSExtraData/ExtraForcedTarget.h"
 
-#include "RE/TESObjectREFR.h"
+#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
 
 
 namespace RE

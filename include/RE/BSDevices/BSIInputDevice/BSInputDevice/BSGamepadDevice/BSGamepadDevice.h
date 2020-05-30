@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSInputDevice.h"
-#include "RE/BSTEvent.h"
+#include "RE/BSDevices/BSIInputDevice/BSInputDevice/BSInputDevice.h"
+#include "RE/BSCore/BSTEvent.h"
 
 
 namespace RE

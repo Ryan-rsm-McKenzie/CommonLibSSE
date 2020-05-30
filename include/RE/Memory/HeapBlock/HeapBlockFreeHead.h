@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/HeapBlock.h"
+#include "RE/Memory/HeapBlock/HeapBlock.h"
 
 
 namespace RE

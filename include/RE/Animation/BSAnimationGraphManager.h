@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/BSAtomic.h"
-#include "RE/BSFixedString.h"
-#include "RE/BSIntrusiveRefCounted.h"
-#include "RE/BSTArray.h"
-#include "RE/BSTEvent.h"
-#include "RE/BSTSmartPointer.h"
+#include "RE/BSCore/BSAtomic.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTEvent.h"
+#include "RE/BSCore/BSTSmartPointer.h"
 
 
 namespace RE

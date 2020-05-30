@@ -1,4 +1,4 @@
-#include "RE/BSInputDevice.h"
+#include "RE/BSDevices/BSIInputDevice/BSInputDevice/BSInputDevice.h"
 
 
 namespace RE

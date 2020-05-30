@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSTList.h"
-#include "RE/TESRegionData.h"
+#include "RE/BSCore/BSTList.h"
+#include "RE/FormComponents/Components/TESRegionData/TESRegionData.h"
 
 
 namespace RE

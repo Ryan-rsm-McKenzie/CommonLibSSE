@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSPointerHandle.h"
-#include "RE/BSTempEffect.h"
+#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/BSTempEffect/BSTempEffect.h"
 
 
 namespace RE

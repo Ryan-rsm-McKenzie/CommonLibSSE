@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/IProcedureTreeItem.h"
-#include "RE/TESCondition.h"
+#include "RE/FormComponents/Components/IProcedureTreeItem/IProcedureTreeItem.h"
+#include "RE/FormComponents/Components/TESCondition.h"
 
 
 namespace RE

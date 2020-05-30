@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSExtraData.h"
-#include "RE/ExtraDataTypes.h"
-#include "RE/hkRefPtr.h"
+#include "RE/BSExtraData/BSExtraData.h"
+#include "RE/BSExtraData/Enums/ExtraDataTypes.h"
+#include "RE/BSHavok/hkRefPtr/hkRefPtr.h"
 
 
 namespace RE

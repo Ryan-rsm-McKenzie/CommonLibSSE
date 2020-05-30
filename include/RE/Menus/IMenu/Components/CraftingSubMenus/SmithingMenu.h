@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/CraftingSubMenu.h"
-#include "RE/IMessageBoxCallback.h"
+#include "RE/Menus/IMenu/Components/CraftingSubMenus/CraftingSubMenu.h"
+#include "RE/Menus/IMessageBoxCallback/IMessageBoxCallback.h"
 
 
 namespace RE

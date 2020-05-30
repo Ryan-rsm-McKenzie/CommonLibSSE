@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NiTListBase.h"
+#include "RE/NetImmerse/NiTListBase/NiTListBase.h"
 
 
 namespace RE

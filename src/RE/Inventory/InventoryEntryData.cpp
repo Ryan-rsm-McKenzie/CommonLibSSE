@@ -1,10 +1,10 @@
-#include "RE/InventoryEntryData.h"
+#include "RE/Inventory/InventoryEntryData.h"
 
-#include "RE/ExtraDataList.h"
-#include "RE/ExtraTextDisplayData.h"
-#include "RE/GameSettingCollection.h"
-#include "RE/TESBoundObject.h"
-#include "RE/TESSoulGem.h"
+#include "RE/Inventory/ExtraDataList.h"
+#include "RE/BSExtraData/ExtraTextDisplayData.h"
+#include "RE/BSMain/SettingCollection/GameSettingCollection.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESObjectMISC/TESSoulGem.h"
 
 
 namespace RE

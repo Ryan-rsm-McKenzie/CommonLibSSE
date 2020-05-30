@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BGSSoundDescriptor.h"
-#include "RE/BSResource/ID.h"
-#include "RE/BSTArray.h"
-#include "RE/FormTypes.h"
+#include "RE/BSAudio/BSISoundDescriptor/BGSSoundDescriptor.h"
+#include "RE/BSResource/FileID/ID.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
 
 
 namespace RE

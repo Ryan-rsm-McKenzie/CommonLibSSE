@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSImagespaceShader.h"
+#include "RE/BSShader/BSShader/BSImagespaceShader/BSImagespaceShader.h"
 
 
 namespace RE

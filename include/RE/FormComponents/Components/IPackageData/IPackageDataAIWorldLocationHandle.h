@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/IAIWorldLocationHandle.h"
-#include "RE/IPackageData.h"
+#include "RE/FormComponents/Components/IAIWorldLocationHandle/IAIWorldLocationHandle.h"
+#include "RE/FormComponents/Components/IPackageData/IPackageData.h"
 
 
 namespace RE

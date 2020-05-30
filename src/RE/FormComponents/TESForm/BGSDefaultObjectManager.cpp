@@ -1,4 +1,4 @@
-#include "RE/BGSDefaultObjectManager.h"
+#include "RE/FormComponents/TESForm/BGSDefaultObjectManager.h"
 
 
 namespace RE

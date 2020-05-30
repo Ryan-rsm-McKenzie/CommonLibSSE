@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/FormTypes.h"
-#include "RE/TESForm.h"
-#include "RE/TESImageSpaceModifiableForm.h"
-#include "RE/TESModel.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/FormComponents/TESImageSpaceModifiableForm.h"
+#include "RE/FormComponents/TESModel/TESModel.h"
 
 
 namespace RE

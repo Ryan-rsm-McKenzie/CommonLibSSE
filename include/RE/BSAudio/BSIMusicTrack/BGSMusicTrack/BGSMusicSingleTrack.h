@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BGSMusicTrack.h"
-#include "RE/BSResource/ID.h"
-#include "RE/BSSoundHandle.h"
-#include "RE/BSTArray.h"
+#include "RE/BSAudio/BSIMusicTrack/BGSMusicTrack/BGSMusicTrack.h"
+#include "RE/BSResource/FileID/ID.h"
+#include "RE/BSAudio/BSSoundHandle.h"
+#include "RE/BSCore/BSTArray.h"
 
 
 namespace RE

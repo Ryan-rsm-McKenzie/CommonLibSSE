@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NiTCollection.h"
+#include "RE/NetImmerse/NiTCollection.h"
 
 #define NiTDefaultAllocator DFALL
 

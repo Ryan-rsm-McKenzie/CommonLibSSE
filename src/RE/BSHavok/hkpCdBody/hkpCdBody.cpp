@@ -1,4 +1,4 @@
-#include "RE/hkpCdBody.h"
+#include "RE/BSHavok/hkpCdBody/hkpCdBody.h"
 
 
 namespace RE

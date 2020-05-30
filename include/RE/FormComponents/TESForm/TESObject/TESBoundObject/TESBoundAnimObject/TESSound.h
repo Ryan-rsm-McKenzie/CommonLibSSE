@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FormTypes.h"
-#include "RE/TESBoundAnimObject.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESBoundAnimObject.h"
 
 
 namespace RE

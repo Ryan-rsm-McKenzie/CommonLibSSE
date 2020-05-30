@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/InputDevices.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSDevices/Enums/InputDevices.h"
 
 
 namespace RE

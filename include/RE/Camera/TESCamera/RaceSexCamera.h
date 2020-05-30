@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/TESCamera.h"
+#include "RE/Camera/TESCamera/TESCamera.h"
 
 
 namespace RE

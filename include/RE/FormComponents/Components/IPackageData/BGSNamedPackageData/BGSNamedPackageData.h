@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/IPackageData.h"
+#include "RE/FormComponents/Components/IPackageData/IPackageData.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/ExtraHealth.h"
+#include "RE/BSExtraData/ExtraHealth.h"
 
 
 namespace RE

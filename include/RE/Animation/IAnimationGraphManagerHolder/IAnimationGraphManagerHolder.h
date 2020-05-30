@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/BSTArray.h"
-#include "RE/BSTSmartPointer.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTSmartPointer.h"
 
 
 namespace RE

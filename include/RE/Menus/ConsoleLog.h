@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSString.h"
-#include "RE/BSTSingleton.h"
+#include "RE/BSCore/BSString.h"
+#include "RE/BSCore/BSTSingleton.h"
 
 
 namespace RE

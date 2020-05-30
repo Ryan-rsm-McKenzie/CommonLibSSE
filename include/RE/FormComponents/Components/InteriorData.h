@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BGSDirectionalAmbientLightingColors.h"
-#include "RE/Color.h"
+#include "RE/FormComponents/Components/BGSDirectionalAmbientLightingColors.h"
+#include "RE/FormComponents/Components/Color.h"
 
 
 namespace RE

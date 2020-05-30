@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/BSTArray.h"
-#include "RE/GFxValue.h"
-#include "RE/HUDObject.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/Menus/HUDObject/HUDObject.h"
 
 
 namespace RE

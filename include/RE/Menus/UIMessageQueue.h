@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/BSTHashMap.h"
-#include "RE/BSTMessageQueue.h"
-#include "RE/BSTSingleton.h"
-#include "RE/UIMessage.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSCore/BSTHashMap.h"
+#include "RE/BSCore/BSTMessageQueue.h"
+#include "RE/BSCore/BSTSingleton.h"
+#include "RE/Menus/UIMessage.h"
 
 
 namespace RE

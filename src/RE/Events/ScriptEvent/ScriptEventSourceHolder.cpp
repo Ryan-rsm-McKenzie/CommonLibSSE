@@ -1,6 +1,6 @@
-#include "RE/ScriptEventSourceHolder.h"
+#include "RE/Events/ScriptEvent/ScriptEventSourceHolder.h"
 
-#include "RE/TESObjectREFR.h"
+#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
 
 
 namespace RE

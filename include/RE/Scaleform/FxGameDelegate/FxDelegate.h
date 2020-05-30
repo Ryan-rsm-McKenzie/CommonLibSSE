@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/FxDelegateHandler.h"
-#include "RE/GFxExternalInterface.h"
-#include "RE/GHash.h"
-#include "RE/GPtr.h"
-#include "RE/GString.h"
+#include "RE/Scaleform/FxGameDelegate/FxDelegateHandler.h"
+#include "RE/Scaleform/GFxPlayer/GFxExternalInterface.h"
+#include "RE/Scaleform/GHash/GHash.h"
+#include "RE/Scaleform/GRefCount/GPtr.h"
+#include "RE/Scaleform/GString/GString.h"
 
 
 namespace RE

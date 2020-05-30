@@ -1,4 +1,4 @@
-#include "RE/TESCondition.h"
+#include "RE/FormComponents/Components/TESCondition.h"
 
 
 namespace RE

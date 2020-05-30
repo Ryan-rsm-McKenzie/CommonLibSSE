@@ -1,4 +1,4 @@
-#include "RE/CRC.h"
+#include "RE/BSCore/CRC.h"
 
 
 namespace RE

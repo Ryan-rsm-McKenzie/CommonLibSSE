@@ -1,4 +1,4 @@
-#include "RE/BGSLocation.h"
+#include "RE/FormComponents/TESForm/BGSLocation.h"
 
 
 namespace RE

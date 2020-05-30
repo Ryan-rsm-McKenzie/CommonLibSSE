@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/ReferenceEffectController.h"
+#include "RE/FormComponents/Components/ReferenceEffectController/ReferenceEffectController.h"
 
 
 namespace RE

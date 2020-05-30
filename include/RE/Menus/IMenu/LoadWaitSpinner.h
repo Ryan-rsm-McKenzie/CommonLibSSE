@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSTEvent.h"
-#include "RE/GFxValue.h"
-#include "RE/IMenu.h"
+#include "RE/BSCore/BSTEvent.h"
+#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/Menus/IMenu/IMenu.h"
 
 
 namespace RE

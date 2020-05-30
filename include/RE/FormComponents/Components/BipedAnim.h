@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSIntrusiveRefCounted.h"
-#include "RE/BSPointerHandle.h"
-#include "RE/BipedObjects.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
+#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/FormComponents/Enums/BipedObjects.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

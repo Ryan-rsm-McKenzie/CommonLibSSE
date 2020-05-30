@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSTArray.h"
-#include "RE/NiColor.h"
-#include "RE/NiPoint3.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/NetImmerse/NiColor.h"
+#include "RE/NetImmerse/NiPoint3.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/GMemory.h"
+#include "RE/Scaleform/GMemory/GMemory.h"
 
 
 namespace RE

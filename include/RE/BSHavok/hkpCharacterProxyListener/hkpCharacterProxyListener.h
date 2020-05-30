@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/MemoryManager.h"
-#include "RE/hkArray.h"
-#include "RE/hkVector4.h"
+#include "RE/Memory/MemoryManager.h"
+#include "RE/BSHavok/hkArray.h"
+#include "RE/BSHavok/hkVector4.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSScript/IStore.h"
+#include "RE/BSSystem/BSStorage/IStore/IStore.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSThread.h"
+#include "RE/BSMain/BSThread/BSThread.h"
 
 
 namespace RE

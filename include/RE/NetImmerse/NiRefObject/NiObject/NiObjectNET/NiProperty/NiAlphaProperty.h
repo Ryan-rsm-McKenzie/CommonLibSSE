@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NiProperty.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiProperty/NiProperty.h"
 
 
 namespace RE

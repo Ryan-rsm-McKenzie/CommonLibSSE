@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSTEvent.h"
-#include "RE/BSTSingleton.h"
-#include "RE/InputDevices.h"
+#include "RE/BSCore/BSTEvent.h"
+#include "RE/BSCore/BSTSingleton.h"
+#include "RE/BSDevices/Enums/InputDevices.h"
 
 
 namespace RE

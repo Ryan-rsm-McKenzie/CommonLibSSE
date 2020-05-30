@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/NiCollisionObject.h"
-#include "RE/NiSmartPointer.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiCollisionObject/NiCollisionObject.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

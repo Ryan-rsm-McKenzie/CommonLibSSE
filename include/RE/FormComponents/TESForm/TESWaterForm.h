@@ -1,14 +1,14 @@
 #pragma once
 
-#include "RE/Color.h"
-#include "RE/FormTypes.h"
-#include "RE/NiColor.h"
-#include "RE/NiPoint3.h"
-#include "RE/NiSmartPointer.h"
-#include "RE/TESAttackDamageForm.h"
-#include "RE/TESForm.h"
-#include "RE/TESFullName.h"
-#include "RE/TESTexture.h"
+#include "RE/FormComponents/Components/Color.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/NetImmerse/NiColor.h"
+#include "RE/NetImmerse/NiPoint3.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/FormComponents/TESAttackDamageForm.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/FormComponents/TESFullName.h"
+#include "RE/FormComponents/TESTexture/TESTexture.h"
 
 
 namespace RE

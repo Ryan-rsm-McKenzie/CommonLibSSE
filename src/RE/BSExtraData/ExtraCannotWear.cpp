@@ -1,4 +1,4 @@
-#include "RE/ExtraCannotWear.h"
+#include "RE/BSExtraData/ExtraCannotWear.h"
 
 
 namespace RE

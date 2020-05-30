@@ -1,4 +1,4 @@
-#include "RE/BGSBipedObjectForm.h"
+#include "RE/FormComponents/BGSBipedObjectForm.h"
 
 
 namespace RE

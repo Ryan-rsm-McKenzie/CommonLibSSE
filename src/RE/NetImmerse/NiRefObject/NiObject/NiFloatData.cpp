@@ -1,4 +1,4 @@
-#include "RE/NiFloatData.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiFloatData.h"
 
 
 namespace RE

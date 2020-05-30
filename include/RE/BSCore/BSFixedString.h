@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSStringPool.h"
-#include "RE/CRC.h"
-#include "RE/MemoryManager.h"
+#include "RE/BSCore/BSStringPool.h"
+#include "RE/BSCore/CRC.h"
+#include "RE/Memory/MemoryManager.h"
 
 
 namespace RE

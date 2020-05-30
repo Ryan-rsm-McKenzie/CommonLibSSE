@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FxDelegate.h"
-#include "RE/FxDelegateHandler.h"
+#include "RE/Scaleform/FxGameDelegate/FxDelegate.h"
+#include "RE/Scaleform/FxGameDelegate/FxDelegateHandler.h"
 
 
 namespace RE

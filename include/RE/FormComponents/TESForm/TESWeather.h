@@ -1,13 +1,13 @@
 #pragma once
 
-#include "RE/BGSDirectionalAmbientLightingColors.h"
-#include "RE/BSTArray.h"
-#include "RE/BSTList.h"
-#include "RE/Color.h"
-#include "RE/FormTypes.h"
-#include "RE/TESForm.h"
-#include "RE/TESModel.h"
-#include "RE/TESTexture1024.h"
+#include "RE/FormComponents/Components/BGSDirectionalAmbientLightingColors.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTList.h"
+#include "RE/FormComponents/Components/Color.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/FormComponents/TESModel/TESModel.h"
+#include "RE/FormComponents/TESTexture/TESTexture1024.h"
 
 
 namespace RE

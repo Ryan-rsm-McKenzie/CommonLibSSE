@@ -1,4 +1,4 @@
-#include "RE/BSResource/Stream.h"
+#include "RE/BSResource/StreamBase/Stream/Stream.h"
 
 
 namespace RE

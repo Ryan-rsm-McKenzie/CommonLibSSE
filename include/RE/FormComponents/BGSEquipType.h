@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BaseFormComponent.h"
-#include "RE/FormTypes.h"
+#include "RE/FormComponents/BaseFormComponent.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
 
 
 namespace RE

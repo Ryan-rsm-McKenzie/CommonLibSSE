@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSAtomic.h"
-#include "RE/BSTArray.h"
+#include "RE/BSCore/BSAtomic.h"
+#include "RE/BSCore/BSTArray.h"
 
 
 namespace RE

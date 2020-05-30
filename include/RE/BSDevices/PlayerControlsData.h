@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NiPoint2.h"
+#include "RE/NetImmerse/NiPoint2.h"
 
 
 namespace RE

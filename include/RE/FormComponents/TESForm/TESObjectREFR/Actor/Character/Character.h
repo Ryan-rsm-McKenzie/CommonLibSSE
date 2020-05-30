@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/Actor.h"
+#include "RE/FormComponents/TESForm/TESObjectREFR/Actor/Actor.h"
 
 
 namespace RE

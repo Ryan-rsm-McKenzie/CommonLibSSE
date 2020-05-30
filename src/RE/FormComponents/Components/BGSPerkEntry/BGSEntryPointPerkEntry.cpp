@@ -1,4 +1,4 @@
-#include "RE/BGSEntryPointPerkEntry.h"
+#include "RE/FormComponents/Components/BGSPerkEntry/BGSEntryPointPerkEntry.h"
 
 
 namespace RE

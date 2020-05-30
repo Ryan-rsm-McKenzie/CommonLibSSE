@@ -1,18 +1,18 @@
 #pragma once
 
-#include "RE/ActorValues.h"
-#include "RE/BGSKeywordForm.h"
-#include "RE/BGSMenuDisplayObject.h"
-#include "RE/BSFixedString.h"
-#include "RE/BSTArray.h"
-#include "RE/BSTList.h"
-#include "RE/EffectArchetypes.h"
-#include "RE/FormTypes.h"
-#include "RE/MagicSystem.h"
-#include "RE/SoundLevels.h"
-#include "RE/TESCondition.h"
-#include "RE/TESForm.h"
-#include "RE/TESFullName.h"
+#include "RE/FormComponents/Enums/ActorValues.h"
+#include "RE/FormComponents/BGSKeywordForm.h"
+#include "RE/FormComponents/BGSMenuDisplayObject.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTList.h"
+#include "RE/FormComponents/Components/EffectArchetypes.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/Enums/MagicSystem.h"
+#include "RE/FormComponents/Enums/SoundLevels.h"
+#include "RE/FormComponents/Components/TESCondition.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/FormComponents/TESFullName.h"
 
 
 namespace RE

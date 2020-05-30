@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSAtomic.h"
-#include "RE/BSResource/Location.h"
-#include "RE/BSTSingleton.h"
+#include "RE/BSCore/BSAtomic.h"
+#include "RE/BSResource/Location/Location.h"
+#include "RE/BSCore/BSTSingleton.h"
 
 
 namespace RE

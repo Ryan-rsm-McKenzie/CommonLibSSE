@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSString.h"
-#include "RE/BSTList.h"
-#include "RE/FormTypes.h"
+#include "RE/BSCore/BSString.h"
+#include "RE/BSCore/BSTList.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
 
 
 namespace RE

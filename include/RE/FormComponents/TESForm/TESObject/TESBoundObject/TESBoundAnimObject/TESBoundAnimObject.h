@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/TESBoundObject.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
-#include "RE/GMemory.h"
+#include "RE/Scaleform/GMemory/GMemory.h"
 
-#include "RE/GMemoryHeap.h"
+#include "RE/Scaleform/GMemoryHeap/GMemoryHeap.h"
 
 
 namespace RE

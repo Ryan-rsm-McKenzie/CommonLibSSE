@@ -1,4 +1,4 @@
-#include "RE/EffectSetting.h"
+#include "RE/FormComponents/TESForm/EffectSetting.h"
 
 
 namespace RE

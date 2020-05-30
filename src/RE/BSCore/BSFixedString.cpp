@@ -1,4 +1,4 @@
-#include "RE/BSFixedString.h"
+#include "RE/BSCore/BSFixedString.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/hkArray.h"
-#include "RE/hkpCdPointCollector.h"
-#include "RE/hkpRootCdPoint.h"
+#include "RE/BSHavok/hkArray.h"
+#include "RE/BSHavok/hkpCdPointCollector/hkpCdPointCollector.h"
+#include "RE/BSHavok/hkpRootCdPoint.h"
 
 
 namespace RE

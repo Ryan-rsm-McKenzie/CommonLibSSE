@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/BSTHashMap.h"
-#include "RE/GFxTranslator.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSCore/BSTHashMap.h"
+#include "RE/Scaleform/GFxLoader/GFxTranslator.h"
 
 
 namespace RE

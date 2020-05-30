@@ -2,8 +2,8 @@
 
 #include "function_ref.h"
 
-#include "RE/BaseFormComponent.h"
-#include "RE/ContainerItemExtra.h"
+#include "RE/FormComponents/BaseFormComponent.h"
+#include "RE/FormComponents/Components/ContainerItemExtra.h"
 
 
 namespace RE

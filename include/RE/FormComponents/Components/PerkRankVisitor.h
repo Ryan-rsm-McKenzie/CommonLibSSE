@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BGSPerkRankArray.h"
+#include "RE/FormComponents/BGSPerkRankArray.h"
 
 
 namespace RE

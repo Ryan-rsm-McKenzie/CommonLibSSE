@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/GFxStateBag.h"
-#include "RE/GPtr.h"
+#include "RE/Scaleform/GFxLoader/GFxStateBag.h"
+#include "RE/Scaleform/GRefCount/GPtr.h"
 
 
 namespace RE

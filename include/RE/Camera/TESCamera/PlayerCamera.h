@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/BSAtomic.h"
-#include "RE/BSPointerHandle.h"
-#include "RE/BSTArray.h"
-#include "RE/BSTSingleton.h"
-#include "RE/BSTSmartPointer.h"
-#include "RE/NiPoint3.h"
-#include "RE/TESCamera.h"
+#include "RE/BSCore/BSAtomic.h"
+#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTSingleton.h"
+#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/NetImmerse/NiPoint3.h"
+#include "RE/Camera/TESCamera/TESCamera.h"
 
 
 namespace RE

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSAtomic.h"
-#include "RE/BSScript/IMemoryPagePolicy.h"
+#include "RE/BSCore/BSAtomic.h"
+#include "RE/BSScript/IMemoryPagePolicy/IMemoryPagePolicy.h"
 
 
 namespace RE

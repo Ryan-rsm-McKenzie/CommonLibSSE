@@ -1,6 +1,6 @@
-#include "RE/ControlMap.h"
+#include "RE/BSDevices/ControlMap.h"
 
-#include "RE/UserEventEnabled.h"
+#include "RE/Events/UserEventEnabled.h"
 
 
 namespace RE

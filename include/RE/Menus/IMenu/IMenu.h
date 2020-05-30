@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/FxDelegate.h"
-#include "RE/FxDelegateHandler.h"
-#include "RE/GFxMovieView.h"
-#include "RE/GPtr.h"
-#include "RE/UserEvents.h"
+#include "RE/Scaleform/FxGameDelegate/FxDelegate.h"
+#include "RE/Scaleform/FxGameDelegate/FxDelegateHandler.h"
+#include "RE/Scaleform/GFxPlayer/GFxMovieView.h"
+#include "RE/Scaleform/GRefCount/GPtr.h"
+#include "RE/BSDevices/UserEvents.h"
 
 
 namespace RE

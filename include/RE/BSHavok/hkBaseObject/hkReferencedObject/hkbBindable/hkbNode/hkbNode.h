@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/hkStringPtr.h"
-#include "RE/hkbBindable.h"
+#include "RE/BSHavok/hkStringPtr.h"
+#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkbBindable/hkbBindable.h"
 
 
 namespace RE

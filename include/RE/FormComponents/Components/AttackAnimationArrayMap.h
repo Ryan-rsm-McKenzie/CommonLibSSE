@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSTArray.h"
-#include "RE/BSTHashMap.h"
-#include "RE/NiRefObject.h"
-#include "RE/SetEventData.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTHashMap.h"
+#include "RE/NetImmerse/NiRefObject/NiRefObject.h"
+#include "RE/FormComponents/Components/SetEventData.h"
 
 
 namespace RE

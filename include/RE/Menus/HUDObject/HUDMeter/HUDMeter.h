@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/HUDObject.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/Menus/HUDObject/HUDObject.h"
 
 
 namespace RE

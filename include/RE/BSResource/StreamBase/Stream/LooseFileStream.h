@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/BSResource/LooseFileStreamBase.h"
-#include "RE/BSResource/Stream.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSResource/StreamBase/Stream/Components/LooseFileStreamBase.h"
+#include "RE/BSResource/StreamBase/Stream/Stream.h"
 
 
 namespace RE

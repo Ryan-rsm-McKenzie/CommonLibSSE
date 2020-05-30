@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSExtraData.h"
-#include "RE/BSPointerHandle.h"
-#include "RE/BSTList.h"
-#include "RE/ExtraDataTypes.h"
+#include "RE/BSExtraData/BSExtraData.h"
+#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/BSCore/BSTList.h"
+#include "RE/BSExtraData/Enums/ExtraDataTypes.h"
 
 
 namespace RE

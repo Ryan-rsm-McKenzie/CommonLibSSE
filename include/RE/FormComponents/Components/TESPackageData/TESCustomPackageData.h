@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/BSIntrusiveRefCounted.h"
-#include "RE/BSTArray.h"
-#include "RE/BSTSmartPointer.h"
-#include "RE/TESPackageData.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/FormComponents/Components/TESPackageData/TESPackageData.h"
 
 
 namespace RE

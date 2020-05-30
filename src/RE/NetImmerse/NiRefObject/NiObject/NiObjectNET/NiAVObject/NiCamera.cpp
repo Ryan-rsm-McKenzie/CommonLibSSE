@@ -1,4 +1,4 @@
-#include "RE/NiCamera.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/NiCamera.h"
 
 
 namespace RE

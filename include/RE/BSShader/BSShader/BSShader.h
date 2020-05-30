@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSReloadShaderI.h"
-#include "RE/NiBoneMatrixSetterI.h"
-#include "RE/NiRefObject.h"
+#include "RE/BSShader/BSReloadShaderI.h"
+#include "RE/NetImmerse/NiBoneMatrixSetterI.h"
+#include "RE/NetImmerse/NiRefObject/NiRefObject.h"
 
 
 namespace RE

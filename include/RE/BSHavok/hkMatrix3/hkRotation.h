@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/hkMatrix3.h"
+#include "RE/BSHavok/hkMatrix3/hkMatrix3.h"
 
 
 namespace RE

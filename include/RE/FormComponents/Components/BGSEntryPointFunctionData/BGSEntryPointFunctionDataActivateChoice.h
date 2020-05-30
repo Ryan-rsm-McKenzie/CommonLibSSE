@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BGSEntryPointFunctionData.h"
-#include "RE/BSFixedString.h"
-#include "RE/FormTypes.h"
+#include "RE/FormComponents/Components/BGSEntryPointFunctionData/BGSEntryPointFunctionData.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
 
 
 namespace RE

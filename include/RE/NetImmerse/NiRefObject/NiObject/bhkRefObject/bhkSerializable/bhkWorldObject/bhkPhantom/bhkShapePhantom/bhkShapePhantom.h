@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/bhkPhantom.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/bhkRefObject/bhkSerializable/bhkWorldObject/bhkPhantom/bhkPhantom.h"
 
 
 namespace RE

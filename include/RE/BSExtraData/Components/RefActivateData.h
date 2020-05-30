@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSPointerHandle.h"
+#include "RE/BSCore/BSPointerHandle.h"
 
 
 namespace RE

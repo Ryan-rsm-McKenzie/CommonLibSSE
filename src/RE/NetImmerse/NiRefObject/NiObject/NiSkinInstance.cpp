@@ -1,4 +1,4 @@
-#include "RE/NiSkinInstance.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiSkinInstance/NiSkinInstance.h"
 
 
 namespace RE

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/BSScript/FunctionArguments.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSScript/IFunctionArguments/FunctionArguments.h"
 #include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
-#include "RE/BSScript/TypeTraits.h"
-#include "RE/TESForm.h"
+#include "RE/BSScript/Traits/TypeTraits.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
 
 #include "SKSE/API.h"
 #include "SKSE/Interfaces.h"

@@ -1,6 +1,6 @@
-#include "RE/ExtraContainerChanges.h"
+#include "RE/BSExtraData/ExtraContainerChanges.h"
 
-#include "RE/InventoryChanges.h"
+#include "RE/Inventory/InventoryChanges.h"
 
 
 namespace RE

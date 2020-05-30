@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSTArray.h"
-#include "RE/bhkEntity.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/bhkRefObject/bhkSerializable/bhkWorldObject/bhkEntity/bhkEntity.h"
 
 
 namespace RE

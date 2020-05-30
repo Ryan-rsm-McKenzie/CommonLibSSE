@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSFixedString.h"
-#include "RE/BSIMusicType.h"
-#include "RE/FormTypes.h"
-#include "RE/TESForm.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSAudio/BSIMusicType.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
 
 
 namespace RE

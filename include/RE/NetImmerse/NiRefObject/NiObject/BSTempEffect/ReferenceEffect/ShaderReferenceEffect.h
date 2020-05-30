@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSSoundHandle.h"
-#include "RE/BSTArray.h"
-#include "RE/NiSmartPointer.h"
-#include "RE/ReferenceEffect.h"
+#include "RE/BSAudio/BSSoundHandle.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/BSTempEffect/ReferenceEffect/ReferenceEffect.h"
 
 
 namespace RE

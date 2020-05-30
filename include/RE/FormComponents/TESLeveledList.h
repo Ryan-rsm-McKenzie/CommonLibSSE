@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BaseFormComponent.h"
-#include "RE/ContainerItemExtra.h"
-#include "RE/MemoryManager.h"
+#include "RE/FormComponents/BaseFormComponent.h"
+#include "RE/FormComponents/Components/ContainerItemExtra.h"
+#include "RE/Memory/MemoryManager.h"
 
 
 namespace RE

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BGSDestructibleObjectForm.h"
-#include "RE/FormTypes.h"
-#include "RE/TESFullName.h"
-#include "RE/TESObjectSTAT.h"
+#include "RE/FormComponents/BGSDestructibleObjectForm.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESFullName.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESObjectSTAT/TESObjectSTAT.h"
 
 
 namespace RE

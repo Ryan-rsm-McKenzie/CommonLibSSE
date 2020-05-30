@@ -1,12 +1,12 @@
-#include "RE/IMenu.h"
+#include "RE/Menus/IMenu/IMenu.h"
 
-#include "RE/BSInputDeviceManager.h"
-#include "RE/BSUIScaleformData.h"
-#include "RE/GFxValue.h"
-#include "RE/InterfaceStrings.h"
-#include "RE/UI.h"
-#include "RE/UIMessage.h"
-#include "RE/UIMessageQueue.h"
+#include "RE/BSDevices/BSInputDeviceManager.h"
+#include "RE/Menus/IUIMessageData/BSUIScaleformData.h"
+#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/Menus/InterfaceStrings.h"
+#include "RE/Menus/UI.h"
+#include "RE/Menus/UIMessage.h"
+#include "RE/Menus/UIMessageQueue.h"
 
 
 namespace RE

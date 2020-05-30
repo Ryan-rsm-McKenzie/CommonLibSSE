@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSTArray.h"
+#include "RE/BSCore/BSTArray.h"
 
 
 namespace RE

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSString.h"
-#include "RE/FormTypes.h"
-#include "RE/TESForm.h"
-#include "RE/TESModelTextureSwap.h"
+#include "RE/BSCore/BSString.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/FormComponents/TESModel/TESModelTextureSwap.h"
 
 
 namespace RE

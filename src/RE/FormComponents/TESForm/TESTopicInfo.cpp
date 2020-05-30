@@ -1,6 +1,6 @@
-#include "RE/TESTopicInfo.h"
+#include "RE/FormComponents/TESForm/TESTopicInfo.h"
 
-#include "RE/TESTopic.h"
+#include "RE/FormComponents/TESForm/TESTopic.h"
 
 
 namespace RE

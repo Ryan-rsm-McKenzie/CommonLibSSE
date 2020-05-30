@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/hkArray.h"
+#include "RE/BSHavok/hkArray.h"
 
 
 namespace RE

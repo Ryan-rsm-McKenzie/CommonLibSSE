@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BaseFormComponent.h"
-#include "RE/TESIcon.h"
+#include "RE/FormComponents/BaseFormComponent.h"
+#include "RE/FormComponents/TESTexture/TESIcon.h"
 
 
 namespace RE
