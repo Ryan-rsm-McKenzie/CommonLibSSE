@@ -1,6 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
@@ -11,424 +19,153 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>CommonLibSSE</ProjectName>
-    <ProjectGuid>{C1AF9204-EE2D-421B-B11E-1D70D8ACC11F}</ProjectGuid>
-    <RootNamespace>CommonLibSSE</RootNamespace>
+    <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{3e4b6ef3-ec6e-46cf-9003-eeb57a258b82}</ProjectGuid>
+    <RootNamespace>CommonLibSSE2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <EnableUnitySupport>false</EnableUnitySupport>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
-    <EnableUnitySupport>false</EnableUnitySupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup>
-    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
-    <CodeAnalysisRuleSet>CommonLibCore.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
-    <CodeAnalysisRuleSet>CommonLibCore.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)..;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PLUGIN_EXAMPLE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <PrecompiledHeader>Create</PrecompiledHeader>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ForcedIncludeFiles>SKSE/Impl/PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
-      <ExceptionHandling>Sync</ExceptionHandling>
-      <WholeProgramOptimization>false</WholeProgramOptimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <ControlFlowGuard>Guard</ControlFlowGuard>
-      <FloatingPointExceptions>true</FloatingPointExceptions>
-      <CompileAs>CompileAsCpp</CompileAs>
-      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <UseFullPaths>false</UseFullPaths>
-      <RemoveUnreferencedCodeData>false</RemoveUnreferencedCodeData>
-      <EnableModules>false</EnableModules>
-      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <TreatSpecificWarningsAsErrors>4099;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
-      <TreatWarningAsError>false</TreatWarningAsError>
-      <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalOptions>/experimental:external /external:anglebrackets /external:I "$(SolutionDir)/skse64" /external:W0 %(AdditionalOptions)</AdditionalOptions>
-      <PrecompiledHeaderFile>SKSE/Impl/PCH.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeaderFile>$(ProjectDir)include\SKSE\Impl\PCH.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>$(ProjectDir)include\SKSE\Impl\PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <UseFullPaths>false</UseFullPaths>
     </ClCompile>
     <Link>
-      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PreBuildEvent>
-      <Command>
-      </Command>
-    </PreBuildEvent>
-    <PreBuildEvent>
-      <Message>
-      </Message>
-    </PreBuildEvent>
-    <PostBuildEvent>
-      <Command>
-      </Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>
-      </Message>
-    </PostBuildEvent>
-    <Lib>
-      <AdditionalDependencies>Version.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeaderFile>$(ProjectDir)include\SKSE\Impl\PCH.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>$(ProjectDir)include\SKSE\Impl\PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <UseFullPaths>false</UseFullPaths>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeaderFile>$(ProjectDir)include\SKSE\Impl\PCH.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>$(ProjectDir)include\SKSE\Impl\PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <UseFullPaths>false</UseFullPaths>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <Optimization>MaxSpeed</Optimization>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)..;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PLUGIN_EXAMPLE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <WarningLevel>Level4</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeader>Create</PrecompiledHeader>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ForcedIncludeFiles>SKSE/Impl/PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
-      <OmitFramePointers>
-      </OmitFramePointers>
-      <MultiProcessorCompilation>
-      </MultiProcessorCompilation>
-      <CompileAs>CompileAsCpp</CompileAs>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
-      <UseFullPaths>false</UseFullPaths>
-      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
-      <EnableModules>false</EnableModules>
-      <TreatSpecificWarningsAsErrors>4099;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
-      <TreatWarningAsError>false</TreatWarningAsError>
-      <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
-      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalOptions>/experimental:external /external:anglebrackets /external:I "$(SolutionDir)/skse64" /external:W0 %(AdditionalOptions)</AdditionalOptions>
-      <PrecompiledHeaderFile>SKSE/Impl/PCH.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeaderFile>$(ProjectDir)include\SKSE\Impl\PCH.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>$(ProjectDir)include\SKSE\Impl\PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <UseFullPaths>false</UseFullPaths>
     </ClCompile>
     <Link>
-      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Windows</SubSystem>
-      <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <PreBuildEvent>
-      <Command>
-      </Command>
-      <Message>
-      </Message>
-    </PreBuildEvent>
-    <PostBuildEvent>
-      <Message>
-      </Message>
-      <Command>
-      </Command>
-    </PostBuildEvent>
-    <Lib>
-      <AdditionalDependencies>Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Lib>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <None Include=".clang-format" />
-    <None Include="src\.clang-format" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\REL\Relocation.cpp" />
-    <ClCompile Include="src\REL\SafeWrite.cpp" />
-    <ClCompile Include="src\RE\AI\AIProcess.cpp" />
-    <ClCompile Include="src\RE\AI\ProcessLists.cpp" />
-    <ClCompile Include="src\RE\Animation\IAnimationGraphManagerHolder.cpp" />
-    <ClCompile Include="src\RE\BSAudio\BSAudioManager.cpp" />
-    <ClCompile Include="src\RE\BSAudio\BSSoundHandle.cpp" />
-    <ClCompile Include="src\RE\BSCore\BSAtomic.cpp" />
-    <ClCompile Include="src\RE\BSCore\BSFixedString.cpp" />
-    <ClCompile Include="src\RE\BSCore\BSStringPool.cpp" />
-    <ClCompile Include="src\RE\BSCore\BSTArray.cpp" />
-    <ClCompile Include="src\RE\BSCore\BSTCreateFactoryManager.cpp" />
-    <ClCompile Include="src\RE\BSCore\CRC.cpp" />
-    <ClCompile Include="src\RE\BSDevices\BSIInputDevice\BSInputDevice\BSInputDevice.cpp" />
-    <ClCompile Include="src\RE\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice\BSWin32KeyboardDevice.cpp" />
-    <ClCompile Include="src\RE\BSDevices\BSInputDeviceManager.cpp" />
-    <ClCompile Include="src\RE\BSDevices\ControlMap.cpp" />
-    <ClCompile Include="src\RE\BSDevices\MenuControls.cpp" />
-    <ClCompile Include="src\RE\BSDevices\MenuEventHandler\MenuEventHandler.cpp" />
-    <ClCompile Include="src\RE\BSDevices\PlayerControls.cpp" />
-    <ClCompile Include="src\RE\BSDevices\PlayerInputHandler\PlayerInputHandler.cpp" />
-    <ClCompile Include="src\RE\BSDevices\UserEvents.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\BSExtraData.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraAliasInstanceArray.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraAshPileRef.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraCannotWear.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraCanTalkToPlayer.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraCharge.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraContainerChanges.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraCount.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraEnchantment.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraFlags.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraForcedTarget.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraHealth.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraHotkey.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraLightData.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraLock.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraMapMarker.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraMissingLinkedRefIDs.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraOwnership.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraPoison.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraRank.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraReferenceHandle.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraSoul.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraTextDisplayData.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraUniqueID.cpp" />
-    <ClCompile Include="src\RE\BSGraphics\State.cpp" />
-    <ClCompile Include="src\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpBroadPhase\hkpBroadPhase.cpp" />
-    <ClCompile Include="src\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject\hkpWorldObject.cpp" />
-    <ClCompile Include="src\RE\BSHavok\hkBaseObject\hkReferencedObject\hkReferencedObject.cpp" />
-    <ClCompile Include="src\RE\BSHavok\hkBaseTypes.cpp" />
-    <ClCompile Include="src\RE\BSHavok\hkMemoryAllocator\hkContainerAllocators.cpp" />
-    <ClCompile Include="src\RE\BSHavok\hkpCdBody\hkpCdBody.cpp" />
-    <ClCompile Include="src\RE\BSHavok\hkpCdBody\hkpCollidable\hkpCollidable.cpp" />
-    <ClCompile Include="src\RE\BSHavok\hkpCharacterProxyListener\bhkCharProxyController.cpp" />
-    <ClCompile Include="src\RE\BSHavok\hkpCharacterProxyListener\hkpCharacterProxyListener.cpp" />
-    <ClCompile Include="src\RE\BSHavok\hkpMaterial.cpp" />
-    <ClCompile Include="src\RE\BSHavok\hkStringPtr.cpp" />
-    <ClCompile Include="src\RE\BSHavok\TESHavokUtilities.cpp" />
-    <ClCompile Include="src\RE\BSMain\BSHandleRefObject.cpp" />
-    <ClCompile Include="src\RE\BSMain\Main.cpp" />
-    <ClCompile Include="src\RE\BSMain\SettingCollection\GameSettingCollection.cpp" />
-    <ClCompile Include="src\RE\BSMain\SettingCollection\INIPrefSettingCollection.cpp" />
-    <ClCompile Include="src\RE\BSMain\SettingCollection\INISettingCollection.cpp" />
-    <ClCompile Include="src\RE\BSMain\Setting\Setting.cpp" />
-    <ClCompile Include="src\RE\BSResource\BSSystemFile.cpp" />
-    <ClCompile Include="src\RE\BSResource\Location\Location.cpp" />
-    <ClCompile Include="src\RE\BSResource\StreamBase\StreamBase.cpp" />
-    <ClCompile Include="src\RE\BSResource\StreamBase\Stream\LooseFileStream.cpp" />
-    <ClCompile Include="src\RE\BSResource\StreamBase\Stream\Stream.cpp" />
-    <ClCompile Include="src\RE\BSScript\ByteCode\PackedInstructionStream.cpp" />
-    <ClCompile Include="src\RE\BSScript\IFunctionArguments\ZeroFunctionArguments.cpp" />
-    <ClCompile Include="src\RE\BSScript\IFunction\IFunction.cpp" />
-    <ClCompile Include="src\RE\BSScript\IFunction\NF_util\NativeFunctionBase.cpp" />
-    <ClCompile Include="src\RE\BSScript\Internal\VDescTable.cpp" />
-    <ClCompile Include="src\RE\BSScript\IVirtualMachine.cpp" />
-    <ClCompile Include="src\RE\BSScript\MemoryPage.cpp" />
-    <ClCompile Include="src\RE\BSScript\StackFrame.cpp" />
-    <ClCompile Include="src\RE\BSShader\BSEffectShaderData.cpp" />
-    <ClCompile Include="src\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase.cpp" />
-    <ClCompile Include="src\RE\BSSystem\BSIntrusiveRefCounted.cpp" />
-    <ClCompile Include="src\RE\BSSystem\BSSaveDataSystemUtility\BSWin32SaveDataSystemUtility.cpp" />
-    <ClCompile Include="src\RE\BSSystem\BSStorage\BSSystemFileStorage.cpp" />
-    <ClCompile Include="src\RE\BSSystem\IFormFactory\IFormFactory.cpp" />
-    <ClCompile Include="src\RE\Camera\TESCamera\LocalMapCamera.cpp" />
-    <ClCompile Include="src\RE\Camera\TESCamera\PlayerCamera.cpp" />
-    <ClCompile Include="src\RE\Camera\TESCamera\TESCamera.cpp" />
-    <ClCompile Include="src\RE\Events\BGSFootstepManager.cpp" />
-    <ClCompile Include="src\RE\Events\BGSStoryEvent\ChestsLooted.cpp" />
-    <ClCompile Include="src\RE\Events\BGSStoryEvent\Inventory.cpp" />
-    <ClCompile Include="src\RE\Events\BGSStoryEvent\ItemCrafted.cpp" />
-    <ClCompile Include="src\RE\Events\BGSStoryEvent\ItemsPickpocketed.cpp" />
-    <ClCompile Include="src\RE\Events\InputEvent\ButtonEvent.cpp" />
-    <ClCompile Include="src\RE\Events\InputEvent\ThumbstickEvent.cpp" />
-    <ClCompile Include="src\RE\Events\ScriptEvent\ScriptEventSourceHolder.cpp" />
-    <ClCompile Include="src\RE\Events\ScriptEvent\TESHitEvent.cpp" />
-    <ClCompile Include="src\RE\FileIO\BGSSaveLoadManager.cpp" />
-    <ClCompile Include="src\RE\FileIO\ICellAttachDetachEventSource\TES.cpp" />
-    <ClCompile Include="src\RE\FileIO\TESDataHandler.cpp" />
-    <ClCompile Include="src\RE\FileIO\TESFile.cpp" />
-    <ClCompile Include="src\RE\FormComponents\BGSBipedObjectForm.cpp" />
-    <ClCompile Include="src\RE\FormComponents\BGSKeywordForm.cpp" />
-    <ClCompile Include="src\RE\FormComponents\Components\ActiveEffect\ActiveEffect.cpp" />
-    <ClCompile Include="src\RE\FormComponents\Components\ActorCause.cpp" />
-    <ClCompile Include="src\RE\FormComponents\Components\ActorValueOwner.cpp" />
-    <ClCompile Include="src\RE\FormComponents\Components\BGSBaseAlias\BGSBaseAlias.cpp" />
-    <ClCompile Include="src\RE\FormComponents\Components\BGSEntryPointFunctionData\BGSEntryPointFunctionDataActivateChoice.cpp" />
-    <ClCompile Include="src\RE\FormComponents\Components\BGSPerkEntry\BGSEntryPointPerkEntry.cpp" />
-    <ClCompile Include="src\RE\FormComponents\Components\BGSPerkEntry\BGSPerkEntry.cpp" />
-    <ClCompile Include="src\RE\FormComponents\Components\BipedAnim.cpp" />
-    <ClCompile Include="src\RE\FormComponents\Components\DialogueItem.cpp" />
-    <ClCompile Include="src\RE\FormComponents\Components\Effect.cpp" />
-    <ClCompile Include="src\RE\FormComponents\Components\MagicTarget.cpp" />
-    <ClCompile Include="src\RE\FormComponents\Components\TESCondition.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESActorBaseData.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESAIForm.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESContainer.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESDescription.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\BGSColorForm.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\BGSDefaultObjectManager.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\BGSHeadPart.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\BGSListForm.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\BGSLocation.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\BGSSoundCategory.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\BGSStoryManagerTreeForm\TESQuest.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\EffectSetting.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\Script.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESClimate.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESFaction.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObjectCELL.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObjectREFR\Actor\Actor.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObjectREFR\Actor\Character\PlayerCharacter.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObjectREFR\TESObjectREFR.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem\MagicItem.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESAmmo.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESActorBase\TESNPC.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESObjectLIGH.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectARMO.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectBOOK.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC\TESSoulGem.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT\TESObjectSTAT.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectWEAP.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESObjectARMA.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESRace.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESTopic.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESTopicInfo.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESWorldSpace.cpp" />
-    <ClCompile Include="src\RE\Inventory\ActorEquipManager.cpp" />
-    <ClCompile Include="src\RE\Inventory\ExtraDataList.cpp" />
-    <ClCompile Include="src\RE\Inventory\Inventory3DManager.cpp" />
-    <ClCompile Include="src\RE\Inventory\InventoryChanges.cpp" />
-    <ClCompile Include="src\RE\Inventory\InventoryEntryData.cpp" />
-    <ClCompile Include="src\RE\Memory\HeapBlock.cpp" />
-    <ClCompile Include="src\RE\Memory\IMemoryStoreBase\IMemoryStore\IMemoryStore.cpp" />
-    <ClCompile Include="src\RE\Memory\IMemoryStoreBase\IMemoryStore\ScrapHeap.cpp" />
-    <ClCompile Include="src\RE\Memory\MemoryManager.cpp" />
-    <ClCompile Include="src\RE\Menus\ConsoleLog.cpp" />
-    <ClCompile Include="src\RE\Menus\HUDObject\HUDMeter\HUDMeter.cpp" />
-    <ClCompile Include="src\RE\Menus\HUDObject\HUDObject.cpp" />
-    <ClCompile Include="src\RE\Menus\IMenu\Components\ItemList.cpp" />
-    <ClCompile Include="src\RE\Menus\IMenu\Console.cpp" />
-    <ClCompile Include="src\RE\Menus\IMenu\IMenu.cpp" />
-    <ClCompile Include="src\RE\Menus\InterfaceStrings.cpp" />
-    <ClCompile Include="src\RE\Menus\MagicFavorites.cpp" />
-    <ClCompile Include="src\RE\Menus\UI.cpp" />
-    <ClCompile Include="src\RE\Menus\UIBlurManager.cpp" />
-    <ClCompile Include="src\RE\Menus\UIMessageQueue.cpp" />
-    <ClCompile Include="src\RE\Misc\Calendar.cpp" />
-    <ClCompile Include="src\RE\Misc\TaskQueueInterface.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\BSVisit.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiAnimationKey\NiAnimationKey.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiAnimationKey\NiColorKey.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiAnimationKey\NiFloatKey.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiBinaryStream\BSResourceNiBinaryStream.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiBinaryStream\NiBinaryStream.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiMath.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiMatrix3.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiMemManager.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiPoint3.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\BGSAttackData.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiColorData.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiExtraData\BSFaceGenAnimationData.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiExtraData\NiExtraData.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiExtraData\NiIntegerExtraData\BSXFlags.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiFloatData.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiInterpolator\NiInterpolator.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObject.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiAVObject.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiCamera.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode\NiNode.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiObjectNET.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty\NiShadeProperty\BSShaderProperty\BSShaderProperty.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiSkinInstance.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiTexture\NiTexture.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController\NiControllerManager.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiRefObject.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRTTI.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiSystem.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiTCollection.cpp" />
-    <ClCompile Include="src\RE\BSScript\Array.cpp" />
-    <ClCompile Include="src\RE\BSScript\ObjectTypeInfo.cpp" />
-    <ClCompile Include="src\RE\BSScript\IObjectHandlePolicy.cpp" />
-    <ClCompile Include="src\RE\BSScript\IStackCallbackFunctor.cpp" />
-    <ClCompile Include="src\RE\BSScript\Object.cpp" />
-    <ClCompile Include="src\RE\BSScript\Stack.cpp" />
-    <ClCompile Include="src\RE\BSScript\TypeInfo.cpp" />
-    <ClCompile Include="src\RE\BSScript\Variable.cpp" />
-    <ClCompile Include="src\RE\BSScript\Internal\VirtualMachine.cpp" />
-    <ClCompile Include="src\RE\BSScript\ObjectBindPolicy.cpp" />
-    <ClCompile Include="src\RE\BSScript\PackUnpack.cpp" />
-    <ClCompile Include="src\RE\Obscript\CommandTable.cpp" />
-    <ClCompile Include="src\RE\Pathfinding\IMovementInterface\IMovementState\ActorState.cpp" />
-    <ClCompile Include="src\RE\RadiantStory\BGSStoryTeller.cpp" />
-    <ClCompile Include="src\RE\RTTI.cpp" />
-    <ClCompile Include="src\RE\Scaleform\BS\BSScaleformManager.cpp" />
-    <ClCompile Include="src\RE\Scaleform\FxGameDelegate\AddCallbackVisitor.cpp" />
-    <ClCompile Include="src\RE\Scaleform\FxGameDelegate\FxDelegate.cpp" />
-    <ClCompile Include="src\RE\Scaleform\FxGameDelegate\FxDelegateArgs.cpp" />
-    <ClCompile Include="src\RE\Scaleform\FxGameDelegate\RemoveCallbackVisitor.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GAtomic\GAtomic.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxLoader\GFxLoader.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxLoader\GFxState.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxLoader\GFxStateBag.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxLoader\GFxTranslator.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxLog\GFxLog.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxPlayer\GFxMovie.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxPlayer\GFxMovieDef.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxPlayer\GFxMovieView.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxPlayer\GFxValue.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxRenderConfig\GFxRenderConfig.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxResource\GFxResource.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxResource\GFxResourceID.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxResource\GFxResourceKey.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxString\GFxWStringBuffer.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GFxWWHelper\GFxWWHelper.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GMemoryHeap\GMemoryHeap.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GMemory\GMemory.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountImpl.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountImplCore.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountNTSImpl.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GRenderer\GRenderer.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GRenderer\GViewport.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GStd\GStd.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GString\GString.cpp" />
-    <ClCompile Include="src\RE\SkyrimScript\SkyrimVM.cpp" />
-    <ClCompile Include="src\RE\Sky\Sky.cpp" />
-    <ClCompile Include="src\RE\Misc.cpp" />
-    <ClCompile Include="src\SKSE\API.cpp" />
-    <ClCompile Include="src\SKSE\CodeGenerator.cpp" />
-    <ClCompile Include="src\SKSE\Impl\PCH.cpp" />
-    <ClCompile Include="src\SKSE\Interfaces.cpp" />
-    <ClCompile Include="src\SKSE\Logger.cpp" />
-    <ClCompile Include="src\SKSE\RegistrationMap.cpp" />
-    <ClCompile Include="src\SKSE\RegistrationSet.cpp" />
-    <ClCompile Include="src\SKSE\IAT.cpp" />
-    <ClCompile Include="src\SKSE\Trampoline.cpp" />
-    <ClCompile Include="src\SKSE\VArgFormatter.cpp" />
-  </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ForceInclude.h" />
     <ClInclude Include="include\function_ref.h" />
@@ -451,6 +188,7 @@
     <ClInclude Include="include\RE\Animation\IAnimationGraphManagerHolder\SimpleAnimationGraphManagerHolder\StatsNode.h" />
     <ClInclude Include="include\RE\Animation\IAnimationSetCallbackFunctor.h" />
     <ClInclude Include="include\RE\Animation\IPostAnimationChannelUpdateFunctor.h" />
+    <ClInclude Include="include\RE\bgs\saveload\Request.h" />
     <ClInclude Include="include\RE\BSAudio\BGSMoviePlayer.h" />
     <ClInclude Include="include\RE\BSAudio\BSAudioManager.h" />
     <ClInclude Include="include\RE\BSAudio\BSGameSound.h" />
@@ -854,7 +592,10 @@
     <ClInclude Include="include\RE\BSResource\StreamBase\Stream\Components\LooseFileStreamBase.h" />
     <ClInclude Include="include\RE\BSResource\StreamBase\Stream\LooseFileStream.h" />
     <ClInclude Include="include\RE\BSResource\StreamBase\Stream\Stream.h" />
+    <ClInclude Include="include\RE\BSScript\Array.h" />
     <ClInclude Include="include\RE\BSScript\ByteCode\PackedInstructionStream.h" />
+    <ClInclude Include="include\RE\BSScript\ErrorLogger.h" />
+    <ClInclude Include="include\RE\BSScript\IFreezeQuery.h" />
     <ClInclude Include="include\RE\BSScript\IFunctionArguments\FunctionArguments.h" />
     <ClInclude Include="include\RE\BSScript\IFunctionArguments\IFunctionArguments.h" />
     <ClInclude Include="include\RE\BSScript\IFunctionArguments\ZeroFunctionArguments.h" />
@@ -867,18 +608,40 @@
     <ClInclude Include="include\RE\BSScript\IMemoryPagePolicy\IMemoryPagePolicy.h" />
     <ClInclude Include="include\RE\BSScript\IMemoryPagePolicy\SimpleAllocMemoryPagePolicy.h" />
     <ClInclude Include="include\RE\BSScript\Internal\AttachedScript.h" />
+    <ClInclude Include="include\RE\BSScript\Internal\FunctionMessage.h" />
     <ClInclude Include="include\RE\BSScript\Internal\IFuncCallQuery\CodeTasklet.h" />
     <ClInclude Include="include\RE\BSScript\Internal\IFuncCallQuery\IFuncCallQuery.h" />
     <ClInclude Include="include\RE\BSScript\Internal\IFuncCallQuery\RawFuncCallQuery.h" />
+    <ClInclude Include="include\RE\BSScript\Internal\SuspendedStack.h" />
     <ClInclude Include="include\RE\BSScript\Internal\VDescTable.h" />
+    <ClInclude Include="include\RE\BSScript\Internal\VirtualMachine.h" />
+    <ClInclude Include="include\RE\BSScript\IObjectHandlePolicy.h" />
     <ClInclude Include="include\RE\BSScript\IObjectProcessor\IObjectProcessor.h" />
     <ClInclude Include="include\RE\BSScript\IObjectProcessor\LinkerProcessor.h" />
+    <ClInclude Include="include\RE\BSScript\IProfilePolicy.h" />
+    <ClInclude Include="include\RE\BSScript\ISavePatcherInterface.h" />
+    <ClInclude Include="include\RE\BSScript\IStackCallbackFunctor.h" />
+    <ClInclude Include="include\RE\BSScript\IStackCallbackSaveInterface.h" />
+    <ClInclude Include="include\RE\BSScript\IVirtualMachine.h" />
+    <ClInclude Include="include\RE\BSScript\IVMDebugInterface.h" />
+    <ClInclude Include="include\RE\BSScript\IVMObjectBindInterface.h" />
+    <ClInclude Include="include\RE\BSScript\IVMSaveLoadInterface.h" />
+    <ClInclude Include="include\RE\BSScript\LogEvent.h" />
     <ClInclude Include="include\RE\BSScript\MemoryPage.h" />
-    <ClInclude Include="include\RE\BSScript\PropertyTypeInfo.h" />
+    <ClInclude Include="include\RE\BSScript\Object.h" />
+    <ClInclude Include="include\RE\BSScript\ObjectBindPolicy.h" />
+    <ClInclude Include="include\RE\BSScript\ObjectTypeInfo.h" />
+    <ClInclude Include="include\RE\BSScript\PackUnpack.h" />
     <ClInclude Include="include\RE\BSScript\PackUnpackImpl.h" />
+    <ClInclude Include="include\RE\BSScript\PropertyTypeInfo.h" />
     <ClInclude Include="include\RE\BSScript\ReferenceArray.h" />
+    <ClInclude Include="include\RE\BSScript\Stack.h" />
+    <ClInclude Include="include\RE\BSScript\StackFrame.h" />
+    <ClInclude Include="include\RE\BSScript\StatsEvent.h" />
     <ClInclude Include="include\RE\BSScript\Traits\CommonTypeTraits.h" />
     <ClInclude Include="include\RE\BSScript\Traits\TypeTraits.h" />
+    <ClInclude Include="include\RE\BSScript\TypeInfo.h" />
+    <ClInclude Include="include\RE\BSScript\Variable.h" />
     <ClInclude Include="include\RE\BSShader\BSBatchRenderer.h" />
     <ClInclude Include="include\RE\BSShader\BSEffectShaderData.h" />
     <ClInclude Include="include\RE\BSShader\BSReloadShaderI.h" />
@@ -1476,32 +1239,6 @@
     <ClInclude Include="include\RE\Offsets\Offsets.h" />
     <ClInclude Include="include\RE\Offsets\Offsets_NiRTTI.h" />
     <ClInclude Include="include\RE\Offsets\Offsets_RTTI.h" />
-    <ClInclude Include="include\RE\bgs\saveload\Request.h" />
-    <ClInclude Include="include\RE\BSScript\Array.h" />
-    <ClInclude Include="include\RE\BSScript\ObjectTypeInfo.h" />
-    <ClInclude Include="include\RE\BSScript\Object.h" />
-    <ClInclude Include="include\RE\BSScript\ObjectBindPolicy.h" />
-    <ClInclude Include="include\RE\BSScript\PackUnpack.h" />
-    <ClInclude Include="include\RE\BSScript\Stack.h" />
-    <ClInclude Include="include\RE\BSScript\TypeInfo.h" />
-    <ClInclude Include="include\RE\BSScript\Variable.h" />
-    <ClInclude Include="include\RE\BSScript\ErrorLogger.h" />
-    <ClInclude Include="include\RE\BSScript\IFreezeQuery.h" />
-    <ClInclude Include="include\RE\BSScript\IObjectHandlePolicy.h" />
-    <ClInclude Include="include\RE\BSScript\IProfilePolicy.h" />
-    <ClInclude Include="include\RE\BSScript\ISavePatcherInterface.h" />
-    <ClInclude Include="include\RE\BSScript\IStackCallbackFunctor.h" />
-    <ClInclude Include="include\RE\BSScript\IStackCallbackSaveInterface.h" />
-    <ClInclude Include="include\RE\BSScript\IVirtualMachine.h" />
-    <ClInclude Include="include\RE\BSScript\IVMDebugInterface.h" />
-    <ClInclude Include="include\RE\BSScript\IVMObjectBindInterface.h" />
-    <ClInclude Include="include\RE\BSScript\IVMSaveLoadInterface.h" />
-    <ClInclude Include="include\RE\BSScript\LogEvent.h" />
-    <ClInclude Include="include\RE\BSScript\StackFrame.h" />
-    <ClInclude Include="include\RE\BSScript\StatsEvent.h" />
-    <ClInclude Include="include\RE\BSScript\Internal\FunctionMessage.h" />
-    <ClInclude Include="include\RE\BSScript\Internal\SuspendedStack.h" />
-    <ClInclude Include="include\RE\BSScript\Internal\VirtualMachine.h" />
     <ClInclude Include="include\RE\Pathfinding\BSPathingCell\BSPathingCell.h" />
     <ClInclude Include="include\RE\Pathfinding\BSPathingCell\PathingCell.h" />
     <ClInclude Include="include\RE\Pathfinding\IMovementControllerRegisterInterface\IMovementControllerRegisterInterface.h" />
@@ -1516,6 +1253,7 @@
     <ClInclude Include="include\RE\Pathfinding\IMovementInterface\IMovementState\ActorState.h" />
     <ClInclude Include="include\RE\Pathfinding\IMovementInterface\IMovementState\IMovementState.h" />
     <ClInclude Include="include\RE\RadiantStory\BGSStoryTeller.h" />
+    <ClInclude Include="include\RE\rtti.h" />
     <ClInclude Include="include\RE\Scaleform\BS\BSScaleformManager.h" />
     <ClInclude Include="include\RE\Scaleform\BS\BSScaleformTranslator.h" />
     <ClInclude Include="include\RE\Scaleform\BS\LoggingDisabler.h" />
@@ -1596,6 +1334,7 @@
     <ClInclude Include="include\RE\Scaleform\GTypes2DF\GPoint.h" />
     <ClInclude Include="include\RE\Scaleform\GTypes2DF\GRect.h" />
     <ClInclude Include="include\RE\Scaleform\GTypes\SFTypes.h" />
+    <ClInclude Include="include\RE\Skyrim.h" />
     <ClInclude Include="include\RE\SkyrimScript\DelayFunctor\AttachAshPileFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\DelayFunctor\DelayFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\DelayFunctor\DropObjectFunctor.h" />
@@ -1605,6 +1344,11 @@
     <ClInclude Include="include\RE\SkyrimScript\DelayFunctor\SetMotionTypeFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\DelayFunctor\SetPositionFunctor.h" />
     <ClInclude Include="include\RE\SkyrimScript\FragmentSystem.h" />
+    <ClInclude Include="include\RE\SkyrimScript\HandlePolicy.h" />
+    <ClInclude Include="include\RE\SkyrimScript\Logger.h" />
+    <ClInclude Include="include\RE\SkyrimScript\ObjectBindPolicy.h" />
+    <ClInclude Include="include\RE\SkyrimScript\Profiler.h" />
+    <ClInclude Include="include\RE\SkyrimScript\SavePatcher.h" />
     <ClInclude Include="include\RE\SkyrimScript\SkyrimVM.h" />
     <ClInclude Include="include\RE\Sky\Precipitation.h" />
     <ClInclude Include="include\RE\Sky\Sky.h" />
@@ -1615,15 +1359,10 @@
     <ClInclude Include="include\RE\Sky\SkyObject\SkyObject.h" />
     <ClInclude Include="include\RE\Sky\SkyObject\Stars.h" />
     <ClInclude Include="include\RE\Sky\SkyObject\Sun.h" />
-    <ClInclude Include="include\RE\RTTI.h" />
-    <ClInclude Include="include\RE\Skyrim.h" />
-    <ClInclude Include="include\RE\SkyrimScript\HandlePolicy.h" />
-    <ClInclude Include="include\RE\SkyrimScript\Logger.h" />
-    <ClInclude Include="include\RE\SkyrimScript\Profiler.h" />
-    <ClInclude Include="include\RE\SkyrimScript\SavePatcher.h" />
-    <ClInclude Include="include\RE\SkyrimScript\ObjectBindPolicy.h" />
+    <ClInclude Include="include\SKSE\API.h" />
     <ClInclude Include="include\SKSE\CodeGenerator.h" />
     <ClInclude Include="include\SKSE\Events.h" />
+    <ClInclude Include="include\SKSE\IAT.h" />
     <ClInclude Include="include\SKSE\Impl\Atomic.h" />
     <ClInclude Include="include\SKSE\Impl\PCH.h" />
     <ClInclude Include="include\SKSE\Impl\Util.h" />
@@ -1631,14 +1370,272 @@
     <ClInclude Include="include\SKSE\Logger.h" />
     <ClInclude Include="include\SKSE\RegistrationMap.h" />
     <ClInclude Include="include\SKSE\RegistrationSet.h" />
-    <ClInclude Include="include\SKSE\API.h" />
     <ClInclude Include="include\SKSE\RegistrationTraits.h" />
     <ClInclude Include="include\SKSE\SafeWrite.h" />
     <ClInclude Include="include\SKSE\Stubs.h" />
     <ClInclude Include="include\SKSE\Trampoline.h" />
-    <ClInclude Include="include\SKSE\IAT.h" />
     <ClInclude Include="include\SKSE\VArgFormatter.h" />
     <ClInclude Include="include\SKSE\Version.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\REL\Relocation.cpp" />
+    <ClCompile Include="src\REL\SafeWrite.cpp" />
+    <ClCompile Include="src\RE\AI\AIProcess.cpp" />
+    <ClCompile Include="src\RE\AI\ProcessLists.cpp" />
+    <ClCompile Include="src\RE\Animation\IAnimationGraphManagerHolder.cpp" />
+    <ClCompile Include="src\RE\BSAudio\BSAudioManager.cpp" />
+    <ClCompile Include="src\RE\BSAudio\BSSoundHandle.cpp" />
+    <ClCompile Include="src\RE\BSCore\BSAtomic.cpp" />
+    <ClCompile Include="src\RE\BSCore\BSFixedString.cpp" />
+    <ClCompile Include="src\RE\BSCore\BSStringPool.cpp" />
+    <ClCompile Include="src\RE\BSCore\BSTArray.cpp" />
+    <ClCompile Include="src\RE\BSCore\BSTCreateFactoryManager.cpp" />
+    <ClCompile Include="src\RE\BSCore\CRC.cpp" />
+    <ClCompile Include="src\RE\BSDevices\BSIInputDevice\BSInputDevice\BSInputDevice.cpp" />
+    <ClCompile Include="src\RE\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice\BSWin32KeyboardDevice.cpp" />
+    <ClCompile Include="src\RE\BSDevices\BSInputDeviceManager.cpp" />
+    <ClCompile Include="src\RE\BSDevices\ControlMap.cpp" />
+    <ClCompile Include="src\RE\BSDevices\MenuControls.cpp" />
+    <ClCompile Include="src\RE\BSDevices\MenuEventHandler\MenuEventHandler.cpp" />
+    <ClCompile Include="src\RE\BSDevices\PlayerControls.cpp" />
+    <ClCompile Include="src\RE\BSDevices\PlayerInputHandler\PlayerInputHandler.cpp" />
+    <ClCompile Include="src\RE\BSDevices\UserEvents.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\BSExtraData.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraAliasInstanceArray.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraAshPileRef.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraCannotWear.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraCanTalkToPlayer.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraCharge.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraContainerChanges.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraCount.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraEnchantment.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraFlags.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraForcedTarget.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraHealth.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraHotkey.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraLightData.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraLock.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraMapMarker.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraMissingLinkedRefIDs.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraOwnership.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraPoison.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraRank.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraReferenceHandle.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraSoul.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraTextDisplayData.cpp" />
+    <ClCompile Include="src\RE\BSExtraData\ExtraUniqueID.cpp" />
+    <ClCompile Include="src\RE\BSGraphics\State.cpp" />
+    <ClCompile Include="src\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpBroadPhase\hkpBroadPhase.cpp" />
+    <ClCompile Include="src\RE\BSHavok\hkBaseObject\hkReferencedObject\hkpWorldObject\hkpWorldObject.cpp" />
+    <ClCompile Include="src\RE\BSHavok\hkBaseObject\hkReferencedObject\hkReferencedObject.cpp" />
+    <ClCompile Include="src\RE\BSHavok\hkBaseTypes.cpp" />
+    <ClCompile Include="src\RE\BSHavok\hkMemoryAllocator\hkContainerAllocators.cpp" />
+    <ClCompile Include="src\RE\BSHavok\hkpCdBody\hkpCdBody.cpp" />
+    <ClCompile Include="src\RE\BSHavok\hkpCdBody\hkpCollidable\hkpCollidable.cpp" />
+    <ClCompile Include="src\RE\BSHavok\hkpCharacterProxyListener\bhkCharProxyController.cpp" />
+    <ClCompile Include="src\RE\BSHavok\hkpCharacterProxyListener\hkpCharacterProxyListener.cpp" />
+    <ClCompile Include="src\RE\BSHavok\hkpMaterial.cpp" />
+    <ClCompile Include="src\RE\BSHavok\hkStringPtr.cpp" />
+    <ClCompile Include="src\RE\BSHavok\TESHavokUtilities.cpp" />
+    <ClCompile Include="src\RE\BSMain\BSHandleRefObject.cpp" />
+    <ClCompile Include="src\RE\BSMain\Main.cpp" />
+    <ClCompile Include="src\RE\BSMain\SettingCollection\GameSettingCollection.cpp" />
+    <ClCompile Include="src\RE\BSMain\SettingCollection\INIPrefSettingCollection.cpp" />
+    <ClCompile Include="src\RE\BSMain\SettingCollection\INISettingCollection.cpp" />
+    <ClCompile Include="src\RE\BSMain\Setting\Setting.cpp" />
+    <ClCompile Include="src\RE\BSResource\BSSystemFile.cpp" />
+    <ClCompile Include="src\RE\BSResource\Location\Location.cpp" />
+    <ClCompile Include="src\RE\BSResource\StreamBase\StreamBase.cpp" />
+    <ClCompile Include="src\RE\BSResource\StreamBase\Stream\LooseFileStream.cpp" />
+    <ClCompile Include="src\RE\BSResource\StreamBase\Stream\Stream.cpp" />
+    <ClCompile Include="src\RE\BSScript\Array.cpp" />
+    <ClCompile Include="src\RE\BSScript\ByteCode\PackedInstructionStream.cpp" />
+    <ClCompile Include="src\RE\BSScript\IFunctionArguments\ZeroFunctionArguments.cpp" />
+    <ClCompile Include="src\RE\BSScript\IFunction\IFunction.cpp" />
+    <ClCompile Include="src\RE\BSScript\IFunction\NF_util\NativeFunctionBase.cpp" />
+    <ClCompile Include="src\RE\BSScript\Internal\VDescTable.cpp" />
+    <ClCompile Include="src\RE\BSScript\Internal\VirtualMachine.cpp" />
+    <ClCompile Include="src\RE\BSScript\IObjectHandlePolicy.cpp" />
+    <ClCompile Include="src\RE\BSScript\IStackCallbackFunctor.cpp" />
+    <ClCompile Include="src\RE\BSScript\IVirtualMachine.cpp" />
+    <ClCompile Include="src\RE\BSScript\MemoryPage.cpp" />
+    <ClCompile Include="src\RE\BSScript\Object.cpp" />
+    <ClCompile Include="src\RE\BSScript\ObjectBindPolicy.cpp" />
+    <ClCompile Include="src\RE\BSScript\ObjectTypeInfo.cpp" />
+    <ClCompile Include="src\RE\BSScript\PackUnpack.cpp" />
+    <ClCompile Include="src\RE\BSScript\Stack.cpp" />
+    <ClCompile Include="src\RE\BSScript\StackFrame.cpp" />
+    <ClCompile Include="src\RE\BSScript\TypeInfo.cpp" />
+    <ClCompile Include="src\RE\BSScript\Variable.cpp" />
+    <ClCompile Include="src\RE\BSShader\BSEffectShaderData.cpp" />
+    <ClCompile Include="src\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase.cpp" />
+    <ClCompile Include="src\RE\BSSystem\BSIntrusiveRefCounted.cpp" />
+    <ClCompile Include="src\RE\BSSystem\BSSaveDataSystemUtility\BSWin32SaveDataSystemUtility.cpp" />
+    <ClCompile Include="src\RE\BSSystem\BSStorage\BSSystemFileStorage.cpp" />
+    <ClCompile Include="src\RE\BSSystem\IFormFactory\IFormFactory.cpp" />
+    <ClCompile Include="src\RE\Camera\TESCamera\LocalMapCamera.cpp" />
+    <ClCompile Include="src\RE\Camera\TESCamera\PlayerCamera.cpp" />
+    <ClCompile Include="src\RE\Camera\TESCamera\TESCamera.cpp" />
+    <ClCompile Include="src\RE\Events\BGSFootstepManager.cpp" />
+    <ClCompile Include="src\RE\Events\BGSStoryEvent\ChestsLooted.cpp" />
+    <ClCompile Include="src\RE\Events\BGSStoryEvent\Inventory.cpp" />
+    <ClCompile Include="src\RE\Events\BGSStoryEvent\ItemCrafted.cpp" />
+    <ClCompile Include="src\RE\Events\BGSStoryEvent\ItemsPickpocketed.cpp" />
+    <ClCompile Include="src\RE\Events\InputEvent\ButtonEvent.cpp" />
+    <ClCompile Include="src\RE\Events\InputEvent\ThumbstickEvent.cpp" />
+    <ClCompile Include="src\RE\Events\ScriptEvent\ScriptEventSourceHolder.cpp" />
+    <ClCompile Include="src\RE\Events\ScriptEvent\TESHitEvent.cpp" />
+    <ClCompile Include="src\RE\FileIO\BGSSaveLoadManager.cpp" />
+    <ClCompile Include="src\RE\FileIO\ICellAttachDetachEventSource\TES.cpp" />
+    <ClCompile Include="src\RE\FileIO\TESDataHandler.cpp" />
+    <ClCompile Include="src\RE\FileIO\TESFile.cpp" />
+    <ClCompile Include="src\RE\FormComponents\BGSBipedObjectForm.cpp" />
+    <ClCompile Include="src\RE\FormComponents\BGSKeywordForm.cpp" />
+    <ClCompile Include="src\RE\FormComponents\Components\ActiveEffect\ActiveEffect.cpp" />
+    <ClCompile Include="src\RE\FormComponents\Components\ActorCause.cpp" />
+    <ClCompile Include="src\RE\FormComponents\Components\ActorValueOwner.cpp" />
+    <ClCompile Include="src\RE\FormComponents\Components\BGSBaseAlias\BGSBaseAlias.cpp" />
+    <ClCompile Include="src\RE\FormComponents\Components\BGSEntryPointFunctionData\BGSEntryPointFunctionDataActivateChoice.cpp" />
+    <ClCompile Include="src\RE\FormComponents\Components\BGSPerkEntry\BGSEntryPointPerkEntry.cpp" />
+    <ClCompile Include="src\RE\FormComponents\Components\BGSPerkEntry\BGSPerkEntry.cpp" />
+    <ClCompile Include="src\RE\FormComponents\Components\BipedAnim.cpp" />
+    <ClCompile Include="src\RE\FormComponents\Components\DialogueItem.cpp" />
+    <ClCompile Include="src\RE\FormComponents\Components\Effect.cpp" />
+    <ClCompile Include="src\RE\FormComponents\Components\MagicTarget.cpp" />
+    <ClCompile Include="src\RE\FormComponents\Components\TESCondition.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESActorBaseData.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESAIForm.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESContainer.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESDescription.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\BGSColorForm.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\BGSDefaultObjectManager.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\BGSHeadPart.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\BGSListForm.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\BGSLocation.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\BGSSoundCategory.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\BGSStoryManagerTreeForm\TESQuest.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\EffectSetting.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\Script.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESClimate.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESFaction.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESObjectCELL.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESObjectREFR\Actor\Actor.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESObjectREFR\Actor\Character\PlayerCharacter.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESObjectREFR\TESObjectREFR.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem\MagicItem.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESAmmo.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESActorBase\TESNPC.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESObjectLIGH.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectARMO.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectBOOK.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC\TESSoulGem.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT\TESObjectSTAT.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectWEAP.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESObjectARMA.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESRace.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESTopic.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESTopicInfo.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESForm\TESWorldSpace.cpp" />
+    <ClCompile Include="src\RE\Inventory\ActorEquipManager.cpp" />
+    <ClCompile Include="src\RE\Inventory\ExtraDataList.cpp" />
+    <ClCompile Include="src\RE\Inventory\Inventory3DManager.cpp" />
+    <ClCompile Include="src\RE\Inventory\InventoryChanges.cpp" />
+    <ClCompile Include="src\RE\Inventory\InventoryEntryData.cpp" />
+    <ClCompile Include="src\RE\Memory\HeapBlock.cpp" />
+    <ClCompile Include="src\RE\Memory\IMemoryStoreBase\IMemoryStore\IMemoryStore.cpp" />
+    <ClCompile Include="src\RE\Memory\IMemoryStoreBase\IMemoryStore\ScrapHeap.cpp" />
+    <ClCompile Include="src\RE\Memory\MemoryManager.cpp" />
+    <ClCompile Include="src\RE\Menus\ConsoleLog.cpp" />
+    <ClCompile Include="src\RE\Menus\HUDObject\HUDMeter\HUDMeter.cpp" />
+    <ClCompile Include="src\RE\Menus\HUDObject\HUDObject.cpp" />
+    <ClCompile Include="src\RE\Menus\IMenu\Components\ItemList.cpp" />
+    <ClCompile Include="src\RE\Menus\IMenu\Console.cpp" />
+    <ClCompile Include="src\RE\Menus\IMenu\IMenu.cpp" />
+    <ClCompile Include="src\RE\Menus\InterfaceStrings.cpp" />
+    <ClCompile Include="src\RE\Menus\MagicFavorites.cpp" />
+    <ClCompile Include="src\RE\Menus\UI.cpp" />
+    <ClCompile Include="src\RE\Menus\UIBlurManager.cpp" />
+    <ClCompile Include="src\RE\Menus\UIMessageQueue.cpp" />
+    <ClCompile Include="src\RE\Misc.cpp" />
+    <ClCompile Include="src\RE\Misc\Calendar.cpp" />
+    <ClCompile Include="src\RE\Misc\TaskQueueInterface.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\BSVisit.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiAnimationKey\NiAnimationKey.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiAnimationKey\NiColorKey.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiAnimationKey\NiFloatKey.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiBinaryStream\BSResourceNiBinaryStream.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiBinaryStream\NiBinaryStream.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiMath.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiMatrix3.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiMemManager.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiPoint3.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\BGSAttackData.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiColorData.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiExtraData\BSFaceGenAnimationData.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiExtraData\NiExtraData.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiExtraData\NiIntegerExtraData\BSXFlags.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiFloatData.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiInterpolator\NiInterpolator.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObject.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiAVObject.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiCamera.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode\NiNode.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiObjectNET.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty\NiShadeProperty\BSShaderProperty\BSShaderProperty.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiSkinInstance.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiTexture\NiTexture.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController\NiControllerManager.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiRefObject.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRTTI.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiSystem.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiTCollection.cpp" />
+    <ClCompile Include="src\RE\Obscript\CommandTable.cpp" />
+    <ClCompile Include="src\RE\Pathfinding\IMovementInterface\IMovementState\ActorState.cpp" />
+    <ClCompile Include="src\RE\RadiantStory\BGSStoryTeller.cpp" />
+    <ClCompile Include="src\RE\RTTI.cpp" />
+    <ClCompile Include="src\RE\Scaleform\BS\BSScaleformManager.cpp" />
+    <ClCompile Include="src\RE\Scaleform\FxGameDelegate\AddCallbackVisitor.cpp" />
+    <ClCompile Include="src\RE\Scaleform\FxGameDelegate\FxDelegate.cpp" />
+    <ClCompile Include="src\RE\Scaleform\FxGameDelegate\FxDelegateArgs.cpp" />
+    <ClCompile Include="src\RE\Scaleform\FxGameDelegate\RemoveCallbackVisitor.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GAtomic\GAtomic.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxLoader\GFxLoader.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxLoader\GFxState.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxLoader\GFxStateBag.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxLoader\GFxTranslator.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxLog\GFxLog.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxPlayer\GFxMovie.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxPlayer\GFxMovieDef.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxPlayer\GFxMovieView.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxPlayer\GFxValue.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxRenderConfig\GFxRenderConfig.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxResource\GFxResource.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxResource\GFxResourceID.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxResource\GFxResourceKey.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxString\GFxWStringBuffer.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GFxWWHelper\GFxWWHelper.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GMemoryHeap\GMemoryHeap.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GMemory\GMemory.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountImpl.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountImplCore.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountNTSImpl.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GRenderer\GRenderer.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GRenderer\GViewport.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GStd\GStd.cpp" />
+    <ClCompile Include="src\RE\Scaleform\GString\GString.cpp" />
+    <ClCompile Include="src\RE\SkyrimScript\SkyrimVM.cpp" />
+    <ClCompile Include="src\RE\Sky\Sky.cpp" />
+    <ClCompile Include="src\SKSE\API.cpp" />
+    <ClCompile Include="src\SKSE\CodeGenerator.cpp" />
+    <ClCompile Include="src\SKSE\IAT.cpp" />
+    <ClCompile Include="src\SKSE\Impl\PCH.cpp" />
+    <ClCompile Include="src\SKSE\Interfaces.cpp" />
+    <ClCompile Include="src\SKSE\Logger.cpp" />
+    <ClCompile Include="src\SKSE\RegistrationMap.cpp" />
+    <ClCompile Include="src\SKSE\RegistrationSet.cpp" />
+    <ClCompile Include="src\SKSE\Trampoline.cpp" />
+    <ClCompile Include="src\SKSE\VArgFormatter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
