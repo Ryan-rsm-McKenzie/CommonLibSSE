@@ -292,34 +292,51 @@ template <
 
 
 template <class To, class From>
-[[nodiscard]] inline decltype(auto) unrestricted_cast(From a_from) noexcept
+[[nodiscard]] inline To unrestricted_cast(From a_from)
 {
-	using from_t = std::remove_reference_t<From>;
+	if constexpr (std::is_same_v<
+					  std::remove_cv_t<From>,
+					  std::remove_cv_t<To>>) {
+		return To{ a_from };
 
-	if constexpr (std::is_same_v<To, From>) {
-		return a_from;
+		// From != To
+	} else if constexpr (std::is_reference_v<From>) {
+		return unrestricted_cast<To>(std::addressof(a_from));
+
+		// From: NOT reference
 	} else if constexpr (std::is_reference_v<To>) {
-		using to_t =
+		return *unrestricted_cast<
 			std::add_pointer_t<
-				std::remove_reference_t<
-					To>>;
+				std::remove_reference_t<To>>>(a_from);
 
-		union
-		{
-			from_t from;
-			to_t   to;
-		};
+		// To: NOT reference
+	} else if constexpr (std::is_pointer_v<From> &&
+						 std::is_pointer_v<To>) {
+		using cv_ptr =
+			std::add_pointer_t<
+				std::add_cv_t<
+					std::remove_pointer_t<From>>>;
 
-		from = a_from;
-		return *to;
+		using naked_ptr =
+			std::add_pointer_t<
+				std::remove_cv_t<
+					std::remove_pointer_t<From>>>;
+
+		return static_cast<To>(
+			static_cast<void*>(
+				const_cast<naked_ptr>(
+					static_cast<cv_ptr>(a_from))));
+	} else if constexpr ((std::is_pointer_v<From> && std::is_integral_v<To>) ||
+						 (std::is_integral_v<From> && std::is_pointer_v<To>)) {
+		return reinterpret_cast<To>(a_from);
 	} else {
 		union
 		{
-			from_t from;
-			To	   to;
+			std::remove_cv_t<std::remove_reference_t<From>> from;
+			std::remove_cv_t<std::remove_reference_t<To>>	to;
 		};
 
-		from = a_from;
+		from = std::forward<From>(a_from);
 		return to;
 	}
 }
@@ -357,36 +374,14 @@ inline void memzero(T* a_dst)
 }
 
 
-namespace SKSE
-{
-	namespace Impl
-	{
-		template <class T>
-		struct _is_bool :
-			std::false_type
-		{};
-
-		template <>
-		struct _is_bool<bool> :
-			std::true_type
-		{};
-
-		template <class T>
-		struct is_bool :
-			_is_bool<
-				std::remove_cv_t<
-					T>>
-		{};
-	}
-}
-
-
 template <
 	class... Args,
 	std::enable_if_t<
 		std::conjunction_v<
-			SKSE::Impl::is_bool<
-				Args>...>,
+			std::is_same<
+				bool,
+				std::remove_cv_t<
+					Args>>...>,
 		int> = 0>
 [[nodiscard]] inline auto pun_bits(Args... a_args)
 {
