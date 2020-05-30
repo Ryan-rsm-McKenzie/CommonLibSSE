@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSScript/Object.h"
 #include "RE/BSCore/BSTPointerAndFlags.h"
 #include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/BSScript/Object.h"
 
 
 namespace RE

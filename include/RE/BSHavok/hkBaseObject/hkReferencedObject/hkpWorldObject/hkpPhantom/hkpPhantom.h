@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSHavok/hkArray.h"
 #include "RE/BSHavok/Enums/hkpPhantomType.h"
+#include "RE/BSHavok/hkArray.h"
 #include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpWorldObject/hkpWorldObject.h"
 
 

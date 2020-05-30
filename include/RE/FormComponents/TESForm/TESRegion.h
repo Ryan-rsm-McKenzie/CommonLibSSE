@@ -2,9 +2,9 @@
 
 #include "RE/BSCore/BSTList.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
 #include "RE/NetImmerse/NiColor.h"
 #include "RE/NetImmerse/NiPoint2.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
 
 
 namespace RE

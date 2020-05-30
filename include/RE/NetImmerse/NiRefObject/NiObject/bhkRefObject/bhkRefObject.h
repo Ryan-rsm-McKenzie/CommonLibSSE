@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObject.h"
 #include "RE/BSHavok/hkRefPtr/hkRefPtr.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObject.h"
 
 
 namespace RE

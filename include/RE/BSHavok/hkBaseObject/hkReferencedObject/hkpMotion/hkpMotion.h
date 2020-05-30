@@ -1,8 +1,8 @@
 #pragma once
 
+#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkReferencedObject.h"
 #include "RE/BSHavok/hkBaseTypes.h"
 #include "RE/BSHavok/hkMotionState.h"
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkReferencedObject.h"
 #include "RE/BSHavok/hkVector4.h"
 
 

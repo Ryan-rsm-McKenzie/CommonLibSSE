@@ -1,16 +1,16 @@
 #pragma once
 
-#include "RE/FormComponents/Enums/ActorValues.h"
-#include "RE/FormComponents/BGSKeywordForm.h"
-#include "RE/FormComponents/BGSMenuDisplayObject.h"
 #include "RE/BSCore/BSFixedString.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTList.h"
+#include "RE/FormComponents/BGSKeywordForm.h"
+#include "RE/FormComponents/BGSMenuDisplayObject.h"
 #include "RE/FormComponents/Components/EffectArchetypes.h"
+#include "RE/FormComponents/Components/TESCondition.h"
+#include "RE/FormComponents/Enums/ActorValues.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/Enums/MagicSystem.h"
 #include "RE/FormComponents/Enums/SoundLevels.h"
-#include "RE/FormComponents/Components/TESCondition.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 #include "RE/FormComponents/TESFullName.h"
 

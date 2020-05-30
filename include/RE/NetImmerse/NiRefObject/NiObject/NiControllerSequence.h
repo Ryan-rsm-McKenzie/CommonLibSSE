@@ -3,8 +3,8 @@
 #include "RE/BSCore/BSFixedString.h"
 #include "RE/Memory/MemoryManager.h"
 #include "RE/NetImmerse/NiRefObject/NiObject/NiObject.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
 #include "RE/NetImmerse/NiRefObject/NiObject/NiTimeController/NiTimeController.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

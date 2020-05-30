@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/NetImmerse/NiPoint3.h"
 #include "RE/BSDevices/PlayerInputHandler/PlayerInputHandler.h"
 #include "RE/Camera/TESCameraState/TESCameraState.h"
+#include "RE/NetImmerse/NiPoint3.h"
 
 
 namespace RE

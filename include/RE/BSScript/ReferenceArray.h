@@ -1,9 +1,9 @@
 #pragma once
 
+#include "RE/BSCore/BSTSmartPointer.h"
 #include "RE/BSScript/Array.h"
 #include "RE/BSScript/Traits/CommonTypeTraits.h"
 #include "RE/BSScript/Variable.h"
-#include "RE/BSCore/BSTSmartPointer.h"
 
 
 namespace RE

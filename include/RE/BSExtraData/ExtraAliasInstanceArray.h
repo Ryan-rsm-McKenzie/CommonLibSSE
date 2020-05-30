@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSCore/BSAtomic.h"
-#include "RE/BSExtraData/BSExtraData.h"
 #include "RE/BSCore/BSTArray.h"
+#include "RE/BSExtraData/BSExtraData.h"
 #include "RE/BSExtraData/Enums/ExtraDataTypes.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 

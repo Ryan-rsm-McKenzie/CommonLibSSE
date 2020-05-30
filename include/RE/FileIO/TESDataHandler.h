@@ -4,9 +4,9 @@
 #include "RE/BSCore/BSTList.h"
 #include "RE/BSCore/BSTSingleton.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
 #include "RE/NetImmerse/NiTArray.h"
 #include "RE/NetImmerse/NiTListBase/NiTPointerListBase/NiTList.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
 
 
 namespace RE

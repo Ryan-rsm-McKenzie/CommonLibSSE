@@ -1,8 +1,8 @@
 #pragma once
 
+#include "RE/BSHavok/Enums/hkpShapeType.h"
 #include "RE/BSHavok/hkpBroadPhaseCastCollector/hkpBroadPhaseCastCollector.h"
 #include "RE/BSHavok/hkpCollisionInput/hkpLinearCastCollisionInput.h"
-#include "RE/BSHavok/Enums/hkpShapeType.h"
 
 
 namespace RE

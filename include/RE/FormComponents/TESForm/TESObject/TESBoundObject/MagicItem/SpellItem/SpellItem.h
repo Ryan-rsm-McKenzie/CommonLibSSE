@@ -3,8 +3,8 @@
 #include "RE/FormComponents/BGSEquipType.h"
 #include "RE/FormComponents/BGSMenuDisplayObject.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/MagicItem/MagicItem.h"
 #include "RE/FormComponents/TESDescription.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/MagicItem/MagicItem.h"
 
 
 namespace RE

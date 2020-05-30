@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/FormComponents/TESForm/TESObjectREFR/Actor/Actor.h"
 #include "RE/BSCore/BSFixedString.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
 #include "RE/Camera/TESCameraState/TESCameraState.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/FormComponents/TESForm/TESObjectREFR/Actor/Actor.h"
 #include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace SKSE

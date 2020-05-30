@@ -2,8 +2,8 @@
 
 #include "RE/BSCore/BSTList.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/Memory/MemoryManager.h"
 #include "RE/FormComponents/Enums/SoulLevels.h"
+#include "RE/Memory/MemoryManager.h"
 
 
 namespace RE

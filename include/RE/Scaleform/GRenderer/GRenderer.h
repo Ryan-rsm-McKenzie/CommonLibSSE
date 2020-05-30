@@ -2,11 +2,11 @@
 
 #include "RE/Scaleform/GColor/GColor.h"
 #include "RE/Scaleform/GMatrix2D/GMatrix2D.h"
+#include "RE/Scaleform/GRefCount/GRefCountBase.h"
+#include "RE/Scaleform/GRenderer/GTexture.h"
+#include "RE/Scaleform/GRendererEventHandler/GRendererEventHandler.h"
 #include "RE/Scaleform/GTypes2DF/GPoint.h"
 #include "RE/Scaleform/GTypes2DF/GRect.h"
-#include "RE/Scaleform/GRefCount/GRefCountBase.h"
-#include "RE/Scaleform/GRendererEventHandler/GRendererEventHandler.h"
-#include "RE/Scaleform/GRenderer/GTexture.h"
 
 
 namespace RE

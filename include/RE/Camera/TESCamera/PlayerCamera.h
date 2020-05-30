@@ -5,8 +5,8 @@
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTSingleton.h"
 #include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/NetImmerse/NiPoint3.h"
 #include "RE/Camera/TESCamera/TESCamera.h"
+#include "RE/NetImmerse/NiPoint3.h"
 
 
 namespace RE

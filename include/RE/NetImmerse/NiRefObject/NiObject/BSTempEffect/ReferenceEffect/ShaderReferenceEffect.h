@@ -2,8 +2,8 @@
 
 #include "RE/BSAudio/BSSoundHandle.h"
 #include "RE/BSCore/BSTArray.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
 #include "RE/NetImmerse/NiRefObject/NiObject/BSTempEffect/ReferenceEffect/ReferenceEffect.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

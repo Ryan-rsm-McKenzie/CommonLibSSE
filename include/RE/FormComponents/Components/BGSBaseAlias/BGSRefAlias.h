@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FormComponents/Components/BGSBaseAlias/BGSBaseAlias.h"
 #include "RE/BSCore/BSPointerHandle.h"
+#include "RE/FormComponents/Components/BGSBaseAlias/BGSBaseAlias.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/Enums/QuestEvents.h"
 

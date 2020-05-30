@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSResource/ErrorCodes.h"
 #include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/BSResource/ErrorCodes.h"
 #include "RE/Memory/MemoryManager.h"
 
 

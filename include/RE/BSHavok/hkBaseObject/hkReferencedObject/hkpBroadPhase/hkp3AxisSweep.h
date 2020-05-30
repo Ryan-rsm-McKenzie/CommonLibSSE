@@ -2,8 +2,8 @@
 
 #include "RE/BSHavok/hkAabb.h"
 #include "RE/BSHavok/hkArray.h"
-#include "RE/BSHavok/hkVector4.h"
 #include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpBroadPhase/hkpBroadPhase.h"
+#include "RE/BSHavok/hkVector4.h"
 
 
 namespace RE

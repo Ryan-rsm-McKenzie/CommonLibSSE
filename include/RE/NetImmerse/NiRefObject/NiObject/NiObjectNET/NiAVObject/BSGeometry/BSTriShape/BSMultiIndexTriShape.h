@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/BSGeometry/BSTriShape/BSTriShape.h"
 #include "RE/NetImmerse/NiColor.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/BSGeometry/BSTriShape/BSTriShape.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 
 

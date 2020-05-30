@@ -2,10 +2,10 @@
 
 #include "RE/BSCore/BSAtomic.h"
 #include "RE/BSCore/BSFixedString.h"
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTEvent.h"
 #include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 
 
 namespace RE

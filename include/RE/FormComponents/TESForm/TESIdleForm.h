@@ -2,8 +2,8 @@
 
 #include "RE/BSCore/BSFixedString.h"
 #include "RE/BSCore/BSString.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/Components/TESCondition.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 
 

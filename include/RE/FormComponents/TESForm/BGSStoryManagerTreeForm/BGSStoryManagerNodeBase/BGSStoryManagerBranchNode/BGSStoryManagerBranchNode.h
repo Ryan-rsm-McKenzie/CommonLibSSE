@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/FormComponents/TESForm/BGSStoryManagerTreeForm/BGSStoryManagerNodeBase/BGSStoryManagerNodeBase.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/BGSStoryManagerTreeForm/BGSStoryManagerNodeBase/BGSStoryManagerNodeBase.h"
 
 
 namespace RE

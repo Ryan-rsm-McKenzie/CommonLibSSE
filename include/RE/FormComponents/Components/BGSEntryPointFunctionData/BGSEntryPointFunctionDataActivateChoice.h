@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FormComponents/Components/BGSEntryPointFunctionData/BGSEntryPointFunctionData.h"
 #include "RE/BSCore/BSFixedString.h"
+#include "RE/FormComponents/Components/BGSEntryPointFunctionData/BGSEntryPointFunctionData.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 
 

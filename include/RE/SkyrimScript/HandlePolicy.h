@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSCore/BSTHashMap.h"
+#include "RE/BSScript/IObjectHandlePolicy.h"
 
 
 namespace RE

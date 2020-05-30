@@ -2,12 +2,12 @@
 
 #include "RE/FormComponents/BGSDestructibleObjectForm.h"
 #include "RE/FormComponents/Components/BGSOpenCloseForm.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESBoundAnimObject.h"
-#include "RE/FormComponents/TESContainer.h"
-#include "RE/FormComponents/TESFullName.h"
 #include "RE/FormComponents/Components/TESMagicCasterForm.h"
 #include "RE/FormComponents/Components/TESMagicTargetForm.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESContainer.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESBoundAnimObject.h"
+#include "RE/FormComponents/TESFullName.h"
 #include "RE/FormComponents/TESModel/TESModelTextureSwap.h"
 #include "RE/FormComponents/TESWeightForm.h"
 

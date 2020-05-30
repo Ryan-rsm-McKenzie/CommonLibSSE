@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/FormComponents/Enums/BGSBodyPartDefs.h"
-#include "RE/BSExtraData/BSExtraData.h"
 #include "RE/BSCore/BSFixedString.h"
 #include "RE/BSCore/BSTArray.h"
+#include "RE/BSExtraData/BSExtraData.h"
 #include "RE/BSExtraData/Enums/ExtraDataTypes.h"
+#include "RE/FormComponents/Enums/BGSBodyPartDefs.h"
 
 
 namespace RE

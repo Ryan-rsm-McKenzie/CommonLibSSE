@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FormComponents/BGSPreloadable.h"
 #include "RE/BSCore/BSTHashMap.h"
+#include "RE/FormComponents/BGSPreloadable.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 

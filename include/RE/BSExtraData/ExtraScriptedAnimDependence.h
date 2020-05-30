@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSExtraData/BSExtraData.h"
 #include "RE/BSCore/BSPointerHandle.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTTuple.h"
+#include "RE/BSExtraData/BSExtraData.h"
 #include "RE/BSExtraData/Enums/ExtraDataTypes.h"
 
 

@@ -1,14 +1,14 @@
 #pragma once
 
-#include "RE/FormComponents/Components/ActorPackage.h"
-#include "RE/FormComponents/Components/BGSPerkEntry/BGSPerkEntry.h"
 #include "RE/BSCore/BSAtomic.h"
 #include "RE/BSCore/BSPointerHandle.h"
-#include "RE/FormComponents/Components/BSResponse.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTEvent.h"
 #include "RE/BSCore/BSTList.h"
 #include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/FormComponents/Components/ActorPackage.h"
+#include "RE/FormComponents/Components/BGSPerkEntry/BGSPerkEntry.h"
+#include "RE/FormComponents/Components/BSResponse.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/Enums/MagicSystem.h"
 #include "RE/NetImmerse/NiPoint3.h"

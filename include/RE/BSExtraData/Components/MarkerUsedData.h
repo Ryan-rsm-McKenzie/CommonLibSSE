@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FormComponents/Components/AITimeStamp.h"
 #include "RE/BSCore/BSPointerHandle.h"
+#include "RE/FormComponents/Components/AITimeStamp.h"
 
 
 namespace RE

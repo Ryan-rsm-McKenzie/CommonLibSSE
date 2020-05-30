@@ -6,8 +6,8 @@
 #include "RE/FormComponents/BGSPickupPutdownSounds.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/MagicItem/MagicItem.h"
-#include "RE/FormComponents/TESTexture/TESIcon.h"
 #include "RE/FormComponents/TESModel/TESModelTextureSwap.h"
+#include "RE/FormComponents/TESTexture/TESIcon.h"
 #include "RE/FormComponents/TESWeightForm.h"
 
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
 #include "RE/BSAudio/BSIMusicType.h"
+#include "RE/BSCore/BSFixedString.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSScript/LogEvent.h"
 #include "RE/BSCore/BSTEvent.h"
+#include "RE/BSScript/LogEvent.h"
 
 
 namespace SKSE

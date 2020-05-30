@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Scaleform/GFxResource/GFxFileConstants.h"
 #include "RE/Scaleform/GFxLoader/GFxState.h"
+#include "RE/Scaleform/GFxResource/GFxFileConstants.h"
 #include "RE/Scaleform/GRefCount/GPtr.h"
 
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSHavok/hkMotionState.h"
 #include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpWorldObject/hkpPhantom/hkpPhantom.h"
+#include "RE/BSHavok/hkMotionState.h"
 
 
 namespace RE

@@ -2,8 +2,8 @@
 
 #include "RE/BSAudio/BSSoundHandle.h"
 #include "RE/BSCore/BSTEvent.h"
-#include "RE/Menus/IMenu/IMenu.h"
 #include "RE/BSDevices/MenuEventHandler/MenuEventHandler.h"
+#include "RE/Menus/IMenu/IMenu.h"
 
 
 namespace RE

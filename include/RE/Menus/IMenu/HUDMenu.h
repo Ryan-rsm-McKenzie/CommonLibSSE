@@ -2,8 +2,8 @@
 
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTEvent.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
 #include "RE/Menus/IMenu/IMenu.h"
+#include "RE/Scaleform/GFxPlayer/GFxValue.h"
 
 
 namespace RE

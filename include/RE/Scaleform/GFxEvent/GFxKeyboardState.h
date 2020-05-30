@@ -2,8 +2,8 @@
 
 #include "RE/Scaleform/GFxEvent/GFxEvent.h"
 #include "RE/Scaleform/GFxEvent/GFxKey.h"
-#include "RE/Scaleform/GFxPlayerStats/GFxPlayerStats.h"
 #include "RE/Scaleform/GFxEvent/GFxSpecialKeysState.h"
+#include "RE/Scaleform/GFxPlayerStats/GFxPlayerStats.h"
 #include "RE/Scaleform/GRefCount/GRefCountBaseNTS.h"
 
 

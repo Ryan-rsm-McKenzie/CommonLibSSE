@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSCore/BSTList.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/Components/TESCondition.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 
 

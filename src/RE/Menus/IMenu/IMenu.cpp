@@ -2,11 +2,11 @@
 
 #include "RE/BSDevices/BSInputDeviceManager.h"
 #include "RE/Menus/IUIMessageData/BSUIScaleformData.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
 #include "RE/Menus/InterfaceStrings.h"
 #include "RE/Menus/UI.h"
 #include "RE/Menus/UIMessage.h"
 #include "RE/Menus/UIMessageQueue.h"
+#include "RE/Scaleform/GFxPlayer/GFxValue.h"
 
 
 namespace RE

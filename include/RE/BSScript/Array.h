@@ -1,9 +1,9 @@
 #pragma once
 
 #include "RE/BSCore/BSAtomic.h"
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/BSScript/TypeInfo.h"
 #include "RE/BSScript/Variable.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 
 
 namespace RE

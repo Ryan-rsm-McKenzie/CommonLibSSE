@@ -5,13 +5,13 @@
 #include "RE/FormComponents/BGSMessageIcon.h"
 #include "RE/FormComponents/Components/Color.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/NetImmerse/NiColor.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESBoundAnimObject.h"
 #include "RE/FormComponents/TESFullName.h"
-#include "RE/FormComponents/TESTexture/TESIcon.h"
 #include "RE/FormComponents/TESModel/TESModelTextureSwap.h"
+#include "RE/FormComponents/TESTexture/TESIcon.h"
 #include "RE/FormComponents/TESValueForm.h"
 #include "RE/FormComponents/TESWeightForm.h"
+#include "RE/NetImmerse/NiColor.h"
 
 
 namespace RE

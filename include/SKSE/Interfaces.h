@@ -2,9 +2,9 @@
 
 #include "RE/BSScript/IVirtualMachine.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
+#include "RE/Inventory/InventoryEntryData.h"
 #include "RE/Scaleform/GFxPlayer/GFxMovieView.h"
 #include "RE/Scaleform/GFxPlayer/GFxValue.h"
-#include "RE/Inventory/InventoryEntryData.h"
 
 #include "SKSE/Stubs.h"
 #include "SKSE/Version.h"

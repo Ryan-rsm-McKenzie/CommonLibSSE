@@ -1,18 +1,18 @@
 #pragma once
 
-#include "RE/FormComponents/Components/AITimeStamp.h"
-#include "RE/FormComponents/Components/BGSAnimationSequencer.h"
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
-#include "RE/BSCore/BSPointerHandle.h"
 #include "RE/BSAudio/BSSoundHandle.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSCore/BSPointerHandle.h"
 #include "RE/BSCore/BSTHashMap.h"
 #include "RE/BSCore/BSTList.h"
 #include "RE/BSCore/BSTSmartPointer.h"
 #include "RE/BSCore/BSTTuple.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
+#include "RE/FormComponents/Components/AITimeStamp.h"
+#include "RE/FormComponents/Components/BGSAnimationSequencer.h"
+#include "RE/FormComponents/TESForm/TESShout.h"
 #include "RE/NetImmerse/NiPoint3.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
-#include "RE/FormComponents/TESForm/TESShout.h"
 
 
 namespace RE

@@ -1,13 +1,13 @@
 #include "RE/FormComponents/TESForm/TESForm.h"
 
+#include "RE/BSExtraData/ExtraEnchantment.h"
 #include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
-#include "RE/BSExtraData/ExtraEnchantment.h"
 #include "RE/FormComponents/Components/FormTraits.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/MagicItem/MagicItem.h"
+#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
 #include "RE/FormComponents/TESFullName.h"
 #include "RE/FormComponents/TESModel/TESModel.h"
-#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
 #include "RE/FormComponents/TESValueForm.h"
 
 

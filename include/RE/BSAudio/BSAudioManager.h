@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSMain/BSThread/BSAudioManagerThread.h"
 #include "RE/BSCore/BSFixedString.h"
 #include "RE/BSCore/BSTHashMap.h"
+#include "RE/BSMain/BSThread/BSAudioManagerThread.h"
 
 
 namespace RE

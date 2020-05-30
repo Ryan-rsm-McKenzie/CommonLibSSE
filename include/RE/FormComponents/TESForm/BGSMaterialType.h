@@ -2,8 +2,8 @@
 
 #include "RE/BSCore/BSFixedString.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/NetImmerse/NiColor.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/NetImmerse/NiColor.h"
 
 
 namespace RE

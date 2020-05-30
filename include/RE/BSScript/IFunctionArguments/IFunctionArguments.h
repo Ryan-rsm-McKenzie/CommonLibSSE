@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSScript/Variable.h"
 #include "RE/BSCore/BSTArray.h"
+#include "RE/BSScript/Variable.h"
 #include "RE/Memory/MemoryManager.h"
 
 

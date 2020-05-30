@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/FormComponents/BGSBipedObjectForm.h"
 #include "RE/BSCore/BSTArray.h"
+#include "RE/FormComponents/BGSBipedObjectForm.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/Enums/Sexes.h"
-#include "RE/FormComponents/TESModel/TESModelTextureSwap.h"
 #include "RE/FormComponents/TESForm/TESObject/TESObject.h"
+#include "RE/FormComponents/TESModel/TESModelTextureSwap.h"
 #include "RE/FormComponents/TESRaceForm.h"
 
 

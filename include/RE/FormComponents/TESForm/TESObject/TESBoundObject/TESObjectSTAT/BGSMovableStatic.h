@@ -2,8 +2,8 @@
 
 #include "RE/FormComponents/BGSDestructibleObjectForm.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESFullName.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESObjectSTAT/TESObjectSTAT.h"
+#include "RE/FormComponents/TESFullName.h"
 
 
 namespace RE

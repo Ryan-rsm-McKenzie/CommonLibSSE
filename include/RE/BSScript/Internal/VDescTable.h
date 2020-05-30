@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSCore/BSFixedString.h"
-#include "RE/BSScript/TypeInfo.h"
 #include "RE/BSCore/BSTTuple.h"
+#include "RE/BSScript/TypeInfo.h"
 #include "RE/Memory/MemoryManager.h"
 
 

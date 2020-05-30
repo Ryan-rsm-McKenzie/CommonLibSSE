@@ -2,13 +2,13 @@
 
 #include "RE/FormComponents/Components/Color.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/NetImmerse/NiColor.h"
-#include "RE/NetImmerse/NiPoint3.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
 #include "RE/FormComponents/TESAttackDamageForm.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 #include "RE/FormComponents/TESFullName.h"
 #include "RE/FormComponents/TESTexture/TESTexture.h"
+#include "RE/NetImmerse/NiColor.h"
+#include "RE/NetImmerse/NiPoint3.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

@@ -1,14 +1,14 @@
 #pragma once
 
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/BSCore/BSTArray.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/NetImmerse/NiMatrix3.h"
-#include "RE/NetImmerse/NiPoint3.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
 #include "RE/FormComponents/TESFullName.h"
 #include "RE/FormComponents/TESModel/TESModel.h"
 #include "RE/FormComponents/TESProduceForm.h"
+#include "RE/NetImmerse/NiMatrix3.h"
+#include "RE/NetImmerse/NiPoint3.h"
 
 
 namespace RE

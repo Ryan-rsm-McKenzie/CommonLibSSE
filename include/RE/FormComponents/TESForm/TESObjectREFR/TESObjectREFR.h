@@ -2,20 +2,20 @@
 
 #include "function_ref.h"
 
+#include "RE/Animation/IAnimationGraphManagerHolder/IAnimationGraphManagerHolder.h"
 #include "RE/BSCore/BSFixedString.h"
-#include "RE/BSMain/BSHandleRefObject.h"
 #include "RE/BSCore/BSPointerHandle.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTEvent.h"
 #include "RE/BSCore/BSTList.h"
 #include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/Inventory/ExtraDataList.h"
+#include "RE/BSMain/BSHandleRefObject.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/Animation/IAnimationGraphManagerHolder/IAnimationGraphManagerHolder.h"
 #include "RE/FormComponents/Enums/MagicSystem.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/Inventory/ExtraDataList.h"
 #include "RE/NetImmerse/NiPoint3.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
 
 
 namespace RE

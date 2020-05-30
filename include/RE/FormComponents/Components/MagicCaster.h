@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSPointerHandle.h"
 #include "RE/BSAudio/BSSoundHandle.h"
+#include "RE/BSCore/BSPointerHandle.h"
 
 
 namespace RE

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSExtraData/BSExtraData.h"
 #include "RE/BSCore/BSTArray.h"
+#include "RE/BSExtraData/BSExtraData.h"
 #include "RE/BSExtraData/Enums/ExtraDataTypes.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 

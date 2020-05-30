@@ -1,11 +1,11 @@
 #pragma once
 
+#include "RE/Scaleform/GFxLoader/GFxStateBag.h"
 #include "RE/Scaleform/GFxPlayer/GFxMovie.h"
 #include "RE/Scaleform/GFxPlayer/GFxMovieDef.h"
-#include "RE/Scaleform/GFxLoader/GFxStateBag.h"
+#include "RE/Scaleform/GRenderer/GViewport.h"
 #include "RE/Scaleform/GTypes2DF/GPoint.h"
 #include "RE/Scaleform/GTypes2DF/GRect.h"
-#include "RE/Scaleform/GRenderer/GViewport.h"
 
 
 namespace RE

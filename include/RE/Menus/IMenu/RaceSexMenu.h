@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/Menus/IMenu/IMenu.h"
 #include "RE/BSDevices/MenuEventHandler/MenuEventHandler.h"
 #include "RE/Camera/TESCamera/RaceSexCamera.h"
+#include "RE/Menus/IMenu/IMenu.h"
 
 
 namespace RE

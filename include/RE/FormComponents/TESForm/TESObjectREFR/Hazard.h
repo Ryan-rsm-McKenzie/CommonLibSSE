@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSCore/BSPointerHandle.h"
 #include "RE/BSAudio/BSSoundHandle.h"
+#include "RE/BSCore/BSPointerHandle.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
 #include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

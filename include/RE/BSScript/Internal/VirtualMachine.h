@@ -1,6 +1,13 @@
 #pragma once
 
 #include "RE/BSCore/BSAtomic.h"
+#include "RE/BSCore/BSTArray.h"
+#include "RE/BSCore/BSTEvent.h"
+#include "RE/BSCore/BSTFreeList.h"
+#include "RE/BSCore/BSTHashMap.h"
+#include "RE/BSCore/BSTMessageQueue.h"
+#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/BSScript/IObjectProcessor/LinkerProcessor.h"
 #include "RE/BSScript/IVMDebugInterface.h"
 #include "RE/BSScript/IVMObjectBindInterface.h"
 #include "RE/BSScript/IVMSaveLoadInterface.h"
@@ -8,13 +15,6 @@
 #include "RE/BSScript/Internal/AttachedScript.h"
 #include "RE/BSScript/Internal/FunctionMessage.h"
 #include "RE/BSScript/Internal/SuspendedStack.h"
-#include "RE/BSScript/IObjectProcessor/LinkerProcessor.h"
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/BSCore/BSTFreeList.h"
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/BSCore/BSTMessageQueue.h"
-#include "RE/BSCore/BSTSmartPointer.h"
 
 
 namespace RE

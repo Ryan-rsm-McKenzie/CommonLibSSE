@@ -1,7 +1,7 @@
 #include "RE/BSAudio/BSAudioManager.h"
 
-#include "RE/FormComponents/TESForm/BGSSoundDescriptorForm.h"
 #include "RE/BSAudio/BSSoundHandle.h"
+#include "RE/FormComponents/TESForm/BGSSoundDescriptorForm.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 
 

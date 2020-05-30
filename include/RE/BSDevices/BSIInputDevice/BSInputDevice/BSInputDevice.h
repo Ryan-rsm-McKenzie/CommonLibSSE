@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSCore/BSFixedString.h"
-#include "RE/BSDevices/BSIInputDevice/BSIInputDevice.h"
 #include "RE/BSCore/BSTHashMap.h"
+#include "RE/BSDevices/BSIInputDevice/BSIInputDevice.h"
 #include "RE/BSDevices/Enums/InputDevices.h"
 
 

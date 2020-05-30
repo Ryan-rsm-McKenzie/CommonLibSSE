@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/FormComponents/Components/ReferenceEffectController/ActiveEffectReferenceEffectController.h"
-#include "RE/BSCore/BSPointerHandle.h"
 #include "RE/BSAudio/BSSoundHandle.h"
+#include "RE/BSCore/BSPointerHandle.h"
 #include "RE/BSCore/BSTList.h"
+#include "RE/FormComponents/Components/ReferenceEffectController/ActiveEffectReferenceEffectController.h"
 #include "RE/FormComponents/Enums/MagicSystem.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 

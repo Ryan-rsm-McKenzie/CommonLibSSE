@@ -2,20 +2,20 @@
 
 #include "RE/BSCore/BSAtomic.h"
 #include "RE/BSCore/BSBitField.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/NiNode/BSNiNode/BSMultiBoundNode.h"
 #include "RE/BSCore/BSPointerHandle.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTHashMap.h"
 #include "RE/BSCore/BSTList.h"
 #include "RE/FormComponents/Components/Color.h"
-#include "RE/Inventory/ExtraDataList.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/Components/InteriorData.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
+#include "RE/FormComponents/TESFullName.h"
+#include "RE/Inventory/ExtraDataList.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/NiNode/BSNiNode/BSMultiBoundNode.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 #include "RE/NetImmerse/NiTMapBase/NiTMap/NiTMap.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
-#include "RE/FormComponents/TESFullName.h"
-#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
 
 
 namespace RE

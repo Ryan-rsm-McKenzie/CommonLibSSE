@@ -1,11 +1,11 @@
 #pragma once
 
 #include "RE/BSCore/BSTEvent.h"
-#include "RE/Menus/IMenu/IMenu.h"
+#include "RE/BSDevices/MenuEventHandler/MenuEventHandler.h"
 #include "RE/Menus/IMenu/Components/JournalTab/Journal_QuestsTab.h"
 #include "RE/Menus/IMenu/Components/JournalTab/Journal_StatsTab.h"
 #include "RE/Menus/IMenu/Components/JournalTab/Journal_SystemTab.h"
-#include "RE/BSDevices/MenuEventHandler/MenuEventHandler.h"
+#include "RE/Menus/IMenu/IMenu.h"
 
 
 namespace RE

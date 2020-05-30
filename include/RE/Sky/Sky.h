@@ -3,8 +3,8 @@
 #include "RE/BSCore/BSPointerHandle.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTList.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/BSTextureSet.h"
 #include "RE/NetImmerse/NiColor.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/BSTextureSet.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 #include "RE/Sky/SkyEffectController.h"
 

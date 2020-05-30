@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSExtraData/BSExtraData.h"
 #include "RE/BSCore/BSFixedString.h"
 #include "RE/BSCore/BSPointerHandle.h"
+#include "RE/BSExtraData/BSExtraData.h"
 #include "RE/BSExtraData/Enums/ExtraDataTypes.h"
 #include "RE/NetImmerse/NiPoint3.h"
 

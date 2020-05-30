@@ -1,11 +1,6 @@
 #pragma once
 
-#include "RE/FormComponents/Components/AITimeStamp.h"
-#include "RE/FormComponents/Components/ActiveEffect/ActiveEffect.h"
-#include "RE/Pathfinding/IMovementInterface/IMovementState/ActorState.h"
-#include "RE/FormComponents/Components/ActorValueOwner.h"
-#include "RE/FormComponents/Enums/ActorValues.h"
-#include "RE/FormComponents/Components/BGSPerkEntry/BGSEntryPointPerkEntry.h"
+#include "RE/Animation/IPostAnimationChannelUpdateFunctor.h"
 #include "RE/BSCore/BSPointerHandle.h"
 #include "RE/BSCore/BSPointerHandleSmartPointer.h"
 #include "RE/BSCore/BSTArray.h"
@@ -13,14 +8,19 @@
 #include "RE/BSCore/BSTList.h"
 #include "RE/BSCore/BSTSmartPointer.h"
 #include "RE/BSCore/BSTTuple.h"
+#include "RE/FormComponents/Components/AITimeStamp.h"
+#include "RE/FormComponents/Components/ActiveEffect/ActiveEffect.h"
+#include "RE/FormComponents/Components/ActorValueOwner.h"
+#include "RE/FormComponents/Components/BGSPerkEntry/BGSEntryPointPerkEntry.h"
+#include "RE/FormComponents/Components/MagicTarget.h"
+#include "RE/FormComponents/Enums/ActorValues.h"
 #include "RE/FormComponents/Enums/DetectionPriorities.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/Animation/IPostAnimationChannelUpdateFunctor.h"
 #include "RE/FormComponents/Enums/MagicSystem.h"
-#include "RE/FormComponents/Components/MagicTarget.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESActorBase/TESNPC.h"
 #include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/Pathfinding/IMovementInterface/IMovementState/ActorState.h"
 
 
 namespace RE

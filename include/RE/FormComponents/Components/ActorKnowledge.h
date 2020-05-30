@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FormComponents/Components/AITimeStamp.h"
 #include "RE/BSCore/BSPointerHandle.h"
+#include "RE/FormComponents/Components/AITimeStamp.h"
 #include "RE/FormComponents/Enums/FightReactions.h"
 #include "RE/NetImmerse/NiRefObject/NiRefObject.h"
 #include "RE/NetImmerse/NiSmartPointer.h"

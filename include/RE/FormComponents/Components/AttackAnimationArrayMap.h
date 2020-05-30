@@ -2,8 +2,8 @@
 
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTHashMap.h"
-#include "RE/NetImmerse/NiRefObject/NiRefObject.h"
 #include "RE/FormComponents/Components/SetEventData.h"
+#include "RE/NetImmerse/NiRefObject/NiRefObject.h"
 
 
 namespace RE

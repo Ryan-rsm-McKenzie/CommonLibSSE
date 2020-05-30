@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FormComponents/Enums/ActorValues.h"
 #include "RE/BSCore/BSTArray.h"
+#include "RE/FormComponents/Enums/ActorValues.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESObjectACTI/TESObjectACTI.h"
 

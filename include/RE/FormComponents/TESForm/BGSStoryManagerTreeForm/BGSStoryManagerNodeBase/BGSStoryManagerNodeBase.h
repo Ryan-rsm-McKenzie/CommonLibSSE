@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FormComponents/TESForm/BGSStoryManagerTreeForm/BGSStoryManagerTreeForm.h"
 #include "RE/FormComponents/Components/TESCondition.h"
+#include "RE/FormComponents/TESForm/BGSStoryManagerTreeForm/BGSStoryManagerTreeForm.h"
 
 
 namespace RE

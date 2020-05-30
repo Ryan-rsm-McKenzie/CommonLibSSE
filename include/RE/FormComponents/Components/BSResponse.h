@@ -1,9 +1,9 @@
 #pragma once
 
 #include "RE/BSCore/BSFixedString.h"
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/BSCore/BSTHashMap.h"
 #include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/FormComponents/Components/DoNothingUnhandledPolicy.h"
 #include "RE/FormComponents/Components/IHandlerFunctor.h"
 

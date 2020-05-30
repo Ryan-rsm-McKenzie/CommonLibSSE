@@ -3,8 +3,8 @@
 #include "RE/BSGraphics/Enums/DepthStencilDepthModes.h"
 #include "RE/BSGraphics/Enums/TextureAddressModes.h"
 #include "RE/BSSystem/BSIntrusiveRefCounted.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiProperty/NiAlphaProperty.h"
 #include "RE/NetImmerse/NiColor.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiProperty/NiAlphaProperty.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 
 

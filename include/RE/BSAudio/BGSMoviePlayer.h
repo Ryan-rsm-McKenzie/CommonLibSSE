@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSTEvent.h"
 #include "RE/BSAudio/MoviePlayer.h"
+#include "RE/BSCore/BSTEvent.h"
 
 
 namespace RE

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/FormComponents/Components/AITimeStamp.h"
-#include "RE/BSExtraData/BSExtraData.h"
 #include "RE/BSCore/BSTArray.h"
+#include "RE/BSExtraData/BSExtraData.h"
 #include "RE/BSExtraData/Enums/ExtraDataTypes.h"
+#include "RE/FormComponents/Components/AITimeStamp.h"
 
 
 namespace RE

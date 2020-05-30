@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/FormComponents/BGSPreloadable.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTList.h"
+#include "RE/FormComponents/BGSPreloadable.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 

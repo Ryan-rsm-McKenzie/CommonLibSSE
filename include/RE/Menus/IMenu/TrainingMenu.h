@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/FormComponents/Enums/ActorValues.h"
 #include "RE/BSCore/BSTEvent.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/FormComponents/Enums/ActorValues.h"
 #include "RE/Menus/IMenu/IMenu.h"
+#include "RE/Scaleform/GFxPlayer/GFxValue.h"
 
 
 namespace RE

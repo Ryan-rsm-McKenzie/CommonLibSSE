@@ -2,8 +2,8 @@
 
 #include "RE/BSCore/BSString.h"
 #include "RE/Menus/IMenu/Components/CraftingSubMenus/CraftingSubMenu.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
 #include "RE/Menus/IMessageBoxCallback/IMessageBoxCallback.h"
+#include "RE/Scaleform/GFxPlayer/GFxValue.h"
 
 
 namespace RE

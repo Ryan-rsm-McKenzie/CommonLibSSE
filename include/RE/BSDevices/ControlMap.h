@@ -1,10 +1,10 @@
 #pragma once
 
 #include "RE/BSCore/BSFixedString.h"
-#include "RE/BSDevices/BSIInputDevice/BSInputDevice/BSInputDevice.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTEvent.h"
 #include "RE/BSCore/BSTSingleton.h"
+#include "RE/BSDevices/BSIInputDevice/BSInputDevice/BSInputDevice.h"
 #include "RE/BSDevices/Enums/InputDevices.h"
 #include "RE/BSDevices/Enums/PCGamepadType.h"
 #include "RE/BSDevices/UserEvents.h"

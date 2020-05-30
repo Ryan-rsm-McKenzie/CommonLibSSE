@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FormComponents/Components/IPackageData/BGSNamedPackageData/BGSNamedPackageData.h"
 #include "RE/BSCore/BSFixedString.h"
+#include "RE/FormComponents/Components/IPackageData/BGSNamedPackageData/BGSNamedPackageData.h"
 
 
 namespace RE

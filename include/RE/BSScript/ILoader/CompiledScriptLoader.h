@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSScript/ILoader/ILoader.h"
 #include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/BSScript/ILoader/ILoader.h"
 
 
 namespace RE

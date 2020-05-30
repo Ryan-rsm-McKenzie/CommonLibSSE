@@ -2,8 +2,8 @@
 
 #include "RE/BSCore/BSString.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
 #include "RE/FormComponents/TESForm/TESObject/TESObject.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

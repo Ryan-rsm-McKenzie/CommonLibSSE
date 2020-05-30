@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSCore/BSFixedString.h"
-#include "RE/BSResource/StreamBase/StreamBase.h"
 #include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/BSResource/StreamBase/StreamBase.h"
 
 
 namespace RE

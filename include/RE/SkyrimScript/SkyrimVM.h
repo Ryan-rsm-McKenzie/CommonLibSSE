@@ -1,16 +1,17 @@
 #pragma once
 
 #include "RE/BSCore/BSAtomic.h"
-#include "RE/BSScript/ILoader/CompiledScriptLoader.h"
-#include "RE/BSScript/IFreezeQuery.h"
-#include "RE/BSScript/IStackCallbackSaveInterface.h"
-#include "RE/BSScript/IMemoryPagePolicy/SimpleAllocMemoryPagePolicy.h"
 #include "RE/BSCore/BSTEvent.h"
 #include "RE/BSCore/BSTFreeList.h"
 #include "RE/BSCore/BSTHashMap.h"
 #include "RE/BSCore/BSTMessageQueue.h"
 #include "RE/BSCore/BSTSingleton.h"
 #include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/BSScript/IFreezeQuery.h"
+#include "RE/BSScript/ILoader/CompiledScriptLoader.h"
+#include "RE/BSScript/IMemoryPagePolicy/SimpleAllocMemoryPagePolicy.h"
+#include "RE/BSScript/IStackCallbackSaveInterface.h"
+#include "RE/BSSystem/BSStorage/IStore/Store.h"
 #include "RE/SkyrimScript/DelayFunctor/DelayFunctor.h"
 #include "RE/SkyrimScript/FragmentSystem.h"
 #include "RE/SkyrimScript/HandlePolicy.h"
@@ -18,7 +19,6 @@
 #include "RE/SkyrimScript/ObjectBindPolicy.h"
 #include "RE/SkyrimScript/Profiler.h"
 #include "RE/SkyrimScript/SavePatcher.h"
-#include "RE/BSSystem/BSStorage/IStore/Store.h"
 
 
 namespace RE

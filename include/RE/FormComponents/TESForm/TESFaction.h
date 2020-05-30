@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/FormComponents/Components/AITimeStamp.h"
 #include "RE/BSCore/BSFixedString.h"
 #include "RE/BSCore/BSTHashMap.h"
 #include "RE/BSCore/BSTList.h"
+#include "RE/FormComponents/Components/AITimeStamp.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 #include "RE/FormComponents/TESFullName.h"

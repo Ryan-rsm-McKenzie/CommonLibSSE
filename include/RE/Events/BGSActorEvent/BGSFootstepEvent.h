@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Events/BGSActorEvent/BGSActorEvent.h"
 #include "RE/BSCore/BSFixedString.h"
+#include "RE/Events/BGSActorEvent/BGSActorEvent.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSAudio/BSISoundDescriptor/BGSSoundDescriptor.h"
-#include "RE/BSResource/FileID/ID.h"
 #include "RE/BSCore/BSTArray.h"
+#include "RE/BSResource/FileID/ID.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 
 

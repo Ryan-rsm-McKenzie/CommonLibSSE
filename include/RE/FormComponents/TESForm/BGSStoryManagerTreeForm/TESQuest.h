@@ -1,17 +1,17 @@
 #pragma once
 
-#include "RE/FormComponents/TESForm/BGSStoryManagerTreeForm/BGSStoryManagerTreeForm.h"
 #include "RE/BSCore/BSAtomic.h"
 #include "RE/BSCore/BSFixedString.h"
 #include "RE/BSCore/BSString.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTHashMap.h"
 #include "RE/BSCore/BSTList.h"
+#include "RE/FormComponents/Components/TESCondition.h"
 #include "RE/FormComponents/Enums/DialogueTypes.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/Enums/QuestEvents.h"
 #include "RE/FormComponents/Enums/QuestObjectiveStates.h"
-#include "RE/FormComponents/Components/TESCondition.h"
+#include "RE/FormComponents/TESForm/BGSStoryManagerTreeForm/BGSStoryManagerTreeForm.h"
 #include "RE/FormComponents/TESFullName.h"
 
 

@@ -1,7 +1,7 @@
 #include "RE/FormComponents/TESForm/TESObjectCELL.h"
 
-#include "RE/FormComponents/TESForm/BGSEncounterZone.h"
 #include "RE/BSExtraData/ExtraNorthRotation.h"
+#include "RE/FormComponents/TESForm/BGSEncounterZone.h"
 #include "RE/FormComponents/TESForm/TESFaction.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESActorBase/TESNPC.h"
 #include "RE/FormComponents/TESForm/TESWorldSpace.h"

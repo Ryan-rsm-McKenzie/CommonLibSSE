@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/Obscript/CommandTable.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/Obscript/CommandTable.h"
 
 
 namespace RE

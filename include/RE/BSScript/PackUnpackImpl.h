@@ -1,11 +1,11 @@
 #pragma once
 
+#include "RE/BSCore/BSTSmartPointer.h"
 #include "RE/BSScript/Array.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/PackUnpack.h"
 #include "RE/BSScript/TypeInfo.h"
 #include "RE/BSScript/Variable.h"
-#include "RE/BSCore/BSTSmartPointer.h"
 
 // DO NOT INCLUDE EXCEPT IN MEGA HEADER!!!
 

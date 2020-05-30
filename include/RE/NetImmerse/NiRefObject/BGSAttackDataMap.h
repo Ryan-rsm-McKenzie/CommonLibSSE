@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/NetImmerse/NiRefObject/BGSAttackData.h"
 #include "RE/BSCore/BSTHashMap.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/NetImmerse/NiRefObject/BGSAttackData.h"
 #include "RE/NetImmerse/NiRefObject/NiRefObject.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 

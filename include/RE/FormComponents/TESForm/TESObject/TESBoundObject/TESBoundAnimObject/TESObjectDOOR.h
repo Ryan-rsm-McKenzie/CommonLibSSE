@@ -1,8 +1,8 @@
 #pragma once
 
+#include "RE/BSCore/BSTArray.h"
 #include "RE/FormComponents/BGSDestructibleObjectForm.h"
 #include "RE/FormComponents/Components/BGSOpenCloseForm.h"
-#include "RE/BSCore/BSTArray.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESBoundAnimObject.h"
 #include "RE/FormComponents/TESFullName.h"

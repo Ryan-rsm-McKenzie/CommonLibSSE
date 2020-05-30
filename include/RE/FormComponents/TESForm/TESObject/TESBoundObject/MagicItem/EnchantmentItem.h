@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/MagicItem/MagicItem.h"
 #include "RE/FormComponents/Enums/MagicSystem.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/MagicItem/MagicItem.h"
 
 
 namespace RE

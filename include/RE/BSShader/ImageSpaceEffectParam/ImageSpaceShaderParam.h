@@ -1,9 +1,9 @@
 #pragma once
 
 #include "RE/BSShader/ImageSpaceEffectParam/ImageSpaceEffectParam.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiTexture/NiTexture.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 #include "RE/NetImmerse/NiTArray.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiTexture/NiTexture.h"
 
 
 namespace RE

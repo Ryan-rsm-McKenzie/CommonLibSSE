@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/BSGeometry/BSTriShape/BSTriShape.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/NetImmerse/NiPoint2.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
-#include "RE/FormComponents/Components/TESChildCell.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
 #include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpMoppCode.h"
+#include "RE/FormComponents/Components/TESChildCell.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/NetImmerse/NiPoint2.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/BSGeometry/BSTriShape/BSTriShape.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

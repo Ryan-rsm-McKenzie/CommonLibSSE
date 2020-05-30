@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FormComponents/TESForm/BGSKeyword/BGSKeyword.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/FormComponents/TESForm/BGSKeyword/BGSKeyword.h"
 
 
 namespace RE

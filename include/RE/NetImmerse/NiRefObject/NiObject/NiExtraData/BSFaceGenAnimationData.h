@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/NetImmerse/Components/BSFaceGenKeyframe/BSFaceGenKeyframeMultiple.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiExtraData/NiExtraData.h"
 #include "RE/NetImmerse/NiPoint3.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiExtraData/NiExtraData.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/NetImmerse/NiRefObject/bhkCharacterController.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/bhkRefObject/bhkSerializable/bhkCharacterProxy.h"
 #include "RE/BSHavok/hkpCharacterProxyListener/hkpCharacterProxyListener.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/bhkRefObject/bhkSerializable/bhkCharacterProxy.h"
+#include "RE/NetImmerse/NiRefObject/bhkCharacterController.h"
 
 
 namespace RE

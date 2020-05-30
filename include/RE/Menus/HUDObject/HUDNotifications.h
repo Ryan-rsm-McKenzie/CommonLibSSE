@@ -2,8 +2,8 @@
 
 #include "RE/BSCore/BSFixedString.h"
 #include "RE/BSCore/BSTArray.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
 #include "RE/Menus/HUDObject/HUDObject.h"
+#include "RE/Scaleform/GFxPlayer/GFxValue.h"
 
 
 namespace RE

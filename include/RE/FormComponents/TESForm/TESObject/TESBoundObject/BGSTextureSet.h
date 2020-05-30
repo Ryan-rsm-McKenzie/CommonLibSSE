@@ -1,12 +1,12 @@
 #pragma once
 
 #include "RE/BSResource/FileID/ID.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/BSTextureSet.h"
 #include "RE/FormComponents/Components/Color.h"
 #include "RE/FormComponents/Components/DecalData.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
 #include "RE/FormComponents/TESTexture/TESTexture.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/BSTextureSet.h"
 
 
 namespace RE

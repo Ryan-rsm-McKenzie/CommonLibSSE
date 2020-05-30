@@ -1,17 +1,17 @@
 #pragma once
 
-#include "RE/NetImmerse/NiRefObject/NiObject/NiExtraData/BSBound.h"
 #include "RE/BSCore/BSTEvent.h"
 #include "RE/BSCore/BSTHashMap.h"
-#include "RE/NetImmerse/NiPoint3.h"
-#include "RE/NetImmerse/NiRefObject/NiRefObject.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpCharacterContext.h"
+#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpCharacterState/hkpCharacterState.h"
 #include "RE/BSHavok/hkRefPtr/hkRefPtr.h"
 #include "RE/BSHavok/hkStepInfo.h"
 #include "RE/BSHavok/hkVector4.h"
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpCharacterContext.h"
 #include "RE/BSHavok/hkpCharacterControl.h"
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpCharacterState/hkpCharacterState.h"
+#include "RE/NetImmerse/NiPoint3.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiExtraData/BSBound.h"
+#include "RE/NetImmerse/NiRefObject/NiRefObject.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSCore/BSFixedString.h"
-#include "RE/BSScript/TypeInfo.h"
 #include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/BSScript/TypeInfo.h"
 
 
 namespace RE

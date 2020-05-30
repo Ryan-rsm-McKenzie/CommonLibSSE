@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/BSCore/BSTHashMap.h"
 #include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/Memory/MemoryManager.h"
 #include "RE/NetImmerse/NiPoint3.h"
 #include "RE/NetImmerse/NiSmartPointer.h"

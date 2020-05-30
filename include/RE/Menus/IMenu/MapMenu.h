@@ -4,11 +4,11 @@
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTEvent.h"
 #include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
-#include "RE/Menus/IMenu/Components/IMapCameraCallbacks.h"
-#include "RE/Menus/IMenu/IMenu.h"
-#include "RE/Menus/IMenu/Components/LocalMapMenu.h"
 #include "RE/Camera/TESCamera/MapCamera.h"
+#include "RE/Menus/IMenu/Components/IMapCameraCallbacks.h"
+#include "RE/Menus/IMenu/Components/LocalMapMenu.h"
+#include "RE/Menus/IMenu/IMenu.h"
+#include "RE/Scaleform/GFxPlayer/GFxValue.h"
 
 
 namespace RE

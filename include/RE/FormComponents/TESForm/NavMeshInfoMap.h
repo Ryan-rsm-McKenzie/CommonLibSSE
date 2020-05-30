@@ -1,11 +1,11 @@
 #pragma once
 
 #include "RE/BSCore/BSAtomic.h"
-#include "RE/BSPathFinding/BSNavmeshInfoMap.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTHashMap.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/BSPathFinding/BSNavmeshInfoMap.h"
 #include "RE/BSPathFinding/BSPrecomputedNavmeshInfoPathMap/PrecomputedNavmeshInfoPathMap.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 
 

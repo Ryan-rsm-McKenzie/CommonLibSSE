@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
 #include "RE/Animation/BSIRagdollDriver/BSIRagdollDriver.h"
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
+#include "RE/BSCore/BSFixedString.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTEvent.h"
 #include "RE/BSCore/BSTSmartPointer.h"
 #include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkbCharacter.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 
 
 namespace RE

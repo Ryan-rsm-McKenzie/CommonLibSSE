@@ -2,9 +2,9 @@
 
 #include "RE/BSCore/BSString.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/ImageSpaceModifierInstance/ImageSpaceModifierInstanceTemp/ImageSpaceModifierInstanceDOF.h"
-#include "RE/NetImmerse/NiPoint2.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/NetImmerse/NiPoint2.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/ImageSpaceModifierInstance/ImageSpaceModifierInstanceTemp/ImageSpaceModifierInstanceDOF.h"
 
 
 namespace RE

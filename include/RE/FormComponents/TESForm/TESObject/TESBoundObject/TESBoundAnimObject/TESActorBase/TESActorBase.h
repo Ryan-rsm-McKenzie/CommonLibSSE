@@ -1,16 +1,16 @@
 #pragma once
 
-#include "RE/FormComponents/Components/ActorValueOwner.h"
 #include "RE/FormComponents/BGSAttackDataForm.h"
 #include "RE/FormComponents/BGSDestructibleObjectForm.h"
 #include "RE/FormComponents/BGSKeywordForm.h"
 #include "RE/FormComponents/BGSPerkRankArray.h"
 #include "RE/FormComponents/BGSSkinForm.h"
+#include "RE/FormComponents/Components/ActorValueOwner.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESAIForm.h"
 #include "RE/FormComponents/TESActorBaseData.h"
-#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESBoundAnimObject.h"
 #include "RE/FormComponents/TESContainer.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESBoundAnimObject.h"
 #include "RE/FormComponents/TESFullName.h"
 #include "RE/FormComponents/TESSpellList.h"
 

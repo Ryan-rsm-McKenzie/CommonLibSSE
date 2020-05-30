@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/FormComponents/Components/BGSDirectionalAmbientLightingColors.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/Components/InteriorData.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 
 

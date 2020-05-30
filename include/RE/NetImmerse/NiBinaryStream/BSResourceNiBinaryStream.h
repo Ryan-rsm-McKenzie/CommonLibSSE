@@ -1,8 +1,8 @@
 #pragma once
 
+#include "RE/BSCore/BSTSmartPointer.h"
 #include "RE/BSResource/ErrorCodes.h"
 #include "RE/BSResource/StreamBase/Stream/Stream.h"
-#include "RE/BSCore/BSTSmartPointer.h"
 #include "RE/NetImmerse/NiBinaryStream/NiBinaryStream.h"
 
 

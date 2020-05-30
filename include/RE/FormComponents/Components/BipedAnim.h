@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/BSCore/BSPointerHandle.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/FormComponents/Enums/BipedObjects.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 

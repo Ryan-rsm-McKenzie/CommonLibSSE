@@ -1,11 +1,11 @@
 #pragma once
 
 #include "RE/BSCore/BSTArray.h"
+#include "RE/BSHavok/hkRefPtr/hkRefPtr.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/Enums/ImpactResults.h"
-#include "RE/NetImmerse/NiPoint3.h"
 #include "RE/FormComponents/TESForm/TESObjectREFR/Projectile/Projectile.h"
-#include "RE/BSHavok/hkRefPtr/hkRefPtr.h"
+#include "RE/NetImmerse/NiPoint3.h"
 
 
 namespace RE

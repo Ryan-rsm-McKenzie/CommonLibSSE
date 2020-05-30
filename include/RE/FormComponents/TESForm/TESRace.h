@@ -1,24 +1,24 @@
 #pragma once
 
-#include "RE/FormComponents/Enums/ActorValues.h"
+#include "RE/BSCore/BSFixedString.h"
+#include "RE/BSCore/BSTArray.h"
 #include "RE/FormComponents/BGSAttackDataForm.h"
-#include "RE/FormComponents/TESModel/BGSBehaviorGraphModel.h"
 #include "RE/FormComponents/BGSBipedObjectForm.h"
 #include "RE/FormComponents/BGSKeywordForm.h"
 #include "RE/FormComponents/BGSSkinForm.h"
-#include "RE/FormComponents/TESModel/BGSTextureModel.h"
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSCore/BSTArray.h"
+#include "RE/FormComponents/Enums/ActorValues.h"
 #include "RE/FormComponents/Enums/BipedObjects.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/NetImmerse/NiPoint3.h"
 #include "RE/FormComponents/Enums/Sexes.h"
 #include "RE/FormComponents/TESDescription.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 #include "RE/FormComponents/TESFullName.h"
+#include "RE/FormComponents/TESModel/BGSBehaviorGraphModel.h"
+#include "RE/FormComponents/TESModel/BGSTextureModel.h"
 #include "RE/FormComponents/TESModel/TESModel.h"
 #include "RE/FormComponents/TESSpellList.h"
 #include "RE/FormComponents/TESTexture/TESTexture.h"
+#include "RE/NetImmerse/NiPoint3.h"
 
 
 namespace RE

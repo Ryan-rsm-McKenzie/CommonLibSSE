@@ -1,10 +1,10 @@
 #pragma once
 
 #include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/NetImmerse/NiPoint3.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
 #include "RE/Camera/TESCamera/TESCamera.h"
 #include "RE/Camera/TESCameraState/TESCameraState.h"
+#include "RE/NetImmerse/NiPoint3.h"
+#include "RE/NetImmerse/NiSmartPointer.h"
 
 
 namespace RE

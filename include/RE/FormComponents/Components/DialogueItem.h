@@ -1,9 +1,9 @@
 #pragma once
 
 #include "RE/BSCore/BSFixedString.h"
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/BSCore/BSString.h"
 #include "RE/BSCore/BSTList.h"
+#include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/Memory/MemoryManager.h"
 
 

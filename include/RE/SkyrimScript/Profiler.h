@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSCore/BSAtomic.h"
-#include "RE/BSScript/IProfilePolicy.h"
 #include "RE/BSCore/BSTHashMap.h"
+#include "RE/BSScript/IProfilePolicy.h"
 
 
 namespace RE

@@ -5,11 +5,11 @@
 #include "RE/FormComponents/BGSMessageIcon.h"
 #include "RE/FormComponents/BGSPickupPutdownSounds.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
 #include "RE/FormComponents/TESDescription.h"
+#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
 #include "RE/FormComponents/TESFullName.h"
-#include "RE/FormComponents/TESTexture/TESIcon.h"
 #include "RE/FormComponents/TESModel/TESModelTextureSwap.h"
+#include "RE/FormComponents/TESTexture/TESIcon.h"
 #include "RE/FormComponents/TESValueForm.h"
 #include "RE/FormComponents/TESWeightForm.h"
 

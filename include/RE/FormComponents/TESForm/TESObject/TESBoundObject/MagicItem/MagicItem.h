@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/FormComponents/Enums/ActorValues.h"
-#include "RE/FormComponents/BGSKeywordForm.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/FormComponents/BGSKeywordForm.h"
+#include "RE/FormComponents/Enums/ActorValues.h"
 #include "RE/FormComponents/Enums/MagicSystem.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
 #include "RE/FormComponents/TESFullName.h"

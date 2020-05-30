@@ -1,11 +1,11 @@
 #include "RE/Scaleform/BS/BSScaleformManager.h"
 
+#include "RE/BSMain/Setting/Setting.h"
+#include "RE/Menus/IMenu/IMenu.h"
+#include "RE/Misc/Misc.h"
 #include "RE/NetImmerse/NiBinaryStream/BSResourceNiBinaryStream.h"
 #include "RE/Scaleform/FxGameDelegate/FxDelegate.h"
 #include "RE/Scaleform/GFxLoader/GFxLoader.h"
-#include "RE/Menus/IMenu/IMenu.h"
-#include "RE/Misc/Misc.h"
-#include "RE/BSMain/Setting/Setting.h"
 
 
 namespace RE
