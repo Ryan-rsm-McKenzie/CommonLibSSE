@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{3e4b6ef3-ec6e-46cf-9003-eeb57a258b82}</ProjectGuid>
-    <RootNamespace>CommonLibSSE2</RootNamespace>
+    <RootNamespace>CommonLibSSE</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
