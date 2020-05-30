@@ -5,6 +5,9 @@
 
 namespace RE
 {
+	class BSFixedString;
+
+
 	namespace BSScript
 	{
 		class IStore : public BSStorage

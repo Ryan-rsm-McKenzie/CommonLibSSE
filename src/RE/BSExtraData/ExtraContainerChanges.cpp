@@ -15,7 +15,7 @@ namespace RE
 		changes(a_changes)
 	{
 		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraContainerChanges::Vtbl);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
+		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
 

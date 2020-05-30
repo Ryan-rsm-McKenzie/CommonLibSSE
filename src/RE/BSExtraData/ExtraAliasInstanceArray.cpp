@@ -11,7 +11,7 @@ namespace RE
 		lock()
 	{
 		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraAliasInstanceArray::Vtbl);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
+		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
 

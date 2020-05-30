@@ -1,5 +1,6 @@
 #pragma once
 
+#if __has_include("xbyak/xbyak.h")
 #include "xbyak/xbyak.h"
 
 
@@ -46,3 +47,6 @@ namespace SKSE
 		bool									_doFinalize;
 	};
 }
+
+
+#endif

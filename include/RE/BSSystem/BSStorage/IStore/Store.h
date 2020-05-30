@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSCore/BSFixedString.h"
 #include "RE/BSSystem/BSStorage/IStore/IStore.h"
 
 

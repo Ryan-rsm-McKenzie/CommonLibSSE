@@ -67,7 +67,7 @@ namespace RE
 	SCRIPT_FUNCTION* SCRIPT_FUNCTION::GetFirstScriptCommand()
 	{
 		REL::Offset<SCRIPT_FUNCTION*> ptr(Offset::SCRIPT_FUNCTION::FirstScriptCommand);
-		return ptr.GetType();
+		return ptr.type();
 	}
 
 
@@ -86,7 +86,7 @@ namespace RE
 	SCRIPT_FUNCTION* SCRIPT_FUNCTION::GetFirstConsoleCommand()
 	{
 		REL::Offset<SCRIPT_FUNCTION*> ptr(Offset::SCRIPT_FUNCTION::FirstConsoleCommand);
-		return ptr.GetType();
+		return ptr.type();
 	}
 
 

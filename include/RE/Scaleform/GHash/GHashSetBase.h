@@ -1,9 +1,9 @@
 #pragma once
 
-#include "GMath.h"
 #include "RE/Scaleform/GAllocator/GAllocator.h"
 #include "RE/Scaleform/GHash/GFixedSizeHash.h"
 #include "RE/Scaleform/GHash/GHashsetCachedEntry.h"
+#include "RE/Scaleform/GMath/GMath.h"
 #include "RE/Scaleform/GMemory/GMemory.h"
 
 

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "BSTHashMap.h"
 #include "RE/Animation/BSAnimNoteListener.h"
 #include "RE/BSCore/BSFixedString.h"
+#include "RE/BSCore/BSTHashMap.h"
 #include "RE/NetImmerse/NiRefObject/NiObject/NiTimeController/NiTimeController.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 #include "RE/NetImmerse/NiTArray.h"

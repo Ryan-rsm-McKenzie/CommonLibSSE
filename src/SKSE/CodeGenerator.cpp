@@ -1,5 +1,6 @@
 #include "SKSE/CodeGenerator.h"
 
+#if __has_include("xbyak/xbyak.h")
 #include "SKSE/API.h"
 #include "SKSE/Trampoline.h"
 
@@ -53,3 +54,6 @@ namespace SKSE
 		_doFinalize(false)
 	{}
 }
+
+
+#endif

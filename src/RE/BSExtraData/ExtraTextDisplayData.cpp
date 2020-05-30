@@ -15,7 +15,7 @@ namespace RE
 		pad34(0)
 	{
 		REL::Offset<std::uintptr_t> vtbl = REL::ID(229625);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
+		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
 
@@ -31,7 +31,7 @@ namespace RE
 		pad34(0)
 	{
 		REL::Offset<std::uintptr_t> vtbl = REL::ID(229625);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
+		((std::uintptr_t*)this)[0] = vtbl.address();
 		SetName(a_name);
 	}
 
@@ -48,7 +48,7 @@ namespace RE
 		pad34(0)
 	{
 		REL::Offset<std::uintptr_t> vtbl = REL::ID(229625);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
+		((std::uintptr_t*)this)[0] = vtbl.address();
 		GetDisplayName(a_baseObject, a_temperFactor);
 	}
 

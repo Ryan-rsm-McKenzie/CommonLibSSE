@@ -13,7 +13,7 @@ namespace RE
 		owner(a_owner)
 	{
 		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraOwnership::Vtbl);
-		((std::uintptr_t*)this)[0] = vtbl.GetAddress();
+		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
 
