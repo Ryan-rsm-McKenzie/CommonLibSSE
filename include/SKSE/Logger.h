@@ -30,23 +30,25 @@ namespace SKSE
 		};
 
 
-		static constexpr auto DF_OPENMODE = std::ios_base::out | std::ios_base::trunc;
-		static constexpr auto DF_REGEXFLAGS = std::regex::grep | std::regex::icase;
+		static constexpr auto			  DF_OPENMODE = std::ios_base::out | std::ios_base::trunc;
+		static constexpr auto			  DF_REGEXFLAGS = std::regex::grep | std::regex::icase;
+		static constexpr std::string_view DF_TIMEFMT = "%F %I:%M:%S %p";
 
 
-		static bool OpenRelative(REFKNOWNFOLDERID a_referenceID, const std::filesystem::path& a_fileName, std::ios_base::openmode a_mode = DF_OPENMODE);
-		static bool OpenRelative(REFKNOWNFOLDERID a_referenceID, std::filesystem::path&& a_fileName, std::ios_base::openmode a_mode = DF_OPENMODE);
+		static bool OpenRelative(const KNOWNFOLDERID& a_referenceID, const std::filesystem::path& a_fileName, std::ios_base::openmode a_mode = DF_OPENMODE);
+		static bool OpenRelative(const KNOWNFOLDERID& a_referenceID, std::filesystem::path&& a_fileName, std::ios_base::openmode a_mode = DF_OPENMODE);
 		static bool OpenAbsolute(const std::filesystem::path& a_fileName, std::ios_base::openmode a_mode = DF_OPENMODE);
 		static bool OpenAbsolute(std::filesystem::path&& a_fileName, std::ios_base::openmode a_mode = DF_OPENMODE);
 
-		static Level				 SetPrintLevel(Level a_printLevel);
-		static Level				 SetFlushLevel(Level a_flushLevel);
-		static bool					 UseLogStamp(bool a_enable);
-		static std::pair<bool, bool> UseTimeStamp(bool a_enable, bool a_fmt24Hour = true);
-		static bool					 HookPapyrusLog(bool a_enable);
-		static std::regex			 SetPapyrusLogFilter(std::string a_filter, std::regex::flag_type a_flags = DF_REGEXFLAGS);
-		static std::regex			 SetPapyrusLogFilter(std::regex a_filter);
-		static bool					 TrackTrampolineStats(bool a_enable);
+		static Level						SetPrintLevel(Level a_printLevel);
+		static Level						SetFlushLevel(Level a_flushLevel);
+		static bool							UseLogStamp(bool a_enable);
+		static bool							UseThreadID(bool a_enable);
+		static std::pair<bool, std::string> UseTimeStamp(bool a_enable, std::string_view a_fmt = DF_TIMEFMT);
+		static bool							HookPapyrusLog(bool a_enable);
+		static std::regex					SetPapyrusLogFilter(std::string a_filter, std::regex::flag_type a_flags = DF_REGEXFLAGS);
+		static std::regex					SetPapyrusLogFilter(std::regex a_filter);
+		static bool							TrackTrampolineStats(bool a_enable);
 
 		static void Print(const char* a_string);
 		static void Print(Level a_level, const char* a_string);
@@ -106,21 +108,23 @@ namespace SKSE
 		Logger& operator=(const Logger&) = delete;
 		Logger& operator=(Logger&&) = delete;
 
-		static StampType   LevelToStamp(Level a_level);
-		static const char* GetLogStamp(StampType a_type);
-		static std::string GetTimeStamp();
-		static void		   Print_Impl(const char* a_prefix, Level a_level, const char* a_string, StampType a_type);
-		static void		   VPrint_Impl(const char* a_prefix, Level a_level, const char* a_format, std::va_list a_args, StampType a_type);
+		static StampType		LevelToStamp(Level a_level);
+		static std::string_view GetLogStamp(StampType a_type);
+		static std::string		GetThreadID();
+		static std::string		GetTimeStamp();
+		static void				Print_Impl(const char* a_prefix, Level a_level, const char* a_string, StampType a_type);
+		static void				VPrint_Impl(const char* a_prefix, Level a_level, const char* a_format, std::va_list a_args, StampType a_type);
 
 
 		static Lock			 _lock;
 		static std::ofstream _file;
 		static std::regex	 _papyrusLogFilter;
+		static std::string	 _timeFmt;
 		static Level		 _printLevel;
 		static Level		 _flushLevel;
 		static bool			 _logStamp;
+		static bool			 _threadID;
 		static bool			 _timeStamp;
-		static bool			 _fmt24Hour;
 		static bool			 _hookPapyrusLog;
 		static bool			 _trackTrampolineStats;
 	};

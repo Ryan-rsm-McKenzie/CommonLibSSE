@@ -8,7 +8,7 @@
 
 namespace SKSE
 {
-	bool Logger::OpenRelative(REFKNOWNFOLDERID a_referenceID, const std::filesystem::path& a_fileName, std::ios_base::openmode a_mode)
+	bool Logger::OpenRelative(const KNOWNFOLDERID& a_referenceID, const std::filesystem::path& a_fileName, std::ios_base::openmode a_mode)
 	{
 		wchar_t* pathBuffer;
 		auto result = SHGetKnownFolderPath(a_referenceID, KNOWN_FOLDER_FLAG::KF_FLAG_DEFAULT, nullptr, &pathBuffer);
@@ -32,7 +32,7 @@ namespace SKSE
 	}
 
 
-	bool Logger::OpenRelative(REFKNOWNFOLDERID a_referenceID, std::filesystem::path&& a_fileName, std::ios_base::openmode a_mode)
+	bool Logger::OpenRelative(const KNOWNFOLDERID& a_referenceID, std::filesystem::path&& a_fileName, std::ios_base::openmode a_mode)
 	{
 		return OpenRelative(a_referenceID, a_fileName, a_mode);
 	}
@@ -84,11 +84,19 @@ namespace SKSE
 	}
 
 
-	std::pair<bool, bool> Logger::UseTimeStamp(bool a_enable, bool a_fmt24Hour)
+	bool Logger::UseThreadID(bool a_enable)
 	{
-		auto prev = std::make_pair(std::move(_timeStamp), std::move(_fmt24Hour));
+		auto prev = std::move(_threadID);
+		_threadID = std::move(a_enable);
+		return prev;
+	}
+
+
+	std::pair<bool, std::string> Logger::UseTimeStamp(bool a_enable, std::string_view a_fmt)
+	{
+		auto prev = std::make_pair(std::move(_timeStamp), std::move(_timeFmt));
 		_timeStamp = std::move(a_enable);
-		_fmt24Hour = std::move(a_fmt24Hour);
+		_timeFmt = std::move(a_fmt);
 		return prev;
 	}
 
@@ -190,7 +198,7 @@ namespace SKSE
 		-> LogEventHandler*
 	{
 		static LogEventHandler singleton;
-		return &singleton;
+		return std::addressof(singleton);
 	}
 
 
@@ -212,32 +220,44 @@ namespace SKSE
 	}
 
 
-	const char* Logger::GetLogStamp(StampType a_type)
+	std::string_view Logger::GetLogStamp(StampType a_type)
 	{
-		if (_logStamp) {
-			switch (a_type) {
-			case StampType::kDebugMessage:
-				return "[DEBUG] ";
-			case StampType::kVerboseMessage:
-				return "[VERBOSE] ";
-			case StampType::kMessage:
-				return "[MESSAGE] ";
-			case StampType::kWarning:
-				return "[WARNING] ";
-			case StampType::kError:
-				return "[ERROR] ";
-			case StampType::kFatalError:
-				return "[FATAL ERROR] ";
-			case StampType::kPapyrus:
-				return "[PAPYRUS] ";
-			case StampType::kTrampoline:
-				return "[TRAMPOLINE] ";
-			default:
-				return "";
-			}
+		if (!_logStamp) {
+			return "";
 		}
 
-		return "";
+		switch (a_type) {
+		case StampType::kDebugMessage:
+			return "[DEBUG] ";
+		case StampType::kVerboseMessage:
+			return "[VERBOSE] ";
+		case StampType::kMessage:
+			return "[MESSAGE] ";
+		case StampType::kWarning:
+			return "[WARNING] ";
+		case StampType::kError:
+			return "[ERROR] ";
+		case StampType::kFatalError:
+			return "[FATAL ERROR] ";
+		case StampType::kPapyrus:
+			return "[PAPYRUS] ";
+		case StampType::kTrampoline:
+			return "[TRAMPOLINE] ";
+		default:
+			return "";
+		}
+	}
+
+
+	std::string Logger::GetThreadID()
+	{
+		if (!_threadID) {
+			return "";
+		}
+
+		std::ostringstream buf;
+		buf << '{' << std::this_thread::get_id() << "} ";
+		return buf.str();
 	}
 
 
@@ -249,17 +269,15 @@ namespace SKSE
 
 		auto time = std::time(nullptr);
 		std::tm localTime;
-		auto err = localtime_s(&localTime, &time);
+		auto err = localtime_s(std::addressof(localTime), std::addressof(time));
 		if (err) {
 			return "";
 		}
 
 		std::ostringstream buf;
-		if (_fmt24Hour) {
-			buf << std::put_time(&localTime, "(%F %T) ");
-		} else {
-			buf << std::put_time(&localTime, "(%F %I:%M:%S %p) ");
-		}
+		buf << '(';
+		buf << std::put_time(std::addressof(localTime), _timeFmt.c_str());
+		buf << ") ";
 		return buf.str();
 	}
 
@@ -267,14 +285,15 @@ namespace SKSE
 	void Logger::Print_Impl(const char* a_prefix, Level a_level, const char* a_string, StampType a_type)
 	{
 		std::ostringstream oss;
-		oss << a_prefix << GetLogStamp(a_type) << GetTimeStamp() << a_string << '\n';
+		oss << a_prefix << GetLogStamp(a_type) << GetThreadID() << GetTimeStamp() << a_string << '\n';
+		auto output = oss.str();
 
 		Locker locker(_lock);
 
-		_file << oss.str().c_str();
+		_file << output;
 
 #if _DEBUG
-		OutputDebugStringA(oss.str().c_str());
+		OutputDebugStringA(output.c_str());
 #endif
 
 		if (a_level >= _flushLevel) {
@@ -293,11 +312,12 @@ namespace SKSE
 	decltype(Logger::_lock) Logger::_lock;
 	decltype(Logger::_file) Logger::_file;
 	decltype(Logger::_papyrusLogFilter) Logger::_papyrusLogFilter(".", Logger::DF_REGEXFLAGS);
+	decltype(Logger::_timeFmt) Logger::_timeFmt(Logger::DF_TIMEFMT);
 	decltype(Logger::_printLevel) Logger::_printLevel = Logger::Level::kMessage;
 	decltype(Logger::_flushLevel) Logger::_flushLevel = Logger::Level::kError;
 	decltype(Logger::_logStamp) Logger::_logStamp = false;
+	decltype(Logger::_threadID) Logger::_threadID = false;
 	decltype(Logger::_timeStamp) Logger::_timeStamp = false;
-	decltype(Logger::_fmt24Hour) Logger::_fmt24Hour = true;
 	decltype(Logger::_hookPapyrusLog) Logger::_hookPapyrusLog = false;
 	decltype(Logger::_trackTrampolineStats) Logger::_trackTrampolineStats = false;
 
