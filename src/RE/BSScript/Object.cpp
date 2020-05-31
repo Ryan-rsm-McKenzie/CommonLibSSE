@@ -16,6 +16,14 @@ namespace RE
 		}
 
 
+		VMHandle Object::GetHandle() const
+		{
+			using func_t = decltype(&Object::GetHandle);
+			REL::Offset<func_t> func = REL::ID(97463);
+			return func(this);
+		}
+
+
 		ObjectTypeInfo* Object::GetTypeInfo()
 		{
 			return type.get();
@@ -56,8 +64,9 @@ namespace RE
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
-			if (policy && policy->HandleIsType(a_typeID, handle) && policy->IsHandleObjectAvailable(handle)) {
-				return policy->GetObjectForHandle(a_typeID, handle);
+			auto myHandle = GetHandle();
+			if (policy && policy->HandleIsType(a_typeID, myHandle) && policy->IsHandleObjectAvailable(myHandle)) {
+				return policy->GetObjectForHandle(a_typeID, myHandle);
 			} else {
 				return nullptr;
 			}
@@ -67,7 +76,7 @@ namespace RE
 		void Object::IncRef()
 		{
 			using func_t = decltype(&Object::IncRef);
-			REL::Offset<func_t> func(Offset::BSScript::Object::IncRef);
+			REL::Offset<func_t> func = REL::ID(97468);
 			return func(this);
 		}
 
@@ -75,21 +84,15 @@ namespace RE
 		UInt32 Object::DecRef()
 		{
 			using func_t = decltype(&Object::DecRef);
-			REL::Offset<func_t> func(Offset::BSScript::Object::DecRef);
+			REL::Offset<func_t> func = REL::ID(97469);
 			return func(this);
 		}
 
 
 		Variable* Object::GetProperty(const BSFixedString& a_name)
 		{
-			constexpr auto INVALID = static_cast<UInt32>(-1);
-
-			auto idx = INVALID;
-			for (auto cls = type.get(); cls && idx == INVALID; cls = cls->GetParent()) {
-				idx = cls->GetPropertyIndex(a_name);
-			}
-
-			return idx != INVALID ? &variables[idx] : nullptr;
+			return const_cast<Variable*>(
+				const_cast<const Object*>(this)->GetProperty(a_name));
 		}
 
 
@@ -102,14 +105,14 @@ namespace RE
 				idx = cls->GetPropertyIndex(a_name);
 			}
 
-			return idx != INVALID ? &variables[idx] : nullptr;
+			return idx != INVALID ? std::addressof(variables[idx]) : nullptr;
 		}
 
 
 		void Object::Dtor()
 		{
 			using func_t = decltype(&Object::Dtor);
-			REL::Offset<func_t> func(Offset::BSScript::Object::Dtor);
+			REL::Offset<func_t> func = REL::ID(97462);
 			return func(this);
 		}
 	}

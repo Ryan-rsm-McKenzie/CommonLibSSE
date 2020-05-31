@@ -26,7 +26,7 @@ namespace RE
 		}
 
 
-		void BindID(BSTSmartPointer<Object>& a_objectPtr, const TESForm* a_src, VMTypeID a_typeID)
+		void BindID(BSTSmartPointer<Object>& a_objectPtr, const void* a_src, VMTypeID a_typeID)
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();
 			auto id = static_cast<VMTypeID>(0);
@@ -48,7 +48,7 @@ namespace RE
 		}
 
 
-		void PackHandle(Variable* a_dst, const TESForm* a_src, VMTypeID a_typeID)
+		void PackHandle(Variable* a_dst, const void* a_src, VMTypeID a_typeID)
 		{
 			assert(a_dst);
 			a_dst->SetNone();

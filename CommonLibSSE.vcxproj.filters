@@ -1783,6 +1783,9 @@
     <ClInclude Include="include\RE\FormComponents\Components\BGSBaseAlias\BGSBaseAlias.h">
       <Filter>include\RE\FormComponents\Components\BGSBaseAlias</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\FormComponents\Components\BGSBaseAlias\BGSLocAlias.h">
+      <Filter>include\RE\FormComponents\Components\BGSBaseAlias</Filter>
+    </ClInclude>
     <ClInclude Include="include\RE\FormComponents\Components\BGSBaseAlias\BGSRefAlias.h">
       <Filter>include\RE\FormComponents\Components\BGSBaseAlias</Filter>
     </ClInclude>

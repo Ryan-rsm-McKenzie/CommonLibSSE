@@ -18,6 +18,7 @@ namespace RE
 		public:
 			~Object();
 
+			VMHandle			  GetHandle() const;
 			ObjectTypeInfo*		  GetTypeInfo();
 			const ObjectTypeInfo* GetTypeInfo() const;
 			UInt32				  GetNumProperties() const;

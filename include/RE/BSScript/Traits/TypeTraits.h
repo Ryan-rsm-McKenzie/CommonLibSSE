@@ -73,7 +73,8 @@ namespace RE
 
 		template <TypeInfo::RawType V>
 		struct vm_type_constant :
-			std::integral_constant<TypeInfo::RawType, V>
+			std::integral_constant<
+				TypeInfo::RawType, V>
 		{};
 
 
@@ -82,27 +83,44 @@ namespace RE
 
 		template <>
 		struct _vm_type<void> :
-			vm_type_constant<TypeInfo::RawType::kNone>
+			vm_type_constant<
+				TypeInfo::RawType::kNone>
 		{};
 
 		template <class T>
-		struct _vm_type<T, std::enable_if_t<is_string_convertible_v<T>>> :
-			vm_type_constant<TypeInfo::RawType::kString>
+		struct _vm_type<
+			T,
+			std::enable_if_t<
+				is_string_convertible_v<T>>> :
+			vm_type_constant<
+				TypeInfo::RawType::kString>
 		{};
 
 		template <class T>
-		struct _vm_type<T, std::enable_if_t<is_integral_convertible_v<T>>> :
-			vm_type_constant<TypeInfo::RawType::kInt>
+		struct _vm_type<
+			T,
+			std::enable_if_t<
+				is_integral_convertible_v<T>>> :
+			vm_type_constant<
+				TypeInfo::RawType::kInt>
 		{};
 
 		template <class T>
-		struct _vm_type<T, std::enable_if_t<is_floating_point_convertible_v<T>>> :
-			vm_type_constant<TypeInfo::RawType::kFloat>
+		struct _vm_type<
+			T,
+			std::enable_if_t<
+				is_floating_point_convertible_v<T>>> :
+			vm_type_constant<
+				TypeInfo::RawType::kFloat>
 		{};
 
 		template <class T>
-		struct _vm_type<T, std::enable_if_t<is_boolean_v<T>>> :
-			vm_type_constant<TypeInfo::RawType::kBool>
+		struct _vm_type<
+			T,
+			std::enable_if_t<
+				is_boolean_v<T>>> :
+			vm_type_constant<
+				TypeInfo::RawType::kBool>
 		{};
 
 		template <class T>
@@ -141,7 +159,8 @@ namespace RE
 		struct is_valid_base :
 			std::disjunction<
 				is_static_base_pointer<T>,
-				is_form_pointer<T>>
+				is_form_pointer<T>,
+				is_alias_pointer<T>>
 		{};
 
 		template <class T>
@@ -156,6 +175,7 @@ namespace RE
 				std::disjunction<
 					is_builtin<T>,
 					is_form_pointer<T>,
+					is_alias_pointer<T>,
 					is_array<T>,
 					is_reference_wrapper<T>>>
 		{};
@@ -172,6 +192,7 @@ namespace RE
 				std::disjunction<
 					is_builtin_convertible<T>,
 					is_form_pointer<T>,
+					is_alias_pointer<T>,
 					is_array<T>,
 					is_reference_wrapper<T>>>
 		{};

@@ -5,6 +5,7 @@
 #include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/Traits/TypeTraits.h"
+#include "RE/FormComponents/Components/BGSBaseAlias/BGSBaseAlias.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 
 #include "SKSE/API.h"
@@ -29,7 +30,9 @@ namespace SKSE
 			RegistrationSetBase& operator=(RegistrationSetBase&& a_rhs);
 
 			bool Register(const RE::TESForm* a_form);
+			bool Register(const RE::BGSBaseAlias* a_alias);
 			bool Unregister(const RE::TESForm* a_form);
+			bool Unregister(const RE::BGSBaseAlias* a_alias);
 			void Clear();
 			bool Save(SerializationInterface* a_intfc, UInt32 a_type, UInt32 a_version);
 			bool Save(SerializationInterface* a_intfc);
@@ -38,6 +41,9 @@ namespace SKSE
 		protected:
 			using Lock = std::recursive_mutex;
 			using Locker = std::lock_guard<Lock>;
+
+			bool Register(const void* a_object, RE::VMTypeID a_typeID);
+			bool Unregister(const void* a_object, RE::VMTypeID a_typeID);
 
 			std::set<RE::VMHandle> _handles;
 			std::string			   _eventName;

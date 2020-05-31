@@ -14,6 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSBaseAlias;
+		inline static constexpr auto VMTYPEID = static_cast<VMTypeID>(139);
 
 
 		enum class FLAGS : UInt32
@@ -68,6 +69,7 @@ namespace RE
 		virtual const BSFixedString& QType() const = 0;				 // 03
 
 		const BSFixedString& GetTypeString() const;
+		VMTypeID			 GetVMTypeID() const;
 		bool				 IsQuestObject() const;
 
 

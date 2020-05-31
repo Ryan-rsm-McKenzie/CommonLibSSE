@@ -14,8 +14,8 @@ namespace RE
 
 
 		TypeInfo::RawType GetRawTypeFromVMType(VMTypeID a_typeID);
-		void			  BindID(BSTSmartPointer<Object>& a_object, const TESForm* a_src, VMTypeID a_typeID);
-		void			  PackHandle(Variable* a_dst, const TESForm* a_src, VMTypeID a_typeID);
+		void			  BindID(BSTSmartPointer<Object>& a_object, const void* a_src, VMTypeID a_typeID);
+		void			  PackHandle(Variable* a_dst, const void* a_src, VMTypeID a_typeID);
 		void*			  UnpackHandle(const Variable* a_src, VMTypeID a_typeID);
 
 
@@ -141,6 +141,18 @@ namespace RE
 			class T,
 			class U = std::decay_t<T>,
 			std::enable_if_t<
+				is_alias_pointer_v<U>,
+				int> = 0>
+		inline void PackValue(Variable* a_dst, T&& a_src)
+		{
+			PackHandle(a_dst, std::forward<T>(a_src), decay_pointer_t<U>::VMTYPEID);
+		}
+
+
+		template <
+			class T,
+			class U = std::decay_t<T>,
+			std::enable_if_t<
 				is_array_v<U>,
 				int> = 0>
 		void PackValue(Variable* a_dst, T&& a_src);
@@ -225,6 +237,17 @@ namespace RE
 		[[nodiscard]] inline T UnpackValue(const Variable* a_src)
 		{
 			return static_cast<T>(UnpackHandle(a_src, static_cast<VMTypeID>(decay_pointer_t<T>::FORMTYPE)));
+		}
+
+
+		template <
+			class T,
+			std::enable_if_t<
+				is_alias_pointer_v<T>,
+				int> = 0>
+		[[nodiscard]] inline T UnpackValue(const Variable* a_src)
+		{
+			return static_cast<T>(UnpackHandle(a_src, decay_pointer_t<T>::VMTYPEID));
 		}
 
 

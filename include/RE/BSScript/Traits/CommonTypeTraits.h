@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/BSCore/BSFixedString.h"
+#include "RE/FormComponents/Components/BGSBaseAlias/BGSBaseAlias.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 
 
@@ -393,12 +394,36 @@ namespace RE
 		template <class T>
 		struct is_form_pointer :
 			std::conjunction<
-				is_form<std::remove_pointer_t<T>>,
+				is_form<
+					std::remove_pointer_t<T>>,
 				std::is_pointer<T>>
 		{};
 
 		template <class T>
 		inline constexpr bool is_form_pointer_v = is_form_pointer<T>::value;
+
+
+		template <class T>
+		struct is_alias :
+			std::is_base_of<
+				RE::BGSBaseAlias,
+				std::remove_cv_t<T>>
+		{};
+
+		template <class T>
+		inline constexpr bool is_alias_v = is_alias<T>::value;
+
+
+		template <class T>
+		struct is_alias_pointer :
+			std::conjunction<
+				is_alias<
+					std::remove_pointer_t<T>>,
+				std::is_pointer<T>>
+		{};
+
+		template <class T>
+		inline constexpr bool is_alias_pointer_v = is_alias_pointer<T>::value;
 
 
 		template <class T>

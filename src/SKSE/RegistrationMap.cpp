@@ -100,60 +100,28 @@ namespace SKSE
 		bool RegistrationMapBase::Register(const RE::TESForm* a_form, RE::BSFixedString a_callback)
 		{
 			assert(a_form);
-			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
-			if (!policy) {
-				_ERROR("Failed to get handle policy!");
-				return false;
-			}
+			return Register(a_form, std::move(a_callback), static_cast<RE::VMTypeID>(a_form->GetFormType()));
+		}
 
-			const auto invalidHandle = policy->EmptyHandle();
-			auto handle = policy->GetHandleForObject(a_form->GetFormType(), a_form);
-			if (handle == invalidHandle) {
-				_ERROR("Failed to create handle!");
-				return false;
-			}
 
-			_lock.lock();
-			auto result = _regs.insert(std::make_pair(handle, a_callback));
-			_lock.unlock();
-
-			if (!result.second) {
-				_WARNING("Handle already registered (%u)", handle);
-			} else {
-				policy->PersistHandle(handle);
-			}
-			return result.second;
+		bool RegistrationMapBase::Register(const RE::BGSBaseAlias* a_alias, RE::BSFixedString a_callback)
+		{
+			assert(a_alias);
+			return Register(a_alias, std::move(a_callback), a_alias->GetVMTypeID());
 		}
 
 
 		bool RegistrationMapBase::Unregister(const RE::TESForm* a_form)
 		{
 			assert(a_form);
-			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
-			if (!policy) {
-				_ERROR("Failed to get handle policy!");
-				return false;
-			}
+			return Unregister(a_form, static_cast<RE::VMTypeID>(a_form->GetFormType()));
+		}
 
-			const auto invalidHandle = policy->EmptyHandle();
-			const auto handle = policy->GetHandleForObject(a_form->GetFormType(), a_form);
-			if (handle == invalidHandle) {
-				_ERROR("Failed to create handle!");
-				return false;
-			}
 
-			Locker locker(_lock);
-			auto it = _regs.find(handle);
-			if (it == _regs.end()) {
-				_WARNING("Could not find registration");
-				return false;
-			} else {
-				policy->ReleaseHandle(it->first);
-				_regs.erase(it);
-				return true;
-			}
+		bool RegistrationMapBase::Unregister(const RE::BGSBaseAlias* a_alias)
+		{
+			assert(a_alias);
+			return Unregister(a_alias, a_alias->GetVMTypeID());
 		}
 
 
@@ -238,6 +206,66 @@ namespace SKSE
 			}
 
 			return true;
+		}
+
+
+		bool RegistrationMapBase::Register(const void* a_object, RE::BSFixedString a_callback, RE::VMTypeID a_typeID)
+		{
+			assert(a_object);
+			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
+			if (!policy) {
+				_ERROR("Failed to get handle policy!");
+				return false;
+			}
+
+			const auto invalidHandle = policy->EmptyHandle();
+			auto handle = policy->GetHandleForObject(a_typeID, a_object);
+			if (handle == invalidHandle) {
+				_ERROR("Failed to create handle!");
+				return false;
+			}
+
+			_lock.lock();
+			auto result = _regs.insert(std::make_pair(handle, a_callback));
+			_lock.unlock();
+
+			if (!result.second) {
+				_WARNING("Handle already registered (%u)", handle);
+			} else {
+				policy->PersistHandle(handle);
+			}
+			return result.second;
+		}
+
+
+		bool RegistrationMapBase::Unregister(const void* a_object, RE::VMTypeID a_typeID)
+		{
+			assert(a_object);
+			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
+			if (!policy) {
+				_ERROR("Failed to get handle policy!");
+				return false;
+			}
+
+			const auto invalidHandle = policy->EmptyHandle();
+			const auto handle = policy->GetHandleForObject(a_typeID, a_object);
+			if (handle == invalidHandle) {
+				_ERROR("Failed to create handle!");
+				return false;
+			}
+
+			Locker locker(_lock);
+			auto it = _regs.find(handle);
+			if (it == _regs.end()) {
+				_WARNING("Could not find registration");
+				return false;
+			} else {
+				policy->ReleaseHandle(it->first);
+				_regs.erase(it);
+				return true;
+			}
 		}
 	}
 }

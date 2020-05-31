@@ -120,23 +120,6 @@ namespace RE
 		}
 
 
-		namespace BSFixedString
-		{
-			static constexpr REL::ID Ctor_CStr(static_cast<std::uint64_t>(67819));
-			static constexpr REL::ID Ctor_Copy(static_cast<std::uint64_t>(67820));
-			static constexpr REL::ID Set_CStr(static_cast<std::uint64_t>(67823));
-			static constexpr REL::ID Set_Copy(static_cast<std::uint64_t>(67824));
-			static constexpr REL::ID Dtor(static_cast<std::uint64_t>(67822));
-		}
-
-
-		namespace BSFixedStringW
-		{
-			static constexpr REL::ID Ctor(static_cast<std::uint64_t>(67834));
-			static constexpr REL::ID Dtor(static_cast<std::uint64_t>(67836));
-		}
-
-
 		namespace BSInputDeviceManager
 		{
 			static constexpr REL::ID Singleton(static_cast<std::uint64_t>(516574));
@@ -175,14 +158,6 @@ namespace RE
 
 		namespace BSScript
 		{
-			namespace Object
-			{
-				static constexpr REL::ID Dtor(static_cast<std::uint64_t>(97462));
-				static constexpr REL::ID IncRef(static_cast<std::uint64_t>(97468));
-				static constexpr REL::ID DecRef(static_cast<std::uint64_t>(97469));
-			}
-
-
 			namespace ObjectTypeInfo
 			{
 				static constexpr REL::ID ReleaseData(static_cast<std::uint64_t>(97538));

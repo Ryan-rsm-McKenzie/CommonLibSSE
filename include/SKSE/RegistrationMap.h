@@ -5,6 +5,7 @@
 #include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/Traits/TypeTraits.h"
+#include "RE/FormComponents/Components/BGSBaseAlias/BGSBaseAlias.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 
 #include "SKSE/API.h"
@@ -28,7 +29,9 @@ namespace SKSE
 			RegistrationMapBase& operator=(RegistrationMapBase&& a_rhs);
 
 			bool Register(const RE::TESForm* a_form, RE::BSFixedString a_callback);
+			bool Register(const RE::BGSBaseAlias* a_alias, RE::BSFixedString a_callback);
 			bool Unregister(const RE::TESForm* a_form);
+			bool Unregister(const RE::BGSBaseAlias* a_alias);
 			void Clear();
 			bool Save(SerializationInterface* a_intfc, UInt32 a_type, UInt32 a_version);
 			bool Save(SerializationInterface* a_intfc);
@@ -38,6 +41,9 @@ namespace SKSE
 			using Lock = std::recursive_mutex;
 			using Locker = std::lock_guard<Lock>;
 			using EventName = std::string;
+
+			bool Register(const void* a_object, RE::BSFixedString a_callback, RE::VMTypeID a_typeID);
+			bool Unregister(const void* a_object, RE::VMTypeID a_typeID);
 
 			std::map<RE::VMHandle, EventName> _regs;
 			mutable Lock					  _lock;
