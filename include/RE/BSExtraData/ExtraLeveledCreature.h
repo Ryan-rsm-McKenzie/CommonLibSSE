@@ -7,6 +7,9 @@
 
 namespace RE
 {
+	class TESActorBase;
+
+
 	class ExtraLeveledCreature : public BSExtraData
 	{
 	public:

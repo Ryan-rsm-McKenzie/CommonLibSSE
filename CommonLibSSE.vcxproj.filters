@@ -4158,10 +4158,10 @@
     <ClCompile Include="src\RE\Menus\UIMessageQueue.cpp">
       <Filter>src\RE\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\Misc.cpp">
-      <Filter>src\RE</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\Misc\Calendar.cpp">
+      <Filter>src\RE\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Misc\Misc.cpp">
       <Filter>src\RE\Misc</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\Misc\TaskQueueInterface.cpp">
@@ -4361,6 +4361,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\Sky\Sky.cpp">
       <Filter>src\RE\Sky</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Skyrim.cpp">
+      <Filter>src\RE</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\SkyrimScript\SkyrimVM.cpp">
       <Filter>src\RE\SkyrimScript</Filter>

@@ -1578,8 +1578,8 @@
     <ClCompile Include="src\RE\Menus\UI.cpp" />
     <ClCompile Include="src\RE\Menus\UIBlurManager.cpp" />
     <ClCompile Include="src\RE\Menus\UIMessageQueue.cpp" />
-    <ClCompile Include="src\RE\Misc.cpp" />
     <ClCompile Include="src\RE\Misc\Calendar.cpp" />
+    <ClCompile Include="src\RE\Misc\Misc.cpp" />
     <ClCompile Include="src\RE\Misc\TaskQueueInterface.cpp" />
     <ClCompile Include="src\RE\NetImmerse\BSVisit.cpp" />
     <ClCompile Include="src\RE\NetImmerse\NiAnimationKey\NiAnimationKey.cpp" />
@@ -1645,6 +1645,7 @@
     <ClCompile Include="src\RE\Scaleform\GRenderer\GViewport.cpp" />
     <ClCompile Include="src\RE\Scaleform\GStd\GStd.cpp" />
     <ClCompile Include="src\RE\Scaleform\GString\GString.cpp" />
+    <ClCompile Include="src\RE\Skyrim.cpp" />
     <ClCompile Include="src\RE\SkyrimScript\SkyrimVM.cpp" />
     <ClCompile Include="src\RE\Sky\Sky.cpp" />
     <ClCompile Include="src\SKSE\API.cpp" />

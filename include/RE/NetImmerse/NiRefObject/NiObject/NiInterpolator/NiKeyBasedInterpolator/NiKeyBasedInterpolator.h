@@ -1,14 +1,11 @@
 #pragma once
 
-#include "NiAnimationKey.h"
+#include "RE/NetImmerse/NiAnimationKey/NiAnimationKey.h"
 #include "RE/NetImmerse/NiRefObject/NiObject/NiInterpolator/NiInterpolator.h"
 
 
 namespace RE
 {
-	class NiAnimationKey;
-
-
 	class NiKeyBasedInterpolator : public NiInterpolator
 	{
 	public:
