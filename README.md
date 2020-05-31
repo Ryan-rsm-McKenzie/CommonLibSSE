@@ -9,4 +9,4 @@
 * [VC File Utilities](https://github.com/Lynxaa/vc-fileutils)
 
 ## Notes
-* CommonLib builds completely independently of SKSE, and can replace it completely.
+* CommonLib builds completely independently of SKSE, and can replace it as a dependency.
