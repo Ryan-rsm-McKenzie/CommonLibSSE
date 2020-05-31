@@ -25,19 +25,19 @@ namespace RE
 	}
 
 
-	bool BSScaleformManager::LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, llvm::function_ref<void(GFxMovieDef*)> a_callback)
+	bool BSScaleformManager::LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, std::function<void(GFxMovieDef*)> a_callback)
 	{
 		return LoadMovieEx(a_menu, a_fileName, ScaleModeType::kShowAll, 0.0, a_callback);
 	}
 
 
-	bool BSScaleformManager::LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, ScaleModeType a_mode, llvm::function_ref<void(GFxMovieDef*)> a_callback)
+	bool BSScaleformManager::LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, ScaleModeType a_mode, std::function<void(GFxMovieDef*)> a_callback)
 	{
 		return LoadMovieEx(a_menu, a_fileName, a_mode, 0.0, a_callback);
 	}
 
 
-	bool BSScaleformManager::LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, ScaleModeType a_mode, float a_backGroundAlpha, llvm::function_ref<void(GFxMovieDef*)> a_callback)
+	bool BSScaleformManager::LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, ScaleModeType a_mode, float a_backGroundAlpha, std::function<void(GFxMovieDef*)> a_callback)
 	{
 		using LoadConstants = GFxLoader::LoadConstants;
 
@@ -96,7 +96,7 @@ namespace RE
 	}
 
 
-	bool BSScaleformManager::LoadMovieStd(IMenu* a_menu, const char* a_fileName, llvm::function_ref<void(GFxMovieDef*)> a_callback, ScaleModeType a_mode, float a_backGroundAlpha)
+	bool BSScaleformManager::LoadMovieStd(IMenu* a_menu, const char* a_fileName, std::function<void(GFxMovieDef*)> a_callback, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		return LoadMovieEx(a_menu, a_fileName, a_mode, a_backGroundAlpha, a_callback);
 	}

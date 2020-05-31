@@ -517,7 +517,7 @@ namespace RE
 	}
 
 
-	bool Actor::VisitFactions(llvm::function_ref<bool(TESFaction* a_faction, SInt8 a_rank)> a_visitor)
+	bool Actor::VisitFactions(std::function<bool(TESFaction* a_faction, SInt8 a_rank)> a_visitor)
 	{
 		auto base = GetActorBase();
 		if (base) {

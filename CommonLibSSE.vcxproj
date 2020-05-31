@@ -189,8 +189,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\ForceInclude.h" />
-    <ClInclude Include="include\function_ref.h" />
     <ClInclude Include="include\REL\Relocation.h" />
     <ClInclude Include="include\REL\SafeWrite.h" />
     <ClInclude Include="include\REL\Version.h" />

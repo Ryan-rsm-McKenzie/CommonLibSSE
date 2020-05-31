@@ -173,7 +173,7 @@ namespace RE
 	}
 
 
-	auto TESObjectREFR::GetDroppedInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter)
+	auto TESObjectREFR::GetDroppedInventory(std::function<bool(TESBoundObject*)> a_filter)
 		-> InventoryDropMap
 	{
 		using container_t = InventoryDropMap::mapped_type::second_type;
@@ -245,7 +245,7 @@ namespace RE
 	}
 
 
-	auto TESObjectREFR::GetInventory(llvm::function_ref<bool(TESBoundObject*)> a_filter)
+	auto TESObjectREFR::GetInventory(std::function<bool(TESBoundObject*)> a_filter)
 		-> InventoryItemMap
 	{
 		InventoryItemMap results;
@@ -302,7 +302,7 @@ namespace RE
 	}
 
 
-	auto TESObjectREFR::GetInventoryCounts(llvm::function_ref<bool(TESBoundObject*)> a_filter)
+	auto TESObjectREFR::GetInventoryCounts(std::function<bool(TESBoundObject*)> a_filter)
 		-> InventoryCountMap
 	{
 		InventoryCountMap results;

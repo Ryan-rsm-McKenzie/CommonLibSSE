@@ -1,7 +1,5 @@
 #pragma once
 
-#include "function_ref.h"
-
 #include "RE/FormComponents/BaseFormComponent.h"
 #include "RE/FormComponents/Components/ContainerItemExtra.h"
 
@@ -35,7 +33,18 @@ namespace RE
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 
-		inline void						ForEachContainerObject(llvm::function_ref<bool(ContainerObject*)> a_fn) const;
+		inline void ForEachContainerObject(std::function<bool(ContainerObject*)> a_fn) const
+		{
+			for (UInt32 i = 0; i < numContainerObjects; ++i) {
+				auto entry = containerObjects[i];
+				if (entry) {
+					if (!a_fn(entry)) {
+						break;
+					}
+				}
+			}
+		}
+
 		std::optional<ContainerObject*> GetContainerObjectAt(UInt32 a_idx) const;
 		SInt32							CountObjectsInContainer(TESBoundObject* a_object) const;
 
@@ -46,17 +55,4 @@ namespace RE
 		UInt32			  pad14;				// 14
 	};
 	STATIC_ASSERT(sizeof(TESContainer) == 0x18);
-
-
-	inline void TESContainer::ForEachContainerObject(llvm::function_ref<bool(ContainerObject*)> a_fn) const
-	{
-		for (UInt32 i = 0; i < numContainerObjects; ++i) {
-			auto entry = containerObjects[i];
-			if (entry) {
-				if (!a_fn(entry)) {
-					break;
-				}
-			}
-		}
-	}
 }

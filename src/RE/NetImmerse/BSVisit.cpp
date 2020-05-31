@@ -8,7 +8,7 @@ namespace RE
 {
 	namespace BSVisit
 	{
-		BSVisitControl TraverseScenegraphGeometries(NiAVObject* a_object, llvm::function_ref<BSVisitControl(BSGeometry*)> a_func)
+		BSVisitControl TraverseScenegraphGeometries(NiAVObject* a_object, std::function<BSVisitControl(BSGeometry*)> a_func)
 		{
 			if (!a_object) {
 				return BSVisitControl::kContinue;

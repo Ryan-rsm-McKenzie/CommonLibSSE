@@ -532,7 +532,7 @@ namespace RE
 		void					  UpdateHairColor();
 		void					  UpdateSkinColor();
 		void					  UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand);
-		bool					  VisitFactions(llvm::function_ref<bool(TESFaction* a_faction, SInt8 a_rank)> a_visitor);
+		bool					  VisitFactions(std::function<bool(TESFaction* a_faction, SInt8 a_rank)> a_visitor);
 
 
 		// members
