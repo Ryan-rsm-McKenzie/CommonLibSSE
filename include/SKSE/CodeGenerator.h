@@ -21,7 +21,7 @@ namespace SKSE
 		void							 ready();
 
 	private:
-		using Base = Xbyak::CodeGenerator;
+		using super = Xbyak::CodeGenerator;
 		using Persistent_t = Trampoline*;
 		using Temporary_t = std::vector<std::uint8_t>;
 

@@ -13,7 +13,7 @@ namespace SKSE
 
 
 	CodeGenerator::CodeGenerator(Trampoline* a_trampoline) :
-		Base(a_trampoline->FreeSize(), a_trampoline->StartAlloc()),
+		super(a_trampoline->FreeSize(), a_trampoline->StartAlloc()),
 		_buffer(a_trampoline),
 		_doFinalize(true)
 	{}
@@ -26,7 +26,7 @@ namespace SKSE
 
 	CodeGenerator::~CodeGenerator()
 	{
-		finalize();
+		ready();
 	}
 
 
@@ -38,10 +38,10 @@ namespace SKSE
 
 	void CodeGenerator::ready()
 	{
-		Base::ready();
+		super::ready();
 		if (_doFinalize) {
 			if (std::holds_alternative<Persistent_t>(_buffer)) {
-				std::get<Persistent_t>(_buffer)->EndAlloc(Base::getSize());
+				std::get<Persistent_t>(_buffer)->EndAlloc(super::getSize());
 			}
 			_doFinalize = false;
 		}
@@ -49,7 +49,7 @@ namespace SKSE
 
 
 	CodeGenerator::CodeGenerator(Temporary_t a_tmp) :
-		Base(a_tmp.size(), a_tmp.data()),
+		super(a_tmp.size(), a_tmp.data()),
 		_buffer(std::move(a_tmp)),
 		_doFinalize(false)
 	{}

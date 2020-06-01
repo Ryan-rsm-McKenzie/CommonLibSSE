@@ -475,8 +475,7 @@ namespace RE
 		virtual bool		   AddEventHandler(GRendererEventHandler* a_handler);																																												// 31
 		virtual void		   RemoveEventHandler(GRendererEventHandler* a_handler);																																											// 32
 
-		GTexture* CreateTextureFromImage(GImageBase* a_image, GTexture::ImageTexUsage a_usage = GTexture::ImageTexUsage::kWrap);
-		void	  FillStyleBitmap(GTexture* a_texture, const Matrix& a_matrix, BitmapWrapMode a_wrapMode, BitmapSampleMode a_sampleMode);
+		void FillStyleBitmap(GTexture* a_texture, const Matrix& a_matrix, BitmapWrapMode a_wrapMode, BitmapSampleMode a_sampleMode);
 
 
 		// members
