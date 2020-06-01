@@ -278,6 +278,7 @@ namespace RE
 
 		struct StereoParams
 		{
+		public:
 			StereoParams();
 
 
@@ -293,6 +294,8 @@ namespace RE
 
 		struct RenderCaps
 		{
+		public:
+			// members
 			RenderCapBits capBits;		   // 00
 			UInt32		  vertexFormats;   // 04
 			UInt32		  blendModes;	   // 08
@@ -303,6 +306,7 @@ namespace RE
 
 		struct UserData
 		{
+		public:
 			UserData();
 
 
@@ -320,6 +324,8 @@ namespace RE
 
 		struct FillTexture
 		{
+		public:
+			// members
 			GTexture*		 texture;		 // 00
 			Matrix			 textureMatrix;	 // 08
 			BitmapWrapMode	 wrapMode;		 // 20
@@ -330,6 +336,8 @@ namespace RE
 
 		struct VertexXY16i
 		{
+		public:
+			// members
 			SInt16 x;  // 0
 			SInt16 y;  // 2
 		};
@@ -338,6 +346,7 @@ namespace RE
 
 		struct VertexXY16iC32
 		{
+		public:
 			enum
 			{
 				kVFormat = VertexFormat::kXY16iC32
@@ -354,6 +363,7 @@ namespace RE
 
 		struct VertexXY16iCF32
 		{
+		public:
 			enum
 			{
 				kVFormat = VertexFormat::kXY16iCF32
@@ -371,6 +381,8 @@ namespace RE
 
 		struct BitmapDesc
 		{
+		public:
+			// members
 			Rect   Coords;		   // 00
 			Rect   TextureCoords;  // 10
 			GColor Color;		   // 20
@@ -380,6 +392,8 @@ namespace RE
 
 		struct DistanceFieldParams
 		{
+		public:
+			// members
 			float	width;		   // 00
 			float	shadowWidth;   // 04
 			GColor	shadowColor;   // 08
@@ -392,6 +406,8 @@ namespace RE
 
 		struct BlurFilterParams
 		{
+		public:
+			// members
 			UInt32	mode;	   // 00
 			float	blurX;	   // 04
 			float	blurY;	   // 08
@@ -458,8 +474,6 @@ namespace RE
 		virtual void		   ReleaseResources() = 0;																																																			// 30
 		virtual bool		   AddEventHandler(GRendererEventHandler* a_handler);																																												// 31
 		virtual void		   RemoveEventHandler(GRendererEventHandler* a_handler);																																											// 32
-		void				   CallHandlers(GRendererEventHandler::EventType a_event);																																											// 33
-		static void			   ResizeImage(UInt8* a_dst, SInt32 a_dstWidth, SInt32 a_dstHeight, SInt32 a_dstPitch, const UInt8* a_src, SInt32 a_srcWidth, SInt32 a_srcHeight, SInt32 a_srcPitch, ResizeImageType a_type);										// 34
 
 		GTexture* CreateTextureFromImage(GImageBase* a_image, GTexture::ImageTexUsage a_usage = GTexture::ImageTexUsage::kWrap);
 		void	  FillStyleBitmap(GTexture* a_texture, const Matrix& a_matrix, BitmapWrapMode a_wrapMode, BitmapSampleMode a_sampleMode);
