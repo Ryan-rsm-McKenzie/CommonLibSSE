@@ -19,6 +19,7 @@ namespace RE
 
 		struct EntryData  // DATA
 		{
+		public:
 			enum class Function : UInt8
 			{
 				kSetValue = 1,
@@ -39,6 +40,7 @@ namespace RE
 			};
 
 
+			// members
 			EntryPoint entryPoint;	// 0
 			Function   function;	// 1
 			UInt8	   numArgs;		// 2
@@ -49,20 +51,20 @@ namespace RE
 
 
 		// override (BGSPerkEntry)
-		virtual bool					   EvaluateConditions(UInt32 a_numArgs, void* a_args) override;	 // 00
-		virtual EntryPoint				   GetEntryPoint() const override;								 // 01 { return entryPoint; }
-		virtual BGSEntryPointFunctionData* GetFunctionData() const override;							 // 02 { return functionData; }
+		virtual bool	   CheckConditionFilters(UInt32 a_numArgs, void* a_args) override;	// 00
+		virtual EntryPoint GetFunction() override;											// 01 - { return function; }
+		virtual void*	   GetFunctionData() const override;								// 02 - { return functionData; }
 
 		virtual ~BGSEntryPointPerkEntry();	// 03
 
-		virtual Type GetType() const override;				 // 04 - { return kEntryPoint; }
-		virtual void ReleaseRefs() override;				 // 05
-		virtual void ResolveForms(TESFile* a_mod) override;	 // 06
-		virtual bool LoadPerk(TESFile* a_mod) override;		 // 07
-		virtual void SetPerk(BGSPerk* a_perk) override;		 // 08
-		virtual void Unk_09(void) override;					 // 09
-		virtual void Unk_0A(void) override;					 // 0A
-		virtual void Unk_0B(void) override;					 // 0B
+		virtual PERK_ENTRY_TYPE GetType() const override;				   // 04 - { return kEntryPoint; }
+		virtual void			ClearData() override;					   // 05
+		virtual void			InitItem(TESFile* a_owner) override;	   // 06
+		virtual bool			Load(TESFile* a_file) override;			   // 07
+		virtual void			SetParent(BGSPerk* a_parent) override;	   // 08
+		virtual UInt16			GetID() const override;					   // 09
+		virtual void			ApplyPerkEntry(Actor* a_actor) override;   // 0A
+		virtual void			RemovePerkEntry(Actor* a_actor) override;  // 0B
 
 		bool IsEntryPoint(EntryPoint a_entryPoint) const;
 

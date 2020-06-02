@@ -29,7 +29,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-[[nodiscard]] constexpr inline Enum operator+(Enum a_lhs, Enum a_rhs) noexcept
+[[nodiscard]] constexpr Enum operator+(Enum a_lhs, Enum a_rhs) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return static_cast<Enum>(
@@ -45,7 +45,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-constexpr inline Enum& operator+=(Enum& a_lhs, Enum a_rhs) noexcept
+constexpr Enum& operator+=(Enum& a_lhs, Enum a_rhs) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return a_lhs = static_cast<Enum>(
@@ -61,7 +61,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-[[nodiscard]] constexpr inline Enum operator-(Enum a_lhs, Enum a_rhs) noexcept
+[[nodiscard]] constexpr Enum operator-(Enum a_lhs, Enum a_rhs) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return static_cast<Enum>(
@@ -77,7 +77,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-constexpr inline Enum& operator-=(Enum& a_lhs, Enum a_rhs) noexcept
+constexpr Enum& operator-=(Enum& a_lhs, Enum a_rhs) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return a_lhs = static_cast<Enum>(
@@ -93,7 +93,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-[[nodiscard]] constexpr inline Enum operator~(Enum a_val) noexcept
+[[nodiscard]] constexpr Enum operator~(Enum a_val) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return static_cast<Enum>(~static_cast<underlying_type_t>(a_val));
@@ -107,7 +107,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-[[nodiscard]] constexpr inline Enum operator&(Enum a_lhs, Enum a_rhs) noexcept
+[[nodiscard]] constexpr Enum operator&(Enum a_lhs, Enum a_rhs) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return static_cast<Enum>(
@@ -123,7 +123,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-constexpr inline Enum& operator&=(Enum& a_lhs, Enum a_rhs) noexcept
+constexpr Enum& operator&=(Enum& a_lhs, Enum a_rhs) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return a_lhs = static_cast<Enum>(
@@ -139,7 +139,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-[[nodiscard]] constexpr inline Enum operator|(Enum a_lhs, Enum a_rhs) noexcept
+[[nodiscard]] constexpr Enum operator|(Enum a_lhs, Enum a_rhs) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return static_cast<Enum>(
@@ -155,7 +155,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-constexpr inline Enum& operator|=(Enum& a_lhs, Enum a_rhs) noexcept
+constexpr Enum& operator|=(Enum& a_lhs, Enum a_rhs) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return a_lhs = static_cast<Enum>(
@@ -171,7 +171,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-[[nodiscard]] constexpr inline Enum operator^(Enum a_lhs, Enum a_rhs) noexcept
+[[nodiscard]] constexpr Enum operator^(Enum a_lhs, Enum a_rhs) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return static_cast<Enum>(
@@ -187,7 +187,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-constexpr inline Enum& operator^=(Enum& a_lhs, Enum a_rhs) noexcept
+constexpr Enum& operator^=(Enum& a_lhs, Enum a_rhs) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return a_lhs = static_cast<Enum>(
@@ -203,7 +203,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-[[nodiscard]] constexpr inline Enum operator<<(Enum a_lhs, Enum a_rhs) noexcept
+[[nodiscard]] constexpr Enum operator<<(Enum a_lhs, Enum a_rhs) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return static_cast<Enum>(
@@ -218,7 +218,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-constexpr inline Enum& operator<<=(Enum& a_lhs, Enum a_rhs) noexcept
+constexpr Enum& operator<<=(Enum& a_lhs, Enum a_rhs) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return a_lhs = static_cast<Enum>(
@@ -233,7 +233,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-[[nodiscard]] constexpr inline Enum operator>>(Enum a_lhs, Enum a_rhs) noexcept
+[[nodiscard]] constexpr Enum operator>>(Enum a_lhs, Enum a_rhs) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return static_cast<Enum>(
@@ -248,7 +248,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-constexpr inline Enum& operator>>=(Enum& a_lhs, Enum a_rhs) noexcept
+constexpr Enum& operator>>=(Enum& a_lhs, Enum a_rhs) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return a_lhs = static_cast<Enum>(
@@ -264,7 +264,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-constexpr inline Enum& operator++(Enum& a_this) noexcept
+constexpr Enum& operator++(Enum& a_this) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	return a_this = static_cast<Enum>(
@@ -280,7 +280,7 @@ template <
 		std::is_enum_v<
 			Enum>,
 		int> = 0>
-[[nodiscard]] constexpr inline Enum operator++(Enum& a_this, int) noexcept
+[[nodiscard]] constexpr Enum operator++(Enum& a_this, int) noexcept
 {
 	using underlying_type_t = std::underlying_type_t<Enum>;
 	auto tmp = a_this;

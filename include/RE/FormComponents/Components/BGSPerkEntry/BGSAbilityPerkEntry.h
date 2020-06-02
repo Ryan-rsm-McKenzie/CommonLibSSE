@@ -17,11 +17,11 @@ namespace RE
 		virtual ~BGSAbilityPerkEntry();	 // 00
 
 		// override (BGSPerkEntry)
-		virtual Type GetType() const override;			 // 04 - { return kAbility; }
-		virtual void ResolveForms(TESFile* a_mod);		 // 06
-		virtual bool LoadPerk(TESFile* a_mod) override;	 // 07
-		virtual void Unk_0A(void) override;				 // 0A
-		virtual void Unk_0B(void) override;				 // 0B
+		virtual PERK_ENTRY_TYPE GetType() const override;				   // 04 - { return kAbility; }
+		virtual void			InitItem(TESFile* a_owner) override;	   // 06
+		virtual bool			Load(TESFile* a_file) override;			   // 07
+		virtual void			ApplyPerkEntry(Actor* a_actor) override;   // 0A
+		virtual void			RemovePerkEntry(Actor* a_actor) override;  // 0B
 
 
 		// members
