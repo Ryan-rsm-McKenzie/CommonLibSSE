@@ -296,7 +296,7 @@ namespace RE
 		inline reference emplace_front(Args&&... a_args)
 		{
 			emplace_front_impl(std::forward<Args>(a_args)...);
-			return _listHead.item;
+			return front();
 		}
 
 		inline void pop_front()
@@ -312,8 +312,8 @@ namespace RE
 			}
 		}
 
-		inline void resize(size_type a_count) { resize(a_count); }
-		inline void resize(size_type a_count, const value_type& a_value) { resize(a_count, a_value); }
+		inline void resize(size_type a_count) { resize(a_count, value_type{}); }
+		inline void resize(size_type a_count, const value_type& a_value) { resize_impl(a_count, a_value); }
 
 	protected:
 		[[nodiscard]] constexpr Node*		get_head() noexcept { return std::addressof(_listHead); }
