@@ -1,8 +1,12 @@
 #pragma once
 
 #include <bitset>
+#include <cassert>
+#include <cstddef>
 #include <limits>
+#include <memory>
 #include <type_traits>
+#include <utility>
 
 
 #define MAKE_STR_HELPER(a_str) #a_str
@@ -312,20 +316,9 @@ template <class To, class From>
 		// To: NOT reference
 	} else if constexpr (std::is_pointer_v<From> &&
 						 std::is_pointer_v<To>) {
-		using cv_ptr =
-			std::add_pointer_t<
-				std::add_cv_t<
-					std::remove_pointer_t<From>>>;
-
-		using naked_ptr =
-			std::add_pointer_t<
-				std::remove_cv_t<
-					std::remove_pointer_t<From>>>;
-
 		return static_cast<To>(
 			static_cast<void*>(
-				const_cast<naked_ptr>(
-					static_cast<cv_ptr>(a_from))));
+				static_cast<const volatile void*>(a_from)));
 	} else if constexpr ((std::is_pointer_v<From> && std::is_integral_v<To>) ||
 						 (std::is_integral_v<From> && std::is_pointer_v<To>)) {
 		return reinterpret_cast<To>(a_from);
@@ -414,3 +407,123 @@ struct ssizeof
 
 template <class T>
 inline constexpr auto ssizeof_v = ssizeof<T>::value;
+
+
+namespace SKSE
+{
+	inline namespace Util
+	{
+		namespace detail
+		{
+			template <class, class, class...>
+			struct _can_construct_at :
+				std::false_type
+			{};
+
+			template <class T, class... Args>
+			struct _can_construct_at<
+				std::void_t<
+					decltype(::new (std::declval<void*>()) T(std::declval<Args>()...))>,
+				T,
+				Args...> :
+				std::true_type
+			{};
+
+			template <class T, class... Args>
+			struct can_construct_at :
+				_can_construct_at<void, T, Args...>
+			{};
+
+			template <class T, class... Args>
+			inline constexpr bool can_construct_at_v = can_construct_at<T, Args...>::value;
+		}
+
+
+		template <class T>
+		struct is_bounded_array :
+			std::false_type
+		{};
+
+		template <class T, std::size_t N>
+		struct is_bounded_array<T[N]> :
+			std::true_type
+		{};
+
+		template <class T>
+		inline constexpr bool is_bounded_array_v = is_bounded_array<T>::value;
+
+
+		template <class T>
+		struct is_unbounded_array :
+			std::false_type
+		{};
+
+		template <class T>
+		struct is_unbounded_array<T[]> :
+			std::true_type
+		{};
+
+		template <class T>
+		inline constexpr bool is_unbounded_array_v = is_unbounded_array<T>::value;
+
+
+		// owning pointer
+		template <
+			class T,
+			class = std::enable_if_t<
+				std::is_pointer_v<T>>>
+		using owner = T;
+
+
+		// non-owning pointer
+		template <
+			class T,
+			class = std::enable_if_t<
+				std::is_pointer_v<T>>>
+		using observer = T;
+
+
+		// non-null pointer
+		template <
+			class T,
+			class = std::enable_if_t<
+				std::is_pointer_v<T>>>
+		using not_null = T;
+
+
+		template <
+			class T,
+			class... Args,
+			std::enable_if_t<
+				std::conjunction_v<
+					detail::can_construct_at<T, Args...>,
+					std::is_constructible<T, Args...>>,	 // more strict
+				int> = 0>
+		inline T* construct_at(T* a_ptr, Args&&... a_args)
+		{
+			return ::new (
+				const_cast<void*>(
+					static_cast<const volatile void*>(a_ptr)))
+				T(std::forward<Args>(a_args)...);
+		}
+
+
+		template <class T>
+		inline void destroy_at(T* a_ptr)
+		{
+			if constexpr (std::is_array_v<T>) {
+				for (auto& elem : *a_ptr) {
+					destroy_at(std::addressof(elem));
+				}
+			} else {
+				a_ptr->~T();
+			}
+		}
+	}
+}
+
+
+namespace RE
+{
+	using namespace SKSE::Util;
+}

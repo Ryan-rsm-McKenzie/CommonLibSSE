@@ -15,86 +15,69 @@ namespace RE
 		using reference = value_type&;
 		using const_reference = const value_type&;
 
-
 		struct Node
 		{
-			Node() :
+		public:
+			inline Node() :
 				item{},
 				next(nullptr)
 			{}
 
-
-			Node(value_type a_value, Node* a_next) :
+			inline Node(value_type a_value, Node* a_next) :
 				item(a_value),
 				next(a_next)
 			{}
 
-
-			Node(const Node& a_rhs) :
+			inline Node(const Node& a_rhs) :
 				item(a_rhs.item),
 				next(a_rhs.next)
 			{}
 
-
-			Node(Node&& a_rhs) :
+			inline Node(Node&& a_rhs) :
 				item(std::move(a_rhs.item)),
 				next(std::move(a_rhs.next))
 			{
 				a_rhs.next = nullptr;
 			}
 
-
-			Node(const value_type& a_value) :
+			inline Node(const value_type& a_value) :
 				item(a_value),
 				next(nullptr)
 			{}
 
-
-			Node(value_type&& a_value) :
+			inline Node(value_type&& a_value) :
 				item(std::move(a_value)),
 				next(nullptr)
 			{}
 
-
 			~Node() = default;
 
-
-			Node& operator=(const Node& a_rhs)
+			inline Node& operator=(const Node& a_rhs)
 			{
-				if (this == &a_rhs) {
-					return *this;
+				if (this != std::addressof(a_rhs)) {
+					item = a_rhs.item;
+					next = a_rhs.next;
 				}
-
-				item = a_rhs.item;
-				next = a_rhs.next;
-
 				return *this;
 			}
 
-
-			Node& operator=(Node&& a_rhs)
+			inline Node& operator=(Node&& a_rhs)
 			{
-				if (this == &a_rhs) {
-					return *this;
+				if (this != std::addressof(a_rhs)) {
+					item = std::move(a_rhs.item);
+
+					next = std::move(a_rhs.next);
+					a_rhs.next = nullptr;
 				}
-
-				item = std::move(a_rhs.item);
-
-				next = std::move(a_rhs.next);
-				a_rhs.next = 0;
-
 				return *this;
 			}
-
 
 			TES_HEAP_REDEFINE_NEW();
 
-
 			// members
-			value_type item;  // 00
-			Node*	   next;  // ??
+			value_type		item;  // 00
+			observer<Node*> next;  // ??
 		};
-
 
 		template <class U>
 		class iterator_base
@@ -106,495 +89,321 @@ namespace RE
 			using reference = U&;
 			using iterator_category = std::forward_iterator_tag;
 
-
-			iterator_base() :
-				_cur(0),
-				_managed(0)
+			constexpr iterator_base() noexcept :
+				_cur(nullptr)
 			{}
 
-
-			iterator_base(Node* a_node) :
-				_cur(a_node),
-				_managed(nullptr)
+			constexpr iterator_base(const iterator_base& a_rhs) noexcept :
+				_cur(a_rhs._cur)
 			{}
 
-
-			iterator_base(Node* a_node, Node* a_managed) :
-				_cur(a_node),
-				_managed(a_managed)
-			{}
-
-
-			iterator_base(const iterator_base& a_rhs) :
-				_cur(a_rhs._cur),
-				_managed(0)
-			{
-				if (a_rhs._managed) {
-					_managed = new Node(*a_rhs._managed);
-				}
-			}
-
-
-			iterator_base(iterator_base&& a_rhs) :
-				_cur(std::move(a_rhs._cur)),
-				_managed(std::move(a_rhs._managed))
+			constexpr iterator_base(iterator_base&& a_rhs) noexcept :
+				_cur(std::move(a_rhs._cur))
 			{
 				a_rhs._cur = nullptr;
-				a_rhs._managed = nullptr;
 			}
 
+			constexpr iterator_base(Node* a_node) noexcept :
+				_cur(a_node)
+			{}
 
-			~iterator_base()
+			inline ~iterator_base() noexcept { _cur = nullptr; }
+
+			constexpr iterator_base& operator=(const iterator_base& a_rhs) noexcept
 			{
-				if (_managed) {
-					delete _managed;
+				if (this != std::addressof(a_rhs)) {
+					_cur = a_rhs._cur;
 				}
-			}
-
-
-			iterator_base& operator=(const iterator_base& a_rhs)
-			{
-				if (this == &a_rhs) {
-					return *this;
-				}
-
-				_cur = a_rhs._cur;
-
-				if (_managed) {
-					delete _managed;
-					_managed = 0;
-				}
-				if (a_rhs._managed) {
-					_managed = new Node(*a_rhs._managed);
-				}
-
 				return *this;
 			}
 
-
-			iterator_base& operator=(iterator_base&& a_rhs)
+			constexpr iterator_base& operator=(iterator_base&& a_rhs) noexcept
 			{
-				if (this == &a_rhs) {
-					return *this;
+				if (this != std::addressof(a_rhs)) {
+					_cur = std::move(a_rhs._cur);
+					a_rhs._cur = nullptr;
 				}
-
-				_cur = std::move(a_rhs._cur);
-				a_rhs._cur = 0;
-
-				if (_managed) {
-					delete _managed;
-				}
-				_managed = std::move(a_rhs._managed);
-				a_rhs._managed = 0;
-
 				return *this;
 			}
 
+			[[nodiscard]] constexpr reference operator*() const noexcept { return _cur->item; }
+			[[nodiscard]] constexpr pointer	  operator->() const noexcept { return std::addressof(_cur->item); }
 
-			[[nodiscard]] reference operator*() const
-			{
-				return _cur->item;
-			}
-
-
-			[[nodiscard]] pointer operator->() const
-			{
-				return std::addressof(_cur->item);
-			}
-
-
-			[[nodiscard]] bool operator==(const iterator_base& a_rhs) const
-			{
-				return _cur == a_rhs._cur;
-			}
-
-
-			[[nodiscard]] bool operator!=(const iterator_base& a_rhs) const
-			{
-				return !operator==(a_rhs);
-			}
-
+			[[nodiscard]] constexpr bool operator==(const iterator_base& a_rhs) const noexcept { return _cur == a_rhs._cur; }
+			[[nodiscard]] constexpr bool operator!=(const iterator_base& a_rhs) const noexcept { return !(*this == a_rhs); }
 
 			// prefix
-			iterator_base& operator++()
+			constexpr iterator_base& operator++() noexcept
 			{
 				assert(_cur);
 				_cur = _cur->next;
 				return *this;
 			}
 
-
 			// postfix
-			iterator_base operator++(int)
+			[[nodiscard]] constexpr iterator_base operator++(int) noexcept
 			{
 				iterator_base tmp(*this);
-				operator++();
+				++(*this);
 				return tmp;
 			}
 
 		protected:
 			friend class BSSimpleList<T>;
 
+			[[nodiscard]] constexpr Node*		get_current() noexcept { return _cur; }
+			[[nodiscard]] constexpr const Node* get_current() const noexcept { return _cur; }
 
-			bool comes_before(const iterator_base& a_it) const
+			[[nodiscard]] constexpr bool comes_before(const iterator_base& a_rhs) const noexcept
 			{
-				auto node = _cur;
-				while (node != a_it._cur) {
-					if (!node) {
-						return false;
+				for (auto iter = _cur; iter; iter = iter->next) {
+					if (iter == a_rhs._cur) {
+						return true;
 					}
-					node = node->next;
 				}
-				return true;
+				return false;
 			}
 
-
-			Node* _cur;
-			Node* _managed;
+		private:
+			observer<Node*> _cur;
 		};
 
+		using iterator = iterator_base<value_type>;
+		using const_iterator = iterator_base<const value_type>;
 
-		using iterator = iterator_base<T>;
-		using const_iterator = iterator_base<const T>;
-
-
-		BSSimpleList() :
+		inline BSSimpleList() :
 			_listHead()
 		{}
 
-
-		BSSimpleList(const BSSimpleList& a_rhs) :
+		inline BSSimpleList(const BSSimpleList& a_rhs) :
 			_listHead()
 		{
-			auto lhs = head_node();
-			auto rhs = a_rhs.head_node();
-			lhs->item = rhs->item;
-			while (rhs->next) {
-				rhs = rhs->next;
-				lhs->next = new Node(rhs->item);
-				lhs = lhs->next;
-			}
+			copy_from(a_rhs);
 		}
 
-
-		BSSimpleList(BSSimpleList&& a_rhs) :
+		inline BSSimpleList(BSSimpleList&& a_rhs) :
 			_listHead(std::move(a_rhs._listHead))
 		{}
 
-
-		~BSSimpleList()
+		inline ~BSSimpleList()
 		{
 			clear();
 		}
 
-
-		BSSimpleList& operator=(const BSSimpleList& a_rhs)
+		inline BSSimpleList& operator=(const BSSimpleList& a_rhs)
 		{
-			if (this == &a_rhs) {
-				return *this;
+			if (this != std::addressof(a_rhs)) {
+				clear();
+				copy_from(a_rhs);
 			}
-
-			clear();
-			auto lhs = head_node();
-			auto rhs = a_rhs.head_node();
-			lhs->item = rhs->item;
-			while (rhs->next) {
-				rhs = rhs->next;
-				lhs->next = new Node(rhs->item);
-				lhs = lhs->next;
-			}
-
 			return *this;
 		}
 
-
-		BSSimpleList& operator=(BSSimpleList&& a_rhs)
+		inline BSSimpleList& operator=(BSSimpleList&& a_rhs)
 		{
-			if (this == &a_rhs) {
-				return *this;
+			if (this != std::addressof(a_rhs)) {
+				clear();
+				_listHead = std::move(a_rhs._listHead);
 			}
-
-			_listHead = std::move(a_rhs._listHead);
-
 			return *this;
 		}
-
 
 		TES_HEAP_REDEFINE_NEW();
 
-
-		reference front()
+		[[nodiscard]] inline reference front()
 		{
 			assert(!empty());
 			return *begin();
 		}
 
-
-		const_reference front() const
+		[[nodiscard]] inline const_reference front() const
 		{
 			assert(!empty());
-			return *cbegin();
+			return *begin();
 		}
 
+		[[nodiscard]] inline iterator		begin() { return empty() ? end() : iterator(get_head()); }
+		[[nodiscard]] inline const_iterator begin() const { return empty() ? end() : const_iterator(get_head()); }
+		[[nodiscard]] inline const_iterator cbegin() const { return begin(); }
 
-		iterator before_begin() noexcept
+		[[nodiscard]] constexpr iterator	   end() noexcept { return iterator(nullptr); }
+		[[nodiscard]] constexpr const_iterator end() const noexcept { return const_iterator(nullptr); }
+		[[nodiscard]] constexpr const_iterator cend() const noexcept { return end(); }
+
+		[[nodiscard]] inline bool empty() const { return !_listHead.next && !_listHead.item; }
+
+		inline void clear()
 		{
-			auto node = new Node(value_type{}, head_node());
-			return iterator(node, node);
-		}
-
-
-		const_iterator before_begin() const noexcept
-		{
-			auto node = new Node(value_type{}, head_node());
-			return const_iterator(node, node);
-		}
-
-
-		const_iterator cbefore_begin() const noexcept
-		{
-			auto node = new Node(value_type{}, head_node());
-			return const_iterator(node, node);
-		}
-
-
-		iterator begin() noexcept
-		{
-			return empty() ? end() : iterator(head_node());
-		}
-
-
-		const_iterator begin() const noexcept
-		{
-			return empty() ? end() : const_iterator(head_node());
-		}
-
-
-		const_iterator cbegin() const noexcept
-		{
-			return empty() ? end() : const_iterator(head_node());
-		}
-
-
-		iterator end() noexcept
-		{
-			return iterator(nullptr);
-		}
-
-
-		const_iterator end() const noexcept
-		{
-			return const_iterator(nullptr);
-		}
-
-
-		const_iterator cend() const noexcept
-		{
-			return const_iterator(nullptr);
-		}
-
-
-		[[nodiscard]] bool empty() const noexcept
-		{
-			return !_listHead.next && !_listHead.item;
-		}
-
-
-		void clear() noexcept
-		{
-			while (!empty()) {
-				pop_front();
+			erase_after_impl(get_head(), nullptr);
+			if (static_cast<bool>(_listHead.item)) {
+				destroy_at(std::addressof(_listHead.item));
 			}
 		}
 
-
-		iterator insert_after(const_iterator a_pos, const T& a_value)
+		inline iterator insert_after(const_iterator a_pos, const_reference a_value)
 		{
 			auto node = new Node(a_value);
-			node->next = a_pos._cur->next;
-			a_pos._cur->next = node;
-			return iterator(node);
+			return insert_after_impl(
+				a_pos.get_current(),
+				std::make_pair(node, node));
 		}
 
-
-		iterator insert_after(const_iterator a_pos, T&& a_value)
+		inline iterator insert_after(const_iterator a_pos, value_type&& a_value)
 		{
 			auto node = new Node(std::move(a_value));
-			node->next = a_pos._cur->next;
-			a_pos._cur->next = node;
-			return iterator(node);
+			return insert_after_impl(
+				a_pos.get_current(),
+				std::make_pair(node, node));
 		}
 
-
-		iterator insert_after(const_iterator a_pos, size_type a_count, const T& a_value)
+		inline iterator insert_after(const_iterator a_pos, size_type a_count, const_reference a_value)
 		{
-			Node* node = 0;
-			while (a_count--) {
-				node = new Node(a_value);
-				node->next = a_pos._cur->next;
-				a_pos._cur->next = node;
-				++a_pos;
+			if (a_count <= 0) {
+				return a_pos;
 			}
-			return iterator(a_pos._cur);
+
+			return insert_after_impl(
+				a_pos.get_current(),
+				alloc_copies(a_count, a_value));
 		}
 
-
-		iterator erase_after(const_iterator a_pos)
+		inline iterator erase_after(const_iterator a_pos)
 		{
 			if (a_pos == cend()) {
 				return end();
 			}
 
-			auto before = a_pos++;
-			before._cur->next = a_pos._cur->next;
-			delete a_pos._cur;
-			a_pos._cur = 0;
-			return before._cur->next == 0 ? end() : iterator((++before)._cur);
+			auto node = a_pos.get_current();
+			erase_after_impl(node, node->next);
+			return node->next;
 		}
 
-
-		iterator erase_after(const_iterator a_first, const_iterator a_last)
+		inline iterator erase_after(const_iterator a_first, const_iterator a_last)
 		{
 			assert(a_first.comes_before(a_last));
-			const_iterator pos(a_first._cur);
-			if (pos == a_last) {
-				return iterator(a_last._cur);
-			}
 
-			++pos;
-			while (pos != a_last) {
-				auto old = pos._cur;
-				++pos;
-				if (old == &_listHead) {
-					old->item.~value_type();
-					new (std::addressof(old->item)) value_type{};
-					old->next = 0;
-				} else {
-					delete old;
-				}
-			}
-			a_first._cur->next = a_last._cur;
-			return iterator(a_last._cur);
+			auto head = a_first.get_current();
+			auto tail = a_last.get_current();
+
+			erase_after_impl(head, tail);
+			return tail;
 		}
 
-
-		void push_front(const T& a_value)
-		{
-			if (empty()) {
-				new (std::addressof(_listHead.item)) value_type(a_value);
-			} else {
-				auto node = new Node(std::move(_listHead));
-				new (std::addressof(_listHead.item)) value_type(a_value);
-				_listHead.next = node;
-			}
-		}
-
-
-		void push_front(T&& a_value)
-		{
-			if (empty()) {
-				new (std::addressof(_listHead.item)) value_type(std::move(a_value));
-			} else {
-				auto node = new Node(std::move(_listHead));
-				new (std::addressof(_listHead.item)) value_type(std::move(a_value));
-				_listHead.next = node;
-			}
-		}
-
+		inline void push_front(const_reference a_value) { emplace_front_impl(a_value); }
+		inline void push_front(value_type&& a_value) { emplace_front_impl(std::move(a_value)); }
 
 		template <class... Args>
-		reference emplace_front(Args&&... a_args)
+		inline reference emplace_front(Args&&... a_args)
 		{
-			if (empty()) {
-				new (std::addressof(_listHead.item)) value_type{ std::forward<Args>(a_args)... };
-			} else {
-				auto node = new Node(std::move(_listHead));
-				new (std::addressof(_listHead.item)) value_type{ std::forward<Args>(a_args)... };
-				_listHead.next = node;
-			}
+			emplace_front_impl(std::forward<Args>(a_args)...);
 			return _listHead.item;
 		}
 
-
-		void pop_front()
+		inline void pop_front()
 		{
 			assert(!empty());
-			_listHead.item.~value_type();
 
-			if (_listHead.next) {
-				new (std::addressof(_listHead.item)) value_type(std::move(_listHead.next->item));
-				auto old = _listHead.next;
-				_listHead.next = old->next;
-				delete old;
-			} else {
-				new (std::addressof(_listHead.item)) value_type{};
+			destroy_at(std::addressof(_listHead.item));
+			auto node = _listHead.next;
+			if (node) {
+				_listHead.next = node->next;
+				construct_at(std::addressof(_listHead.item), std::move(node->item));
+				delete node;
 			}
 		}
 
-
-		void resize(size_type a_count)
-		{
-			resize(a_count);
-		}
-
-
-		void resize(size_type a_count, const value_type& a_value)
-		{
-			resize(a_count, a_value);
-		}
+		inline void resize(size_type a_count) { resize(a_count); }
+		inline void resize(size_type a_count, const value_type& a_value) { resize(a_count, a_value); }
 
 	protected:
-		Node* head_node()
+		[[nodiscard]] constexpr Node*		get_head() noexcept { return std::addressof(_listHead); }
+		[[nodiscard]] constexpr const Node* get_head() const noexcept { return std::addressof(_listHead); }
+
+		[[nodiscard]] inline std::pair<Node*, Node*> alloc_copies(size_type a_count, const_reference a_value)
 		{
-			return std::addressof(_listHead);
-		}
+			assert(a_count > 0);
 
-
-		const Node* head_node() const
-		{
-			return std::addressof(_listHead);
-		}
-
-
-		const Node* chead_node() const
-		{
-			return std::addressof(_listHead);
-		}
-
-
-		template <class... Args>
-		void resize_impl(size_type a_count, Args&&... a_args)
-		{
-			if (empty() && a_count == 0) {
-				return;
+			auto head = new Node(a_value);
+			auto tail = head;
+			for (size_type i = 1; i < a_count; ++i) {
+				tail->next = new Node(a_value);
+				tail = tail->next;
 			}
 
-			auto	  cur = begin();
+			return std::make_pair(head, tail);
+		}
+
+		inline void copy_from(const BSSimpleList& a_rhs)
+		{
+			auto lhs = get_head();
+			auto rhs = a_rhs.get_head();
+
+			lhs->item = rhs->item;
+			while (rhs->next) {
+				rhs = rhs->next;
+				lhs->next = new Node(rhs->item);
+				lhs = lhs->next;
+			}
+		}
+
+		[[nodiscard]] inline Node* insert_after_impl(Node* a_pos, std::pair<Node*, Node*> a_values)
+		{
+			auto [head, tail] = a_values;
+
+			assert(a_pos);
+			assert(head && tail);
+
+			tail->next = a_pos->next;
+			a_pos->next = head;
+			return tail;
+		}
+
+		inline void erase_after_impl(Node* a_head, Node* a_tail)
+		{
+			if (a_head && a_head != a_tail) {
+				auto iter = a_head->next;
+				auto tmp = iter;
+				while (iter != a_tail) {
+					tmp = iter;
+					iter = iter->next;
+					delete tmp;
+				}
+				a_head->next = a_tail;
+			}
+		}
+
+		template <class... Args>
+		inline void emplace_front_impl(Args&&... a_args)
+		{
+			if (static_cast<bool>(_listHead.item)) {
+				auto node = new Node(std::move(_listHead));
+				_listHead.next = node;
+			}
+
+			destroy_at(std::addressof(_listHead.item));
+			construct_at(std::addressof(_listHead.item), std::forward<Args>(a_args)...);
+		}
+
+		inline void resize_impl(size_type a_count, const_reference a_value)
+		{
+			if (a_count <= 0) {
+				clear();
+			}
+
+			auto	  iter = begin();
+			auto	  last = end();
 			size_type elems = 1;
-			while (cur != end() && elems != a_count) {
-				++cur;
+			while (iter != last && elems != a_count) {
+				++iter;
 				++elems;
 			}
 
 			if (elems < a_count) {
 				// need to grow
-				Node* node = 0;
-				while (elems < a_count) {
-					node = new Node(std::forward<Args>(a_args)...);
-					cur._cur->next = node;
-					++cur;
-					++elems;
-				}
-			} else if (cur != end()) {
+				insert_after(iter, a_count - elems, a_value);
+			} else if (iter != last) {
 				// need to shrink
-				auto prev = cur++;
-				prev._cur->next = 0;
-				while (cur != end()) {
-					prev = cur++;
-					if (prev._cur != head_node()) {
-						delete prev._cur;
-					}
-				}
+				erase_after(iter, last);
 			} else {
 				// already required size
 			}
