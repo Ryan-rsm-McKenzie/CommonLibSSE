@@ -13,6 +13,82 @@ namespace RE
 	class GFxMovieRoot;
 
 
+	namespace GFxValueImpl
+	{
+		template <class>
+		struct _is_integer :
+			std::false_type
+		{};
+
+		template <>
+		struct _is_integer<unsigned char> :
+			std::true_type
+		{};
+
+		template <>
+		struct _is_integer<char> :
+			std::true_type
+		{};
+
+		template <>
+		struct _is_integer<signed char> :
+			std::true_type
+		{};
+
+		template <>
+		struct _is_integer<unsigned short> :
+			std::true_type
+		{};
+
+		template <>
+		struct _is_integer<signed short> :
+			std::true_type
+		{};
+
+		template <>
+		struct _is_integer<unsigned int> :
+			std::true_type
+		{};
+
+		template <>
+		struct _is_integer<signed int> :
+			std::true_type
+		{};
+
+		template <>
+		struct _is_integer<unsigned long> :
+			std::true_type
+		{};
+
+		template <>
+		struct _is_integer<signed long> :
+			std::true_type
+		{};
+
+		template <>
+		struct _is_integer<unsigned long long> :
+			std::true_type
+		{};
+
+		template <>
+		struct _is_integer<signed long long> :
+			std::true_type
+		{};
+
+		template <class T>
+		struct is_integer :
+			std::conditional_t<
+				std::is_enum_v<T>,
+				std::true_type,
+				_is_integer<
+					std::remove_cv_t<T>>>
+		{};
+
+		template <class T>
+		inline constexpr bool is_integer_v = is_integer<T>::value;
+	}
+
+
 	class GFxValue
 	{
 	private:
@@ -212,6 +288,16 @@ namespace RE
 		GFxValue(std::wstring_view a_rhs);
 		GFxValue(const GFxValue& a_rhs);
 		GFxValue(GFxValue&& a_rhs);
+
+		template <
+			class T,
+			std::enable_if_t<
+				GFxValueImpl::is_integer_v<T>,
+				int> = 0>
+		inline GFxValue(T a_val) :
+			GFxValue(static_cast<double>(a_val))
+		{}
+
 		~GFxValue();
 
 		GFxValue& operator=(std::nullptr_t);
@@ -223,6 +309,16 @@ namespace RE
 		GFxValue& operator=(std::wstring_view a_rhs);
 		GFxValue& operator=(const GFxValue& a_rhs);
 		GFxValue& operator=(GFxValue&& a_rhs);
+
+		template <
+			class T,
+			std::enable_if_t<
+				GFxValueImpl::is_integer_v<T>,
+				int> = 0>
+		inline GFxValue& operator=(T a_val)
+		{
+			return *this = static_cast<double>(a_val);
+		}
 
 		bool operator==(const GFxValue& a_rhs) const;
 
@@ -266,6 +362,18 @@ namespace RE
 		bool Invoke(const char* a_name, GFxValue* a_result, const GFxValue* a_args, UPInt a_numArgs);
 		bool Invoke(const char* a_name, GFxValue* a_result = nullptr);
 		bool DeleteMember(const char* a_name);
+
+		template <std::size_t N>
+		inline bool Invoke(const char* a_name, const std::array<GFxValue, N>& a_args)
+		{
+			return Invoke(a_name, nullptr, a_args);
+		}
+
+		template <std::size_t N>
+		inline bool Invoke(const char* a_name, GFxValue* a_result, const std::array<GFxValue, N>& a_args)
+		{
+			return Invoke(a_name, a_result, a_args.data(), a_args.size());
+		}
 
 		// AS Array support. Valid for Array type
 		UInt32 GetArraySize() const;

@@ -259,65 +259,16 @@ namespace REL
 
 		// https://docs.microsoft.com/en-us/cpp/build/x64-calling-convention
 
-		template <class T, class = void>
+		template <class T>
 		struct meets_length_req :
-			std::false_type
-		{};
-
-		template <class T>
-		struct meets_length_req<
-			T,
-			std::enable_if_t<
-				sizeof(T) == 1>> :
-			std::true_type
-		{};
-
-		template <class T>
-		struct meets_length_req<
-			T,
-			std::enable_if_t<
-				sizeof(T) == 2>> :
-			std::true_type
-		{};
-
-		template <class T>
-		struct meets_length_req<
-			T,
-			std::enable_if_t<
-				sizeof(T) == 4>> :
-			std::true_type
-		{};
-
-		template <class T>
-		struct meets_length_req<
-			T,
-			std::enable_if_t<
-				sizeof(T) == 8>> :
-			std::true_type
-		{};
-
-		template <class T>
-		struct meets_length_req<
-			T,
-			std::enable_if_t<
-				sizeof(T) == 16>> :
-			std::true_type
-		{};
-
-		template <class T>
-		struct meets_length_req<
-			T,
-			std::enable_if_t<
-				sizeof(T) == 32>> :
-			std::true_type
-		{};
-
-		template <class T>
-		struct meets_length_req<
-			T,
-			std::enable_if_t<
-				sizeof(T) == 64>> :
-			std::true_type
+			std::disjunction<
+				std::bool_constant<sizeof(T) == 1>,
+				std::bool_constant<sizeof(T) == 2>,
+				std::bool_constant<sizeof(T) == 4>,
+				std::bool_constant<sizeof(T) == 8>,
+				std::bool_constant<sizeof(T) == 16>,
+				std::bool_constant<sizeof(T) == 32>,
+				std::bool_constant<sizeof(T) == 64>>
 		{};
 
 

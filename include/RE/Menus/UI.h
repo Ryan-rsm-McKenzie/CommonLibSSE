@@ -18,6 +18,42 @@ namespace RE
 	class MenuOpenCloseEvent;
 
 
+	namespace UIImpl
+	{
+		template <class, class = void>
+		struct _has_menu_name :
+			std::false_type
+		{};
+
+		template <class T>
+		struct _has_menu_name<
+			T,
+			std::void_t<decltype(T::MENU_NAME)>> :
+			std::true_type
+		{};
+
+		template <class T>
+		struct has_menu_name :
+			_has_menu_name<
+				std::remove_cv_t<T>>
+		{};
+
+		template <class T>
+		inline constexpr bool has_menu_name_v = has_menu_name<T>::value;
+
+
+		template <class T>
+		struct is_menu_ptr :
+			std::is_convertible<
+				std::remove_cv_t<T>,
+				IMenu*>
+		{};
+
+		template <class T>
+		inline constexpr bool is_menu_ptr_v = is_menu_ptr<T>::value;
+	}
+
+
 	class UI :
 		public BSTSingletonSDM<UI>,					 // 000
 		public BSTEventSource<MenuOpenCloseEvent>,	 // 008
@@ -25,33 +61,6 @@ namespace RE
 		public BSTEventSource<void*>				 // 0B8 MenuModeCounterChangedEvent/TutorialEvent
 	{
 	public:
-		template <class T, class Enable = void>
-		struct _has_menu_name :
-			std::false_type
-		{};
-
-		template <class T>
-		struct _has_menu_name<T, decltype((void)T::MENU_NAME)> :
-			std::true_type
-		{};
-
-		template <class T>
-		struct has_menu_name :
-			_has_menu_name<std::remove_cv_t<T>>
-		{};
-
-
-		template <class T>
-		struct _is_menu_ptr :
-			std::is_convertible<T, IMenu*>
-		{};
-
-		template <class T>
-		struct is_menu_ptr :
-			_is_menu_ptr<std::remove_cv_t<T>>
-		{};
-
-
 		using Create_t = IMenu*();
 
 
@@ -89,13 +98,23 @@ namespace RE
 		void RemoveEventSink(BSTEventSink<T>* a_sink);
 		void ShowMenus(bool a_show);
 
-		template <class T, typename std::enable_if_t<std::conjunction<is_menu_ptr<T*>, has_menu_name<T>>::value, int> = 0>
+		template <
+			class T,
+			std::enable_if_t<
+				std::conjunction_v<
+					UIImpl::is_menu_ptr<T*>,
+					UIImpl::has_menu_name<T>>,
+				int> = 0>
 		GPtr<T> GetMenu()
 		{
 			return GPtr<T>(static_cast<T*>(GetMenu(T::MENU_NAME).get()));
 		}
 
-		template <class T, typename std::enable_if_t<std::conjunction<is_menu_ptr<T*>>::value, int> = 0>
+		template <
+			class T,
+			std::enable_if_t<
+				UIImpl::is_menu_ptr_v<T*>,
+				int> = 0>
 		GPtr<T> GetMenu(const std::string_view& a_menuName)
 		{
 			return GPtr<T>(static_cast<T*>(GetMenu(a_menuName).get()));

@@ -37,6 +37,7 @@ namespace RE
 
 		struct CallbackHashFunctor
 		{
+		public:
 			UPInt operator()(const GString& a_data) const;
 		};
 		STATIC_ASSERT(sizeof(CallbackHashFunctor) == 0x1);
