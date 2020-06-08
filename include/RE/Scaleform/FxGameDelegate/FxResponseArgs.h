@@ -80,13 +80,21 @@ namespace RE
 
 		FxResponseArgsEx(const std::array<GFxValue, N>& a_args) :
 			super(),
-			_args(a_args)
-		{}
+			_args()
+		{
+			for (std::size_t i = 0; i < N; ++i) {
+				_args[i + O] = a_args[i];
+			}
+		}
 
 		FxResponseArgsEx(std::array<GFxValue, N>&& a_args) :
 			super(),
-			_args(std::move(a_args))
-		{}
+			_args()
+		{
+			for (std::size_t i = 0; i < N; ++i) {
+				_args[i + O] = std::move(a_args[i]);
+			}
+		}
 
 		virtual ~FxResponseArgsEx() = default;
 
