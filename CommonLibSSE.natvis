@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+	<Type Name="RE::BSTArray&lt;*&gt;">
+		<DisplayString>{{ size={_size} }}</DisplayString>
+		<Expand>
+			<Item Name="[capacity]" ExcludeView="simple">_capacity</Item>
+			<ArrayItems>
+				<Size>_size</Size>
+				<ValuePointer>($T1*)_data</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+	<Type Name="RE::BSTSmallArray&lt;*&gt;">
+		<DisplayString>{{ size={_size} }}</DisplayString>
+		<Expand>
+			<Item Name="[capacity]" ExcludeView="simple">_capacity &amp; ~kLocalAlloc</Item>
+			<ArrayItems>
+				<Size>_size</Size>
+				<ValuePointer Condition="(_capacity &amp; kLocalAlloc) != 0">($T1*)_data.local</ValuePointer>
+				<ValuePointer Condition="(_capacity &amp; kLocalAlloc) == 0">($T1*)_data.heap</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+	<Type Name="RE::BSScrapArray&lt;*&gt;">
+		<DisplayString>{{ size={_size} }}</DisplayString>
+		<Expand>
+			<Item Name="[capacity]" ExcludeView="simple">_capacity</Item>
+			<ArrayItems>
+				<Size>_size</Size>
+				<ValuePointer>($T1*)_data</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+</AutoVisualizer>

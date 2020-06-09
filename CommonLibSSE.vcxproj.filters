@@ -5616,4 +5616,7 @@
       <Filter>src</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="CommonLibSSE.natvis" />
+  </ItemGroup>
 </Project>

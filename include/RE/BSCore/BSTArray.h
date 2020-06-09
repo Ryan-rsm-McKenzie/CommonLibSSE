@@ -107,8 +107,10 @@ namespace RE
 		union Data
 		{
 			Data() :
-				local{ 0 }
-			{}
+				heap(nullptr)
+			{
+				std::memset(local, 0, BUFFER_SIZE);
+			}
 
 			void* heap;
 			char  local[BUFFER_SIZE];
@@ -181,7 +183,9 @@ namespace RE
 
 		void deallocate(void* a_ptr)
 		{
-			free(a_ptr);
+			if (a_ptr != _data.local) {
+				free(a_ptr);
+			}
 		}
 
 
@@ -709,41 +713,11 @@ namespace RE
 	class BSTSmallArray : public BSTArray<T, BSTSmallArrayHeapAllocator<sizeof(T) * SIZE>>
 	{
 	private:
-		using Base = BSTArray<T, BSTSmallArrayHeapAllocator<sizeof(T) * SIZE>>;
+		using super = BSTArray<T, BSTSmallArrayHeapAllocator<sizeof(T) * SIZE>>;
 
 	public:
-		using size_type = typename Base::size_type;
-
-
-		BSTSmallArray() :
-			Base()
-		{
-			Base::set_allocator_traits(0, SIZE, sizeof(T));
-		}
-
-
-		explicit BSTSmallArray(size_type a_count) :
-			Base(a_count)
-		{}
-
-
-		BSTSmallArray(const BSTSmallArray&) = default;
-		BSTSmallArray(BSTSmallArray&&) = default;
-		~BSTSmallArray() = default;
-
-
-		BSTSmallArray& operator=(const BSTSmallArray& a_rhs)
-		{
-			Base::operator=(a_rhs);
-			return *this;
-		}
-
-
-		BSTSmallArray& operator=(BSTSmallArray&& a_rhs)
-		{
-			Base::operator=(std::move(a_rhs));
-			return *this;
-		}
+		using super::super;
+		using super::operator=;
 
 	private:
 		//members
@@ -760,37 +734,11 @@ namespace RE
 	class BSScrapArray : public BSTArray<T, BSScrapArrayAllocator>
 	{
 	private:
-		using Base = BSTArray<T, BSScrapArrayAllocator>;
+		using super = BSTArray<T, BSScrapArrayAllocator>;
 
 	public:
-		using size_type = typename Base::size_type;
-
-
-		BSScrapArray() = default;
-
-
-		explicit BSScrapArray(size_type a_count) :
-			Base(a_count)
-		{}
-
-
-		BSScrapArray(const BSScrapArray&) = default;
-		BSScrapArray(BSScrapArray&&) = default;
-		~BSScrapArray() = default;
-
-
-		BSScrapArray& operator=(const BSScrapArray& a_rhs)
-		{
-			Base::operator=(a_rhs);
-			return *this;
-		}
-
-
-		BSScrapArray& operator=(BSScrapArray&& a_rhs)
-		{
-			Base::operator=(std::move(a_rhs));
-			return *this;
-		}
+		using super::super;
+		using super::operator=;
 
 	protected:
 		//members

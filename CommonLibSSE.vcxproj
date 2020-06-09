@@ -1678,6 +1678,9 @@
     <None Include=".clang-format" />
     <None Include="src\.clang-format" />
   </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="CommonLibSSE.natvis" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
