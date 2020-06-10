@@ -72,22 +72,18 @@ namespace RE
 
 		FixedLengthMemoryManagementPol& operator=(const FixedLengthMemoryManagementPol& a_rhs)
 		{
-			if (this == &a_rhs) {
-				return *this;
+			if (this != std::addressof(a_rhs)) {
+				copy_from(a_rhs);
 			}
-
-			copy_from(a_rhs);
 			return *this;
 		}
 
 
 		FixedLengthMemoryManagementPol& operator=(FixedLengthMemoryManagementPol&& a_rhs)
 		{
-			if (this == &a_rhs) {
-				return *this;
+			if (this != std::addressof(a_rhs)) {
+				copy_from(a_rhs);
 			}
-
-			copy_from(a_rhs);
 			return *this;
 		}
 
@@ -139,7 +135,7 @@ namespace RE
 			_capacity(0),
 			_pad0C(0)
 		{
-			set_cstr("");
+			clear();
 		}
 
 
@@ -194,33 +190,28 @@ namespace RE
 		// operator=
 		BSStringT& operator=(const BSStringT& a_rhs)
 		{
-			if (this == &a_rhs) {
-				return *this;
+			if (this != std::addressof(a_rhs)) {
+				static_cast<allocator_type&>(*this) = a_rhs;
+				set_cstr(a_rhs.c_str());
 			}
-
-			static_cast<allocator_type&>(*this) = a_rhs;
-			set_cstr(a_rhs.c_str());
 			return *this;
 		}
 
 
 		BSStringT& operator=(BSStringT&& a_rhs)
 		{
-			if (this == &a_rhs) {
-				return *this;
+			if (this != std::addressof(a_rhs)) {
+				static_cast<allocator_type&>(*this) = std::move(a_rhs);
+
+				_data = std::move(a_rhs._data);
+				a_rhs._data = 0;
+
+				_size = std::move(a_rhs._size);
+				a_rhs._size = 0;
+
+				_capacity = std::move(a_rhs._capacity);
+				a_rhs._capacity = 0;
 			}
-
-			static_cast<allocator_type&>(*this) = std::move(a_rhs);
-
-			_data = std::move(a_rhs._data);
-			a_rhs._data = 0;
-
-			_size = std::move(a_rhs._size);
-			a_rhs._size = 0;
-
-			_capacity = std::move(a_rhs._capacity);
-			a_rhs._capacity = 0;
-
 			return *this;
 		}
 
@@ -324,7 +315,13 @@ namespace RE
 		// Operations
 		void clear() noexcept
 		{
-			set_cstr("");
+			if constexpr (std::is_same_v<value_type, char>) {
+				set_cstr("");
+			} else if constexpr (std::is_same_v<value_type, wchar_t>) {
+				set_cstr(L"");
+			} else {
+				static_assert(false);
+			}
 		}
 
 
@@ -369,30 +366,31 @@ namespace RE
 
 		bool set_cstr(const value_type* a_str, UInt32 a_len = 0)
 		{
+			auto len = static_cast<UInt16>(a_len);
 			if (_data == a_str) {
 				return true;
 			}
 
-			if (a_len == 0) {
-				a_len = traits_type::length(a_str);
+			if (len == 0) {
+				len = static_cast<UInt16>(traits_type::length(a_str));
 			}
 
-			size_type newSize = a_len > MAX ? MAX : a_len;
-			++a_len;
-			size_type newCap = a_len > MAX ? MAX : a_len;
+			size_type newSize = len > MAX ? MAX : len;
+			++len;
+			size_type newCap = len > MAX ? MAX : len;
 
-			if (a_len <= _capacity) {
-				traits_type::copy(_data, a_str, a_len);
+			if (len <= _capacity) {
+				traits_type::copy(_data, a_str, len);
 				_size = newSize;
 				return true;
 			}
 
-			auto newData = allocate(a_len);
+			auto newData = allocate(len);
 			if (!newData) {
 				return false;
 			}
 
-			traits_type::copy(newData, a_str, a_len);
+			traits_type::copy(newData, a_str, len);
 			if (_data) {
 				deallocate(_data);
 			}

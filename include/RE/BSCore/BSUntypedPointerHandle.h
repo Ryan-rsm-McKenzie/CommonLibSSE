@@ -3,11 +3,18 @@
 
 namespace RE
 {
-	template <UInt32 INDEX_BITS = 20, UInt32 FLAG_BITS = 6>
+	template <UInt32 FREE_LIST_BITS = 20, UInt32 AGE_SHIFT = 6>
 	class BSUntypedPointerHandle
 	{
 	public:
 		using value_type = UInt32;
+
+
+		enum : UInt32
+		{
+			kFreeListBits = FREE_LIST_BITS,
+			kAgeShift = AGE_SHIFT,
+		};
 
 
 		BSUntypedPointerHandle() :

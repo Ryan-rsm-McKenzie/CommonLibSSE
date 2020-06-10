@@ -18,6 +18,7 @@ namespace RE
 
 	struct UnloadedRefData
 	{
+	public:
 		union CellKey
 		{
 			BSTTuple<SInt16, SInt16> xy;
@@ -26,6 +27,7 @@ namespace RE
 		STATIC_ASSERT(sizeof(CellKey) == 0x4);
 
 
+		// members
 		FormID	refID;			// 0
 		FormID	parentSpaceID;	// 4
 		CellKey cellKey;		// 8
@@ -35,6 +37,8 @@ namespace RE
 
 	struct SpecialRefData  // LCSR
 	{
+	public:
+		// members
 		BGSLocationRefType* type;	  // 00
 		UnloadedRefData		refData;  // 08
 		UInt32				pad14;	  // 14
@@ -44,6 +48,8 @@ namespace RE
 
 	struct UniqueNPCData  // LCUN
 	{
+	public:
+		// members
 		Actor*		 actor;		 // 00
 		FormID		 refID;		 // 08
 		UInt32		 pad0C;		 // 0C
@@ -54,6 +60,8 @@ namespace RE
 
 	struct OverrideData
 	{
+	public:
+		// members
 		BSTArray<UnloadedRefData> addedData;	// 00 - ACPR
 		BSTSet<FormID>			  removedData;	// 18 - RCPR
 	};
@@ -93,6 +101,8 @@ namespace RE
 
 		struct KEYWORD_DATA
 		{
+		public:
+			// members
 			BGSKeyword* keyword;  // 00
 			float		data;	  // 08
 			UInt32		pad0C;	  // 0C

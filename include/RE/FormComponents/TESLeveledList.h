@@ -14,6 +14,8 @@ namespace RE
 
 	struct LEVELED_OBJECT
 	{
+	public:
+		// members
 		TESForm*			form;		// 00 - LVLO~
 		UInt16				count;		// 08
 		UInt16				level;		// 0A - ~LVLO

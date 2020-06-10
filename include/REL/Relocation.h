@@ -562,6 +562,8 @@ namespace REL
 		void BuildVersionInfo();
 
 
+		static inline std::uintptr_t _natvis = 0;
+
 		HMODULE		   _handle;
 		std::uintptr_t _base;
 		std::size_t	   _size;
@@ -693,6 +695,7 @@ namespace REL
 #endif
 		[[nodiscard]] std::uint64_t IDToOffsetImpl(std::uint64_t a_id);
 
+		static inline std::uint64_t* _natvis = nullptr;
 
 		Header						   _header;
 		Impl::MemoryMap<std::uint64_t> _offsets;

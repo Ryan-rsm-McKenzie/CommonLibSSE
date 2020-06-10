@@ -179,6 +179,7 @@ namespace REL
 		}
 
 		_base = reinterpret_cast<std::uintptr_t>(_handle);
+		_natvis = _base;
 
 		auto dosHeader = reinterpret_cast<const IMAGE_DOS_HEADER*>(_base);
 		auto ntHeader = adjust_pointer<IMAGE_NT_HEADERS64>(dosHeader, dosHeader->e_lfanew);
@@ -388,6 +389,7 @@ namespace REL
 			_offsets.open(name.c_str(), buffer.size());
 			_offsets = buffer;
 		}
+		_natvis = _offsets.data();
 
 		return success;
 	}

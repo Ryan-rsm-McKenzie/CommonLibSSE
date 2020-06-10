@@ -28,7 +28,7 @@ namespace RE
 		{}
 
 
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
+		template <class Y, std::enable_if_t<std::is_convertible_v<Y*, T*>, int> = 0>
 		explicit BSPointerHandle(const Y* a_rhs) :
 			Handle()
 		{
@@ -38,13 +38,13 @@ namespace RE
 		}
 
 
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
+		template <class Y, std::enable_if_t<std::is_convertible_v<Y*, T*>, int> = 0>
 		BSPointerHandle(const BSPointerHandle<Y, Handle>& a_rhs) :
 			Handle(a_rhs)
 		{}
 
 
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
+		template <class Y, std::enable_if_t<std::is_convertible_v<Y*, T*>, int> = 0>
 		BSPointerHandle(BSPointerHandle<Y, Handle>&& a_rhs) :
 			Handle(std::move(a_rhs))
 		{}
@@ -64,7 +64,7 @@ namespace RE
 		}
 
 
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
+		template <class Y, std::enable_if_t<std::is_convertible_v<Y*, T*>, int> = 0>
 		BSPointerHandle& operator=(const Y* a_rhs)
 		{
 			if (a_rhs && a_rhs->BSHandleRefObject::QRefCount() > 0) {
@@ -76,7 +76,7 @@ namespace RE
 		}
 
 
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, T*>::value, int> = 0>
+		template <class Y, std::enable_if_t<std::is_convertible_v<Y*, T*>, int> = 0>
 		BSPointerHandle& operator=(const BSPointerHandle<Y, Handle>& a_rhs)
 		{
 			Handle::operator=(static_cast<const Handle&>(a_rhs));

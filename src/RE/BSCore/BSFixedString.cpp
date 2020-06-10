@@ -5,9 +5,7 @@ namespace RE
 {
 	BSFixedString::BSFixedString() :
 		_data(nullptr)
-	{
-		ctor_cstr("");
-	}
+	{}
 
 
 	BSFixedString::BSFixedString(const BSFixedString& a_rhs) :
@@ -157,7 +155,7 @@ namespace RE
 
 	void BSFixedString::clear()
 	{
-		set_cstr("");
+		set_cstr(nullptr);
 	}
 
 
@@ -210,9 +208,7 @@ namespace RE
 
 	BSFixedStringW::BSFixedStringW() :
 		_data(nullptr)
-	{
-		ctor(L"");
-	}
+	{}
 
 
 	BSFixedStringW::BSFixedStringW(const BSFixedStringW& a_rhs) :
@@ -364,7 +360,6 @@ namespace RE
 	{
 		dtor();
 		_data = nullptr;
-		ctor(L"");
 	}
 
 

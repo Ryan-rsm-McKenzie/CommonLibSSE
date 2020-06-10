@@ -57,6 +57,8 @@
 #include <variant>
 #include <vector>
 
+#include <gsl/gsl>
+
 #undef AddForm
 #undef far
 #undef GetClassName

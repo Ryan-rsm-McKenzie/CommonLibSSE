@@ -10,6 +10,7 @@
 			</ArrayItems>
 		</Expand>
 	</Type>
+	
 	<Type Name="RE::BSTSmallArray&lt;*&gt;">
 		<DisplayString>{{ size={_size} }}</DisplayString>
 		<Expand>
@@ -21,6 +22,7 @@
 			</ArrayItems>
 		</Expand>
 	</Type>
+	
 	<Type Name="RE::BSScrapArray&lt;*&gt;">
 		<DisplayString>{{ size={_size} }}</DisplayString>
 		<Expand>
@@ -29,6 +31,166 @@
 				<Size>_size</Size>
 				<ValuePointer>($T1*)_data</ValuePointer>
 			</ArrayItems>
+		</Expand>
+	</Type>
+	
+	<Type Name="RE::BSStaticArray&lt;*&gt;">
+		<DisplayString>{{ size={_size} }}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>_size</Size>
+				<ValuePointer>($T1*)_data</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+	
+	<Type Name="RE::BSTSmallSharedArray&lt;*&gt;">
+		<DisplayString>{{ size={_size} }}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>_size</Size>
+				<ValuePointer Condition="_size &gt; 0">($T1*)_data.heap</ValuePointer>
+				<ValuePointer Condition="_size &lt;= 0">($T1*)_data.local</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+	
+	<Type Name="RE::SimpleArray&lt;*&gt;">
+		<DisplayString>{{ size={*(((size_t*)_data) - 1)} }}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>*(((size_t*)_data) - 1)</Size>
+				<ValuePointer>($T1*)_data</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+	
+	<Type Name="RE::BSSimpleList&lt;*&gt;">
+		<DisplayString Condition="*(uintptr_t*)(&amp;_listHead.item) == 0 &amp;&amp; _listHead.next == nullptr">empty</DisplayString>
+		<DisplayString Condition="*(uintptr_t*)(&amp;_listHead.item) != 0 || _listHead.next != nullptr">non-empty</DisplayString>
+		<Expand>
+			<LinkedListItems>
+				<HeadPointer>&amp;_listHead</HeadPointer>
+				<NextPointer>next</NextPointer>
+				<ValueNode>item</ValueNode>
+			</LinkedListItems>
+		</Expand>
+	</Type>
+	
+	<Type Name="RE::BSTScatterTable&lt;*&gt;">
+		<DisplayString>{{ size={_capacity - _freeCount} }}</DisplayString>
+		<Expand>
+			<CustomListItems MaxItemsPerView="1000">
+				<Variable Name="iter" InitialValue="_allocator._entries"/>
+				<Variable Name="end" InitialValue="iter + _capacity"/>
+				
+				<Size>_capacity - _freeCount</Size>
+				<Loop Condition="iter != end">
+					<If Condition="iter-&gt;next != nullptr">
+						<Item>iter-&gt;value</Item>
+					</If>
+					<Exec>++iter</Exec>
+				</Loop>
+			</CustomListItems>
+		</Expand>
+	</Type>
+
+	<Type Name="RE::BSFixedString">
+		<DisplayString Condition="_data != nullptr">{_data,na}</DisplayString>
+		<DisplayString Condition="_data == nullptr">&quot;&quot;</DisplayString>
+		<StringView Condition="_data != nullptr">_data,na</StringView>
+		<StringView Condition="_data == nullptr">&quot;&quot;</StringView>
+		<Expand>
+			<Item Name="[size]" ExcludeView="simple" Condition="_data != nullptr">((RE::BSStringPool::Entry*)_data - 1)-&gt;_lengthAndRef.length &amp; 0xFFFFFF</Item>
+			<Item Name="[size]" ExcludeView="simple" Condition="_data == nullptr">0</Item>
+			<ArrayItems>
+				<Size Condition="_data != nullptr">((RE::BSStringPool::Entry*)_data - 1)-&gt;_lengthAndRef.length &amp; 0xFFFFFF</Size>
+				<Size Condition="_data == nullptr">0</Size>
+				<ValuePointer>_data</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="RE::BSFixedStringW">
+		<DisplayString Condition="_data != nullptr">{_data,su}</DisplayString>
+		<DisplayString Condition="_data == nullptr">L&quot;&quot;</DisplayString>
+		<StringView Condition="_data != nullptr">_data,su</StringView>
+		<StringView Condition="_data == nullptr">L&quot;&quot;</StringView>
+		<Expand>
+			<Item Name="[size]" ExcludeView="simple" Condition="_data != nullptr">((RE::BSStringPool::Entry*)_data - 1)-&gt;_lengthAndRef.length &amp; 0xFFFFFF</Item>
+			<Item Name="[size]" ExcludeView="simple" Condition="_data == nullptr">0</Item>
+			<ArrayItems>
+				<Size Condition="_data != nullptr">((RE::BSStringPool::Entry*)_data - 1)-&gt;_lengthAndRef.length &amp; 0xFFFFFF</Size>
+				<Size Condition="_data == nullptr">0</Size>
+				<ValuePointer>_data</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="RE::BSStringT&lt;char,*&gt;">
+		<DisplayString Condition="_data != nullptr">{_data,na}</DisplayString>
+		<DisplayString Condition="_data == nullptr">&quot;&quot;</DisplayString>
+		<StringView Condition="_data != nullptr">_data,na</StringView>
+		<StringView Condition="_data == nullptr">&quot;&quot;</StringView>
+		<Expand>
+			<Item Name="[size]" ExcludeView="simple">_size</Item>
+			<Item Name="[capacity]" ExcludeView="simple">_capacity</Item>
+			<ArrayItems>
+				<Size>_size</Size>
+				<ValuePointer>_data</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="RE::BSStringT&lt;wchar_t,*&gt;">
+		<DisplayString Condition="_data != nullptr">{_data,su}</DisplayString>
+		<DisplayString Condition="_data == nullptr">L&quot;&quot;</DisplayString>
+		<StringView Condition="_data != nullptr">_data,su</StringView>
+		<StringView Condition="_data == nullptr">L&quot;&quot;</StringView>
+		<Expand>
+			<Item Name="[size]" ExcludeView="simple">_size</Item>
+			<Item Name="[capacity]" ExcludeView="simple">_capacity</Item>
+			<ArrayItems>
+				<Size>_size</Size>
+				<ValuePointer>_data</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="RE::BSPointerHandle&lt;*&gt;">
+		<DisplayString Condition="_handle != 0">non-empty</DisplayString>
+		<DisplayString Condition="_handle == 0">empty</DisplayString>
+		<Expand>
+			<Item Name="[ptr]" 
+				  Condition="
+					REL::Module::_natvis != 0 &amp;&amp;
+					REL::IDDatabase::_natvis != nullptr &amp;&amp;
+					_handle != 0">
+				($T1&amp;)(*((char*)((RE::HandleManager::Entry*)(REL::Module::_natvis + REL::IDDatabase::_natvis[514478]))[_handle &amp; 0xFFFFF].pointer._ptr - 0x20))
+			</Item>
+		</Expand>
+	</Type>
+
+	<Type Name="RE::NiPointer&lt;*&gt;">
+		<SmartPointer Usage="Minimal">_ptr</SmartPointer>
+		<DisplayString Condition="_ptr == nullptr">empty</DisplayString>
+		<DisplayString Condition="_ptr != nullptr">RE::NiPointer {*_ptr}</DisplayString>
+		<Expand>
+			<Item Name="[ptr]" Condition="_ptr != nullptr">_ptr,na</Item>
+		</Expand>
+	</Type>
+
+	<Type Name="RE::TESForm">
+		<DisplayString>{formType,en} [{formID,H}]</DisplayString>
+	</Type>
+
+	<Type Name="RE::BSExtraData">
+		<Expand>
+			<LinkedListItems>
+				<HeadPointer>this</HeadPointer>
+				<NextPointer>next</NextPointer>
+				<ValueNode>(void*)this</ValueNode>
+			</LinkedListItems>
 		</Expand>
 	</Type>
 </AutoVisualizer>

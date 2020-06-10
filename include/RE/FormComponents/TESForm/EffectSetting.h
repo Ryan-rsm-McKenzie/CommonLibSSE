@@ -44,6 +44,7 @@ namespace RE
 
 		struct EffectSettingData  // DATA
 		{
+		public:
 			enum class Flag : UInt32
 			{
 				kNone = 0,
@@ -68,6 +69,7 @@ namespace RE
 			};
 
 
+			// members
 			Flag					 flags;					 // 00
 			float					 baseCost;				 // 04
 			TESForm*				 associatedForm;		 // 08
@@ -118,6 +120,8 @@ namespace RE
 
 		struct SoundPair  // SNDD
 		{
+		public:
+			// members
 			MagicSystem::SoundID	id;		// 00
 			UInt32					pad04;	// 04
 			BGSSoundDescriptorForm* sound;	// 08

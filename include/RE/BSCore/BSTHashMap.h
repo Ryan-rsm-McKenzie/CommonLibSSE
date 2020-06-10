@@ -607,7 +607,7 @@ namespace RE
 
 		BSTScatterTableHeapAllocator() :
 			_pad00(0),
-			_entries(0)
+			_entries(nullptr)
 		{}
 
 

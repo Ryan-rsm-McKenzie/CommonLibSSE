@@ -42,6 +42,7 @@ namespace RE
 
 		struct Timing
 		{
+		public:
 			enum class MoonPhaseLength : UInt8
 			{
 				kPhaseLengthMask = 0x3F,
@@ -54,11 +55,13 @@ namespace RE
 
 			struct Interval
 			{
+			public:
 				std::tm ConvertInterval(UInt8 a_time) const;
 				std::tm GetBeginTime() const;
 				std::tm GetEndTime() const;
 
 
+				// members
 				UInt8 begin;  // 0
 				UInt8 end;	  // 1
 			};
@@ -70,6 +73,7 @@ namespace RE
 			UInt8 GetPhaseLength() const;
 
 
+			// members
 			Interval		sunrise;		  // 0
 			Interval		sunset;			  // 2
 			UInt8			volatility;		  // 4
