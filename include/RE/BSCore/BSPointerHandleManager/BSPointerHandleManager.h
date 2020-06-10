@@ -28,7 +28,7 @@ namespace RE
 		};
 
 
-		static gsl::span<Entry, 0x100000> GetHandleEntries()
+		static stl::span<Entry, 0x100000> GetHandleEntries()
 		{
 			REL::Offset<Entry(*)[0x100000]> entries = REL::ID(514478);
 			return { *entries };

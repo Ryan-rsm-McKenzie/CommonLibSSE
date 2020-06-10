@@ -57,7 +57,15 @@
 #include <variant>
 #include <vector>
 
-#include <gsl/gsl>
+#include <nonstd/span.hpp>
+
+namespace RE
+{
+	namespace stl
+	{
+		using nonstd::span;
+	}
+}
 
 #undef AddForm
 #undef far
