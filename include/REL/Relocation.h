@@ -815,9 +815,9 @@ namespace REL
 			return *this;
 		}
 
-		constexpr Offset& operator=(std::uint64_t a_rhs) noexcept
+		constexpr Offset& operator=(std::uintptr_t a_address) noexcept
 		{
-			_address = a_rhs;
+			_address = a_address;
 			return *this;
 		}
 

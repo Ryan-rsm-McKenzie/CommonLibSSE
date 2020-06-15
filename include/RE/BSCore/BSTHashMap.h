@@ -298,7 +298,7 @@ namespace RE
 				return 0;
 			}
 
-			entry_type* tail = 0;
+			entry_type* tail = nullptr;
 			while (!comp_key(get_key(entry->value), a_key)) {  // find key in table
 				tail = entry;
 				entry = entry->next;
@@ -403,6 +403,7 @@ namespace RE
 			if (!idealEntry->next) {  // if slot empty
 				new (std::addressof(idealEntry->value)) value_type(std::forward<Arg>(a_value));
 				idealEntry->next = const_cast<entry_type*>(_sentinel);
+				--_freeCount;
 				return std::make_pair(make_iterator(idealEntry), true);
 			}
 

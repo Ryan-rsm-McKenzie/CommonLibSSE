@@ -46,62 +46,79 @@ namespace RE
 		using element_type = T;
 		using reference_manager = RefManager<T>;
 
-
-		constexpr BSTSmartPointer() noexcept :
+		// 1
+		inline constexpr BSTSmartPointer() noexcept :
 			_ptr(nullptr)
 		{}
 
-
-		constexpr BSTSmartPointer([[maybe_unused]] std::nullptr_t) noexcept :
+		// 2
+		inline constexpr BSTSmartPointer(std::nullptr_t) noexcept :
 			_ptr(nullptr)
 		{}
 
-
-		template <class Y, std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
-		explicit BSTSmartPointer(Y* a_rhs) :
+		// 3
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					element_type*>,
+				int> = 0>
+		inline explicit BSTSmartPointer(Y* a_rhs) :
 			_ptr(a_rhs)
 		{
 			TryAttach();
 		}
 
-
-		BSTSmartPointer(const BSTSmartPointer& a_rhs) :
+		// 9a
+		inline BSTSmartPointer(const BSTSmartPointer& a_rhs) :
 			_ptr(a_rhs._ptr)
 		{
 			TryAttach();
 		}
 
-
-		template <class Y, std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
-		BSTSmartPointer(const BSTSmartPointer<Y>& a_rhs) :
+		// 9b
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					element_type*>,
+				int> = 0>
+		inline BSTSmartPointer(const BSTSmartPointer<Y>& a_rhs) :
 			_ptr(a_rhs._ptr)
 		{
 			TryAttach();
 		}
 
-
-		BSTSmartPointer(BSTSmartPointer&& a_rhs) noexcept :
+		// 10a
+		inline BSTSmartPointer(BSTSmartPointer&& a_rhs) noexcept :
 			_ptr(std::move(a_rhs._ptr))
 		{
 			a_rhs._ptr = nullptr;
 		}
 
-
-		template <class Y, std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
-		BSTSmartPointer(BSTSmartPointer<Y>&& a_rhs) noexcept :
+		// 10b
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					element_type*>,
+				int> = 0>
+		inline BSTSmartPointer(BSTSmartPointer<Y>&& a_rhs) noexcept :
 			_ptr(std::move(a_rhs._ptr))
 		{
 			a_rhs._ptr = nullptr;
 		}
 
-
-		~BSTSmartPointer()
+		inline ~BSTSmartPointer()
 		{
 			TryDetach();
 		}
 
-
-		BSTSmartPointer& operator=(const BSTSmartPointer& a_rhs)
+		// 1a
+		inline BSTSmartPointer& operator=(const BSTSmartPointer& a_rhs)
 		{
 			if (this != std::addressof(a_rhs)) {
 				TryDetach();
@@ -111,32 +128,24 @@ namespace RE
 			return *this;
 		}
 
-
-		template <class Y, std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
-		BSTSmartPointer& operator=(const BSTSmartPointer<Y>& a_rhs)
+		// 1b
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					element_type*>,
+				int> = 0>
+		inline BSTSmartPointer& operator=(const BSTSmartPointer<Y>& a_rhs)
 		{
-			if (this != std::addressof(a_rhs)) {
-				TryDetach();
-				_ptr = a_rhs._ptr;
-				TryAttach();
-			}
+			TryDetach();
+			_ptr = a_rhs._ptr;
+			TryAttach();
 			return *this;
 		}
 
-
-		BSTSmartPointer& operator=(BSTSmartPointer&& a_rhs)
-		{
-			if (this != std::addressof(a_rhs)) {
-				TryDetach();
-				_ptr = std::move(a_rhs._ptr);
-				a_rhs._ptr = nullptr;
-			}
-			return *this;
-		}
-
-
-		template <class Y, std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
-		BSTSmartPointer& operator=(BSTSmartPointer<Y>&& a_rhs)
+		// 2a
+		inline BSTSmartPointer& operator=(BSTSmartPointer&& a_rhs)
 		{
 			if (this != std::addressof(a_rhs)) {
 				TryDetach();
@@ -146,15 +155,35 @@ namespace RE
 			return *this;
 		}
 
+		// 2b
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					element_type*>,
+				int> = 0>
+		inline BSTSmartPointer& operator=(BSTSmartPointer<Y>&& a_rhs)
+		{
+			TryDetach();
+			_ptr = std::move(a_rhs._ptr);
+			a_rhs._ptr = nullptr;
+			return *this;
+		}
 
-		void reset()
+		inline void reset()
 		{
 			TryDetach();
 		}
 
-
-		template <class Y, std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
-		void reset(Y* a_ptr)
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					element_type*>,
+				int> = 0>
+		inline void reset(Y* a_ptr)
 		{
 			if (_ptr != a_ptr) {
 				TryDetach();
@@ -163,25 +192,21 @@ namespace RE
 			}
 		}
 
-
 		[[nodiscard]] constexpr element_type* get() const noexcept
 		{
 			return _ptr;
 		}
-
 
 		[[nodiscard]] explicit constexpr operator bool() const noexcept
 		{
 			return static_cast<bool>(_ptr);
 		}
 
-
 		[[nodiscard]] constexpr element_type& operator*() const noexcept
 		{
 			assert(static_cast<bool>(*this));
 			return *_ptr;
 		}
-
 
 		[[nodiscard]] constexpr element_type* operator->() const noexcept
 		{
@@ -193,16 +218,14 @@ namespace RE
 		template <class, template <class> class>
 		friend class BSTSmartPointer;
 
-
-		void TryAttach()
+		inline void TryAttach()
 		{
 			if (_ptr) {
 				reference_manager::Acquire(_ptr);
 			}
 		}
 
-
-		void TryDetach()
+		inline void TryDetach()
 		{
 			if (_ptr) {
 				reference_manager::Release(_ptr);
@@ -210,19 +233,22 @@ namespace RE
 			}
 		}
 
-
 		// members
 		element_type* _ptr;	 // 0
 	};
 	STATIC_ASSERT(sizeof(BSTSmartPointer<void*>) == 0x8);
 
+	template <class T, class... Args>
+	[[nodiscard]] inline BSTSmartPointer<T> make_smart(Args&&... a_args)
+	{
+		return BSTSmartPointer<T>{ new T{ std::forward<Args>(a_args)... } };
+	}
 
 	template <class T1, class T2>
 	constexpr bool operator==(const BSTSmartPointer<T1>& a_lhs, const BSTSmartPointer<T2>& a_rhs)
 	{
 		return a_lhs.get() == a_rhs.get();
 	}
-
 
 	template <class T1, class T2>
 	constexpr bool operator!=(const BSTSmartPointer<T1>& a_lhs, const BSTSmartPointer<T2>& a_rhs)

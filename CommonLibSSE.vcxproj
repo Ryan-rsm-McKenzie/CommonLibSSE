@@ -109,6 +109,7 @@
       <TreatSpecificWarningsAsErrors>4099;4717;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -162,6 +163,7 @@
       <TreatSpecificWarningsAsErrors>4099;4717;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -1500,7 +1502,6 @@
     <ClCompile Include="src\RE\BSScript\Variable.cpp" />
     <ClCompile Include="src\RE\BSShader\BSEffectShaderData.cpp" />
     <ClCompile Include="src\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase.cpp" />
-    <ClCompile Include="src\RE\BSSystem\BSIntrusiveRefCounted.cpp" />
     <ClCompile Include="src\RE\BSSystem\BSSaveDataSystemUtility\BSWin32SaveDataSystemUtility.cpp" />
     <ClCompile Include="src\RE\BSSystem\BSStorage\BSSystemFileStorage.cpp" />
     <ClCompile Include="src\RE\BSSystem\IFormFactory\IFormFactory.cpp" />

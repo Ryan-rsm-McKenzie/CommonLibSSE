@@ -10,17 +10,22 @@
 
 namespace RE
 {
-	template <class Event, class Target, class T, template <class> class Parent>
+	template <class Type, class Handler, class Parameter, template <class> class Parent>
 	class BSResponse :
-		public Parent<T>,
+		public Parent<Parameter>,
 		public BSIntrusiveRefCounted
 	{
 	public:
-		virtual ~BSResponse();	// 00
+		BSResponse() = default;
+		virtual ~BSResponse() = default;  // 00
+
+		using BSIntrusiveRefCounted::operator new;
+		using BSIntrusiveRefCounted::operator delete;
 
 
-		BSTHashMap<Event, BSTSmartPointer<IHandlerFunctor<Target, Event>>> handlerMap;		// ??
-		BSTSmartPointer<BSResponse<Event, Target, T, Parent>>			   backupResponse;	// ??
+		// members
+		BSTHashMap<Type, BSTSmartPointer<IHandlerFunctor<Handler, Parameter>>> handlerMap;		// ??
+		BSTSmartPointer<BSResponse<Type, Handler, Parameter, Parent>>		   backupResponse;	// ??
 	};
 
 

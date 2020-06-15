@@ -11,11 +11,12 @@ namespace RE
 		template <class>
 		friend struct BSTSmartPointerIntrusiveRefCount;
 
+		constexpr BSIntrusiveRefCounted() noexcept :
+			_refCount(0)
+		{}
 
-		BSIntrusiveRefCounted();
-
-		UInt32 IncRef();
-		UInt32 DecRef();
+		inline UInt32 IncRef() { return InterlockedIncrement(&_refCount); }
+		UInt32		  DecRef() { return InterlockedDecrement(&_refCount); }
 
 		TES_HEAP_REDEFINE_NEW();
 

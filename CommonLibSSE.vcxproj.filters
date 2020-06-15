@@ -3894,9 +3894,6 @@
     <ClCompile Include="src\RE\BSShader\BSShaderMaterial\BSLightingShaderMaterialBase.cpp">
       <Filter>src\RE\BSShader\BSShaderMaterial</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSSystem\BSIntrusiveRefCounted.cpp">
-      <Filter>src\RE\BSSystem</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSSystem\BSSaveDataSystemUtility\BSWin32SaveDataSystemUtility.cpp">
       <Filter>src\RE\BSSystem\BSSaveDataSystemUtility</Filter>
     </ClCompile>

@@ -64,6 +64,8 @@ namespace RE
 
 	struct OBJ_REFR
 	{
+	public:
+		// members
 		TESBoundObject* objectReference;  // 00
 		NiPoint3		angle;			  // 08
 		NiPoint3		location;		  // 14
@@ -73,6 +75,8 @@ namespace RE
 
 	struct LOADED_REF_DATA
 	{
+	public:
+		// members
 		BSTSmallArray<void*>  unk00;				// 00 - handleList?
 		TESWaterForm*		  currentWaterType;		// 18
 		float				  relevantWaterHeight;	// 20

@@ -5,14 +5,20 @@
 
 namespace RE
 {
-	template <class Target, class Event>
+	template <class Handler, class Parameter>
 	class IHandlerFunctor : public BSIntrusiveRefCounted
 	{
 	public:
-		virtual ~IHandlerFunctor();	 // 00
+		IHandlerFunctor() = default;
+		virtual ~IHandlerFunctor() = default;  // 00
 
 		// add
-		virtual bool ExecuteHandler(Target* a_target, const Event* a_event);
+		virtual bool ExecuteHandler(Handler& a_handler, const Parameter& a_parameter) = 0;
+
+		inline bool operator()(Handler& a_handler, const Parameter& a_parameter)
+		{
+			return ExecuteHandler(a_handler, a_parameter);
+		}
 
 
 		// members

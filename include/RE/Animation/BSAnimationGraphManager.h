@@ -10,8 +10,9 @@
 
 namespace RE
 {
-	struct BSAnimationGraphEvent;
+	class BSAnimationGraphChannel;
 	class BShkbAnimationGraph;
+	struct BSAnimationGraphEvent;
 
 
 	union hkbVariableValue

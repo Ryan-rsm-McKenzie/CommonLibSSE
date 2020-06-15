@@ -53,6 +53,8 @@ namespace RE
 
 	struct CommandedActorData
 	{
+	public:
+		// members
 		ActorHandle	  commandedActor;  // 00
 		UInt32		  pad04;		   // 04
 		ActiveEffect* activeEffect;	   // 10
@@ -62,6 +64,8 @@ namespace RE
 
 	struct ObjectEquipParams
 	{
+	public:
+		// members
 		ExtraDataList*		extraDataList;	  // 00
 		SInt32				count;			  // 08
 		UInt32				pad0C;			  // 0C
@@ -81,6 +85,7 @@ namespace RE
 	class QueuedItem
 	{
 	public:
+		// members
 		QueuedItem*			  next;			// 00
 		TESBoundObject*		  object;		// 08
 		ObjectEquipParams	  equipParams;	// 10
@@ -157,6 +162,8 @@ namespace RE
 
 	struct DeferredHideLimb
 	{
+	public:
+		// members
 		float			  dismemberTimer;		// 00
 		UInt32			  limbIndex;			// 04
 		NiPointer<NiNode> dismemberedLimbRoot;	// 08
@@ -172,6 +179,7 @@ namespace RE
 
 	struct AIPerkData
 	{
+	public:
 		BSTArray<BGSPerkEntry*>& at(BGSEntryPoint::ENTRY_POINT a_pos)
 		{
 			return operator[](a_pos);

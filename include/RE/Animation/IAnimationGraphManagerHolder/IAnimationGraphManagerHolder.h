@@ -31,7 +31,7 @@ namespace RE
 		virtual bool   SetupAnimEventSinks(const BSTSmartPointer<BShkbAnimationGraph>& a_animGraph);														// 08 - { return true; } - sinks the holder to the the source passed in
 		virtual void   Unk_09(void);																														// 09 - { return; }
 		virtual void   Unk_0A(void);																														// 0A - { return 0; }
-		virtual void   Unk_0B(void);																														// 0B - { return; }
+		virtual void   PostCreateAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_animGraphMgr);											// 0B - { return; }
 		virtual void   Unk_0C(void);																														// 0C - { return; }
 		virtual void   PostChangeAnimationManager(const BSTSmartPointer<BShkbAnimationGraph>& a_arg1, const BSTSmartPointer<BShkbAnimationGraph>& a_arg2);	// 0D - { return; }
 		virtual void   Unk_0E(void);																														// 0E - { return 1; }

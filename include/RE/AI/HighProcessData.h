@@ -42,6 +42,8 @@ namespace RE
 
 	struct DetectionEvent
 	{
+	public:
+		// members
 		UInt32			actionValue;  // 00
 		NiPoint3		location;	  // 00
 		AITimeStamp		timeStamp;	  // 10

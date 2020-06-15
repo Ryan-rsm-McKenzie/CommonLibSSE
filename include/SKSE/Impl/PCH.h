@@ -91,6 +91,7 @@ namespace RE
 #pragma warning(disable : 4710)	 // 'function' : function not inlined
 #pragma warning(disable : 4711)	 // function 'function' selected for inline expansion
 #pragma warning(disable : 5045)	 // Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
+#pragma warning(disable : 5053)	 // support for 'explicit(<expr>)' in C++17 and earlier is a vendor extension
 
 #undef STATIC_ASSERT
 #define STATIC_ASSERT(bool_constexpr) static_assert(bool_constexpr)
