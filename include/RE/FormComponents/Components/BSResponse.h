@@ -16,16 +16,30 @@ namespace RE
 		public BSIntrusiveRefCounted
 	{
 	public:
+		using functor_type = IHandlerFunctor<Handler, Parameter>;
+
 		BSResponse() = default;
 		virtual ~BSResponse() = default;  // 00
 
 		using BSIntrusiveRefCounted::operator new;
 		using BSIntrusiveRefCounted::operator delete;
 
+		[[nodiscard]] inline BSTSmartPointer<functor_type> GetHandler(const Type& a_type)
+		{
+			auto it = handlerMap.find(a_type);
+			if (it != handlerMap.end()) {
+				return it->second;
+			} else if (backupResponse) {
+				return backupResponse->GetHandler(a_type);
+			} else {
+				return nullptr;
+			}
+		}
+
 
 		// members
-		BSTHashMap<Type, BSTSmartPointer<IHandlerFunctor<Handler, Parameter>>> handlerMap;		// ??
-		BSTSmartPointer<BSResponse<Type, Handler, Parameter, Parent>>		   backupResponse;	// ??
+		BSTHashMap<Type, BSTSmartPointer<functor_type>>				  handlerMap;	   // ??
+		BSTSmartPointer<BSResponse<Type, Handler, Parameter, Parent>> backupResponse;  // ??
 	};
 
 

@@ -184,6 +184,70 @@
 		<DisplayString>{formType,en} [{formID,H}]</DisplayString>
 	</Type>
 
+	<Type Name="RE::BGSEquipSlot">
+		<DisplayString Condition="formID == 0x00013F42">right hand</DisplayString>
+		<DisplayString Condition="formID == 0x00013F43">left hand</DisplayString>
+		<DisplayString Condition="formID == 0x00013F44">either hand</DisplayString>
+		<DisplayString Condition="formID == 0x00013F45">both hands</DisplayString>
+		<DisplayString Condition="formID == 0x000141E8">shield</DisplayString>
+		<DisplayString Condition="formID == 0x00025BEE">voice</DisplayString>
+		<DisplayString Condition="formID == 0x00035698">potion</DisplayString>
+	</Type>
+
+	<Type Name="RE::BGSKeyword">
+		<DisplayString>{formEditorID}</DisplayString>
+	</Type>
+
+	<Type Name="RE::BGSEquipType" Inheritable="false">
+		<DisplayString Condition="equipSlot != nullptr">{equipSlot}</DisplayString>
+		<DisplayString Condition="equipSlot == nullptr">none</DisplayString>
+	</Type>
+
+	<Type Name="RE::BGSKeywordForm" Inheritable="false">
+		<DisplayString>{{ size={numKeywords} }}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>numKeywords</Size>
+				<ValuePointer>keywords</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="RE::BGSMessageIcon" Inheritable="false">
+		<DisplayString>{icon}</DisplayString>
+	</Type>
+
+	<Type Name="RE::TESAttackDamageForm" Inheritable="false">
+		<DisplayString>{{ damage={attackDamage} }}</DisplayString>
+	</Type>
+
+	<Type Name="RE::TESEnchantableForm" Inheritable="false">
+		<DisplayString Condition="formEnchanting != nullptr">{(RE::TESFullName*)formEnchanting}</DisplayString>
+		<DisplayString Condition="formEnchanting == nullptr">none</DisplayString>
+	</Type>
+
+	<Type Name="RE::TESFullName" Inheritable="false">
+		<DisplayString>{fullName}</DisplayString>
+	</Type>
+
+	<Type Name="RE::TESRaceForm" Inheritable="false">
+		<DisplayString>{race}</DisplayString>
+	</Type>
+
+	<Type Name="RE::TESTexture" Inheritable="false">
+		<AlternativeType Name="RE::TESIcon" Inheritable="false"/>
+		<AlternativeType Name="RE::TESTexture1024" Inheritable="false"/>
+		<DisplayString>{textureName}</DisplayString>
+	</Type>
+
+	<Type Name="RE::TESValueForm" Inheritable="false">
+		<DisplayString>{{ value={value} }}</DisplayString>
+	</Type>
+
+	<Type Name="RE::TESWeightForm" Inheritable="false">
+		<DisplayString>{{ weight={weight} }}</DisplayString>
+	</Type>
+
 	<Type Name="RE::BSExtraData">
 		<Expand>
 			<LinkedListItems>
