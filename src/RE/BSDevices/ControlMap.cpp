@@ -74,7 +74,7 @@ namespace RE
 
 	bool ControlMap::IsActivateControlsEnabled() const
 	{
-		return (enabledControls & UEFlag::kLooking) != UEFlag::kNone;
+		return (enabledControls & UEFlag::kActivate) != UEFlag::kNone;
 	}
 
 
