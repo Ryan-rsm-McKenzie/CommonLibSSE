@@ -9,8 +9,8 @@
 #include "RE/FormComponents/TESForm/TESForm.h"
 
 #include "SKSE/API.h"
+#include "SKSE/Impl/RegistrationTraits.h"
 #include "SKSE/Interfaces.h"
-#include "SKSE/RegistrationTraits.h"
 
 
 namespace SKSE

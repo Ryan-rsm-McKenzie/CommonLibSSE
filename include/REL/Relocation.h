@@ -1,5 +1,7 @@
 #pragma once
 
+#include "SKSE/Impl/Util.h"
+
 #include "REL/SafeWrite.h"
 #include "REL/Version.h"
 

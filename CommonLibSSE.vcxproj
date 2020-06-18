@@ -126,7 +126,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Version.lib</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -155,6 +155,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>Version.lib</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -180,7 +183,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Version.lib</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -209,6 +212,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>Version.lib</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\REL\Relocation.h" />
@@ -1408,14 +1414,15 @@
     <ClInclude Include="include\SKSE\IAT.h" />
     <ClInclude Include="include\SKSE\Impl\Atomic.h" />
     <ClInclude Include="include\SKSE\Impl\PCH.h" />
+    <ClInclude Include="include\SKSE\Impl\RegistrationTraits.h" />
+    <ClInclude Include="include\SKSE\Impl\Stubs.h" />
     <ClInclude Include="include\SKSE\Impl\Util.h" />
     <ClInclude Include="include\SKSE\Interfaces.h" />
     <ClInclude Include="include\SKSE\Logger.h" />
     <ClInclude Include="include\SKSE\RegistrationMap.h" />
     <ClInclude Include="include\SKSE\RegistrationSet.h" />
-    <ClInclude Include="include\SKSE\RegistrationTraits.h" />
     <ClInclude Include="include\SKSE\SafeWrite.h" />
-    <ClInclude Include="include\SKSE\Stubs.h" />
+    <ClInclude Include="include\SKSE\SKSE.h" />
     <ClInclude Include="include\SKSE\Trampoline.h" />
     <ClInclude Include="include\SKSE\VArgFormatter.h" />
     <ClInclude Include="include\SKSE\Version.h" />

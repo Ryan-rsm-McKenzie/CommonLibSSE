@@ -3592,6 +3592,12 @@
     <ClInclude Include="include\SKSE\Impl\PCH.h">
       <Filter>include\SKSE\Impl</Filter>
     </ClInclude>
+    <ClInclude Include="include\SKSE\Impl\RegistrationTraits.h">
+      <Filter>include\SKSE\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SKSE\Impl\Stubs.h">
+      <Filter>include\SKSE\Impl</Filter>
+    </ClInclude>
     <ClInclude Include="include\SKSE\Impl\Util.h">
       <Filter>include\SKSE\Impl</Filter>
     </ClInclude>
@@ -3607,13 +3613,10 @@
     <ClInclude Include="include\SKSE\RegistrationSet.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
-    <ClInclude Include="include\SKSE\RegistrationTraits.h">
-      <Filter>include\SKSE</Filter>
-    </ClInclude>
     <ClInclude Include="include\SKSE\SafeWrite.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
-    <ClInclude Include="include\SKSE\Stubs.h">
+    <ClInclude Include="include\SKSE\SKSE.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
     <ClInclude Include="include\SKSE\Trampoline.h">

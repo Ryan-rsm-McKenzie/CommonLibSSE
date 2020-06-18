@@ -6,7 +6,7 @@
 #include "RE/Scaleform/GFxPlayer/GFxMovieView.h"
 #include "RE/Scaleform/GFxPlayer/GFxValue.h"
 
-#include "SKSE/Stubs.h"
+#include "SKSE/Impl/Stubs.h"
 #include "SKSE/Version.h"
 
 

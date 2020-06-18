@@ -94,23 +94,4 @@ namespace REL
 
 		std::array<std::uint16_t, 4> _buf;
 	};
-
-
-	static constexpr Version RUNTIME_1_1_47(1, 1, 47, 0);
-	static constexpr Version RUNTIME_1_1_51(1, 1, 51, 0);
-	static constexpr Version RUNTIME_1_2_36(1, 2, 36, 0);
-	static constexpr Version RUNTIME_1_2_39(1, 2, 39, 0);
-	static constexpr Version RUNTIME_1_3_5(1, 3, 5, 0);
-	static constexpr Version RUNTIME_1_3_9(1, 3, 9, 0);
-	static constexpr Version RUNTIME_1_4_2(1, 4, 2, 0);
-	static constexpr Version RUNTIME_1_5_3(1, 5, 3, 0);
-	static constexpr Version RUNTIME_1_5_16(1, 5, 16, 0);
-	static constexpr Version RUNTIME_1_5_23(1, 5, 23, 0);
-	static constexpr Version RUNTIME_1_5_39(1, 5, 39, 0);
-	static constexpr Version RUNTIME_1_5_50(1, 5, 50, 0);
-	static constexpr Version RUNTIME_1_5_53(1, 5, 53, 0);
-	static constexpr Version RUNTIME_1_5_62(1, 5, 62, 0);
-	static constexpr Version RUNTIME_1_5_73(1, 5, 73, 0);
-	static constexpr Version RUNTIME_1_5_80(1, 5, 80, 0);
-	static constexpr Version RUNTIME_1_5_97(1, 5, 97, 0);
 }

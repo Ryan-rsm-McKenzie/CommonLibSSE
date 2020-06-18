@@ -3,8 +3,8 @@
 #include "RE/BSCore/BSTEvent.h"
 
 #include "SKSE/Events.h"
+#include "SKSE/Impl/Stubs.h"
 #include "SKSE/Interfaces.h"
-#include "SKSE/Stubs.h"
 #include "SKSE/Trampoline.h"
 #include "SKSE/Version.h"
 
