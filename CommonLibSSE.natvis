@@ -94,6 +94,22 @@
 			</CustomListItems>
 		</Expand>
 	</Type>
+	
+	<Type Name="RE::BSTScatterTable&lt;*&gt;::iterator_base&lt;*&gt;">
+		<DisplayString Condition="_entry != _end">{_entry->value}</DisplayString>
+		<DisplayString Condition="_entry == _end">end</DisplayString>
+		<Expand>
+			<Item Condition="_entry != _end" Name="[value]">_entry->value</Item>
+		</Expand>
+	</Type>
+
+	<Type Name="RE::BSTTuple&lt;*&gt;">
+		<DisplayString>({first}, {second})</DisplayString>
+		<Expand>
+			<Item Name="first">first</Item>
+			<Item Name="second">second</Item>
+		</Expand>
+	</Type>
 
 	<Type Name="RE::BSFixedString">
 		<DisplayString Condition="_data != nullptr">{_data,na}</DisplayString>
@@ -175,6 +191,15 @@
 		<SmartPointer Usage="Minimal">_ptr</SmartPointer>
 		<DisplayString Condition="_ptr == nullptr">empty</DisplayString>
 		<DisplayString Condition="_ptr != nullptr">RE::NiPointer {*_ptr}</DisplayString>
+		<Expand>
+			<Item Name="[ptr]" Condition="_ptr != nullptr">_ptr,na</Item>
+		</Expand>
+	</Type>
+
+	<Type Name="RE::BSTSmartPointer&lt;*&gt;">
+		<SmartPointer Usage="Minimal">_ptr</SmartPointer>
+		<DisplayString Condition="_ptr == nullptr">empty</DisplayString>
+		<DisplayString Condition="_ptr != nullptr">RE::BSTSmartPointer {*_ptr}</DisplayString>
 		<Expand>
 			<Item Name="[ptr]" Condition="_ptr != nullptr">_ptr,na</Item>
 		</Expand>

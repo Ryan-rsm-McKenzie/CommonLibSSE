@@ -242,7 +242,7 @@ namespace RE
 		{
 			auto props = GetPropertyIter();
 			if (props) {
-				for (UInt32 i = 0; i < GetNumVariables(); ++i) {
+				for (UInt32 i = 0; i < GetNumProperties(); ++i) {
 					auto& prop = props[i];
 					if (prop.name == a_name) {
 						return prop.info.autoVarIndex;

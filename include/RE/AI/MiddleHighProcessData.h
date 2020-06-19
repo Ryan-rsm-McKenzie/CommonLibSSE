@@ -214,7 +214,7 @@ namespace RE
 		UInt32									   bleedoutAttacker;		// 0EC
 		MagicSystem::WardState					   wardState;				// 0F0
 		UInt32									   pad0F4;					// 0F4
-		BSTSmartPointer<AnimResponseBase>		   animResponse;			// 0F8
+		BSTSmartPointer<AnimResponse>			   animResponse;			// 0F8
 		BSTArray<CommandedActorData>			   commandedActors;			// 100
 		NiNode*									   damageRootNode[6];		// 118
 		UInt64									   unk148;					// 148

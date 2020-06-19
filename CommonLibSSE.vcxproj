@@ -120,6 +120,7 @@
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -177,6 +178,7 @@
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -278,6 +280,7 @@
     <ClInclude Include="include\RE\BSCore\BSTList.h" />
     <ClInclude Include="include\RE\BSCore\BSTLocklessQueue.h" />
     <ClInclude Include="include\RE\BSCore\BSTMessageQueue.h" />
+    <ClInclude Include="include\RE\BSCore\BSTObjectDictionary.h" />
     <ClInclude Include="include\RE\BSCore\BSTPoint.h" />
     <ClInclude Include="include\RE\BSCore\BSTPointerAndFlags.h" />
     <ClInclude Include="include\RE\BSCore\BSTSingleton.h" />
@@ -1548,8 +1551,10 @@
     <ClCompile Include="src\RE\FormComponents\Components\BGSPerkEntry\BGSEntryPointPerkEntry.cpp" />
     <ClCompile Include="src\RE\FormComponents\Components\BGSPerkEntry\BGSPerkEntry.cpp" />
     <ClCompile Include="src\RE\FormComponents\Components\BipedAnim.cpp" />
+    <ClCompile Include="src\RE\FormComponents\Components\BSResponse.cpp" />
     <ClCompile Include="src\RE\FormComponents\Components\DialogueItem.cpp" />
     <ClCompile Include="src\RE\FormComponents\Components\Effect.cpp" />
+    <ClCompile Include="src\RE\FormComponents\Components\IHandlerFunctor.cpp" />
     <ClCompile Include="src\RE\FormComponents\Components\MagicTarget.cpp" />
     <ClCompile Include="src\RE\FormComponents\Components\TESCondition.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESActorBaseData.cpp" />

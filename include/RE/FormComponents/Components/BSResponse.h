@@ -2,6 +2,7 @@
 
 #include "RE/BSCore/BSFixedString.h"
 #include "RE/BSCore/BSTHashMap.h"
+#include "RE/BSCore/BSTObjectDictionary.h"
 #include "RE/BSCore/BSTSmartPointer.h"
 #include "RE/BSSystem/BSIntrusiveRefCounted.h"
 #include "RE/FormComponents/Components/DoNothingUnhandledPolicy.h"
@@ -43,7 +44,38 @@ namespace RE
 	};
 
 
+	template <class T, class Key>
+	class ResponseDefinitionMissPolicy
+	{
+	public:
+		virtual ~ResponseDefinitionMissPolicy();  // 00
+	};
+	//STATIC_ASSERT(sizeof(ResponseDefinitionMissPolicy) == 0x8);
+
+
+	template <class T, class Key>
+	class PreloadResponsesInitializationPolicy
+	{
+	public:
+		virtual ~PreloadResponsesInitializationPolicy();  // 00
+	};
+	//STATIC_ASSERT(sizeof(PreloadResponsesInitializationPolicy) == 0x8);
+
+
 	class Actor;
-	using AnimResponseBase = BSResponse<BSFixedString, Actor, BSFixedString, DoNothingUnhandledPolicy>;
-	STATIC_ASSERT(sizeof(AnimResponseBase) == 0x48);
+	using AnimResponse = BSResponse<BSFixedString, Actor, BSFixedString, DoNothingUnhandledPolicy>;
+	STATIC_ASSERT(sizeof(AnimResponse) == 0x48);
+
+
+	class ResponseDictionary :
+		public BSTObjectDictionary<
+			BSTSmartPointer<AnimResponse>,
+			BSFixedString,
+			ResponseDefinitionMissPolicy,
+			PreloadResponsesInitializationPolicy>
+	{
+	public:
+		static ResponseDictionary* GetSingleton();
+	};
+	STATIC_ASSERT(sizeof(ResponseDictionary) == 0x50);
 }

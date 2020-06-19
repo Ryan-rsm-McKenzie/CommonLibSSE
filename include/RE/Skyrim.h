@@ -59,6 +59,7 @@
 #include "RE/BSCore/BSTList.h"
 #include "RE/BSCore/BSTLocklessQueue.h"
 #include "RE/BSCore/BSTMessageQueue.h"
+#include "RE/BSCore/BSTObjectDictionary.h"
 #include "RE/BSCore/BSTPoint.h"
 #include "RE/BSCore/BSTPointerAndFlags.h"
 #include "RE/BSCore/BSTSingleton.h"
