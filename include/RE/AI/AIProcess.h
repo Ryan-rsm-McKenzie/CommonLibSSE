@@ -138,6 +138,7 @@ namespace RE
 
 		float					GetCachedHeight() const;
 		bhkCharacterController* GetCharController();
+		ActorHandle				GetCommandingActor() const;
 		TESForm*				GetEquippedLeftHand();
 		TESForm*				GetEquippedRightHand();
 		bool					InHighProcess() const;

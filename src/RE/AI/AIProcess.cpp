@@ -19,6 +19,12 @@ namespace RE
 	}
 
 
+	ActorHandle AIProcess::GetCommandingActor() const
+	{
+		return middleHigh ? middleHigh->commandingActor : ActorHandle{};
+	}
+
+
 	TESForm* AIProcess::GetEquippedLeftHand()
 	{
 		return equippedObjects[Hands::kLeft];

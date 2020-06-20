@@ -201,6 +201,12 @@ namespace RE
 	}
 
 
+	ActorHandle Actor::GetCommandingActor() const
+	{
+		return currentProcess ? currentProcess->GetCommandingActor() : ActorHandle{};
+	}
+
+
 	TESFaction* Actor::GetCrimeFaction()
 	{
 		return GetCrimeFactionImpl();

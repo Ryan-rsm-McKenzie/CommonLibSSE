@@ -499,6 +499,7 @@ namespace RE
 		InventoryEntryData*		  GetAttackingWeapon();
 		const InventoryEntryData* GetAttackingWeapon() const;
 		bhkCharacterController*	  GetCharController() const;
+		ActorHandle				  GetCommandingActor() const;
 		TESFaction*				  GetCrimeFaction();
 		const TESFaction*		  GetCrimeFaction() const;
 		InventoryEntryData*		  GetEquippedEntryData(bool a_leftHand) const;

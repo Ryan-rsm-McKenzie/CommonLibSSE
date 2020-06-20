@@ -6,6 +6,7 @@
 #include "SKSE/CodeGenerator.h"
 #include "SKSE/Events.h"
 #include "SKSE/IAT.h"
+#include "SKSE/Interfaces.h"
 #include "SKSE/Logger.h"
 #include "SKSE/RegistrationMap.h"
 #include "SKSE/RegistrationSet.h"

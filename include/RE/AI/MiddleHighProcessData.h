@@ -243,7 +243,7 @@ namespace RE
 		ObjectRefHandle							   currentFurniture;		// 208
 		ObjectRefHandle							   occupiedFurniture;		// 20C
 		UInt64									   unk210;					// 210
-		UInt32									   unk218;					// 218
+		ActorHandle								   commandingActor;			// 218
 		UInt32									   pad21C;					// 21C
 		InventoryEntryData*						   leftHand;				// 220
 		TESIdleForm*							   currentIdle;				// 228
