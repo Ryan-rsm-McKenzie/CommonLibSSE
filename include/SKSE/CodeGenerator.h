@@ -25,13 +25,11 @@ namespace SKSE
 		using Persistent_t = Trampoline*;
 		using Temporary_t = std::vector<std::uint8_t>;
 
-
 		enum
 		{
 			kPersistent,
 			kTemporary
 		};
-
 
 		explicit CodeGenerator(Temporary_t a_tmp);
 		CodeGenerator(const CodeGenerator&) = delete;
@@ -39,7 +37,6 @@ namespace SKSE
 
 		CodeGenerator& operator=(const CodeGenerator&) = delete;
 		CodeGenerator& operator=(CodeGenerator&&) = delete;
-
 
 		static constexpr auto INT3 = static_cast<std::uint8_t>(0xCC);
 

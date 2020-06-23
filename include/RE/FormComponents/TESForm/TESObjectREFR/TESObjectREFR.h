@@ -161,35 +161,31 @@ namespace RE
 		{
 			enum RecordFlag : UInt32
 			{
-				kFlag4 = 1 << 4,
-				kIsGroundPiece = kFlag4,
-				kCollisionsDisabled = kFlag4,
+				kIsGroundPiece = 1 << 4,
+				kCollisionsDisabled = 1 << 4,	// ?
 
 				kDeleted = 1 << 5,
 				kHiddenFromLocalMap = 1 << 6,  // TESObjectSTAT
 				kTurnOffFire = 1 << 7,
 
-				kFlag8 = 1 << 8,
-				kInaccessible = kFlag8,			   // TESObjectDOOR
-				kLODRespectsEnableState = kFlag8,  // TESObjectSTAT
-				kStartsDead = kFlag8,			   // TESNPC
-				kDoesntLightWater = kFlag8,
+				kInaccessible = 1 << 8,			   // TESObjectDOOR
+				kLODRespectsEnableState = 1 << 8,  // TESObjectSTAT
+				kStartsDead = 1 << 8,			   // TESNPC
+				kDoesntLightWater = 1 << 8,
 
 				kMotionBlur = 1 << 9,  // TESObjectSTAT
 				kPersistent = 1 << 10,
 				kInitiallyDisabled = 1 << 11,
 				kIgnored = 1 << 12,
 
-				kFlag13 = 1 << 13,
-				kStartUnconscious = kFlag13,  // TESNPC
-				kSkyMarker = kFlag13,
-				kHarvested = kFlag13,  // TESObjectTREE
+				kStartUnconscious = 1 << 13,  // TESNPC
+				kSkyMarker = 1 << 13,
+				kHarvested = 1 << 13,  // TESObjectTREE
 
-				kIsFullLOD = 1 << 16,  // Actor
+				kIsFullLOD = 1 << 16,	// Actor
+				kNeverFades = 1 << 16,	// TESObjectLIGH
 
-				kFlag17 = 1 << 17,
-				kNeverFades = kFlag17,	// TESObjectLIGH
-				kDoesntLightLandscape = kFlag17,
+				kDoesntLightLandscape = 1 << 17,
 
 				kNoAIAcquire = 1 << 25,
 				kCollisionGeometry_Filter = 1 << 26,
@@ -198,9 +194,8 @@ namespace RE
 
 				kDontHavokSettle = 1 << 29,
 
-				kFlag30 = 1 << 30,
-				kGround = kFlag30,
-				kRespawns = kFlag30,
+				kGround = 1 << 30,
+				kRespawns = 1 << 30,
 
 				kMultibound = (UInt32)1 << 31
 			};

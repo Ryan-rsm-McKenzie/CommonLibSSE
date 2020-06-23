@@ -3097,6 +3097,9 @@
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode\NiNode.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode\ShadowSceneNode.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode</Filter>
+    </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiObjectNET.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET</Filter>
     </ClInclude>

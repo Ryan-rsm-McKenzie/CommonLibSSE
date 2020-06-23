@@ -54,6 +54,12 @@ namespace SKSE
 	{}
 
 
+	Trampoline::~Trampoline()
+	{
+		Release();
+	}
+
+
 	Trampoline& Trampoline::operator=(Trampoline&& a_rhs)
 	{
 		if (this != std::addressof(a_rhs)) {

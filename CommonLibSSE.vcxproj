@@ -1254,6 +1254,7 @@
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode\BSNiNode\BSMultiBoundNode.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode\BSNiNode\BSNiNode.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode\NiNode.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiAVObject\NiNode\ShadowSceneNode.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiObjectNET.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty\NiAlphaProperty.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\NiObjectNET\NiProperty\NiProperty.h" />

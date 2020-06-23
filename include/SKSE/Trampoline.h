@@ -20,6 +20,8 @@ namespace SKSE
 		Trampoline(Trampoline&& a_rhs);
 		explicit Trampoline(std::string_view a_name);
 
+		~Trampoline();
+
 		Trampoline& operator=(const Trampoline&) = delete;
 		Trampoline& operator=(Trampoline&& a_rhs);
 
