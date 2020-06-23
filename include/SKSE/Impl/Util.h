@@ -317,7 +317,7 @@ template <class To, class From>
 	} else if constexpr (std::is_pointer_v<From> &&
 						 std::is_pointer_v<To>) {
 		return static_cast<To>(
-			static_cast<void*>(
+			const_cast<void*>(
 				static_cast<const volatile void*>(a_from)));
 	} else if constexpr ((std::is_pointer_v<From> && std::is_integral_v<To>) ||
 						 (std::is_integral_v<From> && std::is_pointer_v<To>)) {
