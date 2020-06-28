@@ -101,7 +101,7 @@ namespace RE
 		bool						  isBigEndian;						// 2E9
 		UInt8						  unk2EA;							// 2EA
 		UInt8						  pad2EB;							// 2EB
-		WIN32_FIND_DATA				  fileData;							// 2EC
+		WIN32_FIND_DATAA			  fileData;							// 2EC
 		float						  unk42C;							// 42C
 		UInt32						  unk430;							// 430
 		UInt32						  flags;							// 434
