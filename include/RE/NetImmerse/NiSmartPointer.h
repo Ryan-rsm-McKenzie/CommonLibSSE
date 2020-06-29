@@ -197,6 +197,32 @@ namespace RE
 
 
 	template <class T>
+	[[nodiscard]] constexpr bool operator==(const NiPointer<T>& a_lhs, std::nullptr_t) noexcept
+	{
+		return !a_lhs;
+	}
+
+	template <class T>
+	[[nodiscard]] constexpr bool operator==(std::nullptr_t, const NiPointer<T>& a_rhs) noexcept
+	{
+		return !a_rhs;
+	}
+
+
+	template <class T>
+	[[nodiscard]] constexpr bool operator!=(const NiPointer<T>& a_lhs, std::nullptr_t) noexcept
+	{
+		return static_cast<bool>(a_lhs);
+	}
+
+	template <class T>
+	[[nodiscard]] constexpr bool operator!=(std::nullptr_t, const NiPointer<T>& a_rhs) noexcept
+	{
+		return static_cast<bool>(a_rhs);
+	}
+
+
+	template <class T>
 	struct CRC32Hash<NiPointer<T>>
 	{
 	public:

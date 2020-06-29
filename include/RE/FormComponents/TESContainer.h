@@ -11,6 +11,8 @@ namespace RE
 
 	struct ContainerObject
 	{
+	public:
+		// members
 		SInt32				count;		// 00 - CNTO~
 		UInt32				pad04;		// 04
 		TESBoundObject*		obj;		// 08 - ~CNTO

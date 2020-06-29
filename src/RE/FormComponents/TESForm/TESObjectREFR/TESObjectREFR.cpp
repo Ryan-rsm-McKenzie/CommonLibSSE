@@ -344,7 +344,7 @@ namespace RE
 		}
 
 		auto xContChanges = extraList.GetByType<ExtraContainerChanges>();
-		return xContChanges ? xContChanges->changes : nullptr;
+		return xContChanges ? xContChanges->changes : MakeInventoryChanges();
 	}
 
 
@@ -675,6 +675,14 @@ namespace RE
 	{
 		static ObjectRefHandle invalid;
 		MoveTo_Impl(invalid, GetParentCell(), GetWorldspace(), a_pos, data.angle);
+	}
+
+
+	InventoryChanges* TESObjectREFR::MakeInventoryChanges()
+	{
+		using func_t = decltype(&TESObjectREFR::MakeInventoryChanges);
+		REL::Offset<func_t> func = REL::ID(15802);
+		return func(this);
 	}
 
 
