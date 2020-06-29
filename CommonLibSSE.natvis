@@ -437,7 +437,7 @@
 	</Type>
 
 	<Type Name="RE::BSExtraData">
-		<DisplayString>{{ type={*(RE::ExtraDataType*)((char*)*(*(size_t***)this + 1) + 1)} }}</DisplayString>
+		<DisplayString>{{ type={*(RE::ExtraDataType*)((char*)*(*(size_t***)this + 1) + 1),en} }}</DisplayString>
 		<Expand>
 			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x00">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
 			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x01">(RE::ExtraHavok*)this,view(CastBSExtraData)</Item>
@@ -640,6 +640,6 @@
 	</Type>
 
 	<Type Name="RE::BSExtraData" IncludeView="CastBSExtraData">
-		<DisplayString>{{ type={*(RE::ExtraDataType*)((char*)*(*(size_t***)this + 1) + 1)} }}</DisplayString>
+		<DisplayString>{{ type={*(RE::ExtraDataType*)((char*)*(*(size_t***)this + 1) + 1),en} }}</DisplayString>
 	</Type>
 </AutoVisualizer>

@@ -204,7 +204,7 @@ namespace RE
 			} else {
 				auto mapped = std::make_pair(count, container_t());
 				mapped.second.push_back(std::move(ref));
-				auto insIt = results.insert(std::make_pair(object, std::move(mapped)));
+				auto insIt = results.emplace(object, std::move(mapped));
 				assert(insIt.second);
 			}
 		}
@@ -255,7 +255,7 @@ namespace RE
 			for (auto& entry : *invChanges->entryList) {
 				if (entry && entry->object && a_filter(entry->object)) {
 					auto mapped = std::make_pair(entry->countDelta, std::make_unique<InventoryEntryData>(*entry));
-					auto it = results.insert(std::make_pair(entry->object, std::move(mapped)));
+					auto it = results.emplace(entry->object, std::move(mapped));
 					assert(it.second);
 				}
 			}
@@ -268,7 +268,7 @@ namespace RE
 					auto it = results.find(a_entry->obj);
 					if (it == results.end()) {
 						auto mapped = std::make_pair(a_entry->count, std::make_unique<InventoryEntryData>(a_entry->obj, 0));
-						auto insIt = results.insert(std::make_pair(a_entry->obj, std::move(mapped)));
+						auto insIt = results.emplace(a_entry->obj, std::move(mapped));
 						assert(insIt.second);
 					} else {
 						it->second.first += a_entry->count;
@@ -311,7 +311,7 @@ namespace RE
 		if (invChanges && invChanges->entryList) {
 			for (auto& entry : *invChanges->entryList) {
 				if (entry && entry->object && a_filter(entry->object)) {
-					auto it = results.insert(std::make_pair(entry->object, entry->countDelta));
+					auto it = results.emplace(entry->object, entry->countDelta);
 					assert(it.second);
 				}
 			}
@@ -323,7 +323,7 @@ namespace RE
 				if (a_entry->obj && a_filter(a_entry->obj)) {
 					auto it = results.find(a_entry->obj);
 					if (it == results.end()) {
-						auto insIt = results.insert(std::make_pair(a_entry->obj, a_entry->count));
+						auto insIt = results.emplace(a_entry->obj, a_entry->count);
 						assert(insIt.second);
 					} else {
 						it->second += a_entry->count;
@@ -340,11 +340,13 @@ namespace RE
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
 		if (!extraList.HasType<ExtraContainerChanges>()) {
-			InitInventoryIfRequired();
+			if (!InitInventoryIfRequired()) {
+				ForceInitInventoryChanges();
+			}
 		}
 
 		auto xContChanges = extraList.GetByType<ExtraContainerChanges>();
-		return xContChanges ? xContChanges->changes : MakeInventoryChanges();
+		return xContChanges ? xContChanges->changes : nullptr;
 	}
 
 
@@ -471,11 +473,11 @@ namespace RE
 	}
 
 
-	bool TESObjectREFR::InitInventoryIfRequired(bool a_skipExtra)
+	bool TESObjectREFR::InitInventoryIfRequired(bool a_ignoreContainerExtraData)
 	{
 		using func_t = decltype(&TESObjectREFR::InitInventoryIfRequired);
 		REL::Offset<func_t> func(Offset::TESObjectREFR::InitInventoryIfRequired);
-		return func(this, a_skipExtra);
+		return func(this, a_ignoreContainerExtraData);
 	}
 
 
@@ -673,8 +675,19 @@ namespace RE
 
 	void TESObjectREFR::SetPosition(NiPoint3 a_pos)
 	{
-		static ObjectRefHandle invalid;
-		MoveTo_Impl(invalid, GetParentCell(), GetWorldspace(), a_pos, data.angle);
+		MoveTo_Impl(ObjectRefHandle(), GetParentCell(), GetWorldspace(), a_pos, data.angle);
+	}
+
+
+	InventoryChanges* TESObjectREFR::ForceInitInventoryChanges()
+	{
+		auto changes = MakeInventoryChanges();
+		if (changes) {
+			changes->InitLeveledItems();
+			changes->InitFromContainerExtra();
+			changes->InitScripts();
+		}
+		return changes;
 	}
 
 

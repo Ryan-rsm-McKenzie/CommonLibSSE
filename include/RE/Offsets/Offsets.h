@@ -495,9 +495,6 @@ namespace RE
 
 		namespace InventoryChanges
 		{
-			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(15812));
-			inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(15813));
-			inline constexpr REL::ID GenerateLeveledListChanges(static_cast<std::uint64_t>(15829));
 			inline constexpr REL::ID GetNextUniqueID(static_cast<std::uint64_t>(15908));
 			inline constexpr REL::ID SendContainerChangedEvent(static_cast<std::uint64_t>(15909));
 			inline constexpr REL::ID SetUniqueID(static_cast<std::uint64_t>(15907));

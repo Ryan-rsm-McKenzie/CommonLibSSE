@@ -40,14 +40,6 @@ namespace RE
 	}
 
 
-	void InventoryChanges::GenerateLeveledListChanges()
-	{
-		using func_t = decltype(&InventoryChanges::GenerateLeveledListChanges);
-		REL::Offset<func_t> func(Offset::InventoryChanges::GenerateLeveledListChanges);
-		return func(this);
-	}
-
-
 	UInt16 InventoryChanges::GetNextUniqueID()
 	{
 		using func_t = decltype(&InventoryChanges::GetNextUniqueID);
@@ -72,10 +64,34 @@ namespace RE
 	}
 
 
+	void InventoryChanges::InitFromContainerExtra()
+	{
+		using func_t = decltype(&InventoryChanges::InitFromContainerExtra);
+		REL::Offset<func_t> func = REL::ID(15890);
+		return func(this);
+	}
+
+
+	void InventoryChanges::InitLeveledItems()
+	{
+		using func_t = decltype(&InventoryChanges::InitLeveledItems);
+		REL::Offset<func_t> func = REL::ID(15889);
+		return func(this);
+	}
+
+
+	void InventoryChanges::InitScripts()
+	{
+		using func_t = decltype(&InventoryChanges::InitScripts);
+		REL::Offset<func_t> func = REL::ID(15829);
+		return func(this);
+	}
+
+
 	InventoryChanges* InventoryChanges::Ctor(TESObjectREFR* a_ref)
 	{
 		using func_t = decltype(&InventoryChanges::Ctor);
-		REL::Offset<func_t> func(Offset::InventoryChanges::Ctor);
+		REL::Offset<func_t> func = REL::ID(15812);
 		return func(this, a_ref);
 	}
 
@@ -83,7 +99,7 @@ namespace RE
 	void InventoryChanges::Dtor()
 	{
 		using func_t = decltype(&InventoryChanges::Dtor);
-		REL::Offset<func_t> func(Offset::InventoryChanges::Dtor);
+		REL::Offset<func_t> func = REL::ID(15813);
 		return func(this);
 	}
 }

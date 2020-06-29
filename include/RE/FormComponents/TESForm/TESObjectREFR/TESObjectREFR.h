@@ -401,7 +401,7 @@ namespace RE
 		bool							  HasCollision() const;
 		bool							  HasKeyword(const BGSKeyword* a_keyword) const;
 		void							  InitChildActivates(TESObjectREFR* a_activator);
-		bool							  InitInventoryIfRequired(bool a_skipExtra = false);
+		bool							  InitInventoryIfRequired(bool a_ignoreContainerExtraData = false);
 		bool							  Is3DLoaded() const;
 		bool							  IsActivationBlocked() const;
 		bool							  IsCrimeToActivate();
@@ -436,6 +436,7 @@ namespace RE
 		UInt32			 pad94;			// 94
 
 	private:
+		InventoryChanges* ForceInitInventoryChanges();
 		InventoryChanges* MakeInventoryChanges();
 		void			  MoveTo_Impl(const ObjectRefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, const NiPoint3& a_position, const NiPoint3& a_rotation);
 		void			  PlayAnimation_Impl(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4 = false);
