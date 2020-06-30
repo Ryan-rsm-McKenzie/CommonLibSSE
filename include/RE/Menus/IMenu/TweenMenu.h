@@ -24,6 +24,8 @@ namespace RE
 
 		struct PerkData
 		{
+		public:
+			// members
 			BSResource::ID* fileHash;  // 00
 			const char*		fileName;  // 08
 		};

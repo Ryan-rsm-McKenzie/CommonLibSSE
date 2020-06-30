@@ -208,14 +208,38 @@ namespace RE
 	}
 
 	template <class T1, class T2>
-	constexpr bool operator==(const hkRefPtr<T1>& a_lhs, const hkRefPtr<T2>& a_rhs)
+	[[nodiscard]] constexpr bool operator==(const hkRefPtr<T1>& a_lhs, const hkRefPtr<T2>& a_rhs)
 	{
 		return a_lhs.get() == a_rhs.get();
 	}
 
 	template <class T1, class T2>
-	constexpr bool operator!=(const hkRefPtr<T1>& a_lhs, const hkRefPtr<T2>& a_rhs)
+	[[nodiscard]] constexpr bool operator!=(const hkRefPtr<T1>& a_lhs, const hkRefPtr<T2>& a_rhs)
 	{
 		return !(a_lhs == a_rhs);
+	}
+
+	template <class T>
+	[[nodiscard]] constexpr bool operator==(const hkRefPtr<T>& a_lhs, std::nullptr_t) noexcept
+	{
+		return !a_lhs;
+	}
+
+	template <class T>
+	[[nodiscard]] constexpr bool operator==(std::nullptr_t, const hkRefPtr<T>& a_rhs) noexcept
+	{
+		return !a_rhs;
+	}
+
+	template <class T>
+	[[nodiscard]] constexpr bool operator!=(const hkRefPtr<T>& a_lhs, std::nullptr_t) noexcept
+	{
+		return static_cast<bool>(a_lhs);
+	}
+
+	template <class T>
+	[[nodiscard]] constexpr bool operator!=(std::nullptr_t, const hkRefPtr<T>& a_rhs) noexcept
+	{
+		return static_cast<bool>(a_rhs);
 	}
 }

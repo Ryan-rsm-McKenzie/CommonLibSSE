@@ -12,14 +12,14 @@
 namespace RE
 {
 	IMenu::IMenu() :
-		view(0),
+		view(nullptr),
 		menuDepth(3),
 		pad19(0),
 		pad20(0),
 		flags(Flag::kNone),
 		context(Context::kNone),
 		pad24(0),
-		fxDelegate(0)
+		fxDelegate(nullptr)
 	{}
 
 

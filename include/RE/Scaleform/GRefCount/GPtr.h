@@ -9,62 +9,79 @@ namespace RE
 	public:
 		using element_type = T;
 
-
-		constexpr GPtr() noexcept :
+		// 1
+		inline constexpr GPtr() noexcept :
 			_ptr(nullptr)
 		{}
 
-
-		constexpr GPtr([[maybe_unused]] std::nullptr_t) noexcept :
+		// 2
+		inline constexpr GPtr(std::nullptr_t) noexcept :
 			_ptr(nullptr)
 		{}
 
-
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
-		explicit GPtr(Y* a_rhs) :
+		// 3
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					element_type*>,
+				int> = 0>
+		inline explicit GPtr(Y* a_rhs) :
 			_ptr(a_rhs)
 		{
 			TryAttach();
 		}
 
-
-		GPtr(const GPtr& a_rhs) :
+		// 9a
+		inline GPtr(const GPtr& a_rhs) :
 			_ptr(a_rhs._ptr)
 		{
 			TryAttach();
 		}
 
-
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
-		GPtr(const GPtr<Y>& a_rhs) :
+		// 9b
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					element_type*>,
+				int> = 0>
+		inline GPtr(const GPtr<Y>& a_rhs) :
 			_ptr(a_rhs._ptr)
 		{
 			TryAttach();
 		}
 
-
-		GPtr(GPtr&& a_rhs) noexcept :
+		// 10a
+		inline GPtr(GPtr&& a_rhs) noexcept :
 			_ptr(std::move(a_rhs._ptr))
 		{
 			a_rhs._ptr = nullptr;
 		}
 
-
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
-		GPtr(GPtr<Y>&& a_rhs) noexcept :
+		// 10b
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					element_type*>,
+				int> = 0>
+		inline GPtr(GPtr<Y>&& a_rhs) noexcept :
 			_ptr(std::move(a_rhs._ptr))
 		{
 			a_rhs._ptr = nullptr;
 		}
 
-
-		~GPtr()
+		inline ~GPtr()
 		{
 			TryDetach();
 		}
 
-
-		GPtr& operator=(const GPtr& a_rhs)
+		// 1a
+		inline GPtr& operator=(const GPtr& a_rhs)
 		{
 			if (this != std::addressof(a_rhs)) {
 				TryDetach();
@@ -74,32 +91,24 @@ namespace RE
 			return *this;
 		}
 
-
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
-		GPtr& operator=(const GPtr<Y>& a_rhs)
+		// 1b
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					element_type*>,
+				int> = 0>
+		inline GPtr& operator=(const GPtr<Y>& a_rhs)
 		{
-			if (this != std::addressof(a_rhs)) {
-				TryDetach();
-				_ptr = a_rhs._ptr;
-				TryAttach();
-			}
+			TryDetach();
+			_ptr = a_rhs._ptr;
+			TryAttach();
 			return *this;
 		}
 
-
-		GPtr& operator=(GPtr&& a_rhs)
-		{
-			if (this != std::addressof(a_rhs)) {
-				TryDetach();
-				_ptr = std::move(a_rhs._ptr);
-				a_rhs._ptr = nullptr;
-			}
-			return *this;
-		}
-
-
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
-		GPtr& operator=(GPtr<Y>&& a_rhs)
+		// 2a
+		inline GPtr& operator=(GPtr&& a_rhs)
 		{
 			if (this != std::addressof(a_rhs)) {
 				TryDetach();
@@ -109,15 +118,35 @@ namespace RE
 			return *this;
 		}
 
+		// 2b
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					element_type*>,
+				int> = 0>
+		inline GPtr& operator=(GPtr<Y>&& a_rhs)
+		{
+			TryDetach();
+			_ptr = std::move(a_rhs._ptr);
+			a_rhs._ptr = nullptr;
+			return *this;
+		}
 
-		void reset()
+		inline void reset()
 		{
 			TryDetach();
 		}
 
-
-		template <class Y, typename std::enable_if_t<std::is_convertible<Y*, element_type*>::value, int> = 0>
-		void reset(Y* a_ptr)
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					element_type*>,
+				int> = 0>
+		inline void reset(Y* a_ptr)
 		{
 			if (_ptr != a_ptr) {
 				TryDetach();
@@ -126,25 +155,21 @@ namespace RE
 			}
 		}
 
-
 		[[nodiscard]] constexpr element_type* get() const noexcept
 		{
 			return _ptr;
 		}
-
 
 		[[nodiscard]] explicit constexpr operator bool() const noexcept
 		{
 			return static_cast<bool>(_ptr);
 		}
 
-
 		[[nodiscard]] constexpr element_type& operator*() const noexcept
 		{
 			assert(static_cast<bool>(*this));
 			return *_ptr;
 		}
-
 
 		[[nodiscard]] constexpr element_type* operator->() const noexcept
 		{
@@ -156,16 +181,14 @@ namespace RE
 		template <class>
 		friend class GPtr;
 
-
-		void TryAttach()
+		inline void TryAttach()
 		{
 			if (_ptr) {
 				_ptr->AddRef();
 			}
 		}
 
-
-		void TryDetach()
+		inline void TryDetach()
 		{
 			if (_ptr) {
 				_ptr->Release();
@@ -173,23 +196,44 @@ namespace RE
 			}
 		}
 
-
 		// members
 		element_type* _ptr;	 // 0
 	};
-	STATIC_ASSERT(sizeof(GPtr<void*>) == 0x8);
-
+	//STATIC_ASSERT(sizeof(GPtr<void*>) == 0x8);
 
 	template <class T1, class T2>
-	constexpr bool operator==(const GPtr<T1>& a_lhs, const GPtr<T2>& a_rhs)
+	[[nodiscard]] constexpr bool operator==(const GPtr<T1>& a_lhs, const GPtr<T2>& a_rhs)
 	{
 		return a_lhs.get() == a_rhs.get();
 	}
 
-
 	template <class T1, class T2>
-	constexpr bool operator!=(const GPtr<T1>& a_lhs, const GPtr<T2>& a_rhs)
+	[[nodiscard]] constexpr bool operator!=(const GPtr<T1>& a_lhs, const GPtr<T2>& a_rhs)
 	{
 		return !(a_lhs == a_rhs);
+	}
+
+	template <class T>
+	[[nodiscard]] constexpr bool operator==(const GPtr<T>& a_lhs, std::nullptr_t) noexcept
+	{
+		return !a_lhs;
+	}
+
+	template <class T>
+	[[nodiscard]] constexpr bool operator==(std::nullptr_t, const GPtr<T>& a_rhs) noexcept
+	{
+		return !a_rhs;
+	}
+
+	template <class T>
+	[[nodiscard]] constexpr bool operator!=(const GPtr<T>& a_lhs, std::nullptr_t) noexcept
+	{
+		return static_cast<bool>(a_lhs);
+	}
+
+	template <class T>
+	[[nodiscard]] constexpr bool operator!=(std::nullptr_t, const GPtr<T>& a_rhs) noexcept
+	{
+		return static_cast<bool>(a_rhs);
 	}
 }
