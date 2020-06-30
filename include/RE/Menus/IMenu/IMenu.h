@@ -111,14 +111,14 @@ namespace RE
 
 
 		// members
-		GPtr<GFxMovieView> view;		// 10
-		UInt8			   menuDepth;	// 18
-		UInt8			   pad19;		// 19
-		UInt16			   pad20;		// 1A
-		UI_MENU_FLAGS	   flags;		// 1C
-		Context			   context;		// 20
-		UInt32			   pad24;		// 24
-		GPtr<FxDelegate>   fxDelegate;	// 28
+		GPtr<GFxMovieView> uiMovie;		   // 10
+		SInt8			   depthPriority;  // 18
+		UInt8			   pad19;		   // 19
+		UInt16			   pad20;		   // 1A
+		UI_MENU_FLAGS	   menuFlags;	   // 1C
+		Context			   inputContext;   // 20
+		UInt32			   pad24;		   // 24
+		GPtr<FxDelegate>   fxDelegate;	   // 28
 	};
 	STATIC_ASSERT(sizeof(IMenu) == 0x30);
 }

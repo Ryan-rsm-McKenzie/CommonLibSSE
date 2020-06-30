@@ -15,6 +15,7 @@ namespace RE
 	class NiNPShortPoint3
 	{
 	public:
+		// members
 		SInt16 x;  // 0
 		SInt16 y;  // 2
 		SInt16 z;  // 4
@@ -30,6 +31,8 @@ namespace RE
 
 		struct BOUND_DATA  // OBND
 		{
+		public:
+			// members
 			NiNPShortPoint3 boundMin;  // 0
 			NiNPShortPoint3 boundMax;  // 6
 		};

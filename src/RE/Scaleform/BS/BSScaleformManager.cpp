@@ -57,7 +57,7 @@ namespace RE
 
 		a_callback(def);
 
-		auto& view = a_menu->view;
+		auto& view = a_menu->uiMovie;
 		view.reset(def->CreateInstance());
 		if (!view) {
 			delete def;

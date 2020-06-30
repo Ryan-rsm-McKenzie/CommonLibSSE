@@ -28,7 +28,7 @@ namespace RE
 	GPtr<GFxMovieView> UI::GetMovieView(const std::string_view& a_menuName)
 	{
 		auto menu = GetMenu(a_menuName);
-		return menu ? menu->view : nullptr;
+		return menu ? menu->uiMovie : nullptr;
 	}
 
 
