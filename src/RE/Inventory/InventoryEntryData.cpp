@@ -1,7 +1,9 @@
 #include "RE/Inventory/InventoryEntryData.h"
 
+#include "RE/BSExtraData/ExtraEnchantment.h"
 #include "RE/BSExtraData/ExtraTextDisplayData.h"
 #include "RE/BSMain/SettingCollection/GameSettingCollection.h"
+#include "RE/FormComponents/TESEnchantableForm.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESObjectMISC/TESSoulGem.h"
 #include "RE/Inventory/ExtraDataList.h"
@@ -182,6 +184,28 @@ namespace RE
 	float InventoryEntryData::GetWeight() const
 	{
 		return object ? object->GetWeight() : static_cast<float>(-1.0);
+	}
+
+
+	bool InventoryEntryData::IsEnchanted() const
+	{
+		if (object) {
+			auto ench = object->As<TESEnchantableForm>();
+			if (ench && ench->formEnchanting) {
+				return true;
+			}
+		}
+
+		if (extraLists) {
+			for (auto& xList : *extraLists) {
+				auto xEnch = xList->GetByType<ExtraEnchantment>();
+				if (xEnch && xEnch->enchantment) {
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 

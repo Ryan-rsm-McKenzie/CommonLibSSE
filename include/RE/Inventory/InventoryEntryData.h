@@ -31,6 +31,7 @@ namespace RE
 		SOUL_LEVEL		GetSoulLevel() const;
 		SInt32			GetValue();
 		float			GetWeight() const;
+		bool			IsEnchanted() const;
 		bool			IsOwnedBy(Actor* a_actor, bool a_defaultTo = true);
 		bool			IsOwnedBy(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo = true);
 

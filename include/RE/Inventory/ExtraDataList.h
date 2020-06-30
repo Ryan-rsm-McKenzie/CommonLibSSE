@@ -144,16 +144,20 @@ namespace RE
 
 		BSExtraData*	   GetByType(ExtraDataType a_type);
 		const BSExtraData* GetByType(ExtraDataType a_type) const;
+
 		template <class T>
 		T* GetByType();
+
 		template <class T>
 		const T* GetByType() const;
 
 		bool HasType(ExtraDataType a_type) const;
+
 		template <class T>
 		bool HasType() const;
 
 		bool Remove(ExtraDataType a_type, BSExtraData* a_toRemove);
+
 		template <class T>
 		bool Remove(T* a_toRemove);
 

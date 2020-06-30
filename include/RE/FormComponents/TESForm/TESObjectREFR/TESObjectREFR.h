@@ -389,6 +389,8 @@ namespace RE
 		LOCK_LEVEL						  GetLockLevel() const;
 		const char*						  GetName() const;
 		NiAVObject*						  GetNodeByName(const BSFixedString& a_nodeName);
+		TESBoundObject*					  GetObjectReference();
+		const TESBoundObject*			  GetObjectReference() const;
 		TESForm*						  GetOwner() const;
 		TESObjectCELL*					  GetParentCell() const;
 		NiPoint3						  GetPosition() const;
@@ -407,6 +409,7 @@ namespace RE
 		bool							  IsCrimeToActivate();
 		bool							  IsDead() const;
 		bool							  IsDisabled() const;
+		bool							  IsEnchanted() const;
 		bool							  IsHorse() const;
 		bool							  IsInitiallyDisabled() const;
 		bool							  IsLocked() const;

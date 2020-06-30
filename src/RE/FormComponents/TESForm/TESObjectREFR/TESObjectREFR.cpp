@@ -3,6 +3,7 @@
 #include "RE/BSCore/BSFixedString.h"
 #include "RE/BSExtraData/ExtraContainerChanges.h"
 #include "RE/BSExtraData/ExtraDroppedItemList.h"
+#include "RE/BSExtraData/ExtraEnchantment.h"
 #include "RE/BSExtraData/ExtraFlags.h"
 #include "RE/BSExtraData/ExtraLock.h"
 #include "RE/BSExtraData/ExtraOwnership.h"
@@ -10,6 +11,7 @@
 #include "RE/BSExtraData/ExtraTextDisplayData.h"
 #include "RE/FormComponents/Components/FormTraits.h"
 #include "RE/FormComponents/TESContainer.h"
+#include "RE/FormComponents/TESEnchantableForm.h"
 #include "RE/FormComponents/TESForm/BGSDefaultObjectManager.h"
 #include "RE/FormComponents/TESForm/BGSKeyword/BGSKeyword.h"
 #include "RE/FormComponents/TESForm/TESFaction.h"
@@ -116,7 +118,7 @@ namespace RE
 	float TESObjectREFR::GetBaseHeight() const
 	{
 		auto height = static_cast<float>(refScale) / 100.0F;
-		auto obj = GetBaseObject();
+		auto obj = GetObjectReference();
 		auto npc = obj ? obj->As<TESNPC>() : nullptr;
 		if (npc) {
 			height *= npc->GetHeight();
@@ -151,7 +153,7 @@ namespace RE
 
 	TESContainer* TESObjectREFR::GetContainer()
 	{
-		auto obj = GetBaseObject();
+		auto obj = GetObjectReference();
 		return obj ? obj->As<TESContainer>() : nullptr;
 	}
 
@@ -191,7 +193,7 @@ namespace RE
 				continue;
 			}
 
-			auto object = ref->GetBaseObject();
+			auto object = ref->GetObjectReference();
 			if (!object || !a_filter(object)) {
 				continue;
 			}
@@ -373,7 +375,7 @@ namespace RE
 
 	const char* TESObjectREFR::GetName() const
 	{
-		auto obj = GetBaseObject();
+		auto obj = GetObjectReference();
 		return obj ? obj->GetName() : "";
 	}
 
@@ -382,6 +384,18 @@ namespace RE
 	{
 		auto node = Get3D();
 		return node ? node->GetObjectByName(a_nodeName) : nullptr;
+	}
+
+
+	TESBoundObject* TESObjectREFR::GetObjectReference()
+	{
+		return data.objectReference;
+	}
+
+
+	const TESBoundObject* TESObjectREFR::GetObjectReference() const
+	{
+		return data.objectReference;
 	}
 
 
@@ -433,7 +447,7 @@ namespace RE
 
 	float TESObjectREFR::GetWeight() const
 	{
-		auto obj = GetBaseObject();
+		auto obj = GetObjectReference();
 		return obj ? obj->GetWeight() : 0.0;
 	}
 
@@ -511,6 +525,25 @@ namespace RE
 	bool TESObjectREFR::IsDisabled() const
 	{
 		return (formFlags & RecordFlags::kInitiallyDisabled) != 0;
+	}
+
+
+	bool TESObjectREFR::IsEnchanted() const
+	{
+		auto xEnch = extraList.GetByType<ExtraEnchantment>();
+		if (xEnch && xEnch->enchantment) {
+			return true;
+		}
+
+		auto obj = GetObjectReference();
+		if (obj) {
+			auto ench = obj->As<TESEnchantableForm>();
+			if (ench && ench->formEnchanting) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 

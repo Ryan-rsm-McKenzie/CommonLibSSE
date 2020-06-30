@@ -123,33 +123,30 @@ namespace RE
 		static ScriptEventSourceHolder* GetSingleton();
 
 		void SendActivateEvent(NiPointer<TESObjectREFR>& a_target, NiPointer<TESObjectREFR>& a_caster);
+
 		template <class T>
-		BSTEventSource<T>* GetEventSource();
+		inline BSTEventSource<T>* GetEventSource()
+		{
+			return static_cast<BSTEventSource<T>*>(this);
+		}
+
 		template <class T>
-		void AddEventSink(BSTEventSink<T>* a_sink);
+		inline void AddEventSink(BSTEventSink<T>* a_sink)
+		{
+			GetEventSource<T>()->AddEventSink(a_sink);
+		}
+
 		template <class T>
-		void SendEvent(T* a_event);
+		inline void RemoveEventSink(BSTEventSink<T>* a_sink)
+		{
+			GetEventSource<T>()->RemoveEventSink(a_sink);
+		}
+
+		template <class T>
+		inline void SendEvent(T* a_event)
+		{
+			GetEventSource<T>()->SendEvent(a_event);
+		}
 	};
 	STATIC_ASSERT(sizeof(ScriptEventSourceHolder) == 0x1290);
-
-
-	template <class T>
-	inline BSTEventSource<T>* ScriptEventSourceHolder::GetEventSource()
-	{
-		return static_cast<BSTEventSource<T>*>(this);
-	}
-
-
-	template <class T>
-	inline void ScriptEventSourceHolder::AddEventSink(BSTEventSink<T>* a_sink)
-	{
-		GetEventSource<T>()->AddEventSink(a_sink);
-	}
-
-
-	template <class T>
-	inline void ScriptEventSourceHolder::SendEvent(T* a_event)
-	{
-		GetEventSource<T>()->SendEvent(a_event);
-	}
 }
