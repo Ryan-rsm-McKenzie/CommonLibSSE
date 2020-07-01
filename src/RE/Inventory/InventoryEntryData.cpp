@@ -1,5 +1,6 @@
 #include "RE/Inventory/InventoryEntryData.h"
 
+#include "RE/BSExtraData/ExtraCharge.h"
 #include "RE/BSExtraData/ExtraEnchantment.h"
 #include "RE/BSExtraData/ExtraTextDisplayData.h"
 #include "RE/BSMain/SettingCollection/GameSettingCollection.h"
@@ -114,6 +115,42 @@ namespace RE
 	}
 
 
+	std::optional<double> InventoryEntryData::GetEnchantmentCharge() const
+	{
+		std::optional<double> result;
+
+		if (extraLists) {
+			auto obj = GetObject();
+			auto ench = obj ? obj->As<TESEnchantableForm>() : nullptr;
+			if (ench && ench->formEnchanting) {
+				result.emplace(100.0);
+			}
+
+			for (auto& xList : *extraLists) {
+				if (xList) {
+					auto xCharge = xList->GetByType<ExtraCharge>();
+					if (xCharge) {
+						auto xEnch = xList->GetByType<ExtraEnchantment>();
+						if (xEnch && xEnch->enchantment) {
+							result.emplace((static_cast<double>(xCharge->charge) /
+											   static_cast<double>(xEnch->charge)) *
+										   100.0);
+							break;
+						} else if (ench && ench->formEnchanting) {
+							result.emplace((static_cast<double>(xCharge->charge) /
+											   static_cast<double>(ench->amountofEnchantment)) *
+										   100.0);
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		return result;
+	}
+
+
 	const char* InventoryEntryData::GetDisplayName()
 	{
 		const char* name = nullptr;
@@ -139,13 +176,22 @@ namespace RE
 	}
 
 
+	const TESBoundObject* InventoryEntryData::GetObject() const
+	{
+		return object;
+	}
+
+
 	TESForm* InventoryEntryData::GetOwner()
 	{
-		if (extraLists && !extraLists->empty()) {
-			return extraLists->front()->GetOwner();
-		} else {
-			return nullptr;
+		if (extraLists) {
+			for (auto& xList : *extraLists) {
+				if (xList) {
+					return xList->GetOwner();
+				}
+			}
 		}
+		return nullptr;
 	}
 
 
@@ -153,13 +199,11 @@ namespace RE
 	{
 		if (extraLists) {
 			for (auto& xList : *extraLists) {
-				if (!xList) {
-					continue;
-				}
-
-				auto lvl = xList->GetSoulLevel();
-				if (lvl > SOUL_LEVEL::kNone) {
-					return lvl;
+				if (xList) {
+					auto lvl = xList->GetSoulLevel();
+					if (lvl > SOUL_LEVEL::kNone) {
+						return lvl;
+					}
 				}
 			}
 		}
@@ -183,7 +227,7 @@ namespace RE
 
 	float InventoryEntryData::GetWeight() const
 	{
-		return object ? object->GetWeight() : static_cast<float>(-1.0);
+		return object ? object->GetWeight() : -1.0F;
 	}
 
 
@@ -209,22 +253,22 @@ namespace RE
 	}
 
 
-	bool InventoryEntryData::IsOwnedBy(Actor* a_actor, bool a_defaultTo)
+	bool InventoryEntryData::IsOwnedBy(Actor* a_testOwner, bool a_defaultTo)
 	{
-		return IsOwnedBy(a_actor, GetOwner(), a_defaultTo);
+		return IsOwnedBy(a_testOwner, GetOwner(), a_defaultTo);
 	}
 
 
-	bool InventoryEntryData::IsOwnedBy(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo)
+	bool InventoryEntryData::IsOwnedBy(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo)
 	{
-		return IsOwnedBy_Impl(a_actor, a_itemOwner, a_defaultTo);
+		return IsOwnedBy_Impl(a_testOwner, a_itemOwner, a_defaultTo);
 	}
 
 
-	bool InventoryEntryData::IsOwnedBy_Impl(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo)
+	bool InventoryEntryData::IsOwnedBy_Impl(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo)
 	{
 		using func_t = decltype(&InventoryEntryData::IsOwnedBy_Impl);
 		REL::Offset<func_t> func(Offset::InventoryEntryData::IsOwnedBy);
-		return func(this, a_actor, a_itemOwner, a_defaultTo);
+		return func(this, a_testOwner, a_itemOwner, a_defaultTo);
 	}
 }

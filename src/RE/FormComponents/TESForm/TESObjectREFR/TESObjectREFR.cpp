@@ -1,6 +1,7 @@
 #include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
 
 #include "RE/BSCore/BSFixedString.h"
+#include "RE/BSExtraData/ExtraCharge.h"
 #include "RE/BSExtraData/ExtraContainerChanges.h"
 #include "RE/BSExtraData/ExtraDroppedItemList.h"
 #include "RE/BSExtraData/ExtraEnchantment.h"
@@ -224,6 +225,33 @@ namespace RE
 	bool TESObjectREFR::GetEditorLocation(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_fallback)
 	{
 		return GetEditorLocation2(a_outPos, a_outRot, a_outWorldOrCell, a_fallback);
+	}
+
+
+	std::optional<double> TESObjectREFR::GetEnchantmentCharge() const
+	{
+		std::optional<double> result;
+		auto obj = GetObjectReference();
+		auto ench = obj ? obj->As<TESEnchantableForm>() : nullptr;
+		if (ench && ench->formEnchanting) {
+			result.emplace(100.0);
+		}
+
+		auto xCharge = extraList.GetByType<ExtraCharge>();
+		if (xCharge) {
+			auto xEnch = extraList.GetByType<ExtraEnchantment>();
+			if (xEnch && xEnch->enchantment) {
+				result.emplace((static_cast<double>(xCharge->charge) /
+								   static_cast<double>(xEnch->charge)) *
+							   100.0);
+			} else if (ench && ench->formEnchanting) {
+				result.emplace((static_cast<double>(xCharge->charge) /
+								   static_cast<double>(ench->amountofEnchantment)) *
+							   100.0);
+			}
+		}
+
+		return result;
 	}
 
 
@@ -505,6 +533,14 @@ namespace RE
 	{
 		auto xFlags = extraList.GetByType<ExtraFlags>();
 		return xFlags && xFlags->IsActivationBlocked();
+	}
+
+
+	bool TESObjectREFR::IsAnOwner(const Actor* a_testOwner, bool a_useFaction, bool a_requiresOwner) const
+	{
+		using func_t = decltype(&TESObjectREFR::IsAnOwner);
+		REL::Offset<func_t> func = REL::ID(19805);
+		return func(this, a_testOwner, a_useFaction, a_requiresOwner);
 	}
 
 

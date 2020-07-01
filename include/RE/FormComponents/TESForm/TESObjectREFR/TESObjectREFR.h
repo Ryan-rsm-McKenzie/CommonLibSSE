@@ -19,6 +19,7 @@
 namespace RE
 {
 	enum class LOCK_LEVEL : UInt32;
+	class Actor;
 	class ActorCause;
 	class BGSAnimationSequencer;
 	class BGSDialogueBranch;
@@ -377,6 +378,7 @@ namespace RE
 		InventoryDropMap				  GetDroppedInventory(std::function<bool(TESBoundObject*)> a_filter);
 		BGSLocation*					  GetEditorLocation() const;
 		bool							  GetEditorLocation(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_fallback);
+		std::optional<double>			  GetEnchantmentCharge() const;
 		TESFaction*						  GetFactionOwner();
 		InventoryItemMap				  GetInventory();
 		InventoryItemMap				  GetInventory(std::function<bool(TESBoundObject*)> a_filter);
@@ -406,6 +408,7 @@ namespace RE
 		bool							  InitInventoryIfRequired(bool a_ignoreContainerExtraData = false);
 		bool							  Is3DLoaded() const;
 		bool							  IsActivationBlocked() const;
+		bool							  IsAnOwner(const Actor* a_testOwner, bool a_useFaction, bool a_requiresOwner) const;
 		bool							  IsCrimeToActivate();
 		bool							  IsDead() const;
 		bool							  IsDisabled() const;

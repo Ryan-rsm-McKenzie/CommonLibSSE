@@ -547,6 +547,12 @@ namespace RE
 	}
 
 
+	bool Actor::WouldBeStealing(const TESObjectREFR* a_target) const
+	{
+		return a_target ? !a_target->IsAnOwner(this, true, false) : false;
+	}
+
+
 	TESFaction* Actor::GetCrimeFactionImpl() const
 	{
 		if (IsCommandedActor()) {

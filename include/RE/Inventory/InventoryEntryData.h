@@ -24,16 +24,18 @@ namespace RE
 		InventoryEntryData& operator=(const InventoryEntryData& a_rhs);
 		InventoryEntryData& operator=(InventoryEntryData&& a_rhs);
 
-		void			AddExtraList(ExtraDataList* a_extra);
-		const char*		GetDisplayName();
-		TESBoundObject* GetObject();
-		TESForm*		GetOwner();
-		SOUL_LEVEL		GetSoulLevel() const;
-		SInt32			GetValue();
-		float			GetWeight() const;
-		bool			IsEnchanted() const;
-		bool			IsOwnedBy(Actor* a_actor, bool a_defaultTo = true);
-		bool			IsOwnedBy(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo = true);
+		void				  AddExtraList(ExtraDataList* a_extra);
+		const char*			  GetDisplayName();
+		std::optional<double> GetEnchantmentCharge() const;
+		TESBoundObject*		  GetObject();
+		const TESBoundObject* GetObject() const;
+		TESForm*			  GetOwner();
+		SOUL_LEVEL			  GetSoulLevel() const;
+		SInt32				  GetValue();
+		float				  GetWeight() const;
+		bool				  IsEnchanted() const;
+		bool				  IsOwnedBy(Actor* a_testOwner, bool a_defaultTo = true);
+		bool				  IsOwnedBy(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo = true);
 
 		TES_HEAP_REDEFINE_NEW();
 
@@ -45,7 +47,7 @@ namespace RE
 		UInt32						  pad14;	   // 14
 
 	private:
-		bool IsOwnedBy_Impl(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo);
+		bool IsOwnedBy_Impl(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo);
 	};
 	STATIC_ASSERT(sizeof(InventoryEntryData) == 0x18);
 }

@@ -36,6 +36,7 @@ namespace RE
 		class Data	// ENIT
 		{
 		public:
+			// members
 			SInt32					 costOverride;		// 00
 			EnchantmentFlag			 flags;				// 04
 			MagicSystem::CastingType castingType;		// 08

@@ -43,6 +43,8 @@ namespace RE
 
 		struct SkillUsageData
 		{
+		public:
+			// members
 			EffectItem* effect;		// 00
 			ActorValue	skill;		// 08
 			float		magnitude;	// 0C
@@ -57,6 +59,7 @@ namespace RE
 		class Data
 		{
 		public:
+			// members
 			SInt32 costOverride;  // 0
 			UInt32 flags;		  // 4
 		};

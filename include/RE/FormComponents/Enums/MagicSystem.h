@@ -30,10 +30,10 @@ namespace RE
 
 		enum class CastingType : UInt32
 		{
-			kConstantEffect = 1,
-			kFireAndForget = 2,
-			kConcentration = 3,
-			kScroll = 4
+			kConstantEffect = 0,
+			kFireAndForget = 1,
+			kConcentration = 2,
+			kScroll = 3
 		};
 
 
@@ -41,8 +41,8 @@ namespace RE
 		{
 			kConstantEffect = 0,
 			kFireAndForget = 1,
-			kConcentration = 3,
-			kScroll = 4
+			kConcentration = 2,
+			kScroll = 3
 		};
 
 
