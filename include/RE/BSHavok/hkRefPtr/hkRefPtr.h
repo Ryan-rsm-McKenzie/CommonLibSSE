@@ -242,4 +242,7 @@ namespace RE
 	{
 		return static_cast<bool>(a_rhs);
 	}
+
+	template <class T>
+	hkRefPtr(T*) -> hkRefPtr<T>;
 }

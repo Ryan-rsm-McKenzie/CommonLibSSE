@@ -280,6 +280,9 @@ namespace RE
 		return static_cast<bool>(a_rhs);
 	}
 
+	template <class T>
+	BSTSmartPointer(T*) -> BSTSmartPointer<T, BSTSmartPointerIntrusiveRefCount>;
+
 
 	template <class T>
 	using BSTAutoPointer = BSTSmartPointer<T, BSTSmartPointerAutoPtr>;

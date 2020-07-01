@@ -239,6 +239,9 @@ namespace RE
 		return static_cast<bool>(a_rhs);
 	}
 
+	template <class T>
+	NiPointer(T*) -> NiPointer<T>;
+
 
 	template <class T>
 	struct CRC32Hash<NiPointer<T>>
