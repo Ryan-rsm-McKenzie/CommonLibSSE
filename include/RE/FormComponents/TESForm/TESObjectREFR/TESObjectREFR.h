@@ -240,7 +240,7 @@ namespace RE
 		virtual BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_dispatcher) override;	// 01
 
 		// override (IAnimationGraphManagerHolder)
-		virtual bool GetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_out) override;													   // 02
+		virtual bool GetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_out) const override;												   // 02
 		virtual bool SetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_in) override;														   // 03
 		virtual bool PopulateGraphNodesToTarget(BSScrapArray<NiAVObject*>& a_nodes) override;																	   // 04
 		virtual bool ConstructAnimationGraph(BSTSmartPointer<BShkbAnimationGraph>& a_out) override;																   // 05

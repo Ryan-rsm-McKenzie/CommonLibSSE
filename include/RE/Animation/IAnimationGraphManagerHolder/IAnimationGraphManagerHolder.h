@@ -22,7 +22,7 @@ namespace RE
 
 		// add
 		virtual bool   NotifyAnimationGraph(const BSFixedString& a_eventName);																				// 01
-		virtual bool   GetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_out) = 0;													// 02
+		virtual bool   GetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_out) const = 0;												// 02
 		virtual bool   SetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_in) = 0;													// 03
 		virtual bool   PopulateGraphNodesToTarget(BSScrapArray<NiAVObject*>& a_nodes);																		// 04 - { return false; }
 		virtual bool   ConstructAnimationGraph(BSTSmartPointer<BShkbAnimationGraph>& a_out) = 0;															// 05
@@ -35,15 +35,15 @@ namespace RE
 		virtual void   Unk_0C(void);																														// 0C - { return; }
 		virtual void   PostChangeAnimationManager(const BSTSmartPointer<BShkbAnimationGraph>& a_arg1, const BSTSmartPointer<BShkbAnimationGraph>& a_arg2);	// 0D - { return; }
 		virtual void   Unk_0E(void);																														// 0E - { return 1; }
-		virtual UInt32 GetGraphVariableCacheSize();																											// 0F - { return 0; }
-		virtual bool   GetGraphVariableImpl1(const BSFixedString& a_variableName, float& a_out);															// 10
-		virtual bool   GetGraphVariableImpl2(const BSFixedString& a_variableName, SInt32& a_out);															// 11
-		virtual bool   GetGraphVariableImpl3(const BSFixedString& a_variableName, bool& a_out);																// 12
+		virtual UInt32 GetGraphVariableCacheSize() const;																									// 0F - { return 0; }
+		virtual bool   GetGraphVariableImpl1(const BSFixedString& a_variableName, float& a_out) const;														// 10
+		virtual bool   GetGraphVariableImpl2(const BSFixedString& a_variableName, SInt32& a_out) const;														// 11
+		virtual bool   GetGraphVariableImpl3(const BSFixedString& a_variableName, bool& a_out) const;														// 12
 
-		bool GetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_out);
-		bool GetGraphVariableFloat(const BSFixedString& a_variableName, float& a_out);
-		bool GetGraphVariableInt(const BSFixedString& a_variableName, SInt32& a_out);
-		bool GetGraphVariableBool(const BSFixedString& a_variableName, bool& a_out);
+		bool GetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_out) const;
+		bool GetGraphVariableFloat(const BSFixedString& a_variableName, float& a_out) const;
+		bool GetGraphVariableInt(const BSFixedString& a_variableName, SInt32& a_out) const;
+		bool GetGraphVariableBool(const BSFixedString& a_variableName, bool& a_out) const;
 		bool SetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_in);
 	};
 	STATIC_ASSERT(sizeof(IAnimationGraphManagerHolder) == 0x8);

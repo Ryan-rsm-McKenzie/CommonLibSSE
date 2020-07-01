@@ -321,6 +321,13 @@ namespace RE
 	}
 
 
+	bool Actor::IsAnimationDriven() const
+	{
+		bool result = false;
+		return GetGraphVariableBool("bAnimationDriven", result) && result;
+	}
+
+
 	bool Actor::IsBeingRidden() const
 	{
 		return IsAMount() && extraList.HasType(ExtraDataType::kInteraction);

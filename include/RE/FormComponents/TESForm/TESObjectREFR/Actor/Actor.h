@@ -511,6 +511,7 @@ namespace RE
 		bool					  HasPerk(BGSPerk* a_perk) const;
 		bool					  IsAIEnabled() const;
 		bool					  IsAMount() const;
+		bool					  IsAnimationDriven() const;
 		bool					  IsBeingRidden() const;
 		bool					  IsCommandedActor() const;
 		bool					  IsEssential() const;
