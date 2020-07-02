@@ -115,7 +115,7 @@
       <ForcedIncludeFiles>$(ProjectDir)include\SKSE\Impl\PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <CompileAs>CompileAsCpp</CompileAs>
       <UseFullPaths>false</UseFullPaths>
-      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 /Zc:externConstexpr /Zc:ternary /Zc:throwingNew /Zc:noexceptTypes /Zc:preprocessor /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <TreatSpecificWarningsAsErrors>4099;4717;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -145,7 +145,7 @@
       <ForcedIncludeFiles>$(ProjectDir)include\SKSE\Impl\PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <CompileAs>CompileAsCpp</CompileAs>
       <UseFullPaths>false</UseFullPaths>
-      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 /Zc:externConstexpr /Zc:ternary /Zc:throwingNew /Zc:noexceptTypes /Zc:preprocessor /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <TreatSpecificWarningsAsErrors>4099;4717;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -173,7 +173,7 @@
       <ForcedIncludeFiles>$(ProjectDir)include\SKSE\Impl\PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <CompileAs>CompileAsCpp</CompileAs>
       <UseFullPaths>false</UseFullPaths>
-      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 /Zc:externConstexpr /Zc:ternary /Zc:throwingNew /Zc:noexceptTypes /Zc:preprocessor /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <TreatSpecificWarningsAsErrors>4099;4717;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -203,7 +203,7 @@
       <ForcedIncludeFiles>$(ProjectDir)include\SKSE\Impl\PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <CompileAs>CompileAsCpp</CompileAs>
       <UseFullPaths>false</UseFullPaths>
-      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 /Zc:externConstexpr /Zc:ternary /Zc:throwingNew /Zc:noexceptTypes /Zc:preprocessor /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <TreatSpecificWarningsAsErrors>4099;4717;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>

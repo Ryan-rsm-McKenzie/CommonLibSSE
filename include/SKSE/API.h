@@ -8,6 +8,8 @@
 #include "SKSE/Trampoline.h"
 #include "SKSE/Version.h"
 
+#define SKSEAPI __cdecl
+
 
 namespace SKSE
 {

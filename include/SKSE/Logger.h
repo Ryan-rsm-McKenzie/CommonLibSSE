@@ -166,9 +166,9 @@ namespace SKSE
 }
 
 
-#define _DMESSAGE(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kDebugMessage, a_fmt, __VA_ARGS__)
-#define _VMESSAGE(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kVerboseMessage, a_fmt, __VA_ARGS__)
-#define _MESSAGE(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kMessage, a_fmt, __VA_ARGS__)
-#define _WARNING(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kWarning, a_fmt, __VA_ARGS__)
-#define _ERROR(a_fmt, ...)		SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kError, a_fmt, __VA_ARGS__)
-#define _FATALERROR(a_fmt, ...) SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kFatalError, a_fmt, __VA_ARGS__)
+#define _DMESSAGE(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kDebugMessage, a_fmt, ##__VA_ARGS__)
+#define _VMESSAGE(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kVerboseMessage, a_fmt, ##__VA_ARGS__)
+#define _MESSAGE(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kMessage, a_fmt, ##__VA_ARGS__)
+#define _WARNING(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kWarning, a_fmt, ##__VA_ARGS__)
+#define _ERROR(a_fmt, ...)		SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kError, a_fmt, ##__VA_ARGS__)
+#define _FATALERROR(a_fmt, ...) SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kFatalError, a_fmt, ##__VA_ARGS__)
