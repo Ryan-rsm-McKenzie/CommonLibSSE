@@ -45,8 +45,7 @@ namespace RE
 
 		static PlayerControls* GetSingleton();
 
-		bool IsActivateControlsEnabled() const;
-		void ToggleActivateControls(bool a_enable) const;
+		constexpr ActivateHandler* GetActivateHandler() const noexcept { return activateHandler; }
 
 
 		// members

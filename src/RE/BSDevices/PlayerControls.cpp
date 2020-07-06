@@ -19,20 +19,6 @@ namespace RE
 	}
 
 
-	bool PlayerControls::IsActivateControlsEnabled() const
-	{
-		return activateHandler ? !activateHandler->disabled : true;
-	}
-
-
-	void PlayerControls::ToggleActivateControls(bool a_enable) const
-	{
-		if (activateHandler) {
-			activateHandler->disabled = !a_enable;
-		}
-	}
-
-
 	PlayerControls* PlayerControls::Ctor()
 	{
 		using func_t = decltype(&PlayerControls::Ctor);

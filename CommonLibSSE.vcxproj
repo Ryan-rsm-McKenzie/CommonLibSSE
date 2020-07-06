@@ -1534,7 +1534,6 @@
     <ClCompile Include="src\RE\Events\BGSStoryEvent\Inventory.cpp" />
     <ClCompile Include="src\RE\Events\BGSStoryEvent\ItemCrafted.cpp" />
     <ClCompile Include="src\RE\Events\BGSStoryEvent\ItemsPickpocketed.cpp" />
-    <ClCompile Include="src\RE\Events\InputEvent\ButtonEvent.cpp" />
     <ClCompile Include="src\RE\Events\InputEvent\ThumbstickEvent.cpp" />
     <ClCompile Include="src\RE\Events\ScriptEvent\ScriptEventSourceHolder.cpp" />
     <ClCompile Include="src\RE\Events\ScriptEvent\TESHitEvent.cpp" />

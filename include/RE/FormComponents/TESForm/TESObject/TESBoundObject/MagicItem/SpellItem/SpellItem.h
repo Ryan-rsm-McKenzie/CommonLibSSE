@@ -48,6 +48,7 @@ namespace RE
 		class Data	// SPIT
 		{
 		public:
+			// members
 			SInt32					 costOverride;	// 00
 			SpellFlag				 flags;			// 04
 			MagicSystem::SpellType	 spellType;		// 08

@@ -279,6 +279,7 @@ namespace RE
 		TintMask*				 GetOverlayTintMask(TintMask* a_original);
 		BSTArray<TintMask*>&	 GetTintList();
 		TintMask*				 GetTintMask(UInt32 a_tintType, UInt32 a_index);
+		bool					 IsGrabbing() const;
 		void					 PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void					 StartGrabObject();
 
