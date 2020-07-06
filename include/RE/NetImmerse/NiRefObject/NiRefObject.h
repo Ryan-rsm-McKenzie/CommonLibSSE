@@ -27,8 +27,8 @@ namespace RE
 
 
 		// members
-		volatile mutable UInt32 _refCount;	// 08
-		UInt32					_pad0C;		// 0C
+		volatile UInt32 _refCount;	// 08
+		UInt32			_pad0C;		// 0C
 	};
 	STATIC_ASSERT(sizeof(NiRefObject) == 0x10);
 }

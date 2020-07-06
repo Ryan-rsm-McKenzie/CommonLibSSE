@@ -114,7 +114,7 @@ namespace RE
 		using Count = SInt32;
 		using InventoryCountMap = std::unordered_map<TESBoundObject*, Count>;
 		using InventoryItemMap = std::unordered_map<TESBoundObject*, std::pair<Count, std::unique_ptr<InventoryEntryData>>>;
-		using InventoryDropMap = std::unordered_map<TESBoundObject*, std::pair<Count, std::vector<NiPointer<TESObjectREFR>>>>;
+		using InventoryDropMap = std::unordered_map<TESBoundObject*, std::pair<Count, std::vector<ObjectRefHandle>>>;
 		inline static constexpr auto FORMTYPE = FormType::Reference;
 
 

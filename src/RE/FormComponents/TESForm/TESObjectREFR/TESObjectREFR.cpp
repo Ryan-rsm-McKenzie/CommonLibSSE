@@ -203,10 +203,10 @@ namespace RE
 			auto it = results.find(object);
 			if (it != results.end()) {
 				it->second.first += count;
-				it->second.second.push_back(std::move(ref));
+				it->second.second.push_back(handle);
 			} else {
 				auto mapped = std::make_pair(count, container_t());
-				mapped.second.push_back(std::move(ref));
+				mapped.second.push_back(handle);
 				auto insIt = results.emplace(object, std::move(mapped));
 				assert(insIt.second);
 			}
