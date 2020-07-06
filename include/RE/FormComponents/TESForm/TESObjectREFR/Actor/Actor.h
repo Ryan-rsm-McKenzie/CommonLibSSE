@@ -423,8 +423,8 @@ namespace RE
 		virtual void				 WeaponSwingCallBack();																																							  // 0EF
 		virtual void				 SetActorStartingPosition();																																					  // 0F0
 		virtual void				 Unk_F1(void);																																									  // 0F1
-		virtual void				 Unk_F2(void);																																									  // 0F2
-		virtual void				 Unk_F3(void);																																									  // 0F3
+		virtual bool				 MovetoLow();																																									  // 0F2
+		virtual bool				 MovetoMiddleLow();																																								  // 0F3
 		virtual void				 Unk_F4(void);																																									  // 0F4
 		virtual bool				 HasBeenAttacked() const;																																						  // 0F5
 		virtual void				 SetBeenAttacked(bool a_set);																																					  // 0F6

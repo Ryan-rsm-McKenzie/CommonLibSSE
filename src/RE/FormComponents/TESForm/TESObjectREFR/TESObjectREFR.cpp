@@ -507,6 +507,14 @@ namespace RE
 	}
 
 
+	bool TESObjectREFR::HasQuestObject() const
+	{
+		using func_t = decltype(&TESObjectREFR::HasQuestObject);
+		REL::Offset<func_t> func = REL::ID(19201);
+		return func(this);
+	}
+
+
 	void TESObjectREFR::InitChildActivates(TESObjectREFR* a_activator)
 	{
 		using func_t = decltype(&TESObjectREFR::InitChildActivates);

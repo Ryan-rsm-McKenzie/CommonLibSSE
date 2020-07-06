@@ -4,6 +4,7 @@
 #include "RE/BSExtraData/ExtraEnchantment.h"
 #include "RE/BSExtraData/ExtraTextDisplayData.h"
 #include "RE/BSMain/SettingCollection/GameSettingCollection.h"
+#include "RE/FormComponents/Components/FormTraits.h"
 #include "RE/FormComponents/TESEnchantableForm.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESObjectMISC/TESSoulGem.h"
@@ -270,5 +271,13 @@ namespace RE
 		using func_t = decltype(&InventoryEntryData::IsOwnedBy_Impl);
 		REL::Offset<func_t> func(Offset::InventoryEntryData::IsOwnedBy);
 		return func(this, a_testOwner, a_itemOwner, a_defaultTo);
+	}
+
+
+	bool InventoryEntryData::IsQuestObject() const
+	{
+		using func_t = decltype(&InventoryEntryData::IsQuestObject);
+		REL::Offset<func_t> func = REL::ID(15767);
+		return func(this);
 	}
 }

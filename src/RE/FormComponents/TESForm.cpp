@@ -65,18 +65,6 @@ namespace RE
 	}
 
 
-	bool TESForm::Is(FormType a_type) const noexcept
-	{
-		return formType == a_type;
-	}
-
-
-	bool TESForm::IsNot(FormType a_type) const noexcept
-	{
-		return formType != a_type;
-	}
-
-
 	TESObjectREFR* TESForm::AsReference()
 	{
 		return AsReference1();
@@ -101,18 +89,6 @@ namespace RE
 		} else {
 			return (*array)[a_idx];
 		}
-	}
-
-
-	FormID TESForm::GetFormID() const noexcept
-	{
-		return formID;
-	}
-
-
-	FormType TESForm::GetFormType() const noexcept
-	{
-		return formType;
 	}
 
 
@@ -200,83 +176,5 @@ namespace RE
 	void TESForm::InitItem()
 	{
 		InitItemImpl();
-	}
-
-
-	bool TESForm::IsAmmo() const noexcept
-	{
-		return Is(FormType::Ammo);
-	}
-
-
-	bool TESForm::IsArmor() const noexcept
-	{
-		return Is(FormType::Armor);
-	}
-
-
-	bool TESForm::IsDeleted() const noexcept
-	{
-		return (formFlags & RecordFlags::kDeleted) != 0;
-	}
-
-
-	bool TESForm::IsDynamicForm() const noexcept
-	{
-		return formID >= 0xFF000000;
-	}
-
-
-	bool TESForm::IsGold() const noexcept
-	{
-		return formID == 0x0000000F;
-	}
-
-
-	bool TESForm::IsIgnored() const noexcept
-	{
-		return (formFlags & RecordFlags::kIgnored) != 0;
-	}
-
-
-	bool TESForm::IsInitialized() const noexcept
-	{
-		return (formFlags & RecordFlags::kInitialized) != 0;
-	}
-
-
-	bool TESForm::IsKey() const noexcept
-	{
-		return Is(FormType::KeyMaster);
-	}
-
-
-	bool TESForm::IsLockpick() const noexcept
-	{
-		return formID == 0x0000000A;
-	}
-
-
-	bool TESForm::IsPlayer() const noexcept
-	{
-		return formID == 0x00000007;
-	}
-
-
-	bool TESForm::IsPlayerRef() const noexcept
-	{
-		return formID == 0x00000014;
-	}
-
-
-	bool TESForm::IsSoulGem() const noexcept
-	{
-		return Is(FormType::SoulGem);
-	}
-
-
-	bool TESForm::IsWeapon() const noexcept
-	{
-		return Is(FormType::Weapon);
 	}
 }

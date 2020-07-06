@@ -19,11 +19,21 @@ namespace RE
 	struct FORM_GROUP;
 
 
-	namespace Impl
+	namespace TESForm_Impl
 	{
 		template <class T>
-		struct is_valid_as_expr : std::conjunction<std::negation<std::is_pointer<T>>, std::negation<std::is_reference<T>>, std::negation<std::is_const<T>>>
+		struct is_valid_as_expr :
+			std::conjunction<
+				std::negation<
+					std::is_pointer<T>>,
+				std::negation<
+					std::is_reference<T>>,
+				std::negation<
+					std::is_const<T>>>
 		{};
+
+		template <class T>
+		constexpr inline bool is_valid_as_expr_v = is_valid_as_expr<T>::value;
 	}
 
 
@@ -195,53 +205,84 @@ namespace RE
 
 		static void AddCompileIndex(FormID& a_id, TESFile* a_file);
 
-		template <class T, typename std::enable_if_t<Impl::is_valid_as_expr<T>::value, int> = 0>
-		constexpr T* As();
-
-		template <class T, typename std::enable_if_t<Impl::is_valid_as_expr<T>::value, int> = 0>
-		constexpr const T* As() const;
-
 		static std::pair<BSTHashMap<FormID, TESForm*>*, std::reference_wrapper<BSReadWriteLock>>		GetAllForms();
 		static std::pair<BSTHashMap<BSFixedString, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> GetAllFormsByEditorID();
 
 		static TESForm* LookupByID(FormID a_formID);
-		template <class T>
-		static T*		LookupByID(FormID a_formID);
-		static TESForm* LookupByEditorID(const std::string_view& a_editorID);
-		template <class T>
-		static T* LookupByEditorID(const std::string_view& a_editorID);
 
-		bool Is(FormType a_type) const noexcept;
+		template <class T>
+		static T* LookupByID(FormID a_formID)
+		{
+			auto form = LookupByID(a_formID);
+			return (form && form->Is(T::FORMTYPE)) ? static_cast<T*>(form) : nullptr;
+		}
+
+		static TESForm* LookupByEditorID(const std::string_view& a_editorID);
+
+		template <class T>
+		static T* LookupByEditorID(const std::string_view& a_editorID)
+		{
+			auto form = LookupByEditorID(a_editorID);
+			return (form && form->Is(T::FORMTYPE)) ? static_cast<T*>(form) : nullptr;
+		}
+
+		template <
+			class T,
+			std::enable_if_t<
+				TESForm_Impl::is_valid_as_expr_v<T>,
+				int> = 0>
+		constexpr T* As() noexcept;
+
+		template <
+			class T,
+			std::enable_if_t<
+				TESForm_Impl::is_valid_as_expr_v<T>,
+				int> = 0>
+		constexpr const T* As() const noexcept;
+
+		constexpr bool Is(FormType a_type) const noexcept { return GetFormType() == a_type; }
+
 		template <class First, class... Rest>
-		bool Is(First a_first, Rest... a_rest) const noexcept;
-		bool IsNot(FormType a_type) const noexcept;
+		constexpr bool Is(First a_first, Rest... a_rest) const noexcept
+		{
+			return Is(a_first) || Is(a_rest...);
+		}
+
+		constexpr bool IsNot(FormType a_type) const noexcept { return !Is(a_type); }
+
 		template <class First, class... Rest>
-		bool IsNot(First a_first, Rest... a_rest) const noexcept;
+		constexpr bool IsNot(First a_first, Rest... a_rest) const noexcept
+		{
+			return IsNot(a_first) && IsNot(a_rest...);
+		}
 
 		TESObjectREFR*		 AsReference();
 		const TESObjectREFR* AsReference() const;
 		TESFile*			 GetFile(SInt32 a_idx = -1) const;
-		FormID				 GetFormID() const noexcept;
-		FormType			 GetFormType() const noexcept;
+		constexpr UInt32	 GetFormFlags() const noexcept { return formFlags; }
+		constexpr FormID	 GetFormID() const noexcept { return formID; }
+		constexpr FormType	 GetFormType() const noexcept { return formType; }
 		SInt32				 GetGoldValue() const;
 		const char*			 GetName() const;
 		float				 GetWeight() const;
 		bool				 HasVMAD() const;
 		bool				 HasWorldModel() const noexcept;
 		void				 InitItem();
-		bool				 IsAmmo() const noexcept;
-		bool				 IsArmor() const noexcept;
-		bool				 IsDeleted() const noexcept;
-		bool				 IsDynamicForm() const noexcept;
-		bool				 IsGold() const noexcept;
-		bool				 IsIgnored() const noexcept;
-		bool				 IsInitialized() const noexcept;
-		bool				 IsKey() const noexcept;
-		bool				 IsLockpick() const noexcept;
-		bool				 IsPlayer() const noexcept;
-		bool				 IsPlayerRef() const noexcept;
-		bool				 IsSoulGem() const noexcept;
-		bool				 IsWeapon() const noexcept;
+		constexpr bool		 IsAmmo() const noexcept { return Is(FormType::Ammo); }
+		constexpr bool		 IsArmor() const noexcept { return Is(FormType::Armor); }
+		constexpr bool		 IsBook() const noexcept { return Is(FormType::Book); }
+		constexpr bool		 IsDeleted() const noexcept { return (GetFormFlags() & RecordFlags::kDeleted) != 0; }
+		constexpr bool		 IsDynamicForm() const noexcept { return GetFormID() >= 0xFF000000; }
+		constexpr bool		 IsGold() const noexcept { return GetFormID() == 0x0000000F; }
+		constexpr bool		 IsIgnored() const noexcept { return (GetFormFlags() & RecordFlags::kIgnored) != 0; }
+		constexpr bool		 IsInitialized() const noexcept { return (GetFormFlags() & RecordFlags::kInitialized) != 0; }
+		constexpr bool		 IsKey() const noexcept { return Is(FormType::KeyMaster); }
+		constexpr bool		 IsLockpick() const noexcept { return GetFormID() == 0x0000000A; }
+		constexpr bool		 IsNote() const noexcept { return Is(FormType::Note); }
+		constexpr bool		 IsPlayer() const noexcept { return GetFormID() == 0x00000007; }
+		constexpr bool		 IsPlayerRef() const noexcept { return GetFormID() == 0x00000014; }
+		constexpr bool		 IsSoulGem() const noexcept { return Is(FormType::SoulGem); }
+		constexpr bool		 IsWeapon() const noexcept { return Is(FormType::Weapon); }
 
 
 		// members
@@ -254,34 +295,4 @@ namespace RE
 		UInt32			 pad1C;			   // 1C
 	};
 	STATIC_ASSERT(sizeof(TESForm) == 0x20);
-
-
-	template <class T>
-	inline static T* TESForm::LookupByID(FormID a_formID)
-	{
-		auto form = LookupByID(a_formID);
-		return (form && form->Is(T::FORMTYPE)) ? static_cast<T*>(form) : nullptr;
-	}
-
-
-	template <class T>
-	inline static T* TESForm::LookupByEditorID(const std::string_view& a_editorID)
-	{
-		auto form = LookupByEditorID(a_editorID);
-		return (form && form->Is(T::FORMTYPE)) ? static_cast<T*>(form) : nullptr;
-	}
-
-
-	template <class First, class... Rest>
-	inline bool TESForm::Is(First a_first, Rest... a_rest) const noexcept
-	{
-		return Is(a_first) || Is(a_rest...);
-	}
-
-
-	template <class First, class... Rest>
-	inline bool TESForm::IsNot(First a_first, Rest... a_rest) const noexcept
-	{
-		return IsNot(a_first) && IsNot(a_rest...);
-	}
 }

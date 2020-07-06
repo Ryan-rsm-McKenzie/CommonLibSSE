@@ -109,13 +109,13 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectREFR;
+		inline static constexpr auto FORMTYPE = FormType::Reference;
 
 
 		using Count = SInt32;
 		using InventoryCountMap = std::unordered_map<TESBoundObject*, Count>;
 		using InventoryItemMap = std::unordered_map<TESBoundObject*, std::pair<Count, std::unique_ptr<InventoryEntryData>>>;
 		using InventoryDropMap = std::unordered_map<TESBoundObject*, std::pair<Count, std::vector<ObjectRefHandle>>>;
-		inline static constexpr auto FORMTYPE = FormType::Reference;
 
 
 		enum class MotionType : UInt32	// hkpMotion::MotionType
@@ -404,6 +404,7 @@ namespace RE
 		TESWorldSpace*					  GetWorldspace() const;
 		bool							  HasCollision() const;
 		bool							  HasKeyword(const BGSKeyword* a_keyword) const;
+		bool							  HasQuestObject() const;
 		void							  InitChildActivates(TESObjectREFR* a_activator);
 		bool							  InitInventoryIfRequired(bool a_ignoreContainerExtraData = false);
 		bool							  Is3DLoaded() const;

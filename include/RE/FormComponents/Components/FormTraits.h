@@ -136,672 +136,681 @@
 
 namespace RE
 {
-	template <class T, typename std::enable_if_t<Impl::is_valid_as_expr<T>::value, int>>
-	constexpr T* TESForm::As()
+	template <
+		class T,
+		std::enable_if_t<
+			TESForm_Impl::is_valid_as_expr_v<T>,
+			int>>
+	constexpr T* TESForm::As() noexcept
+	{
+		return const_cast<T*>(
+			static_cast<const TESForm*>(this)->As<T>());
+	}
+
+
+	template <
+		class T,
+		std::enable_if_t<
+			TESForm_Impl::is_valid_as_expr_v<T>,
+			int>>
+	constexpr const T* TESForm::As() const noexcept
 	{
 		switch (formType) {
 		case FormType::None:
-			if constexpr (std::is_convertible<TESForm*, T*>::value) {
-				return static_cast<TESForm*>(this);
+			if constexpr (std::is_convertible_v<const TESForm*, const T*>) {
+				return static_cast<const TESForm*>(this);
 			}
 			break;
 		case FormType::Keyword:
-			if constexpr (std::is_convertible<BGSKeyword*, T*>::value) {
-				return static_cast<BGSKeyword*>(this);
+			if constexpr (std::is_convertible_v<const BGSKeyword*, const T*>) {
+				return static_cast<const BGSKeyword*>(this);
 			}
 			break;
 		case FormType::LocationRefType:
-			if constexpr (std::is_convertible<BGSLocationRefType*, T*>::value) {
-				return static_cast<BGSLocationRefType*>(this);
+			if constexpr (std::is_convertible_v<const BGSLocationRefType*, const T*>) {
+				return static_cast<const BGSLocationRefType*>(this);
 			}
 			break;
 		case FormType::Action:
-			if constexpr (std::is_convertible<BGSAction*, T*>::value) {
-				return static_cast<BGSAction*>(this);
+			if constexpr (std::is_convertible_v<const BGSAction*, const T*>) {
+				return static_cast<const BGSAction*>(this);
 			}
 			break;
 		case FormType::TextureSet:
-			if constexpr (std::is_convertible<BGSTextureSet*, T*>::value) {
-				return static_cast<BGSTextureSet*>(this);
+			if constexpr (std::is_convertible_v<const BGSTextureSet*, const T*>) {
+				return static_cast<const BGSTextureSet*>(this);
 			}
 			break;
 		case FormType::MenuIcon:
-			if constexpr (std::is_convertible<BGSMenuIcon*, T*>::value) {
-				return static_cast<BGSMenuIcon*>(this);
+			if constexpr (std::is_convertible_v<const BGSMenuIcon*, const T*>) {
+				return static_cast<const BGSMenuIcon*>(this);
 			}
 			break;
 		case FormType::Global:
-			if constexpr (std::is_convertible<TESGlobal*, T*>::value) {
-				return static_cast<TESGlobal*>(this);
+			if constexpr (std::is_convertible_v<const TESGlobal*, const T*>) {
+				return static_cast<const TESGlobal*>(this);
 			}
 			break;
 		case FormType::Class:
-			if constexpr (std::is_convertible<TESClass*, T*>::value) {
-				return static_cast<TESClass*>(this);
+			if constexpr (std::is_convertible_v<const TESClass*, const T*>) {
+				return static_cast<const TESClass*>(this);
 			}
 			break;
 		case FormType::Faction:
-			if constexpr (std::is_convertible<TESFaction*, T*>::value) {
-				return static_cast<TESFaction*>(this);
+			if constexpr (std::is_convertible_v<const TESFaction*, const T*>) {
+				return static_cast<const TESFaction*>(this);
 			}
 			break;
 		case FormType::HeadPart:
-			if constexpr (std::is_convertible<BGSHeadPart*, T*>::value) {
-				return static_cast<BGSHeadPart*>(this);
+			if constexpr (std::is_convertible_v<const BGSHeadPart*, const T*>) {
+				return static_cast<const BGSHeadPart*>(this);
 			}
 			break;
 		case FormType::Eyes:
-			if constexpr (std::is_convertible<TESEyes*, T*>::value) {
-				return static_cast<TESEyes*>(this);
+			if constexpr (std::is_convertible_v<const TESEyes*, const T*>) {
+				return static_cast<const TESEyes*>(this);
 			}
 			break;
 		case FormType::Race:
-			if constexpr (std::is_convertible<TESRace*, T*>::value) {
-				return static_cast<TESRace*>(this);
+			if constexpr (std::is_convertible_v<const TESRace*, const T*>) {
+				return static_cast<const TESRace*>(this);
 			}
 			break;
 		case FormType::Sound:
-			if constexpr (std::is_convertible<TESSound*, T*>::value) {
-				return static_cast<TESSound*>(this);
+			if constexpr (std::is_convertible_v<const TESSound*, const T*>) {
+				return static_cast<const TESSound*>(this);
 			}
 			break;
 		case FormType::AcousticSpace:
-			if constexpr (std::is_convertible<BGSAcousticSpace*, T*>::value) {
-				return static_cast<BGSAcousticSpace*>(this);
+			if constexpr (std::is_convertible_v<const BGSAcousticSpace*, const T*>) {
+				return static_cast<const BGSAcousticSpace*>(this);
 			}
 			break;
 		case FormType::MagicEffect:
-			if constexpr (std::is_convertible<EffectSetting*, T*>::value) {
-				return static_cast<EffectSetting*>(this);
+			if constexpr (std::is_convertible_v<const EffectSetting*, const T*>) {
+				return static_cast<const EffectSetting*>(this);
 			}
 			break;
 		case FormType::Script:
-			if constexpr (std::is_convertible<Script*, T*>::value) {
-				return static_cast<Script*>(this);
+			if constexpr (std::is_convertible_v<const Script*, const T*>) {
+				return static_cast<const Script*>(this);
 			}
 			break;
 		case FormType::LandTexture:
-			if constexpr (std::is_convertible<TESLandTexture*, T*>::value) {
-				return static_cast<TESLandTexture*>(this);
+			if constexpr (std::is_convertible_v<const TESLandTexture*, const T*>) {
+				return static_cast<const TESLandTexture*>(this);
 			}
 			break;
 		case FormType::Enchantment:
-			if constexpr (std::is_convertible<EnchantmentItem*, T*>::value) {
-				return static_cast<EnchantmentItem*>(this);
+			if constexpr (std::is_convertible_v<const EnchantmentItem*, const T*>) {
+				return static_cast<const EnchantmentItem*>(this);
 			}
 			break;
 		case FormType::Spell:
-			if constexpr (std::is_convertible<SpellItem*, T*>::value) {
-				return static_cast<SpellItem*>(this);
+			if constexpr (std::is_convertible_v<const SpellItem*, const T*>) {
+				return static_cast<const SpellItem*>(this);
 			}
 			break;
 		case FormType::Scroll:
-			if constexpr (std::is_convertible<ScrollItem*, T*>::value) {
-				return static_cast<ScrollItem*>(this);
+			if constexpr (std::is_convertible_v<const ScrollItem*, const T*>) {
+				return static_cast<const ScrollItem*>(this);
 			}
 			break;
 		case FormType::Activator:
-			if constexpr (std::is_convertible<TESObjectACTI*, T*>::value) {
-				return static_cast<TESObjectACTI*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectACTI*, const T*>) {
+				return static_cast<const TESObjectACTI*>(this);
 			}
 			break;
 		case FormType::TalkingActivator:
-			if constexpr (std::is_convertible<BGSTalkingActivator*, T*>::value) {
-				return static_cast<BGSTalkingActivator*>(this);
+			if constexpr (std::is_convertible_v<const BGSTalkingActivator*, const T*>) {
+				return static_cast<const BGSTalkingActivator*>(this);
 			}
 			break;
 		case FormType::Armor:
-			if constexpr (std::is_convertible<TESObjectARMO*, T*>::value) {
-				return static_cast<TESObjectARMO*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectARMO*, const T*>) {
+				return static_cast<const TESObjectARMO*>(this);
 			}
 			break;
 		case FormType::Book:
-			if constexpr (std::is_convertible<TESObjectBOOK*, T*>::value) {
-				return static_cast<TESObjectBOOK*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectBOOK*, const T*>) {
+				return static_cast<const TESObjectBOOK*>(this);
 			}
 			break;
 		case FormType::Container:
-			if constexpr (std::is_convertible<TESObjectCONT*, T*>::value) {
-				return static_cast<TESObjectCONT*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectCONT*, const T*>) {
+				return static_cast<const TESObjectCONT*>(this);
 			}
 			break;
 		case FormType::Door:
-			if constexpr (std::is_convertible<TESObjectDOOR*, T*>::value) {
-				return static_cast<TESObjectDOOR*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectDOOR*, const T*>) {
+				return static_cast<const TESObjectDOOR*>(this);
 			}
 			break;
 		case FormType::Ingredient:
-			if constexpr (std::is_convertible<IngredientItem*, T*>::value) {
-				return static_cast<IngredientItem*>(this);
+			if constexpr (std::is_convertible_v<const IngredientItem*, const T*>) {
+				return static_cast<const IngredientItem*>(this);
 			}
 			break;
 		case FormType::Light:
-			if constexpr (std::is_convertible<TESObjectLIGH*, T*>::value) {
-				return static_cast<TESObjectLIGH*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectLIGH*, const T*>) {
+				return static_cast<const TESObjectLIGH*>(this);
 			}
 			break;
 		case FormType::Misc:
-			if constexpr (std::is_convertible<TESObjectMISC*, T*>::value) {
-				return static_cast<TESObjectMISC*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectMISC*, const T*>) {
+				return static_cast<const TESObjectMISC*>(this);
 			}
 			break;
 		case FormType::Apparatus:
-			if constexpr (std::is_convertible<BGSApparatus*, T*>::value) {
-				return static_cast<BGSApparatus*>(this);
+			if constexpr (std::is_convertible_v<const BGSApparatus*, const T*>) {
+				return static_cast<const BGSApparatus*>(this);
 			}
 			break;
 		case FormType::Static:
-			if constexpr (std::is_convertible<TESObjectSTAT*, T*>::value) {
-				return static_cast<TESObjectSTAT*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectSTAT*, const T*>) {
+				return static_cast<const TESObjectSTAT*>(this);
 			}
 			break;
 		case FormType::StaticCollection:
-			if constexpr (std::is_convertible<BGSStaticCollection*, T*>::value) {
-				return static_cast<BGSStaticCollection*>(this);
+			if constexpr (std::is_convertible_v<const BGSStaticCollection*, const T*>) {
+				return static_cast<const BGSStaticCollection*>(this);
 			}
 			break;
 		case FormType::MovableStatic:
-			if constexpr (std::is_convertible<BGSMovableStatic*, T*>::value) {
-				return static_cast<BGSMovableStatic*>(this);
+			if constexpr (std::is_convertible_v<const BGSMovableStatic*, const T*>) {
+				return static_cast<const BGSMovableStatic*>(this);
 			}
 			break;
 		case FormType::Grass:
-			if constexpr (std::is_convertible<TESGrass*, T*>::value) {
-				return static_cast<TESGrass*>(this);
+			if constexpr (std::is_convertible_v<const TESGrass*, const T*>) {
+				return static_cast<const TESGrass*>(this);
 			}
 			break;
 		case FormType::Tree:
-			if constexpr (std::is_convertible<TESObjectTREE*, T*>::value) {
-				return static_cast<TESObjectTREE*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectTREE*, const T*>) {
+				return static_cast<const TESObjectTREE*>(this);
 			}
 			break;
 		case FormType::Flora:
-			if constexpr (std::is_convertible<TESFlora*, T*>::value) {
-				return static_cast<TESFlora*>(this);
+			if constexpr (std::is_convertible_v<const TESFlora*, const T*>) {
+				return static_cast<const TESFlora*>(this);
 			}
 			break;
 		case FormType::Furniture:
-			if constexpr (std::is_convertible<TESFurniture*, T*>::value) {
-				return static_cast<TESFurniture*>(this);
+			if constexpr (std::is_convertible_v<const TESFurniture*, const T*>) {
+				return static_cast<const TESFurniture*>(this);
 			}
 			break;
 		case FormType::Weapon:
-			if constexpr (std::is_convertible<TESObjectWEAP*, T*>::value) {
-				return static_cast<TESObjectWEAP*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectWEAP*, const T*>) {
+				return static_cast<const TESObjectWEAP*>(this);
 			}
 			break;
 		case FormType::Ammo:
-			if constexpr (std::is_convertible<TESAmmo*, T*>::value) {
-				return static_cast<TESAmmo*>(this);
+			if constexpr (std::is_convertible_v<const TESAmmo*, const T*>) {
+				return static_cast<const TESAmmo*>(this);
 			}
 			break;
 		case FormType::NPC:
-			if constexpr (std::is_convertible<TESNPC*, T*>::value) {
-				return static_cast<TESNPC*>(this);
+			if constexpr (std::is_convertible_v<const TESNPC*, const T*>) {
+				return static_cast<const TESNPC*>(this);
 			}
 			break;
 		case FormType::LeveledNPC:
-			if constexpr (std::is_convertible<TESLevCharacter*, T*>::value) {
-				return static_cast<TESLevCharacter*>(this);
+			if constexpr (std::is_convertible_v<const TESLevCharacter*, const T*>) {
+				return static_cast<const TESLevCharacter*>(this);
 			}
 			break;
 		case FormType::KeyMaster:
-			if constexpr (std::is_convertible<TESKey*, T*>::value) {
-				return static_cast<TESKey*>(this);
+			if constexpr (std::is_convertible_v<const TESKey*, const T*>) {
+				return static_cast<const TESKey*>(this);
 			}
 			break;
 		case FormType::AlchemyItem:
-			if constexpr (std::is_convertible<AlchemyItem*, T*>::value) {
-				return static_cast<AlchemyItem*>(this);
+			if constexpr (std::is_convertible_v<const AlchemyItem*, const T*>) {
+				return static_cast<const AlchemyItem*>(this);
 			}
 			break;
 		case FormType::IdleMarker:
-			if constexpr (std::is_convertible<BGSIdleMarker*, T*>::value) {
-				return static_cast<BGSIdleMarker*>(this);
+			if constexpr (std::is_convertible_v<const BGSIdleMarker*, const T*>) {
+				return static_cast<const BGSIdleMarker*>(this);
 			}
 			break;
 		case FormType::Note:
-			if constexpr (std::is_convertible<BGSNote*, T*>::value) {
-				return static_cast<BGSNote*>(this);
+			if constexpr (std::is_convertible_v<const BGSNote*, const T*>) {
+				return static_cast<const BGSNote*>(this);
 			}
 			break;
 		case FormType::ConstructibleObject:
-			if constexpr (std::is_convertible<BGSConstructibleObject*, T*>::value) {
-				return static_cast<BGSConstructibleObject*>(this);
+			if constexpr (std::is_convertible_v<const BGSConstructibleObject*, const T*>) {
+				return static_cast<const BGSConstructibleObject*>(this);
 			}
 			break;
 		case FormType::Projectile:
-			if constexpr (std::is_convertible<BGSProjectile*, T*>::value) {
-				return static_cast<BGSProjectile*>(this);
+			if constexpr (std::is_convertible_v<const BGSProjectile*, const T*>) {
+				return static_cast<const BGSProjectile*>(this);
 			}
 			break;
 		case FormType::Hazard:
-			if constexpr (std::is_convertible<BGSHazard*, T*>::value) {
-				return static_cast<BGSHazard*>(this);
+			if constexpr (std::is_convertible_v<const BGSHazard*, const T*>) {
+				return static_cast<const BGSHazard*>(this);
 			}
 			break;
 		case FormType::SoulGem:
-			if constexpr (std::is_convertible<TESSoulGem*, T*>::value) {
-				return static_cast<TESSoulGem*>(this);
+			if constexpr (std::is_convertible_v<const TESSoulGem*, const T*>) {
+				return static_cast<const TESSoulGem*>(this);
 			}
 			break;
 		case FormType::LeveledItem:
-			if constexpr (std::is_convertible<TESLevItem*, T*>::value) {
-				return static_cast<TESLevItem*>(this);
+			if constexpr (std::is_convertible_v<const TESLevItem*, const T*>) {
+				return static_cast<const TESLevItem*>(this);
 			}
 			break;
 		case FormType::Weather:
-			if constexpr (std::is_convertible<TESWeather*, T*>::value) {
-				return static_cast<TESWeather*>(this);
+			if constexpr (std::is_convertible_v<const TESWeather*, const T*>) {
+				return static_cast<const TESWeather*>(this);
 			}
 			break;
 		case FormType::Climate:
-			if constexpr (std::is_convertible<TESClimate*, T*>::value) {
-				return static_cast<TESClimate*>(this);
+			if constexpr (std::is_convertible_v<const TESClimate*, const T*>) {
+				return static_cast<const TESClimate*>(this);
 			}
 			break;
 		case FormType::ShaderParticleGeometryData:
-			if constexpr (std::is_convertible<BGSShaderParticleGeometryData*, T*>::value) {
-				return static_cast<BGSShaderParticleGeometryData*>(this);
+			if constexpr (std::is_convertible_v<const BGSShaderParticleGeometryData*, const T*>) {
+				return static_cast<const BGSShaderParticleGeometryData*>(this);
 			}
 			break;
 		case FormType::ReferenceEffect:
-			if constexpr (std::is_convertible<BGSReferenceEffect*, T*>::value) {
-				return static_cast<BGSReferenceEffect*>(this);
+			if constexpr (std::is_convertible_v<const BGSReferenceEffect*, const T*>) {
+				return static_cast<const BGSReferenceEffect*>(this);
 			}
 			break;
 		case FormType::Region:
-			if constexpr (std::is_convertible<TESRegion*, T*>::value) {
-				return static_cast<TESRegion*>(this);
+			if constexpr (std::is_convertible_v<const TESRegion*, const T*>) {
+				return static_cast<const TESRegion*>(this);
 			}
 			break;
 		case FormType::Navigation:
-			if constexpr (std::is_convertible<NavMeshInfoMap*, T*>::value) {
-				return static_cast<NavMeshInfoMap*>(this);
+			if constexpr (std::is_convertible_v<const NavMeshInfoMap*, const T*>) {
+				return static_cast<const NavMeshInfoMap*>(this);
 			}
 			break;
 		case FormType::Cell:
-			if constexpr (std::is_convertible<TESObjectCELL*, T*>::value) {
-				return static_cast<TESObjectCELL*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectCELL*, const T*>) {
+				return static_cast<const TESObjectCELL*>(this);
 			}
 			break;
 		case FormType::Reference:
-			if constexpr (std::is_convertible<TESObjectREFR*, T*>::value) {
-				return static_cast<TESObjectREFR*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectREFR*, const T*>) {
+				return static_cast<const TESObjectREFR*>(this);
 			}
 			break;
 		case FormType::ActorCharacter:
-			if constexpr (std::is_convertible<Actor*, T*>::value) {
-				return static_cast<Actor*>(this);
-			} else if constexpr (std::is_convertible<Character*, T*>::value) {
-				return static_cast<Character*>(this);
-			} /* else if constexpr (std::is_convertible<PlayerCharacter*, T*>::value) {
-				return static_cast<PlayerCharacter*>(this);
+			if constexpr (std::is_convertible_v<const Actor*, const T*>) {
+				return static_cast<const Actor*>(this);
+			} else if constexpr (std::is_convertible_v<const Character*, const T*>) {
+				return static_cast<const Character*>(this);
+			} /* else if constexpr (std::is_convertible_v<const PlayerCharacter*, const T*>) {
+				return static_cast<const PlayerCharacter*>(this);
 			}*/
 			break;
 		case FormType::ProjectileMissile:
-			if constexpr (std::is_convertible<MissileProjectile*, T*>::value) {
-				return static_cast<MissileProjectile*>(this);
+			if constexpr (std::is_convertible_v<const MissileProjectile*, const T*>) {
+				return static_cast<const MissileProjectile*>(this);
 			}
 			break;
 		case FormType::ProjectileArrow:
-			if constexpr (std::is_convertible<ArrowProjectile*, T*>::value) {
-				return static_cast<ArrowProjectile*>(this);
+			if constexpr (std::is_convertible_v<const ArrowProjectile*, const T*>) {
+				return static_cast<const ArrowProjectile*>(this);
 			}
 			break;
 		case FormType::ProjectileGrenade:
-			if constexpr (std::is_convertible<GrenadeProjectile*, T*>::value) {
-				return static_cast<GrenadeProjectile*>(this);
+			if constexpr (std::is_convertible_v<const GrenadeProjectile*, const T*>) {
+				return static_cast<const GrenadeProjectile*>(this);
 			}
 			break;
 		case FormType::ProjectileBeam:
-			if constexpr (std::is_convertible<BeamProjectile*, T*>::value) {
-				return static_cast<BeamProjectile*>(this);
+			if constexpr (std::is_convertible_v<const BeamProjectile*, const T*>) {
+				return static_cast<const BeamProjectile*>(this);
 			}
 			break;
 		case FormType::ProjectileFlame:
-			if constexpr (std::is_convertible<FlameProjectile*, T*>::value) {
-				return static_cast<FlameProjectile*>(this);
+			if constexpr (std::is_convertible_v<const FlameProjectile*, const T*>) {
+				return static_cast<const FlameProjectile*>(this);
 			}
 			break;
 		case FormType::ProjectileCone:
-			if constexpr (std::is_convertible<ConeProjectile*, T*>::value) {
-				return static_cast<ConeProjectile*>(this);
+			if constexpr (std::is_convertible_v<const ConeProjectile*, const T*>) {
+				return static_cast<const ConeProjectile*>(this);
 			}
 			break;
 		case FormType::ProjectileBarrier:
-			if constexpr (std::is_convertible<BarrierProjectile*, T*>::value) {
-				return static_cast<BarrierProjectile*>(this);
+			if constexpr (std::is_convertible_v<const BarrierProjectile*, const T*>) {
+				return static_cast<const BarrierProjectile*>(this);
 			}
 			break;
 		case FormType::PlacedHazard:
-			if constexpr (std::is_convertible<Hazard*, T*>::value) {
-				return static_cast<Hazard*>(this);
+			if constexpr (std::is_convertible_v<const Hazard*, const T*>) {
+				return static_cast<const Hazard*>(this);
 			}
 			break;
 		case FormType::WorldSpace:
-			if constexpr (std::is_convertible<TESWorldSpace*, T*>::value) {
-				return static_cast<TESWorldSpace*>(this);
+			if constexpr (std::is_convertible_v<const TESWorldSpace*, const T*>) {
+				return static_cast<const TESWorldSpace*>(this);
 			}
 			break;
 		case FormType::Land:
-			if constexpr (std::is_convertible<TESObjectLAND*, T*>::value) {
-				return static_cast<TESObjectLAND*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectLAND*, const T*>) {
+				return static_cast<const TESObjectLAND*>(this);
 			}
 			break;
 		case FormType::NavMesh:
-			if constexpr (std::is_convertible<NavMesh*, T*>::value) {
-				return static_cast<NavMesh*>(this);
+			if constexpr (std::is_convertible_v<const NavMesh*, const T*>) {
+				return static_cast<const NavMesh*>(this);
 			}
 			break;
 		case FormType::Dialogue:
-			if constexpr (std::is_convertible<TESTopic*, T*>::value) {
-				return static_cast<TESTopic*>(this);
+			if constexpr (std::is_convertible_v<const TESTopic*, const T*>) {
+				return static_cast<const TESTopic*>(this);
 			}
 			break;
 		case FormType::Info:
-			if constexpr (std::is_convertible<TESTopicInfo*, T*>::value) {
-				return static_cast<TESTopicInfo*>(this);
+			if constexpr (std::is_convertible_v<const TESTopicInfo*, const T*>) {
+				return static_cast<const TESTopicInfo*>(this);
 			}
 			break;
 		case FormType::Quest:
-			if constexpr (std::is_convertible<TESQuest*, T*>::value) {
-				return static_cast<TESQuest*>(this);
+			if constexpr (std::is_convertible_v<const TESQuest*, const T*>) {
+				return static_cast<const TESQuest*>(this);
 			}
 			break;
 		case FormType::Idle:
-			if constexpr (std::is_convertible<TESIdleForm*, T*>::value) {
-				return static_cast<TESIdleForm*>(this);
+			if constexpr (std::is_convertible_v<const TESIdleForm*, const T*>) {
+				return static_cast<const TESIdleForm*>(this);
 			}
 			break;
 		case FormType::Package:
-			if constexpr (std::is_convertible<TESPackage*, T*>::value) {
-				return static_cast<TESPackage*>(this);
+			if constexpr (std::is_convertible_v<const TESPackage*, const T*>) {
+				return static_cast<const TESPackage*>(this);
 			}
 			break;
 		case FormType::CombatStyle:
-			if constexpr (std::is_convertible<TESCombatStyle*, T*>::value) {
-				return static_cast<TESCombatStyle*>(this);
+			if constexpr (std::is_convertible_v<const TESCombatStyle*, const T*>) {
+				return static_cast<const TESCombatStyle*>(this);
 			}
 			break;
 		case FormType::LoadScreen:
-			if constexpr (std::is_convertible<TESLoadScreen*, T*>::value) {
-				return static_cast<TESLoadScreen*>(this);
+			if constexpr (std::is_convertible_v<const TESLoadScreen*, const T*>) {
+				return static_cast<const TESLoadScreen*>(this);
 			}
 			break;
 		case FormType::LeveledSpell:
-			if constexpr (std::is_convertible<TESLevSpell*, T*>::value) {
-				return static_cast<TESLevSpell*>(this);
+			if constexpr (std::is_convertible_v<const TESLevSpell*, const T*>) {
+				return static_cast<const TESLevSpell*>(this);
 			}
 			break;
 		case FormType::AnimatedObject:
-			if constexpr (std::is_convertible<TESObjectANIO*, T*>::value) {
-				return static_cast<TESObjectANIO*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectANIO*, const T*>) {
+				return static_cast<const TESObjectANIO*>(this);
 			}
 			break;
 		case FormType::Water:
-			if constexpr (std::is_convertible<TESWaterForm*, T*>::value) {
-				return static_cast<TESWaterForm*>(this);
+			if constexpr (std::is_convertible_v<const TESWaterForm*, const T*>) {
+				return static_cast<const TESWaterForm*>(this);
 			}
 			break;
 		case FormType::EffectShader:
-			if constexpr (std::is_convertible<TESEffectShader*, T*>::value) {
-				return static_cast<TESEffectShader*>(this);
+			if constexpr (std::is_convertible_v<const TESEffectShader*, const T*>) {
+				return static_cast<const TESEffectShader*>(this);
 			}
 			break;
 		case FormType::Explosion:
-			if constexpr (std::is_convertible<BGSExplosion*, T*>::value) {
-				return static_cast<BGSExplosion*>(this);
+			if constexpr (std::is_convertible_v<const BGSExplosion*, const T*>) {
+				return static_cast<const BGSExplosion*>(this);
 			}
 			break;
 		case FormType::Debris:
-			if constexpr (std::is_convertible<BGSDebris*, T*>::value) {
-				return static_cast<BGSDebris*>(this);
+			if constexpr (std::is_convertible_v<const BGSDebris*, const T*>) {
+				return static_cast<const BGSDebris*>(this);
 			}
 			break;
 		case FormType::ImageSpace:
-			if constexpr (std::is_convertible<TESImageSpace*, T*>::value) {
-				return static_cast<TESImageSpace*>(this);
+			if constexpr (std::is_convertible_v<const TESImageSpace*, const T*>) {
+				return static_cast<const TESImageSpace*>(this);
 			}
 			break;
 		case FormType::ImageAdapter:
-			if constexpr (std::is_convertible<TESImageSpaceModifier*, T*>::value) {
-				return static_cast<TESImageSpaceModifier*>(this);
+			if constexpr (std::is_convertible_v<const TESImageSpaceModifier*, const T*>) {
+				return static_cast<const TESImageSpaceModifier*>(this);
 			}
 			break;
 		case FormType::FormList:
-			if constexpr (std::is_convertible<BGSListForm*, T*>::value) {
-				return static_cast<BGSListForm*>(this);
+			if constexpr (std::is_convertible_v<const BGSListForm*, const T*>) {
+				return static_cast<const BGSListForm*>(this);
 			}
 			break;
 		case FormType::Perk:
-			if constexpr (std::is_convertible<BGSPerk*, T*>::value) {
-				return static_cast<BGSPerk*>(this);
+			if constexpr (std::is_convertible_v<const BGSPerk*, const T*>) {
+				return static_cast<const BGSPerk*>(this);
 			}
 			break;
 		case FormType::BodyPartData:
-			if constexpr (std::is_convertible<BGSBodyPartData*, T*>::value) {
-				return static_cast<BGSBodyPartData*>(this);
+			if constexpr (std::is_convertible_v<const BGSBodyPartData*, const T*>) {
+				return static_cast<const BGSBodyPartData*>(this);
 			}
 			break;
 		case FormType::AddonNode:
-			if constexpr (std::is_convertible<BGSAddonNode*, T*>::value) {
-				return static_cast<BGSAddonNode*>(this);
+			if constexpr (std::is_convertible_v<const BGSAddonNode*, const T*>) {
+				return static_cast<const BGSAddonNode*>(this);
 			}
 			break;
 		case FormType::ActorValueInfo:
-			if constexpr (std::is_convertible<ActorValueInfo*, T*>::value) {
-				return static_cast<ActorValueInfo*>(this);
+			if constexpr (std::is_convertible_v<const ActorValueInfo*, const T*>) {
+				return static_cast<const ActorValueInfo*>(this);
 			}
 			break;
 		case FormType::CameraShot:
-			if constexpr (std::is_convertible<BGSCameraShot*, T*>::value) {
-				return static_cast<BGSCameraShot*>(this);
+			if constexpr (std::is_convertible_v<const BGSCameraShot*, const T*>) {
+				return static_cast<const BGSCameraShot*>(this);
 			}
 			break;
 		case FormType::CameraPath:
-			if constexpr (std::is_convertible<BGSCameraPath*, T*>::value) {
-				return static_cast<BGSCameraPath*>(this);
+			if constexpr (std::is_convertible_v<const BGSCameraPath*, const T*>) {
+				return static_cast<const BGSCameraPath*>(this);
 			}
 			break;
 		case FormType::VoiceType:
-			if constexpr (std::is_convertible<BGSVoiceType*, T*>::value) {
-				return static_cast<BGSVoiceType*>(this);
+			if constexpr (std::is_convertible_v<const BGSVoiceType*, const T*>) {
+				return static_cast<const BGSVoiceType*>(this);
 			}
 			break;
 		case FormType::MaterialType:
-			if constexpr (std::is_convertible<BGSMaterialType*, T*>::value) {
-				return static_cast<BGSMaterialType*>(this);
+			if constexpr (std::is_convertible_v<const BGSMaterialType*, const T*>) {
+				return static_cast<const BGSMaterialType*>(this);
 			}
 			break;
 		case FormType::Impact:
-			if constexpr (std::is_convertible<BGSImpactData*, T*>::value) {
-				return static_cast<BGSImpactData*>(this);
+			if constexpr (std::is_convertible_v<const BGSImpactData*, const T*>) {
+				return static_cast<const BGSImpactData*>(this);
 			}
 			break;
 		case FormType::ImpactDataSet:
-			if constexpr (std::is_convertible<BGSImpactDataSet*, T*>::value) {
-				return static_cast<BGSImpactDataSet*>(this);
+			if constexpr (std::is_convertible_v<const BGSImpactDataSet*, const T*>) {
+				return static_cast<const BGSImpactDataSet*>(this);
 			}
 			break;
 		case FormType::Armature:
-			if constexpr (std::is_convertible<TESObjectARMA*, T*>::value) {
-				return static_cast<TESObjectARMA*>(this);
+			if constexpr (std::is_convertible_v<const TESObjectARMA*, const T*>) {
+				return static_cast<const TESObjectARMA*>(this);
 			}
 			break;
 		case FormType::EncounterZone:
-			if constexpr (std::is_convertible<BGSEncounterZone*, T*>::value) {
-				return static_cast<BGSEncounterZone*>(this);
+			if constexpr (std::is_convertible_v<const BGSEncounterZone*, const T*>) {
+				return static_cast<const BGSEncounterZone*>(this);
 			}
 			break;
 		case FormType::Location:
-			if constexpr (std::is_convertible<BGSLocation*, T*>::value) {
-				return static_cast<BGSLocation*>(this);
+			if constexpr (std::is_convertible_v<const BGSLocation*, const T*>) {
+				return static_cast<const BGSLocation*>(this);
 			}
 			break;
 		case FormType::Message:
-			if constexpr (std::is_convertible<BGSMessage*, T*>::value) {
-				return static_cast<BGSMessage*>(this);
+			if constexpr (std::is_convertible_v<const BGSMessage*, const T*>) {
+				return static_cast<const BGSMessage*>(this);
 			}
 			break;
 		case FormType::Ragdoll:
-			if constexpr (std::is_convertible<BGSRagdoll*, T*>::value) {
-				return static_cast<BGSRagdoll*>(this);
+			if constexpr (std::is_convertible_v<const BGSRagdoll*, const T*>) {
+				return static_cast<const BGSRagdoll*>(this);
 			}
 			break;
 		case FormType::DefaultObject:
-			if constexpr (std::is_convertible<BGSDefaultObjectManager*, T*>::value) {
-				return static_cast<BGSDefaultObjectManager*>(this);
+			if constexpr (std::is_convertible_v<const BGSDefaultObjectManager*, const T*>) {
+				return static_cast<const BGSDefaultObjectManager*>(this);
 			}
 			break;
 		case FormType::LightingMaster:
-			if constexpr (std::is_convertible<BGSLightingTemplate*, T*>::value) {
-				return static_cast<BGSLightingTemplate*>(this);
+			if constexpr (std::is_convertible_v<const BGSLightingTemplate*, const T*>) {
+				return static_cast<const BGSLightingTemplate*>(this);
 			}
 			break;
 		case FormType::MusicType:
-			if constexpr (std::is_convertible<BGSMusicType*, T*>::value) {
-				return static_cast<BGSMusicType*>(this);
+			if constexpr (std::is_convertible_v<const BGSMusicType*, const T*>) {
+				return static_cast<const BGSMusicType*>(this);
 			}
 			break;
 		case FormType::Footstep:
-			if constexpr (std::is_convertible<BGSFootstep*, T*>::value) {
-				return static_cast<BGSFootstep*>(this);
+			if constexpr (std::is_convertible_v<const BGSFootstep*, const T*>) {
+				return static_cast<const BGSFootstep*>(this);
 			}
 			break;
 		case FormType::FootstepSet:
-			if constexpr (std::is_convertible<BGSFootstepSet*, T*>::value) {
-				return static_cast<BGSFootstepSet*>(this);
+			if constexpr (std::is_convertible_v<const BGSFootstepSet*, const T*>) {
+				return static_cast<const BGSFootstepSet*>(this);
 			}
 			break;
 		case FormType::StoryManagerBranchNode:
-			if constexpr (std::is_convertible<BGSStoryManagerBranchNode*, T*>::value) {
-				return static_cast<BGSStoryManagerBranchNode*>(this);
+			if constexpr (std::is_convertible_v<const BGSStoryManagerBranchNode*, const T*>) {
+				return static_cast<const BGSStoryManagerBranchNode*>(this);
 			}
 			break;
 		case FormType::StoryManagerQuestNode:
-			if constexpr (std::is_convertible<BGSStoryManagerQuestNode*, T*>::value) {
-				return static_cast<BGSStoryManagerQuestNode*>(this);
+			if constexpr (std::is_convertible_v<const BGSStoryManagerQuestNode*, const T*>) {
+				return static_cast<const BGSStoryManagerQuestNode*>(this);
 			}
 			break;
 		case FormType::StoryManagerEventNode:
-			if constexpr (std::is_convertible<BGSStoryManagerEventNode*, T*>::value) {
-				return static_cast<BGSStoryManagerEventNode*>(this);
+			if constexpr (std::is_convertible_v<const BGSStoryManagerEventNode*, const T*>) {
+				return static_cast<const BGSStoryManagerEventNode*>(this);
 			}
 			break;
 		case FormType::DialogueBranch:
-			if constexpr (std::is_convertible<BGSDialogueBranch*, T*>::value) {
-				return static_cast<BGSDialogueBranch*>(this);
+			if constexpr (std::is_convertible_v<const BGSDialogueBranch*, const T*>) {
+				return static_cast<const BGSDialogueBranch*>(this);
 			}
 			break;
 		case FormType::MusicTrack:
-			if constexpr (std::is_convertible<BGSMusicTrackFormWrapper*, T*>::value) {
-				return static_cast<BGSMusicTrackFormWrapper*>(this);
+			if constexpr (std::is_convertible_v<const BGSMusicTrackFormWrapper*, const T*>) {
+				return static_cast<const BGSMusicTrackFormWrapper*>(this);
 			}
 			break;
 		case FormType::WordOfPower:
-			if constexpr (std::is_convertible<TESWordOfPower*, T*>::value) {
-				return static_cast<TESWordOfPower*>(this);
+			if constexpr (std::is_convertible_v<const TESWordOfPower*, const T*>) {
+				return static_cast<const TESWordOfPower*>(this);
 			}
 			break;
 		case FormType::Shout:
-			if constexpr (std::is_convertible<TESShout*, T*>::value) {
-				return static_cast<TESShout*>(this);
+			if constexpr (std::is_convertible_v<const TESShout*, const T*>) {
+				return static_cast<const TESShout*>(this);
 			}
 			break;
 		case FormType::EquipSlot:
-			if constexpr (std::is_convertible<BGSEquipSlot*, T*>::value) {
-				return static_cast<BGSEquipSlot*>(this);
+			if constexpr (std::is_convertible_v<const BGSEquipSlot*, const T*>) {
+				return static_cast<const BGSEquipSlot*>(this);
 			}
 			break;
 		case FormType::Relationship:
-			if constexpr (std::is_convertible<BGSRelationship*, T*>::value) {
-				return static_cast<BGSRelationship*>(this);
+			if constexpr (std::is_convertible_v<const BGSRelationship*, const T*>) {
+				return static_cast<const BGSRelationship*>(this);
 			}
 			break;
 		case FormType::Scene:
-			if constexpr (std::is_convertible<BGSScene*, T*>::value) {
-				return static_cast<BGSScene*>(this);
+			if constexpr (std::is_convertible_v<const BGSScene*, const T*>) {
+				return static_cast<const BGSScene*>(this);
 			}
 			break;
 		case FormType::AssociationType:
-			if constexpr (std::is_convertible<BGSAssociationType*, T*>::value) {
-				return static_cast<BGSAssociationType*>(this);
+			if constexpr (std::is_convertible_v<const BGSAssociationType*, const T*>) {
+				return static_cast<const BGSAssociationType*>(this);
 			}
 			break;
 		case FormType::Outfit:
-			if constexpr (std::is_convertible<BGSOutfit*, T*>::value) {
-				return static_cast<BGSOutfit*>(this);
+			if constexpr (std::is_convertible_v<const BGSOutfit*, const T*>) {
+				return static_cast<const BGSOutfit*>(this);
 			}
 			break;
 		case FormType::ArtObject:
-			if constexpr (std::is_convertible<BGSArtObject*, T*>::value) {
-				return static_cast<BGSArtObject*>(this);
+			if constexpr (std::is_convertible_v<const BGSArtObject*, const T*>) {
+				return static_cast<const BGSArtObject*>(this);
 			}
 			break;
 		case FormType::MaterialObject:
-			if constexpr (std::is_convertible<BGSMaterialObject*, T*>::value) {
-				return static_cast<BGSMaterialObject*>(this);
+			if constexpr (std::is_convertible_v<const BGSMaterialObject*, const T*>) {
+				return static_cast<const BGSMaterialObject*>(this);
 			}
 			break;
 		case FormType::MovementType:
-			if constexpr (std::is_convertible<BGSMovementType*, T*>::value) {
-				return static_cast<BGSMovementType*>(this);
+			if constexpr (std::is_convertible_v<const BGSMovementType*, const T*>) {
+				return static_cast<const BGSMovementType*>(this);
 			}
 			break;
 		case FormType::SoundRecord:
-			if constexpr (std::is_convertible<BGSSoundDescriptorForm*, T*>::value) {
-				return static_cast<BGSSoundDescriptorForm*>(this);
+			if constexpr (std::is_convertible_v<const BGSSoundDescriptorForm*, const T*>) {
+				return static_cast<const BGSSoundDescriptorForm*>(this);
 			}
 			break;
 		case FormType::DualCastData:
-			if constexpr (std::is_convertible<BGSDualCastData*, T*>::value) {
-				return static_cast<BGSDualCastData*>(this);
+			if constexpr (std::is_convertible_v<const BGSDualCastData*, const T*>) {
+				return static_cast<const BGSDualCastData*>(this);
 			}
 			break;
 		case FormType::SoundCategory:
-			if constexpr (std::is_convertible<BGSSoundCategory*, T*>::value) {
-				return static_cast<BGSSoundCategory*>(this);
+			if constexpr (std::is_convertible_v<const BGSSoundCategory*, const T*>) {
+				return static_cast<const BGSSoundCategory*>(this);
 			}
 			break;
 		case FormType::SoundOutputModel:
-			if constexpr (std::is_convertible<BGSSoundOutput*, T*>::value) {
-				return static_cast<BGSSoundOutput*>(this);
+			if constexpr (std::is_convertible_v<const BGSSoundOutput*, const T*>) {
+				return static_cast<const BGSSoundOutput*>(this);
 			}
 			break;
 		case FormType::CollisionLayer:
-			if constexpr (std::is_convertible<BGSCollisionLayer*, T*>::value) {
-				return static_cast<BGSCollisionLayer*>(this);
+			if constexpr (std::is_convertible_v<const BGSCollisionLayer*, const T*>) {
+				return static_cast<const BGSCollisionLayer*>(this);
 			}
 			break;
 		case FormType::ColorForm:
-			if constexpr (std::is_convertible<BGSColorForm*, T*>::value) {
-				return static_cast<BGSColorForm*>(this);
+			if constexpr (std::is_convertible_v<const BGSColorForm*, const T*>) {
+				return static_cast<const BGSColorForm*>(this);
 			}
 			break;
 		case FormType::ReverbParam:
-			if constexpr (std::is_convertible<BGSReverbParameters*, T*>::value) {
-				return static_cast<BGSReverbParameters*>(this);
+			if constexpr (std::is_convertible_v<const BGSReverbParameters*, const T*>) {
+				return static_cast<const BGSReverbParameters*>(this);
 			}
 			break;
 		case FormType::LensFlare:
-			if constexpr (std::is_convertible<BGSLensFlare*, T*>::value) {
-				return static_cast<BGSLensFlare*>(this);
+			if constexpr (std::is_convertible_v<const BGSLensFlare*, const T*>) {
+				return static_cast<const BGSLensFlare*>(this);
 			}
 			break;
 		case FormType::VolumetricLighting:
-			if constexpr (std::is_convertible<BGSVolumetricLighting*, T*>::value) {
-				return static_cast<BGSVolumetricLighting*>(this);
+			if constexpr (std::is_convertible_v<const BGSVolumetricLighting*, const T*>) {
+				return static_cast<const BGSVolumetricLighting*>(this);
 			}
 			break;
 		}
 		return nullptr;
-	}
-
-
-	template <class T, typename std::enable_if_t<Impl::is_valid_as_expr<T>::value, int>>
-	constexpr const T* TESForm::As() const
-	{
-		return const_cast<TESForm*>(this)->As<T>();
 	}
 }
