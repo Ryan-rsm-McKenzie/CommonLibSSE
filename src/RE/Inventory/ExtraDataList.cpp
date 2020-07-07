@@ -226,11 +226,12 @@ namespace RE
 	{
 		auto xRef = GetByType<ExtraReferenceHandle>();
 		auto ref = xRef ? xRef->GetOriginalReference() : nullptr;
+		ExtraTextDisplayData* xText = nullptr;
 		if (ref && !ref->IsDeleted()) {
-			return ref->extraList.GetByType<ExtraTextDisplayData>();
-		} else {
-			return GetByType<ExtraTextDisplayData>();
+			auto xText = ref->extraList.GetByType<ExtraTextDisplayData>();
 		}
+
+		return xText ? xText : GetByType<ExtraTextDisplayData>();
 	}
 
 
