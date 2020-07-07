@@ -119,30 +119,31 @@ namespace RE
 	std::optional<double> InventoryEntryData::GetEnchantmentCharge() const
 	{
 		std::optional<double> result;
+		auto obj = GetObject();
+		auto ench = obj ? obj->As<TESEnchantableForm>() : nullptr;
+		if (ench && ench->formEnchanting && ench->amountofEnchantment != 0) {
+			result.emplace(100.0);
+		}
 
 		if (extraLists) {
-			auto obj = GetObject();
-			auto ench = obj ? obj->As<TESEnchantableForm>() : nullptr;
-			if (ench && ench->formEnchanting) {
-				result.emplace(100.0);
-			}
-
 			for (auto& xList : *extraLists) {
 				if (xList) {
 					auto xCharge = xList->GetByType<ExtraCharge>();
-					if (xCharge) {
-						auto xEnch = xList->GetByType<ExtraEnchantment>();
-						if (xEnch && xEnch->enchantment) {
+					auto xEnch = xList->GetByType<ExtraEnchantment>();
+					if (xEnch && xEnch->enchantment && xEnch->charge != 0) {
+						if (xCharge) {
 							result.emplace((static_cast<double>(xCharge->charge) /
-											   static_cast<double>(xEnch->charge)) *
-										   100.0);
-							break;
-						} else if (ench && ench->formEnchanting) {
-							result.emplace((static_cast<double>(xCharge->charge) /
-											   static_cast<double>(ench->amountofEnchantment)) *
-										   100.0);
-							break;
+												static_cast<double>(xEnch->charge)) *
+											100.0);
+						} else {
+							result.emplace(100.0);
 						}
+						break;
+					} else if (xCharge && ench && ench->formEnchanting && ench->amountofEnchantment != 0) {
+						result.emplace((static_cast<double>(xCharge->charge) /
+											static_cast<double>(ench->amountofEnchantment)) *
+										100.0);
+						break;
 					}
 				}
 			}
@@ -155,9 +156,15 @@ namespace RE
 	const char* InventoryEntryData::GetDisplayName()
 	{
 		const char* name = nullptr;
-		if (extraLists && !extraLists->empty()) {
-			name = extraLists->front()->GetDisplayName(object);
-		} else if (object) {
+		if (extraLists) {
+			for (auto& xList : *extraLists) {
+				if (xList) {
+					name = xList->GetDisplayName(object);
+				}
+			}
+		}
+
+		if ((!name || name[0] == '\0') && object) {
 			name = object->GetName();
 		}
 

@@ -225,15 +225,11 @@ namespace RE
 	ExtraTextDisplayData* ExtraDataList::GetExtraTextDisplayData()
 	{
 		auto xRef = GetByType<ExtraReferenceHandle>();
-		if (!xRef) {
-			return nullptr;
-		}
-
-		auto ref = xRef->GetOriginalReference();
-		if (!ref || !ref->IsDeleted()) {
-			return GetByType<ExtraTextDisplayData>();
+		auto ref = xRef ? xRef->GetOriginalReference() : nullptr;
+		if (ref && !ref->IsDeleted()) {
+			return ref->extraList.GetByType<ExtraTextDisplayData>();
 		} else {
-			return nullptr;
+			return GetByType<ExtraTextDisplayData>();
 		}
 	}
 

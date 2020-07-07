@@ -401,6 +401,7 @@ namespace RE
 		float							  GetPositionZ() const;
 		UInt32							  GetStealValue(const InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_useMult) const;
 		float							  GetWeight() const;
+		float							  GetWeightInContainer();
 		TESWorldSpace*					  GetWorldspace() const;
 		bool							  HasCollision() const;
 		bool							  HasKeyword(const BGSKeyword* a_keyword) const;

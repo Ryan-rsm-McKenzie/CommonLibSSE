@@ -233,22 +233,24 @@ namespace RE
 		std::optional<double> result;
 		auto obj = GetObjectReference();
 		auto ench = obj ? obj->As<TESEnchantableForm>() : nullptr;
-		if (ench && ench->formEnchanting) {
+		if (ench && ench->formEnchanting && ench->amountofEnchantment != 0) {
 			result.emplace(100.0);
 		}
 
 		auto xCharge = extraList.GetByType<ExtraCharge>();
-		if (xCharge) {
-			auto xEnch = extraList.GetByType<ExtraEnchantment>();
-			if (xEnch && xEnch->enchantment) {
+		auto xEnch = extraList.GetByType<ExtraEnchantment>();
+		if (xEnch && xEnch->enchantment && xEnch->charge != 0) {
+			if (xCharge) {
 				result.emplace((static_cast<double>(xCharge->charge) /
 								   static_cast<double>(xEnch->charge)) *
 							   100.0);
-			} else if (ench && ench->formEnchanting) {
-				result.emplace((static_cast<double>(xCharge->charge) /
-								   static_cast<double>(ench->amountofEnchantment)) *
-							   100.0);
+			} else {
+				result.emplace(100.0);
 			}
+		} else if (xCharge && ench && ench->formEnchanting && ench->amountofEnchantment != 0) {
+			result.emplace((static_cast<double>(xCharge->charge) /
+							   static_cast<double>(ench->amountofEnchantment)) *
+						   100.0);
 		}
 
 		return result;
@@ -477,6 +479,14 @@ namespace RE
 	{
 		auto obj = GetObjectReference();
 		return obj ? obj->GetWeight() : 0.0;
+	}
+
+
+	float TESObjectREFR::GetWeightInContainer()
+	{
+		using func_t = decltype(&Actor::GetWeightInContainer);
+		REL::Offset<func_t> func = REL::ID(19277);
+		return func(this);
 	}
 
 
