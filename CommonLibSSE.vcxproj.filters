@@ -3936,6 +3936,9 @@
     <ClCompile Include="src\RE\Events\BGSStoryEvent\ItemsPickpocketed.cpp">
       <Filter>src\RE\Events\BGSStoryEvent</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\Events\InputEvent\InputEvent.cpp">
+      <Filter>src\RE\Events\InputEvent</Filter>
+    </ClCompile>
     <ClCompile Include="src\RE\Events\InputEvent\ThumbstickEvent.cpp">
       <Filter>src\RE\Events\InputEvent</Filter>
     </ClCompile>

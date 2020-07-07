@@ -190,6 +190,8 @@ namespace RE
 
 		struct Data928
 		{
+		public:
+			// members
 			BSTArray<UnkValue> unk00;  // 00
 			BSTArray<UnkValue> unk18;  // 18
 			UInt64			   unk30;  // 30
@@ -201,8 +203,10 @@ namespace RE
 
 		struct PlayerSkills
 		{
+		public:
 			struct Data
 			{
+			public:
 				struct Skills
 				{
 					enum Skill : UInt32
@@ -233,6 +237,8 @@ namespace RE
 
 				struct SkillData
 				{
+				public:
+					// members
 					float level;		   // 0
 					float xp;			   // 4
 					float levelThreshold;  // 8
@@ -240,6 +246,7 @@ namespace RE
 				STATIC_ASSERT(sizeof(SkillData) == 0xC);
 
 
+				// members
 				float	  xp;							   // 000
 				float	  levelThreshold;				   // 004
 				SkillData skills[Skill::kTotal];		   // 008

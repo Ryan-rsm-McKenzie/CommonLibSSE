@@ -17,6 +17,10 @@ namespace RE
 	};
 
 
+	class ButtonEvent;
+	class IDEvent;
+
+
 	class InputEvent
 	{
 	public:
@@ -30,6 +34,12 @@ namespace RE
 
 		[[nodiscard]] constexpr INPUT_EVENT_TYPE GetEventType() const noexcept { return eventType; }
 		[[nodiscard]] constexpr INPUT_DEVICE	 GetDevice() const noexcept { return device; }
+
+		[[nodiscard]] ButtonEvent*		 AsButtonEvent();
+		[[nodiscard]] const ButtonEvent* AsButtonEvent() const;
+
+		[[nodiscard]] IDEvent*		 AsIDEvent();
+		[[nodiscard]] const IDEvent* AsIDEvent() const;
 
 
 		// members

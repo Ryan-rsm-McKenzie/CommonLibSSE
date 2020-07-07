@@ -39,11 +39,15 @@ namespace RE
 		assert(a_device < INPUT_DEVICE::kTotal);
 		assert(a_context < InputContextID::kTotal);
 
-		auto mappings = controlMap ? &controlMap[a_context]->deviceMappings[a_device] : nullptr;
+		auto mappings =
+			controlMap ?
+				std::addressof(controlMap[a_context]->deviceMappings[a_device]) :
+				nullptr;
 
 		if (mappings) {
+			BSFixedString eventID = a_eventID;
 			for (auto& mapping : *mappings) {
-				if (mapping.eventID == a_eventID) {
+				if (mapping.eventID == eventID) {
 					return mapping.inputKey;
 				}
 			}
@@ -58,7 +62,10 @@ namespace RE
 		assert(a_device < INPUT_DEVICE::kTotal);
 		assert(a_context < InputContextID::kTotal);
 
-		auto mappings = controlMap ? &controlMap[a_context]->deviceMappings[a_device] : nullptr;
+		auto mappings =
+			controlMap ?
+				std::addressof(controlMap[a_context]->deviceMappings[a_device]) :
+				nullptr;
 
 		if (mappings) {
 			for (auto& mapping : *mappings) {
