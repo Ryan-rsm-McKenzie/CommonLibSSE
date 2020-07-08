@@ -909,7 +909,6 @@ namespace RE
 		inline constexpr REL::ID DebugNotification(static_cast<std::uint64_t>(52050));
 		inline constexpr REL::ID LookupReferenceByHandle(static_cast<std::uint64_t>(12204));
 		inline constexpr REL::ID PlaySound(static_cast<std::uint64_t>(52054));
-		inline constexpr REL::ID RTDynamicCast(static_cast<std::uint64_t>(102238));
 		inline constexpr REL::ID TlsIndex(static_cast<std::uint64_t>(528600));
 	}
 }

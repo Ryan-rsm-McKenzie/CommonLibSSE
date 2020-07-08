@@ -12,18 +12,28 @@ namespace RE
 		class RVA
 		{
 		public:
-			RVA();
-			RVA(UInt32 a_rva);
+			using value_type = T;
+			using pointer = value_type*;
+			using reference = value_type&;
+
+			RVA() :
+				_rva(0)
+			{}
+
+			RVA(UInt32 a_rva) :
+				_rva(a_rva)
+			{}
+
 			~RVA() = default;
 
-			T*		 get() const;
-			T&		 operator*() const;
-			T*		 operator->() const;
-			T*		 operator[](std::ptrdiff_t a_id) const;
-			explicit operator bool() const;
+			[[nodiscard]] pointer	get() const { return is_good() ? REL::Offset<T*>(_rva).type() : nullptr; }
+			[[nodiscard]] reference operator*() const { return *get(); }
+			[[nodiscard]] pointer	operator->() const { return get(); }
+			[[nodiscard]] pointer	operator[](std::ptrdiff_t a_idx) const { return get() + a_idx; }
+			[[nodiscard]] explicit	operator bool() const noexcept { return is_good(); }
 
 		protected:
-			bool is_good() const;
+			[[nodiscard]] bool is_good() const noexcept { return _rva != 0; }
 
 
 			// members
@@ -32,62 +42,10 @@ namespace RE
 		STATIC_ASSERT(sizeof(RVA<void*>) == 0x4);
 
 
-		template <class T>
-		RVA<T>::RVA() :
-			_rva(0)
-		{}
-
-
-		template <class T>
-		RVA<T>::RVA(UInt32 a_rva) :
-			_rva(a_rva)
-		{}
-
-
-		template <class T>
-		T* RVA<T>::get() const
-		{
-			return is_good() ? REL::Offset<T*>(_rva).type() : nullptr;
-		}
-
-
-		template <class T>
-		T& RVA<T>::operator*() const
-		{
-			return *get();
-		}
-
-
-		template <class T>
-		T* RVA<T>::operator->() const
-		{
-			return get();
-		}
-
-
-		template <class T>
-		T* RVA<T>::operator[](std::ptrdiff_t a_idx) const
-		{
-			return get() + a_idx;
-		}
-
-
-		template <class T>
-		RVA<T>::operator bool() const
-		{
-			return is_good();
-		}
-
-
-		template <class T>
-		bool RVA<T>::is_good() const
-		{
-			return _rva != 0;
-		}
-
-
 		struct TypeDescriptor
 		{
+		public:
+			// members
 			type_info* typeInfo;  // 00
 			void*	   spare;	  // 08
 			const char name[1];	  // 10
@@ -97,6 +55,8 @@ namespace RE
 
 		struct PMD
 		{
+		public:
+			// members
 			SInt32 mDisp;  // 0
 			SInt32 pDisp;  // 4
 			SInt32 vDisp;  // 8
@@ -106,12 +66,14 @@ namespace RE
 
 		struct BaseClassArray
 		{
+		public:
 			enum class Attribute : UInt32
 			{
 				kNone = 0
 			};
 
 
+			// members
 			RVA<TypeDescriptor> typeDescriptor;		// 00
 			UInt32				numContainedBases;	// 04
 			PMD					pmd;				// 08
@@ -122,6 +84,7 @@ namespace RE
 
 		struct ClassHierarchyDescriptor
 		{
+		public:
 			enum class Attribute : UInt32
 			{
 				kNoInheritance = 0,
@@ -131,6 +94,7 @@ namespace RE
 			};
 
 
+			// members
 			UInt32				signature;		 // 00
 			Attribute			attributes;		 // 04
 			UInt32				numBaseClasses;	 // 08
@@ -141,6 +105,7 @@ namespace RE
 
 		struct CompleteObjectLocator
 		{
+		public:
 			enum class Signature : UInt32
 			{
 				kX86 = 0,
@@ -148,6 +113,7 @@ namespace RE
 			};
 
 
+			// members
 			Signature					  signature;		// 00
 			UInt32						  offset;			// 04
 			UInt32						  ctorDispOffset;	// 08
@@ -159,6 +125,7 @@ namespace RE
 
 		struct BaseClassDescriptor
 		{
+		public:
 			enum class Attribute : UInt32
 			{
 				kNone = 0,
@@ -172,6 +139,7 @@ namespace RE
 			};
 
 
+			// members
 			RVA<TypeDescriptor> typeDescriptor;		// 00
 			UInt32				numContainedBases;	// 04
 			PMD					pmd;				// 08
@@ -243,7 +211,7 @@ namespace RE
 	inline T RTDynamicCast(PVOID a_inptr, LONG a_vfDelta, PVOID a_srcType, PVOID a_targetType, BOOL a_isReference)
 	{
 		using func_t = decltype(&RTDynamicCast<T>);
-		REL::Offset<func_t> func(::RE::Offset::RTDynamicCast);
+		REL::Offset<func_t> func = REL::ID(102238);
 		return func(a_inptr, a_vfDelta, a_srcType, a_targetType, a_isReference);
 	}
 }
@@ -261,7 +229,7 @@ inline To skyrim_cast(const From* a_from)
 {
 	REL::Offset<PVOID> from(RE::SK_Impl::remove_cvpr_t<From>::RTTI);
 	REL::Offset<PVOID> to(RE::SK_Impl::remove_cvpr_t<To>::RTTI);
-	return RE::RTDynamicCast<To>((PVOID)a_from, 0, from.GetType(), to.GetType(), false);
+	return RE::RTDynamicCast<To>((PVOID)a_from, 0, from.type(), to.type(), false);
 }
 
 
@@ -278,7 +246,7 @@ inline To skyrim_cast(const From& a_from)  // throw(std::bad_cast)
 	try {
 		REL::Offset<PVOID> from(RE::SK_Impl::remove_cvpr_t<From>::RTTI);
 		REL::Offset<PVOID> to(RE::SK_Impl::remove_cvpr_t<To>::RTTI);
-		return RE::RTDynamicCast<To>((PVOID)std::addressof(a_from), 0, from.GetType(), to.GetType(), true);
+		return RE::RTDynamicCast<To>((PVOID)std::addressof(a_from), 0, from.type(), to.type(), true);
 	} catch (...) {
 		throw std::bad_cast();
 	}
