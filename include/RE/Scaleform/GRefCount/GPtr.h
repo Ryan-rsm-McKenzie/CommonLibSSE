@@ -201,6 +201,16 @@ namespace RE
 	};
 	//STATIC_ASSERT(sizeof(GPtr<void*>) == 0x8);
 
+	template <class T, class... Args>
+	[[nodiscard]] inline GPtr<T> make_gptr(Args&&... a_args)
+	{
+		auto ptr = GPtr<T>{ new T{ std::forward<Args>(a_args)... } };
+		if (ptr) {
+			ptr->Release();	 // ensure lifetime ends with smart pointer
+		}
+		return ptr;
+	}
+
 	template <class T1, class T2>
 	[[nodiscard]] constexpr bool operator==(const GPtr<T1>& a_lhs, const GPtr<T2>& a_rhs)
 	{
