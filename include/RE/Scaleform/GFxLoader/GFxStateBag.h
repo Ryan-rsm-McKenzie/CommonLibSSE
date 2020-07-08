@@ -22,27 +22,20 @@ namespace RE
 		virtual void	  GetStatesAddRef(GFxState** a_stateList, const GFxState::StateType* a_stateTypes, UInt32 a_count) const;  // 04 - GetStatesAddRef fills in a set of states with one call. Initial array a_stateList must contain null pointers
 
 		template <class T>
-		T* GetStateAddRef(GFxState::StateType a_state) const;
+		T* GetStateAddRef(GFxState::StateType a_state) const
+		{
+			return static_cast<T*>(GetStateAddRef(a_state));
+		}
 
 		GPtr<GFxState> GetState(GFxState::StateType a_stateType) const;
+
 		template <class T>
-		GPtr<T> GetState(GFxState::StateType a_stateType) const;
+		GPtr<T> GetState(GFxState::StateType a_stateType) const
+		{
+			GPtr<T> ptr(GetStateAddRef<T>(a_stateType));
+			ptr->Release();
+			return ptr;
+		}
 	};
 	STATIC_ASSERT(sizeof(GFxStateBag) == 0x8);
-
-
-	template <class T>
-	T* GFxStateBag::GetStateAddRef(GFxState::StateType a_state) const
-	{
-		return static_cast<T*>(GetStateAddRef(a_state));
-	}
-
-
-	template <class T>
-	GPtr<T> GFxStateBag::GetState(GFxState::StateType a_stateType) const
-	{
-		GPtr<T> ptr(GetStateAddRef<T>(a_stateType));
-		ptr->Release();
-		return ptr;
-	}
 }

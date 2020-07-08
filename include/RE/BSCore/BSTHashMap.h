@@ -46,19 +46,22 @@ namespace RE
 
 			BSTScatterTableEntry& operator=(const BSTScatterTableEntry& a_rhs)
 			{
-				value = a_rhs.value;
-				next = a_rhs.next;
+				if (this != std::addressof(a_rhs)) {
+					value = a_rhs.value;
+					next = a_rhs.next;
+				}
 				return *this;
 			}
 
 
 			BSTScatterTableEntry& operator=(BSTScatterTableEntry&& a_rhs)
 			{
-				value = std::move(a_rhs.value);
+				if (this != std::addressof(a_rhs)) {
+					value = std::move(a_rhs.value);
 
-				next = std::move(a_rhs.next);
-				a_rhs.next = 0;
-
+					next = std::move(a_rhs.next);
+					a_rhs.next = nullptr;
+				}
 				return *this;
 			}
 
@@ -119,16 +122,22 @@ namespace RE
 
 			iterator_base& operator=(const iterator_base& a_rhs)
 			{
-				assert(_end == a_rhs._end);
-				_entry = a_rhs._entry;
+				if (this != std::addressof(a_rhs)) {
+					assert(_end == a_rhs._end);
+					_entry = a_rhs._entry;
+				}
+				return *this;
 			}
 
 
 			iterator_base& operator=(iterator_base&& a_rhs)
 			{
-				assert(_end == a_rhs._end);
-				_entry = std::move(a_rhs._entry);
-				a_rhs._entry = a_rhs._end;
+				if (this != std::addressof(a_rhs)) {
+					assert(_end == a_rhs._end);
+					_entry = std::move(a_rhs._entry);
+					a_rhs._entry = a_rhs._end;
+				}
+				return *this;
 			}
 
 

@@ -84,12 +84,12 @@ namespace RE
 		auto inputManager = BSInputDeviceManager::GetSingleton();
 		auto gamepad = inputManager ? inputManager->IsGamepadEnabled() : false;
 		if (uiMovie && uiMovie->IsAvailable("_root.SetPlatform")) {
-			GFxValue args[2];
+			std::array<GFxValue, 2> args;
 			const double platform = gamepad ? 1.0 : 0.0;
 			args[0].SetNumber(platform);
 			const bool swapPS3 = false;
 			args[1].SetBoolean(swapPS3);
-			uiMovie->Invoke("_root.SetPlatform", nullptr, args, std::extent<decltype(args)>::value);
+			uiMovie->Invoke("_root.SetPlatform", nullptr, args.data(), args.size());
 		}
 
 		if (UpdateUsesCursor()) {
