@@ -2,6 +2,7 @@
 
 #include "SKSE/Impl/PCH.h"
 
+#include "RE/AI/AIFormulas.h"
 #include "RE/AI/AIProcess.h"
 #include "RE/AI/HighProcessData.h"
 #include "RE/AI/MiddleHighProcessData.h"
