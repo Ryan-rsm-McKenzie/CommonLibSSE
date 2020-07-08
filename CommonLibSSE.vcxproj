@@ -222,6 +222,7 @@
     <ClInclude Include="include\REL\Relocation.h" />
     <ClInclude Include="include\REL\SafeWrite.h" />
     <ClInclude Include="include\REL\Version.h" />
+    <ClInclude Include="include\RE\AI\AIFormulas.h" />
     <ClInclude Include="include\RE\AI\AIProcess.h" />
     <ClInclude Include="include\RE\AI\HighProcessData.h" />
     <ClInclude Include="include\RE\AI\MiddleHighProcessData.h" />
@@ -1434,6 +1435,7 @@
   <ItemGroup>
     <ClCompile Include="src\REL\Relocation.cpp" />
     <ClCompile Include="src\REL\SafeWrite.cpp" />
+    <ClCompile Include="src\RE\AI\AIFormulas.cpp" />
     <ClCompile Include="src\RE\AI\AIProcess.cpp" />
     <ClCompile Include="src\RE\AI\ProcessLists.cpp" />
     <ClCompile Include="src\RE\Animation\IAnimationGraphManagerHolder.cpp" />

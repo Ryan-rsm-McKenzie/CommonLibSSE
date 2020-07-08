@@ -98,19 +98,28 @@ namespace RE
 				kKP_3 = 0x51,
 				kKP_0 = 0x52,
 				kKP_Decimal = 0x53,
+
 				kF11 = 0x57,
 				kF12 = 0x58,
+
 				kKP_Enter = 0x9C,
 				kRightControl = 0x9D,
+
 				kKP_Divide = 0xB5,
+
 				kPrintScreen = 0xB7,
 				kRightAlt = 0xB8,
+
 				kPause = 0xC5,
+
 				kHome = 0xC7,
 				kUp = 0xC8,
 				kPageUp = 0xC9,
+
 				kLeft = 0xCB,
+
 				kRight = 0xCD,
+
 				kEnd = 0xCF,
 				kDown = 0xD0,
 				kPageDown = 0xD1,

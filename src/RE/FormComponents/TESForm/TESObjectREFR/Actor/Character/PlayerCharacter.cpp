@@ -20,14 +20,6 @@ namespace RE
 	}
 
 
-	UInt32 PlayerCharacter::GetPickpocketChance(float a_playerSkill, float a_targetSkill, UInt32 a_totalValue, float a_itemWeight, Actor* a_player, Actor* a_target, bool a_isDetected, TESForm* a_item)
-	{
-		using func_t = decltype(&PlayerCharacter::GetPickpocketChance);
-		REL::Offset<func_t> func(Offset::PlayerCharacter::GetPickpocketChance);
-		return func(a_playerSkill, a_targetSkill, a_totalValue, a_itemWeight, a_player, a_target, a_isDetected, a_item);
-	}
-
-
 	void PlayerCharacter::ActivatePickRef()
 	{
 		using func_t = decltype(&PlayerCharacter::ActivatePickRef);
@@ -36,11 +28,11 @@ namespace RE
 	}
 
 
-	bool PlayerCharacter::AttemptPickpocket(TESObjectREFR* a_target, InventoryEntryData* a_entry, SInt32 a_numItems, bool a_useMult)
+	bool PlayerCharacter::AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, SInt32 a_number, bool a_fromContainer)
 	{
 		using func_t = decltype(&PlayerCharacter::AttemptPickpocket);
-		REL::Offset<func_t> func(Offset::PlayerCharacter::AttemptPickpocket);
-		return func(this, a_target, a_entry, a_numItems, a_useMult);
+		REL::Offset<func_t> func = REL::ID(39568);
+		return func(this, a_containerRef, a_entry, a_number, a_fromContainer);
 	}
 
 

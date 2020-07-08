@@ -25,10 +25,12 @@ namespace RE
 				kRightThumb = 0x0080,
 				kLeftShoulder = 0x0100,
 				kRightShoulder = 0x0200,
+
 				kA = 0x1000,
 				kB = 0x2000,
 				kX = 0x4000,
 				kY = 0x8000,
+
 				kLeftTrigger = 0x0009,
 				kRightTrigger = 0x000A
 			};

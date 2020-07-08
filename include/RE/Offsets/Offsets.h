@@ -676,11 +676,9 @@ namespace RE
 
 
 			inline constexpr REL::ID ActivatePickRef(static_cast<std::uint64_t>(39471));
-			inline constexpr REL::ID AttemptPickpocket(static_cast<std::uint64_t>(39568));
 			inline constexpr REL::ID GetArmorValue(static_cast<std::uint64_t>(39175));
 			inline constexpr REL::ID GetDamage(static_cast<std::uint64_t>(39179));
 			inline constexpr REL::ID GetNumTints(static_cast<std::uint64_t>(39614));
-			inline constexpr REL::ID GetPickpocketChance(static_cast<std::uint64_t>(25822));
 			inline constexpr REL::ID GetTintMask(static_cast<std::uint64_t>(39612));
 			inline constexpr REL::ID PlayPickupEvent(static_cast<std::uint64_t>(39384));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(517014));

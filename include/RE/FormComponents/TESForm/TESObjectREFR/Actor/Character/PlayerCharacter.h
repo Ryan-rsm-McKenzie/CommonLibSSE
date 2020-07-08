@@ -274,10 +274,9 @@ namespace RE
 		virtual void   Unk_12E(void);													// 12E - { return 0; }
 
 		static PlayerCharacter* GetSingleton();
-		static UInt32			GetPickpocketChance(float a_playerSkill, float a_targetSkill, UInt32 a_totalValue, float a_itemWeight, Actor* a_player, Actor* a_target, bool a_isDetected, TESForm* a_item);
 
 		void					 ActivatePickRef();
-		bool					 AttemptPickpocket(TESObjectREFR* a_target, InventoryEntryData* a_entry, SInt32 a_numItems, bool a_useMult = true);
+		bool					 AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, SInt32 a_number, bool a_fromContainer = true);
 		NiPointer<Actor>		 GetActorDoingPlayerCommand() const;
 		float					 GetArmorValue(InventoryEntryData* a_form);
 		float					 GetDamage(InventoryEntryData* a_form);
