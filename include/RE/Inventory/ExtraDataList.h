@@ -164,7 +164,7 @@ namespace RE
 		bool RemoveByType(ExtraDataType a_type);
 
 		BSExtraData*		  Add(BSExtraData* a_toAdd);
-		ObjectRefHandle		  GetAshPileRefHandle();
+		ObjectRefHandle		  GetAshPileRef();
 		SInt32				  GetCount() const;
 		const char*			  GetDisplayName(TESBoundObject* a_baseObject);
 		BGSEncounterZone*	  GetEncounterZone();

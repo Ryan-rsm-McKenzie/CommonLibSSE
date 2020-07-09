@@ -396,6 +396,8 @@ namespace RE
 
 	struct DEFAULT_OBJECT_DATA
 	{
+	public:
+		// members
 		const char*			name;		  // 00
 		FormType			type;		  // 08
 		UInt8				pad09;		  // 09
@@ -437,10 +439,25 @@ namespace RE
 
 		TESForm* GetObject(DefaultObject a_object);
 		TESForm* GetObject(std::size_t a_idx);
+
 		template <class T>
-		T* GetObject(DefaultObject a_object);
+		T* GetObject(DefaultObject a_object)
+		{
+			return GetObject<T>(to_underlying(a_object));
+		}
+
 		template <class T>
-		T* GetObject(std::size_t a_idx);
+		T* GetObject(std::size_t a_idx)
+		{
+			auto obj = GetObject(a_idx);
+			if (obj) {
+				const bool isType = obj->Is(T::FORMTYPE);
+				assert(isType);
+				return isType ? static_cast<T*>(obj) : nullptr;
+			} else {
+				return nullptr;
+			}
+		}
 
 
 		// members
@@ -449,25 +466,4 @@ namespace RE
 		UInt32	 padCEC;							   // CEC
 	};
 	STATIC_ASSERT(sizeof(BGSDefaultObjectManager) == 0xCF0);
-
-
-	template <class T>
-	inline T* BGSDefaultObjectManager::GetObject(DefaultObject a_object)
-	{
-		return GetObject<T>(to_underlying(a_object));
-	}
-
-
-	template <class T>
-	inline T* BGSDefaultObjectManager::GetObject(std::size_t a_idx)
-	{
-		auto obj = GetObject(a_idx);
-		if (obj) {
-			const bool isType = obj->Is(T::FORMTYPE);
-			assert(isType);
-			return isType ? static_cast<T*>(obj) : nullptr;
-		} else {
-			return nullptr;
-		}
-	}
 }
