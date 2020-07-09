@@ -19,29 +19,11 @@ namespace RE
 	}
 
 
-	UInt32 TESFile::GetCurrentSubRecordSize() const
-	{
-		return actualChunkSize;
-	}
-
-
 	FormType TESFile::GetFormType()
 	{
 		using func_t = decltype(&TESFile::GetFormType);
 		REL::Offset<func_t> func(Offset::TESFile::GetFormType);
 		return func(this);
-	}
-
-
-	bool TESFile::IsLoaded() const
-	{
-		return true;
-	}
-
-
-	bool TESFile::IsLocalized() const
-	{
-		return (recordFlags & RecordFlag::kDelocalized) != RecordFlag::kNone;
 	}
 
 

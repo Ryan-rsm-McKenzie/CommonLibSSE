@@ -49,15 +49,14 @@ namespace RE
 		};
 
 
-		TESFile* Duplicate(UInt32 a_cacheSize = 0x4000);
-		UInt32	 GetCurrentSubRecordType();
-		UInt32	 GetCurrentSubRecordSize() const;
-		FormType GetFormType();
-		bool	 IsLoaded() const;
-		bool	 IsLocalized() const;
-		void	 ReadData(void* a_buf, UInt32 a_size);
-		bool	 Seek(UInt32 a_offset);
-		bool	 SeekNextSubrecord();
+		TESFile*		 Duplicate(UInt32 a_cacheSize = 0x4000);
+		UInt32			 GetCurrentSubRecordType();
+		constexpr UInt32 GetCurrentSubRecordSize() const noexcept { return actualChunkSize; }
+		FormType		 GetFormType();
+		constexpr bool	 IsLocalized() const noexcept { return (recordFlags & RecordFlag::kDelocalized) != RecordFlag::kNone; }
+		void			 ReadData(void* a_buf, UInt32 a_size);
+		bool			 Seek(UInt32 a_offset);
+		bool			 SeekNextSubrecord();
 
 
 		// members
