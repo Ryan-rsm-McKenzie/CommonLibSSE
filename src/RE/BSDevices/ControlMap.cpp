@@ -40,7 +40,7 @@ namespace RE
 		assert(a_context < InputContextID::kTotal);
 
 		auto mappings =
-			controlMap ?
+			controlMap[a_context] ?
 				std::addressof(controlMap[a_context]->deviceMappings[a_device]) :
 				nullptr;
 
