@@ -331,7 +331,7 @@ namespace RE
 		virtual void					Unk_95(void) override;																																															// 095
 		virtual void					Unk_96(void) override;																																															// 096
 		virtual void					SetParentCell(TESObjectCELL* a_cell) override;																																									// 098
-		virtual bool					IsDead(bool a_notEssential) const override;																																										// 099
+		virtual bool					IsDead(bool a_notEssential = true) const override;																																								// 099
 		virtual void					Unk_9C(void) override;																																															// 09C
 		virtual void					Unk_9D(void) override;																																															// 09D
 		virtual TESAmmo*				GetCurrentAmmo() const override;																																												// 09E
