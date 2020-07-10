@@ -380,6 +380,7 @@ namespace RE
 		bool							  GetEditorLocation(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_fallback);
 		std::optional<double>			  GetEnchantmentCharge() const;
 		TESFaction*						  GetFactionOwner();
+		ObjectRefHandle					  GetHandle();
 		InventoryItemMap				  GetInventory();
 		InventoryItemMap				  GetInventory(std::function<bool(TESBoundObject*)> a_filter);
 		SInt32							  GetInventoryCount();

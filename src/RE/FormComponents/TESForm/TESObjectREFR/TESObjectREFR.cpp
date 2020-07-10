@@ -53,7 +53,7 @@ namespace RE
 
 	ObjectRefHandle TESObjectREFR::CreateRefHandle()
 	{
-		return ObjectRefHandle(this);
+		return GetHandle();
 	}
 
 
@@ -268,6 +268,12 @@ namespace RE
 	}
 
 
+	ObjectRefHandle TESObjectREFR::GetHandle()
+	{
+		return ObjectRefHandle(this);
+	}
+
+
 	auto TESObjectREFR::GetInventory()
 		-> InventoryItemMap
 	{
@@ -463,7 +469,7 @@ namespace RE
 
 	UInt32 TESObjectREFR::GetStealValue(const InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_useMult) const
 	{
-		using func_t = decltype(&Actor::GetStealValue);
+		using func_t = decltype(&TESObjectREFR::GetStealValue);
 		REL::Offset<func_t> func(Offset::TESObjectREFR::GetStealValue);
 		return func(this, a_entryData, a_numItems, a_useMult);
 	}
@@ -478,7 +484,7 @@ namespace RE
 
 	float TESObjectREFR::GetWeightInContainer()
 	{
-		using func_t = decltype(&Actor::GetWeightInContainer);
+		using func_t = decltype(&TESObjectREFR::GetWeightInContainer);
 		REL::Offset<func_t> func = REL::ID(19277);
 		return func(this);
 	}
@@ -656,7 +662,7 @@ namespace RE
 		auto& position = a_node->world.translate;
 		NiPoint3 rotation;
 		a_node->world.rotate.ToEulerAnglesXYZ(rotation);
-		auto handle = a_target->CreateRefHandle();
+		auto handle = a_target->GetHandle();
 		MoveTo_Impl(handle, a_target->GetParentCell(), GetWorldspace(), position, rotation);
 		return true;
 	}

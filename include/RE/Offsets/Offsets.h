@@ -707,12 +707,6 @@ namespace RE
 		}
 
 
-		namespace REFR_LOCK
-		{
-			inline constexpr REL::ID GetLockLevel(static_cast<std::uint64_t>(12272));
-		}
-
-
 		namespace RunHandler
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263063));

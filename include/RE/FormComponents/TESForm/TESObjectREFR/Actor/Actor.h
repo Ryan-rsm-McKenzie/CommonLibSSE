@@ -505,6 +505,7 @@ namespace RE
 		InventoryEntryData*		  GetEquippedEntryData(bool a_leftHand) const;
 		TESForm*				  GetEquippedObject(bool a_leftHand) const;
 		SInt32					  GetGoldAmount();
+		ActorHandle				  GetHandle();
 		float					  GetHeight();
 		UInt16					  GetLevel() const;
 		TESRace*				  GetRace() const;
