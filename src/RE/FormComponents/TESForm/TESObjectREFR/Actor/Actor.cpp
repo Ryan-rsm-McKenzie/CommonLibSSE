@@ -454,11 +454,11 @@ namespace RE
 	}
 
 
-	void Actor::StealAlarm(TESObjectREFR* a_refItemOrContainer, TESForm* a_stolenItem, SInt32 a_numItems, SInt32 a_value, TESForm* a_owner, bool a_allowGetBackStolenItemPackage)
+	void Actor::StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, SInt32 a_num, SInt32 a_total, TESForm* a_owner, bool a_allowWarning)
 	{
 		using func_t = decltype(&Actor::StealAlarm);
-		REL::Offset<func_t> func(Offset::Actor::StealAlarm);
-		return func(this, a_refItemOrContainer, a_stolenItem, a_numItems, a_value, a_owner, a_allowGetBackStolenItemPackage);
+		REL::Offset<func_t> func = REL::ID(36427);
+		return func(this, a_ref, a_object, a_num, a_total, a_owner, a_allowWarning);
 	}
 
 

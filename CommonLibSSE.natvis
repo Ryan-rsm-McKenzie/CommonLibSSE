@@ -173,16 +173,27 @@
 		</Expand>
 	</Type>
 
+	<Type Name="RE::BSHandleRefObject">
+		<Intrinsic Name="IsValid" Expression="static_cast&lt;bool&gt;(_refCount &amp; (1 &lt;&lt; 10))" />
+		<DisplayString Condition="IsValid()">valid</DisplayString>
+		<DisplayString Condition="!IsValid()">invalid</DisplayString>
+		<Expand>
+			<Item Name="[refs]">_refCount &amp; 0x3FF</Item>
+			<Item Name="[ptr]" Condition="IsValid()">static_cast&lt;RE::TESObjectREFR*&gt;(this)</Item>
+		</Expand>
+	</Type>
+
 	<Type Name="RE::BSPointerHandle&lt;*&gt;">
-		<DisplayString Condition="_handle != 0">non-empty</DisplayString>
-		<DisplayString Condition="_handle == 0">empty</DisplayString>
+		<Intrinsic Name="Empty" Expression="_handle == 0" />
+		<DisplayString Condition="!Empty()">non-empty</DisplayString>
+		<DisplayString Condition="Empty()">empty</DisplayString>
 		<Expand>
 			<Item Name="[ptr]" 
 				  Condition="
 					REL::Module::_natvis != 0 &amp;&amp;
 					REL::IDDatabase::_natvis != nullptr &amp;&amp;
-					_handle != 0">
-				($T1&amp;)(*(*(char**)(((char*)(REL::Module::_natvis + REL::IDDatabase::_natvis[514478])) + (_handle &amp; 0xFFFFF) * 0x10 + 0x8) - 0x20))
+					!Empty()">
+				*(RE::NiPointer&lt;RE::BSHandleRefObject&gt;*)(((char*)(REL::Module::_natvis + REL::IDDatabase::_natvis[514478])) + (_handle &amp; 0xFFFFF) * 0x10 + 0x8)
 			</Item>
 		</Expand>
 	</Type>
@@ -437,200 +448,201 @@
 	</Type>
 
 	<Type Name="RE::BSExtraData">
-		<DisplayString>{{ type={*(RE::ExtraDataType*)((char*)*(*(size_t***)this + 1) + 1),en} }}</DisplayString>
+		<Intrinsic Name="GetType" Expression="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1)" />
+		<DisplayString>{{ type={(RE::ExtraDataType)GetType(),en} }}</DisplayString>
 		<Expand>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x00">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x01">(RE::ExtraHavok*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x02">(RE::ExtraCell3D*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x03">(RE::ExtraCellWaterType*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x04">(RE::ExtraRegionList*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x05">(RE::ExtraSeenData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x06">(RE::ExtraEditorID*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x07">(RE::ExtraCellMusicType*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x08">(RE::ExtraCellSkyRegion*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x09">(RE::ExtraProcessMiddleLow*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x0A">(RE::ExtraDetachTime*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x0B">(RE::ExtraPersistentCell*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x0C">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x0D">(RE::ExtraAction*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x0E">(RE::ExtraStartingPosition*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x0F">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x10">(RE::ExtraAnimGraphManager*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x11">(RE::ExtraBiped*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x12">(RE::ExtraUsedMarkers*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x13">(RE::ExtraDistantData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x14">(RE::ExtraRagDollData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x15">(RE::ExtraContainerChanges*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x16">(RE::ExtraWorn*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x17">(RE::ExtraWornLeft*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x18">(RE::ExtraPackageStartLocation*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x19">(RE::ExtraPackage*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x1A">(RE::ExtraTresPassPackage*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x1B">(RE::ExtraRunOncePacks*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x1C">(RE::ExtraReferenceHandle*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x1D">(RE::ExtraFollower*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x1E">(RE::ExtraLevCreaModifier*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x1F">(RE::ExtraGhost*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x20">(RE::ExtraOriginalReference*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x21">(RE::ExtraOwnership*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x22">(RE::ExtraGlobal*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x23">(RE::ExtraRank*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x24">(RE::ExtraCount*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x25">(RE::ExtraHealth*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x26">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x27">(RE::ExtraTimeLeft*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x28">(RE::ExtraCharge*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x29">(RE::ExtraLight*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x2A">(RE::ExtraLock*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x2B">(RE::ExtraTeleport*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x2C">(RE::ExtraMapMarker*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x2D">(RE::ExtraLeveledCreature*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x2E">(RE::ExtraLeveledItem*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x2F">(RE::ExtraScale*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x30">(RE::ExtraMissingLinkedRefIDs*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x31">(RE::ExtraMagicCaster*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x32">(RE::NonActorMagicTarget*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x33">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x34">(RE::ExtraPlayerCrimeList*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x35">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x36">(RE::ExtraEnableStateParent*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x37">(RE::ExtraEnableStateChildren*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x38">(RE::ExtraItemDropper*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x39">(RE::ExtraDroppedItemList*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x3A">(RE::ExtraRandomTeleportMarker*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x3B">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x3C">(RE::ExtraSavedHavokData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x3D">(RE::ExtraCannotWear*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x3E">(RE::ExtraPoison*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x3F">(RE::ExtraMagicLight*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x40">(RE::ExtraLastFinishedSequence*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x41">(RE::ExtraSavedAnimation*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x42">(RE::ExtraNorthRotation*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x43">(RE::ExtraSpawnContainer*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x44">(RE::ExtraFriendHits*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x45">(RE::ExtraHeadingTarget*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x46">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x47">(RE::ExtraRefractionProperty*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x48">(RE::ExtraStartingWorldOrCell*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x49">(RE::ExtraHotkey*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x4A">(RE::ExtraEditorRef3DData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x4B">(RE::ExtraEditorRefMoveData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x4C">(RE::ExtraInfoGeneralTopic*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x4D">(RE::ExtraHasNoRumors*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x4E">(RE::ExtraSound*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x4F">(RE::ExtraTerminalState*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x50">(RE::ExtraLinkedRef*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x51">(RE::ExtraLinkedRefChildren*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x52">(RE::ExtraActivateRef*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x53">(RE::ExtraActivateRefChildren*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x54">(RE::ExtraCanTalkToPlayer*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x55">(RE::ExtraObjectHealth*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x56">(RE::ExtraCellImageSpace*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x57">(RE::ExtraNavMeshPortal*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x58">(RE::ExtraModelSwap*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x59">(RE::ExtraRadius*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x5A">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x5B">(RE::ExtraFactionChanges*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x5C">(RE::ExtraDismemberedLimbs*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x5D">(RE::ExtraActorCause*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x5E">(RE::ExtraMultiBound*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x5F">(RE::MultiBoundMarkerData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x60">(RE::ExtraMultiBoundRef*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x61">(RE::ExtraReflectedRefs*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x62">(RE::ExtraReflectorRefs*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x63">(RE::ExtraEmittanceSource*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x64">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x65">(RE::ExtraCombatStyle*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x66">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x67">(RE::ExtraPrimitive*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x68">(RE::ExtraOpenCloseActivateRef*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x69">(RE::ExtraAnimNoteReceiver*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x6A">(RE::ExtraAmmo*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x6B">(RE::ExtraPatrolRefData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x6C">(RE::ExtraPackageData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x6D">(RE::ExtraOcclusionShape*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x6E">(RE::ExtraCollisionData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x6F">(RE::ExtraSayTopicInfoOnceADay*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x70">(RE::ExtraEncounterZone*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x71">(RE::ExtraSayToTopicInfo*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x72">(RE::ExtraOcclusionPlaneRefData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x73">(RE::ExtraPortalRefData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x74">(RE::ExtraPortal*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x75">(RE::ExtraRoom*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x76">(RE::ExtraHealthPerc*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x77">(RE::ExtraRoomRefData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x78">(RE::ExtraGuardedRefData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x79">(RE::ExtraCreatureAwakeSound*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x7A">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x7B">(RE::ExtraHorse*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x7C">(RE::ExtraIgnoredBySandbox*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x7D">(RE::ExtraCellAcousticSpace*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x7E">(RE::ExtraReservedMarkers*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x7F">(RE::ExtraWeaponIdleSound*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x80">(RE::ExtraWaterLightRefs*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x81">(RE::ExtraLitWaterRefs*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x82">(RE::ExtraWeaponAttackSound*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x83">(RE::ExtraActivateLoopSound*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x84">(RE::ExtraPatrolRefInUseData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x85">(RE::ExtraAshPileRef*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x86">(RE::ExtraCreatureMovementSound*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x87">(RE::ExtraFollowerSwimBreadcrumbs*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x88">(RE::ExtraAliasInstanceArray*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x89">(RE::ExtraLocation*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x8A">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x8B">(RE::ExtraLocationRefType*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x8C">(RE::ExtraPromotedRef*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x8D">(RE::ExtraAnimationSequencer*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x8E">(RE::ExtraOutfitItem*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x8F">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x90">(RE::ExtraLeveledItemBase*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x91">(RE::ExtraLightData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x92">(RE::ExtraSceneData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x93">(RE::ExtraBadPosition*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x94">(RE::ExtraHeadTrackingWeight*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x95">(RE::ExtraFromAlias*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x96">(RE::ExtraShouldWear*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x97">(RE::ExtraFavorCost*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x98">(RE::ExtraAttachedArrows3D*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x99">(RE::ExtraTextDisplayData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x9A">(RE::ExtraAlphaCutoff*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x9B">(RE::ExtraEnchantment*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x9C">(RE::ExtraSoul*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x9D">(RE::ExtraForcedTarget*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x9E">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0x9F">(RE::ExtraUniqueID*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xA0">(RE::ExtraFlags*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xA1">(RE::ExtraRefrPath*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xA2">(RE::ExtraDecalGroup*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xA3">(RE::ExtraLockList*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xA4">(RE::ExtraForcedLandingMarker*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xA5">(RE::ExtraLargeRefOwnerCells*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xA6">(RE::ExtraCellWaterEnvMap*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xA7">(RE::ExtraCellGrassData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xA8">(RE::ExtraTeleportName*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xA9">(RE::ExtraInteraction*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xAA">(RE::ExtraWaterData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xAB">(RE::ExtraWaterCurrentZoneData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xAC">(RE::ExtraAttachRef*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xAD">(RE::ExtraAttachRefChildren*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xAE">(RE::ExtraGroupConstraint*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xAF">(RE::ExtraScriptedAnimDependence*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xB0">(RE::ExtraCachedScale*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xB1">(RE::ExtraRaceData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xB2">(RE::ExtraGIDBuffer*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xB3">(RE::ExtraMissingRefIDs*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xB4">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xB5">(RE::ExtraResourcesPreload*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xB6">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xB7">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xB8">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xB9">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xBA">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xBB">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xBC">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xBD">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xBE">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
-			<Item Name="[downcast]" Condition="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1) == 0xBF">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x00">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x01">(RE::ExtraHavok*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x02">(RE::ExtraCell3D*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x03">(RE::ExtraCellWaterType*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x04">(RE::ExtraRegionList*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x05">(RE::ExtraSeenData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x06">(RE::ExtraEditorID*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x07">(RE::ExtraCellMusicType*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x08">(RE::ExtraCellSkyRegion*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x09">(RE::ExtraProcessMiddleLow*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x0A">(RE::ExtraDetachTime*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x0B">(RE::ExtraPersistentCell*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x0C">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x0D">(RE::ExtraAction*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x0E">(RE::ExtraStartingPosition*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x0F">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x10">(RE::ExtraAnimGraphManager*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x11">(RE::ExtraBiped*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x12">(RE::ExtraUsedMarkers*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x13">(RE::ExtraDistantData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x14">(RE::ExtraRagDollData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x15">(RE::ExtraContainerChanges*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x16">(RE::ExtraWorn*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x17">(RE::ExtraWornLeft*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x18">(RE::ExtraPackageStartLocation*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x19">(RE::ExtraPackage*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x1A">(RE::ExtraTresPassPackage*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x1B">(RE::ExtraRunOncePacks*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x1C">(RE::ExtraReferenceHandle*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x1D">(RE::ExtraFollower*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x1E">(RE::ExtraLevCreaModifier*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x1F">(RE::ExtraGhost*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x20">(RE::ExtraOriginalReference*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x21">(RE::ExtraOwnership*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x22">(RE::ExtraGlobal*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x23">(RE::ExtraRank*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x24">(RE::ExtraCount*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x25">(RE::ExtraHealth*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x26">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x27">(RE::ExtraTimeLeft*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x28">(RE::ExtraCharge*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x29">(RE::ExtraLight*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x2A">(RE::ExtraLock*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x2B">(RE::ExtraTeleport*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x2C">(RE::ExtraMapMarker*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x2D">(RE::ExtraLeveledCreature*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x2E">(RE::ExtraLeveledItem*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x2F">(RE::ExtraScale*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x30">(RE::ExtraMissingLinkedRefIDs*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x31">(RE::ExtraMagicCaster*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x32">(RE::NonActorMagicTarget*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x33">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x34">(RE::ExtraPlayerCrimeList*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x35">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x36">(RE::ExtraEnableStateParent*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x37">(RE::ExtraEnableStateChildren*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x38">(RE::ExtraItemDropper*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x39">(RE::ExtraDroppedItemList*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x3A">(RE::ExtraRandomTeleportMarker*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x3B">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x3C">(RE::ExtraSavedHavokData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x3D">(RE::ExtraCannotWear*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x3E">(RE::ExtraPoison*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x3F">(RE::ExtraMagicLight*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x40">(RE::ExtraLastFinishedSequence*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x41">(RE::ExtraSavedAnimation*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x42">(RE::ExtraNorthRotation*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x43">(RE::ExtraSpawnContainer*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x44">(RE::ExtraFriendHits*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x45">(RE::ExtraHeadingTarget*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x46">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x47">(RE::ExtraRefractionProperty*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x48">(RE::ExtraStartingWorldOrCell*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x49">(RE::ExtraHotkey*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x4A">(RE::ExtraEditorRef3DData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x4B">(RE::ExtraEditorRefMoveData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x4C">(RE::ExtraInfoGeneralTopic*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x4D">(RE::ExtraHasNoRumors*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x4E">(RE::ExtraSound*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x4F">(RE::ExtraTerminalState*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x50">(RE::ExtraLinkedRef*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x51">(RE::ExtraLinkedRefChildren*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x52">(RE::ExtraActivateRef*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x53">(RE::ExtraActivateRefChildren*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x54">(RE::ExtraCanTalkToPlayer*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x55">(RE::ExtraObjectHealth*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x56">(RE::ExtraCellImageSpace*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x57">(RE::ExtraNavMeshPortal*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x58">(RE::ExtraModelSwap*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x59">(RE::ExtraRadius*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x5A">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x5B">(RE::ExtraFactionChanges*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x5C">(RE::ExtraDismemberedLimbs*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x5D">(RE::ExtraActorCause*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x5E">(RE::ExtraMultiBound*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x5F">(RE::MultiBoundMarkerData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x60">(RE::ExtraMultiBoundRef*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x61">(RE::ExtraReflectedRefs*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x62">(RE::ExtraReflectorRefs*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x63">(RE::ExtraEmittanceSource*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x64">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x65">(RE::ExtraCombatStyle*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x66">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x67">(RE::ExtraPrimitive*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x68">(RE::ExtraOpenCloseActivateRef*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x69">(RE::ExtraAnimNoteReceiver*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x6A">(RE::ExtraAmmo*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x6B">(RE::ExtraPatrolRefData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x6C">(RE::ExtraPackageData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x6D">(RE::ExtraOcclusionShape*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x6E">(RE::ExtraCollisionData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x6F">(RE::ExtraSayTopicInfoOnceADay*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x70">(RE::ExtraEncounterZone*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x71">(RE::ExtraSayToTopicInfo*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x72">(RE::ExtraOcclusionPlaneRefData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x73">(RE::ExtraPortalRefData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x74">(RE::ExtraPortal*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x75">(RE::ExtraRoom*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x76">(RE::ExtraHealthPerc*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x77">(RE::ExtraRoomRefData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x78">(RE::ExtraGuardedRefData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x79">(RE::ExtraCreatureAwakeSound*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x7A">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x7B">(RE::ExtraHorse*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x7C">(RE::ExtraIgnoredBySandbox*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x7D">(RE::ExtraCellAcousticSpace*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x7E">(RE::ExtraReservedMarkers*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x7F">(RE::ExtraWeaponIdleSound*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x80">(RE::ExtraWaterLightRefs*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x81">(RE::ExtraLitWaterRefs*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x82">(RE::ExtraWeaponAttackSound*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x83">(RE::ExtraActivateLoopSound*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x84">(RE::ExtraPatrolRefInUseData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x85">(RE::ExtraAshPileRef*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x86">(RE::ExtraCreatureMovementSound*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x87">(RE::ExtraFollowerSwimBreadcrumbs*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x88">(RE::ExtraAliasInstanceArray*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x89">(RE::ExtraLocation*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x8A">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x8B">(RE::ExtraLocationRefType*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x8C">(RE::ExtraPromotedRef*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x8D">(RE::ExtraAnimationSequencer*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x8E">(RE::ExtraOutfitItem*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x8F">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x90">(RE::ExtraLeveledItemBase*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x91">(RE::ExtraLightData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x92">(RE::ExtraSceneData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x93">(RE::ExtraBadPosition*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x94">(RE::ExtraHeadTrackingWeight*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x95">(RE::ExtraFromAlias*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x96">(RE::ExtraShouldWear*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x97">(RE::ExtraFavorCost*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x98">(RE::ExtraAttachedArrows3D*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x99">(RE::ExtraTextDisplayData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x9A">(RE::ExtraAlphaCutoff*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x9B">(RE::ExtraEnchantment*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x9C">(RE::ExtraSoul*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x9D">(RE::ExtraForcedTarget*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x9E">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0x9F">(RE::ExtraUniqueID*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xA0">(RE::ExtraFlags*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xA1">(RE::ExtraRefrPath*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xA2">(RE::ExtraDecalGroup*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xA3">(RE::ExtraLockList*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xA4">(RE::ExtraForcedLandingMarker*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xA5">(RE::ExtraLargeRefOwnerCells*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xA6">(RE::ExtraCellWaterEnvMap*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xA7">(RE::ExtraCellGrassData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xA8">(RE::ExtraTeleportName*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xA9">(RE::ExtraInteraction*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xAA">(RE::ExtraWaterData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xAB">(RE::ExtraWaterCurrentZoneData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xAC">(RE::ExtraAttachRef*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xAD">(RE::ExtraAttachRefChildren*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xAE">(RE::ExtraGroupConstraint*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xAF">(RE::ExtraScriptedAnimDependence*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xB0">(RE::ExtraCachedScale*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xB1">(RE::ExtraRaceData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xB2">(RE::ExtraGIDBuffer*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xB3">(RE::ExtraMissingRefIDs*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xB4">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xB5">(RE::ExtraResourcesPreload*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xB6">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xB7">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xB8">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xB9">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xBA">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xBB">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xBC">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xBD">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xBE">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
+			<Item Name="[downcast]" Condition="GetType() == 0xBF">(RE::BSExtraData*)this,view(CastBSExtraData)</Item>
 			<LinkedListItems ExcludeView="norecurs">
 				<HeadPointer>this</HeadPointer>
 				<NextPointer>next</NextPointer>
@@ -640,6 +652,7 @@
 	</Type>
 
 	<Type Name="RE::BSExtraData" IncludeView="CastBSExtraData">
-		<DisplayString>{{ type={*(RE::ExtraDataType*)((char*)*(*(size_t***)this + 1) + 1),en} }}</DisplayString>
+		<Intrinsic Name="GetType" Expression="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1)" />
+		<DisplayString>{{ type={(RE::ExtraDataType)GetType(),en} }}</DisplayString>
 	</Type>
 </AutoVisualizer>
