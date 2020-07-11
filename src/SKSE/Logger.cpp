@@ -13,13 +13,19 @@ namespace SKSE
 		wchar_t* pathBuffer;
 		auto result = SHGetKnownFolderPath(a_referenceID, KNOWN_FOLDER_FLAG::KF_FLAG_DEFAULT, nullptr, &pathBuffer);
 		std::unique_ptr<wchar_t[], decltype(&CoTaskMemFree)> path(pathBuffer, CoTaskMemFree);
-		if (result != S_OK) {
+		if (!path || result != S_OK) {
 			return false;
 		}
 
-		auto fileName = a_fileName.native();
-		fileName.insert(0, path.get());
-		std::filesystem::path filePath(std::move(fileName));
+		std::wstring_view prefix(path.get());
+		const auto& postfix = a_fileName.native();
+		std::wstring full;
+		full.reserve(prefix.length() + 1 + postfix.length());
+		full += prefix;
+		full += L'\\';
+		full += postfix;
+
+		std::filesystem::path filePath(std::move(full));
 		auto parentPath = filePath.parent_path();
 		std::error_code err;
 		std::filesystem::create_directories(parentPath, err);
