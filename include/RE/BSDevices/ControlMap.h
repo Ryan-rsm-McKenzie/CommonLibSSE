@@ -72,20 +72,20 @@ namespace RE
 		static ControlMap* GetSingleton();
 
 		SInt8			 AllowTextInput(bool a_allow);
-		bool			 AreControlsEnabled(UEFlag a_flags) const;
+		constexpr bool	 AreControlsEnabled(UEFlag a_flags) const noexcept { return (enabledControls & a_flags) == a_flags; }
 		UInt32			 GetMappedKey(const std::string_view& a_eventID, INPUT_DEVICE a_device, InputContextID a_context = InputContextID::kGameplay) const;
 		std::string_view GetUserEventName(UInt32 a_buttonID, INPUT_DEVICE a_device, InputContextID a_context = InputContextID::kGameplay) const;
-		bool			 IsActivateControlsEnabled() const;
-		bool			 IsConsoleControlsEnabled() const;
-		bool			 IsFightingControlsEnabled() const;
-		bool			 IsLookingControlsEnabled() const;
-		bool			 IsMenuControlsEnabled() const;
-		bool			 IsMainFourControlsEnabled() const;
-		bool			 IsMovementControlsEnabled() const;
-		bool			 IsPOVSwitchControlsEnabled() const;
-		bool			 IsSneakingControlsEnabled() const;
-		bool			 IsVATSControlsEnabled() const;
-		bool			 IsWheelZoomControlsEnabled() const;
+		constexpr bool	 IsActivateControlsEnabled() const noexcept { return (enabledControls & UEFlag::kActivate) != UEFlag::kNone; }
+		constexpr bool	 IsConsoleControlsEnabled() const noexcept { return (enabledControls & UEFlag::kConsole) != UEFlag::kNone; }
+		constexpr bool	 IsFightingControlsEnabled() const noexcept { return (enabledControls & UEFlag::kFighting) != UEFlag::kNone; }
+		constexpr bool	 IsLookingControlsEnabled() const noexcept { return (enabledControls & UEFlag::kLooking) != UEFlag::kNone; }
+		constexpr bool	 IsMenuControlsEnabled() const noexcept { return (enabledControls & UEFlag::kMenu) != UEFlag::kNone; }
+		constexpr bool	 IsMainFourControlsEnabled() const noexcept { return (enabledControls & UEFlag::kMainFour) != UEFlag::kNone; }
+		constexpr bool	 IsMovementControlsEnabled() const noexcept { return (enabledControls & UEFlag::kMovement) != UEFlag::kNone; }
+		constexpr bool	 IsPOVSwitchControlsEnabled() const noexcept { return (enabledControls & UEFlag::kPOVSwitch) != UEFlag::kNone; }
+		constexpr bool	 IsSneakingControlsEnabled() const noexcept { return (enabledControls & UEFlag::kSneaking) != UEFlag::kNone; }
+		constexpr bool	 IsVATSControlsEnabled() const noexcept { return (enabledControls & UEFlag::kVATS) != UEFlag::kNone; }
+		constexpr bool	 IsWheelZoomControlsEnabled() const noexcept { return (enabledControls & UEFlag::kWheelZoom) != UEFlag::kNone; }
 		void			 ToggleControls(UEFlag a_flags, bool a_enable);
 
 

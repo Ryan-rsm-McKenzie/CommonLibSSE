@@ -91,16 +91,16 @@
     <IncludePath>$(INCLUDE);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <VcpkgUserTriplet>$(VcpkgPlatformTarget)-$(VcpkgOSTarget)-custom</VcpkgUserTriplet>
+    <VcpkgTriplet>$(VcpkgUserTriplet)-custom</VcpkgTriplet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <VcpkgUserTriplet>$(VcpkgPlatformTarget)-$(VcpkgOSTarget)-custom</VcpkgUserTriplet>
+    <VcpkgTriplet>$(VcpkgUserTriplet)-custom</VcpkgTriplet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <VcpkgUserTriplet>$(VcpkgPlatformTarget)-$(VcpkgOSTarget)-custom</VcpkgUserTriplet>
+    <VcpkgTriplet>$(VcpkgUserTriplet)-custom</VcpkgTriplet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <VcpkgUserTriplet>$(VcpkgPlatformTarget)-$(VcpkgOSTarget)-custom</VcpkgUserTriplet>
+    <VcpkgTriplet>$(VcpkgUserTriplet)-custom</VcpkgTriplet>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

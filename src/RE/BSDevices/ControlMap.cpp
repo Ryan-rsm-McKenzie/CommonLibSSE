@@ -28,12 +28,6 @@ namespace RE
 	}
 
 
-	bool ControlMap::AreControlsEnabled(UEFlag a_flags) const
-	{
-		return (enabledControls & a_flags) == a_flags;
-	}
-
-
 	UInt32 ControlMap::GetMappedKey(const std::string_view& a_eventID, INPUT_DEVICE a_device, InputContextID a_context) const
 	{
 		assert(a_device < INPUT_DEVICE::kTotal);
@@ -63,85 +57,25 @@ namespace RE
 		assert(a_context < InputContextID::kTotal);
 
 		auto mappings =
-			controlMap ?
+			controlMap[a_context] ?
 				std::addressof(controlMap[a_context]->deviceMappings[a_device]) :
 				nullptr;
 
 		if (mappings) {
-			for (auto& mapping : *mappings) {
-				if (mapping.inputKey == a_buttonID) {
-					return mapping.eventID;
-				}
-			}
+			UserEventMapping tmp{};
+			tmp.inputKey = a_buttonID;
+			auto range = std::equal_range(
+				mappings->begin(),
+				mappings->end(),
+				tmp,
+				[](auto&& a_lhs, auto&& a_rhs) {
+					return a_lhs.inputKey < a_rhs.inputKey;
+				});
+
+			return std::distance(range.first, range.second) == 1 ? range.first->eventID : "";
+		} else {
+			return "";
 		}
-
-		return "";
-	}
-
-
-	bool ControlMap::IsActivateControlsEnabled() const
-	{
-		return (enabledControls & UEFlag::kActivate) != UEFlag::kNone;
-	}
-
-
-	bool ControlMap::IsConsoleControlsEnabled() const
-	{
-		return (enabledControls & UEFlag::kConsole) != UEFlag::kNone;
-	}
-
-
-	bool ControlMap::IsFightingControlsEnabled() const
-	{
-		return (enabledControls & UEFlag::kFighting) != UEFlag::kNone;
-	}
-
-
-	bool ControlMap::IsLookingControlsEnabled() const
-	{
-		return (enabledControls & UEFlag::kLooking) != UEFlag::kNone;
-	}
-
-
-	bool ControlMap::IsMenuControlsEnabled() const
-	{
-		return (enabledControls & UEFlag::kMenu) != UEFlag::kNone;
-	}
-
-
-	bool ControlMap::IsMainFourControlsEnabled() const
-	{
-		return (enabledControls & UEFlag::kMainFour) != UEFlag::kNone;
-	}
-
-
-	bool ControlMap::IsMovementControlsEnabled() const
-	{
-		return (enabledControls & UEFlag::kMovement) != UEFlag::kNone;
-	}
-
-
-	bool ControlMap::IsPOVSwitchControlsEnabled() const
-	{
-		return (enabledControls & UEFlag::kPOVSwitch) != UEFlag::kNone;
-	}
-
-
-	bool ControlMap::IsSneakingControlsEnabled() const
-	{
-		return (enabledControls & UEFlag::kSneaking) != UEFlag::kNone;
-	}
-
-
-	bool ControlMap::IsVATSControlsEnabled() const
-	{
-		return (enabledControls & UEFlag::kVATS) != UEFlag::kNone;
-	}
-
-
-	bool ControlMap::IsWheelZoomControlsEnabled() const
-	{
-		return (enabledControls & UEFlag::kWheelZoom) != UEFlag::kNone;
 	}
 
 
