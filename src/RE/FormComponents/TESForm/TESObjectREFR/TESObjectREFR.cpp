@@ -292,8 +292,12 @@ namespace RE
 		if (invChanges && invChanges->entryList) {
 			for (auto& entry : *invChanges->entryList) {
 				if (entry && entry->object && a_filter(entry->object)) {
-					auto mapped = std::make_pair(entry->countDelta, std::make_unique<InventoryEntryData>(*entry));
-					auto it = results.emplace(entry->object, std::move(mapped));
+					[[maybe_unused]] auto it =
+						results.emplace(
+							entry->object,
+							std::make_pair(
+								entry->countDelta,
+								std::make_unique<InventoryEntryData>(*entry)));
 					assert(it.second);
 				}
 			}
@@ -301,15 +305,19 @@ namespace RE
 
 		auto container = GetContainer();
 		if (container) {
-			container->ForEachContainerObject([&](ContainerObject* a_entry) -> bool {
-				if (a_entry->obj && a_filter(a_entry->obj)) {
-					auto it = results.find(a_entry->obj);
+			container->ForEachContainerObject([&](ContainerObject& a_entry) -> bool {
+				if (a_entry.obj && a_filter(a_entry.obj)) {
+					auto it = results.find(a_entry.obj);
 					if (it == results.end()) {
-						auto mapped = std::make_pair(a_entry->count, std::make_unique<InventoryEntryData>(a_entry->obj, 0));
-						auto insIt = results.emplace(a_entry->obj, std::move(mapped));
+						[[maybe_unused]] auto insIt =
+							results.emplace(
+								a_entry.obj,
+								std::make_pair(
+									a_entry.count,
+									std::make_unique<InventoryEntryData>(a_entry.obj, 0)));
 						assert(insIt.second);
 					} else {
-						it->second.first += a_entry->count;
+						it->second.first += a_entry.count;
 					}
 				}
 				return true;
@@ -357,14 +365,15 @@ namespace RE
 
 		auto container = GetContainer();
 		if (container) {
-			container->ForEachContainerObject([&](ContainerObject* a_entry) -> bool {
-				if (a_entry->obj && a_filter(a_entry->obj)) {
-					auto it = results.find(a_entry->obj);
+			container->ForEachContainerObject([&](ContainerObject& a_entry) -> bool {
+				if (a_entry.obj && a_filter(a_entry.obj)) {
+					auto it = results.find(a_entry.obj);
 					if (it == results.end()) {
-						auto insIt = results.emplace(a_entry->obj, a_entry->count);
+						[[maybe_unused]] auto insIt =
+							results.emplace(a_entry.obj, a_entry.count);
 						assert(insIt.second);
 					} else {
-						it->second += a_entry->count;
+						it->second += a_entry.count;
 					}
 				}
 				return true;

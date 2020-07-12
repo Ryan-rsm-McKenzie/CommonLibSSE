@@ -63,41 +63,34 @@ namespace RE
 
 	InventoryEntryData& InventoryEntryData::operator=(const InventoryEntryData& a_rhs)
 	{
-		if (this == &a_rhs) {
-			return *this;
+		if (this != std::addressof(a_rhs)) {
+			object = a_rhs.object;
+
+			delete extraLists;
+			extraLists =
+				a_rhs.extraLists ?
+					new BSSimpleList<ExtraDataList*>(*a_rhs.extraLists) :
+					nullptr;
+
+			countDelta = a_rhs.countDelta;
 		}
-
-		object = a_rhs.object;
-
-		delete extraLists;
-		if (a_rhs.extraLists) {
-			extraLists = new BSSimpleList<ExtraDataList*>(*a_rhs.extraLists);
-		} else {
-			extraLists = nullptr;
-		}
-
-		countDelta = a_rhs.countDelta;
-
 		return *this;
 	}
 
 
 	InventoryEntryData& InventoryEntryData::operator=(InventoryEntryData&& a_rhs)
 	{
-		if (this == &a_rhs) {
-			return *this;
+		if (this != std::addressof(a_rhs)) {
+			object = std::move(a_rhs.object);
+			a_rhs.object = nullptr;
+
+			delete extraLists;
+			extraLists = std::move(a_rhs.extraLists);
+			a_rhs.extraLists = nullptr;
+
+			countDelta = std::move(a_rhs.countDelta);
+			a_rhs.countDelta = 0;
 		}
-
-		object = std::move(a_rhs.object);
-		a_rhs.object = nullptr;
-
-		delete extraLists;
-		extraLists = std::move(a_rhs.extraLists);
-		a_rhs.extraLists = nullptr;
-
-		countDelta = std::move(a_rhs.countDelta);
-		a_rhs.countDelta = 0;
-
 		return *this;
 	}
 
@@ -133,16 +126,16 @@ namespace RE
 					if (xEnch && xEnch->enchantment && xEnch->charge != 0) {
 						if (xCharge) {
 							result.emplace((static_cast<double>(xCharge->charge) /
-												static_cast<double>(xEnch->charge)) *
-											100.0);
+											   static_cast<double>(xEnch->charge)) *
+										   100.0);
 						} else {
 							result.emplace(100.0);
 						}
 						break;
 					} else if (xCharge && ench && ench->formEnchanting && ench->amountofEnchantment != 0) {
 						result.emplace((static_cast<double>(xCharge->charge) /
-											static_cast<double>(ench->amountofEnchantment)) *
-										100.0);
+										   static_cast<double>(ench->amountofEnchantment)) *
+									   100.0);
 						break;
 					}
 				}
