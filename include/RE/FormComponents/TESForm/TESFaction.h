@@ -4,6 +4,7 @@
 #include "RE/BSCore/BSTHashMap.h"
 #include "RE/BSCore/BSTList.h"
 #include "RE/FormComponents/Components/AITimeStamp.h"
+#include "RE/FormComponents/Enums/FightReactions.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 #include "RE/FormComponents/TESFullName.h"
@@ -15,6 +16,7 @@ namespace RE
 {
 	class TESCondition;
 	class PackageLocation;
+
 
 	struct FACTION_DATA
 	{
@@ -193,7 +195,7 @@ namespace RE
 		void   SetCrimeGold(SInt32 a_gold);
 		void   SetCrimeGoldViolent(SInt32 a_gold);
 		void   SetEnemy(TESFaction* a_other, bool a_selfIsNeutralToOther = false, bool a_otherIsNeutralToSelf = false);
-		void   SetFactionFightReaction(TESFaction* a_faction, int a_fightReaction);
+		void   SetFactionFightReaction(TESFaction* a_faction, FIGHT_REACTION a_fightReaction);
 		bool   TracksCrimes() const;
 		bool   UsesCrimeGoldDefaults() const;
 
