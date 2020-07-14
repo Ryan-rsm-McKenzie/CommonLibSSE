@@ -1,7 +1,9 @@
 #include "RE/FormComponents/TESForm/TESFaction.h"
 
+#include "RE/AI/ProcessLists.h"
 #include "RE/FormComponents/TESForm/BGSListForm.h"
 #include "RE/FormComponents/TESForm/TESObjectREFR/Actor/Character/PlayerCharacter.h"
+#include "SKSE/Logger.h"
 
 
 namespace RE
@@ -237,6 +239,21 @@ namespace RE
 	}
 
 
+	void TESFaction::SetAlly(TESFaction* a_other, bool a_selfIsFriendToOther, bool a_otherIsFriendToSelf)
+	{
+		if (a_other) {
+			SetFactionFightReaction(a_other, a_selfIsFriendToOther ? 3 : 2);
+			a_other->SetFactionFightReaction(this, a_otherIsFriendToSelf ? 3 : 2);
+			auto processLists = RE::ProcessLists::GetSingleton();
+			if (processLists) {
+				processLists->ClearCachedFactionFightReactions();
+			}
+		} else {
+			_DMESSAGE("Cannot be an ally of a NONE faction");
+		}
+	}
+
+
 	void TESFaction::SetCrimeGold(SInt32 a_gold)
 	{
 		auto player = PlayerCharacter::GetSingleton();
@@ -252,6 +269,29 @@ namespace RE
 		if (player) {
 			player->SetCrimeGoldValue(this, true, a_gold);
 		}
+	}
+
+
+	void TESFaction::SetEnemy(TESFaction* a_other, bool a_selfIsNeutralToOther, bool a_otherIsNeutralToSelf)
+	{
+		if (a_other) {
+			SetFactionFightReaction(a_other, a_selfIsNeutralToOther ? 0 : 1);
+			a_other->SetFactionFightReaction(this, a_otherIsNeutralToSelf ? 0 : 1);
+			auto processLists = RE::ProcessLists::GetSingleton();
+			if (processLists) {
+				processLists->ClearCachedFactionFightReactions();
+			}
+		} else {
+			_DMESSAGE("Cannot be an ally of a NONE faction");
+		}
+	}
+
+
+	void TESFaction::SetFactionFightReaction(TESFaction* a_faction, int a_fightReaction)
+	{
+		using func_t = decltype(&TESFaction::SetFactionFightReaction);
+		REL::Offset<func_t> func = REL::ID(24012);
+		return func(this, a_faction, a_fightReaction);
 	}
 
 

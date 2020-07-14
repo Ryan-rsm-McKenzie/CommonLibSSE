@@ -16,7 +16,7 @@ namespace RE
 		{}
 
 		inline UInt32 IncRef() { return InterlockedIncrement(&_refCount); }
-		UInt32		  DecRef() { return InterlockedDecrement(&_refCount); }
+		inline UInt32 DecRef() { return InterlockedDecrement(&_refCount); }
 
 		TES_HEAP_REDEFINE_NEW();
 

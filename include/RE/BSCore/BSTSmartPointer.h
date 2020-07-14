@@ -241,7 +241,7 @@ namespace RE
 	template <class T, class... Args>
 	[[nodiscard]] inline BSTSmartPointer<T> make_smart(Args&&... a_args)
 	{
-		return BSTSmartPointer<T>{ new T{ std::forward<Args>(a_args)... } };
+		return BSTSmartPointer<T>{ new T(std::forward<Args>(a_args)...) };
 	}
 
 	template <class T1, class T2>

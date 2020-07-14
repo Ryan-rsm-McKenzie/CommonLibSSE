@@ -693,13 +693,6 @@ namespace RE
 		}
 
 
-		namespace ProcessLists
-		{
-			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514167));
-			inline constexpr REL::ID StopCombatAndAlarmOnActor(static_cast<std::uint64_t>(40330));
-		}
-
-
 		namespace ReadyWeaponHandler
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263059));

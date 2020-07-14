@@ -36,7 +36,8 @@ namespace RE
 
 		static ProcessLists* GetSingleton();
 
-		void StopCombatAndAlarmOnActor(Actor* a_actor, bool a_dontEndAlarm);
+		void ClearCachedFactionFightReactions() const;
+		void StopCombatAndAlarmOnActor(Actor* a_actor, bool a_notAlarm);
 
 
 		// members

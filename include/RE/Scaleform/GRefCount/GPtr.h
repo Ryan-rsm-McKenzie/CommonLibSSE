@@ -204,7 +204,7 @@ namespace RE
 	template <class T, class... Args>
 	[[nodiscard]] inline GPtr<T> make_gptr(Args&&... a_args)
 	{
-		auto ptr = GPtr<T>{ new T{ std::forward<Args>(a_args)... } };
+		auto ptr = GPtr<T>{ new T(std::forward<Args>(a_args)...) };
 		if (ptr) {
 			ptr->Release();	 // ensure lifetime ends with smart pointer
 		}

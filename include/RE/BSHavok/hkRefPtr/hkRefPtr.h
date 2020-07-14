@@ -204,7 +204,7 @@ namespace RE
 	template <class T, class... Args>
 	[[nodiscard]] inline hkRefPtr<T> make_hkref(Args&&... a_args)
 	{
-		return hkRefPtr<T>{ new T{ std::forward<Args>(a_args)... } };
+		return hkRefPtr<T>{ new T(std::forward<Args>(a_args)...) };
 	}
 
 	template <class T1, class T2>

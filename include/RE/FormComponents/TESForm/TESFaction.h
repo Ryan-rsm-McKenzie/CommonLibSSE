@@ -46,6 +46,8 @@ namespace RE
 
 	struct FACTION_CRIME_DATA_VALUES  // CRVA
 	{
+	public:
+		// members
 		bool   arrest;				 // 00
 		bool   attackOnSight;		 // 01
 		UInt16 murderCrimeGold;		 // 02
@@ -62,6 +64,8 @@ namespace RE
 
 	struct FACTION_CRIME_DATA
 	{
+	public:
+		// members
 		TESObjectREFR*			  factionJailMarker;				// 00 - JAIL
 		TESObjectREFR*			  factionWaitMarker;				// 08 - WAIT
 		TESObjectREFR*			  factionStolenContainer;			// 10 - STOL
@@ -76,6 +80,8 @@ namespace RE
 
 	struct FACTION_VENDOR_DATA_VALUES  // VENV
 	{
+	public:
+		// members
 		UInt16 startHour;		// 0
 		UInt16 endHour;			// 2
 		UInt32 locationRadius;	// 4
@@ -89,6 +95,8 @@ namespace RE
 
 	struct FACTION_VENDOR_DATA	// VENV
 	{
+	public:
+		// members
 		FACTION_VENDOR_DATA_VALUES vendorValues;	   // 00
 		UInt32					   pad0C;			   // 0C
 		PackageLocation*		   vendorLocation;	   // 10 - PLVD
@@ -103,6 +111,8 @@ namespace RE
 
 	struct RANK_DATA
 	{
+	public:
+		// members
 		BSFixedString maleRankTitle;	// 00 - MNAM
 		BSFixedString femaleRankTitle;	// 08 - FNAM
 		TESTexture	  textureInsignia;	// 10 - INAM - unused
@@ -179,8 +189,11 @@ namespace RE
 		void   PlayerPayCrimeGold(bool a_removeStolenItems = true, bool a_goToJail = true);
 		bool   ReportsCrimesAgainstMembers() const;
 		void   SendPlayerToJail(bool a_removeInventory = true, bool a_realJail = true);
+		void   SetAlly(TESFaction* a_other, bool a_selfIsFriendToOther = false, bool a_otherIsFriendToSelf = false);
 		void   SetCrimeGold(SInt32 a_gold);
 		void   SetCrimeGoldViolent(SInt32 a_gold);
+		void   SetEnemy(TESFaction* a_other, bool a_selfIsNeutralToOther = false, bool a_otherIsNeutralToSelf = false);
+		void   SetFactionFightReaction(TESFaction* a_faction, int a_fightReaction);
 		bool   TracksCrimes() const;
 		bool   UsesCrimeGoldDefaults() const;
 
