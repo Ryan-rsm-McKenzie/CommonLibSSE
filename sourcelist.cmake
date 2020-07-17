@@ -160,6 +160,7 @@ set(sources ${sources}
 	src\RE\FormComponents\TESForm\TESTopic.cpp
 	src\RE\FormComponents\TESForm\TESTopicInfo.cpp
 	src\RE\FormComponents\TESForm\TESWorldSpace.cpp
+	src\RE\FormComponents\TESLeveledList.cpp
 	src\RE\Inventory\ActorEquipManager.cpp
 	src\RE\Inventory\ExtraDataList.cpp
 	src\RE\Inventory\Inventory3DManager.cpp
@@ -259,5 +260,4 @@ set(sources ${sources}
 	src\SKSE\RegistrationMap.cpp
 	src\SKSE\RegistrationSet.cpp
 	src\SKSE\Trampoline.cpp
-	src\SKSE\VArgFormatter.cpp
 )

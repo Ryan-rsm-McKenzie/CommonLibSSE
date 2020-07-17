@@ -1209,6 +1209,5 @@ set(headers ${headers}
 	include\SKSE\SKSE.h
 	include\SKSE\SafeWrite.h
 	include\SKSE\Trampoline.h
-	include\SKSE\VArgFormatter.h
 	include\SKSE\Version.h
 )
