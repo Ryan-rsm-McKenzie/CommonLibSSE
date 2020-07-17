@@ -122,7 +122,8 @@ namespace RE
 	public:
 		static ScriptEventSourceHolder* GetSingleton();
 
-		void SendActivateEvent(NiPointer<TESObjectREFR>& a_target, NiPointer<TESObjectREFR>& a_caster);
+		void SendActivateEvent(const NiPointer<TESObjectREFR>& a_objectActivated, const NiPointer<TESObjectREFR>& a_actionRef);
+		void SendOpenCloseEvent(const NiPointer<TESObjectREFR>& a_ref, const NiPointer<TESObjectREFR>& a_activeRef, bool a_isOpened);
 
 		template <class T>
 		inline BSTEventSource<T>* GetEventSource()

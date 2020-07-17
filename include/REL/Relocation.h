@@ -6,75 +6,78 @@
 #include "REL/Version.h"
 
 
-namespace RE
-{
-	namespace RTTI
-	{
-		struct CompleteObjectLocator;
-		struct TypeDescriptor;
+#define REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER_IMPL(a_nopropQual, a_propQual, ...)              \
+	template <                                                                                    \
+		class R,                                                                                  \
+		class Cls,                                                                                \
+		class... Args>                                                                            \
+	struct member_function_pod_type<R (Cls::*)(Args...) __VA_ARGS__ a_nopropQual a_propQual>      \
+	{                                                                                             \
+		using type = R(__VA_ARGS__ Cls*, Args...) a_propQual;                                     \
+	};                                                                                            \
+                                                                                                  \
+	template <                                                                                    \
+		class R,                                                                                  \
+		class Cls,                                                                                \
+		class... Args>                                                                            \
+	struct member_function_pod_type<R (Cls::*)(Args..., ...) __VA_ARGS__ a_nopropQual a_propQual> \
+	{                                                                                             \
+		using type = R(__VA_ARGS__ Cls*, Args..., ...) a_propQual;                                \
+	};
+
+#define REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER(a_qualifer, ...)              \
+	REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER_IMPL(a_qualifer, , ##__VA_ARGS__) \
+	REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER_IMPL(a_qualifer, noexcept, ##__VA_ARGS__)
+
+#define REL_MAKE_MEMBER_FUNCTION_POD_TYPE(...)                 \
+	REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER(, __VA_ARGS__)    \
+	REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER(&, ##__VA_ARGS__) \
+	REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER(&&, ##__VA_ARGS__)
+
+#define REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER_IMPL(a_nopropQual, a_propQual, ...)              \
+	template <                                                                                        \
+		class R,                                                                                      \
+		class Cls,                                                                                    \
+		class... Args>                                                                                \
+	struct member_function_non_pod_type<R (Cls::*)(Args...) __VA_ARGS__ a_nopropQual a_propQual>      \
+	{                                                                                                 \
+		using type = R&(__VA_ARGS__ Cls*, void*, Args...)a_propQual;                                  \
+	};                                                                                                \
+                                                                                                      \
+	template <                                                                                        \
+		class R,                                                                                      \
+		class Cls,                                                                                    \
+		class... Args>                                                                                \
+	struct member_function_non_pod_type<R (Cls::*)(Args..., ...) __VA_ARGS__ a_nopropQual a_propQual> \
+	{                                                                                                 \
+		using type = R&(__VA_ARGS__ Cls*, void*, Args..., ...)a_propQual;                             \
+	};
+
+#define REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(a_qualifer, ...)              \
+	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER_IMPL(a_qualifer, , ##__VA_ARGS__) \
+	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER_IMPL(a_qualifer, noexcept, ##__VA_ARGS__)
+
+#define REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE(...)                 \
+	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(, __VA_ARGS__)    \
+	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(&, ##__VA_ARGS__) \
+	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(&&, ##__VA_ARGS__)
+
+#define REL_THROW_EXCEPTION(a_what)                       \
+	{                                                     \
+		const auto src = stl::source_location::current(); \
+		throw std::runtime_error(                         \
+			fmt::format(                                  \
+				FMT_STRING("{}({}): {}"),                 \
+				src.file_name(),                          \
+				src.line(),                               \
+				a_what##sv));                             \
 	}
-}
 
 
 namespace REL
 {
-	namespace Impl
+	namespace detail
 	{
-		template <class T>
-		class span
-		{
-		public:
-			using element_type = T;
-			using value_type = std::remove_cv_t<T>;
-			using size_type = std::size_t;
-			using difference_type = std::ptrdiff_t;
-			using pointer = element_type*;
-			using const_pointer = const element_type*;
-			using reference = element_type&;
-			using const_reference = const element_type&;
-
-			constexpr span() noexcept :
-				_data(nullptr),
-				_size(0)
-			{}
-
-			constexpr span(pointer a_data, size_type a_count) :
-				_data(a_data),
-				_size(a_count)
-			{}
-
-			constexpr span(const span& a_rhs) noexcept :
-				_data(a_rhs._data),
-				_size(a_rhs._size)
-			{}
-
-			~span() noexcept = default;
-
-			[[nodiscard]] constexpr reference front() const { return operator[](0); }
-
-			[[nodiscard]] constexpr reference back() const { return operator[](size() - 1); }
-
-			[[nodiscard]] constexpr reference operator[](size_type a_pos) const
-			{
-				assert(a_pos < size());
-				return data()[a_pos];
-			}
-
-			[[nodiscard]] constexpr pointer data() const noexcept { return _data; }
-
-			[[nodiscard]] size_type size() const noexcept { return _size; }
-
-			[[nodiscard]] constexpr bool empty() const noexcept { return size() == 0; }
-
-		private:
-			pointer	  _data;
-			size_type _size;
-		};
-
-		template <class T>
-		span(T* a_data, std::size_t a_count) -> span<T>;
-
-
 		template <class T>
 		class MemoryMap
 		{
@@ -204,13 +207,13 @@ namespace REL
 				if (!_handle) {
 					_handle = CreateFileMappingA(INVALID_HANDLE_VALUE, nullptr, PAGE_READWRITE, bytes.HighPart, bytes.LowPart, a_name);
 					if (!_handle) {
-						throw std::runtime_error("Could not create file mapping for \"" + std::string(a_name) + "\"");
+						REL_THROW_EXCEPTION("failed to create file mapping");
 					}
 				}
 
 				_data = static_cast<pointer>(MapViewOfFile(_handle, FILE_MAP_ALL_ACCESS, 0, 0, bytes.QuadPart));
 				if (!_data) {
-					throw std::runtime_error("Could not map view of file for \"" + std::string(a_name) + "\"");
+					REL_THROW_EXCEPTION("failed to map view of file");
 				}
 
 				_size = a_size;
@@ -236,28 +239,27 @@ namespace REL
 		};
 
 
-		// https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm
-		constexpr auto NPOS = static_cast<std::size_t>(-1);
+		template <class>
+		struct member_function_pod_type;
 
-		void kmp_table(const span<std::uint8_t> W, span<std::size_t> T);
-		void kmp_table(const span<std::uint8_t> W, const span<bool> M, span<std::size_t> T);
+		REL_MAKE_MEMBER_FUNCTION_POD_TYPE();
+		REL_MAKE_MEMBER_FUNCTION_POD_TYPE(const);
+		REL_MAKE_MEMBER_FUNCTION_POD_TYPE(volatile);
+		REL_MAKE_MEMBER_FUNCTION_POD_TYPE(const volatile);
 
-		std::size_t kmp_search(const span<std::uint8_t> S, const span<std::uint8_t> W);
-		std::size_t kmp_search(const span<std::uint8_t> S, const span<std::uint8_t> W, const span<bool> M);
+		template <class F>
+		using member_function_pod_type_t = typename member_function_pod_type<F>::type;
 
+		template <class>
+		struct member_function_non_pod_type;
 
-		template <class T>
-		struct is_any_function :
-			std::disjunction<
-				std::is_function<T>,
-				std::is_function<
-					std::remove_pointer_t<T>>,	// is_function_pointer
-				std::is_member_function_pointer<T>>
-		{};
+		REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE();
+		REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE(const);
+		REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE(volatile);
+		REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE(const volatile);
 
-		template <class T>
-		inline constexpr bool is_any_function_v = is_any_function<T>::value;
-
+		template <class F>
+		using member_function_non_pod_type_t = typename member_function_non_pod_type<F>::type;
 
 		// https://docs.microsoft.com/en-us/cpp/build/x64-calling-convention
 
@@ -273,7 +275,6 @@ namespace REL
 				std::bool_constant<sizeof(T) == 64>>
 		{};
 
-
 		template <class T>
 		struct meets_function_req :
 			std::conjunction<
@@ -284,20 +285,18 @@ namespace REL
 					std::is_polymorphic<T>>>
 		{};
 
-
 		template <class T>
 		struct meets_member_req :
 			std::is_standard_layout<T>
 		{};
 
-
 		template <class T, class = void>
-		struct is_msvc_pod :
+		struct is_x64_pod :
 			std::true_type
 		{};
 
 		template <class T>
-		struct is_msvc_pod<
+		struct is_x64_pod<
 			T,
 			std::enable_if_t<
 				std::is_union_v<T>>> :
@@ -305,7 +304,7 @@ namespace REL
 		{};
 
 		template <class T>
-		struct is_msvc_pod<
+		struct is_x64_pod<
 			T,
 			std::enable_if_t<
 				std::is_class_v<T>>> :
@@ -316,131 +315,46 @@ namespace REL
 		{};
 
 		template <class T>
-		inline constexpr bool is_msvc_pod_v = is_msvc_pod<T>::value;
+		inline constexpr bool is_x64_pod_v = is_x64_pod<T>::value;
 
-
-		template <class F>
-		struct member_function_pod;
-
-		// normal
-		template <class R, class Cls, class... Args>
-		struct member_function_pod<R (Cls::*)(Args...)>
+		template <
+			class F,
+			class First,
+			class... Rest>
+		inline decltype(auto) invoke_member_function_non_pod(F&& a_func, First&& a_first, Rest&&... a_rest) noexcept(
+			std::is_nothrow_invocable_v<F, First, Rest...>)
 		{
-			using type = R(Cls*, Args...);
-		};
+			using result_t = std::invoke_result_t<F, First, Rest...>;
+			std::aligned_storage_t<sizeof(result_t), alignof(result_t)> result;
 
-		// const
-		template <class R, class Cls, class... Args>
-		struct member_function_pod<R (Cls::*)(Args...) const>
-		{
-			using type = R(const Cls*, Args...);
-		};
+			using func_t = member_function_non_pod_type_t<F>;
+			auto func = unrestricted_cast<func_t*>(std::forward<F>(a_func));
 
-		// variadic
-		template <class R, class Cls, class... Args>
-		struct member_function_pod<R (Cls::*)(Args..., ...)>
-		{
-			using type = R(Cls*, Args..., ...);
-		};
-
-		// variadic const
-		template <class R, class Cls, class... Args>
-		struct member_function_pod<R (Cls::*)(Args..., ...) const>
-		{
-			using type = R(const Cls*, Args..., ...);
-		};
-
-		template <class F>
-		using member_function_pod_t = typename member_function_pod<F>::type;
-
-
-		template <class F>
-		struct member_function_non_pod;
-
-		// normal
-		template <class R, class Cls, class... Args>
-		struct member_function_non_pod<R (Cls::*)(Args...)>
-		{
-			using type = R&(Cls*, void*, Args...);
-		};
-
-		// normal const
-		template <class R, class Cls, class... Args>
-		struct member_function_non_pod<R (Cls::*)(Args...) const>
-		{
-			using type = R&(const Cls*, void*, Args...);
-		};
-
-		// variadic
-		template <class R, class Cls, class... Args>
-		struct member_function_non_pod<R (Cls::*)(Args..., ...)>
-		{
-			using type = R&(Cls*, void*, Args..., ...);
-		};
-
-		// variadic const
-		template <class R, class Cls, class... Args>
-		struct member_function_non_pod<R (Cls::*)(Args..., ...) const>
-		{
-			using type = R&(const Cls*, void*, Args..., ...);
-		};
-
-		template <class F>
-		using member_function_non_pod_t = typename member_function_non_pod<F>::type;
-
-
-		template <class R, class F, class... Args>
-		R InvokeMemberFunctionPOD(F&& a_fn, Args&&... a_args) noexcept(std::is_nothrow_invocable_v<F, Args...>)
-		{
-			using NF = member_function_pod_t<std::decay_t<F>>;
-
-			auto func = unrestricted_cast<NF*>(a_fn);
-			return func(std::forward<Args>(a_args)...);
-		}
-
-
-		// return by value on a non-pod type means caller allocates space for the object
-		// and passes it in rcx, unless its a member function, in which case it passes in rdx
-		// all other arguments shift over to compensate
-		template <class R, class F, class T1, class... Args>
-		R InvokeMemberFunctionNonPOD(F&& a_fn, T1&& a_object, Args&&... a_args) noexcept(std::is_nothrow_invocable_v<F, T1, Args...>)
-		{
-			using NF = member_function_non_pod_t<std::decay_t<F>>;
-
-			auto										  func = unrestricted_cast<NF*>(a_fn);
-			std::aligned_storage_t<sizeof(R), alignof(R)> result;
-			return func(std::forward<T1>(a_object), &result, std::forward<Args>(a_args)...);
-		}
-
-
-		template <class R, class F, class... Args>
-		R Invoke(F&& a_fn, Args&&... a_args) noexcept(std::is_nothrow_invocable_v<F, Args...>)
-		{
-			if constexpr (std::is_member_function_pointer_v<std::decay_t<F>>) {	 // the compiler chokes on member functions
-				if constexpr (is_msvc_pod_v<R>) {								 // no need to shift if it's a pod type
-					return InvokeMemberFunctionPOD<R>(std::forward<F>(a_fn), std::forward<Args>(a_args)...);
-				} else {
-					return InvokeMemberFunctionNonPOD<R>(std::forward<F>(a_fn), std::forward<Args>(a_args)...);
-				}
-			} else {
-				return a_fn(std::forward<Args>(a_args)...);
-			}
+			return func(std::forward<First>(a_first), std::addressof(result), std::forward<Rest>(a_rest)...);
 		}
 	}
 
 
-	// generic solution for calling relocated functions
 	template <
 		class F,
 		class... Args,
 		std::enable_if_t<
-			std::is_invocable_v<
-				F,
-				Args...>,
+			std::is_invocable_v<F, Args...>,
 			int> = 0>
-	decltype(auto) Invoke(F&& a_fn, Args&&... a_args) noexcept(std::is_nothrow_invocable_v<F, Args...>)
+	inline std::invoke_result_t<F, Args...> invoke(F&& a_func, Args&&... a_args) noexcept(
+		std::is_nothrow_invocable<F, Args...>)
 	{
-		return Impl::Invoke<std::invoke_result_t<F, Args...>>(std::forward<F>(a_fn), std::forward<Args>(a_args)...);
+		if constexpr (std::is_member_function_pointer_v<std::decay_t<F>>) {
+			if constexpr (detail::is_x64_pod_v<std::invoke_result_t<F, Args...>>) {	 // member functions == free functions in x64
+				using func_t = detail::member_function_pod_type_t<std::decay_t<F>>;
+				auto func = unrestricted_cast<func_t*>(std::forward<F>(a_func));
+				return func(std::forward<Args>(a_args)...);
+			} else {  // shift args to insert result
+				return detail::invoke_member_function_non_pod(std::forward<F>(a_func), std::forward<Args>(a_args)...);
+			}
+		} else {
+			return std::forward<F>(a_func)(std::forward<Args>(a_args)...);
+		}
 	}
 
 
@@ -699,8 +613,8 @@ namespace REL
 
 		static inline std::uint64_t* _natvis = nullptr;
 
-		Header						   _header;
-		Impl::MemoryMap<std::uint64_t> _offsets;
+		Header							 _header;
+		detail::MemoryMap<std::uint64_t> _offsets;
 #ifdef _DEBUG
 		std::unordered_map<std::uint64_t, std::uint64_t> _ids;
 #endif
@@ -769,148 +683,91 @@ namespace REL
 		using value_type =
 			std::conditional_t<
 				std::is_function_v<T>,
-				std::add_pointer_t<T>,
+				std::decay_t<T>,
 				T>;
-		;
 
-		constexpr Offset() noexcept :
-			_address(0)
+		template <
+			class U = value_type,
+			std::enable_if_t<
+				std::is_default_constructible_v<U>,
+				int> = 0>
+		Offset() noexcept(std::is_nothrow_default_constructible_v<U>) :
+			_impl{}
 		{}
 
-		constexpr Offset(const Offset& a_rhs) noexcept :
-			_address(a_rhs._address)
+		template <
+			class U = value_type,
+			std::enable_if_t<
+				std::is_copy_constructible_v<U>,
+				int> = 0>
+		Offset(std::uintptr_t a_address) noexcept(std::is_nothrow_copy_constructible_v<U>) :
+			_impl(unrestricted_cast<value_type>(a_address))
 		{}
 
-		constexpr Offset(Offset&& a_rhs) noexcept :
-			_address(std::move(a_rhs._address))
+		template <
+			class U = value_type,
+			std::enable_if_t<
+				std::is_copy_constructible_v<U>,
+				int> = 0>
+		Offset(ID a_id, std::size_t a_offset = 0) noexcept(std::is_nothrow_copy_constructible_v<U>) :
+			_impl(unrestricted_cast<value_type>(a_id.address() + a_offset))
 		{}
 
-		constexpr Offset(std::uintptr_t a_offset) noexcept :
-			_address(a_offset)
-		{}
-
-		Offset(ID a_id) :
-			Offset(a_id.address())
-		{}
-
-		Offset(ID a_id, std::size_t a_mod) noexcept :
-			_address(a_id.address() + a_mod)
-		{}
-
-		Offset(std::pair<ID, std::size_t> a_idAndMod) noexcept :
-			_address(a_idAndMod.first.address() + a_idAndMod.second)
-		{}
-
-		constexpr Offset& operator=(const Offset& a_rhs) noexcept
+		template <
+			class U = value_type,
+			std::enable_if_t<
+				std::is_copy_assignable_v<U>,
+				int> = 0>
+		Offset& operator=(std::uintptr_t a_address) noexcept(std::is_nothrow_copy_assignable_v<U>)
 		{
-			if (this != std::addressof(a_rhs)) {
-				_address = a_rhs._address;
-			}
-			return *this;
-		}
-
-		constexpr Offset& operator=(Offset&& a_rhs) noexcept
-		{
-			if (this != std::addressof(a_rhs)) {
-				_address = std::move(a_rhs._address);
-			}
-			return *this;
-		}
-
-		constexpr Offset& operator=(std::uintptr_t a_address) noexcept
-		{
-			_address = a_address;
-			return *this;
-		}
-
-		constexpr Offset& operator=(ID a_rhs) noexcept
-		{
-			_address = a_rhs.address();
-			return *this;
-		}
-
-		constexpr Offset& operator=(std::pair<ID, std::size_t> a_rhs) noexcept
-		{
-			_address = a_rhs.first.address() + a_rhs.second;
+			_impl = unrestricted_cast<value_type>(a_address);
 			return *this;
 		}
 
 		template <
 			class U = value_type,
 			std::enable_if_t<
-				std::is_reference_v<U>,
+				std::is_copy_assignable_v<U>,
 				int> = 0>
-		[[nodiscard]] operator value_type() const
+		Offset& operator=(ID a_id) noexcept(std::is_nothrow_copy_assignable_v<U>)
 		{
-			return type();
+			_impl = unrestricted_cast<value_type>(a_id.address());
+			return *this;
 		}
 
 		template <
 			class U = value_type,
 			std::enable_if_t<
-				std::is_pointer_v<
-					std::remove_reference_t<U>>,
+				std::is_pointer_v<U>,
 				int> = 0>
-		auto operator*() const
-			-> std::add_lvalue_reference_t<
-				std::remove_reference_t<
-					std::remove_pointer_t<
-						value_type>>>
+		[[nodiscard]] decltype(auto) operator*() const noexcept
 		{
-			return *type();
+			return *_impl;
 		}
 
 		template <
 			class U = value_type,
 			std::enable_if_t<
-				std::is_pointer_v<
-					std::remove_reference_t<U>>,
+				std::conjunction_v<
+					std::is_pointer<U>,
+					std::disjunction<
+						std::is_class<std::remove_pointer_t<U>>,
+						std::is_enum<std::remove_pointer_t<U>>>>,
 				int> = 0>
-		value_type operator->() const
+		[[nodiscard]] auto operator->() const noexcept
 		{
-			return type();
-		}
-
-		template <
-			class U = value_type,
-			std::enable_if_t<
-				std::is_pointer_v<
-					std::remove_reference_t<U>>,
-				int> = 0>
-		[[nodiscard]] auto operator[](std::size_t a_idx) const
-			-> std::add_lvalue_reference_t<
-				std::remove_reference_t<
-					std::remove_pointer_t<U>>>
-		{
-			return type()[a_idx];
+			return _impl;
 		}
 
 		template <
 			class... Args,
-			class F = value_type,
 			std::enable_if_t<
-				std::is_invocable_v<
-					F,
-					Args...>,
+				std::is_invocable_v<const value_type&, Args&&...>,
 				int> = 0>
-		decltype(auto) operator()(Args&&... a_args) const
+		std::invoke_result_t<const value_type&, Args&&...> operator()(Args&&... a_args) const noexcept(
+			std::is_nothrow_invocable_v<const value_type&, Args&&...>)
 		{
-			return Invoke(type(), std::forward<Args>(a_args)...);
-		}
-
-		[[nodiscard]] value_type type() const
-		{
-			return unrestricted_cast<value_type>(address());
-		}
-
-		[[nodiscard]] constexpr std::uintptr_t address() const noexcept
-		{
-			return _address;
-		}
-
-		[[nodiscard]] std::uintptr_t offset() const
-		{
-			return address() - Module::BaseAddr();
+			return REL::invoke(_impl, std::forward<Args>(a_args)...);
 		}
 
 		template <
@@ -942,264 +799,29 @@ namespace REL
 			return write_vfunc(a_idx, unrestricted_cast<std::uintptr_t>(a_newFunc));
 		}
 
-		[[nodiscard, deprecated("use type")]] decltype(auto) GetType() const
+		[[nodiscard]] value_type type() const noexcept(
+			std::is_nothrow_copy_assignable_v<value_type>)
 		{
-			return type();
+			return _impl;
 		}
 
-		[[nodiscard, deprecated("use address")]] constexpr decltype(auto) GetAddress() const noexcept
-		{
-			return address();
-		}
-
-		[[nodiscard, deprecated("use offset")]] decltype(auto) GetOffset() const
-		{
-			return offset();
-		}
-
-		template <
-			class U = value_type,
-			std::enable_if_t<
-				std::is_same_v<
-					U,
-					std::uintptr_t>,
-				int> = 0>
-		[[deprecated("use write_vfunc")]] std::uintptr_t WriteVFunc(std::size_t a_idx, std::uintptr_t a_newFunc)
-		{
-			constexpr auto PSIZE = sizeof(void*);
-			auto		   addr = address() + (PSIZE * a_idx);
-			auto		   result = *reinterpret_cast<std::uintptr_t*>(addr);
-			SafeWrite64(addr, a_newFunc);
-			return result;
-		}
-
-		template <
-			class F,
-			class U = value_type,
-			std::enable_if_t<
-				std::is_same_v<
-					U,
-					std::uintptr_t>,
-				int> = 0>
-		[[deprecated("use write_vfunc")]] std::uintptr_t WriteVFunc(std::size_t a_idx, F a_newFunc)
-		{
-			return WriteVFunc(a_idx, unrestricted_cast<std::uintptr_t>(a_newFunc));
-		}
+		[[nodiscard]] std::uintptr_t address() const { return unrestricted_cast<std::uintptr_t>(_impl); }
+		[[nodiscard]] std::size_t	 offset() const { offset() - base(); }
 
 	private:
-		std::uintptr_t _address;
-	};
+		[[nodiscard]] static std::uintptr_t base() { return Module::BaseAddr(); }
 
-
-	template <class, class = void>
-	class Function;
-
-
-	template <class T>
-	class [[deprecated("use Offset")]] Function<
-		T,
-		std::enable_if_t<
-			Impl::is_any_function_v<
-				std::decay_t<T>>>>
-	{
-	public:
-		using function_type = std::decay_t<T>;
-
-		constexpr Function() :
-			_storage()
-		{}
-
-		constexpr Function(const Function& a_rhs) :
-			_storage(a_rhs._storage)
-		{}
-
-		constexpr Function(Function && a_rhs) :
-			_storage(std::move(a_rhs._storage))
-		{}
-
-		constexpr Function(const function_type& a_rhs) :
-			_storage(a_rhs)
-		{}
-
-		constexpr Function(function_type && a_rhs) :
-			_storage(std::move(a_rhs))
-		{}
-
-		constexpr Function(std::uintptr_t a_rhs) :
-			_storage(a_rhs)
-		{}
-
-		Function(ID a_rhs) :
-			_storage(a_rhs.GetAddress())
-		{}
-
-		Function(Offset<function_type> a_rhs) :
-			_storage(a_rhs.GetAddress())
-		{}
-
-		Function(Offset<std::uintptr_t> a_rhs) :
-			_storage(a_rhs.GetAddress())
-		{}
-
-		constexpr Function& operator=(const Function& a_rhs)
-		{
-			if (this != std::addressof(a_rhs)) {
-				_storage = a_rhs._storage;
-			}
-			return *this;
-		}
-
-		constexpr Function& operator=(Function&& a_rhs)
-		{
-			if (this != std::addressof(a_rhs)) {
-				_storage = std::move(a_rhs._storage);
-			}
-			return *this;
-		}
-
-		constexpr Function& operator=(const function_type& a_rhs)
-		{
-			_storage = a_rhs;
-			return *this;
-		}
-
-		constexpr Function& operator=(function_type&& a_rhs)
-		{
-			_storage = std::move(a_rhs);
-			return *this;
-		}
-
-		constexpr Function& operator=(std::uintptr_t a_rhs)
-		{
-			_storage = a_rhs;
-			return *this;
-		}
-
-		Function& operator=(ID a_rhs)
-		{
-			_storage = a_rhs.GetAddress();
-			return *this;
-		}
-
-		Function& operator=(Offset<function_type> a_rhs)
-		{
-			_storage = a_rhs.GetAddress();
-			return *this;
-		}
-
-		Function& operator=(Offset<std::uintptr_t> a_rhs)
-		{
-			_storage = a_rhs.GetAddress();
-			return *this;
-		}
-
-		[[nodiscard]] explicit operator bool() const noexcept
-		{
-			return !Empty();
-		}
-
-		template <class... Args, class F = function_type, typename std::enable_if_t<std::is_invocable<F, Args...>::value, int> = 0>
-		std::invoke_result_t<F, Args...> operator()(Args&&... a_args) const
-		{
-			if (Empty()) {
-				assert(false);
-				throw std::bad_function_call();
-			}
-
-			return Invoke(GetFunction(), std::forward<Args>(a_args)...);
-		}
-
-	private:
-		enum : std::uintptr_t
-		{
-			kEmpty = 0
-		};
-
-		[[nodiscard]] bool Empty() const noexcept
-		{
-			return GetAddress() == kEmpty;
-		}
-
-		[[nodiscard]] std::uintptr_t GetAddress() const noexcept
-		{
-			return _storage.address;
-		}
-
-		[[nodiscard]] const function_type& GetFunction() const noexcept
-		{
-			return _storage.function;
-		}
-
-		[[nodiscard]] bool InRange() const
-		{
-			auto xText = Module::GetSection(Module::ID::kTextX);
-			return xText.BaseAddr() <= GetAddress() && GetAddress() < xText.BaseAddr() + xText.Size();
-		}
-
-		union Storage
-		{
-			constexpr Storage() :
-				address(kEmpty)
-			{}
-
-			constexpr Storage(const Storage& a_rhs) :
-				function(a_rhs.function)
-			{}
-
-			constexpr Storage(Storage&& a_rhs) :
-				function(std::move(a_rhs.func))
-			{}
-
-			constexpr Storage(const function_type& a_rhs) :
-				function(a_rhs)
-			{}
-
-			constexpr Storage(function_type&& a_rhs) :
-				function(std::move(a_rhs))
-			{}
-
-			constexpr Storage(std::uintptr_t a_rhs) :
-				address(a_rhs)
-			{}
-
-			constexpr Storage& operator=(const Storage& a_rhs)
-			{
-				if (this != std::addressof(a_rhs)) {
-					function = a_rhs.function;
-				}
-				return *this;
-			}
-
-			constexpr Storage& operator=(Storage&& a_rhs)
-			{
-				if (this != std::addressof(a_rhs)) {
-					function = std::move(a_rhs.function);
-				}
-				return *this;
-			}
-
-			constexpr Storage& operator=(const function_type& a_rhs)
-			{
-				function = a_rhs;
-				return *this;
-			}
-
-			constexpr Storage& operator=(function_type&& a_rhs)
-			{
-				function = std::move(a_rhs);
-				return *this;
-			}
-
-			constexpr Storage& operator=(std::uintptr_t a_rhs)
-			{
-				address = a_rhs;
-				return *this;
-			}
-
-			function_type  function;
-			std::uintptr_t address;
-		};
-
-		Storage _storage;
+		value_type _impl;
 	};
 }
+
+
+#undef REL_THROW_EXCEPTION
+
+#undef REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE
+#undef REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER
+#undef REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER_IMPL
+
+#undef REL_MAKE_MEMBER_FUNCTION_POD_TYPE
+#undef REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER
+#undef REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER_IMPL

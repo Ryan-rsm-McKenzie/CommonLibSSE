@@ -776,6 +776,7 @@
     <ClInclude Include="include\RE\Events\ScriptEvent\TESMagicEffectApplyEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESMoveAttachDetachEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESObjectLoadedEvent.h" />
+    <ClInclude Include="include\RE\Events\ScriptEvent\TESOpenCloseEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESResetEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESSwitchRaceCompleteEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESTrackedStatsEvent.h" />

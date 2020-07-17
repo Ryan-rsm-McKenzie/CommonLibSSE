@@ -555,6 +555,7 @@ set(headers ${headers}
 	include\RE\Events\ScriptEvent\TESMagicEffectApplyEvent.h
 	include\RE\Events\ScriptEvent\TESMoveAttachDetachEvent.h
 	include\RE\Events\ScriptEvent\TESObjectLoadedEvent.h
+	include\RE\Events\ScriptEvent\TESOpenCloseEvent.h
 	include\RE\Events\ScriptEvent\TESResetEvent.h
 	include\RE\Events\ScriptEvent\TESSwitchRaceCompleteEvent.h
 	include\RE\Events\ScriptEvent\TESTrackedStatsEvent.h

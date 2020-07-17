@@ -8,15 +8,23 @@ namespace RE
 	ScriptEventSourceHolder* ScriptEventSourceHolder::GetSingleton()
 	{
 		using func_t = decltype(&ScriptEventSourceHolder::GetSingleton);
-		REL::Offset<func_t> func(Offset::ScriptEventSourceHolder::GetSingleton);
+		REL::Offset<func_t> func = REL::ID(14108);
 		return func();
 	}
 
 
-	void ScriptEventSourceHolder::SendActivateEvent(NiPointer<TESObjectREFR>& a_target, NiPointer<TESObjectREFR>& a_caster)
+	void ScriptEventSourceHolder::SendActivateEvent(const NiPointer<TESObjectREFR>& a_objectActivated, const NiPointer<TESObjectREFR>& a_actionRef)
 	{
 		using func_t = decltype(&ScriptEventSourceHolder::SendActivateEvent);
-		REL::Offset<func_t> func(Offset::ScriptEventSourceHolder::SendActivateEvent);
-		return func(this, a_target, a_caster);
+		REL::Offset<func_t> func = REL::ID(19666);
+		return func(this, a_objectActivated, a_actionRef);
+	}
+
+
+	void ScriptEventSourceHolder::SendOpenCloseEvent(const NiPointer<TESObjectREFR>& a_ref, const NiPointer<TESObjectREFR>& a_activeRef, bool a_isOpened)
+	{
+		using func_t = decltype(&ScriptEventSourceHolder::SendOpenCloseEvent);
+		REL::Offset<func_t> func = REL::ID(14190);
+		return func(this, a_ref, a_activeRef, a_isOpened);
 	}
 }

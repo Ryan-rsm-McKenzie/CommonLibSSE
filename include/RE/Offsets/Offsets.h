@@ -711,13 +711,6 @@ namespace RE
 		}
 
 
-		namespace ScriptEventSourceHolder
-		{
-			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(14108));
-			inline constexpr REL::ID SendActivateEvent(static_cast<std::uint64_t>(19666));
-		}
-
-
 		namespace SCRIPT_FUNCTION
 		{
 			inline constexpr REL::ID FirstConsoleCommand(static_cast<std::uint64_t>(501797));
