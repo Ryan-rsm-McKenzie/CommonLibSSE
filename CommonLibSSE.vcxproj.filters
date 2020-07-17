@@ -3631,9 +3631,6 @@
     <ClInclude Include="include\SKSE\Trampoline.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
-    <ClInclude Include="include\SKSE\VArgFormatter.h">
-      <Filter>include\SKSE</Filter>
-    </ClInclude>
     <ClInclude Include="include\SKSE\Version.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
@@ -4116,6 +4113,9 @@
     <ClCompile Include="src\RE\FormComponents\TESForm\TESWorldSpace.cpp">
       <Filter>src\RE\FormComponents\TESForm</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\FormComponents\TESLeveledList.cpp">
+      <Filter>src\RE\FormComponents</Filter>
+    </ClCompile>
     <ClCompile Include="src\RE\Inventory\ActorEquipManager.cpp">
       <Filter>src\RE\Inventory</Filter>
     </ClCompile>
@@ -4417,9 +4417,6 @@
       <Filter>src\SKSE</Filter>
     </ClCompile>
     <ClCompile Include="src\SKSE\Trampoline.cpp">
-      <Filter>src\SKSE</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SKSE\VArgFormatter.cpp">
       <Filter>src\SKSE</Filter>
     </ClCompile>
   </ItemGroup>

@@ -12,5 +12,4 @@
 #include "SKSE/RegistrationSet.h"
 #include "SKSE/SafeWrite.h"
 #include "SKSE/Trampoline.h"
-#include "SKSE/VArgFormatter.h"
 #include "SKSE/Version.h"

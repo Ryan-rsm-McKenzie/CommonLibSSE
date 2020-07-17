@@ -173,7 +173,7 @@ namespace REL
 		_version()
 	{
 		if (!_handle) {
-			_FATALERROR("Failed to get handle to module!");
+			SKSE::log::critical("Failed to get handle to module!");
 			assert(false);
 			throw std::exception();
 		}
@@ -294,7 +294,7 @@ namespace REL
 #endif
 	{
 		if (!Load()) {
-			_FATALERROR("Failed to load ID database!");
+			SKSE::log::critical("Failed to load ID database!");
 			assert(false);
 			throw std::exception();
 		}
@@ -352,7 +352,7 @@ namespace REL
 			IStream input(file);
 			return DoLoad(input, a_version);
 		} catch (std::exception& e) {
-			_ERROR("%s", e.what());
+			SKSE::log::error(e.what());
 			assert(false);
 			return false;
 		}
@@ -379,7 +379,7 @@ namespace REL
 			DoLoadImpl(a_input, buffer);
 		} catch (std::exception& e) {
 			assert(false);
-			_ERROR("%s in ID database", e.what());
+			SKSE::log::error("{} in ID database", e.what());
 			success = false;
 		}
 

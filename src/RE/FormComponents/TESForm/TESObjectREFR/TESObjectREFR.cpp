@@ -277,9 +277,7 @@ namespace RE
 	auto TESObjectREFR::GetInventory()
 		-> InventoryItemMap
 	{
-		return GetInventory([]([[maybe_unused]] TESBoundObject*) -> bool {
-			return true;
-		});
+		return GetInventory([](TESBoundObject*) { return true; });
 	}
 
 
@@ -305,16 +303,28 @@ namespace RE
 
 		auto container = GetContainer();
 		if (container) {
-			container->ForEachContainerObject([&](ContainerObject& a_entry) -> bool {
-				if (a_entry.obj && a_filter(a_entry.obj)) {
-					auto it = results.find(a_entry.obj);
+			std::set<TESForm*> llForms;
+			container->ForEachContainerObject([&](ContainerObject& a_entry) {
+				auto ll = a_entry.obj ? a_entry.obj->As<TESLeveledList>() : nullptr;
+				if (ll) {
+					llForms.merge(ll->GetContainedForms());
+				}
+				return true;
+			});
+
+			const auto ignore = [&](TESForm* a_form) { return llForms.find(a_form) != llForms.end(); };
+
+			container->ForEachContainerObject([&](ContainerObject& a_entry) {
+				auto obj = a_entry.obj;
+				if (obj && !ignore(obj) && a_filter(obj)) {
+					auto it = results.find(obj);
 					if (it == results.end()) {
 						[[maybe_unused]] auto insIt =
 							results.emplace(
-								a_entry.obj,
+								obj,
 								std::make_pair(
 									a_entry.count,
-									std::make_unique<InventoryEntryData>(a_entry.obj, 0)));
+									std::make_unique<InventoryEntryData>(obj, 0)));
 						assert(insIt.second);
 					} else {
 						it->second.first += a_entry.count;
@@ -342,44 +352,18 @@ namespace RE
 	auto TESObjectREFR::GetInventoryCounts()
 		-> InventoryCountMap
 	{
-		return GetInventoryCounts([]([[maybe_unused]] TESBoundObject*) -> bool {
-			return true;
-		});
+		return GetInventoryCounts([](TESBoundObject*) { return true; });
 	}
 
 
 	auto TESObjectREFR::GetInventoryCounts(std::function<bool(TESBoundObject*)> a_filter)
 		-> InventoryCountMap
 	{
+		auto itemMap = GetInventory(std::move(a_filter));
 		InventoryCountMap results;
-
-		auto invChanges = GetInventoryChanges();
-		if (invChanges && invChanges->entryList) {
-			for (auto& entry : *invChanges->entryList) {
-				if (entry && entry->object && a_filter(entry->object)) {
-					auto it = results.emplace(entry->object, entry->countDelta);
-					assert(it.second);
-				}
-			}
+		for (const auto& [key, value] : itemMap) {
+			results[key] = value.first;
 		}
-
-		auto container = GetContainer();
-		if (container) {
-			container->ForEachContainerObject([&](ContainerObject& a_entry) -> bool {
-				if (a_entry.obj && a_filter(a_entry.obj)) {
-					auto it = results.find(a_entry.obj);
-					if (it == results.end()) {
-						[[maybe_unused]] auto insIt =
-							results.emplace(a_entry.obj, a_entry.count);
-						assert(insIt.second);
-					} else {
-						it->second += a_entry.count;
-					}
-				}
-				return true;
-			});
-		}
-
 		return results;
 	}
 
@@ -651,13 +635,13 @@ namespace RE
 		assert(a_target);
 		auto node = a_target->Get3D();
 		if (!node) {
-			_DMESSAGE("Cannot move the target because it does not have 3D");
+			SKSE::log::debug("Cannot move the target because it does not have 3D");
 			return false;
 		}
 
 		auto object = node->GetObjectByName(a_nodeName);
 		if (!object) {
-			_DMESSAGE("Target does not have a node named %s", a_nodeName.c_str());
+			SKSE::log::debug("Target does not have a node named {}", a_nodeName.c_str());
 			return false;
 		}
 
@@ -753,7 +737,7 @@ namespace RE
 	{
 		auto node = Get3D();
 		if (!node) {
-			_DMESSAGE("Target does not have 3D");
+			SKSE::log::debug("Target does not have 3D");
 			return false;
 		}
 

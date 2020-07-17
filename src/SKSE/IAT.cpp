@@ -29,7 +29,7 @@ namespace SKSE
 		assert(a_module);
 		auto dosHeader = static_cast<IMAGE_DOS_HEADER*>(a_module);
 		if (dosHeader->e_magic != IMAGE_DOS_SIGNATURE) {
-			_ERROR("Invalid DOS header");
+			log::error("Invalid DOS header");
 			return nullptr;
 		}
 
@@ -56,7 +56,7 @@ namespace SKSE
 			}
 		}
 
-		_WARNING("Failed to find %s (%s)", a_dll.data(), a_function.data());
+		log::warn("Failed to find {} ({})", a_dll, a_function);
 		return nullptr;
 	}
 
@@ -70,7 +70,7 @@ namespace SKSE
 			origAddr = *reinterpret_cast<std::uintptr_t*>(oldFunc);
 			REL::SafeWrite64(oldFunc, a_newFunc);
 		} else {
-			_WARNING("Failed to patch %s (%s)", a_dll.data(), a_function.data());
+			log::warn("Failed to patch {} ({})", a_dll, a_function);
 		}
 
 		return origAddr;

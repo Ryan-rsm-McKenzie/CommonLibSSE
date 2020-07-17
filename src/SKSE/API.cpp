@@ -67,7 +67,7 @@ namespace SKSE
 		if (!g_apiInit) {
 			g_pluginHandle = a_skse->GetPluginHandle();
 			if (g_pluginHandle == kInvalidPluginHandle) {
-				_ERROR("Failed to get valid plugin handle!");
+				log::error("Failed to get valid plugin handle!");
 				return false;
 			}
 
@@ -75,91 +75,91 @@ namespace SKSE
 
 			g_scaleformInterface = static_cast<decltype(g_scaleformInterface)>(a_skse->QueryInterface(InterfaceID::kScaleform));
 			if (!g_scaleformInterface) {
-				_ERROR("Failed to query scaleform interface!");
+				log::error("Failed to query scaleform interface!");
 				return false;
 			}
 
 			g_papyrusInterface = static_cast<decltype(g_papyrusInterface)>(a_skse->QueryInterface(InterfaceID::kPapyrus));
 			if (!g_papyrusInterface) {
-				_ERROR("Failed to query papyrus interface!");
+				log::error("Failed to query papyrus interface!");
 				return false;
 			}
 
 			g_serializationInterface = static_cast<decltype(g_serializationInterface)>(a_skse->QueryInterface(InterfaceID::kSerialization));
 			if (!g_serializationInterface) {
-				_ERROR("Failed to query serialization interface!");
+				log::error("Failed to query serialization interface!");
 				return false;
 			}
 
 			g_taskInterface = static_cast<decltype(g_taskInterface)>(a_skse->QueryInterface(InterfaceID::kTask));
 			if (!g_taskInterface) {
-				_ERROR("Failed to query task interface!");
+				log::error("Failed to query task interface!");
 				return false;
 			}
 
 			g_messagingInterface = static_cast<decltype(g_messagingInterface)>(a_skse->QueryInterface(InterfaceID::kMessaging));
 			if (!g_messagingInterface) {
-				_ERROR("Failed to query messaging interface!");
+				log::error("Failed to query messaging interface!");
 				return false;
 			} else {
 				g_modCallbackEventSource = static_cast<decltype(g_modCallbackEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kModEvent));
 				if (!g_modCallbackEventSource) {
-					_ERROR("Failed to get mod callback event source!");
+					log::error("Failed to get mod callback event source!");
 					return false;
 				}
 
 				g_cameraEventSource = static_cast<decltype(g_cameraEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kCameraEvent));
 				if (!g_cameraEventSource) {
-					_ERROR("Failed to get camera event source!");
+					log::error("Failed to get camera event source!");
 					return false;
 				}
 
 				g_crosshairRefEventSource = static_cast<decltype(g_crosshairRefEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kCrosshairEvent));
 				if (!g_crosshairRefEventSource) {
-					_ERROR("Failed to get crosshair ref event source!");
+					log::error("Failed to get crosshair ref event source!");
 					return false;
 				}
 
 				g_actionEventSource = static_cast<decltype(g_actionEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kActionEvent));
 				if (!g_actionEventSource) {
-					_ERROR("Failed to get action event source!");
+					log::error("Failed to get action event source!");
 					return false;
 				}
 
 				g_niNodeUpdateEventSource = static_cast<decltype(g_niNodeUpdateEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kNiNodeUpdateEvent));
 				if (!g_niNodeUpdateEventSource) {
-					_ERROR("Failed to get ni node update event source!");
+					log::error("Failed to get ni node update event source!");
 					return false;
 				}
 			}
 
 			g_objectInterface = static_cast<decltype(g_objectInterface)>(a_skse->QueryInterface(InterfaceID::kObject));
 			if (!g_objectInterface) {
-				_ERROR("Failed to query object interface!");
+				log::error("Failed to query object interface!");
 				return false;
 			} else {
 				g_delayFunctorManager = std::addressof(g_objectInterface->GetDelayFunctorManager());
 				if (!g_delayFunctorManager) {
-					_ERROR("Failed to get delay functor manager!");
+					log::error("Failed to get delay functor manager!");
 					return false;
 				}
 
 				g_objectRegistry = std::addressof(g_objectInterface->GetObjectRegistry());
 				if (!g_objectRegistry) {
-					_ERROR("Failed to get object registry!");
+					log::error("Failed to get object registry!");
 					return false;
 				}
 
 				g_persistentObjectStorage = std::addressof(g_objectInterface->GetPersistentObjectStorage());
 				if (!g_persistentObjectStorage) {
-					_ERROR("Failed to get persistent object storage!");
+					log::error("Failed to get persistent object storage!");
 					return false;
 				}
 			}
 
 			// ensure static data managers are initialized if not already
-			[[maybe_unused]] auto idTest = REL::IDDatabase::IDToOffset(0);
-			[[maybe_unused]] auto moduleTest = REL::Module::BaseAddr();
+			(void)REL::IDDatabase::IDToOffset(0);
+			(void)REL::Module::BaseAddr();
 
 			g_apiInit = true;
 			for (auto& reg : g_apiInitRegs) {
@@ -309,7 +309,7 @@ namespace SKSE
 	bool AllocTrampoline(std::size_t a_size)
 	{
 		if (!g_trampoline.Create(a_size)) {
-			_ERROR("Trampoline creation failed!");
+			log::error("Trampoline creation failed!");
 			return false;
 		}
 

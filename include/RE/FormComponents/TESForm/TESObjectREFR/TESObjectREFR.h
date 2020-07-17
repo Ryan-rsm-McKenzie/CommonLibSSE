@@ -113,9 +113,9 @@ namespace RE
 
 
 		using Count = SInt32;
-		using InventoryCountMap = std::unordered_map<TESBoundObject*, Count>;
-		using InventoryItemMap = std::unordered_map<TESBoundObject*, std::pair<Count, std::unique_ptr<InventoryEntryData>>>;
-		using InventoryDropMap = std::unordered_map<TESBoundObject*, std::pair<Count, std::vector<ObjectRefHandle>>>;
+		using InventoryCountMap = std::map<TESBoundObject*, Count>;
+		using InventoryItemMap = std::map<TESBoundObject*, std::pair<Count, std::unique_ptr<InventoryEntryData>>>;
+		using InventoryDropMap = std::map<TESBoundObject*, std::pair<Count, std::vector<ObjectRefHandle>>>;
 
 
 		enum class MotionType : UInt32	// hkpMotion::MotionType

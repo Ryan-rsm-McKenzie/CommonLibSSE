@@ -28,6 +28,8 @@ namespace RE
 
 			struct PerThreadErrorCounts
 			{
+			public:
+				// members
 				UInt32 fatalCount;	  // 0
 				UInt32 errorCount;	  // 4
 				UInt32 warningCount;  // 8

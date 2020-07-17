@@ -4,171 +4,97 @@
 #include "RE/BSScript/LogEvent.h"
 
 
+// clang format chokes hard on classes with attributes
+#define SKSE_MAYBE_UNUSED [[maybe_unused]]
+#define SKSE_MAKE_SOURCE_LOGGER(a_func, a_type)                            \
+                                                                           \
+	template <class... Args>                                               \
+	struct SKSE_MAYBE_UNUSED a_func                                        \
+	{                                                                      \
+		a_func(                                                            \
+			spdlog::string_view_t a_fmt,                                   \
+			const Args&... a_args,                                         \
+			stl::source_location a_loc = stl::source_location::current())  \
+		{                                                                  \
+			spdlog::log(                                                   \
+				spdlog::source_loc{                                        \
+					a_loc.file_name(),                                     \
+					static_cast<int>(a_loc.line()),                        \
+					a_loc.function_name() },                               \
+				spdlog::level::a_type,                                     \
+				a_fmt,                                                     \
+				a_args...);                                                \
+		}                                                                  \
+	};                                                                     \
+                                                                           \
+	template <>                                                            \
+	struct SKSE_MAYBE_UNUSED a_func<>                                      \
+	{                                                                      \
+		a_func(                                                            \
+			spdlog::string_view_t a_fmt,                                   \
+			stl::source_location  a_loc = stl::source_location::current()) \
+		{                                                                  \
+			spdlog::log(                                                   \
+				spdlog::source_loc{                                        \
+					a_loc.file_name(),                                     \
+					static_cast<int>(a_loc.line()),                        \
+					a_loc.function_name() },                               \
+				spdlog::level::a_type,                                     \
+				std::string_view(                                          \
+					a_fmt.data(),                                          \
+					a_fmt.size()));                                        \
+		}                                                                  \
+	};                                                                     \
+                                                                           \
+	template <class... Args>                                               \
+	a_func(spdlog::string_view_t, const Args&...) -> a_func<Args...>;
+
+
 namespace SKSE
 {
-	namespace Impl
+	namespace log
 	{
-		class MacroLogger;
-		class TrampolineLogger;
+		SKSE_MAKE_SOURCE_LOGGER(trace, trace);
+		SKSE_MAKE_SOURCE_LOGGER(debug, debug);
+		SKSE_MAKE_SOURCE_LOGGER(info, info);
+		SKSE_MAKE_SOURCE_LOGGER(warn, warn);
+		SKSE_MAKE_SOURCE_LOGGER(error, err);
+		SKSE_MAKE_SOURCE_LOGGER(critical, critical);
+
+		[[nodiscard]] inline std::filesystem::path log_directory()
+		{
+			wchar_t*											 buffer{ nullptr };
+			auto												 result = SHGetKnownFolderPath(FOLDERID_Documents, KNOWN_FOLDER_FLAG::KF_FLAG_DEFAULT, nullptr, std::addressof(buffer));
+			std::unique_ptr<wchar_t[], decltype(&CoTaskMemFree)> knownPath(buffer, CoTaskMemFree);
+			if (!knownPath || result != S_OK) {
+				throw std::runtime_error("failed to get known folder path"s);
+			}
+
+			std::filesystem::path path = knownPath.get();
+			path /= "My Games/Skyrim Special Edition/SKSE"sv;
+			return path;
+		}
 	}
 
-
-	class Trampoline;
-
-
-	class Logger
-	{
-	public:
-		enum class Level
-		{
-			kDebugMessage,
-			kVerboseMessage,
-			kMessage,
-			kWarning,
-			kError,
-			kFatalError
-		};
-
-
-		static constexpr auto			  DF_OPENMODE = std::ios_base::out | std::ios_base::trunc;
-		static constexpr auto			  DF_REGEXFLAGS = std::regex::grep | std::regex::icase;
-		static constexpr std::string_view DF_TIMEFMT = "%F %I:%M:%S %p";
-
-
-		static bool OpenRelative(const KNOWNFOLDERID& a_referenceID, const std::filesystem::path& a_fileName, std::ios_base::openmode a_mode = DF_OPENMODE);
-		static bool OpenRelative(const KNOWNFOLDERID& a_referenceID, std::filesystem::path&& a_fileName, std::ios_base::openmode a_mode = DF_OPENMODE);
-		static bool OpenAbsolute(const std::filesystem::path& a_fileName, std::ios_base::openmode a_mode = DF_OPENMODE);
-		static bool OpenAbsolute(std::filesystem::path&& a_fileName, std::ios_base::openmode a_mode = DF_OPENMODE);
-
-		static Level						SetPrintLevel(Level a_printLevel);
-		static Level						SetFlushLevel(Level a_flushLevel);
-		static bool							UseLogStamp(bool a_enable);
-		static bool							UseThreadID(bool a_enable);
-		static std::pair<bool, std::string> UseTimeStamp(bool a_enable, std::string_view a_fmt = DF_TIMEFMT);
-		static bool							HookPapyrusLog(bool a_enable);
-		static std::regex					SetPapyrusLogFilter(std::string a_filter, std::regex::flag_type a_flags = DF_REGEXFLAGS);
-		static std::regex					SetPapyrusLogFilter(std::regex a_filter);
-		static bool							TrackTrampolineStats(bool a_enable);
-
-		static void Print(const char* a_string);
-		static void Print(Level a_level, const char* a_string);
-		static void VPrint(const char* a_format, ...);
-		static void VPrint(Level a_level, const char* a_format, ...);
-
-	private:
-		using Lock = std::mutex;
-		using Locker = std::lock_guard<Lock>;
-
-
-		friend class Impl::MacroLogger;
-		friend class Impl::TrampolineLogger;
-		friend class LogEventHandler;
-
-
-		enum class StampType
-		{
-			kDebugMessage,
-			kVerboseMessage,
-			kMessage,
-			kWarning,
-			kError,
-			kFatalError,
-
-			kPapyrus,
-			kTrampoline
-		};
-
-
-		class LogEventHandler : public RE::BSTEventSink<RE::BSScript::LogEvent>
-		{
-		public:
-			using EventResult = RE::BSEventNotifyControl;
-
-
-			static LogEventHandler* GetSingleton();
-
-			virtual EventResult ProcessEvent(const RE::BSScript::LogEvent* a_event, RE::BSTEventSource<RE::BSScript::LogEvent>* a_eventSource) override;
-
-		private:
-			LogEventHandler() = default;
-			LogEventHandler(const LogEventHandler&) = delete;
-			LogEventHandler(LogEventHandler&&) = delete;
-			virtual ~LogEventHandler() = default;
-
-			LogEventHandler& operator=(const LogEventHandler&) = delete;
-			LogEventHandler& operator=(LogEventHandler&&) = delete;
-		};
-
-
-		Logger() = delete;
-		Logger(const Logger&) = delete;
-		Logger(Logger&&) = delete;
-		~Logger() = delete;
-
-		Logger& operator=(const Logger&) = delete;
-		Logger& operator=(Logger&&) = delete;
-
-		static StampType		LevelToStamp(Level a_level);
-		static std::string_view GetLogStamp(StampType a_type);
-		static std::string		GetThreadID();
-		static std::string		GetTimeStamp();
-		static void				Print_Impl(const char* a_prefix, Level a_level, const char* a_string, StampType a_type);
-		static void				VPrint_Impl(const char* a_prefix, Level a_level, const char* a_format, std::va_list a_args, StampType a_type);
-
-
-		static Lock			 _lock;
-		static std::ofstream _file;
-		static std::regex	 _papyrusLogFilter;
-		static std::string	 _timeFmt;
-		static Level		 _printLevel;
-		static Level		 _flushLevel;
-		static bool			 _logStamp;
-		static bool			 _threadID;
-		static bool			 _timeStamp;
-		static bool			 _hookPapyrusLog;
-		static bool			 _trackTrampolineStats;
-	};
-
-
-	namespace Impl
-	{
-		class MacroLogger
-		{
-		public:
-			static void VPrint(const char* a_file, std::size_t a_line, Logger::Level a_level, const char* a_format, ...);
-
-		private:
-			MacroLogger() = delete;
-			MacroLogger(const MacroLogger&) = delete;
-			MacroLogger(MacroLogger&&) = delete;
-			~MacroLogger() = delete;
-
-			MacroLogger& operator=(const MacroLogger&) = delete;
-			MacroLogger& operator=(MacroLogger&&) = delete;
-		};
-
-
-		class TrampolineLogger
-		{
-		public:
-			static void LogStats(const char* a_file, std::size_t a_line, const Trampoline& a_trampoline);
-
-		private:
-			TrampolineLogger() = delete;
-			TrampolineLogger(const TrampolineLogger&) = delete;
-			TrampolineLogger(TrampolineLogger&&) = delete;
-			~TrampolineLogger() = delete;
-
-			TrampolineLogger& operator=(const TrampolineLogger&) = delete;
-			TrampolineLogger& operator=(TrampolineLogger&&) = delete;
-		};
-	}
+	void add_papyrus_sink(std::regex a_filter);
+	void remove_papyrus_sink();
 }
 
 
-#define _DMESSAGE(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kDebugMessage, a_fmt, ##__VA_ARGS__)
-#define _VMESSAGE(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kVerboseMessage, a_fmt, ##__VA_ARGS__)
-#define _MESSAGE(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kMessage, a_fmt, ##__VA_ARGS__)
-#define _WARNING(a_fmt, ...)	SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kWarning, a_fmt, ##__VA_ARGS__)
-#define _ERROR(a_fmt, ...)		SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kError, a_fmt, ##__VA_ARGS__)
-#define _FATALERROR(a_fmt, ...) SKSE::Impl::MacroLogger::VPrint(__FILE__, __LINE__, SKSE::Logger::Level::kFatalError, a_fmt, ##__VA_ARGS__)
+#undef SKSE_MAKE_SOURCE_LOGGER
+#undef SKSE_MAYBE_UNUSED
+
+
+#define _DMESSAGE(a_fmt, ...)
+#define _VMESSAGE(a_fmt, ...)
+#define _MESSAGE(a_fmt, ...)
+#define _WARNING(a_fmt, ...)
+#define _ERROR(a_fmt, ...)
+#define _FATALERROR(a_fmt, ...)
+
+#pragma deprecated("_DMESSAGE");
+#pragma deprecated("_VMESSAGE");
+#pragma deprecated("_MESSAGE");
+#pragma deprecated("_WARNING");
+#pragma deprecated("_ERROR");
+#pragma deprecated("_FATALERROR");

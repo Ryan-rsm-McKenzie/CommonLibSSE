@@ -79,7 +79,7 @@ namespace SKSE
 	bool Trampoline::Create(std::size_t a_size, void* a_module)
 	{
 		if (a_size == 0) {
-			_ERROR("%s was called with a zero size", __func__);
+			log::error("{} was called with a zero size", __func__);
 			assert(false);
 			return false;
 		}
@@ -91,7 +91,7 @@ namespace SKSE
 
 		auto mem = Create_Impl(a_size, reinterpret_cast<std::uintptr_t>(a_module));
 		if (!mem) {
-			_ERROR("%s failed to create trampoline", __func__);
+			log::error("{} failed to create trampoline", __func__);
 			assert(false);
 			return false;
 		}
@@ -276,7 +276,7 @@ namespace SKSE
 		MEMORY_BASIC_INFORMATION mbi;
 		do {
 			if (!VirtualQuery(reinterpret_cast<void*>(min), &mbi, sizeof(mbi))) {
-				_ERROR("VirtualQuery failed with code: %08X", GetLastError());
+				log::error("VirtualQuery failed with code: 0x{:08X}", GetLastError());
 				assert(false);
 				return nullptr;
 			}
@@ -293,7 +293,7 @@ namespace SKSE
 					if (mem) {
 						return mem;
 					} else {
-						_WARNING("VirtualAlloc failed with code: %08X", GetLastError());
+						log::warn("VirtualAlloc failed with code: 0x{:08X}", GetLastError());
 					}
 				}
 			}
@@ -306,13 +306,13 @@ namespace SKSE
 	void* Trampoline::Allocate_Impl(std::size_t a_size)
 	{
 		if (a_size > FreeSize_Impl()) {
-			_ERROR("Failed to handle allocation request");
+			log::error("Failed to handle allocation request");
 			assert(false);
 			return nullptr;
 		}
 
 		if (_allocating) {
-			_ERROR("A call was made to %s while already allocating", __func__);
+			log::error("A call was made to {} while already allocating", __func__);
 			assert(false);
 			return nullptr;
 		}
@@ -327,7 +327,7 @@ namespace SKSE
 	void* Trampoline::StartAlloc_Impl()
 	{
 		if (_allocating) {
-			_ERROR("A call was made to %s while already allocating", __func__);
+			log::error("A call was made to {} while already allocating", __func__);
 			assert(false);
 			return nullptr;
 		}
@@ -341,14 +341,14 @@ namespace SKSE
 	void Trampoline::EndAlloc_Impl(std::size_t a_size)
 	{
 		if (!_allocating) {
-			_ERROR("A call was made to %s without initiating allocation", __func__);
+			log::error("A call was made to {} without initiating allocation", __func__);
 			assert(false);
 			return;
 		}
 
 		_size += a_size;
 		if (_size > _capacity) {
-			_FATALERROR("An unbounded allocation has overrun its buffer");
+			log::critical("An unbounded allocation has overrun its buffer");
 			assert(false);
 			std::abort();
 		}
@@ -415,7 +415,7 @@ namespace SKSE
 		auto mem = StartAlloc<TrampolineAssembly>();
 		if (!mem || FreeSize_Impl() < sizeof(TrampolineAssembly)) {
 			EndAlloc(END_ALLOC_TAG);
-			_ERROR("Trampoline ran out of space");
+			log::error("Trampoline ran out of space");
 			assert(false);
 			return false;
 		}
@@ -423,7 +423,7 @@ namespace SKSE
 		const std::ptrdiff_t disp = reinterpret_cast<std::uintptr_t>(mem) - (a_src + sizeof(SrcAssembly));
 		if (!IsDisplacementInRange(disp)) {
 			EndAlloc(END_ALLOC_TAG);
-			_ERROR("Displacement is out of range");
+			log::error("Displacement is out of range");
 			assert(false);
 			return false;
 		}
@@ -461,7 +461,7 @@ namespace SKSE
 		auto mem = StartAlloc<std::uintptr_t>();
 		if (!mem || FreeSize_Impl() < sizeof(std::uintptr_t)) {
 			EndAlloc(END_ALLOC_TAG);
-			_ERROR("Trampoline ran out of space");
+			log::error("Trampoline ran out of space");
 			assert(false);
 			return false;
 		}
@@ -469,7 +469,7 @@ namespace SKSE
 		const std::ptrdiff_t disp = reinterpret_cast<std::uintptr_t>(mem) - (a_src + sizeof(Assembly));
 		if (!IsDisplacementInRange(disp)) {
 			EndAlloc(END_ALLOC_TAG);
-			_ERROR("Displacement is out of range");
+			log::error("Displacement is out of range");
 			assert(false);
 			return false;
 		}
@@ -525,7 +525,10 @@ namespace SKSE
 
 	void Trampoline::LogStats() const
 	{
-		Impl::TrampolineLogger::LogStats(__FILE__, __LINE__, *this);
+		auto pct = (static_cast<double>(_size) /
+					   static_cast<double>(_capacity)) *
+				   100.0;
+		log::info("{} => {}B / {}B ({:05.2f})"sv, _name, _size, _capacity, pct);
 	}
 
 

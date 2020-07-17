@@ -2,6 +2,7 @@
 
 #include "RE/FormComponents/BaseFormComponent.h"
 #include "RE/FormComponents/Components/ContainerItemExtra.h"
+#include "RE/FormComponents/Enums/FormTypes.h"
 #include "RE/Memory/MemoryManager.h"
 
 
@@ -52,6 +53,8 @@ namespace RE
 		virtual bool   GetMultCalc();										 // 05 - { return (flags >> 1) & 1; }
 		virtual SInt32 GetLevDifferenceMax();								 // 06 - { return 0; }
 		virtual bool   GetCanContainFormsOfType(FormType a_type) const = 0;	 // 07
+
+		std::set<TESForm*> GetContainedForms() const;
 
 
 		// members

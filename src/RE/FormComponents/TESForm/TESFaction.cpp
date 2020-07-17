@@ -249,7 +249,7 @@ namespace RE
 				processLists->ClearCachedFactionFightReactions();
 			}
 		} else {
-			_DMESSAGE("Cannot be an ally of a NONE faction");
+			SKSE::log::debug("Cannot be an ally of a NONE faction");
 		}
 	}
 
@@ -282,7 +282,7 @@ namespace RE
 				processLists->ClearCachedFactionFightReactions();
 			}
 		} else {
-			_DMESSAGE("Cannot be an ally of a NONE faction");
+			SKSE::log::debug("Cannot be an ally of a NONE faction");
 		}
 	}
 

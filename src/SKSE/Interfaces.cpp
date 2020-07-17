@@ -71,7 +71,7 @@ namespace SKSE
 	{
 		auto result = GetProxy()->Register(a_name, a_callback);
 		if (!result) {
-			_ERROR("Failed to register %s for scaleform interface callback", a_name);
+			log::error("Failed to register {} for scaleform interface callback", a_name);
 		}
 		return result;
 	}
@@ -259,7 +259,7 @@ namespace SKSE
 		} else {
 			auto result = GetProxy()->Register(a_fn);
 			if (!result) {
-				_ERROR("Failed to register for papyrus interface");
+				log::error("Failed to register for papyrus interface");
 			}
 			return result;
 		}
@@ -276,7 +276,7 @@ namespace SKSE
 		} else {
 			auto result = GetProxy()->Register(a_fn);
 			if (!result) {
-				_ERROR("Failed to register for papyrus interface");
+				log::error("Failed to register for papyrus interface");
 			}
 			return result;
 		}
@@ -299,7 +299,7 @@ namespace SKSE
 	{
 		auto result = GetProxy()->Dispatch(GetPluginHandle(), a_messageType, a_data, a_dataLen, a_receiver);
 		if (!result) {
-			_ERROR("Failed to dispatch message to %s", (a_receiver ? a_receiver : "all listeners"));
+			log::error("Failed to dispatch message to {}", (a_receiver ? a_receiver : "all listeners"));
 		}
 		return result;
 	}
@@ -321,7 +321,7 @@ namespace SKSE
 	{
 		auto result = GetProxy()->RegisterListener(GetPluginHandle(), a_sender, a_callback);
 		if (!result) {
-			_ERROR("Failed to register messaging listener for %s", a_sender);
+			log::error("Failed to register messaging listener for {}", a_sender);
 		}
 		return result;
 	}

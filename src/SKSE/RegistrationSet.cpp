@@ -149,7 +149,7 @@ namespace SKSE
 		{
 			assert(a_intfc);
 			if (!a_intfc->OpenRecord(a_type, a_version)) {
-				_ERROR("Failed to open record!");
+				log::error("Failed to open record");
 				return false;
 			}
 
@@ -163,13 +163,13 @@ namespace SKSE
 			Locker locker(_lock);
 			const std::size_t numRegs = _handles.size();
 			if (!a_intfc->WriteRecordData(numRegs)) {
-				_ERROR("Failed to save number of regs (%zu)!", numRegs);
+				log::error("Failed to save number of regs ({})", numRegs);
 				return false;
 			}
 
 			for (auto& handle : _handles) {
 				if (!a_intfc->WriteRecordData(handle)) {
-					_ERROR("Failed to save reg (%u)!", handle);
+					log::error("Failed to save reg ({})", handle);
 					return false;
 				}
 			}
@@ -190,11 +190,11 @@ namespace SKSE
 			for (std::size_t i = 0; i < numRegs; ++i) {
 				a_intfc->ReadRecordData(handle);
 				if (!a_intfc->ResolveHandle(handle, handle)) {
-					_WARNING("Failed to resolve handle (%u)", handle);
+					log::warn("Failed to resolve handle ({})", handle);
 				} else {
 					auto result = _handles.insert(handle);
 					if (!result.second) {
-						_ERROR("Loaded duplicate handle (%u)!\n", handle);
+						log::error("Loaded duplicate handle ({})", handle);
 					}
 				}
 			}
@@ -209,14 +209,14 @@ namespace SKSE
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			if (!policy) {
-				_ERROR("Failed to get handle policy!");
+				log::error("Failed to get handle policy");
 				return false;
 			}
 
 			const auto invalidHandle = policy->EmptyHandle();
 			const auto handle = policy->GetHandleForObject(a_typeID, a_object);
 			if (handle == invalidHandle) {
-				_ERROR("Failed to create handle!");
+				log::error("Failed to create handle");
 				return false;
 			}
 
@@ -225,7 +225,7 @@ namespace SKSE
 			_lock.unlock();
 
 			if (!result.second) {
-				_WARNING("Handle already registered (%u)", handle);
+				log::warn("Handle already registered ({})", handle);
 			} else {
 				policy->PersistHandle(handle);
 			}
@@ -239,21 +239,21 @@ namespace SKSE
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			if (!policy) {
-				_ERROR("Failed to get handle policy!");
+				log::error("Failed to get handle policy!");
 				return false;
 			}
 
 			auto invalidHandle = policy->EmptyHandle();
 			auto handle = policy->GetHandleForObject(a_typeID, a_object);
 			if (handle == invalidHandle) {
-				_ERROR("Failed to create handle!");
+				log::error("Failed to create handle!");
 				return false;
 			}
 
 			Locker locker(_lock);
 			auto it = _handles.find(handle);
 			if (it == _handles.end()) {
-				_WARNING("Could not find registration");
+				log::warn("Could not find registration");
 				return false;
 			} else {
 				policy->ReleaseHandle(*it);

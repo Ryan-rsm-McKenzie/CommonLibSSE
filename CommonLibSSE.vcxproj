@@ -1429,7 +1429,6 @@
     <ClInclude Include="include\SKSE\SafeWrite.h" />
     <ClInclude Include="include\SKSE\SKSE.h" />
     <ClInclude Include="include\SKSE\Trampoline.h" />
-    <ClInclude Include="include\SKSE\VArgFormatter.h" />
     <ClInclude Include="include\SKSE\Version.h" />
   </ItemGroup>
   <ItemGroup>
@@ -1594,6 +1593,7 @@
     <ClCompile Include="src\RE\FormComponents\TESForm\TESTopic.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESTopicInfo.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESWorldSpace.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESLeveledList.cpp" />
     <ClCompile Include="src\RE\Inventory\ActorEquipManager.cpp" />
     <ClCompile Include="src\RE\Inventory\ExtraDataList.cpp" />
     <ClCompile Include="src\RE\Inventory\Inventory3DManager.cpp" />
@@ -1706,7 +1706,6 @@
     <ClCompile Include="src\SKSE\RegistrationMap.cpp" />
     <ClCompile Include="src\SKSE\RegistrationSet.cpp" />
     <ClCompile Include="src\SKSE\Trampoline.cpp" />
-    <ClCompile Include="src\SKSE\VArgFormatter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />
