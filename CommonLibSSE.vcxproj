@@ -1461,13 +1461,11 @@
     <ClCompile Include="src\RE\BSExtraData\ExtraContainerChanges.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraCount.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraEnchantment.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraFlags.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraForcedTarget.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraHealth.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraHotkey.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraLightData.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraLock.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraMapMarker.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraMissingLinkedRefIDs.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraOwnership.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraPoison.cpp" />
@@ -1556,7 +1554,6 @@
     <ClCompile Include="src\RE\FormComponents\Components\IHandlerFunctor.cpp" />
     <ClCompile Include="src\RE\FormComponents\Components\MagicTarget.cpp" />
     <ClCompile Include="src\RE\FormComponents\Components\TESCondition.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESActorBaseData.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESAIForm.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESContainer.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESDescription.cpp" />
@@ -1671,7 +1668,6 @@
     <ClCompile Include="src\RE\Scaleform\GMemoryHeap\GMemoryHeap.cpp" />
     <ClCompile Include="src\RE\Scaleform\GMemory\GMemory.cpp" />
     <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountImpl.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountImplCore.cpp" />
     <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountNTSImpl.cpp" />
     <ClCompile Include="src\RE\Scaleform\GRenderer\GRenderer.cpp" />
     <ClCompile Include="src\RE\Scaleform\GRenderer\GViewport.cpp" />

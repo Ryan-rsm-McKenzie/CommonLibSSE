@@ -45,7 +45,7 @@ namespace RE
 		_fov(0.0),
 		_viewMatrix3D(),
 		_perspMatrix3D(),
-		_flags(Flag::kX | Flag::kY),
+		_flags(Flag::kX, Flag::kY),
 		_padD2(0),
 		_padD4(0)
 	{}
@@ -191,7 +191,7 @@ namespace RE
 
 	bool GFxValue::DisplayInfo::IsFlagSet(Flag a_flag) const
 	{
-		return (_flags & a_flag) != Flag::kNone;
+		return _flags.all(a_flag);
 	}
 
 
@@ -219,7 +219,7 @@ namespace RE
 
 	void GFxValue::DisplayInfo::SetVisible(bool a_visible)
 	{
-		SetFlags(Flag::kVisible);
+		_flags.set(Flag::kVisible);
 		_visible = a_visible;
 	}
 
@@ -227,7 +227,7 @@ namespace RE
 	void GFxValue::DisplayInfo::SetPerspectiveMatrix3D(const GMatrix3D* a_mat)
 	{
 		if (a_mat) {
-			SetFlags(Flag::kPerspMatrix3D);
+			_flags.set(Flag::kPerspMatrix3D);
 			_perspMatrix3D = *a_mat;
 		} else {
 			ClearFlags(Flag::kPerspMatrix3D);
@@ -237,7 +237,7 @@ namespace RE
 
 	void GFxValue::DisplayInfo::Set(double a_x, double a_y, double a_rotation, double a_xScale, double a_yScale, double a_alpha, bool a_visible)
 	{
-		SetFlags(Flag::kX | Flag::kY | Flag::kRotation | Flag::kXScale | Flag::kYScale | Flag::kAlpha | Flag::kVisible);
+		_flags.set(Flag::kX, Flag::kY, Flag::kRotation, Flag::kXScale, Flag::kYScale, Flag::kAlpha, Flag::kVisible);
 		_x = a_x;
 		_y = a_y;
 		_rotation = a_rotation;
@@ -250,7 +250,7 @@ namespace RE
 
 	void GFxValue::DisplayInfo::Set(double a_x, double a_y, double a_rotation, double a_xScale, double a_yScale, double a_alpha, bool a_visible, double a_z, double a_xRotation, double a_yRotation, double a_zScale)
 	{
-		SetFlags(Flag::kX | Flag::kY | Flag::kRotation | Flag::kXScale | Flag::kYScale | Flag::kAlpha | Flag::kVisible | Flag::kZ | Flag::kXRotation | Flag::kYRotation | Flag::kZScale);
+		_flags.set(Flag::kX, Flag::kY, Flag::kRotation, Flag::kXScale, Flag::kYScale, Flag::kAlpha, Flag::kVisible, Flag::kZ, Flag::kXRotation, Flag::kYRotation, Flag::kZScale);
 		_x = a_x;
 		_y = a_y;
 		_rotation = a_rotation;
@@ -268,7 +268,7 @@ namespace RE
 	void GFxValue::DisplayInfo::SetViewMatrix3D(const GMatrix3D* a_mat)
 	{
 		if (a_mat) {
-			SetFlags(Flag::kViewMatrix3D);
+			_flags.set(Flag::kViewMatrix3D);
 			_viewMatrix3D = *a_mat;
 		} else {
 			ClearFlags(Flag::kViewMatrix3D);
@@ -278,21 +278,21 @@ namespace RE
 
 	void GFxValue::DisplayInfo::SetAlpha(double a_alpha)
 	{
-		SetFlags(Flag::kAlpha);
+		_flags.set(Flag::kAlpha);
 		_alpha = a_alpha;
 	}
 
 
 	void GFxValue::DisplayInfo::SetFOV(double a_fov)
 	{
-		SetFlags(Flag::kFOV);
+		_flags.set(Flag::kFOV);
 		_fov = a_fov;
 	}
 
 
 	void GFxValue::DisplayInfo::SetPosition(double a_x, double a_y)
 	{
-		SetFlags(Flag::kX | Flag::kY);
+		_flags.set(Flag::kX, Flag::kY);
 		_x = a_x;
 		_y = a_y;
 	}
@@ -300,14 +300,14 @@ namespace RE
 
 	void GFxValue::DisplayInfo::SetRotation(double a_degrees)
 	{
-		SetFlags(Flag::kRotation);
+		_flags.set(Flag::kRotation);
 		_rotation = a_degrees;
 	}
 
 
 	void GFxValue::DisplayInfo::SetScale(double a_xScale, double a_yScale)
 	{
-		SetFlags(Flag::kXScale | Flag::kYScale);
+		_flags.set(Flag::kXScale, Flag::kYScale);
 		_xScale = a_xScale;
 		_yScale = a_yScale;
 	}
@@ -315,69 +315,69 @@ namespace RE
 
 	void GFxValue::DisplayInfo::SetX(double a_x)
 	{
-		SetFlags(Flag::kX);
+		_flags.set(Flag::kX);
 		_x = a_x;
 	}
 
 
 	void GFxValue::DisplayInfo::SetXRotation(double a_degrees)
 	{
-		SetFlags(Flag::kXRotation);
+		_flags.set(Flag::kXRotation);
 		_xRotation = a_degrees;
 	}
 
 
 	void GFxValue::DisplayInfo::SetXScale(double a_xScale)
 	{
-		SetFlags(Flag::kXScale);
+		_flags.set(Flag::kXScale);
 		_xScale = a_xScale;
 	}
 
 
 	void GFxValue::DisplayInfo::SetY(double a_y)
 	{
-		SetFlags(Flag::kY);
+		_flags.set(Flag::kY);
 		_y = a_y;
 	}
 
 
 	void GFxValue::DisplayInfo::SetYRotation(double a_degrees)
 	{
-		SetFlags(Flag::kRotation);
+		_flags.set(Flag::kRotation);
 		_yRotation = a_degrees;
 	}
 
 
 	void GFxValue::DisplayInfo::SetYScale(double a_yScale)
 	{
-		SetFlags(Flag::kYScale);
+		_flags.set(Flag::kYScale);
 		_yScale = a_yScale;
 	}
 
 
 	void GFxValue::DisplayInfo::SetZ(double a_z)
 	{
-		SetFlags(Flag::kZ);
+		_flags.set(Flag::kZ);
 		_z = a_z;
 	}
 
 
 	void GFxValue::DisplayInfo::SetZScale(double a_zScale)
 	{
-		SetFlags(Flag::kZScale);
+		_flags.set(Flag::kZScale);
 		_zScale = a_zScale;
 	}
 
 
 	void GFxValue::DisplayInfo::SetFlags(Flag a_flags)
 	{
-		_flags |= a_flags;
+		_flags.set(a_flags);
 	}
 
 
 	void GFxValue::DisplayInfo::ClearFlags(Flag a_flags)
 	{
-		_flags &= ~a_flags;
+		_flags.reset(a_flags);
 	}
 
 
@@ -755,7 +755,7 @@ namespace RE
 		if (_type != a_rhs._type) {
 			return false;
 		} else {
-			switch (*_type & ValueType::kValueMask) {
+			switch (*(_type & ValueType::kValueMask)) {
 			case ValueType::kBoolean:
 				return _value.boolean == a_rhs._value.boolean;
 			case ValueType::kNumber:
@@ -779,7 +779,7 @@ namespace RE
 
 	GFxValue::ValueType GFxValue::GetType() const
 	{
-		return *_type & ValueType::kTypeMask;
+		return *(_type & ValueType::kTypeMask);
 	}
 
 
@@ -1106,7 +1106,7 @@ namespace RE
 
 	bool GFxValue::IsManagedValue() const
 	{
-		return (_type & ValueType::kManagedBit) != ValueType::kUndefined;
+		return _type.all(ValueType::kManagedBit);
 	}
 
 

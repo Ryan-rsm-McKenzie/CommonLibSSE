@@ -70,7 +70,7 @@ namespace RE
 		scissorHeight(a_scH),
 		scale(a_scale),
 		aspectRatio(a_ratio),
-		flags(a_flags | Flag::kUseScissorRect),
+		flags(a_flags, Flag::kUseScissorRect),
 		pad34(0)
 	{}
 
@@ -117,6 +117,6 @@ namespace RE
 		scissorTop = a_scTop;
 		scissorWidth = a_scW;
 		scissorHeight = a_scH;
-		flags |= Flag::kUseScissorRect;
+		flags.set(Flag::kUseScissorRect);
 	}
 }

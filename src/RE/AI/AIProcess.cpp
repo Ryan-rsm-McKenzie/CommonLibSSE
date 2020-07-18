@@ -95,7 +95,7 @@ namespace RE
 
 	bool AIProcess::IsGhost() const
 	{
-		return cachedValues && (cachedValues->flags & CachedValues::Flags::kActorIsGhost) != CachedValues::Flags::kNone;
+		return cachedValues && cachedValues->flags.all(CachedValues::Flags::kActorIsGhost);
 	}
 
 
@@ -118,7 +118,7 @@ namespace RE
 	void AIProcess::Set3DUpdateFlag(RESET_3D_FLAGS a_flags)
 	{
 		if (middleHigh) {
-			middleHigh->update3DModel |= a_flags;
+			middleHigh->update3DModel.set(a_flags);
 		}
 	}
 

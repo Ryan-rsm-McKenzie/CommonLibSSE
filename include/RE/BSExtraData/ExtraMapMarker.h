@@ -88,7 +88,8 @@ namespace RE
 		};
 
 
-		void Enable(bool a_enabled);
+		constexpr void SetHidden(bool a_value) noexcept { a_value ? flags.set(Flag::kShowAllHidden) : flags.reset(Flag::kShowAllHidden); }
+		constexpr void SetVisible(bool a_value) noexcept { a_value ? flags.set(Flag::kVisible) : flags.reset(Flag::kVisible); }
 
 
 		// members

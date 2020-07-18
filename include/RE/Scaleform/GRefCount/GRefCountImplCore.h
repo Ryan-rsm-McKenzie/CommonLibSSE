@@ -9,17 +9,16 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_GRefCountImplCore;
 
 
-		GRefCountImplCore();
 		virtual ~GRefCountImplCore() = default;	 // 00
 
-		static void CheckInvalidDelete(GRefCountImplCore*);
+		static void CheckInvalidDelete(GRefCountImplCore*) {}
 
-		std::int32_t GetRefCount() const;
+		[[nodiscard]] constexpr std::int32_t GetRefCount() const noexcept { return _refCount; }
 
 	protected:
 		// members
-		volatile std::uint32_t _refCount;  // 08
-		std::uint32_t		   _pad0C;	   // 0C
+		volatile std::uint32_t _refCount{ 1 };	// 08
+		std::uint32_t		   _pad0C{ 0 };		// 0C
 	};
 	static_assert(sizeof(GRefCountImplCore) == 0x10);
 }

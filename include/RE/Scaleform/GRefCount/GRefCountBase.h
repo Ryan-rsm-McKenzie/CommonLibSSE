@@ -16,8 +16,5 @@ namespace RE
 		{
 			kStatType = STAT
 		};
-
-
-		GRefCountBase() = default;
 	};
 }

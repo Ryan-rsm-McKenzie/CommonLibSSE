@@ -5,6 +5,6 @@ namespace RE
 {
 	bool TESObjectLIGH::CanBeCarried() const
 	{
-		return (data.flags & TES_LIGHT_FLAGS::kCanCarry) != TES_LIGHT_FLAGS::kNone;
+		return data.flags.all(TES_LIGHT_FLAGS::kCanCarry);
 	}
 }

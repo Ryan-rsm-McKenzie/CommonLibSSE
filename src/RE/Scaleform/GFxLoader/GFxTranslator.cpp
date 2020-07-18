@@ -30,7 +30,7 @@ namespace RE
 
 	bool GFxTranslator::TranslateInfo::IsKeyHTML() const
 	{
-		return (flags & Flag::kResultSourceHTML) != Flag::kNone;
+		return flags.all(Flag::kResultSourceHTML);
 	}
 
 
@@ -46,14 +46,14 @@ namespace RE
 		} else {
 			*result = a_resultText;
 		}
-		flags |= Flag::kTranslated;
+		flags.set(Flag::kTranslated);
 	}
 
 
 	void GFxTranslator::TranslateInfo::SetResultHTML(const wchar_t* a_resultHTML, UPInt a_resultLen)
 	{
 		SetResult(a_resultHTML, a_resultLen);
-		flags |= Flag::kResultHTML;
+		flags.set(Flag::kResultHTML);
 	}
 
 
@@ -90,8 +90,8 @@ namespace RE
 			return false;
 		}
 
-		if ((wwMode & WordWrappingType::kAll) != WordWrappingType::kNone && a_desc->numCharsInLine > 0) {
-			auto pos = GFxWWHelper::FindWordWrapPos(wwMode, a_desc->proposedWordWrapPoint, a_desc->paraText, a_desc->paraTextLen, a_desc->lineStartPos, a_desc->numCharsInLine);
+		if (wwMode.all(WordWrappingType::kAll) && a_desc->numCharsInLine > 0) {
+			auto pos = GFxWWHelper::FindWordWrapPos(*wwMode, a_desc->proposedWordWrapPoint, a_desc->paraText, a_desc->paraTextLen, a_desc->lineStartPos, a_desc->numCharsInLine);
 			if (pos == UPINT_MAX) {
 				return false;
 			}
@@ -124,6 +124,6 @@ namespace RE
 
 	bool GFxTranslator::HandlesCustomWordWrapping() const
 	{
-		return (wwMode != WordWrappingType::kDefault);
+		return wwMode != WordWrappingType::kDefault;
 	}
 }

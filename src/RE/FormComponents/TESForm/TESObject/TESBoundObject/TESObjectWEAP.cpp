@@ -53,7 +53,7 @@ namespace RE
 
 	bool TESObjectWEAP::IsBound() const
 	{
-		return (weaponData.flags2 & Data::Flag2::kBoundWeapon) != Data::Flag2::kNone;
+		return weaponData.flags2.all(Data::Flag2::kBoundWeapon);
 	}
 
 

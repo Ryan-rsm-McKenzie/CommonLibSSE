@@ -113,8 +113,8 @@ namespace RE
 
 
 		// members
-		WordWrappingType wwMode;  // 18
-		std::uint32_t	 pad1C;	  // 1C
+		stl::enumeration<WordWrappingType, std::uint32_t> wwMode;  // 18
+		std::uint32_t									  pad1C;   // 1C
 	};
 	static_assert(sizeof(GFxTranslator) == 0x20);
 }

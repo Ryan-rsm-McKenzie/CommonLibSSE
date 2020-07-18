@@ -33,18 +33,18 @@ namespace RE
 
 	bool TESClimate::Timing::IncludesMasser() const
 	{
-		return (moonPhaseLength & MoonPhaseLength::kMasser) != MoonPhaseLength::kNone;
+		return moonPhaseLength.all(MoonPhaseLength::kMasser);
 	}
 
 
 	bool TESClimate::Timing::IncludesSecunda() const
 	{
-		return (moonPhaseLength & MoonPhaseLength::kSecunda) != MoonPhaseLength::kNone;
+		return moonPhaseLength.all(MoonPhaseLength::kSecunda);
 	}
 
 
 	std::uint8_t TESClimate::Timing::GetPhaseLength() const
 	{
-		return static_cast<std::uint8_t>(*moonPhaseLength & MoonPhaseLength::kPhaseLengthMask);
+		return (moonPhaseLength & MoonPhaseLength::kPhaseLengthMask).underlying();
 	}
 }

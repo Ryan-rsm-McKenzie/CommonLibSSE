@@ -283,7 +283,7 @@ namespace RE
 
 	GString::HeapType GString::heap_type() const
 	{
-		return *_dataDesc.heapType & HeapType::kMask;
+		return *(_dataDesc.heapType & HeapType::kMask);
 	}
 
 
@@ -291,7 +291,7 @@ namespace RE
 	{
 		DataDescUnion desc;
 		desc.data = _dataDesc.data;
-		desc.heapType = (desc.heapType & ~HeapType::kMask);
+		desc.heapType.reset(HeapType::kMask);
 		return desc.data;
 	}
 
@@ -301,6 +301,6 @@ namespace RE
 		auto type = heap_type();
 		_dataDesc.data = a_desc;
 		assert((_dataDesc.heapType & HeapType::kMask) == static_cast<HeapType>(0));
-		_dataDesc.heapType |= type;
+		_dataDesc.heapType.set(type);
 	}
 }

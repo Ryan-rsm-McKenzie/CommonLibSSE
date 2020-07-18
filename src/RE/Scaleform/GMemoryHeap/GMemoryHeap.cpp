@@ -108,7 +108,7 @@ namespace RE
 
 	bool GMemoryHeap::IsThreadSafe() const
 	{
-		return (_info.desc.flags & HeapFlags::kThreadUnsafe) == HeapFlags::kNone;
+		return _info.desc.flags.none(HeapFlags::kThreadUnsafe);
 	}
 
 

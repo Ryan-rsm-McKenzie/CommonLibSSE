@@ -28,19 +28,19 @@ namespace RE
 
 	bool TESQuest::IsActive() const
 	{
-		return (data.flags & QuestFlag::kActive) != QuestFlag::kNone;
+		return data.flags.all(QuestFlag::kActive);
 	}
 
 
 	bool TESQuest::IsCompleted() const
 	{
-		return (data.flags & QuestFlag::kCompleted) != QuestFlag::kNone;
+		return data.flags.all(QuestFlag::kCompleted);
 	}
 
 
 	bool TESQuest::IsEnabled() const
 	{
-		return (data.flags & QuestFlag::kEnabled) != QuestFlag::kNone;
+		return data.flags.all(QuestFlag::kEnabled);
 	}
 
 
@@ -58,7 +58,7 @@ namespace RE
 
 	bool TESQuest::IsStopped() const
 	{
-		return (data.flags & (QuestFlag::kEnabled | QuestFlag::kStageWait)) == QuestFlag::kNone;
+		return data.flags.none(QuestFlag::kEnabled, QuestFlag::kStageWait);
 	}
 
 
@@ -97,9 +97,9 @@ namespace RE
 	void TESQuest::SetEnabled(bool a_set)
 	{
 		if (a_set) {
-			data.flags |= QuestFlag::kEnabled;
+			data.flags.set(QuestFlag::kEnabled);
 		} else {
-			data.flags &= ~QuestFlag::kEnabled;
+			data.flags.reset(QuestFlag::kEnabled);
 		}
 		AddChange(ChangeFlags::kQuestFlags);
 	}
@@ -119,7 +119,7 @@ namespace RE
 
 	bool TESQuest::StartsEnabled() const
 	{
-		return (data.flags & QuestFlag::kStartsEnabled) != QuestFlag::kNone;
+		return data.flags.all(QuestFlag::kStartsEnabled);
 	}
 
 

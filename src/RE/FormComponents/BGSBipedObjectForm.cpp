@@ -6,7 +6,7 @@ namespace RE
 	auto BGSBipedObjectForm::AddSlotToMask(BipedObjectSlot a_slot)
 		-> BipedObjectSlot
 	{
-		bipedModelData.bipedObjectSlots |= a_slot;
+		bipedModelData.bipedObjectSlots.set(a_slot);
 		return *bipedModelData.bipedObjectSlots;
 	}
 
@@ -27,7 +27,7 @@ namespace RE
 
 	bool BGSBipedObjectForm::HasPartOf(BipedObjectSlot a_flag) const
 	{
-		return (bipedModelData.bipedObjectSlots & a_flag) != BipedObjectSlot::kNone;
+		return bipedModelData.bipedObjectSlots.all(a_flag);
 	}
 
 
@@ -51,7 +51,7 @@ namespace RE
 
 	bool BGSBipedObjectForm::IsShield() const
 	{
-		return (bipedModelData.bipedObjectSlots & BipedObjectSlot::kShield) != BipedObjectSlot::kNone;
+		return bipedModelData.bipedObjectSlots.all(BipedObjectSlot::kShield);
 	}
 
 
@@ -59,7 +59,7 @@ namespace RE
 		-> BipedObjectSlot
 	{
 		if (a_slot != BipedObjectSlot::kNone) {
-			bipedModelData.bipedObjectSlots &= ~a_slot;
+			bipedModelData.bipedObjectSlots.reset(a_slot);
 		}
 		return *bipedModelData.bipedObjectSlots;
 	}

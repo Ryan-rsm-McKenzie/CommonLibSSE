@@ -24,7 +24,7 @@ namespace RE
 			return false;
 		}
 
-		return (a_charBreakFlags & it->flags) != BreakInfoFlags::kNone;
+		return it->flags.all(a_charBreakFlags);
 	}
 
 

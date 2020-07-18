@@ -29,7 +29,7 @@ namespace RE
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kFlags; }
 
-		bool IsActivationBlocked() const;
+		[[nodiscard]] constexpr bool IsActivationBlocked() const noexcept { return flags.all(Flag::kBlockActivate); }
 
 
 		// members

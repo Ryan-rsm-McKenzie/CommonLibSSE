@@ -17,7 +17,7 @@ namespace RE
 
 	bool BGSSoundCategory::IsMenuCategory() const
 	{
-		return (flags & Flag::kShouldAppearOnMenu) != Flag::kNone;
+		return flags.all(Flag::kShouldAppearOnMenu);
 	}
 
 

@@ -5,6 +5,6 @@ namespace RE
 {
 	bool BSSystemFileStorage::IsGoodForRead() const
 	{
-		return goodForRead && ((attributes.lastError & Attributes::Error::kErrorMask) == Attributes::Error::kNone);
+		return goodForRead && attributes.lastError.none(Attributes::Error::kErrorMask);
 	}
 }

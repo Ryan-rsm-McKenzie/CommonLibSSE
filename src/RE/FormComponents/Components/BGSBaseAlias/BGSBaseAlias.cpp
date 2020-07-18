@@ -27,6 +27,6 @@ namespace RE
 
 	bool BGSBaseAlias::IsQuestObject() const
 	{
-		return (flags & FLAGS::kQuestObject) != FLAGS::kNone;
+		return flags.all(FLAGS::kQuestObject);
 	}
 }

@@ -49,13 +49,13 @@ namespace RE
 
 
 		// members
-		GPtr<GRenderer>								renderer;			 // 18
-		float										maxCurvePixelError;	 // 20
-		stl::enumeration<RenderFlag, std::uint32_t> renderFlags;		 // 24
-		float										strokerAAWidth;		 // 28
-		RenderCapBits								rendererCapBits;	 // 2C
-		VertexFormat								rendererVtxFmts;	 // 30
-		std::uint32_t								pad34;				 // 34
+		GPtr<GRenderer>								   renderer;			// 18
+		float										   maxCurvePixelError;	// 20
+		stl::enumeration<RenderFlag, std::uint32_t>	   renderFlags;			// 24
+		float										   strokerAAWidth;		// 28
+		stl::enumeration<RenderCapBits, std::uint32_t> rendererCapBits;		// 2C
+		stl::enumeration<VertexFormat, std::uint32_t>  rendererVtxFmts;		// 30
+		std::uint32_t								   pad34;				// 34
 	};
 	static_assert(sizeof(GFxRenderConfig) == 0x38);
 }

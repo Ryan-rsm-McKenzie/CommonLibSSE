@@ -30,7 +30,7 @@ namespace RE
 
 
 		LOCK_LEVEL	   GetLockLevel(const TESObjectREFR* a_containerRef) const;
-		constexpr bool IsLocked() const noexcept { return (flags & Flag::kLocked) != Flag::kNone; }
+		constexpr bool IsLocked() const noexcept { return flags.all(Flag::kLocked); }
 		void		   SetLocked(bool a_locked);
 
 

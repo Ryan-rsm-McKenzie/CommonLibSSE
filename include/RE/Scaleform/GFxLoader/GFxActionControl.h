@@ -29,23 +29,23 @@ namespace RE
 		constexpr ActionControlFlags GetFlags() const { return *actionFlags; }
 		constexpr void				 SetFlags(ActionControlFlags a_actionFlags) { actionFlags = a_actionFlags; }
 
-		constexpr void SetVerboseLogging() { actionFlags |= ActionControlFlags::kVerbose; }
-		constexpr void UnsetVerboseLogging() { actionFlags &= ~ActionControlFlags::kVerbose; }
+		constexpr void SetVerboseLogging() noexcept { actionFlags.set(ActionControlFlags::kVerbose); }
+		constexpr void UnsetVerboseLogging() noexcept { actionFlags.reset(ActionControlFlags::kVerbose); }
 
-		constexpr void SetErrorSuppression() { actionFlags |= ActionControlFlags::kSuppressErrors; }
-		constexpr void UnsetErrorSuppression() { actionFlags &= ~ActionControlFlags::kSuppressErrors; }
+		constexpr void SetErrorSuppression() noexcept { actionFlags.set(ActionControlFlags::kSuppressErrors); }
+		constexpr void UnsetErrorSuppression() noexcept { actionFlags.reset(ActionControlFlags::kSuppressErrors); }
 
-		constexpr void SetRootFilenameLogging() { actionFlags |= ActionControlFlags::kLogRootFilenames; }
-		constexpr void UnsetRootFilenameLogging() { actionFlags &= ~ActionControlFlags::kLogRootFilenames; }
+		constexpr void SetRootFilenameLogging() noexcept { actionFlags.set(ActionControlFlags::kLogRootFilenames); }
+		constexpr void UnsetRootFilenameLogging() noexcept { actionFlags.reset(ActionControlFlags::kLogRootFilenames); }
 
-		constexpr void SetChildFilenameLogging() { actionFlags |= ActionControlFlags::kLogChildFilenames; }
-		constexpr void UnsetChildFilenameLogging() { actionFlags &= ~ActionControlFlags::kLogChildFilenames; }
+		constexpr void SetChildFilenameLogging() noexcept { actionFlags.set(ActionControlFlags::kLogChildFilenames); }
+		constexpr void UnsetChildFilenameLogging() noexcept { actionFlags.reset(ActionControlFlags::kLogChildFilenames); }
 
-		constexpr void SetAllFilenameLogging() { actionFlags |= (ActionControlFlags::kLogRootFilenames | ActionControlFlags::kLogChildFilenames); }
-		constexpr void UnsetAllFilenameLogging() { actionFlags &= ~(ActionControlFlags::kLogRootFilenames | ActionControlFlags::kLogChildFilenames); }
+		constexpr void SetAllFilenameLogging() noexcept { actionFlags.set(ActionControlFlags::kLogRootFilenames, ActionControlFlags::kLogChildFilenames); }
+		constexpr void UnsetAllFilenameLogging() noexcept { actionFlags.reset(ActionControlFlags::kLogRootFilenames, ActionControlFlags::kLogChildFilenames); }
 
-		constexpr void SetLongFilenameLogging() { actionFlags |= ActionControlFlags::kLongFilenames; }
-		constexpr void UnsetLongFilenameLogging() { actionFlags &= ~ActionControlFlags::kLongFilenames; }
+		constexpr void SetLongFilenameLogging() noexcept { actionFlags.set(ActionControlFlags::kLongFilenames); }
+		constexpr void UnsetLongFilenameLogging() noexcept { actionFlags.reset(ActionControlFlags::kLongFilenames); }
 
 
 		// members

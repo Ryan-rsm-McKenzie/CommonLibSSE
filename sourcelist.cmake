@@ -30,13 +30,11 @@ set(sources ${sources}
 	src\RE\BSExtraData\ExtraContainerChanges.cpp
 	src\RE\BSExtraData\ExtraCount.cpp
 	src\RE\BSExtraData\ExtraEnchantment.cpp
-	src\RE\BSExtraData\ExtraFlags.cpp
 	src\RE\BSExtraData\ExtraForcedTarget.cpp
 	src\RE\BSExtraData\ExtraHealth.cpp
 	src\RE\BSExtraData\ExtraHotkey.cpp
 	src\RE\BSExtraData\ExtraLightData.cpp
 	src\RE\BSExtraData\ExtraLock.cpp
-	src\RE\BSExtraData\ExtraMapMarker.cpp
 	src\RE\BSExtraData\ExtraMissingLinkedRefIDs.cpp
 	src\RE\BSExtraData\ExtraOwnership.cpp
 	src\RE\BSExtraData\ExtraPoison.cpp
@@ -126,7 +124,6 @@ set(sources ${sources}
 	src\RE\FormComponents\Components\MagicTarget.cpp
 	src\RE\FormComponents\Components\TESCondition.cpp
 	src\RE\FormComponents\TESAIForm.cpp
-	src\RE\FormComponents\TESActorBaseData.cpp
 	src\RE\FormComponents\TESContainer.cpp
 	src\RE\FormComponents\TESDescription.cpp
 	src\RE\FormComponents\TESForm.cpp
@@ -240,7 +237,6 @@ set(sources ${sources}
 	src\RE\Scaleform\GMemoryHeap\GMemoryHeap.cpp
 	src\RE\Scaleform\GMemory\GMemory.cpp
 	src\RE\Scaleform\GRefCount\GRefCountImpl.cpp
-	src\RE\Scaleform\GRefCount\GRefCountImplCore.cpp
 	src\RE\Scaleform\GRefCount\GRefCountNTSImpl.cpp
 	src\RE\Scaleform\GRenderer\GRenderer.cpp
 	src\RE\Scaleform\GRenderer\GViewport.cpp

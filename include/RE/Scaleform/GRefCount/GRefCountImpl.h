@@ -11,7 +11,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_GRefCountImpl;
 
 
-		GRefCountImpl() = default;
 		virtual ~GRefCountImpl() = default;	 // 00
 
 		void AddRef();

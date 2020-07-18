@@ -81,7 +81,7 @@ namespace RE
 
 	bool TESObjectCELL::IsInteriorCell() const
 	{
-		return (cellFlags & Flag::kIsInteriorCell) != Flag::kNone;
+		return cellFlags.all(Flag::kIsInteriorCell);
 	}
 
 
@@ -135,9 +135,9 @@ namespace RE
 	void TESObjectCELL::SetHandChanged(bool a_changed)
 	{
 		if (a_changed) {
-			cellFlags |= Flag::kHandChanged;
+			cellFlags.set(Flag::kHandChanged);
 		} else {
-			cellFlags &= ~Flag::kHandChanged;
+			cellFlags.reset(Flag::kHandChanged);
 		}
 		AddChange(ChangeFlags::kFlags);
 	}
@@ -153,9 +153,9 @@ namespace RE
 	void TESObjectCELL::SetPublic(bool a_public)
 	{
 		if (a_public) {
-			cellFlags |= Flag::kPublicArea;
+			cellFlags.set(Flag::kPublicArea);
 		} else {
-			cellFlags &= ~Flag::kPublicArea;
+			cellFlags.reset(Flag::kPublicArea);
 		}
 		AddChange(ChangeFlags::kFlags);
 	}
@@ -163,6 +163,6 @@ namespace RE
 
 	bool TESObjectCELL::UsesSkyLighting() const
 	{
-		return (cellFlags & Flag::kUseSkyLighting) != Flag::kNone;
+		return cellFlags.all(Flag::kUseSkyLighting);
 	}
 }

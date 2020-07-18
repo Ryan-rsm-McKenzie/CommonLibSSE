@@ -18,9 +18,9 @@ namespace RE
 	void REFR_LOCK::SetLocked(bool a_locked)
 	{
 		if (a_locked) {
-			flags |= Flag::kLocked;
+			flags.set(Flag::kLocked);
 		} else {
-			flags &= ~Flag::kLocked;
+			flags.reset(Flag::kLocked);
 			numTries = 0;
 		}
 	}

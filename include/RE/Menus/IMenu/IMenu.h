@@ -65,7 +65,6 @@ namespace RE
 		using Flag = UI_MENU_FLAGS;
 
 
-		IMenu();
 		virtual ~IMenu() = default;	 // 00
 
 		// override (FxDelegateHandler)
@@ -80,45 +79,45 @@ namespace RE
 		virtual void			   PreDisplay();												 // 07 - { return; } - only available if kRendersOffscreenTargets is set
 		virtual void			   RefreshPlatform();											 // 08
 
-		bool AdvancesUnderPauseMenu() const;
-		bool AllowSaving() const;
-		bool AlwaysOpen() const;
-		bool ApplicationMenu() const;
-		bool AssignCursorToRenderer() const;
-		bool CustomRendering() const;
-		bool CompanionAppAllowed() const;
-		bool DisablePauseMenu() const;
-		bool DontHideCursorWhenTopmost() const;
-		bool FreezeFrameBackground() const;
-		bool FreezeFramePause() const;
-		bool HasButtonBar() const;
-		bool InventoryItemMenu() const;
-		bool IsTopButtonBar() const;
-		bool LargeScaleformRenderCacheMode() const;
-		bool Modal() const;
-		bool OnStack() const;
-		bool PausesGame() const;
-		bool RendersOffscreenTargets() const;
-		bool RendersUnderPauseMenu() const;
-		bool RequiresUpdate() const;
-		bool SkipRenderDuringFreezeFrameScreenshot() const;
-		bool TopmostRenderedMenu() const;
-		bool UpdateUsesCursor() const;
-		bool UsesBlurredBackground() const;
-		bool UsesCursor() const;
-		bool UsesMenuContext() const;
-		bool UsesMovementToDirection() const;
+		[[nodiscard]] constexpr bool AdvancesUnderPauseMenu() const noexcept { return menuFlags.all(Flag::kAdvancesUnderPauseMenu); }
+		[[nodiscard]] constexpr bool AllowSaving() const noexcept { return menuFlags.all(Flag::kAllowSaving); }
+		[[nodiscard]] constexpr bool AlwaysOpen() const noexcept { return menuFlags.all(Flag::kAlwaysOpen); }
+		[[nodiscard]] constexpr bool ApplicationMenu() const noexcept { return menuFlags.all(Flag::kApplicationMenu); }
+		[[nodiscard]] constexpr bool AssignCursorToRenderer() const noexcept { return menuFlags.all(Flag::kAssignCursorToRenderer); }
+		[[nodiscard]] constexpr bool CustomRendering() const noexcept { return menuFlags.all(Flag::kCustomRendering); }
+		[[nodiscard]] constexpr bool CompanionAppAllowed() const noexcept { return menuFlags.all(Flag::kCompanionAppAllowed); }
+		[[nodiscard]] constexpr bool DisablePauseMenu() const noexcept { return menuFlags.all(Flag::kDisablePauseMenu); }
+		[[nodiscard]] constexpr bool DontHideCursorWhenTopmost() const noexcept { return menuFlags.all(Flag::kDontHideCursorWhenTopmost); }
+		[[nodiscard]] constexpr bool FreezeFrameBackground() const noexcept { return menuFlags.all(Flag::kFreezeFrameBackground); }
+		[[nodiscard]] constexpr bool FreezeFramePause() const noexcept { return menuFlags.all(Flag::kFreezeFramePause); }
+		[[nodiscard]] constexpr bool HasButtonBar() const noexcept { return menuFlags.all(Flag::kHasButtonBar); }
+		[[nodiscard]] constexpr bool InventoryItemMenu() const noexcept { return menuFlags.all(Flag::kInventoryItemMenu); }
+		[[nodiscard]] constexpr bool IsTopButtonBar() const noexcept { return menuFlags.all(Flag::kIsTopButtonBar); }
+		[[nodiscard]] constexpr bool LargeScaleformRenderCacheMode() const noexcept { return menuFlags.all(Flag::kLargeScaleformRenderCacheMode); }
+		[[nodiscard]] constexpr bool Modal() const noexcept { return menuFlags.all(Flag::kModal); }
+		[[nodiscard]] constexpr bool OnStack() const noexcept { return menuFlags.all(Flag::kOnStack); }
+		[[nodiscard]] constexpr bool PausesGame() const noexcept { return menuFlags.all(Flag::kPausesGame); }
+		[[nodiscard]] constexpr bool RendersOffscreenTargets() const noexcept { return menuFlags.all(Flag::kRendersOffscreenTargets); }
+		[[nodiscard]] constexpr bool RendersUnderPauseMenu() const noexcept { return menuFlags.all(Flag::kRendersUnderPauseMenu); }
+		[[nodiscard]] constexpr bool RequiresUpdate() const noexcept { return menuFlags.all(Flag::kRequiresUpdate); }
+		[[nodiscard]] constexpr bool SkipRenderDuringFreezeFrameScreenshot() const noexcept { return menuFlags.all(Flag::kSkipRenderDuringFreezeFrameScreenshot); }
+		[[nodiscard]] constexpr bool TopmostRenderedMenu() const noexcept { return menuFlags.all(Flag::kTopmostRenderedMenu); }
+		[[nodiscard]] constexpr bool UpdateUsesCursor() const noexcept { return menuFlags.all(Flag::kUsesBlurredBackground); }
+		[[nodiscard]] constexpr bool UsesBlurredBackground() const noexcept { return menuFlags.all(Flag::kUsesCursor); }
+		[[nodiscard]] constexpr bool UsesCursor() const noexcept { return menuFlags.all(Flag::kUsesMenuContext); }
+		[[nodiscard]] constexpr bool UsesMenuContext() const noexcept { return menuFlags.all(Flag::kUsesMovementToDirection); }
+		[[nodiscard]] constexpr bool UsesMovementToDirection() const noexcept { return menuFlags.all(Flag::kUpdateUsesCursor); }
 
 
 		// members
-		GPtr<GFxMovieView>							   uiMovie;		   // 10
-		std::int8_t									   depthPriority;  // 18
-		std::uint8_t								   pad19;		   // 19
-		std::uint16_t								   pad20;		   // 1A
-		stl::enumeration<UI_MENU_FLAGS, std::uint32_t> menuFlags;	   // 1C
-		stl::enumeration<Context, std::uint32_t>	   inputContext;   // 20
-		std::uint32_t								   pad24;		   // 24
-		GPtr<FxDelegate>							   fxDelegate;	   // 28
+		GPtr<GFxMovieView>							   uiMovie{ nullptr };				// 10
+		std::int8_t									   depthPriority{ 3 };				// 18
+		std::uint8_t								   pad19{ 0 };						// 19
+		std::uint16_t								   pad20{ 0 };						// 1A
+		stl::enumeration<UI_MENU_FLAGS, std::uint32_t> menuFlags{ Flag::kNone };		// 1C
+		stl::enumeration<Context, std::uint32_t>	   inputContext{ Context::kNone };	// 20
+		std::uint32_t								   pad24{ 0 };						// 24
+		GPtr<FxDelegate>							   fxDelegate{ nullptr };			// 28
 	};
 	static_assert(sizeof(IMenu) == 0x30);
 }

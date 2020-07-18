@@ -3720,9 +3720,6 @@
     <ClCompile Include="src\RE\BSExtraData\ExtraEnchantment.cpp">
       <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSExtraData\ExtraFlags.cpp">
-      <Filter>src\RE\BSExtraData</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSExtraData\ExtraForcedTarget.cpp">
       <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
@@ -3736,9 +3733,6 @@
       <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSExtraData\ExtraLock.cpp">
-      <Filter>src\RE\BSExtraData</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSExtraData\ExtraMapMarker.cpp">
       <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSExtraData\ExtraMissingLinkedRefIDs.cpp">
@@ -4004,9 +3998,6 @@
     </ClCompile>
     <ClCompile Include="src\RE\FormComponents\Components\TESCondition.cpp">
       <Filter>src\RE\FormComponents\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\FormComponents\TESActorBaseData.cpp">
-      <Filter>src\RE\FormComponents</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\FormComponents\TESAIForm.cpp">
       <Filter>src\RE\FormComponents</Filter>
@@ -4348,9 +4339,6 @@
       <Filter>src\RE\Scaleform\GMemoryHeap</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountImpl.cpp">
-      <Filter>src\RE\Scaleform\GRefCount</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountImplCore.cpp">
       <Filter>src\RE\Scaleform\GRefCount</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountNTSImpl.cpp">

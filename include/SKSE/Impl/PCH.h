@@ -730,8 +730,16 @@ namespace SKSE
 				_impl(static_cast<underlying_type>(a_rhs.get()))
 			{}
 
-			constexpr enumeration(enum_type a_value) noexcept :
-				_impl(static_cast<underlying_type>(a_value))
+			template <
+				class... Args,
+				std::enable_if_t<
+					std::conjunction_v<
+						std::is_same<
+							Args,
+							enum_type>...>,
+					int> = 0>
+			constexpr enumeration(Args... a_values) noexcept :
+				_impl((static_cast<underlying_type>(a_values) | ...))
 			{}
 
 			~enumeration() noexcept = default;
@@ -757,41 +765,78 @@ namespace SKSE
 			[[nodiscard]] constexpr enum_type		get() const noexcept { return static_cast<enum_type>(_impl); }
 			[[nodiscard]] constexpr underlying_type underlying() const noexcept { return _impl; }
 
-			constexpr enumeration& set(enum_type a_last) noexcept
+			template <
+				class... Args,
+				std::enable_if_t<
+					std::conjunction_v<
+						std::is_same<
+							Args,
+							enum_type>...>,
+					int> = 0>
+			constexpr enumeration& set(Args... a_args) noexcept
 			{
-				_impl |= static_cast<underlying_type>(a_last);
+				_impl |= (static_cast<underlying_type>(a_args) | ...);
 				return *this;
 			}
 
-			template <class... Args>
-			constexpr enumeration& set(enum_type a_first, Args... a_rest) noexcept
+			template <
+				class... Args,
+				std::enable_if_t<
+					std::conjunction_v<
+						std::is_same<
+							Args,
+							enum_type>...>,
+					int> = 0>
+			constexpr enumeration& reset(Args... a_args) noexcept
 			{
-				set(a_first);
-				return set(a_rest...);
-			}
-
-			constexpr enumeration& reset(enum_type a_last) noexcept
-			{
-				_impl &= ~static_cast<underlying_type>(a_last);
+				_impl &= ~(static_cast<underlying_type>(a_args) | ...);
 				return *this;
 			}
 
-			template <class... Args>
-			constexpr enumeration& reset(enum_type a_first, Args... a_rest) noexcept
+#if 0
+			[[nodiscard]] constexpr bool test(enum_type a_enum) const noexcept
 			{
-				reset(a_first);
-				return reset(a_rest...);
+				return (_impl & static_cast<underlying_type>(a_enum)) != static_cast<underlying_type>(0);
+			}
+#endif
+
+			template <
+				class... Args,
+				std::enable_if_t<
+					std::conjunction_v<
+						std::is_same<
+							Args,
+							enum_type>...>,
+					int> = 0>
+			[[nodiscard]] constexpr bool any(Args... a_args) const noexcept
+			{
+				return (_impl & (static_cast<underlying_type>(a_args) | ...)) != static_cast<underlying_type>(0);
 			}
 
-			[[nodiscard]] constexpr bool test(enum_type a_last) const noexcept
+			template <
+				class... Args,
+				std::enable_if_t<
+					std::conjunction_v<
+						std::is_same<
+							Args,
+							enum_type>...>,
+					int> = 0>
+			[[nodiscard]] constexpr bool all(Args... a_args) const noexcept
 			{
-				return (_impl & static_cast<underlying_type>(a_last)) != static_cast<underlying_type>(0);
+				return (_impl & (static_cast<underlying_type>(a_args) | ...)) == (static_cast<underlying_type>(a_args) | ...);
 			}
 
-			template <class... Args>
-			[[nodiscard]] constexpr bool test(enum_type a_first, Args... a_rest) const noexcept
+			template <
+				class... Args,
+				std::enable_if_t<
+					std::conjunction_v<
+						std::is_same<
+							Args,
+							enum_type>...>,
+					int> = 0>
+			[[nodiscard]] constexpr bool none(Args... a_args) const noexcept
 			{
-				return test(a_first) && test(a_rest...);
+				return (_impl & (static_cast<underlying_type>(a_args) | ...)) == static_cast<underlying_type>(0);
 			}
 
 		private:

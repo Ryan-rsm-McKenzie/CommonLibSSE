@@ -5,12 +5,12 @@ namespace RE
 {
 	bool TESAmmo::IgnoresNormalWeaponResistance()
 	{
-		return (data.flags & AMMO_DATA::Flag::kIgnoresNormalWeaponResistance) != AMMO_DATA::Flag::kNone;
+		return data.flags.all(AMMO_DATA::Flag::kIgnoresNormalWeaponResistance);
 	}
 
 
 	bool TESAmmo::IsBolt()
 	{
-		return (data.flags & AMMO_DATA::Flag::kNonBolt) == AMMO_DATA::Flag::kNone;
+		return data.flags.none(AMMO_DATA::Flag::kNonBolt);
 	}
 }

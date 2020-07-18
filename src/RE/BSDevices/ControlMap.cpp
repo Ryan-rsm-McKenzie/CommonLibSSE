@@ -84,14 +84,14 @@ namespace RE
 		auto oldState = enabledControls;
 
 		if (a_enable) {
-			enabledControls |= a_flags;
+			enabledControls.set(a_flags);
 			if (unk11C != UEFlag::kInvalid) {
-				unk11C |= a_flags;
+				unk11C.set(a_flags);
 			}
 		} else {
-			enabledControls &= ~a_flags;
+			enabledControls.reset(a_flags);
 			if (unk11C != UEFlag::kInvalid) {
-				unk11C &= ~a_flags;
+				unk11C.reset(a_flags);
 			}
 		}
 

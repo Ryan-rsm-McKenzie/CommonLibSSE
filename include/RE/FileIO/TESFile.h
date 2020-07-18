@@ -53,7 +53,7 @@ namespace RE
 		std::uint32_t			GetCurrentSubRecordType();
 		constexpr std::uint32_t GetCurrentSubRecordSize() const noexcept { return actualChunkSize; }
 		FormType				GetFormType();
-		constexpr bool			IsLocalized() const noexcept { return (recordFlags & RecordFlag::kDelocalized) != RecordFlag::kNone; }
+		constexpr bool			IsLocalized() const noexcept { return recordFlags.all(RecordFlag::kDelocalized); }
 		void					ReadData(void* a_buf, std::uint32_t a_size);
 		bool					Seek(std::uint32_t a_offset);
 		bool					SeekNextSubrecord();

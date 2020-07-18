@@ -5,6 +5,6 @@ namespace RE
 {
 	bool BGSHeadPart::IsExtraPart()
 	{
-		return (flags & Flag::kIsExtraPart) != Flag::kNone;
+		return flags.all(Flag::kIsExtraPart);
 	}
 }
