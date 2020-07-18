@@ -34,5 +34,5 @@ namespace RE
 		virtual void Unk_12(void) = 0;	// 12
 		virtual void Unk_13(void) = 0;	// 13
 	};
-	STATIC_ASSERT(sizeof(IMovementState) == 0x8);
+	static_assert(sizeof(IMovementState) == 0x8);
 }

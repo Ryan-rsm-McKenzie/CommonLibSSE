@@ -17,5 +17,5 @@ namespace RE
 		virtual bool CanProcess(InputEvent* a_event) override;		// 01
 		virtual bool ProcessButton(ButtonEvent* a_event) override;	// 05
 	};
-	STATIC_ASSERT(sizeof(MapZoomHandler) == 0x18);
+	static_assert(sizeof(MapZoomHandler) == 0x18);
 }

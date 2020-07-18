@@ -16,5 +16,5 @@ namespace RE
 		// override (JournalTab)
 		virtual void Accept(CallbackProcessor* a_cbReg) override;  // 01
 	};
-	STATIC_ASSERT(sizeof(Journal_StatsTab) == 0x18);
+	static_assert(sizeof(Journal_StatsTab) == 0x18);
 }

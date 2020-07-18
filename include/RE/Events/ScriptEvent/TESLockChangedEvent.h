@@ -14,5 +14,5 @@ namespace RE
 		// members
 		NiPointer<TESObjectREFR> lockedObject;	// 0
 	};
-	STATIC_ASSERT(sizeof(TESLockChangedEvent) == 0x8);
+	static_assert(sizeof(TESLockChangedEvent) == 0x8);
 }

@@ -19,8 +19,8 @@ namespace RE
 
 
 		// members
-		float  data;   // 08 - DATA
-		UInt32 pad0C;  // 0C
+		float		  data;	  // 08 - DATA
+		std::uint32_t pad0C;  // 0C
 	};
-	STATIC_ASSERT(sizeof(BGSEntryPointFunctionDataOneValue) == 0x10);
+	static_assert(sizeof(BGSEntryPointFunctionDataOneValue) == 0x10);
 }

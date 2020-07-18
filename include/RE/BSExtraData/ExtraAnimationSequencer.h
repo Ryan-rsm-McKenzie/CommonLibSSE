@@ -27,5 +27,5 @@ namespace RE
 		// members
 		BGSAnimationSequencer* sequencer;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraAnimationSequencer) == 0x18);
+	static_assert(sizeof(ExtraAnimationSequencer) == 0x18);
 }

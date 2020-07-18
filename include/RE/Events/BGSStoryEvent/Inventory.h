@@ -18,10 +18,10 @@ namespace RE
 			// members
 			TESObjectREFR*		objRefr;	// 00
 			InventoryEntryData* entryData;	// 08
-			SInt32				newCount;	// 10
-			SInt32				prevCount;	// 14
+			std::int32_t		newCount;	// 10
+			std::int32_t		prevCount;	// 14
 		};
-		STATIC_ASSERT(sizeof(Event) == 0x18);
+		static_assert(sizeof(Event) == 0x18);
 
 
 		static BSTEventSource<Inventory::Event>* GetEventSource();

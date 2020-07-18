@@ -15,7 +15,7 @@ namespace RE
 	}
 
 
-	Effect* MagicItem::GetCostliestEffectItem(UInt32 a_arg1, bool a_arg2)
+	Effect* MagicItem::GetCostliestEffectItem(std::uint32_t a_arg1, bool a_arg2)
 	{
 		using func_t = decltype(&MagicItem::GetCostliestEffectItem);
 		REL::Offset<func_t> func(Offset::MagicItem::GetCostliestEffectItem);

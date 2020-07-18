@@ -20,6 +20,6 @@ namespace RE
 			// add
 			virtual void PatchStackFrame(StackFrame* a_stackFrame, IVirtualMachine* a_vm) = 0;	// 01
 		};
-		STATIC_ASSERT(sizeof(ISavePatcherInterface) == 0x8);
+		static_assert(sizeof(ISavePatcherInterface) == 0x8);
 	}
 }

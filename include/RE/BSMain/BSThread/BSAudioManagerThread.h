@@ -18,9 +18,9 @@ namespace RE
 
 
 		// members
-		UInt64 unk50;  // 50
-		UInt64 unk58;  // 58
-		UInt64 unk60;  // 60
+		std::uint64_t unk50;  // 50
+		std::uint64_t unk58;  // 58
+		std::uint64_t unk60;  // 60
 	};
-	STATIC_ASSERT(sizeof(BSAudioManagerThread) == 0x68);
+	static_assert(sizeof(BSAudioManagerThread) == 0x68);
 }

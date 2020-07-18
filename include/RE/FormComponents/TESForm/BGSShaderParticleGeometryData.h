@@ -10,10 +10,10 @@ namespace RE
 {
 	union SETTING_VALUE
 	{
-		float  f;
-		UInt32 i;
+		float		  f;
+		std::uint32_t i;
 	};
-	STATIC_ASSERT(sizeof(SETTING_VALUE) == 0x4);
+	static_assert(sizeof(SETTING_VALUE) == 0x4);
 
 
 	class BGSShaderParticleGeometryData : public TESForm
@@ -23,7 +23,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::ShaderParticleGeometryData;
 
 
-		enum class DataID : UInt32
+		enum class DataID
 		{
 			kGravityVelocity = 0,
 			kRotationVelocity,
@@ -42,7 +42,7 @@ namespace RE
 		};
 
 
-		enum class ParticleType : UInt32
+		enum class ParticleType
 		{
 			kRain = 0,
 			kSnow = 1
@@ -51,7 +51,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -71,5 +71,5 @@ namespace RE
 		BSTArray<SETTING_VALUE> data;			  // 20 - DATA - size == DataID::kTotal
 		TESTexture				particleTexture;  // 38 - ICON
 	};
-	STATIC_ASSERT(sizeof(BGSShaderParticleGeometryData) == 0x48);
+	static_assert(sizeof(BGSShaderParticleGeometryData) == 0x48);
 }

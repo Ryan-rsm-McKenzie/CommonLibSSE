@@ -25,7 +25,7 @@ namespace RE
 		// members
 		NiPointer<NiNode> stars;  // 10
 		float			  alpha;  // 18
-		UInt32			  pad1C;  // 1C
+		std::uint32_t	  pad1C;  // 1C
 	};
-	STATIC_ASSERT(sizeof(Stars) == 0x20);
+	static_assert(sizeof(Stars) == 0x20);
 }

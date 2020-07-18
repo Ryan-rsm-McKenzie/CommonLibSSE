@@ -17,11 +17,11 @@ namespace RE
 
 	union hkbVariableValue
 	{
-		bool   b;
-		SInt32 i;
-		float  f;
+		bool		 b;
+		std::int32_t i;
+		float		 f;
 	};
-	STATIC_ASSERT(sizeof(hkbVariableValue) == 0x4);
+	static_assert(sizeof(hkbVariableValue) == 0x4);
 
 
 	struct AnimVariableCacheInfo
@@ -31,7 +31,7 @@ namespace RE
 		BSFixedString	  variableName;	 // 00
 		hkbVariableValue* variable;		 // 08
 	};
-	STATIC_ASSERT(sizeof(AnimVariableCacheInfo) == 0x10);
+	static_assert(sizeof(AnimVariableCacheInfo) == 0x10);
 
 
 	struct BSAnimationGraphVariableCache
@@ -42,7 +42,7 @@ namespace RE
 		void*							unk18;			// 18
 		void*							unk20;			// 20 - smart ptr
 	};
-	STATIC_ASSERT(sizeof(BSAnimationGraphVariableCache) == 0x28);
+	static_assert(sizeof(BSAnimationGraphVariableCache) == 0x28);
 
 
 	BSSmartPointer(BSAnimationGraphManager);
@@ -61,18 +61,18 @@ namespace RE
 		public:
 			union Value
 			{
-				bool   b;
-				SInt32 i;
-				float  f;
+				bool		 b;
+				std::int32_t i;
+				float		 f;
 			};
-			STATIC_ASSERT(sizeof(Value) == 0x4);
+			static_assert(sizeof(Value) == 0x4);
 
 
 			// members
 			BSFixedString name;	  // 00
 			Value*		  value;  // 08
 		};
-		STATIC_ASSERT(sizeof(AnimationVariable) == 0x10);
+		static_assert(sizeof(AnimationVariable) == 0x10);
 
 
 		virtual ~BSAnimationGraphManager();	 // 00
@@ -82,7 +82,7 @@ namespace RE
 
 
 		// members
-		UInt32												pad0C;				   // 0C
+		std::uint32_t										pad0C;				   // 0C
 		BSTArray<BSTSmartPointer<BSAnimationGraphChannel>>	boundChannels;		   // 10
 		BSTArray<BSTSmartPointer<BSAnimationGraphChannel>>	bumpedChannels;		   // 28
 		BSTSmallArray<BSTSmartPointer<BShkbAnimationGraph>> graphs;				   // 40
@@ -90,8 +90,8 @@ namespace RE
 		BSAnimationGraphVariableCache						variableCache;		   // 70
 		mutable BSSpinLock									updateLock;			   // 98
 		mutable BSSpinLock									dependentManagerLock;  // A0
-		UInt32												activeGraph;		   // A8
-		UInt32												generateDepth;		   // A8
+		std::uint32_t										activeGraph;		   // A8
+		std::uint32_t										generateDepth;		   // A8
 	};
-	STATIC_ASSERT(sizeof(BSAnimationGraphManager) == 0xB0);
+	static_assert(sizeof(BSAnimationGraphManager) == 0xB0);
 }

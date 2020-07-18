@@ -36,11 +36,11 @@ namespace RE
 			// members
 			MenuEventHandler* handler;	// 00
 			bool			  add;		// 08
-			UInt8			  pad08;	// 09
-			UInt16			  pad09;	// 0A
-			UInt32			  pad0A;	// 0C
+			std::uint8_t	  pad08;	// 09
+			std::uint16_t	  pad09;	// 0A
+			std::uint32_t	  pad0A;	// 0C
 		};
-		STATIC_ASSERT(sizeof(QueuedReg) == 0x10);
+		static_assert(sizeof(QueuedReg) == 0x10);
 
 
 		virtual ~MenuControls();  // 00
@@ -61,9 +61,9 @@ namespace RE
 
 
 		// members
-		UInt8								  pad11;				 // 11
-		UInt16								  pad12;				 // 12
-		UInt32								  pad14;				 // 14
+		std::uint8_t						  pad11;				 // 11
+		std::uint16_t						  pad12;				 // 12
+		std::uint32_t						  pad14;				 // 14
 		BSTArray<MenuEventHandler*>			  handlers;				 // 18
 		BSTArray<QueuedReg>					  regBuffer;			 // 30
 		BSTSmartPointer<ClickHandler>		  clickHandler;			 // 48
@@ -76,10 +76,10 @@ namespace RE
 		bool								  isProcessing;			 // 80
 		bool								  beastForm;			 // 81
 		bool								  remapMode;			 // 82
-		UInt8								  unk83;				 // 83
-		UInt32								  unk84;				 // 84
+		std::uint8_t						  unk83;				 // 83
+		std::uint32_t						  unk84;				 // 84
 	};
-	STATIC_ASSERT(offsetof(MenuControls, handlers) == 0x18);
-	STATIC_ASSERT(offsetof(MenuControls, remapMode) == 0x82);
-	STATIC_ASSERT(sizeof(MenuControls) == 0x88);
+	static_assert(offsetof(MenuControls, handlers) == 0x18);
+	static_assert(offsetof(MenuControls, remapMode) == 0x82);
+	static_assert(sizeof(MenuControls) == 0x88);
 }

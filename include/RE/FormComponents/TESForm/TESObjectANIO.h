@@ -19,7 +19,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -40,5 +40,5 @@ namespace RE
 		BSFixedString formEditorID;		// 58 - EDID
 		BSFixedString unloadEventName;	// 60 - BNAM
 	};
-	STATIC_ASSERT(sizeof(TESObjectANIO) == 0x68);
+	static_assert(sizeof(TESObjectANIO) == 0x68);
 }

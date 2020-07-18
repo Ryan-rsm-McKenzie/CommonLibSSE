@@ -23,5 +23,5 @@ namespace RE
 		// members
 		TESObjectREFR* boundRef;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraMultiBoundRef) == 0x18);
+	static_assert(sizeof(ExtraMultiBoundRef) == 0x18);
 }

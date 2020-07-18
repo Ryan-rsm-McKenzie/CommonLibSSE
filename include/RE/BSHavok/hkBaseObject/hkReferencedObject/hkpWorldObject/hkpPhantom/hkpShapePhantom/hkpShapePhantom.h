@@ -37,5 +37,5 @@ namespace RE
 		// members
 		hkMotionState motionState;	// 0F0
 	};
-	STATIC_ASSERT(sizeof(hkpShapePhantom) == 0x1A0);
+	static_assert(sizeof(hkpShapePhantom) == 0x1A0);
 }

@@ -15,7 +15,7 @@ namespace RE
 		NiPointer<TESObjectREFR> target;	   // 00
 		NiPointer<TESObjectREFR> caster;	   // 08
 		FormID					 magicEffect;  // 10
-		UInt32					 pad14;		   // 14
+		std::uint32_t			 pad14;		   // 14
 	};
-	STATIC_ASSERT(sizeof(TESMagicEffectApplyEvent) == 0x18);
+	static_assert(sizeof(TESMagicEffectApplyEvent) == 0x18);
 }

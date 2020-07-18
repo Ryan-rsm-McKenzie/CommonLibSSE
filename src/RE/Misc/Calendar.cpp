@@ -64,9 +64,9 @@ namespace RE
 	}
 
 
-	UInt32 Calendar::GetDayOfWeek() const
+	std::uint32_t Calendar::GetDayOfWeek() const
 	{
-		return static_cast<UInt32>(GetDaysPassed()) % 7;
+		return static_cast<std::uint32_t>(GetDaysPassed()) % 7;
 	}
 
 
@@ -88,9 +88,9 @@ namespace RE
 	}
 
 
-	UInt32 Calendar::GetMonth() const
+	std::uint32_t Calendar::GetMonth() const
 	{
-		return gameMonth ? static_cast<UInt32>(gameMonth->value) : 7;
+		return gameMonth ? static_cast<std::uint32_t>(gameMonth->value) : 7;
 	}
 
 
@@ -174,8 +174,8 @@ namespace RE
 	}
 
 
-	UInt32 Calendar::GetYear() const
+	std::uint32_t Calendar::GetYear() const
 	{
-		return gameYear ? static_cast<UInt32>(gameYear->value) : 77;
+		return gameYear ? static_cast<std::uint32_t>(gameYear->value) : 77;
 	}
 }

@@ -10,7 +10,7 @@ namespace RE
 	class TESObjectREFR;
 
 
-	enum class CONDITIONITEMOBJECT : UInt8
+	enum class CONDITIONITEMOBJECT
 	{
 		kSelf = 0,
 		kTarget = 1,
@@ -29,7 +29,7 @@ namespace RE
 	public:
 		// Betheseda keeps these in a giant lookup table
 		// using func_t = bool(TESObjectREFR* a_thisObj, void* a_param1, void* a_param2, double& a_result);
-		enum class FunctionID : UInt16
+		enum class FunctionID
 		{
 			kGetWantBlocking = 0,
 			kGetDistance = 1,
@@ -889,18 +889,18 @@ namespace RE
 
 
 		// members
-		FunctionID function;   // 00
-		UInt16	   pad02;	   // 02
-		UInt32	   pad04;	   // 04
-		void*	   params[2];  // 08
+		stl::enumeration<FunctionID, std::uint16_t> function;	// 00
+		std::uint16_t								pad02;		// 02
+		std::uint32_t								pad04;		// 04
+		void*										params[2];	// 08
 	};
-	STATIC_ASSERT(sizeof(FUNCTION_DATA) == 0x18);
+	static_assert(sizeof(FUNCTION_DATA) == 0x18);
 
 
 	struct CONDITION_ITEM_DATA
 	{
 	public:
-		enum class OpCode : UInt8
+		enum class OpCode : std::uint8_t
 		{
 			kEqualTo,				// ==
 			kNotEqualTo,			// !=
@@ -920,15 +920,17 @@ namespace RE
 			TESGlobal* g;
 			float	   f;
 		};
-		STATIC_ASSERT(sizeof(GlobalOrFloat) == 0x8);
+		static_assert(sizeof(GlobalOrFloat) == 0x8);
 
 
 		struct Flags
 		{
+		public:
 			Flags();
 			~Flags() = default;
 
 
+			// members
 			bool   isOR : 1;		 // 0 - false == AND, true == OR
 			bool   usesAliases : 1;	 // 1
 			bool   global : 1;		 // 2
@@ -936,7 +938,7 @@ namespace RE
 			bool   swapTarget : 1;	 // 4
 			OpCode opCode : 3;		 // 5
 		};
-		STATIC_ASSERT(sizeof(Flags) == 0x1);
+		static_assert(sizeof(Flags) == 0x1);
 
 
 		CONDITION_ITEM_DATA();
@@ -944,16 +946,16 @@ namespace RE
 
 
 		// members
-		GlobalOrFloat		comparisonValue;  // 08
-		ObjectRefHandle		runOnRef;		  // 10 - kReference
-		UInt32				dataID;			  // 14
-		FUNCTION_DATA		functionData;	  // 18
-		Flags				flags;			  // 30
-		CONDITIONITEMOBJECT object;			  // 31
-		UInt16				pad32;			  // 32
-		UInt32				pad34;			  // 34
+		GlobalOrFloat										comparisonValue;  // 08
+		ObjectRefHandle										runOnRef;		  // 10 - kReference
+		std::uint32_t										dataID;			  // 14
+		FUNCTION_DATA										functionData;	  // 18
+		Flags												flags;			  // 30
+		stl::enumeration<CONDITIONITEMOBJECT, std::uint8_t> object;			  // 31
+		std::uint16_t										pad32;			  // 32
+		std::uint32_t										pad34;			  // 34
 	};
-	STATIC_ASSERT(sizeof(CONDITION_ITEM_DATA) == 0x30);
+	static_assert(sizeof(CONDITION_ITEM_DATA) == 0x30);
 
 
 	struct ConditionCheckParams
@@ -977,7 +979,7 @@ namespace RE
 		void*		   unk20;	   // 20
 		void*		   unk28;	   // 28
 	};
-	STATIC_ASSERT(sizeof(ConditionCheckParams) == 0x30);
+	static_assert(sizeof(ConditionCheckParams) == 0x30);
 
 
 	struct TESConditionItem	 // CTDA
@@ -995,7 +997,7 @@ namespace RE
 		TESConditionItem*	next;  // 00
 		CONDITION_ITEM_DATA data;  // 08
 	};
-	STATIC_ASSERT(sizeof(TESConditionItem) == 0x38);
+	static_assert(sizeof(TESConditionItem) == 0x38);
 
 
 	class TESCondition
@@ -1015,5 +1017,5 @@ namespace RE
 		// members
 		TESConditionItem* head;	 // 0
 	};
-	STATIC_ASSERT(sizeof(TESCondition) == 0x8);
+	static_assert(sizeof(TESCondition) == 0x8);
 }

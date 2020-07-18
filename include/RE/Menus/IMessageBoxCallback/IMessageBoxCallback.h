@@ -11,7 +11,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_IMessageBoxCallback;
 
 
-		enum class Message : UInt8
+		enum class Message
 		{
 			kUnk0 = 0,
 			kUnk1 = 1,
@@ -26,7 +26,7 @@ namespace RE
 
 
 		// members
-		UInt32 unk0C;  // 0C
+		std::uint32_t unk0C;  // 0C
 	};
-	STATIC_ASSERT(sizeof(IMessageBoxCallback) == 0x10);
+	static_assert(sizeof(IMessageBoxCallback) == 0x10);
 }

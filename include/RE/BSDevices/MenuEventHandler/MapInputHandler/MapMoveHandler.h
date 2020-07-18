@@ -19,7 +19,7 @@ namespace RE
 
 
 		// members
-		UInt64 unk18;  // 18
+		std::uint64_t unk18;  // 18
 	};
-	STATIC_ASSERT(sizeof(MapMoveHandler) == 0x20);
+	static_assert(sizeof(MapMoveHandler) == 0x20);
 }

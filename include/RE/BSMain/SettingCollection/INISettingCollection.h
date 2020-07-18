@@ -24,5 +24,5 @@ namespace RE
 
 		Setting* GetSetting(const char* a_name);
 	};
-	STATIC_ASSERT(sizeof(INISettingCollection) == 0x128);
+	static_assert(sizeof(INISettingCollection) == 0x128);
 }

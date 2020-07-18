@@ -139,7 +139,7 @@ namespace SKSE
 		}
 
 
-		bool RegistrationMapBase::Save(SerializationInterface* a_intfc, UInt32 a_type, UInt32 a_version)
+		bool RegistrationMapBase::Save(SerializationInterface* a_intfc, std::uint32_t a_type, std::uint32_t a_version)
 		{
 			assert(a_intfc);
 			if (!a_intfc->OpenRecord(a_type, a_version)) {
@@ -169,7 +169,7 @@ namespace SKSE
 				}
 
 				size = reg.second.size() + 1;
-				if (!a_intfc->WriteRecordData(size) || !a_intfc->WriteRecordData(reg.second.data(), static_cast<UInt32>(size))) {
+				if (!a_intfc->WriteRecordData(size) || !a_intfc->WriteRecordData(reg.second.data(), static_cast<std::uint32_t>(size))) {
 					log::error("Failed to save reg ({}: {})!", reg.first, reg.second);
 					return false;
 				}
@@ -194,7 +194,7 @@ namespace SKSE
 				a_intfc->ReadRecordData(handle);
 				a_intfc->ReadRecordData(size);
 				evnName.reserve(size);
-				a_intfc->ReadRecordData(evnName.data(), static_cast<UInt32>(size));
+				a_intfc->ReadRecordData(evnName.data(), static_cast<std::uint32_t>(size));
 				if (!a_intfc->ResolveHandle(handle, handle)) {
 					log::warn("Failed to resolve handle ({}: {})", handle, evnName.c_str());
 				} else {

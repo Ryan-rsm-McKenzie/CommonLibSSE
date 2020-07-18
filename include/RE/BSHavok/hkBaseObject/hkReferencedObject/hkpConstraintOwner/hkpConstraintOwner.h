@@ -18,14 +18,14 @@ namespace RE
 		virtual ~hkpConstraintOwner();	// 00
 
 		// add
-		virtual void AddConstraintToCriticalLockedIsland(hkpConstraintInstance* a_constraint);		 // 03 - { return; }
-		virtual void RemoveConstraintFromCriticalLockedIsland(hkpConstraintInstance* a_constraint);	 // 04 - { return; }
-		virtual void AddCallbackRequest(hkpConstraintInstance* a_constraint, SInt32 a_request);		 // 05 - { return; }
-		virtual void CheckAccessRW();																 // 06 - { return; }
+		virtual void AddConstraintToCriticalLockedIsland(hkpConstraintInstance* a_constraint);		   // 03 - { return; }
+		virtual void RemoveConstraintFromCriticalLockedIsland(hkpConstraintInstance* a_constraint);	   // 04 - { return; }
+		virtual void AddCallbackRequest(hkpConstraintInstance* a_constraint, std::int32_t a_request);  // 05 - { return; }
+		virtual void CheckAccessRW();																   // 06 - { return; }
 
 
 		// members
 		hkpConstraintInfo constraintInfo;  // 10
 	};
-	STATIC_ASSERT(sizeof(hkpConstraintOwner) == 0x20);
+	static_assert(sizeof(hkpConstraintOwner) == 0x20);
 }

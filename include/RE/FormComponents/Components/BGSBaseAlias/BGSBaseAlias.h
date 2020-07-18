@@ -17,7 +17,7 @@ namespace RE
 		inline static constexpr auto VMTYPEID = static_cast<VMTypeID>(139);
 
 
-		enum class FLAGS : UInt32
+		enum class FLAGS
 		{
 			kNone = 0,
 			kReserves = 1 << 0,
@@ -44,11 +44,11 @@ namespace RE
 			kNoPickpocket = 1 << 21,
 			kDataAlias = 1 << 22,
 			kSceneOptional = 1 << 24,
-			kCreateIn = (UInt32)1 << 31	 // BGSRefAlias
+			kCreateIn = 1 << 31	 // BGSRefAlias
 		};
 
 
-		enum class FILL_TYPE : UInt16  // BGSRefAlias
+		enum class FILL_TYPE  // BGSRefAlias
 		{
 			kConditions = 0,
 			kForced = 1,
@@ -74,13 +74,13 @@ namespace RE
 
 
 		// members
-		BSFixedString aliasName;	// 08 - ALID
-		TESQuest*	  owningQuest;	// 10
-		UInt32		  aliasID;		// 18 - ALST/ALLS
-		FLAGS		  flags;		// 1C - FNAM
-		FILL_TYPE	  fillType;		// 20
-		UInt16		  pad22;		// 22
-		UInt32		  pad24;		// 24
+		BSFixedString							   aliasName;	 // 08 - ALID
+		TESQuest*								   owningQuest;	 // 10
+		std::uint32_t							   aliasID;		 // 18 - ALST/ALLS
+		stl::enumeration<FLAGS, std::uint32_t>	   flags;		 // 1C - FNAM
+		stl::enumeration<FILL_TYPE, std::uint16_t> fillType;	 // 20
+		std::uint16_t							   pad22;		 // 22
+		std::uint32_t							   pad24;		 // 24
 	};
-	STATIC_ASSERT(sizeof(BGSBaseAlias) == 0x28);
+	static_assert(sizeof(BGSBaseAlias) == 0x28);
 }

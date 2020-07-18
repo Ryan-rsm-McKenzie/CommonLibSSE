@@ -38,7 +38,7 @@ namespace RE
 
 
 		// members
-		UInt64 unkB8;  // B8
+		std::uint64_t unkB8;  // B8
 	};
-	STATIC_ASSERT(sizeof(BGSMoviePlayer) == 0xC0);
+	static_assert(sizeof(BGSMoviePlayer) == 0xC0);
 }

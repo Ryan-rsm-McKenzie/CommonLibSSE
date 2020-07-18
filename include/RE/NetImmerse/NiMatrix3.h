@@ -16,5 +16,5 @@ namespace RE
 		// members
 		float entry[3][3];	// 00
 	};
-	STATIC_ASSERT(sizeof(NiMatrix3) == 0x24);
+	static_assert(sizeof(NiMatrix3) == 0x24);
 }

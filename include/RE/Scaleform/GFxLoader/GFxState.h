@@ -69,8 +69,8 @@ namespace RE
 		StateType GetStateType() const;
 
 	protected:
-		StateType stateType;  // 10
-		UInt32	  pad14;	  // 14
+		StateType	  stateType;  // 10
+		std::uint32_t pad14;	  // 14
 	};
-	STATIC_ASSERT(sizeof(GFxState) == 0x18);
+	static_assert(sizeof(GFxState) == 0x18);
 }

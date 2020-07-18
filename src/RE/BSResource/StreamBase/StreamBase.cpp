@@ -23,13 +23,13 @@ namespace RE
 		{}
 
 
-		StreamBase::StreamBase(UInt32 a_totalSize) :
+		StreamBase::StreamBase(std::uint32_t a_totalSize) :
 			totalSize(a_totalSize),
 			flags(0)
 		{}
 
 
-		UInt64 StreamBase::DoGetKey() const
+		std::uint64_t StreamBase::DoGetKey() const
 		{
 			return 0;
 		}
@@ -41,11 +41,11 @@ namespace RE
 		}
 
 
-		UInt32 StreamBase::DecRef()
+		std::uint32_t StreamBase::DecRef()
 		{
 			auto tmpFlags = this->flags;
-			UInt32 prevFlags;
-			UInt32 result;
+			std::uint32_t prevFlags;
+			std::uint32_t result;
 			do {
 				prevFlags = tmpFlags;
 				result = tmpFlags - kRefCountBeg;
@@ -55,11 +55,11 @@ namespace RE
 		}
 
 
-		UInt32 StreamBase::IncRef()
+		std::uint32_t StreamBase::IncRef()
 		{
 			auto tmpFlags = this->flags;
-			UInt32 prevFlags;
-			UInt32 result;
+			std::uint32_t prevFlags;
+			std::uint32_t result;
 			do {
 				prevFlags = tmpFlags;
 				result = tmpFlags + kRefCountBeg;

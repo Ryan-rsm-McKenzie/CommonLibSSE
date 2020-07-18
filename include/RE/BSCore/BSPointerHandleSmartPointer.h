@@ -15,5 +15,5 @@ namespace RE
 
 	class Actor;
 	using ActorHandlePtr = BSPointerHandleSmartPointer<BSPointerHandleManagerInterface<Actor>>;
-	STATIC_ASSERT(sizeof(ActorHandlePtr) == 0x8);
+	static_assert(sizeof(ActorHandlePtr) == 0x8);
 }

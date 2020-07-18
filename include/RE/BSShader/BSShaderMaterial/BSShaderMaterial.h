@@ -12,7 +12,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSShaderMaterial;
 
 
-		enum class Feature : UInt32
+		enum class Feature
 		{
 			kNone = static_cast<std::underlying_type_t<Feature>>(-1),
 			kDefault = 0,
@@ -36,7 +36,7 @@ namespace RE
 		};
 
 
-		enum class Type : UInt32
+		enum class Type
 		{
 			kBase = 0,
 			kEffect = 1,
@@ -51,17 +51,17 @@ namespace RE
 		virtual BSShaderMaterial* Create();								   // 01
 		virtual void			  CopyMembers(BSShaderMaterial* a_other);  // 02
 		virtual bool			  DoIsCopy(BSShaderMaterial* a_other);	   // 03
-		virtual UInt32			  ComputeCRC32(void);					   // 04
+		virtual std::uint32_t	  ComputeCRC32(void);					   // 04
 		virtual BSShaderMaterial* GetDefault();							   // 05
 		virtual Feature			  GetFeature() const;					   // 06 - { return Feature::kDefault; }
 		virtual Type			  GetType() const;						   // 07 - { return Type::kBase; }
 
 
 		// members
-		NiPoint2 texCoordOffset[2];	 // 0C
-		NiPoint2 texCoordScale[2];	 // 1C
-		UInt32	 hashKey;			 // 2C
-		UInt64	 unk30;				 // 30
+		NiPoint2	  texCoordOffset[2];  // 0C
+		NiPoint2	  texCoordScale[2];	  // 1C
+		std::uint32_t hashKey;			  // 2C
+		std::uint64_t unk30;			  // 30
 	};
-	STATIC_ASSERT(sizeof(BSShaderMaterial) == 0x38);
+	static_assert(sizeof(BSShaderMaterial) == 0x38);
 }

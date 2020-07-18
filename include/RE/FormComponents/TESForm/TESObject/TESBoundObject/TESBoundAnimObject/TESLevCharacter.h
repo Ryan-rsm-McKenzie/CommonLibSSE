@@ -20,16 +20,16 @@ namespace RE
 
 		struct ChangeFlags
 		{
-			enum ChangeFlag : UInt32
+			enum ChangeFlag : std::uint32_t
 			{
-				kAddedObject = (UInt32)1 << 31
+				kAddedObject = (std::uint32_t)1 << 31
 			};
 		};
 
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -49,8 +49,8 @@ namespace RE
 		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;		  // 4A - { return 0; }
 
 		// override (TESLeveledList)
-		virtual SInt32 GetLevDifferenceMax() override;							  // 06 - { return iLevCharLevelDifferenceMax; }
-		virtual bool   GetCanContainFormsOfType(FormType a_type) const override;  // 07 - { return a_type <= FormType::LeveledCharacter; }
+		virtual std::int32_t GetLevDifferenceMax() override;							// 06 - { return iLevCharLevelDifferenceMax; }
+		virtual bool		 GetCanContainFormsOfType(FormType a_type) const override;	// 07 - { return a_type <= FormType::LeveledCharacter; }
 	};
-	STATIC_ASSERT(sizeof(TESLevCharacter) == 0x90);
+	static_assert(sizeof(TESLevCharacter) == 0x90);
 }

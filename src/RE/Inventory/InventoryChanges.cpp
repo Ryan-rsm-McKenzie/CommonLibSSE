@@ -40,7 +40,7 @@ namespace RE
 	}
 
 
-	UInt16 InventoryChanges::GetNextUniqueID()
+	std::uint16_t InventoryChanges::GetNextUniqueID()
 	{
 		using func_t = decltype(&InventoryChanges::GetNextUniqueID);
 		REL::Offset<func_t> func(Offset::InventoryChanges::GetNextUniqueID);
@@ -48,7 +48,7 @@ namespace RE
 	}
 
 
-	void InventoryChanges::SendContainerChangedEvent(ExtraDataList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, SInt32 a_count)
+	void InventoryChanges::SendContainerChangedEvent(ExtraDataList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, std::int32_t a_count)
 	{
 		using func_t = decltype(&InventoryChanges::SendContainerChangedEvent);
 		REL::Offset<func_t> func(Offset::InventoryChanges::SendContainerChangedEvent);

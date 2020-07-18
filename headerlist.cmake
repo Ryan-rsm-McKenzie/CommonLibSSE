@@ -1,6 +1,5 @@
 set(headers ${headers}
 	include\REL\Relocation.h
-	include\REL\SafeWrite.h
 	include\REL\Version.h
 	include\RE\AI\AIFormulas.h
 	include\RE\AI\AIProcess.h
@@ -1202,13 +1201,11 @@ set(headers ${headers}
 	include\SKSE\Impl\PCH.h
 	include\SKSE\Impl\RegistrationTraits.h
 	include\SKSE\Impl\Stubs.h
-	include\SKSE\Impl\Util.h
 	include\SKSE\Interfaces.h
 	include\SKSE\Logger.h
 	include\SKSE\RegistrationMap.h
 	include\SKSE\RegistrationSet.h
 	include\SKSE\SKSE.h
-	include\SKSE\SafeWrite.h
 	include\SKSE\Trampoline.h
 	include\SKSE\Version.h
 )

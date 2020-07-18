@@ -22,5 +22,5 @@ namespace RE
 		virtual void Unk_0C(void) override;			  // 0C - { return; }
 		virtual void Unk_0D(void) override;			  // 0D - { return; }
 	};
-	STATIC_ASSERT(sizeof(BSWin32VirtualKeyboardDevice) == 0x70);
+	static_assert(sizeof(BSWin32VirtualKeyboardDevice) == 0x70);
 }

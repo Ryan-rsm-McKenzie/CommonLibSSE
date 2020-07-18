@@ -9,18 +9,20 @@ namespace RE
 {
 	struct ADDON_DATA
 	{
-		enum class Flag : UInt8
+	public:
+		enum class Flag
 		{
 			kNone = 0,
 			kAlwaysLoaded = 3
 		};
 
 
-		UInt16 masterParticleCap;  // 0
-		Flag   flags;			   // 2
-		UInt8  pad3;			   // 3
+		// members
+		std::uint16_t						 masterParticleCap;	 // 0
+		stl::enumeration<Flag, std::uint8_t> flags;				 // 2
+		std::uint8_t						 pad3;				 // 3
 	};
-	STATIC_ASSERT(sizeof(ADDON_DATA) == 0x4);
+	static_assert(sizeof(ADDON_DATA) == 0x4);
 
 
 	class BGSAddonNode :
@@ -34,7 +36,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -51,11 +53,11 @@ namespace RE
 
 
 		// members
-		UInt32					index;	// 68 - DATA
-		UInt32					pad6C;	// 6C
+		std::uint32_t			index;	// 68 - DATA
+		std::uint32_t			pad6C;	// 6C
 		BGSSoundDescriptorForm* sound;	// 70 - SNAM
 		ADDON_DATA				data;	// 78 - DNAM
-		UInt32					pad7C;	// 7C
+		std::uint32_t			pad7C;	// 7C
 	};
-	STATIC_ASSERT(sizeof(BGSAddonNode) == 0x80);
+	static_assert(sizeof(BGSAddonNode) == 0x80);
 }

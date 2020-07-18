@@ -35,16 +35,16 @@ namespace RE
 
 
 		// members
-		void*	   unk38;			 // 38 - smart ptr
-		ActorValue skill;			 // 40
-		UInt32	   unk44;			 // 44
-		GFxValue   trainingMenuObj;	 // 48 - MovieClip
-		GFxValue   skillName;		 // 60 - TextField
-		GFxValue   skillMeter;		 // 78 - Components.Meter
-		GFxValue   trainerSkill;	 // 90 - TextField
-		GFxValue   timesTrained;	 // A8 - TextField
-		GFxValue   trainCost;		 // C0 - TextField
-		GFxValue   currentGold;		 // D8 - TextField
+		void*		  unk38;			// 38 - smart ptr
+		ActorValue	  skill;			// 40
+		std::uint32_t unk44;			// 44
+		GFxValue	  trainingMenuObj;	// 48 - MovieClip
+		GFxValue	  skillName;		// 60 - TextField
+		GFxValue	  skillMeter;		// 78 - Components.Meter
+		GFxValue	  trainerSkill;		// 90 - TextField
+		GFxValue	  timesTrained;		// A8 - TextField
+		GFxValue	  trainCost;		// C0 - TextField
+		GFxValue	  currentGold;		// D8 - TextField
 	};
-	STATIC_ASSERT(sizeof(TrainingMenu) == 0xF0);
+	static_assert(sizeof(TrainingMenu) == 0xF0);
 }

@@ -20,7 +20,7 @@ namespace RE
 		class FormatPrefs
 		{
 		public:
-			enum class PixelLayout : UInt32
+			enum class PixelLayout
 			{
 				kPalettized8,
 				kHighColor16,
@@ -40,7 +40,7 @@ namespace RE
 			};
 
 
-			enum class AlphaFormat : UInt32
+			enum class AlphaFormat
 			{
 				kNone,
 				kBinary,  // 1-bit
@@ -49,10 +49,10 @@ namespace RE
 			};
 
 
-			enum class MipFlag : UInt32
+			enum class MipFlag
 			{
-				kNo = false,
-				kYes = true,
+				kNo = 0,
+				kYes = 1,
 				kDefault
 			};
 
@@ -61,12 +61,12 @@ namespace RE
 
 
 			// members
-			PixelLayout pixelLayout;  // 00
-			AlphaFormat alphaFormat;  // 04
-			MipFlag		mipMapped;	  // 08
-			UInt32		pad0C;		  // 0C
+			stl::enumeration<PixelLayout, std::uint32_t> pixelLayout;  // 00
+			stl::enumeration<AlphaFormat, std::uint32_t> alphaFormat;  // 04
+			stl::enumeration<MipFlag, std::uint32_t>	 mipMapped;	   // 08
+			std::uint32_t								 pad0C;		   // 0C
 		};
-		STATIC_ASSERT(sizeof(FormatPrefs) == 0x10);
+		static_assert(sizeof(FormatPrefs) == 0x10);
 
 
 		virtual ~NiTexture();
@@ -86,10 +86,10 @@ namespace RE
 		// members
 		FormatPrefs	  formatPrefs;	// 10
 		BSFixedString name;			// 20
-		UInt32		  unk28;		// 28
-		UInt32		  unk2C;		// 2C
+		std::uint32_t unk28;		// 28
+		std::uint32_t unk2C;		// 2C
 		NiTexture*	  prev;			// 30
 		NiTexture*	  next;			// 38
 	};
-	STATIC_ASSERT(sizeof(NiTexture) == 0x40);
+	static_assert(sizeof(NiTexture) == 0x40);
 }

@@ -20,7 +20,7 @@ namespace RE
 
 
 		// members
-		SInt8* buffer;	// 10
+		std::int8_t* buffer;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraGIDBuffer) == 0x18);
+	static_assert(sizeof(ExtraGIDBuffer) == 0x18);
 }

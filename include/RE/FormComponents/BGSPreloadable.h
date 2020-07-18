@@ -21,5 +21,5 @@ namespace RE
 		// add
 		virtual void Unk_04(void) = 0;	// 04
 	};
-	STATIC_ASSERT(sizeof(BGSPreloadable) == 0x8);
+	static_assert(sizeof(BGSPreloadable) == 0x8);
 }

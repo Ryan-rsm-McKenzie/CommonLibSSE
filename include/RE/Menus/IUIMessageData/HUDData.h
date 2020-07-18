@@ -12,7 +12,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_HUDData;
 
 
-		enum class Type : UInt32
+		enum class Type
 		{
 			kUnk0 = 0,
 			kNotification = 1,
@@ -28,7 +28,7 @@ namespace RE
 		};
 
 
-		enum class Discovery : UInt32
+		enum class Discovery
 		{
 			kCity = 1,
 			kTown = 2,
@@ -44,17 +44,17 @@ namespace RE
 
 
 		// members
-		Type	  type;		  // 10
-		UInt32	  pad14;	  // 14
-		BSString  text;		  // 18
-		UInt32	  unk28;	  // 28
-		UInt32	  pad2C;	  // 2C
-		void*	  unk30;	  // 30
-		UInt64	  unk38;	  // 38
-		UInt8	  unk40;	  // 40
-		UInt8	  pad41;	  // 41
-		UInt16	  pad42;	  // 42
-		Discovery discovery;  // 44
+		stl::enumeration<Type, std::uint32_t>	   type;	   // 10
+		std::uint32_t							   pad14;	   // 14
+		BSString								   text;	   // 18
+		std::uint32_t							   unk28;	   // 28
+		std::uint32_t							   pad2C;	   // 2C
+		void*									   unk30;	   // 30
+		std::uint64_t							   unk38;	   // 38
+		std::uint8_t							   unk40;	   // 40
+		std::uint8_t							   pad41;	   // 41
+		std::uint16_t							   pad42;	   // 42
+		stl::enumeration<Discovery, std::uint32_t> discovery;  // 44
 	};
-	STATIC_ASSERT(sizeof(HUDData) == 0x48);
+	static_assert(sizeof(HUDData) == 0x48);
 }

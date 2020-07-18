@@ -9,13 +9,13 @@ namespace RE
 {
 	namespace BSScript
 	{
-		bool IVirtualMachine::CreateArray(const TypeInfo& a_typeInfo, UInt32 a_size, BSTSmartPointer<Array>& a_arrayPtr)
+		bool IVirtualMachine::CreateArray(const TypeInfo& a_typeInfo, std::uint32_t a_size, BSTSmartPointer<Array>& a_arrayPtr)
 		{
 			return CreateArray1(a_typeInfo, a_size, a_arrayPtr);
 		}
 
 
-		bool IVirtualMachine::CreateArray(TypeInfo::RawType a_typeID, const BSFixedString& a_className, UInt32 a_size, BSTSmartPointer<Array>& a_arrayPtr)
+		bool IVirtualMachine::CreateArray(TypeInfo::RawType a_typeID, const BSFixedString& a_className, std::uint32_t a_size, BSTSmartPointer<Array>& a_arrayPtr)
 		{
 			return CreateArray2(a_typeID, a_className, a_size, a_arrayPtr);
 		}
@@ -93,13 +93,13 @@ namespace RE
 		}
 
 
-		bool IVirtualMachine::GetVariableValue(const BSTSmartPointer<Object>& a_objPtr, UInt32 a_index, Variable& a_out) const
+		bool IVirtualMachine::GetVariableValue(const BSTSmartPointer<Object>& a_objPtr, std::uint32_t a_index, Variable& a_out) const
 		{
 			return GetVariableValue1(a_objPtr, a_index, a_out);
 		}
 
 
-		bool IVirtualMachine::GetVariableValue(VMHandle a_handle, const BSFixedString& a_className, SInt32 a_variableIndex, Variable& a_out) const
+		bool IVirtualMachine::GetVariableValue(VMHandle a_handle, const BSFixedString& a_className, std::int32_t a_variableIndex, Variable& a_out) const
 		{
 			return GetVariableValue2(a_handle, a_className, a_variableIndex, a_out);
 		}
@@ -125,7 +125,7 @@ namespace RE
 			if (a_form) {
 				auto policy = GetObjectHandlePolicy();
 				if (policy) {
-					auto handle = policy->GetHandleForObject(a_form->formType, a_form);
+					auto handle = policy->GetHandleForObject(a_form->GetFormType(), a_form);
 					policy->ConvertHandleToString(handle, name);
 				}
 			}

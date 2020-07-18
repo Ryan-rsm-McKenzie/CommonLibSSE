@@ -39,5 +39,5 @@ namespace RE
 		// members
 		BGSProcedureBase* procedure;  // 10
 	};
-	STATIC_ASSERT(sizeof(BGSProcedureTreeProcedure) == 0x18);
+	static_assert(sizeof(BGSProcedureTreeProcedure) == 0x18);
 }

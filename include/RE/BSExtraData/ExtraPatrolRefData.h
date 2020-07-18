@@ -8,13 +8,13 @@ namespace RE
 {
 	struct PatrolRefData
 	{
-		UInt64 unk00;  // 00
-		UInt64 unk08;  // 08
-		UInt64 unk10;  // 10
-		UInt64 unk18;  // 18
-		UInt64 unk20;  // 20
+		std::uint64_t unk00;  // 00
+		std::uint64_t unk08;  // 08
+		std::uint64_t unk10;  // 10
+		std::uint64_t unk18;  // 18
+		std::uint64_t unk20;  // 20
 	};
-	STATIC_ASSERT(sizeof(PatrolRefData) == 0x28);
+	static_assert(sizeof(PatrolRefData) == 0x28);
 
 
 	class ExtraPatrolRefData : public BSExtraData
@@ -34,5 +34,5 @@ namespace RE
 		// members
 		PatrolRefData* patrolData;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraPatrolRefData) == 0x18);
+	static_assert(sizeof(ExtraPatrolRefData) == 0x18);
 }

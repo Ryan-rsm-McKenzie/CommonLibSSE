@@ -26,5 +26,5 @@ namespace RE
 		// members
 		TESGlobal* global;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraGlobal) == 0x18);
+	static_assert(sizeof(ExtraGlobal) == 0x18);
 }

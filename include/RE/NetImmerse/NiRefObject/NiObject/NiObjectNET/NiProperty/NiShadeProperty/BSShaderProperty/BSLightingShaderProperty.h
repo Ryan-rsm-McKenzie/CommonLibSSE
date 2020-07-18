@@ -18,10 +18,10 @@ namespace RE
 
 		struct Data
 		{
-			UInt64 unk00;  // 00
-			UInt64 unk08;  // 08
+			std::uint64_t unk00;  // 00
+			std::uint64_t unk08;  // 08
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x10);
+		static_assert(sizeof(Data) == 0x10);
 
 
 		virtual ~BSLightingShaderProperty();  // 00
@@ -60,20 +60,20 @@ namespace RE
 		Data			unk0B8;			// 0B8
 		Data			unk0C8;			// 0C8
 		Data			unk0D8;			// 0D8
-		UInt64			unk0E8;			// 0E8
+		std::uint64_t	unk0E8;			// 0E8
 		NiColor*		emissiveColor;	// 0F0
 		float			emissiveMult;	// 0F8
-		UInt32			unk0FC;			// 0FC
-		UInt64			unk100;			// 100
-		UInt64			unk108;			// 108
-		UInt64			unk110;			// 110
-		UInt64			unk118;			// 118
-		UInt64			unk120;			// 120
-		UInt64			unk128;			// 128
-		UInt64			unk130;			// 130
+		std::uint32_t	unk0FC;			// 0FC
+		std::uint64_t	unk100;			// 100
+		std::uint64_t	unk108;			// 108
+		std::uint64_t	unk110;			// 110
+		std::uint64_t	unk118;			// 118
+		std::uint64_t	unk120;			// 120
+		std::uint64_t	unk128;			// 128
+		std::uint64_t	unk130;			// 130
 		BSTArray<void*> unk138;			// 138
-		UInt64			unk150;			// 150
-		UInt64			unk158;			// 158
+		std::uint64_t	unk150;			// 150
+		std::uint64_t	unk158;			// 158
 	};
-	STATIC_ASSERT(sizeof(BSLightingShaderProperty) == 0x160);
+	static_assert(sizeof(BSLightingShaderProperty) == 0x160);
 }

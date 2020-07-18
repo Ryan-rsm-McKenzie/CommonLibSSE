@@ -40,5 +40,5 @@ namespace RE
 		// override (BSTEventSink<BSRemoteGamepadEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const BSRemoteGamepadEvent* a_event, BSTEventSource<BSRemoteGamepadEvent>* a_eventSource) override;  // 01
 	};
-	STATIC_ASSERT(sizeof(Journal_SystemTab) == 0x38);
+	static_assert(sizeof(Journal_SystemTab) == 0x38);
 }

@@ -13,7 +13,7 @@ namespace RE
 	{}
 
 
-	SInt32 GRefCountImplCore::GetRefCount() const
+	std::int32_t GRefCountImplCore::GetRefCount() const
 	{
 		return _refCount;
 	}

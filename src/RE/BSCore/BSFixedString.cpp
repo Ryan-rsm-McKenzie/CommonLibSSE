@@ -80,7 +80,7 @@ namespace RE
 		if (a_pos >= size()) {
 			std::string err = __FUNCTION__;
 			err += ": ";
-			err += MAKE_STR(a_pos);
+			err += "a_pos";
 			err += " (which is" + std::to_string(a_pos) + ") >= this->size() (which is" + std::to_string(this->size()) + ")";
 			throw std::out_of_range(err);
 		} else {
@@ -290,7 +290,7 @@ namespace RE
 		if (a_pos >= size()) {
 			std::string err = __FUNCTION__;
 			err += ": ";
-			err += MAKE_STR(a_pos);
+			err += "a_pos";
 			err += " (which is" + std::to_string(a_pos) + ") >= this->size() (which is" + std::to_string(this->size()) + ")";
 			throw std::out_of_range(err);
 		} else {

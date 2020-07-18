@@ -11,5 +11,5 @@ namespace RE
 
 		virtual ~IMovementInterface();
 	};
-	STATIC_ASSERT(sizeof(IMovementInterface) == 0x8);
+	static_assert(sizeof(IMovementInterface) == 0x8);
 }

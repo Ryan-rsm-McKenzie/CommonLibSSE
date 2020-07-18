@@ -17,5 +17,5 @@ namespace RE
 		void AddRef();
 		void Release();
 	};
-	STATIC_ASSERT(sizeof(GRefCountImpl) == 0x10);
+	static_assert(sizeof(GRefCountImpl) == 0x10);
 }

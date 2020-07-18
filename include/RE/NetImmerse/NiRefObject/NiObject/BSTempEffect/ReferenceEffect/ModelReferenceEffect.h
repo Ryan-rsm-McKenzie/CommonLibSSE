@@ -44,11 +44,11 @@ namespace RE
 
 		// members
 		RefAttachTechniqueInput hitEffectArtData;  // 68
-		UInt64					unkB0;			   // B0
+		std::uint64_t			unkB0;			   // B0
 		BGSArtObject*			artObject;		   // B8
-		UInt64					unkC0;			   // C0
+		std::uint64_t			unkC0;			   // C0
 		NiPointer<NiAVObject>	artObject3D;	   // C8
-		UInt64					unkD0;			   // D0
+		std::uint64_t			unkD0;			   // D0
 	};
-	STATIC_ASSERT(sizeof(ModelReferenceEffect) == 0xD8);
+	static_assert(sizeof(ModelReferenceEffect) == 0xD8);
 }

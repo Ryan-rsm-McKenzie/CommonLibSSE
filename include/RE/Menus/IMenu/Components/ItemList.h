@@ -21,10 +21,10 @@ namespace RE
 			// members
 			StandardItemData data;	 // 00
 			GFxValue		 obj;	 // 18 - kObject
-			UInt64			 unk30;	 // 30
-			UInt64			 unk38;	 // 38
+			std::uint64_t	 unk30;	 // 30
+			std::uint64_t	 unk38;	 // 38
 		};
-		STATIC_ASSERT(sizeof(Item) == 0x40);
+		static_assert(sizeof(Item) == 0x40);
 
 
 		Item* GetSelectedItem();
@@ -38,12 +38,12 @@ namespace RE
 		GFxValue		   entryList;  // 20 - kArray - root.GetMember("entryList", &entryList);
 		BSTArray<Item*>	   items;	   // 38
 		bool			   unk50;	   // 50
-		UInt8			   pad51;	   // 51
-		UInt16			   pad52;	   // 52
-		UInt32			   pad54;	   // 54
+		std::uint8_t	   pad51;	   // 51
+		std::uint16_t	   pad52;	   // 52
+		std::uint32_t	   pad54;	   // 54
 
 	protected:
 		void Update_Impl(TESObjectREFR* a_owner);
 	};
-	STATIC_ASSERT(sizeof(ItemList) == 0x58);
+	static_assert(sizeof(ItemList) == 0x58);
 }

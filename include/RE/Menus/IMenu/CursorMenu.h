@@ -28,5 +28,5 @@ namespace RE
 		virtual bool ProcessThumbstick(ThumbstickEvent* a_event) override;	// 03
 		virtual bool ProcessMouseMove(MouseMoveEvent* a_event) override;	// 04
 	};
-	STATIC_ASSERT(sizeof(CursorMenu) == 0x40);
+	static_assert(sizeof(CursorMenu) == 0x40);
 }

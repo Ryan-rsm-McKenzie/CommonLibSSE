@@ -29,7 +29,7 @@ namespace RE
 		virtual ~CreationClubMenu();  // 00
 
 		// override (IMenu)
-		virtual void AdvanceMovie(float a_interval, UInt32 a_currentTime) override;	 // 05
+		virtual void AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;	// 05
 
 		// override (MenuEventHandler)
 		virtual bool CanProcess(InputEvent* a_event) override;				// 01
@@ -46,5 +46,5 @@ namespace RE
 		ImageData background;  // 58
 		ImageData details;	   // 70
 	};
-	STATIC_ASSERT(sizeof(CreationClubMenu) == 0x88);
+	static_assert(sizeof(CreationClubMenu) == 0x88);
 }

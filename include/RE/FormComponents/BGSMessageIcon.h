@@ -23,5 +23,5 @@ namespace RE
 		// members
 		TESIcon icon;  // 08
 	};
-	STATIC_ASSERT(sizeof(BGSMessageIcon) == 0x18);
+	static_assert(sizeof(BGSMessageIcon) == 0x18);
 }

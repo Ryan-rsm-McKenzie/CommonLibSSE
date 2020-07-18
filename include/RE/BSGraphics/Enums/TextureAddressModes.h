@@ -5,7 +5,7 @@ namespace RE
 {
 	namespace BSGraphics
 	{
-		enum class TextureAddressMode : UInt32
+		enum class TextureAddressMode
 		{
 			kClampSClampT = 0,
 			kClampSWrapT = 1,

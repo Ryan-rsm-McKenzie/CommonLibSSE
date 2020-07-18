@@ -13,5 +13,5 @@ namespace RE
 	public:
 		virtual ~GImage();	// 00
 	};
-	STATIC_ASSERT(sizeof(GImage) == 0x48);
+	static_assert(sizeof(GImage) == 0x48);
 }

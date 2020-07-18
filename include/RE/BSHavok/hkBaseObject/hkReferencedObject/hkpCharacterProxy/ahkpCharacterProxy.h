@@ -15,8 +15,8 @@ namespace RE
 
 
 		// members
-		UInt64 unk0F0;	// 0F0
-		UInt64 unk0F8;	// 0F8
+		std::uint64_t unk0F0;  // 0F0
+		std::uint64_t unk0F8;  // 0F8
 	};
-	STATIC_ASSERT(sizeof(ahkpCharacterProxy) == 0x100);
+	static_assert(sizeof(ahkpCharacterProxy) == 0x100);
 }

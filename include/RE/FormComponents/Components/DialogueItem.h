@@ -21,7 +21,7 @@ namespace RE
 	class DialogueResponse
 	{
 	public:
-		enum class EmotionType : UInt32
+		enum class EmotionType
 		{
 			kNeutral = 0,
 			kAnger = 1,
@@ -35,19 +35,19 @@ namespace RE
 
 
 		// members
-		BSString				responseText;  // 00
-		EmotionType				emotionType;   // 10
-		UInt32					emotionValue;  // 14
-		BSFixedString			voice;		   // 18
-		TESIdleForm*			speakerIdle;   // 20
-		TESIdleForm*			listenerIdle;  // 28
-		BGSSoundDescriptorForm* voiceSound;	   // 30
-		bool					useEmotion;	   // 38
-		bool					soundLip;	   // 39
-		UInt16					pad3A;		   // 3A
-		UInt32					pad3C;		   // 3C
+		BSString									 responseText;	// 00
+		stl::enumeration<EmotionType, std::uint32_t> emotionType;	// 10
+		std::uint32_t								 emotionValue;	// 14
+		BSFixedString								 voice;			// 18
+		TESIdleForm*								 speakerIdle;	// 20
+		TESIdleForm*								 listenerIdle;	// 28
+		BGSSoundDescriptorForm*						 voiceSound;	// 30
+		bool										 useEmotion;	// 38
+		bool										 soundLip;		// 39
+		std::uint16_t								 pad3A;			// 3A
+		std::uint32_t								 pad3C;			// 3C
 	};
-	STATIC_ASSERT(sizeof(DialogueResponse) == 0x40);
+	static_assert(sizeof(DialogueResponse) == 0x40);
 
 
 	class DialogueItem : public BSIntrusiveRefCounted
@@ -60,7 +60,7 @@ namespace RE
 
 
 		// members
-		UInt32								   pad04;			 // 04
+		std::uint32_t						   pad04;			 // 04
 		BSSimpleList<DialogueResponse*>		   responses;		 // 08
 		BSSimpleList<DialogueResponse*>::Node* currentResponse;	 // 18
 		TESTopicInfo*						   topicInfo;		 // 20
@@ -72,5 +72,5 @@ namespace RE
 	private:
 		DialogueItem* Ctor(TESQuest* a_quest, TESTopic* a_topic, TESTopicInfo* a_topicInfo, Actor* a_speaker);
 	};
-	STATIC_ASSERT(sizeof(DialogueItem) == 0x48);
+	static_assert(sizeof(DialogueItem) == 0x48);
 }

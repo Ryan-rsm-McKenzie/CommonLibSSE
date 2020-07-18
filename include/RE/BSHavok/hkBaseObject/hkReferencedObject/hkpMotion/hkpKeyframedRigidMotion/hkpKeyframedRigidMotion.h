@@ -37,7 +37,7 @@ namespace RE
 		virtual void SetStepPosition(float a_position, float a_timestep);  // 1A - { return; }
 		virtual void SetStoredMotion(hkpMaxSizeMotion* a_savedMotion);	   // 1B
 	};
-	STATIC_ASSERT(sizeof(hkpKeyframedRigidMotion) == 0x140);
+	static_assert(sizeof(hkpKeyframedRigidMotion) == 0x140);
 
 
 	class hkpMaxSizeMotion : public hkpKeyframedRigidMotion
@@ -45,5 +45,5 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpMaxSizeMotion;
 	};
-	STATIC_ASSERT(sizeof(hkpMaxSizeMotion) == 0x140);
+	static_assert(sizeof(hkpMaxSizeMotion) == 0x140);
 }

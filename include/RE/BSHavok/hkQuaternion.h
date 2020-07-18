@@ -10,5 +10,5 @@ namespace RE
 	public:
 		hkVector4 vec;	// 00
 	};
-	STATIC_ASSERT(sizeof(hkQuaternion) == 0x10);
+	static_assert(sizeof(hkQuaternion) == 0x10);
 }

@@ -25,12 +25,12 @@ namespace RE
 
 
 		// members
-		UInt32			unk0E0;	 // 0E0
+		std::uint32_t	unk0E0;	 // 0E0
 		ObjectRefHandle unk0E4;	 // 0E4
 		ActorHandle		unk0E8;	 // 0E8
 		ActorHandle		unk0EC;	 // 0EC
-		UInt64			unk0F0;	 // 0F0
-		UInt64			unk0F8;	 // 0F8
+		std::uint64_t	unk0F0;	 // 0F0
+		std::uint64_t	unk0F8;	 // 0F8
 	};
-	STATIC_ASSERT(sizeof(DialoguePackage) == 0x100);
+	static_assert(sizeof(DialoguePackage) == 0x100);
 }

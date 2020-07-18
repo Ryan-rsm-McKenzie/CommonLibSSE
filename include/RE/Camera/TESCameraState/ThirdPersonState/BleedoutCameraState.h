@@ -31,12 +31,12 @@ namespace RE
 		float				  pitch;			  // 110
 		float				  yaw;				  // 114
 		float				  randHeading;		  // 118
-		UInt32				  pad11C;			  // 11C
+		std::uint32_t		  pad11C;			  // 11C
 		NiPointer<NiAVObject> animatedBone;		  // 120
 		BSSoundHandle		  activeSound;		  // 128
 		bool				  useCurrentHeading;  // 134
-		UInt8				  pad135;			  // 135
-		UInt16				  pad136;			  // 136
+		std::uint8_t		  pad135;			  // 135
+		std::uint16_t		  pad136;			  // 136
 	};
-	STATIC_ASSERT(sizeof(BleedoutCameraState) == 0x138);
+	static_assert(sizeof(BleedoutCameraState) == 0x138);
 }

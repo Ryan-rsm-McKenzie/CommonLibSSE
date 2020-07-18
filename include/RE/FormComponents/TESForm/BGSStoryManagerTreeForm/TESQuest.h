@@ -21,7 +21,7 @@ namespace RE
 	class QueuedPromoteQuestTask;
 
 
-	enum class QuestFlag : UInt16
+	enum class QuestFlag
 	{
 		kStopStart = static_cast<std::underlying_type_t<QuestFlag>>(-1),
 		kNone = 0,
@@ -44,7 +44,7 @@ namespace RE
 	};
 
 
-	enum class QUEST_OBJECTIVE_FLAGS : UInt32
+	enum class QUEST_OBJECTIVE_FLAGS
 	{
 		kNone = 0,
 		kORWithPrevious = 1 << 0,
@@ -54,38 +54,45 @@ namespace RE
 
 	struct BGSQuestInstanceText
 	{
+	public:
 		struct StringData
 		{
-			UInt32 aliasID;			// 0
-			UInt32 fullNameFormID;	// 4
+		public:
+			// members
+			std::uint32_t aliasID;		   // 0
+			std::uint32_t fullNameFormID;  // 4
 		};
-		STATIC_ASSERT(sizeof(StringData) == 0x8);
+		static_assert(sizeof(StringData) == 0x8);
 
 
 		struct GlobalValueData
 		{
+		public:
+			// members
 			const TESGlobal* global;  // 00
 			float			 value;	  // 08
-			UInt32			 pad0C;	  // 0C
+			std::uint32_t	 pad0C;	  // 0C
 		};
-		STATIC_ASSERT(sizeof(GlobalValueData) == 0x10);
+		static_assert(sizeof(GlobalValueData) == 0x10);
 
 
-		UInt32					  id;				 // 00
-		UInt32					  pad04;			 // 04
+		// members
+		std::uint32_t			  id;				 // 00
+		std::uint32_t			  pad04;			 // 04
 		BSTArray<StringData>	  stringData;		 // 08
 		BSTArray<GlobalValueData> valueData;		 // 20
-		UInt16					  journalStage;		 // 38
-		SInt8					  journalStageItem;	 // 3A
-		UInt8					  pad3B;			 // 3B
-		UInt32					  pad3C;			 // 3C
+		std::uint16_t			  journalStage;		 // 38
+		std::int8_t				  journalStageItem;	 // 3A
+		std::uint8_t			  pad3B;			 // 3B
+		std::uint32_t			  pad3C;			 // 3C
 	};
-	STATIC_ASSERT(sizeof(BGSQuestInstanceText) == 0x40);
+	static_assert(sizeof(BGSQuestInstanceText) == 0x40);
 
 
 	struct QUEST_DATA  // DNAM
 	{
-		enum class Type : UInt8
+	public:
+		enum class Type
 		{
 			kNone = 0,
 			kMainQuest = 1,
@@ -102,17 +109,19 @@ namespace RE
 		};
 
 
-		float	  questDelayTime;  // 0
-		QuestFlag flags;		   // 4
-		SInt8	  priority;		   // 6
-		Type	  questType;	   // 7
+		// members
+		float									   questDelayTime;	// 0
+		stl::enumeration<QuestFlag, std::uint16_t> flags;			// 4
+		std::int8_t								   priority;		// 6
+		stl::enumeration<Type, std::uint8_t>	   questType;		// 7
 	};
-	STATIC_ASSERT(sizeof(QUEST_DATA) == 0x8);
+	static_assert(sizeof(QUEST_DATA) == 0x8);
 
 
 	struct QUEST_STAGE_DATA
 	{
-		enum class Flag : UInt8
+	public:
+		enum class Flag
 		{
 			kNone = 0,
 			kStartUpStage = 1 << 1,
@@ -121,12 +130,13 @@ namespace RE
 		};
 
 
-		UInt16 index;  // 0
-		Flag   flags;  // 2
-		UInt8  pad3;   // 3
-		UInt32 pad4;   // 4
+		// members
+		std::uint16_t						 index;	 // 0
+		stl::enumeration<Flag, std::uint8_t> flags;	 // 2
+		std::uint8_t						 pad3;	 // 3
+		std::uint32_t						 pad4;	 // 4
 	};
-	STATIC_ASSERT(sizeof(QUEST_STAGE_DATA) == 0x8);
+	static_assert(sizeof(QUEST_STAGE_DATA) == 0x8);
 
 
 	class TESQuestStage
@@ -138,7 +148,7 @@ namespace RE
 		// members
 		QUEST_STAGE_DATA data;	// 0
 	};
-	STATIC_ASSERT(sizeof(TESQuestStage) == 0x8);
+	static_assert(sizeof(TESQuestStage) == 0x8);
 
 
 	class TESQuestTarget  // QSTA
@@ -151,40 +161,43 @@ namespace RE
 		};
 
 
-		UInt64		 unk00;		  // 00
-		TESCondition conditions;  // 08
-		UInt8		 alias;		  // 10
-		UInt8		 unk11;		  // 11
-		UInt16		 unk12;		  // 12
-		UInt32		 unk14;		  // 14
+		// members
+		std::uint64_t unk00;	   // 00
+		TESCondition  conditions;  // 08
+		std::uint8_t  alias;	   // 10
+		std::uint8_t  unk11;	   // 11
+		std::uint16_t unk12;	   // 12
+		std::uint32_t unk14;	   // 14
 	};
-	STATIC_ASSERT(sizeof(TESQuestTarget) == 0x18);
+	static_assert(sizeof(TESQuestTarget) == 0x18);
 
 
 	class BGSQuestObjective
 	{
 	public:
-		BSFixedString			displayText;  // 00 - NNAM
-		TESQuest*				ownerQuest;	  // 08
-		TESQuestTarget**		targets;	  // 10 - QSTA
-		UInt32					numTargets;	  // 18
-		UInt16					index;		  // 1C - QOBJ
-		bool					initialized;  // 1E
-		QUEST_OBJECTIVE_STATE_8 state;		  // 1E
-		QUEST_OBJECTIVE_FLAGS	flags;		  // 20 - FNAM
-		UInt32					pad24;		  // 24
+		// members
+		BSFixedString										   displayText;	 // 00 - NNAM
+		TESQuest*											   ownerQuest;	 // 08
+		TESQuestTarget**									   targets;		 // 10 - QSTA
+		std::uint32_t										   numTargets;	 // 18
+		std::uint16_t										   index;		 // 1C - QOBJ
+		bool												   initialized;	 // 1E
+		stl::enumeration<QUEST_OBJECTIVE_STATE, std::uint8_t>  state;		 // 1E
+		stl::enumeration<QUEST_OBJECTIVE_FLAGS, std::uint32_t> flags;		 // 20 - FNAM
+		std::uint32_t										   pad24;		 // 24
 	};
-	STATIC_ASSERT(sizeof(BGSQuestObjective) == 0x28);
+	static_assert(sizeof(BGSQuestObjective) == 0x28);
 
 
 	class BGSStoryEvent
 	{
 	public:
-		UInt32 id;			// 00
-		UInt32 index;		// 04
-		UInt64 members[6];	// 08
+		// members
+		std::uint32_t id;		   // 00
+		std::uint32_t index;	   // 04
+		std::uint64_t members[6];  // 08
 	};
-	STATIC_ASSERT(sizeof(BGSStoryEvent) == 0x38);
+	static_assert(sizeof(BGSStoryEvent) == 0x38);
 
 
 	class TESQuest :
@@ -201,7 +214,7 @@ namespace RE
 
 		struct ChangeFlags
 		{
-			enum ChangeFlag : UInt32
+			enum ChangeFlag : std::uint32_t
 			{
 				kQuestFlags = 1 << 1,
 				kQuestScriptDelay = 1 << 2,
@@ -210,14 +223,14 @@ namespace RE
 				kQuestRuntimeData = 1 << 28,
 				kQuestObjectives = 1 << 29,
 				kQuestScript = 1 << 30,
-				kQuestStages = (UInt32)1 << 31
+				kQuestStages = (std::uint32_t)1 << 31
 			};
 		};
 
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -241,34 +254,34 @@ namespace RE
 		virtual TESCondition*							 QConditions() override;										 // 3D - { return &objConditions; }
 		virtual BGSStoryManagerTreeVisitor::VisitControl AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;	 // 3E
 
-		bool   EnsureQuestStarted(bool& a_result, bool a_startNow);
-		UInt16 GetCurrentStageID() const;
-		bool   IsActive() const;
-		bool   IsCompleted() const;
-		bool   IsEnabled() const;
-		bool   IsRunning() const;
-		bool   IsStarting() const;
-		bool   IsStopped() const;
-		bool   IsStopping() const;
-		void   Reset();
-		void   ResetAndUpdate();
-		void   SetEnabled(bool a_set);
-		bool   Start();
-		bool   StartsEnabled() const;
-		void   Stop();
+		bool		  EnsureQuestStarted(bool& a_result, bool a_startNow);
+		std::uint16_t GetCurrentStageID() const;
+		bool		  IsActive() const;
+		bool		  IsCompleted() const;
+		bool		  IsEnabled() const;
+		bool		  IsRunning() const;
+		bool		  IsStarting() const;
+		bool		  IsStopped() const;
+		bool		  IsStopping() const;
+		void		  Reset();
+		void		  ResetAndUpdate();
+		void		  SetEnabled(bool a_set);
+		bool		  Start();
+		bool		  StartsEnabled() const;
+		void		  Stop();
 
 
 		// members
 		BSTArray<BGSQuestInstanceText*>						 instanceData;							   // 038
-		UInt32												 currentInstanceID;						   // 050
-		UInt32												 pad054;								   // 054
+		std::uint32_t										 currentInstanceID;						   // 050
+		std::uint32_t										 pad054;								   // 054
 		BSTArray<BGSBaseAlias*>								 aliases;								   // 058
 		BSTHashMap<UnkKey, UnkValue>						 unk070;								   // 070 - alias related
 		BSTHashMap<UnkKey, UnkValue>						 unk0A0;								   // 0A0 - alias related
 		mutable BSReadWriteLock								 aliasAccessLock;						   // 0D0
 		QUEST_DATA											 data;									   // 0D8 - DNAM
 		QuestEvent											 eventID;								   // 0E0 - ENAM
-		UInt32												 pad0E4;								   // 0E4
+		std::uint32_t										 pad0E4;								   // 0E4
 		BSSimpleList<TESQuestStage>*						 executedStages;						   // 0E8
 		BSSimpleList<TESQuestStage*>*						 waitingStages;							   // 0F0
 		BSSimpleList<BGSQuestObjective*>					 objectives;							   // 0F8
@@ -278,14 +291,14 @@ namespace RE
 		BSTArray<TESTopic*>									 topics[DT::kTotal - DT::kBranchedTotal];  // 178
 		BSTArray<BGSScene*>									 scenes;								   // 208
 		BSTArray<TESGlobal*>*								 textGlobals;							   // 220 - QTGL
-		UInt16												 currentStage;							   // 228
+		std::uint16_t										 currentStage;							   // 228
 		bool												 alreadyRun;							   // 22A
-		UInt8												 pad22B;								   // 22B
-		UInt32												 pad22C;								   // 22C
+		std::uint8_t										 pad22B;								   // 22B
+		std::uint32_t										 pad22C;								   // 22C
 		BSString											 formEditorID;							   // 230
 		const BGSStoryEvent*								 startEventData;						   // 240
 		NiPointer<QueuedPromoteQuestTask>					 promoteTask;							   // 248
 		BSTArray<ObjectRefHandle>							 promotedRefs;							   // 250
 	};
-	STATIC_ASSERT(sizeof(TESQuest) == 0x268);
+	static_assert(sizeof(TESQuest) == 0x268);
 }

@@ -80,27 +80,27 @@ namespace RE
 		BSTArray<BShkFloatController*> unk178;						 // 178
 		BSTArray<void*>				   unk190;						 // 190
 		BSTSmallArray<void*>		   unk1A8;						 // 1A8
-		BSTSmallArray<UInt8>		   unk1C0;						 // 1C0
-		UInt64						   unk1D8;						 // 1D8
-		UInt64						   unk1E0;						 // 1E0
+		BSTSmallArray<std::uint8_t>	   unk1C0;						 // 1C0
+		std::uint64_t				   unk1D8;						 // 1D8
+		std::uint64_t				   unk1E0;						 // 1E0
 		float						   interpolationTimeOffsets[2];	 // 1E8
 		BSFixedString				   projectName;					 // 1F0
 		BSResource::ID*				   unk1F8;						 // 1F8
 		void*						   unk200;						 // 200 - BShkbHkxDB::ProjectDBData*
 		hkbBehaviorGraph*			   behaviourGraph;				 // 208
-		UInt64						   unk210;						 // 210
+		std::uint64_t				   unk210;						 // 210
 		BSFadeNode*					   unk218;						 // 218
-		UInt64						   unk220;						 // 220
-		UInt64						   unk228;						 // 228
-		UInt64						   unk230;						 // 230
+		std::uint64_t				   unk220;						 // 220
+		std::uint64_t				   unk228;						 // 228
+		std::uint64_t				   unk230;						 // 230
 		bhkWorld*					   physicsWorld;				 // 238
-		UInt32						   unk240;						 // 240
-		UInt16						   unk244;						 // 244
-		UInt8						   unk246;						 // 246
-		UInt8						   unk247;						 // 247
-		UInt16						   unk248;						 // 248
-		UInt16						   unk24A;						 // 24A
-		UInt32						   unk24C;						 // 24C
+		std::uint32_t				   unk240;						 // 240
+		std::uint16_t				   unk244;						 // 244
+		std::uint8_t				   unk246;						 // 246
+		std::uint8_t				   unk247;						 // 247
+		std::uint16_t				   unk248;						 // 248
+		std::uint16_t				   unk24A;						 // 24A
+		std::uint32_t				   unk24C;						 // 24C
 	};
-	STATIC_ASSERT(sizeof(BShkbAnimationGraph) == 0x250);
+	static_assert(sizeof(BShkbAnimationGraph) == 0x250);
 }

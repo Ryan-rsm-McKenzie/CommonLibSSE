@@ -20,5 +20,5 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 	};
-	STATIC_ASSERT(sizeof(BaseFormComponent) == 0x8);
+	static_assert(sizeof(BaseFormComponent) == 0x8);
 }

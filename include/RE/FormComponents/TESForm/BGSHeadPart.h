@@ -21,7 +21,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::HeadPart;
 
 
-		enum class Flag : UInt8	 // DATA
+		enum class Flag	 // DATA
 		{
 			kNone = 0,
 			kPlayable = 1 << 0,
@@ -32,7 +32,7 @@ namespace RE
 		};
 
 
-		enum class HeadPartType : UInt32  // PNAM
+		enum class HeadPartType	 // PNAM
 		{
 			kMisc = 0x0,
 			kFace = 0x1,
@@ -48,7 +48,7 @@ namespace RE
 
 		struct MorphIndices
 		{
-			enum MorphIndex : UInt32
+			enum MorphIndex : std::uint32_t
 			{
 				kRaceMorph = 0,
 				kDefaultMorph,
@@ -62,7 +62,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kNonPlayable = 1 << 2,
 				kDeleted = 1 << 5,
@@ -85,16 +85,16 @@ namespace RE
 
 
 		// members
-		Flag				   flags;						  // 068 - DATA
-		UInt8				   pad069;						  // 069
-		UInt16				   pad06A;						  // 06A
-		HeadPartType		   type;						  // 06C - PNAM
-		BSTArray<BGSHeadPart*> extraParts;					  // 070
-		BGSTextureSet*		   textureSet;					  // 088 - TNAM
-		TESModelTri			   morphs[MorphIndices::kTotal];  // 090
-		BGSColorForm*		   color;						  // 108 - CNAM
-		BGSListForm*		   validRaces;					  // 110 - RNAM
-		BSFixedString		   formEditorID;				  // 118 - EDID
+		stl::enumeration<Flag, std::uint8_t>		  flags;						 // 068 - DATA
+		std::uint8_t								  pad069;						 // 069
+		std::uint16_t								  pad06A;						 // 06A
+		stl::enumeration<HeadPartType, std::uint32_t> type;							 // 06C - PNAM
+		BSTArray<BGSHeadPart*>						  extraParts;					 // 070
+		BGSTextureSet*								  textureSet;					 // 088 - TNAM
+		TESModelTri									  morphs[MorphIndices::kTotal];	 // 090
+		BGSColorForm*								  color;						 // 108 - CNAM
+		BGSListForm*								  validRaces;					 // 110 - RNAM
+		BSFixedString								  formEditorID;					 // 118 - EDID
 	};
-	STATIC_ASSERT(sizeof(BGSHeadPart) == 0x120);
+	static_assert(sizeof(BGSHeadPart) == 0x120);
 }

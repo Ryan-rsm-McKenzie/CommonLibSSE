@@ -24,14 +24,14 @@ namespace RE
 
 
 			// members
-			const UInt32 minPageSize;				// 08
-			const UInt32 maxPageSize;				// 0C
-			const UInt32 maxAllocatedMemory;		// 10
-			const UInt32 maxStackDepth;				// 14
-			BSSpinLock	 dataLock;					// 18
-			UInt32		 currentMemorySize;			// 20
-			UInt32		 maxAdditionalAllocations;	// 20
+			const std::uint32_t minPageSize;			   // 08
+			const std::uint32_t maxPageSize;			   // 0C
+			const std::uint32_t maxAllocatedMemory;		   // 10
+			const std::uint32_t maxStackDepth;			   // 14
+			BSSpinLock			dataLock;				   // 18
+			std::uint32_t		currentMemorySize;		   // 20
+			std::uint32_t		maxAdditionalAllocations;  // 20
 		};
-		STATIC_ASSERT(sizeof(SimpleAllocMemoryPagePolicy) == 0x28);
+		static_assert(sizeof(SimpleAllocMemoryPagePolicy) == 0x28);
 	}
 }

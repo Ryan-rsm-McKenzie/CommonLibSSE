@@ -22,7 +22,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -32,11 +32,11 @@ namespace RE
 
 		struct FILE_DATA
 		{
-			char*  buffer;		// 00
-			UInt32 bufferSize;	// 08
-			UInt32 pad0C;		// 0C
+			char*		  buffer;	   // 00
+			std::uint32_t bufferSize;  // 08
+			std::uint32_t pad0C;	   // 0C
 		};
-		STATIC_ASSERT(sizeof(FILE_DATA) == 0x10);
+		static_assert(sizeof(FILE_DATA) == 0x10);
 
 
 		virtual ~BGSMaterialObject();  // 00
@@ -52,5 +52,5 @@ namespace RE
 		// members
 		BSTArray<FILE_DATA> fileData;  // A0 - DNAM
 	};
-	STATIC_ASSERT(sizeof(BGSMaterialObject) == 0xB8);
+	static_assert(sizeof(BGSMaterialObject) == 0xB8);
 }

@@ -23,5 +23,5 @@ namespace RE
 		virtual bool			 EffectAttachesToCamera() override;				 // 1A - { return true; }
 		virtual bool			 EffectRotatesWithCamera() override;			 // 1B
 	};
-	STATIC_ASSERT(sizeof(SkyEffectController) == 0x8);
+	static_assert(sizeof(SkyEffectController) == 0x8);
 }

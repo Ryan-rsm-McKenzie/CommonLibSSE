@@ -26,15 +26,15 @@ namespace RE
 
 		// members
 		GFxValue		root;	// 30 - "Menu_mc"
-		UInt64			unk48;	// 48
-		UInt8			unk50;	// 50
-		UInt8			unk51;	// 51
-		UInt16			pad52;	// 52
-		UInt32			pad54;	// 54
+		std::uint64_t	unk48;	// 48
+		std::uint8_t	unk50;	// 50
+		std::uint8_t	unk51;	// 51
+		std::uint16_t	pad52;	// 52
+		std::uint32_t	pad54;	// 54
 		BSTArray<void*> unk58;	// 58
-		UInt32			unk70;	// 70
-		UInt32			pad74;	// 74
-		UInt64			unk78;	// 78
+		std::uint32_t	unk70;	// 70
+		std::uint32_t	pad74;	// 74
+		std::uint64_t	unk78;	// 78
 	};
-	STATIC_ASSERT(sizeof(LoadingMenu) == 0x80);
+	static_assert(sizeof(LoadingMenu) == 0x80);
 }

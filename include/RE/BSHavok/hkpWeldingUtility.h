@@ -12,7 +12,7 @@ namespace RE
 		};
 
 
-		enum class WeldingType : UInt32
+		enum class WeldingType
 		{
 			kAntiClockwise = 0,
 			kClockwise = 4,
@@ -33,6 +33,8 @@ namespace RE
 
 		struct SinCosTableEntry
 		{
+		public:
+			// members
 			float cosAccept0;  // 00
 			float sinAccept0;  // 04
 			float cosSnap0;	   // 08
@@ -40,7 +42,7 @@ namespace RE
 			float cosAccept1;  // 10
 			float sinAccept1;  // 14
 		};
-		STATIC_ASSERT(sizeof(SinCosTableEntry) == 0x18);
+		static_assert(sizeof(SinCosTableEntry) == 0x18);
 	};
-	STATIC_ASSERT(sizeof(hkpWeldingUtility) == 0x1);
+	static_assert(sizeof(hkpWeldingUtility) == 0x1);
 }

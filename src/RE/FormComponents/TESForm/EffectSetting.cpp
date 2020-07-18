@@ -16,7 +16,7 @@ namespace RE
 	}
 
 
-	UInt32 EffectSetting::GetMinimumSkillLevel() const
+	std::uint32_t EffectSetting::GetMinimumSkillLevel() const
 	{
 		return data.minimumSkill;
 	}

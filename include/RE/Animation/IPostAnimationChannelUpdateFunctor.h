@@ -14,5 +14,5 @@ namespace RE
 		// add
 		virtual void Unk_01(void);	// 01
 	};
-	STATIC_ASSERT(sizeof(IPostAnimationChannelUpdateFunctor) == 0x8);
+	static_assert(sizeof(IPostAnimationChannelUpdateFunctor) == 0x8);
 }

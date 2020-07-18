@@ -24,24 +24,24 @@ namespace RE
 			virtual ~RemoveItemFunctor();  // 00
 
 			// override (DelayFunctor)
-			virtual RE::BSScript::Variable operator()() override;														// 01
-			virtual bool				   IsLatent() const override;													// 02 - { return true; }
-			virtual bool				   SaveImpl(BSStorage& a_storage) const override;								// 04
-			virtual FunctorType			   GetType() const override;													// 05 - { return 24; }
-			virtual bool				   LoadImpl(const BSStorage& a_storage, UInt32 a_arg2, bool& a_arg3) override;	// 06
+			virtual RE::BSScript::Variable operator()() override;															   // 01
+			virtual bool				   IsLatent() const override;														   // 02 - { return true; }
+			virtual bool				   SaveImpl(BSStorage& a_storage) const override;									   // 04
+			virtual FunctorType			   GetType() const override;														   // 05 - { return 24; }
+			virtual bool				   LoadImpl(const BSStorage& a_storage, std::uint32_t a_arg2, bool& a_arg3) override;  // 06
 
 
 			// members
 			ObjectRefHandle							   container;	   // 10
 			ObjectRefHandle							   destContainer;  // 14
 			FormID									   item;		   // 18
-			UInt32									   count;		   // 1C
+			std::uint32_t							   count;		   // 1C
 			bool									   silent;		   // 20
-			UInt8									   pad21;		   // 21
-			UInt16									   pad22;		   // 22
-			UInt32									   pad24;		   // 24
+			std::uint8_t							   pad21;		   // 21
+			std::uint16_t							   pad22;		   // 22
+			std::uint32_t							   pad24;		   // 24
 			BSTSmartPointer<BSScript::IVirtualMachine> vm;			   // 28
 		};
-		STATIC_ASSERT(sizeof(RemoveItemFunctor) == 0x30);
+		static_assert(sizeof(RemoveItemFunctor) == 0x30);
 	}
 }

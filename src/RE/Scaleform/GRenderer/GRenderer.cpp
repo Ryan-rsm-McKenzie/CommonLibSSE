@@ -149,7 +149,7 @@ namespace RE
 	{}
 
 
-	void GRenderer::ReleaseTempRenderTargets(UInt32)
+	void GRenderer::ReleaseTempRenderTargets(std::uint32_t)
 	{}
 
 
@@ -176,7 +176,7 @@ namespace RE
 	{}
 
 
-	void GRenderer::DrawDistanceFieldBitmaps(BitmapDesc*, SInt32, SInt32, SInt32, const GTexture*, const Matrix&, const DistanceFieldParams&, CacheProvider*)
+	void GRenderer::DrawDistanceFieldBitmaps(BitmapDesc*, std::int32_t, std::int32_t, std::int32_t, const GTexture*, const Matrix&, const DistanceFieldParams&, CacheProvider*)
 	{}
 
 

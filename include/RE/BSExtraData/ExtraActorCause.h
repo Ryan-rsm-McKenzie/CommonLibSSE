@@ -26,5 +26,5 @@ namespace RE
 		// members
 		NiPointer<ActorCause> actorCause;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraActorCause) == 0x18);
+	static_assert(sizeof(ExtraActorCause) == 0x18);
 }

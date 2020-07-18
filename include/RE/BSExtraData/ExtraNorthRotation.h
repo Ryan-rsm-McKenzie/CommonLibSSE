@@ -20,8 +20,8 @@ namespace RE
 
 
 		// members
-		float  northRot;  // 10
-		UInt32 pad14;	  // 14
+		float		  northRot;	 // 10
+		std::uint32_t pad14;	 // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraNorthRotation) == 0x18);
+	static_assert(sizeof(ExtraNorthRotation) == 0x18);
 }

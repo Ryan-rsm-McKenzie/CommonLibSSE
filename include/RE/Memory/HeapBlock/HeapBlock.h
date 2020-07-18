@@ -12,15 +12,15 @@ namespace RE
 			// members
 			HeapBlock* prevFree;  // 0
 		};
-		STATIC_ASSERT(sizeof(Free) == 0x8);
+		static_assert(sizeof(Free) == 0x8);
 
 
 		struct Used
 		{
 		public:
-			UInt32 GetCheckPoint() const;
-			UInt32 GetMemContext() const;
-			UInt32 GetStackTrace() const;
+			std::uint32_t GetCheckPoint() const;
+			std::uint32_t GetMemContext() const;
+			std::uint32_t GetStackTrace() const;
 
 
 			// members
@@ -57,7 +57,7 @@ namespace RE
 			bool checkPoint1 : 1;	// 3 - 6
 			bool checkPoint2 : 1;	// 3 - 7
 		};
-		STATIC_ASSERT(sizeof(Used) == 0x4);
+		static_assert(sizeof(Used) == 0x4);
 
 
 		union FreeOrUsed
@@ -65,7 +65,7 @@ namespace RE
 			Free free;
 			Used used;
 		};
-		STATIC_ASSERT(sizeof(FreeOrUsed) == 0x8);
+		static_assert(sizeof(FreeOrUsed) == 0x8);
 
 
 		// members
@@ -74,5 +74,5 @@ namespace RE
 		FreeOrUsed	freeOrUsed;	 // 10
 		HeapBlock*	nextFree;	 // 18
 	};
-	STATIC_ASSERT(sizeof(HeapBlock) == 0x20);
+	static_assert(sizeof(HeapBlock) == 0x20);
 }

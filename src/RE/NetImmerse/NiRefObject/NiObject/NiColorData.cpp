@@ -14,13 +14,13 @@ namespace RE
 	{}
 
 
-	UInt32 NiColorData::GetNumKeys() const
+	std::uint32_t NiColorData::GetNumKeys() const
 	{
 		return numKeys;
 	}
 
 
-	NiColorKey* NiColorData::GetAnim(UInt32& a_numKeys, KeyType& a_type, UInt8& a_size) const
+	NiColorKey* NiColorData::GetAnim(std::uint32_t& a_numKeys, KeyType& a_type, std::uint8_t& a_size) const
 	{
 		a_numKeys = numKeys;
 		a_type = type;

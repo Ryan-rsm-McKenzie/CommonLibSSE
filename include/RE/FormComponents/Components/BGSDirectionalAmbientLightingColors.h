@@ -19,7 +19,7 @@ namespace RE
 				T max;	// 0
 				T min;	// ?
 			};
-			STATIC_ASSERT(sizeof(MaxMin<Color>) == 0x8);
+			static_assert(sizeof(MaxMin<Color>) == 0x8);
 
 
 			// members
@@ -27,7 +27,7 @@ namespace RE
 			MaxMin<Color> y;  // 08
 			MaxMin<Color> z;  // 10
 		};
-		STATIC_ASSERT(sizeof(Directional) == 0x18);
+		static_assert(sizeof(Directional) == 0x18);
 
 
 		// members
@@ -35,5 +35,5 @@ namespace RE
 		Color		specular;	   // 18
 		float		fresnelPower;  // 1C
 	};
-	STATIC_ASSERT(sizeof(BGSDirectionalAmbientLightingColors) == 0x20);
+	static_assert(sizeof(BGSDirectionalAmbientLightingColors) == 0x20);
 }

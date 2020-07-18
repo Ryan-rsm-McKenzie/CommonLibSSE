@@ -34,12 +34,12 @@ namespace RE
 			IVirtualMachine*											vm;					 // 08
 			ErrorLogger*												errorHandler;		 // 10
 			ILoader*													loader;				 // 18
-			UInt64														unk20;				 // 20
+			std::uint64_t												unk20;				 // 20
 			BSScrapArray<BSFixedString>									loadedParents;		 // 28
 			BSScrapArray<BSFixedString>									objectsToTypecheck;	 // 48
 			BSScrapArray<BSFixedString>									processQueue;		 // 68
 			BSTHashMap<BSFixedString, BSTSmartPointer<ObjectTypeInfo>>* classMap;			 // 88
 		};
-		STATIC_ASSERT(sizeof(LinkerProcessor) == 0x90);
+		static_assert(sizeof(LinkerProcessor) == 0x90);
 	}
 }

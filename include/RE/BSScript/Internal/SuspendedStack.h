@@ -22,7 +22,7 @@ namespace RE
 				BSTSmartPointer<Stack>			stack;			// 00
 				BSTSmartPointer<IFuncCallQuery> funcCallQuery;	// 08
 			};
-			STATIC_ASSERT(sizeof(SuspendedStack) == 0x10);
+			static_assert(sizeof(SuspendedStack) == 0x10);
 		}
 	}
 }

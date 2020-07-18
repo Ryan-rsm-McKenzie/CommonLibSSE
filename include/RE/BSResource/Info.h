@@ -13,6 +13,6 @@ namespace RE
 			FILETIME	  createTime;  // 08
 			LARGE_INTEGER fileSize;	   // 10
 		};
-		STATIC_ASSERT(sizeof(Info) == 0x18);
+		static_assert(sizeof(Info) == 0x18);
 	}
 }

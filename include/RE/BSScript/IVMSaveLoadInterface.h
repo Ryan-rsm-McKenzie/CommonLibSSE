@@ -37,6 +37,6 @@ namespace RE
 			virtual void Unk_15(void) = 0;	// 15
 			virtual void Unk_16(void) = 0;	// 16
 		};
-		STATIC_ASSERT(sizeof(IVMSaveLoadInterface) == 0x8);
+		static_assert(sizeof(IVMSaveLoadInterface) == 0x8);
 	}
 }

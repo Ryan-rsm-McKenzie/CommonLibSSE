@@ -12,5 +12,5 @@ namespace RE
 		hkVector4 col1;	 // 10
 		hkVector4 col2;	 // 20
 	};
-	STATIC_ASSERT(sizeof(hkMatrix3) == 0x30);
+	static_assert(sizeof(hkMatrix3) == 0x30);
 }

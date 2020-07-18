@@ -16,7 +16,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12,
@@ -28,23 +28,23 @@ namespace RE
 		virtual ~TESSoulGem();	// 00
 
 		// override (TESObjectMISC)
-		virtual void InitializeData() override;							   // 04
-		virtual void LoadImpl(TESFile* a_mod, UInt32 a_chunkID) override;  // 54
-		virtual void InitImpl() override;								   // 55
+		virtual void InitializeData() override;									  // 04
+		virtual void LoadImpl(TESFile* a_mod, std::uint32_t a_chunkID) override;  // 54
+		virtual void InitImpl() override;										  // 55
 
 		// override (BGSKeywordForm)
 		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
 
-		SOUL_LEVEL GetContainedSoul() const;
-		SOUL_LEVEL GetMaximumCapacity() const;
+		[[nodiscard]] constexpr SOUL_LEVEL GetContainedSoul() const noexcept { return *currentSoul; }
+		[[nodiscard]] constexpr SOUL_LEVEL GetMaximumCapacity() const noexcept { return *soulCapacity; }
 
 
 		// members
-		TESSoulGem* linkedSoulGem;	// 100 - NAM0
-		SOUL_LEVEL	currentSoul;	// 108 - SOUL
-		SOUL_LEVEL	soulCapacity;	// 109 - SLCP
-		UInt16		unk10A;			// 10A
-		UInt32		unk10C;			// 10C
+		TESSoulGem*								   linkedSoulGem;  // 100 - NAM0
+		stl::enumeration<SOUL_LEVEL, std::uint8_t> currentSoul;	   // 108 - SOUL
+		stl::enumeration<SOUL_LEVEL, std::uint8_t> soulCapacity;   // 109 - SLCP
+		std::uint16_t							   unk10A;		   // 10A
+		std::uint32_t							   unk10C;		   // 10C
 	};
-	STATIC_ASSERT(sizeof(TESSoulGem) == 0x110);
+	static_assert(sizeof(TESSoulGem) == 0x110);
 }

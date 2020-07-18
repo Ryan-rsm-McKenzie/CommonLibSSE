@@ -10,16 +10,18 @@ namespace RE
 {
 	struct MOVABLE_STATIC_DATA
 	{
-		enum class Flag : UInt8
+	public:
+		enum class Flag
 		{
 			kNone = 0,
 			kOnLocalMap = 1 << 0
 		};
 
 
-		Flag flags;	 // 0
+		// members
+		stl::enumeration<Flag, std::uint8_t> flags;	 // 0
 	};
-	STATIC_ASSERT(sizeof(MOVABLE_STATIC_DATA) == 0x1);
+	static_assert(sizeof(MOVABLE_STATIC_DATA) == 0x1);
 
 
 	class BGSMovableStatic :
@@ -34,7 +36,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kMustUpdateAnims = 1 << 8,
@@ -62,9 +64,9 @@ namespace RE
 		// members
 		BGSSoundDescriptorForm* soundLoop;	// A0 - SNAM
 		MOVABLE_STATIC_DATA		data;		// A8
-		UInt8					padA9;		// A9
-		UInt16					padAA;		// AA
-		UInt32					padAC;		// AC
+		std::uint8_t			padA9;		// A9
+		std::uint16_t			padAA;		// AA
+		std::uint32_t			padAC;		// AC
 	};
-	STATIC_ASSERT(sizeof(BGSMovableStatic) == 0xB0);
+	static_assert(sizeof(BGSMovableStatic) == 0xB0);
 }

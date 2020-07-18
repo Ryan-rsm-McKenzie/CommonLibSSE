@@ -26,5 +26,5 @@ namespace RE
 		// members
 		BSTSmartPointer<BSAnimationGraphManager> animGraphMgr;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraAnimGraphManager) == 0x18);
+	static_assert(sizeof(ExtraAnimGraphManager) == 0x18);
 }

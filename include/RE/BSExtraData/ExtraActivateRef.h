@@ -26,10 +26,10 @@ namespace RE
 
 		// members
 		BSSimpleList<REF_ACTIVATE_DATA*> parents;		 // 10
-		UInt8							 activateFlags;	 // 20
-		UInt8							 pad21;			 // 21
-		UInt16							 pad22;			 // 22
-		UInt32							 pad24;			 // 24
+		std::uint8_t					 activateFlags;	 // 20
+		std::uint8_t					 pad21;			 // 21
+		std::uint16_t					 pad22;			 // 22
+		std::uint32_t					 pad24;			 // 24
 	};
-	STATIC_ASSERT(sizeof(ExtraActivateRef) == 0x28);
+	static_assert(sizeof(ExtraActivateRef) == 0x28);
 }

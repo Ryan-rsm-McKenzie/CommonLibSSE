@@ -20,7 +20,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -33,5 +33,5 @@ namespace RE
 		// override (TESObjectMISC)
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 	};
-	STATIC_ASSERT(sizeof(BGSApparatus) == 0x120);
+	static_assert(sizeof(BGSApparatus) == 0x120);
 }

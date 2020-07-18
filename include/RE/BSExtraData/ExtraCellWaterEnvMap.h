@@ -24,5 +24,5 @@ namespace RE
 		// members
 		TESTexture waterEnvMap;	 // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraCellWaterEnvMap) == 0x20);
+	static_assert(sizeof(ExtraCellWaterEnvMap) == 0x20);
 }

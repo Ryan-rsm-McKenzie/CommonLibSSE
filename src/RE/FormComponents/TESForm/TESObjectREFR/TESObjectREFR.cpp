@@ -338,10 +338,10 @@ namespace RE
 	}
 
 
-	SInt32 TESObjectREFR::GetInventoryCount()
+	std::int32_t TESObjectREFR::GetInventoryCount()
 	{
 		auto counts = GetInventoryCounts();
-		SInt32 total = 0;
+		std::int32_t total = 0;
 		for (auto& elem : counts) {
 			total += elem.second;
 		}
@@ -460,7 +460,7 @@ namespace RE
 	}
 
 
-	UInt32 TESObjectREFR::GetStealValue(const InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_useMult) const
+	std::uint32_t TESObjectREFR::GetStealValue(const InventoryEntryData* a_entryData, std::uint32_t a_numItems, bool a_useMult) const
 	{
 		using func_t = decltype(&TESObjectREFR::GetStealValue);
 		REL::Offset<func_t> func(Offset::TESObjectREFR::GetStealValue);
@@ -471,7 +471,7 @@ namespace RE
 	float TESObjectREFR::GetWeight() const
 	{
 		auto obj = GetObjectReference();
-		return obj ? obj->GetWeight() : 0.0;
+		return obj ? obj->GetWeight() : 0.0F;
 	}
 
 
@@ -741,7 +741,7 @@ namespace RE
 			return false;
 		}
 
-		auto result = node->SetMotionType(static_cast<UInt32>(a_motionType), true, false, a_allowActivate);
+		auto result = node->SetMotionType(static_cast<std::uint32_t>(a_motionType), true, false, a_allowActivate);
 		AddChange(ChangeFlags::kHavokMoved);
 		return result;
 	}

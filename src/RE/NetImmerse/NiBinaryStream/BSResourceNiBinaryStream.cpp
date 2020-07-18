@@ -40,7 +40,7 @@ namespace RE
 	}
 
 
-	void BSResourceNiBinaryStream::seek(SInt32 a_numBytes)
+	void BSResourceNiBinaryStream::seek(std::int32_t a_numBytes)
 	{
 		using func_t = decltype(&BSResourceNiBinaryStream::seek);
 		REL::Offset<func_t> func(Offset::BSResourceNiBinaryStream::Seek);
@@ -48,7 +48,7 @@ namespace RE
 	}
 
 
-	UInt32 BSResourceNiBinaryStream::tell() const
+	std::uint32_t BSResourceNiBinaryStream::tell() const
 	{
 		return streamPos;
 	}

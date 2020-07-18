@@ -45,7 +45,7 @@ namespace RE
 	}
 
 
-	InventoryEntryData::InventoryEntryData(TESBoundObject* a_object, SInt32 a_countDelta) :
+	InventoryEntryData::InventoryEntryData(TESBoundObject* a_object, std::int32_t a_countDelta) :
 		object(a_object),
 		extraLists(nullptr),
 		countDelta(a_countDelta),
@@ -218,7 +218,7 @@ namespace RE
 	}
 
 
-	SInt32 InventoryEntryData::GetValue()
+	std::int32_t InventoryEntryData::GetValue()
 	{
 		using func_t = decltype(&InventoryEntryData::GetValue);
 		REL::Offset<func_t> func(Offset::InventoryEntryData::GetValue);

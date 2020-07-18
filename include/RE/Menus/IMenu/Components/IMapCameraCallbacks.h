@@ -15,5 +15,5 @@ namespace RE
 
 		virtual ~IMapCameraCallbacks();	 // 02
 	};
-	STATIC_ASSERT(sizeof(IMapCameraCallbacks) == 0x8);
+	static_assert(sizeof(IMapCameraCallbacks) == 0x8);
 }

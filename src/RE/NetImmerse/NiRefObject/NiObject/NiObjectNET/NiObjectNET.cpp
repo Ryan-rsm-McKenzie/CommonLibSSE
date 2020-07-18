@@ -43,12 +43,12 @@ namespace RE
 				NiSprintf(suffix, 6, "ED%03d", extraDataSize);
 
 				auto substr = std::strstr(rtti, "ExtraData");
-				UInt32 strLength = 0;
+				std::uint32_t strLength = 0;
 				if (substr > rtti) {
-					strLength = static_cast<UInt32>(substr - rtti);
+					strLength = static_cast<std::uint32_t>(substr - rtti);
 				}
 
-				UInt32 len = strLength + static_cast<UInt32>(std::strlen(suffix)) + 1;
+				std::uint32_t len = strLength + static_cast<std::uint32_t>(std::strlen(suffix)) + 1;
 				auto generatedKey = NiAlloc<char>(len);
 
 				NiStrncpy(generatedKey, len, rtti, strLength);
@@ -66,7 +66,7 @@ namespace RE
 	}
 
 
-	void NiObjectNET::DeleteExtraData(UInt16 a_extraDataIndex)
+	void NiObjectNET::DeleteExtraData(std::uint16_t a_extraDataIndex)
 	{
 		if (a_extraDataIndex >= extraDataSize) {
 			return;
@@ -76,7 +76,7 @@ namespace RE
 			extra[a_extraDataIndex]->DecRefCount();
 		}
 
-		for (UInt16 i = a_extraDataIndex; i < (extraDataSize - 1); ++i) {
+		for (std::uint16_t i = a_extraDataIndex; i < (extraDataSize - 1); ++i) {
 			extra[i] = extra[i + 1];
 		}
 
@@ -97,11 +97,11 @@ namespace RE
 			return nullptr;
 		}
 
-		assert(extraDataSize < std::numeric_limits<SInt16>::max());
+		assert(extraDataSize < std::numeric_limits<std::int16_t>::max());
 
-		SInt16 bottom = 0;
-		SInt16 top = static_cast<SInt16>(extraDataSize - 1);
-		SInt16 middle = 0;
+		std::int16_t bottom = 0;
+		std::int16_t top = static_cast<std::int16_t>(extraDataSize - 1);
+		std::int16_t middle = 0;
 
 		while (bottom <= top) {
 			middle = (top + bottom) >> 1;
@@ -121,14 +121,14 @@ namespace RE
 	}
 
 
-	NiExtraData* NiObjectNET::GetExtraDataAt(UInt16 a_extraDataIndex) const
+	NiExtraData* NiObjectNET::GetExtraDataAt(std::uint16_t a_extraDataIndex) const
 	{
 		assert(a_extraDataIndex < extraDataSize);
 		return extra[a_extraDataIndex];
 	}
 
 
-	UInt16 NiObjectNET::GetExtraDataSize() const
+	std::uint16_t NiObjectNET::GetExtraDataSize() const
 	{
 		return extraDataSize;
 	}
@@ -151,14 +151,14 @@ namespace RE
 			maxSize = (maxSize * 2) + 1;
 			auto newExtra = NiAlloc<NiExtraData*>(maxSize);
 
-			UInt32 destSize = maxSize * sizeof(NiExtraData*);
+			std::uint32_t destSize = maxSize * sizeof(NiExtraData*);
 			NiMemcpy(newExtra, destSize, extra, extraDataSize * sizeof(NiExtraData*));
 
 			NiFree(extra);
 			extra = newExtra;
 		}
 
-		UInt16 i = 0;
+		std::uint16_t i = 0;
 
 		extra[extraDataSize] = a_extra;
 		++extraDataSize;
@@ -188,8 +188,8 @@ namespace RE
 
 	void NiObjectNET::RemoveAllExtraData()
 	{
-		for (SInt16 i = (static_cast<SInt16>(extraDataSize) - 1); i >= 0; --i) {
-			DeleteExtraData(static_cast<UInt16>(i));
+		for (std::int16_t i = (static_cast<std::int16_t>(extraDataSize) - 1); i >= 0; --i) {
+			DeleteExtraData(static_cast<std::uint16_t>(i));
 		}
 
 		NiFree(extra);
@@ -209,11 +209,11 @@ namespace RE
 			return false;
 		}
 
-		assert(extraDataSize < std::numeric_limits<SInt16>::max());
+		assert(extraDataSize < std::numeric_limits<std::int16_t>::max());
 
-		SInt16 bottom = 0;
-		SInt16 top = static_cast<SInt16>(extraDataSize - 1);
-		SInt16 middle = 0;
+		std::int16_t bottom = 0;
+		std::int16_t top = static_cast<std::int16_t>(extraDataSize - 1);
+		std::int16_t middle = 0;
 
 		while (bottom <= top) {
 			middle = (top + bottom) >> 1;
@@ -234,7 +234,7 @@ namespace RE
 	}
 
 
-	bool NiObjectNET::RemoveExtraDataAt(UInt16 a_extraDataIndex)
+	bool NiObjectNET::RemoveExtraDataAt(std::uint16_t a_extraDataIndex)
 	{
 		if (a_extraDataIndex < extraDataSize) {
 			DeleteExtraData(a_extraDataIndex);
@@ -245,7 +245,7 @@ namespace RE
 	}
 
 
-	bool NiObjectNET::SetExtraDataSize(UInt16 a_size)
+	bool NiObjectNET::SetExtraDataSize(std::uint16_t a_size)
 	{
 		if (a_size == 0) {
 			return false;
@@ -263,7 +263,7 @@ namespace RE
 
 			auto newExtra = NiAlloc<NiExtraData*>(maxSize);
 
-			UInt32 destSize = maxSize * sizeof(NiExtraData*);
+			std::uint32_t destSize = maxSize * sizeof(NiExtraData*);
 			NiMemcpy(newExtra, destSize, extra, extraDataSize * sizeof(NiExtraData*));
 
 			NiFree(extra);

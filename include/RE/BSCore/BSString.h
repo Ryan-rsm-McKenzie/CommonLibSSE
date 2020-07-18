@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	template <class T, UInt32 N>
+	template <class T, std::uint32_t N>
 	class DynamicMemoryManagementPol
 	{
 	public:
@@ -21,7 +21,7 @@ namespace RE
 		DynamicMemoryManagementPol& operator=(DynamicMemoryManagementPol&&) = default;
 
 
-		[[nodiscard]] value_type* allocate(UInt32 a_num)
+		[[nodiscard]] value_type* allocate(std::uint32_t a_num)
 		{
 			if (a_num > N) {
 				return 0;
@@ -41,7 +41,7 @@ namespace RE
 	};
 
 
-	template <class T, UInt32 N>
+	template <class T, std::uint32_t N>
 	class FixedLengthMemoryManagementPol
 	{
 	public:
@@ -88,7 +88,7 @@ namespace RE
 		}
 
 
-		[[nodiscard]] value_type* allocate(UInt32 a_num)
+		[[nodiscard]] value_type* allocate(std::uint32_t a_num)
 		{
 			return a_num > N ? 0 : _buffer;
 		}
@@ -110,17 +110,17 @@ namespace RE
 	};
 
 
-	template <class CharT, UInt32 N, template <class, UInt32> class Allocator>
+	template <class CharT, std::uint32_t N, template <class, std::uint32_t> class Allocator>
 	class BSStringT : public Allocator<CharT, N>
 	{
 	private:
-		static constexpr auto MAX = static_cast<UInt16>(N);
+		static constexpr auto MAX = static_cast<std::uint16_t>(N);
 
 	public:
 		using traits_type = std::char_traits<CharT>;
 		using value_type = CharT;
 		using allocator_type = Allocator<CharT, N>;
-		using size_type = UInt16;
+		using size_type = std::uint16_t;
 		using reference = value_type&;
 		using const_reference = const value_type&;
 		using pointer = value_type*;
@@ -352,7 +352,7 @@ namespace RE
 		}
 
 
-		[[nodiscard]] value_type* allocate(UInt32 a_num)
+		[[nodiscard]] value_type* allocate(std::uint32_t a_num)
 		{
 			return allocator_type::allocate(a_num);
 		}
@@ -364,15 +364,15 @@ namespace RE
 		}
 
 
-		bool set_cstr(const value_type* a_str, UInt32 a_len = 0)
+		bool set_cstr(const value_type* a_str, std::uint32_t a_len = 0)
 		{
-			auto len = static_cast<UInt16>(a_len);
+			auto len = static_cast<std::uint16_t>(a_len);
 			if (_data == a_str) {
 				return true;
 			}
 
 			if (len == 0) {
-				len = static_cast<UInt16>(traits_type::length(a_str));
+				len = static_cast<std::uint16_t>(traits_type::length(a_str));
 			}
 
 			size_type newSize = len > MAX ? MAX : len;
@@ -402,18 +402,18 @@ namespace RE
 
 
 		// members
-		value_type* _data;		// ?? (00)
-		UInt16		_size;		// ?? (08)
-		UInt16		_capacity;	// ?? (0A)
-		UInt32		_pad0C;		// ?? (0C)
+		value_type*	  _data;	  // ?? (00)
+		std::uint16_t _size;	  // ?? (08)
+		std::uint16_t _capacity;  // ?? (0A)
+		std::uint32_t _pad0C;	  // ?? (0C)
 	};
 
 
-	using BSString = BSStringT<char, static_cast<UInt32>(-1), DynamicMemoryManagementPol>;
-	STATIC_ASSERT(sizeof(BSString) == 0x10);
+	using BSString = BSStringT<char, static_cast<std::uint32_t>(-1), DynamicMemoryManagementPol>;
+	static_assert(sizeof(BSString) == 0x10);
 
 
-	template <UInt32 N>
+	template <std::uint32_t N>
 	class BSStaticStringT : public BSStringT<char, N, FixedLengthMemoryManagementPol>
 	{
 	public:

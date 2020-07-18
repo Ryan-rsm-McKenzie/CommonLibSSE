@@ -37,10 +37,10 @@ namespace RE
 		// members
 		BSFixedString	model;		  // 08 - MODL
 		BSResource::ID* textures;	  // 10 - MODT
-		UInt32*			addons;		  // 18
-		UInt16			numTextures;  // 20
-		UInt16			numAddons;	  // 22
-		UInt32			pad24;		  // 24
+		std::uint32_t*	addons;		  // 18
+		std::uint16_t	numTextures;  // 20
+		std::uint16_t	numAddons;	  // 22
+		std::uint32_t	pad24;		  // 24
 	};
-	STATIC_ASSERT(sizeof(TESModel) == 0x28);
+	static_assert(sizeof(TESModel) == 0x28);
 }

@@ -16,8 +16,8 @@ namespace SKSE
 	bool Init(const LoadInterface* a_skse);
 	void RegisterForAPIInitEvent(std::function<void()> a_fn);
 
-	const PluginHandle GetPluginHandle();
-	const UInt32	   GetReleaseIndex();
+	const PluginHandle	GetPluginHandle();
+	const std::uint32_t GetReleaseIndex();
 
 	const ScaleformInterface*	  GetScaleformInterface();
 	const PapyrusInterface*		  GetPapyrusInterface();

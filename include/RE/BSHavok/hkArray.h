@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		using value_type = T;
-		using size_type = SInt32;
+		using size_type = std::int32_t;
 		using reference = value_type&;
 		using const_reference = const value_type&;
 		using iterator = T*;
@@ -191,22 +191,22 @@ namespace RE
 		}
 
 
-		enum : UInt32
+		enum : std::uint32_t
 		{
 			kCapacityMask = 0x3FFFFFFF,
 			kFlagMask = 0xC0000000,
-			kDontDeallocFlag = (UInt32)1 << 31
+			kDontDeallocFlag = (std::uint32_t)1 << 31
 		};
 
 
 		static constexpr float GROWTH_FACTOR = 1.5;	 // NOT PART OF NATIVE TYPE
 
 
-		T*	   _data;			   // 00
-		SInt32 _size;			   // 08
-		SInt32 _capacityAndFlags;  // 0C
+		T*			 _data;				 // 00
+		std::int32_t _size;				 // 08
+		std::int32_t _capacityAndFlags;	 // 0C
 	};
-	STATIC_ASSERT(sizeof(hkArrayBase<void*>) == 0x10);
+	static_assert(sizeof(hkArrayBase<void*>) == 0x10);
 
 
 	template <class T, class Allocator = void>
@@ -214,7 +214,7 @@ namespace RE
 	{
 	public:
 	};
-	STATIC_ASSERT(sizeof(hkArray<void*>) == 0x10);
+	static_assert(sizeof(hkArray<void*>) == 0x10);
 
 
 	template <class T, std::size_t N, class Allocator = void>

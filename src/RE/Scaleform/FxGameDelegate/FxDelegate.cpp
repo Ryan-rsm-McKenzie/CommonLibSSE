@@ -16,7 +16,7 @@ namespace RE
 	}
 
 
-	void FxDelegate::Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, UInt32 a_argCount)
+	void FxDelegate::Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, std::uint32_t a_argCount)
 	{
 		auto cbDef = callbacks.GetAlt(a_methodName);
 		if (cbDef) {
@@ -30,7 +30,7 @@ namespace RE
 	{
 		assert(a_movieView);
 		GFxValue* values = nullptr;
-		const UInt32 numValues = a_args.GetValues(&values);
+		const std::uint32_t numValues = a_args.GetValues(&values);
 		if (values) {
 			values[0] = a_methodName;
 			a_movieView->InvokeNoReturn("call", values, numValues);
@@ -42,7 +42,7 @@ namespace RE
 	{
 		assert(a_movieView);
 		GFxValue* values = nullptr;
-		const UInt32 numValues = a_args.GetValues(&values);
+		const std::uint32_t numValues = a_args.GetValues(&values);
 		if (values) {
 			a_movieView->Invoke(a_methodName, nullptr, values + 1, numValues - 1);
 		}

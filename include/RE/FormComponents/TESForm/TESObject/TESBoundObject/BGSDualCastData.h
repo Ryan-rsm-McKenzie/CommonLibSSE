@@ -8,7 +8,8 @@ namespace RE
 {
 	struct BGSDualCastDataDEF  // DATA
 	{
-		enum class Flags : UInt32
+	public:
+		enum class Flags
 		{
 			kNone = 0,
 			kHitEffectInheritScale = 1 << 0,
@@ -17,15 +18,16 @@ namespace RE
 		};
 
 
-		BGSProjectile*	  pProjectile;	   // 00
-		BGSExplosion*	  pExplosion;	   // 08
-		TESEffectShader*  pEffectShader;   // 10
-		BGSArtObject*	  pHitEffectArt;   // 18
-		BGSImpactDataSet* pImpactDataSet;  // 20
-		Flags			  flags;		   // 28
-		UInt32			  pad30;		   // 30
+		// members
+		BGSProjectile*						   pProjectile;		// 00
+		BGSExplosion*						   pExplosion;		// 08
+		TESEffectShader*					   pEffectShader;	// 10
+		BGSArtObject*						   pHitEffectArt;	// 18
+		BGSImpactDataSet*					   pImpactDataSet;	// 20
+		stl::enumeration<Flags, std::uint32_t> flags;			// 28
+		std::uint32_t						   pad30;			// 30
 	};
-	STATIC_ASSERT(sizeof(BGSDualCastDataDEF) == 0x30);
+	static_assert(sizeof(BGSDualCastDataDEF) == 0x30);
 
 
 	class BGSDualCastData : public TESBoundObject
@@ -37,7 +39,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -55,5 +57,5 @@ namespace RE
 		// members
 		BGSDualCastDataDEF data;  // 30 - DATA
 	};
-	STATIC_ASSERT(sizeof(BGSDualCastData) == 0x60);
+	static_assert(sizeof(BGSDualCastData) == 0x60);
 }

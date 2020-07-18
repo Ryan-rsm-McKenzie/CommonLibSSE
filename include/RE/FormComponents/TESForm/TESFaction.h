@@ -20,7 +20,7 @@ namespace RE
 
 	struct FACTION_DATA
 	{
-		enum Flag : UInt32
+		enum Flag : std::uint32_t
 		{
 			kNone = 0,
 			kHiddenFromNPC = 1 << 0,
@@ -43,25 +43,25 @@ namespace RE
 
 		Flag flags;	 // 0
 	};
-	STATIC_ASSERT(sizeof(FACTION_DATA) == 0x4);
+	static_assert(sizeof(FACTION_DATA) == 0x4);
 
 
 	struct FACTION_CRIME_DATA_VALUES  // CRVA
 	{
 	public:
 		// members
-		bool   arrest;				 // 00
-		bool   attackOnSight;		 // 01
-		UInt16 murderCrimeGold;		 // 02
-		UInt16 assaultCrimeGold;	 // 04
-		UInt16 trespassCrimeGold;	 // 06
-		UInt16 pickpocketCrimeGold;	 // 08
-		UInt16 pad0A;				 // 0A
-		float  stealCrimeGoldMult;	 // 0C
-		UInt16 escapeCrimeGold;		 // 10
-		UInt16 werewolfCrimeGold;	 // 12
+		bool		  arrest;				// 00
+		bool		  attackOnSight;		// 01
+		std::uint16_t murderCrimeGold;		// 02
+		std::uint16_t assaultCrimeGold;		// 04
+		std::uint16_t trespassCrimeGold;	// 06
+		std::uint16_t pickpocketCrimeGold;	// 08
+		std::uint16_t pad0A;				// 0A
+		float		  stealCrimeGoldMult;	// 0C
+		std::uint16_t escapeCrimeGold;		// 10
+		std::uint16_t werewolfCrimeGold;	// 12
 	};
-	STATIC_ASSERT(sizeof(FACTION_CRIME_DATA_VALUES) == 0x14);
+	static_assert(sizeof(FACTION_CRIME_DATA_VALUES) == 0x14);
 
 
 	struct FACTION_CRIME_DATA
@@ -75,24 +75,24 @@ namespace RE
 		BGSListForm*			  crimeGroup;						// 20 - CRGR
 		BGSOutfit*				  jailOutfit;						// 28 - JOUT
 		FACTION_CRIME_DATA_VALUES crimevalues;						// 30 - CRVA
-		UInt32					  pad44;							// 44
+		std::uint32_t			  pad44;							// 44
 	};
-	STATIC_ASSERT(sizeof(FACTION_CRIME_DATA) == 0x48);
+	static_assert(sizeof(FACTION_CRIME_DATA) == 0x48);
 
 
 	struct FACTION_VENDOR_DATA_VALUES  // VENV
 	{
 	public:
 		// members
-		UInt16 startHour;		// 0
-		UInt16 endHour;			// 2
-		UInt32 locationRadius;	// 4
-		bool   buysStolen;		// 8
-		bool   notBuySell;		// 9
-		bool   buysNonStolen;	// A
-		UInt8  padB;			// B
+		std::uint16_t startHour;	   // 0
+		std::uint16_t endHour;		   // 2
+		std::uint32_t locationRadius;  // 4
+		bool		  buysStolen;	   // 8
+		bool		  notBuySell;	   // 9
+		bool		  buysNonStolen;   // A
+		std::uint8_t  padB;			   // B
 	};
-	STATIC_ASSERT(sizeof(FACTION_VENDOR_DATA_VALUES) == 0xC);
+	static_assert(sizeof(FACTION_VENDOR_DATA_VALUES) == 0xC);
 
 
 	struct FACTION_VENDOR_DATA	// VENV
@@ -100,15 +100,15 @@ namespace RE
 	public:
 		// members
 		FACTION_VENDOR_DATA_VALUES vendorValues;	   // 00
-		UInt32					   pad0C;			   // 0C
+		std::uint32_t			   pad0C;			   // 0C
 		PackageLocation*		   vendorLocation;	   // 10 - PLVD
 		TESCondition*			   vendorConditions;   // 18
 		BGSListForm*			   vendorSellBuyList;  // 20 - VEND
 		TESObjectREFR*			   merchantContainer;  // 28 - VENC
-		UInt32					   lastDayReset;	   // 30
-		UInt32					   pad34;			   // 34
+		std::uint32_t			   lastDayReset;	   // 30
+		std::uint32_t			   pad34;			   // 34
 	};
-	STATIC_ASSERT(sizeof(FACTION_VENDOR_DATA) == 0x38);
+	static_assert(sizeof(FACTION_VENDOR_DATA) == 0x38);
 
 
 	struct RANK_DATA
@@ -119,7 +119,7 @@ namespace RE
 		BSFixedString femaleRankTitle;	// 08 - FNAM
 		TESTexture	  textureInsignia;	// 10 - INAM - unused
 	};
-	STATIC_ASSERT(sizeof(RANK_DATA) == 0x20);
+	static_assert(sizeof(RANK_DATA) == 0x20);
 
 
 	class TESFaction :
@@ -134,18 +134,18 @@ namespace RE
 
 		struct ChangeFlags
 		{
-			enum ChangeFlag : UInt32
+			enum ChangeFlag : std::uint32_t
 			{
 				kFactionFlags = 1 << 1,
 				kFactionReactions = 1 << 2,
-				kFactionCrimeCounts = (UInt32)1 << 31
+				kFactionCrimeCounts = (std::uint32_t)1 << 31
 			};
 		};
 
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -164,53 +164,53 @@ namespace RE
 		virtual void Revert(BGSLoadFormBuffer* a_buf) override;	   // 12
 		virtual void InitItemImpl() override;					   // 13
 
-		bool   CanBeOwner() const;
-		bool   CanPayCrimeGold() const;
-		SInt32 GetCrimeGold() const;
-		SInt32 GetCrimeGoldNonViolent() const;
-		SInt32 GetCrimeGoldViolent() const;
-		SInt32 GetInfamy() const;
-		SInt32 GetInfamyNonViolent() const;
-		SInt32 GetInfamyViolent() const;
-		SInt32 GetStolenItemValueCrime() const;
-		SInt32 GetStolenItemValueNoCrime() const;
-		bool   HasSpecialCombatState() const;
-		bool   HasStealMultiplier() const;
-		bool   HiddenFromNPC() const;
-		bool   IgnoresAssault() const;
-		bool   IgnoresMurder() const;
-		bool   IgnoresPickpocket() const;
-		bool   IgnoresStealing() const;
-		bool   IgnoresTrespass() const;
-		bool   IgnoresWerewolf() const;
-		bool   IsFactionInCrimeGroup(const TESFaction* a_other) const;
-		bool   IsPlayerEnemy() const;
-		bool   IsPlayerExpelled() const;
-		bool   IsVendor() const;
-		void   ModCrimeGold(SInt32 a_amount, bool a_violent);
-		void   PlayerPayCrimeGold(bool a_removeStolenItems = true, bool a_goToJail = true);
-		bool   ReportsCrimesAgainstMembers() const;
-		void   SendPlayerToJail(bool a_removeInventory = true, bool a_realJail = true);
-		void   SetAlly(TESFaction* a_other, bool a_selfIsFriendToOther = false, bool a_otherIsFriendToSelf = false);
-		void   SetCrimeGold(SInt32 a_gold);
-		void   SetCrimeGoldViolent(SInt32 a_gold);
-		void   SetEnemy(TESFaction* a_other, bool a_selfIsNeutralToOther = false, bool a_otherIsNeutralToSelf = false);
-		void   SetFactionFightReaction(TESFaction* a_faction, FIGHT_REACTION a_fightReaction);
-		bool   TracksCrimes() const;
-		bool   UsesCrimeGoldDefaults() const;
+		bool		 CanBeOwner() const;
+		bool		 CanPayCrimeGold() const;
+		std::int32_t GetCrimeGold() const;
+		std::int32_t GetCrimeGoldNonViolent() const;
+		std::int32_t GetCrimeGoldViolent() const;
+		std::int32_t GetInfamy() const;
+		std::int32_t GetInfamyNonViolent() const;
+		std::int32_t GetInfamyViolent() const;
+		std::int32_t GetStolenItemValueCrime() const;
+		std::int32_t GetStolenItemValueNoCrime() const;
+		bool		 HasSpecialCombatState() const;
+		bool		 HasStealMultiplier() const;
+		bool		 HiddenFromNPC() const;
+		bool		 IgnoresAssault() const;
+		bool		 IgnoresMurder() const;
+		bool		 IgnoresPickpocket() const;
+		bool		 IgnoresStealing() const;
+		bool		 IgnoresTrespass() const;
+		bool		 IgnoresWerewolf() const;
+		bool		 IsFactionInCrimeGroup(const TESFaction* a_other) const;
+		bool		 IsPlayerEnemy() const;
+		bool		 IsPlayerExpelled() const;
+		bool		 IsVendor() const;
+		void		 ModCrimeGold(std::int32_t a_amount, bool a_violent);
+		void		 PlayerPayCrimeGold(bool a_removeStolenItems = true, bool a_goToJail = true);
+		bool		 ReportsCrimesAgainstMembers() const;
+		void		 SendPlayerToJail(bool a_removeInventory = true, bool a_realJail = true);
+		void		 SetAlly(TESFaction* a_other, bool a_selfIsFriendToOther = false, bool a_otherIsFriendToSelf = false);
+		void		 SetCrimeGold(std::int32_t a_gold);
+		void		 SetCrimeGoldViolent(std::int32_t a_gold);
+		void		 SetEnemy(TESFaction* a_other, bool a_selfIsNeutralToOther = false, bool a_otherIsNeutralToSelf = false);
+		void		 SetFactionFightReaction(TESFaction* a_faction, FIGHT_REACTION a_fightReaction);
+		bool		 TracksCrimes() const;
+		bool		 UsesCrimeGoldDefaults() const;
 
 
 		// members
-		BSTHashMap<const TESNPC*, UInt32>* crimeGoldMap;		   // 050
-		FACTION_DATA					   data;				   // 058 - DATA
-		UInt32							   pad05C;				   // 05C
-		FACTION_CRIME_DATA				   crimeData;			   // 060
-		FACTION_VENDOR_DATA				   vendorData;			   // 0A8
-		BSSimpleList<RANK_DATA*>		   rankData;			   // 0E0
-		SInt32							   majorCrime;			   // 0F0
-		SInt32							   minorCrime;			   // 0F4
-		AITimeStamp						   resistArrestTimeStamp;  // 0F8
-		float							   pcEnemyFlagTimeStamp;   // 0FC - current game time in hours
+		BSTHashMap<const TESNPC*, std::uint32_t>* crimeGoldMap;			  // 050
+		FACTION_DATA							  data;					  // 058 - DATA
+		std::uint32_t							  pad05C;				  // 05C
+		FACTION_CRIME_DATA						  crimeData;			  // 060
+		FACTION_VENDOR_DATA						  vendorData;			  // 0A8
+		BSSimpleList<RANK_DATA*>				  rankData;				  // 0E0
+		std::int32_t							  majorCrime;			  // 0F0
+		std::int32_t							  minorCrime;			  // 0F4
+		AITimeStamp								  resistArrestTimeStamp;  // 0F8
+		float									  pcEnemyFlagTimeStamp;	  // 0FC - current game time in hours
 	};
-	STATIC_ASSERT(sizeof(TESFaction) == 0x100);
+	static_assert(sizeof(TESFaction) == 0x100);
 }

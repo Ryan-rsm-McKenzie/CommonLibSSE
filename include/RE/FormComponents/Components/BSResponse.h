@@ -50,7 +50,7 @@ namespace RE
 	public:
 		virtual ~ResponseDefinitionMissPolicy();  // 00
 	};
-	//STATIC_ASSERT(sizeof(ResponseDefinitionMissPolicy) == 0x8);
+	//static_assert(sizeof(ResponseDefinitionMissPolicy) == 0x8);
 
 
 	template <class T, class Key>
@@ -59,12 +59,12 @@ namespace RE
 	public:
 		virtual ~PreloadResponsesInitializationPolicy();  // 00
 	};
-	//STATIC_ASSERT(sizeof(PreloadResponsesInitializationPolicy) == 0x8);
+	//static_assert(sizeof(PreloadResponsesInitializationPolicy) == 0x8);
 
 
 	class Actor;
 	using AnimResponse = BSResponse<BSFixedString, Actor, BSFixedString, DoNothingUnhandledPolicy>;
-	STATIC_ASSERT(sizeof(AnimResponse) == 0x48);
+	static_assert(sizeof(AnimResponse) == 0x48);
 
 
 	class ResponseDictionary :
@@ -77,5 +77,5 @@ namespace RE
 	public:
 		static ResponseDictionary* GetSingleton();
 	};
-	STATIC_ASSERT(sizeof(ResponseDictionary) == 0x50);
+	static_assert(sizeof(ResponseDictionary) == 0x50);
 }

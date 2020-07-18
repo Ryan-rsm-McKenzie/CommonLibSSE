@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	FxDelegateArgs::FxDelegateArgs(GFxValue a_responseID, FxDelegateHandler* a_handler, GFxMovieView* a_movie, const GFxValue* a_vals, UInt32 a_numArgs) :
+	FxDelegateArgs::FxDelegateArgs(GFxValue a_responseID, FxDelegateHandler* a_handler, GFxMovieView* a_movie, const GFxValue* a_vals, std::uint32_t a_numArgs) :
 		_responseID(a_responseID),
 		_handler(a_handler),
 		_movieView(a_movie),
@@ -19,7 +19,7 @@ namespace RE
 	void FxDelegateArgs::Respond(FxResponseArgsBase& a_params) const
 	{
 		GFxValue* values = nullptr;
-		const UInt32 numValues = a_params.GetValues(std::addressof(values));
+		const std::uint32_t numValues = a_params.GetValues(std::addressof(values));
 		if (values) {
 			values[0] = _responseID;
 			_movieView->InvokeNoReturn("respond", values, numValues);
@@ -32,7 +32,7 @@ namespace RE
 		if (a_pos >= _numArgs) {
 			std::string err = __FUNCTION__;
 			err += ": ";
-			err += MAKE_STR(a_pos);
+			err += "a_pos";
 			err += " (which is" + std::to_string(a_pos) + ") >= this->GetArgCount() (which is" + std::to_string(this->GetArgCount()) + ")";
 			throw std::out_of_range(err);
 		} else {
@@ -60,7 +60,7 @@ namespace RE
 	}
 
 
-	UInt32 FxDelegateArgs::GetArgCount() const
+	std::uint32_t FxDelegateArgs::GetArgCount() const
 	{
 		return _numArgs;
 	}

@@ -30,13 +30,13 @@ namespace RE
 	}
 
 
-	SInt32 hkReferencedObject::GetAllocatedSize() const
+	std::int32_t hkReferencedObject::GetAllocatedSize() const
 	{
 		return memSizeAndFlags & kMemSize;
 	}
 
 
-	SInt32 hkReferencedObject::GetReferenceCount() const
+	std::int32_t hkReferencedObject::GetReferenceCount() const
 	{
 		return referenceCount;
 	}

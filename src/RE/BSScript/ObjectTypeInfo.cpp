@@ -12,7 +12,7 @@ namespace RE
 		}
 
 
-		UInt32 ObjectTypeInfo::NamedStateInfo::GetNumFuncs() const
+		std::uint32_t ObjectTypeInfo::NamedStateInfo::GetNumFuncs() const
 		{
 			return data & kFuncCountMask;
 		}
@@ -88,7 +88,7 @@ namespace RE
 		}
 
 
-		UInt32 ObjectTypeInfo::GetNumUserFlags() const
+		std::uint32_t ObjectTypeInfo::GetNumUserFlags() const
 		{
 			return pun_bits(userFlagCount1, userFlagCount2, userFlagCount3, userFlagCount4, userFlagCount5, userFlagCount6);
 		}
@@ -108,13 +108,13 @@ namespace RE
 		}
 
 
-		UInt32 ObjectTypeInfo::GetNumVariables() const
+		std::uint32_t ObjectTypeInfo::GetNumVariables() const
 		{
 			return pun_bits(variableCount1, variableCount2, variableCount3, variableCount4, variableCount5, variableCount6, variableCount7, variableCount8, variableCount9, variableCount10);
 		}
 
 
-		UInt32 ObjectTypeInfo::GetTotalNumVariables() const
+		std::uint32_t ObjectTypeInfo::GetTotalNumVariables() const
 		{
 			auto numVars = GetNumVariables();
 			for (auto iter = GetParent(); iter; iter = iter->GetParent()) {
@@ -138,7 +138,7 @@ namespace RE
 		}
 
 
-		UInt32 ObjectTypeInfo::GetNumInitalValues() const
+		std::uint32_t ObjectTypeInfo::GetNumInitalValues() const
 		{
 			return pun_bits(initialValueCount1, initialValueCount2, initialValueCount3, initialValueCount4, initialValueCount5, initialValueCount6, initialValueCount7, initialValueCount8, initialValueCount9, initialValueCount10);
 		}
@@ -158,7 +158,7 @@ namespace RE
 		}
 
 
-		UInt32 ObjectTypeInfo::GetNumProperties() const
+		std::uint32_t ObjectTypeInfo::GetNumProperties() const
 		{
 			return pun_bits(propertyCount1, propertyCount2, propertyCount3, propertyCount4, propertyCount5, propertyCount6, propertyCount7, propertyCount8, propertyCount9, propertyCount10);
 		}
@@ -178,7 +178,7 @@ namespace RE
 		}
 
 
-		UInt32 ObjectTypeInfo::GetNumGlobalFuncs() const
+		std::uint32_t ObjectTypeInfo::GetNumGlobalFuncs() const
 		{
 			return pun_bits(staticFunctionCount1, staticFunctionCount2, staticFunctionCount3, staticFunctionCount4, staticFunctionCount5, staticFunctionCount6, staticFunctionCount7, staticFunctionCount8, staticFunctionCount9);
 		}
@@ -198,7 +198,7 @@ namespace RE
 		}
 
 
-		UInt32 ObjectTypeInfo::GetNumMemberFuncs() const
+		std::uint32_t ObjectTypeInfo::GetNumMemberFuncs() const
 		{
 			return pun_bits(emptyStateMemberFunctionCount1, emptyStateMemberFunctionCount2, emptyStateMemberFunctionCount3, emptyStateMemberFunctionCount4, emptyStateMemberFunctionCount5, emptyStateMemberFunctionCount6, emptyStateMemberFunctionCount7, emptyStateMemberFunctionCount8, emptyStateMemberFunctionCount9, emptyStateMemberFunctionCount10, emptyStateMemberFunctionCount11);
 		}
@@ -218,7 +218,7 @@ namespace RE
 		}
 
 
-		UInt32 ObjectTypeInfo::GetNumNamedStates() const
+		std::uint32_t ObjectTypeInfo::GetNumNamedStates() const
 		{
 			return pun_bits(namedStateCount1, namedStateCount2, namedStateCount3, namedStateCount4, namedStateCount5, namedStateCount6, namedStateCount7);
 		}
@@ -238,18 +238,18 @@ namespace RE
 		}
 
 
-		UInt32 ObjectTypeInfo::GetPropertyIndex(const BSFixedString& a_name) const
+		std::uint32_t ObjectTypeInfo::GetPropertyIndex(const BSFixedString& a_name) const
 		{
 			auto props = GetPropertyIter();
 			if (props) {
-				for (UInt32 i = 0; i < GetNumProperties(); ++i) {
+				for (std::uint32_t i = 0; i < GetNumProperties(); ++i) {
 					auto& prop = props[i];
 					if (prop.name == a_name) {
 						return prop.info.autoVarIndex;
 					}
 				}
 			}
-			return static_cast<UInt32>(-1);
+			return static_cast<std::uint32_t>(-1);
 		}
 
 

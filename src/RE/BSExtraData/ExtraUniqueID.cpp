@@ -8,7 +8,7 @@ namespace RE
 	{}
 
 
-	ExtraUniqueID::ExtraUniqueID(FormID a_baseID, UInt16 a_uniqueID) :
+	ExtraUniqueID::ExtraUniqueID(FormID a_baseID, std::uint16_t a_uniqueID) :
 		BSExtraData(),
 		baseID(a_baseID),
 		uniqueID(a_uniqueID),

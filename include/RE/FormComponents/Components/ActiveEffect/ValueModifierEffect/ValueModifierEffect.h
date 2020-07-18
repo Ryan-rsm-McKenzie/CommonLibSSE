@@ -38,8 +38,8 @@ namespace RE
 
 
 		// members
-		ActorValue actorValue;	// 90
-		UInt32	   pad94;		// 94
+		ActorValue	  actorValue;  // 90
+		std::uint32_t pad94;	   // 94
 	};
-	STATIC_ASSERT(sizeof(ValueModifierEffect) == 0x98);
+	static_assert(sizeof(ValueModifierEffect) == 0x98);
 }

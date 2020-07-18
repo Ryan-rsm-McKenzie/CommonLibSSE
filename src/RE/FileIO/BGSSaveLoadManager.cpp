@@ -22,7 +22,7 @@ namespace RE
 	}
 
 
-	bool BGSSaveLoadManager::Save_Impl(SInt32 a_deviceID, UInt32 a_outputStats, const char* a_fileName)
+	bool BGSSaveLoadManager::Save_Impl(std::int32_t a_deviceID, std::uint32_t a_outputStats, const char* a_fileName)
 	{
 		using func_t = decltype(&BGSSaveLoadManager::Save_Impl);
 		REL::Offset<func_t> func(Offset::BGSSaveLoadManager::Save);
@@ -30,7 +30,7 @@ namespace RE
 	}
 
 
-	bool BGSSaveLoadManager::Load_Impl(const char* a_fileName, SInt32 a_deviceID, UInt32 a_outputStats, bool a_checkForMods)
+	bool BGSSaveLoadManager::Load_Impl(const char* a_fileName, std::int32_t a_deviceID, std::uint32_t a_outputStats, bool a_checkForMods)
 	{
 		using func_t = decltype(&BGSSaveLoadManager::Load_Impl);
 		REL::Offset<func_t> func(Offset::BGSSaveLoadManager::Load);

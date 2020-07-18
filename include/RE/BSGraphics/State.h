@@ -15,22 +15,22 @@ namespace RE
 
 
 			// members
-			UInt64				 unk00;						// 000
-			UInt64				 unk08;						// 008
-			UInt64				 unk10;						// 010
-			UInt64				 unk18;						// 018
-			UInt32				 unk20;						// 020
-			UInt32				 screenWidth;				// 024
-			UInt32				 screenHeight;				// 028
-			UInt32				 frameBufferViewport[2];	// 02C
-			UInt32				 unk34;						// 034
-			UInt64				 unk38;						// 038
-			UInt64				 unk40;						// 040
-			UInt64				 unk48;						// 048
+			std::uint64_t		 unk00;						// 000
+			std::uint64_t		 unk08;						// 008
+			std::uint64_t		 unk10;						// 010
+			std::uint64_t		 unk18;						// 018
+			std::uint32_t		 unk20;						// 020
+			std::uint32_t		 screenWidth;				// 024
+			std::uint32_t		 screenHeight;				// 028
+			std::uint32_t		 frameBufferViewport[2];	// 02C
+			std::uint32_t		 unk34;						// 034
+			std::uint64_t		 unk38;						// 038
+			std::uint64_t		 unk40;						// 040
+			std::uint64_t		 unk48;						// 048
 			bool				 insideFrame;				// 050
 			bool				 letterbox;					// 051
-			UInt16				 unk52;						// 052
-			UInt32				 unk54;						// 054
+			std::uint16_t		 unk52;						// 052
+			std::uint32_t		 unk54;						// 054
 			NiPointer<NiTexture> unk058;					// 058 - black?
 			NiPointer<NiTexture> defaultTextureWhite;		// 060
 			NiPointer<NiTexture> defaultTextureGrey;		// 068
@@ -40,8 +40,8 @@ namespace RE
 			NiPointer<NiTexture> defaultTexEffectMap;		// 088
 			NiPointer<NiTexture> defaultTextureNormalMap;	// 090
 		};
-		STATIC_ASSERT(offsetof(State, screenWidth) == 0x24);
-		STATIC_ASSERT(offsetof(State, frameBufferViewport) == 0x2C);
-		STATIC_ASSERT(offsetof(State, letterbox) == 0x51);
+		static_assert(offsetof(State, screenWidth) == 0x24);
+		static_assert(offsetof(State, frameBufferViewport) == 0x2C);
+		static_assert(offsetof(State, letterbox) == 0x51);
 	}
 }

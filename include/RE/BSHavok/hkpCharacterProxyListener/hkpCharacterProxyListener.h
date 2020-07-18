@@ -25,9 +25,9 @@ namespace RE
 		float		  projectedVelocity;  // 28
 		float		  objectMassInv;	  // 2C
 		hkpRigidBody* body;				  // 30
-		UInt64		  pad38;			  // 38
+		std::uint64_t pad38;			  // 38
 	};
-	STATIC_ASSERT(sizeof(hkpCharacterObjectInteractionEvent) == 0x40);
+	static_assert(sizeof(hkpCharacterObjectInteractionEvent) == 0x40);
 
 
 	struct hkpCharacterObjectInteractionResult
@@ -37,7 +37,7 @@ namespace RE
 		hkVector4 objectImpulse;	// 00
 		hkVector4 impulsePosition;	// 10
 	};
-	STATIC_ASSERT(sizeof(hkpCharacterObjectInteractionResult) == 0x20);
+	static_assert(sizeof(hkpCharacterObjectInteractionResult) == 0x20);
 
 
 	class hkpCharacterProxyListener
@@ -57,5 +57,5 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 	};
-	STATIC_ASSERT(sizeof(hkpCharacterProxyListener) == 0x8);
+	static_assert(sizeof(hkpCharacterProxyListener) == 0x8);
 }

@@ -18,5 +18,5 @@ namespace RE
 		float					 cachedPathLength;	   // 74
 		hkpCollisionAgentConfig* config;			   // 78
 	};
-	STATIC_ASSERT(sizeof(hkpLinearCastCollisionInput) == 0x80);
+	static_assert(sizeof(hkpLinearCastCollisionInput) == 0x80);
 }

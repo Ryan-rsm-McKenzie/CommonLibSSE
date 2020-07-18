@@ -11,7 +11,7 @@ namespace RE
 	class TESObjectCELL;
 
 
-	enum class TEMP_EFFECT_TYPE : UInt32
+	enum class TEMP_EFFECT_TYPE
 	{
 		kTerrain = 0,
 		kWeaponBlood = 1,
@@ -82,14 +82,14 @@ namespace RE
 
 		// members
 		float		   lifetime;	 // 10
-		UInt32		   pad14;		 // 14
+		std::uint32_t  pad14;		 // 14
 		TESObjectCELL* cell;		 // 18
 		float		   age;			 // 20
 		bool		   initialized;	 // 24
-		UInt8		   pad25;		 // 25
-		UInt16		   pad26;		 // 26
-		UInt32		   effectID;	 // 28
-		UInt32		   pad2C;		 // 2C
+		std::uint8_t   pad25;		 // 25
+		std::uint16_t  pad26;		 // 26
+		std::uint32_t  effectID;	 // 28
+		std::uint32_t  pad2C;		 // 2C
 	};
-	STATIC_ASSERT(sizeof(BSTempEffect) == 0x30);
+	static_assert(sizeof(BSTempEffect) == 0x30);
 }

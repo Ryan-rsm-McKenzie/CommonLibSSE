@@ -16,7 +16,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ConsoleData;
 
 
-		enum class DataType : UInt32
+		enum class DataType
 		{
 		};
 
@@ -25,12 +25,12 @@ namespace RE
 
 
 		// members
-		BSString*		str;	  // 10
-		ObjectRefHandle pickRef;  // 18
-		UInt32			pad1C;	  // 1C
-		NiBinaryStream* file;	  // 20
-		DataType		type;	  // 28
-		UInt32			pad2C;	  // 2C
+		BSString*								  str;		// 10
+		ObjectRefHandle							  pickRef;	// 18
+		std::uint32_t							  pad1C;	// 1C
+		NiBinaryStream*							  file;		// 20
+		stl::enumeration<DataType, std::uint32_t> type;		// 28
+		std::uint32_t							  pad2C;	// 2C
 	};
-	STATIC_ASSERT(sizeof(ConsoleData) == 0x30);
+	static_assert(sizeof(ConsoleData) == 0x30);
 }

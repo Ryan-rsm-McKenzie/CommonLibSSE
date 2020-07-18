@@ -27,8 +27,8 @@ namespace RE
 
 
 		// members
-		TESCondition conditions;  // 10
-		UInt64		 unk18;		  // 18
+		TESCondition  conditions;  // 10
+		std::uint64_t unk18;	   // 18
 	};
-	STATIC_ASSERT(sizeof(BGSMusicTrack) == 0x20);
+	static_assert(sizeof(BGSMusicTrack) == 0x20);
 }

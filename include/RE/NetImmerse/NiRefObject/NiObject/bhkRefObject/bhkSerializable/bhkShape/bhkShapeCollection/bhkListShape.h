@@ -33,7 +33,7 @@ namespace RE
 
 
 		// members
-		UInt64 unk28;  // 28
+		std::uint64_t unk28;  // 28
 	};
-	STATIC_ASSERT(sizeof(bhkListShape) == 0x30);
+	static_assert(sizeof(bhkListShape) == 0x30);
 }

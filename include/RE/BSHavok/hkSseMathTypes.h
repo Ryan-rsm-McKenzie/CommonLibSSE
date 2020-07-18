@@ -4,13 +4,13 @@
 namespace RE
 {
 	using hkQuadReal = __m128;
-	STATIC_ASSERT(sizeof(hkQuadReal) == 0x10);
+	static_assert(sizeof(hkQuadReal) == 0x10);
 
 
 	class hkVector4Comparison
 	{
 	public:
-		enum class Mask : UInt32
+		enum class Mask
 		{
 			kNone = 0,
 
@@ -38,5 +38,5 @@ namespace RE
 		// members
 		hkQuadReal mask;  // 00
 	};
-	STATIC_ASSERT(sizeof(hkVector4Comparison) == 0x10);
+	static_assert(sizeof(hkVector4Comparison) == 0x10);
 }

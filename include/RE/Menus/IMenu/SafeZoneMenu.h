@@ -17,5 +17,5 @@ namespace RE
 
 		virtual ~SafeZoneMenu();  // 00
 	};
-	STATIC_ASSERT(sizeof(SafeZoneMenu) == 0x30);
+	static_assert(sizeof(SafeZoneMenu) == 0x30);
 }

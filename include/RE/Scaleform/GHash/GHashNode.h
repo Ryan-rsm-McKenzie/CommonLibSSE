@@ -40,7 +40,7 @@ namespace RE
 				return *first;
 			}
 		};
-		STATIC_ASSERT(sizeof(NodeRef) == 0x10);
+		static_assert(sizeof(NodeRef) == 0x10);
 
 
 		struct NodeHashF
@@ -51,7 +51,7 @@ namespace RE
 				return a_data.GetHash();
 			}
 		};
-		STATIC_ASSERT(sizeof(NodeHashF) == 0x1);
+		static_assert(sizeof(NodeHashF) == 0x1);
 
 
 		struct NodeAltHashF
@@ -62,7 +62,7 @@ namespace RE
 				return GHashNode<C, U, Hash>::CalcHash(a_data);
 			}
 		};
-		STATIC_ASSERT(sizeof(NodeAltHashF) == 0x1);
+		static_assert(sizeof(NodeAltHashF) == 0x1);
 
 
 		GHashNode(const GHashNode& a_src) :

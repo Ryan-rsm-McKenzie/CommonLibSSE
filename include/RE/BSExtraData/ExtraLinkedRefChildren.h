@@ -22,9 +22,9 @@ namespace RE
 		{
 			BGSKeyword*		keyword;  // 00
 			ObjectRefHandle refr;	  // 08
-			UInt32			pad0C;	  // 0C
+			std::uint32_t	pad0C;	  // 0C
 		};
-		STATIC_ASSERT(sizeof(LinkedRefChild) == 0x10);
+		static_assert(sizeof(LinkedRefChild) == 0x10);
 
 
 		virtual ~ExtraLinkedRefChildren();	// 00
@@ -36,5 +36,5 @@ namespace RE
 		// members
 		BSTSmallArray<LinkedRefChild> linkedChildren;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraLinkedRefChildren) == 0x30);
+	static_assert(sizeof(ExtraLinkedRefChildren) == 0x30);
 }

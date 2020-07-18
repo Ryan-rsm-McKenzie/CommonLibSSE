@@ -220,7 +220,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\REL\Relocation.h" />
-    <ClInclude Include="include\REL\SafeWrite.h" />
     <ClInclude Include="include\REL\Version.h" />
     <ClInclude Include="include\RE\AI\AIFormulas.h" />
     <ClInclude Include="include\RE\AI\AIProcess.h" />
@@ -1422,19 +1421,16 @@
     <ClInclude Include="include\SKSE\Impl\PCH.h" />
     <ClInclude Include="include\SKSE\Impl\RegistrationTraits.h" />
     <ClInclude Include="include\SKSE\Impl\Stubs.h" />
-    <ClInclude Include="include\SKSE\Impl\Util.h" />
     <ClInclude Include="include\SKSE\Interfaces.h" />
     <ClInclude Include="include\SKSE\Logger.h" />
     <ClInclude Include="include\SKSE\RegistrationMap.h" />
     <ClInclude Include="include\SKSE\RegistrationSet.h" />
-    <ClInclude Include="include\SKSE\SafeWrite.h" />
     <ClInclude Include="include\SKSE\SKSE.h" />
     <ClInclude Include="include\SKSE\Trampoline.h" />
     <ClInclude Include="include\SKSE\Version.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\REL\Relocation.cpp" />
-    <ClCompile Include="src\REL\SafeWrite.cpp" />
     <ClCompile Include="src\RE\AI\AIFormulas.cpp" />
     <ClCompile Include="src\RE\AI\AIProcess.cpp" />
     <ClCompile Include="src\RE\AI\ProcessLists.cpp" />
@@ -1586,7 +1582,6 @@
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESObjectLIGH.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectARMO.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectBOOK.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC\TESSoulGem.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT\TESObjectSTAT.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectWEAP.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESObjectARMA.cpp" />

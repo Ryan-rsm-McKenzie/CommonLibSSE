@@ -11,7 +11,7 @@ namespace RE
 		NiTListItem* prev;	   // 08
 		T			 element;  // 10
 	};
-	STATIC_ASSERT(sizeof(NiTListItem<void*>) == 0x18);
+	static_assert(sizeof(NiTListItem<void*>) == 0x18);
 
 
 	template <class Allocator, class T>
@@ -21,7 +21,7 @@ namespace RE
 		struct AntiBloatAllocator : public Allocator
 		{
 			// members
-			UInt32 size;  // ??
+			std::uint32_t size;	 // ??
 		};
 
 

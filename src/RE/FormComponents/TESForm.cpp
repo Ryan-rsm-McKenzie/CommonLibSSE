@@ -77,14 +77,14 @@ namespace RE
 	}
 
 
-	TESFile* TESForm::GetFile(SInt32 a_idx) const
+	TESFile* TESForm::GetFile(std::int32_t a_idx) const
 	{
 		auto array = sourceFiles.array;
 		if (!array || array->empty()) {
 			return nullptr;
 		}
 
-		if (a_idx < 0 || a_idx >= array->size()) {
+		if (a_idx < 0 || static_cast<std::uint32_t>(a_idx) >= array->size()) {
 			return array->back();
 		} else {
 			return (*array)[a_idx];
@@ -92,16 +92,16 @@ namespace RE
 	}
 
 
-	SInt32 TESForm::GetGoldValue() const
+	std::int32_t TESForm::GetGoldValue() const
 	{
-		SInt32 value = 0;
+		std::int32_t value = 0;
 		auto form = this;
 		auto objRef = As<TESObjectREFR>();
 		if (objRef) {
 			form = objRef->GetBaseObject();
 			auto xEnch = objRef->extraList.GetByType<ExtraEnchantment>();
 			if (xEnch && xEnch->enchantment) {
-				value += static_cast<SInt32>(xEnch->enchantment->CalculateTotalGoldValue());
+				value += static_cast<std::int32_t>(xEnch->enchantment->CalculateTotalGoldValue());
 			}
 		}
 
@@ -111,7 +111,7 @@ namespace RE
 		} else {
 			auto magicItem = form->As<MagicItem>();
 			if (magicItem) {
-				value += static_cast<SInt32>(magicItem->CalculateTotalGoldValue());
+				value += static_cast<std::int32_t>(magicItem->CalculateTotalGoldValue());
 			} else {
 				value = -1;
 			}

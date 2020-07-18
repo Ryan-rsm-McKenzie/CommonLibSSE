@@ -22,5 +22,5 @@ namespace RE
 		// members
 		BSSimpleList<T*> settings;	// 118
 	};
-	STATIC_ASSERT(sizeof(SettingCollectionList<void*>) == 0x128);
+	static_assert(sizeof(SettingCollectionList<void*>) == 0x128);
 }

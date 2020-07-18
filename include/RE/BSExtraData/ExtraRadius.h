@@ -21,8 +21,8 @@ namespace RE
 
 
 		// members
-		float  radius;	// 10
-		UInt32 pad14;	// 14
+		float		  radius;  // 10
+		std::uint32_t pad14;   // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraRadius) == 0x18);
+	static_assert(sizeof(ExtraRadius) == 0x18);
 }

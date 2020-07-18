@@ -20,10 +20,10 @@ namespace RE
 
 
 		// members
-		bool   ghost;  // 10
-		UInt8  pad11;  // 11
-		UInt16 pad12;  // 12
-		UInt32 pad14;  // 14
+		bool		  ghost;  // 10
+		std::uint8_t  pad11;  // 11
+		std::uint16_t pad12;  // 12
+		std::uint32_t pad14;  // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraGhost) == 0x18);
+	static_assert(sizeof(ExtraGhost) == 0x18);
 }

@@ -9,7 +9,7 @@ namespace RE
 		// members
 		char* buffer;  // 00
 	};
-	STATIC_ASSERT(sizeof(BGSSaveLoadBuffer) == 0x8);
+	static_assert(sizeof(BGSSaveLoadBuffer) == 0x8);
 
 
 	struct BGSLoadGameSubBuffer
@@ -18,5 +18,5 @@ namespace RE
 		// members
 		BGSSaveLoadBuffer buffer;  // 00
 	};
-	STATIC_ASSERT(sizeof(BGSLoadGameSubBuffer) == 0x8);
+	static_assert(sizeof(BGSLoadGameSubBuffer) == 0x8);
 }

@@ -12,5 +12,5 @@ namespace RE
 		float y;  // 08
 		float z;  // 0C
 	};
-	STATIC_ASSERT(sizeof(NiQuaternion) == 0x10);
+	static_assert(sizeof(NiQuaternion) == 0x10);
 }

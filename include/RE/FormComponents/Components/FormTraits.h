@@ -155,7 +155,7 @@ namespace RE
 			int>>
 	constexpr const T* TESForm::As() const noexcept
 	{
-		switch (formType) {
+		switch (*formType) {
 		case FormType::None:
 			if constexpr (std::is_convertible_v<const TESForm*, const T*>) {
 				return static_cast<const TESForm*>(this);

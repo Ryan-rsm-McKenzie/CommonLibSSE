@@ -47,8 +47,8 @@ namespace RE
 		ObjectRefHandle			   aimAtTarget;	   // 3C
 		bool					   finished;	   // 40
 		bool					   ownController;  // 41
-		UInt16					   pad42;		   // 42
-		UInt32					   pad44;		   // 44
+		std::uint16_t			   pad42;		   // 42
+		std::uint32_t			   pad44;		   // 44
 	};
-	STATIC_ASSERT(sizeof(ReferenceEffect) == 0x48);
+	static_assert(sizeof(ReferenceEffect) == 0x48);
 }

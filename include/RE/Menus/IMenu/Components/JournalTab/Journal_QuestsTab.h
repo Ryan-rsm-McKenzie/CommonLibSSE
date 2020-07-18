@@ -19,11 +19,11 @@ namespace RE
 
 
 		// members
-		GFxValue unk18;	 // 18
-		bool	 unk30;	 // 30
-		UInt8	 unk31;	 // 31
-		UInt16	 unk32;	 // 32
-		UInt32	 unk34;	 // 34
+		GFxValue	  unk18;  // 18
+		bool		  unk30;  // 30
+		std::uint8_t  unk31;  // 31
+		std::uint16_t unk32;  // 32
+		std::uint32_t unk34;  // 34
 	};
-	STATIC_ASSERT(sizeof(Journal_QuestsTab) == 0x38);
+	static_assert(sizeof(Journal_QuestsTab) == 0x38);
 }

@@ -43,14 +43,14 @@ namespace RE
 		NiAVObject*				   rootParent;					  // 20
 		NiAVObject**			   bones;						  // 28
 		const NiTransform**		   boneWorldTransforms;			  // 30
-		UInt32					   frameID;						  // 38
-		UInt32					   numMatrices;					  // 3C
-		UInt32					   numRegisters;				  // 40
-		UInt32					   allocatedSize;				  // 44
+		std::uint32_t			   frameID;						  // 38
+		std::uint32_t			   numMatrices;					  // 3C
+		std::uint32_t			   numRegisters;				  // 40
+		std::uint32_t			   allocatedSize;				  // 44
 		void*					   boneMatrices;				  // 48
 		void*					   prevBoneMatrices;			  // 50
 		void*					   skinToWorldWorldToSkinMatrix;  // 58
 		CRITICAL_SECTION		   lock;						  // 60
 	};
-	STATIC_ASSERT(sizeof(NiSkinInstance) == 0x88);
+	static_assert(sizeof(NiSkinInstance) == 0x88);
 }

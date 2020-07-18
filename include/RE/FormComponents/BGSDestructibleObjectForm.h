@@ -13,7 +13,8 @@ namespace RE
 
 	struct DestructibleObjectStage
 	{
-		enum class DESTRUCTIBLE_OBJECT_STAGE_FLAGS : UInt8
+	public:
+		enum class DESTRUCTIBLE_OBJECT_STAGE_FLAGS
 		{
 			kNone = 0,
 			kCapDamage = 1 << 0,
@@ -22,27 +23,27 @@ namespace RE
 			kIgnoreExternalDamage = 1 << 3,
 			kBecomesDynamic = 1 << 4
 		};
-		using Flags = DESTRUCTIBLE_OBJECT_STAGE_FLAGS;
 
 
 		// members
-		SInt8				 modelDamageStage;	   // 00 - DSTD~
-		SInt8				 healthPercentage;	   // 01
-		Flags				 flags;				   // 02
-		UInt8				 pad03;				   // 03
-		UInt32				 selfDamagePerSecond;  // 04
-		BGSExplosion*		 explosion;			   // 08
-		BGSDebris*			 debris;			   // 10
-		UInt32				 debrisCount;		   // 18 - ~DSTD
-		UInt32				 pad1C;				   // 1C
-		TESModelTextureSwap* replacementModel;	   // 20 - DMD*
+		std::int8_t														modelDamageStage;	  // 00 - DSTD~
+		std::int8_t														healthPercentage;	  // 01
+		stl::enumeration<DESTRUCTIBLE_OBJECT_STAGE_FLAGS, std::uint8_t> flags;				  // 02
+		std::uint8_t													pad03;				  // 03
+		std::uint32_t													selfDamagePerSecond;  // 04
+		BGSExplosion*													explosion;			  // 08
+		BGSDebris*														debris;				  // 10
+		std::uint32_t													debrisCount;		  // 18 - ~DSTD
+		std::uint32_t													pad1C;				  // 1C
+		TESModelTextureSwap*											replacementModel;	  // 20 - DMD*
 	};
-	STATIC_ASSERT(sizeof(DestructibleObjectStage) == 0x28);
+	static_assert(sizeof(DestructibleObjectStage) == 0x28);
 
 
 	struct DestructibleObjectData
 	{
-		enum class Flag : UInt8
+	public:
+		enum class Flag
 		{
 			kNone = 0,
 			kVatsTargetable = 1 << 0
@@ -50,16 +51,16 @@ namespace RE
 
 
 		// members
-		UInt32					  health;					   // 00 - DEST~
-		SInt8					  numStages;				   // 04
-		Flag					  flags;					   // 05 - ~DEST
-		UInt16					  pad06;					   // 06
-		DestructibleObjectStage** stages;					   // 08
-		volatile SInt32			  replacementModelRefCount;	   // 10
-		UInt32					  pad14;					   // 14
-		NiPointer<QueuedFile>	  preloadedReplacementModels;  // 18
+		std::uint32_t						 health;					  // 00 - DEST~
+		std::int8_t							 numStages;					  // 04
+		stl::enumeration<Flag, std::uint8_t> flags;						  // 05 - ~DEST
+		std::uint16_t						 pad06;						  // 06
+		DestructibleObjectStage**			 stages;					  // 08
+		volatile std::int32_t				 replacementModelRefCount;	  // 10
+		std::uint32_t						 pad14;						  // 14
+		NiPointer<QueuedFile>				 preloadedReplacementModels;  // 18
 	};
-	STATIC_ASSERT(sizeof(DestructibleObjectData) == 0x20);
+	static_assert(sizeof(DestructibleObjectData) == 0x20);
 
 
 	class BGSDestructibleObjectForm : public BaseFormComponent
@@ -79,5 +80,5 @@ namespace RE
 		// members
 		DestructibleObjectData* data;  // 08
 	};
-	STATIC_ASSERT(sizeof(BGSDestructibleObjectForm) == 0x10);
+	static_assert(sizeof(BGSDestructibleObjectForm) == 0x10);
 }

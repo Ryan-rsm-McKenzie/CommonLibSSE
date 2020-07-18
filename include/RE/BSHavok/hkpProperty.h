@@ -5,17 +5,17 @@ namespace RE
 {
 	struct hkpPropertyValue
 	{
-		UInt64 data;  // 0
+		std::uint64_t data;	 // 0
 	};
-	STATIC_ASSERT(sizeof(hkpPropertyValue) == 0x8);
+	static_assert(sizeof(hkpPropertyValue) == 0x8);
 
 
 	class hkpProperty
 	{
 	public:
-		UInt32			 key;				// 00
-		UInt32			 alignmentPadding;	// 04
+		std::uint32_t	 key;				// 00
+		std::uint32_t	 alignmentPadding;	// 04
 		hkpPropertyValue value;				// 08
 	};
-	STATIC_ASSERT(sizeof(hkpProperty) == 0x10);
+	static_assert(sizeof(hkpProperty) == 0x10);
 }

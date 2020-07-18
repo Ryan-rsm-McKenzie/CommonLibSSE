@@ -24,7 +24,7 @@ namespace RE
 	class hkVector4;
 
 
-	enum class CHARACTER_FLAGS : UInt32
+	enum class CHARACTER_FLAGS
 	{
 		kNone = 0,
 		kQuadruped = 1 << 0,
@@ -59,7 +59,7 @@ namespace RE
 		kNotPushablePermanent = 1 << 28,
 		kPossiblePathObstacle = 1 << 29,
 		kShapeRequiresZRot = 1 << 30,
-		kSwimAtWaterSurface = (UInt32)1 << 31,
+		kSwimAtWaterSurface = 1 << 31,
 	};
 
 
@@ -95,67 +95,67 @@ namespace RE
 
 
 		// members
-		//UInt64						pad068;						// 068
-		hkVector4					   forwardVec;				   // 070
-		hkStepInfo					   stepInfo;				   // 080
-		hkVector4					   outVelocity;				   // 090
-		hkVector4					   initialVelocity;			   // 0A0
-		hkVector4					   velocityMod;				   // 0B0
-		hkVector4					   direction;				   // 0C0
-		hkVector4					   rotCenter;				   // 0D0
-		hkVector4					   pushDelta;				   // 0E0
-		hkVector4					   fakeSupportStart;		   // 0F0
-		hkVector4					   up;						   // 100
-		hkVector4					   supportNorm;				   // 110
-		BSBound						   collisionBound;			   // 120
-		BSBound						   bumperCollisionBound;	   // 150
-		UInt64						   unk180;					   // 180
-		UInt64						   unk188;					   // 188
-		bhkICharOrientationController* orientationCtrl;			   // 190
-		UInt64						   pad198;					   // 198
-		hkpSurfaceInfo				   surfaceInfo;				   // 1A0
-		hkpCharacterContext			   context;					   // 1E0
-		CHARACTER_FLAGS				   flags;					   // 218
-		hkpCharacterStateType		   wantState;				   // 218
-		float						   velocityTime;			   // 220
-		float						   rotMod;					   // 224
-		float						   rotModTime;				   // 228
-		float						   calculatePitchTimer;		   // 22C
-		float						   acrobatics;				   // 230
-		float						   center;					   // 234
-		float						   waterHeight;				   // 238
-		float						   jumpHeight;				   // 23C
-		float						   fallStartHeight;			   // 240
-		float						   fallTime;				   // 244
-		float						   gravity;					   // 248
-		float						   pitchAngle;				   // 24C
-		float						   rollAngle;				   // 250
-		float						   pitchMult;				   // 254
-		float						   scale;					   // 258
-		float						   swimFloatHeight;			   // 25C
-		float						   actorHeight;				   // 260
-		float						   speedPct;				   // 264
-		UInt32						   pushCount;				   // 268
-		UInt32						   unk26C;					   // 26C
-		UInt64						   unk270;					   // 270
-		UInt64						   unk278;					   // 278
-		NiPointer<bhkShape>			   shapes[2];				   // 280
-		UInt64						   unk290;					   // 290
-		UInt64						   unk298;					   // 298
-		UInt64						   unk2A0;					   // 2A0
-		UInt64						   unk2A8;					   // 2A8
-		hkRefPtr<hkpRigidBody>		   supportBody;				   // 2B0
-		float						   bumpedForce;				   // 2B8
-		UInt32						   pad2BC;					   // 2BC
-		hkRefPtr<hkpRigidBody>		   bumpedBody;				   // 2C0
-		hkRefPtr<hkpRigidBody>		   bumpedCharCollisionObject;  // 2C8
-		BSTHashMap<UnkKey, UnkValue>   unk2D0;					   // 2D0
-		UInt64						   unk300;					   // 300
-		UInt64						   unk308;					   // 308
-		UInt64						   unk310;					   // 310
-		UInt64						   unk318;					   // 318
-		UInt64						   unk320;					   // 320
-		UInt64						   unk328;					   // 328
+		//std::uint64_t						pad068;						// 068
+		hkVector4										 forwardVec;				 // 070
+		hkStepInfo										 stepInfo;					 // 080
+		hkVector4										 outVelocity;				 // 090
+		hkVector4										 initialVelocity;			 // 0A0
+		hkVector4										 velocityMod;				 // 0B0
+		hkVector4										 direction;					 // 0C0
+		hkVector4										 rotCenter;					 // 0D0
+		hkVector4										 pushDelta;					 // 0E0
+		hkVector4										 fakeSupportStart;			 // 0F0
+		hkVector4										 up;						 // 100
+		hkVector4										 supportNorm;				 // 110
+		BSBound											 collisionBound;			 // 120
+		BSBound											 bumperCollisionBound;		 // 150
+		std::uint64_t									 unk180;					 // 180
+		std::uint64_t									 unk188;					 // 188
+		bhkICharOrientationController*					 orientationCtrl;			 // 190
+		std::uint64_t									 pad198;					 // 198
+		hkpSurfaceInfo									 surfaceInfo;				 // 1A0
+		hkpCharacterContext								 context;					 // 1E0
+		stl::enumeration<CHARACTER_FLAGS, std::uint32_t> flags;						 // 218
+		hkpCharacterStateType							 wantState;					 // 218
+		float											 velocityTime;				 // 220
+		float											 rotMod;					 // 224
+		float											 rotModTime;				 // 228
+		float											 calculatePitchTimer;		 // 22C
+		float											 acrobatics;				 // 230
+		float											 center;					 // 234
+		float											 waterHeight;				 // 238
+		float											 jumpHeight;				 // 23C
+		float											 fallStartHeight;			 // 240
+		float											 fallTime;					 // 244
+		float											 gravity;					 // 248
+		float											 pitchAngle;				 // 24C
+		float											 rollAngle;					 // 250
+		float											 pitchMult;					 // 254
+		float											 scale;						 // 258
+		float											 swimFloatHeight;			 // 25C
+		float											 actorHeight;				 // 260
+		float											 speedPct;					 // 264
+		std::uint32_t									 pushCount;					 // 268
+		std::uint32_t									 unk26C;					 // 26C
+		std::uint64_t									 unk270;					 // 270
+		std::uint64_t									 unk278;					 // 278
+		NiPointer<bhkShape>								 shapes[2];					 // 280
+		std::uint64_t									 unk290;					 // 290
+		std::uint64_t									 unk298;					 // 298
+		std::uint64_t									 unk2A0;					 // 2A0
+		std::uint64_t									 unk2A8;					 // 2A8
+		hkRefPtr<hkpRigidBody>							 supportBody;				 // 2B0
+		float											 bumpedForce;				 // 2B8
+		std::uint32_t									 pad2BC;					 // 2BC
+		hkRefPtr<hkpRigidBody>							 bumpedBody;				 // 2C0
+		hkRefPtr<hkpRigidBody>							 bumpedCharCollisionObject;	 // 2C8
+		BSTHashMap<UnkKey, UnkValue>					 unk2D0;					 // 2D0
+		std::uint64_t									 unk300;					 // 300
+		std::uint64_t									 unk308;					 // 308
+		std::uint64_t									 unk310;					 // 310
+		std::uint64_t									 unk318;					 // 318
+		std::uint64_t									 unk320;					 // 320
+		std::uint64_t									 unk328;					 // 328
 	};
-	STATIC_ASSERT(sizeof(bhkCharacterController) == 0x330);
+	static_assert(sizeof(bhkCharacterController) == 0x330);
 }

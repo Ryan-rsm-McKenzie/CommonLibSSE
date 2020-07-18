@@ -8,7 +8,7 @@
 
 namespace SKSE
 {
-	UInt32 QueryInterface::EditorVersion() const
+	std::uint32_t QueryInterface::EditorVersion() const
 	{
 		return GetProxy()->editorVersion;
 	}
@@ -31,7 +31,7 @@ namespace SKSE
 	}
 
 
-	UInt32 QueryInterface::SKSEVersion() const
+	std::uint32_t QueryInterface::SKSEVersion() const
 	{
 		return GetProxy()->skseVersion;
 	}
@@ -49,7 +49,7 @@ namespace SKSE
 	}
 
 
-	UInt32 LoadInterface::GetReleaseIndex() const
+	std::uint32_t LoadInterface::GetReleaseIndex() const
 	{
 		return GetProxy()->GetReleaseIndex();
 	}
@@ -57,11 +57,11 @@ namespace SKSE
 
 	void* LoadInterface::QueryInterface(InterfaceID a_id) const
 	{
-		return GetProxy()->QueryInterface(static_cast<UInt32>(a_id));
+		return GetProxy()->QueryInterface(static_cast<std::uint32_t>(a_id));
 	}
 
 
-	UInt32 ScaleformInterface::Version() const
+	std::uint32_t ScaleformInterface::Version() const
 	{
 		return GetProxy()->interfaceVersion;
 	}
@@ -89,13 +89,13 @@ namespace SKSE
 	}
 
 
-	UInt32 SerializationInterface::Version() const
+	std::uint32_t SerializationInterface::Version() const
 	{
 		return GetProxy()->version;
 	}
 
 
-	void SerializationInterface::SetUniqueID(UInt32 a_uid) const
+	void SerializationInterface::SetUniqueID(std::uint32_t a_uid) const
 	{
 		GetProxy()->SetUniqueID(GetPluginHandle(), a_uid);
 	}
@@ -125,31 +125,31 @@ namespace SKSE
 	}
 
 
-	bool SerializationInterface::WriteRecord(UInt32 a_type, UInt32 a_version, const void* a_buf, UInt32 a_length) const
+	bool SerializationInterface::WriteRecord(std::uint32_t a_type, std::uint32_t a_version, const void* a_buf, std::uint32_t a_length) const
 	{
 		return GetProxy()->WriteRecord(a_type, a_version, a_buf, a_length);
 	}
 
 
-	bool SerializationInterface::OpenRecord(UInt32 a_type, UInt32 a_version) const
+	bool SerializationInterface::OpenRecord(std::uint32_t a_type, std::uint32_t a_version) const
 	{
 		return GetProxy()->OpenRecord(a_type, a_version);
 	}
 
 
-	bool SerializationInterface::WriteRecordData(const void* a_buf, UInt32 a_length) const
+	bool SerializationInterface::WriteRecordData(const void* a_buf, std::uint32_t a_length) const
 	{
 		return GetProxy()->WriteRecordData(a_buf, a_length);
 	}
 
 
-	bool SerializationInterface::GetNextRecordInfo(UInt32& a_type, UInt32& a_version, UInt32& a_length) const
+	bool SerializationInterface::GetNextRecordInfo(std::uint32_t& a_type, std::uint32_t& a_version, std::uint32_t& a_length) const
 	{
 		return GetProxy()->GetNextRecordInfo(&a_type, &a_version, &a_length);
 	}
 
 
-	UInt32 SerializationInterface::ReadRecordData(void* a_buf, UInt32 a_length) const
+	std::uint32_t SerializationInterface::ReadRecordData(void* a_buf, std::uint32_t a_length) const
 	{
 		return GetProxy()->ReadRecordData(a_buf, a_length);
 	}
@@ -173,7 +173,7 @@ namespace SKSE
 	}
 
 
-	UInt32 TaskInterface::Version() const
+	std::uint32_t TaskInterface::Version() const
 	{
 		return GetProxy()->interfaceVersion;
 	}
@@ -243,7 +243,7 @@ namespace SKSE
 	}
 
 
-	UInt32 PapyrusInterface::Version() const
+	std::uint32_t PapyrusInterface::Version() const
 	{
 		return GetProxy()->interfaceVersion;
 	}
@@ -289,13 +289,13 @@ namespace SKSE
 	}
 
 
-	UInt32 MessagingInterface::Version() const
+	std::uint32_t MessagingInterface::Version() const
 	{
 		return GetProxy()->interfaceVersion;
 	}
 
 
-	bool MessagingInterface::Dispatch(UInt32 a_messageType, void* a_data, UInt32 a_dataLen, const char* a_receiver) const
+	bool MessagingInterface::Dispatch(std::uint32_t a_messageType, void* a_data, std::uint32_t a_dataLen, const char* a_receiver) const
 	{
 		auto result = GetProxy()->Dispatch(GetPluginHandle(), a_messageType, a_data, a_dataLen, a_receiver);
 		if (!result) {
@@ -307,7 +307,7 @@ namespace SKSE
 
 	void* MessagingInterface::GetEventDispatcher(Dispatcher a_dispatcherID) const
 	{
-		return GetProxy()->GetEventDispatcher(static_cast<UInt32>(a_dispatcherID));
+		return GetProxy()->GetEventDispatcher(static_cast<std::uint32_t>(a_dispatcherID));
 	}
 
 
@@ -333,7 +333,7 @@ namespace SKSE
 	}
 
 
-	UInt32 ObjectInterface::Version() const
+	std::uint32_t ObjectInterface::Version() const
 	{
 		return GetProxy()->interfaceVersion;
 	}

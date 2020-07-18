@@ -20,5 +20,5 @@ namespace RE
 		// override (IMenu)
 		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
 	};
-	STATIC_ASSERT(sizeof(TitleSequenceMenu) == 0x30);
+	static_assert(sizeof(TitleSequenceMenu) == 0x30);
 }

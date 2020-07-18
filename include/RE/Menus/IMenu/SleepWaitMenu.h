@@ -25,13 +25,13 @@ namespace RE
 
 
 		// members
-		UInt32	 unk30;	 // 30
-		UInt32	 pad34;	 // 34
-		GFxValue root;	 // 38 - "SleepWaitMenu_mc"
-		UInt8	 unk50;	 // 50
-		UInt8	 unk51;	 // 51
-		UInt16	 pad52;	 // 52
-		UInt32	 pad54;	 // 54
+		std::uint32_t unk30;  // 30
+		std::uint32_t pad34;  // 34
+		GFxValue	  root;	  // 38 - "SleepWaitMenu_mc"
+		std::uint8_t  unk50;  // 50
+		std::uint8_t  unk51;  // 51
+		std::uint16_t pad52;  // 52
+		std::uint32_t pad54;  // 54
 	};
-	STATIC_ASSERT(sizeof(SleepWaitMenu) == 0x58);
+	static_assert(sizeof(SleepWaitMenu) == 0x58);
 }

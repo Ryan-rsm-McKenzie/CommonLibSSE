@@ -32,14 +32,14 @@ namespace RE
 
 
 			// members
-			NiPoint3 initialPosition;		// 20
-			NiPoint3 translation;			// 2C
-			float	 zoom;					// 38
-			float	 minFrustumHalfWidth;	// 3C
-			float	 minFrustumHalfHeight;	// 40
-			UInt32	 pad44;					// 44
+			NiPoint3	  initialPosition;		 // 20
+			NiPoint3	  translation;			 // 2C
+			float		  zoom;					 // 38
+			float		  minFrustumHalfWidth;	 // 3C
+			float		  minFrustumHalfHeight;	 // 40
+			std::uint32_t pad44;				 // 44
 		};
-		STATIC_ASSERT(sizeof(DefaultState) == 0x48);
+		static_assert(sizeof(DefaultState) == 0x48);
 
 
 		LocalMapCamera(float a_zRotation);
@@ -58,10 +58,10 @@ namespace RE
 		BSTSmartPointer<DefaultState> defaultState;	 // 50
 		NiPointer<NiCamera>			  camera;		 // 58
 		float						  zRotation;	 // 60
-		UInt32						  pad64;		 // 64
+		std::uint32_t				  pad64;		 // 64
 
 	protected:
 		LocalMapCamera* Ctor(float a_zRotation);
 	};
-	STATIC_ASSERT(sizeof(LocalMapCamera) == 0x68);
+	static_assert(sizeof(LocalMapCamera) == 0x68);
 }

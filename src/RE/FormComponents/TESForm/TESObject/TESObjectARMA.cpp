@@ -65,7 +65,7 @@ namespace RE
 			weight = a_weightOverride * 100.0F;
 		}
 
-		UInt32 sex = npc ? static_cast<UInt32>(npc->GetSex()) : 0;
+		std::uint32_t sex = npc ? static_cast<std::uint32_t>(npc->GetSex()) : 0;
 		sprintf_s(a_dstBuff, MAX_PATH, " (%08X)[%d]/ (%08X) [%2.0f%%]", GetFormID(), sex, a_armor->GetFormID(), weight);
 	}
 }

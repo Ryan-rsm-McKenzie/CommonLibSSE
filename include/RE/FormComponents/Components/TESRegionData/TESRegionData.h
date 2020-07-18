@@ -12,7 +12,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESRegionData;
 
 
-		enum class Type : UInt16
+		enum class Type
 		{
 			kObjects = 2,
 			kWeather = 3,
@@ -26,20 +26,22 @@ namespace RE
 
 		struct DataHeader  // RDAT
 		{
-			enum class Flag : UInt8
+		public:
+			enum class Flag
 			{
 				kNone = 0,
 				kOverride = 1 << 0
 			};
 
 
-			Flag   flags;	  // 0
-			UInt8  unk09;	  // 1
-			UInt8  priority;  // 2
-			UInt8  unk0B;	  // 3
-			UInt32 unk0C;	  // 4
+			// members
+			stl::enumeration<Flag, std::uint8_t> flags;		// 0
+			std::uint8_t						 unk09;		// 1
+			std::uint8_t						 priority;	// 2
+			std::uint8_t						 unk0B;		// 3
+			std::uint32_t						 unk0C;		// 4
 		};
-		STATIC_ASSERT(sizeof(DataHeader) == 0x8);
+		static_assert(sizeof(DataHeader) == 0x8);
 
 
 		virtual ~TESRegionData();  // 00
@@ -57,5 +59,5 @@ namespace RE
 		// members
 		DataHeader dataHeader;	// 08 - RDAT
 	};
-	STATIC_ASSERT(sizeof(TESRegionData) == 0x10);
+	static_assert(sizeof(TESRegionData) == 0x10);
 }

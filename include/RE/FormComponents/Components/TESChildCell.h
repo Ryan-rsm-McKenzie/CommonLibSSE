@@ -14,5 +14,5 @@ namespace RE
 		// add
 		virtual TESObjectCELL* GetSaveParentCell() = 0;	 // 01
 	};
-	STATIC_ASSERT(sizeof(TESChildCell) == 0x8);
+	static_assert(sizeof(TESChildCell) == 0x8);
 }

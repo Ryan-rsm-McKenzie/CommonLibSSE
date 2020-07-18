@@ -20,7 +20,7 @@ namespace RE
 				_rva(0)
 			{}
 
-			RVA(UInt32 a_rva) :
+			RVA(std::uint32_t a_rva) :
 				_rva(a_rva)
 			{}
 
@@ -37,9 +37,9 @@ namespace RE
 
 
 			// members
-			UInt32 _rva;  // 00
+			std::uint32_t _rva;	 // 00
 		};
-		STATIC_ASSERT(sizeof(RVA<void*>) == 0x4);
+		static_assert(sizeof(RVA<void*>) == 0x4);
 
 
 		struct TypeDescriptor
@@ -50,42 +50,42 @@ namespace RE
 			void*	   spare;	  // 08
 			const char name[1];	  // 10
 		};
-		STATIC_ASSERT(sizeof(TypeDescriptor) == 0x18);	// can be larger
+		static_assert(sizeof(TypeDescriptor) == 0x18);	// can be larger
 
 
 		struct PMD
 		{
 		public:
 			// members
-			SInt32 mDisp;  // 0
-			SInt32 pDisp;  // 4
-			SInt32 vDisp;  // 8
+			std::int32_t mDisp;	 // 0
+			std::int32_t pDisp;	 // 4
+			std::int32_t vDisp;	 // 8
 		};
-		STATIC_ASSERT(sizeof(PMD) == 0xC);
+		static_assert(sizeof(PMD) == 0xC);
 
 
 		struct BaseClassArray
 		{
 		public:
-			enum class Attribute : UInt32
+			enum class Attribute
 			{
 				kNone = 0
 			};
 
 
 			// members
-			RVA<TypeDescriptor> typeDescriptor;		// 00
-			UInt32				numContainedBases;	// 04
-			PMD					pmd;				// 08
-			Attribute			attributes;			// 14
+			RVA<TypeDescriptor>						   typeDescriptor;	   // 00
+			std::uint32_t							   numContainedBases;  // 04
+			PMD										   pmd;				   // 08
+			stl::enumeration<Attribute, std::uint32_t> attributes;		   // 14
 		};
-		STATIC_ASSERT(sizeof(BaseClassArray) == 0x18);
+		static_assert(sizeof(BaseClassArray) == 0x18);
 
 
 		struct ClassHierarchyDescriptor
 		{
 		public:
-			enum class Attribute : UInt32
+			enum class Attribute
 			{
 				kNoInheritance = 0,
 				kMultipleInheritance = 1 << 0,
@@ -95,18 +95,18 @@ namespace RE
 
 
 			// members
-			UInt32				signature;		 // 00
-			Attribute			attributes;		 // 04
-			UInt32				numBaseClasses;	 // 08
-			RVA<BaseClassArray> baseClassArray;	 // 0C
+			std::uint32_t							   signature;		// 00
+			stl::enumeration<Attribute, std::uint32_t> attributes;		// 04
+			std::uint32_t							   numBaseClasses;	// 08
+			RVA<BaseClassArray>						   baseClassArray;	// 0C
 		};
-		STATIC_ASSERT(sizeof(ClassHierarchyDescriptor) == 0x10);
+		static_assert(sizeof(ClassHierarchyDescriptor) == 0x10);
 
 
 		struct CompleteObjectLocator
 		{
 		public:
-			enum class Signature : UInt32
+			enum class Signature
 			{
 				kX86 = 0,
 				kX64 = 1
@@ -114,19 +114,19 @@ namespace RE
 
 
 			// members
-			Signature					  signature;		// 00
-			UInt32						  offset;			// 04
-			UInt32						  ctorDispOffset;	// 08
-			RVA<TypeDescriptor>			  typeDescriptor;	// 0C
-			RVA<ClassHierarchyDescriptor> classDescriptor;	// 10
+			stl::enumeration<Signature, std::uint32_t> signature;		 // 00
+			std::uint32_t							   offset;			 // 04
+			std::uint32_t							   ctorDispOffset;	 // 08
+			RVA<TypeDescriptor>						   typeDescriptor;	 // 0C
+			RVA<ClassHierarchyDescriptor>			   classDescriptor;	 // 10
 		};
-		STATIC_ASSERT(sizeof(CompleteObjectLocator) == 0x14);
+		static_assert(sizeof(CompleteObjectLocator) == 0x14);
 
 
 		struct BaseClassDescriptor
 		{
 		public:
-			enum class Attribute : UInt32
+			enum class Attribute
 			{
 				kNone = 0,
 				kNotVisible = 1 << 0,
@@ -140,12 +140,12 @@ namespace RE
 
 
 			// members
-			RVA<TypeDescriptor> typeDescriptor;		// 00
-			UInt32				numContainedBases;	// 04
-			PMD					pmd;				// 08
-			Attribute			attributes;			// 14
+			RVA<TypeDescriptor>						   typeDescriptor;	   // 00
+			std::uint32_t							   numContainedBases;  // 04
+			PMD										   pmd;				   // 08
+			stl::enumeration<Attribute, std::uint32_t> attributes;		   // 14
 		};
-		STATIC_ASSERT(sizeof(BaseClassDescriptor) == 0x18);
+		static_assert(sizeof(BaseClassDescriptor) == 0x18);
 
 
 		void DumpTypeName(void* a_obj);

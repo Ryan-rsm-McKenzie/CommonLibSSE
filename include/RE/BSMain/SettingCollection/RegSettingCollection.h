@@ -20,5 +20,5 @@ namespace RE
 		virtual bool OpenHandle(bool a_create) override;		 // 05
 		virtual bool CloseHandle() override;					 // 06
 	};
-	STATIC_ASSERT(sizeof(RegSettingCollection) == 0x128);
+	static_assert(sizeof(RegSettingCollection) == 0x128);
 }

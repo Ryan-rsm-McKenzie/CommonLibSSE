@@ -18,11 +18,11 @@ namespace RE
 
 
 			// members
-			void*  unk08;  // 08 - smart ptr
-			void*  unk10;  // 10 - smart ptr
-			UInt32 unk18;  // 18
-			UInt32 unk1C;  // 1C
+			void*		  unk08;  // 08 - smart ptr
+			void*		  unk10;  // 10 - smart ptr
+			std::uint32_t unk18;  // 18
+			std::uint32_t unk1C;  // 1C
 		};
-		STATIC_ASSERT(sizeof(AttachTechniqueInput) == 0x20);
+		static_assert(sizeof(AttachTechniqueInput) == 0x20);
 	}
 }

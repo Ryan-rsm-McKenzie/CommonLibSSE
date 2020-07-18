@@ -16,7 +16,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -36,5 +36,5 @@ namespace RE
 		BSFixedString	  tag;		  // 20 - ANAM
 		BGSImpactDataSet* impactSet;  // 28 - DATA
 	};
-	STATIC_ASSERT(sizeof(BGSFootstep) == 0x30);
+	static_assert(sizeof(BGSFootstep) == 0x30);
 }

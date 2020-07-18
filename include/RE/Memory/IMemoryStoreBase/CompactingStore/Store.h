@@ -40,14 +40,14 @@ namespace RE
 			StoreBlock*			   storeBlockMin;
 			StoreBlock*			   nextStoreBlock;
 			StoreBlock*			   freeStoreBlockList;
-			UInt32				   currentThread;
+			std::uint32_t		   currentThread;
 			std::size_t			   allocated;
-			UInt32				   numAllocatedBlocks;
+			std::uint32_t		   numAllocatedBlocks;
 			std::size_t			   free;
-			UInt32				   numFreeBlocks;
-			UInt32				   compacted;
-			UInt32				   batchDeallocateTlsSlot;
+			std::uint32_t		   numFreeBlocks;
+			std::uint32_t		   compacted;
+			std::uint32_t		   batchDeallocateTlsSlot;
 		};
-		STATIC_ASSERT(sizeof(Store) == 0x2A0);
+		static_assert(sizeof(Store) == 0x2A0);
 	}
 }

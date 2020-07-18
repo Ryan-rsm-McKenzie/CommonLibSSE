@@ -20,8 +20,8 @@ namespace RE
 
 
 		// members
-		float  health;	// 10
-		UInt32 pad14;	// 14
+		float		  health;  // 10
+		std::uint32_t pad14;   // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraObjectHealth) == 0x18);
+	static_assert(sizeof(ExtraObjectHealth) == 0x18);
 }

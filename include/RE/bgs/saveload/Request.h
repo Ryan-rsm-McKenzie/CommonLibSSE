@@ -19,11 +19,11 @@ namespace RE
 
 
 				// members
-				UInt32 unk0C;  // 0C
-				UInt32 unk10;  // 10
-				UInt32 pad14;  // 14
+				std::uint32_t unk0C;  // 0C
+				std::uint32_t unk10;  // 10
+				std::uint32_t pad14;  // 14
 			};
-			STATIC_ASSERT(sizeof(Request) == 0x18);
+			static_assert(sizeof(Request) == 0x18);
 		}
 	}
 }

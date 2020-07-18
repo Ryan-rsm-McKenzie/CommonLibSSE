@@ -25,7 +25,7 @@ namespace RE
 				UnlinkedNativeFunction*	   next;  // 00
 				BSTSmartPointer<IFunction> func;  // 08
 			};
-			STATIC_ASSERT(sizeof(UnlinkedNativeFunction) == 0x10);
+			static_assert(sizeof(UnlinkedNativeFunction) == 0x10);
 
 
 			struct UserFlagInfo
@@ -43,7 +43,7 @@ namespace RE
 				// members
 				std::uintptr_t data;  // 0
 			};
-			STATIC_ASSERT(sizeof(UserFlagInfo) == 0x8);
+			static_assert(sizeof(UserFlagInfo) == 0x8);
 
 
 			struct VariableInfo
@@ -53,18 +53,18 @@ namespace RE
 				BSFixedString name;	 // 00
 				TypeInfo	  type;	 // 08
 			};
-			STATIC_ASSERT(sizeof(VariableInfo) == 0x10);
+			static_assert(sizeof(VariableInfo) == 0x10);
 
 
 			struct InitialValueInfo
 			{
 			public:
 				// members
-				UInt32	 variableIndex;	 // 00
-				UInt32	 pad04;			 // 04
-				Variable initialValue;	 // 08
+				std::uint32_t variableIndex;  // 00
+				std::uint32_t pad04;		  // 04
+				Variable	  initialValue;	  // 08
 			};
-			STATIC_ASSERT(sizeof(InitialValueInfo) == 0x18);
+			static_assert(sizeof(InitialValueInfo) == 0x18);
 
 
 			struct PropertyInfo
@@ -74,7 +74,7 @@ namespace RE
 				BSFixedString	 name;	// 00
 				PropertyTypeInfo info;	// 08
 			};
-			STATIC_ASSERT(sizeof(PropertyInfo) == 0x48);
+			static_assert(sizeof(PropertyInfo) == 0x48);
 
 
 			struct GlobalFuncInfo
@@ -83,7 +83,7 @@ namespace RE
 				// members
 				BSTSmartPointer<IFunction> func;  // 00
 			};
-			STATIC_ASSERT(sizeof(GlobalFuncInfo) == 0x8);
+			static_assert(sizeof(GlobalFuncInfo) == 0x8);
 
 
 			struct MemberFuncInfo
@@ -92,13 +92,13 @@ namespace RE
 				// members
 				BSTSmartPointer<IFunction> func;  // 00
 			};
-			STATIC_ASSERT(sizeof(MemberFuncInfo) == 0x8);
+			static_assert(sizeof(MemberFuncInfo) == 0x8);
 
 
 			struct NamedStateInfo
 			{
 			public:
-				enum : UInt32
+				enum : std::uint32_t
 				{
 					kFuncCountMask = 0x1FF,
 					kFuncOffsetShift = 9
@@ -111,20 +111,20 @@ namespace RE
 					// members
 					BSTSmartPointer<IFunction> func;  // 00
 				};
-				STATIC_ASSERT(sizeof(Func) == 0x8);
+				static_assert(sizeof(Func) == 0x8);
 
 
-				UInt32		GetNumFuncs() const;
-				Func*		GetFuncIter();
-				const Func* GetFuncIter() const;
+				std::uint32_t GetNumFuncs() const;
+				Func*		  GetFuncIter();
+				const Func*	  GetFuncIter() const;
 
 
 				// members
 				BSFixedString name;	  // 00
-				UInt32		  data;	  // 08
-				UInt32		  pad0C;  // 0C
+				std::uint32_t data;	  // 08
+				std::uint32_t pad0C;  // 0C
 			};
-			STATIC_ASSERT(sizeof(NamedStateInfo) == 0x10);
+			static_assert(sizeof(NamedStateInfo) == 0x10);
 
 
 			~ObjectTypeInfo();
@@ -139,40 +139,40 @@ namespace RE
 			UnlinkedNativeFunction*		  GetUnlinkedFunctionIter();
 			const UnlinkedNativeFunction* GetUnlinkedFunctionIter() const;
 
-			UInt32				GetNumUserFlags() const;
+			std::uint32_t		GetNumUserFlags() const;
 			UserFlagInfo*		GetUserFlagIter();
 			const UserFlagInfo* GetUserFlagIter() const;
 
-			UInt32				GetNumVariables() const;
-			UInt32				GetTotalNumVariables() const;
+			std::uint32_t		GetNumVariables() const;
+			std::uint32_t		GetTotalNumVariables() const;
 			VariableInfo*		GetVariableIter();
 			const VariableInfo* GetVariableIter() const;
 
-			UInt32					GetNumInitalValues() const;
+			std::uint32_t			GetNumInitalValues() const;
 			InitialValueInfo*		GetInitialValueIter();
 			const InitialValueInfo* GetInitialValueIter() const;
 
-			UInt32				GetNumProperties() const;
+			std::uint32_t		GetNumProperties() const;
 			PropertyInfo*		GetPropertyIter();
 			const PropertyInfo* GetPropertyIter() const;
 
-			UInt32				  GetNumGlobalFuncs() const;
+			std::uint32_t		  GetNumGlobalFuncs() const;
 			GlobalFuncInfo*		  GetGlobalFuncIter();
 			const GlobalFuncInfo* GetGlobalFuncIter() const;
 
-			UInt32				  GetNumMemberFuncs() const;
+			std::uint32_t		  GetNumMemberFuncs() const;
 			MemberFuncInfo*		  GetMemberFuncIter();
 			const MemberFuncInfo* GetMemberFuncIter() const;
 
-			UInt32				  GetNumNamedStates() const;
+			std::uint32_t		  GetNumNamedStates() const;
 			NamedStateInfo*		  GetNamedStateIter();
 			const NamedStateInfo* GetNamedStateIter() const;
 
-			UInt32 GetPropertyIndex(const BSFixedString& a_name) const;
+			std::uint32_t GetPropertyIndex(const BSFixedString& a_name) const;
 
 
 			// members
-			UInt32							pad04;			 // 04
+			std::uint32_t					pad04;			 // 04
 			BSFixedString					name;			 // 08
 			BSTSmartPointer<ObjectTypeInfo> parentTypeInfo;	 // 10
 			BSFixedString					docString;		 // 18
@@ -285,12 +285,12 @@ namespace RE
 			bool unk2B_6 : 1;  // 2B - 6
 			bool unk2B_7 : 1;  // 2B - 7
 
-			UInt32 pad2C;  // 2C
-			void*  data;   // 30
+			std::uint32_t pad2C;  // 2C
+			void*		  data;	  // 30
 
 		private:
 			void ReleaseData();
 		};
-		STATIC_ASSERT(sizeof(ObjectTypeInfo) == 0x38);
+		static_assert(sizeof(ObjectTypeInfo) == 0x38);
 	}
 }

@@ -3,14 +3,14 @@
 
 namespace RE
 {
-	template <UInt32 FREE_LIST_BITS = 20, UInt32 AGE_SHIFT = 6>
+	template <std::uint32_t FREE_LIST_BITS = 20, std::uint32_t AGE_SHIFT = 6>
 	class BSUntypedPointerHandle
 	{
 	public:
-		using value_type = UInt32;
+		using value_type = std::uint32_t;
 
 
-		enum : UInt32
+		enum : std::uint32_t
 		{
 			kFreeListBits = FREE_LIST_BITS,
 			kAgeShift = AGE_SHIFT,
@@ -105,15 +105,15 @@ namespace RE
 		}
 
 	private:
-		static UInt32 get_null_handle()
+		static std::uint32_t get_null_handle()
 		{
-			REL::Offset<UInt32*> invalidHandle(Offset::BSUntypedPointerHandle::NullHandle);
+			REL::Offset<std::uint32_t*> invalidHandle(Offset::BSUntypedPointerHandle::NullHandle);
 			return *invalidHandle;
 		}
 
 
 		// members
-		UInt32 _handle;	 // 0
+		std::uint32_t _handle;	// 0
 	};
-	STATIC_ASSERT(sizeof(BSUntypedPointerHandle<>) == 0x4);
+	static_assert(sizeof(BSUntypedPointerHandle<>) == 0x4);
 }

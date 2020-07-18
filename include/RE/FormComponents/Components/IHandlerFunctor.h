@@ -26,14 +26,14 @@ namespace RE
 
 
 		// members
-		UInt32 pad0C;  // 0C
+		std::uint32_t pad0C;  // 0C
 	};
-	//STATIC_ASSERT(sizeof(IHandlerFunctor) == 0x10);
+	//static_assert(sizeof(IHandlerFunctor) == 0x10);
 
 
 	class Actor;
 	using AnimHandler = IHandlerFunctor<Actor, BSFixedString>;
-	STATIC_ASSERT(sizeof(AnimHandler) == 0x10);
+	static_assert(sizeof(AnimHandler) == 0x10);
 
 
 	template <class T, class Key>
@@ -42,7 +42,7 @@ namespace RE
 	public:
 		virtual ~HandlerCreationMissPolicy();  // 00
 	};
-	//STATIC_ASSERT(sizeof(HandlerCreationMissPolicy) == 0x8);
+	//static_assert(sizeof(HandlerCreationMissPolicy) == 0x8);
 
 
 	template <class T, class Key>
@@ -51,7 +51,7 @@ namespace RE
 	public:
 		virtual ~NoInitializationPolicy();	// 00
 	};
-	//STATIC_ASSERT(sizeof(NoInitializationPolicy) == 0x8);
+	//static_assert(sizeof(NoInitializationPolicy) == 0x8);
 
 
 	class HandlerDictionary :
@@ -64,5 +64,5 @@ namespace RE
 	public:
 		static HandlerDictionary* GetSingleton();
 	};
-	STATIC_ASSERT(sizeof(HandlerDictionary) == 0x50);
+	static_assert(sizeof(HandlerDictionary) == 0x50);
 }

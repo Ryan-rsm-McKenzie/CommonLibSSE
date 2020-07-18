@@ -18,18 +18,18 @@ namespace RE
 		{
 		public:
 			// members
-			FormID id;		// 00 - Only the lower 24 bits used
-			UInt16 x;		// 04
-			UInt16 y;		// 06
-			UInt16 z;		// 08
-			UInt16 rotZ;	// 0A
-			UInt16 scale;	// 0C
-			UInt16 alpha;	// 0E - This is Float2Word(fAlpha)
-			bool   hidden;	// 10 - alpha <= 0.0f or set by object flags
-			UInt8  pad11;	// 11
-			UInt16 pad12;	// 12
+			FormID		  id;	   // 00 - Only the lower 24 bits used
+			std::uint16_t x;	   // 04
+			std::uint16_t y;	   // 06
+			std::uint16_t z;	   // 08
+			std::uint16_t rotZ;	   // 0A
+			std::uint16_t scale;   // 0C
+			std::uint16_t alpha;   // 0E - This is Float2Word(fAlpha)
+			bool		  hidden;  // 10 - alpha <= 0.0f or set by object flags
+			std::uint8_t  pad11;   // 11
+			std::uint16_t pad12;   // 12
 		};
-		STATIC_ASSERT(sizeof(InstanceData) == 0x14);
+		static_assert(sizeof(InstanceData) == 0x14);
 
 
 		struct TreeGroup
@@ -38,24 +38,24 @@ namespace RE
 			// members
 			NiPointer<BSMultiStreamInstanceTriShape> geometry;				  // 00
 			BSTArray<InstanceData>					 instances;				  // 08
-			UInt32									 num;					  // 20
+			std::uint32_t							 num;					  // 20
 			bool									 shaderPropertyUpToDate;  // 24
-			SInt8									 treeType;				  // 25
-			UInt16									 pad26;					  // 26
+			std::int8_t								 treeType;				  // 25
+			std::uint16_t							 pad26;					  // 26
 		};
-		STATIC_ASSERT(sizeof(TreeGroup) == 0x28);
+		static_assert(sizeof(TreeGroup) == 0x28);
 
 
 		// members
-		BSTArray<TreeGroup*>			  treeGroups;	// 00
-		BSTHashMap<UInt32, InstanceData*> instanceMap;	// 18
-		BSTHashMap<UInt32, TreeGroup*>	  nextGroup;	// 48
-		BGSTerrainNode*					  node;			// 78
-		bool							  doneLoading;	// 80
-		bool							  attached;		// 81
-		bool							  allVisible;	// 82
-		UInt8							  pad83;		// 83
-		UInt32							  pad84;		// 84
+		BSTArray<TreeGroup*>					 treeGroups;   // 00
+		BSTHashMap<std::uint32_t, InstanceData*> instanceMap;  // 18
+		BSTHashMap<std::uint32_t, TreeGroup*>	 nextGroup;	   // 48
+		BGSTerrainNode*							 node;		   // 78
+		bool									 doneLoading;  // 80
+		bool									 attached;	   // 81
+		bool									 allVisible;   // 82
+		std::uint8_t							 pad83;		   // 83
+		std::uint32_t							 pad84;		   // 84
 	};
-	STATIC_ASSERT(sizeof(BGSDistantTreeBlock) == 0x88);
+	static_assert(sizeof(BGSDistantTreeBlock) == 0x88);
 }

@@ -16,7 +16,7 @@ namespace RE
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkNiCollisionObject;
 
 
-		enum class Flag : UInt32
+		enum class Flag
 		{
 			kNone = 0,
 			kActive = 1 << 0,
@@ -56,9 +56,9 @@ namespace RE
 
 
 		// members
-		Flag					  flags;  // 18
-		UInt32					  pad1C;  // 1C
-		NiPointer<bhkWorldObject> body;	  // 20
+		stl::enumeration<Flag, std::uint32_t> flags;  // 18
+		std::uint32_t						  pad1C;  // 1C
+		NiPointer<bhkWorldObject>			  body;	  // 20
 	};
-	STATIC_ASSERT(sizeof(bhkNiCollisionObject) == 0x28);
+	static_assert(sizeof(bhkNiCollisionObject) == 0x28);
 }

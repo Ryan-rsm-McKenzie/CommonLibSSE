@@ -16,7 +16,7 @@ namespace RE
 		NiPoint3 locPt;			// 08
 		float	 zRot;			// 14
 	};
-	STATIC_ASSERT(sizeof(WORLD_LOCATION) == 0x18);
+	static_assert(sizeof(WORLD_LOCATION) == 0x18);
 
 
 	class ExtraPackageStartLocation : public BSExtraData
@@ -36,5 +36,5 @@ namespace RE
 		// members
 		WORLD_LOCATION worldLoc;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraPackageStartLocation) == 0x28);
+	static_assert(sizeof(ExtraPackageStartLocation) == 0x28);
 }

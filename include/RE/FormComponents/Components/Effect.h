@@ -20,11 +20,11 @@ namespace RE
 
 
 			// members
-			float  magnitude;  // 0
-			UInt32 area;	   // 4
-			UInt32 duration;   // 8
+			float		  magnitude;  // 0
+			std::uint32_t area;		  // 4
+			std::uint32_t duration;	  // 8
 		};
-		STATIC_ASSERT(sizeof(EffectItem) == 0xC);
+		static_assert(sizeof(EffectItem) == 0xC);
 
 
 		Effect();
@@ -35,11 +35,11 @@ namespace RE
 
 		// members
 		EffectItem	   effectItem;	// 00 - EFIT
-		UInt32		   pad0C;		// 0C
+		std::uint32_t  pad0C;		// 0C
 		EffectSetting* baseEffect;	// 10 - EFID
 		float		   cost;		// 18
-		UInt32		   pad1C;		// 1C
+		std::uint32_t  pad1C;		// 1C
 		TESCondition   conditions;	// 20 - CTDA
 	};
-	STATIC_ASSERT(sizeof(Effect) == 0x28);
+	static_assert(sizeof(Effect) == 0x28);
 }

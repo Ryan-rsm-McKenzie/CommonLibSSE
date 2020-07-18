@@ -30,14 +30,14 @@ namespace RE
 
 
 		// members
-		UInt8										 pad001;				  // 001
-		UInt16										 pad002;				  // 002
-		UInt32										 pad004;				  // 004
+		std::uint8_t								 pad001;				  // 001
+		std::uint16_t								 pad002;				  // 002
+		std::uint32_t								 pad004;				  // 004
 		BSTCommonStaticMessageQueue<UIMessage*, 100> messages;				  // 008
 		BSTHashMap<UnkKey, UnkValue>				 unk348;				  // 348
-		UInt32										 poolUsed;				  // 378
-		UInt32										 pad37C;				  // 37C
+		std::uint32_t								 poolUsed;				  // 378
+		std::uint32_t								 pad37C;				  // 37C
 		UIMessage									 messagePool[kPoolSize];  // 380
 	};
-	STATIC_ASSERT(sizeof(UIMessageQueue) == 0xB80);
+	static_assert(sizeof(UIMessageQueue) == 0xB80);
 }

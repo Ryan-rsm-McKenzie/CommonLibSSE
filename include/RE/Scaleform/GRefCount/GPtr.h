@@ -199,7 +199,7 @@ namespace RE
 		// members
 		element_type* _ptr;	 // 0
 	};
-	//STATIC_ASSERT(sizeof(GPtr<void*>) == 0x8);
+	//static_assert(sizeof(GPtr<void*>) == 0x8);
 
 	template <class T, class... Args>
 	[[nodiscard]] inline GPtr<T> make_gptr(Args&&... a_args)

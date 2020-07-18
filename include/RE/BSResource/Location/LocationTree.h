@@ -28,6 +28,6 @@ namespace RE
 			Location* lhs;	// 10
 			Location* rhs;	// 18
 		};
-		STATIC_ASSERT(sizeof(LocationTree) == 0x20);
+		static_assert(sizeof(LocationTree) == 0x20);
 	}
 }

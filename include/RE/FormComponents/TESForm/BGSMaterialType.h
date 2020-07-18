@@ -15,7 +15,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::MaterialType;
 
 
-		enum class FLAG : UInt32
+		enum class FLAG
 		{
 			kNone = 0,
 			kStairs = 1 << 0,
@@ -25,7 +25,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -42,13 +42,13 @@ namespace RE
 
 
 		// members
-		BGSMaterialType*  parentType;		   // 20 - PNAM
-		BSFixedString	  materialName;		   // 28 - MNAM
-		UInt32			  materialID;		   // 30
-		NiColor			  materialColor;	   // 34 - CNAM
-		float			  buoyancy;			   // 40 - BNAM
-		FLAG			  flags;			   // 44 - FNAM
-		BGSImpactDataSet* havokImpactDataSet;  // 48 - HNAM
+		BGSMaterialType*					  parentType;		   // 20 - PNAM
+		BSFixedString						  materialName;		   // 28 - MNAM
+		std::uint32_t						  materialID;		   // 30
+		NiColor								  materialColor;	   // 34 - CNAM
+		float								  buoyancy;			   // 40 - BNAM
+		stl::enumeration<FLAG, std::uint32_t> flags;			   // 44 - FNAM
+		BGSImpactDataSet*					  havokImpactDataSet;  // 48 - HNAM
 	};
-	STATIC_ASSERT(sizeof(BGSMaterialType) == 0x50);
+	static_assert(sizeof(BGSMaterialType) == 0x50);
 }

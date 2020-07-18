@@ -5,7 +5,7 @@ namespace RE
 {
 	struct SEXES
 	{
-		enum SEX : UInt32
+		enum SEX : std::uint32_t
 		{
 			kNone = static_cast<std::underlying_type_t<SEX>>(-1),
 			kMale = 0,

@@ -6,7 +6,7 @@ namespace RE
 	class hkpBroadPhaseHandle
 	{
 	public:
-		UInt32 id;	// 0
+		std::uint32_t id;  // 0
 	};
-	STATIC_ASSERT(sizeof(hkpBroadPhaseHandle) == 0x4);
+	static_assert(sizeof(hkpBroadPhaseHandle) == 0x4);
 }

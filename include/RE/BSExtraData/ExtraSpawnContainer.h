@@ -23,7 +23,7 @@ namespace RE
 
 		// members
 		ObjectRefHandle container;	// 10
-		UInt32			pad14;		// 14
+		std::uint32_t	pad14;		// 14
 	};
-	STATIC_ASSERT(sizeof(ExtraSpawnContainer) == 0x18);
+	static_assert(sizeof(ExtraSpawnContainer) == 0x18);
 }

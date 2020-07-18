@@ -50,12 +50,12 @@ namespace RE
 		// members
 		NiTObjectArray<NiPointer<NiControllerSequence>>				sequences;		// 48
 		void*														unk60;			// 60
-		UInt64														unk68;			// 68
+		std::uint64_t												unk68;			// 68
 		BSTHashMap<BSFixedString, NiControllerSequence*>			sequenceMap;	// 70
 		NiTPrimitiveArray<BSAnimNoteListener::BSAnimReceiverType*>* unkA0;			// A0
-		UInt64														unkA8;			// A8
+		std::uint64_t												unkA8;			// A8
 		NiTObjectSet<NiPointer<NiControllerSequence>>				tempBlendSeqs;	// B0
 		NiPointer<NiAVObjectPalette>								objectPalette;	// C0
 	};
-	STATIC_ASSERT(sizeof(NiControllerManager) == 0xC8);
+	static_assert(sizeof(NiControllerManager) == 0xC8);
 }

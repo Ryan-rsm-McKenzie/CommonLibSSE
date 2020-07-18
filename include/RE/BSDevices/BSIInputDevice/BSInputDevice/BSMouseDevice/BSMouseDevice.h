@@ -18,10 +18,10 @@ namespace RE
 
 
 		// members
-		bool   backgroundMouse;	 // 70
-		UInt8  unk71;			 // 71
-		UInt16 unk72;			 // 72
-		UInt32 unk74;			 // 74
+		bool		  backgroundMouse;	// 70
+		std::uint8_t  unk71;			// 71
+		std::uint16_t unk72;			// 72
+		std::uint32_t unk74;			// 74
 	};
-	STATIC_ASSERT(sizeof(BSMouseDevice) == 0x78);
+	static_assert(sizeof(BSMouseDevice) == 0x78);
 }

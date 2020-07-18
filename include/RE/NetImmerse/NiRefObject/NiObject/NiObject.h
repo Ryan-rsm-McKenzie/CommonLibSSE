@@ -77,12 +77,12 @@ namespace RE
 		virtual void						  PostLinkObject(NiStream& a_stream);		  // 1E - { return; }
 		virtual bool						  StreamCanSkip();							  // 1F - { return false; }
 		virtual const NiRTTI*				  GetStreamableRTTI() const;				  // 20 - { return GetRTTI(); }
-		virtual UInt32						  GetBlockAllocationSize() const;			  // 21 - { return 0; }
+		virtual std::uint32_t				  GetBlockAllocationSize() const;			  // 21 - { return 0; }
 		virtual NiObjectGroup*				  GetGroup() const;							  // 22 - { return 0; }
 		virtual void						  SetGroup(NiObjectGroup* a_group);			  // 23 - { return; }
 		virtual NiControllerManager*		  AsNiControllerManager();					  // 24 - { return 0; }
 
 		void CreateDeepCopy(NiPointer<NiObject>& a_result);
 	};
-	STATIC_ASSERT(sizeof(NiObject) == 0x10);
+	static_assert(sizeof(NiObject) == 0x10);
 }

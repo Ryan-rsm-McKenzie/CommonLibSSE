@@ -15,7 +15,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_hkpShapeCollection;
 
 
-		enum class CollectionType : UInt8
+		enum class CollectionType
 		{
 			kList,
 			kExtendedMesh,
@@ -44,14 +44,14 @@ namespace RE
 
 		// add
 		virtual void InitWeldingInfo(hkpWeldingUtility::WeldingType a_weldingType);	 // 0B - { return; }
-		virtual void SetWeldingInfo(hkpShapeKey a_key, SInt16 a_weldingInfo);		 // 0C - { return; }
+		virtual void SetWeldingInfo(hkpShapeKey a_key, std::int16_t a_weldingInfo);	 // 0C - { return; }
 
 
 		// members
-		bool		   disableWelding;	// 28
-		CollectionType collectionType;	// 29
-		UInt16		   pad2A;			// 2A
-		UInt32		   pad2C;			// 2C
+		bool										   disableWelding;	// 28
+		stl::enumeration<CollectionType, std::uint8_t> collectionType;	// 29
+		std::uint16_t								   pad2A;			// 2A
+		std::uint32_t								   pad2C;			// 2C
 	};
-	STATIC_ASSERT(sizeof(hkpShapeCollection) == 0x30);
+	static_assert(sizeof(hkpShapeCollection) == 0x30);
 }

@@ -22,10 +22,10 @@ namespace RE
 
 
 		// members
-		SInt8			flags;	 // 10
-		UInt8			pad11;	 // 11
-		UInt16			pad12;	 // 12
+		std::int8_t		flags;	 // 10
+		std::uint8_t	pad11;	 // 11
+		std::uint16_t	pad12;	 // 12
 		ObjectRefHandle parent;	 // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraEnableStateParent) == 0x18);
+	static_assert(sizeof(ExtraEnableStateParent) == 0x18);
 }

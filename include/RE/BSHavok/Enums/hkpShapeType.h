@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	enum class hkpShapeType : UInt32
+	enum class hkpShapeType
 	{
 		kInvalid = 0,
 

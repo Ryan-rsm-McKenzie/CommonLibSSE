@@ -14,5 +14,5 @@ namespace RE
 		// members
 		NiPointer<TESObjectREFR> subject;  // 0
 	};
-	STATIC_ASSERT(sizeof(TESSwitchRaceCompleteEvent) == 0x8);
+	static_assert(sizeof(TESSwitchRaceCompleteEvent) == 0x8);
 }

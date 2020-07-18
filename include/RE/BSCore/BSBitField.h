@@ -7,9 +7,9 @@ namespace RE
 	{
 	public:
 		// members
-		UInt32* data;  // 0
+		std::uint32_t* data;  // 0
 	};
-	STATIC_ASSERT(sizeof(BSBitFieldHeapAllocator) == 0x8);
+	static_assert(sizeof(BSBitFieldHeapAllocator) == 0x8);
 
 
 	template <class Allocator = BSBitFieldHeapAllocator>
@@ -18,14 +18,14 @@ namespace RE
 	public:
 		union Buffer
 		{
-			UInt32	local;
-			UInt32* heap;
+			std::uint32_t  local;
+			std::uint32_t* heap;
 		};
 
 
 		// members
-		Buffer buffer;
-		UInt32 size;
+		Buffer		  buffer;
+		std::uint32_t size;
 	};
-	STATIC_ASSERT(sizeof(BSBitField<>) == 0x18);
+	static_assert(sizeof(BSBitField<>) == 0x18);
 }

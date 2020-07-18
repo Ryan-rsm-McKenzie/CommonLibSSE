@@ -28,5 +28,5 @@ namespace RE
 		BGSListForm* guardWarnOverRidePackList;		 // 18 - GWOR
 		BGSListForm* enterCombatOverRidePackList;	 // 20 - ECOR
 	};
-	STATIC_ASSERT(sizeof(BGSOverridePackCollection) == 0x28);
+	static_assert(sizeof(BGSOverridePackCollection) == 0x28);
 }

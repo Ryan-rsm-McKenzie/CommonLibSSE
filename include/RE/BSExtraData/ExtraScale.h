@@ -21,8 +21,8 @@ namespace RE
 
 
 		// members
-		float  scale;  // 10
-		UInt32 pad14;  // 14
+		float		  scale;  // 10
+		std::uint32_t pad14;  // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraScale) == 0x18);
+	static_assert(sizeof(ExtraScale) == 0x18);
 }

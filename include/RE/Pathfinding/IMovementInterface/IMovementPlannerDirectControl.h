@@ -20,5 +20,5 @@ namespace RE
 		virtual void Unk_04(void) = 0;	// 04
 		virtual void Unk_05(void) = 0;	// 05
 	};
-	STATIC_ASSERT(sizeof(IMovementPlannerDirectControl) == 0x8);
+	static_assert(sizeof(IMovementPlannerDirectControl) == 0x8);
 }

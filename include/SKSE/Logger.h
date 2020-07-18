@@ -92,9 +92,9 @@ namespace SKSE
 #define _ERROR(a_fmt, ...)
 #define _FATALERROR(a_fmt, ...)
 
-#pragma deprecated("_DMESSAGE");
-#pragma deprecated("_VMESSAGE");
-#pragma deprecated("_MESSAGE");
-#pragma deprecated("_WARNING");
-#pragma deprecated("_ERROR");
-#pragma deprecated("_FATALERROR");
+#pragma deprecated("_DMESSAGE")
+#pragma deprecated("_VMESSAGE")
+#pragma deprecated("_MESSAGE")
+#pragma deprecated("_WARNING")
+#pragma deprecated("_ERROR")
+#pragma deprecated("_FATALERROR")

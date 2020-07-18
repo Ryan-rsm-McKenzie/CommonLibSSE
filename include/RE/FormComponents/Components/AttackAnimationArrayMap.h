@@ -9,15 +9,15 @@
 namespace RE
 {
 	class AttackAnimationArrayMap :
-		public NiRefObject,										  // 00
-		public BSTHashMap<UInt32, BSTArray<SetEventData> const*>  // 10
+		public NiRefObject,												 // 00
+		public BSTHashMap<std::uint32_t, BSTArray<SetEventData> const*>	 // 10
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_AttackAnimationArrayMap;
 
 
 		// hash key (hiword = right hand | loward = left hand)
-		enum HashKey : UInt32
+		enum HashKey : std::uint32_t
 		{
 			kHandToHandMelee,
 			kOneHandSword,
@@ -36,5 +36,5 @@ namespace RE
 
 		virtual ~AttackAnimationArrayMap();	 // 00
 	};
-	STATIC_ASSERT(sizeof(AttackAnimationArrayMap) == 0x40);
+	static_assert(sizeof(AttackAnimationArrayMap) == 0x40);
 }

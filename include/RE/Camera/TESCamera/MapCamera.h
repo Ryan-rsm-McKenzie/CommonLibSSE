@@ -36,18 +36,18 @@ namespace RE
 		float										 unk40;		  // 40
 		float										 unk44;		  // 44
 		float										 unk48;		  // 48
-		UInt32										 unk4C;		  // 4C
+		std::uint32_t								 unk4C;		  // 4C
 		TESWorldSpace*								 worldSpace;  // 50
 		IMapCameraCallbacks*						 unk58;		  // 58
-		UInt32										 unk60;		  // 60
-		UInt32										 unk64;		  // 64
+		std::uint32_t								 unk60;		  // 60
+		std::uint32_t								 unk64;		  // 64
 		BSTSmartPointer<MapCameraStates::World>		 unk68[2];	  // 68
 		BSTSmartPointer<MapCameraStates::Exit>		 unk78;		  // 78
 		BSTSmartPointer<MapCameraStates::Transition> unk80;		  // 80
-		UInt8										 unk88;		  // 88
-		UInt8										 pad89;		  // 89
-		UInt16										 pad8A;		  // 8A
-		UInt32										 pad8C;		  // 8C
+		std::uint8_t								 unk88;		  // 88
+		std::uint8_t								 pad89;		  // 89
+		std::uint16_t								 pad8A;		  // 8A
+		std::uint32_t								 pad8C;		  // 8C
 	};
-	STATIC_ASSERT(sizeof(MapCamera) == 0x90);
+	static_assert(sizeof(MapCamera) == 0x90);
 }

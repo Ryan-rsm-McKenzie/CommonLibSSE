@@ -199,7 +199,7 @@ namespace RE
 		// members
 		element_type* _ptr;	 // 0
 	};
-	STATIC_ASSERT(sizeof(hkRefPtr<void*>) == 0x8);
+	static_assert(sizeof(hkRefPtr<void*>) == 0x8);
 
 	template <class T, class... Args>
 	[[nodiscard]] inline hkRefPtr<T> make_hkref(Args&&... a_args)

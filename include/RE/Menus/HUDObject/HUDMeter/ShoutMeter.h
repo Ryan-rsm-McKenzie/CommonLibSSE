@@ -19,8 +19,8 @@ namespace RE
 
 
 		// members
-		float  cooldown;  // 48 - in seconds
-		UInt32 unk4C;	  // 4C
+		float		  cooldown;	 // 48 - in seconds
+		std::uint32_t unk4C;	 // 4C
 	};
-	STATIC_ASSERT(sizeof(ShoutMeter) == 0x50);
+	static_assert(sizeof(ShoutMeter) == 0x50);
 }

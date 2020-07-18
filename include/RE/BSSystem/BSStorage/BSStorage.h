@@ -13,11 +13,11 @@ namespace RE
 
 		struct UnkData
 		{
-			UInt64 unk00;  // 00
-			UInt64 unk08;  // 08
-			UInt64 unk10;  // 10
+			std::uint64_t unk00;  // 00
+			std::uint64_t unk08;  // 08
+			std::uint64_t unk10;  // 10
 		};
-		STATIC_ASSERT(sizeof(UnkData) == 0x18);
+		static_assert(sizeof(UnkData) == 0x18);
 
 
 		virtual ~BSStorage();  // 00
@@ -31,9 +31,9 @@ namespace RE
 
 
 		// members
-		UInt32	 unk0C;	 // 0C
-		UnkData* unk10;	 // 10
-		UInt64	 unk18;	 // 18
+		std::uint32_t unk0C;  // 0C
+		UnkData*	  unk10;  // 10
+		std::uint64_t unk18;  // 18
 	};
-	STATIC_ASSERT(sizeof(BSStorage) == 0x20);
+	static_assert(sizeof(BSStorage) == 0x20);
 }

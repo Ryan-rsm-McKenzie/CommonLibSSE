@@ -27,10 +27,10 @@ namespace RE
 
 
 		// members
-		EnchantmentItem*		   formEnchanting;		 // 08 - EITM
-		MagicSystem::CastingType16 castingType;			 // 10
-		UInt16					   amountofEnchantment;	 // 12 - EAMT
-		UInt32					   pad14;				 // 14
+		EnchantmentItem*										  formEnchanting;		// 08 - EITM
+		stl::enumeration<MagicSystem::CastingType, std::uint16_t> castingType;			// 10
+		std::uint16_t											  amountofEnchantment;	// 12 - EAMT
+		std::uint32_t											  pad14;				// 14
 	};
-	STATIC_ASSERT(sizeof(TESEnchantableForm) == 0x18);
+	static_assert(sizeof(TESEnchantableForm) == 0x18);
 }

@@ -28,7 +28,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::AlchemyItem;
 
 
-		enum class AlchemyFlag : UInt32
+		enum class AlchemyFlag
 		{
 			kNone = 0,
 			kCostOverride = 1 << 0,
@@ -41,7 +41,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12,
@@ -53,37 +53,37 @@ namespace RE
 		class Data	// ENIT
 		{
 		public:
-			SInt32					costOverride;	   // 00
-			AlchemyFlag				flags;			   // 04
-			SpellItem*				addictionItem;	   // 08
-			float					addictionChance;   // 10
-			UInt32					pad14;			   // 14
-			BGSSoundDescriptorForm* consumptionSound;  // 18
+			std::int32_t								 costOverride;		// 00
+			stl::enumeration<AlchemyFlag, std::uint32_t> flags;				// 04
+			SpellItem*									 addictionItem;		// 08
+			float										 addictionChance;	// 10
+			std::uint32_t								 pad14;				// 14
+			BGSSoundDescriptorForm*						 consumptionSound;	// 18
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x20);
+		static_assert(sizeof(Data) == 0x20);
 
 
 		virtual ~AlchemyItem();	 // 00
 
 		// override (MagicItem)
-		virtual void					 InitializeData() override;										 // 04
-		virtual void					 ClearData() override;											 // 05
-		virtual void					 InitItemImpl() override;										 // 13
-		virtual MagicSystem::SpellType	 GetSpellType() const override;									 // 53 - { return MagicType::kAlchemy; }
-		virtual MagicSystem::CastingType GetCastingType() const override;								 // 55 - { return CastType::kFireAndForget; }
-		virtual MagicSystem::Delivery	 GetDelivery() const override;									 // 57 - { return TargetType::kSelf; }
-		virtual bool					 IsFood() const override;										 // 5D - { return ((GetData()->flags) & 2) && !IsPoison(); }
-		virtual bool					 IsPoison() const override;										 // 61 - { return ((GetData()->flags) >> 17) & 1; }
-		virtual bool					 IsMedicine() const override;									 // 62 - { return ((GetData()->flags) >> 8) >> 8; }
-		virtual ActorValue				 GetAssociatedSkill() const override;							 // 66 - { return ActorValue::kConfidence; }
-		virtual UInt32					 GetChunkID() override;											 // 68 - { return 'ENIT'; }
-		virtual void					 CopyMagicItemData(MagicItem* a_src) override;					 // 69
-		virtual void					 LoadMagicItemChunk(TESFile* a_mod, UInt32 a_chunkID) override;	 // 6A
-		virtual const MagicItem::Data*	 GetData1() const override;										 // 6C - { return &effectData; }
-		virtual MagicItem::Data*		 GetData2() override;											 // 6D - { return &effectData; }
-		virtual UInt32					 GetDataSize() const override;									 // 6E - { return 0x20; }
-		virtual void					 InitFromChunk(TESFile* a_mod) override;						 // 6F
-		virtual void					 InitChunk() override;											 // 70
+		virtual void					 InitializeData() override;												// 04
+		virtual void					 ClearData() override;													// 05
+		virtual void					 InitItemImpl() override;												// 13
+		virtual MagicSystem::SpellType	 GetSpellType() const override;											// 53 - { return MagicType::kAlchemy; }
+		virtual MagicSystem::CastingType GetCastingType() const override;										// 55 - { return CastType::kFireAndForget; }
+		virtual MagicSystem::Delivery	 GetDelivery() const override;											// 57 - { return TargetType::kSelf; }
+		virtual bool					 IsFood() const override;												// 5D - { return ((GetData()->flags) & 2) && !IsPoison(); }
+		virtual bool					 IsPoison() const override;												// 61 - { return ((GetData()->flags) >> 17) & 1; }
+		virtual bool					 IsMedicine() const override;											// 62 - { return ((GetData()->flags) >> 8) >> 8; }
+		virtual ActorValue				 GetAssociatedSkill() const override;									// 66 - { return ActorValue::kConfidence; }
+		virtual std::uint32_t			 GetChunkID() override;													// 68 - { return 'ENIT'; }
+		virtual void					 CopyMagicItemData(MagicItem* a_src) override;							// 69
+		virtual void					 LoadMagicItemChunk(TESFile* a_mod, std::uint32_t a_chunkID) override;	// 6A
+		virtual const MagicItem::Data*	 GetData1() const override;												// 6C - { return &effectData; }
+		virtual MagicItem::Data*		 GetData2() override;													// 6D - { return &effectData; }
+		virtual std::uint32_t			 GetDataSize() const override;											// 6E - { return 0x20; }
+		virtual void					 InitFromChunk(TESFile* a_mod) override;								// 6F
+		virtual void					 InitChunk() override;													// 70
 
 		// override (BGSKeywordForm)
 		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
@@ -93,5 +93,5 @@ namespace RE
 		Data	data;		  // 138 - ENIT
 		TESIcon messageIcon;  // 158
 	};
-	STATIC_ASSERT(sizeof(AlchemyItem) == 0x168);
+	static_assert(sizeof(AlchemyItem) == 0x168);
 }

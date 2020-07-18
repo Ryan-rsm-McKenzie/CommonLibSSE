@@ -182,31 +182,31 @@ namespace RE
 	}
 
 
-	std::tuple<float, float, SInt32, SInt32> BSScaleformManager::CollectDisplayInfo()
+	std::tuple<float, float, std::int32_t, std::int32_t> BSScaleformManager::CollectDisplayInfo()
 	{
 		static Setting* fSafeZoneX = nullptr;
 		if (!fSafeZoneX) {
 			fSafeZoneX = GetINISetting("fSafeZoneX:Interface");
 		}
-		float safeZoneX = fSafeZoneX ? fSafeZoneX->GetFloat() : 0.0;
+		float safeZoneX = fSafeZoneX ? fSafeZoneX->GetFloat() : 0.0F;
 
 		static Setting* fSafeZoneY = nullptr;
 		if (!fSafeZoneY) {
 			fSafeZoneY = GetINISetting("fSafeZoneY:Interface");
 		}
-		float safeZoneY = fSafeZoneY ? fSafeZoneY->GetFloat() : 0.0;
+		float safeZoneY = fSafeZoneY ? fSafeZoneY->GetFloat() : 0.0F;
 
 		static Setting* iSizeW = nullptr;
 		if (!iSizeW) {
 			iSizeW = GetINISetting("iSize W:Display");
 		}
-		SInt32 sizeW = iSizeW ? iSizeW->GetSInt() : 0;
+		std::int32_t sizeW = iSizeW ? iSizeW->GetSInt() : 0;
 
 		static Setting* iSizeH = nullptr;
 		if (!iSizeH) {
 			iSizeH = GetINISetting("iSize H:Display");
 		}
-		SInt32 sizeH = iSizeH ? iSizeH->GetSInt() : 0;
+		std::int32_t sizeH = iSizeH ? iSizeH->GetSInt() : 0;
 
 		return std::make_tuple(safeZoneX, safeZoneY, sizeW, sizeH);
 	}

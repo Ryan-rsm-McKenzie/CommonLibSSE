@@ -15,7 +15,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::Furniture;
 
 
-		enum class ActiveMarker : UInt32
+		enum class ActiveMarker
 		{
 			kNone = 0,
 			kSit0 = 1 << 0,
@@ -50,7 +50,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIsPerch = 1 << 7,
@@ -66,7 +66,8 @@ namespace RE
 
 		struct WorkBenchData  // WBDT
 		{
-			enum class BenchType : UInt8
+		public:
+			enum class BenchType
 			{
 				kNone = 0,
 				kCreateObject = 1,
@@ -79,17 +80,20 @@ namespace RE
 			};
 
 
-			BenchType	benchType;	// 0
-			ActorValue8 usesSkill;	// 1
+			// members
+			stl::enumeration<BenchType, std::uint8_t>  benchType;  // 0
+			stl::enumeration<ActorValue, std::uint8_t> usesSkill;  // 1
 		};
-		STATIC_ASSERT(sizeof(WorkBenchData) == 0x2);
+		static_assert(sizeof(WorkBenchData) == 0x2);
 
 
 		struct EntryPointData
 		{
+		public:
 			struct DisabledEntryPoint  // NAM0
 			{
-				enum class DisabledPoint : UInt16
+			public:
+				enum class DisabledPoint
 				{
 					kNone = 0,
 					kFront = 1 << 0,
@@ -100,38 +104,40 @@ namespace RE
 				};
 
 
-				UInt16		  unk0;			   // 0
-				DisabledPoint disabledPoints;  // 2
+				// members
+				std::uint16_t								   unk0;			// 0
+				stl::enumeration<DisabledPoint, std::uint16_t> disabledPoints;	// 2
 			};
-			STATIC_ASSERT(sizeof(DisabledEntryPoint) == 0x4);
+			static_assert(sizeof(DisabledEntryPoint) == 0x4);
 
 
-			UInt32			   entryPoint;			 // 00 - ENAM
+			// members
+			std::uint32_t	   entryPoint;			 // 00 - ENAM
 			DisabledEntryPoint disabledEntryPoints;	 // 04 - NAM0
 			BGSKeyword*		   keyword;				 // 08 - FNMK
 		};
-		STATIC_ASSERT(sizeof(EntryPointData) == 0x10);
+		static_assert(sizeof(EntryPointData) == 0x10);
 
 
 		virtual ~TESFurniture();  // 00
 
 		// override (TESObjectACTI)
-		virtual void		InitializeData() override;																													 // 04
-		virtual void		ClearData() override;																														 // 05
-		virtual bool		Load(TESFile* a_mod) override;																												 // 06
-		virtual void		InitItemImpl() override;																													 // 13
-		virtual bool		Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;	 // 37
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;																										 // 4A
-		virtual bool		GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																		 // 4C
-		virtual bool		CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;										 // 4D
+		virtual void		InitializeData() override;																																  // 04
+		virtual void		ClearData() override;																																	  // 05
+		virtual bool		Load(TESFile* a_mod) override;																															  // 06
+		virtual void		InitItemImpl() override;																																  // 13
+		virtual bool		Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;																													  // 4A
+		virtual bool		GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																					  // 4C
+		virtual bool		CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;													  // 4D
 
 
 		// members
-		BSTArray<EntryPointData> entryPointDataArray;  // C8
-		WorkBenchData			 workBenchData;		   // E0 - WBDT
-		UInt16					 padE2;				   // E2
-		ActiveMarker			 furnFlags;			   // E4
-		SpellItem*				 associatedForm;	   // E8
+		BSTArray<EntryPointData>					  entryPointDataArray;	// C8
+		WorkBenchData								  workBenchData;		// E0 - WBDT
+		std::uint16_t								  padE2;				// E2
+		stl::enumeration<ActiveMarker, std::uint32_t> furnFlags;			// E4
+		SpellItem*									  associatedForm;		// E8
 	};
-	STATIC_ASSERT(sizeof(TESFurniture) == 0xF0);
+	static_assert(sizeof(TESFurniture) == 0xF0);
 }

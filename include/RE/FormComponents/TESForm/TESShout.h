@@ -24,7 +24,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kTreatSpellsAsPowers = 1 << 7,
@@ -38,14 +38,14 @@ namespace RE
 			TESWordOfPower* word;		   // 00
 			SpellItem*		spell;		   // 08
 			float			recoveryTime;  // 10
-			UInt32			pad14;		   // 14
+			std::uint32_t	pad14;		   // 14
 		};
-		STATIC_ASSERT(sizeof(Variation) == 0x18);
+		static_assert(sizeof(Variation) == 0x18);
 
 
 		struct VariationIDs
 		{
-			enum VariationID : UInt32
+			enum VariationID : std::uint32_t
 			{
 				kNone = static_cast<std::underlying_type_t<VariationID>>(-1),
 				kOne = 0,
@@ -73,5 +73,5 @@ namespace RE
 		// members
 		Variation variations[VariationIDs::kTotal];	 // 60 - SNAM
 	};
-	STATIC_ASSERT(sizeof(TESShout) == 0xA8);
+	static_assert(sizeof(TESShout) == 0xA8);
 }

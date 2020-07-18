@@ -12,15 +12,15 @@ namespace RE
 		~ExtraLightDataStruct() = default;
 
 
-		float  fov;				 // 00
-		float  fade;			 // 04
-		float  endDistanceCap;	 // 08
-		float  shadowDepthBias;	 // 0C
-		UInt8  unk10;			 // 10
-		UInt8  pad11;			 // 11
-		UInt16 pad12;			 // 12
+		float		  fov;				// 00
+		float		  fade;				// 04
+		float		  endDistanceCap;	// 08
+		float		  shadowDepthBias;	// 0C
+		std::uint8_t  unk10;			// 10
+		std::uint8_t  pad11;			// 11
+		std::uint16_t pad12;			// 12
 	};
-	STATIC_ASSERT(sizeof(ExtraLightDataStruct) == 0x14);
+	static_assert(sizeof(ExtraLightDataStruct) == 0x14);
 
 
 	class ExtraLightData : public BSExtraData
@@ -40,7 +40,7 @@ namespace RE
 
 		// members
 		ExtraLightDataStruct data;	 // 10
-		UInt32				 pad24;	 // 24
+		std::uint32_t		 pad24;	 // 24
 	};
-	STATIC_ASSERT(sizeof(ExtraLightData) == 0x28);
+	static_assert(sizeof(ExtraLightData) == 0x28);
 }

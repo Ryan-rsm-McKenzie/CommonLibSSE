@@ -23,14 +23,14 @@ namespace RE
 		// members
 		BSTArray<void*>				 unk008;	  // 008
 		BSTHashMap<UnkKey, UnkValue> unk020;	  // 020
-		UInt64						 unk050;	  // 050
-		UInt64						 unk058;	  // 058
-		UInt64						 unk060;	  // 060
-		UInt64						 unk068;	  // 068
+		std::uint64_t				 unk050;	  // 050
+		std::uint64_t				 unk058;	  // 058
+		std::uint64_t				 unk060;	  // 060
+		std::uint64_t				 unk068;	  // 068
 		void*						 unk070[16];  // 070
-		UInt64						 unk0F0;	  // 0F0
-		UInt64						 unk0F8;	  // 0F8
-		UInt64						 unk100;	  // 100
+		std::uint64_t				 unk0F0;	  // 0F0
+		std::uint64_t				 unk0F8;	  // 0F8
+		std::uint64_t				 unk100;	  // 100
 	};
-	STATIC_ASSERT(sizeof(BSBatchRenderer) == 0x108);
+	static_assert(sizeof(BSBatchRenderer) == 0x108);
 }

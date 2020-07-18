@@ -20,8 +20,8 @@ namespace RE
 
 
 		// members
-		ActorValue actorValue;	// 48
-		UInt32	   pad4C;		// 4C
+		ActorValue	  actorValue;  // 48
+		std::uint32_t pad4C;	   // 4C
 	};
-	STATIC_ASSERT(sizeof(ActorValueMeter) == 0x50);
+	static_assert(sizeof(ActorValueMeter) == 0x50);
 }

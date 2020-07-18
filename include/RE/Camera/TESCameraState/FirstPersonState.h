@@ -36,23 +36,23 @@ namespace RE
 
 
 		// members
-		NiPoint3	lastPosition;			  // 30
-		NiPoint3	lastFrameSpringVelocity;  // 3C
-		NiPoint3	dampeningOffset;		  // 48
-		UInt32		pad54;					  // 54
-		NiAVObject* firstPersonCameraObj;	  // 58
-		NiNode*		firstPersonFOVControl;	  // 60
-		float		sittingRotation;		  // 68
-		float		unk6C;					  // 6C
-		float		unk70;					  // 70
-		float		currentPitchOffset;		  // 74 - [-100, 100]
-		float		targetPitchOffset;		  // 78 - [-100, 100]
-		float		unk7C;					  // 7C
-		UInt32		unk80;					  // 80
-		bool		cameraOverride;			  // 84
-		bool		cameraPitchOverride;	  // 85
-		UInt16		unk86;					  // 86
-		UInt64		unk88;					  // 88
+		NiPoint3	  lastPosition;				// 30
+		NiPoint3	  lastFrameSpringVelocity;	// 3C
+		NiPoint3	  dampeningOffset;			// 48
+		std::uint32_t pad54;					// 54
+		NiAVObject*	  firstPersonCameraObj;		// 58
+		NiNode*		  firstPersonFOVControl;	// 60
+		float		  sittingRotation;			// 68
+		float		  unk6C;					// 6C
+		float		  unk70;					// 70
+		float		  currentPitchOffset;		// 74 - [-100, 100]
+		float		  targetPitchOffset;		// 78 - [-100, 100]
+		float		  unk7C;					// 7C
+		std::uint32_t unk80;					// 80
+		bool		  cameraOverride;			// 84
+		bool		  cameraPitchOverride;		// 85
+		std::uint16_t unk86;					// 86
+		std::uint64_t unk88;					// 88
 	};
-	STATIC_ASSERT(sizeof(FirstPersonState) == 0x90);
+	static_assert(sizeof(FirstPersonState) == 0x90);
 }

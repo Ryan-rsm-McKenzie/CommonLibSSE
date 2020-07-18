@@ -21,5 +21,5 @@ namespace RE
 		virtual void		  Unk_2A(void) override;					// 2A
 		virtual void		  Unk_30(void) override;					// 30
 	};
-	STATIC_ASSERT(sizeof(bhkEntity) == 0x28);
+	static_assert(sizeof(bhkEntity) == 0x28);
 }

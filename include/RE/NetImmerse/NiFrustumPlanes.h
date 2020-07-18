@@ -24,7 +24,7 @@ namespace RE
 		};
 
 
-		enum class ActivePlane : UInt32
+		enum class ActivePlane
 		{
 			kNear = 1 << 0,
 			kFar = 1 << 1,
@@ -36,11 +36,11 @@ namespace RE
 
 
 		// members
-		NiPlane		cullingPlanes[Planes::kTotal];	// 00
-		ActivePlane activePlanes;					// 60
-		UInt32		basePlaneStates;				// 64
-		UInt32		unk68;							// 68
-		UInt32		unk6C;							// 6C
+		NiPlane										 cullingPlanes[Planes::kTotal];	 // 00
+		stl::enumeration<ActivePlane, std::uint32_t> activePlanes;					 // 60
+		std::uint32_t								 basePlaneStates;				 // 64
+		std::uint32_t								 unk68;							 // 68
+		std::uint32_t								 unk6C;							 // 6C
 	};
-	STATIC_ASSERT(sizeof(NiFrustumPlanes) == 0x70);
+	static_assert(sizeof(NiFrustumPlanes) == 0x70);
 }

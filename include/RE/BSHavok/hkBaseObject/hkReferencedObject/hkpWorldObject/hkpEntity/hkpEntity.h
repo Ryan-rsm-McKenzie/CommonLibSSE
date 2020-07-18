@@ -27,7 +27,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_hkpEntity;
 
 
-		enum class SpuCollisionCallbackEventFilter : UInt8
+		enum class SpuCollisionCallbackEventFilter
 		{
 			kNone = 0,
 			kContactPointAdded = 1 << 0,
@@ -40,31 +40,36 @@ namespace RE
 		class SmallArraySerializeOverrideType
 		{
 		public:
-			void*  data;			  // 00
-			UInt16 size;			  // 08
-			UInt16 capacityAndFlags;  // 0A
-			UInt32 pad0C;			  // 0C
+			// members
+			void*		  data;				 // 00
+			std::uint16_t size;				 // 08
+			std::uint16_t capacityAndFlags;	 // 0A
+			std::uint32_t pad0C;			 // 0C
 		};
-		STATIC_ASSERT(sizeof(SmallArraySerializeOverrideType) == 0x10);
+		static_assert(sizeof(SmallArraySerializeOverrideType) == 0x10);
 
 
 		struct SpuCollisionCallback
 		{
-			hkSpuCollisionCallbackUtil*		util;		  // 00
-			UInt16							capacity;	  // 08
-			SpuCollisionCallbackEventFilter eventFilter;  // 0A
-			UInt8							userFilter;	  // 0B
-			UInt32							pad0C;		  // 0C
+		public:
+			// members
+			hkSpuCollisionCallbackUtil*										util;		  // 00
+			std::uint16_t													capacity;	  // 08
+			stl::enumeration<SpuCollisionCallbackEventFilter, std::uint8_t> eventFilter;  // 0A
+			std::uint8_t													userFilter;	  // 0B
+			std::uint32_t													pad0C;		  // 0C
 		};
-		STATIC_ASSERT(sizeof(SpuCollisionCallback) == 0x10);
+		static_assert(sizeof(SpuCollisionCallback) == 0x10);
 
 
 		struct ExtendedListeners
 		{
+		public:
+			// members
 			hkSmallArray<hkpEntityActivationListener*> activationListeners;	 // 00
 			hkSmallArray<hkpEntityListener*>		   entityListeners;		 // 10
 		};
-		STATIC_ASSERT(sizeof(ExtendedListeners) == 0x20);
+		static_assert(sizeof(ExtendedListeners) == 0x20);
 
 
 		virtual ~hkpEntity();  // 00
@@ -79,32 +84,32 @@ namespace RE
 
 		// members
 		hkpMaterial						   material;							  // 0D0
-		UInt32							   pad00C;								  // 0DC
+		std::uint32_t					   pad00C;								  // 0DC
 		void*							   limitContactImpulseUtilAndFlag;		  // 0E0
 		float							   damageMultiplier;					  // 0E8
-		UInt32							   pad01C;								  // 0EC
+		std::uint32_t					   pad01C;								  // 0EC
 		hkpBreakableBody*				   breakableBody;						  // 0F0
-		UInt32							   solverData;							  // 0F8
+		std::uint32_t					   solverData;							  // 0F8
 		hkObjectIndex					   storageIndex;						  // 0FC
-		UInt16							   contactPointCallbackDelay;			  // 0FE
+		std::uint16_t					   contactPointCallbackDelay;			  // 0FE
 		hkSmallArray<hkConstraintInternal> constraintsMaster;					  // 100
 		hkArray<hkpConstraintInstance*>	   constraintsSlave;					  // 110
-		hkArray<UInt8>					   constraintRuntime;					  // 120
+		hkArray<std::uint8_t>			   constraintRuntime;					  // 120
 		hkpSimulationIsland*			   simulationIsland;					  // 130
-		SInt8							   autoRemoveLevel;						  // 138
-		UInt8							   numShapeKeysInContactPointProperties;  // 139
-		UInt8							   responseModifierFlags;				  // 13A
-		UInt8							   pad13B;								  // 13B
-		UInt32							   uid;									  // 13C
+		std::int8_t						   autoRemoveLevel;						  // 138
+		std::uint8_t					   numShapeKeysInContactPointProperties;  // 139
+		std::uint8_t					   responseModifierFlags;				  // 13A
+		std::uint8_t					   pad13B;								  // 13B
+		std::uint32_t					   uid;									  // 13C
 		SpuCollisionCallback			   spuCollisionCallback;				  // 140
 		hkpMaxSizeMotion				   motion;								  // 150
 		hkSmallArray<hkpContactListener*>  contactListeners;					  // 290
 		hkSmallArray<hkpAction*>		   actions;								  // 2A0
 		hkRefPtr<hkLocalFrame>			   localFrame;							  // 2B0
 		mutable ExtendedListeners*		   extendedListeners;					  // 2B8
-		UInt32							   npData;								  // 2C0
-		UInt32							   pad2C4;								  // 2C4
-		UInt64							   pad2C8;								  // 2C8
+		std::uint32_t					   npData;								  // 2C0
+		std::uint32_t					   pad2C4;								  // 2C4
+		std::uint64_t					   pad2C8;								  // 2C8
 	};
-	STATIC_ASSERT(sizeof(hkpEntity) == 0x2D0);
+	static_assert(sizeof(hkpEntity) == 0x2D0);
 }

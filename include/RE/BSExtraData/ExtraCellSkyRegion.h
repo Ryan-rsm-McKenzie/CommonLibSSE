@@ -26,5 +26,5 @@ namespace RE
 		// members
 		TESRegion* skyRegion;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraCellSkyRegion) == 0x18);
+	static_assert(sizeof(ExtraCellSkyRegion) == 0x18);
 }

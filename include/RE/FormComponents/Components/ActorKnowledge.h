@@ -19,7 +19,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ActorKnowledge;
 
 
-		enum class FLAGS : UInt32
+		enum class FLAGS
 		{
 			kNone = 0
 		};
@@ -29,14 +29,14 @@ namespace RE
 
 
 		// members
-		ActorHandle							   owner;						 // 10
-		ActorHandle							   target;						 // 14
-		FIGHT_REACTION						   factionFightReaction;		 // 18
-		AITimeStamp							   shouldAttackTargetTimeStamp;	 // 1C
-		NiPointer<DetectionState>			   detectionState;				 // 20
-		BSTArray<NiPointer<DetectionListener>> listeners;					 // 28
-		FLAGS								   flags;						 // 40
-		AITimeStamp							   detectionQueuedTimeStamp;	 // 44
+		ActorHandle										owner;						  // 10
+		ActorHandle										target;						  // 14
+		stl::enumeration<FIGHT_REACTION, std::uint32_t> factionFightReaction;		  // 18
+		AITimeStamp										shouldAttackTargetTimeStamp;  // 1C
+		NiPointer<DetectionState>						detectionState;				  // 20
+		BSTArray<NiPointer<DetectionListener>>			listeners;					  // 28
+		stl::enumeration<FLAGS, std::uint32_t>			flags;						  // 40
+		AITimeStamp										detectionQueuedTimeStamp;	  // 44
 	};
-	STATIC_ASSERT(sizeof(ActorKnowledge) == 0x48);
+	static_assert(sizeof(ActorKnowledge) == 0x48);
 }

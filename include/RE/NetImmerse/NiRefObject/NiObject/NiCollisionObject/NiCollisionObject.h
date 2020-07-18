@@ -36,5 +36,5 @@ namespace RE
 		// members
 		NiAVObject* sceneObject;  // 10
 	};
-	STATIC_ASSERT(sizeof(NiCollisionObject) == 0x18);
+	static_assert(sizeof(NiCollisionObject) == 0x18);
 }

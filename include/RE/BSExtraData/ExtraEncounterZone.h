@@ -26,5 +26,5 @@ namespace RE
 		// members
 		BGSEncounterZone* zone;	 // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraEncounterZone) == 0x18);
+	static_assert(sizeof(ExtraEncounterZone) == 0x18);
 }

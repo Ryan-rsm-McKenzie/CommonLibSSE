@@ -11,7 +11,7 @@ namespace RE
 	{
 		ObjectRefHandle linkedRefs[4];	// 00
 	};
-	STATIC_ASSERT(sizeof(OcclusionPlaneLinkedRefData) == 0x10);
+	static_assert(sizeof(OcclusionPlaneLinkedRefData) == 0x10);
 
 
 	class ExtraOcclusionPlaneRefData : public BSExtraData
@@ -31,5 +31,5 @@ namespace RE
 		// members
 		OcclusionPlaneLinkedRefData* data;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraOcclusionPlaneRefData) == 0x18);
+	static_assert(sizeof(ExtraOcclusionPlaneRefData) == 0x18);
 }

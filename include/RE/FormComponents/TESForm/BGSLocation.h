@@ -21,10 +21,10 @@ namespace RE
 	public:
 		union CellKey
 		{
-			BSTTuple<SInt16, SInt16> xy;
-			UInt32					 raw;
+			BSTTuple<std::int16_t, std::int16_t> xy;
+			std::uint32_t						 raw;
 		};
-		STATIC_ASSERT(sizeof(CellKey) == 0x4);
+		static_assert(sizeof(CellKey) == 0x4);
 
 
 		// members
@@ -32,7 +32,7 @@ namespace RE
 		FormID	parentSpaceID;	// 4
 		CellKey cellKey;		// 8
 	};
-	STATIC_ASSERT(sizeof(UnloadedRefData) == 0xC);
+	static_assert(sizeof(UnloadedRefData) == 0xC);
 
 
 	struct SpecialRefData  // LCSR
@@ -41,21 +41,21 @@ namespace RE
 		// members
 		BGSLocationRefType* type;	  // 00
 		UnloadedRefData		refData;  // 08
-		UInt32				pad14;	  // 14
+		std::uint32_t		pad14;	  // 14
 	};
-	STATIC_ASSERT(sizeof(SpecialRefData) == 0x18);
+	static_assert(sizeof(SpecialRefData) == 0x18);
 
 
 	struct UniqueNPCData  // LCUN
 	{
 	public:
 		// members
-		Actor*		 actor;		 // 00
-		FormID		 refID;		 // 08
-		UInt32		 pad0C;		 // 0C
-		BGSLocation* editorLoc;	 // 10
+		Actor*		  actor;	  // 00
+		FormID		  refID;	  // 08
+		std::uint32_t pad0C;	  // 0C
+		BGSLocation*  editorLoc;  // 10
 	};
-	STATIC_ASSERT(sizeof(UniqueNPCData) == 0x18);
+	static_assert(sizeof(UniqueNPCData) == 0x18);
 
 
 	struct OverrideData
@@ -65,7 +65,7 @@ namespace RE
 		BSTArray<UnloadedRefData> addedData;	// 00 - ACPR
 		BSTSet<FormID>			  removedData;	// 18 - RCPR
 	};
-	STATIC_ASSERT(sizeof(OverrideData) == 0x48);
+	static_assert(sizeof(OverrideData) == 0x48);
 
 
 	class BGSLocation :
@@ -80,21 +80,21 @@ namespace RE
 
 		struct ChangeFlags
 		{
-			enum ChangeFlag : UInt32
+			enum ChangeFlag : std::uint32_t
 			{
 				kKeywordData = 1 << 30,
-				kCleared = (UInt32)1 << 31
+				kCleared = (std::uint32_t)1 << 31
 			};
 		};
 
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12,
-				kCleared = (UInt32)1 << 31
+				kCleared = (std::uint32_t)1 << 31
 			};
 		};
 
@@ -103,11 +103,11 @@ namespace RE
 		{
 		public:
 			// members
-			BGSKeyword* keyword;  // 00
-			float		data;	  // 08
-			UInt32		pad0C;	  // 0C
+			BGSKeyword*	  keyword;	// 00
+			float		  data;		// 08
+			std::uint32_t pad0C;	// 0C
 		};
-		STATIC_ASSERT(sizeof(KEYWORD_DATA) == 0x10);
+		static_assert(sizeof(KEYWORD_DATA) == 0x10);
 
 
 		virtual ~BGSLocation();	 // 00
@@ -134,19 +134,19 @@ namespace RE
 		ObjectRefHandle								   worldLocMarker;			// 60 - MNAM
 		float										   worldLocRadius;			// 64 - RNAM
 		ObjectRefHandle								   horseLocMarker;			// 68 - NAM0
-		UInt32										   pad6C;					// 6C
+		std::uint32_t								   pad6C;					// 6C
 		BSTArray<SpecialRefData>					   specialRefs;				// 70 - LCSR
 		BSTArray<UniqueNPCData>						   uniqueNPCs;				// 88 - LCUN
 		OverrideData*								   overrideData;			// A0
 		NiPointer<QueuedPromoteLocationReferencesTask> promoteRefsTask;			// A8
 		BSTArray<ObjectRefHandle>					   promotedRefs;			// B0
-		volatile SInt32								   loadedCount;				// C8
-		UInt32										   fileOffset;				// CC
+		volatile std::int32_t						   loadedCount;				// C8
+		std::uint32_t								   fileOffset;				// CC
 		BSTArray<KEYWORD_DATA>						   keywordData;				// D0
-		UInt32										   lastChecked;				// E8
+		std::uint32_t								   lastChecked;				// E8
 		bool										   cleared;					// EC
 		bool										   everCleared;				// ED
-		UInt16										   padEE;					// EE
+		std::uint16_t								   padEE;					// EE
 	};
-	STATIC_ASSERT(sizeof(BGSLocation) == 0xF0);
+	static_assert(sizeof(BGSLocation) == 0xF0);
 }

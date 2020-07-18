@@ -34,39 +34,39 @@ namespace RE
 		virtual void		  AttachProperty(NiAlphaProperty* a_property) override;														   // 27
 		virtual NiAVObject*	  GetObjectByName(const BSFixedString& a_name) override;													   // 2A
 		virtual void		  SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid) override;  // 2B
-		virtual void		  UpdateDownwardPass(NiUpdateData& a_data, UInt32 a_arg2) override;											   // 2C
-		virtual void		  UpdateSelectedDownwardPass(NiUpdateData& a_data, UInt32 a_arg2) override;									   // 2D
-		virtual void		  UpdateRigidDownwardPass(NiUpdateData& a_data, UInt32 a_arg2) override;									   // 2E
+		virtual void		  UpdateDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;									   // 2C
+		virtual void		  UpdateSelectedDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;							   // 2D
+		virtual void		  UpdateRigidDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;								   // 2E
 		virtual void		  UpdateWorldBound() override;																				   // 2F
 		virtual void		  UpdateTransformAndBounds(NiUpdateData& a_data) override;													   // 31
 		virtual void		  OnVisible(NiCullingProcess& a_process) override;															   // 34
 
 		// add
-		virtual void AttachChild(NiAVObject* a_child, bool a_firstAvail = false);					// 35
-		virtual void InsertChildAt(UInt32 a_idx, NiAVObject* a_child);								// 36
-		virtual void DetachChild1(NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);			// 37
-		virtual void DetachChild2(NiAVObject* a_child);												// 38
-		virtual void DetachChildAt1(UInt32 a_idx, NiPointer<NiAVObject>& a_childOut);				// 39
-		virtual void DetachChildAt2(UInt32 a_idx);													// 3A
-		virtual void SetAt1(UInt32 a_idx, NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);	// 3B
-		virtual void SetAt2(UInt32 a_idx, NiAVObject* a_child);										// 3C
-		virtual void UpdateUpwardPass(NiUpdateData& a_data);										// 3D
+		virtual void AttachChild(NiAVObject* a_child, bool a_firstAvail = false);						   // 35
+		virtual void InsertChildAt(std::uint32_t a_idx, NiAVObject* a_child);							   // 36
+		virtual void DetachChild1(NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);				   // 37
+		virtual void DetachChild2(NiAVObject* a_child);													   // 38
+		virtual void DetachChildAt1(std::uint32_t a_idx, NiPointer<NiAVObject>& a_childOut);			   // 39
+		virtual void DetachChildAt2(std::uint32_t a_idx);												   // 3A
+		virtual void SetAt1(std::uint32_t a_idx, NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);  // 3B
+		virtual void SetAt2(std::uint32_t a_idx, NiAVObject* a_child);									   // 3C
+		virtual void UpdateUpwardPass(NiUpdateData& a_data);											   // 3D
 
-		static NiNode* Create(UInt16 a_arrBufLen = 0);
+		static NiNode* Create(std::uint16_t a_arrBufLen = 0);
 
 		void DetachChild(NiAVObject* a_child);
 		void DetachChild(NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);
-		void DetachChildAt(UInt32 a_idx);
-		void DetachChildAt(UInt32 a_idx, NiPointer<NiAVObject>& a_childOut);
-		void SetAt(UInt32 a_idx, NiAVObject* a_child);
-		void SetAt(UInt32 a_idx, NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);
+		void DetachChildAt(std::uint32_t a_idx);
+		void DetachChildAt(std::uint32_t a_idx, NiPointer<NiAVObject>& a_childOut);
+		void SetAt(std::uint32_t a_idx, NiAVObject* a_child);
+		void SetAt(std::uint32_t a_idx, NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);
 
 
 		// members
 		NiTObjectArray<NiPointer<NiAVObject>> children;	 // 110
 
 	protected:
-		NiNode* Ctor(UInt16 a_arrBufLen);
+		NiNode* Ctor(std::uint16_t a_arrBufLen);
 	};
-	STATIC_ASSERT(sizeof(NiNode) == 0x128);
+	static_assert(sizeof(NiNode) == 0x128);
 }

@@ -3,13 +3,13 @@
 
 namespace RE
 {
-	UInt8 BGSPerkEntry::GetRank() const
+	std::uint8_t BGSPerkEntry::GetRank() const
 	{
 		return header.rank;
 	}
 
 
-	UInt8 BGSPerkEntry::GetPriority() const
+	std::uint8_t BGSPerkEntry::GetPriority() const
 	{
 		return header.priority;
 	}

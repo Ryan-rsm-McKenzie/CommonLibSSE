@@ -20,7 +20,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSStoryManagerTreeVisitor;
 
 
-		enum class VisitControl : UInt32
+		enum class VisitControl
 		{
 		};
 
@@ -36,14 +36,14 @@ namespace RE
 
 		// members
 		PeriodicUpdateTimer*			   timer;				// 08
-		SInt32							   currentCursorDepth;	// 10
-		UInt32							   pad14;				// 14
+		std::int32_t					   currentCursorDepth;	// 10
+		std::uint32_t					   pad14;				// 14
 		BGSStoryManagerQuestNode*		   lastQuestParent;		// 18
 		BSTArray<BGSStoryManagerTreeForm*> cursorAncestry;		// 20
-		UInt32							   queryID;				// 38
-		UInt32							   pad3C;				// 3C
+		std::uint32_t					   queryID;				// 38
+		std::uint32_t					   pad3C;				// 3C
 	};
-	STATIC_ASSERT(sizeof(BGSStoryManagerTreeVisitor) == 0x40);
+	static_assert(sizeof(BGSStoryManagerTreeVisitor) == 0x40);
 
 
 	class BGSStoryManagerTreeForm : public TESForm
@@ -55,15 +55,15 @@ namespace RE
 		virtual ~BGSStoryManagerTreeForm();	 // 00
 
 		// add
-		virtual UInt32									 QChildCount() const;										// 3B - { return 0; }
-		virtual BGSStoryManagerTreeForm*				 GetChild(UInt32 a_idx) const;								// 3C - { return 0; }
+		virtual std::uint32_t							 QChildCount() const;										// 3B - { return 0; }
+		virtual BGSStoryManagerTreeForm*				 GetChild(std::uint32_t a_idx) const;						// 3C - { return 0; }
 		virtual TESCondition*							 QConditions() = 0;											// 3D
 		virtual BGSStoryManagerTreeVisitor::VisitControl AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) = 0;	// 3E
 
 
 		// members
-		UInt32 lastVisitorID;  // 20
-		UInt32 pad24;		   // 24
+		std::uint32_t lastVisitorID;  // 20
+		std::uint32_t pad24;		  // 24
 	};
-	STATIC_ASSERT(sizeof(BGSStoryManagerTreeForm) == 0x28);
+	static_assert(sizeof(BGSStoryManagerTreeForm) == 0x28);
 }

@@ -20,7 +20,7 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;  // 10
+		std::uint64_t unk10;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraTerminalState) == 0x18);
+	static_assert(sizeof(ExtraTerminalState) == 0x18);
 }

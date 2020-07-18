@@ -18,26 +18,26 @@ namespace RE
 		{
 			struct UnkData2
 			{
-				void*  unk00;  // 00
-				UInt64 unk08;  // 08
-				void*  unk10;  // 10
-				UInt64 unk18;  // 18
+				void*		  unk00;  // 00
+				std::uint64_t unk08;  // 08
+				void*		  unk10;  // 10
+				std::uint64_t unk18;  // 18
 			};
-			STATIC_ASSERT(sizeof(UnkData2) == 0x20);
+			static_assert(sizeof(UnkData2) == 0x20);
 
 
 			const char*		   unk00;  // 00
-			UInt64			   unk08;  // 08
+			std::uint64_t	   unk08;  // 08
 			const char*		   unk10;  // 10
-			UInt64			   unk18;  // 18
+			std::uint64_t	   unk18;  // 18
 			BSFixedString	   unk20;  // 20
 			BSTArray<UnkData2> unk28;  // 28
-			UInt64			   unk40;  // 40
-			UInt64			   unk48;  // 48
-			UInt64			   unk50;  // 50
-			UInt64			   unk58;  // 58
+			std::uint64_t	   unk40;  // 40
+			std::uint64_t	   unk48;  // 48
+			std::uint64_t	   unk50;  // 50
+			std::uint64_t	   unk58;  // 58
 		};
-		STATIC_ASSERT(sizeof(UnkData1) == 0x60);
+		static_assert(sizeof(UnkData1) == 0x60);
 
 
 		virtual ~HUDNotifications();  // 00
@@ -53,8 +53,8 @@ namespace RE
 		BSTArray<UnkData1> unk28;				   // 28
 		GFxValue		   questNotificationRoot;  // 40 - "HUDMovieBaseInstance.QuestUpdateBaseInstance"
 		GFxValue		   objectives;			   // 58 - "QuestNotification.ObjectivesA"
-		UInt32			   unk70;				   // 70
+		std::uint32_t	   unk70;				   // 70
 		float			   levelPoints;			   // 74
 	};
-	STATIC_ASSERT(sizeof(HUDNotifications) == 0x78);
+	static_assert(sizeof(HUDNotifications) == 0x78);
 }

@@ -27,9 +27,9 @@ namespace RE
 		hkRefPtr<hkbVariableBindingSet> variableBindingSet;	 // 10
 		hkArray<hkRefVariant>			cachedBindables;	 // 18
 		bool							areBindablesCached;	 // 28
-		UInt8							pad29;				 // 29
-		UInt16							pad2A;				 // 2A
-		UInt32							pad2C;				 // 2C
+		std::uint8_t					pad29;				 // 29
+		std::uint16_t					pad2A;				 // 2A
+		std::uint32_t					pad2C;				 // 2C
 	};
-	STATIC_ASSERT(sizeof(hkbBindable) == 0x30);
+	static_assert(sizeof(hkbBindable) == 0x30);
 }

@@ -22,5 +22,5 @@ namespace RE
 		virtual PackageLocation*		GetAsPackageLocation();														   // 02 - { return 0; }
 		virtual bool					IsRefAtLocation(AIWorldLocationContext* a_context, TESObjectREFR* a_ref) = 0;  // 03
 	};
-	STATIC_ASSERT(sizeof(IAIWorldLocationHandle) == 0x8);
+	static_assert(sizeof(IAIWorldLocationHandle) == 0x8);
 }

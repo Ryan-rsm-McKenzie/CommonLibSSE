@@ -29,9 +29,9 @@ namespace RE
 
 		// members
 		hkArray<hkbCharacter*>		nearbyCharacters;			// 10
-		SInt16						currentLOD;					// 20
-		SInt16						numTracksInLOD;				// 22
-		UInt32						pad24;						// 24
+		std::int16_t				currentLOD;					// 20
+		std::int16_t				numTracksInLOD;				// 22
+		std::uint32_t				pad24;						// 24
 		hkStringPtr					name;						// 28
 		hkRefPtr<hkbRagdollDriver>	ragdollDriver;				// 30
 		hkRefVariant				characterControllerDriver;	// 38
@@ -46,10 +46,10 @@ namespace RE
 		hkRefVariant				eventQueue;					// 80
 		hkRefVariant				worldFromModel;				// 88
 		const void**				poseLocal;					// 90 - hkSimpleArray<hkRefVariant>
-		SInt32						numPoseLocal;				// 98
+		std::int32_t				numPoseLocal;				// 98
 		bool						deleteWorldFromModel;		// 9C
 		bool						deletePoseLocal;			// 9D
-		UInt16						pad9E;						// 9E
+		std::uint16_t				pad9E;						// 9E
 	};
-	STATIC_ASSERT(sizeof(hkbCharacter) == 0xA0);
+	static_assert(sizeof(hkbCharacter) == 0xA0);
 }

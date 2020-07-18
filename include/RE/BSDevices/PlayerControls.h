@@ -49,18 +49,18 @@ namespace RE
 
 
 		// members
-		UInt8						  pad021;				  // 021
-		UInt16						  pad022;				  // 022
+		std::uint8_t				  pad021;				  // 021
+		std::uint16_t				  pad022;				  // 022
 		PlayerControlsData			  data;					  // 024
-		UInt32						  pad054;				  // 054
+		std::uint32_t				  pad054;				  // 054
 		BSTArray<PlayerInputHandler*> handlers;				  // 058
 		BSTArray<void*>				  unk070;				  // 070
 		BSTArray<void*>				  unk088;				  // 088
-		UInt8						  unk0A0[8];			  // 0A0
-		UInt64						  unk0A8;				  // 0A8
+		std::uint8_t				  unk0A0[8];			  // 0A0
+		std::uint64_t				  unk0A8;				  // 0A8
 		float						  unk0B0[8];			  // 0B0
-		UInt32						  unk0D0[10];			  // 0D0
-		UInt8						  unk0F8[8];			  // 0F8
+		std::uint32_t				  unk0D0[10];			  // 0D0
+		std::uint8_t				  unk0F8[8];			  // 0F8
 		float						  unk100[20];			  // 100
 		BSTArray<ActorHandle>		  actionInterestedActor;  // 150
 		mutable BSSpinLock			  actorArrayLock;		  // 168
@@ -79,11 +79,11 @@ namespace RE
 		TogglePOVHandler*			  togglePOVHandler;		  // 1D0
 		bool						  notifyingHandlers;	  // 1D8
 		bool						  blockPlayerInput;		  // 1D9
-		UInt16						  unk1DA;				  // 1DA
-		UInt32						  unk1DC;				  // 1DC
+		std::uint16_t				  unk1DA;				  // 1DA
+		std::uint32_t				  unk1DC;				  // 1DC
 
 	private:
 		PlayerControls* Ctor();
 	};
-	STATIC_ASSERT(sizeof(PlayerControls) == 0x1E0);
+	static_assert(sizeof(PlayerControls) == 0x1E0);
 }

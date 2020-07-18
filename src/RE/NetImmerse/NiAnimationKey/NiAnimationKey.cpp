@@ -29,8 +29,8 @@ namespace RE
 	}
 
 
-	NiAnimationKey* NiAnimationKey::GetKeyAt(UInt32 a_index, UInt8 a_keySize) const
+	NiAnimationKey* NiAnimationKey::GetKeyAt(std::uint32_t a_index, std::uint8_t a_keySize) const
 	{
-		return reinterpret_cast<NiAnimationKey*>((UInt8*)this + a_index * a_keySize);
+		return reinterpret_cast<NiAnimationKey*>((std::uint8_t*)this + a_index * a_keySize);
 	}
 }

@@ -17,7 +17,7 @@ namespace RE
 		// override (hkMoppBvTreeShapeBase)
 		virtual void					 CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;														 // 02
 		virtual const hkpShapeContainer* GetContainer() const override;																															 // 04
-		virtual SInt32					 CalcSizeForSpu(const CalcSizeForSpuInput& a_input, SInt32 a_spuBufferSizeLeft) const override;															 // 06
+		virtual std::int32_t			 CalcSizeForSpu(const CalcSizeForSpuInput& a_input, std::int32_t a_spuBufferSizeLeft) const override;													 // 06
 		virtual void					 GetAabbImpl(const hkTransform& a_localToWorld, float a_tolerance, hkAabb& a_out) const override;														 // 07
 		virtual bool					 CastRayImpl(const hkpShapeRayCastInput& a_input, hkpShapeRayCastOutput& a_output) const override;														 // 08
 		virtual void					 CastRayWithCollectorImpl(const hkpShapeRayCastInput& a_input, const hkpCdBody& a_cdBody, hkpRayHitCollector& a_collector) const override;				 // 09
@@ -26,9 +26,9 @@ namespace RE
 
 		// members
 		hkpSingleShapeContainer child;		// 50
-		mutable SInt32			childSize;	// 60
-		UInt32					pad64;		// 64
-		UInt64					pad68;		// 68
+		mutable std::int32_t	childSize;	// 60
+		std::uint32_t			pad64;		// 64
+		std::uint64_t			pad68;		// 68
 	};
-	STATIC_ASSERT(sizeof(hkpMoppBvTreeShape) == 0x70);
+	static_assert(sizeof(hkpMoppBvTreeShape) == 0x70);
 }

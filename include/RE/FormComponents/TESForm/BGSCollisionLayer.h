@@ -19,7 +19,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::CollisionLayer;
 
 
-		enum class FLAG : UInt32  // GNAM
+		enum class FLAG	 // GNAM
 		{
 			kNone = 0,
 			kTriggerVolume = 1 << 0,
@@ -30,7 +30,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -48,12 +48,12 @@ namespace RE
 
 
 		// members
-		UInt32						 collisionIdx;	// 30 - BNAM
-		Color						 debugColor;	// 34 - FNAM
-		FLAG						 flags;			// 38 - GNAM
-		UInt32						 pad3C;			// 3C
-		BSFixedString				 name;			// 40 - MNAM
-		BSTArray<BGSCollisionLayer*> collidesWith;	// 48 - CNAM
+		std::uint32_t						  collisionIdx;	 // 30 - BNAM
+		Color								  debugColor;	 // 34 - FNAM
+		stl::enumeration<FLAG, std::uint32_t> flags;		 // 38 - GNAM
+		std::uint32_t						  pad3C;		 // 3C
+		BSFixedString						  name;			 // 40 - MNAM
+		BSTArray<BGSCollisionLayer*>		  collidesWith;	 // 48 - CNAM
 	};
-	STATIC_ASSERT(sizeof(BGSCollisionLayer) == 0x60);
+	static_assert(sizeof(BGSCollisionLayer) == 0x60);
 }

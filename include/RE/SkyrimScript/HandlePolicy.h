@@ -31,10 +31,10 @@ namespace RE
 
 
 			// members
-			UInt64						 unk08;	 // 08
+			std::uint64_t				 unk08;	 // 08
 			BSTHashMap<UnkKey, UnkValue> unk10;	 // 10
 			BSTHashMap<UnkKey, UnkValue> unk40;	 // 40
 		};
-		STATIC_ASSERT(sizeof(HandlePolicy) == 0x70);
+		static_assert(sizeof(HandlePolicy) == 0x70);
 	}
 }

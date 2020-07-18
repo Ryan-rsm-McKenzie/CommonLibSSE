@@ -34,5 +34,5 @@ namespace RE
 		// members
 		bhkCharacterPointCollector ignoredCollisionStartCollector;	// 020
 	};
-	STATIC_ASSERT(sizeof(bhkCharacterProxy) == 0x260);
+	static_assert(sizeof(bhkCharacterProxy) == 0x260);
 }

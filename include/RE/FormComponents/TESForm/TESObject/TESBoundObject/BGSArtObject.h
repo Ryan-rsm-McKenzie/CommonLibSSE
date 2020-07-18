@@ -16,7 +16,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::ArtObject;
 
 
-		enum class ArtType : UInt32
+		enum class ArtType
 		{
 			kMagicCastingArt = 0,
 			kMagicHitEffect = 1,
@@ -26,7 +26,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -36,9 +36,11 @@ namespace RE
 
 		struct Data	 // DNAM
 		{
-			ArtType artType;  // 0
+		public:
+			// members
+			stl::enumeration<ArtType, std::uint32_t> artType;  // 0
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x4);
+		static_assert(sizeof(Data) == 0x4);
 
 
 		virtual ~BGSArtObject();  // 00
@@ -49,8 +51,8 @@ namespace RE
 
 
 		// members
-		Data   data;   // 68 - DNAM
-		UInt32 pad6C;  // 6C
+		Data		  data;	  // 68 - DNAM
+		std::uint32_t pad6C;  // 6C
 	};
-	STATIC_ASSERT(sizeof(BGSArtObject) == 0x70);
+	static_assert(sizeof(BGSArtObject) == 0x70);
 }

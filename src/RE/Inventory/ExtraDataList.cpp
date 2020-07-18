@@ -80,7 +80,7 @@ namespace RE
 	bool ExtraDataList::HasType(ExtraDataType a_type) const
 	{
 		BSReadLockGuard locker(_lock);
-		return _presence ? _presence->HasType(static_cast<UInt32>(a_type)) : false;
+		return _presence ? _presence->HasType(static_cast<std::uint32_t>(a_type)) : false;
 	}
 
 
@@ -175,7 +175,7 @@ namespace RE
 	}
 
 
-	SInt32 ExtraDataList::GetCount() const
+	std::int32_t ExtraDataList::GetCount() const
 	{
 		auto xCount = GetByType<ExtraCount>();
 		return xCount ? xCount->count : 1;
@@ -228,7 +228,7 @@ namespace RE
 		auto ref = xRef ? xRef->GetOriginalReference() : nullptr;
 		ExtraTextDisplayData* xText = nullptr;
 		if (ref && !ref->IsDeleted()) {
-			auto xText = ref->extraList.GetByType<ExtraTextDisplayData>();
+			xText = ref->extraList.GetByType<ExtraTextDisplayData>();
 		}
 
 		return xText ? xText : GetByType<ExtraTextDisplayData>();
@@ -273,7 +273,7 @@ namespace RE
 	SOUL_LEVEL ExtraDataList::GetSoulLevel() const
 	{
 		auto xSoul = GetByType<ExtraSoul>();
-		return xSoul ? xSoul->soul : SOUL_LEVEL::kNone;
+		return xSoul ? *xSoul->soul : SOUL_LEVEL::kNone;
 	}
 
 
@@ -313,21 +313,21 @@ namespace RE
 	}
 
 
-	bool ExtraDataList::PresenceBitfield::HasType(UInt32 a_type) const
+	bool ExtraDataList::PresenceBitfield::HasType(std::uint32_t a_type) const
 	{
-		const UInt32 index = (a_type >> 3);
+		const std::uint32_t index = (a_type >> 3);
 		if (index >= 0x18) {
 			return false;
 		}
-		const UInt8 bitMask = 1 << (a_type % 8);
+		const std::uint8_t bitMask = 1 << (a_type % 8);
 		return (bits[index] & bitMask) != 0;
 	}
 
 
-	void ExtraDataList::PresenceBitfield::MarkType(UInt32 a_type, bool a_cleared)
+	void ExtraDataList::PresenceBitfield::MarkType(std::uint32_t a_type, bool a_cleared)
 	{
-		const UInt32 index = (a_type >> 3);
-		const UInt8 bitMask = 1 << (a_type % 8);
+		const std::uint32_t index = (a_type >> 3);
+		const std::uint8_t bitMask = 1 << (a_type % 8);
 		auto& flag = bits[index];
 		if (a_cleared) {
 			flag &= ~bitMask;
@@ -337,7 +337,7 @@ namespace RE
 	}
 
 
-	void ExtraDataList::MarkType(UInt32 a_type, bool a_cleared)
+	void ExtraDataList::MarkType(std::uint32_t a_type, bool a_cleared)
 	{
 		_presence->MarkType(a_type, a_cleared);
 	}
@@ -345,7 +345,7 @@ namespace RE
 
 	void ExtraDataList::MarkType(ExtraDataType a_type, bool a_cleared)
 	{
-		MarkType(static_cast<UInt32>(a_type), a_cleared);
+		MarkType(static_cast<std::uint32_t>(a_type), a_cleared);
 	}
 
 

@@ -71,7 +71,7 @@ namespace RE
 	}
 
 
-	SInt32 Setting::GetSInt() const
+	std::int32_t Setting::GetSInt() const
 	{
 		return data.i;
 	}
@@ -89,7 +89,7 @@ namespace RE
 	}
 
 
-	UInt32 Setting::GetUInt() const
+	std::uint32_t Setting::GetUInt() const
 	{
 		return data.u;
 	}

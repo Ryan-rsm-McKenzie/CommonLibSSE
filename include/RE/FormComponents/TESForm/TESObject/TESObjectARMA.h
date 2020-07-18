@@ -13,14 +13,14 @@ namespace RE
 {
 	struct OBJ_ARMA	 // DNAM
 	{
-		SInt8 priorities[SEXES::kTotal];  // 0
-		SInt8 modelRange[SEXES::kTotal];  // 2
-		SInt8 unused[SEXES::kTotal];	  // 4
-		SInt8 detectionSoundValue;		  // 6
-		UInt8 pad07;					  // 7
-		float weaponAdjust;				  // 8
+		std::int8_t	 priorities[SEXES::kTotal];	 // 0
+		std::int8_t	 modelRange[SEXES::kTotal];	 // 2
+		std::int8_t	 unused[SEXES::kTotal];		 // 4
+		std::int8_t	 detectionSoundValue;		 // 6
+		std::uint8_t pad07;						 // 7
+		float		 weaponAdjust;				 // 8
 	};
-	STATIC_ASSERT(sizeof(OBJ_ARMA) == 0xC);
+	static_assert(sizeof(OBJ_ARMA) == 0xC);
 
 
 	class TESObjectARMA :
@@ -35,7 +35,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -57,7 +57,7 @@ namespace RE
 
 		// members
 		OBJ_ARMA			data;								  // 040 - DNAM
-		UInt32				pad04C;								  // 04C
+		std::uint32_t		pad04C;								  // 04C
 		TESModelTextureSwap bipedModels[SEXES::kTotal];			  // 050
 		TESModelTextureSwap bipedModel1stPersons[SEXES::kTotal];  // 0C0
 		BGSTextureSet*		skinTextures[SEXES::kTotal];		  // 130 - NAM0 - NAM1
@@ -66,5 +66,5 @@ namespace RE
 		BGSFootstepSet*		footstepSet;						  // 168 - SNDD
 		BGSArtObject*		artObject;							  // 170 - ONAM
 	};
-	STATIC_ASSERT(sizeof(TESObjectARMA) == 0x178);
+	static_assert(sizeof(TESObjectARMA) == 0x178);
 }

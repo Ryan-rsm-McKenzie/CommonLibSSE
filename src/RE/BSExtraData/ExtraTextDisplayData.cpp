@@ -80,7 +80,7 @@ namespace RE
 		}
 
 		displayName = a_name;
-		customNameLength = static_cast<UInt16>(displayName.length());
+		customNameLength = static_cast<std::uint16_t>(displayName.length());
 		ownerInstance = DisplayDataType::kCustomName;
 		temperFactor = 1.0F;
 	}

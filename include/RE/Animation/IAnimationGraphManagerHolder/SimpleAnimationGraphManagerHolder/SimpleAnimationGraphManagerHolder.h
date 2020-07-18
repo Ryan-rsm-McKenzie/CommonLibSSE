@@ -28,5 +28,5 @@ namespace RE
 		BSTSmartPointer<BSAnimationGraphManager>		  animationGraphManager;  // 08
 		NiPointer<SimpleAnimationGraphManagerLoadingTask> loadingTask;			  // 10
 	};
-	STATIC_ASSERT(sizeof(SimpleAnimationGraphManagerHolder) == 0x18);
+	static_assert(sizeof(SimpleAnimationGraphManagerHolder) == 0x18);
 }

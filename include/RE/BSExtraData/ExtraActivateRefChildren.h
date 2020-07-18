@@ -26,7 +26,7 @@ namespace RE
 		// members
 		BSSimpleList<REF_ACTIVATE_DATA*> children;				 // 10
 		float							 activateChildrenTimer;	 // 20
-		UInt32							 pad24;					 // 24
+		std::uint32_t					 pad24;					 // 24
 	};
-	STATIC_ASSERT(sizeof(ExtraActivateRefChildren) == 0x28);
+	static_assert(sizeof(ExtraActivateRefChildren) == 0x28);
 }

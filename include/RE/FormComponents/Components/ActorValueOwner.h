@@ -25,5 +25,5 @@ namespace RE
 
 		float GetClampedActorValue(ActorValue a_akValue) const;
 	};
-	STATIC_ASSERT(sizeof(ActorValueOwner) == 0x8);
+	static_assert(sizeof(ActorValueOwner) == 0x8);
 }

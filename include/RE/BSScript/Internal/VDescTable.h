@@ -15,16 +15,16 @@ namespace RE
 			struct VDescTable
 			{
 			public:
-				explicit VDescTable(UInt16 a_numParams, UInt16 a_numLocals);
+				explicit VDescTable(std::uint16_t a_numParams, std::uint16_t a_numLocals);
 
 
 				// members
 				SimpleArray<BSTTuple<BSFixedString, TypeInfo>> entries;		  // 00
-				UInt16										   paramCount;	  // 08
-				UInt16										   totalEntries;  // 0A
-				UInt32										   pad0C;		  // 0C
+				std::uint16_t								   paramCount;	  // 08
+				std::uint16_t								   totalEntries;  // 0A
+				std::uint32_t								   pad0C;		  // 0C
 			};
-			STATIC_ASSERT(sizeof(VDescTable) == 0x10);
+			static_assert(sizeof(VDescTable) == 0x10);
 		}
 	}
 }

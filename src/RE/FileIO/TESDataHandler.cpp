@@ -13,7 +13,7 @@ namespace RE
 	}
 
 
-	UInt32 TESDataHandler::LoadScripts()
+	std::uint32_t TESDataHandler::LoadScripts()
 	{
 		using func_t = decltype(&TESDataHandler::LoadScripts);
 		REL::Offset<func_t> func(Offset::TESDataHandler::LoadScripts);
@@ -47,7 +47,7 @@ namespace RE
 	}
 
 
-	std::optional<UInt8> TESDataHandler::GetModIndex(std::string_view a_modName)
+	std::optional<std::uint8_t> TESDataHandler::GetModIndex(std::string_view a_modName)
 	{
 		auto mod = LookupModByName(a_modName);
 		return mod ? std::make_optional(mod->compileIndex) : std::nullopt;
@@ -65,7 +65,7 @@ namespace RE
 	}
 
 
-	const TESFile* TESDataHandler::LookupLoadedModByIndex(UInt8 a_index)
+	const TESFile* TESDataHandler::LookupLoadedModByIndex(std::uint8_t a_index)
 	{
 		for (auto& file : compiledFileCollection.files) {
 			if (file->compileIndex == a_index) {
@@ -76,7 +76,7 @@ namespace RE
 	}
 
 
-	std::optional<UInt8> TESDataHandler::GetLoadedModIndex(std::string_view a_modName)
+	std::optional<std::uint8_t> TESDataHandler::GetLoadedModIndex(std::string_view a_modName)
 	{
 		auto mod = LookupLoadedModByName(a_modName);
 		return mod ? std::make_optional(mod->compileIndex) : std::nullopt;
@@ -94,7 +94,7 @@ namespace RE
 	}
 
 
-	const TESFile* TESDataHandler::LookupLoadedLightModByIndex(UInt16 a_index)
+	const TESFile* TESDataHandler::LookupLoadedLightModByIndex(std::uint16_t a_index)
 	{
 		for (auto& smallFile : compiledFileCollection.smallFiles) {
 			if (smallFile->smallFileCompileIndex == a_index) {
@@ -105,7 +105,7 @@ namespace RE
 	}
 
 
-	std::optional<UInt16> TESDataHandler::GetLoadedLightModIndex(std::string_view a_modName)
+	std::optional<std::uint16_t> TESDataHandler::GetLoadedLightModIndex(std::string_view a_modName)
 	{
 		auto mod = LookupLoadedLightModByName(a_modName);
 		return mod ? std::make_optional(mod->smallFileCompileIndex) : std::nullopt;

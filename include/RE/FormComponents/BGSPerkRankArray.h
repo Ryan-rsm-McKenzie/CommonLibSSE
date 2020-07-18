@@ -10,13 +10,13 @@ namespace RE
 
 	struct PerkRankData	 // PRKR
 	{
-		BGSPerk* perk;		   // 00
-		SInt8	 currentRank;  // 08
-		UInt8	 pad09;		   // 09
-		UInt16	 pad0A;		   // 0A
-		UInt32	 pad0C;		   // 0C
+		BGSPerk*	  perk;			// 00
+		std::int8_t	  currentRank;	// 08
+		std::uint8_t  pad09;		// 09
+		std::uint16_t pad0A;		// 0A
+		std::uint32_t pad0C;		// 0C
 	};
-	STATIC_ASSERT(sizeof(PerkRankData) == 0x10);
+	static_assert(sizeof(PerkRankData) == 0x10);
 
 
 	class BGSPerkRankArray : public BaseFormComponent
@@ -35,8 +35,8 @@ namespace RE
 
 		// members
 		PerkRankData* perks;	  // 08 - PRKR
-		UInt32		  perkCount;  // 10 - PRKZ
-		UInt32		  pad14;	  // 14
+		std::uint32_t perkCount;  // 10 - PRKZ
+		std::uint32_t pad14;	  // 14
 	};
-	STATIC_ASSERT(sizeof(BGSPerkRankArray) == 0x18);
+	static_assert(sizeof(BGSPerkRankArray) == 0x18);
 }

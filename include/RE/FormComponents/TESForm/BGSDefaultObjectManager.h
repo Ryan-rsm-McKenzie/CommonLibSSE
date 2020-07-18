@@ -9,7 +9,7 @@ namespace RE
 {
 	struct DEFAULT_OBJECTS
 	{
-		enum DEFAULT_OBJECT : UInt32
+		enum DEFAULT_OBJECT
 		{
 			kWerewolfSpell = 0,
 			kSittingAngleLimit = 1,
@@ -382,7 +382,7 @@ namespace RE
 	using DEFAULT_OBJECT = DEFAULT_OBJECTS::DEFAULT_OBJECT;
 
 
-	enum class DEFAULT_OBJECT_TYPE : UInt32
+	enum class DEFAULT_OBJECT_TYPE
 	{
 		kMisc = 0,
 		kFaceGen = 1,
@@ -398,15 +398,15 @@ namespace RE
 	{
 	public:
 		// members
-		const char*			name;		  // 00
-		FormType			type;		  // 08
-		UInt8				pad09;		  // 09
-		UInt16				pad0A;		  // 0A
-		char				uniqueID[4];  // 0C
-		DEFAULT_OBJECT_TYPE doType;		  // 10
-		UInt32				pad14;		  // 14
+		const char*											 name;		   // 00
+		stl::enumeration<FormType, std::uint8_t>			 type;		   // 08
+		std::uint8_t										 pad09;		   // 09
+		std::uint16_t										 pad0A;		   // 0A
+		char												 uniqueID[4];  // 0C
+		stl::enumeration<DEFAULT_OBJECT_TYPE, std::uint32_t> doType;	   // 10
+		std::uint32_t										 pad14;		   // 14
 	};
-	STATIC_ASSERT(sizeof(DEFAULT_OBJECT_DATA) == 0x18);
+	static_assert(sizeof(DEFAULT_OBJECT_DATA) == 0x18);
 
 
 	class BGSDefaultObjectManager :
@@ -423,7 +423,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
@@ -461,9 +461,9 @@ namespace RE
 
 
 		// members
-		TESForm* objects[DEFAULT_OBJECTS::kTotal];	   // 020 - DNAM
-		bool	 objectInit[DEFAULT_OBJECTS::kTotal];  // B80
-		UInt32	 padCEC;							   // CEC
+		TESForm*	  objects[DEFAULT_OBJECTS::kTotal];		// 020 - DNAM
+		bool		  objectInit[DEFAULT_OBJECTS::kTotal];	// B80
+		std::uint32_t padCEC;								// CEC
 	};
-	STATIC_ASSERT(sizeof(BGSDefaultObjectManager) == 0xCF0);
+	static_assert(sizeof(BGSDefaultObjectManager) == 0xCF0);
 }

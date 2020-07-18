@@ -20,8 +20,8 @@ namespace RE
 
 
 		// members
-		float  weight;	// 08
-		UInt32 pad0C;	// 0C
+		float		  weight;  // 08
+		std::uint32_t pad0C;   // 0C
 	};
-	STATIC_ASSERT(sizeof(TESWeightForm) == 0x10);
+	static_assert(sizeof(TESWeightForm) == 0x10);
 }

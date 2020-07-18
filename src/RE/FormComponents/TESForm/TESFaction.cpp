@@ -22,32 +22,32 @@ namespace RE
 		}
 
 		auto bounty = player->GetCrimeGoldValue(this);
-		return player->GetGoldAmount() >= static_cast<SInt32>(bounty);
+		return player->GetGoldAmount() >= static_cast<std::int32_t>(bounty);
 	}
 
 
-	SInt32 TESFaction::GetCrimeGold() const
+	std::int32_t TESFaction::GetCrimeGold() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
 		return player ? player->GetCrimeGoldValue(this) : 0;
 	}
 
 
-	SInt32 TESFaction::GetCrimeGoldNonViolent() const
+	std::int32_t TESFaction::GetCrimeGoldNonViolent() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
 		return player ? player->GetNonViolentCrimeGoldValue(this) : 0;
 	}
 
 
-	SInt32 TESFaction::GetCrimeGoldViolent() const
+	std::int32_t TESFaction::GetCrimeGoldViolent() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
 		return player ? player->GetViolentCrimeGoldValue(this) : 0;
 	}
 
 
-	SInt32 TESFaction::GetInfamy() const
+	std::int32_t TESFaction::GetInfamy() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
 		if (!player) {
@@ -56,14 +56,14 @@ namespace RE
 
 		auto it = player->crimeGoldMap.find(const_cast<TESFaction*>(this));
 		if (it != player->crimeGoldMap.end()) {
-			return static_cast<SInt32>(it->second.nonViolentInfamy + it->second.violentInfamy);
+			return static_cast<std::int32_t>(it->second.nonViolentInfamy + it->second.violentInfamy);
 		} else {
 			return 0;
 		}
 	}
 
 
-	SInt32 TESFaction::GetInfamyNonViolent() const
+	std::int32_t TESFaction::GetInfamyNonViolent() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
 		if (!player) {
@@ -72,14 +72,14 @@ namespace RE
 
 		auto it = player->crimeGoldMap.find(const_cast<TESFaction*>(this));
 		if (it != player->crimeGoldMap.end()) {
-			return static_cast<SInt32>(it->second.nonViolentInfamy);
+			return static_cast<std::int32_t>(it->second.nonViolentInfamy);
 		} else {
 			return 0;
 		}
 	}
 
 
-	SInt32 TESFaction::GetInfamyViolent() const
+	std::int32_t TESFaction::GetInfamyViolent() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
 		if (!player) {
@@ -88,14 +88,14 @@ namespace RE
 
 		auto it = player->crimeGoldMap.find(const_cast<TESFaction*>(this));
 		if (it != player->crimeGoldMap.end()) {
-			return static_cast<SInt32>(it->second.violentInfamy);
+			return static_cast<std::int32_t>(it->second.violentInfamy);
 		} else {
 			return 0;
 		}
 	}
 
 
-	SInt32 TESFaction::GetStolenItemValueCrime() const
+	std::int32_t TESFaction::GetStolenItemValueCrime() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
 		if (!player) {
@@ -104,14 +104,14 @@ namespace RE
 
 		auto it = player->stolenItemValueMap.find(const_cast<TESFaction*>(this));
 		if (it != player->stolenItemValueMap.end()) {
-			return static_cast<SInt32>(it->second.witnessed);
+			return static_cast<std::int32_t>(it->second.witnessed);
 		} else {
 			return 0;
 		}
 	}
 
 
-	SInt32 TESFaction::GetStolenItemValueNoCrime() const
+	std::int32_t TESFaction::GetStolenItemValueNoCrime() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
 		if (!player) {
@@ -120,7 +120,7 @@ namespace RE
 
 		auto it = player->stolenItemValueMap.find(const_cast<TESFaction*>(this));
 		if (it != player->stolenItemValueMap.end()) {
-			return static_cast<SInt32>(it->second.unwitnessed);
+			return static_cast<std::int32_t>(it->second.unwitnessed);
 		} else {
 			return 0;
 		}
@@ -206,7 +206,7 @@ namespace RE
 	}
 
 
-	void TESFaction::ModCrimeGold(SInt32 a_amount, bool a_violent)
+	void TESFaction::ModCrimeGold(std::int32_t a_amount, bool a_violent)
 	{
 		auto player = PlayerCharacter::GetSingleton();
 		if (player) {
@@ -254,7 +254,7 @@ namespace RE
 	}
 
 
-	void TESFaction::SetCrimeGold(SInt32 a_gold)
+	void TESFaction::SetCrimeGold(std::int32_t a_gold)
 	{
 		auto player = PlayerCharacter::GetSingleton();
 		if (player) {
@@ -263,7 +263,7 @@ namespace RE
 	}
 
 
-	void TESFaction::SetCrimeGoldViolent(SInt32 a_gold)
+	void TESFaction::SetCrimeGoldViolent(std::int32_t a_gold)
 	{
 		auto player = PlayerCharacter::GetSingleton();
 		if (player) {

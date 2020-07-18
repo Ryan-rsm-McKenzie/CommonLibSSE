@@ -19,7 +19,7 @@ namespace RE
 		virtual ~BSTCaseInsensitiveStringMap();	 // 00
 
 		// override (NiTStringMap<T>)
-		virtual UInt32 hash_function(key_type a_key) const override;		   // 01
-		virtual bool   key_eq(key_type a_lhs, key_type a_rhs) const override;  // 02
+		virtual std::uint32_t hash_function(key_type a_key) const override;			  // 01
+		virtual bool		  key_eq(key_type a_lhs, key_type a_rhs) const override;  // 02
 	};
 }

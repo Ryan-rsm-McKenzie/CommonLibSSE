@@ -14,7 +14,7 @@ namespace RE
 
 
 		ExtraUniqueID();
-		ExtraUniqueID(FormID a_baseID, UInt16 a_uniqueID);
+		ExtraUniqueID(FormID a_baseID, std::uint16_t a_uniqueID);
 		virtual ~ExtraUniqueID() = default;	 // 00
 
 		// override (BSExtraData)
@@ -23,9 +23,9 @@ namespace RE
 
 
 		// members
-		FormID baseID;	  // 10
-		UInt16 uniqueID;  // 14
-		UInt16 pad16;	  // 16
+		FormID		  baseID;	 // 10
+		std::uint16_t uniqueID;	 // 14
+		std::uint16_t pad16;	 // 16
 	};
-	STATIC_ASSERT(sizeof(ExtraUniqueID) == 0x18);
+	static_assert(sizeof(ExtraUniqueID) == 0x18);
 }

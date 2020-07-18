@@ -7,7 +7,7 @@ namespace RE
 	{
 		struct ENTRY_POINTS
 		{
-			enum ENTRY_POINT : UInt8
+			enum ENTRY_POINT : std::uint8_t
 			{
 				kCalculateWeaponDamage = 0,
 				kCalculateMyCriticalHitChance = 1,

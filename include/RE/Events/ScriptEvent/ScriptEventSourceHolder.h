@@ -149,5 +149,5 @@ namespace RE
 			GetEventSource<T>()->SendEvent(a_event);
 		}
 	};
-	STATIC_ASSERT(sizeof(ScriptEventSourceHolder) == 0x1290);
+	static_assert(sizeof(ScriptEventSourceHolder) == 0x1290);
 }

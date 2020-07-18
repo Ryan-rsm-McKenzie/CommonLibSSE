@@ -12,7 +12,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_PerkEntryVisitor;
 
 
-		enum class ReturnType : UInt32
+		enum class ReturnType
 		{
 			kBreak,
 			kContinue

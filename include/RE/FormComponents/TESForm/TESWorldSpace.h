@@ -28,19 +28,19 @@ namespace RE
 			float maxHeight;	 // 4
 			float initialPitch;	 // 8
 		};
-		STATIC_ASSERT(sizeof(CameraData) == 0xC);
+		static_assert(sizeof(CameraData) == 0xC);
 
 
 		// members
-		UInt32	   usableWidth;	  // 00
-		UInt32	   usableHeight;  // 04
-		SInt16	   nwCellX;		  // 08
-		SInt16	   nwCellY;		  // 0A
-		SInt16	   seCellX;		  // 0C
-		SInt16	   seCellY;		  // 0E
-		CameraData cameraData;	  // 10
+		std::uint32_t usableWidth;	 // 00
+		std::uint32_t usableHeight;	 // 04
+		std::int16_t  nwCellX;		 // 08
+		std::int16_t  nwCellY;		 // 0A
+		std::int16_t  seCellX;		 // 0C
+		std::int16_t  seCellY;		 // 0E
+		CameraData	  cameraData;	 // 10
 	};
-	STATIC_ASSERT(sizeof(WORLD_MAP_DATA) == 0x1C);
+	static_assert(sizeof(WORLD_MAP_DATA) == 0x1C);
 
 
 	struct WORLD_MAP_OFFSET_DATA  // ONAM
@@ -52,7 +52,7 @@ namespace RE
 		float mapOffsetY;  // 08
 		float mapOffsetZ;  // 0C
 	};
-	STATIC_ASSERT(sizeof(WORLD_MAP_OFFSET_DATA) == 0x10);
+	static_assert(sizeof(WORLD_MAP_OFFSET_DATA) == 0x10);
 
 
 	struct CellID
@@ -63,7 +63,7 @@ namespace RE
 		{}
 
 
-		constexpr CellID(SInt16 a_y, SInt16 a_x) noexcept :
+		constexpr CellID(std::int16_t a_y, std::int16_t a_x) noexcept :
 			y(a_y),
 			x(a_x)
 		{}
@@ -75,14 +75,14 @@ namespace RE
 		}
 
 
-		[[nodiscard]] constexpr SInt16& operator[](std::size_t a_idx) noexcept
+		[[nodiscard]] constexpr std::int16_t& operator[](std::size_t a_idx) noexcept
 		{
 			assert(a_idx < 2);
 			return std::addressof(y)[a_idx];
 		}
 
 
-		[[nodiscard]] constexpr const SInt16& operator[](std::size_t a_idx) const noexcept
+		[[nodiscard]] constexpr const std::int16_t& operator[](std::size_t a_idx) const noexcept
 		{
 			assert(a_idx < 2);
 			return std::addressof(y)[a_idx];
@@ -90,19 +90,19 @@ namespace RE
 
 
 		// members
-		SInt16 y;
-		SInt16 x;
+		std::int16_t y;
+		std::int16_t x;
 	};
-	STATIC_ASSERT(sizeof(CellID) == 0x4);
+	static_assert(sizeof(CellID) == 0x4);
 
 
 	template <>
 	struct CRC32Hash<CellID>
 	{
 	public:
-		UInt32 operator()(const CellID& a_key) const
+		std::uint32_t operator()(const CellID& a_key) const
 		{
-			return CRC32Hash<UInt32>()(reinterpret_cast<const UInt32&>(a_key));
+			return CRC32Hash<std::uint32_t>()(reinterpret_cast<const std::uint32_t&>(a_key));
 		}
 	};
 
@@ -119,7 +119,7 @@ namespace RE
 		// this is the one actually used for loading large references on cell attach
 		BSTHashMap<CellID, FormID*> cellFormIDMapFiltered;	// 60
 	};
-	STATIC_ASSERT(sizeof(BGSLargeRefData) == 0x90);
+	static_assert(sizeof(BGSLargeRefData) == 0x90);
 
 
 	class TESWorldSpace :
@@ -132,7 +132,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::WorldSpace;
 
 
-		enum class Flag : UInt8
+		enum class Flag
 		{
 			kNone = 0,
 			kSmallWorld = 1 << 0,
@@ -145,7 +145,7 @@ namespace RE
 		};
 
 
-		enum class ParentUseFlag : UInt16
+		enum class ParentUseFlag
 		{
 			kNone = 0,
 			kUseLandData = 1 << 0,
@@ -160,7 +160,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12,
@@ -173,10 +173,10 @@ namespace RE
 		{
 		public:
 			// members
-			SInt16 x;
-			SInt16 y;
+			std::int16_t x;
+			std::int16_t y;
 		};
-		STATIC_ASSERT(sizeof(ShortPoint) == 0x4);
+		static_assert(sizeof(ShortPoint) == 0x4);
 
 
 		virtual ~TESWorldSpace();  // 00
@@ -198,54 +198,54 @@ namespace RE
 
 
 		// members
-		BSTHashMap<CellID, TESObjectCELL*>					   cellMap;					 // 058
-		TESObjectCELL*										   persistentCell;			 // 088
-		BGSTerrainManager*									   terrainManager;			 // 090
-		TESClimate*											   climate;					 // 098 - CNAM
-		Flag												   flags;					 // 0A0 - DATA
-		UInt8												   unk0A1;					 // 0A1 - more flags
-		ParentUseFlag										   parentUseFlags;			 // 0A2 - PNAM
-		ShortPoint											   fixedCenter;				 // 0A4 - WCTR
-		BSTHashMap<UInt32, BSTArray<NiPointer<TESObjectREFR>>> fixedPersistentRefMap;	 // 0A8
-		BSTArray<NiPointer<TESObjectREFR>>					   mobilePersistentRefs;	 // 0D8
-		NiTPointerMap<UInt32, BSSimpleList<TESObjectREFR*>*>*  overlappedMultiboundMap;	 // 0F0
-		TESObjectCELL*										   skyCell;					 // 0F8
-		BSTHashMap<FormID, BGSLocation*>					   locationMap;				 // 100
-		void*												   unk130;					 // 130 - smart ptr
-		void*												   unk138;					 // 138
-		void*												   unk140;					 // 140
-		void*												   unk148;					 // 148 - smart ptr
-		void*												   unk150;					 // 150 - smart ptr
-		TESWorldSpace*										   parentWorld;				 // 158 - WNAM
-		BGSLightingTemplate*								   lightingTemplate;		 // 160 - LTMP
-		TESWaterForm*										   worldWater;				 // 168 - NAM2
-		TESWaterForm*										   lodWater;				 // 170 - NAM3
-		float												   lodWaterHeight;			 // 178 - NAM4
-		UInt32												   pad17C;					 // 17C
-		UInt64												   unk180;					 // 180
-		WORLD_MAP_DATA										   worldMapData;			 // 188 - MNAM
-		WORLD_MAP_OFFSET_DATA								   worldMapOffsetData;		 // 1A4 - ONAM
-		UInt32												   pad1B4;					 // 1B4
-		BGSMusicType*										   musicType;				 // 1B8 - ZNAM
-		NiPoint2											   minimumCoords;			 // 1C0
-		NiPoint2											   maximumCoords;			 // 1C8
-		BSTHashMap<UnkKey, UnkValue>						   unk1D0;					 // 1D0 - BSTHashMap<TESFile*, OFFSET_DATA*> offsetDataMap?
-		BSString											   editorID;				 // 200 - EDID
-		float												   defaultLandHeight;		 // 210 - DNAM~
-		float												   defaultWaterHeight;		 // 214 - ~DNAM
-		float												   distantLODMult;			 // 218 - NAMA
-		UInt32												   pad21C;					 // 21C
-		BGSEncounterZone*									   encounterZone;			 // 220 - XEZN
-		BGSLocation*										   location;				 // 228 - XLCN
-		TESTexture											   canopyShadowTexture;		 // 230 - TNAM
-		TESTexture											   waterEnvMap;				 // 240 - UNAM
-		BGSLargeRefData										   largeRefData;			 // 250 - RNAM
-		UInt64												   unk2E0;					 // 2E0
-		BSTHashMap<UnkKey, UnkValue>						   unk2E8;					 // 2E8
-		BSTHashMap<UnkKey, UnkValue>						   unk318;					 // 318
-		float												   northRotation;			 // 348
-		UInt32												   pad34C;					 // 34C
-		SInt8*												   maxHeightData;			 // 350 - MHDT
+		BSTHashMap<CellID, TESObjectCELL*>							  cellMap;					// 058
+		TESObjectCELL*												  persistentCell;			// 088
+		BGSTerrainManager*											  terrainManager;			// 090
+		TESClimate*													  climate;					// 098 - CNAM
+		stl::enumeration<Flag, std::uint8_t>						  flags;					// 0A0 - DATA
+		std::uint8_t												  unk0A1;					// 0A1 - more flags
+		stl::enumeration<ParentUseFlag, std::uint16_t>				  parentUseFlags;			// 0A2 - PNAM
+		ShortPoint													  fixedCenter;				// 0A4 - WCTR
+		BSTHashMap<std::uint32_t, BSTArray<NiPointer<TESObjectREFR>>> fixedPersistentRefMap;	// 0A8
+		BSTArray<NiPointer<TESObjectREFR>>							  mobilePersistentRefs;		// 0D8
+		NiTPointerMap<std::uint32_t, BSSimpleList<TESObjectREFR*>*>*  overlappedMultiboundMap;	// 0F0
+		TESObjectCELL*												  skyCell;					// 0F8
+		BSTHashMap<FormID, BGSLocation*>							  locationMap;				// 100
+		void*														  unk130;					// 130 - smart ptr
+		void*														  unk138;					// 138
+		void*														  unk140;					// 140
+		void*														  unk148;					// 148 - smart ptr
+		void*														  unk150;					// 150 - smart ptr
+		TESWorldSpace*												  parentWorld;				// 158 - WNAM
+		BGSLightingTemplate*										  lightingTemplate;			// 160 - LTMP
+		TESWaterForm*												  worldWater;				// 168 - NAM2
+		TESWaterForm*												  lodWater;					// 170 - NAM3
+		float														  lodWaterHeight;			// 178 - NAM4
+		std::uint32_t												  pad17C;					// 17C
+		std::uint64_t												  unk180;					// 180
+		WORLD_MAP_DATA												  worldMapData;				// 188 - MNAM
+		WORLD_MAP_OFFSET_DATA										  worldMapOffsetData;		// 1A4 - ONAM
+		std::uint32_t												  pad1B4;					// 1B4
+		BGSMusicType*												  musicType;				// 1B8 - ZNAM
+		NiPoint2													  minimumCoords;			// 1C0
+		NiPoint2													  maximumCoords;			// 1C8
+		BSTHashMap<UnkKey, UnkValue>								  unk1D0;					// 1D0 - BSTHashMap<TESFile*, OFFSET_DATA*> offsetDataMap?
+		BSString													  editorID;					// 200 - EDID
+		float														  defaultLandHeight;		// 210 - DNAM~
+		float														  defaultWaterHeight;		// 214 - ~DNAM
+		float														  distantLODMult;			// 218 - NAMA
+		std::uint32_t												  pad21C;					// 21C
+		BGSEncounterZone*											  encounterZone;			// 220 - XEZN
+		BGSLocation*												  location;					// 228 - XLCN
+		TESTexture													  canopyShadowTexture;		// 230 - TNAM
+		TESTexture													  waterEnvMap;				// 240 - UNAM
+		BGSLargeRefData												  largeRefData;				// 250 - RNAM
+		std::uint64_t												  unk2E0;					// 2E0
+		BSTHashMap<UnkKey, UnkValue>								  unk2E8;					// 2E8
+		BSTHashMap<UnkKey, UnkValue>								  unk318;					// 318
+		float														  northRotation;			// 348
+		std::uint32_t												  pad34C;					// 34C
+		std::int8_t*												  maxHeightData;			// 350 - MHDT
 	};
-	STATIC_ASSERT(sizeof(TESWorldSpace) == 0x358);
+	static_assert(sizeof(TESWorldSpace) == 0x358);
 }

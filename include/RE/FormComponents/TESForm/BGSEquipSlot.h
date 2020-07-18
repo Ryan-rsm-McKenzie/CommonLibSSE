@@ -14,7 +14,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::EquipSlot;
 
 
-		enum class Flag : UInt32  // DATA
+		enum class Flag	 // DATA
 		{
 			kNone = 0,
 			kUseAllParents = 1 << 0,
@@ -25,7 +25,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -43,9 +43,9 @@ namespace RE
 
 
 		// members
-		BSTArray<BGSEquipSlot*> parentSlots;  // 20 - PNAM
-		Flag					flags;		  // 38 - DATA
-		UInt32					pad3C;		  // 3C
+		BSTArray<BGSEquipSlot*>				  parentSlots;	// 20 - PNAM
+		stl::enumeration<Flag, std::uint32_t> flags;		// 38 - DATA
+		std::uint32_t						  pad3C;		// 3C
 	};
-	STATIC_ASSERT(sizeof(BGSEquipSlot) == 0x40);
+	static_assert(sizeof(BGSEquipSlot) == 0x40);
 }

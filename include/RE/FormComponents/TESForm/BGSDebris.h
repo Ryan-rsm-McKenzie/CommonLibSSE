@@ -17,22 +17,24 @@ namespace RE
 
 	struct BGSDebrisData
 	{
-		enum class BGSDebrisDataFlags : UInt8
+	public:
+		enum class BGSDebrisDataFlags
 		{
 			kNone = 0,
 			kCollisionData = 1 << 0
 		};
 
 
-		SInt8					 percentage;  // 00 - DATA~
-		BGSDebrisDataFlags		 flags;		  // 01 - ~DATA
-		UInt16					 pad02;		  // 02
-		UInt32					 pad04;		  // 04
-		const char*				 fileName;	  // 08
-		BSTArray<BSResource::ID> textureIDs;  // 10 - MODT
-		BSTArray<UInt32>		 addons;	  // 28
+		// members
+		std::int8_t										   percentage;	// 00 - DATA~
+		stl::enumeration<BGSDebrisDataFlags, std::uint8_t> flags;		// 01 - ~DATA
+		std::uint16_t									   pad02;		// 02
+		std::uint32_t									   pad04;		// 04
+		const char*										   fileName;	// 08
+		BSTArray<BSResource::ID>						   textureIDs;	// 10 - MODT
+		BSTArray<std::uint32_t>							   addons;		// 28
 	};
-	STATIC_ASSERT(sizeof(BGSDebrisData) == 0x40);
+	static_assert(sizeof(BGSDebrisData) == 0x40);
 
 
 	class BGSDebris :
@@ -46,7 +48,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -65,5 +67,5 @@ namespace RE
 		// members
 		BSSimpleList<BGSDebrisData*> data;	// 28
 	};
-	STATIC_ASSERT(sizeof(BGSDebris) == 0x38);
+	static_assert(sizeof(BGSDebris) == 0x38);
 }

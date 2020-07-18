@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	enum class FIGHT_REACTION : UInt32
+	enum class FIGHT_REACTION
 	{
 		kNeutral = 0,
 		kEnemy = 1,

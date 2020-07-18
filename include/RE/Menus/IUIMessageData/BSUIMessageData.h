@@ -15,12 +15,12 @@ namespace RE
 
 		union Data
 		{
-			bool   b;
-			UInt32 u;
-			float  f;
-			void*  p;
+			bool		  b;
+			std::uint32_t u;
+			float		  f;
+			void*		  p;
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x8);
+		static_assert(sizeof(Data) == 0x8);
 
 
 		virtual ~BSUIMessageData();	 // 00
@@ -31,5 +31,5 @@ namespace RE
 		BSFixedString fixedStr;	 // 18
 		Data		  data;		 // 20
 	};
-	STATIC_ASSERT(sizeof(BSUIMessageData) == 0x28);
+	static_assert(sizeof(BSUIMessageData) == 0x28);
 }

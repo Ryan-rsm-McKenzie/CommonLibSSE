@@ -18,7 +18,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -33,5 +33,5 @@ namespace RE
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
 	};
-	STATIC_ASSERT(sizeof(BGSVolumetricLighting) == 0x50);
+	static_assert(sizeof(BGSVolumetricLighting) == 0x50);
 }

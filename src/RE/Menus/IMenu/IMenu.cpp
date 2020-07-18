@@ -55,7 +55,7 @@ namespace RE
 	}
 
 
-	void IMenu::AdvanceMovie([[maybe_unused]] float a_interval, UInt32 a_currentTime)
+	void IMenu::AdvanceMovie([[maybe_unused]] float a_interval, std::uint32_t a_currentTime)
 	{
 		if (uiMovie) {
 			const GFxValue currentTime(static_cast<double>(a_currentTime));
@@ -89,7 +89,7 @@ namespace RE
 			args[0].SetNumber(platform);
 			const bool swapPS3 = false;
 			args[1].SetBoolean(swapPS3);
-			uiMovie->Invoke("_root.SetPlatform", nullptr, args.data(), args.size());
+			uiMovie->Invoke("_root.SetPlatform", nullptr, args.data(), static_cast<std::uint32_t>(args.size()));
 		}
 
 		if (UpdateUsesCursor()) {

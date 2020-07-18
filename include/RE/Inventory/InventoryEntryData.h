@@ -18,7 +18,7 @@ namespace RE
 		InventoryEntryData();
 		InventoryEntryData(const InventoryEntryData& a_rhs);
 		InventoryEntryData(InventoryEntryData&& a_rhs);
-		InventoryEntryData(TESBoundObject* a_object, SInt32 a_countDelta);
+		InventoryEntryData(TESBoundObject* a_object, std::int32_t a_countDelta);
 		~InventoryEntryData();
 
 		InventoryEntryData& operator=(const InventoryEntryData& a_rhs);
@@ -31,7 +31,7 @@ namespace RE
 		const TESBoundObject* GetObject() const;
 		TESForm*			  GetOwner();
 		SOUL_LEVEL			  GetSoulLevel() const;
-		SInt32				  GetValue();
+		std::int32_t		  GetValue();
 		float				  GetWeight() const;
 		bool				  IsEnchanted() const;
 		bool				  IsOwnedBy(Actor* a_testOwner, bool a_defaultTo = true);
@@ -44,11 +44,11 @@ namespace RE
 		// members
 		TESBoundObject*				  object;	   // 00
 		BSSimpleList<ExtraDataList*>* extraLists;  // 08
-		SInt32						  countDelta;  // 10
-		UInt32						  pad14;	   // 14
+		std::int32_t				  countDelta;  // 10
+		std::uint32_t				  pad14;	   // 14
 
 	private:
 		bool IsOwnedBy_Impl(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo);
 	};
-	STATIC_ASSERT(sizeof(InventoryEntryData) == 0x18);
+	static_assert(sizeof(InventoryEntryData) == 0x18);
 }

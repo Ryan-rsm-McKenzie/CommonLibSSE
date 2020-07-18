@@ -74,7 +74,7 @@ namespace RE
 	SCRIPT_FUNCTION* SCRIPT_FUNCTION::LocateScriptCommand(const char* a_longName)
 	{
 		auto scriptCommands = GetFirstScriptCommand();
-		for (UInt16 i = 0; i < Commands::kScriptCommandsEnd; ++i) {
+		for (std::uint16_t i = 0; i < Commands::kScriptCommandsEnd; ++i) {
 			if (_stricmp(scriptCommands[i].functionName, a_longName) == 0) {
 				return &scriptCommands[i];
 			}
@@ -93,7 +93,7 @@ namespace RE
 	SCRIPT_FUNCTION* SCRIPT_FUNCTION::LocateConsoleCommand(const char* a_longName)
 	{
 		auto consoleCommands = GetFirstConsoleCommand();
-		for (UInt16 i = 0; i < Commands::kConsoleCommandsEnd; ++i) {
+		for (std::uint16_t i = 0; i < Commands::kConsoleCommandsEnd; ++i) {
 			if (_stricmp(consoleCommands[i].functionName, a_longName) == 0) {
 				return &consoleCommands[i];
 			}

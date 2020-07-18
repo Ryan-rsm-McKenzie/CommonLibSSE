@@ -16,11 +16,11 @@ namespace RE
 
 		struct GuardInfo
 		{
-			FormID guard;  // 0
-			UInt32 unk4;   // 4
-			UInt32 unk8;   // 8
+			FormID		  guard;  // 0
+			std::uint32_t unk4;	  // 4
+			std::uint32_t unk8;	  // 8
 		};
-		STATIC_ASSERT(sizeof(GuardInfo) == 0xC);
+		static_assert(sizeof(GuardInfo) == 0xC);
 
 
 		virtual ~ExtraGuardedRefData();	 // 00
@@ -33,5 +33,5 @@ namespace RE
 		// members
 		BSTArray<GuardInfo> guards;	 // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraGuardedRefData) == 0x28);
+	static_assert(sizeof(ExtraGuardedRefData) == 0x28);
 }

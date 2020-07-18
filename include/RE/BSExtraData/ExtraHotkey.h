@@ -13,7 +13,7 @@ namespace RE
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHotkey;
 
 
-		enum class Hotkey : UInt8
+		enum class Hotkey
 		{
 			kUnbound = static_cast<std::underlying_type_t<Hotkey>>(-1),
 			kSlot1 = 0,
@@ -37,10 +37,10 @@ namespace RE
 
 
 		// members
-		Hotkey hotkey;	// 10
-		UInt8  unk11;	// 11
-		UInt16 unk12;	// 12
-		UInt32 unk14;	// 14
+		stl::enumeration<Hotkey, std::uint8_t> hotkey;	// 10
+		std::uint8_t						   unk11;	// 11
+		std::uint16_t						   unk12;	// 12
+		std::uint32_t						   unk14;	// 14
 	};
-	STATIC_ASSERT(sizeof(ExtraHotkey) == 0x18);
+	static_assert(sizeof(ExtraHotkey) == 0x18);
 }

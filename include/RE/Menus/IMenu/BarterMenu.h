@@ -35,19 +35,19 @@ namespace RE
 		ItemCard*		itemCard;		  // 38
 		BottomBar*		bottomBar;		  // 40
 		GFxValue		root;			  // 48 - "Menu_mc"
-		UInt64			unk60;			  // 60
-		UInt64			unk68;			  // 68
-		UInt64			unk70;			  // 70
-		UInt8			unk78;			  // 78
-		UInt8			pad79;			  // 79
-		UInt16			pad7A;			  // 7A
-		UInt32			pad7C;			  // 7C
+		std::uint64_t	unk60;			  // 60
+		std::uint64_t	unk68;			  // 68
+		std::uint64_t	unk70;			  // 70
+		std::uint8_t	unk78;			  // 78
+		std::uint8_t	pad79;			  // 79
+		std::uint16_t	pad7A;			  // 7A
+		std::uint32_t	pad7C;			  // 7C
 		BSTArray<void*> unk80;			  // 80
-		UInt64			unk98;			  // 98
-		UInt32			unkA0;			  // A0
+		std::uint64_t	unk98;			  // 98
+		std::uint32_t	unkA0;			  // A0
 		bool			pcControlsReady;  // A4
-		UInt8			padA5;			  // A5
-		UInt16			padA6;			  // A6
+		std::uint8_t	padA5;			  // A5
+		std::uint16_t	padA6;			  // A6
 	};
-	STATIC_ASSERT(sizeof(BarterMenu) == 0xA8);
+	static_assert(sizeof(BarterMenu) == 0xA8);
 }

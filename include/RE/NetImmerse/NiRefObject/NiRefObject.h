@@ -17,18 +17,18 @@ namespace RE
 		// add
 		virtual void DeleteThis();	// 01
 
-		void   IncRefCount();
-		void   DecRefCount();
-		UInt32 GetRefCount() const;
+		void		  IncRefCount();
+		void		  DecRefCount();
+		std::uint32_t GetRefCount() const;
 
-		static volatile UInt32& GetTotalObjectCount();
+		static volatile std::uint32_t& GetTotalObjectCount();
 
 		TES_HEAP_REDEFINE_NEW();
 
 
 		// members
-		volatile UInt32 _refCount;	// 08
-		UInt32			_pad0C;		// 0C
+		volatile std::uint32_t _refCount;  // 08
+		std::uint32_t		   _pad0C;	   // 0C
 	};
-	STATIC_ASSERT(sizeof(NiRefObject) == 0x10);
+	static_assert(sizeof(NiRefObject) == 0x10);
 }

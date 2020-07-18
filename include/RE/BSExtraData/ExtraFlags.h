@@ -13,7 +13,7 @@ namespace RE
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFlags;
 
 
-		enum class Flag : UInt32
+		enum class Flag
 		{
 			kNone = 0,
 			kBlockActivate = 1 << 0,
@@ -33,8 +33,8 @@ namespace RE
 
 
 		// members
-		Flag   flags;  // 10
-		UInt32 pad14;  // 14
+		stl::enumeration<Flag, std::uint32_t> flags;  // 10
+		std::uint32_t						  pad14;  // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraFlags) == 0x18);
+	static_assert(sizeof(ExtraFlags) == 0x18);
 }

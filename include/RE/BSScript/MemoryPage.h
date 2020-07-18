@@ -25,9 +25,9 @@ namespace RE
 
 
 			// members
-			UInt32 pageSize;  // 00
-			char   buf[0];	  // 04
+			std::uint32_t pageSize;	 // 00
+			char		  buf[0];	 // 04
 		};
-		STATIC_ASSERT(sizeof(MemoryPage) == 0x4);  // pages can be larger
+		static_assert(sizeof(MemoryPage) == 0x4);  // pages can be larger
 	}
 }

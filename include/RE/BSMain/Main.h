@@ -23,11 +23,11 @@ namespace RE
 		{
 		public:
 			// members
-			HANDLE handle;	  // 00
-			UInt32 size;	  // 08
-			UInt32 capacity;  // 0C
+			HANDLE		  handle;	 // 00
+			std::uint32_t size;		 // 08
+			std::uint32_t capacity;	 // 0C
 		};
-		STATIC_ASSERT(sizeof(Semaphore) == 0x10);
+		static_assert(sizeof(Semaphore) == 0x10);
 
 
 		// members
@@ -35,20 +35,20 @@ namespace RE
 		mutable Semaphore							 semaphore;	  // 28
 		UnpackFunc_t*								 unpackFunc;  // 38
 	};
-	STATIC_ASSERT(sizeof(BSPackedTaskQueue) == 0x40);
+	static_assert(sizeof(BSPackedTaskQueue) == 0x40);
 
 
 	struct BSSaveDataSystemUtilityImage
 	{
 	public:
 		// members
-		UInt32 size;	// 00
-		UInt32 width;	// 04
-		UInt32 height;	// 08
-		UInt32 pad0C;	// 0C
-		char*  buffer;	// 10
+		std::uint32_t size;	   // 00
+		std::uint32_t width;   // 04
+		std::uint32_t height;  // 08
+		std::uint32_t pad0C;   // 0C
+		char*		  buffer;  // 10
 	};
-	STATIC_ASSERT(sizeof(BSSaveDataSystemUtilityImage) == 0x18);
+	static_assert(sizeof(BSSaveDataSystemUtilityImage) == 0x18);
 
 
 	class Main :
@@ -81,19 +81,19 @@ namespace RE
 		bool						 freezeNextFrame;			   // 017
 		HWND						 wnd;						   // 018
 		HINSTANCE					 instance;					   // 020
-		UInt32						 threadID;					   // 028
-		UInt32						 unk02C;					   // 02C
-		UInt64						 unk030;					   // 030
+		std::uint32_t				 threadID;					   // 028
+		std::uint32_t				 unk02C;					   // 02C
+		std::uint64_t				 unk030;					   // 030
 		ScrapHeap					 packedTaskHeap;			   // 038
 		BSPackedTaskQueue			 taskQueue;					   // 0C8
 		ScrapHeap					 secondaryPackedTaskHeap;	   // 108
 		BSPackedTaskQueue			 secondaryTaskQueue;		   // 198
-		UInt8						 unk1D8;					   // 1D8
-		UInt8						 unk1D9;					   // 1D9
-		UInt16						 unk1DA;					   // 1DA
-		UInt32						 unk1DC;					   // 1DC
+		std::uint8_t				 unk1D8;					   // 1D8
+		std::uint8_t				 unk1D9;					   // 1D9
+		std::uint16_t				 unk1DA;					   // 1DA
+		std::uint32_t				 unk1DC;					   // 1DC
 		BSSaveDataSystemUtilityImage saveDataBackgroundImages[3];  // 1E0
 		BSSaveDataSystemUtilityImage saveDataIconImages[3];		   // 228
 	};
-	STATIC_ASSERT(sizeof(Main) == 0x270);
+	static_assert(sizeof(Main) == 0x270);
 }

@@ -27,5 +27,5 @@ namespace RE
 		// members
 		SpellItem* ability;	 // 10
 	};
-	STATIC_ASSERT(sizeof(BGSAbilityPerkEntry) == 0x18);
+	static_assert(sizeof(BGSAbilityPerkEntry) == 0x18);
 }

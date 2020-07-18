@@ -36,7 +36,7 @@ namespace RE
 		}
 
 
-		UInt32 Object::GetNumProperties() const
+		std::uint32_t Object::GetNumProperties() const
 		{
 			return pun_bits(numProperties01, numProperties02, numProperties03, numProperties04, numProperties05, numProperties06, numProperties07, numProperties08, numProperties09, numProperties10, numProperties11, numProperties12, numProperties13, numProperties14, numProperties15, numProperties16, numProperties17, numProperties18, numProperties19);
 		}
@@ -81,7 +81,7 @@ namespace RE
 		}
 
 
-		UInt32 Object::DecRef()
+		std::uint32_t Object::DecRef()
 		{
 			using func_t = decltype(&Object::DecRef);
 			REL::Offset<func_t> func = REL::ID(97469);
@@ -98,7 +98,7 @@ namespace RE
 
 		const Variable* Object::GetProperty(const BSFixedString& a_name) const
 		{
-			constexpr auto INVALID = static_cast<UInt32>(-1);
+			constexpr auto INVALID = static_cast<std::uint32_t>(-1);
 
 			auto idx = INVALID;
 			for (auto cls = type.get(); cls && idx == INVALID; cls = cls->GetParent()) {

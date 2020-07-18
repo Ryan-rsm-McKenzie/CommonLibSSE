@@ -18,7 +18,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
@@ -29,5 +29,5 @@ namespace RE
 		// override (TESForm)
 		virtual bool Load(TESFile* a_mod) override;	 // 06 - { return true; }
 	};
-	STATIC_ASSERT(sizeof(BGSMenuIcon) == 0x30);
+	static_assert(sizeof(BGSMenuIcon) == 0x30);
 }

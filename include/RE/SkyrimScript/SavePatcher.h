@@ -18,6 +18,6 @@ namespace RE
 			// override (BSScript::ISavePatcherInterface)
 			virtual void PatchStackFrame(BSScript::StackFrame* a_stackFrame, BSScript::IVirtualMachine* a_vm) override;	 // 01
 		};
-		STATIC_ASSERT(sizeof(SavePatcher) == 0x8);
+		static_assert(sizeof(SavePatcher) == 0x8);
 	}
 }

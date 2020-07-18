@@ -24,26 +24,26 @@ namespace RE
 			// members
 			ScrapHeap		 heap;			// 00
 			ThreadScrapHeap* next;			// 90
-			UInt32			 owningThread;	// 98
-			UInt32			 pad;			// 9C
+			std::uint32_t	 owningThread;	// 98
+			std::uint32_t	 pad;			// 9C
 		};
-		STATIC_ASSERT(sizeof(ThreadScrapHeap) == 0xA0);
+		static_assert(sizeof(ThreadScrapHeap) == 0xA0);
 
 
 		static MemoryManager* GetSingleton();
 
-		void*	   Allocate(std::size_t a_size, SInt32 a_alignment, bool a_aligned);
+		void*	   Allocate(std::size_t a_size, std::int32_t a_alignment, bool a_aligned);
 		void	   Deallocate(void* a_ptr, bool a_aligned);
 		ScrapHeap* GetThreadScrapHeap();
-		void*	   Reallocate(void* a_ptr, std::size_t a_newSize, SInt32 a_alignment, bool a_aligned);
+		void*	   Reallocate(void* a_ptr, std::size_t a_newSize, std::int32_t a_alignment, bool a_aligned);
 
 
 		// members
 		bool					initialized;						// 000
-		UInt8					pad001;								// 001
-		UInt16					numHeaps;							// 002
-		UInt16					numPhysicalHeaps;					// 004
-		UInt16					pad006;								// 006
+		std::uint8_t			pad001;								// 001
+		std::uint16_t			numHeaps;							// 002
+		std::uint16_t			numPhysicalHeaps;					// 004
+		std::uint16_t			pad006;								// 006
 		IMemoryHeap**			heaps;								// 008
 		bool*					allowOtherContextAllocs;			// 010
 		IMemoryHeap*			heapsByContext[127];				// 018
@@ -56,19 +56,19 @@ namespace RE
 		IMemoryHeap*			externalHavokAllocator;				// 440
 		bool					specialHeaps;						// 448
 		bool					allowPoolUse;						// 449
-		UInt16					pad44A;								// 44A
-		UInt32					sysAllocBytes;						// 44C
-		UInt32					mallocBytes;						// 450
-		UInt32					alignmentForPools;					// 450
-		UInt32					mainThreadMemoryProblemPassSignal;	// 458
-		UInt32					pad45C;								// 45C
+		std::uint16_t			pad44A;								// 44A
+		std::uint32_t			sysAllocBytes;						// 44C
+		std::uint32_t			mallocBytes;						// 450
+		std::uint32_t			alignmentForPools;					// 450
+		std::uint32_t			mainThreadMemoryProblemPassSignal;	// 458
+		std::uint32_t			pad45C;								// 45C
 		std::size_t				failedAllocationSize;				// 460
-		UInt32					numMemoryProblemPassesRun;			// 468
-		UInt32					pad46C;								// 46C
+		std::uint32_t			numMemoryProblemPassesRun;			// 468
+		std::uint32_t			pad46C;								// 46C
 		std::size_t				timeOfLastMemoryProblemPass;		// 470
 		IMemoryHeap*			defaultHeap;						// 478
 	};
-	STATIC_ASSERT(sizeof(MemoryManager) == 0x480);
+	static_assert(sizeof(MemoryManager) == 0x480);
 
 
 	inline void* malloc(std::size_t a_size)
@@ -108,7 +108,7 @@ namespace RE
 			throw std::bad_alloc();
 		}
 
-		auto mem = heap->Allocate(a_size, static_cast<SInt32>(a_alignment), true);
+		auto mem = heap->Allocate(a_size, static_cast<std::int32_t>(a_alignment), true);
 		if (!mem) {
 			throw std::bad_alloc();
 		}
@@ -120,7 +120,7 @@ namespace RE
 	template <class T>
 	inline T* aligned_alloc(std::size_t a_alignment, std::size_t a_size)
 	{
-		return static_cast<T*>(aligned_alloc(static_cast<SInt32>(a_alignment), a_size));
+		return static_cast<T*>(aligned_alloc(static_cast<std::int32_t>(a_alignment), a_size));
 	}
 
 
@@ -181,7 +181,7 @@ namespace RE
 			throw std::bad_alloc();
 		}
 
-		auto mem = heap->Reallocate(a_ptr, a_newSize, static_cast<SInt32>(a_alignment), true);
+		auto mem = heap->Reallocate(a_ptr, a_newSize, static_cast<std::int32_t>(a_alignment), true);
 		if (!mem) {
 			throw std::bad_alloc();
 		}
@@ -467,5 +467,5 @@ namespace RE
 		// members
 		Data* _data;  // 0
 	};
-	STATIC_ASSERT(sizeof(SimpleArray<void*>) == 0x8);
+	static_assert(sizeof(SimpleArray<void*>) == 0x8);
 }

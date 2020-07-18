@@ -6,7 +6,7 @@ namespace RE
 	class hkMultiThreadCheck
 	{
 	public:
-		enum class AccessType : UInt32
+		enum class AccessType
 		{
 			kIgnore = 0,
 			kReadOnly = 1,
@@ -14,14 +14,14 @@ namespace RE
 		};
 
 
-		enum class ReadMode : UInt32
+		enum class ReadMode
 		{
 			kThisObjOnly,
 			kRecursive
 		};
 
 
-		enum class MarkedState : UInt32
+		enum class MarkedState : std::uint32_t
 		{
 			kReadOnly = 0xFFFFFFE1,
 			kReadOnly_SelfOnly = 0xFFFFFFC1,
@@ -29,10 +29,10 @@ namespace RE
 		};
 
 
-		UInt32 threadId;	  // 0
-		SInt32 stackTraceId;  // 4
-		UInt16 markCount;	  // 8
-		UInt16 markBitStack;  // A
+		std::uint32_t threadId;		 // 0
+		std::int32_t  stackTraceId;	 // 4
+		std::uint16_t markCount;	 // 8
+		std::uint16_t markBitStack;	 // A
 	};
-	STATIC_ASSERT(sizeof(hkMultiThreadCheck) == 0xC);
+	static_assert(sizeof(hkMultiThreadCheck) == 0xC);
 }

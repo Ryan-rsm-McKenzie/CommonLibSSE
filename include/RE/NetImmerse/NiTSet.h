@@ -11,14 +11,14 @@ namespace RE
 	public:
 		using value_type = T;
 		using allocator_type = Allocator;
-		using size_type = UInt32;
+		using size_type = std::uint32_t;
 		using reference = value_type&;
 		using const_reference = const value_type&;
 		using iterator = T*;
 		using const_iterator = const T*;
 
 
-		NiTSet(UInt32 a_initialSize = 0) :
+		NiTSet(std::uint32_t a_initialSize = 0) :
 			_data(0),
 			_capacity(a_initialSize),
 			_size(0)
@@ -127,31 +127,31 @@ namespace RE
 		}
 
 	private:
-		T*	   _data;	   // 00
-		UInt32 _capacity;  // 08
-		UInt32 _size;	   // 0C
+		T*			  _data;	  // 00
+		std::uint32_t _capacity;  // 08
+		std::uint32_t _size;	  // 0C
 	};
-	STATIC_ASSERT(sizeof(NiTSet<void*, NiTMallocInterface<void*>>) == 0x10);
+	static_assert(sizeof(NiTSet<void*, NiTMallocInterface<void*>>) == 0x10);
 
 
 	template <class T>
 	class NiTObjectSet : public NiTSet<T, NiTNewInterface<T>>
 	{
 	public:
-		NiTObjectSet(UInt32 a_initialSize = 0) :
+		NiTObjectSet(std::uint32_t a_initialSize = 0) :
 			NiTSet<T, NiTNewInterface<T>>(a_initialSize)
 		{}
 	};
-	STATIC_ASSERT(sizeof(NiTObjectSet<void*>) == 0x10);
+	static_assert(sizeof(NiTObjectSet<void*>) == 0x10);
 
 
 	template <class T>
 	class NiTPrimitiveSet : public NiTSet<T, NiTMallocInterface<T>>
 	{
 	public:
-		NiTPrimitiveSet(UInt32 a_initialSize = 0) :
+		NiTPrimitiveSet(std::uint32_t a_initialSize = 0) :
 			NiTSet<T, NiTMallocInterface<T>>(a_initialSize)
 		{}
 	};
-	STATIC_ASSERT(sizeof(NiTPrimitiveSet<void*>) == 0x10);
+	static_assert(sizeof(NiTPrimitiveSet<void*>) == 0x10);
 }

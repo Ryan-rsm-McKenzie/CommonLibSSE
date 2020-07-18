@@ -9,16 +9,16 @@ namespace RE
 	class ActorCause
 	{
 	public:
-		SInt32 DecRefCount();
-		SInt32 IncRefCount();
-		SInt32 GetRefCount() const;
+		std::int32_t DecRefCount();
+		std::int32_t IncRefCount();
+		std::int32_t GetRefCount() const;
 
 
 		// members
-		ActorHandle				actor;		   // 00
-		NiPoint3				origin;		   // 04
-		UInt32					actorCauseID;  // 10
-		volatile mutable SInt32 refCount;	   // 14
+		ActorHandle					  actor;		 // 00
+		NiPoint3					  origin;		 // 04
+		std::uint32_t				  actorCauseID;	 // 10
+		volatile mutable std::int32_t refCount;		 // 14
 	};
-	STATIC_ASSERT(sizeof(ActorCause) == 0x18);
+	static_assert(sizeof(ActorCause) == 0x18);
 }

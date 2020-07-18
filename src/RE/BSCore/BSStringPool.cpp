@@ -9,13 +9,13 @@ namespace RE
 	}
 
 
-	UInt16 BSStringPool::Entry::GetRefCount() const
+	std::uint16_t BSStringPool::Entry::GetRefCount() const
 	{
 		return _flagsAndRefCount & kRefCountMask;
 	}
 
 
-	UInt32 BSStringPool::Entry::GetLength() const
+	std::uint32_t BSStringPool::Entry::GetLength() const
 	{
 		return _lengthAndRef.length & kLengthMask;
 	}

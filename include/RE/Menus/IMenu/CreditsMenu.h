@@ -26,5 +26,5 @@ namespace RE
 		// override (GFxFunctionHandler)
 		virtual void Call(Params& a_params) override;  // 01
 	};
-	STATIC_ASSERT(sizeof(CreditsMenu) == 0x40);
+	static_assert(sizeof(CreditsMenu) == 0x40);
 }

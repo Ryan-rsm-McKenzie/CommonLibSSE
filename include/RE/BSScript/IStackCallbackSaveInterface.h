@@ -17,6 +17,6 @@ namespace RE
 			virtual void Unk_01(void) = 0;	// 01
 			virtual void Unk_02(void) = 0;	// 02
 		};
-		STATIC_ASSERT(sizeof(IStackCallbackSaveInterface) == 0x8);
+		static_assert(sizeof(IStackCallbackSaveInterface) == 0x8);
 	}
 }

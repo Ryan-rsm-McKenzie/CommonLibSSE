@@ -23,7 +23,7 @@ namespace RE
 
 
 		// members
-		BSTArray<BSTTuple<ObjectRefHandle, UInt32>> dependentManagers;	// 10
+		BSTArray<BSTTuple<ObjectRefHandle, std::uint32_t>> dependentManagers;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraScriptedAnimDependence) == 0x28);
+	static_assert(sizeof(ExtraScriptedAnimDependence) == 0x28);
 }

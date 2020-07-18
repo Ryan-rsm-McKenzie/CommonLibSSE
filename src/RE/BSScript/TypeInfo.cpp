@@ -51,7 +51,7 @@ namespace RE
 
 		bool operator==(const TypeInfo& a_lhs, const TypeInfo& a_rhs)
 		{
-			return a_lhs._rawType == a_rhs._rawType;
+			return a_lhs.GetRawType() == a_rhs.GetRawType();
 		}
 
 
@@ -63,7 +63,7 @@ namespace RE
 
 		bool operator<(const TypeInfo& a_lhs, const TypeInfo& a_rhs)
 		{
-			return a_lhs._rawType < a_rhs._rawType;
+			return a_lhs.GetRawType() < a_rhs.GetRawType();
 		}
 
 
@@ -88,24 +88,24 @@ namespace RE
 		auto TypeInfo::GetRawType() const
 			-> RawType
 		{
-			return _rawType;
+			return *_rawType;
 		}
 
 
 		ObjectTypeInfo* TypeInfo::GetTypeInfo() const
 		{
 			assert(IsObject());
-			return reinterpret_cast<ObjectTypeInfo*>(_rawType & ~RawType::kObject);
+			return reinterpret_cast<ObjectTypeInfo*>(GetRawType() & ~RawType::kObject);
 		}
 
 
 		auto TypeInfo::GetUnmangledRawType() const
 			-> RawType
 		{
-			if (_rawType < RawType::kArraysEnd) {
-				return _rawType;
+			if (GetRawType() < RawType::kArraysEnd) {
+				return GetRawType();
 			} else {
-				return (_rawType & RawType::kObject) != RawType::kNone ? RawType::kObjectArray : RawType::kObject;
+				return (GetRawType() & RawType::kObject) != RawType::kNone ? RawType::kObjectArray : RawType::kObject;
 			}
 		}
 
@@ -118,25 +118,25 @@ namespace RE
 
 		bool TypeInfo::IsBool() const
 		{
-			return _rawType == RawType::kBool;
+			return GetRawType() == RawType::kBool;
 		}
 
 
 		bool TypeInfo::IsFloat() const
 		{
-			return _rawType == RawType::kFloat;
+			return GetRawType() == RawType::kFloat;
 		}
 
 
 		bool TypeInfo::IsInt() const
 		{
-			return _rawType == RawType::kInt;
+			return GetRawType() == RawType::kInt;
 		}
 
 
 		bool TypeInfo::IsLiteralArray() const
 		{
-			switch (_rawType) {
+			switch (GetRawType()) {
 			case RawType::kStringArray:
 			case RawType::kIntArray:
 			case RawType::kFloatArray:
@@ -150,13 +150,13 @@ namespace RE
 
 		bool TypeInfo::IsNoneArray() const
 		{
-			return _rawType == RawType::kNoneArray;
+			return GetRawType() == RawType::kNoneArray;
 		}
 
 
 		bool TypeInfo::IsNoneObject() const
 		{
-			return _rawType == RawType::kNone;
+			return GetRawType() == RawType::kNone;
 		}
 
 
@@ -168,13 +168,13 @@ namespace RE
 
 		bool TypeInfo::IsObjectArray() const
 		{
-			return (_rawType >= RawType::kArraysEnd) && ((_rawType & RawType::kObject) != RawType::kNone);
+			return (GetRawType() >= RawType::kArraysEnd) && ((GetRawType() & RawType::kObject) != RawType::kNone);
 		}
 
 
 		bool TypeInfo::IsString() const
 		{
-			return _rawType == RawType::kString;
+			return GetRawType() == RawType::kString;
 		}
 
 

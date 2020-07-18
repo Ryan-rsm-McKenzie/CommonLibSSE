@@ -25,9 +25,9 @@ namespace RE
 
 
 			// members
-			UInt32 minPacketSize;  // 10
-			UInt32 pad14;		   // 14
+			std::uint32_t minPacketSize;  // 10
+			std::uint32_t pad14;		  // 14
 		};
-		STATIC_ASSERT(sizeof(AsyncStream) == 0x18);
+		static_assert(sizeof(AsyncStream) == 0x18);
 	}
 }

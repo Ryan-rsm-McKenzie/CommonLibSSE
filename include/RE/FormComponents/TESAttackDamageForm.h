@@ -19,13 +19,13 @@ namespace RE
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 		// add
-		virtual UInt16 GetAttackDamage() const;	 // 04 - { return attackDamage; }
+		virtual std::uint16_t GetAttackDamage() const;	// 04 - { return attackDamage; }
 
 
 		// members
-		UInt16 attackDamage;  // 08
-		UInt16 pad0A;		  // 0A
-		UInt32 pad0C;		  // 0C
+		std::uint16_t attackDamage;	 // 08
+		std::uint16_t pad0A;		 // 0A
+		std::uint32_t pad0C;		 // 0C
 	};
-	STATIC_ASSERT(sizeof(TESAttackDamageForm) == 0x10);
+	static_assert(sizeof(TESAttackDamageForm) == 0x10);
 }

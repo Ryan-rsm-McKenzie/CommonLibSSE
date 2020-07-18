@@ -14,11 +14,11 @@ namespace RE
 	{
 		struct TLSData
 		{
-			UInt8 unk000[0x600];  // 000
-			bool consoleMode;	  // 600
+			std::uint8_t unk000[0x600];	 // 000
+			bool consoleMode;			 // 600
 		};
 
-		REL::Offset<UInt32*> tlsIndex(Offset::TlsIndex);
+		REL::Offset<std::uint32_t*> tlsIndex(Offset::TlsIndex);
 		auto tlsData = reinterpret_cast<TLSData**>(__readgsqword(0x58));
 		return tlsData[*tlsIndex]->consoleMode;
 	}

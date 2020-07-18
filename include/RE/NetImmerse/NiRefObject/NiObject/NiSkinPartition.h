@@ -19,37 +19,37 @@ namespace RE
 
 		struct TriShape
 		{
-			ID3D11Buffer*	vertexBuffer;	// 00
-			ID3D11Buffer*	indexBuffer;	// 08
-			UInt64			vertexDesc;		// 10
-			volatile UInt32 refCount;		// 18
-			UInt32			pad1C;			// 1C
-			UInt8*			rawVertexData;	// 20
-			UInt16*			rawIndexData;	// 28
+			ID3D11Buffer*		   vertexBuffer;   // 00
+			ID3D11Buffer*		   indexBuffer;	   // 08
+			std::uint64_t		   vertexDesc;	   // 10
+			volatile std::uint32_t refCount;	   // 18
+			std::uint32_t		   pad1C;		   // 1C
+			std::uint8_t*		   rawVertexData;  // 20
+			std::uint16_t*		   rawIndexData;   // 28
 		};
-		STATIC_ASSERT(sizeof(TriShape) == 0x30);
+		static_assert(sizeof(TriShape) == 0x30);
 
 
 		class Partition
 		{
 		public:
-			UInt64	  vertexDesc;	   // 00
-			UInt16*	  bones;		   // 08
-			float*	  weights;		   // 10
-			UInt16*	  vertexMap;	   // 18
-			UInt8*	  bonePalette;	   // 20
-			UInt16*	  triList;		   // 28
-			UInt16*	  stripLengths;	   // 30
-			UInt16	  vertices;		   // 38
-			UInt16	  triangles;	   // 3A
-			UInt16	  numBones;		   // 3C
-			UInt16	  strips;		   // 3E
-			UInt16	  bonesPerVertex;  // 40
-			UInt16	  pad42;		   // 42
-			float	  unk44;		   // 44
-			TriShape* buffData;		   // 48
+			std::uint64_t  vertexDesc;		// 00
+			std::uint16_t* bones;			// 08
+			float*		   weights;			// 10
+			std::uint16_t* vertexMap;		// 18
+			std::uint8_t*  bonePalette;		// 20
+			std::uint16_t* triList;			// 28
+			std::uint16_t* stripLengths;	// 30
+			std::uint16_t  vertices;		// 38
+			std::uint16_t  triangles;		// 3A
+			std::uint16_t  numBones;		// 3C
+			std::uint16_t  strips;			// 3E
+			std::uint16_t  bonesPerVertex;	// 40
+			std::uint16_t  pad42;			// 42
+			float		   unk44;			// 44
+			TriShape*	   buffData;		// 48
 		};
-		STATIC_ASSERT(sizeof(Partition) == 0x50);
+		static_assert(sizeof(Partition) == 0x50);
 
 
 		virtual ~NiSkinPartition();	 // 00
@@ -67,10 +67,10 @@ namespace RE
 
 
 		// members
-		UInt32				   numPartitions;  // 10
-		UInt32				   pad14;		   // 14
+		std::uint32_t		   numPartitions;  // 10
+		std::uint32_t		   pad14;		   // 14
 		SimpleArray<Partition> partitions;	   // 18
-		UInt64				   unk20;		   // 20
+		std::uint64_t		   unk20;		   // 20
 	};
-	STATIC_ASSERT(sizeof(NiSkinPartition) == 0x28);
+	static_assert(sizeof(NiSkinPartition) == 0x28);
 }

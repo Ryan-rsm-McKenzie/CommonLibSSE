@@ -21,7 +21,7 @@ namespace RE
 	}
 
 
-	bool BSInputDevice::IsPressed(UInt32 a_keyCode) const
+	bool BSInputDevice::IsPressed(std::uint32_t a_keyCode) const
 	{
 		auto it = deviceButtons.find(a_keyCode);
 		return (it != deviceButtons.end()) && (it->second->heldDownSecs > 0.0);

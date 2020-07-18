@@ -35,6 +35,6 @@ namespace RE
 
 	SOUL_LEVEL ExtraSoul::GetContainedSoul() const
 	{
-		return soul;
+		return *soul;
 	}
 }

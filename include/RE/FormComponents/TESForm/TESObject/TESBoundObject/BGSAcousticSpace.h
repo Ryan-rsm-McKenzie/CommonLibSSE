@@ -15,7 +15,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -38,5 +38,5 @@ namespace RE
 		TESRegion*				soundRegion;   // 38 - RDAT - interiors only
 		BGSReverbParameters*	reverbType;	   // 40 - BNAM
 	};
-	STATIC_ASSERT(sizeof(BGSAcousticSpace) == 0x48);
+	static_assert(sizeof(BGSAcousticSpace) == 0x48);
 }

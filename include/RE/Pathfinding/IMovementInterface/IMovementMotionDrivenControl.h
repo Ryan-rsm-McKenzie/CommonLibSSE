@@ -23,5 +23,5 @@ namespace RE
 		virtual void Unk_07(void) = 0;	// 07
 		virtual void Unk_08(void) = 0;	// 08
 	};
-	STATIC_ASSERT(sizeof(IMovementMotionDrivenControl) == 0x8);
+	static_assert(sizeof(IMovementMotionDrivenControl) == 0x8);
 }

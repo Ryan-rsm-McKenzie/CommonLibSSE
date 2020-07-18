@@ -19,7 +19,7 @@ namespace RE
 	IFormFactory* IFormFactory::GetFormFactoryByType(FormType a_formType)
 	{
 		auto formFactories = GetFormFactories();
-		return formFactories.second ? formFactories.first[static_cast<UInt32>(a_formType)] : nullptr;
+		return formFactories.second ? formFactories.first[static_cast<std::uint32_t>(a_formType)] : nullptr;
 	}
 
 

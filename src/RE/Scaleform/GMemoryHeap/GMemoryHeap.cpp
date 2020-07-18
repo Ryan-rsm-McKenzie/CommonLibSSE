@@ -90,7 +90,7 @@ namespace RE
 
 	GMemoryHeap::HeapFlags GMemoryHeap::GetFlags() const
 	{
-		return _info.desc.flags;
+		return *_info.desc.flags;
 	}
 
 

@@ -17,7 +17,7 @@ namespace RE
 		using VertexFormat = GRenderer::VertexFormat;
 
 
-		enum class RenderFlag : UInt32
+		enum class RenderFlag
 		{
 			kNone = 0,
 
@@ -49,13 +49,13 @@ namespace RE
 
 
 		// members
-		GPtr<GRenderer> renderer;			 // 18
-		float			maxCurvePixelError;	 // 20
-		RenderFlag		renderFlags;		 // 24
-		float			strokerAAWidth;		 // 28
-		RenderCapBits	rendererCapBits;	 // 2C
-		VertexFormat	rendererVtxFmts;	 // 30
-		UInt32			pad34;				 // 34
+		GPtr<GRenderer>								renderer;			 // 18
+		float										maxCurvePixelError;	 // 20
+		stl::enumeration<RenderFlag, std::uint32_t> renderFlags;		 // 24
+		float										strokerAAWidth;		 // 28
+		RenderCapBits								rendererCapBits;	 // 2C
+		VertexFormat								rendererVtxFmts;	 // 30
+		std::uint32_t								pad34;				 // 34
 	};
-	STATIC_ASSERT(sizeof(GFxRenderConfig) == 0x38);
+	static_assert(sizeof(GFxRenderConfig) == 0x38);
 }

@@ -64,16 +64,16 @@ namespace RE
 
 		virtual ~NiCullingProcess();  // 15
 
-		virtual void Process1(NiAVObject* a_object, UInt32 a_arg2);											 // 16
+		virtual void Process1(NiAVObject* a_object, std::uint32_t a_arg2);									 // 16
 		virtual void Process2(const NiCamera* a_camera, NiAVObject* a_scene, NiVisibleArray* a_visibleSet);	 // 17 - { return; }
-		virtual void AppendVirtual(BSGeometry& a_visible, UInt32 a_arg2);									 // 18
+		virtual void AppendVirtual(BSGeometry& a_visible, std::uint32_t a_arg2);							 // 18
 
 
 		// members
 		const bool		useVirtualAppend;	   // 008
-		UInt8			pad009;				   // 009
-		UInt16			pad00A;				   // 00A
-		UInt32			pad00C;				   // 00C
+		std::uint8_t	pad009;				   // 009
+		std::uint16_t	pad00A;				   // 00A
+		std::uint32_t	pad00C;				   // 00C
 		NiVisibleArray* visibleSet;			   // 010
 		const NiCamera* camera;				   // 018
 		NiFrustum		frustum;			   // 020
@@ -83,10 +83,10 @@ namespace RE
 		bool			updateAccumulateFlag;  // 11D
 		bool			ignorePreprocess;	   // 11E
 		bool			doCustomCullPlanes;	   // 11F
-		UInt8			unk120;				   // 120
-		UInt8			unk121;				   // 121
-		UInt16			pad122;				   // 122
-		UInt32			pad124;				   // 124
+		std::uint8_t	unk120;				   // 120
+		std::uint8_t	unk121;				   // 121
+		std::uint16_t	pad122;				   // 122
+		std::uint32_t	pad124;				   // 124
 	};
-	STATIC_ASSERT(sizeof(NiCullingProcess) == 0x128);
+	static_assert(sizeof(NiCullingProcess) == 0x128);
 }

@@ -14,7 +14,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::DialogueBranch;
 
 
-		enum class Flag : UInt32
+		enum class Flag
 		{
 			kNone = 0,
 			kTopLevel = 1 << 0,
@@ -25,7 +25,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -43,12 +43,12 @@ namespace RE
 
 
 		// members
-		Flag		  flags;		  // 20 - DNAM
-		UInt32		  pad24;		  // 24
-		TESQuest*	  quest;		  // 28 - QNAM
-		TESTopic*	  startingTopic;  // 30 - SNAM
-		DIALOGUE_TYPE type;			  // 38 - TNAM
-		UInt32		  pad3C;		  // 3C
+		stl::enumeration<Flag, std::uint32_t> flags;		  // 20 - DNAM
+		std::uint32_t						  pad24;		  // 24
+		TESQuest*							  quest;		  // 28 - QNAM
+		TESTopic*							  startingTopic;  // 30 - SNAM
+		DIALOGUE_TYPE						  type;			  // 38 - TNAM
+		std::uint32_t						  pad3C;		  // 3C
 	};
-	STATIC_ASSERT(sizeof(BGSDialogueBranch) == 0x40);
+	static_assert(sizeof(BGSDialogueBranch) == 0x40);
 }

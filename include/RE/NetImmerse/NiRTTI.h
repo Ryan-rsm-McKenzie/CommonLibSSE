@@ -14,7 +14,7 @@ namespace RE
 		const char*	  name;		 // 00
 		const NiRTTI* baseRTTI;	 // 08
 	};
-	STATIC_ASSERT(sizeof(NiRTTI) == 0x10);
+	static_assert(sizeof(NiRTTI) == 0x10);
 
 
 	namespace Ni_Impl

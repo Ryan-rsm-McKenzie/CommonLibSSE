@@ -28,7 +28,7 @@ namespace RE
 	}
 
 
-	bool PlayerCharacter::AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, SInt32 a_number, bool a_fromContainer)
+	bool PlayerCharacter::AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer)
 	{
 		using func_t = decltype(&PlayerCharacter::AttemptPickpocket);
 		REL::Offset<func_t> func = REL::ID(39568);
@@ -64,7 +64,7 @@ namespace RE
 	}
 
 
-	UInt32 PlayerCharacter::GetNumTints(UInt32 a_tintType)
+	std::uint32_t PlayerCharacter::GetNumTints(std::uint32_t a_tintType)
 	{
 		using func_t = decltype(&PlayerCharacter::GetNumTints);
 		REL::Offset<func_t> func(Offset::PlayerCharacter::GetNumTints);
@@ -78,7 +78,7 @@ namespace RE
 			return nullptr;
 		}
 
-		for (UInt32 i = 0; i < tintMasks.size(); ++i) {
+		for (std::uint32_t i = 0; i < tintMasks.size(); ++i) {
 			if (tintMasks[i] == a_original) {
 				return i < overlayTintMasks->size() ? (*overlayTintMasks)[i] : nullptr;
 			}
@@ -94,7 +94,7 @@ namespace RE
 	}
 
 
-	TintMask* PlayerCharacter::GetTintMask(UInt32 a_tintType, UInt32 a_index)
+	TintMask* PlayerCharacter::GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index)
 	{
 		using func_t = decltype(&PlayerCharacter::GetTintMask);
 		REL::Offset<func_t> func(Offset::PlayerCharacter::GetTintMask);

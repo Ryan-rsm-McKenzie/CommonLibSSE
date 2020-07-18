@@ -8,7 +8,7 @@ namespace RE
 	class GFxActionControl : public GFxState
 	{
 	public:
-		enum class ActionControlFlags : UInt32
+		enum class ActionControlFlags
 		{
 			kNone = 0,
 			kVerbose = 1 << 0,
@@ -26,7 +26,7 @@ namespace RE
 		{}
 
 
-		constexpr ActionControlFlags GetFlags() const { return actionFlags; }
+		constexpr ActionControlFlags GetFlags() const { return *actionFlags; }
 		constexpr void				 SetFlags(ActionControlFlags a_actionFlags) { actionFlags = a_actionFlags; }
 
 		constexpr void SetVerboseLogging() { actionFlags |= ActionControlFlags::kVerbose; }
@@ -49,8 +49,8 @@ namespace RE
 
 
 		// members
-		ActionControlFlags actionFlags;	 // 18
-		UInt32			   pad1C;		 // 1C
+		stl::enumeration<ActionControlFlags, std::uint32_t> actionFlags;  // 18
+		std::uint32_t										pad1C;		  // 1C
 	};
-	STATIC_ASSERT(sizeof(GFxActionControl) == 0x20);
+	static_assert(sizeof(GFxActionControl) == 0x20);
 }

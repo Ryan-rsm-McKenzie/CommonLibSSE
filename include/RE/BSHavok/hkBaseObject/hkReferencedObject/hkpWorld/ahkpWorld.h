@@ -15,8 +15,8 @@ namespace RE
 
 
 		// members
-		UInt64 unk430;	// 430
-		UInt64 unk438;	// 438
+		std::uint64_t unk430;  // 430
+		std::uint64_t unk438;  // 438
 	};
-	STATIC_ASSERT(sizeof(ahkpWorld) == 0x440);
+	static_assert(sizeof(ahkpWorld) == 0x440);
 }

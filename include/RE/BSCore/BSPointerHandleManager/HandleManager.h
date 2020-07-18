@@ -10,5 +10,5 @@ namespace RE
 	{
 	public:
 	};
-	STATIC_ASSERT(sizeof(HandleManager) == 0x1);
+	static_assert(sizeof(HandleManager) == 0x1);
 }

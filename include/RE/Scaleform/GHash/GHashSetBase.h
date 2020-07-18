@@ -89,7 +89,7 @@ namespace RE
 			const SelfType* hash;	// 00
 			SPInt			index;	// 08
 		};
-		STATIC_ASSERT(sizeof(const_iterator) == 0x10);
+		static_assert(sizeof(const_iterator) == 0x10);
 
 
 		friend struct const_iterator;
@@ -186,7 +186,7 @@ namespace RE
 		{}
 
 
-		GHashSetBase(SInt32 a_sizeHint) :
+		GHashSetBase(std::int32_t a_sizeHint) :
 			table(0)
 		{
 			SetCapacity(this, a_sizeHint);
@@ -198,7 +198,7 @@ namespace RE
 		{}
 
 
-		GHashSetBase(void* a_memAddr, SInt32 a_sizeHint) :
+		GHashSetBase(void* a_memAddr, std::int32_t a_sizeHint) :
 			table(0)
 		{
 			SetCapacity(a_memAddr, a_sizeHint);
@@ -517,7 +517,7 @@ namespace RE
 			UPInt sizeMask;	   // 08
 							   //Entry	entries[0];	// 10
 		};
-		STATIC_ASSERT(sizeof(TableType) == 0x10);
+		static_assert(sizeof(TableType) == 0x10);
 
 
 		template <class K>

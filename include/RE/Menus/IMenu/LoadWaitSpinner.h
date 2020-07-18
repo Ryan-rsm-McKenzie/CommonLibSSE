@@ -43,11 +43,11 @@ namespace RE
 
 
 		// members
-		GFxValue		root;	 // 48 - "Menu_mc"
-		volatile SInt32 unk60;	 // 60
-		bool			fadeIn;	 // 64
-		UInt8			pad65;	 // 65
-		UInt16			pad66;	 // 66
+		GFxValue			  root;	   // 48 - "Menu_mc"
+		volatile std::int32_t unk60;   // 60
+		bool				  fadeIn;  // 64
+		std::uint8_t		  pad65;   // 65
+		std::uint16_t		  pad66;   // 66
 	};
-	STATIC_ASSERT(sizeof(LoadWaitSpinner) == 0x68);
+	static_assert(sizeof(LoadWaitSpinner) == 0x68);
 }

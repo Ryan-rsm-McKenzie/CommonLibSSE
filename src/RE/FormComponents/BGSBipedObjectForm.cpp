@@ -7,21 +7,21 @@ namespace RE
 		-> BipedObjectSlot
 	{
 		bipedModelData.bipedObjectSlots |= a_slot;
-		return bipedModelData.bipedObjectSlots;
+		return *bipedModelData.bipedObjectSlots;
 	}
 
 
 	auto BGSBipedObjectForm::GetArmorType() const
 		-> ArmorType
 	{
-		return bipedModelData.armorType;
+		return *bipedModelData.armorType;
 	}
 
 
 	auto BGSBipedObjectForm::GetSlotMask() const
 		-> BipedObjectSlot
 	{
-		return bipedModelData.bipedObjectSlots;
+		return *bipedModelData.bipedObjectSlots;
 	}
 
 
@@ -61,7 +61,7 @@ namespace RE
 		if (a_slot != BipedObjectSlot::kNone) {
 			bipedModelData.bipedObjectSlots &= ~a_slot;
 		}
-		return bipedModelData.bipedObjectSlots;
+		return *bipedModelData.bipedObjectSlots;
 	}
 
 

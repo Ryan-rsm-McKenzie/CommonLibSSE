@@ -30,7 +30,7 @@ namespace RE
 	}
 
 
-	UInt32 BSHandleRefObject::QRefCount() const
+	std::uint32_t BSHandleRefObject::QRefCount() const
 	{
 		return _refCount & kRefCountMask;
 	}

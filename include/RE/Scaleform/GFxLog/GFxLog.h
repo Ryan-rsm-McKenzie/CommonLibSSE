@@ -22,5 +22,5 @@ namespace RE
 
 		void LogMessageByType(LogMessageType a_messageType, const char* a_fmt, ...);
 	};
-	STATIC_ASSERT(sizeof(GFxLog) == 0x20);
+	static_assert(sizeof(GFxLog) == 0x20);
 }

@@ -26,7 +26,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ActiveEffect;
 
 
-		enum class Flag : UInt32
+		enum class Flag
 		{
 			kHasConditions = 1 << 7,
 			kRecovers = 1 << 9,
@@ -35,7 +35,7 @@ namespace RE
 		};
 
 
-		enum class ConditionStatus : UInt32
+		enum class ConditionStatus
 		{
 			kNA = static_cast<std::underlying_type_t<ConditionStatus>>(-1),
 			kFalse = 0,
@@ -80,25 +80,25 @@ namespace RE
 		const Actor*		 GetTargetActor() const;
 
 
-		ActiveEffectReferenceEffectController hitEffectController;	// 08
-		BSSoundHandle						  persistentSound;		// 28
-		ActorHandle							  caster;				// 34
-		NiPointer<NiNode>					  sourceNode;			// 38
-		MagicItem*							  spell;				// 40
-		Effect*								  effect;				// 48
-		MagicTarget*						  target;				// 50
-		TESBoundObject*						  source;				// 58
-		BSSimpleList<ReferenceEffect*>*		  hitEffects;			// 60
-		MagicItem*							  displacementSpell;	// 68
-		float								  elapsedSeconds;		// 70
-		float								  duration;				// 74
-		float								  magnitude;			// 78
-		Flag								  flags;				// 7C
-		ConditionStatus						  conditionStatus;		// 80
-		UInt16								  usUniqueID;			// 84
-		UInt16								  pad86;				// 86
-		MagicSystem::CastingSource			  castingSource;		// 88
-		UInt32								  pad8C;				// 8C
+		ActiveEffectReferenceEffectController			 hitEffectController;  // 08
+		BSSoundHandle									 persistentSound;	   // 28
+		ActorHandle										 caster;			   // 34
+		NiPointer<NiNode>								 sourceNode;		   // 38
+		MagicItem*										 spell;				   // 40
+		Effect*											 effect;			   // 48
+		MagicTarget*									 target;			   // 50
+		TESBoundObject*									 source;			   // 58
+		BSSimpleList<ReferenceEffect*>*					 hitEffects;		   // 60
+		MagicItem*										 displacementSpell;	   // 68
+		float											 elapsedSeconds;	   // 70
+		float											 duration;			   // 74
+		float											 magnitude;			   // 78
+		stl::enumeration<Flag, std::uint32_t>			 flags;				   // 7C
+		stl::enumeration<ConditionStatus, std::uint32_t> conditionStatus;	   // 80
+		std::uint16_t									 usUniqueID;		   // 84
+		std::uint16_t									 pad86;				   // 86
+		MagicSystem::CastingSource						 castingSource;		   // 88
+		std::uint32_t									 pad8C;				   // 8C
 	};
-	STATIC_ASSERT(sizeof(ActiveEffect) == 0x90);
+	static_assert(sizeof(ActiveEffect) == 0x90);
 }

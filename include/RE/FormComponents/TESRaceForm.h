@@ -25,5 +25,5 @@ namespace RE
 		// members
 		TESRace* race;	// 08 - RNAM
 	};
-	STATIC_ASSERT(sizeof(TESRaceForm) == 0x10);
+	static_assert(sizeof(TESRaceForm) == 0x10);
 }

@@ -12,7 +12,7 @@ namespace RE
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSXFlags;
 
 
-		enum class Flag : SInt32
+		enum class Flag
 		{
 			kNone = 0,
 			kAnimated = 1 << 0,
@@ -47,5 +47,5 @@ namespace RE
 		Flag GetFlags() const;
 		void SetFlags(Flag a_flags);
 	};
-	STATIC_ASSERT(sizeof(BSXFlags) == 0x20);
+	static_assert(sizeof(BSXFlags) == 0x20);
 }

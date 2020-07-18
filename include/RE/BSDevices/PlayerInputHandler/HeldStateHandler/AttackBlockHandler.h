@@ -21,12 +21,12 @@ namespace RE
 
 
 		// members
-		UInt64 unk18;  // 18
-		UInt64 unk20;  // 20
-		UInt64 unk28;  // 28
-		UInt64 unk30;  // 30
-		UInt64 unk38;  // 38
-		UInt64 unk40;  // 40
+		std::uint64_t unk18;  // 18
+		std::uint64_t unk20;  // 20
+		std::uint64_t unk28;  // 28
+		std::uint64_t unk30;  // 30
+		std::uint64_t unk38;  // 38
+		std::uint64_t unk40;  // 40
 	};
-	STATIC_ASSERT(sizeof(AttackBlockHandler) == 0x48);
+	static_assert(sizeof(AttackBlockHandler) == 0x48);
 }

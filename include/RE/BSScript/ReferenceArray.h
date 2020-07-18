@@ -123,8 +123,8 @@ namespace RE
 			void do_wrap()
 			{
 				if (_wrapped) {
-					const auto SIZE = static_cast<UInt32>(_unwrapped.size());
-					for (UInt32 i = 0; i < SIZE; ++i) {
+					const auto SIZE = static_cast<std::uint32_t>(_unwrapped.size());
+					for (std::uint32_t i = 0; i < SIZE; ++i) {
 						(*_wrapped)[i].Pack(_unwrapped[i]);
 					}
 				}

@@ -37,18 +37,18 @@ namespace RE
 			// add
 			virtual bool Accept(ActiveEffect* a_effect) = 0;  // 01
 		};
-		STATIC_ASSERT(sizeof(ForEachActiveEffectVisitor) == 0x8);
+		static_assert(sizeof(ForEachActiveEffectVisitor) == 0x8);
 
 
 		struct SpellDispelData
 		{
 			MagicItem*					  spell;		 // 00
 			BSPointerHandle<Actor>		  caster;		 // 08
-			UInt32						  pad0C;		 // 0C
+			std::uint32_t				  pad0C;		 // 0C
 			BSTSmartPointer<ActiveEffect> activeEffect;	 // 10
 			SpellDispelData*			  next;			 // 18
 		};
-		STATIC_ASSERT(sizeof(SpellDispelData) == 0x20);
+		static_assert(sizeof(SpellDispelData) == 0x20);
 
 
 		virtual ~MagicTarget();	 // 00
@@ -73,10 +73,10 @@ namespace RE
 
 		// members
 		SpellDispelData* postUpdateDispelList;	// 08
-		UInt8			 flags;					// 10
-		UInt8			 pad11;					// 11
-		UInt16			 pad12;					// 12
-		UInt32			 pad14;					// 14
+		std::uint8_t	 flags;					// 10
+		std::uint8_t	 pad11;					// 11
+		std::uint16_t	 pad12;					// 12
+		std::uint32_t	 pad14;					// 14
 	};
-	STATIC_ASSERT(sizeof(MagicTarget) == 0x18);
+	static_assert(sizeof(MagicTarget) == 0x18);
 }

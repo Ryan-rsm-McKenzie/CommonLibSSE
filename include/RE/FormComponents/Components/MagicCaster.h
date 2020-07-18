@@ -15,7 +15,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_MagicCaster;
 
 
-		enum class State : UInt32
+		enum class State
 		{
 		};
 
@@ -54,16 +54,16 @@ namespace RE
 
 
 		// members
-		BSTArray<BSSoundHandle> sounds;				// 08
-		ObjectRefHandle			desiredTarget;		// 20
-		UInt32					pad24;				// 24
-		MagicItem*				currentSpell;		// 28
-		State					state;				// 30
-		float					castingTimer;		// 34
-		float					currentSpellCost;	// 38
-		float					magnitudeOverride;	// 3C
-		float					nextTargetUpdate;	// 40
-		float					projectileTimer;	// 44
+		BSTArray<BSSoundHandle>				   sounds;			   // 08
+		ObjectRefHandle						   desiredTarget;	   // 20
+		std::uint32_t						   pad24;			   // 24
+		MagicItem*							   currentSpell;	   // 28
+		stl::enumeration<State, std::uint32_t> state;			   // 30
+		float								   castingTimer;	   // 34
+		float								   currentSpellCost;   // 38
+		float								   magnitudeOverride;  // 3C
+		float								   nextTargetUpdate;   // 40
+		float								   projectileTimer;	   // 44
 	};
-	STATIC_ASSERT(sizeof(MagicCaster) == 0x48);
+	static_assert(sizeof(MagicCaster) == 0x48);
 }

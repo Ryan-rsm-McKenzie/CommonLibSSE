@@ -20,5 +20,5 @@ namespace RE
 
 		static INIPrefSettingCollection* GetSingleton();
 	};
-	STATIC_ASSERT(sizeof(INIPrefSettingCollection) == 0x128);
+	static_assert(sizeof(INIPrefSettingCollection) == 0x128);
 }

@@ -71,8 +71,8 @@ namespace RE
 			virtual void					   CalculateFullReloadList(void) const = 0;																																					   // 13
 			virtual bool					   CreateObject1(const BSFixedString& a_className, void* a_property, BSTSmartPointer<Object>& a_objPtr) = 0;																				   // 14
 			virtual bool					   CreateObject2(const BSFixedString& a_className, BSTSmartPointer<Object>& a_result) = 0;																									   // 15
-			virtual bool					   CreateArray1(const TypeInfo& a_typeInfo, UInt32 a_size, BSTSmartPointer<Array>& a_arrayPtr) = 0;																							   // 16
-			virtual bool					   CreateArray2(TypeInfo::RawType a_typeID, const BSFixedString& a_className, UInt32 a_size, BSTSmartPointer<Array>& a_arrayPtr) = 0;														   // 17
+			virtual bool					   CreateArray1(const TypeInfo& a_typeInfo, std::uint32_t a_size, BSTSmartPointer<Array>& a_arrayPtr) = 0;																					   // 16
+			virtual bool					   CreateArray2(TypeInfo::RawType a_typeID, const BSFixedString& a_className, std::uint32_t a_size, BSTSmartPointer<Array>& a_arrayPtr) = 0;												   // 17
 			virtual bool					   BindNativeMethod(IFunction* a_fn) = 0;																																					   // 18
 			virtual void					   SetCallableFromTasklets1(const char* a_className, const char* a_stateName, const char* a_fnName, bool a_callable) = 0;																	   // 19
 			virtual void					   SetCallableFromTasklets2(const char* a_className, const char* a_fnName, bool a_callable) = 0;																							   // 1A
@@ -83,8 +83,8 @@ namespace RE
 			virtual bool					   CastObject(const BSTSmartPointer<Object>& a_fromObjPtr, const BSTSmartPointer<ObjectTypeInfo>& a_toTypeInfoPtr, BSTSmartPointer<Object>& a_toObjPtr) = 0;								   // 1F
 			virtual bool					   SetPropertyValue(BSTSmartPointer<Object>& a_obj, const char* a_propertyName, Variable& a_setVal) = 0;																					   // 20
 			virtual bool					   GetPropertyValue(BSTSmartPointer<Object>& a_obj, const char* a_propertyName, Variable& a_getVal) = 0;																					   // 21
-			virtual bool					   GetVariableValue1(const BSTSmartPointer<Object>& a_objPtr, UInt32 a_index, Variable& a_out) const = 0;																					   // 22
-			virtual bool					   GetVariableValue2(VMHandle a_handle, const BSFixedString& a_className, SInt32 a_variableIndex, Variable& a_out) const = 0;																   // 23
+			virtual bool					   GetVariableValue1(const BSTSmartPointer<Object>& a_objPtr, std::uint32_t a_index, Variable& a_out) const = 0;																			   // 22
+			virtual bool					   GetVariableValue2(VMHandle a_handle, const BSFixedString& a_className, std::int32_t a_variableIndex, Variable& a_out) const = 0;															   // 23
 			virtual void					   SendEvent(VMHandle a_handle, const BSFixedString& a_eventName, IFunctionArguments* a_args) = 0;																							   // 24
 			virtual void					   SendEventAll(const BSFixedString& a_eventName, IFunctionArguments* a_args) = 0;																											   // 25
 			virtual bool					   DispatchStaticCall(const BSFixedString& a_className, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result) = 0;					   // 26
@@ -104,8 +104,8 @@ namespace RE
 			virtual void					   RegisterForStatsEvent(BSTEventSink<StatsEvent>* a_sink) = 0;																																   // 34
 			virtual void					   UnregisterForStatsEvent(BSTEventSink<StatsEvent>* a_sink) = 0;																															   // 35
 
-			bool					   CreateArray(const TypeInfo& a_typeInfo, UInt32 a_size, BSTSmartPointer<Array>& a_arrayPtr);
-			bool					   CreateArray(TypeInfo::RawType a_typeID, const BSFixedString& a_className, UInt32 a_size, BSTSmartPointer<Array>& a_arrayPtr);
+			bool					   CreateArray(const TypeInfo& a_typeInfo, std::uint32_t a_size, BSTSmartPointer<Array>& a_arrayPtr);
+			bool					   CreateArray(TypeInfo::RawType a_typeID, const BSFixedString& a_className, std::uint32_t a_size, BSTSmartPointer<Array>& a_arrayPtr);
 			bool					   CreateObject(const BSFixedString& a_className, void* a_property, BSTSmartPointer<Object>& a_objPtr);
 			bool					   CreateObject(const BSFixedString& a_className, BSTSmartPointer<Object>& a_result);
 			bool					   DispatchMethodCall(BSTSmartPointer<Object>& a_obj, const BSFixedString& a_fnName, IFunctionArguments* a_args, BSTSmartPointer<IStackCallbackFunctor>& a_result);
@@ -118,8 +118,8 @@ namespace RE
 			bool					   GetScriptObjectType(VMTypeID a_typeID, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr);
 			bool					   GetScriptObjectTypeNoLoad(const BSFixedString& a_className, BSTSmartPointer<ObjectTypeInfo>& a_typeInfoPtr) const;
 			bool					   GetScriptObjectTypeNoLoad(VMTypeID a_typeID, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr) const;
-			bool					   GetVariableValue(const BSTSmartPointer<Object>& a_objPtr, UInt32 a_index, Variable& a_out) const;
-			bool					   GetVariableValue(VMHandle a_handle, const BSFixedString& a_className, SInt32 a_variableIndex, Variable& a_out) const;
+			bool					   GetVariableValue(const BSTSmartPointer<Object>& a_objPtr, std::uint32_t a_index, Variable& a_out) const;
+			bool					   GetVariableValue(VMHandle a_handle, const BSFixedString& a_className, std::int32_t a_variableIndex, Variable& a_out) const;
 
 			template <class F>
 			void RegisterFunction(std::string_view a_fnName, std::string_view a_className, F a_callback, bool a_callableFromTasklets = false);
@@ -131,8 +131,8 @@ namespace RE
 
 
 			// members
-			UInt32 pad0C;  // 0C
+			std::uint32_t pad0C;  // 0C
 		};
-		STATIC_ASSERT(sizeof(IVirtualMachine) == 0x10);
+		static_assert(sizeof(IVirtualMachine) == 0x10);
 	}
 }

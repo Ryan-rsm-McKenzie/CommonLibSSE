@@ -12,7 +12,7 @@ namespace RE
 	}
 
 
-	SInt8 ControlMap::AllowTextInput(bool a_allow)
+	std::int8_t ControlMap::AllowTextInput(bool a_allow)
 	{
 		if (a_allow) {
 			if (textEntryCount != -1) {
@@ -28,7 +28,7 @@ namespace RE
 	}
 
 
-	UInt32 ControlMap::GetMappedKey(const std::string_view& a_eventID, INPUT_DEVICE a_device, InputContextID a_context) const
+	std::uint32_t ControlMap::GetMappedKey(const std::string_view& a_eventID, INPUT_DEVICE a_device, InputContextID a_context) const
 	{
 		assert(a_device < INPUT_DEVICE::kTotal);
 		assert(a_context < InputContextID::kTotal);
@@ -51,7 +51,7 @@ namespace RE
 	}
 
 
-	std::string_view ControlMap::GetUserEventName(UInt32 a_buttonID, INPUT_DEVICE a_device, InputContextID a_context) const
+	std::string_view ControlMap::GetUserEventName(std::uint32_t a_buttonID, INPUT_DEVICE a_device, InputContextID a_context) const
 	{
 		assert(a_device < INPUT_DEVICE::kTotal);
 		assert(a_context < InputContextID::kTotal);
@@ -63,7 +63,7 @@ namespace RE
 
 		if (mappings) {
 			UserEventMapping tmp{};
-			tmp.inputKey = a_buttonID;
+			tmp.inputKey = static_cast<std::uint16_t>(a_buttonID);
 			auto range = std::equal_range(
 				mappings->begin(),
 				mappings->end(),
@@ -95,7 +95,7 @@ namespace RE
 			}
 		}
 
-		UserEventEnabled event(oldState, enabledControls);
-		SendEvent(&event);
+		UserEventEnabled event{ oldState, enabledControls };
+		SendEvent(std::addressof(event));
 	}
 }

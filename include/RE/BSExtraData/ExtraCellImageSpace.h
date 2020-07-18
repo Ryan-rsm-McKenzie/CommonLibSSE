@@ -26,5 +26,5 @@ namespace RE
 		// members
 		TESImageSpace* imageSpace;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraCellImageSpace) == 0x18);
+	static_assert(sizeof(ExtraCellImageSpace) == 0x18);
 }

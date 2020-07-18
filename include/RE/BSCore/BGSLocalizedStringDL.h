@@ -7,7 +7,7 @@ namespace RE
 	{
 	public:
 		// members
-		UInt32 id;	// 0
+		std::uint32_t id;  // 0
 	};
-	STATIC_ASSERT(sizeof(BGSLocalizedStringDL) == 0x4);
+	static_assert(sizeof(BGSLocalizedStringDL) == 0x4);
 }

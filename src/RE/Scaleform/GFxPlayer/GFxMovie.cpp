@@ -12,7 +12,7 @@ namespace RE
 	}
 
 
-	UInt32 GFxMovie::GetFrameCount() const
+	std::uint32_t GFxMovie::GetFrameCount() const
 	{
 		return GetMovieDef()->GetFrameCount();
 	}
@@ -53,13 +53,13 @@ namespace RE
 	}
 
 
-	bool GFxMovie::SetVariableArray(const char* a_pathToVar, UInt32 a_index, const GFxValue* a_data, UInt32 a_count, SetVarType a_setType)
+	bool GFxMovie::SetVariableArray(const char* a_pathToVar, std::uint32_t a_index, const GFxValue* a_data, std::uint32_t a_count, SetVarType a_setType)
 	{
 		return SetVariableArray(SetArrayType::kValue, a_pathToVar, a_index, a_data, a_count, a_setType);
 	}
 
 
-	bool GFxMovie::GetVariableArray(const char* a_pathToVar, UInt32 a_index, GFxValue* a_data, UInt32 a_count)
+	bool GFxMovie::GetVariableArray(const char* a_pathToVar, std::uint32_t a_index, GFxValue* a_data, std::uint32_t a_count)
 	{
 		return GetVariableArray(SetArrayType::kValue, a_pathToVar, a_index, a_data, a_count);
 	}

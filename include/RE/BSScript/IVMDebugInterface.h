@@ -16,6 +16,6 @@ namespace RE
 			// add
 			virtual void Unk_01(void) = 0;	// 01
 		};
-		STATIC_ASSERT(sizeof(IVMDebugInterface) == 0x8);
+		static_assert(sizeof(IVMDebugInterface) == 0x8);
 	}
 }

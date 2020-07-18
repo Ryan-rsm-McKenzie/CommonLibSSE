@@ -155,15 +155,15 @@ namespace RE
 
 	class TESObjectREFR;
 	using ObjectRefHandle = BSPointerHandle<TESObjectREFR>;
-	STATIC_ASSERT(sizeof(ObjectRefHandle) == 0x4);
+	static_assert(sizeof(ObjectRefHandle) == 0x4);
 
 
 	class Actor;
 	using ActorHandle = BSPointerHandle<Actor>;
-	STATIC_ASSERT(sizeof(ActorHandle) == 0x4);
+	static_assert(sizeof(ActorHandle) == 0x4);
 
 
 	class Projectile;
 	using ProjectileHandle = BSPointerHandle<Projectile>;
-	STATIC_ASSERT(sizeof(ProjectileHandle) == 0x4);
+	static_assert(sizeof(ProjectileHandle) == 0x4);
 }

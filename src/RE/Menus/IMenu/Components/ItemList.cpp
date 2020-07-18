@@ -18,7 +18,7 @@ namespace RE
 			return nullptr;
 		}
 
-		auto idx = static_cast<SInt32>(selectedIndex.GetNumber());
+		auto idx = static_cast<std::int32_t>(selectedIndex.GetNumber());
 		if (idx < 0 || static_cast<std::size_t>(idx) >= items.size()) {
 			return nullptr;
 		}

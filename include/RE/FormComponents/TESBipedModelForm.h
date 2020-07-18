@@ -40,5 +40,5 @@ namespace RE
 		BGSMessageIcon		messageIcons[Sexes::kTotal];	// 98
 		TESModelRDT			constraintTemplate;				// C8
 	};
-	STATIC_ASSERT(sizeof(TESBipedModelForm) == 0xF0);
+	static_assert(sizeof(TESBipedModelForm) == 0xF0);
 }

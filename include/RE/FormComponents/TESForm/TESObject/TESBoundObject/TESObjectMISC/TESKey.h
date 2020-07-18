@@ -15,7 +15,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kNonPlayable = 1 << 2,
 				kDeleted = 1 << 5,
@@ -29,5 +29,5 @@ namespace RE
 		// override (BGSKeywordForm)
 		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
 	};
-	STATIC_ASSERT(sizeof(TESKey) == 0x100);
+	static_assert(sizeof(TESKey) == 0x100);
 }

@@ -14,7 +14,7 @@ namespace RE
 {
 	struct BGSExplosionData	 // DATA
 	{
-		enum class Flag : UInt32
+		enum class Flag
 		{
 			kNone = 0,
 			kAlwaysUsesWorldOrientation = 1 << 1,
@@ -28,22 +28,22 @@ namespace RE
 		};
 
 
-		TESObjectLIGH*			light;				 // 00
-		BGSSoundDescriptorForm* sound1;				 // 08
-		BGSSoundDescriptorForm* sound2;				 // 10
-		BGSImpactDataSet*		impactDataSet;		 // 18
-		TESObjectREFR*			impactPlacedObject;	 // 20
-		BGSProjectile*			spawnProjectile;	 // 28
-		float					force;				 // 30
-		float					damage;				 // 34
-		float					radius;				 // 38
-		float					imageSpaceRadius;	 // 3C
-		float					verticalOffsetMult;	 // 40
-		Flag					flags;				 // 44
-		SOUND_LEVEL				eSoundLevel;		 // 48
-		UInt32					pad4C;				 // 4C
+		TESObjectLIGH*								 light;				  // 00
+		BGSSoundDescriptorForm*						 sound1;			  // 08
+		BGSSoundDescriptorForm*						 sound2;			  // 10
+		BGSImpactDataSet*							 impactDataSet;		  // 18
+		TESObjectREFR*								 impactPlacedObject;  // 20
+		BGSProjectile*								 spawnProjectile;	  // 28
+		float										 force;				  // 30
+		float										 damage;			  // 34
+		float										 radius;			  // 38
+		float										 imageSpaceRadius;	  // 3C
+		float										 verticalOffsetMult;  // 40
+		stl::enumeration<Flag, std::uint32_t>		 flags;				  // 44
+		stl::enumeration<SOUND_LEVEL, std::uint32_t> eSoundLevel;		  // 48
+		std::uint32_t								 pad4C;				  // 4C
 	};
-	STATIC_ASSERT(sizeof(BGSExplosionData) == 0x50);
+	static_assert(sizeof(BGSExplosionData) == 0x50);
 
 
 	class BGSExplosion :
@@ -61,7 +61,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -82,5 +82,5 @@ namespace RE
 		// members
 		BGSExplosionData data;	// 98 - DATA
 	};
-	STATIC_ASSERT(sizeof(BGSExplosion) == 0xE8);
+	static_assert(sizeof(BGSExplosion) == 0xE8);
 }

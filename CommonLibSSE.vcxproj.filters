@@ -3580,9 +3580,6 @@
     <ClInclude Include="include\REL\Relocation.h">
       <Filter>include\REL</Filter>
     </ClInclude>
-    <ClInclude Include="include\REL\SafeWrite.h">
-      <Filter>include\REL</Filter>
-    </ClInclude>
     <ClInclude Include="include\REL\Version.h">
       <Filter>include\REL</Filter>
     </ClInclude>
@@ -3610,9 +3607,6 @@
     <ClInclude Include="include\SKSE\Impl\Stubs.h">
       <Filter>include\SKSE\Impl</Filter>
     </ClInclude>
-    <ClInclude Include="include\SKSE\Impl\Util.h">
-      <Filter>include\SKSE\Impl</Filter>
-    </ClInclude>
     <ClInclude Include="include\SKSE\Interfaces.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
@@ -3623,9 +3617,6 @@
       <Filter>include\SKSE</Filter>
     </ClInclude>
     <ClInclude Include="include\SKSE\RegistrationSet.h">
-      <Filter>include\SKSE</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SKSE\SafeWrite.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
     <ClInclude Include="include\SKSE\SKSE.h">
@@ -4080,9 +4071,6 @@
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectBOOK.cpp">
       <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC\TESSoulGem.cpp">
-      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT\TESObjectSTAT.cpp">
       <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT</Filter>
     </ClCompile>
@@ -4390,9 +4378,6 @@
       <Filter>src\RE\SkyrimScript</Filter>
     </ClCompile>
     <ClCompile Include="src\REL\Relocation.cpp">
-      <Filter>src\REL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\REL\SafeWrite.cpp">
       <Filter>src\REL</Filter>
     </ClCompile>
     <ClCompile Include="src\SKSE\API.cpp">
@@ -5452,9 +5437,6 @@
     </Filter>
     <Filter Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESActorBase">
       <UniqueIdentifier>{5b26bd88-42eb-4eac-8c39-7f1f9df1d9a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC">
-      <UniqueIdentifier>{6afc0196-b169-493a-aea4-d96afd9330cf}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT">
       <UniqueIdentifier>{8144287e-ff9c-415f-82fc-f077891c53cb}</UniqueIdentifier>

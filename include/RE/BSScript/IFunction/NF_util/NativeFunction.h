@@ -39,7 +39,7 @@ namespace RE
 
 
 			template <class... Args, std::size_t... I>
-			std::tuple<Args...> MakeTupleImpl(const StackFrame& a_frame, UInt32 a_page, std::index_sequence<I...>)
+			std::tuple<Args...> MakeTupleImpl(const StackFrame& a_frame, std::uint32_t a_page, std::index_sequence<I...>)
 			{
 				return std::forward_as_tuple(
 					a_frame.GetStackFrameVariable(I, a_page).Unpack<Args>()...);
@@ -48,7 +48,7 @@ namespace RE
 
 			// tuple element construction order isn't guaranteed, so we need to wrap it
 			template <class... Args>
-			std::tuple<Args...> MakeTuple(const StackFrame& a_frame, UInt32 a_page)
+			std::tuple<Args...> MakeTuple(const StackFrame& a_frame, std::uint32_t a_page)
 			{
 				return MakeTupleImpl<Args...>(a_frame, a_page, std::index_sequence_for<Args...>{});
 			}

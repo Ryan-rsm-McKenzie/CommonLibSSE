@@ -9,10 +9,10 @@
 
 namespace RE
 {
-	template <class T, UInt32 SID = GStatGroup::kGStat_Default_Mem, class SizePolicy = GArrayDefaultPolicy>
+	template <class T, std::uint32_t SID = GStatGroup::kGStat_Default_Mem, class SizePolicy = GArrayDefaultPolicy>
 	class GArray : public GArrayBase<GArrayData<T, GAllocatorGH<T, SID>, SizePolicy>>
 	{
 	public:
 	};
-	STATIC_ASSERT(sizeof(GArray<void*>) == 0x18);
+	static_assert(sizeof(GArray<void*>) == 0x18);
 }

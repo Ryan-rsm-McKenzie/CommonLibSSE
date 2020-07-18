@@ -137,7 +137,7 @@ namespace RE
 	class BGSLensFlare;
 
 
-	enum class FormType : UInt8
+	enum class FormType
 	{
 		None = 0,					 //	00 NONE TESForm
 		PluginInfo,					 //	01 TES4

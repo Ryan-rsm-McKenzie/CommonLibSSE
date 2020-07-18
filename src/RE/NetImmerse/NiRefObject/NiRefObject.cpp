@@ -37,15 +37,15 @@ namespace RE
 	}
 
 
-	UInt32 NiRefObject::GetRefCount() const
+	std::uint32_t NiRefObject::GetRefCount() const
 	{
 		return _refCount;
 	}
 
 
-	volatile UInt32& NiRefObject::GetTotalObjectCount()
+	volatile std::uint32_t& NiRefObject::GetTotalObjectCount()
 	{
-		static REL::Offset<volatile UInt32*> totalObjectCount(Offset::NiRefObject::TotalObjectCount);
+		static REL::Offset<volatile std::uint32_t*> totalObjectCount(Offset::NiRefObject::TotalObjectCount);
 		return *totalObjectCount;
 	}
 }

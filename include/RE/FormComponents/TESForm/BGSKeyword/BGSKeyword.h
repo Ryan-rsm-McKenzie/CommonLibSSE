@@ -16,7 +16,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -35,5 +35,5 @@ namespace RE
 		// members
 		BSFixedString formEditorID;	 // 20
 	};
-	STATIC_ASSERT(sizeof(BGSKeyword) == 0x28);
+	static_assert(sizeof(BGSKeyword) == 0x28);
 }

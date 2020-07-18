@@ -9,7 +9,7 @@ class UIDelegate_v1;
 
 namespace SKSE
 {
-	using PluginHandle = UInt32;
+	using PluginHandle = std::uint32_t;
 	enum : PluginHandle
 	{
 		kInvalidPluginHandle = static_cast<PluginHandle>(-1)
@@ -20,36 +20,36 @@ namespace SKSE
 	{
 		struct PluginInfo
 		{
-			UInt32		infoVersion;
-			const char* name;
-			UInt32		version;
+			std::uint32_t infoVersion;
+			const char*	  name;
+			std::uint32_t version;
 		};
 
 
 		struct SKSEInterface
 		{
-			UInt32 skseVersion;
-			UInt32 runtimeVersion;
-			UInt32 editorVersion;
-			UInt32 isEditor;
-			void* (*QueryInterface)(UInt32);
+			std::uint32_t skseVersion;
+			std::uint32_t runtimeVersion;
+			std::uint32_t editorVersion;
+			std::uint32_t isEditor;
+			void* (*QueryInterface)(std::uint32_t);
 			PluginHandle (*GetPluginHandle)();
-			UInt32 (*GetReleaseIndex)();
+			std::uint32_t (*GetReleaseIndex)();
 		};
 
 
 		struct SKSEMessagingInterface
 		{
-			UInt32 interfaceVersion;
+			std::uint32_t interfaceVersion;
 			bool (*RegisterListener)(PluginHandle, const char*, void*);
-			bool (*Dispatch)(PluginHandle, UInt32, void*, UInt32, const char*);
-			void* (*GetEventDispatcher)(UInt32);
+			bool (*Dispatch)(PluginHandle, std::uint32_t, void*, std::uint32_t, const char*);
+			void* (*GetEventDispatcher)(std::uint32_t);
 		};
 
 
 		struct SKSEObjectInterface
 		{
-			UInt32 interfaceVersion;
+			std::uint32_t interfaceVersion;
 			SKSEDelayFunctorManager& (*GetDelayFunctorManager)();
 			SKSEObjectRegistry& (*GetObjectRegistry)();
 			SKSEPersistentObjectStorage& (*GetPersistentObjectStorage)();
@@ -58,14 +58,14 @@ namespace SKSE
 
 		struct SKSEPapyrusInterface
 		{
-			UInt32 interfaceVersion;
+			std::uint32_t interfaceVersion;
 			bool (*Register)(void*);
 		};
 
 
 		struct SKSEScaleformInterface
 		{
-			UInt32 interfaceVersion;
+			std::uint32_t interfaceVersion;
 			bool (*Register)(const char*, void*);
 			void (*RegisterForInventory)(void*);
 		};
@@ -73,25 +73,25 @@ namespace SKSE
 
 		struct SKSESerializationInterface
 		{
-			UInt32 version;
-			void (*SetUniqueID)(PluginHandle, UInt32);
+			std::uint32_t version;
+			void (*SetUniqueID)(PluginHandle, std::uint32_t);
 			void (*SetRevertCallback)(PluginHandle, void*);
 			void (*SetSaveCallback)(PluginHandle, void*);
 			void (*SetLoadCallback)(PluginHandle, void*);
 			void (*SetFormDeleteCallback)(PluginHandle, void*);
-			bool (*WriteRecord)(UInt32, UInt32, const void*, UInt32);
-			bool (*OpenRecord)(UInt32, UInt32);
-			bool (*WriteRecordData)(const void*, UInt32);
-			bool (*GetNextRecordInfo)(UInt32*, UInt32*, UInt32*);
-			UInt32 (*ReadRecordData)(void*, UInt32);
-			bool (*ResolveHandle)(UInt64, UInt64*);
-			bool (*ResolveFormId)(UInt32, UInt32*);
+			bool (*WriteRecord)(std::uint32_t, std::uint32_t, const void*, std::uint32_t);
+			bool (*OpenRecord)(std::uint32_t, std::uint32_t);
+			bool (*WriteRecordData)(const void*, std::uint32_t);
+			bool (*GetNextRecordInfo)(std::uint32_t*, std::uint32_t*, std::uint32_t*);
+			std::uint32_t (*ReadRecordData)(void*, std::uint32_t);
+			bool (*ResolveHandle)(std::uint64_t, std::uint64_t*);
+			bool (*ResolveFormId)(std::uint32_t, std::uint32_t*);
 		};
 
 
 		struct SKSETaskInterface
 		{
-			UInt32 interfaceVersion;
+			std::uint32_t interfaceVersion;
 			void (*AddTask)(void*);
 			void (*AddUITask)(void*);
 		};

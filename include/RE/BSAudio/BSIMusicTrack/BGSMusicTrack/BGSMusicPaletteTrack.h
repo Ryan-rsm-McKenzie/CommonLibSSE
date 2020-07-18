@@ -27,12 +27,12 @@ namespace RE
 
 		// members
 		BSTArray<BSIMusicTrack*> layers[3];			 // 20 - SNAM - tracks are split based on null entries on the record
-		SInt32					 playingIndexes[3];	 // 68
+		std::int32_t			 playingIndexes[3];	 // 68
 		float					 duration;			 // 74 - FLTV
 		float					 fadeOutTime;		 // 78 - DNAM
-		UInt32					 pad7C;				 // 7C
-		UInt64					 playTime;			 // 80
-		UInt64					 pauseTime;			 // 88
+		std::uint32_t			 pad7C;				 // 7C
+		std::uint64_t			 playTime;			 // 80
+		std::uint64_t			 pauseTime;			 // 88
 	};
-	STATIC_ASSERT(sizeof(BGSMusicPaletteTrack) == 0x90);
+	static_assert(sizeof(BGSMusicPaletteTrack) == 0x90);
 }

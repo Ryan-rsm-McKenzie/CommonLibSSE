@@ -34,11 +34,11 @@ namespace RE
 		ItemList*		itemList;		  // 48
 		ItemCard*		itemCard;		  // 50
 		BSTArray<void*> unk58;			  // 58
-		UInt64			unk70;			  // 70
+		std::uint64_t	unk70;			  // 70
 		bool			pcControlsReady;  // 78
-		UInt8			pad79;			  // 79
-		UInt16			pad7A;			  // 7A
-		UInt32			pad7C;			  // 7C
+		std::uint8_t	pad79;			  // 79
+		std::uint16_t	pad7A;			  // 7A
+		std::uint32_t	pad7C;			  // 7C
 	};
-	STATIC_ASSERT(sizeof(GiftMenu) == 0x80);
+	static_assert(sizeof(GiftMenu) == 0x80);
 }

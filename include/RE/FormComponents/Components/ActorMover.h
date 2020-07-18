@@ -23,5 +23,5 @@ namespace RE
 		// members
 		Actor* actor;  // 08
 	};
-	STATIC_ASSERT(sizeof(ActorMover) == 0x10);
+	static_assert(sizeof(ActorMover) == 0x10);
 }

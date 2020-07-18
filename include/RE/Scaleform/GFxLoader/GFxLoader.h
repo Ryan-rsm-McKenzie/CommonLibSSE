@@ -18,7 +18,7 @@ namespace RE
 	class GFxLoader : public GFxStateBag
 	{
 	public:
-		enum LoadConstants : UInt32
+		enum LoadConstants : std::uint32_t
 		{
 			kLoadAll = 0,
 			kLoadWaitCompletion = 1 << 0,
@@ -37,7 +37,7 @@ namespace RE
 
 		struct LoaderConfig
 		{
-			UInt32					 defLoadFlags;
+			std::uint32_t			 defLoadFlags;
 			GPtr<GFxFileOpenerBase>	 fileOpener;
 			GPtr<GFxZlibSupportBase> zLibSupport;
 			GPtr<GFxJpegSupportBase> jpegSupport;
@@ -50,7 +50,7 @@ namespace RE
 		virtual ~GFxLoader();  // 01
 
 		// add
-		virtual bool CheckTagLoader(SInt32 a_tagType) const;  // 05
+		virtual bool CheckTagLoader(std::int32_t a_tagType) const;	// 05
 
 
 		GFxMovieDef*   CreateMovie(const char* a_filename, LoadConstants a_loadConstants = LoadConstants::kLoadAll, UPInt a_memoryArena = 0);
@@ -60,8 +60,8 @@ namespace RE
 		// members
 		GFxLoaderImpl*	impl;				// 08
 		GFxResourceLib* strongResourceLib;	// 10
-		UInt32			defLoadFlags;		// 18
-		UInt32			pad1C;				// 1C
+		std::uint32_t	defLoadFlags;		// 18
+		std::uint32_t	pad1C;				// 1C
 	};
-	STATIC_ASSERT(sizeof(GFxLoader) == 0x20);
+	static_assert(sizeof(GFxLoader) == 0x20);
 }

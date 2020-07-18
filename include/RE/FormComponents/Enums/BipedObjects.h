@@ -5,7 +5,7 @@ namespace RE
 {
 	struct BIPED_OBJECTS
 	{
-		enum BIPED_OBJECT : UInt32
+		enum BIPED_OBJECT : std::uint32_t
 		{
 			kNone = static_cast<std::underlying_type_t<BIPED_OBJECT>>(-1),
 			kHead = 0,

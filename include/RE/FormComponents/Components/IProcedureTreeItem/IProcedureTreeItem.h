@@ -32,5 +32,5 @@ namespace RE
 		virtual void Unk_0F(void) = 0;			// 0F
 		virtual void Unk_10(void) = 0;			// 10
 	};
-	STATIC_ASSERT(sizeof(IProcedureTreeItem) == 0x8);
+	static_assert(sizeof(IProcedureTreeItem) == 0x8);
 }

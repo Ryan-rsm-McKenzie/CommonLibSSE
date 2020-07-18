@@ -26,5 +26,5 @@ namespace RE
 		// members
 		TESCombatStyle* combatStyle;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraCombatStyle) == 0x18);
+	static_assert(sizeof(ExtraCombatStyle) == 0x18);
 }

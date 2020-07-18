@@ -32,13 +32,13 @@ namespace RE
 
 		// members
 		void*		  unk18;  // 18
-		UInt64		  unk20;  // 20
+		std::uint64_t unk20;  // 20
 		BSFixedString unk28;  // 28
 		GFxValue	  unk30;  // 30
 		BSFixedString unk48;  // 48
-		UInt64		  unk50;  // 50
-		UInt64		  unk58;  // 58
-		UInt64		  unk60;  // 60
+		std::uint64_t unk50;  // 50
+		std::uint64_t unk58;  // 58
+		std::uint64_t unk60;  // 60
 	};
-	STATIC_ASSERT(sizeof(UISaveLoadManager) == 0x68);
+	static_assert(sizeof(UISaveLoadManager) == 0x68);
 }

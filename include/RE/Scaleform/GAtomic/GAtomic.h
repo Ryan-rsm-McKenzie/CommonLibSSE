@@ -16,10 +16,10 @@ namespace RE
 			// members
 			GLock* lock;  // 0
 		};
-		STATIC_ASSERT(sizeof(Locker) == 0x8);
+		static_assert(sizeof(Locker) == 0x8);
 
 
-		GLock(UInt32 a_spinCount = 0);
+		GLock(std::uint32_t a_spinCount = 0);
 		~GLock();
 
 		void operator delete(void*) = delete;
@@ -31,7 +31,7 @@ namespace RE
 		// members
 		CRITICAL_SECTION cs;  // 00
 	};
-	STATIC_ASSERT(sizeof(GLock) == 0x28);
+	static_assert(sizeof(GLock) == 0x28);
 
 
 	template <class T>
@@ -61,7 +61,7 @@ namespace RE
 	template <class T, class Enable = void>
 	class GAtomicInt : public GAtomicValueBase<T>
 	{
-		STATIC_ASSERT(std::is_integral<T>::value);
+		static_assert(std::is_integral<T>::value);
 
 		using Base = GAtomicValueBase<T>;
 
@@ -161,7 +161,7 @@ namespace RE
 	template <class T>
 	class GAtomicInt<T, std::enable_if_t<sizeof(T) == 0x8>> : public GAtomicValueBase<T>
 	{
-		STATIC_ASSERT(std::is_integral<T>::value);
+		static_assert(std::is_integral<T>::value);
 
 	public:
 		using GAtomicValueBase<T>::value;

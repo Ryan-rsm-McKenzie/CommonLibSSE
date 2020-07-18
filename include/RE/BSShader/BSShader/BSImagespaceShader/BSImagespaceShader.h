@@ -32,23 +32,23 @@ namespace RE
 
 
 		// members
-		UInt64 unk120;	// 120
-		UInt64 unk128;	// 128
-		UInt64 unk130;	// 130
-		UInt64 unk138;	// 138
-		UInt64 unk140;	// 140
-		UInt64 unk148;	// 148
-		UInt64 unk150;	// 150
-		UInt64 unk158;	// 158
-		UInt64 unk160;	// 160
-		UInt64 unk168;	// 168
-		UInt64 unk170;	// 170
-		UInt64 unk178;	// 178
-		UInt64 unk180;	// 180
-		UInt64 unk188;	// 188
-		UInt64 unk190;	// 190
-		UInt64 unk198;	// 198
-		UInt64 unk1A0;	// 1A0
+		std::uint64_t unk120;  // 120
+		std::uint64_t unk128;  // 128
+		std::uint64_t unk130;  // 130
+		std::uint64_t unk138;  // 138
+		std::uint64_t unk140;  // 140
+		std::uint64_t unk148;  // 148
+		std::uint64_t unk150;  // 150
+		std::uint64_t unk158;  // 158
+		std::uint64_t unk160;  // 160
+		std::uint64_t unk168;  // 168
+		std::uint64_t unk170;  // 170
+		std::uint64_t unk178;  // 178
+		std::uint64_t unk180;  // 180
+		std::uint64_t unk188;  // 188
+		std::uint64_t unk190;  // 190
+		std::uint64_t unk198;  // 198
+		std::uint64_t unk1A0;  // 1A0
 	};
-	STATIC_ASSERT(sizeof(BSImagespaceShader) == 0x1A8);
+	static_assert(sizeof(BSImagespaceShader) == 0x1A8);
 }

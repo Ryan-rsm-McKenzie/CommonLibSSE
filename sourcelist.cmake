@@ -1,6 +1,5 @@
 set(sources ${sources}
 	src\REL\Relocation.cpp
-	src\REL\SafeWrite.cpp
 	src\RE\AI\AIFormulas.cpp
 	src\RE\AI\AIProcess.cpp
 	src\RE\AI\ProcessLists.cpp
@@ -152,7 +151,6 @@ set(sources ${sources}
 	src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESObjectLIGH.cpp
 	src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectARMO.cpp
 	src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectBOOK.cpp
-	src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC\TESSoulGem.cpp
 	src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT\TESObjectSTAT.cpp
 	src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectWEAP.cpp
 	src\RE\FormComponents\TESForm\TESObject\TESObjectARMA.cpp

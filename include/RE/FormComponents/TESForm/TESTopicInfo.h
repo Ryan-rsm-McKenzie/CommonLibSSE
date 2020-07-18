@@ -12,7 +12,7 @@ namespace RE
 {
 	struct TOPIC_INFO_DATA	// ENAM
 	{
-		enum class TOPIC_INFO_FLAGS : UInt16
+		enum class TOPIC_INFO_FLAGS
 		{
 			kNone = 0,
 			kStartSceneOnEnd = 1 << 0,
@@ -36,10 +36,10 @@ namespace RE
 		float GetResetHours() const;
 
 
-		TOPIC_INFO_FLAGS flags;			  // 0
-		UInt16			 timeUntilReset;  // 2 - reset hours as a UInt16
+		stl::enumeration<TOPIC_INFO_FLAGS, std::uint16_t> flags;		   // 0
+		std::uint16_t									  timeUntilReset;  // 2 - reset hours as a std::uint16_t
 	};
-	STATIC_ASSERT(sizeof(TOPIC_INFO_DATA) == 0x4);
+	static_assert(sizeof(TOPIC_INFO_DATA) == 0x4);
 
 
 	class TESTopicInfo : public TESForm
@@ -49,7 +49,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::Info;
 
 
-		enum class FavorLevel : UInt8  // CNAM
+		enum class FavorLevel  // CNAM
 		{
 			kNone = 0,
 			kSmall = 1,
@@ -60,16 +60,16 @@ namespace RE
 
 		struct ChangeFlags
 		{
-			enum ChangeFlag : UInt32
+			enum ChangeFlag : std::uint32_t
 			{
-				kSaidOnce = (UInt32)1 << 31
+				kSaidOnce = (std::uint32_t)1 << 31
 			};
 		};
 
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -79,7 +79,7 @@ namespace RE
 
 		struct ResponseData	 // TRDT
 		{
-			enum class EmotionType : UInt32
+			enum class EmotionType
 			{
 				kNeutral = 0,
 				kAnger = 1,
@@ -92,7 +92,7 @@ namespace RE
 			};
 
 
-			enum class Flag : UInt8
+			enum class Flag
 			{
 				kNone = 0,
 				kUseEmotionAnimation = 1 << 0
@@ -105,24 +105,24 @@ namespace RE
 
 
 			// members
-			EmotionType				emotionType;	 // 00
-			UInt32					emotionValue;	 // 04
-			TESTopic*				unk08;			 // 08
-			UInt8					responseNumber;	 // 10
-			UInt8					pad11;			 // 11
-			UInt16					pad12;			 // 12
-			UInt32					pad14;			 // 14
-			BGSSoundDescriptorForm* sound;			 // 18
-			Flag					flags;			 // 20
-			UInt8					pad21;			 // 21
-			UInt16					pad22;			 // 22
-			UInt32					pad24;			 // 24
-			BSFixedString			responseText;	 // 28 - NAM1
-			TESIdleForm*			speakerIdle;	 // 30
-			TESIdleForm*			listenerIdle;	 // 38
-			ResponseData*			next;			 // 40
+			stl::enumeration<EmotionType, std::uint32_t> emotionType;	  // 00
+			std::uint32_t								 emotionValue;	  // 04
+			TESTopic*									 unk08;			  // 08
+			std::uint8_t								 responseNumber;  // 10
+			std::uint8_t								 pad11;			  // 11
+			std::uint16_t								 pad12;			  // 12
+			std::uint32_t								 pad14;			  // 14
+			BGSSoundDescriptorForm*						 sound;			  // 18
+			stl::enumeration<Flag, std::uint8_t>		 flags;			  // 20
+			std::uint8_t								 pad21;			  // 21
+			std::uint16_t								 pad22;			  // 22
+			std::uint32_t								 pad24;			  // 24
+			BSFixedString								 responseText;	  // 28 - NAM1
+			TESIdleForm*								 speakerIdle;	  // 30
+			TESIdleForm*								 listenerIdle;	  // 38
+			ResponseData*								 next;			  // 40
 		};
-		STATIC_ASSERT(sizeof(ResponseData) == 0x48);
+		static_assert(sizeof(ResponseData) == 0x48);
 
 
 		virtual ~TESTopicInfo();  // 00
@@ -134,7 +134,7 @@ namespace RE
 		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;										   // 0F
 		virtual void Revert(BGSLoadFormBuffer* a_buf) override;											   // 12
 		virtual void InitItemImpl() override;															   // 13
-		virtual void GetFormDetailedString(char* a_buf, UInt32 a_bufLen) override;						   // 16 - { return; }
+		virtual void GetFormDetailedString(char* a_buf, std::uint32_t a_bufLen) override;				   // 16 - { return; }
 		virtual void SetAltered(bool a_set) override;													   // 24
 		virtual bool BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly) override;  // 30
 		virtual void CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;						   // 31
@@ -143,15 +143,15 @@ namespace RE
 
 
 		// members
-		TESTopic*		parentTopic;	// 20
-		TESTopicInfo*	dataInfo;		// 28 - PNAM
-		TESCondition	objConditions;	// 30 - CTDA
-		UInt16			infoIndex;		// 38 - index in infoTopics array of parent topic
-		bool			saidOnce;		// 3A
-		FavorLevel		favorLevel;		// 3B - CNAM
-		TOPIC_INFO_DATA data;			// 3C - ENAM
-		UInt32			fileOffset;		// 40
-		UInt32			pad44;			// 44
+		TESTopic*								   parentTopic;	   // 20
+		TESTopicInfo*							   dataInfo;	   // 28 - PNAM
+		TESCondition							   objConditions;  // 30 - CTDA
+		std::uint16_t							   infoIndex;	   // 38 - index in infoTopics array of parent topic
+		bool									   saidOnce;	   // 3A
+		stl::enumeration<FavorLevel, std::uint8_t> favorLevel;	   // 3B - CNAM
+		TOPIC_INFO_DATA							   data;		   // 3C - ENAM
+		std::uint32_t							   fileOffset;	   // 40
+		std::uint32_t							   pad44;		   // 44
 	};
-	STATIC_ASSERT(sizeof(TESTopicInfo) == 0x48);
+	static_assert(sizeof(TESTopicInfo) == 0x48);
 }

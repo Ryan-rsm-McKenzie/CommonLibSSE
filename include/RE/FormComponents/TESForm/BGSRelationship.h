@@ -13,7 +13,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::Relationship;
 
 
-		enum class RELATIONSHIP_LEVEL : UInt8
+		enum class RELATIONSHIP_LEVEL
 		{
 			kLover = 0,
 			kAlly = 1,
@@ -27,7 +27,7 @@ namespace RE
 		};
 
 
-		enum class Flag : UInt8
+		enum class Flag
 		{
 			kNone = 0,
 			kSecret = 1 << 7
@@ -36,7 +36,7 @@ namespace RE
 
 		struct ChangeFlags
 		{
-			enum ChangeFlag : UInt32
+			enum ChangeFlag : std::uint32_t
 			{
 				kRelationshipData = 1 << 1
 			};
@@ -45,7 +45,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kSecret = 1 << 6,
@@ -66,14 +66,14 @@ namespace RE
 
 
 		// members
-		TESNPC*				npc1;		// 20 - DATA~
-		TESNPC*				npc2;		// 28
-		BGSAssociationType* assocType;	// 30
-		RELATIONSHIP_LEVEL	level;		// 38
-		UInt8				unk39;		// 39
-		UInt8				unk3A;		// 3A
-		Flag				flags;		// 3B
-		UInt32				pad3C;		// 3C - ~DATA
+		TESNPC*											   npc1;	   // 20 - DATA~
+		TESNPC*											   npc2;	   // 28
+		BGSAssociationType*								   assocType;  // 30
+		stl::enumeration<RELATIONSHIP_LEVEL, std::uint8_t> level;	   // 38
+		std::uint8_t									   unk39;	   // 39
+		std::uint8_t									   unk3A;	   // 3A
+		stl::enumeration<Flag, std::uint8_t>			   flags;	   // 3B
+		std::uint32_t									   pad3C;	   // 3C - ~DATA
 	};
-	STATIC_ASSERT(sizeof(BGSRelationship) == 0x40);
+	static_assert(sizeof(BGSRelationship) == 0x40);
 }

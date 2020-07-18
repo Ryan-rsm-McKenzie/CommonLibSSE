@@ -3,19 +3,19 @@
 
 namespace RE
 {
-	SInt32 ActorCause::DecRefCount()
+	std::int32_t ActorCause::DecRefCount()
 	{
 		return InterlockedDecrement(&refCount);
 	}
 
 
-	SInt32 ActorCause::IncRefCount()
+	std::int32_t ActorCause::IncRefCount()
 	{
 		return InterlockedIncrement(&refCount);
 	}
 
 
-	SInt32 ActorCause::GetRefCount() const
+	std::int32_t ActorCause::GetRefCount() const
 	{
 		return refCount;
 	}

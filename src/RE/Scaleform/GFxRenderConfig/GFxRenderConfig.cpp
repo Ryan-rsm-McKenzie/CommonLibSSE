@@ -36,7 +36,7 @@ namespace RE
 	auto GFxRenderConfig::GetStrokeRenderFlags() const
 		-> RenderFlag
 	{
-		return renderFlags & RenderFlag::kStrokeMask;
+		return *(renderFlags & RenderFlag::kStrokeMask);
 	}
 
 
@@ -62,7 +62,7 @@ namespace RE
 	auto GFxRenderConfig::GetRenderFlags() const
 		-> RenderFlag
 	{
-		return renderFlags;
+		return *renderFlags;
 	}
 
 

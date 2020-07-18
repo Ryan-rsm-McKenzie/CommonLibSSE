@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	constexpr UInt32 CRC32_TABLE[] = {
+	constexpr std::uint32_t CRC32_TABLE[] = {
 		0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA, 0x076DC419, 0x706AF48F, 0xE963A535, 0x9E6495A3,
 		0x0EDB8832, 0x79DCB8A4, 0xE0D5E91E, 0x97D2D988, 0x09B64C2B, 0x7EB17CBD, 0xE7B82D07, 0x90BF1D91,
 		0x1DB71064, 0x6AB020F2, 0xF3B97148, 0x84BE41DE, 0x1ADAD47D, 0x6DDDE4EB, 0xF4D4B551, 0x83D385C7,
@@ -41,9 +41,9 @@ namespace RE
 
 	namespace Impl
 	{
-		void CalcCRC32_32(UInt32& a_crc32, UInt32 a_data);
-		void CalcCRC32_64(UInt32& a_crc32, UInt64 a_data);
-		void CalcCRC32_SIZE(UInt32& a_crc32, const void* a_data, UInt32 a_size);
+		void CalcCRC32_32(std::uint32_t& a_crc32, std::uint32_t a_data);
+		void CalcCRC32_64(std::uint32_t& a_crc32, std::uint64_t a_data);
+		void CalcCRC32_SIZE(std::uint32_t& a_crc32, const void* a_data, std::uint32_t a_size);
 	}
 
 
@@ -51,9 +51,9 @@ namespace RE
 	struct CRC32Hash
 	{
 	public:
-		UInt32 operator()(const Key& a_key) const
+		std::uint32_t operator()(const Key& a_key) const
 		{
-			UInt32 crc32;
+			std::uint32_t crc32;
 			Impl::CalcCRC32_SIZE(crc32, &a_key, sizeof(Key));
 			return crc32;
 		}
@@ -64,10 +64,10 @@ namespace RE
 	struct CRC32Hash<int>
 	{
 	public:
-		UInt32 operator()(const int& a_key) const
+		std::uint32_t operator()(const int& a_key) const
 		{
-			UInt32 crc32;
-			Impl::CalcCRC32_32(crc32, (UInt32)a_key);
+			std::uint32_t crc32;
+			Impl::CalcCRC32_32(crc32, (std::uint32_t)a_key);
 			return crc32;
 		}
 	};
@@ -77,10 +77,10 @@ namespace RE
 	struct CRC32Hash<unsigned int>
 	{
 	public:
-		UInt32 operator()(const unsigned int& a_key) const
+		std::uint32_t operator()(const unsigned int& a_key) const
 		{
-			UInt32 crc32;
-			Impl::CalcCRC32_32(crc32, (UInt32)a_key);
+			std::uint32_t crc32;
+			Impl::CalcCRC32_32(crc32, (std::uint32_t)a_key);
 			return crc32;
 		}
 	};
@@ -90,10 +90,10 @@ namespace RE
 	struct CRC32Hash<long>
 	{
 	public:
-		UInt32 operator()(const long& a_key) const
+		std::uint32_t operator()(const long& a_key) const
 		{
-			UInt32 crc32;
-			Impl::CalcCRC32_32(crc32, (UInt32)a_key);
+			std::uint32_t crc32;
+			Impl::CalcCRC32_32(crc32, (std::uint32_t)a_key);
 			return crc32;
 		}
 	};
@@ -103,10 +103,10 @@ namespace RE
 	struct CRC32Hash<long long>
 	{
 	public:
-		UInt32 operator()(const long long& a_key) const
+		std::uint32_t operator()(const long long& a_key) const
 		{
-			UInt32 crc32;
-			Impl::CalcCRC32_64(crc32, (UInt64)a_key);
+			std::uint32_t crc32;
+			Impl::CalcCRC32_64(crc32, (std::uint64_t)a_key);
 			return crc32;
 		}
 	};
@@ -116,10 +116,10 @@ namespace RE
 	struct CRC32Hash<unsigned long>
 	{
 	public:
-		UInt32 operator()(const unsigned long& a_key) const
+		std::uint32_t operator()(const unsigned long& a_key) const
 		{
-			UInt32 crc32;
-			Impl::CalcCRC32_32(crc32, (UInt32)a_key);
+			std::uint32_t crc32;
+			Impl::CalcCRC32_32(crc32, (std::uint32_t)a_key);
 			return crc32;
 		}
 	};
@@ -129,10 +129,10 @@ namespace RE
 	struct CRC32Hash<unsigned long long>
 	{
 	public:
-		UInt32 operator()(const unsigned long long& a_key) const
+		std::uint32_t operator()(const unsigned long long& a_key) const
 		{
-			UInt32 crc32;
-			Impl::CalcCRC32_64(crc32, (UInt64)a_key);
+			std::uint32_t crc32;
+			Impl::CalcCRC32_64(crc32, (std::uint64_t)a_key);
 			return crc32;
 		}
 	};
@@ -142,10 +142,10 @@ namespace RE
 	struct CRC32Hash<T, typename std::enable_if_t<std::is_pointer<T>::value>>
 	{
 	public:
-		UInt32 operator()(const T& a_key) const
+		std::uint32_t operator()(const T& a_key) const
 		{
-			UInt32 crc32;
-			Impl::CalcCRC32_64(crc32, (UInt64)a_key);
+			std::uint32_t crc32;
+			Impl::CalcCRC32_64(crc32, (std::uint64_t)a_key);
 			return crc32;
 		}
 	};

@@ -14,7 +14,7 @@ namespace RE
 
 		struct Keys
 		{
-			enum Key : UInt32
+			enum Key : std::uint32_t
 			{
 				kLeftButton,
 				kRightButton,
@@ -42,15 +42,15 @@ namespace RE
 
 
 		// members
-		UInt64			   unk78;  // 78
-		UInt64			   unk80;  // 80
-		UInt64			   unk88;  // 88
-		UInt64			   unk90;  // 90
-		UInt64			   unk98;  // 98
-		UInt64			   unkA0;  // A0
-		UInt32			   unkA8;  // A8
+		std::uint64_t	   unk78;  // 78
+		std::uint64_t	   unk80;  // 80
+		std::uint64_t	   unk88;  // 88
+		std::uint64_t	   unk90;  // 90
+		std::uint64_t	   unk98;  // 98
+		std::uint64_t	   unkA0;  // A0
+		std::uint32_t	   unkA8;  // A8
 		mutable BSSpinLock unkAC;  // AC
-		UInt32			   unkB4;  // B4
+		std::uint32_t	   unkB4;  // B4
 	};
-	STATIC_ASSERT(sizeof(BSWin32MouseDevice) == 0xB8);
+	static_assert(sizeof(BSWin32MouseDevice) == 0xB8);
 }

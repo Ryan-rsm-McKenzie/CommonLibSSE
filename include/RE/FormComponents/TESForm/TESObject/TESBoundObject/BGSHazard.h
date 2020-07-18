@@ -13,7 +13,7 @@ namespace RE
 	struct BGSHazardData  // DATA
 	{
 	public:
-		enum class BGSHazardFlags : UInt32
+		enum class BGSHazardFlags
 		{
 			kNone = 0,
 			kPCOnly = 1 << 0,
@@ -24,18 +24,18 @@ namespace RE
 		};
 
 
-		UInt32					limit;			   // 00
-		float					radius;			   // 04
-		float					lifetime;		   // 08
-		float					imageSpaceRadius;  // 0C
-		float					targetInterval;	   // 10
-		BGSHazardFlags			flags;			   // 14
-		SpellItem*				spell;			   // 18
-		TESObjectLIGH*			light;			   // 20
-		BGSImpactDataSet*		impactDataSet;	   // 28
-		BGSSoundDescriptorForm* sound;			   // 30
+		std::uint32_t									limit;			   // 00
+		float											radius;			   // 04
+		float											lifetime;		   // 08
+		float											imageSpaceRadius;  // 0C
+		float											targetInterval;	   // 10
+		stl::enumeration<BGSHazardFlags, std::uint32_t> flags;			   // 14
+		SpellItem*										spell;			   // 18
+		TESObjectLIGH*									light;			   // 20
+		BGSImpactDataSet*								impactDataSet;	   // 28
+		BGSSoundDescriptorForm*							sound;			   // 30
 	};
-	STATIC_ASSERT(sizeof(BGSHazardData) == 0x38);
+	static_assert(sizeof(BGSHazardData) == 0x38);
 
 
 	class BGSHazard :
@@ -52,7 +52,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -71,5 +71,5 @@ namespace RE
 		// members
 		BGSHazardData data;	 // 80 - DATA
 	};
-	STATIC_ASSERT(sizeof(BGSHazard) == 0xB8);
+	static_assert(sizeof(BGSHazard) == 0xB8);
 }

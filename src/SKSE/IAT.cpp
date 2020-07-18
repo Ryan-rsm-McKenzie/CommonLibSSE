@@ -68,7 +68,7 @@ namespace SKSE
 		auto oldFunc = GetIATAddr(a_dll, a_function);
 		if (oldFunc) {
 			origAddr = *reinterpret_cast<std::uintptr_t*>(oldFunc);
-			REL::SafeWrite64(oldFunc, a_newFunc);
+			REL::safe_write(oldFunc, a_newFunc);
 		} else {
 			log::warn("Failed to patch {} ({})", a_dll, a_function);
 		}

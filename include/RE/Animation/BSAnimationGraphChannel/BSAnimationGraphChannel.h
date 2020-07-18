@@ -20,10 +20,10 @@ namespace RE
 
 
 		// members
-		UInt32				pad0C;		  // 0C
+		std::uint32_t		pad0C;		  // 0C
 		const BSFixedString channelName;  // 10
-		UInt32				value;		  // 18
-		UInt32				pad1C;		  // 1C
+		std::uint32_t		value;		  // 18
+		std::uint32_t		pad1C;		  // 1C
 	};
-	STATIC_ASSERT(sizeof(BSAnimationGraphChannel) == 0x20);
+	static_assert(sizeof(BSAnimationGraphChannel) == 0x20);
 }

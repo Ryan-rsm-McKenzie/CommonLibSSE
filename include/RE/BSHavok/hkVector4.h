@@ -10,5 +10,5 @@ namespace RE
 	public:
 		hkQuadReal quad;  // 00
 	};
-	STATIC_ASSERT(sizeof(hkVector4) == 0x10);
+	static_assert(sizeof(hkVector4) == 0x10);
 }

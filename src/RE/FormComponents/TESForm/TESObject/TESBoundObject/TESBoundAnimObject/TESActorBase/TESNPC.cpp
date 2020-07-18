@@ -42,7 +42,7 @@ namespace RE
 	BGSHeadPart* TESNPC::GetHeadPartByType(HeadPartType a_type)
 	{
 		if (headParts) {
-			for (SInt8 i = 0; i < numHeadParts; ++i) {
+			for (std::int8_t i = 0; i < numHeadParts; ++i) {
 				if (headParts[i] && headParts[i]->type == a_type) {
 					return headParts[i];
 				}
@@ -57,7 +57,7 @@ namespace RE
 		const auto numOverlays = GetNumBaseOverlays();
 		auto overlays = GetBaseOverlays();
 		if (overlays) {
-			for (UInt32 i = 0; i < numOverlays; ++i) {
+			for (std::uint32_t i = 0; i < numOverlays; ++i) {
 				if (overlays[i]->type == a_type) {
 					return overlays[i];
 				}
@@ -84,7 +84,7 @@ namespace RE
 	}
 
 
-	UInt32 TESNPC::GetNumBaseOverlays() const
+	std::uint32_t TESNPC::GetNumBaseOverlays() const
 	{
 		using func_t = decltype(&TESNPC::GetNumBaseOverlays);
 		REL::Offset<func_t> func(Offset::TESNPC::GetNumBaseOverlays);

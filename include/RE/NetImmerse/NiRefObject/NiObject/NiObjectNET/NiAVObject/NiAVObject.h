@@ -23,16 +23,16 @@ namespace RE
 	class NiUpdateData
 	{
 	public:
-		enum class Flag : UInt32
+		enum class Flag
 		{
 			kDirty = 1 << 0,
 		};
 
 
-		float time;	  // 0
-		Flag  flags;  // 4
+		float								  time;	  // 0
+		stl::enumeration<Flag, std::uint32_t> flags;  // 4
 	};
-	STATIC_ASSERT(sizeof(NiUpdateData) == 0x8);
+	static_assert(sizeof(NiUpdateData) == 0x8);
 
 
 	class PerformOpFunc
@@ -43,7 +43,7 @@ namespace RE
 		// add
 		virtual bool operator()(NiAVObject* a_object);	// 01
 	};
-	STATIC_ASSERT(sizeof(PerformOpFunc) == 0x8);
+	static_assert(sizeof(PerformOpFunc) == 0x8);
 
 
 	class NiAVObject : public NiObjectNET
@@ -53,7 +53,7 @@ namespace RE
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiAVObject;
 
 
-		enum class Flag : UInt32
+		enum class Flag
 		{
 			kNone = 0,
 			kHidden = 1 << 0,
@@ -104,9 +104,9 @@ namespace RE
 		virtual void		SetDefaultMaterialNeedsUpdateFlag(bool a_flag);														// 29 - { return; }
 		virtual NiAVObject* GetObjectByName(const BSFixedString& a_name);														// 2A
 		virtual void		SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid);	// 2B
-		virtual void		UpdateDownwardPass(NiUpdateData& a_data, UInt32 a_arg2);											// 2C
-		virtual void		UpdateSelectedDownwardPass(NiUpdateData& a_data, UInt32 a_arg2);									// 2D
-		virtual void		UpdateRigidDownwardPass(NiUpdateData& a_data, UInt32 a_arg2);										// 2E
+		virtual void		UpdateDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2);										// 2C
+		virtual void		UpdateSelectedDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2);								// 2D
+		virtual void		UpdateRigidDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2);								// 2E
 		virtual void		UpdateWorldBound();																					// 2F - { return; }
 		virtual void		UpdateWorldData(NiUpdateData* a_data);																// 30
 		virtual void		UpdateTransformAndBounds(NiUpdateData& a_data);														// 31
@@ -115,7 +115,7 @@ namespace RE
 		virtual void		OnVisible(NiCullingProcess& a_process);																// 34 - { return; }
 
 		bool GetAppCulled() const;
-		bool SetMotionType(UInt32 a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
+		bool SetMotionType(std::uint32_t a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
 		void TintScenegraph(const NiColorA& a_color);
 		void Update(NiUpdateData& a_data);
 		void UpdateBodyTint(const NiColor& a_color);
@@ -123,19 +123,19 @@ namespace RE
 
 
 		// members
-		NiNode*						 parent;				   // 030
-		UInt32						 parentIndex;			   // 038
-		UInt32						 unk03C;				   // 03C
-		NiPointer<NiCollisionObject> collisionObject;		   // 040
-		NiTransform					 local;					   // 048
-		NiTransform					 world;					   // 07C
-		NiTransform					 previousWorld;			   // 0B0
-		NiBound						 worldBound;			   // 0E4
-		Flag						 flags;					   // 0F4
-		TESObjectREFR*				 userData;				   // 0F8
-		float						 fadeAmount;			   // 100
-		UInt32						 lastUpdatedFrameCounter;  // 104
-		UInt64						 unk108;				   // 108
+		NiNode*								  parent;					// 030
+		std::uint32_t						  parentIndex;				// 038
+		std::uint32_t						  unk03C;					// 03C
+		NiPointer<NiCollisionObject>		  collisionObject;			// 040
+		NiTransform							  local;					// 048
+		NiTransform							  world;					// 07C
+		NiTransform							  previousWorld;			// 0B0
+		NiBound								  worldBound;				// 0E4
+		stl::enumeration<Flag, std::uint32_t> flags;					// 0F4
+		TESObjectREFR*						  userData;					// 0F8
+		float								  fadeAmount;				// 100
+		std::uint32_t						  lastUpdatedFrameCounter;	// 104
+		std::uint64_t						  unk108;					// 108
 	};
-	STATIC_ASSERT(sizeof(NiAVObject) == 0x110);
+	static_assert(sizeof(NiAVObject) == 0x110);
 }

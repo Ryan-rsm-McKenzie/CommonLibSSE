@@ -20,11 +20,11 @@ namespace RE
 
 
 		// members
-		UInt32				lock;	// 08
-		UInt32				pad0C;	// 0C
+		std::uint32_t		lock;	// 08
+		std::uint32_t		pad0C;	// 0C
 		BSTFreeListElem<T>* free;	// 10
 	};
-	STATIC_ASSERT(sizeof(BSTFreeList<void*>) == 0x18);
+	static_assert(sizeof(BSTFreeList<void*>) == 0x18);
 
 
 	template <class T, std::size_t SIZE>

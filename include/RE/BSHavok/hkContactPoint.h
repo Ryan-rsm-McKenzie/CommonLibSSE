@@ -11,5 +11,5 @@ namespace RE
 		hkVector4 position;			 // 00
 		hkVector4 separatingNormal;	 // 10
 	};
-	STATIC_ASSERT(sizeof(hkContactPoint) == 0x20);
+	static_assert(sizeof(hkContactPoint) == 0x20);
 }

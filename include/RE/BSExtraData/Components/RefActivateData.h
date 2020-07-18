@@ -12,5 +12,5 @@ namespace RE
 		ObjectRefHandle activateRef;	// 00
 		float			activateDelay;	// 04
 	};
-	STATIC_ASSERT(sizeof(REF_ACTIVATE_DATA) == 0x8);
+	static_assert(sizeof(REF_ACTIVATE_DATA) == 0x8);
 }

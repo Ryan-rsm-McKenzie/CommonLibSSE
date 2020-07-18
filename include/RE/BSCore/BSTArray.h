@@ -11,7 +11,7 @@ namespace RE
 	class BSTArrayBase
 	{
 	public:
-		using size_type = UInt32;
+		using size_type = std::uint32_t;
 
 
 		class IAllocatorFunctor
@@ -21,16 +21,16 @@ namespace RE
 
 
 			// add
-			virtual bool Allocate(UInt32 a_num, UInt32 a_valueSize) = 0;																	   // 00
-			virtual bool Resize(UInt32 a_needNum, UInt32 a_copyFrontNum, UInt32 a_copySkipNum, UInt32 a_copyTailNum, UInt32 a_valueSize) = 0;  // 01
-			virtual void Free(void* a_ptr) = 0;																								   // 02
+			virtual bool Allocate(std::uint32_t a_num, std::uint32_t a_valueSize) = 0;																							  // 00
+			virtual bool Resize(std::uint32_t a_needNum, std::uint32_t a_copyFrontNum, std::uint32_t a_copySkipNum, std::uint32_t a_copyTailNum, std::uint32_t a_valueSize) = 0;  // 01
+			virtual void Free(void* a_ptr) = 0;																																	  // 02
 
 			IAllocatorFunctor() = default;
 			virtual ~IAllocatorFunctor() = default;	 // 03
 
 			TES_HEAP_REDEFINE_NEW();
 		};
-		STATIC_ASSERT(sizeof(IAllocatorFunctor) == 0x8);
+		static_assert(sizeof(IAllocatorFunctor) == 0x8);
 
 
 		BSTArrayBase();
@@ -41,13 +41,13 @@ namespace RE
 		size_type size() const;
 
 	protected:
-		void set_size(UInt32 a_size);
+		void set_size(std::uint32_t a_size);
 
 	private:
 		// members
-		UInt32 _size;  // 0
+		std::uint32_t _size;  // 0
 	};
-	STATIC_ASSERT(sizeof(BSTArrayBase) == 0x4);
+	static_assert(sizeof(BSTArrayBase) == 0x4);
 
 
 	template <class Allocator>
@@ -76,21 +76,21 @@ namespace RE
 	protected:
 		void* allocate(std::size_t a_size);
 		void  deallocate(void* a_ptr);
-		void  set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t a_typeSize);
+		void  set_allocator_traits(void* a_data, std::uint32_t a_capacity, std::size_t a_typeSize);
 
 	private:
 		friend class BSTArrayAllocatorFunctor<BSTArrayHeapAllocator>;
 
 
 		// members
-		void*  _data;	   // 00
-		UInt32 _capacity;  // 08
-		UInt32 _pad0C;	   // 0C
+		void*		  _data;	  // 00
+		std::uint32_t _capacity;  // 08
+		std::uint32_t _pad0C;	  // 0C
 	};
-	STATIC_ASSERT(sizeof(BSTArrayHeapAllocator) == 0x10);
+	static_assert(sizeof(BSTArrayHeapAllocator) == 0x10);
 
 
-	template <UInt32 BUFFER_SIZE>
+	template <std::uint32_t BUFFER_SIZE>
 	class BSTSmallArrayHeapAllocator
 	{
 	public:
@@ -98,9 +98,9 @@ namespace RE
 		using functor_type = BSTArrayAllocatorFunctor<BSTSmallArrayHeapAllocator>;
 
 
-		enum : UInt32
+		enum : std::uint32_t
 		{
-			kLocalAlloc = static_cast<UInt32>(1 << 31)
+			kLocalAlloc = static_cast<std::uint32_t>(1 << 31)
 		};
 
 
@@ -189,7 +189,7 @@ namespace RE
 		}
 
 
-		void set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t a_typeSize)
+		void set_allocator_traits(void* a_data, std::uint32_t a_capacity, std::size_t a_typeSize)
 		{
 			if (a_capacity * a_typeSize > BUFFER_SIZE) {
 				_capacity = a_capacity;
@@ -219,7 +219,7 @@ namespace RE
 		}
 
 
-		void set_capacity(UInt32 a_capacity)
+		void set_capacity(std::uint32_t a_capacity)
 		{
 			auto local = is_local();
 			_capacity = a_capacity;
@@ -228,11 +228,11 @@ namespace RE
 
 
 		// members
-		UInt32 _capacity;  // 00
-		UInt32 _pad04;	   // 04
-		Data   _data;	   // 08
+		std::uint32_t _capacity;  // 00
+		std::uint32_t _pad04;	  // 04
+		Data		  _data;	  // 08
 	};
-	STATIC_ASSERT(sizeof(BSTSmallArrayHeapAllocator<sizeof(void*)>) == 0x10);
+	static_assert(sizeof(BSTSmallArrayHeapAllocator<sizeof(void*)>) == 0x10);
 
 
 	class BSScrapArrayAllocator
@@ -257,7 +257,7 @@ namespace RE
 	protected:
 		void* allocate(std::size_t a_size);
 		void  deallocate(void* a_ptr);
-		void  set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t a_typeSize);
+		void  set_allocator_traits(void* a_data, std::uint32_t a_capacity, std::size_t a_typeSize);
 
 	private:
 		friend class BSTArrayAllocatorFunctor<BSScrapArrayAllocator>;
@@ -270,7 +270,7 @@ namespace RE
 		size_type  _capacity;	// 10
 		size_type  _pad14;		// 14
 	};
-	STATIC_ASSERT(sizeof(BSScrapArrayAllocator) == 0x18);
+	static_assert(sizeof(BSScrapArrayAllocator) == 0x18);
 
 
 	template <class T, class Allocator = BSTArrayHeapAllocator>
@@ -305,7 +305,7 @@ namespace RE
 			auto newCapacity = a_count;
 			auto newSize = a_count;
 			auto newData = allocate(newCapacity);
-			for (UInt32 i = 0; i < newSize; ++i) {
+			for (std::uint32_t i = 0; i < newSize; ++i) {
 				new (std::addressof(newData[i])) value_type();
 			}
 
@@ -325,7 +325,7 @@ namespace RE
 
 			auto newSize = a_rhs.size();
 			auto newData = allocate(newCapacity);
-			for (UInt32 i = 0; i < newSize; ++i) {
+			for (std::uint32_t i = 0; i < newSize; ++i) {
 				new (std::addressof(newData[i])) value_type(a_rhs[i]);
 			}
 
@@ -365,7 +365,7 @@ namespace RE
 			set_size(newSize);
 
 			auto newData = data();
-			for (UInt32 i = 0; i < newSize; ++i) {
+			for (std::uint32_t i = 0; i < newSize; ++i) {
 				new (std::addressof(newData[i])) value_type(a_rhs[i]);
 			}
 
@@ -621,7 +621,7 @@ namespace RE
 		static constexpr float	   GROWTH_FACTOR = 1.5;	 // not part of native type
 
 
-		T* allocate(UInt32 a_num)
+		T* allocate(std::uint32_t a_num)
 		{
 			return static_cast<T*>(allocator_type::allocate(a_num * sizeof(T)));
 		}
@@ -633,13 +633,13 @@ namespace RE
 		}
 
 
-		void set_allocator_traits(void* a_data, UInt32 a_capacity)
+		void set_allocator_traits(void* a_data, std::uint32_t a_capacity)
 		{
 			allocator_type::set_allocator_traits(a_data, a_capacity, sizeof(T));
 		}
 
 
-		void set_size(UInt32 a_size)
+		void set_size(std::uint32_t a_size)
 		{
 			BSTArrayBase::set_size(a_size);
 		}
@@ -701,15 +701,15 @@ namespace RE
 
 		//members
 		//void*		_data;		// 00
-		//UInt32	_capacity;	// 08
-		//UInt32	_pad0C;		// 0C
-		//UInt32	_size;		// 10
-		//UInt32	_pad14;		// 14
+		//std::uint32_t	_capacity;	// 08
+		//std::uint32_t	_pad0C;		// 0C
+		//std::uint32_t	_size;		// 10
+		//std::uint32_t	_pad14;		// 14
 	};
-	STATIC_ASSERT(sizeof(BSTArray<void*>) == 0x18);
+	static_assert(sizeof(BSTArray<void*>) == 0x18);
 
 
-	template <class T, UInt32 SIZE = 1>
+	template <class T, std::uint32_t SIZE = 1>
 	class BSTSmallArray : public BSTArray<T, BSTSmallArrayHeapAllocator<sizeof(T) * SIZE>>
 	{
 	private:
@@ -721,13 +721,13 @@ namespace RE
 
 	private:
 		//members
-		//UInt32	_capacity;	// 00
-		//UInt32	_pad04;		// 04
+		//std::uint32_t	_capacity;	// 00
+		//std::uint32_t	_pad04;		// 04
 		//Data		_data;		// 08
-		//UInt32	_size;		// 10
-		//UInt32	_pad14;		// 14
+		//std::uint32_t	_size;		// 10
+		//std::uint32_t	_pad14;		// 14
 	};
-	STATIC_ASSERT(sizeof(BSTSmallArray<void*>) == 0x18);
+	static_assert(sizeof(BSTSmallArray<void*>) == 0x18);
 
 
 	template <class T>
@@ -744,12 +744,12 @@ namespace RE
 		//members
 		//ScrapArray*	_allocator;	// 00
 		//void*			_data;		// 08
-		//UInt32		_capacity;	// 10
-		//UInt32		_pad14;		// 14
-		//UInt32		_size;		// 18
-		//UInt32		_pad14;		// 1C
+		//std::uint32_t		_capacity;	// 10
+		//std::uint32_t		_pad14;		// 14
+		//std::uint32_t		_size;		// 18
+		//std::uint32_t		_pad14;		// 1C
 	};
-	STATIC_ASSERT(sizeof(BSScrapArray<void*>) == 0x20);
+	static_assert(sizeof(BSScrapArray<void*>) == 0x20);
 
 
 	template <class T>
@@ -757,7 +757,7 @@ namespace RE
 	{
 	public:
 		using value_type = T;
-		using size_type = UInt32;
+		using size_type = std::uint32_t;
 		using reference = value_type&;
 		using const_reference = const value_type&;
 		using iterator = T*;
@@ -862,11 +862,11 @@ namespace RE
 
 
 	private:
-		T*	   _data;	// 00
-		UInt32 _size;	// 08
-		UInt32 _pad0C;	// 0C
+		T*			  _data;   // 00
+		std::uint32_t _size;   // 08
+		std::uint32_t _pad0C;  // 0C
 	};
-	STATIC_ASSERT(sizeof(BSStaticArray<void*>) == 0x10);
+	static_assert(sizeof(BSStaticArray<void*>) == 0x10);
 
 
 	template <class T>
@@ -874,7 +874,7 @@ namespace RE
 	{
 	public:
 		using value_type = T;
-		using size_type = UInt32;
+		using size_type = std::uint32_t;
 		using reference = value_type&;
 		using const_reference = const value_type&;
 		using iterator = T*;
@@ -974,9 +974,9 @@ namespace RE
 
 
 		// members
-		UInt32 _size;	// 00
-		UInt32 _pad04;	// 04
-		Data   _data;	// 08
+		std::uint32_t _size;   // 00
+		std::uint32_t _pad04;  // 04
+		Data		  _data;   // 08
 	};
-	STATIC_ASSERT(sizeof(BSTSmallSharedArray<void*>) == 0x10);
+	static_assert(sizeof(BSTSmallSharedArray<void*>) == 0x10);
 }

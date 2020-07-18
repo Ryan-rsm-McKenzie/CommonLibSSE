@@ -17,7 +17,8 @@ namespace RE
 
 	struct ACTOR_BASE_DATA
 	{
-		enum class Flag : UInt32
+	public:
+		enum class Flag
 		{
 			kNone = 0,
 			kFemale = 1 << 0,
@@ -38,11 +39,11 @@ namespace RE
 			kLoopedScript = 1 << 21,  // ?
 			kLoopedAudio = 1 << 28,	  // ?
 			kIsGhost = 1 << 29,
-			kInvulnerable = (UInt32)1 << 31
+			kInvulnerable = 1 << 31
 		};
 
 
-		enum class TEMPLATE_USE_FLAG : UInt16
+		enum class TEMPLATE_USE_FLAG
 		{
 			kNone = 0,
 			kTraits = 1 << 0,
@@ -62,19 +63,19 @@ namespace RE
 
 
 		// members
-		Flag			  actorBaseFlags;	 // 00
-		SInt16			  magickaOffset;	 // 04
-		SInt16			  staminaOffset;	 // 06
-		UInt16			  level;			 // 08
-		UInt16			  calcLevelMin;		 // 0A
-		UInt16			  calcLevelMax;		 // 0C
-		UInt16			  speedMult;		 // 0E
-		UInt16			  baseDisposition;	 // 10 - unused
-		TEMPLATE_USE_FLAG templateUseFlags;	 // 12
-		SInt16			  healthOffset;		 // 14
-		SInt16			  bleedoutOverride;	 // 16
+		stl::enumeration<Flag, std::uint32_t>			   actorBaseFlags;	  // 00
+		std::int16_t									   magickaOffset;	  // 04
+		std::int16_t									   staminaOffset;	  // 06
+		std::uint16_t									   level;			  // 08
+		std::uint16_t									   calcLevelMin;	  // 0A
+		std::uint16_t									   calcLevelMax;	  // 0C
+		std::uint16_t									   speedMult;		  // 0E
+		std::uint16_t									   baseDisposition;	  // 10 - unused
+		stl::enumeration<TEMPLATE_USE_FLAG, std::uint16_t> templateUseFlags;  // 12
+		std::int16_t									   healthOffset;	  // 14
+		std::int16_t									   bleedoutOverride;  // 16
 	};
-	STATIC_ASSERT(sizeof(ACTOR_BASE_DATA) == 0x18);
+	static_assert(sizeof(ACTOR_BASE_DATA) == 0x18);
 
 
 	class TESActorBaseData : public BaseFormComponent  // ACBS
@@ -124,5 +125,5 @@ namespace RE
 		TESForm**			   templateForms;	  // 38
 		BSTArray<FACTION_RANK> factions;		  // 40
 	};
-	STATIC_ASSERT(sizeof(TESActorBaseData) == 0x58);
+	static_assert(sizeof(TESActorBaseData) == 0x58);
 }

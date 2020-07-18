@@ -15,7 +15,7 @@ namespace RE
 		using const_reference = const value_type&;
 
 
-		enum class HeapType : UPInt
+		enum class HeapType
 		{
 			kGlobal = 0,   // Global
 			kLocal = 1,	   // Address-based
@@ -56,11 +56,11 @@ namespace RE
 
 
 			// members
-			UPInt			capacity;  // 00
-			volatile SInt32 refCount;  // 08
-			char			data[1];   // 0C
+			UPInt				  capacity;	 // 00
+			volatile std::int32_t refCount;	 // 08
+			char				  data[1];	 // 0C
 		};
-		STATIC_ASSERT(sizeof(DataDesc) == 0x10);
+		static_assert(sizeof(DataDesc) == 0x10);
 
 
 		union DataDescUnion
@@ -68,10 +68,10 @@ namespace RE
 			DataDescUnion();
 
 
-			DataDesc* data;
-			HeapType  heapType;
+			DataDesc*						  data;
+			stl::enumeration<HeapType, UPInt> heapType;
 		};
-		STATIC_ASSERT(sizeof(DataDescUnion) == 0x8);
+		static_assert(sizeof(DataDescUnion) == 0x8);
 
 
 		// (constructor)
@@ -131,7 +131,7 @@ namespace RE
 		static UPInt BernsteinHashFunction(const void* a_dataIn, UPInt a_size, UPInt a_seed = 5381);
 
 	protected:
-		GString*  ctor(const char* a_s);
+		GString*  ctor(const char* a_str);
 		HeapType  heap_type() const;
 		DataDesc* get_desc() const;
 		void	  set_desc(DataDesc* a_desc);
@@ -140,5 +140,5 @@ namespace RE
 		// members
 		DataDescUnion _dataDesc;  // 0
 	};
-	STATIC_ASSERT(sizeof(GString) == 0x8);
+	static_assert(sizeof(GString) == 0x8);
 }

@@ -29,9 +29,9 @@ namespace RE
 
 
 		// members
-		bool   registered;	// 0C
-		UInt8  unk0D;		// 0D
-		UInt16 pad0E;		// 0E
+		bool		  registered;  // 0C
+		std::uint8_t  unk0D;	   // 0D
+		std::uint16_t pad0E;	   // 0E
 	};
-	STATIC_ASSERT(sizeof(MenuEventHandler) == 0x10);
+	static_assert(sizeof(MenuEventHandler) == 0x10);
 }

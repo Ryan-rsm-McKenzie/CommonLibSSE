@@ -20,7 +20,7 @@ namespace RE
 	}
 
 
-	UInt16 TESQuest::GetCurrentStageID() const
+	std::uint16_t TESQuest::GetCurrentStageID() const
 	{
 		return currentStage;
 	}

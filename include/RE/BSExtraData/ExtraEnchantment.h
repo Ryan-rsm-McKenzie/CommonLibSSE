@@ -15,7 +15,7 @@ namespace RE
 
 
 		ExtraEnchantment();
-		ExtraEnchantment(EnchantmentItem* a_enchantment, UInt16 a_charge, bool a_removeOnUnequip = false);
+		ExtraEnchantment(EnchantmentItem* a_enchantment, std::uint16_t a_charge, bool a_removeOnUnequip = false);
 		virtual ~ExtraEnchantment() = default;	// 00
 
 		// override(BSExtraData)
@@ -25,10 +25,10 @@ namespace RE
 
 		// members
 		EnchantmentItem* enchantment;	   // 10
-		UInt16			 charge;		   // 18
+		std::uint16_t	 charge;		   // 18
 		bool			 removeOnUnequip;  // 1A
-		UInt8			 pad1B;			   // 1B
-		UInt32			 pad1C;			   // 1C
+		std::uint8_t	 pad1B;			   // 1B
+		std::uint32_t	 pad1C;			   // 1C
 	};
-	STATIC_ASSERT(sizeof(ExtraEnchantment) == 0x20);
+	static_assert(sizeof(ExtraEnchantment) == 0x20);
 }

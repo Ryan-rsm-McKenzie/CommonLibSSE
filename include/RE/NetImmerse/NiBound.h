@@ -12,5 +12,5 @@ namespace RE
 		NiPoint3 center;  // 00
 		float	 radius;  // 0C
 	};
-	STATIC_ASSERT(sizeof(NiBound) == 0x10);
+	static_assert(sizeof(NiBound) == 0x10);
 }

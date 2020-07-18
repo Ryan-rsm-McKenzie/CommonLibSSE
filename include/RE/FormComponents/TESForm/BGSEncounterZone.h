@@ -8,7 +8,8 @@ namespace RE
 {
 	struct ENCOUNTER_ZONE_DATA	// DATA
 	{
-		enum class Flag : UInt8
+	public:
+		enum class Flag
 		{
 			kNone = 0,
 			kNeverResets = 1 << 0,
@@ -17,26 +18,29 @@ namespace RE
 		};
 
 
-		TESFaction*	 zoneOwner;	 // 00
-		BGSLocation* location;	 // 08
-		SInt8		 ownerRank;	 // 10
-		SInt8		 minLevel;	 // 11
-		Flag		 flags;		 // 12
-		SInt8		 maxLevel;	 // 13
-		UInt32		 pad14;		 // 14
+		// members
+		TESFaction*							 zoneOwner;	 // 00
+		BGSLocation*						 location;	 // 08
+		std::int8_t							 ownerRank;	 // 10
+		std::int8_t							 minLevel;	 // 11
+		stl::enumeration<Flag, std::uint8_t> flags;		 // 12
+		std::int8_t							 maxLevel;	 // 13
+		std::uint32_t						 pad14;		 // 14
 	};
-	STATIC_ASSERT(sizeof(ENCOUNTER_ZONE_DATA) == 0x18);
+	static_assert(sizeof(ENCOUNTER_ZONE_DATA) == 0x18);
 
 
 	struct ENCOUNTER_ZONE_GAME_DATA
 	{
-		UInt32 detachTime;	// 00
-		UInt32 attachTime;	// 04
-		UInt32 resetTime;	// 08
-		UInt16 zoneLevel;	// 0C
-		UInt16 pad0D;		// 0D
+	public:
+		// members
+		std::uint32_t detachTime;  // 00
+		std::uint32_t attachTime;  // 04
+		std::uint32_t resetTime;   // 08
+		std::uint16_t zoneLevel;   // 0C
+		std::uint16_t pad0D;	   // 0D
 	};
-	STATIC_ASSERT(sizeof(ENCOUNTER_ZONE_GAME_DATA) == 0x10);
+	static_assert(sizeof(ENCOUNTER_ZONE_GAME_DATA) == 0x10);
 
 
 	class BGSEncounterZone : public TESForm
@@ -48,17 +52,17 @@ namespace RE
 
 		struct ChangeFlags
 		{
-			enum ChangeFlag : UInt32
+			enum ChangeFlag : std::uint32_t
 			{
 				kZoneFlags = 1 << 1,
-				kGameData = (UInt32)1 << 31
+				kGameData = (std::uint32_t)1 << 31
 			};
 		};
 
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -81,5 +85,5 @@ namespace RE
 		ENCOUNTER_ZONE_DATA		 data;		// 20 - DATA
 		ENCOUNTER_ZONE_GAME_DATA gameData;	// 38
 	};
-	STATIC_ASSERT(sizeof(BGSEncounterZone) == 0x48);
+	static_assert(sizeof(BGSEncounterZone) == 0x48);
 }

@@ -22,10 +22,10 @@ namespace RE
 
 
 		// members
-		bool   talk;   // 10
-		UInt8  pad11;  // 11
-		UInt16 pad12;  // 12
-		UInt32 pad14;  // 14
+		bool		  talk;	  // 10
+		std::uint8_t  pad11;  // 11
+		std::uint16_t pad12;  // 12
+		std::uint32_t pad14;  // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraCanTalkToPlayer) == 0x18);
+	static_assert(sizeof(ExtraCanTalkToPlayer) == 0x18);
 }

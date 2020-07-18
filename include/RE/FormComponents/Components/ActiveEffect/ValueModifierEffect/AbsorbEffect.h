@@ -18,5 +18,5 @@ namespace RE
 		virtual void Unk_1D(void) override;	 // 1D
 		virtual void Unk_1F(void) override;	 // 1F
 	};
-	STATIC_ASSERT(sizeof(AbsorbEffect) == 0x98);
+	static_assert(sizeof(AbsorbEffect) == 0x98);
 }

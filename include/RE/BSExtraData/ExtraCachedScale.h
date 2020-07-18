@@ -23,5 +23,5 @@ namespace RE
 		float scale3D;	 // 10
 		float refScale;	 // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraCachedScale) == 0x18);
+	static_assert(sizeof(ExtraCachedScale) == 0x18);
 }

@@ -13,7 +13,7 @@ namespace RE
 	class UIMessage;
 
 
-	enum class UI_MENU_FLAGS : UInt32
+	enum class UI_MENU_FLAGS
 	{
 		kNone = 0,
 		kPausesGame = 1 << 0,
@@ -47,7 +47,7 @@ namespace RE
 	};
 
 
-	enum class UI_MESSAGE_RESULTS : UInt32
+	enum class UI_MESSAGE_RESULTS
 	{
 		kHandled = 0,
 		kIgnore = 1,
@@ -72,13 +72,13 @@ namespace RE
 		virtual void Accept(CallbackProcessor* a_processor) override;  // 01 - { return; }
 
 		// add
-		virtual void			   PostCreate();										  // 02 - { return; }
-		virtual void			   Unk_03(void);										  // 03 - { return; }
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message);				  // 04
-		virtual void			   AdvanceMovie(float a_interval, UInt32 a_currentTime);  // 05
-		virtual void			   PostDisplay();										  // 06
-		virtual void			   PreDisplay();										  // 07 - { return; } - only available if kRendersOffscreenTargets is set
-		virtual void			   RefreshPlatform();									  // 08
+		virtual void			   PostCreate();												 // 02 - { return; }
+		virtual void			   Unk_03(void);												 // 03 - { return; }
+		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message);						 // 04
+		virtual void			   AdvanceMovie(float a_interval, std::uint32_t a_currentTime);	 // 05
+		virtual void			   PostDisplay();												 // 06
+		virtual void			   PreDisplay();												 // 07 - { return; } - only available if kRendersOffscreenTargets is set
+		virtual void			   RefreshPlatform();											 // 08
 
 		bool AdvancesUnderPauseMenu() const;
 		bool AllowSaving() const;
@@ -111,14 +111,14 @@ namespace RE
 
 
 		// members
-		GPtr<GFxMovieView> uiMovie;		   // 10
-		SInt8			   depthPriority;  // 18
-		UInt8			   pad19;		   // 19
-		UInt16			   pad20;		   // 1A
-		UI_MENU_FLAGS	   menuFlags;	   // 1C
-		Context			   inputContext;   // 20
-		UInt32			   pad24;		   // 24
-		GPtr<FxDelegate>   fxDelegate;	   // 28
+		GPtr<GFxMovieView>							   uiMovie;		   // 10
+		std::int8_t									   depthPriority;  // 18
+		std::uint8_t								   pad19;		   // 19
+		std::uint16_t								   pad20;		   // 1A
+		stl::enumeration<UI_MENU_FLAGS, std::uint32_t> menuFlags;	   // 1C
+		stl::enumeration<Context, std::uint32_t>	   inputContext;   // 20
+		std::uint32_t								   pad24;		   // 24
+		GPtr<FxDelegate>							   fxDelegate;	   // 28
 	};
-	STATIC_ASSERT(sizeof(IMenu) == 0x30);
+	static_assert(sizeof(IMenu) == 0x30);
 }

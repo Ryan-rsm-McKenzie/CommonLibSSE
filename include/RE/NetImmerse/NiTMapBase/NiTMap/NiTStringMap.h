@@ -18,7 +18,7 @@ namespace RE
 		using value_type = typename Base::value_type;
 		using size_type = typename Base::size_type;
 
-		NiTStringTemplateMap(UInt32 a_hashSize = 37, bool a_copy = true) :
+		NiTStringTemplateMap(std::uint32_t a_hashSize = 37, bool a_copy = true) :
 			Base(a_hashSize),
 			_copy(a_copy),
 			_pad21(0),
@@ -30,17 +30,17 @@ namespace RE
 
 	protected:
 		// override (Parent)
-		virtual UInt32 hash_function(key_type a_key) const override;									  // 01
-		virtual bool   key_eq(key_type a_lhs, key_type a_rhs) const override;							  // 02
-		virtual void   assign_value(value_type* a_value, key_type a_key, mapped_type a_mapped) override;  // 03
-		virtual void   clear_value(value_type* a_value) override;										  // 04
+		virtual std::uint32_t hash_function(key_type a_key) const override;										 // 01
+		virtual bool		  key_eq(key_type a_lhs, key_type a_rhs) const override;							 // 02
+		virtual void		  assign_value(value_type* a_value, key_type a_key, mapped_type a_mapped) override;	 // 03
+		virtual void		  clear_value(value_type* a_value) override;										 // 04
 
 
 		// members
-		bool   _copy;	// 20
-		UInt8  _pad21;	// 21
-		UInt16 _pad22;	// 22
-		UInt32 _pad24;	// 24
+		bool		  _copy;   // 20
+		std::uint8_t  _pad21;  // 21
+		std::uint16_t _pad22;  // 22
+		std::uint32_t _pad24;  // 24
 	};
 
 

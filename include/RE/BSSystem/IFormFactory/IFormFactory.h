@@ -9,12 +9,12 @@ namespace RE
 	class ConcreteFormFactory;
 
 
-	enum class OBJECT_TYPE : UInt32
+	enum class OBJECT_TYPE
 	{
 	};
 
 
-	enum class OBJECT_CATEGORY_TYPE : UInt32
+	enum class OBJECT_CATEGORY_TYPE
 	{
 	};
 
@@ -46,5 +46,5 @@ namespace RE
 
 		TESForm* Create();
 	};
-	STATIC_ASSERT(sizeof(IFormFactory) == 0x8);
+	static_assert(sizeof(IFormFactory) == 0x8);
 }

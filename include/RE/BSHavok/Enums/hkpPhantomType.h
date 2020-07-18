@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	enum class hkpPhantomType : UInt32
+	enum class hkpPhantomType
 	{
 		kAabb = 0,
 		kSimpleShape = 1,

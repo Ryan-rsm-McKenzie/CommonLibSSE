@@ -33,8 +33,8 @@ namespace RE
 
 
 		// members
-		UInt64				  unk20;	 // 20
+		std::uint64_t		  unk20;	 // 20
 		BSTArray<TESPackage*> packages;	 // 28 - PNAM
 	};
-	STATIC_ASSERT(sizeof(BGSSceneActionPackage) == 0x40);
+	static_assert(sizeof(BGSSceneActionPackage) == 0x40);
 }

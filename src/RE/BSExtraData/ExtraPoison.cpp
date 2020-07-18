@@ -8,7 +8,7 @@ namespace RE
 	{}
 
 
-	ExtraPoison::ExtraPoison(AlchemyItem* a_poison, SInt32 a_count) :
+	ExtraPoison::ExtraPoison(AlchemyItem* a_poison, std::int32_t a_count) :
 		BSExtraData(),
 		poison(a_poison),
 		count(a_count),

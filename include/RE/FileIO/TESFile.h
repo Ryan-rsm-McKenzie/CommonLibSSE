@@ -15,7 +15,7 @@ namespace RE
 	class TESFile
 	{
 	public:
-		enum class Error : UInt32
+		enum class Error
 		{
 			kNone = 0,
 			kNotFound = 1,
@@ -34,7 +34,7 @@ namespace RE
 		};
 
 
-		enum class RecordFlag : UInt32
+		enum class RecordFlag
 		{
 			kNone = 0,
 			kMaster = 1 << 0,
@@ -49,82 +49,82 @@ namespace RE
 		};
 
 
-		TESFile*		 Duplicate(UInt32 a_cacheSize = 0x4000);
-		UInt32			 GetCurrentSubRecordType();
-		constexpr UInt32 GetCurrentSubRecordSize() const noexcept { return actualChunkSize; }
-		FormType		 GetFormType();
-		constexpr bool	 IsLocalized() const noexcept { return (recordFlags & RecordFlag::kDelocalized) != RecordFlag::kNone; }
-		void			 ReadData(void* a_buf, UInt32 a_size);
-		bool			 Seek(UInt32 a_offset);
-		bool			 SeekNextSubrecord();
+		TESFile*				Duplicate(std::uint32_t a_cacheSize = 0x4000);
+		std::uint32_t			GetCurrentSubRecordType();
+		constexpr std::uint32_t GetCurrentSubRecordSize() const noexcept { return actualChunkSize; }
+		FormType				GetFormType();
+		constexpr bool			IsLocalized() const noexcept { return (recordFlags & RecordFlag::kDelocalized) != RecordFlag::kNone; }
+		void					ReadData(void* a_buf, std::uint32_t a_size);
+		bool					Seek(std::uint32_t a_offset);
+		bool					SeekNextSubrecord();
 
 
 		// members
-		Error						  lastError;						// 000
-		UInt32						  pad004;							// 004
-		TESFile*					  threadSafeParent;					// 008
-		void*						  threadSafeFileMap;				// 010 - NiTPointerMap<UInt32, TESFile*>* - size == 0x20
-		UInt64						  unk018;							// 018
-		UInt64						  unk020;							// 020
-		UInt8						  unk028;							// 028
-		UInt8						  unk029;							// 029
-		UInt16						  pad02A;							// 02A
-		UInt32						  pad02C;							// 02C
-		BSFile*						  lockedFile;						// 030
-		BSFile*						  file;								// 038
-		TESBitArrayFile*			  formUserDataBitArray;				// 040
-		TESBitArrayFile*			  formVersionBitArray;				// 048
-		TESBitArrayFile*			  formIDBitArray;					// 050
-		char						  fileName[MAX_PATH];				// 058
-		char						  path[MAX_PATH];					// 15C
-		char*						  buffer;							// 260
-		UInt32						  bufferAllocSize;					// 268
-		UInt32						  firstCellOffset;					// 26C
-		UInt32						  currCellOffset;					// 270
-		UInt32						  unk274;							// 274
-		TESObjectCELL*				  currCell;							// 278
-		UInt32						  currRefOffset;					// 280
-		FORM						  currentform;						// 284
-		UInt32						  currentchunkID;					// 29C
-		UInt32						  actualChunkSize;					// 2A0
-		UInt32						  filesize;							// 2A4
-		UInt32						  fileOffset;						// 2A8
-		UInt32						  formoffset;						// 2AC
-		UInt32						  chunkoffset;						// 2B0
-		FORM						  saveform;							// 2B4
-		UInt32						  saveFormOffset;					// 2CC
-		UInt64						  saveChunkOffset;					// 2D0
-		UInt64						  unk2D8;							// 2D8
-		UInt64						  unk2E0;							// 2E0
-		UInt8						  unk2E8;							// 2E8
-		bool						  isBigEndian;						// 2E9
-		UInt8						  unk2EA;							// 2EA
-		UInt8						  pad2EB;							// 2EB
-		WIN32_FIND_DATAA			  fileData;							// 2EC
-		float						  unk42C;							// 42C
-		UInt32						  unk430;							// 430
-		UInt32						  flags;							// 434
-		RecordFlag					  recordFlags;						// 438
-		UInt32						  pad43C;							// 43C
-		BSSimpleList<const char*>	  masters;							// 440
-		BSSimpleList<ULARGE_INTEGER*> mastersData;						// 450
-		UInt32						  masterCount;						// 460
-		UInt32						  pad464;							// 464
-		TESFile**					  masterPtrs;						// 468
-		FILETIME					  deletedFormTime;					// 470
-		UInt8						  compileIndex;						// 478
-		UInt8						  pad479;							// 479
-		UInt16						  smallFileCompileIndex;			// 47A
-		UInt32						  pad47C;							// 47C
-		BSString					  createdBy;						// 480
-		BSString					  summary;							// 490
-		char*						  decompressedFormBuffer;			// 4A0
-		UInt32						  decompressedFormBufferSize;		// 4A8
-		UInt32						  pad4AC;							// 4AC
-		void*						  reservedDecompressionBuffer;		// 4B0
-		UInt32						  reservedDecompressionBufferSize;	// 4B8
-		UInt32						  pad4BC;							// 4BC
-		void*						  unk4C0;							// 4C0
+		stl::enumeration<Error, std::uint32_t>		lastError;						  // 000
+		std::uint32_t								pad004;							  // 004
+		TESFile*									threadSafeParent;				  // 008
+		void*										threadSafeFileMap;				  // 010 - NiTPointerMap<std::uint32_t, TESFile*>* - size == 0x20
+		std::uint64_t								unk018;							  // 018
+		std::uint64_t								unk020;							  // 020
+		std::uint8_t								unk028;							  // 028
+		std::uint8_t								unk029;							  // 029
+		std::uint16_t								pad02A;							  // 02A
+		std::uint32_t								pad02C;							  // 02C
+		BSFile*										lockedFile;						  // 030
+		BSFile*										file;							  // 038
+		TESBitArrayFile*							formUserDataBitArray;			  // 040
+		TESBitArrayFile*							formVersionBitArray;			  // 048
+		TESBitArrayFile*							formIDBitArray;					  // 050
+		char										fileName[MAX_PATH];				  // 058
+		char										path[MAX_PATH];					  // 15C
+		char*										buffer;							  // 260
+		std::uint32_t								bufferAllocSize;				  // 268
+		std::uint32_t								firstCellOffset;				  // 26C
+		std::uint32_t								currCellOffset;					  // 270
+		std::uint32_t								unk274;							  // 274
+		TESObjectCELL*								currCell;						  // 278
+		std::uint32_t								currRefOffset;					  // 280
+		FORM										currentform;					  // 284
+		std::uint32_t								currentchunkID;					  // 29C
+		std::uint32_t								actualChunkSize;				  // 2A0
+		std::uint32_t								filesize;						  // 2A4
+		std::uint32_t								fileOffset;						  // 2A8
+		std::uint32_t								formoffset;						  // 2AC
+		std::uint32_t								chunkoffset;					  // 2B0
+		FORM										saveform;						  // 2B4
+		std::uint32_t								saveFormOffset;					  // 2CC
+		std::uint64_t								saveChunkOffset;				  // 2D0
+		std::uint64_t								unk2D8;							  // 2D8
+		std::uint64_t								unk2E0;							  // 2E0
+		std::uint8_t								unk2E8;							  // 2E8
+		bool										isBigEndian;					  // 2E9
+		std::uint8_t								unk2EA;							  // 2EA
+		std::uint8_t								pad2EB;							  // 2EB
+		WIN32_FIND_DATAA							fileData;						  // 2EC
+		float										unk42C;							  // 42C
+		std::uint32_t								unk430;							  // 430
+		std::uint32_t								flags;							  // 434
+		stl::enumeration<RecordFlag, std::uint32_t> recordFlags;					  // 438
+		std::uint32_t								pad43C;							  // 43C
+		BSSimpleList<const char*>					masters;						  // 440
+		BSSimpleList<ULARGE_INTEGER*>				mastersData;					  // 450
+		std::uint32_t								masterCount;					  // 460
+		std::uint32_t								pad464;							  // 464
+		TESFile**									masterPtrs;						  // 468
+		FILETIME									deletedFormTime;				  // 470
+		std::uint8_t								compileIndex;					  // 478
+		std::uint8_t								pad479;							  // 479
+		std::uint16_t								smallFileCompileIndex;			  // 47A
+		std::uint32_t								pad47C;							  // 47C
+		BSString									createdBy;						  // 480
+		BSString									summary;						  // 490
+		char*										decompressedFormBuffer;			  // 4A0
+		std::uint32_t								decompressedFormBufferSize;		  // 4A8
+		std::uint32_t								pad4AC;							  // 4AC
+		void*										reservedDecompressionBuffer;	  // 4B0
+		std::uint32_t								reservedDecompressionBufferSize;  // 4B8
+		std::uint32_t								pad4BC;							  // 4BC
+		void*										unk4C0;							  // 4C0
 	};
-	STATIC_ASSERT(sizeof(TESFile) == 0x4C8);
+	static_assert(sizeof(TESFile) == 0x4C8);
 }

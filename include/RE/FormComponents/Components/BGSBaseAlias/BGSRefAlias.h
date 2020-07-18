@@ -22,31 +22,38 @@ namespace RE
 
 		struct ForcedFillData  // kForced
 		{
+		public:
+			// members
 			ObjectRefHandle forcedRef;	// 0 - ALFR
 		};
-		STATIC_ASSERT(sizeof(ForcedFillData) == 0x4);
+		static_assert(sizeof(ForcedFillData) == 0x4);
 
 
 		struct FromAliasFillData  // kFromAlias
 		{
-			UInt32				forcedFromAlias;  // 00 - ALFA
-			UInt32				pad04;			  // 04
+		public:
+			// members
+			std::uint32_t		forcedFromAlias;  // 00 - ALFA
+			std::uint32_t		pad04;			  // 04
 			BGSLocationRefType* forcedRefType;	  // 08 - ALRT
 		};
-		STATIC_ASSERT(sizeof(FromAliasFillData) == 0x10);
+		static_assert(sizeof(FromAliasFillData) == 0x10);
 
 
 		struct FromEventFillData  // kFromEvent
 		{
-			QuestEvent forcedFromEvent;	 // ALFE
-			UInt32	   forcedEventData;	 // ALFD
+		public:
+			// members
+			QuestEvent	  forcedFromEvent;	// ALFE
+			std::uint32_t forcedEventData;	// ALFD
 		};
-		STATIC_ASSERT(sizeof(FromEventFillData) == 0x8);
+		static_assert(sizeof(FromEventFillData) == 0x8);
 
 
 		struct CreatedFillData	// kCreated
 		{
-			enum class Level : UInt16  // ALCL
+		public:
+			enum class Level  // ALCL
 			{
 				kEasy = 0,
 				kMedium = 1,
@@ -58,67 +65,79 @@ namespace RE
 
 			struct Alias  // ALCA
 			{
-				enum class Create : UInt16
+			public:
+				enum class Create
 				{
 					kAt = 0x0000,
 					kIn = 0x8000
 				};
 
 
-				UInt16 alias;	// 0
-				Create create;	// 2
+				// members
+				std::uint16_t							alias;	 // 0
+				stl::enumeration<Create, std::uint16_t> create;	 // 2
 			};
-			STATIC_ASSERT(sizeof(Alias) == 0x4);
+			static_assert(sizeof(Alias) == 0x4);
 
 
-			TESBoundObject* object;	 // 00 - ALCO
-			Alias			alias;	 // 08 - ALCA
-			Level			level;	 // 0C - ALCL
-			UInt16			pad0E;	 // 0E
+			// members
+			TESBoundObject*						   object;	// 00 - ALCO
+			Alias								   alias;	// 08 - ALCA
+			stl::enumeration<Level, std::uint16_t> level;	// 0C - ALCL
+			std::uint16_t						   pad0E;	// 0E
 		};
-		STATIC_ASSERT(sizeof(CreatedFillData) == 0x10);
+		static_assert(sizeof(CreatedFillData) == 0x10);
 
 
 		struct FromExternalFillData	 // kFromExternal
 		{
-			TESQuest* externalQuest;  // 00 - ALEQ
-			UInt32	  externalAlias;  // 08 - ALEA
-			UInt32	  pad0C;		  // 0C
+		public:
+			// members
+			TESQuest*	  externalQuest;  // 00 - ALEQ
+			std::uint32_t externalAlias;  // 08 - ALEA
+			std::uint32_t pad0C;		  // 0C
 		};
-		STATIC_ASSERT(sizeof(FromExternalFillData) == 0x10);
+		static_assert(sizeof(FromExternalFillData) == 0x10);
 
 
 		struct UniqueActorFillData	// kUniqueActor
 		{
+		public:
+			// members
 			TESNPC* uniqueActor;  // 0 - ALUA
 		};
-		STATIC_ASSERT(sizeof(UniqueActorFillData) == 0x8);
+		static_assert(sizeof(UniqueActorFillData) == 0x8);
 
 
 		struct NearAliasFillData  // kNearAlias
 		{
-			enum class NEARFILLTYPE : UInt32
+		public:
+			enum class NEARFILLTYPE
 			{
 				kLinkedChildren = 0,
 				kLinkedParents = 1
 			};
 
 
-			UInt32		 nearAlias;		// 0 - ALNA
-			NEARFILLTYPE nearFillType;	// 4 - ALNT
+			// members
+			std::uint32_t								  nearAlias;	 // 0 - ALNA
+			stl::enumeration<NEARFILLTYPE, std::uint32_t> nearFillType;	 // 4 - ALNT
 		};
-		STATIC_ASSERT(sizeof(NearAliasFillData) == 0x8);
+		static_assert(sizeof(NearAliasFillData) == 0x8);
 
 
 		union GenericFillData
 		{
+		public:
 			struct Padding
 			{
-				UInt64 pad1;  // 00
-				UInt64 pad2;  // 08
-				UInt64 pad3;  // 10
+			public:
+				// members
+				std::uint64_t pad1;	 // 00
+				std::uint64_t pad2;	 // 08
+				std::uint64_t pad3;	 // 10
 			};
-			STATIC_ASSERT(sizeof(Padding) == 0x18);
+			static_assert(sizeof(Padding) == 0x18);
 
 
 			~GenericFillData() {}
@@ -134,7 +153,7 @@ namespace RE
 			UniqueActorFillData	 uniqueActor;
 			NearAliasFillData	 nearAlias;
 		};
-		STATIC_ASSERT(sizeof(GenericFillData) == 0x18);
+		static_assert(sizeof(GenericFillData) == 0x18);
 
 
 		virtual ~BGSRefAlias();	 // 00
@@ -149,5 +168,5 @@ namespace RE
 		GenericFillData fillData;	 // 28
 		TESCondition*	conditions;	 // 40
 	};
-	STATIC_ASSERT(sizeof(BGSRefAlias) == 0x48);
+	static_assert(sizeof(BGSRefAlias) == 0x48);
 }

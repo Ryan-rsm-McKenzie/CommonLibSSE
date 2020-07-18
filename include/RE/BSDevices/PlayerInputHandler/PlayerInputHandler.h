@@ -28,10 +28,10 @@ namespace RE
 
 
 		// members
-		bool   inputEventHandlingEnabled;  // 08
-		UInt8  pad09;					   // 09
-		UInt16 pad0A;					   // 0A
-		UInt32 pad0C;					   // 0C
+		bool		  inputEventHandlingEnabled;  // 08
+		std::uint8_t  pad09;					  // 09
+		std::uint16_t pad0A;					  // 0A
+		std::uint32_t pad0C;					  // 0C
 	};
-	STATIC_ASSERT(sizeof(PlayerInputHandler) == 0x10);
+	static_assert(sizeof(PlayerInputHandler) == 0x10);
 }

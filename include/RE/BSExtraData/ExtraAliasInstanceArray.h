@@ -18,7 +18,7 @@ namespace RE
 		const BGSBaseAlias*			 alias;				 // 08
 		const BSTArray<TESPackage*>* instancedPackages;	 // 10
 	};
-	STATIC_ASSERT(sizeof(BGSRefAliasInstanceData) == 0x18);
+	static_assert(sizeof(BGSRefAliasInstanceData) == 0x18);
 
 
 	class ExtraAliasInstanceArray : public BSExtraData
@@ -39,5 +39,5 @@ namespace RE
 		BSTArray<BGSRefAliasInstanceData*> aliases;	 // 10
 		mutable BSReadWriteLock			   lock;	 // 28
 	};
-	STATIC_ASSERT(sizeof(ExtraAliasInstanceArray) == 0x30);
+	static_assert(sizeof(ExtraAliasInstanceArray) == 0x30);
 }

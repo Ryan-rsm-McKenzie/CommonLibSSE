@@ -450,7 +450,7 @@ namespace RE
 	}
 
 
-	UInt32 GFxValue::ObjectInterface::GetArraySize(void* a_data) const
+	std::uint32_t GFxValue::ObjectInterface::GetArraySize(void* a_data) const
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::GetArraySize);
 		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::GetArraySize);
@@ -458,7 +458,7 @@ namespace RE
 	}
 
 
-	bool GFxValue::ObjectInterface::SetArraySize(void* a_data, UInt32 a_size)
+	bool GFxValue::ObjectInterface::SetArraySize(void* a_data, std::uint32_t a_size)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::SetArraySize);
 		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::SetArraySize);
@@ -466,7 +466,7 @@ namespace RE
 	}
 
 
-	bool GFxValue::ObjectInterface::GetElement(void* a_data, UInt32 a_idx, GFxValue* a_val) const
+	bool GFxValue::ObjectInterface::GetElement(void* a_data, std::uint32_t a_idx, GFxValue* a_val) const
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::GetElement);
 		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::GetElement);
@@ -474,7 +474,7 @@ namespace RE
 	}
 
 
-	bool GFxValue::ObjectInterface::SetElement(void* a_data, UInt32 a_idx, const GFxValue& a_val)
+	bool GFxValue::ObjectInterface::SetElement(void* a_data, std::uint32_t a_idx, const GFxValue& a_val)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::SetElement);
 		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::SetElement);
@@ -490,7 +490,7 @@ namespace RE
 	}
 
 
-	bool GFxValue::ObjectInterface::RemoveElements(void* a_data, UInt32 a_idx, SInt32 a_count)
+	bool GFxValue::ObjectInterface::RemoveElements(void* a_data, std::uint32_t a_idx, std::int32_t a_count)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::RemoveElements);
 		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::RemoveElements);
@@ -522,7 +522,7 @@ namespace RE
 	}
 
 
-	bool GFxValue::ObjectInterface::AttachMovie(void* a_data, GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, SInt32 a_depth, const GFxValue* a_initObj)
+	bool GFxValue::ObjectInterface::AttachMovie(void* a_data, GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, std::int32_t a_depth, const GFxValue* a_initObj)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::AttachMovie);
 		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::AttachMovie);
@@ -755,7 +755,7 @@ namespace RE
 		if (_type != a_rhs._type) {
 			return false;
 		} else {
-			switch (_type & ValueType::kValueMask) {
+			switch (*_type & ValueType::kValueMask) {
 			case ValueType::kBoolean:
 				return _value.boolean == a_rhs._value.boolean;
 			case ValueType::kNumber:
@@ -779,7 +779,7 @@ namespace RE
 
 	GFxValue::ValueType GFxValue::GetType() const
 	{
-		return ValueType(_type & ValueType::kTypeMask);
+		return *_type & ValueType::kTypeMask;
 	}
 
 
@@ -1001,28 +1001,28 @@ namespace RE
 	}
 
 
-	UInt32 GFxValue::GetArraySize() const
+	std::uint32_t GFxValue::GetArraySize() const
 	{
 		assert(IsArray());
 		return _objectInterface->GetArraySize(_value.obj);
 	}
 
 
-	bool GFxValue::SetArraySize(UInt32 a_size)
+	bool GFxValue::SetArraySize(std::uint32_t a_size)
 	{
 		assert(IsArray());
 		return _objectInterface->SetArraySize(_value.obj, a_size);
 	}
 
 
-	bool GFxValue::GetElement(UInt32 a_idx, GFxValue* a_val) const
+	bool GFxValue::GetElement(std::uint32_t a_idx, GFxValue* a_val) const
 	{
 		assert(IsArray());
 		return _objectInterface->GetElement(_value.obj, a_idx, a_val);
 	}
 
 
-	bool GFxValue::SetElement(UInt32 a_idx, const GFxValue& a_val)
+	bool GFxValue::SetElement(std::uint32_t a_idx, const GFxValue& a_val)
 	{
 		assert(IsArray());
 		return _objectInterface->SetElement(_value.obj, a_idx, a_val);
@@ -1036,14 +1036,14 @@ namespace RE
 	}
 
 
-	bool GFxValue::RemoveElements(UInt32 a_idx, SInt32 a_count)
+	bool GFxValue::RemoveElements(std::uint32_t a_idx, std::int32_t a_count)
 	{
 		assert(IsArray());
 		return _objectInterface->RemoveElements(_value.obj, a_idx, a_count);
 	}
 
 
-	bool GFxValue::RemoveElement(UInt32 a_idx)
+	bool GFxValue::RemoveElement(std::uint32_t a_idx)
 	{
 		return RemoveElements(a_idx, 1);
 	}
@@ -1083,7 +1083,7 @@ namespace RE
 	}
 
 
-	bool GFxValue::AttachMovie(GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, SInt32 a_depth, const GFxValue* a_initObj)
+	bool GFxValue::AttachMovie(GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, std::int32_t a_depth, const GFxValue* a_initObj)
 	{
 		assert(IsDisplayObject());
 		return _objectInterface->AttachMovie(_value.obj, a_movieClip, a_symbolName, a_instanceName, a_depth, a_initObj);

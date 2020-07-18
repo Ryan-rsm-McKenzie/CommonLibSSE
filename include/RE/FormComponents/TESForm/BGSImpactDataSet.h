@@ -19,7 +19,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -38,5 +38,5 @@ namespace RE
 		// members
 		BSTHashMap<const BGSMaterialType*, BGSImpactData*> impactMap;  // 28 - PNAM
 	};
-	STATIC_ASSERT(sizeof(BGSImpactDataSet) == 0x58);
+	static_assert(sizeof(BGSImpactDataSet) == 0x58);
 }

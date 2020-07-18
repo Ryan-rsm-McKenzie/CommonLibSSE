@@ -236,7 +236,7 @@ namespace RE
 		// members
 		element_type* _ptr;	 // 0
 	};
-	STATIC_ASSERT(sizeof(BSTSmartPointer<void*>) == 0x8);
+	static_assert(sizeof(BSTSmartPointer<void*>) == 0x8);
 
 	template <class T, class... Args>
 	[[nodiscard]] inline BSTSmartPointer<T> make_smart(Args&&... a_args)
@@ -286,7 +286,7 @@ namespace RE
 
 	template <class T>
 	using BSTAutoPointer = BSTSmartPointer<T, BSTSmartPointerAutoPtr>;
-	STATIC_ASSERT(sizeof(BSTAutoPointer<void*>) == 0x8);
+	static_assert(sizeof(BSTAutoPointer<void*>) == 0x8);
 }
 
 

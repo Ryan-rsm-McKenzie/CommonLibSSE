@@ -16,6 +16,6 @@ namespace RE
 			// add
 			virtual void Unk_01(void) = 0;	// 00
 		};
-		STATIC_ASSERT(sizeof(IFreezeQuery) == 0x8);
+		static_assert(sizeof(IFreezeQuery) == 0x8);
 	}
 }

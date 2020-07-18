@@ -19,11 +19,11 @@ namespace RE
 			hkpAgentNnEntry*	 agentEntry;  // 00
 			hkpLinkedCollidable* partner;	  // 08
 		};
-		STATIC_ASSERT(sizeof(CollisionEntry) == 0x10);
+		static_assert(sizeof(CollisionEntry) == 0x10);
 
 
 		// members
 		hkArray<CollisionEntry> collisionEntries;  // 70
 	};
-	STATIC_ASSERT(sizeof(hkpLinkedCollidable) == 0x80);
+	static_assert(sizeof(hkpLinkedCollidable) == 0x80);
 }

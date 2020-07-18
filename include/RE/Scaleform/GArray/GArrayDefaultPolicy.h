@@ -9,5 +9,5 @@ namespace RE
 		// members
 		UPInt capacity;	 // 0
 	};
-	STATIC_ASSERT(sizeof(GArrayDefaultPolicy) == 0x8);
+	static_assert(sizeof(GArrayDefaultPolicy) == 0x8);
 }

@@ -25,40 +25,40 @@ namespace RE
 
 
 		// members
-		const char* subKey;	 // 008
-		UInt64		unk010;	 // 010
-		UInt64		unk018;	 // 018
-		UInt64		unk020;	 // 020
-		UInt64		unk028;	 // 028
-		UInt64		unk030;	 // 030
-		UInt64		unk038;	 // 038
-		UInt64		unk040;	 // 040
-		UInt64		unk048;	 // 048
-		UInt64		unk050;	 // 050
-		UInt64		unk058;	 // 058
-		UInt64		unk060;	 // 060
-		UInt64		unk068;	 // 068
-		UInt64		unk070;	 // 070
-		UInt64		unk078;	 // 078
-		UInt64		unk080;	 // 080
-		UInt64		unk088;	 // 088
-		UInt64		unk090;	 // 090
-		UInt64		unk098;	 // 098
-		UInt64		unk0A0;	 // 0A0
-		UInt64		unk0A8;	 // 0A8
-		UInt64		unk0B0;	 // 0B0
-		UInt64		unk0B8;	 // 0B8
-		UInt64		unk0C0;	 // 0C0
-		UInt64		unk0C8;	 // 0C8
-		UInt64		unk0D0;	 // 0D0
-		UInt64		unk0D8;	 // 0D8
-		UInt64		unk0E0;	 // 0E0
-		UInt64		unk0E8;	 // 0E8
-		UInt64		unk0F0;	 // 0F0
-		UInt64		unk0F8;	 // 0F8
-		UInt64		unk100;	 // 100
-		UInt64		unk108;	 // 108
-		void*		handle;	 // 110
+		const char*	  subKey;  // 008
+		std::uint64_t unk010;  // 010
+		std::uint64_t unk018;  // 018
+		std::uint64_t unk020;  // 020
+		std::uint64_t unk028;  // 028
+		std::uint64_t unk030;  // 030
+		std::uint64_t unk038;  // 038
+		std::uint64_t unk040;  // 040
+		std::uint64_t unk048;  // 048
+		std::uint64_t unk050;  // 050
+		std::uint64_t unk058;  // 058
+		std::uint64_t unk060;  // 060
+		std::uint64_t unk068;  // 068
+		std::uint64_t unk070;  // 070
+		std::uint64_t unk078;  // 078
+		std::uint64_t unk080;  // 080
+		std::uint64_t unk088;  // 088
+		std::uint64_t unk090;  // 090
+		std::uint64_t unk098;  // 098
+		std::uint64_t unk0A0;  // 0A0
+		std::uint64_t unk0A8;  // 0A8
+		std::uint64_t unk0B0;  // 0B0
+		std::uint64_t unk0B8;  // 0B8
+		std::uint64_t unk0C0;  // 0C0
+		std::uint64_t unk0C8;  // 0C8
+		std::uint64_t unk0D0;  // 0D0
+		std::uint64_t unk0D8;  // 0D8
+		std::uint64_t unk0E0;  // 0E0
+		std::uint64_t unk0E8;  // 0E8
+		std::uint64_t unk0F0;  // 0F0
+		std::uint64_t unk0F8;  // 0F8
+		std::uint64_t unk100;  // 100
+		std::uint64_t unk108;  // 108
+		void*		  handle;  // 110
 	};
-	STATIC_ASSERT(sizeof(SettingCollection<void*>) == 0x118);
+	static_assert(sizeof(SettingCollection<void*>) == 0x118);
 }

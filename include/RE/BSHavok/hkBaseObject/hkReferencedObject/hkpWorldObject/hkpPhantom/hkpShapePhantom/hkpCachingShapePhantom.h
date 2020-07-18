@@ -18,7 +18,7 @@ namespace RE
 		{
 		public:
 		};
-		STATIC_ASSERT(sizeof(OrderByUid) == 0x1);
+		static_assert(sizeof(OrderByUid) == 0x1);
 
 
 		struct CollisionDetail
@@ -26,7 +26,7 @@ namespace RE
 			hkpCollisionAgent* agent;		// 00
 			hkpCollidable*	   collidable;	// 08
 		};
-		STATIC_ASSERT(sizeof(CollisionDetail) == 0x10);
+		static_assert(sizeof(CollisionDetail) == 0x10);
 
 
 		using hkpCollisionDetail = CollisionDetail;
@@ -54,9 +54,9 @@ namespace RE
 		hkArray<CollisionDetail> collisionDetails;	// 1A0
 		bool					 orderDirty;		// 1B0
 		OrderByUid				 orderRelation;		// 1B1
-		UInt16					 pad1B2;			// 1B2
-		UInt32					 pad1B4;			// 1B4
-		UInt64					 pad1B8;			// 1B8
+		std::uint16_t			 pad1B2;			// 1B2
+		std::uint32_t			 pad1B4;			// 1B4
+		std::uint64_t			 pad1B8;			// 1B8
 	};
-	STATIC_ASSERT(sizeof(hkpCachingShapePhantom) == 0x1C0);
+	static_assert(sizeof(hkpCachingShapePhantom) == 0x1C0);
 }

@@ -32,9 +32,9 @@ namespace RE
 		NiPointer<NiNode>		 skyQuadNode;		 // 20
 		NiPointer<BSTriShape>	 skyQuad;			 // 28
 		bool					 updateFogDistance;	 // 30
-		UInt8					 pad31;				 // 31
-		UInt16					 pad32;				 // 31
-		UInt32					 pad34;				 // 34
+		std::uint8_t			 pad31;				 // 31
+		std::uint16_t			 pad32;				 // 31
+		std::uint32_t			 pad34;				 // 34
 	};
-	STATIC_ASSERT(sizeof(Atmosphere) == 0x38);
+	static_assert(sizeof(Atmosphere) == 0x38);
 }

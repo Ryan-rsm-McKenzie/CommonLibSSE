@@ -39,7 +39,7 @@ namespace RE
 
 	bool AIProcess::InHighProcess() const
 	{
-		switch (processLevel) {
+		switch (*processLevel) {
 		case PROCESS_TYPE::kHigh:
 			return true;
 		default:
@@ -50,7 +50,7 @@ namespace RE
 
 	bool AIProcess::InMiddleHighProcess() const
 	{
-		switch (processLevel) {
+		switch (*processLevel) {
 		case PROCESS_TYPE::kHigh:
 		case PROCESS_TYPE::kMiddleHigh:
 			return true;
@@ -62,7 +62,7 @@ namespace RE
 
 	bool AIProcess::InMiddleLowProcess() const
 	{
-		switch (processLevel) {
+		switch (*processLevel) {
 		case PROCESS_TYPE::kHigh:
 		case PROCESS_TYPE::kMiddleHigh:
 		case PROCESS_TYPE::kMiddleLow:
@@ -75,7 +75,7 @@ namespace RE
 
 	bool AIProcess::InLowProcess() const
 	{
-		switch (processLevel) {
+		switch (*processLevel) {
 		case PROCESS_TYPE::kHigh:
 		case PROCESS_TYPE::kMiddleHigh:
 		case PROCESS_TYPE::kMiddleLow:
@@ -126,10 +126,11 @@ namespace RE
 	void AIProcess::Update3DModel(Actor* a_actor)
 	{
 		Update3DModel_Impl(a_actor);
-		const SKSE::NiNodeUpdateEvent event(a_actor);
+		const SKSE::NiNodeUpdateEvent event{ a_actor };
 		auto source = SKSE::GetNiNodeUpdateEventSource();
-		assert(source);	 // api failed to init
-		source->SendEvent(&event);
+		if (source) {
+			source->SendEvent(std::addressof(event));
+		}
 	}
 
 

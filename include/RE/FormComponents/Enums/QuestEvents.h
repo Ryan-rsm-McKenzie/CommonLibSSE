@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	enum class QuestEvent : UInt32
+	enum class QuestEvent
 	{
 		kNone = static_cast<std::underlying_type_t<QuestEvent>>(-1),  // NONE
 		kKillActor = 0,												  // KILL

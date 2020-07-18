@@ -60,16 +60,16 @@ namespace RE
 		float								keepDistance;					// A8
 		float								keepContactTolerance;			// AC
 		float								contactAngleSensitivity;		// B0
-		SInt32								userPlanes;						// B4
+		std::int32_t						userPlanes;						// B4
 		float								maxCharacterSpeedForSolver;		// B8
 		float								characterStrength;				// BC
 		float								characterMass;					// C0
-		UInt32								padC4;							// C4
+		std::uint32_t						padC4;							// C4
 		hkArray<hkpCharacterProxyListener*> listeners;						// C8
 		float								maxSlopeCosine;					// D8
 		float								penetrationRecoverySpeed;		// DC
-		SInt32								maxCastIterations;				// E0
+		std::int32_t						maxCastIterations;				// E0
 		bool								refreshManifoldInCheckSupport;	// E4
 	};
-	STATIC_ASSERT(sizeof(hkpCharacterProxy) == 0xF0);
+	static_assert(sizeof(hkpCharacterProxy) == 0xF0);
 }

@@ -8,7 +8,7 @@
 namespace RE
 {
 	// scatter table with chaining
-	template <class Traits, UInt32 N, template <class, UInt32> class Allocator, class Hash, class KeyEqual>
+	template <class Traits, std::uint32_t N, template <class, std::uint32_t> class Allocator, class Hash, class KeyEqual>
 	struct BSTScatterTable
 	{
 	public:
@@ -16,7 +16,7 @@ namespace RE
 		using key_type = typename traits_type::key_type;
 		using mapped_type = typename traits_type::mapped_type;
 		using value_type = typename traits_type::value_type;
-		using size_type = UInt32;
+		using size_type = std::uint32_t;
 		using hasher = Hash;
 		using key_equal = KeyEqual;
 
@@ -352,14 +352,14 @@ namespace RE
 				return;
 			}
 
-			constexpr auto TOP = static_cast<UInt32>(1 << 31);
-			UInt32		   leftShifts = 0;
+			constexpr auto TOP = static_cast<std::uint32_t>(1 << 31);
+			std::uint32_t  leftShifts = 0;
 			while ((a_count & TOP) == 0) {
 				a_count <<= 1;
 				++leftShifts;
 			}
 			auto bitPos = 31 - leftShifts;
-			auto newCount = static_cast<UInt32>(1 << bitPos);
+			auto newCount = static_cast<std::uint32_t>(1 << bitPos);
 			grow(newCount);
 		}
 
@@ -462,13 +462,13 @@ namespace RE
 		}
 
 
-		UInt32 calc_hash(const key_type& a_key) const
+		std::uint32_t calc_hash(const key_type& a_key) const
 		{
 			return hash_function()(a_key);
 		}
 
 
-		UInt32 calc_idx(const key_type& a_key) const
+		std::uint32_t calc_idx(const key_type& a_key) const
 		{
 			return calc_hash(a_key) & (_capacity - 1);	// capacity is always a factor of 2, so this is a faster modulo
 		}
@@ -502,16 +502,16 @@ namespace RE
 
 		bool grow()
 		{
-			if (_capacity == (UInt32)1 << 31) {
+			if (_capacity == (std::uint32_t)1 << 31) {
 				return false;
 			}
 
-			UInt32 newCapacity = _capacity ? _capacity << 1 : min_size();
+			std::uint32_t newCapacity = _capacity ? _capacity << 1 : min_size();
 			return grow(newCapacity);
 		}
 
 
-		bool grow(UInt32 a_newCapacity)
+		bool grow(std::uint32_t a_newCapacity)
 		{
 			auto oldEntries = get_entries();
 			auto begIter = begin();
@@ -577,15 +577,15 @@ namespace RE
 		}
 
 
-		static constexpr UInt8 SENTINEL[] = { (UInt8)0xDE, (UInt8)0xAD, (UInt8)0xBE, (UInt8)0xEF };
+		static constexpr std::uint8_t SENTINEL[] = { (std::uint8_t)0xDE, (std::uint8_t)0xAD, (std::uint8_t)0xBE, (std::uint8_t)0xEF };
 
 
 		// members
-		UInt64			  _pad00;	   // 00
-		UInt32			  _pad08;	   // 08
-		UInt32			  _capacity;   // 0C - this must be 2^n, or else terrible things will happen
-		UInt32			  _freeCount;  // 10
-		UInt32			  _freeIdx;	   // 14
+		std::uint64_t	  _pad00;	   // 00
+		std::uint32_t	  _pad08;	   // 08
+		std::uint32_t	  _capacity;   // 0C - this must be 2^n, or else terrible things will happen
+		std::uint32_t	  _freeCount;  // 10
+		std::uint32_t	  _freeIdx;	   // 14
 		const entry_type* _sentinel;   // 18
 		allocator_type	  _allocator;  // 20
 	};
@@ -607,12 +607,12 @@ namespace RE
 	};
 
 
-	template <class T, UInt32 N = 8>
+	template <class T, std::uint32_t N = 8>
 	struct BSTScatterTableHeapAllocator
 	{
 	public:
 		using entry_type = T;
-		using size_type = UInt32;
+		using size_type = std::uint32_t;
 
 
 		BSTScatterTableHeapAllocator() :
@@ -661,15 +661,15 @@ namespace RE
 
 	private:
 		// members
-		UInt64		_pad00;	   // 00 (20)
-		entry_type* _entries;  // 08 (28)
+		std::uint64_t _pad00;	 // 00 (20)
+		entry_type*	  _entries;	 // 08 (28)
 	};
-	STATIC_ASSERT(sizeof(BSTScatterTableHeapAllocator<void*, 8>) == 0x10);
+	static_assert(sizeof(BSTScatterTableHeapAllocator<void*, 8>) == 0x10);
 
 
 	template <class Key, class T, class Hash = CRC32Hash<Key>, class KeyEqual = std::equal_to<Key>>
 	using BSTHashMap = BSTScatterTable<BSTScatterTableTraits<Key, T>, 8, BSTScatterTableHeapAllocator, Hash, KeyEqual>;
-	STATIC_ASSERT(sizeof(BSTHashMap<UInt32, void*>) == 0x30);
+	static_assert(sizeof(BSTHashMap<std::uint32_t, void*>) == 0x30);
 
 
 	template <class Key>
@@ -690,18 +690,18 @@ namespace RE
 
 	template <class Key, class Hash = CRC32Hash<Key>, class KeyEqual = std::equal_to<Key>>
 	using BSTSet = BSTScatterTable<BSTSetTraits<Key>, 8, BSTScatterTableHeapAllocator, Hash, KeyEqual>;
-	STATIC_ASSERT(sizeof(BSTSet<UInt32, void*>) == 0x30);
+	static_assert(sizeof(BSTSet<std::uint32_t, void*>) == 0x30);
 
 
 	struct BSTStaticHashMapBase
 	{
 	public:
-		template <class T, UInt32 N>
+		template <class T, std::uint32_t N>
 		struct Allocator
 		{
 		public:
 			using entry_type = T;
-			using size_type = UInt32;
+			using size_type = std::uint32_t;
 
 
 			Allocator() :
@@ -753,12 +753,12 @@ namespace RE
 	};
 
 
-	template <class Key, class T, UInt32 N, class Hash = CRC32Hash<Key>, class KeyEqual = std::equal_to<Key>>
+	template <class Key, class T, std::uint32_t N, class Hash = CRC32Hash<Key>, class KeyEqual = std::equal_to<Key>>
 	using BSTStaticHashMap = BSTScatterTable<BSTScatterTableTraits<Key, T>, N, BSTStaticHashMapBase::Allocator, Hash, KeyEqual>;
 
 
-	using UnkKey = UInt64;
-	using UnkValue = UInt64;
+	using UnkKey = std::uint64_t;
+	using UnkValue = std::uint64_t;
 
 
 	//class BSTHashMap<unsigned int, unsigned int, struct BSTDefaultScatterTable>	size(30) :
@@ -807,9 +807,9 @@ namespace RE
 
 
 			// members
-			UInt32				_capacity;	// ?? (0C) - this must be 2^n, or else terrible things will happen
-			UInt32				_freeCount;	// ?? (10)
-			UInt32				_freeIdx;	// ?? (14)
+			std::uint32_t				_capacity;	// ?? (0C) - this must be 2^n, or else terrible things will happen
+			std::uint32_t				_freeCount;	// ?? (10)
+			std::uint32_t				_freeIdx;	// ?? (14)
 			const entry_type*	_sentinel;	// ?? (18)
 		};
 
@@ -841,7 +841,7 @@ namespace RE
 		struct BSTScatterTableDefaultHashPolicy
 		{
 		public:
-			UInt32 operator()(const Key& a_key) const
+			std::uint32_t operator()(const Key& a_key) const
 			{
 				return CRC32Hash<Key>()(a_key);
 			}
@@ -856,7 +856,7 @@ namespace RE
 		};
 
 
-		template <class Key, class T, class Storage, class Hash, class Allocator, UInt32 N>
+		template <class Key, class T, class Storage, class Hash, class Allocator, std::uint32_t N>
 		struct BSTScatterTableTraits
 		{
 		public:
@@ -881,7 +881,7 @@ namespace RE
 			using key_type = typename traits_type::key_type;
 			using mapped_type = typename traits_type::mapped_type;
 			using value_type = typename traits_type::value_type;
-			using size_type = UInt32;
+			using size_type = std::uint32_t;
 			using hasher = Hash;
 			using key_equal = KeyEqual;
 			using allocator_type = typename traits_type::allocator_type;
@@ -894,7 +894,7 @@ namespace RE
 		};
 
 
-		template <class Key, class T, class Storage, class Hash, class Allocator, UInt32 N>
+		template <class Key, class T, class Storage, class Hash, class Allocator, std::uint32_t N>
 		struct BSTScatterTable :
 			public BSTScatterTableBase<BSTScatterTableTraits<Key, T, Storage, Hash, Allocator, N>>
 		{
@@ -937,7 +937,7 @@ namespace RE
 		{
 		public:
 		};
-		STATIC_ASSERT(sizeof(BSTHashMap<UInt32, void*>) == 0x30);
+		static_assert(sizeof(BSTHashMap<std::uint32_t, void*>) == 0x30);
 	}
 #endif
 }

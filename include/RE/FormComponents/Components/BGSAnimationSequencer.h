@@ -13,9 +13,9 @@ namespace RE
 	{
 	public:
 		// members
-		UInt32									  numSequences;	 // 00
-		UInt32									  pad04;		 // 04
+		std::uint32_t							  numSequences;	 // 00
+		std::uint32_t							  pad04;		 // 04
 		BSTHashMap<BSFixedString, BGSActionData*> actions;		 // 08
 	};
-	STATIC_ASSERT(sizeof(BGSAnimationSequencer) == 0x38);
+	static_assert(sizeof(BGSAnimationSequencer) == 0x38);
 }

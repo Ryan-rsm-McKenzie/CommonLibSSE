@@ -13,10 +13,10 @@ namespace RE
 	struct SayOnceTopicInfos
 	{
 		TESTopicInfo* info;		  // 00
-		SInt32		  dateStamp;  // 08
+		std::int32_t  dateStamp;  // 08
 		float		  hourStamp;  // 0C
 	};
-	STATIC_ASSERT(sizeof(SayOnceTopicInfos) == 0x10);
+	static_assert(sizeof(SayOnceTopicInfos) == 0x10);
 
 
 	class ExtraSayTopicInfoOnceADay : public BSExtraData
@@ -35,5 +35,5 @@ namespace RE
 		// members
 		BSSimpleList<SayOnceTopicInfos*>* saidOnceTopicInfos;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraSayTopicInfoOnceADay) == 0x18);
+	static_assert(sizeof(ExtraSayTopicInfoOnceADay) == 0x18);
 }

@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	void* IMemoryStore::AllocateAlign(std::size_t a_size, UInt32 a_alignment)
+	void* IMemoryStore::AllocateAlign(std::size_t a_size, std::uint32_t a_alignment)
 	{
 		return AllocateAlignImpl(a_size, a_alignment);
 	}

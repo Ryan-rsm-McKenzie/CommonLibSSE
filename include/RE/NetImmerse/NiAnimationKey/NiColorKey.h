@@ -15,11 +15,11 @@ namespace RE
 
 		void			SetColor(const NiColorA& a_color);
 		const NiColorA& GetColor() const;
-		NiColorKey*		GetKeyAt(UInt32 a_index, UInt8 a_keySize);
+		NiColorKey*		GetKeyAt(std::uint32_t a_index, std::uint8_t a_keySize);
 
 	protected:
 		// members
 		NiColorA _color;  // 04
 	};
-	STATIC_ASSERT(sizeof(NiColorKey) == 0x14);
+	static_assert(sizeof(NiColorKey) == 0x14);
 }

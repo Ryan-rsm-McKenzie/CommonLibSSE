@@ -20,12 +20,12 @@ namespace RE
 		CRITICAL_SECTION lock;			 // 08
 		HANDLE			 thread;		 // 30
 		HANDLE			 ownerThread;	 // 38
-		UInt32			 threadID;		 // 40
-		UInt32			 ownerThreadID;	 // 44
+		std::uint32_t	 threadID;		 // 40
+		std::uint32_t	 ownerThreadID;	 // 44
 		bool			 initialized;	 // 48
-		UInt8			 pad49;			 // 49
-		UInt16			 pad4A;			 // 4A
-		UInt32			 pad4C;			 // 4C
+		std::uint8_t	 pad49;			 // 49
+		std::uint16_t	 pad4A;			 // 4A
+		std::uint32_t	 pad4C;			 // 4C
 	};
-	STATIC_ASSERT(sizeof(BSThread) == 0x50);
+	static_assert(sizeof(BSThread) == 0x50);
 }

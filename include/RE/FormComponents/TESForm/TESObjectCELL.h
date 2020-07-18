@@ -27,14 +27,16 @@ namespace RE
 	class BGSTerrainVisibilityData
 	{
 	public:
+		// members
 		BSBitField<>* visData;	// 0
 	};
-	STATIC_ASSERT(sizeof(BGSTerrainVisibilityData) == 0x8);
+	static_assert(sizeof(BGSTerrainVisibilityData) == 0x8);
 
 
 	struct EXTERIOR_DATA  // XCLC
 	{
-		enum class LandHideFlag : UInt8
+	public:
+		enum class LandHideFlag
 		{
 			kNone = 0,
 			kQuad1 = 1 << 0,
@@ -44,38 +46,42 @@ namespace RE
 		};
 
 
-		SInt32					  cellX;		  // 00
-		SInt32					  cellY;		  // 04
-		char*					  maxHeightData;  // 08
-		BGSTerrainVisibilityData* lodVisData;	  // 10
-		float					  worldX;		  // 18
-		float					  worldY;		  // 1C
-		LandHideFlag			  landHideFlags;  // 20
-		UInt8					  pad21;		  // 21
-		UInt16					  pad22;		  // 22
-		UInt32					  pad24;		  // 24
+		// members
+		std::int32_t								 cellX;			 // 00
+		std::int32_t								 cellY;			 // 04
+		char*										 maxHeightData;	 // 08
+		BGSTerrainVisibilityData*					 lodVisData;	 // 10
+		float										 worldX;		 // 18
+		float										 worldY;		 // 1C
+		stl::enumeration<LandHideFlag, std::uint8_t> landHideFlags;	 // 20
+		std::uint8_t								 pad21;			 // 21
+		std::uint16_t								 pad22;			 // 22
+		std::uint32_t								 pad24;			 // 24
 	};
-	STATIC_ASSERT(sizeof(EXTERIOR_DATA) == 0x28);
+	static_assert(sizeof(EXTERIOR_DATA) == 0x28);
 
 
 	class NavMeshArray
 	{
 	public:
+		// members
 		BSTArray<BSTSmartPointer<NavMesh>> navMeshes;  // 00
 	};
-	STATIC_ASSERT(sizeof(NavMeshArray) == 0x18);
+	static_assert(sizeof(NavMeshArray) == 0x18);
 
 
 	struct LOADED_CELL_DATA
 	{
+	public:
+		// members
 		void*												 unk000;				// 000 - smart ptr
 		NiPointer<NiNode>									 cell3D;				// 008
 		void*												 unk010;				// 010 - smart ptr
 		void*												 unk018;				// 018 - smart ptr
 		void*												 unk020;				// 020 - smart ptr
-		UInt64												 unk028;				// 028
-		UInt64												 unk030;				// 030
-		UInt64												 unk038;				// 038
+		std::uint64_t										 unk028;				// 028
+		std::uint64_t										 unk030;				// 030
+		std::uint64_t										 unk038;				// 038
 		BSTArray<void*>										 unk040;				// 040
 		BSTArray<void*>										 unk058;				// 058
 		NiTMap<TESForm*, ObjectRefHandle>					 unk070;				// 070
@@ -84,16 +90,16 @@ namespace RE
 		NiTMap<BSMultiBoundNode*, ObjectRefHandle>			 refMultiboundMap;		// 0D0
 		BSSimpleList<ObjectRefHandle>						 activatingRefs;		// 0F0
 		BSSimpleList<ObjectRefHandle>						 unk100;				// 100
-		UInt64												 unk110;				// 110
+		std::uint64_t										 unk110;				// 110
 		BSTArray<void*>										 unk118;				// 118
 		BSTArray<void*>										 unk130;				// 130
 		BSTArray<void*>										 unk148;				// 148
 		BGSEncounterZone*									 encounterZone;			// 160
-		UInt64												 unk168;				// 168
-		UInt64												 unk170;				// 170
-		UInt64												 unk178;				// 178
+		std::uint64_t										 unk168;				// 168
+		std::uint64_t										 unk170;				// 170
+		std::uint64_t										 unk178;				// 178
 	};
-	STATIC_ASSERT(sizeof(LOADED_CELL_DATA) == 0x180);
+	static_assert(sizeof(LOADED_CELL_DATA) == 0x180);
 
 
 	class TESObjectCELL :
@@ -105,7 +111,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::Cell;
 
 
-		enum class Flag : UInt16  // DATA
+		enum class Flag	 // DATA
 		{
 			kNone = 0,
 			kIsInteriorCell = 1 << 0,
@@ -120,7 +126,7 @@ namespace RE
 		};
 
 
-		enum class CellState : UInt8
+		enum class CellState
 		{
 			kAttached = 7
 		};
@@ -128,7 +134,7 @@ namespace RE
 
 		struct ChangeFlags
 		{
-			enum ChangeFlag : UInt32
+			enum ChangeFlag : std::uint32_t
 			{
 				kFlags = 1 << 1,
 				kFullName = 1 << 2,
@@ -136,14 +142,14 @@ namespace RE
 				kExteriorShort = 1 << 28,
 				kExteriorChar = 1 << 29,
 				kDetachTime = 1 << 30,
-				kSeendData = (UInt32)1 << 31
+				kSeendData = (std::uint32_t)1 << 31
 			};
 		};
 
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kPersistent = 1 << 10,
@@ -160,7 +166,7 @@ namespace RE
 			EXTERIOR_DATA* exterior;  // XCLC
 			INTERIOR_DATA* interior;  // XCLL
 		};
-		STATIC_ASSERT(sizeof(CellData) == 0x8);
+		static_assert(sizeof(CellData) == 0x8);
 
 
 		virtual ~TESObjectCELL();  // 00
@@ -174,7 +180,7 @@ namespace RE
 		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;										  // 0F
 		virtual void		Revert(BGSLoadFormBuffer* a_buf) override;											  // 12
 		virtual void		InitItemImpl() override;															  // 13
-		virtual void		GetFormDetailedString(char* a_buf, UInt32 a_bufLen) override;						  // 16
+		virtual void		GetFormDetailedString(char* a_buf, std::uint32_t a_bufLen) override;				  // 16
 		virtual void		SetAltered(bool a_set) override;													  // 24
 		virtual bool		BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly) override;  // 30
 		virtual void		CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;						  // 31
@@ -204,30 +210,30 @@ namespace RE
 
 
 		// members
-		mutable BSSpinLock				 grassCreateLock;	// 030
-		mutable BSSpinLock				 grassTaskLock;		// 038
-		Flag							 cellFlags;			// 040
-		UInt16							 cellGameFlags;		// 042
-		CellState						 cellState;			// 044
-		bool							 autoWaterLoaded;	// 045
-		bool							 cellDetached;		// 046
-		UInt8							 pad047;			// 047
-		ExtraDataList					 extraList;			// 048
-		CellData						 cellData;			// 060 - XCLL if interior, XCLC if exterior
-		TESObjectLAND*					 cellLand;			// 068
-		float							 waterHeight;		// 070 - XCLW
-		NavMeshArray*					 navMeshes;			// 078
-		BSTSet<NiPointer<TESObjectREFR>> references;		// 080
-		TESForm*						 unk0B0;			// 0B0 - REFR owner of cell?
-		BSTArray<TESObjectREFR*>		 objectList;		// 0B8 - persistent
-		BSTArray<void*>					 unk0D0;			// 0D0
-		BSTArray<void*>					 unk0E8;			// 0E8
-		BSTArray<void*>					 unk100;			// 100
-		mutable BSSpinLock				 spinLock;			// 118
-		TESWorldSpace*					 worldSpace;		// 120
-		LOADED_CELL_DATA*				 loadedData;		// 128
-		BGSLightingTemplate*			 lightingTemplate;	// 130 - LTMP
-		UInt64							 unk138;			// 138
+		mutable BSSpinLock						  grassCreateLock;	 // 030
+		mutable BSSpinLock						  grassTaskLock;	 // 038
+		stl::enumeration<Flag, std::uint16_t>	  cellFlags;		 // 040
+		std::uint16_t							  cellGameFlags;	 // 042
+		stl::enumeration<CellState, std::uint8_t> cellState;		 // 044
+		bool									  autoWaterLoaded;	 // 045
+		bool									  cellDetached;		 // 046
+		std::uint8_t							  pad047;			 // 047
+		ExtraDataList							  extraList;		 // 048
+		CellData								  cellData;			 // 060 - XCLL if interior, XCLC if exterior
+		TESObjectLAND*							  cellLand;			 // 068
+		float									  waterHeight;		 // 070 - XCLW
+		NavMeshArray*							  navMeshes;		 // 078
+		BSTSet<NiPointer<TESObjectREFR>>		  references;		 // 080
+		TESForm*								  unk0B0;			 // 0B0 - REFR owner of cell?
+		BSTArray<TESObjectREFR*>				  objectList;		 // 0B8 - persistent
+		BSTArray<void*>							  unk0D0;			 // 0D0
+		BSTArray<void*>							  unk0E8;			 // 0E8
+		BSTArray<void*>							  unk100;			 // 100
+		mutable BSSpinLock						  spinLock;			 // 118
+		TESWorldSpace*							  worldSpace;		 // 120
+		LOADED_CELL_DATA*						  loadedData;		 // 128
+		BGSLightingTemplate*					  lightingTemplate;	 // 130 - LTMP
+		std::uint64_t							  unk138;			 // 138
 	};
-	STATIC_ASSERT(sizeof(TESObjectCELL) == 0x140);
+	static_assert(sizeof(TESObjectCELL) == 0x140);
 }

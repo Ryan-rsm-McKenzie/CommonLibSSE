@@ -27,5 +27,5 @@ namespace RE
 		// members
 		BSSimpleList<TESObjectREFR*> refs;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraLitWaterRefs) == 0x20);
+	static_assert(sizeof(ExtraLitWaterRefs) == 0x20);
 }

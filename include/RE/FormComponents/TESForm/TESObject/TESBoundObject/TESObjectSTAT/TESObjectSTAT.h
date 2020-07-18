@@ -9,19 +9,21 @@ namespace RE
 {
 	struct TESObjectSTATData  // DNAM
 	{
-		enum class Flag : UInt32
+	public:
+		enum class Flag
 		{
 			kNone = 0
 		};
 
 
-		float			   materialThresholdAngle;	// 00 - (30 - 120)
-		UInt32			   pad04;					// 04
-		BGSMaterialObject* materialObj;				// 08
-		Flag			   flags;					// 10
-		UInt32			   pad14;					// 14
+		// members
+		float								  materialThresholdAngle;  // 00 - (30 - 120)
+		std::uint32_t						  pad04;				   // 04
+		BGSMaterialObject*					  materialObj;			   // 08
+		stl::enumeration<Flag, std::uint32_t> flags;				   // 10
+		std::uint32_t						  pad14;				   // 14
 	};
-	STATIC_ASSERT(sizeof(TESObjectSTATData) == 0x18);
+	static_assert(sizeof(TESObjectSTATData) == 0x18);
 
 
 	class TESObjectSTAT :
@@ -35,7 +37,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kNeverFades = 1 << 2,
 				kDeleted = 1 << 5,
@@ -70,5 +72,5 @@ namespace RE
 		// members
 		TESObjectSTATData data;	 // 68 - DNAM
 	};
-	STATIC_ASSERT(sizeof(TESObjectSTAT) == 0x80);
+	static_assert(sizeof(TESObjectSTAT) == 0x80);
 }

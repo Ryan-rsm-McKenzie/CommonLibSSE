@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	enum class LEV_CREA_MODIFIER : UInt32
+	enum class LEV_CREA_MODIFIER
 	{
 		kEasy = 0,
 		kMedium = 1,
@@ -31,8 +31,8 @@ namespace RE
 
 
 		// members
-		LEV_CREA_MODIFIER modifier;	 // 10
-		UInt32			  pad14;	 // 14
+		stl::enumeration<LEV_CREA_MODIFIER, std::uint32_t> modifier;  // 10
+		std::uint32_t									   pad14;	  // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraLevCreaModifier) == 0x18);
+	static_assert(sizeof(ExtraLevCreaModifier) == 0x18);
 }

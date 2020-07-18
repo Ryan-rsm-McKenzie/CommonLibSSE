@@ -7,7 +7,7 @@ namespace RE
 	{
 		namespace NF_util
 		{
-			NativeFunctionBase::NativeFunctionBase(std::string_view a_fnName, std::string_view a_className, bool a_isStatic, UInt16 a_numParams) :
+			NativeFunctionBase::NativeFunctionBase(std::string_view a_fnName, std::string_view a_className, bool a_isStatic, std::uint16_t a_numParams) :
 				_name(a_fnName),
 				_objName(a_className),
 				_stateName(""),
@@ -53,13 +53,13 @@ namespace RE
 			}
 
 
-			UInt32 NativeFunctionBase::GetParamCount() const
+			std::uint32_t NativeFunctionBase::GetParamCount() const
 			{
 				return _descTable.totalEntries;
 			}
 
 
-			void NativeFunctionBase::GetParam(UInt32 a_idx, BSFixedString& a_nameOut, TypeInfo& a_typeOut) const
+			void NativeFunctionBase::GetParam(std::uint32_t a_idx, BSFixedString& a_nameOut, TypeInfo& a_typeOut) const
 			{
 				if (a_idx < _descTable.paramCount) {
 					auto& elem = _descTable.entries[a_idx];
@@ -72,7 +72,7 @@ namespace RE
 			}
 
 
-			UInt32 NativeFunctionBase::GetStackFrameSize() const
+			std::uint32_t NativeFunctionBase::GetStackFrameSize() const
 			{
 				return _descTable.totalEntries;
 			}
@@ -103,7 +103,7 @@ namespace RE
 			}
 
 
-			UInt32 NativeFunctionBase::GetUserFlags() const
+			std::uint32_t NativeFunctionBase::GetUserFlags() const
 			{
 				return _userFlags;
 			}
@@ -137,14 +137,14 @@ namespace RE
 			}
 
 
-			bool NativeFunctionBase::TranslateIPToLineNumber(UInt32, UInt32& a_lineNumberOut) const
+			bool NativeFunctionBase::TranslateIPToLineNumber(std::uint32_t, std::uint32_t& a_lineNumberOut) const
 			{
 				a_lineNumberOut = 0;
 				return false;
 			}
 
 
-			bool NativeFunctionBase::GetVarNameForStackIndex(UInt32 a_idx, BSFixedString& a_nameOut) const
+			bool NativeFunctionBase::GetVarNameForStackIndex(std::uint32_t a_idx, BSFixedString& a_nameOut) const
 			{
 				if (a_idx < _descTable.totalEntries) {
 					a_nameOut = _descTable.entries[a_idx].first;

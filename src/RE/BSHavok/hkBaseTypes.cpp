@@ -32,11 +32,11 @@ namespace RE
 		union
 		{
 			float f;
-			SInt32 i;
+			std::int32_t i;
 		};
 
 		f = a_val;
-		_value = static_cast<SInt16>(i >> 16);
+		_value = static_cast<std::int16_t>(i >> 16);
 	}
 
 
@@ -44,7 +44,7 @@ namespace RE
 	{
 		union
 		{
-			SInt32 i;
+			std::int32_t i;
 			float f;
 		};
 

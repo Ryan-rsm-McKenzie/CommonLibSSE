@@ -15,7 +15,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_PackageLocation;
 
 
-		enum class Type : UInt8
+		enum class Type
 		{
 			kNone = static_cast<std::underlying_type_t<Type>>(-1),
 			kNearReference = 0,
@@ -40,7 +40,7 @@ namespace RE
 			TESForm*		object;
 			ObjectRefHandle refHandle;
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x8);
+		static_assert(sizeof(Data) == 0x8);
 
 
 		virtual ~PackageLocation();	 // 00
@@ -52,11 +52,11 @@ namespace RE
 
 
 		// members
-		Type   locType;	 // 08
-		UInt8  pad09;	 // 09
-		UInt16 pad0A;	 // 0A
-		UInt32 rad;		 // 0C
-		Data   data;	 // 10
+		stl::enumeration<Type, std::uint8_t> locType;  // 08
+		std::uint8_t						 pad09;	   // 09
+		std::uint16_t						 pad0A;	   // 0A
+		std::uint32_t						 rad;	   // 0C
+		Data								 data;	   // 10
 	};
-	STATIC_ASSERT(sizeof(PackageLocation) == 0x18);
+	static_assert(sizeof(PackageLocation) == 0x18);
 }

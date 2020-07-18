@@ -4,7 +4,7 @@
 namespace RE
 {
 	// 0x8
-	template <class T, UInt32 MASK = 1>
+	template <class T, std::uint32_t MASK = 1>
 	class BSTPointerAndFlags
 	{
 	public:

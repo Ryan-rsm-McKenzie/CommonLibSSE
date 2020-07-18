@@ -15,10 +15,10 @@ namespace RE
 		NiPointer<TESObjectREFR> actor;			// 00
 		FormID					 baseObject;	// 08
 		FormID					 originalRefr;	// 0C
-		UInt16					 uniqueID;		// 10
+		std::uint16_t			 uniqueID;		// 10
 		bool					 equipped;		// 12
-		UInt8					 pad13;			// 13
-		UInt32					 pad14;			// 14
+		std::uint8_t			 pad13;			// 13
+		std::uint32_t			 pad14;			// 14
 	};
-	STATIC_ASSERT(sizeof(TESEquipEvent) == 0x18);
+	static_assert(sizeof(TESEquipEvent) == 0x18);
 }

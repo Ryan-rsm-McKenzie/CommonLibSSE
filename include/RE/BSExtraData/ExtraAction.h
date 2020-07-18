@@ -24,11 +24,11 @@ namespace RE
 
 
 		// members
-		SInt8		   action;	   // 10
-		UInt8		   pad11;	   // 11
-		UInt16		   pad12;	   // 12
-		UInt32		   pad14;	   // 14
+		std::int8_t	   action;	   // 10
+		std::uint8_t   pad11;	   // 11
+		std::uint16_t  pad12;	   // 12
+		std::uint32_t  pad14;	   // 14
 		TESObjectREFR* actionRef;  // 18
 	};
-	STATIC_ASSERT(sizeof(ExtraAction) == 0x20);
+	static_assert(sizeof(ExtraAction) == 0x20);
 }

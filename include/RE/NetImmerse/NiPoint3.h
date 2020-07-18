@@ -36,7 +36,7 @@ namespace RE
 		float y;  // 4
 		float z;  // 8
 	};
-	STATIC_ASSERT(sizeof(NiPoint3) == 0xC);
+	static_assert(sizeof(NiPoint3) == 0xC);
 
 
 	constexpr NiPoint3::NiPoint3() :

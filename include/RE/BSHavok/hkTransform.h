@@ -12,5 +12,5 @@ namespace RE
 		hkRotation rotation;	 // 00
 		hkVector4  translation;	 // 30
 	};
-	STATIC_ASSERT(sizeof(hkTransform) == 0x40);
+	static_assert(sizeof(hkTransform) == 0x40);
 }

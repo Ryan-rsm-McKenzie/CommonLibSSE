@@ -15,14 +15,14 @@ namespace RE
 			_refCount(0)
 		{}
 
-		inline UInt32 IncRef() { return InterlockedIncrement(&_refCount); }
-		inline UInt32 DecRef() { return InterlockedDecrement(&_refCount); }
+		inline std::uint32_t IncRef() { return InterlockedIncrement(&_refCount); }
+		inline std::uint32_t DecRef() { return InterlockedDecrement(&_refCount); }
 
 		TES_HEAP_REDEFINE_NEW();
 
 	protected:
 		// members
-		volatile UInt32 _refCount;	// 0
+		volatile std::uint32_t _refCount;  // 0
 	};
-	STATIC_ASSERT(sizeof(BSIntrusiveRefCounted) == 0x4);
+	static_assert(sizeof(BSIntrusiveRefCounted) == 0x4);
 }

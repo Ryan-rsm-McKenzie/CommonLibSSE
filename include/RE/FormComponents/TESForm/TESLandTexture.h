@@ -9,10 +9,10 @@ namespace RE
 {
 	struct TEXTURE_HAVOK_DATA  // HNAM
 	{
-		SInt32 friction;	 // 0
-		SInt32 restitution;	 // 4
+		std::int32_t friction;	   // 0
+		std::int32_t restitution;  // 4
 	};
-	STATIC_ASSERT(sizeof(TEXTURE_HAVOK_DATA) == 0x8);
+	static_assert(sizeof(TEXTURE_HAVOK_DATA) == 0x8);
 
 
 	class TESLandTexture : public TESForm
@@ -24,7 +24,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -45,11 +45,11 @@ namespace RE
 		BGSTextureSet*			textureSet;			 // 20 - TNAM
 		TEXTURE_HAVOK_DATA		havokData;			 // 28 - HNAM
 		BGSMaterialType*		materialType;		 // 30 - MNAM
-		SInt8					specularExponent;	 // 38 - SNAM
-		UInt8					pad39;				 // 39
-		UInt16					pad3A;				 // 3A
-		SInt32					shaderTextureIndex;	 // 3C - INAM
+		std::int8_t				specularExponent;	 // 38 - SNAM
+		std::uint8_t			pad39;				 // 39
+		std::uint16_t			pad3A;				 // 3A
+		std::int32_t			shaderTextureIndex;	 // 3C - INAM
 		BSSimpleList<TESGrass*> textureGrassList;	 // 40 - GNAM
 	};
-	STATIC_ASSERT(sizeof(TESLandTexture) == 0x50);
+	static_assert(sizeof(TESLandTexture) == 0x50);
 }

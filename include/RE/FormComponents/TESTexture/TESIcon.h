@@ -16,5 +16,5 @@ namespace RE
 		// override (TESTexture)
 		virtual const char* GetDefaultPath() const override;  // 06 - { return "Textures"; }
 	};
-	STATIC_ASSERT(sizeof(TESIcon) == 0x10);
+	static_assert(sizeof(TESIcon) == 0x10);
 }

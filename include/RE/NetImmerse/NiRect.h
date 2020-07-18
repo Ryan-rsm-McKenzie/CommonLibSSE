@@ -33,5 +33,5 @@ namespace RE
 		T top;	   // ??
 		T bottom;  // ??
 	};
-	STATIC_ASSERT(sizeof(NiRect<float>) == 0x10);
+	static_assert(sizeof(NiRect<float>) == 0x10);
 }

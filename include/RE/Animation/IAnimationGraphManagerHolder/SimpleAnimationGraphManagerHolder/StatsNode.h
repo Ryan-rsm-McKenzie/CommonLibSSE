@@ -31,13 +31,13 @@ namespace RE
 
 
 		// members
-		UInt32											 unk24;	 // 24
+		std::uint32_t									 unk24;	 // 24
 		BSTArray<BSTSmartPointer<BSIntrusiveRefCounted>> unk28;	 // 28
-		UInt64											 unk40;	 // 40
-		UInt64											 unk48;	 // 48
+		std::uint64_t									 unk40;	 // 40
+		std::uint64_t									 unk48;	 // 48
 		BSTSmartPointer<BSIntrusiveRefCounted>			 unk50;	 // 50
 		BSTSmartPointer<BSIntrusiveRefCounted>			 unk58;	 // 58
-		UInt64											 unk60;	 // 60
+		std::uint64_t									 unk60;	 // 60
 	};
-	STATIC_ASSERT(sizeof(StatsNode) == 0x68);
+	static_assert(sizeof(StatsNode) == 0x68);
 }

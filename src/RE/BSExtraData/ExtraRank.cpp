@@ -8,7 +8,7 @@ namespace RE
 	{}
 
 
-	ExtraRank::ExtraRank(SInt32 a_rank) :
+	ExtraRank::ExtraRank(std::int32_t a_rank) :
 		BSExtraData(),
 		rank(a_rank),
 		pad14(0)

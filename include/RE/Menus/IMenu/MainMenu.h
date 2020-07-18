@@ -29,9 +29,9 @@ namespace RE
 		virtual ~MainMenu();  // 00
 
 		// override (IMenu)
-		virtual void			   Accept(CallbackProcessor* a_processor) override;				   // 01
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;				   // 04
-		virtual void			   AdvanceMovie(float a_interval, UInt32 a_currentTime) override;  // 05
+		virtual void			   Accept(CallbackProcessor* a_processor) override;						  // 01
+		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;						  // 04
+		virtual void			   AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
 
 		// override (BSTEventSink<BSSystemEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;	 // 01
@@ -44,12 +44,12 @@ namespace RE
 
 
 		// members
-		ImageData unk50;  // 50
-		UInt32	  unk68;  // 68
-		UInt8	  unk6C;  // 6C
-		UInt8	  unk6D;  // 6D
-		UInt8	  unk6E;  // 6E
-		UInt8	  pad6F;  // 6F
+		ImageData	  unk50;  // 50
+		std::uint32_t unk68;  // 68
+		std::uint8_t  unk6C;  // 6C
+		std::uint8_t  unk6D;  // 6D
+		std::uint8_t  unk6E;  // 6E
+		std::uint8_t  pad6F;  // 6F
 	};
-	STATIC_ASSERT(sizeof(MainMenu) == 0x70);
+	static_assert(sizeof(MainMenu) == 0x70);
 }

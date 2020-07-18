@@ -34,5 +34,5 @@ namespace RE
 		// members
 		GFxValue root;	// 38 - "Menu_mc"
 	};
-	STATIC_ASSERT(sizeof(KinectMenu) == 0x50);
+	static_assert(sizeof(KinectMenu) == 0x50);
 }

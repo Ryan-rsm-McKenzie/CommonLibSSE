@@ -28,8 +28,8 @@ namespace RE
 
 
 		// members
-		UInt32					   numLandscapeTextures;		// 0A0
-		UInt32					   pad0A4;						// 0A4
+		std::uint32_t			   numLandscapeTextures;		// 0A0
+		std::uint32_t			   pad0A4;						// 0A4
 		NiPointer<NiSourceTexture> landscapeDiffuseTexture[5];	// 0A8
 		NiPointer<NiSourceTexture> landscapeNormalTexture[5];	// 0D0
 		NiPointer<NiSourceTexture> terrainOverlayTexture;		// 0F8
@@ -40,7 +40,7 @@ namespace RE
 		float					   terrainTexOffsetX;			// 148
 		float					   terrainTexOffsetY;			// 14C
 		float					   terrainTexFade;				// 150
-		UInt32					   pad154;						// 154
+		std::uint32_t			   pad154;						// 154
 	};
-	STATIC_ASSERT(sizeof(BSLightingShaderMaterialLandscape) == 0x158);
+	static_assert(sizeof(BSLightingShaderMaterialLandscape) == 0x158);
 }

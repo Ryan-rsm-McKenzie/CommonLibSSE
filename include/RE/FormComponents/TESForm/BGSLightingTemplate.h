@@ -17,7 +17,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -37,5 +37,5 @@ namespace RE
 		INTERIOR_DATA						data;							   // 20 - DATA
 		BGSDirectionalAmbientLightingColors directionalAmbientLightingColors;  // 80 - DALC
 	};
-	STATIC_ASSERT(sizeof(BGSLightingTemplate) == 0xA0);
+	static_assert(sizeof(BGSLightingTemplate) == 0xA0);
 }

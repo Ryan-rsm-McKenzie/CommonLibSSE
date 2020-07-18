@@ -20,7 +20,7 @@ namespace RE
 		// override (BSLightingShaderMaterialBase)
 		virtual BSShaderMaterial* Create() override;							  // 01
 		virtual void			  CopyMembers(BSShaderMaterial* a_src) override;  // 02
-		virtual UInt32			  ComputeCRC32(void) override;					  // 04
+		virtual std::uint32_t	  ComputeCRC32(void) override;					  // 04
 		virtual Feature			  GetFeature() const override;					  // 06 - { return Type::kParallax; }
 		virtual void			  OnLoadTextureSet(void) override;				  // 08
 		virtual void			  ClearTextures(void) override;					  // 09
@@ -31,5 +31,5 @@ namespace RE
 		// members
 		NiPointer<NiSourceTexture> heightTexture;  // A0
 	};
-	STATIC_ASSERT(sizeof(BSLightingShaderMaterialParallax) == 0xA8);
+	static_assert(sizeof(BSLightingShaderMaterialParallax) == 0xA8);
 }

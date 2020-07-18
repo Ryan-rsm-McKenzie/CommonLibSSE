@@ -25,18 +25,18 @@ namespace RE
 		TESModel*			  part;			// 10
 		BGSTextureSet*		  skinTexture;	// 18
 		NiPointer<NiAVObject> partClone;	// 20
-		UInt64				  unk28;		// 28 - same as AIProcess::Data0B8
-		UInt64				  unk30;		// 30
-		UInt64				  unk38;		// 38
-		UInt64				  unk40;		// 40
-		UInt64				  unk48;		// 48
-		UInt64				  unk50;		// 50
-		UInt64				  unk58;		// 58
+		std::uint64_t		  unk28;		// 28 - same as AIProcess::Data0B8
+		std::uint64_t		  unk30;		// 30
+		std::uint64_t		  unk38;		// 38
+		std::uint64_t		  unk40;		// 40
+		std::uint64_t		  unk48;		// 48
+		std::uint64_t		  unk50;		// 50
+		std::uint64_t		  unk58;		// 58
 		void*				  unk60;		// 60 - smart ptr
-		UInt64				  unk68;		// 68
+		std::uint64_t		  unk68;		// 68
 		void*				  unk70;		// 70
 	};
-	STATIC_ASSERT(sizeof(BIPOBJECT) == 0x78);
+	static_assert(sizeof(BIPOBJECT) == 0x78);
 
 
 	class BipedAnim : public BSIntrusiveRefCounted
@@ -47,15 +47,15 @@ namespace RE
 		void RemoveAllParts();
 
 
-		UInt32			pad0004;								 // 0004
+		std::uint32_t	pad0004;								 // 0004
 		NiNode*			root;									 // 0008
 		BIPOBJECT		objects[BIPED_OBJECTS::kTotal];			 // 0010
 		BIPOBJECT		bufferedObjects[BIPED_OBJECTS::kTotal];	 // 13C0
 		ObjectRefHandle actorRef;								 // 2770
-		UInt32			pad2774;								 // 2774
+		std::uint32_t	pad2774;								 // 2774
 
 	private:
 		void Dtor();
 	};
-	STATIC_ASSERT(sizeof(BipedAnim) == 0x2778);
+	static_assert(sizeof(BipedAnim) == 0x2778);
 }

@@ -67,8 +67,8 @@ namespace RE
 
 		protected:
 			// members
-			RawType _rawType;  // 00
+			stl::enumeration<RawType, std::size_t> _rawType;  // 00
 		};
-		STATIC_ASSERT(sizeof(TypeInfo) == 0x8);
+		static_assert(sizeof(TypeInfo) == 0x8);
 	}
 }

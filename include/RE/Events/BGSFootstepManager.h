@@ -20,11 +20,11 @@ namespace RE
 
 
 		// members
-		UInt8					pad59;	// 59
-		UInt16					pad5A;	// 5A
-		UInt32					pad5C;	// 5C
+		std::uint8_t			pad59;	// 59
+		std::uint16_t			pad5A;	// 5A
+		std::uint32_t			pad5C;	// 5C
 		BSTArray<BSFixedString> unk60;	// 60
-		UInt64					unk78;	// 78
+		std::uint64_t			unk78;	// 78
 	};
-	STATIC_ASSERT(sizeof(BGSFootstepManager) == 0x80);
+	static_assert(sizeof(BGSFootstepManager) == 0x80);
 }

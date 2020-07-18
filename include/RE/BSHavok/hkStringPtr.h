@@ -7,7 +7,7 @@ namespace RE
 	{
 	public:
 		// member types
-		using size_type = SInt32;
+		using size_type = std::int32_t;
 
 
 		// members access
@@ -28,5 +28,5 @@ namespace RE
 
 		const char* _data;	// 0
 	};
-	STATIC_ASSERT(sizeof(hkStringPtr) == 0x8);
+	static_assert(sizeof(hkStringPtr) == 0x8);
 }

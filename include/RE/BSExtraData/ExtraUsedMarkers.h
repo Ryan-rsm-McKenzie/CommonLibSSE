@@ -24,5 +24,5 @@ namespace RE
 		// members
 		BSTArray<MarkerUsedData> usedMarkers;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraUsedMarkers) == 0x28);
+	static_assert(sizeof(ExtraUsedMarkers) == 0x28);
 }

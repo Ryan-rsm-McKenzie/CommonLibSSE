@@ -47,5 +47,5 @@ namespace RE
 		ObjectRefHandle target;		// 10
 		NiPoint3		windPoint;	// 14
 	};
-	STATIC_ASSERT(sizeof(ActiveEffectReferenceEffectController) == 0x20);
+	static_assert(sizeof(ActiveEffectReferenceEffectController) == 0x20);
 }

@@ -25,10 +25,10 @@ namespace RE
 
 			union LengthAndRef
 			{
-				UInt32 length;
-				Entry* reference;  // unused, but explains why it pads out this way
+				std::uint32_t length;
+				Entry*		  reference;  // unused, but explains why it pads out this way
 			};
-			STATIC_ASSERT(sizeof(LengthAndRef) == 0x8);
+			static_assert(sizeof(LengthAndRef) == 0x8);
 
 
 			union CharT
@@ -38,21 +38,21 @@ namespace RE
 			};
 
 
-			bool	 IsWideChar() const;
-			UInt16	 GetRefCount() const;
-			UInt32	 GetLength() const;
-			char*	 GetDataU8();
-			wchar_t* GetDataU16();
+			bool		  IsWideChar() const;
+			std::uint16_t GetRefCount() const;
+			std::uint32_t GetLength() const;
+			char*		  GetDataU8();
+			wchar_t*	  GetDataU16();
 
 		private:
-			Entry*		 _next;				 // 00
-			UInt16		 _flagsAndRefCount;	 // 08
-			UInt16		 _hash;				 // 0A - uses a different hash than crc32
-			UInt32		 _pad0C;			 // 0C
-			LengthAndRef _lengthAndRef;		 // 10
-			CharT		 _data[0];			 // 18
+			Entry*		  _next;			  // 00
+			std::uint16_t _flagsAndRefCount;  // 08
+			std::uint16_t _hash;			  // 0A - uses a different hash than crc32
+			std::uint32_t _pad0C;			  // 0C
+			LengthAndRef  _lengthAndRef;	  // 10
+			CharT		  _data[0];			  // 18
 		};
-		STATIC_ASSERT(sizeof(Entry) == 0x18);
+		static_assert(sizeof(Entry) == 0x18);
 	};
 
 
@@ -72,9 +72,9 @@ namespace RE
 		BSStringPool::Entry* buckets[0x10000];	// 00000 - index using hash & kEntryIndexMask
 		mutable BSSpinLock	 locks[0x20];		// 80000 - index using hash & kLockIndexMask
 		bool				 initialized;		// 80100
-		UInt8				 pad80801;			// 80101
-		UInt16				 pad80802;			// 80102
-		UInt32				 pad80804;			// 80104
+		std::uint8_t		 pad80801;			// 80101
+		std::uint16_t		 pad80802;			// 80102
+		std::uint32_t		 pad80804;			// 80104
 	};
-	STATIC_ASSERT(sizeof(BucketTable) == 0x80108);
+	static_assert(sizeof(BucketTable) == 0x80108);
 }

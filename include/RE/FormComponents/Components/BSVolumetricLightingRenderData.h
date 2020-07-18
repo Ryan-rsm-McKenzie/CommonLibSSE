@@ -12,7 +12,7 @@ namespace RE
 			// members
 			float contribution;	 // DNAM
 		};
-		STATIC_ASSERT(sizeof(CustomColor) == 0x4);
+		static_assert(sizeof(CustomColor) == 0x4);
 
 
 		struct Density
@@ -24,7 +24,7 @@ namespace RE
 			float windSpeed;	 // JNAM
 			float fallingSpeed;	 // KNAM
 		};
-		STATIC_ASSERT(sizeof(Density) == 0x10);
+		static_assert(sizeof(Density) == 0x10);
 
 
 		struct PhaseFunction
@@ -34,7 +34,7 @@ namespace RE
 			float contribution;	 // LNAM
 			float scattering;	 // MNAM
 		};
-		STATIC_ASSERT(sizeof(PhaseFunction) == 0x8);
+		static_assert(sizeof(PhaseFunction) == 0x8);
 
 
 		struct SamplingRepartition
@@ -43,7 +43,7 @@ namespace RE
 			// members
 			float rangeFactor;	// NNAM
 		};
-		STATIC_ASSERT(sizeof(SamplingRepartition) == 0x4);
+		static_assert(sizeof(SamplingRepartition) == 0x4);
 
 
 		// members
@@ -56,5 +56,5 @@ namespace RE
 		PhaseFunction		phaseFunction;		  // 24
 		SamplingRepartition samplingRepartition;  // 2C
 	};
-	STATIC_ASSERT(sizeof(BSVolumetricLightingRenderData) == 0x30);
+	static_assert(sizeof(BSVolumetricLightingRenderData) == 0x30);
 }

@@ -18,7 +18,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kDisplaysInMainMenu = 1 << 10,
@@ -31,14 +31,14 @@ namespace RE
 		{
 			TESBoundObject* loadNIF;					   // 00 - NNAM
 			float			initialScale;				   // 08 - SNAM
-			SInt16			rotationConstraints[3];		   // 0C - RNAM
-			SInt16			rotationOffsetConstraints[2];  // 12 - ONAM
-			UInt16			pad16;						   // 16
+			std::int16_t	rotationConstraints[3];		   // 0C - RNAM
+			std::int16_t	rotationOffsetConstraints[2];  // 12 - ONAM
+			std::uint16_t	pad16;						   // 16
 			float			initialTranslationOffset[3];   // 18 - XNAM
-			UInt32			pad24;						   // 24
+			std::uint32_t	pad24;						   // 24
 			TESModel		cameraPath;					   // 28 - MOD2
 		};
-		STATIC_ASSERT(sizeof(LoadNIFData) == 0x50);
+		static_assert(sizeof(LoadNIFData) == 0x50);
 
 
 		virtual ~TESLoadScreen();  // 00
@@ -55,5 +55,5 @@ namespace RE
 		LoadNIFData*  loadNIFData;	// 28
 		BSFixedString loadingText;	// 30
 	};
-	STATIC_ASSERT(sizeof(TESLoadScreen) == 0x38);
+	static_assert(sizeof(TESLoadScreen) == 0x38);
 }

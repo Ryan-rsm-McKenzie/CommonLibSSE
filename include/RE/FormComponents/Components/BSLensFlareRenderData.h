@@ -17,5 +17,5 @@ namespace RE
 		float											 colorInfluence;	   // 04
 		BSTArray<NiPointer<BSLensFlareSpriteRenderData>> sprites;			   // 08
 	};
-	STATIC_ASSERT(sizeof(BSLensFlareRenderData) == 0x20);
+	static_assert(sizeof(BSLensFlareRenderData) == 0x20);
 }

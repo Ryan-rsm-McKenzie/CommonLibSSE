@@ -9,7 +9,7 @@ namespace RE
 {
 	// Adds new/delete overrides
 	// Base must be one of RefCountImpl classes
-	template <class Base, UInt32 StatType>
+	template <class Base, std::uint32_t StatType>
 	class GRefCountBaseStatImpl : public Base
 	{
 	public:

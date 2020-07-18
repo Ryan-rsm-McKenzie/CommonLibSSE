@@ -26,5 +26,5 @@ namespace RE
 		// members
 		NiPointer<QueuedFile> preloadedRaceData;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraRaceData) == 0x18);
+	static_assert(sizeof(ExtraRaceData) == 0x18);
 }

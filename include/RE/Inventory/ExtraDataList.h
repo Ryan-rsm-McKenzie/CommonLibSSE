@@ -149,7 +149,7 @@ namespace RE
 
 		BSExtraData*		  Add(BSExtraData* a_toAdd);
 		ObjectRefHandle		  GetAshPileRef();
-		SInt32				  GetCount() const;
+		std::int32_t		  GetCount() const;
 		const char*			  GetDisplayName(TESBoundObject* a_baseObject);
 		BGSEncounterZone*	  GetEncounterZone();
 		ExtraTextDisplayData* GetExtraTextDisplayData();
@@ -164,17 +164,17 @@ namespace RE
 		struct PresenceBitfield
 		{
 		public:
-			bool HasType(UInt32 a_type) const;
-			void MarkType(UInt32 a_type, bool a_cleared);
+			bool HasType(std::uint32_t a_type) const;
+			void MarkType(std::uint32_t a_type, bool a_cleared);
 
 
 			// members
-			UInt8 bits[0x18];  // 00
+			std::uint8_t bits[0x18];  // 00
 		};
-		STATIC_ASSERT(sizeof(PresenceBitfield) == 0x18);
+		static_assert(sizeof(PresenceBitfield) == 0x18);
 
 
-		void MarkType(UInt32 a_type, bool a_cleared);
+		void MarkType(std::uint32_t a_type, bool a_cleared);
 		void MarkType(ExtraDataType a_type, bool a_cleared);
 
 
@@ -186,5 +186,5 @@ namespace RE
 	private:
 		BSExtraData* GetByTypeImpl(ExtraDataType a_type) const;
 	};
-	STATIC_ASSERT(sizeof(ExtraDataList) == 0x18);
+	static_assert(sizeof(ExtraDataList) == 0x18);
 }

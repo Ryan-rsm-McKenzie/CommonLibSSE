@@ -9,5 +9,5 @@ namespace RE
 		// members
 		float timeStamp;  // 0
 	};
-	STATIC_ASSERT(sizeof(AITimeStamp) == 0x4);
+	static_assert(sizeof(AITimeStamp) == 0x4);
 }

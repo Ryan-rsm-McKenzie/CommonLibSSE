@@ -28,10 +28,10 @@ namespace RE
 			wchar_t* buffer;  // 00
 			UPInt	 size;	  // 08
 		};
-		STATIC_ASSERT(sizeof(ReserveHeader) == 0x10);
+		static_assert(sizeof(ReserveHeader) == 0x10);
 
 
-		template <UInt32 SIZE>
+		template <std::uint32_t SIZE>
 		struct Reserve : public ReserveHeader
 		{
 			Reserve() :
@@ -99,5 +99,5 @@ namespace RE
 		UPInt		  _length;	  // 08
 		ReserveHeader _reserved;  // 10
 	};
-	STATIC_ASSERT(sizeof(GFxWStringBuffer) == 0x20);
+	static_assert(sizeof(GFxWStringBuffer) == 0x20);
 }

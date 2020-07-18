@@ -63,13 +63,13 @@ namespace RE
 		}
 
 
-		UInt32 Location::DoQBufferHint() const
+		std::uint32_t Location::DoQBufferHint() const
 		{
 			return 0x80000;
 		}
 
 
-		UInt32 Location::DoGetMinimumAsyncPacketSize() const
+		std::uint32_t Location::DoGetMinimumAsyncPacketSize() const
 		{
 			return 0x80000;
 		}

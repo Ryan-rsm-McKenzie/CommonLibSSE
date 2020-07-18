@@ -27,9 +27,9 @@ namespace RE
 	}
 
 
-	UInt8 TESAIForm::GetEnergyLevel() const
+	std::uint8_t TESAIForm::GetEnergyLevel() const
 	{
-		return static_cast<UInt8>(pun_bits(aiData.energyLevel1, aiData.energyLevel2, aiData.energyLevel3, aiData.energyLevel4, aiData.energyLevel5, aiData.energyLevel6, aiData.energyLevel7, aiData.energyLevel8));
+		return static_cast<std::uint8_t>(pun_bits(aiData.energyLevel1, aiData.energyLevel2, aiData.energyLevel3, aiData.energyLevel4, aiData.energyLevel5, aiData.energyLevel6, aiData.energyLevel7, aiData.energyLevel8));
 	}
 
 

@@ -22,18 +22,18 @@ namespace RE
 		virtual ~BSMultiBoundNode();  // 00
 
 		// override (BSNiNode)
-		virtual const NiRTTI*	  GetRTTI() const override;											 // 02
-		virtual BSMultiBoundNode* AsMultiBoundNode() override;										 // 06 - { return this; }
-		virtual NiObject*		  CreateClone(NiCloningProcess& a_cloning) override;				 // 17
-		virtual void			  LoadBinary(NiStream& a_stream) override;							 // 18
-		virtual void			  LinkObject(NiStream& a_stream) override;							 // 19
-		virtual bool			  RegisterStreamables(NiStream& a_stream) override;					 // 1A
-		virtual void			  SaveBinary(NiStream& a_stream) override;							 // 1B
-		virtual bool			  IsEqual(NiObject* a_object) override;								 // 1C
-		virtual void			  UpdateDownwardPass(NiUpdateData& a_data, UInt32 a_arg2) override;	 // 2C
-		virtual void			  UpdateWorldBound() override;										 // 2F
-		virtual void			  OnVisible(NiCullingProcess& a_process) override;					 // 34
-		virtual void			  UpdateUpwardPass(NiUpdateData& a_data) override;					 // 3D
+		virtual const NiRTTI*	  GetRTTI() const override;													// 02
+		virtual BSMultiBoundNode* AsMultiBoundNode() override;												// 06 - { return this; }
+		virtual NiObject*		  CreateClone(NiCloningProcess& a_cloning) override;						// 17
+		virtual void			  LoadBinary(NiStream& a_stream) override;									// 18
+		virtual void			  LinkObject(NiStream& a_stream) override;									// 19
+		virtual bool			  RegisterStreamables(NiStream& a_stream) override;							// 1A
+		virtual void			  SaveBinary(NiStream& a_stream) override;									// 1B
+		virtual bool			  IsEqual(NiObject* a_object) override;										// 1C
+		virtual void			  UpdateDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;	// 2C
+		virtual void			  UpdateWorldBound() override;												// 2F
+		virtual void			  OnVisible(NiCullingProcess& a_process) override;							// 34
+		virtual void			  UpdateUpwardPass(NiUpdateData& a_data) override;							// 3D
 
 		// add
 		virtual BSMultiBoundRoom* GetMultiBoundRoom();					  // 3E - { return 0; }
@@ -47,5 +47,5 @@ namespace RE
 		BSCullingProcess::BSCPCullingType cullingMode;	  // 130
 		float							  lastAccumTime;  // 134
 	};
-	STATIC_ASSERT(sizeof(BSMultiBoundNode) == 0x138);
+	static_assert(sizeof(BSMultiBoundNode) == 0x138);
 }

@@ -20,7 +20,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::TextureSet;
 
 
-		enum class Flag : UInt16
+		enum class Flag
 		{
 			kNone = 0,
 			kNoSpecularMap = 1 << 0,
@@ -31,7 +31,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -50,12 +50,12 @@ namespace RE
 
 
 		// members
-		TESTexture	   textures[Textures::kTotal];		  // 040 - TX00 - TX07
-		DecalData*	   decalData;						  // 0C0 - DODT
-		Flag		   flags;							  // 0C8 - DNAM
-		UInt16		   pad0CA;							  // 0CA
-		BSResource::ID textureFileIDs[Textures::kTotal];  // 0CC
-		UInt32		   pad12C;							  // 12C
+		TESTexture							  textures[Textures::kTotal];		 // 040 - TX00 - TX07
+		DecalData*							  decalData;						 // 0C0 - DODT
+		stl::enumeration<Flag, std::uint16_t> flags;							 // 0C8 - DNAM
+		std::uint16_t						  pad0CA;							 // 0CA
+		BSResource::ID						  textureFileIDs[Textures::kTotal];	 // 0CC
+		std::uint32_t						  pad12C;							 // 12C
 	};
-	STATIC_ASSERT(sizeof(BGSTextureSet) == 0x130);
+	static_assert(sizeof(BGSTextureSet) == 0x130);
 }

@@ -22,7 +22,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
@@ -55,9 +55,9 @@ namespace RE
 		float					 coneAngleTangent;				// 1E0
 		float					 initialCollisionSphereRadius;	// 1E4
 		NiPoint3				 origin;						// 1E8
-		UInt32					 pad1F4;						// 1F4
+		std::uint32_t			 pad1F4;						// 1F4
 		hkRefPtr<hkpSphereShape> collisionShape;				// 1F8
 		BSTArray<void*>			 collisions;					// 200
 	};
-	STATIC_ASSERT(sizeof(ConeProjectile) == 0x218);
+	static_assert(sizeof(ConeProjectile) == 0x218);
 }

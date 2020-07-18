@@ -7,7 +7,7 @@ namespace RE
 {
 	struct hkpSurfaceInfo
 	{
-		enum class SupportedState : UInt32
+		enum class SupportedState
 		{
 			kUnsupported = 0,
 			kSliding = 1,
@@ -15,16 +15,16 @@ namespace RE
 		};
 
 
-		SupportedState supportedState;		   // 00
-		UInt32		   pad04;				   // 04
-		UInt64		   pad08;				   // 08
-		hkVector4	   surfaceNormal;		   // 10
-		hkVector4	   surfaceVelocity;		   // 20
-		float		   surfaceDistanceExcess;  // 30
-		bool		   surfaceIsDynamic;	   // 34
-		UInt8		   pad35;				   // 35
-		UInt16		   pad36;				   // 36
-		UInt64		   pad38;				   // 38
+		stl::enumeration<SupportedState, std::uint32_t> supportedState;			// 00
+		std::uint32_t									pad04;					// 04
+		std::uint64_t									pad08;					// 08
+		hkVector4										surfaceNormal;			// 10
+		hkVector4										surfaceVelocity;		// 20
+		float											surfaceDistanceExcess;	// 30
+		bool											surfaceIsDynamic;		// 34
+		std::uint8_t									pad35;					// 35
+		std::uint16_t									pad36;					// 36
+		std::uint64_t									pad38;					// 38
 	};
-	STATIC_ASSERT(sizeof(hkpSurfaceInfo) == 0x40);
+	static_assert(sizeof(hkpSurfaceInfo) == 0x40);
 }

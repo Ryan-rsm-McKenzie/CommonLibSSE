@@ -7,7 +7,7 @@ namespace RE
 	{
 		namespace Internal
 		{
-			VDescTable::VDescTable(UInt16 a_numParams, UInt16 a_numLocals) :
+			VDescTable::VDescTable(std::uint16_t a_numParams, std::uint16_t a_numLocals) :
 				entries(a_numParams + a_numLocals),
 				paramCount(a_numParams),
 				totalEntries(a_numParams + a_numLocals),

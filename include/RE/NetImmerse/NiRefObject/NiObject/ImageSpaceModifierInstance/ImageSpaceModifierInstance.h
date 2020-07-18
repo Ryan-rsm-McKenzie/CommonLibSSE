@@ -25,11 +25,11 @@ namespace RE
 
 
 		// members
-		UInt32				  unk10;	 // 10
+		std::uint32_t		  unk10;	 // 10
 		float				  strength;	 // 14
 		NiPointer<NiAVObject> target;	 // 18
 		float				  age;		 // 20
-		UInt32				  flags;	 // 24
+		std::uint32_t		  flags;	 // 24
 	};
-	STATIC_ASSERT(sizeof(ImageSpaceModifierInstance) == 0x28);
+	static_assert(sizeof(ImageSpaceModifierInstance) == 0x28);
 }

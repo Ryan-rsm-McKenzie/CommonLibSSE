@@ -13,7 +13,7 @@ namespace RE
 
 		struct Keys
 		{
-			enum Key : UInt32
+			enum Key : std::uint32_t
 			{
 				kEscape = 0x01,
 				kNum1 = 0x02,
@@ -136,5 +136,5 @@ namespace RE
 		virtual void Unk_09(void) = 0;	// 09
 		virtual void Unk_0A(void) = 0;	// 0A
 	};
-	STATIC_ASSERT(sizeof(BSKeyboardDevice) == 0x70);
+	static_assert(sizeof(BSKeyboardDevice) == 0x70);
 }

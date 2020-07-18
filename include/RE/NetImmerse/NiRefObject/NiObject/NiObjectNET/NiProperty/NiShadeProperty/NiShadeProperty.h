@@ -29,5 +29,5 @@ namespace RE
 		virtual void Unk_28(void);	// 28 - { return 1; }
 		virtual void Unk_29(void);	// 29 - { return; }
 	};
-	STATIC_ASSERT(sizeof(NiShadeProperty) == 0x30);
+	static_assert(sizeof(NiShadeProperty) == 0x30);
 }

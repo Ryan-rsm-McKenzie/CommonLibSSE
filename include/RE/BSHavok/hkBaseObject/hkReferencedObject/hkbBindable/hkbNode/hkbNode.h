@@ -36,7 +36,7 @@ namespace RE
 		virtual void Unk_16(void);	// 16 - { return 0; }
 
 
-		enum class GetChildrenFlagBits : UInt32
+		enum class GetChildrenFlagBits
 		{
 			kActiveOnly = 1 << 0,
 			kGeneratorsOnly = 1 << 1,
@@ -44,7 +44,7 @@ namespace RE
 		};
 
 
-		enum class CloneState : UInt8
+		enum class CloneState
 		{
 			kDefault = 0,
 			kTemplate = 1,
@@ -54,13 +54,13 @@ namespace RE
 
 
 		// members
-		UInt32		userData;	 // 30
-		UInt32		pad34;		 // 34
-		hkStringPtr name;		 // 38
-		UInt16		id;			 // 40
-		CloneState	cloneState;	 // 42
-		UInt8		pad43;		 // 43
-		UInt32		pad44;		 // 44
+		std::uint32_t							   userData;	// 30
+		std::uint32_t							   pad34;		// 34
+		hkStringPtr								   name;		// 38
+		std::uint16_t							   id;			// 40
+		stl::enumeration<CloneState, std::uint8_t> cloneState;	// 42
+		std::uint8_t							   pad43;		// 43
+		std::uint32_t							   pad44;		// 44
 	};
-	STATIC_ASSERT(sizeof(hkbNode) == 0x48);
+	static_assert(sizeof(hkbNode) == 0x48);
 }

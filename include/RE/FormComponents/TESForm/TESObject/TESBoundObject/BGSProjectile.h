@@ -13,7 +13,8 @@ namespace RE
 {
 	struct BGSProjectileData  // DATA
 	{
-		enum class BGSProjectileFlags : UInt16
+	public:
+		enum class BGSProjectileFlags
 		{
 			kNone = 0,
 			kHitScan = 1 << 0,
@@ -30,7 +31,7 @@ namespace RE
 		};
 
 
-		enum class Type : UInt16
+		enum class Type
 		{
 			kMissile = 1 << 0,
 			kGrenade = 1 << 1,
@@ -42,34 +43,35 @@ namespace RE
 		};
 
 
-		BGSProjectileFlags		flags;				  // 00
-		Type					types;				  // 02
-		float					gravity;			  // 04
-		float					speed;				  // 08
-		float					range;				  // 0C
-		TESObjectLIGH*			light;				  // 10
-		TESObjectLIGH*			muzzleFlashLight;	  // 18
-		float					tracerChance;		  // 20
-		float					explosionProximity;	  // 24
-		float					explosionTimer;		  // 28
-		UInt32					pad2C;				  // 2C
-		BGSExplosion*			explosionType;		  // 30
-		BGSSoundDescriptorForm* activeSoundLoop;	  // 38
-		float					muzzleFlashDuration;  // 40
-		float					fadeOutTime;		  // 44
-		float					force;				  // 48
-		UInt32					pad4C;				  // 4C
-		BGSSoundDescriptorForm* countdownSound;		  // 50
-		BGSSoundDescriptorForm* deactivateSound;	  // 58
-		TESObjectWEAP*			defaultWeaponSource;  // 60
-		float					coneSpread;			  // 68
-		float					collisionRadius;	  // 6C
-		float					lifetime;			  // 70
-		float					relaunchInterval;	  // 74
-		BGSTextureSet*			decalData;			  // 78
-		BGSCollisionLayer*		collisionLayer;		  // 80
+		// members
+		stl::enumeration<BGSProjectileFlags, std::uint16_t> flags;				  // 00
+		stl::enumeration<Type, std::uint16_t>				types;				  // 02
+		float												gravity;			  // 04
+		float												speed;				  // 08
+		float												range;				  // 0C
+		TESObjectLIGH*										light;				  // 10
+		TESObjectLIGH*										muzzleFlashLight;	  // 18
+		float												tracerChance;		  // 20
+		float												explosionProximity;	  // 24
+		float												explosionTimer;		  // 28
+		std::uint32_t										pad2C;				  // 2C
+		BGSExplosion*										explosionType;		  // 30
+		BGSSoundDescriptorForm*								activeSoundLoop;	  // 38
+		float												muzzleFlashDuration;  // 40
+		float												fadeOutTime;		  // 44
+		float												force;				  // 48
+		std::uint32_t										pad4C;				  // 4C
+		BGSSoundDescriptorForm*								countdownSound;		  // 50
+		BGSSoundDescriptorForm*								deactivateSound;	  // 58
+		TESObjectWEAP*										defaultWeaponSource;  // 60
+		float												coneSpread;			  // 68
+		float												collisionRadius;	  // 6C
+		float												lifetime;			  // 70
+		float												relaunchInterval;	  // 74
+		BGSTextureSet*										decalData;			  // 78
+		BGSCollisionLayer*									collisionLayer;		  // 80
 	};
-	STATIC_ASSERT(sizeof(BGSProjectileData) == 0x88);
+	static_assert(sizeof(BGSProjectileData) == 0x88);
 
 
 	class BGSProjectile :
@@ -86,7 +88,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -97,21 +99,21 @@ namespace RE
 		virtual ~BGSProjectile();  // 00
 
 		// override (TESBoundObject)
-		virtual void		InitializeData() override;																													 // 04
-		virtual void		ClearData() override;																														 // 05
-		virtual bool		Load(TESFile* a_mod) override;																												 // 06
-		virtual void		InitItemImpl() override;																													 // 13
-		virtual bool		Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;	 // 37
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;																						 // 40
-		virtual void		UnClone3D(TESObjectREFR* a_ref) override;																									 // 41
-		virtual bool		GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																		 // 4C
+		virtual void		InitializeData() override;																																  // 04
+		virtual void		ClearData() override;																																	  // 05
+		virtual bool		Load(TESFile* a_mod) override;																															  // 06
+		virtual void		InitItemImpl() override;																																  // 13
+		virtual bool		Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;																									  // 40
+		virtual void		UnClone3D(TESObjectREFR* a_ref) override;																												  // 41
+		virtual bool		GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																					  // 4C
 
 
 		// members
 		BGSProjectileData data;				 // 080 - DATA
 		TESModel		  muzzleFlashModel;	 // 108
 		SOUND_LEVEL		  soundLevel;		 // 130 - VNAM
-		UInt32			  pad134;			 // 134
+		std::uint32_t	  pad134;			 // 134
 	};
-	STATIC_ASSERT(sizeof(BGSProjectile) == 0x138);
+	static_assert(sizeof(BGSProjectile) == 0x138);
 }

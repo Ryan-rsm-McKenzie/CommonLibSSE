@@ -201,7 +201,7 @@ namespace RE
 		// members
 		element_type* _ptr;	 // 0
 	};
-	//STATIC_ASSERT(sizeof(NiPointer<void*>) == 0x8);
+	//static_assert(sizeof(NiPointer<void*>) == 0x8);
 
 	template <class T1, class T2>
 	[[nodiscard]] constexpr bool operator==(const NiPointer<T1>& a_lhs, const NiPointer<T2>& a_rhs)
@@ -247,7 +247,7 @@ namespace RE
 	struct CRC32Hash<NiPointer<T>>
 	{
 	public:
-		UInt32 operator()(const NiPointer<T>& a_key) const
+		std::uint32_t operator()(const NiPointer<T>& a_key) const
 		{
 			return CRC32Hash<std::uintptr_t>()((std::uintptr_t)a_key.get());
 		}

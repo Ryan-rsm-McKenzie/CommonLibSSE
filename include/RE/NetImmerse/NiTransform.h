@@ -13,5 +13,5 @@ namespace RE
 		NiPoint3  translate;  // 24
 		float	  scale;	  // 30
 	};
-	STATIC_ASSERT(sizeof(NiTransform) == 0x34);
+	static_assert(sizeof(NiTransform) == 0x34);
 }

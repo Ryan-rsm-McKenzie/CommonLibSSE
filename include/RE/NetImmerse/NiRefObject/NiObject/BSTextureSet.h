@@ -17,7 +17,7 @@ namespace RE
 
 		struct Textures
 		{
-			enum Texture : UInt32
+			enum Texture : std::uint32_t
 			{
 				kDiffuse = 0,
 				kNormal,
@@ -53,5 +53,5 @@ namespace RE
 		virtual void		SetTexture(Texture a_texture, NiSourceTexture* a_srcTexture) = 0;  // 26
 		virtual void		SetTexturePath(Texture a_texture, const char* a_path) = 0;		   // 27
 	};
-	STATIC_ASSERT(sizeof(BSTextureSet) == 0x10);
+	static_assert(sizeof(BSTextureSet) == 0x10);
 }

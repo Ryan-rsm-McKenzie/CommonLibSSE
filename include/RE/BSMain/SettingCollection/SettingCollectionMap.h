@@ -23,5 +23,5 @@ namespace RE
 		// members
 		BSTCaseInsensitiveStringMap<T*> settings;  // 118
 	};
-	STATIC_ASSERT(sizeof(SettingCollectionMap<Setting>) == 0x140);
+	static_assert(sizeof(SettingCollectionMap<Setting>) == 0x140);
 }

@@ -14,8 +14,8 @@ namespace RE
 	{
 	public:
 		// members
-		BSTArray<BSTArray<const BSNavmeshInfo*>*> allPaths;		   // 00
-		BSTHashMap<const BSNavmeshInfo*, UInt32>  infoToIndexMap;  // 18
+		BSTArray<BSTArray<const BSNavmeshInfo*>*>		allPaths;		 // 00
+		BSTHashMap<const BSNavmeshInfo*, std::uint32_t> infoToIndexMap;	 // 18
 	};
-	STATIC_ASSERT(sizeof(BSPrecomputedNavmeshInfoPathMap) == 0x48);
+	static_assert(sizeof(BSPrecomputedNavmeshInfoPathMap) == 0x48);
 }

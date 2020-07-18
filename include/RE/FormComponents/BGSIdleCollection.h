@@ -14,7 +14,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSIdleCollection;
 
 
-		enum class IdleFlags : SInt8
+		enum class IdleFlags
 		{
 			kNone = 0,
 			kPickSequence = 1 << 0,
@@ -34,13 +34,13 @@ namespace RE
 
 
 		// members
-		IdleFlags	  idleFlags;		  // 08 - IDLF
-		SInt8		  idleCount;		  // 09 - IDLC
-		UInt16		  pad0A;			  // 0A
-		UInt32		  pad0C;			  // 0C
-		TESIdleForm** idles;			  // 10 - IDLA
-		float		  timerCheckForIdle;  // 18 - IDLT
-		UInt32		  pad1C;			  // 1C
+		stl::enumeration<IdleFlags, std::int8_t> idleFlags;			 // 08 - IDLF
+		std::int8_t								 idleCount;			 // 09 - IDLC
+		std::uint16_t							 pad0A;				 // 0A
+		std::uint32_t							 pad0C;				 // 0C
+		TESIdleForm**							 idles;				 // 10 - IDLA
+		float									 timerCheckForIdle;	 // 18 - IDLT
+		std::uint32_t							 pad1C;				 // 1C
 	};
-	STATIC_ASSERT(sizeof(BGSIdleCollection) == 0x20);
+	static_assert(sizeof(BGSIdleCollection) == 0x20);
 }

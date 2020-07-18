@@ -30,7 +30,7 @@ namespace RE
 	}
 
 
-	void BSTArrayBase::set_size(UInt32 a_size)
+	void BSTArrayBase::set_size(std::uint32_t a_size)
 	{
 		_size = a_size;
 	}
@@ -96,7 +96,7 @@ namespace RE
 	}
 
 
-	void BSTArrayHeapAllocator::set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t)
+	void BSTArrayHeapAllocator::set_allocator_traits(void* a_data, std::uint32_t a_capacity, std::size_t)
 	{
 		_data = a_data;
 		_capacity = a_capacity;
@@ -176,7 +176,7 @@ namespace RE
 	}
 
 
-	void BSScrapArrayAllocator::set_allocator_traits(void* a_data, UInt32 a_capacity, std::size_t)
+	void BSScrapArrayAllocator::set_allocator_traits(void* a_data, std::uint32_t a_capacity, std::size_t)
 	{
 		_data = a_data;
 		_capacity = a_capacity;

@@ -8,5 +8,5 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESMagicCasterForm;
 	};
-	STATIC_ASSERT(sizeof(TESMagicCasterForm) == 0x1);
+	static_assert(sizeof(TESMagicCasterForm) == 0x1);
 }

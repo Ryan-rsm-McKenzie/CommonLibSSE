@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		using value_type = char;
-		using size_type = UInt32;
+		using size_type = std::uint32_t;
 		using const_reference = const value_type&;
 
 
@@ -87,14 +87,14 @@ namespace RE
 		// members
 		GlobalStringHandle _data;  // 0
 	};
-	STATIC_ASSERT(sizeof(BSFixedString) == 0x8);
+	static_assert(sizeof(BSFixedString) == 0x8);
 
 
 	template <>
 	struct CRC32Hash<BSFixedString>
 	{
 	public:
-		UInt32 operator()(const BSFixedString& a_key) const
+		std::uint32_t operator()(const BSFixedString& a_key) const
 		{
 			return CRC32Hash<const char*>()(a_key.c_str());
 		}
@@ -105,7 +105,7 @@ namespace RE
 	{
 	public:
 		using value_type = wchar_t;
-		using size_type = UInt32;
+		using size_type = std::uint32_t;
 		using const_reference = const value_type&;
 
 		// (constructor)
@@ -174,14 +174,14 @@ namespace RE
 		// members
 		GlobalStringHandleW _data;	// 00
 	};
-	STATIC_ASSERT(sizeof(BSFixedStringW) == 0x8);
+	static_assert(sizeof(BSFixedStringW) == 0x8);
 
 
 	template <>
 	struct CRC32Hash<BSFixedStringW>
 	{
 	public:
-		UInt32 operator()(const BSFixedStringW& a_key) const
+		std::uint32_t operator()(const BSFixedStringW& a_key) const
 		{
 			return CRC32Hash<const wchar_t*>()(a_key.c_str());
 		}

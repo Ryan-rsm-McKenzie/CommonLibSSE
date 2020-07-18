@@ -24,7 +24,7 @@ namespace RE
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiControllerSequence;
 
 
-		enum class AnimState : UInt32
+		enum class AnimState
 		{
 			kInactive,
 			kAnimating,
@@ -38,26 +38,30 @@ namespace RE
 
 		struct InterpArrayItem
 		{
+		public:
+			// members
 			NiPointer<NiInterpolator>	  interpolator;	 // 00
 			NiPointer<NiInterpController> interpCtlr;	 // 08
 			NiBlendInterpolator*		  blendInterp;	 // 10
-			UInt8						  blendIdx;		 // 18
-			UInt8						  pad19;		 // 19
-			UInt16						  pad1A;		 // 1A
-			UInt32						  pad1C;		 // 1C
+			std::uint8_t				  blendIdx;		 // 18
+			std::uint8_t				  pad19;		 // 19
+			std::uint16_t				  pad1A;		 // 1A
+			std::uint32_t				  pad1C;		 // 1C
 		};
-		STATIC_ASSERT(sizeof(InterpArrayItem) == 0x20);
+		static_assert(sizeof(InterpArrayItem) == 0x20);
 
 
 		struct IDTag
 		{
+		public:
+			// members
 			BSFixedString avObjectName;	   // 00
 			BSFixedString propertyType;	   // 08
 			BSFixedString ctlrType;		   // 10
 			BSFixedString ctlrID;		   // 18
 			BSFixedString interpolatorID;  // 20
 		};
-		STATIC_ASSERT(sizeof(IDTag) == 0x28);
+		static_assert(sizeof(IDTag) == 0x28);
 
 
 		virtual ~NiControllerSequence();  // 00
@@ -78,41 +82,41 @@ namespace RE
 
 
 		// members
-		BSFixedString						name;			   // 10
-		UInt32								arraySize;		   // 18
-		UInt32								arrayGrowBy;	   // 1C
-		SimpleArray<InterpArrayItem>		interpArray;	   // 20
-		SimpleArray<IDTag>					idTagArray;		   // 28
-		float								seqWeight;		   // 30
-		UInt32								pad34;			   // 30
-		NiPointer<NiTextKeyExtraData>		textKeys;		   // 38
-		NiTimeController::CycleType			cycleType;		   // 40
-		float								frequency;		   // 44
-		float								beginKeyTime;	   // 48
-		float								endKeyTime;		   // 4C
-		float								lastTime;		   // 50
-		float								weightedLastTime;  // 54
-		float								lastScaledTime;	   // 58
-		UInt32								pad5C;			   // 5C
-		NiControllerManager*				owner;			   // 60
-		AnimState							state;			   // 68
-		float								offset;			   // 6C
-		float								startTime;		   // 70
-		float								endTime;		   // 74
-		float								destFrame;		   // 78
-		UInt32								pad7C;			   // 7C
-		NiControllerSequence*				partnerSequence;   // 80
-		BSFixedString						accumRootName;	   // 88
-		NiAVObject*							accumRoot;		   // 90
-		void*								unk98;			   // 98 - smart ptr
-		SInt16								unkA0;			   // A0
-		UInt16								unkA2;			   // A2
-		UInt32								unkA4;			   // A4
-		SimpleArray<NiPointer<NiRefObject>> unkA8;			   // A8
-		UInt16								unkB0;			   // B0
-		UInt8								unkB2;			   // B2
-		UInt8								unkB3;			   // B3
-		UInt32								unkB4;			   // B4
+		BSFixedString							   name;			  // 10
+		std::uint32_t							   arraySize;		  // 18
+		std::uint32_t							   arrayGrowBy;		  // 1C
+		SimpleArray<InterpArrayItem>			   interpArray;		  // 20
+		SimpleArray<IDTag>						   idTagArray;		  // 28
+		float									   seqWeight;		  // 30
+		std::uint32_t							   pad34;			  // 30
+		NiPointer<NiTextKeyExtraData>			   textKeys;		  // 38
+		NiTimeController::CycleType				   cycleType;		  // 40
+		float									   frequency;		  // 44
+		float									   beginKeyTime;	  // 48
+		float									   endKeyTime;		  // 4C
+		float									   lastTime;		  // 50
+		float									   weightedLastTime;  // 54
+		float									   lastScaledTime;	  // 58
+		std::uint32_t							   pad5C;			  // 5C
+		NiControllerManager*					   owner;			  // 60
+		stl::enumeration<AnimState, std::uint32_t> state;			  // 68
+		float									   offset;			  // 6C
+		float									   startTime;		  // 70
+		float									   endTime;			  // 74
+		float									   destFrame;		  // 78
+		std::uint32_t							   pad7C;			  // 7C
+		NiControllerSequence*					   partnerSequence;	  // 80
+		BSFixedString							   accumRootName;	  // 88
+		NiAVObject*								   accumRoot;		  // 90
+		void*									   unk98;			  // 98 - smart ptr
+		std::int16_t							   unkA0;			  // A0
+		std::uint16_t							   unkA2;			  // A2
+		std::uint32_t							   unkA4;			  // A4
+		SimpleArray<NiPointer<NiRefObject>>		   unkA8;			  // A8
+		std::uint16_t							   unkB0;			  // B0
+		std::uint8_t							   unkB2;			  // B2
+		std::uint8_t							   unkB3;			  // B3
+		std::uint32_t							   unkB4;			  // B4
 	};
-	STATIC_ASSERT(sizeof(NiControllerSequence) == 0xB8);
+	static_assert(sizeof(NiControllerSequence) == 0xB8);
 }

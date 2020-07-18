@@ -61,5 +61,5 @@ namespace RE
 		KeyInterface* _keyInterface;  // 00
 		KeyHandle	  _keyData;		  // 08
 	};
-	STATIC_ASSERT(sizeof(GFxResourceKey) == 0x10);
+	static_assert(sizeof(GFxResourceKey) == 0x10);
 }

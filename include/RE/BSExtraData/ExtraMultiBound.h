@@ -26,5 +26,5 @@ namespace RE
 		// members
 		NiPointer<BSMultiBound> bound;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraMultiBound) == 0x18);
+	static_assert(sizeof(ExtraMultiBound) == 0x18);
 }

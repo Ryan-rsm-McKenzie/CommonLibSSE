@@ -32,5 +32,5 @@ namespace RE
 		virtual const BSFixedString& GetTypeName() const = 0;					   // 0B
 		virtual void				 Unk_0C(void);								   // 0C - { return 0; }
 	};
-	STATIC_ASSERT(sizeof(IPackageData) == 0x8);
+	static_assert(sizeof(IPackageData) == 0x8);
 }

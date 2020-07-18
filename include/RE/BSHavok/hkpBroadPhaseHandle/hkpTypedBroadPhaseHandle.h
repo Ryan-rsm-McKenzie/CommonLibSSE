@@ -14,11 +14,11 @@ namespace RE
 		};
 
 
-		SInt8  type;				 // 4
-		SInt8  ownerOffset;			 // 5
-		SInt8  objectQualityType;	 // 6
-		SInt8  pad7;				 // 7
-		UInt32 collisionFilterInfo;	 // 8
+		std::int8_t	  type;					// 4
+		std::int8_t	  ownerOffset;			// 5
+		std::int8_t	  objectQualityType;	// 6
+		std::int8_t	  pad7;					// 7
+		std::uint32_t collisionFilterInfo;	// 8
 	};
-	STATIC_ASSERT(sizeof(hkpTypedBroadPhaseHandle) == 0xC);
+	static_assert(sizeof(hkpTypedBroadPhaseHandle) == 0xC);
 }

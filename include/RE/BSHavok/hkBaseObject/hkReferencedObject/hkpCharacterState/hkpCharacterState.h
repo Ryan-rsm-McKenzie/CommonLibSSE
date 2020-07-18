@@ -12,7 +12,7 @@ namespace RE
 
 	struct hkpCharacterStateTypes
 	{
-		enum hkpCharacterStateType : UInt32
+		enum hkpCharacterStateType : std::uint32_t
 		{
 			kOnGround = 0,
 			kJumping,
@@ -49,5 +49,5 @@ namespace RE
 		virtual void				  Update(hkpCharacterContext& a_context, const hkpCharacterInput& a_input, hkpCharacterOutput& a_output) = 0;									  // 06
 		virtual void				  Change(hkpCharacterContext& a_context, const hkpCharacterInput& a_input, hkpCharacterOutput& a_output) = 0;									  // 07
 	};
-	STATIC_ASSERT(sizeof(hkpCharacterState) == 0x10);
+	static_assert(sizeof(hkpCharacterState) == 0x10);
 }

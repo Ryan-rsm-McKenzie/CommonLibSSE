@@ -14,7 +14,7 @@ namespace RE
 		virtual ~TESTexture1024();	// 00
 
 		// override (TESTexture)
-		virtual UInt32 GetMaxAllowedSize() override;  // 04 - { return 1024; }
+		virtual std::uint32_t GetMaxAllowedSize() override;	 // 04 - { return 1024; }
 	};
-	STATIC_ASSERT(sizeof(TESTexture1024) == 0x10);
+	static_assert(sizeof(TESTexture1024) == 0x10);
 }

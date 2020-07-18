@@ -17,16 +17,16 @@ namespace RE
 
 		struct ChangeFlags
 		{
-			enum ChangeFlag : UInt32
+			enum ChangeFlag : std::uint32_t
 			{
-				kTimeLastRun = (UInt32)1 << 31
+				kTimeLastRun = (std::uint32_t)1 << 31
 			};
 		};
 
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -43,18 +43,18 @@ namespace RE
 		virtual void									 LoadGame(BGSLoadFormBuffer* a_buf) override;					 // 0F
 		virtual void									 Revert(BGSLoadFormBuffer* a_buf) override;						 // 12
 		virtual void									 InitItemImpl() override;										 // 13
-		virtual UInt32									 QChildCount() const override;									 // 3B - { return quests.size(); }
-		virtual BGSStoryManagerTreeForm*				 GetChild(UInt32 a_idx) const override;							 // 3C - { return quests[a_idx]; }
+		virtual std::uint32_t							 QChildCount() const override;									 // 3B - { return quests.size(); }
+		virtual BGSStoryManagerTreeForm*				 GetChild(std::uint32_t a_idx) const override;					 // 3C - { return quests[a_idx]; }
 		virtual BGSStoryManagerTreeVisitor::VisitControl AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;	 // 3E - { return a_visitor->VisitQuestNode(this); }
 
 
 		// members
-		BSTArray<TESQuest*>			  quests;					// 48 - NNAM
-		BSTHashMap<TESQuest*, UInt32> perQuestFlags;			// 60 - maps NNAM to FNAM
-		BSTHashMap<TESQuest*, float>  perQuestHoursUntilReset;	// 90 - maps NNAM to RNAM
-		UInt32						  numQuestsToStart;			// C0 - MNAM
-		UInt32						  padC4;					// C4
-		BSTArray<float>				  childrenLastRun;			// C8
+		BSTArray<TESQuest*>					 quests;				   // 48 - NNAM
+		BSTHashMap<TESQuest*, std::uint32_t> perQuestFlags;			   // 60 - maps NNAM to FNAM
+		BSTHashMap<TESQuest*, float>		 perQuestHoursUntilReset;  // 90 - maps NNAM to RNAM
+		std::uint32_t						 numQuestsToStart;		   // C0 - MNAM
+		std::uint32_t						 padC4;					   // C4
+		BSTArray<float>						 childrenLastRun;		   // C8
 	};
-	STATIC_ASSERT(sizeof(BGSStoryManagerQuestNode) == 0xE0);
+	static_assert(sizeof(BGSStoryManagerQuestNode) == 0xE0);
 }

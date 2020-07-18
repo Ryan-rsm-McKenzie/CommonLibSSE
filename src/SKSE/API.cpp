@@ -32,7 +32,7 @@ namespace SKSE
 
 
 		PluginHandle g_pluginHandle = kInvalidPluginHandle;
-		UInt32 g_releaseIndex = 0;
+		std::uint32_t g_releaseIndex = 0;
 
 		ScaleformInterface* g_scaleformInterface = nullptr;
 		PapyrusInterface* g_papyrusInterface = nullptr;

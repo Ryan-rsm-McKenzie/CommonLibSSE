@@ -14,14 +14,14 @@ namespace RE
 
 	struct DismemberedLimb
 	{
-		BSTArray<TESForm*>			 objects;  // 00
-		BGSBodyPartDefs::LIMB_ENUM_8 limb;	   // 18
-		bool						 unk19;	   // 19
-		bool						 unk1A;	   // 1A
-		UInt8						 pad1B;	   // 1B
-		UInt32						 pad1C;	   // 1C
+		BSTArray<TESForm*>										   objects;	 // 00
+		stl::enumeration<BGSBodyPartDefs::LIMB_ENUM, std::uint8_t> limb;	 // 18
+		bool													   unk19;	 // 19
+		bool													   unk1A;	 // 1A
+		std::uint8_t											   pad1B;	 // 1B
+		std::uint32_t											   pad1C;	 // 1C
 	};
-	STATIC_ASSERT(sizeof(DismemberedLimb) == 0x20);
+	static_assert(sizeof(DismemberedLimb) == 0x20);
 
 
 	class ExtraDismemberedLimbs : public BSExtraData
@@ -38,14 +38,14 @@ namespace RE
 
 
 		// members
-		UInt16					   limbs;			  // 10
-		bool					   eaten;			  // 12
-		UInt8					   unk13;			  // 13
-		UInt32					   unk14;			  // 14
-		TESForm*				   deathObject;		  // 18
-		BSTArray<DismemberedLimb*> dismemberedLimbs;  // 20
-		BGSBodyPartDefs::LIMB_ENUM lastHitLimb;		  // 38
-		UInt32					   pad3C;			  // 3C
+		std::uint16_t												limbs;			   // 10
+		bool														eaten;			   // 12
+		std::uint8_t												unk13;			   // 13
+		std::uint32_t												unk14;			   // 14
+		TESForm*													deathObject;	   // 18
+		BSTArray<DismemberedLimb*>									dismemberedLimbs;  // 20
+		stl::enumeration<BGSBodyPartDefs::LIMB_ENUM, std::uint32_t> lastHitLimb;	   // 38
+		std::uint32_t												pad3C;			   // 3C
 	};
-	STATIC_ASSERT(sizeof(ExtraDismemberedLimbs) == 0x40);
+	static_assert(sizeof(ExtraDismemberedLimbs) == 0x40);
 }

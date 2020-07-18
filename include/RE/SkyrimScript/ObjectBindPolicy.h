@@ -32,14 +32,14 @@ namespace RE
 
 
 			// members
-			UInt64						 unk50;	 // 50
-			UInt64						 unk58;	 // 58
+			std::uint64_t				 unk50;	 // 50
+			std::uint64_t				 unk58;	 // 58
 			BSTHashMap<UnkKey, UnkValue> unk60;	 // 60
-			UInt64						 unk90;	 // 90
-			UInt64						 unk98;	 // 98
-			UInt64						 unkA0;	 // A0
+			std::uint64_t				 unk90;	 // 90
+			std::uint64_t				 unk98;	 // 98
+			std::uint64_t				 unkA0;	 // A0
 			BSTHashMap<UnkKey, UnkValue> unkA8;	 // A8
 		};
-		STATIC_ASSERT(sizeof(ObjectBindPolicy) == 0xD8);
+		static_assert(sizeof(ObjectBindPolicy) == 0xD8);
 	}
 }

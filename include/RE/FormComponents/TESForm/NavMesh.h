@@ -20,13 +20,13 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12,
 				kCompressed = 1 << 18,
 				kAutoGen = 1 << 26,
-				kNavMeshGenCell = (UInt32)1 << 31
+				kNavMeshGenCell = (std::uint32_t)1 << 31
 			};
 		};
 
@@ -37,7 +37,7 @@ namespace RE
 		virtual bool Load(TESFile* a_mod) override;														   // 06
 		virtual void FinishLoadGame(BGSLoadFormBuffer* a_buf) override;									   // 11
 		virtual void InitItemImpl() override;															   // 13
-		virtual void GetFormDetailedString(char* a_buf, UInt32 a_bufLen) override;						   // 16
+		virtual void GetFormDetailedString(char* a_buf, std::uint32_t a_bufLen) override;				   // 16
 		virtual void SetDelete(bool a_set) override;													   // 23
 		virtual void SetAltered(bool a_set) override;													   // 24
 		virtual bool BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly) override;  // 30
@@ -49,5 +49,5 @@ namespace RE
 		virtual bool SavesBefore(TESForm* a_form);	// 3D - { return false; }
 		virtual bool ProcessBeforeSave();			// 3E - { return false; }
 	};
-	STATIC_ASSERT(sizeof(NavMesh) == 0x140);
+	static_assert(sizeof(NavMesh) == 0x140);
 }

@@ -29,7 +29,7 @@ namespace RE
 	}
 
 
-	bool BSAudioManager::BuildSoundDataFromDescriptor(BSSoundHandle& a_soundHandle, BSISoundDescriptor* a_descriptor, UInt32 a_flags)
+	bool BSAudioManager::BuildSoundDataFromDescriptor(BSSoundHandle& a_soundHandle, BSISoundDescriptor* a_descriptor, std::uint32_t a_flags)
 	{
 		using func_t = decltype(&BSAudioManager::BuildSoundDataFromDescriptor);
 		REL::Offset<func_t> func(Offset::BSAudioManager::BuildSoundDataFromDescriptor);

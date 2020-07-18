@@ -9,7 +9,7 @@ namespace RE
 		// members
 		CRITICAL_SECTION criticalSection;  // 00
 	};
-	STATIC_ASSERT(sizeof(BSCriticalSection) == 0x28);
+	static_assert(sizeof(BSCriticalSection) == 0x28);
 
 
 	class BSEventFlag
@@ -18,16 +18,16 @@ namespace RE
 		// members
 		HANDLE event;  // 0
 	};
-	STATIC_ASSERT(sizeof(BSEventFlag) == 0x8);
+	static_assert(sizeof(BSEventFlag) == 0x8);
 
 
 	class BSNonReentrantSpinLock
 	{
 	public:
 		// members
-		volatile UInt32 lock;  // 0
+		volatile std::uint32_t lock;  // 0
 	};
-	STATIC_ASSERT(sizeof(BSNonReentrantSpinLock) == 0x4);
+	static_assert(sizeof(BSNonReentrantSpinLock) == 0x4);
 
 
 	class BSSemaphoreBase
@@ -40,7 +40,7 @@ namespace RE
 		// members
 		HANDLE semaphore;  // 0
 	};
-	STATIC_ASSERT(sizeof(BSSemaphoreBase) == 0x8);
+	static_assert(sizeof(BSSemaphoreBase) == 0x8);
 
 
 	class BSSemaphore : public BSSemaphoreBase
@@ -49,7 +49,7 @@ namespace RE
 		BSSemaphore() = default;
 		~BSSemaphore() = default;
 	};
-	STATIC_ASSERT(sizeof(BSSemaphore) == 0x8);
+	static_assert(sizeof(BSSemaphore) == 0x8);
 
 
 	class BSSpinLock
@@ -63,15 +63,15 @@ namespace RE
 
 		BSSpinLock();
 
-		void Lock(UInt32 a_pauseAttempts = 0);
+		void Lock(std::uint32_t a_pauseAttempts = 0);
 		void Unlock();
 
 	private:
 		// members
-		volatile UInt32 _owningThread;	// 0
-		volatile UInt32 _lockCount;		// 4
+		volatile std::uint32_t _owningThread;  // 0
+		volatile std::uint32_t _lockCount;	   // 4
 	};
-	STATIC_ASSERT(sizeof(BSSpinLock) == 0x8);
+	static_assert(sizeof(BSSpinLock) == 0x8);
 
 
 	class BSReadWriteLock
@@ -93,10 +93,10 @@ namespace RE
 
 	private:
 		// members
-		volatile UInt32 _writerThread;	// 0
-		volatile UInt32 _lock;			// 4
+		volatile std::uint32_t _writerThread;  // 0
+		volatile std::uint32_t _lock;		   // 4
 	};
-	STATIC_ASSERT(sizeof(BSReadWriteLock) == 0x8);
+	static_assert(sizeof(BSReadWriteLock) == 0x8);
 
 
 	class BSSpinLockGuard
@@ -114,7 +114,7 @@ namespace RE
 	private:
 		BSSpinLock& _lock;	// 0
 	};
-	STATIC_ASSERT(sizeof(BSSpinLockGuard) == 0x8);
+	static_assert(sizeof(BSSpinLockGuard) == 0x8);
 
 
 	class BSReadLockGuard
@@ -132,7 +132,7 @@ namespace RE
 	private:
 		BSReadWriteLock& _lock;	 // 0
 	};
-	STATIC_ASSERT(sizeof(BSReadLockGuard) == 0x8);
+	static_assert(sizeof(BSReadLockGuard) == 0x8);
 
 
 	class BSWriteLockGuard
@@ -150,5 +150,5 @@ namespace RE
 	private:
 		BSReadWriteLock& _lock;	 // 0
 	};
-	STATIC_ASSERT(sizeof(BSWriteLockGuard) == 0x8);
+	static_assert(sizeof(BSWriteLockGuard) == 0x8);
 }

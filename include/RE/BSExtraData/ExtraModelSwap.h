@@ -27,5 +27,5 @@ namespace RE
 		TESModel* modelSwap;	  // 10
 		TESForm*  modelSwapForm;  // 18
 	};
-	STATIC_ASSERT(sizeof(ExtraModelSwap) == 0x20);
+	static_assert(sizeof(ExtraModelSwap) == 0x20);
 }

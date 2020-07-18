@@ -40,5 +40,5 @@ namespace RE
 		hkArray<hkpPhantomOverlapListener*> overlapListeners;  // D0
 		hkArray<hkpPhantomListener*>		phantomListeners;  // E0
 	};
-	STATIC_ASSERT(sizeof(hkpPhantom) == 0xF0);
+	static_assert(sizeof(hkpPhantom) == 0xF0);
 }

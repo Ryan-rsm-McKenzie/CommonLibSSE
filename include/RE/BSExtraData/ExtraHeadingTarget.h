@@ -22,7 +22,7 @@ namespace RE
 
 		// members
 		ObjectRefHandle target;	 // 10
-		UInt32			pad14;	 // 14
+		std::uint32_t	pad14;	 // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraHeadingTarget) == 0x18);
+	static_assert(sizeof(ExtraHeadingTarget) == 0x18);
 }

@@ -25,5 +25,5 @@ namespace RE
 		// members
 		ActorPackageData* actorPackageData;	 // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraPackageData) == 0x18);
+	static_assert(sizeof(ExtraPackageData) == 0x18);
 }

@@ -21,8 +21,8 @@ namespace RE
 
 
 		// members
-		UInt32 user;   // 10
-		UInt32 pad14;  // 14
+		std::uint32_t user;	  // 10
+		std::uint32_t pad14;  // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraPatrolRefInUseData) == 0x18);
+	static_assert(sizeof(ExtraPatrolRefInUseData) == 0x18);
 }

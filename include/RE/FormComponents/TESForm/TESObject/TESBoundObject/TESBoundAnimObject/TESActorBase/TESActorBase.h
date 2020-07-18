@@ -38,12 +38,12 @@ namespace RE
 		virtual ~TESActorBase();  // 00
 
 		// override (TESBoundAnimObject)
-		virtual bool AddChange(UInt32 a_changeFlags) override;	   // 0A
-		virtual void RemoveChange(UInt32 a_changeFlags) override;  // 0B
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-		virtual bool IsAutoCalc() const override;				   // 3E - { return formType == FormType::NPC && (TESActorBaseData::flags >> 4) & 1; }
-		virtual void SetAutoCalc(bool a_autoCalc) override;		   // 3F
+		virtual bool AddChange(std::uint32_t a_changeFlags) override;	  // 0A
+		virtual void RemoveChange(std::uint32_t a_changeFlags) override;  // 0B
+		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;		  // 0E
+		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;		  // 0F
+		virtual bool IsAutoCalc() const override;						  // 3E - { return formType == FormType::NPC && (TESActorBaseData::flags >> 4) & 1; }
+		virtual void SetAutoCalc(bool a_autoCalc) override;				  // 3F
 
 		// override (TESAIForm)
 		virtual float GetActorValue(ActorValue a_akValue) override;														 // 01
@@ -61,5 +61,5 @@ namespace RE
 		virtual void			SetCombatStyle(TESCombatStyle* a_combatStyle);	// 55 - { return; }
 		virtual TESForm*		GetAsForm();									// 56 - { return this; }
 	};
-	STATIC_ASSERT(sizeof(TESActorBase) == 0x150);
+	static_assert(sizeof(TESActorBase) == 0x150);
 }

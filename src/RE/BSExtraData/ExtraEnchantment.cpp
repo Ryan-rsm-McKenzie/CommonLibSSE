@@ -8,7 +8,7 @@ namespace RE
 	{}
 
 
-	ExtraEnchantment::ExtraEnchantment(EnchantmentItem* a_enchantment, UInt16 a_charge, bool a_removeOnUnequip) :
+	ExtraEnchantment::ExtraEnchantment(EnchantmentItem* a_enchantment, std::uint16_t a_charge, bool a_removeOnUnequip) :
 		BSExtraData(),
 		enchantment(a_enchantment),
 		charge(a_charge),

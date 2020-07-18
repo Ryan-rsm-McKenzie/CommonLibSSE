@@ -16,7 +16,7 @@ namespace RE
 {
 	struct CONT_DATA
 	{
-		enum class Flag : UInt8
+		enum class Flag
 		{
 			kNone = 0,
 			kAllowsSoundsWhenAnimation = 1 << 0,
@@ -25,9 +25,9 @@ namespace RE
 		};
 
 
-		Flag flags;	 // 0
+		stl::enumeration<Flag, std::uint8_t> flags;	 // 0
 	};
-	STATIC_ASSERT(sizeof(CONT_DATA) == 0x1);
+	static_assert(sizeof(CONT_DATA) == 0x1);
 
 
 	class TESObjectCONT :
@@ -48,7 +48,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12,
@@ -65,12 +65,12 @@ namespace RE
 		virtual ~TESObjectCONT();  // 00
 
 		// override (TESBoundAnimObject)
-		virtual void InitializeData() override;																													  // 04
-		virtual bool Load(TESFile* a_mod) override;																												  // 06
-		virtual void InitItemImpl() override;																													  // 13
-		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;  // 37
-		virtual bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																		  // 4C
-		virtual bool CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;										  // 4D
+		virtual void InitializeData() override;																																   // 04
+		virtual bool Load(TESFile* a_mod) override;																															   // 06
+		virtual void InitItemImpl() override;																																   // 13
+		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		virtual bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																					   // 4C
+		virtual bool CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;													   // 4D
 
 		// override (BGSOpenCloseForm)
 		virtual void HandleOpen(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;	 // 01
@@ -79,11 +79,11 @@ namespace RE
 
 		// members
 		CONT_DATA				data;		 // B9 - DATA
-		UInt16					padBA;		 // BA
-		UInt32					padBC;		 // BC
+		std::uint16_t			padBA;		 // BA
+		std::uint32_t			padBC;		 // BC
 		BGSSoundDescriptorForm* openSound;	 // C0 - SNAM
 		BGSSoundDescriptorForm* closeSound;	 // C8 - QNAM
 	};
-	STATIC_ASSERT(offsetof(TESObjectCONT, data) == 0xB9);
-	STATIC_ASSERT(sizeof(TESObjectCONT) == 0xD0);
+	static_assert(offsetof(TESObjectCONT, data) == 0xB9);
+	static_assert(sizeof(TESObjectCONT) == 0xD0);
 }

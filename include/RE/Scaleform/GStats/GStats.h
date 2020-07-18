@@ -8,7 +8,7 @@ namespace RE
 		// _Mem for GMemoryStat.
 		// _Tks for GTimerStat.
 		// _Cnt for GCounterStat.
-		enum GStatGroup : UInt32
+		enum GStatGroup : std::uint32_t
 		{
 			kGStatGroup_Default = 0,
 

@@ -28,8 +28,8 @@ namespace RE
 
 
 		// members
-		UInt32 type;   // 08
-		float  unk0C;  // 0C
+		std::uint32_t type;	  // 08
+		float		  unk0C;  // 0C
 	};
-	STATIC_ASSERT(sizeof(BSFaceGenKeyframe) == 0x10);
+	static_assert(sizeof(BSFaceGenKeyframe) == 0x10);
 }

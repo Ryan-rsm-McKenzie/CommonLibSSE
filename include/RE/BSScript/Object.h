@@ -21,15 +21,15 @@ namespace RE
 			VMHandle			  GetHandle() const;
 			ObjectTypeInfo*		  GetTypeInfo();
 			const ObjectTypeInfo* GetTypeInfo() const;
-			UInt32				  GetNumProperties() const;
+			std::uint32_t		  GetNumProperties() const;
 			bool				  IsConstructed() const;
 			bool				  IsInitialized() const;
 			bool				  IsValid() const;
 
 			void* Resolve(VMTypeID a_typeID) const;
 
-			void   IncRef();
-			UInt32 DecRef();
+			void		  IncRef();
+			std::uint32_t DecRef();
 
 			Variable*		GetProperty(const BSFixedString& a_name);
 			const Variable* GetProperty(const BSFixedString& a_name) const;
@@ -65,19 +65,19 @@ namespace RE
 			bool unk02_6 : 1;		   // 02 - 6
 			bool unk02_7 : 1;		   // 02 - 7
 
-			UInt8							pad03;					// 03
-			UInt32							pad04;					// 04
+			std::uint8_t					pad03;					// 03
+			std::uint32_t					pad04;					// 04
 			BSTSmartPointer<ObjectTypeInfo> type;					// 08
 			BSFixedString					currentState;			// 10
 			void*							lockStructure;			// 18 - first bit used as flag
 			volatile VMHandle				handle;					// 20
-			volatile SInt32					refCountAndHandleLock;	// 28
-			UInt32							pad2C;					// 2C
+			volatile std::int32_t			refCountAndHandleLock;	// 28
+			std::uint32_t					pad2C;					// 2C
 			Variable						variables[0];			// 30 - size == classPtr->GetTotalNumVariables() + 3
 
 		private:
 			void Dtor();
 		};
-		STATIC_ASSERT(sizeof(Object) == 0x30);
+		static_assert(sizeof(Object) == 0x30);
 	}
 }

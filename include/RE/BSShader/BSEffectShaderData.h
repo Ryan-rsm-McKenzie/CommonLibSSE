@@ -25,7 +25,7 @@ namespace RE
 
 
 		// members
-		UInt32							  pad04;					// 04
+		std::uint32_t					  pad04;					// 04
 		NodeFilterFunction_t*			  nodeFilterFunction;		// 08
 		NiPointer<NiTexture>			  baseTexture;				// 10
 		NiPointer<NiTexture>			  paletteTexture;			// 18
@@ -45,7 +45,7 @@ namespace RE
 		NiAlphaProperty::AlphaFunction	  srcBlend;					// 70
 		NiAlphaProperty::AlphaFunction	  destBlend;				// 74
 		BSGraphics::DepthStencilDepthMode zTestFunc;				// 78
-		SInt8							  alphaTestRef;				// 7C
+		std::int8_t						  alphaTestRef;				// 7C
 		bool							  grayscaleToColor;			// 7D
 		bool							  grayscaleToAlpha;			// 7E
 		bool							  ignoreTextureAlpha;		// 7F
@@ -53,7 +53,7 @@ namespace RE
 		bool							  ignoreBaseGeomTexAlpha;	// 81
 		bool							  lighting;					// 82
 		bool							  alpha;					// 83
-		UInt32							  pad84;					// 84
+		std::uint32_t					  pad84;					// 84
 	};
-	STATIC_ASSERT(sizeof(BSEffectShaderData) == 0x88);
+	static_assert(sizeof(BSEffectShaderData) == 0x88);
 }

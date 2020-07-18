@@ -26,5 +26,5 @@ namespace RE
 		// members
 		TESObjectREFR* marker;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraRandomTeleportMarker) == 0x18);
+	static_assert(sizeof(ExtraRandomTeleportMarker) == 0x18);
 }

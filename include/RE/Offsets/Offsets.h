@@ -449,12 +449,6 @@ namespace RE
 		}
 
 
-		namespace GString
-		{
-			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(80446));
-		}
-
-
 		namespace hkContainerHeapAllocator
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(510713));

@@ -15,7 +15,7 @@ namespace RE
 	}
 
 
-	bool IAnimationGraphManagerHolder::GetGraphVariableInt(const BSFixedString& a_variableName, SInt32& a_out) const
+	bool IAnimationGraphManagerHolder::GetGraphVariableInt(const BSFixedString& a_variableName, std::int32_t& a_out) const
 	{
 		return GetGraphVariableImpl2(a_variableName, a_out);
 	}

@@ -21,8 +21,8 @@ namespace RE
 
 
 		// members
-		float  cost;   // 10
-		UInt32 pad14;  // 14
+		float		  cost;	  // 10
+		std::uint32_t pad14;  // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraFavorCost) == 0x18);
+	static_assert(sizeof(ExtraFavorCost) == 0x18);
 }

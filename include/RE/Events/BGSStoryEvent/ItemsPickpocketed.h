@@ -12,13 +12,13 @@ namespace RE
 		{
 		public:
 			// members
-			SInt32 numItems;  // 0
-			UInt32 pad4;	  // 4
+			std::int32_t  numItems;	 // 0
+			std::uint32_t pad4;		 // 4
 		};
-		STATIC_ASSERT(sizeof(Event) == 0x8);
+		static_assert(sizeof(Event) == 0x8);
 
 
 		static BSTEventSource<Event>* GetEventSource();
-		static void					  SendEvent(SInt32 a_numItems);
+		static void					  SendEvent(std::int32_t a_numItems);
 	};
 }

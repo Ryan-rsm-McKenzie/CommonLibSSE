@@ -1,8 +1,5 @@
 #pragma once
 
-#include "SKSE/Impl/Util.h"
-
-#include "REL/SafeWrite.h"
 #include "REL/Version.h"
 
 
@@ -355,6 +352,27 @@ namespace REL
 		} else {
 			return std::forward<F>(a_func)(std::forward<Args>(a_args)...);
 		}
+	}
+
+
+	inline void safe_write(std::uintptr_t a_dst, const void* a_src, std::size_t a_count)
+	{
+		DWORD				  old{ 0 };
+		[[maybe_unused]] BOOL success{ false };
+		success = VirtualProtect(reinterpret_cast<void*>(a_dst), a_count, PAGE_EXECUTE_READWRITE, std::addressof(old));
+		if (success != 0) {
+			std::memcpy(reinterpret_cast<void*>(a_dst), a_src, a_count);
+			success = VirtualProtect(reinterpret_cast<void*>(a_dst), a_count, old, std::addressof(old));
+		}
+
+		assert(success != 0);
+	}
+
+
+	template <class T>
+	inline void safe_write(std::uintptr_t a_dst, const T& a_data)
+	{
+		safe_write(a_dst, std::addressof(a_data), sizeof(T));
 	}
 
 
@@ -782,7 +800,7 @@ namespace REL
 			constexpr auto PSIZE = sizeof(void*);
 			auto		   addr = address() + (PSIZE * a_idx);
 			auto		   result = *reinterpret_cast<std::uintptr_t*>(addr);
-			SafeWrite64(addr, a_newFunc);
+			safe_write(addr, a_newFunc);
 			return result;
 		}
 

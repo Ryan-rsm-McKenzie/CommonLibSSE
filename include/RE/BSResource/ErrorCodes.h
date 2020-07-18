@@ -5,7 +5,7 @@ namespace RE
 {
 	namespace BSResource
 	{
-		enum class ErrorCode : UInt32
+		enum class ErrorCode
 		{
 			kNone = 0,
 			kNotExist = 1,

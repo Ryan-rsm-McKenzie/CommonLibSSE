@@ -25,5 +25,5 @@ namespace RE
 		// members
 		SeenData* seenData;	 // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraSeenData) == 0x18);
+	static_assert(sizeof(ExtraSeenData) == 0x18);
 }

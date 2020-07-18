@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	TESFile* TESFile::Duplicate(UInt32 a_cacheSize)
+	TESFile* TESFile::Duplicate(std::uint32_t a_cacheSize)
 	{
 		using func_t = decltype(&TESFile::Duplicate);
 		REL::Offset<func_t> func(Offset::TESFile::Duplicate);
@@ -11,7 +11,7 @@ namespace RE
 	}
 
 
-	UInt32 TESFile::GetCurrentSubRecordType()
+	std::uint32_t TESFile::GetCurrentSubRecordType()
 	{
 		using func_t = decltype(&TESFile::GetCurrentSubRecordType);
 		REL::Offset<func_t> func(Offset::TESFile::GetCurrentSubRecordType);
@@ -27,7 +27,7 @@ namespace RE
 	}
 
 
-	void TESFile::ReadData(void* a_buf, UInt32 a_size)
+	void TESFile::ReadData(void* a_buf, std::uint32_t a_size)
 	{
 		using func_t = decltype(&TESFile::ReadData);
 		REL::Offset<func_t> func(Offset::TESFile::ReadData);
@@ -35,7 +35,7 @@ namespace RE
 	}
 
 
-	bool TESFile::Seek(UInt32 a_offset)
+	bool TESFile::Seek(std::uint32_t a_offset)
 	{
 		using func_t = decltype(&TESFile::Seek);
 		REL::Offset<func_t> func(Offset::TESFile::Seek);

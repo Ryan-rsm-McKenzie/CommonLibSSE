@@ -11,5 +11,5 @@ namespace RE
 
 		virtual ~ImageSpaceEffectParam();  // 00
 	};
-	STATIC_ASSERT(sizeof(ImageSpaceEffectParam) == 0x8);
+	static_assert(sizeof(ImageSpaceEffectParam) == 0x8);
 }

@@ -14,7 +14,8 @@ namespace RE
 
 	struct IDLE_DATA  // DATA
 	{
-		enum class Flag : UInt8
+	public:
+		enum class Flag
 		{
 			kNone = 0,
 			kParent = 1 << 0,
@@ -24,13 +25,14 @@ namespace RE
 		};
 
 
-		SInt8  loopMin;					 // 0
-		SInt8  loopMax;					 // 1
-		Flag   flags;					 // 2
-		UInt8  animationGroupSelection;	 // 3
-		UInt16 replayDelay;				 // 4
+		// members
+		std::int8_t							 loopMin;				   // 0
+		std::int8_t							 loopMax;				   // 1
+		stl::enumeration<Flag, std::uint8_t> flags;					   // 2
+		std::uint8_t						 animationGroupSelection;  // 3
+		std::uint16_t						 replayDelay;			   // 4
 	};
-	STATIC_ASSERT(sizeof(IDLE_DATA) == 0x6);
+	static_assert(sizeof(IDLE_DATA) == 0x6);
 
 
 	class TESIdleForm : public TESForm
@@ -42,7 +44,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -65,7 +67,7 @@ namespace RE
 		// members
 		TESCondition  conditions;	  // 20
 		IDLE_DATA	  data;			  // 28 - DATA
-		UInt16		  pad2E;		  // 2E
+		std::uint16_t pad2E;		  // 2E
 		NiFormArray*  childIdles;	  // 30
 		TESIdleForm*  parentIdle;	  // 38 - ANAM~
 		TESIdleForm*  prevIdle;		  // 40 - ~ANAM
@@ -73,5 +75,5 @@ namespace RE
 		BSFixedString animEventName;  // 50 - ENAM
 		BSString	  formEditorID;	  // 58 - EDID
 	};
-	STATIC_ASSERT(sizeof(TESIdleForm) == 0x68);
+	static_assert(sizeof(TESIdleForm) == 0x68);
 }

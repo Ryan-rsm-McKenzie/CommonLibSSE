@@ -19,7 +19,7 @@ namespace RE
 
 		minExtent = a_minExtent;
 		maxExtent = a_maxExtent;
-		maxExtent.z += fMapLocalHeight ? fMapLocalHeight->GetFloat() : 0.0;
+		maxExtent.z += fMapLocalHeight ? fMapLocalHeight->GetFloat() : 0.0F;
 	}
 
 
@@ -29,7 +29,7 @@ namespace RE
 		auto fMapLocalHeight = ini ? ini->GetSetting("fMapLocalHeight:MapMenu") : nullptr;
 
 		defaultState->initialPosition = a_position;
-		defaultState->initialPosition.z += fMapLocalHeight ? fMapLocalHeight->GetFloat() : 0.0;
+		defaultState->initialPosition.z += fMapLocalHeight ? fMapLocalHeight->GetFloat() : 0.0F;
 	}
 
 

@@ -19,5 +19,5 @@ namespace RE
 
 		virtual ~ICellAttachDetachEventSource();  // 00
 	};
-	STATIC_ASSERT(sizeof(ICellAttachDetachEventSource) == 0x60);
+	static_assert(sizeof(ICellAttachDetachEventSource) == 0x60);
 }

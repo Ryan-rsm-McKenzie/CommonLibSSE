@@ -1,9 +1,5 @@
 #pragma once
 
-#include <winnt.h>
-
-#include <type_traits>
-
 
 #pragma region InterlockedAnd
 #undef InterlockedAnd

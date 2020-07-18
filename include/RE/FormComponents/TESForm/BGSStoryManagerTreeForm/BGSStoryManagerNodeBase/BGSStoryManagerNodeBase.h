@@ -14,7 +14,8 @@ namespace RE
 
 		struct Flags  // DNAM
 		{
-			enum class NodeFlag : UInt16
+		public:
+			enum class NodeFlag
 			{
 				kNone = 0,
 				kRandom = 1 << 0,
@@ -22,7 +23,7 @@ namespace RE
 			};
 
 
-			enum class QuestFlag : UInt16
+			enum class QuestFlag
 			{
 				kNone = 0,
 				kDoAllBeforeRepeating = 1 << 0,
@@ -31,10 +32,11 @@ namespace RE
 			};
 
 
-			NodeFlag  nodeFlags;  // 0
-			QuestFlag questFags;  // 2
+			// members
+			stl::enumeration<NodeFlag, std::uint16_t>  nodeFlags;  // 0
+			stl::enumeration<QuestFlag, std::uint16_t> questFags;  // 2
 		};
-		STATIC_ASSERT(sizeof(Flags) == 0x4);
+		static_assert(sizeof(Flags) == 0x4);
 
 
 		virtual ~BGSStoryManagerNodeBase();	 // 00
@@ -50,9 +52,9 @@ namespace RE
 		// members
 		BGSStoryManagerBranchNode* parent;			 // 28 - PNAM
 		BGSStoryManagerNodeBase*   previousSibling;	 // 30 - SNAM
-		UInt32					   maxQuests;		 // 38 - XNAM
+		std::uint32_t			   maxQuests;		 // 38 - XNAM
 		Flags					   flags;			 // 3C - DNAM
 		TESCondition			   conditions;		 // 40 - CITC
 	};
-	STATIC_ASSERT(sizeof(BGSStoryManagerNodeBase) == 0x48);
+	static_assert(sizeof(BGSStoryManagerNodeBase) == 0x48);
 }

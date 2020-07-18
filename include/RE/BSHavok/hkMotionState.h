@@ -11,6 +11,7 @@ namespace RE
 	class hkMotionState
 	{
 	public:
+		// members
 		hkTransform		 transform;			  // 00
 		hkSweptTransform sweptTransform;	  // 40
 		hkVector4		 deltaAngle;		  // 90
@@ -20,9 +21,9 @@ namespace RE
 		hkHalf			 timeFactor;		  // A8
 		hkUFloat8		 maxLinearVelocity;	  // AA
 		hkUFloat8		 maxAngularVelocity;  // AB
-		UInt8			 deactivationClass;	  // AC
-		UInt8			 padAD;				  // AD
-		UInt16			 padAE;				  // AE
+		std::uint8_t	 deactivationClass;	  // AC
+		std::uint8_t	 padAD;				  // AD
+		std::uint16_t	 padAE;				  // AE
 	};
-	STATIC_ASSERT(sizeof(hkMotionState) == 0xB0);
+	static_assert(sizeof(hkMotionState) == 0xB0);
 }

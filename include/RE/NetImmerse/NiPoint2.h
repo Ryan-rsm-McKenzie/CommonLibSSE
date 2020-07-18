@@ -10,5 +10,5 @@ namespace RE
 		float x;  // 0
 		float y;  // 4
 	};
-	STATIC_ASSERT(sizeof(NiPoint2) == 0x8);
+	static_assert(sizeof(NiPoint2) == 0x8);
 }

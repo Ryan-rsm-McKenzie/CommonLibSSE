@@ -20,9 +20,9 @@ namespace RE
 	{
 	public:
 		// members
-		UInt8 pad0;	 // 0
+		std::uint8_t pad0;	// 0
 	};
-	STATIC_ASSERT(sizeof(TESObjectList) == 0x1);
+	static_assert(sizeof(TESObjectList) == 0x1);
 
 
 	struct TESFileCollection
@@ -32,7 +32,7 @@ namespace RE
 		BSTArray<TESFile*> files;		// 00
 		BSTArray<TESFile*> smallFiles;	// 18
 	};
-	STATIC_ASSERT(sizeof(TESFileCollection) == 0x30);
+	static_assert(sizeof(TESFileCollection) == 0x30);
 
 
 	class TESDataHandler : public BSTSingletonSDM<TESDataHandler>
@@ -40,21 +40,21 @@ namespace RE
 	public:
 		static TESDataHandler* GetSingleton();
 
-		UInt32	 LoadScripts();
-		TESForm* LookupForm(FormID a_rawFormID, std::string_view a_modName);
+		std::uint32_t LoadScripts();
+		TESForm*	  LookupForm(FormID a_rawFormID, std::string_view a_modName);
 		template <class T>
 		T* LookupForm(FormID a_rawFormID, std::string_view a_modName);
 
-		const TESFile*		 LookupModByName(std::string_view a_modName);
-		std::optional<UInt8> GetModIndex(std::string_view a_modName);
+		const TESFile*				LookupModByName(std::string_view a_modName);
+		std::optional<std::uint8_t> GetModIndex(std::string_view a_modName);
 
-		const TESFile*		 LookupLoadedModByName(std::string_view a_modName);
-		const TESFile*		 LookupLoadedModByIndex(UInt8 a_index);
-		std::optional<UInt8> GetLoadedModIndex(std::string_view a_modName);
+		const TESFile*				LookupLoadedModByName(std::string_view a_modName);
+		const TESFile*				LookupLoadedModByIndex(std::uint8_t a_index);
+		std::optional<std::uint8_t> GetLoadedModIndex(std::string_view a_modName);
 
-		const TESFile*		  LookupLoadedLightModByName(std::string_view a_modName);
-		const TESFile*		  LookupLoadedLightModByIndex(UInt16 a_index);
-		std::optional<UInt16> GetLoadedLightModIndex(std::string_view a_modName);
+		const TESFile*				 LookupLoadedLightModByName(std::string_view a_modName);
+		const TESFile*				 LookupLoadedLightModByIndex(std::uint16_t a_index);
+		std::optional<std::uint16_t> GetLoadedLightModIndex(std::string_view a_modName);
 
 		bool IsGeneratedID(FormID a_formID);
 
@@ -64,9 +64,9 @@ namespace RE
 
 
 		// members
-		UInt8							  pad001;									 // 001
-		UInt16							  pad002;									 // 002
-		UInt32							  pad004;									 // 004
+		std::uint8_t					  pad001;									 // 001
+		std::uint16_t					  pad002;									 // 002
+		std::uint32_t					  pad004;									 // 004
 		TESObjectList*					  objectList;								 // 008
 		BSTArray<TESForm*>				  formArrays[to_underlying(FormType::Max)];	 // 010
 		TESRegionList*					  regionList;								 // D00
@@ -74,7 +74,7 @@ namespace RE
 		NiTPrimitiveArray<BGSAddonNode*>  addonNodes;								 // D20
 		NiTList<TESForm*>				  badForms;									 // D38
 		FormID							  nextID;									 // D50
-		UInt32							  padD54;									 // D54
+		std::uint32_t					  padD54;									 // D54
 		TESFile*						  activeFile;								 // D58
 		BSSimpleList<TESFile*>			  files;									 // D60
 		TESFileCollection				  compiledFileCollection;					 // D70
@@ -88,13 +88,13 @@ namespace RE
 		bool							  checkingModels;							 // DA7
 		bool							  loadingFiles;								 // DA8
 		bool							  dontRemoveIDs;							 // DA9
-		UInt8							  unkDAA;									 // DAA
-		UInt8							  padDAB;									 // DAB
-		UInt32							  padDAC;									 // DAC
+		std::uint8_t					  unkDAA;									 // DAA
+		std::uint8_t					  padDAB;									 // DAB
+		std::uint32_t					  padDAC;									 // DAC
 		TESRegionDataManager*			  regionDataManager;						 // DB0
-		UInt64							  unkDB8;									 // DB8
+		std::uint64_t					  unkDB8;									 // DB8
 	};
-	STATIC_ASSERT(sizeof(TESDataHandler) == 0xDC0);
+	static_assert(sizeof(TESDataHandler) == 0xDC0);
 
 
 	template <class T>

@@ -36,6 +36,6 @@ namespace RE
 			VMHandle GetHandleForObject(FormType a_typeID, const TESForm* a_srcData);
 			TESForm* GetObjectForHandle(FormType a_typeID, VMHandle a_handle);
 		};
-		STATIC_ASSERT(sizeof(IObjectHandlePolicy) == 0x8);
+		static_assert(sizeof(IObjectHandlePolicy) == 0x8);
 	}
 }

@@ -18,12 +18,12 @@ namespace RE
 	public:
 		// members
 		TESForm*			form;		// 00 - LVLO~
-		UInt16				count;		// 08
-		UInt16				level;		// 0A - ~LVLO
-		UInt32				pad0C;		// 0C
+		std::uint16_t		count;		// 08
+		std::uint16_t		level;		// 0A - ~LVLO
+		std::uint32_t		pad0C;		// 0C
 		ContainerItemExtra* itemExtra;	// 10 - COED
 	};
-	STATIC_ASSERT(sizeof(LEVELED_OBJECT) == 0x18);
+	static_assert(sizeof(LEVELED_OBJECT) == 0x18);
 
 
 	class TESLeveledList : public BaseFormComponent
@@ -32,7 +32,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESLeveledList;
 
 
-		enum Flag : UInt8  // LVLF
+		enum Flag : std::uint8_t  // LVLF
 		{
 			kCalculateFromAllLevelsLTOrEqPCLevel = 1 << 0,
 			kCalculateForEachItemInCount = 1 << 1,
@@ -49,23 +49,23 @@ namespace RE
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 		// add
-		virtual UInt8  GetChanceNone();										 // 04 - { if (global) return global->value; else return chanceNone; }
-		virtual bool   GetMultCalc();										 // 05 - { return (flags >> 1) & 1; }
-		virtual SInt32 GetLevDifferenceMax();								 // 06 - { return 0; }
-		virtual bool   GetCanContainFormsOfType(FormType a_type) const = 0;	 // 07
+		virtual std::uint8_t GetChanceNone();									   // 04 - { if (global) return global->value; else return chanceNone; }
+		virtual bool		 GetMultCalc();										   // 05 - { return (flags >> 1) & 1; }
+		virtual std::int32_t GetLevDifferenceMax();								   // 06 - { return 0; }
+		virtual bool		 GetCanContainFormsOfType(FormType a_type) const = 0;  // 07
 
 		std::set<TESForm*> GetContainedForms() const;
 
 
 		// members
 		SimpleArray<LEVELED_OBJECT> entries;	   // 08
-		SInt8						chanceNone;	   // 10 - LVLD
+		std::int8_t					chanceNone;	   // 10 - LVLD
 		Flag						llFlags;	   // 11 - LVLF
-		UInt8						numEntries;	   // 12 - LLCT
-		UInt8						unk13;		   // 13
-		UInt32						pad14;		   // 14
+		std::uint8_t				numEntries;	   // 12 - LLCT
+		std::uint8_t				unk13;		   // 13
+		std::uint32_t				pad14;		   // 14
 		void*						unk18;		   // 18
 		TESGlobal*					chanceGlobal;  // 20 - LVLG
 	};
-	STATIC_ASSERT(sizeof(TESLeveledList) == 0x28);
+	static_assert(sizeof(TESLeveledList) == 0x28);
 }

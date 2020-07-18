@@ -20,8 +20,8 @@ namespace RE
 
 
 		// members
-		FormID levItem;	 // 10
-		UInt32 pad14;	 // 14
+		FormID		  levItem;	// 10
+		std::uint32_t pad14;	// 14
 	};
-	STATIC_ASSERT(sizeof(ExtraLeveledItem) == 0x18);
+	static_assert(sizeof(ExtraLeveledItem) == 0x18);
 }

@@ -22,5 +22,5 @@ namespace RE
 		// members
 		FxDelegate::CallbackHash* hash;	 // 08
 	};
-	STATIC_ASSERT(sizeof(RemoveCallbackVisitor) == 0x10);
+	static_assert(sizeof(RemoveCallbackVisitor) == 0x10);
 }

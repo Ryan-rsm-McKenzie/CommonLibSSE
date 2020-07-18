@@ -20,12 +20,12 @@ namespace RE
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 		// add
-		virtual UInt32		GetFullNameLength() const;	// 04
-		virtual const char* GetFullName() const;		// 05
+		virtual std::uint32_t GetFullNameLength() const;  // 04
+		virtual const char*	  GetFullName() const;		  // 05
 
 
 		// members
 		BSFixedString fullName;	 // 08 - FULL
 	};
-	STATIC_ASSERT(sizeof(TESFullName) == 0x10);
+	static_assert(sizeof(TESFullName) == 0x10);
 }

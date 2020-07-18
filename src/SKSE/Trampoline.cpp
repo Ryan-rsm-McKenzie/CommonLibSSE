@@ -1,7 +1,6 @@
 #include "SKSE/Trampoline.h"
 
 #include "SKSE/Logger.h"
-#include "SKSE/SafeWrite.h"
 
 
 namespace SKSE
@@ -391,9 +390,9 @@ namespace SKSE
 			std::uint8_t opcode;  // 0 - 0xE9/0xE8
 			std::int32_t disp;	  // 1
 		};
-		STATIC_ASSERT(offsetof(SrcAssembly, opcode) == 0x0);
-		STATIC_ASSERT(offsetof(SrcAssembly, disp) == 0x1);
-		STATIC_ASSERT(sizeof(SrcAssembly) == 0x5);
+		static_assert(offsetof(SrcAssembly, opcode) == 0x0);
+		static_assert(offsetof(SrcAssembly, disp) == 0x1);
+		static_assert(sizeof(SrcAssembly) == 0x5);
 
 		// FF /4
 		// JMP r/m64
@@ -405,11 +404,11 @@ namespace SKSE
 			std::int32_t disp;	 // 2 - 0x00000000
 			std::uint64_t addr;	 // 6 - [rip]
 		};
-		STATIC_ASSERT(offsetof(TrampolineAssembly, jmp) == 0x0);
-		STATIC_ASSERT(offsetof(TrampolineAssembly, modrm) == 0x1);
-		STATIC_ASSERT(offsetof(TrampolineAssembly, disp) == 0x2);
-		STATIC_ASSERT(offsetof(TrampolineAssembly, addr) == 0x6);
-		STATIC_ASSERT(sizeof(TrampolineAssembly) == 0xE);
+		static_assert(offsetof(TrampolineAssembly, jmp) == 0x0);
+		static_assert(offsetof(TrampolineAssembly, modrm) == 0x1);
+		static_assert(offsetof(TrampolineAssembly, disp) == 0x2);
+		static_assert(offsetof(TrampolineAssembly, addr) == 0x6);
+		static_assert(sizeof(TrampolineAssembly) == 0xE);
 #pragma pack(pop)
 
 		auto mem = StartAlloc<TrampolineAssembly>();
@@ -431,7 +430,7 @@ namespace SKSE
 		SrcAssembly assembly;
 		assembly.opcode = a_opcode;
 		assembly.disp = static_cast<std::int32_t>(disp);
-		SafeWriteBuf(a_src, &assembly, sizeof(assembly));
+		REL::safe_write(a_src, assembly);
 
 		mem->jmp = static_cast<std::uint8_t>(0xFF);
 		mem->modrm = static_cast<std::uint8_t>(0x25);
@@ -452,10 +451,10 @@ namespace SKSE
 			std::uint8_t modrm;	  // 1 - 0x25/0x15
 			std::int32_t disp;	  // 2
 		};
-		STATIC_ASSERT(offsetof(Assembly, opcode) == 0x0);
-		STATIC_ASSERT(offsetof(Assembly, modrm) == 0x1);
-		STATIC_ASSERT(offsetof(Assembly, disp) == 0x2);
-		STATIC_ASSERT(sizeof(Assembly) == 0x6);
+		static_assert(offsetof(Assembly, opcode) == 0x0);
+		static_assert(offsetof(Assembly, modrm) == 0x1);
+		static_assert(offsetof(Assembly, disp) == 0x2);
+		static_assert(sizeof(Assembly) == 0x6);
 #pragma pack(pop)
 
 		auto mem = StartAlloc<std::uintptr_t>();
@@ -478,7 +477,7 @@ namespace SKSE
 		assembly.opcode = static_cast<std::uint8_t>(0xFF);
 		assembly.modrm = a_modrm;
 		assembly.disp = static_cast<std::int32_t>(disp);
-		SafeWriteBuf(a_src, &assembly, sizeof(assembly));
+		REL::safe_write(a_src, assembly);
 
 		*mem = a_dst;
 		EndAlloc(sizeof(std::uintptr_t));

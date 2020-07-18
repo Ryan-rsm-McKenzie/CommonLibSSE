@@ -22,5 +22,5 @@ namespace RE
 		virtual void Unk_0C(void) = 0;	// 0C
 		virtual void Unk_0D(void) = 0;	// 0D
 	};
-	STATIC_ASSERT(sizeof(BSVirtualKeyboardDevice) == 0x70);
+	static_assert(sizeof(BSVirtualKeyboardDevice) == 0x70);
 }

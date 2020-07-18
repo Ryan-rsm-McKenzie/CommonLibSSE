@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	enum class ACTOR_LIFE_STATE : UInt32
+	enum class ACTOR_LIFE_STATE
 	{
 		kAlive = 0,
 		kDying = 1,
@@ -19,7 +19,7 @@ namespace RE
 	};
 
 
-	enum class ATTACK_STATE_ENUM : UInt32
+	enum class ATTACK_STATE_ENUM
 	{
 		kNone = 0,
 		kDraw = 1,
@@ -41,7 +41,7 @@ namespace RE
 	};
 
 
-	enum class FLY_STATE : UInt32
+	enum class FLY_STATE
 	{
 		kNone = 0,
 		kTakeOff = 1,
@@ -53,7 +53,7 @@ namespace RE
 	};
 
 
-	enum class KNOCK_STATE_ENUM : UInt32
+	enum class KNOCK_STATE_ENUM
 	{
 		kNormal = 0,
 		kExplode = 1,
@@ -67,7 +67,7 @@ namespace RE
 	};
 
 
-	enum class SIT_SLEEP_STATE : UInt32
+	enum class SIT_SLEEP_STATE
 	{
 		kNormal = 0,
 		kWantToSit = 1,
@@ -85,7 +85,7 @@ namespace RE
 	};
 
 
-	enum class WEAPON_STATE : UInt32
+	enum class WEAPON_STATE
 	{
 		kSheathed = 0,
 		kWantToDraw = 1,
@@ -137,7 +137,7 @@ namespace RE
 			bool meleeAttackState3 : 1;	 // 3 - 6
 			bool meleeAttackState4 : 1;	 // 3 - 7
 		};
-		STATIC_ASSERT(sizeof(ActorState1) == 0x4);
+		static_assert(sizeof(ActorState1) == 0x4);
 
 
 		struct ActorState2
@@ -175,7 +175,7 @@ namespace RE
 			bool pad3_6 : 1;		   // 3 - 6
 			bool pad3_7 : 1;		   // 3 - 7
 		};
-		STATIC_ASSERT(sizeof(ActorState2) == 0x4);
+		static_assert(sizeof(ActorState2) == 0x4);
 
 
 		virtual ~ActorState();	// 00
@@ -213,5 +213,5 @@ namespace RE
 		ActorState1 actorState1;  // 08
 		ActorState2 actorState2;  // 0C
 	};
-	STATIC_ASSERT(sizeof(ActorState) == 0x10);
+	static_assert(sizeof(ActorState) == 0x10);
 }

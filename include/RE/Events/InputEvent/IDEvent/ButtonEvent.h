@@ -28,5 +28,5 @@ namespace RE
 		float value;		 // 28
 		float heldDownSecs;	 // 2C
 	};
-	STATIC_ASSERT(sizeof(ButtonEvent) == 0x30);
+	static_assert(sizeof(ButtonEvent) == 0x30);
 }

@@ -14,12 +14,12 @@ namespace RE
 
 		union Data
 		{
-			bool   b;
-			UInt32 i;
-			float  f;
-			void*  p;
+			bool		  b;
+			std::uint32_t i;
+			float		  f;
+			void*		  p;
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x8);
+		static_assert(sizeof(Data) == 0x8);
 
 
 		// override (IPackageData)

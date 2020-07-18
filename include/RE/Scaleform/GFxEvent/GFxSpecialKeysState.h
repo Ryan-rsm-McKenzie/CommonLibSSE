@@ -20,7 +20,7 @@ namespace RE
 		};
 
 
-		UInt8 states;  // 0
+		std::uint8_t states;  // 0
 	};
-	STATIC_ASSERT(sizeof(GFxSpecialKeysState) == 0x1);
+	static_assert(sizeof(GFxSpecialKeysState) == 0x1);
 }

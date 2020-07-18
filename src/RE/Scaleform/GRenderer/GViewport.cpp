@@ -39,7 +39,7 @@ namespace RE
 	{}
 
 
-	GViewport::GViewport(SInt32 a_bufW, SInt32 a_bufH, SInt32 a_left, SInt32 a_top, SInt32 a_width, SInt32 a_height, SInt32 a_scLeft, SInt32 a_scTop, SInt32 a_scW, SInt32 a_scH, Flag a_flags) :
+	GViewport::GViewport(std::int32_t a_bufW, std::int32_t a_bufH, std::int32_t a_left, std::int32_t a_top, std::int32_t a_width, std::int32_t a_height, std::int32_t a_scLeft, std::int32_t a_scTop, std::int32_t a_scW, std::int32_t a_scH, Flag a_flags) :
 		bufferWidth(a_bufW),
 		bufferHeight(a_bufH),
 		left(a_left),
@@ -57,7 +57,7 @@ namespace RE
 	{}
 
 
-	GViewport::GViewport(SInt32 a_bufW, SInt32 a_bufH, SInt32 a_left, SInt32 a_top, SInt32 a_width, SInt32 a_height, SInt32 a_scLeft, SInt32 a_scTop, SInt32 a_scW, SInt32 a_scH, float a_scale, float a_ratio, Flag a_flags) :
+	GViewport::GViewport(std::int32_t a_bufW, std::int32_t a_bufH, std::int32_t a_left, std::int32_t a_top, std::int32_t a_width, std::int32_t a_height, std::int32_t a_scLeft, std::int32_t a_scTop, std::int32_t a_scW, std::int32_t a_scH, float a_scale, float a_ratio, Flag a_flags) :
 		bufferWidth(a_bufW),
 		bufferHeight(a_bufH),
 		left(a_left),
@@ -75,7 +75,7 @@ namespace RE
 	{}
 
 
-	GViewport::GViewport(SInt32 a_bufW, SInt32 a_bufH, SInt32 a_left, SInt32 a_top, SInt32 a_width, SInt32 a_height, Flag a_flags) :
+	GViewport::GViewport(std::int32_t a_bufW, std::int32_t a_bufH, std::int32_t a_left, std::int32_t a_top, std::int32_t a_width, std::int32_t a_height, Flag a_flags) :
 		bufferWidth(a_bufW),
 		bufferHeight(a_bufH),
 		left(a_left),
@@ -93,7 +93,7 @@ namespace RE
 	{}
 
 
-	void GViewport::SetViewport(SInt32 a_bufW, SInt32 a_bufH, SInt32 a_left, SInt32 a_top, SInt32 a_width, SInt32 a_height, Flag a_flags)
+	void GViewport::SetViewport(std::int32_t a_bufW, std::int32_t a_bufH, std::int32_t a_left, std::int32_t a_top, std::int32_t a_width, std::int32_t a_height, Flag a_flags)
 	{
 		bufferWidth = a_bufW;
 		bufferHeight = a_bufH;
@@ -111,7 +111,7 @@ namespace RE
 	}
 
 
-	void GViewport::SetScissorRect(SInt32 a_scLeft, SInt32 a_scTop, SInt32 a_scW, SInt32 a_scH)
+	void GViewport::SetScissorRect(std::int32_t a_scLeft, std::int32_t a_scTop, std::int32_t a_scW, std::int32_t a_scH)
 	{
 		scissorLeft = a_scLeft;
 		scissorTop = a_scTop;
