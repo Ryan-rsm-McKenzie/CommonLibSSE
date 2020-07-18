@@ -793,13 +793,6 @@ namespace SKSE
 				return *this;
 			}
 
-#if 0
-			[[nodiscard]] constexpr bool test(enum_type a_enum) const noexcept
-			{
-				return (_impl & static_cast<underlying_type>(a_enum)) != static_cast<underlying_type>(0);
-			}
-#endif
-
 			template <
 				class... Args,
 				std::enable_if_t<
