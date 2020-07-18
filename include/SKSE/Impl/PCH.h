@@ -65,7 +65,6 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
-#include <stack>
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
@@ -90,6 +89,7 @@
 #include <regex>
 #include <set>
 #include <sstream>
+#include <stack>
 #include <stdexcept>
 #include <string>
 #include <string_view>
@@ -751,10 +751,48 @@ namespace SKSE
 				return *this;
 			}
 
-			[[nodiscard]] explicit constexpr operator bool() const noexcept { return _impl != 0; }
+			[[nodiscard]] explicit constexpr operator bool() const noexcept { return _impl != static_cast<underlying_type>(0); }
 
-			[[nodiscard]] constexpr enum_type operator*() const noexcept { return get(); }
-			[[nodiscard]] constexpr enum_type get() const noexcept { return static_cast<enum_type>(_impl); }
+			[[nodiscard]] constexpr enum_type		operator*() const noexcept { return get(); }
+			[[nodiscard]] constexpr enum_type		get() const noexcept { return static_cast<enum_type>(_impl); }
+			[[nodiscard]] constexpr underlying_type underlying() const noexcept { return _impl; }
+
+			constexpr enumeration& set(enum_type a_last) noexcept
+			{
+				_impl |= static_cast<underlying_type>(a_last);
+				return *this;
+			}
+
+			template <class... Args>
+			constexpr enumeration& set(enum_type a_first, Args... a_rest) noexcept
+			{
+				set(a_first);
+				return set(a_rest...);
+			}
+
+			constexpr enumeration& reset(enum_type a_last) noexcept
+			{
+				_impl &= ~static_cast<underlying_type>(a_last);
+				return *this;
+			}
+
+			template <class... Args>
+			constexpr enumeration& reset(enum_type a_first, Args... a_rest) noexcept
+			{
+				reset(a_first);
+				return reset(a_rest...);
+			}
+
+			[[nodiscard]] constexpr bool test(enum_type a_last) const noexcept
+			{
+				return (_impl & static_cast<underlying_type>(a_last)) != static_cast<underlying_type>(0);
+			}
+
+			template <class... Args>
+			[[nodiscard]] constexpr bool test(enum_type a_first, Args... a_rest) const noexcept
+			{
+				return test(a_first) && test(a_rest...);
+			}
 
 		private:
 			underlying_type _impl{ 0 };
@@ -781,6 +819,14 @@ namespace SKSE
 	[[nodiscard]] constexpr bool operator a_op(enumeration<E, U> a_lhs, E a_rhs) noexcept                   \
 	{                                                                                                       \
 		return a_lhs.get() a_op a_rhs;                                                                      \
+	}                                                                                                       \
+                                                                                                            \
+	template <                                                                                              \
+		class E,                                                                                            \
+		class U>                                                                                            \
+	[[nodiscard]] constexpr bool operator a_op(E a_lhs, enumeration<E, U> a_rhs) noexcept                   \
+	{                                                                                                       \
+		return a_lhs a_op a_rhs.get();                                                                      \
 	}
 
 #define SKSE_MAKE_ARITHMETIC_OP(a_op)                                                        \
