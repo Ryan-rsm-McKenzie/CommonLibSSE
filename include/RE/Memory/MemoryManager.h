@@ -120,7 +120,7 @@ namespace RE
 	template <class T>
 	inline T* aligned_alloc(std::size_t a_alignment, std::size_t a_size)
 	{
-		return static_cast<T*>(aligned_alloc(static_cast<std::int32_t>(a_alignment), a_size));
+		return static_cast<T*>(aligned_alloc(a_alignment, a_size));
 	}
 
 

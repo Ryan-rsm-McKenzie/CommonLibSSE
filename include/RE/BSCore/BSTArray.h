@@ -686,7 +686,7 @@ namespace RE
 		void grow_capacity()
 		{
 			auto cap = capacity();
-			cap = cap ? static_cast<size_type>(std::ceil(cap * GROWTH_FACTOR)) : DF_CAP;
+			cap = cap ? static_cast<size_type>(std::ceil(static_cast<float>(cap) * GROWTH_FACTOR)) : DF_CAP;
 			change_capacity(cap);
 		}
 
@@ -694,7 +694,7 @@ namespace RE
 		void grow_capacity(size_type a_hint)
 		{
 			auto cap = a_hint;
-			cap = cap ? static_cast<size_type>(std::ceil(cap * GROWTH_FACTOR)) : DF_CAP;
+			cap = cap ? static_cast<size_type>(std::ceil(static_cast<float>(cap) * GROWTH_FACTOR)) : DF_CAP;
 			change_capacity(cap);
 		}
 

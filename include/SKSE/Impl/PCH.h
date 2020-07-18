@@ -45,6 +45,9 @@
 #define NODEFERWINDOWPOS
 #define NOMCX
 
+#define SPDLOG_COMPILED_LIB
+#define XBYAK_NO_OP_NAMES
+
 #include <Windows.h>
 
 #include <ShlObj.h>
@@ -62,6 +65,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
+#include <stack>
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
@@ -113,16 +117,25 @@
 #define FAR
 #define NEAR
 
+#pragma warning(disable : 4061)	 // enumerator 'identifier' in switch of enum 'enumeration' is not explicitly handled by a case label
 #pragma warning(disable : 4200)	 // nonstandard extension used : zero-sized array in struct/union
+#pragma warning(disable : 4265)	 // 'type': class has virtual functions, but its non-trivial destructor is not virtual; instances of this class may not be destructed correctly
+#pragma warning(disable : 4266)	 // 'function' : no override available for virtual member function from base 'type'; function is hidden
 #pragma warning(disable : 4514)	 // 'function' : unreferenced inline function has been removed
+#pragma warning(disable : 4582)	 // 'type': constructor is not implicitly called
+#pragma warning(disable : 4583)	 // 'type': destructor is not implicitly called
+#pragma warning(disable : 4623)	 // 'derived class' : default constructor was implicitly defined as deleted because a base class default constructor is inaccessible or deleted
+#pragma warning(disable : 4625)	 // 'derived class' : copy constructor was implicitly defined as deleted because a base class copy constructor is inaccessible or deleted
+#pragma warning(disable : 4626)	 // 'derived class' : assignment operator was implicitly defined as deleted because a base class assignment operator is inaccessible or deleted
 #pragma warning(disable : 4710)	 // 'function' : function not inlined
 #pragma warning(disable : 4711)	 // function 'function' selected for inline expansion
+#pragma warning(disable : 4820)	 // 'bytes' bytes padding added after construct 'member_name'
+#pragma warning(disable : 5026)	 // 'type': move constructor was implicitly defined as deleted
+#pragma warning(disable : 5027)	 // 'type': move assignment operator was implicitly defined as deleted
 #pragma warning(disable : 5045)	 // Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 #pragma warning(disable : 5053)	 // support for 'explicit(<expr>)' in C++17 and earlier is a vendor extension
-
-#ifndef XBYAK_NO_OP_NAMES
-#define XBYAK_NO_OP_NAMES
-#endif
+#pragma warning(disable : 5204)	 // 'type': class has virtual functions, but its trivial destructor is not virtual; instances of objects derived from this class may not be destructed correctly
+#pragma warning(disable : 5220)	 // 'type': a non-static data member with a volatile qualified type no longer implies that compiler generated copy/move constructors and copy/move assignment operators are not trivial
 
 #include "SKSE/Impl/Atomic.h"
 

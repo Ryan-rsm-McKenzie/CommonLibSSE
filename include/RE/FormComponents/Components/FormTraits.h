@@ -810,6 +810,8 @@ namespace RE
 				return static_cast<const BGSVolumetricLighting*>(this);
 			}
 			break;
+		default:
+			break;
 		}
 		return nullptr;
 	}

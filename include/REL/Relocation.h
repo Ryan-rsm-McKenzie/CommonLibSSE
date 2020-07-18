@@ -174,7 +174,7 @@ namespace REL
 			{
 				close();
 
-				LARGE_INTEGER bytes;
+				ULARGE_INTEGER bytes;
 				bytes.QuadPart = a_size * sizeof(value_type);
 
 				_handle = OpenFileMappingA(FILE_MAP_ALL_ACCESS, false, a_name);
@@ -197,7 +197,7 @@ namespace REL
 			{
 				close();
 
-				LARGE_INTEGER bytes;
+				ULARGE_INTEGER bytes;
 				bytes.QuadPart = a_size * sizeof(value_type);
 
 				_handle = OpenFileMappingA(FILE_MAP_ALL_ACCESS, false, a_name);
@@ -540,7 +540,11 @@ namespace REL
 				_stream.read(reinterpret_cast<char*>(std::addressof(a_val)), sizeof(T));
 			}
 
-			template <class T, typename std::enable_if_t<std::is_arithmetic_v<T>, int> = 0>
+			template <
+				class T,
+				std::enable_if_t<
+					std::is_arithmetic_v<T>,
+					int> = 0>
 			inline T readout()
 			{
 				T val;
