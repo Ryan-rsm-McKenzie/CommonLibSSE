@@ -4,9 +4,9 @@
 
 namespace RE
 {
-	std::set<TESForm*> TESLeveledList::GetContainedForms() const
+	std::vector<TESForm*> TESLeveledList::GetContainedForms() const
 	{
-		std::set<TESForm*> results;
+		std::vector<TESForm*> results;
 		std::stack<const TESLeveledList*> queued;
 		queued.push(this);
 		do {
@@ -19,7 +19,7 @@ namespace RE
 					if (ll) {
 						queued.push(ll);
 					} else {
-						results.insert(form);
+						results.push_back(form);
 					}
 				}
 			}

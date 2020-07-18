@@ -54,7 +54,7 @@ namespace RE
 		virtual std::int32_t GetLevDifferenceMax();								   // 06 - { return 0; }
 		virtual bool		 GetCanContainFormsOfType(FormType a_type) const = 0;  // 07
 
-		std::set<TESForm*> GetContainedForms() const;
+		std::vector<TESForm*> GetContainedForms() const;
 
 
 		// members
