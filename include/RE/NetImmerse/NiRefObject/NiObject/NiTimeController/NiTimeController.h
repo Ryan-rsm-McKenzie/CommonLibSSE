@@ -48,7 +48,8 @@ namespace RE
 		};
 
 
-		virtual ~NiTimeController();  // 00
+		inline NiTimeController() { ctor(); }
+		virtual ~NiTimeController() { dtor(); }	 // 00
 
 		// override (NiObject)
 		virtual const NiRTTI* GetRTTI() const override;							   // 02
@@ -60,16 +61,18 @@ namespace RE
 		virtual void		  ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
 
 		// add
-		virtual void  Start(float a_time);				 // 25
-		virtual void  Stop();							 // 26
-		virtual void  Update(float a_time) = 0;			 // 27
-		virtual void  SetTarget(NiObjectNET* a_target);	 // 28
-		virtual bool  IsTransformController() const;	 // 29 - { return false; }
-		virtual bool  IsVertexController() const;		 // 2A - { return false; }
-		virtual float ComputeScaledTime(float a_time);	 // 2B
-		virtual void  OnPreDisplay();					 // 2C - { return; }
-		virtual bool  IsStreamable() const;				 // 2D - { return true; }
-		virtual bool  TargetIsRequiredType() const = 0;	 // 2E
+		virtual void  Start(float a_time);							   // 25
+		virtual void  Stop();										   // 26
+		virtual void  Update(float a_time) = 0;						   // 27
+		virtual void  SetTarget(NiObjectNET* a_target);				   // 28
+		virtual bool  IsTransformController() const { return false; }  // 29
+		virtual bool  IsVertexController() const { return false; }	   // 2A
+		virtual float ComputeScaledTime(float a_time);				   // 2B
+		virtual void  OnPreDisplay() { return; }					   // 2C
+		virtual bool  IsStreamable() const { return true; }			   // 2D
+		virtual bool  TargetIsRequiredType() const = 0;				   // 2E
+
+		[[nodiscard]] constexpr NiTimeController* GetNext() const noexcept { return next.get(); }
 
 
 		// members
@@ -86,6 +89,10 @@ namespace RE
 		std::uint32_t						  pad34;			 // 34
 		NiObjectNET*						  target;			 // 38
 		NiPointer<NiTimeController>			  next;				 // 40 - singly-linked list
+
+	private:
+		NiTimeController* ctor();
+		void			  dtor();
 	};
 	static_assert(sizeof(NiTimeController) == 0x48);
 }

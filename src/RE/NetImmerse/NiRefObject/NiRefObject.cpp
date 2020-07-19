@@ -3,17 +3,15 @@
 
 namespace RE
 {
-	NiRefObject::NiRefObject() :
-		_refCount(0),
-		_pad0C(0)
+	NiRefObject::NiRefObject()
 	{
-		InterlockedIncrement(&_refCount);
+		InterlockedIncrement(GetTotalObjectCount());
 	}
 
 
 	NiRefObject::~NiRefObject()
 	{
-		InterlockedDecrement(&_refCount);
+		InterlockedDecrement(GetTotalObjectCount());
 	}
 
 
@@ -25,27 +23,21 @@ namespace RE
 
 	void NiRefObject::IncRefCount()
 	{
-		InterlockedIncrement(&_refCount);
+		InterlockedIncrement(std::addressof(_refCount));
 	}
 
 
 	void NiRefObject::DecRefCount()
 	{
-		if (InterlockedDecrement(&_refCount) == 0) {
+		if (InterlockedDecrement(std::addressof(_refCount)) == 0) {
 			DeleteThis();
 		}
 	}
 
 
-	std::uint32_t NiRefObject::GetRefCount() const
-	{
-		return _refCount;
-	}
-
-
-	volatile std::uint32_t& NiRefObject::GetTotalObjectCount()
+	volatile std::uint32_t* NiRefObject::GetTotalObjectCount()
 	{
 		static REL::Offset<volatile std::uint32_t*> totalObjectCount(Offset::NiRefObject::TotalObjectCount);
-		return *totalObjectCount;
+		return totalObjectCount.type();
 	}
 }

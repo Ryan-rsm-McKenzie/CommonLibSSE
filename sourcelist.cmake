@@ -189,7 +189,6 @@ set(sources ${sources}
 	src\RE\NetImmerse\NiMatrix3.cpp
 	src\RE\NetImmerse\NiMemManager.cpp
 	src\RE\NetImmerse\NiPoint3.cpp
-	src\RE\NetImmerse\NiRTTI.cpp
 	src\RE\NetImmerse\NiRefObject\BGSAttackData.cpp
 	src\RE\NetImmerse\NiRefObject\NiObject\NiColorData.cpp
 	src\RE\NetImmerse\NiRefObject\NiObject\NiExtraData\BSFaceGenAnimationData.cpp
@@ -206,6 +205,7 @@ set(sources ${sources}
 	src\RE\NetImmerse\NiRefObject\NiObject\NiSkinInstance.cpp
 	src\RE\NetImmerse\NiRefObject\NiObject\NiTexture\NiTexture.cpp
 	src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController\NiControllerManager.cpp
+	src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController\NiTimeController.cpp
 	src\RE\NetImmerse\NiRefObject\NiRefObject.cpp
 	src\RE\NetImmerse\NiSystem.cpp
 	src\RE\NetImmerse\NiTCollection.cpp

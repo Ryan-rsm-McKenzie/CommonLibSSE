@@ -203,6 +203,12 @@ namespace RE
 	};
 	//static_assert(sizeof(NiPointer<void*>) == 0x8);
 
+	template <class T, class... Args>
+	[[nodiscard]] inline NiPointer<T> make_nismart(Args&&... a_args)
+	{
+		return NiPointer<T>{ new T(std::forward<Args>(a_args)...) };
+	}
+
 	template <class T1, class T2>
 	[[nodiscard]] constexpr bool operator==(const NiPointer<T1>& a_lhs, const NiPointer<T2>& a_rhs)
 	{

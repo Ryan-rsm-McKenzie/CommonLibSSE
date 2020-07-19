@@ -2,6 +2,7 @@
 
 #include "RE/NetImmerse/NiRTTI.h"
 #include "RE/NetImmerse/NiRefObject/NiObject/NiExtraData/NiExtraData.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/NiTimeController/NiTimeController.h"
 #include "RE/NetImmerse/NiSystem.h"
 #include "RE/NetImmerse/NiTCollection.h"
 
@@ -88,6 +89,17 @@ namespace RE
 	NiTimeController* NiObjectNET::GetControllers() const
 	{
 		return controllers.get();
+	}
+
+
+	NiTimeController* NiObjectNET::GetController(const NiRTTI* a_rtti) const
+	{
+		for (auto iter = GetControllers(); iter; iter = iter->GetNext()) {
+			if (iter->GetRTTI()->IsKindOf(a_rtti)) {
+				return iter;
+			}
+		}
+		return nullptr;
 	}
 
 

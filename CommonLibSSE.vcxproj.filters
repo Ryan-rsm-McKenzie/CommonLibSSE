@@ -2995,6 +2995,9 @@
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkWorldObject.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSAnimNote.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffect.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
     </ClInclude>
@@ -3161,6 +3164,9 @@
       <Filter>include\RE\NetImmerse</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiSmartPointer.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiStream.h">
       <Filter>include\RE\NetImmerse</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiSystem.h">
@@ -3630,6 +3636,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\RE\FormComponents\Components\BGSOpenCloseForm.cpp">
+      <Filter>src\RE\FormComponents\Components</Filter>
+    </ClCompile>
     <ClCompile Include="src\RE\AI\AIFormulas.cpp">
       <Filter>src\RE\AI</Filter>
     </ClCompile>
@@ -4245,11 +4254,11 @@
     <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController\NiControllerManager.cpp">
       <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController\NiTimeController.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController</Filter>
+    </ClCompile>
     <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiRefObject.cpp">
       <Filter>src\RE\NetImmerse\NiRefObject</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NetImmerse\NiRTTI.cpp">
-      <Filter>src\RE\NetImmerse</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\NetImmerse\NiSystem.cpp">
       <Filter>src\RE\NetImmerse</Filter>

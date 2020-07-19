@@ -6,13 +6,13 @@ namespace RE
 	BSHandleRefObject::~BSHandleRefObject()
 	{
 		_refCount &= kRefCountMask;
-		InterlockedDecrement(&GetTotalObjectCount());
+		InterlockedDecrement(GetTotalObjectCount());
 	}
 
 
 	void BSHandleRefObject::DecRefCount()
 	{
-		if ((InterlockedDecrement(&_refCount) & kRefCountMask) == 0) {
+		if ((InterlockedDecrement(std::addressof(_refCount)) & kRefCountMask) == 0) {
 			DeleteThis();
 		}
 	}
@@ -20,7 +20,7 @@ namespace RE
 
 	void BSHandleRefObject::IncRefCount()
 	{
-		InterlockedIncrement(&_refCount);
+		InterlockedIncrement(std::addressof(_refCount));
 	}
 
 

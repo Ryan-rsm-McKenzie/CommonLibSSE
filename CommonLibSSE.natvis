@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
-	<Type Name="SKSE::stl::enumeration&lt;*,*&gt;">
+	<Type Name="SKSE::stl::enumeration&lt;*&gt;">
 		<DisplayString>{static_cast&lt;$T1&gt;(_impl),en}</DisplayString>
+	</Type>
+
+	<Type Name="RE::NiTArray&lt;*&gt;">
+		<DisplayString>{{ size={_size} }}</DisplayString>
+		<Expand>
+			<Item Name="[capacity]">_capacity</Item>
+			<ArrayItems>
+				<Size>_size</Size>
+				<ValuePointer>($T1*)_data</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="RE::NiTSet&lt;*&gt;">
+		<DisplayString>{{ size={_size} }}</DisplayString>
+		<Expand>
+			<Item Name="[capacity]">_capacity</Item>
+			<ArrayItems>
+				<Size>_size</Size>
+				<ValuePointer>($T1*)_data</ValuePointer>
+			</ArrayItems>
+		</Expand>
 	</Type>
 	
 	<Type Name="RE::BSTArray&lt;*&gt;">

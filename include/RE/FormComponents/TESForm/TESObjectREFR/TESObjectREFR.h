@@ -399,6 +399,7 @@ namespace RE
 		float							  GetPositionX() const;
 		float							  GetPositionY() const;
 		float							  GetPositionZ() const;
+		NiControllerSequence*			  GetSequence(stl::zstring a_name) const;
 		std::uint32_t					  GetStealValue(const InventoryEntryData* a_entryData, std::uint32_t a_numItems, bool a_useMult) const;
 		float							  GetWeight() const;
 		float							  GetWeightInContainer();
@@ -407,7 +408,7 @@ namespace RE
 		bool							  HasContainer() const;
 		bool							  HasKeyword(const BGSKeyword* a_keyword) const;
 		bool							  HasQuestObject() const;
-		void							  InitChildActivates(TESObjectREFR* a_activator);
+		void							  InitChildActivates(TESObjectREFR* a_actionRef);
 		bool							  InitInventoryIfRequired(bool a_ignoreContainerExtraData = false);
 		bool							  Is3DLoaded() const;
 		bool							  IsActivationBlocked() const;
@@ -422,7 +423,7 @@ namespace RE
 		bool							  IsOffLimits();
 		bool							  MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool							  MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
-		void							  PlayAnimation(std::string_view a_from, std::string_view a_to);
+		void							  PlayAnimation(stl::zstring a_from, stl::zstring a_to);
 		void							  PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq);
 		void							  SetActivationBlocked(bool a_blocked);
 		void							  SetCollision(bool a_enable);

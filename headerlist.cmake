@@ -986,6 +986,7 @@ set(headers ${headers}
 	include\RE\NetImmerse\NiRect.h
 	include\RE\NetImmerse\NiRefObject\BGSAttackData.h
 	include\RE\NetImmerse\NiRefObject\BGSAttackDataMap.h
+	include\RE\NetImmerse\NiRefObject\NiObject\BSAnimNote.h
 	include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffect.h
 	include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\ModelReferenceEffect.h
 	include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\ReferenceEffect.h
@@ -1054,6 +1055,7 @@ set(headers ${headers}
 	include\RE\NetImmerse\NiRefObject\NiRefObject.h
 	include\RE\NetImmerse\NiRefObject\bhkCharacterController.h
 	include\RE\NetImmerse\NiSmartPointer.h
+	include\RE\NetImmerse\NiStream.h
 	include\RE\NetImmerse\NiSystem.h
 	include\RE\NetImmerse\NiTArray.h
 	include\RE\NetImmerse\NiTCollection.h

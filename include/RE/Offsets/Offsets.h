@@ -635,12 +635,6 @@ namespace RE
 		}
 
 
-		namespace NiObject
-		{
-			inline constexpr REL::ID CreateDeepCopy(static_cast<std::uint64_t>(68839));
-		}
-
-
 		namespace NiRefObject
 		{
 			inline constexpr REL::ID TotalObjectCount(static_cast<std::uint64_t>(523912));
@@ -811,7 +805,6 @@ namespace RE
 
 		namespace TESObjectREFR
 		{
-			inline constexpr REL::ID InitChildActivates(static_cast<std::uint64_t>(19857));
 			inline constexpr REL::ID GetDisplayFullName(static_cast<std::uint64_t>(19354));
 			inline constexpr REL::ID GetLock(static_cast<std::uint64_t>(19818));
 			inline constexpr REL::ID GetOwner(static_cast<std::uint64_t>(19789));

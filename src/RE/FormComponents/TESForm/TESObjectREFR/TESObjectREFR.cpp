@@ -458,6 +458,23 @@ namespace RE
 	}
 
 
+	NiControllerSequence* TESObjectREFR::GetSequence(stl::zstring a_name) const
+	{
+		auto node = Get3D();
+		if (!node) {
+			return nullptr;
+		}
+
+		auto controller = node->GetControllers();
+		if (!controller) {
+			return nullptr;
+		}
+
+		auto manager = controller->AsNiControllerManager();
+		return manager ? manager->GetSequenceByName(a_name) : nullptr;
+	}
+
+
 	std::uint32_t TESObjectREFR::GetStealValue(const InventoryEntryData* a_entryData, std::uint32_t a_numItems, bool a_useMult) const
 	{
 		using func_t = decltype(&TESObjectREFR::GetStealValue);
@@ -522,11 +539,11 @@ namespace RE
 	}
 
 
-	void TESObjectREFR::InitChildActivates(TESObjectREFR* a_activator)
+	void TESObjectREFR::InitChildActivates(TESObjectREFR* a_actionRef)
 	{
 		using func_t = decltype(&TESObjectREFR::InitChildActivates);
-		REL::Offset<func_t> func(Offset::TESObjectREFR::InitChildActivates);
-		return func(this, a_activator);
+		REL::Offset<func_t> func = REL::ID(19857);
+		return func(this, a_actionRef);
 	}
 
 
@@ -659,7 +676,7 @@ namespace RE
 	}
 
 
-	void TESObjectREFR::PlayAnimation(std::string_view a_from, std::string_view a_to)
+	void TESObjectREFR::PlayAnimation(stl::zstring a_from, stl::zstring a_to)
 	{
 		auto node = Get3D();
 		if (!node) {

@@ -69,6 +69,8 @@ namespace RE
 
 		static Main* GetSingleton();
 
+		static float QFrameAnimTime();
+
 
 		// members
 		bool						 quitGame;					   // 010
