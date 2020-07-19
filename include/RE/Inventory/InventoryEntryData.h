@@ -34,6 +34,7 @@ namespace RE
 		std::int32_t		  GetValue();
 		float				  GetWeight() const;
 		bool				  IsEnchanted() const;
+		bool				  IsLeveled() const;
 		bool				  IsOwnedBy(Actor* a_testOwner, bool a_defaultTo = true);
 		bool				  IsOwnedBy(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo = true);
 		bool				  IsQuestObject() const;

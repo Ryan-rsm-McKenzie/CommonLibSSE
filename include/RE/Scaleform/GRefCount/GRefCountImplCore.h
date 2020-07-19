@@ -13,7 +13,7 @@ namespace RE
 
 		static void CheckInvalidDelete(GRefCountImplCore*) {}
 
-		[[nodiscard]] constexpr std::int32_t GetRefCount() const noexcept { return _refCount; }
+		[[nodiscard]] constexpr std::uint32_t GetRefCount() const noexcept { return _refCount; }
 
 	protected:
 		// members

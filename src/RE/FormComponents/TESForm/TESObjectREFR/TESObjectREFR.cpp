@@ -303,21 +303,13 @@ namespace RE
 
 		auto container = GetContainer();
 		if (container) {
-			std::vector<TESForm*> llForms;
-			container->ForEachContainerObject([&](ContainerObject& a_entry) {
-				auto ll = a_entry.obj ? a_entry.obj->As<TESLeveledList>() : nullptr;
-				if (ll) {
-					auto tmp = ll->GetContainedForms();
-					llForms.reserve(llForms.size() + tmp.size());
-					llForms.insert(llForms.cend(), tmp.begin(), tmp.end());
-				}
-				return true;
-			});
-
-			std::sort(llForms.begin(), llForms.end());
-			const auto ignore = [&](const TESForm* a_form) {
-				auto it = std::lower_bound(llForms.cbegin(), llForms.cend(), a_form);
-				return it != llForms.cend();
+			const auto ignore = [&](TESBoundObject* a_object) {
+				const auto it = results.find(a_object);
+				const auto entryData =
+					it != results.end() ?
+						it->second.second.get() :
+						nullptr;
+				return entryData ? entryData->IsLeveled() : false;
 			};
 
 			container->ForEachContainerObject([&](ContainerObject& a_entry) {

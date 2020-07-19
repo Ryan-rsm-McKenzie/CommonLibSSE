@@ -2,6 +2,7 @@
 
 #include "RE/BSExtraData/ExtraCharge.h"
 #include "RE/BSExtraData/ExtraEnchantment.h"
+#include "RE/BSExtraData/ExtraLeveledItem.h"
 #include "RE/BSExtraData/ExtraTextDisplayData.h"
 #include "RE/BSMain/SettingCollection/GameSettingCollection.h"
 #include "RE/FormComponents/Components/FormTraits.h"
@@ -242,9 +243,23 @@ namespace RE
 		}
 
 		if (extraLists) {
-			for (auto& xList : *extraLists) {
-				auto xEnch = xList->GetByType<ExtraEnchantment>();
+			for (const auto& xList : *extraLists) {
+				const auto xEnch = xList->GetByType<ExtraEnchantment>();
 				if (xEnch && xEnch->enchantment) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+
+	bool InventoryEntryData::IsLeveled() const
+	{
+		if (extraLists) {
+			for (const auto& xList : *extraLists) {
+				if (xList && xList->HasType<ExtraLeveledItem>()) {
 					return true;
 				}
 			}
