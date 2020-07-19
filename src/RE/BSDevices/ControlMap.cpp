@@ -95,7 +95,7 @@ namespace RE
 			}
 		}
 
-		UserEventEnabled event{ oldState, enabledControls };
+		UserEventEnabled event{ enabledControls, oldState };
 		SendEvent(std::addressof(event));
 	}
 }
