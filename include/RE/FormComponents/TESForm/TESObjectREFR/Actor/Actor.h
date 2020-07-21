@@ -491,6 +491,7 @@ namespace RE
 		bool						 CanTalkToPlayer() const;
 		void						 ClearArrested();
 		void						 ClearExpressionOverride();
+		inline void					 ClearExtraArrows() { RemoveExtraArrows3D(); }
 		ActorHandle					 CreateRefHandle();
 		void						 DispelWornItemEnchantments();
 		void						 DoReset3D(bool a_updateWeight);
