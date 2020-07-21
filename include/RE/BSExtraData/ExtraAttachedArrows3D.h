@@ -21,6 +21,8 @@ namespace RE
 
 		struct DataItem
 		{
+		public:
+			// members
 			NiPointer<NiAVObject> arrow3D;	  // 00
 			std::uint64_t		  timeStamp;  // 08
 			BGSProjectile*		  source;	  // 10

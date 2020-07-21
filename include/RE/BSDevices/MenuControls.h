@@ -54,10 +54,11 @@ namespace RE
 
 		static MenuControls* GetSingleton();
 
-		void AddHandler(MenuEventHandler* a_handler);
-		void RegisterHandler(MenuEventHandler* a_handler);
-		void RemoveHandler(MenuEventHandler* a_handler);
-		void UnregisterHandler(MenuEventHandler* a_handler);
+		void						 AddHandler(MenuEventHandler* a_handler);
+		[[nodiscard]] constexpr bool InBeastForm() const noexcept { return beastForm; }
+		void						 RegisterHandler(MenuEventHandler* a_handler);
+		void						 RemoveHandler(MenuEventHandler* a_handler);
+		void						 UnregisterHandler(MenuEventHandler* a_handler);
 
 
 		// members

@@ -148,6 +148,7 @@ namespace RE
 		ActorHandle				GetCommandingActor() const;
 		TESForm*				GetEquippedLeftHand();
 		TESForm*				GetEquippedRightHand();
+		ObjectRefHandle			GetOccupiedFurniture() const;
 		bool					InHighProcess() const;
 		bool					InMiddleHighProcess() const;
 		bool					InMiddleLowProcess() const;

@@ -119,12 +119,6 @@ namespace RE
 	}
 
 
-	void Actor::ClearExtraArrows()
-	{
-		extraList.RemoveByType(ExtraDataType::kAttachedArrows3D);
-	}
-
-
 	ActorHandle Actor::CreateRefHandle()
 	{
 		return GetHandle();
@@ -300,6 +294,16 @@ namespace RE
 	}
 
 
+	ObjectRefHandle Actor::GetOccupiedFurniture() const
+	{
+		if (currentProcess) {
+			return currentProcess->GetOccupiedFurniture();
+		} else {
+			return {};
+		}
+	}
+
+
 	TESRace* Actor::GetRace() const
 	{
 		auto base = GetActorBase();
@@ -389,12 +393,6 @@ namespace RE
 	}
 
 
-	bool Actor::IsInKillMove() const
-	{
-		return boolFlags.all(BOOL_FLAGS::kIsInKillMove);
-	}
-
-
 	bool Actor::IsOnMount() const
 	{
 		return !IsAMount() && extraList.HasType(ExtraDataType::kInteraction);
@@ -443,6 +441,12 @@ namespace RE
 	bool Actor::IsTrespassing() const
 	{
 		return boolFlags.all(BOOL_FLAGS::kIsTrespassing);
+	}
+
+
+	void Actor::RemoveExtraArrows3D()
+	{
+		extraList.RemoveByType(ExtraDataType::kAttachedArrows3D);
 	}
 
 

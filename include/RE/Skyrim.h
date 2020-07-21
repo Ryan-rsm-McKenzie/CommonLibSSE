@@ -547,6 +547,7 @@
 #include "RE\Events\ScriptEvent\TESContainerChangedEvent.h"
 #include "RE\Events\ScriptEvent\TESDeathEvent.h"
 #include "RE\Events\ScriptEvent\TESEquipEvent.h"
+#include "RE\Events\ScriptEvent\TESFurnitureEvent.h"
 #include "RE\Events\ScriptEvent\TESGrabReleaseEvent.h"
 #include "RE\Events\ScriptEvent\TESHitEvent.h"
 #include "RE\Events\ScriptEvent\TESInitScriptEvent.h"

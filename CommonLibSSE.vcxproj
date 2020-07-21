@@ -767,6 +767,7 @@
     <ClInclude Include="include\RE\Events\ScriptEvent\TESContainerChangedEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESDeathEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESEquipEvent.h" />
+    <ClInclude Include="include\RE\Events\ScriptEvent\TESFurnitureEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESGrabReleaseEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESHitEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESInitScriptEvent.h" />

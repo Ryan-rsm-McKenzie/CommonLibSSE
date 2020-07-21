@@ -37,6 +37,16 @@ namespace RE
 	}
 
 
+	ObjectRefHandle AIProcess::GetOccupiedFurniture() const
+	{
+		if (middleHigh) {
+			return middleHigh->occupiedFurniture;
+		} else {
+			return {};
+		}
+	}
+
+
 	bool AIProcess::InHighProcess() const
 	{
 		switch (*processLevel) {

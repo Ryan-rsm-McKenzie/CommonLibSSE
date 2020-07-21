@@ -24,20 +24,20 @@ namespace RE
 		InventoryEntryData& operator=(const InventoryEntryData& a_rhs);
 		InventoryEntryData& operator=(InventoryEntryData&& a_rhs);
 
-		void				  AddExtraList(ExtraDataList* a_extra);
-		const char*			  GetDisplayName();
-		std::optional<double> GetEnchantmentCharge() const;
-		TESBoundObject*		  GetObject();
-		const TESBoundObject* GetObject() const;
-		TESForm*			  GetOwner();
-		SOUL_LEVEL			  GetSoulLevel() const;
-		std::int32_t		  GetValue();
-		float				  GetWeight() const;
-		bool				  IsEnchanted() const;
-		bool				  IsLeveled() const;
-		bool				  IsOwnedBy(Actor* a_testOwner, bool a_defaultTo = true);
-		bool				  IsOwnedBy(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo = true);
-		bool				  IsQuestObject() const;
+		void										  AddExtraList(ExtraDataList* a_extra);
+		const char*									  GetDisplayName();
+		std::optional<double>						  GetEnchantmentCharge() const;
+		[[nodiscard]] constexpr TESBoundObject*		  GetObject() noexcept { return object; }
+		[[nodiscard]] constexpr const TESBoundObject* GetObject() const noexcept { return object; }
+		TESForm*									  GetOwner();
+		SOUL_LEVEL									  GetSoulLevel() const;
+		std::int32_t								  GetValue();
+		float										  GetWeight() const;
+		bool										  IsEnchanted() const;
+		bool										  IsLeveled() const;
+		bool										  IsOwnedBy(Actor* a_testOwner, bool a_defaultTo = true);
+		bool										  IsOwnedBy(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo = true);
+		bool										  IsQuestObject() const;
 
 		TES_HEAP_REDEFINE_NEW();
 

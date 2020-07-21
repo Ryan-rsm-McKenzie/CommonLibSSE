@@ -1639,6 +1639,9 @@
     <ClInclude Include="include\RE\Events\ScriptEvent\TESEquipEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\Events\ScriptEvent\TESFurnitureEvent.h">
+      <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
     <ClInclude Include="include\RE\Events\ScriptEvent\TESGrabReleaseEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
