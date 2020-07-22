@@ -811,7 +811,6 @@ namespace RE
 			inline constexpr REL::ID GetStealValue(static_cast<std::uint64_t>(15807));
 			inline constexpr REL::ID FindReferenceFor3D(static_cast<std::uint64_t>(19323));
 			inline constexpr REL::ID InitInventoryIfRequired(static_cast<std::uint64_t>(15800));
-			inline constexpr REL::ID IsCrimeToActivate(static_cast<std::uint64_t>(19400));
 			inline constexpr REL::ID MoveTo(static_cast<std::uint64_t>(56227));
 			inline constexpr REL::ID PlayAnimation(static_cast<std::uint64_t>(14189));
 		}
