@@ -240,8 +240,8 @@ namespace RE
 		std::uint32_t								   unk1FC;						// 1FC
 		std::uint32_t								   unk200;						// 200
 		float										   headHeightOffset;			// 204
-		ObjectRefHandle								   currentFurniture;			// 208
-		ObjectRefHandle								   occupiedFurniture;			// 20C
+		ObjectRefHandle								   occupiedFurniture;			// 208
+		std::uint32_t								   unk20C;						// 20C
 		std::uint64_t								   unk210;						// 210
 		ActorHandle									   commandingActor;				// 218
 		std::uint32_t								   pad21C;						// 21C

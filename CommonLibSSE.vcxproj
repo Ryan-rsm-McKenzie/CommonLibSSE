@@ -761,6 +761,7 @@
     <ClInclude Include="include\RE\Events\PositionPlayerEvent.h" />
     <ClInclude Include="include\RE\Events\RaceSexMenuEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\ScriptEventSourceHolder.h" />
+    <ClInclude Include="include\RE\Events\ScriptEvent\TESActivateEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESActiveEffectApplyRemoveEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESCellFullyLoadedEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESCombatEvent.h" />

@@ -540,6 +540,7 @@ set(headers ${headers}
 	include\RE\Events\PositionPlayerEvent.h
 	include\RE\Events\RaceSexMenuEvent.h
 	include\RE\Events\ScriptEvent\ScriptEventSourceHolder.h
+	include\RE\Events\ScriptEvent\TESActivateEvent.h
 	include\RE\Events\ScriptEvent\TESActiveEffectApplyRemoveEvent.h
 	include\RE\Events\ScriptEvent\TESCellFullyLoadedEvent.h
 	include\RE\Events\ScriptEvent\TESCombatEvent.h
