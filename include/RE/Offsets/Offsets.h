@@ -201,12 +201,6 @@ namespace RE
 		}
 
 
-		namespace BSUntypedPointerHandle
-		{
-			inline constexpr REL::ID NullHandle(static_cast<std::uint64_t>(514164));
-		}
-
-
 		namespace BucketTable
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(67855));
