@@ -50,7 +50,11 @@ namespace RE
 			auto		  end = a_src.end();
 			std::uint32_t i = 0;
 			while (it != end) {
-				(*array)[i++].Pack(*it);
+				if constexpr (std::is_same_v<U, std::vector<bool>>) {
+					(*array)[i++].Pack(static_cast<bool>(*it));
+				} else {
+					(*array)[i++].Pack(*it);
+				}
 				++it;
 			}
 
