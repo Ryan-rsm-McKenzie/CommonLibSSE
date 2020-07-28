@@ -40,6 +40,14 @@ namespace RE
 	}
 
 
+	TESForm* InventoryChanges::GetEquippedArmor(std::int32_t a_slot)
+	{
+		using func_t = decltype(&InventoryChanges::GetEquippedArmor);
+		REL::Offset<func_t> func = REL::ID(15873);
+		return func(this, a_slot);
+	}
+
+
 	std::uint16_t InventoryChanges::GetNextUniqueID()
 	{
 		using func_t = decltype(&InventoryChanges::GetNextUniqueID);
