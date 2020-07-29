@@ -266,10 +266,7 @@ namespace REL
 				std::bool_constant<sizeof(T) == 1>,
 				std::bool_constant<sizeof(T) == 2>,
 				std::bool_constant<sizeof(T) == 4>,
-				std::bool_constant<sizeof(T) == 8>,
-				std::bool_constant<sizeof(T) == 16>,
-				std::bool_constant<sizeof(T) == 32>,
-				std::bool_constant<sizeof(T) == 64>>
+				std::bool_constant<sizeof(T) == 8>>
 		{};
 
 		template <class T>
