@@ -60,7 +60,7 @@ namespace RE
 	void Actor::AllowPCDialogue(bool a_talk)
 	{
 		auto xTalk = extraList.GetByType<ExtraCanTalkToPlayer>();
-		if (xTalk) {
+		if (!xTalk) {
 			xTalk = new ExtraCanTalkToPlayer();
 			extraList.Add(xTalk);
 		}
