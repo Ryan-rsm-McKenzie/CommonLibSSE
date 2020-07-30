@@ -34,13 +34,14 @@ namespace RE
 		explicit InventoryChanges(TESObjectREFR* a_ref);
 		~InventoryChanges();
 
-		void		  AddEntryData(InventoryEntryData* a_entry);
+		void          AddEntryData(InventoryEntryData* a_entry);
+		TESForm*      GetEquippedArmor(std::int32_t a_slot);
 		std::uint16_t GetNextUniqueID();
-		void		  InitFromContainerExtra();
-		void		  InitLeveledItems();
-		void		  InitScripts();
-		void		  SendContainerChangedEvent(ExtraDataList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, std::int32_t a_count);
-		void		  SetUniqueID(ExtraDataList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm);
+		void          InitFromContainerExtra();
+		void          InitLeveledItems();
+		void          InitScripts();
+		void          SendContainerChangedEvent(ExtraDataList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, std::int32_t a_count);
+		void          SetUniqueID(ExtraDataList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm);
 
 		TES_HEAP_REDEFINE_NEW();
 
