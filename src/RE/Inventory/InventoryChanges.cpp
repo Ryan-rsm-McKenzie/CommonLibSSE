@@ -8,15 +8,7 @@ namespace RE
 	{}
 
 
-	InventoryChanges::InventoryChanges(TESObjectREFR* a_ref) :
-		entryList(nullptr),
-		owner(nullptr),
-		totalWeight(0.0),
-		armorWeight(0.0),
-		unk19(0),
-		unk1A(0),
-		unk1B(0),
-		unk1C(0)
+	InventoryChanges::InventoryChanges(TESObjectREFR* a_ref)
 	{
 		Ctor(a_ref);
 	}
@@ -40,9 +32,9 @@ namespace RE
 	}
 
 
-	TESForm* InventoryChanges::GetEquippedArmor(std::int32_t a_slot)
+	TESObjectARMO* InventoryChanges::GetArmorInSlot(std::int32_t a_slot)
 	{
-		using func_t = decltype(&InventoryChanges::GetEquippedArmor);
+		using func_t = decltype(&InventoryChanges::GetArmorInSlot);
 		REL::Offset<func_t> func = REL::ID(15873);
 		return func(this, a_slot);
 	}
