@@ -37,6 +37,12 @@ namespace RE
 	}
 
 
+	bool AIProcess::GetIsSummonedCreature() const noexcept
+	{
+		return middleHigh && middleHigh->summonedCreature;
+	}
+
+
 	ObjectRefHandle AIProcess::GetOccupiedFurniture() const
 	{
 		if (middleHigh) {

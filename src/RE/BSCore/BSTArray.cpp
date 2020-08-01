@@ -1,35 +1,10 @@
 #include "RE/BSCore/BSTArray.h"
 
 #include "RE/Memory/IMemoryStoreBase/IMemoryStore/ScrapHeap.h"
-#include "RE/Memory/MemoryManager.h"
 
 
 namespace RE
 {
-	BSTArrayHeapAllocator::~BSTArrayHeapAllocator()
-	{
-		if (_data) {
-			free(_data);
-		}
-		memzero(this);
-	}
-
-
-	void* BSTArrayHeapAllocator::allocate(std::size_t a_size)
-	{
-		auto mem = malloc(a_size);
-		assert(mem != nullptr);
-		std::memset(mem, 0, a_size);
-		return mem;
-	}
-
-
-	void BSTArrayHeapAllocator::deallocate(void* a_ptr)
-	{
-		free(a_ptr);
-	}
-
-
 	BSScrapArrayAllocator::~BSScrapArrayAllocator()
 	{
 		if (_data) {

@@ -424,7 +424,7 @@ namespace RE
 		virtual void				 Unk_EE(void);																																									  // 0EE
 		virtual void				 WeaponSwingCallBack();																																							  // 0EF
 		virtual void				 SetActorStartingPosition();																																					  // 0F0
-		virtual void				 Unk_F1(void);																																									  // 0F1
+		virtual bool				 MoveToHigh();																																									  // 0F1
 		virtual bool				 MovetoLow();																																									  // 0F2
 		virtual bool				 MovetoMiddleLow();																																								  // 0F3
 		virtual void				 Unk_F4(void);																																									  // 0F4
@@ -528,7 +528,7 @@ namespace RE
 		bool						 IsPlayerTeammate() const;
 		bool						 IsRunning() const;
 		bool						 IsSneaking() const;
-		bool						 IsSummoned() const;
+		[[nodiscard]] bool			 IsSummoned() const noexcept;
 		bool						 IsTrespassing() const;
 		void						 RemoveExtraArrows3D();
 		std::int32_t				 RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);
