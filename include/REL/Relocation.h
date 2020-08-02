@@ -701,56 +701,32 @@ namespace REL
 	public:
 		using value_type =
 			std::conditional_t<
-				std::is_function_v<T>,
+				std::disjunction_v<
+					std::is_member_pointer<T>,
+					std::is_function<
+						std::remove_pointer_t<T>>>,
 				std::decay_t<T>,
 				T>;
 
-		template <
-			class U = value_type,
-			std::enable_if_t<
-				std::is_default_constructible_v<U>,
-				int> = 0>
-		Offset() noexcept(std::is_nothrow_default_constructible_v<U>) :
-			_impl{}
+		constexpr Offset() noexcept = default;
+
+		explicit constexpr Offset(std::uintptr_t a_address) noexcept :
+			_impl{ a_address }
 		{}
 
-		template <
-			class U = value_type,
-			std::enable_if_t<
-				std::is_copy_constructible_v<U>,
-				int> = 0>
-		Offset(std::uintptr_t a_address) noexcept(std::is_nothrow_copy_constructible_v<U>) :
-			_impl(unrestricted_cast<value_type>(a_address))
+		Offset(ID a_id, std::size_t a_offset = 0) :
+			_impl{ a_id.address() + a_offset }
 		{}
 
-		template <
-			class U = value_type,
-			std::enable_if_t<
-				std::is_copy_constructible_v<U>,
-				int> = 0>
-		Offset(ID a_id, std::size_t a_offset = 0) noexcept(std::is_nothrow_copy_constructible_v<U>) :
-			_impl(unrestricted_cast<value_type>(a_id.address() + a_offset))
-		{}
-
-		template <
-			class U = value_type,
-			std::enable_if_t<
-				std::is_copy_assignable_v<U>,
-				int> = 0>
-		Offset& operator=(std::uintptr_t a_address) noexcept(std::is_nothrow_copy_assignable_v<U>)
+		constexpr Offset& operator=(std::uintptr_t a_address) noexcept
 		{
-			_impl = unrestricted_cast<value_type>(a_address);
+			_impl = a_address;
 			return *this;
 		}
 
-		template <
-			class U = value_type,
-			std::enable_if_t<
-				std::is_copy_assignable_v<U>,
-				int> = 0>
-		Offset& operator=(ID a_id) noexcept(std::is_nothrow_copy_assignable_v<U>)
+		Offset& operator=(ID a_id)
 		{
-			_impl = unrestricted_cast<value_type>(a_id.address());
+			_impl = a_id.address();
 			return *this;
 		}
 
@@ -761,7 +737,7 @@ namespace REL
 				int> = 0>
 		[[nodiscard]] decltype(auto) operator*() const noexcept
 		{
-			return *_impl;
+			return *get();
 		}
 
 		template <
@@ -775,7 +751,7 @@ namespace REL
 				int> = 0>
 		[[nodiscard]] auto operator->() const noexcept
 		{
-			return _impl;
+			return get();
 		}
 
 		template <
@@ -786,7 +762,7 @@ namespace REL
 		std::invoke_result_t<const value_type&, Args&&...> operator()(Args&&... a_args) const noexcept(
 			std::is_nothrow_invocable_v<const value_type&, Args&&...>)
 		{
-			return REL::invoke(_impl, std::forward<Args>(a_args)...);
+			return REL::invoke(get(), std::forward<Args>(a_args)...);
 		}
 
 		template <
@@ -818,19 +794,16 @@ namespace REL
 			return write_vfunc(a_idx, unrestricted_cast<std::uintptr_t>(a_newFunc));
 		}
 
-		[[nodiscard]] value_type type() const noexcept(
-			std::is_nothrow_copy_assignable_v<value_type>)
-		{
-			return _impl;
-		}
+		[[nodiscard]] constexpr std::uintptr_t address() const noexcept { return _impl; }
+		[[nodiscard]] std::size_t			   offset() const { offset() - base(); }
 
-		[[nodiscard]] std::uintptr_t address() const { return unrestricted_cast<std::uintptr_t>(_impl); }
-		[[nodiscard]] std::size_t	 offset() const { offset() - base(); }
+		[[nodiscard]] value_type get() const noexcept(std::is_nothrow_copy_constructible_v<value_type>) { return unrestricted_cast<value_type>(_impl); }
+		[[nodiscard]] value_type type() const noexcept(std::is_nothrow_copy_constructible_v<value_type>) { return get(); }
 
 	private:
 		[[nodiscard]] static std::uintptr_t base() { return Module::BaseAddr(); }
 
-		value_type _impl;
+		std::uintptr_t _impl{ 0 };
 	};
 }
 

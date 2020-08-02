@@ -219,12 +219,6 @@ namespace RE
 		}
 
 
-		namespace ChestsLooted
-		{
-			inline constexpr REL::ID GetEventSource(static_cast<std::uint64_t>(50257));
-		}
-
-
 		namespace Console
 		{
 			inline constexpr REL::ID SelectedRef(static_cast<std::uint64_t>(519394));

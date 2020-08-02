@@ -11,12 +11,12 @@ namespace RE
 		struct Event
 		{
 		public:
-			std::uint8_t pad0;	// 0
 		};
-		static_assert(sizeof(Event) == 0x1);
+		static_assert(std::is_empty_v<Event>);
 
 
 		static BSTEventSource<Event>* GetEventSource();
 		static void					  SendEvent();
 	};
+	static_assert(std::is_empty_v<ChestsLooted>);
 }
