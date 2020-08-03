@@ -24,10 +24,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_IMemoryStoreBase;
 
 
-		virtual ~IMemoryStoreBase();  // 00
+		virtual ~IMemoryStoreBase() = default;	// 00
 
 		// add
-		virtual std::size_t Size(const void* a_block) const = 0;			   // 01
+		virtual std::size_t Size(const void* a_mem) const = 0;				   // 01
 		virtual void		GetMemoryStats(MemoryStats* a_stats) = 0;		   // 02
 		virtual bool		ContainsBlockImpl(const void* a_block) const = 0;  // 03
 	};

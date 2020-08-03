@@ -9,7 +9,7 @@ namespace RE
 	}
 
 
-	void IMemoryStore::DeallocateAlign(void* a_freeBlock)
+	void IMemoryStore::DeallocateAlign(void*& a_freeBlock)
 	{
 		DeallocateAlignImpl(a_freeBlock);
 	}

@@ -5,9 +5,7 @@
 
 namespace RE
 {
-	enum class MEM_CONTEXT
-	{
-	};
+	enum class MEM_CONTEXT : std::int32_t;
 
 
 	struct HeapStats
@@ -38,17 +36,17 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_IMemoryHeap;
 
 
-		virtual ~IMemoryHeap();	 // 00
+		virtual ~IMemoryHeap() = default;  // 00
 
 		// override (IMemoryStore)
-		virtual bool  ContainsBlockImpl(const void* a_block) const override;					  // 03
-		virtual void* AllocateAlignImpl(std::size_t a_size, std::uint32_t a_alignment) override;  // 04
-		virtual void  DeallocateAlignImpl(void* a_freeBlock) override;							  // 05
+		virtual bool  ContainsBlockImpl(const void* a_block) const override { return PointerInHeap(a_block); }							   // 03
+		virtual void* AllocateAlignImpl(std::size_t a_size, std::uint32_t a_alignment) override { return Allocate(a_size, a_alignment); }  // 04
+		virtual void  DeallocateAlignImpl(void*& a_block) override { Deallocate(a_block, 0); }											   // 05
 
 		// add
 		virtual const char*	  GetName() const = 0;														// 07
 		virtual void*		  Allocate(std::size_t a_size, std::uint32_t a_alignment) = 0;				// 08
-		virtual void		  Deallocate(void* a_pointer, std::uint32_t) = 0;							// 09
+		virtual void		  Deallocate(void* a_mem, std::uint32_t) = 0;								// 09
 		virtual bool		  PointerInHeap(const void* a_pointer) const = 0;							// 0A
 		virtual std::size_t	  TotalSize(const void* a_pointer) const = 0;								// 0B
 		virtual void		  GetHeapStats(HeapStats* a_stats, bool a_fullBlockInfo) = 0;				// 0C

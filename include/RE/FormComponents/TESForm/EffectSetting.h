@@ -141,10 +141,10 @@ namespace RE
 		// override (BGSKeywordForm)
 		virtual bool HasKeyword(const BGSKeyword* a_keyword) const override;  // 04
 
-		Archetype	  GetArchetype() const;
-		ActorValue	  GetMagickSkill() const;
-		std::uint32_t GetMinimumSkillLevel() const;
-		bool		  HasArchetype(Archetype a_type) const;
+		[[nodiscard]] constexpr Archetype	 GetArchetype() const noexcept { return data.archetype; }
+		[[nodiscard]] constexpr ActorValue	 GetMagickSkill() const noexcept { return data.associatedSkill; }
+		[[nodiscard]] constexpr std::int32_t GetMinimumSkillLevel() const noexcept { return data.minimumSkill; }
+		[[nodiscard]] constexpr bool		 HasArchetype(Archetype a_type) const noexcept { return data.archetype == a_type; }
 
 
 		// members

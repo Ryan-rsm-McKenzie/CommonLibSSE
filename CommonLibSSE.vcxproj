@@ -1570,7 +1570,6 @@
     <ClCompile Include="src\RE\FormComponents\TESForm\BGSLocation.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\BGSSoundCategory.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\BGSStoryManagerTreeForm\TESQuest.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\EffectSetting.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\Script.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESClimate.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESFaction.cpp" />

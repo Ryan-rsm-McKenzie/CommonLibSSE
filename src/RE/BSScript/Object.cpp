@@ -36,30 +36,6 @@ namespace RE
 		}
 
 
-		std::uint32_t Object::GetNumProperties() const
-		{
-			return pun_bits(numProperties01, numProperties02, numProperties03, numProperties04, numProperties05, numProperties06, numProperties07, numProperties08, numProperties09, numProperties10, numProperties11, numProperties12, numProperties13, numProperties14, numProperties15, numProperties16, numProperties17, numProperties18, numProperties19);
-		}
-
-
-		bool Object::IsConstructed() const
-		{
-			return constructed;
-		}
-
-
-		bool Object::IsInitialized() const
-		{
-			return initialized;
-		}
-
-
-		bool Object::IsValid() const
-		{
-			return valid;
-		}
-
-
 		void* Object::Resolve(VMTypeID a_typeID) const
 		{
 			auto vm = Internal::VirtualMachine::GetSingleton();

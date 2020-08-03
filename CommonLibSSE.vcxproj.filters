@@ -4047,9 +4047,6 @@
     <ClCompile Include="src\RE\FormComponents\TESForm\BGSStoryManagerTreeForm\TESQuest.cpp">
       <Filter>src\RE\FormComponents\TESForm\BGSStoryManagerTreeForm</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\FormComponents\TESForm\EffectSetting.cpp">
-      <Filter>src\RE\FormComponents\TESForm</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\FormComponents\TESForm\Script.cpp">
       <Filter>src\RE\FormComponents\TESForm</Filter>
     </ClCompile>

@@ -72,12 +72,12 @@ namespace RE
 		virtual void Unk_17(void);	// 17 - { return 1; }
 		virtual void Unk_18(void);	// 18 - { return 1.0; }
 
-		void				 Dispell(bool a_force);
-		EffectSetting*		 GetBaseObject();
-		const EffectSetting* GetBaseObject() const;
-		NiPointer<Actor>	 GetCasterActor() const;
-		Actor*				 GetTargetActor();
-		const Actor*		 GetTargetActor() const;
+		void							   Dispel(bool a_force);
+		[[nodiscard]] EffectSetting*	   GetBaseObject() noexcept;
+		[[nodiscard]] const EffectSetting* GetBaseObject() const noexcept;
+		NiPointer<Actor>				   GetCasterActor() const;
+		Actor*							   GetTargetActor();
+		const Actor*					   GetTargetActor() const;
 
 
 		ActiveEffectReferenceEffectController			 hitEffectController;  // 08

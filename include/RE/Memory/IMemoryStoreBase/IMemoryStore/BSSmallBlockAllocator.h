@@ -100,7 +100,7 @@ namespace RE
 		virtual void		GetMemoryStats(MemoryStats* a_stats) override;								// 02
 		virtual bool		ContainsBlockImpl(const void* a_block) const override;						// 03
 		virtual void*		AllocateAlignImpl(std::size_t a_size, std::uint32_t a_alignment) override;	// 04
-		virtual void		DeallocateAlignImpl(void* a_freeBlock) override;							// 05
+		virtual void		DeallocateAlignImpl(void*& a_freeBlock) override;							// 05
 		virtual void*		TryAllocateImpl(std::size_t a_size, std::uint32_t a_alignment) override;	// 06
 
 

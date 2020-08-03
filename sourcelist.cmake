@@ -134,7 +134,6 @@ set(sources ${sources}
 	src\RE\FormComponents\TESForm\BGSLocation.cpp
 	src\RE\FormComponents\TESForm\BGSSoundCategory.cpp
 	src\RE\FormComponents\TESForm\BGSStoryManagerTreeForm\TESQuest.cpp
-	src\RE\FormComponents\TESForm\EffectSetting.cpp
 	src\RE\FormComponents\TESForm\Script.cpp
 	src\RE\FormComponents\TESForm\TESClimate.cpp
 	src\RE\FormComponents\TESForm\TESFaction.cpp

@@ -7,28 +7,22 @@ namespace RE
 	{
 		BSFixedString ObjectTypeInfo::UserFlagInfo::GetUserFlag() const
 		{
-			auto sanitizedType = data & ~kUnkFlag;
+			auto sanitizedType = data & ~kSetOnObject;
 			return *reinterpret_cast<BSFixedString*>(&sanitizedType);
-		}
-
-
-		std::uint32_t ObjectTypeInfo::NamedStateInfo::GetNumFuncs() const
-		{
-			return data & kFuncCountMask;
 		}
 
 
 		auto ObjectTypeInfo::NamedStateInfo::GetFuncIter()
 			-> Func*
 		{
-			return reinterpret_cast<Func*>((std::uintptr_t)this + (data >> kFuncOffsetShift));
+			return reinterpret_cast<Func*>((std::uintptr_t)this + memberFunctionOffset);
 		}
 
 
 		auto ObjectTypeInfo::NamedStateInfo::GetFuncIter() const
 			-> const Func*
 		{
-			return reinterpret_cast<const Func*>((std::uintptr_t)this + (data >> kFuncOffsetShift));
+			return reinterpret_cast<const Func*>((std::uintptr_t)this + memberFunctionOffset);
 		}
 
 
@@ -62,18 +56,6 @@ namespace RE
 		}
 
 
-		bool ObjectTypeInfo::IsInherited() const
-		{
-			return inherited;
-		}
-
-
-		bool ObjectTypeInfo::IsRemoved() const
-		{
-			return removed;
-		}
-
-
 		auto ObjectTypeInfo::GetUnlinkedFunctionIter()
 			-> UnlinkedNativeFunction*
 		{
@@ -88,12 +70,6 @@ namespace RE
 		}
 
 
-		std::uint32_t ObjectTypeInfo::GetNumUserFlags() const
-		{
-			return pun_bits(userFlagCount1, userFlagCount2, userFlagCount3, userFlagCount4, userFlagCount5, userFlagCount6);
-		}
-
-
 		auto ObjectTypeInfo::GetUserFlagIter()
 			-> UserFlagInfo*
 		{
@@ -105,12 +81,6 @@ namespace RE
 			-> const UserFlagInfo*
 		{
 			return reinterpret_cast<const UserFlagInfo*>(data);
-		}
-
-
-		std::uint32_t ObjectTypeInfo::GetNumVariables() const
-		{
-			return pun_bits(variableCount1, variableCount2, variableCount3, variableCount4, variableCount5, variableCount6, variableCount7, variableCount8, variableCount9, variableCount10);
 		}
 
 
@@ -138,12 +108,6 @@ namespace RE
 		}
 
 
-		std::uint32_t ObjectTypeInfo::GetNumInitalValues() const
-		{
-			return pun_bits(initialValueCount1, initialValueCount2, initialValueCount3, initialValueCount4, initialValueCount5, initialValueCount6, initialValueCount7, initialValueCount8, initialValueCount9, initialValueCount10);
-		}
-
-
 		auto ObjectTypeInfo::GetInitialValueIter()
 			-> InitialValueInfo*
 		{
@@ -155,12 +119,6 @@ namespace RE
 			-> const InitialValueInfo*
 		{
 			return reinterpret_cast<const InitialValueInfo*>(GetVariableIter() + GetNumVariables());
-		}
-
-
-		std::uint32_t ObjectTypeInfo::GetNumProperties() const
-		{
-			return pun_bits(propertyCount1, propertyCount2, propertyCount3, propertyCount4, propertyCount5, propertyCount6, propertyCount7, propertyCount8, propertyCount9, propertyCount10);
 		}
 
 
@@ -178,12 +136,6 @@ namespace RE
 		}
 
 
-		std::uint32_t ObjectTypeInfo::GetNumGlobalFuncs() const
-		{
-			return pun_bits(staticFunctionCount1, staticFunctionCount2, staticFunctionCount3, staticFunctionCount4, staticFunctionCount5, staticFunctionCount6, staticFunctionCount7, staticFunctionCount8, staticFunctionCount9);
-		}
-
-
 		auto ObjectTypeInfo::GetGlobalFuncIter()
 			-> GlobalFuncInfo*
 		{
@@ -198,12 +150,6 @@ namespace RE
 		}
 
 
-		std::uint32_t ObjectTypeInfo::GetNumMemberFuncs() const
-		{
-			return pun_bits(emptyStateMemberFunctionCount1, emptyStateMemberFunctionCount2, emptyStateMemberFunctionCount3, emptyStateMemberFunctionCount4, emptyStateMemberFunctionCount5, emptyStateMemberFunctionCount6, emptyStateMemberFunctionCount7, emptyStateMemberFunctionCount8, emptyStateMemberFunctionCount9, emptyStateMemberFunctionCount10, emptyStateMemberFunctionCount11);
-		}
-
-
 		auto ObjectTypeInfo::GetMemberFuncIter()
 			-> MemberFuncInfo*
 		{
@@ -215,12 +161,6 @@ namespace RE
 			-> const MemberFuncInfo*
 		{
 			return reinterpret_cast<const MemberFuncInfo*>(GetGlobalFuncIter() + GetNumGlobalFuncs());
-		}
-
-
-		std::uint32_t ObjectTypeInfo::GetNumNamedStates() const
-		{
-			return pun_bits(namedStateCount1, namedStateCount2, namedStateCount3, namedStateCount4, namedStateCount5, namedStateCount6, namedStateCount7);
 		}
 
 

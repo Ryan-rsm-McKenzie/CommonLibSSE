@@ -6,21 +6,21 @@
 
 namespace RE
 {
-	void ActiveEffect::Dispell(bool a_force)
+	void ActiveEffect::Dispel(bool a_force)
 	{
-		using func_t = decltype(&ActiveEffect::Dispell);
-		REL::Offset<func_t> func(Offset::ActiveEffect::Dispell);
+		using func_t = decltype(&ActiveEffect::Dispel);
+		REL::Offset<func_t> func{ REL::ID(33286) };
 		return func(this, a_force);
 	}
 
 
-	EffectSetting* ActiveEffect::GetBaseObject()
+	EffectSetting* ActiveEffect::GetBaseObject() noexcept
 	{
 		return effect ? effect->baseEffect : nullptr;
 	}
 
 
-	const EffectSetting* ActiveEffect::GetBaseObject() const
+	const EffectSetting* ActiveEffect::GetBaseObject() const noexcept
 	{
 		return effect ? effect->baseEffect : nullptr;
 	}

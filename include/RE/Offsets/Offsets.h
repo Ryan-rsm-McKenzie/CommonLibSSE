@@ -13,12 +13,6 @@ namespace RE
 		}
 
 
-		namespace ActiveEffect
-		{
-			inline constexpr REL::ID Dispell(static_cast<std::uint64_t>(33286));
-		}
-
-
 		namespace Actor
 		{
 			inline constexpr REL::ID AddSpell(static_cast<std::uint64_t>(37771));
@@ -561,16 +555,6 @@ namespace RE
 		namespace Main
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(516943));
-		}
-
-
-		namespace MemoryManager
-		{
-			inline constexpr REL::ID Allocate(static_cast<std::uint64_t>(66859));
-			inline constexpr REL::ID Deallocate(static_cast<std::uint64_t>(66861));
-			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(11045));
-			inline constexpr REL::ID GetThreadScrapHeap(static_cast<std::uint64_t>(66841));
-			inline constexpr REL::ID Reallocate(static_cast<std::uint64_t>(66860));
 		}
 
 

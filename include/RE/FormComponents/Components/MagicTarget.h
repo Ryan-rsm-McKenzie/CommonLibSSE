@@ -66,7 +66,7 @@ namespace RE
 		virtual void						 CheckResistance(MagicItem* a_magicItem, EffectItem* a_effect, TESBoundObject* a_object);  // 0A - { return 1.0; }
 		virtual void						 CheckAbsorb(Actor* a_actor, MagicItem* a_magicItem, const EffectItem* a_effect);		   // 0B - { return false; }
 
-		void DispellEffectsWithArchetype(Archetype a_type, bool a_force);
+		void DispelEffectsWithArchetype(Archetype a_type, bool a_force);
 		bool HasEffectWithArchetype(Archetype a_type);
 		bool HasMagicEffect(EffectSetting* a_effect);
 
