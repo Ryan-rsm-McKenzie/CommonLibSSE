@@ -8,7 +8,7 @@ namespace RE
 {
 	const NiRTTI* NiObject::GetRTTI() const
 	{
-		REL::Offset<const NiRTTI*> rtti = NiObject::Ni_RTTI;
+		REL::Relocation<const NiRTTI*> rtti{ NiObject::Ni_RTTI };
 		return rtti.type();
 	}
 
@@ -30,7 +30,7 @@ namespace RE
 	void NiObject::ProcessClone(NiCloningProcess& a_cloning)
 	{
 		using func_t = decltype(&NiObject::ProcessClone);
-		REL::Offset<func_t> func = REL::ID(68838);
+		REL::Relocation<func_t> func{ REL::ID(68838) };
 		return func(this, a_cloning);
 	}
 
@@ -38,7 +38,7 @@ namespace RE
 	void NiObject::CreateDeepCopy(NiPointer<NiObject>& a_object)
 	{
 		using func_t = decltype(&NiObject::CreateDeepCopy);
-		REL::Offset<func_t> func = REL::ID(68839);
+		REL::Relocation<func_t> func{ REL::ID(68839) };
 		return func(this, a_object);
 	}
 }

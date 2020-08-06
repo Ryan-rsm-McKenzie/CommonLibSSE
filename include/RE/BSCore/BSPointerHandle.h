@@ -141,14 +141,14 @@ namespace RE
 		void create(const T* a_ptr)
 		{
 			using func_t = decltype(&BSPointerHandle<T, Handle>::create);
-			REL::Offset<func_t> func(Offset::CreateRefHandle);
+			REL::Relocation<func_t> func{ Offset::CreateRefHandle };
 			return func(this, a_ptr);
 		}
 
 		bool lookup(NiPointer<T>& a_refPtr) const
 		{
 			using func_t = decltype(&BSPointerHandle<T, Handle>::lookup);
-			REL::Offset<func_t> func(Offset::LookupReferenceByHandle);
+			REL::Relocation<func_t> func{ Offset::LookupReferenceByHandle };
 			return func(this, a_refPtr);
 		}
 	};

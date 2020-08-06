@@ -290,7 +290,7 @@ namespace RE
 	void TESFaction::SetFactionFightReaction(TESFaction* a_faction, FIGHT_REACTION a_fightReaction)
 	{
 		using func_t = decltype(&TESFaction::SetFactionFightReaction);
-		REL::Offset<func_t> func = REL::ID(24012);
+		REL::Relocation<func_t> func{ REL::ID(24012) };
 		return func(this, a_faction, a_fightReaction);
 	}
 

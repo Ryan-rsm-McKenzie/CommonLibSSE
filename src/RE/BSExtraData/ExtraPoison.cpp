@@ -14,7 +14,7 @@ namespace RE
 		count(a_count),
 		pad1C(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraPoison::Vtbl);
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraPoison::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

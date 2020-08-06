@@ -43,7 +43,7 @@ namespace RE
 	void BSResourceNiBinaryStream::seek(std::int32_t a_numBytes)
 	{
 		using func_t = decltype(&BSResourceNiBinaryStream::seek);
-		REL::Offset<func_t> func(Offset::BSResourceNiBinaryStream::Seek);
+		REL::Relocation<func_t> func{ Offset::BSResourceNiBinaryStream::Seek };
 		return func(this, a_numBytes);
 	}
 
@@ -61,7 +61,7 @@ namespace RE
 	void BSResourceNiBinaryStream::set_endian_swap(bool a_doSwap)
 	{
 		using func_t = decltype(&BSResourceNiBinaryStream::set_endian_swap);
-		REL::Offset<func_t> func(Offset::BSResourceNiBinaryStream::SetEndianSwap);
+		REL::Relocation<func_t> func{ Offset::BSResourceNiBinaryStream::SetEndianSwap };
 		return func(this, a_doSwap);
 	}
 
@@ -69,7 +69,7 @@ namespace RE
 	BSResourceNiBinaryStream* BSResourceNiBinaryStream::ctor(const char* a_name, bool a_writeable, BSResource::Location* a_optionalStart)
 	{
 		using func_t = decltype(&BSResourceNiBinaryStream::ctor);
-		REL::Offset<func_t> func(Offset::BSResourceNiBinaryStream::Ctor);
+		REL::Relocation<func_t> func{ Offset::BSResourceNiBinaryStream::Ctor };
 		return func(this, a_name, a_writeable, a_optionalStart);
 	}
 
@@ -77,7 +77,7 @@ namespace RE
 	void BSResourceNiBinaryStream::dtor()
 	{
 		using func_t = decltype(&BSResourceNiBinaryStream::dtor);
-		REL::Offset<func_t> func(Offset::BSResourceNiBinaryStream::Dtor);
+		REL::Relocation<func_t> func{ Offset::BSResourceNiBinaryStream::Dtor };
 		return func(this);
 	}
 }

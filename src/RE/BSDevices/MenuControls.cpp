@@ -16,7 +16,7 @@ namespace RE
 
 	MenuControls* MenuControls::GetSingleton()
 	{
-		REL::Offset<MenuControls**> singelton(Offset::MenuControls::Singleton);
+		REL::Relocation<MenuControls**> singelton{ Offset::MenuControls::Singleton };
 		return *singelton;
 	}
 

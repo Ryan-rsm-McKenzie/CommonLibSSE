@@ -10,8 +10,8 @@ namespace RE
 			IFormFactory* data[to_underlying(FormType::Max)];
 		};
 
-		REL::Offset<Factories*> formFactories = REL::ID(514355);
-		REL::Offset<bool*> formFactoriesInitialized = REL::ID(514349);
+		REL::Relocation<Factories*> formFactories{ REL::ID(514355) };
+		REL::Relocation<bool*> formFactoriesInitialized{ REL::ID(514349) };
 		return std::make_pair(formFactories->data, *formFactoriesInitialized);
 	}
 

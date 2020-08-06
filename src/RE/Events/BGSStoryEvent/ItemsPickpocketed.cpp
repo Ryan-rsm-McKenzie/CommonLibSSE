@@ -6,7 +6,7 @@ namespace RE
 	BSTEventSource<ItemsPickpocketed::Event>* ItemsPickpocketed::GetEventSource()
 	{
 		using func_t = decltype(&ItemsPickpocketed::GetEventSource);
-		REL::Offset<func_t> func(Offset::ItemsPickpocketed::GetEventSource);
+		REL::Relocation<func_t> func{ Offset::ItemsPickpocketed::GetEventSource };
 		return func();
 	}
 

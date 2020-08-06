@@ -20,14 +20,14 @@ namespace SKSE
 	}
 
 
-	Version QueryInterface::RuntimeVersion() const
+	REL::Version QueryInterface::RuntimeVersion() const
 	{
 		const auto packed = GetProxy()->runtimeVersion;
 		const auto major = static_cast<std::uint16_t>((packed & 0xFF000000) >> 24);
 		const auto minor = static_cast<std::uint16_t>((packed & 0x00FF0000) >> 16);
 		const auto revision = static_cast<std::uint16_t>((packed & 0x0000FFF0) >> 4);
 		const auto build = static_cast<std::uint16_t>((packed & 0x0000000F) >> 0);
-		return Version(major, minor, revision, build);
+		return { major, minor, revision, build };
 	}
 
 
@@ -37,9 +37,10 @@ namespace SKSE
 	}
 
 
-	const Impl::SKSEInterface* QueryInterface::GetProxy() const
+	const detail::SKSEInterface* QueryInterface::GetProxy() const
 	{
-		return reinterpret_cast<const Impl::SKSEInterface*>(this);
+		assert(this);
+		return reinterpret_cast<const detail::SKSEInterface*>(this);
 	}
 
 
@@ -49,15 +50,21 @@ namespace SKSE
 	}
 
 
+	const PluginInfo* LoadInterface::GetPluginInfo(const char* a_name) const
+	{
+		return static_cast<const PluginInfo*>(GetProxy()->GetPluginInfo(a_name));
+	}
+
+
 	std::uint32_t LoadInterface::GetReleaseIndex() const
 	{
 		return GetProxy()->GetReleaseIndex();
 	}
 
 
-	void* LoadInterface::QueryInterface(InterfaceID a_id) const
+	void* LoadInterface::QueryInterface(std::uint32_t a_id) const
 	{
-		return GetProxy()->QueryInterface(static_cast<std::uint32_t>(a_id));
+		return GetProxy()->QueryInterface(a_id);
 	}
 
 
@@ -83,9 +90,10 @@ namespace SKSE
 	}
 
 
-	const Impl::SKSEScaleformInterface* ScaleformInterface::GetProxy() const
+	const detail::SKSEScaleformInterface* ScaleformInterface::GetProxy() const
 	{
-		return reinterpret_cast<const Impl::SKSEScaleformInterface*>(this);
+		assert(this);
+		return reinterpret_cast<const detail::SKSEScaleformInterface*>(this);
 	}
 
 
@@ -167,9 +175,10 @@ namespace SKSE
 	}
 
 
-	const Impl::SKSESerializationInterface* SerializationInterface::GetProxy() const
+	const detail::SKSESerializationInterface* SerializationInterface::GetProxy() const
 	{
-		return reinterpret_cast<const Impl::SKSESerializationInterface*>(this);
+		assert(this);
+		return reinterpret_cast<const detail::SKSESerializationInterface*>(this);
 	}
 
 
@@ -237,9 +246,10 @@ namespace SKSE
 	}
 
 
-	const Impl::SKSETaskInterface* TaskInterface::GetProxy() const
+	const detail::SKSETaskInterface* TaskInterface::GetProxy() const
 	{
-		return reinterpret_cast<const Impl::SKSETaskInterface*>(this);
+		assert(this);
+		return reinterpret_cast<const detail::SKSETaskInterface*>(this);
 	}
 
 
@@ -283,9 +293,10 @@ namespace SKSE
 	}
 
 
-	const Impl::SKSEPapyrusInterface* PapyrusInterface::GetProxy() const
+	const detail::SKSEPapyrusInterface* PapyrusInterface::GetProxy() const
 	{
-		return reinterpret_cast<const Impl::SKSEPapyrusInterface*>(this);
+		assert(this);
+		return reinterpret_cast<const detail::SKSEPapyrusInterface*>(this);
 	}
 
 
@@ -327,9 +338,10 @@ namespace SKSE
 	}
 
 
-	const Impl::SKSEMessagingInterface* MessagingInterface::GetProxy() const
+	const detail::SKSEMessagingInterface* MessagingInterface::GetProxy() const
 	{
-		return reinterpret_cast<const Impl::SKSEMessagingInterface*>(this);
+		assert(this);
+		return reinterpret_cast<const detail::SKSEMessagingInterface*>(this);
 	}
 
 
@@ -357,8 +369,34 @@ namespace SKSE
 	}
 
 
-	const Impl::SKSEObjectInterface* ObjectInterface::GetProxy() const
+	const detail::SKSEObjectInterface* ObjectInterface::GetProxy() const
 	{
-		return reinterpret_cast<const Impl::SKSEObjectInterface*>(this);
+		assert(this);
+		return reinterpret_cast<const detail::SKSEObjectInterface*>(this);
+	}
+
+
+	std::uint32_t TrampolineInterface::Version() const
+	{
+		return GetProxy()->interfaceVersion;
+	}
+
+
+	void* TrampolineInterface::AllocateFromBranchPool(std::size_t a_size) const
+	{
+		return GetProxy()->AllocateFromBranchPool(GetPluginHandle(), a_size);
+	}
+
+
+	void* TrampolineInterface::AllocateFromLocalPool(std::size_t a_size) const
+	{
+		return GetProxy()->AllocateFromLocalPool(GetPluginHandle(), a_size);
+	}
+
+
+	const detail::SKSETrampolineInterface* TrampolineInterface::GetProxy() const
+	{
+		assert(this);
+		return reinterpret_cast<const detail::SKSETrampolineInterface*>(this);
 	}
 }

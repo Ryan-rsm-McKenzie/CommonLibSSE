@@ -3,7 +3,6 @@
 #include "SKSE/Impl/PCH.h"
 
 #include "SKSE/API.h"
-#include "SKSE/CodeGenerator.h"
 #include "SKSE/Events.h"
 #include "SKSE/IAT.h"
 #include "SKSE/Interfaces.h"

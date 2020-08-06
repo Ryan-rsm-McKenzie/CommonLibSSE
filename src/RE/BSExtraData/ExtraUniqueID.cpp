@@ -14,7 +14,7 @@ namespace RE
 		uniqueID(a_uniqueID),
 		pad16(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraUniqueID::Vtbl);
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraUniqueID::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

@@ -7,7 +7,7 @@ namespace RE
 {
 	ControlMap* ControlMap::GetSingleton()
 	{
-		REL::Offset<ControlMap**> singleton(Offset::ControlMap::Singleton);
+		REL::Relocation<ControlMap**> singleton{ Offset::ControlMap::Singleton };
 		return *singleton;
 	}
 

@@ -12,18 +12,7 @@
 
 namespace SKSE
 {
-	enum class InterfaceID : std::uint32_t
-	{
-		kInvalid = 0,
-		kScaleform,
-		kPapyrus,
-		kSerialization,
-		kTask,
-		kMessaging,
-		kObject,
-
-		kTotal
-	};
+	struct PluginInfo;
 
 
 	class QueryInterface
@@ -31,20 +20,34 @@ namespace SKSE
 	public:
 		std::uint32_t EditorVersion() const;
 		bool		  IsEditor() const;
-		Version		  RuntimeVersion() const;
+		REL::Version  RuntimeVersion() const;
 		std::uint32_t SKSEVersion() const;
 
 	protected:
-		const Impl::SKSEInterface* GetProxy() const;
+		const detail::SKSEInterface* GetProxy() const;
 	};
 
 
 	class LoadInterface : public QueryInterface
 	{
 	public:
-		PluginHandle  GetPluginHandle() const;
-		std::uint32_t GetReleaseIndex() const;
-		void*		  QueryInterface(InterfaceID a_id) const;
+		enum : std::uint32_t
+		{
+			kInvalid = 0,
+			kScaleform,
+			kPapyrus,
+			kSerialization,
+			kTask,
+			kMessaging,
+			kObject,
+			kTrampoline,
+			kTotal
+		};
+
+		PluginHandle	  GetPluginHandle() const;
+		const PluginInfo* GetPluginInfo(const char* a_name) const;
+		std::uint32_t	  GetReleaseIndex() const;
+		void*			  QueryInterface(std::uint32_t a_id) const;
 	};
 
 
@@ -65,7 +68,7 @@ namespace SKSE
 		void Register(RegInvCallback* a_callback) const;
 
 	protected:
-		const Impl::SKSEScaleformInterface* GetProxy() const;
+		const detail::SKSEScaleformInterface* GetProxy() const;
 	};
 
 
@@ -169,7 +172,7 @@ namespace SKSE
 		bool ResolveHandle(RE::VMHandle a_oldHandle, RE::VMHandle& a_newHandle) const;
 
 	protected:
-		const Impl::SKSESerializationInterface* GetProxy() const;
+		const detail::SKSESerializationInterface* GetProxy() const;
 	};
 
 
@@ -191,7 +194,7 @@ namespace SKSE
 		void AddUITask(UIDelegate_v1* a_task) const;
 
 	protected:
-		class Task : public Impl::TaskDelegate
+		class Task : public detail::TaskDelegate
 		{
 		public:
 			Task(TaskFn&& a_fn);
@@ -203,7 +206,7 @@ namespace SKSE
 			TaskFn _fn;
 		};
 
-		class UITask : public Impl::UIDelegate_v1
+		class UITask : public detail::UIDelegate_v1
 		{
 		public:
 			UITask(TaskFn&& a_fn);
@@ -215,7 +218,7 @@ namespace SKSE
 			TaskFn _fn;
 		};
 
-		const Impl::SKSETaskInterface* GetProxy() const;
+		const detail::SKSETaskInterface* GetProxy() const;
 	};
 
 
@@ -245,7 +248,7 @@ namespace SKSE
 		}
 
 	protected:
-		const Impl::SKSEPapyrusInterface* GetProxy() const;
+		const detail::SKSEPapyrusInterface* GetProxy() const;
 
 	private:
 		bool Register_Impl(RegFunction1* a_fn) const;
@@ -305,7 +308,7 @@ namespace SKSE
 		bool  RegisterListener(const char* a_sender, EventCallback* a_callback) const;
 
 	protected:
-		const Impl::SKSEMessagingInterface* GetProxy() const;
+		const detail::SKSEMessagingInterface* GetProxy() const;
 	};
 
 
@@ -324,7 +327,25 @@ namespace SKSE
 		SKSEPersistentObjectStorage& GetPersistentObjectStorage() const;
 
 	private:
-		const Impl::SKSEObjectInterface* GetProxy() const;
+		const detail::SKSEObjectInterface* GetProxy() const;
+	};
+
+
+	class TrampolineInterface
+	{
+	public:
+		enum
+		{
+			kVersion = 1
+		};
+
+		std::uint32_t Version() const;
+
+		[[nodiscard]] void* AllocateFromBranchPool(std::size_t a_size) const;
+		[[nodiscard]] void* AllocateFromLocalPool(std::size_t a_size) const;
+
+	private:
+		const detail::SKSETrampolineInterface* GetProxy() const;
 	};
 
 

@@ -16,7 +16,7 @@ namespace SKSE
 	};
 
 
-	namespace Impl
+	namespace detail
 	{
 		struct PluginInfo
 		{
@@ -35,6 +35,7 @@ namespace SKSE
 			void* (*QueryInterface)(std::uint32_t);
 			PluginHandle (*GetPluginHandle)();
 			std::uint32_t (*GetReleaseIndex)();
+			const void* (*GetPluginInfo)(const char*);
 		};
 
 
@@ -94,6 +95,14 @@ namespace SKSE
 			std::uint32_t interfaceVersion;
 			void (*AddTask)(void*);
 			void (*AddUITask)(void*);
+		};
+
+
+		struct SKSETrampolineInterface
+		{
+			std::uint32_t interfaceVersion;
+			void* (*AllocateFromBranchPool)(PluginHandle, std::size_t);
+			void* (*AllocateFromLocalPool)(PluginHandle, std::size_t);
 		};
 
 

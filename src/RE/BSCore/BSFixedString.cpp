@@ -162,7 +162,7 @@ namespace RE
 	BSFixedString* BSFixedString::ctor_cstr(const char* a_rhs)
 	{
 		using func_t = decltype(&BSFixedString::ctor_cstr);
-		REL::Offset<func_t> func = REL::ID(67819);
+		REL::Relocation<func_t> func{ REL::ID(67819) };
 		return func(this, a_rhs);
 	}
 
@@ -170,7 +170,7 @@ namespace RE
 	BSFixedString* BSFixedString::ctor_copy(const BSFixedString& a_rhs)
 	{
 		using func_t = decltype(&BSFixedString::ctor_copy);
-		REL::Offset<func_t> func = REL::ID(67820);
+		REL::Relocation<func_t> func{ REL::ID(67820) };
 		return func(this, a_rhs);
 	}
 
@@ -178,7 +178,7 @@ namespace RE
 	void BSFixedString::dtor()
 	{
 		using func_t = decltype(&BSFixedString::dtor);
-		REL::Offset<func_t> func = REL::ID(67822);
+		REL::Relocation<func_t> func{ REL::ID(67822) };
 		return func(this);
 	}
 
@@ -186,7 +186,7 @@ namespace RE
 	BSFixedString* BSFixedString::set_cstr(const char* a_rhs)
 	{
 		using func_t = decltype(&BSFixedString::set_cstr);
-		REL::Offset<func_t> func = REL::ID(67823);
+		REL::Relocation<func_t> func{ REL::ID(67823) };
 		return func(this, a_rhs);
 	}
 
@@ -194,7 +194,7 @@ namespace RE
 	BSFixedString* BSFixedString::set_copy(const BSFixedString& a_rhs)
 	{
 		using func_t = decltype(&BSFixedString::set_copy);
-		REL::Offset<func_t> func = REL::ID(67824);
+		REL::Relocation<func_t> func{ REL::ID(67824) };
 		return func(this, a_rhs);
 	}
 
@@ -366,7 +366,7 @@ namespace RE
 	void BSFixedStringW::ctor(const wchar_t* a_string)
 	{
 		using func_t = decltype(&BSFixedStringW::ctor);
-		REL::Offset<func_t> func = REL::ID(67834);
+		REL::Relocation<func_t> func{ REL::ID(67834) };
 		return func(this, a_string);
 	}
 
@@ -374,7 +374,7 @@ namespace RE
 	void BSFixedStringW::dtor()
 	{
 		using func_t = decltype(&BSFixedStringW::dtor);
-		REL::Offset<func_t> func = REL::ID(67836);
+		REL::Relocation<func_t> func{ REL::ID(67836) };
 		return func(this);
 	}
 

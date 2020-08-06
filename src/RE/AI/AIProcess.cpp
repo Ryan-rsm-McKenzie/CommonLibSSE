@@ -153,7 +153,7 @@ namespace RE
 	void AIProcess::Update3DModel_Impl(Actor* a_actor)
 	{
 		using func_t = decltype(&AIProcess::Update3DModel_Impl);
-		REL::Offset<func_t> func(Offset::AIProcess::Update3DModel);
+		REL::Relocation<func_t> func{ Offset::AIProcess::Update3DModel };
 		return func(this, a_actor);
 	}
 }

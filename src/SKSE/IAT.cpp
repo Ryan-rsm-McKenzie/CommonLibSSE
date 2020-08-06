@@ -19,7 +19,7 @@ namespace SKSE
 
 	void* GetIATPtr(std::string_view a_dll, std::string_view a_function)
 	{
-		return GetIATPtr(REL::Module::BasePtr(), std::move(a_dll), std::move(a_function));
+		return GetIATPtr(REL::Module::get().pointer(), std::move(a_dll), std::move(a_function));
 	}
 
 

@@ -397,7 +397,7 @@ namespace RE
 	void GFxValue::ObjectInterface::ObjectAddRef(GFxValue* a_val, void* a_obj)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::ObjectAddRef);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::ObjectAddRef);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::ObjectAddRef };
 		return func(this, a_val, a_obj);
 	}
 
@@ -405,7 +405,7 @@ namespace RE
 	void GFxValue::ObjectInterface::ObjectRelease(GFxValue* a_val, void* a_obj)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::ObjectRelease);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::ObjectRelease);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::ObjectRelease };
 		return func(this, a_val, a_obj);
 	}
 
@@ -413,7 +413,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::HasMember(void* a_data, const char* a_name, bool a_isDObj) const
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::HasMember);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::HasMember);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::HasMember };
 		return func(this, a_data, a_name, a_isDObj);
 	}
 
@@ -421,7 +421,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::GetMember(void* a_data, const char* a_name, GFxValue* a_val, bool a_isDObj) const
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::GetMember);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::GetMember);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetMember };
 		return func(this, a_data, a_name, a_val, a_isDObj);
 	}
 
@@ -429,7 +429,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::SetMember(void* a_data, const char* a_name, const GFxValue& a_value, bool a_isDObj)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::SetMember);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::SetMember);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetMember };
 		return func(this, a_data, a_name, a_value, a_isDObj);
 	}
 
@@ -437,7 +437,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::Invoke(void* a_data, GFxValue* a_result, const char* a_name, const GFxValue* a_args, UPInt a_numArgs, bool isDObj)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::Invoke);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::Invoke);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::Invoke };
 		return func(this, a_data, a_result, a_name, a_args, a_numArgs, isDObj);
 	}
 
@@ -445,7 +445,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::DeleteMember(void* a_data, const char* a_name, bool a_isDObj)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::DeleteMember);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::DeleteMember);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::DeleteMember };
 		return func(this, a_data, a_name, a_isDObj);
 	}
 
@@ -453,7 +453,7 @@ namespace RE
 	std::uint32_t GFxValue::ObjectInterface::GetArraySize(void* a_data) const
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::GetArraySize);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::GetArraySize);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetArraySize };
 		return func(this, a_data);
 	}
 
@@ -461,7 +461,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::SetArraySize(void* a_data, std::uint32_t a_size)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::SetArraySize);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::SetArraySize);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetArraySize };
 		return func(this, a_data, a_size);
 	}
 
@@ -469,7 +469,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::GetElement(void* a_data, std::uint32_t a_idx, GFxValue* a_val) const
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::GetElement);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::GetElement);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetElement };
 		return func(this, a_data, a_idx, a_val);
 	}
 
@@ -477,7 +477,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::SetElement(void* a_data, std::uint32_t a_idx, const GFxValue& a_val)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::SetElement);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::SetElement);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetElement };
 		return func(this, a_data, a_idx, a_val);
 	}
 
@@ -485,7 +485,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::PushBack(void* a_data, const GFxValue& a_value)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::PushBack);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::PushBack);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::PushBack };
 		return func(this, a_data, a_value);
 	}
 
@@ -493,7 +493,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::RemoveElements(void* a_data, std::uint32_t a_idx, std::int32_t a_count)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::RemoveElements);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::RemoveElements);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::RemoveElements };
 		return func(this, a_data, a_idx, a_count);
 	}
 
@@ -501,7 +501,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::GetDisplayInfo(void* a_data, DisplayInfo* a_info) const
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::GetDisplayInfo);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::GetDisplayInfo);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetDisplayInfo };
 		return func(this, a_data, a_info);
 	}
 
@@ -509,7 +509,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::SetDisplayInfo(void* a_data, const DisplayInfo& a_info)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::SetDisplayInfo);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::SetDisplayInfo);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetDisplayInfo };
 		return func(this, a_data, a_info);
 	}
 
@@ -517,7 +517,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::SetText(void* a_data, const char* a_text, bool a_isHTML)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::SetText);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::SetText);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetText };
 		return func(this, a_data, a_text, a_isHTML);
 	}
 
@@ -525,7 +525,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::AttachMovie(void* a_data, GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, std::int32_t a_depth, const GFxValue* a_initObj)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::AttachMovie);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::AttachMovie);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::AttachMovie };
 		return func(this, a_data, a_movieClip, a_symbolName, a_instanceName, a_depth, a_initObj);
 	}
 
@@ -533,7 +533,7 @@ namespace RE
 	bool GFxValue::ObjectInterface::GotoAndPlay(void* a_data, const char* a_frame, bool a_stop)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::GotoAndPlay);
-		REL::Offset<func_t> func(Offset::GFxValue::ObjectInterface::GotoAndPlay);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GotoAndPlay };
 		return func(this, a_data, a_frame, a_stop);
 	}
 

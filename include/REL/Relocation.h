@@ -1,7 +1,5 @@
 #pragma once
 
-#include "REL/Version.h"
-
 
 #define REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER_IMPL(a_nopropQual, a_propQual, ...)              \
 	template <                                                                                    \
@@ -75,164 +73,121 @@ namespace REL
 {
 	namespace detail
 	{
-		template <class T>
-		class MemoryMap
+		class memory_map
 		{
 		public:
-			using value_type = T;
-			using size_type = std::size_t;
-			using reference = value_type&;
-			using const_reference = const value_type&;
-			using pointer = value_type*;
-			using const_pointer = const value_type*;
+			constexpr memory_map() noexcept = default;
+			memory_map(const memory_map&) = delete;
 
-			MemoryMap() noexcept :
-				_handle(nullptr),
-				_size(0),
-				_data(nullptr)
-			{}
-
-			MemoryMap(const MemoryMap&) = delete;
-
-			MemoryMap(MemoryMap&& a_rhs) noexcept :
-				_handle(std::move(a_rhs._handle)),
-				_size(std::move(a_rhs._size)),
-				_data(std::move(a_rhs._data))
+			inline memory_map(memory_map&& a_rhs) noexcept :
+				_mapping(a_rhs._mapping),
+				_view(a_rhs._view)
 			{
-				a_rhs._handle = nullptr;
-				a_rhs._size = 0;
-				a_rhs._data = nullptr;
+				a_rhs._mapping = nullptr;
+				a_rhs._view = nullptr;
 			}
 
-			MemoryMap(const char* a_name, size_type a_size) :
-				_handle(nullptr),
-				_size(0),
-				_data(nullptr)
-			{
-				open(a_name, a_size);
-			}
+			inline ~memory_map() { close(); }
 
-			~MemoryMap()
-			{
-				close();
-			}
+			memory_map& operator=(const memory_map&) = delete;
 
-			MemoryMap& operator=(const MemoryMap&) = delete;
-
-			MemoryMap& operator=(MemoryMap&& a_rhs) noexcept
+			inline memory_map& operator=(memory_map&& a_rhs) noexcept
 			{
 				if (this != std::addressof(a_rhs)) {
-					_handle = std::move(a_rhs._handle);
-					a_rhs._handle = nullptr;
+					_mapping = a_rhs._mapping;
+					a_rhs._mapping = nullptr;
 
-					_size = std::move(a_rhs._size);
-					a_rhs._size = 0;
-
-					_data = std::move(a_rhs._data);
-					a_rhs._data = nullptr;
+					_view = a_rhs._view;
+					a_rhs._view = nullptr;
 				}
 				return *this;
 			}
 
-			MemoryMap& operator=(const std::vector<value_type>& a_rhs)
-			{
-				auto elemsToCopy = std::min<size_type>(size(), a_rhs.size());
-				if (elemsToCopy > 0) {
-					std::memcpy(data(), a_rhs.data(), elemsToCopy * sizeof(size_type));
-				}
-				return *this;
-			}
+			[[nodiscard]] constexpr void* data() noexcept { return _view; }
 
-			reference operator[](size_type a_idx) noexcept
-			{
-				assert(a_idx < _size);
-				return _data[a_idx];
-			}
-
-			const_reference operator[](size_type a_idx) const noexcept
-			{
-				assert(a_idx < _size);
-				return _data[a_idx];
-			}
-
-			constexpr pointer data() noexcept
-			{
-				return _data;
-			}
-
-			constexpr const_pointer data() const noexcept
-			{
-				return _data;
-			}
-
-			size_type size() const noexcept
-			{
-				return _size;
-			}
-
-			bool try_open(const char* a_name, size_type a_size)
+			inline bool open(stl::zwstring a_name, std::size_t a_size)
 			{
 				close();
 
 				ULARGE_INTEGER bytes;
-				bytes.QuadPart = a_size * sizeof(value_type);
+				bytes.QuadPart = a_size;
 
-				_handle = OpenFileMappingA(FILE_MAP_ALL_ACCESS, false, a_name);
-				if (!_handle) {
+				_mapping = OpenFileMappingW(
+					FILE_MAP_READ | FILE_MAP_WRITE,
+					false,
+					a_name.data());
+				if (!_mapping) {
 					close();
 					return false;
 				}
 
-				_data = static_cast<pointer>(MapViewOfFile(_handle, FILE_MAP_ALL_ACCESS, 0, 0, bytes.QuadPart));
-				if (!_data) {
+				_view = MapViewOfFile(
+					_mapping,
+					FILE_MAP_READ | FILE_MAP_WRITE,
+					0,
+					0,
+					bytes.QuadPart);
+				if (!_view) {
 					close();
 					return false;
 				}
 
-				_size = a_size;
 				return true;
 			}
 
-			void open(const char* a_name, size_type a_size)
+			inline bool create(stl::zwstring a_name, std::size_t a_size)
 			{
 				close();
 
 				ULARGE_INTEGER bytes;
-				bytes.QuadPart = a_size * sizeof(value_type);
+				bytes.QuadPart = a_size;
 
-				_handle = OpenFileMappingA(FILE_MAP_ALL_ACCESS, false, a_name);
-				if (!_handle) {
-					_handle = CreateFileMappingA(INVALID_HANDLE_VALUE, nullptr, PAGE_READWRITE, bytes.HighPart, bytes.LowPart, a_name);
-					if (!_handle) {
-						REL_THROW_EXCEPTION("failed to create file mapping");
+				_mapping = OpenFileMappingW(
+					FILE_MAP_READ | FILE_MAP_WRITE,
+					false,
+					a_name.data());
+				if (!_mapping) {
+					_mapping = CreateFileMappingW(
+						INVALID_HANDLE_VALUE,
+						nullptr,
+						PAGE_READWRITE,
+						bytes.HighPart,
+						bytes.LowPart,
+						a_name.data());
+					if (!_mapping) {
+						return false;
 					}
 				}
 
-				_data = static_cast<pointer>(MapViewOfFile(_handle, FILE_MAP_ALL_ACCESS, 0, 0, bytes.QuadPart));
-				if (!_data) {
-					REL_THROW_EXCEPTION("failed to map view of file");
+				_view = MapViewOfFile(
+					_mapping,
+					FILE_MAP_READ | FILE_MAP_WRITE,
+					0,
+					0,
+					bytes.QuadPart);
+				if (!_view) {
+					return false;
 				}
 
-				_size = a_size;
+				return true;
 			}
 
-			void close()
+			inline void close()
 			{
-				if (_data) {
-					UnmapViewOfFile(static_cast<void*>(_data));
-					_data = nullptr;
+				if (_view) {
+					UnmapViewOfFile(static_cast<const void*>(_view));
+					_view = nullptr;
 				}
 
-				if (_handle) {
-					CloseHandle(_handle);
-					_handle = nullptr;
+				if (_mapping) {
+					CloseHandle(_mapping);
+					_mapping = nullptr;
 				}
 			}
 
 		private:
-			HANDLE	  _handle;
-			size_type _size;
-			pointer	  _data;
+			HANDLE _mapping{ nullptr };
+			void*  _view{ nullptr };
 		};
 
 
@@ -373,163 +328,307 @@ namespace REL
 	}
 
 
-	class Module
+	template <class T>
+	inline void safe_write(std::uintptr_t a_dst, stl::span<T> a_data)
+	{
+		safe_write(a_dst, a_data.data(), a_data.size_bytes());
+	}
+
+
+	class Version
 	{
 	public:
-		struct IDs
+		using value_type = std::uint16_t;
+		using reference = value_type&;
+		using const_reference = const value_type&;
+
+		constexpr Version() noexcept = default;
+
+		constexpr Version(std::array<value_type, 4> a_version) noexcept :
+			_impl(a_version)
+		{}
+
+		constexpr Version(value_type a_v1, value_type a_v2, value_type a_v3, value_type a_v4) noexcept :
+			_impl{ a_v1, a_v2, a_v3, a_v4 }
+		{}
+
+		[[nodiscard]] constexpr reference		operator[](std::size_t a_idx) noexcept { return _impl[a_idx]; }
+		[[nodiscard]] constexpr const_reference operator[](std::size_t a_idx) const noexcept { return _impl[a_idx]; }
+
+		[[nodiscard]] int constexpr compare(const Version& a_rhs) const noexcept
 		{
-			enum ID
-			{
-				kTextX,
-				kIData,
-				kRData,
-				kData,
-				kPData,
-				kTLS,
-				kTextW,
-				kGFIDs,
-
-				kTotal
-			};
-		};
-		using ID = IDs::ID;
-
-
-		class Section
-		{
-		public:
-			constexpr Section() noexcept :
-				addr(0xDEADBEEF),
-				size(0xDEADBEEF),
-				rva(0xDEADBEEF)
-			{}
-
-
-			std::uint32_t  RVA() const;
-			std::uintptr_t BaseAddr() const;
-			std::size_t	   Size() const;
-
-
-			template <class T = void>
-			inline T* BasePtr() const
-			{
-				return reinterpret_cast<T*>(BaseAddr());
+			for (std::size_t i = 0; i < _impl.size(); ++i) {
+				if ((*this)[i] != a_rhs[i]) {
+					return (*this)[i] < a_rhs[i] ? -1 : 1;
+				}
 			}
+			return 0;
+		}
 
-		protected:
-			friend class Module;
-
-
-			std::uintptr_t addr;
-			std::size_t	   size;
-			std::uint32_t  rva;
-		};
-
-
-		static std::uintptr_t BaseAddr();
-		static std::size_t	  Size();
-		static Section		  GetSection(ID a_id);
-		static Version		  GetVersion();
-
-
-		template <class T = void>
-		inline static T* BasePtr()
+		[[nodiscard]] inline std::string string() const
 		{
-			auto singleton = GetSingleton();
-			return reinterpret_cast<T*>(singleton->_base);
+			std::string result;
+			for (std::size_t i = 0; i < _impl.size(); ++i) {
+				result += std::to_string(_impl[i]);
+				result += '-';
+			}
+			result.pop_back();
+			return result;
+		}
+
+		[[nodiscard]] inline std::wstring wstring() const
+		{
+			std::wstring result;
+			for (std::size_t i = 0; i < _impl.size(); ++i) {
+				result += std::to_wstring(_impl[i]);
+				result += L'-';
+			}
+			result.pop_back();
+			return result;
 		}
 
 	private:
-		struct Sections
+		std::array<value_type, 4> _impl{ 0, 0, 0, 0 };
+	};
+
+	[[nodiscard]] constexpr bool operator==(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) == 0; }
+	[[nodiscard]] constexpr bool operator!=(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) != 0; }
+	[[nodiscard]] constexpr bool operator<(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) < 0; }
+	[[nodiscard]] constexpr bool operator<=(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) <= 0; }
+	[[nodiscard]] constexpr bool operator>(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) > 0; }
+	[[nodiscard]] constexpr bool operator>=(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) >= 0; }
+
+	class Segment
+	{
+	public:
+		enum Name : std::size_t
 		{
-			struct Elem
-			{
-				constexpr Elem(const char* a_name) :
-					Elem(a_name, 0)
-				{}
-
-
-				constexpr Elem(const char* a_name, DWORD a_flags) :
-					name(std::move(a_name)),
-					section(),
-					flags(a_flags)
-				{}
-
-
-				std::string_view name;
-				Section			 section;
-				DWORD			 flags;
-			};
-
-
-			constexpr Sections() :
-				arr{
-					Elem(".text", static_cast<DWORD>(IMAGE_SCN_MEM_EXECUTE)),
-					".idata",
-					".rdata",
-					".data",
-					".pdata",
-					".tls",
-					Elem(".text", static_cast<DWORD>(IMAGE_SCN_MEM_WRITE)),
-					".gfids"
-				}
-			{}
-
-
-			std::array<Elem, ID::kTotal> arr;
+			textx,
+			idata,
+			rdata,
+			data,
+			pdata,
+			tls,
+			textw,
+			gfids,
+			total
 		};
 
+		constexpr Segment() noexcept = default;
 
-		Module();
-		Module(const Module&) = default;
-		Module(Module&&) = default;
-		~Module() = default;
+		constexpr Segment(std::uintptr_t a_proxyBase, std::uintptr_t a_address, std::uintptr_t a_size) noexcept :
+			_proxyBase(a_proxyBase),
+			_address(a_address),
+			_size(a_size)
+		{}
 
-		Module& operator=(const Module&) = default;
-		Module& operator=(Module&&) = default;
+		[[nodiscard]] constexpr std::uintptr_t address() const noexcept { return _address; }
+		[[nodiscard]] constexpr std::size_t	   offset() const noexcept { return address() - _proxyBase; }
+		[[nodiscard]] constexpr std::size_t	   size() const noexcept { return _size; }
 
-		[[nodiscard]] static Module* GetSingleton();
+		[[nodiscard]] inline void* pointer() const noexcept { return reinterpret_cast<void*>(address()); }
 
-		void BuildVersionInfo();
+		template <class T>
+		[[nodiscard]] inline T* pointer() const noexcept
+		{
+			return static_cast<T*>(pointer());
+		}
+
+	private:
+		std::uintptr_t _proxyBase{ 0 };
+		std::uintptr_t _address{ 0 };
+		std::size_t	   _size{ 0 };
+	};
 
 
-		static inline std::uintptr_t _natvis = 0;
+	class Module
+	{
+	public:
+		[[nodiscard]] static inline Module& get()
+		{
+			static Module singleton;
+			return singleton;
+		}
 
-		HMODULE		   _handle;
-		std::uintptr_t _base;
-		std::size_t	   _size;
-		Sections	   _sections;
-		Version		   _version;
+		[[nodiscard]] constexpr std::uintptr_t base() const noexcept { return _base; }
+		[[nodiscard]] constexpr Version		   version() const noexcept { return _version; }
+
+		[[nodiscard]] constexpr Segment segment(Segment::Name a_segment) const noexcept { return _segments[a_segment]; }
+
+		[[nodiscard]] inline void* pointer() const noexcept { return reinterpret_cast<void*>(base()); }
+
+		template <class T>
+		[[nodiscard]] inline T* pointer() const noexcept
+		{
+			return static_cast<T*>(pointer());
+		}
+
+	private:
+		inline Module() { load(); }
+
+		Module(const Module&) = delete;
+		Module(Module&&) = delete;
+
+		~Module() noexcept = default;
+
+		Module& operator=(const Module&) = delete;
+		Module& operator=(Module&&) = delete;
+
+		inline void load()
+		{
+			auto handle = GetModuleHandleW(FILENAME.data());
+			if (handle == nullptr) {
+				REL_THROW_EXCEPTION("failed to obtain module handle");
+			}
+			_base = reinterpret_cast<std::uintptr_t>(handle);
+
+			load_version();
+			load_segments();
+		}
+
+		inline void load_segments()
+		{
+			auto		dosHeader = reinterpret_cast<const IMAGE_DOS_HEADER*>(_base);
+			auto		ntHeader = adjust_pointer<IMAGE_NT_HEADERS64>(dosHeader, dosHeader->e_lfanew);
+			const auto* sections = IMAGE_FIRST_SECTION(ntHeader);
+			const auto	size = std::min<std::size_t>(ntHeader->FileHeader.NumberOfSections, _segments.size());
+			for (std::size_t i = 0; i < size; ++i) {
+				const auto& section = sections[i];
+				const auto	it = std::find_if(
+					 SEGMENTS.begin(),
+					 SEGMENTS.end(),
+					 [&](auto&& a_elem) {
+						 constexpr auto size = std::extent_v<decltype(section.Name)>;
+						 const auto		len = std::min(a_elem.first.size(), size);
+						 return std::memcmp(a_elem.first.data(), section.Name, len) == 0 &&
+								(section.Characteristics & a_elem.second) == a_elem.second;
+					 });
+				if (it != SEGMENTS.end()) {
+					const auto idx = static_cast<std::size_t>(std::distance(SEGMENTS.begin(), it));
+					_segments[idx] = Segment{ _base, _base + section.VirtualAddress, section.Misc.VirtualSize };
+				}
+			}
+		}
+
+		inline void load_version()
+		{
+			DWORD			  dummy;
+			std::vector<char> buf(GetFileVersionInfoSizeW(FILENAME.data(), std::addressof(dummy)));
+			if (buf.size() == 0) {
+				REL_THROW_EXCEPTION("failed to obtain file version info size");
+			}
+
+			if (!GetFileVersionInfoW(FILENAME.data(), 0, static_cast<DWORD>(buf.size()), buf.data())) {
+				REL_THROW_EXCEPTION("failed to obtain file version info");
+			}
+
+			LPVOID verBuf;
+			UINT   verLen;
+			if (!VerQueryValueW(buf.data(), L"\\StringFileInfo\\040904B0\\ProductVersion", std::addressof(verBuf), std::addressof(verLen))) {
+				REL_THROW_EXCEPTION("failed to query value");
+			}
+
+			std::wistringstream ss(
+				std::wstring(static_cast<const wchar_t*>(verBuf), verLen));
+			std::wstring token;
+			for (std::size_t i = 0; i < 4 && std::getline(ss, token, L'.'); ++i) {
+				_version[i] = static_cast<std::uint16_t>(std::stoi(token));
+			}
+		}
+
+		static constexpr auto FILENAME = L"SkyrimSE.exe"sv;
+
+		static constexpr std::array SEGMENTS{
+			std::make_pair(".text"sv, static_cast<std::uint32_t>(IMAGE_SCN_MEM_EXECUTE)),
+			std::make_pair(".idata"sv, static_cast<std::uint32_t>(0)),
+			std::make_pair(".rdata"sv, static_cast<std::uint32_t>(0)),
+			std::make_pair(".data"sv, static_cast<std::uint32_t>(0)),
+			std::make_pair(".pdata"sv, static_cast<std::uint32_t>(0)),
+			std::make_pair(".tls"sv, static_cast<std::uint32_t>(0)),
+			std::make_pair(".text"sv, static_cast<std::uint32_t>(IMAGE_SCN_MEM_WRITE)),
+			std::make_pair(".gfids"sv, static_cast<std::uint32_t>(0))
+		};
+
+		std::array<Segment, Segment::total> _segments;
+		Version								_version;
+		std::uintptr_t						_base{ 0 };
 	};
 
 
 	class IDDatabase
 	{
 	public:
-#ifdef _DEBUG
-		[[nodiscard]] static std::uint64_t OffsetToID(std::uint64_t a_address);
+		[[nodiscard]] static inline IDDatabase& get()
+		{
+			static IDDatabase singleton;
+			return singleton;
+		}
+
+		[[nodiscard]] inline std::size_t id2offset(std::uint64_t a_id) const
+		{
+			if (_id2offset.empty()) {
+				REL_THROW_EXCEPTION("data is empty");
+			}
+
+			mapping_t  elem{ a_id, 0 };
+			const auto it = std::lower_bound(
+				_id2offset.begin(),
+				_id2offset.end(),
+				elem,
+				[](auto&& a_lhs, auto&& a_rhs) {
+					return a_lhs.id < a_rhs.id;
+				});
+			if (it == _id2offset.end()) {
+				REL_THROW_EXCEPTION("id not found");
+			}
+
+			return static_cast<std::size_t>(it->offset);
+		}
+
+#ifndef NDEBUG
+		[[nodiscard]] inline std::uint64_t offset2id(std::size_t a_offset) const
+		{
+			if (_offset2id.empty()) {
+				REL_THROW_EXCEPTION("data is empty");
+			}
+
+			mapping_t  elem{ 0, a_offset };
+			const auto it = std::lower_bound(
+				_offset2id.begin(),
+				_offset2id.end(),
+				elem,
+				[](auto&& a_lhs, auto&& a_rhs) {
+					return a_lhs.offset < a_rhs.offset;
+				});
+			if (it == _offset2id.end()) {
+				REL_THROW_EXCEPTION("offset not found");
+			}
+
+			return it->id;
+		}
 #endif
-		[[nodiscard]] static std::uint64_t IDToOffset(std::uint64_t a_id);
 
 	private:
-		class IStream
+		class istream_t
 		{
 		public:
-			using stream_type = std::istream;
+			using stream_type = std::ifstream;
 			using pointer = stream_type*;
 			using const_pointer = const stream_type*;
 			using reference = stream_type&;
 			using const_reference = const stream_type&;
 
-			constexpr IStream(stream_type& a_stream) :
-				_stream(a_stream)
-			{}
+			inline istream_t(stl::zwstring a_filename, std::ios_base::openmode a_mode) :
+				_stream(a_filename.data(), a_mode)
+			{
+				if (!_stream.is_open()) {
+					REL_THROW_EXCEPTION("failed to open file");
+				}
 
-			[[nodiscard]] constexpr reference		operator*() noexcept { return _stream; }
-			[[nodiscard]] constexpr const_reference operator*() const noexcept { return _stream; }
+				_stream.exceptions(std::ios::badbit | std::ios::failbit | std::ios::eofbit);
+			}
 
-			[[nodiscard]] constexpr pointer		  operator->() noexcept { return std::addressof(_stream); }
-			[[nodiscard]] constexpr const_pointer operator->() const noexcept { return std::addressof(_stream); }
+			inline void ignore(std::streamsize a_count) { _stream.ignore(a_count); }
 
 			template <class T>
 			inline void readin(T& a_val)
@@ -544,98 +643,204 @@ namespace REL
 					int> = 0>
 			inline T readout()
 			{
-				T val;
+				T val{};
 				readin(val);
 				return val;
 			}
 
 		private:
-			stream_type& _stream;
+			stream_type _stream;
 		};
 
-
-		class Header
+		class header_t
 		{
 		public:
-			inline Header() noexcept :
-				_moduleName(),
-				_part1(),
-				_part2()
-			{}
+			void read(istream_t& a_input)
+			{
+				std::int32_t format{};
+				a_input.readin(format);
+				if (format != 1) {
+					REL_THROW_EXCEPTION("unexpected format");
+				}
 
-			void Read(IStream& a_input);
+				std::int32_t version[4]{};
+				std::int32_t nameLen{};
+				a_input.readin(version);
+				a_input.readin(nameLen);
+				a_input.ignore(nameLen);
 
-			[[nodiscard]] constexpr decltype(auto)	   AddrCount() const noexcept { return static_cast<std::size_t>(_part2.addressCount); }
-			[[nodiscard]] constexpr const std::string& ModuleName() const noexcept { return _moduleName; }
-			[[nodiscard]] constexpr decltype(auto)	   PSize() const noexcept { return static_cast<std::uint64_t>(_part2.pointerSize); }
-			[[nodiscard]] inline decltype(auto)		   GetVersion() const { return Version(_part1.version); }
+				a_input.readin(_pointerSize);
+				a_input.readin(_addressCount);
+
+				for (std::size_t i = 0; i < std::extent_v<decltype(version)>; ++i) {
+					_version[i] = static_cast<std::uint16_t>(version[i]);
+				}
+			}
+
+			[[nodiscard]] constexpr std::size_t	  address_count() const noexcept { return static_cast<std::size_t>(_addressCount); }
+			[[nodiscard]] constexpr std::uint64_t pointer_size() const noexcept { return static_cast<std::uint64_t>(_pointerSize); }
+			[[nodiscard]] constexpr Version		  version() const noexcept { return _version; }
 
 		private:
-			struct Part1
-			{
-				constexpr Part1() :
-					format(0),
-					version{ 0 },
-					nameLen(0)
-				{}
-
-				void Read(IStream& a_input);
-
-				std::int32_t format;
-				std::int32_t version[4];
-				std::int32_t nameLen;
-			};
-
-
-			struct Part2
-			{
-				constexpr Part2() :
-					pointerSize(0),
-					addressCount(0)
-				{}
-
-				void Read(IStream& a_input);
-
-				std::int32_t pointerSize;
-				std::int32_t addressCount;
-			};
-
-
-			std::string _moduleName;
-			Part1		_part1;
-			Part2		_part2;
+			Version		 _version;
+			std::int32_t _pointerSize{ 0 };
+			std::int32_t _addressCount{ 0 };
 		};
 
+		struct mapping_t
+		{
+			std::uint64_t id;
+			std::uint64_t offset;
+		};
 
-		IDDatabase();
-		IDDatabase(const IDDatabase&) = default;
-		IDDatabase(IDDatabase&&) = default;
+		inline IDDatabase() { load(); }
+
+		IDDatabase(const IDDatabase&) = delete;
+		IDDatabase(IDDatabase&&) = delete;
+
 		~IDDatabase() = default;
 
-		IDDatabase& operator=(const IDDatabase&) = default;
-		IDDatabase& operator=(IDDatabase&&) = default;
+		IDDatabase& operator=(const IDDatabase&) = delete;
+		IDDatabase& operator=(IDDatabase&&) = delete;
 
+		inline void load()
+		{
+			const auto version = Module::get().version();
+			auto	   filename = L"Data/SKSE/Plugins/version-"s;
+			filename += version.wstring();
+			filename += L".bin"sv;
+			load_file(filename, version);
+		}
 
-		[[nodiscard]] static IDDatabase* GetSingleton();
+		inline void load_file(stl::zwstring a_filename, Version a_version)
+		{
+			istream_t input(a_filename.data(), std::ios::in | std::ios::binary);
+			header_t  header;
+			header.read(input);
+			if (header.version() != a_version) {
+				REL_THROW_EXCEPTION("version mismatch");
+			}
 
-		[[nodiscard]] bool Load();
-		[[nodiscard]] bool Load(std::uint16_t a_major, std::uint16_t a_minor, std::uint16_t a_revision, std::uint16_t a_build);
-		[[nodiscard]] bool Load(Version a_version);
+			auto mapname = L"CommonLibSSEOffsets-v2-"s;
+			mapname += a_version.wstring();
+			const auto byteSize = static_cast<std::size_t>(header.address_count()) * sizeof(mapping_t);
+			if (!_mmap.open(mapname, byteSize) &&
+				!_mmap.create(mapname, byteSize)) {
+				REL_THROW_EXCEPTION("failed to create shared mapping");
+			}
 
-		[[nodiscard]] bool DoLoad(IStream& a_input, const Version& a_version);
-		void			   DoLoadImpl(IStream& a_input, std::vector<std::uint64_t>& a_buf);
+			_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
+			unpack_file(input, header);
+			std::sort(
+				_id2offset.begin(),
+				_id2offset.end(),
+				[](auto&& a_lhs, auto&& a_rhs) {
+					return a_lhs.id < a_rhs.id;
+				});
+			_natvis = _id2offset.data();
 
-#ifdef _DEBUG
-		[[nodiscard]] std::uint64_t OffsetToIDImpl(std::uint64_t a_address);
+#ifndef NDEBUG
+			_offset2id.clear();
+			_offset2id.reserve(_id2offset.size());
+			_offset2id.insert(_offset2id.begin(), _id2offset.begin(), _id2offset.end());
+			std::sort(
+				_offset2id.begin(),
+				_offset2id.end(),
+				[](auto&& a_lhs, auto&& a_rhs) {
+					return a_lhs.offset < a_rhs.offset;
+				});
 #endif
-		[[nodiscard]] std::uint64_t IDToOffsetImpl(std::uint64_t a_id);
+		}
 
-		static inline std::uint64_t* _natvis = nullptr;
+		inline void unpack_file(istream_t& a_input, header_t a_header)
+		{
+			std::uint8_t  type = 0;
+			std::uint64_t id = 0;
+			std::uint64_t offset = 0;
+			std::uint64_t prevID = 0;
+			std::uint64_t prevOffset = 0;
+			for (auto& mapping : _id2offset) {
+				a_input.readin(type);
+				const auto lo = static_cast<std::uint8_t>(type & 0xF);
+				const auto hi = static_cast<std::uint8_t>(type >> 4);
 
-		Header							 _header;
-		detail::MemoryMap<std::uint64_t> _offsets;
-#ifdef _DEBUG
-		std::unordered_map<std::uint64_t, std::uint64_t> _ids;
+				switch (lo) {
+				case 0:
+					a_input.readin(id);
+					break;
+				case 1:
+					id = prevID + 1;
+					break;
+				case 2:
+					id = prevID + a_input.readout<std::uint8_t>();
+					break;
+				case 3:
+					id = prevID - a_input.readout<std::uint8_t>();
+					break;
+				case 4:
+					id = prevID + a_input.readout<std::uint16_t>();
+					break;
+				case 5:
+					id = prevID - a_input.readout<std::uint16_t>();
+					break;
+				case 6:
+					id = a_input.readout<std::uint16_t>();
+					break;
+				case 7:
+					id = a_input.readout<std::uint32_t>();
+					break;
+				default:
+					REL_THROW_EXCEPTION("unhandled type");
+				}
+
+				const std::uint64_t tmp = (hi & 8) != 0 ? (prevOffset / a_header.pointer_size()) : prevOffset;
+
+				switch (hi & 7) {
+				case 0:
+					a_input.readin(offset);
+					break;
+				case 1:
+					offset = tmp + 1;
+					break;
+				case 2:
+					offset = tmp + a_input.readout<std::uint8_t>();
+					break;
+				case 3:
+					offset = tmp - a_input.readout<std::uint8_t>();
+					break;
+				case 4:
+					offset = tmp + a_input.readout<std::uint16_t>();
+					break;
+				case 5:
+					offset = tmp - a_input.readout<std::uint16_t>();
+					break;
+				case 6:
+					offset = a_input.readout<std::uint16_t>();
+					break;
+				case 7:
+					offset = a_input.readout<std::uint32_t>();
+					break;
+				default:
+					REL_THROW_EXCEPTION("unhandled type");
+				}
+
+				if ((hi & 8) != 0) {
+					offset *= a_header.pointer_size();
+				}
+
+				mapping = { id, offset };
+
+				prevOffset = offset;
+				prevID = id;
+			}
+		}
+
+		static inline const mapping_t* _natvis{ nullptr };
+
+		detail::memory_map	 _mmap;
+		stl::span<mapping_t> _id2offset;
+#ifndef NDEBUG
+		std::vector<mapping_t> _offset2id;
 #endif
 	};
 
@@ -644,37 +849,11 @@ namespace REL
 	class ID
 	{
 	public:
-		constexpr ID() noexcept :
-			ID(static_cast<std::uint64_t>(0))
-		{}
-
-		constexpr ID(const ID& a_rhs) noexcept :
-			ID(a_rhs._id)
-		{}
-
-		constexpr ID(ID&& a_rhs) noexcept :
-			ID(std::move(a_rhs._id))
-		{}
+		constexpr ID() noexcept = default;
 
 		explicit constexpr ID(std::uint64_t a_id) noexcept :
 			_id(a_id)
 		{}
-
-		constexpr ID& operator=(const ID& a_rhs) noexcept
-		{
-			if (this != std::addressof(a_rhs)) {
-				_id = a_rhs._id;
-			}
-			return *this;
-		}
-
-		constexpr ID& operator=(ID&& a_rhs) noexcept
-		{
-			if (this != std::addressof(a_rhs)) {
-				_id = std::move(a_rhs._id);
-			}
-			return *this;
-		}
 
 		constexpr ID& operator=(std::uint64_t a_id) noexcept
 		{
@@ -682,21 +861,19 @@ namespace REL
 			return *this;
 		}
 
-		[[nodiscard]] std::uint64_t operator*() const;
-		[[nodiscard]] std::uint64_t address() const;
-		[[nodiscard]] std::uint64_t offset() const;
-
-		[[nodiscard, deprecated("use address")]] std::uint64_t GetAddress() const;
-		[[nodiscard, deprecated("use offset")]] std::uint64_t  GetOffset() const;
+		[[nodiscard]] inline std::uintptr_t address() const { return base() + offset(); }
+		[[nodiscard]] inline std::size_t	offset() const { return IDDatabase::get().id2offset(_id); }
 
 	private:
-		std::uint64_t _id;
+		[[nodiscard]] static inline std::uintptr_t base() { return Module::get().base(); }
+
+		std::uint64_t _id{ 0 };
 	};
 
 
-	// relocates the given offset in the exe and reinterprets it as the given type
+	// relocates the given address in the exe and reinterprets it as the given type
 	template <class T>
-	class Offset
+	class Relocation
 	{
 	public:
 		using value_type =
@@ -708,23 +885,23 @@ namespace REL
 				std::decay_t<T>,
 				T>;
 
-		constexpr Offset() noexcept = default;
+		constexpr Relocation() noexcept = default;
 
-		explicit constexpr Offset(std::uintptr_t a_address) noexcept :
+		explicit constexpr Relocation(std::uintptr_t a_address) noexcept :
 			_impl{ a_address }
 		{}
 
-		Offset(ID a_id, std::size_t a_offset = 0) :
+		Relocation(ID a_id, std::size_t a_offset = 0) :
 			_impl{ a_id.address() + a_offset }
 		{}
 
-		constexpr Offset& operator=(std::uintptr_t a_address) noexcept
+		constexpr Relocation& operator=(std::uintptr_t a_address) noexcept
 		{
 			_impl = a_address;
 			return *this;
 		}
 
-		Offset& operator=(ID a_id)
+		Relocation& operator=(ID a_id)
 		{
 			_impl = a_id.address();
 			return *this;
@@ -801,10 +978,13 @@ namespace REL
 		[[nodiscard]] value_type type() const noexcept(std::is_nothrow_copy_constructible_v<value_type>) { return get(); }
 
 	private:
-		[[nodiscard]] static std::uintptr_t base() { return Module::BaseAddr(); }
+		[[nodiscard]] static std::uintptr_t base() { return Module::get().base(); }
 
 		std::uintptr_t _impl{ 0 };
 	};
+
+	template <class T>
+	using Offset [[deprecated("use Relocation")]] = Relocation<T>;
 }
 
 

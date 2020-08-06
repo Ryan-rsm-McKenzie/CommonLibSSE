@@ -43,7 +43,7 @@ namespace RE
 	void ItemList::Update_Impl(TESObjectREFR* a_owner)
 	{
 		using func_t = decltype(&ItemList::Update_Impl);
-		REL::Offset<func_t> func(Offset::ItemList::Update);
+		REL::Relocation<func_t> func{ Offset::ItemList::Update };
 		return func(this, a_owner);
 	}
 }

@@ -5,168 +5,124 @@
 
 namespace SKSE
 {
-	namespace
+	namespace detail
 	{
-		namespace
+		struct APIStorage
 		{
-			template <class T>
-			struct _make_const
+		public:
+			[[nodiscard]] static APIStorage& get() noexcept
 			{
-				using type = typename const T;
-			};
+				static APIStorage singleton;
+				return singleton;
+			}
+
+			PluginHandle pluginHandle{ static_cast<PluginHandle>(-1) };
+			std::uint32_t releaseIndex{ 0 };
+
+			ScaleformInterface* scaleformInterface{ nullptr };
+			PapyrusInterface* papyrusInterface{ nullptr };
+			SerializationInterface* serializationInterface{ nullptr };
+			TaskInterface* taskInterface{ nullptr };
+			TrampolineInterface* trampolineInterface{ nullptr };
+
+			MessagingInterface* messagingInterface{ nullptr };
+			RE::BSTEventSource<ModCallbackEvent>* modCallbackEventSource{ nullptr };
+			RE::BSTEventSource<CameraEvent>* cameraEventSource{ nullptr };
+			RE::BSTEventSource<CrosshairRefEvent>* crosshairRefEventSource{ nullptr };
+			RE::BSTEventSource<ActionEvent>* actionEventSource{ nullptr };
+			RE::BSTEventSource<NiNodeUpdateEvent>* niNodeUpdateEventSource{ nullptr };
+
+			ObjectInterface* objectInterface{ nullptr };
+			SKSEDelayFunctorManager* delayFunctorManager{ nullptr };
+			SKSEObjectRegistry* objectRegistry{ nullptr };
+			SKSEPersistentObjectStorage* persistentObjectStorage{ nullptr };
+
+			std::mutex apiLock;
+			std::vector<std::function<void()>> apiInitRegs;
+			bool apiInit{ false };
 
 			template <class T>
-			struct _make_const<T*>
+			RE::BSTEventSource<T>* GetEventDispatcher(MessagingInterface::Dispatcher a_id) const
 			{
-				using type = typename const T*;
-			};
+				assert(messagingInterface);
+				return static_cast<RE::BSTEventSource<T>*>(messagingInterface->GetEventDispatcher(a_id));
+			}
+
+		private:
+			APIStorage() noexcept = default;
+			APIStorage(const APIStorage&) = delete;
+			APIStorage(APIStorage&&) = delete;
+
+			~APIStorage() noexcept = default;
+
+			APIStorage& operator=(const APIStorage&) = delete;
+			APIStorage& operator=(APIStorage&&) = delete;
+		};
+
+		template <class T>
+		T* QueryInterface(const LoadInterface* a_intfc, std::uint32_t a_id)
+		{
+			auto result = static_cast<T*>(a_intfc->QueryInterface(a_id));
+			if (result && result->Version() > T::kVersion) {
+				log::warn("interface definition is out of date");
+			}
+			return result;
 		}
-
-		template <class T>
-		struct make_const :
-			_make_const<T>
-		{};
-
-		template <class T>
-		using make_const_t = typename make_const<T>::type;
-
-
-		PluginHandle g_pluginHandle = kInvalidPluginHandle;
-		std::uint32_t g_releaseIndex = 0;
-
-		ScaleformInterface* g_scaleformInterface = nullptr;
-		PapyrusInterface* g_papyrusInterface = nullptr;
-		SerializationInterface* g_serializationInterface = nullptr;
-		TaskInterface* g_taskInterface = nullptr;
-
-		MessagingInterface* g_messagingInterface = nullptr;
-		RE::BSTEventSource<ModCallbackEvent>* g_modCallbackEventSource = nullptr;
-		RE::BSTEventSource<CameraEvent>* g_cameraEventSource = nullptr;
-		RE::BSTEventSource<CrosshairRefEvent>* g_crosshairRefEventSource = nullptr;
-		RE::BSTEventSource<ActionEvent>* g_actionEventSource = nullptr;
-		RE::BSTEventSource<NiNodeUpdateEvent>* g_niNodeUpdateEventSource = nullptr;
-
-		ObjectInterface* g_objectInterface = nullptr;
-		SKSEDelayFunctorManager* g_delayFunctorManager = nullptr;
-		SKSEObjectRegistry* g_objectRegistry = nullptr;
-		SKSEPersistentObjectStorage* g_persistentObjectStorage = nullptr;
-
-		Trampoline g_trampoline;
-
-		std::mutex g_apiLock;
-		std::vector<std::function<void()>> g_apiInitRegs;
-		bool g_apiInit = false;
 	}
 
 
-	bool Init(const LoadInterface* a_skse)
+	bool Init(const LoadInterface* a_intfc) noexcept
 	{
-		assert(a_skse);
-		std::lock_guard<decltype(g_apiLock)> locker(g_apiLock);
-
-		if (!g_apiInit) {
-			g_pluginHandle = a_skse->GetPluginHandle();
-			if (g_pluginHandle == kInvalidPluginHandle) {
-				log::error("Failed to get valid plugin handle!");
-				return false;
+		try {
+			if (!a_intfc) {
+				throw std::runtime_error("interface is null"s);
 			}
 
-			g_releaseIndex = a_skse->GetReleaseIndex();
+			(void)REL::Module::get();
+			(void)REL::IDDatabase::get();
 
-			g_scaleformInterface = static_cast<decltype(g_scaleformInterface)>(a_skse->QueryInterface(InterfaceID::kScaleform));
-			if (!g_scaleformInterface) {
-				log::error("Failed to query scaleform interface!");
-				return false;
+			auto& storage = detail::APIStorage::get();
+			const auto& intfc = *a_intfc;
+
+			const std::scoped_lock l(storage.apiLock);
+			if (!storage.apiInit) {
+				storage.pluginHandle = intfc.GetPluginHandle();
+				storage.releaseIndex = intfc.GetReleaseIndex();
+
+				storage.scaleformInterface = detail::QueryInterface<ScaleformInterface>(a_intfc, LoadInterface::kScaleform);
+				storage.papyrusInterface = detail::QueryInterface<PapyrusInterface>(a_intfc, LoadInterface::kPapyrus);
+				storage.serializationInterface = detail::QueryInterface<SerializationInterface>(a_intfc, LoadInterface::kSerialization);
+				storage.taskInterface = detail::QueryInterface<TaskInterface>(a_intfc, LoadInterface::kTask);
+				storage.trampolineInterface = detail::QueryInterface<TrampolineInterface>(a_intfc, LoadInterface::kTrampoline);
+
+				storage.messagingInterface = detail::QueryInterface<MessagingInterface>(a_intfc, LoadInterface::kMessaging);
+				if (storage.messagingInterface) {
+					storage.modCallbackEventSource = storage.GetEventDispatcher<ModCallbackEvent>(MessagingInterface::Dispatcher::kActionEvent);
+					storage.cameraEventSource = storage.GetEventDispatcher<CameraEvent>(MessagingInterface::Dispatcher::kCameraEvent);
+					storage.crosshairRefEventSource = storage.GetEventDispatcher<CrosshairRefEvent>(MessagingInterface::Dispatcher::kCrosshairEvent);
+					storage.actionEventSource = storage.GetEventDispatcher<ActionEvent>(MessagingInterface::Dispatcher::kActionEvent);
+					storage.niNodeUpdateEventSource = storage.GetEventDispatcher<NiNodeUpdateEvent>(MessagingInterface::Dispatcher::kNiNodeUpdateEvent);
+				}
+
+				storage.objectInterface = detail::QueryInterface<ObjectInterface>(a_intfc, LoadInterface::kObject);
+				if (storage.objectInterface) {
+					const auto& objectInterface = *storage.objectInterface;
+					storage.delayFunctorManager = std::addressof(objectInterface.GetDelayFunctorManager());
+					storage.objectRegistry = std::addressof(objectInterface.GetObjectRegistry());
+					storage.persistentObjectStorage = std::addressof(objectInterface.GetPersistentObjectStorage());
+				}
+
+				storage.apiInit = true;
+				auto& regs = storage.apiInitRegs;
+				for (const auto& reg : regs) {
+					reg();
+				}
+				regs.clear();
+				regs.shrink_to_fit();
 			}
-
-			g_papyrusInterface = static_cast<decltype(g_papyrusInterface)>(a_skse->QueryInterface(InterfaceID::kPapyrus));
-			if (!g_papyrusInterface) {
-				log::error("Failed to query papyrus interface!");
-				return false;
-			}
-
-			g_serializationInterface = static_cast<decltype(g_serializationInterface)>(a_skse->QueryInterface(InterfaceID::kSerialization));
-			if (!g_serializationInterface) {
-				log::error("Failed to query serialization interface!");
-				return false;
-			}
-
-			g_taskInterface = static_cast<decltype(g_taskInterface)>(a_skse->QueryInterface(InterfaceID::kTask));
-			if (!g_taskInterface) {
-				log::error("Failed to query task interface!");
-				return false;
-			}
-
-			g_messagingInterface = static_cast<decltype(g_messagingInterface)>(a_skse->QueryInterface(InterfaceID::kMessaging));
-			if (!g_messagingInterface) {
-				log::error("Failed to query messaging interface!");
-				return false;
-			} else {
-				g_modCallbackEventSource = static_cast<decltype(g_modCallbackEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kModEvent));
-				if (!g_modCallbackEventSource) {
-					log::error("Failed to get mod callback event source!");
-					return false;
-				}
-
-				g_cameraEventSource = static_cast<decltype(g_cameraEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kCameraEvent));
-				if (!g_cameraEventSource) {
-					log::error("Failed to get camera event source!");
-					return false;
-				}
-
-				g_crosshairRefEventSource = static_cast<decltype(g_crosshairRefEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kCrosshairEvent));
-				if (!g_crosshairRefEventSource) {
-					log::error("Failed to get crosshair ref event source!");
-					return false;
-				}
-
-				g_actionEventSource = static_cast<decltype(g_actionEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kActionEvent));
-				if (!g_actionEventSource) {
-					log::error("Failed to get action event source!");
-					return false;
-				}
-
-				g_niNodeUpdateEventSource = static_cast<decltype(g_niNodeUpdateEventSource)>(g_messagingInterface->GetEventDispatcher(MessagingInterface::Dispatcher::kNiNodeUpdateEvent));
-				if (!g_niNodeUpdateEventSource) {
-					log::error("Failed to get ni node update event source!");
-					return false;
-				}
-			}
-
-			g_objectInterface = static_cast<decltype(g_objectInterface)>(a_skse->QueryInterface(InterfaceID::kObject));
-			if (!g_objectInterface) {
-				log::error("Failed to query object interface!");
-				return false;
-			} else {
-				g_delayFunctorManager = std::addressof(g_objectInterface->GetDelayFunctorManager());
-				if (!g_delayFunctorManager) {
-					log::error("Failed to get delay functor manager!");
-					return false;
-				}
-
-				g_objectRegistry = std::addressof(g_objectInterface->GetObjectRegistry());
-				if (!g_objectRegistry) {
-					log::error("Failed to get object registry!");
-					return false;
-				}
-
-				g_persistentObjectStorage = std::addressof(g_objectInterface->GetPersistentObjectStorage());
-				if (!g_persistentObjectStorage) {
-					log::error("Failed to get persistent object storage!");
-					return false;
-				}
-			}
-
-			// ensure static data managers are initialized if not already
-			(void)REL::IDDatabase::IDToOffset(0);
-			(void)REL::Module::BaseAddr();
-
-			g_apiInit = true;
-			for (auto& reg : g_apiInitRegs) {
-				reg();
-			}
-			g_apiInitRegs.clear();
-			g_apiInitRegs.shrink_to_fit();
+		} catch (const std::exception& e) {
+			log::error(e.what());
+			return false;
 		}
 
 		return true;
@@ -176,10 +132,10 @@ namespace SKSE
 	void RegisterForAPIInitEvent(std::function<void()> a_fn)
 	{
 		{
-			std::lock_guard<decltype(g_apiLock)> locker(g_apiLock);
-
-			if (!g_apiInit) {
-				g_apiInitRegs.push_back(a_fn);
+			auto& storage = detail::APIStorage::get();
+			const std::scoped_lock l(storage.apiLock);
+			if (!storage.apiInit) {
+				storage.apiInitRegs.push_back(a_fn);
 				return;
 			}
 		}
@@ -188,131 +144,128 @@ namespace SKSE
 	}
 
 
-	auto GetPluginHandle()
-		-> make_const_t<decltype(g_pluginHandle)>
+	PluginHandle GetPluginHandle() noexcept
 	{
-		return g_pluginHandle;
+		return detail::APIStorage::get().pluginHandle;
 	}
 
 
-	auto GetReleaseIndex()
-		-> make_const_t<decltype(g_releaseIndex)>
+	std::uint32_t GetReleaseIndex() noexcept
 	{
-		return g_releaseIndex;
+		return detail::APIStorage::get().releaseIndex;
 	}
 
 
-	auto GetScaleformInterface()
-		-> make_const_t<decltype(g_scaleformInterface)>
+	const ScaleformInterface* GetScaleformInterface() noexcept
 	{
-		return g_scaleformInterface;
+		return detail::APIStorage::get().scaleformInterface;
 	}
 
 
-	auto GetPapyrusInterface()
-		-> make_const_t<decltype(g_papyrusInterface)>
+	const PapyrusInterface* GetPapyrusInterface() noexcept
 	{
-		return g_papyrusInterface;
+		return detail::APIStorage::get().papyrusInterface;
 	}
 
 
-	auto GetSerializationInterface()
-		-> make_const_t<decltype(g_serializationInterface)>
+	const SerializationInterface* GetSerializationInterface() noexcept
 	{
-		return g_serializationInterface;
+		return detail::APIStorage::get().serializationInterface;
 	}
 
 
-	auto GetTaskInterface()
-		-> make_const_t<decltype(g_taskInterface)>
+	const TaskInterface* GetTaskInterface() noexcept
 	{
-		return g_taskInterface;
+		return detail::APIStorage::get().taskInterface;
 	}
 
 
-	auto GetMessagingInterface()
-		-> make_const_t<decltype(g_messagingInterface)>
+	const TrampolineInterface* GetTrampolineInterface() noexcept
 	{
-		return g_messagingInterface;
+		return detail::APIStorage::get().trampolineInterface;
 	}
 
 
-	auto GetModCallbackEventSource()
-		-> decltype(g_modCallbackEventSource)
+	const MessagingInterface* GetMessagingInterface() noexcept
 	{
-		return g_modCallbackEventSource;
+		return detail::APIStorage::get().messagingInterface;
 	}
 
 
-	auto GetCameraEventSource()
-		-> decltype(g_cameraEventSource)
+	RE::BSTEventSource<ModCallbackEvent>* GetModCallbackEventSource() noexcept
 	{
-		return g_cameraEventSource;
+		return detail::APIStorage::get().modCallbackEventSource;
 	}
 
 
-	auto GetCrosshairRefEventSource()
-		-> decltype(g_crosshairRefEventSource)
+	RE::BSTEventSource<CameraEvent>* GetCameraEventSource() noexcept
 	{
-		return g_crosshairRefEventSource;
+		return detail::APIStorage::get().cameraEventSource;
 	}
 
 
-	auto GetActionEventSource()
-		-> decltype(g_actionEventSource)
+	RE::BSTEventSource<CrosshairRefEvent>* GetCrosshairRefEventSource() noexcept
 	{
-		return g_actionEventSource;
+		return detail::APIStorage::get().crosshairRefEventSource;
 	}
 
 
-	auto GetNiNodeUpdateEventSource()
-		-> decltype(g_niNodeUpdateEventSource)
+	RE::BSTEventSource<ActionEvent>* GetActionEventSource() noexcept
 	{
-		return g_niNodeUpdateEventSource;
+		return detail::APIStorage::get().actionEventSource;
 	}
 
 
-	auto GetObjectInterface()
-		-> make_const_t<decltype(g_objectInterface)>
+	RE::BSTEventSource<NiNodeUpdateEvent>* GetNiNodeUpdateEventSource() noexcept
 	{
-		return g_objectInterface;
+		return detail::APIStorage::get().niNodeUpdateEventSource;
 	}
 
 
-	auto GetDelayFunctorManager()
-		-> make_const_t<decltype(g_delayFunctorManager)>
+	const ObjectInterface* GetObjectInterface() noexcept
 	{
-		return g_delayFunctorManager;
+		return detail::APIStorage::get().objectInterface;
 	}
 
 
-	auto GetObjectRegistry()
-		-> make_const_t<decltype(g_objectRegistry)>
+	const SKSEDelayFunctorManager* GetDelayFunctorManager() noexcept
 	{
-		return g_objectRegistry;
+		return detail::APIStorage::get().delayFunctorManager;
 	}
 
 
-	auto GetPersistentObjectStorage()
-		-> make_const_t<decltype(g_persistentObjectStorage)>
+	const SKSEObjectRegistry* GetObjectRegistry() noexcept
 	{
-		return g_persistentObjectStorage;
+		return detail::APIStorage::get().objectRegistry;
 	}
 
 
-	Trampoline* GetTrampoline()
+	const SKSEPersistentObjectStorage* GetPersistentObjectStorage() noexcept
 	{
-		return std::addressof(g_trampoline);
+		return detail::APIStorage::get().persistentObjectStorage;
 	}
 
 
-	bool AllocTrampoline(std::size_t a_size)
+	Trampoline& GetTrampoline()
 	{
-		if (!g_trampoline.Create(a_size)) {
-			log::error("Trampoline creation failed!");
-			return false;
+		static Trampoline trampoline;
+		return trampoline;
+	}
+
+
+	bool AllocTrampoline(std::size_t a_size, bool a_trySKSEReserve)
+	{
+		auto& trampoline = GetTrampoline();
+		if (auto intfc = GetTrampolineInterface();
+			intfc && a_trySKSEReserve) {
+			auto memory = intfc->AllocateFromBranchPool(a_size);
+			if (memory) {
+				trampoline.set_trampoline(memory, a_size);
+				return true;
+			}
 		}
 
+		trampoline.create(a_size);
 		return true;
 	}
 }

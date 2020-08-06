@@ -15,7 +15,7 @@ namespace RE
 		pad12(0),
 		pad14(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraSoul::Vtbl);
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraSoul::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

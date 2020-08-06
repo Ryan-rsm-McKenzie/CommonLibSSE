@@ -35,7 +35,7 @@ namespace RE
 	TESObjectARMO* InventoryChanges::GetArmorInSlot(std::int32_t a_slot)
 	{
 		using func_t = decltype(&InventoryChanges::GetArmorInSlot);
-		REL::Offset<func_t> func = REL::ID(15873);
+		REL::Relocation<func_t> func{ REL::ID(15873) };
 		return func(this, a_slot);
 	}
 
@@ -43,7 +43,7 @@ namespace RE
 	std::uint16_t InventoryChanges::GetNextUniqueID()
 	{
 		using func_t = decltype(&InventoryChanges::GetNextUniqueID);
-		REL::Offset<func_t> func(Offset::InventoryChanges::GetNextUniqueID);
+		REL::Relocation<func_t> func{ Offset::InventoryChanges::GetNextUniqueID };
 		return func(this);
 	}
 
@@ -51,7 +51,7 @@ namespace RE
 	void InventoryChanges::SendContainerChangedEvent(ExtraDataList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, std::int32_t a_count)
 	{
 		using func_t = decltype(&InventoryChanges::SendContainerChangedEvent);
-		REL::Offset<func_t> func(Offset::InventoryChanges::SendContainerChangedEvent);
+		REL::Relocation<func_t> func{ Offset::InventoryChanges::SendContainerChangedEvent };
 		return func(this, a_itemExtraList, a_fromRefr, a_item, a_count);
 	}
 
@@ -59,7 +59,7 @@ namespace RE
 	void InventoryChanges::SetUniqueID(ExtraDataList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm)
 	{
 		using func_t = decltype(&InventoryChanges::SetUniqueID);
-		REL::Offset<func_t> func(Offset::InventoryChanges::SetUniqueID);
+		REL::Relocation<func_t> func{ Offset::InventoryChanges::SetUniqueID };
 		return func(this, a_itemList, a_oldForm, a_newForm);
 	}
 
@@ -67,7 +67,7 @@ namespace RE
 	void InventoryChanges::InitFromContainerExtra()
 	{
 		using func_t = decltype(&InventoryChanges::InitFromContainerExtra);
-		REL::Offset<func_t> func = REL::ID(15890);
+		REL::Relocation<func_t> func{ REL::ID(15890) };
 		return func(this);
 	}
 
@@ -75,7 +75,7 @@ namespace RE
 	void InventoryChanges::InitLeveledItems()
 	{
 		using func_t = decltype(&InventoryChanges::InitLeveledItems);
-		REL::Offset<func_t> func = REL::ID(15889);
+		REL::Relocation<func_t> func{ REL::ID(15889) };
 		return func(this);
 	}
 
@@ -83,7 +83,7 @@ namespace RE
 	void InventoryChanges::InitScripts()
 	{
 		using func_t = decltype(&InventoryChanges::InitScripts);
-		REL::Offset<func_t> func = REL::ID(15829);
+		REL::Relocation<func_t> func{ REL::ID(15829) };
 		return func(this);
 	}
 
@@ -91,7 +91,7 @@ namespace RE
 	InventoryChanges* InventoryChanges::Ctor(TESObjectREFR* a_ref)
 	{
 		using func_t = decltype(&InventoryChanges::Ctor);
-		REL::Offset<func_t> func = REL::ID(15812);
+		REL::Relocation<func_t> func{ REL::ID(15812) };
 		return func(this, a_ref);
 	}
 
@@ -99,7 +99,7 @@ namespace RE
 	void InventoryChanges::Dtor()
 	{
 		using func_t = decltype(&InventoryChanges::Dtor);
-		REL::Offset<func_t> func = REL::ID(15813);
+		REL::Relocation<func_t> func{ REL::ID(15813) };
 		return func(this);
 	}
 }

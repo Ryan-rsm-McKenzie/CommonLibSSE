@@ -3592,13 +3592,7 @@
     <ClInclude Include="include\REL\Relocation.h">
       <Filter>include\REL</Filter>
     </ClInclude>
-    <ClInclude Include="include\REL\Version.h">
-      <Filter>include\REL</Filter>
-    </ClInclude>
     <ClInclude Include="include\SKSE\API.h">
-      <Filter>include\SKSE</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SKSE\CodeGenerator.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
     <ClInclude Include="include\SKSE\Events.h">
@@ -4377,13 +4371,7 @@
     <ClCompile Include="src\RE\SkyrimScript\SkyrimVM.cpp">
       <Filter>src\RE\SkyrimScript</Filter>
     </ClCompile>
-    <ClCompile Include="src\REL\Relocation.cpp">
-      <Filter>src\REL</Filter>
-    </ClCompile>
     <ClCompile Include="src\SKSE\API.cpp">
-      <Filter>src\SKSE</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SKSE\CodeGenerator.cpp">
       <Filter>src\SKSE</Filter>
     </ClCompile>
     <ClCompile Include="src\SKSE\IAT.cpp">
@@ -5599,9 +5587,6 @@
     </Filter>
     <Filter Include="src\RE\SkyrimScript">
       <UniqueIdentifier>{70fc394c-cbe8-4c87-91c6-9faf7b9a0e78}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\REL">
-      <UniqueIdentifier>{5e8771da-d679-434c-bec1-0520dfde55e1}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\SKSE">
       <UniqueIdentifier>{bdca5beb-f5c1-4071-ad29-7a33d2d741a1}</UniqueIdentifier>

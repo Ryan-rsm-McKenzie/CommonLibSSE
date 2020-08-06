@@ -276,7 +276,7 @@ namespace RE
 	GString* GString::ctor(const char* a_str)
 	{
 		using func_t = decltype(&GString::ctor);
-		REL::Offset<func_t> func = REL::ID(80446);
+		REL::Relocation<func_t> func{ REL::ID(80446) };
 		return func(this, a_str);
 	}
 

@@ -80,7 +80,7 @@ namespace RE
 	void BSReadWriteLock::LockForRead()
 	{
 		using func_t = decltype(&BSReadWriteLock::LockForRead);
-		REL::Offset<func_t> func(Offset::BSReadWriteLock::LockForRead);
+		REL::Relocation<func_t> func{ Offset::BSReadWriteLock::LockForRead };
 		func(this);
 	}
 
@@ -88,7 +88,7 @@ namespace RE
 	void BSReadWriteLock::UnlockForRead()
 	{
 		using func_t = decltype(&BSReadWriteLock::UnlockForRead);
-		REL::Offset<func_t> func(Offset::BSReadWriteLock::UnlockForRead);
+		REL::Relocation<func_t> func{ Offset::BSReadWriteLock::UnlockForRead };
 		func(this);
 	}
 
@@ -96,7 +96,7 @@ namespace RE
 	void BSReadWriteLock::LockForWrite()
 	{
 		using func_t = decltype(&BSReadWriteLock::LockForWrite);
-		REL::Offset<func_t> func(Offset::BSReadWriteLock::LockForWrite);
+		REL::Relocation<func_t> func{ Offset::BSReadWriteLock::LockForWrite };
 		func(this);
 	}
 
@@ -104,7 +104,7 @@ namespace RE
 	void BSReadWriteLock::UnlockForWrite()
 	{
 		using func_t = decltype(&BSReadWriteLock::UnlockForWrite);
-		REL::Offset<func_t> func(Offset::BSReadWriteLock::UnlockForWrite);
+		REL::Relocation<func_t> func{ Offset::BSReadWriteLock::UnlockForWrite };
 		func(this);
 	}
 

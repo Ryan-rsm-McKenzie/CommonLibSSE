@@ -12,7 +12,7 @@ namespace RE
 {
 	BSScaleformManager* BSScaleformManager::GetSingleton()
 	{
-		REL::Offset<BSScaleformManager**> singleton = REL::ID(516573);
+		REL::Relocation<BSScaleformManager**> singleton{ REL::ID(516573) };
 		return *singleton;
 	}
 
@@ -20,7 +20,7 @@ namespace RE
 	bool BSScaleformManager::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		using func_t = decltype(&BSScaleformManager::LoadMovie);
-		REL::Offset<func_t> func = REL::ID(80302);
+		REL::Relocation<func_t> func{ REL::ID(80302) };
 		return func(this, a_menu, a_viewOut, a_fileName, a_mode, a_backGroundAlpha);
 	}
 

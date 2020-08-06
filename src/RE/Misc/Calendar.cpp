@@ -9,7 +9,7 @@ namespace RE
 {
 	Calendar* Calendar::GetSingleton()
 	{
-		REL::Offset<Calendar**> singleton(Offset::Calendar::Singleton);
+		REL::Relocation<Calendar**> singleton{ Offset::Calendar::Singleton };
 		return *singleton;
 	}
 

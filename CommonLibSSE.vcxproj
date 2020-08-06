@@ -220,7 +220,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\REL\Relocation.h" />
-    <ClInclude Include="include\REL\Version.h" />
     <ClInclude Include="include\RE\AI\AIFormulas.h" />
     <ClInclude Include="include\RE\AI\AIProcess.h" />
     <ClInclude Include="include\RE\AI\HighProcessData.h" />
@@ -1418,7 +1417,6 @@
     <ClInclude Include="include\RE\Sky\SkyObject\Stars.h" />
     <ClInclude Include="include\RE\Sky\SkyObject\Sun.h" />
     <ClInclude Include="include\SKSE\API.h" />
-    <ClInclude Include="include\SKSE\CodeGenerator.h" />
     <ClInclude Include="include\SKSE\Events.h" />
     <ClInclude Include="include\SKSE\IAT.h" />
     <ClInclude Include="include\SKSE\Impl\Atomic.h" />
@@ -1435,7 +1433,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\RE\FormComponents\Components\BGSOpenCloseForm.cpp" />
-    <ClCompile Include="src\REL\Relocation.cpp" />
     <ClCompile Include="src\RE\AI\AIFormulas.cpp" />
     <ClCompile Include="src\RE\AI\AIProcess.cpp" />
     <ClCompile Include="src\RE\AI\ProcessLists.cpp" />
@@ -1681,7 +1678,6 @@
     <ClCompile Include="src\RE\SkyrimScript\SkyrimVM.cpp" />
     <ClCompile Include="src\RE\Sky\Sky.cpp" />
     <ClCompile Include="src\SKSE\API.cpp" />
-    <ClCompile Include="src\SKSE\CodeGenerator.cpp" />
     <ClCompile Include="src\SKSE\IAT.cpp" />
     <ClCompile Include="src\SKSE\Impl\PCH.cpp">
       <MultiProcessorCompilation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</MultiProcessorCompilation>

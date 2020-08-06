@@ -6,7 +6,7 @@ namespace RE
 	ExtraCannotWear::ExtraCannotWear() :
 		BSExtraData()
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraCannotWear::Vtbl);
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraCannotWear::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

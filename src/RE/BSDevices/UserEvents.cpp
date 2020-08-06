@@ -5,7 +5,7 @@ namespace RE
 {
 	UserEvents* UserEvents::GetSingleton()
 	{
-		REL::Offset<UserEvents**> singleton(Offset::UserEvents::Singleton);
+		REL::Relocation<UserEvents**> singleton{ Offset::UserEvents::Singleton };
 		return *singleton;
 	}
 }

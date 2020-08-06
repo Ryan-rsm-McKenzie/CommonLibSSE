@@ -12,7 +12,7 @@ namespace RE
 	void GFxMovieView::InvokeNoReturn(const char* a_methodName, const GFxValue* a_args, std::uint32_t a_numArgs)
 	{
 		using func_t = decltype(&GFxMovieView::InvokeNoReturn);
-		REL::Offset<func_t> func(Offset::GFxMovieView::InvokeNoReturn);
+		REL::Relocation<func_t> func{ Offset::GFxMovieView::InvokeNoReturn };
 		return func(this, a_methodName, a_args, a_numArgs);
 	}
 }

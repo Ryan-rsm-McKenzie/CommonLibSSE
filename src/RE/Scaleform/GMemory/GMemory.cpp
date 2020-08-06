@@ -109,7 +109,7 @@ namespace RE
 
 	GMemoryHeap*& GMemory::GetGlobalHeapRef()
 	{
-		REL::Offset<GMemoryHeap**> globalHeap(Offset::GMemory::GlobalHeap);
+		REL::Relocation<GMemoryHeap**> globalHeap{ Offset::GMemory::GlobalHeap };
 		return *globalHeap;
 	}
 }

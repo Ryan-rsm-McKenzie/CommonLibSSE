@@ -16,23 +16,23 @@ namespace RE
 	void TESForm::AddCompileIndex(FormID& a_id, TESFile* a_file)
 	{
 		using func_t = decltype(&TESForm::AddCompileIndex);
-		REL::Offset<func_t> func = REL::ID(14509);
+		REL::Relocation<func_t> func{ REL::ID(14509) };
 		return func(a_id, a_file);
 	}
 
 
 	std::pair<BSTHashMap<FormID, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> TESForm::GetAllForms()
 	{
-		REL::Offset<BSTHashMap<FormID, TESForm*>**> allForms = REL::ID(514351);
-		REL::Offset<BSReadWriteLock*> allFormsMapLock = REL::ID(514360);
+		REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ REL::ID(514351) };
+		REL::Relocation<BSReadWriteLock*> allFormsMapLock{ REL::ID(514360) };
 		return std::make_pair(*allForms, std::ref(*allFormsMapLock));
 	}
 
 
 	std::pair<BSTHashMap<BSFixedString, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> TESForm::GetAllFormsByEditorID()
 	{
-		REL::Offset<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID = REL::ID(514352);
-		REL::Offset<BSReadWriteLock*> allFormsEditorIDMapLock = REL::ID(514361);
+		REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ REL::ID(514352) };
+		REL::Relocation<BSReadWriteLock*> allFormsEditorIDMapLock{ REL::ID(514361) };
 		return std::make_pair(*allFormsByEditorID, std::ref(*allFormsEditorIDMapLock));
 	}
 

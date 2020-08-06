@@ -15,7 +15,7 @@ namespace RE
 	bool BSSoundHandle::IsValid() const
 	{
 		using func_t = decltype(&BSSoundHandle::IsValid);
-		REL::Offset<func_t> func(Offset::BSSoundHandle::IsValid);
+		REL::Relocation<func_t> func{ Offset::BSSoundHandle::IsValid };
 		return func(this);
 	}
 
@@ -23,7 +23,7 @@ namespace RE
 	bool BSSoundHandle::SetPosition(NiPoint3 a_pos)
 	{
 		using func_t = decltype(&BSSoundHandle::SetPosition);
-		REL::Offset<func_t> func(Offset::BSSoundHandle::SetPosition);
+		REL::Relocation<func_t> func{ Offset::BSSoundHandle::SetPosition };
 		return func(this, a_pos);
 	}
 
@@ -31,7 +31,7 @@ namespace RE
 	void BSSoundHandle::SetObjectToFollow(NiAVObject* a_node)
 	{
 		using func_t = decltype(&BSSoundHandle::SetObjectToFollow);
-		REL::Offset<func_t> func(Offset::BSSoundHandle::SetObjectToFollow);
+		REL::Relocation<func_t> func{ Offset::BSSoundHandle::SetObjectToFollow };
 		return func(this, a_node);
 	}
 
@@ -39,7 +39,7 @@ namespace RE
 	bool BSSoundHandle::Stop()
 	{
 		using func_t = decltype(&BSSoundHandle::Stop);
-		REL::Offset<func_t> func(Offset::BSSoundHandle::Stop);
+		REL::Relocation<func_t> func{ Offset::BSSoundHandle::Stop };
 		return func(this);
 	}
 
@@ -47,7 +47,7 @@ namespace RE
 	bool BSSoundHandle::Play()
 	{
 		using func_t = decltype(&BSSoundHandle::Play);
-		REL::Offset<func_t> func(Offset::BSSoundHandle::Play);
+		REL::Relocation<func_t> func{ Offset::BSSoundHandle::Play };
 		return func(this);
 	}
 }

@@ -5,7 +5,7 @@ namespace RE
 {
 	ResponseDictionary* ResponseDictionary::GetSingleton()
 	{
-		REL::Offset<ResponseDictionary**> singleton = REL::ID(517372);
+		REL::Relocation<ResponseDictionary**> singleton{ REL::ID(517372) };
 		return *singleton;
 	}
 }

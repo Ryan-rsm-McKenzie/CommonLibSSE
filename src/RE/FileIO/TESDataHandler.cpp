@@ -8,7 +8,7 @@ namespace RE
 {
 	TESDataHandler* TESDataHandler::GetSingleton()
 	{
-		REL::Offset<TESDataHandler**> singleton(Offset::TESDataHandler::Singleton);
+		REL::Relocation<TESDataHandler**> singleton{ Offset::TESDataHandler::Singleton };
 		return *singleton;
 	}
 
@@ -16,7 +16,7 @@ namespace RE
 	std::uint32_t TESDataHandler::LoadScripts()
 	{
 		using func_t = decltype(&TESDataHandler::LoadScripts);
-		REL::Offset<func_t> func(Offset::TESDataHandler::LoadScripts);
+		REL::Relocation<func_t> func{ Offset::TESDataHandler::LoadScripts };
 		return func(this);
 	}
 

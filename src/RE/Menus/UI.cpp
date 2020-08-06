@@ -7,7 +7,7 @@ namespace RE
 {
 	UI* UI::GetSingleton()
 	{
-		REL::Offset<UI**> singleton(Offset::UI::Singleton);
+		REL::Relocation<UI**> singleton{ Offset::UI::Singleton };
 		return *singleton;
 	}
 

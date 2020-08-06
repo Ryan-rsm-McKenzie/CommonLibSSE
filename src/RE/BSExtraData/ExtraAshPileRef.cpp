@@ -13,7 +13,7 @@ namespace RE
 		ashPileRef(ashPileRef),
 		pad14(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraAshPileRef::Vtbl);
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraAshPileRef::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

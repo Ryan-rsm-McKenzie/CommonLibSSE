@@ -198,6 +198,13 @@ namespace RE
 		};
 
 
+		enum class FlagBDD
+		{
+			kNone = 0,
+			kEverModded = 1 << 3
+		};
+
+
 		struct Data928
 		{
 		public:
@@ -466,7 +473,7 @@ namespace RE
 		std::uint8_t											unkBDA;										  // BDA
 		stl::enumeration<FlagBDB, std::uint8_t>					unkBDB;										  // BDB
 		stl::enumeration<FlagBDC, std::uint8_t>					unkBDC;										  // BDC
-		std::uint8_t											unkBDD;										  // BDD
+		stl::enumeration<FlagBDD, std::uint8_t>					unkBDD;										  // BDD
 		std::uint16_t											padBDE;										  // BDE
 	};
 	static_assert(sizeof(PlayerCharacter) == 0xBE0);

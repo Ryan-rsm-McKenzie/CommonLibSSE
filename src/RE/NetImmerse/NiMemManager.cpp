@@ -5,7 +5,7 @@ namespace RE
 {
 	NiMemManager* NiMemManager::GetSingleton()
 	{
-		REL::Offset<NiMemManager**> singleton(Offset::NiMemManager::Singleton);
+		REL::Relocation<NiMemManager**> singleton{ Offset::NiMemManager::Singleton };
 		return *singleton;
 	}
 

@@ -26,7 +26,7 @@ namespace RE
 
 			~RVA() = default;
 
-			[[nodiscard]] pointer	get() const { return is_good() ? REL::Offset<T*>(_rva).type() : nullptr; }
+			[[nodiscard]] pointer	get() const { return is_good() ? REL::Relocation<T*>{ _rva }.type() : nullptr; }
 			[[nodiscard]] reference operator*() const { return *get(); }
 			[[nodiscard]] pointer	operator->() const { return get(); }
 			[[nodiscard]] pointer	operator[](std::ptrdiff_t a_idx) const { return get() + a_idx; }
@@ -211,7 +211,7 @@ namespace RE
 	inline T RTDynamicCast(PVOID a_inptr, LONG a_vfDelta, PVOID a_srcType, PVOID a_targetType, BOOL a_isReference)
 	{
 		using func_t = decltype(&RTDynamicCast<T>);
-		REL::Offset<func_t> func = REL::ID(102238);
+		REL::Relocation<func_t> func{ REL::ID(102238) };
 		return func(a_inptr, a_vfDelta, a_srcType, a_targetType, a_isReference);
 	}
 }

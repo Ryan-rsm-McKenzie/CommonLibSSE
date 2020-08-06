@@ -31,7 +31,7 @@ namespace RE
 		Variable& Stack::GetStackFrameVariable(const StackFrame* a_frame, std::uint32_t a_index, std::uint32_t a_pageHint)
 		{
 			using func_t = decltype(&Stack::GetStackFrameVariable);
-			REL::Offset<func_t> func = REL::ID(97746);
+			REL::Relocation<func_t> func{ REL::ID(97746) };
 			return func(this, a_frame, a_index, a_pageHint);
 		}
 
@@ -39,7 +39,7 @@ namespace RE
 		void Stack::Dtor()
 		{
 			using func_t = decltype(&Stack::Dtor);
-			REL::Offset<func_t> func = REL::ID(97742);
+			REL::Relocation<func_t> func{ REL::ID(97742) };
 			return func(this);
 		}
 	}

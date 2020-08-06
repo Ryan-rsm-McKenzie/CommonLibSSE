@@ -19,7 +19,7 @@ namespace RE
 		VMHandle Object::GetHandle() const
 		{
 			using func_t = decltype(&Object::GetHandle);
-			REL::Offset<func_t> func = REL::ID(97463);
+			REL::Relocation<func_t> func{ REL::ID(97463) };
 			return func(this);
 		}
 
@@ -52,7 +52,7 @@ namespace RE
 		void Object::IncRef()
 		{
 			using func_t = decltype(&Object::IncRef);
-			REL::Offset<func_t> func = REL::ID(97468);
+			REL::Relocation<func_t> func{ REL::ID(97468) };
 			return func(this);
 		}
 
@@ -60,7 +60,7 @@ namespace RE
 		std::uint32_t Object::DecRef()
 		{
 			using func_t = decltype(&Object::DecRef);
-			REL::Offset<func_t> func = REL::ID(97469);
+			REL::Relocation<func_t> func{ REL::ID(97469) };
 			return func(this);
 		}
 
@@ -88,7 +88,7 @@ namespace RE
 		void Object::Dtor()
 		{
 			using func_t = decltype(&Object::Dtor);
-			REL::Offset<func_t> func = REL::ID(97462);
+			REL::Relocation<func_t> func{ REL::ID(97462) };
 			return func(this);
 		}
 	}

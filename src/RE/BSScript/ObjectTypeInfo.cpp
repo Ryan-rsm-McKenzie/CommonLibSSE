@@ -196,7 +196,7 @@ namespace RE
 		void ObjectTypeInfo::ReleaseData()
 		{
 			using func_t = decltype(&ObjectTypeInfo::ReleaseData);
-			REL::Offset<func_t> func(Offset::BSScript::ObjectTypeInfo::ReleaseData);
+			REL::Relocation<func_t> func{ Offset::BSScript::ObjectTypeInfo::ReleaseData };
 			return func(this);
 		}
 	}

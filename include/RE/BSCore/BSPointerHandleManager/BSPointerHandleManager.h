@@ -30,7 +30,7 @@ namespace RE
 
 		static stl::span<Entry, 0x100000> GetHandleEntries()
 		{
-			REL::Offset<Entry(*)[0x100000]> entries = REL::ID(514478);
+			REL::Relocation<Entry(*)[0x100000]> entries{ REL::ID(514478) };
 			return { *entries };
 		}
 	};
