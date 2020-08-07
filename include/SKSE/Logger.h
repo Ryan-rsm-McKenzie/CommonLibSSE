@@ -6,52 +6,32 @@
 
 // clang format chokes hard on classes with attributes
 #define SKSE_MAYBE_UNUSED [[maybe_unused]]
-#define SKSE_MAKE_SOURCE_LOGGER(a_func, a_type)                            \
-                                                                           \
-	template <class... Args>                                               \
-	struct SKSE_MAYBE_UNUSED a_func                                        \
-	{                                                                      \
-		a_func() = delete;                                                 \
-                                                                           \
-		a_func(                                                            \
-			spdlog::string_view_t a_fmt,                                   \
-			const Args&... a_args,                                         \
-			stl::source_location a_loc = stl::source_location::current())  \
-		{                                                                  \
-			spdlog::log(                                                   \
-				spdlog::source_loc{                                        \
-					a_loc.file_name(),                                     \
-					static_cast<int>(a_loc.line()),                        \
-					a_loc.function_name() },                               \
-				spdlog::level::a_type,                                     \
-				a_fmt,                                                     \
-				a_args...);                                                \
-		}                                                                  \
-	};                                                                     \
-                                                                           \
-	template <>                                                            \
-	struct SKSE_MAYBE_UNUSED a_func<>                                      \
-	{                                                                      \
-		a_func() = delete;                                                 \
-                                                                           \
-		a_func(                                                            \
-			spdlog::string_view_t a_fmt,                                   \
-			stl::source_location  a_loc = stl::source_location::current()) \
-		{                                                                  \
-			spdlog::log(                                                   \
-				spdlog::source_loc{                                        \
-					a_loc.file_name(),                                     \
-					static_cast<int>(a_loc.line()),                        \
-					a_loc.function_name() },                               \
-				spdlog::level::a_type,                                     \
-				std::string_view(                                          \
-					a_fmt.data(),                                          \
-					a_fmt.size()));                                        \
-		}                                                                  \
-	};                                                                     \
-                                                                           \
-	template <class... Args>                                               \
-	a_func(spdlog::string_view_t, const Args&...) -> a_func<Args...>;
+#define SKSE_MAKE_SOURCE_LOGGER(a_func, a_type)                           \
+                                                                          \
+	template <class... Args>                                              \
+	struct SKSE_MAYBE_UNUSED a_func                                       \
+	{                                                                     \
+		a_func() = delete;                                                \
+                                                                          \
+		template <class T>                                                \
+		a_func(                                                           \
+			T&& a_fmt,                                                    \
+			Args&&... a_args,                                             \
+			stl::source_location a_loc = stl::source_location::current()) \
+		{                                                                 \
+			spdlog::log(                                                  \
+				spdlog::source_loc{                                       \
+					a_loc.file_name(),                                    \
+					static_cast<int>(a_loc.line()),                       \
+					a_loc.function_name() },                              \
+				spdlog::level::a_type,                                    \
+				std::forward<T>(a_fmt),                                   \
+				std::forward<Args>(a_args)...);                           \
+		}                                                                 \
+	};                                                                    \
+                                                                          \
+	template <class T, class... Args>                                     \
+	a_func(T&&, Args&&...) -> a_func<Args...>;
 
 
 namespace SKSE
