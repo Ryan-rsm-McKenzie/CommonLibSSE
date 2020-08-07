@@ -172,7 +172,7 @@ namespace SKSE
 		template <std::size_t N, class F>
 		inline std::uintptr_t write_call(std::uintptr_t a_src, F a_dst)
 		{
-			return write_branch<N>(a_src, unrestricted_cast<std::uintptr_t>(a_dst));
+			return write_call<N>(a_src, unrestricted_cast<std::uintptr_t>(a_dst));
 		}
 
 	private:
