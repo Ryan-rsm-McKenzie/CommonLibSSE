@@ -11,6 +11,8 @@
 	template <class... Args>                                               \
 	struct SKSE_MAYBE_UNUSED a_func                                        \
 	{                                                                      \
+		a_func() = delete;                                                 \
+                                                                           \
 		a_func(                                                            \
 			spdlog::string_view_t a_fmt,                                   \
 			const Args&... a_args,                                         \
@@ -30,6 +32,8 @@
 	template <>                                                            \
 	struct SKSE_MAYBE_UNUSED a_func<>                                      \
 	{                                                                      \
+		a_func() = delete;                                                 \
+                                                                           \
 		a_func(                                                            \
 			spdlog::string_view_t a_fmt,                                   \
 			stl::source_location  a_loc = stl::source_location::current()) \

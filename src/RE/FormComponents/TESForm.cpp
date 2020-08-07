@@ -25,7 +25,7 @@ namespace RE
 	{
 		REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ REL::ID(514351) };
 		REL::Relocation<BSReadWriteLock*> allFormsMapLock{ REL::ID(514360) };
-		return std::make_pair(*allForms, std::ref(*allFormsMapLock));
+		return { *allForms, std::ref(*allFormsMapLock) };
 	}
 
 
@@ -33,7 +33,7 @@ namespace RE
 	{
 		REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ REL::ID(514352) };
 		REL::Relocation<BSReadWriteLock*> allFormsEditorIDMapLock{ REL::ID(514361) };
-		return std::make_pair(*allFormsByEditorID, std::ref(*allFormsEditorIDMapLock));
+		return { *allFormsByEditorID, std::ref(*allFormsEditorIDMapLock) };
 	}
 
 
