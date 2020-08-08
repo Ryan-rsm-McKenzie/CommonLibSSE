@@ -1,11 +1,10 @@
 #pragma once
 
+#include "RE/BSCore/BSFixedString.h"
+
 
 namespace RE
 {
-	class BSFixedString;
-
-
 	namespace BSScript
 	{
 		struct ILoader;

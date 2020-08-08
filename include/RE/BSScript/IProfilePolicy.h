@@ -1,13 +1,11 @@
 #pragma once
 
+#include "RE/BSCore/BSFixedString.h"
 #include "RE/BSCore/BSTSmartPointer.h"
 
 
 namespace RE
 {
-	class BSFixedString;
-
-
 	namespace BSScript
 	{
 		namespace Internal

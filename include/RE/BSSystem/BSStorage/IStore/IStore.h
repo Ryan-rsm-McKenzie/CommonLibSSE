@@ -1,13 +1,11 @@
 #pragma once
 
+#include "RE/BSCore/BSFixedString.h"
 #include "RE/BSSystem/BSStorage/BSStorage.h"
 
 
 namespace RE
 {
-	class BSFixedString;
-
-
 	namespace BSScript
 	{
 		class IStore : public BSStorage

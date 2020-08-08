@@ -1,11 +1,11 @@
 #pragma once
 
+#include "RE/BSCore/BSFixedString.h"
 #include "RE/FormComponents/Enums/FormTypes.h"
 
 
 namespace RE
 {
-	class BSFixedString;
 	class TESForm;
 
 

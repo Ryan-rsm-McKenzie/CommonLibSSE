@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSCore/BSFixedString.h"
 #include "RE/NetImmerse/NiBound.h"
 #include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiObjectNET.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
@@ -8,7 +9,6 @@
 
 namespace RE
 {
-	class BSFixedString;
 	class NiAlphaProperty;
 	class NiAVObject;
 	class NiCollisionObject;

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSCore/BSFixedString.h"
 #include "RE/BSCore/BSTEvent.h"
 #include "RE/BSCore/BSTSmartPointer.h"
 #include "RE/BSScript/ErrorLogger.h"
@@ -15,7 +16,6 @@ namespace RE
 	}
 
 
-	class BSFixedString;
 	class TESForm;
 
 

@@ -1,12 +1,12 @@
 #pragma once
 
+#include "RE/BSCore/BSFixedString.h"
 #include "RE/BSCore/BSString.h"
 
 
 namespace RE
 {
 	class BGSLoadFormBuffer;
-	class BSFixedString;
 	class TESFile;
 
 

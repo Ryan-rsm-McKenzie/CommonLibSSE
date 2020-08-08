@@ -12,7 +12,6 @@ namespace RE
 {
 	class BGSLoadFormBuffer;
 	class BGSSaveFormBuffer;
-	class BSFixedString;
 	class TESBoundObject;
 	class TESFile;
 	struct FORM;

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSCore/BSFixedString.h"
 #include "RE/BSGraphics/Enums/DepthStencilDepthModes.h"
 #include "RE/BSGraphics/Enums/TextureAddressModes.h"
 #include "RE/BSSystem/BSIntrusiveRefCounted.h"
@@ -10,7 +11,6 @@
 
 namespace RE
 {
-	class BSFixedString;
 	class NiTexture;
 
 

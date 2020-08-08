@@ -73,7 +73,7 @@ namespace RE
 
 		std::int8_t		 AllowTextInput(bool a_allow);
 		constexpr bool	 AreControlsEnabled(UEFlag a_flags) const noexcept { return enabledControls.all(a_flags); }
-		std::uint32_t	 GetMappedKey(const std::string_view& a_eventID, INPUT_DEVICE a_device, InputContextID a_context = InputContextID::kGameplay) const;
+		std::uint32_t	 GetMappedKey(std::string_view a_eventID, INPUT_DEVICE a_device, InputContextID a_context = InputContextID::kGameplay) const;
 		std::string_view GetUserEventName(std::uint32_t a_buttonID, INPUT_DEVICE a_device, InputContextID a_context = InputContextID::kGameplay) const;
 		constexpr bool	 IsActivateControlsEnabled() const noexcept { return enabledControls.all(UEFlag::kActivate); }
 		constexpr bool	 IsConsoleControlsEnabled() const noexcept { return enabledControls.all(UEFlag::kConsole); }

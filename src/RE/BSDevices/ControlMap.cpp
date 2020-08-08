@@ -28,19 +28,15 @@ namespace RE
 	}
 
 
-	std::uint32_t ControlMap::GetMappedKey(const std::string_view& a_eventID, INPUT_DEVICE a_device, InputContextID a_context) const
+	std::uint32_t ControlMap::GetMappedKey(std::string_view a_eventID, INPUT_DEVICE a_device, InputContextID a_context) const
 	{
 		assert(a_device < INPUT_DEVICE::kTotal);
 		assert(a_context < InputContextID::kTotal);
 
-		auto mappings =
-			controlMap[a_context] ?
-				std::addressof(controlMap[a_context]->deviceMappings[a_device]) :
-				nullptr;
-
-		if (mappings) {
-			BSFixedString eventID = a_eventID;
-			for (auto& mapping : *mappings) {
+		if (controlMap[a_context]) {
+			const auto& mappings = controlMap[a_context]->deviceMappings[a_device];
+			BSFixedString eventID(a_eventID);
+			for (auto& mapping : mappings) {
 				if (mapping.eventID == eventID) {
 					return mapping.inputKey;
 				}
@@ -56,26 +52,24 @@ namespace RE
 		assert(a_device < INPUT_DEVICE::kTotal);
 		assert(a_context < InputContextID::kTotal);
 
-		auto mappings =
-			controlMap[a_context] ?
-				std::addressof(controlMap[a_context]->deviceMappings[a_device]) :
-				nullptr;
-
-		if (mappings) {
+		if (controlMap[a_context]) {
+			const auto& mappings = controlMap[a_context]->deviceMappings[a_device];
 			UserEventMapping tmp{};
 			tmp.inputKey = static_cast<std::uint16_t>(a_buttonID);
 			auto range = std::equal_range(
-				mappings->begin(),
-				mappings->end(),
+				mappings.begin(),
+				mappings.end(),
 				tmp,
 				[](auto&& a_lhs, auto&& a_rhs) {
 					return a_lhs.inputKey < a_rhs.inputKey;
 				});
 
-			return std::distance(range.first, range.second) == 1 ? range.first->eventID : "";
-		} else {
-			return "";
+			if (std::distance(range.first, range.second) == 1) {
+				return range.first->eventID;
+			}
 		}
+
+		return ""sv;
 	}
 
 

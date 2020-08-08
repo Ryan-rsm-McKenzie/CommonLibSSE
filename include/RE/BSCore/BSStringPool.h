@@ -9,52 +9,97 @@ namespace RE
 	using GlobalStringHandleW = wchar_t*;
 
 
-	class BSStringPool
+	struct BSStringPool
 	{
 	public:
-		struct Entry
+		class Entry
 		{
 		public:
 			enum
 			{
-				kIsWideChar = 1 << 15,
+				kWide = 1 << 15,
 				kRefCountMask = 0x7FFF,
 				kLengthMask = 0xFFFFFF
 			};
 
+			static inline void release(const char*& a_entry) { release8(a_entry); }
+			static inline void release(const wchar_t*& a_entry) { release16(a_entry); }
 
-			union LengthAndRef
+			static inline void release8(const char*& a_entry)
 			{
-				std::uint32_t length;
-				Entry*		  reference;  // unused, but explains why it pads out this way
-			};
-			static_assert(sizeof(LengthAndRef) == 0x8);
+				using func_t = decltype(&Entry::release8);
+				REL::Relocation<func_t> func{ REL::ID(67847) };
+				return func(a_entry);
+			}
 
-
-			union CharT
+			static inline void release16(const wchar_t*& a_entry)
 			{
-				char	u8;
-				wchar_t u16;
-			};
+				using func_t = decltype(&Entry::release16);
+				REL::Relocation<func_t> func{ REL::ID(67848) };
+				return func(a_entry);
+			}
 
+			inline void acquire()
+			{
+				auto flags = _flags;
+				auto old = flags;
+				do {
+					old = flags;
+					if ((flags & kRefCountMask) >= kRefCountMask) {
+						break;
+					}
 
-			bool		  IsWideChar() const;
-			std::uint16_t GetRefCount() const;
-			std::uint32_t GetLength() const;
-			char*		  GetDataU8();
-			wchar_t*	  GetDataU16();
+					flags = InterlockedCompareExchange(std::addressof(_flags), flags + 1, static_cast<SHORT>(flags));
+				} while (flags != old);
+			}
 
-		private:
-			Entry*		  _next;			  // 00
-			std::uint16_t _flagsAndRefCount;  // 08
-			std::uint16_t _hash;			  // 0A - uses a different hash than crc32
-			std::uint32_t _pad0C;			  // 0C
-			LengthAndRef  _lengthAndRef;	  // 10
-			CharT		  _data[0];			  // 18
+			[[nodiscard]] constexpr std::uint16_t crc() const noexcept { return _crc; }
+
+			template <class T>
+			[[nodiscard]] const T* data() const noexcept;
+
+			template <>
+			[[nodiscard]] inline const char* data<char>() const noexcept
+			{
+				return u8();
+			}
+
+			template <>
+			[[nodiscard]] inline const wchar_t* data<wchar_t>() const noexcept
+			{
+				return u16();
+			}
+
+			[[nodiscard]] constexpr std::uint32_t length() const noexcept { return _length & kLengthMask; }
+			[[nodiscard]] constexpr std::uint32_t size() const noexcept { return length(); }
+
+			[[nodiscard]] inline const char* u8() const noexcept
+			{
+				assert(!wide());
+				return reinterpret_cast<const char*>(this + 1);
+			}
+
+			[[nodiscard]] inline const wchar_t* u16() const noexcept
+			{
+				assert(wide());
+				return reinterpret_cast<const wchar_t*>(this + 1);
+			}
+
+			[[nodiscard]] constexpr bool wide() const noexcept { return _flags & kWide; }
+
+			// members
+			Entry*				   _left;	// 00
+			std::uint16_t		   _flags;	// 08
+			volatile std::uint16_t _crc;	// 08
+			union
+			{
+				std::uint32_t _length;
+				Entry*		  _right;
+			};	// 10
 		};
 		static_assert(sizeof(Entry) == 0x18);
 	};
-
+	static_assert(std::is_empty_v<BSStringPool>);
 
 	struct BucketTable
 	{
@@ -64,17 +109,12 @@ namespace RE
 			kLockIndexMask = 0x7F
 		};
 
-
 		static BucketTable* GetSingleton();
 
-
 		// members
-		BSStringPool::Entry* buckets[0x10000];	// 00000 - index using hash & kEntryIndexMask
-		mutable BSSpinLock	 locks[0x20];		// 80000 - index using hash & kLockIndexMask
-		bool				 initialized;		// 80100
-		std::uint8_t		 pad80801;			// 80101
-		std::uint16_t		 pad80802;			// 80102
-		std::uint32_t		 pad80804;			// 80104
+		BSStringPool::Entry* buckets[0x10000];		  // 00000 - index using hash & kEntryIndexMask
+		mutable BSSpinLock	 locks[0x10000 / 0x800];  // 80000 - index using hash & kLockIndexMask
+		bool				 initialized;			  // 80100
 	};
 	static_assert(sizeof(BucketTable) == 0x80108);
 }

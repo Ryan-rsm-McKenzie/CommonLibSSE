@@ -227,8 +227,8 @@ template <
 		int> = 0>
 inline To skyrim_cast(const From* a_from)
 {
-	REL::Offset<PVOID> from(RE::SK_Impl::remove_cvpr_t<From>::RTTI);
-	REL::Offset<PVOID> to(RE::SK_Impl::remove_cvpr_t<To>::RTTI);
+	REL::Relocation<PVOID> from(RE::SK_Impl::remove_cvpr_t<From>::RTTI);
+	REL::Relocation<PVOID> to(RE::SK_Impl::remove_cvpr_t<To>::RTTI);
 	return RE::RTDynamicCast<To>((PVOID)a_from, 0, from.type(), to.type(), false);
 }
 
@@ -244,8 +244,8 @@ template <
 inline To skyrim_cast(const From& a_from)  // throw(std::bad_cast)
 {
 	try {
-		REL::Offset<PVOID> from(RE::SK_Impl::remove_cvpr_t<From>::RTTI);
-		REL::Offset<PVOID> to(RE::SK_Impl::remove_cvpr_t<To>::RTTI);
+		REL::Relocation<PVOID> from(RE::SK_Impl::remove_cvpr_t<From>::RTTI);
+		REL::Relocation<PVOID> to(RE::SK_Impl::remove_cvpr_t<To>::RTTI);
 		return RE::RTDynamicCast<To>((PVOID)std::addressof(a_from), 0, from.type(), to.type(), true);
 	} catch (...) {
 		throw std::bad_cast();
