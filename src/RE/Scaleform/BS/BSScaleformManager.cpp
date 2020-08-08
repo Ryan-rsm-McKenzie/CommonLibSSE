@@ -1,9 +1,9 @@
 #include "RE/Scaleform/BS/BSScaleformManager.h"
 
+#include "RE/BSGraphics/State.h"
 #include "RE/BSMain/Setting/Setting.h"
 #include "RE/Menus/IMenu/IMenu.h"
 #include "RE/Misc/Misc.h"
-#include "RE/NetImmerse/NiBinaryStream/BSResourceNiBinaryStream.h"
 #include "RE/Scaleform/FxGameDelegate/FxDelegate.h"
 #include "RE/Scaleform/GFxLoader/GFxLoader.h"
 
@@ -27,13 +27,13 @@ namespace RE
 
 	bool BSScaleformManager::LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, std::function<void(GFxMovieDef*)> a_callback)
 	{
-		return LoadMovieEx(a_menu, a_fileName, ScaleModeType::kShowAll, 0.0, a_callback);
+		return LoadMovieEx(a_menu, a_fileName, ScaleModeType::kShowAll, 0.0F, a_callback);
 	}
 
 
 	bool BSScaleformManager::LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, ScaleModeType a_mode, std::function<void(GFxMovieDef*)> a_callback)
 	{
-		return LoadMovieEx(a_menu, a_fileName, a_mode, 0.0, a_callback);
+		return LoadMovieEx(a_menu, a_fileName, a_mode, 0.0F, a_callback);
 	}
 
 
@@ -45,12 +45,12 @@ namespace RE
 			return false;
 		}
 
-		auto filePath = BuildFilePath(a_fileName);
+		const auto filePath = BuildFilePath(a_fileName);
 		if (!filePath) {
 			return false;
 		}
 
-		auto def = loader->CreateMovie(filePath->c_str(), LoadConstants::kLoadKeepBindData | LoadConstants::kLoadWaitFrame1);
+		const auto def = loader->CreateMovie(filePath->c_str(), LoadConstants::kLoadKeepBindData | LoadConstants::kLoadWaitFrame1);
 		if (!def) {
 			return false;
 		}
@@ -68,7 +68,7 @@ namespace RE
 		view->SetViewScaleMode(a_mode);
 		view->SetBackgroundAlpha(a_backGroundAlpha);
 
-		auto [safeZoneX, safeZoneY, sizeW, sizeH] = CollectDisplayInfo();
+		const auto [safeZoneX, safeZoneY, width, height] = CollectDisplayInfo();
 
 		const auto visibleRect = view->GetVisibleFrameRect();
 		GRectF safeRect;
@@ -79,13 +79,13 @@ namespace RE
 		view->SetSafeRect(safeRect);
 
 		GViewport viewPort;
-		viewPort.bufferWidth = sizeW;
-		viewPort.bufferHeight = sizeH;
-		viewPort.width = sizeW;
-		viewPort.height = sizeH;
+		viewPort.bufferWidth = width;
+		viewPort.bufferHeight = height;
+		viewPort.width = width;
+		viewPort.height = height;
 		view->SetViewport(viewPort);
 
-		view->Advance(0.0);
+		view->Advance(0.0F);
 
 		if (view->IsAvailable("_root.InitExtensions")) {
 			view->Invoke("_root.InitExtensions", nullptr, nullptr, 0);
@@ -93,12 +93,6 @@ namespace RE
 		a_menu->RefreshPlatform();
 
 		return true;
-	}
-
-
-	bool BSScaleformManager::LoadMovieStd(IMenu* a_menu, const char* a_fileName, std::function<void(GFxMovieDef*)> a_callback, ScaleModeType a_mode, float a_backGroundAlpha)
-	{
-		return LoadMovieEx(a_menu, a_fileName, a_mode, a_backGroundAlpha, a_callback);
 	}
 
 
@@ -111,12 +105,12 @@ namespace RE
 			return false;
 		}
 
-		auto filePath = BuildFilePath(a_fileName);
+		const auto filePath = BuildFilePath(a_fileName);
 		if (!filePath) {
 			return false;
 		}
 
-		auto def = loader->CreateMovie(filePath->c_str(), LoadConstants::kLoadKeepBindData | LoadConstants::kLoadWaitFrame1);
+		const auto def = loader->CreateMovie(filePath->c_str(), LoadConstants::kLoadKeepBindData | LoadConstants::kLoadWaitFrame1);
 		if (!def) {
 			return false;
 		}
@@ -131,7 +125,7 @@ namespace RE
 		a_viewOut->SetViewScaleMode(a_mode);
 		a_viewOut->SetBackgroundAlpha(a_backGroundAlpha);
 
-		auto [safeZoneX, safeZoneY, sizeW, sizeH] = CollectDisplayInfo();
+		const auto [safeZoneX, safeZoneY, width, height] = CollectDisplayInfo();
 
 		const auto visibleRect = a_viewOut->GetVisibleFrameRect();
 		GRectF safeRect;
@@ -142,18 +136,17 @@ namespace RE
 		a_viewOut->SetSafeRect(safeRect);
 
 		GViewport viewPort;
-		viewPort.bufferWidth = sizeW;
-		viewPort.bufferHeight = sizeH;
-		viewPort.width = sizeW;
-		viewPort.height = sizeH;
+		viewPort.bufferWidth = width;
+		viewPort.bufferHeight = height;
+		viewPort.width = width;
+		viewPort.height = height;
 		a_viewOut->SetViewport(viewPort);
 
-		a_menu->fxDelegate.reset(new FxDelegate());
-		a_menu->fxDelegate->Release();
+		a_menu->fxDelegate = make_gptr<FxDelegate>();
 		a_menu->fxDelegate->RegisterHandler(a_menu);
 		a_viewOut->SetState(StateType::kExternalInterface, a_menu->fxDelegate.get());
 
-		a_viewOut->Advance(0.0);
+		a_viewOut->Advance(0.0F);
 
 		if (a_viewOut->IsAvailable("_root.InitExtensions")) {
 			a_viewOut->Invoke("_root.InitExtensions", nullptr, nullptr, 0);
@@ -178,43 +171,44 @@ namespace RE
 				return std::nullopt;
 			}
 		}
-		return std::make_optional(filePath);
+		return filePath;
 	}
 
 
 	std::tuple<float, float, std::int32_t, std::int32_t> BSScaleformManager::CollectDisplayInfo()
 	{
-		static Setting* fSafeZoneX = nullptr;
-		if (!fSafeZoneX) {
-			fSafeZoneX = GetINISetting("fSafeZoneX:Interface");
+		const auto* const state = RE::BSGraphics::State::GetSingleton();
+		if (!state) {
+			return { 0.0F, 0.0F, 0, 0 };
 		}
-		float safeZoneX = fSafeZoneX ? fSafeZoneX->GetFloat() : 0.0F;
 
-		static Setting* fSafeZoneY = nullptr;
-		if (!fSafeZoneY) {
-			fSafeZoneY = GetINISetting("fSafeZoneY:Interface");
-		}
-		float safeZoneY = fSafeZoneY ? fSafeZoneY->GetFloat() : 0.0F;
+		const auto [safeZoneX, safeZoneY] = [=] {
+			const auto aspectRatio =
+				static_cast<double>(state->screenWidth) /
+				static_cast<double>(state->screenHeight);
+			if (aspectRatio > 4.0 / 3.0) {
+				REL::Relocation<const Setting*> fSafeZoneXWide{ REL::ID(512509) };
+				REL::Relocation<const Setting*> fSafeZoneYWide{ REL::ID(512511) };
 
-		static Setting* iSizeW = nullptr;
-		if (!iSizeW) {
-			iSizeW = GetINISetting("iSize W:Display");
-		}
-		std::int32_t sizeW = iSizeW ? iSizeW->GetSInt() : 0;
+				return std::make_pair(fSafeZoneXWide->GetFloat(), fSafeZoneYWide->GetFloat());
+			} else {
+				REL::Relocation<const Setting*> fSafeZoneX{ REL::ID(512513) };
+				REL::Relocation<const Setting*> fSafeZoneY{ REL::ID(512515) };
 
-		static Setting* iSizeH = nullptr;
-		if (!iSizeH) {
-			iSizeH = GetINISetting("iSize H:Display");
-		}
-		std::int32_t sizeH = iSizeH ? iSizeH->GetSInt() : 0;
+				return std::make_pair(fSafeZoneX->GetFloat(), fSafeZoneY->GetFloat());
+			}
+		}();
 
-		return std::make_tuple(safeZoneX, safeZoneY, sizeW, sizeH);
+		const auto [width, height] = state->frameBufferViewport;
+
+		return { safeZoneX, safeZoneY, static_cast<std::int32_t>(width), static_cast<std::int32_t>(height) };
 	}
 
 
-	bool BSScaleformManager::FileExists(std::string_view a_fileName)
+	bool BSScaleformManager::FileExists(const char* a_fileName)
 	{
-		BSResourceNiBinaryStream file(a_fileName.data());
-		return file.good();
+		using func_t = decltype(&BSScaleformManager::FileExists);
+		REL::Relocation<func_t> func{ REL::ID(80087) };
+		return func(a_fileName);
 	}
 }

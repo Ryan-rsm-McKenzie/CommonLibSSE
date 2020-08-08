@@ -4059,9 +4059,6 @@
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESActorBase\TESNPC.cpp">
       <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESActorBase</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESObjectLIGH.cpp">
-      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectARMO.cpp">
       <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
     </ClCompile>

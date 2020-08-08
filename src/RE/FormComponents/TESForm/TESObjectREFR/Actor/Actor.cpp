@@ -244,17 +244,17 @@ namespace RE
 
 	std::int32_t Actor::GetGoldAmount()
 	{
-		auto inv = GetInventory([](TESBoundObject* a_object) -> bool {
-			return a_object->IsGold();
+		const auto inv = GetInventory([](TESBoundObject& a_object) -> bool {
+			return a_object.IsGold();
 		});
 
-		auto dobj = BGSDefaultObjectManager::GetSingleton();
+		const auto dobj = BGSDefaultObjectManager::GetSingleton();
 		if (!dobj) {
 			return 0;
 		}
 
-		auto gold = dobj->GetObject<TESObjectMISC>(DEFAULT_OBJECT::kGold);
-		auto it = inv.find(gold);
+		const auto gold = dobj->GetObject<TESObjectMISC>(DEFAULT_OBJECT::kGold);
+		const auto it = inv.find(gold);
 		return it != inv.end() ? it->second.first : 0;
 	}
 

@@ -100,7 +100,7 @@ namespace RE
 		virtual BGSEquipSlot* GetEquipSlot() const override;				// 04
 		virtual void		  SetEquipSlot(BGSEquipSlot* a_slot) override;	// 05 - { return; }
 
-		bool CanBeCarried() const;
+		[[nodiscard]] constexpr bool CanBeCarried() const noexcept { return data.flags.all(TES_LIGHT_FLAGS::kCanCarry); }
 
 
 		// members
