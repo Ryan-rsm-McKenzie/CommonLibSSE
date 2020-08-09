@@ -49,8 +49,9 @@ namespace RE
 					int> = 0>
 			inline BSFixedString(const T& a_string)
 			{
-				if (!a_string.empty()) {
-					ctor(a_string.data());
+				const auto view = static_cast<std::basic_string_view<value_type>>(a_string);
+				if (!view.empty()) {
+					ctor(view.data());
 				}
 			}
 
@@ -92,9 +93,10 @@ namespace RE
 					int> = 0>
 			inline BSFixedString& operator=(const T& a_string)
 			{
+				const auto view = static_cast<std::basic_string_view<value_type>>(a_string);
 				try_release();
-				if (!a_string.empty()) {
-					ctor(a_string.data());
+				if (!view.empty()) {
+					ctor(view.data());
 				}
 				return *this;
 			}

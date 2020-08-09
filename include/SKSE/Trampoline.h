@@ -220,16 +220,19 @@ namespace SKSE
 			static_assert(sizeof(TrampolineAssembly) == 0xE);
 #pragma pack(pop)
 
-			const auto disp = static_cast<std::ptrdiff_t>(
-				reinterpret_cast<std::uintptr_t>(_data) -
-				(a_src + sizeof(SrcAssembly)));
-			if (!in_range(disp)) {
-				throw std::runtime_error("displacement is out of range"s);
+			TrampolineAssembly* mem = nullptr;
+			if (const auto it = _5branches.find(a_dst); it != _5branches.end()) {
+				mem = reinterpret_cast<TrampolineAssembly*>(it->second);
+			} else {
+				mem = allocate<TrampolineAssembly>();
+				_5branches.emplace(a_dst, reinterpret_cast<std::byte*>(mem));
 			}
 
-			auto mem = allocate<TrampolineAssembly>();
-			if (!mem) {
-				throw std::runtime_error("trampoline ran out of space"s);
+			const auto disp = static_cast<std::ptrdiff_t>(
+				reinterpret_cast<std::uintptr_t>(mem) -
+				(a_src + sizeof(SrcAssembly)));
+			if (!in_range(disp)) {	// the trampoline should already be in range, so this should never happen
+				throw std::runtime_error("displacement is out of range"s);
 			}
 
 			SrcAssembly assembly;
@@ -259,16 +262,19 @@ namespace SKSE
 			static_assert(sizeof(Assembly) == 0x6);
 #pragma pack(pop)
 
-			const auto disp = static_cast<std::ptrdiff_t>(
-				reinterpret_cast<std::uintptr_t>(_data) -
-				(a_src + sizeof(Assembly)));
-			if (!in_range(disp)) {
-				throw std::runtime_error("displacement is out of range"s);
+			std::uintptr_t* mem = nullptr;
+			if (const auto it = _6branches.find(a_dst); it != _6branches.end()) {
+				mem = reinterpret_cast<std::uintptr_t*>(it->second);
+			} else {
+				mem = allocate<std::uintptr_t>();
+				_6branches.emplace(a_dst, reinterpret_cast<std::byte*>(mem));
 			}
 
-			auto mem = allocate<std::uintptr_t>();
-			if (!mem) {
-				throw std::runtime_error("trampoline ran out of space"s);
+			const auto disp = static_cast<std::ptrdiff_t>(
+				reinterpret_cast<std::uintptr_t>(_data + _size) -
+				(a_src + sizeof(Assembly)));
+			if (!in_range(disp)) {	// the trampoline should already be in range, so this should never happen
+				throw std::runtime_error("displacement is out of range"s);
 			}
 
 			Assembly assembly;
@@ -300,6 +306,8 @@ namespace SKSE
 
 		inline void move_from(Trampoline&& a_rhs)
 		{
+			_5branches = std::move(a_rhs._5branches);
+			_6branches = std::move(a_rhs._6branches);
 			_name = std::move(a_rhs._name);
 
 			_deleter = std::move(a_rhs._deleter);
@@ -330,15 +338,19 @@ namespace SKSE
 				_deleter(_data, _capacity);
 			}
 
+			_5branches.clear();
+			_6branches.clear();
 			_data = nullptr;
 			_capacity = 0;
 			_size = 0;
 		}
 
-		std::string	 _name{ "Default Trampoline"sv };
-		deleter_type _deleter;
-		std::byte*	 _data{ nullptr };
-		std::size_t	 _capacity{ 0 };
-		std::size_t	 _size{ 0 };
+		std::map<std::uintptr_t, std::byte*> _5branches;
+		std::map<std::uintptr_t, std::byte*> _6branches;
+		std::string							 _name{ "Default Trampoline"sv };
+		deleter_type						 _deleter;
+		std::byte*							 _data{ nullptr };
+		std::size_t							 _capacity{ 0 };
+		std::size_t							 _size{ 0 };
 	};
 }
