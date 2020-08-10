@@ -1222,9 +1222,16 @@
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkWorldObject.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSAnimNote.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffect.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectDebris.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectGeometryDecal.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectParticle.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectSimpleDecal.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectSPG.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectWeaponBlood.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\ModelReferenceEffect.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\ReferenceEffect.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\ShaderReferenceEffect.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\SummonPlacementEffect.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTextureSet.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\ImageSpaceModifierInstance\ImageSpaceModifierInstance.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\ImageSpaceModifierInstance\ImageSpaceModifierInstanceTemp\ImageSpaceModifierInstanceDOF.h" />
