@@ -36,6 +36,18 @@ namespace RE
 	}
 
 
+	bool PlayerCharacter::CenterOnCell(const char* a_cellName)
+	{
+		return CenterOnCell_Impl(a_cellName, nullptr);
+	}
+
+
+	bool PlayerCharacter::CenterOnCell(RE::TESObjectCELL* a_cell)
+	{
+		return CenterOnCell_Impl(nullptr, a_cell);
+	}
+
+
 	NiPointer<Actor> PlayerCharacter::GetActorDoingPlayerCommand() const
 	{
 		return actorDoingPlayerCommand.get();
@@ -121,5 +133,12 @@ namespace RE
 		using func_t = decltype(&PlayerCharacter::StartGrabObject);
 		REL::Relocation<func_t> func{ Offset::PlayerCharacter::StartGrabObject };
 		return func(this);
+	}
+
+	bool PlayerCharacter::CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell)
+	{
+		using func_t = decltype(&PlayerCharacter::CenterOnCell_Impl);
+		REL::Relocation<func_t> func{ REL::ID(39365) };
+		return func(this, a_cellName, a_cell);
 	}
 }

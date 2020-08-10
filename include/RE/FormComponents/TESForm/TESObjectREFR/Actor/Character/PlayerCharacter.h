@@ -294,6 +294,8 @@ namespace RE
 
 		void					 ActivatePickRef();
 		bool					 AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer = true);
+		bool					 CenterOnCell(const char* a_cellName);
+		bool					 CenterOnCell(RE::TESObjectCELL* a_cell);
 		NiPointer<Actor>		 GetActorDoingPlayerCommand() const;
 		float					 GetArmorValue(InventoryEntryData* a_form);
 		float					 GetDamage(InventoryEntryData* a_form);
@@ -475,6 +477,9 @@ namespace RE
 		stl::enumeration<FlagBDC, std::uint8_t>					unkBDC;										  // BDC
 		stl::enumeration<FlagBDD, std::uint8_t>					unkBDD;										  // BDD
 		std::uint16_t											padBDE;										  // BDE
+
+	private:
+		bool CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell);
 	};
 	static_assert(sizeof(PlayerCharacter) == 0xBE0);
 }
