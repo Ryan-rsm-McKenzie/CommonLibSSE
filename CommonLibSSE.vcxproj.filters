@@ -3007,6 +3007,24 @@
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffect.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectDebris.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectGeometryDecal.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectParticle.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectSimpleDecal.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectSPG.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectWeaponBlood.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
+    </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\ModelReferenceEffect.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect</Filter>
     </ClInclude>
@@ -3014,6 +3032,9 @@
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\ShaderReferenceEffect.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\SummonPlacementEffect.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTextureSet.h">
@@ -3633,27 +3654,6 @@
     </ClInclude>
     <ClInclude Include="include\SKSE\Version.h">
       <Filter>include\SKSE</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\SummonPlacementEffect.h">
-      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectDebris.h">
-      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectGeometryDecal.h">
-      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectParticle.h">
-      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectSimpleDecal.h">
-      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectSPG.h">
-      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectWeaponBlood.h">
-      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

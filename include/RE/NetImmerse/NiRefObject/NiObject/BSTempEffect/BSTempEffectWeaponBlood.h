@@ -22,7 +22,7 @@ namespace RE
 
 
 		// members;
-		NiPointer<NiAVObject> weapon3D;	   // 030
+		NiPointer<NiAVObject> weapon3D;		   // 030
 		float				  alphaThreshold;  // 038
 	};
 	static_assert(sizeof(BSTempEffectWeaponBlood) == 0x40);

@@ -14,6 +14,7 @@
 
 ## Development
 * [Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444)
+* [Auto-sort Vcxproj.Filters](https://marketplace.visualstudio.com/items?itemName=paralleldimension.AutoSortVcxprojFilters)
 * [clang-format 11.0.0+](https://llvm.org/builds/)
 * [VC File Utilities](https://github.com/Lynxaa/vc-fileutils)
 
