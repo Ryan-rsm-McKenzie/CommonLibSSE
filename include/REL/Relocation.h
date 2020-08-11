@@ -939,6 +939,7 @@ namespace REL
 		std::invoke_result_t<const value_type&, Args&&...> operator()(Args&&... a_args) const noexcept(
 			std::is_nothrow_invocable_v<const value_type&, Args&&...>)
 		{
+			assert(address() != 0);
 			return REL::invoke(get(), std::forward<Args>(a_args)...);
 		}
 

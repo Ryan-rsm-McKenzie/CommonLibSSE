@@ -5,6 +5,8 @@
 
 #define WIN32_LEAN_AND_MEAN
 
+#ifndef SKSE_CUSTOM_WINDEF
+
 #define NOGDICAPMASKS
 #define NOVIRTUALKEYCODES
 //#define NOWINMESSAGES
@@ -44,6 +46,8 @@
 #define NOPROFILER
 #define NODEFERWINDOWPOS
 #define NOMCX
+
+#endif
 
 #define SPDLOG_COMPILED_LIB
 #define XBYAK_NO_OP_NAMES

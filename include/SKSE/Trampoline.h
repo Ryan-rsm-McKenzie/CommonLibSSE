@@ -12,8 +12,8 @@ namespace SKSE
 
 			const auto remainder = a_number % a_multiple;
 			return remainder == 0 ?
-					   a_number :
-					   a_number + a_multiple - remainder;
+						 a_number :
+						 a_number + a_multiple - remainder;
 		}
 
 		[[nodiscard]] constexpr std::size_t rounddown(std::size_t a_number, std::size_t a_multiple) noexcept
@@ -24,8 +24,8 @@ namespace SKSE
 
 			const auto remainder = a_number % a_multiple;
 			return remainder == 0 ?
-					   a_number :
-					   a_number - remainder;
+						 a_number :
+						 a_number - remainder;
 		}
 	}
 
@@ -228,9 +228,9 @@ namespace SKSE
 				_5branches.emplace(a_dst, reinterpret_cast<std::byte*>(mem));
 			}
 
-			const auto disp = static_cast<std::ptrdiff_t>(
-				reinterpret_cast<std::uintptr_t>(mem) -
-				(a_src + sizeof(SrcAssembly)));
+			const auto disp =
+				reinterpret_cast<const std::byte*>(mem) -
+				reinterpret_cast<const std::byte*>(a_src + sizeof(SrcAssembly));
 			if (!in_range(disp)) {	// the trampoline should already be in range, so this should never happen
 				throw std::runtime_error("displacement is out of range"s);
 			}
@@ -270,9 +270,9 @@ namespace SKSE
 				_6branches.emplace(a_dst, reinterpret_cast<std::byte*>(mem));
 			}
 
-			const auto disp = static_cast<std::ptrdiff_t>(
-				reinterpret_cast<std::uintptr_t>(_data + _size) -
-				(a_src + sizeof(Assembly)));
+			const auto disp =
+				reinterpret_cast<const std::byte*>(mem) -
+				reinterpret_cast<const std::byte*>(a_src + sizeof(Assembly));
 			if (!in_range(disp)) {	// the trampoline should already be in range, so this should never happen
 				throw std::runtime_error("displacement is out of range"s);
 			}
