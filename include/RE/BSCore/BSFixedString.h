@@ -196,15 +196,15 @@ namespace RE
 			[[nodiscard]] inline BSStringPool::Entry* get_proxy() noexcept
 			{
 				return _data ?
-						   reinterpret_cast<BSStringPool::Entry*>(const_cast<pointer>(_data)) - 1 :
-						   nullptr;
+							 reinterpret_cast<BSStringPool::Entry*>(const_cast<pointer>(_data)) - 1 :
+							 nullptr;
 			}
 
 			[[nodiscard]] inline const BSStringPool::Entry* get_proxy() const noexcept
 			{
 				return _data ?
-						   reinterpret_cast<const BSStringPool::Entry*>(_data) - 1 :
-						   nullptr;
+							 reinterpret_cast<const BSStringPool::Entry*>(_data) - 1 :
+							 nullptr;
 			}
 
 			inline void try_acquire()
@@ -230,4 +230,14 @@ namespace RE
 	using BSFixedString = detail::BSFixedString<char>;
 	using BSFixedStringCI = BSFixedString;
 	using BSFixedStringW = detail::BSFixedString<wchar_t>;
+
+	template <class CharT>
+	struct BSCRC32<detail::BSFixedString<CharT>>
+	{
+	public:
+		[[nodiscard]] inline std::uint32_t operator()(const detail::BSFixedString<CharT>& a_key) const noexcept
+		{
+			return detail::GenerateCRC32({ reinterpret_cast<const std::uint8_t*>(a_key.data()), a_key.size() });
+		}
+	};
 }

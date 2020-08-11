@@ -250,12 +250,12 @@ namespace RE
 
 
 	template <class T>
-	struct CRC32Hash<NiPointer<T>>
+	struct BSCRC32<NiPointer<T>>
 	{
 	public:
-		std::uint32_t operator()(const NiPointer<T>& a_key) const
+		[[nodiscard]] inline std::uint32_t operator()(const NiPointer<T>& a_key) const noexcept
 		{
-			return CRC32Hash<std::uintptr_t>()((std::uintptr_t)a_key.get());
+			return BSCRC32<T*>()(a_key.get());
 		}
 	};
 }

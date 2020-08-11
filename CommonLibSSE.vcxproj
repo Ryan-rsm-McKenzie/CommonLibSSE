@@ -1451,7 +1451,6 @@
     <ClCompile Include="src\RE\BSCore\BSStringPool.cpp" />
     <ClCompile Include="src\RE\BSCore\BSTArray.cpp" />
     <ClCompile Include="src\RE\BSCore\BSTCreateFactoryManager.cpp" />
-    <ClCompile Include="src\RE\BSCore\CRC.cpp" />
     <ClCompile Include="src\RE\BSDevices\BSIInputDevice\BSInputDevice\BSInputDevice.cpp" />
     <ClCompile Include="src\RE\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice\BSWin32KeyboardDevice.cpp" />
     <ClCompile Include="src\RE\BSDevices\BSInputDeviceManager.cpp" />

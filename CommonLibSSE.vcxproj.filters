@@ -3693,9 +3693,6 @@
     <ClCompile Include="src\RE\BSCore\BSTCreateFactoryManager.cpp">
       <Filter>src\RE\BSCore</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSCore\CRC.cpp">
-      <Filter>src\RE\BSCore</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSDevices\BSIInputDevice\BSInputDevice\BSInputDevice.cpp">
       <Filter>src\RE\BSDevices\BSIInputDevice\BSInputDevice</Filter>
     </ClCompile>
