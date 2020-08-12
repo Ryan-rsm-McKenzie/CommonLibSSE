@@ -237,7 +237,7 @@ namespace RE
 	public:
 		[[nodiscard]] inline std::uint32_t operator()(const detail::BSFixedString<CharT>& a_key) const noexcept
 		{
-			return detail::GenerateCRC32({ reinterpret_cast<const std::uint8_t*>(a_key.data()), a_key.size() });
+			return BSCRC32<typename detail::BSFixedString<CharT>::const_pointer>()(a_key.data());
 		}
 	};
 }

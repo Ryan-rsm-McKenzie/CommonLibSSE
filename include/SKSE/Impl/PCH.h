@@ -533,10 +533,11 @@ namespace SKSE
 
 		inline void memzero(void* a_dst, std::size_t a_size)
 		{
-			volatile auto  beg = static_cast<char*>(a_dst);
-			volatile auto  end = static_cast<char*>(a_dst) + a_size;
-			constexpr char VAL = 0;
-			std::fill(beg, end, VAL);
+			// msvc stl bug
+			const auto	   beg = static_cast</*volatile*/ char*>(a_dst);
+			const auto	   end = static_cast</*volatile*/ char*>(a_dst) + a_size;
+			constexpr char val = 0;
+			std::fill(beg, end, val);
 		}
 
 
