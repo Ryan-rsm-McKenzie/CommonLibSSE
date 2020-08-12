@@ -531,6 +531,7 @@ namespace RE
 		[[nodiscard]] bool			 IsSummoned() const noexcept;
 		bool						 IsTrespassing() const;
 		void						 RemoveExtraArrows3D();
+		bool						 RemoveSpell(SpellItem* a_spell);
 		std::int32_t				 RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);
 		void						 StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning);
 		void						 SwitchRace(TESRace* a_race, bool a_player);
