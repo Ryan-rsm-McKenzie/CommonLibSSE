@@ -219,7 +219,7 @@
 					REL::Module::_natvis != 0 &amp;&amp;
 					REL::IDDatabase::_natvis != nullptr &amp;&amp;
 					!Empty()">
-				*(RE::NiPointer&lt;RE::BSHandleRefObject&gt;*)(((char*)(REL::Module::_natvis + REL::IDDatabase::_natvis[514478])) + (_handle &amp; 0xFFFFF) * 0x10 + 0x8)
+				*(RE::NiPointer&lt;RE::BSHandleRefObject&gt;*)(((char*)(REL::Module::_natvis + REL::IDDatabase::_natvis[514478].offset)) + (_handle &amp; 0xFFFFF) * 0x10 + 0x8)
 			</Item>
 		</Expand>
 	</Type>

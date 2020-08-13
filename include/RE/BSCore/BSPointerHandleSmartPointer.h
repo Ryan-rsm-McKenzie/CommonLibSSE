@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSCore/BSPointerHandleManagerInterface.h"
+#include "RE/BSCore/BSPointerHandle.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 
 

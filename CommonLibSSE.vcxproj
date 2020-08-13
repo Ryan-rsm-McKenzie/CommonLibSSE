@@ -264,7 +264,6 @@
     <ClInclude Include="include\RE\BSCore\BSCoreTypes.h" />
     <ClInclude Include="include\RE\BSCore\BSFixedString.h" />
     <ClInclude Include="include\RE\BSCore\BSPointerHandle.h" />
-    <ClInclude Include="include\RE\BSCore\BSPointerHandleManagerInterface.h" />
     <ClInclude Include="include\RE\BSCore\BSPointerHandleManager\BSPointerHandleManager.h" />
     <ClInclude Include="include\RE\BSCore\BSPointerHandleManager\HandleManager.h" />
     <ClInclude Include="include\RE\BSCore\BSPointerHandleSmartPointer.h" />
@@ -285,7 +284,6 @@
     <ClInclude Include="include\RE\BSCore\BSTSingleton.h" />
     <ClInclude Include="include\RE\BSCore\BSTSmartPointer.h" />
     <ClInclude Include="include\RE\BSCore\BSTTuple.h" />
-    <ClInclude Include="include\RE\BSCore\BSUntypedPointerHandle.h" />
     <ClInclude Include="include\RE\BSCore\CRC.h" />
     <ClInclude Include="include\RE\BSCore\IBSTCreator\AutoRegisterCreator.h" />
     <ClInclude Include="include\RE\BSCore\IBSTCreator\AutoRegisterFactory.h" />
@@ -1448,6 +1446,7 @@
     <ClCompile Include="src\RE\BSAudio\BSSoundHandle.cpp" />
     <ClCompile Include="src\RE\BSCore\BSAtomic.cpp" />
     <ClCompile Include="src\RE\BSCore\BSFixedString.cpp" />
+    <ClCompile Include="src\RE\BSCore\BSPointerHandle.cpp" />
     <ClCompile Include="src\RE\BSCore\BSStringPool.cpp" />
     <ClCompile Include="src\RE\BSCore\BSTArray.cpp" />
     <ClCompile Include="src\RE\BSCore\BSTCreateFactoryManager.cpp" />

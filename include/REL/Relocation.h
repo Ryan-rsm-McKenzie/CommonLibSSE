@@ -481,6 +481,7 @@ namespace REL
 				REL_THROW_EXCEPTION("failed to obtain module handle");
 			}
 			_base = reinterpret_cast<std::uintptr_t>(handle);
+			_natvis = _base;
 
 			load_version();
 			load_segments();
@@ -548,6 +549,8 @@ namespace REL
 			std::make_pair(".text"sv, static_cast<std::uint32_t>(IMAGE_SCN_MEM_WRITE)),
 			std::make_pair(".gfids"sv, static_cast<std::uint32_t>(0))
 		};
+
+		static inline std::uintptr_t _natvis{ 0 };
 
 		std::array<Segment, Segment::total> _segments;
 		Version								_version;

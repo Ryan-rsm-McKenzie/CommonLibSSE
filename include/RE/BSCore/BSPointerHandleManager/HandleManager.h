@@ -1,7 +1,7 @@
 #pragma once
 
+#include "RE/BSCore/BSPointerHandle.h"
 #include "RE/BSCore/BSPointerHandleManager/BSPointerHandleManager.h"
-#include "RE/BSCore/BSUntypedPointerHandle.h"
 
 
 namespace RE
@@ -10,5 +10,5 @@ namespace RE
 	{
 	public:
 	};
-	static_assert(sizeof(HandleManager) == 0x1);
+	static_assert(std::is_empty_v<HandleManager>);
 }

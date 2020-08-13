@@ -139,9 +139,6 @@
     <ClInclude Include="include\RE\BSCore\BSPointerHandleManager\HandleManager.h">
       <Filter>include\RE\BSCore\BSPointerHandleManager</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSCore\BSPointerHandleManagerInterface.h">
-      <Filter>include\RE\BSCore</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSCore\BSPointerHandleSmartPointer.h">
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
@@ -194,9 +191,6 @@
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSCore\BSTTuple.h">
-      <Filter>include\RE\BSCore</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSCore\BSUntypedPointerHandle.h">
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSCore\CRC.h">
@@ -3682,6 +3676,9 @@
       <Filter>src\RE\BSCore</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSCore\BSFixedString.cpp">
+      <Filter>src\RE\BSCore</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\BSCore\BSPointerHandle.cpp">
       <Filter>src\RE\BSCore</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSCore\BSStringPool.cpp">
