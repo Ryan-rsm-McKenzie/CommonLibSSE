@@ -6,7 +6,6 @@
 * [Visual Studio Community 2019 Preview+](https://visualstudio.microsoft.com/vs/preview/)
 	* C++ Clang tools for Windows
 	* Desktop development with C++
-* [Xbyak](https://github.com/herumi/xbyak)
 
 ## End User Dependencies
 * [Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444)

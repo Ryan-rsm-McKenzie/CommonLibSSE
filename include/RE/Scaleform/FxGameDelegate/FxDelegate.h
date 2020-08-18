@@ -22,15 +22,9 @@ namespace RE
 		struct CallbackDefn
 		{
 		public:
-			inline CallbackDefn() :
-				handler(nullptr),
-				callback(nullptr)
-			{}
-
-
 			// members
-			GPtr<FxDelegateHandler>		   handler;	  // 00
-			FxDelegateHandler::CallbackFn* callback;  // 08
+			GPtr<FxDelegateHandler>		   handler{ nullptr };	 // 00
+			FxDelegateHandler::CallbackFn* callback{ nullptr };	 // 08
 		};
 		static_assert(sizeof(CallbackDefn) == 0x10);
 
@@ -40,7 +34,7 @@ namespace RE
 		public:
 			UPInt operator()(const GString& a_data) const;
 		};
-		static_assert(sizeof(CallbackHashFunctor) == 0x1);
+		static_assert(std::is_empty_v<CallbackHashFunctor>);
 
 
 		using CallbackHash = GHash<GString, CallbackDefn, CallbackHashFunctor>;

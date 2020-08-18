@@ -50,7 +50,6 @@
 #endif
 
 #define SPDLOG_COMPILED_LIB
-#define XBYAK_NO_OP_NAMES
 
 #include <Windows.h>
 
@@ -108,7 +107,6 @@
 
 #include <nonstd/span.hpp>
 #include <spdlog/spdlog.h>
-#include <xbyak/xbyak.h>
 
 #undef far
 #undef GetClassName

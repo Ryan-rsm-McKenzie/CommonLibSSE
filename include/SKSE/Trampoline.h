@@ -106,6 +106,7 @@ namespace SKSE
 			return result;
 		}
 
+#if defined(XBYAK32) || defined(XBYAK64)
 		[[nodiscard]] inline void* allocate(Xbyak::CodeGenerator& a_code)
 		{
 			auto result = do_allocate(a_code.getSize());
@@ -113,6 +114,7 @@ namespace SKSE
 			std::memcpy(result, a_code.getCode(), a_code.getSize());
 			return result;
 		}
+#endif
 
 		template <class T>
 		[[nodiscard]] inline T* allocate()
