@@ -591,9 +591,13 @@
     <ClInclude Include="include\RE\BSHavok\hkpShapeBuffer.h" />
     <ClInclude Include="include\RE\BSHavok\hkpShapeContainer\hkpShapeContainer.h" />
     <ClInclude Include="include\RE\BSHavok\hkpShapeContainer\hkpSingleShapeContainer.h" />
+    <ClInclude Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastCollectorOutput.h" />
+    <ClInclude Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastOutput\hkpShapeRayCastOutput.h" />
+    <ClInclude Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastOutput\hkpWorldRayCastOutput.h" />
     <ClInclude Include="include\RE\BSHavok\hkpSimplexSolver.h" />
     <ClInclude Include="include\RE\BSHavok\hkpSolverInfo.h" />
     <ClInclude Include="include\RE\BSHavok\hkpWeldingUtility.h" />
+    <ClInclude Include="include\RE\BSHavok\hkpWorldRayCastInput.h" />
     <ClInclude Include="include\RE\BSHavok\hkQuaternion.h" />
     <ClInclude Include="include\RE\BSHavok\hkRefPtr\hkRefPtr.h" />
     <ClInclude Include="include\RE\BSHavok\hkRefPtr\hkRefVariant.h" />

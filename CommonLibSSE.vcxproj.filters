@@ -1114,6 +1114,15 @@
     <ClInclude Include="include\RE\BSHavok\hkpShapeContainer\hkpSingleShapeContainer.h">
       <Filter>include\RE\BSHavok\hkpShapeContainer</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastCollectorOutput.h">
+      <Filter>include\RE\BSHavok\hkpShapeRayCastCollectorOutput</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastOutput\hkpShapeRayCastOutput.h">
+      <Filter>include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastOutput</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastOutput\hkpWorldRayCastOutput.h">
+      <Filter>include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastOutput</Filter>
+    </ClInclude>
     <ClInclude Include="include\RE\BSHavok\hkpSimplexSolver.h">
       <Filter>include\RE\BSHavok</Filter>
     </ClInclude>
@@ -1121,6 +1130,9 @@
       <Filter>include\RE\BSHavok</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSHavok\hkpWeldingUtility.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSHavok\hkpWorldRayCastInput.h">
       <Filter>include\RE\BSHavok</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSHavok\hkQuaternion.h">
@@ -4621,6 +4633,12 @@
     </Filter>
     <Filter Include="include\RE\BSHavok\hkpShapeContainer">
       <UniqueIdentifier>{51caae3b-3467-4a95-9871-8c290df3b670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput">
+      <UniqueIdentifier>{24279638-19e9-44d6-8c36-527a0e20b6b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastOutput">
+      <UniqueIdentifier>{93285f50-b35e-4f5e-8881-516b53249fe4}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\RE\BSHavok\hkRefPtr">
       <UniqueIdentifier>{7a022827-8c63-40f0-9c20-52a307606618}</UniqueIdentifier>

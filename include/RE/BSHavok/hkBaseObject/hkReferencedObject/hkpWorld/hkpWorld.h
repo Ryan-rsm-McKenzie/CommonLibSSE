@@ -47,6 +47,8 @@ namespace RE
 	struct hkpMtThreadStructure;
 	struct hkpProcessCollisionInput;
 	struct hkpViolatedConstraintArray;
+	struct hkpWorldRayCastInput;
+	struct hkpWorldRayCastOutput;
 
 
 	struct hkpWorldDynamicsStepInfo
@@ -69,6 +71,13 @@ namespace RE
 
 		// override (hkReferencedObject)
 		virtual void CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;	// 02
+
+		inline void CastRay(const hkpWorldRayCastInput& a_input, hkpWorldRayCastOutput& a_output) const
+		{
+			using func_t = decltype(&hkpWorld::CastRay);
+			REL::Relocation<func_t> func{ REL::ID(60551) };
+			return func(this, a_input, a_output);
+		}
 
 
 		// members
