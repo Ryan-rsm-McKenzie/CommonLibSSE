@@ -753,6 +753,8 @@ namespace RE
 	private:
 		union Data
 		{
+			~Data(){};
+
 			pointer	   heap{ 0 };
 			value_type local;
 		};

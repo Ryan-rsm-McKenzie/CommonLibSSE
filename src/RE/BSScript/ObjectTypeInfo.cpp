@@ -180,10 +180,10 @@ namespace RE
 
 		std::uint32_t ObjectTypeInfo::GetPropertyIndex(const BSFixedString& a_name) const
 		{
-			auto props = GetPropertyIter();
+			const auto props = GetPropertyIter();
 			if (props) {
 				for (std::uint32_t i = 0; i < GetNumProperties(); ++i) {
-					auto& prop = props[i];
+					const auto& prop = props[i];
 					if (prop.name == a_name) {
 						return prop.info.autoVarIndex;
 					}
@@ -196,7 +196,7 @@ namespace RE
 		void ObjectTypeInfo::ReleaseData()
 		{
 			using func_t = decltype(&ObjectTypeInfo::ReleaseData);
-			REL::Relocation<func_t> func{ Offset::BSScript::ObjectTypeInfo::ReleaseData };
+			REL::Relocation<func_t> func{ 97538 };
 			return func(this);
 		}
 	}

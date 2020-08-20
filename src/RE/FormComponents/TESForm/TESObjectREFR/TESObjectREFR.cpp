@@ -307,8 +307,8 @@ namespace RE
 				const auto it = results.find(a_object);
 				const auto entryData =
 					it != results.end() ?
-						it->second.second.get() :
-						nullptr;
+						  it->second.second.get() :
+						  nullptr;
 				return entryData ? entryData->IsLeveled() : false;
 			};
 
@@ -414,47 +414,11 @@ namespace RE
 	}
 
 
-	TESBoundObject* TESObjectREFR::GetObjectReference() const
-	{
-		return data.objectReference;
-	}
-
-
 	TESForm* TESObjectREFR::GetOwner() const
 	{
 		using func_t = decltype(&TESObjectREFR::GetOwner);
 		REL::Relocation<func_t> func{ Offset::TESObjectREFR::GetOwner };
 		return func(this);
-	}
-
-
-	TESObjectCELL* TESObjectREFR::GetParentCell() const
-	{
-		return parentCell;
-	}
-
-
-	NiPoint3 TESObjectREFR::GetPosition() const
-	{
-		return data.location;
-	}
-
-
-	float TESObjectREFR::GetPositionX() const
-	{
-		return data.location.x;
-	}
-
-
-	float TESObjectREFR::GetPositionY() const
-	{
-		return data.location.y;
-	}
-
-
-	float TESObjectREFR::GetPositionZ() const
-	{
-		return data.location.z;
 	}
 
 

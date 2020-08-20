@@ -75,8 +75,8 @@
 		<Expand>
 			<ArrayItems>
 				<Size>_size</Size>
-				<ValuePointer Condition="_size &gt; 0">($T1*)_data.heap</ValuePointer>
-				<ValuePointer Condition="_size &lt;= 0">($T1*)_data.local</ValuePointer>
+				<ValuePointer Condition="_size &gt; 1">($T1*)_data.heap</ValuePointer>
+				<ValuePointer Condition="_size &lt;= 1">($T1*)&amp;_data.local</ValuePointer>
 			</ArrayItems>
 		</Expand>
 	</Type>
@@ -137,32 +137,16 @@
 		</Expand>
 	</Type>
 
-	<Type Name="RE::BSFixedString">
+	<Type Name="RE::detail::BSFixedString&lt;*&gt;">
 		<DisplayString Condition="_data != nullptr">{_data,na}</DisplayString>
 		<DisplayString Condition="_data == nullptr">&quot;&quot;</DisplayString>
 		<StringView Condition="_data != nullptr">_data,na</StringView>
 		<StringView Condition="_data == nullptr">&quot;&quot;</StringView>
 		<Expand>
-			<Item Name="[size]" Condition="_data != nullptr">((RE::BSStringPool::Entry*)_data - 1)-&gt;_lengthAndRef.length &amp; 0xFFFFFF</Item>
+			<Item Name="[size]" Condition="_data != nullptr">((RE::BSStringPool::Entry*)_data - 1)-&gt;_length &amp; 0xFFFFFF</Item>
 			<Item Name="[size]" Condition="_data == nullptr">0</Item>
 			<ArrayItems>
-				<Size Condition="_data != nullptr">((RE::BSStringPool::Entry*)_data - 1)-&gt;_lengthAndRef.length &amp; 0xFFFFFF</Size>
-				<Size Condition="_data == nullptr">0</Size>
-				<ValuePointer>_data</ValuePointer>
-			</ArrayItems>
-		</Expand>
-	</Type>
-
-	<Type Name="RE::BSFixedStringW">
-		<DisplayString Condition="_data != nullptr">{_data,su}</DisplayString>
-		<DisplayString Condition="_data == nullptr">L&quot;&quot;</DisplayString>
-		<StringView Condition="_data != nullptr">_data,su</StringView>
-		<StringView Condition="_data == nullptr">L&quot;&quot;</StringView>
-		<Expand>
-			<Item Name="[size]" Condition="_data != nullptr">((RE::BSStringPool::Entry*)_data - 1)-&gt;_lengthAndRef.length &amp; 0xFFFFFF</Item>
-			<Item Name="[size]" Condition="_data == nullptr">0</Item>
-			<ArrayItems>
-				<Size Condition="_data != nullptr">((RE::BSStringPool::Entry*)_data - 1)-&gt;_lengthAndRef.length &amp; 0xFFFFFF</Size>
+				<Size Condition="_data != nullptr">((RE::BSStringPool::Entry*)_data - 1)-&gt;_length &amp; 0xFFFFFF</Size>
 				<Size Condition="_data == nullptr">0</Size>
 				<ValuePointer>_data</ValuePointer>
 			</ArrayItems>
@@ -239,6 +223,16 @@
 		<DisplayString Condition="_ptr != nullptr">RE::BSTSmartPointer {*_ptr}</DisplayString>
 		<Expand>
 			<Item Name="[ptr]" Condition="_ptr != nullptr">_ptr,na</Item>
+		</Expand>
+	</Type>
+
+	<Type Name="RE::BSTPointerAndFlags&lt;*&gt;">
+		<Intrinsic Name="Get" Expression="(typename $T1::element_type*)(_storage.address &amp; ~$T2)" />
+		<SmartPointer Usage="Minimal">Get()</SmartPointer>
+		<DisplayString Condition="Get() == nullptr">empty</DisplayString>
+		<DisplayString Condition="Get() != nullptr">RE::BSTPointerAndFlags {*Get()}</DisplayString>
+		<Expand>
+			<Item Name="[ptr]" Condition="Get() != nullptr">Get(),na</Item>
 		</Expand>
 	</Type>
 
@@ -681,5 +675,67 @@
 	<Type Name="RE::BSExtraData" IncludeView="CastBSExtraData">
 		<Intrinsic Name="GetType" Expression="*(uint8_t*)((char*)*(*(size_t***)this + 1) + 1)" />
 		<DisplayString>{{ type={(RE::ExtraDataType)GetType(),en} }}</DisplayString>
+	</Type>
+
+	<Type Name="RE::BSScript::ObjectTypeInfo">
+		<Intrinsic Name="LinkValid" Expression="linkedValid &gt;= 2" />
+		<Intrinsic Name="GetUserFlagIter" Expression="(UserFlagInfo*)data" />
+		<Intrinsic Name="GetVariableIter" Expression="(VariableInfo*)(GetUserFlagIter() + userFlagCount)" />
+		<Intrinsic Name="GetInitialValueIter" Expression="(InitialValueInfo*)(GetVariableIter() + variableCount)" />
+		<Intrinsic Name="GetPropertyIter" Expression="(PropertyInfo*)(GetInitialValueIter() + initialValueCount)" />
+		<Intrinsic Name="GetGlobalFuncIter" Expression="(GlobalFuncInfo*)(GetPropertyIter() + propertyCount)" />
+		<Intrinsic Name="GetMemberFuncIter" Expression="(MemberFuncInfo*)(GetGlobalFuncIter() + staticFunctionCount)" />
+		<Intrinsic Name="GetNamedStateIter" Expression="(NamedStateInfo*)(GetMemberFuncIter() + emptyStateMemberFunctionCount)" />
+		<DisplayString>RE::BSScript::ObjectTypeInfo {name,na}</DisplayString>
+		<Expand>
+			<Item Name="[name]">name</Item>
+			<Item Name="[parent]">parentTypeInfo</Item>
+			<Item Name="[documentation]">docString</Item>
+			<Item Name="[linked]">linkedValid,en</Item>
+			<LinkedListItems Condition="!LinkValid()">
+				<HeadPointer>(UnlinkedNativeFunction*)data</HeadPointer>
+				<NextPointer>next</NextPointer>
+				<ValueNode>func</ValueNode>
+			</LinkedListItems>
+			<Item Name="[user flags]" Condition="LinkValid()">userFlagCount</Item>
+			<ArrayItems Condition="LinkValid()">
+				<Size>userFlagCount</Size>
+				<ValuePointer>GetUserFlagIter()</ValuePointer>
+			</ArrayItems>
+			<Item Name="[variables]" Condition="LinkValid()">variableCount</Item>
+			<ArrayItems Condition="LinkValid()">
+				<Size>variableCount</Size>
+				<ValuePointer>GetVariableIter()</ValuePointer>
+			</ArrayItems>
+			<Item Name="[initial values]" Condition="LinkValid()">initialValueCount</Item>
+			<ArrayItems Condition="LinkValid()">
+				<Size>initialValueCount</Size>
+				<ValuePointer>GetInitialValueIter()</ValuePointer>
+			</ArrayItems>
+			<Item Name="[properties]" Condition="LinkValid()">propertyCount</Item>
+			<ArrayItems Condition="LinkValid()">
+				<Size>propertyCount</Size>
+				<ValuePointer>GetPropertyIter()</ValuePointer>
+			</ArrayItems>
+			<Item Name="[global functions]" Condition="LinkValid()">staticFunctionCount</Item>
+			<ArrayItems Condition="LinkValid()">
+				<Size>staticFunctionCount</Size>
+				<ValuePointer>GetGlobalFuncIter()</ValuePointer>
+			</ArrayItems>
+			<Item Name="[member functions]" Condition="LinkValid()">emptyStateMemberFunctionCount</Item>
+			<ArrayItems Condition="LinkValid()">
+				<Size>emptyStateMemberFunctionCount</Size>
+				<ValuePointer>GetMemberFuncIter()</ValuePointer>
+			</ArrayItems>
+			<Item Name="[named states]" Condition="LinkValid()">namedStateCount</Item>
+			<ArrayItems Condition="LinkValid()">
+				<Size>namedStateCount</Size>
+				<ValuePointer>GetNamedStateIter()</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="RE::BSScript::ObjectTypeInfo::UserFlagInfo">
+		<DisplayString>{(char*)(data &amp; ~(1ULL &lt;&lt; 0)),na}</DisplayString>
 	</Type>
 </AutoVisualizer>

@@ -20,6 +20,7 @@
 
 namespace RE
 {
+	class bhkWorld;
 	class NavMesh;
 	class NiNode;
 
@@ -189,7 +190,15 @@ namespace RE
 		virtual bool		IsParentForm() override;															  // 34 - { return true; }
 		virtual bool		IsFormTypeChild(FormType a_type) override;											  // 36
 
-		TESNPC*		   GetActorOwner();
+		TESNPC* GetActorOwner();
+
+		inline bhkWorld* GetbhkWorld() const
+		{
+			using func_t = decltype(&TESObjectCELL::GetbhkWorld);
+			REL::Relocation<func_t> func{ REL::ID(18536) };
+			return func(this);
+		}
+
 		EXTERIOR_DATA* GetCoordinates();
 		TESFaction*	   GetFactionOwner();
 		INTERIOR_DATA* GetLighting();

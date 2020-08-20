@@ -194,15 +194,18 @@ namespace RE
 			BSFixedString					name;								 // 08
 			BSTSmartPointer<ObjectTypeInfo> parentTypeInfo;						 // 10
 			BSFixedString					docString;							 // 18
-			LinkValidState					linkedValid : 2;					 // 20 - 0 - 0 or 1 -> data == UnlinkedNativeFunction*, 2 or 3 -> data == normal progression
-			std::uint32_t					userFlagCount : 5;					 // 20 - 2
-			std::uint32_t					variableCount : 10;					 // 21 - 0
-			std::uint32_t					variableUserFlagCount : 6;			 // 22 - 2
+			LinkValidState					linkedValid : 2;					 // 20 - 00 - 0 or 1 -> data == UnlinkedNativeFunction*, 2 or 3 -> data == normal progression
+			std::uint32_t					userFlagCount : 6;					 // 20 - 02
+			std::uint32_t					variableCount : 10;					 // 20 - 08
+			std::uint32_t					variableUserFlagCount : 6;			 // 20 - 18
+			std::uint32_t					pad20_24 : 8;						 // 20 - 24
 			std::uint32_t					initialValueCount : 10;				 // 24 - 0
-			std::uint32_t					propertyCount : 10;					 // 25 - 2
-			std::uint32_t					staticFunctionCount : 9;			 // 26 - 4
+			std::uint32_t					propertyCount : 10;					 // 24 - 10
+			std::uint32_t					staticFunctionCount : 9;			 // 24 - 20
+			std::uint32_t					pad24_29 : 3;						 // 24 - 29
 			std::uint32_t					emptyStateMemberFunctionCount : 11;	 // 28 - 0
-			std::uint32_t					namedStateCount : 7;				 // 29 - 3
+			std::uint32_t					namedStateCount : 7;				 // 28 - 11
+			std::uint32_t					pad28_18 : 14;						 // 28 - 18
 			void*							data;								 // 30
 
 		private:

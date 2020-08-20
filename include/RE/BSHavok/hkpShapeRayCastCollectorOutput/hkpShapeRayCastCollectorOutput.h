@@ -10,9 +10,9 @@ namespace RE
 	struct hkpShapeRayCastCollectorOutput
 	{
 	public:
-		[[nodiscard]] constexpr bool hasHit() const noexcept { return hitFraction < 1.0F; }
+		[[nodiscard]] constexpr bool HasHit() const noexcept { return hitFraction < 1.0F; }
 
-		constexpr void reset() noexcept
+		constexpr void Reset() noexcept
 		{
 			hitFraction = 1.0F;
 			shapeKey = HK_INVALID_SHAPE_KEY;

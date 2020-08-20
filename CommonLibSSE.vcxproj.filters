@@ -2989,6 +2989,9 @@
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection\bhkShapeCollection.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorld.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable</Filter>
+    </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkEntity\bhkEntity.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkEntity</Filter>
     </ClInclude>

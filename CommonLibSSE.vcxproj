@@ -119,8 +119,8 @@
       <TreatSpecificWarningsAsErrors>4099;4717;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RemoveUnreferencedCodeData>false</RemoveUnreferencedCodeData>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -177,8 +177,8 @@
       <TreatSpecificWarningsAsErrors>4099;4717;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RemoveUnreferencedCodeData>false</RemoveUnreferencedCodeData>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -1216,6 +1216,7 @@
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape\bhkShape.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection\bhkListShape.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection\bhkShapeCollection.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorld.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkEntity\bhkEntity.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkEntity\bhkRigidBody.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom\bhkPhantom.h" />

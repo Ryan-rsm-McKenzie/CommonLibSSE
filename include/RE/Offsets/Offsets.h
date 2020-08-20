@@ -151,12 +151,6 @@ namespace RE
 
 		namespace BSScript
 		{
-			namespace ObjectTypeInfo
-			{
-				inline constexpr REL::ID ReleaseData(static_cast<std::uint64_t>(97538));
-			}
-
-
 			namespace ObjectBindPolicy
 			{
 				inline constexpr REL::ID BindObject(static_cast<std::uint64_t>(97379));

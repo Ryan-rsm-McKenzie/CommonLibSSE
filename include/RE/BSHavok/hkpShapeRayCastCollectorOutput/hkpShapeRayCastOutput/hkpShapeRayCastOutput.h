@@ -14,17 +14,17 @@ namespace RE
 		};
 
 
-		constexpr void changeLevel(std::int32_t a_delta) noexcept
+		constexpr void ChangeLevel(std::int32_t a_delta) noexcept
 		{
 			assert(shapeKeyIndex + a_delta < kMaxHierarchyDepth);
 			shapeKeyIndex += a_delta;
 		}
 
-		constexpr void setKey(hkpShapeKey a_key) noexcept { shapeKeys[shapeKeyIndex] = a_key; }
+		constexpr void SetKey(hkpShapeKey a_key) noexcept { shapeKeys[shapeKeyIndex] = a_key; }
 
-		constexpr void reset() noexcept
+		constexpr void Reset() noexcept
 		{
-			hkpShapeRayCastCollectorOutput::reset();
+			hkpShapeRayCastCollectorOutput::Reset();
 			shapeKeys[0] = HK_INVALID_SHAPE_KEY;
 			shapeKeyIndex = 0;
 		}

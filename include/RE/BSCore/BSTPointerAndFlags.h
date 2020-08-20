@@ -4,70 +4,51 @@
 namespace RE
 {
 	// 0x8
-	template <class T, std::uint32_t MASK = 1>
+	template <class T, std::uintptr_t MASK = 1>
 	class BSTPointerAndFlags
 	{
 	public:
 		using value_type = T;
 		using element_type = typename T::element_type;
 
+		constexpr BSTPointerAndFlags() noexcept = default;
 
-		constexpr BSTPointerAndFlags() noexcept :
-			_storage()
-		{}
+		BSTPointerAndFlags(const BSTPointerAndFlags& a_rhs) { _storage.ptr = a_rhs.get(); }
 
-
-		BSTPointerAndFlags(const BSTPointerAndFlags& a_rhs) noexcept :
-			_storage()
+		constexpr BSTPointerAndFlags(BSTPointerAndFlags&& a_rhs) noexcept 
 		{
-			_storage.ptr = a_rhs.get();
-		}
-
-
-		BSTPointerAndFlags(BSTPointerAndFlags&& a_rhs) noexcept :
-			_storage()
-		{
-			_storage.address = std::move(a_rhs._storage.address);
+			_storage.address = a_rhs._storage.address;
 			a_rhs._storage.address = 0;
 		}
 
-
-		constexpr BSTPointerAndFlags(std::nullptr_t) noexcept :
-			_storage()
-		{}
-
+		constexpr BSTPointerAndFlags(std::nullptr_t) noexcept {}
 
 		~BSTPointerAndFlags()
 		{
 			clear_flags();
 			_storage.ptr.~value_type();
+			_storage.address = 0;
 		}
 
-
-		BSTPointerAndFlags& operator=(const BSTPointerAndFlags& a_rhs) noexcept
+		BSTPointerAndFlags& operator=(const BSTPointerAndFlags& a_rhs)
 		{
-			if (this == &a_rhs) {
-				return *this;
+			if (this != std::addressof(a_rhs)) {
+				clear_flags();
+				_storage.ptr = a_rhs.get();
 			}
-
-			clear_flags();
-			_storage.ptr = a_rhs.get();
 			return *this;
 		}
-
 
 		BSTPointerAndFlags& operator=(BSTPointerAndFlags&& a_rhs) noexcept
 		{
-			if (this == &a_rhs) {
-				return *this;
+			if (this != std::addressof(a_rhs)) {
+				clear_flags();
+				a_rhs.clear_flags();
+				_storage.address = a_rhs._storage.address;
+				a_rhs.storage.address = 0;
 			}
-
-			clear_flags();
-			a_rhs.clear_flags();
-			_storage.ptr = std::move(a_rhs._storage.ptr);
 			return *this;
 		}
-
 
 		void reset() noexcept
 		{
@@ -75,50 +56,33 @@ namespace RE
 			_storage.ptr.reset();
 		}
 
-
-		[[nodiscard]] constexpr element_type* get() const noexcept
+		[[nodiscard]] element_type* get() const noexcept
 		{
 			auto ptr = _storage.address;
 			return reinterpret_cast<element_type*>(ptr & ~FLAG_MASK);
 		}
 
-
-		[[nodiscard]] constexpr element_type& operator*() const noexcept
+		[[nodiscard]] element_type& operator*() const noexcept
 		{
-			assert(get() != 0);
+			assert(get() != nullptr);
 			return *get();
 		}
 
+		[[nodiscard]] element_type* operator->() const noexcept { return get(); }
 
-		[[nodiscard]] constexpr element_type* operator->() const noexcept
-		{
-			return get();
-		}
-
-
-		[[nodiscard]] explicit constexpr operator bool() const noexcept
-		{
-			return get() != 0;
-		}
+		[[nodiscard]] explicit operator bool() const noexcept { return get() != nullptr; }
 
 	protected:
 		union Storage
 		{
-			Storage() :
-				address(0) {}
-			~Storage() {}
+			~Storage() noexcept {}
 
 
 			value_type	   ptr;
-			std::uintptr_t address;
+			std::uintptr_t address{ 0 };
 		};
 
-
-		void clear_flags()
-		{
-			_storage.address &= ~FLAG_MASK;
-		}
-
+		constexpr void clear_flags() noexcept { _storage.address &= ~FLAG_MASK; }
 
 		static constexpr std::uintptr_t FLAG_MASK = MASK;
 

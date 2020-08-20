@@ -1057,6 +1057,7 @@
 #include "RE/NetImmerse/NiRefObject/NiObject/bhkRefObject/bhkSerializable/bhkShape/bhkShape.h"
 #include "RE/NetImmerse/NiRefObject/NiObject/bhkRefObject/bhkSerializable/bhkShape/bhkShapeCollection/bhkListShape.h"
 #include "RE/NetImmerse/NiRefObject/NiObject/bhkRefObject/bhkSerializable/bhkShape/bhkShapeCollection/bhkShapeCollection.h"
+#include "RE/NetImmerse/NiRefObject/NiObject/bhkRefObject/bhkSerializable/bhkWorld.h"
 #include "RE/NetImmerse/NiRefObject/NiObject/bhkRefObject/bhkSerializable/bhkWorldObject/bhkEntity/bhkEntity.h"
 #include "RE/NetImmerse/NiRefObject/NiObject/bhkRefObject/bhkSerializable/bhkWorldObject/bhkEntity/bhkRigidBody.h"
 #include "RE/NetImmerse/NiRefObject/NiObject/bhkRefObject/bhkSerializable/bhkWorldObject/bhkPhantom/bhkPhantom.h"

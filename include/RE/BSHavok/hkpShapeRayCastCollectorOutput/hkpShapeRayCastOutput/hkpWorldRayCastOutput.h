@@ -11,11 +11,11 @@ namespace RE
 	struct hkpWorldRayCastOutput : public hkpShapeRayCastOutput
 	{
 	public:
-		[[nodiscard]] constexpr bool hasHit() const noexcept { return rootCollidable != nullptr; }
+		[[nodiscard]] constexpr bool HasHit() const noexcept { return rootCollidable != nullptr; }
 
-		constexpr void reset() noexcept
+		constexpr void Reset() noexcept
 		{
-			hkpShapeRayCastOutput::reset();
+			hkpShapeRayCastOutput::Reset();
 			rootCollidable = nullptr;
 		}
 
