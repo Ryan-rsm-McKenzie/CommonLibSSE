@@ -207,10 +207,9 @@ namespace RE
 	}
 
 
-	template <class T = PVOID>
-	inline T RTDynamicCast(PVOID a_inptr, LONG a_vfDelta, PVOID a_srcType, PVOID a_targetType, BOOL a_isReference)
+	inline void* RTDynamicCast(void* a_inptr, std::int32_t a_vfDelta, void* a_srcType, void* a_targetType, std::int32_t a_isReference)
 	{
-		using func_t = decltype(&RTDynamicCast<T>);
+		using func_t = decltype(&RTDynamicCast);
 		REL::Relocation<func_t> func{ REL::ID(102238) };
 		return func(a_inptr, a_vfDelta, a_srcType, a_targetType, a_isReference);
 	}
@@ -227,27 +226,14 @@ template <
 		int> = 0>
 inline To skyrim_cast(const From* a_from)
 {
-	REL::Relocation<PVOID> from(RE::SK_Impl::remove_cvpr_t<From>::RTTI);
-	REL::Relocation<PVOID> to(RE::SK_Impl::remove_cvpr_t<To>::RTTI);
-	return RE::RTDynamicCast<To>((PVOID)a_from, 0, from.type(), to.type(), false);
-}
-
-
-template <
-	class To,
-	class From,
-	std::enable_if_t<
-		RE::SK_Impl::cast_is_valid_v<
-			To,
-			const From&>,
-		int> = 0>
-inline To skyrim_cast(const From& a_from)  // throw(std::bad_cast)
-{
-	try {
-		REL::Relocation<PVOID> from(RE::SK_Impl::remove_cvpr_t<From>::RTTI);
-		REL::Relocation<PVOID> to(RE::SK_Impl::remove_cvpr_t<To>::RTTI);
-		return RE::RTDynamicCast<To>((PVOID)std::addressof(a_from), 0, from.type(), to.type(), true);
-	} catch (...) {
-		throw std::bad_cast();
-	}
+	REL::Relocation<void*> from{ RE::SK_Impl::remove_cvpr_t<From>::RTTI };
+	REL::Relocation<void*> to{ RE::SK_Impl::remove_cvpr_t<To>::RTTI };
+	return static_cast<To>(
+		RE::RTDynamicCast(
+			const_cast<void*>(
+				static_cast<const volatile void*>(a_from)),
+			0,
+			from.get(),
+			to.get(),
+			false));
 }

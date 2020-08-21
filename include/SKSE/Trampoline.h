@@ -60,7 +60,7 @@ namespace SKSE
 		inline void create(std::size_t a_size, void* a_module)
 		{
 			if (a_size == 0) {
-				throw std::runtime_error("cannot create a trampoline with a zero size"s);
+				stl::report_and_fail("cannot create a trampoline with a zero size"sv);
 			}
 
 			if (!a_module) {
@@ -70,7 +70,7 @@ namespace SKSE
 
 			auto mem = do_create(a_size, reinterpret_cast<std::uintptr_t>(a_module));
 			if (!mem) {
-				throw std::runtime_error("failed to create trampoline"s);
+				stl::report_and_fail("failed to create trampoline"sv);
 			}
 
 			set_trampoline(mem, a_size,
@@ -183,7 +183,7 @@ namespace SKSE
 		[[nodiscard]] inline void* do_allocate(std::size_t a_size)
 		{
 			if (a_size > free_size()) {
-				throw std::runtime_error("Failed to handle allocation request"s);
+				stl::report_and_fail("Failed to handle allocation request"sv);
 			}
 
 			auto mem = _data + _size;
@@ -234,7 +234,7 @@ namespace SKSE
 				reinterpret_cast<const std::byte*>(mem) -
 				reinterpret_cast<const std::byte*>(a_src + sizeof(SrcAssembly));
 			if (!in_range(disp)) {	// the trampoline should already be in range, so this should never happen
-				throw std::runtime_error("displacement is out of range"s);
+				stl::report_and_fail("displacement is out of range"sv);
 			}
 
 			SrcAssembly assembly;
@@ -276,7 +276,7 @@ namespace SKSE
 				reinterpret_cast<const std::byte*>(mem) -
 				reinterpret_cast<const std::byte*>(a_src + sizeof(Assembly));
 			if (!in_range(disp)) {	// the trampoline should already be in range, so this should never happen
-				throw std::runtime_error("displacement is out of range"s);
+				stl::report_and_fail("displacement is out of range"sv);
 			}
 
 			Assembly assembly;

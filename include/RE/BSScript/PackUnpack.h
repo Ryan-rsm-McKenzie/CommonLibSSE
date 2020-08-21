@@ -57,7 +57,6 @@ namespace RE
 				return GetRawTypeFromVMType(static_cast<VMTypeID>(unwrapped_type_t<T>::FORMTYPE)) + TypeInfo::RawType::kObject;
 			} else {
 				static_assert(false);
-				throw std::exception;
 			}
 		}
 

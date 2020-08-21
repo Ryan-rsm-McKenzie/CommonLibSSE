@@ -404,7 +404,7 @@ namespace RE
 		{
 			if (!get_entries() || !_freeCount) {
 				if (!grow()) {
-					return std::make_pair(end(), false);  // maybe throw?
+					return std::make_pair(end(), false);
 				}
 			}
 

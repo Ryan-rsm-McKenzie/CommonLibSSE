@@ -28,9 +28,6 @@ namespace RE
 
 			~Array();
 
-			[[nodiscard]] reference		  at(size_type a_pos);
-			[[nodiscard]] const_reference at(size_type a_pos) const;
-
 			[[nodiscard]] reference		  operator[](size_type a_pos);
 			[[nodiscard]] const_reference operator[](size_type a_pos) const;
 
@@ -71,9 +68,6 @@ namespace RE
 			[[nodiscard]] TypeInfo::RawType type() const;
 
 		private:
-			void out_of_range(const char* a_fnName, size_type a_pos) const;
-
-
 			static inline constexpr size_type MAX_SIZE = 128;
 
 			// members

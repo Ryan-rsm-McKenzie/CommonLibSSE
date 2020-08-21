@@ -57,10 +57,10 @@
 	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(&, ##__VA_ARGS__) \
 	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(&&, ##__VA_ARGS__)
 
-#define REL_THROW_EXCEPTION(a_what)                       \
+#define REL_FAILURE(a_what)                               \
 	{                                                     \
 		const auto src = stl::source_location::current(); \
-		throw std::runtime_error(                         \
+		stl::report_and_fail(                             \
 			fmt::format(                                  \
 				FMT_STRING("{}({}): {}"),                 \
 				src.file_name(),                          \
@@ -478,7 +478,7 @@ namespace REL
 		{
 			auto handle = GetModuleHandleW(FILENAME.data());
 			if (handle == nullptr) {
-				REL_THROW_EXCEPTION("failed to obtain module handle");
+				REL_FAILURE("failed to obtain module handle");
 			}
 			_base = reinterpret_cast<std::uintptr_t>(handle);
 			_natvis = _base;
@@ -516,17 +516,17 @@ namespace REL
 			DWORD			  dummy;
 			std::vector<char> buf(GetFileVersionInfoSizeW(FILENAME.data(), std::addressof(dummy)));
 			if (buf.size() == 0) {
-				REL_THROW_EXCEPTION("failed to obtain file version info size");
+				REL_FAILURE("failed to obtain file version info size");
 			}
 
 			if (!GetFileVersionInfoW(FILENAME.data(), 0, static_cast<DWORD>(buf.size()), buf.data())) {
-				REL_THROW_EXCEPTION("failed to obtain file version info");
+				REL_FAILURE("failed to obtain file version info");
 			}
 
 			LPVOID verBuf;
 			UINT   verLen;
 			if (!VerQueryValueW(buf.data(), L"\\StringFileInfo\\040904B0\\ProductVersion", std::addressof(verBuf), std::addressof(verLen))) {
-				REL_THROW_EXCEPTION("failed to query value");
+				REL_FAILURE("failed to query value");
 			}
 
 			std::wistringstream ss(
@@ -570,7 +570,7 @@ namespace REL
 		[[nodiscard]] inline std::size_t id2offset(std::uint64_t a_id) const
 		{
 			if (_id2offset.empty()) {
-				REL_THROW_EXCEPTION("data is empty");
+				REL_FAILURE("data is empty");
 			}
 
 			mapping_t  elem{ a_id, 0 };
@@ -582,7 +582,7 @@ namespace REL
 					return a_lhs.id < a_rhs.id;
 				});
 			if (it == _id2offset.end()) {
-				REL_THROW_EXCEPTION("id not found");
+				REL_FAILURE("id not found");
 			}
 
 			return static_cast<std::size_t>(it->offset);
@@ -592,7 +592,7 @@ namespace REL
 		[[nodiscard]] inline std::uint64_t offset2id(std::size_t a_offset) const
 		{
 			if (_offset2id.empty()) {
-				REL_THROW_EXCEPTION("data is empty");
+				REL_FAILURE("data is empty");
 			}
 
 			mapping_t  elem{ 0, a_offset };
@@ -604,7 +604,7 @@ namespace REL
 					return a_lhs.offset < a_rhs.offset;
 				});
 			if (it == _offset2id.end()) {
-				REL_THROW_EXCEPTION("offset not found");
+				REL_FAILURE("offset not found");
 			}
 
 			return it->id;
@@ -625,7 +625,7 @@ namespace REL
 				_stream(a_filename.data(), a_mode)
 			{
 				if (!_stream.is_open()) {
-					REL_THROW_EXCEPTION("failed to open file");
+					REL_FAILURE("failed to open file");
 				}
 
 				_stream.exceptions(std::ios::badbit | std::ios::failbit | std::ios::eofbit);
@@ -663,7 +663,7 @@ namespace REL
 				std::int32_t format{};
 				a_input.readin(format);
 				if (format != 1) {
-					REL_THROW_EXCEPTION("unexpected format");
+					REL_FAILURE("unexpected format");
 				}
 
 				std::int32_t version[4]{};
@@ -721,7 +721,7 @@ namespace REL
 			header_t  header;
 			header.read(input);
 			if (header.version() != a_version) {
-				REL_THROW_EXCEPTION("version mismatch");
+				REL_FAILURE("version mismatch");
 			}
 
 			auto mapname = L"CommonLibSSEOffsets-v2-"s;
@@ -729,7 +729,7 @@ namespace REL
 			const auto byteSize = static_cast<std::size_t>(header.address_count()) * sizeof(mapping_t);
 			if (!_mmap.open(mapname, byteSize) &&
 				!_mmap.create(mapname, byteSize)) {
-				REL_THROW_EXCEPTION("failed to create shared mapping");
+				REL_FAILURE("failed to create shared mapping");
 			}
 
 			_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
@@ -793,7 +793,7 @@ namespace REL
 					id = a_input.readout<std::uint32_t>();
 					break;
 				default:
-					REL_THROW_EXCEPTION("unhandled type");
+					REL_FAILURE("unhandled type");
 				}
 
 				const std::uint64_t tmp = (hi & 8) != 0 ? (prevOffset / a_header.pointer_size()) : prevOffset;
@@ -824,7 +824,7 @@ namespace REL
 					offset = a_input.readout<std::uint32_t>();
 					break;
 				default:
-					REL_THROW_EXCEPTION("unhandled type");
+					REL_FAILURE("unhandled type");
 				}
 
 				if ((hi & 8) != 0) {

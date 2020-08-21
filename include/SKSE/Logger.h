@@ -45,13 +45,14 @@ namespace SKSE
 		SKSE_MAKE_SOURCE_LOGGER(error, err);
 		SKSE_MAKE_SOURCE_LOGGER(critical, critical);
 
-		[[nodiscard]] inline std::filesystem::path log_directory()
+		[[nodiscard]] inline std::optional<std::filesystem::path> log_directory()
 		{
 			wchar_t*											 buffer{ nullptr };
-			auto												 result = SHGetKnownFolderPath(FOLDERID_Documents, KNOWN_FOLDER_FLAG::KF_FLAG_DEFAULT, nullptr, std::addressof(buffer));
+			const auto											 result = SHGetKnownFolderPath(FOLDERID_Documents, KNOWN_FOLDER_FLAG::KF_FLAG_DEFAULT, nullptr, std::addressof(buffer));
 			std::unique_ptr<wchar_t[], decltype(&CoTaskMemFree)> knownPath(buffer, CoTaskMemFree);
 			if (!knownPath || result != S_OK) {
-				throw std::runtime_error("failed to get known folder path"s);
+				error("failed to get known folder path"sv);
+				return std::nullopt;
 			}
 
 			std::filesystem::path path = knownPath.get();

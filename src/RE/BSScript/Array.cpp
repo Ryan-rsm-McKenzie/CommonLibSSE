@@ -13,28 +13,6 @@ namespace RE
 		}
 
 
-		[[nodiscard]] auto Array::at(size_type a_pos)
-			-> reference
-		{
-			if (a_pos >= size()) {
-				out_of_range(__FUNCTION__, a_pos);
-			}
-
-			return _data[a_pos];
-		}
-
-
-		[[nodiscard]] auto Array::at(size_type a_pos) const
-			-> const_reference
-		{
-			if (a_pos >= size()) {
-				out_of_range(__FUNCTION__, a_pos);
-			}
-
-			return _data[a_pos];
-		}
-
-
 		[[nodiscard]] auto Array::operator[](size_type a_pos)
 			-> reference
 		{
@@ -223,18 +201,6 @@ namespace RE
 			default:
 				return typeID + TypeInfo::RawType::kObject;
 			}
-		}
-
-
-		void Array::out_of_range(const char* a_fnName, size_type a_pos) const
-		{
-			std::string err = a_fnName;
-			err += ": a_pos (which is ";
-			err += std::to_string(a_pos);
-			err += ") >= _len (which is ";
-			err += std::to_string(size());
-			err += ")";
-			throw std::out_of_range(err);
 		}
 	}
 }

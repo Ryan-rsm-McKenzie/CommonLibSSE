@@ -13,7 +13,7 @@
 
 namespace SKSE
 {
-	bool Init(const LoadInterface* a_intfc) noexcept;
+	void Init(const LoadInterface* a_intfc) noexcept;
 	void RegisterForAPIInitEvent(std::function<void()> a_fn);
 
 	PluginHandle  GetPluginHandle() noexcept;
@@ -38,5 +38,5 @@ namespace SKSE
 	const SKSEPersistentObjectStorage* GetPersistentObjectStorage() noexcept;
 
 	Trampoline& GetTrampoline();
-	bool		AllocTrampoline(std::size_t a_size, bool a_trySKSEReserve = true);
+	void		AllocTrampoline(std::size_t a_size, bool a_trySKSEReserve = true);
 }

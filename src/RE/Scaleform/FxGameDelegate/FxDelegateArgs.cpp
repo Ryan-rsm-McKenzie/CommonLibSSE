@@ -27,20 +27,6 @@ namespace RE
 	}
 
 
-	const GFxValue& FxDelegateArgs::At(UPInt a_pos) const
-	{
-		if (a_pos >= _numArgs) {
-			std::string err = __FUNCTION__;
-			err += ": ";
-			err += "a_pos";
-			err += " (which is" + std::to_string(a_pos) + ") >= this->GetArgCount() (which is" + std::to_string(this->GetArgCount()) + ")";
-			throw std::out_of_range(err);
-		} else {
-			return _args[a_pos];
-		}
-	}
-
-
 	const GFxValue& FxDelegateArgs::operator[](UPInt a_pos) const
 	{
 		assert(a_pos < _numArgs);
