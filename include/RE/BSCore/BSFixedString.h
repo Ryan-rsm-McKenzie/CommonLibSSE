@@ -110,7 +110,6 @@ namespace RE
 			}
 
 			[[nodiscard]] inline const_reference front() const noexcept { return _data[0]; }
-
 			[[nodiscard]] inline const_reference back() const noexcept { return _data[size() - 1]; }
 
 			[[nodiscard]] inline const_pointer data() const noexcept

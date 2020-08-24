@@ -3885,9 +3885,6 @@
     <ClCompile Include="src\RE\BSScript\IFunctionArguments\ZeroFunctionArguments.cpp">
       <Filter>src\RE\BSScript\IFunctionArguments</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSScript\Internal\VDescTable.cpp">
-      <Filter>src\RE\BSScript\Internal</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSScript\Internal\VirtualMachine.cpp">
       <Filter>src\RE\BSScript\Internal</Filter>
     </ClCompile>

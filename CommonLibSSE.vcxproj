@@ -1515,7 +1515,6 @@
     <ClCompile Include="src\RE\BSScript\IFunctionArguments\ZeroFunctionArguments.cpp" />
     <ClCompile Include="src\RE\BSScript\IFunction\IFunction.cpp" />
     <ClCompile Include="src\RE\BSScript\IFunction\NF_util\NativeFunctionBase.cpp" />
-    <ClCompile Include="src\RE\BSScript\Internal\VDescTable.cpp" />
     <ClCompile Include="src\RE\BSScript\Internal\VirtualMachine.cpp" />
     <ClCompile Include="src\RE\BSScript\IObjectHandlePolicy.cpp" />
     <ClCompile Include="src\RE\BSScript\IStackCallbackFunctor.cpp" />

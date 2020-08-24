@@ -70,7 +70,7 @@ namespace RE
 
 
 			NativeFunction(std::string_view a_fnName, std::string_view a_className, function_type a_callback) :
-				NativeFunctionBase(a_fnName, a_className, is_static_base_v<base_type>, sizeof...(Args)),
+				NF_util::NativeFunctionBase(a_fnName, a_className, is_static_base_v<base_type>, sizeof...(Args)),
 				_stub(a_callback)
 			{
 				std::size_t i = 0;

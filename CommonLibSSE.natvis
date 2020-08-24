@@ -82,9 +82,10 @@
 	</Type>
 	
 	<Type Name="RE::SimpleArray&lt;*&gt;">
-		<DisplayString>{{ size={*(((size_t*)_data) - 1)} }}</DisplayString>
+		<DisplayString Condition="_data != nullptr">{{ size={*(((size_t*)_data) - 1)} }}</DisplayString>
+		<DisplayString Condition="_data == nullptr">{{ size=0 }}</DisplayString>
 		<Expand>
-			<ArrayItems>
+			<ArrayItems Condition="_data != nullptr">
 				<Size>*(((size_t*)_data) - 1)</Size>
 				<ValuePointer>($T1*)_data</ValuePointer>
 			</ArrayItems>

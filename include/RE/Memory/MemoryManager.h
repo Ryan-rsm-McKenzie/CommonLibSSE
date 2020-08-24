@@ -298,9 +298,9 @@ namespace RE
 			}
 
 			const auto newData = [=]() {
-				auto bytes = sizeof(size_type) * a_count;
-				if constexpr (alignof(size_type) > alignof(std::size_t)) {
-					bytes += sizeof(size_type);
+				auto bytes = sizeof(value_type) * a_count;
+				if constexpr (alignof(value_type) > alignof(std::size_t)) {
+					bytes += sizeof(value_type);
 				} else {
 					bytes += sizeof(std::size_t);
 				}
@@ -308,7 +308,7 @@ namespace RE
 				const auto data = malloc<std::size_t>(bytes);
 				*data = a_count;
 
-				if constexpr (alignof(size_type) > alignof(std::size_t)) {
+				if constexpr (alignof(value_type) > alignof(std::size_t)) {
 					return reinterpret_cast<pointer>(data) + 1;
 				} else {
 					return reinterpret_cast<pointer>(data + 1);

@@ -10,15 +10,8 @@ namespace RE
 			NativeFunctionBase::NativeFunctionBase(std::string_view a_fnName, std::string_view a_className, bool a_isStatic, std::uint16_t a_numParams) :
 				_name(a_fnName),
 				_objName(a_className),
-				_stateName(""),
-				_retType(),
 				_descTable(a_numParams, 0),
-				_isStatic(a_isStatic),
-				_isCallableFromTasklet(false),
-				_isLatent(false),
-				_pad43(0),
-				_userFlags(0),
-				_docString("")
+				_isStatic(a_isStatic)
 			{
 				// native supports max 11
 				std::string param("param");

@@ -60,21 +60,17 @@ namespace RE
 
 			protected:
 				// members
-				BSFixedString		 _name;					  // 10
-				BSFixedString		 _objName;				  // 18
-				BSFixedString		 _stateName;			  // 20
-				TypeInfo			 _retType;				  // 28
-				Internal::VDescTable _descTable;			  // 30
-				bool				 _isStatic;				  // 40
-				bool				 _isCallableFromTasklet;  // 41
-				bool				 _isLatent;				  // 42
-				std::uint8_t		 _pad43;				  // 43
-				std::uint32_t		 _userFlags;			  // 44
-				BSFixedString		 _docString;			  // 48
-
-			private:
-				NativeFunctionBase* Ctor(const char* a_fnName, const char* a_className, bool a_isStatic, std::uint32_t a_numParams);
-				void				Dtor();
+				BSFixedString		 _name;							   // 10
+				BSFixedString		 _objName;						   // 18
+				BSFixedString		 _stateName;					   // 20
+				TypeInfo			 _retType;						   // 28
+				Internal::VDescTable _descTable;					   // 30
+				bool				 _isStatic;						   // 40
+				bool				 _isCallableFromTasklet{ false };  // 41
+				bool				 _isLatent{ false };			   // 42
+				std::uint8_t		 _pad43{ 0 };					   // 43
+				std::uint32_t		 _userFlags{ 0 };				   // 44
+				BSFixedString		 _docString;					   // 48
 			};
 			static_assert(sizeof(NativeFunctionBase) == 0x50);
 		}
