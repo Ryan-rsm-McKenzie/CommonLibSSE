@@ -228,74 +228,63 @@ namespace RE
 	public:
 		using value_type = T;
 		using size_type = std::size_t;
-		using pointer = value_type*;
-		using const_pointer = const value_type*;
+		using difference_type = std::ptrdiff_t;
 		using reference = value_type&;
 		using const_reference = const value_type&;
-		using iterator = T*;
-		using const_iterator = const iterator;
-
-		struct Head
-		{
-		public:
-			// memebrs
-			size_type size;	 // 00
-		};
-
-		struct Data
-		{
-		public:
-			// members
-			value_type entries[1];	// 00
-		};
+		using pointer = value_type*;
+		using const_pointer = const value_type*;
+		using iterator = value_type*;
+		using const_iterator = const value_type*;
 
 		constexpr SimpleArray() noexcept = default;
 
 		explicit SimpleArray(size_type a_count) { resize(a_count); }
 
-		~SimpleArray() { clear(); }
+		~SimpleArray()
+		{
+			static_assert(!std::is_trivially_destructible_v<value_type>, "there's no allocation overhead for trivially destructible types");
+			clear();
+		}
 
 		TES_HEAP_REDEFINE_NEW();
 
-		[[nodiscard]] constexpr reference operator[](size_type a_pos) noexcept
+		[[nodiscard]] reference operator[](size_type a_pos) noexcept
 		{
 			assert(a_pos < size());
-			return _data->entries[a_pos];
+			return _data[a_pos];
 		}
 
-		[[nodiscard]] constexpr const_reference operator[](size_type a_pos) const noexcept
+		[[nodiscard]] const_reference operator[](size_type a_pos) const noexcept
 		{
 			assert(a_pos < size());
-			return _data->entries[a_pos];
+			return _data[a_pos];
 		}
 
-		[[nodiscard]] constexpr reference		front() noexcept { return operator[](0); }
-		[[nodiscard]] constexpr const_reference front() const noexcept { return operator[](0); }
+		[[nodiscard]] reference		  front() noexcept { return operator[](0); }
+		[[nodiscard]] const_reference front() const noexcept { return operator[](0); }
 
-		[[nodiscard]] constexpr reference		back() noexcept { return operator[](size() - 1); }
-		[[nodiscard]] constexpr const_reference back() const { return operator[](size() - 1); }
+		[[nodiscard]] reference		  back() noexcept { return operator[](size() - 1); }
+		[[nodiscard]] const_reference back() const noexcept { return operator[](size() - 1); }
 
-		[[nodiscard]] constexpr pointer		  data() { return _data ? _data->entries : nullptr; }
-		[[nodiscard]] constexpr const_pointer data() const noexcept { return _data ? _data->entries : nullptr; }
+		[[nodiscard]] pointer		data() noexcept { return _data; }
+		[[nodiscard]] const_pointer data() const noexcept { return _data; }
 
-		[[nodiscard]] constexpr iterator	   begin() noexcept { return _data ? _data->entries : nullptr; }
-		[[nodiscard]] constexpr const_iterator begin() const noexcept { return _data ? _data->entries : nullptr; }
-		[[nodiscard]] constexpr const_iterator cbegin() const noexcept { return begin(); }
+		[[nodiscard]] iterator		 begin() noexcept { return _data; }
+		[[nodiscard]] const_iterator begin() const noexcept { return _data; }
+		[[nodiscard]] const_iterator cbegin() const noexcept { return begin(); }
 
-		[[nodiscard]] constexpr iterator	   end() noexcept { return _data ? _data->entries + size() : nullptr; }
-		[[nodiscard]] constexpr const_iterator end() const noexcept { return _data ? _data->entries + size() : nullptr; }
-		[[nodiscard]] constexpr const_iterator cend() const noexcept { return end(); }
+		[[nodiscard]] iterator		 end() noexcept { return _data ? _data + size() : nullptr; }
+		[[nodiscard]] const_iterator end() const noexcept { return _data ? _data + size() : nullptr; }
+		[[nodiscard]] const_iterator cend() const noexcept { return end(); }
 
 		[[nodiscard]] bool empty() const noexcept { return size() == 0; }
 
-		[[nodiscard]] size_type size() const noexcept { return _data ? get_head()->size : 0; }
+		[[nodiscard]] size_type size() const noexcept { return _data ? *static_cast<const std::size_t*>(get_head()) : 0; }
 
 		void clear()
 		{
 			if (_data) {
-				for (auto& elem : *this) {
-					elem.~value_type();
-				}
+				std::destroy_n(data(), size());
 				free(get_head());
 				_data = nullptr;
 			}
@@ -303,66 +292,62 @@ namespace RE
 
 		void resize(size_type a_count)
 		{
-			auto oldSize = resize_impl(a_count);
-
-			if (oldSize < a_count) {
-				for (size_type i = oldSize; i < a_count; ++i) {
-					new (std::addressof(_data->entries[i])) value_type{};
-				}
+			const auto oldSize = size();
+			if (oldSize == a_count) {
+				return;
 			}
-		}
 
-		void resize(size_type a_count, const value_type& a_value)
-		{
-			auto oldSize = resize_impl(a_count);
-
-			if (oldSize < a_count) {
-				for (size_type i = oldSize; i < a_count; ++i) {
-					new (std::addressof(_data->entries[i])) value_type{ a_value };
+			const auto newData = [=]() {
+				auto bytes = sizeof(size_type) * a_count;
+				if constexpr (alignof(size_type) > alignof(std::size_t)) {
+					bytes += sizeof(size_type);
+				} else {
+					bytes += sizeof(std::size_t);
 				}
+
+				const auto data = malloc<std::size_t>(bytes);
+				*data = a_count;
+
+				if constexpr (alignof(size_type) > alignof(std::size_t)) {
+					return reinterpret_cast<pointer>(data) + 1;
+				} else {
+					return reinterpret_cast<pointer>(data + 1);
+				}
+			}();
+
+			if (a_count < oldSize) {  // shrink
+				std::uninitialized_move_n(data(), a_count, newData);
+			} else {  // grow
+				std::uninitialized_move_n(data(), oldSize, newData);
+				std::uninitialized_default_construct_n(newData + oldSize, a_count - oldSize);
 			}
+
+			clear();
+			_data = newData;
 		}
 
 	protected:
-		[[nodiscard]] Head* get_head() const noexcept
+		[[nodiscard]] void* get_head() noexcept
 		{
 			assert(_data != nullptr);
-			return reinterpret_cast<Head*>(_data) - 1;
+			if constexpr (alignof(value_type) > alignof(std::size_t)) {
+				return _data - 1;
+			} else {
+				return reinterpret_cast<std::size_t*>(_data) - 1;
+			}
 		}
 
-		[[nodiscard]] size_type resize_impl(size_type a_newSize)
+		[[nodiscard]] const void* get_head() const noexcept
 		{
-			auto oldSize = size();
-			if (a_newSize == oldSize) {
-				return oldSize;
-			} else if (a_newSize == 0) {
-				clear();
-				return oldSize;
+			assert(_data != nullptr);
+			if constexpr (alignof(value_type) > alignof(std::size_t)) {
+				return _data - 1;
+			} else {
+				return reinterpret_cast<const std::size_t*>(_data) - 1;
 			}
-
-			auto newHead = malloc<Head>(sizeof(Head) + (sizeof(value_type) * a_newSize));
-			newHead->size = a_newSize;
-			auto newData = reinterpret_cast<Data*>(newHead + 1);
-			if (_data) {
-				size_type toCopy;
-				if (a_newSize < oldSize) {
-					for (size_type i = a_newSize; i < oldSize; ++i) {
-						_data->entries[i].~value_type();
-					}
-					toCopy = a_newSize;
-				} else {
-					toCopy = oldSize;
-				}
-				std::memcpy(newData->entries, data(), toCopy * sizeof(size_type));
-				free(get_head());
-			}
-			_data = newData;
-
-			return oldSize;
 		}
 
 		// members
-		Data* _data{ nullptr };	 // 0
+		pointer _data{ nullptr };  // 0
 	};
-	static_assert(sizeof(SimpleArray<void*>) == 0x8);
 }
