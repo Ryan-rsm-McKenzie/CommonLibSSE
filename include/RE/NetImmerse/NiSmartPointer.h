@@ -250,12 +250,12 @@ namespace RE
 
 
 	template <class T>
-	struct BSCRC32<NiPointer<T>>
+	struct BSCRC32_<NiPointer<T>>
 	{
 	public:
 		[[nodiscard]] inline std::uint32_t operator()(const NiPointer<T>& a_key) const noexcept
 		{
-			return BSCRC32<T*>()(a_key.get());
+			return BSCRC32_<T*>()(a_key.get());
 		}
 	};
 }

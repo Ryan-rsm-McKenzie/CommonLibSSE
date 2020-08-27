@@ -212,59 +212,6 @@ namespace SKSE
 		inline constexpr bool is_unbounded_array_v = is_unbounded_array<T>::value;
 
 
-		namespace detail
-		{
-			template <class CharT>
-			[[noreturn]] inline void report_and_fail(basic_zstring<CharT> a_msg)
-			{
-				const auto [getModuleFileName, messageBox] = []() noexcept {
-					if constexpr (std::is_same_v<CharT, char>) {
-						return std::make_pair(GetModuleFileNameA, MessageBoxA);
-					} else if constexpr (std::is_same_v<CharT, wchar_t>) {
-						return std::make_pair(GetModuleFileNameW, MessageBoxW);
-					} else {
-						static_assert(false);
-					}
-				}();
-
-				std::vector<CharT> buf;
-				buf.reserve(MAX_PATH);
-				buf.resize(MAX_PATH / 2);
-				std::uint32_t result = 0;
-				do {
-					buf.resize(buf.size() * 2);
-					result = getModuleFileName(
-						reinterpret_cast<HINSTANCE>(std::addressof(__ImageBase)),
-						buf.data(),
-						static_cast<std::uint32_t>(buf.size()));
-				} while (result && result == buf.size() && buf.size() <= std::numeric_limits<std::uint32_t>::max());
-
-				const auto filename = [&]() {
-					if (result && result != buf.size()) {
-						std::filesystem::path p(buf.begin(), buf.begin() + result);
-						if constexpr (std::is_same_v<CharT, char>) {
-							return p.filename().string();
-						} else if constexpr (std::is_same_v<CharT, wchar_t>) {
-							return p.filename().wstring();
-						} else {
-							static_assert(false);
-						}
-					} else {
-						return std::basic_string<CharT>();
-					}
-				}();
-				const auto caption = filename.empty() ? nullptr : filename.data();
-
-				messageBox(nullptr, a_msg.data(), caption, MB_OK);
-				std::_Exit(EXIT_FAILURE);
-			}
-		}
-
-
-		[[noreturn]] inline void report_and_fail(zstring a_msg) { detail::report_and_fail(a_msg); }
-		[[noreturn]] inline void report_and_fail(zwstring a_msg) { detail::report_and_fail(a_msg); }
-
-
 		template <
 			class T,
 			class... Args,
@@ -335,6 +282,64 @@ namespace SKSE
 			const char*			_fileName{ "" };
 			const char*			_functionName{ "" };
 		};
+
+
+		[[noreturn]] inline void report_and_fail(std::string_view a_msg, source_location a_loc = source_location::current())
+		{
+			const auto body = [&]() {
+				constexpr std::array directories{
+					"include/"sv,
+					"src/"sv,
+				};
+
+				const std::filesystem::path p = a_loc.file_name();
+				const auto					filename = p.generic_string();
+				std::string_view			fileview = filename;
+
+				constexpr auto npos = std::string::npos;
+				std::size_t	   pos = npos;
+				std::size_t	   off = 0;
+				for (const auto& dir : directories) {
+					pos = fileview.find(dir);
+					if (pos != npos) {
+						off = dir.length();
+						break;
+					}
+				}
+
+				if (pos != npos) {
+					fileview = fileview.substr(pos + off);
+				}
+
+				return fmt::format(FMT_STRING("{}({}): {}"), fileview, a_loc.line(), a_msg);
+			}();
+
+			const auto caption = []() -> std::string {
+				const auto		  maxPath = MAX_PATH;
+				std::vector<char> buf;
+				buf.reserve(maxPath);
+				buf.resize(maxPath / 2);
+				std::uint32_t result = 0;
+				do {
+					buf.resize(buf.size() * 2);
+					result = GetModuleFileNameA(
+						reinterpret_cast<HMODULE>(std::addressof(__ImageBase)),
+						buf.data(),
+						static_cast<std::uint32_t>(buf.size()));
+				} while (result && result == buf.size() && buf.size() <= std::numeric_limits<std::uint32_t>::max());
+
+				if (result && result != buf.size()) {
+					std::filesystem::path p(buf.begin(), buf.begin() + result);
+					return p.filename().string();
+				} else {
+					return {};
+				}
+			}();
+
+			MessageBoxA(nullptr, body.c_str(), (caption.empty() ? nullptr : caption.c_str()), 0);
+			std::_Exit(EXIT_FAILURE);
+		}
+
 
 		template <class, class, class = void>
 		class enumeration;

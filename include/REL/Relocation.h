@@ -57,17 +57,6 @@
 	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(&, ##__VA_ARGS__) \
 	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(&&, ##__VA_ARGS__)
 
-#define REL_FAILURE(a_what)                               \
-	{                                                     \
-		const auto src = stl::source_location::current(); \
-		stl::report_and_fail(                             \
-			fmt::format(                                  \
-				FMT_STRING("{}({}): {}"),                 \
-				src.file_name(),                          \
-				src.line(),                               \
-				a_what##sv));                             \
-	}
-
 
 namespace REL
 {
@@ -478,7 +467,7 @@ namespace REL
 		{
 			auto handle = GetModuleHandleW(FILENAME.data());
 			if (handle == nullptr) {
-				REL_FAILURE("failed to obtain module handle");
+				stl::report_and_fail("failed to obtain module handle"sv);
 			}
 			_base = reinterpret_cast<std::uintptr_t>(handle);
 			_natvis = _base;
@@ -516,17 +505,17 @@ namespace REL
 			DWORD			  dummy;
 			std::vector<char> buf(GetFileVersionInfoSizeW(FILENAME.data(), std::addressof(dummy)));
 			if (buf.size() == 0) {
-				REL_FAILURE("failed to obtain file version info size");
+				stl::report_and_fail("failed to obtain file version info size"sv);
 			}
 
 			if (!GetFileVersionInfoW(FILENAME.data(), 0, static_cast<DWORD>(buf.size()), buf.data())) {
-				REL_FAILURE("failed to obtain file version info");
+				stl::report_and_fail("failed to obtain file version info"sv);
 			}
 
 			LPVOID verBuf;
 			UINT   verLen;
 			if (!VerQueryValueW(buf.data(), L"\\StringFileInfo\\040904B0\\ProductVersion", std::addressof(verBuf), std::addressof(verLen))) {
-				REL_FAILURE("failed to query value");
+				stl::report_and_fail("failed to query value"sv);
 			}
 
 			std::wistringstream ss(
@@ -570,7 +559,7 @@ namespace REL
 		[[nodiscard]] inline std::size_t id2offset(std::uint64_t a_id) const
 		{
 			if (_id2offset.empty()) {
-				REL_FAILURE("data is empty");
+				stl::report_and_fail("data is empty"sv);
 			}
 
 			mapping_t  elem{ a_id, 0 };
@@ -582,7 +571,7 @@ namespace REL
 					return a_lhs.id < a_rhs.id;
 				});
 			if (it == _id2offset.end()) {
-				REL_FAILURE("id not found");
+				stl::report_and_fail("id not found"sv);
 			}
 
 			return static_cast<std::size_t>(it->offset);
@@ -592,7 +581,7 @@ namespace REL
 		[[nodiscard]] inline std::uint64_t offset2id(std::size_t a_offset) const
 		{
 			if (_offset2id.empty()) {
-				REL_FAILURE("data is empty");
+				stl::report_and_fail("data is empty"sv);
 			}
 
 			mapping_t  elem{ 0, a_offset };
@@ -604,7 +593,7 @@ namespace REL
 					return a_lhs.offset < a_rhs.offset;
 				});
 			if (it == _offset2id.end()) {
-				REL_FAILURE("offset not found");
+				stl::report_and_fail("offset not found"sv);
 			}
 
 			return it->id;
@@ -625,7 +614,7 @@ namespace REL
 				_stream(a_filename.data(), a_mode)
 			{
 				if (!_stream.is_open()) {
-					REL_FAILURE("failed to open file");
+					stl::report_and_fail("failed to open file"sv);
 				}
 
 				_stream.exceptions(std::ios::badbit | std::ios::failbit | std::ios::eofbit);
@@ -663,7 +652,7 @@ namespace REL
 				std::int32_t format{};
 				a_input.readin(format);
 				if (format != 1) {
-					REL_FAILURE("unexpected format");
+					stl::report_and_fail("unexpected format"sv);
 				}
 
 				std::int32_t version[4]{};
@@ -721,7 +710,7 @@ namespace REL
 			header_t  header;
 			header.read(input);
 			if (header.version() != a_version) {
-				REL_FAILURE("version mismatch");
+				stl::report_and_fail("version mismatch"sv);
 			}
 
 			auto mapname = L"CommonLibSSEOffsets-v2-"s;
@@ -729,7 +718,7 @@ namespace REL
 			const auto byteSize = static_cast<std::size_t>(header.address_count()) * sizeof(mapping_t);
 			if (!_mmap.open(mapname, byteSize) &&
 				!_mmap.create(mapname, byteSize)) {
-				REL_FAILURE("failed to create shared mapping");
+				stl::report_and_fail("failed to create shared mapping"sv);
 			}
 
 			_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
@@ -793,7 +782,7 @@ namespace REL
 					id = a_input.readout<std::uint32_t>();
 					break;
 				default:
-					REL_FAILURE("unhandled type");
+					stl::report_and_fail("unhandled type"sv);
 				}
 
 				const std::uint64_t tmp = (hi & 8) != 0 ? (prevOffset / a_header.pointer_size()) : prevOffset;
@@ -824,7 +813,7 @@ namespace REL
 					offset = a_input.readout<std::uint32_t>();
 					break;
 				default:
-					REL_FAILURE("unhandled type");
+					stl::report_and_fail("unhandled type"sv);
 				}
 
 				if ((hi & 8) != 0) {
@@ -991,8 +980,6 @@ namespace REL
 	using Offset [[deprecated("use Relocation")]] = Relocation<T>;
 }
 
-
-#undef REL_FAILURE
 
 #undef REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE
 #undef REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER

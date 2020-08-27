@@ -5,7 +5,7 @@ namespace RE
 {
 	namespace detail
 	{
-		[[nodiscard]] constexpr std::uint32_t GenerateCRC32(nonstd::span<const std::uint8_t> a_data) noexcept
+		[[nodiscard]] constexpr std::uint32_t GenerateCRC32(stl::span<const std::uint8_t> a_data) noexcept
 		{
 			constexpr std::array<std::uint32_t, 256> table{
 				0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA, 0x076DC419, 0x706AF48F, 0xE963A535, 0x9E6495A3,
@@ -60,10 +60,10 @@ namespace RE
 	}
 
 	template <class Key>
-	struct BSCRC32;
+	struct BSCRC32_;
 
 	template <class Key>
-	struct BSCRC32 :
+	struct BSCRC32_ :
 		public detail::BSCRC32<
 			Key,
 			std::disjunction_v<
@@ -78,13 +78,29 @@ namespace RE
 		}
 	};
 
+	template <class CharT>
+	struct BSCRC32_<std::basic_string_view<CharT>>
+	{
+	public:
+		[[nodiscard]] inline std::uint32_t operator()(std::basic_string_view<CharT> a_data) const noexcept
+		{
+			return detail::GenerateCRC32({ reinterpret_cast<const std::uint8_t*>(a_data.data()), a_data.size() });
+		}
+	};
+
 	template <>
-	struct BSCRC32<std::nullptr_t>
+	struct BSCRC32_<std::nullptr_t>
 	{
 	public:
 		[[nodiscard]] inline std::uint32_t operator()(std::nullptr_t) const noexcept
 		{
-			return BSCRC32<std::uintptr_t>()(0);
+			return BSCRC32_<std::uintptr_t>()(0);
 		}
 	};
+
+	template <class T>
+	struct BSCRC32 :
+		public BSCRC32_<
+			std::remove_cv_t<T>>
+	{};
 }

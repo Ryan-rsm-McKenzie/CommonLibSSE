@@ -97,12 +97,12 @@ namespace RE
 
 
 	template <>
-	struct BSCRC32<CellID>
+	struct BSCRC32_<CellID>
 	{
 	public:
 		[[nodiscard]] inline std::uint32_t operator()(CellID a_key) const noexcept
 		{
-			return BSCRC32<std::uint32_t>()(reinterpret_cast<const std::uint32_t&>(a_key));
+			return BSCRC32_<std::uint32_t>()(reinterpret_cast<const std::uint32_t&>(a_key));
 		}
 	};
 

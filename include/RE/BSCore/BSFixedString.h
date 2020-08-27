@@ -233,12 +233,12 @@ namespace RE
 	using BSFixedStringW = detail::BSFixedString<wchar_t>;
 
 	template <class CharT>
-	struct BSCRC32<detail::BSFixedString<CharT>>
+	struct BSCRC32_<detail::BSFixedString<CharT>>
 	{
 	public:
 		[[nodiscard]] inline std::uint32_t operator()(const detail::BSFixedString<CharT>& a_key) const noexcept
 		{
-			return BSCRC32<typename detail::BSFixedString<CharT>::const_pointer>()(a_key.data());
+			return BSCRC32_<const void*>()(a_key.data());
 		}
 	};
 }
