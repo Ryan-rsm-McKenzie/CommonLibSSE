@@ -34,5 +34,5 @@ namespace RE
 		// add
 		virtual void Unk_25(void);	// 25
 	};
-	//static_assert(sizeof(BSAnimNote) == 0x??);
+	//static_assert(sizeof(BSAnimNote) == 0x);
 }

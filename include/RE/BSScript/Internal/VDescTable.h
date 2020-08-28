@@ -16,9 +16,9 @@ namespace RE
 			{
 			public:
 				explicit inline VDescTable(std::uint16_t a_numParams, std::uint16_t a_numLocals) :
-					entries(a_numParams + a_numLocals),
+					entries(static_cast<std::size_t>(a_numParams + a_numLocals)),
 					paramCount(a_numParams),
-					totalEntries(a_numParams + a_numLocals)
+					totalEntries(static_cast<std::uint16_t>(a_numParams + a_numLocals))
 				{}
 
 

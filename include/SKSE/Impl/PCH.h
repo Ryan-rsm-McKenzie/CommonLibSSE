@@ -123,6 +123,7 @@
 #pragma warning(disable : 4200)	 // nonstandard extension used : zero-sized array in struct/union
 #pragma warning(disable : 4265)	 // 'type': class has virtual functions, but its non-trivial destructor is not virtual; instances of this class may not be destructed correctly
 #pragma warning(disable : 4266)	 // 'function' : no override available for virtual member function from base 'type'; function is hidden
+#pragma warning(disable : 4371)	 // 'classname': layout of class may have changed from a previous version of the compiler due to better packing of member 'member'
 #pragma warning(disable : 4514)	 // 'function' : unreferenced inline function has been removed
 #pragma warning(disable : 4582)	 // 'type': constructor is not implicitly called
 #pragma warning(disable : 4583)	 // 'type': destructor is not implicitly called

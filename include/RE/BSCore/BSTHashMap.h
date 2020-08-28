@@ -748,7 +748,7 @@ namespace RE
 		private:
 			// members
 			entry_type	_data[N];  // 00 (20)
-			entry_type* _entries;  // ?? (??)
+			entry_type* _entries;  // ??
 		};
 	};
 
