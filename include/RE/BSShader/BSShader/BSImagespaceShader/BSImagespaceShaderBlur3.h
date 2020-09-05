@@ -16,5 +16,5 @@ namespace RE
 		// override (BSImagespaceShader)
 		virtual void Unk_0D(void) override;	 // 0D
 	};
-	STATIC_ASSERT(sizeof(BSImagespaceShaderBlur3) == 0x1A8);
+	static_assert(sizeof(BSImagespaceShaderBlur3) == 0x1A8);
 }

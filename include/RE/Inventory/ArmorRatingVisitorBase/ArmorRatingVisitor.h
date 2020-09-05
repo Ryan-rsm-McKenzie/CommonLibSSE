@@ -22,5 +22,5 @@ namespace RE
 		// members
 		BSScrapArray<TESObjectARMO*> armors;  // 20
 	};
-	STATIC_ASSERT(sizeof(ArmorRatingVisitor) == 0x40);
+	static_assert(sizeof(ArmorRatingVisitor) == 0x40);
 }

@@ -16,24 +16,24 @@ namespace RE
 	void TESForm::AddCompileIndex(FormID& a_id, TESFile* a_file)
 	{
 		using func_t = decltype(&TESForm::AddCompileIndex);
-		REL::Offset<func_t> func = REL::ID(14509);
+		REL::Relocation<func_t> func{ REL::ID(14509) };
 		return func(a_id, a_file);
 	}
 
 
 	std::pair<BSTHashMap<FormID, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> TESForm::GetAllForms()
 	{
-		REL::Offset<BSTHashMap<FormID, TESForm*>**> allForms = REL::ID(514351);
-		REL::Offset<BSReadWriteLock*> allFormsMapLock = REL::ID(514360);
-		return std::make_pair(*allForms, std::ref(*allFormsMapLock));
+		REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ REL::ID(514351) };
+		REL::Relocation<BSReadWriteLock*> allFormsMapLock{ REL::ID(514360) };
+		return { *allForms, std::ref(*allFormsMapLock) };
 	}
 
 
 	std::pair<BSTHashMap<BSFixedString, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> TESForm::GetAllFormsByEditorID()
 	{
-		REL::Offset<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID = REL::ID(514352);
-		REL::Offset<BSReadWriteLock*> allFormsEditorIDMapLock = REL::ID(514361);
-		return std::make_pair(*allFormsByEditorID, std::ref(*allFormsEditorIDMapLock));
+		REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ REL::ID(514352) };
+		REL::Relocation<BSReadWriteLock*> allFormsEditorIDMapLock{ REL::ID(514361) };
+		return { *allFormsByEditorID, std::ref(*allFormsEditorIDMapLock) };
 	}
 
 
@@ -65,18 +65,6 @@ namespace RE
 	}
 
 
-	bool TESForm::Is(FormType a_type) const noexcept
-	{
-		return formType == a_type;
-	}
-
-
-	bool TESForm::IsNot(FormType a_type) const noexcept
-	{
-		return formType != a_type;
-	}
-
-
 	TESObjectREFR* TESForm::AsReference()
 	{
 		return AsReference1();
@@ -89,14 +77,14 @@ namespace RE
 	}
 
 
-	TESFile* TESForm::GetFile(SInt32 a_idx) const
+	TESFile* TESForm::GetFile(std::int32_t a_idx) const
 	{
 		auto array = sourceFiles.array;
 		if (!array || array->empty()) {
 			return nullptr;
 		}
 
-		if (a_idx < 0 || a_idx >= array->size()) {
+		if (a_idx < 0 || static_cast<std::uint32_t>(a_idx) >= array->size()) {
 			return array->back();
 		} else {
 			return (*array)[a_idx];
@@ -104,28 +92,16 @@ namespace RE
 	}
 
 
-	FormID TESForm::GetFormID() const noexcept
+	std::int32_t TESForm::GetGoldValue() const
 	{
-		return formID;
-	}
-
-
-	FormType TESForm::GetFormType() const noexcept
-	{
-		return formType;
-	}
-
-
-	SInt32 TESForm::GetGoldValue() const
-	{
-		SInt32 value = 0;
+		std::int32_t value = 0;
 		auto form = this;
 		auto objRef = As<TESObjectREFR>();
 		if (objRef) {
 			form = objRef->GetBaseObject();
 			auto xEnch = objRef->extraList.GetByType<ExtraEnchantment>();
 			if (xEnch && xEnch->enchantment) {
-				value += static_cast<SInt32>(xEnch->enchantment->CalculateTotalGoldValue());
+				value += static_cast<std::int32_t>(xEnch->enchantment->CalculateTotalGoldValue());
 			}
 		}
 
@@ -135,7 +111,7 @@ namespace RE
 		} else {
 			auto magicItem = form->As<MagicItem>();
 			if (magicItem) {
-				value += static_cast<SInt32>(magicItem->CalculateTotalGoldValue());
+				value += static_cast<std::int32_t>(magicItem->CalculateTotalGoldValue());
 			} else {
 				value = -1;
 			}
@@ -200,83 +176,5 @@ namespace RE
 	void TESForm::InitItem()
 	{
 		InitItemImpl();
-	}
-
-
-	bool TESForm::IsAmmo() const noexcept
-	{
-		return Is(FormType::Ammo);
-	}
-
-
-	bool TESForm::IsArmor() const noexcept
-	{
-		return Is(FormType::Armor);
-	}
-
-
-	bool TESForm::IsDeleted() const noexcept
-	{
-		return (formFlags & RecordFlags::kDeleted) != 0;
-	}
-
-
-	bool TESForm::IsDynamicForm() const noexcept
-	{
-		return formID >= 0xFF000000;
-	}
-
-
-	bool TESForm::IsGold() const noexcept
-	{
-		return formID == 0x0000000F;
-	}
-
-
-	bool TESForm::IsIgnored() const noexcept
-	{
-		return (formFlags & RecordFlags::kIgnored) != 0;
-	}
-
-
-	bool TESForm::IsInitialized() const noexcept
-	{
-		return (formFlags & RecordFlags::kInitialized) != 0;
-	}
-
-
-	bool TESForm::IsKey() const noexcept
-	{
-		return Is(FormType::KeyMaster);
-	}
-
-
-	bool TESForm::IsLockpick() const noexcept
-	{
-		return formID == 0x0000000A;
-	}
-
-
-	bool TESForm::IsPlayer() const noexcept
-	{
-		return formID == 0x00000007;
-	}
-
-
-	bool TESForm::IsPlayerRef() const noexcept
-	{
-		return formID == 0x00000014;
-	}
-
-
-	bool TESForm::IsSoulGem() const noexcept
-	{
-		return Is(FormType::SoulGem);
-	}
-
-
-	bool TESForm::IsWeapon() const noexcept
-	{
-		return Is(FormType::Weapon);
 	}
 }

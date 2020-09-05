@@ -21,12 +21,12 @@ namespace RE
 			{
 			public:
 				// members
-				Entry*	  next;		 // 00
-				Location* location;	 // 08
-				UInt32	  priority;	 // 10
-				UInt32	  pad14;	 // 14
+				Entry*		  next;		 // 00
+				Location*	  location;	 // 08
+				std::uint32_t priority;	 // 10
+				std::uint32_t pad14;	 // 14
 			};
-			STATIC_ASSERT(sizeof(Entry) == 0x18);
+			static_assert(sizeof(Entry) == 0x18);
 
 
 			virtual ~GlobalLocations();	 // 00
@@ -43,14 +43,14 @@ namespace RE
 
 
 			// members
-			UInt8			   pad11;		  // 11
-			UInt16			   pad12;		  // 12
+			std::uint8_t	   pad11;		  // 11
+			std::uint16_t	   pad12;		  // 12
 			mutable BSSpinLock lock;		  // 14
-			UInt32			   pad1C;		  // 1C
+			std::uint32_t	   pad1C;		  // 1C
 			Entry*			   head;		  // 20
 			Entry*			   pendingMount;  // 28
 			Entry*			   free;		  // 30
 		};
-		STATIC_ASSERT(sizeof(GlobalLocations) == 0x38);
+		static_assert(sizeof(GlobalLocations) == 0x38);
 	}
 }

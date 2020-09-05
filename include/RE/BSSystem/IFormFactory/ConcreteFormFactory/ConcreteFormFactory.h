@@ -29,7 +29,7 @@ namespace RE
 		// members
 		const char* _name;	// 08
 	};
-	STATIC_ASSERT(sizeof(ConcreteFormFactory<TESForm, FormType::None>) == 0x10);
+	static_assert(sizeof(ConcreteFormFactory<TESForm, FormType::None>) == 0x10);
 
 
 	template <class T>

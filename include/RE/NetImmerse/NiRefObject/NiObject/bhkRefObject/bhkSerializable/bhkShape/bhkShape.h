@@ -31,7 +31,7 @@ namespace RE
 
 
 		// members
-		UInt64 unk20;  // 20
+		std::uint64_t unk20;  // 20
 	};
-	STATIC_ASSERT(sizeof(bhkShape) == 0x28);
+	static_assert(sizeof(bhkShape) == 0x28);
 }

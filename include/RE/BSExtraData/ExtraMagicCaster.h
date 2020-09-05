@@ -21,5 +21,5 @@ namespace RE
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kMagicCaster; }
 	};
-	STATIC_ASSERT(sizeof(ExtraMagicCaster) == 0x58);
+	static_assert(sizeof(ExtraMagicCaster) == 0x58);
 }

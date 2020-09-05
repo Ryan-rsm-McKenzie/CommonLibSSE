@@ -18,5 +18,5 @@ namespace RE
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kBadPosition; }
 	};
-	STATIC_ASSERT(sizeof(ExtraBadPosition) == 0x10);
+	static_assert(sizeof(ExtraBadPosition) == 0x10);
 }

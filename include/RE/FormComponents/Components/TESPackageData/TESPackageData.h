@@ -23,5 +23,5 @@ namespace RE
 		virtual void SaveGame(BGSSaveFormBuffer* a_buf);				// 04 - { return; }
 		virtual void LoadGame(BGSLoadFormBuffer* a_buf);				// 05 - { return; }
 	};
-	STATIC_ASSERT(sizeof(TESPackageData) == 0x8);
+	static_assert(sizeof(TESPackageData) == 0x8);
 }

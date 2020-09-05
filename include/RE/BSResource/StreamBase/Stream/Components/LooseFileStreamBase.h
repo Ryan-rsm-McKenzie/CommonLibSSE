@@ -17,6 +17,6 @@ namespace RE
 			BSFixedString fileName;	 // 10
 			BSSystemFile  file;		 // 18
 		};
-		STATIC_ASSERT(sizeof(LooseFileStreamBase) == 0x28);
+		static_assert(sizeof(LooseFileStreamBase) == 0x28);
 	}
 }

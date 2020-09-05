@@ -27,5 +27,5 @@ namespace RE
 		// members
 		InventoryChanges* changes;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraContainerChanges) == 0x18);
+	static_assert(sizeof(ExtraContainerChanges) == 0x18);
 }

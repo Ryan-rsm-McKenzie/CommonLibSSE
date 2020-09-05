@@ -20,14 +20,14 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::PlacedHazard;
 
 
-		enum class Flags : UInt32
+		enum class Flags
 		{
 		};
 
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
@@ -52,17 +52,17 @@ namespace RE
 
 
 		// members
-		void*			   hazardDBHandle;	// 98
-		ActorHandle		   ownerActor;		// A0
-		float			   age;				// A4
-		float			   lifetime;		// A8
-		float			   targetTimer;		// AC
-		float			   radius;			// B0
-		float			   magnitude;		// B4
-		BGSHazard*		   hazard;			// B8
-		NiPointer<NiLight> light;			// C0
-		BSSoundHandle	   sound;			// C8
-		Flags			   flags;			// D4
+		void*								   hazardDBHandle;	// 98
+		ActorHandle							   ownerActor;		// A0
+		float								   age;				// A4
+		float								   lifetime;		// A8
+		float								   targetTimer;		// AC
+		float								   radius;			// B0
+		float								   magnitude;		// B4
+		BGSHazard*							   hazard;			// B8
+		NiPointer<NiLight>					   light;			// C0
+		BSSoundHandle						   sound;			// C8
+		stl::enumeration<Flags, std::uint32_t> flags;			// D4
 	};
-	STATIC_ASSERT(sizeof(Hazard) == 0xD8);
+	static_assert(sizeof(Hazard) == 0xD8);
 }

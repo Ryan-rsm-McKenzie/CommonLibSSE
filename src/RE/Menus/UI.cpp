@@ -7,7 +7,7 @@ namespace RE
 {
 	UI* UI::GetSingleton()
 	{
-		REL::Offset<UI**> singleton(Offset::UI::Singleton);
+		REL::Relocation<UI**> singleton{ Offset::UI::Singleton };
 		return *singleton;
 	}
 
@@ -28,7 +28,7 @@ namespace RE
 	GPtr<GFxMovieView> UI::GetMovieView(const std::string_view& a_menuName)
 	{
 		auto menu = GetMenu(a_menuName);
-		return menu ? menu->view : nullptr;
+		return menu ? menu->uiMovie : nullptr;
 	}
 
 

@@ -13,5 +13,5 @@ namespace RE
 
 		virtual void Unk_00(void) = 0;	// 00
 	};
-	STATIC_ASSERT(sizeof(BSReloadShaderI) == 0x8);
+	static_assert(sizeof(BSReloadShaderI) == 0x8);
 }

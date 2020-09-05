@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	template <UInt32 Stat>
+	template <std::uint32_t Stat>
 	class GNewOverrideBase
 	{
 	public:

@@ -18,16 +18,16 @@ namespace RE
 
 		struct ChangeFlags
 		{
-			enum ChangeFlag : UInt32
+			enum ChangeFlag : std::uint32_t
 			{
-				kAddedObject = (UInt32)1 << 31
+				kAddedObject = (std::uint32_t)1 << 31
 			};
 		};
 
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -45,8 +45,8 @@ namespace RE
 		virtual void InitItemImpl() override;					   // 13
 
 		// override (TESLeveledList)
-		virtual SInt32 GetLevDifferenceMax() override;							  // 06 - { return iLevItemLevelDifferenceMax; }
-		virtual bool   GetCanContainFormsOfType(FormType a_type) const override;  // 07
+		virtual std::int32_t GetLevDifferenceMax() override;							// 06 - { return iLevItemLevelDifferenceMax; }
+		virtual bool		 GetCanContainFormsOfType(FormType a_type) const override;	// 07
 	};
-	STATIC_ASSERT(sizeof(TESLevItem) == 0x58);
+	static_assert(sizeof(TESLevItem) == 0x58);
 }

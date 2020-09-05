@@ -24,10 +24,10 @@ namespace RE
 
 		struct Data
 		{
-			void*  unk00;  // 00
-			UInt64 unk08;  // 08
+			void*		  unk00;  // 00
+			std::uint64_t unk08;  // 08
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x10);
+		static_assert(sizeof(Data) == 0x10);
 
 
 		virtual ~DialogueMenu();  // 00
@@ -43,5 +43,5 @@ namespace RE
 		// members
 		BSTArray<Data> unk38;  // 38
 	};
-	STATIC_ASSERT(sizeof(DialogueMenu) == 0x50);
+	static_assert(sizeof(DialogueMenu) == 0x50);
 }

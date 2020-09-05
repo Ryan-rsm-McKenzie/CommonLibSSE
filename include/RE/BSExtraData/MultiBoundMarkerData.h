@@ -22,8 +22,8 @@ namespace RE
 
 
 		// members
-		NiPoint3 halfExtents;  // 10
-		UInt32	 pad1C;		   // 1C
+		NiPoint3	  halfExtents;	// 10
+		std::uint32_t pad1C;		// 1C
 	};
-	STATIC_ASSERT(sizeof(MultiBoundMarkerData) == 0x20);
+	static_assert(sizeof(MultiBoundMarkerData) == 0x20);
 }

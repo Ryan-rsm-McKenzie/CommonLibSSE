@@ -18,5 +18,5 @@ namespace RE
 		virtual void Unk_03(void);		// 03 - { return; }
 		virtual void Unk_04(void);		// 04 - { return; }
 	};
-	STATIC_ASSERT(sizeof(DetectionListener) == 0x10);
+	static_assert(sizeof(DetectionListener) == 0x10);
 }

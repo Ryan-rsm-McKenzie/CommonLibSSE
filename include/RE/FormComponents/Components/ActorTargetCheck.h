@@ -18,9 +18,9 @@ namespace RE
 
 
 		// members
-		UInt64 unk08;  // 08
-		UInt64 unk10;  // 10
-		UInt64 unk18;  // 18
+		std::uint64_t unk08;  // 08
+		std::uint64_t unk10;  // 10
+		std::uint64_t unk18;  // 18
 	};
-	STATIC_ASSERT(sizeof(ActorTargetCheck) == 0x20);
+	static_assert(sizeof(ActorTargetCheck) == 0x20);
 }

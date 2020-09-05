@@ -20,7 +20,7 @@ namespace RE
 		struct EntryData  // DATA
 		{
 		public:
-			enum class Function : UInt8
+			enum class Function
 			{
 				kSetValue = 1,
 				kAddValue = 2,
@@ -41,19 +41,19 @@ namespace RE
 
 
 			// members
-			EntryPoint entryPoint;	// 0
-			Function   function;	// 1
-			UInt8	   numArgs;		// 2
-			UInt8	   unk3;		// 3
-			UInt32	   unk4;		// 4
+			stl::enumeration<EntryPoint, std::uint8_t> entryPoint;	// 0
+			stl::enumeration<Function, std::uint8_t>   function;	// 1
+			std::uint8_t							   numArgs;		// 2
+			std::uint8_t							   unk3;		// 3
+			std::uint32_t							   unk4;		// 4
 		};
-		STATIC_ASSERT(sizeof(EntryData) == 0x8);
+		static_assert(sizeof(EntryData) == 0x8);
 
 
 		// override (BGSPerkEntry)
-		virtual bool	   CheckConditionFilters(UInt32 a_numArgs, void* a_args) override;	// 00
-		virtual EntryPoint GetFunction() override;											// 01 - { return function; }
-		virtual void*	   GetFunctionData() const override;								// 02 - { return functionData; }
+		virtual bool	   CheckConditionFilters(std::uint32_t a_numArgs, void* a_args) override;  // 00
+		virtual EntryPoint GetFunction() override;												   // 01 - { return function; }
+		virtual void*	   GetFunctionData() const override;									   // 02 - { return functionData; }
 
 		virtual ~BGSEntryPointPerkEntry();	// 03
 
@@ -62,7 +62,7 @@ namespace RE
 		virtual void			InitItem(TESFile* a_owner) override;	   // 06
 		virtual bool			Load(TESFile* a_file) override;			   // 07
 		virtual void			SetParent(BGSPerk* a_parent) override;	   // 08
-		virtual UInt16			GetID() const override;					   // 09
+		virtual std::uint16_t	GetID() const override;					   // 09
 		virtual void			ApplyPerkEntry(Actor* a_actor) override;   // 0A
 		virtual void			RemovePerkEntry(Actor* a_actor) override;  // 0B
 
@@ -75,5 +75,5 @@ namespace RE
 		SimpleArray<TESCondition>  conditions;	  // 20
 		BGSPerk*				   perk;		  // 28
 	};
-	STATIC_ASSERT(sizeof(BGSEntryPointPerkEntry) == 0x30);
+	static_assert(sizeof(BGSEntryPointPerkEntry) == 0x30);
 }

@@ -21,7 +21,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::Message;
 
 
-		enum class MessageFlag : UInt32
+		enum class MessageFlag
 		{
 			kNone = 0,
 			kMessageBox = 1 << 0,
@@ -31,7 +31,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -41,10 +41,12 @@ namespace RE
 
 		struct MESSAGEBOX_BUTTON
 		{
+		public:
+			// members
 			BSFixedString text;		   // 00 - ITXT
 			TESCondition  conditions;  // 08
 		};
-		STATIC_ASSERT(sizeof(MESSAGEBOX_BUTTON) == 0x10);
+		static_assert(sizeof(MESSAGEBOX_BUTTON) == 0x10);
 
 
 		virtual ~BGSMessage();	// 00
@@ -57,11 +59,11 @@ namespace RE
 
 
 		// members
-		BGSMenuIcon*					 icon;		   // 40 - INAM
-		TESQuest*						 ownerQuest;   // 48 - QNAM
-		BSSimpleList<MESSAGEBOX_BUTTON*> menuButtons;  // 50
-		MessageFlag						 flags;		   // 60 - DNAM
-		UInt32							 displayTime;  // 64 - TNAM
+		BGSMenuIcon*								 icon;		   // 40 - INAM
+		TESQuest*									 ownerQuest;   // 48 - QNAM
+		BSSimpleList<MESSAGEBOX_BUTTON*>			 menuButtons;  // 50
+		stl::enumeration<MessageFlag, std::uint32_t> flags;		   // 60 - DNAM
+		std::uint32_t								 displayTime;  // 64 - TNAM
 	};
-	STATIC_ASSERT(sizeof(BGSMessage) == 0x68);
+	static_assert(sizeof(BGSMessage) == 0x68);
 }

@@ -22,5 +22,5 @@ namespace RE
 		// add
 		virtual void Unk_36(void) = 0;	// 36
 	};
-	STATIC_ASSERT(sizeof(bhkShapeCollection) == 0x28);
+	static_assert(sizeof(bhkShapeCollection) == 0x28);
 }

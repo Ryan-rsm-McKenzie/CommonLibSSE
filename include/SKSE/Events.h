@@ -12,14 +12,8 @@ namespace SKSE
 {
 	struct ModCallbackEvent
 	{
-		inline ModCallbackEvent(RE::BSFixedString a_eventName, RE::BSFixedString a_strArg, float a_numArg, RE::TESForm* a_sender) :
-			eventName(a_eventName),
-			strArg(a_strArg),
-			numArg(a_numArg),
-			sender(a_sender)
-		{}
-
-
+	public:
+		// members
 		RE::BSFixedString eventName;
 		RE::BSFixedString strArg;
 		float			  numArg;
@@ -29,12 +23,8 @@ namespace SKSE
 
 	struct CameraEvent
 	{
-		constexpr CameraEvent(RE::TESCameraState* a_oldState, RE::TESCameraState* a_newState) :
-			oldState(a_oldState),
-			newState(a_newState)
-		{}
-
-
+	public:
+		// members
 		RE::TESCameraState* oldState;
 		RE::TESCameraState* newState;
 	};
@@ -42,18 +32,16 @@ namespace SKSE
 
 	struct CrosshairRefEvent
 	{
-		explicit inline CrosshairRefEvent(RE::NiPointer<RE::TESObjectREFR> a_crosshairRef) :
-			crosshairRef(a_crosshairRef)
-		{}
-
-
+	public:
+		// members
 		RE::NiPointer<RE::TESObjectREFR> crosshairRef;
 	};
 
 
 	struct ActionEvent
 	{
-		enum class Type : UInt32
+	public:
+		enum class Type
 		{
 			kWeaponSwing = 0,
 			kSpellCast = 1,
@@ -69,7 +57,7 @@ namespace SKSE
 		};
 
 
-		enum class Slot : UInt32
+		enum class Slot
 		{
 			kLeft = 0,
 			kRight = 1,
@@ -77,28 +65,18 @@ namespace SKSE
 		};
 
 
-		constexpr ActionEvent(Type a_type, RE::Actor* a_actor, RE::TESForm* a_sourceForm, Slot a_slot) :
-			type(a_type),
-			actor(a_actor),
-			sourceForm(a_sourceForm),
-			slot(a_slot)
-		{}
-
-
-		Type		 type;
-		RE::Actor*	 actor;
-		RE::TESForm* sourceForm;
-		Slot		 slot;
+		// members
+		stl::enumeration<Type, std::uint32_t> type;
+		RE::Actor*							  actor;
+		RE::TESForm*						  sourceForm;
+		stl::enumeration<Slot, std::uint32_t> slot;
 	};
 
 
 	struct NiNodeUpdateEvent
 	{
-		explicit constexpr NiNodeUpdateEvent(RE::TESObjectREFR* a_reference) :
-			reference(a_reference)
-		{}
-
-
+	public:
+		// members
 		RE::TESObjectREFR* reference;
 	};
 }

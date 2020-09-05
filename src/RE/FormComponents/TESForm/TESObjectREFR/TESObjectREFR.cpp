@@ -1,8 +1,10 @@
 #include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
 
 #include "RE/BSCore/BSFixedString.h"
+#include "RE/BSExtraData/ExtraCharge.h"
 #include "RE/BSExtraData/ExtraContainerChanges.h"
 #include "RE/BSExtraData/ExtraDroppedItemList.h"
+#include "RE/BSExtraData/ExtraEnchantment.h"
 #include "RE/BSExtraData/ExtraFlags.h"
 #include "RE/BSExtraData/ExtraLock.h"
 #include "RE/BSExtraData/ExtraOwnership.h"
@@ -10,6 +12,7 @@
 #include "RE/BSExtraData/ExtraTextDisplayData.h"
 #include "RE/FormComponents/Components/FormTraits.h"
 #include "RE/FormComponents/TESContainer.h"
+#include "RE/FormComponents/TESEnchantableForm.h"
 #include "RE/FormComponents/TESForm/BGSDefaultObjectManager.h"
 #include "RE/FormComponents/TESForm/BGSKeyword/BGSKeyword.h"
 #include "RE/FormComponents/TESForm/TESFaction.h"
@@ -43,14 +46,14 @@ namespace RE
 	TESObjectREFR* TESObjectREFR::FindReferenceFor3D(NiAVObject* a_object3D)
 	{
 		using func_t = decltype(&TESObjectREFR::FindReferenceFor3D);
-		REL::Offset<func_t> func(Offset::TESObjectREFR::FindReferenceFor3D);
+		REL::Relocation<func_t> func{ Offset::TESObjectREFR::FindReferenceFor3D };
 		return func(a_object3D);
 	}
 
 
 	ObjectRefHandle TESObjectREFR::CreateRefHandle()
 	{
-		return ObjectRefHandle(this);
+		return GetHandle();
 	}
 
 
@@ -116,7 +119,7 @@ namespace RE
 	float TESObjectREFR::GetBaseHeight() const
 	{
 		auto height = static_cast<float>(refScale) / 100.0F;
-		auto obj = GetBaseObject();
+		auto obj = GetObjectReference();
 		auto npc = obj ? obj->As<TESNPC>() : nullptr;
 		if (npc) {
 			height *= npc->GetHeight();
@@ -149,9 +152,9 @@ namespace RE
 	}
 
 
-	TESContainer* TESObjectREFR::GetContainer()
+	TESContainer* TESObjectREFR::GetContainer() const
 	{
-		auto obj = GetBaseObject();
+		auto obj = GetObjectReference();
 		return obj ? obj->As<TESContainer>() : nullptr;
 	}
 
@@ -159,7 +162,7 @@ namespace RE
 	const char* TESObjectREFR::GetDisplayFullName()
 	{
 		using func_t = decltype(&TESObjectREFR::GetDisplayFullName);
-		REL::Offset<func_t> func(Offset::TESObjectREFR::GetDisplayFullName);
+		REL::Relocation<func_t> func{ Offset::TESObjectREFR::GetDisplayFullName };
 		return func(this);
 	}
 
@@ -167,13 +170,13 @@ namespace RE
 	auto TESObjectREFR::GetDroppedInventory()
 		-> InventoryDropMap
 	{
-		return GetDroppedInventory([]([[maybe_unused]] TESBoundObject*) -> bool {
+		return GetDroppedInventory([]([[maybe_unused]] TESBoundObject&) -> bool {
 			return true;
 		});
 	}
 
 
-	auto TESObjectREFR::GetDroppedInventory(std::function<bool(TESBoundObject*)> a_filter)
+	auto TESObjectREFR::GetDroppedInventory(std::function<bool(TESBoundObject&)> a_filter)
 		-> InventoryDropMap
 	{
 		using container_t = InventoryDropMap::mapped_type::second_type;
@@ -191,8 +194,8 @@ namespace RE
 				continue;
 			}
 
-			auto object = ref->GetBaseObject();
-			if (!object || !a_filter(object)) {
+			auto object = ref->GetObjectReference();
+			if (!object || !a_filter(*object)) {
 				continue;
 			}
 
@@ -200,11 +203,11 @@ namespace RE
 			auto it = results.find(object);
 			if (it != results.end()) {
 				it->second.first += count;
-				it->second.second.push_back(std::move(ref));
+				it->second.second.push_back(handle);
 			} else {
 				auto mapped = std::make_pair(count, container_t());
-				mapped.second.push_back(std::move(ref));
-				auto insIt = results.insert(std::make_pair(object, std::move(mapped)));
+				mapped.second.push_back(handle);
+				auto insIt = results.emplace(object, std::move(mapped));
 				assert(insIt.second);
 			}
 		}
@@ -225,6 +228,35 @@ namespace RE
 	}
 
 
+	std::optional<double> TESObjectREFR::GetEnchantmentCharge() const
+	{
+		std::optional<double> result;
+		auto obj = GetObjectReference();
+		auto ench = obj ? obj->As<TESEnchantableForm>() : nullptr;
+		if (ench && ench->formEnchanting && ench->amountofEnchantment != 0) {
+			result.emplace(100.0);
+		}
+
+		auto xCharge = extraList.GetByType<ExtraCharge>();
+		auto xEnch = extraList.GetByType<ExtraEnchantment>();
+		if (xEnch && xEnch->enchantment && xEnch->charge != 0) {
+			if (xCharge) {
+				result.emplace((static_cast<double>(xCharge->charge) /
+								   static_cast<double>(xEnch->charge)) *
+							   100.0);
+			} else {
+				result.emplace(100.0);
+			}
+		} else if (xCharge && ench && ench->formEnchanting && ench->amountofEnchantment != 0) {
+			result.emplace((static_cast<double>(xCharge->charge) /
+							   static_cast<double>(ench->amountofEnchantment)) *
+						   100.0);
+		}
+
+		return result;
+	}
+
+
 	TESFaction* TESObjectREFR::GetFactionOwner()
 	{
 		auto xOwnership = extraList.GetByType<ExtraOwnership>();
@@ -236,16 +268,20 @@ namespace RE
 	}
 
 
-	auto TESObjectREFR::GetInventory()
-		-> InventoryItemMap
+	ObjectRefHandle TESObjectREFR::GetHandle()
 	{
-		return GetInventory([]([[maybe_unused]] TESBoundObject*) -> bool {
-			return true;
-		});
+		return ObjectRefHandle(this);
 	}
 
 
-	auto TESObjectREFR::GetInventory(std::function<bool(TESBoundObject*)> a_filter)
+	auto TESObjectREFR::GetInventory()
+		-> InventoryItemMap
+	{
+		return GetInventory([](TESBoundObject&) { return true; });
+	}
+
+
+	auto TESObjectREFR::GetInventory(std::function<bool(TESBoundObject&)> a_filter)
 		-> InventoryItemMap
 	{
 		InventoryItemMap results;
@@ -253,9 +289,13 @@ namespace RE
 		auto invChanges = GetInventoryChanges();
 		if (invChanges && invChanges->entryList) {
 			for (auto& entry : *invChanges->entryList) {
-				if (entry && entry->object && a_filter(entry->object)) {
-					auto mapped = std::make_pair(entry->countDelta, std::make_unique<InventoryEntryData>(*entry));
-					auto it = results.insert(std::make_pair(entry->object, std::move(mapped)));
+				if (entry && entry->object && a_filter(*entry->object)) {
+					[[maybe_unused]] auto it =
+						results.emplace(
+							entry->object,
+							std::make_pair(
+								entry->countDelta,
+								std::make_unique<InventoryEntryData>(*entry)));
 					assert(it.second);
 				}
 			}
@@ -263,15 +303,29 @@ namespace RE
 
 		auto container = GetContainer();
 		if (container) {
-			container->ForEachContainerObject([&](ContainerObject* a_entry) -> bool {
-				if (a_entry->obj && a_filter(a_entry->obj)) {
-					auto it = results.find(a_entry->obj);
+			const auto ignore = [&](TESBoundObject* a_object) {
+				const auto it = results.find(a_object);
+				const auto entryData =
+					it != results.end() ?
+						  it->second.second.get() :
+						  nullptr;
+				return entryData ? entryData->IsLeveled() : false;
+			};
+
+			container->ForEachContainerObject([&](ContainerObject& a_entry) {
+				auto obj = a_entry.obj;
+				if (obj && !ignore(obj) && a_filter(*obj)) {
+					auto it = results.find(obj);
 					if (it == results.end()) {
-						auto mapped = std::make_pair(a_entry->count, std::make_unique<InventoryEntryData>(a_entry->obj, 0));
-						auto insIt = results.insert(std::make_pair(a_entry->obj, std::move(mapped)));
+						[[maybe_unused]] auto insIt =
+							results.emplace(
+								obj,
+								std::make_pair(
+									a_entry.count,
+									std::make_unique<InventoryEntryData>(obj, 0)));
 						assert(insIt.second);
 					} else {
-						it->second.first += a_entry->count;
+						it->second.first += a_entry.count;
 					}
 				}
 				return true;
@@ -282,10 +336,10 @@ namespace RE
 	}
 
 
-	SInt32 TESObjectREFR::GetInventoryCount()
+	std::int32_t TESObjectREFR::GetInventoryCount()
 	{
 		auto counts = GetInventoryCounts();
-		SInt32 total = 0;
+		std::int32_t total = 0;
 		for (auto& elem : counts) {
 			total += elem.second;
 		}
@@ -296,43 +350,18 @@ namespace RE
 	auto TESObjectREFR::GetInventoryCounts()
 		-> InventoryCountMap
 	{
-		return GetInventoryCounts([]([[maybe_unused]] TESBoundObject*) -> bool {
-			return true;
-		});
+		return GetInventoryCounts([](TESBoundObject&) { return true; });
 	}
 
 
-	auto TESObjectREFR::GetInventoryCounts(std::function<bool(TESBoundObject*)> a_filter)
+	auto TESObjectREFR::GetInventoryCounts(std::function<bool(TESBoundObject&)> a_filter)
 		-> InventoryCountMap
 	{
+		auto itemMap = GetInventory(std::move(a_filter));
 		InventoryCountMap results;
-
-		auto invChanges = GetInventoryChanges();
-		if (invChanges && invChanges->entryList) {
-			for (auto& entry : *invChanges->entryList) {
-				if (entry && entry->object && a_filter(entry->object)) {
-					auto it = results.insert(std::make_pair(entry->object, entry->countDelta));
-					assert(it.second);
-				}
-			}
+		for (const auto& [key, value] : itemMap) {
+			results[key] = value.first;
 		}
-
-		auto container = GetContainer();
-		if (container) {
-			container->ForEachContainerObject([&](ContainerObject* a_entry) -> bool {
-				if (a_entry->obj && a_filter(a_entry->obj)) {
-					auto it = results.find(a_entry->obj);
-					if (it == results.end()) {
-						auto insIt = results.insert(std::make_pair(a_entry->obj, a_entry->count));
-						assert(insIt.second);
-					} else {
-						it->second += a_entry->count;
-					}
-				}
-				return true;
-			});
-		}
-
 		return results;
 	}
 
@@ -340,7 +369,9 @@ namespace RE
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
 		if (!extraList.HasType<ExtraContainerChanges>()) {
-			InitInventoryIfRequired();
+			if (!InitInventoryIfRequired()) {
+				ForceInitInventoryChanges();
+			}
 		}
 
 		auto xContChanges = extraList.GetByType<ExtraContainerChanges>();
@@ -357,7 +388,7 @@ namespace RE
 	REFR_LOCK* TESObjectREFR::GetLock() const
 	{
 		using func_t = decltype(&TESObjectREFR::GetLock);
-		REL::Offset<func_t> func(Offset::TESObjectREFR::GetLock);
+		REL::Relocation<func_t> func{ Offset::TESObjectREFR::GetLock };
 		return func(this);
 	}
 
@@ -371,7 +402,7 @@ namespace RE
 
 	const char* TESObjectREFR::GetName() const
 	{
-		auto obj = GetBaseObject();
+		auto obj = GetObjectReference();
 		return obj ? obj->GetName() : "";
 	}
 
@@ -386,53 +417,48 @@ namespace RE
 	TESForm* TESObjectREFR::GetOwner() const
 	{
 		using func_t = decltype(&TESObjectREFR::GetOwner);
-		REL::Offset<func_t> func(Offset::TESObjectREFR::GetOwner);
+		REL::Relocation<func_t> func{ Offset::TESObjectREFR::GetOwner };
 		return func(this);
 	}
 
 
-	TESObjectCELL* TESObjectREFR::GetParentCell() const
+	NiControllerSequence* TESObjectREFR::GetSequence(stl::zstring a_name) const
 	{
-		return parentCell;
+		auto node = Get3D();
+		if (!node) {
+			return nullptr;
+		}
+
+		auto controller = node->GetControllers();
+		if (!controller) {
+			return nullptr;
+		}
+
+		auto manager = controller->AsNiControllerManager();
+		return manager ? manager->GetSequenceByName(a_name) : nullptr;
 	}
 
 
-	NiPoint3 TESObjectREFR::GetPosition() const
+	std::uint32_t TESObjectREFR::GetStealValue(const InventoryEntryData* a_entryData, std::uint32_t a_numItems, bool a_useMult) const
 	{
-		return data.location;
-	}
-
-
-	float TESObjectREFR::GetPositionX() const
-	{
-		return data.location.x;
-	}
-
-
-	float TESObjectREFR::GetPositionY() const
-	{
-		return data.location.y;
-	}
-
-
-	float TESObjectREFR::GetPositionZ() const
-	{
-		return data.location.z;
-	}
-
-
-	UInt32 TESObjectREFR::GetStealValue(const InventoryEntryData* a_entryData, UInt32 a_numItems, bool a_useMult) const
-	{
-		using func_t = decltype(&Actor::GetStealValue);
-		REL::Offset<func_t> func(Offset::TESObjectREFR::GetStealValue);
+		using func_t = decltype(&TESObjectREFR::GetStealValue);
+		REL::Relocation<func_t> func{ Offset::TESObjectREFR::GetStealValue };
 		return func(this, a_entryData, a_numItems, a_useMult);
 	}
 
 
 	float TESObjectREFR::GetWeight() const
 	{
-		auto obj = GetBaseObject();
-		return obj ? obj->GetWeight() : 0.0;
+		auto obj = GetObjectReference();
+		return obj ? obj->GetWeight() : 0.0F;
+	}
+
+
+	float TESObjectREFR::GetWeightInContainer()
+	{
+		using func_t = decltype(&TESObjectREFR::GetWeightInContainer);
+		REL::Relocation<func_t> func{ REL::ID(19277) };
+		return func(this);
 	}
 
 
@@ -457,25 +483,39 @@ namespace RE
 	}
 
 
+	bool TESObjectREFR::HasContainer() const
+	{
+		return GetContainer() != nullptr;
+	}
+
+
 	bool TESObjectREFR::HasKeyword(const BGSKeyword* a_keyword) const
 	{
 		return HasKeywordHelper(a_keyword);
 	}
 
 
-	void TESObjectREFR::InitChildActivates(TESObjectREFR* a_activator)
+	bool TESObjectREFR::HasQuestObject() const
 	{
-		using func_t = decltype(&TESObjectREFR::InitChildActivates);
-		REL::Offset<func_t> func(Offset::TESObjectREFR::InitChildActivates);
-		return func(this, a_activator);
+		using func_t = decltype(&TESObjectREFR::HasQuestObject);
+		REL::Relocation<func_t> func{ REL::ID(19201) };
+		return func(this);
 	}
 
 
-	bool TESObjectREFR::InitInventoryIfRequired(bool a_skipExtra)
+	void TESObjectREFR::InitChildActivates(TESObjectREFR* a_actionRef)
+	{
+		using func_t = decltype(&TESObjectREFR::InitChildActivates);
+		REL::Relocation<func_t> func{ REL::ID(19857) };
+		return func(this, a_actionRef);
+	}
+
+
+	bool TESObjectREFR::InitInventoryIfRequired(bool a_ignoreContainerExtraData)
 	{
 		using func_t = decltype(&TESObjectREFR::InitInventoryIfRequired);
-		REL::Offset<func_t> func(Offset::TESObjectREFR::InitInventoryIfRequired);
-		return func(this, a_skipExtra);
+		REL::Relocation<func_t> func{ Offset::TESObjectREFR::InitInventoryIfRequired };
+		return func(this, a_ignoreContainerExtraData);
 	}
 
 
@@ -492,23 +532,44 @@ namespace RE
 	}
 
 
-	bool TESObjectREFR::IsCrimeToActivate()
+	bool TESObjectREFR::IsAnOwner(const Actor* a_testOwner, bool a_useFaction, bool a_requiresOwner) const
 	{
-		using func_t = decltype(&TESObjectREFR::IsCrimeToActivate);
-		REL::Offset<func_t> func(Offset::TESObjectREFR::IsCrimeToActivate);
-		return func(this);
+		using func_t = decltype(&TESObjectREFR::IsAnOwner);
+		REL::Relocation<func_t> func{ REL::ID(19805) };
+		return func(this, a_testOwner, a_useFaction, a_requiresOwner);
 	}
 
 
-	bool TESObjectREFR::IsDead() const
+	bool TESObjectREFR::IsCrimeToActivate()
 	{
-		return IsDead(true);
+		using func_t = decltype(&TESObjectREFR::IsCrimeToActivate);
+		REL::Relocation<func_t> func{ REL::ID(19400) };
+		return func(this);
 	}
 
 
 	bool TESObjectREFR::IsDisabled() const
 	{
 		return (formFlags & RecordFlags::kInitiallyDisabled) != 0;
+	}
+
+
+	bool TESObjectREFR::IsEnchanted() const
+	{
+		auto xEnch = extraList.GetByType<ExtraEnchantment>();
+		if (xEnch && xEnch->enchantment) {
+			return true;
+		}
+
+		auto obj = GetObjectReference();
+		if (obj) {
+			auto ench = obj->As<TESEnchantableForm>();
+			if (ench && ench->formEnchanting) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 
@@ -553,13 +614,13 @@ namespace RE
 		assert(a_target);
 		auto node = a_target->Get3D();
 		if (!node) {
-			_DMESSAGE("Cannot move the target because it does not have 3D");
+			SKSE::log::debug("Cannot move the target because it does not have 3D");
 			return false;
 		}
 
 		auto object = node->GetObjectByName(a_nodeName);
 		if (!object) {
-			_DMESSAGE("Target does not have a node named %s", a_nodeName.c_str());
+			SKSE::log::debug("Target does not have a node named {}", a_nodeName.c_str());
 			return false;
 		}
 
@@ -573,13 +634,13 @@ namespace RE
 		auto& position = a_node->world.translate;
 		NiPoint3 rotation;
 		a_node->world.rotate.ToEulerAnglesXYZ(rotation);
-		auto handle = a_target->CreateRefHandle();
+		auto handle = a_target->GetHandle();
 		MoveTo_Impl(handle, a_target->GetParentCell(), GetWorldspace(), position, rotation);
 		return true;
 	}
 
 
-	void TESObjectREFR::PlayAnimation(std::string_view a_from, std::string_view a_to)
+	void TESObjectREFR::PlayAnimation(stl::zstring a_from, stl::zstring a_to)
 	{
 		auto node = Get3D();
 		if (!node) {
@@ -655,11 +716,11 @@ namespace RE
 	{
 		auto node = Get3D();
 		if (!node) {
-			_DMESSAGE("Target does not have 3D");
+			SKSE::log::debug("Target does not have 3D");
 			return false;
 		}
 
-		auto result = node->SetMotionType(static_cast<UInt32>(a_motionType), true, false, a_allowActivate);
+		auto result = node->SetMotionType(static_cast<std::uint32_t>(a_motionType), true, false, a_allowActivate);
 		AddChange(ChangeFlags::kHavokMoved);
 		return result;
 	}
@@ -673,15 +734,34 @@ namespace RE
 
 	void TESObjectREFR::SetPosition(NiPoint3 a_pos)
 	{
-		static ObjectRefHandle invalid;
-		MoveTo_Impl(invalid, GetParentCell(), GetWorldspace(), a_pos, data.angle);
+		MoveTo_Impl(ObjectRefHandle(), GetParentCell(), GetWorldspace(), a_pos, data.angle);
+	}
+
+
+	InventoryChanges* TESObjectREFR::ForceInitInventoryChanges()
+	{
+		auto changes = MakeInventoryChanges();
+		if (changes) {
+			changes->InitLeveledItems();
+			changes->InitFromContainerExtra();
+			changes->InitScripts();
+		}
+		return changes;
+	}
+
+
+	InventoryChanges* TESObjectREFR::MakeInventoryChanges()
+	{
+		using func_t = decltype(&TESObjectREFR::MakeInventoryChanges);
+		REL::Relocation<func_t> func{ REL::ID(15802) };
+		return func(this);
 	}
 
 
 	void TESObjectREFR::MoveTo_Impl(const ObjectRefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, const NiPoint3& a_position, const NiPoint3& a_rotation)
 	{
 		using func_t = decltype(&TESObjectREFR::MoveTo_Impl);
-		REL::Offset<func_t> func(Offset::TESObjectREFR::MoveTo);
+		REL::Relocation<func_t> func{ Offset::TESObjectREFR::MoveTo };
 		return func(this, a_targetHandle, a_targetCell, a_selfWorldSpace, a_position, a_rotation);
 	}
 
@@ -689,7 +769,7 @@ namespace RE
 	void TESObjectREFR::PlayAnimation_Impl(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4)
 	{
 		using func_t = decltype(&TESObjectREFR::PlayAnimation_Impl);
-		REL::Offset<func_t> func(Offset::TESObjectREFR::PlayAnimation);
+		REL::Relocation<func_t> func{ Offset::TESObjectREFR::PlayAnimation };
 		return func(this, a_manager, a_toSeq, a_fromSeq, a_arg4);
 	}
 }

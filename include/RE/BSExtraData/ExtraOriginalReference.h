@@ -23,7 +23,7 @@ namespace RE
 
 		// members
 		ObjectRefHandle reference;	// 10
-		UInt32			pad14;		// 14
+		std::uint32_t	pad14;		// 14
 	};
-	STATIC_ASSERT(sizeof(ExtraOriginalReference) == 0x18);
+	static_assert(sizeof(ExtraOriginalReference) == 0x18);
 }

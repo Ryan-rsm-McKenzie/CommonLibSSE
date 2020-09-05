@@ -6,8 +6,12 @@ namespace RE
 	class NiPoint3
 	{
 	public:
-		constexpr NiPoint3();
-		constexpr NiPoint3(float a_x, float a_y, float a_z);
+		constexpr NiPoint3() noexcept = default;
+
+		constexpr NiPoint3(float a_x, float a_y, float a_z) noexcept :
+			x(a_x),
+			y(a_y),
+			z(a_z){};
 
 		float&		 operator[](std::size_t a_idx);
 		const float& operator[](std::size_t a_idx) const;
@@ -32,22 +36,9 @@ namespace RE
 
 
 		// members
-		float x;  // 0
-		float y;  // 4
-		float z;  // 8
+		float x{ 0.0F };  // 0
+		float y{ 0.0F };  // 4
+		float z{ 0.0F };  // 8
 	};
-	STATIC_ASSERT(sizeof(NiPoint3) == 0xC);
-
-
-	constexpr NiPoint3::NiPoint3() :
-		x(0.0),
-		y(0.0),
-		z(0.0)
-	{}
-
-
-	constexpr NiPoint3::NiPoint3(float a_x, float a_y, float a_z) :
-		x(a_x),
-		y(a_y),
-		z(a_z){};
+	static_assert(sizeof(NiPoint3) == 0xC);
 }

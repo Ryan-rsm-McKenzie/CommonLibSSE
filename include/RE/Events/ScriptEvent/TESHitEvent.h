@@ -11,7 +11,7 @@ namespace RE
 	struct TESHitEvent
 	{
 	public:
-		enum class Flag : UInt8
+		enum class Flag
 		{
 			kNone = 0,
 			kPowerAttack = 1 << 0,
@@ -27,14 +27,14 @@ namespace RE
 
 
 		// members
-		NiPointer<TESObjectREFR> target;	  // 00
-		NiPointer<TESObjectREFR> cause;		  // 08
-		FormID					 source;	  // 10
-		FormID					 projectile;  // 14
-		Flag					 flags;		  // 18
-		UInt8					 pad19;		  // 19
-		UInt16					 pad1A;		  // 1A
-		UInt32					 pad1C;		  // 1C
+		NiPointer<TESObjectREFR>			 target;	  // 00
+		NiPointer<TESObjectREFR>			 cause;		  // 08
+		FormID								 source;	  // 10
+		FormID								 projectile;  // 14
+		stl::enumeration<Flag, std::uint8_t> flags;		  // 18
+		std::uint8_t						 pad19;		  // 19
+		std::uint16_t						 pad1A;		  // 1A
+		std::uint32_t						 pad1C;		  // 1C
 	};
-	STATIC_ASSERT(sizeof(TESHitEvent) == 0x20);
+	static_assert(sizeof(TESHitEvent) == 0x20);
 }

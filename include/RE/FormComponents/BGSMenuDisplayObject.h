@@ -28,5 +28,5 @@ namespace RE
 		// members
 		TESBoundObject* menuDispObject;	 // 08 - MDOB
 	};
-	STATIC_ASSERT(sizeof(BGSMenuDisplayObject) == 0x10);
+	static_assert(sizeof(BGSMenuDisplayObject) == 0x10);
 }

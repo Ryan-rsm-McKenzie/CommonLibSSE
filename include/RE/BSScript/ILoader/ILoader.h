@@ -29,6 +29,6 @@ namespace RE
 			virtual void	 SetScriptStore(const BSTSmartPointer<IStore>& a_store) = 0;		 // 02
 			virtual bool	 GetClass(const char* a_name, UnlinkedTypes::Object& a_object) = 0;	 // 03
 		};
-		STATIC_ASSERT(sizeof(ILoader) == 0x8);
+		static_assert(sizeof(ILoader) == 0x8);
 	}
 }

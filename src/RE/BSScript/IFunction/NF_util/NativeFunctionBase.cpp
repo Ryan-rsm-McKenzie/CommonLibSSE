@@ -7,18 +7,11 @@ namespace RE
 	{
 		namespace NF_util
 		{
-			NativeFunctionBase::NativeFunctionBase(std::string_view a_fnName, std::string_view a_className, bool a_isStatic, UInt16 a_numParams) :
+			NativeFunctionBase::NativeFunctionBase(std::string_view a_fnName, std::string_view a_className, bool a_isStatic, std::uint16_t a_numParams) :
 				_name(a_fnName),
 				_objName(a_className),
-				_stateName(""),
-				_retType(),
 				_descTable(a_numParams, 0),
-				_isStatic(a_isStatic),
-				_isCallableFromTasklet(false),
-				_isLatent(false),
-				_pad43(0),
-				_userFlags(0),
-				_docString("")
+				_isStatic(a_isStatic)
 			{
 				// native supports max 11
 				std::string param("param");
@@ -53,13 +46,13 @@ namespace RE
 			}
 
 
-			UInt32 NativeFunctionBase::GetParamCount() const
+			std::uint32_t NativeFunctionBase::GetParamCount() const
 			{
 				return _descTable.totalEntries;
 			}
 
 
-			void NativeFunctionBase::GetParam(UInt32 a_idx, BSFixedString& a_nameOut, TypeInfo& a_typeOut) const
+			void NativeFunctionBase::GetParam(std::uint32_t a_idx, BSFixedString& a_nameOut, TypeInfo& a_typeOut) const
 			{
 				if (a_idx < _descTable.paramCount) {
 					auto& elem = _descTable.entries[a_idx];
@@ -72,7 +65,7 @@ namespace RE
 			}
 
 
-			UInt32 NativeFunctionBase::GetStackFrameSize() const
+			std::uint32_t NativeFunctionBase::GetStackFrameSize() const
 			{
 				return _descTable.totalEntries;
 			}
@@ -103,7 +96,7 @@ namespace RE
 			}
 
 
-			UInt32 NativeFunctionBase::GetUserFlags() const
+			std::uint32_t NativeFunctionBase::GetUserFlags() const
 			{
 				return _userFlags;
 			}
@@ -125,7 +118,7 @@ namespace RE
 				-> CallResult
 			{
 				using func_t = decltype(&NativeFunctionBase::Call);
-				REL::Offset<func_t> func(Offset::BSScript::NF_util::NativeFunctionBase::Call);
+				REL::Relocation<func_t> func{ Offset::BSScript::NF_util::NativeFunctionBase::Call };
 				return func(this, a_stack, a_logger, a_vm, a_arg4);
 			}
 
@@ -137,14 +130,14 @@ namespace RE
 			}
 
 
-			bool NativeFunctionBase::TranslateIPToLineNumber(UInt32, UInt32& a_lineNumberOut) const
+			bool NativeFunctionBase::TranslateIPToLineNumber(std::uint32_t, std::uint32_t& a_lineNumberOut) const
 			{
 				a_lineNumberOut = 0;
 				return false;
 			}
 
 
-			bool NativeFunctionBase::GetVarNameForStackIndex(UInt32 a_idx, BSFixedString& a_nameOut) const
+			bool NativeFunctionBase::GetVarNameForStackIndex(std::uint32_t a_idx, BSFixedString& a_nameOut) const
 			{
 				if (a_idx < _descTable.totalEntries) {
 					a_nameOut = _descTable.entries[a_idx].first;

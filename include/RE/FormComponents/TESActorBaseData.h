@@ -17,7 +17,8 @@ namespace RE
 
 	struct ACTOR_BASE_DATA
 	{
-		enum class Flag : UInt32
+	public:
+		enum class Flag
 		{
 			kNone = 0,
 			kFemale = 1 << 0,
@@ -38,11 +39,11 @@ namespace RE
 			kLoopedScript = 1 << 21,  // ?
 			kLoopedAudio = 1 << 28,	  // ?
 			kIsGhost = 1 << 29,
-			kInvulnerable = (UInt32)1 << 31
+			kInvulnerable = 1 << 31
 		};
 
 
-		enum class TEMPLATE_USE_FLAG : UInt16
+		enum class TEMPLATE_USE_FLAG
 		{
 			kNone = 0,
 			kTraits = 1 << 0,
@@ -62,19 +63,19 @@ namespace RE
 
 
 		// members
-		Flag			  actorBaseFlags;	 // 00
-		SInt16			  magickaOffset;	 // 04
-		SInt16			  staminaOffset;	 // 06
-		UInt16			  level;			 // 08
-		UInt16			  calcLevelMin;		 // 0A
-		UInt16			  calcLevelMax;		 // 0C
-		UInt16			  speedMult;		 // 0E
-		UInt16			  baseDisposition;	 // 10 - unused
-		TEMPLATE_USE_FLAG templateUseFlags;	 // 12
-		SInt16			  healthOffset;		 // 14
-		SInt16			  bleedoutOverride;	 // 16
+		stl::enumeration<Flag, std::uint32_t>			   actorBaseFlags;	  // 00
+		std::int16_t									   magickaOffset;	  // 04
+		std::int16_t									   staminaOffset;	  // 06
+		std::uint16_t									   level;			  // 08
+		std::uint16_t									   calcLevelMin;	  // 0A
+		std::uint16_t									   calcLevelMax;	  // 0C
+		std::uint16_t									   speedMult;		  // 0E
+		std::uint16_t									   baseDisposition;	  // 10 - unused
+		stl::enumeration<TEMPLATE_USE_FLAG, std::uint16_t> templateUseFlags;  // 12
+		std::int16_t									   healthOffset;	  // 14
+		std::int16_t									   bleedoutOverride;  // 16
 	};
-	STATIC_ASSERT(sizeof(ACTOR_BASE_DATA) == 0x18);
+	static_assert(sizeof(ACTOR_BASE_DATA) == 0x18);
 
 
 	class TESActorBaseData : public BaseFormComponent  // ACBS
@@ -97,23 +98,23 @@ namespace RE
 		virtual void		  Unk_07(void);											  // 07 - { return 1; }
 		virtual BGSVoiceType* GetVoiceType(void);									  // 08 - { return voice; }
 
-		bool AffectsStealthMeter() const;
-		bool Bleeds() const;
-		bool IsEssential() const;
-		bool IsFemale() const;
-		bool IsGhost() const;
-		bool IsPreset() const;
-		bool IsProtected() const;
-		bool IsSimpleActor() const;
-		bool IsSummonable() const;
-		bool IsUnique() const;
-		bool IsInvulnerable() const;
-		bool HasAutoCalcStats() const;
-		bool HasBleedoutOverride() const;
-		bool HasPCLevelMult() const;
-		bool Respawns() const;
-		bool UsesOppositeGenderAnims() const;
-		bool UsesTemplate() const;
+		[[nodiscard]] constexpr bool AffectsStealthMeter() const noexcept { return actorData.actorBaseFlags.none(ACTOR_BASE_DATA::Flag::kDoesntAffectStealthMeter); }
+		[[nodiscard]] constexpr bool Bleeds() const noexcept { return actorData.actorBaseFlags.none(ACTOR_BASE_DATA::Flag::kDoesntBleed); }
+		[[nodiscard]] constexpr bool IsEssential() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kEssential); }
+		[[nodiscard]] constexpr bool IsFemale() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kFemale); }
+		[[nodiscard]] inline bool	 IsGhost() const { return GetIsGhost(); }
+		[[nodiscard]] constexpr bool IsPreset() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kIsChargenFacePreset); }
+		[[nodiscard]] constexpr bool IsProtected() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kProtected); }
+		[[nodiscard]] constexpr bool IsSimpleActor() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kSimpleActor); }
+		[[nodiscard]] constexpr bool IsSummonable() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kSummonable); }
+		[[nodiscard]] constexpr bool IsUnique() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kUnique); }
+		[[nodiscard]] inline bool	 IsInvulnerable() const { return GetInvulnerable(); }
+		[[nodiscard]] constexpr bool HasAutoCalcStats() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kAutoCalcStats); }
+		[[nodiscard]] constexpr bool HasBleedoutOverride() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kBleedoutOverride); }
+		[[nodiscard]] constexpr bool HasPCLevelMult() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kPCLevelMult); }
+		[[nodiscard]] constexpr bool Respawns() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kRespawn); }
+		[[nodiscard]] constexpr bool UsesOppositeGenderAnims() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kOppositeGenderanims); }
+		[[nodiscard]] constexpr bool UsesTemplate() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kUsesTemplate); }
 
 
 		// members
@@ -124,5 +125,5 @@ namespace RE
 		TESForm**			   templateForms;	  // 38
 		BSTArray<FACTION_RANK> factions;		  // 40
 	};
-	STATIC_ASSERT(sizeof(TESActorBaseData) == 0x58);
+	static_assert(sizeof(TESActorBaseData) == 0x58);
 }

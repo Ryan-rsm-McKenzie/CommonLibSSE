@@ -27,5 +27,5 @@ namespace RE
 		virtual bool GetDataAsString(BSString* a_dst) const override;  // 0A
 		virtual void Unk_0C(void) override;							   // 0C - { return pointer->type == PackageLocation::Type::kNearPackageStartLocation; }
 	};
-	STATIC_ASSERT(sizeof(BGSPackageDataLocation) == 0x20);
+	static_assert(sizeof(BGSPackageDataLocation) == 0x20);
 }

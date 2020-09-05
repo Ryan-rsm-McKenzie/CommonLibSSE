@@ -28,8 +28,8 @@ namespace RE
 
 
 			// members
-			UInt32 pad0C;  // 0C
+			std::uint32_t pad0C;  // 0C
 		};
-		STATIC_ASSERT(sizeof(IStackCallbackFunctor) == 0x10);
+		static_assert(sizeof(IStackCallbackFunctor) == 0x10);
 	}
 }

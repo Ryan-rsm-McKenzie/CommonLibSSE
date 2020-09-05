@@ -8,13 +8,13 @@ namespace RE
 	{}
 
 
-	ExtraPoison::ExtraPoison(AlchemyItem* a_poison, SInt32 a_count) :
+	ExtraPoison::ExtraPoison(AlchemyItem* a_poison, std::int32_t a_count) :
 		BSExtraData(),
 		poison(a_poison),
 		count(a_count),
 		pad1C(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraPoison::Vtbl);
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraPoison::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

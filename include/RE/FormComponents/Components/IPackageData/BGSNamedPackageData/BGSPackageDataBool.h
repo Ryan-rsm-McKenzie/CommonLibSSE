@@ -25,6 +25,6 @@ namespace RE
 		virtual bool				 GetDataAsString(BSString* a_dst) const override;	// 0A - { return *a_dst->set_cstr(((data >> 1) & 1) ? "True" : "False"); }
 		virtual const BSFixedString& GetTypeName() const override;						// 0B - { return "Bool"; }
 	};
-	STATIC_ASSERT(offsetof(BGSPackageDataBool, data) == 0x08);
-	STATIC_ASSERT(sizeof(BGSPackageDataBool) == 0x10);
+	static_assert(offsetof(BGSPackageDataBool, data) == 0x08);
+	static_assert(sizeof(BGSPackageDataBool) == 0x10);
 }

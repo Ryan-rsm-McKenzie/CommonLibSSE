@@ -14,7 +14,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSEntryPointFunctionData;
 
 
-		enum class FunctionType : UInt32
+		enum class FunctionType
 		{
 			kInvalid = 0,
 			kOneValue = 1,
@@ -37,5 +37,5 @@ namespace RE
 		virtual void		 SetPerk(BGSPerk* a_perk);				// 06 - { return; }
 		virtual BGSPerk*	 GetPerk();								// 07 - { return 0; }
 	};
-	STATIC_ASSERT(sizeof(BGSEntryPointFunctionData) == 0x8);
+	static_assert(sizeof(BGSEntryPointFunctionData) == 0x8);
 }

@@ -33,10 +33,10 @@ namespace RE
 
 
 		// members
-		UInt32	   pad0C;	// 0C
-		TESCamera* camera;	// 10
-		UInt32	   id;		// 18
-		UInt32	   pad1C;	// 1C
+		std::uint32_t pad0C;   // 0C
+		TESCamera*	  camera;  // 10
+		std::uint32_t id;	   // 18
+		std::uint32_t pad1C;   // 1C
 	};
-	STATIC_ASSERT(sizeof(TESCameraState) == 0x20);
+	static_assert(sizeof(TESCameraState) == 0x20);
 }

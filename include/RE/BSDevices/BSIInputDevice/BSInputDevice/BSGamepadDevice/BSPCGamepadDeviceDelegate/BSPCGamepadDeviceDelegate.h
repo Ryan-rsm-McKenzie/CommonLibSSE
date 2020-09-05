@@ -27,5 +27,5 @@ namespace RE
 		// members
 		BSPCGamepadDeviceHandler* gamepadDeviceHandler;	 // D0
 	};
-	STATIC_ASSERT(sizeof(BSPCGamepadDeviceDelegate) == 0xD8);
+	static_assert(sizeof(BSPCGamepadDeviceDelegate) == 0xD8);
 }

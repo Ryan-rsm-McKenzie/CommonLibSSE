@@ -19,7 +19,7 @@ namespace RE
 		FxResponseArgsBase& operator=(FxResponseArgsBase&&) = default;
 
 		// add
-		virtual UInt32 GetValues(GFxValue** a_params) = 0;	// 01
+		virtual std::uint32_t GetValues(GFxValue** a_params) = 0;  // 01
 	};
-	STATIC_ASSERT(sizeof(FxResponseArgsBase) == 0x8);
+	static_assert(sizeof(FxResponseArgsBase) == 0x8);
 }

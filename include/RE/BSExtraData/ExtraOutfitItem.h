@@ -20,8 +20,8 @@ namespace RE
 
 
 		// members
-		FormID id;	   // 10 - BGSOutfit
-		UInt32 pad14;  // 14
+		FormID		  id;	  // 10 - BGSOutfit
+		std::uint32_t pad14;  // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraOutfitItem) == 0x18);
+	static_assert(sizeof(ExtraOutfitItem) == 0x18);
 }

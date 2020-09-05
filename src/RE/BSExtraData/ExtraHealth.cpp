@@ -13,7 +13,7 @@ namespace RE
 		health(a_health),
 		pad14(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraHealth::Vtbl);
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraHealth::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

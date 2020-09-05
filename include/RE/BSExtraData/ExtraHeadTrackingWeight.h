@@ -21,8 +21,8 @@ namespace RE
 
 
 		// members
-		float  weight;	// 10
-		UInt32 pad14;	// 14
+		float		  weight;  // 10
+		std::uint32_t pad14;   // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraHeadTrackingWeight) == 0x18);
+	static_assert(sizeof(ExtraHeadTrackingWeight) == 0x18);
 }

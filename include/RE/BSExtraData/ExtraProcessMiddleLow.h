@@ -20,8 +20,8 @@ namespace RE
 
 
 		// members
-		UInt32 refCount;  // 10
-		UInt32 pad14;	  // 14
+		std::uint32_t refCount;	 // 10
+		std::uint32_t pad14;	 // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraProcessMiddleLow) == 0x18);
+	static_assert(sizeof(ExtraProcessMiddleLow) == 0x18);
 }

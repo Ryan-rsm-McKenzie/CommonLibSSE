@@ -32,7 +32,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -43,7 +43,7 @@ namespace RE
 		struct Timing
 		{
 		public:
-			enum class MoonPhaseLength : UInt8
+			enum class MoonPhaseLength
 			{
 				kPhaseLengthMask = 0x3F,
 
@@ -56,32 +56,32 @@ namespace RE
 			struct Interval
 			{
 			public:
-				std::tm ConvertInterval(UInt8 a_time) const;
+				std::tm ConvertInterval(std::uint8_t a_time) const;
 				std::tm GetBeginTime() const;
 				std::tm GetEndTime() const;
 
 
 				// members
-				UInt8 begin;  // 0
-				UInt8 end;	  // 1
+				std::uint8_t begin;	 // 0
+				std::uint8_t end;	 // 1
 			};
-			STATIC_ASSERT(sizeof(Interval) == 0x2);
+			static_assert(sizeof(Interval) == 0x2);
 
 
-			bool  IncludesMasser() const;
-			bool  IncludesSecunda() const;
-			UInt8 GetPhaseLength() const;
+			bool		 IncludesMasser() const;
+			bool		 IncludesSecunda() const;
+			std::uint8_t GetPhaseLength() const;
 
 
 			// members
-			Interval		sunrise;		  // 0
-			Interval		sunset;			  // 2
-			UInt8			volatility;		  // 4
-			MoonPhaseLength moonPhaseLength;  // 5
-			UInt8			unk6;			  // 6
-			UInt8			unk7;			  // 7
+			Interval										sunrise;		  // 0
+			Interval										sunset;			  // 2
+			std::uint8_t									volatility;		  // 4
+			stl::enumeration<MoonPhaseLength, std::uint8_t> moonPhaseLength;  // 5
+			std::uint8_t									unk6;			  // 6
+			std::uint8_t									unk7;			  // 7
 		};
-		STATIC_ASSERT(sizeof(Timing) == 0x8);
+		static_assert(sizeof(Timing) == 0x8);
 
 
 		virtual ~TESClimate();	// 00
@@ -97,5 +97,5 @@ namespace RE
 		TESTexture				   skyObjects[SkyObjects::kTotal];	// 58 - FNAM - GNAM
 		Timing					   timing;							// 78 - TNAM
 	};
-	STATIC_ASSERT(sizeof(TESClimate) == 0x80);
+	static_assert(sizeof(TESClimate) == 0x80);
 }

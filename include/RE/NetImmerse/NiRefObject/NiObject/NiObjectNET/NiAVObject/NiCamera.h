@@ -39,5 +39,5 @@ namespace RE
 		NiRect<float> port;				 // 174
 		float		  lodAdjust;		 // 184
 	};
-	STATIC_ASSERT(sizeof(NiCamera) == 0x188);
+	static_assert(sizeof(NiCamera) == 0x188);
 }

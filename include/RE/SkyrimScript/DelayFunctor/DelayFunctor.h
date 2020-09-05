@@ -22,7 +22,7 @@ namespace RE
 			inline static constexpr auto RTTI = RTTI_SkyrimScript__DelayFunctor;
 
 
-			enum class FunctorType : UInt32
+			enum class FunctorType
 			{
 				kMoveTo = 0,
 				kSetPosition = 6,
@@ -37,17 +37,17 @@ namespace RE
 			virtual ~DelayFunctor();  // 00
 
 			// add
-			virtual RE::BSScript::Variable operator()() = 0;												   // 01
-			virtual bool				   IsLatent() const = 0;											   // 02
-			virtual bool				   WantsRequeue() const;											   // 03 - { return false; }
-			virtual bool				   SaveImpl(BSStorage& a_storage) const;							   // 04
-			virtual FunctorType			   GetType() const = 0;												   // 05
-			virtual bool				   LoadImpl(const BSStorage& a_storage, UInt32 a_arg2, bool& a_arg3);  // 06
+			virtual RE::BSScript::Variable operator()() = 0;														  // 01
+			virtual bool				   IsLatent() const = 0;													  // 02
+			virtual bool				   WantsRequeue() const;													  // 03 - { return false; }
+			virtual bool				   SaveImpl(BSStorage& a_storage) const;									  // 04
+			virtual FunctorType			   GetType() const = 0;														  // 05
+			virtual bool				   LoadImpl(const BSStorage& a_storage, std::uint32_t a_arg2, bool& a_arg3);  // 06
 
 
 			// members
 			VMStackID stackID;	// 0C
 		};
-		STATIC_ASSERT(sizeof(DelayFunctor) == 0x10);
+		static_assert(sizeof(DelayFunctor) == 0x10);
 	}
 }

@@ -21,10 +21,10 @@ namespace RE
 
 
 		// members
-		NiPoint3 realAngle;		// 10
-		NiPoint3 realLocation;	// 1C
-		NiPoint3 oldLocation;	// 28
-		UInt32	 pad34;			// 34
+		NiPoint3	  realAngle;	 // 10
+		NiPoint3	  realLocation;	 // 1C
+		NiPoint3	  oldLocation;	 // 28
+		std::uint32_t pad34;		 // 34
 	};
-	STATIC_ASSERT(sizeof(ExtraEditorRefMoveData) == 0x38);
+	static_assert(sizeof(ExtraEditorRefMoveData) == 0x38);
 }

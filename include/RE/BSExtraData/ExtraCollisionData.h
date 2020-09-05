@@ -11,7 +11,7 @@ namespace RE
 	{
 		COL_LAYER layer;  // 0
 	};
-	STATIC_ASSERT(sizeof(CollisionData) == 0x4);
+	static_assert(sizeof(CollisionData) == 0x4);
 
 
 	class ExtraCollisionData : public BSExtraData
@@ -31,5 +31,5 @@ namespace RE
 		// members
 		CollisionData* collisionData;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraCollisionData) == 0x18);
+	static_assert(sizeof(ExtraCollisionData) == 0x18);
 }

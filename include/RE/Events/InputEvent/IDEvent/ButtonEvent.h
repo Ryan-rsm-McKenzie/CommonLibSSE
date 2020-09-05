@@ -15,16 +15,18 @@ namespace RE
 
 		virtual ~ButtonEvent();	 // 00
 
-		bool IsPressed() const;
-		bool IsRepeating() const;
-		bool IsDown() const;
-		bool IsHeld() const;
-		bool IsUp() const;
+		constexpr float Value() const noexcept { return value; }
+		constexpr float HeldDuration() const noexcept { return heldDownSecs; }
+		constexpr bool	IsPressed() const noexcept { return Value() > 0.0F; }
+		constexpr bool	IsRepeating() const noexcept { return HeldDuration() > 0.0F; }
+		constexpr bool	IsDown() const noexcept { return IsPressed() && (HeldDuration() == 0.0F); }
+		constexpr bool	IsHeld() const noexcept { return IsPressed() && IsRepeating(); }
+		constexpr bool	IsUp() const noexcept { return (Value() == 0.0F) && IsRepeating(); }
 
 
 		// members
 		float value;		 // 28
 		float heldDownSecs;	 // 2C
 	};
-	STATIC_ASSERT(sizeof(ButtonEvent) == 0x30);
+	static_assert(sizeof(ButtonEvent) == 0x30);
 }

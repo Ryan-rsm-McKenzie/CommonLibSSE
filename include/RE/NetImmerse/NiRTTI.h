@@ -6,15 +6,25 @@ namespace RE
 	class NiRTTI
 	{
 	public:
-		const char*	  GetName() const;
-		const NiRTTI* GetBaseRTTI() const;
+		[[nodiscard]] constexpr const char*	  GetName() const noexcept { return name; }
+		[[nodiscard]] constexpr const NiRTTI* GetBaseRTTI() const noexcept { return baseRTTI; }
+
+		[[nodiscard]] constexpr bool IsKindOf(const NiRTTI* a_rtti) const noexcept
+		{
+			for (auto iter = this; iter; iter = iter->GetBaseRTTI()) {
+				if (iter == a_rtti) {
+					return true;
+				}
+			}
+			return false;
+		}
 
 
 		// members
 		const char*	  name;		 // 00
 		const NiRTTI* baseRTTI;	 // 08
 	};
-	STATIC_ASSERT(sizeof(NiRTTI) == 0x10);
+	static_assert(sizeof(NiRTTI) == 0x10);
 
 
 	namespace Ni_Impl
@@ -99,7 +109,7 @@ To netimmerse_cast(const From* a_from)
 		return nullptr;
 	}
 
-	REL::Offset<const RE::NiRTTI*> to(RE::Ni_Impl::remove_cvpr_t<To>::Ni_RTTI);
+	REL::Relocation<const RE::NiRTTI*> to{ RE::Ni_Impl::remove_cvpr_t<To>::Ni_RTTI };
 
 	const RE::NiRTTI* toRTTI = to.type();
 	const RE::NiRTTI* fromRTTI = a_from->GetRTTI();

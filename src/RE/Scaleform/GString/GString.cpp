@@ -144,7 +144,7 @@ namespace RE
 		}
 
 		auto len = a_rhs.length();
-		auto memSize = len + sizeof(UPInt) + sizeof(SInt32) + sizeof(char);
+		auto memSize = len + sizeof(UPInt) + sizeof(std::int32_t) + sizeof(char);
 		desc = static_cast<DataDesc*>(GMemory::Alloc(memSize, alignof(DataDesc)));
 		desc->capacity = len;
 		desc->SetFull(true);
@@ -263,9 +263,9 @@ namespace RE
 	UPInt GString::BernsteinHashFunction(const void* a_dataIn, UPInt a_size, UPInt a_seed)
 	{
 		assert(a_dataIn);
-		auto dataIn = static_cast<const UInt8*>(a_dataIn);
+		auto dataIn = static_cast<const std::uint8_t*>(a_dataIn);
 		UPInt hash;
-		UInt8 byte = 0;
+		std::uint8_t byte = 0;
 		for (hash = a_seed; a_size; hash = byte ^ 33 * hash) {
 			byte = *(dataIn + a_size-- - 1);
 		}
@@ -273,17 +273,17 @@ namespace RE
 	}
 
 
-	GString* GString::ctor(const char* a_s)
+	GString* GString::ctor(const char* a_str)
 	{
 		using func_t = decltype(&GString::ctor);
-		REL::Offset<func_t> func(Offset::GString::Ctor);
-		return func(this, a_s);
+		REL::Relocation<func_t> func{ REL::ID(80446) };
+		return func(this, a_str);
 	}
 
 
 	GString::HeapType GString::heap_type() const
 	{
-		return static_cast<HeapType>(_dataDesc.heapType & HeapType::kMask);
+		return *(_dataDesc.heapType & HeapType::kMask);
 	}
 
 
@@ -291,7 +291,7 @@ namespace RE
 	{
 		DataDescUnion desc;
 		desc.data = _dataDesc.data;
-		desc.heapType = (desc.heapType & ~HeapType::kMask);
+		desc.heapType.reset(HeapType::kMask);
 		return desc.data;
 	}
 
@@ -301,6 +301,6 @@ namespace RE
 		auto type = heap_type();
 		_dataDesc.data = a_desc;
 		assert((_dataDesc.heapType & HeapType::kMask) == static_cast<HeapType>(0));
-		_dataDesc.heapType |= type;
+		_dataDesc.heapType.set(type);
 	}
 }

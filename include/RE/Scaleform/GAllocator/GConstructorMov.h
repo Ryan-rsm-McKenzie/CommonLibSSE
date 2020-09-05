@@ -85,5 +85,5 @@ namespace RE
 			return true;
 		}
 	};
-	STATIC_ASSERT(sizeof(GConstructorMov<void*>) == 0x1);
+	static_assert(sizeof(GConstructorMov<void*>) == 0x1);
 }

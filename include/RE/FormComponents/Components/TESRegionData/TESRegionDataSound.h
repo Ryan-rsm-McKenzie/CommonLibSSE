@@ -20,7 +20,7 @@ namespace RE
 
 		struct Sound
 		{
-			enum class Flag : UInt32
+			enum class Flag
 			{
 				kNone = 0,
 				kPleasant = 1 << 0,
@@ -30,11 +30,11 @@ namespace RE
 			};
 
 
-			BGSSoundDescriptorForm* sound;	 // 00
-			Flag					flags;	 // 08
-			float					chance;	 // 0C
+			BGSSoundDescriptorForm*				  sound;   // 00
+			stl::enumeration<Flag, std::uint32_t> flags;   // 08
+			float								  chance;  // 0C
 		};
-		STATIC_ASSERT(sizeof(Sound) == 0x10);
+		static_assert(sizeof(Sound) == 0x10);
 
 
 		virtual ~TESRegionDataSound();	// 00
@@ -55,5 +55,5 @@ namespace RE
 		BGSMusicType*	 music;	  // 10 - RDMO
 		BSTArray<Sound*> sounds;  // 18 - RDSA
 	};
-	STATIC_ASSERT(sizeof(TESRegionDataSound) == 0x30);
+	static_assert(sizeof(TESRegionDataSound) == 0x30);
 }

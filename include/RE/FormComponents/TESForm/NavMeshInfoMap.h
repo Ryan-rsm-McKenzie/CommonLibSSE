@@ -26,7 +26,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
@@ -41,25 +41,25 @@ namespace RE
 
 		// override (BSNavmeshInfoMap)
 
-		virtual BSNavmeshInfo* GetNavMeshInfoFixID(UInt32 a_id) override;															  // 01
-		virtual BSNavmeshInfo* GetNavmeshInfo(UInt32 a_id) override;																  // 02
+		virtual BSNavmeshInfo* GetNavMeshInfoFixID(std::uint32_t a_id) override;													  // 01
+		virtual BSNavmeshInfo* GetNavmeshInfo(std::uint32_t a_id) override;															  // 02
 		virtual void		   GetAllNavMeshInfo(BSTArray<BSNavmeshInfo*>& a_results) override;										  // 03
 		virtual void		   BuildListOfConnectedInfos(const BSNavmeshInfo* a_info, BSTArray<BSNavmeshInfo*>& a_results) override;  // 04
 		virtual void		   ForEach(IVisitor* a_visitor) override;																  // 05
 
 
 		// members
-		bool										  updateAll;		 // 78
-		UInt8										  pad79;			 // 79
-		UInt16										  pad7A;			 // 7A
-		UInt32										  pad7C;			 // 7C
-		BSTHashMap<UInt32, NavMeshInfo*>			  infoMap;			 // 80
-		BSTHashMap<UInt64, BSTArray<BSNavmeshInfo*>*> ckNavMeshInfoMap;	 // B0
-		mutable BSReadWriteLock						  mapLock;			 // E0
-		bool										  init;				 // E8
-		UInt8										  padE9;			 // E9
-		UInt16										  padEA;			 // EA
-		UInt32										  padEC;			 // EC
+		bool												 updateAll;			// 78
+		std::uint8_t										 pad79;				// 79
+		std::uint16_t										 pad7A;				// 7A
+		std::uint32_t										 pad7C;				// 7C
+		BSTHashMap<std::uint32_t, NavMeshInfo*>				 infoMap;			// 80
+		BSTHashMap<std::uint64_t, BSTArray<BSNavmeshInfo*>*> ckNavMeshInfoMap;	// B0
+		mutable BSReadWriteLock								 mapLock;			// E0
+		bool												 init;				// E8
+		std::uint8_t										 padE9;				// E9
+		std::uint16_t										 padEA;				// EA
+		std::uint32_t										 padEC;				// EC
 	};
-	STATIC_ASSERT(sizeof(NavMeshInfoMap) == 0xF0);
+	static_assert(sizeof(NavMeshInfoMap) == 0xF0);
 }

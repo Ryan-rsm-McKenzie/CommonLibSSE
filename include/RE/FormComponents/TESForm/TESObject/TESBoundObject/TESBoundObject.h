@@ -15,11 +15,12 @@ namespace RE
 	class NiNPShortPoint3
 	{
 	public:
-		SInt16 x;  // 0
-		SInt16 y;  // 2
-		SInt16 z;  // 4
+		// members
+		std::int16_t x;	 // 0
+		std::int16_t y;	 // 2
+		std::int16_t z;	 // 4
 	};
-	STATIC_ASSERT(sizeof(NiNPShortPoint3) == 0x6);
+	static_assert(sizeof(NiNPShortPoint3) == 0x6);
 
 
 	class TESBoundObject : public TESObject
@@ -30,20 +31,22 @@ namespace RE
 
 		struct BOUND_DATA  // OBND
 		{
+		public:
+			// members
 			NiNPShortPoint3 boundMin;  // 0
 			NiNPShortPoint3 boundMax;  // 6
 		};
-		STATIC_ASSERT(sizeof(BOUND_DATA) == 0xC);
+		static_assert(sizeof(BOUND_DATA) == 0xC);
 
 
 		virtual ~TESBoundObject();	// 00
 
 		// override (TESObject)
-		virtual void		LoadObjectBound(TESFile* a_mod) override;																									 // 26
-		virtual bool		IsBoundObject() const override;																												 // 27 - { return true; }
-		virtual bool		Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;	 // 37
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;																						 // 40
-		virtual bool		ReplaceModel() override;																													 // 44
+		virtual void		LoadObjectBound(TESFile* a_mod) override;																												  // 26
+		virtual bool		IsBoundObject() const override;																															  // 27 - { return true; }
+		virtual bool		Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;																									  // 40
+		virtual bool		ReplaceModel() override;																																  // 44
 
 		// add
 		virtual void		  SetObjectVoiceType(BGSVoiceType* a_voiceType);												 // 48 - { return; }
@@ -60,8 +63,8 @@ namespace RE
 
 
 		// members
-		BOUND_DATA boundData;  // 20 - OBND
-		UInt32	   pad2C;	   // 2C
+		BOUND_DATA	  boundData;  // 20 - OBND
+		std::uint32_t pad2C;	  // 2C
 	};
-	STATIC_ASSERT(sizeof(TESBoundObject) == 0x30);
+	static_assert(sizeof(TESBoundObject) == 0x30);
 }

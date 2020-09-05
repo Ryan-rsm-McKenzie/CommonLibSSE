@@ -24,66 +24,54 @@ namespace RE
 			// members
 			ScrapHeap		 heap;			// 00
 			ThreadScrapHeap* next;			// 90
-			UInt32			 owningThread;	// 98
-			UInt32			 pad;			// 9C
+			std::uint32_t	 owningThread;	// 98
+			std::uint32_t	 pad;			// 9C
 		};
-		STATIC_ASSERT(sizeof(ThreadScrapHeap) == 0xA0);
+		static_assert(sizeof(ThreadScrapHeap) == 0xA0);
 
 
 		static MemoryManager* GetSingleton();
 
-		void*	   Allocate(std::size_t a_size, SInt32 a_alignment, bool a_aligned);
-		void	   Deallocate(void* a_ptr, bool a_aligned);
+		void*	   Allocate(std::size_t a_size, std::int32_t a_alignment, bool a_alignmentRequired);
+		void	   Deallocate(void* a_mem, bool a_alignmentRequired);
 		ScrapHeap* GetThreadScrapHeap();
-		void*	   Reallocate(void* a_ptr, std::size_t a_newSize, SInt32 a_alignment, bool a_aligned);
+		void*	   Reallocate(void* a_oldMem, std::size_t a_newSize, std::int32_t a_alignment, bool a_aligned);
 
 
 		// members
-		bool					initialized;						// 000
-		UInt8					pad001;								// 001
-		UInt16					numHeaps;							// 002
-		UInt16					numPhysicalHeaps;					// 004
-		UInt16					pad006;								// 006
-		IMemoryHeap**			heaps;								// 008
-		bool*					allowOtherContextAllocs;			// 010
-		IMemoryHeap*			heapsByContext[127];				// 018
-		ThreadScrapHeap*		threadScrapHeap;					// 410
-		IMemoryHeap**			physicalHeaps;						// 418
-		IMemoryHeap*			bigAllocHeap;						// 420
-		IMemoryHeap*			emergencyHeap;						// 428
-		BSSmallBlockAllocator*	smallBlockAllocator;				// 430
-		CompactingStore::Store* compactingStore;					// 438
-		IMemoryHeap*			externalHavokAllocator;				// 440
-		bool					specialHeaps;						// 448
-		bool					allowPoolUse;						// 449
-		UInt16					pad44A;								// 44A
-		UInt32					sysAllocBytes;						// 44C
-		UInt32					mallocBytes;						// 450
-		UInt32					alignmentForPools;					// 450
-		UInt32					mainThreadMemoryProblemPassSignal;	// 458
-		UInt32					pad45C;								// 45C
-		std::size_t				failedAllocationSize;				// 460
-		UInt32					numMemoryProblemPassesRun;			// 468
-		UInt32					pad46C;								// 46C
-		std::size_t				timeOfLastMemoryProblemPass;		// 470
-		IMemoryHeap*			defaultHeap;						// 478
+		bool					initialized{ false };					 // 000
+		std::uint16_t			numHeaps{ 0 };							 // 002
+		std::uint16_t			numPhysicalHeaps{ 0 };					 // 004
+		IMemoryHeap**			heaps{ nullptr };						 // 008
+		bool*					allowOtherContextAllocs{ nullptr };		 // 010
+		IMemoryHeap*			heapsByContext[127]{ nullptr };			 // 018
+		ThreadScrapHeap*		threadScrapHeap{ nullptr };				 // 410
+		IMemoryHeap**			physicalHeaps{ nullptr };				 // 418
+		IMemoryHeap*			bigAllocHeap{ nullptr };				 // 420
+		IMemoryHeap*			emergencyHeap{ nullptr };				 // 428
+		BSSmallBlockAllocator*	smallBlockAllocator{ nullptr };			 // 430
+		CompactingStore::Store* compactingStore{ nullptr };				 // 438
+		IMemoryHeap*			externalHavokAllocator{ nullptr };		 // 440
+		bool					specialHeaps{ false };					 // 448
+		bool					allowPoolUse{ true };					 // 449
+		std::uint32_t			sysAllocBytes{ 0 };						 // 44C
+		std::uint32_t			mallocBytes{ 0 };						 // 450
+		std::uint32_t			alignmentForPools{ 4 };					 // 450
+		std::uint32_t			mainThreadMemoryProblemPassSignal{ 0 };	 // 458
+		std::size_t				failedAllocationSize{ 0 };				 // 460
+		std::uint32_t			numMemoryProblemPassesRun{ 0 };			 // 468
+		std::size_t				timeOfLastMemoryProblemPass{ 0 };		 // 470
+		IMemoryHeap*			defaultHeap{ nullptr };					 // 478
 	};
-	STATIC_ASSERT(sizeof(MemoryManager) == 0x480);
+	static_assert(sizeof(MemoryManager) == 0x480);
 
 
 	inline void* malloc(std::size_t a_size)
 	{
 		auto heap = MemoryManager::GetSingleton();
-		if (!heap) {
-			throw std::bad_alloc();
-		}
-
-		auto mem = heap->Allocate(a_size, 0, false);
-		if (!mem) {
-			throw std::bad_alloc();
-		}
-
-		return mem;
+		return heap ?
+					 heap->Allocate(a_size, 0, false) :
+					 nullptr;
 	}
 
 
@@ -104,23 +92,16 @@ namespace RE
 	inline void* aligned_alloc(std::size_t a_alignment, std::size_t a_size)
 	{
 		auto heap = MemoryManager::GetSingleton();
-		if (!heap) {
-			throw std::bad_alloc();
-		}
-
-		auto mem = heap->Allocate(a_size, static_cast<SInt32>(a_alignment), true);
-		if (!mem) {
-			throw std::bad_alloc();
-		}
-
-		return mem;
+		return heap ?
+					 heap->Allocate(a_size, static_cast<std::int32_t>(a_alignment), true) :
+					 nullptr;
 	}
 
 
 	template <class T>
 	inline T* aligned_alloc(std::size_t a_alignment, std::size_t a_size)
 	{
-		return static_cast<T*>(aligned_alloc(static_cast<SInt32>(a_alignment), a_size));
+		return static_cast<T*>(aligned_alloc(a_alignment, a_size));
 	}
 
 
@@ -154,16 +135,9 @@ namespace RE
 	inline void* realloc(void* a_ptr, std::size_t a_newSize)
 	{
 		auto heap = MemoryManager::GetSingleton();
-		if (!heap) {
-			throw std::bad_alloc();
-		}
-
-		auto mem = heap->Reallocate(a_ptr, a_newSize, 0, false);
-		if (!mem) {
-			throw std::bad_alloc();
-		}
-
-		return mem;
+		return heap ?
+					 heap->Reallocate(a_ptr, a_newSize, 0, false) :
+					 nullptr;
 	}
 
 
@@ -177,16 +151,9 @@ namespace RE
 	inline void* aligned_realloc(void* a_ptr, std::size_t a_newSize, std::size_t a_alignment)
 	{
 		auto heap = MemoryManager::GetSingleton();
-		if (!heap) {
-			throw std::bad_alloc();
-		}
-
-		auto mem = heap->Reallocate(a_ptr, a_newSize, static_cast<SInt32>(a_alignment), true);
-		if (!mem) {
-			throw std::bad_alloc();
-		}
-
-		return mem;
+		return heap ?
+					 heap->Reallocate(a_ptr, a_newSize, static_cast<std::int32_t>(a_alignment), true) :
+					 nullptr;
 	}
 
 
@@ -199,48 +166,57 @@ namespace RE
 
 	inline void free(void* a_ptr)
 	{
-		if (a_ptr) {
-			auto heap = MemoryManager::GetSingleton();
-			if (heap) {
-				heap->Deallocate(a_ptr, false);
-			}
+		auto heap = MemoryManager::GetSingleton();
+		if (heap) {
+			heap->Deallocate(a_ptr, false);
 		}
 	}
 
 
 	inline void aligned_free(void* a_ptr)
 	{
-		if (a_ptr) {
-			auto heap = MemoryManager::GetSingleton();
-			if (heap) {
-				heap->Deallocate(a_ptr, true);
-			}
+		auto heap = MemoryManager::GetSingleton();
+		if (heap) {
+			heap->Deallocate(a_ptr, true);
 		}
 	}
 }
 
 
-#define TES_HEAP_REDEFINE_NEW()                                                                                     \
-	inline void* operator new(std::size_t a_count) { return RE::malloc(a_count); }                                  \
-	inline void* operator new[](std::size_t a_count) { return RE::malloc(a_count); }                                \
-	inline void* operator new([[maybe_unused]] std::size_t a_count, void* a_plcmnt) noexcept { return a_plcmnt; }   \
-	inline void* operator new[]([[maybe_unused]] std::size_t a_count, void* a_plcmnt) noexcept { return a_plcmnt; } \
-	inline void	 operator delete(void* a_ptr) noexcept                                                              \
-	{                                                                                                               \
-		try {                                                                                                       \
-			RE::free(a_ptr);                                                                                        \
-		} catch (...) {                                                                                             \
-		}                                                                                                           \
-	}                                                                                                               \
-	inline void operator delete[](void* a_ptr) noexcept                                                             \
-	{                                                                                                               \
-		try {                                                                                                       \
-			RE::free(a_ptr);                                                                                        \
-		} catch (...) {                                                                                             \
-		}                                                                                                           \
-	}                                                                                                               \
-	inline void operator delete([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt) noexcept { return; } \
-	inline void operator delete[]([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt) noexcept { return; }
+#define TES_HEAP_REDEFINE_NEW()                                                                                         \
+	[[nodiscard]] inline void* operator new(std::size_t a_count)                                                        \
+	{                                                                                                                   \
+		const auto mem = RE::malloc(a_count);                                                                           \
+		if (mem) {                                                                                                      \
+			return mem;                                                                                                 \
+		} else {                                                                                                        \
+			stl::report_and_fail("out of memory"sv);                                                                    \
+		}                                                                                                               \
+	}                                                                                                                   \
+                                                                                                                        \
+	[[nodiscard]] inline void* operator new[](std::size_t a_count)                                                      \
+	{                                                                                                                   \
+		const auto mem = RE::malloc(a_count);                                                                           \
+		if (mem) {                                                                                                      \
+			return mem;                                                                                                 \
+		} else {                                                                                                        \
+			stl::report_and_fail("out of memory"sv);                                                                    \
+		}                                                                                                               \
+	}                                                                                                                   \
+                                                                                                                        \
+	[[nodiscard]] constexpr void* operator new(std::size_t, void* a_ptr) noexcept { return a_ptr; }                     \
+	[[nodiscard]] constexpr void* operator new[](std::size_t, void* a_ptr) noexcept { return a_ptr; }                   \
+	[[nodiscard]] constexpr void* operator new(std::size_t, std::align_val_t, void* a_ptr) noexcept { return a_ptr; }   \
+	[[nodiscard]] constexpr void* operator new[](std::size_t, std::align_val_t, void* a_ptr) noexcept { return a_ptr; } \
+                                                                                                                        \
+	inline void operator delete(void* a_ptr) { RE::free(a_ptr); }                                                       \
+	inline void operator delete[](void* a_ptr) { RE::free(a_ptr); }                                                     \
+	inline void operator delete(void* a_ptr, std::align_val_t) { RE::aligned_free(a_ptr); }                             \
+	inline void operator delete[](void* a_ptr, std::align_val_t) { RE::aligned_free(a_ptr); }                           \
+	inline void operator delete(void* a_ptr, std::size_t) { RE::free(a_ptr); }                                          \
+	inline void operator delete[](void* a_ptr, std::size_t) { RE::free(a_ptr); }                                        \
+	inline void operator delete(void* a_ptr, std::size_t, std::align_val_t) { RE::aligned_free(a_ptr); }                \
+	inline void operator delete[](void* a_ptr, std::size_t, std::align_val_t) { RE::aligned_free(a_ptr); }
 
 
 namespace RE
@@ -252,220 +228,126 @@ namespace RE
 	public:
 		using value_type = T;
 		using size_type = std::size_t;
+		using difference_type = std::ptrdiff_t;
 		using reference = value_type&;
 		using const_reference = const value_type&;
-		using iterator = T*;
-		using const_iterator = const iterator;
+		using pointer = value_type*;
+		using const_pointer = const value_type*;
+		using iterator = value_type*;
+		using const_iterator = const value_type*;
 
+		constexpr SimpleArray() noexcept = default;
 
-		struct Head
-		{
-			size_type size;
-		};
-
-
-		struct Data
-		{
-			value_type entries[1];
-		};
-
-
-		SimpleArray() :
-			_data(0)
-		{}
-
-
-		explicit SimpleArray(size_type a_count) :
-			_data(nullptr)
-		{
-			resize(a_count);
-		}
-
+		explicit SimpleArray(size_type a_count) { resize(a_count); }
 
 		~SimpleArray()
 		{
+			static_assert(!std::is_trivially_destructible_v<value_type>, "there's no allocation overhead for trivially destructible types");
 			clear();
 		}
 
-
 		TES_HEAP_REDEFINE_NEW();
 
-
-		reference operator[](size_type a_pos)
+		[[nodiscard]] reference operator[](size_type a_pos) noexcept
 		{
 			assert(a_pos < size());
-			return _data->entries[a_pos];
+			return _data[a_pos];
 		}
 
-
-		const_reference operator[](size_type a_pos) const
+		[[nodiscard]] const_reference operator[](size_type a_pos) const noexcept
 		{
 			assert(a_pos < size());
-			return _data->entries[a_pos];
+			return _data[a_pos];
 		}
 
+		[[nodiscard]] reference		  front() noexcept { return operator[](0); }
+		[[nodiscard]] const_reference front() const noexcept { return operator[](0); }
 
-		reference front()
-		{
-			return operator[](0);
-		}
+		[[nodiscard]] reference		  back() noexcept { return operator[](size() - 1); }
+		[[nodiscard]] const_reference back() const noexcept { return operator[](size() - 1); }
 
+		[[nodiscard]] pointer		data() noexcept { return _data; }
+		[[nodiscard]] const_pointer data() const noexcept { return _data; }
 
-		const_reference front() const
-		{
-			return operator[](0);
-		}
+		[[nodiscard]] iterator		 begin() noexcept { return _data; }
+		[[nodiscard]] const_iterator begin() const noexcept { return _data; }
+		[[nodiscard]] const_iterator cbegin() const noexcept { return begin(); }
 
+		[[nodiscard]] iterator		 end() noexcept { return _data ? _data + size() : nullptr; }
+		[[nodiscard]] const_iterator end() const noexcept { return _data ? _data + size() : nullptr; }
+		[[nodiscard]] const_iterator cend() const noexcept { return end(); }
 
-		reference back()
-		{
-			return operator[](size() - 1);
-		}
+		[[nodiscard]] bool empty() const noexcept { return size() == 0; }
 
-
-		const_reference back() const
-		{
-			return operator[](size() - 1);
-		}
-
-
-		T* data()
-		{
-			return _data ? _data->entries : nullptr;
-		}
-
-
-		const T* data() const
-		{
-			return _data ? _data->entries : nullptr;
-		}
-
-
-		iterator begin()
-		{
-			return _data ? std::addressof(_data->entries[0]) : nullptr;
-		}
-
-
-		const_iterator begin() const
-		{
-			return _data ? std::addressof(_data->entries[0]) : nullptr;
-		}
-
-
-		const_iterator cbegin() const
-		{
-			return begin();
-		}
-
-
-		iterator end()
-		{
-			return _data ? std::addressof(_data->entries[size()]) : nullptr;
-		}
-
-
-		const_iterator end() const
-		{
-			return _data ? std::addressof(_data->entries[size()]) : nullptr;
-		}
-
-
-		const_iterator cend() const
-		{
-			return end();
-		}
-
-
-		[[nodiscard]] bool empty() const
-		{
-			return size() == 0;
-		}
-
-
-		size_type size() const
-		{
-			return _data ? get_head()->size : 0;
-		}
-
+		[[nodiscard]] size_type size() const noexcept { return _data ? *static_cast<const std::size_t*>(get_head()) : 0; }
 
 		void clear()
 		{
 			if (_data) {
-				for (auto& elem : *this) {
-					elem.~value_type();
-				}
+				std::destroy_n(data(), size());
 				free(get_head());
 				_data = nullptr;
 			}
 		}
 
-
 		void resize(size_type a_count)
 		{
-			auto oldSize = resize_impl(a_count);
-
-			if (oldSize < a_count) {
-				for (size_type i = oldSize; i < a_count; ++i) {
-					new (std::addressof(_data->entries[i])) value_type{};
-				}
+			const auto oldSize = size();
+			if (oldSize == a_count) {
+				return;
 			}
-		}
 
-
-		void resize(size_type a_count, const value_type& a_value)
-		{
-			auto oldSize = resize_impl(a_count);
-
-			if (oldSize < a_count) {
-				for (size_type i = oldSize; i < a_count; ++i) {
-					new (std::addressof(_data->entries[i])) value_type{ a_value };
+			const auto newData = [=]() {
+				auto bytes = sizeof(value_type) * a_count;
+				if constexpr (alignof(value_type) > alignof(std::size_t)) {
+					bytes += sizeof(value_type);
+				} else {
+					bytes += sizeof(std::size_t);
 				}
+
+				const auto data = malloc<std::size_t>(bytes);
+				*data = a_count;
+
+				if constexpr (alignof(value_type) > alignof(std::size_t)) {
+					return reinterpret_cast<pointer>(data) + 1;
+				} else {
+					return reinterpret_cast<pointer>(data + 1);
+				}
+			}();
+
+			if (a_count < oldSize) {  // shrink
+				std::uninitialized_move_n(data(), a_count, newData);
+			} else {  // grow
+				std::uninitialized_move_n(data(), oldSize, newData);
+				std::uninitialized_default_construct_n(newData + oldSize, a_count - oldSize);
 			}
+
+			clear();
+			_data = newData;
 		}
 
 	protected:
-		Head* get_head() const
+		[[nodiscard]] void* get_head() noexcept
 		{
 			assert(_data != nullptr);
-			return reinterpret_cast<Head*>(_data) - 1;
+			if constexpr (alignof(value_type) > alignof(std::size_t)) {
+				return _data - 1;
+			} else {
+				return reinterpret_cast<std::size_t*>(_data) - 1;
+			}
 		}
 
-
-		size_type resize_impl(size_type a_newSize)
+		[[nodiscard]] const void* get_head() const noexcept
 		{
-			auto oldSize = size();
-			if (a_newSize == oldSize) {
-				return oldSize;
-			} else if (a_newSize == 0) {
-				clear();
-				return oldSize;
+			assert(_data != nullptr);
+			if constexpr (alignof(value_type) > alignof(std::size_t)) {
+				return _data - 1;
+			} else {
+				return reinterpret_cast<const std::size_t*>(_data) - 1;
 			}
-
-			auto newHead = malloc<Head>(sizeof(Head) + (sizeof(value_type) * a_newSize));
-			newHead->size = a_newSize;
-			auto newData = reinterpret_cast<Data*>(newHead + 1);
-			if (_data) {
-				size_type toCopy;
-				if (a_newSize < oldSize) {
-					for (size_type i = a_newSize; i < oldSize; ++i) {
-						_data->entries[i].~value_type();
-					}
-					toCopy = a_newSize;
-				} else {
-					toCopy = oldSize;
-				}
-				std::memcpy(newData->entries, data(), toCopy * sizeof(size_type));
-				free(get_head());
-			}
-			_data = newData;
-
-			return oldSize;
 		}
-
 
 		// members
-		Data* _data;  // 0
+		pointer _data{ nullptr };  // 0
 	};
-	STATIC_ASSERT(sizeof(SimpleArray<void*>) == 0x8);
 }

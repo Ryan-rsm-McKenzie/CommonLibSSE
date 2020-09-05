@@ -18,7 +18,7 @@ namespace RE
 			return nullptr;
 		}
 
-		auto idx = static_cast<SInt32>(selectedIndex.GetNumber());
+		auto idx = static_cast<std::int32_t>(selectedIndex.GetNumber());
 		if (idx < 0 || static_cast<std::size_t>(idx) >= items.size()) {
 			return nullptr;
 		}
@@ -43,7 +43,7 @@ namespace RE
 	void ItemList::Update_Impl(TESObjectREFR* a_owner)
 	{
 		using func_t = decltype(&ItemList::Update_Impl);
-		REL::Offset<func_t> func(Offset::ItemList::Update);
+		REL::Relocation<func_t> func{ Offset::ItemList::Update };
 		return func(this, a_owner);
 	}
 }

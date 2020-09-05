@@ -26,53 +26,53 @@ namespace RE
 
 
 			// members
-			UInt64	 unk008;  // 008
-			UInt64	 unk010;  // 010
-			UInt64	 unk018;  // 018
-			UInt64	 unk020;  // 020
-			UInt64	 unk028;  // 028
-			UInt64	 unk030;  // 030
-			UInt64	 unk038;  // 038
-			UInt64	 unk040;  // 040
-			UInt64	 unk048;  // 048
-			UInt64	 unk050;  // 050
-			UInt64	 unk058;  // 058
-			UInt64	 unk060;  // 060
-			UInt64	 unk068;  // 068
-			UInt64	 unk070;  // 070
-			UInt64	 unk078;  // 078
-			UInt64	 unk080;  // 080
-			UInt64	 unk088;  // 088
-			UInt64	 unk090;  // 090
-			UInt64	 unk098;  // 098
-			UInt64	 unk0A0;  // 0A0
-			UInt64	 unk0A8;  // 0A8
-			UInt64	 unk0B0;  // 0B0
-			UInt64	 unk0B8;  // 0B8
-			UInt64	 unk0C0;  // 0C0
-			UInt64	 unk0C8;  // 0C8
-			UInt64	 unk0D0;  // 0D0
-			UInt64	 unk0D8;  // 0D8
-			UInt64	 unk0E0;  // 0E0
-			UInt64	 unk0E8;  // 0E8
-			UInt64	 unk0F0;  // 0F0
-			UInt64	 unk0F8;  // 0F8
-			UInt64	 unk100;  // 100
-			UInt64	 unk108;  // 108
-			UInt64	 unk110;  // 110
-			UInt64	 unk118;  // 118
-			UInt64	 unk120;  // 120
-			UInt64	 unk128;  // 128
-			BSString unk130;  // 130
-			BSString unk140;  // 140
-			BSString unk150;  // 150
-			UInt64	 unk160;  // 160
-			UInt64	 unk168;  // 168
-			UInt64	 unk170;  // 170
-			UInt64	 unk178;  // 178
-			UInt64	 unk180;  // 180
-			UInt64	 unk188;  // 188
-			UInt64	 unk190;  // 190
+			std::uint64_t unk008;  // 008
+			std::uint64_t unk010;  // 010
+			std::uint64_t unk018;  // 018
+			std::uint64_t unk020;  // 020
+			std::uint64_t unk028;  // 028
+			std::uint64_t unk030;  // 030
+			std::uint64_t unk038;  // 038
+			std::uint64_t unk040;  // 040
+			std::uint64_t unk048;  // 048
+			std::uint64_t unk050;  // 050
+			std::uint64_t unk058;  // 058
+			std::uint64_t unk060;  // 060
+			std::uint64_t unk068;  // 068
+			std::uint64_t unk070;  // 070
+			std::uint64_t unk078;  // 078
+			std::uint64_t unk080;  // 080
+			std::uint64_t unk088;  // 088
+			std::uint64_t unk090;  // 090
+			std::uint64_t unk098;  // 098
+			std::uint64_t unk0A0;  // 0A0
+			std::uint64_t unk0A8;  // 0A8
+			std::uint64_t unk0B0;  // 0B0
+			std::uint64_t unk0B8;  // 0B8
+			std::uint64_t unk0C0;  // 0C0
+			std::uint64_t unk0C8;  // 0C8
+			std::uint64_t unk0D0;  // 0D0
+			std::uint64_t unk0D8;  // 0D8
+			std::uint64_t unk0E0;  // 0E0
+			std::uint64_t unk0E8;  // 0E8
+			std::uint64_t unk0F0;  // 0F0
+			std::uint64_t unk0F8;  // 0F8
+			std::uint64_t unk100;  // 100
+			std::uint64_t unk108;  // 108
+			std::uint64_t unk110;  // 110
+			std::uint64_t unk118;  // 118
+			std::uint64_t unk120;  // 120
+			std::uint64_t unk128;  // 128
+			BSString	  unk130;  // 130
+			BSString	  unk140;  // 140
+			BSString	  unk150;  // 150
+			std::uint64_t unk160;  // 160
+			std::uint64_t unk168;  // 168
+			std::uint64_t unk170;  // 170
+			std::uint64_t unk178;  // 178
+			std::uint64_t unk180;  // 180
+			std::uint64_t unk188;  // 188
+			std::uint64_t unk190;  // 190
 		};
 
 
@@ -99,14 +99,14 @@ namespace RE
 
 
 		// members
-		UInt32 unk060;		 // 060
-		UInt32 profileHash;	 // 064
-		UInt64 unk068;		 // 068
-		Entry  entry;		 // 070
-		UInt64 unk208;		 // 208
-		UInt64 unk210;		 // 210
-		UInt64 unk218;		 // 218
-		UInt64 unk220;		 // 220
+		std::uint32_t unk060;		// 060
+		std::uint32_t profileHash;	// 064
+		std::uint64_t unk068;		// 068
+		Entry		  entry;		// 070
+		std::uint64_t unk208;		// 208
+		std::uint64_t unk210;		// 210
+		std::uint64_t unk218;		// 218
+		std::uint64_t unk220;		// 220
 	};
-	STATIC_ASSERT(sizeof(BSSaveDataSystemUtility) == 0x228);
+	static_assert(sizeof(BSSaveDataSystemUtility) == 0x228);
 }

@@ -32,25 +32,26 @@ namespace RE
 
 		bool			  AddExtraData(const BSFixedString& a_key, NiExtraData* a_extra);
 		bool			  AddExtraData(NiExtraData* a_extra);
-		void			  DeleteExtraData(UInt16 a_extraDataIndex);
+		void			  DeleteExtraData(std::uint16_t a_extraDataIndex);
 		NiTimeController* GetControllers() const;
+		NiTimeController* GetController(const NiRTTI* a_rtti) const;
 		NiExtraData*	  GetExtraData(const BSFixedString& a_key) const;
-		NiExtraData*	  GetExtraDataAt(UInt16 a_extraDataIndex) const;
-		UInt16			  GetExtraDataSize() const;
+		NiExtraData*	  GetExtraDataAt(std::uint16_t a_extraDataIndex) const;
+		std::uint16_t	  GetExtraDataSize() const;
 		bool			  InsertExtraData(NiExtraData* a_extra);
 		void			  RemoveAllExtraData();
 		bool			  RemoveExtraData(const BSFixedString& a_key);
-		bool			  RemoveExtraDataAt(UInt16 a_extraDataIndex);
-		bool			  SetExtraDataSize(UInt16 a_size);
+		bool			  RemoveExtraDataAt(std::uint16_t a_extraDataIndex);
+		bool			  SetExtraDataSize(std::uint16_t a_size);
 
 
 		// members
 		BSFixedString				name;			// 10
 		NiPointer<NiTimeController> controllers;	// 18
 		NiExtraData**				extra;			// 20
-		UInt16						extraDataSize;	// 28
-		UInt16						maxSize;		// 2A
-		UInt32						pad2C;			// 2C
+		std::uint16_t				extraDataSize;	// 28
+		std::uint16_t				maxSize;		// 2A
+		std::uint32_t				pad2C;			// 2C
 	};
-	STATIC_ASSERT(sizeof(NiObjectNET) == 0x30);
+	static_assert(sizeof(NiObjectNET) == 0x30);
 }

@@ -19,10 +19,10 @@ namespace RE
 
 
 		// members
-		UInt64 unk220;	// 220
-		UInt64 unk228;	// 228
-		UInt64 unk230;	// 230
-		UInt64 unk238;	// 238
+		std::uint64_t unk220;  // 220
+		std::uint64_t unk228;  // 228
+		std::uint64_t unk230;  // 230
+		std::uint64_t unk238;  // 238
 	};
-	STATIC_ASSERT(sizeof(bhkCharacterPointCollector) == 0x240);
+	static_assert(sizeof(bhkCharacterPointCollector) == 0x240);
 }

@@ -20,7 +20,7 @@ namespace RE
 	}
 
 
-	UInt32 GFxResource::GetResourceTypeCode() const
+	std::uint32_t GFxResource::GetResourceTypeCode() const
 	{
 		return MakeTypeCode(ResourceType::kNone);
 	}
@@ -49,7 +49,7 @@ namespace RE
 	}
 
 
-	SInt32 GFxResource::GetRefCount() const
+	std::int32_t GFxResource::GetRefCount() const
 	{
 		return _refCount.value;
 	}
@@ -74,7 +74,7 @@ namespace RE
 	}
 
 
-	UInt32 GFxResource::MakeTypeCode(ResourceType a_resourceType, ResourceUse a_resourceUse)
+	std::uint32_t GFxResource::MakeTypeCode(ResourceType a_resourceType, ResourceUse a_resourceUse)
 	{
 		return to_underlying(static_cast<ResourceUse>(a_resourceType << ResourceType::kTypeCode_Shift) | a_resourceUse);
 	}

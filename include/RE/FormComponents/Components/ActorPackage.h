@@ -13,7 +13,7 @@ namespace RE
 	class ActorPackage
 	{
 	public:
-		enum class ACTOR_PACKAGE_FLAG : SInt8
+		enum class ACTOR_PACKAGE_FLAG
 		{
 			kNone = 0,
 			kSaveLoadSharedPackage = 1 << 0
@@ -21,17 +21,17 @@ namespace RE
 
 
 		// members
-		mutable BSSpinLock packageLock;			   // 00
-		TESPackage*		   package;				   // 08
-		ActorPackageData*  data;				   // 10
-		ObjectRefHandle	   target;				   // 18
-		SInt32			   currentProcedureIndex;  // 1C
-		float			   packageStartTime;	   // 20
-		UInt32			   modifiedPackageFlag;	   // 24
-		UInt16			   modifiedInterruptFlag;  // 28
-		ACTOR_PACKAGE_FLAG actorPackageFlags;	   // 2A
-		SInt8			   preferredSpeed;		   // 2B
-		UInt32			   pad2C;				   // 2C
+		mutable BSSpinLock								  packageLock;			  // 00
+		TESPackage*										  package;				  // 08
+		ActorPackageData*								  data;					  // 10
+		ObjectRefHandle									  target;				  // 18
+		std::int32_t									  currentProcedureIndex;  // 1C
+		float											  packageStartTime;		  // 20
+		std::uint32_t									  modifiedPackageFlag;	  // 24
+		std::uint16_t									  modifiedInterruptFlag;  // 28
+		stl::enumeration<ACTOR_PACKAGE_FLAG, std::int8_t> actorPackageFlags;	  // 2A
+		std::int8_t										  preferredSpeed;		  // 2B
+		std::uint32_t									  pad2C;				  // 2C
 	};
-	STATIC_ASSERT(sizeof(ActorPackage) == 0x30);
+	static_assert(sizeof(ActorPackage) == 0x30);
 }

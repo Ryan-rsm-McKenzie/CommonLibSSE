@@ -26,18 +26,18 @@ namespace RE
 
 		// members
 		TESTopic*		   topic;				 // 10
-		UInt8			   unk18;				 // 18
-		UInt8			   pad19;				 // 19
-		UInt16			   pad1A;				 // 1A
+		std::uint8_t	   unk18;				 // 18
+		std::uint8_t	   pad19;				 // 19
+		std::uint16_t	   pad1A;				 // 1A
 		float			   subtitleSpeechDelay;	 // 1C
 		BGSDialogueBranch* exclusiveBranch;		 // 20
-		SInt32			   unk28;				 // 28
-		UInt8			   unk2C;				 // 2C
-		UInt8			   pad2D;				 // 2D
-		UInt16			   pad2E;				 // 2E
-		UInt32			   unk30;				 // 30
-		UInt32			   pad34;				 // 34
+		std::int32_t	   unk28;				 // 28
+		std::uint8_t	   unk2C;				 // 2C
+		std::uint8_t	   pad2D;				 // 2D
+		std::uint16_t	   pad2E;				 // 2E
+		std::uint32_t	   unk30;				 // 30
+		std::uint32_t	   pad34;				 // 34
 		DialogueItem*	   item;				 // 38
 	};
-	STATIC_ASSERT(sizeof(ExtraSayToTopicInfo) == 0x40);
+	static_assert(sizeof(ExtraSayToTopicInfo) == 0x40);
 }

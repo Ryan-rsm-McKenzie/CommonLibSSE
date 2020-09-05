@@ -5,7 +5,7 @@ namespace RE
 {
 	struct EffectArchetypes
 	{
-		enum class ArchetypeID : UInt32
+		enum class ArchetypeID
 		{
 			kNone = static_cast<std::underlying_type_t<ArchetypeID>>(-1),
 			kValueModifier = 0,

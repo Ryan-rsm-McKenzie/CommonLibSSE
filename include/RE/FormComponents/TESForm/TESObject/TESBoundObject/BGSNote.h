@@ -25,16 +25,16 @@ namespace RE
 
 		struct ChangeFlags
 		{
-			enum ChangeFlag : UInt32
+			enum ChangeFlag : std::uint32_t
 			{
-				kNoteRead = (UInt32)1 << 31
+				kNoteRead = (std::uint32_t)1 << 31
 			};
 		};
 
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
@@ -43,20 +43,20 @@ namespace RE
 		virtual ~BGSNote();	 // 00
 
 		// override (TESBoundObject)
-		virtual void InitializeData() override;																													  // 04
-		virtual void ClearData() override;																														  // 05
-		virtual bool Load(TESFile* a_mod) override;																												  // 06
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;																								  // 0F
-		virtual void Revert(BGSLoadFormBuffer* a_buf) override;																									  // 12
-		virtual void InitItemImpl() override;																													  // 13
-		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;  // 37
+		virtual void InitializeData() override;																																   // 04
+		virtual void ClearData() override;																																	   // 05
+		virtual bool Load(TESFile* a_mod) override;																															   // 06
+		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;																											   // 0F
+		virtual void Revert(BGSLoadFormBuffer* a_buf) override;																												   // 12
+		virtual void InitItemImpl() override;																																   // 13
+		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
 
 
 		// members
 		TESTopic*				unk90;	// 90
 		TESActorBase*			unk98;	// 98
 		BSSimpleList<TESQuest*> unkA0;	// A0
-		UInt64					unkB0;	// B0
+		std::uint64_t			unkB0;	// B0
 	};
-	STATIC_ASSERT(sizeof(BGSNote) == 0xB8);
+	static_assert(sizeof(BGSNote) == 0xB8);
 }

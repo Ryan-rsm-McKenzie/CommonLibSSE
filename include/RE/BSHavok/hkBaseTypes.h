@@ -3,11 +3,11 @@
 
 namespace RE
 {
-	using hkObjectIndex = UInt16;
+	using hkObjectIndex = std::uint16_t;
 	using hkTime = float;
 
 
-	enum class hkResult : UInt32
+	enum class hkResult
 	{
 		kSuccess = 0,
 		kFailure = 1
@@ -30,9 +30,9 @@ namespace RE
 
 
 		// members
-		SInt16 _value;	// 0
+		std::int16_t _value;  // 0
 	};
-	STATIC_ASSERT(sizeof(hkHalf) == 0x2);
+	static_assert(sizeof(hkHalf) == 0x2);
 
 
 	// 8-bit float ranging [0.01, 1000000.0]
@@ -41,7 +41,7 @@ namespace RE
 	{
 	public:
 		// members
-		UInt8 value;  // 0
+		std::uint8_t value;	 // 0
 	};
-	STATIC_ASSERT(sizeof(hkUFloat8) == 0x1);
+	static_assert(sizeof(hkUFloat8) == 0x1);
 }

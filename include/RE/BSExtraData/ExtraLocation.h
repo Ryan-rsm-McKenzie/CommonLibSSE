@@ -26,5 +26,5 @@ namespace RE
 		// members
 		BGSLocation* location;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraLocation) == 0x18);
+	static_assert(sizeof(ExtraLocation) == 0x18);
 }

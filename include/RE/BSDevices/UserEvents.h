@@ -11,7 +11,7 @@ namespace RE
 	public:
 		struct INPUT_CONTEXT_IDS
 		{
-			enum INPUT_CONTEXT_ID : UInt32
+			enum INPUT_CONTEXT_ID : std::uint32_t
 			{
 				kGameplay = 0,
 				kMenuMode,
@@ -39,7 +39,7 @@ namespace RE
 		using INPUT_CONTEXT_ID = INPUT_CONTEXT_IDS::INPUT_CONTEXT_ID;
 
 
-		enum class USER_EVENT_FLAG : UInt32
+		enum class USER_EVENT_FLAG
 		{
 			kNone = 0,
 			kMovement = 1 << 0,
@@ -54,7 +54,7 @@ namespace RE
 			kWheelZoom = 1 << 9,
 			kJumping = 1 << 10,
 			kVATS = 1 << 11,
-			kInvalid = (UInt32)1 << 31,
+			kInvalid = 1 << 31,
 
 			kAll = static_cast<std::underlying_type_t<USER_EVENT_FLAG>>(-1)
 		};
@@ -64,9 +64,9 @@ namespace RE
 
 
 		// members
-		UInt8		  pad001;			  // 001
-		UInt16		  pad002;			  // 002
-		UInt32		  pad004;			  // 004
+		std::uint8_t  pad001;			  // 001
+		std::uint16_t pad002;			  // 002
+		std::uint32_t pad004;			  // 004
 		BSFixedString forward;			  // 008 - "Forward"
 		BSFixedString back;				  // 010 - "Back"
 		BSFixedString strafeLeft;		  // 018 - "Strafe Left"
@@ -171,5 +171,5 @@ namespace RE
 		BSFixedString localMapMoveMode;	  // 330 - "LocalMapMoveMode"
 		BSFixedString itemZoom;			  // 338 - "Item Zoom"
 	};
-	STATIC_ASSERT(sizeof(UserEvents) == 0x340);
+	static_assert(sizeof(UserEvents) == 0x340);
 }

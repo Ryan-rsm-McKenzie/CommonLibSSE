@@ -13,7 +13,7 @@ namespace RE
 	class hkpCollidable : public hkpCdBody
 	{
 	public:
-		enum class ForceCollideOntoPpuReasons : UInt32
+		enum class ForceCollideOntoPpuReasons
 		{
 			kUserRequest = 1 << 0,
 			kShapeRequest = 1 << 1,
@@ -26,19 +26,19 @@ namespace RE
 		{
 		public:
 			// members
-			UInt32		  min[3];					// 00
-			UInt8		  expansionMin[3];			// 0C
-			UInt8		  expansionShift;			// 0F
-			UInt32		  max[3];					// 10
-			UInt8		  expansionMax[3];			// 1C
-			UInt8		  pad1F;					// 1F
-			UInt16		  numChildShapeAabbs;		// 20
-			UInt16		  capacityChildShapeAabbs;	// 22
-			UInt32		  pad24;					// 24
+			std::uint32_t min[3];					// 00
+			std::uint8_t  expansionMin[3];			// 0C
+			std::uint8_t  expansionShift;			// 0F
+			std::uint32_t max[3];					// 10
+			std::uint8_t  expansionMax[3];			// 1C
+			std::uint8_t  pad1F;					// 1F
+			std::uint16_t numChildShapeAabbs;		// 20
+			std::uint16_t capacityChildShapeAabbs;	// 22
+			std::uint32_t pad24;					// 24
 			hkAabbUint32* childShapeAabbs;			// 28
 			hkpShapeKey*  childShapeKeys;			// 30
 		};
-		STATIC_ASSERT(sizeof(BoundingVolumeData) == 0x38);
+		static_assert(sizeof(BoundingVolumeData) == 0x38);
 
 
 		void* GetOwner() const;
@@ -50,13 +50,13 @@ namespace RE
 
 
 		// members
-		SInt8					 ownerOffset;			   // 20
-		UInt8					 forceCollideOntoPpu;	   // 21
-		UInt16					 shapeSizeOnSpu;		   // 22
+		std::int8_t				 ownerOffset;			   // 20
+		std::uint8_t			 forceCollideOntoPpu;	   // 21
+		std::uint16_t			 shapeSizeOnSpu;		   // 22
 		hkpTypedBroadPhaseHandle broadPhaseHandle;		   // 24
 		BoundingVolumeData		 boundingVolumeData;	   // 30
 		float					 allowedPenetrationDepth;  // 68
-		UInt32					 pad6C;					   // 6C
+		std::uint32_t			 pad6C;					   // 6C
 	};
-	STATIC_ASSERT(sizeof(hkpCollidable) == 0x70);
+	static_assert(sizeof(hkpCollidable) == 0x70);
 }

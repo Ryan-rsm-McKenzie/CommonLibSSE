@@ -13,11 +13,11 @@ namespace RE
 		ObjectRefHandle linkedDoor;	 // 00
 		NiPoint3		position;	 // 04
 		NiPoint3		rotation;	 // 10
-		SInt8			flags;		 // 1C
-		UInt8			pad1D;		 // 1D
-		UInt16			pad1E;		 // 1E
+		std::int8_t		flags;		 // 1C
+		std::uint8_t	pad1D;		 // 1D
+		std::uint16_t	pad1E;		 // 1E
 	};
-	STATIC_ASSERT(sizeof(DoorTeleportData) == 0x20);
+	static_assert(sizeof(DoorTeleportData) == 0x20);
 
 
 	class ExtraTeleport : public BSExtraData
@@ -37,5 +37,5 @@ namespace RE
 		// members
 		DoorTeleportData* teleportData;	 // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraTeleport) == 0x18);
+	static_assert(sizeof(ExtraTeleport) == 0x18);
 }

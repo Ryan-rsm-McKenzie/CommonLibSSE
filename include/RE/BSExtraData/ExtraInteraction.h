@@ -27,5 +27,5 @@ namespace RE
 		// members
 		BSTSmartPointer<RefrInteraction> interaction;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraInteraction) == 0x18);
+	static_assert(sizeof(ExtraInteraction) == 0x18);
 }

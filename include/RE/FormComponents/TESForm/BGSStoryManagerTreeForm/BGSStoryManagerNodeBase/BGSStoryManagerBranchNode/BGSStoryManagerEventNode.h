@@ -10,30 +10,30 @@ namespace RE
 {
 	struct BGSStoryEventMember
 	{
-		enum class DATA_TYPE : UInt32
+		enum class DATA_TYPE
 		{
 		};
 
 
-		DATA_TYPE type;		 // 00
-		UInt32	  uniqueID;	 // 04
-		BSString  name;		 // 08
+		stl::enumeration<DATA_TYPE, std::uint32_t> type;	  // 00
+		std::uint32_t							   uniqueID;  // 04
+		BSString								   name;	  // 08
 	};
-	STATIC_ASSERT(sizeof(BGSStoryEventMember) == 0x18);
+	static_assert(sizeof(BGSStoryEventMember) == 0x18);
 
 
 	struct BGSRegisteredStoryEvent	// ENAM
 	{
 		char						   uniqueID[4];	 // 00
-		UInt32						   pad04;		 // 04
+		std::uint32_t				   pad04;		 // 04
 		BSTArray<BGSStoryEventMember>* members;		 // 08
 		BSString					   name;		 // 10
 		bool						   immediate;	 // 20
-		UInt8						   pad21;		 // 21
-		UInt16						   pad22;		 // 22
-		UInt32						   pad24;		 // 24
+		std::uint8_t				   pad21;		 // 21
+		std::uint16_t				   pad22;		 // 22
+		std::uint32_t				   pad24;		 // 24
 	};
-	STATIC_ASSERT(sizeof(BGSRegisteredStoryEvent) == 0x28);
+	static_assert(sizeof(BGSRegisteredStoryEvent) == 0x28);
 
 
 	class BGSStoryManagerEventNode : public BGSStoryManagerBranchNode
@@ -45,7 +45,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -66,5 +66,5 @@ namespace RE
 		// members
 		const BGSRegisteredStoryEvent* event;  // 60 - ENAM
 	};
-	STATIC_ASSERT(sizeof(BGSStoryManagerEventNode) == 0x68);
+	static_assert(sizeof(BGSStoryManagerEventNode) == 0x68);
 }

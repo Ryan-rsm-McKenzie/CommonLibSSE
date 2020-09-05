@@ -5,7 +5,7 @@ namespace RE
 {
 	namespace MagicSystem
 	{
-		enum class CannotCastReason : UInt32
+		enum class CannotCastReason
 		{
 			kOK = 0,
 			kMagicka = 1,
@@ -19,7 +19,7 @@ namespace RE
 		};
 
 
-		enum class CastingSource : UInt32
+		enum class CastingSource
 		{
 			kLeftHand = 0,
 			kRightHand = 1,
@@ -28,25 +28,16 @@ namespace RE
 		};
 
 
-		enum class CastingType : UInt32
-		{
-			kConstantEffect = 1,
-			kFireAndForget = 2,
-			kConcentration = 3,
-			kScroll = 4
-		};
-
-
-		enum class CastingType16 : UInt16
+		enum class CastingType
 		{
 			kConstantEffect = 0,
 			kFireAndForget = 1,
-			kConcentration = 3,
-			kScroll = 4
+			kConcentration = 2,
+			kScroll = 3
 		};
 
 
-		enum class Delivery : UInt32
+		enum class Delivery
 		{
 			kSelf = 0,
 			kTouch = 1,
@@ -56,7 +47,7 @@ namespace RE
 		};
 
 
-		enum class SoundID : UInt32
+		enum class SoundID
 		{
 			kDrawSheatheLPM = 0,
 			kCharge = 1,
@@ -67,7 +58,7 @@ namespace RE
 		};
 
 
-		enum class SpellType : UInt32
+		enum class SpellType
 		{
 			kSpell = 0,
 			kDisease = 1,
@@ -91,7 +82,7 @@ namespace RE
 		};
 
 
-		enum class WardState : UInt32
+		enum class WardState
 		{
 			kNone = 0,
 			kAbsorb = 1,

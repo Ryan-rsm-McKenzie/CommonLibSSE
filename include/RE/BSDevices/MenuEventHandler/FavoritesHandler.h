@@ -18,5 +18,5 @@ namespace RE
 		virtual bool ProcessKinect(KinectEvent* a_event) override;	// 02
 		virtual bool ProcessButton(ButtonEvent* a_event) override;	// 05
 	};
-	STATIC_ASSERT(sizeof(FavoritesHandler) == 0x10);
+	static_assert(sizeof(FavoritesHandler) == 0x10);
 }

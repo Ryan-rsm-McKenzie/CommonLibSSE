@@ -13,7 +13,7 @@ namespace RE
 
 		struct Attributes
 		{
-			enum class Error : UInt32
+			enum class Error
 			{
 				kNone = 0,
 				kFileNotFound = 2,
@@ -24,15 +24,15 @@ namespace RE
 
 				kErrorMask = 0x7FFFFFFF,
 
-				kUnkFlag = (UInt32)1 << 31	// top bit isn't part of the error, mask 0x7FFFFFFF to get the error
+				kUnkFlag = 1 << 31	// top bit isn't part of the error, mask 0x7FFFFFFF to get the error
 			};
 
 
-			Error  lastError;  // 00
-			UInt32 pad24;	   // 04
-			HANDLE handle;	   // 08
+			stl::enumeration<Error, std::uint32_t> lastError;  // 00
+			std::uint32_t						   pad24;	   // 04
+			HANDLE								   handle;	   // 08
 		};
-		STATIC_ASSERT(sizeof(Attributes) == 0x10);
+		static_assert(sizeof(Attributes) == 0x10);
 
 
 		virtual ~BSSystemFileStorage();	 // 00
@@ -48,12 +48,12 @@ namespace RE
 
 
 		// members
-		Attributes attributes;	 // 20
-		bool	   unk30;		 // 30
-		bool	   unk31;		 // 31
-		bool	   goodForRead;	 // 32
-		UInt8	   pad33;		 // 33
-		UInt32	   pad34;		 // 34
+		Attributes	  attributes;	// 20
+		bool		  unk30;		// 30
+		bool		  unk31;		// 31
+		bool		  goodForRead;	// 32
+		std::uint8_t  pad33;		// 33
+		std::uint32_t pad34;		// 34
 	};
-	STATIC_ASSERT(sizeof(BSSystemFileStorage) == 0x38);
+	static_assert(sizeof(BSSystemFileStorage) == 0x38);
 }

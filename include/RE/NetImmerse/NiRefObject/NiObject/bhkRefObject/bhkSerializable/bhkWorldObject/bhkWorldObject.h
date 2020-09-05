@@ -33,5 +33,5 @@ namespace RE
 		// members
 		hkpWorld* world;  // 20
 	};
-	STATIC_ASSERT(sizeof(bhkWorldObject) == 0x28);
+	static_assert(sizeof(bhkWorldObject) == 0x28);
 }

@@ -32,10 +32,10 @@ namespace RE
 
 
 		// members
-		SInt32 userIndex;		   // C8
-		bool   connected;		   // CC
-		bool   listeningForInput;  // CD
-		UInt16 padCE;			   // CE
+		std::int32_t  userIndex;		  // C8
+		bool		  connected;		  // CC
+		bool		  listeningForInput;  // CD
+		std::uint16_t padCE;			  // CE
 	};
-	STATIC_ASSERT(sizeof(BSGamepadDevice) == 0xD0);
+	static_assert(sizeof(BSGamepadDevice) == 0xD0);
 }

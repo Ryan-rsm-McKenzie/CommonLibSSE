@@ -11,10 +11,10 @@ namespace RE
 	struct GROUP_REACTION  // XNAM
 	{
 		TESForm*	   form;		   // 00
-		SInt32		   reaction;	   // 08
+		std::int32_t   reaction;	   // 08
 		FIGHT_REACTION fightReaction;  // 0C
 	};
-	STATIC_ASSERT(sizeof(GROUP_REACTION) == 0x10);
+	static_assert(sizeof(GROUP_REACTION) == 0x10);
 
 
 	class TESReactionForm : public BaseFormComponent
@@ -32,11 +32,11 @@ namespace RE
 
 
 		// members
-		BSSimpleList<GROUP_REACTION*> reactions;	  // 08 - XNAM
-		FormType					  groupFormType;  // 18
-		UInt8						  pad19;		  // 19
-		UInt16						  pad1A;		  // 1A
-		UInt32						  pad1C;		  // 1C
+		BSSimpleList<GROUP_REACTION*>			 reactions;		 // 08 - XNAM
+		stl::enumeration<FormType, std::uint8_t> groupFormType;	 // 18
+		std::uint8_t							 pad19;			 // 19
+		std::uint16_t							 pad1A;			 // 1A
+		std::uint32_t							 pad1C;			 // 1C
 	};
-	STATIC_ASSERT(sizeof(TESReactionForm) == 0x20);
+	static_assert(sizeof(TESReactionForm) == 0x20);
 }

@@ -18,5 +18,5 @@ namespace RE
 		virtual void ProcessThumbstick(ThumbstickEvent* a_event, PlayerControlsData* a_data) override;	// 02
 		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data) override;			// 04
 	};
-	STATIC_ASSERT(sizeof(MovementHandler) == 0x10);
+	static_assert(sizeof(MovementHandler) == 0x10);
 }

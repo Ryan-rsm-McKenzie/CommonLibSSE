@@ -25,7 +25,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -36,12 +36,12 @@ namespace RE
 		virtual ~ScrollItem();	// 00
 
 		// override (SpellItem)
-		virtual void					 InitItemImpl() override;										 // 13
-		virtual MagicSystem::SpellType	 GetSpellType() const override;									 // 53 - { return MagicSystem::SpellType::kScroll; }
-		virtual MagicSystem::CastingType GetCastingType() const override;								 // 55 - { return MagicSystem::CastingType::kFireAndForget; }
-		virtual bool					 GetSkillUsageData(SkillUsageData& a_data) const override;		 // 60 - { return 0; }
-		virtual ActorValue				 GetAssociatedSkill() const override;							 // 66 - { return ActorValue::kNone; }
-		virtual void					 LoadMagicItemChunk(TESFile* a_mod, UInt32 a_chunkID) override;	 // 6A
+		virtual void					 InitItemImpl() override;												// 13
+		virtual MagicSystem::SpellType	 GetSpellType() const override;											// 53 - { return MagicSystem::SpellType::kScroll; }
+		virtual MagicSystem::CastingType GetCastingType() const override;										// 55 - { return MagicSystem::CastingType::kFireAndForget; }
+		virtual bool					 GetSkillUsageData(SkillUsageData& a_data) const override;				// 60 - { return 0; }
+		virtual ActorValue				 GetAssociatedSkill() const override;									// 66 - { return ActorValue::kNone; }
+		virtual void					 LoadMagicItemChunk(TESFile* a_mod, std::uint32_t a_chunkID) override;	// 6A
 	};
-	STATIC_ASSERT(sizeof(ScrollItem) == 0x168);
+	static_assert(sizeof(ScrollItem) == 0x168);
 }

@@ -15,7 +15,7 @@ namespace RE
 			{
 			public:
 			};
-			STATIC_ASSERT(sizeof(AttachedScript) == 0x8);
+			static_assert(sizeof(AttachedScript) == 0x8);
 		}
 	}
 }

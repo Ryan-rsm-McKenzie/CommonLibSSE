@@ -22,5 +22,5 @@ namespace RE
 		// members
 		BSFixedString text;	 // 08
 	};
-	STATIC_ASSERT(sizeof(BGSEntryPointFunctionDataText) == 0x10);
+	static_assert(sizeof(BGSEntryPointFunctionDataText) == 0x10);
 }

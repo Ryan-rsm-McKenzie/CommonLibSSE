@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	std::tm TESClimate::Timing::Interval::ConvertInterval(UInt8 a_time) const
+	std::tm TESClimate::Timing::Interval::ConvertInterval(std::uint8_t a_time) const
 	{
 		std::tm result;
 		result.tm_sec = 0;
@@ -33,18 +33,18 @@ namespace RE
 
 	bool TESClimate::Timing::IncludesMasser() const
 	{
-		return (moonPhaseLength & MoonPhaseLength::kMasser) != MoonPhaseLength::kNone;
+		return moonPhaseLength.all(MoonPhaseLength::kMasser);
 	}
 
 
 	bool TESClimate::Timing::IncludesSecunda() const
 	{
-		return (moonPhaseLength & MoonPhaseLength::kSecunda) != MoonPhaseLength::kNone;
+		return moonPhaseLength.all(MoonPhaseLength::kSecunda);
 	}
 
 
-	UInt8 TESClimate::Timing::GetPhaseLength() const
+	std::uint8_t TESClimate::Timing::GetPhaseLength() const
 	{
-		return static_cast<UInt8>(moonPhaseLength & MoonPhaseLength::kPhaseLengthMask);
+		return (moonPhaseLength & MoonPhaseLength::kPhaseLengthMask).underlying();
 	}
 }

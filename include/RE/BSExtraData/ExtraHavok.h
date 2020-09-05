@@ -28,5 +28,5 @@ namespace RE
 		NiPointer<bhkWorld>	   world;  // 10
 		NiPointer<NiRefObject> unk18;  // 18
 	};
-	STATIC_ASSERT(sizeof(ExtraHavok) == 0x20);
+	static_assert(sizeof(ExtraHavok) == 0x20);
 }

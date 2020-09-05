@@ -26,5 +26,5 @@ namespace RE
 		float GetArmorRatingSkillMultiplier(float a_skillLevel) const;
 		float GetClampedActorValue(ActorValue a_akValue) const;
 	};
-	STATIC_ASSERT(sizeof(ActorValueOwner) == 0x8);
+	static_assert(sizeof(ActorValueOwner) == 0x8);
 }

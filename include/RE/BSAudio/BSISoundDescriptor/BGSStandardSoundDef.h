@@ -24,27 +24,27 @@ namespace RE
 
 
 			// override (BSIPlaybackCharacteristics)
-			virtual UInt8  GetFrequencyShift() override;	 // 01 - { return frequencyShift; }
-			virtual UInt8  GetFrequencyVariance() override;	 // 02 - { return frequencyVariance; }
-			virtual UInt8  GetPriority() override;			 // 03 - { return priority; }
-			virtual UInt16 GetStaticAttenuation() override;	 // 04 - { return staticAttenuation; }
-			virtual UInt8  GetDBVariance() override;		 // 05 - { return dbVariance; }
+			virtual std::uint8_t  GetFrequencyShift() override;		// 01 - { return frequencyShift; }
+			virtual std::uint8_t  GetFrequencyVariance() override;	// 02 - { return frequencyVariance; }
+			virtual std::uint8_t  GetPriority() override;			// 03 - { return priority; }
+			virtual std::uint16_t GetStaticAttenuation() override;	// 04 - { return staticAttenuation; }
+			virtual std::uint8_t  GetDBVariance() override;			// 05 - { return dbVariance; }
 
 
 			// members
-			UInt8  frequencyShift;	   // 08
-			UInt8  frequencyVariance;  // 09
-			UInt8  priority;		   // 0A
-			UInt8  dbVariance;		   // 0B
-			UInt16 staticAttenuation;  // 0C - CK Value * 100
-			UInt16 pad0E;			   // 0E
+			std::uint8_t  frequencyShift;	  // 08
+			std::uint8_t  frequencyVariance;  // 09
+			std::uint8_t  priority;			  // 0A
+			std::uint8_t  dbVariance;		  // 0B
+			std::uint16_t staticAttenuation;  // 0C - CK Value * 100
+			std::uint16_t pad0E;			  // 0E
 		};
-		STATIC_ASSERT(sizeof(SoundPlaybackCharacteristics) == 0x10);
+		static_assert(sizeof(SoundPlaybackCharacteristics) == 0x10);
 
 
 		struct LengthCharacteristics  // LNAM
 		{
-			enum class Looping : UInt8
+			enum class Looping
 			{
 				kNone = 0,
 				kLoop = 1 << 3,
@@ -53,23 +53,23 @@ namespace RE
 			};
 
 
-			UInt8	unk0;			  // 0
-			Looping looping;		  // 1
-			UInt8	unk2;			  // 2
-			UInt8	rumbleSendValue;  // 3
+			std::uint8_t							unk0;			  // 0
+			stl::enumeration<Looping, std::uint8_t> looping;		  // 1
+			std::uint8_t							unk2;			  // 2
+			std::uint8_t							rumbleSendValue;  // 3
 		};
-		STATIC_ASSERT(sizeof(LengthCharacteristics) == 0x4);
+		static_assert(sizeof(LengthCharacteristics) == 0x4);
 
 
 		virtual ~BGSStandardSoundDef();	 // 00
 
 		// override (BGSSoundDescriptor)
-		virtual void   Unk_01(void) override;				// 01
-		virtual void   Unk_02(void) override;				// 02
-		virtual void   InitSound(TESForm* a_src) override;	// 03
-		virtual bool   LoadSound(TESFile* a_mod) override;	// 04
-		virtual UInt32 GetType() const override;			// 05 - "BGSStandardSoundDef"
-		virtual void   Unk_06(void) override;				// 06
+		virtual void		  Unk_01(void) override;			   // 01
+		virtual void		  Unk_02(void) override;			   // 02
+		virtual void		  InitSound(TESForm* a_src) override;  // 03
+		virtual bool		  LoadSound(TESFile* a_mod) override;  // 04
+		virtual std::uint32_t GetType() const override;			   // 05 - "BGSStandardSoundDef"
+		virtual void		  Unk_06(void) override;			   // 06
 
 
 		// members
@@ -78,7 +78,7 @@ namespace RE
 		TESCondition*				 conditions;			 // 40 - CTDA
 		BGSSoundOutput*				 outputModel;			 // 48 - ONAM
 		LengthCharacteristics		 lengthCharacteristics;	 // 50 - LNAM
-		SInt32						 unk54;					 // 54
+		std::int32_t				 unk54;					 // 54
 	};
-	STATIC_ASSERT(sizeof(BGSStandardSoundDef) == 0x58);
+	static_assert(sizeof(BGSStandardSoundDef) == 0x58);
 }

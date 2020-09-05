@@ -32,5 +32,5 @@ namespace RE
 		// members
 		BSSimpleList<WeatherType*> weatherTypes;  // 10
 	};
-	STATIC_ASSERT(sizeof(TESRegionDataWeather) == 0x20);
+	static_assert(sizeof(TESRegionDataWeather) == 0x20);
 }

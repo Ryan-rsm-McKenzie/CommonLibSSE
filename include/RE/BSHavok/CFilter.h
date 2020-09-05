@@ -42,7 +42,7 @@ namespace RE
 	class CFilter
 	{
 	public:
-		enum class Flag : UInt32
+		enum class Flag
 		{
 			kNone = 0,
 			kNoCollision = 1 << 14,
@@ -52,7 +52,7 @@ namespace RE
 
 
 		// members
-		Flag flags;	 // 0
+		stl::enumeration<Flag, std::uint32_t> flags;  // 0
 	};
-	STATIC_ASSERT(sizeof(CFilter) == 0x4);
+	static_assert(sizeof(CFilter) == 0x4);
 }

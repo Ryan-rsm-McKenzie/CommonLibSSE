@@ -22,11 +22,11 @@ namespace RE
 		{
 		public:
 			// members
-			UInt16 vert;	// 0
-			UInt16 pad2;	// 2
-			float  weight;	// 4
+			std::uint16_t vert;	   // 0
+			std::uint16_t pad2;	   // 2
+			float		  weight;  // 4
 		};
-		STATIC_ASSERT(sizeof(BoneVertData) == 0x8);
+		static_assert(sizeof(BoneVertData) == 0x8);
 
 
 		class BoneData
@@ -35,13 +35,13 @@ namespace RE
 			// members
 			NiTransform	  skinToBone;	 // 00
 			NiBound		  bound;		 // 34
-			UInt32		  pad44;		 // 44
+			std::uint32_t pad44;		 // 44
 			BoneVertData* boneVertData;	 // 48
-			UInt16		  verts;		 // 50
-			UInt16		  pad52;		 // 52
-			UInt32		  pad54;		 // 54
+			std::uint16_t verts;		 // 50
+			std::uint16_t pad52;		 // 52
+			std::uint32_t pad54;		 // 54
 		};
-		STATIC_ASSERT(sizeof(BoneData) == 0x58);
+		static_assert(sizeof(BoneData) == 0x58);
 
 
 		virtual ~NiSkinData();	// 00
@@ -59,8 +59,8 @@ namespace RE
 		NiPointer<NiSkinPartition> skinPartition;	  // 10
 		NiTransform				   rootParentToSkin;  // 18
 		BoneData*				   boneData;		  // 50
-		UInt32					   bones;			  // 58
-		UInt32					   pad5C;			  // 5C
+		std::uint32_t			   bones;			  // 58
+		std::uint32_t			   pad5C;			  // 5C
 	};
-	STATIC_ASSERT(sizeof(NiSkinData) == 0x60);
+	static_assert(sizeof(NiSkinData) == 0x60);
 }

@@ -17,11 +17,11 @@ namespace RE
 
 
 		// members
-		char	 lastMessage[0x400];  // 001
-		UInt8	 pad401;			  // 401
-		UInt16	 pad402;			  // 402
-		UInt32	 pad404;			  // 404
-		BSString buffer;			  // 408
+		char		  lastMessage[0x400];  // 001
+		std::uint8_t  pad401;			   // 401
+		std::uint16_t pad402;			   // 402
+		std::uint32_t pad404;			   // 404
+		BSString	  buffer;			   // 408
 	};
-	STATIC_ASSERT(sizeof(ConsoleLog) == 0x418);
+	static_assert(sizeof(ConsoleLog) == 0x418);
 }

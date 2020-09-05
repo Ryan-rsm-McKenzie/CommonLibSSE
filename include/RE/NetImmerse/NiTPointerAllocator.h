@@ -29,9 +29,4 @@ namespace RE
 			return NiFree(a_ptr);
 		}
 	};
-	using TestNiTPointerAllocator = NiTPointerAllocator<uint64_t>;
-	STATIC_ASSERT(offsetof(TestNiTPointerAllocator::AllocNode, next) == 0x00);
-	STATIC_ASSERT(offsetof(TestNiTPointerAllocator::AllocNode, data) == 0x08);
-	STATIC_ASSERT(offsetof(TestNiTPointerAllocator::AllocNode, element) == 0x10);
-	STATIC_ASSERT(sizeof(TestNiTPointerAllocator::AllocNode) == 0x18);
 }

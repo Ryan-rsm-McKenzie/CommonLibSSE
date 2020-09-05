@@ -37,5 +37,5 @@ namespace RE
 		TESObjectREFR*				targetObject;	// 28
 		BSSimpleList<ActiveEffect*> activeEffects;	// 30
 	};
-	STATIC_ASSERT(sizeof(NonActorMagicTarget) == 0x40);
+	static_assert(sizeof(NonActorMagicTarget) == 0x40);
 }

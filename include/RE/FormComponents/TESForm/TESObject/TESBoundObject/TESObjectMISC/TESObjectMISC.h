@@ -34,7 +34,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kNonPlayable = 1 << 2,
 				kDeleted = 1 << 5,
@@ -55,9 +55,9 @@ namespace RE
 		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
 
 		// add
-		virtual void SaveImpl();								  // 53 - { return; }
-		virtual void LoadImpl(TESFile* a_mod, UInt32 a_chunkID);  // 54 - { return; }
-		virtual void InitImpl();								  // 55 - { return; }
+		virtual void SaveImpl();										 // 53 - { return; }
+		virtual void LoadImpl(TESFile* a_mod, std::uint32_t a_chunkID);	 // 54 - { return; }
+		virtual void InitImpl();										 // 55 - { return; }
 	};
-	STATIC_ASSERT(sizeof(TESObjectMISC) == 0x100);
+	static_assert(sizeof(TESObjectMISC) == 0x100);
 }

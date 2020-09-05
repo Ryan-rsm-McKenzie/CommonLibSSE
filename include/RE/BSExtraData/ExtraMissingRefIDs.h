@@ -8,10 +8,10 @@ namespace RE
 {
 	struct ActivateParentID
 	{
-		UInt32 refID;		   // 0
-		float  activateDelay;  // 4
+		std::uint32_t refID;		  // 0
+		float		  activateDelay;  // 4
 	};
-	STATIC_ASSERT(sizeof(ActivateParentID) == 0x8);
+	static_assert(sizeof(ActivateParentID) == 0x8);
 
 
 	class ExtraMissingRefIDs : public BSExtraData
@@ -29,9 +29,9 @@ namespace RE
 
 		// members
 		ActivateParentID* unk10;  // 10
-		UInt32			  unk18;  // 18
-		UInt32			  unk1C;  // 1C
-		UInt64			  unk20;  // 20
+		std::uint32_t	  unk18;  // 18
+		std::uint32_t	  unk1C;  // 1C
+		std::uint64_t	  unk20;  // 20
 	};
-	STATIC_ASSERT(sizeof(ExtraMissingRefIDs) == 0x28);
+	static_assert(sizeof(ExtraMissingRefIDs) == 0x28);
 }

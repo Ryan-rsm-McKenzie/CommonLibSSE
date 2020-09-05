@@ -7,6 +7,7 @@ namespace RE
 {
 	struct ImageSpaceModData
 	{
+	public:
 		enum
 		{
 			kFadeAmount = 0,
@@ -32,9 +33,10 @@ namespace RE
 		};
 
 
+		// members
 		float data[kTotal];	 // 00
 	};
-	STATIC_ASSERT(sizeof(ImageSpaceModData) == 0x48);
+	static_assert(sizeof(ImageSpaceModData) == 0x48);
 
 
 	class ImageSpaceModifierInstanceDOF : public ImageSpaceModifierInstanceTemp
@@ -43,7 +45,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ImageSpaceModifierInstanceDOF;
 
 
-		enum class DepthOfFieldMode : UInt8
+		enum class DepthOfFieldMode
 		{
 			kFrontBack = 0,
 			kFront = 1,
@@ -62,5 +64,5 @@ namespace RE
 		// members
 		ImageSpaceModData data;	 // 30
 	};
-	STATIC_ASSERT(sizeof(ImageSpaceModifierInstanceDOF) == 0x78);
+	static_assert(sizeof(ImageSpaceModifierInstanceDOF) == 0x78);
 }

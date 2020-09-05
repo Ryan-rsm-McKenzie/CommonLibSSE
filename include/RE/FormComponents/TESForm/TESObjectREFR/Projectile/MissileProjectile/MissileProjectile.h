@@ -16,7 +16,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
@@ -44,10 +44,10 @@ namespace RE
 
 
 		// members
-		ImpactResult impactResult;			 // 1D8
-		bool		 waitingToInitialize3D;	 // 1DC
-		UInt8		 unk1DD;				 // 1DD
-		UInt16		 unk1DE;				 // 1DE
+		ImpactResult  impactResult;			  // 1D8
+		bool		  waitingToInitialize3D;  // 1DC
+		std::uint8_t  unk1DD;				  // 1DD
+		std::uint16_t unk1DE;				  // 1DE
 	};
-	STATIC_ASSERT(sizeof(MissileProjectile) == 0x1E0);
+	static_assert(sizeof(MissileProjectile) == 0x1E0);
 }

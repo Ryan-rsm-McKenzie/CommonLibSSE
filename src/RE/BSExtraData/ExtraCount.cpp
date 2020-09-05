@@ -8,13 +8,13 @@ namespace RE
 	{}
 
 
-	ExtraCount::ExtraCount(SInt16 a_count) :
+	ExtraCount::ExtraCount(std::int16_t a_count) :
 		BSExtraData(),
 		count(a_count),
 		pad12(0),
 		pad14(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraCount::Vtbl);
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraCount::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

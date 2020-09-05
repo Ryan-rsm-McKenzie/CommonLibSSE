@@ -26,7 +26,7 @@ namespace RE
 		{}
 
 
-		GHashSet(SInt32 a_sizeHint) :
+		GHashSet(std::int32_t a_sizeHint) :
 			BaseType(a_sizeHint)
 		{}
 
@@ -36,7 +36,7 @@ namespace RE
 		{}
 
 
-		GHashSet(void* a_heap, SInt32 a_sizeHint) :
+		GHashSet(void* a_heap, std::int32_t a_sizeHint) :
 			BaseType(a_heap, a_sizeHint)
 		{}
 

@@ -11,7 +11,7 @@ namespace RE
 	class Calendar : public BSTSingletonSDM<Calendar>
 	{
 	public:
-		static constexpr UInt8 DAYS_IN_MONTH[] = {
+		static constexpr std::uint8_t DAYS_IN_MONTH[] = {
 			31,	 // Morning Star
 			28,	 // Sun's Dawn
 			31,	 // First Seed
@@ -68,32 +68,32 @@ namespace RE
 
 		static Calendar* GetSingleton();
 
-		float		GetCurrentGameTime() const;
-		float		GetDay() const;
-		std::string GetDayName() const;
-		UInt32		GetDayOfWeek() const;
-		float		GetDaysPassed() const;
-		float		GetHour() const;
-		float		GetHoursPassed() const;
-		UInt32		GetMonth() const;
-		std::string GetMonthName() const;
-		std::tm		GetTime() const;
-		float		GetTimescale() const;
-		UInt32		GetYear() const;
+		float		  GetCurrentGameTime() const;
+		float		  GetDay() const;
+		std::string	  GetDayName() const;
+		std::uint32_t GetDayOfWeek() const;
+		float		  GetDaysPassed() const;
+		float		  GetHour() const;
+		float		  GetHoursPassed() const;
+		std::uint32_t GetMonth() const;
+		std::string	  GetMonthName() const;
+		std::tm		  GetTime() const;
+		float		  GetTimescale() const;
+		std::uint32_t GetYear() const;
 
 
 		// members
-		UInt8	   pad01;			 // 01
-		UInt16	   pad02;			 // 02
-		UInt32	   pad04;			 // 04
-		TESGlobal* gameYear;		 // 08
-		TESGlobal* gameMonth;		 // 10
-		TESGlobal* gameDay;			 // 18
-		TESGlobal* gameHour;		 // 20
-		TESGlobal* gameDaysPassed;	 // 28
-		TESGlobal* timeScale;		 // 30
-		UInt32	   midnightsPassed;	 // 38
-		float	   rawDaysPassed;	 // 3C
+		std::uint8_t  pad01;			// 01
+		std::uint16_t pad02;			// 02
+		std::uint32_t pad04;			// 04
+		TESGlobal*	  gameYear;			// 08
+		TESGlobal*	  gameMonth;		// 10
+		TESGlobal*	  gameDay;			// 18
+		TESGlobal*	  gameHour;			// 20
+		TESGlobal*	  gameDaysPassed;	// 28
+		TESGlobal*	  timeScale;		// 30
+		std::uint32_t midnightsPassed;	// 38
+		float		  rawDaysPassed;	// 3C
 	};
-	STATIC_ASSERT(sizeof(Calendar) == 0x40);
+	static_assert(sizeof(Calendar) == 0x40);
 }

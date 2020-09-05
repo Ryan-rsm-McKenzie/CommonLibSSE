@@ -14,7 +14,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::AssociationType;
 
 
-		enum class FLAGS : UInt32  // DATA
+		enum class FLAGS  // DATA
 		{
 			kNone = 0,
 			kFamily = 1 << 0
@@ -23,7 +23,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -63,9 +63,9 @@ namespace RE
 
 
 		// members
-		BSFixedString associationLabels[Members::kTotal][Sexes::kTotal];  // 20 - MPRT - FCHT
-		FLAGS		  flags;											  // 40 - DATA
-		UInt32		  pad44;											  // 44
+		BSFixedString						   associationLabels[Members::kTotal][Sexes::kTotal];  // 20 - MPRT - FCHT
+		stl::enumeration<FLAGS, std::uint32_t> flags;											   // 40 - DATA
+		std::uint32_t						   pad44;											   // 44
 	};
-	STATIC_ASSERT(sizeof(BGSAssociationType) == 0x48);
+	static_assert(sizeof(BGSAssociationType) == 0x48);
 }

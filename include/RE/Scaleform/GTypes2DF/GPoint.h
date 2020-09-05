@@ -20,8 +20,8 @@ namespace RE
 
 
 	using GPointF = GPoint<float>;
-	STATIC_ASSERT(sizeof(GPointF) == 0x8);
+	static_assert(sizeof(GPointF) == 0x8);
 
 	using GPointD = GPoint<double>;
-	STATIC_ASSERT(sizeof(GPointD) == 0x10);
+	static_assert(sizeof(GPointD) == 0x10);
 }

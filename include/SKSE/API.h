@@ -8,32 +8,35 @@
 #include "SKSE/Trampoline.h"
 #include "SKSE/Version.h"
 
+#define SKSEAPI __cdecl
+
 
 namespace SKSE
 {
-	bool Init(const LoadInterface* a_skse);
+	void Init(const LoadInterface* a_intfc) noexcept;
 	void RegisterForAPIInitEvent(std::function<void()> a_fn);
 
-	const PluginHandle GetPluginHandle();
-	const UInt32	   GetReleaseIndex();
+	PluginHandle  GetPluginHandle() noexcept;
+	std::uint32_t GetReleaseIndex() noexcept;
 
-	const ScaleformInterface*	  GetScaleformInterface();
-	const PapyrusInterface*		  GetPapyrusInterface();
-	const SerializationInterface* GetSerializationInterface();
-	const TaskInterface*		  GetTaskInterface();
+	const ScaleformInterface*	  GetScaleformInterface() noexcept;
+	const PapyrusInterface*		  GetPapyrusInterface() noexcept;
+	const SerializationInterface* GetSerializationInterface() noexcept;
+	const TaskInterface*		  GetTaskInterface() noexcept;
+	const TrampolineInterface*	  GetTrampolineInterface() noexcept;
 
-	const MessagingInterface*			   GetMessagingInterface();
-	RE::BSTEventSource<ModCallbackEvent>*  GetModCallbackEventSource();
-	RE::BSTEventSource<CameraEvent>*	   GetCameraEventSource();
-	RE::BSTEventSource<CrosshairRefEvent>* GetCrosshairRefEventSource();
-	RE::BSTEventSource<ActionEvent>*	   GetActionEventSource();
-	RE::BSTEventSource<NiNodeUpdateEvent>* GetNiNodeUpdateEventSource();
+	const MessagingInterface*			   GetMessagingInterface() noexcept;
+	RE::BSTEventSource<ModCallbackEvent>*  GetModCallbackEventSource() noexcept;
+	RE::BSTEventSource<CameraEvent>*	   GetCameraEventSource() noexcept;
+	RE::BSTEventSource<CrosshairRefEvent>* GetCrosshairRefEventSource() noexcept;
+	RE::BSTEventSource<ActionEvent>*	   GetActionEventSource() noexcept;
+	RE::BSTEventSource<NiNodeUpdateEvent>* GetNiNodeUpdateEventSource() noexcept;
 
-	const ObjectInterface*			   GetObjectInterface();
-	const SKSEDelayFunctorManager*	   GetDelayFunctorManager();
-	const SKSEObjectRegistry*		   GetObjectRegistry();
-	const SKSEPersistentObjectStorage* GetPersistentObjectStorage();
+	const ObjectInterface*			   GetObjectInterface() noexcept;
+	const SKSEDelayFunctorManager*	   GetDelayFunctorManager() noexcept;
+	const SKSEObjectRegistry*		   GetObjectRegistry() noexcept;
+	const SKSEPersistentObjectStorage* GetPersistentObjectStorage() noexcept;
 
-	Trampoline* GetTrampoline();
-	bool		AllocTrampoline(std::size_t a_size);
+	Trampoline& GetTrampoline();
+	void		AllocTrampoline(std::size_t a_size, bool a_trySKSEReserve = true);
 }

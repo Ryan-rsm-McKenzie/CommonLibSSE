@@ -80,7 +80,7 @@ namespace RE
 	bool ExtraDataList::HasType(ExtraDataType a_type) const
 	{
 		BSReadLockGuard locker(_lock);
-		return _presence ? _presence->HasType(static_cast<UInt32>(a_type)) : false;
+		return _presence ? _presence->HasType(static_cast<std::uint32_t>(a_type)) : false;
 	}
 
 
@@ -163,19 +163,19 @@ namespace RE
 	BSExtraData* ExtraDataList::Add(BSExtraData* a_toAdd)
 	{
 		using func_t = decltype(&ExtraDataList::Add);
-		REL::Offset<func_t> func(Offset::ExtraDataList::Add);
+		REL::Relocation<func_t> func{ Offset::ExtraDataList::Add };
 		return func(this, a_toAdd);
 	}
 
 
-	ObjectRefHandle ExtraDataList::GetAshPileRefHandle()
+	ObjectRefHandle ExtraDataList::GetAshPileRef()
 	{
 		auto xAshRef = GetByType<ExtraAshPileRef>();
 		return xAshRef ? xAshRef->ashPileRef : ObjectRefHandle();
 	}
 
 
-	SInt32 ExtraDataList::GetCount() const
+	std::int32_t ExtraDataList::GetCount() const
 	{
 		auto xCount = GetByType<ExtraCount>();
 		return xCount ? xCount->count : 1;
@@ -225,16 +225,13 @@ namespace RE
 	ExtraTextDisplayData* ExtraDataList::GetExtraTextDisplayData()
 	{
 		auto xRef = GetByType<ExtraReferenceHandle>();
-		if (!xRef) {
-			return nullptr;
+		auto ref = xRef ? xRef->GetOriginalReference() : nullptr;
+		ExtraTextDisplayData* xText = nullptr;
+		if (ref && !ref->IsDeleted()) {
+			xText = ref->extraList.GetByType<ExtraTextDisplayData>();
 		}
 
-		auto ref = xRef->GetOriginalReference();
-		if (!ref || !ref->IsDeleted()) {
-			return GetByType<ExtraTextDisplayData>();
-		} else {
-			return nullptr;
-		}
+		return xText ? xText : GetByType<ExtraTextDisplayData>();
 	}
 
 
@@ -276,14 +273,14 @@ namespace RE
 	SOUL_LEVEL ExtraDataList::GetSoulLevel() const
 	{
 		auto xSoul = GetByType<ExtraSoul>();
-		return xSoul ? xSoul->soul : SOUL_LEVEL::kNone;
+		return xSoul ? *xSoul->soul : SOUL_LEVEL::kNone;
 	}
 
 
 	void ExtraDataList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
 	{
 		using func_t = decltype(&ExtraDataList::SetExtraFlags);
-		REL::Offset<func_t> func(Offset::ExtraDataList::SetExtraFlags);
+		REL::Relocation<func_t> func{ Offset::ExtraDataList::SetExtraFlags };
 		return func(this, a_flags, a_enable);
 	}
 
@@ -291,7 +288,7 @@ namespace RE
 	void ExtraDataList::SetInventoryChanges(InventoryChanges* a_changes)
 	{
 		using func_t = decltype(&ExtraDataList::SetInventoryChanges);
-		REL::Offset<func_t> func(Offset::ExtraDataList::SetInventoryChanges);
+		REL::Relocation<func_t> func{ Offset::ExtraDataList::SetInventoryChanges };
 		return func(this, a_changes);
 	}
 
@@ -316,21 +313,21 @@ namespace RE
 	}
 
 
-	bool ExtraDataList::PresenceBitfield::HasType(UInt32 a_type) const
+	bool ExtraDataList::PresenceBitfield::HasType(std::uint32_t a_type) const
 	{
-		const UInt32 index = (a_type >> 3);
+		const std::uint32_t index = (a_type >> 3);
 		if (index >= 0x18) {
 			return false;
 		}
-		const UInt8 bitMask = 1 << (a_type % 8);
+		const std::uint8_t bitMask = 1 << (a_type % 8);
 		return (bits[index] & bitMask) != 0;
 	}
 
 
-	void ExtraDataList::PresenceBitfield::MarkType(UInt32 a_type, bool a_cleared)
+	void ExtraDataList::PresenceBitfield::MarkType(std::uint32_t a_type, bool a_cleared)
 	{
-		const UInt32 index = (a_type >> 3);
-		const UInt8 bitMask = 1 << (a_type % 8);
+		const std::uint32_t index = (a_type >> 3);
+		const std::uint8_t bitMask = 1 << (a_type % 8);
 		auto& flag = bits[index];
 		if (a_cleared) {
 			flag &= ~bitMask;
@@ -340,7 +337,7 @@ namespace RE
 	}
 
 
-	void ExtraDataList::MarkType(UInt32 a_type, bool a_cleared)
+	void ExtraDataList::MarkType(std::uint32_t a_type, bool a_cleared)
 	{
 		_presence->MarkType(a_type, a_cleared);
 	}
@@ -348,7 +345,7 @@ namespace RE
 
 	void ExtraDataList::MarkType(ExtraDataType a_type, bool a_cleared)
 	{
-		MarkType(static_cast<UInt32>(a_type), a_cleared);
+		MarkType(static_cast<std::uint32_t>(a_type), a_cleared);
 	}
 
 

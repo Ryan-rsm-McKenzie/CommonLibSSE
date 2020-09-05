@@ -17,7 +17,7 @@ namespace RE
 			inline static constexpr auto RTTI = RTTI_BSScript__ErrorLogger;
 
 
-			enum class Severity : UInt32
+			enum class Severity
 			{
 				kInfo,
 				kWarning,
@@ -28,11 +28,13 @@ namespace RE
 
 			struct PerThreadErrorCounts
 			{
-				UInt32 fatalCount;	  // 0
-				UInt32 errorCount;	  // 4
-				UInt32 warningCount;  // 8
+			public:
+				// members
+				std::uint32_t fatalCount;	 // 0
+				std::uint32_t errorCount;	 // 4
+				std::uint32_t warningCount;	 // 8
 			};
-			STATIC_ASSERT(sizeof(PerThreadErrorCounts) == 0xC);
+			static_assert(sizeof(PerThreadErrorCounts) == 0xC);
 
 
 			virtual ~ErrorLogger();	 // 00
@@ -43,9 +45,9 @@ namespace RE
 
 
 			// members
-			UInt64									 unk60;			// 60
-			BSTHashMap<UInt32, PerThreadErrorCounts> threadErrors;	// 68
+			std::uint64_t									unk60;		   // 60
+			BSTHashMap<std::uint32_t, PerThreadErrorCounts> threadErrors;  // 68
 		};
-		STATIC_ASSERT(sizeof(ErrorLogger) == 0x98);
+		static_assert(sizeof(ErrorLogger) == 0x98);
 	}
 }

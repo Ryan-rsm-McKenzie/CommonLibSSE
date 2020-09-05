@@ -17,7 +17,7 @@ namespace RE
 	public:
 		NiPoint2 point;	 // 00
 	};
-	STATIC_ASSERT(sizeof(TESRegionPoint) == 0x8);
+	static_assert(sizeof(TESRegionPoint) == 0x8);
 
 
 	class TESRegionPointList : public BSSimpleList<TESRegionPoint*>	 // RPLD
@@ -29,20 +29,20 @@ namespace RE
 			float		   dist;   // 08
 			float		   scale;  // 0C
 		};
-		STATIC_ASSERT(sizeof(ScaleResult) == 0x10);
+		static_assert(sizeof(ScaleResult) == 0x10);
 
 
-		ScaleResult* lastScaleResult;	   // 10
-		bool		 ownsPointMemory;	   // 18
-		UInt8		 pad19;				   // 19
-		UInt16		 pad1A;				   // 1A
-		NiPoint2	 minimums;			   // 1C
-		NiPoint2	 maximums;			   // 24
-		UInt32		 distanceInsideAtMax;  // 2C - RPLI
-		UInt32		 count;				   // 30
-		UInt32		 pad34;				   // 34
+		ScaleResult*  lastScaleResult;		// 10
+		bool		  ownsPointMemory;		// 18
+		std::uint8_t  pad19;				// 19
+		std::uint16_t pad1A;				// 1A
+		NiPoint2	  minimums;				// 1C
+		NiPoint2	  maximums;				// 24
+		std::uint32_t distanceInsideAtMax;	// 2C - RPLI
+		std::uint32_t count;				// 30
+		std::uint32_t pad34;				// 34
 	};
-	STATIC_ASSERT(sizeof(TESRegionPointList) == 0x38);
+	static_assert(sizeof(TESRegionPointList) == 0x38);
 
 
 	class TESRegion : public TESForm
@@ -54,7 +54,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kBorderRegion = 1 << 6,
@@ -80,7 +80,7 @@ namespace RE
 		TESWorldSpace*					   worldSpace;		// 30 - WNAM
 		TESWeather*						   currentWeather;	// 38
 		NiColor							   emittanceColor;	// 40
-		UInt32							   pad4C;			// 4C
+		std::uint32_t					   pad4C;			// 4C
 	};
-	STATIC_ASSERT(sizeof(TESRegion) == 0x50);
+	static_assert(sizeof(TESRegion) == 0x50);
 }

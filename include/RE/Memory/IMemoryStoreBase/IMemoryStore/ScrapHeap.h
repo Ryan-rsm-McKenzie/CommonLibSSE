@@ -18,7 +18,7 @@ namespace RE
 			std::size_t sizeFlags;	// 00
 			Block*		prev;		// 08
 		};
-		STATIC_ASSERT(sizeof(Block) == 0x10);
+		static_assert(sizeof(Block) == 0x10);
 
 
 		struct FreeBlock : public Block
@@ -28,7 +28,7 @@ namespace RE
 			FreeBlock* left;   // 10
 			FreeBlock* right;  // 18
 		};
-		STATIC_ASSERT(sizeof(FreeBlock) == 0x20);
+		static_assert(sizeof(FreeBlock) == 0x20);
 
 
 		struct FreeTreeNode : public Block
@@ -40,38 +40,37 @@ namespace RE
 			FreeTreeNode*  rightNode;		// 20
 			std::size_t	   parentAndBlack;	// 28
 		};
-		STATIC_ASSERT(sizeof(FreeTreeNode) == 0x30);
+		static_assert(sizeof(FreeTreeNode) == 0x30);
 
 
-		virtual ~ScrapHeap();  // 00
+		virtual ~ScrapHeap() { ::VirtualFree(baseAddress, 0, MEM_RELEASE); }  // 00
 
 		// override (IMemoryStore)
-		virtual std::size_t Size(const void* a_block) const override;							 // 01
-		virtual void		GetMemoryStats(MemoryStats* a_stats) override;						 // 02 - { return; }
-		virtual bool		ContainsBlockImpl(const void* a_block) const override;				 // 03
-		virtual void*		AllocateAlignImpl(std::size_t a_size, UInt32 a_alignment) override;	 // 04
-		virtual void		DeallocateAlignImpl(void* a_freeBlock) override;					 // 05
+		virtual std::size_t Size(void const* a_mem) const override { return *static_cast<const std::size_t*>(a_mem) & ~(std::size_t{ 3 } << 62); }	// 01
+		virtual void		GetMemoryStats(MemoryStats*) override { return; }																		// 02
+		virtual bool		ContainsBlockImpl(const void* a_block) const override { return baseAddress <= a_block && a_block <= endAddress; }		// 03
+		virtual void*		AllocateAlignImpl(std::size_t a_size, std::uint32_t a_alignment) override { return Allocate(a_size, a_alignment); }		// 04
+		virtual void		DeallocateAlignImpl(void*& a_block) override { Deallocate(a_block), a_block = nullptr; }								// 05
 
 		void* Allocate(std::size_t a_size, std::size_t a_alignment);
 		void  Deallocate(void* a_mem);
 
 
 		// members
-		FreeBlock*	  smallBlocks[6];		 // 08
-		FreeTreeNode* freeList;				 // 38
-		Block*		  lastBlock;			 // 40
-		void*		  baseAddress;			 // 48
-		void*		  endAddress;			 // 50
-		void*		  commitEnd;			 // 58
-		std::size_t	  reserveSize;			 // 60
-		std::size_t	  minCommit;			 // 68
-		std::size_t	  totalAllocated;		 // 70
-		UInt32		  keepPagesRequest;		 // 78
-		UInt32		  totalFreeBlocks;		 // 7C
-		UInt32		  freeSmallBlocks;		 // 80
-		UInt32		  totalAllocatedBlocks;	 // 84
-		UInt32		  pmpBarrier;			 // 88
-		UInt32		  pad8C;				 // 8C
+		FreeBlock*	  smallBlocks[6]{ nullptr };  // 08
+		FreeTreeNode* freeList{ nullptr };		  // 38
+		Block*		  lastBlock{ nullptr };		  // 40
+		void*		  baseAddress{ nullptr };	  // 48
+		void*		  endAddress{ nullptr };	  // 50
+		void*		  commitEnd{ nullptr };		  // 58
+		std::size_t	  reserveSize{ 1 << 26 };	  // 60
+		std::size_t	  minCommit{ 1 << 17 };		  // 68
+		std::size_t	  totalAllocated{ 0 };		  // 70
+		std::uint32_t keepPagesRequest{ 0 };	  // 78
+		std::uint32_t totalFreeBlocks{ 0 };		  // 7C
+		std::uint32_t freeSmallBlocks{ 0 };		  // 80
+		std::uint32_t totalAllocatedBlocks{ 0 };  // 84
+		std::uint32_t pmpBarrier{ 0 };			  // 88
 	};
-	STATIC_ASSERT(sizeof(ScrapHeap) == 0x90);
+	static_assert(sizeof(ScrapHeap) == 0x90);
 }

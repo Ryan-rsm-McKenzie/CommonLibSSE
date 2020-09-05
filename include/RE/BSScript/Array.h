@@ -14,8 +14,8 @@ namespace RE
 		{
 		public:
 			using value_type = Variable;
-			using size_type = UInt32;
-			using difference_type = SInt32;
+			using size_type = std::uint32_t;
+			using difference_type = std::int32_t;
 			using reference = value_type&;
 			using const_reference = const value_type&;
 			using pointer = value_type*;
@@ -27,9 +27,6 @@ namespace RE
 
 
 			~Array();
-
-			[[nodiscard]] reference		  at(size_type a_pos);
-			[[nodiscard]] const_reference at(size_type a_pos) const;
 
 			[[nodiscard]] reference		  operator[](size_type a_pos);
 			[[nodiscard]] const_reference operator[](size_type a_pos) const;
@@ -71,19 +68,16 @@ namespace RE
 			[[nodiscard]] TypeInfo::RawType type() const;
 
 		private:
-			void out_of_range(const char* a_fnName, size_type a_pos) const;
-
-
 			static inline constexpr size_type MAX_SIZE = 128;
 
 			// members
-			UInt32			   _pad04;		  // 04
+			std::uint32_t	   _pad04;		  // 04
 			TypeInfo		   _elementType;  // 08
-			UInt32			   _size;		  // 10
-			UInt32			   _pad14;		  // 14
+			std::uint32_t	   _size;		  // 10
+			std::uint32_t	   _pad14;		  // 14
 			mutable BSSpinLock _lock;		  // 18
 			Variable		   _data[0];	  // 20
 		};
-		STATIC_ASSERT(sizeof(Array) == 0x20);
+		static_assert(sizeof(Array) == 0x20);
 	}
 }

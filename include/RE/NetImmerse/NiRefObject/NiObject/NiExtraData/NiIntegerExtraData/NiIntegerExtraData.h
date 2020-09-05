@@ -25,8 +25,8 @@ namespace RE
 
 
 		// members
-		SInt32 value;  // 18
-		UInt32 pad1C;  // 1C
+		std::int32_t  value;  // 18
+		std::uint32_t pad1C;  // 1C
 	};
-	STATIC_ASSERT(sizeof(NiIntegerExtraData) == 0x20);
+	static_assert(sizeof(NiIntegerExtraData) == 0x20);
 }

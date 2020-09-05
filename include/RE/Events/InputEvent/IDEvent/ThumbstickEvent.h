@@ -13,7 +13,7 @@ namespace RE
 
 		struct InputTypes
 		{
-			enum InputType : UInt32
+			enum InputType : std::uint32_t
 			{
 				kLeftThumbstick = 0x0B,
 				kRightThumbstick = 0x0C
@@ -30,5 +30,5 @@ namespace RE
 		float xValue;  // 28
 		float yValue;  // 2C
 	};
-	STATIC_ASSERT(sizeof(ThumbstickEvent) == 0x30);
+	static_assert(sizeof(ThumbstickEvent) == 0x30);
 }

@@ -17,13 +17,13 @@ namespace RE
 	struct BGSPackageDataList
 	{
 		IPackageData** data;	  // 00
-		SInt8*		   uids;	  // 08
-		UInt16		   dataSize;  // 10
-		SInt8		   nextUID;	  // 12 - XNAM
-		UInt8		   pad13;	  // 13
-		UInt32		   pad14;	  // 14
+		std::int8_t*   uids;	  // 08
+		std::uint16_t  dataSize;  // 10
+		std::int8_t	   nextUID;	  // 12 - XNAM
+		std::uint8_t   pad13;	  // 13
+		std::uint32_t  pad14;	  // 14
 	};
-	STATIC_ASSERT(sizeof(BGSPackageDataList) == 0x18);
+	static_assert(sizeof(BGSPackageDataList) == 0x18);
 
 
 	struct BGSPackageDataNameMap : public BSIntrusiveRefCounted
@@ -32,7 +32,7 @@ namespace RE
 		struct NameMapData
 		{
 		public:
-			enum class Flag : UInt8
+			enum class Flag
 			{
 				kNone = 0,
 				kPublic = 1 << 0
@@ -41,20 +41,20 @@ namespace RE
 
 			// members
 			BSFixedString name;		 // 00 - BNAM
-			SInt8		  uid;		 // 08 - UNAM
+			std::int8_t	  uid;		 // 08 - UNAM
 			bool		  isPublic;	 // 09 - PNAM
-			UInt8		  pad0A;	 // 0A
-			UInt8		  pad0B;	 // 0B
-			UInt32		  pad0C;	 // 0C
+			std::uint8_t  pad0A;	 // 0A
+			std::uint8_t  pad0B;	 // 0B
+			std::uint32_t pad0C;	 // 0C
 		};
-		STATIC_ASSERT(sizeof(NameMapData) == 0x10);
+		static_assert(sizeof(NameMapData) == 0x10);
 
 
 		// members
-		UInt32				  pad04;	// 04
+		std::uint32_t		  pad04;	// 04
 		BSTArray<NameMapData> nameMap;	// 08
 	};
-	STATIC_ASSERT(sizeof(BGSPackageDataNameMap) == 0x20);
+	static_assert(sizeof(BGSPackageDataNameMap) == 0x20);
 
 
 	class TESCustomPackageData : public TESPackageData
@@ -77,10 +77,10 @@ namespace RE
 		IProcedureTreeItem*					   procedureTree;			 // 20
 		BSTSmartPointer<BGSPackageDataNameMap> nameMap;					 // 28
 		TESPackage*							   templateParent;			 // 30
-		UInt16								   version;					 // 38
+		std::uint16_t						   version;					 // 38
 		bool								   alwaysRecheckConditions;	 // 3A
-		UInt8								   pad3B;					 // 3B
-		UInt32								   pad3C;					 // 3C
+		std::uint8_t						   pad3B;					 // 3B
+		std::uint32_t						   pad3C;					 // 3C
 	};
-	STATIC_ASSERT(sizeof(TESCustomPackageData) == 0x40);
+	static_assert(sizeof(TESCustomPackageData) == 0x40);
 }

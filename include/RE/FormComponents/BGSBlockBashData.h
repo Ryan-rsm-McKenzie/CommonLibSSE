@@ -24,5 +24,5 @@ namespace RE
 		BGSImpactDataSet* blockBashImpactDataSet;  // 08 - BIDS
 		BGSMaterialType*  altBlockMaterialType;	   // 10 - BAMT
 	};
-	STATIC_ASSERT(sizeof(BGSBlockBashData) == 0x18);
+	static_assert(sizeof(BGSBlockBashData) == 0x18);
 }

@@ -11,5 +11,5 @@ namespace RE
 		// members
 		GFxValue obj;  // 00 - kObject
 	};
-	STATIC_ASSERT(sizeof(BottomBar) == 0x18);
+	static_assert(sizeof(BottomBar) == 0x18);
 }

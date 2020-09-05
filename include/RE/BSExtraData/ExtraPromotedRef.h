@@ -24,5 +24,5 @@ namespace RE
 		// members
 		BSTArray<TESForm*> promotedRefOwners;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraPromotedRef) == 0x28);
+	static_assert(sizeof(ExtraPromotedRef) == 0x28);
 }

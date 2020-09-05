@@ -15,7 +15,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
@@ -42,5 +42,5 @@ namespace RE
 		float expirationTimer;	// 1D8
 		float coneAngle;		// 1DC
 	};
-	STATIC_ASSERT(sizeof(FlameProjectile) == 0x1E0);
+	static_assert(sizeof(FlameProjectile) == 0x1E0);
 }

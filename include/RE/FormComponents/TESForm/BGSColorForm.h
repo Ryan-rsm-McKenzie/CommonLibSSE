@@ -17,7 +17,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::ColorForm;
 
 
-		enum class Flag : UInt32  // FNAM
+		enum class Flag	 // FNAM
 		{
 			kNone = 0,
 			kPlayable = 1 << 0
@@ -26,7 +26,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -45,8 +45,8 @@ namespace RE
 
 
 		// memebrs
-		Color color;  // 30 - CNAM
-		Flag  flags;  // 34 - FNAM
+		Color								  color;  // 30 - CNAM
+		stl::enumeration<Flag, std::uint32_t> flags;  // 34 - FNAM
 	};
-	STATIC_ASSERT(sizeof(BGSColorForm) == 0x38);
+	static_assert(sizeof(BGSColorForm) == 0x38);
 }

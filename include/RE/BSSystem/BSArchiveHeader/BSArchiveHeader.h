@@ -10,22 +10,22 @@ namespace RE
 		{
 		public:
 			// members
-			UInt32 flag;  // 0
+			std::uint32_t flag;	 // 0
 		};
-		STATIC_ASSERT(sizeof(ArchiveFlag) == 0x4);
+		static_assert(sizeof(ArchiveFlag) == 0x4);
 
 
 		// members
-		UInt32		tag;				   // 00
-		UInt32		version;			   // 04
-		UInt32		headerSize;			   // 08
-		ArchiveFlag flags;				   // 0C
-		UInt32		directories;		   // 10
-		UInt32		files;				   // 14
-		UInt32		directoryNamesLength;  // 18
-		UInt32		fileNamesLength;	   // 1C
-		UInt16		archiveType;		   // 20
-		UInt16		pad22;				   // 22
+		std::uint32_t tag;					 // 00
+		std::uint32_t version;				 // 04
+		std::uint32_t headerSize;			 // 08
+		ArchiveFlag	  flags;				 // 0C
+		std::uint32_t directories;			 // 10
+		std::uint32_t files;				 // 14
+		std::uint32_t directoryNamesLength;	 // 18
+		std::uint32_t fileNamesLength;		 // 1C
+		std::uint16_t archiveType;			 // 20
+		std::uint16_t pad22;				 // 22
 	};
-	STATIC_ASSERT(sizeof(BSArchiveHeader) == 0x24);
+	static_assert(sizeof(BSArchiveHeader) == 0x24);
 }

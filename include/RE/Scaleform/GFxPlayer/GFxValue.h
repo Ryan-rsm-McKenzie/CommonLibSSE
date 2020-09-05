@@ -95,7 +95,7 @@ namespace RE
 		friend class GFxMovieRoot;
 
 	public:
-		enum class ValueType : UInt32
+		enum class ValueType
 		{
 			kUndefined = 0x00,
 			kNull = 0x01,
@@ -124,7 +124,7 @@ namespace RE
 		{
 		public:
 			// Flags set to define the display properties of display objects.
-			enum class Flag : UInt16
+			enum class Flag
 			{
 				kNone = 0,
 				kX = 1 << 0,
@@ -191,28 +191,28 @@ namespace RE
 
 
 			// members
-			double	  _x;			   // 00
-			double	  _y;			   // 08
-			double	  _rotation;	   // 10
-			double	  _xScale;		   // 18
-			double	  _yScale;		   // 20
-			double	  _alpha;		   // 28
-			bool	  _visible;		   // 30
-			UInt8	  _pad31;		   // 31
-			UInt16	  _pad32;		   // 32
-			UInt32	  _pad34;		   // 34
-			double	  _z;			   // 38
-			double	  _xRotation;	   // 40
-			double	  _yRotation;	   // 48
-			double	  _zScale;		   // 50
-			double	  _fov;			   // 58
-			GMatrix3D _viewMatrix3D;   // 60
-			GMatrix3D _perspMatrix3D;  // A0
-			Flag	  _flags;		   // E0
-			UInt16	  _padD2;		   // E2
-			UInt32	  _padD4;		   // E4
+			double								  _x;			   // 00
+			double								  _y;			   // 08
+			double								  _rotation;	   // 10
+			double								  _xScale;		   // 18
+			double								  _yScale;		   // 20
+			double								  _alpha;		   // 28
+			bool								  _visible;		   // 30
+			std::uint8_t						  _pad31;		   // 31
+			std::uint16_t						  _pad32;		   // 32
+			std::uint32_t						  _pad34;		   // 34
+			double								  _z;			   // 38
+			double								  _xRotation;	   // 40
+			double								  _yRotation;	   // 48
+			double								  _zScale;		   // 50
+			double								  _fov;			   // 58
+			GMatrix3D							  _viewMatrix3D;   // 60
+			GMatrix3D							  _perspMatrix3D;  // A0
+			stl::enumeration<Flag, std::uint16_t> _flags;		   // E0
+			std::uint16_t						  _padD2;		   // E2
+			std::uint32_t						  _padD4;		   // E4
 		};
-		STATIC_ASSERT(sizeof(DisplayInfo) == 0xE8);
+		static_assert(sizeof(DisplayInfo) == 0xE8);
 
 
 		class ObjectInterface : public GNewOverrideBase<GFxStatMovieViews::kGFxStatMV_Other_Mem>
@@ -234,7 +234,7 @@ namespace RE
 				virtual ~ArrVisitor();	// 00
 
 				// add
-				virtual void Visit(UInt32 a_idx, const GFxValue& a_val) = 0;  // 01
+				virtual void Visit(std::uint32_t a_idx, const GFxValue& a_val) = 0;	 // 01
 			};
 
 
@@ -249,19 +249,19 @@ namespace RE
 			bool Invoke(void* a_data, GFxValue* a_result, const char* a_name, const GFxValue* a_args, UPInt a_numArgs, bool a_isDObj);
 			bool DeleteMember(void* a_data, const char* a_name, bool a_isDObj);
 
-			UInt32 GetArraySize(void* a_data) const;
-			bool   SetArraySize(void* a_data, UInt32 a_size);
-			bool   GetElement(void* a_data, UInt32 a_idx, GFxValue* a_val) const;
-			bool   SetElement(void* a_data, UInt32 a_idx, const GFxValue& a_val);
-			bool   PushBack(void* a_data, const GFxValue& a_value);
-			bool   RemoveElements(void* a_data, UInt32 a_idx, SInt32 a_count);
+			std::uint32_t GetArraySize(void* a_data) const;
+			bool		  SetArraySize(void* a_data, std::uint32_t a_size);
+			bool		  GetElement(void* a_data, std::uint32_t a_idx, GFxValue* a_val) const;
+			bool		  SetElement(void* a_data, std::uint32_t a_idx, const GFxValue& a_val);
+			bool		  PushBack(void* a_data, const GFxValue& a_value);
+			bool		  RemoveElements(void* a_data, std::uint32_t a_idx, std::int32_t a_count);
 
 			bool GetDisplayInfo(void* a_data, DisplayInfo* a_info) const;
 			bool SetDisplayInfo(void* a_data, const DisplayInfo& a_info);
 
 			bool SetText(void* a_data, const char* a_text, bool a_isHTML);
 
-			bool AttachMovie(void* a_data, GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, SInt32 a_depth, const GFxValue* a_initObj);
+			bool AttachMovie(void* a_data, GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, std::int32_t a_depth, const GFxValue* a_initObj);
 			bool GotoAndPlay(void* a_data, const char* a_frame, bool a_stop);
 
 			bool IsSameContext(const ObjectInterface* a_rhs) const;
@@ -270,7 +270,7 @@ namespace RE
 			// members
 			GFxMovieRoot* _movieRoot;  // 0
 		};
-		STATIC_ASSERT(sizeof(ObjectInterface) == 0x8);
+		static_assert(sizeof(ObjectInterface) == 0x8);
 
 
 		using ObjectVisitor = ObjectInterface::ObjVisitor;
@@ -376,14 +376,14 @@ namespace RE
 		}
 
 		// AS Array support. Valid for Array type
-		UInt32 GetArraySize() const;
-		bool   SetArraySize(UInt32 a_size);
-		bool   GetElement(UInt32 a_idx, GFxValue* a_val) const;
-		bool   SetElement(UInt32 a_idx, const GFxValue& a_val);
-		bool   PushBack(const GFxValue& a_val);
-		bool   RemoveElements(UInt32 a_idx, SInt32 a_count = -1);
-		bool   RemoveElement(UInt32 a_idx);
-		bool   ClearElements();
+		std::uint32_t GetArraySize() const;
+		bool		  SetArraySize(std::uint32_t a_size);
+		bool		  GetElement(std::uint32_t a_idx, GFxValue* a_val) const;
+		bool		  SetElement(std::uint32_t a_idx, const GFxValue& a_val);
+		bool		  PushBack(const GFxValue& a_val);
+		bool		  RemoveElements(std::uint32_t a_idx, std::int32_t a_count = -1);
+		bool		  RemoveElement(std::uint32_t a_idx);
+		bool		  ClearElements();
 
 		// AS MovieClips, Buttons, TextFields support. Valid for DisplayObject type
 		bool GetDisplayInfo(DisplayInfo* a_info) const;
@@ -394,7 +394,7 @@ namespace RE
 		bool SetTextHTML(const char* a_html);
 
 		// AS MovieClip support. Valid for MovieClips.
-		bool AttachMovie(GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, SInt32 a_depth = -1, const GFxValue* a_initObj = nullptr);
+		bool AttachMovie(GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, std::int32_t a_depth = -1, const GFxValue* a_initObj = nullptr);
 		bool GotoAndPlay(const char* a_frame);
 		bool GotoAndStop(const char* a_frame);
 
@@ -421,14 +421,14 @@ namespace RE
 			const wchar_t** managedWideString;
 			void*			obj;
 		};
-		STATIC_ASSERT(sizeof(ValueUnion) == 0x8);
+		static_assert(sizeof(ValueUnion) == 0x8);
 
 
 		// members
-		ObjectInterface* _objectInterface;	// 00
-		ValueType		 _type;				// 08
-		UInt32			 _pad0C;			// 0C
-		ValueUnion		 _value;			// 10
+		ObjectInterface*						   _objectInterface;  // 00
+		stl::enumeration<ValueType, std::uint32_t> _type;			  // 08
+		std::uint32_t							   _pad0C;			  // 0C
+		ValueUnion								   _value;			  // 10
 	};
-	STATIC_ASSERT(sizeof(GFxValue) == 0x18);
+	static_assert(sizeof(GFxValue) == 0x18);
 }

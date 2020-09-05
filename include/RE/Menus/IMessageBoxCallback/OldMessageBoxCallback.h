@@ -23,5 +23,5 @@ namespace RE
 		// members
 		Callback* callback;	 // 10
 	};
-	STATIC_ASSERT(sizeof(OldMessageBoxCallback) == 0x18);
+	static_assert(sizeof(OldMessageBoxCallback) == 0x18);
 }

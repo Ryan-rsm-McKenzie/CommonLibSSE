@@ -9,7 +9,7 @@ namespace RE
 	class GImageBase
 	{
 	public:
-		enum class ImageFormat : UInt32
+		enum class ImageFormat
 		{
 			kNone = 0,
 			kARGB_8888 = 1,
@@ -27,14 +27,14 @@ namespace RE
 		};
 
 
-		ImageFormat	   format;		 // 00
-		UInt32		   width;		 // 04
-		UInt32		   height;		 // 08
-		UInt32		   pitch;		 // 0C
-		UInt8*		   data;		 // 10
-		UInt32		   dataSize;	 // 18
-		UInt32		   mipMapCount;	 // 1C
-		GArray<GColor> colorMap;	 // 20
+		stl::enumeration<ImageFormat, std::uint32_t> format;	   // 00
+		std::uint32_t								 width;		   // 04
+		std::uint32_t								 height;	   // 08
+		std::uint32_t								 pitch;		   // 0C
+		std::uint8_t*								 data;		   // 10
+		std::uint32_t								 dataSize;	   // 18
+		std::uint32_t								 mipMapCount;  // 1C
+		GArray<GColor>								 colorMap;	   // 20
 	};
-	STATIC_ASSERT(sizeof(GImageBase) == 0x38);
+	static_assert(sizeof(GImageBase) == 0x38);
 }

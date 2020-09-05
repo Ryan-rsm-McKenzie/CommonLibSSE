@@ -32,20 +32,20 @@ namespace RE
 
 
 			// members
-			UInt64	  unk018;  // 018
-			UInt64	  unk020;  // 020
-			UInt64	  unk028;  // 028
-			GFxValue* unk030;  // 030
-			GFxValue  unk038;  // 038
-			GFxValue  unk050;  // 050
-			GFxValue  unk068;  // 068
-			GFxValue  unk080;  // 080
-			GFxValue  unk098;  // 098
-			GFxValue  unk0B0;  // 0B0
-			GFxValue  unk0C8;  // 0C8
-			GFxValue  unk0E0;  // 0E0
-			UInt64	  unk0F8;  // 0F8
+			std::uint64_t unk018;  // 018
+			std::uint64_t unk020;  // 020
+			std::uint64_t unk028;  // 028
+			GFxValue*	  unk030;  // 030
+			GFxValue	  unk038;  // 038
+			GFxValue	  unk050;  // 050
+			GFxValue	  unk068;  // 068
+			GFxValue	  unk080;  // 080
+			GFxValue	  unk098;  // 098
+			GFxValue	  unk0B0;  // 0B0
+			GFxValue	  unk0C8;  // 0C8
+			GFxValue	  unk0E0;  // 0E0
+			std::uint64_t unk0F8;  // 0F8
 		};
-		STATIC_ASSERT(sizeof(CraftingSubMenu) == 0x100);
+		static_assert(sizeof(CraftingSubMenu) == 0x100);
 	}
 }

@@ -20,10 +20,10 @@ namespace RE
 
 
 		// members
-		bool   unk10;  // 10
-		UInt8  unk11;  // 11
-		UInt16 unk12;  // 12
-		UInt32 unk14;  // 14
+		bool		  unk10;  // 10
+		std::uint8_t  unk11;  // 11
+		std::uint16_t unk12;  // 12
+		std::uint32_t unk14;  // 14
 	};
-	STATIC_ASSERT(sizeof(MenuOpenHandler) == 0x18);
+	static_assert(sizeof(MenuOpenHandler) == 0x18);
 }

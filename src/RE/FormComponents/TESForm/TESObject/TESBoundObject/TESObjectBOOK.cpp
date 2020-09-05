@@ -6,9 +6,9 @@ namespace RE
 	auto OBJ_BOOK::GetSanitizedType() const
 		-> Flag
 	{
-		if ((flags & Flag::kTeachesSpell) != Flag::kNone) {
+		if (flags.all(Flag::kTeachesSpell)) {
 			return Flag::kTeachesSpell;
-		} else if ((flags & Flag::kAdvancesActorValue) != Flag::kNone) {
+		} else if (flags.all(Flag::kAdvancesActorValue)) {
 			return Flag::kAdvancesActorValue;
 		} else {
 			return Flag::kNone;
@@ -18,25 +18,25 @@ namespace RE
 
 	bool TESObjectBOOK::TeachesSkill() const
 	{
-		return (data.flags & OBJ_BOOK::Flag::kAdvancesActorValue) != OBJ_BOOK::Flag::kNone;
+		return data.flags.all(OBJ_BOOK::Flag::kAdvancesActorValue);
 	}
 
 
 	bool TESObjectBOOK::TeachesSpell() const
 	{
-		return (data.flags & OBJ_BOOK::Flag::kTeachesSpell) != OBJ_BOOK::Flag::kNone;
+		return data.flags.all(OBJ_BOOK::Flag::kTeachesSpell);
 	}
 
 
 	bool TESObjectBOOK::IsRead() const
 	{
-		return (data.flags & OBJ_BOOK::Flag::kHasBeenRead) != OBJ_BOOK::Flag::kNone;
+		return data.flags.all(OBJ_BOOK::Flag::kHasBeenRead);
 	}
 
 
 	bool TESObjectBOOK::CanBeTaken() const
 	{
-		return (data.flags & OBJ_BOOK::Flag::kCantTake) == OBJ_BOOK::Flag::kNone;
+		return data.flags.none(OBJ_BOOK::Flag::kCantTake);
 	}
 
 

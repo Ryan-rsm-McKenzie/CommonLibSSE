@@ -17,7 +17,7 @@ namespace RE
 
 		struct ChangeFlags
 		{
-			enum ChangeFlag : UInt32
+			enum ChangeFlag : std::uint32_t
 			{
 				kObjectValue = 1 << 1,
 				kObjectFullName = 1 << 2
@@ -28,8 +28,8 @@ namespace RE
 		virtual ~TESObject();  // 00
 
 		// override (TESForm)
-		virtual bool   IsObject() const override;	  // 28 - { return true; }
-		virtual UInt32 GetRefCount() const override;  // 2D - { return 0; }
+		virtual bool		  IsObject() const override;	 // 28 - { return true; }
+		virtual std::uint32_t GetRefCount() const override;	 // 2D - { return 0; }
 
 		// add
 		virtual void		  Unk_3B(void);								   // 3B - { return 0; }
@@ -42,9 +42,9 @@ namespace RE
 		virtual bool		  IsMarker();								   // 42
 		virtual bool		  IsOcclusionMarker();						   // 43 - { return formType == FormType::Static && this == Plane/Room/PortalMarker; }
 		virtual bool		  ReplaceModel();							   // 44
-		virtual UInt32		  IncRef();									   // 45 - { return 0; }
-		virtual UInt32		  DecRef();									   // 46 - { return 0; }
+		virtual std::uint32_t IncRef();									   // 45 - { return 0; }
+		virtual std::uint32_t DecRef();									   // 46 - { return 0; }
 		virtual NiAVObject*	  LoadGraphics(TESObjectREFR* a_ref);		   // 47
 	};
-	STATIC_ASSERT(sizeof(TESObject) == 0x20);
+	static_assert(sizeof(TESObject) == 0x20);
 }

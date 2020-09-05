@@ -23,8 +23,8 @@ namespace RE
 			// members
 			BSFixedString logName;	// 98
 			BSFixedString logPath;	// A0
-			UInt64		  unkA8;	// A8
+			std::uint64_t unkA8;	// A8
 		};
-		STATIC_ASSERT(sizeof(Logger) == 0xB0);
+		static_assert(sizeof(Logger) == 0xB0);
 	}
 }

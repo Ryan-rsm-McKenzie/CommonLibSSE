@@ -11,9 +11,9 @@ namespace RE
 
 	struct SEASON
 	{
-		enum : UInt32
+		enum : std::uint32_t
 		{
-			kNone = static_cast<UInt32>(-1),
+			kNone = static_cast<std::uint32_t>(-1),
 			kSpring = 0,
 			kSummer,
 			kFall,
@@ -41,8 +41,8 @@ namespace RE
 		// members
 		BGSSoundDescriptorForm* harvestSound;					// 08 - SNAM
 		TESBoundObject*			produceItem;					// 10 - PFIG
-		SInt8					produceChance[SEASON::kTotal];	// 18 - PFPC
-		UInt32					pad1C;							// 1C
+		std::int8_t				produceChance[SEASON::kTotal];	// 18 - PFPC
+		std::uint32_t			pad1C;							// 1C
 	};
-	STATIC_ASSERT(sizeof(TESProduceForm) == 0x20);
+	static_assert(sizeof(TESProduceForm) == 0x20);
 }

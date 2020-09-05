@@ -30,7 +30,7 @@ namespace RE
 				// members
 				ConstructibleObjectMenu* menu;	// 10
 			};
-			STATIC_ASSERT(sizeof(CreationConfirmCallback) == 0x18);
+			static_assert(sizeof(CreationConfirmCallback) == 0x18);
 
 
 			virtual ~ConstructibleObjectMenu();	 // 00
@@ -43,16 +43,16 @@ namespace RE
 
 			// members
 			BSTArray<void*> unk100;	 // 100
-			UInt64			unk118;	 // 118
-			UInt64			unk120;	 // 120
-			UInt64			unk128;	 // 128
-			UInt64			unk130;	 // 130
-			UInt64			unk138;	 // 138
-			UInt64			unk140;	 // 140
-			UInt64			unk148;	 // 148
-			UInt64			unk150;	 // 150
-			UInt64			unk158;	 // 158
+			std::uint64_t	unk118;	 // 118
+			std::uint64_t	unk120;	 // 120
+			std::uint64_t	unk128;	 // 128
+			std::uint64_t	unk130;	 // 130
+			std::uint64_t	unk138;	 // 138
+			std::uint64_t	unk140;	 // 140
+			std::uint64_t	unk148;	 // 148
+			std::uint64_t	unk150;	 // 150
+			std::uint64_t	unk158;	 // 158
 		};
-		STATIC_ASSERT(sizeof(ConstructibleObjectMenu) == 0x160);
+		static_assert(sizeof(ConstructibleObjectMenu) == 0x160);
 	}
 }

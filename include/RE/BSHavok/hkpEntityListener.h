@@ -21,5 +21,5 @@ namespace RE
 		virtual void EntitySetMotionTypeCallback(hkpEntity* a_entity);	// 04 - { return; }
 		virtual void EntityDeletedCallback(hkpEntity* a_entity);		// 05 - { return; }
 	};
-	STATIC_ASSERT(sizeof(hkpEntityListener) == 0x8);
+	static_assert(sizeof(hkpEntityListener) == 0x8);
 }

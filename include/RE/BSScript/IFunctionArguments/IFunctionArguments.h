@@ -23,6 +23,6 @@ namespace RE
 
 			TES_HEAP_REDEFINE_NEW();
 		};
-		STATIC_ASSERT(sizeof(IFunctionArguments) == 0x8);
+		static_assert(sizeof(IFunctionArguments) == 0x8);
 	}
 }

@@ -13,7 +13,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::ReferenceEffect;
 
 
-		enum class Flag : UInt32
+		enum class Flag
 		{
 			kNone = 0,
 			kFaceTarget = 1 << 0,
@@ -24,7 +24,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -34,12 +34,14 @@ namespace RE
 
 		struct Data	 // DATA
 		{
-			BGSArtObject*	 artObject;		// 00
-			TESEffectShader* effectShader;	// 08
-			Flag			 flags;			// 10
-			UInt32			 pad14;			// 14
+		public:
+			// members
+			BGSArtObject*						  artObject;	 // 00
+			TESEffectShader*					  effectShader;	 // 08
+			stl::enumeration<Flag, std::uint32_t> flags;		 // 10
+			std::uint32_t						  pad14;		 // 14
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x18);
+		static_assert(sizeof(Data) == 0x18);
 
 
 		virtual ~BGSReferenceEffect();	// 00
@@ -54,5 +56,5 @@ namespace RE
 		// members
 		Data data;	// 20 - DATA
 	};
-	STATIC_ASSERT(sizeof(BGSReferenceEffect) == 0x38);
+	static_assert(sizeof(BGSReferenceEffect) == 0x38);
 }

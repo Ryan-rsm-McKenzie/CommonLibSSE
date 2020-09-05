@@ -8,39 +8,43 @@ namespace RE
 	void PlayerCharacter::PlayerSkills::AdvanceLevel(bool a_addThreshold)
 	{
 		using func_t = decltype(&PlayerCharacter::PlayerSkills::AdvanceLevel);
-		REL::Offset<func_t> func(Offset::PlayerCharacter::PlayerSkills::AdvanceLevel);
+		REL::Relocation<func_t> func{ Offset::PlayerCharacter::PlayerSkills::AdvanceLevel };
 		return func(this, a_addThreshold);
 	}
 
 
 	PlayerCharacter* PlayerCharacter::GetSingleton()
 	{
-		REL::Offset<NiPointer<PlayerCharacter>*> singleton(Offset::PlayerCharacter::Singleton);
+		REL::Relocation<NiPointer<PlayerCharacter>*> singleton{ Offset::PlayerCharacter::Singleton };
 		return singleton->get();
-	}
-
-
-	UInt32 PlayerCharacter::GetPickpocketChance(float a_playerSkill, float a_targetSkill, UInt32 a_totalValue, float a_itemWeight, Actor* a_player, Actor* a_target, bool a_isDetected, TESForm* a_item)
-	{
-		using func_t = decltype(&PlayerCharacter::GetPickpocketChance);
-		REL::Offset<func_t> func(Offset::PlayerCharacter::GetPickpocketChance);
-		return func(a_playerSkill, a_targetSkill, a_totalValue, a_itemWeight, a_player, a_target, a_isDetected, a_item);
 	}
 
 
 	void PlayerCharacter::ActivatePickRef()
 	{
 		using func_t = decltype(&PlayerCharacter::ActivatePickRef);
-		REL::Offset<func_t> func(Offset::PlayerCharacter::ActivatePickRef);
+		REL::Relocation<func_t> func{ Offset::PlayerCharacter::ActivatePickRef };
 		return func(this);
 	}
 
 
-	bool PlayerCharacter::AttemptPickpocket(TESObjectREFR* a_target, InventoryEntryData* a_entry, SInt32 a_numItems, bool a_useMult)
+	bool PlayerCharacter::AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer)
 	{
 		using func_t = decltype(&PlayerCharacter::AttemptPickpocket);
-		REL::Offset<func_t> func(Offset::PlayerCharacter::AttemptPickpocket);
-		return func(this, a_target, a_entry, a_numItems, a_useMult);
+		REL::Relocation<func_t> func{ REL::ID(39568) };
+		return func(this, a_containerRef, a_entry, a_number, a_fromContainer);
+	}
+
+
+	bool PlayerCharacter::CenterOnCell(const char* a_cellName)
+	{
+		return CenterOnCell_Impl(a_cellName, nullptr);
+	}
+
+
+	bool PlayerCharacter::CenterOnCell(RE::TESObjectCELL* a_cell)
+	{
+		return CenterOnCell_Impl(nullptr, a_cell);
 	}
 
 
@@ -53,7 +57,7 @@ namespace RE
 	float PlayerCharacter::GetArmorValue(InventoryEntryData* a_form)
 	{
 		using func_t = decltype(&PlayerCharacter::GetArmorValue);
-		REL::Offset<func_t> func(Offset::PlayerCharacter::GetArmorValue);
+		REL::Relocation<func_t> func{ Offset::PlayerCharacter::GetArmorValue };
 		return func(this, a_form);
 	}
 
@@ -61,7 +65,7 @@ namespace RE
 	float PlayerCharacter::GetDamage(InventoryEntryData* a_form)
 	{
 		using func_t = decltype(&PlayerCharacter::GetDamage);
-		REL::Offset<func_t> func(Offset::PlayerCharacter::GetDamage);
+		REL::Relocation<func_t> func{ Offset::PlayerCharacter::GetDamage };
 		return func(this, a_form);
 	}
 
@@ -72,10 +76,10 @@ namespace RE
 	}
 
 
-	UInt32 PlayerCharacter::GetNumTints(UInt32 a_tintType)
+	std::uint32_t PlayerCharacter::GetNumTints(std::uint32_t a_tintType)
 	{
 		using func_t = decltype(&PlayerCharacter::GetNumTints);
-		REL::Offset<func_t> func(Offset::PlayerCharacter::GetNumTints);
+		REL::Relocation<func_t> func{ Offset::PlayerCharacter::GetNumTints };
 		return func(this, a_tintType);
 	}
 
@@ -86,7 +90,7 @@ namespace RE
 			return nullptr;
 		}
 
-		for (UInt32 i = 0; i < tintMasks.size(); ++i) {
+		for (std::uint32_t i = 0; i < tintMasks.size(); ++i) {
 			if (tintMasks[i] == a_original) {
 				return i < overlayTintMasks->size() ? (*overlayTintMasks)[i] : nullptr;
 			}
@@ -102,18 +106,24 @@ namespace RE
 	}
 
 
-	TintMask* PlayerCharacter::GetTintMask(UInt32 a_tintType, UInt32 a_index)
+	TintMask* PlayerCharacter::GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index)
 	{
 		using func_t = decltype(&PlayerCharacter::GetTintMask);
-		REL::Offset<func_t> func(Offset::PlayerCharacter::GetTintMask);
+		REL::Relocation<func_t> func{ Offset::PlayerCharacter::GetTintMask };
 		return func(this, a_tintType, a_index);
+	}
+
+
+	bool PlayerCharacter::IsGrabbing() const
+	{
+		return static_cast<bool>(grabbedObject);
 	}
 
 
 	void PlayerCharacter::PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType)
 	{
 		using func_t = decltype(&PlayerCharacter::PlayPickupEvent);
-		REL::Offset<func_t> func(Offset::PlayerCharacter::PlayPickupEvent);
+		REL::Relocation<func_t> func{ Offset::PlayerCharacter::PlayPickupEvent };
 		return func(this, a_item, a_containerOwner, a_containerRef, a_eventType);
 	}
 
@@ -121,15 +131,21 @@ namespace RE
 	void PlayerCharacter::StartGrabObject()
 	{
 		using func_t = decltype(&PlayerCharacter::StartGrabObject);
-		REL::Offset<func_t> func(Offset::PlayerCharacter::StartGrabObject);
+		REL::Relocation<func_t> func{ Offset::PlayerCharacter::StartGrabObject };
 		return func(this);
 	}
 
+	bool PlayerCharacter::CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell)
+	{
+		using func_t = decltype(&PlayerCharacter::CenterOnCell_Impl);
+		REL::Relocation<func_t> func{ REL::ID(39365) };
+		return func(this, a_cellName, a_cell);
+	}
 
 	void PlayerCharacter::AddSkillExperience(ActorValue a_skill, float a_experience)
 	{
 		using func_t = decltype(&PlayerCharacter::AddSkillExperience);
-		REL::Offset<func_t> func(REL::ID(39413));
+		REL::Relocation<func_t> func(REL::ID(39413));
 		return func(this, a_skill, a_experience);
 	}
 }

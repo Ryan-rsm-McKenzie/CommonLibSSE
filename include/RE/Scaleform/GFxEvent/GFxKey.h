@@ -6,7 +6,7 @@ namespace RE
 	class GFxKey
 	{
 	public:
-		enum Code : UInt32
+		enum Code : std::uint32_t
 		{
 			kVoidSymbol = 0,
 
@@ -129,5 +129,5 @@ namespace RE
 			kTotal
 		};
 	};
-	STATIC_ASSERT(sizeof(GFxKey) == 0x1);
+	static_assert(sizeof(GFxKey) == 0x1);
 }

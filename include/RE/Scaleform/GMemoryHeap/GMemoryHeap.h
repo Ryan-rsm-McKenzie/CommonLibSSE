@@ -23,7 +23,7 @@ namespace RE
 		friend class GHeapRootMH;
 
 	public:
-		enum class MemReportType : UInt32
+		enum class MemReportType
 		{
 			kBrief,
 			kSummary,
@@ -36,7 +36,7 @@ namespace RE
 		};
 
 
-		enum class HeapFlags : UInt32
+		enum class HeapFlags
 		{
 			kNone = 0,
 			kThreadUnsafe = 1 << 0,
@@ -77,70 +77,80 @@ namespace RE
 
 
 			// members
-			HeapFlags flags;		// 00
-			UInt32	  pad04;		// 04
-			UPInt	  minAlign;		// 08
-			UPInt	  granularity;	// 10
-			UPInt	  reserve;		// 18
-			UPInt	  threshold;	// 20
-			UPInt	  limit;		// 28
-			GHeapID	  heapID;		// 30
-			UPInt	  arena;		// 38
+			stl::enumeration<HeapFlags, std::uint32_t> flags;		 // 00
+			std::uint32_t							   pad04;		 // 04
+			UPInt									   minAlign;	 // 08
+			UPInt									   granularity;	 // 10
+			UPInt									   reserve;		 // 18
+			UPInt									   threshold;	 // 20
+			UPInt									   limit;		 // 28
+			GHeapID									   heapID;		 // 30
+			UPInt									   arena;		 // 38
 		};
-		STATIC_ASSERT(sizeof(HeapDesc) == 0x40);
+		static_assert(sizeof(HeapDesc) == 0x40);
 
 
 		struct RootHeapDesc : public HeapDesc
 		{
+		public:
 			RootHeapDesc();
 		};
-		STATIC_ASSERT(sizeof(RootHeapDesc) == 0x40);
+		static_assert(sizeof(RootHeapDesc) == 0x40);
 
 
 		struct HeapInfo
 		{
+		public:
+			// members
 			HeapDesc	 desc;	  // 00
 			GMemoryHeap* parent;  // 40 - NULL == root heap
 			char*		 name;	  // 48
 		};
-		STATIC_ASSERT(sizeof(HeapInfo) == 0x50);
+		static_assert(sizeof(HeapInfo) == 0x50);
 
 
 		struct HeapVisitor
 		{
+		public:
 			virtual ~HeapVisitor();	 // 00
 
+			// add
 			virtual void Visit(GMemoryHeap* a_parentHeap, GMemoryHeap* a_childHeap) = 0;  // 01
 		};
-		STATIC_ASSERT(sizeof(HeapVisitor) == 0x8);
+		static_assert(sizeof(HeapVisitor) == 0x8);
 
 
 		struct LimitHandler
 		{
+		public:
 			virtual ~LimitHandler();  // 00
 
+			// add
 			virtual bool OnExceedLimit(GMemoryHeap* a_heap, UPInt a_overLimit) = 0;	   // 01
 			virtual void OnFreeSegment(GMemoryHeap* a_heap, UPInt a_freeingSize) = 0;  // 02
 		};
-		STATIC_ASSERT(sizeof(LimitHandler) == 0x8);
+		static_assert(sizeof(LimitHandler) == 0x8);
 
 
 		struct HeapTracer
 		{
+		public:
 			virtual ~HeapTracer();	// 00
 
+			// add
 			virtual void OnCreateHeap(const GMemoryHeap* a_heap) = 0;															  // 01
 			virtual void OnDestroyHeap(const GMemoryHeap* a_heap) = 0;															  // 02
 			virtual void OnAlloc(const GMemoryHeap* a_heap, UPInt a_size, UPInt a_align, unsigned a_sID, const void* a_ptr) = 0;  // 03
 			virtual void OnRealloc(const GMemoryHeap* a_heap, const void* a_oldPtr, UPInt a_newSize, const void* a_newPtr) = 0;	  // 04
 			virtual void OnFree(const GMemoryHeap* a_heap, const void* a_ptr) = 0;												  // 05
 		};
-		STATIC_ASSERT(sizeof(HeapTracer) == 0x8);
+		static_assert(sizeof(HeapTracer) == 0x8);
 
 
 		struct RootStats
 		{
 		public:
+			// members
 			UPInt sysMemFootprint;		 // 00
 			UPInt sysMemUsedSpace;		 // 08
 			UPInt pageMapFootprint;		 // 10
@@ -152,7 +162,7 @@ namespace RE
 			UPInt userDebugFootprint;	 // 40
 			UPInt userDebugUsedSpace;	 // 48
 		};
-		STATIC_ASSERT(sizeof(RootStats) == 0x50);
+		static_assert(sizeof(RootStats) == 0x50);
 
 	protected:
 		virtual ~GMemoryHeap();	 // 00
@@ -183,7 +193,7 @@ namespace RE
 		virtual UPInt		 GetUsedSpace() const = 0;											  // 16
 		virtual UPInt		 GetTotalUsedSpace() const = 0;										  // 17
 		virtual void		 GetRootStats(RootStats* a_stats) = 0;								  // 18
-		virtual void		 VisitMem(GHeapMemVisitor* a_visitor, UInt32 a_flags) = 0;			  // 19
+		virtual void		 VisitMem(GHeapMemVisitor* a_visitor, std::uint32_t a_flags) = 0;	  // 19
 		virtual void		 VisitRootSegments(GHeapSegVisitor* a_visitor) = 0;					  // 1A
 		virtual void		 VisitHeapSegments(GHeapSegVisitor* a_visitor) const = 0;			  // 1B
 		virtual void		 SetTracer(HeapTracer* a_tracer) = 0;								  // 1C - { return; }
@@ -226,20 +236,20 @@ namespace RE
 
 
 		// members
-		UPInt			_selfSize;		  // 18
-		volatile UInt32 _refCount;		  // 20
-		UInt32			_pad24;			  // 24
-		UPInt			_ownerThreadID;	  // 28
-		void*			_autoRelease;	  // 30 - auto frees heap when freed
-		HeapInfo		_info;			  // 38
-		ChildListType	_childHeaps;	  // 88
-		mutable GLock	_heapLock;		  // 98
-		bool			_useLocks;		  // C0
-		bool			_trackDebugInfo;  // C1
-		UInt16			_padC2;			  // C2
-		UInt32			_padC4;			  // C4
-		void*			_unkC8;			  // C8
-		void*			_unkD0;			  // D0
+		UPInt				   _selfSize;		 // 18
+		volatile std::uint32_t _refCount;		 // 20
+		std::uint32_t		   _pad24;			 // 24
+		UPInt				   _ownerThreadID;	 // 28
+		void*				   _autoRelease;	 // 30 - auto frees heap when freed
+		HeapInfo			   _info;			 // 38
+		ChildListType		   _childHeaps;		 // 88
+		mutable GLock		   _heapLock;		 // 98
+		bool				   _useLocks;		 // C0
+		bool				   _trackDebugInfo;	 // C1
+		std::uint16_t		   _padC2;			 // C2
+		std::uint32_t		   _padC4;			 // C4
+		void*				   _unkC8;			 // C8
+		void*				   _unkD0;			 // D0
 	};
-	STATIC_ASSERT(sizeof(GMemoryHeap) == 0xD8);
+	static_assert(sizeof(GMemoryHeap) == 0xD8);
 }

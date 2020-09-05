@@ -19,7 +19,7 @@ namespace RE
 		using size_type = typename Base::size_type;
 
 
-		NiTMap(UInt32 a_hashSize = 37) :
+		NiTMap(std::uint32_t a_hashSize = 37) :
 			Base(a_hashSize)
 		{}
 
@@ -46,5 +46,5 @@ namespace RE
 			}
 		}
 	};
-	STATIC_ASSERT(sizeof(NiTMap<void*, void*>) == 0x20);
+	static_assert(sizeof(NiTMap<void*, void*>) == 0x20);
 }

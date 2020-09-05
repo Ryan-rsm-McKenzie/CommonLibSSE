@@ -18,7 +18,7 @@ namespace RE
 
 
 		// members
-		UInt32 unk0C;  // 0C
+		std::uint32_t unk0C;  // 0C
 	};
-	STATIC_ASSERT(sizeof(SyncQueueObj) == 0x10);
+	static_assert(sizeof(SyncQueueObj) == 0x10);
 }

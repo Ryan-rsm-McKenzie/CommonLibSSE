@@ -18,7 +18,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
@@ -51,9 +51,9 @@ namespace RE
 		// members
 		BGSDecalGroup* decalGroup;			 // 1D8
 		bool		   collisionGroupReset;	 // 1E0
-		UInt8		   pad1E1;				 // 1E1
-		UInt16		   pad1E2;				 // 1E2
-		UInt32		   pad1E4;				 // 1E4
+		std::uint8_t   pad1E1;				 // 1E1
+		std::uint16_t  pad1E2;				 // 1E2
+		std::uint32_t  pad1E4;				 // 1E4
 	};
-	STATIC_ASSERT(sizeof(GrenadeProjectile) == 0x1E8);
+	static_assert(sizeof(GrenadeProjectile) == 0x1E8);
 }

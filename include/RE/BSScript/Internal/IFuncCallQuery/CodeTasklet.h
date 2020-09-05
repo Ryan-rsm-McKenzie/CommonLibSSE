@@ -23,7 +23,7 @@ namespace RE
 				inline static constexpr auto RTTI = RTTI_BSScript__Internal__CodeTasklet;
 
 
-				enum class ResumeReason : UInt32
+				enum class ResumeReason
 				{
 					kNotResuming = 0,
 					kNotResumingNoIncrement = 1,
@@ -34,7 +34,7 @@ namespace RE
 				};
 
 
-				enum class OpCode : UInt32
+				enum class OpCode
 				{
 					kNOP,
 					kIADD,
@@ -82,22 +82,22 @@ namespace RE
 
 
 				// members
-				Stack*			stack;					  // 10
-				VirtualMachine* vm;						  // 18
-				ErrorLogger*	errorLogger;			  // 20
-				ResumeReason	resumeReason;			  // 28
-				UInt32			pad2C;					  // 2C
-				StackFrame*		topFrame;				  // 30
-				UInt32			frameMemoryPage;		  // 38
-				SInt8			jumpBitCount;			  // 3C
-				SInt8			localVarBitCount;		  // 3D
-				SInt8			memberVarBitCount;		  // 3E
-				UInt8			pad3F;					  // 3F
-				UInt32			instructionDataBitCount;  // 40
-				UInt32			pad44;					  // 44
-				const void*		instructionDataStart;	  // 48
+				Stack*										  stack;					// 10
+				VirtualMachine*								  vm;						// 18
+				ErrorLogger*								  errorLogger;				// 20
+				stl::enumeration<ResumeReason, std::uint32_t> resumeReason;				// 28
+				std::uint32_t								  pad2C;					// 2C
+				StackFrame*									  topFrame;					// 30
+				std::uint32_t								  frameMemoryPage;			// 38
+				std::int8_t									  jumpBitCount;				// 3C
+				std::int8_t									  localVarBitCount;			// 3D
+				std::int8_t									  memberVarBitCount;		// 3E
+				std::uint8_t								  pad3F;					// 3F
+				std::uint32_t								  instructionDataBitCount;	// 40
+				std::uint32_t								  pad44;					// 44
+				const void*									  instructionDataStart;		// 48
 			};
-			STATIC_ASSERT(sizeof(CodeTasklet) == 0x50);
+			static_assert(sizeof(CodeTasklet) == 0x50);
 		}
 	}
 }

@@ -8,7 +8,7 @@ namespace RE
 	{}
 
 
-	GFxResourceID::GFxResourceID(UInt32 a_resID) :
+	GFxResourceID::GFxResourceID(std::uint32_t a_resID) :
 		id(a_resID)
 	{}
 
@@ -37,25 +37,25 @@ namespace RE
 	}
 
 
-	bool GFxResourceID::operator==(UInt32 a_idVal) const
+	bool GFxResourceID::operator==(std::uint32_t a_idVal) const
 	{
 		return id == a_idVal;
 	}
 
 
-	bool GFxResourceID::operator!=(UInt32 a_idVal) const
+	bool GFxResourceID::operator!=(std::uint32_t a_idVal) const
 	{
 		return !operator==(a_idVal);
 	}
 
 
-	UInt32 GFxResourceID::GetIDValue() const
+	std::uint32_t GFxResourceID::GetIDValue() const
 	{
 		return id;
 	}
 
 
-	UInt32 GFxResourceID::GetIDIndex() const
+	std::uint32_t GFxResourceID::GetIDIndex() const
 	{
 		return id & IDTypeConstants::kIndexMask;
 	}

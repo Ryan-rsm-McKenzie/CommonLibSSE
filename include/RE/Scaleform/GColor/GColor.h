@@ -8,24 +8,24 @@ namespace RE
 	public:
 		struct RGB32
 		{
-			UInt8 blue;	  // 0
-			UInt8 green;  // 1
-			UInt8 red;	  // 2
-			UInt8 alpha;  // 3
+			std::uint8_t blue;	 // 0
+			std::uint8_t green;	 // 1
+			std::uint8_t red;	 // 2
+			std::uint8_t alpha;	 // 3
 		};
-		STATIC_ASSERT(sizeof(RGB32) == 0x4);
+		static_assert(sizeof(RGB32) == 0x4);
 
 
 		union ColorData
 		{
-			RGB32  channels;
-			UInt32 raw;
+			RGB32		  channels;
+			std::uint32_t raw;
 		};
-		STATIC_ASSERT(sizeof(ColorData) == 0x4);
+		static_assert(sizeof(ColorData) == 0x4);
 
 
 		// members
 		ColorData colorData;  // 0
 	};
-	STATIC_ASSERT(sizeof(GColor) == 0x4);
+	static_assert(sizeof(GColor) == 0x4);
 }

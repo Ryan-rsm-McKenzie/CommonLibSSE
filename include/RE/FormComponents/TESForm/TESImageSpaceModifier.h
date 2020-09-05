@@ -15,9 +15,12 @@ namespace RE
 
 	struct ImageSpaceModifierData  // DNAM
 	{
+	public:
 		template <typename T>
 		struct MultAdd
 		{
+		public:
+			// members
 			T mult;
 			T add;
 		};
@@ -26,6 +29,8 @@ namespace RE
 		template <typename T>
 		struct MinMax
 		{
+		public:
+			// members
 			MultAdd<T> min;
 			MultAdd<T> max;
 		};
@@ -33,6 +38,8 @@ namespace RE
 
 		struct HDR
 		{
+		public:
+			// members
 			MultAdd<float> eyeAdaptSpeed;	 // 00
 			MultAdd<float> bloomBlurRadius;	 // 08
 			MultAdd<float> bloomThreshold;	 // 10
@@ -42,65 +49,72 @@ namespace RE
 			MultAdd<float> skyScale;		 // 38
 			MultAdd<float> empty[6];		 // 40
 		};
-		STATIC_ASSERT(sizeof(HDR) == 0x70);
+		static_assert(sizeof(HDR) == 0x70);
 
 
 		struct Bloom
 		{
+		public:
+			// members
 			MultAdd<float> empty[3];  // 00
 		};
-		STATIC_ASSERT(sizeof(Bloom) == 0x18);
+		static_assert(sizeof(Bloom) == 0x18);
 
 
 		struct Cinematic
 		{
+		public:
+			// members
 			MultAdd<float> saturation;	// 00
 			MultAdd<float> brightness;	// 08
 			MultAdd<float> contrast;	// 10
 			MultAdd<float> empty;		// 18
 		};
-		STATIC_ASSERT(sizeof(Cinematic) == 0x20);
+		static_assert(sizeof(Cinematic) == 0x20);
 
 
 		struct DOF
 		{
+		public:
 			using Mode = ImageSpaceModifierInstanceDOF::DepthOfFieldMode;
 
 
-			UInt32 strength;   // 00
-			UInt32 distance;   // 04
-			UInt32 range;	   // 08
-			bool   useTarget;  // 0C
-			Mode   flags;	   // 0D
-			UInt16 pad0E;	   // 0E
+			// members
+			std::uint32_t						 strength;	 // 00
+			std::uint32_t						 distance;	 // 04
+			std::uint32_t						 range;		 // 08
+			bool								 useTarget;	 // 0C
+			stl::enumeration<Mode, std::uint8_t> flags;		 // 0D
+			std::uint16_t						 pad0E;		 // 0E
 		};
-		STATIC_ASSERT(sizeof(DOF) == 0x10);
+		static_assert(sizeof(DOF) == 0x10);
 
 
-		bool	  animatable;			   // 00
-		UInt8	  pad01;				   // 01
-		UInt16	  pad02;				   // 01
-		float	  duration;				   // 04
-		HDR		  hdr;					   // 08
-		Bloom	  bloom;				   // 78
-		Cinematic cinematic;			   // 90
-		UInt32	  tintColor;			   // B0
-		UInt32	  blurRadius;			   // B4
-		UInt32	  doubleVisionStrength;	   // B8
-		UInt32	  radialBlurStrength;	   // BC
-		UInt32	  radialBlurRampUp;		   // C0
-		UInt32	  radialBlurStart;		   // C4
-		bool	  useTargetForRadialBlur;  // C8
-		UInt8	  padC9;				   // C9
-		UInt16	  padCA;				   // CA
-		NiPoint2  radialBlurCenter;		   // CC
-		DOF		  dof;					   // D4
-		UInt32	  radialBlurRampDown;	   // E4
-		UInt32	  radialBlurDownStart;	   // E8
-		UInt32	  fadeColor;			   // EC
-		UInt32	  motionBlurStrength;	   // F0
+		// members
+		bool		  animatable;			   // 00
+		std::uint8_t  pad01;				   // 01
+		std::uint16_t pad02;				   // 01
+		float		  duration;				   // 04
+		HDR			  hdr;					   // 08
+		Bloom		  bloom;				   // 78
+		Cinematic	  cinematic;			   // 90
+		std::uint32_t tintColor;			   // B0
+		std::uint32_t blurRadius;			   // B4
+		std::uint32_t doubleVisionStrength;	   // B8
+		std::uint32_t radialBlurStrength;	   // BC
+		std::uint32_t radialBlurRampUp;		   // C0
+		std::uint32_t radialBlurStart;		   // C4
+		bool		  useTargetForRadialBlur;  // C8
+		std::uint8_t  padC9;				   // C9
+		std::uint16_t padCA;				   // CA
+		NiPoint2	  radialBlurCenter;		   // CC
+		DOF			  dof;					   // D4
+		std::uint32_t radialBlurRampDown;	   // E4
+		std::uint32_t radialBlurDownStart;	   // E8
+		std::uint32_t fadeColor;			   // EC
+		std::uint32_t motionBlurStrength;	   // F0
 	};
-	STATIC_ASSERT(sizeof(ImageSpaceModifierData) == 0xF4);
+	static_assert(sizeof(ImageSpaceModifierData) == 0xF4);
 
 
 	class TESImageSpaceModifier : public TESForm
@@ -112,7 +126,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -147,14 +161,14 @@ namespace RE
 			MultAdd<NiPointer<NiFloatInterpolator>> skyScale;		  // 70 - hIAD - GIAD
 			MultAdd<NiPointer<NiFloatInterpolator>> empty[6];		  // 80 - iIAD - MIAD
 		};
-		STATIC_ASSERT(sizeof(HDR) == 0xE0);
+		static_assert(sizeof(HDR) == 0xE0);
 
 
 		struct Bloom
 		{
 			MultAdd<NiPointer<NiFloatInterpolator>> empty[3];  // 00 - oIAD - PIAD
 		};
-		STATIC_ASSERT(sizeof(Bloom) == 0x30);
+		static_assert(sizeof(Bloom) == 0x30);
 
 
 		struct Cinematic
@@ -164,7 +178,7 @@ namespace RE
 			MultAdd<NiPointer<NiFloatInterpolator>> contrast;	 // 20 - tIAD - SIAD
 			MultAdd<NiPointer<NiFloatInterpolator>> empty;		 // 30 - uIAD - TIAD
 		};
-		STATIC_ASSERT(sizeof(Cinematic) == 0x40);
+		static_assert(sizeof(Cinematic) == 0x40);
 
 
 		struct RadialBlur
@@ -175,7 +189,7 @@ namespace RE
 			NiPointer<NiFloatInterpolator> rampDown;   // 18 - NAM1
 			NiPointer<NiFloatInterpolator> downStart;  // 20 - NAM2
 		};
-		STATIC_ASSERT(sizeof(RadialBlur) == 0x28);
+		static_assert(sizeof(RadialBlur) == 0x28);
 
 
 		struct DOF
@@ -184,7 +198,7 @@ namespace RE
 			NiPointer<NiFloatInterpolator> distance;  // 08 - XNAM
 			NiPointer<NiFloatInterpolator> range;	  // 10 - YNAM
 		};
-		STATIC_ASSERT(sizeof(DOF) == 0x18);
+		static_assert(sizeof(DOF) == 0x18);
 
 
 		virtual ~TESImageSpaceModifier();  // 00
@@ -199,7 +213,7 @@ namespace RE
 
 		// members
 		ImageSpaceModifierData		   data;				  // 020 - DNAM
-		UInt32						   pad114;				  // 114
+		std::uint32_t				   pad114;				  // 114
 		HDR							   hdr;					  // 118
 		Bloom						   bloom;				  // 1F8
 		Cinematic					   cinematic;			  // 228
@@ -212,5 +226,5 @@ namespace RE
 		NiPointer<NiColorInterpolator> motionBlurStrength;	  // 2C8 - NAM4
 		BSString					   formEditorID;		  // 2D0 - EDID
 	};
-	STATIC_ASSERT(sizeof(TESImageSpaceModifier) == 0x2E0);
+	static_assert(sizeof(TESImageSpaceModifier) == 0x2E0);
 }

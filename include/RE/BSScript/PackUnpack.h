@@ -57,7 +57,6 @@ namespace RE
 				return GetRawTypeFromVMType(static_cast<VMTypeID>(unwrapped_type_t<T>::FORMTYPE)) + TypeInfo::RawType::kObject;
 			} else {
 				static_assert(false);
-				throw std::exception;
 			}
 		}
 
@@ -83,7 +82,7 @@ namespace RE
 		inline void PackValue(Variable* a_dst, T&& a_src)
 		{
 			assert(a_dst);
-			a_dst->SetSInt(static_cast<SInt32>(std::forward<T>(a_src)));
+			a_dst->SetSInt(static_cast<std::int32_t>(std::forward<T>(a_src)));
 		}
 
 
@@ -95,7 +94,7 @@ namespace RE
 		inline void PackValue(Variable* a_dst, T&& a_src)
 		{
 			assert(a_dst);
-			a_dst->SetUInt(static_cast<UInt32>(std::forward<T>(a_src)));
+			a_dst->SetUInt(static_cast<std::uint32_t>(std::forward<T>(a_src)));
 		}
 
 

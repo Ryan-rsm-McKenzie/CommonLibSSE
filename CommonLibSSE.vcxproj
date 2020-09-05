@@ -91,16 +91,16 @@
     <IncludePath>$(INCLUDE);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <VcpkgUserTriplet>$(VcpkgPlatformTarget)-$(VcpkgOSTarget)-custom</VcpkgUserTriplet>
+    <VcpkgTriplet>$(VcpkgUserTriplet)-custom</VcpkgTriplet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <VcpkgUserTriplet>$(VcpkgPlatformTarget)-$(VcpkgOSTarget)-custom</VcpkgUserTriplet>
+    <VcpkgTriplet>$(VcpkgUserTriplet)-custom</VcpkgTriplet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <VcpkgUserTriplet>$(VcpkgPlatformTarget)-$(VcpkgOSTarget)-custom</VcpkgUserTriplet>
+    <VcpkgTriplet>$(VcpkgUserTriplet)-custom</VcpkgTriplet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <VcpkgUserTriplet>$(VcpkgPlatformTarget)-$(VcpkgOSTarget)-custom</VcpkgUserTriplet>
+    <VcpkgTriplet>$(VcpkgUserTriplet)-custom</VcpkgTriplet>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -115,12 +115,11 @@
       <ForcedIncludeFiles>$(ProjectDir)include\SKSE\Impl\PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <CompileAs>CompileAsCpp</CompileAs>
       <UseFullPaths>false</UseFullPaths>
-      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 /Zc:alignedNew /Zc:auto /Zc:char8_t /Zc:__cplusplus /Zc:externC /Zc:externConstexpr /Zc:forScope /Zc:hiddenFriend /Zc:implicitNoexcept /Zc:lambda /Zc:noexceptTypes /Zc:preprocessor /Zc:referenceBinding /Zc:rvalueCast /Zc:sizedDealloc /Zc:strictStrings /Zc:ternary /Zc:threadSafeInit /Zc:tlsGuards /Zc:trigraphs /Zc:wchar_t %(AdditionalOptions)</AdditionalOptions>
       <TreatSpecificWarningsAsErrors>4099;4717;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
-      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RemoveUnreferencedCodeData>false</RemoveUnreferencedCodeData>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,9 +144,8 @@
       <ForcedIncludeFiles>$(ProjectDir)include\SKSE\Impl\PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <CompileAs>CompileAsCpp</CompileAs>
       <UseFullPaths>false</UseFullPaths>
-      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 /Zc:alignedNew /Zc:auto /Zc:char8_t /Zc:__cplusplus /Zc:externC /Zc:externConstexpr /Zc:forScope /Zc:hiddenFriend /Zc:implicitNoexcept /Zc:lambda /Zc:noexceptTypes /Zc:preprocessor /Zc:referenceBinding /Zc:rvalueCast /Zc:sizedDealloc /Zc:strictStrings /Zc:ternary /Zc:threadSafeInit /Zc:tlsGuards /Zc:trigraphs /Zc:wchar_t %(AdditionalOptions)</AdditionalOptions>
       <TreatSpecificWarningsAsErrors>4099;4717;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
-      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -173,12 +171,11 @@
       <ForcedIncludeFiles>$(ProjectDir)include\SKSE\Impl\PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <CompileAs>CompileAsCpp</CompileAs>
       <UseFullPaths>false</UseFullPaths>
-      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 /Zc:alignedNew /Zc:auto /Zc:char8_t /Zc:__cplusplus /Zc:externC /Zc:externConstexpr /Zc:forScope /Zc:hiddenFriend /Zc:implicitNoexcept /Zc:lambda /Zc:noexceptTypes /Zc:preprocessor /Zc:referenceBinding /Zc:rvalueCast /Zc:sizedDealloc /Zc:strictStrings /Zc:ternary /Zc:threadSafeInit /Zc:tlsGuards /Zc:trigraphs /Zc:wchar_t %(AdditionalOptions)</AdditionalOptions>
       <TreatSpecificWarningsAsErrors>4099;4717;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
-      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RemoveUnreferencedCodeData>false</RemoveUnreferencedCodeData>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -203,9 +200,8 @@
       <ForcedIncludeFiles>$(ProjectDir)include\SKSE\Impl\PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <CompileAs>CompileAsCpp</CompileAs>
       <UseFullPaths>false</UseFullPaths>
-      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 /Zc:alignedNew /Zc:auto /Zc:char8_t /Zc:__cplusplus /Zc:externC /Zc:externConstexpr /Zc:forScope /Zc:hiddenFriend /Zc:implicitNoexcept /Zc:lambda /Zc:noexceptTypes /Zc:preprocessor /Zc:referenceBinding /Zc:rvalueCast /Zc:sizedDealloc /Zc:strictStrings /Zc:ternary /Zc:threadSafeInit /Zc:tlsGuards /Zc:trigraphs /Zc:wchar_t %(AdditionalOptions)</AdditionalOptions>
       <TreatSpecificWarningsAsErrors>4099;4717;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
-      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -220,8 +216,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\REL\Relocation.h" />
-    <ClInclude Include="include\REL\SafeWrite.h" />
-    <ClInclude Include="include\REL\Version.h" />
+    <ClInclude Include="include\RE\AI\AIFormulas.h" />
     <ClInclude Include="include\RE\AI\AIProcess.h" />
     <ClInclude Include="include\RE\AI\HighProcessData.h" />
     <ClInclude Include="include\RE\AI\MiddleHighProcessData.h" />
@@ -265,7 +260,6 @@
     <ClInclude Include="include\RE\BSCore\BSCoreTypes.h" />
     <ClInclude Include="include\RE\BSCore\BSFixedString.h" />
     <ClInclude Include="include\RE\BSCore\BSPointerHandle.h" />
-    <ClInclude Include="include\RE\BSCore\BSPointerHandleManagerInterface.h" />
     <ClInclude Include="include\RE\BSCore\BSPointerHandleManager\BSPointerHandleManager.h" />
     <ClInclude Include="include\RE\BSCore\BSPointerHandleManager\HandleManager.h" />
     <ClInclude Include="include\RE\BSCore\BSPointerHandleSmartPointer.h" />
@@ -286,7 +280,6 @@
     <ClInclude Include="include\RE\BSCore\BSTSingleton.h" />
     <ClInclude Include="include\RE\BSCore\BSTSmartPointer.h" />
     <ClInclude Include="include\RE\BSCore\BSTTuple.h" />
-    <ClInclude Include="include\RE\BSCore\BSUntypedPointerHandle.h" />
     <ClInclude Include="include\RE\BSCore\CRC.h" />
     <ClInclude Include="include\RE\BSCore\IBSTCreator\AutoRegisterCreator.h" />
     <ClInclude Include="include\RE\BSCore\IBSTCreator\AutoRegisterFactory.h" />
@@ -594,9 +587,13 @@
     <ClInclude Include="include\RE\BSHavok\hkpShapeBuffer.h" />
     <ClInclude Include="include\RE\BSHavok\hkpShapeContainer\hkpShapeContainer.h" />
     <ClInclude Include="include\RE\BSHavok\hkpShapeContainer\hkpSingleShapeContainer.h" />
+    <ClInclude Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastCollectorOutput.h" />
+    <ClInclude Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastOutput\hkpShapeRayCastOutput.h" />
+    <ClInclude Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastOutput\hkpWorldRayCastOutput.h" />
     <ClInclude Include="include\RE\BSHavok\hkpSimplexSolver.h" />
     <ClInclude Include="include\RE\BSHavok\hkpSolverInfo.h" />
     <ClInclude Include="include\RE\BSHavok\hkpWeldingUtility.h" />
+    <ClInclude Include="include\RE\BSHavok\hkpWorldRayCastInput.h" />
     <ClInclude Include="include\RE\BSHavok\hkQuaternion.h" />
     <ClInclude Include="include\RE\BSHavok\hkRefPtr\hkRefPtr.h" />
     <ClInclude Include="include\RE\BSHavok\hkRefPtr\hkRefVariant.h" />
@@ -761,12 +758,14 @@
     <ClInclude Include="include\RE\Events\PositionPlayerEvent.h" />
     <ClInclude Include="include\RE\Events\RaceSexMenuEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\ScriptEventSourceHolder.h" />
+    <ClInclude Include="include\RE\Events\ScriptEvent\TESActivateEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESActiveEffectApplyRemoveEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESCellFullyLoadedEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESCombatEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESContainerChangedEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESDeathEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESEquipEvent.h" />
+    <ClInclude Include="include\RE\Events\ScriptEvent\TESFurnitureEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESGrabReleaseEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESHitEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESInitScriptEvent.h" />
@@ -775,6 +774,7 @@
     <ClInclude Include="include\RE\Events\ScriptEvent\TESMagicEffectApplyEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESMoveAttachDetachEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESObjectLoadedEvent.h" />
+    <ClInclude Include="include\RE\Events\ScriptEvent\TESOpenCloseEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESResetEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESSwitchRaceCompleteEvent.h" />
     <ClInclude Include="include\RE\Events\ScriptEvent\TESTrackedStatsEvent.h" />
@@ -1212,16 +1212,25 @@
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape\bhkShape.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection\bhkListShape.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection\bhkShapeCollection.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorld.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkEntity\bhkEntity.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkEntity\bhkRigidBody.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom\bhkPhantom.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom\bhkShapePhantom\bhkCachingShapePhantom.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkPhantom\bhkShapePhantom\bhkShapePhantom.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkWorldObject.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSAnimNote.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffect.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectDebris.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectGeometryDecal.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectParticle.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectSimpleDecal.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectSPG.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectWeaponBlood.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\ModelReferenceEffect.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\ReferenceEffect.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\ShaderReferenceEffect.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\SummonPlacementEffect.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTextureSet.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\ImageSpaceModifierInstance\ImageSpaceModifierInstance.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\ImageSpaceModifierInstance\ImageSpaceModifierInstanceTemp\ImageSpaceModifierInstanceDOF.h" />
@@ -1274,6 +1283,7 @@
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiRefObject.h" />
     <ClInclude Include="include\RE\NetImmerse\NiRTTI.h" />
     <ClInclude Include="include\RE\NetImmerse\NiSmartPointer.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiStream.h" />
     <ClInclude Include="include\RE\NetImmerse\NiSystem.h" />
     <ClInclude Include="include\RE\NetImmerse\NiTArray.h" />
     <ClInclude Include="include\RE\NetImmerse\NiTCollection.h" />
@@ -1413,27 +1423,23 @@
     <ClInclude Include="include\RE\Sky\SkyObject\Stars.h" />
     <ClInclude Include="include\RE\Sky\SkyObject\Sun.h" />
     <ClInclude Include="include\SKSE\API.h" />
-    <ClInclude Include="include\SKSE\CodeGenerator.h" />
     <ClInclude Include="include\SKSE\Events.h" />
     <ClInclude Include="include\SKSE\IAT.h" />
     <ClInclude Include="include\SKSE\Impl\Atomic.h" />
     <ClInclude Include="include\SKSE\Impl\PCH.h" />
     <ClInclude Include="include\SKSE\Impl\RegistrationTraits.h" />
     <ClInclude Include="include\SKSE\Impl\Stubs.h" />
-    <ClInclude Include="include\SKSE\Impl\Util.h" />
     <ClInclude Include="include\SKSE\Interfaces.h" />
     <ClInclude Include="include\SKSE\Logger.h" />
     <ClInclude Include="include\SKSE\RegistrationMap.h" />
     <ClInclude Include="include\SKSE\RegistrationSet.h" />
-    <ClInclude Include="include\SKSE\SafeWrite.h" />
     <ClInclude Include="include\SKSE\SKSE.h" />
     <ClInclude Include="include\SKSE\Trampoline.h" />
-    <ClInclude Include="include\SKSE\VArgFormatter.h" />
     <ClInclude Include="include\SKSE\Version.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\REL\Relocation.cpp" />
-    <ClCompile Include="src\REL\SafeWrite.cpp" />
+    <ClCompile Include="include\RE\FormComponents\Components\BGSOpenCloseForm.cpp" />
+    <ClCompile Include="src\RE\AI\AIFormulas.cpp" />
     <ClCompile Include="src\RE\AI\AIProcess.cpp" />
     <ClCompile Include="src\RE\AI\MiddleHighProcessData.cpp" />
     <ClCompile Include="src\RE\AI\ProcessLists.cpp" />
@@ -1442,10 +1448,10 @@
     <ClCompile Include="src\RE\BSAudio\BSSoundHandle.cpp" />
     <ClCompile Include="src\RE\BSCore\BSAtomic.cpp" />
     <ClCompile Include="src\RE\BSCore\BSFixedString.cpp" />
+    <ClCompile Include="src\RE\BSCore\BSPointerHandle.cpp" />
     <ClCompile Include="src\RE\BSCore\BSStringPool.cpp" />
     <ClCompile Include="src\RE\BSCore\BSTArray.cpp" />
     <ClCompile Include="src\RE\BSCore\BSTCreateFactoryManager.cpp" />
-    <ClCompile Include="src\RE\BSCore\CRC.cpp" />
     <ClCompile Include="src\RE\BSDevices\BSIInputDevice\BSInputDevice\BSInputDevice.cpp" />
     <ClCompile Include="src\RE\BSDevices\BSIInputDevice\BSInputDevice\BSKeyboardDevice\BSWin32KeyboardDevice.cpp" />
     <ClCompile Include="src\RE\BSDevices\BSInputDeviceManager.cpp" />
@@ -1464,13 +1470,11 @@
     <ClCompile Include="src\RE\BSExtraData\ExtraContainerChanges.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraCount.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraEnchantment.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraFlags.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraForcedTarget.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraHealth.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraHotkey.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraLightData.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraLock.cpp" />
-    <ClCompile Include="src\RE\BSExtraData\ExtraMapMarker.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraMissingLinkedRefIDs.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraOwnership.cpp" />
     <ClCompile Include="src\RE\BSExtraData\ExtraPoison.cpp" />
@@ -1508,7 +1512,6 @@
     <ClCompile Include="src\RE\BSScript\IFunctionArguments\ZeroFunctionArguments.cpp" />
     <ClCompile Include="src\RE\BSScript\IFunction\IFunction.cpp" />
     <ClCompile Include="src\RE\BSScript\IFunction\NF_util\NativeFunctionBase.cpp" />
-    <ClCompile Include="src\RE\BSScript\Internal\VDescTable.cpp" />
     <ClCompile Include="src\RE\BSScript\Internal\VirtualMachine.cpp" />
     <ClCompile Include="src\RE\BSScript\IObjectHandlePolicy.cpp" />
     <ClCompile Include="src\RE\BSScript\IStackCallbackFunctor.cpp" />
@@ -1535,7 +1538,7 @@
     <ClCompile Include="src\RE\Events\BGSStoryEvent\Inventory.cpp" />
     <ClCompile Include="src\RE\Events\BGSStoryEvent\ItemCrafted.cpp" />
     <ClCompile Include="src\RE\Events\BGSStoryEvent\ItemsPickpocketed.cpp" />
-    <ClCompile Include="src\RE\Events\InputEvent\ButtonEvent.cpp" />
+    <ClCompile Include="src\RE\Events\InputEvent\InputEvent.cpp" />
     <ClCompile Include="src\RE\Events\InputEvent\ThumbstickEvent.cpp" />
     <ClCompile Include="src\RE\Events\ScriptEvent\ScriptEventSourceHolder.cpp" />
     <ClCompile Include="src\RE\Events\ScriptEvent\TESHitEvent.cpp" />
@@ -1559,7 +1562,6 @@
     <ClCompile Include="src\RE\FormComponents\Components\IHandlerFunctor.cpp" />
     <ClCompile Include="src\RE\FormComponents\Components\MagicTarget.cpp" />
     <ClCompile Include="src\RE\FormComponents\Components\TESCondition.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESActorBaseData.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESAIForm.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESContainer.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESDescription.cpp" />
@@ -1571,7 +1573,6 @@
     <ClCompile Include="src\RE\FormComponents\TESForm\BGSLocation.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\BGSSoundCategory.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\BGSStoryManagerTreeForm\TESQuest.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\EffectSetting.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\Script.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESClimate.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESFaction.cpp" />
@@ -1582,10 +1583,8 @@
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\MagicItem\MagicItem.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESAmmo.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESActorBase\TESNPC.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESObjectLIGH.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectARMO.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectBOOK.cpp" />
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC\TESSoulGem.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT\TESObjectSTAT.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectWEAP.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESObjectARMA.cpp" />
@@ -1593,6 +1592,7 @@
     <ClCompile Include="src\RE\FormComponents\TESForm\TESTopic.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESTopicInfo.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESWorldSpace.cpp" />
+    <ClCompile Include="src\RE\FormComponents\TESLeveledList.cpp" />
     <ClCompile Include="src\RE\Inventory\ActorEquipManager.cpp" />
     <ClCompile Include="src\RE\Inventory\ArmorRatingVisitorBase\ArmorRatingVisitor.cpp" />
     <ClCompile Include="src\RE\Inventory\ArmorRatingVisitorBase\ArmorRatingVisitorBase.cpp" />
@@ -1644,8 +1644,8 @@
     <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiSkinInstance.cpp" />
     <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiTexture\NiTexture.cpp" />
     <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController\NiControllerManager.cpp" />
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController\NiTimeController.cpp" />
     <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiRefObject.cpp" />
-    <ClCompile Include="src\RE\NetImmerse\NiRTTI.cpp" />
     <ClCompile Include="src\RE\NetImmerse\NiSystem.cpp" />
     <ClCompile Include="src\RE\NetImmerse\NiTCollection.cpp" />
     <ClCompile Include="src\RE\Obscript\CommandTable.cpp" />
@@ -1676,7 +1676,6 @@
     <ClCompile Include="src\RE\Scaleform\GMemoryHeap\GMemoryHeap.cpp" />
     <ClCompile Include="src\RE\Scaleform\GMemory\GMemory.cpp" />
     <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountImpl.cpp" />
-    <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountImplCore.cpp" />
     <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountNTSImpl.cpp" />
     <ClCompile Include="src\RE\Scaleform\GRenderer\GRenderer.cpp" />
     <ClCompile Include="src\RE\Scaleform\GRenderer\GViewport.cpp" />
@@ -1686,7 +1685,6 @@
     <ClCompile Include="src\RE\SkyrimScript\SkyrimVM.cpp" />
     <ClCompile Include="src\RE\Sky\Sky.cpp" />
     <ClCompile Include="src\SKSE\API.cpp" />
-    <ClCompile Include="src\SKSE\CodeGenerator.cpp" />
     <ClCompile Include="src\SKSE\IAT.cpp" />
     <ClCompile Include="src\SKSE\Impl\PCH.cpp">
       <MultiProcessorCompilation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</MultiProcessorCompilation>
@@ -1707,7 +1705,6 @@
     <ClCompile Include="src\SKSE\RegistrationMap.cpp" />
     <ClCompile Include="src\SKSE\RegistrationSet.cpp" />
     <ClCompile Include="src\SKSE\Trampoline.cpp" />
-    <ClCompile Include="src\SKSE\VArgFormatter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />

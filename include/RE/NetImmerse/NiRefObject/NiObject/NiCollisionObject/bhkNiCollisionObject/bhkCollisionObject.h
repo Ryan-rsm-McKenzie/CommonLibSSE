@@ -29,5 +29,5 @@ namespace RE
 		virtual void		  Unk_2E(void) override;							  // 2E
 		virtual void		  Unk_2F(void) override;							  // 2F
 	};
-	STATIC_ASSERT(sizeof(bhkCollisionObject) == 0x28);
+	static_assert(sizeof(bhkCollisionObject) == 0x28);
 }

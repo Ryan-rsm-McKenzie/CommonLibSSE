@@ -13,8 +13,8 @@ namespace RE
 			// members
 			const char* const			errorMsg;  // 00
 			const ErrorLogger::Severity severity;  // 08
-			UInt32						pad0C;	   // 0C
+			std::uint32_t				pad0C;	   // 0C
 		};
-		STATIC_ASSERT(sizeof(LogEvent) == 0x10);
+		static_assert(sizeof(LogEvent) == 0x10);
 	}
 }

@@ -12,5 +12,5 @@ namespace RE
 		// members
 		TESObjectCELL* cell;
 	};
-	STATIC_ASSERT(sizeof(TESCellFullyLoadedEvent) == 0x8);
+	static_assert(sizeof(TESCellFullyLoadedEvent) == 0x8);
 }

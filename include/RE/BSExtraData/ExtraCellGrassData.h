@@ -15,13 +15,13 @@ namespace RE
 
 	struct CellGrassData
 	{
-		UInt64						  grassTypeKey;	  // 00
+		std::uint64_t				  grassTypeKey;	  // 00
 		BSFixedString				  grassModelKey;  // 08
 		NiPointer<BSInstanceTriShape> triShape;		  // 10
 		BSTArray<void*>				  unk18;		  // 18
 		BSTArray<void*>				  unk30;		  // 30
 	};
-	STATIC_ASSERT(sizeof(CellGrassData) == 0x48);
+	static_assert(sizeof(CellGrassData) == 0x48);
 
 
 	class ExtraCellGrassData : public BSExtraData
@@ -41,5 +41,5 @@ namespace RE
 		BSTArray<CellGrassData*>	grassHandles;  // 10
 		NiPointer<AddCellGrassTask> addGrassTask;  // 28
 	};
-	STATIC_ASSERT(sizeof(ExtraCellGrassData) == 0x30);
+	static_assert(sizeof(ExtraCellGrassData) == 0x30);
 }

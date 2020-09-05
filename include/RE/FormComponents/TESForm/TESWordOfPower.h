@@ -19,7 +19,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -36,5 +36,5 @@ namespace RE
 		// members
 		BSFixedString translation;	// 30 - TNAM
 	};
-	STATIC_ASSERT(sizeof(TESWordOfPower) == 0x38);
+	static_assert(sizeof(TESWordOfPower) == 0x38);
 }

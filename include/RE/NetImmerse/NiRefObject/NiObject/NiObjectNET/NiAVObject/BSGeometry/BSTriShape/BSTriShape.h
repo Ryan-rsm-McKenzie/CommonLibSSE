@@ -26,9 +26,9 @@ namespace RE
 
 
 		// members
-		UInt16 triangleCount;  // 158
-		UInt16 vertexCount;	   // 15A
-		UInt32 pad15C;		   // 15C
+		std::uint16_t triangleCount;  // 158
+		std::uint16_t vertexCount;	  // 15A
+		std::uint32_t pad15C;		  // 15C
 	};
-	STATIC_ASSERT(sizeof(BSTriShape) == 0x160);
+	static_assert(sizeof(BSTriShape) == 0x160);
 }

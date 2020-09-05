@@ -16,11 +16,11 @@ namespace RE
 		{
 		public:
 			// members
-			bool   editorVisible;	 // 0
-			bool   startNetBoneSet;	 // 1
-			UInt16 slot;			 // 2 - https://wiki.nexusmods.com/index.php/Skyrim_bodyparts_number
+			bool		  editorVisible;	// 0
+			bool		  startNetBoneSet;	// 1
+			std::uint16_t slot;				// 2 - https://wiki.nexusmods.com/index.php/Skyrim_bodyparts_number
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x4);
+		static_assert(sizeof(Data) == 0x4);
 
 
 		virtual ~BSDismemberSkinInstance();	 // 00
@@ -37,13 +37,13 @@ namespace RE
 
 
 		// members
-		SInt32 numPartitions;  // 88
-		UInt32 pad8C;		   // 8C
-		Data*  partitions;	   // 90
-		bool   unk98;		   // 98
-		UInt8  pad99;		   // 99
-		UInt16 pad9A;		   // 9A
-		UInt32 pad9C;		   // 9C
+		std::int32_t  numPartitions;  // 88
+		std::uint32_t pad8C;		  // 8C
+		Data*		  partitions;	  // 90
+		bool		  unk98;		  // 98
+		std::uint8_t  pad99;		  // 99
+		std::uint16_t pad9A;		  // 9A
+		std::uint32_t pad9C;		  // 9C
 	};
-	STATIC_ASSERT(sizeof(BSDismemberSkinInstance) == 0xA0);
+	static_assert(sizeof(BSDismemberSkinInstance) == 0xA0);
 }

@@ -23,12 +23,12 @@ namespace RE
 		virtual void ClearDataComponent() override;						// 02
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
-		void GetDescription(BSString& a_out, TESForm* a_parent, UInt32 a_fieldType = 'CSED');
+		void GetDescription(BSString& a_out, TESForm* a_parent, std::uint32_t a_fieldType = 'CSED');
 
 
 		// members
-		UInt32				 fileOffset;	   // 08
+		std::uint32_t		 fileOffset;	   // 08
 		BGSLocalizedStringDL descriptionText;  // 0C
 	};
-	STATIC_ASSERT(sizeof(TESDescription) == 0x10);
+	static_assert(sizeof(TESDescription) == 0x10);
 }

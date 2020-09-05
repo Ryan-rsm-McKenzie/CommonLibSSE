@@ -38,14 +38,14 @@ namespace RE
 		ItemCard*		itemCard;		  // 50
 		BottomBar*		bottomBar;		  // 58
 		BSTArray<void*> unk60;			  // 60
-		UInt8			unk78;			  // 78
-		UInt8			pad79;			  // 79
-		UInt16			pad7A;			  // 7A
-		UInt32			unk7C;			  // 7C
+		std::uint8_t	unk78;			  // 78
+		std::uint8_t	pad79;			  // 79
+		std::uint16_t	pad7A;			  // 7A
+		std::uint32_t	unk7C;			  // 7C
 		bool			pcControlsReady;  // 80
-		UInt8			unk81;			  // 81
-		UInt16			pad82;			  // 82
-		UInt32			pad84;			  // 84
+		std::uint8_t	unk81;			  // 81
+		std::uint16_t	pad82;			  // 82
+		std::uint32_t	pad84;			  // 84
 	};
-	STATIC_ASSERT(sizeof(InventoryMenu) == 0x88);
+	static_assert(sizeof(InventoryMenu) == 0x88);
 }

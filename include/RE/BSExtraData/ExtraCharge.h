@@ -22,8 +22,8 @@ namespace RE
 
 
 		// members
-		float  charge;	// 10
-		UInt32 pad14;	// 14
+		float		  charge;  // 10
+		std::uint32_t pad14;   // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraCharge) == 0x18);
+	static_assert(sizeof(ExtraCharge) == 0x18);
 }

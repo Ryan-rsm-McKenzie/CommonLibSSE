@@ -9,7 +9,7 @@ namespace RE
 {
 	struct ACTOR_MOVEMENT_TYPES
 	{
-		enum ACTOR_MOVEMENT_TYPE : UInt32
+		enum ACTOR_MOVEMENT_TYPE : std::uint32_t
 		{
 			kWalk = 0,
 			kRun = 1,
@@ -32,7 +32,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -51,5 +51,5 @@ namespace RE
 		// members
 		BSTArray<BGSFootstep*> entries[ACTOR_MOVEMENT_TYPES::kTotal];  // 20
 	};
-	STATIC_ASSERT(sizeof(BGSFootstepSet) == 0x98);
+	static_assert(sizeof(BGSFootstepSet) == 0x98);
 }

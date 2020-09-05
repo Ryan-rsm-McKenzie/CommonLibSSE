@@ -25,14 +25,14 @@ namespace RE
 
 		union Data
 		{
-			bool   b;
-			float  f;
-			SInt32 i;
-			Color  r;
-			char*  s;
-			UInt32 u;
+			bool		  b;
+			float		  f;
+			std::int32_t  i;
+			Color		  r;
+			char*		  s;
+			std::uint32_t u;
 		};
-		STATIC_ASSERT(sizeof(Data) == 0x8);
+		static_assert(sizeof(Data) == 0x8);
 
 
 		virtual ~Setting();	 // 00
@@ -44,17 +44,17 @@ namespace RE
 		Type		GetType() const;
 		const char* GetName() const;
 
-		bool		GetBool() const;
-		float		GetFloat() const;
-		SInt32		GetSInt() const;
-		Color		GetColor() const;
-		const char* GetString() const;
-		UInt32		GetUInt() const;
+		bool		  GetBool() const;
+		float		  GetFloat() const;
+		std::int32_t  GetSInt() const;
+		Color		  GetColor() const;
+		const char*	  GetString() const;
+		std::uint32_t GetUInt() const;
 
 
 		// members
 		Data  data;	 // 08
 		char* name;	 // 10
 	};
-	STATIC_ASSERT(sizeof(Setting) == 0x18);
+	static_assert(sizeof(Setting) == 0x18);
 }

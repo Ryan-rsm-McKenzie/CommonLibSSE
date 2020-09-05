@@ -10,5 +10,5 @@ namespace RE
 	{
 	public:
 	};
-	STATIC_ASSERT(sizeof(hkRefVariant) == 0x8);
+	static_assert(sizeof(hkRefVariant) == 0x8);
 }

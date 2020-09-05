@@ -26,5 +26,5 @@ namespace RE
 		// members
 		BSFixedString mapName;	// 10 - RDMP
 	};
-	STATIC_ASSERT(sizeof(TESRegionDataMap) == 0x18);
+	static_assert(sizeof(TESRegionDataMap) == 0x18);
 }

@@ -16,11 +16,11 @@ namespace RE
 		struct AlternateTexture	 // MODS
 		{
 			BGSTextureSet* textureSet;	// 00
-			UInt32		   index3D;		// 08
-			UInt32		   unk0C;		// 0C
+			std::uint32_t  index3D;		// 08
+			std::uint32_t  unk0C;		// 0C
 			BSFixedString  name3D;		// 10
 		};
-		STATIC_ASSERT(sizeof(AlternateTexture) == 0x18);
+		static_assert(sizeof(AlternateTexture) == 0x18);
 
 
 		virtual ~TESModelTextureSwap();	 // 00
@@ -34,8 +34,8 @@ namespace RE
 
 		// members
 		AlternateTexture* alternateTextures;	 // 28 - MODS
-		UInt32			  numAlternateTextures;	 // 30
-		UInt32			  pad34;				 // 34
+		std::uint32_t	  numAlternateTextures;	 // 30
+		std::uint32_t	  pad34;				 // 34
 	};
-	STATIC_ASSERT(sizeof(TESModelTextureSwap) == 0x38);
+	static_assert(sizeof(TESModelTextureSwap) == 0x38);
 }

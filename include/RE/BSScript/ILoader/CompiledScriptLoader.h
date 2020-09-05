@@ -29,11 +29,11 @@ namespace RE
 			// members
 			ErrorLogger*			errorHandler;  // 08
 			BSTSmartPointer<IStore> scriptStore;   // 10
-			UInt64					unk18;		   // 18
-			UInt64					unk20;		   // 20
-			UInt64					unk28;		   // 28
-			UInt64					unk30;		   // 30
+			std::uint64_t			unk18;		   // 18
+			std::uint64_t			unk20;		   // 20
+			std::uint64_t			unk28;		   // 28
+			std::uint64_t			unk30;		   // 30
 		};
-		STATIC_ASSERT(sizeof(CompiledScriptLoader) == 0x38);
+		static_assert(sizeof(CompiledScriptLoader) == 0x38);
 	}
 }

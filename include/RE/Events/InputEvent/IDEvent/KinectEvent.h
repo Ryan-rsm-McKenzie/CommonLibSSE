@@ -18,5 +18,5 @@ namespace RE
 		// members
 		BSFixedString heard;  // 28
 	};
-	STATIC_ASSERT(sizeof(KinectEvent) == 0x30);
+	static_assert(sizeof(KinectEvent) == 0x30);
 }

@@ -11,7 +11,7 @@ namespace RE
 	class BGSSceneAction;
 
 
-	enum class SCENE_ACTOR_FLAG : UInt32  // LNAM
+	enum class SCENE_ACTOR_FLAG	 // LNAM
 	{
 		kNone = 0,
 		kNoPlayerActivation = 1 << 0,
@@ -24,11 +24,12 @@ namespace RE
 	class BGSScenePhase
 	{
 	public:
+		// members
 		TESCondition			  startConditions;		 // 00
 		TESCondition			  completionConditions;	 // 08
 		BGSStoryManagerQuestNode* questNode;			 // 10
 	};
-	STATIC_ASSERT(sizeof(BGSScenePhase) == 0x18);
+	static_assert(sizeof(BGSScenePhase) == 0x18);
 
 
 	class BGSScene : public TESForm
@@ -38,7 +39,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::Scene;
 
 
-		enum class Flag : UInt32
+		enum class Flag
 		{
 			kNone = 0,
 			kBeginOnQuestStart = 1 << 0,
@@ -48,7 +49,7 @@ namespace RE
 		};
 
 
-		enum class BehaviourFlag : UInt32  // DNAM
+		enum class BehaviourFlag  // DNAM
 		{
 			kNone = 0,
 			kDeathPause = 1 << 0,  // unused
@@ -64,16 +65,16 @@ namespace RE
 
 		struct ChangeFlags
 		{
-			enum ChangeFlag : UInt32
+			enum ChangeFlag : std::uint32_t
 			{
-				kActive = (UInt32)1 << 31
+				kActive = (std::uint32_t)1 << 31
 			};
 		};
 
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -94,21 +95,21 @@ namespace RE
 
 
 		// members
-		BSTArray<BGSScenePhase*>   phases;				   // 20
-		BSTArray<FormID>		   actors;				   // 00 - ALID
-		BSTArray<SCENE_ACTOR_FLAG> actorFlags;			   // 18 - LNAM
-		BSTArray<BehaviourFlag>	   actorProgressionFlags;  // 30 - DNAM
-		BSTArray<BGSSceneAction*>  actions;				   // 80
-		TESQuest*				   parentQuest;			   // 98 - PNAM
-		Flag					   flags;				   // A0 - FNAM
-		UInt32					   padA4;				   // A4
-		TESCondition			   conditions;			   // A8 - CTDA
-		UInt32					   unkB0;				   // B0
-		UInt32					   unkB4;				   // B4
-		UInt32					   unkB8;				   // B8
-		UInt32					   unkBC;				   // BC
-		UInt32					   unkC0;				   // C0
-		UInt32					   padC4;				   // C4
+		BSTArray<BGSScenePhase*>									phases;					// 20
+		BSTArray<FormID>											actors;					// 00 - ALID
+		BSTArray<stl::enumeration<SCENE_ACTOR_FLAG, std::uint32_t>> actorFlags;				// 18 - LNAM
+		BSTArray<stl::enumeration<BehaviourFlag, std::uint32_t>>	actorProgressionFlags;	// 30 - DNAM
+		BSTArray<BGSSceneAction*>									actions;				// 80
+		TESQuest*													parentQuest;			// 98 - PNAM
+		stl::enumeration<Flag, std::uint32_t>						flags;					// A0 - FNAM
+		std::uint32_t												padA4;					// A4
+		TESCondition												conditions;				// A8 - CTDA
+		std::uint32_t												unkB0;					// B0
+		std::uint32_t												unkB4;					// B4
+		std::uint32_t												unkB8;					// B8
+		std::uint32_t												unkBC;					// BC
+		std::uint32_t												unkC0;					// C0
+		std::uint32_t												padC4;					// C4
 	};
-	STATIC_ASSERT(sizeof(BGSScene) == 0xC8);
+	static_assert(sizeof(BGSScene) == 0xC8);
 }

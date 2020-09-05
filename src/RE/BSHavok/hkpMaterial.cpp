@@ -6,7 +6,7 @@ namespace RE
 	auto hkpMaterial::GetResponseType() const
 		-> ResponseType
 	{
-		return responseType;
+		return *responseType;
 	}
 
 

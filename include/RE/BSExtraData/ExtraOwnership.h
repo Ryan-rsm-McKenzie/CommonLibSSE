@@ -28,5 +28,5 @@ namespace RE
 		// members
 		TESForm* owner;	 // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraOwnership) == 0x18);
+	static_assert(sizeof(ExtraOwnership) == 0x18);
 }

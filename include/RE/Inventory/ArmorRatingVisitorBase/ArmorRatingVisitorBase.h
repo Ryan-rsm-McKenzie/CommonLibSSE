@@ -28,5 +28,5 @@ namespace RE
 		float  lightArmorRating;  // 18
 		float  heavyArmorRating;  // 1C
 	};
-	STATIC_ASSERT(sizeof(ArmorRatingVisitorBase) == 0x20);
+	static_assert(sizeof(ArmorRatingVisitorBase) == 0x20);
 }

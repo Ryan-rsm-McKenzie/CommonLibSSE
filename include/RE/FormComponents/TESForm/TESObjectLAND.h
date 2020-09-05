@@ -17,7 +17,8 @@ namespace RE
 
 	struct OBJ_LAND
 	{
-		enum class Flag : UInt32
+	public:
+		enum class Flag
 		{
 			kNone = 0,
 			kVertexNormals_HeightMap = 1 << 0,
@@ -27,18 +28,21 @@ namespace RE
 		};
 
 
-		Flag flags;	 // 0
+		// members
+		stl::enumeration<Flag, std::uint32_t> flags;  // 0
 	};
-	STATIC_ASSERT(sizeof(OBJ_LAND) == 0x4);
+	static_assert(sizeof(OBJ_LAND) == 0x4);
 
 
 	struct CHAR_NORM
 	{
-		SInt8 x;  // 0
-		SInt8 y;  // 1
-		SInt8 z;  // 2
+	public:
+		// members
+		std::int8_t x;	// 0
+		std::int8_t y;	// 1
+		std::int8_t z;	// 2
 	};
-	STATIC_ASSERT(sizeof(CHAR_NORM) == 0x3);
+	static_assert(sizeof(CHAR_NORM) == 0x3);
 
 
 	class TESObjectLAND :
@@ -52,7 +56,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12,
@@ -63,10 +67,12 @@ namespace RE
 
 		struct LoadedLandData
 		{
+		public:
+			// members
 			NiNode*				  mesh[4];				// 0000
 			float				  heights[4][289];		// 0020
-			SInt8				  percents[4][289][6];	// 1230
-			SInt8				  colors[4][289][3];	// 2D48
+			std::int8_t			  percents[4][289][6];	// 1230
+			std::int8_t			  colors[4][289][3];	// 2D48
 			CHAR_NORM			  normals[4][289];		// 3AD4
 			NiPointer<BSTriShape> geom[4];				// 4860
 			NiPointer<BSTriShape> border;				// 4880
@@ -74,12 +80,12 @@ namespace RE
 			TESLandTexture*		  defQuadTextures[4];	// 4890
 			TESLandTexture*		  quadTextures[4][6];	// 48B0
 			hkpMoppCode			  moppCode;				// 4970
-			UInt64				  unk49B0;				// 49B0
-			UInt64				  unk49B8;				// 49B8
-			UInt64				  unk49C0;				// 49C0
-			UInt64				  unk49C8;				// 49C8
+			std::uint64_t		  unk49B0;				// 49B0
+			std::uint64_t		  unk49B8;				// 49B8
+			std::uint64_t		  unk49C0;				// 49C0
+			std::uint64_t		  unk49C8;				// 49C8
 		};
-		STATIC_ASSERT(sizeof(LoadedLandData) == 0x49D0);
+		static_assert(sizeof(LoadedLandData) == 0x49D0);
 
 
 		virtual ~TESObjectLAND();  // 00
@@ -97,10 +103,10 @@ namespace RE
 
 		// members
 		OBJ_LAND			  data;			   // 28 - DATA
-		UInt32				  pad2C;		   // 2C
+		std::uint32_t		  pad2C;		   // 2C
 		TESObjectCELL*		  parentCell;	   // 30
 		NiPointer<QueuedFile> queuedTextures;  // 38
 		LoadedLandData*		  loadedData;	   // 40
 	};
-	STATIC_ASSERT(sizeof(TESObjectLAND) == 0x48);
+	static_assert(sizeof(TESObjectLAND) == 0x48);
 }

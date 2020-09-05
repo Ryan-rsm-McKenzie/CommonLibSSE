@@ -11,10 +11,10 @@ namespace RE
 	{
 	public:
 		// members
-		TESWeather* weather;  // 00
-		UInt32		chance;	  // 08
-		UInt32		unk0C;	  // 0C
-		TESGlobal*	global;	  // 10
+		TESWeather*	  weather;	// 00
+		std::uint32_t chance;	// 08
+		std::uint32_t unk0C;	// 0C
+		TESGlobal*	  global;	// 10
 	};
-	STATIC_ASSERT(sizeof(WeatherType) == 0x18);
+	static_assert(sizeof(WeatherType) == 0x18);
 }

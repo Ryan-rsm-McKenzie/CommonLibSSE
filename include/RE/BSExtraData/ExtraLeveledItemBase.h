@@ -26,5 +26,5 @@ namespace RE
 		// members
 		TESLevItem* levItem;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraLeveledItemBase) == 0x18);
+	static_assert(sizeof(ExtraLeveledItemBase) == 0x18);
 }

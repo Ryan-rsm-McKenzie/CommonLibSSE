@@ -19,13 +19,13 @@ namespace RE
 
 
 		// members
-		UInt64		  unk28;	   // 28
-		UInt64		  unk30;	   // 30
-		UInt64		  unk38;	   // 38
-		UInt64		  unk40;	   // 40
-		UInt64		  unk48;	   // 48
-		UInt64		  unk50;	   // 50
+		std::uint64_t unk28;	   // 28
+		std::uint64_t unk30;	   // 30
+		std::uint64_t unk38;	   // 38
+		std::uint64_t unk40;	   // 40
+		std::uint64_t unk48;	   // 48
+		std::uint64_t unk50;	   // 50
 		TESCondition* conditions;  // 58
 	};
-	STATIC_ASSERT(sizeof(BGSLocAlias) == 0x60);
+	static_assert(sizeof(BGSLocAlias) == 0x60);
 }

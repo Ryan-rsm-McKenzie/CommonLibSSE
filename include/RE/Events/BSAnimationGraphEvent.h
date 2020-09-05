@@ -16,5 +16,5 @@ namespace RE
 		const TESObjectREFR* holder;   // 08
 		const BSFixedString	 payload;  // 10
 	};
-	STATIC_ASSERT(sizeof(BSAnimationGraphEvent) == 0x18);
+	static_assert(sizeof(BSAnimationGraphEvent) == 0x18);
 }

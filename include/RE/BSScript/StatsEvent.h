@@ -9,11 +9,11 @@ namespace RE
 		{
 		public:
 			// members
-			UInt32 runningStacksCount;	  // 00
-			UInt32 suspendedStacksCount;  // 04
-			UInt32 functionMsgCount;	  // 08
-			UInt32 detachedObjectCount;	  // 0C
+			std::uint32_t runningStacksCount;	 // 00
+			std::uint32_t suspendedStacksCount;	 // 04
+			std::uint32_t functionMsgCount;		 // 08
+			std::uint32_t detachedObjectCount;	 // 0C
 		};
-		STATIC_ASSERT(sizeof(StatsEvent) == 0x10);
+		static_assert(sizeof(StatsEvent) == 0x10);
 	}
 }

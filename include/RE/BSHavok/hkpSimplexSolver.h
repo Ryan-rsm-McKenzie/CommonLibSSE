@@ -7,17 +7,17 @@ namespace RE
 {
 	struct hkpSurfaceConstraintInfo
 	{
-		hkVector4 plane;					// 00
-		hkVector4 velocity;					// 10
-		float	  staticFriction;			// 20
-		float	  extraUpStaticFriction;	// 24
-		float	  extraDownStaticFriction;	// 28
-		float	  dynamicFriction;			// 2C
-		SInt32	  priority;					// 30
-		UInt32	  pad34;					// 34
-		UInt64	  pad38;					// 38
+		hkVector4	  plane;					// 00
+		hkVector4	  velocity;					// 10
+		float		  staticFriction;			// 20
+		float		  extraUpStaticFriction;	// 24
+		float		  extraDownStaticFriction;	// 28
+		float		  dynamicFriction;			// 2C
+		std::int32_t  priority;					// 30
+		std::uint32_t pad34;					// 34
+		std::uint64_t pad38;					// 38
 	};
-	STATIC_ASSERT(sizeof(hkpSurfaceConstraintInfo) == 0x40);
+	static_assert(sizeof(hkpSurfaceConstraintInfo) == 0x40);
 
 
 	struct hkpSimplexSolverInput
@@ -29,9 +29,9 @@ namespace RE
 		float					  deltaTime;		   // 40
 		float					  minDeltaTime;		   // 44
 		hkpSurfaceConstraintInfo* constraints;		   // 48
-		SInt32					  numConstraints;	   // 50
-		UInt32					  pad54;			   // 54
-		UInt64					  pad58;			   // 58
+		std::int32_t			  numConstraints;	   // 50
+		std::uint32_t			  pad54;			   // 54
+		std::uint64_t			  pad58;			   // 58
 	};
-	STATIC_ASSERT(sizeof(hkpSimplexSolverInput) == 0x60);
+	static_assert(sizeof(hkpSimplexSolverInput) == 0x60);
 }

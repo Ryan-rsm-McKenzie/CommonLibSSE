@@ -12,5 +12,5 @@ namespace RE
 		NiPoint3 normal;	// 00
 		float	 constant;	// 0C
 	};
-	STATIC_ASSERT(sizeof(NiPlane) == 0x10);
+	static_assert(sizeof(NiPlane) == 0x10);
 }

@@ -133,7 +133,7 @@ class gfx.data.DataProvider extends Array
 	public function invalidate(length: Number): Void
 	{
 		// The length parameter is in the Array DataProvider for compatibility purposes, and is not used.
-		dispatchEvent({type:"change"});
+		dispatchEvent( {type: "change"} );
 	}
 
 

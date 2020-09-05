@@ -7,7 +7,7 @@ namespace RE
 	struct PositionPlayerEvent
 	{
 	public:
-		enum class EVENT_TYPE : UInt32
+		enum class EVENT_TYPE
 		{
 			kPre = 0,
 			kPreUpdatePackages = 1,
@@ -18,7 +18,7 @@ namespace RE
 
 
 		// members
-		EVENT_TYPE type;  // 0
+		stl::enumeration<EVENT_TYPE, std::uint32_t> type;  // 0
 	};
-	STATIC_ASSERT(sizeof(PositionPlayerEvent) == 0x4);
+	static_assert(sizeof(PositionPlayerEvent) == 0x4);
 }

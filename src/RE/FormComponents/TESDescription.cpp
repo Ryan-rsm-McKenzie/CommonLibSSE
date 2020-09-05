@@ -5,10 +5,10 @@
 
 namespace RE
 {
-	void TESDescription::GetDescription(BSString& a_out, TESForm* a_parent, UInt32 a_fieldType)
+	void TESDescription::GetDescription(BSString& a_out, TESForm* a_parent, std::uint32_t a_fieldType)
 	{
 		using func_t = decltype(&TESDescription::GetDescription);
-		REL::Offset<func_t> func(Offset::TESDescription::GetDescription);
+		REL::Relocation<func_t> func{ Offset::TESDescription::GetDescription };
 		return func(this, a_out, a_parent, a_fieldType);
 	}
 }

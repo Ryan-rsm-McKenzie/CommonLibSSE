@@ -23,10 +23,10 @@ namespace RE
 	struct hkpShapeRayCastOutput;
 
 
-	using hkpVertexID = UInt16;
+	using hkpVertexID = std::uint16_t;
 	constexpr hkpVertexID HK_INVALID_VERTEX_ID = static_cast<hkpVertexID>(-1);
 
-	using hkpShapeKey = UInt32;
+	using hkpShapeKey = std::uint32_t;
 	constexpr hkpShapeKey HK_INVALID_SHAPE_KEY = static_cast<hkpShapeKey>(-1);
 
 
@@ -37,17 +37,17 @@ namespace RE
 
 
 		using GetSupportingVertexFunc = void(const void* a_this, const hkVector4& a_direction, hkpCdVertex& a_supportVertex);
-		using ConvertVertexIdsToVerticesFunc = void(const void* a_this, const hkpVertexID* a_ids, SInt32 a_numIDs, class hkpCdVertex* a_verticesOut);
-		using WeldContactPointFunc = SInt32(const void* a_this, hkpVertexID* a_featurePoints, UInt8& a_numFeaturePoints, hkVector4& a_contactPointWs, const hkTransform* a_thisTransform, const hkpConvexShape* a_collidingShape, const hkTransform* a_collidingTransform, hkVector4& a_separatingNormalInOut);
+		using ConvertVertexIdsToVerticesFunc = void(const void* a_this, const hkpVertexID* a_ids, std::int32_t a_numIDs, class hkpCdVertex* a_verticesOut);
+		using WeldContactPointFunc = std::int32_t(const void* a_this, hkpVertexID* a_featurePoints, std::uint8_t& a_numFeaturePoints, hkVector4& a_contactPointWs, const hkTransform* a_thisTransform, const hkpConvexShape* a_collidingShape, const hkTransform* a_collidingTransform, hkVector4& a_separatingNormalInOut);
 		using GetCentreFunc = void(const void* a_this, hkVector4& a_centreOut);
-		using GetNumCollisionSpheresFunc = SInt32(const void* a_this);
+		using GetNumCollisionSpheresFunc = std::int32_t(const void* a_this);
 		using GetCollisionSpheresFunc = const hkSphere*(const void* a_this, hkSphere* a_sphereBuffer);
 		using GetAabbFunc = void(const void* a_this, const hkTransform& a_localToWorld, float a_tolerance, hkAabb& a_out);
 		using CastRayFunc = bool(const void* a_this, const hkpShapeRayCastInput& a_input, hkpShapeRayCastOutput& a_output);
 		using CastRayWithCollectorFunc = void(const void* a_this, const hkpShapeRayCastInput& a_input, const hkpCdBody& a_cdBody, hkpRayHitCollector& a_collector);
 		using CastRayBundleFunc = hkVector4Comparison(const void* a_this, const hkpShapeRayBundleCastInput& a_input, hkpShapeRayBundleCastOutput& a_output, const hkVector4Comparison& a_mask);
 		using GetChildShapeFunc = const hkpShape*(const void* a_this, hkpShapeKey a_key, hkpShapeBuffer& a_buffer);
-		using GetCollisionFilterInfoFunc = UInt32(const void* a_this, hkpShapeKey a_key);
+		using GetCollisionFilterInfoFunc = std::uint32_t(const void* a_this, hkpShapeKey a_key);
 
 
 		struct CalcSizeForSpuInput
@@ -58,7 +58,7 @@ namespace RE
 			bool isFixedOrKeyframed;		// 1
 			bool hasDynamicMotionSaved;		// 2
 		};
-		STATIC_ASSERT(sizeof(CalcSizeForSpuInput) == 0x3);
+		static_assert(sizeof(CalcSizeForSpuInput) == 0x3);
 
 
 		struct ShapeFuncs
@@ -78,7 +78,7 @@ namespace RE
 			GetChildShapeFunc*				getChildShapeFunc;			 // 50
 			GetCollisionFilterInfoFunc*		getCollisionFilterInfoFunc;	 // 58
 		};
-		STATIC_ASSERT(sizeof(ShapeFuncs) == 0x60);
+		static_assert(sizeof(ShapeFuncs) == 0x60);
 
 
 		struct ShapeFuncs2
@@ -97,12 +97,12 @@ namespace RE
 			CastRayBundleFunc*				castRayBundle;					 // 48
 			GetChildShapeFunc*				getChildShapeFunc;				 // 50
 			GetCollisionFilterInfoFunc*		getCollisionFilterInfoFunc;		 // 58
-			UInt64							pad60;							 // 60
-			UInt64							pad68;							 // 68
-			UInt64							pad70;							 // 70
-			UInt64							pad78;							 // 78
+			std::uint64_t					pad60;							 // 60
+			std::uint64_t					pad68;							 // 68
+			std::uint64_t					pad70;							 // 70
+			std::uint64_t					pad78;							 // 78
 		};
-		STATIC_ASSERT(sizeof(ShapeFuncs2) == 0x80);
+		static_assert(sizeof(ShapeFuncs2) == 0x80);
 
 
 		using RegsiterFunc = void(ShapeFuncs& a_sf);
@@ -114,7 +114,7 @@ namespace RE
 		virtual float					 GetMaximumProjection(const hkVector4& a_direction) const;																						// 03
 		virtual const hkpShapeContainer* GetContainer() const;																															// 04 - { return 0; }
 		virtual bool					 IsConvex() const;																																// 05 - { return false; }
-		virtual SInt32					 CalcSizeForSpu(const CalcSizeForSpuInput& a_input, SInt32 a_spuBufferSizeLeft) const;															// 06 - { return -1; }
+		virtual std::int32_t			 CalcSizeForSpu(const CalcSizeForSpuInput& a_input, std::int32_t a_spuBufferSizeLeft) const;													// 06 - { return -1; }
 		virtual void					 GetAabbImpl(const hkTransform& a_localToWorld, float a_tolerance, hkAabb& a_out) const = 0;													// 07
 		virtual bool					 CastRayImpl(const hkpShapeRayCastInput& a_input, hkpShapeRayCastOutput& a_output) const = 0;													// 08
 		virtual void					 CastRayWithCollectorImpl(const hkpShapeRayCastInput& a_input, const hkpCdBody& a_cdBody, hkpRayHitCollector& a_collector) const = 0;			// 09
@@ -122,9 +122,9 @@ namespace RE
 
 
 		// members
-		UInt64		 userData;	// 10
-		hkpShapeType type;		// 18
-		UInt32		 pad1C;		// 1C
+		std::uint64_t userData;	 // 10
+		hkpShapeType  type;		 // 18
+		std::uint32_t pad1C;	 // 1C
 	};
-	STATIC_ASSERT(sizeof(hkpShape) == 0x20);
+	static_assert(sizeof(hkpShape) == 0x20);
 }

@@ -20,7 +20,7 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;  // 10
+		std::uint64_t unk10;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraShouldWear) == 0x18);
+	static_assert(sizeof(ExtraShouldWear) == 0x18);
 }

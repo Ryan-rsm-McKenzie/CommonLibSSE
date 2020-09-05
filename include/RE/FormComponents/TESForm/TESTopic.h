@@ -11,14 +11,14 @@ namespace RE
 {
 	struct DIALOGUE_DATA  // DATA
 	{
-		enum class TopicFlag : UInt8
+		enum class TopicFlag
 		{
 			kNone = 0,
 			kDoAllBeforeRepeating = 1 << 0
 		};
 
 
-		enum class Subtype : UInt16
+		enum class Subtype
 		{
 			kCustom = 0,
 			kForceGreet = 1,
@@ -126,11 +126,11 @@ namespace RE
 		};
 
 
-		TopicFlag		topicFlags;	 // 0
-		DIALOGUE_TYPE_8 type;		 // 1
-		Subtype			subtype;	 // 2
+		stl::enumeration<TopicFlag, std::uint8_t>	  topicFlags;  // 0
+		stl::enumeration<DIALOGUE_TYPE, std::uint8_t> type;		   // 1
+		stl::enumeration<Subtype, std::uint16_t>	  subtype;	   // 2
 	};
-	STATIC_ASSERT(sizeof(DIALOGUE_DATA) == 0x4);
+	static_assert(sizeof(DIALOGUE_DATA) == 0x4);
 
 
 	class TESTopic :
@@ -144,7 +144,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -163,21 +163,21 @@ namespace RE
 		virtual bool		IsFormTypeChild(FormType a_type) override;	  // 36 - { return a_type == FormType::Info }
 
 		// override (TESFullName)
-		virtual UInt32		GetFullNameLength() const override;	 // 04
-		virtual const char* GetFullName() const override;		 // 05
+		virtual std::uint32_t GetFullNameLength() const override;  // 04
+		virtual const char*	  GetFullName() const override;		   // 05
 
 		float GetPriority() const;
 
 
 		// members
 		DIALOGUE_DATA	   data;					 // 30 - DATA
-		UInt32			   priorityAndJournalIndex;	 // 34 - PNAM
+		std::uint32_t	   priorityAndJournalIndex;	 // 34 - PNAM
 		BGSDialogueBranch* ownerBranch;				 // 38 - BNAM
 		TESQuest*		   ownerQuest;				 // 40 -	QNAM
 		TESTopicInfo**	   topicInfos;				 // 48 - infoTopics[infoCount]
-		UInt32			   numTopicInfos;			 // 50 - TIFC
-		UInt32			   firstFileOffset;			 // 54
+		std::uint32_t	   numTopicInfos;			 // 50 - TIFC
+		std::uint32_t	   firstFileOffset;			 // 54
 		BSFixedString	   formEditorID;			 // 58
 	};
-	STATIC_ASSERT(sizeof(TESTopic) == 0x60);
+	static_assert(sizeof(TESTopic) == 0x60);
 }

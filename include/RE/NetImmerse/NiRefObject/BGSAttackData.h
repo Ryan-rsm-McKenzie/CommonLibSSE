@@ -10,7 +10,8 @@ namespace RE
 {
 	struct AttackData  // ATKD
 	{
-		enum class AttackFlag : UInt32
+	public:
+		enum class AttackFlag
 		{
 			kNone = 0,
 			kIgnoreWeapon = 1 << 0,
@@ -19,24 +20,25 @@ namespace RE
 			kChargeAttack = 1 << 3,
 			kRotatingAttack = 1 << 4,
 			kContinuousAttack = 1 << 5,
-			kOverrideData = (UInt32)1 << 31
+			kOverrideData = 1 << 31
 		};
 
 
-		float		damageMult;		// 00
-		float		attackChance;	// 04
-		SpellItem*	attackSpell;	// 08
-		AttackFlag	flags;			// 10
-		float		attackAngle;	// 14
-		float		strikeAngle;	// 18
-		float		staggerOffset;	// 1C
-		BGSKeyword* attackType;		// 20
-		float		knockDown;		// 28
-		float		recoveryTime;	// 2C
-		float		staminaMult;	// 30
-		UInt32		pad34;			// 34
+		// members
+		float										damageMult;		// 00
+		float										attackChance;	// 04
+		SpellItem*									attackSpell;	// 08
+		stl::enumeration<AttackFlag, std::uint32_t> flags;			// 10
+		float										attackAngle;	// 14
+		float										strikeAngle;	// 18
+		float										staggerOffset;	// 1C
+		BGSKeyword*									attackType;		// 20
+		float										knockDown;		// 28
+		float										recoveryTime;	// 2C
+		float										staminaMult;	// 30
+		std::uint32_t								pad34;			// 34
 	};
-	STATIC_ASSERT(sizeof(AttackData) == 0x38);
+	static_assert(sizeof(AttackData) == 0x38);
 
 
 	NiSmartPointer(BGSAttackData);
@@ -57,5 +59,5 @@ namespace RE
 		BSFixedString event;  // 10 - ATKE
 		AttackData	  data;	  // 18 - ATKD
 	};
-	STATIC_ASSERT(sizeof(BGSAttackData) == 0x50);
+	static_assert(sizeof(BGSAttackData) == 0x50);
 }

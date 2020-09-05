@@ -32,7 +32,7 @@ namespace RE
 
 		// members
 		BSTArray<BGSProcedureTreeConditionalItem*> conditions;	// 10
-		UInt64									   unk28;		// 28
+		std::uint64_t							   unk28;		// 28
 	};
-	STATIC_ASSERT(sizeof(BGSProcedureTreeBranch) == 0x30);
+	static_assert(sizeof(BGSProcedureTreeBranch) == 0x30);
 }

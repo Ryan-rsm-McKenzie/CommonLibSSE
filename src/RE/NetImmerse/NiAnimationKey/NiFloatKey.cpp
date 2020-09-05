@@ -30,7 +30,7 @@ namespace RE
 	}
 
 
-	NiFloatKey* NiFloatKey::GetKeyAt(UInt32 a_index, UInt8 a_keySize)
+	NiFloatKey* NiFloatKey::GetKeyAt(std::uint32_t a_index, std::uint8_t a_keySize)
 	{
 		return static_cast<NiFloatKey*>(NiAnimationKey::GetKeyAt(a_index, a_keySize));
 	}

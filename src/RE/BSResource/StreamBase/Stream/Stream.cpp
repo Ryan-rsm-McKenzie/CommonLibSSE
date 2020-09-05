@@ -10,7 +10,7 @@ namespace RE
 		{}
 
 
-		Stream::Stream(UInt32 a_totalSize) :
+		Stream::Stream(std::uint32_t a_totalSize) :
 			StreamBase(a_totalSize)
 		{}
 

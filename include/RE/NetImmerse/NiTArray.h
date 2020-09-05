@@ -12,19 +12,19 @@ namespace RE
 	public:
 		using value_type = T;
 		using allocator_type = Allocator;
-		using size_type = UInt16;
+		using size_type = std::uint16_t;
 		using reference = value_type&;
 		using const_reference = const value_type&;
 		using iterator = T*;
 		using const_iterator = const T*;
 
 
-		NiTArray(UInt32 a_maxSize = 0, UInt32 a_growBy = 1) :
+		NiTArray(std::uint32_t a_maxSize = 0, std::uint32_t a_growBy = 1) :
 			_data(0),
-			_capacity(static_cast<UInt16>(a_maxSize)),
+			_capacity(static_cast<std::uint16_t>(a_maxSize)),
 			_freeIdx(0),
 			_size(0),
-			_growthSize(static_cast<UInt16>(a_growBy))
+			_growthSize(static_cast<std::uint16_t>(a_growBy))
 		{
 			if (_capacity > 0) {
 				_data = allocator_type::Allocate(_capacity);
@@ -131,35 +131,35 @@ namespace RE
 
 	private:
 		// members
-		T*	   _data;		 // 08
-		UInt16 _capacity;	 // 10
-		UInt16 _freeIdx;	 // 12
-		UInt16 _size;		 // 14
-		UInt16 _growthSize;	 // 16
+		T*			  _data;		// 08
+		std::uint16_t _capacity;	// 10
+		std::uint16_t _freeIdx;		// 12
+		std::uint16_t _size;		// 14
+		std::uint16_t _growthSize;	// 16
 	};
-	STATIC_ASSERT(sizeof(NiTArray<void*, NiTMallocInterface<void*>>) == 0x18);
+	static_assert(sizeof(NiTArray<void*, NiTMallocInterface<void*>>) == 0x18);
 
 
 	template <class T>
 	class NiTObjectArray : public NiTArray<T, NiTNewInterface<T>>
 	{
 	public:
-		NiTObjectArray(UInt32 a_maxSize = 0, UInt32 a_growBy = 1) :
+		NiTObjectArray(std::uint32_t a_maxSize = 0, std::uint32_t a_growBy = 1) :
 			NiTArray<T, NiTNewInterface<T>>(a_maxSize, a_growBy)
 		{}
 	};
-	STATIC_ASSERT(sizeof(NiTObjectArray<void*>) == 0x18);
+	static_assert(sizeof(NiTObjectArray<void*>) == 0x18);
 
 
 	template <class T>
 	class NiTPrimitiveArray : public NiTArray<T, NiTMallocInterface<T>>
 	{
 	public:
-		NiTPrimitiveArray(UInt32 a_maxSize = 0, UInt32 a_growBy = 1) :
+		NiTPrimitiveArray(std::uint32_t a_maxSize = 0, std::uint32_t a_growBy = 1) :
 			NiTArray<T, NiTMallocInterface<T>>(a_maxSize, a_growBy)
 		{}
 	};
-	STATIC_ASSERT(sizeof(NiTPrimitiveArray<void*>) == 0x18);
+	static_assert(sizeof(NiTPrimitiveArray<void*>) == 0x18);
 
 
 	template <class T, class Allocator>
@@ -168,14 +168,14 @@ namespace RE
 	public:
 		using value_type = T;
 		using allocator_type = Allocator;
-		using size_type = UInt32;
+		using size_type = std::uint32_t;
 		using reference = value_type&;
 		using const_reference = const value_type&;
 		using iterator = T*;
 		using const_iterator = const T*;
 
 
-		NiTLargeArray(UInt32 a_maxSize = 0, UInt32 a_growBy = 1) :
+		NiTLargeArray(std::uint32_t a_maxSize = 0, std::uint32_t a_growBy = 1) :
 			_data(0),
 			_capacity(a_maxSize),
 			_freeIdx(0),
@@ -287,35 +287,35 @@ namespace RE
 
 	private:
 		// members
-		T*	   _data;		 // 08
-		UInt32 _capacity;	 // 10
-		UInt32 _freeIdx;	 // 14
-		UInt32 _size;		 // 18
-		UInt32 _growthSize;	 // 1C
+		T*			  _data;		// 08
+		std::uint32_t _capacity;	// 10
+		std::uint32_t _freeIdx;		// 14
+		std::uint32_t _size;		// 18
+		std::uint32_t _growthSize;	// 1C
 	};
-	STATIC_ASSERT(sizeof(NiTLargeArray<void*, NiTMallocInterface<void*>>) == 0x20);
+	static_assert(sizeof(NiTLargeArray<void*, NiTMallocInterface<void*>>) == 0x20);
 
 
 	template <class T>
 	class NiTLargeObjectArray : public NiTLargeArray<T, NiTNewInterface<T>>
 	{
 	public:
-		NiTLargeObjectArray(UInt32 a_maxSize = 0, UInt32 a_growBy = 1) :
+		NiTLargeObjectArray(std::uint32_t a_maxSize = 0, std::uint32_t a_growBy = 1) :
 			NiTLargeArray<T, NiTNewInterface<T>>(a_maxSize, a_growBy)
 		{}
 	};
-	STATIC_ASSERT(sizeof(NiTLargeObjectArray<void*>) == 0x20);
+	static_assert(sizeof(NiTLargeObjectArray<void*>) == 0x20);
 
 
 	template <class T>
 	class NiTLargePrimitiveArray : public NiTLargeArray<T, NiTMallocInterface<T>>
 	{
 	public:
-		NiTLargePrimitiveArray(UInt32 a_maxSize = 0, UInt32 a_growBy = 1) :
+		NiTLargePrimitiveArray(std::uint32_t a_maxSize = 0, std::uint32_t a_growBy = 1) :
 			NiTLargeArray<T, NiTMallocInterface<T>>(a_maxSize, a_growBy)
 		{}
 	};
-	STATIC_ASSERT(sizeof(NiTLargePrimitiveArray<void*>) == 0x20);
+	static_assert(sizeof(NiTLargePrimitiveArray<void*>) == 0x20);
 
 
 	class TESForm;
@@ -323,5 +323,5 @@ namespace RE
 	{
 	public:
 	};
-	STATIC_ASSERT(sizeof(NiFormArray) == 0x20);
+	static_assert(sizeof(NiFormArray) == 0x20);
 }

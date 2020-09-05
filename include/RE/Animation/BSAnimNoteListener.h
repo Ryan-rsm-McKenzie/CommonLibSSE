@@ -1,14 +1,30 @@
 #pragma once
 
+#include "RE/NetImmerse/NiRefObject/NiObject/BSAnimNote.h"
+#include "RE/NetImmerse/NiTArray.h"
+
 
 namespace RE
 {
+	class IBSAnimNoteReceiver;
+
+
 	class BSAnimNoteListener
 	{
 	public:
-		class BSAnimReceiverType
+		struct BSAnimReceiverType
 		{
 		public:
+			// members
+			stl::enumeration<BSAnimNote::AnimNoteType, std::uint32_t> noteType;	 // 00
+			std::uint32_t											  pad04;	 // 04
+			IBSAnimNoteReceiver*									  receiver;	 // 08
 		};
+		static_assert(sizeof(BSAnimReceiverType) == 0x10);
+
+
+		// members
+		NiTPrimitiveArray<BSAnimReceiverType*> receivers;  // 00
 	};
+	static_assert(sizeof(BSAnimNoteListener) == 0x18);
 }

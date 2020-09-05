@@ -25,13 +25,13 @@ namespace RE
 
 		// members
 		TESPackage*		unk10;			 // 10
-		SInt32			index;			 // 18
+		std::int32_t	index;			 // 18
 		ObjectRefHandle target;			 // 1C
 		bool			actionComplete;	 // 20
 		bool			activated;		 // 21
 		bool			doneOnce;		 // 22
-		UInt8			unk23;			 // 23
-		UInt32			unk24;			 // 24
+		std::uint8_t	unk23;			 // 23
+		std::uint32_t	unk24;			 // 24
 	};
-	STATIC_ASSERT(sizeof(ExtraPackage) == 0x28);
+	static_assert(sizeof(ExtraPackage) == 0x28);
 }

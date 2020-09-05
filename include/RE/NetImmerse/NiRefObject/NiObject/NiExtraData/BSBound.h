@@ -29,5 +29,5 @@ namespace RE
 		NiPoint3 center;   // 18
 		NiPoint3 extents;  // 24
 	};
-	STATIC_ASSERT(sizeof(BSBound) == 0x30);
+	static_assert(sizeof(BSBound) == 0x30);
 }

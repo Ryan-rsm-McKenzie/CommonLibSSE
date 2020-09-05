@@ -19,7 +19,7 @@ namespace RE
 		float staffScoreMult;	   // 20
 		float avoidThreatChance;   // 24
 	};
-	STATIC_ASSERT(sizeof(CombatStyleGeneralData) == 0x28);
+	static_assert(sizeof(CombatStyleGeneralData) == 0x28);
 
 
 	struct CombatStyleMeleeData	 // CSME
@@ -33,7 +33,7 @@ namespace RE
 		float bashPowerAttackMult;			 // 18
 		float specialAttackMult;			 // 1C
 	};
-	STATIC_ASSERT(sizeof(CombatStyleMeleeData) == 0x20);
+	static_assert(sizeof(CombatStyleMeleeData) == 0x20);
 
 
 	struct CombatStyleCloseRangeData  // CSCR
@@ -43,14 +43,14 @@ namespace RE
 		float flankDistanceMult;  // 08
 		float stalkTimeMult;	  // 0C
 	};
-	STATIC_ASSERT(sizeof(CombatStyleCloseRangeData) == 0x10);
+	static_assert(sizeof(CombatStyleCloseRangeData) == 0x10);
 
 
 	struct CombatStyleLongRangeData	 // CSLR
 	{
 		float strafeMult;  // 0
 	};
-	STATIC_ASSERT(sizeof(CombatStyleLongRangeData) == 0x4);
+	static_assert(sizeof(CombatStyleLongRangeData) == 0x4);
 
 
 	struct CombatStyleFlightData  // CSFL
@@ -64,7 +64,7 @@ namespace RE
 		float perchAttackTimeMult;	 // 18
 		float flyingAttackChance;	 // 1C
 	};
-	STATIC_ASSERT(sizeof(CombatStyleFlightData) == 0x20);
+	static_assert(sizeof(CombatStyleFlightData) == 0x20);
 
 
 	class TESCombatStyle : public TESForm
@@ -74,7 +74,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::CombatStyle;
 
 
-		enum class FLAG : UInt32  // DATA
+		enum class FLAG	 // DATA
 		{
 			kNone = 0,
 			kDuelingStyle = 1 << 0,
@@ -85,7 +85,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12,
@@ -103,12 +103,12 @@ namespace RE
 
 
 		// members
-		CombatStyleGeneralData	  generalData;	   // 20 - CSGD
-		CombatStyleMeleeData	  meleeData;	   // 48 - CSME
-		CombatStyleCloseRangeData closeRangeData;  // 68 - CSCR
-		CombatStyleLongRangeData  longRangeData;   // 78 - CSLR
-		CombatStyleFlightData	  flightData;	   // 7C - CSFL
-		FLAG					  flags;		   // 9C - DATA
+		CombatStyleGeneralData				  generalData;	   // 20 - CSGD
+		CombatStyleMeleeData				  meleeData;	   // 48 - CSME
+		CombatStyleCloseRangeData			  closeRangeData;  // 68 - CSCR
+		CombatStyleLongRangeData			  longRangeData;   // 78 - CSLR
+		CombatStyleFlightData				  flightData;	   // 7C - CSFL
+		stl::enumeration<FLAG, std::uint32_t> flags;		   // 9C - DATA
 	};
-	STATIC_ASSERT(sizeof(TESCombatStyle) == 0xA0);
+	static_assert(sizeof(TESCombatStyle) == 0xA0);
 }

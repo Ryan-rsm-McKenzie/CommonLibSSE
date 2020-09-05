@@ -15,9 +15,9 @@ namespace RE
 	VMTypeID BGSBaseAlias::GetVMTypeID() const
 	{
 		const auto& TYPE = GetTypeString();
-		if (TYPE == "Loc") {
+		if (TYPE == "Loc"sv) {
 			return BGSLocAlias::VMTYPEID;
-		} else if (TYPE == "Ref") {
+		} else if (TYPE == "Ref"sv) {
 			return BGSRefAlias::VMTYPEID;
 		} else {
 			return BGSBaseAlias::VMTYPEID;
@@ -27,6 +27,6 @@ namespace RE
 
 	bool BGSBaseAlias::IsQuestObject() const
 	{
-		return (flags & FLAGS::kQuestObject) != FLAGS::kNone;
+		return flags.all(FLAGS::kQuestObject);
 	}
 }

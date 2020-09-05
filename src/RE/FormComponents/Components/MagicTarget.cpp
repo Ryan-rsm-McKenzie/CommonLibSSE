@@ -7,19 +7,23 @@
 
 namespace RE
 {
-	void MagicTarget::DispellEffectsWithArchetype(Archetype a_type, bool a_force)
+	void MagicTarget::DispelEffectsWithArchetype(Archetype a_type, bool a_force)
 	{
-		auto effects = GetActiveEffectList();
+		const auto effects = GetActiveEffectList();
 		if (!effects) {
 			return;
 		}
 
-		EffectSetting* setting = nullptr;
-		for (auto& effect : *effects) {
-			setting = effect ? effect->GetBaseObject() : nullptr;
+		std::vector<RE::ActiveEffect*> queued;
+		for (const auto& effect : *effects) {
+			const auto setting = effect ? effect->GetBaseObject() : nullptr;
 			if (setting && setting->HasArchetype(a_type)) {
-				effect->Dispell(a_force);
+				queued.push_back(effect);
 			}
+		}
+
+		for (const auto& effect : queued) {
+			effect->Dispel(a_force);
 		}
 	}
 
@@ -45,7 +49,7 @@ namespace RE
 	bool MagicTarget::HasMagicEffect(EffectSetting* a_effect)
 	{
 		using func_t = decltype(&MagicTarget::HasMagicEffect);
-		REL::Offset<func_t> func(Offset::MagicTarget::HasMagicEffect);
+		REL::Relocation<func_t> func{ Offset::MagicTarget::HasMagicEffect };
 		return func(this, a_effect);
 	}
 }

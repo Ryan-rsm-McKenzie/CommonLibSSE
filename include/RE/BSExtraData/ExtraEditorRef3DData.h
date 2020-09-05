@@ -28,5 +28,5 @@ namespace RE
 		NiPointer<NiAVObject> data3D;	  // 10
 		NiPointer<BSLines>	  dataBound;  // 18
 	};
-	STATIC_ASSERT(sizeof(ExtraEditorRef3DData) == 0x20);
+	static_assert(sizeof(ExtraEditorRef3DData) == 0x20);
 }

@@ -26,5 +26,5 @@ namespace RE
 		// members
 		BSSimpleList<Crime*>* crimes;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraPlayerCrimeList) == 0x18);
+	static_assert(sizeof(ExtraPlayerCrimeList) == 0x18);
 }

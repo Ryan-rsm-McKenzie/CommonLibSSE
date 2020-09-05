@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/BSCore/BSFixedString.h"
 #include "RE/BSCore/BSTArray.h"
 #include "RE/BSCore/BSTSmartPointer.h"
 #include "RE/BSSystem/BSIntrusiveRefCounted.h"
@@ -7,9 +8,6 @@
 
 namespace RE
 {
-	class BSFixedString;
-
-
 	namespace BSScript
 	{
 		class ObjectTypeInfo;
@@ -24,7 +22,7 @@ namespace RE
 				inline static constexpr auto RTTI = RTTI_BSScript__Internal__IFuncCallQuery;
 
 
-				enum class CallType : UInt32
+				enum class CallType
 				{
 				};
 
@@ -36,9 +34,9 @@ namespace RE
 
 
 				// members
-				UInt32 pad0C;  // 0C
+				std::uint32_t pad0C;  // 0C
 			};
-			STATIC_ASSERT(sizeof(IFuncCallQuery) == 0x10);
+			static_assert(sizeof(IFuncCallQuery) == 0x10);
 		}
 	}
 }

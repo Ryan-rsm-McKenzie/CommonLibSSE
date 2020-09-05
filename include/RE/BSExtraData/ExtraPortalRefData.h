@@ -11,7 +11,7 @@ namespace RE
 	{
 		ObjectRefHandle linkedRefs[2];	// 0
 	};
-	STATIC_ASSERT(sizeof(PortalLinkedRefData) == 0x8);
+	static_assert(sizeof(PortalLinkedRefData) == 0x8);
 
 
 	class ExtraPortalRefData : public BSExtraData
@@ -31,5 +31,5 @@ namespace RE
 		// members
 		PortalLinkedRefData* data;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraPortalRefData) == 0x18);
+	static_assert(sizeof(ExtraPortalRefData) == 0x18);
 }

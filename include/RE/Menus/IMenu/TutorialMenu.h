@@ -26,5 +26,5 @@ namespace RE
 		// members
 		GFxValue root;	// 30 - "Menu_mc"
 	};
-	STATIC_ASSERT(sizeof(TutorialMenu) == 0x48);
+	static_assert(sizeof(TutorialMenu) == 0x48);
 }

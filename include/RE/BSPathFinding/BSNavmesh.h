@@ -16,7 +16,7 @@ namespace RE
 	class BSPathingDoor;
 
 
-	enum class EDGE_EXTRA_INFO_TYPE : UInt32
+	enum class EDGE_EXTRA_INFO_TYPE
 	{
 		kInvalid = static_cast<std::underlying_type_t<EDGE_EXTRA_INFO_TYPE>>(-1),
 		kPortal = 0,
@@ -32,7 +32,7 @@ namespace RE
 		// members
 		NiPoint3 location;	// 0
 	};
-	STATIC_ASSERT(sizeof(BSNavmeshVertex) == 0xC);
+	static_assert(sizeof(BSNavmeshVertex) == 0xC);
 
 
 	struct BSNavmeshTriangle
@@ -42,7 +42,7 @@ namespace RE
 		// edge 0-1 = 0
 		// edge 1-2 = 1
 		// edge 2-0 = 2
-		enum class TriangleFlag : UInt16
+		enum class TriangleFlag
 		{
 			kNone = 0,
 			kEdge0_Link = 1 << 0,
@@ -60,7 +60,7 @@ namespace RE
 		// half = 2/4
 		// tri = 3/4
 		// full = 4/4
-		enum class TraversalFlag : UInt16
+		enum class TraversalFlag
 		{
 			kNone = 0,
 			kEdge0_CoverValueQuarter = 1 << 0,
@@ -79,34 +79,34 @@ namespace RE
 
 
 		// members
-		UInt16		  vertices[3];	   // 00
-		UInt16		  triangles[3];	   // 06 - 0xFF == NONE
-		TriangleFlag  triangleFlags;   // 0C
-		TraversalFlag traversalFlags;  // 0E
+		std::uint16_t								   vertices[3];		// 00
+		std::uint16_t								   triangles[3];	// 06 - 0xFF == NONE
+		stl::enumeration<TriangleFlag, std::uint16_t>  triangleFlags;	// 0C
+		stl::enumeration<TraversalFlag, std::uint16_t> traversalFlags;	// 0E
 	};
-	STATIC_ASSERT(sizeof(BSNavmeshTriangle) == 0x10);
+	static_assert(sizeof(BSNavmeshTriangle) == 0x10);
 
 
 	struct BSNavmeshTriangleEdgePortal
 	{
 	public:
 		// members
-		FormID otherMeshID;	 // 0
-		UInt16 triangle;	 // 4
-		SInt8  edgeIndex;	 // 6
-		UInt8  pad7;		 // 7
+		FormID		  otherMeshID;	// 0
+		std::uint16_t triangle;		// 4
+		std::int8_t	  edgeIndex;	// 6
+		std::uint8_t  pad7;			// 7
 	};
-	STATIC_ASSERT(sizeof(BSNavmeshTriangleEdgePortal) == 0x8);
+	static_assert(sizeof(BSNavmeshTriangleEdgePortal) == 0x8);
 
 
 	struct BSNavmeshEdgeExtraInfo
 	{
 	public:
 		// members
-		EDGE_EXTRA_INFO_TYPE		type;	 // 0
-		BSNavmeshTriangleEdgePortal portal;	 // 4
+		stl::enumeration<EDGE_EXTRA_INFO_TYPE, std::uint32_t> type;	   // 0
+		BSNavmeshTriangleEdgePortal							  portal;  // 4
 	};
-	STATIC_ASSERT(sizeof(BSNavmeshEdgeExtraInfo) == 0xC);
+	static_assert(sizeof(BSNavmeshEdgeExtraInfo) == 0xC);
 
 
 	struct BSNavmeshTriangleDoorPortal
@@ -114,11 +114,11 @@ namespace RE
 	public:
 		// members
 		BSTSmartPointer<BSPathingDoor> door;				 // 00
-		UInt16						   owningTriangleIndex;	 // 08
-		UInt16						   pad0A;				 // 0A
-		UInt32						   pad0C;				 // 0C
+		std::uint16_t				   owningTriangleIndex;	 // 08
+		std::uint16_t				   pad0A;				 // 0A
+		std::uint32_t				   pad0C;				 // 0C
 	};
-	STATIC_ASSERT(sizeof(BSNavmeshTriangleDoorPortal) == 0x10);
+	static_assert(sizeof(BSNavmeshTriangleDoorPortal) == 0x10);
 
 
 	struct BSNavmeshClosedDoorInfo
@@ -126,36 +126,36 @@ namespace RE
 	public:
 		// members
 		BSTSmartPointer<BSPathingDoor> door;		   // 00
-		UInt16						   triangleIndex;  // 08
-		UInt16						   pad0A;		   // 0A
-		UInt32						   pad0C;		   // 0C
+		std::uint16_t				   triangleIndex;  // 08
+		std::uint16_t				   pad0A;		   // 0A
+		std::uint32_t				   pad0C;		   // 0C
 	};
-	STATIC_ASSERT(sizeof(BSNavmeshClosedDoorInfo) == 0x10);
+	static_assert(sizeof(BSNavmeshClosedDoorInfo) == 0x10);
 
 
 	struct BSNavmeshCoverEdge
 	{
 	public:
 		// members
-		UInt16 vertices[2];	 // 00
-		UInt32 data;		 // 08
+		std::uint16_t vertices[2];	// 00
+		std::uint32_t data;			// 08
 	};
-	STATIC_ASSERT(sizeof(BSNavmeshCoverEdge) == 0x8);
+	static_assert(sizeof(BSNavmeshCoverEdge) == 0x8);
 
 
 	struct BSNavmeshGrid
 	{
 	public:
 		// members
-		UInt32						  gridSize;			 // 00
-		float						  columnSectionLen;	 // 04
-		float						  rowSectionLen;	 // 08
-		NiPoint3					  gridBoundsMin;	 // 0C
-		NiPoint3					  gridBoundsMax;	 // 18
-		UInt32						  pad24;			 // 14
-		SimpleArray<BSTArray<UInt16>> gridData;			 // 28
+		std::uint32_t						 gridSize;			// 00
+		float								 columnSectionLen;	// 04
+		float								 rowSectionLen;		// 08
+		NiPoint3							 gridBoundsMin;		// 0C
+		NiPoint3							 gridBoundsMax;		// 18
+		std::uint32_t						 pad24;				// 14
+		SimpleArray<BSTArray<std::uint16_t>> gridData;			// 28
 	};
-	STATIC_ASSERT(sizeof(BSNavmeshGrid) == 0x30);
+	static_assert(sizeof(BSNavmeshGrid) == 0x30);
 
 
 	class BSNavmesh : public BSIntrusiveRefCounted	// NVNM
@@ -167,23 +167,23 @@ namespace RE
 		virtual ~BSNavmesh();  // 00
 
 		// add
-		virtual UInt32 QNavmeshID() = 0;  // 01
+		virtual std::uint32_t QNavmeshID() = 0;	 // 01
 
 
 		// members
-		UInt32												  pad00C;				  // 00C
-		BSTArray<BSNavmeshVertex>							  vertices;				  // 010
-		BSTArray<BSNavmeshTriangle>							  triangles;			  // 028
-		BSTArray<BSNavmeshEdgeExtraInfo>					  extraEdgeInfo;		  // 040
-		BSTArray<BSNavmeshTriangleDoorPortal>				  doorPortals;			  // 058
-		BSTArray<BSNavmeshClosedDoorInfo>					  closedDoors;			  // 070
-		BSTArray<BSNavmeshCoverEdge>						  coverArray;			  // 088
-		BSNavmeshGrid										  meshGrid;				  // 0A0
-		BSTArray<NiPointer<BSNavmeshObstacleUndoData>>		  obstacles;			  // 0D0
-		BSTHashMap<UInt16, NiPointer<BSNavmeshObstacleData>>* triangleToObstacleMap;  // 0E8
-		BSTArray<void*>										  unk0F0;				  // 0F0 - obstaclePOVs/disabledLinks?
-		BSTSmartPointer<BSPathingCell>						  parentCell;			  // 108
-		void*												  unk110;				  // 110 - navmeshInfo?
+		std::uint32_t												 pad00C;				 // 00C
+		BSTArray<BSNavmeshVertex>									 vertices;				 // 010
+		BSTArray<BSNavmeshTriangle>									 triangles;				 // 028
+		BSTArray<BSNavmeshEdgeExtraInfo>							 extraEdgeInfo;			 // 040
+		BSTArray<BSNavmeshTriangleDoorPortal>						 doorPortals;			 // 058
+		BSTArray<BSNavmeshClosedDoorInfo>							 closedDoors;			 // 070
+		BSTArray<BSNavmeshCoverEdge>								 coverArray;			 // 088
+		BSNavmeshGrid												 meshGrid;				 // 0A0
+		BSTArray<NiPointer<BSNavmeshObstacleUndoData>>				 obstacles;				 // 0D0
+		BSTHashMap<std::uint16_t, NiPointer<BSNavmeshObstacleData>>* triangleToObstacleMap;	 // 0E8
+		BSTArray<void*>												 unk0F0;				 // 0F0 - obstaclePOVs/disabledLinks?
+		BSTSmartPointer<BSPathingCell>								 parentCell;			 // 108
+		void*														 unk110;				 // 110 - navmeshInfo?
 	};
-	STATIC_ASSERT(sizeof(BSNavmesh) == 0x118);
+	static_assert(sizeof(BSNavmesh) == 0x118);
 }

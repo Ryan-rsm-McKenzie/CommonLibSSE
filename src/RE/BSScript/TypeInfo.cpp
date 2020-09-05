@@ -51,7 +51,7 @@ namespace RE
 
 		bool operator==(const TypeInfo& a_lhs, const TypeInfo& a_rhs)
 		{
-			return a_lhs._rawType == a_rhs._rawType;
+			return a_lhs.GetRawType() == a_rhs.GetRawType();
 		}
 
 
@@ -63,7 +63,7 @@ namespace RE
 
 		bool operator<(const TypeInfo& a_lhs, const TypeInfo& a_rhs)
 		{
-			return a_lhs._rawType < a_rhs._rawType;
+			return a_lhs.GetRawType() < a_rhs.GetRawType();
 		}
 
 
@@ -88,14 +88,14 @@ namespace RE
 		auto TypeInfo::GetRawType() const
 			-> RawType
 		{
-			return _rawType;
+			return *_rawType;
 		}
 
 
 		ObjectTypeInfo* TypeInfo::GetTypeInfo() const
 		{
 			assert(IsObject());
-			return reinterpret_cast<ObjectTypeInfo*>(_rawType & ~RawType::kObject);
+			return reinterpret_cast<ObjectTypeInfo*>(GetRawType() & ~RawType::kObject);
 		}
 
 
@@ -103,9 +103,9 @@ namespace RE
 			-> RawType
 		{
 			if (_rawType < RawType::kArraysEnd) {
-				return _rawType;
+				return GetRawType();
 			} else {
-				return (_rawType & RawType::kObject) != RawType::kNone ? RawType::kObjectArray : RawType::kObject;
+				return _rawType.all(RawType::kObject) ? RawType::kObjectArray : RawType::kObject;
 			}
 		}
 
@@ -136,7 +136,7 @@ namespace RE
 
 		bool TypeInfo::IsLiteralArray() const
 		{
-			switch (_rawType) {
+			switch (*_rawType) {
 			case RawType::kStringArray:
 			case RawType::kIntArray:
 			case RawType::kFloatArray:
@@ -168,7 +168,7 @@ namespace RE
 
 		bool TypeInfo::IsObjectArray() const
 		{
-			return (_rawType >= RawType::kArraysEnd) && ((_rawType & RawType::kObject) != RawType::kNone);
+			return (_rawType >= RawType::kArraysEnd) && _rawType.all(RawType::kObject);
 		}
 
 

@@ -23,7 +23,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
@@ -50,7 +50,7 @@ namespace RE
 
 
 		// members
-		UInt64 unk238;	// 238
+		std::uint64_t unk238;  // 238
 	};
-	STATIC_ASSERT(sizeof(BeamProjectile) == 0x240);
+	static_assert(sizeof(BeamProjectile) == 0x240);
 }

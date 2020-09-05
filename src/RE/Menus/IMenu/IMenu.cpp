@@ -11,19 +11,7 @@
 
 namespace RE
 {
-	IMenu::IMenu() :
-		view(0),
-		menuDepth(3),
-		pad19(0),
-		pad20(0),
-		flags(Flag::kNone),
-		context(Context::kNone),
-		pad24(0),
-		fxDelegate(0)
-	{}
-
-
-	void IMenu::Accept([[maybe_unused]] CallbackProcessor* a_processor)
+	void IMenu::Accept(CallbackProcessor*)
 	{}
 
 
@@ -41,7 +29,7 @@ namespace RE
 			return UI_MESSAGE_RESULTS::kPassOn;
 		}
 
-		if (!view) {
+		if (!uiMovie) {
 			return UI_MESSAGE_RESULTS::kPassOn;
 		}
 
@@ -50,25 +38,25 @@ namespace RE
 			return UI_MESSAGE_RESULTS::kPassOn;
 		}
 
-		view->HandleEvent(*data->scaleformEvent);
+		uiMovie->HandleEvent(*data->scaleformEvent);
 		return UI_MESSAGE_RESULTS::kHandled;
 	}
 
 
-	void IMenu::AdvanceMovie([[maybe_unused]] float a_interval, UInt32 a_currentTime)
+	void IMenu::AdvanceMovie(float, std::uint32_t a_currentTime)
 	{
-		if (view) {
+		if (uiMovie) {
 			const GFxValue currentTime(static_cast<double>(a_currentTime));
-			view->SetVariable("CurrentTime", currentTime, GFxMovie::SetVarType::kNormal);
-			view->Advance(static_cast<float>(currentTime.GetNumber()));
+			uiMovie->SetVariable("CurrentTime", currentTime, GFxMovie::SetVarType::kNormal);
+			uiMovie->Advance(static_cast<float>(currentTime.GetNumber()));
 		}
 	}
 
 
 	void IMenu::PostDisplay()
 	{
-		if (view) {
-			view->Display();
+		if (uiMovie) {
+			uiMovie->Display();
 		}
 	}
 
@@ -83,23 +71,23 @@ namespace RE
 
 		auto inputManager = BSInputDeviceManager::GetSingleton();
 		auto gamepad = inputManager ? inputManager->IsGamepadEnabled() : false;
-		if (view && view->IsAvailable("_root.SetPlatform")) {
-			GFxValue args[2];
+		if (uiMovie && uiMovie->IsAvailable("_root.SetPlatform")) {
+			std::array<GFxValue, 2> args;
 			const double platform = gamepad ? 1.0 : 0.0;
 			args[0].SetNumber(platform);
 			const bool swapPS3 = false;
 			args[1].SetBoolean(swapPS3);
-			view->Invoke("_root.SetPlatform", nullptr, args, std::extent<decltype(args)>::value);
+			uiMovie->Invoke("_root.SetPlatform", nullptr, args.data(), static_cast<std::uint32_t>(args.size()));
 		}
 
 		if (UpdateUsesCursor()) {
 			Message messageID;
 			auto uiStr = InterfaceStrings::GetSingleton();
 			if (gamepad) {
-				flags &= ~Flag::kUsesCursor;
+				menuFlags.reset(Flag::kUsesCursor);
 				messageID = Message::kHide;
 			} else {
-				flags |= Flag::kUsesCursor;
+				menuFlags.set(Flag::kUsesCursor);
 				auto ui = UI::GetSingleton();
 				messageID = ui && ui->IsMenuOpen(uiStr->cursorMenu) ? Message::kUpdate : Message::kShow;
 			}
@@ -109,173 +97,5 @@ namespace RE
 				messageQueue->AddMessage(uiStr->cursorMenu, messageID, nullptr);
 			}
 		}
-	}
-
-
-	bool IMenu::AdvancesUnderPauseMenu() const
-	{
-		return (flags & Flag::kAdvancesUnderPauseMenu) != Flag::kNone;
-	}
-
-
-	bool IMenu::AllowSaving() const
-	{
-		return (flags & Flag::kAllowSaving) != Flag::kNone;
-	}
-
-
-	bool IMenu::AlwaysOpen() const
-	{
-		return (flags & Flag::kAlwaysOpen) != Flag::kNone;
-	}
-
-
-	bool IMenu::ApplicationMenu() const
-	{
-		return (flags & Flag::kApplicationMenu) != Flag::kNone;
-	}
-
-
-	bool IMenu::AssignCursorToRenderer() const
-	{
-		return (flags & Flag::kAssignCursorToRenderer) != Flag::kNone;
-	}
-
-
-	bool IMenu::CustomRendering() const
-	{
-		return (flags & Flag::kCustomRendering) != Flag::kNone;
-	}
-
-
-	bool IMenu::CompanionAppAllowed() const
-	{
-		return (flags & Flag::kCompanionAppAllowed) != Flag::kNone;
-	}
-
-
-	bool IMenu::DisablePauseMenu() const
-	{
-		return (flags & Flag::kDisablePauseMenu) != Flag::kNone;
-	}
-
-
-	bool IMenu::DontHideCursorWhenTopmost() const
-	{
-		return (flags & Flag::kDontHideCursorWhenTopmost) != Flag::kNone;
-	}
-
-
-	bool IMenu::FreezeFrameBackground() const
-	{
-		return (flags & Flag::kFreezeFrameBackground) != Flag::kNone;
-	}
-
-
-	bool IMenu::FreezeFramePause() const
-	{
-		return (flags & Flag::kFreezeFramePause) != Flag::kNone;
-	}
-
-
-	bool IMenu::HasButtonBar() const
-	{
-		return (flags & Flag::kHasButtonBar) != Flag::kNone;
-	}
-
-
-	bool IMenu::InventoryItemMenu() const
-	{
-		return (flags & Flag::kInventoryItemMenu) != Flag::kNone;
-	}
-
-
-	bool IMenu::IsTopButtonBar() const
-	{
-		return (flags & Flag::kIsTopButtonBar) != Flag::kNone;
-	}
-
-
-	bool IMenu::LargeScaleformRenderCacheMode() const
-	{
-		return (flags & Flag::kLargeScaleformRenderCacheMode) != Flag::kNone;
-	}
-
-
-	bool IMenu::Modal() const
-	{
-		return (flags & Flag::kModal) != Flag::kNone;
-	}
-
-
-	bool IMenu::OnStack() const
-	{
-		return (flags & Flag::kOnStack) != Flag::kNone;
-	}
-
-
-	bool IMenu::PausesGame() const
-	{
-		return (flags & Flag::kPausesGame) != Flag::kNone;
-	}
-
-
-	bool IMenu::RendersOffscreenTargets() const
-	{
-		return (flags & Flag::kRendersOffscreenTargets) != Flag::kNone;
-	}
-
-
-	bool IMenu::RendersUnderPauseMenu() const
-	{
-		return (flags & Flag::kRendersUnderPauseMenu) != Flag::kNone;
-	}
-
-
-	bool IMenu::RequiresUpdate() const
-	{
-		return (flags & Flag::kRequiresUpdate) != Flag::kNone;
-	}
-
-
-	bool IMenu::SkipRenderDuringFreezeFrameScreenshot() const
-	{
-		return (flags & Flag::kSkipRenderDuringFreezeFrameScreenshot) != Flag::kNone;
-	}
-
-
-	bool IMenu::TopmostRenderedMenu() const
-	{
-		return (flags & Flag::kTopmostRenderedMenu) != Flag::kNone;
-	}
-
-
-	bool IMenu::UsesBlurredBackground() const
-	{
-		return (flags & Flag::kUsesBlurredBackground) != Flag::kNone;
-	}
-
-
-	bool IMenu::UsesCursor() const
-	{
-		return (flags & Flag::kUsesCursor) != Flag::kNone;
-	}
-
-
-	bool IMenu::UsesMenuContext() const
-	{
-		return (flags & Flag::kUsesMenuContext) != Flag::kNone;
-	}
-
-
-	bool IMenu::UsesMovementToDirection() const
-	{
-		return (flags & Flag::kUsesMovementToDirection) != Flag::kNone;
-	}
-
-
-	bool IMenu::UpdateUsesCursor() const
-	{
-		return (flags & Flag::kUpdateUsesCursor) != Flag::kNone;
 	}
 }

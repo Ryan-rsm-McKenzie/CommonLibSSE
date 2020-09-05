@@ -8,9 +8,9 @@ namespace RE
 	{
 	public:
 		// members
-		UInt32 unk00;  // 00
-		Val	   val;	   // 04
-		T*	   type;   // ??
+		std::uint32_t unk00;  // 00
+		Val			  val;	  // 04
+		T*			  type;	  // ??
 	};
-	STATIC_ASSERT(sizeof(ActorSpeedChannel<void, float>) == 0x10);
+	static_assert(sizeof(ActorSpeedChannel<void, float>) == 0x10);
 }

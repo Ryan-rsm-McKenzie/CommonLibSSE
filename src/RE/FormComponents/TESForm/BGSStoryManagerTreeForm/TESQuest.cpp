@@ -15,12 +15,12 @@ namespace RE
 	bool TESQuest::EnsureQuestStarted(bool& a_result, bool a_startNow)
 	{
 		using func_t = decltype(&TESQuest::EnsureQuestStarted);
-		REL::Offset<func_t> func(Offset::TESQuest::EnsureQuestStarted);
+		REL::Relocation<func_t> func{ Offset::TESQuest::EnsureQuestStarted };
 		return func(this, a_result, a_startNow);
 	}
 
 
-	UInt16 TESQuest::GetCurrentStageID() const
+	std::uint16_t TESQuest::GetCurrentStageID() const
 	{
 		return currentStage;
 	}
@@ -28,19 +28,19 @@ namespace RE
 
 	bool TESQuest::IsActive() const
 	{
-		return (data.flags & QuestFlag::kActive) != QuestFlag::kNone;
+		return data.flags.all(QuestFlag::kActive);
 	}
 
 
 	bool TESQuest::IsCompleted() const
 	{
-		return (data.flags & QuestFlag::kCompleted) != QuestFlag::kNone;
+		return data.flags.all(QuestFlag::kCompleted);
 	}
 
 
 	bool TESQuest::IsEnabled() const
 	{
-		return (data.flags & QuestFlag::kEnabled) != QuestFlag::kNone;
+		return data.flags.all(QuestFlag::kEnabled);
 	}
 
 
@@ -58,7 +58,7 @@ namespace RE
 
 	bool TESQuest::IsStopped() const
 	{
-		return (data.flags & (QuestFlag::kEnabled | QuestFlag::kStageWait)) == QuestFlag::kNone;
+		return data.flags.none(QuestFlag::kEnabled, QuestFlag::kStageWait);
 	}
 
 
@@ -71,7 +71,7 @@ namespace RE
 	void TESQuest::Reset()
 	{
 		using func_t = decltype(&TESQuest::Reset);
-		REL::Offset<func_t> func(Offset::TESQuest::ResetQuest);
+		REL::Relocation<func_t> func{ Offset::TESQuest::ResetQuest };
 		return func(this);
 	}
 
@@ -97,9 +97,9 @@ namespace RE
 	void TESQuest::SetEnabled(bool a_set)
 	{
 		if (a_set) {
-			data.flags |= QuestFlag::kEnabled;
+			data.flags.set(QuestFlag::kEnabled);
 		} else {
-			data.flags &= ~QuestFlag::kEnabled;
+			data.flags.reset(QuestFlag::kEnabled);
 		}
 		AddChange(ChangeFlags::kQuestFlags);
 	}
@@ -108,7 +108,7 @@ namespace RE
 	bool TESQuest::Start()
 	{
 		if (eventID != QuestEvent::kNone) {
-			_DMESSAGE("Attempting to start event scoped quest outside of story manager");
+			SKSE::log::debug("Attempting to start event scoped quest outside of story manager");
 			return false;
 		}
 
@@ -119,7 +119,7 @@ namespace RE
 
 	bool TESQuest::StartsEnabled() const
 	{
-		return (data.flags & QuestFlag::kStartsEnabled) != QuestFlag::kNone;
+		return data.flags.all(QuestFlag::kStartsEnabled);
 	}
 
 

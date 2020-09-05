@@ -32,15 +32,15 @@ namespace RE
 
 		// members
 		NiPointer<BSGeometry> clouds[kTotalLayers];		   // 010
-		UInt64				  unk110[kTotalLayers];		   // 110
+		std::uint64_t		  unk110[kTotalLayers];		   // 110
 		NiPointer<NiTexture>  transTexture[kTotalLayers];  // 210
 		NiColor				  colors[kTotalLayers];		   // 310
 		float				  alphas[kTotalLayers];		   // 490
-		UInt16				  numLayers;				   // 510
+		std::uint16_t		  numLayers;				   // 510
 		bool				  forceUpdate;				   // 512
-		UInt8				  pad513;					   // 513
-		UInt32				  pad514;					   // 514
-		UInt64				  pad520;					   // 520
+		std::uint8_t		  pad513;					   // 513
+		std::uint32_t		  pad514;					   // 514
+		std::uint64_t		  pad520;					   // 520
 	};
-	STATIC_ASSERT(sizeof(Clouds) == 0x520);
+	static_assert(sizeof(Clouds) == 0x520);
 }

@@ -17,5 +17,5 @@ namespace RE
 		virtual hkpCharacterStateType GetType() const override;	 // 03 - { return kJumping; }
 		virtual void				  Unk_08(void) override;	 // 08
 	};
-	STATIC_ASSERT(sizeof(bhkCharacterStateJumping) == 0x10);
+	static_assert(sizeof(bhkCharacterStateJumping) == 0x10);
 }

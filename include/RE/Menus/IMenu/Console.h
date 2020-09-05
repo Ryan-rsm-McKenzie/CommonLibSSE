@@ -35,14 +35,14 @@ namespace RE
 
 
 		// members
-		void*  opcode;	// 30
-		UInt64 unk38;	// 38
-		UInt64 unk40;	// 40
-		UInt64 unk48;	// 48
-		UInt64 unk50;	// 50
+		void*		  opcode;  // 30
+		std::uint64_t unk38;   // 38
+		std::uint64_t unk40;   // 40
+		std::uint64_t unk48;   // 48
+		std::uint64_t unk50;   // 50
 
 	protected:
 		void SetSelectedRef_Impl(ObjectRefHandle& a_handle);
 	};
-	STATIC_ASSERT(sizeof(Console) == 0x58);
+	static_assert(sizeof(Console) == 0x58);
 }

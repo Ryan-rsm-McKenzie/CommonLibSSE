@@ -21,12 +21,12 @@ namespace RE
 			SpellItem**	  spells;		 // 00
 			TESLevSpell** levSpells;	 // 08
 			TESShout**	  shouts;		 // 10
-			UInt32		  numSpells;	 // 18
-			UInt32		  numlevSpells;	 // 1C
-			UInt32		  numShouts;	 // 20
-			UInt32		  pad24;		 // 24
+			std::uint32_t numSpells;	 // 18
+			std::uint32_t numlevSpells;	 // 1C
+			std::uint32_t numShouts;	 // 20
+			std::uint32_t pad24;		 // 24
 		};
-		STATIC_ASSERT(sizeof(SpellData) == 0x28);
+		static_assert(sizeof(SpellData) == 0x28);
 
 
 		virtual ~TESSpellList();  // 00
@@ -40,5 +40,5 @@ namespace RE
 		// members
 		SpellData* actorEffects;  // 08 - SPLO
 	};
-	STATIC_ASSERT(sizeof(TESSpellList) == 0x10);
+	static_assert(sizeof(TESSpellList) == 0x10);
 }

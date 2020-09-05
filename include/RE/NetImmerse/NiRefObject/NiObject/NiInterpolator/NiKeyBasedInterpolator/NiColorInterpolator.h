@@ -37,20 +37,20 @@ namespace RE
 		virtual void			Collapse() override;																	// 31
 		virtual void			GuaranteeTimeRange(float a_start, float a_end) override;								// 33
 		virtual NiInterpolator* GetSequenceInterpolator(float a_start, float a_end) override;							// 34
-		virtual UInt16			GetKeyChannelCount() const override;													// 39 - { return 1; }
-		virtual UInt32			GetKeyCount(UInt16 a_channel) const override;											// 3A - { return colorData ? colorData->numKeys : 0; }
-		virtual KeyContent		GetKeyContent(UInt16 a_channel) const override;											// 3B - { KeyContent::kColor; }
-		virtual KeyType			GetKeyType(UInt16 a_channel) const override;											// 3C - { return colorData ? colorData->type : 0; }
-		virtual void*			GetKeyArray(UInt16 a_channel) const override;											// 3D - { return colorData ? colorData->keys : 0; }
-		virtual UInt8			GetKeyStride(UInt16 a_channel) const override;											// 3E - { return colorData ? colorData->keySize : 0; }
-		virtual bool			GetChannelPosed(UInt16 a_channel) const override;										// 3F
+		virtual std::uint16_t	GetKeyChannelCount() const override;													// 39 - { return 1; }
+		virtual std::uint32_t	GetKeyCount(std::uint16_t a_channel) const override;									// 3A - { return colorData ? colorData->numKeys : 0; }
+		virtual KeyContent		GetKeyContent(std::uint16_t a_channel) const override;									// 3B - { KeyContent::kColor; }
+		virtual KeyType			GetKeyType(std::uint16_t a_channel) const override;										// 3C - { return colorData ? colorData->type : 0; }
+		virtual void*			GetKeyArray(std::uint16_t a_channel) const override;									// 3D - { return colorData ? colorData->keys : 0; }
+		virtual std::uint8_t	GetKeyStride(std::uint16_t a_channel) const override;									// 3E - { return colorData ? colorData->keySize : 0; }
+		virtual bool			GetChannelPosed(std::uint16_t a_channel) const override;								// 3F
 
 
 		// members
 		NiColorA			   colorValue;	// 18
 		NiPointer<NiColorData> colorData;	// 28
-		UInt32				   lastIndex;	// 30
-		UInt32				   pad34;		// 34
+		std::uint32_t		   lastIndex;	// 30
+		std::uint32_t		   pad34;		// 34
 	};
-	STATIC_ASSERT(sizeof(NiColorInterpolator) == 0x38);
+	static_assert(sizeof(NiColorInterpolator) == 0x38);
 }

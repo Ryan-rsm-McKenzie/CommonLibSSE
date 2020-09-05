@@ -43,10 +43,10 @@ namespace RE
 		// members
 		BSResource::Stream*	 unk40;			   // 40
 		BSGraphics::Texture* rendererTexture;  // 48
-		UInt8				 flags;			   // 50
-		UInt8				 pad51;			   // 51
-		UInt16				 pad52;			   // 52
-		UInt32				 pad54;			   // 54
+		std::uint8_t		 flags;			   // 50
+		std::uint8_t		 pad51;			   // 51
+		std::uint16_t		 pad52;			   // 52
+		std::uint32_t		 pad54;			   // 54
 	};
-	STATIC_ASSERT(sizeof(NiSourceTexture) == 0x58);
+	static_assert(sizeof(NiSourceTexture) == 0x58);
 }

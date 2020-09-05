@@ -19,7 +19,7 @@ namespace RE
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSGeometry;
 
 
-		enum class Type : UInt8
+		enum class Type
 		{
 			kGeometry = 0,
 			kParticles = 1,
@@ -64,9 +64,9 @@ namespace RE
 		virtual void		  PostLinkObject(NiStream& a_stream) override;																   // 1E
 		virtual void		  AttachProperty(NiAlphaProperty* a_property) override;														   // 27
 		virtual void		  SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid) override;  // 2B
-		virtual void		  UpdateDownwardPass(NiUpdateData& a_data, UInt32 a_arg2) override;											   // 2C
-		virtual void		  UpdateSelectedDownwardPass(NiUpdateData& a_data, UInt32 a_arg2) override;									   // 2D
-		virtual void		  UpdateRigidDownwardPass(NiUpdateData& a_data, UInt32 a_arg2) override;									   // 2E
+		virtual void		  UpdateDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;									   // 2C
+		virtual void		  UpdateSelectedDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;							   // 2D
+		virtual void		  UpdateRigidDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;								   // 2E
 		virtual void		  UpdateWorldBound() override;																				   // 2F
 		virtual void		  OnVisible(NiCullingProcess& a_process) override;															   // 34
 
@@ -77,16 +77,16 @@ namespace RE
 
 
 		// members
-		NiBound					  modelBound;				   // 110
-		NiPointer<NiProperty>	  properties[States::kTotal];  // 120
-		NiPointer<NiSkinInstance> skinInstance;				   // 130
-		void*					  rendererData;				   // 138
-		void*					  unk140;					   // 140 - smart ptr
-		UInt64					  vertexDesc;				   // 148
-		Type					  type;						   // 150
-		UInt8					  pad151;					   // 151
-		UInt16					  pad152;					   // 152
-		UInt32					  pad154;					   // 154
+		NiBound								 modelBound;				  // 110
+		NiPointer<NiProperty>				 properties[States::kTotal];  // 120
+		NiPointer<NiSkinInstance>			 skinInstance;				  // 130
+		void*								 rendererData;				  // 138
+		void*								 unk140;					  // 140 - smart ptr
+		std::uint64_t						 vertexDesc;				  // 148
+		stl::enumeration<Type, std::uint8_t> type;						  // 150
+		std::uint8_t						 pad151;					  // 151
+		std::uint16_t						 pad152;					  // 152
+		std::uint32_t						 pad154;					  // 154
 	};
-	STATIC_ASSERT(sizeof(BSGeometry) == 0x158);
+	static_assert(sizeof(BSGeometry) == 0x158);
 }

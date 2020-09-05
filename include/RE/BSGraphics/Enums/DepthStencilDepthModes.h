@@ -5,7 +5,7 @@ namespace RE
 {
 	namespace BSGraphics
 	{
-		enum class DepthStencilDepthMode : UInt32
+		enum class DepthStencilDepthMode
 		{
 			kDisabled = 0,
 			kTest = 1,

@@ -26,5 +26,5 @@ namespace RE
 		// members
 		BGSMessage* message;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraTeleportName) == 0x18);
+	static_assert(sizeof(ExtraTeleportName) == 0x18);
 }

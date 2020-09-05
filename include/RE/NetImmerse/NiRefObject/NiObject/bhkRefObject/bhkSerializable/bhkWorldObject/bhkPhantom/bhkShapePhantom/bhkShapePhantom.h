@@ -18,5 +18,5 @@ namespace RE
 		virtual const NiRTTI* GetRTTI() const override;					// 02
 		virtual void		  LinkObject(NiStream& a_stream) override;	// 19 - { bhkWorldObject::LinkObject(a_stream); }
 	};
-	STATIC_ASSERT(sizeof(bhkShapePhantom) == 0x30);
+	static_assert(sizeof(bhkShapePhantom) == 0x30);
 }

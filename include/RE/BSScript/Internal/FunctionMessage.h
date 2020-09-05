@@ -28,11 +28,11 @@ namespace RE
 
 				// members
 				Type							type;		// 00
-				UInt32							pad04;		// 04
+				std::uint32_t					pad04;		// 04
 				BSTSmartPointer<Stack>			stack;		// 08
 				BSTSmartPointer<IFuncCallQuery> funcQuery;	// 10
 			};
-			STATIC_ASSERT(sizeof(FunctionMessage) == 0x18);
+			static_assert(sizeof(FunctionMessage) == 0x18);
 		}
 	}
 }

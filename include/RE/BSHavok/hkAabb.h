@@ -12,5 +12,5 @@ namespace RE
 		hkVector4 min;	// 00
 		hkVector4 max;	// 10
 	};
-	STATIC_ASSERT(sizeof(hkAabb) == 0x20);
+	static_assert(sizeof(hkAabb) == 0x20);
 }

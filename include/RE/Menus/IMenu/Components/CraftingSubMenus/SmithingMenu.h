@@ -29,7 +29,7 @@ namespace RE
 				// members
 				SmithingMenu* subMenu;	// 10
 			};
-			STATIC_ASSERT(sizeof(SmithingConfirmCallback) == 0x18);
+			static_assert(sizeof(SmithingConfirmCallback) == 0x18);
 
 
 			virtual ~SmithingMenu();  // 00
@@ -41,20 +41,20 @@ namespace RE
 
 
 			// members
-			void*  unk100;	// 100
-			UInt64 unk108;	// 108
-			UInt64 unk110;	// 110
-			UInt64 unk118;	// 118
-			UInt64 unk120;	// 120
-			UInt64 unk128;	// 128
-			UInt64 unk130;	// 130
-			UInt64 unk138;	// 138
-			void*  unk140;	// 140
-			void*  unk148;	// 148
-			UInt64 unk150;	// 150
-			UInt64 unk158;	// 158
-			void*  unk160;	// 160
+			void*		  unk100;  // 100
+			std::uint64_t unk108;  // 108
+			std::uint64_t unk110;  // 110
+			std::uint64_t unk118;  // 118
+			std::uint64_t unk120;  // 120
+			std::uint64_t unk128;  // 128
+			std::uint64_t unk130;  // 130
+			std::uint64_t unk138;  // 138
+			void*		  unk140;  // 140
+			void*		  unk148;  // 148
+			std::uint64_t unk150;  // 150
+			std::uint64_t unk158;  // 158
+			void*		  unk160;  // 160
 		};
-		STATIC_ASSERT(sizeof(SmithingMenu) == 0x168);
+		static_assert(sizeof(SmithingMenu) == 0x168);
 	}
 }

@@ -25,5 +25,5 @@ namespace RE
 		// members
 		TESForm* startingWorldOrCell;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraStartingWorldOrCell) == 0x18);
+	static_assert(sizeof(ExtraStartingWorldOrCell) == 0x18);
 }

@@ -20,5 +20,5 @@ namespace RE
 		// members
 		MapMenu* mapMenu;  // 10
 	};
-	STATIC_ASSERT(sizeof(MapInputHandler) == 0x18);
+	static_assert(sizeof(MapInputHandler) == 0x18);
 }

@@ -26,5 +26,5 @@ namespace RE
 		// members
 		NiPointer<BGSAttackDataMap> attackDataMap;	// 08
 	};
-	STATIC_ASSERT(sizeof(BGSAttackDataForm) == 0x10);
+	static_assert(sizeof(BGSAttackDataForm) == 0x10);
 }

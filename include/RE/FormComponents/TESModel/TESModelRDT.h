@@ -13,5 +13,5 @@ namespace RE
 
 		virtual ~TESModelRDT();	 // 00
 	};
-	STATIC_ASSERT(sizeof(TESModelRDT) == 0x28);
+	static_assert(sizeof(TESModelRDT) == 0x28);
 }

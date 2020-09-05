@@ -5,7 +5,7 @@ namespace RE
 {
 	GameSettingCollection* GameSettingCollection::GetSingleton()
 	{
-		REL::Offset<GameSettingCollection**> singleton(Offset::GameSettingCollection::Singleton);
+		REL::Relocation<GameSettingCollection**> singleton{ Offset::GameSettingCollection::Singleton };
 		return *singleton;
 	}
 

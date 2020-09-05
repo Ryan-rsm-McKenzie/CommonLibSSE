@@ -18,5 +18,5 @@ namespace RE
 		virtual void Unk_04(void) override;	 // 04
 		virtual void Unk_06(void) override;	 // 06
 	};
-	STATIC_ASSERT(sizeof(BGSProcedureTreeSequence) == 0x30);
+	static_assert(sizeof(BGSProcedureTreeSequence) == 0x30);
 }

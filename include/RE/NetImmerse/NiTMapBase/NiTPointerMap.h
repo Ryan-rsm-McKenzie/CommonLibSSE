@@ -19,7 +19,7 @@ namespace RE
 		using size_type = typename Base::size_type;
 
 
-		NiTPointerMap(UInt32 a_hashSize = 37) :
+		NiTPointerMap(std::uint32_t a_hashSize = 37) :
 			NiTMapBase(a_hashSize)
 		{}
 
@@ -44,5 +44,5 @@ namespace RE
 			_allocator.Deallocate(a_value);
 		}
 	};
-	STATIC_ASSERT(sizeof(NiTPointerMap<UInt32, UInt64>) == 0x20);
+	static_assert(sizeof(NiTPointerMap<std::uint32_t, std::uint64_t>) == 0x20);
 }

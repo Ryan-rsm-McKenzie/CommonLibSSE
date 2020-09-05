@@ -16,7 +16,7 @@ namespace RE
 	}
 
 
-	GLock::GLock(UInt32 a_spinCount)
+	GLock::GLock(std::uint32_t a_spinCount)
 	{
 		::InitializeCriticalSectionAndSpinCount(&cs, a_spinCount);
 	}

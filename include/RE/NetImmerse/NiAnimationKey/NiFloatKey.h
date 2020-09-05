@@ -14,10 +14,10 @@ namespace RE
 
 		float		GetValue() const;
 		void		SetValue(float a_value);
-		NiFloatKey* GetKeyAt(UInt32 a_index, UInt8 a_keySize);
+		NiFloatKey* GetKeyAt(std::uint32_t a_index, std::uint8_t a_keySize);
 
 	protected:
 		float _value;  // 04
 	};
-	STATIC_ASSERT(sizeof(NiFloatKey) == 0x8);
+	static_assert(sizeof(NiFloatKey) == 0x8);
 }

@@ -1,7 +1,12 @@
 #include "RE/Inventory/InventoryEntryData.h"
 
+#include "RE/BSExtraData/ExtraCharge.h"
+#include "RE/BSExtraData/ExtraEnchantment.h"
+#include "RE/BSExtraData/ExtraLeveledItem.h"
 #include "RE/BSExtraData/ExtraTextDisplayData.h"
 #include "RE/BSMain/SettingCollection/GameSettingCollection.h"
+#include "RE/FormComponents/Components/FormTraits.h"
+#include "RE/FormComponents/TESEnchantableForm.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
 #include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESObjectMISC/TESSoulGem.h"
 #include "RE/Inventory/ExtraDataList.h"
@@ -41,7 +46,7 @@ namespace RE
 	}
 
 
-	InventoryEntryData::InventoryEntryData(TESBoundObject* a_object, SInt32 a_countDelta) :
+	InventoryEntryData::InventoryEntryData(TESBoundObject* a_object, std::int32_t a_countDelta) :
 		object(a_object),
 		extraLists(nullptr),
 		countDelta(a_countDelta),
@@ -59,41 +64,34 @@ namespace RE
 
 	InventoryEntryData& InventoryEntryData::operator=(const InventoryEntryData& a_rhs)
 	{
-		if (this == &a_rhs) {
-			return *this;
+		if (this != std::addressof(a_rhs)) {
+			object = a_rhs.object;
+
+			delete extraLists;
+			extraLists =
+				a_rhs.extraLists ?
+					new BSSimpleList<ExtraDataList*>(*a_rhs.extraLists) :
+					nullptr;
+
+			countDelta = a_rhs.countDelta;
 		}
-
-		object = a_rhs.object;
-
-		delete extraLists;
-		if (a_rhs.extraLists) {
-			extraLists = new BSSimpleList<ExtraDataList*>(*a_rhs.extraLists);
-		} else {
-			extraLists = nullptr;
-		}
-
-		countDelta = a_rhs.countDelta;
-
 		return *this;
 	}
 
 
 	InventoryEntryData& InventoryEntryData::operator=(InventoryEntryData&& a_rhs)
 	{
-		if (this == &a_rhs) {
-			return *this;
+		if (this != std::addressof(a_rhs)) {
+			object = std::move(a_rhs.object);
+			a_rhs.object = nullptr;
+
+			delete extraLists;
+			extraLists = std::move(a_rhs.extraLists);
+			a_rhs.extraLists = nullptr;
+
+			countDelta = std::move(a_rhs.countDelta);
+			a_rhs.countDelta = 0;
 		}
-
-		object = std::move(a_rhs.object);
-		a_rhs.object = nullptr;
-
-		delete extraLists;
-		extraLists = std::move(a_rhs.extraLists);
-		a_rhs.extraLists = nullptr;
-
-		countDelta = std::move(a_rhs.countDelta);
-		a_rhs.countDelta = 0;
-
 		return *this;
 	}
 
@@ -112,12 +110,55 @@ namespace RE
 	}
 
 
+	std::optional<double> InventoryEntryData::GetEnchantmentCharge() const
+	{
+		std::optional<double> result;
+		auto obj = GetObject();
+		auto ench = obj ? obj->As<TESEnchantableForm>() : nullptr;
+		if (ench && ench->formEnchanting && ench->amountofEnchantment != 0) {
+			result.emplace(100.0);
+		}
+
+		if (extraLists) {
+			for (auto& xList : *extraLists) {
+				if (xList) {
+					auto xCharge = xList->GetByType<ExtraCharge>();
+					auto xEnch = xList->GetByType<ExtraEnchantment>();
+					if (xEnch && xEnch->enchantment && xEnch->charge != 0) {
+						if (xCharge) {
+							result.emplace((static_cast<double>(xCharge->charge) /
+											   static_cast<double>(xEnch->charge)) *
+										   100.0);
+						} else {
+							result.emplace(100.0);
+						}
+						break;
+					} else if (xCharge && ench && ench->formEnchanting && ench->amountofEnchantment != 0) {
+						result.emplace((static_cast<double>(xCharge->charge) /
+										   static_cast<double>(ench->amountofEnchantment)) *
+									   100.0);
+						break;
+					}
+				}
+			}
+		}
+
+		return result;
+	}
+
+
 	const char* InventoryEntryData::GetDisplayName()
 	{
 		const char* name = nullptr;
-		if (extraLists && !extraLists->empty()) {
-			name = extraLists->front()->GetDisplayName(object);
-		} else if (object) {
+		if (extraLists) {
+			for (auto& xList : *extraLists) {
+				if (xList) {
+					name = xList->GetDisplayName(object);
+				}
+			}
+		}
+
+		if ((!name || name[0] == '\0') && object) {
 			name = object->GetName();
 		}
 
@@ -131,19 +172,17 @@ namespace RE
 	}
 
 
-	TESBoundObject* InventoryEntryData::GetObject()
-	{
-		return object;
-	}
-
-
 	TESForm* InventoryEntryData::GetOwner()
 	{
-		if (extraLists && !extraLists->empty()) {
-			return extraLists->front()->GetOwner();
-		} else {
-			return nullptr;
+		if (extraLists) {
+			for (auto& xList : *extraLists) {
+				auto owner = xList ? xList->GetOwner() : nullptr;
+				if (owner) {
+					return owner;
+				}
+			}
 		}
+		return nullptr;
 	}
 
 
@@ -151,13 +190,11 @@ namespace RE
 	{
 		if (extraLists) {
 			for (auto& xList : *extraLists) {
-				if (!xList) {
-					continue;
-				}
-
-				auto lvl = xList->GetSoulLevel();
-				if (lvl > SOUL_LEVEL::kNone) {
-					return lvl;
+				if (xList) {
+					auto lvl = xList->GetSoulLevel();
+					if (lvl > SOUL_LEVEL::kNone) {
+						return lvl;
+					}
 				}
 			}
 		}
@@ -171,36 +208,80 @@ namespace RE
 	}
 
 
-	SInt32 InventoryEntryData::GetValue()
+	std::int32_t InventoryEntryData::GetValue()
 	{
 		using func_t = decltype(&InventoryEntryData::GetValue);
-		REL::Offset<func_t> func(Offset::InventoryEntryData::GetValue);
+		REL::Relocation<func_t> func{ Offset::InventoryEntryData::GetValue };
 		return func(this);
 	}
 
 
 	float InventoryEntryData::GetWeight() const
 	{
-		return object ? object->GetWeight() : static_cast<float>(-1.0);
+		return object ? object->GetWeight() : -1.0F;
 	}
 
 
-	bool InventoryEntryData::IsOwnedBy(Actor* a_actor, bool a_defaultTo)
+	bool InventoryEntryData::IsEnchanted() const
 	{
-		return IsOwnedBy(a_actor, GetOwner(), a_defaultTo);
+		if (object) {
+			auto ench = object->As<TESEnchantableForm>();
+			if (ench && ench->formEnchanting) {
+				return true;
+			}
+		}
+
+		if (extraLists) {
+			for (const auto& xList : *extraLists) {
+				const auto xEnch = xList->GetByType<ExtraEnchantment>();
+				if (xEnch && xEnch->enchantment) {
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 
-	bool InventoryEntryData::IsOwnedBy(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo)
+	bool InventoryEntryData::IsLeveled() const
 	{
-		return IsOwnedBy_Impl(a_actor, a_itemOwner, a_defaultTo);
+		if (extraLists) {
+			for (const auto& xList : *extraLists) {
+				if (xList && xList->HasType<ExtraLeveledItem>()) {
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 
-	bool InventoryEntryData::IsOwnedBy_Impl(Actor* a_actor, TESForm* a_itemOwner, bool a_defaultTo)
+	bool InventoryEntryData::IsOwnedBy(Actor* a_testOwner, bool a_defaultTo)
+	{
+		return IsOwnedBy(a_testOwner, GetOwner(), a_defaultTo);
+	}
+
+
+	bool InventoryEntryData::IsOwnedBy(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo)
+	{
+		return IsOwnedBy_Impl(a_testOwner, a_itemOwner, a_defaultTo);
+	}
+
+
+	bool InventoryEntryData::IsOwnedBy_Impl(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo)
 	{
 		using func_t = decltype(&InventoryEntryData::IsOwnedBy_Impl);
-		REL::Offset<func_t> func(Offset::InventoryEntryData::IsOwnedBy);
-		return func(this, a_actor, a_itemOwner, a_defaultTo);
+		REL::Relocation<func_t> func{ Offset::InventoryEntryData::IsOwnedBy };
+		return func(this, a_testOwner, a_itemOwner, a_defaultTo);
+	}
+
+
+	bool InventoryEntryData::IsQuestObject() const
+	{
+		using func_t = decltype(&InventoryEntryData::IsQuestObject);
+		REL::Relocation<func_t> func{ REL::ID(15767) };
+		return func(this);
 	}
 }

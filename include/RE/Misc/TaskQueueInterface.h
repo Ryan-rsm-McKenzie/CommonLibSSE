@@ -8,5 +8,5 @@ namespace RE
 	public:
 		static TaskQueueInterface* GetSingleton();
 	};
-	//STATIC_ASSERT(sizeof(TaskQueueInterface) == 0x);
+	//static_assert(sizeof(TaskQueueInterface) == 0x);
 }

@@ -66,23 +66,23 @@ namespace RE
 
 		// add
 		virtual GFxResourceKey	   GetKey();					 // 01
-		virtual UInt32			   GetResourceTypeCode() const;	 // 02
+		virtual std::uint32_t	   GetResourceTypeCode() const;	 // 02
 		virtual GFxResourceReport* GetResourceReport();			 // 03
 
-		static UInt32 MakeTypeCode(ResourceType a_resourceType, ResourceUse a_resourceUse = ResourceUse::kNone);  // Creates a resource type code which is a combination of ResourceType and ResourceUse.
+		static std::uint32_t MakeTypeCode(ResourceType a_resourceType, ResourceUse a_resourceUse = ResourceUse::kNone);	 // Creates a resource type code which is a combination of ResourceType and ResourceUse.
 
 		void		 AddRef();										  // Thread-safe reference count implementation; increments the reference count.
 		bool		 AddRef_NotZero();								  // Thread-safe reference count implementation ; increments a reference count if it is not zero.
-		SInt32		 GetRefCount() const;							  // Thread-Safe reference count implementation; returns the reference count.
+		std::int32_t GetRefCount() const;							  // Thread-Safe reference count implementation; returns the reference count.
 		void		 SetOwnerResourceLib(GFxResourceLibBase* a_lib);  // Assigns owner library for resource.
 		ResourceType GetResourceType() const;						  // Obtains the resource type.
 		ResourceUse	 GetResourceUse() const;						  // Obtains the type of resource use.
 
 	protected:
 		// members
-		GAtomicInt<SInt32>	_refCount;	// 10
-		UInt32				_pad14;		// 14
-		GFxResourceLibBase* _lib;		// 18
+		GAtomicInt<std::int32_t> _refCount;	 // 10
+		std::uint32_t			 _pad14;	 // 14
+		GFxResourceLibBase*		 _lib;		 // 18
 	};
-	STATIC_ASSERT(sizeof(GFxResource) == 0x18);
+	static_assert(sizeof(GFxResource) == 0x18);
 }

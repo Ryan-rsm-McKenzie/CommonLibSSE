@@ -31,7 +31,7 @@ namespace RE
 	}
 
 
-	void GFxStateBag::GetStatesAddRef(GFxState** a_stateList, const GFxState::StateType* a_stateTypes, UInt32 a_count) const
+	void GFxStateBag::GetStatesAddRef(GFxState** a_stateList, const GFxState::StateType* a_stateTypes, std::uint32_t a_count) const
 	{
 		GFxStateBag* stateBag = GetStateBagImpl();
 		if (stateBag) {

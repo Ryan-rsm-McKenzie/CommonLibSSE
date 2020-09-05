@@ -30,12 +30,12 @@ namespace RE
 
 
 			// members
-			UInt8					pad11;		   // 11
-			UInt16					pad12;		   // 12
-			UInt32					pad14;		   // 14
+			std::uint8_t			pad11;		   // 11
+			std::uint16_t			pad12;		   // 12
+			std::uint32_t			pad14;		   // 14
 			BSTArray<BSFixedString> names;		   // 18
 			Location*				rootLocation;  // 30
 		};
-		STATIC_ASSERT(sizeof(GlobalPaths) == 0x38);
+		static_assert(sizeof(GlobalPaths) == 0x38);
 	}
 }

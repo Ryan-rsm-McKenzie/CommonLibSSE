@@ -24,5 +24,5 @@ namespace RE
 		// members
 		BSFixedString lastSequenceName;	 // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraLastFinishedSequence) == 0x18);
+	static_assert(sizeof(ExtraLastFinishedSequence) == 0x18);
 }

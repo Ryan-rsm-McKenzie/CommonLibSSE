@@ -30,13 +30,13 @@ namespace RE
 
 				// members
 				CallType						callType;  // 10
-				UInt32							pad14;	   // 14
+				std::uint32_t					pad14;	   // 14
 				BSTSmartPointer<ObjectTypeInfo> objType;   // 18
 				BSFixedString					name;	   // 20
 				Variable						self;	   // 28
 				BSTArray<Variable>				args;	   // 38
 			};
-			STATIC_ASSERT(sizeof(RawFuncCallQuery) == 0x50);
+			static_assert(sizeof(RawFuncCallQuery) == 0x50);
 		}
 	}
 }

@@ -15,7 +15,7 @@ namespace RE
 		pad12(0),
 		pad14(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraCanTalkToPlayer::Vtbl);
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraCanTalkToPlayer::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

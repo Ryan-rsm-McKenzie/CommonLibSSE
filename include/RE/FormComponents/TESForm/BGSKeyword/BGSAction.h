@@ -15,7 +15,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -27,8 +27,8 @@ namespace RE
 
 
 		// members
-		UInt32 index;  // 28
-		UInt32 pad2C;  // 2C
+		std::uint32_t index;  // 28
+		std::uint32_t pad2C;  // 2C
 	};
-	STATIC_ASSERT(sizeof(BGSAction) == 0x30);
+	static_assert(sizeof(BGSAction) == 0x30);
 }

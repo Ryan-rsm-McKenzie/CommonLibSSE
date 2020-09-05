@@ -13,9 +13,9 @@ namespace RE
 
 
 		// members
-		UInt8		  pad001;					// 001
-		UInt16		  pad002;					// 002
-		UInt32		  pad004;					// 004
+		std::uint8_t  pad001;					// 001
+		std::uint16_t pad002;					// 002
+		std::uint32_t pad004;					// 004
 		BSFixedString faderData;				// 008 - "FaderData"
 		BSFixedString hudData;					// 010 - "HUDData"
 		BSFixedString hudCamData;				// 018 - "HUDCamData"
@@ -92,5 +92,5 @@ namespace RE
 		BSFixedString menuTextureDegradeEvent;	// 250 - "Menu Texture Degrade Event"
 		BSFixedString diamondMarker;			// 258 - "<img src='DiamondMarker' width='10' height='15' align='baseline' vspace='5'>"
 	};
-	STATIC_ASSERT(sizeof(InterfaceStrings) == 0x260);
+	static_assert(sizeof(InterfaceStrings) == 0x260);
 }

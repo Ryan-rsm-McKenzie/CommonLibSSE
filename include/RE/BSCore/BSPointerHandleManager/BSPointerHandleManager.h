@@ -13,7 +13,7 @@ namespace RE
 		struct Entry
 		{
 		public:
-			enum EntryBitfieldConstants : UInt32
+			enum EntryBitfieldConstants : std::uint32_t
 			{
 				//kAgeInc = (1 << T::kFreeListBits),	// 0x100000
 				//kFreeListMask = kAgeInc - 1,	// 0xFFFFF
@@ -22,15 +22,15 @@ namespace RE
 
 
 			// members
-			UInt32						 handleEntryBits;  // 00
-			UInt32						 pad04;			   // 04
+			std::uint32_t				 handleEntryBits;  // 00
+			std::uint32_t				 pad04;			   // 04
 			NiPointer<BSHandleRefObject> pointer;		   // 08
 		};
 
 
 		static stl::span<Entry, 0x100000> GetHandleEntries()
 		{
-			REL::Offset<Entry(*)[0x100000]> entries = REL::ID(514478);
+			REL::Relocation<Entry(*)[0x100000]> entries{ REL::ID(514478) };
 			return { *entries };
 		}
 	};

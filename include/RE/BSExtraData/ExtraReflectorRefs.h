@@ -25,5 +25,5 @@ namespace RE
 		// members
 		BSTArray<ObjectRefHandle> refs;	 // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraReflectorRefs) == 0x28);
+	static_assert(sizeof(ExtraReflectorRefs) == 0x28);
 }

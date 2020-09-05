@@ -24,21 +24,21 @@ namespace RE
 	{}
 
 
-	void BSSpinLock::Lock(UInt32 a_pauseAttempts)
+	void BSSpinLock::Lock(std::uint32_t a_pauseAttempts)
 	{
-		UInt32 myThreadID = GetCurrentThreadId();
+		std::uint32_t myThreadID = GetCurrentThreadId();
 
 		_mm_lfence();
 		if (_owningThread == myThreadID) {
 			InterlockedIncrement(&_lockCount);
 		} else {
-			UInt32 attempts = 0;
+			std::uint32_t attempts = 0;
 			if (InterlockedCompareExchange(&_lockCount, 1, 0)) {
 				do {
 					++attempts;
 					_mm_pause();
 					if (attempts >= a_pauseAttempts) {
-						UInt32 spinCount = 0;
+						std::uint32_t spinCount = 0;
 						while (InterlockedCompareExchange(&_lockCount, 1, 0)) {
 							Sleep(++spinCount < kFastSpinThreshold ? 0 : 1);
 						}
@@ -56,7 +56,7 @@ namespace RE
 
 	void BSSpinLock::Unlock()
 	{
-		UInt32 myThreadID = GetCurrentThreadId();
+		std::uint32_t myThreadID = GetCurrentThreadId();
 
 		_mm_lfence();
 		if (_owningThread == myThreadID) {
@@ -80,7 +80,7 @@ namespace RE
 	void BSReadWriteLock::LockForRead()
 	{
 		using func_t = decltype(&BSReadWriteLock::LockForRead);
-		REL::Offset<func_t> func(Offset::BSReadWriteLock::LockForRead);
+		REL::Relocation<func_t> func{ Offset::BSReadWriteLock::LockForRead };
 		func(this);
 	}
 
@@ -88,7 +88,7 @@ namespace RE
 	void BSReadWriteLock::UnlockForRead()
 	{
 		using func_t = decltype(&BSReadWriteLock::UnlockForRead);
-		REL::Offset<func_t> func(Offset::BSReadWriteLock::UnlockForRead);
+		REL::Relocation<func_t> func{ Offset::BSReadWriteLock::UnlockForRead };
 		func(this);
 	}
 
@@ -96,7 +96,7 @@ namespace RE
 	void BSReadWriteLock::LockForWrite()
 	{
 		using func_t = decltype(&BSReadWriteLock::LockForWrite);
-		REL::Offset<func_t> func(Offset::BSReadWriteLock::LockForWrite);
+		REL::Relocation<func_t> func{ Offset::BSReadWriteLock::LockForWrite };
 		func(this);
 	}
 
@@ -104,7 +104,7 @@ namespace RE
 	void BSReadWriteLock::UnlockForWrite()
 	{
 		using func_t = decltype(&BSReadWriteLock::UnlockForWrite);
-		REL::Offset<func_t> func(Offset::BSReadWriteLock::UnlockForWrite);
+		REL::Relocation<func_t> func{ Offset::BSReadWriteLock::UnlockForWrite };
 		func(this);
 	}
 

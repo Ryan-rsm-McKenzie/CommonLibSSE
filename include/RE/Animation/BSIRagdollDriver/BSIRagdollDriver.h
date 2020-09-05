@@ -28,5 +28,5 @@ namespace RE
 		virtual void Unk_0C(void) = 0;				   // 0C
 		virtual void Unk_0D(void) = 0;				   // 0D
 	};
-	STATIC_ASSERT(sizeof(BSIRagdollDriver) == 0x8);
+	static_assert(sizeof(BSIRagdollDriver) == 0x8);
 }

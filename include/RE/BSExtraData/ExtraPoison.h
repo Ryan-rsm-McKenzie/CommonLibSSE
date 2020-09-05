@@ -17,7 +17,7 @@ namespace RE
 
 
 		ExtraPoison();
-		ExtraPoison(AlchemyItem* a_poison, SInt32 a_count);
+		ExtraPoison(AlchemyItem* a_poison, std::int32_t a_count);
 		virtual ~ExtraPoison() = default;  // 00
 
 		// override (BSExtraData)
@@ -26,9 +26,9 @@ namespace RE
 
 
 		// members
-		AlchemyItem* poison;  // 10
-		UInt32		 count;	  // 18
-		UInt32		 pad1C;	  // 1C
+		AlchemyItem*  poison;  // 10
+		std::uint32_t count;   // 18
+		std::uint32_t pad1C;   // 1C
 	};
-	STATIC_ASSERT(sizeof(ExtraPoison) == 0x20);
+	static_assert(sizeof(ExtraPoison) == 0x20);
 }

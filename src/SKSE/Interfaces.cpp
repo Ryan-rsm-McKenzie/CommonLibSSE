@@ -8,7 +8,7 @@
 
 namespace SKSE
 {
-	UInt32 QueryInterface::EditorVersion() const
+	std::uint32_t QueryInterface::EditorVersion() const
 	{
 		return GetProxy()->editorVersion;
 	}
@@ -20,26 +20,27 @@ namespace SKSE
 	}
 
 
-	Version QueryInterface::RuntimeVersion() const
+	REL::Version QueryInterface::RuntimeVersion() const
 	{
 		const auto packed = GetProxy()->runtimeVersion;
 		const auto major = static_cast<std::uint16_t>((packed & 0xFF000000) >> 24);
 		const auto minor = static_cast<std::uint16_t>((packed & 0x00FF0000) >> 16);
 		const auto revision = static_cast<std::uint16_t>((packed & 0x0000FFF0) >> 4);
 		const auto build = static_cast<std::uint16_t>((packed & 0x0000000F) >> 0);
-		return Version(major, minor, revision, build);
+		return { major, minor, revision, build };
 	}
 
 
-	UInt32 QueryInterface::SKSEVersion() const
+	std::uint32_t QueryInterface::SKSEVersion() const
 	{
 		return GetProxy()->skseVersion;
 	}
 
 
-	const Impl::SKSEInterface* QueryInterface::GetProxy() const
+	const detail::SKSEInterface* QueryInterface::GetProxy() const
 	{
-		return reinterpret_cast<const Impl::SKSEInterface*>(this);
+		assert(this);
+		return reinterpret_cast<const detail::SKSEInterface*>(this);
 	}
 
 
@@ -49,19 +50,25 @@ namespace SKSE
 	}
 
 
-	UInt32 LoadInterface::GetReleaseIndex() const
+	const PluginInfo* LoadInterface::GetPluginInfo(const char* a_name) const
+	{
+		return static_cast<const PluginInfo*>(GetProxy()->GetPluginInfo(a_name));
+	}
+
+
+	std::uint32_t LoadInterface::GetReleaseIndex() const
 	{
 		return GetProxy()->GetReleaseIndex();
 	}
 
 
-	void* LoadInterface::QueryInterface(InterfaceID a_id) const
+	void* LoadInterface::QueryInterface(std::uint32_t a_id) const
 	{
-		return GetProxy()->QueryInterface(static_cast<UInt32>(a_id));
+		return GetProxy()->QueryInterface(a_id);
 	}
 
 
-	UInt32 ScaleformInterface::Version() const
+	std::uint32_t ScaleformInterface::Version() const
 	{
 		return GetProxy()->interfaceVersion;
 	}
@@ -71,7 +78,7 @@ namespace SKSE
 	{
 		auto result = GetProxy()->Register(a_name, a_callback);
 		if (!result) {
-			_ERROR("Failed to register %s for scaleform interface callback", a_name);
+			log::error("Failed to register {} for scaleform interface callback", a_name);
 		}
 		return result;
 	}
@@ -83,19 +90,20 @@ namespace SKSE
 	}
 
 
-	const Impl::SKSEScaleformInterface* ScaleformInterface::GetProxy() const
+	const detail::SKSEScaleformInterface* ScaleformInterface::GetProxy() const
 	{
-		return reinterpret_cast<const Impl::SKSEScaleformInterface*>(this);
+		assert(this);
+		return reinterpret_cast<const detail::SKSEScaleformInterface*>(this);
 	}
 
 
-	UInt32 SerializationInterface::Version() const
+	std::uint32_t SerializationInterface::Version() const
 	{
 		return GetProxy()->version;
 	}
 
 
-	void SerializationInterface::SetUniqueID(UInt32 a_uid) const
+	void SerializationInterface::SetUniqueID(std::uint32_t a_uid) const
 	{
 		GetProxy()->SetUniqueID(GetPluginHandle(), a_uid);
 	}
@@ -125,31 +133,31 @@ namespace SKSE
 	}
 
 
-	bool SerializationInterface::WriteRecord(UInt32 a_type, UInt32 a_version, const void* a_buf, UInt32 a_length) const
+	bool SerializationInterface::WriteRecord(std::uint32_t a_type, std::uint32_t a_version, const void* a_buf, std::uint32_t a_length) const
 	{
 		return GetProxy()->WriteRecord(a_type, a_version, a_buf, a_length);
 	}
 
 
-	bool SerializationInterface::OpenRecord(UInt32 a_type, UInt32 a_version) const
+	bool SerializationInterface::OpenRecord(std::uint32_t a_type, std::uint32_t a_version) const
 	{
 		return GetProxy()->OpenRecord(a_type, a_version);
 	}
 
 
-	bool SerializationInterface::WriteRecordData(const void* a_buf, UInt32 a_length) const
+	bool SerializationInterface::WriteRecordData(const void* a_buf, std::uint32_t a_length) const
 	{
 		return GetProxy()->WriteRecordData(a_buf, a_length);
 	}
 
 
-	bool SerializationInterface::GetNextRecordInfo(UInt32& a_type, UInt32& a_version, UInt32& a_length) const
+	bool SerializationInterface::GetNextRecordInfo(std::uint32_t& a_type, std::uint32_t& a_version, std::uint32_t& a_length) const
 	{
 		return GetProxy()->GetNextRecordInfo(&a_type, &a_version, &a_length);
 	}
 
 
-	UInt32 SerializationInterface::ReadRecordData(void* a_buf, UInt32 a_length) const
+	std::uint32_t SerializationInterface::ReadRecordData(void* a_buf, std::uint32_t a_length) const
 	{
 		return GetProxy()->ReadRecordData(a_buf, a_length);
 	}
@@ -167,13 +175,14 @@ namespace SKSE
 	}
 
 
-	const Impl::SKSESerializationInterface* SerializationInterface::GetProxy() const
+	const detail::SKSESerializationInterface* SerializationInterface::GetProxy() const
 	{
-		return reinterpret_cast<const Impl::SKSESerializationInterface*>(this);
+		assert(this);
+		return reinterpret_cast<const detail::SKSESerializationInterface*>(this);
 	}
 
 
-	UInt32 TaskInterface::Version() const
+	std::uint32_t TaskInterface::Version() const
 	{
 		return GetProxy()->interfaceVersion;
 	}
@@ -237,13 +246,14 @@ namespace SKSE
 	}
 
 
-	const Impl::SKSETaskInterface* TaskInterface::GetProxy() const
+	const detail::SKSETaskInterface* TaskInterface::GetProxy() const
 	{
-		return reinterpret_cast<const Impl::SKSETaskInterface*>(this);
+		assert(this);
+		return reinterpret_cast<const detail::SKSETaskInterface*>(this);
 	}
 
 
-	UInt32 PapyrusInterface::Version() const
+	std::uint32_t PapyrusInterface::Version() const
 	{
 		return GetProxy()->interfaceVersion;
 	}
@@ -259,7 +269,7 @@ namespace SKSE
 		} else {
 			auto result = GetProxy()->Register(a_fn);
 			if (!result) {
-				_ERROR("Failed to register for papyrus interface");
+				log::error("Failed to register for papyrus interface");
 			}
 			return result;
 		}
@@ -276,30 +286,31 @@ namespace SKSE
 		} else {
 			auto result = GetProxy()->Register(a_fn);
 			if (!result) {
-				_ERROR("Failed to register for papyrus interface");
+				log::error("Failed to register for papyrus interface");
 			}
 			return result;
 		}
 	}
 
 
-	const Impl::SKSEPapyrusInterface* PapyrusInterface::GetProxy() const
+	const detail::SKSEPapyrusInterface* PapyrusInterface::GetProxy() const
 	{
-		return reinterpret_cast<const Impl::SKSEPapyrusInterface*>(this);
+		assert(this);
+		return reinterpret_cast<const detail::SKSEPapyrusInterface*>(this);
 	}
 
 
-	UInt32 MessagingInterface::Version() const
+	std::uint32_t MessagingInterface::Version() const
 	{
 		return GetProxy()->interfaceVersion;
 	}
 
 
-	bool MessagingInterface::Dispatch(UInt32 a_messageType, void* a_data, UInt32 a_dataLen, const char* a_receiver) const
+	bool MessagingInterface::Dispatch(std::uint32_t a_messageType, void* a_data, std::uint32_t a_dataLen, const char* a_receiver) const
 	{
 		auto result = GetProxy()->Dispatch(GetPluginHandle(), a_messageType, a_data, a_dataLen, a_receiver);
 		if (!result) {
-			_ERROR("Failed to dispatch message to %s", (a_receiver ? a_receiver : "all listeners"));
+			log::error("Failed to dispatch message to {}", (a_receiver ? a_receiver : "all listeners"));
 		}
 		return result;
 	}
@@ -307,7 +318,7 @@ namespace SKSE
 
 	void* MessagingInterface::GetEventDispatcher(Dispatcher a_dispatcherID) const
 	{
-		return GetProxy()->GetEventDispatcher(static_cast<UInt32>(a_dispatcherID));
+		return GetProxy()->GetEventDispatcher(static_cast<std::uint32_t>(a_dispatcherID));
 	}
 
 
@@ -321,19 +332,20 @@ namespace SKSE
 	{
 		auto result = GetProxy()->RegisterListener(GetPluginHandle(), a_sender, a_callback);
 		if (!result) {
-			_ERROR("Failed to register messaging listener for %s", a_sender);
+			log::error("Failed to register messaging listener for {}", a_sender);
 		}
 		return result;
 	}
 
 
-	const Impl::SKSEMessagingInterface* MessagingInterface::GetProxy() const
+	const detail::SKSEMessagingInterface* MessagingInterface::GetProxy() const
 	{
-		return reinterpret_cast<const Impl::SKSEMessagingInterface*>(this);
+		assert(this);
+		return reinterpret_cast<const detail::SKSEMessagingInterface*>(this);
 	}
 
 
-	UInt32 ObjectInterface::Version() const
+	std::uint32_t ObjectInterface::Version() const
 	{
 		return GetProxy()->interfaceVersion;
 	}
@@ -357,8 +369,34 @@ namespace SKSE
 	}
 
 
-	const Impl::SKSEObjectInterface* ObjectInterface::GetProxy() const
+	const detail::SKSEObjectInterface* ObjectInterface::GetProxy() const
 	{
-		return reinterpret_cast<const Impl::SKSEObjectInterface*>(this);
+		assert(this);
+		return reinterpret_cast<const detail::SKSEObjectInterface*>(this);
+	}
+
+
+	std::uint32_t TrampolineInterface::Version() const
+	{
+		return GetProxy()->interfaceVersion;
+	}
+
+
+	void* TrampolineInterface::AllocateFromBranchPool(std::size_t a_size) const
+	{
+		return GetProxy()->AllocateFromBranchPool(GetPluginHandle(), a_size);
+	}
+
+
+	void* TrampolineInterface::AllocateFromLocalPool(std::size_t a_size) const
+	{
+		return GetProxy()->AllocateFromLocalPool(GetPluginHandle(), a_size);
+	}
+
+
+	const detail::SKSETrampolineInterface* TrampolineInterface::GetProxy() const
+	{
+		assert(this);
+		return reinterpret_cast<const detail::SKSETrampolineInterface*>(this);
 	}
 }

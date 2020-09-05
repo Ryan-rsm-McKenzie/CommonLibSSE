@@ -5,45 +5,45 @@ namespace RE
 {
 	bool GFxRenderConfig::IsUsingEdgeAA() const
 	{
-		return ((renderFlags & RenderFlag::kEdgeAA) != RenderFlag::kNone) && ((rendererCapBits & RenderCapBits::kFillGouraud) != RenderCapBits::kNone);
+		return renderFlags.all(RenderFlag::kEdgeAA) && IsEdgeAATextured();
 	}
 
 
 	bool GFxRenderConfig::IsEdgeAATextured() const
 	{
-		return (rendererCapBits & RenderCapBits::kFillGouraudTex) != RenderCapBits::kNone;
+		return rendererCapBits.all(RenderCapBits::kFillGouraudTex);
 	}
 
 
 	bool GFxRenderConfig::IsOptimizingTriangles() const
 	{
-		return (renderFlags & RenderFlag::kOptimizeTriangles) != RenderFlag::kNone;
+		return renderFlags.all(RenderFlag::kOptimizeTriangles);
 	}
 
 
 	bool GFxRenderConfig::HasCxformAddAlpha() const
 	{
-		return (rendererCapBits & RenderCapBits::kCxformAdd) != RenderCapBits::kNone;
+		return rendererCapBits.all(RenderCapBits::kCxformAdd);
 	}
 
 
 	bool GFxRenderConfig::HasVertexFormat(VertexFormat a_fmt) const
 	{
-		return (rendererVtxFmts & a_fmt) != VertexFormat::kNone;
+		return rendererVtxFmts.all(a_fmt);
 	}
 
 
 	auto GFxRenderConfig::GetStrokeRenderFlags() const
 		-> RenderFlag
 	{
-		return renderFlags & RenderFlag::kStrokeMask;
+		return *(renderFlags & RenderFlag::kStrokeMask);
 	}
 
 
 	auto GFxRenderConfig::GetRendererCapBits() const
 		-> RenderCapBits
 	{
-		return rendererCapBits;
+		return *rendererCapBits;
 	}
 
 
@@ -62,7 +62,7 @@ namespace RE
 	auto GFxRenderConfig::GetRenderFlags() const
 		-> RenderFlag
 	{
-		return renderFlags;
+		return *renderFlags;
 	}
 
 

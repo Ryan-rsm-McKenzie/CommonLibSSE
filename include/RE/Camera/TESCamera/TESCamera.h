@@ -32,9 +32,9 @@ namespace RE
 		NiPointer<NiNode>				cameraRoot;		   // 20
 		BSTSmartPointer<TESCameraState> currentState;	   // 28
 		bool							enabled;		   // 30
-		UInt8							pad31;			   // 31
-		UInt16							pad32;			   // 32
-		UInt32							pad34;			   // 34
+		std::uint8_t					pad31;			   // 31
+		std::uint16_t					pad32;			   // 32
+		std::uint32_t					pad34;			   // 34
 	};
-	STATIC_ASSERT(sizeof(TESCamera) == 0x38);
+	static_assert(sizeof(TESCamera) == 0x38);
 }

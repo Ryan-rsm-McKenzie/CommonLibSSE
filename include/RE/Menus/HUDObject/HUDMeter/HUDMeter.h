@@ -30,7 +30,7 @@ namespace RE
 		BSFixedString setBlinkingName;	// 30
 		BSFixedString fadeOutName;		// 38
 		float		  fillPct;			// 40
-		UInt32		  pad44;			// 44
+		std::uint32_t pad44;			// 44
 	};
-	STATIC_ASSERT(sizeof(HUDMeter) == 0x48);
+	static_assert(sizeof(HUDMeter) == 0x48);
 }

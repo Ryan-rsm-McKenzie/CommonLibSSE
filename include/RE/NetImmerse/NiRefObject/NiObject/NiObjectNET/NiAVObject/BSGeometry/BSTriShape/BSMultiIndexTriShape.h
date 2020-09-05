@@ -33,17 +33,17 @@ namespace RE
 
 		// members
 		BSGraphics::IndexBuffer*	altIndexBuffer;			   // 160
-		UInt32						altPrimCount;			   // 168
+		std::uint32_t				altPrimCount;			   // 168
 		DirectX::XMFLOAT4X4			materialProjection;		   // 16C
-		UInt32						pad1AC;					   // 1AC
+		std::uint32_t				pad1AC;					   // 1AC
 		NiPointer<BSShaderProperty> additionalShaderProperty;  // 1B0
-		UInt8						useAdditionalTriList;	   // 1B8
-		UInt8						pad1B9;					   // 1B9
-		UInt16						pad1BA;					   // 1BA
+		std::uint8_t				useAdditionalTriList;	   // 1B8
+		std::uint8_t				pad1B9;					   // 1B9
+		std::uint16_t				pad1BA;					   // 1BA
 		NiColorA					materialParams;			   // 1BC
 		float						materialScale;			   // 1CC
 		float						normalDampener;			   // 1D0
-		UInt32						unk1D4;					   // 1D4
+		std::uint32_t				unk1D4;					   // 1D4
 	};
-	STATIC_ASSERT(sizeof(BSMultiIndexTriShape) == 0x1D8);
+	static_assert(sizeof(BSMultiIndexTriShape) == 0x1D8);
 }

@@ -12,10 +12,10 @@ namespace RE
 		FormID			oldContainer;  // 00
 		FormID			newContainer;  // 04
 		FormID			baseObj;	   // 08
-		SInt32			itemCount;	   // 0C
+		std::int32_t	itemCount;	   // 0C
 		ObjectRefHandle reference;	   // 10
-		UInt16			uniqueID;	   // 14
-		UInt16			pad16;		   // 16
+		std::uint16_t	uniqueID;	   // 14
+		std::uint16_t	pad16;		   // 16
 	};
-	STATIC_ASSERT(sizeof(TESContainerChangedEvent) == 0x18);
+	static_assert(sizeof(TESContainerChangedEvent) == 0x18);
 }

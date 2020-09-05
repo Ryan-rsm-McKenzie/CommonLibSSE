@@ -21,7 +21,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -38,11 +38,11 @@ namespace RE
 		virtual bool SetFormEditorID(const char* a_str) override;  // 33
 
 		// add
-		virtual UInt32 GetDescriptorType();	 // 3B - { return soundDescriptor->GetType(); }
+		virtual std::uint32_t GetDescriptorType();	// 3B - { return soundDescriptor->GetType(); }
 
 
 		// members
 		BGSSoundDescriptor* soundDescriptor;  // 28
 	};
-	STATIC_ASSERT(sizeof(BGSSoundDescriptorForm) == 0x30);
+	static_assert(sizeof(BGSSoundDescriptorForm) == 0x30);
 }

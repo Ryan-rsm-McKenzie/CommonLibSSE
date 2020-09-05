@@ -15,7 +15,7 @@ namespace RE
 	{}
 
 
-	UInt32 NiBinaryStream::tell() const
+	std::uint32_t NiBinaryStream::tell() const
 	{
 		return _absoluteCurrentPos;
 	}
@@ -25,21 +25,21 @@ namespace RE
 	{}
 
 
-	UInt32 NiBinaryStream::binary_read(void* a_buffer, UInt32 a_totalBytes, UInt32* a_componentSizes, UInt32 a_numComponents)
+	std::uint32_t NiBinaryStream::binary_read(void* a_buffer, std::uint32_t a_totalBytes, std::uint32_t* a_componentSizes, std::uint32_t a_numComponents)
 	{
 		assert(_readFn != nullptr);
 
-		UInt32 bytesRead = _readFn(this, a_buffer, a_totalBytes, a_componentSizes, a_numComponents);
+		std::uint32_t bytesRead = _readFn(this, a_buffer, a_totalBytes, a_componentSizes, a_numComponents);
 		_absoluteCurrentPos += bytesRead;
 		return bytesRead;
 	}
 
 
-	UInt32 NiBinaryStream::binary_write(const void* a_buffer, UInt32 a_totalBytes, UInt32* a_componentSizes, UInt32 a_numComponents)
+	std::uint32_t NiBinaryStream::binary_write(const void* a_buffer, std::uint32_t a_totalBytes, std::uint32_t* a_componentSizes, std::uint32_t a_numComponents)
 	{
 		assert(_writeFn != nullptr);
 
-		UInt32 bytesWritten = _writeFn(this, a_buffer, a_totalBytes, a_componentSizes, a_numComponents);
+		std::uint32_t bytesWritten = _writeFn(this, a_buffer, a_totalBytes, a_componentSizes, a_numComponents);
 		_absoluteCurrentPos += bytesWritten;
 		return bytesWritten;
 	}

@@ -17,13 +17,13 @@ namespace RE
 
 	struct PerkData	 // DATA
 	{
-		bool  trait;	 // 0
-		SInt8 level;	 // 1
-		SInt8 numRanks;	 // 2
-		bool  playable;	 // 3
-		bool  hidden;	 // 4
+		bool		trait;	   // 0
+		std::int8_t level;	   // 1
+		std::int8_t numRanks;  // 2
+		bool		playable;  // 3
+		bool		hidden;	   // 4
 	};
-	STATIC_ASSERT(sizeof(PerkData) == 0x5);
+	static_assert(sizeof(PerkData) == 0x5);
 
 
 	class BGSPerk :
@@ -39,7 +39,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kNonPlayable = 1 << 2,
 				kDeleted = 1 << 5,
@@ -56,7 +56,7 @@ namespace RE
 			// override (PerkRankVisitor)
 			virtual bool operator()(const PerkRankData* a_entry) override;	// 00
 		};
-		STATIC_ASSERT(sizeof(FindPerkInRanksVisitor) == 0x8);
+		static_assert(sizeof(FindPerkInRanksVisitor) == 0x8);
 
 
 		class ApplyPerksVisitor : public PerkRankVisitor
@@ -67,7 +67,7 @@ namespace RE
 			// override (PerkRankVisitor)
 			virtual bool operator()(const PerkRankData* a_entry) override;	// 00
 		};
-		STATIC_ASSERT(sizeof(ApplyPerksVisitor) == 0x8);
+		static_assert(sizeof(ApplyPerksVisitor) == 0x8);
 
 
 		class AddPerkVisitor : public PerkRankVisitor
@@ -78,7 +78,7 @@ namespace RE
 			// override (PerkRankVisitor)
 			virtual bool operator()(const PerkRankData* a_entry) override;	// 00
 		};
-		STATIC_ASSERT(sizeof(AddPerkVisitor) == 0x8);
+		static_assert(sizeof(AddPerkVisitor) == 0x8);
 
 
 		virtual ~BGSPerk();	 // 00
@@ -92,11 +92,11 @@ namespace RE
 
 		// members
 		PerkData				data;			 // 50 - DATA
-		UInt8					pad55;			 // 55
-		UInt16					pad56;			 // 56
+		std::uint8_t			pad55;			 // 55
+		std::uint16_t			pad56;			 // 56
 		TESCondition			perkConditions;	 // 58
 		BSTArray<BGSPerkEntry*> perkEntries;	 // 60
 		BGSPerk*				nextPerk;		 // 78 - NNAM
 	};
-	STATIC_ASSERT(sizeof(BGSPerk) == 0x80);
+	static_assert(sizeof(BGSPerk) == 0x80);
 }

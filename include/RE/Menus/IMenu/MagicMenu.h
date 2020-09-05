@@ -29,14 +29,14 @@ namespace RE
 
 
 		// members
-		void*	   unk30;			 // 30 - some variation of the item list
-		ItemCard*  itemCard;		 // 38
-		BottomBar* bottomBar;		 // 40
-		GFxValue   root;			 // 48 - "Menu_mc"
-		bool	   pcControlsReady;	 // 60
-		UInt8	   pad61;			 // 61
-		UInt16	   pad62;			 // 62
-		UInt32	   pad64;			 // 64
+		void*		  unk30;			// 30 - some variation of the item list
+		ItemCard*	  itemCard;			// 38
+		BottomBar*	  bottomBar;		// 40
+		GFxValue	  root;				// 48 - "Menu_mc"
+		bool		  pcControlsReady;	// 60
+		std::uint8_t  pad61;			// 61
+		std::uint16_t pad62;			// 62
+		std::uint32_t pad64;			// 64
 	};
-	STATIC_ASSERT(sizeof(MagicMenu) == 0x68);
+	static_assert(sizeof(MagicMenu) == 0x68);
 }

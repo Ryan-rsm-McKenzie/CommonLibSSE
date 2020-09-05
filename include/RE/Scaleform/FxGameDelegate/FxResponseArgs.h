@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	template <UInt32 SIZE>
+	template <std::uint32_t SIZE>
 	class FxResponseArgs : public FxResponseArgsBase
 	{
 	public:
@@ -22,7 +22,7 @@ namespace RE
 
 
 		// override (FxResponseArgsBase)
-		virtual UInt32 GetValues(GFxValue** a_params) override	// 01
+		virtual std::uint32_t GetValues(GFxValue** a_params) override  // 01
 		{
 			*a_params = _values;
 			return _index;
@@ -39,11 +39,11 @@ namespace RE
 		}
 
 	private:
-		GFxValue _values[SIZE + 1];	 // 08 - includes response data
-		UInt32	 _index;			 // ??
-		UInt32	 _pad;				 // ??
+		GFxValue	  _values[SIZE + 1];  // 08 - includes response data
+		std::uint32_t _index;			  // ??
+		std::uint32_t _pad;				  // ??
 	};
-	STATIC_ASSERT(sizeof(FxResponseArgs<1>) == 0x40);
+	static_assert(sizeof(FxResponseArgs<1>) == 0x40);
 
 
 	template <std::size_t N>
@@ -55,7 +55,7 @@ namespace RE
 		using super = FxResponseArgsBase;
 		using container_type = std::array<GFxValue, N + O>;
 
-		static_assert(N + O <= static_cast<std::size_t>(std::numeric_limits<UInt32>::max()));
+		static_assert(N + O <= static_cast<std::size_t>(std::numeric_limits<std::uint32_t>::max()));
 
 	public:
 		using value_type = typename container_type::value_type;
@@ -139,10 +139,10 @@ namespace RE
 		[[nodiscard]] constexpr size_type max_size() const noexcept { return size(); }
 
 	protected:
-		virtual UInt32 GetValues(GFxValue** a_params) override	// 01
+		virtual std::uint32_t GetValues(GFxValue** a_params) override  // 01
 		{
 			*a_params = _args.data();
-			return static_cast<UInt32>(_args.size());
+			return static_cast<std::uint32_t>(_args.size());
 		}
 
 	private:

@@ -18,7 +18,7 @@ namespace RE
 
 	namespace hkWorldOperation
 	{
-		enum class Result : UInt32
+		enum class Result
 		{
 			kPostponed,
 			kDone
@@ -32,14 +32,14 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_hkpWorldObject;
 
 
-		enum class MultiThreadingChecks : UInt32
+		enum class MultiThreadingChecks
 		{
 			kEnable,
 			kIgnore
 		};
 
 
-		enum class BroadPhaseType : UInt32
+		enum class BroadPhaseType
 		{
 			kInvalid,
 			kEntity,
@@ -66,13 +66,13 @@ namespace RE
 
 		// members
 		hkpWorld*			 world;				// 10
-		UInt64				 userData;			// 18 - bhkWorldObject*?
+		std::uint64_t		 userData;			// 18 - bhkWorldObject*?
 		hkpLinkedCollidable	 collidable;		// 20
 		hkMultiThreadCheck	 multiThreadCheck;	// A0
-		UInt32				 padAC;				// AC
+		std::uint32_t		 padAC;				// AC
 		hkStringPtr			 name;				// B0
 		hkArray<hkpProperty> properties;		// B8
 		void*				 treeData;			// C8
 	};
-	STATIC_ASSERT(sizeof(hkpWorldObject) == 0xD0);
+	static_assert(sizeof(hkpWorldObject) == 0xD0);
 }

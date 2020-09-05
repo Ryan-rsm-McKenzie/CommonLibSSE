@@ -24,5 +24,5 @@ namespace RE
 		// members
 		BSSimpleList<ObjectRefHandle> droppedItemList;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraDroppedItemList) == 0x20);
+	static_assert(sizeof(ExtraDroppedItemList) == 0x20);
 }

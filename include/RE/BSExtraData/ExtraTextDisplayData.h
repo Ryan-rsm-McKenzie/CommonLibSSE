@@ -19,7 +19,7 @@ namespace RE
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kTextDisplayData;
 
 
-		enum class DisplayDataType : SInt32
+		enum class DisplayDataType
 		{
 			kUninitialized = -1,
 			kCustomName = -2
@@ -40,14 +40,14 @@ namespace RE
 
 
 		// members
-		BSFixedString	displayName;	   // 10
-		BGSMessage*		displayNameText;   // 18
-		TESQuest*		ownerQuest;		   // 20
-		DisplayDataType ownerInstance;	   // 28
-		float			temperFactor;	   // 2C
-		UInt16			customNameLength;  // 30 - length w/o temper string, only valid if ownerInstance is kCustomName
-		UInt16			pad32;			   // 32
-		UInt32			pad34;			   // 34
+		BSFixedString									displayName;	   // 10
+		BGSMessage*										displayNameText;   // 18
+		TESQuest*										ownerQuest;		   // 20
+		stl::enumeration<DisplayDataType, std::int32_t> ownerInstance;	   // 28
+		float											temperFactor;	   // 2C
+		std::uint16_t									customNameLength;  // 30 - length w/o temper string, only valid if ownerInstance is kCustomName
+		std::uint16_t									pad32;			   // 32
+		std::uint32_t									pad34;			   // 34
 	};
-	STATIC_ASSERT(sizeof(ExtraTextDisplayData) == 0x38);
+	static_assert(sizeof(ExtraTextDisplayData) == 0x38);
 }

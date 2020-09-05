@@ -21,7 +21,7 @@ namespace RE
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiGeometryData;
 
 
-		enum class DataFlag : UInt16
+		enum class DataFlag
 		{
 			kNone = 0x0000,
 			kNDL = 1 << 12,
@@ -30,7 +30,7 @@ namespace RE
 		};
 
 
-		enum class DirtyFlag : UInt16
+		enum class DirtyFlag
 		{
 			kVertex = 1 << 0,
 			kNormal = 1 << 1,
@@ -43,7 +43,7 @@ namespace RE
 		};
 
 
-		enum class KeepFlag : UInt8
+		enum class KeepFlag
 		{
 			kXYZ = 1 << 0,
 			kNorm = 1 << 1,
@@ -56,7 +56,7 @@ namespace RE
 		};
 
 
-		enum class CompressFlag : UInt8
+		enum class CompressFlag
 		{
 			kNorm = 1 << 0,
 			kColor = 1 << 1,
@@ -79,36 +79,36 @@ namespace RE
 		virtual bool		  IsEqual(NiObject* a_object) override;				 // 1C
 
 		// add
-		virtual void			 SetActiveVertexCount(UInt16 a_count);	// 25 - { return; }
-		virtual UInt16			 GetActiveVertexCount() const;			// 26 - { return vertices; }
-		virtual NiTriStripsData* AsTriStripsData();						// 27 - { return 0; }
-		virtual NiTriShapeData*	 AsTriShapeData();						// 28 - { return 0; }
-		virtual void			 Unk_29(void) = 0;						// 29
+		virtual void			 SetActiveVertexCount(std::uint16_t a_count);  // 25 - { return; }
+		virtual std::uint16_t	 GetActiveVertexCount() const;				   // 26 - { return vertices; }
+		virtual NiTriStripsData* AsTriStripsData();							   // 27 - { return 0; }
+		virtual NiTriShapeData*	 AsTriShapeData();							   // 28 - { return 0; }
+		virtual void			 Unk_29(void) = 0;							   // 29
 
 
 		// members
-		UInt16								vertices;			 // 10
-		UInt16								id;					 // 12
-		DirtyFlag							dirtyFlags;			 // 14
-		DataFlag							dataFlags;			 // 16
-		NiBound								bound;				 // 18
-		NiPoint3*							vertex;				 // 28
-		NiPoint3*							normal;				 // 30
-		NiColorA*							color;				 // 38
-		NiPoint2*							texture;			 // 40
-		UInt32								unk48;				 // 48
-		UInt32								unk4C;				 // 4C
-		UInt32								unk50;				 // 50
-		UInt32								unk54;				 // 54
-		NiPointer<NiAdditionalGeometryData> additionalGeomData;	 // 58
-		KeepFlag							keepFlags;			 // 60
-		CompressFlag						compressFlags;		 // 61
-		UInt8								unk62;				 // 62
-		UInt8								unk63;				 // 63
-		UInt8								unk64;				 // 64
-		UInt8								unk65;				 // 65
-		bool								hasGeoData;			 // 66
-		UInt8								unk67;				 // 67
+		std::uint16_t								 vertices;			  // 10
+		std::uint16_t								 id;				  // 12
+		stl::enumeration<DirtyFlag, std::uint16_t>	 dirtyFlags;		  // 14
+		stl::enumeration<DataFlag, std::uint16_t>	 dataFlags;			  // 16
+		NiBound										 bound;				  // 18
+		NiPoint3*									 vertex;			  // 28
+		NiPoint3*									 normal;			  // 30
+		NiColorA*									 color;				  // 38
+		NiPoint2*									 texture;			  // 40
+		std::uint32_t								 unk48;				  // 48
+		std::uint32_t								 unk4C;				  // 4C
+		std::uint32_t								 unk50;				  // 50
+		std::uint32_t								 unk54;				  // 54
+		NiPointer<NiAdditionalGeometryData>			 additionalGeomData;  // 58
+		stl::enumeration<KeepFlag, std::uint8_t>	 keepFlags;			  // 60
+		stl::enumeration<CompressFlag, std::uint8_t> compressFlags;		  // 61
+		std::uint8_t								 unk62;				  // 62
+		std::uint8_t								 unk63;				  // 63
+		std::uint8_t								 unk64;				  // 64
+		std::uint8_t								 unk65;				  // 65
+		bool										 hasGeoData;		  // 66
+		std::uint8_t								 unk67;				  // 67
 	};
-	STATIC_ASSERT(sizeof(NiGeometryData) == 0x68);
+	static_assert(sizeof(NiGeometryData) == 0x68);
 }

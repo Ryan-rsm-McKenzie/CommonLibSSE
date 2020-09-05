@@ -16,5 +16,5 @@ namespace RE
 
 		virtual ~IPackageDataAIWorldLocationHandle();  // 00
 	};
-	STATIC_ASSERT(sizeof(IPackageDataAIWorldLocationHandle) == 0x10);
+	static_assert(sizeof(IPackageDataAIWorldLocationHandle) == 0x10);
 }

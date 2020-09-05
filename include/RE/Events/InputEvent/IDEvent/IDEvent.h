@@ -18,13 +18,13 @@ namespace RE
 		virtual bool				 HasIDCode() const override;   // 01 - { return true; }
 		virtual const BSFixedString& QUserEvent() const override;  // 02 - { return userEvent; }
 
-		[[nodiscard]] constexpr UInt32 GetIDCode() const noexcept { return idCode; }
+		[[nodiscard]] constexpr std::uint32_t GetIDCode() const noexcept { return idCode; }
 
 
 		// members
 		BSFixedString userEvent;  // 18
-		UInt32		  idCode;	  // 20
-		UInt32		  pad24;	  // 24
+		std::uint32_t idCode;	  // 20
+		std::uint32_t pad24;	  // 24
 	};
-	STATIC_ASSERT(sizeof(IDEvent) == 0x28);
+	static_assert(sizeof(IDEvent) == 0x28);
 }

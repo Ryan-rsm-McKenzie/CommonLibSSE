@@ -26,7 +26,7 @@ namespace RE
 			auto name = col->typeDescriptor->name;
 #endif
 
-			_DMESSAGE("0x%08X: %s", a_obj, name);
+			SKSE::log::debug("0x{:08X}: {}", a_obj, name);
 		}
 	}
 }

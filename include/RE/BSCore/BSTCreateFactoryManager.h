@@ -11,7 +11,7 @@ namespace RE
 	struct IBSTCreator;
 
 
-	template <class Key, class T, UInt32 SIZE, template <class> class Singleton>
+	template <class Key, class T, std::uint32_t SIZE, template <class> class Singleton>
 	class BSTFactoryManager : public Singleton<BSTFactoryManager<Key, T, SIZE, Singleton>>
 	{
 	public:
@@ -20,7 +20,7 @@ namespace RE
 	};
 
 
-	template <class Key, class T, UInt32 SIZE>
+	template <class Key, class T, std::uint32_t SIZE>
 	class BSTCreateFactoryManager : public BSTFactoryManager<Key, IBSTCreator<T>, SIZE, BSTSingletonImplicit>
 	{
 	public:
@@ -45,5 +45,5 @@ namespace RE
 			return it != factories.end() ? static_cast<const BSTDerivedCreator<T, IUIMessageData>*>(it->second) : 0;
 		}
 	};
-	STATIC_ASSERT(sizeof(MessageDataFactoryManager) == 0x1A8);
+	static_assert(sizeof(MessageDataFactoryManager) == 0x1A8);
 }

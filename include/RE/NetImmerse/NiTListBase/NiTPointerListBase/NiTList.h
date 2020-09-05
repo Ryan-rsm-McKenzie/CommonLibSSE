@@ -11,5 +11,5 @@ namespace RE
 	{
 	public:
 	};
-	STATIC_ASSERT(sizeof(NiTList<void*>) == 0x18);
+	static_assert(sizeof(NiTList<void*>) == 0x18);
 }

@@ -10,5 +10,5 @@ namespace RE
 		DoNothingUnhandledPolicy() = default;
 		virtual ~DoNothingUnhandledPolicy() = default;	// 00
 	};
-	STATIC_ASSERT(sizeof(DoNothingUnhandledPolicy<void*>) == 0x8);
+	static_assert(sizeof(DoNothingUnhandledPolicy<void*>) == 0x8);
 }

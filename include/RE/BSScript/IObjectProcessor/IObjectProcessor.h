@@ -1,11 +1,10 @@
 #pragma once
 
+#include "RE/BSCore/BSFixedString.h"
+
 
 namespace RE
 {
-	class BSFixedString;
-
-
 	namespace BSScript
 	{
 		struct ILoader;
@@ -24,6 +23,6 @@ namespace RE
 			virtual void			  SetLoader(ILoader* a_loader) = 0;				  // 02
 			virtual bool			  Process(const BSFixedString& a_className) = 0;  // 03
 		};
-		STATIC_ASSERT(sizeof(IObjectProcessor) == 0x8);
+		static_assert(sizeof(IObjectProcessor) == 0x8);
 	}
 }

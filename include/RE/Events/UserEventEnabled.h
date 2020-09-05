@@ -11,15 +11,9 @@ namespace RE
 		using UEFlag = UserEvents::USER_EVENT_FLAG;
 
 
-		constexpr UserEventEnabled(UEFlag a_new, UEFlag a_old) :
-			newUserEventFlag(a_new),
-			oldUserEventFlag(a_old)
-		{}
-
-
 		// members
-		UEFlag newUserEventFlag;  // 0
-		UEFlag oldUserEventFlag;  // 4
+		stl::enumeration<UEFlag, std::uint32_t> newUserEventFlag;  // 0
+		stl::enumeration<UEFlag, std::uint32_t> oldUserEventFlag;  // 4
 	};
-	STATIC_ASSERT(sizeof(UserEventEnabled) == 0x8);
+	static_assert(sizeof(UserEventEnabled) == 0x8);
 }

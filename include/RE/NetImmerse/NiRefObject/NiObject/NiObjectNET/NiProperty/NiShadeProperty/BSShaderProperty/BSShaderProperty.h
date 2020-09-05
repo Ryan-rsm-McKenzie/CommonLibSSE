@@ -13,14 +13,14 @@ namespace RE
 	class BSShaderProperty : public NiShadeProperty
 	{
 	private:
-		static constexpr auto BIT64 = static_cast<UInt64>(1);
+		static constexpr auto BIT64 = static_cast<std::uint64_t>(1);
 
 	public:
 		inline static constexpr auto RTTI = RTTI_BSShaderProperty;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSShaderProperty;
 
 
-		enum class EShaderPropertyFlag : UInt64
+		enum class EShaderPropertyFlag : std::uint64_t
 		{
 			kSpecular = BIT64 << 0,
 			kSkinned = BIT64 << 1,
@@ -130,18 +130,18 @@ namespace RE
 
 
 		// members
-		float								alpha;				  // 30
-		SInt32								lastRenderPassState;  // 34
-		EShaderPropertyFlag					flags;				  // 38
-		void*								unk40;				  // 40
-		UInt64								unk48;				  // 48
-		void*								unk50;				  // 50
-		UInt64								unk58;				  // 58
-		UInt64								unk60;				  // 60
-		BSTSmartPointer<BSEffectShaderData> effectData;			  // 68
-		UInt64								unk70;				  // 70
-		BSShaderMaterial*					material;			  // 78
-		UInt64								unk80;				  // 80
+		float												 alpha;				   // 30
+		std::int32_t										 lastRenderPassState;  // 34
+		stl::enumeration<EShaderPropertyFlag, std::uint64_t> flags;				   // 38
+		void*												 unk40;				   // 40
+		std::uint64_t										 unk48;				   // 48
+		void*												 unk50;				   // 50
+		std::uint64_t										 unk58;				   // 58
+		std::uint64_t										 unk60;				   // 60
+		BSTSmartPointer<BSEffectShaderData>					 effectData;		   // 68
+		std::uint64_t										 unk70;				   // 70
+		BSShaderMaterial*									 material;			   // 78
+		std::uint64_t										 unk80;				   // 80
 	};
-	STATIC_ASSERT(sizeof(BSShaderProperty) == 0x88);
+	static_assert(sizeof(BSShaderProperty) == 0x88);
 }

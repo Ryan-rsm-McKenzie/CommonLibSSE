@@ -16,8 +16,8 @@ namespace RE
 
 
 	using GRectF = GRect<float>;
-	STATIC_ASSERT(sizeof(GRectF) == 0x10);
+	static_assert(sizeof(GRectF) == 0x10);
 
 	using GRectD = GRect<double>;
-	STATIC_ASSERT(sizeof(GRectD) == 0x20);
+	static_assert(sizeof(GRectD) == 0x20);
 }

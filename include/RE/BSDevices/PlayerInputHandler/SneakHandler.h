@@ -17,5 +17,5 @@ namespace RE
 		virtual bool CanProcess(InputEvent* a_event) override;									// 01
 		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data) override;	// 04
 	};
-	STATIC_ASSERT(sizeof(SneakHandler) == 0x10);
+	static_assert(sizeof(SneakHandler) == 0x10);
 }

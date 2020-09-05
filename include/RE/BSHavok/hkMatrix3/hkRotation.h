@@ -9,5 +9,5 @@ namespace RE
 	{
 	public:
 	};
-	STATIC_ASSERT(sizeof(hkRotation) == 0x30);
+	static_assert(sizeof(hkRotation) == 0x30);
 }

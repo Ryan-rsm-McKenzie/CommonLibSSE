@@ -23,10 +23,10 @@ namespace RE
 
 
 		// members
-		bool   unk30;  // 30
-		UInt8  pad31;  // 31
-		UInt16 pad32;  // 32
-		UInt32 pad34;  // 34
+		bool		  unk30;  // 30
+		std::uint8_t  pad31;  // 31
+		std::uint16_t pad32;  // 32
+		std::uint32_t pad34;  // 34
 	};
-	STATIC_ASSERT(sizeof(LevelUpMenu) == 0x38);
+	static_assert(sizeof(LevelUpMenu) == 0x38);
 }

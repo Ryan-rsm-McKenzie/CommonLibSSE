@@ -43,7 +43,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kNonPlayable = 1 << 2,
 				kDeleted = 1 << 5,
@@ -69,10 +69,10 @@ namespace RE
 
 
 		// members
-		UInt32					 armorRating;	 // 200 - DNAM - CK value * 100 as a UInt32
-		UInt32					 pad204;		 // 204
+		std::uint32_t			 armorRating;	 // 200 - DNAM - CK value * 100 as a std::uint32_t
+		std::uint32_t			 pad204;		 // 204
 		BSTArray<TESObjectARMA*> armorAddons;	 // 208
 		TESObjectARMO*			 templateArmor;	 // 220 - TNAM
 	};
-	STATIC_ASSERT(sizeof(TESObjectARMO) == 0x228);
+	static_assert(sizeof(TESObjectARMO) == 0x228);
 }

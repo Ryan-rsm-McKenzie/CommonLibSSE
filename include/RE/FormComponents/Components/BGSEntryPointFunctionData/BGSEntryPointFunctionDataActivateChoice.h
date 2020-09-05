@@ -13,7 +13,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSEntryPointFunctionDataActivateChoice;
 
 
-		enum class Flag1 : UInt16
+		enum class Flag1
 		{
 			kNone = 0,
 			kRunImmediately = 1,
@@ -36,12 +36,12 @@ namespace RE
 
 
 		// members
-		BSFixedString label;		 // 08
-		BGSPerk*	  perk;			 // 10
-		SpellItem*	  appliedSpell;	 // 18
-		Flag1		  flags1;		 // 20
-		UInt16		  flags2;		 // 22
-		UInt32		  pad24;		 // 24
+		BSFixedString						   label;		  // 08
+		BGSPerk*							   perk;		  // 10
+		SpellItem*							   appliedSpell;  // 18
+		stl::enumeration<Flag1, std::uint16_t> flags1;		  // 20
+		std::uint16_t						   flags2;		  // 22
+		std::uint32_t						   pad24;		  // 24
 	};
-	STATIC_ASSERT(sizeof(BGSEntryPointFunctionDataActivateChoice) == 0x28);
+	static_assert(sizeof(BGSEntryPointFunctionDataActivateChoice) == 0x28);
 }

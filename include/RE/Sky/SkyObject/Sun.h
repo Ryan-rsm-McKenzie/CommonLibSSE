@@ -35,9 +35,9 @@ namespace RE
 		NiPointer<NiDirectionalLight>  cloudLight;		  // 40
 		float						   glareScale;		  // 48
 		bool						   doOcclusionTests;  // 4C
-		UInt8						   pad4D;			  // 4D
-		UInt16						   pad4E;			  // 4E
+		std::uint8_t				   pad4D;			  // 4D
+		std::uint16_t				   pad4E;			  // 4E
 		NiPointer<BSShaderAccumulator> sunAccumulator;	  // 50
 	};
-	STATIC_ASSERT(sizeof(Sun) == 0x58);
+	static_assert(sizeof(Sun) == 0x58);
 }

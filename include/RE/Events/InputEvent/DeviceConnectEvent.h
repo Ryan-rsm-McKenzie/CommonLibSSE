@@ -15,10 +15,10 @@ namespace RE
 
 
 		// members
-		bool   connected;  // 18
-		UInt8  pad19;	   // 19
-		UInt16 pad1A;	   // 1A
-		UInt32 pad1C;	   // 1C
+		bool		  connected;  // 18
+		std::uint8_t  pad19;	  // 19
+		std::uint16_t pad1A;	  // 1A
+		std::uint32_t pad1C;	  // 1C
 	};
-	STATIC_ASSERT(sizeof(DeviceConnectEvent) == 0x20);
+	static_assert(sizeof(DeviceConnectEvent) == 0x20);
 }

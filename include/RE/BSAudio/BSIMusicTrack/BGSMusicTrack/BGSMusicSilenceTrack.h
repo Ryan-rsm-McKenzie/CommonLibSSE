@@ -24,10 +24,10 @@ namespace RE
 
 
 		// members
-		float  duration;   // 20 - FLTV
-		UInt32 pad24;	   // 24
-		UInt64 playTime;   // 28
-		UInt64 pauseTime;  // 30
+		float		  duration;	  // 20 - FLTV
+		std::uint32_t pad24;	  // 24
+		std::uint64_t playTime;	  // 28
+		std::uint64_t pauseTime;  // 30
 	};
-	STATIC_ASSERT(sizeof(BGSMusicSilenceTrack) == 0x38);
+	static_assert(sizeof(BGSMusicSilenceTrack) == 0x38);
 }

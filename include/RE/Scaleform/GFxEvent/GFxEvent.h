@@ -9,7 +9,7 @@ namespace RE
 	class GFxEvent : public GNewOverrideBase<GStatGroups::kGStat_Default_Mem>
 	{
 	public:
-		enum class EventType : UInt32
+		enum class EventType
 		{
 			kNone,
 
@@ -41,9 +41,9 @@ namespace RE
 
 
 		// members
-		EventType type;	 // 0
+		stl::enumeration<EventType, std::uint32_t> type;  // 0
 	};
-	STATIC_ASSERT(sizeof(GFxEvent) == 0x4);
+	static_assert(sizeof(GFxEvent) == 0x4);
 
 
 	class GFxMouseEvent : public GFxEvent
@@ -59,7 +59,7 @@ namespace RE
 		{}
 
 
-		inline GFxMouseEvent(EventType a_eventType, UInt32 a_button, float a_x, float a_y, float a_scrollDelta = 0.0, UInt32 a_mouseIndex = 0) :
+		inline GFxMouseEvent(EventType a_eventType, std::uint32_t a_button, float a_x, float a_y, float a_scrollDelta = 0.0, std::uint32_t a_mouseIndex = 0) :
 			GFxEvent(a_eventType),
 			x(a_x),
 			y(a_y),
@@ -69,7 +69,7 @@ namespace RE
 		{}
 
 
-		inline GFxMouseEvent(EventType a_eventType, UInt32 a_mouseIndex) :
+		inline GFxMouseEvent(EventType a_eventType, std::uint32_t a_mouseIndex) :
 			GFxEvent(a_eventType),
 			x(0.0),
 			y(0.0),
@@ -80,11 +80,11 @@ namespace RE
 
 
 		// members
-		float  x;			 // 04
-		float  y;			 // 08
-		float  scrollDelta;	 // 0C
-		UInt32 button;		 // 10
-		UInt32 mouseIndex;	 // 14
+		float		  x;			// 04
+		float		  y;			// 08
+		float		  scrollDelta;	// 0C
+		std::uint32_t button;		// 10
+		std::uint32_t mouseIndex;	// 14
 	};
-	STATIC_ASSERT(sizeof(GFxMouseEvent) == 0x18);
+	static_assert(sizeof(GFxMouseEvent) == 0x18);
 }

@@ -5,10 +5,10 @@ namespace RE
 {
 	struct hkpConstraintInfo
 	{
-		SInt32 maxSizeOfSchema;		// 00
-		SInt32 sizeOfSchemas;		// 04
-		SInt32 numSolverResults;	// 08
-		SInt32 numSolverElemTemps;	// 0C
+		std::int32_t maxSizeOfSchema;	  // 00
+		std::int32_t sizeOfSchemas;		  // 04
+		std::int32_t numSolverResults;	  // 08
+		std::int32_t numSolverElemTemps;  // 0C
 	};
-	STATIC_ASSERT(sizeof(hkpConstraintInfo) == 0x10);
+	static_assert(sizeof(hkpConstraintInfo) == 0x10);
 }

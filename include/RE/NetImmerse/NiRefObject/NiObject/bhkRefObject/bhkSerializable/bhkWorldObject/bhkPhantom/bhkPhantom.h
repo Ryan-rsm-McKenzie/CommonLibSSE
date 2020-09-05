@@ -20,7 +20,7 @@ namespace RE
 
 
 		// members
-		UInt64 unk28;  // 28
+		std::uint64_t unk28;  // 28
 	};
-	STATIC_ASSERT(sizeof(bhkPhantom) == 0x30);
+	static_assert(sizeof(bhkPhantom) == 0x30);
 }

@@ -25,104 +25,76 @@ namespace RE
 		public:
 			using difference_type = std::ptrdiff_t;
 			using value_type = T;
-			using pointer = T*;
-			using reference = T&;
+			using pointer = value_type*;
+			using reference = value_type&;
 			using iterator_category = std::forward_iterator_tag;
 
-
-			iterator_base() :
-				_cur(0)
+			constexpr iterator_base() noexcept :
+				_cur(nullptr)
 			{}
 
-
-			iterator_base(T* a_node) :
+			constexpr iterator_base(pointer a_node) noexcept :
 				_cur(a_node)
 			{}
 
-
-			iterator_base(const iterator_base& a_rhs) :
+			constexpr iterator_base(const iterator_base& a_rhs) noexcept :
 				_cur(a_rhs._cur)
 			{}
 
-
-			iterator_base(iterator_base&& a_rhs) :
+			constexpr iterator_base(iterator_base&& a_rhs) noexcept :
 				_cur(std::move(a_rhs._cur))
 			{
-				a_rhs._cur = 0;
+				a_rhs._cur = nullptr;
 			}
-
 
 			~iterator_base() = default;
 
-
-			iterator_base& operator=(const iterator_base& a_rhs)
+			constexpr iterator_base& operator=(const iterator_base& a_rhs) noexcept
 			{
-				if (this == &a_rhs) {
-					return *this;
+				if (this != std::addressof(a_rhs)) {
+					_cur = a_rhs._cur;
 				}
-
-				_cur = a_rhs._cur;
-
 				return *this;
 			}
 
-
-			iterator_base& operator=(iterator_base&& a_rhs)
+			constexpr iterator_base& operator=(iterator_base&& a_rhs) noexcept
 			{
-				if (this == &a_rhs) {
-					return *this;
+				if (this != std::addressof(a_rhs)) {
+					_cur = a_rhs._cur;
+					a_rhs._cur = nullptr;
 				}
-
-				_cur = std::move(a_rhs._cur);
-				a_rhs._cur = 0;
-
 				return *this;
 			}
 
+			[[nodiscard]] constexpr reference operator*() const noexcept { return *_cur; }
+			[[nodiscard]] constexpr pointer	  operator->() const noexcept { return _cur; }
 
-			[[nodiscard]] reference operator*() const
-			{
-				return *_cur;
-			}
-
-
-			[[nodiscard]] pointer operator->() const
-			{
-				return _cur;
-			}
-
-
-			[[nodiscard]] bool operator==(const iterator_base& a_rhs) const
-			{
-				return _cur == a_rhs._cur;
-			}
-
-
-			[[nodiscard]] bool operator!=(const iterator_base& a_rhs) const
-			{
-				return !operator==(a_rhs);
-			}
-
+			[[nodiscard]] constexpr friend bool operator==(const iterator_base& a_lhs, const iterator_base& a_rhs) noexcept { return a_lhs._cur == a_rhs._cur; }
+			[[nodiscard]] constexpr friend bool operator!=(const iterator_base& a_lhs, const iterator_base& a_rhs) noexcept { return !(a_lhs == a_rhs); }
 
 			// prefix
-			iterator_base& operator++()
+			constexpr iterator_base& operator++() noexcept
 			{
-				assert(_cur);
+				assert(_cur != nullptr);
 				_cur = _cur->next;
 				return *this;
 			}
 
-
 			// postfix
-			iterator_base operator++(int)
+			[[nodiscard]] constexpr iterator_base operator++(int) noexcept
 			{
-				iterator_base tmp(*this);
-				operator++();
+				iterator_base tmp{ *this };
+				++(*this);
 				return tmp;
 			}
 
-		protected:
-			T* _cur;
+			inline friend void swap(const iterator_base& a_lhs, const iterator_base& a_rhs) noexcept
+			{
+				std::swap(a_lhs._cur, a_rhs._cur);
+			}
+
+		private:
+			pointer _cur;
 		};
 
 
@@ -144,24 +116,40 @@ namespace RE
 
 		BSExtraData*	   GetByType(ExtraDataType a_type);
 		const BSExtraData* GetByType(ExtraDataType a_type) const;
+
 		template <class T>
-		T* GetByType();
+		inline T* GetByType()
+		{
+			return static_cast<T*>(GetByType(T::EXTRADATATYPE));
+		}
+
 		template <class T>
-		const T* GetByType() const;
+		inline const T* GetByType() const
+		{
+			return static_cast<const T*>(GetByType(T::EXTRADATATYPE));
+		}
 
 		bool HasType(ExtraDataType a_type) const;
+
 		template <class T>
-		bool HasType() const;
+		inline bool HasType() const
+		{
+			return HasType(T::EXTRADATATYPE);
+		}
 
 		bool Remove(ExtraDataType a_type, BSExtraData* a_toRemove);
+
 		template <class T>
-		bool Remove(T* a_toRemove);
+		inline bool Remove(T* a_toRemove)
+		{
+			return Remove(T::EXTRADATATYPE, a_toRemove);
+		}
 
 		bool RemoveByType(ExtraDataType a_type);
 
 		BSExtraData*		  Add(BSExtraData* a_toAdd);
-		ObjectRefHandle		  GetAshPileRefHandle();
-		SInt32				  GetCount() const;
+		ObjectRefHandle		  GetAshPileRef();
+		std::int32_t		  GetCount() const;
 		const char*			  GetDisplayName(TESBoundObject* a_baseObject);
 		BGSEncounterZone*	  GetEncounterZone();
 		ExtraTextDisplayData* GetExtraTextDisplayData();
@@ -176,17 +164,17 @@ namespace RE
 		struct PresenceBitfield
 		{
 		public:
-			bool HasType(UInt32 a_type) const;
-			void MarkType(UInt32 a_type, bool a_cleared);
+			bool HasType(std::uint32_t a_type) const;
+			void MarkType(std::uint32_t a_type, bool a_cleared);
 
 
 			// members
-			UInt8 bits[0x18];  // 00
+			std::uint8_t bits[0x18];  // 00
 		};
-		STATIC_ASSERT(sizeof(PresenceBitfield) == 0x18);
+		static_assert(sizeof(PresenceBitfield) == 0x18);
 
 
-		void MarkType(UInt32 a_type, bool a_cleared);
+		void MarkType(std::uint32_t a_type, bool a_cleared);
 		void MarkType(ExtraDataType a_type, bool a_cleared);
 
 
@@ -198,33 +186,5 @@ namespace RE
 	private:
 		BSExtraData* GetByTypeImpl(ExtraDataType a_type) const;
 	};
-	STATIC_ASSERT(sizeof(ExtraDataList) == 0x18);
-
-
-	template <class T>
-	inline T* ExtraDataList::GetByType()
-	{
-		return static_cast<T*>(GetByType(T::EXTRADATATYPE));
-	}
-
-
-	template <class T>
-	inline const T* ExtraDataList::GetByType() const
-	{
-		return static_cast<const T*>(GetByType(T::EXTRADATATYPE));
-	}
-
-
-	template <class T>
-	inline bool ExtraDataList::HasType() const
-	{
-		return HasType(T::EXTRADATATYPE);
-	}
-
-
-	template <class T>
-	inline bool ExtraDataList::Remove(T* a_toRemove)
-	{
-		return Remove(T::EXTRADATATYPE, a_toRemove);
-	}
+	static_assert(sizeof(ExtraDataList) == 0x18);
 }

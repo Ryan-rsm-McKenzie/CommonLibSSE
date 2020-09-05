@@ -26,5 +26,5 @@ namespace RE
 		// members
 		NiPointer<NiNode> root;	 // 10
 	};
-	STATIC_ASSERT(sizeof(SkyObject) == 0x10);
+	static_assert(sizeof(SkyObject) == 0x10);
 }

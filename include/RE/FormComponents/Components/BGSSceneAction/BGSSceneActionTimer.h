@@ -27,9 +27,9 @@ namespace RE
 
 
 		// members
-		float  timerSeconds;  // 20 - SNAM
-		UInt32 unk24;		  // 24
-		UInt64 unk28;		  // 28
+		float		  timerSeconds;	 // 20 - SNAM
+		std::uint32_t unk24;		 // 24
+		std::uint64_t unk28;		 // 28
 	};
-	STATIC_ASSERT(sizeof(BGSSceneActionTimer) == 0x30);
+	static_assert(sizeof(BGSSceneActionTimer) == 0x30);
 }

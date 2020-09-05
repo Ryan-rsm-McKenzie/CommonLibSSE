@@ -18,7 +18,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
@@ -45,8 +45,8 @@ namespace RE
 
 
 		// members
-		UInt64		 unk1E0;  // 1E0
-		AlchemyItem* poison;  // 1E8
+		std::uint64_t unk1E0;  // 1E0
+		AlchemyItem*  poison;  // 1E8
 	};
-	STATIC_ASSERT(sizeof(ArrowProjectile) == 0x1F0);
+	static_assert(sizeof(ArrowProjectile) == 0x1F0);
 }

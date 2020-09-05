@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	enum class COL_LAYER : UInt32
+	enum class COL_LAYER
 	{
 		kUnidentified = 0,
 		kStatic = 1,

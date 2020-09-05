@@ -20,7 +20,7 @@ namespace RE
 		// override (BSLightingShaderMaterialBase)
 		virtual BSShaderMaterial* Create() override;							  // 01
 		virtual void			  CopyMembers(BSShaderMaterial* a_src) override;  // 02
-		virtual UInt32			  ComputeCRC32(void) override;					  // 04
+		virtual std::uint32_t	  ComputeCRC32(void) override;					  // 04
 		virtual Feature			  GetFeature() const override;					  // 06 - { return Feature::kParallaxOcc; }
 		virtual void			  OnLoadTextureSet(void) override;				  // 08
 		virtual void			  ClearTextures(void) override;					  // 09
@@ -35,5 +35,5 @@ namespace RE
 		float					   parallaxOccMaxPasses;  // A8
 		float					   parallaxOccScale;	  // AC
 	};
-	STATIC_ASSERT(sizeof(BSLightingShaderMaterialParallaxOcc) == 0xB0);
+	static_assert(sizeof(BSLightingShaderMaterialParallaxOcc) == 0xB0);
 }

@@ -41,7 +41,7 @@ namespace RE
 		{}
 
 
-		constexpr Color(UInt8 a_red, UInt8 a_green, UInt8 a_blue, UInt8 a_alpha) noexcept :
+		constexpr Color(std::uint8_t a_red, std::uint8_t a_green, std::uint8_t a_blue, std::uint8_t a_alpha) noexcept :
 			red(a_red),
 			green(a_green),
 			blue(a_blue),
@@ -93,14 +93,14 @@ namespace RE
 		}
 
 
-		[[nodiscard]] constexpr UInt8& operator[](std::size_t a_idx) noexcept
+		[[nodiscard]] constexpr std::uint8_t& operator[](std::size_t a_idx) noexcept
 		{
 			assert(a_idx < kTotal);
 			return std::addressof(red)[a_idx];
 		}
 
 
-		[[nodiscard]] constexpr const UInt8& operator[](std::size_t a_idx) const noexcept
+		[[nodiscard]] constexpr const std::uint8_t& operator[](std::size_t a_idx) const noexcept
 		{
 			assert(a_idx < kTotal);
 			return std::addressof(red)[a_idx];
@@ -108,10 +108,10 @@ namespace RE
 
 
 		// members
-		UInt8 red;	  // 0
-		UInt8 green;  // 1
-		UInt8 blue;	  // 2
-		UInt8 alpha;  // 3
+		std::uint8_t red;	 // 0
+		std::uint8_t green;	 // 1
+		std::uint8_t blue;	 // 2
+		std::uint8_t alpha;	 // 3
 	};
-	STATIC_ASSERT(sizeof(Color) == 0x4);
+	static_assert(sizeof(Color) == 0x4);
 }

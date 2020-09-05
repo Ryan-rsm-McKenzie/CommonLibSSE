@@ -6,7 +6,7 @@ namespace RE
 	class GFxLogConstants
 	{
 	public:
-		enum class LogMessageType : UInt32
+		enum class LogMessageType
 		{
 			// *** Channels
 
@@ -48,5 +48,5 @@ namespace RE
 			kAction = kChannel_Action | 0
 		};
 	};
-	STATIC_ASSERT(sizeof(GFxLogConstants) == 0x1);
+	static_assert(sizeof(GFxLogConstants) == 0x1);
 }

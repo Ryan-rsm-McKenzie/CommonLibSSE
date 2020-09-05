@@ -17,12 +17,12 @@ namespace RE
 		TESCondition		 objConditions;	 // 00
 		TESQuest*			 nextQuest;		 // 08
 		BGSLocalizedStringDL logEntry;		 // 10
-		UInt8				 data;			 // 14
-		SInt8				 index;			 // 15
+		std::uint8_t		 data;			 // 14
+		std::int8_t			 index;			 // 15
 		bool				 hasLogEntry;	 // 16
-		UInt8				 pad17;			 // 17
+		std::uint8_t		 pad17;			 // 17
 		TESQuest*			 owner;			 // 18
 		TESQuestStage*		 owningStage;	 // 20
 	};
-	STATIC_ASSERT(sizeof(TESQuestStageItem) == 0x28);
+	static_assert(sizeof(TESQuestStageItem) == 0x28);
 }

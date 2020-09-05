@@ -26,5 +26,5 @@ namespace RE
 		// members
 		TESForm* source;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraEmittanceSource) == 0x18);
+	static_assert(sizeof(ExtraEmittanceSource) == 0x18);
 }

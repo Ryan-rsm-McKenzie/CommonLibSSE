@@ -15,5 +15,5 @@ namespace RE
 		hkQuaternion rotation1;			 // 30
 		hkVector4	 centerOfMassLocal;	 // 40
 	};
-	STATIC_ASSERT(sizeof(hkSweptTransform) == 0x50);
+	static_assert(sizeof(hkSweptTransform) == 0x50);
 }

@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	enum class COMPILER_NAME : UInt32
+	enum class COMPILER_NAME
 	{
 		kDefaultCompiler,
 		kSystemWindowCompiler,
@@ -19,7 +19,7 @@ namespace RE
 	{
 	public:
 	};
-	STATIC_ASSERT(sizeof(ScriptCompiler) == 0x1);
+	static_assert(sizeof(ScriptCompiler) == 0x1);
 
 
 	class Script : public TESForm
@@ -31,7 +31,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
@@ -54,13 +54,13 @@ namespace RE
 
 		// members
 		SCRIPT_HEADER							header;						  // 20
-		UInt32									pad34;						  // 34
+		std::uint32_t							pad34;						  // 34
 		char*									text;						  // 38
 		SCRIPT_FUNCTION::ScriptData*			data;						  // 40
 		float									profilerTimer;				  // 48
 		float									questScriptDelay;			  // 4C
 		float									questScriptGetSecondsBuffer;  // 50
-		UInt32									pad54;						  // 54
+		std::uint32_t							pad54;						  // 54
 		TESQuest*								parentQuest;				  // 58
 		BSSimpleList<SCRIPT_REFERENCED_OBJECT*> refObjects;					  // 60
 		BSSimpleList<ScriptVariable*>			variables;					  // 70
@@ -68,5 +68,5 @@ namespace RE
 	private:
 		void CompileAndRun_Impl(ScriptCompiler* a_compiler, COMPILER_NAME a_type, TESObjectREFR* a_targetRef);
 	};
-	STATIC_ASSERT(sizeof(Script) == 0x80);
+	static_assert(sizeof(Script) == 0x80);
 }

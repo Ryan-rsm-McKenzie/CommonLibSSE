@@ -18,7 +18,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::CameraShot;
 
 
-		enum class CAM_ACTION : UInt32
+		enum class CAM_ACTION
 		{
 			kShoot = 0,
 			kFly = 1,
@@ -27,7 +27,7 @@ namespace RE
 		};
 
 
-		enum class CAM_OBJECT : UInt32
+		enum class CAM_OBJECT
 		{
 			kAttacker = 0,
 			kProjectile = 1,
@@ -38,7 +38,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -48,7 +48,8 @@ namespace RE
 
 		struct CAMERA_SHOT_DATA	 // DATA
 		{
-			enum class Flag : UInt32
+		public:
+			enum class Flag
 			{
 				kNone = 0,
 				kPositionFollowsLocation = 1 << 0,
@@ -60,19 +61,20 @@ namespace RE
 			};
 
 
-			CAM_ACTION cameraAction;				// 00
-			CAM_OBJECT location;					// 04
-			CAM_OBJECT target;						// 08
-			Flag	   flags;						// 0C
-			float	   playerTimeMult;				// 10
-			float	   targetTimeMult;				// 14
-			float	   globalTimeMult;				// 18
-			float	   maxTime;						// 1C
-			float	   minTime;						// 20
-			float	   targetPercentBetweenActors;	// 24
-			float	   nearTargetDistance;			// 28
+			// members
+			stl::enumeration<CAM_ACTION, std::uint32_t> cameraAction;				 // 00
+			stl::enumeration<CAM_OBJECT, std::uint32_t> location;					 // 04
+			stl::enumeration<CAM_OBJECT, std::uint32_t> target;						 // 08
+			stl::enumeration<Flag, std::uint32_t>		flags;						 // 0C
+			float										playerTimeMult;				 // 10
+			float										targetTimeMult;				 // 14
+			float										globalTimeMult;				 // 18
+			float										maxTime;					 // 1C
+			float										minTime;					 // 20
+			float										targetPercentBetweenActors;	 // 24
+			float										nearTargetDistance;			 // 28
 		};
-		STATIC_ASSERT(sizeof(CAMERA_SHOT_DATA) == 0x2C);
+		static_assert(sizeof(CAMERA_SHOT_DATA) == 0x2C);
 
 
 		virtual ~BGSCameraShot();  // 00
@@ -85,15 +87,15 @@ namespace RE
 
 		// members
 		CAMERA_SHOT_DATA data;	 // 58 - DATA
-		UInt32			 pad84;	 // 84
+		std::uint32_t	 pad84;	 // 84
 		void*			 unk88;	 // 88 - smart ptr
 		void*			 unk90;	 // 90 - smart ptr
 		RefHandle		 unk98;	 // 98
-		UInt32			 unk9C;	 // 9C
+		std::uint32_t	 unk9C;	 // 9C
 		void*			 unkA0;	 // A0 - smart ptr
 		void*			 unkA8;	 // A8 - smart ptr
-		UInt64			 unkB0;	 // B0
+		std::uint64_t	 unkB0;	 // B0
 		void*			 unkB8;	 // B8
 	};
-	STATIC_ASSERT(sizeof(BGSCameraShot) == 0xC0);
+	static_assert(sizeof(BGSCameraShot) == 0xC0);
 }

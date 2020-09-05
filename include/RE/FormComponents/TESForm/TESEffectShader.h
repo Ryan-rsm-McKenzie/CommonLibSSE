@@ -10,7 +10,8 @@ namespace RE
 {
 	struct EffectShaderData	 // DATA
 	{
-		enum class Flags : UInt32
+	public:
+		enum class Flags
 		{
 			kNone = 0,
 			kDisableTextureShader = 1 << 0,
@@ -33,7 +34,8 @@ namespace RE
 		};
 
 
-		UInt32 unk00;  // 000
+		// members
+		std::uint32_t unk00;  // 000
 
 		D3DBLEND   membraneShaderSourceBlendMode;  // 004
 		D3DBLENDOP membraneShaderBlendOperation;   // 008
@@ -104,7 +106,7 @@ namespace RE
 		float particleShaderRotationSpeed;					  // 0EC
 		float particleShaderRotationSpeedVariance;			  // 0F0
 
-		UInt32 pad0D4;	// 0F4
+		std::uint32_t pad0D4;  // 0F4
 
 		BGSDebris* addonModels;	 // 0F8
 
@@ -128,7 +130,7 @@ namespace RE
 		float addonModelsScaleInTime;	// 134
 		float addonModelsScaleOutTime;	// 138
 
-		UInt32 pad13C;	// 13C
+		std::uint32_t pad13C;  // 13C
 
 		BGSSoundDescriptorForm* ambientSound;  // 140
 
@@ -154,14 +156,14 @@ namespace RE
 		float particleShaderAnimatedFrameCount;			 // 188
 		float particleShaderAnimatedFrameCountVariance;	 // 18C
 
-		Flags flags;  // 190
+		stl::enumeration<Flags, std::uint32_t> flags;  // 190
 
 		float fillTextureEffectTextureScaleU;  // 194
 		float fillTextureEffectTextureScaleV;  // 198
 
-		UInt32 sceneGraphEmitDepthLimit;  // 19C - unused
+		std::uint32_t sceneGraphEmitDepthLimit;	 // 19C - unused
 	};
-	STATIC_ASSERT(sizeof(EffectShaderData) == 0x1A0);
+	static_assert(sizeof(EffectShaderData) == 0x1A0);
 
 
 	class TESEffectShader : public TESForm
@@ -173,7 +175,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -199,5 +201,5 @@ namespace RE
 		void*			 unk210;				  // 210 - smart ptr
 		void*			 unk218;				  // 218 - smart ptr
 	};
-	STATIC_ASSERT(sizeof(TESEffectShader) == 0x220);
+	static_assert(sizeof(TESEffectShader) == 0x220);
 }

@@ -24,10 +24,12 @@ namespace RE
 
 		struct PerkData
 		{
+		public:
+			// members
 			BSResource::ID* fileHash;  // 00
 			const char*		fileName;  // 08
 		};
-		STATIC_ASSERT(sizeof(PerkData) == 0x10);
+		static_assert(sizeof(PerkData) == 0x10);
 
 
 		virtual ~TweenMenu();  // 00
@@ -43,5 +45,5 @@ namespace RE
 		float			   unk48;	  // 48
 		float			   unk4C;	  // 4C
 	};
-	STATIC_ASSERT(sizeof(TweenMenu) == 0x50);
+	static_assert(sizeof(TweenMenu) == 0x50);
 }

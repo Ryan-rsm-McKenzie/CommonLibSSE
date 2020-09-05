@@ -23,5 +23,5 @@ namespace RE
 		FxDelegateHandler*		  handler;	// 08
 		FxDelegate::CallbackHash* hash;		// 10
 	};
-	STATIC_ASSERT(sizeof(AddCallbackVisitor) == 0x18);
+	static_assert(sizeof(AddCallbackVisitor) == 0x18);
 }

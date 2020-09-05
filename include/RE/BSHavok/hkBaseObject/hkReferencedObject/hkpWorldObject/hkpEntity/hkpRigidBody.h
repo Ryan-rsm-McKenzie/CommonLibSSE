@@ -21,5 +21,5 @@ namespace RE
 		// add
 		virtual hkpRigidBody* Clone() const;  // 07
 	};
-	STATIC_ASSERT(sizeof(hkpRigidBody) == 0x2D0);
+	static_assert(sizeof(hkpRigidBody) == 0x2D0);
 }

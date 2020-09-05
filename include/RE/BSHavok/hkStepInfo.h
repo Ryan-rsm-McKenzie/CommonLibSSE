@@ -13,5 +13,5 @@ namespace RE
 		float  deltaTime;				 // 08
 		float  invDeltaTime;			 // 0C
 	};
-	STATIC_ASSERT(sizeof(hkStepInfo) == 0x10);
+	static_assert(sizeof(hkStepInfo) == 0x10);
 }

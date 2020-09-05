@@ -12,5 +12,5 @@ namespace RE
 		// members
 		hkRefVariant sender;  // 10
 	};
-	STATIC_ASSERT(sizeof(hkbEvent) == 0x18);
+	static_assert(sizeof(hkbEvent) == 0x18);
 }

@@ -19,7 +19,7 @@ namespace RE
 {
 	struct OBJ_BOOK	 // DATA
 	{
-		enum class Flag : UInt8
+		enum class Flag
 		{
 			kNone = 0,
 			kAdvancesActorValue = 1 << 0,
@@ -29,7 +29,7 @@ namespace RE
 		};
 
 
-		enum class Type : UInt8
+		enum class Type
 		{
 			kBookTome = 0x00,
 			kNoteScroll = static_cast<std::underlying_type_t<Type>>(-1),
@@ -41,20 +41,20 @@ namespace RE
 			ActorValue actorValueToAdvance;
 			SpellItem* spell;
 		};
-		STATIC_ASSERT(sizeof(Teaches) == 0x8);
+		static_assert(sizeof(Teaches) == 0x8);
 
 
 		Flag GetSanitizedType() const;
 
 
 		// members
-		Flag	flags;	  // 00
-		Type	type;	  // 01
-		UInt16	pad02;	  // 02
-		UInt32	pad04;	  // 04
-		Teaches teaches;  // 08
+		stl::enumeration<Flag, std::uint8_t> flags;	   // 00
+		stl::enumeration<Type, std::uint8_t> type;	   // 01
+		std::uint16_t						 pad02;	   // 02
+		std::uint32_t						 pad04;	   // 04
+		Teaches								 teaches;  // 08
 	};
-	STATIC_ASSERT(sizeof(OBJ_BOOK) == 0x10);
+	static_assert(sizeof(OBJ_BOOK) == 0x10);
 
 
 	class TESObjectBOOK :
@@ -77,7 +77,7 @@ namespace RE
 
 		struct ChangeFlags
 		{
-			enum ChangeFlag : UInt32
+			enum ChangeFlag : std::uint32_t
 			{
 				kTeachesSkill = 1 << 5,
 				kRead = 1 << 6
@@ -87,7 +87,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -97,14 +97,14 @@ namespace RE
 		virtual ~TESObjectBOOK();  // 00
 
 		// override (TESBoundObject)
-		virtual void InitializeData() override;																													  // 04
-		virtual void ClearData() override;																														  // 05 - { return TESForm::ClearData(); }
-		virtual bool Load(TESFile* a_mod) override;																												  // 06
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;																								  // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;																								  // 0F
-		virtual void InitItemImpl() override;																													  // 13
-		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, UInt8 a_arg3, TESBoundObject* a_object, SInt32 a_targetCount) override;  // 37
-		virtual bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																		  // 4D
+		virtual void InitializeData() override;																																   // 04
+		virtual void ClearData() override;																																	   // 05 - { return TESForm::ClearData(); }
+		virtual bool Load(TESFile* a_mod) override;																															   // 06
+		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;																											   // 0E
+		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;																											   // 0F
+		virtual void InitItemImpl() override;																																   // 13
+		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		virtual bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																					   // 4D
 
 		// override (BGSKeywordForm)
 		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
@@ -124,5 +124,5 @@ namespace RE
 		TESObjectSTAT* inventoryModel;		 // 120 - INAM
 		TESDescription itemCardDescription;	 // 128 - CNAM
 	};
-	STATIC_ASSERT(sizeof(TESObjectBOOK) == 0x138);
+	static_assert(sizeof(TESObjectBOOK) == 0x138);
 }

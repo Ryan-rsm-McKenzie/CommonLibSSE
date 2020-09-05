@@ -12,39 +12,42 @@
 
 namespace SKSE
 {
-	enum class InterfaceID : UInt32
-	{
-		kInvalid = 0,
-		kScaleform,
-		kPapyrus,
-		kSerialization,
-		kTask,
-		kMessaging,
-		kObject,
-
-		kTotal
-	};
+	struct PluginInfo;
 
 
 	class QueryInterface
 	{
 	public:
-		UInt32	EditorVersion() const;
-		bool	IsEditor() const;
-		Version RuntimeVersion() const;
-		UInt32	SKSEVersion() const;
+		std::uint32_t EditorVersion() const;
+		bool		  IsEditor() const;
+		REL::Version  RuntimeVersion() const;
+		std::uint32_t SKSEVersion() const;
 
 	protected:
-		const Impl::SKSEInterface* GetProxy() const;
+		const detail::SKSEInterface* GetProxy() const;
 	};
 
 
 	class LoadInterface : public QueryInterface
 	{
 	public:
-		PluginHandle GetPluginHandle() const;
-		UInt32		 GetReleaseIndex() const;
-		void*		 QueryInterface(InterfaceID a_id) const;
+		enum : std::uint32_t
+		{
+			kInvalid = 0,
+			kScaleform,
+			kPapyrus,
+			kSerialization,
+			kTask,
+			kMessaging,
+			kObject,
+			kTrampoline,
+			kTotal
+		};
+
+		PluginHandle	  GetPluginHandle() const;
+		const PluginInfo* GetPluginInfo(const char* a_name) const;
+		std::uint32_t	  GetReleaseIndex() const;
+		void*			  QueryInterface(std::uint32_t a_id) const;
 	};
 
 
@@ -59,13 +62,13 @@ namespace SKSE
 			kVersion = 2
 		};
 
-		UInt32 Version() const;
+		std::uint32_t Version() const;
 
 		bool Register(RegCallback* a_callback, const char* a_name) const;
 		void Register(RegInvCallback* a_callback) const;
 
 	protected:
-		const Impl::SKSEScaleformInterface* GetProxy() const;
+		const detail::SKSEScaleformInterface* GetProxy() const;
 	};
 
 
@@ -80,51 +83,87 @@ namespace SKSE
 			kVersion = 4
 		};
 
-		UInt32 Version() const;
+		std::uint32_t Version() const;
 
-		void SetUniqueID(UInt32 a_uid) const;
+		void SetUniqueID(std::uint32_t a_uid) const;
 
 		void SetFormDeleteCallback(FormDeleteCallback* a_callback) const;
 		void SetLoadCallback(EventCallback* a_callback) const;
 		void SetRevertCallback(EventCallback* a_callback) const;
 		void SetSaveCallback(EventCallback* a_callback) const;
 
-		bool WriteRecord(UInt32 a_type, UInt32 a_version, const void* a_buf, UInt32 a_length) const;
-		template <class T, typename std::enable_if_t<std::negation<std::is_pointer<T>>::value, int> = 0>
-		inline UInt32 WriteRecord(UInt32 a_type, UInt32 a_version, const T& a_buf) const
+		bool WriteRecord(std::uint32_t a_type, std::uint32_t a_version, const void* a_buf, std::uint32_t a_length) const;
+
+		template <
+			class T,
+			std::enable_if_t<
+				std::negation_v<
+					std::is_pointer<T>>,
+				int> = 0>
+		inline std::uint32_t WriteRecord(std::uint32_t a_type, std::uint32_t a_version, const T& a_buf) const
 		{
 			return WriteRecord(a_type, a_version, std::addressof(a_buf), sizeof(T));
 		}
-		template <class T, std::size_t N, typename std::enable_if_t<std::is_array<T>::value, int> = 0>
-		inline UInt32 WriteRecord(UInt32 a_type, UInt32 a_version, const T (&a_buf)[N]) const
+
+		template <
+			class T,
+			std::size_t N,
+			std::enable_if_t<
+				std::is_array_v<T>,
+				int> = 0>
+		inline std::uint32_t WriteRecord(std::uint32_t a_type, std::uint32_t a_version, const T (&a_buf)[N]) const
 		{
 			return WriteRecord(a_type, a_version, std::addressof(a_buf), sizeof(T) * N);
 		}
 
-		bool OpenRecord(UInt32 a_type, UInt32 a_version) const;
+		bool OpenRecord(std::uint32_t a_type, std::uint32_t a_version) const;
 
-		bool WriteRecordData(const void* a_buf, UInt32 a_length) const;
-		template <class T, typename std::enable_if_t<std::negation<std::is_pointer<T>>::value, int> = 0>
-		inline UInt32 WriteRecordData(const T& a_buf) const
+		bool WriteRecordData(const void* a_buf, std::uint32_t a_length) const;
+
+		template <
+			class T,
+			std::enable_if_t<
+				std::negation_v<
+					std::is_pointer<T>>,
+				int> = 0>
+		inline std::uint32_t WriteRecordData(const T& a_buf) const
 		{
 			return WriteRecordData(std::addressof(a_buf), sizeof(T));
 		}
-		template <class T, std::size_t N, typename std::enable_if_t<std::is_array<T>::value, int> = 0>
-		inline UInt32 WriteRecordData(const T (&a_buf)[N]) const
+
+		template <
+			class T,
+			std::size_t N,
+			std::enable_if_t<
+				std::is_array_v<T>,
+				int> = 0>
+		inline std::uint32_t WriteRecordData(const T (&a_buf)[N]) const
 		{
 			return WriteRecordData(std::addressof(a_buf), sizeof(T) * N);
 		}
 
-		bool GetNextRecordInfo(UInt32& a_type, UInt32& a_version, UInt32& a_length) const;
+		bool GetNextRecordInfo(std::uint32_t& a_type, std::uint32_t& a_version, std::uint32_t& a_length) const;
 
-		UInt32 ReadRecordData(void* a_buf, UInt32 a_length) const;
-		template <class T, typename std::enable_if_t<std::negation<std::is_pointer<T>>::value, int> = 0>
-		inline UInt32 ReadRecordData(T& a_buf) const
+		std::uint32_t ReadRecordData(void* a_buf, std::uint32_t a_length) const;
+
+		template <
+			class T,
+			std::enable_if_t<
+				std::negation_v<
+					std::is_pointer<T>>,
+				int> = 0>
+		inline std::uint32_t ReadRecordData(T& a_buf) const
 		{
 			return ReadRecordData(std::addressof(a_buf), sizeof(T));
 		}
-		template <class T, std::size_t N, typename std::enable_if_t<std::is_array<T>::value, int> = 0>
-		inline UInt32 ReadRecordData(T (&a_buf)[N]) const
+
+		template <
+			class T,
+			std::size_t N,
+			std::enable_if_t<
+				std::is_array_v<T>,
+				int> = 0>
+		inline std::uint32_t ReadRecordData(T (&a_buf)[N]) const
 		{
 			return ReadRecordData(std::addressof(a_buf), sizeof(T) * N);
 		}
@@ -133,7 +172,7 @@ namespace SKSE
 		bool ResolveHandle(RE::VMHandle a_oldHandle, RE::VMHandle& a_newHandle) const;
 
 	protected:
-		const Impl::SKSESerializationInterface* GetProxy() const;
+		const detail::SKSESerializationInterface* GetProxy() const;
 	};
 
 
@@ -147,7 +186,7 @@ namespace SKSE
 			kVersion = 2
 		};
 
-		UInt32 Version() const;
+		std::uint32_t Version() const;
 
 		void AddTask(TaskFn a_task) const;
 		void AddTask(TaskDelegate* a_task) const;
@@ -155,7 +194,7 @@ namespace SKSE
 		void AddUITask(UIDelegate_v1* a_task) const;
 
 	protected:
-		class Task : public Impl::TaskDelegate
+		class Task : public detail::TaskDelegate
 		{
 		public:
 			Task(TaskFn&& a_fn);
@@ -167,7 +206,7 @@ namespace SKSE
 			TaskFn _fn;
 		};
 
-		class UITask : public Impl::UIDelegate_v1
+		class UITask : public detail::UIDelegate_v1
 		{
 		public:
 			UITask(TaskFn&& a_fn);
@@ -179,7 +218,7 @@ namespace SKSE
 			TaskFn _fn;
 		};
 
-		const Impl::SKSETaskInterface* GetProxy() const;
+		const detail::SKSETaskInterface* GetProxy() const;
 	};
 
 
@@ -194,7 +233,7 @@ namespace SKSE
 			kVersion = 1
 		};
 
-		UInt32 Version() const;
+		std::uint32_t Version() const;
 
 		template <class Last>
 		bool Register(Last a_last) const
@@ -209,7 +248,7 @@ namespace SKSE
 		}
 
 	protected:
-		const Impl::SKSEPapyrusInterface* GetProxy() const;
+		const detail::SKSEPapyrusInterface* GetProxy() const;
 
 	private:
 		bool Register_Impl(RegFunction1* a_fn) const;
@@ -222,10 +261,10 @@ namespace SKSE
 	public:
 		struct Message
 		{
-			const char* sender;
-			UInt32		type;
-			UInt32		dataLen;
-			void*		data;
+			const char*	  sender;
+			std::uint32_t type;
+			std::uint32_t dataLen;
+			void*		  data;
 		};
 
 		using EventCallback = void(Message* a_msg);
@@ -235,7 +274,7 @@ namespace SKSE
 			kVersion = 2
 		};
 
-		enum : UInt32
+		enum : std::uint32_t
 		{
 			kPostLoad,
 			kPostPostLoad,
@@ -250,7 +289,7 @@ namespace SKSE
 			kTotal
 		};
 
-		enum class Dispatcher : UInt32
+		enum class Dispatcher : std::uint32_t
 		{
 			kModEvent = 0,
 			kCameraEvent,
@@ -261,15 +300,15 @@ namespace SKSE
 			kTotal
 		};
 
-		UInt32 Version() const;
+		std::uint32_t Version() const;
 
-		bool  Dispatch(UInt32 a_messageType, void* a_data, UInt32 a_dataLen, const char* a_receiver) const;
+		bool  Dispatch(std::uint32_t a_messageType, void* a_data, std::uint32_t a_dataLen, const char* a_receiver) const;
 		void* GetEventDispatcher(Dispatcher a_dispatcherID) const;
 		bool  RegisterListener(EventCallback* a_callback) const;
 		bool  RegisterListener(const char* a_sender, EventCallback* a_callback) const;
 
 	protected:
-		const Impl::SKSEMessagingInterface* GetProxy() const;
+		const detail::SKSEMessagingInterface* GetProxy() const;
 	};
 
 
@@ -281,14 +320,32 @@ namespace SKSE
 			kVersion = 1
 		};
 
-		UInt32 Version() const;
+		std::uint32_t Version() const;
 
 		SKSEDelayFunctorManager&	 GetDelayFunctorManager() const;
 		SKSEObjectRegistry&			 GetObjectRegistry() const;
 		SKSEPersistentObjectStorage& GetPersistentObjectStorage() const;
 
 	private:
-		const Impl::SKSEObjectInterface* GetProxy() const;
+		const detail::SKSEObjectInterface* GetProxy() const;
+	};
+
+
+	class TrampolineInterface
+	{
+	public:
+		enum
+		{
+			kVersion = 1
+		};
+
+		std::uint32_t Version() const;
+
+		[[nodiscard]] void* AllocateFromBranchPool(std::size_t a_size) const;
+		[[nodiscard]] void* AllocateFromLocalPool(std::size_t a_size) const;
+
+	private:
+		const detail::SKSETrampolineInterface* GetProxy() const;
 	};
 
 
@@ -299,8 +356,8 @@ namespace SKSE
 			kVersion = 1
 		};
 
-		UInt32		infoVersion;
-		const char* name;
-		UInt32		version;
+		std::uint32_t infoVersion;
+		const char*	  name;
+		std::uint32_t version;
 	};
 }

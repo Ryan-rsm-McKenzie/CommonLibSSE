@@ -14,7 +14,7 @@ namespace RE
 	void TESNPC::ChangeHeadPart(BGSHeadPart* a_target)
 	{
 		using func_t = decltype(&TESNPC::ChangeHeadPart);
-		REL::Offset<func_t> func(Offset::TESNPC::ChangeHeadPart);
+		REL::Relocation<func_t> func{ Offset::TESNPC::ChangeHeadPart };
 		return func(this, a_target);
 	}
 
@@ -22,7 +22,7 @@ namespace RE
 	BGSHeadPart** TESNPC::GetBaseOverlays() const
 	{
 		using func_t = decltype(&TESNPC::GetBaseOverlays);
-		REL::Offset<func_t> func(Offset::TESNPC::GetBaseOverlays);
+		REL::Relocation<func_t> func{ Offset::TESNPC::GetBaseOverlays };
 		return func(this);
 	}
 
@@ -42,7 +42,7 @@ namespace RE
 	BGSHeadPart* TESNPC::GetHeadPartByType(HeadPartType a_type)
 	{
 		if (headParts) {
-			for (SInt8 i = 0; i < numHeadParts; ++i) {
+			for (std::int8_t i = 0; i < numHeadParts; ++i) {
 				if (headParts[i] && headParts[i]->type == a_type) {
 					return headParts[i];
 				}
@@ -57,7 +57,7 @@ namespace RE
 		const auto numOverlays = GetNumBaseOverlays();
 		auto overlays = GetBaseOverlays();
 		if (overlays) {
-			for (UInt32 i = 0; i < numOverlays; ++i) {
+			for (std::uint32_t i = 0; i < numOverlays; ++i) {
 				if (overlays[i]->type == a_type) {
 					return overlays[i];
 				}
@@ -84,10 +84,10 @@ namespace RE
 	}
 
 
-	UInt32 TESNPC::GetNumBaseOverlays() const
+	std::uint32_t TESNPC::GetNumBaseOverlays() const
 	{
 		using func_t = decltype(&TESNPC::GetNumBaseOverlays);
-		REL::Offset<func_t> func(Offset::TESNPC::GetNumBaseOverlays);
+		REL::Relocation<func_t> func{ Offset::TESNPC::GetNumBaseOverlays };
 		return func(this);
 	}
 
@@ -127,7 +127,7 @@ namespace RE
 	bool TESNPC::HasOverlays()
 	{
 		using func_t = decltype(&TESNPC::HasOverlays);
-		REL::Offset<func_t> func(Offset::TESNPC::HasOverlays);
+		REL::Relocation<func_t> func{ Offset::TESNPC::HasOverlays };
 		return func(this);
 	}
 
@@ -159,7 +159,7 @@ namespace RE
 	void TESNPC::SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_fromTint)
 	{
 		using func_t = decltype(&TESNPC::SetSkinFromTint);
-		REL::Offset<func_t> func(Offset::TESNPC::SetSkinFromTint);
+		REL::Relocation<func_t> func{ Offset::TESNPC::SetSkinFromTint };
 		return func(this, a_result, a_tintMask, a_fromTint);
 	}
 
@@ -167,7 +167,7 @@ namespace RE
 	void TESNPC::UpdateNeck(BSFaceGenNiNode* a_faceNode)
 	{
 		using func_t = decltype(&TESNPC::UpdateNeck);
-		REL::Offset<func_t> func(Offset::TESNPC::UpdateNeck);
+		REL::Relocation<func_t> func{ Offset::TESNPC::UpdateNeck };
 		return func(this, a_faceNode);
 	}
 }

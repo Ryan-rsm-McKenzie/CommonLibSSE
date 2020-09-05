@@ -42,5 +42,5 @@ namespace RE
 		// members
 		bhkSerializable* serializable;	// 18
 	};
-	STATIC_ASSERT(sizeof(bhkSerializable) == 0x20);
+	static_assert(sizeof(bhkSerializable) == 0x20);
 }

@@ -36,14 +36,14 @@ namespace RE
 
 
 			// members
-			UInt64				unk20;		  // 20
+			std::uint64_t		unk20;		  // 20
 			BSResource::Stream* stream;		  // 28
 			BSFixedString		relPath;	  // 30
 			bool				hasOpenFile;  // 38
 			bool				fileIsGood;	  // 39
-			UInt16				pad3A;		  // 3A
-			UInt32				pad3C;		  // 3C
+			std::uint16_t		pad3A;		  // 3A
+			std::uint32_t		pad3C;		  // 3C
 		};
-		STATIC_ASSERT(sizeof(Store) == 0x40);
+		static_assert(sizeof(Store) == 0x40);
 	}
 }

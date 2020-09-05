@@ -10,6 +10,8 @@ namespace RE
 	{
 		struct HDR	// HNAM
 		{
+		public:
+			// members
 			float eyeAdaptSpeed;		  // 00
 			float bloomBlurRadius;		  // 04
 			float bloomThreshold;		  // 08
@@ -20,38 +22,45 @@ namespace RE
 			float skyScale;				  // 1C
 			float eyeAdaptStrength;		  // 20
 		};
-		STATIC_ASSERT(sizeof(HDR) == 0x24);
+		static_assert(sizeof(HDR) == 0x24);
 
 
 		struct Cinematic  // CNAM
 		{
+		public:
+			// members
 			float saturation;  // 0
 			float brightness;  // 4
 			float contrast;	   // 8
 		};
-		STATIC_ASSERT(sizeof(Cinematic) == 0xC);
+		static_assert(sizeof(Cinematic) == 0xC);
 
 
 		struct Tint	 // TNAM
 		{
+		public:
 			struct ColorF
 			{
+			public:
+				// members
 				float red;	  // 0
 				float green;  // 4
 				float blue;	  // 8
 			};
-			STATIC_ASSERT(sizeof(ColorF) == 0xC);
+			static_assert(sizeof(ColorF) == 0xC);
 
 
+			// members
 			float  amount;	// 00
 			ColorF color;	// 04
 		};
-		STATIC_ASSERT(sizeof(Tint) == 0x10);
+		static_assert(sizeof(Tint) == 0x10);
 
 
 		struct DepthOfField	 // DNAM
 		{
-			enum class SkyBlurRadius : UInt16
+		public:
+			enum class SkyBlurRadius
 			{
 				kRadius0 = 16384,		 // 0x4000
 				kRadius1 = 16672,		 // 0x4120
@@ -72,21 +81,23 @@ namespace RE
 			};
 
 
-			float		  strength;		  // 00
-			float		  distance;		  // 04
-			float		  range;		  // 08
-			UInt16		  unk0C;		  // 0C
-			SkyBlurRadius skyBlurRadius;  // 0E
+			// members
+			float										   strength;	   // 00
+			float										   distance;	   // 04
+			float										   range;		   // 08
+			std::uint16_t								   unk0C;		   // 0C
+			stl::enumeration<SkyBlurRadius, std::uint16_t> skyBlurRadius;  // 0E
 		};
-		STATIC_ASSERT(sizeof(DepthOfField) == 0x10);
+		static_assert(sizeof(DepthOfField) == 0x10);
 
 
+		// members
 		HDR			 hdr;			// 00 - HNAM
 		Cinematic	 cinematic;		// 24 - CNAM
 		Tint		 tint;			// 30 - TNAM
 		DepthOfField depthOfField;	// 40 - DNAM
 	};
-	STATIC_ASSERT(sizeof(ImageSpaceBaseData) == 0x50);
+	static_assert(sizeof(ImageSpaceBaseData) == 0x50);
 
 
 	class TESImageSpace : public TESForm
@@ -98,7 +109,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -116,5 +127,5 @@ namespace RE
 		// members
 		ImageSpaceBaseData data;  // 20
 	};
-	STATIC_ASSERT(sizeof(TESImageSpace) == 0x70);
+	static_assert(sizeof(TESImageSpace) == 0x70);
 }

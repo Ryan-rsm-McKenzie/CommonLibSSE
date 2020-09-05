@@ -22,7 +22,7 @@ namespace RE
 		virtual ~hkpWorldLinearCaster() = default;	// 00
 
 		// override (hkpBroadPhaseCastCollector)
-		virtual float AddBroadPhaseHandle(const hkpBroadPhaseHandle* a_broadphaseHandle, SInt32 a_castIndex) override;	// 01
+		virtual float AddBroadPhaseHandle(const hkpBroadPhaseHandle* a_broadphaseHandle, std::int32_t a_castIndex) override;  // 01
 
 
 		// members
@@ -32,8 +32,8 @@ namespace RE
 		hkpCdPointCollector*				 startPointCollector;  // 28
 		const hkpCollidable*				 collidableA;		   // 30
 		hkpShapeType						 typeA;				   // 38
-		UInt32								 pad3C;				   // 3C
+		std::uint32_t						 pad3C;				   // 3C
 		hkpLinearCastCollisionInput			 shapeInput;		   // 40
 	};
-	STATIC_ASSERT(sizeof(hkpWorldLinearCaster) == 0xC0);
+	static_assert(sizeof(hkpWorldLinearCaster) == 0xC0);
 }

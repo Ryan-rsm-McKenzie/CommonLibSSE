@@ -20,7 +20,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12,
@@ -38,5 +38,5 @@ namespace RE
 		virtual void		UnClone3D(TESObjectREFR* a_ref) override;  // 41
 		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;	   // 4A
 	};
-	STATIC_ASSERT(sizeof(BGSIdleMarker) == 0x78);
+	static_assert(sizeof(BGSIdleMarker) == 0x78);
 }

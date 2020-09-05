@@ -171,7 +171,7 @@ namespace RE
 	class ExtraResourcesPreload;
 
 
-	enum class ExtraDataType : UInt8
+	enum class ExtraDataType
 	{
 		kNone,					   // 0x00
 		kHavok,					   // 0x01 - ExtraHavok

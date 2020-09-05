@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		using value_type = T;
-		using size_type = UInt32;
+		using size_type = std::uint32_t;
 		using reference = value_type&;
 		using const_reference = const value_type&;
 
@@ -236,7 +236,7 @@ namespace RE
 		{
 			erase_after_impl(get_head(), nullptr);
 			if (static_cast<bool>(_listHead.item)) {
-				destroy_at(std::addressof(_listHead.item));
+				stl::destroy_at(std::addressof(_listHead.item));
 			}
 		}
 
@@ -380,8 +380,8 @@ namespace RE
 				_listHead.next = node;
 			}
 
-			destroy_at(std::addressof(_listHead.item));
-			construct_at(std::addressof(_listHead.item), std::forward<Args>(a_args)...);
+			stl::destroy_at(std::addressof(_listHead.item));
+			stl::construct_at(std::addressof(_listHead.item), std::forward<Args>(a_args)...);
 		}
 
 		inline void resize_impl(size_type a_count, const_reference a_value)

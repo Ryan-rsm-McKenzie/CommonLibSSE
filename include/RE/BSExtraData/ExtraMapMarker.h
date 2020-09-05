@@ -7,7 +7,7 @@
 
 namespace RE
 {
-	enum class MARKER_TYPE : UInt8
+	enum class MARKER_TYPE
 	{
 		kNone = 0,
 		kCity = 1,
@@ -74,7 +74,7 @@ namespace RE
 	class MapMarkerData
 	{
 	public:
-		enum class Flag : UInt8
+		enum class Flag
 		{
 			kNone = 0,
 			kVisible = 1 << 0,
@@ -88,17 +88,18 @@ namespace RE
 		};
 
 
-		void Enable(bool a_enabled);
+		constexpr void SetHidden(bool a_value) noexcept { a_value ? flags.set(Flag::kShowAllHidden) : flags.reset(Flag::kShowAllHidden); }
+		constexpr void SetVisible(bool a_value) noexcept { a_value ? flags.set(Flag::kVisible) : flags.reset(Flag::kVisible); }
 
 
 		// members
-		TESFullName locationName;  // 00
-		Flag		flags;		   // 10
-		MARKER_TYPE type;		   // 11
-		UInt16		pad02;		   // 12
-		UInt32		pad04;		   // 14
+		TESFullName									locationName;  // 00
+		stl::enumeration<Flag, std::uint8_t>		flags;		   // 10
+		stl::enumeration<MARKER_TYPE, std::uint8_t> type;		   // 11
+		std::uint16_t								pad02;		   // 12
+		std::uint32_t								pad04;		   // 14
 	};
-	STATIC_ASSERT(sizeof(MapMarkerData) == 0x18);
+	static_assert(sizeof(MapMarkerData) == 0x18);
 
 
 	class ExtraMapMarker : public BSExtraData
@@ -118,5 +119,5 @@ namespace RE
 		// members
 		MapMarkerData* mapData;	 // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraMapMarker) == 0x18);
+	static_assert(sizeof(ExtraMapMarker) == 0x18);
 }

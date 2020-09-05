@@ -21,9 +21,9 @@ namespace RE
 
 
 		// members
-		UInt64 unk10;  // 10
-		UInt32 unk18;  // 18
-		UInt32 pad1C;  // 1C
+		std::uint64_t unk10;  // 10
+		std::uint32_t unk18;  // 18
+		std::uint32_t pad1C;  // 1C
 	};
-	STATIC_ASSERT(sizeof(ExtraAmmo) == 0x20);
+	static_assert(sizeof(ExtraAmmo) == 0x20);
 }

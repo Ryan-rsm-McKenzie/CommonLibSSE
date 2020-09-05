@@ -26,18 +26,18 @@ namespace RE
 		virtual bool		  IsEqual(NiObject* a_object) override;		// 1C
 
 
-		UInt32		GetNumKeys() const;
-		NiFloatKey* GetAnim(UInt32& a_numKeys, KeyType& a_type, UInt8& a_size) const;
+		std::uint32_t GetNumKeys() const;
+		NiFloatKey*	  GetAnim(std::uint32_t& a_numKeys, KeyType& a_type, std::uint8_t& a_size) const;
 
 
 		// members
-		UInt32		numKeys;  // 10
-		UInt32		pad14;	  // 14
-		NiFloatKey* keys;	  // 18
-		KeyType		type;	  // 20
-		UInt8		keySize;  // 24
-		UInt8		pad25;	  // 25
-		UInt16		pad26;	  // 26
+		std::uint32_t numKeys;	// 10
+		std::uint32_t pad14;	// 14
+		NiFloatKey*	  keys;		// 18
+		KeyType		  type;		// 20
+		std::uint8_t  keySize;	// 24
+		std::uint8_t  pad25;	// 25
+		std::uint16_t pad26;	// 26
 	};
-	STATIC_ASSERT(sizeof(NiFloatData) == 0x28);
+	static_assert(sizeof(NiFloatData) == 0x28);
 }

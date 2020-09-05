@@ -11,11 +11,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_GRefCountImpl;
 
 
-		GRefCountImpl() = default;
 		virtual ~GRefCountImpl() = default;	 // 00
 
 		void AddRef();
 		void Release();
 	};
-	STATIC_ASSERT(sizeof(GRefCountImpl) == 0x10);
+	static_assert(sizeof(GRefCountImpl) == 0x10);
 }

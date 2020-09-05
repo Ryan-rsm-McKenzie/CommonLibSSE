@@ -27,5 +27,5 @@ namespace RE
 		TESActorBase* originalBase;	 // 10
 		TESActorBase* templateBase;	 // 18
 	};
-	STATIC_ASSERT(sizeof(ExtraLeveledCreature) == 0x20);
+	static_assert(sizeof(ExtraLeveledCreature) == 0x20);
 }

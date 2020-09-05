@@ -35,5 +35,5 @@ namespace RE
 		// members
 		TESTexture* icon;  // 10
 	};
-	STATIC_ASSERT(sizeof(TESRegionDataLandscape) == 0x18);
+	static_assert(sizeof(TESRegionDataLandscape) == 0x18);
 }

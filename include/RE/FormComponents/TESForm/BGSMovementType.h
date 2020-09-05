@@ -17,7 +17,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -36,5 +36,5 @@ namespace RE
 		// members
 		Movement::TypeData movementTypeData;  // 20
 	};
-	STATIC_ASSERT(sizeof(BGSMovementType) == 0x60);
+	static_assert(sizeof(BGSMovementType) == 0x60);
 }

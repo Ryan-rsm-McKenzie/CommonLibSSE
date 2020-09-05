@@ -19,6 +19,6 @@ namespace RE
 			virtual void Unk_03(void) = 0;	// 03
 			virtual void Unk_04(void) = 0;	// 04
 		};
-		STATIC_ASSERT(sizeof(IMemoryPagePolicy) == 0x8);
+		static_assert(sizeof(IMemoryPagePolicy) == 0x8);
 	}
 }

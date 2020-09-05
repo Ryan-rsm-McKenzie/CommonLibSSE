@@ -7,5 +7,5 @@ namespace RE
 	{
 	public:
 	};
-	STATIC_ASSERT(sizeof(TESLoadGameEvent) == 0x1);
+	static_assert(sizeof(TESLoadGameEvent) == 0x1);
 }

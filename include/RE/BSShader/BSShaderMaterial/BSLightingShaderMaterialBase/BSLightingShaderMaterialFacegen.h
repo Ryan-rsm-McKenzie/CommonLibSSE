@@ -20,7 +20,7 @@ namespace RE
 		// override (BSLightingShaderMaterialBase)
 		virtual BSShaderMaterial* Create() override;								// 01
 		virtual void			  CopyMembers(BSShaderMaterial* a_other) override;	// 02
-		virtual UInt32			  ComputeCRC32(void) override;						// 04
+		virtual std::uint32_t	  ComputeCRC32(void) override;						// 04
 		virtual Feature			  GetFeature() const override;						// 06 - { return Feature::kFaceGen; }
 		virtual void			  OnLoadTextureSet(void) override;					// 08
 		virtual void			  ClearTextures(void) override;						// 09
@@ -33,5 +33,5 @@ namespace RE
 		NiPointer<NiSourceTexture> detailTexture;	   // A8
 		NiPointer<NiSourceTexture> subsurfaceTexture;  // B0
 	};
-	STATIC_ASSERT(sizeof(BSLightingShaderMaterialFacegen) == 0xB8);
+	static_assert(sizeof(BSLightingShaderMaterialFacegen) == 0xB8);
 }

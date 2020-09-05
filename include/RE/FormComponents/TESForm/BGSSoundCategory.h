@@ -18,7 +18,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::SoundCategory;
 
 
-		enum class Flag : UInt32  // FNAM
+		enum class Flag	 // FNAM
 		{
 			kNone = 0,
 			kMuteWhenSubmerged = 1 << 0,
@@ -28,7 +28,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -44,13 +44,13 @@ namespace RE
 		virtual void InitItemImpl() override;		 // 13
 
 		// override (BGSSoundCategory)
-		virtual bool   Matches(const BSISoundCategory* a_category) const override;	// 01
-		virtual float  GetCategoryVolume() const override;							// 02
-		virtual void   SetCategoryVolume(float a_value) override;					// 03
-		virtual float  GetCategoryFrequency() const override;						// 04
-		virtual void   SetCategoryFrequency(float a_value) override;				// 05
-		virtual UInt16 GetCategoryAttenuation() const override;						// 06
-		virtual void   SetCategoryAttenuation(UInt16 a_value) override;				// 07
+		virtual bool		  Matches(const BSISoundCategory* a_category) const override;  // 01
+		virtual float		  GetCategoryVolume() const override;						   // 02
+		virtual void		  SetCategoryVolume(float a_value) override;				   // 03
+		virtual float		  GetCategoryFrequency() const override;					   // 04
+		virtual void		  SetCategoryFrequency(float a_value) override;				   // 05
+		virtual std::uint16_t GetCategoryAttenuation() const override;					   // 06
+		virtual void		  SetCategoryAttenuation(std::uint16_t a_value) override;	   // 07
 
 		float GetDefaultMenuValue() const;
 		float GetStaticVolumeMultiplier() const;
@@ -60,15 +60,15 @@ namespace RE
 
 
 		// members
-		Flag			  flags;			 // 38 - FNAM
-		UInt32			  unk3C;			 // 3C
-		BGSSoundCategory* parentCategory;	 // 40 - SNCT
-		UInt16			  unk48;			 // 48
-		UInt16			  attenuation;		 // 4A
-		UInt16			  staticMult;		 // 4C - VNAM
-		UInt16			  defaultMenuValue;	 // 4E - UNAM
-		float			  volumeMult;		 // 50
-		float			  frequencyMult;	 // 54
+		stl::enumeration<Flag, std::uint32_t> flags;			 // 38 - FNAM
+		std::uint32_t						  unk3C;			 // 3C
+		BGSSoundCategory*					  parentCategory;	 // 40 - SNCT
+		std::uint16_t						  unk48;			 // 48
+		std::uint16_t						  attenuation;		 // 4A
+		std::uint16_t						  staticMult;		 // 4C - VNAM
+		std::uint16_t						  defaultMenuValue;	 // 4E - UNAM
+		float								  volumeMult;		 // 50
+		float								  frequencyMult;	 // 54
 	};
-	STATIC_ASSERT(sizeof(BGSSoundCategory) == 0x58);
+	static_assert(sizeof(BGSSoundCategory) == 0x58);
 }

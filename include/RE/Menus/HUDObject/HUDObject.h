@@ -20,7 +20,7 @@ namespace RE
 
 		struct HudComponents
 		{
-			enum HudComponent : UInt32
+			enum HudComponent : std::uint32_t
 			{
 				kThis = 0,
 				kHudElements,
@@ -53,5 +53,5 @@ namespace RE
 		GPtr<GFxMovieView> view;  // 08
 		GFxValue		   root;  // 10 - kDisplayObject - "_level0.HUDMovieBaseInstance"
 	};
-	STATIC_ASSERT(sizeof(HUDObject) == 0x28);
+	static_assert(sizeof(HUDObject) == 0x28);
 }

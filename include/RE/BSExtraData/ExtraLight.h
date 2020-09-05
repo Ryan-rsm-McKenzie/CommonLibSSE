@@ -14,9 +14,9 @@ namespace RE
 	{
 		NiPointer<NiLight> light;		// 00
 		float			   wantDimmer;	// 08
-		UInt32			   pad0C;		// 0C
+		std::uint32_t	   pad0C;		// 0C
 	};
-	STATIC_ASSERT(sizeof(REFR_LIGHT) == 0x10);
+	static_assert(sizeof(REFR_LIGHT) == 0x10);
 
 
 	class ExtraLight : public BSExtraData
@@ -35,5 +35,5 @@ namespace RE
 		// members
 		REFR_LIGHT* lightData;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraLight) == 0x18);
+	static_assert(sizeof(ExtraLight) == 0x18);
 }

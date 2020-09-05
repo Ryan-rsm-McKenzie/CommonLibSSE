@@ -16,7 +16,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -35,5 +35,5 @@ namespace RE
 		// members
 		BSTArray<TESForm*> outfitItems;	 // 20 - INAM
 	};
-	STATIC_ASSERT(sizeof(BGSOutfit) == 0x38);
+	static_assert(sizeof(BGSOutfit) == 0x38);
 }

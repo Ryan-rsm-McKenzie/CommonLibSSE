@@ -27,5 +27,5 @@ namespace RE
 
 		Setting* GetSetting(const char* a_name);
 	};
-	STATIC_ASSERT(sizeof(GameSettingCollection) == 0x140);
+	static_assert(sizeof(GameSettingCollection) == 0x140);
 }

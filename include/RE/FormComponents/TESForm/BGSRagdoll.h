@@ -22,7 +22,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
@@ -38,38 +38,38 @@ namespace RE
 
 
 		// members
-		UInt64			 unk048;  // 048
-		UInt64			 unk050;  // 050
-		UInt64			 unk058;  // 058
-		UInt64			 unk060;  // 060
-		UInt64			 unk068;  // 068
-		UInt64			 unk070;  // 070
-		UInt64			 unk078;  // 078
-		UInt64			 unk080;  // 080
-		UInt64			 unk088;  // 088
-		UInt64			 unk090;  // 090
+		std::uint64_t	 unk048;  // 048
+		std::uint64_t	 unk050;  // 050
+		std::uint64_t	 unk058;  // 058
+		std::uint64_t	 unk060;  // 060
+		std::uint64_t	 unk068;  // 068
+		std::uint64_t	 unk070;  // 070
+		std::uint64_t	 unk078;  // 078
+		std::uint64_t	 unk080;  // 080
+		std::uint64_t	 unk088;  // 088
+		std::uint64_t	 unk090;  // 090
 		BSTArray<void*>	 unk098;  // 098
-		UInt64			 unk0B0;  // 0B0
-		UInt64			 unk0B8;  // 0B8
-		UInt64			 unk0C0;  // 0C0
-		UInt64			 unk0C8;  // 0C8
+		std::uint64_t	 unk0B0;  // 0B0
+		std::uint64_t	 unk0B8;  // 0B8
+		std::uint64_t	 unk0C0;  // 0C0
+		std::uint64_t	 unk0C8;  // 0C8
 		BSTArray<void*>	 unk0D0;  // 0D0
 		BSTArray<void*>	 unk0E8;  // 0E8
-		UInt64			 unk100;  // 100
+		std::uint64_t	 unk100;  // 100
 		BSTArray<void*>	 unk108;  // 108
 		BSTArray<void*>	 unk120;  // 120
-		UInt64			 unk138;  // 138
+		std::uint64_t	 unk138;  // 138
 		BSTArray<void*>	 unk140;  // 140
 		BSTArray<void*>	 unk158;  // 158
-		UInt64			 unk170;  // 170
-		UInt64			 unk178;  // 178
-		UInt64			 unk180;  // 180
-		UInt64			 unk188;  // 188
-		UInt64			 unk190;  // 190
-		UInt64			 unk198;  // 198
-		UInt64			 unk1A0;  // 1A0
+		std::uint64_t	 unk170;  // 170
+		std::uint64_t	 unk178;  // 178
+		std::uint64_t	 unk180;  // 180
+		std::uint64_t	 unk188;  // 188
+		std::uint64_t	 unk190;  // 190
+		std::uint64_t	 unk198;  // 198
+		std::uint64_t	 unk1A0;  // 1A0
 		BGSBodyPartData* unk1A8;  // 1A8
 		TESActorBase*	 unk1B0;  // 1B0
 	};
-	STATIC_ASSERT(sizeof(BGSRagdoll) == 0x1B8);
+	static_assert(sizeof(BGSRagdoll) == 0x1B8);
 }

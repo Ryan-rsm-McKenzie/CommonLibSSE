@@ -30,7 +30,7 @@ namespace RE
 			// add
 			virtual void Process(const GString& a_methodName, CallbackFn* a_method) = 0;  // 01
 		};
-		STATIC_ASSERT(sizeof(CallbackProcessor) == 0x8);
+		static_assert(sizeof(CallbackProcessor) == 0x8);
 
 
 		virtual ~FxDelegateHandler() = default;	 // 00
@@ -38,5 +38,5 @@ namespace RE
 		// add
 		virtual void Accept(CallbackProcessor* a_cbReg) = 0;  // 01
 	};
-	STATIC_ASSERT(sizeof(FxDelegateHandler) == 0x10);
+	static_assert(sizeof(FxDelegateHandler) == 0x10);
 }

@@ -37,9 +37,25 @@ namespace RE
 	}
 
 
+	bool AIProcess::GetIsSummonedCreature() const noexcept
+	{
+		return middleHigh && middleHigh->summonedCreature;
+	}
+
+
+	ObjectRefHandle AIProcess::GetOccupiedFurniture() const
+	{
+		if (middleHigh) {
+			return middleHigh->occupiedFurniture;
+		} else {
+			return {};
+		}
+	}
+
+
 	bool AIProcess::InHighProcess() const
 	{
-		switch (processLevel) {
+		switch (*processLevel) {
 		case PROCESS_TYPE::kHigh:
 			return true;
 		default:
@@ -50,7 +66,7 @@ namespace RE
 
 	bool AIProcess::InMiddleHighProcess() const
 	{
-		switch (processLevel) {
+		switch (*processLevel) {
 		case PROCESS_TYPE::kHigh:
 		case PROCESS_TYPE::kMiddleHigh:
 			return true;
@@ -62,7 +78,7 @@ namespace RE
 
 	bool AIProcess::InMiddleLowProcess() const
 	{
-		switch (processLevel) {
+		switch (*processLevel) {
 		case PROCESS_TYPE::kHigh:
 		case PROCESS_TYPE::kMiddleHigh:
 		case PROCESS_TYPE::kMiddleLow:
@@ -75,7 +91,7 @@ namespace RE
 
 	bool AIProcess::InLowProcess() const
 	{
-		switch (processLevel) {
+		switch (*processLevel) {
 		case PROCESS_TYPE::kHigh:
 		case PROCESS_TYPE::kMiddleHigh:
 		case PROCESS_TYPE::kMiddleLow:
@@ -95,7 +111,7 @@ namespace RE
 
 	bool AIProcess::IsGhost() const
 	{
-		return cachedValues && (cachedValues->flags & CachedValues::Flags::kActorIsGhost) != CachedValues::Flags::kNone;
+		return cachedValues && cachedValues->flags.all(CachedValues::Flags::kActorIsGhost);
 	}
 
 
@@ -118,7 +134,7 @@ namespace RE
 	void AIProcess::Set3DUpdateFlag(RESET_3D_FLAGS a_flags)
 	{
 		if (middleHigh) {
-			middleHigh->update3DModel |= a_flags;
+			middleHigh->update3DModel.set(a_flags);
 		}
 	}
 
@@ -126,17 +142,18 @@ namespace RE
 	void AIProcess::Update3DModel(Actor* a_actor)
 	{
 		Update3DModel_Impl(a_actor);
-		const SKSE::NiNodeUpdateEvent event(a_actor);
+		const SKSE::NiNodeUpdateEvent event{ a_actor };
 		auto source = SKSE::GetNiNodeUpdateEventSource();
-		assert(source);	 // api failed to init
-		source->SendEvent(&event);
+		if (source) {
+			source->SendEvent(std::addressof(event));
+		}
 	}
 
 
 	void AIProcess::Update3DModel_Impl(Actor* a_actor)
 	{
 		using func_t = decltype(&AIProcess::Update3DModel_Impl);
-		REL::Offset<func_t> func(Offset::AIProcess::Update3DModel);
+		REL::Relocation<func_t> func{ Offset::AIProcess::Update3DModel };
 		return func(this, a_actor);
 	}
 }

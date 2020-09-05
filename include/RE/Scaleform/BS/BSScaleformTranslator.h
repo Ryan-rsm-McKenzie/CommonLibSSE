@@ -9,9 +9,11 @@ namespace RE
 {
 	struct BSTranslator
 	{
+	public:
+		// members
 		BSTHashMap<BSFixedStringW, BSFixedStringW> translationMap;	// 00
 	};
-	STATIC_ASSERT(sizeof(BSTranslator) == 0x30);
+	static_assert(sizeof(BSTranslator) == 0x30);
 
 
 	class BSScaleformTranslator : public GFxTranslator
@@ -29,5 +31,5 @@ namespace RE
 		// members
 		BSTranslator translator;  // 20
 	};
-	STATIC_ASSERT(sizeof(BSScaleformTranslator) == 0x50);
+	static_assert(sizeof(BSScaleformTranslator) == 0x50);
 }

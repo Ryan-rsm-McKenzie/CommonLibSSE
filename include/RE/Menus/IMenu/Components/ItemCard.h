@@ -17,9 +17,9 @@ namespace RE
 		GFxValue		   obj;		  // 00 - kObject
 		BSString		   infoText;  // 18
 		void*			   unk28;	  // 28
-		UInt32			   unk30;	  // 30
-		UInt32			   pad34;	  // 34
+		std::uint32_t	   unk30;	  // 30
+		std::uint32_t	   pad34;	  // 34
 		GPtr<GFxMovieView> view;	  // 38
 	};
-	STATIC_ASSERT(sizeof(ItemCard) == 0x40);
+	static_assert(sizeof(ItemCard) == 0x40);
 }

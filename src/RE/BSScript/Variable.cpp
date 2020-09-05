@@ -232,14 +232,14 @@ namespace RE
 		}
 
 
-		SInt32 Variable::GetSInt() const
+		std::int32_t Variable::GetSInt() const
 		{
 			assert(IsInt());
 			return value.i;
 		}
 
 
-		UInt32 Variable::GetUInt() const
+		std::uint32_t Variable::GetUInt() const
 		{
 			assert(IsInt());
 			return value.u;
@@ -287,14 +287,14 @@ namespace RE
 		}
 
 
-		void Variable::SetSInt(SInt32 a_val)
+		void Variable::SetSInt(std::int32_t a_val)
 		{
 			ChangeType(TypeInfo::RawType::kInt);
 			value.i = a_val;
 		}
 
 
-		void Variable::SetUInt(UInt32 a_val)
+		void Variable::SetUInt(std::uint32_t a_val)
 		{
 			ChangeType(TypeInfo::RawType::kInt);
 			value.u = a_val;

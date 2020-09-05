@@ -39,5 +39,5 @@ namespace RE
 		NiPoint3										angularVelocity;	   // 50
 		NiPoint3										linearVelocity;		   // 5C
 	};
-	STATIC_ASSERT(sizeof(ExtraWaterCurrentZoneData) == 0x68);
+	static_assert(sizeof(ExtraWaterCurrentZoneData) == 0x68);
 }

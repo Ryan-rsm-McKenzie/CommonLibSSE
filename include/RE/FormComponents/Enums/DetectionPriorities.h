@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	enum class DETECTION_PRIORITY : UInt32
+	enum class DETECTION_PRIORITY
 	{
 		kNone = 0,
 		kVeryLow = 1,

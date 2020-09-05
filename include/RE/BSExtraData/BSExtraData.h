@@ -33,7 +33,7 @@ namespace RE
 		// members
 		BSExtraData* next;	// 08
 	};
-	STATIC_ASSERT(sizeof(BSExtraData) == 0x10);
+	static_assert(sizeof(BSExtraData) == 0x10);
 
 
 	template <class T>

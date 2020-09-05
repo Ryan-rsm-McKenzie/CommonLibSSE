@@ -13,5 +13,5 @@ namespace RE
 
 		virtual ~TESModelPSA();	 // 00
 	};
-	STATIC_ASSERT(sizeof(TESModelPSA) == 0x28);
+	static_assert(sizeof(TESModelPSA) == 0x28);
 }

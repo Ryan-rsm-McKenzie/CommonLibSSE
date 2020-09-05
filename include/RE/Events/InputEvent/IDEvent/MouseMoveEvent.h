@@ -15,8 +15,8 @@ namespace RE
 
 
 		// members
-		SInt32 mouseInputX;	 // 28
-		SInt32 mouseInputY;	 // 2C
+		std::int32_t mouseInputX;  // 28
+		std::int32_t mouseInputY;  // 2C
 	};
-	STATIC_ASSERT(sizeof(MouseMoveEvent) == 0x30);
+	static_assert(sizeof(MouseMoveEvent) == 0x30);
 }

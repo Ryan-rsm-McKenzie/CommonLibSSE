@@ -13,7 +13,7 @@ namespace RE
 
 	struct PATH_DATA  // DATA
 	{
-		enum class PathFlags : UInt8
+		enum class PathFlags
 		{
 			kNone = 0,
 			kZoomDisable = 1 << 0,
@@ -24,9 +24,9 @@ namespace RE
 		};
 
 
-		PathFlags flags;  // 0
+		stl::enumeration<PathFlags, std::uint8_t> flags;  // 0
 	};
-	STATIC_ASSERT(sizeof(PATH_DATA) == 0x1);
+	static_assert(sizeof(PATH_DATA) == 0x1);
 
 
 	class BGSCameraPath : public TESForm
@@ -38,7 +38,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -72,12 +72,12 @@ namespace RE
 		TESCondition				 conditions;  // 20
 		BSSimpleList<BGSCameraShot*> shots;		  // 28 - SNAM
 		PATH_DATA					 data;		  // 38 - DATA
-		UInt8						 pad39;		  // 39
-		UInt16						 pad3A;		  // 3A
-		UInt32						 pad3C;		  // 3C
+		std::uint8_t				 pad39;		  // 39
+		std::uint16_t				 pad3A;		  // 3A
+		std::uint32_t				 pad3C;		  // 3C
 		NiFormArray*				 childPaths;  // 40
 		BGSCameraPath*				 parentPath;  // 48 - ANAM~
 		BGSCameraPath*				 prevPath;	  // 48 - ~ANAM
 	};
-	STATIC_ASSERT(sizeof(BGSCameraPath) == 0x58);
+	static_assert(sizeof(BGSCameraPath) == 0x58);
 }

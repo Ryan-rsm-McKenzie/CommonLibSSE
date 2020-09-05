@@ -1,158 +1,240 @@
 #pragma once
 
-#include "RE/BSCore/BSUntypedPointerHandle.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
-
 
 namespace RE
 {
-	template <class T, class Handle = BSUntypedPointerHandle<>>
-	class BSPointerHandle : protected Handle
+	class Actor;
+	class HandleManager;
+	class Projectile;
+	class TESObjectREFR;
+
+	template <std::uint32_t = 21, std::uint32_t = 5>
+	class BSUntypedPointerHandle;
+
+	template <class, class = BSUntypedPointerHandle<>>
+	class BSPointerHandle;
+
+	template <class, class = HandleManager>
+	class BSPointerHandleManagerInterface;
+
+	template <std::uint32_t FREE_LIST_BITS, std::uint32_t AGE_SHIFT>
+	class BSUntypedPointerHandle
 	{
 	public:
-		using native_handle_type = typename Handle::value_type;
+		using value_type = std::uint32_t;
 
-
-		BSPointerHandle() :
-			Handle()
-		{}
-
-
-		BSPointerHandle(const BSPointerHandle& a_rhs) :
-			Handle(a_rhs)
-		{}
-
-
-		BSPointerHandle(BSPointerHandle&& a_rhs) :
-			Handle(std::move(a_rhs))
-		{}
-
-
-		template <class Y, std::enable_if_t<std::is_convertible_v<Y*, T*>, int> = 0>
-		explicit BSPointerHandle(const Y* a_rhs) :
-			Handle()
+		enum : std::uint32_t
 		{
-			if (a_rhs && a_rhs->BSHandleRefObject::QRefCount() > 0) {
-				create(a_rhs);
-			}
+			kFreeListBits = FREE_LIST_BITS,
+			kAgeShift = AGE_SHIFT,
+		};
+
+		constexpr BSUntypedPointerHandle() noexcept = default;
+		constexpr BSUntypedPointerHandle(const BSUntypedPointerHandle&) noexcept = default;
+
+		constexpr BSUntypedPointerHandle(BSUntypedPointerHandle&& a_rhs) noexcept :
+			_handle(a_rhs._handle)
+		{
+			a_rhs.reset();
 		}
 
-
-		template <class Y, std::enable_if_t<std::is_convertible_v<Y*, T*>, int> = 0>
-		BSPointerHandle(const BSPointerHandle<Y, Handle>& a_rhs) :
-			Handle(a_rhs)
+		constexpr BSUntypedPointerHandle(value_type a_handle) noexcept :
+			_handle(a_handle)
 		{}
 
+		~BSUntypedPointerHandle() noexcept { reset(); }
 
-		template <class Y, std::enable_if_t<std::is_convertible_v<Y*, T*>, int> = 0>
-		BSPointerHandle(BSPointerHandle<Y, Handle>&& a_rhs) :
-			Handle(std::move(a_rhs))
-		{}
+		constexpr BSUntypedPointerHandle& operator=(const BSUntypedPointerHandle&) noexcept = default;
 
-
-		BSPointerHandle& operator=(const BSPointerHandle& a_rhs)
+		constexpr BSUntypedPointerHandle& operator=(BSUntypedPointerHandle&& a_rhs) noexcept
 		{
-			Handle::operator=(a_rhs);
-			return *this;
-		}
-
-
-		BSPointerHandle& operator=(BSPointerHandle&& a_rhs)
-		{
-			Handle::operator=(std::move(a_rhs));
-			return *this;
-		}
-
-
-		template <class Y, std::enable_if_t<std::is_convertible_v<Y*, T*>, int> = 0>
-		BSPointerHandle& operator=(const Y* a_rhs)
-		{
-			if (a_rhs && a_rhs->BSHandleRefObject::QRefCount() > 0) {
-				create(a_rhs);
-			} else {
-				reset();
+			if (this != std::addressof(a_rhs)) {
+				_handle = a_rhs._handle;
+				a_rhs.reset();
 			}
 			return *this;
 		}
 
-
-		template <class Y, std::enable_if_t<std::is_convertible_v<Y*, T*>, int> = 0>
-		BSPointerHandle& operator=(const BSPointerHandle<Y, Handle>& a_rhs)
+		constexpr BSUntypedPointerHandle& operator=(value_type a_rhs) noexcept
 		{
-			Handle::operator=(static_cast<const Handle&>(a_rhs));
+			_handle = a_rhs;
 			return *this;
 		}
 
+		[[nodiscard]] explicit constexpr operator bool() const noexcept { return has_value(); }
+		[[nodiscard]] constexpr bool	 has_value() const noexcept { return _handle != 0; }
 
-		~BSPointerHandle() = default;
+		[[nodiscard]] constexpr value_type value() const noexcept { return _handle; }
 
+		constexpr void reset() noexcept { _handle = 0; }
 
-		void reset()
+		[[nodiscard]] friend constexpr bool operator==(const BSUntypedPointerHandle& a_lhs, const BSUntypedPointerHandle& a_rhs) noexcept
 		{
-			Handle::reset();
+			return a_lhs.value() == a_rhs.value();
 		}
 
-
-		[[nodiscard]] NiPointer<T> get() const
-		{
-			NiPointer<T> ptr;
-			lookup(ptr);
-			return ptr;
-		}
-
-
-		[[nodiscard]] native_handle_type native_handle()
-		{
-			return Handle::value();
-		}
-
-
-		[[nodiscard]] explicit operator bool() const
-		{
-			return Handle::has_value();
-		}
-
-
-		[[nodiscard]] friend bool operator==(const BSPointerHandle& a_lhs, const BSPointerHandle& a_rhs)
-		{
-			return static_cast<const Handle&>(a_lhs) == static_cast<const Handle&>(a_rhs);
-		}
-
-
-		[[nodiscard]] friend bool operator!=(const BSPointerHandle& a_lhs, const BSPointerHandle& a_rhs)
+		[[nodiscard]] friend constexpr bool operator!=(const BSUntypedPointerHandle& a_lhs, const BSUntypedPointerHandle& a_rhs) noexcept
 		{
 			return !(a_lhs == a_rhs);
 		}
 
 	private:
-		void create(const T* a_ptr)
+		// members
+		value_type _handle{ 0 };  // 0
+	};
+
+	extern template class BSUntypedPointerHandle<>;
+
+	template <class T, class Handle>
+	class BSPointerHandle :
+		protected Handle  // 00
+	{
+	public:
+		using native_handle_type = typename Handle::value_type;
+
+		constexpr BSPointerHandle() noexcept = default;
+		constexpr BSPointerHandle(const BSPointerHandle&) noexcept = default;
+		constexpr BSPointerHandle(BSPointerHandle&&) noexcept = default;
+
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					T*>,
+				int> = 0>
+		explicit BSPointerHandle(Y* a_rhs)
 		{
-			using func_t = decltype(&BSPointerHandle<T, Handle>::create);
-			REL::Offset<func_t> func(Offset::CreateRefHandle);
-			return func(this, a_ptr);
+			get_handle(a_rhs);
 		}
 
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					T*>,
+				int> = 0>
+		constexpr BSPointerHandle(const BSPointerHandle<Y, Handle>& a_rhs) noexcept :
+			Handle(a_rhs)
+		{}
 
-		bool lookup(NiPointer<T>& a_refPtr) const
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					T*>,
+				int> = 0>
+		constexpr BSPointerHandle(BSPointerHandle<Y, Handle>&& a_rhs) noexcept :
+			Handle(std::move(a_rhs))
+		{}
+
+		constexpr BSPointerHandle& operator=(const BSPointerHandle&) noexcept = default;
+		constexpr BSPointerHandle& operator=(BSPointerHandle&&) noexcept = default;
+
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					T*>,
+				int> = 0>
+		BSPointerHandle& operator=(Y* a_rhs)
 		{
-			using func_t = decltype(&BSPointerHandle<T, Handle>::lookup);
-			REL::Offset<func_t> func(Offset::LookupReferenceByHandle);
-			return func(this, a_refPtr);
+			get_handle(a_rhs);
+			return *this;
+		}
+
+		template <
+			class Y,
+			std::enable_if_t<
+				std::is_convertible_v<
+					Y*,
+					T*>,
+				int> = 0>
+		constexpr BSPointerHandle& operator=(const BSPointerHandle<Y, Handle>& a_rhs) noexcept
+		{
+			Handle::operator=(a_rhs);
+			return *this;
+		}
+
+		~BSPointerHandle() noexcept = default;
+
+		using Handle::reset;
+
+		[[nodiscard]] NiPointer<T> get() const
+		{
+			NiPointer<T> ptr;
+			get_smartptr(ptr);
+			return ptr;
+		}
+
+		[[nodiscard]] constexpr native_handle_type native_handle() noexcept
+		{
+			return Handle::value();
+		}
+
+		[[nodiscard]] explicit constexpr operator bool() const noexcept { return Handle::has_value(); }
+
+		[[nodiscard]] friend constexpr bool operator==(const BSPointerHandle& a_lhs, const BSPointerHandle& a_rhs) noexcept
+		{
+			return static_cast<const Handle&>(a_lhs) == static_cast<const Handle&>(a_rhs);
+		}
+
+		[[nodiscard]] friend constexpr bool operator!=(const BSPointerHandle& a_lhs, const BSPointerHandle& a_rhs) noexcept
+		{
+			return !(a_lhs == a_rhs);
+		}
+
+	private:
+		void get_handle(T* a_ptr);
+		bool get_smartptr(NiPointer<T>& a_refPtr) const;
+	};
+
+	extern template class BSPointerHandle<Actor>;
+	extern template class BSPointerHandle<Projectile>;
+	extern template class BSPointerHandle<TESObjectREFR>;
+
+	using ActorHandle = BSPointerHandle<Actor>;
+	using ProjectileHandle = BSPointerHandle<Projectile>;
+	using ObjectRefHandle = BSPointerHandle<TESObjectREFR>;
+
+	template <class T, class Manager>
+	class BSPointerHandleManagerInterface
+	{
+	public:
+		using value_type = T;
+
+		static BSPointerHandle<T> GetHandle(T* a_ptr)
+		{
+			using func_t = decltype(&BSPointerHandleManagerInterface<T, Manager>::GetHandle);
+			REL::Relocation<func_t> func{ REL::ID(15967) };
+			return func(a_ptr);
+		}
+
+		static bool GetSmartPointer(const BSPointerHandle<T>& a_handle, NiPointer<T>& a_smartPointerOut)
+		{
+			using func_t = decltype(&BSPointerHandleManagerInterface<T, Manager>::GetSmartPointer);
+			REL::Relocation<func_t> func{ REL::ID(12204) };
+			return func(a_handle, a_smartPointerOut);
 		}
 	};
 
+	extern template class BSPointerHandleManagerInterface<Actor>;
+	extern template class BSPointerHandleManagerInterface<Projectile>;
+	extern template class BSPointerHandleManagerInterface<TESObjectREFR>;
 
-	class TESObjectREFR;
-	using ObjectRefHandle = BSPointerHandle<TESObjectREFR>;
-	STATIC_ASSERT(sizeof(ObjectRefHandle) == 0x4);
+	template <class T, class Handle>
+	void BSPointerHandle<T, Handle>::get_handle(T* a_ptr)
+	{
+		*this = BSPointerHandleManagerInterface<T>::GetHandle(a_ptr);
+	}
 
-
-	class Actor;
-	using ActorHandle = BSPointerHandle<Actor>;
-	STATIC_ASSERT(sizeof(ActorHandle) == 0x4);
-
-
-	class Projectile;
-	using ProjectileHandle = BSPointerHandle<Projectile>;
-	STATIC_ASSERT(sizeof(ProjectileHandle) == 0x4);
+	template <class T, class Handle>
+	bool BSPointerHandle<T, Handle>::get_smartptr(NiPointer<T>& a_smartPointerOut) const
+	{
+		return BSPointerHandleManagerInterface<T>::GetSmartPointer(*this, a_smartPointerOut);
+	}
 }

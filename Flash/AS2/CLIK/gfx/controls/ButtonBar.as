@@ -50,17 +50,17 @@ class gfx.controls.ButtonBar extends UIComponent
 {
 	/* PRIVATE VARIABLES */
 
-	private var _dataProvider:Object;
-	private var _itemRenderer:String = "Button";
-	private var _spacing:Number = 0;
-	private var _direction:String = "horizontal";
-	private var _selectedIndex:Number = -1;
-	private var _autoSize:String = "none";
-	private var _buttonWidth:Number = 0;
-	private var _labelField:String = "label";
-	private var _labelFunction:Function;
-	private var renderers:Array;
-	private var reflowing:Boolean = false;
+	private var _dataProvider: Object;
+	private var _itemRenderer: String = "Button";
+	private var _spacing: Number = 0;
+	private var _direction: String = "horizontal";
+	private var _selectedIndex: Number = -1;
+	private var _autoSize: String = "none";
+	private var _buttonWidth: Number = 0;
+	private var _labelField: String = "label";
+	private var _labelFunction: Function;
+	private var renderers: Array;
+	private var reflowing: Boolean = false;
 
 
 	/* INITIALIZATION */
@@ -68,7 +68,8 @@ class gfx.controls.ButtonBar extends UIComponent
 	/**
 	 * The constructor is called when a ButtonBar or a sub-class of ButtonBar is instantiated on stage or by using {@code UIComponent.createInstance()} in ActionScript. This component can <b>not</b> be instantiated using {@code new} syntax. When creating new components that extend ButtonBar, ensure that a {@code super()} call is made first in the constructor.
 	 */
-	public function ButtonBar() {
+	public function ButtonBar()
+	{
 		super();
 		renderers = [];
 		focusEnabled = tabEnabled = !_disabled;
@@ -260,7 +261,7 @@ class gfx.controls.ButtonBar extends UIComponent
 
 		_selectedIndex = value;
 		selectItem(_selectedIndex);
-		dispatchEventAndSound({type:"change", index:_selectedIndex, renderer:renderers[_selectedIndex], item:selectedItem, data:selectedItem.data});
+		dispatchEventAndSound({type: "change", index: _selectedIndex, renderer: renderers[_selectedIndex], item: selectedItem, data: selectedItem.data});
 	}
 
 
@@ -387,7 +388,7 @@ class gfx.controls.ButtonBar extends UIComponent
 	}
 
 
-	/* PUBLIC FUNCTIONS */
+	/* PRIVATE FUNCTIONS */
 
 	private function draw(): Void
 	{
@@ -419,7 +420,7 @@ class gfx.controls.ButtonBar extends UIComponent
 	private function drawLayout(): Boolean
 	{
 		// If the (last) renderer is not yet ready, invalidate to force a redraw.
-		if (renderers.length > 0 && !renderers[renderers.length-1].initialized) {
+		if (renderers.length > 0 && !renderers[renderers.length - 1].initialized) {
 			reflowing = true;
 			invalidate();
 			return false;
@@ -451,7 +452,7 @@ class gfx.controls.ButtonBar extends UIComponent
 
 	private function createRenderer(index: Number): MovieClip
 	{
-		var renderer: MovieClip = attachMovie(itemRenderer, "clip"+index, this.getNextHighestDepth(), {toggle:true, focusTarget:this, tabEnabled:false, autoSize:_autoSize});
+		var renderer: MovieClip = attachMovie(itemRenderer, "clip" + index, this.getNextHighestDepth(), {toggle: true, focusTarget: this, tabEnabled: false, autoSize: _autoSize});
 		if (renderer == null) {
 			return null;
 		}
@@ -460,7 +461,7 @@ class gfx.controls.ButtonBar extends UIComponent
 		renderer["index"] = index;
 
 		// This assumes linkage is a Button, or has Button in its inheritance chain.
-		renderer.groupName = _name+"ButtonGroup";
+		renderer.groupName = _name + "ButtonGroup";
 
 		return renderer;
 	}
@@ -503,7 +504,7 @@ class gfx.controls.ButtonBar extends UIComponent
 
 	private function changeFocus(): Void
 	{
-		var renderer:MovieClip = renderers[_selectedIndex];
+		var renderer: MovieClip = renderers[_selectedIndex];
 		if (renderer == null) {
 			return;
 		}

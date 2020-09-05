@@ -45,6 +45,6 @@ namespace RE
 			mutable BSSpinLock			   attachedScriptsLock;	 // 18
 			BSTHashMap<VMHandle, UnkValue> attachedScripts;		 // 20
 		};
-		STATIC_ASSERT(sizeof(ObjectBindPolicy) == 0x50);
+		static_assert(sizeof(ObjectBindPolicy) == 0x50);
 	}
 }

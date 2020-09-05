@@ -26,5 +26,5 @@ namespace RE
 		// members
 		BGSMusicType* type;	 // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraCellMusicType) == 0x18);
+	static_assert(sizeof(ExtraCellMusicType) == 0x18);
 }

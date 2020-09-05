@@ -11,12 +11,14 @@ namespace RE
 
 	struct ContainerObject
 	{
-		SInt32				count;		// 00 - CNTO~
-		UInt32				pad04;		// 04
+	public:
+		// members
+		std::int32_t		count;		// 00 - CNTO~
+		std::uint32_t		pad04;		// 04
 		TESBoundObject*		obj;		// 08 - ~CNTO
 		ContainerItemExtra* itemExtra;	// 10 - COED
 	};
-	STATIC_ASSERT(sizeof(ContainerObject) == 0x18);
+	static_assert(sizeof(ContainerObject) == 0x18);
 
 
 	class TESContainer : public BaseFormComponent
@@ -33,26 +35,26 @@ namespace RE
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 
-		inline void ForEachContainerObject(std::function<bool(ContainerObject*)> a_fn) const
+		inline void ForEachContainerObject(std::function<bool(ContainerObject&)> a_fn) const
 		{
-			for (UInt32 i = 0; i < numContainerObjects; ++i) {
+			for (std::uint32_t i = 0; i < numContainerObjects; ++i) {
 				auto entry = containerObjects[i];
 				if (entry) {
-					if (!a_fn(entry)) {
+					if (!a_fn(*entry)) {
 						break;
 					}
 				}
 			}
 		}
 
-		std::optional<ContainerObject*> GetContainerObjectAt(UInt32 a_idx) const;
-		SInt32							CountObjectsInContainer(TESBoundObject* a_object) const;
+		std::optional<ContainerObject*> GetContainerObjectAt(std::uint32_t a_idx) const;
+		std::int32_t					CountObjectsInContainer(TESBoundObject* a_object) const;
 
 
 		// members
 		ContainerObject** containerObjects;		// 08
-		UInt32			  numContainerObjects;	// 10
-		UInt32			  pad14;				// 14
+		std::uint32_t	  numContainerObjects;	// 10
+		std::uint32_t	  pad14;				// 14
 	};
-	STATIC_ASSERT(sizeof(TESContainer) == 0x18);
+	static_assert(sizeof(TESContainer) == 0x18);
 }

@@ -18,7 +18,8 @@ namespace RE
 {
 	struct AMMO_DATA  // DATA
 	{
-		enum class Flag : UInt8
+	public:
+		enum class Flag
 		{
 			kNone = 0,
 			kIgnoresNormalWeaponResistance = 1 << 0,
@@ -27,13 +28,14 @@ namespace RE
 		};
 
 
-		BGSProjectile* projectile;	// 00
-		Flag		   flags;		// 08
-		UInt8		   pa09;		// 09
-		UInt16		   pa0A;		// 0A
-		float		   damage;		// 0C
+		// members
+		BGSProjectile*						 projectile;  // 00
+		stl::enumeration<Flag, std::uint8_t> flags;		  // 08
+		std::uint8_t						 pa09;		  // 09
+		std::uint16_t						 pa0A;		  // 0A
+		float								 damage;	  // 0C
 	};
-	STATIC_ASSERT(sizeof(AMMO_DATA) == 0x10);
+	static_assert(sizeof(AMMO_DATA) == 0x10);
 
 
 	class TESAmmo :
@@ -56,7 +58,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kNonPlayable = 1 << 2,
 				kDeleted = 1 << 5,
@@ -88,5 +90,5 @@ namespace RE
 		AMMO_DATA	  data;		  // 110 - DATA
 		BSFixedString shortDesc;  // 120 - ONAM
 	};
-	STATIC_ASSERT(sizeof(TESAmmo) == 0x128);
+	static_assert(sizeof(TESAmmo) == 0x128);
 }

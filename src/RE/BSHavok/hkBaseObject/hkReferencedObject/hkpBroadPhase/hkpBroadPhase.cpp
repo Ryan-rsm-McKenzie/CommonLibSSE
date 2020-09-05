@@ -5,7 +5,7 @@ namespace RE
 {
 	const hkpBroadPhase* hkpBroadPhase::GetCapabilityDelegate(Capabilities a_cap) const
 	{
-		return (caps & a_cap) != Capabilities::kNone ? this : nullptr;
+		return caps.all(a_cap) ? this : nullptr;
 	}
 
 

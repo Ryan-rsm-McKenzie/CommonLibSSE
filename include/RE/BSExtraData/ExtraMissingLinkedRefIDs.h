@@ -21,11 +21,11 @@ namespace RE
 		{
 		public:
 			// members
-			BGSKeyword* keyword;	  // 00
-			FormID		linkedRefID;  // 08
-			UInt32		pad0C;		  // 0C
+			BGSKeyword*	  keyword;		// 00
+			FormID		  linkedRefID;	// 08
+			std::uint32_t pad0C;		// 0C
 		};
-		STATIC_ASSERT(sizeof(Entry) == 0x10);
+		static_assert(sizeof(Entry) == 0x10);
 
 
 		// a variation of a small array
@@ -33,7 +33,7 @@ namespace RE
 		{
 		public:
 			using value_type = Entry;
-			using size_type = UInt32;
+			using size_type = std::uint32_t;
 			using reference = value_type&;
 			using iterator = Entry*;
 
@@ -43,7 +43,7 @@ namespace RE
 				Entry* entryPtr;
 				Entry  entry[1];
 			};
-			STATIC_ASSERT(sizeof(Data) == 0x10);
+			static_assert(sizeof(Data) == 0x10);
 
 
 			reference operator[](size_type a_pos);
@@ -53,11 +53,11 @@ namespace RE
 
 
 			// members
-			Data   _data;	// 00
-			UInt32 _size;	// 10
-			UInt32 _pad14;	// 14
+			Data		  _data;   // 00
+			std::uint32_t _size;   // 10
+			std::uint32_t _pad14;  // 14
 		};
-		STATIC_ASSERT(sizeof(Array) == 0x18);
+		static_assert(sizeof(Array) == 0x18);
 
 
 		virtual ~ExtraMissingLinkedRefIDs();  // 00
@@ -71,5 +71,5 @@ namespace RE
 		// members
 		Array entries;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraMissingLinkedRefIDs) == 0x28);
+	static_assert(sizeof(ExtraMissingLinkedRefIDs) == 0x28);
 }

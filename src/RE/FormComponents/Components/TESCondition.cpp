@@ -53,7 +53,7 @@ namespace RE
 	bool TESConditionItem::IsTrue(ConditionCheckParams& a_solution) const
 	{
 		using func_t = decltype(&TESConditionItem::IsTrue);
-		REL::Offset<func_t> func = REL::ID(29090);
+		REL::Relocation<func_t> func{ REL::ID(29090) };
 		return func(this, a_solution);
 	}
 
@@ -90,7 +90,7 @@ namespace RE
 	bool TESCondition::IsTrue(TESObjectREFR* a_actionRef, TESObjectREFR* a_targetRef) const
 	{
 		using func_t = decltype(&TESCondition::IsTrue);
-		REL::Offset<func_t> func = REL::ID(29074);
+		REL::Relocation<func_t> func{ REL::ID(29074) };
 		return func(this, a_actionRef, a_targetRef);
 	}
 }

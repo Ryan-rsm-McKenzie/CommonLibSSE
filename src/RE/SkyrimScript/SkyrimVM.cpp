@@ -5,7 +5,7 @@ namespace RE
 {
 	SkyrimVM* SkyrimVM::GetSingleton()
 	{
-		REL::Offset<SkyrimVM**> singleton(Offset::SkyrimVM::Singleton);
+		REL::Relocation<SkyrimVM**> singleton{ Offset::SkyrimVM::Singleton };
 		return *singleton;
 	}
 
@@ -13,7 +13,7 @@ namespace RE
 	bool SkyrimVM::QueuePostRenderCall(const BSTSmartPointer<SkyrimScript::DelayFunctor>& a_functor)
 	{
 		using func_t = decltype(&SkyrimVM::QueuePostRenderCall);
-		REL::Offset<func_t> func(Offset::SkyrimVM::QueuePostRenderCall);
+		REL::Relocation<func_t> func{ Offset::SkyrimVM::QueuePostRenderCall };
 		return func(this, a_functor);
 	}
 }

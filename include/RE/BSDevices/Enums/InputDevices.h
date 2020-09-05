@@ -5,7 +5,7 @@ namespace RE
 {
 	struct INPUT_DEVICES
 	{
-		enum INPUT_DEVICE : UInt32
+		enum INPUT_DEVICE
 		{
 			kNone = static_cast<std::underlying_type_t<INPUT_DEVICE>>(-1),
 			kKeyboard = 0,

@@ -8,7 +8,7 @@ namespace RE
 	public:
 		struct IDTypeConstants
 		{
-			enum IDTypeConstant : UInt32
+			enum IDTypeConstant : std::uint32_t
 			{
 				kIndexMask = 0x0000FFFF,
 				kTypeMask = 0x0FFF0000,
@@ -27,7 +27,7 @@ namespace RE
 
 		struct IDTypes
 		{
-			enum IDType : UInt32
+			enum IDType : std::uint32_t
 			{
 				kNone = IDTypeConstants::kSWF,
 				kInternalConstant = (0 << IDTypeConstants::kTypeShift) | IDTypeConstants::kStatic,
@@ -46,23 +46,23 @@ namespace RE
 
 
 		GFxResourceID();
-		explicit GFxResourceID(UInt32 a_resID);
+		explicit GFxResourceID(std::uint32_t a_resID);
 		GFxResourceID(const GFxResourceID& a_rhs);
 
 		GFxResourceID& operator=(const GFxResourceID& a_rhs);
 		bool		   operator==(const GFxResourceID& a_rhs) const;
 		bool		   operator!=(const GFxResourceID& a_rhs) const;
-		bool		   operator==(UInt32 a_idVal) const;
-		bool		   operator!=(UInt32 a_idVal) const;
+		bool		   operator==(std::uint32_t a_idVal) const;
+		bool		   operator!=(std::uint32_t a_idVal) const;
 
-		UInt32			GetIDValue() const;
-		UInt32			GetIDIndex() const;
+		std::uint32_t	GetIDValue() const;
+		std::uint32_t	GetIDIndex() const;
 		IDTypes::IDType GetIDType() const;
 		GFxResourceID	GenerateNextID();
 
 	protected:
 		// members
-		UInt32 id;	// 0
+		std::uint32_t id;  // 0
 	};
-	STATIC_ASSERT(sizeof(GFxResourceID) == 0x4);
+	static_assert(sizeof(GFxResourceID) == 0x4);
 }

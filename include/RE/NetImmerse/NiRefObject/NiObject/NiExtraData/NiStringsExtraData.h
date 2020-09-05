@@ -25,9 +25,9 @@ namespace RE
 
 
 		// members
-		UInt32 size;   // 18
-		UInt32 pad1C;  // 1C
-		char** value;  // 20
+		std::uint32_t size;	  // 18
+		std::uint32_t pad1C;  // 1C
+		char**		  value;  // 20
 	};
-	STATIC_ASSERT(sizeof(NiStringsExtraData) == 0x28);
+	static_assert(sizeof(NiStringsExtraData) == 0x28);
 }

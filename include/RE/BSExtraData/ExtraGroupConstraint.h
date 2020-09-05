@@ -23,14 +23,14 @@ namespace RE
 
 
 		// members
-		SInt32			constraintType;			  // 10
+		std::int32_t	constraintType;			  // 10
 		ObjectRefHandle entityB;				  // 14
 		BSFixedString	attachNodeNameA;		  // 18
 		BSFixedString	attachNodeNameB;		  // 20
 		NiPoint3		constraintOffsetA;		  // 28
 		NiPoint3		constraintOffsetB;		  // 34
-		UInt32			originalCollisionGroupB;  // 40
+		std::uint32_t	originalCollisionGroupB;  // 40
 		float			dynamicMassScaleB;		  // 44
 	};
-	STATIC_ASSERT(sizeof(ExtraGroupConstraint) == 0x48);
+	static_assert(sizeof(ExtraGroupConstraint) == 0x48);
 }

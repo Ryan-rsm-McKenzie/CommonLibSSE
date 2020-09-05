@@ -24,14 +24,14 @@ namespace RE
 				virtual ~NullStream();	// 00
 
 				// override (Stream)
-				virtual ErrorCode DoOpen() override;																  // 01 - { return ErrorCode::kNone; }
-				virtual void	  DoClose() override;																  // 02 - { return; }
-				virtual void	  DoClone(BSTSmartPointer<Stream>& a_out) const override;							  // 05
-				virtual ErrorCode DoRead(void* a_buffer, UInt64 a_toRead, UInt64& a_read) const override;			  // 06
-				virtual ErrorCode DoWrite(const void* a_buffer, UInt64 a_toWrite, UInt64& a_written) const override;  // 07
-				virtual ErrorCode DoSeek(UInt64 a_toSeek, SeekMode a_mode, UInt64& a_sought) const override;		  // 08
+				virtual ErrorCode DoOpen() override;																				// 01 - { return ErrorCode::kNone; }
+				virtual void	  DoClose() override;																				// 02 - { return; }
+				virtual void	  DoClone(BSTSmartPointer<Stream>& a_out) const override;											// 05
+				virtual ErrorCode DoRead(void* a_buffer, std::uint64_t a_toRead, std::uint64_t& a_read) const override;				// 06
+				virtual ErrorCode DoWrite(const void* a_buffer, std::uint64_t a_toWrite, std::uint64_t& a_written) const override;	// 07
+				virtual ErrorCode DoSeek(std::uint64_t a_toSeek, SeekMode a_mode, std::uint64_t& a_sought) const override;			// 08
 			};
-			STATIC_ASSERT(sizeof(NullStream) == 0x10);
+			static_assert(sizeof(NullStream) == 0x10);
 
 
 			virtual ~DevNull();	 // 00
@@ -44,12 +44,12 @@ namespace RE
 
 
 			// members
-			UInt8					pad11;		 // 11
-			UInt16					pad12;		 // 12
-			UInt32					pad14;		 // 14
+			std::uint8_t			pad11;		 // 11
+			std::uint16_t			pad12;		 // 12
+			std::uint32_t			pad14;		 // 14
 			BSTSmartPointer<Stream> nullReader;	 // 18
 			BSTSmartPointer<Stream> nullWriter;	 // 20
 		};
-		STATIC_ASSERT(sizeof(DevNull) == 0x28);
+		static_assert(sizeof(DevNull) == 0x28);
 	}
 }

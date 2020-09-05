@@ -25,5 +25,5 @@ namespace RE
 		// members
 		TESRegionList* list;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraRegionList) == 0x18);
+	static_assert(sizeof(ExtraRegionList) == 0x18);
 }

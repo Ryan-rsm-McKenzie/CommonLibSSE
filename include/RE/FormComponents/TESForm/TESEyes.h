@@ -18,7 +18,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::Eyes;
 
 
-		enum class Flag : UInt8
+		enum class Flag
 		{
 			kNone = 0,
 			kPlayable = 1 << 0,
@@ -29,7 +29,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kNonPlayable = 1 << 2,
 				kDeleted = 1 << 5,
@@ -46,10 +46,10 @@ namespace RE
 
 
 		// members
-		Flag   flags;  // 40 - DATA
-		UInt8  pad41;  // 41
-		UInt16 pad42;  // 42
-		UInt32 pad44;  // 44
+		stl::enumeration<Flag, std::uint8_t> flags;	 // 40 - DATA
+		std::uint8_t						 pad41;	 // 41
+		std::uint16_t						 pad42;	 // 42
+		std::uint32_t						 pad44;	 // 44
 	};
-	STATIC_ASSERT(sizeof(TESEyes) == 0x48);
+	static_assert(sizeof(TESEyes) == 0x48);
 }

@@ -19,7 +19,7 @@ namespace RE
 
 	struct CameraStates
 	{
-		enum CameraState : UInt32
+		enum CameraState : std::uint32_t
 		{
 			kFirstPerson = 0,
 			kAutoVanity,
@@ -54,7 +54,7 @@ namespace RE
 			NiPointer<bhkSimpleShapePhantom*> unk00;  // 00
 			NiPointer<bhkSimpleShapePhantom*> unk08;  // 08
 		};
-		STATIC_ASSERT(sizeof(Unk120) == 0x10);
+		static_assert(sizeof(Unk120) == 0x10);
 
 
 		virtual ~PlayerCamera();  // 00
@@ -68,8 +68,8 @@ namespace RE
 
 
 		// members
-		UInt8												 pad039;							  // 039
-		UInt16												 pad03A;							  // 03A
+		std::uint8_t										 pad039;							  // 039
+		std::uint16_t										 pad03A;							  // 03A
 		ActorHandle											 cameraTarget;						  // 03C
 		BSTSmallArray<TESCameraState*, CameraStates::kTotal> tempReturnStates;					  // 040
 		BSTSmartPointer<TESCameraState>						 cameraStates[CameraStates::kTotal];  // 0B8
@@ -82,15 +82,15 @@ namespace RE
 		NiPoint3											 pos;								  // 144 - ?
 		float												 idleTimer;							  // 150 - ?
 		float												 yaw;								  // 154 - ? - in radians
-		UInt32												 unk158;							  // 158 - ?
-		UInt32												 unk15C;							  // 15C - ?
+		std::uint32_t										 unk158;							  // 158 - ?
+		std::uint32_t										 unk15C;							  // 15C - ?
 		bool												 allowAutoVanityMode;				  // 160
 		bool												 bowZoomedIn;						  // 161
 		bool												 isWeapSheathed;					  // 162 - ?
 		bool												 isProcessed;						  // 163 - ?
-		UInt8												 unk164;							  // 164
-		UInt8												 unk165;							  // 165
-		UInt16												 pad166;							  // 166
+		std::uint8_t										 unk164;							  // 164
+		std::uint8_t										 unk165;							  // 165
+		std::uint16_t										 pad166;							  // 166
 	};
-	STATIC_ASSERT(sizeof(PlayerCamera) == 0x168);
+	static_assert(sizeof(PlayerCamera) == 0x168);
 }

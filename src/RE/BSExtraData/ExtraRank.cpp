@@ -8,12 +8,12 @@ namespace RE
 	{}
 
 
-	ExtraRank::ExtraRank(SInt32 a_rank) :
+	ExtraRank::ExtraRank(std::int32_t a_rank) :
 		BSExtraData(),
 		rank(a_rank),
 		pad14(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraRank::Vtbl);
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraRank::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

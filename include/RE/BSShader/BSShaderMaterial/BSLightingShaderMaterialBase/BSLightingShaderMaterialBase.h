@@ -23,7 +23,7 @@ namespace RE
 		virtual BSShaderMaterial* Create() override = 0;							// 01
 		virtual void			  CopyMembers(BSShaderMaterial* a_other) override;	// 02
 		virtual bool			  DoIsCopy(BSShaderMaterial* a_other) override;		// 03
-		virtual UInt32			  ComputeCRC32(void) override;						// 04
+		virtual std::uint32_t	  ComputeCRC32(void) override;						// 04
 		virtual BSShaderMaterial* GetDefault() override;							// 05
 		virtual Feature			  GetFeature() const override;						// 06 - { return Feature::kDefault; }
 		virtual Type			  GetType() const override;							// 07 - { return Type::kLighting; }
@@ -44,15 +44,15 @@ namespace RE
 
 		// members
 		NiColor					   specularColor;					// 38
-		UInt32					   pad44;							// 44
+		std::uint32_t			   pad44;							// 44
 		NiPointer<NiSourceTexture> diffuseTexture;					// 48
-		SInt32					   diffuseRenderTargetSourceIndex;	// 50
-		UInt32					   pad54;							// 54
+		std::int32_t			   diffuseRenderTargetSourceIndex;	// 50
+		std::uint32_t			   pad54;							// 54
 		NiPointer<NiSourceTexture> normalTexture;					// 58
 		NiPointer<NiSourceTexture> rimSoftLightingTexture;			// 60
 		NiPointer<NiSourceTexture> specularBackLightingTexture;		// 68
-		SInt32					   textureClampMode;				// 70
-		SInt32					   pad74;							// 70
+		std::int32_t			   textureClampMode;				// 70
+		std::int32_t			   pad74;							// 70
 		NiPointer<BSTextureSet>	   textureSet;						// 78
 		float					   materialAlpha;					// 80
 		float					   refractionPower;					// 84
@@ -60,7 +60,7 @@ namespace RE
 		float					   specularColorScale;				// 8C
 		float					   subSurfaceLightRolloff;			// 90
 		float					   rimLightPower;					// 94
-		UInt64					   unk98;							// 98
+		std::uint64_t			   unk98;							// 98
 	};
-	STATIC_ASSERT(sizeof(BSLightingShaderMaterialBase) == 0xA0);
+	static_assert(sizeof(BSLightingShaderMaterialBase) == 0xA0);
 }

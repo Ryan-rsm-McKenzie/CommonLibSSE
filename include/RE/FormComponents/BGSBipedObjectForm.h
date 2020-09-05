@@ -7,7 +7,8 @@ namespace RE
 {
 	struct BIPED_MODEL	// BOD2
 	{
-		enum class BipedObjectSlot : UInt32
+	public:
+		enum class BipedObjectSlot
 		{
 			kNone = 0,
 			kHead = 1 << 0,
@@ -26,11 +27,11 @@ namespace RE
 			kEars = 1 << 13,
 			kDecapitateHead = 1 << 20,
 			kDecapitate = 1 << 21,
-			kFX01 = (UInt32)1 << 31
+			kFX01 = 1 << 31
 		};
 
 
-		enum class ArmorType : UInt32
+		enum class ArmorType
 		{
 			kLightArmor,
 			kHeavyArmor,
@@ -38,10 +39,11 @@ namespace RE
 		};
 
 
-		BipedObjectSlot bipedObjectSlots;  // 0
-		ArmorType		armorType;		   // 4
+		// members
+		stl::enumeration<BipedObjectSlot, std::uint32_t> bipedObjectSlots;	// 0
+		stl::enumeration<ArmorType, std::uint32_t>		 armorType;			// 4
 	};
-	STATIC_ASSERT(sizeof(BIPED_MODEL) == 0x8);
+	static_assert(sizeof(BIPED_MODEL) == 0x8);
 
 
 	class BGSBipedObjectForm : public BaseFormComponent
@@ -78,5 +80,5 @@ namespace RE
 		// members
 		BIPED_MODEL bipedModelData;	 // 08 - BOD2
 	};
-	STATIC_ASSERT(sizeof(BGSBipedObjectForm) == 0x10);
+	static_assert(sizeof(BGSBipedObjectForm) == 0x10);
 }

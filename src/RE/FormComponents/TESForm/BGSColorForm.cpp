@@ -5,6 +5,6 @@ namespace RE
 {
 	bool BGSColorForm::IsPlayable() const
 	{
-		return (flags & Flag::kPlayable) != Flag::kNone;
+		return flags.all(Flag::kPlayable);
 	}
 }

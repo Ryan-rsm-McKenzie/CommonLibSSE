@@ -8,7 +8,7 @@ namespace RE
 	{}
 
 
-	ExtraEnchantment::ExtraEnchantment(EnchantmentItem* a_enchantment, UInt16 a_charge, bool a_removeOnUnequip) :
+	ExtraEnchantment::ExtraEnchantment(EnchantmentItem* a_enchantment, std::uint16_t a_charge, bool a_removeOnUnequip) :
 		BSExtraData(),
 		enchantment(a_enchantment),
 		charge(a_charge),
@@ -16,7 +16,7 @@ namespace RE
 		pad1B(0),
 		pad1C(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraEnchantment::Vtbl);
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraEnchantment::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

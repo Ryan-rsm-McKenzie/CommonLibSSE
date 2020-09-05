@@ -7,7 +7,7 @@ namespace RE
 {
 	struct GFxStatMovieData
 	{
-		enum GFxStatMovieDatum : UInt32
+		enum GFxStatMovieDatum : std::uint32_t
 		{
 			kGFxStatMD_Default = GStatGroups::kGStatGroup_GFxMovieData,
 
@@ -32,7 +32,7 @@ namespace RE
 
 	struct GFxStatMovieViews
 	{
-		enum GFxStatMovieView : UInt32
+		enum GFxStatMovieView : std::uint32_t
 		{
 			kGFxStatMV_Default = GStatGroups::kGStatGroup_GFxMovieView,
 
@@ -64,7 +64,7 @@ namespace RE
 
 	struct GFxStatIMEs
 	{
-		enum GFxStatIME : UInt32
+		enum GFxStatIME : std::uint32_t
 		{
 			kGFxStatIME_Default = GStatGroups::kGStatGroup_GFxIME,
 
@@ -76,7 +76,7 @@ namespace RE
 
 	struct GFxStatFontCaches
 	{
-		enum GFxStatFontCache : UInt32
+		enum GFxStatFontCache : std::uint32_t
 		{
 			kGFxStatFC_Default = GStatGroups::kGStatGroup_GFxFontCache,
 

@@ -62,8 +62,8 @@ namespace RE
 
 
 		// members
-		float  lastTime;  // 10
-		UInt32 pad14;	  // 14
+		float		  lastTime;	 // 10
+		std::uint32_t pad14;	 // 14
 	};
-	STATIC_ASSERT(sizeof(NiInterpolator) == 0x18);
+	static_assert(sizeof(NiInterpolator) == 0x18);
 }

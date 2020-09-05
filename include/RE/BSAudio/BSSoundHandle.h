@@ -11,13 +11,13 @@ namespace RE
 	struct BSSoundHandle
 	{
 	public:
-		enum : UInt32
+		enum : std::uint32_t
 		{
-			kInvalidID = static_cast<UInt32>(-1)
+			kInvalidID = static_cast<std::uint32_t>(-1)
 		};
 
 
-		enum class AssumedState : UInt32
+		enum class AssumedState
 		{
 			kInitialized = 0,
 			kPlaying = 1,
@@ -26,7 +26,7 @@ namespace RE
 		};
 
 
-		enum class LoopType : UInt32
+		enum class LoopType
 		{
 			kNone = 0,
 			kWholeFile = 1,
@@ -46,11 +46,11 @@ namespace RE
 
 
 		// members
-		UInt32		 soundID;		 // 00
-		bool		 assumeSuccess;	 // 04
-		UInt8		 pad05;			 // 05
-		UInt16		 pad06;			 // 06
-		AssumedState state;			 // 08
+		std::uint32_t								  soundID;		  // 00
+		bool										  assumeSuccess;  // 04
+		std::uint8_t								  pad05;		  // 05
+		std::uint16_t								  pad06;		  // 06
+		stl::enumeration<AssumedState, std::uint32_t> state;		  // 08
 	};
-	STATIC_ASSERT(sizeof(BSSoundHandle) == 0xC);
+	static_assert(sizeof(BSSoundHandle) == 0xC);
 }

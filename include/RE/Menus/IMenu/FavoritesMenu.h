@@ -29,7 +29,7 @@ namespace RE
 			TESForm*			item;		// 00
 			InventoryEntryData* entryData;	// 08
 		};
-		STATIC_ASSERT(sizeof(Entry) == 0x10);
+		static_assert(sizeof(Entry) == 0x10);
 
 
 		virtual ~FavoritesMenu();  // 00
@@ -47,10 +47,10 @@ namespace RE
 		// members
 		GFxValue		root;			  // 40 - "Menu_mc"
 		BSTArray<Entry> favorites;		  // 58
-		UInt16			unk70;			  // 70
+		std::uint16_t	unk70;			  // 70
 		bool			pcControlsReady;  // 72
 		bool			isVampire;		  // 73
-		UInt32			pad74;			  // 74
+		std::uint32_t	pad74;			  // 74
 	};
-	STATIC_ASSERT(sizeof(FavoritesMenu) == 0x78);
+	static_assert(sizeof(FavoritesMenu) == 0x78);
 }

@@ -27,7 +27,7 @@ namespace RE
 		class Stack : public BSIntrusiveRefCounted
 		{
 		public:
-			enum class State : UInt32
+			enum class State
 			{
 				kRunning = 0,
 				kFinished = 1,
@@ -41,7 +41,7 @@ namespace RE
 			};
 
 
-			enum class FreezeState : UInt32
+			enum class FreezeState
 			{
 				kUnfrozen = 0,
 				kFreezing = 1,
@@ -49,7 +49,7 @@ namespace RE
 			};
 
 
-			enum class StackType : UInt32
+			enum class StackType
 			{
 			};
 
@@ -59,38 +59,38 @@ namespace RE
 			public:
 				// members
 				BSTAutoPointer<MemoryPage> page;					// 00
-				UInt32					   availableMemoryInBytes;	// 08 - e.g. a function with 1 arg will have 3 unused args, so this will be 0x30, a function with 6 args will have 0 unused args, so this will be 0x0
-				UInt32					   pad0C;					// 0C
+				std::uint32_t			   availableMemoryInBytes;	// 08 - e.g. a function with 1 arg will have 3 unused args, so this will be 0x30, a function with 6 args will have 0 unused args, so this will be 0x0
+				std::uint32_t			   pad0C;					// 0C
 			};
-			STATIC_ASSERT(sizeof(MemoryPageData) == 0x10);
+			static_assert(sizeof(MemoryPageData) == 0x10);
 
 
 			~Stack();
 
-			UInt32	  GetPageForFrame(const StackFrame* a_frame) const;
-			Variable& GetStackFrameVariable(const StackFrame* a_frame, UInt32 a_index, UInt32 a_pageHint);
+			std::uint32_t GetPageForFrame(const StackFrame* a_frame) const;
+			Variable&	  GetStackFrameVariable(const StackFrame* a_frame, std::uint32_t a_index, std::uint32_t a_pageHint);
 
 
 			// members
-			UInt32								   pad04;		   // 04
-			IMemoryPagePolicy*					   policy;		   // 08
-			IProfilePolicy*						   profilePolicy;  // 10
-			BSTSmallArray<MemoryPageData, 3>	   pages;		   // 18
-			UInt32								   frames;		   // 58
-			UInt32								   pad5C;		   // 5C
-			StackFrame*							   top;			   // 60
-			State								   state;		   // 68
-			FreezeState							   freezeState;	   // 6C
-			Variable							   returnValue;	   // 70
-			VMStackID							   stackID;		   // 80
-			StackType							   stackType;	   // 84
-			BSTSmartPointer<Internal::CodeTasklet> owningTasklet;  // 88
-			BSTSmartPointer<IStackCallbackFunctor> callback;	   // 90
-			BSTSmartPointer<Stack>				   nextStack;	   // 98
+			std::uint32_t								 pad04;			 // 04
+			IMemoryPagePolicy*							 policy;		 // 08
+			IProfilePolicy*								 profilePolicy;	 // 10
+			BSTSmallArray<MemoryPageData, 3>			 pages;			 // 18
+			std::uint32_t								 frames;		 // 58
+			std::uint32_t								 pad5C;			 // 5C
+			StackFrame*									 top;			 // 60
+			stl::enumeration<State, std::uint32_t>		 state;			 // 68
+			stl::enumeration<FreezeState, std::uint32_t> freezeState;	 // 6C
+			Variable									 returnValue;	 // 70
+			VMStackID									 stackID;		 // 80
+			stl::enumeration<StackType, std::uint32_t>	 stackType;		 // 84
+			BSTSmartPointer<Internal::CodeTasklet>		 owningTasklet;	 // 88
+			BSTSmartPointer<IStackCallbackFunctor>		 callback;		 // 90
+			BSTSmartPointer<Stack>						 nextStack;		 // 98
 
 		private:
 			void Dtor();
 		};
-		STATIC_ASSERT(sizeof(Stack) == 0xA0);
+		static_assert(sizeof(Stack) == 0xA0);
 	}
 }

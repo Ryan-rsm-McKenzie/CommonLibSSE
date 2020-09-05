@@ -9,61 +9,61 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NiBinaryStream;
 
 
-		using int_type = SInt32;
-		using pos_type = UInt32;
-		using off_type = SInt32;
+		using int_type = std::int32_t;
+		using pos_type = std::uint32_t;
+		using off_type = std::int32_t;
 
 
 		struct BufferInfo
 		{
 		public:
 			// members
-			void*  buffer;			 // 00
-			UInt32 totalSize;		 // 08
-			UInt32 bufferAllocSize;	 // 0C
-			UInt32 bufferReadSize;	 // 10
-			UInt32 bufferPos;		 // 14
-			UInt32 streamPos;		 // 18
-			UInt32 pad1C;			 // 1C
+			void*		  buffer;			// 00
+			std::uint32_t totalSize;		// 08
+			std::uint32_t bufferAllocSize;	// 0C
+			std::uint32_t bufferReadSize;	// 10
+			std::uint32_t bufferPos;		// 14
+			std::uint32_t streamPos;		// 18
+			std::uint32_t pad1C;			// 1C
 		};
-		STATIC_ASSERT(sizeof(BufferInfo) == 0x20);
+		static_assert(sizeof(BufferInfo) == 0x20);
 
 
 		NiBinaryStream();
 		virtual ~NiBinaryStream();	// 00
 
 		// add
-		virtual bool   good() const = 0;					// 01
-		virtual void   seek(SInt32 a_numBytes) = 0;			// 02
-		virtual UInt32 tell() const;						// 03 - { return _absoluteCurrentPos; }
-		virtual void   get_info(BufferInfo& a_buf);			// 04
-		virtual void   set_endian_swap(bool a_doSwap) = 0;	// 05
+		virtual bool		  good() const = 0;					   // 01
+		virtual void		  seek(std::int32_t a_numBytes) = 0;   // 02
+		virtual std::uint32_t tell() const;						   // 03 - { return _absoluteCurrentPos; }
+		virtual void		  get_info(BufferInfo& a_buf);		   // 04
+		virtual void		  set_endian_swap(bool a_doSwap) = 0;  // 05
 
 		template <class CharT>
 		bool get(CharT& a_ch);
 		template <class CharT>
-		bool read(CharT* a_str, UInt32 a_count);
+		bool read(CharT* a_str, std::uint32_t a_count);
 		template <class CharT>
 		bool put(CharT a_ch);
 		template <class CharT>
-		bool write(const CharT* a_str, UInt32 a_count);
+		bool write(const CharT* a_str, std::uint32_t a_count);
 
 	protected:
-		using ReadFn = UInt32(NiBinaryStream* a_this, void* a_buffer, UInt32 a_bytes, UInt32* a_componentSizes, UInt32 a_numComponents);
-		using WriteFn = UInt32(NiBinaryStream* a_this, const void* a_buffer, UInt32 a_bytes, UInt32* a_componentSizes, UInt32 a_numComponents);
+		using ReadFn = std::uint32_t(NiBinaryStream* a_this, void* a_buffer, std::uint32_t a_bytes, std::uint32_t* a_componentSizes, std::uint32_t a_numComponents);
+		using WriteFn = std::uint32_t(NiBinaryStream* a_this, const void* a_buffer, std::uint32_t a_bytes, std::uint32_t* a_componentSizes, std::uint32_t a_numComponents);
 
 
-		UInt32 binary_read(void* a_buffer, UInt32 a_totalBytes, UInt32* a_componentSizes, UInt32 a_numComponents = 1);
-		UInt32 binary_write(const void* a_buffer, UInt32 a_totalBytes, UInt32* a_componentSizes, UInt32 a_numComponents = 1);
+		std::uint32_t binary_read(void* a_buffer, std::uint32_t a_totalBytes, std::uint32_t* a_componentSizes, std::uint32_t a_numComponents = 1);
+		std::uint32_t binary_write(const void* a_buffer, std::uint32_t a_totalBytes, std::uint32_t* a_componentSizes, std::uint32_t a_numComponents = 1);
 
 
 		// members
-		UInt32	 _absoluteCurrentPos;  // 08
-		UInt32	 _pad0C;			   // 0C
-		ReadFn*	 _readFn;			   // 10
-		WriteFn* _writeFn;			   // 18
+		std::uint32_t _absoluteCurrentPos;	// 08
+		std::uint32_t _pad0C;				// 0C
+		ReadFn*		  _readFn;				// 10
+		WriteFn*	  _writeFn;				// 18
 	};
-	STATIC_ASSERT(sizeof(NiBinaryStream) == 0x20);
+	static_assert(sizeof(NiBinaryStream) == 0x20);
 
 
 	template <class CharT>
@@ -74,11 +74,11 @@ namespace RE
 
 
 	template <class CharT>
-	inline bool NiBinaryStream::read(CharT* a_str, UInt32 a_count)
+	inline bool NiBinaryStream::read(CharT* a_str, std::uint32_t a_count)
 	{
-		UInt32 size = sizeof(CharT);
-		UInt32 toRead = a_count * size;
-		UInt32 bytesRead = binary_read(a_str, toRead, &size);
+		std::uint32_t size = sizeof(CharT);
+		std::uint32_t toRead = a_count * size;
+		std::uint32_t bytesRead = binary_read(a_str, toRead, &size);
 		return bytesRead == toRead;
 	}
 
@@ -91,11 +91,11 @@ namespace RE
 
 
 	template <class CharT>
-	inline bool NiBinaryStream::write(const CharT* a_str, UInt32 a_count)
+	inline bool NiBinaryStream::write(const CharT* a_str, std::uint32_t a_count)
 	{
-		UInt32 size = sizeof(CharT);
-		UInt32 toWrite = a_count * size;
-		UInt32 bytesWritten = binary_write(a_str, toWrite, &size);
+		std::uint32_t size = sizeof(CharT);
+		std::uint32_t toWrite = a_count * size;
+		std::uint32_t bytesWritten = binary_write(a_str, toWrite, &size);
 		return bytesWritten == toWrite;
 	}
 }

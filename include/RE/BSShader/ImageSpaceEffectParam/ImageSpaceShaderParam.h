@@ -18,17 +18,17 @@ namespace RE
 
 
 		// members
-		UInt64								 unk08;	 // 08
-		UInt64								 unk10;	 // 10
-		UInt64								 unk18;	 // 18
-		UInt64								 unk20;	 // 20
-		UInt64								 unk28;	 // 28
+		std::uint64_t						 unk08;	 // 08
+		std::uint64_t						 unk10;	 // 10
+		std::uint64_t						 unk18;	 // 18
+		std::uint64_t						 unk20;	 // 20
+		std::uint64_t						 unk28;	 // 28
 		void*								 unk30;	 // 30
-		UInt64								 unk38;	 // 38
+		std::uint64_t						 unk38;	 // 38
 		void*								 unk40;	 // 40
-		UInt64								 unk48;	 // 48
+		std::uint64_t						 unk48;	 // 48
 		NiTObjectArray<NiPointer<NiTexture>> unk50;	 // 50
-		NiTPrimitiveArray<UInt32>			 unk68;	 // 68 - NiTPrimitiveArray<enum BSGraphics::TextureFilterMode>
+		NiTPrimitiveArray<std::uint32_t>	 unk68;	 // 68 - NiTPrimitiveArray<enum BSGraphics::TextureFilterMode>
 	};
-	STATIC_ASSERT(sizeof(ImageSpaceShaderParam) == 0x80);
+	static_assert(sizeof(ImageSpaceShaderParam) == 0x80);
 }

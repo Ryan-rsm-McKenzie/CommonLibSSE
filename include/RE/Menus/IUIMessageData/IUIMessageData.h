@@ -13,9 +13,9 @@ namespace RE
 
 
 		// members
-		UInt16 unk08;  // 08
-		UInt16 pad0A;  // 0A
-		UInt32 pad0C;  // 0C
+		std::uint16_t unk08;  // 08
+		std::uint16_t pad0A;  // 0A
+		std::uint32_t pad0C;  // 0C
 	};
-	STATIC_ASSERT(sizeof(IUIMessageData) == 0x10);
+	static_assert(sizeof(IUIMessageData) == 0x10);
 }

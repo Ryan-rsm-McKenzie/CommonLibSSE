@@ -21,10 +21,10 @@ namespace RE
 
 
 		// members
-		SInt8  cutoff;			// 10
-		SInt8  originalCutoff;	// 11
-		UInt16 pad12;			// 12
-		UInt32 pad14;			// 14
+		std::int8_t	  cutoff;		   // 10
+		std::int8_t	  originalCutoff;  // 11
+		std::uint16_t pad12;		   // 12
+		std::uint32_t pad14;		   // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraAlphaCutoff) == 0x18);
+	static_assert(sizeof(ExtraAlphaCutoff) == 0x18);
 }

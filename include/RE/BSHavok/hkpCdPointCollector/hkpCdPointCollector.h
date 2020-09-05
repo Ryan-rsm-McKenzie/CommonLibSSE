@@ -20,8 +20,8 @@ namespace RE
 
 
 		// members
-		float  earlyOutDistance;  // 08
-		UInt32 pad0C;			  // 0C
+		float		  earlyOutDistance;	 // 08
+		std::uint32_t pad0C;			 // 0C
 	};
-	STATIC_ASSERT(sizeof(hkpCdPointCollector) == 0x10);
+	static_assert(sizeof(hkpCdPointCollector) == 0x10);
 }

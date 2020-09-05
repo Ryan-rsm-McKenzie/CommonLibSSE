@@ -16,14 +16,14 @@ namespace RE
 	{
 		BSSimpleList<ObjectRefHandle> portalList;		 // 00
 		BSSimpleList<ObjectRefHandle> roomList;			 // 10
-		SInt8						  master;			 // 20
-		UInt8						  pad21;			 // 21
-		UInt16						  pad22;			 // 22
-		UInt32						  pad24;			 // 24
+		std::int8_t					  master;			 // 20
+		std::uint8_t				  pad21;			 // 21
+		std::uint16_t				  pad22;			 // 22
+		std::uint32_t				  pad24;			 // 24
 		BGSLightingTemplate*		  lightingTemplate;	 // 28
 		TESImageSpace*				  imageSpace;		 // 30
 	};
-	STATIC_ASSERT(sizeof(RoomRefData) == 0x38);
+	static_assert(sizeof(RoomRefData) == 0x38);
 
 
 	class ExtraRoomRefData : public BSExtraData
@@ -43,5 +43,5 @@ namespace RE
 		// members
 		RoomRefData* data;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraRoomRefData) == 0x18);
+	static_assert(sizeof(ExtraRoomRefData) == 0x18);
 }

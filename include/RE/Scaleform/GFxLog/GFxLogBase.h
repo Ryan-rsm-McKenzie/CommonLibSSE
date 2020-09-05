@@ -14,5 +14,5 @@ namespace RE
 		// add
 		virtual bool IsVerboseActionErrors() const { return true; }	 // 01
 	};
-	STATIC_ASSERT(sizeof(GFxLogBase<void*>) == 0x8);
+	static_assert(sizeof(GFxLogBase<void*>) == 0x8);
 }

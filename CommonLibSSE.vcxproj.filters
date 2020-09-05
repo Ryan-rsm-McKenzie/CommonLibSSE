@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClInclude Include="include\RE\AI\AIFormulas.h">
+      <Filter>include\RE\AI</Filter>
+    </ClInclude>
     <ClInclude Include="include\RE\AI\AIProcess.h">
       <Filter>include\RE\AI</Filter>
     </ClInclude>
@@ -136,9 +139,6 @@
     <ClInclude Include="include\RE\BSCore\BSPointerHandleManager\HandleManager.h">
       <Filter>include\RE\BSCore\BSPointerHandleManager</Filter>
     </ClInclude>
-    <ClInclude Include="include\RE\BSCore\BSPointerHandleManagerInterface.h">
-      <Filter>include\RE\BSCore</Filter>
-    </ClInclude>
     <ClInclude Include="include\RE\BSCore\BSPointerHandleSmartPointer.h">
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
@@ -191,9 +191,6 @@
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSCore\BSTTuple.h">
-      <Filter>include\RE\BSCore</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RE\BSCore\BSUntypedPointerHandle.h">
       <Filter>include\RE\BSCore</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSCore\CRC.h">
@@ -1117,6 +1114,15 @@
     <ClInclude Include="include\RE\BSHavok\hkpShapeContainer\hkpSingleShapeContainer.h">
       <Filter>include\RE\BSHavok\hkpShapeContainer</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastCollectorOutput.h">
+      <Filter>include\RE\BSHavok\hkpShapeRayCastCollectorOutput</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastOutput\hkpShapeRayCastOutput.h">
+      <Filter>include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastOutput</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastOutput\hkpWorldRayCastOutput.h">
+      <Filter>include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastOutput</Filter>
+    </ClInclude>
     <ClInclude Include="include\RE\BSHavok\hkpSimplexSolver.h">
       <Filter>include\RE\BSHavok</Filter>
     </ClInclude>
@@ -1124,6 +1130,9 @@
       <Filter>include\RE\BSHavok</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSHavok\hkpWeldingUtility.h">
+      <Filter>include\RE\BSHavok</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\BSHavok\hkpWorldRayCastInput.h">
       <Filter>include\RE\BSHavok</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\BSHavok\hkQuaternion.h">
@@ -1618,6 +1627,9 @@
     <ClInclude Include="include\RE\Events\ScriptEvent\ScriptEventSourceHolder.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\Events\ScriptEvent\TESActivateEvent.h">
+      <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
     <ClInclude Include="include\RE\Events\ScriptEvent\TESActiveEffectApplyRemoveEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
@@ -1634,6 +1646,9 @@
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\Events\ScriptEvent\TESEquipEvent.h">
+      <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Events\ScriptEvent\TESFurnitureEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\Events\ScriptEvent\TESGrabReleaseEvent.h">
@@ -1658,6 +1673,9 @@
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\Events\ScriptEvent\TESObjectLoadedEvent.h">
+      <Filter>include\RE\Events\ScriptEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\Events\ScriptEvent\TESOpenCloseEvent.h">
       <Filter>include\RE\Events\ScriptEvent</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\Events\ScriptEvent\TESResetEvent.h">
@@ -2971,6 +2989,9 @@
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection\bhkShapeCollection.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkShape\bhkShapeCollection</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorld.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable</Filter>
+    </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkEntity\bhkEntity.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkEntity</Filter>
     </ClInclude>
@@ -2989,7 +3010,28 @@
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject\bhkWorldObject.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\bhkRefObject\bhkSerializable\bhkWorldObject</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSAnimNote.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject</Filter>
+    </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffect.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectDebris.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectGeometryDecal.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectParticle.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectSimpleDecal.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectSPG.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\BSTempEffectWeaponBlood.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\ModelReferenceEffect.h">
@@ -2999,6 +3041,9 @@
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\ShaderReferenceEffect.h">
+      <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect\SummonPlacementEffect.h">
       <Filter>include\RE\NetImmerse\NiRefObject\NiObject\BSTempEffect\ReferenceEffect</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiRefObject\NiObject\BSTextureSet.h">
@@ -3155,6 +3200,9 @@
       <Filter>include\RE\NetImmerse</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiSmartPointer.h">
+      <Filter>include\RE\NetImmerse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RE\NetImmerse\NiStream.h">
       <Filter>include\RE\NetImmerse</Filter>
     </ClInclude>
     <ClInclude Include="include\RE\NetImmerse\NiSystem.h">
@@ -3574,16 +3622,7 @@
     <ClInclude Include="include\REL\Relocation.h">
       <Filter>include\REL</Filter>
     </ClInclude>
-    <ClInclude Include="include\REL\SafeWrite.h">
-      <Filter>include\REL</Filter>
-    </ClInclude>
-    <ClInclude Include="include\REL\Version.h">
-      <Filter>include\REL</Filter>
-    </ClInclude>
     <ClInclude Include="include\SKSE\API.h">
-      <Filter>include\SKSE</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SKSE\CodeGenerator.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
     <ClInclude Include="include\SKSE\Events.h">
@@ -3604,9 +3643,6 @@
     <ClInclude Include="include\SKSE\Impl\Stubs.h">
       <Filter>include\SKSE\Impl</Filter>
     </ClInclude>
-    <ClInclude Include="include\SKSE\Impl\Util.h">
-      <Filter>include\SKSE\Impl</Filter>
-    </ClInclude>
     <ClInclude Include="include\SKSE\Interfaces.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
@@ -3619,16 +3655,10 @@
     <ClInclude Include="include\SKSE\RegistrationSet.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
-    <ClInclude Include="include\SKSE\SafeWrite.h">
-      <Filter>include\SKSE</Filter>
-    </ClInclude>
     <ClInclude Include="include\SKSE\SKSE.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
     <ClInclude Include="include\SKSE\Trampoline.h">
-      <Filter>include\SKSE</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SKSE\VArgFormatter.h">
       <Filter>include\SKSE</Filter>
     </ClInclude>
     <ClInclude Include="include\SKSE\Version.h">
@@ -3636,6 +3666,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\RE\FormComponents\Components\BGSOpenCloseForm.cpp">
+      <Filter>src\RE\FormComponents\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\AI\AIFormulas.cpp">
+      <Filter>src\RE\AI</Filter>
+    </ClCompile>
     <ClCompile Include="src\RE\AI\AIProcess.cpp">
       <Filter>src\RE\AI</Filter>
     </ClCompile>
@@ -3657,6 +3693,9 @@
     <ClCompile Include="src\RE\BSCore\BSFixedString.cpp">
       <Filter>src\RE\BSCore</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\BSCore\BSPointerHandle.cpp">
+      <Filter>src\RE\BSCore</Filter>
+    </ClCompile>
     <ClCompile Include="src\RE\BSCore\BSStringPool.cpp">
       <Filter>src\RE\BSCore</Filter>
     </ClCompile>
@@ -3664,9 +3703,6 @@
       <Filter>src\RE\BSCore</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSCore\BSTCreateFactoryManager.cpp">
-      <Filter>src\RE\BSCore</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSCore\CRC.cpp">
       <Filter>src\RE\BSCore</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSDevices\BSIInputDevice\BSInputDevice\BSInputDevice.cpp">
@@ -3723,9 +3759,6 @@
     <ClCompile Include="src\RE\BSExtraData\ExtraEnchantment.cpp">
       <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSExtraData\ExtraFlags.cpp">
-      <Filter>src\RE\BSExtraData</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSExtraData\ExtraForcedTarget.cpp">
       <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
@@ -3739,9 +3772,6 @@
       <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSExtraData\ExtraLock.cpp">
-      <Filter>src\RE\BSExtraData</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\BSExtraData\ExtraMapMarker.cpp">
       <Filter>src\RE\BSExtraData</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\BSExtraData\ExtraMissingLinkedRefIDs.cpp">
@@ -3855,9 +3885,6 @@
     <ClCompile Include="src\RE\BSScript\IFunctionArguments\ZeroFunctionArguments.cpp">
       <Filter>src\RE\BSScript\IFunctionArguments</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\BSScript\Internal\VDescTable.cpp">
-      <Filter>src\RE\BSScript\Internal</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\BSScript\Internal\VirtualMachine.cpp">
       <Filter>src\RE\BSScript\Internal</Filter>
     </ClCompile>
@@ -3936,7 +3963,7 @@
     <ClCompile Include="src\RE\Events\BGSStoryEvent\ItemsPickpocketed.cpp">
       <Filter>src\RE\Events\BGSStoryEvent</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\Events\InputEvent\ButtonEvent.cpp">
+    <ClCompile Include="src\RE\Events\InputEvent\InputEvent.cpp">
       <Filter>src\RE\Events\InputEvent</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\Events\InputEvent\ThumbstickEvent.cpp">
@@ -4008,9 +4035,6 @@
     <ClCompile Include="src\RE\FormComponents\Components\TESCondition.cpp">
       <Filter>src\RE\FormComponents\Components</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\FormComponents\TESActorBaseData.cpp">
-      <Filter>src\RE\FormComponents</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\FormComponents\TESAIForm.cpp">
       <Filter>src\RE\FormComponents</Filter>
     </ClCompile>
@@ -4044,9 +4068,6 @@
     <ClCompile Include="src\RE\FormComponents\TESForm\BGSStoryManagerTreeForm\TESQuest.cpp">
       <Filter>src\RE\FormComponents\TESForm\BGSStoryManagerTreeForm</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\FormComponents\TESForm\EffectSetting.cpp">
-      <Filter>src\RE\FormComponents\TESForm</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\FormComponents\TESForm\Script.cpp">
       <Filter>src\RE\FormComponents\TESForm</Filter>
     </ClCompile>
@@ -4065,17 +4086,11 @@
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESActorBase\TESNPC.cpp">
       <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESActorBase</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESObjectLIGH.cpp">
-      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectARMO.cpp">
       <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectBOOK.cpp">
       <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC\TESSoulGem.cpp">
-      <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT\TESObjectSTAT.cpp">
       <Filter>src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT</Filter>
@@ -4109,6 +4124,9 @@
     </ClCompile>
     <ClCompile Include="src\RE\FormComponents\TESForm\TESWorldSpace.cpp">
       <Filter>src\RE\FormComponents\TESForm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\FormComponents\TESLeveledList.cpp">
+      <Filter>src\RE\FormComponents</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\Inventory\ActorEquipManager.cpp">
       <Filter>src\RE\Inventory</Filter>
@@ -4257,11 +4275,11 @@
     <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController\NiControllerManager.cpp">
       <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController\NiTimeController.cpp">
+      <Filter>src\RE\NetImmerse\NiRefObject\NiObject\NiTimeController</Filter>
+    </ClCompile>
     <ClCompile Include="src\RE\NetImmerse\NiRefObject\NiRefObject.cpp">
       <Filter>src\RE\NetImmerse\NiRefObject</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\NetImmerse\NiRTTI.cpp">
-      <Filter>src\RE\NetImmerse</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\NetImmerse\NiSystem.cpp">
       <Filter>src\RE\NetImmerse</Filter>
@@ -4353,9 +4371,6 @@
     <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountImpl.cpp">
       <Filter>src\RE\Scaleform\GRefCount</Filter>
     </ClCompile>
-    <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountImplCore.cpp">
-      <Filter>src\RE\Scaleform\GRefCount</Filter>
-    </ClCompile>
     <ClCompile Include="src\RE\Scaleform\GRefCount\GRefCountNTSImpl.cpp">
       <Filter>src\RE\Scaleform\GRefCount</Filter>
     </ClCompile>
@@ -4380,16 +4395,7 @@
     <ClCompile Include="src\RE\SkyrimScript\SkyrimVM.cpp">
       <Filter>src\RE\SkyrimScript</Filter>
     </ClCompile>
-    <ClCompile Include="src\REL\Relocation.cpp">
-      <Filter>src\REL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\REL\SafeWrite.cpp">
-      <Filter>src\REL</Filter>
-    </ClCompile>
     <ClCompile Include="src\SKSE\API.cpp">
-      <Filter>src\SKSE</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SKSE\CodeGenerator.cpp">
       <Filter>src\SKSE</Filter>
     </ClCompile>
     <ClCompile Include="src\SKSE\IAT.cpp">
@@ -4412,18 +4418,6 @@
     </ClCompile>
     <ClCompile Include="src\SKSE\Trampoline.cpp">
       <Filter>src\SKSE</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SKSE\VArgFormatter.cpp">
-      <Filter>src\SKSE</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\Inventory\ArmorRatingVisitorBase\ArmorRatingVisitor.cpp">
-      <Filter>src\RE\Inventory\ArmorRatingVisitorBase</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\Inventory\ArmorRatingVisitorBase\ArmorRatingVisitorBase.cpp">
-      <Filter>src\RE\Inventory\ArmorRatingVisitorBase</Filter>
-    </ClCompile>
-    <ClCompile Include="src\RE\AI\MiddleHighProcessData.cpp">
-      <Filter>src\RE\AI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4639,6 +4633,12 @@
     </Filter>
     <Filter Include="include\RE\BSHavok\hkpShapeContainer">
       <UniqueIdentifier>{51caae3b-3467-4a95-9871-8c290df3b670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput">
+      <UniqueIdentifier>{24279638-19e9-44d6-8c36-527a0e20b6b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\RE\BSHavok\hkpShapeRayCastCollectorOutput\hkpShapeRayCastOutput">
+      <UniqueIdentifier>{93285f50-b35e-4f5e-8881-516b53249fe4}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\RE\BSHavok\hkRefPtr">
       <UniqueIdentifier>{7a022827-8c63-40f0-9c20-52a307606618}</UniqueIdentifier>
@@ -5456,9 +5456,6 @@
     <Filter Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESBoundAnimObject\TESActorBase">
       <UniqueIdentifier>{5b26bd88-42eb-4eac-8c39-7f1f9df1d9a6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectMISC">
-      <UniqueIdentifier>{6afc0196-b169-493a-aea4-d96afd9330cf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\RE\FormComponents\TESForm\TESObject\TESBoundObject\TESObjectSTAT">
       <UniqueIdentifier>{8144287e-ff9c-415f-82fc-f077891c53cb}</UniqueIdentifier>
     </Filter>
@@ -5621,17 +5618,11 @@
     <Filter Include="src\RE\SkyrimScript">
       <UniqueIdentifier>{70fc394c-cbe8-4c87-91c6-9faf7b9a0e78}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\REL">
-      <UniqueIdentifier>{5e8771da-d679-434c-bec1-0520dfde55e1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\SKSE">
       <UniqueIdentifier>{bdca5beb-f5c1-4071-ad29-7a33d2d741a1}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\SKSE\Impl">
       <UniqueIdentifier>{4da8acca-d5fb-4d1c-8907-2a80fab77310}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\RE\Inventory\ArmorRatingVisitorBase">
-      <UniqueIdentifier>{a389467f-e892-481e-bd6b-a5d1802cee02}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

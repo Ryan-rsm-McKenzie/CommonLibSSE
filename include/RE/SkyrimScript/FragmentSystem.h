@@ -22,6 +22,6 @@ namespace RE
 			BSTHashMap<UnkKey, UnkValue> unk0E0;  // 0E0
 			mutable BSSpinLock			 unk110;  // 110
 		};
-		STATIC_ASSERT(sizeof(FragmentSystem) == 0x118);
+		static_assert(sizeof(FragmentSystem) == 0x118);
 	}
 }

@@ -15,7 +15,7 @@ namespace RE
 		target(a_target),
 		pad14(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraForcedTarget::Vtbl);
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraForcedTarget::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

@@ -14,7 +14,7 @@ namespace RE
 		inline static constexpr auto FORMTYPE = FormType::Global;
 
 
-		enum class Type : UInt8
+		enum class Type
 		{
 			kFloat = 'f',
 			kLong = 'l',
@@ -24,7 +24,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kConstant = 1 << 6,
@@ -42,11 +42,11 @@ namespace RE
 
 
 		// members
-		BSString formEditorID;	// 20 - EDID
-		Type	 type;			// 30 - ENAM
-		UInt8	 pad31;			// 31
-		UInt16	 pad32;			// 32
-		float	 value;			// 34 - FLTV
+		BSString							 formEditorID;	// 20 - EDID
+		stl::enumeration<Type, std::uint8_t> type;			// 30 - ENAM
+		std::uint8_t						 pad31;			// 31
+		std::uint16_t						 pad32;			// 32
+		float								 value;			// 34 - FLTV
 	};
-	STATIC_ASSERT(sizeof(TESGlobal) == 0x38);
+	static_assert(sizeof(TESGlobal) == 0x38);
 }

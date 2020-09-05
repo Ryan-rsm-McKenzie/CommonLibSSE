@@ -11,13 +11,13 @@ namespace RE
 	{
 		struct ActionArray
 		{
-			__m128* buffer;			// 00
-			UInt32	bufferSize;		// 08
-			UInt32	effectiveSize;	// 0C
-			UInt32	count;			// 10
-			UInt32	pad14;			// 14
+			__m128*		  buffer;		  // 00
+			std::uint32_t bufferSize;	  // 08
+			std::uint32_t effectiveSize;  // 0C
+			std::uint32_t count;		  // 10
+			std::uint32_t pad14;		  // 14
 		};
-		STATIC_ASSERT(sizeof(ActionArray) == 0x18);
+		static_assert(sizeof(ActionArray) == 0x18);
 	}
 
 
@@ -39,9 +39,9 @@ namespace RE
 
 
 		// members
-		UInt64						 unk10;			// 10
+		std::uint64_t				 unk10;			// 10
 		hkRefPtr<hkReferencedObject> unk18;			// 18
 		BSCurrent::ActionArray*		 currentArray;	// 20
 	};
-	STATIC_ASSERT(sizeof(ExtraWaterData) == 0x28);
+	static_assert(sizeof(ExtraWaterData) == 0x28);
 }

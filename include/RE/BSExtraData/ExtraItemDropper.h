@@ -22,7 +22,7 @@ namespace RE
 
 		// members
 		ObjectRefHandle dropper;  // 10
-		UInt32			pad14;	  // 14
+		std::uint32_t	pad14;	  // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraItemDropper) == 0x18);
+	static_assert(sizeof(ExtraItemDropper) == 0x18);
 }

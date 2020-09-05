@@ -10,8 +10,8 @@ namespace RE
 	{
 	public:
 		// members
-		UInt32		  pad04;  // 04
+		std::uint32_t pad04;  // 04
 		BSFixedString tag;	  // 08
 	};
-	STATIC_ASSERT(sizeof(BGSFootstepEvent) == 0x10);
+	static_assert(sizeof(BGSFootstepEvent) == 0x10);
 }

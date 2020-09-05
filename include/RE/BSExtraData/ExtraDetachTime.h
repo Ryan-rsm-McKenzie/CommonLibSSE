@@ -20,8 +20,8 @@ namespace RE
 
 
 		// members
-		UInt32 time;   // 10
-		UInt32 pad14;  // 14
+		std::uint32_t time;	  // 10
+		std::uint32_t pad14;  // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraDetachTime) == 0x18);
+	static_assert(sizeof(ExtraDetachTime) == 0x18);
 }

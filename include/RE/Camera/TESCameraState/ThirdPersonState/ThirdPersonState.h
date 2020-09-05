@@ -64,20 +64,20 @@ namespace RE
 		float		  unk8C;				  // 8C
 		NiPoint3	  collisionPos;			  // 90 - valid if collisionPosValid != NaN
 		float		  collisionPosValid;	  // 9C
-		UInt64		  unkA0;				  // A0
+		std::uint64_t unkA0;				  // A0
 		BSFixedString animatedBoneName;		  // A8
 		NiQuaternion  animationRotation;	  // B0
-		UInt64		  unkC0;				  // C0
-		UInt64		  unkC8;				  // C8
-		UInt32		  unkD0;				  // D0
+		std::uint64_t unkC0;				  // C0
+		std::uint64_t unkC8;				  // C8
+		std::uint32_t unkD0;				  // D0
 		NiPoint2	  freeRotation;			  // D4
 		bool		  freeRotationEnabled;	  // DC
 		bool		  stateNotActive;		  // DD
-		UInt16		  unkDC;				  // DE
+		std::uint16_t unkDC;				  // DE
 		bool		  toggleAnimCam;		  // E0
 		bool		  applyOffsets;			  // E1
-		UInt16		  unkE2;				  // E2
-		UInt32		  unkE4;				  // E4
+		std::uint16_t unkE2;				  // E2
+		std::uint32_t unkE4;				  // E4
 	};
-	STATIC_ASSERT(sizeof(ThirdPersonState) == 0xE8);
+	static_assert(sizeof(ThirdPersonState) == 0xE8);
 }

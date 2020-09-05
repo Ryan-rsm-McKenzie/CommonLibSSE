@@ -12,5 +12,5 @@ namespace RE
 	public:
 		virtual ~SettingT();  // 00
 	};
-	STATIC_ASSERT(sizeof(SettingT<void*>) == 0x18);
+	static_assert(sizeof(SettingT<void*>) == 0x18);
 }

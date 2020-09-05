@@ -15,7 +15,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -28,5 +28,5 @@ namespace RE
 		// override (BGSKeyword)
 		virtual void InitItemImpl() override;  // 13
 	};
-	STATIC_ASSERT(sizeof(BGSLocationRefType) == 0x28);
+	static_assert(sizeof(BGSLocationRefType) == 0x28);
 }

@@ -15,7 +15,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -37,5 +37,5 @@ namespace RE
 		// members
 		BGSSoundDescriptorForm* descriptor;	 // 30 - SDSC
 	};
-	STATIC_ASSERT(sizeof(TESSound) == 0x38);
+	static_assert(sizeof(TESSound) == 0x38);
 }

@@ -3,9 +3,9 @@
 
 namespace RE
 {
-	using FormID = UInt32;
-	using RefHandle = UInt32;
-	using VMHandle = UInt64;
-	using VMStackID = UInt32;
-	using VMTypeID = UInt32;
+	using FormID = std::uint32_t;
+	using RefHandle = std::uint32_t;
+	using VMHandle = std::uint64_t;
+	using VMStackID = std::uint32_t;
+	using VMTypeID = std::uint32_t;
 }

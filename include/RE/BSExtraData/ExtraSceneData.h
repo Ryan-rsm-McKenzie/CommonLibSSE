@@ -26,5 +26,5 @@ namespace RE
 		// members
 		BGSScene* scene;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraSceneData) == 0x18);
+	static_assert(sizeof(ExtraSceneData) == 0x18);
 }

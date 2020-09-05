@@ -6,7 +6,7 @@ namespace RE
 	class GFxWWHelper
 	{
 	public:
-		enum class BreakInfoFlags : UInt8
+		enum class BreakInfoFlags
 		{
 			kNone = 0,
 			kNonStartingChar = 1 << 0,
@@ -16,7 +16,7 @@ namespace RE
 
 
 		// An enumeration that describes bits in word-wrapping mode bit mask parameter of the Translator constructor.
-		enum class WordWrappingType : UInt32
+		enum class WordWrappingType
 		{
 			kNone = 0,
 			kDefault = kNone,		 // - Custom word-wrapping is off, OnWordWrapping will not be invoked
@@ -35,11 +35,11 @@ namespace RE
 
 		struct CharBreakInfo
 		{
-			wchar_t		   ch;	   // 0
-			BreakInfoFlags flags;  // 2
-			UInt8		   pad3;   // 3
+			wchar_t										   ch;	   // 0
+			stl::enumeration<BreakInfoFlags, std::uint8_t> flags;  // 2
+			std::uint8_t								   pad3;   // 3
 		};
-		STATIC_ASSERT(sizeof(CharBreakInfo) == 0x4);
+		static_assert(sizeof(CharBreakInfo) == 0x4);
 
 
 		static bool	 FindCharWithFlags(WordWrappingType a_wwMode, wchar_t a_ch, BreakInfoFlags a_charBreakFlags);
@@ -169,5 +169,5 @@ namespace RE
 			{ 0x0FFE6, BreakInfoFlags::kNonTerminatingChar, 0 }
 		};
 	};
-	STATIC_ASSERT(sizeof(GFxWWHelper) == 0x1);
+	static_assert(sizeof(GFxWWHelper) == 0x1);
 }

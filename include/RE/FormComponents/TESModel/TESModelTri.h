@@ -16,5 +16,5 @@ namespace RE
 		// override (TESModel)
 		virtual void SetModel(const char* a_model) override;  // 05
 	};
-	STATIC_ASSERT(sizeof(TESModelTri) == 0x28);
+	static_assert(sizeof(TESModelTri) == 0x28);
 }

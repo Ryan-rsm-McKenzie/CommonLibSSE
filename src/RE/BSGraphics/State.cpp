@@ -7,7 +7,7 @@ namespace RE
 	{
 		State* State::GetSingleton()
 		{
-			REL::Offset<State*> singleton = REL::ID(524998);
+			REL::Relocation<State*> singleton{ REL::ID(524998) };
 			return singleton.type();
 		}
 	}

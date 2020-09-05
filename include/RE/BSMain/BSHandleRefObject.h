@@ -20,10 +20,10 @@ namespace RE
 
 		virtual ~BSHandleRefObject();  // 00
 
-		void   DecRefCount();
-		void   IncRefCount();
-		bool   IsHandleValid() const;
-		UInt32 QRefCount() const;
+		void		  DecRefCount();
+		void		  IncRefCount();
+		bool		  IsHandleValid() const;
+		std::uint32_t QRefCount() const;
 	};
-	STATIC_ASSERT(sizeof(BSHandleRefObject) == 0x10);
+	static_assert(sizeof(BSHandleRefObject) == 0x10);
 }

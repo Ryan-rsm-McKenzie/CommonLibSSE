@@ -25,18 +25,18 @@ namespace RE
 	void hkReferencedObject::AddReference() const
 	{
 		using func_t = decltype(&hkReferencedObject::AddReference);
-		REL::Offset<func_t> func(Offset::hkReferencedObject::AddReference);
+		REL::Relocation<func_t> func{ Offset::hkReferencedObject::AddReference };
 		return func(this);
 	}
 
 
-	SInt32 hkReferencedObject::GetAllocatedSize() const
+	std::int32_t hkReferencedObject::GetAllocatedSize() const
 	{
 		return memSizeAndFlags & kMemSize;
 	}
 
 
-	SInt32 hkReferencedObject::GetReferenceCount() const
+	std::int32_t hkReferencedObject::GetReferenceCount() const
 	{
 		return referenceCount;
 	}
@@ -45,7 +45,7 @@ namespace RE
 	void hkReferencedObject::RemoveReference() const
 	{
 		using func_t = decltype(&hkReferencedObject::RemoveReference);
-		REL::Offset<func_t> func(Offset::hkReferencedObject::RemoveReference);
+		REL::Relocation<func_t> func{ Offset::hkReferencedObject::RemoveReference };
 		return func(this);
 	}
 }

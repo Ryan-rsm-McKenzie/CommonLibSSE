@@ -17,7 +17,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kIgnored = 1 << 12
@@ -27,9 +27,9 @@ namespace RE
 
 		struct ConstructibleObjectData
 		{
-			UInt16 numConstructed;	// 0 - NAM1
+			std::uint16_t numConstructed;  // 0 - NAM1
 		};
-		STATIC_ASSERT(sizeof(ConstructibleObjectData) == 0x2);
+		static_assert(sizeof(ConstructibleObjectData) == 0x2);
 
 
 		virtual ~BGSConstructibleObject();	// 00
@@ -47,8 +47,8 @@ namespace RE
 		TESForm*				createdItem;	// 40 - CNAM
 		BGSKeyword*				benchKeyword;	// 48 - BNAM
 		ConstructibleObjectData data;			// 50
-		UInt16					pad52;			// 52
-		UInt32					unk54;			// 54
+		std::uint16_t			pad52;			// 52
+		std::uint32_t			unk54;			// 54
 	};
-	STATIC_ASSERT(sizeof(BGSConstructibleObject) == 0x58);
+	static_assert(sizeof(BGSConstructibleObject) == 0x58);
 }

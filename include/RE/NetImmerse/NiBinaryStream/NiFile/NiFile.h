@@ -11,7 +11,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NiFile;
 
 
-		enum class OpenMode : UInt32
+		enum class OpenMode
 		{
 			kReadOnly = 0,
 			kWriteOnly = 1,
@@ -23,26 +23,26 @@ namespace RE
 
 		// override (NiBinaryStream)
 		virtual bool good() const override;					   // 01 - { return isGood; }
-		virtual void seek(SInt32 a_numBytes) override;		   // 02
+		virtual void seek(std::int32_t a_numBytes) override;   // 02
 		virtual void get_info(BufferInfo& a_buf) override;	   // 04
 		virtual void set_endian_swap(bool a_doSwap) override;  // 05
 
 		// add
-		virtual void   seek(SInt32 a_offset, SInt32 a_from);  // 06
-		virtual UInt32 size() const;						  // 07
+		virtual void		  seek(std::int32_t a_offset, std::int32_t a_from);	 // 06
+		virtual std::uint32_t size() const;										 // 07
 
 
 		// members
-		UInt32	   bufferAllocSize;	 // 20
-		UInt32	   bufferReadSize;	 // 24
-		UInt32	   pos;				 // 28
-		UInt32	   pad2C;			 // 2C
-		char*	   buffer;			 // 30
-		std::FILE* file;			 // 38
-		OpenMode   mode;			 // 40
-		bool	   isGood;			 // 44
-		UInt8	   pad45;			 // 45
-		UInt16	   pad46;			 // 46
+		std::uint32_t							  bufferAllocSize;	// 20
+		std::uint32_t							  bufferReadSize;	// 24
+		std::uint32_t							  pos;				// 28
+		std::uint32_t							  pad2C;			// 2C
+		char*									  buffer;			// 30
+		std::FILE*								  file;				// 38
+		stl::enumeration<OpenMode, std::uint32_t> mode;				// 40
+		bool									  isGood;			// 44
+		std::uint8_t							  pad45;			// 45
+		std::uint16_t							  pad46;			// 46
 	};
-	STATIC_ASSERT(sizeof(NiFile) == 0x48);
+	static_assert(sizeof(NiFile) == 0x48);
 }

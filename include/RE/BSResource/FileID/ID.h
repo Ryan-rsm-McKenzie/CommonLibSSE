@@ -11,8 +11,8 @@ namespace RE
 		{
 		public:
 			// members
-			UInt32 dir;	 // 0
+			std::uint32_t dir;	// 0
 		};
-		STATIC_ASSERT(sizeof(ID) == 0xC);
+		static_assert(sizeof(ID) == 0xC);
 	}
 }

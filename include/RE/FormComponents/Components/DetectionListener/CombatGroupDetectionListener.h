@@ -23,5 +23,5 @@ namespace RE
 		// members
 		void* unk10;  // 10
 	};
-	STATIC_ASSERT(sizeof(CombatGroupDetectionListener) == 0x18);
+	static_assert(sizeof(CombatGroupDetectionListener) == 0x18);
 }

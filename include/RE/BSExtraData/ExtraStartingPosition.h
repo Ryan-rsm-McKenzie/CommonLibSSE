@@ -15,7 +15,7 @@ namespace RE
 		NiPoint3 pos;  // 00
 		NiPoint3 rot;  // 0C
 	};
-	STATIC_ASSERT(sizeof(FILE_POS_ROT) == 0x18);
+	static_assert(sizeof(FILE_POS_ROT) == 0x18);
 
 
 	class ExtraStartingPosition : public BSExtraData
@@ -36,5 +36,5 @@ namespace RE
 		FILE_POS_ROT startPosition;	 // 10
 		BGSLocation* location;		 // 28
 	};
-	STATIC_ASSERT(sizeof(ExtraStartingPosition) == 0x30);
+	static_assert(sizeof(ExtraStartingPosition) == 0x30);
 }

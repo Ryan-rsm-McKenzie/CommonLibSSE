@@ -5,7 +5,7 @@ namespace RE
 {
 	ConsoleLog* ConsoleLog::GetSingleton()
 	{
-		REL::Offset<ConsoleLog**> singleton(Offset::ConsoleLog::Singleton);
+		REL::Relocation<ConsoleLog**> singleton{ Offset::ConsoleLog::Singleton };
 		return *singleton;
 	}
 
@@ -14,11 +14,11 @@ namespace RE
 	{
 		struct TLSData
 		{
-			UInt8 unk000[0x600];  // 000
-			bool consoleMode;	  // 600
+			std::uint8_t unk000[0x600];	 // 000
+			bool consoleMode;			 // 600
 		};
 
-		REL::Offset<UInt32*> tlsIndex(Offset::TlsIndex);
+		REL::Relocation<std::uint32_t*> tlsIndex{ Offset::TlsIndex };
 		auto tlsData = reinterpret_cast<TLSData**>(__readgsqword(0x58));
 		return tlsData[*tlsIndex]->consoleMode;
 	}
@@ -36,7 +36,7 @@ namespace RE
 	void ConsoleLog::VPrint(const char* a_fmt, std::va_list a_args)
 	{
 		using func_t = decltype(&ConsoleLog::Print);
-		REL::Offset<func_t> func(Offset::ConsoleLog::VPrint);
+		REL::Relocation<func_t> func{ Offset::ConsoleLog::VPrint };
 		func(this, a_fmt, a_args);
 	}
 }

@@ -30,7 +30,7 @@ namespace RE
 		{}
 
 
-		GHash(SInt32 a_sizeHint) :
+		GHash(std::int32_t a_sizeHint) :
 			hash(a_sizeHint)
 		{}
 
@@ -40,7 +40,7 @@ namespace RE
 		{}
 
 
-		GHash(void* a_heap, SInt32 a_sizeHint) :
+		GHash(void* a_heap, std::int32_t a_sizeHint) :
 			hash(a_heap, a_sizeHint)
 		{}
 

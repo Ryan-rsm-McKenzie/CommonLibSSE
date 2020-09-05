@@ -26,5 +26,5 @@ namespace RE
 		// members
 		TESWaterForm* water;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraCellWaterType) == 0x18);
+	static_assert(sizeof(ExtraCellWaterType) == 0x18);
 }

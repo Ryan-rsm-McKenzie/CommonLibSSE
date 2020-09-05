@@ -25,5 +25,5 @@ namespace RE
 		// members
 		TESImageSpaceModifier* imageSpaceModifying;	 // 08 - MNAM
 	};
-	STATIC_ASSERT(sizeof(TESImageSpaceModifiableForm) == 0x10);
+	static_assert(sizeof(TESImageSpaceModifiableForm) == 0x10);
 }

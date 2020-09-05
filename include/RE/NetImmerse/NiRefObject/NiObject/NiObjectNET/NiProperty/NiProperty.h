@@ -12,7 +12,7 @@ namespace RE
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiProperty;
 
 
-		enum class Type : SInt32
+		enum class Type
 		{
 			kAlpha = 0,
 			kShade = 1
@@ -34,5 +34,5 @@ namespace RE
 		virtual Type GetType() const = 0;	// 25
 		virtual void Update(float a_time);	// 26
 	};
-	STATIC_ASSERT(sizeof(NiProperty) == 0x30);
+	static_assert(sizeof(NiProperty) == 0x30);
 }

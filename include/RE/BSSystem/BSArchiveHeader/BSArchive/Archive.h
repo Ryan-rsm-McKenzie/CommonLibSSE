@@ -20,20 +20,20 @@ namespace RE
 
 
 		// members
-		UInt64 unk1C0;	// 1C0
-		UInt64 unk1C8;	// 1C8
-		UInt64 unk1D0;	// 1D0
-		UInt64 unk1D8;	// 1D8
-		UInt64 unk1E0;	// 1E0
-		UInt64 unk1E8;	// 1E8
-		UInt64 unk1F0;	// 1F0
-		UInt64 unk1F8;	// 1F8
-		UInt64 unk200;	// 200
-		UInt64 unk208;	// 208
-		UInt64 unk210;	// 210
-		UInt64 unk218;	// 218
-		UInt64 unk220;	// 220
-		UInt64 unk228;	// 228
+		std::uint64_t unk1C0;  // 1C0
+		std::uint64_t unk1C8;  // 1C8
+		std::uint64_t unk1D0;  // 1D0
+		std::uint64_t unk1D8;  // 1D8
+		std::uint64_t unk1E0;  // 1E0
+		std::uint64_t unk1E8;  // 1E8
+		std::uint64_t unk1F0;  // 1F0
+		std::uint64_t unk1F8;  // 1F8
+		std::uint64_t unk200;  // 200
+		std::uint64_t unk208;  // 208
+		std::uint64_t unk210;  // 210
+		std::uint64_t unk218;  // 218
+		std::uint64_t unk220;  // 220
+		std::uint64_t unk228;  // 228
 	};
-	STATIC_ASSERT(sizeof(Archive) == 0x230);
+	static_assert(sizeof(Archive) == 0x230);
 }

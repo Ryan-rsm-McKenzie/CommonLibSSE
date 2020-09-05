@@ -10,6 +10,6 @@ namespace RE
 		{
 		public:
 		};
-		STATIC_ASSERT(sizeof(Event) == 0x1);
+		static_assert(sizeof(Event) == 0x1);
 	};
 }

@@ -18,10 +18,10 @@ namespace RE
 
 
 		// members
-		bool   ownsRegionMemory;  // 18
-		UInt8  pad19;			  // 19
-		UInt16 pad1A;			  // 1A
-		UInt32 pad1C;			  // 1C
+		bool		  ownsRegionMemory;	 // 18
+		std::uint8_t  pad19;			 // 19
+		std::uint16_t pad1A;			 // 1A
+		std::uint32_t pad1C;			 // 1C
 	};
-	STATIC_ASSERT(sizeof(TESRegionList) == 0x20);
+	static_assert(sizeof(TESRegionList) == 0x20);
 }

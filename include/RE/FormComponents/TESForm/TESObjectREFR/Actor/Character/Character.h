@@ -14,7 +14,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 				kDeleted = 1 << 5,
 				kStartsDead = 1 << 9,
@@ -56,5 +56,5 @@ namespace RE
 		virtual void Unk_128(void);	 // 128
 		virtual void Unk_129(void);	 // 129 - { return 1; }
 	};
-	STATIC_ASSERT(sizeof(Character) == 0x2B0);
+	static_assert(sizeof(Character) == 0x2B0);
 }

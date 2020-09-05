@@ -20,7 +20,7 @@ namespace RE
 			ActorHandle actor;					 // 0
 			float		intendedFollowDistance;	 // 4
 		};
-		STATIC_ASSERT(sizeof(FollowerInfo) == 0x8);
+		static_assert(sizeof(FollowerInfo) == 0x8);
 
 
 		virtual ~ExtraFollower();  // 00
@@ -32,5 +32,5 @@ namespace RE
 		// members
 		BSTArray<FollowerInfo> actorFollowers;	// 10
 	};
-	STATIC_ASSERT(sizeof(ExtraFollower) == 0x28);
+	static_assert(sizeof(ExtraFollower) == 0x28);
 }

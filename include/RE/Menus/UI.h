@@ -71,7 +71,7 @@ namespace RE
 			GPtr<IMenu> menu;	 // 00
 			Create_t*	create;	 // 08
 		};
-		STATIC_ASSERT(sizeof(UIMenuEntry) == 0x10);
+		static_assert(sizeof(UIMenuEntry) == 0x10);
 
 
 		static UI* GetSingleton();
@@ -125,23 +125,23 @@ namespace RE
 		BSTArray<GPtr<IMenu>>				   menuStack;					  // 110
 		BSTHashMap<BSFixedString, UIMenuEntry> menuMap;						  // 128
 		mutable BSSpinLock					   processMessagesLock;			  // 158
-		UInt32								   numPausesGame;				  // 160 (= 0) += 1 if (imenu->flags & 0x00001)
-		UInt32								   numItemMenus;				  // 164 (= 0) += 1 if (imenu->flags & 0x02000)
-		UInt32								   numDisablePauseMenu;			  // 168 (= 0) += 1 if (imenu->flags & 0x00080)
-		UInt32								   numAllowSaving;				  // 16C (= 0) += 1 if (imenu->flags & 0x00800)
-		UInt32								   numDontHideCursorWhenTopmost;  // 170 (= 0) += 1 if (imenu->flags & 0x04000)
-		UInt32								   numCustomRendering;			  // 174 (= 0) += 1 if (imenu->flags & 0x08000)
-		UInt32								   numApplicationMenus;			  // 178 (= 0) += 1 if (imenu->flags & 0x20000)
+		std::uint32_t						   numPausesGame;				  // 160 (= 0) += 1 if (imenu->flags & 0x00001)
+		std::uint32_t						   numItemMenus;				  // 164 (= 0) += 1 if (imenu->flags & 0x02000)
+		std::uint32_t						   numDisablePauseMenu;			  // 168 (= 0) += 1 if (imenu->flags & 0x00080)
+		std::uint32_t						   numAllowSaving;				  // 16C (= 0) += 1 if (imenu->flags & 0x00800)
+		std::uint32_t						   numDontHideCursorWhenTopmost;  // 170 (= 0) += 1 if (imenu->flags & 0x04000)
+		std::uint32_t						   numCustomRendering;			  // 174 (= 0) += 1 if (imenu->flags & 0x08000)
+		std::uint32_t						   numApplicationMenus;			  // 178 (= 0) += 1 if (imenu->flags & 0x20000)
 		bool								   modal;						  // 17C (= 0)  = 1 if (imenu->flags & 0x00010)
-		UInt8								   pad17D;						  // 17D
-		UInt16								   pad17E;						  // 17E
+		std::uint8_t						   pad17D;						  // 17D
+		std::uint16_t						   pad17E;						  // 17E
 		BSTimer								   uiTimer;						  // 180
 		bool								   menuSystemVisible;			  // 1C0
 		bool								   closingAllMenus;				  // 1C1
-		UInt16								   pad1C2;						  // 1C2
-		UInt32								   pad1C4;						  // 1C4
+		std::uint16_t						   pad1C2;						  // 1C2
+		std::uint32_t						   pad1C4;						  // 1C4
 	};
-	STATIC_ASSERT(sizeof(UI) == 0x1C8);
+	static_assert(sizeof(UI) == 0x1C8);
 
 
 	template <class T>

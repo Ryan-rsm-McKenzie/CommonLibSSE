@@ -9,5 +9,5 @@ namespace RE
 	{
 	public:
 	};
-	STATIC_ASSERT(sizeof(PrecomputedNavmeshInfoPathMap) == 0x48);
+	static_assert(sizeof(PrecomputedNavmeshInfoPathMap) == 0x48);
 }

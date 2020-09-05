@@ -22,5 +22,5 @@ namespace RE
 		// members
 		void* unk10;  // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraResourcesPreload) == 0x18);
+	static_assert(sizeof(ExtraResourcesPreload) == 0x18);
 }

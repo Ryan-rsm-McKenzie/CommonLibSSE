@@ -18,7 +18,7 @@ namespace RE
 		key_type	first;	 // 08
 		mapped_type second;	 // ??
 	};
-	STATIC_ASSERT(sizeof(NiTMapItem<UInt32, UInt64>) == 0x18);
+	static_assert(sizeof(NiTMapItem<std::uint32_t, std::uint64_t>) == 0x18);
 
 
 	// hash table with separate chaining
@@ -33,7 +33,7 @@ namespace RE
 		using key_type = Key;
 		using mapped_type = T;
 		using value_type = NiTMapItem<Key, T>;
-		using size_type = UInt32;
+		using size_type = std::uint32_t;
 
 
 		template <class U>
@@ -72,7 +72,7 @@ namespace RE
 			}
 
 
-			iterator_base(NiTMapBase* a_proxy, UInt32 a_idx) :
+			iterator_base(NiTMapBase* a_proxy, std::uint32_t a_idx) :
 				_proxy(a_proxy),
 				_iter(nullptr),
 				_idx(a_idx)
@@ -86,7 +86,7 @@ namespace RE
 			}
 
 
-			iterator_base(NiTMapBase* a_proxy, value_type* a_iter, UInt32 a_idx) :
+			iterator_base(NiTMapBase* a_proxy, value_type* a_iter, std::uint32_t a_idx) :
 				_proxy(a_proxy),
 				_iter(a_iter),
 				_idx(a_idx)
@@ -195,9 +195,9 @@ namespace RE
 			}
 
 		private:
-			NiTMapBase* _proxy;
-			value_type* _iter;
-			UInt32		_idx;
+			NiTMapBase*	  _proxy;
+			value_type*	  _iter;
+			std::uint32_t _idx;
 		};
 
 
@@ -241,12 +241,12 @@ namespace RE
 		}
 
 	protected:
-		virtual UInt32		hash_function(key_type a_key) const;									  // 01 - { return a_key % _capacity; }
-		virtual bool		key_eq(key_type a_lhs, key_type a_rhs) const;							  // 02 - { return stricmp(a_lhs == a_rhs); }
-		virtual void		assign_value(value_type* a_value, key_type a_key, mapped_type a_mapped);  // 03 - { a_value->key = a_key; a_value->mapped = a_mapped; }
-		virtual void		clear_value(value_type* a_value);										  // 04 - { return; }
-		virtual value_type* malloc_value() = 0;														  // 05
-		virtual void		free_value(value_type* a_value) = 0;									  // 06
+		virtual std::uint32_t hash_function(key_type a_key) const;										// 01 - { return a_key % _capacity; }
+		virtual bool		  key_eq(key_type a_lhs, key_type a_rhs) const;								// 02 - { return stricmp(a_lhs == a_rhs); }
+		virtual void		  assign_value(value_type* a_value, key_type a_key, mapped_type a_mapped);	// 03 - { a_value->key = a_key; a_value->mapped = a_mapped; }
+		virtual void		  clear_value(value_type* a_value);											// 04 - { return; }
+		virtual value_type*	  malloc_value() = 0;														// 05
+		virtual void		  free_value(value_type* a_value) = 0;										// 06
 
 	public:
 		iterator begin()
@@ -299,7 +299,7 @@ namespace RE
 
 		void clear()
 		{
-			for (UInt32 i = 0; i < _capacity; i++) {
+			for (std::uint32_t i = 0; i < _capacity; i++) {
 				while (_data[i]) {
 					auto elem = _data[i];
 					_data[i] = _data[i]->next;
@@ -387,7 +387,7 @@ namespace RE
 		}
 
 
-		std::optional<std::pair<value_type*, UInt32>> do_find(const Key& a_key) const
+		std::optional<std::pair<value_type*, std::uint32_t>> do_find(const Key& a_key) const
 		{
 			size_type idx = hash_function(a_key);
 			for (auto iter = _data[idx]; iter; iter = iter->next) {
@@ -401,8 +401,8 @@ namespace RE
 
 	protected:
 		// members
-		UInt32			   _capacity;	// 08
-		UInt32			   _pad0C;		// 0C
+		std::uint32_t	   _capacity;	// 08
+		std::uint32_t	   _pad0C;		// 0C
 		value_type**	   _data;		// 10
 		AntiBloatAllocator _allocator;	// 18
 	};

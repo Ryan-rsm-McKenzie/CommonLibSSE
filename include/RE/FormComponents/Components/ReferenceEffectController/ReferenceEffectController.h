@@ -57,5 +57,5 @@ namespace RE
 		virtual void			 SaveGame(BGSSaveGameBuffer* a_buf);			 // 21 - { return; }
 		virtual void			 LoadGame(BGSLoadGameBuffer* a_buf);			 // 22 - { return; }
 	};
-	STATIC_ASSERT(sizeof(ReferenceEffectController) == 0x8);
+	static_assert(sizeof(ReferenceEffectController) == 0x8);
 }

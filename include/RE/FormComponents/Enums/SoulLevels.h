@@ -3,7 +3,7 @@
 
 namespace RE
 {
-	enum class SOUL_LEVEL : UInt8
+	enum class SOUL_LEVEL
 	{
 		kNone = 0,
 		kPetty = 1,

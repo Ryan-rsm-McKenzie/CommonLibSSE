@@ -8,7 +8,7 @@
 
 namespace RE
 {
-	enum class BREADCRUMB_STATE : UInt32
+	enum class BREADCRUMB_STATE
 	{
 		kInvalid = 0,
 		kOnGround = 1,
@@ -18,15 +18,15 @@ namespace RE
 
 	struct ExtraFollowerSwimBreadcrumb
 	{
-		NiPoint3 startLocation;	  // 00
-		UInt32	 startNavMeshID;  // 0C
-		NiPoint3 endLocation;	  // 10
-		UInt32	 endNavMeshID;	  // 1C
-		bool	 enteringWater;	  // 20
-		UInt8	 pad21;			  // 21
-		UInt16	 pad22;			  // 22
+		NiPoint3	  startLocation;   // 00
+		std::uint32_t startNavMeshID;  // 0C
+		NiPoint3	  endLocation;	   // 10
+		std::uint32_t endNavMeshID;	   // 1C
+		bool		  enteringWater;   // 20
+		std::uint8_t  pad21;		   // 21
+		std::uint16_t pad22;		   // 22
 	};
-	STATIC_ASSERT(sizeof(ExtraFollowerSwimBreadcrumb) == 0x24);
+	static_assert(sizeof(ExtraFollowerSwimBreadcrumb) == 0x24);
 
 
 	class ExtraFollowerSwimBreadcrumbs : public BSExtraData
@@ -43,11 +43,11 @@ namespace RE
 
 
 		// members
-		BREADCRUMB_STATE						   leaderState;		 // 10
-		NiPoint3								   leaderLocation;	 // 14
-		UInt32									   leaderNavMeshID;	 // 20
-		UInt32									   pad24;			 // 24
-		BSSimpleList<ExtraFollowerSwimBreadcrumb*> crumbs;			 // 28
+		stl::enumeration<BREADCRUMB_STATE, std::uint32_t> leaderState;		// 10
+		NiPoint3										  leaderLocation;	// 14
+		std::uint32_t									  leaderNavMeshID;	// 20
+		std::uint32_t									  pad24;			// 24
+		BSSimpleList<ExtraFollowerSwimBreadcrumb*>		  crumbs;			// 28
 	};
-	STATIC_ASSERT(sizeof(ExtraFollowerSwimBreadcrumbs) == 0x38);
+	static_assert(sizeof(ExtraFollowerSwimBreadcrumbs) == 0x38);
 }

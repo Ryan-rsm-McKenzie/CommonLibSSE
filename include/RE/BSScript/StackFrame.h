@@ -16,8 +16,8 @@ namespace RE
 		class StackFrame
 		{
 		public:
-			UInt32	  GetPageForFrame() const;
-			Variable& GetStackFrameVariable(UInt32 a_index, UInt32 a_pageHint) const;
+			std::uint32_t GetPageForFrame() const;
+			Variable&	  GetStackFrameVariable(std::uint32_t a_index, std::uint32_t a_pageHint) const;
 
 
 			// members
@@ -25,16 +25,16 @@ namespace RE
 			StackFrame*						previousFrame;		 // 08
 			BSTSmartPointer<IFunction>		owningFunction;		 // 10
 			BSTSmartPointer<ObjectTypeInfo> owningObjectType;	 // 18
-			UInt32							instructionPointer;	 // 20
-			UInt32							pad24;				 // 24
+			std::uint32_t					instructionPointer;	 // 20
+			std::uint32_t					pad24;				 // 24
 			Variable						self;				 // 28
-			UInt32							size;				 // 38
+			std::uint32_t					size;				 // 38
 			bool							instructionsValid;	 // 3C
-			UInt8							pad3D;				 // 3D
-			UInt16							pad3E;				 // 3E
+			std::uint8_t					pad3D;				 // 3D
+			std::uint16_t					pad3E;				 // 3E
 
 			//Variable args[4];	40 - minimum space for 4 args is allocated
 		};
-		STATIC_ASSERT(sizeof(StackFrame) == 0x40);	// frames can be larger
+		static_assert(sizeof(StackFrame) == 0x40);	// frames can be larger
 	}
 }

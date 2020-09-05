@@ -16,7 +16,7 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : UInt32
+			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
@@ -25,9 +25,9 @@ namespace RE
 		struct CollisionData
 		{
 			ObjectRefHandle ref;	// 0
-			UInt32			count;	// 4
+			std::uint32_t	count;	// 4
 		};
-		STATIC_ASSERT(sizeof(CollisionData) == 0x8);
+		static_assert(sizeof(CollisionData) == 0x8);
 
 
 		virtual ~BarrierProjectile();  // 00
@@ -48,8 +48,8 @@ namespace RE
 
 		// members
 		float					width;			// 1D8
-		UInt32					pad1DC;			// 1DC
+		std::uint32_t			pad1DC;			// 1DC
 		BSTArray<CollisionData> collisionData;	// 1E0
 	};
-	STATIC_ASSERT(sizeof(BarrierProjectile) == 0x1F8);
+	static_assert(sizeof(BarrierProjectile) == 0x1F8);
 }

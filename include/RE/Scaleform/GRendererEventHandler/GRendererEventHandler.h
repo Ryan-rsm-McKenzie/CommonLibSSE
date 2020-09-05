@@ -14,7 +14,7 @@ namespace RE
 		public GNewOverrideBase<GStatGroup::kGStat_Default_Mem>
 	{
 	public:
-		enum class EventType : UInt32
+		enum class EventType
 		{
 			kEndFrame,
 			kRendererReleased
@@ -30,5 +30,5 @@ namespace RE
 		// members
 		GRenderer* renderer;  // 18
 	};
-	STATIC_ASSERT(sizeof(GRendererEventHandler) == 0x20);
+	static_assert(sizeof(GRendererEventHandler) == 0x20);
 }

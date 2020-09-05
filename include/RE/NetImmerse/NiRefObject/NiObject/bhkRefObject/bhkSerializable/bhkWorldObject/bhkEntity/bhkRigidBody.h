@@ -50,5 +50,5 @@ namespace RE
 		// members
 		BSTArray<void*> unk28;	// 28 - array of smart ptrs
 	};
-	STATIC_ASSERT(sizeof(bhkRigidBody) == 0x40);
+	static_assert(sizeof(bhkRigidBody) == 0x40);
 }

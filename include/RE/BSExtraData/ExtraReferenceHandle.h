@@ -31,7 +31,7 @@ namespace RE
 
 		// members
 		ObjectRefHandle containerRef;  // 10
-		UInt32			pad14;		   // 14
+		std::uint32_t	pad14;		   // 14
 	};
-	STATIC_ASSERT(sizeof(ExtraReferenceHandle) == 0x18);
+	static_assert(sizeof(ExtraReferenceHandle) == 0x18);
 }

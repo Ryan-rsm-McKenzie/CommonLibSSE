@@ -21,7 +21,7 @@ namespace RE
 	{
 	public:
 		// SWF 8 file attributes, returned by GetFileAttributes. These attributes are configured in Publish Settings and Document Properties dialogs of the Flash studio.
-		enum FileAttrFlags : UInt32
+		enum FileAttrFlags : std::uint32_t
 		{
 			kUseNetwork = 1 << 0,  // - Indicates that "Access Network only" was selected for an SWF file in publish settings for local playback security
 			kHasMetadata = 1 << 4  // - Indicates that the file has embedded metadata, available through the GetMetadata method
@@ -29,7 +29,7 @@ namespace RE
 
 
 		// VisitResourceMask defines a set of resource mask flag bits passed as a visitMask argument to VisitResources. If a given flag bit is included in the visitMask, the corresponding resource types are included in the enumeration, otherwise they are ignored.
-		enum VisitResourceMask : UInt32
+		enum VisitResourceMask : std::uint32_t
 		{
 			kNestedMovies = 1 << 15,  // Indicates that resources in the imported movies should also be enumerated.
 
@@ -55,11 +55,11 @@ namespace RE
 			// members
 			GMemoryHeap::HeapDesc desc;						 // 00
 			float				  heapLimitMultiplier;		 // 40
-			UInt32				  maxCollectionRoots;		 // 44
-			UInt32				  framesBetweenCollections;	 // 48
-			UInt32				  pad4C;					 // 4C
+			std::uint32_t		  maxCollectionRoots;		 // 44
+			std::uint32_t		  framesBetweenCollections;	 // 48
+			std::uint32_t		  pad4C;					 // 4C
 		};
-		STATIC_ASSERT(sizeof(MemoryParams) == 0x50);
+		static_assert(sizeof(MemoryParams) == 0x50);
 
 
 		class MemoryContext : public GRefCountBase<MemoryContext, GStatGroups::kGStat_Default_Mem>
@@ -68,7 +68,7 @@ namespace RE
 			MemoryContext() = delete;
 			virtual ~MemoryContext();  // 00
 		};
-		STATIC_ASSERT(sizeof(MemoryContext) == 0x10);
+		static_assert(sizeof(MemoryContext) == 0x10);
 
 
 		struct ImportVisitor
@@ -78,7 +78,7 @@ namespace RE
 			// add
 			virtual void Visit(GFxMovieDef* a_parentDef, GFxMovieDef* a_importDef, const char* a_importedMovieFilename) = 0;  // 01
 		};
-		STATIC_ASSERT(sizeof(ImportVisitor) == 0x8);
+		static_assert(sizeof(ImportVisitor) == 0x8);
 
 
 		struct ResourceVisitor : public GFxFileConstants
@@ -88,23 +88,23 @@ namespace RE
 			// add
 			virtual void Visit(GFxMovieDef* a_movieDef, GFxResource* a_resource, GFxResourceID a_id, const char* a_exportName) = 0;	 // 01
 		};
-		STATIC_ASSERT(sizeof(ResourceVisitor) == 0x8);
+		static_assert(sizeof(ResourceVisitor) == 0x8);
 
 
 		// add
-		virtual UInt32				   GetVersion() const = 0;																						   // 04
-		virtual UInt32				   GetLoadingFrame() const = 0;																					   // 05
+		virtual std::uint32_t		   GetVersion() const = 0;																						   // 04
+		virtual std::uint32_t		   GetLoadingFrame() const = 0;																					   // 05
 		virtual float				   GetWidth() const = 0;																						   // 06
 		virtual float				   GetHeight() const = 0;																						   // 07
-		virtual UInt32				   GetFrameCount() const = 0;																					   // 08
+		virtual std::uint32_t		   GetFrameCount() const = 0;																					   // 08
 		virtual float				   GetFrameRate() const = 0;																					   // 09
 		virtual GRectF				   GetFrameRect() const = 0;																					   // 0A
-		virtual UInt32				   GetSWFFlags() const = 0;																						   // 0B
+		virtual std::uint32_t		   GetSWFFlags() const = 0;																						   // 0B
 		virtual const char*			   GetFileURL() const = 0;																						   // 0C
 		virtual void				   WaitForLoadFinish(bool a_cancel = false) const = 0;															   // 0D
-		virtual void				   WaitForFrame(UInt32 a_frame) const = 0;																		   // 0E
-		virtual UInt32				   GetFileAttributes() const = 0;																				   // 0F
-		virtual UInt32				   GetMetadata(char* a_buff, UInt32 a_buffSize) const = 0;														   // 10
+		virtual void				   WaitForFrame(std::uint32_t a_frame) const = 0;																   // 0E
+		virtual std::uint32_t		   GetFileAttributes() const = 0;																				   // 0F
+		virtual std::uint32_t		   GetMetadata(char* a_buff, std::uint32_t a_buffSize) const = 0;												   // 10
 		virtual GMemoryHeap*		   GetLoadDataHeap() const = 0;																					   // 11
 		virtual GMemoryHeap*		   GetBindDataHeap() const = 0;																					   // 12
 		virtual GMemoryHeap*		   GetImageHeap() const = 0;																					   // 13
@@ -119,5 +119,5 @@ namespace RE
 
 		GFxMovieView* CreateInstance(bool a_initFirstFrame = true, UPInt a_memoryArena = 0);
 	};
-	STATIC_ASSERT(sizeof(GFxMovieDef) == 0x20);
+	static_assert(sizeof(GFxMovieDef) == 0x20);
 }

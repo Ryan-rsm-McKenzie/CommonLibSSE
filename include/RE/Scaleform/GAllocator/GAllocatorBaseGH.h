@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	template <UInt32 SID = GStatGroup::kGStat_Default_Mem>
+	template <std::uint32_t SID = GStatGroup::kGStat_Default_Mem>
 	class GAllocatorBaseGH
 	{
 	public:
@@ -33,5 +33,5 @@ namespace RE
 			GMemory::Free(a_ptr);
 		}
 	};
-	STATIC_ASSERT(sizeof(GAllocatorBaseGH<>) == 0x1);
+	static_assert(sizeof(GAllocatorBaseGH<>) == 0x1);
 }

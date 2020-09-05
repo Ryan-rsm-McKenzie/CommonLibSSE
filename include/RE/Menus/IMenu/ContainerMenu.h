@@ -37,19 +37,19 @@ namespace RE
 		BottomBar*		bottomBar;		  // 58
 		BSTArray<void*> unk60;			  // 60
 		BSTArray<void*> unk78;			  // 78
-		UInt64			unk90;			  // 90
-		UInt64			unk98;			  // 98
-		UInt64			unkA0;			  // A0
-		UInt8			unkA8;			  // A8
-		UInt8			padA9;			  // A9
-		UInt16			padAA;			  // AA
-		UInt32			padAC;			  // AC
-		SInt32			value;			  // B0
-		UInt32			unkB4;			  // B4
-		UInt8			unkB8;			  // B8
+		std::uint64_t	unk90;			  // 90
+		std::uint64_t	unk98;			  // 98
+		std::uint64_t	unkA0;			  // A0
+		std::uint8_t	unkA8;			  // A8
+		std::uint8_t	padA9;			  // A9
+		std::uint16_t	padAA;			  // AA
+		std::uint32_t	padAC;			  // AC
+		std::int32_t	value;			  // B0
+		std::uint32_t	unkB4;			  // B4
+		std::uint8_t	unkB8;			  // B8
 		bool			pcControlsReady;  // B9
-		UInt16			padBA;			  // BA
-		UInt32			padBC;			  // BC
+		std::uint16_t	padBA;			  // BA
+		std::uint32_t	padBC;			  // BC
 	};
-	STATIC_ASSERT(sizeof(ContainerMenu) == 0xC0);
+	static_assert(sizeof(ContainerMenu) == 0xC0);
 }

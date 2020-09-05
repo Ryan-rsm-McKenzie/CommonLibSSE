@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSCore/BSPointerHandleManagerInterface.h"
+#include "RE/BSCore/BSPointerHandle.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
 
 
@@ -15,5 +15,5 @@ namespace RE
 
 	class Actor;
 	using ActorHandlePtr = BSPointerHandleSmartPointer<BSPointerHandleManagerInterface<Actor>>;
-	STATIC_ASSERT(sizeof(ActorHandlePtr) == 0x8);
+	static_assert(sizeof(ActorHandlePtr) == 0x8);
 }

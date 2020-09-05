@@ -5,7 +5,7 @@ namespace RE
 {
 	HandlerDictionary* HandlerDictionary::GetSingleton()
 	{
-		REL::Offset<HandlerDictionary**> singleton = REL::ID(518086);
+		REL::Relocation<HandlerDictionary**> singleton{ REL::ID(518086) };
 		return *singleton;
 	}
 }

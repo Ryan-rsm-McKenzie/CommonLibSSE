@@ -25,5 +25,5 @@ namespace RE
 		// members
 		GPtr<GFxMovieView> view;  // 10
 	};
-	STATIC_ASSERT(sizeof(JournalTab) == 0x18);
+	static_assert(sizeof(JournalTab) == 0x18);
 }

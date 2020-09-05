@@ -8,13 +8,13 @@ namespace RE
 	{}
 
 
-	ExtraUniqueID::ExtraUniqueID(FormID a_baseID, UInt16 a_uniqueID) :
+	ExtraUniqueID::ExtraUniqueID(FormID a_baseID, std::uint16_t a_uniqueID) :
 		BSExtraData(),
 		baseID(a_baseID),
 		uniqueID(a_uniqueID),
 		pad16(0)
 	{
-		REL::Offset<std::uintptr_t> vtbl(Offset::ExtraUniqueID::Vtbl);
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraUniqueID::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

@@ -23,5 +23,5 @@ namespace RE
 		virtual void Unk_1A(void);		// 1A - { return; }
 		virtual void Unk_1B(void);		// 1B - { return; }
 	};
-	STATIC_ASSERT(sizeof(hkbGenerator) == 0x48);
+	static_assert(sizeof(hkbGenerator) == 0x48);
 }

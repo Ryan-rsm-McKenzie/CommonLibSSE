@@ -24,5 +24,5 @@ namespace RE
 		// members
 		BSSimpleList<ObjectRefHandle> children;	 // 10
 	};
-	STATIC_ASSERT(sizeof(ExtraEnableStateChildren) == 0x20);
+	static_assert(sizeof(ExtraEnableStateChildren) == 0x20);
 }

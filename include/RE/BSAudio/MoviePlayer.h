@@ -28,16 +28,16 @@ namespace RE
 
 
 		// members
-		UInt64 unk08;  // 08
-		UInt64 unk10;  // 10
-		UInt64 unk18;  // 18
-		UInt64 unk20;  // 20
-		UInt64 unk28;  // 28
-		UInt64 unk30;  // 30
-		UInt64 unk38;  // 38
-		UInt64 unk40;  // 40
-		UInt64 unk48;  // 48
-		UInt64 unk50;  // 50
+		std::uint64_t unk08;  // 08
+		std::uint64_t unk10;  // 10
+		std::uint64_t unk18;  // 18
+		std::uint64_t unk20;  // 20
+		std::uint64_t unk28;  // 28
+		std::uint64_t unk30;  // 30
+		std::uint64_t unk38;  // 38
+		std::uint64_t unk40;  // 40
+		std::uint64_t unk48;  // 48
+		std::uint64_t unk50;  // 50
 	};
-	STATIC_ASSERT(sizeof(MoviePlayer) == 0x58);
+	static_assert(sizeof(MoviePlayer) == 0x58);
 }

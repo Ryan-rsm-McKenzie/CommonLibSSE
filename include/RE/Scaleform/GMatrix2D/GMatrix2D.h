@@ -24,5 +24,5 @@ namespace RE
 
 		float data[2][3];  // 00
 	};
-	STATIC_ASSERT(sizeof(GMatrix2D) == 0x18);
+	static_assert(sizeof(GMatrix2D) == 0x18);
 }
