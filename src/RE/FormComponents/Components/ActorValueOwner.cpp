@@ -10,6 +10,7 @@ namespace RE
 		return func(this, a_skillLevel);
 	}
 
+
 	float ActorValueOwner::GetClampedActorValue(ActorValue a_akValue) const
 	{
 		using func_t = decltype(&ActorValueOwner::GetClampedActorValue);

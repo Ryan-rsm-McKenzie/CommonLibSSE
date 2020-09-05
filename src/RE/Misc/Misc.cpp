@@ -5,7 +5,6 @@
 #include "RE/BSMain/SettingCollection/INISettingCollection.h"
 #include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
-#include "RE/FormComponents/Components/BGSEntryPoint.h"
 
 
 namespace RE

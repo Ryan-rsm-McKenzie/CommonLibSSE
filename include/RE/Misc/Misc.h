@@ -11,6 +11,7 @@ namespace RE
 	class TESForm;
 	class InventoryEntryData;
 
+
 	void     ApplyPerkEntries(std::uint8_t a_perkEntryCode, Actor* a_perkOwner, TESForm *a_item, float *a_value);
 	void	 CreateRefHandle(RefHandle& a_handleOut, TESObjectREFR* a_refrTo);
 	void	 DebugNotification(const char* a_notification, const char* a_soundToPlay = 0, bool a_cancelIfAlreadyQueued = true);
