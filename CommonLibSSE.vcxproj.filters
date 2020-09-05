@@ -4416,6 +4416,15 @@
     <ClCompile Include="src\SKSE\VArgFormatter.cpp">
       <Filter>src\SKSE</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\Inventory\ArmorRatingVisitorBase\ArmorRatingVisitor.cpp">
+      <Filter>src\RE\Inventory\ArmorRatingVisitorBase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Inventory\ArmorRatingVisitorBase\ArmorRatingVisitorBase.cpp">
+      <Filter>src\RE\Inventory\ArmorRatingVisitorBase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\AI\MiddleHighProcessData.cpp">
+      <Filter>src\RE\AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
@@ -5620,6 +5629,9 @@
     </Filter>
     <Filter Include="src\SKSE\Impl">
       <UniqueIdentifier>{4da8acca-d5fb-4d1c-8907-2a80fab77310}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RE\Inventory\ArmorRatingVisitorBase">
+      <UniqueIdentifier>{a389467f-e892-481e-bd6b-a5d1802cee02}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
