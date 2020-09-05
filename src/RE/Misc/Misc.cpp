@@ -5,6 +5,7 @@
 #include "RE/BSMain/SettingCollection/INISettingCollection.h"
 #include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
 #include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/FormComponents/Components/BGSEntryPoint.h"
 
 
 namespace RE
@@ -72,5 +73,19 @@ namespace RE
 		using func_t = decltype(&PlaySound);
 		REL::Offset<func_t> func(Offset::PlaySound);
 		return func(a_editorID);
+	}
+
+	void ApplyPerkEntries(UInt8 a_perkEntryCode, RE::Actor* a_perkOwner, RE::TESForm* a_form, float* a_value)
+	{
+		using func_t = decltype(&ApplyPerkEntries);
+		REL::Offset<func_t> func(REL::ID(23073));
+		func(a_perkEntryCode, a_perkOwner, a_form, a_value);
+	}
+
+	float GetArmorFinalRating(RE::InventoryEntryData* a_armorEntryData, float a_armorPerks, float a_skillMultiplier)
+	{
+		using func_t = decltype(&GetArmorFinalRating);
+		REL::Offset<func_t> func(REL::ID(15779));
+		return func(a_armorEntryData, a_armorPerks, a_skillMultiplier);
 	}
 }
