@@ -15,8 +15,8 @@ namespace RE
 		virtual ~ArmorRatingVisitor();	// 00
 
 		// override (ArmorRatingVisitorBase)
-		virtual bool HaveNotVisitedArmor(TESObjectARMO* a_armor) override;	// 04
-		virtual void VisitArmor(TESObjectARMO* a_armor) override;			// 05
+		bool HaveNotVisitedArmor(TESObjectARMO* a_armor) override;	// 04
+		void VisitArmor(TESObjectARMO* a_armor) override;			// 05
 
 
 		// members
