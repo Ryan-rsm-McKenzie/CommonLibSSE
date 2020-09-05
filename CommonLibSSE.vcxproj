@@ -1435,6 +1435,7 @@
     <ClCompile Include="src\REL\Relocation.cpp" />
     <ClCompile Include="src\REL\SafeWrite.cpp" />
     <ClCompile Include="src\RE\AI\AIProcess.cpp" />
+    <ClCompile Include="src\RE\AI\MiddleHighProcessData.cpp" />
     <ClCompile Include="src\RE\AI\ProcessLists.cpp" />
     <ClCompile Include="src\RE\Animation\IAnimationGraphManagerHolder.cpp" />
     <ClCompile Include="src\RE\BSAudio\BSAudioManager.cpp" />
@@ -1593,6 +1594,8 @@
     <ClCompile Include="src\RE\FormComponents\TESForm\TESTopicInfo.cpp" />
     <ClCompile Include="src\RE\FormComponents\TESForm\TESWorldSpace.cpp" />
     <ClCompile Include="src\RE\Inventory\ActorEquipManager.cpp" />
+    <ClCompile Include="src\RE\Inventory\ArmorRatingVisitorBase\ArmorRatingVisitor.cpp" />
+    <ClCompile Include="src\RE\Inventory\ArmorRatingVisitorBase\ArmorRatingVisitorBase.cpp" />
     <ClCompile Include="src\RE\Inventory\ExtraDataList.cpp" />
     <ClCompile Include="src\RE\Inventory\Inventory3DManager.cpp" />
     <ClCompile Include="src\RE\Inventory\InventoryChanges.cpp" />
