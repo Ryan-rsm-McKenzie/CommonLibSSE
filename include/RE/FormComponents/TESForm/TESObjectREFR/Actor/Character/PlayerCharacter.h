@@ -270,6 +270,7 @@ namespace RE
 		static UInt32			GetPickpocketChance(float a_playerSkill, float a_targetSkill, UInt32 a_totalValue, float a_itemWeight, Actor* a_player, Actor* a_target, bool a_isDetected, TESForm* a_item);
 
 		void					 ActivatePickRef();
+		void	                 AddSkillExperience(ActorValue a_skill, float a_experience);
 		bool					 AttemptPickpocket(TESObjectREFR* a_target, InventoryEntryData* a_entry, SInt32 a_numItems, bool a_useMult = true);
 		NiPointer<Actor>		 GetActorDoingPlayerCommand() const;
 		float					 GetArmorValue(InventoryEntryData* a_form);

@@ -124,4 +124,12 @@ namespace RE
 		REL::Offset<func_t> func(Offset::PlayerCharacter::StartGrabObject);
 		return func(this);
 	}
+
+
+	void PlayerCharacter::AddSkillExperience(ActorValue a_skill, float a_experience)
+	{
+		using func_t = decltype(&PlayerCharacter::AddSkillExperience);
+		REL::Offset<func_t> func(REL::ID(39413));
+		return func(this, a_skill, a_experience);
+	}
 }
