@@ -19,7 +19,7 @@ namespace RE
 		};
 
 
-		virtual ~IMessageBoxCallback();	 // 00
+		virtual ~IMessageBoxCallback() = default;	 // 00
 
 		// add
 		virtual void Run(Message a_msg) = 0;  // 01
