@@ -462,6 +462,12 @@ namespace RE
 		return func(this, a_target, a_priority);
 	}
 
+	void Actor::ResetAI(UInt32 a_arg1, UInt32 a_arg2)
+	{
+		using func_t = decltype(&Actor::ResetAI);
+		REL::Offset<func_t> func(Offset::Actor::ResetAI);
+		return func(this, a_arg1, a_arg2);
+	}
 
 	void Actor::StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning)
 	{
