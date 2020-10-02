@@ -15,7 +15,7 @@ namespace RE
 		std::vector<char> buf(std::vsnprintf(nullptr, 0, a_fmt, a_argList) + 1);
 		std::vsnprintf(buf.data(), buf.size(), a_fmt, args);
 		va_end(args);
-		OutputDebugString(buf.data());
+		OutputDebugStringA(buf.data());
 	}
 
 

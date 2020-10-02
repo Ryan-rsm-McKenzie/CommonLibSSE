@@ -114,6 +114,12 @@ namespace RE
 	}
 
 
+	bool PlayerCharacter::HasActorDoingCommand() const
+	{
+		return static_cast<bool>(actorDoingPlayerCommand);
+	}
+
+
 	bool PlayerCharacter::IsGrabbing() const
 	{
 		return static_cast<bool>(grabbedObject);
