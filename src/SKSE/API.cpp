@@ -96,7 +96,7 @@ namespace SKSE
 
 			storage.messagingInterface = detail::QueryInterface<MessagingInterface>(a_intfc, LoadInterface::kMessaging);
 			if (storage.messagingInterface) {
-				storage.modCallbackEventSource = storage.GetEventDispatcher<ModCallbackEvent>(MessagingInterface::Dispatcher::kActionEvent);
+				storage.modCallbackEventSource = storage.GetEventDispatcher<ModCallbackEvent>(MessagingInterface::Dispatcher::kModEvent);
 				storage.cameraEventSource = storage.GetEventDispatcher<CameraEvent>(MessagingInterface::Dispatcher::kCameraEvent);
 				storage.crosshairRefEventSource = storage.GetEventDispatcher<CrosshairRefEvent>(MessagingInterface::Dispatcher::kCrosshairEvent);
 				storage.actionEventSource = storage.GetEventDispatcher<ActionEvent>(MessagingInterface::Dispatcher::kActionEvent);
