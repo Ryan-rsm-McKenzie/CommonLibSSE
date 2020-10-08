@@ -100,6 +100,7 @@ namespace RE
 
 
 			~ResponseData();
+			void PopulateResponseText(TESFile *a_file);
 
 			TES_HEAP_REDEFINE_NEW();
 

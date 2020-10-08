@@ -10,6 +10,13 @@ namespace RE
 		delete next;
 	}
 
+	void TESTopicInfo::ResponseData::PopulateResponseText(TESFile* a_file)
+	{
+			using func_t = decltype(&TESTopicInfo::ResponseData::PopulateResponseText);
+			REL::Relocation<func_t> func{ REL::ID(24985) };
+			func(this, a_file);
+	}
+
 
 	float TOPIC_INFO_DATA::GetResetHours() const
 	{
@@ -21,4 +28,5 @@ namespace RE
 	{
 		return { parentTopic->ownerQuest, parentTopic, this, a_speaker };
 	}
+
 }
