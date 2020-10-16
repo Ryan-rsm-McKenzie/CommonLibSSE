@@ -52,6 +52,7 @@ namespace RE
 		TESFile*				Duplicate(std::uint32_t a_cacheSize = 0x4000);
 		std::uint32_t			GetCurrentSubRecordType();
 		constexpr std::uint32_t GetCurrentSubRecordSize() const noexcept { return actualChunkSize; }
+		constexpr std::uint32_t GetCurrentChunkID() const noexcept { return currentchunkID; }
 		FormType				GetFormType();
 		constexpr bool			IsLocalized() const noexcept { return recordFlags.all(RecordFlag::kDelocalized); }
 		void					ReadData(void* a_buf, std::uint32_t a_size);
