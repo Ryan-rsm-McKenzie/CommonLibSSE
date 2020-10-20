@@ -78,7 +78,7 @@ namespace RE
 	{
 		using func_t = decltype(&ApplyPerkEntries);
 		REL::Relocation<func_t> func{ REL::ID(23073) };
-		func(a_perkEntryCode, a_perkOwner, a_form, a_value);
+		return func(a_perkEntryCode, a_perkOwner, a_form, a_value);
 	}
 
 	float GetArmorFinalRating(RE::InventoryEntryData* a_armorEntryData, float a_armorPerks, float a_skillMultiplier)
