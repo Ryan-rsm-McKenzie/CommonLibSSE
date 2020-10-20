@@ -14,7 +14,7 @@ namespace RE
 	{
 			using func_t = decltype(&TESTopicInfo::ResponseData::PopulateResponseText);
 			REL::Relocation<func_t> func{ REL::ID(24985) };
-			func(this, a_file);
+			return func(this, a_file);
 	}
 
 
