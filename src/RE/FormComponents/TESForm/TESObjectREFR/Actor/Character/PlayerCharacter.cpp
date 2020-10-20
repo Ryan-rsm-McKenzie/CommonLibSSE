@@ -147,4 +147,11 @@ namespace RE
 		REL::Relocation<func_t> func{ REL::ID(39365) };
 		return func(this, a_cellName, a_cell);
 	}
+
+	void PlayerCharacter::AddSkillExperience(ActorValue a_skill, float a_experience)
+	{
+		using func_t = decltype(&PlayerCharacter::AddSkillExperience);
+		REL::Relocation<func_t> func(REL::ID(39413));
+		return func(this, a_skill, a_experience);
+	}
 }

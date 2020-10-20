@@ -126,6 +126,7 @@ namespace RE
 			kExplosion = 1 << 20
 		};
 
+		void Populate(Actor* a_aggressor, Actor* a_target, InventoryEntryData* a_weapon);
 
 		// members
 		NiPoint3				 unk00;					  // 00

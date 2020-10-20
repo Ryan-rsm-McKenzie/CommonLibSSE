@@ -23,6 +23,7 @@ namespace RE
 		virtual void  SetActorValue(ActorValue a_akValue, float a_value);										// 07 - { SetBaseActorValue(a_akValue, a_value); }
 		virtual bool  GetIsPlayerOwner() const;																	// 08 - { return false; }
 
+		float GetArmorRatingSkillMultiplier(float a_skillLevel) const;
 		float GetClampedActorValue(ActorValue a_akValue) const;
 	};
 	static_assert(sizeof(ActorValueOwner) == 0x8);
