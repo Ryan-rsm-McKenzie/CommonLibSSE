@@ -4,6 +4,7 @@ set(sources ${sources}
 	src/RE/Skyrim.cpp
 	src/RE/AI/AIFormulas.cpp
 	src/RE/AI/AIProcess.cpp
+	src/RE/AI/MiddleHighProcessData.cpp
 	src/RE/AI/ProcessLists.cpp
 	src/RE/Animation/IAnimationGraphManagerHolder.cpp
 	src/RE/BSAudio/BSAudioManager.cpp
@@ -160,6 +161,8 @@ set(sources ${sources}
 	src/RE/Inventory/Inventory3DManager.cpp
 	src/RE/Inventory/InventoryChanges.cpp
 	src/RE/Inventory/InventoryEntryData.cpp
+	src/RE/Inventory/ArmorRatingVisitorBase/ArmorRatingVisitor.cpp
+	src/RE/Inventory/ArmorRatingVisitorBase/ArmorRatingVisitorBase.cpp
 	src/RE/Memory/HeapBlock.cpp
 	src/RE/Memory/MemoryManager.cpp
 	src/RE/Memory/IMemoryStoreBase/IMemoryStore/IMemoryStore.cpp
