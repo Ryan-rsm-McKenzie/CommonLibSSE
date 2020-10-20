@@ -201,7 +201,10 @@ namespace RE
 		enum class FlagBDD
 		{
 			kNone = 0,
-			kEverModded = 1 << 3
+			kSprinting = 1 << 0,
+			kDragonRideTargetLocked = 1 << 2,
+			kEverModded = 1 << 3,
+			kServingJailTime = 1 << 4
 		};
 
 
