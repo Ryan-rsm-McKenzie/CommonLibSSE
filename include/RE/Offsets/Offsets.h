@@ -319,6 +319,12 @@ namespace RE
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229618));
 		}
+		
+
+		namespace ExtraLinkedRef
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229564));
+		}
 
 
 		namespace ExtraOwnership
