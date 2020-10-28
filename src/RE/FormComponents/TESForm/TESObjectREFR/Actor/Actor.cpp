@@ -462,7 +462,7 @@ namespace RE
 		return func(this, a_target, a_priority);
 	}
 	
-	void Actor::ResetAI(std::int32_t a_arg1, std::int32_t a_arg2)
+	void Actor::ResetAI(std::uint32_t a_arg1, std::uint32_t a_arg2)
 	{
 		using func_t = decltype(&Actor::ResetAI);
 		REL::Relocation<func_t> func(REL::ID(36407));
