@@ -18,7 +18,6 @@ namespace RE
 			inline constexpr REL::ID AddSpell(static_cast<std::uint64_t>(37771));
 			inline constexpr REL::ID DispelWornItemEnchantments(static_cast<std::uint64_t>(33828));
 			inline constexpr REL::ID DoReset3D(static_cast<std::uint64_t>(39181));
-			inline constexpr REL::ID EvaluatePackage(static_cast<std::uint64_t>(36407));
 			inline constexpr REL::ID GetGhost(static_cast<std::uint64_t>(36286));
 			inline constexpr REL::ID GetHostileToActor(static_cast<std::uint64_t>(36537));
 			inline constexpr REL::ID GetLevel(static_cast<std::uint64_t>(36344));

@@ -495,7 +495,7 @@ namespace RE
 		ActorHandle					 CreateRefHandle();
 		void						 DispelWornItemEnchantments();
 		void						 DoReset3D(bool a_updateWeight);
-		void						 EvaluatePackage(bool a_arg1 = false, bool a_arg2 = false);
+		void						 EvaluatePackage(bool a_immediate = false, bool a_resetAI = false);
 		TESNPC*						 GetActorBase();
 		const TESNPC*				 GetActorBase() const;
 		InventoryEntryData*			 GetAttackingWeapon();

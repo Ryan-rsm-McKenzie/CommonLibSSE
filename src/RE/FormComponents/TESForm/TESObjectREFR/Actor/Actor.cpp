@@ -141,11 +141,11 @@ namespace RE
 	}
 
 
-	void Actor::EvaluatePackage(bool a_arg1, bool a_arg2)
+	void Actor::EvaluatePackage(bool a_immediate, bool a_resetAI)
 	{
 		using func_t = decltype(&Actor::EvaluatePackage);
-		REL::Relocation<func_t> func{ Offset::Actor::EvaluatePackage };
-		return func(this, a_arg1, a_arg2);
+		REL::Relocation<func_t> func{ REL::ID(36407) };
+		return func(this, a_immediate, a_resetAI);
 	}
 
 
