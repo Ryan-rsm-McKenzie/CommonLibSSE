@@ -67,44 +67,44 @@ set(MSVC_OPTIONS
 	/wd5220 # 'member': a non-static data member with a volatile qualified type no longer implies that compiler generated copy / move constructors and copy / move assignment operators are not trivial
 )
 
-add_library(CommonLibSSE STATIC
+add_library(${PROJECT_NAME} STATIC
 	${headers}
 	${sources}
 	.clang-format
 	CommonLibSSE.natvis
 )
 
-target_compile_definitions(CommonLibSSE
+target_compile_definitions(${PROJECT_NAME}
 	PUBLIC
 		WINVER=0x0601	# windows 7, minimum supported version by skyrim special edition
 		_WIN32_WINNT=0x0601
 		SPDLOG_COMPILED_LIB
 )
 
-target_compile_features(CommonLibSSE
+target_compile_features(${PROJECT_NAME}
 	PUBLIC
 		cxx_std_17
 )
 
-target_compile_options(CommonLibSSE
+target_compile_options(${PROJECT_NAME}
 	PRIVATE
 		"$<$<BOOL:${MSVC}>:${MSVC_OPTIONS}>"
 )
 
-target_include_directories(CommonLibSSE
+target_include_directories(${PROJECT_NAME}
 	PUBLIC 
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
 )
 
-target_link_libraries(CommonLibSSE
+target_link_libraries(${PROJECT_NAME}
 	PUBLIC
 		nonstd::span-lite
 		spdlog::spdlog
 		Version.lib
 )
 
-target_precompile_headers(CommonLibSSE
+target_precompile_headers(${PROJECT_NAME}
 	PRIVATE
 		include/SKSE/Impl/PCH.h
 )
@@ -114,8 +114,8 @@ target_precompile_headers(CommonLibSSE
 include(GNUInstallDirs)
 
 install(
-	TARGETS CommonLibSSE
-	EXPORT CommonLibSSE-targets
+	TARGETS ${PROJECT_NAME}
+	EXPORT ${PROJECT_NAME}-targets
 )
 
 install(
@@ -131,11 +131,11 @@ configure_file(
 
 install(
 	FILES ${CMAKE_CURRENT_BINARY_DIR}/CommonLibSSEConfig.cmake
-	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/CommonLibSSE
+	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
 )
 
 install(
-	EXPORT CommonLibSSE-targets
-	NAMESPACE CommonLibSSE::
-	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/CommonLibSSE
+	EXPORT ${PROJECT_NAME}-targets
+	NAMESPACE ${PROJECT_NAME}::
+	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
 )
