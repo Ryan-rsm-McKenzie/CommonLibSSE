@@ -49,6 +49,7 @@
 
 #endif
 
+#undef SPDLOG_COMPILED_LIB
 #define SPDLOG_COMPILED_LIB
 
 #include <Windows.h>
