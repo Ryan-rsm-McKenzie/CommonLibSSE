@@ -40,7 +40,7 @@ namespace RE
 		static Inventory3DManager* GetSingleton();
 
 		void			UpdateItem3D(InventoryEntryData* a_objDesc);
-		void			UpdateMagic3D(TESForm* a_form, std::uint32_t unk1);
+		void			UpdateMagic3D(TESForm* a_form, std::uint32_t a_arg2);
 		void			Clear3D();
 		std::uint32_t	Render();
 
