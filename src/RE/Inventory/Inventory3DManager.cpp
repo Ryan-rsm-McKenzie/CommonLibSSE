@@ -16,11 +16,11 @@ namespace RE
 		return func(this, a_objDesc);
 	}
 
-	void Inventory3DManager::UpdateMagic3D(TESForm* a_form, std::uint32_t unk1)
+	void Inventory3DManager::UpdateMagic3D(TESForm* a_form, std::uint32_t a_arg2)
 	{
 		using func_t = decltype(&Inventory3DManager::UpdateMagic3D);
 		REL::Relocation<func_t> func{ REL::ID(50885) };
-		return func(this, a_form, unk1);
+		return func(this, a_form, a_arg2);
 	}
 
 	void Inventory3DManager::Clear3D()
