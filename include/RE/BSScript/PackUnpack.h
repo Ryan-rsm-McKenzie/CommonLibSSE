@@ -44,6 +44,17 @@ namespace RE
 		template <
 			class T,
 			std::enable_if_t<
+				is_alias_pointer_v<T>,
+				int> = 0>
+		[[nodiscard]] inline TypeInfo::RawType GetRawType()
+		{
+			return GetRawTypeFromVMType(decay_pointer_t<T>::VMTYPEID);
+		}
+
+
+		template <
+			class T,
+			std::enable_if_t<
 				std::disjunction_v<
 					is_array<T>,
 					is_reference_wrapper<T>>,
