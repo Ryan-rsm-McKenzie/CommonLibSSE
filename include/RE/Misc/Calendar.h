@@ -95,10 +95,6 @@ namespace RE
 		TESGlobal*	  timeScale;		// 30
 		std::uint32_t midnightsPassed;	// 38
 		float		  rawDaysPassed;	// 3C
-
-		
-	private:
-		void GetDisplayString_Impl(char& a_buf, std::size_t a_bufSize, bool a_showYear);
 	};
 	static_assert(sizeof(Calendar) == 0x40);
 }
