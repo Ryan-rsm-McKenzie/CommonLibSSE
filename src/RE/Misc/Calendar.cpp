@@ -75,6 +75,13 @@ namespace RE
 		return gameDaysPassed ? gameDaysPassed->value : 1.0F;
 	}
 
+	void Calendar::GetTimeDateString(char* a_dest, std::uint32_t a_max, bool a_showYear) const
+	{
+		using func_t = decltype(&Calendar::GetTimeDateString);
+		REL::Relocation<func_t> func{ REL::ID(35413) };
+		return func(this, a_dest, a_max, a_showYear);
+	}
+
 
 	float Calendar::GetHour() const
 	{

@@ -2836,6 +2836,9 @@
     <ClInclude Include="include\RE\Menus\IUIMessageData\HUDData.h">
       <Filter>include\RE\Menus\IUIMessageData</Filter>
     </ClInclude>
+    <ClInclude Include="include\RE\Menus\IUIMessageData\InventoryUpdateData.h">
+      <Filter>include\RE\Menus\IUIMessageData</Filter>
+    </ClInclude>
     <ClInclude Include="include\RE\Menus\IUIMessageData\IUIMessageData.h">
       <Filter>include\RE\Menus\IUIMessageData</Filter>
     </ClInclude>
@@ -4167,10 +4170,25 @@
     <ClCompile Include="src\RE\Menus\IMenu\Components\ItemList.cpp">
       <Filter>src\RE\Menus\IMenu\Components</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\Menus\IMenu\BarterMenu.cpp">
+      <Filter>src\RE\Menus\IMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Menus\IMenu\BookMenu.cpp">
+      <Filter>src\RE\Menus\IMenu</Filter>
+    </ClCompile>
     <ClCompile Include="src\RE\Menus\IMenu\Console.cpp">
       <Filter>src\RE\Menus\IMenu</Filter>
     </ClCompile>
+    <ClCompile Include="src\RE\Menus\IMenu\ContainerMenu.cpp">
+      <Filter>src\RE\Menus\IMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Menus\IMenu\GiftMenu.cpp">
+      <Filter>src\RE\Menus\IMenu</Filter>
+    </ClCompile>
     <ClCompile Include="src\RE\Menus\IMenu\IMenu.cpp">
+      <Filter>src\RE\Menus\IMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RE\Menus\IMenu\LockpickingMenu.cpp">
       <Filter>src\RE\Menus\IMenu</Filter>
     </ClCompile>
     <ClCompile Include="src\RE\Menus\InterfaceStrings.cpp">

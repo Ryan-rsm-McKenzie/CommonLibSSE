@@ -28,6 +28,8 @@ namespace RE
 		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;	 // 04
 		virtual void			   PostDisplay() override;							 // 06
 
+		[[nodiscard]] RefHandle	GetTargetRefHandle();
+
 
 		// members
 		GFxValue		root;			  // 30 - "Menu_mc"

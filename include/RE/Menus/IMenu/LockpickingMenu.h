@@ -9,6 +9,7 @@
 namespace RE
 {
 	class MenuOpenCloseEvent;
+	class TESObjectREFR;
 
 
 	// menuDepth = 3
@@ -37,6 +38,8 @@ namespace RE
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
+
+		[[nodiscard]] TESObjectREFR* GetTargetReference();
 
 
 		// members
