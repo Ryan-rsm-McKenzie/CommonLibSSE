@@ -175,8 +175,13 @@ set(sources ${sources}
 	src/RE/Menus/UIMessageQueue.cpp
 	src/RE/Menus/HUDObject/HUDObject.cpp
 	src/RE/Menus/HUDObject/HUDMeter/HUDMeter.cpp
+	src/RE/Menus/IMenu/BarterMenu.cpp
+	src/RE/Menus/IMenu/BookMenu.cpp
 	src/RE/Menus/IMenu/Console.cpp
+	src/RE/Menus/IMenu/ContainerMenu.cpp
+	src/RE/Menus/IMenu/GiftMenu.cpp
 	src/RE/Menus/IMenu/IMenu.cpp
+	src/RE/Menus/IMenu/LockpickingMenu.cpp
 	src/RE/Menus/IMenu/Components/ItemList.cpp
 	src/RE/Misc/Calendar.cpp
 	src/RE/Misc/Misc.cpp

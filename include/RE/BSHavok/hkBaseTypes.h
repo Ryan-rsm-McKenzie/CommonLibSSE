@@ -22,7 +22,7 @@ namespace RE
 		explicit hkHalf(const float& a_val);
 
 		hkHalf& operator=(const float& a_val);
-		operator float() const;
+				operator float() const;
 
 	protected:
 		void  SetFloat(const float& a_val);

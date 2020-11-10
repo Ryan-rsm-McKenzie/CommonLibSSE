@@ -190,7 +190,7 @@ namespace RE
 			iterator_base operator++(int)
 			{
 				iterator_base tmp(*this);
-				operator++();
+							  operator++();
 				return tmp;
 			}
 

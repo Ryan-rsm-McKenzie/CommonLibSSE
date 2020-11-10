@@ -953,6 +953,7 @@ set(headers ${headers}
 	include/RE/Menus/IUIMessageData/BSUIScaleformData.h
 	include/RE/Menus/IUIMessageData/ConsoleData.h
 	include/RE/Menus/IUIMessageData/HUDData.h
+	include/RE/Menus/IUIMessageData/InventoryUpdateData.h
 	include/RE/Menus/IUIMessageData/IUIMessageData.h
 	include/RE/Menus/IUIMessageData/MessageBoxData.h
 	include/RE/Misc/Calendar.h

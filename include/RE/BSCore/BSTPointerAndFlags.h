@@ -15,7 +15,7 @@ namespace RE
 
 		BSTPointerAndFlags(const BSTPointerAndFlags& a_rhs) { _storage.ptr = a_rhs.get(); }
 
-		constexpr BSTPointerAndFlags(BSTPointerAndFlags&& a_rhs) noexcept 
+		constexpr BSTPointerAndFlags(BSTPointerAndFlags&& a_rhs) noexcept
 		{
 			_storage.address = a_rhs._storage.address;
 			a_rhs._storage.address = 0;

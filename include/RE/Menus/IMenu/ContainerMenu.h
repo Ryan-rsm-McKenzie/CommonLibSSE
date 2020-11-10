@@ -38,7 +38,7 @@ namespace RE
 		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;	 // 04
 		virtual void			   PostDisplay() override;							 // 06
 
-		[[nodiscard]] ContainerMode	GetContainerMode();
+		[[nodiscard]] ContainerMode GetContainerMode();
 		[[nodiscard]] RefHandle		GetTargetRefHandle();
 
 
