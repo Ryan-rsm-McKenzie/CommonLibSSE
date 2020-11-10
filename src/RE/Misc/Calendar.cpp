@@ -75,11 +75,11 @@ namespace RE
 		return gameDaysPassed ? gameDaysPassed->value : 1.0F;
 	}
 
-	std::string Calendar::GetDisplayString(bool a_showYear)
+	void Calendar::GetTimeDateString(char* a_dest, std::uint32_t a_max, bool a_showYear) const
 	{
-		char buf[200];
-		GetDisplayString_Impl(*buf, 200, a_showYear);
-		return std::string{ buf };
+		using func_t = decltype(&Calendar::GetTimeDateString);
+		REL::Relocation<func_t> func{ REL::ID(35413) };
+		return func(this, a_dest, a_max, a_showYear);
 	}
 
 
@@ -184,13 +184,5 @@ namespace RE
 	std::uint32_t Calendar::GetYear() const
 	{
 		return gameYear ? static_cast<std::uint32_t>(gameYear->value) : 77;
-	}
-
-
-	void Calendar::GetDisplayString_Impl(char& a_buf, std::size_t a_bufSize, bool a_showYear)
-	{
-		using func_t = decltype(&Calendar::GetDisplayString_Impl);
-		REL::Relocation<func_t> func{ REL::ID(35413) };
-		return func(this, a_buf, a_bufSize, a_showYear);
 	}
 }

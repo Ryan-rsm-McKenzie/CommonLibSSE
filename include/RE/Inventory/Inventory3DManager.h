@@ -56,7 +56,7 @@ namespace RE
 		ExtraDataList								  originalExtra;  // 040
 		BSTSmallArray<LoadedInventoryModel, 7>		  loadedModels;	  // 058
 		std::uint32_t								  unk148;		  // 148
-		float										  zoomState;	  // 14C - 1 if zoomed in, 0 if not, in-between during transition
+		float										  zoomProgress;	  // 14C - 1 if zoomed in, 0 if not, in-between during transition
 		BSTSmartPointer<NewInventoryMenuItemLoadTask> loadTask;		  // 150
 		std::uint8_t								  unk158;		  // 158
 		std::uint8_t								  unk159;		  // 159

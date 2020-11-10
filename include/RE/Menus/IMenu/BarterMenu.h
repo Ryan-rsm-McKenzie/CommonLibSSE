@@ -29,7 +29,7 @@ namespace RE
 		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;	 // 04
 		virtual void			   PostDisplay() override;							 // 06
 
-		RefHandle	GetTargetRefHandle();
+		[[nodiscard]] RefHandle	GetTargetRefHandle();
 
 
 		// members

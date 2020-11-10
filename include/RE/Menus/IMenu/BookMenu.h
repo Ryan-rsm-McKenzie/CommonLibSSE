@@ -38,7 +38,7 @@ namespace RE
 		// override (BSTEventSink<BSAnimationGraphEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;	 // 01
 
-		TESObjectREFR*	GetTargetReference();	// returns null if opened from inventory
+		[[nodiscard]] TESObjectREFR*	GetTargetReference();	// returns null if opened from inventory
 
 		// members
 		BSTArray<ImageData> unk50;		 // 50
@@ -50,7 +50,7 @@ namespace RE
 		void*				unk88;		 // 88 - smart ptr
 		std::uint16_t		unk90;		 // 90
 		std::uint16_t		unk92;		 // 92
-		bool				isClosed;	 // 94
+		bool				closeMenu;	 // 94
 		bool				isNote;		 // 95
 		std::uint8_t		unk96;		 // 96
 		std::uint8_t		pad97;		 // 97
