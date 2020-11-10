@@ -22,12 +22,24 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "ContainerMenu";
 
 
+		enum class ContainerMode : std::uint32_t
+		{
+			kLoot = 0,
+			kSteal = 1,
+			kPickpocket = 2,
+			kNPCMode = 3
+		};
+
+
 		virtual ~ContainerMenu();  // 00
 
 		// override (IMenu)
 		virtual void			   Accept(CallbackProcessor* a_processor) override;	 // 01
 		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;	 // 04
 		virtual void			   PostDisplay() override;							 // 06
+
+		ContainerMode	GetContainerMode();
+		RefHandle		GetTargetRefHandle();
 
 
 		// members

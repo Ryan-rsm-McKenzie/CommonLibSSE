@@ -1161,6 +1161,7 @@
     <ClInclude Include="include\RE\Menus\IUIMessageData\BSUIScaleformData.h" />
     <ClInclude Include="include\RE\Menus\IUIMessageData\ConsoleData.h" />
     <ClInclude Include="include\RE\Menus\IUIMessageData\HUDData.h" />
+    <ClInclude Include="include\RE\Menus\IUIMessageData\InventoryUpdateData.h" />
     <ClInclude Include="include\RE\Menus\IUIMessageData\IUIMessageData.h" />
     <ClInclude Include="include\RE\Menus\IUIMessageData\MessageBoxData.h" />
     <ClInclude Include="include\RE\Menus\MagicFavorites.h" />
@@ -1607,9 +1608,14 @@
     <ClCompile Include="src\RE\Menus\ConsoleLog.cpp" />
     <ClCompile Include="src\RE\Menus\HUDObject\HUDMeter\HUDMeter.cpp" />
     <ClCompile Include="src\RE\Menus\HUDObject\HUDObject.cpp" />
+    <ClCompile Include="src\RE\Menus\IMenu\BarterMenu.cpp" />
+    <ClCompile Include="src\RE\Menus\IMenu\BookMenu.cpp" />
     <ClCompile Include="src\RE\Menus\IMenu\Components\ItemList.cpp" />
     <ClCompile Include="src\RE\Menus\IMenu\Console.cpp" />
+    <ClCompile Include="src\RE\Menus\IMenu\ContainerMenu.cpp" />
+    <ClCompile Include="src\RE\Menus\IMenu\GiftMenu.cpp" />
     <ClCompile Include="src\RE\Menus\IMenu\IMenu.cpp" />
+    <ClCompile Include="src\RE\Menus\IMenu\LockpickingMenu.cpp" />
     <ClCompile Include="src\RE\Menus\InterfaceStrings.cpp" />
     <ClCompile Include="src\RE\Menus\MagicFavorites.cpp" />
     <ClCompile Include="src\RE\Menus\UI.cpp" />

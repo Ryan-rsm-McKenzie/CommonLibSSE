@@ -18,7 +18,7 @@ namespace RE
 
 		kScaleformEvent = 6,  // BSUIScaleformData
 		kUserEvent = 7,		  // BSUIMessageData
-		kInventoryUpdate = 8,
+		kInventoryUpdate = 8, // InventoryUpdateData
 		kUserProfileChange = 9,
 		kMUStatusChange = 10,
 		kResumeCaching = 11,
