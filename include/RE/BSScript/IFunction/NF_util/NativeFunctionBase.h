@@ -62,7 +62,7 @@ namespace RE
 				// members
 				BSFixedString		 _name;							   // 10
 				BSFixedString		 _objName;						   // 18
-				BSFixedString		 _stateName;					   // 20
+				BSFixedString		 _stateName{ "" };				   // 20
 				TypeInfo			 _retType;						   // 28
 				Internal::VDescTable _descTable;					   // 30
 				bool				 _isStatic;						   // 40
