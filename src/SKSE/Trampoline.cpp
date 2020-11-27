@@ -2,8 +2,22 @@
 
 #include "SKSE/Logger.h"
 
+#ifdef SKSE_SUPPORT_XBYAK
+#include <xbyak/xbyak.h>
+#endif
+
 namespace SKSE
 {
+#ifdef SKSE_SUPPORT_XBYAK
+	void* Trampoline::allocate(Xbyak::CodeGenerator& a_code)
+	{
+		auto result = do_allocate(a_code.getSize());
+		log_stats();
+		std::memcpy(result, a_code.getCode(), a_code.getSize());
+		return result;
+	}
+#endif
+
 	// https://stackoverflow.com/a/54732489
 	void* Trampoline::do_create(std::size_t a_size, std::uintptr_t a_address)
 	{

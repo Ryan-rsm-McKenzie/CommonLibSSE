@@ -273,6 +273,11 @@ namespace REL
 	}
 
 
+	inline constexpr std::uint8_t NOP = 0x90;
+	inline constexpr std::uint8_t RET = 0xC3;
+	inline constexpr std::uint8_t INT3 = 0xCC;
+
+
 	template <
 		class F,
 		class... Args,
@@ -298,29 +303,60 @@ namespace REL
 
 	inline void safe_write(std::uintptr_t a_dst, const void* a_src, std::size_t a_count)
 	{
-		DWORD				  old{ 0 };
-		[[maybe_unused]] BOOL success{ false };
-		success = VirtualProtect(reinterpret_cast<void*>(a_dst), a_count, PAGE_EXECUTE_READWRITE, std::addressof(old));
+		::DWORD old{ 0 };
+		auto	success =
+			::VirtualProtect(
+				reinterpret_cast<void*>(a_dst),
+				a_count,
+				PAGE_EXECUTE_READWRITE,
+				std::addressof(old));
 		if (success != 0) {
 			std::memcpy(reinterpret_cast<void*>(a_dst), a_src, a_count);
-			success = VirtualProtect(reinterpret_cast<void*>(a_dst), a_count, old, std::addressof(old));
+			success =
+				::VirtualProtect(
+					reinterpret_cast<void*>(a_dst),
+					a_count,
+					old,
+					std::addressof(old));
 		}
 
 		assert(success != 0);
 	}
 
-
 	template <class T>
-	inline void safe_write(std::uintptr_t a_dst, const T& a_data)
+	void safe_write(std::uintptr_t a_dst, const T& a_data)
 	{
 		safe_write(a_dst, std::addressof(a_data), sizeof(T));
 	}
 
 
 	template <class T>
-	inline void safe_write(std::uintptr_t a_dst, stl::span<T> a_data)
+	void safe_write(std::uintptr_t a_dst, stl::span<T> a_data)
 	{
 		safe_write(a_dst, a_data.data(), a_data.size_bytes());
+	}
+
+
+	inline void safe_fill(std::uintptr_t a_dst, std::uint8_t a_value, std::size_t a_count)
+	{
+		::DWORD old{ 0 };
+		auto	success =
+			::VirtualProtect(
+				reinterpret_cast<void*>(a_dst),
+				a_count,
+				PAGE_EXECUTE_READWRITE,
+				std::addressof(old));
+		if (success != 0) {
+			std::fill_n(reinterpret_cast<std::uint8_t*>(a_dst), a_count, a_value);
+			success =
+				::VirtualProtect(
+					reinterpret_cast<void*>(a_dst),
+					a_count,
+					old,
+					std::addressof(old));
+		}
+
+		assert(success != 0);
 	}
 
 
