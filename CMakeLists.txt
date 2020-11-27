@@ -1,10 +1,9 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.19)
 
 # ---- Project ----
 
 project(
 	CommonLibSSE
-	VERSION 1.0.0
 	LANGUAGES CXX
 )
 
@@ -37,6 +36,8 @@ source_group(
 
 # ---- Create library ----
 
+include(GNUInstallDirs)
+
 add_library(
 	${PROJECT_NAME}
 	STATIC
@@ -65,9 +66,7 @@ target_compile_features(
 if (MSVC)
 	target_compile_options(
 		${PROJECT_NAME}
-		PRIVATE
-			/TP	# Specify Source File Type (C++)
-	
+		PRIVATE	
 			/experimental:external
 			/external:anglebrackets
 			/external:W0
@@ -103,7 +102,7 @@ target_include_directories(
 	${PROJECT_NAME}
 	PUBLIC 
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
 target_link_libraries(
@@ -122,15 +121,13 @@ target_precompile_headers(
 
 # ---- Create an installable target ----
 
-include(GNUInstallDirs)
-
 install(
 	TARGETS ${PROJECT_NAME}
 	EXPORT ${PROJECT_NAME}-targets
 )
 
 install(
-	DIRECTORY include/
+	FILES ${headers}
 	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
