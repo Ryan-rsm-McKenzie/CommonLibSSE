@@ -2,6 +2,7 @@
 
 #include "RE/BSCore/BSTSmartPointer.h"
 #include "RE/BSSystem/BSIntrusiveRefCounted.h"
+#include "RE/Camera/TESCamera/PlayerCamera.h"
 
 
 namespace RE
@@ -35,7 +36,7 @@ namespace RE
 		// members
 		std::uint32_t pad0C;   // 0C
 		TESCamera*	  camera;  // 10
-		std::uint32_t id;	   // 18
+		CameraState   id;	   // 18
 		std::uint32_t pad1C;   // 1C
 	};
 	static_assert(sizeof(TESCameraState) == 0x20);
