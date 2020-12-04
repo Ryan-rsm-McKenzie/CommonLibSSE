@@ -153,7 +153,7 @@ namespace SKSE
 			}
 
 		private:
-			RE::NiPointer<value_type> _object;
+			RE::NiPointer<std::remove_pointer_t<value_type>> _object;
 		};
 
 
