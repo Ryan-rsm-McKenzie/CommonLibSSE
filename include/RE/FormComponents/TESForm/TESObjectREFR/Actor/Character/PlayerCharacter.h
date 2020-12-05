@@ -337,10 +337,10 @@ namespace RE
 		BSTArray<void*>											imageSpaceModifierAnims1;					  // 540
 		BSTArray<void*>											imageSpaceModifierAnims2;					  // 558
 		BSSimpleList<TESQuestStageItem*>						questLog;									  // 570
-		BSTArray<BGSInstancedQuestObjective*>					objectives;									  // 580
+		BSTArray<BGSInstancedQuestObjective>					objectives;									  // 580
 		BSTHashMap<UnkKey, UnkValue>							unk598;										  // 598
 		BSTHashMap<UnkKey, UnkValue>							currentSayOnceInfosMap;						  // 5C8
-		BSSimpleList<ObjectRefHandle>							droppedRefList;								  // 600
+		BSSimpleList<ObjectRefHandle>							droppedRefList;								  // 5F8
 		NiTMap<std::uint32_t, std::uint8_t>						randomDoorSpaceMap;							  // 608
 		TESWorldSpace*											cachedWorldSpace;							  // 628
 		NiPoint3												exteriorPosition;							  // 630
