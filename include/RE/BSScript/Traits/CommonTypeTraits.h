@@ -2,6 +2,7 @@
 
 #include "RE/BSCore/BSFixedString.h"
 #include "RE/FormComponents/Components/BGSBaseAlias/BGSBaseAlias.h"
+#include "RE/FormComponents/Components/ActiveEffect/ActiveEffect.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 
 
@@ -424,6 +425,29 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_alias_pointer_v = is_alias_pointer<T>::value;
+
+
+		template <class T>
+		struct is_active_effect :
+			std::is_base_of<
+				RE::BGSBaseAlias,
+				std::remove_cv_t<T>>
+		{};
+
+		template <class T>
+		inline constexpr bool is_active_effect_v = is_active_effect<T>::value;
+
+
+		template <class T>
+		struct is_active_effect_pointer :
+			std::conjunction<
+				is_active_effect<
+					std::remove_pointer_t<T>>,
+				std::is_pointer<T>>
+		{};
+
+		template <class T>
+		inline constexpr bool is_active_effect_pointer_v = is_active_effect_pointer<T>::value;
 
 
 		template <class T>
