@@ -513,6 +513,7 @@ namespace RE
 		ObjectRefHandle				 GetOccupiedFurniture() const;
 		TESRace*					 GetRace() const;
 		bool						 HasPerk(BGSPerk* a_perk) const;
+		void						 InterruptCast(bool a_restoreMagicka) const;
 		bool						 IsAIEnabled() const;
 		bool						 IsAMount() const;
 		bool						 IsAnimationDriven() const;

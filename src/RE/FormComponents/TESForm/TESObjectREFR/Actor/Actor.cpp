@@ -319,6 +319,14 @@ namespace RE
 	}
 
 
+	void Actor::InterruptCast(bool a_restoreMagicka) const
+	{
+		using func_t = decltype(&Actor::InterruptCast);
+		REL::Relocation<func_t> func{ REL::ID(37808) };
+		return func(this, a_restoreMagicka);
+	}
+
+
 	bool Actor::IsAIEnabled() const
 	{
 		return boolBits.all(BOOL_BITS::kProcessMe);
