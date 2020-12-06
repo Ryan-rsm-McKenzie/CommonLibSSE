@@ -430,7 +430,7 @@ namespace RE
 		template <class T>
 		struct is_active_effect :
 			std::is_base_of<
-				RE::BGSBaseAlias,
+				RE::ActiveEffect,
 				std::remove_cv_t<T>>
 		{};
 
