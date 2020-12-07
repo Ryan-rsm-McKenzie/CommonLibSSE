@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/BSCore/BSFixedString.h"
-#include "RE/FormComponents/Components/BGSBaseAlias/BGSBaseAlias.h"
 #include "RE/FormComponents/Components/ActiveEffect/ActiveEffect.h"
+#include "RE/FormComponents/Components/BGSBaseAlias/BGSBaseAlias.h"
 #include "RE/FormComponents/TESForm/TESForm.h"
 
 
