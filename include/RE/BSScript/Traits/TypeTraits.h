@@ -160,7 +160,8 @@ namespace RE
 			std::disjunction<
 				is_static_base_pointer<T>,
 				is_form_pointer<T>,
-				is_alias_pointer<T>>
+				is_alias_pointer<T>,
+				is_active_effect_pointer<T>>
 		{};
 
 		template <class T>
@@ -176,6 +177,7 @@ namespace RE
 					is_builtin<T>,
 					is_form_pointer<T>,
 					is_alias_pointer<T>,
+					is_active_effect_pointer<T>,
 					is_array<T>,
 					is_reference_wrapper<T>>>
 		{};
@@ -193,6 +195,7 @@ namespace RE
 					is_builtin_convertible<T>,
 					is_form_pointer<T>,
 					is_alias_pointer<T>,
+					is_active_effect_pointer<T>,
 					is_array<T>,
 					is_reference_wrapper<T>>>
 		{};
