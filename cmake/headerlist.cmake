@@ -3,7 +3,6 @@ set(headers ${headers}
 	include/RE/Offsets_NiRTTI.h
 	include/RE/Offsets_RTTI.h
 	include/RE/RTTI.h
-	include/RE/Skyrim.h
 	include/RE/A/AbsorbEffect.h
 	include/RE/A/AbstractHeap.h
 	include/RE/A/ActivateHandler.h
@@ -891,6 +890,7 @@ set(headers ${headers}
 	include/RE/M/MoveToFunctor.h
 	include/RE/M/MoviePlayer.h
 	include/RE/M/MultiBoundMarkerData.h
+	include/RE/Menus/MenuTopicManager.h
 	include/RE/N/NativeFunction.h
 	include/RE/N/NativeFunctionBase.h
 	include/RE/N/NavMesh.h

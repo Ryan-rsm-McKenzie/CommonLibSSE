@@ -257,4 +257,5 @@ set(sources ${sources}
 	include/SKSE/Trampoline.cpp
 	include/SKSE/Impl/PCH.cpp
 	include/SKSE/Impl/WinAPI.cpp
+	src/RE/Menus/MenuTopicManager.cpp
 )

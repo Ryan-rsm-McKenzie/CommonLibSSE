@@ -888,6 +888,7 @@
 #include "RE/M/MovementHandler.h"
 #include "RE/M/MoviePlayer.h"
 #include "RE/M/MultiBoundMarkerData.h"
+#include "RE/Menus/MenuTopicManager.h"
 #include "RE/N/NativeFunction.h"
 #include "RE/N/NativeFunctionBase.h"
 #include "RE/N/NavMesh.h"
