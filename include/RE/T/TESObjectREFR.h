@@ -381,6 +381,7 @@ namespace RE
 		std::optional<double>					GetEnchantmentCharge() const;
 		TESFaction*								GetFactionOwner();
 		ObjectRefHandle							GetHandle();
+		float									GetHeadingAngle(TESObjectREFR* a_targRef, bool b_abs = true) const;  //If "b_abs == false"(Not return absolute value), heading angle will be positive when clockwise, and negative when counter clockwise.
 		InventoryItemMap						GetInventory();
 		InventoryItemMap						GetInventory(std::function<bool(TESBoundObject&)> a_filter);
 		std::int32_t							GetInventoryCount();
