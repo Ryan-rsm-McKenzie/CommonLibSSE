@@ -272,6 +272,22 @@ namespace RE
 	{
 		return ObjectRefHandle(this);
 	}
+	
+
+	float TESObjectREFR::GetHeadingAngle(TESObjectREFR* a_targRef, bool b_abs) const
+	{
+		static const float PI = acos(-1.f);
+
+		float theta = std::atan2(a_targRef->GetPositionX() - this->GetPositionX(), a_targRef->GetPositionY() - this->GetPositionY());
+
+		float heading = 180 / PI * (theta - this->GetAngleZ());
+
+		if (heading < -180) heading += 360;
+
+		if (heading > 180) heading -= 360;
+
+		return b_abs ? abs(heading) : heading;
+	}
 
 
 	auto TESObjectREFR::GetInventory()
