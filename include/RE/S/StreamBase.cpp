@@ -43,7 +43,7 @@ namespace RE
 
 		std::uint32_t StreamBase::DecRef()
 		{
-			auto tmpFlags = this->flags;
+			auto		  tmpFlags = this->flags;
 			std::uint32_t prevFlags;
 			std::uint32_t result;
 			do {
@@ -57,7 +57,7 @@ namespace RE
 
 		std::uint32_t StreamBase::IncRef()
 		{
-			auto tmpFlags = this->flags;
+			auto		  tmpFlags = this->flags;
 			std::uint32_t prevFlags;
 			std::uint32_t result;
 			do {

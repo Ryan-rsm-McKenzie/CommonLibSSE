@@ -9,7 +9,7 @@ def format(a_directories):
 	for directory in a_directories:
 		for dirpath, dirnames, filenames in os.walk(directory):
 			for filename in filenames:
-				if filename.endswith(HEADER_TYPES):
+				if filename.endswith(ALL_TYPES):
 					files.append(dirpath + '/' + filename)
 
 	for file in files:
@@ -18,7 +18,7 @@ def format(a_directories):
 def main():
 	cur = os.path.dirname(os.path.realpath(__file__))
 	os.chdir(cur)
-	format(["include", "src"])
+	format(["include"])
 
 if __name__ == "__main__":
 	main()

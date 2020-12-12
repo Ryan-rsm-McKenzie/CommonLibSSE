@@ -147,8 +147,8 @@ namespace SKSE
 
 		void RegistrationSetBase::Clear()
 		{
-			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
+			auto   vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+			auto   policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			Locker locker(_lock);
 			if (policy) {
 				for (auto& handle : _handles) {
@@ -174,7 +174,7 @@ namespace SKSE
 		bool RegistrationSetBase::Save(SerializationInterface* a_intfc)
 		{
 			assert(a_intfc);
-			Locker locker(_lock);
+			Locker			  locker(_lock);
 			const std::size_t numRegs = _handles.size();
 			if (!a_intfc->WriteRecordData(numRegs)) {
 				log::error("Failed to save number of regs ({})", numRegs);
@@ -265,7 +265,7 @@ namespace SKSE
 			}
 
 			Locker locker(_lock);
-			auto it = _handles.find(handle);
+			auto   it = _handles.find(handle);
 			if (it == _handles.end()) {
 				log::warn("Could not find registration");
 				return false;

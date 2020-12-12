@@ -1,8 +1,8 @@
 #include "RE/T/TESFaction.h"
 
-#include "RE/P/ProcessLists.h"
 #include "RE/B/BGSListForm.h"
 #include "RE/P/PlayerCharacter.h"
+#include "RE/P/ProcessLists.h"
 #include "SKSE/Logger.h"
 
 

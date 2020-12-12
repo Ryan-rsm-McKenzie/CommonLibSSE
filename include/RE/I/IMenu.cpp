@@ -2,11 +2,11 @@
 
 #include "RE/B/BSInputDeviceManager.h"
 #include "RE/B/BSUIScaleformData.h"
+#include "RE/G/GFxValue.h"
 #include "RE/I/InterfaceStrings.h"
 #include "RE/U/UI.h"
 #include "RE/U/UIMessage.h"
 #include "RE/U/UIMessageQueue.h"
-#include "RE/G/GFxValue.h"
 
 
 namespace RE
@@ -73,7 +73,7 @@ namespace RE
 		auto gamepad = inputManager ? inputManager->IsGamepadEnabled() : false;
 		if (uiMovie && uiMovie->IsAvailable("_root.SetPlatform")) {
 			std::array<GFxValue, 2> args;
-			const double platform = gamepad ? 1.0 : 0.0;
+			const double			platform = gamepad ? 1.0 : 0.0;
 			args[0].SetNumber(platform);
 			const bool swapPS3 = false;
 			args[1].SetBoolean(swapPS3);
@@ -82,7 +82,7 @@ namespace RE
 
 		if (UpdateUsesCursor()) {
 			Message messageID;
-			auto uiStr = InterfaceStrings::GetSingleton();
+			auto	uiStr = InterfaceStrings::GetSingleton();
 			if (gamepad) {
 				menuFlags.reset(Flag::kUsesCursor);
 				messageID = Message::kHide;

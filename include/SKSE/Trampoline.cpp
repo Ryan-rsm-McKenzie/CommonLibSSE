@@ -3,7 +3,7 @@
 #include "SKSE/Logger.h"
 
 #ifdef SKSE_SUPPORT_XBYAK
-#include <xbyak/xbyak.h>
+#	include <xbyak/xbyak.h>
 #endif
 
 namespace SKSE
@@ -21,18 +21,18 @@ namespace SKSE
 	// https://stackoverflow.com/a/54732489
 	void* Trampoline::do_create(std::size_t a_size, std::uintptr_t a_address)
 	{
-		constexpr std::size_t gigabyte = static_cast<std::size_t>(1) << 30;
-		constexpr std::size_t minRange = gigabyte * 2;
+		constexpr std::size_t	 gigabyte = static_cast<std::size_t>(1) << 30;
+		constexpr std::size_t	 minRange = gigabyte * 2;
 		constexpr std::uintptr_t maxAddr = std::numeric_limits<std::uintptr_t>::max();
 
-		DWORD granularity;
+		DWORD		granularity;
 		SYSTEM_INFO si;
 		GetSystemInfo(&si);
 		granularity = si.dwAllocationGranularity;
 
-		std::uintptr_t min = a_address >= minRange ? detail::roundup(a_address - minRange, granularity) : 0;
+		std::uintptr_t		 min = a_address >= minRange ? detail::roundup(a_address - minRange, granularity) : 0;
 		const std::uintptr_t max = a_address < (maxAddr - minRange) ? detail::rounddown(a_address + minRange, granularity) : maxAddr;
-		std::uintptr_t addr;
+		std::uintptr_t		 addr;
 
 		MEMORY_BASIC_INFORMATION mbi;
 		do {

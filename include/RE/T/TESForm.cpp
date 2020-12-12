@@ -1,14 +1,14 @@
 #include "RE/T/TESForm.h"
 
 #include "RE/E/ExtraEnchantment.h"
-#include "RE/I/IObjectHandlePolicy.h"
-#include "RE/V/VirtualMachine.h"
 #include "RE/F/FormTraits.h"
+#include "RE/I/IObjectHandlePolicy.h"
 #include "RE/M/MagicItem.h"
-#include "RE/T/TESObjectREFR.h"
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESModel.h"
+#include "RE/T/TESObjectREFR.h"
 #include "RE/T/TESValueForm.h"
+#include "RE/V/VirtualMachine.h"
 
 
 namespace RE
@@ -24,7 +24,7 @@ namespace RE
 	std::pair<BSTHashMap<FormID, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> TESForm::GetAllForms()
 	{
 		REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ REL::ID(514351) };
-		REL::Relocation<BSReadWriteLock*> allFormsMapLock{ REL::ID(514360) };
+		REL::Relocation<BSReadWriteLock*>				allFormsMapLock{ REL::ID(514360) };
 		return { *allForms, std::ref(*allFormsMapLock) };
 	}
 
@@ -32,35 +32,35 @@ namespace RE
 	std::pair<BSTHashMap<BSFixedString, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> TESForm::GetAllFormsByEditorID()
 	{
 		REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ REL::ID(514352) };
-		REL::Relocation<BSReadWriteLock*> allFormsEditorIDMapLock{ REL::ID(514361) };
+		REL::Relocation<BSReadWriteLock*>					   allFormsEditorIDMapLock{ REL::ID(514361) };
 		return { *allFormsByEditorID, std::ref(*allFormsEditorIDMapLock) };
 	}
 
 
 	TESForm* TESForm::LookupByID(FormID a_formID)
 	{
-		auto allForms = GetAllForms();
+		auto			allForms = GetAllForms();
 		BSReadLockGuard locker(allForms.second);
 		if (!allForms.first) {
 			return nullptr;
 		}
 
 		auto& formIDs = *allForms.first;
-		auto it = formIDs.find(a_formID);
+		auto  it = formIDs.find(a_formID);
 		return it != formIDs.end() ? it->second : nullptr;
 	}
 
 
 	TESForm* TESForm::LookupByEditorID(const std::string_view& a_editorID)
 	{
-		auto allFormsByEditorID = GetAllFormsByEditorID();
+		auto			allFormsByEditorID = GetAllFormsByEditorID();
 		BSReadLockGuard locker(allFormsByEditorID.second);
 		if (!allFormsByEditorID.first) {
 			return nullptr;
 		}
 
 		auto& editorIDs = *allFormsByEditorID.first;
-		auto it = editorIDs.find(a_editorID);
+		auto  it = editorIDs.find(a_editorID);
 		return it != editorIDs.end() ? it->second : nullptr;
 	}
 
@@ -95,8 +95,8 @@ namespace RE
 	std::int32_t TESForm::GetGoldValue() const
 	{
 		std::int32_t value = 0;
-		auto form = this;
-		auto objRef = As<TESObjectREFR>();
+		auto		 form = this;
+		auto		 objRef = As<TESObjectREFR>();
 		if (objRef) {
 			form = objRef->GetBaseObject();
 			auto xEnch = objRef->extraList.GetByType<ExtraEnchantment>();

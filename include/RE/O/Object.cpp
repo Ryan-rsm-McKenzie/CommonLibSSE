@@ -1,8 +1,8 @@
 #include "RE/O/Object.h"
 
 #include "RE/I/IObjectHandlePolicy.h"
-#include "RE/V/VirtualMachine.h"
 #include "RE/O/ObjectTypeInfo.h"
+#include "RE/V/VirtualMachine.h"
 
 
 namespace RE

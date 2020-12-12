@@ -1,15 +1,15 @@
 #include "RE/I/InventoryEntryData.h"
 
 #include "RE/E/ExtraCharge.h"
+#include "RE/E/ExtraDataList.h"
 #include "RE/E/ExtraEnchantment.h"
 #include "RE/E/ExtraLeveledItem.h"
 #include "RE/E/ExtraTextDisplayData.h"
-#include "RE/G/GameSettingCollection.h"
 #include "RE/F/FormTraits.h"
-#include "RE/T/TESEnchantableForm.h"
+#include "RE/G/GameSettingCollection.h"
 #include "RE/T/TESBoundObject.h"
+#include "RE/T/TESEnchantableForm.h"
 #include "RE/T/TESSoulGem.h"
-#include "RE/E/ExtraDataList.h"
 
 
 namespace RE
@@ -70,8 +70,8 @@ namespace RE
 			delete extraLists;
 			extraLists =
 				a_rhs.extraLists ?
-					new BSSimpleList<ExtraDataList*>(*a_rhs.extraLists) :
-					nullptr;
+					  new BSSimpleList<ExtraDataList*>(*a_rhs.extraLists) :
+					  nullptr;
 
 			countDelta = a_rhs.countDelta;
 		}
@@ -113,8 +113,8 @@ namespace RE
 	std::optional<double> InventoryEntryData::GetEnchantmentCharge() const
 	{
 		std::optional<double> result;
-		auto obj = GetObject();
-		auto ench = obj ? obj->As<TESEnchantableForm>() : nullptr;
+		auto				  obj = GetObject();
+		auto				  ench = obj ? obj->As<TESEnchantableForm>() : nullptr;
 		if (ench && ench->formEnchanting && ench->amountofEnchantment != 0) {
 			result.emplace(100.0);
 		}

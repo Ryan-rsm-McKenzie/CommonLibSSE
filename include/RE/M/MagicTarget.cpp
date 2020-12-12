@@ -1,7 +1,7 @@
 #include "RE/M/MagicTarget.h"
 
-#include "RE/B/BSTList.h"
 #include "RE/A/ActiveEffect.h"
+#include "RE/B/BSTList.h"
 #include "RE/E/EffectSetting.h"
 
 

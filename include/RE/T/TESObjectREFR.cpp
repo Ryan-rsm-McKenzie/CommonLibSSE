@@ -1,5 +1,7 @@
 #include "RE/T/TESObjectREFR.h"
 
+#include "RE/B/BGSDefaultObjectManager.h"
+#include "RE/B/BGSKeyword.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/E/ExtraCharge.h"
 #include "RE/E/ExtraContainerChanges.h"
@@ -11,19 +13,17 @@
 #include "RE/E/ExtraReferenceHandle.h"
 #include "RE/E/ExtraTextDisplayData.h"
 #include "RE/F/FormTraits.h"
-#include "RE/T/TESContainer.h"
-#include "RE/T/TESEnchantableForm.h"
-#include "RE/B/BGSDefaultObjectManager.h"
-#include "RE/B/BGSKeyword.h"
-#include "RE/T/TESFaction.h"
-#include "RE/T/TESNPC.h"
 #include "RE/I/InventoryChanges.h"
 #include "RE/I/InventoryEntryData.h"
 #include "RE/M/Misc.h"
-#include "RE/N/NiControllerSequence.h"
 #include "RE/N/NiAVObject.h"
 #include "RE/N/NiControllerManager.h"
+#include "RE/N/NiControllerSequence.h"
 #include "RE/N/NiTimeController.h"
+#include "RE/T/TESContainer.h"
+#include "RE/T/TESEnchantableForm.h"
+#include "RE/T/TESFaction.h"
+#include "RE/T/TESNPC.h"
 #include "SKSE/Logger.h"
 
 
@@ -231,8 +231,8 @@ namespace RE
 	std::optional<double> TESObjectREFR::GetEnchantmentCharge() const
 	{
 		std::optional<double> result;
-		auto obj = GetObjectReference();
-		auto ench = obj ? obj->As<TESEnchantableForm>() : nullptr;
+		auto				  obj = GetObjectReference();
+		auto				  ench = obj ? obj->As<TESEnchantableForm>() : nullptr;
 		if (ench && ench->formEnchanting && ench->amountofEnchantment != 0) {
 			result.emplace(100.0);
 		}
@@ -338,7 +338,7 @@ namespace RE
 
 	std::int32_t TESObjectREFR::GetInventoryCount()
 	{
-		auto counts = GetInventoryCounts();
+		auto		 counts = GetInventoryCounts();
 		std::int32_t total = 0;
 		for (auto& elem : counts) {
 			total += elem.second;
@@ -357,7 +357,7 @@ namespace RE
 	auto TESObjectREFR::GetInventoryCounts(std::function<bool(TESBoundObject&)> a_filter)
 		-> InventoryCountMap
 	{
-		auto itemMap = GetInventory(std::move(a_filter));
+		auto			  itemMap = GetInventory(std::move(a_filter));
 		InventoryCountMap results;
 		for (const auto& [key, value] : itemMap) {
 			results[key] = value.first;
@@ -631,7 +631,7 @@ namespace RE
 	bool TESObjectREFR::MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node)
 	{
 		assert(a_target && a_node);
-		auto& position = a_node->world.translate;
+		auto&	 position = a_node->world.translate;
 		NiPoint3 rotation;
 		a_node->world.rotate.ToEulerAnglesXYZ(rotation);
 		auto handle = a_target->GetHandle();

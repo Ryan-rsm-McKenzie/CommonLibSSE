@@ -14,7 +14,7 @@ namespace RE
 	void ChestsLooted::SendEvent()
 	{
 		const Event e{};
-		auto source = GetEventSource();
+		auto		source = GetEventSource();
 		if (source) {
 			source->SendEvent(&e);
 		}

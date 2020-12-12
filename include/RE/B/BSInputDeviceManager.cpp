@@ -1,10 +1,10 @@
 #include "RE/B/BSInputDeviceManager.h"
 
 #include "RE/B/BSPCGamepadDeviceDelegate.h"
-#include "RE/B/BSWin32VirtualKeyboardDevice.h"
+#include "RE/B/BSPCGamepadDeviceHandler.h"
 #include "RE/B/BSWin32KeyboardDevice.h"
 #include "RE/B/BSWin32MouseDevice.h"
-#include "RE/B/BSPCGamepadDeviceHandler.h"
+#include "RE/B/BSWin32VirtualKeyboardDevice.h"
 
 
 namespace RE

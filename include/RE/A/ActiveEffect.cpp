@@ -1,7 +1,7 @@
 #include "RE/A/ActiveEffect.h"
 
-#include "RE/E/Effect.h"
 #include "RE/A/Actor.h"
+#include "RE/E/Effect.h"
 
 
 namespace RE

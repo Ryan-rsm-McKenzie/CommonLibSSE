@@ -1,10 +1,10 @@
 #include "RE/M/Misc.h"
 
-#include "RE/S/Setting.h"
 #include "RE/I/INIPrefSettingCollection.h"
 #include "RE/I/INISettingCollection.h"
-#include "RE/T/TESObjectREFR.h"
 #include "RE/N/NiSmartPointer.h"
+#include "RE/S/Setting.h"
+#include "RE/T/TESObjectREFR.h"
 
 
 namespace RE

@@ -1,7 +1,7 @@
 #include "RE/C/Calendar.h"
 
-#include "RE/S/Setting.h"
 #include "RE/G/GameSettingCollection.h"
+#include "RE/S/Setting.h"
 #include "RE/T/TESGlobal.h"
 
 
@@ -28,7 +28,7 @@ namespace RE
 
 	std::string Calendar::GetDayName() const
 	{
-		auto gmst = RE::GameSettingCollection::GetSingleton();
+		auto	 gmst = RE::GameSettingCollection::GetSingleton();
 		Setting* setting = nullptr;
 
 		if (gmst) {
@@ -103,7 +103,7 @@ namespace RE
 
 	std::string Calendar::GetMonthName() const
 	{
-		auto gmst = RE::GameSettingCollection::GetSingleton();
+		auto	 gmst = RE::GameSettingCollection::GetSingleton();
 		Setting* setting = nullptr;
 
 		switch (GetMonth()) {

@@ -1,7 +1,7 @@
 #include "RE/S/Stack.h"
 
-#include "RE/I/IStackCallbackFunctor.h"
 #include "RE/C/CodeTasklet.h"
+#include "RE/I/IStackCallbackFunctor.h"
 
 
 namespace RE

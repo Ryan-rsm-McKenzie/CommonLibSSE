@@ -1,19 +1,19 @@
 #include "RE/N/NiAVObject.h"
 
-#include "RE/B/BSTSmartPointer.h"
-#include "RE/S/State.h"
 #include "RE/B/BSEffectShaderData.h"
+#include "RE/B/BSGeometry.h"
 #include "RE/B/BSLightingShaderMaterialFacegenTint.h"
 #include "RE/B/BSLightingShaderMaterialHairTint.h"
+#include "RE/B/BSLightingShaderProperty.h"
 #include "RE/B/BSShaderMaterial.h"
+#include "RE/B/BSShaderProperty.h"
+#include "RE/B/BSTSmartPointer.h"
 #include "RE/B/BSVisit.h"
 #include "RE/N/NiColor.h"
-#include "RE/N/NiRTTI.h"
-#include "RE/B/BSGeometry.h"
 #include "RE/N/NiNode.h"
 #include "RE/N/NiProperty.h"
-#include "RE/B/BSLightingShaderProperty.h"
-#include "RE/B/BSShaderProperty.h"
+#include "RE/N/NiRTTI.h"
+#include "RE/S/State.h"
 
 
 namespace RE
@@ -34,7 +34,7 @@ namespace RE
 
 	void NiAVObject::TintScenegraph(const NiColorA& a_color)
 	{
-		auto gState = RE::BSGraphics::State::GetSingleton();
+		auto								gState = RE::BSGraphics::State::GetSingleton();
 		BSTSmartPointer<BSEffectShaderData> newShaderData(new RE::BSEffectShaderData());
 		newShaderData->fillColor = a_color;
 		newShaderData->baseTexture = gState->defaultTextureWhite;

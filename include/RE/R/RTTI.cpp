@@ -1,7 +1,7 @@
 #include "RE/R/RTTI.h"
 
 #ifdef _DEBUG
-#include <DbgHelp.h>
+#	include <DbgHelp.h>
 #endif
 
 #include "SKSE/Logger.h"

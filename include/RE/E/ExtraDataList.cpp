@@ -1,5 +1,6 @@
 #include "RE/E/ExtraDataList.h"
 
+#include "RE/B/BGSKeyword.h"
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraAshPileRef.h"
 #include "RE/E/ExtraCount.h"
@@ -12,9 +13,8 @@
 #include "RE/E/ExtraSoul.h"
 #include "RE/E/ExtraTextDisplayData.h"
 #include "RE/G/GameSettingCollection.h"
-#include "RE/B/BGSKeyword.h"
-#include "RE/T/TESForm.h"
 #include "RE/T/TESBoundObject.h"
+#include "RE/T/TESForm.h"
 #include "RE/T/TESObjectREFR.h"
 
 
@@ -185,14 +185,14 @@ namespace RE
 	const char* ExtraDataList::GetDisplayName(TESBoundObject* a_baseObject)
 	{
 		const char* result = nullptr;
-		float health = 1.0;
+		float		health = 1.0;
 
 		auto xHealth = GetByType<ExtraHealth>();
 		if (xHealth) {
 			health = xHealth->health;
 		}
 
-		auto xText = GetExtraTextDisplayData();
+		auto	   xText = GetExtraTextDisplayData();
 		const bool dfHealth = health <= 1.0 ? (1.0 - health) < 0.001 : (health - 1.0) < 0.001;	// check for health == 1.0
 		if (!xText && !dfHealth) {
 			xText = new ExtraTextDisplayData();
@@ -224,8 +224,8 @@ namespace RE
 
 	ExtraTextDisplayData* ExtraDataList::GetExtraTextDisplayData()
 	{
-		auto xRef = GetByType<ExtraReferenceHandle>();
-		auto ref = xRef ? xRef->GetOriginalReference() : nullptr;
+		auto				  xRef = GetByType<ExtraReferenceHandle>();
+		auto				  ref = xRef ? xRef->GetOriginalReference() : nullptr;
 		ExtraTextDisplayData* xText = nullptr;
 		if (ref && !ref->IsDeleted()) {
 			xText = ref->extraList.GetByType<ExtraTextDisplayData>();
@@ -327,8 +327,8 @@ namespace RE
 	void ExtraDataList::PresenceBitfield::MarkType(std::uint32_t a_type, bool a_cleared)
 	{
 		const std::uint32_t index = (a_type >> 3);
-		const std::uint8_t bitMask = 1 << (a_type % 8);
-		auto& flag = bits[index];
+		const std::uint8_t	bitMask = 1 << (a_type % 8);
+		auto&				flag = bits[index];
 		if (a_cleared) {
 			flag &= ~bitMask;
 		} else {

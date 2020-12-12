@@ -13,7 +13,7 @@ namespace RE
 		}
 
 		GFxValue selectedIndex;
-		auto success = root.GetMember("selectedIndex", &selectedIndex);
+		auto	 success = root.GetMember("selectedIndex", &selectedIndex);
 		if (!success || !selectedIndex.IsNumber()) {
 			return nullptr;
 		}
