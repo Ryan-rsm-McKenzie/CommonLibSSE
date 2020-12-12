@@ -437,6 +437,14 @@ namespace RE
 
 		return true;
 	}
+	
+
+	bool Actor::IsStaggering() const
+	{
+		bool result = false;
+		this->GetGraphVariableBool("IsStaggering", result);
+		return result;
+	}
 
 
 	bool Actor::IsSummoned() const noexcept
