@@ -3,7 +3,7 @@
 #include "RE/BSScript/IObjectHandlePolicy.h"
 #include "RE/BSScript/Internal/VirtualMachine.h"
 #include "RE/BSScript/Object.h"
-#include "RE/BSScript/ObjectBindPolicy.h"
+#include "RE/BSScriptObjectBindPolicy.h"
 #include "RE/BSScript/ObjectTypeInfo.h"
 #include "RE/BSScript/Variable.h"
 #include "SKSE/Logger.h"

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/BSCore/BSTHashMap.h"
-#include "RE/BSScript/ObjectBindPolicy.h"
+#include "RE/BSScriptObjectBindPolicy.h"
 
 
 namespace RE

@@ -71,12 +71,12 @@ set(sources ${sources}
 	src/RE/BSResource/StreamBase/Stream/LooseFileStream.cpp
 	src/RE/BSResource/StreamBase/Stream/Stream.cpp
 	src/RE/BSScript/Array.cpp
+	src/RE/BSScript/BSScriptObjectBindPolicy.cpp
 	src/RE/BSScript/IObjectHandlePolicy.cpp
 	src/RE/BSScript/IStackCallbackFunctor.cpp
 	src/RE/BSScript/IVirtualMachine.cpp
 	src/RE/BSScript/MemoryPage.cpp
 	src/RE/BSScript/Object.cpp
-	src/RE/BSScript/ObjectBindPolicy.cpp
 	src/RE/BSScript/ObjectTypeInfo.cpp
 	src/RE/BSScript/PackUnpack.cpp
 	src/RE/BSScript/Stack.cpp
