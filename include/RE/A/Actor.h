@@ -529,6 +529,7 @@ namespace RE
 		bool						 IsPlayerTeammate() const;
 		bool						 IsRunning() const;
 		bool						 IsSneaking() const;
+		bool                         IsStaggering() const;
 		[[nodiscard]] bool			 IsSummoned() const noexcept;
 		bool						 IsTrespassing() const;
 		void						 RemoveExtraArrows3D();
