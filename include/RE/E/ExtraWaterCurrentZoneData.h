@@ -1,8 +1,8 @@
 #pragma once
 
+#include "RE/B/BSExtraData.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTHashMap.h"
-#include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/N/NiPoint3.h"
 

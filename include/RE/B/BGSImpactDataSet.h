@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/B/BSTHashMap.h"
 #include "RE/B/BGSPreloadable.h"
+#include "RE/B/BSTHashMap.h"
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 

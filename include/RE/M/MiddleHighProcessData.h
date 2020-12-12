@@ -1,14 +1,14 @@
 #pragma once
 
+#include "RE/A/ActorPackage.h"
+#include "RE/B/BGSPerkEntry.h"
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSPointerHandle.h"
+#include "RE/B/BSResponse.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSmartPointer.h"
-#include "RE/A/ActorPackage.h"
-#include "RE/B/BGSPerkEntry.h"
-#include "RE/B/BSResponse.h"
 #include "RE/F/FormTypes.h"
 #include "RE/M/MagicSystem.h"
 #include "RE/N/NiPoint3.h"

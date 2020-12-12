@@ -2,8 +2,8 @@
 
 #include "RE/B/BSTList.h"
 #include "RE/F/FormTypes.h"
-#include "RE/S/SoulLevels.h"
 #include "RE/M/MemoryManager.h"
+#include "RE/S/SoulLevels.h"
 
 
 namespace RE

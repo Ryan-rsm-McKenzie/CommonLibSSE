@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/F/FormTypes.h"
-#include "RE/M/MagicSystem.h"
 #include "RE/M/MagicItem.h"
+#include "RE/M/MagicSystem.h"
 
 
 namespace RE

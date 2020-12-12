@@ -3,8 +3,8 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/M/MemoryManager.h"
 #include "RE/N/NiObject.h"
-#include "RE/N/NiTimeController.h"
 #include "RE/N/NiSmartPointer.h"
+#include "RE/N/NiTimeController.h"
 
 
 namespace RE

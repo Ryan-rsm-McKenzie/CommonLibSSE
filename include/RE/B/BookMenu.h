@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/S/SimpleAnimationGraphManagerHolder.h"
 #include "RE/B/BSTEvent.h"
+#include "RE/G/GPtr.h"
 #include "RE/I/IMenu.h"
 #include "RE/I/ImageData.h"
-#include "RE/G/GPtr.h"
+#include "RE/S/SimpleAnimationGraphManagerHolder.h"
 
 
 namespace RE

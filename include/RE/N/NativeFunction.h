@@ -1,14 +1,14 @@
 #pragma once
 
 #include "RE/B/BSTSmartPointer.h"
-#include "RE/N/NativeFunctionBase.h"
 #include "RE/I/IObjectHandlePolicy.h"
-#include "RE/V/VirtualMachine.h"
+#include "RE/N/NativeFunctionBase.h"
 #include "RE/P/PackUnpack.h"
 #include "RE/S/Stack.h"
 #include "RE/S/StackFrame.h"
 #include "RE/T/TypeTraits.h"
 #include "RE/V/Variable.h"
+#include "RE/V/VirtualMachine.h"
 
 
 namespace RE

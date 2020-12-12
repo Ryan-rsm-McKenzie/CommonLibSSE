@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/H/hkArray.h"
-#include "RE/H/hkbGenerator.h"
 #include "RE/H/hkRefVariant.h"
+#include "RE/H/hkbGenerator.h"
 
 
 namespace RE

@@ -1,9 +1,9 @@
 #pragma once
 
 #include "RE/B/BSTArray.h"
-#include "RE/S/StandardItemData.h"
 #include "RE/G/GFxValue.h"
 #include "RE/G/GPtr.h"
+#include "RE/S/StandardItemData.h"
 
 
 namespace RE

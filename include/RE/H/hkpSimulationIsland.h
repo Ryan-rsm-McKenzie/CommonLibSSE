@@ -1,10 +1,10 @@
 #pragma once
 
 #include "RE/H/hkArray.h"
-#include "RE/H/hkpConstraintOwner.h"
 #include "RE/H/hkBaseTypes.h"
 #include "RE/H/hkMultiThreadCheck.h"
 #include "RE/H/hkpAgentNnTrack.h"
+#include "RE/H/hkpConstraintOwner.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/B/BSFaceGenKeyframeMultiple.h"
-#include "RE/N/NiPoint3.h"
 #include "RE/N/NiExtraData.h"
+#include "RE/N/NiPoint3.h"
 
 
 namespace RE

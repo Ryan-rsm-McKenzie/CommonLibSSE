@@ -2,9 +2,9 @@
 
 #include "RE/B/BSTList.h"
 #include "RE/F/FormTypes.h"
-#include "RE/T/TESForm.h"
 #include "RE/N/NiColor.h"
 #include "RE/N/NiPoint2.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

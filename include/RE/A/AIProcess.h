@@ -1,8 +1,8 @@
 #pragma once
 
+#include "RE/A/ActorPackage.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTList.h"
-#include "RE/A/ActorPackage.h"
 
 
 namespace RE

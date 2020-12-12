@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/M/MenuEventHandler.h"
-#include "RE/I/IMenu.h"
 #include "RE/G/GFxFunctionHandler.h"
+#include "RE/I/IMenu.h"
+#include "RE/M/MenuEventHandler.h"
 
 
 namespace RE

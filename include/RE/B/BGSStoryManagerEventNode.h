@@ -1,9 +1,9 @@
 #pragma once
 
+#include "RE/B/BGSStoryManagerBranchNode.h"
 #include "RE/B/BSString.h"
 #include "RE/B/BSTArray.h"
 #include "RE/F/FormTypes.h"
-#include "RE/B/BGSStoryManagerBranchNode.h"
 
 
 namespace RE

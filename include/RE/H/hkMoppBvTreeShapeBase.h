@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/H/hkArray.h"
-#include "RE/H/hkpBvTreeShape.h"
 #include "RE/H/hkVector4.h"
+#include "RE/H/hkpBvTreeShape.h"
 
 
 namespace RE

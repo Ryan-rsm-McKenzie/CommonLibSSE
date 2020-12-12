@@ -2,8 +2,8 @@
 
 #include "RE/B/BSFixedString.h"
 #include "RE/I/IFunction.h"
-#include "RE/V/VDescTable.h"
 #include "RE/T/TypeInfo.h"
+#include "RE/V/VDescTable.h"
 
 
 namespace RE

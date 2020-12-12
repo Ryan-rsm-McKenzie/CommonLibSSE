@@ -1,24 +1,24 @@
 #pragma once
 
-#include "RE/B/BSFixedString.h"
-#include "RE/B/BSTArray.h"
+#include "RE/A/ActorValues.h"
 #include "RE/B/BGSAttackDataForm.h"
+#include "RE/B/BGSBehaviorGraphModel.h"
 #include "RE/B/BGSBipedObjectForm.h"
 #include "RE/B/BGSKeywordForm.h"
 #include "RE/B/BGSSkinForm.h"
-#include "RE/A/ActorValues.h"
+#include "RE/B/BGSTextureModel.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BSTArray.h"
 #include "RE/B/BipedObjects.h"
 #include "RE/F/FormTypes.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/S/Sexes.h"
 #include "RE/T/TESDescription.h"
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
-#include "RE/B/BGSBehaviorGraphModel.h"
-#include "RE/B/BGSTextureModel.h"
 #include "RE/T/TESModel.h"
 #include "RE/T/TESSpellList.h"
 #include "RE/T/TESTexture.h"
-#include "RE/N/NiPoint3.h"
 
 
 namespace RE

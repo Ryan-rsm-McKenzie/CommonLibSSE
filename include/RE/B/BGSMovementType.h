@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
-#include "RE/M/Movement.h"
 #include "RE/F/FormTypes.h"
+#include "RE/M/Movement.h"
 #include "RE/T/TESForm.h"
 
 

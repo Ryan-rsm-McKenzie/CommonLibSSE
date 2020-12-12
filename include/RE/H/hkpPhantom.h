@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/H/hkpPhantomType.h"
 #include "RE/H/hkArray.h"
+#include "RE/H/hkpPhantomType.h"
 #include "RE/H/hkpWorldObject.h"
 
 

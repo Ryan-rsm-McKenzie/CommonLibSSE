@@ -1,11 +1,11 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
+#include "RE/B/BSIntrusiveRefCounted.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/E/ErrorLogger.h"
 #include "RE/T/TypeInfo.h"
-#include "RE/B/BSIntrusiveRefCounted.h"
 
 
 namespace RE

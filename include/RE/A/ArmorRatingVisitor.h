@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/B/BSTArray.h"
 #include "RE/A/ArmorRatingVisitorBase.h"
+#include "RE/B/BSTArray.h"
 
 
 namespace RE

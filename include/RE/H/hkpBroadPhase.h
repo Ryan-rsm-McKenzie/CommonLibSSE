@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/H/hkArray.h"
-#include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkMultiThreadCheck.h"
+#include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkVector4.h"
 
 

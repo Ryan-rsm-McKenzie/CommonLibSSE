@@ -2,9 +2,9 @@
 
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTSmartPointer.h"
+#include "RE/B/BSTempEffect.h"
 #include "RE/N/NiMatrix3.h"
 #include "RE/N/NiPoint3.h"
-#include "RE/B/BSTempEffect.h"
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTransform.h"
 

@@ -1,9 +1,9 @@
 #pragma once
 
 #include "RE/B/BSTEvent.h"
+#include "RE/G/GFxFunctionHandler.h"
 #include "RE/I/IMenu.h"
 #include "RE/I/ImageData.h"
-#include "RE/G/GFxFunctionHandler.h"
 
 
 namespace RE

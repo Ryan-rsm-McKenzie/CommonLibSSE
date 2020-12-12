@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/G/GFxStateBag.h"
 #include "RE/G/GFxResource.h"
 #include "RE/G/GFxResourceID.h"
+#include "RE/G/GFxStateBag.h"
 #include "RE/G/GMemoryHeap.h"
-#include "RE/G/GStats.h"
 #include "RE/G/GRect.h"
+#include "RE/G/GStats.h"
 
 
 namespace RE

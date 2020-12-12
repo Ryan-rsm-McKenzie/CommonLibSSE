@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/F/FormTypes.h"
 #include "RE/B/BGSKeyword.h"
+#include "RE/F/FormTypes.h"
 
 
 namespace RE

@@ -2,8 +2,8 @@
 
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSString.h"
-#include "RE/T/TESCondition.h"
 #include "RE/F/FormTypes.h"
+#include "RE/T/TESCondition.h"
 #include "RE/T/TESForm.h"
 
 

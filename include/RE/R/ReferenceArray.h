@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/B/BSTSmartPointer.h"
 #include "RE/A/Array.h"
+#include "RE/B/BSTSmartPointer.h"
 #include "RE/C/CommonTypeTraits.h"
 #include "RE/V/Variable.h"
 

@@ -1,17 +1,17 @@
 #pragma once
 
+#include "RE/B/BGSHeadPart.h"
+#include "RE/B/BGSOverridePackCollection.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
-#include "RE/B/BGSOverridePackCollection.h"
 #include "RE/C/Color.h"
 #include "RE/F/FormTypes.h"
+#include "RE/M/MemoryManager.h"
 #include "RE/S/Sexes.h"
 #include "RE/S/SoundLevels.h"
-#include "RE/B/BGSHeadPart.h"
 #include "RE/T/TESActorBase.h"
 #include "RE/T/TESRaceForm.h"
-#include "RE/M/MemoryManager.h"
 
 
 namespace RE

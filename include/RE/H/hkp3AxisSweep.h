@@ -2,8 +2,8 @@
 
 #include "RE/H/hkAabb.h"
 #include "RE/H/hkArray.h"
-#include "RE/H/hkpBroadPhase.h"
 #include "RE/H/hkVector4.h"
+#include "RE/H/hkpBroadPhase.h"
 
 
 namespace RE

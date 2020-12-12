@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/B/BSTArray.h"
-#include "RE/M/MenuEventHandler.h"
 #include "RE/A/ActorValues.h"
-#include "RE/I/IMenu.h"
-#include "RE/N/NiPoint3.h"
+#include "RE/B/BSTArray.h"
 #include "RE/G/GFxValue.h"
+#include "RE/I/IMenu.h"
+#include "RE/M/MenuEventHandler.h"
+#include "RE/N/NiPoint3.h"
 
 
 namespace RE

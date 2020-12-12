@@ -2,8 +2,8 @@
 
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTArray.h"
-#include "RE/R/ReferenceEffect.h"
 #include "RE/N/NiSmartPointer.h"
+#include "RE/R/ReferenceEffect.h"
 
 
 namespace RE

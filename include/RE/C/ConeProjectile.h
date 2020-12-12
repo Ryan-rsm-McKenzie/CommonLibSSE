@@ -1,11 +1,11 @@
 #pragma once
 
 #include "RE/B/BSTArray.h"
-#include "RE/H/hkRefPtr.h"
 #include "RE/F/FormTypes.h"
+#include "RE/H/hkRefPtr.h"
 #include "RE/I/ImpactResults.h"
-#include "RE/P/Projectile.h"
 #include "RE/N/NiPoint3.h"
+#include "RE/P/Projectile.h"
 
 
 namespace RE

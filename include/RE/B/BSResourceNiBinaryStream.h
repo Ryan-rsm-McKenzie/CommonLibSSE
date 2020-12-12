@@ -2,8 +2,8 @@
 
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/E/ErrorCodes.h"
-#include "RE/S/Stream.h"
 #include "RE/N/NiBinaryStream.h"
+#include "RE/S/Stream.h"
 
 
 namespace RE

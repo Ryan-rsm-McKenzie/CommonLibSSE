@@ -2,8 +2,8 @@
 
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
-#include "RE/I/IMenu.h"
 #include "RE/G/GFxValue.h"
+#include "RE/I/IMenu.h"
 
 
 namespace RE

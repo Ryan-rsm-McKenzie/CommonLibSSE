@@ -1,15 +1,15 @@
 #pragma once
 
+#include "RE/B/BSBound.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTHashMap.h"
-#include "RE/H/hkpCharacterContext.h"
-#include "RE/H/hkpCharacterState.h"
 #include "RE/H/hkRefPtr.h"
 #include "RE/H/hkStepInfo.h"
 #include "RE/H/hkVector4.h"
+#include "RE/H/hkpCharacterContext.h"
 #include "RE/H/hkpCharacterControl.h"
+#include "RE/H/hkpCharacterState.h"
 #include "RE/N/NiPoint3.h"
-#include "RE/B/BSBound.h"
 #include "RE/N/NiRefObject.h"
 #include "RE/N/NiSmartPointer.h"
 

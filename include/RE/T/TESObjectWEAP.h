@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/A/ActorValues.h"
 #include "RE/B/BGSBlockBashData.h"
 #include "RE/B/BGSDestructibleObjectForm.h"
 #include "RE/B/BGSEquipType.h"
@@ -7,17 +8,16 @@
 #include "RE/B/BGSMessageIcon.h"
 #include "RE/B/BGSPickupPutdownSounds.h"
 #include "RE/B/BGSPreloadable.h"
-#include "RE/A/ActorValues.h"
 #include "RE/F/FormTypes.h"
 #include "RE/S/SoundLevels.h"
 #include "RE/T/TESAttackDamageForm.h"
+#include "RE/T/TESBoundObject.h"
 #include "RE/T/TESDescription.h"
 #include "RE/T/TESEnchantableForm.h"
-#include "RE/T/TESBoundObject.h"
 #include "RE/T/TESFullName.h"
+#include "RE/T/TESIcon.h"
 #include "RE/T/TESModel.h"
 #include "RE/T/TESModelTextureSwap.h"
-#include "RE/T/TESIcon.h"
 #include "RE/T/TESValueForm.h"
 #include "RE/T/TESWeightForm.h"
 

@@ -1,10 +1,10 @@
 #pragma once
 
 #include "RE/B/BSTArray.h"
+#include "RE/B/BSTempEffect.h"
 #include "RE/N/NiColor.h"
 #include "RE/N/NiFrustumPlanes.h"
 #include "RE/N/NiMatrix3.h"
-#include "RE/B/BSTempEffect.h"
 #include "RE/N/NiSmartPointer.h"
 
 

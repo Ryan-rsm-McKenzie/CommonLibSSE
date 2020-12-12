@@ -1,6 +1,11 @@
 #pragma once
 
-#include "RE/I/IPostAnimationChannelUpdateFunctor.h"
+#include "RE/A/AITimeStamp.h"
+#include "RE/A/ActiveEffect.h"
+#include "RE/A/ActorState.h"
+#include "RE/A/ActorValueOwner.h"
+#include "RE/A/ActorValues.h"
+#include "RE/B/BGSEntryPointPerkEntry.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSPointerHandleSmartPointer.h"
 #include "RE/B/BSTArray.h"
@@ -8,19 +13,14 @@
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/B/BSTTuple.h"
-#include "RE/A/AITimeStamp.h"
-#include "RE/A/ActiveEffect.h"
-#include "RE/A/ActorValueOwner.h"
-#include "RE/B/BGSEntryPointPerkEntry.h"
-#include "RE/M/MagicTarget.h"
-#include "RE/A/ActorValues.h"
 #include "RE/D/DetectionPriorities.h"
 #include "RE/F/FormTypes.h"
+#include "RE/I/IPostAnimationChannelUpdateFunctor.h"
 #include "RE/M/MagicSystem.h"
+#include "RE/M/MagicTarget.h"
+#include "RE/N/NiSmartPointer.h"
 #include "RE/T/TESNPC.h"
 #include "RE/T/TESObjectREFR.h"
-#include "RE/N/NiSmartPointer.h"
-#include "RE/A/ActorState.h"
 
 
 namespace RE

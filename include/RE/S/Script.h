@@ -1,8 +1,8 @@
 #pragma once
 
+#include "RE/C/CommandTable.h"
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
-#include "RE/C/CommandTable.h"
 
 
 namespace RE

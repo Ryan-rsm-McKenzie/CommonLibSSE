@@ -1,9 +1,9 @@
 #pragma once
 
 #include "RE/B/BSTArray.h"
+#include "RE/F/FormTypes.h"
 #include "RE/P/PerkRankVisitor.h"
 #include "RE/T/TESCondition.h"
-#include "RE/F/FormTypes.h"
 #include "RE/T/TESDescription.h"
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSExtraData.h"
+#include "RE/B/BSSoundHandle.h"
 #include "RE/E/ExtraDataTypes.h"
 
 

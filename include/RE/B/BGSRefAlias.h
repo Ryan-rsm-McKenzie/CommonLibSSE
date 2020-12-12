@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/B/BSPointerHandle.h"
 #include "RE/B/BGSBaseAlias.h"
+#include "RE/B/BSPointerHandle.h"
 #include "RE/F/FormTypes.h"
 #include "RE/Q/QuestEvents.h"
 

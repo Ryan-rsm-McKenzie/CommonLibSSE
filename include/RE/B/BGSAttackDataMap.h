@@ -1,8 +1,8 @@
 #pragma once
 
+#include "RE/B/BGSAttackData.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/F/FormTypes.h"
-#include "RE/B/BGSAttackData.h"
 #include "RE/N/NiRefObject.h"
 #include "RE/N/NiSmartPointer.h"
 

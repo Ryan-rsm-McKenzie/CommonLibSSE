@@ -2,8 +2,8 @@
 
 #include "RE/B/BGSDestructibleObjectForm.h"
 #include "RE/F/FormTypes.h"
-#include "RE/T/TESObjectSTAT.h"
 #include "RE/T/TESFullName.h"
+#include "RE/T/TESObjectSTAT.h"
 
 
 namespace RE

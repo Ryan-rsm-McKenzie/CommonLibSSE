@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/B/BSTList.h"
 #include "RE/B/BSExtraData.h"
+#include "RE/B/BSTList.h"
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/M/MagicTarget.h"
 

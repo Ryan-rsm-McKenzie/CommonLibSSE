@@ -4,9 +4,9 @@
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/F/FormTypes.h"
-#include "RE/T/TESForm.h"
 #include "RE/N/NiTArray.h"
 #include "RE/N/NiTList.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

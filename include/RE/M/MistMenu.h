@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/S/SimpleAnimationGraphManagerHolder.h"
-#include "RE/M/MenuEventHandler.h"
 #include "RE/I/IMenu.h"
+#include "RE/M/MenuEventHandler.h"
 #include "RE/N/NiColor.h"
+#include "RE/S/SimpleAnimationGraphManagerHolder.h"
 
 
 namespace RE

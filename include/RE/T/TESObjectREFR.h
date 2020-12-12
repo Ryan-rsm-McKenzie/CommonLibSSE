@@ -1,19 +1,19 @@
 #pragma once
 
-#include "RE/I/IAnimationGraphManagerHolder.h"
 #include "RE/B/BSFixedString.h"
+#include "RE/B/BSHandleRefObject.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSmartPointer.h"
-#include "RE/B/BSHandleRefObject.h"
-#include "RE/F/FormTypes.h"
-#include "RE/M/MagicSystem.h"
-#include "RE/T/TESForm.h"
 #include "RE/E/ExtraDataList.h"
+#include "RE/F/FormTypes.h"
+#include "RE/I/IAnimationGraphManagerHolder.h"
+#include "RE/M/MagicSystem.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

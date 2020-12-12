@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/H/hkArray.h"
-#include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkRefVariant.h"
+#include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkStringPtr.h"
 
 

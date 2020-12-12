@@ -2,13 +2,13 @@
 
 #include "RE/C/Color.h"
 #include "RE/F/FormTypes.h"
+#include "RE/N/NiColor.h"
+#include "RE/N/NiPoint3.h"
+#include "RE/N/NiSmartPointer.h"
 #include "RE/T/TESAttackDamageForm.h"
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESTexture.h"
-#include "RE/N/NiColor.h"
-#include "RE/N/NiPoint3.h"
-#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

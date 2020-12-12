@@ -1,10 +1,10 @@
 #pragma once
 
+#include "RE/B/BGSBodyPartDefs.h"
+#include "RE/B/BSExtraData.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTArray.h"
-#include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
-#include "RE/B/BGSBodyPartDefs.h"
 
 
 namespace RE

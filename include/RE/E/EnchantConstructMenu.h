@@ -2,8 +2,8 @@
 
 #include "RE/B/BSString.h"
 #include "RE/C/CraftingSubMenu.h"
-#include "RE/I/IMessageBoxCallback.h"
 #include "RE/G/GFxValue.h"
+#include "RE/I/IMessageBoxCallback.h"
 
 
 namespace RE

@@ -3,10 +3,10 @@
 #include "RE/B/BGSDestructibleObjectForm.h"
 #include "RE/B/BGSKeywordForm.h"
 #include "RE/B/BGSOpenCloseForm.h"
-#include "RE/T/TESMagicTargetForm.h"
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESBoundAnimObject.h"
 #include "RE/T/TESFullName.h"
+#include "RE/T/TESMagicTargetForm.h"
 #include "RE/T/TESModelTextureSwap.h"
 
 

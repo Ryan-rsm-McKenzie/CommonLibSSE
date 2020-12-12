@@ -1,14 +1,14 @@
 #pragma once
 
+#include "RE/B/BGSKeywordForm.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTTuple.h"
-#include "RE/B/BGSKeywordForm.h"
 #include "RE/F/FormTypes.h"
+#include "RE/N/NiSmartPointer.h"
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
-#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

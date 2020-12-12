@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/B/BSPointerHandle.h"
-#include "RE/N/NiPoint3.h"
 #include "RE/D/DelayFunctor.h"
+#include "RE/N/NiPoint3.h"
 
 
 namespace RE

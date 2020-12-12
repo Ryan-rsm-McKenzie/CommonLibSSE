@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/B/BSTSmartPointer.h"
 #include "RE/B/BSExtraData.h"
+#include "RE/B/BSTSmartPointer.h"
 #include "RE/E/ExtraDataTypes.h"
 
 

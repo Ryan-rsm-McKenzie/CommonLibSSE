@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/B/BSFixedString.h"
 #include "RE/A/AttachTechniqueInput.h"
+#include "RE/B/BSFixedString.h"
 
 
 namespace RE

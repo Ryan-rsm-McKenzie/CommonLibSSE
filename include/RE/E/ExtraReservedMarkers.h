@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/B/BSTArray.h"
 #include "RE/B/BSExtraData.h"
-#include "RE/M/MarkerUsedData.h"
+#include "RE/B/BSTArray.h"
 #include "RE/E/ExtraDataTypes.h"
+#include "RE/M/MarkerUsedData.h"
 
 
 namespace RE

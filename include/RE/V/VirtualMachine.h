@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/A/AttachedScript.h"
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
@@ -7,13 +8,12 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTMessageQueue.h"
 #include "RE/B/BSTSmartPointer.h"
-#include "RE/L/LinkerProcessor.h"
+#include "RE/F/FunctionMessage.h"
 #include "RE/I/IVMDebugInterface.h"
 #include "RE/I/IVMObjectBindInterface.h"
 #include "RE/I/IVMSaveLoadInterface.h"
 #include "RE/I/IVirtualMachine.h"
-#include "RE/A/AttachedScript.h"
-#include "RE/F/FunctionMessage.h"
+#include "RE/L/LinkerProcessor.h"
 #include "RE/S/SuspendedStack.h"
 
 

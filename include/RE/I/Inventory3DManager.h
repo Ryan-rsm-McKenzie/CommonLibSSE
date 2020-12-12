@@ -3,8 +3,8 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/B/BSTSmartPointer.h"
-#include "RE/M/MenuEventHandler.h"
 #include "RE/E/ExtraDataList.h"
+#include "RE/M/MenuEventHandler.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
 

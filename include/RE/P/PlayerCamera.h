@@ -5,8 +5,8 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/B/BSTSmartPointer.h"
-#include "RE/T/TESCamera.h"
 #include "RE/N/NiPoint3.h"
+#include "RE/T/TESCamera.h"
 
 
 namespace RE

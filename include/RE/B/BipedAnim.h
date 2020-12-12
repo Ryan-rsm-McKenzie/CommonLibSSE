@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSIntrusiveRefCounted.h"
+#include "RE/B/BSPointerHandle.h"
 #include "RE/B/BipedObjects.h"
 #include "RE/N/NiSmartPointer.h"
 

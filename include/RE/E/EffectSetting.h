@@ -1,16 +1,16 @@
 #pragma once
 
+#include "RE/A/ActorValues.h"
+#include "RE/B/BGSKeywordForm.h"
+#include "RE/B/BGSMenuDisplayObject.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTList.h"
-#include "RE/B/BGSKeywordForm.h"
-#include "RE/B/BGSMenuDisplayObject.h"
 #include "RE/E/EffectArchetypes.h"
-#include "RE/T/TESCondition.h"
-#include "RE/A/ActorValues.h"
 #include "RE/F/FormTypes.h"
 #include "RE/M/MagicSystem.h"
 #include "RE/S/SoundLevels.h"
+#include "RE/T/TESCondition.h"
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/S/SimpleAnimationGraphManagerHolder.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTEvent.h"
+#include "RE/N/NiSmartPointer.h"
 #include "RE/R/RefAttachTechniqueInput.h"
 #include "RE/R/ReferenceEffect.h"
-#include "RE/N/NiSmartPointer.h"
+#include "RE/S/SimpleAnimationGraphManagerHolder.h"
 
 
 namespace RE

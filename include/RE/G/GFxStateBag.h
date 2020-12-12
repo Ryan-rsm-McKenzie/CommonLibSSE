@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/G/GFxState.h"
 #include "RE/G/GFxFileConstants.h"
+#include "RE/G/GFxState.h"
 #include "RE/G/GPtr.h"
 
 

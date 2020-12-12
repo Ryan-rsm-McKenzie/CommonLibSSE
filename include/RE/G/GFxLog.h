@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/G/GFxState.h"
 #include "RE/G/GFxLogBase.h"
+#include "RE/G/GFxState.h"
 
 
 namespace RE

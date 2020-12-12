@@ -1,11 +1,11 @@
 #pragma once
 
 #include "RE/B/BSTList.h"
-#include "RE/W/WeatherType.h"
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 #include "RE/T/TESModel.h"
 #include "RE/T/TESTexture.h"
+#include "RE/W/WeatherType.h"
 
 
 namespace RE

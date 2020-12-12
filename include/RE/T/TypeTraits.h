@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/R/ReferenceArray.h"
 #include "RE/C/CommonTypeTraits.h"
+#include "RE/R/ReferenceArray.h"
 #include "RE/T/TypeInfo.h"
 
 

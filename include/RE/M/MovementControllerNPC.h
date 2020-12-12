@@ -1,12 +1,12 @@
 #pragma once
 
 #include "RE/I/IAnimationSetCallbackFunctor.h"
-#include "RE/M/MovementControllerAI.h"
 #include "RE/I/IMovementDirectControl.h"
 #include "RE/I/IMovementMessageInterface.h"
 #include "RE/I/IMovementMotionDrivenControl.h"
 #include "RE/I/IMovementPlannerDirectControl.h"
 #include "RE/I/IMovementSelectIdle.h"
+#include "RE/M/MovementControllerAI.h"
 
 
 namespace RE

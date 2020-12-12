@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/B/BSTArray.h"
 #include "RE/A/ActorValues.h"
+#include "RE/B/BSTArray.h"
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESObjectACTI.h"
 

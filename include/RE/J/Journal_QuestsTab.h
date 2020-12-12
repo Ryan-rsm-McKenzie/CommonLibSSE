@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/J/JournalTab.h"
 #include "RE/G/GFxValue.h"
+#include "RE/J/JournalTab.h"
 
 
 namespace RE

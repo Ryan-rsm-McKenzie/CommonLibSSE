@@ -2,8 +2,8 @@
 
 #include "RE/B/BGSSoundDescriptor.h"
 #include "RE/B/BSTArray.h"
-#include "RE/I/ID.h"
 #include "RE/F/FormTypes.h"
+#include "RE/I/ID.h"
 
 
 namespace RE

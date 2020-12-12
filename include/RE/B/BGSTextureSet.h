@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/I/ID.h"
+#include "RE/B/BSTextureSet.h"
 #include "RE/C/Color.h"
 #include "RE/D/DecalData.h"
 #include "RE/F/FormTypes.h"
+#include "RE/I/ID.h"
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESTexture.h"
-#include "RE/B/BSTextureSet.h"
 
 
 namespace RE

@@ -5,13 +5,13 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTList.h"
 #include "RE/F/FormTypes.h"
+#include "RE/N/NiPoint2.h"
+#include "RE/N/NiSmartPointer.h"
+#include "RE/N/NiTPointerMap.h"
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESModel.h"
 #include "RE/T/TESTexture.h"
-#include "RE/N/NiPoint2.h"
-#include "RE/N/NiSmartPointer.h"
-#include "RE/N/NiTPointerMap.h"
 
 
 namespace RE

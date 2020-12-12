@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/I/IFunctionArguments.h"
-#include "RE/Z/ZeroFunctionArguments.h"
 #include "RE/T/TypeTraits.h"
+#include "RE/Z/ZeroFunctionArguments.h"
 
 
 namespace RE

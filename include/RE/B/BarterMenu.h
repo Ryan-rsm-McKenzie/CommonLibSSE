@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/B/BSTArray.h"
-#include "RE/I/IMenu.h"
 #include "RE/G/GFxValue.h"
+#include "RE/I/IMenu.h"
 
 
 namespace RE

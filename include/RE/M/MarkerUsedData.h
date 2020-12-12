@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/B/BSPointerHandle.h"
 #include "RE/A/AITimeStamp.h"
+#include "RE/B/BSPointerHandle.h"
 
 
 namespace RE

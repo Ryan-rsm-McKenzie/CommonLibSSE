@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/B/BGSTypedItem.h"
 #include "RE/B/BGSProcedureTreeConditionalItem.h"
+#include "RE/B/BGSTypedItem.h"
 
 
 namespace RE

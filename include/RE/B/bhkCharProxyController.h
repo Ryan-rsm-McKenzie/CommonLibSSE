@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/H/hkpCharacterProxyListener.h"
-#include "RE/B/bhkCharacterProxy.h"
 #include "RE/B/bhkCharacterController.h"
+#include "RE/B/bhkCharacterProxy.h"
+#include "RE/H/hkpCharacterProxyListener.h"
 
 
 namespace RE

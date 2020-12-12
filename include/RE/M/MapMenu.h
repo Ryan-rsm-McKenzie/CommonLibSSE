@@ -4,11 +4,11 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSmartPointer.h"
-#include "RE/M/MapCamera.h"
-#include "RE/I/IMapCameraCallbacks.h"
-#include "RE/L/LocalMapMenu.h"
-#include "RE/I/IMenu.h"
 #include "RE/G/GFxValue.h"
+#include "RE/I/IMapCameraCallbacks.h"
+#include "RE/I/IMenu.h"
+#include "RE/L/LocalMapMenu.h"
+#include "RE/M/MapCamera.h"
 
 
 namespace RE

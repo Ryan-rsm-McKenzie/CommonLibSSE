@@ -1,10 +1,10 @@
 #pragma once
 
 #include "RE/H/hkReferencedObject.h"
-#include "RE/H/hkpCharacterState.h"
 #include "RE/H/hkStepInfo.h"
 #include "RE/H/hkVector4.h"
 #include "RE/H/hkpCharacterControl.h"
+#include "RE/H/hkpCharacterState.h"
 
 
 namespace RE

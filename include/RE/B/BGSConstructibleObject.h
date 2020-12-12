@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/T/TESCondition.h"
 #include "RE/F/FormTypes.h"
+#include "RE/T/TESCondition.h"
 #include "RE/T/TESContainer.h"
 #include "RE/T/TESForm.h"
 

@@ -1,10 +1,10 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
+#include "RE/B/BSInputDevice.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSingleton.h"
-#include "RE/B/BSInputDevice.h"
 #include "RE/I/InputDevices.h"
 #include "RE/P/PCGamepadType.h"
 #include "RE/U/UserEvents.h"

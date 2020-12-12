@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/B/BSFixedString.h"
 #include "RE/A/ActiveEffect.h"
 #include "RE/B/BGSBaseAlias.h"
+#include "RE/B/BSFixedString.h"
 #include "RE/T/TESForm.h"
 
 

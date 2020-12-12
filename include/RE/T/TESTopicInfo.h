@@ -2,10 +2,10 @@
 
 #include "RE/B/BSFixedString.h"
 #include "RE/D/DialogueItem.h"
-#include "RE/T/TESCondition.h"
 #include "RE/F/FormTypes.h"
-#include "RE/T/TESForm.h"
 #include "RE/M/MemoryManager.h"
+#include "RE/T/TESCondition.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

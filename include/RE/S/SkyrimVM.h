@@ -7,18 +7,18 @@
 #include "RE/B/BSTMessageQueue.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/B/BSTSmartPointer.h"
-#include "RE/I/IFreezeQuery.h"
 #include "RE/C/CompiledScriptLoader.h"
-#include "RE/S/SimpleAllocMemoryPagePolicy.h"
-#include "RE/I/IStackCallbackSaveInterface.h"
-#include "RE/S/SkyrimScriptStore.h"
 #include "RE/D/DelayFunctor.h"
 #include "RE/F/FragmentSystem.h"
 #include "RE/H/HandlePolicy.h"
+#include "RE/I/IFreezeQuery.h"
+#include "RE/I/IStackCallbackSaveInterface.h"
 #include "RE/L/Logger.h"
-#include "RE/SkyrimScriptObjectBindPolicy.h"
 #include "RE/P/Profiler.h"
 #include "RE/S/SavePatcher.h"
+#include "RE/S/SimpleAllocMemoryPagePolicy.h"
+#include "RE/S/SkyrimScriptStore.h"
+#include "RE/SkyrimScriptObjectBindPolicy.h"
 
 
 namespace RE

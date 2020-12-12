@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/H/hkpMoppCode.h"
-#include "RE/T/TESChildCell.h"
-#include "RE/F/FormTypes.h"
-#include "RE/T/TESForm.h"
-#include "RE/N/NiPoint2.h"
 #include "RE/B/BSTriShape.h"
+#include "RE/F/FormTypes.h"
+#include "RE/H/hkpMoppCode.h"
+#include "RE/N/NiPoint2.h"
 #include "RE/N/NiSmartPointer.h"
+#include "RE/T/TESChildCell.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

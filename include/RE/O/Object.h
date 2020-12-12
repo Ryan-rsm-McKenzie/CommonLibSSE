@@ -2,8 +2,8 @@
 
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTSmartPointer.h"
-#include "RE/V/Variable.h"
 #include "RE/M/MemoryManager.h"
+#include "RE/V/Variable.h"
 
 
 namespace RE

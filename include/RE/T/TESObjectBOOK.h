@@ -1,16 +1,16 @@
 #pragma once
 
+#include "RE/A/ActorValues.h"
 #include "RE/B/BGSDestructibleObjectForm.h"
 #include "RE/B/BGSKeywordForm.h"
 #include "RE/B/BGSMessageIcon.h"
 #include "RE/B/BGSPickupPutdownSounds.h"
-#include "RE/A/ActorValues.h"
 #include "RE/F/FormTypes.h"
-#include "RE/T/TESDescription.h"
 #include "RE/T/TESBoundObject.h"
+#include "RE/T/TESDescription.h"
 #include "RE/T/TESFullName.h"
-#include "RE/T/TESModelTextureSwap.h"
 #include "RE/T/TESIcon.h"
+#include "RE/T/TESModelTextureSwap.h"
 #include "RE/T/TESValueForm.h"
 #include "RE/T/TESWeightForm.h"
 

@@ -1,18 +1,18 @@
 #pragma once
 
-#include "RE/B/BSSoundHandle.h"
+#include "RE/A/AITimeStamp.h"
+#include "RE/B/BGSAnimationSequencer.h"
 #include "RE/B/BSFixedString.h"
+#include "RE/B/BSIntrusiveRefCounted.h"
 #include "RE/B/BSPointerHandle.h"
+#include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/B/BSTTuple.h"
-#include "RE/B/BSIntrusiveRefCounted.h"
-#include "RE/A/AITimeStamp.h"
-#include "RE/B/BGSAnimationSequencer.h"
-#include "RE/T/TESShout.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
+#include "RE/T/TESShout.h"
 
 
 namespace RE

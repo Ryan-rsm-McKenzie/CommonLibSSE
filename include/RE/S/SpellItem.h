@@ -3,8 +3,8 @@
 #include "RE/B/BGSEquipType.h"
 #include "RE/B/BGSMenuDisplayObject.h"
 #include "RE/F/FormTypes.h"
-#include "RE/T/TESDescription.h"
 #include "RE/M/MagicItem.h"
+#include "RE/T/TESDescription.h"
 
 
 namespace RE

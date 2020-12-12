@@ -2,11 +2,11 @@
 
 #include "RE/G/GColor.h"
 #include "RE/G/GMatrix2D.h"
-#include "RE/G/GRefCountBase.h"
-#include "RE/G/GTexture.h"
-#include "RE/G/GRendererEventHandler.h"
 #include "RE/G/GPoint.h"
 #include "RE/G/GRect.h"
+#include "RE/G/GRefCountBase.h"
+#include "RE/G/GRendererEventHandler.h"
+#include "RE/G/GTexture.h"
 
 
 namespace RE

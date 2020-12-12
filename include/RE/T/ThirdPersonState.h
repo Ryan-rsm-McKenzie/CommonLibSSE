@@ -1,11 +1,11 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
-#include "RE/P/PlayerInputHandler.h"
-#include "RE/T/TESCameraState.h"
 #include "RE/N/NiPoint2.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiQuaternion.h"
+#include "RE/P/PlayerInputHandler.h"
+#include "RE/T/TESCameraState.h"
 
 
 namespace RE

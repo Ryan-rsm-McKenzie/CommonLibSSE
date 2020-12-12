@@ -3,8 +3,8 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTList.h"
-#include "RE/N/NiColor.h"
 #include "RE/B/BSTextureSet.h"
+#include "RE/N/NiColor.h"
 #include "RE/N/NiSmartPointer.h"
 #include "RE/S/SkyEffectController.h"
 

@@ -1,8 +1,8 @@
 #pragma once
 
+#include "RE/B/BSMaterialObject.h"
 #include "RE/B/BSString.h"
 #include "RE/B/BSTArray.h"
-#include "RE/B/BSMaterialObject.h"
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 #include "RE/T/TESModel.h"

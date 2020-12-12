@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/H/hkpShapeType.h"
 #include "RE/H/hkpBroadPhaseCastCollector.h"
 #include "RE/H/hkpLinearCastCollisionInput.h"
+#include "RE/H/hkpShapeType.h"
 
 
 namespace RE

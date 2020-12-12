@@ -3,10 +3,10 @@
 #include "RE/B/BSAnimNoteListener.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTHashMap.h"
-#include "RE/N/NiTimeController.h"
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTArray.h"
 #include "RE/N/NiTSet.h"
+#include "RE/N/NiTimeController.h"
 
 
 namespace RE

@@ -2,8 +2,8 @@
 
 #include "RE/G/GFxEvent.h"
 #include "RE/G/GFxKey.h"
-#include "RE/G/GFxSpecialKeysState.h"
 #include "RE/G/GFxPlayerStats.h"
+#include "RE/G/GFxSpecialKeysState.h"
 #include "RE/G/GRefCountBaseNTS.h"
 
 

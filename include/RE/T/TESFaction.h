@@ -1,9 +1,9 @@
 #pragma once
 
+#include "RE/A/AITimeStamp.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTList.h"
-#include "RE/A/AITimeStamp.h"
 #include "RE/F/FightReactions.h"
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"

@@ -2,8 +2,8 @@
 
 #include "RE/B/BSFixedString.h"
 #include "RE/F/FormTypes.h"
-#include "RE/T/TESForm.h"
 #include "RE/N/NiColor.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/B/BSExtraData.h"
-#include "RE/E/ExtraDataTypes.h"
 #include "RE/C/CollisionLayers.h"
+#include "RE/E/ExtraDataTypes.h"
 
 
 namespace RE

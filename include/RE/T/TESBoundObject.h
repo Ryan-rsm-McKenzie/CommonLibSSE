@@ -2,8 +2,8 @@
 
 #include "RE/B/BSString.h"
 #include "RE/F/FormTypes.h"
-#include "RE/T/TESObject.h"
 #include "RE/N/NiSmartPointer.h"
+#include "RE/T/TESObject.h"
 
 
 namespace RE

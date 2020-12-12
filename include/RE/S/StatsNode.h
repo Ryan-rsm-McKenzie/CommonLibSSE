@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/S/SimpleAnimationGraphManagerHolder.h"
+#include "RE/B/BSIntrusiveRefCounted.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
-#include "RE/B/BSIntrusiveRefCounted.h"
+#include "RE/S/SimpleAnimationGraphManagerHolder.h"
 
 
 namespace RE

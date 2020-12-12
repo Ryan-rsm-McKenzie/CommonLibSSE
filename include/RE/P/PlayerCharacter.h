@@ -1,21 +1,21 @@
 #pragma once
 
-#include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSPointerHandle.h"
+#include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/B/BSTTuple.h"
-#include "RE/H/hkRefPtr.h"
-#include "RE/P/PositionPlayerEvent.h"
+#include "RE/C/Character.h"
 #include "RE/C/Crime.h"
 #include "RE/F/FormTypes.h"
-#include "RE/C/Character.h"
+#include "RE/H/hkRefPtr.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTMap.h"
+#include "RE/P/PositionPlayerEvent.h"
 
 
 namespace RE

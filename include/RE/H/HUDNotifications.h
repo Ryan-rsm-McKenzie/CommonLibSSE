@@ -2,8 +2,8 @@
 
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTArray.h"
-#include "RE/H/HUDObject.h"
 #include "RE/G/GFxValue.h"
+#include "RE/H/HUDObject.h"
 
 
 namespace RE

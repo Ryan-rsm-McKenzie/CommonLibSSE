@@ -1,17 +1,17 @@
 #pragma once
 
+#include "RE/B/BGSStoryManagerTreeForm.h"
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSString.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTList.h"
-#include "RE/T/TESCondition.h"
 #include "RE/D/DialogueTypes.h"
 #include "RE/F/FormTypes.h"
 #include "RE/Q/QuestEvents.h"
 #include "RE/Q/QuestObjectiveStates.h"
-#include "RE/B/BGSStoryManagerTreeForm.h"
+#include "RE/T/TESCondition.h"
 #include "RE/T/TESFullName.h"
 
 

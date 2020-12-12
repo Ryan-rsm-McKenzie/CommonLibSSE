@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/N/NiColor.h"
 #include "RE/B/BSTriShape.h"
+#include "RE/N/NiColor.h"
 #include "RE/N/NiSmartPointer.h"
 
 

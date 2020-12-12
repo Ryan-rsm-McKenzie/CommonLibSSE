@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/H/hkpPhantom.h"
 #include "RE/H/hkMotionState.h"
+#include "RE/H/hkpPhantom.h"
 
 
 namespace RE

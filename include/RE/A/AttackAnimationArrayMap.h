@@ -2,8 +2,8 @@
 
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
-#include "RE/S/SetEventData.h"
 #include "RE/N/NiRefObject.h"
+#include "RE/S/SetEventData.h"
 
 
 namespace RE

@@ -2,20 +2,20 @@
 
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSBitField.h"
+#include "RE/B/BSMultiBoundNode.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTList.h"
 #include "RE/C/Color.h"
-#include "RE/I/InteriorData.h"
-#include "RE/F/FormTypes.h"
-#include "RE/T/TESForm.h"
-#include "RE/T/TESObjectREFR.h"
-#include "RE/T/TESFullName.h"
 #include "RE/E/ExtraDataList.h"
-#include "RE/B/BSMultiBoundNode.h"
+#include "RE/F/FormTypes.h"
+#include "RE/I/InteriorData.h"
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTMap.h"
+#include "RE/T/TESForm.h"
+#include "RE/T/TESFullName.h"
+#include "RE/T/TESObjectREFR.h"
 
 
 namespace RE

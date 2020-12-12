@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/B/BSTEvent.h"
 #include "RE/A/ActorValues.h"
-#include "RE/I/IMenu.h"
+#include "RE/B/BSTEvent.h"
 #include "RE/G/GFxValue.h"
+#include "RE/I/IMenu.h"
 
 
 namespace RE

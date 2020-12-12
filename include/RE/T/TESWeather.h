@@ -1,8 +1,8 @@
 #pragma once
 
+#include "RE/B/BGSDirectionalAmbientLightingColors.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTList.h"
-#include "RE/B/BGSDirectionalAmbientLightingColors.h"
 #include "RE/C/Color.h"
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"

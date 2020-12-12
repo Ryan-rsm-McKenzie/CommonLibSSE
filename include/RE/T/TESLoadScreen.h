@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
-#include "RE/T/TESCondition.h"
 #include "RE/F/FormTypes.h"
+#include "RE/T/TESCondition.h"
 #include "RE/T/TESForm.h"
 #include "RE/T/TESModel.h"
 

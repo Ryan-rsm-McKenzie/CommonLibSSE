@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/M/MemoryManager.h"
 #include "RE/G/GFxValue.h"
 #include "RE/G/GPtr.h"
+#include "RE/M/MemoryManager.h"
 
 
 namespace RE

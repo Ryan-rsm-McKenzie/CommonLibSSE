@@ -1,10 +1,10 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
+#include "RE/B/BSIntrusiveRefCounted.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTObjectDictionary.h"
 #include "RE/B/BSTSmartPointer.h"
-#include "RE/B/BSIntrusiveRefCounted.h"
 #include "RE/D/DoNothingUnhandledPolicy.h"
 #include "RE/I/IHandlerFunctor.h"
 

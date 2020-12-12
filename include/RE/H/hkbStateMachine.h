@@ -1,11 +1,11 @@
 #pragma once
 
 #include "RE/H/hkArray.h"
+#include "RE/H/hkRefPtr.h"
 #include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkbBindable.h"
-#include "RE/H/hkbGenerator.h"
-#include "RE/H/hkRefPtr.h"
 #include "RE/H/hkbEvent.h"
+#include "RE/H/hkbGenerator.h"
 
 
 namespace RE

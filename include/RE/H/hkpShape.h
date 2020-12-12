@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/H/hkpShapeType.h"
 #include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkSseMathTypes.h"
 #include "RE/H/hkpShapeBuffer.h"
+#include "RE/H/hkpShapeType.h"
 
 
 namespace RE

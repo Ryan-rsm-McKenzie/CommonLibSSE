@@ -1,9 +1,9 @@
 #pragma once
 
+#include "RE/A/ActorValues.h"
+#include "RE/B/BGSKeywordForm.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTSmartPointer.h"
-#include "RE/B/BGSKeywordForm.h"
-#include "RE/A/ActorValues.h"
 #include "RE/M/MagicSystem.h"
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESFullName.h"

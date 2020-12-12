@@ -1,11 +1,11 @@
 #pragma once
 
 #include "RE/H/hkArray.h"
-#include "RE/H/hkReferencedObject.h"
-#include "RE/H/hkpWorldCinfo.h"
 #include "RE/H/hkMultiThreadCheck.h"
+#include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkStepInfo.h"
 #include "RE/H/hkpSolverInfo.h"
+#include "RE/H/hkpWorldCinfo.h"
 
 
 namespace RE

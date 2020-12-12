@@ -2,8 +2,8 @@
 
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTTuple.h"
-#include "RE/T/TypeInfo.h"
 #include "RE/M/MemoryManager.h"
+#include "RE/T/TypeInfo.h"
 
 
 namespace RE

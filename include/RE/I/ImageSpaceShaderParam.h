@@ -1,9 +1,9 @@
 #pragma once
 
 #include "RE/I/ImageSpaceEffectParam.h"
-#include "RE/N/NiTexture.h"
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTArray.h"
+#include "RE/N/NiTexture.h"
 
 
 namespace RE
