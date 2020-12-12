@@ -1,4 +1,6 @@
 set(sources ${sources}
+	include/RE/RTTI.cpp
+	include/RE/Skyrim.cpp
 	include/RE/A/ActiveEffect.cpp
 	include/RE/A/Actor.cpp
 	include/RE/A/ActorCause.cpp
@@ -198,13 +200,11 @@ set(sources ${sources}
 	include/RE/P/PlayerInputHandler.cpp
 	include/RE/P/ProcessLists.cpp
 	include/RE/R/RemoveCallbackVisitor.cpp
-	include/RE/R/RTTI.cpp
 	include/RE/S/ScrapHeap.cpp
 	include/RE/S/Script.cpp
 	include/RE/S/ScriptEventSourceHolder.cpp
 	include/RE/S/Setting.cpp
 	include/RE/S/Sky.cpp
-	include/RE/S/Skyrim.cpp
 	include/RE/S/SkyrimVM.cpp
 	include/RE/S/Stack.cpp
 	include/RE/S/StackFrame.cpp

@@ -1,4 +1,4 @@
-#include "RE/R/RTTI.h"
+#include "RE/RTTI.h"
 
 #ifdef _DEBUG
 #	include <DbgHelp.h>

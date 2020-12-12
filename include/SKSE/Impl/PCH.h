@@ -993,7 +993,7 @@ namespace SKSE
 			} else if constexpr (ARGC <= std::numeric_limits<unsigned long long>::digits) {
 				return bits.to_ullong();
 			} else {
-				static_assert(false);
+				static_assert(false && sizeof...(Args));
 			}
 		}
 	}
@@ -1021,7 +1021,7 @@ namespace REL
 #include "REL/Relocation.h"
 
 #include "RE/B/BSCoreTypes.h"
-#include "RE/O/Offsets.h"
-#include "RE/O/Offsets_NiRTTI.h"
-#include "RE/O/Offsets_RTTI.h"
+#include "RE/Offsets.h"
+#include "RE/Offsets_NiRTTI.h"
+#include "RE/Offsets_RTTI.h"
 #include "RE/S/SFTypes.h"

@@ -1,4 +1,9 @@
 set(headers ${headers}
+	include/RE/Offsets.h
+	include/RE/Offsets_NiRTTI.h
+	include/RE/Offsets_RTTI.h
+	include/RE/RTTI.h
+	include/RE/Skyrim.h
 	include/RE/A/AbsorbEffect.h
 	include/RE/A/AbstractHeap.h
 	include/RE/A/ActivateHandler.h
@@ -960,9 +965,6 @@ set(headers ${headers}
 	include/RE/N/NonActorMagicTarget.h
 	include/RE/O/Object.h
 	include/RE/O/ObjectTypeInfo.h
-	include/RE/O/Offsets.h
-	include/RE/O/Offsets_NiRTTI.h
-	include/RE/O/Offsets_RTTI.h
 	include/RE/O/OldMessageBoxCallback.h
 	include/RE/P/PackageLocation.h
 	include/RE/P/PackedInstructionStream.h
@@ -1003,7 +1005,6 @@ set(headers ${headers}
 	include/RE/R/RemoveCallbackVisitor.h
 	include/RE/R/RemoveItemFunctor.h
 	include/RE/R/Request.h
-	include/RE/R/RTTI.h
 	include/RE/R/RunHandler.h
 	include/RE/S/SafeZoneMenu.h
 	include/RE/S/SavePatcher.h
@@ -1032,7 +1033,6 @@ set(headers ${headers}
 	include/RE/S/Sky.h
 	include/RE/S/SkyEffectController.h
 	include/RE/S/SkyObject.h
-	include/RE/S/Skyrim.h
 	include/RE/S/SkyrimScriptObjectBindPolicy.h
 	include/RE/S/SkyrimScriptStore.h
 	include/RE/S/SkyrimVM.h
