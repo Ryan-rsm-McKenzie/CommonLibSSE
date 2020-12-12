@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSPointerHandle.h"
-#include "RE/FormComponents/Components/BGSBaseAlias/BGSBaseAlias.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/Enums/QuestEvents.h"
+#include "RE/B/BSPointerHandle.h"
+#include "RE/B/BGSBaseAlias.h"
+#include "RE/F/FormTypes.h"
+#include "RE/Q/QuestEvents.h"
 
 
 namespace RE

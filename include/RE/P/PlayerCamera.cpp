@@ -1,4 +1,4 @@
-#include "RE/Camera/TESCamera/PlayerCamera.h"
+#include "RE/P/PlayerCamera.h"
 
 
 namespace RE

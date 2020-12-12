@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/BSCore/BSAtomic.h"
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/BSPathFinding/BSNavmeshInfoMap.h"
-#include "RE/BSPathFinding/BSPrecomputedNavmeshInfoPathMap/PrecomputedNavmeshInfoPathMap.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/B/BSAtomic.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/B/BSNavmeshInfoMap.h"
+#include "RE/P/PrecomputedNavmeshInfoPathMap.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

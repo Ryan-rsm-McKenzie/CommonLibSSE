@@ -1,7 +1,7 @@
-#include "RE/BSScript/Stack.h"
+#include "RE/S/Stack.h"
 
-#include "RE/BSScript/IStackCallbackFunctor.h"
-#include "RE/BSScript/Internal/IFuncCallQuery/CodeTasklet.h"
+#include "RE/I/IStackCallbackFunctor.h"
+#include "RE/C/CodeTasklet.h"
 
 
 namespace RE

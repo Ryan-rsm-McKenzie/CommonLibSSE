@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpMotion/hkpKeyframedRigidMotion/hkpKeyframedRigidMotion.h"
+#include "RE/H/hkpKeyframedRigidMotion.h"
 
 
 namespace RE

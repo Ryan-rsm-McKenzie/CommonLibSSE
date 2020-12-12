@@ -1,4 +1,4 @@
-#include "RE/Scaleform/GMemoryHeap/GMemoryHeap.h"
+#include "RE/G/GMemoryHeap.h"
 
 
 namespace RE

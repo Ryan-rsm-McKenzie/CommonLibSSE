@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSCore/BSTTuple.h"
-#include "RE/BSCore/CRC.h"
-#include "RE/Memory/MemoryManager.h"
+#include "RE/B/BSTTuple.h"
+#include "RE/C/CRC.h"
+#include "RE/M/MemoryManager.h"
 
 
 namespace RE

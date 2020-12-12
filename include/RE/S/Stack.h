@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/BSScript/MemoryPage.h"
-#include "RE/BSScript/Variable.h"
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTSmartPointer.h"
+#include "RE/M/MemoryPage.h"
+#include "RE/V/Variable.h"
+#include "RE/B/BSIntrusiveRefCounted.h"
 
 
 namespace RE

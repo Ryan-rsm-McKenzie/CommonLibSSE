@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/Scaleform/GAtomic/GAtomic.h"
-#include "RE/Scaleform/GList/GList.h"
-#include "RE/Scaleform/GStats/GStats.h"
+#include "RE/G/GAtomic.h"
+#include "RE/G/GList.h"
+#include "RE/G/GStats.h"
 
 
 namespace RE

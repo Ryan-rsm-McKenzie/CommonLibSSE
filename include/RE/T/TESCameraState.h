@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
-#include "RE/Camera/TESCamera/PlayerCamera.h"
+#include "RE/B/BSTSmartPointer.h"
+#include "RE/B/BSIntrusiveRefCounted.h"
+#include "RE/P/PlayerCamera.h"
 
 
 namespace RE

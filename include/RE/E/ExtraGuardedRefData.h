@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSExtraData/BSExtraData.h"
-#include "RE/BSExtraData/Enums/ExtraDataTypes.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSExtraData.h"
+#include "RE/E/ExtraDataTypes.h"
 
 
 namespace RE

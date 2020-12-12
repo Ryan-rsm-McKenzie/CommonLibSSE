@@ -1,4 +1,4 @@
-#include "RE/Scaleform/GRefCount/GRefCountNTSImpl.h"
+#include "RE/G/GRefCountNTSImpl.h"
 
 
 namespace RE

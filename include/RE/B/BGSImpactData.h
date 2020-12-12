@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/FormComponents/Components/Color.h"
-#include "RE/FormComponents/Components/DecalData.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/Enums/ImpactResults.h"
-#include "RE/FormComponents/Enums/SoundLevels.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
-#include "RE/FormComponents/TESModel/TESModel.h"
+#include "RE/C/Color.h"
+#include "RE/D/DecalData.h"
+#include "RE/F/FormTypes.h"
+#include "RE/I/ImpactResults.h"
+#include "RE/S/SoundLevels.h"
+#include "RE/T/TESForm.h"
+#include "RE/T/TESModel.h"
 
 
 namespace RE

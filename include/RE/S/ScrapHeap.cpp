@@ -1,4 +1,4 @@
-#include "RE/Memory/IMemoryStoreBase/IMemoryStore/ScrapHeap.h"
+#include "RE/S/ScrapHeap.h"
 
 
 namespace RE

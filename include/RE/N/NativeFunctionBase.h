@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSScript/IFunction/IFunction.h"
-#include "RE/BSScript/Internal/VDescTable.h"
-#include "RE/BSScript/TypeInfo.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/I/IFunction.h"
+#include "RE/V/VDescTable.h"
+#include "RE/T/TypeInfo.h"
 
 
 namespace RE

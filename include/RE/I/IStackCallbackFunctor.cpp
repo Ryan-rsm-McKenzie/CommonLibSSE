@@ -1,4 +1,4 @@
-#include "RE/BSScript/IStackCallbackFunctor.h"
+#include "RE/I/IStackCallbackFunctor.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/Events/BGSStoryEvent/ItemCrafted.h"
+#include "RE/I/ItemCrafted.h"
 
 
 namespace RE

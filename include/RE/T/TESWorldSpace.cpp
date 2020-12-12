@@ -1,4 +1,4 @@
-#include "RE/FormComponents/TESForm/TESWorldSpace.h"
+#include "RE/T/TESWorldSpace.h"
 
 
 namespace RE

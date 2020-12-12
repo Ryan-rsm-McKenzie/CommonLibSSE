@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/Scaleform/GFxEvent/GFxEvent.h"
-#include "RE/Scaleform/GFxEvent/GFxKey.h"
-#include "RE/Scaleform/GFxEvent/GFxSpecialKeysState.h"
-#include "RE/Scaleform/GFxPlayerStats/GFxPlayerStats.h"
-#include "RE/Scaleform/GRefCount/GRefCountBaseNTS.h"
+#include "RE/G/GFxEvent.h"
+#include "RE/G/GFxKey.h"
+#include "RE/G/GFxSpecialKeysState.h"
+#include "RE/G/GFxPlayerStats.h"
+#include "RE/G/GRefCountBaseNTS.h"
 
 
 namespace RE

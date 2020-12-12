@@ -1,4 +1,4 @@
-#include "RE/Menus/InterfaceStrings.h"
+#include "RE/I/InterfaceStrings.h"
 
 
 namespace RE

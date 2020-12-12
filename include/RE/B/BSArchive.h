@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSSystem/BSArchiveHeader/BSArchiveHeader.h"
+#include "RE/B/BSArchiveHeader.h"
 
 
 namespace RE

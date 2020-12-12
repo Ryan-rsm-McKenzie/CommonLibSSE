@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSScript/ErrorLogger.h"
+#include "RE/E/ErrorLogger.h"
 
 
 namespace RE

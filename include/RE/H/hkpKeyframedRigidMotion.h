@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpMotion/hkpMotion.h"
+#include "RE/H/hkpMotion.h"
 
 
 namespace RE

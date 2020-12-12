@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/Scaleform/GRefCount/GRefCountImplCore.h"
+#include "RE/G/GRefCountImplCore.h"
 
 
 namespace RE

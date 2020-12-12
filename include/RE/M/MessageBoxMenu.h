@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/Menus/IMenu/IMenu.h"
+#include "RE/I/IMenu.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
-#include "RE/Menus/IMenu/Components/ItemList.h"
+#include "RE/I/ItemList.h"
 
-#include "RE/FormComponents/TESForm/TESObjectREFR/Actor/Character/PlayerCharacter.h"
+#include "RE/P/PlayerCharacter.h"
 
 
 namespace RE

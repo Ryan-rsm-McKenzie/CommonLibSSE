@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/NetImmerse/NiRefObject/NiObject/BSAnimNote.h"
-#include "RE/NetImmerse/NiTArray.h"
+#include "RE/B/BSAnimNote.h"
+#include "RE/N/NiTArray.h"
 
 
 namespace RE

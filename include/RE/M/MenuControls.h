@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/BSCore/BSTSingleton.h"
-#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTEvent.h"
+#include "RE/B/BSTSingleton.h"
+#include "RE/B/BSTSmartPointer.h"
 
 
 namespace RE

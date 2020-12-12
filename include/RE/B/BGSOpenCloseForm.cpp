@@ -1,4 +1,4 @@
-#include "RE/FormComponents/Components/BGSOpenCloseForm.h"
+#include "RE/B/BGSOpenCloseForm.h"
 
 
 namespace RE

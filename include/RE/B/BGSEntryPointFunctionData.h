@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/F/FormTypes.h"
 
 
 namespace RE

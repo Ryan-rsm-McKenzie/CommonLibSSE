@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Scaleform/GMemory/GNewOverrideBase.h"
-#include "RE/Scaleform/GStats/GStats.h"
+#include "RE/G/GNewOverrideBase.h"
+#include "RE/G/GStats.h"
 
 
 namespace RE

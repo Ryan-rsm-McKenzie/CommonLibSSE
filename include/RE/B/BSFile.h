@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NetImmerse/NiBinaryStream/NiFile/NiFile.h"
+#include "RE/N/NiFile.h"
 
 
 namespace RE

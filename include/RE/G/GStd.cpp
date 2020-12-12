@@ -1,4 +1,4 @@
-#include "RE/Scaleform/GStd/GStd.h"
+#include "RE/G/GStd.h"
 
 
 namespace RE

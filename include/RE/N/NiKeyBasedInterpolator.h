@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/NetImmerse/NiAnimationKey/NiAnimationKey.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiInterpolator/NiInterpolator.h"
+#include "RE/N/NiAnimationKey.h"
+#include "RE/N/NiInterpolator.h"
 
 
 namespace RE

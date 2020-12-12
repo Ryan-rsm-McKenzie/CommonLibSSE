@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSDevices/BSIInputDevice/BSInputDevice/BSKeyboardDevice/BSVirtualKeyboardDevice/BSVirtualKeyboardDevice.h"
+#include "RE/B/BSVirtualKeyboardDevice.h"
 
 
 namespace RE

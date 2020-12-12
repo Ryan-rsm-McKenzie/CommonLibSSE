@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSTList.h"
-#include "RE/BSExtraData/BSExtraData.h"
-#include "RE/BSExtraData/Enums/ExtraDataTypes.h"
-#include "RE/NetImmerse/NiPoint3.h"
+#include "RE/B/BSTList.h"
+#include "RE/B/BSExtraData.h"
+#include "RE/E/ExtraDataTypes.h"
+#include "RE/N/NiPoint3.h"
 
 
 namespace RE

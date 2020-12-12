@@ -1,4 +1,4 @@
-#include "RE/BSScript/MemoryPage.h"
+#include "RE/M/MemoryPage.h"
 
 
 namespace RE

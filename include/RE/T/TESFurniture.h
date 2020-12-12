@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/FormComponents/Enums/ActorValues.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESObjectACTI/TESObjectACTI.h"
+#include "RE/B/BSTArray.h"
+#include "RE/A/ActorValues.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESObjectACTI.h"
 
 
 namespace RE

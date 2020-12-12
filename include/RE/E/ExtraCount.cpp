@@ -1,4 +1,4 @@
-#include "RE/BSExtraData/ExtraCount.h"
+#include "RE/E/ExtraCount.h"
 
 
 namespace RE

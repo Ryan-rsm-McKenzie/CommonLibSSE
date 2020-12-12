@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSCore/BSTHashMap.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BSTHashMap.h"
 
 
 namespace RE

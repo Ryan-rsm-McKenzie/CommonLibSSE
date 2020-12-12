@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/FormComponents/Components/ActiveEffect/ActiveEffect.h"
+#include "RE/A/ActiveEffect.h"
 
 
 namespace RE

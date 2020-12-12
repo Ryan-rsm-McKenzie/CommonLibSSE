@@ -1,7 +1,7 @@
-#include "RE/Scaleform/GFxPlayer/GFxMovie.h"
+#include "RE/G/GFxMovie.h"
 
-#include "RE/Scaleform/GFxPlayer/GFxMovieDef.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/G/GFxMovieDef.h"
+#include "RE/G/GFxValue.h"
 
 
 namespace RE

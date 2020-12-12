@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NetImmerse/NiTMapBase/NiTMap/NiTStringMap.h"
+#include "RE/N/NiTStringMap.h"
 
 
 namespace RE

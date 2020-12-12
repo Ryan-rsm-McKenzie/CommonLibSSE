@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FormComponents/Components/TESCondition.h"
-#include "RE/Memory/MemoryManager.h"
+#include "RE/T/TESCondition.h"
+#include "RE/M/MemoryManager.h"
 
 
 namespace RE

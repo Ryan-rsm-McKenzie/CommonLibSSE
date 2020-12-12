@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSSystem/BSArchiveHeader/BSArchive/BSArchive.h"
-#include "RE/NetImmerse/NiBinaryStream/NiFile/BSFile.h"
-#include "RE/NetImmerse/NiRefObject/NiRefObject.h"
+#include "RE/B/BSArchive.h"
+#include "RE/B/BSFile.h"
+#include "RE/N/NiRefObject.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/Menus/UIBlurManager.h"
+#include "RE/U/UIBlurManager.h"
 
 
 namespace RE

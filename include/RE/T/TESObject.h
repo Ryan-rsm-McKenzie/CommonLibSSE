@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

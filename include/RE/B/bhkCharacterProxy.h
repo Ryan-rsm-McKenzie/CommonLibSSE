@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSHavok/hkpCdPointCollector/hkpAllCdPointCollector/bhkCharacterPointCollector.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/bhkRefObject/bhkSerializable/bhkSerializable.h"
+#include "RE/B/bhkCharacterPointCollector.h"
+#include "RE/B/bhkSerializable.h"
 
 
 namespace RE

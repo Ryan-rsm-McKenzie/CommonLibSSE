@@ -1,4 +1,4 @@
-#include "RE/Scaleform/GRenderer/GRenderer.h"
+#include "RE/G/GRenderer.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
-#include "RE/FormComponents/Components/BipedAnim.h"
+#include "RE/B/BipedAnim.h"
 
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/NiAVObject.h"
+#include "RE/N/NiAVObject.h"
 
 
 namespace RE

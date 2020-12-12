@@ -1,4 +1,4 @@
-#include "RE/NetImmerse/NiRefObject/NiRefObject.h"
+#include "RE/N/NiRefObject.h"
 
 
 namespace RE

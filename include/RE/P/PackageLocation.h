@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSPointerHandle.h"
-#include "RE/FormComponents/Components/IAIWorldLocationHandle/IAIWorldLocationHandle.h"
+#include "RE/B/BSPointerHandle.h"
+#include "RE/I/IAIWorldLocationHandle.h"
 
 
 namespace RE

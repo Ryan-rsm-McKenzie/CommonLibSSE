@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/Scaleform/GAllocator/GAllocatorBaseGH.h"
-#include "RE/Scaleform/GAllocator/GConstructorMov.h"
-#include "RE/Scaleform/GStats/GStats.h"
+#include "RE/G/GAllocatorBaseGH.h"
+#include "RE/G/GConstructorMov.h"
+#include "RE/G/GStats.h"
 
 
 namespace RE

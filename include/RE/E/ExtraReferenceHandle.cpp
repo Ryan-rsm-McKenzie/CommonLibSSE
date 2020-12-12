@@ -1,6 +1,6 @@
-#include "RE/BSExtraData/ExtraReferenceHandle.h"
+#include "RE/E/ExtraReferenceHandle.h"
 
-#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
+#include "RE/T/TESObjectREFR.h"
 
 
 namespace RE

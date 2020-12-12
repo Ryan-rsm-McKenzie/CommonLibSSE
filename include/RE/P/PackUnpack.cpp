@@ -1,11 +1,11 @@
-#include "RE/BSScript/PackUnpack.h"
+#include "RE/P/PackUnpack.h"
 
-#include "RE/BSScript/IObjectHandlePolicy.h"
-#include "RE/BSScript/Internal/VirtualMachine.h"
-#include "RE/BSScript/Object.h"
+#include "RE/I/IObjectHandlePolicy.h"
+#include "RE/V/VirtualMachine.h"
+#include "RE/O/Object.h"
 #include "RE/BSScriptObjectBindPolicy.h"
-#include "RE/BSScript/ObjectTypeInfo.h"
-#include "RE/BSScript/Variable.h"
+#include "RE/O/ObjectTypeInfo.h"
+#include "RE/V/Variable.h"
 #include "SKSE/Logger.h"
 
 

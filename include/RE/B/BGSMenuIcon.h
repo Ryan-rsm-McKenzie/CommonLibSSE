@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
-#include "RE/FormComponents/TESTexture/TESIcon.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESForm.h"
+#include "RE/T/TESIcon.h"
 
 
 namespace RE

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/Animation/IAnimationGraphManagerHolder/SimpleAnimationGraphManagerHolder/SimpleAnimationGraphManagerHolder.h"
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/NetImmerse/Components/AttachTechniqueInput/RefAttachTechniqueInput.h"
-#include "RE/NetImmerse/NiPoint3.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/BSTempEffect/ReferenceEffect/ReferenceEffect.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/S/SimpleAnimationGraphManagerHolder.h"
+#include "RE/B/BSTEvent.h"
+#include "RE/B/BSTSmartPointer.h"
+#include "RE/R/RefAttachTechniqueInput.h"
+#include "RE/N/NiPoint3.h"
+#include "RE/R/ReferenceEffect.h"
+#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

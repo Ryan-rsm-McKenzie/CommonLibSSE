@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/Events/InputEvent/InputEvent.h"
+#include "RE/I/InputEvent.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
-#include "RE/BSShader/BSShaderMaterial/BSLightingShaderMaterialBase/BSLightingShaderMaterialBase.h"
+#include "RE/B/BSLightingShaderMaterialBase.h"
 
-#include "RE/NetImmerse/NiRefObject/NiObject/BSTextureSet.h"
+#include "RE/B/BSTextureSet.h"
 
 
 namespace RE

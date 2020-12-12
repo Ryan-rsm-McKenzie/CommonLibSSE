@@ -1,8 +1,8 @@
-#include "RE/BSAudio/BSAudioManager.h"
+#include "RE/B/BSAudioManager.h"
 
-#include "RE/BSAudio/BSSoundHandle.h"
-#include "RE/FormComponents/TESForm/BGSSoundDescriptorForm.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/B/BSSoundHandle.h"
+#include "RE/B/BGSSoundDescriptorForm.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

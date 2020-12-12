@@ -1,4 +1,4 @@
-#include "RE/NetImmerse/NiAnimationKey/NiFloatKey.h"
+#include "RE/N/NiFloatKey.h"
 
 
 namespace RE

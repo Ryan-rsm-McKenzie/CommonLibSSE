@@ -1,4 +1,4 @@
-#include "RE/Inventory/ArmorRatingVisitorBase/ArmorRatingVisitorBase.h"
+#include "RE/A/ArmorRatingVisitorBase.h"
 
 namespace RE
 {

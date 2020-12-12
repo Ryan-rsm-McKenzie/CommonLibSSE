@@ -1,8 +1,8 @@
-#include "RE/BSScript/IVirtualMachine.h"
+#include "RE/I/IVirtualMachine.h"
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSScript/IObjectHandlePolicy.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/I/IObjectHandlePolicy.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

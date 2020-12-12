@@ -1,4 +1,4 @@
-#include "RE/Menus/IMenu/BarterMenu.h"
+#include "RE/B/BarterMenu.h"
 
 namespace RE
 {

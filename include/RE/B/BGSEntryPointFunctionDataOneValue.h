@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/FormComponents/Components/BGSEntryPointFunctionData/BGSEntryPointFunctionData.h"
+#include "RE/B/BGSEntryPointFunctionData.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/FormComponents/BaseFormComponent.h"
+#include "RE/B/BaseFormComponent.h"
 
 
 namespace RE

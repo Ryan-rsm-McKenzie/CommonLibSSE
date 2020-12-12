@@ -1,8 +1,8 @@
-#include "RE/BSCore/BSPointerHandle.h"
+#include "RE/B/BSPointerHandle.h"
 
-#include "RE/FormComponents/TESForm/TESObjectREFR/Actor/Actor.h"
-#include "RE/FormComponents/TESForm/TESObjectREFR/Projectile/Projectile.h"
-#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
+#include "RE/A/Actor.h"
+#include "RE/P/Projectile.h"
+#include "RE/T/TESObjectREFR.h"
 
 namespace RE
 {

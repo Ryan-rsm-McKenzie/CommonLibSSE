@@ -1,4 +1,4 @@
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/G/GFxValue.h"
 
 
 namespace RE

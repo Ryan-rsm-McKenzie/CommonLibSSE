@@ -1,13 +1,13 @@
 #pragma once
 
-#include "RE/BSCore/BSAtomic.h"
-#include "RE/BSCore/BSPointerHandle.h"
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTList.h"
-#include "RE/BSCore/BSTSingleton.h"
-#include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/FormComponents/Components/Crime.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/B/BSAtomic.h"
+#include "RE/B/BSPointerHandle.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTList.h"
+#include "RE/B/BSTSingleton.h"
+#include "RE/B/BSTSmartPointer.h"
+#include "RE/C/Crime.h"
+#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

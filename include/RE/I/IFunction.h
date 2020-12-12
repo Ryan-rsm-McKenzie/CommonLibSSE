@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BSTSmartPointer.h"
+#include "RE/B/BSIntrusiveRefCounted.h"
 
 
 namespace RE

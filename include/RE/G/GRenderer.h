@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/Scaleform/GColor/GColor.h"
-#include "RE/Scaleform/GMatrix2D/GMatrix2D.h"
-#include "RE/Scaleform/GRefCount/GRefCountBase.h"
-#include "RE/Scaleform/GRenderer/GTexture.h"
-#include "RE/Scaleform/GRendererEventHandler/GRendererEventHandler.h"
-#include "RE/Scaleform/GTypes2DF/GPoint.h"
-#include "RE/Scaleform/GTypes2DF/GRect.h"
+#include "RE/G/GColor.h"
+#include "RE/G/GMatrix2D.h"
+#include "RE/G/GRefCountBase.h"
+#include "RE/G/GTexture.h"
+#include "RE/G/GRendererEventHandler.h"
+#include "RE/G/GPoint.h"
+#include "RE/G/GRect.h"
 
 
 namespace RE

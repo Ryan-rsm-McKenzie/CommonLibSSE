@@ -1,17 +1,17 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/FormComponents/BGSOverridePackCollection.h"
-#include "RE/FormComponents/Components/Color.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/Enums/Sexes.h"
-#include "RE/FormComponents/Enums/SoundLevels.h"
-#include "RE/FormComponents/TESForm/BGSHeadPart.h"
-#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESActorBase/TESActorBase.h"
-#include "RE/FormComponents/TESRaceForm.h"
-#include "RE/Memory/MemoryManager.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTEvent.h"
+#include "RE/B/BGSOverridePackCollection.h"
+#include "RE/C/Color.h"
+#include "RE/F/FormTypes.h"
+#include "RE/S/Sexes.h"
+#include "RE/S/SoundLevels.h"
+#include "RE/B/BGSHeadPart.h"
+#include "RE/T/TESActorBase.h"
+#include "RE/T/TESRaceForm.h"
+#include "RE/M/MemoryManager.h"
 
 
 namespace RE

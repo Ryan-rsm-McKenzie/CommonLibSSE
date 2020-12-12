@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/Scaleform/GAllocator/GAllocator.h"
-#include "RE/Scaleform/GHash/GFixedSizeHash.h"
-#include "RE/Scaleform/GHash/GHashNode.h"
-#include "RE/Scaleform/GHash/GHashSet.h"
-#include "RE/Scaleform/GHash/GHashsetCachedNodeEntry.h"
-#include "RE/Scaleform/GMemory/GMemory.h"
+#include "RE/G/GAllocator.h"
+#include "RE/G/GFixedSizeHash.h"
+#include "RE/G/GHashNode.h"
+#include "RE/G/GHashSet.h"
+#include "RE/G/GHashsetCachedNodeEntry.h"
+#include "RE/G/GMemory.h"
 
 
 namespace RE

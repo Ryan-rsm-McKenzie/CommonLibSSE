@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/NiNode/NiNode.h"
+#include "RE/B/BSTArray.h"
+#include "RE/N/NiNode.h"
 
 namespace RE
 {

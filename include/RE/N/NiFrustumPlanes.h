@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NetImmerse/NiPlane.h"
+#include "RE/N/NiPlane.h"
 
 
 namespace RE

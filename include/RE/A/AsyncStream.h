@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSResource/StreamBase/StreamBase.h"
+#include "RE/S/StreamBase.h"
 
 
 namespace RE

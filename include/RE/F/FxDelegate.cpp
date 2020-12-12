@@ -1,11 +1,11 @@
-#include "RE/Scaleform/FxGameDelegate/FxDelegate.h"
+#include "RE/F/FxDelegate.h"
 
-#include "RE/Scaleform/FxGameDelegate/AddCallbackVisitor.h"
-#include "RE/Scaleform/FxGameDelegate/FxDelegateArgs.h"
-#include "RE/Scaleform/FxGameDelegate/FxResponseArgsBase.h"
-#include "RE/Scaleform/FxGameDelegate/RemoveCallbackVisitor.h"
-#include "RE/Scaleform/GFxPlayer/GFxMovieView.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/A/AddCallbackVisitor.h"
+#include "RE/F/FxDelegateArgs.h"
+#include "RE/F/FxResponseArgsBase.h"
+#include "RE/R/RemoveCallbackVisitor.h"
+#include "RE/G/GFxMovieView.h"
+#include "RE/G/GFxValue.h"
 
 
 namespace RE

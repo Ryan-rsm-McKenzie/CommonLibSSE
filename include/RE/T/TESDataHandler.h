@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTList.h"
-#include "RE/BSCore/BSTSingleton.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
-#include "RE/NetImmerse/NiTArray.h"
-#include "RE/NetImmerse/NiTListBase/NiTPointerListBase/NiTList.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTList.h"
+#include "RE/B/BSTSingleton.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESForm.h"
+#include "RE/N/NiTArray.h"
+#include "RE/N/NiTList.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/Memory/MemoryManager.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiGeometryData.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObject.h"
+#include "RE/M/MemoryManager.h"
+#include "RE/N/NiGeometryData.h"
+#include "RE/N/NiObject.h"
 
 
 namespace RE

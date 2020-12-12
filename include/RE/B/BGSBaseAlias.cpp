@@ -1,7 +1,7 @@
-#include "RE/FormComponents/Components/BGSBaseAlias/BGSBaseAlias.h"
+#include "RE/B/BGSBaseAlias.h"
 
-#include "RE/FormComponents/Components/BGSBaseAlias/BGSLocAlias.h"
-#include "RE/FormComponents/Components/BGSBaseAlias/BGSRefAlias.h"
+#include "RE/B/BGSLocAlias.h"
+#include "RE/B/BGSRefAlias.h"
 
 
 namespace RE

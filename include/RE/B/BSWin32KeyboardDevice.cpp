@@ -1,4 +1,4 @@
-#include "RE/BSDevices/BSIInputDevice/BSInputDevice/BSKeyboardDevice/BSWin32KeyboardDevice.h"
+#include "RE/B/BSWin32KeyboardDevice.h"
 
 
 namespace RE

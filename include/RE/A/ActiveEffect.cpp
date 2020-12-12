@@ -1,7 +1,7 @@
-#include "RE/FormComponents/Components/ActiveEffect/ActiveEffect.h"
+#include "RE/A/ActiveEffect.h"
 
-#include "RE/FormComponents/Components/Effect.h"
-#include "RE/FormComponents/TESForm/TESObjectREFR/Actor/Actor.h"
+#include "RE/E/Effect.h"
+#include "RE/A/Actor.h"
 
 
 namespace RE

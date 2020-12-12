@@ -1,4 +1,4 @@
-#include "RE/BSExtraData/ExtraSoul.h"
+#include "RE/E/ExtraSoul.h"
 
 
 namespace RE

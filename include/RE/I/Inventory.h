@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSCore/BSTEvent.h"
+#include "RE/B/BSTEvent.h"
 
 
 namespace RE

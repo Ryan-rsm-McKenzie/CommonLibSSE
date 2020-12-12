@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/FormComponents/Components/BGSPerkEntry/BGSPerkEntry.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/Memory/MemoryManager.h"
+#include "RE/B/BGSPerkEntry.h"
+#include "RE/F/FormTypes.h"
+#include "RE/M/MemoryManager.h"
 
 
 namespace RE

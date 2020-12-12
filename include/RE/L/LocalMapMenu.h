@@ -1,14 +1,14 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/BSDevices/MenuEventHandler/MenuEventHandler.h"
-#include "RE/BSShader/ImageSpaceEffectParam/ImageSpaceShaderParam.h"
-#include "RE/Camera/TESCamera/LocalMapCamera.h"
-#include "RE/Misc/ImageData.h"
-#include "RE/NetImmerse/NiCullingProcess/BSCullingProcess.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTSmartPointer.h"
+#include "RE/M/MenuEventHandler.h"
+#include "RE/I/ImageSpaceShaderParam.h"
+#include "RE/L/LocalMapCamera.h"
+#include "RE/I/ImageData.h"
+#include "RE/B/BSCullingProcess.h"
+#include "RE/N/NiSmartPointer.h"
+#include "RE/G/GFxValue.h"
 
 
 namespace RE

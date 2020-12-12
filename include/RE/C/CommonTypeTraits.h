@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/FormComponents/Components/ActiveEffect/ActiveEffect.h"
-#include "RE/FormComponents/Components/BGSBaseAlias/BGSBaseAlias.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/A/ActiveEffect.h"
+#include "RE/B/BGSBaseAlias.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

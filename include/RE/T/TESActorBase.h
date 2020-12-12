@@ -1,18 +1,18 @@
 #pragma once
 
-#include "RE/FormComponents/BGSAttackDataForm.h"
-#include "RE/FormComponents/BGSDestructibleObjectForm.h"
-#include "RE/FormComponents/BGSKeywordForm.h"
-#include "RE/FormComponents/BGSPerkRankArray.h"
-#include "RE/FormComponents/BGSSkinForm.h"
-#include "RE/FormComponents/Components/ActorValueOwner.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESAIForm.h"
-#include "RE/FormComponents/TESActorBaseData.h"
-#include "RE/FormComponents/TESContainer.h"
-#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESBoundAnimObject.h"
-#include "RE/FormComponents/TESFullName.h"
-#include "RE/FormComponents/TESSpellList.h"
+#include "RE/B/BGSAttackDataForm.h"
+#include "RE/B/BGSDestructibleObjectForm.h"
+#include "RE/B/BGSKeywordForm.h"
+#include "RE/B/BGSPerkRankArray.h"
+#include "RE/B/BGSSkinForm.h"
+#include "RE/A/ActorValueOwner.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESAIForm.h"
+#include "RE/T/TESActorBaseData.h"
+#include "RE/T/TESContainer.h"
+#include "RE/T/TESBoundAnimObject.h"
+#include "RE/T/TESFullName.h"
+#include "RE/T/TESSpellList.h"
 
 
 namespace RE

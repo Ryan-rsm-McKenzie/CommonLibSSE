@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FormComponents/Components/ActiveEffect/ActiveEffect.h"
-#include "RE/FormComponents/Enums/ActorValues.h"
+#include "RE/A/ActiveEffect.h"
+#include "RE/A/ActorValues.h"
 
 
 namespace RE

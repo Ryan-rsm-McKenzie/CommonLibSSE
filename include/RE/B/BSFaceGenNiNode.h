@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSPointerHandle.h"
-#include "RE/NetImmerse/NiMatrix3.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/NiNode/NiNode.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/B/BSPointerHandle.h"
+#include "RE/N/NiMatrix3.h"
+#include "RE/N/NiNode.h"
+#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

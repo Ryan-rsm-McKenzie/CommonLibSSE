@@ -1,6 +1,6 @@
-#include "RE/NetImmerse/NiRefObject/NiObject/NiExtraData/NiExtraData.h"
+#include "RE/N/NiExtraData.h"
 
-#include "RE/Memory/MemoryManager.h"
+#include "RE/M/MemoryManager.h"
 
 
 namespace RE

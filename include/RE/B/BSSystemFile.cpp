@@ -1,4 +1,4 @@
-#include "RE/BSResource/BSSystemFile.h"
+#include "RE/B/BSSystemFile.h"
 
 
 namespace RE

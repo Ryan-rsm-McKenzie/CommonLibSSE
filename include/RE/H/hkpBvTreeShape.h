@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSHavok/hkArray.h"
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpShape/hkpShape.h"
+#include "RE/H/hkArray.h"
+#include "RE/H/hkpShape.h"
 
 
 namespace RE

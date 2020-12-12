@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSCore/BSString.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
-#include "RE/NetImmerse/NiPoint2.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/ImageSpaceModifierInstance/ImageSpaceModifierInstanceTemp/ImageSpaceModifierInstanceDOF.h"
+#include "RE/B/BSString.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESForm.h"
+#include "RE/N/NiPoint2.h"
+#include "RE/I/ImageSpaceModifierInstanceDOF.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/Pathfinding/IMovementInterface/IMovementState/IMovementState.h"
+#include "RE/I/IMovementState.h"
 
 
 namespace RE

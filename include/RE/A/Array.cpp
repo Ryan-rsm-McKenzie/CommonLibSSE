@@ -1,4 +1,4 @@
-#include "RE/BSScript/Array.h"
+#include "RE/A/Array.h"
 
 
 namespace RE

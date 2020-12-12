@@ -1,4 +1,4 @@
-#include "RE/BSExtraData/ExtraRank.h"
+#include "RE/E/ExtraRank.h"
 
 
 namespace RE

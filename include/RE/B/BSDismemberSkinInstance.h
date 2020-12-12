@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NetImmerse/NiRefObject/NiObject/NiSkinInstance/NiSkinInstance.h"
+#include "RE/N/NiSkinInstance.h"
 
 
 namespace RE

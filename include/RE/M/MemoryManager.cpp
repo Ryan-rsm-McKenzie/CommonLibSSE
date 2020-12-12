@@ -1,4 +1,4 @@
-#include "RE/Memory/MemoryManager.h"
+#include "RE/M/MemoryManager.h"
 
 
 namespace RE

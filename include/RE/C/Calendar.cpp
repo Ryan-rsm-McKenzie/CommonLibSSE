@@ -1,8 +1,8 @@
-#include "RE/Misc/Calendar.h"
+#include "RE/C/Calendar.h"
 
-#include "RE/BSMain/Setting/Setting.h"
-#include "RE/BSMain/SettingCollection/GameSettingCollection.h"
-#include "RE/FormComponents/TESForm/TESGlobal.h"
+#include "RE/S/Setting.h"
+#include "RE/G/GameSettingCollection.h"
+#include "RE/T/TESGlobal.h"
 
 
 namespace RE

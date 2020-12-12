@@ -1,4 +1,4 @@
-#include "RE/Memory/HeapBlock/HeapBlock.h"
+#include "RE/H/HeapBlock.h"
 
 
 namespace RE

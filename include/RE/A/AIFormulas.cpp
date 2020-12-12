@@ -1,4 +1,4 @@
-#include "RE/AI/AIFormulas.h"
+#include "RE/A/AIFormulas.h"
 
 
 namespace RE

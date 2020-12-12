@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSHavok/Enums/hkpPhantomType.h"
-#include "RE/BSHavok/hkArray.h"
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpWorldObject/hkpWorldObject.h"
+#include "RE/H/hkpPhantomType.h"
+#include "RE/H/hkArray.h"
+#include "RE/H/hkpWorldObject.h"
 
 
 namespace RE

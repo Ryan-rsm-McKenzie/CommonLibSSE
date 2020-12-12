@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/FormComponents/Components/ActiveEffect/ValueModifierEffect/ValueModifierEffect.h"
+#include "RE/V/ValueModifierEffect.h"
 
 
 namespace RE

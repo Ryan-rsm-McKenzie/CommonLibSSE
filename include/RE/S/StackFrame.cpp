@@ -1,6 +1,6 @@
-#include "RE/BSScript/StackFrame.h"
+#include "RE/S/StackFrame.h"
 
-#include "RE/BSScript/Stack.h"
+#include "RE/S/Stack.h"
 
 
 namespace RE

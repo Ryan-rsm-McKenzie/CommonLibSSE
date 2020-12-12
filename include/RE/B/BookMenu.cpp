@@ -1,6 +1,6 @@
-#include "RE/Menus/IMenu/BookMenu.h"
+#include "RE/B/BookMenu.h"
 
-#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
+#include "RE/T/TESObjectREFR.h"
 
 namespace RE
 {

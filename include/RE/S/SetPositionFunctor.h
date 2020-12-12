@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSCore/BSPointerHandle.h"
-#include "RE/NetImmerse/NiPoint3.h"
-#include "RE/SkyrimScript/DelayFunctor/DelayFunctor.h"
+#include "RE/B/BSPointerHandle.h"
+#include "RE/N/NiPoint3.h"
+#include "RE/D/DelayFunctor.h"
 
 
 namespace RE

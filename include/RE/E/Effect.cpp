@@ -1,4 +1,4 @@
-#include "RE/FormComponents/Components/Effect.h"
+#include "RE/E/Effect.h"
 
 
 namespace RE

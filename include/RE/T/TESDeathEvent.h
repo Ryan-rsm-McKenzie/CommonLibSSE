@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

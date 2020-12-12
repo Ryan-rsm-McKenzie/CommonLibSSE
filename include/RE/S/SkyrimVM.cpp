@@ -1,4 +1,4 @@
-#include "RE/SkyrimScript/SkyrimVM.h"
+#include "RE/S/SkyrimVM.h"
 
 
 namespace RE

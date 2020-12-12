@@ -1,4 +1,4 @@
-#include "RE/BSExtraData/ExtraLightData.h"
+#include "RE/E/ExtraLightData.h"
 
 
 namespace RE

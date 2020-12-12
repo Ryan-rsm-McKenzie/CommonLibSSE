@@ -1,4 +1,4 @@
-#include "RE/BSScript/IFunction/NF_util/NativeFunctionBase.h"
+#include "RE/N/NativeFunctionBase.h"
 
 
 namespace RE

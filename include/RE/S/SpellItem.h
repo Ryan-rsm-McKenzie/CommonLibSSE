@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/FormComponents/BGSEquipType.h"
-#include "RE/FormComponents/BGSMenuDisplayObject.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESDescription.h"
-#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/MagicItem/MagicItem.h"
+#include "RE/B/BGSEquipType.h"
+#include "RE/B/BGSMenuDisplayObject.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESDescription.h"
+#include "RE/M/MagicItem.h"
 
 
 namespace RE

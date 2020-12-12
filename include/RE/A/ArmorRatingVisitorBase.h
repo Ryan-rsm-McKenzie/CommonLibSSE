@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/Inventory/InventoryChanges.h"
+#include "RE/I/InventoryChanges.h"
 
 
 namespace RE

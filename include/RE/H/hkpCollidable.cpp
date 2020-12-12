@@ -1,4 +1,4 @@
-#include "RE/BSHavok/hkpCdBody/hkpCollidable/hkpCollidable.h"
+#include "RE/H/hkpCollidable.h"
 
 
 namespace RE

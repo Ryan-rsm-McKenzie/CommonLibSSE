@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/NetImmerse/NiColor.h"
-#include "RE/NetImmerse/NiFrustumPlanes.h"
-#include "RE/NetImmerse/NiMatrix3.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/BSTempEffect/BSTempEffect.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/B/BSTArray.h"
+#include "RE/N/NiColor.h"
+#include "RE/N/NiFrustumPlanes.h"
+#include "RE/N/NiMatrix3.h"
+#include "RE/B/BSTempEffect.h"
+#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

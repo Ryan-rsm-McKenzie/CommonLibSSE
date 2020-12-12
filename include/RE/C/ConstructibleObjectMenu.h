@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/Menus/IMenu/Components/CraftingSubMenus/CraftingSubMenu.h"
-#include "RE/Menus/IMessageBoxCallback/IMessageBoxCallback.h"
+#include "RE/B/BSTArray.h"
+#include "RE/C/CraftingSubMenu.h"
+#include "RE/I/IMessageBoxCallback.h"
 
 
 namespace RE

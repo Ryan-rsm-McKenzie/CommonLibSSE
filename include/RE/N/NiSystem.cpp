@@ -1,4 +1,4 @@
-#include "RE/NetImmerse/NiSystem.h"
+#include "RE/N/NiSystem.h"
 
 
 namespace RE

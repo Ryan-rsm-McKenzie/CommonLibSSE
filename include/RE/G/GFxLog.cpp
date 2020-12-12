@@ -1,4 +1,4 @@
-#include "RE/Scaleform/GFxLog/GFxLog.h"
+#include "RE/G/GFxLog.h"
 
 
 namespace RE

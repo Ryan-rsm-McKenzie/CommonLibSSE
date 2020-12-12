@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/FormComponents/Enums/ActorValues.h"
-#include "RE/Menus/HUDObject/HUDMeter/HUDMeter.h"
+#include "RE/A/ActorValues.h"
+#include "RE/H/HUDMeter.h"
 
 
 namespace RE

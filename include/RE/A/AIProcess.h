@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTList.h"
-#include "RE/FormComponents/Components/ActorPackage.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTList.h"
+#include "RE/A/ActorPackage.h"
 
 
 namespace RE

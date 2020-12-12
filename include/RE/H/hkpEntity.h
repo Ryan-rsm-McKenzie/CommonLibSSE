@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/BSHavok/hkArray.h"
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpMotion/hkpKeyframedRigidMotion/hkpFixedRigidMotion.h"
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpWorldObject/hkpWorldObject.h"
-#include "RE/BSHavok/hkBaseTypes.h"
-#include "RE/BSHavok/hkSmallArray.h"
-#include "RE/BSHavok/hkpMaterial.h"
+#include "RE/H/hkArray.h"
+#include "RE/H/hkpFixedRigidMotion.h"
+#include "RE/H/hkpWorldObject.h"
+#include "RE/H/hkBaseTypes.h"
+#include "RE/H/hkSmallArray.h"
+#include "RE/H/hkpMaterial.h"
 
 
 namespace RE

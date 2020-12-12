@@ -1,10 +1,10 @@
-#include "RE/BSDevices/BSInputDeviceManager.h"
+#include "RE/B/BSInputDeviceManager.h"
 
-#include "RE/BSDevices/BSIInputDevice/BSInputDevice/BSGamepadDevice/BSPCGamepadDeviceDelegate/BSPCGamepadDeviceDelegate.h"
-#include "RE/BSDevices/BSIInputDevice/BSInputDevice/BSKeyboardDevice/BSVirtualKeyboardDevice/BSWin32VirtualKeyboardDevice.h"
-#include "RE/BSDevices/BSIInputDevice/BSInputDevice/BSKeyboardDevice/BSWin32KeyboardDevice.h"
-#include "RE/BSDevices/BSIInputDevice/BSInputDevice/BSMouseDevice/BSWin32MouseDevice.h"
-#include "RE/BSDevices/BSIInputDevice/BSPCGamepadDeviceHandler.h"
+#include "RE/B/BSPCGamepadDeviceDelegate.h"
+#include "RE/B/BSWin32VirtualKeyboardDevice.h"
+#include "RE/B/BSWin32KeyboardDevice.h"
+#include "RE/B/BSWin32MouseDevice.h"
+#include "RE/B/BSPCGamepadDeviceHandler.h"
 
 
 namespace RE

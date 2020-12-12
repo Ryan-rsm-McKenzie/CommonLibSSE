@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/Pathfinding/BSPathingCell/BSPathingCell.h"
+#include "RE/B/BSPathingCell.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/FormComponents/TESForm/BGSColorForm.h"
+#include "RE/B/BGSColorForm.h"
 
 
 namespace RE

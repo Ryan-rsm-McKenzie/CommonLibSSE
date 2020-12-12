@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSMain/Setting/Setting.h"
-#include "RE/BSMain/SettingCollection/SettingCollectionMap.h"
+#include "RE/S/Setting.h"
+#include "RE/S/SettingCollectionMap.h"
 
 
 namespace RE

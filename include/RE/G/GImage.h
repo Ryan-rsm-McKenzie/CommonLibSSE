@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Scaleform/GImage/GImageBase.h"
-#include "RE/Scaleform/GRefCount/GRefCountBaseNTS.h"
+#include "RE/G/GImageBase.h"
+#include "RE/G/GRefCountBaseNTS.h"
 
 
 namespace RE

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/BSDevices/BSIInputDevice/BSIInputDevice.h"
-#include "RE/BSDevices/Enums/InputDevices.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/B/BSIInputDevice.h"
+#include "RE/I/InputDevices.h"
 
 
 namespace RE

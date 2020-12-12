@@ -1,4 +1,4 @@
-#include "RE/BSExtraData/ExtraOwnership.h"
+#include "RE/E/ExtraOwnership.h"
 
 
 namespace RE

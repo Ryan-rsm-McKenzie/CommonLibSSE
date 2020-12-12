@@ -1,4 +1,4 @@
-#include "RE/FormComponents/TESForm/TESTopic.h"
+#include "RE/T/TESTopic.h"
 
 
 namespace RE

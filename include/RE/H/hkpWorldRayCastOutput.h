@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSHavok/hkpShapeRayCastCollectorOutput/hkpShapeRayCastOutput/hkpShapeRayCastOutput.h"
+#include "RE/H/hkpShapeRayCastOutput.h"
 
 
 namespace RE

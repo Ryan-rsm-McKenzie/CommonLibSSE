@@ -1,4 +1,4 @@
-#include "RE/FormComponents/Components/BSResponse.h"
+#include "RE/B/BSResponse.h"
 
 
 namespace RE

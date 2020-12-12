@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
-#include "RE/Memory/MemoryManager.h"
-#include "RE/NetImmerse/NiPoint3.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/B/BSTSmartPointer.h"
+#include "RE/B/BSIntrusiveRefCounted.h"
+#include "RE/M/MemoryManager.h"
+#include "RE/N/NiPoint3.h"
+#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

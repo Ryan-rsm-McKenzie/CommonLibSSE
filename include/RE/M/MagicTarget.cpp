@@ -1,8 +1,8 @@
-#include "RE/FormComponents/Components/MagicTarget.h"
+#include "RE/M/MagicTarget.h"
 
-#include "RE/BSCore/BSTList.h"
-#include "RE/FormComponents/Components/ActiveEffect/ActiveEffect.h"
-#include "RE/FormComponents/TESForm/EffectSetting.h"
+#include "RE/B/BSTList.h"
+#include "RE/A/ActiveEffect.h"
+#include "RE/E/EffectSetting.h"
 
 
 namespace RE

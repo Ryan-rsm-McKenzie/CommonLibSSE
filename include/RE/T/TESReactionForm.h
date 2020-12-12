@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSTList.h"
-#include "RE/FormComponents/BaseFormComponent.h"
-#include "RE/FormComponents/Enums/FightReactions.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/B/BSTList.h"
+#include "RE/B/BaseFormComponent.h"
+#include "RE/F/FightReactions.h"
+#include "RE/F/FormTypes.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/NetImmerse/NiBinaryStream/NiBinaryStream.h"
+#include "RE/N/NiBinaryStream.h"
 
 
 namespace RE

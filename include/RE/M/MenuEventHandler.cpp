@@ -1,4 +1,4 @@
-#include "RE/BSDevices/MenuEventHandler/MenuEventHandler.h"
+#include "RE/M/MenuEventHandler.h"
 
 
 namespace RE

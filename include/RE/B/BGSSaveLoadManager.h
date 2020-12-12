@@ -1,14 +1,14 @@
 #pragma once
 
-#include "RE/BSCore/BSAtomic.h"
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/BSCore/BSTMessageQueue.h"
-#include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/BSMain/BSThread/BSThread.h"
-#include "RE/Events/RaceSexMenuEvent.h"
-#include "RE/bgs/saveload/Request.h"
+#include "RE/B/BSAtomic.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTEvent.h"
+#include "RE/B/BSTMessageQueue.h"
+#include "RE/B/BSTSmartPointer.h"
+#include "RE/B/BSThread.h"
+#include "RE/R/RaceSexMenuEvent.h"
+#include "RE/R/Request.h"
 
 
 namespace RE

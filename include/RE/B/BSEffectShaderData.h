@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSGraphics/Enums/DepthStencilDepthModes.h"
-#include "RE/BSGraphics/Enums/TextureAddressModes.h"
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
-#include "RE/NetImmerse/NiColor.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiProperty/NiAlphaProperty.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/D/DepthStencilDepthModes.h"
+#include "RE/T/TextureAddressModes.h"
+#include "RE/B/BSIntrusiveRefCounted.h"
+#include "RE/N/NiColor.h"
+#include "RE/N/NiAlphaProperty.h"
+#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
-#include "RE/Pathfinding/IMovementControllerRegisterInterface/IMovementControllerRegisterInterface.h"
+#include "RE/B/BSIntrusiveRefCounted.h"
+#include "RE/I/IMovementControllerRegisterInterface.h"
 
 
 namespace RE

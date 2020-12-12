@@ -1,15 +1,15 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/BSCore/BSTList.h"
-#include "RE/FormComponents/Components/AITimeStamp.h"
-#include "RE/FormComponents/Enums/FightReactions.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
-#include "RE/FormComponents/TESFullName.h"
-#include "RE/FormComponents/TESReactionForm.h"
-#include "RE/FormComponents/TESTexture/TESTexture.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/B/BSTList.h"
+#include "RE/A/AITimeStamp.h"
+#include "RE/F/FightReactions.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESForm.h"
+#include "RE/T/TESFullName.h"
+#include "RE/T/TESReactionForm.h"
+#include "RE/T/TESTexture.h"
 
 
 namespace RE

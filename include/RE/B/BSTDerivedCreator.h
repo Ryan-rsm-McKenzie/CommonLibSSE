@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSCore/IBSTCreator/IBSTCreator.h"
+#include "RE/I/IBSTCreator.h"
 
 
 namespace RE

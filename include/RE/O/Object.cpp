@@ -1,8 +1,8 @@
-#include "RE/BSScript/Object.h"
+#include "RE/O/Object.h"
 
-#include "RE/BSScript/IObjectHandlePolicy.h"
-#include "RE/BSScript/Internal/VirtualMachine.h"
-#include "RE/BSScript/ObjectTypeInfo.h"
+#include "RE/I/IObjectHandlePolicy.h"
+#include "RE/V/VirtualMachine.h"
+#include "RE/O/ObjectTypeInfo.h"
 
 
 namespace RE

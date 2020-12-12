@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSShader/BSShaderMaterial/BSShaderMaterial.h"
-#include "RE/NetImmerse/NiColor.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/B/BSShaderMaterial.h"
+#include "RE/N/NiColor.h"
+#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

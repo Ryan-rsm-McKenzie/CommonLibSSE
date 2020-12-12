@@ -1,6 +1,6 @@
-#include "RE/BSScript/Internal/VirtualMachine.h"
+#include "RE/V/VirtualMachine.h"
 
-#include "RE/SkyrimScript/SkyrimVM.h"
+#include "RE/S/SkyrimVM.h"
 
 
 namespace RE

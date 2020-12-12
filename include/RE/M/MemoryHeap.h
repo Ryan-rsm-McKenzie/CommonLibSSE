@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/Memory/IMemoryStoreBase/IMemoryStore/IMemoryHeap/AbstractHeap/AbstractHeap.h"
+#include "RE/A/AbstractHeap.h"
 
 
 namespace RE

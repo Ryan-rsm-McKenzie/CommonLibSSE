@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpCharacterState/bhkCharacterState/bhkCharacterState.h"
+#include "RE/B/bhkCharacterState.h"
 
 
 namespace RE

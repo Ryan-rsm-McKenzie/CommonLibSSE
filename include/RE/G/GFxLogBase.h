@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/Scaleform/GFxLog/GFxLogConstants.h"
+#include "RE/G/GFxLogConstants.h"
 
 
 namespace RE

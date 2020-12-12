@@ -1,4 +1,4 @@
-#include "RE/Scaleform/FxGameDelegate/RemoveCallbackVisitor.h"
+#include "RE/R/RemoveCallbackVisitor.h"
 
 
 namespace RE

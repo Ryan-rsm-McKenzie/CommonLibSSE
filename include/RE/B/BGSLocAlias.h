@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/FormComponents/Components/BGSBaseAlias/BGSBaseAlias.h"
+#include "RE/B/BGSBaseAlias.h"
 
 
 namespace RE

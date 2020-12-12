@@ -1,4 +1,4 @@
-#include "RE/BSDevices/PlayerInputHandler/PlayerInputHandler.h"
+#include "RE/P/PlayerInputHandler.h"
 
 
 namespace RE

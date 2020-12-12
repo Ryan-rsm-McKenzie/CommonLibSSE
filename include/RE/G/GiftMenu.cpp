@@ -1,4 +1,4 @@
-#include "RE/Menus/IMenu/GiftMenu.h"
+#include "RE/G/GiftMenu.h"
 
 namespace RE
 {

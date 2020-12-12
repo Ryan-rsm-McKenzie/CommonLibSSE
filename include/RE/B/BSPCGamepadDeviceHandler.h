@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSDevices/BSIInputDevice/BSIInputDevice.h"
+#include "RE/B/BSIInputDevice.h"
 
 
 namespace RE

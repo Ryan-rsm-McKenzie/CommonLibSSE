@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSCore/BSPointerHandle.h"
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/BSExtraData/BSExtraData.h"
-#include "RE/BSExtraData/Enums/ExtraDataTypes.h"
-#include "RE/NetImmerse/NiPoint3.h"
+#include "RE/B/BSPointerHandle.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/B/BSExtraData.h"
+#include "RE/E/ExtraDataTypes.h"
+#include "RE/N/NiPoint3.h"
 
 
 namespace RE

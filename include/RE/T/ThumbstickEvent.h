@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/Events/InputEvent/IDEvent/IDEvent.h"
+#include "RE/I/IDEvent.h"
 
 
 namespace RE

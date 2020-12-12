@@ -1,13 +1,13 @@
 #pragma once
 
-#include "RE/BSCore/BSAtomic.h"
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/BSCore/BSTSingleton.h"
-#include "RE/BSSystem/BSTimer.h"
-#include "RE/Scaleform/GRefCount/GPtr.h"
+#include "RE/B/BSAtomic.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTEvent.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/B/BSTSingleton.h"
+#include "RE/B/BSTimer.h"
+#include "RE/G/GPtr.h"
 
 
 namespace RE

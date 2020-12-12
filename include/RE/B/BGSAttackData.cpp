@@ -1,4 +1,4 @@
-#include "RE/NetImmerse/NiRefObject/BGSAttackData.h"
+#include "RE/B/BGSAttackData.h"
 
 
 namespace RE

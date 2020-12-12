@@ -1,4 +1,4 @@
-#include "RE/Events/BGSStoryEvent/Inventory.h"
+#include "RE/I/Inventory.h"
 
 
 namespace RE

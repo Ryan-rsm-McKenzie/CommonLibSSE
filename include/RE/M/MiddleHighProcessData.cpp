@@ -1,4 +1,4 @@
-#include "RE/AI/MiddleHighProcessData.h"
+#include "RE/M/MiddleHighProcessData.h"
 #include "SKSE/API.h"
 
 

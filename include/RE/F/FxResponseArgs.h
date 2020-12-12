@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Scaleform/FxGameDelegate/FxResponseArgsBase.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/F/FxResponseArgsBase.h"
+#include "RE/G/GFxValue.h"
 
 
 namespace RE

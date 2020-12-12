@@ -1,4 +1,4 @@
-#include "RE/BSScript/ByteCode/PackedInstructionStream.h"
+#include "RE/P/PackedInstructionStream.h"
 
 
 namespace RE

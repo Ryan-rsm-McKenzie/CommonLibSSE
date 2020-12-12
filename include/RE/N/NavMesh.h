@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSPathFinding/BSNavmesh.h"
-#include "RE/FormComponents/Components/TESChildCell.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/B/BSNavmesh.h"
+#include "RE/T/TESChildCell.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

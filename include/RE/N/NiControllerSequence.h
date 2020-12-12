@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/Memory/MemoryManager.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObject.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiTimeController/NiTimeController.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/M/MemoryManager.h"
+#include "RE/N/NiObject.h"
+#include "RE/N/NiTimeController.h"
+#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

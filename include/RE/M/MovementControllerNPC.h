@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/Animation/IAnimationSetCallbackFunctor.h"
-#include "RE/Pathfinding/IMovementControllerRegisterInterface/MovementControllerAI/MovementControllerAI.h"
-#include "RE/Pathfinding/IMovementInterface/IMovementDirectControl.h"
-#include "RE/Pathfinding/IMovementInterface/IMovementMessageInterface.h"
-#include "RE/Pathfinding/IMovementInterface/IMovementMotionDrivenControl.h"
-#include "RE/Pathfinding/IMovementInterface/IMovementPlannerDirectControl.h"
-#include "RE/Pathfinding/IMovementInterface/IMovementSelectIdle.h"
+#include "RE/I/IAnimationSetCallbackFunctor.h"
+#include "RE/M/MovementControllerAI.h"
+#include "RE/I/IMovementDirectControl.h"
+#include "RE/I/IMovementMessageInterface.h"
+#include "RE/I/IMovementMotionDrivenControl.h"
+#include "RE/I/IMovementPlannerDirectControl.h"
+#include "RE/I/IMovementSelectIdle.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/Events/BGSFootstepManager.h"
+#include "RE/B/BGSFootstepManager.h"
 
 
 namespace RE

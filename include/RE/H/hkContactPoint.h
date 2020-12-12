@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSHavok/hkVector4.h"
+#include "RE/H/hkVector4.h"
 
 
 namespace RE

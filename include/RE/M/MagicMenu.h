@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Menus/IMenu/IMenu.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/I/IMenu.h"
+#include "RE/G/GFxValue.h"
 
 
 namespace RE

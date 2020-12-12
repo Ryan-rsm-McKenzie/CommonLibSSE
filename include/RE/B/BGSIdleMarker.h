@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/FormComponents/BGSIdleCollection.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
-#include "RE/FormComponents/TESModel/TESModel.h"
+#include "RE/B/BGSIdleCollection.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESBoundObject.h"
+#include "RE/T/TESModel.h"
 
 
 namespace RE

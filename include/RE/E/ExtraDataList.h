@@ -1,13 +1,13 @@
 #pragma once
 
-#include "RE/BSCore/BSAtomic.h"
-#include "RE/BSCore/BSPointerHandle.h"
-#include "RE/BSExtraData/BSExtraData.h"
-#include "RE/BSExtraData/Enums/ExtraDataTypes.h"
-#include "RE/BSExtraData/ExtraFlags.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/Enums/SoulLevels.h"
-#include "RE/Memory/MemoryManager.h"
+#include "RE/B/BSAtomic.h"
+#include "RE/B/BSPointerHandle.h"
+#include "RE/B/BSExtraData.h"
+#include "RE/E/ExtraDataTypes.h"
+#include "RE/E/ExtraFlags.h"
+#include "RE/F/FormTypes.h"
+#include "RE/S/SoulLevels.h"
+#include "RE/M/MemoryManager.h"
 
 
 namespace RE

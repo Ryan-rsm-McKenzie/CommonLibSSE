@@ -1,4 +1,4 @@
-#include "RE/BSMain/SettingCollection/INISettingCollection.h"
+#include "RE/I/INISettingCollection.h"
 
 
 namespace RE

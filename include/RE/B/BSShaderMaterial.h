@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSSystem/BSIntrusiveRefCounted.h"
-#include "RE/NetImmerse/NiPoint2.h"
+#include "RE/B/BSIntrusiveRefCounted.h"
+#include "RE/N/NiPoint2.h"
 
 
 namespace RE

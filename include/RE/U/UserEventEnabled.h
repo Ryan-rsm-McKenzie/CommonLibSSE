@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSDevices/UserEvents.h"
+#include "RE/U/UserEvents.h"
 
 
 namespace RE

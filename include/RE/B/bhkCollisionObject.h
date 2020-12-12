@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NetImmerse/NiRefObject/NiObject/NiCollisionObject/bhkNiCollisionObject/bhkNiCollisionObject.h"
+#include "RE/B/bhkNiCollisionObject.h"
 
 
 namespace RE

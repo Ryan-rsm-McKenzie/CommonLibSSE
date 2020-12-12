@@ -1,4 +1,4 @@
-#include "RE/BSScript/IObjectHandlePolicy.h"
+#include "RE/I/IObjectHandlePolicy.h"
 
 
 namespace RE

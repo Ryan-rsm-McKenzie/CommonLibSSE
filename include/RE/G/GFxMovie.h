@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Scaleform/GFxPlayerStats/GFxPlayerStats.h"
-#include "RE/Scaleform/GRefCount/GRefCountBase.h"
+#include "RE/G/GFxPlayerStats.h"
+#include "RE/G/GRefCountBase.h"
 
 
 namespace RE

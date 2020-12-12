@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/BSScript/Internal/IFuncCallQuery/IFuncCallQuery.h"
-#include "RE/BSScript/Variable.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTSmartPointer.h"
+#include "RE/I/IFuncCallQuery.h"
+#include "RE/V/Variable.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
-#include "RE/FormComponents/TESForm/BGSStoryManagerTreeForm/TESQuest.h"
+#include "RE/T/TESQuest.h"
 
-#include "RE/RadiantStory/BGSStoryTeller.h"
+#include "RE/B/BGSStoryTeller.h"
 #include "SKSE/Logger.h"
 
 

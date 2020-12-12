@@ -1,6 +1,6 @@
-#include "RE/FormComponents/TESForm/Script.h"
+#include "RE/S/Script.h"
 
-#include "RE/Memory/MemoryManager.h"
+#include "RE/M/MemoryManager.h"
 
 
 namespace RE

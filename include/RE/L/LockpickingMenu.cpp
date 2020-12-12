@@ -1,6 +1,6 @@
-#include "RE/Menus/IMenu/LockpickingMenu.h"
+#include "RE/L/LockpickingMenu.h"
 
-#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
+#include "RE/T/TESObjectREFR.h"
 
 namespace RE
 {

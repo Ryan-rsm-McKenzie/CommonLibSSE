@@ -1,4 +1,4 @@
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkReferencedObject.h"
+#include "RE/H/hkReferencedObject.h"
 
 
 namespace RE

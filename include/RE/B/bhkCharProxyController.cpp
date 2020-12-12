@@ -1,6 +1,6 @@
-#include "RE/BSHavok/hkpCharacterProxyListener/bhkCharProxyController.h"
+#include "RE/B/bhkCharProxyController.h"
 
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpCharacterProxy/hkpCharacterProxy.h"
+#include "RE/H/hkpCharacterProxy.h"
 
 
 namespace RE

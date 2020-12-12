@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSAtomic.h"
-#include "RE/Memory/IMemoryStoreBase/IMemoryStoreBase.h"
+#include "RE/B/BSAtomic.h"
+#include "RE/I/IMemoryStoreBase.h"
 
 
 namespace RE

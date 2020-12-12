@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/BSCore/BSTSingleton.h"
-#include "RE/Events/DefaultObjectsReadyEvent.h"
+#include "RE/B/BSTEvent.h"
+#include "RE/B/BSTSingleton.h"
+#include "RE/D/DefaultObjectsReadyEvent.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
-#include "RE/FormComponents/TESForm/TESFaction.h"
+#include "RE/T/TESFaction.h"
 
-#include "RE/AI/ProcessLists.h"
-#include "RE/FormComponents/TESForm/BGSListForm.h"
-#include "RE/FormComponents/TESForm/TESObjectREFR/Actor/Character/PlayerCharacter.h"
+#include "RE/P/ProcessLists.h"
+#include "RE/B/BGSListForm.h"
+#include "RE/P/PlayerCharacter.h"
 #include "SKSE/Logger.h"
 
 

@@ -1,4 +1,4 @@
-#include "RE/Animation/IAnimationGraphManagerHolder/IAnimationGraphManagerHolder.h"
+#include "RE/I/IAnimationGraphManagerHolder.h"
 
 
 namespace RE

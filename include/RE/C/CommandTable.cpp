@@ -1,4 +1,4 @@
-#include "RE/Obscript/CommandTable.h"
+#include "RE/C/CommandTable.h"
 
 
 namespace RE

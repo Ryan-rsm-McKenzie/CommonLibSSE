@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSPointerHandle.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/B/BSPointerHandle.h"
+#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

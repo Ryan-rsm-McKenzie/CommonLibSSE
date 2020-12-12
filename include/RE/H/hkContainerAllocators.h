@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSHavok/hkMemoryAllocator/hkMemoryAllocator.h"
+#include "RE/H/hkMemoryAllocator.h"
 
 
 namespace RE

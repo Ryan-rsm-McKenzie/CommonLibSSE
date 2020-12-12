@@ -1,10 +1,10 @@
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiObjectNET.h"
+#include "RE/N/NiObjectNET.h"
 
-#include "RE/NetImmerse/NiRTTI.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiExtraData/NiExtraData.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiTimeController/NiTimeController.h"
-#include "RE/NetImmerse/NiSystem.h"
-#include "RE/NetImmerse/NiTCollection.h"
+#include "RE/N/NiRTTI.h"
+#include "RE/N/NiExtraData.h"
+#include "RE/N/NiTimeController.h"
+#include "RE/N/NiSystem.h"
+#include "RE/N/NiTCollection.h"
 
 
 namespace RE

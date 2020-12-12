@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSAtomic.h"
-#include "RE/BSDevices/BSIInputDevice/BSInputDevice/BSMouseDevice/BSMouseDevice.h"
+#include "RE/B/BSAtomic.h"
+#include "RE/B/BSMouseDevice.h"
 
 
 namespace RE

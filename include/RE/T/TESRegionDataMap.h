@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/FormComponents/Components/TESRegionData/TESRegionData.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/T/TESRegionData.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSHavok/hkpShapeContainer/hkpShapeContainer.h"
+#include "RE/H/hkpShapeContainer.h"
 
 
 namespace RE

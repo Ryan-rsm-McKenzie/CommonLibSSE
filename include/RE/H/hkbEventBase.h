@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSHavok/hkRefPtr/hkRefPtr.h"
+#include "RE/H/hkRefPtr.h"
 
 
 namespace RE

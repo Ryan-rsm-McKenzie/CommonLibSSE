@@ -1,4 +1,4 @@
-#include "RE/Menus/HUDObject/HUDMeter/HUDMeter.h"
+#include "RE/H/HUDMeter.h"
 
 
 namespace RE

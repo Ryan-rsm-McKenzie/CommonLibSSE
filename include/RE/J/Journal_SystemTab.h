@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/Menus/IMenu/Components/JournalTab/JournalTab.h"
+#include "RE/B/BSTEvent.h"
+#include "RE/J/JournalTab.h"
 
 
 namespace RE

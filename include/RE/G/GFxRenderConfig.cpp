@@ -1,4 +1,4 @@
-#include "RE/Scaleform/GFxRenderConfig/GFxRenderConfig.h"
+#include "RE/G/GFxRenderConfig.h"
 
 
 namespace RE

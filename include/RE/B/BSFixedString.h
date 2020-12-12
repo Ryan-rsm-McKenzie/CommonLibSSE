@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSStringPool.h"
-#include "RE/BSCore/CRC.h"
+#include "RE/B/BSStringPool.h"
+#include "RE/C/CRC.h"
 
 namespace RE
 {

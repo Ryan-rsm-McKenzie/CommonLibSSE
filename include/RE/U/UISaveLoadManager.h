@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/BSCore/BSTSingleton.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BSTEvent.h"
+#include "RE/B/BSTSingleton.h"
+#include "RE/G/GFxValue.h"
 
 
 namespace RE

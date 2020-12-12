@@ -1,4 +1,4 @@
-#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESAmmo.h"
+#include "RE/T/TESAmmo.h"
 
 
 namespace RE

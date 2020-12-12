@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSAudio/BSIMusicTrack/BSIMusicTrack.h"
-#include "RE/FormComponents/Components/TESCondition.h"
+#include "RE/B/BSIMusicTrack.h"
+#include "RE/T/TESCondition.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/Scaleform/GMemory/GMemory.h"
+#include "RE/G/GMemory.h"
 
 #define GFC_REFCOUNTALLOC_CHECK_DELETE(class_name, p)
 

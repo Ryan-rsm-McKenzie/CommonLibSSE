@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/BSScript/IObjectProcessor/IObjectProcessor.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/B/BSTSmartPointer.h"
+#include "RE/I/IObjectProcessor.h"
 
 
 namespace RE

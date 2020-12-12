@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpShape/hkpShape.h"
-#include "RE/BSHavok/hkpShapeRayCastCollectorOutput/hkpShapeRayCastCollectorOutput.h"
+#include "RE/H/hkpShape.h"
+#include "RE/H/hkpShapeRayCastCollectorOutput.h"
 
 namespace RE
 {

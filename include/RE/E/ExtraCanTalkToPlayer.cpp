@@ -1,4 +1,4 @@
-#include "RE/BSExtraData/ExtraCanTalkToPlayer.h"
+#include "RE/E/ExtraCanTalkToPlayer.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/NetImmerse/NiMath.h"
+#include "RE/N/NiMath.h"
 
 
 namespace RE

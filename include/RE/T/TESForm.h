@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/BSCore/BSAtomic.h"
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/FormComponents/BaseFormComponent.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
+#include "RE/B/BSAtomic.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/B/BaseFormComponent.h"
+#include "RE/F/FormTypes.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSCore/BSAtomic.h"
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/BSCore/BSTSmartPointer.h"
+#include "RE/B/BSAtomic.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/B/BSTSmartPointer.h"
 
 
 namespace RE

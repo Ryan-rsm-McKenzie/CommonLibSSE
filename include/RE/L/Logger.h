@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSScript/ErrorLogger.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/E/ErrorLogger.h"
 
 
 namespace RE

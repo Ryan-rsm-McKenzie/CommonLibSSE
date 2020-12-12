@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSTSingleton.h"
-#include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/BSResource/Location/Location.h"
-#include "RE/BSResource/StreamBase/Stream/Stream.h"
+#include "RE/B/BSTSingleton.h"
+#include "RE/B/BSTSmartPointer.h"
+#include "RE/L/Location.h"
+#include "RE/S/Stream.h"
 
 
 namespace RE

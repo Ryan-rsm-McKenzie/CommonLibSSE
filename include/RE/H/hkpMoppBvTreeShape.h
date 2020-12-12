@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpShape/hkpBvTreeShape/hkMoppBvTreeShapeBase/hkMoppBvTreeShapeBase.h"
-#include "RE/BSHavok/hkpShapeContainer/hkpSingleShapeContainer.h"
+#include "RE/H/hkMoppBvTreeShapeBase.h"
+#include "RE/H/hkpSingleShapeContainer.h"
 
 
 namespace RE

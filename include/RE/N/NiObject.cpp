@@ -1,7 +1,7 @@
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObject.h"
+#include "RE/N/NiObject.h"
 
-#include "RE/NetImmerse/NiRTTI.h"
-#include "RE/NetImmerse/NiStream.h"
+#include "RE/N/NiRTTI.h"
+#include "RE/N/NiStream.h"
 
 
 namespace RE

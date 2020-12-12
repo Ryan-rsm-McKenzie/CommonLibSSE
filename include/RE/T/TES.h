@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/FileIO/ICellAttachDetachEventSource/ICellAttachDetachEventSource.h"
+#include "RE/B/BSTEvent.h"
+#include "RE/I/ICellAttachDetachEventSource.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/BSHavok/hkpCharacterProxyListener/hkpCharacterProxyListener.h"
+#include "RE/H/hkpCharacterProxyListener.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
-#include "RE/Scaleform/GFxLoader/GFxTranslator.h"
+#include "RE/G/GFxTranslator.h"
 
-#include "RE/Scaleform/GFxString/GFxWStringBuffer.h"
+#include "RE/G/GFxWStringBuffer.h"
 
 
 namespace RE

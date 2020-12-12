@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTLocklessQueue.h"
-#include "RE/NetImmerse/NiCullingProcess/NiCullingProcess.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTLocklessQueue.h"
+#include "RE/N/NiCullingProcess.h"
+#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

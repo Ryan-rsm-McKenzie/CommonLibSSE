@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSString.h"
-#include "RE/Sky/SkyObject/SkyObject.h"
+#include "RE/B/BSString.h"
+#include "RE/S/SkyObject.h"
 
 
 namespace RE

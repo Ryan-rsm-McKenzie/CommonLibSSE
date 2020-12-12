@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/FormComponents/Enums/ActorValues.h"
+#include "RE/A/ActorValues.h"
 
 
 namespace RE

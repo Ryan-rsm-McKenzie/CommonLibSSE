@@ -1,4 +1,4 @@
-#include "RE/BSExtraData/ExtraPoison.h"
+#include "RE/E/ExtraPoison.h"
 
 
 namespace RE

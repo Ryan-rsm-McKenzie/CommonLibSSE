@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/NetImmerse/NiRefObject/BGSAttackData.h"
-#include "RE/NetImmerse/NiRefObject/NiRefObject.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/F/FormTypes.h"
+#include "RE/B/BGSAttackData.h"
+#include "RE/N/NiRefObject.h"
+#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

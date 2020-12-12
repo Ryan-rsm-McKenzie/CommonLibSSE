@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSString.h"
-#include "RE/BSCore/BSTSingleton.h"
-#include "RE/Scaleform/GFxPlayer/GFxMovieView.h"
-#include "RE/Scaleform/GRefCount/GPtr.h"
+#include "RE/B/BSString.h"
+#include "RE/B/BSTSingleton.h"
+#include "RE/G/GFxMovieView.h"
+#include "RE/G/GPtr.h"
 
 
 namespace RE

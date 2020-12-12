@@ -1,15 +1,15 @@
-#include "RE/Inventory/InventoryEntryData.h"
+#include "RE/I/InventoryEntryData.h"
 
-#include "RE/BSExtraData/ExtraCharge.h"
-#include "RE/BSExtraData/ExtraEnchantment.h"
-#include "RE/BSExtraData/ExtraLeveledItem.h"
-#include "RE/BSExtraData/ExtraTextDisplayData.h"
-#include "RE/BSMain/SettingCollection/GameSettingCollection.h"
-#include "RE/FormComponents/Components/FormTraits.h"
-#include "RE/FormComponents/TESEnchantableForm.h"
-#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundObject.h"
-#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESObjectMISC/TESSoulGem.h"
-#include "RE/Inventory/ExtraDataList.h"
+#include "RE/E/ExtraCharge.h"
+#include "RE/E/ExtraEnchantment.h"
+#include "RE/E/ExtraLeveledItem.h"
+#include "RE/E/ExtraTextDisplayData.h"
+#include "RE/G/GameSettingCollection.h"
+#include "RE/F/FormTraits.h"
+#include "RE/T/TESEnchantableForm.h"
+#include "RE/T/TESBoundObject.h"
+#include "RE/T/TESSoulGem.h"
+#include "RE/E/ExtraDataList.h"
 
 
 namespace RE

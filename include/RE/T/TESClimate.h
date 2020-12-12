@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/BSCore/BSTList.h"
-#include "RE/FormComponents/Components/WeatherType.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
-#include "RE/FormComponents/TESModel/TESModel.h"
-#include "RE/FormComponents/TESTexture/TESTexture.h"
+#include "RE/B/BSTList.h"
+#include "RE/W/WeatherType.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESForm.h"
+#include "RE/T/TESModel.h"
+#include "RE/T/TESTexture.h"
 
 
 namespace RE

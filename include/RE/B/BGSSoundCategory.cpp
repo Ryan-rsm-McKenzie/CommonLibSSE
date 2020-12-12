@@ -1,4 +1,4 @@
-#include "RE/FormComponents/TESForm/BGSSoundCategory.h"
+#include "RE/B/BGSSoundCategory.h"
 
 
 namespace RE

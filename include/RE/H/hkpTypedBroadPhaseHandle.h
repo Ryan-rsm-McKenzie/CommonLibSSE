@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSHavok/hkpBroadPhaseHandle/hkpBroadPhaseHandle.h"
+#include "RE/H/hkpBroadPhaseHandle.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSSystem/BSStorage/BSStorage.h"
+#include "RE/B/BSStorage.h"
 
 
 namespace RE

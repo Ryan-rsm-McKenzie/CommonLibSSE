@@ -1,4 +1,4 @@
-#include "RE/FormComponents/Components/DialogueItem.h"
+#include "RE/D/DialogueItem.h"
 
 
 namespace RE

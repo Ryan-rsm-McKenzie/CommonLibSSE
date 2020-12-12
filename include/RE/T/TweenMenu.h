@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/Menus/IMenu/IMenu.h"
+#include "RE/B/BSTArray.h"
+#include "RE/I/IMenu.h"
 
 
 namespace RE

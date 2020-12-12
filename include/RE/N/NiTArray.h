@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Memory/MemoryManager.h"
-#include "RE/NetImmerse/NiTCollection.h"
+#include "RE/M/MemoryManager.h"
+#include "RE/N/NiTCollection.h"
 
 
 namespace RE

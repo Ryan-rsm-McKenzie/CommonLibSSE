@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSScript/ISavePatcherInterface.h"
+#include "RE/I/ISavePatcherInterface.h"
 
 
 namespace RE

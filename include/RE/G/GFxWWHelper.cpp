@@ -1,6 +1,6 @@
-#include "RE/Scaleform/GFxWWHelper/GFxWWHelper.h"
+#include "RE/G/GFxWWHelper.h"
 
-#include "RE/Scaleform/GStd/GStd.h"
+#include "RE/G/GStd.h"
 
 
 namespace RE

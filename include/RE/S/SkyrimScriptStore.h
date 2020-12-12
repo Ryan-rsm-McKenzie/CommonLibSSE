@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSSystem/BSStorage/IStore/IStore.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/I/IStore.h"
 
 
 namespace RE

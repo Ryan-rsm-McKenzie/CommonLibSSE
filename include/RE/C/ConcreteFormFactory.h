@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSSystem/IFormFactory/IFormFactory.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/I/IFormFactory.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

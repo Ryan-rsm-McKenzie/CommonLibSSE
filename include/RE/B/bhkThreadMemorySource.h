@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSHavok/hkMemoryAllocator/hkMemoryAllocator.h"
-#include "RE/Memory/IMemoryStoreBase/IMemoryStore/IMemoryHeap/IMemoryHeap.h"
+#include "RE/H/hkMemoryAllocator.h"
+#include "RE/I/IMemoryHeap.h"
 
 
 namespace RE

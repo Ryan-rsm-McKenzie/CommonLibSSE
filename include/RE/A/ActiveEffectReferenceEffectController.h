@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSCore/BSPointerHandle.h"
-#include "RE/FormComponents/Components/ReferenceEffectController/ReferenceEffectController.h"
-#include "RE/NetImmerse/NiPoint3.h"
+#include "RE/B/BSPointerHandle.h"
+#include "RE/R/ReferenceEffectController.h"
+#include "RE/N/NiPoint3.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
-#include "RE/NetImmerse/NiTCollection.h"
+#include "RE/N/NiTCollection.h"
 
-#include "RE/NetImmerse/NiMemManager.h"
+#include "RE/N/NiMemManager.h"
 
 
 namespace RE

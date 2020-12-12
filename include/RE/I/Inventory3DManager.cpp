@@ -1,4 +1,4 @@
-#include "RE/Inventory/Inventory3DManager.h"
+#include "RE/I/Inventory3DManager.h"
 
 
 namespace RE

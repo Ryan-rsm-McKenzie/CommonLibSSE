@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/FormComponents/TESTexture/TESTexture.h"
+#include "RE/T/TESTexture.h"
 
 
 namespace RE

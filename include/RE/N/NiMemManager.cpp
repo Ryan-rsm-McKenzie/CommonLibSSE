@@ -1,4 +1,4 @@
-#include "RE/NetImmerse/NiMemManager.h"
+#include "RE/N/NiMemManager.h"
 
 
 namespace RE

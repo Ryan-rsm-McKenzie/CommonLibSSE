@@ -1,4 +1,4 @@
-#include "RE/BSResource/Location/Location.h"
+#include "RE/L/Location.h"
 
 
 namespace RE

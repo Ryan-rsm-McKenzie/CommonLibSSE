@@ -1,7 +1,7 @@
-#include "RE/BSExtraData/ExtraMissingLinkedRefIDs.h"
+#include "RE/E/ExtraMissingLinkedRefIDs.h"
 
-#include "RE/FormComponents/TESForm/BGSKeyword/BGSKeyword.h"
-#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
+#include "RE/B/BGSKeyword.h"
+#include "RE/T/TESObjectREFR.h"
 
 
 namespace RE

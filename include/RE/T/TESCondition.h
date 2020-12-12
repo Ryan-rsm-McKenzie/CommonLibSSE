@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSPointerHandle.h"
-#include "RE/Memory/MemoryManager.h"
+#include "RE/B/BSPointerHandle.h"
+#include "RE/M/MemoryManager.h"
 
 
 namespace RE

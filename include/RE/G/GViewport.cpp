@@ -1,4 +1,4 @@
-#include "RE/Scaleform/GRenderer/GViewport.h"
+#include "RE/G/GViewport.h"
 
 
 namespace RE

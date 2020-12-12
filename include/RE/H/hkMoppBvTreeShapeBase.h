@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSHavok/hkArray.h"
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpShape/hkpBvTreeShape/hkpBvTreeShape.h"
-#include "RE/BSHavok/hkVector4.h"
+#include "RE/H/hkArray.h"
+#include "RE/H/hkpBvTreeShape.h"
+#include "RE/H/hkVector4.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/BSScript/TypeInfo.h"
+#include "RE/T/TypeInfo.h"
 
 
 namespace RE

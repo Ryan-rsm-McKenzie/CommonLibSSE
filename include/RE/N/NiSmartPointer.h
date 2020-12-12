@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSCore/CRC.h"
+#include "RE/C/CRC.h"
 
 
 namespace RE

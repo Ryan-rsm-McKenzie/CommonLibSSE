@@ -1,6 +1,6 @@
-#include "RE/Menus/IMenu/Console.h"
+#include "RE/C/Console.h"
 
-#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
+#include "RE/T/TESObjectREFR.h"
 
 
 namespace RE

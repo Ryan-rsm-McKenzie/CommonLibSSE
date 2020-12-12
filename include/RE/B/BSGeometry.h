@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/NiAVObject.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/N/NiAVObject.h"
+#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

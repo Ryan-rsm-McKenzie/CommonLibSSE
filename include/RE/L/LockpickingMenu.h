@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSAudio/BSSoundHandle.h"
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/BSDevices/MenuEventHandler/MenuEventHandler.h"
-#include "RE/Menus/IMenu/IMenu.h"
+#include "RE/B/BSSoundHandle.h"
+#include "RE/B/BSTEvent.h"
+#include "RE/M/MenuEventHandler.h"
+#include "RE/I/IMenu.h"
 
 
 namespace RE

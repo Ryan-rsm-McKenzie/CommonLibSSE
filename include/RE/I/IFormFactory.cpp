@@ -1,4 +1,4 @@
-#include "RE/BSSystem/IFormFactory/IFormFactory.h"
+#include "RE/I/IFormFactory.h"
 
 
 namespace RE

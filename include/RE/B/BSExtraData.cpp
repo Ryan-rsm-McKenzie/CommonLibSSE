@@ -1,6 +1,6 @@
-#include "RE/BSExtraData/BSExtraData.h"
+#include "RE/B/BSExtraData.h"
 
-#include "RE/Memory/MemoryManager.h"
+#include "RE/M/MemoryManager.h"
 
 
 namespace RE

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Scaleform/GArray/GArray.h"
-#include "RE/Scaleform/GColor/GColor.h"
+#include "RE/G/GArray.h"
+#include "RE/G/GColor.h"
 
 
 namespace RE

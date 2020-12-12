@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/Scaleform/GAllocator/GAllocator.h"
-#include "RE/Scaleform/GArray/GArrayBase.h"
-#include "RE/Scaleform/GArray/GArrayData.h"
-#include "RE/Scaleform/GArray/GArrayDefaultPolicy.h"
-#include "RE/Scaleform/GStats/GStats.h"
+#include "RE/G/GAllocator.h"
+#include "RE/G/GArrayBase.h"
+#include "RE/G/GArrayData.h"
+#include "RE/G/GArrayDefaultPolicy.h"
+#include "RE/G/GStats.h"
 
 
 namespace RE

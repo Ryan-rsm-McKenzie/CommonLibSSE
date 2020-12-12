@@ -1,4 +1,4 @@
-#include "RE/BSMain/BSHandleRefObject.h"
+#include "RE/B/BSHandleRefObject.h"
 
 
 namespace RE

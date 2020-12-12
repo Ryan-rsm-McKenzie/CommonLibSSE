@@ -1,4 +1,4 @@
-#include "RE/Scaleform/GFxResource/GFxResourceKey.h"
+#include "RE/G/GFxResourceKey.h"
 
 
 namespace RE

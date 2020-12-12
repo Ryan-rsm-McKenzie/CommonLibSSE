@@ -1,18 +1,18 @@
 #pragma once
 
-#include "RE/BSCore/BSAtomic.h"
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSCore/BSString.h"
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/BSCore/BSTList.h"
-#include "RE/FormComponents/Components/TESCondition.h"
-#include "RE/FormComponents/Enums/DialogueTypes.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/Enums/QuestEvents.h"
-#include "RE/FormComponents/Enums/QuestObjectiveStates.h"
-#include "RE/FormComponents/TESForm/BGSStoryManagerTreeForm/BGSStoryManagerTreeForm.h"
-#include "RE/FormComponents/TESFullName.h"
+#include "RE/B/BSAtomic.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BSString.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/B/BSTList.h"
+#include "RE/T/TESCondition.h"
+#include "RE/D/DialogueTypes.h"
+#include "RE/F/FormTypes.h"
+#include "RE/Q/QuestEvents.h"
+#include "RE/Q/QuestObjectiveStates.h"
+#include "RE/B/BGSStoryManagerTreeForm.h"
+#include "RE/T/TESFullName.h"
 
 
 namespace RE

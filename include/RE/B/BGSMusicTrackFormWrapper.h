@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSAudio/BSIMusicTrack/BSIMusicTrack.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/B/BSIMusicTrack.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

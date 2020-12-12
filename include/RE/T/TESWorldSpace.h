@@ -1,17 +1,17 @@
 #pragma once
 
-#include "RE/BSCore/BSString.h"
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/BSCore/BSTList.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
-#include "RE/FormComponents/TESFullName.h"
-#include "RE/FormComponents/TESModel/TESModel.h"
-#include "RE/FormComponents/TESTexture/TESTexture.h"
-#include "RE/NetImmerse/NiPoint2.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
-#include "RE/NetImmerse/NiTMapBase/NiTPointerMap.h"
+#include "RE/B/BSString.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/B/BSTList.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESForm.h"
+#include "RE/T/TESFullName.h"
+#include "RE/T/TESModel.h"
+#include "RE/T/TESTexture.h"
+#include "RE/N/NiPoint2.h"
+#include "RE/N/NiSmartPointer.h"
+#include "RE/N/NiTPointerMap.h"
 
 
 namespace RE

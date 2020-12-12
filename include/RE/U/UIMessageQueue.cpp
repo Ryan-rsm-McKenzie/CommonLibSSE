@@ -1,7 +1,7 @@
-#include "RE/Menus/UIMessageQueue.h"
+#include "RE/U/UIMessageQueue.h"
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/Menus/UIMessage.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/U/UIMessage.h"
 
 
 namespace RE

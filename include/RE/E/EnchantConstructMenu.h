@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSString.h"
-#include "RE/Menus/IMenu/Components/CraftingSubMenus/CraftingSubMenu.h"
-#include "RE/Menus/IMessageBoxCallback/IMessageBoxCallback.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/B/BSString.h"
+#include "RE/C/CraftingSubMenu.h"
+#include "RE/I/IMessageBoxCallback.h"
+#include "RE/G/GFxValue.h"
 
 
 namespace RE

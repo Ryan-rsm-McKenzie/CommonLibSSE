@@ -1,7 +1,7 @@
-#include "RE/Camera/TESCamera/LocalMapCamera.h"
+#include "RE/L/LocalMapCamera.h"
 
-#include "RE/BSMain/SettingCollection/INISettingCollection.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiAVObject/NiCamera.h"
+#include "RE/I/INISettingCollection.h"
+#include "RE/N/NiCamera.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NetImmerse/NiTCollection.h"
+#include "RE/N/NiTCollection.h"
 
 
 namespace RE

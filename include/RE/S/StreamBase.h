@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSResource/ErrorCodes.h"
-#include "RE/Memory/MemoryManager.h"
+#include "RE/E/ErrorCodes.h"
+#include "RE/M/MemoryManager.h"
 
 
 namespace RE

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSDevices/MenuEventHandler/MenuEventHandler.h"
-#include "RE/FormComponents/Enums/ActorValues.h"
-#include "RE/Menus/IMenu/IMenu.h"
-#include "RE/NetImmerse/NiPoint3.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/B/BSTArray.h"
+#include "RE/M/MenuEventHandler.h"
+#include "RE/A/ActorValues.h"
+#include "RE/I/IMenu.h"
+#include "RE/N/NiPoint3.h"
+#include "RE/G/GFxValue.h"
 
 
 namespace RE

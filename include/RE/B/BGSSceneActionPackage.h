@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/FormComponents/Components/BGSSceneAction/BGSSceneAction.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BGSSceneAction.h"
 
 
 namespace RE

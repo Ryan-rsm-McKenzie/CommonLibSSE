@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/NetImmerse/NiFrustum.h"
-#include "RE/NetImmerse/NiFrustumPlanes.h"
+#include "RE/N/NiFrustum.h"
+#include "RE/N/NiFrustumPlanes.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/BSAudio/BSSoundHandle.h"
+#include "RE/B/BSSoundHandle.h"
 
 
 namespace RE

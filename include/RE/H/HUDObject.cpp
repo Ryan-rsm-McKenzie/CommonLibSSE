@@ -1,7 +1,7 @@
-#include "RE/Menus/HUDObject/HUDObject.h"
+#include "RE/H/HUDObject.h"
 
-#include "RE/Scaleform/FxGameDelegate/FxDelegateArgs.h"
-#include "RE/Scaleform/GFxPlayer/GFxMovieView.h"
+#include "RE/F/FxDelegateArgs.h"
+#include "RE/G/GFxMovieView.h"
 
 
 namespace RE

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/FormComponents/BGSDestructibleObjectForm.h"
-#include "RE/FormComponents/Components/BGSOpenCloseForm.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESObject/TESBoundObject/TESBoundAnimObject/TESBoundAnimObject.h"
-#include "RE/FormComponents/TESFullName.h"
-#include "RE/FormComponents/TESModel/TESModelTextureSwap.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BGSDestructibleObjectForm.h"
+#include "RE/B/BGSOpenCloseForm.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESBoundAnimObject.h"
+#include "RE/T/TESFullName.h"
+#include "RE/T/TESModelTextureSwap.h"
 
 
 namespace RE

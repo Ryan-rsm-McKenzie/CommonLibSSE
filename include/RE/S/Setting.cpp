@@ -1,6 +1,6 @@
-#include "RE/BSMain/Setting/Setting.h"
+#include "RE/S/Setting.h"
 
-#include "RE/Memory/MemoryManager.h"
+#include "RE/M/MemoryManager.h"
 
 
 namespace RE

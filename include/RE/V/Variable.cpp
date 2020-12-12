@@ -1,9 +1,9 @@
-#include "RE/BSScript/Variable.h"
+#include "RE/V/Variable.h"
 
-#include "RE/BSScript/Array.h"
-#include "RE/BSScript/Object.h"
-#include "RE/BSScript/ObjectTypeInfo.h"
-#include "RE/BSScript/PackUnpack.h"
+#include "RE/A/Array.h"
+#include "RE/O/Object.h"
+#include "RE/O/ObjectTypeInfo.h"
+#include "RE/P/PackUnpack.h"
 
 
 namespace RE

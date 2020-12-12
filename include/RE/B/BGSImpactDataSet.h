@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/FormComponents/BGSPreloadable.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/B/BGSPreloadable.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESForm.h"
 
 
 namespace RE

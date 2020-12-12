@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/BSCore/BSTHashMap.h"
-#include "RE/BSCore/BSTSingleton.h"
-#include "RE/BSCore/BSTTuple.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTEvent.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/B/BSTSingleton.h"
+#include "RE/B/BSTTuple.h"
 
 
 namespace RE

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSScript/ReferenceArray.h"
-#include "RE/BSScript/Traits/CommonTypeTraits.h"
-#include "RE/BSScript/TypeInfo.h"
+#include "RE/R/ReferenceArray.h"
+#include "RE/C/CommonTypeTraits.h"
+#include "RE/T/TypeInfo.h"
 
 
 namespace RE

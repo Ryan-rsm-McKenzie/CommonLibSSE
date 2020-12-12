@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSScript/IFunctionArguments/IFunctionArguments.h"
-#include "RE/BSScript/IFunctionArguments/ZeroFunctionArguments.h"
-#include "RE/BSScript/Traits/TypeTraits.h"
+#include "RE/I/IFunctionArguments.h"
+#include "RE/Z/ZeroFunctionArguments.h"
+#include "RE/T/TypeTraits.h"
 
 
 namespace RE

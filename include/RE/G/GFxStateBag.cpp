@@ -1,4 +1,4 @@
-#include "RE/Scaleform/GFxLoader/GFxStateBag.h"
+#include "RE/G/GFxStateBag.h"
 
 
 namespace RE

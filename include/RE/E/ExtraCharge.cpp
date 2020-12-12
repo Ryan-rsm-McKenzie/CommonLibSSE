@@ -1,4 +1,4 @@
-#include "RE/BSExtraData/ExtraCharge.h"
+#include "RE/E/ExtraCharge.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSCore/BSTHashMap.h"
+#include "RE/B/BSTHashMap.h"
 #include "RE/BSScriptObjectBindPolicy.h"
 
 

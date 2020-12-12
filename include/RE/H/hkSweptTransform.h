@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSHavok/hkQuaternion.h"
-#include "RE/BSHavok/hkVector4.h"
+#include "RE/H/hkQuaternion.h"
+#include "RE/H/hkVector4.h"
 
 
 namespace RE

@@ -1,4 +1,4 @@
-#include "RE/FormComponents/TESForm/BGSHeadPart.h"
+#include "RE/B/BGSHeadPart.h"
 
 
 namespace RE

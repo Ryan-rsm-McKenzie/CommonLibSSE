@@ -1,4 +1,4 @@
-#include "RE/BSMain/Main.h"
+#include "RE/M/Main.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/Memory/IMemoryStoreBase/IMemoryStore/IMemoryStore.h"
+#include "RE/I/IMemoryStore.h"
 
 
 namespace RE

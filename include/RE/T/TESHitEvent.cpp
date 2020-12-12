@@ -1,6 +1,6 @@
-#include "RE/Events/ScriptEvent/TESHitEvent.h"
+#include "RE/T/TESHitEvent.h"
 
-#include "RE/FormComponents/TESForm/TESObjectREFR/TESObjectREFR.h"
+#include "RE/T/TESObjectREFR.h"
 
 
 namespace RE

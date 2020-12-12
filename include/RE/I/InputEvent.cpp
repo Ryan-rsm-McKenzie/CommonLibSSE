@@ -1,7 +1,7 @@
-#include "RE/Events/InputEvent/InputEvent.h"
+#include "RE/I/InputEvent.h"
 
-#include "RE/Events/InputEvent/IDEvent/ButtonEvent.h"
-#include "RE/Events/InputEvent/IDEvent/IDEvent.h"
+#include "RE/B/ButtonEvent.h"
+#include "RE/I/IDEvent.h"
 
 namespace RE
 {

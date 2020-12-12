@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/Scaleform/GFxPlayerStats/GFxPlayerStats.h"
-#include "RE/Scaleform/GMatrix3D/GMatrix3D.h"
-#include "RE/Scaleform/GMemory/GMemory.h"
-#include "RE/Scaleform/GMemory/GNewOverrideBase.h"
-#include "RE/Scaleform/GStats/GStats.h"
-#include "RE/Scaleform/GString/GString.h"
+#include "RE/G/GFxPlayerStats.h"
+#include "RE/G/GMatrix3D.h"
+#include "RE/G/GMemory.h"
+#include "RE/G/GNewOverrideBase.h"
+#include "RE/G/GStats.h"
+#include "RE/G/GString.h"
 
 
 namespace RE

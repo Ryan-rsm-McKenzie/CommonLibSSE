@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSDevices/MenuEventHandler/MapInputHandler/MapInputHandler.h"
+#include "RE/M/MapInputHandler.h"
 
 
 namespace RE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/NetImmerse/NiRefObject/NiObject/ImageSpaceModifierInstance/ImageSpaceModifierInstanceTemp/ImageSpaceModifierInstanceTemp.h"
+#include "RE/I/ImageSpaceModifierInstanceTemp.h"
 
 
 namespace RE

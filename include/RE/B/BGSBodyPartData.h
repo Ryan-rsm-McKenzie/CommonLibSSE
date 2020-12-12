@@ -1,14 +1,14 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/FormComponents/BGSPreloadable.h"
-#include "RE/FormComponents/Enums/ActorValues.h"
-#include "RE/FormComponents/Enums/BGSBodyPartDefs.h"
-#include "RE/FormComponents/Enums/FormTypes.h"
-#include "RE/FormComponents/TESForm/TESForm.h"
-#include "RE/FormComponents/TESModel/TESModel.h"
-#include "RE/FormComponents/TESModel/TESModelPSA.h"
-#include "RE/NetImmerse/NiPoint3.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BGSPreloadable.h"
+#include "RE/A/ActorValues.h"
+#include "RE/B/BGSBodyPartDefs.h"
+#include "RE/F/FormTypes.h"
+#include "RE/T/TESForm.h"
+#include "RE/T/TESModel.h"
+#include "RE/T/TESModelPSA.h"
+#include "RE/N/NiPoint3.h"
 
 
 namespace RE

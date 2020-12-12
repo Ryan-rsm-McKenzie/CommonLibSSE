@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BGSLocalizedStringDL.h"
-#include "RE/FormComponents/Components/TESCondition.h"
+#include "RE/B/BGSLocalizedStringDL.h"
+#include "RE/T/TESCondition.h"
 
 
 namespace RE

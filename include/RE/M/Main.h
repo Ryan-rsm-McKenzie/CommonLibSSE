@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/BSCore/BSTMessageQueue.h"
-#include "RE/Memory/IMemoryStoreBase/IMemoryStore/ScrapHeap.h"
+#include "RE/B/BSTEvent.h"
+#include "RE/B/BSTMessageQueue.h"
+#include "RE/S/ScrapHeap.h"
 
 
 namespace RE

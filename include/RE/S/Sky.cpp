@@ -1,4 +1,4 @@
-#include "RE/Sky/Sky.h"
+#include "RE/S/Sky.h"
 
 
 namespace RE

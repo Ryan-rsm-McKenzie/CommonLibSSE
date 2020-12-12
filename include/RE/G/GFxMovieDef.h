@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RE/Scaleform/GFxLoader/GFxStateBag.h"
-#include "RE/Scaleform/GFxResource/GFxResource.h"
-#include "RE/Scaleform/GFxResource/GFxResourceID.h"
-#include "RE/Scaleform/GMemoryHeap/GMemoryHeap.h"
-#include "RE/Scaleform/GStats/GStats.h"
-#include "RE/Scaleform/GTypes2DF/GRect.h"
+#include "RE/G/GFxStateBag.h"
+#include "RE/G/GFxResource.h"
+#include "RE/G/GFxResourceID.h"
+#include "RE/G/GMemoryHeap.h"
+#include "RE/G/GStats.h"
+#include "RE/G/GRect.h"
 
 
 namespace RE

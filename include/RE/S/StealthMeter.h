@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Menus/HUDObject/HUDObject.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/H/HUDObject.h"
+#include "RE/G/GFxValue.h"
 
 
 namespace RE

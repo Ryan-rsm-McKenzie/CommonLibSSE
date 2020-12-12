@@ -1,6 +1,6 @@
-#include "RE/Menus/UI.h"
+#include "RE/U/UI.h"
 
-#include "RE/Menus/IMenu/IMenu.h"
+#include "RE/I/IMenu.h"
 
 
 namespace RE

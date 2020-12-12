@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/BSCore/BSString.h"
-#include "RE/BSCore/BSTArray.h"
-#include "RE/BSCore/BSTSmartPointer.h"
-#include "RE/Menus/IUIMessageData/IUIMessageData.h"
+#include "RE/B/BSString.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTSmartPointer.h"
+#include "RE/I/IUIMessageData.h"
 
 
 namespace RE

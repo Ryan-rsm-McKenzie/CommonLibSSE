@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/Memory/MemoryManager.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
-#include "RE/Scaleform/GRefCount/GPtr.h"
+#include "RE/M/MemoryManager.h"
+#include "RE/G/GFxValue.h"
+#include "RE/G/GPtr.h"
 
 
 namespace RE

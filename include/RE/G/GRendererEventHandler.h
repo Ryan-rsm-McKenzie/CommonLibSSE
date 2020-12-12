@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/Scaleform/GList/GList.h"
-#include "RE/Scaleform/GMemory/GNewOverrideBase.h"
+#include "RE/G/GList.h"
+#include "RE/G/GNewOverrideBase.h"
 
 
 namespace RE

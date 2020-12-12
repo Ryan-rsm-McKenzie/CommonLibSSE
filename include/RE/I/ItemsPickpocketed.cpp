@@ -1,4 +1,4 @@
-#include "RE/Events/BGSStoryEvent/ItemsPickpocketed.h"
+#include "RE/I/ItemsPickpocketed.h"
 
 
 namespace RE

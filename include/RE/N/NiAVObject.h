@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/NetImmerse/NiBound.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiObjectNET/NiObjectNET.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
-#include "RE/NetImmerse/NiTransform.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/N/NiBound.h"
+#include "RE/N/NiObjectNET.h"
+#include "RE/N/NiSmartPointer.h"
+#include "RE/N/NiTransform.h"
 
 
 namespace RE

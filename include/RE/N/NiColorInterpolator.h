@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/NetImmerse/NiColor.h"
-#include "RE/NetImmerse/NiRefObject/NiObject/NiInterpolator/NiKeyBasedInterpolator/NiKeyBasedInterpolator.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/N/NiColor.h"
+#include "RE/N/NiKeyBasedInterpolator.h"
+#include "RE/N/NiSmartPointer.h"
 
 
 namespace RE

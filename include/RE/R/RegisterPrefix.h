@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSResource/LocationTraverser/LocationTraverser.h"
+#include "RE/L/LocationTraverser.h"
 
 
 namespace RE

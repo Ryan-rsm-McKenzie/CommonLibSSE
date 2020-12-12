@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSTList.h"
-#include "RE/BSMain/SettingCollection/SettingCollection.h"
+#include "RE/B/BSTList.h"
+#include "RE/S/SettingCollection.h"
 
 
 namespace RE

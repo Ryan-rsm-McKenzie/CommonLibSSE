@@ -1,4 +1,4 @@
-#include "RE/BSHavok/hkBaseObject/hkReferencedObject/hkpBroadPhase/hkpBroadPhase.h"
+#include "RE/H/hkpBroadPhase.h"
 
 
 namespace RE

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/NetImmerse/NiSmartPointer.h"
-#include "RE/Sky/SkyObject/SkyObject.h"
+#include "RE/N/NiSmartPointer.h"
+#include "RE/S/SkyObject.h"
 
 
 namespace RE

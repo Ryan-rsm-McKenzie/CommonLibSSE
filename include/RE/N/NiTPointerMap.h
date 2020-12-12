@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/NetImmerse/NiTMapBase/NiTMapBase.h"
-#include "RE/NetImmerse/NiTPointerAllocator.h"
+#include "RE/N/NiTMapBase.h"
+#include "RE/N/NiTPointerAllocator.h"
 
 
 namespace RE

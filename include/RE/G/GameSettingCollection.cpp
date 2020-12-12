@@ -1,4 +1,4 @@
-#include "RE/BSMain/SettingCollection/GameSettingCollection.h"
+#include "RE/G/GameSettingCollection.h"
 
 
 namespace RE
