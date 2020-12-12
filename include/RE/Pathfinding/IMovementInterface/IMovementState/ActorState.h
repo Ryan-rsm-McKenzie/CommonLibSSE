@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	enum class ACTOR_LIFE_STATE
+	enum class ACTOR_LIFE_STATE : std::uint32_t
 	{
 		kAlive = 0,
 		kDying = 1,
@@ -19,7 +19,7 @@ namespace RE
 	};
 
 
-	enum class ATTACK_STATE_ENUM
+	enum class ATTACK_STATE_ENUM : std::uint32_t
 	{
 		kNone = 0,
 		kDraw = 1,
@@ -41,7 +41,7 @@ namespace RE
 	};
 
 
-	enum class FLY_STATE
+	enum class FLY_STATE : std::uint32_t
 	{
 		kNone = 0,
 		kTakeOff = 1,
@@ -53,7 +53,7 @@ namespace RE
 	};
 
 
-	enum class KNOCK_STATE_ENUM
+	enum class KNOCK_STATE_ENUM : std::uint32_t
 	{
 		kNormal = 0,
 		kExplode = 1,
@@ -67,7 +67,7 @@ namespace RE
 	};
 
 
-	enum class SIT_SLEEP_STATE
+	enum class SIT_SLEEP_STATE : std::uint32_t
 	{
 		kNormal = 0,
 		kWantToSit = 1,
@@ -85,7 +85,7 @@ namespace RE
 	};
 
 
-	enum class WEAPON_STATE
+	enum class WEAPON_STATE : std::uint32_t
 	{
 		kSheathed = 0,
 		kWantToDraw = 1,
@@ -104,76 +104,44 @@ namespace RE
 
 		struct ActorState1
 		{
-			bool movingBack : 1;		 // 0 - 0
-			bool movingForward : 1;		 // 0 - 1
-			bool movingRight : 1;		 // 0 - 2
-			bool movingLeft : 1;		 // 0 - 3
-			bool unk0_4 : 1;			 // 0 - 4
-			bool unk0_5 : 1;			 // 0 - 5
-			bool walking : 1;			 // 0 - 6
-			bool running : 1;			 // 0 - 7
-			bool sprinting : 1;			 // 1 - 0
-			bool sneaking : 1;			 // 1 - 1
-			bool swimming : 1;			 // 1 - 2
-			bool unk1_3 : 1;			 // 1 - 3
-			bool unk1_4 : 1;			 // 1 - 4
-			bool unk1_5 : 1;			 // 1 - 5
-			bool sitSleepState1 : 1;	 // 1 - 6
-			bool sitSleepState2 : 1;	 // 1 - 7
-			bool sitSleepState3 : 1;	 // 2 - 0
-			bool sitSleepState4 : 1;	 // 2 - 1
-			bool flyState1 : 1;			 // 2 - 2
-			bool flyState2 : 1;			 // 2 - 3
-			bool flyState3 : 1;			 // 2 - 4
-			bool lifeState1 : 1;		 // 2 - 5
-			bool lifeState2 : 1;		 // 2 - 6
-			bool lifeState3 : 1;		 // 2 - 7
-			bool lifeState4 : 1;		 // 3 - 0
-			bool knockState1 : 1;		 // 3 - 1
-			bool knockState2 : 1;		 // 3 - 2
-			bool knockState3 : 1;		 // 3 - 3
-			bool meleeAttackState1 : 1;	 // 3 - 4
-			bool meleeAttackState2 : 1;	 // 3 - 5
-			bool meleeAttackState3 : 1;	 // 3 - 6
-			bool meleeAttackState4 : 1;	 // 3 - 7
+		public:
+			// members
+			std::uint32_t	  movingBack : 1;		 // 0:00
+			std::uint32_t	  movingForward : 1;	 // 0:01
+			std::uint32_t	  movingRight : 1;		 // 0:02
+			std::uint32_t	  movingLeft : 1;		 // 0:03
+			std::uint32_t	  unk04 : 2;			 // 0:04
+			std::uint32_t	  walking : 1;			 // 0:06
+			std::uint32_t	  running : 1;			 // 0:07
+			std::uint32_t	  sprinting : 1;		 // 0:08
+			std::uint32_t	  sneaking : 1;			 // 0:09
+			std::uint32_t	  swimming : 1;			 // 0:10
+			std::uint32_t	  unk11 : 3;			 // 0:11
+			SIT_SLEEP_STATE	  sitSleepState : 4;	 // 0:14
+			FLY_STATE		  flyState : 3;			 // 0:18
+			ACTOR_LIFE_STATE  lifeState : 4;		 // 0:21
+			KNOCK_STATE_ENUM  knockState : 3;		 // 0:25
+			ATTACK_STATE_ENUM meleeAttackState : 4;	 // 0:28
 		};
 		static_assert(sizeof(ActorState1) == 0x4);
 
 
 		struct ActorState2
 		{
-			bool talkingToPlayer : 1;  // 0 - 0
-			bool forceRun : 1;		   // 0 - 1
-			bool forceSneak : 1;	   // 0 - 2
-			bool headTracking : 1;	   // 0 - 3
-			bool reanimating : 1;	   // 0 - 4
-			bool weaponState1 : 1;	   // 0 - 5
-			bool weaponState2 : 1;	   // 0 - 6
-			bool weaponState3 : 1;	   // 0 - 7
-			bool wantBlocking : 1;	   // 1 - 0
-			bool flightBlocked : 1;	   // 1 - 1
-			bool recoil1 : 1;		   // 1 - 2
-			bool recoil2 : 1;		   // 1 - 3
-			bool allowFlying : 1;	   // 1 - 4
-			bool staggered : 1;		   // 1 - 5
-			bool unk1_6 : 1;		   // 1 - 6
-			bool unk1_7 : 1;		   // 1 - 7
-			bool unk2_0 : 1;		   // 2 - 0
-			bool unk2_1 : 1;		   // 2 - 1
-			bool unk2_2 : 1;		   // 2 - 2
-			bool unk2_3 : 1;		   // 2 - 3
-			bool unk2_4 : 1;		   // 2 - 4
-			bool unk2_5 : 1;		   // 2 - 5
-			bool unk2_6 : 1;		   // 2 - 6
-			bool unk2_7 : 1;		   // 2 - 7
-			bool pad3_0 : 1;		   // 3 - 0
-			bool pad3_1 : 1;		   // 3 - 1
-			bool pad3_2 : 1;		   // 3 - 2
-			bool pad3_3 : 1;		   // 3 - 3
-			bool pad3_4 : 1;		   // 3 - 4
-			bool pad3_5 : 1;		   // 3 - 5
-			bool pad3_6 : 1;		   // 3 - 6
-			bool pad3_7 : 1;		   // 3 - 7
+		public:
+			// members
+			std::uint32_t talkingToPlayer : 1;	// 0:00
+			std::uint32_t forceRun : 1;			// 0:01
+			std::uint32_t forceSneak : 1;		// 0:02
+			std::uint32_t headTracking : 1;		// 0:03
+			std::uint32_t reanimating : 1;		// 0:04
+			WEAPON_STATE  weaponState : 3;		// 0:05
+			std::uint32_t wantBlocking : 1;		// 0:08
+			std::uint32_t flightBlocked : 1;	// 0:09
+			std::uint32_t recoil : 2;			// 0:10
+			std::uint32_t allowFlying : 1;		// 0:12
+			std::uint32_t staggered : 1;		// 0:13
+			std::uint32_t unk14 : 18;			// 0:14
 		};
 		static_assert(sizeof(ActorState2) == 0x4);
 
@@ -194,19 +162,51 @@ namespace RE
 		virtual void Unk_14(void);	// 14
 		virtual void Unk_15(void);	// 15
 
-		ATTACK_STATE_ENUM GetAttackState() const;
-		FLY_STATE		  GetFlyState() const;
-		KNOCK_STATE_ENUM  GetKnockState() const;
-		ACTOR_LIFE_STATE  GetLifeState() const;
-		SIT_SLEEP_STATE	  GetSitSleepState() const;
-		WEAPON_STATE	  GetWeaponState() const;
-		bool			  IsBleedingOut() const;
-		bool			  IsFlying() const;
-		bool			  IsSneaking() const;
-		bool			  IsSprinting() const;
-		bool			  IsSwimming() const;
-		bool			  IsUnconscious() const;
-		bool			  IsWeaponDrawn() const;
+		[[nodiscard]] ATTACK_STATE_ENUM GetAttackState() const noexcept { return actorState1.meleeAttackState; }
+		[[nodiscard]] FLY_STATE			GetFlyState() const noexcept { return actorState1.flyState; }
+		[[nodiscard]] KNOCK_STATE_ENUM	GetKnockState() const noexcept { return actorState1.knockState; }
+		[[nodiscard]] ACTOR_LIFE_STATE	GetLifeState() const noexcept { return actorState1.lifeState; }
+		[[nodiscard]] SIT_SLEEP_STATE	GetSitSleepState() const noexcept { return actorState1.sitSleepState; }
+		[[nodiscard]] WEAPON_STATE		GetWeaponState() const noexcept { return actorState2.weaponState; }
+
+		[[nodiscard]] bool IsBleedingOut() const noexcept
+		{
+			switch (GetLifeState()) {
+			case ACTOR_LIFE_STATE::kEssentialDown:
+			case ACTOR_LIFE_STATE::kBleedout:
+				return true;
+			default:
+				return false;
+			}
+		}
+
+		[[nodiscard]] bool IsFlying() const noexcept
+		{
+			switch (GetFlyState()) {
+			case FLY_STATE::kNone:
+			case FLY_STATE::kPerching:
+				return false;
+			default:
+				return true;
+			}
+		}
+
+		[[nodiscard]] bool IsSneaking() const noexcept { return actorState1.sneaking; }
+		[[nodiscard]] bool IsSprinting() const noexcept { return actorState1.sprinting; }
+		[[nodiscard]] bool IsSwimming() const noexcept { return actorState1.swimming; }
+		[[nodiscard]] bool IsUnconscious() const noexcept { return GetLifeState() == ACTOR_LIFE_STATE::kUnconcious; }
+
+		[[nodiscard]] bool IsWeaponDrawn() const noexcept
+		{
+			switch (GetWeaponState()) {
+			case WEAPON_STATE::kDrawn:
+			case WEAPON_STATE::kWantToSheathe:
+			case WEAPON_STATE::kSheathing:
+				return true;
+			default:
+				return false;
+			}
+		}
 
 
 		// members

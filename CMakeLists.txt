@@ -127,7 +127,9 @@ target_compile_features(
 if (MSVC)
 	target_compile_options(
 		${PROJECT_NAME}
-		PRIVATE	
+		PRIVATE
+			/MP	# Build with Multiple Processes
+			
 			/experimental:external
 			/external:anglebrackets
 			/external:W0

@@ -217,7 +217,6 @@ set(sources ${sources}
 	src/RE/NetImmerse/NiRefObject/NiObject/NiTimeController/NiControllerManager.cpp
 	src/RE/NetImmerse/NiRefObject/NiObject/NiTimeController/NiTimeController.cpp
 	src/RE/Obscript/CommandTable.cpp
-	src/RE/Pathfinding/IMovementInterface/IMovementState/ActorState.cpp
 	src/RE/RadiantStory/BGSStoryTeller.cpp
 	src/RE/Scaleform/BS/BSScaleformManager.cpp
 	src/RE/Scaleform/FxGameDelegate/AddCallbackVisitor.cpp
