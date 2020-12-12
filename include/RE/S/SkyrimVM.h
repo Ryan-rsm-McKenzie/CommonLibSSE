@@ -17,8 +17,8 @@
 #include "RE/P/Profiler.h"
 #include "RE/S/SavePatcher.h"
 #include "RE/S/SimpleAllocMemoryPagePolicy.h"
+#include "RE/S/SkyrimScriptObjectBindPolicy.h"
 #include "RE/S/SkyrimScriptStore.h"
-#include "RE/SkyrimScriptObjectBindPolicy.h"
 
 
 namespace RE

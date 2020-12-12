@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RE/BSScript/IVirtualMachine.h"
-#include "RE/BSScript/Internal/VirtualMachine.h"
-#include "RE/Inventory/InventoryEntryData.h"
-#include "RE/Scaleform/GFxPlayer/GFxMovieView.h"
-#include "RE/Scaleform/GFxPlayer/GFxValue.h"
+#include "RE/G/GFxMovieView.h"
+#include "RE/G/GFxValue.h"
+#include "RE/I/IVirtualMachine.h"
+#include "RE/I/InventoryEntryData.h"
+#include "RE/V/VirtualMachine.h"
 
 #include "SKSE/Impl/Stubs.h"
 #include "SKSE/Version.h"

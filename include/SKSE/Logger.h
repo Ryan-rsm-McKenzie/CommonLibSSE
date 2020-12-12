@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/BSScript/LogEvent.h"
+#include "RE/B/BSTEvent.h"
+#include "RE/L/LogEvent.h"
 
 
 // clang format chokes hard on classes with attributes

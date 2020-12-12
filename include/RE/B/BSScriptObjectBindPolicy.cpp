@@ -1,4 +1,4 @@
-#include "RE/BSScriptObjectBindPolicy.h"
+#include "RE/B/BSScriptObjectBindPolicy.h"
 
 
 namespace RE

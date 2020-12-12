@@ -1,6 +1,6 @@
 #include "SKSE/Interfaces.h"
 
-#include "RE/BSScript/Internal/VirtualMachine.h"
+#include "RE/V/VirtualMachine.h"
 
 #include "SKSE/API.h"
 #include "SKSE/Logger.h"

@@ -1020,8 +1020,8 @@ namespace REL
 
 #include "REL/Relocation.h"
 
-#include "RE/BSCore/BSCoreTypes.h"
-#include "RE/Offsets/Offsets.h"
-#include "RE/Offsets/Offsets_NiRTTI.h"
-#include "RE/Offsets/Offsets_RTTI.h"
-#include "RE/Scaleform/GTypes/SFTypes.h"
+#include "RE/B/BSCoreTypes.h"
+#include "RE/O/Offsets.h"
+#include "RE/O/Offsets_NiRTTI.h"
+#include "RE/O/Offsets_RTTI.h"
+#include "RE/S/SFTypes.h"

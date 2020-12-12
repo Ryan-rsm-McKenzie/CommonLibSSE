@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/BSCore/BSTEvent.h"
+#include "RE/B/BSTEvent.h"
 
 #include "SKSE/Events.h"
 #include "SKSE/Impl/Stubs.h"
