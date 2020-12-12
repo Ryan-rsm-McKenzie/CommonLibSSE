@@ -1,57 +1,6 @@
 #pragma once
 
-#define WINVER		 0x0601	 // Windows 7
-#define _WIN32_WINNT 0x0601
-
-#define WIN32_LEAN_AND_MEAN
-
-#ifndef SKSE_CUSTOM_WINDEF
-
-#define NOGDICAPMASKS
-#define NOVIRTUALKEYCODES
-//#define NOWINMESSAGES
-#define NOWINSTYLES
-#define NOSYSMETRICS
-#define NOMENUS
-#define NOICONS
-#define NOKEYSTATES
-#define NOSYSCOMMANDS
-#define NORASTEROPS
-#define NOSHOWWINDOW
-#define OEMRESOURCE
-#define NOATOM
-#define NOCLIPBOARD
-#define NOCOLOR
-//#define NOCTLMGR
-#define NODRAWTEXT
-#define NOGDI
-#define NOKERNEL
-//#define NOUSER
-#define NONLS
-//#define NOMB
-#define NOMEMMGR
-#define NOMETAFILE
-#define NOMINMAX
-//#define NOMSG
-#define NOOPENFILE
-#define NOSCROLL
-#define NOSERVICE
-#define NOSOUND
-#define NOTEXTMETRIC
-#define NOWH
-#define NOWINOFFSETS
-#define NOCOMM
-#define NOKANJI
-#define NOHELP
-#define NOPROFILER
-#define NODEFERWINDOWPOS
-#define NOMCX
-
-#endif
-
-#undef SPDLOG_COMPILED_LIB
-#define SPDLOG_COMPILED_LIB
-
+// TODO: Strip windows.h from all public headers
 #include <Windows.h>
 
 #include <ShlObj.h>
@@ -119,27 +68,6 @@
 #undef NEAR
 #define FAR
 #define NEAR
-
-#pragma warning(disable : 4061)	 // enumerator 'identifier' in switch of enum 'enumeration' is not explicitly handled by a case label
-#pragma warning(disable : 4200)	 // nonstandard extension used : zero-sized array in struct/union
-#pragma warning(disable : 4265)	 // 'type': class has virtual functions, but its non-trivial destructor is not virtual; instances of this class may not be destructed correctly
-#pragma warning(disable : 4266)	 // 'function' : no override available for virtual member function from base 'type'; function is hidden
-#pragma warning(disable : 4371)	 // 'classname': layout of class may have changed from a previous version of the compiler due to better packing of member 'member'
-#pragma warning(disable : 4514)	 // 'function' : unreferenced inline function has been removed
-#pragma warning(disable : 4582)	 // 'type': constructor is not implicitly called
-#pragma warning(disable : 4583)	 // 'type': destructor is not implicitly called
-#pragma warning(disable : 4623)	 // 'derived class' : default constructor was implicitly defined as deleted because a base class default constructor is inaccessible or deleted
-#pragma warning(disable : 4625)	 // 'derived class' : copy constructor was implicitly defined as deleted because a base class copy constructor is inaccessible or deleted
-#pragma warning(disable : 4626)	 // 'derived class' : assignment operator was implicitly defined as deleted because a base class assignment operator is inaccessible or deleted
-#pragma warning(disable : 4710)	 // 'function' : function not inlined
-#pragma warning(disable : 4711)	 // function 'function' selected for inline expansion
-#pragma warning(disable : 4820)	 // 'bytes' bytes padding added after construct 'member_name'
-#pragma warning(disable : 5026)	 // 'type': move constructor was implicitly defined as deleted
-#pragma warning(disable : 5027)	 // 'type': move assignment operator was implicitly defined as deleted
-#pragma warning(disable : 5045)	 // Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
-#pragma warning(disable : 5053)	 // support for 'explicit(<expr>)' in C++17 and earlier is a vendor extension
-#pragma warning(disable : 5204)	 // 'type': class has virtual functions, but its trivial destructor is not virtual; instances of objects derived from this class may not be destructed correctly
-#pragma warning(disable : 5220)	 // 'type': a non-static data member with a volatile qualified type no longer implies that compiler generated copy/move constructors and copy/move assignment operators are not trivial
 
 extern "C" IMAGE_DOS_HEADER __ImageBase;
 
@@ -338,8 +266,8 @@ namespace SKSE
 				}
 			}();
 
-			MessageBoxA(nullptr, body.c_str(), (caption.empty() ? nullptr : caption.c_str()), 0);
-			std::_Exit(EXIT_FAILURE);
+			::MessageBoxA(nullptr, body.c_str(), (caption.empty() ? nullptr : caption.c_str()), 0);
+			::TerminateProcess(::GetCurrentProcess(), EXIT_FAILURE);
 		}
 
 

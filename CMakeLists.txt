@@ -1,5 +1,17 @@
 cmake_minimum_required(VERSION 3.19)
 
+option(SKSE_CUSTOM_WINDEF "Use custom pre-defines before including window.h" OFF)
+option(SKSE_SUPPORT_XBYAK "Enables trampoline support for Xbyak." OFF)
+
+if (NOT DEFINED SKSE_USE_VCPKG AND CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+	set(SKSE_USE_VCPKG ON CACHE BOOL "Use vcpkg to grab dependencies.")
+endif()
+
+if (DEFINED SKSE_USE_VCPKG AND SKSE_USE_VCPKG)
+	set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
+	set(VCPKG_TARGET_TRIPLET "x64-windows-static-md" CACHE STRING "")
+endif()
+
 # ---- Project ----
 
 project(
@@ -55,7 +67,56 @@ target_compile_definitions(
 		WINVER=0x0601	# windows 7, minimum supported version by skyrim special edition
 		_WIN32_WINNT=0x0601
 		SPDLOG_COMPILED_LIB
+		"$<$<BOOL:${SKSE_SUPPORT_XBYAK}>:SKSE_SUPPORT_XBYAK>"
 )
+
+if (NOT SKSE_CUSTOM_WINDEF)
+	target_compile_definitions(
+		${PROJECT_NAME}
+		PUBLIC
+			WIN32_LEAN_AND_MEAN
+			
+			NOGDICAPMASKS
+			NOVIRTUALKEYCODES
+			#NOWINMESSAGES
+			NOWINSTYLES
+			NOSYSMETRICS
+			NOMENUS
+			NOICONS
+			NOKEYSTATES
+			NOSYSCOMMANDS
+			NORASTEROPS
+			NOSHOWWINDOW
+			OEMRESOURCE
+			NOATOM
+			NOCLIPBOARD
+			NOCOLOR
+			#NOCTLMGR
+			NODRAWTEXT
+			NOGDI
+			NOKERNEL
+			#NOUSER
+			NONLS
+			#NOMB
+			NOMEMMGR
+			NOMETAFILE
+			NOMINMAX
+			#NOMSG
+			NOOPENFILE
+			NOSCROLL
+			NOSERVICE
+			NOSOUND
+			NOTEXTMETRIC
+			NOWH
+			NOWINOFFSETS
+			NOCOMM
+			NOKANJI
+			NOHELP
+			NOPROFILER
+			NODEFERWINDOWPOS
+			NOMCX
+	)
+endif()
 
 target_compile_features(
 	${PROJECT_NAME}

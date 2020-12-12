@@ -1,11 +1,5 @@
 #pragma once
 
-#ifndef SKSE_SUPPORT_XBYAK
-#if defined(XBYAK32) || defined(XBYAK64)
-#define SKSE_SUPPORT_XBYAK
-#endif
-#endif
-
 #if defined(SKSE_SUPPORT_XBYAK)
 namespace Xbyak
 {

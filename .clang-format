@@ -57,7 +57,7 @@ IncludeBlocks: Preserve
 IndentCaseBlocks: 'true'
 IndentCaseLabels: 'false'
 IndentGotoLabels: 'false'
-IndentPPDirectives: None
+IndentPPDirectives: AfterHash
 IndentWidth: 4
 IndentWrappedFunctionNames: 'true'
 KeepEmptyLinesAtTheStartOfBlocks: 'false'
