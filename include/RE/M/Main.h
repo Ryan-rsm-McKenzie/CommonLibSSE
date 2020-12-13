@@ -23,7 +23,7 @@ namespace RE
 		{
 		public:
 			// members
-			HANDLE		  handle;	 // 00
+			void*		  handle;	 // 00
 			std::uint32_t size;		 // 08
 			std::uint32_t capacity;	 // 0C
 		};
@@ -81,8 +81,8 @@ namespace RE
 		bool						 reloadContent;				   // 015
 		bool						 freezeTime;				   // 016
 		bool						 freezeNextFrame;			   // 017
-		HWND						 wnd;						   // 018
-		HINSTANCE					 instance;					   // 020
+		WinAPI::HWND				 wnd;						   // 018
+		WinAPI::HINSTANCE			 instance;					   // 020
 		std::uint32_t				 threadID;					   // 028
 		std::uint32_t				 unk02C;					   // 02C
 		std::uint64_t				 unk030;					   // 030

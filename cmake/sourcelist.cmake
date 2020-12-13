@@ -3,7 +3,6 @@ set(sources ${sources}
 	include/RE/Skyrim.cpp
 	include/RE/A/ActiveEffect.cpp
 	include/RE/A/Actor.cpp
-	include/RE/A/ActorCause.cpp
 	include/RE/A/ActorEquipManager.cpp
 	include/RE/A/ActorValueOwner.cpp
 	include/RE/A/AddCallbackVisitor.cpp
@@ -51,7 +50,6 @@ set(sources ${sources}
 	include/RE/B/BSShaderProperty.cpp
 	include/RE/B/BSSoundHandle.cpp
 	include/RE/B/BSStringPool.cpp
-	include/RE/B/BSSystemFile.cpp
 	include/RE/B/BSSystemFileStorage.cpp
 	include/RE/B/BSTArray.cpp
 	include/RE/B/BSTCreateFactoryManager.cpp
@@ -249,6 +247,7 @@ set(sources ${sources}
 	include/RE/V/Variable.cpp
 	include/RE/V/VirtualMachine.cpp
 	include/RE/Z/ZeroFunctionArguments.cpp
+	include/REL/Relocation.cpp
 	include/SKSE/API.cpp
 	include/SKSE/IAT.cpp
 	include/SKSE/Interfaces.cpp
@@ -257,4 +256,5 @@ set(sources ${sources}
 	include/SKSE/RegistrationSet.cpp
 	include/SKSE/Trampoline.cpp
 	include/SKSE/Impl/PCH.cpp
+	include/SKSE/Impl/WinAPI.cpp
 )

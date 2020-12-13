@@ -17,7 +17,7 @@ namespace RE
 			virtual ~IStore();	// 00
 
 			// override (BSStorage)
-			virtual BOOL WriteFile(DWORD a_numberOfBytesToWrite, LPCVOID a_buffer) override;  // 05
+			virtual BSStorageDefs::ErrorCode Write(std::size_t a_numBytes, const std::byte* a_bytes) override;	// 05
 
 			// add
 			virtual bool				 Open(const char* a_fileName) = 0;	// 06

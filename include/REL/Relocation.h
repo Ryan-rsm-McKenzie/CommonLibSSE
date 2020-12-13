@@ -68,7 +68,7 @@ namespace REL
 			constexpr memory_map() noexcept = default;
 			memory_map(const memory_map&) = delete;
 
-			inline memory_map(memory_map&& a_rhs) noexcept :
+			memory_map(memory_map&& a_rhs) noexcept :
 				_mapping(a_rhs._mapping),
 				_view(a_rhs._view)
 			{
@@ -76,11 +76,11 @@ namespace REL
 				a_rhs._view = nullptr;
 			}
 
-			inline ~memory_map() { close(); }
+			~memory_map() { close(); }
 
 			memory_map& operator=(const memory_map&) = delete;
 
-			inline memory_map& operator=(memory_map&& a_rhs) noexcept
+			memory_map& operator=(memory_map&& a_rhs) noexcept
 			{
 				if (this != std::addressof(a_rhs)) {
 					_mapping = a_rhs._mapping;
@@ -94,89 +94,13 @@ namespace REL
 
 			[[nodiscard]] constexpr void* data() noexcept { return _view; }
 
-			inline bool open(stl::zwstring a_name, std::size_t a_size)
-			{
-				close();
-
-				ULARGE_INTEGER bytes;
-				bytes.QuadPart = a_size;
-
-				_mapping = OpenFileMappingW(
-					FILE_MAP_READ | FILE_MAP_WRITE,
-					false,
-					a_name.data());
-				if (!_mapping) {
-					close();
-					return false;
-				}
-
-				_view = MapViewOfFile(
-					_mapping,
-					FILE_MAP_READ | FILE_MAP_WRITE,
-					0,
-					0,
-					bytes.QuadPart);
-				if (!_view) {
-					close();
-					return false;
-				}
-
-				return true;
-			}
-
-			inline bool create(stl::zwstring a_name, std::size_t a_size)
-			{
-				close();
-
-				ULARGE_INTEGER bytes;
-				bytes.QuadPart = a_size;
-
-				_mapping = OpenFileMappingW(
-					FILE_MAP_READ | FILE_MAP_WRITE,
-					false,
-					a_name.data());
-				if (!_mapping) {
-					_mapping = CreateFileMappingW(
-						INVALID_HANDLE_VALUE,
-						nullptr,
-						PAGE_READWRITE,
-						bytes.HighPart,
-						bytes.LowPart,
-						a_name.data());
-					if (!_mapping) {
-						return false;
-					}
-				}
-
-				_view = MapViewOfFile(
-					_mapping,
-					FILE_MAP_READ | FILE_MAP_WRITE,
-					0,
-					0,
-					bytes.QuadPart);
-				if (!_view) {
-					return false;
-				}
-
-				return true;
-			}
-
-			inline void close()
-			{
-				if (_view) {
-					UnmapViewOfFile(static_cast<const void*>(_view));
-					_view = nullptr;
-				}
-
-				if (_mapping) {
-					CloseHandle(_mapping);
-					_mapping = nullptr;
-				}
-			}
+			bool open(stl::zwstring a_name, std::size_t a_size);
+			bool create(stl::zwstring a_name, std::size_t a_size);
+			void close();
 
 		private:
-			HANDLE _mapping{ nullptr };
-			void*  _view{ nullptr };
+			void* _mapping{ nullptr };
+			void* _view{ nullptr };
 		};
 
 
@@ -303,17 +227,17 @@ namespace REL
 
 	inline void safe_write(std::uintptr_t a_dst, const void* a_src, std::size_t a_count)
 	{
-		::DWORD old{ 0 };
-		auto	success =
-			::VirtualProtect(
+		std::uint32_t old{ 0 };
+		auto		  success =
+			WinAPI::VirtualProtect(
 				reinterpret_cast<void*>(a_dst),
 				a_count,
-				PAGE_EXECUTE_READWRITE,
+				(WinAPI::PAGE_EXECUTE_READWRITE),
 				std::addressof(old));
 		if (success != 0) {
 			std::memcpy(reinterpret_cast<void*>(a_dst), a_src, a_count);
 			success =
-				::VirtualProtect(
+				WinAPI::VirtualProtect(
 					reinterpret_cast<void*>(a_dst),
 					a_count,
 					old,
@@ -339,17 +263,17 @@ namespace REL
 
 	inline void safe_fill(std::uintptr_t a_dst, std::uint8_t a_value, std::size_t a_count)
 	{
-		::DWORD old{ 0 };
-		auto	success =
-			::VirtualProtect(
+		std::uint32_t old{ 0 };
+		auto		  success =
+			WinAPI::VirtualProtect(
 				reinterpret_cast<void*>(a_dst),
 				a_count,
-				PAGE_EXECUTE_READWRITE,
+				(WinAPI::PAGE_EXECUTE_READWRITE),
 				std::addressof(old));
 		if (success != 0) {
 			std::fill_n(reinterpret_cast<std::uint8_t*>(a_dst), a_count, a_value);
 			success =
-				::VirtualProtect(
+				WinAPI::VirtualProtect(
 					reinterpret_cast<void*>(a_dst),
 					a_count,
 					old,
@@ -390,7 +314,7 @@ namespace REL
 			return 0;
 		}
 
-		[[nodiscard]] inline std::string string() const
+		[[nodiscard]] std::string string() const
 		{
 			std::string result;
 			for (std::size_t i = 0; i < _impl.size(); ++i) {
@@ -401,7 +325,7 @@ namespace REL
 			return result;
 		}
 
-		[[nodiscard]] inline std::wstring wstring() const
+		[[nodiscard]] std::wstring wstring() const
 		{
 			std::wstring result;
 			for (std::size_t i = 0; i < _impl.size(); ++i) {
@@ -422,6 +346,35 @@ namespace REL
 	[[nodiscard]] constexpr bool operator<=(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) <= 0; }
 	[[nodiscard]] constexpr bool operator>(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) > 0; }
 	[[nodiscard]] constexpr bool operator>=(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) >= 0; }
+
+	[[nodiscard]] inline std::optional<Version> get_file_version(stl::zwstring a_filename)
+	{
+		std::uint32_t	  dummy;
+		std::vector<char> buf(WinAPI::GetFileVersionInfoSize(a_filename.data(), std::addressof(dummy)));
+		if (buf.empty()) {
+			return std::nullopt;
+		}
+
+		if (!WinAPI::GetFileVersionInfo(a_filename.data(), 0, static_cast<std::uint32_t>(buf.size()), buf.data())) {
+			return std::nullopt;
+		}
+
+		void*		  verBuf{ nullptr };
+		std::uint32_t verLen{ 0 };
+		if (!WinAPI::VerQueryValue(buf.data(), L"\\StringFileInfo\\040904B0\\ProductVersion", std::addressof(verBuf), std::addressof(verLen))) {
+			return std::nullopt;
+		}
+
+		Version				version;
+		std::wistringstream ss(
+			std::wstring(static_cast<const wchar_t*>(verBuf), verLen));
+		std::wstring token;
+		for (std::size_t i = 0; i < 4 && std::getline(ss, token, L'.'); ++i) {
+			version[i] = static_cast<std::uint16_t>(std::stoi(token));
+		}
+
+		return version;
+	}
 
 	class Segment
 	{
@@ -451,10 +404,10 @@ namespace REL
 		[[nodiscard]] constexpr std::size_t	   offset() const noexcept { return address() - _proxyBase; }
 		[[nodiscard]] constexpr std::size_t	   size() const noexcept { return _size; }
 
-		[[nodiscard]] inline void* pointer() const noexcept { return reinterpret_cast<void*>(address()); }
+		[[nodiscard]] void* pointer() const noexcept { return reinterpret_cast<void*>(address()); }
 
 		template <class T>
-		[[nodiscard]] inline T* pointer() const noexcept
+		[[nodiscard]] T* pointer() const noexcept
 		{
 			return static_cast<T*>(pointer());
 		}
@@ -469,7 +422,7 @@ namespace REL
 	class Module
 	{
 	public:
-		[[nodiscard]] static inline Module& get()
+		[[nodiscard]] static Module& get()
 		{
 			static Module singleton;
 			return singleton;
@@ -480,16 +433,16 @@ namespace REL
 
 		[[nodiscard]] constexpr Segment segment(Segment::Name a_segment) const noexcept { return _segments[a_segment]; }
 
-		[[nodiscard]] inline void* pointer() const noexcept { return reinterpret_cast<void*>(base()); }
+		[[nodiscard]] void* pointer() const noexcept { return reinterpret_cast<void*>(base()); }
 
 		template <class T>
-		[[nodiscard]] inline T* pointer() const noexcept
+		[[nodiscard]] T* pointer() const noexcept
 		{
 			return static_cast<T*>(pointer());
 		}
 
 	private:
-		inline Module() { load(); }
+		Module() { load(); }
 
 		Module(const Module&) = delete;
 		Module(Module&&) = delete;
@@ -499,9 +452,9 @@ namespace REL
 		Module& operator=(const Module&) = delete;
 		Module& operator=(Module&&) = delete;
 
-		inline void load()
+		void load()
 		{
-			auto handle = GetModuleHandleW(FILENAME.data());
+			auto handle = WinAPI::GetModuleHandle(_filename.c_str());
 			if (handle == nullptr) {
 				stl::report_and_fail("failed to obtain module handle"sv);
 			}
@@ -512,71 +465,32 @@ namespace REL
 			load_segments();
 		}
 
-		inline void load_segments()
+		void load_segments();
+
+		void load_version()
 		{
-			auto		dosHeader = reinterpret_cast<const IMAGE_DOS_HEADER*>(_base);
-			auto		ntHeader = adjust_pointer<IMAGE_NT_HEADERS64>(dosHeader, dosHeader->e_lfanew);
-			const auto* sections = IMAGE_FIRST_SECTION(ntHeader);
-			const auto	size = std::min<std::size_t>(ntHeader->FileHeader.NumberOfSections, _segments.size());
-			for (std::size_t i = 0; i < size; ++i) {
-				const auto& section = sections[i];
-				const auto	it = std::find_if(
-					 SEGMENTS.begin(),
-					 SEGMENTS.end(),
-					 [&](auto&& a_elem) {
-						 constexpr auto size = std::extent_v<decltype(section.Name)>;
-						 const auto		len = std::min(a_elem.first.size(), size);
-						 return std::memcmp(a_elem.first.data(), section.Name, len) == 0 &&
-								(section.Characteristics & a_elem.second) == a_elem.second;
-					 });
-				if (it != SEGMENTS.end()) {
-					const auto idx = static_cast<std::size_t>(std::distance(SEGMENTS.begin(), it));
-					_segments[idx] = Segment{ _base, _base + section.VirtualAddress, section.Misc.VirtualSize };
-				}
+			const auto version = get_file_version(_filename);
+			if (version) {
+				_version = *version;
+			} else {
+				stl::report_and_fail("failed to obtain file version"sv);
 			}
 		}
-
-		inline void load_version()
-		{
-			DWORD			  dummy;
-			std::vector<char> buf(GetFileVersionInfoSizeW(FILENAME.data(), std::addressof(dummy)));
-			if (buf.size() == 0) {
-				stl::report_and_fail("failed to obtain file version info size"sv);
-			}
-
-			if (!GetFileVersionInfoW(FILENAME.data(), 0, static_cast<DWORD>(buf.size()), buf.data())) {
-				stl::report_and_fail("failed to obtain file version info"sv);
-			}
-
-			LPVOID verBuf;
-			UINT   verLen;
-			if (!VerQueryValueW(buf.data(), L"\\StringFileInfo\\040904B0\\ProductVersion", std::addressof(verBuf), std::addressof(verLen))) {
-				stl::report_and_fail("failed to query value"sv);
-			}
-
-			std::wistringstream ss(
-				std::wstring(static_cast<const wchar_t*>(verBuf), verLen));
-			std::wstring token;
-			for (std::size_t i = 0; i < 4 && std::getline(ss, token, L'.'); ++i) {
-				_version[i] = static_cast<std::uint16_t>(std::stoi(token));
-			}
-		}
-
-		static constexpr auto FILENAME = L"SkyrimSE.exe"sv;
 
 		static constexpr std::array SEGMENTS{
-			std::make_pair(".text"sv, static_cast<std::uint32_t>(IMAGE_SCN_MEM_EXECUTE)),
+			std::make_pair(".text"sv, WinAPI::IMAGE_SCN_MEM_EXECUTE),
 			std::make_pair(".idata"sv, static_cast<std::uint32_t>(0)),
 			std::make_pair(".rdata"sv, static_cast<std::uint32_t>(0)),
 			std::make_pair(".data"sv, static_cast<std::uint32_t>(0)),
 			std::make_pair(".pdata"sv, static_cast<std::uint32_t>(0)),
 			std::make_pair(".tls"sv, static_cast<std::uint32_t>(0)),
-			std::make_pair(".text"sv, static_cast<std::uint32_t>(IMAGE_SCN_MEM_WRITE)),
+			std::make_pair(".text"sv, WinAPI::IMAGE_SCN_MEM_WRITE),
 			std::make_pair(".gfids"sv, static_cast<std::uint32_t>(0))
 		};
 
 		static inline std::uintptr_t _natvis{ 0 };
 
+		std::wstring						_filename{ L"SkyrimSE.exe"sv };
 		std::array<Segment, Segment::total> _segments;
 		Version								_version;
 		std::uintptr_t						_base{ 0 };
@@ -586,7 +500,7 @@ namespace REL
 	class IDDatabase
 	{
 	public:
-		[[nodiscard]] static inline IDDatabase& get()
+		[[nodiscard]] static IDDatabase& get()
 		{
 			static IDDatabase singleton;
 			return singleton;
@@ -614,7 +528,7 @@ namespace REL
 		}
 
 #ifndef NDEBUG
-		[[nodiscard]] inline std::uint64_t offset2id(std::size_t a_offset) const
+		[[nodiscard]] std::uint64_t offset2id(std::size_t a_offset) const
 		{
 			if (_offset2id.empty()) {
 				stl::report_and_fail("data is empty"sv);
@@ -646,7 +560,7 @@ namespace REL
 			using reference = stream_type&;
 			using const_reference = const stream_type&;
 
-			inline istream_t(stl::zwstring a_filename, std::ios_base::openmode a_mode) :
+			istream_t(stl::zwstring a_filename, std::ios_base::openmode a_mode) :
 				_stream(a_filename.data(), a_mode)
 			{
 				if (!_stream.is_open()) {
@@ -656,10 +570,10 @@ namespace REL
 				_stream.exceptions(std::ios::badbit | std::ios::failbit | std::ios::eofbit);
 			}
 
-			inline void ignore(std::streamsize a_count) { _stream.ignore(a_count); }
+			void ignore(std::streamsize a_count) { _stream.ignore(a_count); }
 
 			template <class T>
-			inline void readin(T& a_val)
+			void readin(T& a_val)
 			{
 				_stream.read(reinterpret_cast<char*>(std::addressof(a_val)), sizeof(T));
 			}
@@ -669,7 +583,7 @@ namespace REL
 				std::enable_if_t<
 					std::is_arithmetic_v<T>,
 					int> = 0>
-			inline T readout()
+			T readout()
 			{
 				T val{};
 				readin(val);
@@ -721,7 +635,7 @@ namespace REL
 			std::uint64_t offset;
 		};
 
-		inline IDDatabase() { load(); }
+		IDDatabase() { load(); }
 
 		IDDatabase(const IDDatabase&) = delete;
 		IDDatabase(IDDatabase&&) = delete;
@@ -731,7 +645,7 @@ namespace REL
 		IDDatabase& operator=(const IDDatabase&) = delete;
 		IDDatabase& operator=(IDDatabase&&) = delete;
 
-		inline void load()
+		void load()
 		{
 			const auto version = Module::get().version();
 			auto	   filename = L"Data/SKSE/Plugins/version-"s;
@@ -740,7 +654,7 @@ namespace REL
 			load_file(filename, version);
 		}
 
-		inline void load_file(stl::zwstring a_filename, Version a_version)
+		void load_file(stl::zwstring a_filename, Version a_version)
 		{
 			istream_t input(a_filename.data(), std::ios::in | std::ios::binary);
 			header_t  header;
@@ -780,7 +694,7 @@ namespace REL
 #endif
 		}
 
-		inline void unpack_file(istream_t& a_input, header_t a_header)
+		void unpack_file(istream_t& a_input, header_t a_header)
 		{
 			std::uint8_t  type = 0;
 			std::uint64_t id = 0;
@@ -889,11 +803,11 @@ namespace REL
 			return *this;
 		}
 
-		[[nodiscard]] inline std::uintptr_t address() const { return base() + offset(); }
-		[[nodiscard]] inline std::size_t	offset() const { return IDDatabase::get().id2offset(_id); }
+		[[nodiscard]] std::uintptr_t address() const { return base() + offset(); }
+		[[nodiscard]] std::size_t	 offset() const { return IDDatabase::get().id2offset(_id); }
 
 	private:
-		[[nodiscard]] static inline std::uintptr_t base() { return Module::get().base(); }
+		[[nodiscard]] static std::uintptr_t base() { return Module::get().base(); }
 
 		std::uint64_t _id{ 0 };
 	};

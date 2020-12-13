@@ -12,11 +12,11 @@ namespace RE
 		{
 		public:
 			// members
-			HANDLE			 handle;			 // 000
-			WIN32_FIND_DATAA findData;			 // 008
-			char			 dirPath[MAX_PATH];	 // 148
-			ErrorCode		 lastError;			 // 24C
-			LARGE_INTEGER	 entryPos;			 // 250
+			void*					 handle;					 // 000
+			WinAPI::WIN32_FIND_DATAA findData;					 // 008
+			char					 dirPath[WinAPI::MAX_PATH];	 // 148
+			ErrorCode				 lastError;					 // 24C
+			std::uint64_t			 entryPos;					 // 250
 		};
 		static_assert(sizeof(BSSystemDir) == 0x258);
 

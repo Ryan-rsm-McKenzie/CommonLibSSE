@@ -1217,8 +1217,8 @@ set(headers ${headers}
 	include/SKSE/SKSE.h
 	include/SKSE/Trampoline.h
 	include/SKSE/Version.h
-	include/SKSE/Impl/Atomic.h
 	include/SKSE/Impl/PCH.h
 	include/SKSE/Impl/RegistrationTraits.h
 	include/SKSE/Impl/Stubs.h
+	include/SKSE/Impl/WinAPI.h
 )

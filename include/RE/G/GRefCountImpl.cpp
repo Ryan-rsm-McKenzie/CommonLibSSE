@@ -5,13 +5,15 @@ namespace RE
 {
 	void GRefCountImpl::AddRef()
 	{
-		InterlockedIncrement(&_refCount);
+		stl::atomic_ref myRefCount{ _refCount };
+		++myRefCount;
 	}
 
 
 	void GRefCountImpl::Release()
 	{
-		if (InterlockedDecrement(&_refCount) == 0) {
+		stl::atomic_ref myRefCount{ _refCount };
+		if (--myRefCount == 0) {
 			delete this;
 		}
 	}

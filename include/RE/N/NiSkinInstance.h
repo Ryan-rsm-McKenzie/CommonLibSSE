@@ -50,7 +50,7 @@ namespace RE
 		void*					   boneMatrices;				  // 48
 		void*					   prevBoneMatrices;			  // 50
 		void*					   skinToWorldWorldToSkinMatrix;  // 58
-		CRITICAL_SECTION		   lock;						  // 60
+		WinAPI::CRITICAL_SECTION   lock;						  // 60
 	};
 	static_assert(sizeof(NiSkinInstance) == 0x88);
 }

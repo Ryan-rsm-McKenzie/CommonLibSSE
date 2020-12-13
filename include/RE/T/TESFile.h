@@ -76,8 +76,8 @@ namespace RE
 		TESBitArrayFile*							formUserDataBitArray;			  // 040
 		TESBitArrayFile*							formVersionBitArray;			  // 048
 		TESBitArrayFile*							formIDBitArray;					  // 050
-		char										fileName[MAX_PATH];				  // 058
-		char										path[MAX_PATH];					  // 15C
+		char										fileName[WinAPI::MAX_PATH];		  // 058
+		char										path[WinAPI::MAX_PATH];			  // 15C
 		char*										buffer;							  // 260
 		std::uint32_t								bufferAllocSize;				  // 268
 		std::uint32_t								firstCellOffset;				  // 26C
@@ -101,18 +101,18 @@ namespace RE
 		bool										isBigEndian;					  // 2E9
 		std::uint8_t								unk2EA;							  // 2EA
 		std::uint8_t								pad2EB;							  // 2EB
-		WIN32_FIND_DATAA							fileData;						  // 2EC
+		WinAPI::WIN32_FIND_DATAA					fileData;						  // 2EC
 		float										unk42C;							  // 42C
 		std::uint32_t								unk430;							  // 430
 		std::uint32_t								flags;							  // 434
 		stl::enumeration<RecordFlag, std::uint32_t> recordFlags;					  // 438
 		std::uint32_t								pad43C;							  // 43C
 		BSSimpleList<const char*>					masters;						  // 440
-		BSSimpleList<ULARGE_INTEGER*>				mastersData;					  // 450
+		BSSimpleList<std::uint64_t*>				mastersData;					  // 450
 		std::uint32_t								masterCount;					  // 460
 		std::uint32_t								pad464;							  // 464
 		TESFile**									masterPtrs;						  // 468
-		FILETIME									deletedFormTime;				  // 470
+		WinAPI::FILETIME							deletedFormTime;				  // 470
 		std::uint8_t								compileIndex;					  // 478
 		std::uint8_t								pad479;							  // 479
 		std::uint16_t								smallFileCompileIndex;			  // 47A

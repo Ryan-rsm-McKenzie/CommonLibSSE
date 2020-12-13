@@ -23,16 +23,16 @@ namespace RE
 			virtual ~Store();  // 00
 
 			// override (BSScript::IStore)
-			virtual PLARGE_INTEGER		 GetFileSize() override;													   // 01
-			virtual PLARGE_INTEGER		 GetFilePointer() override;													   // 02
-			virtual BOOL				 SetFilePointer(LARGE_INTEGER a_distanceToMove, DWORD a_moveMethod) override;  // 03
-			virtual BOOL				 ReadFile(DWORD a_numberOfBytesToRead, LPVOID a_buffer) override;			   // 04
-			virtual bool				 Open(const char* a_fileName) override;										   // 06
-			virtual void				 Close(void) override;														   // 07
-			virtual const BSFixedString& GetRelPath() override;														   // 08 - { return relPath; }
-			virtual bool				 HasOpenFile() override;													   // 09 - { return hasOpenFile; }
-			virtual bool				 FileIsGood() override;														   // 0A - { return fileIsGood; }
-			virtual void				 Unk_0B(void) override;														   // 0B
+			virtual std::size_t				 GetSize() const override;														 // 01
+			virtual std::size_t				 GetPosition() const override;													 // 02
+			virtual BSStorageDefs::ErrorCode Seek(std::size_t a_offset, BSStorageDefs::SeekMode a_seekMode) const override;	 // 03
+			virtual BSStorageDefs::ErrorCode Read(std::size_t a_numBytes, std::byte* a_bytes) const override;				 // 04
+			virtual bool					 Open(const char* a_fileName) override;											 // 06
+			virtual void					 Close(void) override;															 // 07
+			virtual const BSFixedString&	 GetRelPath() override;															 // 08 - { return relPath; }
+			virtual bool					 HasOpenFile() override;														 // 09 - { return hasOpenFile; }
+			virtual bool					 FileIsGood() override;															 // 0A - { return fileIsGood; }
+			virtual void					 Unk_0B(void) override;															 // 0B
 
 
 			// members

@@ -5,13 +5,15 @@ namespace RE
 {
 	NiRefObject::NiRefObject()
 	{
-		InterlockedIncrement(GetTotalObjectCount());
+		stl::atomic_ref objectCount{ *GetTotalObjectCount() };
+		++objectCount;
 	}
 
 
 	NiRefObject::~NiRefObject()
 	{
-		InterlockedDecrement(GetTotalObjectCount());
+		stl::atomic_ref objectCount{ *GetTotalObjectCount() };
+		--objectCount;
 	}
 
 
@@ -23,13 +25,15 @@ namespace RE
 
 	void NiRefObject::IncRefCount()
 	{
-		InterlockedIncrement(std::addressof(_refCount));
+		stl::atomic_ref myRefCount{ _refCount };
+		++myRefCount;
 	}
 
 
 	void NiRefObject::DecRefCount()
 	{
-		if (InterlockedDecrement(std::addressof(_refCount)) == 0) {
+		stl::atomic_ref myRefCount{ _refCount };
+		if (--myRefCount == 0) {
 			DeleteThis();
 		}
 	}

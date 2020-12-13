@@ -4,7 +4,7 @@
 namespace RE
 {
 	GFxResource::GFxResource() :
-		_refCount(1),
+		_refCount{ 1 },
 		_pad14(0),
 		_lib(nullptr)
 	{}
@@ -34,14 +34,16 @@ namespace RE
 
 	void GFxResource::AddRef()
 	{
-		++_refCount;
+		stl::atomic_ref myRefCount{ _refCount.value };
+		++myRefCount;
 	}
 
 
 	bool GFxResource::AddRef_NotZero()
 	{
-		if (_refCount != 0) {
-			++_refCount;
+		stl::atomic_ref myRefCount{ _refCount.value };
+		if (myRefCount != 0) {
+			++myRefCount;
 			return true;
 		} else {
 			return false;

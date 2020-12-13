@@ -12,10 +12,10 @@ namespace RE
 			{
 			public:
 				// members
-				FILETIME	  accessTime;  // 00
-				FILETIME	  modifyTime;  // 08
-				FILETIME	  createTime;  // 10
-				LARGE_INTEGER fileSize;	   // 18
+				WinAPI::FILETIME accessTime;  // 00
+				WinAPI::FILETIME modifyTime;  // 08
+				WinAPI::FILETIME createTime;  // 10
+				std::uint64_t	 fileSize;	  // 18
 			};
 			static_assert(sizeof(Info) == 0x20);
 
@@ -24,9 +24,9 @@ namespace RE
 
 
 			// members
-			std::uint32_t flags;  // 00
-			std::uint32_t pad04;  // 04
-			HANDLE		  file;	  // 08
+			std::uint32_t flags{ 1 };							 // 00
+			std::uint32_t pad04{ 0 };							 // 04
+			void*		  file{ WinAPI::INVALID_HANDLE_VALUE };	 // 08
 		};
 		static_assert(sizeof(BSSystemFile) == 0x10);
 	}

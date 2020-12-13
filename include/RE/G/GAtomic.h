@@ -29,7 +29,7 @@ namespace RE
 
 
 		// members
-		CRITICAL_SECTION cs;  // 00
+		WinAPI::CRITICAL_SECTION cs;  // 00
 	};
 	static_assert(sizeof(GLock) == 0x28);
 
@@ -38,220 +38,15 @@ namespace RE
 	class GAtomicValueBase
 	{
 	public:
-		GAtomicValueBase() :
-			value{}
-		{}
-
-
-		GAtomicValueBase(const GAtomicValueBase& a_rhs) :
-			value(a_rhs.value)
-		{}
-
-
-		GAtomicValueBase(const T& a_rhs) :
-			value(a_rhs)
-		{}
-
-
 		// members
-		volatile T value;  // 00
+		volatile T value;  // 0
 	};
-
-
-	template <class T, class Enable = void>
-	class GAtomicInt : public GAtomicValueBase<T>
-	{
-		static_assert(std::is_integral<T>::value);
-
-		using Base = GAtomicValueBase<T>;
-
-	public:
-		using Base::value;
-
-
-		GAtomicInt() :
-			Base{}
-		{}
-
-
-		GAtomicInt(const GAtomicInt& a_rhs) :
-			Base(a_rhs)
-		{}
-
-
-		GAtomicInt(const T& a_rhs) :
-			Base(a_rhs)
-		{}
-
-
-		GAtomicInt operator=(const GAtomicInt& a_rhs)
-		{
-			value = a_rhs.value;
-		}
-
-
-		GAtomicInt& operator=(const T& a_rhs)
-		{
-			InterlockedExchange(&value, a_rhs);
-			return *this;
-		}
-
-
-		bool operator==(const T& a_rhs)
-		{
-			return InterlockedAnd(&value, a_rhs) == a_rhs;
-		}
-
-
-		bool operator!=(const T& a_rhs)
-		{
-			return !operator==(a_rhs);
-		}
-
-
-		GAtomicInt& operator+=(const T& a_rhs)
-		{
-			InterlockedAdd(&value, a_rhs);
-			return *this;
-		}
-
-
-		GAtomicInt& operator-=(const T& a_rhs)
-		{
-			InterlockedAdd(&value, -1 * a_rhs);
-			return *this;
-		}
-
-
-		// prefix
-		GAtomicInt& operator++()
-		{
-			InterlockedIncrement(&value);
-			return *this;
-		}
-
-
-		// postfix
-		GAtomicInt operator++(int)
-		{
-			GAtomicInt tmp(*this);
-			InterlockedIncrement(&value);
-			return tmp;
-		}
-
-
-		// prefix
-		GAtomicInt& operator--()
-		{
-			InterlockedDecrement(&value);
-			return *this;
-		}
-
-
-		// postfix
-		GAtomicInt& operator--(int)
-		{
-			GAtomicInt tmp(*this);
-			InterlockedDecrement(&value);
-			return tmp;
-		}
-	};
-
+	//static_assert(sizeof(GAtomicValueBase<std::int32_t>) == 0x4);
 
 	template <class T>
-	class GAtomicInt<T, std::enable_if_t<sizeof(T) == 0x8>> : public GAtomicValueBase<T>
+	class GAtomicInt : public GAtomicValueBase<T>  // 0
 	{
-		static_assert(std::is_integral<T>::value);
-
 	public:
-		using GAtomicValueBase<T>::value;
-
-
-		GAtomicInt() :
-			GAtomicValueBase{}
-		{}
-
-
-		GAtomicInt(const GAtomicInt& a_rhs) :
-			GAtomicValueBase(a_rhs)
-		{}
-
-
-		GAtomicInt(const T& a_rhs) :
-			GAtomicValueBase(a_rhs)
-		{}
-
-
-		GAtomicInt operator=(const GAtomicInt& a_rhs)
-		{
-			value = a_rhs.value;
-		}
-
-
-		GAtomicInt& operator=(const T& a_rhs)
-		{
-			InterlockedExchange64(&value, a_rhs);
-			return *this;
-		}
-
-
-		bool operator==(const T& a_rhs)
-		{
-			return InterlockedAnd64(&value, a_rhs) == a_rhs;
-		}
-
-
-		bool operator!=(const T& a_rhs)
-		{
-			return !operator==(a_rhs);
-		}
-
-
-		GAtomicInt& operator+=(const T& a_rhs)
-		{
-			InterlockedAdd64(&value, a_rhs);
-			return *this;
-		}
-
-
-		GAtomicInt& operator-=(const T& a_rhs)
-		{
-			InterlockedAdd64(&value, -1 * a_rhs);
-			return *this;
-		}
-
-
-		// prefix
-		GAtomicInt& operator++()
-		{
-			InterlockedIncrement64(&value);
-			return *this;
-		}
-
-
-		// postfix
-		GAtomicInt operator++(int)
-		{
-			GAtomicInt tmp(*this);
-			InterlockedIncrement64(&value);
-			return tmp;
-		}
-
-
-		// prefix
-		GAtomicInt& operator--()
-		{
-			InterlockedDecrement64(&value);
-			return *this;
-		}
-
-
-		// postfix
-		GAtomicInt& operator--(int)
-		{
-			GAtomicInt tmp(*this);
-			InterlockedDecrement64(&value);
-			return tmp;
-		}
 	};
+	//static_assert(sizeof(GAtomicInt<std::int32_t>) == 0x4);
 }

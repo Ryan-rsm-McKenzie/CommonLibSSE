@@ -41,16 +41,14 @@ namespace RE
 
 			inline void acquire()
 			{
-				auto flags = _flags;
-				auto old = flags;
+				stl::atomic_ref flags{ _flags };
+				std::uint16_t	expected{ 0 };
 				do {
-					old = flags;
-					if ((flags & kRefCountMask) >= kRefCountMask) {
+					expected = flags;
+					if ((expected & kRefCountMask) >= kRefCountMask) {
 						break;
 					}
-
-					flags = InterlockedCompareExchange(std::addressof(_flags), flags + 1, static_cast<SHORT>(flags));
-				} while (flags != old);
+				} while (!flags.compare_exchange_weak(expected, static_cast<std::uint16_t>(expected + 1)));
 			}
 
 			[[nodiscard]] constexpr std::uint16_t crc() const noexcept { return _crc; }

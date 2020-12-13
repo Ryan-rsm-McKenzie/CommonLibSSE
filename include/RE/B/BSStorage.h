@@ -5,6 +5,12 @@
 
 namespace RE
 {
+	namespace BSStorageDefs
+	{
+		enum class ErrorCode;
+		enum class SeekMode;
+	}
+
 	class BSStorage : public BSIntrusiveRefCounted
 	{
 	public:
@@ -13,6 +19,8 @@ namespace RE
 
 		struct UnkData
 		{
+		public:
+			// members
 			std::uint64_t unk00;  // 00
 			std::uint64_t unk08;  // 08
 			std::uint64_t unk10;  // 10
@@ -23,11 +31,11 @@ namespace RE
 		virtual ~BSStorage();  // 00
 
 		// add
-		virtual PLARGE_INTEGER GetFileSize() = 0;														// 01
-		virtual PLARGE_INTEGER GetFilePointer() = 0;													// 02
-		virtual BOOL		   SetFilePointer(LARGE_INTEGER a_distanceToMove, DWORD a_moveMethod) = 0;	// 03
-		virtual BOOL		   ReadFile(DWORD a_numberOfBytesToRead, LPVOID a_buffer) = 0;				// 04
-		virtual BOOL		   WriteFile(DWORD a_numberOfBytesToWrite, LPCVOID a_buffer) = 0;			// 05
+		virtual std::size_t				 GetSize() const = 0;														// 01
+		virtual std::size_t				 GetPosition() const = 0;													// 02
+		virtual BSStorageDefs::ErrorCode Seek(std::size_t a_offset, BSStorageDefs::SeekMode a_seekMode) const = 0;	// 03
+		virtual BSStorageDefs::ErrorCode Read(std::size_t a_numBytes, std::byte* a_bytes) const = 0;				// 04
+		virtual BSStorageDefs::ErrorCode Write(std::size_t a_numBytes, const std::byte* a_bytes) = 0;				// 05
 
 
 		// members

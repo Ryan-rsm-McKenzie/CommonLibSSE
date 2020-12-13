@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.19)
 
-option(SKSE_CUSTOM_WINDEF "Use custom pre-defines before including window.h" OFF)
 option(SKSE_SUPPORT_XBYAK "Enables trampoline support for Xbyak." OFF)
 
 if (NOT DEFINED SKSE_USE_VCPKG AND CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
@@ -30,6 +29,11 @@ endif()
 
 # ---- Dependencies ----
 
+find_package(Boost
+	REQUIRED
+	COMPONENTS
+		atomic
+)
 find_package(span-lite REQUIRED CONFIG)
 find_package(spdlog REQUIRED CONFIG)
 
@@ -66,57 +70,8 @@ target_compile_definitions(
 	PUBLIC
 		WINVER=0x0601	# windows 7, minimum supported version by skyrim special edition
 		_WIN32_WINNT=0x0601
-		SPDLOG_COMPILED_LIB
 		"$<$<BOOL:${SKSE_SUPPORT_XBYAK}>:SKSE_SUPPORT_XBYAK>"
 )
-
-if (NOT SKSE_CUSTOM_WINDEF)
-	target_compile_definitions(
-		${PROJECT_NAME}
-		PUBLIC
-			WIN32_LEAN_AND_MEAN
-			
-			NOGDICAPMASKS
-			NOVIRTUALKEYCODES
-			#NOWINMESSAGES
-			NOWINSTYLES
-			NOSYSMETRICS
-			NOMENUS
-			NOICONS
-			NOKEYSTATES
-			NOSYSCOMMANDS
-			NORASTEROPS
-			NOSHOWWINDOW
-			OEMRESOURCE
-			NOATOM
-			NOCLIPBOARD
-			NOCOLOR
-			#NOCTLMGR
-			NODRAWTEXT
-			NOGDI
-			NOKERNEL
-			#NOUSER
-			NONLS
-			#NOMB
-			NOMEMMGR
-			NOMETAFILE
-			NOMINMAX
-			#NOMSG
-			NOOPENFILE
-			NOSCROLL
-			NOSERVICE
-			NOSOUND
-			NOTEXTMETRIC
-			NOWH
-			NOWINOFFSETS
-			NOCOMM
-			NOKANJI
-			NOHELP
-			NOPROFILER
-			NODEFERWINDOWPOS
-			NOMCX
-	)
-endif()
 
 target_compile_features(
 	${PROJECT_NAME}
@@ -171,6 +126,7 @@ target_include_directories(
 target_link_libraries(
 	${PROJECT_NAME}
 	PUBLIC
+		Boost::atomic
 		nonstd::span-lite
 		spdlog::spdlog
 		Version.lib

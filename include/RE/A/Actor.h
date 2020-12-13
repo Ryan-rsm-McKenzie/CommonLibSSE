@@ -604,7 +604,7 @@ namespace RE
 		std::uint32_t										  unk274;							  // 274
 		std::uint64_t										  unk278;							  // 278
 		std::uint64_t										  unk280;							  // 280
-		CRITICAL_SECTION									  unk288;							  // 288 - havok related
+		WinAPI::CRITICAL_SECTION							  unk288;							  // 288 - havok related
 
 	private:
 		TESFaction* GetCrimeFactionImpl() const;

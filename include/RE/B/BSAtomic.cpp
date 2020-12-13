@@ -1,5 +1,49 @@
 #include "RE/B/BSAtomic.h"
 
+#define WIN32_LEAN_AND_MEAN
+
+#define NOGDICAPMASKS
+#define NOVIRTUALKEYCODES
+//#define NOWINMESSAGES
+#define NOWINSTYLES
+#define NOSYSMETRICS
+#define NOMENUS
+#define NOICONS
+#define NOKEYSTATES
+#define NOSYSCOMMANDS
+#define NORASTEROPS
+#define NOSHOWWINDOW
+#define OEMRESOURCE
+#define NOATOM
+#define NOCLIPBOARD
+#define NOCOLOR
+//#define NOCTLMGR
+#define NODRAWTEXT
+#define NOGDI
+#define NOKERNEL
+//#define NOUSER
+#define NONLS
+//#define NOMB
+#define NOMEMMGR
+#define NOMETAFILE
+#define NOMINMAX
+//#define NOMSG
+#define NOOPENFILE
+#define NOSCROLL
+#define NOSERVICE
+#define NOSOUND
+#define NOTEXTMETRIC
+#define NOWH
+#define NOWINOFFSETS
+#define NOCOMM
+#define NOKANJI
+#define NOHELP
+#define NOPROFILER
+#define NODEFERWINDOWPOS
+#define NOMCX
+
+#include <Windows.h>
+
 
 namespace RE
 {
@@ -7,13 +51,13 @@ namespace RE
 		semaphore()
 	{
 		memzero(&semaphore);
-		semaphore = CreateSemaphoreA(nullptr, 0, 40, nullptr);
+		semaphore = ::CreateSemaphoreA(nullptr, 0, 40, nullptr);
 	}
 
 
 	BSSemaphoreBase::~BSSemaphoreBase()
 	{
-		CloseHandle(semaphore);
+		::CloseHandle(semaphore);
 		memzero(&semaphore);
 	}
 
@@ -26,25 +70,25 @@ namespace RE
 
 	void BSSpinLock::Lock(std::uint32_t a_pauseAttempts)
 	{
-		std::uint32_t myThreadID = GetCurrentThreadId();
+		std::uint32_t myThreadID = ::GetCurrentThreadId();
 
 		_mm_lfence();
 		if (_owningThread == myThreadID) {
-			InterlockedIncrement(&_lockCount);
+			::_InterlockedIncrement(&_lockCount);
 		} else {
 			std::uint32_t attempts = 0;
-			if (InterlockedCompareExchange(&_lockCount, 1, 0)) {
+			if (::_InterlockedCompareExchange(&_lockCount, 1, 0)) {
 				do {
 					++attempts;
 					_mm_pause();
 					if (attempts >= a_pauseAttempts) {
 						std::uint32_t spinCount = 0;
-						while (InterlockedCompareExchange(&_lockCount, 1, 0)) {
+						while (::_InterlockedCompareExchange(&_lockCount, 1, 0)) {
 							Sleep(++spinCount < kFastSpinThreshold ? 0 : 1);
 						}
 						break;
 					}
-				} while (InterlockedCompareExchange(&_lockCount, 1, 0));
+				} while (::_InterlockedCompareExchange(&_lockCount, 1, 0));
 				_mm_lfence();
 			}
 
@@ -63,9 +107,9 @@ namespace RE
 			if (_lockCount == 1) {
 				_owningThread = 0;
 				_mm_mfence();
-				InterlockedCompareExchange(&_lockCount, 0, 1);
+				::_InterlockedCompareExchange(&_lockCount, 0, 1);
 			} else {
-				InterlockedDecrement(&_lockCount);
+				::_InterlockedDecrement(&_lockCount);
 			}
 		}
 	}

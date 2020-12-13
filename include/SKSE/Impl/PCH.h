@@ -1,13 +1,5 @@
 #pragma once
 
-// TODO: Strip windows.h from all public headers
-#include <Windows.h>
-
-#include <ShlObj.h>
-#include <xmmintrin.h>
-
-#include <DirectXMath.h>
-#include <d3d9types.h>
 
 #include <algorithm>
 #include <array>
@@ -55,23 +47,16 @@
 #include <variant>
 #include <vector>
 
+static_assert(
+	std::is_integral_v<std::time_t> &&
+		sizeof(std::time_t) == sizeof(std::size_t),
+	"wrap std::time_t instead");
+
+#include <boost/atomic.hpp>
 #include <nonstd/span.hpp>
 #include <spdlog/spdlog.h>
 
-#undef far
-#undef GetClassName
-#undef GetFileAttributes
-#undef LoadIcon
-#undef near
-
-#undef FAR
-#undef NEAR
-#define FAR
-#define NEAR
-
-extern "C" IMAGE_DOS_HEADER __ImageBase;
-
-#include "SKSE/Impl/Atomic.h"
+#include "SKSE/Impl/WinAPI.h"
 
 namespace SKSE
 {
@@ -150,7 +135,7 @@ namespace SKSE
 					detail::can_construct_at<T, Args...>,
 					std::is_constructible<T, Args...>>,	 // more strict
 				int> = 0>
-		inline T* construct_at(T* a_ptr, Args&&... a_args)
+		T* construct_at(T* a_ptr, Args&&... a_args)
 		{
 			return ::new (
 				const_cast<void*>(
@@ -160,7 +145,7 @@ namespace SKSE
 
 
 		template <class T>
-		inline void destroy_at(T* a_ptr)
+		void destroy_at(T* a_ptr)
 		{
 			if constexpr (std::is_array_v<T>) {
 				for (auto& elem : *a_ptr) {
@@ -245,15 +230,15 @@ namespace SKSE
 			}();
 
 			const auto caption = []() -> std::string {
-				const auto		  maxPath = MAX_PATH;
+				const auto		  maxPath = WinAPI::GetMaxPath();
 				std::vector<char> buf;
 				buf.reserve(maxPath);
 				buf.resize(maxPath / 2);
 				std::uint32_t result = 0;
 				do {
 					buf.resize(buf.size() * 2);
-					result = GetModuleFileNameA(
-						reinterpret_cast<HMODULE>(std::addressof(__ImageBase)),
+					result = WinAPI::GetModuleFileName(
+						WinAPI::GetCurrentModule(),
 						buf.data(),
 						static_cast<std::uint32_t>(buf.size()));
 				} while (result && result == buf.size() && buf.size() <= std::numeric_limits<std::uint32_t>::max());
@@ -266,33 +251,32 @@ namespace SKSE
 				}
 			}();
 
-			::MessageBoxA(nullptr, body.c_str(), (caption.empty() ? nullptr : caption.c_str()), 0);
-			::TerminateProcess(::GetCurrentProcess(), EXIT_FAILURE);
+			spdlog::log(
+				spdlog::source_loc{
+					a_loc.file_name(),
+					static_cast<int>(a_loc.line()),
+					a_loc.function_name() },
+				spdlog::level::critical,
+				a_msg);
+			WinAPI::MessageBox(nullptr, body.c_str(), (caption.empty() ? nullptr : caption.c_str()), 0);
+			WinAPI::TerminateProcess(WinAPI::GetCurrentProcess(), EXIT_FAILURE);
 		}
 
 
-		template <class, class, class = void>
-		class enumeration;
-
 		template <
 			class Enum,
-			class Underlying>
-		class enumeration<
-			Enum,
-			Underlying,
-			std::enable_if_t<
-				std::conjunction_v<
-					std::is_enum<Enum>,
-					std::is_integral<Underlying>>>>
+			class Underlying = std::underlying_type_t<Enum>>
+		class enumeration
 		{
 		public:
 			using enum_type = Enum;
 			using underlying_type = Underlying;
 
+			static_assert(std::is_enum_v<enum_type>, "enum_type must be an enum");
+			static_assert(std::is_integral_v<underlying_type>, "underlying_type must be an integral");
+
 			constexpr enumeration() noexcept = default;
-
 			constexpr enumeration(const enumeration&) noexcept = default;
-
 			constexpr enumeration(enumeration&&) noexcept = default;
 
 			template <class U2>
@@ -406,8 +390,11 @@ namespace SKSE
 			underlying_type _impl{ 0 };
 		};
 
-		template <class E>
-		enumeration(E) -> enumeration<E, std::underlying_type_t<E>>;
+		template <class... Args>
+		enumeration(Args...) -> enumeration<
+			std::common_type_t<Args...>,
+			std::underlying_type_t<
+				std::common_type_t<Args...>>>;
 	}
 }
 
@@ -568,6 +555,45 @@ namespace SKSE
 
 		SKSE_MAKE_INCREMENTER_OP(+);  // ++
 		SKSE_MAKE_INCREMENTER_OP(-);  // --
+
+		template <class T>
+		class atomic_ref :
+			public boost::atomic_ref<std::remove_cv_t<T>>
+		{
+		private:
+			using super = boost::atomic_ref<std::remove_cv_t<T>>;
+
+		public:
+			using value_type = typename super::value_type;
+
+			explicit atomic_ref(T& a_obj) noexcept(std::is_nothrow_constructible_v<super, value_type&>) :
+				super(const_cast<value_type&>(a_obj))
+			{}
+
+			using super::super;
+			using super::operator=;
+		};
+
+		template <class T>
+		atomic_ref(T&) -> atomic_ref<T>;
+
+		template class atomic_ref<std::int8_t>;
+		template class atomic_ref<std::uint8_t>;
+		template class atomic_ref<std::int16_t>;
+		template class atomic_ref<std::uint16_t>;
+		template class atomic_ref<std::int32_t>;
+		template class atomic_ref<std::uint32_t>;
+		template class atomic_ref<std::int64_t>;
+		template class atomic_ref<std::uint64_t>;
+
+		static_assert(atomic_ref<std::int8_t>::is_always_lock_free);
+		static_assert(atomic_ref<std::uint8_t>::is_always_lock_free);
+		static_assert(atomic_ref<std::int16_t>::is_always_lock_free);
+		static_assert(atomic_ref<std::uint16_t>::is_always_lock_free);
+		static_assert(atomic_ref<std::int32_t>::is_always_lock_free);
+		static_assert(atomic_ref<std::uint32_t>::is_always_lock_free);
+		static_assert(atomic_ref<std::int64_t>::is_always_lock_free);
+		static_assert(atomic_ref<std::uint64_t>::is_always_lock_free);
 	}
 
 
@@ -899,7 +925,7 @@ namespace SKSE
 
 
 		template <class To, class From>
-		[[nodiscard]] inline To unrestricted_cast(From a_from)
+		[[nodiscard]] To unrestricted_cast(From a_from)
 		{
 			if constexpr (std::is_same_v<
 							  std::remove_cv_t<From>,
@@ -939,7 +965,7 @@ namespace SKSE
 
 
 		template <class T, class U>
-		[[nodiscard]] inline auto adjust_pointer(U* a_ptr, std::ptrdiff_t a_adjust) noexcept
+		[[nodiscard]] auto adjust_pointer(U* a_ptr, std::ptrdiff_t a_adjust) noexcept
 		{
 			auto addr = a_ptr ? reinterpret_cast<std::uintptr_t>(a_ptr) + a_adjust : 0;
 			if constexpr (std::is_const_v<U> && std::is_volatile_v<U>) {
@@ -965,7 +991,7 @@ namespace SKSE
 
 
 		template <class T>
-		inline void memzero(T* a_dst)
+		void memzero(T* a_dst)
 		{
 			memzero(a_dst, sizeof(T));
 		}
@@ -1006,22 +1032,25 @@ namespace SKSE
 
 namespace RE
 {
-	using namespace std::literals;
-	using namespace SKSE::util;
-	namespace stl = SKSE::stl;
+	using namespace ::std::literals;
+	using namespace ::SKSE::util;
+	namespace stl = ::SKSE::stl;
+	namespace WinAPI = ::SKSE::WinAPI;
 }
 
 namespace REL
 {
-	using namespace std::literals;
-	using namespace SKSE::util;
-	namespace stl = SKSE::stl;
+	using namespace ::std::literals;
+	using namespace ::SKSE::util;
+	namespace stl = ::SKSE::stl;
+	namespace WinAPI = ::SKSE::WinAPI;
 }
 
 #include "REL/Relocation.h"
 
-#include "RE/B/BSCoreTypes.h"
 #include "RE/Offsets.h"
 #include "RE/Offsets_NiRTTI.h"
 #include "RE/Offsets_RTTI.h"
+
+#include "RE/B/BSCoreTypes.h"
 #include "RE/S/SFTypes.h"

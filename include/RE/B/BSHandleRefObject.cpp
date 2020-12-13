@@ -6,13 +6,15 @@ namespace RE
 	BSHandleRefObject::~BSHandleRefObject()
 	{
 		_refCount &= kRefCountMask;
-		InterlockedDecrement(GetTotalObjectCount());
+		stl::atomic_ref totalObjects{ *GetTotalObjectCount() };
+		--totalObjects;
 	}
 
 
 	void BSHandleRefObject::DecRefCount()
 	{
-		if ((InterlockedDecrement(std::addressof(_refCount)) & kRefCountMask) == 0) {
+		stl::atomic_ref myRefCount{ _refCount };
+		if (((--myRefCount) & kRefCountMask) == 0) {
 			DeleteThis();
 		}
 	}
@@ -20,7 +22,8 @@ namespace RE
 
 	void BSHandleRefObject::IncRefCount()
 	{
-		InterlockedIncrement(std::addressof(_refCount));
+		stl::atomic_ref myRefCount{ _refCount };
+		++myRefCount;
 	}
 
 

@@ -19,7 +19,9 @@ namespace RE
 
 		class OcclusionMapData
 		{
-			DirectX::XMFLOAT4X4A		   projection;		// 00
+		public:
+			// members
+			alignas(0x10) DirectX::XMFLOAT4X4 projection;	// 00
 			NiPointer<NiCamera>			   camera;			// 40
 			NiPointer<BSShaderAccumulator> accumulator;		// 48
 			BSCullingProcess*			   cullingProcess;	// 50
@@ -32,7 +34,6 @@ namespace RE
 
 
 		// members
-		//std::uint64_t						pad08;					// 08
 		OcclusionMapData	  occlusionData;		   // 10
 		NiPointer<BSGeometry> currentPrecip;		   // 70
 		NiPointer<BSGeometry> lastPrecip;			   // 78

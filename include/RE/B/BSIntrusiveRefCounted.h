@@ -11,18 +11,24 @@ namespace RE
 		template <class>
 		friend struct BSTSmartPointerIntrusiveRefCount;
 
-		constexpr BSIntrusiveRefCounted() noexcept :
-			_refCount(0)
-		{}
 
-		inline std::uint32_t IncRef() { return InterlockedIncrement(&_refCount); }
-		inline std::uint32_t DecRef() { return InterlockedDecrement(&_refCount); }
+		std::uint32_t IncRef() const
+		{
+			stl::atomic_ref myRefCount{ _refCount };
+			return ++myRefCount;
+		}
+
+		std::uint32_t DecRef() const
+		{
+			stl::atomic_ref myRefCount{ _refCount };
+			return --myRefCount;
+		}
 
 		TES_HEAP_REDEFINE_NEW();
 
 	protected:
 		// members
-		volatile std::uint32_t _refCount;  // 0
+		volatile std::uint32_t _refCount{ 0 };	// 0
 	};
 	static_assert(sizeof(BSIntrusiveRefCounted) == 0x4);
 }

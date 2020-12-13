@@ -34,22 +34,22 @@ namespace RE
 
 
 		// members
-		bool		  useAuxBuffer;		   // 048
-		std::uint8_t  pad049;			   // 049
-		std::uint16_t pad04A;			   // 04A
-		std::uint32_t pad04C;			   // 04C
-		char*		  auxBuffer;		   // 050
-		std::int32_t  auxTrueFilePos;	   // 058
-		std::uint32_t auxBufferMinIndex;   // 05C
-		std::uint32_t auxBufferMaxIndex;   // 060
-		char		  fileName[MAX_PATH];  // 064
-		std::uint32_t result;			   // 168
-		std::uint32_t ioSize;			   // 16C
-		std::uint32_t trueFilePos;		   // 170
-		std::uint32_t fileSize;			   // 174
-		bool		  virtualAlloc;		   // 178
-		std::uint8_t  unk179;			   // 179
-		std::uint16_t unk17A;			   // 17A
+		bool		  useAuxBuffer;				   // 048
+		std::uint8_t  pad049;					   // 049
+		std::uint16_t pad04A;					   // 04A
+		std::uint32_t pad04C;					   // 04C
+		char*		  auxBuffer;				   // 050
+		std::int32_t  auxTrueFilePos;			   // 058
+		std::uint32_t auxBufferMinIndex;		   // 05C
+		std::uint32_t auxBufferMaxIndex;		   // 060
+		char		  fileName[WinAPI::MAX_PATH];  // 064
+		std::uint32_t result;					   // 168
+		std::uint32_t ioSize;					   // 16C
+		std::uint32_t trueFilePos;				   // 170
+		std::uint32_t fileSize;					   // 174
+		bool		  virtualAlloc;				   // 178
+		std::uint8_t  unk179;					   // 179
+		std::uint16_t unk17A;					   // 17A
 	};
 	static_assert(sizeof(BSFile) == 0x180);
 }

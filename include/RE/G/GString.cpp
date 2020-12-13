@@ -20,13 +20,15 @@ namespace RE
 
 	void GString::DataDesc::AddRef()
 	{
-		InterlockedIncrement(&refCount);
+		stl::atomic_ref myRefCount{ refCount };
+		++myRefCount;
 	}
 
 
 	void GString::DataDesc::Release()
 	{
-		if (InterlockedDecrement(&refCount) == 0) {
+		stl::atomic_ref myRefCount{ refCount };
+		if (--myRefCount == 0) {
 			GFREE(this);
 		}
 	}

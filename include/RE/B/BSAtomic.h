@@ -7,7 +7,7 @@ namespace RE
 	{
 	public:
 		// members
-		CRITICAL_SECTION criticalSection;  // 00
+		WinAPI::CRITICAL_SECTION criticalSection;  // 00
 	};
 	static_assert(sizeof(BSCriticalSection) == 0x28);
 
@@ -16,7 +16,7 @@ namespace RE
 	{
 	public:
 		// members
-		HANDLE event;  // 0
+		void* event;  // 0
 	};
 	static_assert(sizeof(BSEventFlag) == 0x8);
 
@@ -38,7 +38,7 @@ namespace RE
 
 
 		// members
-		HANDLE semaphore;  // 0
+		void* semaphore;  // 0
 	};
 	static_assert(sizeof(BSSemaphoreBase) == 0x8);
 

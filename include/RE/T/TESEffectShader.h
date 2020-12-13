@@ -8,6 +8,10 @@
 
 namespace RE
 {
+	enum class D3DBLEND;
+	enum class D3DBLENDOP;
+	enum class D3DCMPFUNC;
+
 	struct EffectShaderData	 // DATA
 	{
 	public:

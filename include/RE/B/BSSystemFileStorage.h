@@ -13,6 +13,7 @@ namespace RE
 
 		struct Attributes
 		{
+		public:
 			enum class Error
 			{
 				kNone = 0,
@@ -28,9 +29,10 @@ namespace RE
 			};
 
 
+			// members
 			stl::enumeration<Error, std::uint32_t> lastError;  // 00
 			std::uint32_t						   pad24;	   // 04
-			HANDLE								   handle;	   // 08
+			void*								   handle;	   // 08
 		};
 		static_assert(sizeof(Attributes) == 0x10);
 
@@ -38,11 +40,11 @@ namespace RE
 		virtual ~BSSystemFileStorage();	 // 00
 
 		// override (BSStorage)
-		virtual PLARGE_INTEGER GetFileSize() override;														 // 01
-		virtual PLARGE_INTEGER GetFilePointer() override;													 // 02
-		virtual BOOL		   SetFilePointer(LARGE_INTEGER a_distanceToMove, DWORD a_moveMethod) override;	 // 03
-		virtual BOOL		   ReadFile(DWORD a_numberOfBytesToRead, LPVOID a_buffer) override;				 // 04
-		virtual BOOL		   WriteFile(DWORD a_numberOfBytesToWrite, LPCVOID a_buffer) override;			 // 05
+		virtual std::size_t				 GetSize() const override;														 // 01
+		virtual std::size_t				 GetPosition() const override;													 // 02
+		virtual BSStorageDefs::ErrorCode Seek(std::size_t a_offset, BSStorageDefs::SeekMode a_seekMode) const override;	 // 03
+		virtual BSStorageDefs::ErrorCode Read(std::size_t a_numBytes, std::byte* a_bytes) const override;				 // 04
+		virtual BSStorageDefs::ErrorCode Write(std::size_t a_numBytes, const std::byte* a_bytes) override;				 // 05
 
 		bool IsGoodForRead() const;
 

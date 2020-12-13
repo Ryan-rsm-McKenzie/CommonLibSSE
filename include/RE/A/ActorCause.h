@@ -9,9 +9,19 @@ namespace RE
 	class ActorCause
 	{
 	public:
-		std::int32_t DecRefCount();
-		std::int32_t IncRefCount();
-		std::int32_t GetRefCount() const;
+		std::int32_t DecRefCount() const
+		{
+			stl::atomic_ref myRefCount{ refCount };
+			return --myRefCount;
+		}
+
+		std::int32_t IncRefCount() const
+		{
+			stl::atomic_ref myRefCount{ refCount };
+			return ++myRefCount;
+		}
+
+		[[nodiscard]] std::int32_t GetRefCount() const noexcept { return refCount; }
 
 
 		// members

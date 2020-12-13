@@ -43,29 +43,23 @@ namespace RE
 
 		std::uint32_t StreamBase::DecRef()
 		{
-			auto		  tmpFlags = this->flags;
-			std::uint32_t prevFlags;
-			std::uint32_t result;
+			stl::atomic_ref myFlags{ flags };
+			std::uint32_t	expected;
 			do {
-				prevFlags = tmpFlags;
-				result = tmpFlags - kRefCountBeg;
-				tmpFlags = InterlockedCompareExchange(&flags, tmpFlags - kRefCountBeg, tmpFlags);
-			} while (tmpFlags != prevFlags);
-			return result & kRefCountMask;
+				expected = myFlags;
+			} while (!myFlags.compare_exchange_weak(expected, expected - kRefCountBeg));
+			return (expected - kRefCountBeg) & kRefCountMask;
 		}
 
 
 		std::uint32_t StreamBase::IncRef()
 		{
-			auto		  tmpFlags = this->flags;
-			std::uint32_t prevFlags;
-			std::uint32_t result;
+			stl::atomic_ref myFlags{ flags };
+			std::uint32_t	expected;
 			do {
-				prevFlags = tmpFlags;
-				result = tmpFlags + kRefCountBeg;
-				tmpFlags = InterlockedCompareExchange(&flags, tmpFlags + kRefCountBeg, tmpFlags);
-			} while (tmpFlags != prevFlags);
-			return result & kRefCountMask;
+				expected = myFlags;
+			} while (!myFlags.compare_exchange_weak(expected, expected + kRefCountBeg));
+			return (expected - kRefCountBeg) & kRefCountMask;
 		}
 
 
