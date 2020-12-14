@@ -35,17 +35,18 @@ namespace RE
 
 
 		// members
-		BSString									 responseText;	// 00
-		stl::enumeration<EmotionType, std::uint32_t> emotionType;	// 10
-		std::uint32_t								 emotionValue;	// 14
-		BSFixedString								 voice;			// 18
-		TESIdleForm*								 speakerIdle;	// 20
-		TESIdleForm*								 listenerIdle;	// 28
-		BGSSoundDescriptorForm*						 voiceSound;	// 30
-		bool										 useEmotion;	// 38
-		bool										 soundLip;		// 39
-		std::uint16_t								 pad3A;			// 3A
-		std::uint32_t								 pad3C;			// 3C
+		BSString									 text;				// 00
+		stl::enumeration<EmotionType, std::uint32_t> animFaceArchType;	// 10
+		std::uint16_t								 percent;			// 14
+		std::uint16_t								 pad16;				// 16
+		BSFixedString								 voice;				// 18
+		TESIdleForm*								 speakerIdle;		// 20
+		TESIdleForm*								 listenIdle;		// 28
+		BGSSoundDescriptorForm*						 voiceSound;		// 30
+		bool										 useEmotion;		// 38
+		bool										 soundLip;			// 39
+		std::uint16_t								 pad3A;				// 3A
+		std::uint32_t								 pad3C;				// 3C
 	};
 	static_assert(sizeof(DialogueResponse) == 0x40);
 
@@ -63,10 +64,10 @@ namespace RE
 		std::uint32_t						   pad04;			 // 04
 		BSSimpleList<DialogueResponse*>		   responses;		 // 08
 		BSSimpleList<DialogueResponse*>::Node* currentResponse;	 // 18
-		TESTopicInfo*						   topicInfo;		 // 20
+		TESTopicInfo*						   info;			 // 20
 		TESTopic*							   topic;			 // 28
 		TESQuest*							   quest;			 // 30
-		Actor*								   speaker;			 // 38
+		TESObjectREFR*						   speaker;			 // 38
 		ExtraSayToTopicInfo*				   extraData;		 // 40
 
 	private:
