@@ -161,7 +161,6 @@ set(sources ${sources}
 	include/RE/M/MemoryPage.cpp
 	include/RE/M/MenuControls.cpp
 	include/RE/M/MenuEventHandler.cpp
-	include/RE/M/MenuTopicManager.cpp
 	include/RE/M/MiddleHighProcessData.cpp
 	include/RE/M/Misc.cpp
 	include/RE/N/NativeFunctionBase.cpp

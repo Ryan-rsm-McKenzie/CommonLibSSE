@@ -80,7 +80,11 @@ namespace RE
 		virtual BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;	 // 01
 
 
-		static MenuTopicManager* GetSingleton();
+		static MenuTopicManager* GetSingleton()
+		{
+			REL::Relocation<MenuTopicManager**> singleton{ REL::ID(514959) };
+			return *singleton;
+		}
 
 
 		// members
@@ -89,9 +93,9 @@ namespace RE
 		std::uint64_t				 unk28;					// 28
 		TESTopicInfo*				 rootTopicInfo;			// 30
 		Dialogue*					 lastSelectedDialogue;	// 38
-		CRITICAL_SECTION			 criticalSection;		// 40
-		RefHandle					 dialogueSpeaker;		// 68
-		RefHandle					 lastDialogueSpeaker;	// 6C - used if the dialogue menu was closed but the NPC is still talking
+		WinAPI::CRITICAL_SECTION	 criticalSection;		// 40
+		ObjectRefHandle				 speaker;				// 68
+		ObjectRefHandle				 lastSpeaker;			// 6C - used if the dialogue menu was closed but the NPC is still talking
 		TESTopicInfo*				 currentTopicInfo;		// 70 - only valid when the NPC is talking
 		TESTopicInfo*				 lastTopicInfo;			// 78 - used if the dialogue menu was closed but the NPC is still talking
 		BSTArray<BGSDialogueBranch*> blockingBranches;		// 80
@@ -110,7 +114,6 @@ namespace RE
 		bool						 unkBB;					// BB
 		std::uint16_t				 padBC;					// BC
 		BSTArray<TESTopic*>			 unkC0;					// C0
-		std::uint64_t				 unkD8;					// D8 - ???
 	};
-	static_assert(sizeof(MenuTopicManager) == 0xE0);
+	static_assert(sizeof(MenuTopicManager) == 0xD8);
 }
