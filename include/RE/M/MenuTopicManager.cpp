@@ -1,5 +1,5 @@
-#include "RE/Menus/MenuTopicManager.h"
-#include "RE/NetImmerse/NiSmartPointer.h"
+#include "RE/M/MenuTopicManager.h"
+#include "RE/N/NiSmartPointer.h"
 
 namespace RE
 {

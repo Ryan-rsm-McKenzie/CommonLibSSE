@@ -1,12 +1,11 @@
 #pragma once
 
-#include "RE/BSCore/BSFixedString.h"
-#include "RE/BSCore/BSString.h"
-#include "RE/BSCore/BSTEvent.h"
-#include "RE/BSCore/BSTList.h"
-#include "RE/BSCore/BSTSingleton.h"
-
-#include "RE/FormComponents/Components/BGSSceneAction/BGSSceneAction.h"
+#include "RE/B/BGSSceneAction.h"
+#include "RE/B/BSFixedString.h"
+#include "RE/B/BSString.h"
+#include "RE/B/BSTEvent.h"
+#include "RE/B/BSTList.h"
+#include "RE/B/BSTSingleton.h"
 
 namespace RE
 {
