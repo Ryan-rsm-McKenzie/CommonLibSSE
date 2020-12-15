@@ -64,7 +64,6 @@ set(sources ${sources}
 	include/RE/C/ConsoleLog.cpp
 	include/RE/C/ContainerMenu.cpp
 	include/RE/C/ControlMap.cpp
-	include/RE/D/DialogueItem.cpp
 	include/RE/E/Effect.cpp
 	include/RE/E/ExtraAliasInstanceArray.cpp
 	include/RE/E/ExtraAshPileRef.cpp

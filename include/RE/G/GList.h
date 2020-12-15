@@ -41,7 +41,7 @@ namespace RE
 		using reference = value_type&;
 		using const_reference = const value_type&;
 		using pointer = value_type*;
-		using const_pointer = std::pointer_traits<pointer>::rebind<const value_type>;
+		using const_pointer = typename std::pointer_traits<pointer>::template rebind<const value_type>;
 
 
 		template <class U>

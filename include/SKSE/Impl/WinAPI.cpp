@@ -55,7 +55,7 @@
 
 extern "C" IMAGE_DOS_HEADER __ImageBase;
 
-namespace F4SE::WinAPI
+namespace SKSE::WinAPI
 {
 	void*(GetCurrentModule)() noexcept
 	{

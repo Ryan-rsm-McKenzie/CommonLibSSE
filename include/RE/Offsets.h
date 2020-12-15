@@ -234,12 +234,6 @@ namespace RE
 		}
 
 
-		namespace DialogueItem
-		{
-			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(34413));
-		}
-
-
 		namespace ExtraAliasInstanceArray
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229615));
