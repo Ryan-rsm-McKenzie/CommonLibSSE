@@ -1,6 +1,5 @@
 #pragma once
 
-#include "RE/B/BGSSceneAction.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSString.h"
 #include "RE/B/BSTEvent.h"
@@ -20,9 +19,9 @@ namespace RE
 
 
 	class MenuTopicManager :
-		public BSTSingletonSDM<MenuTopicManager>,	// 0x10
-		public BSTEventSink<MenuOpenCloseEvent>,	// 0x00
-		public BSTEventSink<PositionPlayerEvent>	// 0x08
+		public BSTSingletonSDM<MenuTopicManager>,  // 0x10
+		public BSTEventSink<MenuOpenCloseEvent>,   // 0x00
+		public BSTEventSink<PositionPlayerEvent>   // 0x08
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MenuTopicManager;
@@ -31,42 +30,23 @@ namespace RE
 		struct Dialogue
 		{
 		public:
-			struct ResponseData
-			{
-			public:
-				// members
-				BSString					responseText;	 // 00
-				BGSSceneAction::EmotionType emotionType;	 // 10
-				std::uint32_t				emotionValue;	 // 14
-				BSFixedString				voiceFilePath;	 // 18
-				std::uint64_t				unk20;			 // 20
-				std::uint64_t				unk28;			 // 28
-				std::uint64_t				unk30;			 // 30
-				bool						useEmotionAnim;	 // 38
-				bool						hasLipFile;		 // 39
-				std::uint16_t				pad3A;			 // 3A
-				std::uint32_t				pad3C;			 // 3C
-			};
-			static_assert(sizeof(ResponseData) == 0x40);
-
-
 			// members
-			BSString					 topicText;		   // 00
-			bool						 unk10;			   // 10
-			bool						 unk11;			   // 11
-			bool						 unk12;			   // 12 - data.topic->formID == 0xFD || data.topic->formID == 0x118
-			std::uint8_t				 unk13;			   // 13
-			std::uint32_t				 unk14;			   // 14
-			BSSimpleList<ResponseData*>	 responses;		   // 18
-			TESQuest*					 parentQuest;	   // 28
-			TESTopicInfo*				 parentTopicInfo;  // 30
-			TESTopic*					 parentTopic;	   // 38
-			BSSimpleList<ResponseData*>* unk40;			   // 40
-			std::uint8_t				 unk48;			   // 48
-			bool						 neverSaid;		   // 49
-			std::uint16_t				 unk4A;			   // 4A
-			std::uint32_t				 unk4C;			   // 4C
-			TESTopic*					 unk50;			   // 50
+			BSString						 topicText;		   // 00
+			bool							 unk10;			   // 10
+			bool							 unk11;			   // 11
+			bool							 unk12;			   // 12 - data.topic->formID == 0xFD || data.topic->formID == 0x118
+			std::uint8_t					 unk13;			   // 13
+			std::uint32_t					 unk14;			   // 14
+			BSSimpleList<DialogueResponse*>	 responses;		   // 18
+			TESQuest*						 parentQuest;	   // 28
+			TESTopicInfo*					 parentTopicInfo;  // 30
+			TESTopic*						 parentTopic;	   // 38
+			BSSimpleList<DialogueResponse*>* unk40;			   // 40
+			std::uint8_t					 unk48;			   // 48
+			bool							 neverSaid;		   // 49
+			std::uint16_t					 unk4A;			   // 4A
+			std::uint32_t					 unk4C;			   // 4C
+			TESTopic*						 unk50;			   // 50
 		};
 		static_assert(sizeof(Dialogue) == 0x58);
 
