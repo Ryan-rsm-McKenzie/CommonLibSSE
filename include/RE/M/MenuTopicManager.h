@@ -20,9 +20,9 @@ namespace RE
 
 
 	class MenuTopicManager :
-		public BSTSingletonSDM<MenuTopicManager>,
-		public BSTEventSink<MenuOpenCloseEvent>,
-		public BSTEventSink<PositionPlayerEvent>
+		public BSTSingletonSDM<MenuTopicManager>,	// 0x10
+		public BSTEventSink<MenuOpenCloseEvent>,	// 0x00
+		public BSTEventSink<PositionPlayerEvent>	// 0x08
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MenuTopicManager;
