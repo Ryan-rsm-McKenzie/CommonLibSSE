@@ -9,8 +9,6 @@
 namespace RE
 {
 	class BGSDialogueBranch;
-	class DialoguePackage;
-	class MenuEventHandler;
 	class MenuOpenCloseEvent;
 	class TESQuest;
 	class TESTopic;
