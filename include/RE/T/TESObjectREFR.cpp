@@ -274,11 +274,11 @@ namespace RE
 	}
 	
 
-	float TESObjectREFR::GetHeadingAngle(TESObjectREFR* a_targRef, bool b_abs) const
+	float TESObjectREFR::GetHeadingAngle(const NiPoint3& a_targPos, bool b_abs) const
 	{
 		static const float PI = acos(-1.f);
 
-		float theta = std::atan2(a_targRef->GetPositionX() - this->GetPositionX(), a_targRef->GetPositionY() - this->GetPositionY());
+		float theta = std::atan2(a_targPos.x - this->GetPositionX(), a_targPos.y - this->GetPositionY());
 
 		float heading = 180 / PI * (theta - this->GetAngleZ());
 
