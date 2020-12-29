@@ -83,7 +83,7 @@ namespace RE
 	void TESObjectCELL::ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR* a_ref)> a_fn) const
 	{
 		ForEachReference([&](TESObjectREFR* ref) {
-			const auto distance = NiPoint3::GetSquaredDistance(a_origin, ref->GetPosition());
+			const auto distance = a_origin.GetSquaredDistance(ref->GetPosition());
 			if (distance <= a_radius) {
 				if (!a_fn(ref)) {
 					return false;

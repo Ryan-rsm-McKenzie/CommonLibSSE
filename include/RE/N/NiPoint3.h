@@ -28,9 +28,8 @@ namespace RE
 		NiPoint3&	 operator*=(float a_scalar);
 		NiPoint3&	 operator/=(float a_scalar);
 
-		static float GetDistance(const NiPoint3& a_lhs, const NiPoint3& a_rhs);
-		static float GetSquaredDistance(const NiPoint3& a_lhs, const NiPoint3& a_rhs);
-
+		float	 GetDistance(const NiPoint3& a_pt) const;
+		float	 GetSquaredDistance(const NiPoint3& a_pt) const;
 		float	 SqrLength() const;
 		float	 Length() const;
 		float	 Unitize();
