@@ -16,7 +16,7 @@ namespace RE
 
 		virtual ~GridCellArray();  // 00
 
-		//override (GridArray)
+		// override (GridArray)
 		virtual void Unk_02(void) override;	 // 02
 		virtual void Unk_03(void) override;	 // 03
 		virtual void Unk_05(void) override;	 // 05
