@@ -67,7 +67,7 @@ namespace RE
 		// members
 		std::uint64_t										  unk070;					  // 070
 		GridCellArray*										  gridCells;				  // 078
-		NiNode*												  objectRoot;				  // 080
+		NiNode*												  objRoot;					  // 080
 		NiNode*												  lodLandRoot;				  // 088
 		NiNode*												  objLODWaterRoot;			  // 090
 		BSTempNodeManager*									  tempNodeManager;			  // 098
