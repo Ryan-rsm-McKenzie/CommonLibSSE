@@ -14,14 +14,15 @@ namespace RE
 
 	class BSSystemEvent;
 	class BSTempNodeManager;
-	class TESNPC;
 	class GridCellArray;
+	class ImageSpaceModifierInstanceForm;
 	class NiNode;
-	struct PositionPlayerEvent;
 	class Sky;
+	class TESNPC;
 	class TESObjectCELL;
 	class TESWorldSpace;
-	class ImageSpaceModifierInstanceForm;
+
+	struct PositionPlayerEvent;
 
 	class TES :
 		public ICellAttachDetachEventSource,						// 000

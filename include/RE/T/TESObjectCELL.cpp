@@ -70,10 +70,9 @@ namespace RE
 	void TESObjectCELL::ForEachReference(std::function<bool(RE::TESObjectREFR* a_ref)> a_fn) const
 	{
 		spinLock.Lock();
-		for (auto& refPtr : references) {
-			auto ref = refPtr.get();
+		for (const auto& ref : references) {
 			if (ref) {
-				if (!a_fn(ref)) {
+				if (!a_fn(ref.get())) {
 					break;
 				}
 			}
@@ -85,7 +84,7 @@ namespace RE
 	void TESObjectCELL::ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR* a_ref)> a_fn) const
 	{
 		ForEachReference([&](TESObjectREFR* ref) {
-			auto distance = NiPoint3::GetSquaredDistance(a_origin, ref->GetPosition());
+			const auto distance = NiPoint3::GetSquaredDistance(a_origin, ref->GetPosition());
 			if (distance <= a_radius) {
 				if (!a_fn(ref)) {
 					return false;

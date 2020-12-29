@@ -16,7 +16,7 @@ namespace RE
 
 		virtual ~GridCellArray();  // 00
 
-		//override GridArray
+		//override (GridArray)
 		virtual void Unk_02(void) override;	 // 02
 		virtual void Unk_03(void) override;	 // 03
 		virtual void Unk_05(void) override;	 // 05
@@ -24,7 +24,7 @@ namespace RE
 		virtual void Unk_07(void) override;	 // 07
 		virtual void Unk_08(void) override;	 // 08
 
-		inline TESObjectCELL* GetCell(std::uint32_t a_x, std::uint32_t a_y)
+		TESObjectCELL* GetCell(std::uint32_t a_x, std::uint32_t a_y)
 		{
 			if (a_x >= length || a_y >= length) {
 				return nullptr;
