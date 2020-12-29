@@ -69,7 +69,7 @@ namespace RE
 
 	void TESObjectCELL::ForEachReference(std::function<bool(RE::TESObjectREFR* a_ref)> a_fn) const
 	{
-		spinLock.Lock();
+		BSSpinLockGuard locker(spinLock);
 		for (const auto& ref : references) {
 			if (ref) {
 				if (!a_fn(ref.get())) {
@@ -77,7 +77,6 @@ namespace RE
 				}
 			}
 		}
-		spinLock.Unlock();
 	}
 
 
