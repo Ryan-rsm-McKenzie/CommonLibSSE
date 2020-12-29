@@ -67,6 +67,35 @@ namespace RE
 	}
 
 
+	void TESObjectCELL::ForEachReference(std::function<bool(RE::TESObjectREFR* a_ref)> a_fn) const
+	{
+		spinLock.Lock();
+		for (auto& refPtr : references) {
+			auto ref = refPtr.get();
+			if (ref) {
+				if (!a_fn(ref)) {
+					break;
+				}
+			}
+		}
+		spinLock.Unlock();
+	}
+
+
+	void TESObjectCELL::ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR* a_ref)> a_fn) const
+	{
+		ForEachReference([&](TESObjectREFR* ref) {
+			auto distance = NiPoint3::GetSquaredDistance(a_origin, ref->GetPosition());
+			if (distance <= a_radius) {
+				if (!a_fn(ref)) {
+					return false;
+				}
+			}
+			return true;
+		});
+	}
+
+
 	bool TESObjectCELL::IsAttached() const
 	{
 		return cellState == CellState::kAttached;

@@ -204,6 +204,8 @@ namespace RE
 		INTERIOR_DATA* GetLighting();
 		float		   GetNorthRotation();
 		TESForm*	   GetOwner();
+		void		   ForEachReference(std::function<bool(TESObjectREFR* a_ref)> a_fn) const;
+		void		   ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR* a_ref)> a_fn) const;
 		bool		   IsAttached() const;
 		bool		   IsExteriorCell() const;
 		bool		   IsInteriorCell() const;
