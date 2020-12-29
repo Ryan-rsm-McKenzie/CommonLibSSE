@@ -21,10 +21,10 @@ namespace RE
 		enum class EntryProperties
 		{
 			kFront = 1 << 0,
-			kBehind = 0x2,
-			kRight = 0x4,
-			kLeft = 0x8,
-			kUp = 0x10
+			kBehind = 1 << 1,
+			kRight = 1 << 2,
+			kLeft = 1 << 3,
+			kUp = 1 << 4
 		};
 
 		NiPoint3									offset;			  // 00
