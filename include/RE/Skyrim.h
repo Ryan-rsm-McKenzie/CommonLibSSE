@@ -650,6 +650,8 @@
 #include "RE/G/GlobalLocations.h"
 #include "RE/G/GlobalPaths.h"
 #include "RE/G/GrenadeProjectile.h"
+#include "RE/G/GridArray.h"
+#include "RE/G/GridCellArray.h"
 #include "RE/H/HUDData.h"
 #include "RE/H/HUDMenu.h"
 #include "RE/H/HUDMeter.h"

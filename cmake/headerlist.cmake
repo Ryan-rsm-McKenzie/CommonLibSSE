@@ -648,6 +648,8 @@ set(headers ${headers}
 	include/RE/G/GrenadeProjectile.h
 	include/RE/G/GRenderer.h
 	include/RE/G/GRendererEventHandler.h
+	include/RE/G/GridArray.h
+	include/RE/G/GridCellArray.h
 	include/RE/G/GStats.h
 	include/RE/G/GStd.h
 	include/RE/G/GString.h
