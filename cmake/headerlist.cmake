@@ -232,6 +232,7 @@ set(headers ${headers}
 	include/RE/B/BSFadeNode.h
 	include/RE/B/BSFile.h
 	include/RE/B/BSFixedString.h
+	include/RE/B/BSFurnitureMarkerNode.h
 	include/RE/B/BSGamepadDevice.h
 	include/RE/B/BSGameSound.h
 	include/RE/B/BSGeometry.h
@@ -647,6 +648,8 @@ set(headers ${headers}
 	include/RE/G/GrenadeProjectile.h
 	include/RE/G/GRenderer.h
 	include/RE/G/GRendererEventHandler.h
+	include/RE/G/GridArray.h
+	include/RE/G/GridCellArray.h
 	include/RE/G/GStats.h
 	include/RE/G/GStd.h
 	include/RE/G/GString.h
