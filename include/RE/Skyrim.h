@@ -194,6 +194,7 @@
 #include "RE/B/BSFadeNode.h"
 #include "RE/B/BSFile.h"
 #include "RE/B/BSFixedString.h"
+#include "RE/B/BSFurnitureMarkerNode.h"
 #include "RE/B/BSGameSound.h"
 #include "RE/B/BSGamepadDevice.h"
 #include "RE/B/BSGeometry.h"
