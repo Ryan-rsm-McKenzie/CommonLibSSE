@@ -2,13 +2,11 @@
 
 #include "RE/B/BSTArray.h"
 #include "RE/N/NiExtraData.h"
+#include "RE/N/NiPoint3.h"
 
 namespace RE
 {
-	class NiPoint3;
-
-
-	class FurniturePosition
+	class BSFurnitureMarker
 	{
 	public:
 		enum class AnimationType
@@ -40,6 +38,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSFurnitureMarkerNode;
 		inline static constexpr auto NiRTTI = NiRTTI_BSFurnitureMarkerNode;
 
-		BSTArray<FurniturePosition> positions;	// 18
+		BSTArray<BSFurnitureMarker> markers;  // 18
 	};
 }

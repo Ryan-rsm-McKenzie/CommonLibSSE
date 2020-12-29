@@ -9,6 +9,28 @@
 
 namespace RE
 {
+	void TESObjectCELL::ForEachReference(std::function<bool(RE::TESObjectREFR&)> a_callback) const
+	{
+		BSSpinLockGuard locker(spinLock);
+		for (const auto& ref : references) {
+			if (ref && !a_callback(*ref)) {
+				break;
+			}
+		}
+	}
+
+
+	void TESObjectCELL::ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR&)> a_callback) const
+	{
+		ForEachReference([&](TESObjectREFR& ref) {
+			const auto distance = a_origin.GetSquaredDistance(ref.GetPosition());
+			return distance <= a_radius ?
+						 a_callback(ref) :
+						 true;
+		});
+	}
+
+
 	TESNPC* TESObjectCELL::GetActorOwner()
 	{
 		auto owner = GetOwner();
@@ -64,33 +86,6 @@ namespace RE
 		}
 
 		return zone ? zone->data.zoneOwner : nullptr;
-	}
-
-
-	void TESObjectCELL::ForEachReference(std::function<bool(RE::TESObjectREFR&)> a_callback) const
-	{
-		BSSpinLockGuard locker(spinLock);
-		for (const auto& ref : references) {
-			if (ref) {
-				if (!a_callback(*ref)) {
-					break;
-				}
-			}
-		}
-	}
-
-
-	void TESObjectCELL::ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR&)> a_callback) const
-	{
-		ForEachReference([&](TESObjectREFR& ref) {
-			const auto distance = a_origin.GetSquaredDistance(ref.GetPosition());
-			if (distance <= a_radius) {
-				if (!a_callback(ref)) {
-					return false;
-				}
-			}
-			return true;
-		});
 	}
 
 

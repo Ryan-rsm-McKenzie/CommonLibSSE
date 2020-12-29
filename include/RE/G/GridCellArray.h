@@ -24,12 +24,11 @@ namespace RE
 		virtual void Unk_07(void) override;	 // 07
 		virtual void Unk_08(void) override;	 // 08
 
-		TESObjectCELL* GetCell(std::uint32_t a_x, std::uint32_t a_y)
+		[[nodiscard]] TESObjectCELL* GetCell(std::uint32_t a_x, std::uint32_t a_y) const noexcept
 		{
-			if (a_x >= length || a_y >= length) {
-				return nullptr;
-			}
-			return cells[(a_x * length) + a_y];
+			return (a_x >= length || a_y >= length) ?
+						 cells[(a_x * length) + a_y] :
+						 nullptr;
 		};
 
 		// members

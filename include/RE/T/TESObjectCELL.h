@@ -199,13 +199,13 @@ namespace RE
 			return func(this);
 		}
 
+		void		   ForEachReference(std::function<bool(TESObjectREFR&)> a_callback) const;
+		void		   ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR&)> a_callback) const;
 		EXTERIOR_DATA* GetCoordinates();
 		TESFaction*	   GetFactionOwner();
 		INTERIOR_DATA* GetLighting();
 		float		   GetNorthRotation();
 		TESForm*	   GetOwner();
-		void		   ForEachReference(std::function<bool(TESObjectREFR&)> a_callback) const;
-		void		   ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR&)> a_callback) const;
 		bool		   IsAttached() const;
 		bool		   IsExteriorCell() const;
 		bool		   IsInteriorCell() const;
