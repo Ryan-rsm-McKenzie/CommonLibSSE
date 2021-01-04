@@ -13,42 +13,13 @@
 
 namespace RE
 {
-	InventoryEntryData::InventoryEntryData() :
-		object(nullptr),
-		extraLists(nullptr),
-		countDelta(0),
-		pad14(0)
-	{}
-
 	InventoryEntryData::InventoryEntryData(const InventoryEntryData& a_rhs) :
 		object(a_rhs.object),
-		extraLists(nullptr),
-		countDelta(a_rhs.countDelta),
-		pad14(0)
+		countDelta(a_rhs.countDelta)
 	{
 		if (a_rhs.extraLists) {
 			extraLists = new BSSimpleList<ExtraDataList*>(*a_rhs.extraLists);
 		}
-	}
-
-	InventoryEntryData::InventoryEntryData(InventoryEntryData&& a_rhs) :
-		object(std::move(a_rhs.object)),
-		extraLists(std::move(a_rhs.extraLists)),
-		countDelta(std::move(a_rhs.countDelta)),
-		pad14(0)
-	{
-		a_rhs.object = nullptr;
-		a_rhs.extraLists = nullptr;
-		a_rhs.countDelta = 0;
-	}
-
-	InventoryEntryData::InventoryEntryData(TESBoundObject* a_object, std::int32_t a_countDelta) :
-		object(a_object),
-		extraLists(nullptr),
-		countDelta(a_countDelta),
-		pad14(0)
-	{
-		extraLists = new BSSimpleList<ExtraDataList*>;
 	}
 
 	InventoryEntryData::~InventoryEntryData()
@@ -75,15 +46,11 @@ namespace RE
 	InventoryEntryData& InventoryEntryData::operator=(InventoryEntryData&& a_rhs)
 	{
 		if (this != std::addressof(a_rhs)) {
-			object = std::move(a_rhs.object);
-			a_rhs.object = nullptr;
-
 			delete extraLists;
-			extraLists = std::move(a_rhs.extraLists);
-			a_rhs.extraLists = nullptr;
 
-			countDelta = std::move(a_rhs.countDelta);
-			a_rhs.countDelta = 0;
+			object = std::exchange(a_rhs.object, nullptr);
+			extraLists = std::exchange(a_rhs.extraLists, nullptr);
+			countDelta = std::exchange(a_rhs.countDelta, 0);
 		}
 		return *this;
 	}
@@ -195,13 +162,6 @@ namespace RE
 		return SOUL_LEVEL::kNone;
 	}
 
-	std::int32_t InventoryEntryData::GetValue()
-	{
-		using func_t = decltype(&InventoryEntryData::GetValue);
-		REL::Relocation<func_t> func{ Offset::InventoryEntryData::GetValue };
-		return func(this);
-	}
-
 	float InventoryEntryData::GetWeight() const
 	{
 		return object ? object->GetWeight() : -1.0F;
@@ -239,29 +199,5 @@ namespace RE
 		}
 
 		return false;
-	}
-
-	bool InventoryEntryData::IsOwnedBy(Actor* a_testOwner, bool a_defaultTo)
-	{
-		return IsOwnedBy(a_testOwner, GetOwner(), a_defaultTo);
-	}
-
-	bool InventoryEntryData::IsOwnedBy(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo)
-	{
-		return IsOwnedBy_Impl(a_testOwner, a_itemOwner, a_defaultTo);
-	}
-
-	bool InventoryEntryData::IsOwnedBy_Impl(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo)
-	{
-		using func_t = decltype(&InventoryEntryData::IsOwnedBy_Impl);
-		REL::Relocation<func_t> func{ Offset::InventoryEntryData::IsOwnedBy };
-		return func(this, a_testOwner, a_itemOwner, a_defaultTo);
-	}
-
-	bool InventoryEntryData::IsQuestObject() const
-	{
-		using func_t = decltype(&InventoryEntryData::IsQuestObject);
-		REL::Relocation<func_t> func{ REL::ID(15767) };
-		return func(this);
 	}
 }

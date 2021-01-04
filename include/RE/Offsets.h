@@ -56,11 +56,6 @@ namespace RE
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263061));
 		}
 
-		namespace BGSDefaultObjectManager
-		{
-			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(10878));
-		}
-
 		namespace BGSFootstepManager
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(517045));
@@ -396,12 +391,6 @@ namespace RE
 			inline constexpr REL::ID SendContainerChangedEvent(static_cast<std::uint64_t>(15909));
 			inline constexpr REL::ID SetUniqueID(static_cast<std::uint64_t>(15907));
 			inline constexpr REL::ID TransferItemUID(static_cast<std::uint64_t>(15909));
-		}
-
-		namespace InventoryEntryData
-		{
-			inline constexpr REL::ID GetValue(static_cast<std::uint64_t>(15757));
-			inline constexpr REL::ID IsOwnedBy(static_cast<std::uint64_t>(15782));
 		}
 
 		namespace ItemCrafted

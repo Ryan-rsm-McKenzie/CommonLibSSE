@@ -5,6 +5,7 @@
 #include <bitset>
 #include <cassert>
 #include <cmath>
+#include <concepts>
 #include <cstdarg>
 #include <cstddef>
 #include <cstdint>

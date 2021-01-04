@@ -1,121 +1,33 @@
 #include "RE/T/TESForm.h"
 
-#include "RE/E/ExtraEnchantment.h"
+#include "RE/B/BGSDefaultObjectManager.h"
 #include "RE/F/FormTraits.h"
 #include "RE/I/IObjectHandlePolicy.h"
-#include "RE/M/MagicItem.h"
+#include "RE/I/InventoryEntryData.h"
 #include "RE/T/TESFullName.h"
+#include "RE/T/TESGlobal.h"
 #include "RE/T/TESModel.h"
 #include "RE/T/TESObjectREFR.h"
-#include "RE/T/TESValueForm.h"
 #include "RE/V/VirtualMachine.h"
 
 namespace RE
 {
-	void TESForm::AddCompileIndex(FormID& a_id, TESFile* a_file)
-	{
-		using func_t = decltype(&TESForm::AddCompileIndex);
-		REL::Relocation<func_t> func{ REL::ID(14509) };
-		return func(a_id, a_file);
-	}
-
-	std::pair<BSTHashMap<FormID, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> TESForm::GetAllForms()
-	{
-		REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ REL::ID(514351) };
-		REL::Relocation<BSReadWriteLock*>				allFormsMapLock{ REL::ID(514360) };
-		return { *allForms, std::ref(*allFormsMapLock) };
-	}
-
-	std::pair<BSTHashMap<BSFixedString, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> TESForm::GetAllFormsByEditorID()
-	{
-		REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ REL::ID(514352) };
-		REL::Relocation<BSReadWriteLock*>					   allFormsEditorIDMapLock{ REL::ID(514361) };
-		return { *allFormsByEditorID, std::ref(*allFormsEditorIDMapLock) };
-	}
-
-	TESForm* TESForm::LookupByID(FormID a_formID)
-	{
-		auto			allForms = GetAllForms();
-		BSReadLockGuard locker(allForms.second);
-		if (!allForms.first) {
-			return nullptr;
-		}
-
-		auto& formIDs = *allForms.first;
-		auto  it = formIDs.find(a_formID);
-		return it != formIDs.end() ? it->second : nullptr;
-	}
-
-	TESForm* TESForm::LookupByEditorID(const std::string_view& a_editorID)
-	{
-		auto			allFormsByEditorID = GetAllFormsByEditorID();
-		BSReadLockGuard locker(allFormsByEditorID.second);
-		if (!allFormsByEditorID.first) {
-			return nullptr;
-		}
-
-		auto& editorIDs = *allFormsByEditorID.first;
-		auto  it = editorIDs.find(a_editorID);
-		return it != editorIDs.end() ? it->second : nullptr;
-	}
-
-	TESObjectREFR* TESForm::AsReference()
-	{
-		return AsReference1();
-	}
-
-	const TESObjectREFR* TESForm::AsReference() const
-	{
-		return AsReference2();
-	}
-
-	TESFile* TESForm::GetFile(std::int32_t a_idx) const
-	{
-		auto array = sourceFiles.array;
-		if (!array || array->empty()) {
-			return nullptr;
-		}
-
-		if (a_idx < 0 || static_cast<std::uint32_t>(a_idx) >= array->size()) {
-			return array->back();
-		} else {
-			return (*array)[a_idx];
-		}
-	}
-
 	std::int32_t TESForm::GetGoldValue() const
 	{
-		std::int32_t value = 0;
-		auto		 form = this;
-		auto		 objRef = As<TESObjectREFR>();
-		if (objRef) {
-			form = objRef->GetBaseObject();
-			auto xEnch = objRef->extraList.GetByType<ExtraEnchantment>();
-			if (xEnch && xEnch->enchantment) {
-				value += static_cast<std::int32_t>(xEnch->enchantment->CalculateTotalGoldValue());
-			}
-		}
-
-		auto valueForm = form->As<TESValueForm>();
-		if (valueForm) {
-			value += valueForm->value;
+		const auto obj = As<TESBoundObject>();
+		if (obj) {
+			const InventoryEntryData entry{ const_cast<TESBoundObject*>(obj), 1 };
+			return entry.GetValue();
 		} else {
-			auto magicItem = form->As<MagicItem>();
-			if (magicItem) {
-				value += static_cast<std::int32_t>(magicItem->CalculateTotalGoldValue());
-			} else {
-				value = -1;
-			}
+			return -1;
 		}
-
-		return value;
 	}
 
 	const char* TESForm::GetName() const
 	{
-		auto fullName = As<TESFullName>();
+		const auto fullName = As<TESFullName>();
 		if (fullName) {
-			auto str = fullName->GetFullName();
+			const auto str = fullName->GetFullName();
 			return str ? str : "";
 		} else {
 			return "";
@@ -124,14 +36,21 @@ namespace RE
 
 	float TESForm::GetWeight() const
 	{
-		auto ref = As<TESObjectREFR>();
-		auto baseObj = ref ? ref->GetBaseObject() : nullptr;
-		auto form = baseObj ? baseObj : this;
-		auto weightForm = form->As<TESWeightForm>();
-		if (weightForm) {
+		const auto survival = []() {
+			const auto dobj = BGSDefaultObjectManager::GetSingleton();
+			const auto survival = dobj ? dobj->GetObject<TESGlobal>(DEFAULT_OBJECT::kSurvivalModeEnabled) : nullptr;
+			return survival ? survival->value == 1.0F : false;
+		};
+
+		const auto ref = As<TESObjectREFR>();
+		const auto baseObj = ref ? ref->GetBaseObject() : nullptr;
+		const auto form = baseObj ? baseObj : this;
+		if (!survival() && (form->IsAmmo() || form->IsLockpick())) {
+			return 0.0F;
+		} else if (const auto weightForm = form->As<TESWeightForm>(); weightForm) {
 			return weightForm->weight;
 		} else if (form->Is(FormType::NPC)) {
-			auto npc = static_cast<const TESNPC*>(form);
+			const auto npc = static_cast<const TESNPC*>(form);
 			return npc->weight;
 		} else {
 			return -1.0;
@@ -140,12 +59,12 @@ namespace RE
 
 	bool TESForm::HasVMAD() const
 	{
-		auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+		const auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 		if (!vm) {
 			return false;
 		}
 
-		auto policy = vm->GetObjectHandlePolicy();
+		const auto policy = vm->GetObjectHandlePolicy();
 		if (!policy) {
 			return false;
 		}
@@ -157,10 +76,5 @@ namespace RE
 	bool TESForm::HasWorldModel() const noexcept
 	{
 		return As<TESModel>() != nullptr;
-	}
-
-	void TESForm::InitItem()
-	{
-		InitItemImpl();
 	}
 }

@@ -428,28 +428,32 @@ namespace RE
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
 
-		static BGSDefaultObjectManager* GetSingleton();
+		[[nodiscard]] static BGSDefaultObjectManager* GetSingleton()
+		{
+			using func_t = decltype(&BGSDefaultObjectManager::GetSingleton);
+			REL::Relocation<func_t> func{ REL::ID(10878) };
+			return func();
+		}
 
-		TESForm* GetObject(DefaultObject a_object);
-		TESForm* GetObject(std::size_t a_idx);
+		[[nodiscard]] TESForm* GetObject(DefaultObject a_object) const noexcept { return GetObject(to_underlying(a_object)); }
 
 		template <class T>
-		T* GetObject(DefaultObject a_object)
+		[[nodiscard]] T* GetObject(DefaultObject a_object) const noexcept
 		{
 			return GetObject<T>(to_underlying(a_object));
 		}
 
-		template <class T>
-		T* GetObject(std::size_t a_idx)
+		[[nodiscard]] TESForm* GetObject(std::size_t a_idx) const noexcept
 		{
-			auto obj = GetObject(a_idx);
-			if (obj) {
-				const bool isType = obj->Is(T::FORMTYPE);
-				assert(isType);
-				return isType ? static_cast<T*>(obj) : nullptr;
-			} else {
-				return nullptr;
-			}
+			assert(a_idx < to_underlying(DefaultObject::kTotal));
+			return objectInit[a_idx] ? objects[a_idx] : nullptr;
+		}
+
+		template <class T>
+		[[nodiscard]] T* GetObject(std::size_t a_idx) const noexcept
+		{
+			const auto obj = GetObject(a_idx);
+			return obj ? obj->As<T>() : nullptr;
 		}
 
 		// members

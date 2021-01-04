@@ -16,7 +16,6 @@ set(sources ${sources}
 	include/RE/B/BGSBaseAlias.cpp
 	include/RE/B/BGSBipedObjectForm.cpp
 	include/RE/B/BGSColorForm.cpp
-	include/RE/B/BGSDefaultObjectManager.cpp
 	include/RE/B/BGSEntryPointFunctionDataActivateChoice.cpp
 	include/RE/B/BGSEntryPointPerkEntry.cpp
 	include/RE/B/BGSFootstepManager.cpp

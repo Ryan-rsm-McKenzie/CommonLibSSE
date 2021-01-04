@@ -16,23 +16,6 @@ namespace RE
 	struct FORM;
 	struct FORM_GROUP;
 
-	namespace TESForm_Impl
-	{
-		template <class T>
-		struct is_valid_as_expr :
-			std::conjunction<
-				std::negation<
-					std::is_pointer<T>>,
-				std::negation<
-					std::is_reference<T>>,
-				std::negation<
-					std::is_const<T>>>
-		{};
-
-		template <class T>
-		constexpr inline bool is_valid_as_expr_v = is_valid_as_expr<T>::value;
-	}
-
 	class TESFileArray : public BSStaticArray<TESFile*>
 	{
 	public:
@@ -193,86 +176,154 @@ namespace RE
 		virtual const char*			 GetObjectTypeName() const;																														  // 39 - { return ""; }
 		virtual bool				 QAvailableInGame() const;																														  // 3A - { return true; }
 
-		static void AddCompileIndex(FormID& a_id, TESFile* a_file);
-
-		static std::pair<BSTHashMap<FormID, TESForm*>*, std::reference_wrapper<BSReadWriteLock>>		GetAllForms();
-		static std::pair<BSTHashMap<BSFixedString, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> GetAllFormsByEditorID();
-
-		static TESForm* LookupByID(FormID a_formID);
-
-		template <class T>
-		static T* LookupByID(FormID a_formID)
+		static void AddCompileIndex(FormID& a_id, TESFile* a_file)
 		{
-			auto form = LookupByID(a_formID);
-			return (form && form->Is(T::FORMTYPE)) ? static_cast<T*>(form) : nullptr;
+			using func_t = decltype(&TESForm::AddCompileIndex);
+			REL::Relocation<func_t> func{ REL::ID(14509) };
+			return func(a_id, a_file);
 		}
 
-		static TESForm* LookupByEditorID(const std::string_view& a_editorID);
+		[[nodiscard]] static auto GetAllForms()
+			-> std::pair<
+				BSTHashMap<FormID, TESForm*>*,
+				std::reference_wrapper<BSReadWriteLock>>
+		{
+			REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ REL::ID(514351) };
+			REL::Relocation<BSReadWriteLock*>				allFormsMapLock{ REL::ID(514360) };
+			return { *allForms, std::ref(*allFormsMapLock) };
+		}
+
+		[[nodiscard]] static auto GetAllFormsByEditorID()
+			-> std::pair<
+				BSTHashMap<BSFixedString, TESForm*>*,
+				std::reference_wrapper<BSReadWriteLock>>
+		{
+			REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ REL::ID(514352) };
+			REL::Relocation<BSReadWriteLock*>					   allFormsEditorIDMapLock{ REL::ID(514361) };
+			return { *allFormsByEditorID, std::ref(*allFormsEditorIDMapLock) };
+		}
+
+		[[nodiscard]] static TESForm* LookupByID(FormID a_formID)
+		{
+			const auto& [map, lock] = GetAllForms();
+			const BSReadWriteLock l{ lock };
+			if (map) {
+				const auto it = map->find(a_formID);
+				return it != map->end() ? it->second : nullptr;
+			} else {
+				return nullptr;
+			}
+		}
 
 		template <class T>
-		static T* LookupByEditorID(const std::string_view& a_editorID)
+		[[nodiscard]] static T* LookupByID(FormID a_formID)
 		{
-			auto form = LookupByEditorID(a_editorID);
-			return (form && form->Is(T::FORMTYPE)) ? static_cast<T*>(form) : nullptr;
+			const auto form = LookupByID(a_formID);
+			return form ? form->As<T>() : nullptr;
+		}
+
+		[[nodiscard]] static TESForm* LookupByEditorID(const std::string_view& a_editorID)
+		{
+			const auto& [map, lock] = GetAllFormsByEditorID();
+			const BSReadWriteLock l{ lock };
+			if (map) {
+				const auto it = map->find(a_editorID);
+				return it != map->end() ? it->second : nullptr;
+			} else {
+				return nullptr;
+			}
+		}
+
+		template <class T>
+		[[nodiscard]] static T* LookupByEditorID(const std::string_view& a_editorID)
+		{
+			const auto form = LookupByEditorID(a_editorID);
+			return form ? form->As<T>() : nullptr;
 		}
 
 		template <
 			class T,
-			std::enable_if_t<
-				TESForm_Impl::is_valid_as_expr_v<T>,
-				int> = 0>
-		constexpr T* As() noexcept;
+			class = std::enable_if_t<
+				std::negation_v<
+					std::disjunction<
+						std::is_pointer<T>,
+						std::is_reference<T>,
+						std::is_const<T>,
+						std::is_volatile<T>>>>>
+		[[nodiscard]] T* As() noexcept;
 
 		template <
 			class T,
-			std::enable_if_t<
-				TESForm_Impl::is_valid_as_expr_v<T>,
-				int> = 0>
-		constexpr const T* As() const noexcept;
+			class = std::enable_if_t<
+				std::negation_v<
+					std::disjunction<
+						std::is_pointer<T>,
+						std::is_reference<T>,
+						std::is_const<T>,
+						std::is_volatile<T>>>>>
+		[[nodiscard]] const T* As() const noexcept;
 
-		constexpr bool Is(FormType a_type) const noexcept { return GetFormType() == a_type; }
+		[[nodiscard]] TESObjectREFR*	   AsReference() { return AsReference1(); }
+		[[nodiscard]] const TESObjectREFR* AsReference() const { return AsReference2(); }
 
-		template <class First, class... Rest>
-		constexpr bool Is(First a_first, Rest... a_rest) const noexcept
+		[[nodiscard]] TESFile* GetFile(std::int32_t a_idx = -1) const
 		{
-			return Is(a_first) || Is(a_rest...);
+			const auto array = sourceFiles.array;
+			if (!array || array->empty()) {
+				return nullptr;
+			}
+
+			if (a_idx < 0 || static_cast<std::uint32_t>(a_idx) >= array->size()) {
+				return array->back();
+			} else {
+				return (*array)[a_idx];
+			}
 		}
 
-		constexpr bool IsNot(FormType a_type) const noexcept { return !Is(a_type); }
+		[[nodiscard]] std::uint32_t GetFormFlags() const noexcept { return formFlags; }
+		[[nodiscard]] FormID		GetFormID() const noexcept { return formID; }
+		[[nodiscard]] FormType		GetFormType() const noexcept { return *formType; }
+		[[nodiscard]] std::int32_t	GetGoldValue() const;
+		[[nodiscard]] const char*	GetName() const;
+		[[nodiscard]] float			GetWeight() const;
+		[[nodiscard]] bool			HasVMAD() const;
+		[[nodiscard]] bool			HasWorldModel() const noexcept;
+		void						InitItem() { InitItemImpl(); }
 
-		template <class First, class... Rest>
-		constexpr bool IsNot(First a_first, Rest... a_rest) const noexcept
+		[[nodiscard]] bool Is(FormType a_type) const noexcept { return GetFormType() == a_type; }
+
+		template <class... Args>
+		[[nodiscard]] bool Is(Args... a_args) const noexcept  //
+			requires(std::same_as<Args, FormType>&&...)
 		{
-			return IsNot(a_first) && IsNot(a_rest...);
+			return (Is(a_args) || ...);
 		}
 
-		TESObjectREFR*			AsReference();
-		const TESObjectREFR*	AsReference() const;
-		TESFile*				GetFile(std::int32_t a_idx = -1) const;
-		constexpr std::uint32_t GetFormFlags() const noexcept { return formFlags; }
-		constexpr FormID		GetFormID() const noexcept { return formID; }
-		constexpr FormType		GetFormType() const noexcept { return *formType; }
-		std::int32_t			GetGoldValue() const;
-		const char*				GetName() const;
-		float					GetWeight() const;
-		bool					HasVMAD() const;
-		bool					HasWorldModel() const noexcept;
-		void					InitItem();
-		constexpr bool			IsAmmo() const noexcept { return Is(FormType::Ammo); }
-		constexpr bool			IsArmor() const noexcept { return Is(FormType::Armor); }
-		constexpr bool			IsBook() const noexcept { return Is(FormType::Book); }
-		constexpr bool			IsDeleted() const noexcept { return (GetFormFlags() & RecordFlags::kDeleted) != 0; }
-		constexpr bool			IsDynamicForm() const noexcept { return GetFormID() >= 0xFF000000; }
-		constexpr bool			IsGold() const noexcept { return GetFormID() == 0x0000000F; }
-		constexpr bool			IsIgnored() const noexcept { return (GetFormFlags() & RecordFlags::kIgnored) != 0; }
-		constexpr bool			IsInitialized() const noexcept { return (GetFormFlags() & RecordFlags::kInitialized) != 0; }
-		constexpr bool			IsKey() const noexcept { return Is(FormType::KeyMaster); }
-		constexpr bool			IsLockpick() const noexcept { return GetFormID() == 0x0000000A; }
-		constexpr bool			IsNote() const noexcept { return Is(FormType::Note); }
-		constexpr bool			IsPlayer() const noexcept { return GetFormID() == 0x00000007; }
-		constexpr bool			IsPlayerRef() const noexcept { return GetFormID() == 0x00000014; }
-		constexpr bool			IsSoulGem() const noexcept { return Is(FormType::SoulGem); }
-		constexpr bool			IsWeapon() const noexcept { return Is(FormType::Weapon); }
+		[[nodiscard]] bool IsAmmo() const noexcept { return Is(FormType::Ammo); }
+		[[nodiscard]] bool IsArmor() const noexcept { return Is(FormType::Armor); }
+		[[nodiscard]] bool IsBook() const noexcept { return Is(FormType::Book); }
+		[[nodiscard]] bool IsDeleted() const noexcept { return (GetFormFlags() & RecordFlags::kDeleted) != 0; }
+		[[nodiscard]] bool IsDynamicForm() const noexcept { return GetFormID() >= 0xFF000000; }
+		[[nodiscard]] bool IsGold() const noexcept { return GetFormID() == 0x0000000F; }
+		[[nodiscard]] bool IsIgnored() const noexcept { return (GetFormFlags() & RecordFlags::kIgnored) != 0; }
+		[[nodiscard]] bool IsInitialized() const noexcept { return (GetFormFlags() & RecordFlags::kInitialized) != 0; }
+		[[nodiscard]] bool IsKey() const noexcept { return Is(FormType::KeyMaster); }
+		[[nodiscard]] bool IsLockpick() const noexcept { return GetFormID() == 0x0000000A; }
+
+		[[nodiscard]] bool IsNot(FormType a_type) const noexcept { return !Is(a_type); }
+
+		template <class... Args>
+		[[nodiscard]] bool IsNot(Args... a_args) const noexcept	 //
+			requires(std::same_as<Args, FormType>&&...)
+		{
+			return (IsNot(a_args) && ...);
+		}
+
+		[[nodiscard]] bool IsNote() const noexcept { return Is(FormType::Note); }
+		[[nodiscard]] bool IsPlayer() const noexcept { return GetFormID() == 0x00000007; }
+		[[nodiscard]] bool IsPlayerRef() const noexcept { return GetFormID() == 0x00000014; }
+		[[nodiscard]] bool IsSoulGem() const noexcept { return Is(FormType::SoulGem); }
+		[[nodiscard]] bool IsWeapon() const noexcept { return Is(FormType::Weapon); }
 
 		// members
 		TESFileContainer								sourceFiles;	  // 08
